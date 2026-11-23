@@ -106,16 +106,16 @@
         <valueType>Literal</valueType>
     </decisionTableSourceCriterias>
     <decisionTableSourceCriterias>
+        <operator>IsNull</operator>
+        <sequenceNumber>4</sequenceNumber>
+        <sourceFieldName>Pricing_Maximum_Quote_Qty_Allowed_Nbr__c</sourceFieldName>
+        <valueType>Literal</valueType>
+    </decisionTableSourceCriterias>
+    <decisionTableSourceCriterias>
         <operator>Equals</operator>
         <sequenceNumber>5</sequenceNumber>
         <sourceFieldName>Pricing_Is_Routing_Rule_Active_Ind__c</sourceFieldName>
         <value>true</value>
-        <valueType>Literal</valueType>
-    </decisionTableSourceCriterias>
-    <decisionTableSourceCriterias>
-        <operator>IsNull</operator>
-        <sequenceNumber>4</sequenceNumber>
-        <sourceFieldName>Pricing_Maximum_Quote_Qty_Allowed_Nbr__c</sourceFieldName>
         <valueType>Literal</valueType>
     </decisionTableSourceCriterias>
     <description>Pricing Route Rules EMEA DCG Quantity LTE 500 irrespective of whether Account is Covered/Uncovered</description>
@@ -126,7 +126,7 @@
     <isBestFitEnabled>false</isBestFitEnabled>
     <isIncrementalSyncEnabled>false</isIncrementalSyncEnabled>
     <isVersioned>false</isVersioned>
-    <setupName>Pricing Route Rules EMEA DCG Quantity GT 500</setupName>
+    <setupName>Pricing Route Rules EMEA DCG Quantity GTE 500</setupName>
     <sourceConditionLogic>1 AND 2 AND 3 AND 4 AND 5</sourceConditionLogic>
     <sourceObject>Pricing_Routing_Rules__c</sourceObject>
     <status>Active</status>

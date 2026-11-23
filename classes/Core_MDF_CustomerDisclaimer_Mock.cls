@@ -3,6 +3,7 @@
 global class Core_MDF_CustomerDisclaimer_Mock implements HTTPCalloutMock {
     global HTTPResponse respond(HTTPRequest request) {
         
+        System.debug('In Core_MDF_CustomerDisclaimer_Mock.respond() method.');
        // System.assertEquals('http://test.com', request.getEndpoint());
         System.assertEquals('GET', request.getMethod());
         String s='<div align=center>';

@@ -4,7 +4,7 @@
     <protected>false</protected>
     <values>
         <field>PMP_Field_APINm__c</field>
-        <value xsi:type="xsd:string">PMP_Partner_Program_Desc_Japanese__c</value>
+        <value xsi:type="xsd:string">PMP_Partner_Program_Name_Japanese__c</value>
     </values>
     <values>
         <field>PMP_Field_Nm__c</field>

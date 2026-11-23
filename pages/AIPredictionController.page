@@ -1,0 +1,7 @@
+<apex:page controller="AIPredictionController">
+    <apex:form >
+        <apex:pageBlock title="Prediction Details" id="AIPrediction_dtls">
+            <!-- Contacts List goes here -->
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

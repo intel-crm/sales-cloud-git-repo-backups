@@ -20,6 +20,10 @@
                     <value>false</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
+                    <name>hideSlackAction</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
                     <name>numVisibleActions</name>
                     <value>3</value>
                 </componentInstanceProperties>
@@ -132,6 +136,44 @@
                 </fieldInstanceProperties>
                 <fieldItem>Record.CPT_BR_CCG__c</fieldItem>
                 <identifier>RecordBR_CCG_cField</identifier>
+                <visibilityRule>
+                    <booleanFilter>(1 AND 3 AND 4 AND 5  )OR (2 AND (7 OR 6))</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.CPT_Quota_Setup__r.CPT_Plan__c}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>250</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.CPT_Quota_Setup__r.CPT_Employee__r.CPT_Sales_Group__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>PRC</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.CPT_Quota_Setup__r.CPT_Plan__c}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>330</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.CPT_Quota_Setup__r.CPT_Plan__c}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>630</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.CPT_Quota_Setup__r.CPT_Plan__c}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>650</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.CPT_Quota_Setup__r.CPT_Plan__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>331</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.CPT_Quota_Setup__r.CPT_Plan__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>631</rightValue>
+                    </criteria>
+                </visibilityRule>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -156,6 +198,44 @@
                 </fieldInstanceProperties>
                 <fieldItem>Record.CPT_BR_CCG_Target__c</fieldItem>
                 <identifier>RecordCPT_BR_CCG_Target_cField</identifier>
+                <visibilityRule>
+                    <booleanFilter>(4 AND 5 AND 6 AND 7) OR (1 AND (2 OR 3))</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.CPT_Quota_Setup__r.CPT_Employee__r.CPT_Sales_Group__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>PRC</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.CPT_Quota_Setup__r.CPT_Plan__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>331</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.CPT_Quota_Setup__r.CPT_Plan__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>631</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.CPT_Quota_Setup__r.CPT_Plan__c}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>250</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.CPT_Quota_Setup__r.CPT_Plan__c}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>330</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.CPT_Quota_Setup__r.CPT_Plan__c}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>630</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.CPT_Quota_Setup__r.CPT_Plan__c}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>650</rightValue>
+                    </criteria>
+                </visibilityRule>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -202,79 +282,29 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.CPT_BR_All__c</fieldItem>
-                <identifier>RecordCPT_BR_All__cField</identifier>
-                <visibilityRule>
-                    <criteria>
-                        <leftValue>{!Record.CPT_Quota_Setup__r.CPT_Plan__c}</leftValue>
-                        <operator>NE</operator>
-                        <rightValue>601</rightValue>
-                    </criteria>
-                </visibilityRule>
-            </fieldInstance>
-        </itemInstances>
-        <name>Facet-122d91cb-08f6-412e-9ad8-6f95906fb000</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.CPT_BR_All_Target__c</fieldItem>
-                <identifier>RecordCPT_BR_All_Target__cField</identifier>
-                <visibilityRule>
-                    <criteria>
-                        <leftValue>{!Record.CPT_Quota_Setup__r.CPT_Plan__c}</leftValue>
-                        <operator>NE</operator>
-                        <rightValue>601</rightValue>
-                    </criteria>
-                </visibilityRule>
-            </fieldInstance>
-        </itemInstances>
-        <name>Facet-fa7d78c7-d59d-41e7-b1a2-dc80e1916137</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>body</name>
-                    <value>Facet-122d91cb-08f6-412e-9ad8-6f95906fb000</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:column</componentName>
-                <identifier>flexipage_column13</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>body</name>
-                    <value>Facet-fa7d78c7-d59d-41e7-b1a2-dc80e1916137</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:column</componentName>
-                <identifier>flexipage_column14</identifier>
-            </componentInstance>
-        </itemInstances>
-        <name>Facet-36612ada-d27b-460c-bc04-29373591aa52</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
                 <fieldItem>Record.CPT_CR_OEM__c</fieldItem>
                 <identifier>RecordCPT_CR_OEM_cField</identifier>
                 <visibilityRule>
+                    <booleanFilter>1 OR  (4 AND (3 OR 2))</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.CPT_Quota_Setup__r.CPT_Plan__c}</leftValue>
                         <operator>NE</operator>
-                        <rightValue>202</rightValue>
+                        <rightValue>240</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.CPT_Quota_Setup__r.CPT_Plan__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>331</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.CPT_Quota_Setup__r.CPT_Plan__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>631</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.CPT_Quota_Setup__r.CPT_Employee__r.CPT_Sales_Group__c}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>PRC</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>
@@ -288,21 +318,21 @@
                 <fieldItem>Record.CPT_CR_Retail__c</fieldItem>
                 <identifier>RecordCPT_CR_Retail_cField</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 AND 2 AND 3</booleanFilter>
+                    <booleanFilter>1 OR 2 OR 3</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.CPT_Quota_Setup__r.CPT_Plan__c}</leftValue>
-                        <operator>NE</operator>
-                        <rightValue>101</rightValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>240</rightValue>
                     </criteria>
                     <criteria>
                         <leftValue>{!Record.CPT_Quota_Setup__r.CPT_Plan__c}</leftValue>
-                        <operator>NE</operator>
-                        <rightValue>301</rightValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>640</rightValue>
                     </criteria>
                     <criteria>
                         <leftValue>{!Record.CPT_Quota_Setup__r.CPT_Plan__c}</leftValue>
-                        <operator>NE</operator>
-                        <rightValue>305</rightValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>650</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>
@@ -316,21 +346,31 @@
                 <fieldItem>Record.CPT_CR_Partner__c</fieldItem>
                 <identifier>RecordCPT_CR_Partner_cField</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 AND 2 AND 3</booleanFilter>
+                    <booleanFilter>1 OR 2 OR 3 OR 4 OR 5</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.CPT_Quota_Setup__r.CPT_Plan__c}</leftValue>
-                        <operator>NE</operator>
-                        <rightValue>101</rightValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>240</rightValue>
                     </criteria>
                     <criteria>
                         <leftValue>{!Record.CPT_Quota_Setup__r.CPT_Plan__c}</leftValue>
-                        <operator>NE</operator>
-                        <rightValue>202</rightValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>640</rightValue>
                     </criteria>
                     <criteria>
                         <leftValue>{!Record.CPT_Quota_Setup__r.CPT_Plan__c}</leftValue>
-                        <operator>NE</operator>
-                        <rightValue>305</rightValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>120</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.CPT_Quota_Setup__r.CPT_Plan__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>650</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.CPT_Quota_Setup__r.CPT_Plan__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>122</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>
@@ -348,10 +388,26 @@
                 <fieldItem>Record.CPT_CR_OEM_Target__c</fieldItem>
                 <identifier>RecordCPT_CR_OEM_Target_cField</identifier>
                 <visibilityRule>
+                    <booleanFilter>1 OR (4 AND (3 OR 2))</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.CPT_Quota_Setup__r.CPT_Plan__c}</leftValue>
                         <operator>NE</operator>
-                        <rightValue>202</rightValue>
+                        <rightValue>240</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.CPT_Quota_Setup__r.CPT_Plan__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>331</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.CPT_Quota_Setup__r.CPT_Plan__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>631</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.CPT_Quota_Setup__r.CPT_Employee__r.CPT_Sales_Group__c}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>PRC</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>
@@ -365,21 +421,21 @@
                 <fieldItem>Record.CPT_CR_Retail_Target__c</fieldItem>
                 <identifier>RecordCPT_CR_Retail_Target_cField</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 AND 2 AND 3</booleanFilter>
+                    <booleanFilter>1 OR 2 OR 3</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.CPT_Quota_Setup__r.CPT_Plan__c}</leftValue>
-                        <operator>NE</operator>
-                        <rightValue>101</rightValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>240</rightValue>
                     </criteria>
                     <criteria>
                         <leftValue>{!Record.CPT_Quota_Setup__r.CPT_Plan__c}</leftValue>
-                        <operator>NE</operator>
-                        <rightValue>301</rightValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>640</rightValue>
                     </criteria>
                     <criteria>
                         <leftValue>{!Record.CPT_Quota_Setup__r.CPT_Plan__c}</leftValue>
-                        <operator>NE</operator>
-                        <rightValue>305</rightValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>650</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>
@@ -393,21 +449,31 @@
                 <fieldItem>Record.CPT_CR_Partner_Target__c</fieldItem>
                 <identifier>RecordCPT_CR_Partner_Target_cField</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 AND 2 AND 3</booleanFilter>
+                    <booleanFilter>1 OR 2 OR 3 OR 4 OR 5</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.CPT_Quota_Setup__r.CPT_Plan__c}</leftValue>
-                        <operator>NE</operator>
-                        <rightValue>101</rightValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>240</rightValue>
                     </criteria>
                     <criteria>
                         <leftValue>{!Record.CPT_Quota_Setup__r.CPT_Plan__c}</leftValue>
-                        <operator>NE</operator>
-                        <rightValue>202</rightValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>640</rightValue>
                     </criteria>
                     <criteria>
                         <leftValue>{!Record.CPT_Quota_Setup__r.CPT_Plan__c}</leftValue>
-                        <operator>NE</operator>
-                        <rightValue>305</rightValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>120</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.CPT_Quota_Setup__r.CPT_Plan__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>650</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.CPT_Quota_Setup__r.CPT_Plan__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>122</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>
@@ -437,158 +503,6 @@
             </componentInstance>
         </itemInstances>
         <name>Facet-b44e013f-11db-4ac9-9754-1068dbf4ff3d</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.CPT_MarVol_Margin_CCG__c</fieldItem>
-                <identifier>RecordCPT_MarVol_Margin_CCG_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.CPT_MarVol_Margin_DCG__c</fieldItem>
-                <identifier>RecordCPT_MarVol_Margin_DCG_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.CPT_MarVol_Next_Gen_CCG_LNL__c</fieldItem>
-                <identifier>RecordCPT_MarVol_Next_Gen_CCG_LNL_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.CPT_MarVol_Next_Gen_CCG_PTL__c</fieldItem>
-                <identifier>RecordCPT_MarVol_Next_Gen_CCG_PTL_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.CPT_MarVol_Next_Gen_CCG_WCL__c</fieldItem>
-                <identifier>RecordCPT_MarVol_Next_Gen_CCG_WCL_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.CPT_MarVol_Next_Gen_DCG_GNR__c</fieldItem>
-                <identifier>RecordCPT_MarVol_Next_Gen_DCG_GNR_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <name>Facet-a82605a6-aa37-48fa-8c8b-1ec56d25cf5f</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.CPT_MarVol_Margin_CCG_Target__c</fieldItem>
-                <identifier>RecordCPT_MarVol_Margin_CCG_Target_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.CPT_MarVol_Margin_DCG_Target__c</fieldItem>
-                <identifier>RecordCPT_MarVol_Margin_DCG_Target_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.CPT_MarVol_Next_Gen_CCG_LNL_Target__c</fieldItem>
-                <identifier>RecordCPT_MarVol_Next_Gen_CCG_LNL_Target_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.CPT_MarVol_Next_Gen_CCG_PTL_Target__c</fieldItem>
-                <identifier>RecordCPT_MarVol_Next_Gen_CCG_PTL_Target_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.CPT_MarVol_Next_Gen_CCG_WCL_Target__c</fieldItem>
-                <identifier>RecordCPT_MarVol_Next_Gen_CCG_WCL_Target_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.CPT_MarVol_Next_Gen_DCG_GNR_Target__c</fieldItem>
-                <identifier>RecordCPT_MarVol_Next_Gen_DCG_GNR_Target_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <name>Facet-9fc61515-3b24-442b-83fd-3a1fc87174a8</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>body</name>
-                    <value>Facet-a82605a6-aa37-48fa-8c8b-1ec56d25cf5f</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:column</componentName>
-                <identifier>flexipage_column5</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>body</name>
-                    <value>Facet-9fc61515-3b24-442b-83fd-3a1fc87174a8</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:column</componentName>
-                <identifier>flexipage_column6</identifier>
-            </componentInstance>
-        </itemInstances>
-        <name>Facet-302aeb30-92dd-4cf6-816a-719c9d0184bc</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -694,52 +608,15 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>label</name>
-                    <value>Billings Revenue - Seller</value>
+                    <value>Billings Revenue</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:fieldSection</componentName>
                 <identifier>flexipage_fieldSection</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 AND 2</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.CPT_Quota_Setup__r.CPT_BR_Allowed__c}</leftValue>
                         <operator>GT</operator>
                         <rightValue>0</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.CPT_Quota_Setup__r.CPT_Plan_Type__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Seller</rightValue>
-                    </criteria>
-                </visibilityRule>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>columns</name>
-                    <value>Facet-36612ada-d27b-460c-bc04-29373591aa52</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>horizontalAlignment</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>label</name>
-                    <value>Billings Revenue - Manager</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:fieldSection</componentName>
-                <identifier>flexipage_fieldSection7</identifier>
-                <visibilityRule>
-                    <booleanFilter>1 AND 2</booleanFilter>
-                    <criteria>
-                        <leftValue>{!Record.CPT_Quota_Setup__r.CPT_BR_Allowed__c}</leftValue>
-                        <operator>GT</operator>
-                        <rightValue>0</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.CPT_Quota_Setup__r.CPT_Plan_Type__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Manager</rightValue>
                     </criteria>
                 </visibilityRule>
             </componentInstance>
@@ -765,52 +642,6 @@
                         <leftValue>{!Record.CPT_Quota_Setup__r.CPT_CR_Allowed__c}</leftValue>
                         <operator>GT</operator>
                         <rightValue>0</rightValue>
-                    </criteria>
-                </visibilityRule>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>columns</name>
-                    <value>Facet-302aeb30-92dd-4cf6-816a-719c9d0184bc</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>horizontalAlignment</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>label</name>
-                    <value>MarginVolume</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:fieldSection</componentName>
-                <identifier>flexipage_fieldSection3</identifier>
-                <visibilityRule>
-                    <booleanFilter>(1 AND 2) AND (3 OR 4 OR 5)</booleanFilter>
-                    <criteria>
-                        <leftValue>{!Record.CPT_Quota_Setup__r.CPT_MarVol_Allowed__c}</leftValue>
-                        <operator>GT</operator>
-                        <rightValue>0</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.CPT_Quota_Setup__r.CPT_Plan_Type__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Manager</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.CPT_Quota_Setup__r.CPT_Plan__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>800</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.CPT_Quota_Setup__r.CPT_Plan__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>801</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.CPT_Quota_Setup__r.CPT_Plan__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>802</rightValue>
                     </criteria>
                 </visibilityRule>
             </componentInstance>

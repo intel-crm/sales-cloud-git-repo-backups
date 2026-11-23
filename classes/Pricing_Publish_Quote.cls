@@ -2,7 +2,7 @@
 * @description       : 
 * @author            : Accenture
 * @group             : 
-* @last modified on  : 06-27-2025
+* @last modified on  : 08-11-2026
 * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 public without sharing class Pricing_Publish_Quote { 
@@ -296,6 +296,9 @@ public without sharing class Pricing_Publish_Quote {
                 populateGlobalVarErrorMsg(globalVar);
             }
 
+             if(lstQuoteLine[0].Pricing_Original_Submitted_Date_dt__c == null && lstQuoteLine[0].SBQQ__Quote__r.SBQQ__Status__c == Label.Pricing_Tender_Quote_Status_Draft){
+                QuoteBusinessLogic.isQuoteFirstSubmission = true;
+            }
             //on Quote First submission if overall qty is less than min qty then if quota got completed will not allow quote submission and throw error.
             if(lstQuoteLine[0].Pricing_Original_Submitted_Date_dt__c == null && lstQuoteLine[0].SBQQ__Quote__r.SBQQ__Status__c == Label.Pricing_Tender_Quote_Status_Draft && ((quoteLineRec.SBQQ__Quote__r.Pricing_Program_Type_Nm__c == Label.Pricing_Tender_Standard_Quote && quoteLineRec.SBQQ__Quote__r.Pricing_Overall_Quote_Quantity_CPU__c != 0 && quoteLineRec.SBQQ__Quote__r.Pricing_Overall_Quote_Quantity_CPU__c < Integer.valueOf(Label.Pricing_DataCenterCPU_Overall_Quantity_Min)) || (quoteLineRec.SBQQ__Quote__r.Pricing_Program_Type_Nm__c == 'Client' && quoteLineRec.SBQQ__Quote__r.Pricing_Market_Segment_values_Nm__c != 'Consumer Retail Pull' && quoteLineRec.SBQQ__Quote__r.Pricing_Overall_Quote_Quantity__c < Integer.valueOf(Label.Pricing_Client_Overall_Quantity_Min)))){
                 //QuoteBusinessLogic.isVolumeExceptionCheck = true;
@@ -702,7 +705,7 @@ public without sharing class Pricing_Publish_Quote {
             }
             
             if(allFSEIdSet.size() > 0){
-                for(PermissionSetAssignment psa :  [SELECT AssigneeId
+                for(PermissionSetAssignment psa :  [SELECT Assignee.Email,PermissionSet.Name,AssigneeId
                                                     FROM PermissionSetAssignment 
                                                     WHERE AssigneeId IN :allFSEIdSet AND Assignee.IsActive = true
                                                     AND PermissionSet.Name =: Label.Pricing_Tender_PermissionSets_TenderUser]){
@@ -712,7 +715,7 @@ public without sharing class Pricing_Publish_Quote {
             }
             
             if(AccIdSet.size() > 0 && fseWithPSSet.size() > 0) {
-                for(AccountTeamMember accTeam : [SELECT Id,UserId,AccountId FROM AccountTeamMember WHERE AccountId IN:AccIdSet]) {
+                for(AccountTeamMember accTeam : [SELECT Id,User.Email,UserId,AccountId FROM AccountTeamMember WHERE AccountId IN:AccIdSet]) {
                     if(accIdFseUserIdMap.containsKey(accTeam.AccountId)){
                         accIdFseUserIdMap.get(accTeam.AccountId).add(accTeam.UserId);
                     }

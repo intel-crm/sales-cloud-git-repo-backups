@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Quoteline Delegates</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Quoteline Delegates</value>
+    </caseValues>
+    <fields>
+        <label><!-- Quoteline Approvers --></label>
+        <name>Pricing_Quoteline_Approver_Id__c</name>
+        <relationshipLabel><!-- Quoteline Delegates --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Quoteline Delegate --></label>
+        <name>Pricing_Quoteline_Delegate__c</name>
+        <relationshipLabel><!-- Quoteline Delegates --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

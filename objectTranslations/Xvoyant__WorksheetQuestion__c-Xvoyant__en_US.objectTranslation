@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>WorksheetTemplate</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>WorksheetTemplates</value>
+    </caseValues>
+    <fields>
+        <label><!-- AppLink --></label>
+        <name>Xvoyant__AppLink__c</name>
+    </fields>
+    <fields>
+        <label><!-- Coach Id --></label>
+        <name>Xvoyant__CoachId__c</name>
+    </fields>
+    <fields>
+        <label><!-- FunctionalGroupId --></label>
+        <name>Xvoyant__FunctionalGroupId__c</name>
+    </fields>
+    <fields>
+        <label><!-- InfoText --></label>
+        <name>Xvoyant__InfoText__c</name>
+    </fields>
+    <fields>
+        <label><!-- Template Number --></label>
+        <name>Xvoyant__Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- QuestionIndex --></label>
+        <name>Xvoyant__QuestionIndex__c</name>
+    </fields>
+    <fields>
+        <label><!-- QuestionText --></label>
+        <name>Xvoyant__QuestionText__c</name>
+    </fields>
+    <fields>
+        <label><!-- QuestionType --></label>
+        <name>Xvoyant__QuestionType__c</name>
+    </fields>
+    <fields>
+        <label><!-- TemplateId --></label>
+        <name>Xvoyant__TemplateId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Additional Items --></label>
+        <name>Xvoyant__addItemsNum__c</name>
+    </fields>
+    <fields>
+        <label><!-- Allow additional items --></label>
+        <name>Xvoyant__allowAddItems__c</name>
+    </fields>
+    <fields>
+        <label><!-- Allow Collaboration --></label>
+        <name>Xvoyant__allowCollab__c</name>
+    </fields>
+    <fields>
+        <label><!-- Allow rep to edit --></label>
+        <name>Xvoyant__allowRepEdit__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reminder Days --></label>
+        <name>Xvoyant__reminderDays__c</name>
+    </fields>
+    <fields>
+        <label><!-- Send Reminder --></label>
+        <name>Xvoyant__sendReminder__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

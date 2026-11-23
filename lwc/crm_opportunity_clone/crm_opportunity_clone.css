@@ -1,0 +1,45 @@
+.custom-container{
+	color : black;
+}
+.slds-table tbody tr[data-owner="true"] {
+        background-color: #f4f4f4; /* Grey color */
+		color : #888;
+        pointer-events: none; /* Disable interaction */
+}
+.page-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end; /* Aligns content to the bottom */
+        height: 100vh; /* Full viewport height */
+}
+
+.button-container {
+        display: flex;
+        justify-content: center; /* Centers buttons horizontally */
+        margin-bottom: 20px; /* Adds some space at the bottom */
+}
+.spinner-fixed{
+        position:  fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 9999;
+        background-color: rgba(255, 255, 255, 0.6);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+}
+
+lightning-button {
+        margin: 0 10px; 
+}
+
+.center-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; 
+    height: 100%; 
+    padding: 20px; 
+}

@@ -40,9 +40,6 @@
         <field>OpportunityLineItem.Core_BU_Product_Segment_Old__c</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Product_Segment__c</field>
-    </columns>
-    <columns>
         <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
     </columns>
     <columns>
@@ -101,7 +98,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>,Design: Original,Design: Secondary,Deal: Scale-enable,Deal: Sell-through,Deal: Sell-to</value>
+            <value>,Design: Original,Design: Secondary,Deal: Sell-through,Deal: Sell-to</value>
         </criteriaItems>
         <criteriaItems>
             <column>OpportunityLineItem.Core_Status__c</column>
@@ -135,7 +132,7 @@
         <field>Product2.Core_Code_Name__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>2020_21 IOTG Prods. AT RISK_Platform</name>
+    <name>2020 IOTG Prods. AT RISK_Platform</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -159,7 +156,7 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2021-12-31</endDate>
+        <endDate>2020-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
         <startDate>2020-01-01</startDate>
     </timeFrameFilter>

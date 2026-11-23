@@ -10,27 +10,13 @@
         <field>Product2.Core_Product_ID__c</field>
     </columns>
     <columns>
+        <field>Product2.Core_Product_Org__c</field>
+    </columns>
+    <columns>
+        <field>Product2.Core_Hierarchy_Name__c</field>
+    </columns>
+    <columns>
         <field>ACTIVE</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Product2.Core_Item_Price_Authorization_Ind__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Product2.Core_Item_Quotable_Ind__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Product2.Core_Item_Orderable_Ind__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Product2.Core_Item_Shippable_Ind__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Product2.Core_Sales_Visible_Flag__c</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
@@ -43,21 +29,6 @@
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>Product2.Core_Partner_Visible_Ind__c</field>
-    </columns>
-    <columns>
-        <field>Product2.Core_Item_Signal_Cd__c</field>
-    </columns>
-    <columns>
-        <field>Product2.Core_Product_Org__c</field>
-    </columns>
-    <columns>
-        <field>Product2.Core_Hierarchy_ID__c</field>
-    </columns>
-    <columns>
-        <field>Product2.Core_Hierarchy_Name__c</field>
-    </columns>
-    <columns>
-        <field>Product2.Core_Product_Series__c</field>
     </columns>
     <filter>
         <criteriaItems>
@@ -75,11 +46,11 @@
             <value>Sales</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Product2.Core_OPN__c</column>
+            <column>ACTIVE</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value></value>
+            <value>1</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -93,7 +64,7 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>Product2.Core_OPN__c</sortColumn>
+    <sortColumn>Product2.Core_Product_Org__c</sortColumn>
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CREATED_DATE</dateColumn>

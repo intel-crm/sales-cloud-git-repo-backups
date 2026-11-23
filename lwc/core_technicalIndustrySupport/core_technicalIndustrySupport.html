@@ -237,6 +237,23 @@
                     </lightning-layout-item>              
             <!--<lightning-button class="slds-var-m-left_x-small" type="submit" variant="brand" label="Save" ></lightning-button>
             -->
+            <!--POC added-->
+            <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12" medium-device-size="12" large-device-size="12" padding="around-small">
+                     <lightning-input class="slds-p-left_xx-large" type="checkbox" label="Add Opportunity Support Team Member" onchange={handleShowTeamMemberSection} ></lightning-input>          
+            </lightning-layout-item>
+                <template if:true={showTeamMemberSection}>
+                <template for:each={itemList} for:item="item" for:index="index">
+                    <lightning-record-edit-form object-api-name="Core_Opportunity_Support_Team__c" key={item.id}>  
+                        <!--<lightning-layout-item flexibility="no-grow" size="12" small-device-size="12" medium-device-size="12" large-device-size="12" padding="around-small">
+                            <lightning-input-field field-name="Core_Opportunity_Support_Team_Member__c" variant="label-stacked" value={supportTeamMember} onchange={handleSupportTeamChange}></lightning-input-field> 
+                        </lightning-layout-item>-->
+                                <lightning-input-field field-name="Core_Opportunity_Support_Team_Member__c" data-id="Core_Opportunity_Support_Team_Member__c" id={item.id}  onchange={handleSupportTeamChange}></lightning-input-field> 
+                               <lightning-icon icon-name="action:new"  access-key={item.id} id={index} alternative-text="Add Row" size="small" title="Add Row" onclick={addRow}></lightning-icon>
+                                <lightning-icon icon-name="action:delete" access-key={item.id} id={index} alternative-text="Delete Row" size="small" title="Delete Row" onclick={removeRow}></lightning-icon>
+                    </lightning-record-edit-form>
+                </template>
+             </template>
+            <!--POC added end-->
                 </template>
             </template>
             <lightning-layout-item class ="slds-align_absolute-center" flexibility="no-grow" size="12" small-device-size="12" medium-device-size="12" large-device-size="12" padding="around-small">

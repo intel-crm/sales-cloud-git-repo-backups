@@ -47,6 +47,10 @@
                 <behavior>Required</behavior>
                 <field>CPT_MarginVolume__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>CPT_Percent_Wins_Revenue__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

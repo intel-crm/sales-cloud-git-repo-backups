@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Content Delivery External</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Content Deliveries External</value>
+    </caseValues>
+    <fields>
+        <label><!-- ContentDocument ID --></label>
+        <name>ContentDocumentId__c</name>
+        <relationshipLabel><!-- Content Deliveries External --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- File Download Link --></label>
+        <name>ContentDownloadUrl__c</name>
+    </fields>
+    <fields>
+        <label><!-- ContentVersion ID --></label>
+        <name>ContentVersionId__c</name>
+        <relationshipLabel><!-- Content Deliveries External --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Created By ID --></label>
+        <name>CreatedById__c</name>
+    </fields>
+    <fields>
+        <label><!-- Created Date --></label>
+        <name>CreatedDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- External Link --></label>
+        <name>DistributionPublicUrl__c</name>
+    </fields>
+    <fields>
+        <label><!-- Expiration Date --></label>
+        <name>ExpiryDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- First Viewed --></label>
+        <name>FirstViewDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Deleted --></label>
+        <name>IsDeleted__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Modified By ID --></label>
+        <name>LastModifiedById__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Modified Date --></label>
+        <name>LastModifiedDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Viewed --></label>
+        <name>LastViewDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Content Delivery Name --></label>
+        <name>Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Owner ID --></label>
+        <name>OwnerId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Password --></label>
+        <name>Password__c</name>
+    </fields>
+    <fields>
+        <label><!-- PDF Download Link --></label>
+        <name>PdfDownloadUrl__c</name>
+    </fields>
+    <fields>
+        <label><!-- Allow Download in Original Format --></label>
+        <name>PreferencesAllowOriginalDownload__c</name>
+    </fields>
+    <fields>
+        <label><!-- Allow Download as PDF --></label>
+        <name>PreferencesAllowPDFDownload__c</name>
+    </fields>
+    <fields>
+        <label><!-- Allow View in the Browser --></label>
+        <name>PreferencesAllowViewInBrowser__c</name>
+    </fields>
+    <fields>
+        <label><!-- Content Delivery Expires --></label>
+        <name>PreferencesExpires__c</name>
+    </fields>
+    <fields>
+        <label><!-- Content Delivery Opens Latest Version --></label>
+        <name>PreferencesLinkLatestVersion__c</name>
+    </fields>
+    <fields>
+        <label><!-- Notify Me of First View or Download --></label>
+        <name>PreferencesNotifyOnVisit__c</name>
+    </fields>
+    <fields>
+        <label><!-- Email when Preview Images are Ready --></label>
+        <name>PreferencesNotifyRndtnComplete__c</name>
+    </fields>
+    <fields>
+        <label><!-- Require Password to Access Content --></label>
+        <name>PreferencesPasswordRequired__c</name>
+    </fields>
+    <fields>
+        <label><!-- Related Record ID --></label>
+        <name>RelatedRecordId__c</name>
+        <relationshipLabel><!-- Content Deliveries External --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- System Modstamp --></label>
+        <name>SystemModstamp__c</name>
+    </fields>
+    <fields>
+        <label><!-- View Count --></label>
+        <name>ViewCount__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -21,7 +21,6 @@ public class Core_ContentDocumentTrigger_Test {
         );
         insert testContentDocumentLink; 
         ContentDocument testContentDocument1 = [SELECT id FROM ContentDocument where id =:testContentVersion1.ContentDocumentId];
-        
         delete testContentDocument1;       
     }      
     

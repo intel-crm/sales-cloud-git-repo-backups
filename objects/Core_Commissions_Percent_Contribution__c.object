@@ -4,6 +4,16 @@
     <description>Maps Opportunity Team Member Role to Percent Contribution for populating Commissionable Transactions</description>
     <enableFeeds>false</enableFeeds>
     <fields>
+        <fullName>API_Value__c</fullName>
+        <externalId>false</externalId>
+        <label>API Value</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Core_Percent_Contribution__c</fullName>
         <externalId>false</externalId>
         <label>Percent Contribution</label>
@@ -19,10 +29,12 @@
         <fullName>All_Records</fullName>
         <columns>OBJECT_ID</columns>
         <columns>NAME</columns>
+        <columns>API_Value__c</columns>
         <columns>Core_Percent_Contribution__c</columns>
         <columns>LAST_UPDATE</columns>
         <filterScope>Everything</filterScope>
         <label>All Records</label>
+        <language>en_US</language>
     </listViews>
     <visibility>Public</visibility>
 </CustomObject>

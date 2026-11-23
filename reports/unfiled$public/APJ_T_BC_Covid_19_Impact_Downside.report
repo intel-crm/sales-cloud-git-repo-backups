@@ -121,7 +121,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Oceane Rime,Ayu Ginanti,Vanessa Ng,Duc Dang,I&apos;ng Chin Tan,Jovern Lim,Patricia Lee,Paul Haines,Alastair Duncan,Elise Stanberg,Andrew Ridley,Sachin Anand,Fransiskus Leonardus,Hc Hwang,Siew May Cheow,Jason Kay Siah Ang</value>
+            <value>Duc Dang,I&apos;ng Chin Tan,Jovern Lim,Patricia Lee,Paul Haines,Nileshni Santiago,Alastair Duncan,Elise Stanberg,Jodie Frew,Andrew Ridley,Swee Hoon Chan,Sachin Anand,Fransiskus Leonardus,Hc Hwang,Vineet Giri,Siew May Cheow,Faisal Qamar,Jason Kay Siah Ang</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Status_Update__c</column>
@@ -181,6 +181,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

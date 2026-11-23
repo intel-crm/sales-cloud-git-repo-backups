@@ -129,19 +129,6 @@
                             <div title="Value">Comments</div>
                         </th>
                     </template>
-                    <template if:true={confirmscreen}>
-                    <th width="7%" aria-label="Suppress Email" aria-sort="none"
-                    class="slds-is-resizable slds-is-sortable" scope="col">
-                    <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button"
-                        tabindex="0">
-                        <span class="slds-assistive-text">Sort by: </span>
-                        <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
-                            <span class="slds-truncate" title="Suppress Email">Suppress Email</span>
-
-                        </div>
-                    </a>
-                </th>
-            </template>
                 </tr>
             </template>
         </thead>
@@ -200,14 +187,7 @@
                         </lightning-input>
                     </td>
                 </template>
-                <template if:true={confirmscreen}>    
-            <td role="gridcell" width="7%">
-                <!--<lightning-input  type="checkbox" label="" checked={supChecked} onchange={handleSuppressEmailChange} ></lightning-input> -->
-                <lightning-input type="checkbox" label="" onchange={handleSuppressEmailChange}
-                     checked={supChecked}>
-    </lightning-input>								
-                </td>
-            </template>   
+
             </tr>
 
         </tbody>

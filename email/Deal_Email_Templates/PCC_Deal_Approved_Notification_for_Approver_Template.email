@@ -1,0 +1,154 @@
+<table border="0" cellpadding="5" width="550" cellspacing="5" height="400" >
+<tr valign="top" height="400" >
+<td tEditID="c1r1" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="0" >
+<![CDATA[<p class="MsoNormal" style="margin-bottom:0in;line-height:normal"><span style="font-size: 12pt; font-family: Arial, sans-serif;">Hello&nbsp;{!Core_Design_Registration__c.Core_Intel_Technical_Owner_Id__c}<o:p></o:p></span></p><p class="MsoNormal" style="margin-bottom:0in;line-height:normal"><span style="font-size: 12pt; font-family: Arial, sans-serif;">&nbsp;<o:p></o:p></span></p><p class="MsoNormal" style="margin-bottom:0in;line-height:normal"><span style="font-size: 12pt; font-family: Arial, sans-serif;">The
+following Deal Registration has been&nbsp;<b>Approved.</b><o:p></o:p></span></p><p class="MsoNormal" style="margin-bottom:0in;line-height:normal"><b><span style="font-size: 12pt; font-family: Arial, sans-serif;">&nbsp;</span></b><span style="font-size: 12pt; font-family: Arial, sans-serif;"><o:p></o:p></span></p><p class="MsoNormal" style="margin-bottom:0in;line-height:normal"><b><span style="font-size: 12pt; font-family: Arial, sans-serif;">Registration
+Number:</span></b><span style="font-size: 12pt; font-family: Arial, sans-serif;">&nbsp;{!Core_Design_Registration__c.Name}<o:p></o:p></span></p><p class="MsoNormal" style="margin-bottom:0in;line-height:normal"><b><span style="font-size: 12pt; font-family: Arial, sans-serif;">Deal
+Registration Name:</span></b><span style="font-size: 12pt; font-family: Arial, sans-serif;">&nbsp;{!Core_Design_Registration__c.Core_Design_Registration_Nm__c}<o:p></o:p></span></p><p class="MsoNormal" style="margin-bottom:0in;line-height:normal"><b><span style="font-size: 12pt; font-family: Arial, sans-serif;">End
+Customer Account:</span></b><span style="font-size: 12pt; font-family: Arial, sans-serif;">&nbsp;{!Core_Design_Registration__c.Core_End_Customer_Account_Nm__c}<br>
+<b>Opportunity:</b>&nbsp; <a href="{!Opportunity.Link}">here</a></span></p><p class="MsoNormal" style="margin-bottom:0in;line-height:normal"><span style="font-size: 12pt; font-family: Arial, sans-serif;"><br></span></p><p class="MsoNormal" style="margin-bottom:0in;line-height:normal"><span style="font-size: 12pt; font-family: Arial, sans-serif;">&nbsp;</span></p><table class="MsoTableGrid" border="1" cellspacing="0" cellpadding="0" align="left" style="border-collapse:collapse;border:none;mso-border-alt:solid windowtext .5pt;
+ mso-yfti-tbllook:1184;mso-table-lspace:9.0pt;margin-left:6.75pt;mso-table-rspace:
+ 9.0pt;margin-right:6.75pt;mso-table-anchor-vertical:paragraph;mso-table-anchor-horizontal:
+ margin;mso-table-left:left;mso-table-top:7.6pt;mso-padding-alt:0in 5.4pt 0in 5.4pt">
+ <tbody><tr>
+  <td width="101" valign="top" style="width:76.0pt;border:solid windowtext 1.0pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt">
+  <p class="MsoNormal" align="center" style="margin-bottom:0in;text-align:center;
+  line-height:normal;mso-element:frame;mso-element-frame-hspace:9.0pt;
+  mso-element-wrap:around;mso-element-anchor-vertical:paragraph;mso-element-anchor-horizontal:
+  margin;mso-element-top:7.6pt;mso-height-rule:exactly"><span style="font-size:
+  9.0pt">ID<o:p></o:p></span></p>
+  </td>
+  <td width="101" valign="top" style="width:76.0pt;border:solid windowtext 1.0pt;
+  border-left:none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
+  solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt">
+  <p class="MsoNormal" align="center" style="margin-bottom:0in;text-align:center;
+  line-height:normal;mso-element:frame;mso-element-frame-hspace:9.0pt;
+  mso-element-wrap:around;mso-element-anchor-vertical:paragraph;mso-element-anchor-horizontal:
+  margin;mso-element-top:7.6pt;mso-height-rule:exactly"><span style="font-size:
+  9.0pt">Product Name<o:p></o:p></span></p>
+  </td>
+  <td width="101" valign="top" style="width:76.05pt;border:solid windowtext 1.0pt;
+  border-left:none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
+  solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt">
+  <p class="MsoNormal" align="center" style="margin-bottom:0in;text-align:center;
+  line-height:normal;mso-element:frame;mso-element-frame-hspace:9.0pt;
+  mso-element-wrap:around;mso-element-anchor-vertical:paragraph;mso-element-anchor-horizontal:
+  margin;mso-element-top:7.6pt;mso-height-rule:exactly"><span style="font-size:
+  9.0pt">Status<o:p></o:p></span></p>
+  </td>
+  <td width="101" valign="top" style="width:76.05pt;border:solid windowtext 1.0pt;
+  border-left:none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
+  solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt">
+  <p class="MsoNormal" align="center" style="margin-bottom:0in;text-align:center;
+  line-height:normal;mso-element:frame;mso-element-frame-hspace:9.0pt;
+  mso-element-wrap:around;mso-element-anchor-vertical:paragraph;mso-element-anchor-horizontal:
+  margin;mso-element-top:7.6pt;mso-height-rule:exactly"><span style="font-size:
+  9.0pt">Comment<o:p></o:p></span></p>
+  </td>
+  <td width="101" valign="top" style="width:76.05pt;border:solid windowtext 1.0pt;
+  border-left:none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
+  solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt">
+  <p class="MsoNormal" align="center" style="margin-bottom:0in;text-align:center;
+  line-height:normal;mso-element:frame;mso-element-frame-hspace:9.0pt;
+  mso-element-wrap:around;mso-element-anchor-vertical:paragraph;mso-element-anchor-horizontal:
+  margin;mso-element-top:7.6pt;mso-height-rule:exactly"><span style="font-size:
+  9.0pt">Created Date<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width="101" valign="top" style="width:76.0pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt">
+  <p class="MsoNormal" style="margin-bottom:0in;line-height:normal;mso-element:
+  frame;mso-element-frame-hspace:9.0pt;mso-element-wrap:around;mso-element-anchor-vertical:
+  paragraph;mso-element-anchor-horizontal:margin;mso-element-top:7.6pt;
+  mso-height-rule:exactly"><o:p>&nbsp;{!Core_Design_Registration_Product__c.Name}</o:p></p>
+  </td>
+  <td width="101" valign="top" style="width:76.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt">
+  <p class="MsoNormal" style="margin-bottom:0in;line-height:normal;mso-element:
+  frame;mso-element-frame-hspace:9.0pt;mso-element-wrap:around;mso-element-anchor-vertical:
+  paragraph;mso-element-anchor-horizontal:margin;mso-element-top:7.6pt;
+  mso-height-rule:exactly"><o:p>&nbsp;{!Core_Design_Registration_Product__c.PCC_Product_Additional_Attribute__c}</o:p></p>
+  </td>
+  <td width="101" valign="top" style="width:76.05pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt">
+  <p class="MsoNormal" style="margin-bottom:0in;line-height:normal;mso-element:
+  frame;mso-element-frame-hspace:9.0pt;mso-element-wrap:around;mso-element-anchor-vertical:
+  paragraph;mso-element-anchor-horizontal:margin;mso-element-top:7.6pt;
+  mso-height-rule:exactly">Approved<o:p></o:p></p>
+  </td>
+  <td width="101" valign="top" style="width:76.05pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt">
+  <p class="MsoNormal" style="margin-bottom:0in;line-height:normal;mso-element:
+  frame;mso-element-frame-hspace:9.0pt;mso-element-wrap:around;mso-element-anchor-vertical:
+  paragraph;mso-element-anchor-horizontal:margin;mso-element-top:7.6pt;
+  mso-height-rule:exactly"><o:p>&nbsp;{!Core_Design_Registration_Product__c.Core_Comment_Txt__c}</o:p></p>
+  </td>
+  <td width="101" valign="top" style="width:76.05pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt">
+  <p class="MsoNormal" style="margin-bottom:0in;line-height:normal;mso-element:
+  frame;mso-element-frame-hspace:9.0pt;mso-element-wrap:around;mso-element-anchor-vertical:
+  paragraph;mso-element-anchor-horizontal:margin;mso-element-top:7.6pt;
+  mso-height-rule:exactly"><o:p>&nbsp;{!Core_Design_Registration_Product__c.CreatedDate}</o:p></p>
+  </td>
+ </tr>
+</tbody></table><p class="MsoNormal" style="margin-bottom:0in;line-height:normal"><span style="font-size: 12pt; font-family: Arial, sans-serif;">&nbsp;<o:p></o:p></span></p><p class="MsoNormal" style="margin-bottom:0in;line-height:normal"><span style="font-size: 12pt; font-family: Arial, sans-serif;">&nbsp;</span></p><p class="MsoNormal" style="margin-bottom:0in;line-height:normal"><span style="font-size: 13.5pt; font-family: Arial, sans-serif;">If you
+have requested a financial incentive, you will receive a separate notification
+regarding your request.<o:p></o:p></span></p><p class="MsoNormal" style="margin-bottom:0in;line-height:normal"><span style="font-size: 12pt; font-family: Arial, sans-serif;">&nbsp;</span></p><p class="MsoNormal" style="margin-bottom:0in;line-height:normal"><span style="font-size: 12pt; font-family: Arial, sans-serif;">For more
+details, you can access the opportunity record here.<o:p></o:p></span></p><p class="MsoNormal" style="margin-bottom:0in;line-height:normal"><span style="font-size: 12pt; font-family: Arial, sans-serif;">&nbsp;<o:p></o:p></span></p><p class="MsoNormal" style="margin-bottom:0in;line-height:normal"><span style="font-size: 12pt; font-family: Arial, sans-serif;">This
+email was sent from an unmonitored mailbox. For questions, please contact your
+Intel Partner Sales Account Manager or utilize the Chatter feature on the
+Opportunity.<o:p></o:p></span></p><p class="MsoNormal" style="margin-bottom:0in;line-height:normal"><span style="font-size: 12pt; font-family: Arial, sans-serif;">&nbsp;<o:p></o:p></span></p><p class="MsoNormal" style="font-size: 12pt;">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span style="font-size: 12pt; line-height: 107%; font-family: Arial, sans-serif;">It is the Intel Partner’s responsibility to understand
+the export, customs, and sanction controls applicable to the Intel Partner’s
+company, project, and product and take all actions necessary to ensure
+compliance.</span></p>]]></td>
+</tr>
+</table>

@@ -1,16 +1,20 @@
-global without sharing class Core_IPS_SSLCCase_EmailHandler implements Messaging.InboundEmailHandler {
+global class Core_IPS_SSLCCase_EmailHandler implements Messaging.InboundEmailHandler {
     global Messaging.InboundEmailResult handleInboundEmail(Messaging.InboundEmail email, Messaging.InboundEnvelope envelope) {
         
         Messaging.InboundEmailResult result = new Messaging.InboundEmailresult();
         
         // Email plainTextBody 
         String emailPlainText = email.plainTextBody.replaceAll('\n',' ').replaceAll('\r',' ');
+        system.debug('emailPlainText ::'+emailPlainText);
         
         try{
             //Case create handler
+            system.debug('Email Processing::');
             result.message = Core_IPS_SSLCCaseCreateHandler.createCase(emailPlainText);
             
+            system.debug('Email Processed::'+result.message);
         }catch(Exception ex){
+            system.debug('Email Processing Failed::'+result.message);
         }
         /*    
             String extUserProfileName = System.Label.Core_IPS_Profile_Name; 

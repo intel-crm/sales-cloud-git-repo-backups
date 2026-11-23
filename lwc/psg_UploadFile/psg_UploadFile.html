@@ -1,0 +1,115 @@
+<template>
+    <template if:true={showLoadingSpinner}>
+        <div style="z-index: 10000 !important;">
+            <lightning-spinner alternative-text="Uploading......" size="medium" style="z-index: 10000 !important;"></lightning-spinner>
+        </div>
+    </template>
+    <lightning-card title="Bulk Data Upload">
+        <div class="slds-p-left_medium">
+            <lightning-layout multiple-rows>
+                <lightning-layout-item size="6">
+                    <lightning-layout multiple-rows>
+                        <lightning-layout-item size="8">
+                            <div>
+                                <div>
+                                    <lightning-combobox label={picklistlabel} 
+                                                        name={picklistlabel} 
+                                                        onchange={handlePickListValueChange} 
+                                                        options={picklistvalueselected}
+                                                        required = true
+                                                        value={selectedValue}
+                                                        disabled={disableObjectSelection}></lightning-combobox>
+                                </div>
+
+                                <div class="slds-text-body--regular slds-text-color_error">
+                                    {nullObjectError}
+                                </div><br/>  
+                            </div>
+                        </lightning-layout-item>
+                        <lightning-layout-item size="8">
+                            <template if:true={enablePriceBookSelection}>
+                                <div>
+                                    <lightning-combobox label={priceBookPickListLabel} 
+                                                        name={priceBookPickListLabel} 
+                                                        onchange={handlePriceBookValueChange} 
+                                                        options={priceBookPickListValues} 
+                                                        required = true
+                                                        value={selectedPriceBookValue}></lightning-combobox>
+                                </div>
+                            </template>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                    <div>
+                        <div>
+                            <lightning-input label="" name="file uploader" onchange ={handleFilesChange} type="file" disabled={disableUploadFile} multiple></lightning-input>
+                        </div><br/>
+                        <div class="slds-text-body--regular slds-text-color_error">
+                            {fileName}
+                        </div><br/>
+                    </div>
+                </lightning-layout-item>
+                <!--lightning-layout-item size="6" >
+                       <div class="slds-text-heading_small" >
+                           <div class="slds-p-medium_around">
+                               <div if:true={objectDescription} >
+                                   <b>Notes:</b><br>
+                               <lightning-formatted-text  value= {objectDescription} >  
+                                </lightning-formatted-text  > 
+                                
+                               </div>
+                           </div>
+                        </div>
+                </lightning-layout-item-->
+            </lightning-layout>
+            <template if:true={showProgressBar}>
+                <lightning-card title="Progress Bar"><br/>
+                    <div style="margin-left: 2%;">
+                        <lightning-progress-bar size="medium" value={progress} variant="circular"></lightning-progress-bar>
+                    </div>
+                    <div class="slds-text-align--center slds-text-title" style="color:forestgreen;font-size: 14px;">
+                        {processStatus}
+                    </div>
+                </lightning-card>
+            </template>
+            <lightning-layout multiple-rows>
+                <lightning-layout-item>
+                    <lightning-button icon-name="utility:upload" 
+                                        label={UploadFile} 
+                                        onclick={handleSave} 
+                                        variant="brand" 
+                                        disabled={disableUploadButton}></lightning-button>
+                </lightning-layout-item>
+                
+                <lightning-layout-item padding="horizontal-small">
+                    <lightning-button icon-name="utility:download" 
+                                        label="Download Result" 
+                                        title="Download Result"
+                                        onclick={handleDownloadClick} variant="brand" disabled={disableResultButton}></lightning-button>
+                </lightning-layout-item>
+                
+                <lightning-layout-item>
+                    <lightning-button icon-name="utility:download" 
+                                        label="Download Template" 
+                                        title="Download Template"
+                                        onclick={handleDownloadClick} variant="brand" disabled={disableTemplateButton}></lightning-button>
+                </lightning-layout-item> 
+                
+            </lightning-layout>
+        </div>
+    </lightning-card> 
+   
+    <lightning-card title="Upload Result" icon-name="standard:account">
+        <div class="slds-scrollable_x" style="width:1500px">
+            <template if:true={data}>
+                    <lightning-datatable
+                            data={data}
+                            columns={columns}
+                            key-field="id"
+                            min-column-width = "100"
+                            hide-checkbox-column
+                            >
+                    </lightning-datatable>
+            </template>
+        </div>
+    </lightning-card>
+</template>

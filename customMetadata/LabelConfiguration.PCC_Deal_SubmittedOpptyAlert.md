@@ -8,6 +8,6 @@
     </values>
     <values>
         <field>Value__c</field>
-        <value xsi:type="xsd:string">Products cannot be cancelled at this stage.</value>
+        <value xsi:type="xsd:string">Opportunity is sent for Approval, Product cannot be cancelled!</value>
     </values>
 </CustomMetadata>

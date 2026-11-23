@@ -4,30 +4,22 @@
     <encodingKey>UTF-8</encodingKey>
     <name>ACR_CONTACT_ADDITION_ZHO</name>
     <style>none</style>
-    <subject>添加至英特尔® 合作伙伴联盟的新用户</subject>
-    <textOnly>确认帐户详情
+    <subject>添加至英特尔合作伙伴计划账户的新用户</subject>
+    <textOnly>An individual has been added to the Intel Partner program account of {!Account.Name} by an Intel representative or another contact at your company.
 
-尊敬的{!UserName}：
+Company Name: {!Account.Name}
+Contact Added: Login ID {!ContactLoginId} with e-mail {!ContactEmail}
+Relationship (Role): {!AcrRoles}
 
-英特尔代表或贵公司的其他联系人已向 {!Account.Name} 的英特尔® 合作伙伴联盟帐户添加了一位用户。
+If you do not approve of this update, please login to remove the user. 
 
-公司名称：{!Account.Name}
-公司 ID：{!Account.AccountNumber}
-添加的联系人： 电子邮件 {!ContactEmail}
-关系（职位）：{!AcrRoles}
+(Link on login for both FPGA and CSP-
+https://ssl.intel.com/content/www/us/en/secure/my-intel/dashboard.html)
 
-如果您未批准此项更新，请登录以删除此联系人。
-
-如果您有任何问题，请与我们联系 https://signin.intel.com/ContactUs?Culture=zh-cn
-
-
-谢谢！
-英特尔® 合作伙伴联盟团队
-
-发送给您的这一封，是有关您与英特尔® 合作伙伴联盟当前合作关系的重要业务邮件。
-© {!$Label.PRM_CurrentYear} 英特尔公司版权所有
-Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.  www.intel.com
-隐私 | Cookies</textOnly>
+Questions? Contact Support here (link).
+Support links:
+for CSP- https://www.intel.com/content/www/us/en/partner/cloud-insider/forms/support.html
+for FPGA: https://signin.intel.com/ContactUs?Culture=en-US</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

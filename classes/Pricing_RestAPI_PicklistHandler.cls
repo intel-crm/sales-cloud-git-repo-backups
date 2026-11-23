@@ -108,8 +108,9 @@ public without sharing class Pricing_RestAPI_PicklistHandler {
         String rowsOffset = Pricing_RestAPI_Util.getRequestParam('offset');
         Integer rowsOffsetInt = !String.isBlank(rowsOffset) && rowsOffset.isNumeric() ? Integer.valueOf(rowsOffset) : 0;
         List<PickListEntry> pickListValues = new List<PickListEntry>();
+        //Id currentUserAccountId = [Select Id, AccountId from User where Id = :UserInfo.getUserId()].AccountId;
         List<Pricing_UnifiedEndCustomerAccountMapping__c> endCustmrLst = new List<Pricing_UnifiedEndCustomerAccountMapping__c>(String.isBlank(searchTxt) ? [select Id, Name from Pricing_UnifiedEndCustomerAccountMapping__c where Pricing_Active_cb__c = true and (Pricing_Account_Nm__c = :currentUser.AccountId OR Name=:Label.Pricing_IQR_API_WriteInEndCustomer)] :
-                                                                                                                              searchTxt.contains(Label.Pricing_IQR_API_WriteInEndCustomer) ? [select Id, Name from Pricing_UnifiedEndCustomerAccountMapping__c where Pricing_Active_cb__c = true  AND Name =: Label.Pricing_IQR_API_WriteInEndCustomer] : [select Id, Name from Pricing_UnifiedEndCustomerAccountMapping__c where Pricing_Active_cb__c = true and Pricing_Account_Nm__c = :currentUser.AccountId AND Name Like :searchTxt]);
+                                                                                                                              [select Id, Name from Pricing_UnifiedEndCustomerAccountMapping__c where Pricing_Active_cb__c = true and Pricing_Account_Nm__c = :currentUser.AccountId AND Name Like :searchTxt]);
         if(rowsOffsetInt >= endCustmrLst.size()){            
             rowsOffsetInt = 0;
         }
@@ -137,6 +138,7 @@ public without sharing class Pricing_RestAPI_PicklistHandler {
         String rowsOffset = Pricing_RestAPI_Util.getRequestParam('offset');
         Integer rowsOffsetInt = !String.isBlank(rowsOffset) && rowsOffset.isNumeric() ? Integer.valueOf(rowsOffset) : 0;
         List<PickListEntry> pickListValues = new List<PickListEntry>();
+        //Id currentUserAccountId = [Select Id, AccountId from User where Id = :UserInfo.getUserId()].AccountId;
         List<Pricing_ConsumptionAccountMapping__c> consumptionLst = String.isBlank(searchTxt)?[select Id, Name from Pricing_ConsumptionAccountMapping__c where Pricing_Consumption_Type_Nm__c =: decodedFldNm and (Pricing_Account_Nm__c = :currentUser.AccountId ) and Pricing_Active_ind__c = true]:
                                                                                           [select Id, Name from Pricing_ConsumptionAccountMapping__c where Pricing_Consumption_Type_Nm__c =: decodedFldNm and Pricing_Account_Nm__c = :currentUser.AccountId AND Name Like :searchTxt and Pricing_Active_ind__c = true];
 	    

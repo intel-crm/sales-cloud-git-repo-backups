@@ -215,18 +215,14 @@
         </platformActionListItems>
     </platformActionList>
     <relatedLists>
-        <excludeButtons>MassChangeOwner</excludeButtons>
-        <excludeButtons>New</excludeButtons>
         <fields>NAME</fields>
-        <fields>Pricing_Quote_Line_Number__c</fields>
+        <fields>Pricing_Quote_Line_Number_Txt__c</fields>
         <fields>SBQQ__ProductName__c</fields>
         <fields>Pricing_Status_Nm__c</fields>
         <fields>Pricing_Sales_Rep__c</fields>
         <relatedList>SBQQ__QuoteLine__c.SBQQ__Quote__c</relatedList>
     </relatedLists>
     <relatedLists>
-        <excludeButtons>MassChangeOwner</excludeButtons>
-        <excludeButtons>New</excludeButtons>
         <fields>Pricing_Question__c</fields>
         <fields>Pricing_Answer__c</fields>
         <fields>NAME</fields>
@@ -246,7 +242,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h3b00000fbD9O</masterLabel>
+        <masterLabel>00h2D000004A95P</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>2</sizeY>
         <summaryLayoutItems>

@@ -33,7 +33,6 @@ public with sharing class PCC_CreateDDRUtilityHandler {
     public static final String STRING_TOO_LONG = PCC_Constants.STRING_TOO_LONG;
     public static final String INVALID_CROSS_REFERENCE_KEY = PCC_Constants.INVALID_CROSS_REFERENCE_KEY;
     public static final String DUPLICATE_VALUE = PCC_Constants.DUPLICATE_VALUE;
-    public static final Boolean mmidSwitch = Boolean.valueOf(System.Label.DDR_MMID_switch); // TWC729-8985 - Add switch for Old MMID based changes
     /*****************************************************************************************************************
 * Method Name: getNameDDR
 * Date: 19/02/2023    
@@ -511,16 +510,6 @@ public with sharing class PCC_CreateDDRUtilityHandler {
             String objectName = 'Core_Design_Registration__c';
             Map<String,List<String>> controlValueWrapMap = getDependentvaluesList(objectName,'Core_Product_Application_Nm__c');
             //system.debug('controlValueWrapMap'+controlValueWrapMap);
-            List<PCC_ODR_Onboarding_Matrix__c> lstDesignReg = [SELECT PCC_Account__r.Id FROM PCC_ODR_Onboarding_Matrix__c];
-            List<string> acctId = new List<string>();
-            for(PCC_ODR_Onboarding_Matrix__c iDesign : lstDesignReg) {
-                acctId.add(iDesign.PCC_Account__r.Id);
-            }
-            List<Contact> lstContact = [SELECT Email FROM Contact where AccountId IN: acctId];
-            List<string> mailsId = new List<string>();
-            for(Contact iDesign : lstContact) {
-                mailsId.add(iDesign.Email);
-            }
             if(mapOfExtIdtoValidDDR.size() > 0){
                 for(string str: mapOfExtIdtoValidDDR.keySet()){
                     
@@ -532,8 +521,6 @@ public with sharing class PCC_CreateDDRUtilityHandler {
                     String verticalMarket = (mapOfExtIdtoValidDDR.get(str) != null && mapOfExtIdtoValidDDR.get(str).containsKey('verticalMarket')) ? String.valueOf(mapOfExtIdtoValidDDR.get(str).get('verticalMarket')) : null;
                     String productSegment = (mapOfExtIdtoValidDDR.get(str) != null && mapOfExtIdtoValidDDR.get(str).containsKey('productSegment')) ? String.valueOf(mapOfExtIdtoValidDDR.get(str).get('productSegment')) : null;
                     String productApplication = (mapOfExtIdtoValidDDR.get(str) != null && mapOfExtIdtoValidDDR.get(str).containsKey('productApplication')) ? String.valueOf(mapOfExtIdtoValidDDR.get(str).get('productApplication')) : null;
-                    String designType = mapOfExtIdtoValidDDR.get(str) != null && mapOfExtIdtoValidDDR.get(str).containsKey('designType') && mapOfExtIdtoValidDDR.get(str).get('designType') != null? String.valueOf(mapOfExtIdtoValidDDR.get(str).get('designType')).trim(): null;
-                    String odmBoardPartner = mapOfExtIdtoValidDDR.get(str) != null && mapOfExtIdtoValidDDR.get(str).containsKey('odmBoardPartner') && mapOfExtIdtoValidDDR.get(str).get('odmBoardPartner') != null? String.valueOf(mapOfExtIdtoValidDDR.get(str).get('odmBoardPartner')).trim(): null;
                     String opportunityVolume = (mapOfExtIdtoValidDDR.get(str) != null && mapOfExtIdtoValidDDR.get(str).containsKey('opportunityVolume')) ? String.valueOf(mapOfExtIdtoValidDDR.get(str).get('opportunityVolume')) : null;
                     String partnerFAE = (mapOfExtIdtoValidDDR.get(str) != null && mapOfExtIdtoValidDDR.get(str).containsKey('partnerFAE')) ? String.valueOf(mapOfExtIdtoValidDDR.get(str).get('partnerFAE')) : null;
                     String endCustomerName = (mapOfExtIdtoValidDDR.get(str) != null && mapOfExtIdtoValidDDR.get(str).containsKey('endCustomerName')) ? String.valueOf(mapOfExtIdtoValidDDR.get(str).get('endCustomerName')) : null;
@@ -557,7 +544,8 @@ public with sharing class PCC_CreateDDRUtilityHandler {
                     String endCustomerContactPhone = (mapOfExtIdtoValidDDR.get(str) != null && mapOfExtIdtoValidDDR.get(str).containsKey('endCustomerContactPhone')) ? String.valueOf(mapOfExtIdtoValidDDR.get(str).get('endCustomerContactPhone')) : null;
                     String manufacturingRegion = (mapOfExtIdtoValidDDR.get(str) != null && mapOfExtIdtoValidDDR.get(str).containsKey('manufacturingRegion')) ? String.valueOf(mapOfExtIdtoValidDDR.get(str).get('manufacturingRegion')) : null;
                     String partnerFAEEmail = (mapOfExtIdtoValidDDR.get(str) != null &&mapOfExtIdtoValidDDR.get(str) != null && mapOfExtIdtoValidDDR.get(str).containsKey('partnerFAEEmail') )? String.valueOf(mapOfExtIdtoValidDDR.get(str).get('partnerFAEEmail')) : null;
-                    
+                    String status = (mapOfExtIdtoValidDDR.get(str) != null && mapOfExtIdtoValidDDR.get(str).containsKey('status')) ? String.valueOf(mapOfExtIdtoValidDDR.get(str).get('status')) : null;
+
                     Date firstCustShipDt, desgDecisionDt, prodEndDt;  
                     if(firstCustomerShipDate != null && !String.isBlank(firstCustomerShipDate)){
                         try{
@@ -613,45 +601,6 @@ public with sharing class PCC_CreateDDRUtilityHandler {
                     }
                     //System.debug('EXTID----> '+externalId);
                     if(Action == INSERT_ACTION){
-                    
-
-    // Default Design Type for existing V1 clients.
-    if(String.isBlank(designType)){//varun
-        designType = 'Chip-down';
-    }
-
-    // Chip-down must not contain an ODM/Board Partner.
-    if(
-        designType == 'Chip-down' &&
-        String.isNotBlank(odmBoardPartner)
-    ){
-        mapExtIdtoInvalidValMsg.put(
-            str,
-            'ODM/Board Partner must be blank when Design Type is Chip-down.'
-        );
-        continue;
-    }
-
-    // Board-based requires an ODM/Board Partner.
-    if(
-        designType == 'Board-based' &&
-        String.isBlank(odmBoardPartner)
-    ){
-        mapExtIdtoInvalidValMsg.put(
-            str,
-            'ODM/Board Partner is required when Design Type is Board-based.'
-        );
-        continue;
-    }
-
-    // Assign the fields only after validation succeeds.
-    drRec.PCC_Design_Type__c = designType;
-
-    if(String.isNotBlank(odmBoardPartner)){
-        drRec.PCC_ODM_Board_partner__c = odmBoardPartner;
-    }
-
-   
                         if(externalId!=null){
                             if (processedExternalIds.contains(externalId)) { //if the external id is used in the payload by more than 1 record.
                                 //System.debug('inside1stIF-->');
@@ -675,17 +624,32 @@ public with sharing class PCC_CreateDDRUtilityHandler {
                         }
                         if(productSegment != null){
                             //drRec.Core_Product_Segment_Nm__c = productSegment;
-                            if(mailsId.contains(partnerFAEEmail)){// odr
-                  if(productSegment == 'Embedded / IOT' || productSegment == 'Comms Infra. / Networking'){
-                                drRec.Core_Product_Segment_Nm__c = productSegment;
-                                }else{
-                  mapExtIdtoInvalidValMsg.put(str,'Please update Product Segment. Product segment can be either Embedded/IOT or Comms Infra. / Networking');
+                                                         List<PCC_ODR_Onboarding_Matrix__c> lstDesignReg = [SELECT PCC_Account__r.Id FROM PCC_ODR_Onboarding_Matrix__c];
+							 List<string> acctId = new List<string>();
+							 for(PCC_ODR_Onboarding_Matrix__c iDesign : lstDesignReg) {
+                				acctId.add(iDesign.PCC_Account__r.Id);
+							 }
+							 List<Contact> lstContact = [SELECT Email FROM Contact where AccountId IN: acctId];
+							 List<string> mailsId = new List<string>();
+							 for(Contact iDesign : lstContact) {
+               					 mailsId.add(iDesign.Email);
+							 }
+                             if(mailsId.contains(partnerFAEEmail))
+							 {// odr
+    							if(productSegment == 'Embedded / IOT' || productSegment == 'Comms Infra. / Networking')
+								{
+									drRec.Core_Product_Segment_Nm__c = productSegment;
+								}
+								else
+								{
+									mapExtIdtoInvalidValMsg.put(str,'Product segment validation'+productGroup);
                                     continue;
-                }
-               }
-               else{// non odr
-                  drRec.Core_Product_Segment_Nm__c = productSegment;
-               }
+								}
+							 }
+							 else
+							 {// non odr
+    							drRec.Core_Product_Segment_Nm__c = productSegment;
+							 }
                         }
                         if(productApplication != null){
                             drRec.Core_Product_Application_Nm__c = productApplication;
@@ -848,6 +812,11 @@ drRec.Core_Design_Registration_Nm__c = 'DDR_'+userInfo.getName()+'_'+concatDate+
                                     continue;
                                 }
                             }
+                        }
+                        string exisitingStatus = mapExistingDDR.containsKey(drRec.Id) ? existingDDRId.Core_Design_Registration_Status_Nm__c : null;
+                        if(status != null && exisitingStatus != status){
+                            mapExtIdtoInvalidValMsg.put(drRec.Id,'This record is already Submitted for Approval. You cannot change the status.');
+                            continue;
                         }
                         
                     }
@@ -1323,9 +1292,7 @@ errorMsgForLogEntry += extId+' - '+err.getMessage()+'\n';
                     PCC_DDR_L5_Product_Mapping__c ddrL5Product = drProduct.DDR_Product_Mappings__r;
                     ddrProductWrp.orderingId = ddrL5Product.PCC_Ordering_Cd__c;
                     ddrProductWrp.mmId = ddrL5Product.PCC_MM_ID__c;
-                    if(mmidSwitch){ // TWC729-8985 - Add switch for Old MMID based changes
-                    ddrProductWrp.oldMMId = ddrL5Product.PCC_Old_MM_Id__c ; /*TWC727-2709 - PCC: Remove all references from old MMID*/
-                    }
+                    //ddrProductWrp.oldMMId = ddrL5Product.PCC_Old_MM_Id__c ; /*TWC727-2709 - PCC: Remove all references from old MMID*/
                     ddrProductWrp.l4ProductName = ddrL5Product.PCC_L4_Product_Name__c;
                     ddrProductWrp.l5ProductName = ddrL5Product.PCC_L5_Product_Name__c; 
                 }

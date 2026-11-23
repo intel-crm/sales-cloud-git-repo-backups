@@ -1,0 +1,11 @@
+<apex:page controller="Pricing_TestCustomButton">
+    <apex:form >
+        <apex:pageMessages id="messages" />
+        
+        <apex:commandButton value="Add to Public Group" action="{!addCurrentUserToPublicGroup}" rerender="messages" />
+
+        <script>
+            // Optionally, you can also add custom JavaScript to handle more advanced cases
+        </script>
+    </apex:form>
+</apex:page>

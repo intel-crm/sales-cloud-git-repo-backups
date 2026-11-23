@@ -7,21 +7,15 @@ public without sharing class PRM_CompanyProfileController {
     public static final String STR_APPROVED = 'Approved';
     public static final String STR_REJECTED = 'Rejected';
     public static String USER_NAME = '11553183@intel.com.crm.devipa';
-    public static String CONTACT_ID = '';    
-    
+    public static String CONTACT_ID = '';
+    public static Boolean IS_CIDAAS_ENABLED = !Test.isRunningTest()?Boolean.valueof(Label.PRM_CiDaaS_Enabled):True; //As Per CiDaaS Change
+
     //-------------------Approve & Reject------------------------------
-    
-    //public static boolean IPARefresh = Boolean.valueOf(label.PRM_IPARefresh);
-    //-------------------Log Entry detail---------------------
-    public static Final String ORIGIN  = 'PRM_CompanyProfileController';
-    public static Final String SEVERITY  = 'Info';
-    public static Final String PROJECT  = 'IPA';
-	public static Final String SCOPE  = 'Exception Handling analysis';
-    
+
     @AuraEnabled(cacheable=true)
     public static String getCompanyAndRoleInfo() {
         CompanyInfoAndRoleDescWrapper compnyInfo = new CompanyInfoAndRoleDescWrapper();
-        //String loggedInUserName = UserInfo.getUserName();
+        String loggedInUserName = UserInfo.getUserName();
         String PROC_Countries = system.label.PRM_PROC_Countries;
         List<String> blacklistDomains = new List<String>();
         boolean isPrimary = false;
@@ -35,7 +29,7 @@ public without sharing class PRM_CompanyProfileController {
                 Core_IPA_PartnerRole__c,
                 Core_Preferred_Language__c,
                 (SELECT Id, Core_Entitlement_Id__r.Core_Display_Name__c,Core_Entitlement_Nm__c FROM Contact_Entitlements__r WHERE Core_Selected__c = TRUE AND Core_Type__c = :'Entitlement' AND Core_Status__c=:system.Label.PRM_PCREntitlement_Status),
-                (SELECT Id, PRM_Relationship_Id__r.Name, PRM_Account_Id__r.Id FROM Account_Contact_Relationships__r where PRM_InActive_Ind__c=  
+                (SELECT Id, PRM_Relationship_Id__r.Name, PRM_Account_Id__r.Id FROM Account_Contact_Relationships__r where PRM_InActive_Ind__c=	
                  false)
                 FROM Contact
                 WHERE Id = :loggedInUser.ContactId
@@ -75,18 +69,13 @@ public without sharing class PRM_CompanyProfileController {
                 ];
                 
                 if (PROC_Countries.contains(acct.BillingCountryCode)) {
-                    /*for (String domains : system.label.PRM_Intel_BlackListed_Email_Domain_For_PROC_Region.split(',')) {
+                    for (String domains : system.label.PRM_Intel_BlackListed_Email_Domain_For_PROC_Region.split(',')) {
                         blacklistDomains.add(domains);
-                    }*/
-                    for(String d : System.Label.Blocked_Domains_Prc1.split(';')){ blacklistDomains.add(d.trim().toLowerCase()); }
-                    for(String d : System.Label.Blocked_Domains_Prc2.split(';')){ blacklistDomains.add(d.trim().toLowerCase()); }
+                    }
                 } else {
-                    /*for (String domains : system.label.PRM_Intel_BlackListed_Email_Domain.split(';')) {
+                    for (String domains : system.label.PRM_Intel_BlackListed_Email_Domain.split(';')) {
                         blacklistDomains.add(domains);
-                    }*/
-                    for(String d : System.Label.Blocked_Domains_Non_Prc1.split(';')){ blacklistDomains.add(d.trim().toLowerCase()); }
-                    for(String d : System.Label.Blocked_Domains_Non_Prc2.split(';')){ blacklistDomains.add(d.trim().toLowerCase()); }
-                    for(String d : System.Label.Blocked_Domains_Non_Prc3.split(';')){ blacklistDomains.add(d.trim().toLowerCase()); }
+                    }
                 }
                 
                 if (cont.Account_Contact_Relationships__r.size() > 0) {
@@ -100,7 +89,7 @@ public without sharing class PRM_CompanyProfileController {
                 }
                 if (!String.isEmpty(cont.Core_IPA_PartnerRole__c)) {
                     String language = String.isEmpty(cont.Core_Preferred_Language__c) ? 'ENG' : cont.Core_Preferred_Language__c;
-                    //List<String> partnerRoles = cont.Core_IPA_PartnerRole__c.split(';');
+                    List<String> partnerRoles = cont.Core_IPA_PartnerRole__c.split(';');
                     compnyInfo.CompanyInfo.ProfileResponses = getProfileResponses(acct.Id);
                 }
             }
@@ -185,17 +174,10 @@ public without sharing class PRM_CompanyProfileController {
         return JSON.serialize(legalResponse);
     }
     @AuraEnabled(cacheable=true)
-    public static Map<String, Boolean> isLoggedInUserPrimaryContact() {
-        Map<String, Boolean> result = new Map<String, Boolean>();
-        Boolean isInternalUser = false;
-        User loggedInUser = [SELECT ContactId, Contact.AccountId,Email FROM User WHERE Id = :UserInfo.getUserId()];
-        String emailDomain = loggedInUser.email.split('@')[1];
-            if(emailDomain == LabelConfiguration__mdt.getInstance('PRM_internalDomain').Value__c){
-                isInternalUser = true;
-            }
-        result.put('isPrimary', CheckIfContactIsPrimary(loggedInUser.ContactId));
-        result.put('isInternalUser', isInternalUser);
-        return result;
+    public static string isLoggedInUserPrimaryContact() {
+        
+        User loggedInUser = [SELECT ContactId, Contact.AccountId FROM User WHERE Id = :UserInfo.getUserId()];
+        return JSON.serialize(CheckIfContactIsPrimary(loggedInUser.ContactId));
     }
     
     /*
@@ -252,11 +234,16 @@ return Contacts;
         Id AccountCreateRT = Schema.SObjectType.PRM_Registration_Request__c.getRecordTypeInfosByDeveloperName().get('Account_Create_Request').getRecordTypeId();
         Id AdminRegistrationRT = Schema.SObjectType.PRM_Registration_Request__c.getRecordTypeInfosByDeveloperName().get('Admin_Registration').getRecordTypeId();
         List<PRM_Registration_Request__c> regReqList = new List<PRM_Registration_Request__c>();
-        
-        regReqList = [SELECT id,PRM_Person_Phone_Number__c,PRM_First_Name__c,PRM_Last_Name__c,PRM_Partner_Relationship__c,PRM_Email_ID__c,Email_Verification_Status__c
-                      FROM PRM_Registration_Request__c WHERE PRM_Status__c = 'New' AND (RecordTypeId = :AccountCreateRT OR RecordTypeId = :AdminRegistrationRT) AND PRM_Partner_Role__c IN :partnerRoles
-                      AND PRM_Salesforce_ID__c = :sfAccountId ORDER BY PRM_First_Name__c ASC];
-        
+        if(IS_CIDAAS_ENABLED){ //As a part of CiDaaS change
+            regReqList = [SELECT id,PRM_Person_Phone_Number__c,PRM_First_Name__c,PRM_Last_Name__c,PRM_Partner_Relationship__c,PRM_Email_ID__c,Email_Verification_Status__c
+            											FROM PRM_Registration_Request__c WHERE PRM_Status__c = 'New' AND (RecordTypeId = :AccountCreateRT OR RecordTypeId = :AdminRegistrationRT) AND PRM_Partner_Role__c IN :partnerRoles
+            											AND PRM_Salesforce_ID__c = :sfAccountId ORDER BY PRM_First_Name__c ASC];
+        }
+        else{
+            regReqList = [SELECT id,PRM_Person_Phone_Number__c,PRM_First_Name__c,PRM_Last_Name__c,PRM_Partner_Relationship__c,PRM_Email_ID__c,Email_Verification_Status__c,PRM_EmailVerifiedDateTime__c
+            											FROM PRM_Registration_Request__c WHERE PRM_Status__c = 'New' AND (RecordTypeId = :AccountCreateRT OR RecordTypeId = :AdminRegistrationRT) AND PRM_Partner_Role__c IN :partnerRoles
+            											AND PRM_Salesforce_ID__c = :sfAccountId ORDER BY PRM_First_Name__c ASC];
+        }
         for (PRM_Registration_Request__c regReq : regReqList) {
             SecondaryContactWrapper RegRequest = new SecondaryContactWrapper();
             RegRequest.RecordId = regReq.Id;
@@ -265,7 +252,9 @@ return Contacts;
             RegRequest.Phone = regReq.PRM_Person_Phone_Number__c;
             RegRequest.EVStatus = regReq.Email_Verification_Status__c == 'SUCCESS' ? 'Verified' : 'Not Verified';
             RegRequest.Relationship = regReq.PRM_Partner_Relationship__c.Replace(';', ',');
-            
+            if(!IS_CIDAAS_ENABLED){ //As a part of CiDaaS change
+            	RegRequest.EVVerificationDateTime = regReq.PRM_EmailVerifiedDateTime__c;
+            }
             if (RegRequest.EVStatus == 'Verified') {
                 RegRequest.isApprove = false;
             } else {
@@ -305,16 +294,13 @@ return Contacts;
         CompanyInfo.BlacklistDomains = blacklistDomains;
         CompanyInfo.ContactId = CONTACT_ID;
         CompanyInfo.AccountNumber = acct.AccountNumber;
-        /*if(!IPARefresh)//IPA2.0 TWC727-2898
-        {
-            for (PRM_Account_Specialty_Association__c asa : acct.Account_Specialty_Associations__r) {
-                if (asa.PRM_Specialty_Type__c == 'Specialty') {
-                    CompanyInfo.Specialties.add(asa.PRM_Specialty_Id__r.Name);
-                } else if (asa.PRM_Specialty_Type__c == 'Select Benefits') {
-                    CompanyInfo.SelectBenefits.add(asa.PRM_Specialty_Id__r.Name);
-                }
-            } 
-        } */ //switch removal  //IPA2.0 TWC727-2898
+        for (PRM_Account_Specialty_Association__c asa : acct.Account_Specialty_Associations__r) {
+            if (asa.PRM_Specialty_Type__c == 'Specialty') {
+                CompanyInfo.Specialties.add(asa.PRM_Specialty_Id__r.Name);
+            } else if (asa.PRM_Specialty_Type__c == 'Select Benefits') {
+                CompanyInfo.SelectBenefits.add(asa.PRM_Specialty_Id__r.Name);
+            }
+        }
         CompanyInfo.WhitelistedDomains = getWhitelistedDomains(acct.Id);
         CompanyInfo.PartnerAssistConcents = getPartnerAssist(acct.Id);
         if (acct.Profile_Responses__r.size() > 0) {
@@ -376,10 +362,10 @@ return roleDescs;
     
     public static List<ProfileResponse> getProfileResponses(Id recordId) {
         String channelProg = 'Intel Partner Alliance';
-        //String objectName = 'Account';
+        String objectName = 'Account';
         String questionCode = 'PRM_AcceptableDomain';
         List<String> channelProgramNames = new List<String>();
-        //Set<Id> channelProgId = new Set<Id>();
+        Set<Id> channelProgId = new Set<Id>();
         
         if (channelProg != null) {
             channelProgramNames = channelProg.split(',');
@@ -399,20 +385,17 @@ return roleDescs;
         }
         return ProfileResponses;
     }
-    
+  //  @TestVisible
     private static List<LegalAgreementWrapper> getComapanyLegalAgreementDetails(Id AccountId) {
         List<LegalAgreementWrapper> lglAgreementList = new List<LegalAgreementWrapper>();
-        List<PRM_AccountLegalAgreemntAssociation__c> AcctLegalAgrmnt = new List<PRM_AccountLegalAgreemntAssociation__c>();
-        //IPA 2.0 - TWC729-7874
-        AcctLegalAgrmnt = [SELECT Id, PRM_Agreement_Sign_Dt__c,PRM_Signed_By_Name__c, PRM_Partner_Agreement_Id__r.Name
-        FROM PRM_AccountLegalAgreemntAssociation__c
-        WHERE PRM_Account_Id__r.Id = :AccountId AND PRM_InActive_Ind__c=false AND PRM_Partner_Agreement_Id__r.PRM_Agreement_Cd__c= :system.label.PRM_IPATNCCode];
-        
-        for (PRM_AccountLegalAgreemntAssociation__c agreement : AcctLegalAgrmnt) {
+        for (PRM_AccountLegalAgreemntAssociation__c agreement : [
+            SELECT Id, PRM_Agreement_Sign_Dt__c, PRM_Contact__r.Core_English_Only_First_Name__c, PRM_Contact__r.Core_English_Only_Last_Name__c, PRM_Partner_Agreement_Id__r.Name
+            FROM PRM_AccountLegalAgreemntAssociation__c
+            WHERE PRM_Account_Id__r.Id = :AccountId AND PRM_InActive_Ind__c=false AND PRM_Partner_Agreement_Id__r.PRM_Agreement_Cd__c= :system.label.PRM_IPATNCCode
+        ]) {
             LegalAgreementWrapper lglAgreement = new LegalAgreementWrapper();
             lglAgreement.LegalAgreementName = agreement.PRM_Partner_Agreement_Id__r.Name;
-            //IPA 2.0 - TWC729-7874
-            lglAgreement.LegalAgreementSignedBy = agreement.PRM_Signed_By_Name__c;
+            lglAgreement.LegalAgreementSignedBy = agreement.PRM_Contact__r.Core_English_Only_First_Name__c + ' ' + agreement.PRM_Contact__r.Core_English_Only_Last_Name__c;
             lglAgreement.LegalAgreementSignedDate = agreement.PRM_Agreement_Sign_Dt__c;
             lglAgreement.RecordId = agreement.Id;
             lglAgreementList.add(lglAgreement);
@@ -435,6 +418,8 @@ return roleDescs;
     @AuraEnabled
     public static boolean saveWhitelistedDomains(String AcctId, List<List<String>> whitelistedDomain) {
         try {
+            System.debug('Account Id' + AcctId);
+            System.debug('WhiteListed Domain' + whitelistedDomain);
             Map<String, String> WhiteListMap = new Map<String, String>();
             Map<String, Core_Account_Whitelisted_Domains__c> WhiteListReverseMap = new Map<String, Core_Account_Whitelisted_Domains__c>();
             List<Core_Account_Whitelisted_Domains__c> updateWhiteListRecord = new List<Core_Account_Whitelisted_Domains__c>();
@@ -455,12 +440,14 @@ return roleDescs;
                 String domain = key[1];
                 if (WhiteListMap.size() > 0 && WhiteListMap.containsKey(recId)) {
                     Core_Account_Whitelisted_Domains__c updateWhiteList = new Core_Account_Whitelisted_Domains__c();
+                    System.debug('Key1' + Key);
                     updateWhiteList.id = recId;
                     updateWhiteList.Name = domain;
                     updateWhiteList.Inactive_Indicator__c = false;
                     updateWhiteListRecord.add(updateWhiteList);
                 } else if (WhiteListMap.size() > 0 && WhiteListReverseMap.containsKey(domain)) {
                     Core_Account_Whitelisted_Domains__c updateWhiteList = new Core_Account_Whitelisted_Domains__c();
+                    System.debug('Key2' + Key);
                     //updateWhiteList.id = key;
                     //updateWhiteList.Name = whitelistedDomain.get(key);
                     updateWhiteList.id = WhiteListReverseMap.get(domain).id;
@@ -480,14 +467,17 @@ return roleDescs;
             }
             if (WhiteListMap.size() > 0) {
                 for (String key : WhiteListMap.keySet()) {
+                    System.debug('KeyValue---' + key);
                     //String recIdDomain =  key+','+WhiteListMap.get(key);
                     boolean domainRemoved = true;
                     for (List<String> domainLst : whitelistedDomain) {
                         if (domainLst[0] == key || WhiteListMap.get(key) == domainLst[1]) {
+                            System.debug('KeyValue---' + key);
                             domainRemoved = false;
                             break;
                         }
                     }
+                    System.debug('domainRemoved---' + domainRemoved);
                     //if( !whitelistedDomain.contains(recIdDomain)){
                     if (domainRemoved) {
                         Core_Account_Whitelisted_Domains__c updateWhiteList = new Core_Account_Whitelisted_Domains__c();
@@ -501,17 +491,19 @@ return roleDescs;
             }
             
             if (updateWhiteListRecord.size() > 0) {
+                System.debug(updateWhiteListRecord);
                 update updateWhiteListRecord;
             }
             if (insertWhiteListRecord.size() > 0) {
+                System.debug(insertWhiteListRecord);
                 insert insertWhiteListRecord;
             }
             
             return true;
         } catch (Exception ex) {
-            //system.debug('Error Cause==>' + ex.getCause());
-            //system.debug('Error Message==>' + ex.getMessage());
-            //system.debug('Error StackTrace String==>' + ex.getStackTraceString());
+            system.debug('Error Cause==>' + ex.getCause());
+            system.debug('Error Message==>' + ex.getMessage());
+            system.debug('Error StackTrace String==>' + ex.getStackTraceString());
             return false;
         }
     }
@@ -519,8 +511,8 @@ return roleDescs;
 @AuraEnabled
 public static boolean saveWhitelistedDomains(String AcctId, Map<String,String> whitelistedDomain){
 try {
-//system.debug('Account Id' +AcctId);
-//system.debug('WhiteListed Domain' +whitelistedDomain);
+System.debug('Account Id' +AcctId);
+System.debug('WhiteListed Domain' +whitelistedDomain);
 Map<String,String> WhiteListMap = new Map<String,String>();
 List<Core_Account_Whitelisted_Domains__c>  updateWhiteListRecord = new List<Core_Account_Whitelisted_Domains__c>();
 List<Core_Account_Whitelisted_Domains__c>  insertWhiteListRecord = new List<Core_Account_Whitelisted_Domains__c>();
@@ -559,19 +551,19 @@ updateWhiteListRecord.add(updateWhiteList);
 }
 
 if(updateWhiteListRecord.size()>0){
-//system.debug(updateWhiteListRecord);
+System.debug(updateWhiteListRecord);
 update updateWhiteListRecord;
 }
 if(insertWhiteListRecord.size()>0){
-//system.debug(insertWhiteListRecord);
+System.debug(insertWhiteListRecord);
 insert insertWhiteListRecord;
 }
 
 return true;
 }catch(Exception ex){
-//system.debug('Error Cause==>'+ex.getCause());
-//system.debug('Error Message==>'+ex.getMessage());
-//system.debug('Error StackTrace String==>'+ex.getStackTraceString());
+system.debug('Error Cause==>'+ex.getCause());
+system.debug('Error Message==>'+ex.getMessage());
+system.debug('Error StackTrace String==>'+ex.getStackTraceString());
 return false;
 } 
 }*/
@@ -597,7 +589,7 @@ return false;
                 whiteListWrapper.add(whiteListObj);
             }
         }
-        //system.debug(whiteListWrapper);
+        System.debug(whiteListWrapper);
         return whiteListWrapper;
     }
     
@@ -620,7 +612,7 @@ return false;
             }
             return returnMessage;
         } catch (Exception ex) {
-            //system.debug('Error ==> Exception' + ex);
+            system.debug('Error ==> Exception' + ex);
             returnMessage = ex.getStackTraceString();
             return returnMessage;
         }
@@ -661,8 +653,7 @@ return false;
                     
                     if (workItemId != null) {
                         req.setWorkitemId(workItemId);
-                        //Approval.ProcessResult result = 
-                            Approval.process(req);
+                        Approval.ProcessResult result = Approval.process(req);
                     }
                 }
                 if (regReq.PRM_PC_Approve_Reject_Flag__c.equals(STR_REJECTED)) {
@@ -674,8 +665,7 @@ return false;
                     
                     if (workItemId != null) {
                         req.setWorkitemId(workItemId);
-                        //Approval.ProcessResult result = 
-                            Approval.process(req);
+                        Approval.ProcessResult result = Approval.process(req);
                     }
                 }
             }
@@ -697,6 +687,7 @@ return false;
             partnerAssistConcentWrapper.DistributerNames = distibuterName;
             partnerAssistConcentWrapper.PartnerAssists = getPartnerAssistList(AcctId);
         }
+        System.debug('partnerAssistConcentWrapper' + partnerAssistConcentWrapper);
         return partnerAssistConcentWrapper;
     }
     
@@ -756,6 +747,7 @@ return false;
             PartnerAssist.add(partnerAssistRecord);
         }
         
+        System.debug(PartnerAssist);
         return PartnerAssist;
     }
     @AuraEnabled
@@ -763,6 +755,8 @@ return false;
         String primaryConsent = 'Partner Assist Choice 1';
         String secondaryConsent = 'Partner Assist Choice 2';
         // String selectDisti = 'Select any Distributor 2';
+        System.debug('ContactId----' + ContactId);
+        system.debug('optIn===>' + optIn);
         try {
             List<PRM_Partner_Assist_Consent__c> updatePartnerListRecord = new List<PRM_Partner_Assist_Consent__c>();
             Map<String, PRM_Partner_Assist_Consent__c> partnerAssistMap = new Map<String, PRM_Partner_Assist_Consent__c>();
@@ -777,15 +771,17 @@ return false;
                     partnerAssistMap.put(partnerAssist.PRM_Choice_Nm__c, partnerAssist);
                 }
             }
-            //system.debug('partnerAssistMap ==>' + partnerAssistMap);
+            system.debug('partnerAssistMap ==>' + partnerAssistMap);
             if (optIn) {
                 String userGeo = '';
                 if (AcctId != null) {
                     Account accObj = [SELECT id, name, Core_Account_Country__c, Core_Geo__c, Core_Sub_Geo__c FROM Account WHERE Id = :AcctId LIMIT 1];
+                    System.debug('accObj---' + accObj);
                     if (accObj != null) {
                         userGeo = accObj.Core_Geo__c;
                     }
                 }
+                System.debug('partnerAssistPrimary' + partnerAssistPrimary + '  ' + partnerAssistSecoundry);
                 /* if(partnerAssistSecoundry == selectDisti &&  optIn == true){
 
 for(PRM_Partner_Assist_Consent__c partnerAssit :partnerAssistMap.values())
@@ -800,6 +796,7 @@ updatePartnerListRecord.add(updatePartnerList);
 }
 } */
                 if (string.isBlank(partnerAssistPrimary) && optIn == true) {
+                    system.debug('partnerAssistPrimary==> Empty');
                     if (partnerAssistMap.containsKey(primaryConsent)) {
                         PRM_Partner_Assist_Consent__c updatePartnerList = new PRM_Partner_Assist_Consent__c();
                         updatePartnerList.Id = partnerAssistMap.get(primaryConsent).Id;
@@ -811,13 +808,14 @@ updatePartnerListRecord.add(updatePartnerList);
                 }
                 if (string.isBlank(partnerAssistSecoundry) && optIn == true) {
                     /*  if(partnerAssistMap.containsKey(secondaryConsent)){
-PRM_Partner_Assist_Consent__c updatePartnerList = new  PRM_Partner_Assist_Consent__c();  
+PRM_Partner_Assist_Consent__c updatePartnerList = new  PRM_Partner_Assist_Consent__c();	
 updatePartnerList.Id = partnerAssistMap.get(secondaryConsent).Id;                    
 updatePartnerList.PRM_Start_Date_Dt__c = System.now();
 updatePartnerList.PRM_End_Date_Dt__c = Null;
 updatePartnerList.PRM_Consent_Provided_Ind__c = true;
 updatePartnerListRecord.add(updatePartnerList);
 } */
+                    system.debug('partnerAssistSecoundry==> Empty');
                     if (partnerAssistMap.containsKey(secondaryConsent)) {
                         PRM_Partner_Assist_Consent__c updatePartnerList = new PRM_Partner_Assist_Consent__c();
                         updatePartnerList.Id = partnerAssistMap.get(secondaryConsent).Id;
@@ -833,6 +831,7 @@ updatePartnerListRecord.add(updatePartnerList);
                         (partnerAssistMap.get(primaryConsent).PRM_Distributor_Id__r.PRM_Distributor_Name_Txt__c != partnerAssistPrimary ||
                          partnerAssistMap.get(primaryConsent).PRM_Consent_Provided_Ind__c == false)
                     ) {
+                        system.debug('partnerAssistPrimary ==> Inside If');
                         id distributorId = getIdConsentDistrbutor(partnerAssistPrimary, userGeo);
                         if (distributorId != null) {
                             PRM_Partner_Assist_Consent__c updatePartnerList = new PRM_Partner_Assist_Consent__c();
@@ -880,6 +879,7 @@ updatePartnerListRecord.add(updatePartnerList);
                     }
                 }
                 if (updatePartnerListRecord.size() > 0) {
+                    System.debug('updatePartnerListRecord---' + updatePartnerListRecord);
                     update updatePartnerListRecord;
                 }
                 
@@ -898,9 +898,9 @@ updatePartnerListRecord.add(updatePartnerList);
                 return true;
             }
         } catch (Exception ex) {
-            //system.debug('Error Cause==>' + ex.getCause());
-            //system.debug('Error Message==>' + ex.getMessage());
-            //system.debug('Error StackTrace String==>' + ex.getStackTraceString());
+            system.debug('Error Cause==>' + ex.getCause());
+            system.debug('Error Message==>' + ex.getMessage());
+            system.debug('Error StackTrace String==>' + ex.getStackTraceString());
             return false;
         }
     }
@@ -909,7 +909,7 @@ updatePartnerListRecord.add(updatePartnerList);
         try {
             if (consentDistributor != null && !String.isBlank(consentDistributor) && userGeo != null && !String.isBlank(userGeo)) {
                 PRM_Partner_Consent_Distributor__c consentDistributorRecord = [
-                    SELECT Id, name, PRM_Country_Name__c, PRM_Geo_Nm__c, PRM_Sub_Region_Nm__c, PRM_Distributor_Name_Txt__c
+                    SELECT Id, name, PRM_Country_Nm__c, PRM_Geo_Nm__c, PRM_Sub_Region_Nm__c, PRM_Distributor_Name_Txt__c
                     FROM PRM_Partner_Consent_Distributor__c
                     WHERE PRM_Geo_Nm__c = :userGeo AND PRM_Distributor_Name_Txt__c = :consentDistributor
                     LIMIT 1
@@ -920,9 +920,9 @@ updatePartnerListRecord.add(updatePartnerList);
             }
             return null;
         } catch (Exception ex) {
-            //system.debug('Error Cause==>' + ex.getCause());
-            //system.debug('Error Message==>' + ex.getMessage());
-            //system.debug('Error StackTrace String==>' + ex.getStackTraceString());
+            system.debug('Error Cause==>' + ex.getCause());
+            system.debug('Error Message==>' + ex.getMessage());
+            system.debug('Error StackTrace String==>' + ex.getStackTraceString());
             return null;
         }
     }
@@ -937,7 +937,7 @@ updatePartnerListRecord.add(updatePartnerList);
                 id,
                 AccountId,
                 (SELECT Id,Core_Entitlement_Nm__c FROM Contact_Entitlements__r WHERE Core_Selected__c = TRUE AND Core_Type__c = :'Entitlement' AND Core_Status__c=:system.Label.PRM_PCREntitlement_Status),
-                (SELECT Id, PRM_Relationship_Id__r.Name, PRM_Account_Id__r.Id FROM Account_Contact_Relationships__r where PRM_InActive_Ind__c=  
+                (SELECT Id, PRM_Relationship_Id__r.Name, PRM_Account_Id__r.Id FROM Account_Contact_Relationships__r where PRM_InActive_Ind__c=	
                  false AND PRM_Status_Nm__c=:system.Label.PRM_PCREntitlement_Status)
                 FROM Contact
                 WHERE Id =: contactID
@@ -960,8 +960,8 @@ updatePartnerListRecord.add(updatePartnerList);
             }
             
         }catch (Exception ex) {
-            //system.debug('Error Cause==>' + ex.getCause());
-            //system.debug('Error Message==>' + ex.getMessage());
+            system.debug('Error Cause==>' + ex.getCause());
+            system.debug('Error Message==>' + ex.getMessage());
             system.debug('Error StackTrace String==>' + ex.getStackTraceString());
             
         }
@@ -987,6 +987,8 @@ updatePartnerListRecord.add(updatePartnerList);
         }
         return retCountryStateName;
     }
+
+
     /******************************************************************
     @Description: Enable a capability for IPA admins to upload documents against an 1PID or Account
     @Author: Shraddha M
@@ -1012,33 +1014,62 @@ updatePartnerListRecord.add(updatePartnerList);
         }   
         return profileCheck;
     }
+
+
      /**
      * @Description: fetch documents of type terms and conditions
      * @return : list of documents
      */
     @AuraEnabled
-    public static List<PRM_Documents__c> getTermsandConditions(){
+    public static List<ContentDistribution> getTermsandConditions(){
+        String docType = 'Terms and Conditions';
         List<PRM_Documents__c> docList = new List<PRM_Documents__c>();
+        Set<Id> SetuploadedDocId = new Set<Id>();
+        List<ContentDistribution> cdlist = new List<ContentDistribution>();
+
         try {
         User loggedInUser = [SELECT ContactId FROM User WHERE id = :UserInfo.getUserId()];
         Contact cont = [SELECT id, Name, AccountId FROM Contact WHERE Id = :loggedInUser.ContactId];
         Account acc = new Account();
             if(cont != null){
                 acc = [SELECT id, Core_IPA_One_Partner_Id__c  FROM Account WHERE id=:cont.AccountId];
-            }   
-            if(acc.Core_IPA_One_Partner_Id__c != null) {
-                docList = [select Id, Title__c, Document_Id__c, Account__c,Document_Type__c from PRM_Documents__c where Account__c=:acc.Core_IPA_One_Partner_Id__c and Document_Type__c='Terms and Conditions'];
+            } 
+            if(acc.Core_IPA_One_Partner_Id__c != null){
+                docList = [select Id, Title__c, Document_Id__c, Account__c,Document_Type__c from PRM_Documents__c where Document_Type__c=: docType and Account__c=:acc.Core_IPA_One_Partner_Id__c];
             }
-            if(docList.size() == 0 || acc.Core_IPA_One_Partner_Id__c == null) {
-                docList = [select Id, Title__c, Document_Id__c, Account__c,Document_Type__c from PRM_Documents__c where Account__c=:acc.Id and Document_Type__c='Terms and Conditions'];
+            if(docList.size() == 0 || acc.Core_IPA_One_Partner_Id__c == null ) {
+                  docList = [select Id, Title__c, Document_Id__c, Account__c,Document_Type__c from PRM_Documents__c where Document_Type__c=: docType and Account__c=:acc.Id];
             }
+         
+            if(docList.size()>0){
+                for(PRM_Documents__c doc: docList){
+                    SetuploadedDocId.add(doc.Document_Id__c);
+                }
+            }
+
+            if(SetuploadedDocId.size()>0){
+                cdlist= [Select Id, Name , ContentDownloadUrl, ContentDocumentId from ContentDistribution Where ContentDocumentId IN : SetuploadedDocId];
+            }
+           
         } 
         catch (Exception e) {
-            Core_Log_Entry.logEntryWithDetails(ORIGIN, PROJECT, SCOPE, SEVERITY, e.getMessage(), e.getStackTraceString(), '', '', '');
             throw new AuraHandledException(e.getMessage());
         }
-        return docList;
+        return cdlist;
     }
+
+
+    @AuraEnabled
+    public static List<PRM_Documents__c> getUploadedDoc(Id recId){
+        List<PRM_Documents__c> uploadedDoc = new List<PRM_Documents__c>();
+        try {
+            uploadedDoc = [select Id, Title__c, Document_Id__c, Account__c,Document_Type__c from PRM_Documents__c where Account__c=:recId and Document_Type__c='Terms and Conditions'];
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
+        }
+        return uploadedDoc;
+    }
+
     /**
      * @Description: insert details of Uploaded documents for reference
      * @Parameters : list of documentwrapper, Id of account from where document uploaded
@@ -1047,7 +1078,9 @@ updatePartnerListRecord.add(updatePartnerList);
     @AuraEnabled
     public static Boolean getUploadedTermsnCondition(List<documentWrapper> docArray, Id accId){
         Boolean insertSuccess = false;
+        Map<Id, string> docDetails = new Map<id,String>();
         try {
+            List<ContentDistribution> cdList = new List<ContentDistribution>();
             List<PRM_Documents__c> documentList = new List<PRM_Documents__c>();
             if(docArray.size()> 0){
                 for(documentWrapper dr: docArray){
@@ -1057,29 +1090,55 @@ updatePartnerListRecord.add(updatePartnerList);
                     dc.Account__c = accId;
                     dc.Document_Type__c = 'Terms and Conditions';
                     documentList.add(dc);
+                    docDetails.put(dr.documentId, dr.title);
                 }
             }
             if(documentList.size()>0){
                 insert documentList;
             }
             insertSuccess = true;
+
+            if(!docDetails.isEmpty()){
+                for(ContentVersion cv : [select id,contentdocumentid from contentversion where contentdocumentid In: docDetails.keySet()]
+                ){          
+                    ContentDistribution cd = new ContentDistribution();
+                    cd.Name = docDetails.get(cv.contentdocumentid);
+                    cd.ContentVersionId = cv.id;
+                    cd.PreferencesAllowViewInBrowser= true;
+                    cd.PreferencesLinkLatestVersion=true;
+                    cd.PreferencesNotifyOnVisit=false;
+                    cd.PreferencesPasswordRequired=false;
+                    cd.PreferencesAllowOriginalDownload= true;
+                    cdList.add(cd);
+                }
+            }
+
+            if(cdList.size()>0){
+                insert cdList;
+            }
         } catch (Exception e) {
             throw new AuraHandledException(e.getMessage());
         }
         return insertSuccess;
     }
+
     
       public class documentWrapper{
         @AuraEnabled
         public String title{get;set;}
         @AuraEnabled
         public String documentId{get;set;}
-      }
-    
+      } 
+
+    /****End******************************************/
+
+
     public class CompanyInfoAndRoleDescWrapper {
         public CompanyInfoWrapper CompanyInfo { get; set; }
         //public List<RoleDescription> RoleDescriptions {set; get;}
     }
+
+
     public class CompanyInfoWrapper {
         public String Name { get; set; }
         public String NaturalGrouping { get; set; }

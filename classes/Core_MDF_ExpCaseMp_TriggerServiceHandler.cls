@@ -17,10 +17,10 @@ public with sharing class Core_MDF_ExpCaseMp_TriggerServiceHandler {
     Accenture NZ        19-06-2019          Exception Trigger Service Handler which will not let a record to be deleted if case status is closed      
     *****************************************************************************************************************************************/
     public static void ecmStatusOnDelete(Map <Id , Core_MDF_Exception_Case_Mapping__c> oldExceptionMap){
-        List<String> closedStatusList = (Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Closed_Case_Status')).split(';');//'Closed'
+        List<String> closedStatusList = (Label.Core_MDF_Closed_Case_Status).split(';');//'Closed'
         for(Core_MDF_Exception_Case_Mapping__c expt : oldExceptionMap.values()){
             if(closedStatusList.contains(expt.Core_MDF_Case_Standard_Status_nm__c)){
-                expt.addError(Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_ECM_OnDelete_Error'));
+                expt.addError(Label.Core_MDF_ECM_OnDelete_Error);
             }
         }
     }
@@ -32,7 +32,7 @@ public with sharing class Core_MDF_ExpCaseMp_TriggerServiceHandler {
     * Developer            Date             Description
     * ---------------------------------------------------------------------------------------------------------------------------------------
     Accenture SN        12-09-2019      This method will share the ECM records with internal users.      
-    *****************************************************************************************************************************************
+    *****************************************************************************************************************************************/
     public static void shareECMRecordWithusers(Map <Id , Core_MDF_Exception_Case_Mapping__c> ecmIdMap){
         Map<Id,List<Id>> exceptionIdECMIdListMap = new Map<Id,List<Id>>();
         List<Core_MDF_Exception_Case_Mapping__Share> ecmShareList = new List<Core_MDF_Exception_Case_Mapping__Share>();
@@ -65,14 +65,14 @@ public with sharing class Core_MDF_ExpCaseMp_TriggerServiceHandler {
         }catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e);}
     }
     
-    ****************************************************************************************************************************************
+    /****************************************************************************************************************************************
     * Method Name           : createECMShare
     * Created Date          : 12-09-2019
     * Modification Log
     * Developer              Date               Description
     * ---------------------------------------------------------------------------------------------------------------------------------------
     Accenture SN         12-09-2019         ECM Share creations          
-    *****************************************************************************************************************************************
+    *****************************************************************************************************************************************/
     public static Core_MDF_Exception_Case_Mapping__Share createECMShare(String ecmId, String ugId){
         Core_MDF_Exception_Case_Mapping__Share ecmShare = new Core_MDF_Exception_Case_Mapping__Share();
         ecmShare.ParentId = ecmId;
@@ -80,5 +80,5 @@ public with sharing class Core_MDF_ExpCaseMp_TriggerServiceHandler {
         ecmShare.AccessLevel = 'Read';
         ecmShare.UserOrGroupId = ugId;
         return ecmShare;
-    }*/
+    }
 }

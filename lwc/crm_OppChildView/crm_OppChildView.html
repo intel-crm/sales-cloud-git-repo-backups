@@ -1,0 +1,156 @@
+<template>
+    <lightning-card style="overflow-y: scroll;">
+        <div class="slds-m-top_small slds-m-bottom_medium slds-align_absolute-center" style='border : 1px'>
+            <lightning-button label="New Opportunity" title="New Opportunity" onclick={handleNewOpp} class="slds-m-left_x-small"></lightning-button>
+            <p class="slds-p-horizontal_small">Add Existing:</p>
+            <lightning-record-picker 
+                variant="label-hidden" 
+                label="Existing" 
+                placeholder="Search Opportunities..." 
+                object-api-name="Opportunity" 
+                display-info={displayInfo}
+                matching-info={matchingInfo}
+                onchange={handleLookup}>
+            </lightning-record-picker>
+            <lightning-button label="Save" title="Save" onclick={handleSave} class="slds-m-left_x-small"></lightning-button>
+        </div>
+        <template if:true={openModel}>  
+            <div class="slds-modal slds-fade-in-open slds-backdrop">  
+                <div class="slds-modal__container">  
+                    <!------HEADER Section-->  
+                    <div class="slds-modal__header modalPadding">  
+                        <h1 class="slds-text-heading--medium slds-float_left"><strong>Select a Record Type</strong></h1>  
+                    </div>  
+                    <!------Body Section-->  
+                    <div class="slds-modal__content modalPadding"> 
+                        <div class="slds-grid slds-gutters">
+                            <div class="slds-col slds-size_1-of-2"> 
+                                <lightning-combobox variant="label-hidden" name="recordType" label="" value={defaultvalue} options={recordTypeId} onchange={optionChangeHandler}>
+                                </lightning-combobox> 
+                            </div>
+                        </div>
+                    </div>  
+                    <!------Footer Section-->  
+                    <div class="slds-modal__footer modalPadding">
+                        <lightning-button class="slds-float_left slds-p-horizontal_medium" label="Ok" variant="neutral" onclick={nextPage}></lightning-button>  
+                        <lightning-button class="slds-float_left" label="Cancel" variant="neutral" onclick={closeModal}></lightning-button>  
+                    </div>  
+                </div>  
+            </div>  
+        </template>
+        <lightning-tabset variant="scoped">
+            <lightning-tab label="OPPORTUNITIES" style="padding: 6px;background-color: #f8f8f8;">
+                <div class="slds-box box slds-is-relative">
+                    <table class="slds-table slds-table_cell-buffer slds-table_bordered" style='width:100%;table-layout:fixed;padding : 0px;'>
+                        <thead>
+                            <tr class="slds-line-height_reset">
+                                <th scope="col" style="width:20%"><div class="slds-truncate textth" title="OPPORTUNITY NAME">OPPORTUNITY NAME</div></th>
+                                <th scope="col" style="width:12%"><div class="slds-truncate textth" title="STAGE">STAGE</div></th>
+                                <th scope="col" style="width:18%"><div class="slds-truncate textth" title="AMOUNT">AMOUNT</div></th>
+                                <th scope="col" style="width:8%"><div class="slds-truncate textth" title="QUANTITY">QUANTITY</div></th>
+                                <th scope="col" style="width:12%"><div class="slds-truncate textth" title="DECISION DATE">DECISION DATE</div></th>
+                                <th scope="col" style="width:30%"><div class="slds-truncate textth" title="PRODUCTS">PRODUCTS</div></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template if:true={returnData}>
+                                <template for:each={returnData} for:item="item" for:index="index">
+                                    <tr class="text" key={item.Id}>
+                                        <td><a href={item.OppURL} target="_blank">{item.OppName}</a></td>
+                                        <td>{item.StageName}</td>
+                                        <td><lightning-formatted-number value={item.Amount} format-style="currency" currency-code="USD"></lightning-formatted-number></td>
+                                        <td>{item.decimalQuantity}</td>
+                                        <td>
+                                            <lightning-formatted-date-time value={item.CloseDate} year="numeric" month="numeric" day="numeric"></lightning-formatted-date-time>
+                                        </td>
+                                        <td>
+                                            <ul class="slds-list_dotted">
+                                                <template for:each={item.OpportunityLineItems} for:item="i" for:index="index">
+                                                    <li key={i.Id}>{i.Product2.Name}</li>
+                                                </template>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                </template>
+                            </template>
+                            <template if:false={returnData}>
+                                    <br/>There are no opportunities yet in this solution group<br/> &nbsp; <br/> &nbsp; <br/> &nbsp; <br/> &nbsp; <br/> &nbsp; <br/> &nbsp; <br/> &nbsp;
+                            </template>
+                        </tbody>
+                        <tfoot>
+                            <tr class="slds-line-height_reset text">
+                                <td colspan="2"></td>
+                                <td>tOTAL :<lightning-formatted-number value={totalSum} format-style="currency" currency-code="USD"></lightning-formatted-number></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </lightning-tab>
+            <lightning-tab label="FEATURES" style="padding: 6px;background-color: #f8f8f8;">
+                <div class="slds-box box">
+                    <table class="slds-table slds-table_cell-buffer slds-table_bordered" style='padding : 0;width:100%;table-layout:fixed;'>
+                        <thead>
+                            <tr class="slds-line-height_reset textth">
+                                <th scope="col"><div class="slds-truncate textth" title="OPPORTUNITY NAME">OPPORTUNITY NAME</div></th>
+                                <th scope="col"><div class="slds-truncate textth" title="FEATURES">FEATURES</div></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template if:true={returnData}>
+                                <template for:each={returnData} for:item="item" for:index="index">
+                                    <tr class="text" key={item.Id}>
+                                        <td><a href={item.OppURL} target="_blank">{item.OppName}</a></td>
+                                        <td width="50%">
+                                            <table border="1" width="100%">
+                                                <tbody>
+                                                    <template for:each={item.OpportunityFeatures} for:item="i" for:index="index">
+                                                        <tr class="text" key={i.Id}>
+                                                            <td width="50%">{i.Core_Feature_Type__c}</td>
+                                                            <td width="50%">{i.Core_Feature_Name__c}</td>
+                                                        </tr>
+                                                    </template>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </template>
+                            </template>
+                            <template if:false={returnData}>
+                                <br/>There are no opportunities yet in this solution group<br/> &nbsp; <br/> &nbsp; <br/> &nbsp; <br/> &nbsp; <br/> &nbsp; <br/> &nbsp; <br/> &nbsp;
+                            </template>
+                        </tbody>
+                    </table>
+                </div>
+            </lightning-tab>
+            <lightning-tab label="TEAMS" style="padding: 6px;background-color: #f8f8f8;">
+                <div class="slds-box box">
+                    <table class="slds-table slds-table_cell-buffer slds-table_bordered" style='padding : 0; width:100%;table-layout:fixed;'>
+                        <thead>
+                            <tr class="slds-line-height_reset textth">
+                                <th scope="col"><div class="slds-truncate textth" title="OPPORTUNITY NAME">OPPORTUNITY NAME</div></th>
+                                <th scope="col"><div class="slds-truncate textth" title="TEAM MEMBERS">TEAM MEMBERS</div></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template if:true={returnData}>
+                                <template for:each={returnData} for:item="item" for:index="index">
+                                    <tr class="text" key={item.Id}>
+                                        <td><a href={item.OppURL} target="_blank">{item.OppName}</a></td>
+                                        <td>
+                                            <template for:each={item.OpportunityTeamMembers} for:item="i" for:index="index">
+                                                <a href={i.UserURL} key={i.Id}>{i.UserName},&nbsp;</a>
+                                            </template>
+                                        </td>
+                                    </tr>
+                                </template>
+                            </template>
+                            <template if:false={returnData}>
+                                <br/>There are no opportunities yet in this solution group<br/> &nbsp; <br/> &nbsp; <br/> &nbsp; <br/> &nbsp; <br/> &nbsp; <br/> &nbsp; <br/> &nbsp;
+                            </template>
+                        </tbody>
+                    </table>
+                </div>
+            </lightning-tab>
+        </lightning-tabset>
+    </lightning-card>
+</template>

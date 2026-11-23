@@ -25,7 +25,7 @@ private with sharing class PMP_SearchComResourceTriggerActions_Test {
                                                                         Core_Description__c = 'Update ContentDistribution');
         insert cs;
     }
-    
+	
     @isTest
     static void createContentDistributionTest(){
         Test.startTest();
@@ -51,7 +51,6 @@ private with sharing class PMP_SearchComResourceTriggerActions_Test {
             delete res;
         
         Test.stopTest();
-        system.assertNotEquals(ca.id, null);
     }
     
     @isTest
@@ -90,22 +89,16 @@ private with sharing class PMP_SearchComResourceTriggerActions_Test {
             update conDocList[0];
         
             delete res;
-        //PMP_SearchCompanyResourceTriggerActions.getContentDistributionInstance(contentVersion_2.id, contentVersion_2.Title,partner.Id);
+        PMP_SearchCompanyResourceTriggerActions.getContentDistributionInstance(contentVersion_2.id, contentVersion_2.Title,partner.Id);
         Test.stopTest();
-        system.assertNotEquals(document.Id, null);
     }
      @isTest
     public static void testCreateContentAsset(){
         //Starting test with test Data created
         Test.startTest();
         //Creating Test Data
-         ChannelProgram cp = new ChannelProgram(
-            Name = 'Test Program'
-        );
-        insert cp;
-        Id cpId = cp.Id;
         Account testAccount = new Account(Name = 'Sample Account' ,Core_Account_Type__c='Other',
-                                          BillingCity='Bangalore', BillingCountry='IND', BillingStreet = 'TestStreet',Core_MDF_Channel_Program__c = cpId);
+                                          BillingCity='Bangalore', BillingCountry='IND', BillingStreet = 'TestStreet');
         insert testAccount;
         Id accntId = testAccount.Id;
         
@@ -121,7 +114,7 @@ private with sharing class PMP_SearchComResourceTriggerActions_Test {
         PMP_Company_Resource__c res2 = PMP_SearchTestDataFactory.createCompanyResource('TestRes1', partner.Id, 'Thumbnail Image', false);
         res.PMP_Company_Image__c = conDocList[0].Id;
         insert res;
-        res2.PMP_Company_Image__c = conDocList[0].Id;
+		res2.PMP_Company_Image__c = conDocList[0].Id;
         insert res2;
         String TImage = 'Thumbnail Image';
         String image = 'Image';
@@ -146,7 +139,7 @@ private with sharing class PMP_SearchComResourceTriggerActions_Test {
         PMP_Company_Resource__c testResource2 = new PMP_Company_Resource__c(Name='sampleResource2',PMP_Company_Id__c=cmpnyId,PMP_Company_Resource_Type_Nm__c=TImage,PMP_Company_Image__c=res2.PMP_Company_Image__c);
         insert testResource2;
             
-        List<PMP_Company_Resource__c> partner_resourcesList = new List<PMP_Company_Resource__c>();
+      	List<PMP_Company_Resource__c> partner_resourcesList = new List<PMP_Company_Resource__c>();
         partner_resourcesList.add(testResource);
         partner_resourcesList.add(testResource2);
         
@@ -157,13 +150,12 @@ private with sharing class PMP_SearchComResourceTriggerActions_Test {
             ca.isVisibleByExternalUsers = TRUE;
             insert ca; 
         
-        // System.debug('partner_resourcesList**test'+partner_resourcesList);
+        System.debug('partner_resourcesList**test'+partner_resourcesList);
         PMP_SearchCompanyResourceTriggerActions.createContentAsset(partner_resourcesList);
-        //PMP_SearchCompanyResourceTriggerActions.getContentAssetInstance(testResource.PMP_Company_Image__c,testResource.id,cmpnyId);
-        //PMP_SearchCompanyResourceTriggerActions.deleteContentAsset(partner_resourcesList);
+        PMP_SearchCompanyResourceTriggerActions.getContentAssetInstance(testResource.PMP_Company_Image__c,testResource.id,cmpnyId);
+        PMP_SearchCompanyResourceTriggerActions.deleteContentAsset(partner_resourcesList);
         delete ca;
         Test.stopTest();
-        system.assertNotEquals(testCompany.Id, null);
     }
     
 }

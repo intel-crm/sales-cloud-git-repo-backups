@@ -34,7 +34,7 @@
             }
             
             table {
-            font-family: sans-serif; /*arial, sans-serif;*/
+            font-family: Intel Clear; /*arial, sans-serif;*/
             border-collapse: collapse;
             border-left: 1px solid #dddddd;
             border-right: 1px solid #dddddd;
@@ -50,17 +50,14 @@
             color:#0071c5;
             }
             
-           <!-- h1{
-            font-family: Intel Clear !important;  
-            }-->
+            h1{
+            font-family: Intel Clear Pro !important;  
+            }
         </style>
-        
         <apex:attribute name="partnerRecordId" type="Id" description="Partner Record Id" assignTo="{!partnerId}"/>
-        
-        <apex:attribute name="partnerType" type="String" description="type of the partner in company"/>
         <body>
             <!-- Header Banner -->
-            <c:PMP_Global_Header message="Your Showcase storefront is now approved and published"/><!--IPA2.0 TWC729-8011-->
+            <c:PMP_Global_Header message="YOUR MARKETPLACE STOREFRONT IS NOW APPROVED AND PUBLISHED!"/>
             <!-- Header Banner -->
             
             <!-- Email content -->
@@ -69,38 +66,68 @@
                 <tr>
                     <td style="padding-left:50px;">
                         <br/>Hello<br/><br/>
-                        Congratulations! Your Intel® Partner Showcase storefront has been approved, published, and is currently live.
-                        <br/><br/>
-                        <!--IPA 2.0 TWC729-8011 Use the link below to create Offering/s for your storefront. You can also view your dashboard and review leads while signed into the Partner Showcase.-->
-                        <!--IPA 2.0 TWC729-8011-->The Intel® Partner Showcase is a new online platform to drive collaboration in today’s exciting data-centric landscape. You can view your dashboard and review leads while signed into the Partner Showcase. 
-                        <br/>Use the link below to see your Storefront
-                        <br/>
-                        <p><!--<apex:outputLink value="{!$Label.PMP_PartnerURL}{!partnerData.PMP_Published_Copy_Id__c}" styleClass="intelBlue">Create your offering/s</apex:outputLink>--></p><!--IPA2.0 TWC729-8011-->
-                            <p><apex:outputLink value="{!$Label.PMP_PartnerURLNEW}{!partnerData.PMP_Published_Copy_Id__c}.html" styleClass="intelBlue">View storefront</apex:outputLink></p><br/>
-                            <br/>
-                        <!--The Intel® Partner Showcase is a new online platform to drive collaboration in today’s exciting data-centric landscape. Once your offerings are published, partners and enterprise users will be able to view them and connect with you.--><!--IPA 2.0-TWC729-8011-->
-                        <!--Remember to submit your offerings for Intel review and publishing.IPA 2.0 TWC729-8011-->
-                        Thanks for your prompt attention,<br/><br/>
-                        The Intel® Partner Showcase Team <br/><br/>
-               
+                        Congratulations! Your Intel® Solutions Marketplace Storefront has been approved, published, and is currently live.<br/><br/>
+                        Thanks for being part of our solutions community<br/><br/>
+                        The Intel® Solutions Marketplace Team <br/> <br/>
                     </td>
                 </tr>
-             
+                <!-- Email Body -->
+                <!-- CTA -->
                 <tr>
-                    <td style="padding-left:50px;">  
-                        Questions? Reach out to the Showcase Admin Team at: <br/>
-                        <apex:outputLink value="mailto:{!$Label.PMP_MailTo}" styleClass="intelBlue">
-                            {!$Label.PMP_MailTo}
+                    <td style="padding-left:50px;">
+                        
+                        <p><apex:outputLink value="{!$Label.PMP_PartnerURL}{!partnerData.PMP_Published_Copy_Id__c}" styleClass="intelBlue">View Storefront</apex:outputLink></p>
+                        
+                        Can't access the link above?<br/>
+                        <apex:outputLink value="{!$Label.PMP_PartnerURL}{!partnerData.PMP_Published_Copy_Id__c}" styleClass="intelBlue">
+                            {!$Label.PMP_PartnerURL}{!partnerData.PMP_Published_Copy_Id__c}
+                        </apex:outputLink> <br/><br/>
+                    </td>
+                </tr>
+                <!-- CTA -->
+                <!-- Progress Indication 
+                        <tr>
+                        <td style="height:50; text-align:center;">
+                        <apex:image id="bodyImageId" url="{!bodyURL}"/>
+                        </td>
+                        </tr>
+                        <!-- Progress Indication -->
+                <!-- Next Best Step -->
+                <tr>    
+                    <td style="padding-left:50px;">
+                        Would you like to create an Offering?&nbsp;&nbsp;
+                        <apex:outputLink value="{!$Label.PMP_CreateOfferingURL}" styleClass="intelBlue">
+                       Get Started
                         </apex:outputLink><br/><br/>
                     </td>
                 </tr>
+                <!-- Next Best Step -->
                 <!-- Questions/Contact -->
-               
+                        <tr>
+                            <td style="padding-left:50px;">  
+                                Questions? Reach out to Marketplace Admin Team at <br/>
+                                <apex:outputLink value="mailto:{!$Label.PMP_MailTo}" styleClass="intelBlue">
+                                {!$Label.PMP_MailTo}
+                                </apex:outputLink><br/><br/>
+                            </td>
+                         </tr>
+                 <!-- Questions/Contact -->
+                <!-- Marketplace Help & FAQ -->
+                <!-- <tr>    
+                    <td style="text-align:center">
+                    For FAQs and pro-tips on using Intel Solutions Marketplace, please visit 
+                    <apex:outputLink value="www.intel.com" styleClass="intelBlue">
+                    Marketplace Help
+                    </apex:outputLink><br/><br/>
+                    </td>
+                    </tr>-->
+                <!-- Marketplace Help & FAQ -->
             </table>                 
             <!-- Email content -->
             
             <!-- Global Footer -->
-            <c:PMP_Global_Footer />
+            	<c:PMP_Global_Footer />
+            	<!-- <c:PMP_PartnerFooterComponent /> -->
             <!-- Global Footer -->
             
         </body>

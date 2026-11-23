@@ -24,13 +24,6 @@
         <field>CPT_Quota_Setup__c.CPT_BR_DCAI_Quota__c</field>
     </columns>
     <columns>
-        <field>CPT_Quota_Setup__c.CPT_BR_All_Assigned__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>CPT_Quota_Setup__c.CPT_BR_All_Quota__c</field>
-    </columns>
-    <columns>
         <field>CPT_Quota_Setup__c.CPT_CR_OEM_Assigned__c</field>
     </columns>
     <columns>
@@ -52,46 +45,10 @@
         <field>CPT_Quota_Setup__c.CPT_CR_Retail_Quota__c</field>
     </columns>
     <columns>
-        <field>CPT_Quota_Setup__c.CPT_MarVol_Margin_CCG_Assigned__c</field>
+        <field>CPT_Quota_Setup__c.CPT_Wins_Deal_Assigned__c</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>CPT_Quota_Setup__c.CPT_MarVol_Margin_CCG_Quota__c</field>
-    </columns>
-    <columns>
-        <field>CPT_Quota_Setup__c.CPT_MarVol_Margin_DCG_Assigned__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>CPT_Quota_Setup__c.CPT_MarVol_Margin_DCG_Quota__c</field>
-    </columns>
-    <columns>
-        <field>CPT_Quota_Setup__c.CPT_MarVol_Next_Gen_CCG_LNL_Assigned__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>CPT_Quota_Setup__c.CPT_MarVol_NextGen_CCG_LNL_Quota__c</field>
-    </columns>
-    <columns>
-        <field>CPT_Quota_Setup__c.CPT_MarVol_Next_Gen_CCG_PTL_Assigned__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>CPT_Quota_Setup__c.CPT_MarVol_NextGen_CCG_PTL_Quota__c</field>
-    </columns>
-    <columns>
-        <field>CPT_Quota_Setup__c.CPT_MarVol_Next_Gen_CCG_WCL_Assigned__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>CPT_Quota_Setup__c.CPT_MarVol_NextGen_CCG_WCL_Quota__c</field>
-    </columns>
-    <columns>
-        <field>CPT_Quota_Setup__c.CPT_MarVol_Next_Gen_DCG_GNR_Assigned__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>CPT_Quota_Setup__c.CPT_MarVol_NextGen_DCG_GNR_Quota__c</field>
+        <field>CPT_Quota_Setup__c.CPT_Wins_Design_Assigned__c</field>
     </columns>
     <format>Summary</format>
     <groupingsDown>

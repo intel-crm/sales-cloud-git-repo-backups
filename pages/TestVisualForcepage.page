@@ -1,0 +1,9 @@
+<apex:page standardController="Core_Design_Registration_Product__c" extensions="TestPopulatePSD">
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageBlockSection >
+                <apex:inputField value="{!Core_Design_Registration_Product__c.PCC_Quote_Line_Pricing_Start_Date__c}" rendered="true" required="true"  />
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

@@ -5,8 +5,8 @@
     <decisions>
         <name>check_for_OppProd_Clear_Approval_BU_Fields</name>
         <label>check for OppProd_Clear_Approval_BU_Fields</label>
-        <locationX>322</locationX>
-        <locationY>298</locationY>
+        <locationX>314</locationX>
+        <locationY>287</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Core_OppProd_Clear_Approval_BU_Fields</name>
@@ -96,9 +96,6 @@
                     <stringValue>Production Cancelled</stringValue>
                 </rightValue>
             </conditions>
-            <connector>
-                <targetReference>Reset_PW_Approval_section</targetReference>
-            </connector>
             <label>Clear PW Approval Section</label>
         </rules>
     </decisions>
@@ -119,7 +116,7 @@
     <processMetadataValues>
         <name>CanvasMode</name>
         <value>
-            <stringValue>FREE_FORM_CANVAS</stringValue>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
         </value>
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
@@ -136,8 +133,8 @@ Clears the value in the Manager Approved Date field
 Reset the &apos;Approved Commissionable?&apos; field.</description>
         <name>mainUpdate</name>
         <label>mainUpdate</label>
-        <locationX>588</locationX>
-        <locationY>419</locationY>
+        <locationX>50</locationX>
+        <locationY>395</locationY>
         <inputAssignments>
             <field>Core_Approved_BU_Product_Segment__c</field>
         </inputAssignments>
@@ -176,55 +173,9 @@ Reset the &apos;Approved Commissionable?&apos; field.</description>
         </inputAssignments>
         <inputReference>$Record</inputReference>
     </recordUpdates>
-    <recordUpdates>
-        <name>Reset_PW_Approval_section</name>
-        <label>Reset PW Approval section</label>
-        <locationX>59</locationX>
-        <locationY>420</locationY>
-        <inputAssignments>
-            <field>CRM_PW_App_UCD_Customer_Name__c</field>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Core_PW_Approved_BU_Product_Segment__c</field>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Core_PW_Approved_BU_Short_Name__c</field>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Core_PW_Approved_By__c</field>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Core_PW_Approved_Commissionable__c</field>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Core_PW_Approved_KPI_Product_Group__c</field>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Core_PW_Approved_Prime_Account_Name__c</field>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Core_PW_Approved_Quantity__c</field>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Core_PW_Approved_Sales_Group__c</field>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Core_PW_Approved_Sales_Price__c</field>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Core_PW_Approved_Total_Price__c</field>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Core_PW_Manager_Approved_Date__c</field>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Core_Production_Claim_Date__c</field>
-        </inputAssignments>
-        <inputReference>$Record</inputReference>
-    </recordUpdates>
     <start>
-        <locationX>402</locationX>
-        <locationY>48</locationY>
+        <locationX>188</locationX>
+        <locationY>0</locationY>
         <connector>
             <targetReference>check_for_OppProd_Clear_Approval_BU_Fields</targetReference>
         </connector>
@@ -232,5 +183,5 @@ Reset the &apos;Approved Commissionable?&apos; field.</description>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordBeforeSave</triggerType>
     </start>
-    <status>Draft</status>
+    <status>Active</status>
 </Flow>

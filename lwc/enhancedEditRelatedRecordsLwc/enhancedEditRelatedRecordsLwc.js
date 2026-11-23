@@ -61,7 +61,6 @@ export default class EnhancedEditRelatedRecordsLwc extends LightningElement {
                 // eslint-disable-next-line @lwc/lwc/no-api-reassignments
                 this.recordsChanged = !this.recordsChanged;
                 this.lastSavedData = JSON.parse(JSON.stringify(this.relatedRcs)); 
-
                 for (i = 0; i < data.length; i++) {
                     this.options.push({ Id: data[i].Id, PicklistValue: data[i][this.picklistFieldApiName], RTId: data[i].RecordTypeId });
                 }

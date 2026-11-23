@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>Balta Sp. z o.o. Sp. k. Partner User</description>
+    <description>PHU Balta Wojciech Stec Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>Balta Sp. z o.o. Sp. k. Partner User</name>
+    <name>PHU Balta Wojciech Stec Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>PHUBaltaWojciechStecPartnerManager</parentRole>
 </Role>

@@ -180,12 +180,13 @@
         <label>OPID Name</label>
         <lookupFilter>
             <active>true</active>
+            <errorMessage>Account record type should be Partner Account Group.</errorMessage>
             <filterItems>
                 <field>Account.RecordTypeId</field>
                 <operation>equals</operation>
                 <value>Partner Account Group</value>
             </filterItems>
-            <isOptional>true</isOptional>
+            <isOptional>false</isOptional>
         </lookupFilter>
         <referenceTo>Account</referenceTo>
         <relationshipLabel>OPID Lead Relationships</relationshipLabel>

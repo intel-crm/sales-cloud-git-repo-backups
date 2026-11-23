@@ -103,7 +103,7 @@
   overflow:auto;
   opacity: 0;
   background: t(charcoal);
-  z-index: 900;
+  z-index: t(zIndexModal);
   transition: 0.3s ease-out;
 }
 

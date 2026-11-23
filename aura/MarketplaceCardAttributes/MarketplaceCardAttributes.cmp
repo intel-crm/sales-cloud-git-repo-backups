@@ -9,7 +9,7 @@
     <aura:attribute name="mdaId" type="string" default="" />
     <aura:attribute name="isProductCard" type="boolean" default="true" />
     
-    <aura:attribute name="isCompanyInformation" type="boolean" default="false"/> 
+    <aura:attribute name="isCompanyInformation" type="boolean" default="false"/> <!-- added by kartik as part of defect DE77473 -->
     
     <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
     
@@ -25,15 +25,7 @@
             <div class="{! join(' ', 'slds-m-bottom_medium', item.displayOnly == 'mobile' ? 'slds-hide_medium' : '', item.displayOnly == 'desktop' ? 'slds-show_medium' : '') }">
                 
                 <aura:if isTrue="{! and (item.isEditable,  v.editEnabled ) }">
-                    <h4><span class="editLabel">{!item.name}</span>
-                        <!--Added by Subash for US685085-->
-                        <aura:if isTrue="{!or(item.name == $Label.c.PMP_Website, item.name == $Label.c.PMP_Address)}">
-                            <c:MarketplaceEditPencilCmp currentStep="0" partnerId="{!v.partnerId}"></c:MarketplaceEditPencilCmp>
-                            <aura:set attribute="else">
-                                <c:MarketplaceEditPencilCmp currentStep="2" partnerId="{!v.partnerId}"></c:MarketplaceEditPencilCmp>
-                            </aura:set>
-                        </aura:if>
-                    </h4>
+                    <h4><span class="editLabel">{! item.name}</span><c:MarketplaceEditPencilCmp currentStep="2" partnerId="{!v.partnerId}"></c:MarketplaceEditPencilCmp></h4>
                     <aura:set attribute="else">
                         <h4>{! item.name}</h4>
                     </aura:set>
@@ -45,70 +37,49 @@
                 <aura:if isTrue="{! !empty(item.types) }">
                     <ul>
                         <!-- assumes attributes link to L2 page if type.searchParams are set -->
-                        <aura:if isTrue="{!item.name == $Label.c.PMP_Partner_Role}">
-                            <aura:iteration items="{!item.types}" var="type" indexVar="idx">
+                        <aura:iteration items="{!item.types}" var="type" indexVar="idx">
+                            <aura:if isTrue="{! or (!v.enableCountLimit, v.countLimit >= idx+1 )}">
                                 <li class="{!join(' ', (v.countLimit >= idx+1 ? 'beforeLimit' : 'afterLimit'), (idx+1 == v.countLimit ? 'atLimit' : ''))}">
-                                    <aura:if isTrue="{!type.filterId != null}">
-                                        <c:IntelLink label="{!type.name}" LabelHeader="{!item.name}" title="{!type.name}" recordId="{!type.id}" objectApiName="PMP_Partner_Program__c"
-                                                     filterId="{!type.filterId}" filterName="Solutions_Software_And_Services_Provider_Type" isFilterApplied="true"/>
-                                        <aura:set attribute="else">
-                                            <c:IntelLink label="{!type.name}" LabelHeader="{!item.name}" title="{!type.name}" recordId="{!type.id}" objectApiName="PMP_Partner_Program__c"/>
-                                        </aura:set>
-                                    </aura:if>-
-                                    <span class="staticLabel">{!type.tier}</span><span class="separator"></span>
-                                </li>
-                            </aura:iteration>
-                            <aura:set attribute="else">
-                                <aura:iteration items="{!item.types}" var="type" indexVar="idx">
-                                    
-                                    <aura:if isTrue="{! or (!v.enableCountLimit, v.countLimit >= idx+1 )}">
-                                        <li class="{!join(' ', (v.countLimit >= idx+1 ? 'beforeLimit' : 'afterLimit'), (idx+1 == v.countLimit ? 'atLimit' : ''))}">
-                                            <!--    {!type.name}  -->
-                                            <aura:if isTrue="{!v.isProductCard}">
-                                                <!-- SEO friendly IntelLink for product card -->
-                                                
-                                                <aura:if isTrue="{!type.searchParams}">
-                                                    
-                                                    <c:IntelLink partnerMDAId="{!v.mdaId}" LabelHeader="{!item.name}" title="{!type.name}" url="" recordId="{!type.parentId}" objectApiName="PMP_Category__c" label="{!type.parentName}"/>
-                                                    {!$Label.c.PMP_CategoryHyphen}&nbsp;
-                                                    
-                                                    <c:IntelLink partnerMDAId="{!v.mdaId}" LabelHeader="{!item.name}" title="{!type.name}" url="" recordId="{!type.id}" objectApiName="PMP_Category__c" label="{!type.name}"/>
-                                                    
-                                                </aura:if>
-                                                <aura:set attribute="else">  
-                                                    
-                                                    <aura:if isTrue="{!type.searchParams}">  
-                                                        
-                                                        <c:IntelLink partnerMDAId="{!v.mdaId}" LabelHeader="{!item.name}" title="{!type.name}" url="" recordId="{!type.searchParams.specialty}" objectApiName="PMP_Partner_Specialty__c" label="{!type.name}"/>
-                                                    </aura:if>  
-                                                </aura:set>    
-                                            </aura:if>
+                                <!--    {!type.name}  -->
+                                    <aura:if isTrue="{!v.isProductCard}">
+                                        <!-- SEO friendly IntelLink for product card -->
+                                        
+                                        <aura:if isTrue="{!type.searchParams}">
                                             
-                                            <aura:if isTrue="{! and(type.page , !type.searchParams) }">
-                                                
-                                                <c:psMpLink communityPage="{!type.page}" label="{!type.name}"></c:psMpLink>
-                                            </aura:if>
-                                            <aura:if isTrue="{! and(type.link , !type.searchParams) }">
-                                                
-                                                <c:IntelLink partnerMDAId="{!v.mdaId}" LabelHeader="{!item.name}" title="{!type.name}" url="{!type.link}" label="{!type.name}" openInBlank="true"/>
-                                            </aura:if>
+                                            <c:IntelLink partnerMDAId="{!v.mdaId}" LabelHeader="{!item.name}" title="{!type.name}" url="" recordId="{!type.searchParams.cat}" objectApiName="PMP_Category__c" label="{!type.name}"/>
+                                        </aura:if>
+                                        <aura:set attribute="else">  
                                             
-                                            <aura:if isTrue="{! and( and(empty(type.link), empty(type.page)) , empty(type.searchParams)) }">
-                                                <span class="staticLabel">{!type.name}</span>
-                                            </aura:if>
-                                            
-                                            <aura:if isTrue="{! v.enableCountLimit }">
+                                            <aura:if isTrue="{!type.searchParams}">  
                                                 
-                                                <aura:if isTrue="{! and (idx+1 == v.countLimit, item.types.length > v.countLimit ) }">
-                                                    <span class="countOver">(+{! item.types.length - v.countLimit})</span>
-                                                </aura:if>
-                                            </aura:if>
-                                            <span class="separator"></span>
-                                        </li>
+                                                <c:IntelLink partnerMDAId="{!v.mdaId}" LabelHeader="{!item.name}" title="{!type.name}" url="" recordId="{!type.searchParams.specialty}" objectApiName="PMP_Partner_Specialty__c" label="{!type.name}"/>
+                                            </aura:if>  
+                                        </aura:set>    
                                     </aura:if>
-                                </aura:iteration>
-                            </aura:set>
-                        </aura:if>
+                                    
+                                    <aura:if isTrue="{! and(type.page , !type.searchParams) }">
+                                        
+                                        <c:psMpLink communityPage="{!type.page}" label="{!type.name}"></c:psMpLink>
+                                    </aura:if>
+                                    <aura:if isTrue="{! and(type.link , !type.searchParams) }">
+                                        
+                                        <c:IntelLink partnerMDAId="{!v.mdaId}" LabelHeader="{!item.name}" title="{!type.name}" url="{!type.link}" label="{!type.name}" openInBlank="true"/>
+                                    </aura:if>
+                                                                   
+                                    <aura:if isTrue="{! and( and(empty(type.link), empty(type.page)) , empty(type.searchParams)) }">
+                                        <span class="staticLabel">{!type.name}</span>
+                                    </aura:if>
+                                    
+                                    <aura:if isTrue="{! v.enableCountLimit }">
+                                        
+                                        <aura:if isTrue="{! and (idx+1 == v.countLimit, item.types.length > v.countLimit ) }">
+                                            <span class="countOver">(+{! item.types.length - v.countLimit})</span>
+                                        </aura:if>
+                                    </aura:if>
+                                    <span class="separator"></span>
+                                </li>
+                            </aura:if>
+                        </aura:iteration>
                     </ul>
                 </aura:if>
                 
@@ -120,17 +91,15 @@
                             <aura:iteration items="{!typeGroup.types}" var="type" indexVar="idx">
                                 <aura:if isTrue="{! or (!v.enableCountLimit, v.countLimit >= idx+1 )}">
                                     <li class="{!join(' ', (v.countLimit >= idx+1 ? 'beforeLimit' : 'afterLimit'), (idx+1 == v.countLimit ? 'atLimit' : ''))}">
-                                        <aura:if isTrue="{!!typeGroup.isDistributor}">
-                                            <aura:if isTrue="{!type.searchParams.contextualCat}">
-                                                <!--<c:IntelLink page="search" searchParams="{!type.searchParams}">{!type.name}</c:IntelLink> -->
-                                                <c:IntelLink pageType="PartnerDetailPage" partnerMDAId="{!v.mdaId}" LabelHeader="{!item.name}" title="{!type.name}" url="" recordId="{!type.searchParams.cat}" objectApiName="PMP_Category__c" label="{!type.name}" />
-                                                <aura:set attribute="else">
-                                                    <!--Region Link changed by Kartik-->
-                                                    <c:IntelLink LabelHeader="{!item.name}" title="{!type.name}" url="" recordId="{!type.searchParams.recordId}" objectApiName="{type.searchParams.objectApiName}" 
-                                                                 filterId="{!type.searchParams.cat}" filterName="RegionalCoverage" isFilterApplied="true" label="{!type.name}" />
-                                                    <!--<c:IntelLink pageType="PartnerDetailPage" partnerMDAId="{!v.mdaId}" LabelHeader="{!item.name}" title="{!type.name}" url="" recordId="{!type.searchParams.cat}" objectApiName="PMP_Specification__c" label="{!type.name}" />-->
-                                                </aura:set>
-                                            </aura:if>
+                                        <aura:if isTrue="{!type.searchParams.contextualCat}">
+                                            
+                                            <!--<c:IntelLink page="search" searchParams="{!type.searchParams}">{!type.name}</c:IntelLink> -->
+                                            <c:IntelLink pageType="PartnerDetailPage" partnerMDAId="{!v.mdaId}" LabelHeader="{!item.name}" title="{!type.name}" url="" recordId="{!type.searchParams.cat}" objectApiName="PMP_Category__c" label="{!type.name}" />
+                                            <aura:set attribute="else">
+                                                <!--Region Link changed by Kartik-->
+                                                <c:IntelLink pageType="PartnerDetailPage" partnerMDAId="{!v.mdaId}" LabelHeader="{!item.name}" title="{!type.name}" url="" recordId="{!type.searchParams.cat}" objectApiName="PMP_Specification__c" label="{!type.name}" />
+                                                
+                                            </aura:set>
                                         </aura:if>
                                         <aura:if isTrue="{! and(type.page , !type.searchParams) }">
                                             <c:psMpLink communityPage="{!type.page}" label="{!type.name}"></c:psMpLink>
@@ -167,7 +136,7 @@
                 </aura:if>
             </div>
         </aura:iteration>
-         
+        
     </div>
     
 </aura:component>

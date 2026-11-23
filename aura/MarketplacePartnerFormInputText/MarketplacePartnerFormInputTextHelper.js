@@ -27,20 +27,10 @@
   },
 
   setComplexValue : function(component, helper) {
-    /*component.set('v.value', Object.assign({},
+    component.set('v.value', Object.assign({},
       component.get('v.additionalValues') || {},
       { value: component.get('v._value') }
-    ));*/
-
-    var additionalValues = component.get('v.additionalValues');
-    var newValue = {};
-    for(var key in additionalValues){
-      if(additionalValues.hasOwnProperty(key)){
-        newValue[key] = additionalValues[key];
-      }
-    }
-    newValue.value = component.get('v._value');
-    component.set('v.value', newValue);
+    ));
   },
 
 })

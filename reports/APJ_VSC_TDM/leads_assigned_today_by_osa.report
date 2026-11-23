@@ -192,9 +192,6 @@
     <columns>
         <field>WON</field>
     </columns>
-    <columns>
-        <field>CLOSE_DATE</field>
-    </columns>
     <filter>
         <criteriaItems>
             <column>Lead.Core_Geo__c</column>

@@ -18,6 +18,7 @@ export default class Pricing_ManageEmailPreference extends LightningElement {
                     this.notificationOptMap.push({ notificationName: data[i].notificationName, optInOut: data[i].optInOut, errorMsg: data[i].errorMsg });
                 }
             }
+            console.log('notification map-->' + JSON.stringify(this.notificationOptMap));
         } else if (error) {
             console.log('error-->' + JSON.stringify(error));
         }

@@ -3,7 +3,7 @@
     <actionOnInsert>Block</actionOnInsert>
     <actionOnUpdate>Block</actionOnUpdate>
     <alertText>Duplicate Contact/Lead found, Use one of these records.</alertText>
-    <description>From Lead Screen - Display all Matching Contacts</description>
+    <description>From Lead Screen - Display all Matching Contacts - - Except for Eloqua Integration Profile/User</description>
     <duplicateRuleFilter>
         <booleanFilter xsi:nil="true"/>
         <duplicateRuleFilterItems>

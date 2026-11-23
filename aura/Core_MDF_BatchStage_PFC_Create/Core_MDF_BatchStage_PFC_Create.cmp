@@ -6,7 +6,7 @@
 			visibility: hidden;
 		}
 	</aura:html>
-     
+    
     <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
     <aura:attribute name="claimRecordTypeDevName" type="String" default="" description="Stores the recordtypeDeveloperName" /> 
     <aura:if isTrue="{!not(empty(v.claimRecordTypeDevName))}">

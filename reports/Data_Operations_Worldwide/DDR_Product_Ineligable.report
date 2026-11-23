@@ -67,7 +67,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>AM,AO,AR,AS,AY,BL,BM,BP,BY,CF,CJ,CQ,DB,DD,DF,DH,DJ,ES,FF,FP,FT,LD,LF,LK,MN,MX,NB,NI,NO,NZ,TP,WP,ZL,ZO,ZU,DI,DP,NG,PD,EG,MV</value>
+            <value>AM,AO,AR,AS,AY,BL,BM,BP,BY,CF,CJ,CQ,DB,DD,DF,DH,DJ,ES,FF,FP,FT,LD,LF,LK,MN,MX,NB,NI,NO,NZ,TP,WP,ZL,ZO,ZU,DI,DP,NG,PD,EG</value>
         </criteriaItems>
         <criteriaItems>
             <column>Product2.Core_BU_Operation_Code__c</column>

@@ -1,0 +1,1 @@
+﻿Request Type,Create New Lead,First Name,Last Name,Requester Email Address,Country Name,Job Title,Cost Center,HW Compute Platform,Additional compute platform details,Compute/Service Requirements,Cloud Coupon Type,Submitter Email same as Requester Email,Submitter Name,Submitter Email Address,Start Date,Expiry Date,Coupon Value,Number of Uses,Is Standard?

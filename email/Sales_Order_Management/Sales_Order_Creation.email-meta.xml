@@ -5,26 +5,11 @@
     <name>Sales Order Creation</name>
     <style>none</style>
     <subject>Your new order created successfully</subject>
-    <textOnly>A new order created
+    <textOnly>Dear  {!Contact.FirstName}, 
 
+ Your new order has been created successfully.  Please refer to {!Order.OrderNumber} for order number.  
 
-Hi,
-
-This notice is to inform you that your new order has been created successfully.
-
-Account Name:{!Account.Name}
-Please refer to Order Number : {!Order.OrderNumber}
-
-
-If you have any questions, please contact us at programs@intel.com.
-
-Thank you,
-Your Order Management Team
-
-This message was sent to you as an important business communication related to your current relationship with Intel® Partner Alliance.
-© 2020 Intel Corporation
-Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
-Privacy | Cookies</textOnly>
+Thanks</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

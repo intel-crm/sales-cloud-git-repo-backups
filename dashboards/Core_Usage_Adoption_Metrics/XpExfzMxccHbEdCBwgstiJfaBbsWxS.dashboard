@@ -97,7 +97,7 @@
         </dashboardFilterOptions>
         <dashboardFilterOptions>
             <operator>equals</operator>
-            <values>Sales Rep-BB,Sales Rep-BB-Dual IPS,Sales Rep-CW,Sales Manager,Sales Ops,Marketing Development Manager</values>
+            <values>Sales Rep-BB,Sales Rep-CW,Sales Manager</values>
         </dashboardFilterOptions>
         <dashboardFilterOptions>
             <operator>equals</operator>
@@ -687,7 +687,7 @@
     </dashboardGridLayout>
     <dashboardType>SpecifiedUser</dashboardType>
     <isGridLayout>true</isGridLayout>
-    <owner>11227352@intel.com.crm</owner>
+    <owner>10557526@intel.com.crm</owner>
     <runningUser>10557526@intel.com.crm</runningUser>
     <textColor>#000000</textColor>
     <title>User Adoption Dashboard - Login Data</title>

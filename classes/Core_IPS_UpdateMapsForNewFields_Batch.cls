@@ -5,7 +5,7 @@
 * Modification Log :
 * Developer                   Date                   Description
 * ----------------------------------------------------------------------------                 
-* Ganapati                 17/01/2020                 Created
+* Ganapati                 17/01/2020              	  Created
   Prasad                   23/4/2020                  fixed PMd issues    
 ****************************************************************************************************/
 
@@ -16,9 +16,9 @@ public without sharing class  Core_IPS_UpdateMapsForNewFields_Batch implements D
     private static final String AUTO_APPROVE = 'Auto Approve';
     
     public Database.QueryLocator start(Database.BatchableContext bc) {
-        //Core_IPS_MAP_Count_Supp_acct__c, Core_IPS_MAP_Count_Supp_prod__c, Core_IPS_MAP_Access_Flag__c
+        //Core_IPS_MAP_Count_Supp_acct__c, Core_IPS_MAP_Count_Supp_prod__c, 
         return Database.getQueryLocator(
-                'SELECT ID,  ' +
+                'SELECT ID, Core_IPS_MAP_Access_Flag__c, ' +
             ' (Select Id, Core_MAP_Supported_Product__r.Id, Core_MAP_Supported_Product__r.Core_Flag_Status__c, Core_MAP_PAR__c, Core_MAP_PAR__r.RecordType.Name from MAP_Supported_Products__r), ' +
             ' (SELECT ID FROM MAP_Accounts__r) ' +
             ' FROM Core_IPS_MAP_PAR__c ' + 
@@ -34,7 +34,7 @@ public without sharing class  Core_IPS_UpdateMapsForNewFields_Batch implements D
             Integer parHiddenProdCnt = 0;
             Integer approvalReqProdCnt = 0;
             Integer autoApproveProdCnt = 0;
-           // mapRec.Core_IPS_MAP_Access_Flag__c = '';
+            mapRec.Core_IPS_MAP_Access_Flag__c = '';
             
             //mapRec.Core_IPS_MAP_Count_Supp_prod__c = mapRec.MAP_Supported_Products__r.size();
             //mapRec.Core_IPS_MAP_Count_Supp_acct__c = mapRec.MAP_Accounts__r.size();
@@ -54,13 +54,13 @@ public without sharing class  Core_IPS_UpdateMapsForNewFields_Batch implements D
                 } 
             }
             if(parHiddenProdCnt>0) {
-              //  mapRec.Core_IPS_MAP_Access_Flag__c = PAR_HIDDEN;
+                mapRec.Core_IPS_MAP_Access_Flag__c = PAR_HIDDEN;
             } else if(approvalReqProdCnt > 0) {
-              //  mapRec.Core_IPS_MAP_Access_Flag__c = APPROVAL_REQUIRED;
+                mapRec.Core_IPS_MAP_Access_Flag__c = APPROVAL_REQUIRED;
             } else if(autoApproveProdCnt > 0) {
-              //  mapRec.Core_IPS_MAP_Access_Flag__c = AUTO_APPROVE;
+                mapRec.Core_IPS_MAP_Access_Flag__c = AUTO_APPROVE;
             } else {
-              //  mapRec.Core_IPS_MAP_Access_Flag__c = '';
+                mapRec.Core_IPS_MAP_Access_Flag__c = '';
             }
             if(!mapRecsMap.containsKey(mapRec.Id)) {
                 mapRecsMap.put(mapRec.Id, mapRec);
@@ -75,5 +75,6 @@ public without sharing class  Core_IPS_UpdateMapsForNewFields_Batch implements D
         
     }    
     public void finish(Database.BatchableContext bc){
+        system.debug('Batch job finised!');
     }  
 }

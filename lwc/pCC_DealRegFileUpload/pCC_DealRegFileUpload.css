@@ -1,0 +1,7 @@
+.deleteImg {
+    padding: 0.1px;
+}
+
+.red-background-icon {
+    --sds-c-icon-color-background: #CB0015;
+}

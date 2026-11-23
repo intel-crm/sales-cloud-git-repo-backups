@@ -131,4 +131,5 @@ private class Pricing_Batch_RetryAICDBOutbound_Test {
             System.assert(logs.size() >= 1, 'Should have at least 1 record for Pricing Application Agent Integration');
         }
     }
+   
 }

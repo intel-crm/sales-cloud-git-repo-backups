@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>100106 - Inside Sales Rep</fullName>
+        <default>false</default>
+        <label>100106 - Inside Sales Rep</label>
+    </customValue>
+    <customValue>
+        <fullName>400002 - Field Applications Engineer</fullName>
+        <default>false</default>
+        <label>400002 - Field Applications Engineer</label>
+    </customValue>
+    <customValue>
+        <fullName>400003 - Field Sales Engineer - Non-Technical</fullName>
+        <default>false</default>
+        <label>400003 - Field Sales Engineer - Non-Technical</label>
+    </customValue>
+    <customValue>
+        <fullName>400010 - Retail Mktg/Sales Act Mgr</fullName>
+        <default>false</default>
+        <label>400010 - Retail Mktg/Sales Act Mgr</label>
+    </customValue>
+    <customValue>
+        <fullName>400012 - Sales Development Account Mgr</fullName>
+        <default>false</default>
+        <label>400012 - Sales Development Account Mgr</label>
+    </customValue>
+    <customValue>
+        <fullName>400027 - Market Development Manager</fullName>
+        <default>false</default>
+        <label>400027 - Market Development Manager</label>
+    </customValue>
+    <customValue>
+        <fullName>400032 - Technical Sales Specialist</fullName>
+        <default>false</default>
+        <label>400032 - Technical Sales Specialist</label>
+    </customValue>
+    <customValue>
+        <fullName>400034 - Account Executive</fullName>
+        <default>false</default>
+        <label>400034 - Account Executive</label>
+    </customValue>
+    <customValue>
+        <fullName>400035 - Industry Technical Specialist</fullName>
+        <default>false</default>
+        <label>400035 - Industry Technical Specialist</label>
+    </customValue>
+    <customValue>
+        <fullName>400036 - Industry Partner Account Mgr</fullName>
+        <default>false</default>
+        <label>400036 - Industry Partner Account Mgr</label>
+    </customValue>
+    <customValue>
+        <fullName>400040 - SMG Sales Specialist</fullName>
+        <default>false</default>
+        <label>400040 - SMG Sales Specialist</label>
+    </customValue>
+    <customValue>
+        <fullName>400041 - Principal Engineer -Sales</fullName>
+        <default>false</default>
+        <label>400041 - Principal Engineer -Sales</label>
+    </customValue>
+    <customValue>
+        <fullName>400042 - Sales Development Rep</fullName>
+        <default>false</default>
+        <label>400042 - Sales Development Rep</label>
+    </customValue>
+    <customValue>
+        <fullName>400043 - Sr Principal Engineer - Sales</fullName>
+        <default>false</default>
+        <label>400043 - Sr Principal Engineer - Sales</label>
+    </customValue>
+    <customValue>
+        <fullName>400044 - Cloud Solutions Architect Sales</fullName>
+        <default>false</default>
+        <label>400044 - Cloud Solutions Architect Sales</label>
+    </customValue>
+    <customValue>
+        <fullName>500006 - Field Sales Manager</fullName>
+        <default>false</default>
+        <label>500006 - Field Sales Manager</label>
+    </customValue>
+    <customValue>
+        <fullName>500010 - Technical Sales Manager</fullName>
+        <default>false</default>
+        <label>500010 - Technical Sales Manager</label>
+    </customValue>
+    <customValue>
+        <fullName>500012 - Influencer Mgr Sales</fullName>
+        <default>false</default>
+        <label>500012 - Influencer Mgr Sales</label>
+    </customValue>
+    <customValue>
+        <fullName>Commissions Ended</fullName>
+        <default>false</default>
+        <label>Commissions Ended</label>
+    </customValue>
+    <customValue>
+        <fullName>Non-Commissionable Manager</fullName>
+        <default>false</default>
+        <label>Non-Commissionable Manager</label>
+    </customValue>
+    <masterLabel>Job Code</masterLabel>
+    <sorted>true</sorted>
+</GlobalValueSet>

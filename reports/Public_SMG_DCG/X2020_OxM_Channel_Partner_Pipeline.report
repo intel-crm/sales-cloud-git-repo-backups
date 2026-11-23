@@ -15,18 +15,6 @@
         <field>OPPORTUNITY_ID</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Solution_Area__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Solution_Type__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Combined_Solution_Detail__c</field>
-    </columns>
-    <columns>
         <field>OpportunityLineItem.Core_Vertical_Market__c</field>
     </columns>
     <columns>
@@ -63,7 +51,7 @@
         <field>Opportunity.Core_Approval_Status__c</field>
     </columns>
     <filter>
-        <booleanFilter>(1 AND 2) AND (5 AND 6 AND 7) and ((3 and 4) or (8 AND 9))</booleanFilter>
+        <booleanFilter>((((((1 AND 2 ) AND (3 AND 4)  AND 5  AND 6)) AND 7))) AND 8</booleanFilter>
         <criteriaItems>
             <column>Opportunity.Core_Opportunity_Type__c</column>
             <columnToColumn>false</columnToColumn>
@@ -82,7 +70,7 @@
             <column>Opportunity.Core_Solution_Area__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
+            <operator>equals</operator>
             <value>DCG Compute Deal $</value>
         </criteriaItems>
         <criteriaItems>
@@ -97,7 +85,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>DCG,IOTG,PSG,CCG,NSG</value>
+            <value>DCG,IOTG,PSG,CCG</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Commissionable__c</column>
@@ -107,25 +95,18 @@
             <value>No</value>
         </criteriaItems>
         <criteriaItems>
+            <column>Account.Core_Account_BU_Focus__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>excludes</operator>
+            <value>DCG-Consulting</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>ACCOUNT_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
             <value>test</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Combined_Solution_Detail__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>1-Intel</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Solution_Area__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>CCG Public Sector Deal $,IOTG All Deal $,PSG Cloud-Enterprise-Storage Deal $</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -169,6 +150,6 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <interval>INTERVAL_PREVY</interval>
+        <interval>INTERVAL_CURY</interval>
     </timeFrameFilter>
 </Report>

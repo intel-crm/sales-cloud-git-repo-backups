@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
     <sharingCriteriaRules>
-        <fullName>Pricing_All_Read_Only_Group</fullName>
-        <accessLevel>Read</accessLevel>
-        <label>Pricing All Read Only Group</label>
-        <sharedTo>
-            <group>Pricing_All_Pricing_ReadOnly_Users_Group</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>Name</field>
-            <operation>notEqual</operation>
-            <value></value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>Pricing_Manager_Group</fullName>
-        <accessLevel>Read</accessLevel>
-        <label>Pricing Manager Group</label>
+        <fullName>Pricing_Manager</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Pricing Manager</label>
         <sharedTo>
             <group>Pricing_Manager_Group</group>
         </sharedTo>
         <criteriaItems>
             <field>Name</field>
             <operation>notEqual</operation>
+            <value>null</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Read_only_users</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Read only users</label>
+        <sharedTo>
+            <group>Pricing_All_Pricing_ReadOnly_Users_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Pricing_Region_Nm__c</field>
+            <operation>notEqual</operation>
             <value></value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
 </SharingRules>

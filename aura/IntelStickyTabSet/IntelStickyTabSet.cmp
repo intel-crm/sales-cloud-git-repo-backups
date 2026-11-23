@@ -1,8 +1,8 @@
 <aura:component>
     <aura:attribute name="containerOffsetTop" type="integer" default="-1"  description="Internal component state"/>
     <aura:attribute name="containerOffsetBottom" type="integer" default="-1"  description="Internal component state"/>
-    <aura:attribute name="headerOffset" type="integer" default="60"  description="Internal component state"/>
-    <aura:attribute name="tabsOffset" type="Object[]" default="60"  description="Internal component state"/>
+    <aura:attribute name="headerOffset" type="integer" default="120"  description="Internal component state"/>
+    <aura:attribute name="tabsOffset" type="Object[]" default="120"  description="Internal component state"/>
     <aura:attribute name="allTabLabels" type="string[]"  description="Internal component state"/>
     <aura:attribute name="allTabs" type="Object[]"  description="Internal component state"/>
     <aura:attribute name="currentTabIndex" type="integer" default="0"  description="Internal component state"/>
@@ -49,7 +49,7 @@
 
         </div>
 
-        <div class="tabContent container">
+        <div class="tabContent">
             {!v.body}
         </div>
     </div>

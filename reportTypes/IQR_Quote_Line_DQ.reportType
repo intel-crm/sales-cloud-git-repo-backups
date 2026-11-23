@@ -229,7 +229,27 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Product_VerticalSegment__c</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_OEM_Name_FI__c</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Pricing_Consumption_Segment__c</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Total_Product_Rebate__c</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Paired_CPU_Nm__c</field>
             <table>SBQQ__QuoteLine__c</table>
         </columns>
         <columns>
@@ -239,7 +259,92 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_SW_Additional_Disc__c</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_SW_Description_hyperlink__c</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_SW_Monthly_Price__c</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Pricing_Processor_Number_Nm__c</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Payable_Quantity__c</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Product_Series__c</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Product_Series_Check__c</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Product_Series_Name__c</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_QuoteLine_Id__c</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_SW_PLI_Approval_Discount__c</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Item_Id__c</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Change_Request_Type__c</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Change_RequestType__c</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Application_Agent_Status__c</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Rationale_for_Pricing__c</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Change_Request_Ind__c</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_HPC_Eligible_Pricing_Envelope__c</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_NonHPC_Eligible_Pricing_Envelope__c</field>
             <table>SBQQ__QuoteLine__c</table>
         </columns>
         <masterLabel>Quote Lines</masterLabel>

@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Change Request Field Mapping</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Change Request Field Mapping</value>
+    </caseValues>
+    <fields>
+        <label><!-- ByPassSoqlValueMappping --></label>
+        <name>ByPassSoqlValueMappping__c</name>
+    </fields>
+    <fields>
+        <label><!-- Child Object API Name --></label>
+        <name>Child_Object_API_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- DataTableAttributeName --></label>
+        <name>DataTableAttributeName__c</name>
+    </fields>
+    <fields>
+        <label><!-- DisableDefaultValue --></label>
+        <name>DisableDefaultValue__c</name>
+    </fields>
+    <fields>
+        <label><!-- Disabled --></label>
+        <name>Disabled__c</name>
+    </fields>
+    <fields>
+        <label><!-- EditColumn --></label>
+        <name>EditColumn__c</name>
+    </fields>
+    <fields>
+        <label><!-- EditDefaultValue --></label>
+        <name>EditDefaultValue__c</name>
+    </fields>
+    <fields>
+        <label><!-- Enable for Filter --></label>
+        <name>Enable_for_Filter__c</name>
+    </fields>
+    <fields>
+        <label><!-- Enable for PSAM Screen --></label>
+        <name>Enable_for_PSAM_Screen__c</name>
+    </fields>
+    <fields>
+        <label><!-- Enable for PSAM --></label>
+        <name>Enable_for_PSAM__c</name>
+    </fields>
+    <fields>
+        <label><!-- Enable for Partner --></label>
+        <name>Enable_for_Partner__c</name>
+    </fields>
+    <fields>
+        <label><!-- Enable for Query --></label>
+        <name>Enable_for_Query__c</name>
+    </fields>
+    <fields>
+        <label><!-- Enable on Partner Screen --></label>
+        <name>Enable_on_Partner_Screen__c</name>
+    </fields>
+    <fields>
+        <label><!-- FeatureName --></label>
+        <name>FeatureName__c</name>
+    </fields>
+    <fields>
+        <label><!-- FieldAPIName --></label>
+        <name>FieldAPIName__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field Type --></label>
+        <name>FieldType__c</name>
+    </fields>
+    <fields>
+        <label><!-- Filter Criteria Sequence --></label>
+        <name>Filter_Criteria_Sequence__c</name>
+    </fields>
+    <fields>
+        <label><!-- Filter Criteria --></label>
+        <name>Filter_Criteria__c</name>
+    </fields>
+    <fields>
+        <label><!-- Label --></label>
+        <name>Label__c</name>
+    </fields>
+    <fields>
+        <label><!-- Object Field Data Type --></label>
+        <name>Object_Field_Data_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Active --></label>
+        <name>PCC_Active__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field API Name --></label>
+        <name>PCC_Field_API_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Object Name --></label>
+        <name>PCC_Object_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- PSAM Screen Column Order --></label>
+        <name>PSAM_Screen_Column_Order__c</name>
+    </fields>
+    <fields>
+        <label><!-- Parent Object API Name --></label>
+        <name>Parent_Object_API_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Screen Column Order --></label>
+        <name>Partner_Screen_Column_Order__c</name>
+    </fields>
+    <fields>
+        <label><!-- Resizable --></label>
+        <name>Resizable__c</name>
+    </fields>
+    <fields>
+        <label><!-- UseFieldName --></label>
+        <name>UseFieldName__c</name>
+    </fields>
+    <fields>
+        <label><!-- WrapperFieldName --></label>
+        <name>WrapperFieldName__c</name>
+    </fields>
+    <fields>
+        <label><!-- actions --></label>
+        <name>actions__c</name>
+    </fields>
+    <fields>
+        <label><!-- cellAttributes --></label>
+        <name>cellAttributes__c</name>
+    </fields>
+    <fields>
+        <label><!-- cellClass --></label>
+        <name>cellClass__c</name>
+    </fields>
+    <fields>
+        <label><!-- editable --></label>
+        <name>editable__c</name>
+    </fields>
+    <fields>
+        <label><!-- fieldName --></label>
+        <name>fieldName__c</name>
+    </fields>
+    <fields>
+        <label><!-- fixedWidth --></label>
+        <name>fixedWidth__c</name>
+    </fields>
+    <fields>
+        <label><!-- hideDefaultActions --></label>
+        <name>hideDefaultActions__c</name>
+    </fields>
+    <fields>
+        <label><!-- iconName --></label>
+        <name>iconName__c</name>
+    </fields>
+    <fields>
+        <label><!-- Initial Width --></label>
+        <name>initialWidth__c</name>
+    </fields>
+    <fields>
+        <label><!-- isParent --></label>
+        <name>isParent__c</name>
+    </fields>
+    <fields>
+        <label><!-- sortable --></label>
+        <name>sortable__c</name>
+    </fields>
+    <fields>
+        <label><!-- typeAttributes --></label>
+        <name>typeAttributes__c</name>
+    </fields>
+    <fields>
+        <label><!-- wraptext --></label>
+        <name>wrapText__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

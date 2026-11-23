@@ -149,36 +149,20 @@
     <enableHistory>false</enableHistory>
     <enableLicensing>false</enableLicensing>
     <enableReports>true</enableReports>
-    <enableSearch>false</enableSearch>
+    <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
     <fields>
-        <fullName>Comments__c</fullName>
-        <description>Holds the user comments on Delinking and Relinking scenarios</description>
-        <label>Comments</label>
-        <length>32768</length>
-        <trackTrending>false</trackTrending>
-        <type>LongTextArea</type>
-        <visibleLines>3</visibleLines>
-    </fields>
-    <fields>
         <fullName>Core_CIM_ID__c</fullName>
         <externalId>false</externalId>
-        <label>UCD ID</label>
+        <label>CIM ID</label>
         <precision>18</precision>
         <required>false</required>
         <scale>0</scale>
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_Change_Dt__c</fullName>
-        <label>Status Change Date Time</label>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>DateTime</type>
     </fields>
     <fields>
         <fullName>Core_Effective_End_Date_Time__c</fullName>
@@ -193,23 +177,6 @@
         <required>false</required>
         <trackTrending>false</trackTrending>
         <type>DateTime</type>
-    </fields>
-    <fields>
-        <fullName>Core_Error_Cd__c</fullName>
-        <externalId>false</externalId>
-        <label>Error Code</label>
-        <length>25</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_Error_Detail_Txt__c</fullName>
-        <label>Error Details</label>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>TextArea</type>
     </fields>
     <fields>
         <fullName>Core_OnePartnerID__c</fullName>
@@ -264,26 +231,6 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Core_Request_Purpose_Cd__c</fullName>
-        <externalId>false</externalId>
-        <label>Request Purpose Code</label>
-        <length>25</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_Request_Status_Cd__c</fullName>
-        <externalId>false</externalId>
-        <label>Request Status Code</label>
-        <length>25</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_SalesCloud_AccountID__c</fullName>
         <externalId>false</externalId>
         <label>SalesCloud AccountID</label>
@@ -321,55 +268,12 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Delink_Association_User__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <description>To store the user who initiates Delinking / Association to OPID</description>
-        <label>Delink / Association Requested By</label>
-        <referenceTo>User</referenceTo>
-        <relationshipName>One_Partner_Inbound_Messages</relationshipName>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Lookup</type>
-    </fields>
-    <fields>
         <fullName>Error_Description__c</fullName>
         <label>Error Description</label>
         <length>131072</length>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>5</visibleLines>
-    </fields>
-    <fields>
-        <fullName>OPID_Sync_Request__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <label>OPID Sync Request</label>
-        <referenceTo>OPID_Sync_Request__c</referenceTo>
-        <relationshipLabel>One Partner Inbound Messages</relationshipLabel>
-        <relationshipName>One_Partner_Inbound_Messages</relationshipName>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>PRM_Retry_Counter__c</fullName>
-        <defaultValue>1</defaultValue>
-        <description>Counter to manage retry mechanism incase of lock row issues</description>
-        <externalId>false</externalId>
-        <label>Retry Counter</label>
-        <precision>1</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackTrending>false</trackTrending>
-        <type>Number</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Primary_Account__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>Checked if the inbound is associated to the Primary Intel Account of the OPID</description>
-        <label>UCD Primary Account</label>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
     </fields>
     <label>One Partner Inbound Message</label>
     <nameField>

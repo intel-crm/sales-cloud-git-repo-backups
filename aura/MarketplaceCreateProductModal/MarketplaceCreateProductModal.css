@@ -1,5 +1,4 @@
-/* IPA2.0 + US TWC4497-1631 */
-/* .THIS .create-offering a.close {
+.THIS .create-offering a.close {
     position: absolute;
     top: 25px;
     right: 10px;
@@ -13,7 +12,6 @@
 .THIS .create-offering a .slds-icon {
     width: 1.5em;
     height: 1.5em;
-    --iconColor: white;
 }
 
 .THIS .create-offering a .slds-icon use {
@@ -141,14 +139,13 @@
 }
 
 .THIS .offering-category-card {
-    height: 280px; */
-    /*height changed from 208px to 280px to accomodate solution's image(do not modify)*/
-    /* width: 100%;
+    height: 280px;/*height changed from 208px to 280px to accomodate solution's image(do not modify)*/
+    width: 100%;
     max-width: 212px;
     background: t(white);
     display: flex;
     margin: 0px auto;
-    padding:1.5em;
+    padding: 1.5em;
 }
 
 .THIS .offering-category-card:hover {
@@ -165,24 +162,13 @@
     justify-content: center;
 }
 
-.THIS .solution-submission-modal-style{
-    background-color: #FFD100;	
-    color: #262626;
-    font-family: intel clear;
-    font-size: 1rem;
-    text-align: center;
-}
-.THIS .link-style{
-    color: #262626;
-    text-decoration: underline;
-} */
 /*media only screen and (min-width: 768px) and (max-width: 1200px) {
     .THIS .offering-category-wrapper {
         width: 25%;
     }
 }*/
 
-/* @media only screen and (max-width: 768px) {
+@media only screen and (max-width: 768px) {
     .THIS .slds-modal__container {
         display: block;
         overflow: hidden;
@@ -297,10 +283,9 @@
 
     .THIS .category-card-list-image-wrapper {
         align-items: center;
-        display: flex; 
-        height: 158px;*/
-        /*height changed from 107px to 158px to accomodate solution's image(do not modify)*/
-        /* justify-content: center;
+        display: flex;
+        height: 158px;/*height changed from 107px to 158px to accomodate solution's image(do not modify)*/
+        justify-content: center;
         width: 107px;
     }
 
@@ -325,4 +310,4 @@
     .THIS .offering-category-card {
         height: 150px;
     }
-} */
+}

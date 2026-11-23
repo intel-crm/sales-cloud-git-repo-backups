@@ -33,32 +33,27 @@
     <dashboardFilters>
         <dashboardFilterOptions>
             <operator>between</operator>
-            <values>12/27/2020 12:00 AM</values>
-            <values>12/25/2021 12:00 AM</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>between</operator>
-            <values>12/27/2020 12:00 AM</values>
-            <values>3/27/2021 12:00 AM</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>between</operator>
-            <values>3/28/2021 12:00 AM</values>
-            <values>6/26/2021 12:00 AM</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>between</operator>
-            <values>6/27/2021 12:00 AM</values>
-            <values>9/25/2021 12:00 AM</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>between</operator>
-            <values>9/26/2021 12:00 AM</values>
-            <values>12/25/2021 12:00 AM</values>
+            <values>12/29/2019 12:00 AM</values>
+            <values>12/26/2020 12:00 AM</values>
         </dashboardFilterOptions>
         <dashboardFilterOptions>
             <operator>between</operator>
             <values>12/29/2019 12:00 AM</values>
+            <values>3/28/2020 12:00 AM</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>between</operator>
+            <values>3/29/2020 12:00 AM</values>
+            <values>6/27/2020 12:00 AM</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>between</operator>
+            <values>6/28/2020 12:00 AM</values>
+            <values>9/26/2020 12:00 AM</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>between</operator>
+            <values>9/27/2020 12:00 AM</values>
             <values>12/26/2020 12:00 AM</values>
         </dashboardFilterOptions>
         <dashboardFilterOptions>
@@ -68,12 +63,72 @@
         </dashboardFilterOptions>
         <dashboardFilterOptions>
             <operator>between</operator>
+            <values>12/30/2018 12:00 AM</values>
+            <values>3/30/2019 12:00 AM</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>between</operator>
+            <values>3/31/2019 12:00 AM</values>
+            <values>6/29/2019 12:00 AM</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>between</operator>
+            <values>6/30/2019 12:00 AM</values>
+            <values>9/28/2019 12:00 AM</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>between</operator>
+            <values>9/29/2019 12:00 AM</values>
+            <values>12/28/2019 12:00 AM</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>between</operator>
             <values>12/31/2017 12:00 AM</values>
             <values>12/29/2018 12:00 AM</values>
         </dashboardFilterOptions>
         <dashboardFilterOptions>
             <operator>between</operator>
+            <values>12/31/2017 12:00 AM</values>
+            <values>3/31/2018 12:00 AM</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>between</operator>
+            <values>4/1/2018 12:00 AM</values>
+            <values>6/30/2018 12:00 AM</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>between</operator>
+            <values>7/1/2018 12:00 AM</values>
+            <values>9/29/2018 12:00 AM</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>between</operator>
+            <values>9/30/2018 12:00 AM</values>
+            <values>12/29/2018 12:00 AM</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>between</operator>
             <values>1/1/2017 12:00 AM</values>
+            <values>12/30/2017 12:00 AM</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>between</operator>
+            <values>1/1/2017 12:00 AM</values>
+            <values>4/1/2017 12:00 AM</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>between</operator>
+            <values>4/2/2017 12:00 AM</values>
+            <values>7/1/2017 12:00 AM</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>between</operator>
+            <values>7/2/2017 12:00 AM</values>
+            <values>9/30/2017 12:00 AM</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>between</operator>
+            <values>10/1/2017 12:00 AM</values>
             <values>12/30/2017 12:00 AM</values>
         </dashboardFilterOptions>
         <name>Manager Approved Date</name>
@@ -98,52 +153,6 @@
         <name>Distributor</name>
     </dashboardFilters>
     <dashboardGridLayout>
-        <dashboardGridComponents>
-            <colSpan>12</colSpan>
-            <columnIndex>0</columnIndex>
-            <dashboardComponent>
-                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
-                <chartAxisRange>Auto</chartAxisRange>
-                <chartSummary>
-                    <aggregate>Sum</aggregate>
-                    <axisBinding>y</axisBinding>
-                    <column>OpportunityLineItem.Core_Approved_Total_Price__c</column>
-                </chartSummary>
-                <componentType>Column</componentType>
-                <dashboardFilterColumns>
-                    <column>Opportunity.Core_Business_Unit_Territory__c</column>
-                </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>OpportunityLineItem.Core_Approved_Date__c</column>
-                </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>Opportunity.Core_Distributor__c</column>
-                </dashboardFilterColumns>
-                <decimalPrecision>-1</decimalPrecision>
-                <displayUnits>Auto</displayUnits>
-                <drillEnabled>false</drillEnabled>
-                <drillToDetailEnabled>false</drillToDetailEnabled>
-                <enableHover>false</enableHover>
-                <expandOthers>false</expandOthers>
-                <groupingColumn>OpportunityLineItem.Core_Approved_Date__c</groupingColumn>
-                <groupingSortProperties>
-                    <groupingSorts>
-                        <groupingLevel>g1</groupingLevel>
-                        <sortOrder>a</sortOrder>
-                    </groupingSorts>
-                </groupingSortProperties>
-                <header>EMEA Channel Tier 4 DWins by Win Date</header>
-                <legendPosition>Bottom</legendPosition>
-                <report>unfiled$public/EMEA_Channel_Tier_4_DWins_by_Win_Date</report>
-                <showPercentage>false</showPercentage>
-                <showValues>true</showValues>
-                <sortBy>RowLabelAscending</sortBy>
-                <sortLegendValues>false</sortLegendValues>
-                <useReportChart>false</useReportChart>
-            </dashboardComponent>
-            <rowIndex>0</rowIndex>
-            <rowSpan>12</rowSpan>
-        </dashboardGridComponents>
         <dashboardGridComponents>
             <colSpan>12</colSpan>
             <columnIndex>0</columnIndex>
@@ -232,7 +241,7 @@
                 <header>Channel Tier 4 Design Wins</header>
                 <report>unfiled$public/EMEA_Channel_Tier_4_Design_Wins</report>
             </dashboardComponent>
-            <rowIndex>12</rowIndex>
+            <rowIndex>0</rowIndex>
             <rowSpan>12</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
@@ -279,7 +288,7 @@
                 <sortLegendValues>false</sortLegendValues>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>24</rowIndex>
+            <rowIndex>12</rowIndex>
             <rowSpan>12</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
@@ -326,7 +335,7 @@
                 <sortLegendValues>false</sortLegendValues>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>36</rowIndex>
+            <rowIndex>24</rowIndex>
             <rowSpan>11</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
@@ -373,7 +382,7 @@
                 <sortLegendValues>false</sortLegendValues>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>47</rowIndex>
+            <rowIndex>35</rowIndex>
             <rowSpan>11</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
@@ -421,7 +430,7 @@
                 <sortLegendValues>false</sortLegendValues>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>58</rowIndex>
+            <rowIndex>46</rowIndex>
             <rowSpan>11</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
@@ -469,7 +478,7 @@
                 <sortLegendValues>false</sortLegendValues>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>58</rowIndex>
+            <rowIndex>46</rowIndex>
             <rowSpan>11</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
@@ -523,7 +532,7 @@
                 <header>Channel Tier 4 Design Wins by Disti</header>
                 <report>unfiled$public/EMEA_Channel_Tier_4_Design_Wins</report>
             </dashboardComponent>
-            <rowIndex>69</rowIndex>
+            <rowIndex>57</rowIndex>
             <rowSpan>10</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
@@ -577,7 +586,7 @@
                 <header>Channel Tier 4 Design Wins by Product Series</header>
                 <report>unfiled$public/EMEA_Channel_Tier_4_Design_Wins</report>
             </dashboardComponent>
-            <rowIndex>69</rowIndex>
+            <rowIndex>57</rowIndex>
             <rowSpan>10</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
@@ -624,7 +633,7 @@
                 <sortLegendValues>false</sortLegendValues>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>79</rowIndex>
+            <rowIndex>67</rowIndex>
             <rowSpan>12</rowSpan>
         </dashboardGridComponents>
         <numberOfColumns>12</numberOfColumns>

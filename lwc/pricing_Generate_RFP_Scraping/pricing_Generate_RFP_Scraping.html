@@ -1,35 +1,50 @@
 <template>
-    <!-- Confirmation Dialog Modal -->
     <template if:true={showProceedDialog}>
-        <!-- Modal Header -->
         <header class="slds-modal__header">
-            <h1 class="slds-modal__title slds-hyphenate">Agentic RFP Scraping Generation</h1>
+            <h1 class="slds-modal__title slds-hyphenate">
+                Agentic RFP Scraping Generation
+            </h1>
         </header>
-        
-        <!-- Modal Body -->
+
         <div class="slds-modal__content slds-p-around_medium">
-            <div class="slds-media">
-                <div class="slds-media__body">
-                    <p class="slds-text-body_regular">
-                        Do you want to proceed with Agentic RFP Scraping Generation? 
-                        Please note that existing AI responses will be overridden.<br/>
-                        Please refresh after sometime to check the AI response.
-                    </p>
-                </div>
-            </div>
+            <p class="slds-m-bottom_medium">
+                Do you want to proceed with Agentic RFP Scraping Generation?
+                Please note that existing AI responses will be overridden.
+            </p>
+
+            <template if:true={documentOptions.length}>
+                <lightning-checkbox-group
+                    name="documents"
+                    label="Select Documents"
+                    options={documentOptions}
+                    value={selectedDocuments}
+                    onchange={handleDocumentSelection}
+                    required>
+                </lightning-checkbox-group>
+
+                <template if:true={selectionError}>
+                    <div class="slds-text-color_error slds-m-top_small">
+                        Please select at least one document.
+                    </div>
+                </template>
+            </template>
+
+            <template if:false={documentOptions.length}>
+                <p>No documents found on this Quote.</p>
+            </template>
         </div>
-        
+
         <footer class="slds-modal__footer">
-            <lightning-button 
-                variant="neutral" 
-                label="Cancel" 
-                onclick={handleCancel} 
-                class="slds-m-right_small"
-                disabled={isLoading}>
+            <lightning-button
+                variant="neutral"
+                label="Cancel"
+                onclick={handleCancel}
+                class="slds-m-right_small">
             </lightning-button>
-            <lightning-button 
-                variant="brand" 
-                label="OK" 
+
+            <lightning-button
+                variant="brand"
+                label="OK"
                 onclick={handleNext}
                 disabled={isLoading}>
             </lightning-button>

@@ -11,9 +11,9 @@ public without sharing class PRM_AccountActvityOverview {
         responseWrapper rs = new responseWrapper();
         try{        
         Account acc = [select Id,Core_IPA_One_Partner_Id__c, RecordType.DeveloperName from Account where Id =:accID];
-        //String vxQuery;
-        Decimal totalTrainingCurrent, totalTrainingPrev;//sumOfTrainingAmt,oldTrainingAmt,totalAmt;
-        //Decimal sumOfTrainingAmtpre,oldTrainingAmtpre,totalAmtpre;
+        String vxQuery;
+        Decimal sumOfTrainingAmt,oldTrainingAmt,totalTrainingCurrent,totalTrainingPrev,totalAmt;
+        Decimal sumOfTrainingAmtpre,oldTrainingAmtpre,totalAmtpre;
         List<AggregateResult> dataList = new List<AggregateResult>();
         List<AggregateResult> trainingValdataList = new List<AggregateResult>();
         List<AggregateResult> dataListPrev = new List<AggregateResult>();
@@ -23,20 +23,19 @@ public without sharing class PRM_AccountActvityOverview {
         List<AggregateResult> dataListTrainedSum = new List<AggregateResult>();
         Set<Id> uniqueRecIdsSet = new Set<Id>();
         map<string,decimal> trainingOldMap=new map<string,decimal>();
-        //map<string,decimal> trainingNewMap=new map<string,decimal>();
+        map<string,decimal> trainingNewMap=new map<string,decimal>();
         Map<Decimal, String> vxValuesMap = new Map<Decimal, String>();
-        //Map<Id, Decimal> trainingValuesMap = new Map<Id, Decimal>();
+        Map<Id, Decimal> trainingValuesMap = new Map<Id, Decimal>();
         Map<Id, Map<Decimal, String>> vxMap = new Map<Id, Map<Decimal, String>>();
-        //Map<String, decimal> trainingCreditMap = new Map<String,decimal>();
-        //List<AggregateResult> totalApprovedOfferingList = new List<AggregateResult>();//IPA2.0 TWC727-3228
-      //List<AggregateResult> totalApprovedSolutionsList = new List<AggregateResult>();//IPA2.0 TWC727-3228
+        Map<String, decimal> trainingCreditMap = new Map<String,decimal>();
+        List<AggregateResult> totalApprovedOfferingList = new List<AggregateResult>();
         Map<ID,List<String>> accSalesCombination = new Map<ID,List<String>>();
         map<id,Decimal> trainingCurMap=new map<id,Decimal>();
         map<id,Decimal> trainingPrevMap=new map<id,Decimal>();
-        //Boolean isPublishedStorefront;//IPA2.0 TWC727-3228
+        Boolean isPublishedStorefront;
         String whereClause;
-        //oldTrainingAmt = 0;
-        //oldTrainingAmtpre = 0;
+        oldTrainingAmt = 0;
+        oldTrainingAmtpre = 0;
     Decimal sumCurrent=0,sumPrevious=0;
     
         if(acc.RecordType.DeveloperName=='Core_Partner_Account_Group'){
@@ -45,16 +44,17 @@ public without sharing class PRM_AccountActvityOverview {
                 
                 trainingOldMap.put(vxData.PRM_TimePeriod_Nm__c+','+vxData.PRM_Account_Id__c,vxData.PRM_Training_Credit_Points_Count_Nbr__c);
                 String str = vxData.PRM_TimePeriod_Nm__c;
-                //string accIdandTimePriod = vxData.PRM_TimePeriod_Nm__c+vxData.PRM_Account_Id__c;
+                string accIdandTimePriod = vxData.PRM_TimePeriod_Nm__c+vxData.PRM_Account_Id__c;
                 if(!vxMap.containsKey(vxData.PRM_Account_Id__c)) {
                     
-                    if(vxData.PRM_Sales_Amount_Nbr__c !=null){
+                    if(vxData.PRM_Sales_Amount_Nbr__c >0){
                         List<string> salesGrp = new List<string>();
                         salesGrp.add(vxData.PRM_Sales_Amount_Nbr__c+vxData.PRM_Sales_Calculation_Group_Txt__c+vxData.PRM_TimePeriod_Nm__c);
                         vxValuesMap.put(vxData.PRM_Sales_Amount_Nbr__c, vxData.PRM_Sales_Calculation_Group_Txt__c);
                         vxMap.put(vxData.PRM_Account_Id__c, vxValuesMap);
                         accSalesCombination.put(vxData.PRM_Account_Id__c,salesGrp);
                         uniqueRecIdsSet.add(vxData.Id);
+                        system.debug('uniqueRecIdsSet in if-->'+uniqueRecIdsSet);
                     }
                     
                 }
@@ -63,10 +63,11 @@ public without sharing class PRM_AccountActvityOverview {
                     //get the map values for corresponding account , and check if the same combination exists in the list <string> , if yes , then dont add for cacl
                     List<String> comb = accSalesCombination.get(vxData.PRM_Account_Id__c);
                     string combNew = vxData.PRM_Sales_Amount_Nbr__c+vxData.PRM_Sales_Calculation_Group_Txt__c+vxData.PRM_TimePeriod_Nm__c;
-                    if((!comb.contains(combNew)) && vxData.PRM_Sales_Amount_Nbr__c!=null ){
+                    if((!comb.contains(combNew)) && vxData.PRM_Sales_Amount_Nbr__c>0 ){
                         accSalesCombination.get(vxData.PRM_Account_Id__c).add(combNew);
                         vxMap.get(vxData.PRM_Account_Id__c).put(vxData.PRM_Sales_Amount_Nbr__c, vxData.PRM_Sales_Calculation_Group_Txt__c);
                         uniqueRecIdsSet.add(vxData.Id);
+                        system.debug('uniqueRecIdsSet in else-->'+uniqueRecIdsSet);
                     }
                 }
                 if(str==system.Label.PRM_Current_measurement_period ){
@@ -92,6 +93,7 @@ public without sharing class PRM_AccountActvityOverview {
                       //  trainingCurrentList = [SELECT max(PRM_Training_Credit_Points_Count_Nbr__c) trainingDashCredi from PRM_Value_Exchange_Data__c WHERE PRM_One_Partner_Id__c =:accID and PRM_TimePeriod_Nm__c=:system.Label.PRM_Current_measurement_period group by PRM_One_Partner_Id__c];
                     }*/
                     trainingCurMap.put(vxData.PRM_Account_Id__c,vxData.PRM_Training_Credit_Points_Count_Nbr__c);                                                       
+                    system.debug('trainingCurMap-->'+trainingCurMap);
                 }
                 if(str==system.Label.PRM_Previous_Measurement_Period){
                    /* if(!trainingNewMap.containsKey(vxData.PRM_TimePeriod_Nm__c+vxData.PRM_Account_Id__c)){
@@ -114,17 +116,19 @@ public without sharing class PRM_AccountActvityOverview {
                         
                     }*/
                     trainingPrevMap.put(vxData.PRM_Account_Id__c,vxData.PRM_Training_Credit_Points_Count_Nbr__c);                                                       
+                    system.debug('trainingPrevMap-->'+trainingPrevMap);
                 }
             }
-            //system.debug('uniqueRecIdsSetcuu-->'+uniqueRecIdsSet);
+            system.debug('uniqueRecIdsSetcuu-->'+uniqueRecIdsSet);
             dataList = [SELECT sum(PRM_Sales_Amount_Nbr__c) sales from PRM_Value_Exchange_Data__c WHERE Id IN:uniqueRecIdsSet and PRM_TimePeriod_Nm__c=:Label.PRM_Current_measurement_period group by PRM_One_Partner_Id__c];
             dataListPrev = [SELECT sum(PRM_Sales_Amount_Nbr__c) salesprev from PRM_Value_Exchange_Data__c WHERE Id IN:uniqueRecIdsSet and PRM_TimePeriod_Nm__c=:Label.PRM_Previous_Measurement_Period group by PRM_One_Partner_Id__c];
+            system.debug('dataListPrev-->'+dataListPrev);
             //Adding the logic in where condition to pick all the vx data where it is equal to accID instead of Uniquerecidset.
             //PRB10049494 Problem Ticket fix
             //dataListTrained = [SELECT sum(PRM_Number_Of_Employees_Nbr__c) totalTrained,max(PRM_Number_Of_Employees_Nbr__c) totalTrainedMax from PRM_Value_Exchange_Data__c WHERE PRM_One_Partner_Id__c =:accID and PRM_TimePeriod_Nm__c=:Label.PRM_Current_measurement_period group by PRM_One_Partner_Id__c];
-            dataListTrainedSum = [SELECT max(PRM_Number_Of_Employees_Nbr__c) totalTrained,PRM_Account_Id__c from PRM_Value_Exchange_Data__c WHERE PRM_One_Partner_Id__c =:accID and PRM_TimePeriod_Nm__c=:Label.PRM_Previous_Measurement_Period group by PRM_One_Partner_Id__c,PRM_Account_Id__c]; //TWC727-571 - Utkarsh - Updated where condition in the query for field PRM_TimePeriod_Nm__c. Earlier we were fetching 'Total no of employee' data based on current time period but as part of the story we have to show it for previous time period.
-            //totalApprovedOfferingList = getTotalApprovedOfferings(accID);//IPA2.0 TWC727-3228 
-            //isPublishedStorefront = getPublishedStorefront(accId,acc.Core_IPA_One_Partner_Id__c);  //IPA2.0 TWC727-3228          
+            dataListTrainedSum = [SELECT max(PRM_Number_Of_Employees_Nbr__c) totalTrained,PRM_Account_Id__c from PRM_Value_Exchange_Data__c WHERE PRM_One_Partner_Id__c =:accID and PRM_TimePeriod_Nm__c=:Label.PRM_Current_measurement_period group by PRM_One_Partner_Id__c,PRM_Account_Id__c];
+            totalApprovedOfferingList = getTotalApprovedOfferings(accID);
+            isPublishedStorefront = getPublishedStorefront(accId,acc.Core_IPA_One_Partner_Id__c);               
             for(Decimal i:trainingCurMap?.values()){
                             sumCurrent+=i;
             } 
@@ -133,14 +137,13 @@ public without sharing class PRM_AccountActvityOverview {
             } 
             totalTrainingCurrent=sumCurrent;
             totalTrainingPrev=sumPrevious;
-            //IPA2.0: US-TWC729-7976
-            //totalApprovedSolutionsList=[select count(PSS_Partner_Account_Id__c) approvedSolution from ArdiraSurvey__Survey_Result__c where PSS_OPID_Account_Id__c= :accID and PSS_Partner_Solution_Lifecycle_Status_Nm__c in ('Converted To MP Offerings', 'Approved') group by PSS_OPID_Account_Id__c];
+            
         }
         if(acc.RecordType.DeveloperName=='Mastered_Account'){
             whereClause = 'where PRM_Account_Id__c =:accID group by PRM_Account_Id__c';
             for(PRM_Value_Exchange_Data__c vxData: [SELECT Id,PRM_TimePeriod_Nm__c,PRM_From_Dt__c,PRM_Training_Credit_Points_Report_Nbr__c,PRM_Account_Id__c,PRM_To_Dt__c,PRM_Sales_Amount_Nbr__c,PRM_Sales_Calculation_Group_Txt__c, PRM_Training_Credit_Points_Count_Nbr__c,PRM_Number_Of_Employees_Nbr__c from PRM_Value_Exchange_Data__c WHERE PRM_Account_Id__c =:accID]){
                 if(!vxMap.containsKey(vxData.PRM_Account_Id__c)) {
-                    if(vxData.PRM_Sales_Amount_Nbr__c !=null){
+                    if(vxData.PRM_Sales_Amount_Nbr__c >0){
                         List<string> salesGrp = new List<string>();
                         salesGrp.add(vxData.PRM_Sales_Amount_Nbr__c+vxData.PRM_Sales_Calculation_Group_Txt__c+vxData.PRM_TimePeriod_Nm__c);                       
                         vxValuesMap.put(vxData.PRM_Sales_Amount_Nbr__c, vxData.PRM_Sales_Calculation_Group_Txt__c);
@@ -152,7 +155,7 @@ public without sharing class PRM_AccountActvityOverview {
                 else{
                      List<String> comb = accSalesCombination.get(vxData.PRM_Account_Id__c);
                     string combNew = vxData.PRM_Sales_Amount_Nbr__c+vxData.PRM_Sales_Calculation_Group_Txt__c+vxData.PRM_TimePeriod_Nm__c;                    
-                    if((!comb.contains(combNew)) && (vxData.PRM_Sales_Amount_Nbr__c!=null)){
+                    if((!comb.contains(combNew)) && (vxData.PRM_Sales_Amount_Nbr__c>0)){
                         vxMap.get(vxData.PRM_Account_Id__c).put(vxData.PRM_Sales_Amount_Nbr__c, vxData.PRM_Sales_Calculation_Group_Txt__c);
                         uniqueRecIdsSet.add(vxData.Id);
                     }
@@ -170,14 +173,14 @@ public without sharing class PRM_AccountActvityOverview {
             trainingValdataListprev = [SELECT max(PRM_Training_Credit_Points_Count_Nbr__c) trainingCrediprev from PRM_Value_Exchange_Data__c WHERE PRM_Account_Id__c =:accID and PRM_TimePeriod_Nm__c=:system.Label.PRM_Previous_Measurement_Period group by PRM_Account_Id__c];
             //Adding the logic in where condition to pick all the vx data where it is equal to accID instead of Uniquerecidset.
             //PRB10049494 Problem Ticket fix
-            dataListTrained = [SELECT max(PRM_Number_Of_Employees_Nbr__c) totalTrained from PRM_Value_Exchange_Data__c WHERE PRM_Account_Id__c =:accID and PRM_TimePeriod_Nm__c=:Label.PRM_Previous_Measurement_Period group by PRM_Account_Id__c]; // //TWC727-571 - Utkarsh - Updated where condition in the query for field PRM_TimePeriod_Nm__c. Earlier we were fetching 'Total no of employee' data based on current time period but as part of the story we have to show it for previous time period.
+            dataListTrained = [SELECT max(PRM_Number_Of_Employees_Nbr__c) totalTrained from PRM_Value_Exchange_Data__c WHERE PRM_Account_Id__c =:accID and PRM_TimePeriod_Nm__c=:Label.PRM_Current_measurement_period group by PRM_Account_Id__c];
                 
-            //totalApprovedOfferingList = getTotalApprovedOfferings(accID);//IPA2.0 TWC727-3228
-            //isPublishedStorefront = getPublishedStorefront(accId,acc.Core_IPA_One_Partner_Id__c);//IPA2.0 TWC727-3228
+            totalApprovedOfferingList = getTotalApprovedOfferings(accID);
+            isPublishedStorefront = getPublishedStorefront(accId,acc.Core_IPA_One_Partner_Id__c);
             //Adding the logic in where condition to pick all the vx data where it is equal to accID instead of Uniquerecidset.
             //PRB10049494 Problem Ticket fix
             trainingCurrentList = [SELECT max(PRM_Training_Credit_Points_Count_Nbr__c) trainingDashCredi from PRM_Value_Exchange_Data__c WHERE PRM_Account_Id__c =:accID and PRM_TimePeriod_Nm__c=:system.Label.PRM_Current_measurement_period group by PRM_Account_Id__c];
-            //totalApprovedSolutionsList=getTotalApprovedSolutions(accID);//IPA2.0: US-TWC729-7976
+            
         }
         
         Decimal totalPointsEarned;
@@ -189,9 +192,8 @@ public without sharing class PRM_AccountActvityOverview {
         Decimal totalAWRremaining;
         Decimal totalPointsBalance;
         Decimal totalSalesDataPrevPeriod;
-        //Decimal totalApprovedOffering;//IPA2.0 TWC727-3228
+        Decimal totalApprovedOffering;
         Decimal totalTrainingDataDash;
-	    //Decimal	totalApprovedSolutions;//IPA2.0: US-TWC729-7976
         List<Account> accounts = new List<Account>();
         HttpRequest httpReq = new HttpRequest();
         HttpResponse response = new HttpResponse();
@@ -208,7 +210,7 @@ public without sharing class PRM_AccountActvityOverview {
                     if(token != null || String.isNotBlank(token)) {
                         httpReq = new  HttpRequest();    
                         httpReq.setEndpoint(apiDetails.EndPointURL__c);
-                        httpReq.setHeader(PRM_IPA_Constants.Authorization, PRM_IPA_Constants.Bearer +token);
+                        httpReq.setHeader('Authorization', 'Bearer '+token);
                         httpReq.setHeader('Content-Type', 'application/xml');
                         String prebaseBody1 = '<?xml version="1.0" encoding="UTF-8"?>';
                         String prebaseBody2 ='<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns1="urn:xmethods" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">';
@@ -227,27 +229,21 @@ public without sharing class PRM_AccountActvityOverview {
                         httpReq.setBody(baseBody);
                         httpReq.setMethod('POST');
                         httpReq.setTimeout(Integer.valueOf(Label.APIGEETimeout));
-                        //system.debug('httpReq-->'+httpReq);
-                        //system.debug('httpReq get body-->'+httpReq.getBody());
+                        system.debug('httpReq-->'+httpReq);
+                        system.debug('httpReq get body-->'+httpReq.getBody());
                         response = new Http().send(httpReq);
                         
                         if(response.getStatusCode() != 200 || response.getBody().indexOf('ErrorCode') > -1){
                             CustomException ex = new CustomException();                    
                             ex.Message = response.getBody();                          
-                            ex.StackTraceString = 'Collinsion API Error';
-                            createErrorRecordWrapper errorRecord=new createErrorRecordWrapper();
-                            errorRecord.msg='Unable to Initiate Sync Request';
-                            errorRecord.acc=accounts[0];
-                            errorRecord.ex=ex;
-                            errorRecord.severity=LOG_ENTRY_ERROR;
-                            createErrorRecord(errorRecord); 
-                            //createErrorRecord('Unable to Initiate Sync Request', accounts[0], ex, LOG_ENTRY_ERROR); 
+                            ex.StackTraceString = 'Collinsion API Error';                    
+                            createErrorRecord('Unable to Initiate Sync Request', accounts[0], ex, LOG_ENTRY_ERROR); 
                         }else{
-                            //system.debug('Response ===>'+EncodingUtil.urlDecode(response.getBody(), 'UTF-8'));
+                            system.debug('Response ===>'+EncodingUtil.urlDecode(response.getBody(), 'UTF-8'));
                             String responseBody = response.getBody().replaceAll('&lt;','<').replaceAll('&gt;','>');
                             
                             responseBody = responseBody.replace(responseBody.substringBefore('<response>'),'').replace(responseBody.substringAfter('</response>'),'');
-                            //system.debug('responseBody ===>'+responseBody);
+                            system.debug('responseBody ===>'+responseBody);
                             
                             createRealTimePointDataRecord(responseBody, accounts[0]); 
                         }
@@ -257,24 +253,12 @@ public without sharing class PRM_AccountActvityOverview {
             else{
                 CustomException ex = new CustomException();                    
                 ex.Message = 'End Point Record is not available';                          
-                ex.StackTraceString = 'PRM_Integration__mdt'; 
-                createErrorRecordWrapper errorRecord=new createErrorRecordWrapper();
-                errorRecord.msg=ex.Message;
-                errorRecord.acc=accounts[0];
-                errorRecord.ex=ex;
-                errorRecord.severity=LOG_ENTRY_ERROR;
-              createErrorRecord(errorRecord); 
-                //createErrorRecord(ex.Message, accounts[0], ex, LOG_ENTRY_ERROR);
+                ex.StackTraceString = 'PRM_Integration__mdt';                    
+                createErrorRecord(ex.Message, accounts[0], ex, LOG_ENTRY_ERROR);
             }
         }catch(Exception ex){
             CustomException custEx = createException(ex);
-            createErrorRecordWrapper errorRecord=new createErrorRecordWrapper();
-            errorRecord.msg='Issue in Record Id';
-            errorRecord.acc=accounts[0];
-            errorRecord.ex=custEx;
-            errorRecord.severity=LOG_ENTRY_ERROR;
-            //createErrorRecord('Issue in Record Id', accounts[0], custEx, LOG_ENTRY_ERROR);  
-            createErrorRecord(errorRecord);             
+            createErrorRecord('Issue in Record Id', accounts[0], custEx, LOG_ENTRY_ERROR);               
         }
         finally
         {
@@ -283,16 +267,9 @@ public without sharing class PRM_AccountActvityOverview {
             
         }
         //Added as part of US-1636 for PointsBalance metrics.
-            //String query = 'SELECT max(PRM_Total_Points_Due_to_Expire_Nbr__c) pointsEpiringSoon,max(PRM_Points_Balance__c) pointsBalance from PRM_Points_Data__c' +' '+whereClause;       
-            String query = '';
-            if(acc.RecordType.DeveloperName=='Core_Partner_Account_Group'){
-              query = 'SELECT max(PRM_Total_Points_Due_to_Expire_Nbr__c) pointsEpiringSoon,max(PRM_Points_Balance__c) pointsBalance from PRM_Points_Data__c where PRM_One_Partner_Id__c =:accID';
-            }else{
-              query = 'SELECT max(PRM_Total_Points_Due_to_Expire_Nbr__c) pointsEpiringSoon,max(PRM_Points_Balance__c) pointsBalance from PRM_Points_Data__c where PRM_Account_Id__c =:accID';    
-            }
-            
+        String query = 'SELECT max(PRM_Total_Points_Due_to_Expire_Nbr__c) pointsEpiringSoon,max(PRM_Points_Balance__c) pointsBalance from PRM_Points_Data__c' +' '+whereClause;
         
-        //System.debug('Query'+query);
+        System.debug('Query'+query);
         for(AggregateResult dt :Database.query(query)){ // aggregate result
             totalPointsExpired =(Decimal)dt.get('pointsEpiringSoon');
             totalPointsBalance =(Decimal)dt.get('pointsBalance');
@@ -310,18 +287,22 @@ public without sharing class PRM_AccountActvityOverview {
         //Training Calculation
         for(AggregateResult vx: trainingValdataList){
             totalTrainingCurrent =(Decimal)vx.get('trainingCredi');
+            system.debug('totalTrainingCurrent'+totalTrainingCurrent);
         }
 
         for(AggregateResult vx: trainingCurrentList){
                 totalTrainingDataDash =(Decimal)vx.get('trainingDashCredi');
+                system.debug('trainingCurrentList'+trainingCurrentList);
         }
         
         for(AggregateResult vx: trainingValdataListprev){
             totalTrainingPrev =(Decimal)vx.get('trainingCrediprev');
+            system.debug('totalTrainingPrev'+totalTrainingPrev);
         }
         
         for(AggregateResult vx: dataListTrained){
             totalTrainedResources = (Decimal)vx.get('totalTrained');
+            system.debug('totalTrainedResources'+totalTrainedResources);
         }
            /* for(AggregateResult vx: dataListTrained){
             totalTrainedResourcesMax = (Decimal)vx.get('totalTrainedMax');
@@ -329,25 +310,20 @@ public without sharing class PRM_AccountActvityOverview {
         }*/
         for(AggregateResult vx: dataListTrainedSum){
             totalTrainedResources = totalTrainedResources + (Decimal)vx.get('totalTrained');
+            system.debug('totalTrainedResources'+totalTrainedResources);
         }
         
         //Offering Calculation
-        // for(AggregateResult vx: totalApprovedOfferingList){
-        //     totalApprovedOffering = (Decimal)vx.get('approvedOffer');
-        // }
-        //IPA2.0 TWC727-3228
-     //ApprovedSolutions Calculation//IPA2.0: US-TWC729-7976
-        /*for(AggregateResult vx: totalApprovedSolutionsList){
-            totalApprovedSolutions = (Decimal)vx.get('approvedSolution');
-        }*/
-            if(whereClause != null){
-                String uxQuery='SELECT sum(PRM_Number_Of_AWR_Remaining_Nbr__c) remaining,sum(PRM_Number_Of_AWR_Used_Nbr__c)allocated from PRM_Warranty_Data__c '+' '+whereClause;
-                //System.debug('Query'+uxQuery);
-                for( AggregateResult ux: Database.query(uxQuery)){ // aggregate result
-                    totalAWRremaining=(Decimal)ux.get('remaining');
-                    totalAWRallocated=(Decimal)ux.get('allocated');
-            }
-            }
+        for(AggregateResult vx: totalApprovedOfferingList){
+            totalApprovedOffering = (Decimal)vx.get('approvedOffer');
+        }
+        
+        String uxQuery='SELECT sum(PRM_Number_Of_AWR_Remaining_Nbr__c) remaining,sum(PRM_Number_Of_AWR_Used_Nbr__c)allocated from PRM_Warranty_Data__c '+' '+whereClause;
+        System.debug('Query'+uxQuery);
+        for( AggregateResult ux: Database.query(uxQuery)){ // aggregate result
+            totalAWRremaining=(Decimal)ux.get('remaining');
+            totalAWRallocated=(Decimal)ux.get('allocated');
+        }
         
         
         // assign data to wrapper
@@ -362,10 +338,10 @@ public without sharing class PRM_AccountActvityOverview {
         rs.totalAWRremaining=totalAWRremaining!=Null ? totalAWRremaining:0;
         rs.totalPointsBalance=totalPointsBalance!=Null ? totalPointsBalance:0;
         rs.totalTrainedResources=totalTrainedResources!=Null ? totalTrainedResources:0;
-        //rs.totalApprovedOffering = totalApprovedOffering!=Null ? totalApprovedOffering:0; //IPA2.0 TWC727-3228
-        //rs.publishedStorefront = isPublishedStorefront!=Null ? isPublishedStorefront:false;//IPA2.0 TWC727-3228
+        rs.totalApprovedOffering = totalApprovedOffering!=Null ? totalApprovedOffering:0;
+        rs.publishedStorefront = isPublishedStorefront!=Null ? isPublishedStorefront:false;
         rs.totalTrainedResourcesMax = totalTrainedResourcesMax!=Null ?totalTrainedResourcesMax:0;  
-        /*rs.totalApprovedSolutions=    totalApprovedSolutions!=Null? totalApprovedSolutions: 0;*/ //IPA2.0: US-TWC729-7976    
+            
         }catch(Exception e){
             rs = new responseWrapper();
             PRM_ErrorUtilityClass.logError(e);
@@ -383,45 +359,33 @@ public without sharing class PRM_AccountActvityOverview {
             
             //string gType = EncodingUtil.urlEncode('client_credentials','UTF-8');
             String payLoad = 'grant_type=client_credentials&client_id=' + EncodingUtil.urlEncode(apiDetails.Username__c,'UTF-8') +'&client_secret=' + EncodingUtil.urlEncode(apiDetails.Password__c, 'UTF-8');
-            //system.debug('payload- '+payload);       
+            system.debug('payload- '+payload);       
             httpReq.setBody(payLoad);
-            //system.debug('>>>>httpReq'+httpReq.getEndpoint());
+            system.debug('>>>>httpReq'+httpReq.getEndpoint());
             HttpResponse response;
             if(!Test.isRunningTest()){
                 response = new Http().send(httpReq); 
             }else{
                 response = new HttpResponse();
-                response.setBody('{"access_token": "TestToken124","token_type": "Bearer","expires_in": "3599","ext_expires_in": "3599"}');
+                response.setBody('{"access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Im5Pbz","token_type": "Bearer","expires_in": "3599","ext_expires_in": "3599"}');
                 response.setStatusCode(200);
             }
             
             if(response.getStatusCode() == 200 ) {
-                //system.debug('Response ===>'+EncodingUtil.urlDecode(response.getBody(), 'UTF-8'));
+                system.debug('Response ===>'+EncodingUtil.urlDecode(response.getBody(), 'UTF-8'));
                 token = PRM_Token_Model.parse(response.getBody());
                 Cache.Org.put('local.PRMIPAPartition.APIGEEaccesstoken',token.access_token, Integer.valueOf(Label.APIGEETokenExpiryTime),Cache.Visibility.ALL, true);
             }
             else {
-                //system.debug('response- '+response.getBody());
+                system.debug('response- '+response.getBody());
                 CustomException ex = new CustomException();                    
                 ex.Message = 'Error in token generation -'+response.getBody();  
-                createErrorRecordWrapper errorRecord=new createErrorRecordWrapper();
-                errorRecord.msg=ex.Message;
-                errorRecord.acc=null;
-                errorRecord.ex=ex;
-                errorRecord.severity=LOG_ENTRY_ERROR;
-                //createErrorRecord(ex.Message, null, ex, LOG_ENTRY_ERROR);
-                createErrorRecord(errorRecord);
+                createErrorRecord(ex.Message, null, ex, LOG_ENTRY_ERROR);
             }
         }
         catch(Exception ex){
             CustomException custEx = createException(ex);
-            createErrorRecordWrapper errorRecord=new createErrorRecordWrapper();
-            errorRecord.msg='API token issue';
-            errorRecord.acc=null;
-            errorRecord.ex=custEx;
-            errorRecord.severity=LOG_ENTRY_ERROR;
-            //createErrorRecord('API token issue', null, custEx, LOG_ENTRY_ERROR); 
-            createErrorRecord(errorRecord); 
+            createErrorRecord('API token issue', null, custEx, LOG_ENTRY_ERROR); 
         }
         return token;
     }
@@ -448,16 +412,14 @@ public without sharing class PRM_AccountActvityOverview {
         public Decimal totalTrainingCreditsPrevPeriod {get;set;}
         @AuraEnabled
         public Decimal totalTrainedResources {get;set;}
-        // @AuraEnabled
-        // public Decimal totalApprovedOffering {get;set;}//IPA2.0 TWC727-3228
+        @AuraEnabled
+        public Decimal totalApprovedOffering {get;set;}
         @AuraEnabled
         public Decimal totalTrainingDataDash {get;set;}
-        // @AuraEnabled
-        // public Boolean publishedStorefront {get;set;}//IPA2.0 TWC727-3228
+        @AuraEnabled
+        public Boolean publishedStorefront {get;set;}
         @AuraEnabled
         public Decimal totalTrainedResourcesMax {get;set;}
-    // @AuraEnabled
-        // public Decimal totalApprovedSolutions {get;set;}//IPA2.0 TWC727-3228
     }
     
     @AuraEnabled
@@ -469,7 +431,7 @@ public without sharing class PRM_AccountActvityOverview {
         }     
             return con.AccountId;
     }
-    /* public static void createErrorRecord(String msg, Account acc, CustomException ex, String severity){
+    public static void createErrorRecord(String msg, Account acc, CustomException ex, String severity){
         try{ 
             Id recId = acc?.Id;
             String strDetailsAndEx = '';
@@ -492,46 +454,13 @@ public without sharing class PRM_AccountActvityOverview {
             Core_Log_Entry.logEntryWithException(LOG_ENTRY_ORIGIN, LOG_ENTRY_PROJECT, LOG_ENTRY_SCOPE, LOG_ENTRY_SEVERITY,'' ,'' , '', '', '',e);
         }
         
-    } */ //ATHR fixes
-    
-    public class createErrorRecordWrapper{
-        public String msg {get;set;}
-        public Account acc{get;set;}
-        public CustomException ex{get;set;}
-        public String severity{get;set;}
     }
-    
-    public static void createErrorRecord(createErrorRecordWrapper att){
-        try{ 
-            Id recId = att.acc?.Id;
-            String strDetailsAndEx = '';
-            strDetailsAndEx += 'Message: ' + att.ex.Message + '\n';
-            strDetailsAndEx += 'Cause: ' + att.ex.Cause + '\n';
-            strDetailsAndEx += 'Line Number: ' + att.ex.LineNumber + '\n';
-            strDetailsAndEx += 'Stack Trace: ' + att.ex.StackTraceString + '\n';
-            strDetailsAndEx += 'Type Name: ' + att.ex.TypeName + '\n';
-            if(recId != null){
-                //Creating error records
-                PRM_RealTimePointsData__c rtpd = new PRM_RealTimePointsData__c();
-                rtpd.PRM_AccountBizId__c = att.acc.AccountNumber;
-                rtpd.PRM_AccountId__c = att.acc.Id;
-                rtpd.PRM_Status__c = 'Failed';
-                rtpd.PRM_Status_Reason__c = strDetailsAndEx;
-                insert rtpd;
-            }
-            
-        }catch(Exception e){
-            Core_Log_Entry.logEntryWithException(LOG_ENTRY_ORIGIN, LOG_ENTRY_PROJECT, LOG_ENTRY_SCOPE, LOG_ENTRY_SEVERITY,'' ,'' , '', '', '',e);
-        }
-        
-    }
-    
     public static void createRealTimePointDataRecord(String msg, Account acc){
-        //system.debug('msg-->'+msg);
-        //system.debug('Account-->'+acc);
+        system.debug('msg-->'+msg);
+        system.debug('Account-->'+acc);
         try{
             Id recId,syncObjRecId; 
-            //String strDetailsAndEx = '';
+            String strDetailsAndEx = '';
             List<PRM_Points_Data__c> pointsdata = new List<PRM_Points_Data__c>();
             if(acc != null && msg != null){
                 recId = acc.Id;
@@ -544,15 +473,12 @@ public without sharing class PRM_AccountActvityOverview {
                 syncObjRecId = rtpd.Id;
             }
             //if(msg.length() > 10 && !msg.contains('No Data retrieved')){
-                //system.debug('>>>>>listval'+[Select id, PRM_Account_Id__c,PRM_Change_Date_Time_Dt__c,DQ_Flag__c,PRM_End_Date_Dt__c,PRM_Inactive_Indicator__c,PRM_One_Partner_Id__c,PRM_Points_Balance__c,PRM_Total_Points_Due_to_Expire_Nbr__c,PRM_Points_ext_id__c,PRM_Start_Date_Dt__c,PRM_Total_Points_Available_Nbr__c,PRM_Total_Points_Earned_Nbr__c,PRM_Total_Points_Expired_Nbr__c,PRM_Total_Points_Redeemed_Nbr__c From PRM_Points_Data__c]);
-                //pointsdata = [Select id, PRM_Account_Id__c,PRM_Change_Date_Time_Dt__c,DQ_Flag__c,PRM_End_Date_Dt__c,PRM_Inactive_Indicator__c,PRM_One_Partner_Id__c,PRM_Points_Balance__c,PRM_Total_Points_Due_to_Expire_Nbr__c,PRM_Points_ext_id__c,PRM_Start_Date_Dt__c,PRM_Total_Points_Available_Nbr__c,PRM_Total_Points_Earned_Nbr__c,PRM_Total_Points_Expired_Nbr__c,PRM_Total_Points_Redeemed_Nbr__c From PRM_Points_Data__c Where PRM_Account_Id__c =: acc.Id AND DQ_Flag__c != false];
-              //TWC729-7584 - ApexGuru
-              pointsdata = [Select id, PRM_Account_Id__c,PRM_Change_Date_Time_Dt__c,DQ_Flag__c,PRM_End_Date_Dt__c,PRM_Inactive_Indicator__c,PRM_One_Partner_Id__c,PRM_Points_Balance__c,PRM_Total_Points_Due_to_Expire_Nbr__c,PRM_Points_ext_id__c,PRM_Start_Date_Dt__c,PRM_Total_Points_Available_Nbr__c,PRM_Total_Points_Earned_Nbr__c,PRM_Total_Points_Expired_Nbr__c,PRM_Total_Points_Redeemed_Nbr__c From PRM_Points_Data__c Where PRM_Account_Id__c =: acc.Id AND DQ_Flag__c = true];
-
+                system.debug('>>>>>listval'+[Select id, PRM_Account_Id__c,PRM_Change_Date_Time_Dt__c,DQ_Flag__c,PRM_End_Date_Dt__c,PRM_Inactive_Indicator__c,PRM_One_Partner_Id__c,PRM_Points_Balance__c,PRM_Total_Points_Due_to_Expire_Nbr__c,PRM_Points_ext_id__c,PRM_Start_Date_Dt__c,PRM_Total_Points_Available_Nbr__c,PRM_Total_Points_Earned_Nbr__c,PRM_Total_Points_Expired_Nbr__c,PRM_Total_Points_Redeemed_Nbr__c From PRM_Points_Data__c]);
+                pointsdata = [Select id, PRM_Account_Id__c,PRM_Change_Date_Time_Dt__c,DQ_Flag__c,PRM_End_Date_Dt__c,PRM_Inactive_Indicator__c,PRM_One_Partner_Id__c,PRM_Points_Balance__c,PRM_Total_Points_Due_to_Expire_Nbr__c,PRM_Points_ext_id__c,PRM_Start_Date_Dt__c,PRM_Total_Points_Available_Nbr__c,PRM_Total_Points_Earned_Nbr__c,PRM_Total_Points_Expired_Nbr__c,PRM_Total_Points_Redeemed_Nbr__c From PRM_Points_Data__c Where PRM_Account_Id__c =: acc.Id AND DQ_Flag__c != false];
             //}
             
             //Deserialize the JSON response - 
-            //List<Map<String, String>> wrapList = new List<Map<String, String>>();
+            List<Map<String, String>> wrapList = new List<Map<String, String>>();
             Dom.Document doc = new Dom.Document();
             doc.load(msg);
             Map<String,String> responseMap = new Map<String,String>();
@@ -621,11 +547,11 @@ public without sharing class PRM_AccountActvityOverview {
     }
     
     //US TWC729-3538
-    /* public static List<AggregateResult> getTotalApprovedOfferings(Id accID){
+     public static List<AggregateResult> getTotalApprovedOfferings(Id accID){
         String startDate = System.Label.PRM_Start_Date_for_AppOfferings;
         String endDate = System.Label.PRM_EndDate_For_AppOfferings;
-        //Date startDateApp = Date.valueOf(startDate);
-        //Date endDateApp = Date.valueOf(endDate);
+        Date startDateApp = Date.valueOf(startDate);
+        Date endDateApp = Date.valueOf(endDate);
         Account acc = [select id, name, Core_IPA_One_Partner_Id__c from Account where id=: accID];
         List<AggregateResult> ApprovedOfferingList = new List<AggregateResult>();
         List<PMP_OPID_MPI_Rel__c> mpirecords = new  List<PMP_OPID_MPI_Rel__c>();
@@ -647,16 +573,9 @@ public without sharing class PRM_AccountActvityOverview {
                 }
             }  
         return ApprovedOfferingList;
-    }*/
-    //IPA2.0 TWC727-3228
-    //IPA2.0: US-TWC729-7976
-   /*public static List<AggregateResult> getTotalApprovedSolutions(Id accID){
-     List<AggregateResult> approvedSolutionsList = new List<AggregateResult>();
-     approvedSolutionsList=[select  count(PSS_Partner_Account_Id__c) approvedSolution from ArdiraSurvey__Survey_Result__c where PSS_Partner_Account_Id__c=: accID 
-                and PSS_Partner_Solution_Lifecycle_Status_Nm__c in ('Converted To MP Offerings', 'Approved') ];
-     return approvedSolutionsList;
-   }*/
-    /*public static boolean getPublishedStorefront(Id accId,id opidAcnt){
+    }
+
+    public static boolean getPublishedStorefront(Id accId,id opidAcnt){
        // Account acc = [select id, name, Core_IPA_One_Partner_Id__c from Account where id=: accID];
         Boolean isPublished= false;
         List<PMP_OPID_MPI_Rel__c> mpirecords = new  List<PMP_OPID_MPI_Rel__c>();
@@ -671,6 +590,5 @@ public without sharing class PRM_AccountActvityOverview {
             isPublished=true; 
         }
         return isPublished;
-    }*/
-    //IPA2.0 TWC727-3228
+    }
 }

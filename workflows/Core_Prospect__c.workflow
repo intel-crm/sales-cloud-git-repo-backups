@@ -33,13 +33,22 @@
         <triggerType>onAllChanges</triggerType>
     </rules>
     <rules>
+        <fullName>Core_Mass_Claim_update</fullName>
+        <active>false</active>
+        <formula>ISCHANGED(Core_Mass_Claim_Flag__c)</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
         <fullName>Core_Update_Flag_On_Revive</fullName>
         <actions>
             <name>Core_Update_Revive_Flag</name>
             <type>FieldUpdate</type>
         </actions>
         <active>false</active>
-        <formula>AND( TEXT(PRIORVALUE(Core_Status_Pkt__c)) = &apos;Disqualified&apos;, ISPICKVAL(Core_Status_Pkt__c, &apos;Accepted&apos;) )</formula>
+        <formula>AND(
+TEXT(PRIORVALUE(Core_Status_Pkt__c)) = &apos;Disqualified&apos;,
+ISPICKVAL(Core_Status_Pkt__c, &apos;Accepted&apos;)
+)</formula>
         <triggerType>onAllChanges</triggerType>
     </rules>
 </Workflow>

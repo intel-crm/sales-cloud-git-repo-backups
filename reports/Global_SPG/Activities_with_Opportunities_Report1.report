@@ -47,6 +47,7 @@
         <value>1</value>
     </params>
     <reportType>OpportunityActivity</reportType>
+    <roleHierarchyFilter>EMP_11580505_Jin_Prowse</roleHierarchyFilter>
     <scope>team</scope>
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
@@ -55,6 +56,8 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>DUE_DATE</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

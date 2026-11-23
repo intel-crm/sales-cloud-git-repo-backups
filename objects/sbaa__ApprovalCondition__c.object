@@ -218,6 +218,11 @@
                     <default>false</default>
                     <label>core_cpq_revision_nbr__c</label>
                 </value>
+                <value>
+                    <fullName>core_cpq_corporate_flag__c</fullName>
+                    <default>false</default>
+                    <label>core_cpq_corporate_flag__c</label>
+                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -453,6 +458,16 @@
                     <fullName>core_cpq_corporate_flag__c</fullName>
                     <default>false</default>
                     <label>core_cpq_corporate_flag__c</label>
+                </value>
+                <value>
+                    <fullName>core_cpq_name_nm__c</fullName>
+                    <default>false</default>
+                    <label>core_cpq_name_nm__c</label>
+                </value>
+                <value>
+                    <fullName>core_cpq_comments_to_disty_txt__c</fullName>
+                    <default>false</default>
+                    <label>core_cpq_comments_to_disty_txt__c</label>
                 </value>
                 <value>
                     <fullName>SBQQ__Status__c</fullName>

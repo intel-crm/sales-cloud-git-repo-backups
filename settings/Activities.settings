@@ -6,7 +6,7 @@
     <enableCalendarHomeLWC>false</enableCalendarHomeLWC>
     <enableClickCreateEvents>false</enableClickCreateEvents>
     <enableDragAndDropScheduling>true</enableDragAndDropScheduling>
-    <enableEmailTracking>true</enableEmailTracking>
+    <enableEmailTracking>false</enableEmailTracking>
     <enableFlowTaskNotifsViaApex>false</enableFlowTaskNotifsViaApex>
     <enableGroupTasks>true</enableGroupTasks>
     <enableHideChildEventsPreference>false</enableHideChildEventsPreference>

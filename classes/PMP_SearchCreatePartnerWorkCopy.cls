@@ -11,7 +11,7 @@ public class PMP_SearchCreatePartnerWorkCopy implements Queueable{
         for(PMP_Company__c partner : newcompanies){
             PMP_Company__c partner_wc                      		= new PMP_Company__c();
             partner_wc.Name                                		= partner.Name;
-          //  partner_wc.PMP_Account_Id__c                   		= partner.PMP_Account_Id__c;
+            partner_wc.PMP_Account_Id__c                   		= partner.PMP_Account_Id__c;
             partner_wc.PMP_Company_Lifecycle_Status_Nm__c  		= PMP_StaticConstants_Partner.Draft;            
             partner_wc.PMP_Account_Website__c              		= partner.PMP_Account_Website__c;
             partner_wc.PMP_Account_Program_Membership__c		= partner.PMP_Account_Program_Membership__c;
@@ -21,20 +21,15 @@ public class PMP_SearchCreatePartnerWorkCopy implements Queueable{
             partner_wc.PMP_Is_Working_Copy_Ind__c          		= true;            
             partner_wc.PMP_Company_Status_Update_Dt__c     		= Date.today();
             partner_wc.PMP_Published_Copy_Id__c					= partner.Id;
+            //Added by nikhil to update One partner id in working copy as well 28-Nov-2019
             partner_wc.PMP_One_Partner_ID__c 					= partner.PMP_One_Partner_ID__c;
-            partner_wc.PMP_Partner_Benefit_Type__c				= partner.PMP_Partner_Benefit_Type__c;
-            partner_wc.PMP_IPA_Badge_Tier_Txt__c                = partner.PMP_IPA_Badge_Tier_Txt__c;
-            partner_wc.PMP_Partner_Segment_Nm__c                = partner.PMP_Partner_Segment_Nm__c;
             createworkcopies.add(partner_wc);
             
         }
         if(!createworkcopies.isEmpty()){
-            //Insert(createworkcopies);
-            Database.SaveResult[] cwcList = Database.insert(createworkcopies, false);
-			PMP_Utility.logDmlErrors((Object[]) cwcList, 'PMP_SearchCreatePartnerWorkCopy-execute');
-
+            Insert(createworkcopies);
             
-            //Set<Id> partnerIdsCreated = new Set<Id>();
+            Set<Id> partnerIdsCreated = new Set<Id>();
             for(PMP_Company__c wc : createworkcopies) {
                 PMP_Company__c pc = new PMP_Company__c();
                 pc.Id = wc.PMP_Published_Copy_Id__c;
@@ -42,11 +37,8 @@ public class PMP_SearchCreatePartnerWorkCopy implements Queueable{
                 updatepublished.add(pc);
             }
             if(!updatepublished.isEmpty()){
-                //update(updatepublished);
-                Database.SaveResult[] upList = Database.update(updatepublished, false);
-				PMP_Utility.logDmlErrors((Object[]) upList, 'PMP_SearchCreatePartnerWorkCopy-execute');
+                update(updatepublished);
             }                    
         }
     }
-   
 }

@@ -52,9 +52,26 @@
         <offset>0</offset>
     </actionCalls>
     <actionCalls>
+        <name>INDIA</name>
+        <label>INDIA</label>
+        <locationX>1106</locationX>
+        <locationY>731</locationY>
+        <actionName>Core_Sales_Support_Request__c.Core_Email_IT_Intel_INDIA_Email_List</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Core_Sales_Support_Request__c.Core_Email_IT_Intel_INDIA_Email_List</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
         <name>Manager1</name>
         <label>Manager</label>
-        <locationX>1106</locationX>
+        <locationX>1370</locationX>
         <locationY>731</locationY>
         <actionName>Core_Sales_Support_Request__c.Core_IT_Intel_Mgr_Assignment</actionName>
         <actionType>emailAlert</actionType>
@@ -90,7 +107,7 @@
     <decisions>
         <name>SEND_EMAIL_ALERT_ACCORDING_TO_REGION</name>
         <label>SEND EMAIL ALERT ACCORDING TO REGION</label>
-        <locationX>710</locationX>
+        <locationX>842</locationX>
         <locationY>623</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -182,6 +199,28 @@
             <label>ASMO</label>
         </rules>
         <rules>
+            <name>INDIA1</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_IT_Intel_Geo__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>INDIA</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_IT_Geo_Manager__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>INDIA</targetReference>
+            </connector>
+            <label>INDIA</label>
+        </rules>
+        <rules>
             <name>Manager</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
@@ -200,7 +239,7 @@
     <decisions>
         <name>Status_update1</name>
         <label>Status update</label>
-        <locationX>710</locationX>
+        <locationX>842</locationX>
         <locationY>323</locationY>
         <defaultConnector>
             <targetReference>SEND_EMAIL_ALERT_ACCORDING_TO_REGION</targetReference>
@@ -259,7 +298,7 @@ these 5 Workflow rules together in a single flow</description>
     <recordUpdates>
         <name>status_update</name>
         <label>status update</label>
-        <locationX>578</locationX>
+        <locationX>710</locationX>
         <locationY>431</locationY>
         <connector>
             <targetReference>SEND_EMAIL_ALERT_ACCORDING_TO_REGION</targetReference>
@@ -279,7 +318,7 @@ these 5 Workflow rules together in a single flow</description>
         <inputReference>$Record</inputReference>
     </recordUpdates>
     <start>
-        <locationX>584</locationX>
+        <locationX>716</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Status_update1</targetReference>
@@ -289,5 +328,5 @@ these 5 Workflow rules together in a single flow</description>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Active</status>
+    <status>Obsolete</status>
 </Flow>

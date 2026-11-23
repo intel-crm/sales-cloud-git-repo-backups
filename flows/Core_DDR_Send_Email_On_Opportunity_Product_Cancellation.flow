@@ -115,5 +115,5 @@ v8: Changing from Technical owner email to Opportunity Owner email</description>
         <recordTriggerType>Update</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Active</status>
+    <status>Obsolete</status>
 </Flow>

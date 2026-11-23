@@ -16,7 +16,7 @@ import ccgQuote from '@salesforce/label/c.Pricing_Tender_CCG_Quote';
 import FiQuotes from '@salesforce/label/c.Pricing_Tender_FinancialIncentive_Quote';
 import isActiveSVD from '@salesforce/apex/Pricing_Manage_Small_Volume_Deal.getSVDQuoteActiveStatus';
 export default class Pricing_Manage_New_Quote extends NavigationMixin(LightningElement) {
-
+ 
     @track selectedValue;
     @track isOpenModal;
     @track recordTypeId;
@@ -27,15 +27,16 @@ export default class Pricing_Manage_New_Quote extends NavigationMixin(LightningE
     @track resultValue;
     @track msgColor;
     @track disableNextButton = false;
-
+ 
     @wire(getObjectInfo, { objectApiName: QUOTE_OBJECT })
     objectInfo;
-
+ 
     @wire(isActiveSVD, {})
     isSVDActive;
-
+ 
     @wire(getPicklistValues, { recordTypeId: '$objectInfo.data.defaultRecordTypeId', fieldApiName: QUOTE_TYPE, isActive: '$isSVDActive' })
     Values({ error, data }) {
+        console.log('testing:');
         if (data) {
             let quoteOptionType = [];
             let allowSVD = JSON.parse(JSON.stringify(this.isSVDActive.data));
@@ -53,14 +54,16 @@ export default class Pricing_Manage_New_Quote extends NavigationMixin(LightningE
             }
             getAccountId({ userId: USER_ID })
                 .then(result => {
+                    console.log('result:'+result != null);
                     if (result != null) {
+                        console.log('entering:');
                         this.accountId = result;
                         this.getQuoteTypesMethod();
                     }
                 })
                 .catch(error => {
                     this.error = error;
-                    console.error('Error @ getAccountId ', JSON.stringify(error));
+                    console.error('Error @ getAccountId ', JSON.stringify(this.error));
                 });
         }
         else if (error) {
@@ -68,18 +71,22 @@ export default class Pricing_Manage_New_Quote extends NavigationMixin(LightningE
         }
         this.selectedValue = ccgQuote;
     }
-
+ 
     //Method to get Quote type label , message and message color
     getQuoteTypesMethod() {
         getQuoteTypes({ quoteTypeJSON: JSON.stringify(this.quoteTypes), accId: this.accountId })
             .then(result => {
+                console.log('this.quoteTypes:'+JSON.stringify(this.quoteTypes));
                 if (result != null) {
                     this.quoteTypes = result;
                     for (let i = 0; i < this.quoteTypes.length; i++) {
                         if ((this.quoteTypes[i].label === smallVolumeQuote || this.quoteTypes[i].label === 'Client' || this.quoteTypes[i].label === 'Data Center') && this.quoteTypes[i].color !== 'none') {
+                            //this.msgColor = true;
                             if (this.quoteTypes[i].color == 'red') {
+                                //return 'messageColorRed';
                                 this.quoteTypes[i].color = 'red-text'
                             } else if (this.quoteTypes[i].color == 'blue') {
+                                //return 'messageColorBlue';
                                 this.quoteTypes[i].color = 'blue-text'
                             }
                         }
@@ -90,14 +97,28 @@ export default class Pricing_Manage_New_Quote extends NavigationMixin(LightningE
                 console.error('Error @ getQuoteTypesMethod ', JSON.stringify(error));
                 this.error = error;
             });
-
+ 
     }
-
+    //Get message color for SVD
+    /*get messageColor() {
+        if (this.quoteTypes != null && this.quoteTypes.length > 0) {
+            for (let i = 0; i < this.quoteTypes.length; i++) {
+                if ((this.quoteTypes[i].label === smallVolumeQuote || this.quoteTypes[i].label === 'Client' || this.quoteTypes[i].label === 'Data Center') && this.quoteTypes[i].color !== 'none') {
+                    if (this.quoteTypes[i].color == 'red') {
+                        return 'messageColorRed';
+                    } else if (this.quoteTypes[i].color == 'blue') {
+                        return 'messageColorBlue';
+                    }
+                }
+            }
+        }
+    }*/
+ 
     handleChange(event) {
         this.selectedValue = event.target.value;
         this.errorMsg = '';
     }
-
+ 
     handleNext() {
         this.errorMsg = '';
         this.disableNextButton = true;
@@ -121,12 +142,12 @@ export default class Pricing_Manage_New_Quote extends NavigationMixin(LightningE
                 this.error = error;
             });
     }
-
+ 
     get disableButton() {
         let disable = this.disableNextButton == true ? true : false;
         return disable;
     }
-
+ 
     getSelectedRecordTypeValue() {
         this.errorMsg = '';
         const rtis = this.objectInfo.data.recordTypeInfos;
@@ -136,15 +157,15 @@ export default class Pricing_Manage_New_Quote extends NavigationMixin(LightningE
             this.showRecordForm();
         }
     }
-
+ 
     openModal() {
         this.errorMsg = '';
         this.disableNextButton = false;
         isProgramTypeSelectionAllowed({ accId: this.accountId })
             .then(result => {
-                if (result === false) {
+                 if (result === false) {
                     this.isOpenModal = true;
-                    this.quoteTypes = this.quoteTypes.filter(quoteType => quoteType.label != smallVolumeQuote);
+                     this.quoteTypes = this.quoteTypes.filter(quoteType => quoteType.label != smallVolumeQuote);
                 }
                 else {
                     this.isOpenModal = true;
@@ -154,11 +175,12 @@ export default class Pricing_Manage_New_Quote extends NavigationMixin(LightningE
                 this.error = error;
                 console.log('error @ isProgramTypeSelectionAllowed ===>', error);
             });
-
+ 
     }
-
+ 
     showRecordForm() {
         this.errorMsg = '';
+        console.log('Show recordTypeId', this.recordTypeId);
         let recordPage = {  // NOSONAR
             type: 'standard__objectPage',
             attributes: {
@@ -170,11 +192,18 @@ export default class Pricing_Manage_New_Quote extends NavigationMixin(LightningE
                 recordTypeId: this.recordTypeId
             }
         };
-        this[NavigationMixin.Navigate](recordPage);
+        try{ 
+            console.log('Navigate to record page', recordPage);
+            this[NavigationMixin.Navigate](recordPage);
+        
+        }catch(error){
+            console.log('Error in navigating to record page', error);
+        }
+        
         this.selectedValue = ccgQuote;
 
     }
-
+ 
     closeModal() {
         this.errorMsg = '';
         this.isOpenModal = false;

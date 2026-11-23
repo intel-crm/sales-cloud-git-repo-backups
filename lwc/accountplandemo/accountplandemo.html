@@ -1,0 +1,131 @@
+<template>
+    <template if:true={isLoading}>
+        <span class="status">Generating....</span>
+    </template>
+    <template if:true={accName}>
+        <h1 class="account-header">{accountHeader}</h1>
+    </template>
+    <template if:true={error}>
+        <span class="error">{error}</span>
+    </template>
+
+    <template if:true={hasOnePager}>
+        <article class="onepager-grid">
+            <div class="col">
+                <div class="card">
+                    <header class="card-title">Customer Overview</header>
+                    <div class="kv">
+                        <div><span>Market Cap</span><span>{onePager.customerOverview.marketCap}</span></div>
+                        <div><span>Gross Sales</span><span>{onePager.customerOverview.wmtComputingGrossSales}</span></div>
+                        <div><span>Account Revenue</span><span>{onePager.customerOverview.accountGrossRevenue}</span></div>
+                        <div><span>Intel Investment</span><span>{onePager.customerOverview.intelContraInvestment}</span></div>
+                        <div><span>Sales Headcount</span><span>{onePager.customerOverview.intelSalesHeadcount}</span></div>
+                    </div>
+                    <div class="subsection">
+                        <header class="sub-title">Relationship Assessment</header>
+                        <ul class="bullets">
+                            <template for:each={onePager.relationshipAssessment.bullets} for:item="b">
+                                <li key={b}>{b}</li>
+                            </template>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <header class="card-title">Transformational Opportunities</header>
+                    <template for:each={onePager.transformationalOpportunities} for:item="op">
+                        <div class="op" key={op.title}>
+                            <div class="op-title">{op.title}</div>
+                            <ul class="bullets compact">
+                                <template for:each={op.subBullets} for:item="sb">
+                                    <li key={sb}>{sb}</li>
+                                </template>
+                            </ul>
+                        </div>
+                    </template>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card tall">
+                    <header class="card-title">Account Revenue</header>
+                    
+                    <!-- Dummy Graph Image Placeholder -->
+                    <div class="graph-placeholder">
+                        <div class="graph-image">
+                            <svg width="100%" height="200" viewBox="0 0 400 200" style="background: #f8f9fa; border: 1px solid #e0e0e0; border-radius: 8px;">
+                                <!-- Grid Lines -->
+                                <defs>
+                                    <pattern id="grid" width="40" height="20" patternUnits="userSpaceOnUse">
+                                        <path d="M 40 0 L 0 0 0 20" fill="none" stroke="#e0e0e0" stroke-width="1"/>
+                                    </pattern>
+                                </defs>
+                                <rect width="100%" height="100%" fill="url(#grid)" />
+                                
+                                <!-- Y-Axis Labels -->
+                                <text x="15" y="25" font-size="10" fill="#666">$500M</text>
+                                <text x="15" y="65" font-size="10" fill="#666">$400M</text>
+                                <text x="15" y="105" font-size="10" fill="#666">$300M</text>
+                                <text x="15" y="145" font-size="10" fill="#666">$200M</text>
+                                <text x="15" y="185" font-size="10" fill="#666">$100M</text>
+                                
+                                <!-- Bar Chart -->
+                                <rect x="60" y="120" width="50" height="60" fill="#34a0d9" rx="3"/>
+                                <rect x="130" y="80" width="50" height="100" fill="#2d7db2" rx="3"/>
+                                <rect x="200" y="100" width="50" height="80" fill="#34a0d9" rx="3"/>
+                                <rect x="270" y="40" width="50" height="140" fill="#1d6da2" rx="3"/>
+                                
+                                <!-- X-Axis Labels -->
+                                <text x="85" y="195" font-size="12" fill="#333" text-anchor="middle" font-weight="bold">2022</text>
+                                <text x="155" y="195" font-size="12" fill="#333" text-anchor="middle" font-weight="bold">2023</text>
+                                <text x="225" y="195" font-size="12" fill="#333" text-anchor="middle" font-weight="bold">2024</text>
+                                <text x="295" y="195" font-size="12" fill="#333" text-anchor="middle" font-weight="bold">2025</text>
+                                
+                                <!-- Value Labels -->
+                                <text x="85" y="115" font-size="10" fill="#333" text-anchor="middle">$250M</text>
+                                <text x="155" y="75" font-size="10" fill="#333" text-anchor="middle">$420M</text>
+                                <text x="225" y="95" font-size="10" fill="#333" text-anchor="middle">$380M</text>
+                                <text x="295" y="35" font-size="10" fill="#333" text-anchor="middle">$500M</text>
+                            </svg>
+                        </div>
+                    </div>
+                    
+                    <div class="chart-notes">Revenue growth trending upward with strong performance in 2025</div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <header class="card-title">Help Needed</header>
+                    <ul class="bullets">
+                        <template for:each={onePager.helpNeeded.bullets} for:item="h">
+                            <li key={h}>{h}</li>
+                        </template>
+                    </ul>
+                </div>
+                <div class="card">
+                    <header class="card-title">Hot Button Issues</header>
+                    <ul class="bullets">
+                        <template for:each={onePager.hotButtonIssues.bullets} for:item="hb">
+                            <li key={hb}>{hb}</li>
+                        </template>
+                    </ul>
+                </div>
+                <div class="card meta">
+                    <header class="card-title">Account Meta</header>
+                    <div class="kv">
+                        <div><span>Customer</span><span>{onePager.meta.customerName}</span></div>
+                        <div><span>Industry</span><span>{onePager.meta.industry}</span></div>
+                        <div><span>HQ</span><span>{onePager.meta.headquarters}</span></div>
+                        <div><span>Website</span><span>{onePager.meta.website}</span></div>
+                        <div><span>Company Size</span><span>{onePager.meta.companySize}</span></div>
+                        <div><span>Annual Revenue</span><span>{onePager.meta.accountRevenue}</span></div>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </template>
+
+    <template if:false={hasOnePager}>
+        <div class="empty">
+            Generating One-Pager AI Account insights
+        </div>
+    </template>
+</template>

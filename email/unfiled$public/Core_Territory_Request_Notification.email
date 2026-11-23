@@ -1,0 +1,7 @@
+A new territory request has been created:
+
+Created By: {!Core_Change_Request__c.CreatedBy}
+Created Date: {!Core_Change_Request__c.CreatedDate}
+Territory: {!Core_Change_Request__c.Core_Territory__c}
+Change Reason: {!Core_Change_Request__c.Core_Change_Details__c}
+Link: {!Core_Change_Request__c.Link}

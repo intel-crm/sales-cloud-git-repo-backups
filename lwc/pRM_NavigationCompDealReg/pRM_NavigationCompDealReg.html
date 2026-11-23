@@ -1,0 +1,12 @@
+<template>
+    <c-core-intc-breadcrumbs></c-core-intc-breadcrumbs>
+    <!-- <c-pubsub_ToBeDeleted></c-pubsub_ToBeDeleted> -->
+<div>
+  <template for:each={menus} for:item="menuItem">
+    <li key={menuItem.id} onclick={handleNavigation}  class={className}>
+      <a data-target={menuItem.target} target="_blank">{menuItem.label}</a>
+    </li>
+  </template>
+</div>
+
+</template>

@@ -7,7 +7,6 @@
 * ---------------------------------------------------------------------------------------------------------------------------------------
 * Infosys - Sangeetha Ganta     04/11/2019                    US329999 - Queueable class for Taxonomy upload
 * PMP Team                       05/10/2019                   US358688 - Update
-  Yashasvi Aggarwal              07/10/2021                   USTWC1824-880  -  Update
 * ****************************************************************************************************************************************/
 public with sharing class PMP_TaxonomyUploadQueueable implements Queueable {
     
@@ -37,8 +36,8 @@ public with sharing class PMP_TaxonomyUploadQueueable implements Queueable {
     }
     public void execute(QueueableContext context) 
     {
-        try{   
-        //Fetch PMP_TaxonomyUploadQueueable record from Core batch header object
+    	try{   
+    	//Fetch PMP_TaxonomyUploadQueueable record from Core batch header object
             batchHeader = [Select id,Last_Run_Date_Time__c,Email_Distribution_List__c from Core_Batch_Header__c 
                            WHERE name = :jobInitiatedFrom limit 1];
             
@@ -49,7 +48,7 @@ public with sharing class PMP_TaxonomyUploadQueueable implements Queueable {
             batchProcessing.Core_Start_Date_Time__c = jobStartTime; 
             insert batchProcessing;
         
-            //system.debug('###batchProcessing:->'+batchProcessing);
+            system.debug('###batchProcessing:->'+batchProcessing);
             batchProcessingLineItem = new Batch_Processing_Line_Item__c(Batch_Processing__c = batchProcessing.id);
             
             List<Database.UpsertResult> totalRecords = new List<Database.UpsertResult>(); // Total no of records processed 
@@ -58,22 +57,22 @@ public with sharing class PMP_TaxonomyUploadQueueable implements Queueable {
             if(!staticResourceNames.isEmpty()) {
                 
                 currentFileNameToProcess = staticResourceNames[0]; // current processing file name
-                //System.debug('currentFileNameToProcess = '+currentFileNameToProcess);
+                System.debug('currentFileNameToProcess = '+currentFileNameToProcess);
                 
                 //preparing the class name dynamically based on current staticresource file name
                 className = 'PMP_'+currentFileNameToProcess;
-                //System.debug('className = '+className);
-        
+                System.debug('className = '+className);
+		
                 //instantiating processing class name dynamically
                 Type t = Type.forName(className);
                 PMP_ProcessTaxonomyJSON processTaxonomy = (PMP_ProcessTaxonomyJSON)t.newInstance();
                 
                 //processing the data
                 totalRecords = processTaxonomy.processData(currentFileNameToProcess);
-        
+		
                 //inserting processed results info
                 abortProcess = createBatchProcessingLineItem(totalRecords,batchProcessingLineItem,currentFileNameToProcess);
-                //system.debug('##abortProcess:->'+abortProcess);
+                system.debug('##abortProcess:->'+abortProcess);
                 
                 //Send email about the success/failure records information
                 sendEmailNotification();
@@ -81,29 +80,19 @@ public with sharing class PMP_TaxonomyUploadQueueable implements Queueable {
                 //remove the first static resource once it is processed    
                 staticResourceNames.remove(0);
                 
-                //if all files are processed the taxonomy platform cache will be cleared
-                if(staticResourceNames.size()==0){
-                    //Clearing Taxonomy Platform cache as new taxonomies are loaded[US851334]
-                    PMP_Utility.clearTaxonomyPlatformCache();
-                }
-                
                 // If no files left or any error on category English file then we have to stop enqueuing jobs else continue for queuing other jobs
                 if((staticResourceNames.size()>=1 && !abortProcess)) { // If 
                     //Adding this class as a job on the queue
                     System.enqueueJob(new PMP_TaxonomyUploadQueueable(staticResourceNames));
-                } 
-                //IPA2.0 - As part of TWC729-7977 commented the reference of publishFutureUpdateOfferings
-                /*else
-                {   //Calling the batch class to publish and republish the offerings
-                    PMP_PublishFutureUpdateOfferings publishFutureUpdateOfferings = new PMP_PublishFutureUpdateOfferings();   
-                    Database.executebatch(publishFutureUpdateOfferings,1); 
-                }*/
-            }           
+                }
+                
+            }
+            
         }
         catch(Exception e) {
-            // system.debug('## Entering exception:->'+e);
-            // system.debug('## batchProcessing :->'+batchProcessing);
-            //update batch processing data 
+        	system.debug('## Entering exception:->'+e);
+        	system.debug('## batchProcessing :->'+batchProcessing);
+        	//update batch processing data 
             /*batchProcessing.Core_Email_Distribution_List__c = batchHeader.Email_Distribution_List__c;
             batchProcessing.Core_Salesforce_Job_Id__c = context.getJobId();
             batchProcessing.Core_Start_Date_Time__c = jobStartTime;*/
@@ -141,9 +130,9 @@ public with sharing class PMP_TaxonomyUploadQueueable implements Queueable {
         Boolean shouldAbortProcess = false;
         
         // Iterate through the upsert results   
-        for (Database.UpsertResult saveResult : saveResults) {                       
+        for (Database.UpsertResult saveResult : saveResults) {			             
             // fetch all success DML id's in this set
-            if(saveResult.isSuccess()) {                
+            if(saveResult.isSuccess()) {				
                 successRecordCount = successRecordCount+1;
             }
             else {
@@ -151,16 +140,16 @@ public with sharing class PMP_TaxonomyUploadQueueable implements Queueable {
                 errorOccured = true;
                 // Operation failed, so get all errors                
                 for(Database.Error err : saveResult.getErrors()) { 
-                    //system.debug('###err:->'+err);
-                    errorString=errorString + err.getStatusCode() + ': ' + err.getMessage();                       
+                	system.debug('###err:->'+err);
+                    errorString=errorString + err.getStatusCode() + ': ' + err.getMessage(); 					   
                 } 
                 //If any error on category English file the process should get aborted 
-                if(currentFileNameToProcess == 'Hierarchy_English') {                       
+                if(currentFileNameToProcess == 'Hierarchy_English') {						
                     shouldAbortProcess = true;
                 }
             }
             
-        }       
+        }		
         //Insert batch processing line item record
         batchProcessingLineItem.Object_Type__c = currentFileNameToProcess;            
         batchProcessingLineItem.Core_Number_of_Updates__c = successRecordCount; 
@@ -176,7 +165,7 @@ public with sharing class PMP_TaxonomyUploadQueueable implements Queueable {
     * @return void 
     * Method Parameters - none
     */
-    private void sendEmailNotification(){       
+    private void sendEmailNotification(){	 	
         
         //identify the email template name to send email
         String templateName = '';

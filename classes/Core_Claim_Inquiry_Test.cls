@@ -103,7 +103,7 @@ public class Core_Claim_Inquiry_Test{
             for(Integer j = 0; j<3 ;j++){                       
                 lstContacts[i].AccountId = lstAccounts.get(j).Id;
                 lstContacts[i].Email = 'tet77st' + i + '@tes.com';
-		lstContacts[i].MailingCountry = 'India';
+                lstContacts[i].MailingCountry = 'India';
             }
         }
         
@@ -172,11 +172,5 @@ public class Core_Claim_Inquiry_Test{
             //Core_Claim_Inquiry.UpdateOwnertoClaimedOwner(lstInquiries[0].Id);
             Test.stopTest();   
        }
-    
-    @isTest
-    static void testPlaceholder() {
-        Core_Claim_Inquiry claim = new Core_Claim_Inquiry();
-        System.assert(true, 'This is a placeholder test for a fully commented class.');
-    }
 
 }

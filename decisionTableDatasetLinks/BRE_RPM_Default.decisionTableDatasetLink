@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DecisionTableDatasetLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <decisionTableName>BRE_RPM</decisionTableName>
+    <isDefault>true</isDefault>
+    <setupName>Default Payload</setupName>
+    <sourceObject>Pricing_Price_Rules_BRE__c</sourceObject>
+</DecisionTableDatasetLink>

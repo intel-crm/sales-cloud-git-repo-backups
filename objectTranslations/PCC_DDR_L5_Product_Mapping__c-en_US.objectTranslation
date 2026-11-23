@@ -6,17 +6,17 @@
     </caseValues>
     <caseValues>
         <plural>true</plural>
-        <value>Design-Deal Registration Product Mapping</value>
+        <value>Design-Deal Registration Product Mappings</value>
     </caseValues>
     <fields>
         <label><!-- Design Registration Product --></label>
         <name>PCC_Design_Registration_Product__c</name>
-        <relationshipLabel><!-- Design-Deal Registration Product Mapping --></relationshipLabel>
+        <relationshipLabel><!-- Design-Deal Registration Product Mappings --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- Design Registration --></label>
         <name>PCC_Design_Registration__c</name>
-        <relationshipLabel><!-- Design-Deal Registration Product Mapping --></relationshipLabel>
+        <relationshipLabel><!-- Design-Deal Registration Product Mappings --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- L4 Product Name --></label>
@@ -37,12 +37,12 @@
     <fields>
         <label><!-- Opportunity Product Id --></label>
         <name>PCC_Opportunity_Product_Id__c</name>
-        <relationshipLabel><!-- Design-Deal Registration Product Mapping --></relationshipLabel>
+        <relationshipLabel><!-- Design-Deal Registration Product Mappings --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- Opportunity --></label>
         <name>PCC_Opportunity__c</name>
-        <relationshipLabel><!-- Design-Deal Registration Product Mapping --></relationshipLabel>
+        <relationshipLabel><!-- Design-Deal Registration Product Mappings --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- Ordering Code --></label>
@@ -51,7 +51,11 @@
     <fields>
         <label><!-- Product MM Attribute Mapping --></label>
         <name>PCC_Product_MM_Attribute_Mapping__c</name>
-        <relationshipLabel><!-- Design-Deal Registration Product Mapping --></relationshipLabel>
+        <relationshipLabel><!-- Design-Deal Registration Product Mappings --></relationshipLabel>
     </fields>
     <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Quote associated to this Opportunity is Submitted for Review. No Edits allowed on Opportunity during the Review process. --></errorMessage>
+        <name>DR_Product_QuoteSubmittedStatusLock</name>
+    </validationRules>
 </CustomObjectTranslation>

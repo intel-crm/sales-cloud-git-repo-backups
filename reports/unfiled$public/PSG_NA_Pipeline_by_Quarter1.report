@@ -5,19 +5,10 @@
         <datatype>number</datatype>
         <developerName>FORMULA1</developerName>
         <downGroupingContext>GRAND_SUMMARY</downGroupingContext>
-        <isActive>false</isActive>
+        <isActive>true</isActive>
         <isCrossBlock>false</isCrossBlock>
         <masterLabel>Weighted Total Price</masterLabel>
         <scale>2</scale>
-    </aggregates>
-    <aggregates>
-        <calculatedFormula> TOTAL_PRICE:UNIQUE*PROBABILITY:UNIQUE</calculatedFormula>
-        <datatype>currency</datatype>
-        <developerName>FORMULA2</developerName>
-        <isActive>true</isActive>
-        <isCrossBlock>false</isCrossBlock>
-        <masterLabel>DW Forecast</masterLabel>
-        <scale>0</scale>
     </aggregates>
     <buckets>
         <bucketType>picklist</bucketType>
@@ -50,19 +41,14 @@
         <backgroundColor2>#FFFFFF</backgroundColor2>
         <backgroundFadeDir>Diagonal</backgroundFadeDir>
         <chartSummaries>
-            <axisBinding>y</axisBinding>
-            <column>FORMULA2</column>
-        </chartSummaries>
-        <chartSummaries>
             <aggregate>Sum</aggregate>
             <axisBinding>y</axisBinding>
-            <column>TOTAL_PRICE</column>
+            <column>EXP_AMOUNT</column>
         </chartSummaries>
         <chartType>VerticalColumn</chartType>
         <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>true</expandOthers>
-        <groupingColumn>CLOSE_DATE</groupingColumn>
-        <legendPosition>Right</legendPosition>
+        <groupingColumn>CDF1</groupingColumn>
         <location>CHART_BOTTOM</location>
         <showAxisLabels>true</showAxisLabels>
         <showPercentage>false</showPercentage>
@@ -76,9 +62,6 @@
         <titleSize>18</titleSize>
     </chart>
     <columns>
-        <field>CDF1</field>
-    </columns>
-    <columns>
         <field>ACCOUNT_NAME</field>
     </columns>
     <columns>
@@ -91,7 +74,6 @@
         <field>Opportunity.Core_Business_Unit_Territory__c</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
         <field>AMOUNT</field>
     </columns>
     <columns>
@@ -101,9 +83,6 @@
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>TOTAL_PRICE</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Product_Segment__c</field>
     </columns>
     <columns>
         <field>STAGE_NAME</field>
@@ -145,20 +124,6 @@
         <aggregateTypes>Sum</aggregateTypes>
         <field>Opportunity.Core_Open_Oppty__c</field>
     </columns>
-    <columns>
-        <field>PARENT_NAME</field>
-    </columns>
-    <columns>
-        <field>CREATED_DATE</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Opportunity.Core_Oppty_Approved_Total_Price__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>OpportunityLineItem.Core_Approved_Total_Price__c</field>
-    </columns>
     <customDetailFormulas>
         <calculatedFormula>IF((Opportunity.Core_Open_Oppty__c=1),CLOSE_DATE,DATEVALUE(OpportunityLineItem.Core_Approved_Date__c))</calculatedFormula>
         <dataType>DateOnly</dataType>
@@ -168,7 +133,6 @@
         <scale>2</scale>
     </customDetailFormulas>
     <filter>
-        <booleanFilter>1 AND 2 AND (3 OR (8 AND 9)) AND 4 AND 5 AND 6 AND 7</booleanFilter>
         <criteriaItems>
             <column>FULL_NAME</column>
             <columnToColumn>false</columnToColumn>
@@ -188,7 +152,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>MAX II,MAX V,MAX 10,Sundance Mesa,Eagle Summit,Agilex,CPLD,FPGA,Arria,Stratix,Cyclone,DCP,BD-,DK-ACB,eASIC,Falcon Mesa,NVV-</value>
+            <value>Agilex,CPLD,FPGA,Arria,Stratix,Cyclone,Power Solutions,DCP,BD-,DK-ACB,eASIC,Agliex,NVV-,Enpirion</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Business_Unit_Territory__c</column>
@@ -198,11 +162,25 @@
             <value>PSG-NA</value>
         </criteriaItems>
         <criteriaItems>
+            <column>OpportunityLineItem.Core_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Lost,Cancelled,Deleted</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>PRODUCT_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
             <value>Cyclone Peak</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>STAGE_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Lost,Cancelled,Production Lost,Production Cancelled,Group Cancelled,Group Closed</value>
         </criteriaItems>
         <criteriaItems>
             <column>OPPORTUNITY_NAME</column>
@@ -211,33 +189,25 @@
             <operator>notEqual</operator>
             <value>VER-6248_Far_Edge_Poseidon_RFP</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Intel_Platform__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>Whitley,Ice Lake,Tiger Lake</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>CLOSE_DATE</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>lessOrEqual</operator>
-            <value>9/25/2021</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>PRODUCT_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Power Solutions,Enpirion</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
+        <aggregateType>Sum</aggregateType>
+        <dateGranularity>FiscalQuarter</dateGranularity>
+        <field>CDF1</field>
+        <sortByName>TOTAL_PRICE</sortByName>
+        <sortOrder>Asc</sortOrder>
+        <sortType>Aggregate</sortType>
+    </groupingsDown>
+    <groupingsDown>
         <dateGranularity>FiscalQuarter</dateGranularity>
         <field>CLOSE_DATE</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Opportunity.Core_Product_Segment__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>PSG NA Pipeline by Quarter</name>
@@ -262,8 +232,6 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>ACCOUNT_NAME</sortColumn>
-    <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>

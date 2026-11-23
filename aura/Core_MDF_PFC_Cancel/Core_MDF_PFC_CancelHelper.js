@@ -13,18 +13,10 @@
                 }
                 else if(result.claimEligibleForCancel == false){
                     if(result.restrictClaimOperator == true){
-                        //This action is not allowed on an Adjustment
                         component.set('v.accessErrorMsg', $A.get('$Label.c.Core_MDF_Negative_Claim_Error')); 
-                    }else if(result.claimHasRecovery == true){
-                        //Claim cannot be cancelled if partial recovery is done
-                        component.set('v.accessErrorMsg', $A.get('$Label.c.Core_MDF_Partial_Recovery_Claim')); 
-                    }else if(result.claimSelectedForAudit == true){
-                        //Claim cannot be cancelled if it is selected for Backend review
-                        component.set('v.accessErrorMsg', $A.get('$Label.c.Core_MDF_Audit_Claim_Cannot_Be_Cancelled'));
                     }else{
-                        //Claim Cannot Be Cancelled
                         component.set('v.accessErrorMsg', $A.get('$Label.c.Core_MDF_Claim_Cannot_Be_Cancelled')); 
-                    }                  
+                    }                    
                 }
             }
             else if(state === "ERROR"){

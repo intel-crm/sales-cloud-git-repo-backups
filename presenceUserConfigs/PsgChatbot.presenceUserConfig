@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PresenceUserConfig xmlns="http://soap.sforce.com/2006/04/metadata">
+    <assignments>
+        <profiles>
+            <profile>it admin</profile>
+        </profiles>
+        <users>
+            <user>test_ranjitx.kumar@intel.com.crm</user>
+        </users>
+    </assignments>
+    <capacity>20</capacity>
+    <enableAutoAccept>false</enableAutoAccept>
+    <enableDecline>false</enableDecline>
+    <enableDeclineReason>false</enableDeclineReason>
+    <enableDisconnectSound>false</enableDisconnectSound>
+    <enableRequestSound>false</enableRequestSound>
+    <hasAfterConvoWorkTimer>false</hasAfterConvoWorkTimer>
+    <label>PsgChatbot</label>
+</PresenceUserConfig>

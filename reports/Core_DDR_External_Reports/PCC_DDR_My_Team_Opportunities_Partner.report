@@ -7,9 +7,6 @@
         <field>ACCOUNT_NAME</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Opp_Prime_Account_Name__c</field>
-    </columns>
-    <columns>
         <field>OPPORTUNITY_NAME</field>
     </columns>
     <columns>
@@ -21,9 +18,6 @@
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>AMOUNT</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Assists__c</field>
     </columns>
     <columns>
         <field>FULL_NAME</field>

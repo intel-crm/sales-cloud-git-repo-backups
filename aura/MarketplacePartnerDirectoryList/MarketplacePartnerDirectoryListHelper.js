@@ -11,12 +11,12 @@
         
         action.setCallback(this, function(response) {
             var status = response.getState();
-            
+            console.log(status);
             if (status === "SUCCESS") {
                 var searchCategories = response.getReturnValue();
                 // map return value to searchFilters expected format
                 component.set('v.listing', searchCategories);
-                
+                console.log('searchCategories '+JSON.stringify(searchCategories));
                 component.set('v.loading', false);
             } else if (status === "INCOMPLETE") {
                 // do something?
@@ -28,7 +28,7 @@
                     };
                 }
             } else {
-                this.reject('Unknown error.');
+                reject('Unknown error.');
             }
         });
         $A.enqueueAction(action);

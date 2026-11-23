@@ -6,11 +6,11 @@
     <archiveContent>false</archiveContent>
     <chatterSharing>false</chatterSharing>
     <deleteContent>false</deleteContent>
-    <deliverContent>false</deliverContent>
+    <deliverContent>true</deliverContent>
     <featureContent>false</featureContent>
     <manageWorkspace>true</manageWorkspace>
     <modifyComments>false</modifyComments>
-    <organizeFileAndFolder>false</organizeFileAndFolder>
+    <organizeFileAndFolder>true</organizeFileAndFolder>
     <tagContent>false</tagContent>
     <type>Admin</type>
     <viewComments>false</viewComments>

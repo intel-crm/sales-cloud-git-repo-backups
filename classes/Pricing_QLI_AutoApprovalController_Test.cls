@@ -47,6 +47,7 @@ public class Pricing_QLI_AutoApprovalController_Test {
     
     static testMethod void testOverlap(){
         Account acc = [select id from Account];
+       // List<SBQQ__Quote__c> lstquote = [select id,Pricing_Server_Deal_Type_Nm__c,Pricing_End_Customer_Country_Nm__c from SBQQ__Quote__c limit 1];
         List<SBQQ__QuoteLine__c> qliList = [SELECT Id, SBQQ__Product__c,Pricing_Quote_Line_Number__c, Pricing_Sales_Rep__c, Pricing_Product_Nm__r.Id, Pricing_Product_Nm__r.Name, Pricing_Status_Nm__c,Pricing_Manager__c,Pricing_ECAP_Price_Amt__c,Pricing_Meet_Comp_Price_Amt__c,Pricing_New_Change_Request_cb__c,
                                             Pricing_FSE_Recommended_Price_Nm__c, Pricing_pm_approval_comments_nm__c, Pricing_Rejection_Comments_nm__c, SBQQ__Quote__c,Pricing_Rejection_Reason__c,SBQQ__Quote__r.Id,SBQQ__Quote__r.SBQQ__PrimaryContact__r.Id,Pricing_Last_Submitted_By_Id__c,SBQQ__Quote__r.SBQQ__SalesRep__c,
                                             Pricing_Change_Request_cb__c,Pricing_Sales_Rep_Approver__c,Customer_Revision_Count_Cnt__c,Pricing_Other_Product_Nm__c, Pricing_New_Quantity_qty__c, Pricing_Request_Discount_Unit_Price_qty__c, Pricing_Req_Discounted_Unit_Price__c, Pricing_Unit_Qty__c,Pricing_Total_Volume_Qty__c,Pricing_Program_Type_Nm__c,Pricing_SDM_Fast_Track__c FROM SBQQ__QuoteLine__c 
@@ -82,6 +83,7 @@ public class Pricing_QLI_AutoApprovalController_Test {
     
     static testMethod void testOverlapSuccess(){
         Account acc = [select id from Account];
+        //List<SBQQ__Quote__c> lstquote = [select id,Pricing_Server_Deal_Type_Nm__c,Pricing_End_Customer_Country_Nm__c from SBQQ__Quote__c limit 1];
         List<SBQQ__QuoteLine__c> qliList = [SELECT Id, SBQQ__Product__c,Pricing_Quote_Line_Number__c, Pricing_Sales_Rep__c, Pricing_Product_Nm__r.Id, Pricing_Product_Nm__r.Name, Pricing_Status_Nm__c,Pricing_Manager__c,Pricing_ECAP_Price_Amt__c,Pricing_Meet_Comp_Price_Amt__c,Pricing_New_Change_Request_cb__c,
                                             Pricing_FSE_Recommended_Price_Nm__c, Pricing_pm_approval_comments_nm__c, Pricing_Rejection_Comments_nm__c, SBQQ__Quote__c,Pricing_Rejection_Reason__c,SBQQ__Quote__r.Id,SBQQ__Quote__r.SBQQ__PrimaryContact__r.Id,Pricing_Last_Submitted_By_Id__c,SBQQ__Quote__r.SBQQ__SalesRep__c,
                                             Pricing_Change_Request_cb__c,Pricing_Sales_Rep_Approver__c,Customer_Revision_Count_Cnt__c,Pricing_Other_Product_Nm__c, Pricing_New_Quantity_qty__c, Pricing_Request_Discount_Unit_Price_qty__c, Pricing_Req_Discounted_Unit_Price__c, Pricing_Unit_Qty__c,Pricing_Total_Volume_Qty__c,Pricing_Program_Type_Nm__c,Pricing_SDM_Fast_Track__c FROM SBQQ__QuoteLine__c 

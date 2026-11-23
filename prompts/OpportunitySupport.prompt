@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Opportunity Support</masterLabel>
+    <promptVersions>
+        <body>&lt;p&gt;You can raise&lt;/p&gt;&lt;p&gt;1.CSA Request&lt;/p&gt;&lt;p&gt;2.TSS Request&lt;/p&gt;&lt;p&gt;3.COE Request&lt;/p&gt;</body>
+        <customApplication>Opportunity_Management_Lightning</customApplication>
+        <delayDays>1</delayDays>
+        <dismissButtonLabel>Close</dismissButtonLabel>
+        <displayPosition>BottomRight</displayPosition>
+        <displayType>FloatingPanel</displayType>
+        <isPublished>true</isPublished>
+        <masterLabel>Opportunity Support</masterLabel>
+        <publishedDate>2023-07-13</publishedDate>
+        <shouldDisplayActionButton>false</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>true</shouldIgnoreGlobalDelay>
+        <startDate>2023-07-13</startDate>
+        <targetPageKey1>Opportunity</targetPageKey1>
+        <targetPageKey2>list</targetPageKey2>
+        <targetPageType>standard__objectPage</targetPageType>
+        <timesToDisplay>2</timesToDisplay>
+        <title>Opportunity Support Required</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+</Prompt>

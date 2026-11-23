@@ -10,8 +10,8 @@
 *************************************************************************************************/
 @isTest
 public class PMP_ChipSet_CreateJunctionData_Test {
-//IPA 2.0- US-TWC729-7980
-   /* @isTest
+
+    @isTest
     public static void chipSetCreateJunctionDataTestMet(){
         
         Test.startTest();
@@ -121,7 +121,7 @@ public class PMP_ChipSet_CreateJunctionData_Test {
         specValueChip.PMP_Partner_Off_Roadmap_Ind__c = false;
         specValueChip.PMP_Product_Specification_Value_Cd__c = '125903';
         specValueChip.PMP_Product_Specification_Value_Key__c = '125903';
-        specValueChip.PMP_Spec_Value_Type_Nm__c = 'Chipset';
+        specValueChip.PMP_Spec_Value_Type_Nm__c = 'Processor';
         specValueChip.PMP_Specification_Value_Chinese_Cd__c = 'Intel® Z370 Chipset';
         specValueChip.PMP_Specification_Value_Japanese_Cd__c = 'Intel® Z370 Chipset';
         specValueChip.PMP_Specification_Value_Nm__c = 'Intel® Z370 Chipset';
@@ -150,28 +150,10 @@ public class PMP_ChipSet_CreateJunctionData_Test {
         testChipsetCSA.PMP_Category_Specification_External_Key__c = 'npp_02_type_sys|npp_chipsets';
         insert testChipsetCSA;
         
-        PMP_Category_Specification_Association__c ChipsetCSA1 = new PMP_Category_Specification_Association__c();
-        ChipsetCSA1.Name = 'System:Test';
-        ChipsetCSA1.PMP_Active_Ind__c = true;
-        ChipsetCSA1.PMP_Category_Id__c = testCategorySystem.id;
-        ChipsetCSA1.PMP_Specification_Id__c = specTest.id;
-        ChipsetCSA1.PMP_Category_Specification_External_Key__c = 'npp_02_type_sys|npp_test';
-        insert ChipsetCSA1;
-        
-        //Create Spec-SpecValue association records
-        PMP_Specification_Value_Association__c specValueAssoc = new PMP_Specification_Value_Association__c ();
-        specValueAssoc.Name = 'Intel® Z370 Chipset';
-        specValueAssoc.PMP_Active_Ind__c = true;
-        specValueAssoc.PMP_Category_Id__c = testCategorySystem.id;
-        specValueAssoc.PMP_Specification_Id__c = spec300Series.id;
-        specValueAssoc.PMP_Specification_Value_Id__c = specValueChip.id;
-        specValueAssoc.PMP_Category_Spec_Value_External_Key__c = 'npp_02_type_sys|125903|126380';
-        insert specValueAssoc;
-        
-        PMP_ChipSet_CreateJunctionData.createAssociationRecords();
+        PMP_ChipSet_CreateJunctionData.chipSetCreateJunctionDataMet();
         
         System.assertEquals(testChipsetCSA.PMP_Specification_Id__c, specMain.id);
         System.assertEquals(testChipsetCSA.PMP_Category_Id__c, testCategorySystem.id);
         Test.stopTest(); 
-    }*/
+    }
 }

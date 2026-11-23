@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Pricing Route Rules Utility Test</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Pricing Route Rules Utility Tests</value>
+    </caseValues>
+    <fields>
+        <label><!-- End Customer Name --></label>
+        <name>End_Customer_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Customer Region --></label>
+        <name>Pricing_Region_Nm_c__c</name>
+        <picklistValues>
+            <masterLabel>APJ</masterLabel>
+            <translation><!-- APJ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASMO</masterLabel>
+            <translation><!-- ASMO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEA</masterLabel>
+            <translation><!-- EMEA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRC</masterLabel>
+            <translation><!-- PRC --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Quote Routing Category --></label>
+        <name>Quote_Routing_Category__c</name>
+        <picklistValues>
+            <masterLabel>CSP</masterLabel>
+            <translation><!-- CSP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Exclusion</masterLabel>
+            <translation><!-- Exclusion --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>High Touch</masterLabel>
+            <translation><!-- High Touch --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Low Touch</masterLabel>
+            <translation><!-- Low Touch --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

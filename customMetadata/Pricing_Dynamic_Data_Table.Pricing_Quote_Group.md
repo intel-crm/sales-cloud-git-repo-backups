@@ -19,6 +19,10 @@
         <value xsi:nil="true"/>
     </values>
     <values>
+        <field>Pricing_Record_Type__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
         <field>Pricing_SearchColumn_Field__c</field>
         <value xsi:nil="true"/>
     </values>

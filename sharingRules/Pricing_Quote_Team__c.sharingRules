@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
     <sharingCriteriaRules>
+        <fullName>Pricing_Quote_Team_All_External</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Pricing Quote Team  All External</label>
+        <sharedTo>
+            <group>Pricing_All_External_Tender_Partners</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Name</field>
+            <operation>notEqual</operation>
+            <value></value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
         <fullName>Pricing_Quote_Team_Internal</fullName>
         <accessLevel>Read</accessLevel>
         <label>Pricing Quote Team Internal</label>
@@ -12,6 +26,6 @@
             <operation>notEqual</operation>
             <value></value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
 </SharingRules>

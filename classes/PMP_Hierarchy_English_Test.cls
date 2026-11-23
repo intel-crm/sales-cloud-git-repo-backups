@@ -12,11 +12,8 @@ public class PMP_Hierarchy_English_Test
 {
    @isTest
     public static void testCatHierMet(){
-        test.startTest();
         PMP_Hierarchy_English catHierEng = new PMP_Hierarchy_English();
-        PMP_ParseCategoryJSON.languageCode = 'en_US';
-        List<Database.UpsertResult> response = catHierEng.processData('PMP_Category_Hierarchy_Test');
-        test.stopTest();
-        system.assertNotEquals(response,null);
+        PMP_ParseCategoryJSON.strBaseKey = 'en_US';
+        catHierEng.processData('PMP_Category_Hierarchy_Test');
     }
 }

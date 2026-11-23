@@ -329,6 +329,22 @@
     </validationRules>
     <visibility>Public</visibility>
     <webLinks>
+        <fullName>Add_Members</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Add Members</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>{!REQUIRESCRIPT(&apos;/support/console/41.0/integration.js&apos;)}
+if(sforce.console.isInConsole()){ //Checks that it is in console 
+window.open(&quot;apex/Core_addProjectMembersInformation?isdtp=vw&amp;projectId={!Core_IPS_Project__c.Id}&quot;,&apos;_self&apos;); 
+}else{ 
+window.open(&quot;/apex/Core_addProjectMembersInformation?projectId={!Core_IPS_Project__c.Id}&quot;,&apos;_self&apos;); 
+}</url>
+    </webLinks>
+    <webLinks>
         <fullName>Add_Members_For_External_Customers</fullName>
         <availability>online</availability>
         <description>Add Members for External Customers</description>
@@ -340,19 +356,6 @@
         <protected>false</protected>
         <requireRowSelection>false</requireRowSelection>
         <url>/IPS/Core_ExternalUser_IPS_Project?id={!Core_IPS_Project__c.Id}&amp;stepIndex=1&amp;modeStr=add&amp;editProj=true</url>
-    </webLinks>
-    <webLinks>
-        <fullName>Core_IPS_Add_Members</fullName>
-        <availability>online</availability>
-        <displayType>massActionButton</displayType>
-        <encodingKey>UTF-8</encodingKey>
-        <height>600</height>
-        <linkType>url</linkType>
-        <masterLabel>Add Members LEX</masterLabel>
-        <openType>sidebar</openType>
-        <protected>false</protected>
-        <requireRowSelection>true</requireRowSelection>
-        <url>/lightning/n/Add_Members?c__recordId={!Core_IPS_Project__c.Id}</url>
     </webLinks>
     <webLinks>
         <fullName>New</fullName>

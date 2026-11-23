@@ -35,20 +35,12 @@ Description:        This is a Method to be used to Delete a list of account user
 Added By:           Accenture - Krishna - 05/08/2019
 ******************************************************************************************************/    
     @AuraEnabled
-    public static boolean deleteAccountUsers(List<Id> accountUserIdList){ // inactivate
+    public static boolean deleteAccountUsers(List<Id> accountUserIdList){
         Boolean success = true;
-         try{
-            List<Core_MDF_Partner_Node_User_Mapping__c> accountUserList = [SELECT Id,Core_MDF_Active_Ind__c FROM Core_MDF_Partner_Node_User_Mapping__c where Id IN :accountUserIdList];
+        try{
+            List<Core_MDF_Partner_Node_User_Mapping__c> accountUserList = [SELECT Id FROM Core_MDF_Partner_Node_User_Mapping__c where Id IN :accountUserIdList];
             if(accountUserList != null && accountUserList.size() > 0){
-                //Database.delete(accountUserList);
-                List<Core_MDF_Partner_Node_User_Mapping__c> accountUserListToInactivate = new List<Core_MDF_Partner_Node_User_Mapping__c>();
-                for(Core_MDF_Partner_Node_User_Mapping__c pnum: accountUserList){
-                    if(pnum.Core_MDF_Active_Ind__c != false){
-                    pnum.Core_MDF_Active_Ind__c = false;
-                        accountUserListToInactivate.add(pnum);
-                    }
-                }
-                Database.update(accountUserListToInactivate);
+                Database.delete(accountUserList);
             }                       
             return success;
         }

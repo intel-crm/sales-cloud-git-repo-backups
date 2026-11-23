@@ -1,47 +1,31 @@
-public without sharing class UCD_ACM_AccountTeamCategory {
-      
+public class UCD_ACM_AccountTeamCategory {
+    
     @AuraEnabled
-    public static String getAccountCategory(String accountId){
-
-        String unCoveredOwnerId = System.Label.Core_Uncovered_Account_ID;
-        Id intelRecordTypeId = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
-        List<Account> lstAccount = new List<Account>();
-        String finalValues = '' ;
-
-        if(String.isBlank(accountId)){
-            return  finalValues;
-        }
-
-        if (Schema.sObjectType.Account.fields.Name.isAccessible() &&
-        Schema.sObjectType.Account.fields.Core_Account_Category__c.isAccessible()){
-            lstAccount = [Select id,name,Core_Account_Category__c,(select id,Account.Name,Core_Account_Category__c from AccountTeamMembers  where AccountId =:accountId) from Account where id =:accountId AND recordtypeID =:intelRecordTypeId  AND Core_Account_Category__c != null AND OwnerId !=: unCoveredOwnerId ];
-
-        }
-
-
-        for(Account accounts:lstAccount){
-
-            Set<String> accCatValues =  new Set<String>(accounts.Core_Account_Category__c.split(';'));
-
-            Set<String> uniqueAccountTeamCatagory = new Set<String>();
+    public static Boolean getAccountCategory(String accountId){
+      
+      Boolean categoryValuesPresent = false;  
+      String accountCategoryValue = '';  
+      Map<id,Account> accountCategory = new Map<id,Account>([Select id,name,Core_Account_Category__c,(select id,Account.Name,Core_Account_Category__c from AccountTeamMembers  where Account.Id =:accountId) from Account where id =:accountId]);
+      System.debug('accountCategory'+accountCategory);
+        
+        for(Account accounts:accountCategory.values()){
             for(AccountTeamMember acctTeamMember : accounts.AccountTeamMembers){
-
-                List<String> accTeamCatValues = new  List<String>();
-                if(acctTeamMember.Core_Account_Category__c != null){
-                    accTeamCatValues = acctTeamMember.Core_Account_Category__c.split(';');
-                }
-                if(!accTeamCatValues.isEmpty()){
-                    uniqueAccountTeamCatagory.addAll(new Set<String>(accTeamCatValues));
-                }
+              if(acctTeamMember.Core_Account_Category__c != null && acctTeamMember.Core_Account_Category__c.containsNone(accountCategoryValue))
+          	   {
+               accountCategoryValue = accountCategoryValue +',' +acctTeamMember.Core_Account_Category__c;
+              }
             }
-
-            for(String accCatValue : accCatValues){
-
-                if( ! uniqueAccountTeamCatagory.contains(accCatValue)){
-                    finalValues += accCatValue + ',' ;
-                }
+            if(accountCategoryValue.contains(accounts.Core_Account_Category__c)){
+                System.debug('value'+accounts.Core_Account_Category__c);
+                categoryValuesPresent = True;
+                        
             }
+            else{
+                categoryValuesPresent = false;
+            }
+       
         }
-        return finalValues;
+        return categoryValuesPresent;
+     
     }
 }

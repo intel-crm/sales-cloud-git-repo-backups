@@ -6,7 +6,7 @@
     <encodingKey>UTF-8</encodingKey>
     <name>Core_MDF_Claim_Status_PAF_Partner</name>
     <style>none</style>
-    <subject>Claim #  has been set to Pending Available Funds</subject>
+    <subject>Reimbursement request pending available funds</subject>
     <type>visualforce</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

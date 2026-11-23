@@ -53,18 +53,18 @@
     </columns>
     <filter>
         <criteriaItems>
+            <column>OWNER_MANAGER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Tony Ferrolino Jr</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>Opportunity.Core_Pipeline_Heath__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>1</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OWNER_EMAIL</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>lucy.tran@intel.com,joshua.chen@intel.com,tomomi.aoki@intel.com,xin.yi.chan@intel.com,issac.wei.lun.lee@intel.com,becca.jeong@intel.com,meredy.mun@intel.com</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -100,6 +100,8 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
+        <endDate>2021-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2017-10-01</startDate>
     </timeFrameFilter>
 </Report>

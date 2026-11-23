@@ -6,5 +6,5 @@
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>Pt. Indosplash Wahana Perkasa Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>PtIndosplashWahanaPerkasaPartnerManager</parentRole>
 </Role>

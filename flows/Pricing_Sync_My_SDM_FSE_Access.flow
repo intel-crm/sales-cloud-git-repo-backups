@@ -3,8 +3,8 @@
     <actionCalls>
         <name>Pricing_addCurrentUserToPublicGroups</name>
         <label>Pricing_addCurrentUserToPublicGroups</label>
-        <locationX>255</locationX>
-        <locationY>163</locationY>
+        <locationX>610</locationX>
+        <locationY>287</locationY>
         <actionName>Pricing_SyncSDMToQuote</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -18,13 +18,13 @@
             <name>output</name>
         </outputParameters>
     </actionCalls>
-    <apiVersion>62.0</apiVersion>
+    <apiVersion>56.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <decisions>
         <name>Pricing_Check_for_Success_Error_Outcomes</name>
         <label>Check for Success Error Outcomes</label>
-        <locationX>417</locationX>
-        <locationY>353</locationY>
+        <locationX>328</locationX>
+        <locationY>374</locationY>
         <defaultConnector>
             <targetReference>Pricing_Success</targetReference>
         </defaultConnector>
@@ -46,7 +46,7 @@
         </rules>
     </decisions>
     <environments>Default</environments>
-    <interviewLabel>Sync My SDM/FSE Access {!$Flow.CurrentDateTime}</interviewLabel>
+    <interviewLabel>Sync {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Sync My SDM/FSE Access</label>
     <processMetadataValues>
         <name>BuilderType</name>
@@ -70,8 +70,8 @@
     <screens>
         <name>Current_User</name>
         <label>Current User</label>
-        <locationX>595</locationX>
-        <locationY>171</locationY>
+        <locationX>407</locationX>
+        <locationY>208</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -80,7 +80,7 @@
         </connector>
         <fields>
             <name>Pricing_Help_Text</name>
-            <fieldText>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(68, 68, 68);&quot;&gt;Sync my account team permission to grant me access to all IQR quotes for my account.&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p&gt;Sync my account team permission to grant me access to all IQR quotes for my account.&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
             <styleProperties>
                 <verticalAlignment>
@@ -98,8 +98,8 @@
     <screens>
         <name>Pricing_Error_Screen</name>
         <label>Pricing Error Screen</label>
-        <locationX>207</locationX>
-        <locationY>470</locationY>
+        <locationX>256</locationX>
+        <locationY>623</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -122,14 +122,14 @@
     <screens>
         <name>Pricing_Success</name>
         <label>Pricing Success</label>
-        <locationX>573</locationX>
-        <locationY>479</locationY>
+        <locationX>444</locationX>
+        <locationY>607</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
         <fields>
             <name>Success_Message</name>
-            <fieldText>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255);&quot;&gt;User is added successfully to account specific Public Groups.&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p&gt;User is added successfully to account specific Public Groups.&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
             <styleProperties>
                 <verticalAlignment>
@@ -144,8 +144,8 @@
         <showHeader>true</showHeader>
     </screens>
     <start>
-        <locationX>458</locationX>
-        <locationY>48</locationY>
+        <locationX>547</locationX>
+        <locationY>50</locationY>
         <connector>
             <targetReference>Current_User</targetReference>
         </connector>

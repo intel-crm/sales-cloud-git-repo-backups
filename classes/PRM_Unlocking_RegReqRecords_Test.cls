@@ -14,7 +14,6 @@ Modification Log :
 @isTest
 public class PRM_Unlocking_RegReqRecords_Test {
     //Test data creation
-    
     static testmethod void setupDataCreation()
     {
         Id addContactRequestRT = Schema.getGlobalDescribe().get('PRM_Registration_Request__c').getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Add_Contact_Request).getRecordTypeId();
@@ -73,14 +72,12 @@ public class PRM_Unlocking_RegReqRecords_Test {
         firstNewRequest.PRM_CIM_ID__c=null;
         firstNewRequest.PRM_Salesforce_ID__c=null;
         firstNewRequest.PRM_Channel_Program__c=cprogram.Id;
-        firstNewRequest.PRM_Partner_Relationship__c = System.Label.PRM_Primary_Contact;
-        //firstNewRequest.PRM_Job_Function__c = 'BR-MGR';
-        firstNewRequest.PRM_Profession__c = 'Consultant';
-        firstNewRequest.PRM_Partner_Type__c = 'Cloud Service Provider (CSP)';
+        firstNewRequest.PRM_Partner_Relationship__c = 'Primary Contact';
+        firstNewRequest.PRM_Job_Function__c = 'BR-MGR';
+        firstNewRequest.PRM_Partner_Type__c = 'Reseller';
         firstNewRequest.PRM_EmailVerifiedDateTime__c=System.Today();
-        insert firstNewRequest;
         rr.add(firstNewRequest);
-        //System.debug('newRequest First approval Scnerio-->'+firstNewRequest);
+        System.debug('newRequest First approval Scnerio-->'+firstNewRequest);
         
         
         
@@ -93,38 +90,33 @@ public class PRM_Unlocking_RegReqRecords_Test {
         secondNewRequest.PRM_CIM_ID__c=null;
         secondNewRequest.PRM_Salesforce_ID__c=null;
         secondNewRequest.PRM_Channel_Program__c=cprogram.Id;
-        secondNewRequest.PRM_Partner_Relationship__c = System.Label.PRM_Primary_Contact;
-        //secondNewRequest.PRM_Job_Function__c = 'BR-MGR';
-        secondNewRequest.PRM_Profession__c = 'Consultant';
-        secondNewRequest.PRM_Partner_Type__c = 'Cloud Service Provider (CSP)';
+        secondNewRequest.PRM_Partner_Relationship__c = 'Primary Contact';
+        secondNewRequest.PRM_Job_Function__c = 'BR-MGR';
+        secondNewRequest.PRM_Partner_Type__c = 'Reseller';
         secondNewRequest.PRM_EmailVerifiedDateTime__c=System.Today();
         secondNewRequest.PRM_isLocked__c=True;
-        insert secondNewRequest;
         rr.add(secondNewRequest);
-        
-        //System.debug('newRequest secondNewRequest approval Scnerio-->'+secondNewRequest);
+        System.debug('newRequest secondNewRequest approval Scnerio-->'+secondNewRequest);
         database.insert(rr,False);
         Approval.ProcessSubmitRequest req1 = new Approval.ProcessSubmitRequest();
         req1.setComments('Submitting request for approval.');
         req1.setObjectId(secondNewRequest.id);
-        //System.debug('rr'+rr);
-        //Approval.ProcessResult result = Approval.process(req1);
-        ////System.debug('result'+result);
+        Approval.ProcessResult result = Approval.process(req1);
+        System.debug('result'+result);
         PRM_Unlocking_RegRecords.unlockRecords(rr);
-        System.assertEquals(secondNewRequest.Name, 'First approval Scnerio', 'Value does not match');
-        //Subscription__c subOfFirstRequest = new Subscription__c();  
-        //subOfFirstRequest.Name='Firstsub';
-        //subOfFirstRequest.PRM_RegistrationRequest__c=firstNewRequest.Id;
-        //insert subOfFirstRequest;
+        /*Subscription__c subOfFirstRequest = new Subscription__c();  
+        subOfFirstRequest.Name='Firstsub';
+        subOfFirstRequest.PRM_RegistrationRequest__c=firstNewRequest.Id;
+        insert subOfFirstRequest;
         
-        //Subscription__c subOfSecondRequest = new Subscription__c();  
+        Subscription__c subOfSecondRequest = new Subscription__c();  
        // subOfSecondRequest.Name='Secondsub';
-        //subOfSecondRequest.PRM_RegistrationRequest__c=secondNewRequest.Id;
-        //insert subOfSecondRequest;
-        //System.assertEquals(firstNewRequest.Name, 'First approval Scnerio', 'Value does not match');
+        subOfSecondRequest.PRM_RegistrationRequest__c=secondNewRequest.Id;
+        insert subOfSecondRequest;
+        System.assertEquals(firstNewRequest.Name, 'First approval Scnerio', 'Value does not match');
         //Approval.ProcessSubmitRequest app = new Approval.ProcessSubmitRequest();
         //app.setObjectId(firstNewRequest.id);
-        //Approval.ProcessResult result = Approval.process(app); 
+        //Approval.ProcessResult result = Approval.process(app); */
         
     } 
 }

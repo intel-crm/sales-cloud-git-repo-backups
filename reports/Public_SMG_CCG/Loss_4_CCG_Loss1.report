@@ -20,6 +20,63 @@
             </sourceValues>
             <value>Gov</value>
         </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Accommodation and Food Services</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Agriculture</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Arts, Entertainment and Recreation</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Automotive (Non Manufacturing)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Construction</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Consulting</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Defense and Space</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Energy and Utilities</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Finance and Insurance</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Gaming</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Manufacturing</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Media</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Professional and Business Services</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Real Estate, Rental and Leasing</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Retail</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Software and Services</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Telecommunications</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Transportation, Travel and Warehousing</sourceValue>
+            </sourceValues>
+            <value>LE</value>
+        </values>
     </buckets>
     <buckets>
         <bucketType>picklist</bucketType>
@@ -163,7 +220,6 @@
         <field>PROBABILITY</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
         <field>Opportunity.Core_Architecture_Conversion__c</field>
     </columns>
     <columns>

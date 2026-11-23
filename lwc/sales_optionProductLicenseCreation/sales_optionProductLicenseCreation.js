@@ -1,5 +1,5 @@
 import { LightningElement,api,track } from 'lwc';
-/*import getOptionProducts from '@salesforce/apex/Sales_ExistingLicenseViewCtrl.getOptionProducts';
+import getOptionProducts from '@salesforce/apex/Sales_ExistingLicenseViewCtrl.getOptionProducts';
 import createOptionLicense from '@salesforce/apex/Sales_ExistingLicenseViewCtrl.createOptionLicense';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import SalesProductSelection from '@salesforce/label/c.Sales_Product_Selection';
@@ -22,10 +22,10 @@ const columns = [
 				},
 				sortable: true
 		}
-];*/
+];
 
 export default class Sales_optionProductLicenseCreation extends LightningElement {
-		/*@api licenseRowFromParent;
+		@api licenseRowFromParent;
 		@track optionProducts;
 		@track data;
 		@track error;
@@ -50,13 +50,6 @@ export default class Sales_optionProductLicenseCreation extends LightningElement
 								this.noOptionAvailable=true;
                                 return;
 						}
-						if((result && result.productOptionReturnList.length>0) && (this.licenseRowFromParent.licenseQty<=0 || this.licenseRowFromParent.licenseQty==undefined || this.licenseRowFromParent.licenseQty==null)){
-							console.log('this.licenseRowFromParent.licenseQty'+this.licenseRowFromParent.licenseQty);
-                            this.noOfSeatError=true;
-							this.showNotification('Error',this.label.Sales_noOfseatErrorMsg,'error');
-							const closeOptionModalEvent = new CustomEvent("closeoptionmodalevent");
-						    this.dispatchEvent(closeOptionModalEvent);
-						}
 						if (result && result.productOptionReturnList.length>0) {
 								console.log('here'+result.productOptionReturnList.length);
 								this.dispatchEvent(new CustomEvent('createoptionlicense'));
@@ -78,7 +71,13 @@ export default class Sales_optionProductLicenseCreation extends LightningElement
 						else if (result && result.productOptionReturnList.length<=0) {
 								this.allOptionProcessed=true;
 						}
-					
+						else if(this.licenseRowFromParent.licenseQty<=0 || this.licenseRowFromParent.licenseQty==undefined || this.licenseRowFromParent.licenseQty==null){
+							console.log('this.licenseRowFromParent.licenseQty'+this.licenseRowFromParent.licenseQty);
+                            this.noOfSeatError=true;
+							this.showNotification('Error',this.label.Sales_noOfseatErrorMsg,'error');
+							const closeOptionModalEvent = new CustomEvent("closeoptionmodalevent");
+						    this.dispatchEvent(closeOptionModalEvent);
+						}
 				}).catch(error => {
 						this.error = error;
 						this.data = undefined;
@@ -129,5 +128,5 @@ export default class Sales_optionProductLicenseCreation extends LightningElement
             mode: 'sticky'
         });
         this.dispatchEvent(event);
-    }*/
+    }
 }

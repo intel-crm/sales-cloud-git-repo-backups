@@ -37,6 +37,14 @@
         <name>Pushed__c</name>
     </fields>
     <fields>
+        <label><!-- Send Email --></label>
+        <name>Send_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Test Text Area --></label>
+        <name>Test_Text_Area__c</name>
+    </fields>
+    <fields>
         <label><!-- User&apos;s Manager --></label>
         <name>User_s_Manager__c</name>
     </fields>

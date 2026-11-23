@@ -206,8 +206,21 @@ public without sharing class Account360_SharingUtility {
                     recordShareList.add(recordManualShare);
                 }
             }
+            //TWC4767-4408 CRM: Sharing and security model for New Standard Account Plans
+            if(objectsForAccount360Sharing.contains('AccountPlan'))
+            {
+                for(AccountPlan rec : [Select ID,AccountId,OwnerId from AccountPlan where AccountId IN : acctIdUserIdListMap.keySet()])
+                {
+                    Map<Id,List<Id>> userIdListMap = new Map<Id,List<Id>>();
+                    userIdListMap.put(rec.Id, acctIdUserIdListMap.get(rec.AccountId));
+                    String objName = rec.Id.getSObjectType().getDescribe().getName();
+                    RecordManualShareClass recordManualShare = new RecordManualShareClass(objName,userIdListMap,'Edit',rec.OwnerId); 
+                    recordShareList.add(recordManualShare);
+                }
+            }
             createShareRecordList(recordShareList);
-        }catch(Exception e){   
+        }
+        catch(Exception e){   
             logEntries.add(new Core_Log_Entry__c(Core_Message__c ='Error',Core_Details__c = e.getMessage(), Core_Origin__c='Account360_SharingUtility.invokeAccount360Sharing', Core_Severity__c='High', Core_When__c=System.Now(), Core_Project__c = 'Sales Evolve'));
             if(!logEntries.isEmpty() && !logSwitch.isEmpty()){
                 if(logSwitch.get('Core_LogEntry_Check') != null && logSwitch.get('Core_LogEntry_Check').Is_Selected__c){ 

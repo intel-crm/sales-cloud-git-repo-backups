@@ -85,6 +85,14 @@
             <translation>Valor regular</translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>SBQQ__QuoteTemplate__c</masterLabel>
+            <translation><!-- SBQQ__QuoteTemplate__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>core_cpq_product_family_txt__c</masterLabel>
+            <translation><!-- core_cpq_product_family_txt__c --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>core_cpq_quote_line_type_txt__c</masterLabel>
             <translation><!-- core_cpq_quote_line_type_txt__c --></translation>
         </picklistValues>

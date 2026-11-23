@@ -47,7 +47,8 @@ global with sharing class Core_RestAPI_Opportunities {
                 try{
                     opportunityId = Id.valueOf(recId);
                     isValid=true;
-                }catch(Exception  exp){ isValid=false;
+                }catch(Exception  exp){
+                    isValid=false;
                 }
             }
             else{
@@ -57,7 +58,8 @@ global with sharing class Core_RestAPI_Opportunities {
                 Core_SalesCRM_RestAPI_Util.processException(null, MALFORMED_INPUT_9011, response, RESTAPI_NAME, ENTRY_TIME);  
             }
             
-        }catch(Exception exp){ Core_SalesCRM_RestAPI_Util.processException(exp, ERROR_CODE_500, response, RESTAPI_NAME, ENTRY_TIME);
+        }catch(Exception exp){
+            Core_SalesCRM_RestAPI_Util.processException(exp, ERROR_CODE_500, response, RESTAPI_NAME, ENTRY_TIME);
         }finally {
             if(String.isBlank(response.code)){
                 response.code = SUCCESS_CODE_200; 
@@ -171,7 +173,7 @@ global with sharing class Core_RestAPI_Opportunities {
     public class OpportunityWrapper implements Core_RestAPI_SuccessContent {
         Core_RestAPI_OpportunityDetailsWrapper.OpportunityDetails opportunityDetails;
     }
-    //////////////////////////////////////////////////////////
+    
     @HttpPut
     global static Core_SalesCRM_RestAPI_Response doPut(){
         RestRequest req = RestContext.request;
@@ -190,35 +192,40 @@ global with sharing class Core_RestAPI_Opportunities {
                 Opportunity newOpp = Core_RestAPI_OpportunitiesUtility.createOpportunityRecord(opp);
                 newOpp.Id = opp.opportunityId;
                 update newOpp;
-
-                if(opp.opportunityProducts != null && opp.stage != 'Design Win'){
+                
+                if(opp.opportunityProducts != null){
                     oppProducts = Core_RestAPI_OpportunitiesUtility.createOpportunityProdctRecords(opp.opportunityProducts);                    
-					update oppProducts;                    
+                    update oppProducts;
                 }
                 
                 List<Core_RestAPI_OpportunitiesUtility.OpportunityPoP> oppPoP = opp.opportunityPoP;
-                if(oppPoP != null){ List<ContentVersion> contentVersionList = new List<ContentVersion>();
+                if(oppPoP != null){
+                    List<ContentVersion> contentVersionList = new List<ContentVersion>();
                     List<ContentDocumentLink> cdlList = new List<ContentDocumentLink>();
                     Set<Id> contentVersionIds = new Set<Id>(); //to store all contentVersion.Id values
-                    for(Core_RestAPI_OpportunitiesUtility.OpportunityPoP q: oppPoP){String base64String = q.data;
-                        String title = q.title;Blob fileBlob = EncodingUtil.base64Decode(base64String);
+                    for(Core_RestAPI_OpportunitiesUtility.OpportunityPoP q: oppPoP){
+                        String base64String = q.data;
+                        String title = q.title;
+                        Blob fileBlob = EncodingUtil.base64Decode(base64String);
                         
                         //For File
-                        ContentVersion contentVersion = new ContentVersion();contentVersion.ContentLocation = 'S'; // 'S' for Salesforce Files, 'L' for Chatter Files
+                        ContentVersion contentVersion = new ContentVersion();
+                        contentVersion.ContentLocation = 'S'; // 'S' for Salesforce Files, 'L' for Chatter Files
                         contentVersion.PathOnClient = title; // Replace with your desired file name
                         contentVersion.Title = title; // Replace with your desired title
                         contentVersion.VersionData = fileBlob;
                         contentVersionList.add(contentVersion);
                         
                     }
-                    //insert ContentVersion records first
-                   	 	//insert contentVersionList;
+                    
                     //Insert ContentVersion records with partial success option
                     Database.SaveResult[] contentVersionResults = Database.insert(contentVersionList, false);
                     
                     
                     //After Insert, populate the set with inserted ContentVersion Ids
-                    for(Integer i=0; i<contentVersionResults.size(); i++){ if(contentVersionResults[i].isSuccess()){ contentVersionIds.add(contentVersionList[i].Id); //Add ContentVersion.Id to Set   
+                    for(Integer i=0; i<contentVersionResults.size(); i++){
+                        if(contentVersionResults[i].isSuccess()){
+                            contentVersionIds.add(contentVersionList[i].Id); //Add ContentVersion.Id to Set   
                         }
                         else{
                             System.debug('Failed to insert ContentVersion:' + contentVersionResults[i].getErrors()[0].getMessage());
@@ -227,36 +234,38 @@ global with sharing class Core_RestAPI_Opportunities {
                     
                     //Query for ContentDocumentId for the inserted contentVersions
                     Map<Id, ContentVersion> contentVersionMap = new Map<Id, ContentVersion>([SELECT ContentDocumentId FROM ContentVersion WHERE Id IN :contentVersionIds]); 
-						                        
-                        // Create a ContentDocumentLink to associate the file with a record
-                    for(ContentVersion contentVersion : contentVersionList){ if(contentVersionMap.containsKey(contentVersion.Id)){ ContentDocumentLink cdl = new ContentDocumentLink();
-                        cdl.ContentDocumentId = contentVersionMap.get(contentVersion.Id).ContentDocumentId;
-                        cdl.LinkedEntityId = opp.opportunityId; // Replace with the relevant parent record Id
-                        cdl.ShareType = 'V'; // 'V' for Viewer Access
-                        cdl.Visibility = 'AllUsers'; // Set the visibility as needed
-                        cdlList.add(cdl);    
+                    
+                    // Create a ContentDocumentLink to associate the file with a record
+                    for(ContentVersion contentVersion : contentVersionList){
+                        if(contentVersionMap.containsKey(contentVersion.Id)){
+                            ContentDocumentLink cdl = new ContentDocumentLink();
+                            cdl.ContentDocumentId = contentVersionMap.get(contentVersion.Id).ContentDocumentId;
+                            cdl.LinkedEntityId = opp.opportunityId; // Replace with the relevant parent record Id
+                            cdl.ShareType = 'V'; // 'V' for Viewer Access
+                            cdl.Visibility = 'AllUsers'; // Set the visibility as needed
+                            cdlList.add(cdl);    
                         }
                         
                     }
-                       
-                    //}
                     
-                    //insert cdlList;
+                    
                     Database.SaveResult[] cdlResults = Database.insert(cdlList, false);
-                    for(Integer i=0; i<cdlResults.size(); i++){ if(!cdlResults[i].isSuccess()){
+                    for(Integer i=0; i<cdlResults.size(); i++){
+                        if(!cdlResults[i].isSuccess()){
                             System.debug('Failed to insert contentDocumentLink:' + cdlResults[i].getErrors()[0].getMessage());
                         }
                     }
                 }
                 
-               	response.totalRecords = 1;
-               	response.successContent = new List<OpportunityDetails>();
-               	response.successContent.add(new OpportunityDetails(String.valueOf(opp.opportunityId),'Successfully Updated!!'));
+                response.totalRecords = 1;
+                response.successContent = new List<OpportunityDetails>();
+                response.successContent.add(new OpportunityDetails(String.valueOf(opp.opportunityId),'Successfully Updated!!'));
             }else {
                 Core_SalesCRM_RestAPI_Util.oppErrMsgs = oppErrors;
                 Core_SalesCRM_RestAPI_Util.processException(null, MALFORMED_INPUT_9011, response, RESTAPI_NAME, ENTRY_TIME);
             }        
-        }catch(Exception exp){ Core_SalesCRM_RestAPI_Util.processException(exp, ERROR_CODE_500, response, RESTAPI_NAME, ENTRY_TIME);            
+        }catch(Exception exp){
+            Core_SalesCRM_RestAPI_Util.processException(exp, ERROR_CODE_500, response, RESTAPI_NAME, ENTRY_TIME);            
         }finally {
             if(String.isBlank(response.code)){
                 response.code = SUCCESS_CODE_200;

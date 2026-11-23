@@ -146,9 +146,9 @@
     <allowInChatterGroups>false</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
-    <enableActivities>false</enableActivities>
+    <enableActivities>true</enableActivities>
     <enableBulkApi>true</enableBulkApi>
-    <enableFeeds>false</enableFeeds>
+    <enableFeeds>true</enableFeeds>
     <enableHistory>true</enableHistory>
     <enableLicensing>false</enableLicensing>
     <enableReports>true</enableReports>
@@ -156,12 +156,38 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>ControlledByParent</externalSharingModel>
+    <fieldSets>
+        <fullName>Opportunity_Support_Status</fullName>
+        <description>It is used to display fields as coulmn on Opportunity Support Status Tab</description>
+        <displayedFields>
+            <field>Name</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>RecordTypeId</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_Status__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_Approved_By_c__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>Opportunity Support Status</label>
+    </fieldSets>
     <fields>
         <fullName>CRM_Business_Challenge_Txt__c</fullName>
         <description>Summarize in two to three sentences the specific challenge(s) the customer was facing. Outline business objectives, pain points, customer&apos;s competitive threats, and any digital transformation or sustainability goals. Give as many details as possible.</description>
         <inlineHelpText>Summarize the customer&apos;s challenges in two to three sentences. Outline business objectives, pain points, competitive threats, and digital transformation or sustainability goals.</inlineHelpText>
         <label>Customer’s Business Challenge</label>
         <length>2500</length>
+        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
@@ -173,6 +199,7 @@
         <inlineHelpText>Summarize the tangible business value the customer achieved in two to three sentences.Please provide quantifiable, measurable, and meaningful business results and key customer benefits if available</inlineHelpText>
         <label>Customer&apos;s Business Results/ Outcomes</label>
         <length>2500</length>
+        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
@@ -183,6 +210,7 @@
         <description>Your nomination and customer details will be kept internal only. However, do you believe your customer would be willing to share their story publicly?</description>
         <label>Customer Willingness</label>
         <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
@@ -224,6 +252,7 @@
         <inlineHelpText>During this win, what did you learn that your peers would benefit most from?</inlineHelpText>
         <label>Sales Insights</label>
         <length>2500</length>
+        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
@@ -235,6 +264,7 @@
         <inlineHelpText>Summarize the customer&apos;s solution in context with their pain points in two to three sentences. Provide details of the solution, including the use case/workload and any significant partner involvement.</inlineHelpText>
         <label>Solution Summary</label>
         <length>2500</length>
+        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
@@ -246,6 +276,7 @@
         <inlineHelpText>List the major factors around why the customer chose Intel.</inlineHelpText>
         <label>Why Intel</label>
         <length>2500</length>
+        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
@@ -255,6 +286,7 @@
         <fullName>Center_of_Excellence__c</fullName>
         <label>Center of Excellence</label>
         <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
@@ -321,12 +353,6 @@
                     <label>Manufacturing</label>
                 </value>
                 <value>
-                    <fullName>Retail</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Retail</label>
-                </value>
-                <value>
                     <fullName>Retail and Hospitality</fullName>
                     <default>false</default>
                     <isActive>false</isActive>
@@ -366,6 +392,7 @@
         <inlineHelpText>Please describe the need for  additional support  and how it will enhance the opportunity</inlineHelpText>
         <label>Additional Support Needed</label>
         <length>2500</length>
+        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
@@ -374,7 +401,7 @@
     <fields>
         <fullName>Core_Age__c</fullName>
         <externalId>false</externalId>
-        <formula>IF( RecordType.DeveloperName = &apos;Core_Center_of_Excellence_Request&apos;, IF(ISNULL(Core_End_Date__c) || ISBLANK(Core_End_Date__c),ROUND((DATETIMEVALUE(TODAY()) - DATETIMEVALUE(Core_Start_Date__c)),1), ROUND(( DATETIMEVALUE(Core_End_Date__c) - DATETIMEVALUE(Core_Start_Date__c)),1)  ),IF ((ISNULL( Core_Approved_Date__c ) || ISBLANK( Core_Approved_Date__c )),ROUND((TODAY() - DATEVALUE(Core_Submitted_Date__c)),1), ROUND( ( DATEVALUE(Core_Approved_Date__c) - DATEVALUE(Core_Submitted_Date__c)),1) ))</formula>
+        <formula>IF( RecordType.DeveloperName = &apos;Core_Center_of_Excellence_Request&apos;, IF(ISNULL(Core_End_Date__c) || ISBLANK(Core_End_Date__c),ROUND((DATETIMEVALUE(TODAY()) - DATETIMEVALUE(Core_Start_Date__c)),1), ROUND(( DATETIMEVALUE(Core_End_Date__c) - DATETIMEVALUE(Core_Start_Date__c)),1) ),IF ((ISNULL( Core_Approved_Date__c ) || ISBLANK( Core_Approved_Date__c )),ROUND((TODAY() - DATEVALUE(Core_Submitted_Date__c)),1), ROUND( (DATEVALUE(Core_Approved_Date__c) - DATEVALUE(Core_Submitted_Date__c)),1) ))</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Age</label>
         <precision>18</precision>
@@ -404,6 +431,7 @@
         <fullName>Core_Approval_Comments__c</fullName>
         <label>Approval Comments</label>
         <length>2500</length>
+        <trackFeedHistory>true</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
@@ -416,6 +444,7 @@
         <label>Approved By</label>
         <length>255</length>
         <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
@@ -425,6 +454,7 @@
         <fullName>Core_Approved_Date__c</fullName>
         <label>Approved Date</label>
         <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>DateTime</type>
@@ -436,6 +466,7 @@
         <referenceTo>User</referenceTo>
         <relationshipName>Opportunity_Supports10</relationshipName>
         <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
@@ -447,6 +478,7 @@
         <referenceTo>User</referenceTo>
         <relationshipName>Opportunity_Supports1</relationshipName>
         <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
@@ -458,6 +490,7 @@
         <referenceTo>User</referenceTo>
         <relationshipName>Opportunity_Supports2</relationshipName>
         <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
@@ -469,6 +502,7 @@
         <referenceTo>User</referenceTo>
         <relationshipName>Opportunity_Supports3</relationshipName>
         <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
@@ -480,6 +514,7 @@
         <referenceTo>User</referenceTo>
         <relationshipName>Opportunity_Supports4</relationshipName>
         <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
@@ -491,6 +526,7 @@
         <referenceTo>User</referenceTo>
         <relationshipName>Opportunity_Supports5</relationshipName>
         <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
@@ -502,6 +538,7 @@
         <referenceTo>User</referenceTo>
         <relationshipName>Opportunity_Supports6</relationshipName>
         <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
@@ -513,6 +550,7 @@
         <referenceTo>User</referenceTo>
         <relationshipName>Opportunity_Supports7</relationshipName>
         <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
@@ -524,6 +562,7 @@
         <referenceTo>User</referenceTo>
         <relationshipName>Opportunity_Supports8</relationshipName>
         <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
@@ -535,15 +574,26 @@
         <referenceTo>User</referenceTo>
         <relationshipName>Opportunity_Supports9</relationshipName>
         <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_Auto_Appoval__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Auto Appoval</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>Core_CoE_Request_Detail__c</fullName>
         <inlineHelpText>CoE Request Detail</inlineHelpText>
         <label>CoE Request Detail</label>
         <length>32000</length>
+        <trackFeedHistory>true</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
@@ -565,14 +615,26 @@
         <description>End date will stamp the value when Opportunity Support providing is done</description>
         <label>End Date</label>
         <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Date</type>
     </fields>
     <fields>
+        <fullName>Core_Login_User_Id__c</fullName>
+        <formula>Core_Approver_1__c = $User.Id ||  Core_Approver_2__c = $User.Id ||  Core_Approver_3__c = $User.Id ||  Core_Approver_4__c = $User.Id ||  Core_Approver_5__c = $User.Id</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Login User Id</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>Core_Opportunity_Description__c</fullName>
+        <description>Opportunity Details here will overwrite Opportunity Details in the opportunity</description>
         <label>Opportunity Description</label>
         <length>32000</length>
+        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
@@ -621,6 +683,7 @@
         <label>Assignee</label>
         <length>255</length>
         <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
@@ -628,11 +691,12 @@
     </fields>
     <fields>
         <fullName>Core_PrimaryBlockers__c</fullName>
-        <description>Please provide any primary blockers for this opportunity or concerns for the planned initiative.</description>
-        <inlineHelpText>Please provide any primary blockers for this opportunity or concerns for the planned initiative.</inlineHelpText>
+        <description>Please provide any primary blockers for this opportunity or concerns for the planned initiative</description>
+        <inlineHelpText>Please provide any primary blockers for this opportunity or concerns for the planned initiative</inlineHelpText>
         <label>Primary Blockers</label>
         <length>2500</length>
-        <trackHistory>true</trackHistory>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>5</visibleLines>
@@ -680,6 +744,7 @@
         <fullName>Core_Response_by_SME__c</fullName>
         <label>Response by SME</label>
         <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
@@ -703,6 +768,7 @@
         <description>Start date will stamp time during opportunity submitted</description>
         <label>Start Date</label>
         <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Date</type>
@@ -712,6 +778,7 @@
         <description>Status of Opportunity Support</description>
         <label>Status</label>
         <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
@@ -755,7 +822,8 @@
         <fullName>Core_Submitted_Date__c</fullName>
         <label>Submitted Date</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>DateTime</type>
     </fields>
@@ -764,6 +832,7 @@
         <description>TSS Support Type for TSS record type</description>
         <label>TSS Support Type</label>
         <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
@@ -835,10 +904,20 @@
         <inlineHelpText>Please provide the background information on the customers  current architecture</inlineHelpText>
         <label>Background Information On Architecture</label>
         <length>2500</length>
+        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Is_reassigned__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Is reassigned</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>Opportunity__c</fullName>
@@ -848,7 +927,8 @@
         <relationshipName>Core_Opportunity_Supports</relationshipName>
         <relationshipOrder>0</relationshipOrder>
         <reparentableMasterDetail>false</reparentableMasterDetail>
-        <trackHistory>true</trackHistory>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>MasterDetail</type>
         <writeRequiresMasterRead>false</writeRequiresMasterRead>
@@ -867,13 +947,51 @@
         <unique>false</unique>
     </fields>
     <label>Opportunity Support</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>Core_Denied_Opportunity_Support</fullName>
+        <columns>NAME</columns>
+        <columns>RECORDTYPE</columns>
+        <columns>Core_Approval_Comments__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_Status__c</field>
+            <operation>equals</operation>
+            <value>Rejected</value>
+        </filters>
+        <label>Rejected Opportunity Support</label>
+    </listViews>
+    <listViews>
+        <fullName>Pending_for_Approval</fullName>
+        <columns>NAME</columns>
+        <columns>Core_Account_Name__c</columns>
+        <columns>Core_Age__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_Login_User_Id__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <filters>
+            <field>Core_Status__c</field>
+            <operation>equals</operation>
+            <value>Submitted</value>
+        </filters>
+        <label>Pending for Approval</label>
+    </listViews>
     <nameField>
         <displayFormat>OppSupport-{0000}</displayFormat>
         <label>Opportunity Support Name</label>
-        <trackHistory>true</trackHistory>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Opportunity Supports</pluralLabel>
+    <recordTypeTrackFeedHistory>false</recordTypeTrackFeedHistory>
     <recordTypeTrackHistory>true</recordTypeTrackHistory>
     <recordTypes>
         <fullName>CRM_Marketing_Support</fullName>
@@ -908,10 +1026,6 @@
                 <fullName>Artificial Intelligence %28AI%29</fullName>
                 <default>false</default>
             </values>
-            <values>
-                <fullName>Government</fullName>
-                <default>false</default>
-            </values>
         </picklistValues>
         <picklistValues>
             <picklist>Core_Status__c</picklist>
@@ -928,18 +1042,6 @@
             <picklist>Core_TSS_Support_Type__c</picklist>
             <values>
                 <fullName>AI TSS Support</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CCG TSS Support%E2%80%8B</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>DAIS TSS Support</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>DCAI TSS Support</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -986,6 +1088,10 @@
             <picklist>Core_Status__c</picklist>
             <values>
                 <fullName>Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cancelled</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -1054,11 +1160,19 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Cancelled</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Closed %3A Support Not Provided</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>Closed %3A Support Provided</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rejected</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -1124,6 +1238,10 @@
             <picklist>Core_Status__c</picklist>
             <values>
                 <fullName>Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cancelled</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -1209,6 +1327,23 @@ NOT(ISCHANGED(Core_Opportunity_Support_Team_Count__c)),
 ISPICKVAL( Core_Status__c,&quot;Approved&quot;)
 )</errorConditionFormula>
         <errorMessage>Cannot Edit the CSA Support Request once approved</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_marketing_support_Status_change</fullName>
+        <active>false</active>
+        <errorConditionFormula>AND(
+RecordType.Name = &apos;Marketing Support&apos; ,
+ISCHANGED(Core_Status__c),  
+NOT(CONTAINS($User.Email,$Label.Opty_Support_Status_Update )
+ )  
+)</errorConditionFormula>
+        <errorMessage>You are not allowed to change Status</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>only_1_team_member_allowed</fullName>
+        <active>false</active>
+        <errorConditionFormula>Core_Opportunity_Support_Team_Count__c&gt;1</errorConditionFormula>
+        <errorMessage>Support of more than 1 team member is not allowed. Please reassign the team member for support</errorMessage>
     </validationRules>
     <visibility>Public</visibility>
 </CustomObject>

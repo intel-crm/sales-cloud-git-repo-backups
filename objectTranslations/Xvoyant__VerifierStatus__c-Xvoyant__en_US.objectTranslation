@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>VerifierStatus</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>VerifierStatuses</value>
+    </caseValues>
+    <fields>
+        <label><!-- Date Recorded --></label>
+        <name>Xvoyant__DateRecorded__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity --></label>
+        <name>Xvoyant__Opportunity__c</name>
+        <relationshipLabel><!-- VerifierStatuses --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Xvoyant__Status__c</name>
+        <picklistValues>
+            <masterLabel>Complete</masterLabel>
+            <translation><!-- Complete --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incomplete</masterLabel>
+            <translation><!-- Incomplete --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending</masterLabel>
+            <translation><!-- Pending --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- VerifiersConfig --></label>
+        <name>Xvoyant__VerifiersConfig__c</name>
+        <relationshipLabel><!-- VerifierStatuses --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

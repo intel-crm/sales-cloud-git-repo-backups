@@ -1685,6 +1685,17 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Core_Prospect_Owner__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Prospect Owner</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Prospects</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
         <fullName>Core_Rejected_Date__c</fullName>
         <description>This field has the propect;s rejected date</description>
         <label>Rejected Date</label>
@@ -1710,19 +1721,12 @@
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
-            <restricted>true</restricted>
             <valueSetDefinition>
                 <sorted>false</sorted>
                 <value>
                     <fullName>Sales AI</fullName>
                     <default>true</default>
                     <label>Sales AI</label>
-                </value>
-                <value>
-                    <fullName>Sales_AI</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Sales_AI</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -1769,6 +1773,18 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>Lead__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Lead</label>
+        <referenceTo>Lead</referenceTo>
+        <relationshipLabel>Prospects</relationshipLabel>
+        <relationshipName>Prospects</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
     </fields>
     <fields>
         <fullName>Please_click_Save_to_own_these_Prospec__c</fullName>
@@ -2852,6 +2868,10 @@
                 <fullName>Not Target Profile</fullName>
                 <default>false</default>
             </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
         </picklistValues>
         <picklistValues>
             <picklist>Core_Industry_Pkt__c</picklist>
@@ -2952,7 +2972,7 @@
             <picklist>Core_Source_Pkt__c</picklist>
             <values>
                 <fullName>Sales AI</fullName>
-                <default>true</default>
+                <default>false</default>
             </values>
         </picklistValues>
         <picklistValues>
@@ -2971,7 +2991,7 @@
             </values>
             <values>
                 <fullName>New</fullName>
-                <default>true</default>
+                <default>false</default>
             </values>
         </picklistValues>
     </recordTypes>
@@ -2985,6 +3005,7 @@
         <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
         <excludedStandardButtons>MassChangeOwner</excludedStandardButtons>
         <excludedStandardButtons>PrintableListView</excludedStandardButtons>
+        <massQuickActions>Core_Mass_Claim</massQuickActions>
         <searchResultsAdditionalFields>Core_BusinessOrganizationNm__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Core_Industry_Pkt__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>OWNER.ALIAS</searchResultsAdditionalFields>
@@ -3016,6 +3037,17 @@ ISPICKVAL(Core_Status_Pkt__c, &apos;Disqualified&apos;)
 )
 )</errorConditionFormula>
         <errorMessage>Converted prospect cannot be disqualified</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_Check_IF_Owner_Claimed_or_Not</fullName>
+        <active>false</active>
+        <errorConditionFormula>AND(
+Core_Mass_Claim_Flag__c,
+LEFT(OwnerId,3) &lt;&gt; &apos;00G&apos;,
+Owner:User.Id &lt;&gt; $User.Id
+
+)</errorConditionFormula>
+        <errorMessage>This Selected Prospect is already claimed by other user</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Core_Check_IF_Prosepect_already_Claimed</fullName>

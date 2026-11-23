@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SharingSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <accessMappings>
+        <accessLevel>Read</accessLevel>
+        <object>PCC_Deal_Change_Request__c</object>
+        <objectField>Owner.Account</objectField>
+        <userField>Account</userField>
+    </accessMappings>
+    <accessMappings>
         <accessLevel>Edit</accessLevel>
         <object>PCC_EndCustomerAcc_Mapping__c</object>
         <objectField>PCC_Partner_Account_Id__c</objectField>
@@ -8,8 +14,14 @@
     </accessMappings>
     <accessMappings>
         <accessLevel>Edit</accessLevel>
-        <object>PRM_IPAMembership_Attributes__c</object>
-        <objectField>PRM_Account_Id__c</objectField>
+        <object>PCC_Rebate_Claim_Stage__c</object>
+        <objectField>PCC_Partner__c</objectField>
+        <userField>Account</userField>
+    </accessMappings>
+    <accessMappings>
+        <accessLevel>Edit</accessLevel>
+        <object>PCC_Rebate_Claim__c</object>
+        <objectField>PCC_Partner__c</objectField>
         <userField>Account</userField>
     </accessMappings>
     <accessMappings>

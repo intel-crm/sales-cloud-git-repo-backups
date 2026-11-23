@@ -1,11 +1,6 @@
 ({
     DoInit : function(component, event, helper) {
-       //server call for FromAccount
-        helper.callServer(component,
-                         "c.searchAccountsLookup",
-                         function(response){component.set("v.fromAccountList",response);});
         
-        //server call for FromAccount if Auto Selected is true
         helper.callServer(component, "c.checkAccess",
                           function(response){
                               if(response == true)
@@ -13,20 +8,21 @@
                                   component.set('v.hasAccess',response); 
                                   var getRecordId=component.get("v.recordId");
                                   
-                                  
                                   //get Account Name-From
                                   if (typeof getRecordId != 'undefined' && getRecordId.length>0 ){
                                       
                                       helper.callServer(component,
                                                         "c.accountIDNameMapping",
                                                         function(response){
-                                                            component.set("v.fromAccountSelectedValue",response);  
+                                                            component.set("v.selectedValue",response);  
                                                             
                                                         },
                                                         {id:component.get("v.recordId")} 
                                                        );
                                       
-                                      helper.GetBudget(component, event, helper);
+                                      helper.DropDownActivity(component, event, helper);
+                                      
+                                      
                                   }
                                   
                               }
@@ -35,6 +31,9 @@
                                   component.set('v.accessErrorMsg', $A.get('$Label.c.Core_MDF_Budget_Transfer_Access_Error_Message')); 
                               }
                           });
+        
+        
+        
     }, 
     
     
@@ -47,79 +46,78 @@
         $A.util.addClass(cmpTarget, 'slds-hide');  
     },
     close: function(component, event, helper) {
+        
         $A.get("e.force:closeQuickAction").fire();
     },
-    
-    //Getting From Account selected value
+    SearchAccounts: function(component, event, helper) {
+       	var search = "";
+        component.find('partner_').reduce(function (validSoFar, inputCmp) {
+            var name = inputCmp.get('v.name'); 
+            if(name=="fromAccount"){   
+               search=inputCmp.get('v.value');   
+            }
+            
+        },true);
+        
+        var fromAccountDropDown=component.find("fromAccountDropDown");
+        
+        //user searches for more than 2 chars
+        if(search.length > 2){
+            $A.util.addClass(fromAccountDropDown,"slds-is-open");
+            
+            
+            //get the from list
+            helper.callServer(component,
+                              "c.searchAccountsLookup",
+                              function(response){                                  
+                                  component.set("v.searchAccRes", response);
+                                  
+                              },
+                              {query:search}
+                             );
+            
+        }
+        else{   
+            component.set("v.searchAccRes", "");
+            $A.util.removeClass(fromAccountDropDown,"slds-is-open");
+        }
+        
+    },
+    DropDownCombo:function(component, event, helper) {
+        //setting auto selected value for FROM list
+        component.set("v.autoSelected","false");
+        helper.DropDownActivity(component, event, helper);
+        
+        
+        
+    },
     OnBudgetChange:function(component, event, helper) {
-         //getting values from dispatch event call
-        let selectedBudget = event.getParam('selectedItem');
-        component.set("v.budgetSelectedValue",selectedBudget);
-        $A.enqueueAction(component.get('c.CloseToast'));
-        $A.enqueueAction(component.get('c.CloseErrorToast'));
+        console.log("from:"+component.get("v.selectedValue").Id);
         helper.BudgetChange(component, event, helper);
     },
     TransferBudget: function(component, event, helper) {
-        var dt = new Date();
-		$A.enqueueAction(component.get('c.CloseToast'));
-        $A.enqueueAction(component.get('c.CloseErrorToast'));
-        // will output something like "Thu Feb 14 2019 11:04:42 GMT+0530 (India Standard Time)"
-        console.log('Start::'+dt.toString());
+        helper.BudgetTrasfer(component, event, helper);
         
-        helper.BudgetTransfer(component, event, helper);
-        
-        console.log('End::'+dt.toString());
-    },
-    // to clear all field value if dispatch event is called from FromAccount
-    ClearFromAccount:function(component, event, helper) {
-        helper.ClearForm(component);
-    },
-    fromAccountClick:function(component, event, helper) {
-        component.set("v.button",true);
-    },
-    //to clear Budget, Avaiable amount, To Account and Amount to Tranfer value if dispatch event is called from Budget field
-    ClearBudget:function(component, event, helper) {
-        helper.ClearBudgetField(component);
-    },
-    //to clear To Account, Amount to transfer value if dispatch event is called from To Account
-    ClearToAccount:function(component, event, helper) {
-        helper.ClearToAccountField(component);
     },
     
-    //To toggle transfer button & to show error messages
-    HandleBlur:function(component, event, helper) {                
-        $A.enqueueAction(component.get('c.CloseToast'));
-        $A.enqueueAction(component.get('c.CloseErrorToast'));
+    CloseButton:function(component, event, helper) {
+        helper.ClearForm(component);
+    },
+    HandleBlur:function(component, event, helper) {
+        
         //toggle transfer button
         helper.ButtonToggle(component,event);
-        helper.ClearErrorMessages(component);        
+        helper.ClearErrorMessages(component); 
+        
     },
-    //to clear all field value when clear button is clicked
     Clear:function(component, event, helper) {
         //clear form data
         helper.ClearForm(component);
-        var findfromAcclwcComp=component.find('fromAccountComponent');
-        findfromAcclwcComp.inputClearValue();
     },
-    //Getting From Account selected value
-    fromAccountToChange:function(component, event, helper) {
-    	helper.ClearForm(component);
-        //getting values from dispatch event call
-    	let selectedFromAcc = event.getParam('selectedItem');
-        component.set("v.fromAccountSelectedValue",selectedFromAcc);
-        //set auto selected value of from account to false
-        component.set("v.autoSelected","false");
-        helper.GetBudget(component, event, helper);
-	},
-    //Getting To Account selected value
-    toAccountToChange:function(component, event, helper) {
-        //getting values from dispatch event call
-        let selectedToAcc = event.getParam('selectedItem');
-        component.set("v.toAccountSelectedValue",selectedToAcc);
-        if(selectedToAcc != null && selectedToAcc != ''){
-           component.set("v.disableTransferAmount",false);
-           }
-    	$A.enqueueAction(component.get('c.CloseToast'));
-        $A.enqueueAction(component.get('c.CloseErrorToast'));
+    ClearErrorMsg:function(component, event, helper) {
+        helper.ClearErrorMessages(component);       
     },
+    OnAccountToChange:function(component, event, helper) {
+    
+    }
 })

@@ -11,7 +11,8 @@
         <label>Benefit Association Check</label>
         <locationX>100</locationX>
         <locationY>200</locationY>
-        <actionName>01p3b0000012mTBNotFound</actionName>
+        <actionName>PMP_SendEmailAlertForCreateOffering</actionName>
+        <actionType>apex</actionType>
         <inputParameters>
             <processMetadataValues>
                 <name>dataType</name>
@@ -54,6 +55,7 @@
                 <elementReference>formula_2_myRule_1_A1_9811494647</elementReference>
             </value>
         </inputParameters>
+        <nameSegment>PMP_SendEmailAlertForCreateOffering</nameSegment>
     </actionCalls>
     <apiVersion>49.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
@@ -136,7 +138,7 @@
     </processMetadataValues>
     <processType>Workflow</processType>
     <startElementReference>myDecision</startElementReference>
-    <status>Obsolete</status>
+    <status>Active</status>
     <variables>
         <name>myVariable_current</name>
         <dataType>SObject</dataType>

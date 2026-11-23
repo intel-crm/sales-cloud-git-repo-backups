@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>Nt Innovations Private Limited Partner User</description>
+    <description>N T Computers Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>Nt Innovations Private Limited Partner User</name>
+    <name>N T Computers Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>NTComputersPartnerManager</parentRole>
 </Role>

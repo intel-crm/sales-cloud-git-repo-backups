@@ -184,7 +184,7 @@
         <fullName>PRM_Agreement_Sign_Dt__c</fullName>
         <label>Agreement Signed Date</label>
         <required>true</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>DateTime</type>
     </fields>
@@ -195,8 +195,8 @@
         <referenceTo>Contact</referenceTo>
         <relationshipLabel>Partner Legal Agreement Association</relationshipLabel>
         <relationshipName>Account_Legal_Agreement_Associations</relationshipName>
-        <required>false</required>
-        <trackHistory>true</trackHistory>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -204,7 +204,7 @@
         <fullName>PRM_InActive_Ind__c</fullName>
         <defaultValue>false</defaultValue>
         <label>Inactive Indicator</label>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
@@ -223,7 +223,7 @@
         <fullName>PRM_Notes_Txt__c</fullName>
         <label>Notes</label>
         <length>32768</length>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>3</visibleLines>
@@ -236,21 +236,9 @@
         <relationshipLabel>Partner Legal Agreement Association</relationshipLabel>
         <relationshipName>AccountLegalAgreementAssociations</relationshipName>
         <required>false</required>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>PRM_Partner_Agreement_Name__c</fullName>
-        <externalId>false</externalId>
-        <formula>PRM_Partner_Agreement_Id__r.Name</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Partner Agreement Name</label>
-        <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
+        <type>Lookup</type>
     </fields>
     <fields>
         <fullName>PRM_Record_Link__c</fullName>
@@ -265,27 +253,6 @@
         <type>Text</type>
         <unique>false</unique>
     </fields>
-    <fields>
-        <fullName>PRM_Signed_By_Email__c</fullName>
-        <externalId>false</externalId>
-        <label>Signed By Email</label>
-        <required>false</required>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Email</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>PRM_Signed_By_Name__c</fullName>
-        <externalId>false</externalId>
-        <label>Signed By Name</label>
-        <length>150</length>
-        <required>false</required>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
     <label>Account Legal Agreement Association</label>
     <listViews>
         <fullName>All</fullName>
@@ -295,11 +262,9 @@
         <columns>PRM_Partner_Agreement_Id__c</columns>
         <columns>PRM_Contact__c</columns>
         <columns>PRM_Agreement_Sign_Dt__c</columns>
-        <columns>RECORDTYPE</columns>
-        <columns>PCC_Design_Deal_Registration__c</columns>
-        <columns>PRM_Partner_Agreement_Name__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
+        <language>en_US</language>
     </listViews>
     <listViews>
         <fullName>TODAYCREATEDLEGALAGRIMENTS</fullName>

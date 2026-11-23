@@ -4,9 +4,6 @@
         <field>CPT_Quota_Setup__c.CPT_Employee_WWID__c</field>
     </columns>
     <columns>
-        <field>CPT_Quota_Setup__c.CPT_Employee_Name__c</field>
-    </columns>
-    <columns>
         <field>CPT_Quota_Setup__c.CPT_Sales_Org__c</field>
     </columns>
     <columns>
@@ -21,16 +18,6 @@
     <columns>
         <field>CPT_Quota_Setup__c.CPT_Effective_End__c</field>
     </columns>
-    <filter>
-        <criteriaItems>
-            <column>CPT_Quota_Setup__c.CPT_Stage__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Completed</value>
-        </criteriaItems>
-        <language>en_US</language>
-    </filter>
     <format>Tabular</format>
     <name>Payee Sales Org</name>
     <params>

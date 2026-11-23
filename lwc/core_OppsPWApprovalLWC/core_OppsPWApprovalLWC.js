@@ -135,9 +135,6 @@ export default class core_OppsPWApprovalLWC extends NavigationMixin(LightningEle
         .then(result =>{
             this.loaded = false;
             eval("$A.get('e.force:refreshView').fire();");
-					/*	setTimeout(function() {
-                location.reload();
-              }, 1000);*/
             this.dispatchEvent(new CloseActionScreenEvent());
         })
         .catch(error =>{

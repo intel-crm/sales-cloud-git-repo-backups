@@ -1467,7 +1467,7 @@ Stamp the current BU Short Name</description>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Active</status>
+    <status>Obsolete</status>
     <variables>
         <name>OLIStatus</name>
         <dataType>SObject</dataType>

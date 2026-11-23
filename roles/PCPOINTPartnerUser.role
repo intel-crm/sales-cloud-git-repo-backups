@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>PC POINT Partner User</description>
+    <description>P.C.POINT Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>PC POINT Partner User</name>
+    <name>P.C.POINT Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>PCPOINTPartnerManager</parentRole>
 </Role>

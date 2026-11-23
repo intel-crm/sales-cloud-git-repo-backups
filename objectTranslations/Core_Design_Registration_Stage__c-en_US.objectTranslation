@@ -88,6 +88,14 @@
         <name>Core_End_Customer_Country_Subdivision_Nm__c</name>
     </fields>
     <fields>
+        <label><!-- End Customer Country --></label>
+        <name>Core_End_Customer_Country__c</name>
+        <picklistValues>
+            <masterLabel>India</masterLabel>
+            <translation><!-- India --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
         <label><!-- End Customer Name --></label>
         <name>Core_End_Customer_Nm__c</name>
     </fields>

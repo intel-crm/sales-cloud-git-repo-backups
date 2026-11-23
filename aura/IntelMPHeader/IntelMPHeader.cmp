@@ -1,4 +1,4 @@
 <aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
-    <c:coreIntcSso aura:id="ssoLibrary" />
+    <c:IntelSignInRedirectLibrary aura:id="signInRedirectLibrary" />
     <aura:handler name="init" value="{!this}" action="{!c.setUserLangLocale}"/>
 </aura:component>

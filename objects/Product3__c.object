@@ -1,0 +1,1495 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>Mobile_Product</compactLayoutAssignment>
+    <compactLayouts>
+        <fullName>Mobile_Product</fullName>
+        <fields>Name</fields>
+        <fields>Core_Product_Type__c</fields>
+        <fields>Core_Platform_Name__c</fields>
+        <label>Mobile Product</label>
+    </compactLayouts>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
+    <fieldSets>
+        <fullName>Map_Prod_FieldSet</fullName>
+        <description>used in core_mapAcc VF page</description>
+        <displayedFields>
+            <field>Core_Code_Name__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_Product_Name_EPM_ID__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>Map Prod FieldSet</label>
+    </fieldSets>
+    <fieldSets>
+        <fullName>ProductFieldSet</fullName>
+        <description>Visualforce Page - Core_IPS_Lookup_Page_Syed</description>
+        <displayedFields>
+            <field>Name</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>ProductFieldSet</label>
+    </fieldSets>
+    <fields>
+        <fullName>Core_Avail_for_New_Designs__c</fullName>
+        <defaultValue>true</defaultValue>
+        <description>This flag is being used for New design product.</description>
+        <label>Available for New Designs</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_BU_Operation_Code__c</fullName>
+        <description>Used by Internal Sales User to figure out products that need to be marked as &apos;Design Registration Eligible&apos;</description>
+        <externalId>false</externalId>
+        <label>BU Operation Code</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Business_Org_Nm__c</fullName>
+        <description>Indicates whether a products optimised for a customer</description>
+        <externalId>false</externalId>
+        <label>Business Organization Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Class_and_Component_Sub_Category_Nm__c</fullName>
+        <externalId>false</externalId>
+        <formula>Core_Item_Class_Nm__c + Core_Item_Sub_Component_Category_Nm__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Class and Comp Sub Category</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Code_Name_EPM_ID__c</fullName>
+        <description>VPLCH Level 4</description>
+        <externalId>false</externalId>
+        <label>Code Name EPM ID</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Code_Name__c</fullName>
+        <description>VPLCH Level 4</description>
+        <externalId>false</externalId>
+        <label>Code Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Controlled_Technology__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Field to designate controlled technology</description>
+        <label>Controlled Technology</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_CoreCount__c</fullName>
+        <description>Core Count</description>
+        <externalId>false</externalId>
+        <label>Core Count</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Design_Registration_Eligible_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Field to indicate if this product is eligible to be line item in DDR (Distributor Design Registration).</description>
+        <inlineHelpText>Determines whether this Product is available for selection on Design Registrations.</inlineHelpText>
+        <label>Design Registration Eligible</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_Division_Code_Short_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Division Code Short Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Division_Code__c</fullName>
+        <description>A list of all divisions this product could be associated with across the VPH and VPLCH Hierarchy</description>
+        <externalId>false</externalId>
+        <label>Division Code</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_EPM_Term_Type_Cd__c</fullName>
+        <description>Different types of EPM term types. Most useful when trying to differentiate terms at the same level in a single hierarchy but of different types (eg to differentiate between VPCH L2 and VPLCH L2).</description>
+        <externalId>false</externalId>
+        <label>EPM Term Type</label>
+        <length>128</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_End_of_Intel_Service_Date__c</fullName>
+        <label>End of Intel Service Date</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Core_External_Source_Name__c</fullName>
+        <description>The source of the external upstream system</description>
+        <externalId>false</externalId>
+        <label>External Source Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Family_Nm__c</fullName>
+        <description>Represents Family Name</description>
+        <externalId>false</externalId>
+        <label>Family Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Forecast_Product_Name__c</fullName>
+        <description>Ordering code of the products</description>
+        <externalId>false</externalId>
+        <label>Forecast Product Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Group_Code_Short_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Group Code Short Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Group_Code__c</fullName>
+        <description>Group Code</description>
+        <externalId>false</externalId>
+        <label>Group Code</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Hierarchy_ID__c</fullName>
+        <description>ID for the hierarchy that the record is being sourced from</description>
+        <externalId>false</externalId>
+        <label>Hierarchy ID</label>
+        <length>128</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Hierarchy_Name__c</fullName>
+        <description>Description of which Hierarchy this record was mastered in</description>
+        <externalId>false</externalId>
+        <label>Hierarchy Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_INF_KPI_ProdClass__c</fullName>
+        <externalId>false</externalId>
+        <label>KPI - Product Class</label>
+        <length>80</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Visible_Flag_External__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Set by Integration/iPaas. 
+Each row must have either Yes or No defined.
+Set to True by default for VPH L2 &amp; L3 and VPLCH L2 and L4.</description>
+        <label>IPS Visible Flag - External</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Visible_Flag_Internal__c</fullName>
+        <description>Set within SFDC by a local IT/Sys Admin, Data Ops/Steward or KTBR. At the time of initial data setup, this is set to BLANK or NULL. If set manually, the value of this field overrides the visibility setting obtained from integration/externally.</description>
+        <inlineHelpText>Set within SFDC by a local IT/Sys Admin, Data Ops/Steward or KTBR. At the time of initial data setup, this is set to BLANK or NULL. If set manually, the value of this field overrides the visibility setting obtained from integration/externally.</inlineHelpText>
+        <label>IPS Visible Flag - Internal</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Visible_Flag__c</fullName>
+        <description>Formula evaluates value in IPS Visible Internal flag. If value is Blank, take the value of External flag. Else take the value of the Internal flag.</description>
+        <formula>IF (ISBLANK( TEXT( Core_IPS_Visible_Flag_Internal__c )),  Core_IPS_Visible_Flag_External__c, IF( TEXT( Core_IPS_Visible_Flag_Internal__c ) = &quot;YES&quot;, True, False)
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>IPS Visible Flag</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_IQR_Visible__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>IQR Visible</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_Inf_KPI_ProdFamily__c</fullName>
+        <externalId>false</externalId>
+        <label>KPI - Product Family</label>
+        <length>80</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Inf_KPI_ProdGroup__c</fullName>
+        <externalId>false</externalId>
+        <label>KPI - Product Group</label>
+        <length>80</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Intel_vPro_Platform_Eligibility__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Intel vPro Platform Eligibility</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_IsLatest__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>IsLatest</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_Is_Custom_Ind__c</fullName>
+        <description>Indicates whether a product is built for a customer</description>
+        <externalId>false</externalId>
+        <label>Custom Indicator</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Is_Name_Changed_Chk__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>The field becomes true when the the product name changes and  also used to update the field Core_Opportunity_Products__c</description>
+        <label>Is Name Changed</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_Item_Class_Nm__c</fullName>
+        <description>For IP or SW or ARM products expect class value as &quot;SV&quot;
+for DEV KIT expect class value as &quot;BD&quot;</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Indicates how product is being classified.</inlineHelpText>
+        <label>Product Class</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Item_Id__c</fullName>
+        <description>Business currently use this field to determine Business Process.Material Id is not present in Siebel, instead they go to SAP and search the Material Master for equivalent product.Material Master is 1-1 mapping with product.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enterprise level unique identifier for the product. Source from MMID in SAP/EDW.</inlineHelpText>
+        <label>Material Id</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Item_Orderable_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Used to control whether a product the product can/cannot be Ordered</description>
+        <inlineHelpText>Determines if product is available for booking. It is checked when Signal Code = I3</inlineHelpText>
+        <label>Orderable</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_Item_Package_Txt__c</fullName>
+        <description>Business currently use this field to determine some Business Process.
+Material Id is not present in Siebel, instead they go to SAP and search the Material Master for equivalent product.
+Material Master is 1-1 mapping with product(Unique).</description>
+        <externalId>false</externalId>
+        <label>Package</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Item_Price_Authorization_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Enable Price Auth based on Status Code field</description>
+        <inlineHelpText>Determines if product is available for DPA/ALN</inlineHelpText>
+        <label>Price Auth</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_Item_Quotable_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Used to control whether a product the product can/cannot be Quoted</description>
+        <inlineHelpText>Determines if product is available for Quote Transaction. It is checked when Signal Code = I2</inlineHelpText>
+        <label>Quotable</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_Item_Shippable_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Used to control whether the product can/cannot be shipped</description>
+        <inlineHelpText>Determines if shipment is allowed for a product. It is checked when Signal Code = AC</inlineHelpText>
+        <label>Shippable</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_Item_Signal_Cd__c</fullName>
+        <description>To determine the Quotable, Shippable and Orderable fields.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Source from Sales Status in PIR.</inlineHelpText>
+        <label>Signal Code</label>
+        <length>10</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Item_Standard_Cost_Amt__c</fullName>
+        <description>Standard Cost of Product (TPIR)</description>
+        <label>Standard Cost</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>4</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Core_Item_Sub_Component_Category_Nm__c</fullName>
+        <description>To identify the Standalone Products</description>
+        <externalId>false</externalId>
+        <label>Sub Component Category</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Max_TDP__c</fullName>
+        <description>Max_TDP</description>
+        <externalId>false</externalId>
+        <label>Max TDP</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Mem_Amt__c</fullName>
+        <description>Capacity material characteristic  denotes capacity of SSD products</description>
+        <externalId>false</externalId>
+        <label>Memory Capacity</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_OPN__c</fullName>
+        <description>Ordering Part Number(OPN) of a product</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Ordering Part Number(OPN) of a product</inlineHelpText>
+        <label>OPN</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Old_Product_Name_Txt__c</fullName>
+        <description>This field captures the old product name when the name gets changed</description>
+        <externalId>false</externalId>
+        <label>Old Product Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Partner_Visible_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Flag to indicate if this product is visible to partner user</description>
+        <inlineHelpText>Determines whether this Product is available to external partner users for selection on Opportunities. This product is added to the Partner Price Book.</inlineHelpText>
+        <label>Partner Visible</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_Pipeline_Launch_Date__c</fullName>
+        <label>Pipeline Launch Date</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Core_Platform_Config_EPM_ID__c</fullName>
+        <description>VPLCH Level 2</description>
+        <externalId>false</externalId>
+        <label>Platform Config EPM ID</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Platform_Config__c</fullName>
+        <description>A more detailed view of the platform</description>
+        <externalId>false</externalId>
+        <label>Platform Config</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Platform_EPM_ID__c</fullName>
+        <description>VPLCH Level 1</description>
+        <externalId>false</externalId>
+        <label>Platform EPM ID</label>
+        <length>128</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Platform_Eligibility__c</fullName>
+        <description>Platform Eligibility ---  DON&apos;T USE THIS FIELD</description>
+        <externalId>false</externalId>
+        <label>Platform Eligibility_EOL</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Platform_Name__c</fullName>
+        <description>VPLCH Level 1</description>
+        <externalId>false</externalId>
+        <label>Platform Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Processor_Number_Nm__c</fullName>
+        <externalId>false</externalId>
+        <label>Processor Number</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Processor_Number_Ta_Nm__c</fullName>
+        <label>Processor Number</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_Prod_Tool_Type_Nm__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT( Core_Product_Ext_Attribute_Id__r.Core_Prod_Tool_Type_Nm__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Tool Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_ProductName_Changed_Time_Dte__c</fullName>
+        <description>This field is used to capture the date/time of product name change</description>
+        <label>Product Name Changed Time</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Core_Product_Density_Value__c</fullName>
+        <description>Stores calculated density value</description>
+        <externalId>false</externalId>
+        <label>Product Density Value</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Product_Ext_Attribute_Id__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>To access the extended/Licensing atrributes for PSG Products</description>
+        <inlineHelpText>To access the extended/Licensing atrributes for PSG Products</inlineHelpText>
+        <label>Product Extended Attributes</label>
+        <referenceTo>Core_Product_Ext_Attribute__c</referenceTo>
+        <relationshipLabel>Products3</relationshipLabel>
+        <relationshipName>Products3</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_Product_Family_EPM_ID__c</fullName>
+        <description>VPH Level 2 EPM ID</description>
+        <externalId>false</externalId>
+        <label>Product Family EPM ID</label>
+        <length>128</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Product_Family__c</fullName>
+        <description>VPH Level 2</description>
+        <externalId>false</externalId>
+        <label>Product Family</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Product_Group_EPM_ID__c</fullName>
+        <externalId>false</externalId>
+        <label>Product Group EPM ID</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Product_Group__c</fullName>
+        <externalId>false</externalId>
+        <label>Product Group</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Product_ID__c</fullName>
+        <externalId>false</externalId>
+        <formula>CaseSafeId(Id)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Product ID</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Product_Name_EPM_ID__c</fullName>
+        <externalId>false</externalId>
+        <label>Product Name EPM ID</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Product_Org__c</fullName>
+        <description>Used by iPaaS Product Integrations, should not be displayed for users or used by anyone other than iPaaS.
+Defines which organization the product belongs to.</description>
+        <label>Product_Org</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Sales</fullName>
+                    <default>false</default>
+                    <label>Sales</label>
+                </value>
+                <value>
+                    <fullName>IPS</fullName>
+                    <default>false</default>
+                    <label>IPS</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_Product_Series_EPM_ID__c</fullName>
+        <description>EPM ID for the VPH Level 3</description>
+        <externalId>false</externalId>
+        <label>Product Series EPM ID</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Product_Series__c</fullName>
+        <description>Product Series</description>
+        <externalId>false</externalId>
+        <label>Product Series</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Product_Status__c</fullName>
+        <description>Integration Field - fg_mtrl_sts_cd</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Indicates sales status of a product. Source from Sales Status in SAP/EDW.</inlineHelpText>
+        <label>Product Status</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Product_Type_EPM_ID__c</fullName>
+        <description>VPLCH lvl 3
+VPH lvl 1</description>
+        <externalId>false</externalId>
+        <label>Product Type EPM ID</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Product_Type_Nm__c</fullName>
+        <description>To derive the type of Product whether Tools/Components based on Product Class Attribute</description>
+        <externalId>false</externalId>
+        <formula>IF( Core_Item_Class_Nm__c = &apos;SV&apos; || Core_Item_Class_Nm__c  = &apos;BD&apos;, &apos;Tool&apos;, IF(Core_Item_Class_Nm__c = &apos;IC&apos;,&apos;Component&apos;,NULL))</formula>
+        <inlineHelpText>Indicates if a product belongs to Component or Tool</inlineHelpText>
+        <label>FPGA Product Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Product_Type__c</fullName>
+        <description>Product type</description>
+        <externalId>false</externalId>
+        <label>Product Type</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_SA_Is_EOL__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Sales Assist Is EOL</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_SW_Prod_Avail_To_TL_ORD_ENBLMT_Ind__c</fullName>
+        <formula>Core_Product_Ext_Attribute_Id__r.Core_SW_Prod_Avail_To_TL_ORD_ENBLMT_Ind__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Available to TOE</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_SW_Prod_Non_Commercial_Purpose_Nm__c</fullName>
+        <formula>IF(ISBLANK(text(Core_Product_Ext_Attribute_Id__r.Core_SW_Prod_Non_Commercial_Purpose_Nm__c )), false , true )</formula>
+        <label>Non-Commercial Purpose</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_Sales_Visible_Flag_User_Edit__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>To identify if PSG user has modified this flag or Ipaas Integration</description>
+        <label>Sales Visible Flag User Edit</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_Sales_Visible_Flag__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Check this box to make a Product visible for use in Sales processes. Checking this flag makes the Product available for the Price Book.</description>
+        <inlineHelpText>Check this box to make a Product visible for use in Sales processes. Checking this flag makes the Product available for the Standard Price Book.</inlineHelpText>
+        <label>Sales Visible Flag</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_Solution_Area__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Solution Area</label>
+        <referenceTo>Core_Solution_Storage__c</referenceTo>
+        <relationshipLabel>Products3</relationshipLabel>
+        <relationshipName>Products3</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_Unique_ID__c</fullName>
+        <description>Unique ID of the hierarchy for this product</description>
+        <externalId>true</externalId>
+        <label>Unique ID</label>
+        <length>128</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Vertical_Segment__c</fullName>
+        <description>Filter-VerticalSegment from PIM</description>
+        <externalId>false</externalId>
+        <label>Vertical Segment</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_iPaaS_Load_ID__c</fullName>
+        <description>For integration use only. Allows the iPaaS integration to know when a product was last touched by iPaaS.</description>
+        <externalId>false</externalId>
+        <label>iPaaS Load ID</label>
+        <length>20</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Description__c</fullName>
+        <label>Product Description</label>
+        <length>4000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>DisplayUrl__c</fullName>
+        <label>Display URL</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>ExternalId__c</fullName>
+        <externalId>false</externalId>
+        <label>External ID</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Family__c</fullName>
+        <label>Product Family</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>None</fullName>
+                    <default>false</default>
+                    <label>None</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>INTUCASE_CodeName__c</fullName>
+        <externalId>false</externalId>
+        <formula>INITCAP( Core_Code_Name__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>INTUCASE_CodeName</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>IsActive__c</fullName>
+        <defaultValue>false</defaultValue>
+        <inlineHelpText>Indicates if a product is available for transaction in SFDC, the flag is managed via integration. Flag is unchecked when product is either retired regardless of product hierarchy or new equal product created in VPH.</inlineHelpText>
+        <label>Active</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Level__c</fullName>
+        <label>Level</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>1</fullName>
+                    <default>false</default>
+                    <label>1</label>
+                </value>
+                <value>
+                    <fullName>2</fullName>
+                    <default>false</default>
+                    <label>2</label>
+                </value>
+                <value>
+                    <fullName>3</fullName>
+                    <default>false</default>
+                    <label>3</label>
+                </value>
+                <value>
+                    <fullName>4</fullName>
+                    <default>false</default>
+                    <label>4</label>
+                </value>
+                <value>
+                    <fullName>5</fullName>
+                    <default>false</default>
+                    <label>5</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>ProductCode__c</fullName>
+        <externalId>false</externalId>
+        <label>Product Code</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Product_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Product Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>QuantityUnitOfMeasure__c</fullName>
+        <label>Quantity Unit Of Measure</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Each</fullName>
+                    <default>false</default>
+                    <label>Each</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Sales_Serial_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>Serial_Number</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>StockKeepingUnit__c</fullName>
+        <externalId>false</externalId>
+        <label>Product SKU</label>
+        <length>180</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SubscriptionPricing__c</fullName>
+        <description>Type of pricing to use for this subscription. &quot;None&quot; means this product is not a subscription.</description>
+        <inlineHelpText>Type of pricing to use for this subscription. &quot;None&quot; means this product is not a subscription.</inlineHelpText>
+        <label>Subscription Pricing</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Fixed Price</fullName>
+                    <default>false</default>
+                    <label>Fixed Price</label>
+                </value>
+                <value>
+                    <fullName>Percent Of Total</fullName>
+                    <default>false</default>
+                    <label>Percent Of Total</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>UCASE_CodeName__c</fullName>
+        <externalId>false</externalId>
+        <formula>UPPER(Core_Code_Name__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>UCASE_CodeName</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Product3</label>
+    <nameField>
+        <label>Product3 Name</label>
+        <trackHistory>true</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Products3</pluralLabel>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>Tools_Product</fullName>
+        <active>true</active>
+        <label>Tools Product</label>
+        <picklistValues>
+            <picklist>Core_IPS_Visible_Flag_Internal__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_Product_Org__c</picklist>
+            <values>
+                <fullName>IPS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sales</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Family__c</picklist>
+            <values>
+                <fullName>None</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Level__c</picklist>
+            <values>
+                <fullName>1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>QuantityUnitOfMeasure__c</picklist>
+            <values>
+                <fullName>Each</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>SubscriptionPricing__c</picklist>
+            <values>
+                <fullName>Fixed Price</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Percent Of Total</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>Core_IPS_Cannot_Revert_IPS_Visible</fullName>
+        <active>true</active>
+        <description>Once the IPS Internal Visible flag is set to True, it cannot be set to False.
+This is needed to ensure there is no cascading impact to Assets, MAP, PAR and Case that uses a particular Product ID.</description>
+        <errorConditionFormula>AND
+(
+OR 
+(
+TEXT( Core_IPS_Visible_Flag_Internal__c ) = &quot;NO&quot;, 
+TEXT( Core_IPS_Visible_Flag_Internal__c ) = &quot;&quot;
+),
+TEXT (PRIORVALUE ( Core_IPS_Visible_Flag_Internal__c )) = &quot;YES&quot;
+)</errorConditionFormula>
+        <errorDisplayField>Core_IPS_Visible_Flag_Internal__c</errorDisplayField>
+        <errorMessage>Once set to Yes, IPS Visible Flag (Internal) cannot be reverted. Press Cancel to Exit.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_No_Sales_Product_for_IPS</fullName>
+        <active>true</active>
+        <description>The Product_Org must be IPS, for the IPS Visible Internal flag to be set to True.</description>
+        <errorConditionFormula>IF (
+NOT (ISPICKVAL(Core_Product_Org__c, &apos;IPS&apos;)),
+IF ( Core_IPS_Visible_Flag__c, TRUE, FALSE), FALSE
+)</errorConditionFormula>
+        <errorDisplayField>Core_IPS_Visible_Flag_Internal__c</errorDisplayField>
+        <errorMessage>Not an IPS product. Cannot be made IPS Visible. Click Cancel to exit.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_Prevent_IPS_OrgAdm_Name_Edit</fullName>
+        <active>true</active>
+        <description>Prevent the editing of the Name field for IPS Prod Support Org users</description>
+        <errorConditionFormula>$Profile.Name =&apos;IPS Support Org Admin&apos; &amp;&amp; 
+(ISCHANGED( Name))</errorConditionFormula>
+        <errorMessage>Cannot Edit Name field</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_Prevent_Non_PSG_Usr_Product_Fields</fullName>
+        <active>false</active>
+        <description>Prevent Non PSG users from modifying PSG data</description>
+        <errorConditionFormula>IF(($Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c=TRUE || $Profile.Name ==&apos;System Administrator&apos; || $Profile.Name ==&apos;IT Admin&apos;)
+,FALSE,
+(
+NOT(($Permission.PSG_Master_Data_Read_Access || $Permission.PSG_Master_Data_Read_Write_Access ||
+$Permission.PSG_Account_Contact_Read_Write_Access || $Permission.PSG_Account_Contact_Super_Admin || $Permission.PSG_Product_Super_Admin || $Permission.PSG_Product_Read_Write_Access)) &amp;&amp;
+(   
+	ischanged(Core_Item_Price_Authorization_Ind__c) || 
+	ischanged(Core_Item_Quotable_Ind__c) || 
+	ischanged(Core_Item_Orderable_Ind__c) || 
+	ischanged(Core_Item_Shippable_Ind__c) || 
+	ischanged(Core_Item_Standard_Cost_Amt__c) || 
+	ischanged(Core_Item_Class_Nm__c) || 
+	ischanged(Core_Item_Sub_Component_Category_Nm__c) || 
+	ischanged(Core_Item_Signal_Cd__c) || 
+	ischanged(Core_Item_Id__c) || 
+	ischanged(Core_Item_Package_Txt__c) || 
+	ischanged(Core_Product_Ext_Attribute_Id__c) || 
+	ischanged(Core_Product_Type_Nm__c) || 
+	ischanged(Core_SW_Prod_Avail_To_TL_ORD_ENBLMT_Ind__c) || 
+	ischanged(Core_Prod_Tool_Type_Nm__c) || 
+	ischanged(Core_Class_and_Component_Sub_Category_Nm__c)
+)
+)
+)</errorConditionFormula>
+        <errorMessage>You cannot edit PSG data</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_Prevent_PSGU_Non_PSG_Product_Fields</fullName>
+        <active>true</active>
+        <description>Prevent PSG Users from editing Non-PSG data</description>
+        <errorConditionFormula>IF(($Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c=TRUE || $Profile.Name ==&apos;System Administrator&apos; || $Profile.Name ==&apos;IT Admin&apos;)
+,FALSE,
+(
+($Permission.PSG_Master_Data_Read_Access || $Permission.PSG_Master_Data_Read_Write_Access ||
+$Permission.PSG_Account_Contact_Read_Write_Access || $Permission.PSG_Account_Contact_Super_Admin ||
+$Permission.PSG_Product_Super_Admin || $Permission.PSG_Product_Read_Write_Access )
+&amp;&amp; NOT(CONTAINS($Label.Core_ByPass_ValidationOnProduct,$User.Id)) &amp;&amp;
+( Core_Product_Type_Nm__c!=&apos;Tool&apos; &amp;&amp; Core_Product_Type_Nm__c!=&apos;Component&apos;)
+)
+)</errorConditionFormula>
+        <errorMessage>You cannot edit non-PSG records, Please contact the support team for any access related help</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>PSG_Restrict_edit_on_Product_Active_Name</fullName>
+        <active>true</active>
+        <description>As PSG Product Marketing User, Active flag and Product Name should not be edittable</description>
+        <errorConditionFormula>AND($Permission.PSG_Restrict_edit_on_Active_Product_Name_for_Product_RW,OR(ISCHANGED(IsActive__c), ISCHANGED(Name)))</errorConditionFormula>
+        <errorMessage>As Product Marketing User, You do not have sufficient Privileges to edit this field.</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+</CustomObject>

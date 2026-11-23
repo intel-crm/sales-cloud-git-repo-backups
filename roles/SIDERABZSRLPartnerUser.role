@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>Sidera ICTease Srl Partner User</description>
+    <description>SIDERA BZ SRL Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>Sidera ICTease Srl Partner User</name>
+    <name>SIDERA BZ SRL Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>SIDERABZSRLPartnerManager</parentRole>
 </Role>

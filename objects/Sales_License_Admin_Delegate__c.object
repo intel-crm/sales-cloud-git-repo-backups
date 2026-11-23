@@ -86,11 +86,13 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>New</actionName>
-        <type>Default</type>
+        <content>Sales_AddLicenseAdminComp</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>LightningComponent</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>New</actionName>
-        <formFactor>Large</formFactor>
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
@@ -305,9 +307,14 @@
         <columns>Sales_License_DlgAdmin_Email_Txt__c</columns>
         <columns>Sales_License_isActive__c</columns>
         <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Sales_License_Admin_Delegate__c.Sales_License_All_Internal_Users</value>
+        </filters>
         <label>All Delegate Admins</label>
         <sharedTo>
-            <group>ags_internal_users</group>
+            <group>AGS_PSG_Internal_Users_ReadEdit</group>
         </sharedTo>
     </listViews>
     <listViews>
@@ -329,12 +336,11 @@
             <value>1</value>
         </filters>
         <filters>
-            <field>Sales_License_PrimaryAdmin_FirstName_Txt__c</field>
-            <operation>startsWith</operation>
-            <value>UATP2</value>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Sales_License_Admin_Delegate__c.Sales_License_All_Internal_Users</value>
         </filters>
-        <label>UATP2 WN4</label>
-        <language>en_US</language>
+        <label>All Active Delegate Admins</label>
         <sharedTo>
             <group>AGS_PSG_Internal_Users_ReadEdit</group>
         </sharedTo>
@@ -351,8 +357,12 @@
             <operation>equals</operation>
             <value>1</value>
         </filters>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Sales_License_Admin_Delegate__c.Sales_License_All_Internal_Users</value>
+        </filters>
         <label>My Active Delegate Admins</label>
-        <language>en_US</language>
         <sharedTo>
             <group>AGS_PSG_External_License_Users</group>
             <group>AGS_PSG_Internal_LicenseAdmin</group>
@@ -365,9 +375,8 @@
         <columns>Sales_License_DlgAdmin_LastName_Txt__c</columns>
         <columns>Sales_License_DlgAdmin_Email_Txt__c</columns>
         <columns>Sales_License_isActive__c</columns>
-        <filterScope>Mine</filterScope>
+        <filterScope>Everything</filterScope>
         <label>My Delegate Admins</label>
-        <language>en_US</language>
         <sharedTo>
             <group>AGS_PSG_External_License_Users</group>
             <group>AGS_PSG_Internal_LicenseAdmin</group>
@@ -380,6 +389,11 @@
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>License Admin Delegates</pluralLabel>
+    <recordTypes>
+        <fullName>Sales_License_All_Internal_Users</fullName>
+        <active>true</active>
+        <label>License Admin Delegate Record Type</label>
+    </recordTypes>
     <searchLayouts>
         <excludedStandardButtons>OpenListInQuip</excludedStandardButtons>
         <excludedStandardButtons>Accept</excludedStandardButtons>
@@ -387,6 +401,7 @@
         <excludedStandardButtons>Import</excludedStandardButtons>
         <excludedStandardButtons>MassChangeOwner</excludedStandardButtons>
         <excludedStandardButtons>PrintableListView</excludedStandardButtons>
+        <excludedStandardButtons>IsotopeSubscription</excludedStandardButtons>
         <searchFilterFields>NAME</searchFilterFields>
         <searchFilterFields>Sales_License_DlgAdmin_FirstName_Txt__c</searchFilterFields>
         <searchFilterFields>Sales_License_DlgAdmin_LastName_Txt__c</searchFilterFields>

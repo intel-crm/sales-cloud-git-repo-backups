@@ -7,8 +7,8 @@ Description    : This class is Test class for Core_IPS_MoveContactWithLargeCases
 @isTest
 public class Core_IPS_MoveContactWithLargeCases_Test{
     static testMethod void testMoveContactCases(){
-        insert new Core_Contact_Bypass_Validation_Rule__c(SetupOwnerId=UserInfo.getOrganizationId(), Bypass__c=true);
-        Profile itAdminPrf = [select id, name from Profile where name = 'System Administrator' Limit 1];//System Administrator
+        Profile itAdminPrf = [select id, name from Profile where name = 'IT Admin' Limit 1];//System Administrator
+        
         Core_IPS_Labels__c ipsCS = new Core_IPS_Labels__c(Name = 'IPS Standard Entitlement', Value__c='IPS Standard Entitlement');
         insert ipsCS;
         boolean flag =true;
@@ -33,12 +33,12 @@ public class Core_IPS_MoveContactWithLargeCases_Test{
         system.assertNOTEquals(null,testAccount.id);
         
         Contact testContact = new Contact(FirstName='testFirstName123', LastName='testLastName', Email='test123@testing.com.test',
-                                          Core_IPS_Intel_Support_Owner__c=null, AccountId=testAccount.Id, MailingCountry='India');
+                                          Core_IPS_Intel_Support_Owner__c=null, AccountId=testAccount.Id);
         insert testContact;
         system.assertNOTEquals(null,testContact.id);
         
         Contact testContact2 = new Contact(FirstName='testFirstName123', LastName='testLName', Email='test1234@testing.com.test',
-                                           Core_IPS_Active__c =false,Core_IPS_Intel_Support_Owner__c=null, AccountId=testAccount.Id, MailingCountry='India');
+                                           Core_IPS_Active__c =false,Core_IPS_Intel_Support_Owner__c=null, AccountId=testAccount.Id);
         insert testContact2;
         System.assert(true,testContact2.LastName!= null);
         
@@ -51,7 +51,7 @@ public class Core_IPS_MoveContactWithLargeCases_Test{
             insert testAccount3;
         }
         Contact testContact3 = new Contact(FirstName='testFirstName123456', LastName='testLName', Email='testAccount123456@testing.com.test',
-                                           Core_IPS_Intel_Support_Owner__c=null, AccountId=testAccount3.Id, MailingCountry='India');
+                                           Core_IPS_Intel_Support_Owner__c=null, AccountId=testAccount3.Id);
         insert testContact3;
         system.assertNOTEquals(null,testContact3.id);
         
@@ -100,16 +100,15 @@ public class Core_IPS_MoveContactWithLargeCases_Test{
         
         
         List<RecordType> rtList = [SELECT id,developerName,name FROM RecordType where SobjectType='Case'];
-        Test.startTest();
         // Create Case
-        List<Asset> listOfAssets= TestUtilities.getAssetList(2);
+        List<Asset> listOfAssets= TestUtilities.getAssetList(10);
         for(Asset AssetRec : listOfAssets){
             AssetRec.accountid= testAccount.id;
             AssetRec.Product2Id=objProd.id;
         }
         insert listOfAssets;
-       
-        List<Case> ListOfCases = TestUtilities.getListOfCases(2);
+        
+        List<Case> ListOfCases = TestUtilities.getListOfCases(10);
         integer count=0;
         for(Case CaseRec : ListOfCases){
             if(count<5){
@@ -130,7 +129,7 @@ public class Core_IPS_MoveContactWithLargeCases_Test{
             
         }
         insert ListOfCases;
-         
+        
         
         ApexPages.currentPage().getParameters().put('Id', testContact.Id);
         ApexPages.StandardController sc = new ApexPages.StandardController(testContact);
@@ -154,10 +153,9 @@ public class Core_IPS_MoveContactWithLargeCases_Test{
         conEntController.userAuthorized = true;
         PageReference pr = conEntController.retrieveEntitlements();
         System.assertEquals(null, pr);
-                 
+        
         Core_IPS_MoveContactWithLargeCases conEntController3 = new Core_IPS_MoveContactWithLargeCases(null);
         ApexPages.StandardController sc3 = new ApexPages.StandardController(testContact3);
-        
         conEntController3 = new Core_IPS_MoveContactWithLargeCases(sc3);
         pr = conEntController3.retrieveEntitlements();
         System.assertEquals(null, pr);
@@ -170,7 +168,7 @@ public class Core_IPS_MoveContactWithLargeCases_Test{
             Core_IPS_MoveContactWithLargeCases.updateAssetsToCase(new List<Case>(), null);
         }catch(Exception e){}
         
-        
+        Test.startTest();
         conEntController = new Core_IPS_MoveContactWithLargeCases(sc);
         conEntController.currContact=testContact2;
         conEntController.targetAccount=testContact3;
@@ -187,7 +185,7 @@ public class Core_IPS_MoveContactWithLargeCases_Test{
     
     static testMethod void testMoveContactCasesError(){
         
-        Profile itAdminPrf = [select id, name from Profile where name = 'System Administrator' Limit 1];//System Administrator
+        Profile itAdminPrf = [select id, name from Profile where name = 'IT Admin' Limit 1];//System Administrator
         
         User itAdminUser = new User(Alias = 'itAdmx2', 
                                     Email='itAdminTestx2@intel.com', 
@@ -254,7 +252,7 @@ public class Core_IPS_MoveContactWithLargeCases_Test{
     
     static testMethod void testMoveContactCases2(){
         
-        Profile itAdminPrf = [select id, name from Profile where name = 'System Administrator' Limit 1];//System Administrator
+        Profile itAdminPrf = [select id, name from Profile where name = 'IT Admin' Limit 1];//System Administrator
         
         User itAdminUser = new User(Alias = 'itAdmx2', 
                                     Email='itAdminTestx2@intel.com', 
@@ -279,13 +277,13 @@ public class Core_IPS_MoveContactWithLargeCases_Test{
             System.assert(true,testAccount.Core_CNDA_Number__c!= null);
             
             Contact testContact = new Contact(FirstName='testFirstName123',LastName='testLastName', Email='test123@testing.com.test',
-                                              Core_IPS_Intel_Support_Owner__c = itAdminUser.id, AccountId=testAccount.Id, MailingCountry='India');
+                                              Core_IPS_Intel_Support_Owner__c = itAdminUser.id, AccountId=testAccount.Id);
             insert testContact;
             system.assertequals(testContact.LastName,'testLastName');
             
             
             Contact testContact2 = new Contact(FirstName='testFirstName123', LastName='testLName', Email='test1234@testing.com.test',
-                                               Core_IPS_Intel_Support_Owner__c = null, AccountId=testAccount.Id, MailingCountry='India');
+                                               Core_IPS_Intel_Support_Owner__c = null, AccountId=testAccount.Id);
             insert testContact2;
             system.assertequals(testContact2.LastName,'testLName');
             
@@ -342,7 +340,7 @@ public class Core_IPS_MoveContactWithLargeCases_Test{
                 AssetRec.Product2Id=objProd.id;
             }
             insert listOfAssets;
-            Test.startTest();
+            
             List<Case> ListOfCases = TestUtilities.getListOfCases(10);
             integer count=0;
             for(Case CaseRec : ListOfCases){
@@ -409,9 +407,10 @@ public class Core_IPS_MoveContactWithLargeCases_Test{
             
             try{
                 List<Case> lstcase = conEntController.filterCasesAndUpdateContact();
+                System.debug(' lstcase '+lstcase);
             }catch(Exception e){}
             
-            Test.stopTest();
+            
             
         }
     }
@@ -420,7 +419,7 @@ public class Core_IPS_MoveContactWithLargeCases_Test{
         UserRole role = new UserRole();
         role.name='Admin';
         insert role;
-        Profile itAdminPrf = [select id, name from Profile where name = 'System Administrator' Limit 1];//System Administrator
+        Profile itAdminPrf = [select id, name from Profile where name = 'IT Admin' Limit 1];//System Administrator
         
         User itAdminUser = new User(Alias = 'itAdmx2', 
                                     Email='itAdminTestx2@intel.com', 
@@ -444,7 +443,7 @@ public class Core_IPS_MoveContactWithLargeCases_Test{
             System.assert(true,testAccount.Core_CNDA_Number__c!= null);
             
             Contact testContact = new Contact(FirstName='testFirstName123',LastName='testLastName', Email='test123@testing.com.test',
-                                              Core_IPS_Intel_Support_Owner__c = UserInfo.getUserId(), AccountId=testAccount.Id ,Core_IPS_Active__c=true, MailingCountry='India');
+                                              Core_IPS_Intel_Support_Owner__c = UserInfo.getUserId(), AccountId=testAccount.Id ,Core_IPS_Active__c=true);
             insert testContact;
             Account testAccount2 = new Account(Name='testAccount1234', Core_Sales_Group__c='Global Accounts', Core_IsODM__c = true,
                                                Core_Account_Type__c='Other', Industry='Others', Core_CNDA_Number__c = '12345',
@@ -453,7 +452,7 @@ public class Core_IPS_MoveContactWithLargeCases_Test{
             insert testAccount2;
             System.assert(true,testAccount2.Core_Export_Compliance_Block__c);
             Contact testContact2 = new Contact(FirstName='testFirstName123', LastName='testLName', Email='test1234@testing.com.test',
-                                               Core_IPS_Intel_Support_Owner__c = UserInfo.getUserId(), AccountId=testAccount2.Id ,Core_IPS_Active__c=true, MailingCountry='India');
+                                               Core_IPS_Intel_Support_Owner__c = UserInfo.getUserId(), AccountId=testAccount2.Id ,Core_IPS_Active__c=true);
             try{
                 insert testContact2 ;
                 system.assertequals(testContact.LastName,'testLastName');
@@ -495,7 +494,6 @@ public class Core_IPS_MoveContactWithLargeCases_Test{
     }
     
         static testMethod void testMoveContactGECHold(){
-             insert new Core_Contact_Bypass_Validation_Rule__c(SetupOwnerId=UserInfo.getOrganizationId(), Bypass__c=true);
              Account testAccount = new Account(Name='testAccount123', Core_Sales_Group__c='Global Accounts', Core_IsODM__c = true,
                                               Core_Account_Type__c='Other', Industry='Others', Core_CNDA_Number__c = '12345',
                                               BillingStreet='1234 tester St', BillingCity='testCity', BillingState='OR',
@@ -504,7 +502,7 @@ public class Core_IPS_MoveContactWithLargeCases_Test{
             System.assert(true,testAccount.Core_CNDA_Number__c!= null);
             
             Contact testContact = new Contact(FirstName='testFirstName123',LastName='testLastName', Email='test123@testing.com.test',
-                                              AccountId=testAccount.Id, MailingCountry='India' );
+                                              AccountId=testAccount.Id );
             insert testContact;
             Account testAccount2 = new Account(Name='testAccount1234', Core_Sales_Group__c='Global Accounts', Core_IsODM__c = true,
                                               Core_Account_Type__c='Other', Industry='Others', Core_CNDA_Number__c = '12345',
@@ -512,7 +510,7 @@ public class Core_IPS_MoveContactWithLargeCases_Test{
                                               BillingCountry='USA', BillingPostalCode='123456',Core_Export_Compliance_Block__c=true);
             insert testAccount2;
             System.assert(true,testAccount2.Core_Export_Compliance_Block__c);
-            Contact testContact2 = new Contact(FirstName='testFirstName123', LastName='testLName', Email='test1234@testing.com.test', AccountId=testAccount2.Id, MailingCountry='India');
+            Contact testContact2 = new Contact(FirstName='testFirstName123', LastName='testLName', Email='test1234@testing.com.test', AccountId=testAccount2.Id);
             try{
             insert testContact2 ;
             system.assertequals(testContact.LastName,'testLastName');
@@ -552,7 +550,7 @@ public class Core_IPS_MoveContactWithLargeCases_Test{
     
     
     static testMethod void testHasValidInputs(){
-        Profile itAdminPrf = [select id, name from Profile where name = 'System Administrator' Limit 1];//System Administrator
+        Profile itAdminPrf = [select id, name from Profile where name = 'IT Admin' Limit 1];//System Administrator
         
         Core_IPS_Labels__c ipsCS = new Core_IPS_Labels__c(Name = 'IPS Standard Entitlement', Value__c='IPS Standard Entitlement');
         insert ipsCS;
@@ -578,11 +576,11 @@ public class Core_IPS_MoveContactWithLargeCases_Test{
                                               BillingCountry='USA', BillingPostalCode='12345',Core_Export_Compliance_Block__c = false);
             insert fromAccount;
             Contact fromContact = new Contact(FirstName='fromContact', LastName='testLName', Email='fromContact@testing.com.test',
-                                              Core_IPS_Intel_Support_Owner__c=null, AccountId=fromAccount.Id, MailingCountry='India');
+                                              Core_IPS_Intel_Support_Owner__c=null, AccountId=fromAccount.Id);
             
             
             Contact fromContact2 = new Contact(FirstName='fromContact2', LastName='testLName', Email='fromContact2@testing.com.test',
-                                               Core_IPS_Intel_Support_Owner__c=null, AccountId=fromAccount.Id, MailingCountry='India');
+                                               Core_IPS_Intel_Support_Owner__c=null, AccountId=fromAccount.Id);
             
             
             Account toAccount = new Account(Name='toAccount', Core_Sales_Group__c='Global Accounts', Core_IsODM__c = true,
@@ -591,7 +589,7 @@ public class Core_IPS_MoveContactWithLargeCases_Test{
                                             BillingCountry='USA', BillingPostalCode='12345',Core_Export_Compliance_Block__c = false);
             insert toAccount;
             Contact toContact = new Contact(FirstName='toContact', LastName='testLName', Email='toContact@testing.com.test',
-                                            Core_IPS_Intel_Support_Owner__c=null, AccountId=toAccount.Id, MailingCountry='India');
+                                            Core_IPS_Intel_Support_Owner__c=null, AccountId=toAccount.Id);
             
             
             contList.add(fromContact);  
@@ -626,10 +624,14 @@ public class Core_IPS_MoveContactWithLargeCases_Test{
             System.assertNotequals(null, passContact);                                                
             Boolean returnFlag = null;
             
+            System.debug(' COntact FROM '+frmCont);
+            System.debug(' COntact TO  '+toContact);
+            
             //Test 1        
             conEntController.targetAccount = frmCont;
             returnFlag = conEntController.hasValidInputs();
             System.assertequals(false, returnFlag);
+            System.debug('Test 1 Message >>>>>> '+ ApexPages.getMessages());
             msgs = ApexPages.getMessages();
             msg = msgs.get(0);
             pm = msg.getDetail();
@@ -646,6 +648,7 @@ public class Core_IPS_MoveContactWithLargeCases_Test{
             conEntController.hidePoppup = false;
             returnFlag = conEntController.hasValidInputs();
             System.assertequals(false, returnFlag);
+            System.debug('Test 2 Message >>>>>> '+ ApexPages.getMessages());
             msgs = ApexPages.getMessages();
             msg = msgs.get(0);
             pm = msg.getDetail();
@@ -663,9 +666,11 @@ public class Core_IPS_MoveContactWithLargeCases_Test{
             conEntController.targetAccountObj = null;
             returnFlag = conEntController.hasValidInputs();
             System.assertequals(false, returnFlag);
+            System.debug('Test 3 Message >>>>>> '+ ApexPages.getMessages());
             msgs = ApexPages.getMessages();
             msg = msgs.get(0);
             pm = msg.getDetail();
+            System.debug(' pm ' +pm);
             
             //Test 4 : CIM BLANK
             toAccount.Core_CNDA_Number__c = '12345';
@@ -679,9 +684,11 @@ public class Core_IPS_MoveContactWithLargeCases_Test{
             conEntController.targetAccountObj = null;
             returnFlag = conEntController.hasValidInputs();
             System.assertequals(false, returnFlag);
+            System.debug('Test 4 Message >>>>>> '+ ApexPages.getMessages());
             msgs = ApexPages.getMessages();
             msg = msgs.get(0);
             pm = msg.getDetail();
+            System.debug(' pm ' +pm);
             
             //Test 5 : EnglishONly Name Blank
             toAccount.Core_CIM_ID__c ='123412';
@@ -695,9 +702,11 @@ public class Core_IPS_MoveContactWithLargeCases_Test{
             conEntController.targetAccountObj = null;
             returnFlag = conEntController.hasValidInputs();
             System.assertequals(false, returnFlag);
+            System.debug('Test 5 Message >>>>>> '+ ApexPages.getMessages());
             msgs = ApexPages.getMessages();
             msg = msgs.get(0);
             pm = msg.getDetail();
+            System.debug(' pm ' +pm);
             
             //Test 6 : BLANK Export compliance block for scource Account
             toAccount.Core_English_Only_Name__c ='Testing';
@@ -717,9 +726,11 @@ public class Core_IPS_MoveContactWithLargeCases_Test{
             conEntController.targetAccountObj = null;
             returnFlag = conEntController.hasValidInputs();
             System.assertequals(false, returnFlag);
+            System.debug('Test 6 Message >>>>>> '+ ApexPages.getMessages());
             msgs = ApexPages.getMessages();
             msg = msgs.get(0);
             pm = msg.getDetail();
+            System.debug(' pm ' +pm);
             
             Test.startTest();
             //Test 7: BLANK Export compliance block for target Account
@@ -741,9 +752,11 @@ public class Core_IPS_MoveContactWithLargeCases_Test{
             conEntController.targetAccountObj = null;
             returnFlag = conEntController.hasValidInputs();
             System.assertequals(false, returnFlag);
+            System.debug('Test 7 Message >>>>>> '+ ApexPages.getMessages());
             msgs = ApexPages.getMessages();
             msg = msgs.get(0);
             pm = msg.getDetail();
+            System.debug(' pm ' +pm);
             
             //Test 8 IPS true for targetAccount
             toAccount.Core_Export_Compliance_Block__c = false;
@@ -757,9 +770,11 @@ public class Core_IPS_MoveContactWithLargeCases_Test{
             conEntController.targetAccountObj = null;
             returnFlag = conEntController.hasValidInputs();
             //System.assertequals(false, returnFlag); COmmented as the code commented in controller
+            System.debug('Test 8 Message >>>>>> '+ ApexPages.getMessages());
             msgs = ApexPages.getMessages();
             msg = msgs.get(0);
             pm = msg.getDetail();
+            System.debug(' pm ' +pm);
             
             //Test 9 B2B Account = true
             toAccount.Core_IPS_Active__c = true;
@@ -772,9 +787,11 @@ public class Core_IPS_MoveContactWithLargeCases_Test{
             conEntController.keepEntitlements = true;
             returnFlag = conEntController.hasValidInputs();
             //System.assertequals(false, returnFlag); COmmented as the code commented in controller
+            System.debug('Test 9 Message >>>>>> '+ ApexPages.getMessages());
             msgs = ApexPages.getMessages();
             msg = msgs.get(0);
             pm = msg.getDetail();
+            System.debug(' pm ' +pm);
             
             //Test 10 USER ROle is Blank
             toAccount.Core_B2B_Entitlement__c = true;
@@ -786,9 +803,11 @@ public class Core_IPS_MoveContactWithLargeCases_Test{
             conEntController.keepEntitlements = true;
             returnFlag = conEntController.hasValidInputs();
             System.assertequals(false, returnFlag);
+            System.debug('Test 10 Message >>>>>> '+ ApexPages.getMessages());
             msgs = ApexPages.getMessages();
             msg = msgs.get(0);
             pm = msg.getDetail();
+            System.debug(' pm ' +pm);
             
             
             //Test 11 : target ant source account with different ODM indicators
@@ -802,9 +821,11 @@ public class Core_IPS_MoveContactWithLargeCases_Test{
             conEntController.keepEntitlements = true;
             returnFlag = conEntController.hasValidInputs();
             System.assertequals(false, returnFlag);
+            System.debug('Test 11 Message >>>>>> '+ ApexPages.getMessages());
             msgs = ApexPages.getMessages();
             msg = msgs.get(0);
             pm = msg.getDetail();
+            System.debug(' pm ' +pm);
             //System.assertequals(true, pm.contains('Current account and target account is same'));
             
             //Test 12 : INvalid target Account
@@ -835,8 +856,7 @@ public class Core_IPS_MoveContactWithLargeCases_Test{
         } 
     }
        static testMethod void testMoveContactCases1(){
-        insert new Core_Contact_Bypass_Validation_Rule__c(SetupOwnerId=UserInfo.getOrganizationId(), Bypass__c=true);
-        Profile itAdminPrf = [select id, name from Profile where name = 'System Administrator' Limit 1];//System Administrator
+        Profile itAdminPrf = [select id, name from Profile where name = 'IT Admin' Limit 1];//System Administrator
         
         Core_IPS_Labels__c ipsCS = new Core_IPS_Labels__c(Name = 'IPS Standard Entitlement', Value__c='IPS Standard Entitlement');
         insert ipsCS;
@@ -862,7 +882,7 @@ public class Core_IPS_MoveContactWithLargeCases_Test{
         system.assertNOTEquals(null,testAccount.id);
         
         Contact testContact = new Contact(FirstName='testFirstName123', LastName='testLastName', Email='test123@testing.com.test',
-                                          Core_IPS_Active__c =true,Core_Contact_B2B_Indicator__c=true,Core_IPS_Intel_Support_Owner__c=itAdminUser.id, AccountId=testAccount.Id, MailingCountry='India');
+                                          Core_IPS_Active__c =true,Core_Contact_B2B_Indicator__c=true,Core_IPS_Intel_Support_Owner__c=itAdminUser.id, AccountId=testAccount.Id);
         insert testContact;
         system.assertNOTEquals(null,testContact.id);
         Core_Contact_Entitlement__c ce = new Core_Contact_Entitlement__c(Core_Contact_Id__c=testContact.Id,
@@ -872,7 +892,7 @@ public class Core_IPS_MoveContactWithLargeCases_Test{
         system.assertNOTEquals(null,ce.id);
         
         Contact testContact2 = new Contact(FirstName='testFirstName123', LastName='testLName', Email='test1234@testing.com.test',
-                                           Core_IPS_Active__c =false,Core_IPS_Intel_Support_Owner__c=null, AccountId=testAccount.Id, MailingCountry='India');
+                                           Core_IPS_Active__c =false,Core_IPS_Intel_Support_Owner__c=null, AccountId=testAccount.Id);
         insert testContact2;
         System.assert(true,testContact2.LastName!= null);
         
@@ -885,7 +905,7 @@ public class Core_IPS_MoveContactWithLargeCases_Test{
             insert testAccount3;
         }
         Contact testContact3 = new Contact(FirstName='testFirstName123456', LastName='testLName',Email='testAccount123456@testing.com.test',
-                                           Core_IPS_Intel_Support_Owner__c=null, AccountId=testAccount3.Id, MailingCountry='India');
+                                           Core_IPS_Intel_Support_Owner__c=null, AccountId=testAccount3.Id);
         insert testContact3;
         Core_IPS_MoveContactWithLargeCases conEntController3 = new Core_IPS_MoveContactWithLargeCases(null);
         ApexPages.StandardController sc3 = new ApexPages.StandardController(testContact2);
@@ -895,6 +915,7 @@ public class Core_IPS_MoveContactWithLargeCases_Test{
         conEntController3.keepEntitlements = true;
         testContact.Core_IPS_Active__c=true;
         conEntController3.updateTargetAccountAdditionalFields(testContact);
+        system.debug(conEntController3.moveAccoutWarningMessage);
         try{
                 conEntController3.updateCasesOnSave();
             }catch(Exception e){}

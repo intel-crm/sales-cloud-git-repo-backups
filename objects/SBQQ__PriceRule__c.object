@@ -319,6 +319,11 @@
                     <default>false</default>
                     <label>price_forward_cost__c</label>
                 </value>
+                <value>
+                    <fullName>core_cpq_distributor_margin__c</fullName>
+                    <default>false</default>
+                    <label>core_cpq_distributor_margin__c</label>
+                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -364,6 +369,14 @@
     <label>Price Rule</label>
     <listViews>
         <fullName>SBQQ__All</fullName>
+        <columns>NAME</columns>
+        <columns>SBQQ__Active__c</columns>
+        <columns>SBQQ__EvaluationEvent__c</columns>
+        <columns>SBQQ__ConditionsMet__c</columns>
+        <columns>SBQQ__EvaluationOrder__c</columns>
+        <columns>SBQQ__TargetObject__c</columns>
+        <columns>SBQQ__LookupObject__c</columns>
+        <columns>CREATED_DATE</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>

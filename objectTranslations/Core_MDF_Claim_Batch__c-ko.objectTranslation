@@ -11,35 +11,7 @@
     </fields>
     <fields>
         <label>청구 배치 상태</label>
-        <name>Core_MDF_ClaimBatch_Status_Nm__c</name>
-        <picklistValues>
-            <masterLabel>Failed</masterLabel>
-            <translation>고장남</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Pending Documents</masterLabel>
-            <translation>보류 중인 문서</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Submitted</masterLabel>
-            <translation>제출됨</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Successful</masterLabel>
-            <translation>성공</translation>
-        </picklistValues>
-    </fields>
-    <fields>
-        <label>청구 배치 상태</label>
         <name>Core_MDF_Claim_Batch_Status_Nm__c</name>
-    </fields>
-    <fields>
-        <label>청구 수(제출됨)</label>
-        <name>Core_MDF_Claim_Count_InProgress_Cnt__c</name>
-    </fields>
-    <fields>
-        <label>청구 수(대기 문서)</label>
-        <name>Core_MDF_Claim_Count_Pending_Document__c</name>
     </fields>
     <fields>
         <label>청구 카운트(실패)</label>
@@ -54,25 +26,9 @@
         <name>Core_MDF_Claim_Total_Cnt__c</name>
     </fields>
     <fields>
-        <label>생성자</label>
-        <name>Core_MDF_CreatedBy_Nm__c</name>
-    </fields>
-    <fields>
-        <label>마지막으로 수정한 사람</label>
-        <name>Core_MDF_Last_ModifiedBy_Nm__c</name>
-    </fields>
-    <fields>
-        <label>소유자</label>
-        <name>Core_MDF_Owner_Nm__c</name>
-    </fields>
-    <fields>
         <label>프로그램</label>
         <name>Core_MDF_Program_Id__c</name>
         <relationshipLabel><!-- Claim Batches --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Send Email --></label>
-        <name>Core_MDF_Send_Email__c</name>
     </fields>
     <nameFieldLabel>청구 배치 이름</nameFieldLabel>
 </CustomObjectTranslation>

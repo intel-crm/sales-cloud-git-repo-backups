@@ -1,0 +1,18 @@
+<template>
+    <lightning-record-view-form object-api-name="SBQQ__QuoteLine__c" density="Comfy" record-id={recordId}>
+        <h1 style="font-weight:bold;font-size:16px">Record View Form</h1>`<br/>
+        <template for:each={formValues} for:item="obj">
+            <div class= "slds-grid slds-wrap" key={obj.sectionLabel}>
+                <template for:each={obj.Fields} for:item="field">
+                    <div key={field.APIName} class="slds-col slds-size_1-of-16 slds-grid_align-space">
+                        <template if:true={field.isDisplayField}>
+                            <lightning-output-field key={field.APIName} field-name={field.APIName}
+                                style="border-bottom: #e5e4e3 solid 1.5px;">
+                            </lightning-output-field>
+                        </template>
+                    </div>
+                </template>
+            </div>
+        </template>
+    </lightning-record-view-form>
+</template>

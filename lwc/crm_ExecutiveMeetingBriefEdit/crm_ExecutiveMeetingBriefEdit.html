@@ -1,0 +1,561 @@
+<template>
+    <template if:true={showModal}>
+        <section class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <!-- Modal/Popup Header -->
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={handleCancel}>
+                    <lightning-icon icon-name="utility:close" alternative-text="close" size="small"></lightning-icon>
+                    <span class="slds-assistive-text">Close</span>
+         </button>
+                    <h2 class="slds-text-heading_medium slds-text-align_center">New Executive Meeting Brief Formm {recordId}</h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium">
+
+                    <div class="slds-p-around_medium">
+
+                        <!-- EVENT DETAILS -->
+                        <div class="custom-section slds-p-around_small">
+                            <div class="section-heading">
+                                <label class="slds-text-heading_medium section-header-title custom-header">EVENT DETAILS</label>
+                            </div>
+                            <div class="slds-grid slds-wrap">
+                                <div class="slds-col slds-size_1-of-3">
+                                    <lightning-input label="Event Engagement Name" data-id="crmEventEngagementName"
+                                        value={crmEventEngagementName} onchange={handleInputChange}></lightning-input>
+                                </div>
+                                <div class="slds-col slds-size_1-of-3">
+                                    <lightning-input type="date" label="Scheduled Start Time"
+                                        data-id="crmScheduledStartTime" value={crmScheduledStartTime}
+                                        onchange={handleInputChange}></lightning-input>
+                                </div>
+                                <div class="slds-col slds-size_1-of-3">
+                                    <lightning-input type="date" label="Scheduled End Time"
+                                        data-id="crmScheduledEndTime" value={crmScheduledEndTime}
+                                        onchange={handleInputChange}></lightning-input>
+                                </div>
+                            </div>
+                        </div>
+                        <!--MEETING OBJECTIVES SECTION-->
+                        <div class="custom-section slds-p-around_small">
+                            <div class="section-heading">
+                                <label class="slds-text-heading_medium section-header-title custom-header">MEETING OBJECTIVES & KEY MESSAGES</label>
+                            </div>
+                            <label class="custom-label">Intel’s Meeting Objectives</label>
+                            <lightning-input-rich-text class="slds-m-bottom_medium"
+                                label="CRM Intels Meeting Objectives" value={crmIntelsMeetingObjectives}
+                                onchange={handleInputChange} data-id="crmIntelsMeetingObjectives">
+                            </lightning-input-rich-text>
+
+                            <label class="custom-label">Other Party’s Meeting Objectives</label>
+                            <lightning-input-rich-text class="slds-m-bottom_medium"
+                                label="CRM Other Party's Meeting Objectives" value={crmOtherPartysMeetingObjectives}
+                                onchange={handleInputChange} data-id="crmOtherPartysMeetingObjectives">
+                            </lightning-input-rich-text>
+
+                            <label class="custom-label">Most Critical Messages to Get Across</label>
+                            <lightning-input-rich-text class="slds-m-bottom_medium"
+                                label="CRM Most Critical Messages to Get Across" value={crmMostCriticalMessages}
+                                onchange={handleInputChange} data-id="crmMostCriticalMessages">
+                            </lightning-input-rich-text>
+                        </div>
+
+                        <!-- LOGISTICS, MEETING CONTACTS & SALESFORCE LINKS Section -->
+                        <div class="custom-section slds-p-around_small">
+                            <div class="section-heading">
+                                <label class="slds-text-heading_medium section-header-title custom-header">LOGISTICS, MEETING CONTACTS & SALESFORCE LINKS</label>
+                            </div>
+                            <!-- <c-c-r-m_contact-lookup label-name="Prepared by" oncontactselect={handlePreparedBySelect} value={crmPreparedBy}></c-c-r-m_contact-lookup> -->
+                            <div class="slds-grid slds-wrap">
+                                <div class="slds-col slds-size_1-of-2">
+                                    <lightning-input type="text" label="Prepared By" onchange={handleSearchUsers1}
+                                        value={crmPreparedByName}></lightning-input>
+                                    <!-- <div class="slds-col"> -->
+                                    <div if:true={showUserDropdown1}
+                                        class="slds-dropdown slds-dropdown_length-5 slds-dropdown_fluid {userOptions.length}"
+                                        role="listbox">
+                                        <ul class="slds-listbox slds-listbox_vertical " role="presentation">
+                                            <template for:each={userOptions} for:item="option">
+                                                <li key={option.value} role="presentation" class="slds-listbox__item">
+                                                    <div role="option"
+                                                        class="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_center"
+                                                        onclick={handlePreparedBySelect} data-id={option.id}
+                                                        data-value={option.value} data-label={option.label}>
+                                                        <span class="slds-media__body">
+                                                        <span class="slds-listbox__option-text slds-listbox__option-text_entity">{option.label}</span>
+                                                        </span>
+                                                    </div>
+                                                </li>
+                                            </template>
+                                        </ul>
+                                    </div>
+                                    <!-- </div> -->
+                                </div>
+
+                                <!--Meeting Owner ContactLookup -->
+                                <div class="slds-col slds-size_1-of-2">
+                                    <lightning-input type="text" label="Meeting Owner Contact"
+                                        onchange={handleSearchUsers2} value={crmMeetingOwnerContactName}>
+                                    </lightning-input>
+                                    <div if:true={showUserDropdown2}
+                                        class="slds-dropdown slds-dropdown_length-5 slds-dropdown_fluid {userOptions.length}"
+                                        role="listbox">
+                                        <ul class="slds-listbox slds-listbox_vertical " role="presentation">
+                                            <template for:each={userOptions} for:item="option">
+                                                <li key={option.value} role="presentation" class="slds-listbox__item">
+                                                    <div role="option"
+                                                        class="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_center"
+                                                        onclick={handleMeetingOwnerSelect} data-id={option.id}
+                                                        data-value={option.value} data-label={option.label}>
+                                                        <span class="slds-media__body">
+                                                        <span class="slds-listbox__option-text slds-listbox__option-text_entity">{option.label}</span>
+                                                        </span>
+                                                    </div>
+                                                </li>
+                                            </template>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Reviewed By -->
+                            <div class="slds-col slds-size_1-of-1">
+                                <lightning-input type="text" label="Reviewed by" value={searchTerm5}
+                                    onchange={handleSearchChange5}>
+                                </lightning-input>
+                                <template if:true={showDropdown5}>
+                                    <ul class="slds-dropdown slds-dropdown_fluid">
+                                        <template for:each={filteredUsers5} for:item="user">
+                                            <li key={user.Id} class="slds-dropdown__item" onclick={handleUserSelect5}
+                                                data-id={user.Id} data-name={user.Name}>
+                                                <span>{user.Name}</span>
+                                            </li>
+                                        </template>
+                                    </ul>
+                                </template>
+                                <div class="slds-pill_container">
+                                    <template for:each={selectedUsers5} for:item="user">
+                                        <span key={user.Id} class="slds-pill">
+                                            <span class="slds-pill__label">{user.Name}</span>
+                                        <button class="slds-button slds-button_icon" onclick={handleRemoveUser5} data-id={user.Id}>
+                                                <lightning-icon icon-name="utility:close" alternative-text="Remove"></lightning-icon>
+                                            </button>
+                                        </span>
+                                    </template>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <!--<lightning-input class="slds-m-bottom_medium" label="Location" type="text" value={crmLocation}
+                        onchange={handleInputChange} data-id="crmLocation">
+                    </lightning-input>
+                    <label class="custom-label">Enter Location Details</label>-->
+                        <div class="slds-modal__content slds-p-around_medium" style="padding-left: 0px;">
+                            <lightning-input-address address-label="Enter Address" street-label="Street"
+                                street={crmLocationStreet} city-label="City" city={crmLocationCity}
+                                postal-code-label="PostalCode" postal-code={crmLocationPostalCode}
+                                country-label="Country" country={crmLocationCountryCode} province-label="State"
+                                state={crmLocationStateCode} onchange={handleAddressChange}>
+                                <!--latitude={crmLocationLatitude}    longitude={crmLocationLongitude} -->
+                            </lightning-input-address>
+                        </div>
+
+                        <div class="slds-grid slds-wrap">
+                            <div class="slds-col slds-size_1-of-2">
+                                <lightning-input class="slds-m-bottom_medium" label="Dress Code" type="text"
+                                    value={crmDressCode} onchange={handleInputChange} data-id="crmDressCode">
+                                </lightning-input>
+                            </div>
+                            <div class="slds-col slds-size_1-of-2">
+                                <!-- <c-c-r-m_contact-lookup label-name="Meeting Owner Contact" oncontactselect={handleMeetingOwnerSelect}></c-c-r-m_contact-lookup> -->
+                                <!-- <lightning-input type="text" label="Meeting Owner ContactLookup" onchange={handleSearchUsers2}
+                        value={crmMeetingOwnerContactName}></lightning-input> -->
+                            </div>
+                        </div>
+                        <div class="slds-col">
+                            <div if:true={showUserDropdown2}
+                                class="slds-dropdown slds-dropdown_length-5 slds-dropdown_fluid {userOptions.length}"
+                                role="listbox">
+                                <ul class="slds-listbox slds-listbox_vertical " role="presentation">
+                                    <template for:each={userOptions} for:item="option">
+                                        <li key={option.value} role="presentation" class="slds-listbox__item">
+                                            <div role="option"
+                                                class="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_center"
+                                                onclick={handleMeetingOwnerSelect} data-id={option.id}
+                                                data-value={option.value} data-label={option.label}>
+                                                <span class="slds-media__body">
+                                                        <span class="slds-listbox__option-text slds-listbox__option-text_entity">{option.label}</span>
+                                                </span>
+                                            </div>
+                                        </li>
+                                    </template>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!--ATTENDEES SECTION-->
+                    <div class="custom-section slds-p-around_small">
+                        <div class="section-heading">
+                            <label class="slds-text-heading_medium section-header-title custom-header">ATTENDEES – CONTACTS(ALL)</label>
+                        </div>
+                        <div class="slds-grid slds-wrap slds-gutters">
+                            <template for:each={attendees} for:item="attendee">
+                                <div key={attendee.id} class="slds-col slds-size_1-of-2">
+                                    <lightning-input type="search" label="Search Intel Attendees"
+                                        placeholder="Search People..." data-type="CRM_Intel_Attendees__c"
+                                        onchange={handleSearch} value={attendee.intelAttendee} data-id={attendee.id}>
+                                    </lightning-input>
+                                    <div if:true={attendee.showIntelDropdown}
+                                        class="slds-dropdown_length-5 slds-dropdown_fluid" role="listbox">
+                                        <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                                            <template for:each={intelUserOptions} for:item="option">
+                                                <li key={option.value} role="presentation" class="slds-listbox__item">
+                                                    <div role="option"
+                                                        class="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_center"
+                                                        onclick={handleAttendeeSelect} data-id={attendee.id}
+                                                        data-field="intelAttendee">
+                                                        <span class="slds-media__figure">
+                                        <lightning-icon icon-name="standard:user" size="small" alternative-text="User"></lightning-icon>
+                                    </span>
+                                                        <span class="slds-media__body">
+                                        <span class="slds-listbox__option-text slds-listbox__option-text_entity">{option.label}</span>
+                                                        <!-- <span class="slds-listbox__option-meta slds-listbox__option-meta_entity">{option.wwid}</span> -->
+                                                        </span>
+                                                    </div>
+                                                </li>
+                                            </template>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div key={attendee.id} class="slds-col slds-size_1-of-2">
+                                    <lightning-input type="search" label="Search External Attendees"
+                                        placeholder="Search People..." data-type="CRM_External_Attendees__c"
+                                        onchange={handleSearch} value={attendee.externalAttendee} data-id={attendee.id}>
+                                    </lightning-input>
+                                    <div if:true={attendee.showExternalDropdown}
+                                        class="slds-dropdown_length-5 slds-dropdown_fluid" role="listbox">
+                                        <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                                            <template for:each={externalUserOptions} for:item="option">
+                                                <li key={option.value} role="presentation" class="slds-listbox__item">
+                                                    <div role="option"
+                                                        class="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_center"
+                                                        onclick={handleAttendeeSelect} data-id={attendee.id}
+                                                        data-field="externalAttendee">
+                                                        <span class="slds-media__figure">
+                                        <lightning-icon icon-name="standard:user" size="small" alternative-text="User"></lightning-icon>
+                                    </span>
+                                                        <span class="slds-media__body">
+                                        <span class="slds-listbox__option-text slds-listbox__option-text_entity">{option.label}</span>
+                                                        <!-- <span class="slds-listbox__option-meta slds-listbox__option-meta_entity">{option.wwid}</span> -->
+                                                        </span>
+                                                    </div>
+                                                </li>
+                                            </template>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+                        <lightning-button label="Add Attendee" onclick={handleAddAttendee}></lightning-button>
+                        <lightning-button class="slds-m-left_small" label="Remove Attendee" variant="destructive"
+                            onclick={handleRemoveLastAttendee}></lightning-button>
+                    </div>
+
+                    <!-- <lightning-accordion-section name="agenda" label="AGENDA"
+                class="label slds-section__title slds-truncate slds-p-around_x-small">
+                <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                    <thead>
+                        <tr class="slds-line-height_reset">
+                            <th scope="col">
+                                <div class="slds-truncate" title="Start Time">Start Time</div>
+                            </th>
+                            <th scope="col">
+                                <div class="slds-truncate" title="End Time">End Time</div>
+                            </th>
+                            <th scope="col">
+                                <div class="slds-truncate" title="Meeting Agenda Items">Meeting Agenda Items</div>
+                            </th>
+                            <th scope="col">
+                                <div class="slds-truncate" title="Presenters Conversation Lead">Presenters
+                                    Conversation Lead</div>
+                            </th>
+                            <th scope="col">
+                                <div class="slds-truncate" title="Actions">Actions</div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template for:each={agendaItems} for:item="agenda">
+                            <tr key={agenda.id} class="slds-hint-parent">
+                                <td>
+                                    <lightning-input type="date" value={agenda.startTime} data-id={agenda.id}
+                                        data-field="startTime" onchange={handleAgendaChange}></lightning-input>
+                                </td>
+                                <td>
+                                    <lightning-input type="date" value={agenda.endTime} data-id={agenda.id}
+                                        data-field="endTime" onchange={handleAgendaChange}></lightning-input>
+                                </td>
+                                <td>
+                                    <lightning-textarea value={agenda.agendaItems} data-id={agenda.id}
+                                        data-field="agendaItems" onchange={handleAgendaChange}></lightning-textarea>
+                                </td>
+                                <td>
+                                    <lightning-input type="text" placeholder="Search Presenters" data-id={agenda.id}
+                                        data-field="presentersLead" onchange={handleSearchUsers3}
+                                        value={agenda.presentersLeadName}></lightning-input>
+                                    <div class="slds-col" id={userOptions.length}>
+                                        <div if:true={showUserDropdown3}
+                                            class="slds-dropdown slds-dropdown_length-5 slds-dropdown_fluid {userOptions.length}"
+                                            role="listbox">
+                                            <ul class="slds-listbox slds-listbox_vertical " role="presentation">
+                                                <template for:each={userOptions} for:item="option">
+                                                    <li key={option.value} role="presentation"
+                                                        class="slds-listbox__item">
+                                                        <div role="option"
+                                                            class="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_center"
+                                                            onclick={handleUserSelect3} data-id={agenda.id}
+                                                            data-value={option.value}>
+                                                            <span class="slds-media__body">
+                                                        <span class="slds-listbox__option-text slds-listbox__option-text_entity">{option.label}</span>
+                                                            </span>
+                                                        </div>
+                                                    </li>
+                                                </template>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="delete-btn-container">
+                                    <lightning-button-icon icon-name="utility:delete" alternative-text="Remove"
+                                        onclick={handleRemoveAgenda} data-id={agenda.id}></lightning-button-icon>
+                                </td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+                <lightning-button label="Add Agenda Item" onclick={handleAddAgenda}></lightning-button>
+            </lightning-accordion-section> -->
+                    <!-- <lightning-accordion-section name="agenda" label="AGENDA"
+                class="label slds-section__title slds-truncate slds-p-around_x-small">
+                <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                    <thead>
+                        <tr class="slds-line-height_reset">
+                            <th scope="col">
+                                <div class="slds-truncate" title="Start Time">Start Time</div>
+                            </th>
+                            <th scope="col">
+                                <div class="slds-truncate" title="End Time">End Time</div>
+                            </th>
+                            <th scope="col">
+                                <div class="slds-truncate" title="Meeting Agenda Items">Meeting Agenda Items</div>
+                            </th>
+                            <th scope="col">
+                                <div class="slds-truncate" title="Presenters Conversation Lead">Presenters Conversation
+                                    Lead</div>
+                            </th>
+                            <th scope="col">
+                                <div class="slds-truncate" title="Actions">Actions</div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template for:each={agendaItems} for:item="agenda">
+                            <tr key={agenda.id} class="slds-hint-parent">
+                                <td>
+                                    <lightning-input type="date" value={agenda.startTime} data-id={agenda.id}
+                                        data-field="startTime" onchange={handleAgendaChange}></lightning-input>
+                                </td>
+                                <td>
+                                    <lightning-input type="date" value={agenda.endTime} data-id={agenda.id}
+                                        data-field="endTime" onchange={handleAgendaChange}></lightning-input>
+                                </td>
+                                <td>
+                                    <lightning-textarea value={agenda.agendaItems} data-id={agenda.id}
+                                        data-field="agendaItems" onchange={handleAgendaChange}></lightning-textarea>
+                                </td>
+                                <td>
+                                    <lightning-input type="text" placeholder="Search Presenters" data-id={agenda.id}
+                                        data-field="presentersLead" onchange={handleSearchUsers3}
+                                        value={agenda.presentersLeadName}></lightning-input>
+                                    <div class="slds-col" id={userOptions.length}>
+                                        <div if:true={agenda.showUserDropdown3}
+                                            class="slds-dropdown slds-dropdown_length-5 slds-dropdown_fluid {userOptions.length}"
+                                            role="listbox">
+                                            <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                                                <template for:each={userOptions} for:item="option">
+                                                    <li key={option.value} role="presentation"
+                                                        class="slds-listbox__item">
+                                                        <div role="option"
+                                                            class="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_center"
+                                                            onclick={handleUserSelect3} data-id={agenda.id}
+                                                            data-value={option.value}>
+                                                            <span class="slds-media__body">
+                                                    <span class="slds-listbox__option-text slds-listbox__option-text_entity">{option.label}</span>
+                                                            </span>
+                                                        </div>
+                                                    </li>
+                                                </template>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="delete-btn-container">
+                                    <lightning-button-icon icon-name="utility:delete" alternative-text="Remove"
+                                        onclick={handleRemoveAgenda} data-id={agenda.id}></lightning-button-icon>
+                                </td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+                <lightning-button label="Add Agenda Item" onclick={handleAddAgenda}></lightning-button>
+            </lightning-accordion-section> -->
+                    <div class="custom-section slds-p-around_small">
+                        <div class="section-heading">
+                            <label class="slds-text-heading_medium section-header-title custom-header">AGENDA</label>
+                        </div>
+                        <div class="slds-grid slds-wrap slds-gutters">
+                            <template for:each={agendaItems} for:item="agenda">
+                                <div key={agenda.id} class="slds-col slds-size_1-of-2">
+                                    <div class="slds-form-element">
+                                        <lightning-input type="date" label="Start Time" value={agenda.startTime}
+                                            data-id={agenda.id} data-field="startTime" onchange={handleAgendaChange}>
+                                        </lightning-input>
+                                    </div>
+                                    <div class="slds-form-element">
+                                        <lightning-input type="date" label="End Time" value={agenda.endTime}
+                                            data-id={agenda.id} data-field="endTime" onchange={handleAgendaChange}>
+                                        </lightning-input>
+                                    </div>
+                                    <div class="slds-form-element">
+                                        <lightning-input type="text" label="Presenters Conversation Lead"
+                                            placeholder="Search Presenters" data-id={agenda.id}
+                                            data-field="presentersLead" onchange={handleSearchUsers3}
+                                            value={agenda.presentersLeadName}></lightning-input>
+                                        <div class="slds-col" id={userOptions.length}>
+                                            <div if:true={agenda.showUserDropdown3}
+                                                class="slds-dropdown slds-dropdown_length-5 slds-dropdown_fluid {userOptions.length}"
+                                                role="listbox">
+                                                <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                                                    <template for:each={userOptions} for:item="option">
+                                                        <li key={option.value} role="presentation"
+                                                            class="slds-listbox__item">
+                                                            <div role="option"
+                                                                class="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_center"
+                                                                onclick={handleUserSelect3} data-id={agenda.id}
+                                                                data-value={option.value}>
+                                                                <span class="slds-media__body">
+                                                <span class="slds-listbox__option-text slds-listbox__option-text_entity">{option.label}</span>
+                                                                </span>
+                                                            </div>
+                                                        </li>
+                                                    </template>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div key={agenda.id} class="slds-col slds-size_1-of-2">
+                                    <div class="slds-form-element">
+                                        <lightning-textarea label="Meeting Agenda Items" value={agenda.agendaItems}
+                                            data-id={agenda.id} data-field="agendaItems" onchange={handleAgendaChange}
+                                            rows="2">
+                                        </lightning-textarea>
+                                    </div>
+                                    <div class="slds-form-element slds-m-top_small">
+                                        <lightning-button label="Remove Agenda Item" variant="destructive"
+                                            onclick={handleRemoveAgenda} data-id={agenda.id}></lightning-button>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+                        <div class="slds-m-top_medium">
+                            <lightning-button label="Add Agenda Item" onclick={handleAddAgenda}></lightning-button>
+                        </div>
+                    </div>
+
+
+                    <!-- BACKGROUND & TALKING POINTS Section -->
+                    <div class="custom-section slds-p-around_small">
+                        <div class="section-heading">
+                            <label class="slds-text-heading_medium section-header-title custom-header">BACKGROUND & TALKING POINTS - 3 TOPICS MAX PER MEETING HALF HOUR</label>
+                        </div>
+                        <template for:each={backgroundItems} for:item="background" for:index="index">
+                            <div key={background.id} class="slds-p-around_small">
+                                <!--<lightning-accordion allow-multiple-sections-open active-section-name={background.id}
+                            class="label slds-section__title slds-truncate slds-p-around_x-small">
+                            <lightning-accordion-section name={background.id} label={background.label}>-->
+                                <lightning-textarea class="slds-m-bottom_medium" label="Background Objective"
+                                    value={background.backgroundObjective1} data-id={background.id}
+                                    data-field="backgroundObjective1" onchange={handleBackgroundChange}>
+                                </lightning-textarea>
+                                <label class="custom-label">Proactive Talking Points</label>
+                                <lightning-input-rich-text class="slds-m-bottom_medium" label="Proactive Talking Points"
+                                    value={background.proactiveTalkingPoints} data-id={background.id}
+                                    data-field="proactiveTalkingPoints" onchange={handleBackgroundChange}>
+                                </lightning-input-rich-text>
+                                <label class="custom-label">Reactive Talking Points</label>
+                                <lightning-input-rich-text class="slds-m-bottom_medium" label="Reactive Talking Points"
+                                    value={background.reactiveTalkingPoints} data-id={background.id}
+                                    data-field="reactiveTalkingPoints" onchange={handleBackgroundChange}>
+                                </lightning-input-rich-text>
+                                <lightning-button label="Remove Objective" variant="destructive"
+                                    onclick={handleRemoveBackground} data-id={background.id}></lightning-button>
+                                <!--</lightning-accordion-section>
+                        </lightning-accordion>-->
+                            </div>
+                        </template>
+                        <div class="slds-m-top_medium">
+                            <lightning-button label="Add Objectives" onclick={handleAddBackground}></lightning-button>
+                        </div>
+                    </div>
+
+
+
+                    <!-- ADDITIONAL INFORMATION Section -->
+                    <div class="custom-section slds-p-around_small">
+                        <div class="section-heading">
+                            <label class="slds-text-heading_medium section-header-title custom-header">ADDITIONAL INFORMATION</label>
+                        </div>
+                        <label class="custom-label" >Additional Information</label>
+                        <lightning-input-rich-text class="slds-m-bottom_medium" label="Additional Information"
+                            value={crmAdditionalInformation} onchange={handleInputChange}
+                            data-id="crmAdditionalInformation">
+                        </lightning-input-rich-text>
+
+                        <label class="custom-label" >Additional Legal Guidance</label>
+                        <lightning-input-rich-text class="slds-m-bottom_medium" label="Additional Legal Guidance"
+                            value={crmAdditionalLegalGuidance} onchange={handleInputChange}
+                            data-id="crmAdditionalLegalGuidance">
+                        </lightning-input-rich-text>
+
+                        <label class="custom-label" >Attendee Bio's</label>
+                        <lightning-input-rich-text class="slds-m-bottom_medium" label="Attendee Bio's"
+                            value={crmAttendeeBios} onchange={handleInputChange} data-id="crmAttendeeBios">
+                        </lightning-input-rich-text>
+                    </div>
+
+
+                    <!-- Buttons -->
+                    <!-- <div class="slds-modal__footer slds-grid slds-grid_align-center slds-m-top_medium">
+            <lightning-button variant="neutral" label="Cancel" onclick={handleCancel}></lightning-button>
+            <lightning-button class="slds-m-left_small" variant="brand" label="Save" onclick={handleSave}>
+            </lightning-button>
+        </div> -->
+                </div>
+            <!-- Modal/Popup Footer -->
+            <footer class="slds-modal__footer">
+                <lightning-button variant="neutral" label="Cancel" onclick={handleCancel}></lightning-button>
+                <lightning-button class="slds-m-left_small" variant="neutral" label="Save and New" onclick={handleSave}>
+                </lightning-button>
+                <lightning-button class="slds-m-left_small" variant="brand" label="Save" onclick={handleSave}>
+                </lightning-button>
+            </footer>
+            </div>
+        </section>
+            </div>
+
+            
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+</template>

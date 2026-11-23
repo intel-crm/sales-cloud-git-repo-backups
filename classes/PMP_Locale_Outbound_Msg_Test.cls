@@ -1,18 +1,10 @@
 @isTest
 public with sharing  class PMP_Locale_Outbound_Msg_Test {
-    @isTest
-    static void testIsWorking() {
-        Boolean result = PMP_Locale_Outbound_Msg.isWorking();      
-        System.assertEquals(true, result);
-        Boolean result1 = PMP_ScheduleAutoTranslation.isWorking();
-        System.assertEquals(true, result1);
-    }
-//IPA2.0 - As part of TWC729-7977 commented the entire class
-/*
+
+
     static TestMethod void ValidateOutboundJSon()
-        
     {
-        test.startTest();
+        
         PMP_Partner_Offering__c ppo = new PMP_Partner_Offering__c();
         ppo.Name = 'Test Offering';
         ppo.PMP_Partner_Offering_Nm__c = 'Test Offering';
@@ -148,15 +140,13 @@ public with sharing  class PMP_Locale_Outbound_Msg_Test {
         boolean isSuccess = false;
         isSuccess = PMP_Locale_Outbound_Msg.InsertOutboundMsg();
        
-        //PMP_ScheduleAutoTranslation lsc = new PMP_ScheduleAutoTranslation();
+        PMP_ScheduleAutoTranslation lsc = new PMP_ScheduleAutoTranslation();
         
         String sch = '0  00 1 3 * ?';
         
-        //system.schedule('Market Place Locale Test', sch, lsc);
-        isSuccess = true; // Fixed as part of WW16. Please revisit.
+        system.schedule('Market Place Locale Test', sch, lsc);
+        
         System.assert(isSuccess);
-        test.stopTest();
         
     }
-*/
 }

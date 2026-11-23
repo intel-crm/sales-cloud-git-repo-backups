@@ -1,0 +1,20 @@
+<template>
+    <div class="chatbox">
+        <div class="header">
+            <div class="header-image"></div>
+            <h1>Let's chat!</h1>
+        </div>
+        <div class="welcome-message">
+            <p>Hi! I'm Einstein, an AI assistant. I can do things like search for information, summarize records. What can I help you with?</p>
+        </div>
+        <div class="buttons">
+            <button class="question-button" onclick={handleButtonClick} data-id="summarizeAccount">"Summarize account" <span class="arrow">&gt;</span> </button>
+            <button class="question-button" onclick={handleButtonClick} data-id="showTopOpportunities">"Show top opportunities"</button>
+            <button class="question-button" onclick={handleButtonClick} data-id="showRelatedOpportunities">"Show related opportunities"</button>
+        </div>
+        <!--<div class="input-area">
+            <input type="text" placeholder="Describe your task or ask a question..." disabled />
+            <button disabled>&gt;</button> -->
+        </div>
+    </div>
+</template>

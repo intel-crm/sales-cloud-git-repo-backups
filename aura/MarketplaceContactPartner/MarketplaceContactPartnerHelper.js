@@ -16,11 +16,9 @@
             //Contact Partner analytics code starts
             var categoryLabel = (component.get('v.dataObj').categoryLabel == null) ? 'Not-Applicable' : component.get('v.dataObj').categoryLabel;
             var partnerId = (component.get('v.dataObj').id == null) ? 'Not-Applicable' : component.get('v.dataObj').id;
-            // IPA2.0 + US TWC4497-1631
-            // var offeringId =  (component.get('v.dataObj').offRecId == null) ? 'Not-Applicable' : component.get('v.dataObj').offRecId;
-            // var str = 'expand:' + categoryLabel +'|' + partnerId + '|' + offeringId;
-            var str = 'expand:' + categoryLabel +'|' + partnerId ;
-           analyticsData.formAnalyticsData('click',str,'contact-partner');
+            var offeringId =  (component.get('v.dataObj').offRecId == null) ? 'Not-Applicable' : component.get('v.dataObj').offRecId;
+            var str = 'expand:' + categoryLabel +'|' + partnerId + '|' + offeringId;
+            analyticsData.formAnalyticsData('click',str,'contact-partner');
             //Contact Partner analytics code ends
         } else {
             $A.util.removeClass(overlay, "slds-show");
@@ -31,10 +29,8 @@
             //Contact Partner analytics code starts
             var categoryLabel = (component.get('v.dataObj').categoryLabel == null) ? 'Not-Applicable' : component.get('v.dataObj').categoryLabel;
             var partnerId = (component.get('v.dataObj').id == null) ? 'Not-Applicable' : component.get('v.dataObj').id;
-            // IPA2.0 + US TWC4497-1631
-            // var offeringId =  (component.get('v.dataObj').offRecId == null) ? 'Not-Applicable' : component.get('v.dataObj').offRecId;
-            // var str = categoryLabel +'|' + partnerId + '|' + offeringId;
-            var str = categoryLabel +'|' + partnerId;
+            var offeringId =  (component.get('v.dataObj').offRecId == null) ? 'Not-Applicable' : component.get('v.dataObj').offRecId;
+            var str = categoryLabel +'|' + partnerId + '|' + offeringId;
             analyticsData.formAnalyticsData('click',str,'contact-partner');
         }
     }

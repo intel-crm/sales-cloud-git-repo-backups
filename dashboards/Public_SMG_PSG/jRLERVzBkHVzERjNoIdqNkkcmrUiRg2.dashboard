@@ -24,63 +24,28 @@
     </dashboardFilters>
     <dashboardFilters>
         <dashboardFilterOptions>
-            <operator>between</operator>
-            <values>12/26/2021</values>
-            <values>12/24/2022</values>
+            <operator>equals</operator>
+            <values>THIS_FISCAL_QUARTER</values>
         </dashboardFilterOptions>
         <dashboardFilterOptions>
-            <operator>between</operator>
-            <values>12/26/2021</values>
-            <values>3/26/2022</values>
+            <operator>equals</operator>
+            <values>NEXT_FISCAL_QUARTER</values>
         </dashboardFilterOptions>
         <dashboardFilterOptions>
-            <operator>between</operator>
-            <values>3/27/2022</values>
-            <values>6/25/2022</values>
+            <operator>equals</operator>
+            <values>LAST_FISCAL_QUARTER</values>
         </dashboardFilterOptions>
         <dashboardFilterOptions>
-            <operator>between</operator>
-            <values>6/26/2022</values>
-            <values>9/24/2022</values>
+            <operator>equals</operator>
+            <values>THIS_FISCAL_YEAR</values>
         </dashboardFilterOptions>
         <dashboardFilterOptions>
-            <operator>between</operator>
-            <values>9/25/2022</values>
-            <values>12/24/2022</values>
+            <operator>equals</operator>
+            <values>NEXT_FISCAL_YEAR</values>
         </dashboardFilterOptions>
         <dashboardFilterOptions>
-            <operator>between</operator>
-            <values>12/25/2022</values>
-            <values>12/23/2023</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>between</operator>
-            <values>12/27/2020</values>
-            <values>12/25/2021</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>between</operator>
-            <values>12/27/2020</values>
-            <values>3/27/2021</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>between</operator>
-            <values>3/28/2021</values>
-            <values>6/26/2021</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>between</operator>
-            <values>6/27/2021</values>
-            <values>9/25/2021</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>between</operator>
-            <values>9/26/2021</values>
-            <values>12/25/2021</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>lessThan</operator>
-            <values>TODAY</values>
+            <operator>equals</operator>
+            <values>LAST_FISCAL_YEAR</values>
         </dashboardFilterOptions>
         <name>Decision Date</name>
     </dashboardFilters>
@@ -199,10 +164,108 @@
                     <useReportTableSetting>false</useReportTableSetting>
                 </flexComponentProperties>
                 <groupingSortProperties/>
-                <header>EMEA  Approved DDR/Open Opps</header>
-                <report>unfiled$public/EMEA_2020_Approved_DDR_Open_Opps</report>
+                <header>2020 Approved DDR Open Opps Report</header>
+                <report>unfiled$public/EMEA_2020_Approved_DDR_Open_Opps_Report</report>
+                <title>Viewing Top 10 - Open Report for more</title>
             </dashboardComponent>
             <rowIndex>0</rowIndex>
+            <rowSpan>12</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>12</colSpan>
+            <columnIndex>0</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <componentType>FlexTable</componentType>
+                <dashboardFilterColumns>
+                    <column>FK_$Core_Design_Registration__c.Core_Partner_Account_Nm__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>CLOSE_DATE</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Opportunity.Core_Business_Unit_Territory__c</column>
+                </dashboardFilterColumns>
+                <flexComponentProperties>
+                    <decimalPrecision>-1</decimalPrecision>
+                    <flexTableColumn>
+                        <reportColumn>Opportunity.Core_Business_Unit_Territory__c</reportColumn>
+                        <showSubTotal>false</showSubTotal>
+                        <showTotal>true</showTotal>
+                        <type>detail</type>
+                    </flexTableColumn>
+                    <flexTableColumn>
+                        <reportColumn>ADDRESS1_COUNTRY_CODE</reportColumn>
+                        <showSubTotal>false</showSubTotal>
+                        <showTotal>true</showTotal>
+                        <type>detail</type>
+                    </flexTableColumn>
+                    <flexTableColumn>
+                        <reportColumn>ACCOUNT_NAME</reportColumn>
+                        <showSubTotal>false</showSubTotal>
+                        <showTotal>true</showTotal>
+                        <type>detail</type>
+                    </flexTableColumn>
+                    <flexTableColumn>
+                        <reportColumn>OPPORTUNITY_NAME</reportColumn>
+                        <showSubTotal>false</showSubTotal>
+                        <showTotal>true</showTotal>
+                        <type>detail</type>
+                    </flexTableColumn>
+                    <flexTableColumn>
+                        <reportColumn>FK_Core_Design_Registration__c.Core_Partner_Account_Id__c</reportColumn>
+                        <showSubTotal>false</showSubTotal>
+                        <showTotal>true</showTotal>
+                        <type>detail</type>
+                    </flexTableColumn>
+                    <flexTableColumn>
+                        <reportColumn>Opportunity.Core_Technical_Owner__c</reportColumn>
+                        <showSubTotal>false</showSubTotal>
+                        <showTotal>true</showTotal>
+                        <type>detail</type>
+                    </flexTableColumn>
+                    <flexTableColumn>
+                        <reportColumn>FK_Core_Design_Registration__c.Core_Partner_FAE_Nm__c</reportColumn>
+                        <showSubTotal>false</showSubTotal>
+                        <showTotal>true</showTotal>
+                        <type>detail</type>
+                    </flexTableColumn>
+                    <flexTableColumn>
+                        <reportColumn>CLOSE_DATE</reportColumn>
+                        <showSubTotal>false</showSubTotal>
+                        <showTotal>true</showTotal>
+                        <type>detail</type>
+                    </flexTableColumn>
+                    <flexTableColumn>
+                        <breakPoint1>25.0</breakPoint1>
+                        <breakPoint2>75.0</breakPoint2>
+                        <breakPointOrder>0</breakPointOrder>
+                        <highRangeColor>29035</highRangeColor>
+                        <lowRangeColor>12728628</lowRangeColor>
+                        <midRangeColor>16758621</midRangeColor>
+                        <reportColumn>PROBABILITY</reportColumn>
+                        <showSubTotal>false</showSubTotal>
+                        <showTotal>true</showTotal>
+                        <type>detail</type>
+                    </flexTableColumn>
+                    <flexTableColumn>
+                        <reportColumn>TOTAL_PRICE</reportColumn>
+                        <showSubTotal>false</showSubTotal>
+                        <showTotal>true</showTotal>
+                        <type>detail</type>
+                    </flexTableColumn>
+                    <flexTableSortInfo>
+                        <sortColumn>TOTAL_PRICE</sortColumn>
+                        <sortOrder>2</sortOrder>
+                    </flexTableSortInfo>
+                    <hideChatterPhotos>true</hideChatterPhotos>
+                    <useReportTableSetting>false</useReportTableSetting>
+                </flexComponentProperties>
+                <groupingSortProperties/>
+                <header>EMEA 2020+ Approved DDR/Open Opps</header>
+                <report>unfiled$public/EMEA_2020_Approved_DDR_Open_Opps</report>
+            </dashboardComponent>
+            <rowIndex>12</rowIndex>
             <rowSpan>12</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
@@ -240,7 +303,7 @@
                         <sortOrder>d</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>Approved DDR/Open Opps by Partner</header>
+                <header>2020+ Approved DDR/Open Opps</header>
                 <legendPosition>Right</legendPosition>
                 <report>unfiled$public/EMEA_2020_Approved_DDR_Open_Opps</report>
                 <showPercentage>true</showPercentage>
@@ -250,7 +313,7 @@
                 <sortLegendValues>false</sortLegendValues>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>12</rowIndex>
+            <rowIndex>24</rowIndex>
             <rowSpan>9</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
@@ -301,64 +364,10 @@
                         <sortOrder>d</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>EMEA  Approved DDR/Open Opps</header>
+                <header>EMEA 2020+ Approved DDR/Open Opps</header>
                 <report>unfiled$public/EMEA_2020_Approved_DDR_Open_Opps</report>
             </dashboardComponent>
-            <rowIndex>12</rowIndex>
-            <rowSpan>9</rowSpan>
-        </dashboardGridComponents>
-        <dashboardGridComponents>
-            <colSpan>4</colSpan>
-            <columnIndex>8</columnIndex>
-            <dashboardComponent>
-                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
-                <componentType>FlexTable</componentType>
-                <dashboardFilterColumns>
-                    <column>FK_$Core_Design_Registration__c.Core_Partner_Account_Nm__c</column>
-                </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>CLOSE_DATE</column>
-                </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>Opportunity.Core_Business_Unit_Territory__c</column>
-                </dashboardFilterColumns>
-                <flexComponentProperties>
-                    <decimalPrecision>-1</decimalPrecision>
-                    <flexTableColumn>
-                        <reportColumn>FK_Core_Design_Registration__c.Core_Partner_FAE_Nm__c</reportColumn>
-                        <showSubTotal>false</showSubTotal>
-                        <showTotal>true</showTotal>
-                        <type>grouping</type>
-                    </flexTableColumn>
-                    <flexTableColumn>
-                        <reportColumn>s!TOTAL_PRICE</reportColumn>
-                        <showSubTotal>false</showSubTotal>
-                        <showTotal>true</showTotal>
-                        <type>aggregate</type>
-                    </flexTableColumn>
-                    <flexTableColumn>
-                        <reportColumn>RowCount</reportColumn>
-                        <showSubTotal>false</showSubTotal>
-                        <showTotal>true</showTotal>
-                        <type>aggregate</type>
-                    </flexTableColumn>
-                    <flexTableSortInfo>
-                        <sortOrder>2</sortOrder>
-                    </flexTableSortInfo>
-                    <hideChatterPhotos>true</hideChatterPhotos>
-                    <useReportTableSetting>false</useReportTableSetting>
-                </flexComponentProperties>
-                <groupingSortProperties>
-                    <groupingSorts>
-                        <groupingLevel>g1</groupingLevel>
-                        <sortColumn>s!TOTAL_PRICE</sortColumn>
-                        <sortOrder>d</sortOrder>
-                    </groupingSorts>
-                </groupingSortProperties>
-                <header>EMEA Approved DDR Opens by FAE</header>
-                <report>unfiled$public/EMEA_2020_Approved_DDR_Open_Opps_Report</report>
-            </dashboardComponent>
-            <rowIndex>12</rowIndex>
+            <rowIndex>24</rowIndex>
             <rowSpan>9</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
@@ -456,7 +465,7 @@
                 <report>unfiled$public/EMEA_Approved_DDR_Open_Opps_over_250K</report>
                 <title>Viewing Top 10 - Open Report for more</title>
             </dashboardComponent>
-            <rowIndex>21</rowIndex>
+            <rowIndex>33</rowIndex>
             <rowSpan>12</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
@@ -554,7 +563,7 @@
                 <report>unfiled$public/EMEA_Approved_DDR_Open_Opps_over_50K</report>
                 <title>Viewing Top 10 - Open Report for more</title>
             </dashboardComponent>
-            <rowIndex>33</rowIndex>
+            <rowIndex>45</rowIndex>
             <rowSpan>11</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
@@ -652,7 +661,7 @@
                 <report>unfiled$public/EMEA_Approved_DDR_Open_Opps_under_50K</report>
                 <title>Viewing Top 10 - Open Report for more</title>
             </dashboardComponent>
-            <rowIndex>44</rowIndex>
+            <rowIndex>56</rowIndex>
             <rowSpan>11</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
@@ -750,7 +759,7 @@
                 <report>unfiled$public/EMEA_Approved_DDR_Open_Opps_under_25K</report>
                 <title>Viewing Top 10 - Open Report for more</title>
             </dashboardComponent>
-            <rowIndex>55</rowIndex>
+            <rowIndex>67</rowIndex>
             <rowSpan>11</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
@@ -788,7 +797,7 @@
                         <sortOrder>d</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>Approved DDR Opens by Tech Owner</header>
+                <header>2020 Approved DDR Open Opps Tech Ow</header>
                 <legendPosition>Bottom</legendPosition>
                 <report>unfiled$public/EMEA_2020_Approved_DDR_Open_Opps_Tech_Ow</report>
                 <showPercentage>false</showPercentage>
@@ -797,21 +806,15 @@
                 <sortLegendValues>false</sortLegendValues>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>66</rowIndex>
+            <rowIndex>78</rowIndex>
             <rowSpan>11</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
-            <colSpan>12</colSpan>
+            <colSpan>4</colSpan>
             <columnIndex>0</columnIndex>
             <dashboardComponent>
                 <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
-                <chartAxisRange>Auto</chartAxisRange>
-                <chartSummary>
-                    <aggregate>Sum</aggregate>
-                    <axisBinding>y</axisBinding>
-                    <column>TOTAL_PRICE</column>
-                </chartSummary>
-                <componentType>Column</componentType>
+                <componentType>FlexTable</componentType>
                 <dashboardFilterColumns>
                     <column>FK_$Core_Design_Registration__c.Core_Partner_Account_Nm__c</column>
                 </dashboardFilterColumns>
@@ -821,13 +824,32 @@
                 <dashboardFilterColumns>
                     <column>Opportunity.Core_Business_Unit_Territory__c</column>
                 </dashboardFilterColumns>
-                <decimalPrecision>-1</decimalPrecision>
-                <displayUnits>Auto</displayUnits>
-                <drillEnabled>false</drillEnabled>
-                <drillToDetailEnabled>false</drillToDetailEnabled>
-                <enableHover>false</enableHover>
-                <expandOthers>false</expandOthers>
-                <groupingColumn>FK_$Core_Design_Registration__c.Core_Partner_FAE_Nm__c</groupingColumn>
+                <flexComponentProperties>
+                    <decimalPrecision>-1</decimalPrecision>
+                    <flexTableColumn>
+                        <reportColumn>FK_Core_Design_Registration__c.Core_Partner_FAE_Nm__c</reportColumn>
+                        <showSubTotal>false</showSubTotal>
+                        <showTotal>true</showTotal>
+                        <type>grouping</type>
+                    </flexTableColumn>
+                    <flexTableColumn>
+                        <reportColumn>RowCount</reportColumn>
+                        <showSubTotal>false</showSubTotal>
+                        <showTotal>true</showTotal>
+                        <type>aggregate</type>
+                    </flexTableColumn>
+                    <flexTableColumn>
+                        <reportColumn>s!TOTAL_PRICE</reportColumn>
+                        <showSubTotal>false</showSubTotal>
+                        <showTotal>true</showTotal>
+                        <type>aggregate</type>
+                    </flexTableColumn>
+                    <flexTableSortInfo>
+                        <sortOrder>2</sortOrder>
+                    </flexTableSortInfo>
+                    <hideChatterPhotos>true</hideChatterPhotos>
+                    <useReportTableSetting>false</useReportTableSetting>
+                </flexComponentProperties>
                 <groupingSortProperties>
                     <groupingSorts>
                         <groupingLevel>g1</groupingLevel>
@@ -835,19 +857,11 @@
                         <sortOrder>d</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>EMEA Approved DDR Opens by FAE</header>
-                <legendPosition>Bottom</legendPosition>
-                <maxValuesDisplayed>20</maxValuesDisplayed>
+                <header>2020 Approved DDR Open Opps by FAE</header>
                 <report>unfiled$public/EMEA_2020_Approved_DDR_Open_Opps_Report</report>
-                <showPercentage>false</showPercentage>
-                <showValues>true</showValues>
-                <sortBy>RowLabelDescending</sortBy>
-                <sortLegendValues>false</sortLegendValues>
-                <title>Showing Top 20 Only (open link for more)</title>
-                <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>77</rowIndex>
-            <rowSpan>11</rowSpan>
+            <rowIndex>89</rowIndex>
+            <rowSpan>8</rowSpan>
         </dashboardGridComponents>
         <numberOfColumns>12</numberOfColumns>
         <rowHeight>36</rowHeight>

@@ -35,6 +35,7 @@
                     });
                     $A.enqueueAction(svdAction);
                 } else {
+                    console.log('testing');
                     helper.processTenderQuote(component);
                 }
             } else if (state === "ERROR") {

@@ -1,0 +1,68 @@
+<template>
+    <lightning-record-edit-form object-api-name="Sales_License__c" record-id={recordId} onload={handleOnLoad} >
+        <!--<div class="slds-box">-->
+            <div class="slds-modal__content slds-p-around--medium"><!--css for proper footer-->
+    
+    <header class="slds-modal__header">
+    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Generate License</h2>
+    </header>
+
+    <br>     
+     <lightning-input type="text" name="hostinput" label="Enter Computer Name/Primary Computer ID" onchange={inputChange}></lightning-input>
+     <br>
+    
+    <lightning-button name="Search" label="Search" onclick={validateComputerName} ></lightning-button>
+    <lightning-button variant="base" label="+New Computer" title="+New Computer" onclick={createNewComputer} class="slds-m-left_x-small"></lightning-button>    
+    <c-sales-Setup-Host-Computer></c-sales-Setup-Host-Computer> 
+</div>
+    <br>
+
+    <template if:true={isDataFound}>
+        <div class="slds-box">
+        <lightning-datatable
+                key-field="id"
+                data={hostlist}
+                columns={columns}
+                onrowselection={handleRowSelection}
+                max-row-selection="1">
+        </lightning-datatable>
+        </div>
+        <br>
+        <lightning-button name="Assign" label="Assign" onclick={hostReassignment} ></lightning-button>
+</template>
+
+<template if:true={userWanttoRehost}>
+    
+    <div>This host is already assigned to another License. Do you want to reassign this Host?</div>
+    <lightning-button name='No' label='No' onclick={handledontWantToRehost}></lightning-button>
+    <lightning-button variant="brand" name='Yes' label='Yes' onclick={handleWantRehost}></lightning-button>
+</template>
+
+<template if:true={isErrorMessage}>
+<div class="slds-box">
+    <div class="slds-text-color_destructive">No matching computer found with an option to add a new computer.</div>
+</div>
+</template>
+
+ <!-- Modal Footer start
+ <footer class="slds-modal__footer">
+    <button class="slds-button slds-button_brand">Generate</button>
+    <lightning-button variant="neutral" label="Cancel" title="Cancel" onclick={handleCancel} class="slds-m-left_x-small"></lightning-button>
+</footer>-->
+ <!-- Modal Footer ends-->
+
+
+<template if:true={showMessage}>
+        <!--<div class="slds-text-body_regular">You have successfully assigned a new Host!</div>-->
+        <c-chat-Message sendactivationcodetochatmsg={selectedSerialNo} successmsg={successResponse}></c-chat-Message>
+</template>
+
+
+
+<template if:true={iscreateNewHost}> <!-- calling another component -->
+    <c-sales-Create-New-Host licenserecordid={recordId}></c-sales-Create-New-Host>
+
+</template>
+
+</lightning-record-edit-form>
+</template>

@@ -11,6 +11,14 @@
                 <behavior>Required</behavior>
                 <field>Name</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Required</behavior>
+                <field>Sales_License_Generator__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Sales_Legacy_License_Group_Id__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -55,6 +63,14 @@
     </layoutSections>
     <relatedLists>
         <fields>NAME</fields>
+        <fields>Sales_License_Generator_Switch__c</fields>
+        <fields>Sales_License_Value_txt__c</fields>
+        <fields>Sales_License_Sequence_nbr__c</fields>
+        <fields>Sales_License_Description_dsc__c</fields>
+        <relatedList>Sales_License_Group_Switch_config__c.Sales_License_Group__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
         <relatedList>Core_Product_Ext_Attribute__c.Core_SW_Lic_Group_Id__c</relatedList>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
@@ -63,7 +79,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h2i000000KY0N</masterLabel>
+        <masterLabel>00h2D000000l4cp</masterLabel>
         <sizeX>3</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

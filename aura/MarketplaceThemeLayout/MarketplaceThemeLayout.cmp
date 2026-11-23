@@ -2,7 +2,6 @@
   <aura:attribute name="devCssBundle" type="String" default="minified" />
 	<aura:attribute name="navBar" type="Aura.Component[]" required="false"/>
   <aura:attribute name="portal" type="String" access="global"/>
-  <aura:attribute name="coreIntcErrorConfig" type="string" />
   
   <!-- Uses Static Resource For Styleshseets: PsMpResources -->
   <aura:if isTrue="{!v.devCssBundle=='files'}">
@@ -29,7 +28,6 @@
   </aura:if>
   <div class="marketplaceTheme">
       <c:IntelCoreCommunity />
-      <c:coreIntcErrorHandler config="{!v.coreIntcErrorConfig}" />
       <c:MarketplaceUnsupportedBrowser />
       <div class="mainContentArea">
           {!v.body}

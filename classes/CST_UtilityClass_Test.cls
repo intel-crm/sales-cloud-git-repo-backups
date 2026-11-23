@@ -1,3 +1,10 @@
+/**
+ * @description       : 
+ * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+ * @group             : 
+ * @last modified on  : 11-14-2024
+ * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+**/
 @isTest(SeeAllData=false)
 public class CST_UtilityClass_Test {
     
@@ -47,16 +54,15 @@ public class CST_UtilityClass_Test {
         Id rcId = [select id from SPM_Regional_Customer__c limit 1][0].Id;
         
         SPM_Customer_Detail__c cd = new SPM_Customer_Detail__c();
-        cd.Coverage__c='Intel Led';
+        cd.Coverage__c='Intel Covered';
         cd.Core_Regional_Customer_Id__c = rcId;
         cd.SPM_Customer_Name__c='TestCST';
         insert cd;
         
         Id cstId = [select id from SPM_Customer_Detail__c limit 1][0].Id;
-        
         SPM_Customer_Category__c cc = new SPM_Customer_Category__c();
         cc.Customer_Detail__c = cstId;
-        cc.Coverage__c = 'Intel Led';
+        cc.Coverage__c = 'Intel Covered';
         insert cc;
         
         
@@ -68,7 +74,7 @@ public class CST_UtilityClass_Test {
         }
         Id sfAcctId = [select id from Account where Name='TestAccount' limit 1][0].Id;
         SPM_Account_Detail__c ad = new SPM_Account_Detail__c();
-        ad.Coverage_Type__c='Intel Led';
+        ad.Coverage_Type__c='Intel Covered';
         ad.DR__c = userId;
         ad.VP__c = userId;
         ad.GM__c = userId;
@@ -88,12 +94,12 @@ public class CST_UtilityClass_Test {
             cstFeedback.CustomerId = cstId;
             cstFeedback.feedbackBy = userRec.Email;
             cstFeedback.FeedbackType ='DR';
-            cstFeedback.Feedback='Change to Partner';
+            cstFeedback.Feedback='Change to Indirect Covered';//TWC3123-5894
             cstFeedback.ReasonForChange ='test';
             cstFeedback.NewAcctOwner = userRec.Email;
             cstFeedback.TeamMembers = userRec.Id;
             cstFeedback.SalesGroup='test';
-            cstFeedback.Coverage='Intel Led';
+            cstFeedback.Coverage='Intel Covered';
             
             Map<Boolean,String> cf = CST_CreateFeedback.createCustomerFeedback(cstFeedback);
             
@@ -101,24 +107,23 @@ public class CST_UtilityClass_Test {
             CST_CreateFeedback.AccountFeedBackFields acctFeedback = new CST_CreateFeedback.AccountFeedBackFields();
             acctFeedback.AccountId = acctId;
             acctFeedback.FeedbackType ='DR';
-            acctFeedback.Feedback='Add to Intel Led';
+            acctFeedback.Feedback='Add to Intel Covered';//TWC3123-5894
             acctFeedback.ReasonForChange ='test';
             acctFeedback.NewAcctOwner = userRec.Email;
             acctFeedback.TeamMembers = userRec.Id;
             acctFeedback.SalesGroup='test';
-            acctFeedback.Coverage='Intel Led';
+            acctFeedback.Coverage='Intel Covered';
             Id recordTypeId = Schema.SObjectType.SPM_Account_Feedback__c.getRecordTypeInfosByName().get('DR Feedback').getRecordTypeId();
             acctFeedback.RecordTypeId = recordTypeId;
             
             Map<Boolean,String> af = CST_CreateFeedback.createAccountFeedback(acctFeedback);
             
             SPM_Customer_Feedback__c custFeedback = [Select id,Feedback_By__c from SPM_Customer_Feedback__c WHERE Customer_ID__c =: cstId limit 1];
-            
+
             List<String> custIdList = new List<String>();
             custIdList.add(custFeedback.Id);
             List<String> custFBList = new List<String>();
             custFBList.add(custFeedback.Feedback_By__c);
-            System.debug('custFeedback '+custFeedback+'acctFeedback '+acctFeedback+'cstId -'+cstId);
             CST_UtilityClass.mapADandAF(custIdList);
             CST_FlowApexActionController.getSecurity(custFBList);
         }

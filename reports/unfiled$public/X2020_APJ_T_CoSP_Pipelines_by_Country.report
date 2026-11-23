@@ -146,7 +146,6 @@
         <field>PROBABILITY</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
         <field>Opportunity.Core_Architecture_Conversion__c</field>
     </columns>
     <columns>
@@ -236,7 +235,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Deal: Scale-enable,Deal: Sell-through,Deal: Sell-to</value>
+            <value>Deal: Sell-through,Deal: Sell-to</value>
         </criteriaItems>
         <criteriaItems>
             <column>BucketField_12541241</column>

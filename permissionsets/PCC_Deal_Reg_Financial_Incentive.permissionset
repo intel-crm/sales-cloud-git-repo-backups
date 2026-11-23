@@ -5,6 +5,16 @@
         <name>PCC_Deal_Reg_Financial_Incentive_Custom</name>
     </customPermissions>
     <description>This permission set is used for Deal Reg Financial Incentive</description>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Business_Review__c.User_s_Manager__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>SPM_Account_Feedback__c.CRM_CST_Is_Active_Planning_Period__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>
     <label>Deal Reg Financial Incentive</label>
     <license>Partner Community</license>

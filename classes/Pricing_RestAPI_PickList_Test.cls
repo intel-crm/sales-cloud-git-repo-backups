@@ -20,9 +20,10 @@ public class Pricing_RestAPI_PickList_Test {
             test.startTest();
             Account acc = Pricing_Test_Utility.createAccount();
             //Contact con = Pricing_Test_Utility.createContact(acc.Id);
-            Contact con = Pricing_Test_Utility.createPrimaryContactWithParam(acc.Id,'Rest_API_PickList_Test');
+            Contact con = Pricing_Test_Utility.createPrimaryContactWithParam(acc.Id,'Picklist_Test_restAPI');
             Pricing_Test_Utility.createTemplate(lstUsers2[0].id);
             //Pricing_Test_Utility.createAEUser();
+            List<User> accountExecutiveUserList = Pricing_Test_Utility.createAEUser();
             List<User> salesRepUserList = Pricing_Test_Utility.createSalesRepUser();
             AccountTeamMember accTeam = new AccountTeamMember(AccountId = acc.Id,
                                                               TeamMemberRole = 'Technical Sales',UserId = salesRepUserList[0].Id);
@@ -54,7 +55,7 @@ public class Pricing_RestAPI_PickList_Test {
     
     @isTest
     private static void testGetValuesWithRecordType(){
-        User usr = [SELECT id FROM User WHERE email='Rest_API_PickList_Test@noemail.com'];
+        User usr = [SELECT id FROM User WHERE email='Picklist_Test_restAPI@noemail.com'];
         system.runAs(usr){
             test.startTest();
             List<Pricing_Picklist_FieldNames_Mapping__mdt> fldMappingMdt = [SELECT MasterLabel FROM Pricing_Picklist_FieldNames_Mapping__mdt 
@@ -71,7 +72,7 @@ public class Pricing_RestAPI_PickList_Test {
     }
     @isTest 
     private static void testGetValuesWithOutRecordType(){
-        User usr = [SELECT id FROM User WHERE email='Rest_API_PickList_Test@noemail.com'];
+        User usr = [SELECT id FROM User WHERE email='Picklist_Test_restAPI@noemail.com'];
         system.runAs(usr){
             test.startTest();
             RestRequest request = new RestRequest();
@@ -86,7 +87,7 @@ public class Pricing_RestAPI_PickList_Test {
     }
     @isTest 
     private static void testGetValuesWithRecordType_NoDataException(){
-        User usr = [SELECT id FROM User WHERE email='Rest_API_PickList_Test@noemail.com'];
+        User usr = [SELECT id FROM User WHERE email='Picklist_Test_restAPI@noemail.com'];
         system.runAs(usr){
             test.startTest();
             List<Pricing_Picklist_FieldNames_Mapping__mdt> fldMappingMdt = [SELECT MasterLabel FROM Pricing_Picklist_FieldNames_Mapping__mdt 
@@ -104,7 +105,7 @@ public class Pricing_RestAPI_PickList_Test {
     
     @isTest 
     private static void testWrongFieldNameInput(){
-        User usr = [SELECT id FROM User WHERE email='Rest_API_PickList_Test@noemail.com'];
+        User usr = [SELECT id FROM User WHERE email='primarycontact@noemail.com'];
         system.runAs(usr){
             test.startTest();
             RestRequest request = new RestRequest();
@@ -119,7 +120,7 @@ public class Pricing_RestAPI_PickList_Test {
     }
     @isTest 
     private static void testgetAllFieldNames(){
-        User usr = [SELECT id FROM User WHERE email='Rest_API_PickList_Test@noemail.com'];
+        User usr = [SELECT id FROM User WHERE email='Picklist_Test_restAPI@noemail.com'];
         system.runAs(usr){
             test.startTest();
             RestRequest request = new RestRequest();
@@ -134,7 +135,7 @@ public class Pricing_RestAPI_PickList_Test {
     }
     @isTest 
     private static void testgetEndCustomer(){
-        User usr = [SELECT id FROM User WHERE email='Rest_API_PickList_Test@noemail.com'];
+        User usr = [SELECT id FROM User WHERE email='Picklist_Test_restAPI@noemail.com'];
         system.runAs(usr){
             test.startTest();
             RestRequest request = new RestRequest();
@@ -149,7 +150,7 @@ public class Pricing_RestAPI_PickList_Test {
     }
     @isTest 
     private static void testgetConsumptionValues(){
-        User usr = [SELECT id,AccountId FROM User WHERE email='Rest_API_PickList_Test@noemail.com'];
+        User usr = [SELECT id,AccountId FROM User WHERE email='Picklist_Test_restAPI@noemail.com'];
         Pricing_ConsumptionAccountMapping__c Consumption = new Pricing_ConsumptionAccountMapping__c(Name = 'Test Consumption',Pricing_Account_Nm__c = usr.AccountId,Pricing_Consumption_Type_Nm__c = 'Consumption Platform',Pricing_Active_ind__c = true);
         insert Consumption;
         system.runAs(usr){

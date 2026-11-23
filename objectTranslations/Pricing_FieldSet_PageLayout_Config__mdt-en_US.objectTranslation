@@ -53,6 +53,10 @@
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- IQR Product Type --></label>
+        <name>Pricing_IQR_Product_Type__c</name>
+    </fields>
+    <fields>
         <label><!-- Is RPM User --></label>
         <name>Pricing_IsRPM_User__c</name>
         <picklistValues>
@@ -111,6 +115,10 @@
             <masterLabel>Proposed Intel Solution</masterLabel>
             <translation><!-- Proposed Intel Solution --></translation>
         </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Section Label --></label>
+        <name>Pricing_Section_Label__c</name>
     </fields>
     <fields>
         <label><!-- Section Order --></label>

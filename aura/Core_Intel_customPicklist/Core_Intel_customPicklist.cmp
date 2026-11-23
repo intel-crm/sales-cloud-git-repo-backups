@@ -1,80 +1,77 @@
 <aura:component
-                implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction"
-                access="global" controller="Core_Intel_customPicklistController">
+    implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction"
+    access="global" controller="Core_Intel_customPicklistController">
     <aura:attribute name="objName" type="String" default="" required="true"
-                    description="This attribute holds the Object name" />
+        description="This attribute holds the Object name" />
     <aura:attribute name="fldName" type="String" default="" required="true"
-                    description="This attribute holds the Field name" />
+        description="This attribute holds the Field name" />
     <aura:attribute name="recTypeName" type="String" default="None" required="true" access="public"
-                    description="This attribute holds the Record Type name" />
+        description="This attribute holds the Record Type name" />
     <aura:attribute name="recTypeDevName" type="String" default="None" required="true" access="public"
-                    description="This attribute holds the Record Type Dev Name" />
+        description="This attribute holds the Record Type Dev Name" />
     <aura:attribute name="ParentId" type="String" default="" description="This attribute holds the Id" />
     <aura:attribute name="ParentfldName" type="String" default=""
-                    description="This attribute holds the Parent Field name" />
+        description="This attribute holds the Parent Field name" />
     <aura:attribute name="selectedValue" type="String" default=""
-                    description="This attribute holds the selected value" />
+        description="This attribute holds the selected value" />
     <aura:attribute name="dispLabel" type="String" default="" description="This attribute holds the display label" />
     <aura:attribute name="options" type="String[]"
-                    description="This attribute holds the picklist values for activity category and type for CCF record type" />
+        description="This attribute holds the picklist values for activity category and type for CCF record type" />
     <aura:attribute name="ccfoptions" type="String[]"
-                    description="This attribute holds the picklist values for activity category and type for CCF record type" />
+        description="This attribute holds the picklist values for activity category and type for CCF record type" />
     <aura:attribute name="myoptions" type="String[]"
-                    description="This attribute holds the picklist values coming from campaign" />
+        description="This attribute holds the picklist values coming from campaign" />
     <aura:attribute name="controllingvalue" type="String" default=""
-                    description="This attribute holds the controlling value" />
+        description="This attribute holds the controlling value" />
     <aura:attribute name="CPLed" type="boolean" default="false" description="To hold the CP led user selected value" />
     <aura:attribute name="Ctry" type="String" default=""
-                    description="Stores the selected country at parent component" />
+        description="Stores the selected country at parent component" />
     <aura:attribute name="disabled" type="boolean" default="false" description="Set the picklist disabled" />
     <aura:attribute name="waitForValuesToLoad" type="boolean" default="false" description="Set the picklist disabled" />
     <aura:attribute name="isEdit" type="boolean" default="true" />
     <aura:attribute name="stoploop" type="boolean" default="true" />
     <aura:attribute name="labelValueMap" type="Map"
-                    description="stores all the picklist values on the load of the page" />
+        description="stores all the picklist values on the load of the page" />
     <aura:attribute name="labelList" type="List" description="stores all the picklist values on the load of the page" />
     <!--Attributes to Store Values of the picklist field from PartnerFundRequest  -->
     <aura:attribute name="optionPFRActCat" type="String[]" default=""
-                    description="This attribute holds the picklist values for activity category for CCF record type for PFR Object" />
+        description="This attribute holds the picklist values for activity category for CCF record type for PFR Object" />
     <aura:attribute name="optionPFRActType" type="String[]" default=""
-                    description="This attribute holds the picklist values for activity type for CCF record type for PFR Object" />
+        description="This attribute holds the picklist values for activity type for CCF record type for PFR Object" />
     <aura:attribute name="optionPFRCountry" type="String[]" default=""
-                    description="This attribute holds the picklist values for country for CCF record type for PFR Object" />
-    <!--OPAL Changes Start-->
-    <aura:attribute name="isOpalAct" type="boolean" default="false" />
-    <!--OPAL Changes Start-->
+        description="This attribute holds the picklist values for country for CCF record type for PFR Object" />
+
     <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
     <aura:handler name="change" value="{!v.options}" action="{!c.doInit}" />
     <aura:handler name="change" value="{!v.recTypeName}" action="{!c.doInit}" />
     <aura:handler name="change" value="{!v.controllingvalue}" action="{!c.doInit}" />
-    <aura:attribute name="mode" type="String" default=""/>
+
     <aura:attribute name="olPfrStatus" type="String" default=""
-                    description="This attribute holds the old status of activity" />
+        description="This attribute holds the old status of activity" />
     <aura:attribute name="IsClone" type="boolean" default="false" />
     <!--aura:handler name="change" value="{!v.waitForValuesToLoad}" action="{!c.doInit}"/-->
-    
+
     <aura:registerEvent name="PicValue" type="c:Core_MDF_PickListChangeEvent" />
     <!-- SS - Event to return the values to parent component -->
-    
     <div class="slds-form-element">
         <div class="slds-select_container">
             <aura:if isTrue="{!empty(v.myoptions)}">
                 <lightning:select name="mySelect" label="{!v.dispLabel}" aura:id="mySelect" value="{!v.selectedValue}"
-                                  required="true" onchange="{!c.handleChange}" disabled="{!v.disabled}" class="{!if(v.recTypeDevName == $Label.c.Core_MDF_IPA_RecordType,'elementLabel','')}" >
+                    required="true" onchange="{!c.handleChange}" disabled="{!v.disabled}">
                     <!-- onchange="{!c.handleChange}" -->
                     <aura:if isTrue="{!empty(v.ccfoptions)}">
                         <aura:iteration items="{!v.options}" var="item">
                             <aura:if isTrue="{!item.label != null}">
                                 <option text="{!item.label}" value="{!item.value}"
-                                        selected="{!item.value == v.selectedValue}" /><!-- {!item.value}-options: -->
-                                {item.value}
+                                    selected="{!item.value == v.selectedValue}" /><!-- {!item.value}-options: -->
+                                {item.value
                             </aura:if>
                         </aura:iteration>
                         <aura:set attribute="else">
                             <aura:iteration items="{!v.ccfoptions}" var="item">
                                 <aura:if isTrue="{!item.label != null}">
                                     <option text="{!item.label}" value="{!item.value}"
-                                            selected="{!item.value == v.selectedValue}" /><!-- {!item.value}->options: -->
+                                        selected="{!item.value == v.selectedValue}" /><!-- {!item.value}->options: -->
                                     {item.value}
                                 </aura:if>
                             </aura:iteration>
@@ -83,22 +80,22 @@
                 </lightning:select>
                 <aura:set attribute="else">
                     <lightning:select name="mySelect" label="{!v.dispLabel}" aura:id="mySelect"
-                                      value="{!v.selectedValue}" required="true" onchange="{!c.handleChange}"
-                                      disabled="{!v.disabled}" class="{!if(v.recTypeDevName == $Label.c.Core_MDF_IPA_RecordType,'elementLabel','')}" >
+                        value="{!v.selectedValue}" required="true" onchange="{!c.handleChange}"
+                        disabled="{!v.disabled}">
                         <!-- onchange="{!c.handleChange}" -->
                         <aura:if isTrue="{!v.isEdit}">
                             <aura:iteration items="{!v.myoptions}" var="item">
                                 <aura:if isTrue="{!item.label != null}">
                                     <!--<option text="{!item.label}" value="{!item.value}" selected="{!item.value == v.selectedValue}"/>-->
                                     <option text="{!item.label}" value="{!item.value}"
-                                            selected="{!item.value == v.selectedValue}" />
+                                        selected="{!item.value == v.selectedValue}" />
                                 </aura:if>
                             </aura:iteration>
                             <aura:set attribute="else">
                                 <aura:iteration items="{!v.myoptions}" var="item">
                                     <aura:if isTrue="{!item.label != null}">
                                         <option text="{!item.label}" value="{!item.value}"
-                                                selected="{!item.value == v.selectedValue}" />
+                                            selected="{!item.value == v.selectedValue}" />
                                     </aura:if>
                                 </aura:iteration>
                             </aura:set>
@@ -109,5 +106,4 @@
             <!--</aura:if>-->
         </div>
     </div>
-    <aura:method name="validateErrors" action="{!c.validateErrors}" access="PUBLIC" />  
 </aura:component>

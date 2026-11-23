@@ -41,23 +41,23 @@
     <dashboardFilters>
         <dashboardFilterOptions>
             <operator>between</operator>
-            <values>1/1/2021</values>
-            <values>3/31/2021</values>
+            <values>1/1/2020</values>
+            <values>3/31/2020</values>
         </dashboardFilterOptions>
         <dashboardFilterOptions>
             <operator>between</operator>
-            <values>4/1/2021</values>
-            <values>6/30/2021</values>
+            <values>4/1/2020</values>
+            <values>6/30/2020</values>
         </dashboardFilterOptions>
         <dashboardFilterOptions>
             <operator>between</operator>
-            <values>7/1/2021</values>
-            <values>9/30/2021</values>
+            <values>7/1/2020</values>
+            <values>9/30/2020</values>
         </dashboardFilterOptions>
         <dashboardFilterOptions>
             <operator>between</operator>
-            <values>10/1/2021</values>
-            <values>12/31/2021</values>
+            <values>10/1/2020</values>
+            <values>12/31/2020</values>
         </dashboardFilterOptions>
         <dashboardFilterOptions>
             <operator>between</operator>
@@ -97,6 +97,14 @@
         </dashboardFilterOptions>
         <dashboardFilterOptions>
             <operator>contains</operator>
+            <values>Faisal Qamar</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>contains</operator>
+            <values>Kelvin Lum</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>contains</operator>
             <values>Ming Han Niam</values>
         </dashboardFilterOptions>
         <dashboardFilterOptions>
@@ -112,8 +120,8 @@
             <values>Ro Chawla</values>
         </dashboardFilterOptions>
         <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>Caseen Sze</values>
+            <operator>contains</operator>
+            <values>Takahiro Katayama</values>
         </dashboardFilterOptions>
         <dashboardFilterOptions>
             <operator>contains</operator>
@@ -127,8 +135,252 @@
     </dashboardFilters>
     <dashboardGridLayout>
         <dashboardGridComponents>
-            <colSpan>6</colSpan>
+            <colSpan>4</colSpan>
             <columnIndex>0</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <chartSummary>
+                    <aggregate>Sum</aggregate>
+                    <axisBinding>y</axisBinding>
+                    <column>FK_OPP_AMOUNT</column>
+                </chartSummary>
+                <componentType>Gauge</componentType>
+                <dashboardFilterColumns>
+                    <column>FK_ACC_ADDR1_COUNTRY_CODE</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>FK_OPP_CLOSE_DATE</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>FK_OPP_ROLLUP_DESCRIPTION</column>
+                </dashboardFilterColumns>
+                <decimalPrecision>-1</decimalPrecision>
+                <displayUnits>Auto</displayUnits>
+                <gaugeMax>1.65E8</gaugeMax>
+                <gaugeMin>0.0</gaugeMin>
+                <groupingSortProperties/>
+                <header>Pipeline of 3x Target</header>
+                <indicatorBreakpoint1>1.1E8</indicatorBreakpoint1>
+                <indicatorBreakpoint2>1.35E8</indicatorBreakpoint2>
+                <indicatorHighColor>#00716B</indicatorHighColor>
+                <indicatorLowColor>#C23934</indicatorLowColor>
+                <indicatorMiddleColor>#FFB75D</indicatorMiddleColor>
+                <report>APJ_RBM/ISA_Cosell_APJT_Opportunities_2020_4</report>
+                <showPercentage>false</showPercentage>
+                <showRange>false</showRange>
+                <showTotal>true</showTotal>
+                <showValues>false</showValues>
+                <title>(2020 APJT Target)</title>
+            </dashboardComponent>
+            <rowIndex>0</rowIndex>
+            <rowSpan>8</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>4</colSpan>
+            <columnIndex>4</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <chartAxisRange>Auto</chartAxisRange>
+                <chartSummary>
+                    <aggregate>Sum</aggregate>
+                    <axisBinding>y</axisBinding>
+                    <column>FK_OPP_AMOUNT</column>
+                </chartSummary>
+                <componentType>Funnel</componentType>
+                <dashboardFilterColumns>
+                    <column>FK_ACC_ADDR1_COUNTRY_CODE</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>FK_OPP_CLOSE_DATE</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>FK_OPP_ROLLUP_DESCRIPTION</column>
+                </dashboardFilterColumns>
+                <decimalPrecision>-1</decimalPrecision>
+                <displayUnits>Auto</displayUnits>
+                <drillEnabled>false</drillEnabled>
+                <drillToDetailEnabled>false</drillToDetailEnabled>
+                <enableHover>false</enableHover>
+                <expandOthers>false</expandOthers>
+                <groupingColumn>FK_OPP_STAGE_NAME</groupingColumn>
+                <groupingSortProperties>
+                    <groupingSorts>
+                        <groupingLevel>g1</groupingLevel>
+                        <sortOrder>a</sortOrder>
+                    </groupingSorts>
+                </groupingSortProperties>
+                <header>2020 Overall Funnel Shape</header>
+                <legendPosition>Right</legendPosition>
+                <maxValuesDisplayed>6</maxValuesDisplayed>
+                <report>APJ_RBM/ISA_Cosell_APJT_Opportunities_2020_4</report>
+                <showPercentage>true</showPercentage>
+                <showValues>true</showValues>
+                <sortBy>RowLabelAscending</sortBy>
+                <sortLegendValues>false</sortLegendValues>
+                <useReportChart>false</useReportChart>
+            </dashboardComponent>
+            <rowIndex>0</rowIndex>
+            <rowSpan>8</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>4</colSpan>
+            <columnIndex>8</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <chartAxisRange>Auto</chartAxisRange>
+                <chartSummary>
+                    <aggregate>Sum</aggregate>
+                    <axisBinding>y</axisBinding>
+                    <column>FK_OPP_AMOUNT</column>
+                </chartSummary>
+                <componentType>BarStacked</componentType>
+                <dashboardFilterColumns>
+                    <column>FK_ACC_ADDR1_COUNTRY_CODE</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>FK_OPP_CLOSE_DATE</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>FK_OPP_ROLLUP_DESCRIPTION</column>
+                </dashboardFilterColumns>
+                <decimalPrecision>-1</decimalPrecision>
+                <displayUnits>Auto</displayUnits>
+                <drillEnabled>false</drillEnabled>
+                <drillToDetailEnabled>false</drillToDetailEnabled>
+                <enableHover>false</enableHover>
+                <expandOthers>false</expandOthers>
+                <groupingColumn>FK_OPP_CLOSE_DATE</groupingColumn>
+                <groupingColumn>FK_OPP_STAGE_NAME</groupingColumn>
+                <groupingSortProperties>
+                    <groupingSorts>
+                        <groupingLevel>g1</groupingLevel>
+                        <sortOrder>a</sortOrder>
+                    </groupingSorts>
+                    <groupingSorts>
+                        <groupingLevel>g2</groupingLevel>
+                        <sortOrder>a</sortOrder>
+                    </groupingSorts>
+                </groupingSortProperties>
+                <header>2020 by Quarter by Stage</header>
+                <legendPosition>Right</legendPosition>
+                <report>APJ_RBM/ISA_Cosell_APJT_Opportunities_2020_4</report>
+                <showPercentage>false</showPercentage>
+                <showValues>false</showValues>
+                <sortBy>RowLabelAscending</sortBy>
+                <sortLegendValues>false</sortLegendValues>
+                <useReportChart>false</useReportChart>
+            </dashboardComponent>
+            <rowIndex>0</rowIndex>
+            <rowSpan>8</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>4</colSpan>
+            <columnIndex>0</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <chartAxisRange>Auto</chartAxisRange>
+                <chartSummary>
+                    <aggregate>Sum</aggregate>
+                    <axisBinding>y</axisBinding>
+                    <column>FK_OPP_AMOUNT</column>
+                </chartSummary>
+                <componentType>BarStacked</componentType>
+                <dashboardFilterColumns>
+                    <column>FK_ACC_ADDR1_COUNTRY_CODE</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>FK_OPP_CLOSE_DATE</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>FK_OPP_ROLLUP_DESCRIPTION</column>
+                </dashboardFilterColumns>
+                <decimalPrecision>-1</decimalPrecision>
+                <displayUnits>Auto</displayUnits>
+                <drillEnabled>false</drillEnabled>
+                <drillToDetailEnabled>false</drillToDetailEnabled>
+                <enableHover>false</enableHover>
+                <expandOthers>false</expandOthers>
+                <groupingColumn>FK_ACC_ADDR1_COUNTRY_CODE</groupingColumn>
+                <groupingColumn>FK_OPP_STAGE_NAME</groupingColumn>
+                <groupingSortProperties>
+                    <groupingSorts>
+                        <groupingLevel>g1</groupingLevel>
+                        <sortColumn>s!FK_OPP_AMOUNT</sortColumn>
+                        <sortOrder>d</sortOrder>
+                    </groupingSorts>
+                    <groupingSorts>
+                        <groupingLevel>g2</groupingLevel>
+                        <sortOrder>a</sortOrder>
+                    </groupingSorts>
+                </groupingSortProperties>
+                <header>2020 by Country by Stage</header>
+                <legendPosition>Bottom</legendPosition>
+                <report>APJ_RBM/ISA_Cosell_APJT_Opportunities_2020_11</report>
+                <showPercentage>false</showPercentage>
+                <showValues>false</showValues>
+                <sortBy>RowLabelAscending</sortBy>
+                <sortLegendValues>false</sortLegendValues>
+                <useReportChart>false</useReportChart>
+            </dashboardComponent>
+            <rowIndex>8</rowIndex>
+            <rowSpan>8</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>4</colSpan>
+            <columnIndex>4</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <chartAxisRange>Auto</chartAxisRange>
+                <chartSummary>
+                    <aggregate>Sum</aggregate>
+                    <axisBinding>y</axisBinding>
+                    <column>FK_OPP_AMOUNT</column>
+                </chartSummary>
+                <componentType>BarStacked</componentType>
+                <dashboardFilterColumns>
+                    <column>FK_ACC_ADDR1_COUNTRY_CODE</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>FK_OPP_CLOSE_DATE</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>FK_OPP_ROLLUP_DESCRIPTION</column>
+                </dashboardFilterColumns>
+                <decimalPrecision>-1</decimalPrecision>
+                <displayUnits>Auto</displayUnits>
+                <drillEnabled>false</drillEnabled>
+                <drillToDetailEnabled>false</drillToDetailEnabled>
+                <enableHover>false</enableHover>
+                <expandOthers>false</expandOthers>
+                <groupingColumn>FK_ACC_ADDR1_COUNTRY_CODE</groupingColumn>
+                <groupingColumn>FK_OPP_OWNER_NAME</groupingColumn>
+                <groupingSortProperties>
+                    <groupingSorts>
+                        <groupingLevel>g1</groupingLevel>
+                        <sortColumn>s!FK_OPP_AMOUNT</sortColumn>
+                        <sortOrder>d</sortOrder>
+                    </groupingSorts>
+                    <groupingSorts>
+                        <groupingLevel>g2</groupingLevel>
+                        <sortColumn>s!FK_OPP_AMOUNT</sortColumn>
+                        <sortOrder>d</sortOrder>
+                    </groupingSorts>
+                </groupingSortProperties>
+                <header>2020 by Country by Owner</header>
+                <legendPosition>Right</legendPosition>
+                <report>APJ_RBM/ISA_Cosell_APJT_Opportunities_2020_11</report>
+                <showPercentage>false</showPercentage>
+                <showValues>false</showValues>
+                <sortBy>RowLabelAscending</sortBy>
+                <sortLegendValues>false</sortLegendValues>
+                <useReportChart>false</useReportChart>
+            </dashboardComponent>
+            <rowIndex>8</rowIndex>
+            <rowSpan>8</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>4</colSpan>
+            <columnIndex>8</columnIndex>
             <dashboardComponent>
                 <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
                 <chartAxisRange>Auto</chartAxisRange>
@@ -167,7 +419,7 @@
                         <sortOrder>d</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>Current FY by Country by Account</header>
+                <header>2020 by Country by Account</header>
                 <legendPosition>Right</legendPosition>
                 <report>APJ_RBM/ISA_Cosell_APJT_Opportunities_2020_21</report>
                 <showPercentage>false</showPercentage>
@@ -177,7 +429,218 @@
                 <title>(Only Shows Top 100 Accounts)</title>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>0</rowIndex>
+            <rowIndex>8</rowIndex>
+            <rowSpan>8</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>4</colSpan>
+            <columnIndex>0</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <chartAxisRange>Auto</chartAxisRange>
+                <chartSummary>
+                    <aggregate>Sum</aggregate>
+                    <axisBinding>y</axisBinding>
+                    <column>FK_OPP_AMOUNT</column>
+                </chartSummary>
+                <componentType>BarStacked</componentType>
+                <dashboardFilterColumns>
+                    <column>FK_ACC_ADDR1_COUNTRY_CODE</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>FK_OPP_CLOSE_DATE</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>FK_OPP_ROLLUP_DESCRIPTION</column>
+                </dashboardFilterColumns>
+                <decimalPrecision>-1</decimalPrecision>
+                <displayUnits>Auto</displayUnits>
+                <drillEnabled>false</drillEnabled>
+                <drillToDetailEnabled>false</drillToDetailEnabled>
+                <enableHover>false</enableHover>
+                <expandOthers>false</expandOthers>
+                <groupingColumn>FK_OPP_OWNER_NAME</groupingColumn>
+                <groupingColumn>FK_OPP_STAGE_NAME</groupingColumn>
+                <groupingSortProperties>
+                    <groupingSorts>
+                        <groupingLevel>g1</groupingLevel>
+                        <sortColumn>s!FK_OPP_AMOUNT</sortColumn>
+                        <sortOrder>d</sortOrder>
+                    </groupingSorts>
+                    <groupingSorts>
+                        <groupingLevel>g2</groupingLevel>
+                        <sortOrder>a</sortOrder>
+                    </groupingSorts>
+                </groupingSortProperties>
+                <header>2020 by Owner by Stage</header>
+                <legendPosition>Bottom</legendPosition>
+                <report>APJ_RBM/ISA_Cosell_APJT_Opportunities_2020_11</report>
+                <showPercentage>false</showPercentage>
+                <showValues>false</showValues>
+                <sortBy>RowLabelAscending</sortBy>
+                <sortLegendValues>false</sortLegendValues>
+                <useReportChart>false</useReportChart>
+            </dashboardComponent>
+            <rowIndex>16</rowIndex>
+            <rowSpan>8</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>4</colSpan>
+            <columnIndex>4</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <chartAxisRange>Auto</chartAxisRange>
+                <chartSummary>
+                    <aggregate>Sum</aggregate>
+                    <axisBinding>y</axisBinding>
+                    <column>FK_OPP_AMOUNT</column>
+                </chartSummary>
+                <componentType>BarStacked</componentType>
+                <dashboardFilterColumns>
+                    <column>FK_ACC_ADDR1_COUNTRY_CODE</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>FK_OPP_CLOSE_DATE</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>FK_OPP_ROLLUP_DESCRIPTION</column>
+                </dashboardFilterColumns>
+                <decimalPrecision>-1</decimalPrecision>
+                <displayUnits>Auto</displayUnits>
+                <drillEnabled>false</drillEnabled>
+                <drillToDetailEnabled>false</drillToDetailEnabled>
+                <enableHover>false</enableHover>
+                <expandOthers>false</expandOthers>
+                <groupingColumn>FK_OPP_OWNER_NAME</groupingColumn>
+                <groupingColumn>FK_ACC_NAME</groupingColumn>
+                <groupingSortProperties>
+                    <groupingSorts>
+                        <groupingLevel>g1</groupingLevel>
+                        <sortColumn>s!FK_OPP_AMOUNT</sortColumn>
+                        <sortOrder>d</sortOrder>
+                    </groupingSorts>
+                    <groupingSorts>
+                        <groupingLevel>g2</groupingLevel>
+                        <sortColumn>s!FK_OPP_AMOUNT</sortColumn>
+                        <sortOrder>d</sortOrder>
+                    </groupingSorts>
+                </groupingSortProperties>
+                <header>2020 by Owner by Account</header>
+                <legendPosition>Right</legendPosition>
+                <report>APJ_RBM/ISA_Cosell_APJT_Opportunities_2020_32</report>
+                <showPercentage>false</showPercentage>
+                <showValues>false</showValues>
+                <sortBy>RowLabelAscending</sortBy>
+                <sortLegendValues>false</sortLegendValues>
+                <title>(Only Shows Top 100 Accounts)</title>
+                <useReportChart>false</useReportChart>
+            </dashboardComponent>
+            <rowIndex>16</rowIndex>
+            <rowSpan>8</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>4</colSpan>
+            <columnIndex>8</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <chartAxisRange>Auto</chartAxisRange>
+                <chartSummary>
+                    <aggregate>Sum</aggregate>
+                    <axisBinding>y</axisBinding>
+                    <column>FK_OPP_AMOUNT</column>
+                </chartSummary>
+                <componentType>BarStacked</componentType>
+                <dashboardFilterColumns>
+                    <column>FK_ACC_ADDR1_COUNTRY_CODE</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>FK_OPP_CLOSE_DATE</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>FK_OPP_ROLLUP_DESCRIPTION</column>
+                </dashboardFilterColumns>
+                <decimalPrecision>-1</decimalPrecision>
+                <displayUnits>Auto</displayUnits>
+                <drillEnabled>false</drillEnabled>
+                <drillToDetailEnabled>false</drillToDetailEnabled>
+                <enableHover>false</enableHover>
+                <expandOthers>false</expandOthers>
+                <groupingColumn>FK_ACC_NAME</groupingColumn>
+                <groupingColumn>FK_OPP_STAGE_NAME</groupingColumn>
+                <groupingSortProperties>
+                    <groupingSorts>
+                        <groupingLevel>g1</groupingLevel>
+                        <sortColumn>s!FK_OPP_AMOUNT</sortColumn>
+                        <sortOrder>d</sortOrder>
+                    </groupingSorts>
+                    <groupingSorts>
+                        <groupingLevel>g2</groupingLevel>
+                        <sortOrder>a</sortOrder>
+                    </groupingSorts>
+                </groupingSortProperties>
+                <header>2020 by Account by Stage</header>
+                <legendPosition>Bottom</legendPosition>
+                <report>APJ_RBM/ISA_Cosell_APJT_Opportunities_2020_21</report>
+                <showPercentage>false</showPercentage>
+                <showValues>false</showValues>
+                <sortBy>RowLabelAscending</sortBy>
+                <sortLegendValues>false</sortLegendValues>
+                <title>(Only Shows Top 100 Accounts)</title>
+                <useReportChart>false</useReportChart>
+            </dashboardComponent>
+            <rowIndex>16</rowIndex>
+            <rowSpan>8</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>6</colSpan>
+            <columnIndex>0</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <chartAxisRange>Auto</chartAxisRange>
+                <chartSummary>
+                    <aggregate>Sum</aggregate>
+                    <axisBinding>y</axisBinding>
+                    <column>FK_OPP_AMOUNT</column>
+                </chartSummary>
+                <componentType>BarStacked</componentType>
+                <dashboardFilterColumns>
+                    <column>FK_ACC_ADDR1_COUNTRY_CODE</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>FK_OPP_CLOSE_DATE</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>FK_OPP_ROLLUP_DESCRIPTION</column>
+                </dashboardFilterColumns>
+                <decimalPrecision>-1</decimalPrecision>
+                <displayUnits>Auto</displayUnits>
+                <drillEnabled>false</drillEnabled>
+                <drillToDetailEnabled>false</drillToDetailEnabled>
+                <enableHover>false</enableHover>
+                <expandOthers>false</expandOthers>
+                <groupingColumn>FK_OPP_CLOSE_DATE</groupingColumn>
+                <groupingColumn>Core_Opportunity_Partner__c.Core_Partner__c</groupingColumn>
+                <groupingSortProperties>
+                    <groupingSorts>
+                        <groupingLevel>g1</groupingLevel>
+                        <sortOrder>a</sortOrder>
+                    </groupingSorts>
+                    <groupingSorts>
+                        <groupingLevel>g2</groupingLevel>
+                        <sortColumn>s!FK_OPP_AMOUNT</sortColumn>
+                        <sortOrder>d</sortOrder>
+                    </groupingSorts>
+                </groupingSortProperties>
+                <header>2020 by Partner</header>
+                <legendPosition>Right</legendPosition>
+                <report>APJ_RBM/ISA_Cosell_APJT_Opportunities_2020_4</report>
+                <showPercentage>false</showPercentage>
+                <showValues>false</showValues>
+                <sortBy>RowLabelAscending</sortBy>
+                <sortLegendValues>false</sortLegendValues>
+                <useReportChart>false</useReportChart>
+            </dashboardComponent>
+            <rowIndex>24</rowIndex>
             <rowSpan>8</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
@@ -207,375 +670,60 @@
                 <drillToDetailEnabled>false</drillToDetailEnabled>
                 <enableHover>false</enableHover>
                 <expandOthers>false</expandOthers>
+                <groupingColumn>FK_OPP_CLOSE_DATE</groupingColumn>
+                <groupingColumn>FK_$Opportunity.Core_Product_Segment__c</groupingColumn>
+                <groupingSortProperties>
+                    <groupingSorts>
+                        <groupingLevel>g1</groupingLevel>
+                        <sortOrder>a</sortOrder>
+                    </groupingSorts>
+                    <groupingSorts>
+                        <groupingLevel>g2</groupingLevel>
+                        <sortColumn>s!FK_OPP_AMOUNT</sortColumn>
+                        <sortOrder>d</sortOrder>
+                    </groupingSorts>
+                </groupingSortProperties>
+                <header>2020 by Segment</header>
+                <legendPosition>Right</legendPosition>
+                <report>APJ_RBM/ISA_Cosell_APJT_Opportunities_2020_5</report>
+                <showPercentage>false</showPercentage>
+                <showValues>false</showValues>
+                <sortBy>RowLabelAscending</sortBy>
+                <sortLegendValues>false</sortLegendValues>
+                <useReportChart>false</useReportChart>
+            </dashboardComponent>
+            <rowIndex>24</rowIndex>
+            <rowSpan>8</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>6</colSpan>
+            <columnIndex>0</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <chartAxisRange>Auto</chartAxisRange>
+                <chartSummary>
+                    <aggregate>Sum</aggregate>
+                    <axisBinding>y</axisBinding>
+                    <column>FK_OPP_AMOUNT</column>
+                </chartSummary>
+                <componentType>BarStacked</componentType>
+                <dashboardFilterColumns>
+                    <column>FK_ACC_ADDR1_COUNTRY_CODE</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>FK_OPP_CLOSE_DATE</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>FK_OPP_ROLLUP_DESCRIPTION</column>
+                </dashboardFilterColumns>
+                <decimalPrecision>-1</decimalPrecision>
+                <displayUnits>Auto</displayUnits>
+                <drillEnabled>false</drillEnabled>
+                <drillToDetailEnabled>false</drillToDetailEnabled>
+                <enableHover>false</enableHover>
+                <expandOthers>false</expandOthers>
+                <groupingColumn>FK_OPP_CLOSE_DATE</groupingColumn>
                 <groupingColumn>FK_ACC_ADDR1_COUNTRY_CODE</groupingColumn>
-                <groupingColumn>FK_OPP_OWNER_NAME</groupingColumn>
-                <groupingSortProperties>
-                    <groupingSorts>
-                        <groupingLevel>g1</groupingLevel>
-                        <sortColumn>s!FK_OPP_AMOUNT</sortColumn>
-                        <sortOrder>d</sortOrder>
-                    </groupingSorts>
-                    <groupingSorts>
-                        <groupingLevel>g2</groupingLevel>
-                        <sortColumn>s!FK_OPP_AMOUNT</sortColumn>
-                        <sortOrder>d</sortOrder>
-                    </groupingSorts>
-                </groupingSortProperties>
-                <header>Current FY by Country by Owner</header>
-                <legendPosition>Right</legendPosition>
-                <report>APJ_RBM/ISA_Cosell_APJT_Opportunities_2020_11</report>
-                <showPercentage>false</showPercentage>
-                <showValues>false</showValues>
-                <sortBy>RowLabelAscending</sortBy>
-                <sortLegendValues>false</sortLegendValues>
-                <useReportChart>false</useReportChart>
-            </dashboardComponent>
-            <rowIndex>0</rowIndex>
-            <rowSpan>8</rowSpan>
-        </dashboardGridComponents>
-        <dashboardGridComponents>
-            <colSpan>6</colSpan>
-            <columnIndex>0</columnIndex>
-            <dashboardComponent>
-                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
-                <chartAxisRange>Auto</chartAxisRange>
-                <chartSummary>
-                    <aggregate>Sum</aggregate>
-                    <axisBinding>y</axisBinding>
-                    <column>FK_OPP_AMOUNT</column>
-                </chartSummary>
-                <componentType>BarStacked</componentType>
-                <dashboardFilterColumns>
-                    <column>FK_ACC_ADDR1_COUNTRY_CODE</column>
-                </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>FK_OPP_CLOSE_DATE</column>
-                </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>FK_OPP_ROLLUP_DESCRIPTION</column>
-                </dashboardFilterColumns>
-                <decimalPrecision>-1</decimalPrecision>
-                <displayUnits>Auto</displayUnits>
-                <drillEnabled>false</drillEnabled>
-                <drillToDetailEnabled>false</drillToDetailEnabled>
-                <enableHover>false</enableHover>
-                <expandOthers>false</expandOthers>
-                <groupingColumn>FK_ACC_NAME</groupingColumn>
-                <groupingColumn>FK_OPP_CLOSE_DATE</groupingColumn>
-                <groupingSortProperties>
-                    <groupingSorts>
-                        <groupingLevel>g1</groupingLevel>
-                        <sortColumn>s!FK_OPP_AMOUNT</sortColumn>
-                        <sortOrder>d</sortOrder>
-                    </groupingSorts>
-                    <groupingSorts>
-                        <groupingLevel>g2</groupingLevel>
-                        <sortOrder>a</sortOrder>
-                    </groupingSorts>
-                </groupingSortProperties>
-                <header>Current FY by Account</header>
-                <legendPosition>Bottom</legendPosition>
-                <report>APJ_RBM/ISA_Cosell_APJT_Opportunities_81</report>
-                <showPercentage>false</showPercentage>
-                <showValues>false</showValues>
-                <sortBy>RowLabelAscending</sortBy>
-                <sortLegendValues>false</sortLegendValues>
-                <useReportChart>false</useReportChart>
-            </dashboardComponent>
-            <rowIndex>8</rowIndex>
-            <rowSpan>8</rowSpan>
-        </dashboardGridComponents>
-        <dashboardGridComponents>
-            <colSpan>6</colSpan>
-            <columnIndex>6</columnIndex>
-            <dashboardComponent>
-                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
-                <chartAxisRange>Auto</chartAxisRange>
-                <chartSummary>
-                    <aggregate>Sum</aggregate>
-                    <axisBinding>y</axisBinding>
-                    <column>FK_OPP_AMOUNT</column>
-                </chartSummary>
-                <componentType>BarStacked</componentType>
-                <dashboardFilterColumns>
-                    <column>FK_ACC_ADDR1_COUNTRY_CODE</column>
-                </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>FK_OPP_CLOSE_DATE</column>
-                </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>FK_OPP_ROLLUP_DESCRIPTION</column>
-                </dashboardFilterColumns>
-                <decimalPrecision>-1</decimalPrecision>
-                <displayUnits>Auto</displayUnits>
-                <drillEnabled>false</drillEnabled>
-                <drillToDetailEnabled>false</drillToDetailEnabled>
-                <enableHover>false</enableHover>
-                <expandOthers>false</expandOthers>
-                <groupingColumn>FK_OPP_OWNER_NAME</groupingColumn>
-                <groupingColumn>FK_OPP_CLOSE_DATE</groupingColumn>
-                <groupingSortProperties>
-                    <groupingSorts>
-                        <groupingLevel>g1</groupingLevel>
-                        <sortColumn>s!FK_OPP_AMOUNT</sortColumn>
-                        <sortOrder>d</sortOrder>
-                    </groupingSorts>
-                    <groupingSorts>
-                        <groupingLevel>g2</groupingLevel>
-                        <sortOrder>a</sortOrder>
-                    </groupingSorts>
-                </groupingSortProperties>
-                <header>Current FY by Owner</header>
-                <legendPosition>Bottom</legendPosition>
-                <report>APJ_RBM/ISA_Cosell_APJT_Opportunities_9</report>
-                <showPercentage>false</showPercentage>
-                <showValues>false</showValues>
-                <sortBy>RowLabelAscending</sortBy>
-                <sortLegendValues>false</sortLegendValues>
-                <useReportChart>false</useReportChart>
-            </dashboardComponent>
-            <rowIndex>8</rowIndex>
-            <rowSpan>8</rowSpan>
-        </dashboardGridComponents>
-        <dashboardGridComponents>
-            <colSpan>6</colSpan>
-            <columnIndex>0</columnIndex>
-            <dashboardComponent>
-                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
-                <chartAxisRange>Auto</chartAxisRange>
-                <chartSummary>
-                    <aggregate>Sum</aggregate>
-                    <axisBinding>y</axisBinding>
-                    <column>FK_OPP_AMOUNT</column>
-                </chartSummary>
-                <componentType>BarStacked</componentType>
-                <dashboardFilterColumns>
-                    <column>FK_ACC_ADDR1_COUNTRY_CODE</column>
-                </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>FK_OPP_CLOSE_DATE</column>
-                </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>FK_OPP_ROLLUP_DESCRIPTION</column>
-                </dashboardFilterColumns>
-                <decimalPrecision>-1</decimalPrecision>
-                <displayUnits>Auto</displayUnits>
-                <drillEnabled>false</drillEnabled>
-                <drillToDetailEnabled>false</drillToDetailEnabled>
-                <enableHover>false</enableHover>
-                <expandOthers>false</expandOthers>
-                <groupingColumn>FK_ACC_NAME</groupingColumn>
-                <groupingColumn>FK_OPP_STAGE_NAME</groupingColumn>
-                <groupingSortProperties>
-                    <groupingSorts>
-                        <groupingLevel>g1</groupingLevel>
-                        <sortColumn>s!FK_OPP_AMOUNT</sortColumn>
-                        <sortOrder>d</sortOrder>
-                    </groupingSorts>
-                    <groupingSorts>
-                        <groupingLevel>g2</groupingLevel>
-                        <sortOrder>a</sortOrder>
-                    </groupingSorts>
-                </groupingSortProperties>
-                <header>Current FY by Account by Stage</header>
-                <legendPosition>Bottom</legendPosition>
-                <report>APJ_RBM/ISA_Cosell_APJT_Opportunities_2020_21</report>
-                <showPercentage>false</showPercentage>
-                <showValues>false</showValues>
-                <sortBy>RowLabelAscending</sortBy>
-                <sortLegendValues>false</sortLegendValues>
-                <title>(Only Shows Top 100 Accounts)</title>
-                <useReportChart>false</useReportChart>
-            </dashboardComponent>
-            <rowIndex>16</rowIndex>
-            <rowSpan>8</rowSpan>
-        </dashboardGridComponents>
-        <dashboardGridComponents>
-            <colSpan>6</colSpan>
-            <columnIndex>6</columnIndex>
-            <dashboardComponent>
-                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
-                <chartAxisRange>Auto</chartAxisRange>
-                <chartSummary>
-                    <aggregate>Sum</aggregate>
-                    <axisBinding>y</axisBinding>
-                    <column>FK_OPP_AMOUNT</column>
-                </chartSummary>
-                <componentType>BarStacked</componentType>
-                <dashboardFilterColumns>
-                    <column>FK_ACC_ADDR1_COUNTRY_CODE</column>
-                </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>FK_OPP_CLOSE_DATE</column>
-                </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>FK_OPP_ROLLUP_DESCRIPTION</column>
-                </dashboardFilterColumns>
-                <decimalPrecision>-1</decimalPrecision>
-                <displayUnits>Auto</displayUnits>
-                <drillEnabled>false</drillEnabled>
-                <drillToDetailEnabled>false</drillToDetailEnabled>
-                <enableHover>false</enableHover>
-                <expandOthers>false</expandOthers>
-                <groupingColumn>FK_OPP_OWNER_NAME</groupingColumn>
-                <groupingColumn>FK_OPP_STAGE_NAME</groupingColumn>
-                <groupingSortProperties>
-                    <groupingSorts>
-                        <groupingLevel>g1</groupingLevel>
-                        <sortColumn>s!FK_OPP_AMOUNT</sortColumn>
-                        <sortOrder>d</sortOrder>
-                    </groupingSorts>
-                    <groupingSorts>
-                        <groupingLevel>g2</groupingLevel>
-                        <sortOrder>a</sortOrder>
-                    </groupingSorts>
-                </groupingSortProperties>
-                <header>Current FY by Owner by Stage</header>
-                <legendPosition>Bottom</legendPosition>
-                <report>APJ_RBM/ISA_Cosell_APJT_Opportunities_2020_11</report>
-                <showPercentage>false</showPercentage>
-                <showValues>false</showValues>
-                <sortBy>RowLabelAscending</sortBy>
-                <sortLegendValues>false</sortLegendValues>
-                <useReportChart>false</useReportChart>
-            </dashboardComponent>
-            <rowIndex>16</rowIndex>
-            <rowSpan>8</rowSpan>
-        </dashboardGridComponents>
-        <dashboardGridComponents>
-            <colSpan>6</colSpan>
-            <columnIndex>0</columnIndex>
-            <dashboardComponent>
-                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
-                <chartAxisRange>Auto</chartAxisRange>
-                <chartSummary>
-                    <aggregate>Sum</aggregate>
-                    <axisBinding>y</axisBinding>
-                    <column>FK_OPP_AMOUNT</column>
-                </chartSummary>
-                <componentType>BarStacked</componentType>
-                <dashboardFilterColumns>
-                    <column>FK_ACC_ADDR1_COUNTRY_CODE</column>
-                </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>FK_OPP_CLOSE_DATE</column>
-                </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>FK_OPP_ROLLUP_DESCRIPTION</column>
-                </dashboardFilterColumns>
-                <decimalPrecision>-1</decimalPrecision>
-                <displayUnits>Auto</displayUnits>
-                <drillEnabled>false</drillEnabled>
-                <drillToDetailEnabled>false</drillToDetailEnabled>
-                <enableHover>false</enableHover>
-                <expandOthers>false</expandOthers>
-                <groupingColumn>FK_ACC_NAME</groupingColumn>
-                <groupingColumn>Core_Opportunity_Partner__c.Core_Partner__c</groupingColumn>
-                <groupingSortProperties>
-                    <groupingSorts>
-                        <groupingLevel>g1</groupingLevel>
-                        <sortColumn>s!FK_OPP_AMOUNT</sortColumn>
-                        <sortOrder>d</sortOrder>
-                    </groupingSorts>
-                    <groupingSorts>
-                        <groupingLevel>g2</groupingLevel>
-                        <sortColumn>s!FK_OPP_AMOUNT</sortColumn>
-                        <sortOrder>d</sortOrder>
-                    </groupingSorts>
-                </groupingSortProperties>
-                <header>Current FY by Account by Partner</header>
-                <legendPosition>Right</legendPosition>
-                <report>APJ_RBM/ISA_Cosell_APJT_Opportunities_6</report>
-                <showPercentage>false</showPercentage>
-                <showValues>false</showValues>
-                <sortBy>RowLabelAscending</sortBy>
-                <sortLegendValues>false</sortLegendValues>
-                <useReportChart>false</useReportChart>
-            </dashboardComponent>
-            <rowIndex>24</rowIndex>
-            <rowSpan>8</rowSpan>
-        </dashboardGridComponents>
-        <dashboardGridComponents>
-            <colSpan>6</colSpan>
-            <columnIndex>6</columnIndex>
-            <dashboardComponent>
-                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
-                <chartAxisRange>Auto</chartAxisRange>
-                <chartSummary>
-                    <aggregate>Sum</aggregate>
-                    <axisBinding>y</axisBinding>
-                    <column>FK_OPP_AMOUNT</column>
-                </chartSummary>
-                <componentType>BarStacked</componentType>
-                <dashboardFilterColumns>
-                    <column>FK_ACC_ADDR1_COUNTRY_CODE</column>
-                </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>FK_OPP_CLOSE_DATE</column>
-                </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>FK_OPP_ROLLUP_DESCRIPTION</column>
-                </dashboardFilterColumns>
-                <decimalPrecision>-1</decimalPrecision>
-                <displayUnits>Auto</displayUnits>
-                <drillEnabled>false</drillEnabled>
-                <drillToDetailEnabled>false</drillToDetailEnabled>
-                <enableHover>false</enableHover>
-                <expandOthers>false</expandOthers>
-                <groupingColumn>FK_OPP_OWNER_NAME</groupingColumn>
-                <groupingColumn>Core_Opportunity_Partner__c.Core_Partner__c</groupingColumn>
-                <groupingSortProperties>
-                    <groupingSorts>
-                        <groupingLevel>g1</groupingLevel>
-                        <sortColumn>s!FK_OPP_AMOUNT</sortColumn>
-                        <sortOrder>d</sortOrder>
-                    </groupingSorts>
-                    <groupingSorts>
-                        <groupingLevel>g2</groupingLevel>
-                        <sortOrder>a</sortOrder>
-                    </groupingSorts>
-                </groupingSortProperties>
-                <header>Current FY by Owner by Partner</header>
-                <legendPosition>Right</legendPosition>
-                <report>APJ_RBM/ISA_Cosell_APJT_Opportunities_6</report>
-                <showPercentage>false</showPercentage>
-                <showValues>false</showValues>
-                <sortBy>RowLabelAscending</sortBy>
-                <sortLegendValues>false</sortLegendValues>
-                <useReportChart>false</useReportChart>
-            </dashboardComponent>
-            <rowIndex>24</rowIndex>
-            <rowSpan>8</rowSpan>
-        </dashboardGridComponents>
-        <dashboardGridComponents>
-            <colSpan>6</colSpan>
-            <columnIndex>0</columnIndex>
-            <dashboardComponent>
-                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
-                <chartAxisRange>Auto</chartAxisRange>
-                <chartSummary>
-                    <aggregate>Sum</aggregate>
-                    <axisBinding>y</axisBinding>
-                    <column>FK_OPP_AMOUNT</column>
-                </chartSummary>
-                <componentType>BarStacked</componentType>
-                <dashboardFilterColumns>
-                    <column>FK_ACC_ADDR1_COUNTRY_CODE</column>
-                </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>FK_OPP_CLOSE_DATE</column>
-                </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>FK_OPP_ROLLUP_DESCRIPTION</column>
-                </dashboardFilterColumns>
-                <decimalPrecision>-1</decimalPrecision>
-                <displayUnits>Auto</displayUnits>
-                <drillEnabled>false</drillEnabled>
-                <drillToDetailEnabled>false</drillToDetailEnabled>
-                <enableHover>false</enableHover>
-                <expandOthers>false</expandOthers>
-                <groupingColumn>FK_OPP_CLOSE_DATE</groupingColumn>
-                <groupingColumn>FK_OPP_OWNER_NAME</groupingColumn>
                 <groupingSortProperties>
                     <groupingSorts>
                         <groupingLevel>g1</groupingLevel>
@@ -587,7 +735,7 @@
                         <sortOrder>d</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>2017+ Win by Owner</header>
+                <header>2017-2020 Win by Country</header>
                 <legendPosition>Right</legendPosition>
                 <report>APJ_RBM/ISA_Cosell_APJT_Opportunities_2020_31</report>
                 <showPercentage>false</showPercentage>
@@ -626,13 +774,12 @@
                 <drillToDetailEnabled>false</drillToDetailEnabled>
                 <enableHover>false</enableHover>
                 <expandOthers>false</expandOthers>
+                <groupingColumn>FK_OPP_CLOSE_DATE</groupingColumn>
                 <groupingColumn>FK_OPP_OWNER_NAME</groupingColumn>
-                <groupingColumn>FK_ACC_NAME</groupingColumn>
                 <groupingSortProperties>
                     <groupingSorts>
                         <groupingLevel>g1</groupingLevel>
-                        <sortColumn>s!FK_OPP_AMOUNT</sortColumn>
-                        <sortOrder>d</sortOrder>
+                        <sortOrder>a</sortOrder>
                     </groupingSorts>
                     <groupingSorts>
                         <groupingLevel>g2</groupingLevel>
@@ -640,14 +787,13 @@
                         <sortOrder>d</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>Current FY by Owner by Account</header>
+                <header>2017-2020 Win by Owner</header>
                 <legendPosition>Right</legendPosition>
-                <report>APJ_RBM/ISA_Cosell_APJT_Opportunities_2020_32</report>
+                <report>APJ_RBM/ISA_Cosell_APJT_Opportunities_2020_31</report>
                 <showPercentage>false</showPercentage>
                 <showValues>false</showValues>
                 <sortBy>RowLabelAscending</sortBy>
                 <sortLegendValues>false</sortLegendValues>
-                <title>(Only Shows Top 100 Accounts)</title>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
             <rowIndex>32</rowIndex>
@@ -681,7 +827,7 @@
                 <enableHover>false</enableHover>
                 <expandOthers>false</expandOthers>
                 <groupingColumn>FK_OPP_CLOSE_DATE</groupingColumn>
-                <groupingColumn>FK_OPP_OWNER_NAME</groupingColumn>
+                <groupingColumn>FK_ACC_ADDR1_COUNTRY_CODE</groupingColumn>
                 <groupingSortProperties>
                     <groupingSorts>
                         <groupingLevel>g1</groupingLevel>
@@ -693,7 +839,7 @@
                         <sortOrder>d</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>2017+ Production Win by Owner</header>
+                <header>2017-2020 Production Win by Country</header>
                 <legendPosition>Right</legendPosition>
                 <report>APJ_RBM/ISA_Cosell_APJT_2017_2020_Production_W</report>
                 <showPercentage>false</showPercentage>
@@ -745,7 +891,59 @@
                         <sortOrder>d</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>2017+ Production Lost/Cancelled by Owner</header>
+                <header>2017-2020 Production Win by Owner</header>
+                <legendPosition>Right</legendPosition>
+                <report>APJ_RBM/ISA_Cosell_APJT_2017_2020_Production_W</report>
+                <showPercentage>false</showPercentage>
+                <showValues>false</showValues>
+                <sortBy>RowLabelAscending</sortBy>
+                <sortLegendValues>false</sortLegendValues>
+                <useReportChart>false</useReportChart>
+            </dashboardComponent>
+            <rowIndex>40</rowIndex>
+            <rowSpan>8</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>6</colSpan>
+            <columnIndex>0</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <chartAxisRange>Auto</chartAxisRange>
+                <chartSummary>
+                    <aggregate>Sum</aggregate>
+                    <axisBinding>y</axisBinding>
+                    <column>FK_OPP_AMOUNT</column>
+                </chartSummary>
+                <componentType>BarStacked</componentType>
+                <dashboardFilterColumns>
+                    <column>FK_ACC_ADDR1_COUNTRY_CODE</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>FK_OPP_CLOSE_DATE</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>FK_OPP_ROLLUP_DESCRIPTION</column>
+                </dashboardFilterColumns>
+                <decimalPrecision>-1</decimalPrecision>
+                <displayUnits>Auto</displayUnits>
+                <drillEnabled>false</drillEnabled>
+                <drillToDetailEnabled>false</drillToDetailEnabled>
+                <enableHover>false</enableHover>
+                <expandOthers>false</expandOthers>
+                <groupingColumn>FK_OPP_CLOSE_DATE</groupingColumn>
+                <groupingColumn>FK_ACC_ADDR1_COUNTRY_CODE</groupingColumn>
+                <groupingSortProperties>
+                    <groupingSorts>
+                        <groupingLevel>g1</groupingLevel>
+                        <sortOrder>a</sortOrder>
+                    </groupingSorts>
+                    <groupingSorts>
+                        <groupingLevel>g2</groupingLevel>
+                        <sortColumn>s!FK_OPP_AMOUNT</sortColumn>
+                        <sortOrder>d</sortOrder>
+                    </groupingSorts>
+                </groupingSortProperties>
+                <header>2017-2020 Production Lost/Cancelled by Country</header>
                 <legendPosition>Right</legendPosition>
                 <report>APJ_RBM/ISA_Cosell_APJT_17_20_Production_L_C</report>
                 <showPercentage>false</showPercentage>
@@ -754,7 +952,59 @@
                 <sortLegendValues>false</sortLegendValues>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>40</rowIndex>
+            <rowIndex>48</rowIndex>
+            <rowSpan>8</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>6</colSpan>
+            <columnIndex>6</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <chartAxisRange>Auto</chartAxisRange>
+                <chartSummary>
+                    <aggregate>Sum</aggregate>
+                    <axisBinding>y</axisBinding>
+                    <column>FK_OPP_AMOUNT</column>
+                </chartSummary>
+                <componentType>BarStacked</componentType>
+                <dashboardFilterColumns>
+                    <column>FK_ACC_ADDR1_COUNTRY_CODE</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>FK_OPP_CLOSE_DATE</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>FK_OPP_ROLLUP_DESCRIPTION</column>
+                </dashboardFilterColumns>
+                <decimalPrecision>-1</decimalPrecision>
+                <displayUnits>Auto</displayUnits>
+                <drillEnabled>false</drillEnabled>
+                <drillToDetailEnabled>false</drillToDetailEnabled>
+                <enableHover>false</enableHover>
+                <expandOthers>false</expandOthers>
+                <groupingColumn>FK_OPP_CLOSE_DATE</groupingColumn>
+                <groupingColumn>FK_OPP_OWNER_NAME</groupingColumn>
+                <groupingSortProperties>
+                    <groupingSorts>
+                        <groupingLevel>g1</groupingLevel>
+                        <sortOrder>a</sortOrder>
+                    </groupingSorts>
+                    <groupingSorts>
+                        <groupingLevel>g2</groupingLevel>
+                        <sortColumn>s!FK_OPP_AMOUNT</sortColumn>
+                        <sortOrder>d</sortOrder>
+                    </groupingSorts>
+                </groupingSortProperties>
+                <header>2017-2020 Production Lost/Cancelled by Owner</header>
+                <legendPosition>Right</legendPosition>
+                <report>APJ_RBM/ISA_Cosell_APJT_17_20_Production_L_C</report>
+                <showPercentage>false</showPercentage>
+                <showValues>false</showValues>
+                <sortBy>RowLabelAscending</sortBy>
+                <sortLegendValues>false</sortLegendValues>
+                <useReportChart>false</useReportChart>
+            </dashboardComponent>
+            <rowIndex>48</rowIndex>
             <rowSpan>8</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
@@ -830,10 +1080,10 @@
                     <useReportTableSetting>false</useReportTableSetting>
                 </flexComponentProperties>
                 <groupingSortProperties/>
-                <header>2017+ ISA Cosell APJT Opportunities</header>
+                <header>ISA Cosell APJT Opportunities</header>
                 <report>APJ_RBM/ISA_Cosell_APJT_Opportunities_2020_31</report>
             </dashboardComponent>
-            <rowIndex>48</rowIndex>
+            <rowIndex>56</rowIndex>
             <rowSpan>11</rowSpan>
         </dashboardGridComponents>
         <numberOfColumns>12</numberOfColumns>
@@ -842,9 +1092,9 @@
     <dashboardType>SpecifiedUser</dashboardType>
     <isGridLayout>true</isGridLayout>
     <owner>11568039@intel.com.crm</owner>
-    <runningUser>10689819@intel.com.crm</runningUser>
+    <runningUser>11568039@intel.com.crm</runningUser>
     <textColor>#000000</textColor>
-    <title>💵 APJT IOTG ISA Co-sell Dashboard (Account &amp; Owner)</title>
+    <title>💵 APJT ISA Co-sell Dashboard</title>
     <titleColor>#000000</titleColor>
     <titleSize>12</titleSize>
 </Dashboard>

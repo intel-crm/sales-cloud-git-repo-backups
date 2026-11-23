@@ -1,17 +1,13 @@
 ({
 
   handleClick: function(component, event, helper) {
-    
+    console.log('Submit clicked!!!');
     var href = component.get('v.href');
-     
     var openInNewTab = component.get('v.openInNewTab');
     var communityLink = component.get('v.communityLink');
-     
     var previewMode = component.get('v.appState.Settings.previewMode');
-	
+
     var onclick = component.get('v.onclick');
-      
-      
     if (previewMode) {
         
       	event.preventDefault();

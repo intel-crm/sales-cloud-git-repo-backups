@@ -30,7 +30,10 @@ public class UCD_ACM_BusinessOrganizationTest {
         // Create Account Business Type
         Account_Business_Types__c accountBusinessType = UCD_ACM_Cntrlr_TestDataInitialization.createAccountBusinessType(acc.Id,businessType.Id);
         insert accountBusinessType;
-        
+
+        // Create Compliance Watch List
+        Core_Account_Compliance_Watch_List__c complianceWatchList = UCD_ACM_Cntrlr_TestDataInitialization.createComplianceWatchList(acc.Id,'NOTRDOUT');
+        insert complianceWatchList;
         }
         
         
@@ -72,7 +75,7 @@ public class UCD_ACM_BusinessOrganizationTest {
         UCD_ACM_BusinessOrganizationModel requestModel = createBusinessOrganizationModel();
         Test.startTest();
         UCD_ACM_BusinessOrganizationModel.BusinessOrganizationResponse resData = UCD_ACM_BusinessOrganization.businessOrganization(requestModel);
-        //system.assertEquals(resData.Data[0].AccountInformation.AccountName, 'TestReadAPI');
+        system.assertEquals(resData.Data[0].AccountInformation.AccountName, 'TestReadAPI');
         Test.stopTest();
     }
     
@@ -88,7 +91,7 @@ public class UCD_ACM_BusinessOrganizationTest {
         RestContext.request = request;
         Test.startTest();
         UCD_ACM_BusinessOrganizationModel.BusinessOrganizationResponse resData = UCD_ACM_BusinessOrganization.selectBusinessOrganization();
-        //system.assertEquals(resData.Data[0].AccountInformation.AccountName, 'TestReadAPI');
+        system.assertEquals(resData.Data[0].AccountInformation.AccountName, 'TestReadAPI');
     	Test.stopTest();
     }
     

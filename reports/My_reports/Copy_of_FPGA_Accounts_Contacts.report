@@ -42,6 +42,13 @@
                 <value>FPGA Designer</value>
             </criteriaItems>
             <criteriaItems>
+                <column>Account.Contacts$Core_IPA_Partner_Role__c</column>
+                <columnToColumn>false</columnToColumn>
+                <isUnlocked>true</isUnlocked>
+                <operator>includes</operator>
+                <value>FPGA Designer</value>
+            </criteriaItems>
+            <criteriaItems>
                 <column>Account.Contacts.Account_Contact_Relationships__r$PRM_Relationship_Id__c</column>
                 <columnToColumn>false</columnToColumn>
                 <isUnlocked>true</isUnlocked>
@@ -61,6 +68,10 @@
         <showSubTotals>true</showSubTotals>
         <sortColumn>Account$BillingAddress</sortColumn>
         <sortOrder>Asc</sortOrder>
+        <timeFrameFilter>
+            <dateColumn>Account$PRM_IPA_Badge_Tier_Date__c</dateColumn>
+            <interval>INTERVAL_CUSTOM</interval>
+        </timeFrameFilter>
     </block>
     <block>
         <blockInfo>

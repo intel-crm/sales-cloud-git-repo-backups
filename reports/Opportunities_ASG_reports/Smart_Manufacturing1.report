@@ -71,7 +71,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Industrial Gateways,Industrial - Other,Industrial PCs,Industrial Ruggedized Servers,M2M</value>
+            <value>Industrial - Other,M2M</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -110,6 +110,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

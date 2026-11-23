@@ -1,5 +1,5 @@
 ({
-	doInit : function(component, event, helper) {
+	/*doInit : function(component, event, helper) {
         component.set("v.Spinner",true);
         console.log('I am in do Init');
         var action= component.get("c.UpdateOwnertoClaimedOwner");
@@ -20,5 +20,5 @@
     },
   cancelPopup : function(component, event, helper) {
         $A.get("e.force:closeQuickAction").fire();
-    },
+    },*/
 })

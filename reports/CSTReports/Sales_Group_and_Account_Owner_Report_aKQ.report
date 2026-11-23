@@ -24,20 +24,7 @@
     <columns>
         <field>SPM_Account_Feedback__c$Account_ID__c.SF_Account__c.Owner</field>
     </columns>
-    <columns>
-        <field>SPM_Account_Feedback__c$New_Account_Owner__c</field>
-    </columns>
     <description>Displays all account feedback with sales group and account owners</description>
-    <filter>
-        <criteriaItems>
-            <column>SPM_Account_Feedback__c$CRM_CST_Is_Active_Planning_Period__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>1</value>
-        </criteriaItems>
-        <language>en_US</language>
-    </filter>
     <format>Tabular</format>
     <name>Sales Group and Account Owner Report</name>
     <params>
@@ -51,6 +38,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>SPM_Account_Feedback__c$CreatedDate</dateColumn>
+        <endDate>2026-11-23</endDate>
         <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

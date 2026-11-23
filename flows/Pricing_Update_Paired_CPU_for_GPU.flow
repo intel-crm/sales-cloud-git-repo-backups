@@ -3,8 +3,8 @@
     <actionCalls>
         <name>Update_Paired_CPU_GPU</name>
         <label>Update Paired CPU GPU</label>
-        <locationX>373</locationX>
-        <locationY>629</locationY>
+        <locationX>272</locationX>
+        <locationY>626</locationY>
         <actionName>Pricing_QuoteLineController</actionName>
         <actionType>apex</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -22,8 +22,8 @@
     <decisions>
         <name>Is_not_Null</name>
         <label>Is not Null?</label>
-        <locationX>114</locationX>
-        <locationY>509</locationY>
+        <locationX>77</locationX>
+        <locationY>574</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Is_Null</name>
@@ -44,14 +44,21 @@
     <decisions>
         <name>On_Field_Update</name>
         <label>On Field Update</label>
-        <locationX>775</locationX>
-        <locationY>409</locationY>
+        <locationX>636</locationX>
+        <locationY>439</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Is_field_Update</name>
-            <conditionLogic>and</conditionLogic>
+            <conditionLogic>or</conditionLogic>
             <conditions>
                 <leftValueReference>$Record.Pricing_Paired_CPU_Nm__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.SBQQ__Product__c</leftValueReference>
                 <operator>IsChanged</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
@@ -84,6 +91,11 @@
         <dataType>Boolean</dataType>
         <expression>ISNEW()</expression>
     </formulas>
+    <formulas>
+        <name>pairedCPUNameFormula</name>
+        <dataType>String</dataType>
+        <expression>{!$Record.Pricing_Paired_CPU_Nm__r.Name}</expression>
+    </formulas>
     <interviewLabel>Pricing Update Paired CPU for GPU {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Pricing Update Paired CPU for GPU</label>
     <processMetadataValues>
@@ -108,8 +120,8 @@
     <recordLookups>
         <name>Get_QuoteLine_Records</name>
         <label>Get QuoteLine Records</label>
-        <locationX>180</locationX>
-        <locationY>298</locationY>
+        <locationX>85</locationX>
+        <locationY>366</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Is_not_Null</targetReference>
@@ -132,12 +144,12 @@
         <sortOrder>Asc</sortOrder>
     </recordLookups>
     <start>
-        <locationX>356</locationX>
-        <locationY>0</locationY>
+        <locationX>330</locationX>
+        <locationY>48</locationY>
         <connector>
             <targetReference>On_Field_Update</targetReference>
         </connector>
-        <filterLogic>and</filterLogic>
+        <filterLogic>or</filterLogic>
         <filters>
             <field>Pricing_Program_Type_Nm__c</field>
             <operator>EqualTo</operator>
@@ -145,11 +157,18 @@
                 <stringValue>Data Center GPU</stringValue>
             </value>
         </filters>
+        <filters>
+            <field>Pricing_Program_Type_Nm__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Data Center Xeon® CPU</stringValue>
+            </value>
+        </filters>
         <object>SBQQ__QuoteLine__c</object>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Obsolete</status>
+    <status>Active</status>
     <variables>
         <name>lstquoteLines</name>
         <dataType>SObject</dataType>
@@ -157,5 +176,15 @@
         <isInput>true</isInput>
         <isOutput>true</isOutput>
         <objectType>SBQQ__QuoteLine__c</objectType>
+    </variables>
+    <variables>
+        <name>pairedCPUName</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <value>
+            <elementReference>pairedCPUNameFormula</elementReference>
+        </value>
     </variables>
 </Flow>

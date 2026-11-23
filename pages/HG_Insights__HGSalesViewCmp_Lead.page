@@ -1,0 +1,4 @@
+<apex:page showHeader="false" standardStylesheets="false" sidebar="false" applyHtmlTag="false" applyBodyTag="false" docType="html-5.0"
+           standardController="Lead" extensions="HG_Insights.HGSalesView_vfController">
+    <c:HGSalesViewCmp recordIdParam="{!HTMLENCODE(recordId)}"/>
+</apex:page>

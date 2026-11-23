@@ -126,7 +126,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>SOC,SOC-ATOM,SysOnChp-ATOM,Cascade Lake,Axxia</value>
+            <value>SOC,SOC-ATOM,Cascade Lake,Axxia</value>
         </criteriaItems>
         <criteriaItems>
             <column>Product2.Core_Code_Name__c</column>
@@ -198,13 +198,11 @@
     </params>
     <reportType>OpportunityProduct</reportType>
     <scope>organization</scope>
-    <showDetails>true</showDetails>
+    <showDetails>false</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2020-12-31</endDate>
-        <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2020-01-01</startDate>
+        <interval>INTERVAL_CURY</interval>
     </timeFrameFilter>
 </Report>

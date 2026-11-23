@@ -27,15 +27,15 @@ public class Core_MDF_BudgetCapSharingFlow_Test {
         
         System.runAs(usr1){
             // Creating channel program with utility class
-            ChannelProgram cp = Core_MDF_CCP_TestDataUtility.createProgram ('Datacenter','Data Center CoMarketing Fund', true);
+            ChannelProgram cp = Core_MDF_CCP_TestDataUtility.createProgram ('Data Center Co-marketing Fund','Data Center CoMarketing Fund', true);
             
             // Creating IntelAccount with utility class
             Account intAcc = Core_MDF_CCP_TestDataUtility.createIntelAccount ('Test Account 1', 
-                                                                              Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type,true);
-            /*intAcc.Core_Account_Type__c = 'Reseller';
+                                                                              Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type,false);
+            intAcc.Core_Account_Type__c = 'Reseller';
             intAcc.Core_Sales_Groups__c = 'Automotive Sales Group';
             intAcc.Industry = 'Food & Beverage';
-            Database.insert(intAcc);*/
+            Database.insert(intAcc);
             
             // Creating Co-marketing Account with utility class
             Account dcfAcc = Core_MDF_CCP_TestDataUtility.createAccount ('Co-marketing DCF Test Account', 
@@ -115,32 +115,14 @@ public class Core_MDF_BudgetCapSharingFlow_Test {
             
             List<Core_MDF_Partner_Group_Mapping__c> pgmList = new List<Core_MDF_Partner_Group_Mapping__c>();
             pgmList.add(pgm);
-            //pgmList.add(pgm1);
+            pgmList.add(pgm1);
             
             Database.insert(pgmList);
-            
-            List<String> bypassFunctionKeys = new List<String>();
-            bypassFunctionKeys.add('Bypass_Duplicate_Budget_Check');
-            bypassFunctionKeys.add('Bypass_MDF_Budget_Access_Validation');
-            bypassFunctionKeys.add('Bypass_MDF_Budget_Status_Validation');
-            bypassFunctionKeys.add('Bypass_MDF_Budget_Access');
-            bypassFunctionKeys.add('Bypass_GeoBased_Budget_Sharing');
-            bypassFunctionKeys.add('Bypass_Allocation_Reservation');
-            bypassFunctionKeys.add('Bypass_GeoBased_Allocation_Sharing');
-            
-            Set<String> myset1 = new Set<String>();
-            List<String> result1 = new List<String>();
-            myset1.addAll(bypassFunctionKeys);
-            result1.addAll(myset1);
-            
-			List<Core_Trigger_Executions__c> bypassfunctinalitylist1 = Core_MDF_CCP_TestDataUtility.byPassFeature(result1,true,true);            
             
             // Creating Budget using utility class
             PartnerMarketingBudget pmb = Core_MDF_CCP_TestDataUtility.createBudget('Test Budget',Core_MDF_CCP_TestDataUtility.budget_Record_Type,
                                                                                    dcfAcc.Id,cp.Id,5000000,System.today(),System.today().addDays(110), 
-                                                                                   false);
-            pmb.Core_MDF_Budget_Type_Txt__c='OEM CMP';
-            Database.insert(pmb);
+                                                                                   true);
             pmb.Core_MDF_Budget_Status__c = 'Released';
             Database.update(pmb);
             

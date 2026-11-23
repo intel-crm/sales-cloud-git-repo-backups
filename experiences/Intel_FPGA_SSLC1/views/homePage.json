@@ -12,7 +12,7 @@
     "components" : [ {
       "componentAttributes" : { },
       "componentName" : "c:sales_SSLCHomePageHeading",
-      "id" : "13545bb2-b587-45b8-b7ce-613728911be8",
+      "id" : "71f5aa21-9915-4e25-b771-62bdb42ef1fa",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
@@ -24,7 +24,7 @@
     "components" : [ {
       "componentAttributes" : { },
       "componentName" : "c:sales_SSLCHomePageGIF",
-      "id" : "f1b5e987-5b0a-4494-a52c-9f71e0c3f2ad",
+      "id" : "32b3ef59-3b23-4c0b-953b-f989197f72e9",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
@@ -52,6 +52,7 @@
         "id" : "f66d3a45-78e6-45b0-891f-ed0b25be20cc",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "市场推广基金",
             "description" : "市场推广基金",
             "title" : "Home"
           }
@@ -62,6 +63,18 @@
     } ],
     "id" : "1ed28e21-e532-40ea-a02a-42ca2303d785",
     "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:test_cmp",
+      "id" : "08d3eb37-295b-419c-a61d-b8a749d8d88b",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "e50c2ff4-418d-4c8c-acaf-da15f8be37bf",
+    "regionName" : "sidebarAlt",
     "type" : "region"
   } ],
   "themeLayoutType" : "Inner",

@@ -1,8 +1,8 @@
 /* eslint-disable no-console */
-import { LightningElement } from 'lwc';
-//import getProductList from '@salesforce/apex/Sales_CreateLicenseController.getProductList';
-//import getFaeUser from '@salesforce/apex/Sales_CreateLicenseController.getFaeUser';//added my me
-/*import { ShowToastEvent } from 'lightning/platformShowToastEvent';
+import { LightningElement,wire,api,track } from 'lwc';
+import getProductList from '@salesforce/apex/Sales_CreateLicenseController.getProductList';
+import getFaeUser from '@salesforce/apex/Sales_CreateLicenseController.getFaeUser';//added my me
+import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import createLic from '@salesforce/apex/Sales_CreateLicenseProvider.createLic';
 import ProductNotSelcted from '@salesforce/label/c.ProductNotSelcted';
 import ProductNotSelctedBeforeEditing from '@salesforce/label/c.ProductNotSelctedBeforeEditing';
@@ -19,7 +19,7 @@ import Sales_ofseat from '@salesforce/label/c.Sales_ofseat';
 import Sales_Maitenance_Exp from '@salesforce/label/c.Sales_Maitenance_Exp';
 import Sales_License_Expiration from '@salesforce/label/c.Sales_License_Expiration';
 import Sales_Product from '@salesforce/label/c.Sales_Product';
-import { NavigationMixin } from 'lightning/navigation';*/
+import { NavigationMixin } from 'lightning/navigation';
 /********************************************
 Component Name    : Sales_CreateLicense
 Created Date  : Jun 2021
@@ -30,7 +30,7 @@ Developer                 		Date                    Description
 ananga.mohan.sen@accenture.com  21/06/2021				 US981428
 ************************************************************/
 
-/*const columns=[
+const columns=[
     { label: Sales_Product, fieldName: 'prodName' },
     { label: Sales_ofseat, fieldName: 'noSeats', editable: true,
     cellAttributes: {
@@ -38,9 +38,9 @@ ananga.mohan.sen@accenture.com  21/06/2021				 US981428
 	} },
     { label: Sales_Maitenance_Exp, fieldName: 'maintenenceExp' },
     { label: Sales_License_Expiration, fieldName: 'licExp'},
-];*/
-export default class Sales_CreateLicense extends LightningElement {
-    /*@track buttonClicked=false;
+];
+export default class Sales_CreateLicense extends NavigationMixin(LightningElement) {
+  
     isload =false;
     isfaeuser=false;
     termandcondition=false;
@@ -116,7 +116,7 @@ export default class Sales_CreateLicense extends LightningElement {
         ananga.mohan.sen@accenture.com  21/06/2021				 US981428
     ************************************************************/
 
-    /*@wire(getProductList,{licenseType:'$licenseType'})
+    @wire(getProductList,{licenseType:'$licenseType'})
     getProductList({ error, data }) {
         if (data) {
             this.result = data;
@@ -139,14 +139,14 @@ export default class Sales_CreateLicense extends LightningElement {
            
         }
       
-    }*/
+    }
      /********************************************
         Function      : handle the selected row data
         Modification Log :
         Developer                 		Date                    Description
         ananga.mohan.sen@accenture.com  21/06/2021				 US981428
     ************************************************************/
-    /*getSelectedRow(event){
+    getSelectedRow(event){
         this.selectedRows = event.detail.selectedRows; 
         this.tandCDescription=this.selectedRows[0].TandC;
         console.log('selectedRows>>'+JSON.stringify(this.selectedRows));
@@ -175,9 +175,7 @@ export default class Sales_CreateLicense extends LightningElement {
         Developer                 		Date                    Description
         ananga.mohan.sen@accenture.com  21/06/2021				 US981428
     ************************************************************/
-    /*handleClick(){
-        this.buttonClicked=true;
-        console.log('button'+this.buttonClicked);
+    handleClick(){
         console.log('handleclick  string>>'+JSON.stringify(this.selectedProd));
         console.log('this.errorProd>>'+this.errorProd);
         let reqString=JSON.stringify(this.selectedProd);
@@ -194,17 +192,15 @@ export default class Sales_CreateLicense extends LightningElement {
             else{
                 this.message=this.label.ProductNotSelcted;
             }
-            this.buttonClicked=false;
+            
             this.variant='error';
             this.showErrorToast();
-           
         }
         if(this.selectedProd[0].noSeats===undefined || this.selectedProd[0].noSeats===''){
             console.log('No item has selected>>>>');
             this.mode='dismissible';
             this.title='Error';
             this.message=this.label.NoSeatsBlank;
-            this.buttonClicked=false;
             this.variant='error';
             this.showErrorToast();
         }
@@ -213,12 +209,10 @@ export default class Sales_CreateLicense extends LightningElement {
             this.mode='dismissible';
             this.title='Error';
             this.message=this.label.T_C;
-            this.buttonClicked=false;
             this.variant='error';
             this.showErrorToast();
         }
         else{
-            this.buttonClicked=true;
         createLic({json:reqString})
         
             .then(result =>{
@@ -247,7 +241,7 @@ export default class Sales_CreateLicense extends LightningElement {
         Developer                 		Date                    Description
         ananga.mohan.sen@accenture.com  21/06/2021				 US981428
     ************************************************************/
-    /*handleNoSeatsEdit(event){
+    handleNoSeatsEdit(event){
         console.log('select row val>>'+JSON.stringify(this.selectedRows[0]));
         if(this.selectedRows[0]===undefined){
             //throw error if row not selcted but #seats edited
@@ -333,7 +327,7 @@ export default class Sales_CreateLicense extends LightningElement {
         Developer                 		Date                    Description
         ananga.mohan.sen@accenture.com  21/06/2021				 US981428
     ************************************************************/
-    /*handleTandC(event){
+    handleTandC(event){
                 if (event.target.checked)
                  {
                      this.termsAccepted=true;
@@ -348,7 +342,7 @@ export default class Sales_CreateLicense extends LightningElement {
         Developer                 		Date                    Description
         ananga.mohan.sen@accenture.com  21/06/2021				 US981428
     ************************************************************/
-    /*showErrorToast() {
+    showErrorToast() {
         const evt = new ShowToastEvent({
             mode:this.mode,
             title: this.title,
@@ -358,7 +352,7 @@ export default class Sales_CreateLicense extends LightningElement {
         });
         this.dispatchEvent(evt);
     }
-    /*checkFaeUser(){
+    checkFaeUser(){
             getFaeUser()
                 .then((result) => {
                     console.log("isFae",+result);
@@ -372,7 +366,7 @@ export default class Sales_CreateLicense extends LightningElement {
                     this.isfaeuser=true;
                  }
             });
-        }*/
+        }
    
        
 }

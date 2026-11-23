@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>CMIT Solutions of Boise Partner User</description>
+    <description>CMIT Solutions Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>CMIT Solutions of Boise Partner User</name>
+    <name>CMIT Solutions Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>CMITSolutionsPartnerManager</parentRole>
 </Role>

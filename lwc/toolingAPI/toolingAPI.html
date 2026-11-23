@@ -1,0 +1,63 @@
+<!-- Sidebar and Main Content Template -->
+<template>
+	<!-- Sidebar -->
+	<div class="sidebar slds-split-view_container slds-is-closed close-panel" data-my-id="leftPanel"
+		style="float: left">
+
+		<!-- Sidebar Toggle Button -->
+		<lightning-button-icon onclick={togglePanel} variant="bare" icon-name="utility:left"
+			class="slds-button slds-button_icon slds-button_icon slds-split-view__toggle-button sidebar-button"
+			aria-controls="split-view-id" aria-expanded="true">
+		</lightning-button-icon>
+
+		<!-- Sidebar Content -->
+		<article aria-hidden="false" id="split-view-id" class="slds-split-view slds-grid slds-grid_vertical slds-grow"
+			style="padding-right: 15px">
+
+			<!-- Vertical Navigation Menu -->
+			<lightning-vertical-navigation selected-item={selectedNav} onselect={handleSelect}>
+
+				<!-- Utility Options Section -->
+				<lightning-vertical-navigation-section label="Utility Options">
+
+					<!-- Unused Attributes Navigation Item -->
+					<lightning-vertical-navigation-item-icon label="Unused Attributes" name="Unused Attributes"
+						icon-name="utility:muted">
+					</lightning-vertical-navigation-item-icon>
+
+					<!-- Data Export Navigation Item -->
+					<lightning-vertical-navigation-item-icon label="Data Export" name="Data Export"
+						icon-name="utility:download">
+					</lightning-vertical-navigation-item-icon>
+
+					<!-- Check Custom Label Usage Navigation Item -->
+					<lightning-vertical-navigation-item-icon label="Check Custom Label Usage"
+						name="Check Custom Label Usage" icon-name="utility:record_lookup">
+					</lightning-vertical-navigation-item-icon>
+
+				</lightning-vertical-navigation-section>
+
+			</lightning-vertical-navigation>
+		</article>
+	</div>
+
+	<!-- Main Content Section -->
+	<div style="float:right;padding-left:10px;" data-my-id="rightPanel" class="expand-panel">
+
+		<!-- Main Right Body Section - Lightning Card -->
+		<lightning-card title={selectedNav} icon-name="standard:account" class="slds-m-bottom_small">
+
+			<!-- Show Unused Attributes Component if selectedNav is "Unused Attributes" -->
+			<template if:true={unsedAttrTrue}>
+				<c-unused-attributes></c-unused-attributes>
+			</template>
+
+			<!-- Show Data Export Component if selectedNav is "Data Export" -->
+			<template if:true={exportEnabled}>
+				<c-bulk-export></c-bulk-export>
+			</template>
+
+		</lightning-card>
+	</div>
+</template>
+<!-- </template> -->

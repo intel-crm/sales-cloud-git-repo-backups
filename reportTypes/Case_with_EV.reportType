@@ -702,7 +702,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_IPS_Case_Owner__c</field>
+            <field>Core_MDF_Strategic_Marketing_Fund_Ind__c</field>
             <table>Case</table>
         </columns>
         <masterLabel>Cases</masterLabel>

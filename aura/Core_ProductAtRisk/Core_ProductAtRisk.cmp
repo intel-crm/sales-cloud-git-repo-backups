@@ -1,0 +1,87 @@
+<aura:component controller="Core_ProductAtRisk_Ctrl" implements="force:appHostable,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" access="global" >
+	
+    <aura:attribute name="loaded" type="Boolean" default="false" />
+    <aura:attribute name="noneValue" type="String" default="-------"/>
+    <aura:attribute name="productAtRiskList" type="List" />
+    <aura:attribute name="riskReason" type="List"/>
+    <aura:attribute name="riskPriority" type="List"/>
+    <aura:attribute name="riskStatus" type="List"/>
+    
+    <aura:handler name="init" value="this" action="{!c.doInit}"/>
+    
+    <aura:if isTrue="{!!v.loaded}">
+        <lightning:spinner variant="brand" alternativeText="Loading" />
+    </aura:if>
+    <div class="slds-grid slds-wrap">
+        <aura:if isTrue="{!not(empty(v.productAtRiskList))}">
+            <div class="TopButtonCls">
+                <!--<lightning:button label="Save" title="Save" onclick="{!c.saveAction}" disabled="{!!v.oppRecord.Core_At_Risk__c}"/>
+                <lightning:button label="Cancel" title="Cancel" onclick="{!c.cancelAction}" disabled="{!!v.oppRecord.Core_At_Risk__c}"/>
+                <lightning:button label="{!$Label.c.Core_Mark_All_At_Risk_Button}" title="{!$Label.c.Core_Mark_All_At_Risk_Button}" onclick="{!c.openMarkAllPopup}" disabled="{!v.allAtRisk}"/>-->
+            </div>
+        </aura:if>
+        
+        <aura:if isTrue="{!not(empty(v.productAtRiskList))}">
+            <table class="slds-table" style="display: block;overflow-x: auto;">
+                <thead>
+                    <tr class="TrCls">
+                        <th class="thClass">Product</th>
+                        <th class="thClass">BU</th>
+                        <th class="thClass">At Risk</th>
+                        <th class="thClass">Risk Reason</th>
+                        <th class="thClass">Risk Priority</th>
+                        <th class="thClass">Risk Status</th>
+                        <th class="thClass">Created Date</th>
+                        <th class="thClass">End Date</th>
+                        <th class="thClass">Product Risk Owner</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <aura:iteration items="{!v.productAtRiskList}" var="prodRiskWrap" indexVar="index">
+                        <tr>
+                            <td rowspan="{!prodRiskWrap.riskCount}" style="white-space:normal;border:1px solid lightgray;">{!prodRiskWrap.productName}</td>
+                            <td rowspan="{!prodRiskWrap.riskCount}" style="white-space:normal;border:1px solid lightgray;">{!prodRiskWrap.buShortName}</td>
+                        </tr>
+                        <aura:iteration items="{!prodRiskWrap.productRiskList}" var="prodRisk" indexVar="indx">
+                            <tr>
+                                <td style="white-space:normal;border:1px solid lightgray;">
+                                    <lightning:input type="checkbox" tabindex="{!index}" name="atRiskCheck" checked="{!prodRisk.Core_At_Risk__c}" onchange="{!c.setAtRiskInOpportunity}" disabled=""/>
+                                </td>
+                                <td style="white-space:normal;border:1px solid lightgray;">
+                                    <lightning:select value="{!prodRisk.Core_Risk_Reason__c}" disabled="{!!prodRisk.Core_At_Risk__c}">
+                                        <aura:iteration items="{!v.riskReason}" var="option">
+                                            <option text="{!option}" value="{!option}" selected="{!if(option == prodRisk.Core_Risk_Reason__c,true,false)}"/>
+                                        </aura:iteration>
+                                    </lightning:select>
+                                </td>
+                                <td style="white-space:normal;border:1px solid lightgray;">
+                                    <lightning:select value="{!prodRisk.Core_Risk_Priority__c}" disabled="{!!prodRisk.Core_At_Risk__c}">
+                                        <aura:iteration items="{!v.riskPriority}" var="option">
+                                            <option text="{!option}" value="{!option}" selected="{!if(option == prodRisk.Core_Risk_Priority__c,true,false)}"/>
+                                        </aura:iteration>
+                                    </lightning:select>
+                                </td>
+                                <td style="white-space:normal;border:1px solid lightgray;">
+                                    <lightning:select value="{!prodRisk.Core_Risk_Status__c}" disabled="{!!prodRisk.Core_At_Risk__c}">
+                                        <aura:iteration items="{!v.riskStatus}" var="option">
+                                            <option text="{!option}" value="{!option}" selected="{!if(option == prodRisk.Core_Risk_Status__c,true,false)}"/>
+                                        </aura:iteration>
+                                    </lightning:select>
+                                </td>
+                                <td style="white-space:normal;border:1px solid lightgray;">
+                                    <lightning:input type="date" name="createDate" value="{!prodRisk.Core_Created_Date__c}" disabled="{!!prodRisk.Core_At_Risk__c}"/>
+                                </td>
+                                <td style="white-space:normal;border:1px solid lightgray;">
+                                    <lightning:input type="date" name="endDate" value="{!prodRisk.Core_End_Date__c}" disabled="{!!prodRisk.Core_At_Risk__c}"/>
+                                </td>
+                                <td style="white-space:normal;border:1px solid lightgray;border-right: hidden;">
+                                    <lightning:input name="riskOwner" value="{!prodRisk.Core_Product_Risk_Owner__c}" disabled="{!!prodRisk.Core_At_Risk__c}"/>
+                                </td>
+                            </tr>
+                        </aura:iteration>
+                    </aura:iteration>
+                </tbody>
+            </table>
+        </aura:if>
+    </div>
+</aura:component>

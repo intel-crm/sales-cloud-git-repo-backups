@@ -10,15 +10,6 @@
         <field>ACCOUNT.NAME</field>
     </columns>
     <columns>
-        <field>Account.Core_PSG_Account__c</field>
-    </columns>
-    <columns>
-        <field>Account.Core_Sales_Groups__c</field>
-    </columns>
-    <columns>
-        <field>Account.Core_CNDA_Number__c</field>
-    </columns>
-    <columns>
         <field>CONTACT_ID</field>
     </columns>
     <columns>

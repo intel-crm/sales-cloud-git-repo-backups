@@ -18,14 +18,7 @@
         <name>PRM_Account_Partner_Benefit_Key__c</name>
     </fields>
     <fields>
-        <label><!-- Account RT --></label>
-        <name>PRM_Account_RT__c</name>
-    </fields>
-    <fields>
         <label><!-- Partner Benefit --></label>
-        <lookupFilter>
-            <errorMessage><!-- The selected Partner Benefit is either Inactive or doesn&apos;t belong to &quot;Intel Partner Alliance&quot; program. Please verify your selection. --></errorMessage>
-        </lookupFilter>
         <name>PRM_Partner_Benefit_Id__c</name>
         <relationshipLabel><!-- Partner Benefit Association --></relationshipLabel>
     </fields>
@@ -37,8 +30,8 @@
         <label><!-- Source --></label>
         <name>PRM_Source__c</name>
         <picklistValues>
-            <masterLabel>Select Benefit</masterLabel>
-            <translation><!-- Select Benefit --></translation>
+            <masterLabel>Specialty</masterLabel>
+            <translation><!-- Specialty --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Tier</masterLabel>
@@ -62,7 +55,6 @@
         </picklistValues>
     </fields>
     <fields>
-        <help><!-- On update of any field, Status Reason should also be updated --></help>
         <label><!-- Status Reason --></label>
         <name>PRM_Status_Reason_Txt__c</name>
     </fields>

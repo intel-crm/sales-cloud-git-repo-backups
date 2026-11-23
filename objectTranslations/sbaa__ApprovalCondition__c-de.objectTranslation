@@ -60,6 +60,10 @@
             <translation>Name</translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>core_cpq_corporate_flag__c</masterLabel>
+            <translation><!-- core_cpq_corporate_flag__c --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>core_cpq_disty_region__c</masterLabel>
             <translation><!-- core_cpq_disty_region__c --></translation>
         </picklistValues>
@@ -207,6 +211,10 @@
             <translation><!-- core_cpq_Intel_Margin_difference_nm__c --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>core_cpq_comments_to_disty_txt__c</masterLabel>
+            <translation><!-- core_cpq_comments_to_disty_txt__c --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>core_cpq_corporate_flag__c</masterLabel>
             <translation><!-- core_cpq_corporate_flag__c --></translation>
         </picklistValues>
@@ -229,6 +237,10 @@
         <picklistValues>
             <masterLabel>core_cpq_gp_msvpl2_nm__c</masterLabel>
             <translation><!-- core_cpq_gp_msvpl2_nm__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>core_cpq_name_nm__c</masterLabel>
+            <translation><!-- core_cpq_name_nm__c --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>core_cpq_negative_margin_quote_Value__c</masterLabel>

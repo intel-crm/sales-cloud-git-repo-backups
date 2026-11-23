@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>michael.bergh@intel.com</contactEmail>
+    <description>12/26/2023 4:26</description>
+    <label>TLSCert Automation</label>
+    <oauthConfig>
+        <callbackUrl>sfdc://oauth/jwt/sucess</callbackUrl>
+        <certificate>MIIDnzCCAoegAwIBAgIUP1ALqLdwKSze46Q/emeRlc9LhZcwDQYJKoZIhvcNAQELBQAweDELMAkGA1UEBhMCVVMxCzAJBgNVBAgMAkNBMRQwEgYDVQQHDAtTYW50YSBDbGFyYTEaMBgGA1UECgwRSW50ZWwgQ29ycG9yYXRpb24xDjAMBgNVBAsMBVNhbGVzMRowGAYDVQQDDBFUTFNDZXJ0QXV0b21hdGlvbjAeFw0yNDA1MDYxODEzMTJaFw0yNDA4MDQxODEzMTJaMHgxCzAJBgNVBAYTAlVTMQswCQYDVQQIDAJDQTEUMBIGA1UEBwwLU2FudGEgQ2xhcmExGjAYBgNVBAoMEUludGVsIENvcnBvcmF0aW9uMQ4wDAYDVQQLDAVTYWxlczEaMBgGA1UEAwwRVExTQ2VydEF1dG9tYXRpb24wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCHt4sKG76tUQm02jo0fKk7v3YaW9tvm00dQuu1vcbv0Eo030rz7CV13DaHVgEf4NGhL+WPlgLkazhekx5OF0QVyOpxg2W1ag9AFWvDgRTxPddDnP7xgJ3vEdE3pY2ViFB1yhzxc24WNBhV37eJVtxv4XmADtvDF399DyVqTgOqkAtKB5uWa4CHNgGy3EEEZq7fW6olq9c3tmWld1Rrra9FIy6MpPwLD1MJiHitj/HkDVThjrja/deuGHMliG3sKAzU0K3W71wne9plCq8oQEfUkP1HD6oXOnb3Px7uie/vfADd/U2TcLBOmb4ef24mkav9NSBCD9p0H/FB0IMEvgRrAgMBAAGjITAfMB0GA1UdDgQWBBQkgnPNc+l05p7l49DahtHxTy9IYzANBgkqhkiG9w0BAQsFAAOCAQEAQncb54LCytLrHXmOJs5nwQiYTVHyepbavEC7GzebgBbv1L9ooJIdil/xcPVdCTdWcqdb+ZC3gq54WoIB9FwQWTddc1H1Av5b+xDnu/YhdglW3RPS+uTroN03J1sbqnfPtKCkYrTGXfgUc3FJJDLthPIP6lI/oa1Goe8X1iRpHJMa5Mf5IB8WTzAD1+LmiEgDmryzHLtYxDqfxAAIE1dkpBebmQwiQ+VU+HJjGJE235wLlqldACshhHtD/Mohue+YIED+Hc4VC8d3NsAetibqBkS9qrNYIy9hf6NVz169YwDD2VyNmk6/xBG4HeLqUpV/jXNl6Jj7uT8iqBoy1c9FrA==</certificate>
+        <consumerKey>3MVG9FxR3Tq3eZN88sLG9b4Pw8IbhOa.wS7DNFqfc2H6Z3Yd53zBoxOI2qzJ83X7EMiph2NXjo9Q8uDmli9zv</consumerKey>
+        <isAdminApproved>true</isAdminApproved>
+        <isClientCredentialEnabled>false</isClientCredentialEnabled>
+        <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
+        <isCodeCredentialPostOnly>false</isCodeCredentialPostOnly>
+        <isConsumerSecretOptional>false</isConsumerSecretOptional>
+        <isDPopEnabled>false</isDPopEnabled>
+        <isDeviceFlowEnabled>false</isDeviceFlowEnabled>
+        <isEnforceRefreshTokenTTL>false</isEnforceRefreshTokenTTL>
+        <isIntrospectAllTokens>false</isIntrospectAllTokens>
+        <isIpBindingEnabled>false</isIpBindingEnabled>
+        <isNamedUserJwtEnabled>false</isNamedUserJwtEnabled>
+        <isPKImTLSEnabled>false</isPKImTLSEnabled>
+        <isPkceRequired>true</isPkceRequired>
+        <isRefreshTokenRotationEnabled>false</isRefreshTokenRotationEnabled>
+        <isSecretRequiredForRefreshToken>true</isSecretRequiredForRefreshToken>
+        <isSecretRequiredForTokenExchange>false</isSecretRequiredForTokenExchange>
+        <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
+        <scopes>Api</scopes>
+        <scopes>RefreshToken</scopes>
+    </oauthConfig>
+    <oauthPolicy>
+        <ipRelaxation>ENFORCE</ipRelaxation>
+        <isTokenExchangeFlowEnabled>false</isTokenExchangeFlowEnabled>
+        <refreshTokenPolicy>infinite</refreshTokenPolicy>
+    </oauthPolicy>
+    <permissionSetName>TLS Cert Renewal Auth User</permissionSetName>
+    <sessionPolicy>
+        <sessionTimeout>15</sessionTimeout>
+    </sessionPolicy>
+</ConnectedApp>

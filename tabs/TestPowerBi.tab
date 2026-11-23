@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomTab xmlns="http://soap.sforce.com/2006/04/metadata">
+    <frameHeight>600</frameHeight>
+    <hasSidebar>false</hasSidebar>
+    <label>TestPowerBi</label>
+    <motif>Custom54: Boat</motif>
+    <url>https://sqlbiprd.intel.com/reports/powerbi/PSG Sales/SiebelArchivedData - Order and licenses/PSG License Renewals (IAH)&amp;output=embed</url>
+    <urlEncodingKey>UTF-8</urlEncodingKey>
+</CustomTab>

@@ -114,7 +114,7 @@ public class Core_OppsPWApprovalCtrl_Test {
                                LocaleSidKey='en_US', ProfileId = p.Id,
                                TimeZoneSidKey='America/Los_Angeles', UserName='FSE@mail.com', Department='OSC', Core_User_Geo__c = 'PRC');
         insert fseowner;
-        //List<OpportunityTeamMember> oppTMList = new List<OpportunityTeamMember>();
+        List<OpportunityTeamMember> oppTMList = new List<OpportunityTeamMember>();
         /*OpportunityTeamMember teamMember1 = new OpportunityTeamMember(OpportunityId=opp2.Id, UserId=sysUser.Id, Core_Production_Win_Member_Role__c='Sales Account Manager');
         
         oppTMList.add(teamMember1);
@@ -124,7 +124,7 @@ public class Core_OppsPWApprovalCtrl_Test {
     static testMethod void validatechecks1(){
         try{
             Opportunity opp = [select id,accountid, Core_Exclude_From_KPIs__c, account.Core_Export_Compliance_Block__c, account.Core_Export_Compliance_Block_Reason__c, Core_Commissionable__c, Core_Compliance_Status__c, Account.RecordType.Name, Core_Write_In_Product_Count__c from opportunity where name like '%Test%' limit 1];
-            //OpportunityLineItem oli = [select id, core_status__c, Core_Write_In_Product_Flag__c from OpportunityLineItem where opportunityid = :opp.id];
+            OpportunityLineItem oli = [select id, core_status__c, Core_Write_In_Product_Flag__c from OpportunityLineItem where opportunityid = :opp.id];
             account acc = [select id,Core_Business_Party_Id__c , Core_Export_Compliance_Block__c,Core_Export_Compliance_Block_Reason__c from account where Name = 'Dell'];
             acc.Core_Business_Party_Id__c  = '123';
             update acc;

@@ -90,20 +90,19 @@ const metricSample = (index) => {
             "unit": "",
             "description": ""
         },
-        //IPA2.0:US-4497-1631_OfferingEOL
-        // {
-        //     "label": "Offers Pending",
-        //     "link": {
-        //       "label": "Manage offerings",
-        //       "externalUrl": "https://www.intel.com",
-        //       "communityPage": "",
-        //       "objectPage": "",
-        //       "recordId": ""
-        //     },
-        //     "value": "7",
-        //     "unit": "",
-        //     "description": ""
-        // },
+        {
+            "label": "Offers Pending",
+            "link": {
+              "label": "Manage offerings",
+              "externalUrl": "https://www.intel.com",
+              "communityPage": "",
+              "objectPage": "",
+              "recordId": ""
+            },
+            "value": "7",
+            "unit": "",
+            "description": ""
+        },
         {
             "label": "",
             "link": {
@@ -182,7 +181,19 @@ const metricSample = (index) => {
             "unit": "",
             "description": "Footer 2 lorem ipsum"
         },
-
+        {
+          "label": "",
+          "link": {
+            "label": "Empty Metric Test",
+            "externalUrl": "#",
+            "communityPage": "",
+            "objectPage": "",
+            "recordId": ""
+          },
+          "value": "",
+          "unit": "",
+          "description": ""
+      },
 
 
     ]

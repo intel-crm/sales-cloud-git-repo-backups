@@ -5,8 +5,8 @@
 * 
 * Developer           Date               Description
 * ---------------------------------------------------------------------------------------
-* Charu Kaushik       3/30/2022         - Created as for the requirement in User Story Bhoomi/TWC4471-96 : Develop code for 'executing apex tests on demand'  
-                                        - Created invocable class to Enqueue test runs from Custom Object 'Project Info' and Log the Test Results in Custom Object 'Project Test Run Results'                                  
+* Charu Kaushik       3/30/2022         Added invocable method to Enqueue test runs and Log the Test Results in 
+Custom Object 'Project Test Run Results'                                  
 
 **/
 public class DP_EAT_InvocableUtility 

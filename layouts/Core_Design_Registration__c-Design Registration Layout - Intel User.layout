@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
     <customButtons>Core_Accept_Design</customButtons>
-    <customButtons>Core_Approve_Design</customButtons>
     <customButtons>Core_Reject_Design</customButtons>
     <excludeButtons>ChangeOwnerOne</excludeButtons>
     <excludeButtons>ChangeRecordType</excludeButtons>
     <excludeButtons>Delete</excludeButtons>
     <excludeButtons>Share</excludeButtons>
-    <excludeButtons>Submit</excludeButtons>
     <layoutSections>
         <customLabel>true</customLabel>
         <detailHeading>true</detailHeading>
@@ -54,6 +52,30 @@
                 <behavior>Edit</behavior>
                 <field>Core_Submission_Type__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>PCC_Rejected_or_Cancelled_Product__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>PCC_Approval_Level__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>PCC_EndCustomerAcc_Mapping__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>PCC_Design_Type__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>PCC_ODM_Board_partner__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>PCC_ODM_Board_Partner_Account__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -88,18 +110,6 @@
                 <behavior>Readonly</behavior>
                 <field>Core_Intel_Support_Status__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>PCC_Design_Type__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>PCC_ODM_Board_partner__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>PCC_ODM_Board_Partner_Account__c</field>
-            </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
     </layoutSections>
@@ -127,33 +137,21 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Required</behavior>
-                <field>Core_End_Customer_Country_Subdivision_Nm__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Required</behavior>
                 <field>Core_End_Customer_Postal_Cd__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Required</behavior>
-                <field>PCC_End_Customer_Country__c</field>
+                <behavior>Readonly</behavior>
+                <field>Core_Partner_Program_Nm__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_End_Customer_Contact_Title_Txt__c</field>
+                <behavior>Required</behavior>
+                <field>PCC_End_Customer_Country__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_End_Customer_Contact_Nm__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_End_Customer_Contact_Email_Txt__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_End_Customer_Contact_Phone_Txt__c</field>
+                <behavior>Required</behavior>
+                <field>Core_End_Customer_Country_Subdivision_Nm__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
@@ -166,10 +164,6 @@
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>Core_End_Customer_PSG_Tier_Nm__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_Partner_Program_Nm__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
@@ -270,11 +264,11 @@
                 <field>LastModifiedById</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Readonly</behavior>
                 <field>Core_Approver_Grp_Nm__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Readonly</behavior>
                 <field>Core_Approver_Grp_Notification_Sent_Ind__c</field>
             </layoutItems>
         </layoutColumns>
@@ -315,6 +309,21 @@
     <platformActionList>
         <actionListContext>Record</actionListContext>
         <platformActionListItems>
+            <actionName>Edit</actionName>
+            <actionType>StandardButton</actionType>
+            <sortOrder>0</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>Clone</actionName>
+            <actionType>StandardButton</actionType>
+            <sortOrder>1</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>Core_Design_Registration__c.Core_Accept_Design_Lex</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>2</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
             <actionName>Core_Design_Registration__c.Core_Reject_Design_Lex</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>3</sortOrder>
@@ -334,25 +343,13 @@
             <actionType>QuickAction</actionType>
             <sortOrder>6</sortOrder>
         </platformActionListItems>
-        <platformActionListItems>
-            <actionName>Edit</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>0</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>Clone</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>1</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>Core_Design_Registration__c.Core_Accept_Design_Lex</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>2</sortOrder>
-        </platformActionListItems>
     </platformActionList>
     <quickActionList>
         <quickActionListItems>
             <quickActionName>FeedItem.MobileSmartActions</quickActionName>
+        </quickActionListItems>
+        <quickActionListItems>
+            <quickActionName>FeedItem.TextPost</quickActionName>
         </quickActionListItems>
     </quickActionList>
     <relatedLists>
@@ -360,7 +357,7 @@
         <customButtons>Core_Reject_Products_Pending_Lex</customButtons>
         <excludeButtons>New</excludeButtons>
         <fields>NAME</fields>
-        <fields>Core_Product_Id__c</fields>
+        <fields>PCC_Product_Additional_Attribute__c</fields>
         <fields>Core_Design_Product_Status_Nm__c</fields>
         <fields>Core_Full_Year_Qty__c</fields>
         <fields>Core_Target_Resale_Amt__c</fields>
@@ -368,7 +365,6 @@
         <fields>Core_Partner_Tracking_Cd__c</fields>
         <fields>Core_Locked_Ind__c</fields>
         <fields>Core_Active_Status__c</fields>
-        <fields>Core_DR_Eligible_Status__c</fields>
         <relatedList>Core_Design_Registration_Product__c.Core_Design_Registration_Id__c</relatedList>
         <sortField>NAME</sortField>
         <sortOrder>Desc</sortOrder>
@@ -377,7 +373,6 @@
         <excludeButtons>MassChangeOwner</excludeButtons>
         <excludeButtons>New</excludeButtons>
         <fields>PCC_MM_ID__c</fields>
-        <fields>PCC_Old_MM_Id__c</fields>
         <fields>PCC_Ordering_Cd__c</fields>
         <fields>PCC_L5_Product_Name__c</fields>
         <fields>PCC_Design_Registration_Product__c</fields>
@@ -386,6 +381,14 @@
     </relatedLists>
     <relatedLists>
         <relatedList>RelatedEntityHistoryList</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>CreatedDate</fields>
+        <fields>StepStatus</fields>
+        <fields>OriginalActor</fields>
+        <fields>Actor</fields>
+        <fields>Comments</fields>
+        <relatedList>RelatedProcessHistoryList</relatedList>
     </relatedLists>
     <relatedLists>
         <excludeButtons>New</excludeButtons>

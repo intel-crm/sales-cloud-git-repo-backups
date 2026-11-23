@@ -3,4 +3,140 @@
     <container>Intel® FPGA SSLC</container>
     <containerType>Network</containerType>
     <label>Default Navigation</label>
+    <navigationMenuItem>
+        <label>Licenses</label>
+        <position>1</position>
+        <publiclyAvailable>false</publiclyAvailable>
+        <subMenu>
+            <navigationMenuItem>
+                <label>Find and Generate License by Activation Code</label>
+                <position>0</position>
+                <publiclyAvailable>false</publiclyAvailable>
+                <target>/generate-license-by-activation-code</target>
+                <type>InternalLink</type>
+            </navigationMenuItem>
+            <navigationMenuItem>
+                <defaultListViewId>Sales_Unlicensed_Products_Ext</defaultListViewId>
+                <label>New Licenses</label>
+                <position>1</position>
+                <publiclyAvailable>true</publiclyAvailable>
+                <target>Sales_License__c</target>
+                <type>SalesforceObject</type>
+            </navigationMenuItem>
+            <navigationMenuItem>
+                <defaultListViewId>Active_Maintenance_External</defaultListViewId>
+                <label>Licenses With Active Maintenance</label>
+                <position>2</position>
+                <publiclyAvailable>true</publiclyAvailable>
+                <target>Sales_License__c</target>
+                <type>SalesforceObject</type>
+            </navigationMenuItem>
+            <navigationMenuItem>
+                <defaultListViewId>Sales_Inactive_License_Expiration_External</defaultListViewId>
+                <label>Licenses With Expired Maintenance</label>
+                <position>3</position>
+                <publiclyAvailable>false</publiclyAvailable>
+                <target>Sales_License__c</target>
+                <type>SalesforceObject</type>
+            </navigationMenuItem>
+            <navigationMenuItem>
+                <defaultListViewId>All_Licenses_Ext</defaultListViewId>
+                <label>All Licenses</label>
+                <position>4</position>
+                <publiclyAvailable>false</publiclyAvailable>
+                <target>Sales_License__c</target>
+                <type>SalesforceObject</type>
+            </navigationMenuItem>
+            <navigationMenuItem>
+                <defaultListViewId>Sales_Legacy_Licenses_ext</defaultListViewId>
+                <label>Legacy Licenses</label>
+                <position>5</position>
+                <publiclyAvailable>true</publiclyAvailable>
+                <target>Sales_License__c</target>
+                <type>SalesforceObject</type>
+            </navigationMenuItem>
+            <navigationMenuItem>
+                <label>Generate Legacy Licenses</label>
+                <position>6</position>
+                <publiclyAvailable>true</publiclyAvailable>
+                <target>/get-legacy-licenses</target>
+                <type>InternalLink</type>
+            </navigationMenuItem>
+            <navigationMenuItem>
+                <label>Employee and Evaluation Licenses</label>
+                <position>7</position>
+                <publiclyAvailable>true</publiclyAvailable>
+                <target>/employee-and-evaluation-licenses</target>
+                <type>InternalLink</type>
+            </navigationMenuItem>
+        </subMenu>
+        <type>MenuLabel</type>
+    </navigationMenuItem>
+    <navigationMenuItem>
+        <label>Computers and License Files</label>
+        <position>2</position>
+        <publiclyAvailable>false</publiclyAvailable>
+        <subMenu>
+            <navigationMenuItem>
+                <label>Active Computers</label>
+                <position>0</position>
+                <publiclyAvailable>true</publiclyAvailable>
+                <target>/active-computers</target>
+                <type>InternalLink</type>
+            </navigationMenuItem>
+            <navigationMenuItem>
+                <label>All Computers</label>
+                <position>1</position>
+                <publiclyAvailable>true</publiclyAvailable>
+                <target>/all-computers</target>
+                <type>InternalLink</type>
+            </navigationMenuItem>
+        </subMenu>
+        <type>MenuLabel</type>
+    </navigationMenuItem>
+    <navigationMenuItem>
+        <label>Admins</label>
+        <position>3</position>
+        <publiclyAvailable>false</publiclyAvailable>
+        <subMenu>
+            <navigationMenuItem>
+                <label>Add New Admin</label>
+                <position>0</position>
+                <publiclyAvailable>true</publiclyAvailable>
+                <target>/add-new-admin</target>
+                <type>InternalLink</type>
+            </navigationMenuItem>
+            <navigationMenuItem>
+                <defaultListViewId>My_Delegate_Admins</defaultListViewId>
+                <label>View &amp; Manage Admins</label>
+                <position>1</position>
+                <publiclyAvailable>true</publiclyAvailable>
+                <target>/view-and-manage-admin</target>
+                <type>InternalLink</type>
+            </navigationMenuItem>
+        </subMenu>
+        <type>MenuLabel</type>
+    </navigationMenuItem>
+    <navigationMenuItem>
+        <label>Sign up for Evaluation or No-Cost Licenses</label>
+        <position>4</position>
+        <publiclyAvailable>true</publiclyAvailable>
+        <target>/sales-signup-evalutionlicense</target>
+        <type>InternalLink</type>
+    </navigationMenuItem>
+    <navigationMenuItem>
+        <label>Sign up for Employee Licenses</label>
+        <position>5</position>
+        <publiclyAvailable>false</publiclyAvailable>
+        <target>/signup-EmployeeLicense</target>
+        <type>InternalLink</type>
+    </navigationMenuItem>
+    <navigationMenuItem>
+        <defaultListViewId>AllReports</defaultListViewId>
+        <label>Reports</label>
+        <position>6</position>
+        <publiclyAvailable>false</publiclyAvailable>
+        <target>Report</target>
+        <type>SalesforceObject</type>
+    </navigationMenuItem>
 </NavigationMenu>

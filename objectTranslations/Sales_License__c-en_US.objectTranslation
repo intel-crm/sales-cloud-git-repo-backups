@@ -9,8 +9,9 @@
         <value>Licenses</value>
     </caseValues>
     <fields>
-        <label><!-- License Id --></label>
-        <name>License_Id__c</name>
+        <help><!-- For License Record Type &quot;Renewal&quot; please Apply for Renewal. --></help>
+        <label><!-- License Record Type --></label>
+        <name>License_Record_Type__c</name>
     </fields>
     <fields>
         <help><!-- Text feild to store license user email address --></help>
@@ -28,6 +29,11 @@
     <fields>
         <label><!-- Do not contact for feedback --></label>
         <name>Opt_in_out__c</name>
+    </fields>
+    <fields>
+        <label><!-- PSG Free License Request --></label>
+        <name>PSG_Free_License_Request__c</name>
+        <relationshipLabel><!-- Licenses --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- Distributed Quantity --></label>
@@ -97,10 +103,6 @@
         <name>Sales_License_Flag__c</name>
     </fields>
     <fields>
-        <label><!-- Host/Node Id --></label>
-        <name>Sales_License_Host_Node_Id_Txt__c</name>
-    </fields>
-    <fields>
         <label><!-- Primary Computer --></label>
         <name>Sales_License_Host_Node_Id__c</name>
         <relationshipLabel><!-- Licenses --></relationshipLabel>
@@ -115,6 +117,10 @@
         <name>Sales_License_Internal_Comments_Txt__c</name>
     </fields>
     <fields>
+        <label><!-- License Is Renewed --></label>
+        <name>Sales_License_IsRenewed__c</name>
+    </fields>
+    <fields>
         <label><!-- Licensed User --></label>
         <name>Sales_License_Lic_User_Contact_ID__c</name>
         <relationshipLabel><!-- Licenses --></relationshipLabel>
@@ -124,7 +130,7 @@
         <name>Sales_License_LoggedIn_User__c</name>
     </fields>
     <fields>
-        <label><!-- Maintenance Expiration Date --></label>
+        <label>Maintenance Expiration Date</label>
         <name>Sales_License_Maintenance_Exp_Dt__c</name>
     </fields>
     <fields>
@@ -207,18 +213,6 @@
         <name>Sales_License_Renewed_Date__c</name>
     </fields>
     <fields>
-        <label><!-- License Renewed Expired Date --></label>
-        <name>Sales_License_Renewed_Expired_Date__c</name>
-    </fields>
-    <fields>
-        <label><!-- License Renewed Quarter --></label>
-        <name>Sales_License_Renewed_Quarter__c</name>
-    </fields>
-    <fields>
-        <label><!-- License Renewed Year --></label>
-        <name>Sales_License_Renewed_Year__c</name>
-    </fields>
-    <fields>
         <label><!-- License Row Number --></label>
         <name>Sales_License_Row_Nbr__c</name>
     </fields>
@@ -250,8 +244,8 @@
             <translation><!-- Renewals Applied --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Unlicensed</masterLabel>
-            <translation><!-- Unlicensed --></translation>
+            <masterLabel>Unassigned</masterLabel>
+            <translation><!-- Unassigned --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -270,6 +264,10 @@
         <picklistValues>
             <masterLabel>Add Seat</masterLabel>
             <translation><!-- Add Seat --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Amend</masterLabel>
+            <translation><!-- Amend --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Amend Contract - Qty Decrease</masterLabel>
@@ -319,7 +317,7 @@
     <fields>
         <label><!-- Parent License --></label>
         <name>Sales_Parent_License__c</name>
-        <relationshipLabel><!-- Option Licenses --></relationshipLabel>
+        <relationshipLabel><!-- Optional Licenses --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- Processed --></label>
@@ -364,12 +362,24 @@
         <name>Sales_Avlbl_Temp_Lic_Cannot_Be_Greater</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- Primary Computer cannot be updated as the Available Rehost is 0 --></errorMessage>
+        <name>Sales_Cannot_Change_Host</name>
+    </validationRules>
+    <validationRules>
         <errorMessage>The license type of the computer selected is not compatible with the license product.</errorMessage>
         <name>Sales_Cannot_Change_Host_As_Diff_Lic_Typ</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- License Expiration Date and Maintenance Expiration Date both should be greater than Todays date --></errorMessage>
+        <name>Sales_EvaluationVal</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- You cannot update this license at the moment. Please reach out to IT Team for support --></errorMessage>
         <name>Sales_ExtUsr_Cannot_Update_PrimaryAdmin</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please select an Active computer --></errorMessage>
+        <name>Sales_Inactive_computer_validation</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Please select a valid Intel Account --></errorMessage>
@@ -378,5 +388,9 @@
     <webLinks>
         <label><!-- Generate_License_by_Activation_Code --></label>
         <name>Generate_License_by_Activation_Code</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- testListBtn --></label>
+        <name>testListBtn</name>
     </webLinks>
 </CustomObjectTranslation>

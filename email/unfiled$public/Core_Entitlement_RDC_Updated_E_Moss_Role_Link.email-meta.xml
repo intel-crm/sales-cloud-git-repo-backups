@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <description>e-Moss role access has been granted to the associated contact</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Entitlement RDC Updated E Moss Role -Link</name>
+    <style>none</style>
+    <subject>Resource &amp; Design Center Collaboration Spaces Access Request for {!Contact.Email} has been updated</subject>
+    <textOnly>{ 
+ &quot;Operation&quot;: &quot;Updated&quot;, 
+ &quot;Entitlement&quot;: &quot;EMOSS&quot;,  
+ &quot;LoginId&quot;: {!Contact.Core_Login_Id__c},
+ &quot;EmailAddress&quot;: {!Contact.Email},
+ &quot;SFDCAccountId&quot;: {!Account.Id},
+ &quot;SFDCAccountName&quot;: &quot;{!Account.Name}&quot; 
+ }</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

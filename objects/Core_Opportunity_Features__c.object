@@ -159,6 +159,58 @@
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>ControlledByParent</externalSharingModel>
     <fields>
+        <fullName>Core_CEG_Comments__c</fullName>
+        <externalId>false</externalId>
+        <label>CEG Comments</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_CEG_Contact__c</fullName>
+        <externalId>false</externalId>
+        <label>CEG Contact</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Consumer_Sales_Category__c</fullName>
+        <label>Consumer Sales Category</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>Evo</fullName>
+                    <default>false</default>
+                    <label>Evo</label>
+                </value>
+                <value>
+                    <fullName>Evo Premier</fullName>
+                    <default>false</default>
+                    <label>Evo Premier</label>
+                </value>
+                <value>
+                    <fullName>Gaming Premier</fullName>
+                    <default>false</default>
+                    <label>Gaming Premier</label>
+                </value>
+                <value>
+                    <fullName>Run Rate</fullName>
+                    <default>false</default>
+                    <label>Run Rate</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
         <fullName>Core_Consumer_Sales_system__c</fullName>
         <externalId>false</externalId>
         <label>Consumer Sales System</label>
@@ -167,6 +219,44 @@
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Custom_Silicon_Application__c</fullName>
+        <externalId>false</externalId>
+        <label>Custom Silicon Application</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Custom_Silicon_Segment__c</fullName>
+        <externalId>false</externalId>
+        <label>Custom Silicon Segment</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Exec_Sponsor_Contact__c</fullName>
+        <externalId>false</externalId>
+        <label>Exec Sponsor Contact</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Feature_Date_Value__c</fullName>
+        <formula>Core_Feature_Set__r.Core_Feature__r.Core_Feature_Date_Value__c</formula>
+        <label>Feature Date Value</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
     </fields>
     <fields>
         <fullName>Core_Feature_Name__c</fullName>
@@ -213,6 +303,16 @@
         <type>Checkbox</type>
     </fields>
     <fields>
+        <fullName>Core_NRE__c</fullName>
+        <externalId>false</externalId>
+        <label>NRE $</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Core_Opportunity__c</fullName>
         <description>This is a field used to associate a lookup relationship with the Opportunity Object</description>
         <label>Opportunity</label>
@@ -233,10 +333,103 @@
 &quot;CCG ECG&quot;, &quot;CCG ECG&quot;,
 &quot;DCG&quot;, &quot;DCAI&quot;,
 &quot;PSG&quot;, &quot;PSG&quot;,
-&quot;NTG&quot;, &quot;NTG&quot;,&quot;&quot;
+&quot;NTG&quot;, &quot;NTG&quot;,
+&quot;PBS&quot;,&quot;PBS&quot;,&quot;&quot;
 )</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Platform BU</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Process_Node__c</fullName>
+        <externalId>false</externalId>
+        <label>Process Node</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Project_Code_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Project Code Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Project_Schedule_Engineering_Sample__c</fullName>
+        <externalId>false</externalId>
+        <label>Project Schedule: Engineering Sample</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Project_Schedule_PRQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Project Schedule: PRQ</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Project_Schedule_RFx__c</fullName>
+        <externalId>false</externalId>
+        <label>Project Schedule: RFx</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Project_Schedule_TR_Kick_off__c</fullName>
+        <externalId>false</externalId>
+        <label>Project Schedule: TR Kick off</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Project_Schedule_Tape_In_Out__c</fullName>
+        <externalId>false</externalId>
+        <label>Project Schedule: Tape In/Out</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Opportunity_Product__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Opportunity Product</label>
+        <referenceTo>OpportunityLineItem</referenceTo>
+        <relationshipLabel>Descriptive Features</relationshipLabel>
+        <relationshipName>Descriptive_Features</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Type__c</fullName>
+        <externalId>false</externalId>
+        <formula>if(not(isblank(Opportunity_Product__c)),&apos;Product&apos;,&apos;Opportunity&apos;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Type</label>
         <required>false</required>
         <trackTrending>false</trackTrending>
         <type>Text</type>
@@ -251,6 +444,16 @@
     <pluralLabel>Descriptive Features</pluralLabel>
     <searchLayouts/>
     <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>Core_DesFeature_QuoteSubmittedStatus</fullName>
+        <active>true</active>
+        <description>Descriptive Feature Quote Submitted Status Lock check</description>
+        <errorConditionFormula>IF($Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c=TRUE,FALSE,
+
+AND ( Core_Opportunity__r.Core_Opportunity_Lock_Status__c = true, ISPICKVAL( Core_Opportunity__r.Core_Coverage_Type_Nm__c, &apos;Deal Registration&apos;), ISPICKVAL(Core_Opportunity__r.Core_Opportunity_Coverage_Nm__c , &apos;Partner-Led Opportunity&apos;) )
+)</errorConditionFormula>
+        <errorMessage>Quote associated to this Opportunity is Submitted for Review. No Edits allowed on Opportunity during the Review process.</errorMessage>
+    </validationRules>
     <visibility>Public</visibility>
     <webLinks>
         <fullName>Core_EditDescriptiveFeatures</fullName>
@@ -264,5 +467,18 @@
         <protected>false</protected>
         <requireRowSelection>false</requireRowSelection>
         <url>/apex/Core_OppDescriptiveFeatures?sOppid={!Opportunity.Id}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Core_EditDescriptiveFeaturesForProduct</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Edit Descriptive Features</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>/apex/Core_OppDescriptiveFeatures?sOppProdid={!OpportunityLineItem.Id}</url>
     </webLinks>
 </CustomObject>

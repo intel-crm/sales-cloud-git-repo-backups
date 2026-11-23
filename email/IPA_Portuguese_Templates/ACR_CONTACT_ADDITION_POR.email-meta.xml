@@ -4,30 +4,22 @@
     <encodingKey>UTF-8</encodingKey>
     <name>ACR_CONTACT_ADDITION_POR</name>
     <style>none</style>
-    <subject>Novo usuário adicionado à conta Intel® Partner Alliance</subject>
-    <textOnly>Confirme os detalhes da conta
+    <subject>Novo usuário adicionado à sua conta do programa de parceiros Intel</subject>
+    <textOnly>An individual has been added to the Intel Partner program account of {!Account.Name} by an Intel representative or another contact at your company.
 
-{!UserName},
+Company Name: {!Account.Name}
+Contact Added: Login ID {!ContactLoginId} with e-mail {!ContactEmail}
+Relationship (Role): {!AcrRoles}
 
-Uma pessoa foi adicionada à conta {!Account.Name} do programa Intel® Partner Alliance por um representante da Intel ou por outro contato existente em sua empresa.
+If you do not approve of this update, please login to remove the user. 
 
-Nome da empresa: {!Account.Name}
-ID da empresa: {!Account.AccountNumber}
-Contato adicionado: E-mail {!ContactEmail}
-Relação (Função): {!AcrRoles}
+(Link on login for both FPGA and CSP-
+https://ssl.intel.com/content/www/us/en/secure/my-intel/dashboard.html)
 
-Se você não aprovou essa alteração, faça logon para remover o contato.
-
-Se tiver perguntas, entre em contato conosco em https://signin.intel.com/ContactUs?Culture=pt-br
-
-
-Obrigado,
-Sua equipe Intel® Partner Alliance
-
-Esta mensagem foi enviada a você como uma importante comunicação comercial relacionada ao seu relacionamento atual com a Intel® Partner Alliance.
-© {!$Label.PRM_CurrentYear} Intel Corporation
-Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
-Privacidade | Cookies</textOnly>
+Questions? Contact Support here (link).
+Support links:
+for CSP- https://www.intel.com/content/www/us/en/partner/cloud-insider/forms/support.html
+for FPGA: https://signin.intel.com/ContactUs?Culture=en-US</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

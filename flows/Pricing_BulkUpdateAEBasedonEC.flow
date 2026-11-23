@@ -70,14 +70,14 @@
         <name>Pricing_AE_Insert_Value</name>
         <dataType>String</dataType>
         <value>
-            <stringValue>Add an Additional Account Executive to quotes with End Customer and Country Combination</stringValue>
+            <stringValue>Add an Additional Account Executive to End Customer and Country combination Quotes</stringValue>
         </value>
     </constants>
     <constants>
         <name>Pricing_AE_Update_Value</name>
         <dataType>String</dataType>
         <value>
-            <stringValue>Replace Account Executive on quotes with End Customer and Country Combination</stringValue>
+            <stringValue>Replace Account Executive on End Customer and Country combination Quotes</stringValue>
         </value>
     </constants>
     <constants>

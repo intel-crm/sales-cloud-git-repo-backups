@@ -183,16 +183,6 @@
         <fullName>PRM_Partner_Subscription_Id__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <label>Partner Subscription</label>
-        <lookupFilter>
-            <active>true</active>
-            <errorMessage>Inactive Subscriptions cannot be assigned to contact.</errorMessage>
-            <filterItems>
-                <field>PRM_Partner_Subscription__c.PRM_InActive_Ind__c</field>
-                <operation>equals</operation>
-                <value>False</value>
-            </filterItems>
-            <isOptional>false</isOptional>
-        </lookupFilter>
         <referenceTo>PRM_Partner_Subscription__c</referenceTo>
         <relationshipLabel>Contact Subscription Associations</relationshipLabel>
         <relationshipName>Contact_Subscription_Associations</relationshipName>
@@ -241,10 +231,9 @@
     <fields>
         <fullName>PRM_Status_Reason_Txt__c</fullName>
         <externalId>false</externalId>
-        <inlineHelpText>On update of any field, Status Reason should also be updated</inlineHelpText>
         <label>Status Reason</label>
         <length>250</length>
-        <required>true</required>
+        <required>false</required>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
@@ -291,16 +280,5 @@
     </recordTypes>
     <searchLayouts/>
     <sharingModel>ControlledByParent</sharingModel>
-    <validationRules>
-        <fullName>PRM_TrainingWebinarActivationRuleCheck</fullName>
-        <active>true</active>
-        <errorConditionFormula>AND(NOT( $Permission.PCC_Bypass_Automation ),
-    PRM_Partner_Subscription_Id__r.Name = &apos;Training and Webinar Communications&apos;,
-    ISCHANGED(PRM_Status_Nm__c),
-    ISPICKVAL(PRIORVALUE(PRM_Status_Nm__c), &apos;Inactive&apos;),
-    ISPICKVAL(PRM_Status_Nm__c, &apos;Active&apos;)
-)</errorConditionFormula>
-        <errorMessage>This record cannot be activated as the partner subscription is inactive.</errorMessage>
-    </validationRules>
     <visibility>Public</visibility>
 </CustomObject>

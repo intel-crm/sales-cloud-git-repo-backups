@@ -49,27 +49,43 @@
         <name>CRM_CST_Planning_Period__c</name>
     </fields>
     <fields>
-        <label><!-- Back Propagation By VP/TA --></label>
+        <label><!-- Back Propagation By TA --></label>
         <name>CST_Back_Propagation_By_TA__c</name>
+    </fields>
+    <fields>
+        <label><!-- New Account Level --></label>
+        <name>CST_New_Account_Level__c</name>
+        <picklistValues>
+            <masterLabel>Level 1</masterLabel>
+            <translation><!-- Level 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Level 2</masterLabel>
+            <translation><!-- Level 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Level 3</masterLabel>
+            <translation><!-- Level 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No Level</masterLabel>
+            <translation><!-- No Level --></translation>
+        </picklistValues>
     </fields>
     <fields>
         <label><!-- Account Primary Coverage --></label>
         <name>Coverage_Type__c</name>
         <picklistValues>
-            <masterLabel>Intel-led Account</masterLabel>
-            <translation><!-- Intel-led Account --></translation>
+            <masterLabel>Indirect Covered</masterLabel>
+            <translation><!-- Indirect Covered --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Not Covered Account</masterLabel>
-            <translation><!-- Not Covered Account --></translation>
+            <masterLabel>Intel Covered</masterLabel>
+            <translation><!-- Intel Covered --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Other-led Account</masterLabel>
-            <translation><!-- Other-led Account --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Partner-led Account</masterLabel>
-            <translation><!-- Partner-led Account --></translation>
+            <masterLabel>Not Covered</masterLabel>
+            <translation><!-- Not Covered --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -86,35 +102,35 @@
         <relationshipLabel><!-- Customer Feedbacks --></relationshipLabel>
     </fields>
     <fields>
-        <label><!-- Customer Name --></label>
+        <label><!-- DNR:Customer Name --></label>
         <name>Customer_Name_Formula__c</name>
     </fields>
     <fields>
-        <label><!-- Customer Name --></label>
+        <label><!-- Customer Name1 --></label>
         <name>Customer_Name__c</name>
     </fields>
     <fields>
         <label><!-- Director Feedback --></label>
         <name>DR_Feedback__c</name>
         <picklistValues>
-            <masterLabel>Add to Intel led</masterLabel>
-            <translation><!-- Add to Intel led --></translation>
+            <masterLabel>Add to Intel Covered</masterLabel>
+            <translation><!-- Add to Intel Covered --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Change Account Level</masterLabel>
+            <translation><!-- Change Account Level --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Change Ownership</masterLabel>
             <translation><!-- Change Ownership --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Change to Other Led</masterLabel>
-            <translation><!-- Change to Other Led --></translation>
+            <masterLabel>Change to Indirect Covered</masterLabel>
+            <translation><!-- Change to Indirect Covered --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Change to Partner</masterLabel>
-            <translation><!-- Change to Partner --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Change to Uncovered</masterLabel>
-            <translation><!-- Change to Uncovered --></translation>
+            <masterLabel>Change to Not Covered</masterLabel>
+            <translation><!-- Change to Not Covered --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Partial</masterLabel>
@@ -150,24 +166,24 @@
         <label><!-- Feedback --></label>
         <name>Feedback__c</name>
         <picklistValues>
-            <masterLabel>Add to Intel led</masterLabel>
-            <translation><!-- Add to Intel led --></translation>
+            <masterLabel>Add to Intel Covered</masterLabel>
+            <translation><!-- Add to Intel Covered --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Change Account Level</masterLabel>
+            <translation><!-- Change Account Level --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Change Ownership</masterLabel>
             <translation><!-- Change Ownership --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Change to Other Led</masterLabel>
-            <translation><!-- Change to Other Led --></translation>
+            <masterLabel>Change to Indirect Covered</masterLabel>
+            <translation><!-- Change to Indirect Covered --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Change to Partner</masterLabel>
-            <translation><!-- Change to Partner --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Change to Uncovered</masterLabel>
-            <translation><!-- Change to Uncovered --></translation>
+            <masterLabel>Change to Not Covered</masterLabel>
+            <translation><!-- Change to Not Covered --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Partial</masterLabel>
@@ -221,10 +237,6 @@
         <picklistValues>
             <masterLabel>APJ Hosted Sales Group</masterLabel>
             <translation><!-- APJ Hosted Sales Group --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>APJ India Sales Group</masterLabel>
-            <translation><!-- APJ India Sales Group --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>APJ Japan Sales Group</masterLabel>
@@ -287,8 +299,12 @@
             <translation><!-- EMEA Sales Group --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Global Solutions &amp; Services Sales Group</masterLabel>
-            <translation><!-- Global Solutions &amp; Services Sales Group --></translation>
+            <masterLabel>India Partner Led</masterLabel>
+            <translation><!-- India Partner Led --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>India Sales Group</masterLabel>
+            <translation><!-- India Sales Group --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>PRC Hosted Sales Group</masterLabel>
@@ -331,28 +347,28 @@
         <label><!-- VP Feedback --></label>
         <name>VP_Feedback__c</name>
         <picklistValues>
-            <masterLabel>Add to Intel led</masterLabel>
-            <translation><!-- Add to Intel led --></translation>
+            <masterLabel>Add to Intel Covered</masterLabel>
+            <translation><!-- Add to Intel Covered --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Approved</masterLabel>
             <translation><!-- Approved --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Change Account Level</masterLabel>
+            <translation><!-- Change Account Level --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Change Ownership</masterLabel>
             <translation><!-- Change Ownership --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Change to Other Led</masterLabel>
-            <translation><!-- Change to Other Led --></translation>
+            <masterLabel>Change to Indirect Covered</masterLabel>
+            <translation><!-- Change to Indirect Covered --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Change to Partner</masterLabel>
-            <translation><!-- Change to Partner --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Change to Uncovered</masterLabel>
-            <translation><!-- Change to Uncovered --></translation>
+            <masterLabel>Change to Not Covered</masterLabel>
+            <translation><!-- Change to Not Covered --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Partial</masterLabel>
@@ -363,6 +379,10 @@
             <translation><!-- Rejected --></translation>
         </picklistValues>
     </fields>
+    <recordTypes>
+        <label><!-- Country Manager Feedback --></label>
+        <name>CM_Feedback</name>
+    </recordTypes>
     <recordTypes>
         <label><!-- DR Feedback --></label>
         <name>DR_Feedback</name>
@@ -405,12 +425,20 @@
         <name>Prevent_Feedback_Edit</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- You can only select Americas Partner Led, EMEA Partner Led, APJ Partner Led, PRC Partner Led for Change to Partner feedback option and you can only select Undefined for Change to Uncovered feedback option. --></errorMessage>
+        <errorMessage><!-- You can only select Americas Partner Led, EMEA Partner Led, APJ Partner Led, PRC Partner Led, India Partner Led for Change to Indirect Covered feedback option and you can only select Undefined for Change to Uncovered feedback option. --></errorMessage>
         <name>Sales_Group_Validation</name>
     </validationRules>
     <webLinks>
         <label><!-- CRM_Update --></label>
         <name>CRM_Update</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- New_Approve --></label>
+        <name>New_Approve</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Reject_New --></label>
+        <name>Reject_New</name>
     </webLinks>
     <webLinks>
         <label><!-- Submit_Feedback --></label>

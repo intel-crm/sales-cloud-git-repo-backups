@@ -12,7 +12,12 @@
         <detailHeading>false</detailHeading>
         <editHeading>true</editHeading>
         <label>Information</label>
-        <layoutColumns/>
+        <layoutColumns>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>PCC_Change_Request_Line_Item__c</field>
+            </layoutItems>
+        </layoutColumns>
         <layoutColumns/>
         <style>TwoColumnsTopToBottom</style>
     </layoutSections>
@@ -163,7 +168,6 @@
     </relatedLists>
     <relatedLists>
         <fields>PCC_MM_ID__c</fields>
-        <fields>PCC_Old_MM_Id__c</fields>
         <fields>PCC_Ordering_Cd__c</fields>
         <fields>PCC_L5_Product_Name__c</fields>
         <fields>PCC_Design_Registration__c</fields>
@@ -176,7 +180,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00hD3000000PUwj</masterLabel>
+        <masterLabel>00hDf000004BqPS</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

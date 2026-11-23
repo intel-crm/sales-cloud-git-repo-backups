@@ -6,11 +6,11 @@
     <apex:includeScript value="{!URLFOR($Resource.Core_Jquery)}"/>
     <style type="text/css">
         .customPopup {
-            background-color: white; border-width: 1px; border-style: solid; z-index: 9999; left: 50%; border-radius:6px; padding:11px; position: absolute; width: 600px; margin-left: -240px; top:100px;
+        	background-color: white; border-width: 1px; border-style: solid; z-index: 9999; left: 50%; border-radius:6px; padding:11px; position: absolute; width: 600px; margin-left: -240px; top:100px;
         }
         .popupBackground{ background-color:black; opacity: 0.20; filter: alpha(opacity = 20); position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 9998; } 
         .closeButton {
-            float: right;
+        	float: right;
         }
         
         }
@@ -52,8 +52,8 @@
         var callFun = true;
         var keepCaseExists = false;
         var MoveCasesExists = false;
-        var caseCount = '{JSENCODE(!caseCount)}';
-        var hasAccessToAcctSelection = '{JSENCODE(!hasAccessToAcctSelection)}';
+        var caseCount = '{!caseCount}';
+        var hasAccessToAcctSelection = '{!hasAccessToAcctSelection}';
         if(hasAccessToAcctSelection == 'false'){
             $('[id$=errorMessage]').text('User do not have the permission to perform the operation. Only Data Ops can perform the change');
             return false;
@@ -119,7 +119,7 @@
             }
             console.log('===came here==='+lookupType);
             // Following is the url of Custom Lookup page. You need to change that accordingly
-            baseURL = "/apex/Core_CustomContactLookup?txt=" + txtId+'&conaccid='+'{!JSENCODE(currContact.Accountid)}';
+            baseURL = "/apex/Core_CustomContactLookup?txt=" + txtId+'&conaccid='+'{!currContact.Accountid}';
             
             // Following is the id of apex:form control "myForm". You need to change that accordingly
             baseURL = baseURL + "&frm=" + escapeUTF("{!$Component.myForm}");
@@ -179,7 +179,7 @@
                     <apex:outputPanel rendered="{!$User.UITheme == 'Theme3'}">
                         <br/>
                     </apex:outputPanel>
-                    <apex:outputtext value="{!HTMLENCODE(JSENCODE(moveAccoutWarningMessage))}" escape="false"/><br/><br/> <!--- US967150 --- 16/05/21--- Sai krishna--- Stored XSS--- appsec security vulnerability --->
+                    <apex:outputtext value="{!moveAccoutWarningMessage}" escape="false"/><br/><br/>
                     <div class="btns" style="{!IF($User.UITheme == 'Theme3', 'display:block;', 'display:none;')}">
                             <apex:commandButton value="Cancel" title="Close the popup"  action="{!closePopup}" styleClass="closeButton slds-button slds-button_neutral"  rerender="accId,popup"/> <!--action="{!closePopup}-->
                             <apex:commandButton value="Ok"  action="{!moveAccountchange}"  styleClass="closeButton slds-button slds-button_neutral" />

@@ -5,11 +5,6 @@
         }catch(err){
             console.log('Error during component initialization:' +  err);
         }
-        try{
-            helper.A(cmp,event,helper);
-        }catch(err){
-            console.log('Error during component initialization:' +  err);
-        }
     },
     saveResp:function(cmp,event,helper){
          try{

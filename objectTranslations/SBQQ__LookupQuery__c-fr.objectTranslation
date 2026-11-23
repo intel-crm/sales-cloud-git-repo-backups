@@ -239,6 +239,10 @@
         <label><!-- Tested Object --></label>
         <name>SBQQ__TestedObject__c</name>
         <picklistValues>
+            <masterLabel>Account</masterLabel>
+            <translation><!-- Account --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Product Option</masterLabel>
             <translation>Option produit</translation>
         </picklistValues>

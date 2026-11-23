@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessFlowMigration xmlns="http://soap.sforce.com/2006/04/metadata">
+    <destinationFlowDefinition>Ask_Commissions_Changing_Status_to_assigned_when_comment_created_by_End_user_1</destinationFlowDefinition>
+    <destinationFlowVersion>Ask_Commissions_Changing_Status_to_assigned_when_comment_created_by_End_user_1-2</destinationFlowVersion>
+    <developerName>myRule_1_301Df000000TpYEIA0</developerName>
+    <masterLabel>Ask Commissions-Changing Status to assigned when comment created by End user_1</masterLabel>
+    <migratedCriteriaLabel>Ask Commissions-Changing Status to assigned when comment created by End user</migratedCriteriaLabel>
+    <migratedCriteriaName>myRule_1</migratedCriteriaName>
+    <processVersion>Ask_Commissions_Changing_Status_to_assigned_when_comment_created_by_End_user-2</processVersion>
+</ProcessFlowMigration>

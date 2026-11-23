@@ -3,6 +3,11 @@
     <description>Permission Set to access Commission details by Commission Integration</description>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Business_Review__c.User_s_Manager__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Core_Commissionable_Transaction__c.Core_Account_ID__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -64,6 +69,26 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Core_Commissionable_Transaction__c.Core_Employee_Name__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_Commissionable_Transaction__c.Core_FC_Quarter_Name__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_Commissionable_Transaction__c.Core_FC_Revenue__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_Commissionable_Transaction__c.Core_Forecast_Product_Schedule__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_Commissionable_Transaction__c.Core_Goal__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -146,6 +171,16 @@
         <field>Core_Commissionable_Transaction__c.Core_WWID__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Opportunity.Core_Is_Processed__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>SPM_Account_Feedback__c.CRM_CST_Is_Active_Planning_Period__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>
     <label>Commission Integration User</label>
     <objectPermissions>
@@ -185,13 +220,5 @@
     <userPermissions>
         <enabled>true</enabled>
         <name>ApiEnabled</name>
-    </userPermissions>
-    <userPermissions>
-        <enabled>true</enabled>
-        <name>ApiUserOnly</name>
-    </userPermissions>
-    <userPermissions>
-        <enabled>true</enabled>
-        <name>BypassMFAForUiLogins</name>
     </userPermissions>
 </PermissionSet>

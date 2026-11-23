@@ -22,7 +22,7 @@ import LastModifiedById from '@salesforce/schema/Core_Solution_Areas__c.LastModi
 import LastModifiedDate from '@salesforce/schema/Core_Solution_Areas__c.LastModifiedDate';
 import searchSolutionStorage from '@salesforce/apex/Core_AddSolutionArea.searchSolutionStorage';
 import createOppSolution from '@salesforce/apex/Core_AddSolutionArea.createOppSolution';
-
+//import submitSolutionsforApproval from '@salesforce/apex/Core_AddSolutionArea.submitSolutionsforApproval';
 import showOpptySolution from '@salesforce/apex/Core_AddSolutionArea.showOpptySolution'; //TWC3123-5794
 import hideTabMessage from '@salesforce/label/c.Core_HideSolutionsTab'; //TWC3123-5794
 
@@ -30,6 +30,8 @@ import { getRecordNotifyChange } from 'lightning/uiRecordApi';
 //import sendEmailController from '@salesforce/apex/Core_AddSolutionArea.sendEmailController';  AAQ solution
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 //import NewSolution from '@salesforce/label/c.Core_AAQSolutions_NewSolution';  //AAQ solution
+import { NavigationMixin } from 'lightning/navigation';
+import { encodeDefaultFieldValues } from 'lightning/pageReferenceUtils';
 
 import Objects_Type_AWL from "@salesforce/apex/Core_AddSolutionArea.Get_Types_Application_Workload"; 
 import Objects_Type_TE from "@salesforce/apex/Core_AddSolutionArea.Get_Types_TechnologyEnabled"; 
@@ -66,14 +68,13 @@ const columns = [
   { label: 'Region of availability',initialWidth: 180, fieldName: 'Core_Region_of_availability__c'},
 	{ label: 'Version', initialWidth: 180,fieldName: 'Core_Version__c'}
 ];
-
-
 export default class Core_AddSolutionArea extends LightningElement {
 
   label = {
     searchHelpText,
     hideTabMessage //TWC3123-5794
   };
+@api objectApiName;
 @track isRecordOpen = false;
 @track TypeOptions_AWL;
 @track TypeOptions_TE;
@@ -92,6 +93,11 @@ SP_Search = '';
 Txt_Search = '';
 columns = columns;
   
+uiRecordToDisplay;
+showSections;
+isOpportunity=false;
+activeSectionNames = [];
+
   SaAreaName = '';
   SaAreaOwnerEmail = '';
   SaAreaDescription = '';
@@ -119,11 +125,13 @@ isPageChanged = false;
 @api isPCC=false; //TWC3123-5794
 
   @track isLoading = false;
+  @track isShow = false;
 @track SaList= [];
   selectedSolAreaIds =[];
 @api recordId;
 @track recId;
-	
+call=false;
+
 		@wire (searchSolutionStorage, {
       oppoIds: '$recordId',
       SaStrType: '$SaAreaType',
@@ -359,8 +367,6 @@ searchSolutionAreaText(event){
     this.Txt_Search =    searchString;
 
     this.delayTimeout = setTimeout(() => {
-		
-//	Utility = new utilityModule();
 
     this.Sa_AWL_Search = this.AWL_Search;
     this.Sa_TE_Search = this.TE_Search;
@@ -373,7 +379,6 @@ searchSolutionAreaText(event){
 
 searchSolutionAreaAction(event){
 
-//	Utility = new utilityModule();
     window.clearTimeout(this.delayTimeout);
     this.delayTimeout = setTimeout(() => {
 
@@ -396,7 +401,9 @@ searchSolutionAreaAction_AWL(event){
 				 }
 				 if(each.name=='Search_Indus_usecase') 
 				 {
-						 this.IUC_Search = each.value;
+						 //this.IUC_Search = each.value;
+             this.IUC_Search = JSON.parse(each.value);
+
 				 }
 				 if(each.name=='Search_Tech_enabled') 
 				 {
@@ -420,7 +427,6 @@ searchSolutionAreaAction_AWL(event){
    window.clearTimeout(this.delayTimeout);
     this.delayTimeout = setTimeout(() => {
 
-//	Utility = new utilityModule();
     this.Sa_AWL_Search = this.AWL_Search;
     this.Sa_TE_Search = this.TE_Search;
     this.Sa_IUC_Search = this.IUC_Search;
@@ -463,8 +469,7 @@ searchSolutionAreaAction_IUC(event){
 
   window.clearTimeout(this.delayTimeout);
     this.delayTimeout = setTimeout(() => {
-	
-//	Utility = new utilityModule();
+
     this.Sa_AWL_Search = this.AWL_Search;
     this.Sa_TE_Search = this.TE_Search;
     this.Sa_IUC_Search = this.IUC_Search;
@@ -480,7 +485,7 @@ searchSolutionAreaAction_SP(event){
   this.SP_Search =    spsearchString; 
 
   this.delayTimeout = setTimeout(() => {
-//Utility = new utilityModule();
+
   this.Sa_AWL_Search = this.AWL_Search;
   this.Sa_TE_Search = this.TE_Search;
   this.Sa_IUC_Search = this.IUC_Search;
@@ -558,7 +563,7 @@ searchSolutionAreaAction_TE(event){
     
   window.clearTimeout(this.delayTimeout);
     this.delayTimeout = setTimeout(() => {
-//	Utility = new utilityModule();
+
     this.Sa_AWL_Search = this.AWL_Search;
     this.Sa_TE_Search = this.TE_Search;
     this.Sa_IUC_Search = this.IUC_Search;
@@ -683,5 +688,127 @@ handleClearEntry() {
                     this.dispatchEvent(evt);
                   });
               }
+  }
+// <---------------DO NOT MIGRATE and REMOVE, ADDED FOR NEW SOLUTION POC------------------FROM 690 TO 822----------->
+
+  newSolution(){
+    this.isModalOpen = true;
+    this.isShow = true;
+  }
+
+  handleLoad(event) {
+      this.isShow = true;
+      let layoutParse = JSON.parse(JSON.stringify( Object.values(event.detail.layout.sections)));
+      this.uiRecordToDisplay = Object.values(layoutParse);
+
+      // Get the Section headers from the layout. Populate activeSectionNames so the accordion will have the tabs open when it loads.
+      for(const tabs of layoutParse){
+          //Added By Hira
+          let items;
+          let layout=Object.values(tabs);
+          let sec=layout.sections;
+
+            layout[4].forEach((element, index, array) => {
+            console.log(element.layoutItems); // 100, 200, 300
+            console.log(index); // 0, 1, 2
+            console.log(array); // same myArray object 3 times
+            });
+          this.activeSectionNames.push(tabs.id);
+      } 
+
+      this.showRow();    
+  }
+
+  showRow(){
+      let forData = this.uiRecordToDisplay
+
+     for(const sec of forData) {
+          sec.showSection = false;
+          for(const lr of Object.values(sec.layoutRows)) {
+          
+              for(const li of Object.values(lr.layoutItems)) {
+                  for(const l of Object.values(li.layoutComponents)) {
+                          if(li.editableForNew == true){
+                                l.showField = true;
+                                sec.showSection = true;
+                                 if(l.apiName === 'Core_Status__c'){
+                                      l.disabled= true;
+                                  }else{
+                                      l.disabled=false;
+                                  }
+                          }
+                          else{
+                                l.showField = false;
+                                //this.isOpportunity=false;
+                                sec.showSection = true;
+                          }
+                          if(l.apiName === 'Opportunity__c'){
+                            this.isOpportunity=true;
+                            this.opportunity=true;
+                            l.showField = false;
+                          }
+                  } 
+              }
+          }
       }
+      
+
+      // reset the uiRecordView and Edit with the updated array information 
+      this.uiRecordToDisplay = JSON.parse(JSON.stringify(forData));
+      if(this.uiRecordToDisplay){
+        this.call=true;
+      }
+      this.isShow = false;
+  }
+
+  renderedCallback() {''
+        if(this.call){
+          this.uiRecordToDisplay;
+        }
+    }
+
+  handleSubmit(event){
+    this.isShow = true;
+    event.preventDefault();
+    console.info("START handleSubmit");
+    const Fields = event.detail.fields;
+    //Fields.Opportunity_ID__c=this.recordId;
+    Fields.Core_Status__c = 'Pending';
+    Fields.Opportunity__c = this.recordId;
+    this.template.querySelector('lightning-record-edit-form').submit(Fields);
+    //this.createdRecordId = event.detail.id;
+  }
+  handleSuccess(event){
+    this.isShow = false;
+    const evt = new ShowToastEvent({
+        title: "Solution request submitted",
+        message: "Requested Solution: " + event.detail.fields.Name.value ,
+        variant: "success"
+    });
+    this.dispatchEvent(evt);
+    console.info("Event Detail < ", event.detail, " >");
+    this.closeModal();
+    //this.submitForApproval(event.detail.id); 
+  }
+
+  /*submitForApproval(solId){
+    submitSolutionsforApproval({ oppId: this.recordId,solId: solId })
+      .then((result) => {
+        this.contacts = result;
+      })
+      .catch((error) => {
+        this.error = error;
+      });
+  }*/
+
+  handleError(event){
+    console.info("START handleError");
+    this.isShow = false;
+    let message = event.detail.detail;
+    const scroll = this.template.querySelector('lightning-messages');
+    scroll.scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"});
+    console.info("END handleError < ", event.detail, " >", message);
+  }
+// <---------------DO NOT MIGRATE and REMOVE, ADDED FOR NEW SOLUTION POC------------------FROM 690 TO 822----------->
+
 }

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessFlowMigration xmlns="http://soap.sforce.com/2006/04/metadata">
+    <destinationFlowDefinition>Ask_Commissions_Update_Initial_Response_field_when_Admin_First_Commented_1</destinationFlowDefinition>
+    <destinationFlowVersion>Ask_Commissions_Update_Initial_Response_field_when_Admin_First_Commented_1-3</destinationFlowVersion>
+    <developerName>myRule_1_301Df000000TpZ2IAK</developerName>
+    <masterLabel>Ask Commissions - Update Initial Response field when Admin First Commented_1</masterLabel>
+    <migratedCriteriaLabel>Ask Commissions - Update Initial Response field when Admin First Commented</migratedCriteriaLabel>
+    <migratedCriteriaName>myRule_1</migratedCriteriaName>
+    <processVersion>Ask_Commissions_Update_Initial_Response_field_when_Admin_First_Commented-1</processVersion>
+</ProcessFlowMigration>

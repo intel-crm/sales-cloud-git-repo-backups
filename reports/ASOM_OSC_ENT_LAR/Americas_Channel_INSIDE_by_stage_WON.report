@@ -23,7 +23,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
-            <value>INSIDE</value>
+            <value>OSC</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Sales_Groups__c</column>
@@ -37,7 +37,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Napolitano</value>
+            <value>hain</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -78,6 +78,8 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

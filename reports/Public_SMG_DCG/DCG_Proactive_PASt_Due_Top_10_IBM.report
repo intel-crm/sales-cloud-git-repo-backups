@@ -127,7 +127,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>IBM Corp,Redhat,IBM Software &amp; Global Services,IBM GTS,IBM Service</value>
+            <value>IBM Corp,Redhat</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -147,7 +147,7 @@
         <field>FULL_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>DCG Proactive PAST Due - Top 10+IBM</name>
+    <name>DCG Proactive PASt Due - Top 10+IBM</name>
     <params>
         <name>terr</name>
         <value>all</value>

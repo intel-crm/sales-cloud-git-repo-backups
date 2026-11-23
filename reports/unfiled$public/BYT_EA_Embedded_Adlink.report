@@ -70,7 +70,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Raptor Lake S</value>
+            <value>Bay Trail</value>
         </criteriaItems>
         <criteriaItems>
             <column>Case.Core_Product_Organization__c</column>
@@ -88,13 +88,13 @@
         </criteriaItems>
         <language>en_US</language>
     </filter>
-    <format>Summary</format>
+    <format>Matrix</format>
     <groupingsDown>
         <dateGranularity>Year</dateGranularity>
         <field>CREATED_DATE</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>RPL-S EA Embedded - Adlink</name>
+    <name>BYT EA Embedded - Adlink</name>
     <params>
         <name>units</name>
         <value>h</value>

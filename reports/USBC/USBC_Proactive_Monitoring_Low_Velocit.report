@@ -119,7 +119,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>cook,weston,haynes,gordon,descheemaeker,o&apos;donnell,swanger,herrmann,wood</value>
+            <value>cook,weston,haynes,gordon,descheemaeker,o&apos;donnell,swanger,mushahwar,herrmann,rodman,wood</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FULL_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>benjamin,miller,baltazar ruiz,gregory thomson,zackary smiley</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

@@ -28,11 +28,8 @@
     <columns>
         <field>Case.Core_Sub_Status__c</field>
     </columns>
-    <columns>
-        <field>CONTACT.NAME</field>
-    </columns>
     <filter>
-        <booleanFilter>1 AND 2</booleanFilter>
+        <booleanFilter>1 AND (2 OR (3 OR 4))</booleanFilter>
         <criteriaItems>
             <column>OPEN</column>
             <columnToColumn>false</columnToColumn>
@@ -46,6 +43,20 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>jonas Astrom</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT.NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>barco nv2</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT.NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>INFINERA</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

@@ -12,6 +12,10 @@
             <masterLabel>Opportunity</masterLabel>
             <translation>商談</translation>
         </picklistValues>
+        <picklistValues>
+            <masterLabel>Quote</masterLabel>
+            <translation><!-- Quote --></translation>
+        </picklistValues>
     </fields>
     <nameFieldLabel>チェーン名</nameFieldLabel>
 </CustomObjectTranslation>

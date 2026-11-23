@@ -65,6 +65,12 @@
                 <identifier>RecordSF_Account_cField</identifier>
             </fieldInstance>
         </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.CST_New_Account_Level__c</fieldItem>
+                <identifier>RecordCST_New_Account_Level__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
         <name>Facet-eeba8caa-2669-4090-b4a4-f6ce7411c513</name>
         <type>Facet</type>
     </flexiPageRegions>

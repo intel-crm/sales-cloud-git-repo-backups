@@ -1,0 +1,4 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:lightningQuickAction,force:hasRecordId" access="global" >
+    <!--<aura:attribute name="recordId" type="Id" />-->
+    <c:pRM_createDesignRegistration></c:pRM_createDesignRegistration>
+</aura:component>

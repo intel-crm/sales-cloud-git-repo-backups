@@ -152,7 +152,7 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <externalSharingModel>Private</externalSharingModel>
+    <externalSharingModel>ReadWrite</externalSharingModel>
     <fields>
         <fullName>Core_BU_Segment__c</fullName>
         <externalId>false</externalId>
@@ -292,7 +292,6 @@
     <label>BU Mapping Table</label>
     <listViews>
         <fullName>All</fullName>
-        <columns>Core_Code__c</columns>
         <columns>Core_Product_Type__c</columns>
         <columns>Core_Division_Shortname__c</columns>
         <columns>Core_Product_Segment__c</columns>
@@ -301,9 +300,6 @@
         <columns>Core_BU_Segment__c</columns>
         <columns>Core_Weightage__c</columns>
         <columns>NAME</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>LAST_UPDATE</columns>
-        <columns>UPDATEDBY_USER</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
         <language>en_US</language>

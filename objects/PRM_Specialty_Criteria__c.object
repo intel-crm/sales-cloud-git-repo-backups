@@ -204,8 +204,6 @@
     <label>Requirement Criteria</label>
     <listViews>
         <fullName>All</fullName>
-        <columns>NAME</columns>
-        <columns>PRM_Type_Nm__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>

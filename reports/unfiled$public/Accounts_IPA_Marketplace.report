@@ -51,6 +51,9 @@
         <field>FK_ID</field>
     </columns>
     <columns>
+        <field>Account.Core_IPA_Partner_Speciality__c</field>
+    </columns>
+    <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>Account.Core_Partner_Alliance_Program_Member__c</field>
     </columns>

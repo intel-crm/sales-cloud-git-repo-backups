@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecommendationStrategy xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aiLoad>
+        <label>Training Recommendations_EinsteinLoad</label>
+        <name>Training_Recommendations_EinsteinLoad</name>
+        <acceptanceLabel>Accept</acceptanceLabel>
+        <actionReference>Select_Contact_and_Email</actionReference>
+        <descriptionField>Training_Description__c</descriptionField>
+        <recommendationDefinitionDevName>mlrd_0PpDf0000004HDWKA2_v0</recommendationDefinitionDevName>
+        <rejectionLabel>Decline</rejectionLabel>
+        <titleField>Training_Link__c</titleField>
+    </aiLoad>
+    <contextRecordType>Contact</contextRecordType>
+    <label>Training Recommendations_Strategy Builder</label>
+    <union>
+        <childNode>Training_Recommendations_EinsteinLoad</childNode>
+        <label>Output</label>
+        <name>Output_f81e095f247f40af8188b61985bfccfa</name>
+    </union>
+</RecommendationStrategy>

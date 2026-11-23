@@ -10,10 +10,11 @@
     </aura:set>
     <div class="slds-m-around_small">
       <p class="slds-m-around_small">
-        For the purpose of the End Customer and Project specified in this quote, any approved quote line below is offered 
-          subject to your acceptance of the Terms and Conditions in the
-        <a href="{!v.url}" target="_blank"> IQR Quote Letter</a>
-        delivered to you.
+        For the purpose of the End Customer and Project specified in this quote,
+        any approved quote line below is offered subject to your acceptance of
+        the
+        <a href="{!v.url}" target="_blank"> Terms and Conditions</a>
+        of the Intel Quote Request application.
       </p>
     </div>
     <aura:set attribute="footer"></aura:set>

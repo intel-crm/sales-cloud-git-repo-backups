@@ -1,0 +1,48 @@
+{
+  "appPageId" : "75454db5-a198-4cab-bc87-c7a9e47f3cdf",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "85cecd4d-7e60-48bc-a2b7-76258e2929f1",
+  "label" : "Error",
+  "regions" : [ {
+    "id" : "3ec7f43a-1207-4a96-8b7b-dd685bf728d1",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "richTextValue" : " <div class='slds-grid slds-grid--vertical slds-align--absolute-center slds-container--large'>   <div class='slds-align-middle slds-m-bottom--xx-large slds-m-top--xx-large' alt='Page not available'>      <img src='/sfsites/c/img/community/slds/messaging/illustration-page-not-found.png' class='slds-p-horizontal--large'/>   </div>   <h4 class='slds-text-align--center slds-text-heading--large slds-text-color--weak slds-m-bottom--small'>Page not available</h4>    <p class='slds-text-align--center slds-text-heading--medium slds-text-color--weak'>Maybe the page was deleted, the URL is incorrect, or something else went wrong. If you know the page exists but you still can’t get to it, please ask the community administrator for help.</p>  </div>"
+      },
+      "componentName" : "forceCommunity:htmlBlock",
+      "id" : "8a376fa7-412d-4def-afbc-3bdb1875c2b0",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "0380c970-9e41-47af-b8c3-64bb7dd1c98c",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "15d72d5e-9138-4296-ad25-006fcaacf6bd",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Error"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "776ea3d0-c61d-4bd5-92ec-f2c68f743670",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "7344d6ad-c239-4f97-a30e-8488f39fb2e8",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "error"
+}

@@ -1,0 +1,32 @@
+<template>
+  <div style= "background-color:#091a3e; padding:15px">
+    <div class="slds-truncate card-color text-color" style = "font-size: 15px;"><h2><b>Duplicate Accounts</b></h2></div>
+    <br/>
+    <table  >
+      <thead  class ="">
+        <tr class="slds-line-height_reset">
+          <th class="card-color" scope="col">
+            <div class="slds-truncate text-color" title="Region">Region</div>
+          </th>
+          <th class="card-color" scope="col">
+            <div class="slds-truncate text-color" title="Duplicate Accounts">Duplicates</div>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <template for:each={regionCount} for:item="rCount">
+          <tr key={rCount.regionName} class="slds-hint-parent">
+            <th scope="row">
+                <div class="slds-truncate text-color" title="Region">{rCount.regionName}</div>
+            </th>
+            <td >
+                <div class="slds-truncate text-color" title="Region Count">{rCount.recordCount}</div>
+            </td>
+          </tr>
+        </template>
+      </tbody>
+      </table>
+      <lightning-button variant="inverse"  label="View Report(Duplicate Accounts)"  title="Duplicate Accounts" onclick={navigateToDetail}
+      ></lightning-button>
+    </div>
+</template>

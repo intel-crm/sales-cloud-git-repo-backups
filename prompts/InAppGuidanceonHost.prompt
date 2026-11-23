@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>In App Guidance on Host</masterLabel>
+    <promptVersions>
+        <body>&lt;p&gt;Click on this button to generate temporary checkout license. If all the criteria for license generation are satisfied then the license file will be generated.&lt;/p&gt;</body>
+        <customApplication>Core_PSG_Quoting_Licensing</customApplication>
+        <delayDays>1</delayDays>
+        <description>Guide users on Host Object.</description>
+        <dismissButtonLabel>Cancel</dismissButtonLabel>
+        <displayType>Targeted</displayType>
+        <elementRelativePosition>BottomCenter</elementRelativePosition>
+        <endDate>2023-07-27</endDate>
+        <isPublished>true</isPublished>
+        <masterLabel>In App Guidance on Host Step 1</masterLabel>
+        <publishedDate>2023-07-17</publishedDate>
+        <referenceElementContext>{&quot;scope&quot;:{&quot;attributes&quot;:{&quot;id&quot;:&quot;sfdc:QuickAction.Sales_Host__c.Sales_Generate_Temporary_Checkout_license&quot;}},&quot;version&quot;:2}</referenceElementContext>
+        <shouldDisplayActionButton>false</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>true</shouldIgnoreGlobalDelay>
+        <startDate>2023-07-13</startDate>
+        <stepNumber>1</stepNumber>
+        <targetPageKey1>Sales_Host__c</targetPageKey1>
+        <targetPageKey2>view</targetPageKey2>
+        <targetPageType>standard__recordPage</targetPageType>
+        <themeColor>Theme1</themeColor>
+        <themeSaturation>Dark</themeSaturation>
+        <timesToDisplay>20</timesToDisplay>
+        <title>Generate Temporary Checkout License</title>
+        <uiFormulaRule>
+            <criteria>
+                <leftValue>{!$User.Profile.Key}</leftValue>
+                <operator>EQUAL</operator>
+                <rightValue>Admin</rightValue>
+            </criteria>
+        </uiFormulaRule>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>SpecificProfiles</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+    <promptVersions>
+        <body>&lt;p&gt;Click on this button to Generate license on this host. All the licenses where this host is assigned will be considered for license generation.&lt;/p&gt;</body>
+        <customApplication>Core_PSG_Quoting_Licensing</customApplication>
+        <dismissButtonLabel>Cancel</dismissButtonLabel>
+        <displayType>Targeted</displayType>
+        <elementRelativePosition>BottomCenter</elementRelativePosition>
+        <isPublished>false</isPublished>
+        <masterLabel>In App Guidance on Host Step 2</masterLabel>
+        <referenceElementContext>{&quot;scope&quot;:{&quot;attributes&quot;:{&quot;id&quot;:&quot;sfdc:QuickAction.Sales_Host__c.Generate_License&quot;}},&quot;version&quot;:2}</referenceElementContext>
+        <shouldDisplayActionButton>false</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>false</shouldIgnoreGlobalDelay>
+        <stepNumber>2</stepNumber>
+        <targetPageKey1>Sales_Host__c</targetPageKey1>
+        <targetPageKey2>view</targetPageKey2>
+        <targetPageType>standard__recordPage</targetPageType>
+        <title>Generate License</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+    <promptVersions>
+        <body>&lt;p&gt;This tab shows all the licenses where this host is assigned.&lt;/p&gt;</body>
+        <customApplication>Core_PSG_Quoting_Licensing</customApplication>
+        <dismissButtonLabel>Cancel</dismissButtonLabel>
+        <displayPosition>MiddleCenter</displayPosition>
+        <displayType>FloatingPanel</displayType>
+        <image>LicenseTab2</image>
+        <imageAltText>License Tab</imageAltText>
+        <imageLocation>Bottom</imageLocation>
+        <isPublished>false</isPublished>
+        <masterLabel>In App Guidance on Host Step 3</masterLabel>
+        <shouldDisplayActionButton>false</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>false</shouldIgnoreGlobalDelay>
+        <stepNumber>3</stepNumber>
+        <targetPageKey1>Sales_Host__c</targetPageKey1>
+        <targetPageKey2>view</targetPageKey2>
+        <targetPageType>standard__recordPage</targetPageType>
+        <title>License Tab</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+    <promptVersions>
+        <body>&lt;p&gt;This tab shows the generated license files,&lt;/p&gt;</body>
+        <customApplication>Core_PSG_Quoting_Licensing</customApplication>
+        <dismissButtonLabel>Cancel</dismissButtonLabel>
+        <displayPosition>MiddleCenter</displayPosition>
+        <displayType>FloatingPanel</displayType>
+        <image>LIcGenReq1</image>
+        <imageAltText>License Generation Request</imageAltText>
+        <imageLocation>Bottom</imageLocation>
+        <isPublished>false</isPublished>
+        <masterLabel>In App Guidance on Host Step 4</masterLabel>
+        <shouldDisplayActionButton>false</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>false</shouldIgnoreGlobalDelay>
+        <stepNumber>4</stepNumber>
+        <targetPageKey1>Sales_Host__c</targetPageKey1>
+        <targetPageKey2>view</targetPageKey2>
+        <targetPageType>standard__recordPage</targetPageType>
+        <title>License Generation Request</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+    <promptVersions>
+        <body>&lt;p&gt;Click on this button to Activate/ Deactivate the Host.&lt;/p&gt;</body>
+        <customApplication>Core_PSG_Quoting_Licensing</customApplication>
+        <dismissButtonLabel>Cancel</dismissButtonLabel>
+        <displayType>Targeted</displayType>
+        <elementRelativePosition>BottomCenter</elementRelativePosition>
+        <image>X2Demo</image>
+        <imageAltText>Visual flow</imageAltText>
+        <imageLocation>Right</imageLocation>
+        <isPublished>false</isPublished>
+        <masterLabel>In App Guidance on Host Step 5</masterLabel>
+        <referenceElementContext>{&quot;scope&quot;:{&quot;attributes&quot;:{&quot;id&quot;:&quot;sfdc:QuickAction.Sales_Host__c.Activate_Deactivate_Host&quot;}},&quot;version&quot;:2}</referenceElementContext>
+        <shouldDisplayActionButton>false</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>false</shouldIgnoreGlobalDelay>
+        <stepNumber>5</stepNumber>
+        <targetPageKey1>Sales_Host__c</targetPageKey1>
+        <targetPageKey2>view</targetPageKey2>
+        <targetPageType>standard__recordPage</targetPageType>
+        <title>Activate/Deactivate Host</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+</Prompt>

@@ -188,6 +188,71 @@
         </valueSet>
     </fields>
     <fields>
+        <fullName>Core_Account_Category__c</fullName>
+        <label>Account Category</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Distributors</fullName>
+                    <default>false</default>
+                    <label>Distributors</label>
+                </value>
+                <value>
+                    <fullName>Regional Co-Sell Partners</fullName>
+                    <default>false</default>
+                    <label>Regional Co-Sell Partners</label>
+                </value>
+                <value>
+                    <fullName>Regional GSI/ISV/MSP</fullName>
+                    <default>false</default>
+                    <label>Regional GSI/ISV/MSP</label>
+                </value>
+                <value>
+                    <fullName>Regional Retailer</fullName>
+                    <default>false</default>
+                    <label>Regional Retailer</label>
+                </value>
+                <value>
+                    <fullName>Region Branded Disti</fullName>
+                    <default>false</default>
+                    <label>Region Branded Disti</label>
+                </value>
+                <value>
+                    <fullName>Region Direct OxM Accts (non-T30)</fullName>
+                    <default>false</default>
+                    <label>Region Direct OxM Accts (non-T30)</label>
+                </value>
+                <value>
+                    <fullName>Region Named B2B End User</fullName>
+                    <default>false</default>
+                    <label>Region Named B2B End User</label>
+                </value>
+                <value>
+                    <fullName>Region Named Billings Accts</fullName>
+                    <default>false</default>
+                    <label>Region Named Billings Accts</label>
+                </value>
+                <value>
+                    <fullName>Strategic Acct/Country Opportunity</fullName>
+                    <default>false</default>
+                    <label>Strategic Acct/Country Opportunity</label>
+                </value>
+                <value>
+                    <fullName>Top 30 Global Billings</fullName>
+                    <default>false</default>
+                    <label>Top 30 Global Billings</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
         <fullName>Core_Account__c</fullName>
         <label>Account</label>
         <referenceTo>Account</referenceTo>

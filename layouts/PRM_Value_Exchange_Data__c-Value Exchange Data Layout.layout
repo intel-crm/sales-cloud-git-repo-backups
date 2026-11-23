@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
-    <excludeButtons>Submit</excludeButtons>
     <layoutSections>
         <customLabel>false</customLabel>
         <detailHeading>false</detailHeading>
@@ -9,43 +8,15 @@
         <layoutColumns>
             <layoutItems>
                 <behavior>Required</behavior>
-                <field>Name</field>
+                <field>PRM_Account_Id__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Required</behavior>
-                <field>PRM_Partner_Role_Nm__c</field>
+                <field>PRM_Change_Date_Dt__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Required</behavior>
                 <field>PRM_Country_Market_Type_Nm__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>PRM_Training_Credit_Points_Count_Nbr__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>PRM_Sales_Amount_Nbr__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>PRM_Number_Of_Employees_Nbr__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>PRM_Total_Achieved_Competency_Nbr__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>PRM_MP_Solutions_Count_Nbr__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>PRM_Type_Of_Solutions_Txt__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>PRM_Total_Sales_Out_Units_Nbr__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Required</behavior>
@@ -53,47 +24,19 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Required</behavior>
-                <field>PRM_To_Dt__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Required</behavior>
-                <field>PRM_Account_Id__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>PRM_One_Partner_Id__c</field>
+                <field>PRM_Partner_Role_Nm__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Required</behavior>
                 <field>PRM_Tier_Id__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>PRM_Design_Registration_Count_Nbr__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>PRM_Sales_Calculation_Group_Txt__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>PRM_Revenue_Source_Txt__c</field>
+                <behavior>Required</behavior>
+                <field>PRM_To_Dt__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Required</behavior>
-                <field>PRM_Change_Date_Dt__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>PRM_Processed_Date_Time_Dt__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>PRM_Value_Exchange_ext_id__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>PRM_TimePeriod_Nm__c</field>
+                <field>Name</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -124,24 +67,26 @@
         <style>TwoColumnsTopToBottom</style>
     </layoutSections>
     <layoutSections>
-        <customLabel>true</customLabel>
+        <customLabel>false</customLabel>
         <detailHeading>false</detailHeading>
         <editHeading>true</editHeading>
-        <label>Custom Links</label>
         <layoutColumns/>
         <layoutColumns/>
         <layoutColumns/>
         <style>CustomLinks</style>
     </layoutSections>
+    <miniLayout>
+        <fields>PRM_Account_Id__c</fields>
+        <fields>PRM_Change_Date_Dt__c</fields>
+        <fields>PRM_Country_Market_Type_Nm__c</fields>
+        <fields>PRM_From_Dt__c</fields>
+        <fields>PRM_Partner_Role_Nm__c</fields>
+        <fields>PRM_Tier_Id__c</fields>
+        <fields>PRM_To_Dt__c</fields>
+    </miniLayout>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>
     <showInteractionLogPanel>false</showInteractionLogPanel>
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
-    <summaryLayout>
-        <masterLabel>00h6C000000FTp7</masterLabel>
-        <sizeX>4</sizeX>
-        <sizeY>0</sizeY>
-        <summaryLayoutStyle>Default</summaryLayoutStyle>
-    </summaryLayout>
 </Layout>

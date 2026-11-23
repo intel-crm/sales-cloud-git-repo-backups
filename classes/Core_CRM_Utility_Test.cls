@@ -120,11 +120,13 @@ public class Core_CRM_Utility_Test {
         Core_CRM_Utility.updateCompetitorData( 'AMD' , 'None','Test', opp.Id);
        
         }
-        
     @isTest static void getTagsCountTest(){
         Test.startTest();
         Map<String, Object> result = Core_CRM_Utility.getTagsWithCount(5, 0, '');
         Test.stopTest();
         System.assertEquals(true,result.size() > 1);
-    }   
+    }
+        
+        
+    
 }

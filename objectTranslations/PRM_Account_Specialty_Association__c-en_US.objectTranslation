@@ -17,10 +17,6 @@
         <relationshipLabel><!-- Account Specialty Associations --></relationshipLabel>
     </fields>
     <fields>
-        <label><!-- Account Type --></label>
-        <name>PRM_Account_Type__c</name>
-    </fields>
-    <fields>
         <label><!-- End Date --></label>
         <name>PRM_End_Date_Dt__c</name>
     </fields>
@@ -63,10 +59,6 @@
     <fields>
         <label><!-- Status Reason --></label>
         <name>PRM_Status_Reason_Txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Suppress Email --></label>
-        <name>PRM_Suppress_Email__c</name>
     </fields>
     <startsWith>Consonant</startsWith>
     <validationRules>

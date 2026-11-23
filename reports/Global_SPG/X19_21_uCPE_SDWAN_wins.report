@@ -125,7 +125,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>includes</operator>
-            <value>NFV - SD-WAN,NFV - uCPE</value>
+            <value>NFV - SD-WAN</value>
         </criteriaItems>
         <criteriaItems>
             <column>Account.Core_Account_Type__c</column>

@@ -14,7 +14,8 @@ public class Core_IQR_IntelProductDataScheduler {
     public static void Core_IQR_IntelProductDataScheduler() {  
         
     	try{          
-        	Database.executeBatch(new Core_IQR_IntelProductData());         
+        	Database.executeBatch(new Core_IQR_IntelProductData());  
+            
         }
         catch(exception e){
         	system.debug('**exception** -->'+ e);

@@ -7,28 +7,12 @@ public with sharing class PMP_SearchCompanyLeadGenController extends PMP_SearchW
    @AuraEnabled
     public static LeadGenSettings getExistingSettings(String partnerId){
         PMP_Company__c partner;
-        List<PMP_Company__c> partnerList = new List<PMP_Company__c>();
-        //JB start
-        System.debug('12::'+partnerId);
-        if(Schema.sObjectType.PMP_Company__c.isAccessible() ){  //PMD Fixes
-         
-            if(partnerId!=NULL)
-            {partnerList = [SELECT toLabel(PMP_Company_Lead_Gen_Language_Nm__c)
-                   ,PMP_Is_Enabled_Lead_Gen_Nm__c, PMP_Is_Lead_Gen_Limited_Nm__c
-                   from PMP_Company__c WHERE id =: partnerId];      
-            }
-        }
         
-        if(!partnerList.isEmpty() && partnerList.size()>0)
-        {
-            partner=partnerList[0];
-        }
         
-        /*if(Schema.sObjectType.PMP_Company__c.isAccessible()){  //PMD Fixes
         partner = [SELECT toLabel(PMP_Company_Lead_Gen_Language_Nm__c)
                    ,PMP_Is_Enabled_Lead_Gen_Nm__c, PMP_Is_Lead_Gen_Limited_Nm__c
                    from PMP_Company__c WHERE id =: partnerId];        
-        }*/
+        
         
         LeadGenSettings leadGenSettings = new LeadGenSettings();
         leadGenSettings.languagePreference = new List<Options>();
@@ -51,34 +35,33 @@ public with sharing class PMP_SearchCompanyLeadGenController extends PMP_SearchW
         }
         
         
-        if(partner!=null)
-        {
-            if(partner.PMP_Company_Lead_Gen_Language_Nm__c!=null){
-                
-                for(Options lang : leadGenSettings.languagePreference){
-                    for(String prefLang : partner.PMP_Company_Lead_Gen_Language_Nm__c.split(';')){
-                        if(lang.label == prefLang)
-                            lang.selected = true;
-                    }
+        
+        if(partner.PMP_Company_Lead_Gen_Language_Nm__c!=null){
+            
+            for(Options lang : leadGenSettings.languagePreference){
+                for(String prefLang : partner.PMP_Company_Lead_Gen_Language_Nm__c.split(';')){
+                    if(lang.label == prefLang)
+                        lang.selected = true;
                 }
-                
-                
-                
             }
             
-            if(partner.PMP_Is_Enabled_Lead_Gen_Nm__c!=null && partner.PMP_Is_Lead_Gen_Limited_Nm__c!=null){
-                if(partner.PMP_Is_Enabled_Lead_Gen_Nm__c == 'True')
-                    leadGenSettings.enableLeadGeneration = true;
-                else
-                    leadGenSettings.enableLeadGeneration = false;
-                if(partner.PMP_Is_Lead_Gen_Limited_Nm__c == 'True')
-                    leadGenSettings.limitToPartners= true;
-                else
-                    leadGenSettings.limitToPartners=false;
-                
-            } 
+            
+            
         }
-        // system.debug(leadGenSettings);
+        
+        if(partner.PMP_Is_Enabled_Lead_Gen_Nm__c!=null && partner.PMP_Is_Lead_Gen_Limited_Nm__c!=null){
+            if(partner.PMP_Is_Enabled_Lead_Gen_Nm__c == 'True')
+                leadGenSettings.enableLeadGeneration = true;
+            else
+                leadGenSettings.enableLeadGeneration = false;
+            if(partner.PMP_Is_Lead_Gen_Limited_Nm__c == 'True')
+                leadGenSettings.limitToPartners= true;
+            else
+                leadGenSettings.limitToPartners=false;
+            
+        } 
+        
+        system.debug(leadGenSettings);
         return leadGenSettings;
     }
     
@@ -86,62 +69,44 @@ public with sharing class PMP_SearchCompanyLeadGenController extends PMP_SearchW
     public static Boolean saveSettingsData(String partnerId, String requestJSON){
         PMP_Company__c company;
         List<PMP_Company__c> partnerList = new List<PMP_Company__c>();
-        List<PMP_Company__c> companyList=new List<PMP_Company__c>();
         LeadGenSettings saveRequest = (LeadGenSettings)JSON.deserialize(requestJSON, LeadGenSettings.class);
         
-        //JB start
-		if(Schema.sObjectType.PMP_Company__c.isAccessible()){ //PMD Fixes
-          companyList = [SELECT id, PMP_Working_Copy_Id__c from PMP_Company__c where id=:partnerId];         
-        }
         
-        if(!companyList.isEmpty() && companyList.size()>0)
-        {
-            company=companyList[0];
-        }
-        //JB end
         
-        /*if(Schema.sObjectType.PMP_Company__c.isAccessible()){ //PMD Fixes
         company = [SELECT id, PMP_Working_Copy_Id__c from PMP_Company__c where id=:partnerId];         
-        }*/
+        
         
         String wcId = '';
-        if(company!=null){
-            if(String.isNotEmpty(company.PMP_Working_Copy_Id__c)  ){
-                wcId = company.PMP_Working_Copy_Id__c;
-            }
-            else{
-                //return false;
-                wcId = company.Id;
-            }
+        if(String.isNotEmpty(company.PMP_Working_Copy_Id__c)  ){
+            wcId = company.PMP_Working_Copy_Id__c;
         }
-        if(Schema.sObjectType.PMP_Company__c.isAccessible()){ //PMD Fixes
-        partnerList = [SELECT PMP_Is_Enabled_Lead_Gen_Nm__c, PMP_Company_Lead_Gen_Language_Nm__c, PMP_Is_Lead_Gen_Limited_Nm__c from PMP_Company__c where id=: wcId];         
+        else{
+            return false;
         }
         
-         if(!partnerList.isEmpty() && partnerList.size()>0)
-        {
-            if(saveRequest.enableLeadGeneration == true)
-                partnerList[0].PMP_Is_Enabled_Lead_Gen_Nm__c = 'True';
-            else
-                partnerList[0].PMP_Is_Enabled_Lead_Gen_Nm__c ='False';
-            if(saveRequest.limitToPartners == true)
-                partnerList[0].PMP_Is_Lead_Gen_Limited_Nm__c= 'True';
-            else
-                partnerList[0].PMP_Is_Lead_Gen_Limited_Nm__c = 'False';
-            
-            partnerList[0].PMP_Company_Lead_Gen_Language_Nm__c = '';
-            
-            // system.debug('pref'+ saveRequest.languagePreference);
-            for(Options lang : saveRequest.languagePreference){
-                if(lang.selected == true){
-                    partnerList[0].PMP_Company_Lead_Gen_Language_Nm__c+= lang.value+ ';';
-                }
+        partnerList = [SELECT PMP_Is_Enabled_Lead_Gen_Nm__c, PMP_Company_Lead_Gen_Language_Nm__c, PMP_Is_Lead_Gen_Limited_Nm__c from PMP_Company__c where id=: wcId];         
+        
+        
+        if(saveRequest.enableLeadGeneration == true)
+            partnerList[0].PMP_Is_Enabled_Lead_Gen_Nm__c = 'True';
+        else
+            partnerList[0].PMP_Is_Enabled_Lead_Gen_Nm__c ='False';
+        if(saveRequest.limitToPartners == true)
+            partnerList[0].PMP_Is_Lead_Gen_Limited_Nm__c= 'True';
+        else
+            partnerList[0].PMP_Is_Lead_Gen_Limited_Nm__c = 'False';
+        
+        partnerList[0].PMP_Company_Lead_Gen_Language_Nm__c = '';
+        
+        system.debug('pref'+ saveRequest.languagePreference);
+        for(Options lang : saveRequest.languagePreference){
+            if(lang.selected == true){
+                partnerList[0].PMP_Company_Lead_Gen_Language_Nm__c+= lang.value+ ';';
             }
         }
-        //if(Schema.sObjectType.PMP_Company__c.isUpdateable()){ //PMD Fixes //breaking existing functionality
-        //update partnerList;
-        Database.SaveResult[] pList = Database.update(partnerList, false);
-		PMP_Utility.logDmlErrors((Object[]) pList, 'PMP_SearchCompanyLeadGenController-saveSettingsData');
+        
+        //if(Schema.sObjectType.PMP_Company__c.isUpdateable()){
+        update partnerList;
         //}         
         return true;
     }
@@ -176,21 +141,19 @@ public with sharing class PMP_SearchCompanyLeadGenController extends PMP_SearchW
             
             if(user1!=null && (!String.isBlank(user1.ContactId))) {
                 if(Schema.sObjectType.Contact.isAccessible()){
-                    con = [select id,AccountId, FirstName, LastName, Email,Phone,Title,Core_Job_Function__c,Core_Profession__c,MailingCountry,MailingState  from Contact where id=: user1.ContactId]; 
-                    // system.debug('contact Info'+con);
+                    con = [select id,AccountId, FirstName, LastName, Email,Phone,Title,Core_Job_Function__c,MailingCountry,MailingState  from Contact where id=: user1.ContactId]; 
+                    system.debug('contact Info'+con);
                     
-                }
-                   if(con!=null && (!String.isBlank(con.AccountId)) && Schema.sObjectType.Account.isAccessible()){
-                    //if(Schema.sObjectType.Account.isAccessible()){
-                        acc= [select id,Name,Core_Account_State_Province__c from Account where id=: con.AccountId];
-                    //}
+                }if(con!=null && (!String.isBlank(con.AccountId))){
+                    if(Schema.sObjectType.Account.isAccessible()){
+                        acc= [select id,Name,Core_Account_State_Province__c,Core_Account_Country__c from Account where id=: con.AccountId];
+                    }
                 }
             }
             
             user.firstName = con.FirstName;
             user.lastName = con.LastName;
             user.jobTitle = con.Core_Job_Function__c ;
-            user.profession = con.Core_Profession__c;
             user.companyName = acc.Name;
             
             user.country = con.MailingCountry;
@@ -199,7 +162,7 @@ public with sharing class PMP_SearchCompanyLeadGenController extends PMP_SearchW
             user.email = con.Email;
             user.partnerProgramSegment = null;    
             //user.preferredContact = PMP_StaticConstants_Partner.PreferredContact_CTA;
-            // system.debug('user-->'+user);
+            system.debug('user'+user);
         }    
         return user;
     }
@@ -218,35 +181,33 @@ public with sharing class PMP_SearchCompanyLeadGenController extends PMP_SearchW
     @AuraEnabled(cacheable = true)
     public static List<Option> getDependentMap() {
         return PMP_SearchCountryStateMapping.getDependentMap();
-    }  
+    }	
     
-    //We have updated this method to receive Profession instead of Job Function
-    //Sai: 12thNov2021
-    @AuraEnabled(cacheable = true)
-    public static List<Option> getPartnerProfession(){
+    @AuraEnabled
+    public static List<Option> getJobFunction(){
         
-        Schema.DescribeFieldResult jfResult = Contact.Core_Profession__c.getDescribe();
+        Schema.DescribeFieldResult jfResult = Contact.Core_Job_Function__c.getDescribe();
         Schema.sObjectField ctrlField = jfResult.getSObjectField();
         List<Schema.PicklistEntry> contrEntries = ctrlField.getDescribe().getPicklistValues();
-        List<Option> partnerProfessionList = new List<Option>();
+        List<Option> jobFunctionList = new List<Option>();
         for( PickListEntry pe : contrEntries ){
             Option opt = new Option();
             opt.label = pe.label;
             opt.value = pe.value;
-            partnerProfessionList.add(opt);
+            jobFunctionList.add(opt);
         }
         
-        return partnerProfessionList;
+        return jobFunctionList;
     }
     
     
     @AuraEnabled
-    public static void submit(UserDetails user, String formType, String partnerId, String partnerName, String offeringId, String offeringName, String offeringRecId, Boolean optinConsent){
+    public static void submit(UserDetails user, String formType, String partnerId, String partnerName, String offeringId, String offeringName, String offeringRecId){
         String userDetailsBody = '{"fieldValues": ';
         List<JsonSerializer> JsonSerializerList = new List<JsonSerializer>();
         Map<String, Core_Eloqua_Integration_Setting__mdt> eloquaIntMap = new Map<String, Core_Eloqua_Integration_Setting__mdt>();
-        List<Core_Eloqua_Integration_Setting__mdt> eloquaIntList = [select Id, MasterLabel, DeveloperName, Core_Value__c from Core_Eloqua_Integration_Setting__mdt where DeveloperName != null];
-        //system.debug('eloquaIntList '+eloquaIntList);
+        List<Core_Eloqua_Integration_Setting__mdt> eloquaIntList = [select Id, MasterLabel, DeveloperName, Core_Value__c from Core_Eloqua_Integration_Setting__mdt];
+        system.debug('eloquaIntList '+eloquaIntList);
         for(Core_Eloqua_Integration_Setting__mdt eloquaInt : eloquaIntList){
             eloquaIntMap.put(eloquaInt.DeveloperName, eloquaInt);
         }
@@ -270,10 +231,10 @@ public with sharing class PMP_SearchCompanyLeadGenController extends PMP_SearchW
                 js.value = user.companyName;
                 leadStageObj.Core_Company__c = user.companyName;
             }
-            if(eloquaInt.equalsIgnoreCase('profession') && user.profession <> null){
-                js.value = user.profession;
-                leadStageObj.Core_Profession__c = user.profession;
-            }
+            /*if(eloquaInt.equalsIgnoreCase('jobFunction') && user.jobTitle <> null){
+                js.value = user.jobTitle;
+                leadStageObj.Core_Job_Title__c = user.jobTitle;
+            }*/
             if(eloquaInt.equalsIgnoreCase('country') && user.country <> null){
                 js.value = user.country;
                 leadStageObj.Core_Country__c = user.country;
@@ -316,7 +277,7 @@ public with sharing class PMP_SearchCompanyLeadGenController extends PMP_SearchW
             }
             if(eloquaInt.equalsIgnoreCase('Offering_Referring_URL') && offeringRecId <> null && offeringRecId <> ''){
                 js.value = System.Label.Core_Marketplace_Url + '/s/offering/' + offeringRecId;
-               leadStageObj.PMP_Offering_Referring_URL__c = System.Label.Core_Marketplace_Url + '/s/offering/'+ offeringRecId;
+                leadStageObj.PMP_Offering_Referring_URL__c = System.Label.Core_Marketplace_Url + '/s/offering/'+ offeringRecId;
             }
             if(eloquaInt.equalsIgnoreCase('partnerProgramSegment') && user.partnerProgramSegment <> null){
                 js.value = String.valueOf(user.partnerProgramSegment);
@@ -366,30 +327,7 @@ public with sharing class PMP_SearchCompanyLeadGenController extends PMP_SearchW
                 js.value = value;
                 leadStageObj.Core_Source_Id__c = value;
             }
-            if(eloquaInt.equalsIgnoreCase('optinConsent') && optinConsent <> null){
-                String consent;
-                if(optinConsent==true){
-                    consent = 'Yes';
-                }else{
-                    consent = 'No';
-                }
-                js.value = consent;
-                leadStageObj.Core_OptIn_Consent__c = consent;
-            }
-            if(eloquaInt.equalsIgnoreCase('thirdPartyconsent')){
-                js.value = 'Single Reseller/Partner';
-                leadStageObj.Core_Third_Party_Consent__c = 'Single Reseller/Partner';
-            }
-            if(eloquaInt.equalsIgnoreCase('optinSource') && optinConsent ==true){
-                js.value = 'Opt-in Newsletter';
-                leadStageObj.Core_Opt_in_Source__c = 'Opt-in Newsletter';
-                
-            }
-            if(eloquaInt.equalsIgnoreCase('optinSourceName') && optinConsent ==true){
-                js.value = 'Marketplace';
-                leadStageObj.Core_Opt_In_Source_Name__c = 'Marketplace';
-                
-            }
+            
             if(js.value <> null){
                 JsonSerializerList.add(js);
             }
@@ -410,8 +348,8 @@ public with sharing class PMP_SearchCompanyLeadGenController extends PMP_SearchW
         httpReq.setBody(userDetailsBody);
         httpResp = http.send(httpReq);
         sendEmailNotification(formType,leadStageObj,offeringName,partnerName);
-        //system.debug('Response body '+httpResp.getBody());
-        //System.debug('*STATUS_CODE:'+httpResp.getStatusCode());
+        system.debug('Response body '+httpResp.getBody());
+        System.debug('*STATUS_CODE:'+httpResp.getStatusCode());
         if(httpResp.getStatusCode() == 201){
             leadStageObj.Core_Status__c = 'Success';
         }else{
@@ -426,64 +364,49 @@ public with sharing class PMP_SearchCompanyLeadGenController extends PMP_SearchW
         public String id;
         public String value;
     }
+    public static String getCommunityURL()
+    {
+        String communityURL = 'https://crmqa2-intelcloudcrm.cs93.force.com//imp/s/partner/';
+        return communityURL ;
+    }
     
     @AuraEnabled
     public static List <Contact> getPartnerAdminAccounts() {
-                
-        // Core_Account_Group_Member__c pagMember = new Core_Account_Group_Member__c();
-        //    PMP_OPID_MPI_Rel__c pagMemberMPI = new PMP_OPID_MPI_Rel__c();
-        //    List<PMP_OPID_MPI_Rel__c> pagMemberOPIDList = new List<PMP_OPID_MPI_Rel__c>();
-        //    List<Core_Account_Group_Member__c> pagMemberList = new List<Core_Account_Group_Member__c>();
-        //    List<String> pagMemberOPIDListids = new List<String>();
-        //    List<String> intelAccountIds = new List<String>();
-        //    List<String> partnerUserIds = new List<String>();
-        //    List<String> partnerAdminUserIds = new List<String>();
-        //    List<String> PartnerAdminUser = new List<String>();
-        //    User user = [SELECT AccountId FROM User WHERE id =:Userinfo.getUserId()];
-        //    try{
-        //        pagMember = [SELECT id, Core_Intel_Account_Id__c, Core_Partner_Account_Id__c from Core_Account_Group_Member__c where Core_Intel_Account_Id__c =: user.AccountId];
-        //        pagMemberMPI = [SELECT id, PMP_One_Partner_ID__c, PMP_Marketing_Profile_Id__c from PMP_OPID_MPI_Rel__c Where Is_Active__c = true AND PMP_One_Partner_ID__c =:pagMember.Core_Partner_Account_Id__c];
-        //        pagMemberOPIDList = [SELECT id, PMP_One_Partner_ID__c from PMP_OPID_MPI_Rel__c Where Is_Active__c = true AND PMP_Marketing_Profile_Id__c =:pagMemberMPI.PMP_Marketing_Profile_Id__c];
-        //    if(pagMemberOPIDList != null && !pagMemberOPIDList.isEmpty()){
-        //        for(PMP_OPID_MPI_Rel__c singlerecord :pagMemberOPIDList){
-        //        system.debug('OPIDList:::'+singlerecord.PMP_One_Partner_ID__c);    
-        //        pagMemberOPIDListids.add(singlerecord.PMP_One_Partner_ID__c);
-        //        }
-        //    }
-        //        pagMemberList = [SELECT id, Core_Intel_Account_Id__c, Core_Partner_Account_Id__c from Core_Account_Group_Member__c where Core_Partner_Account_Id__c in:pagMemberOPIDListids];
-        //        system.debug('pagMemberList:::'+pagMemberList);
-        //    }catch(Exception e){
-        //        System.debug('No PAG Records found : ' + e.getMessage());
-        //    }
-           
-           
-        //    for(Core_Account_Group_Member__c mem : pagMemberList){
-        //        intelAccountIds.add(mem.Core_Intel_Account_Id__c);
-        //    }
-           
-        //    List<Contact> partnerUserList = [Select id, Name from Contact where Account.id in: intelAccountIds ];
-           
-        //    for(Contact u : partnerUserList){
-        //        system.debug('partnerUserList:::'+ u.id);
-        //        partnerUserIds.add(u.id);
-        //    }
-           
-        //    List<Core_Contact_Entitlement__c> partnerAdminAssignmentList = [ Select id,Core_Contact_Id__r.Id from Core_Contact_Entitlement__c where Core_Contact_Id__r.id in:partnerUserIds AND Core_Entitlement_Id__r.Name = 'Partner Admin'];
-         
-           
-        //    for(Core_Contact_Entitlement__c pa : partnerAdminAssignmentList){
-        //        system.debug('partnerAdminAssignmentList:::'+pa.Core_Contact_Id__r.Id);
-        //        partnerAdminUserIds.add(pa.Core_Contact_Id__r.Id);
-        //    }
-               
-        //    List<Contact> partnerAdminUserList = [SELECT id,Name,Email,Phone from Contact where id in:partnerAdminUserIds];
-        //    system.debug('partnerAdminUserList:::'+partnerAdminUserList);
-        //    return partnerAdminUserList;
-       
-        List<Contact> partnerAdminUserList = PMP_PartnerAdminAccounts.getPartnerAdminAccounts();
-        //system.debug('partnerAdminUserList Called:::'+partnerAdminUserList);
+        Core_Account_Group_Member__c pagMember = new Core_Account_Group_Member__c();
+        List<Core_Account_Group_Member__c> pagMemberList = new List<Core_Account_Group_Member__c>();
+        List<String> intelAccountIds = new List<String>();
+        List<String> partnerUserIds = new List<String>();
+        List<String> partnerAdminUserIds = new List<String>();
+        List<String> PartnerAdminUser = new List<String>();
+        User user = [SELECT AccountId FROM User WHERE id =:Userinfo.getUserId()];
+        try{
+            pagMember = [SELECT id, Core_Intel_Account_Id__c, Core_Partner_Account_Id__c from Core_Account_Group_Member__c where Core_Intel_Account_Id__c =: user.AccountId];
+            pagMemberList = [SELECT id, Core_Intel_Account_Id__c, Core_Partner_Account_Id__c from Core_Account_Group_Member__c where Core_Partner_Account_Id__c=:pagMember.Core_Partner_Account_Id__c]; 
+        }catch(Exception e){
+            System.debug('No PAG Records found : ' + e.getMessage());
+        }
+        
+        for(Core_Account_Group_Member__c mem : pagMemberList){
+            intelAccountIds.add(mem.Core_Intel_Account_Id__c);
+        }
+        
+        List<User> partnerUserList = [SELECT id, AccountId from User where AccountId in: intelAccountIds ];
+        
+        for(User u : partnerUserList){
+            partnerUserIds.add(u.id);
+        }
+        
+        List<PermissionSetAssignment> partnerAdminAssignmentList = [SELECT Id,AssigneeId FROM PermissionSetAssignment WHERE AssigneeId in:partnerUserIds AND PermissionSet.Name =:PMP_StaticConstants_Partner.PARTNER_ADMIN];
+        
+        for(PermissionSetAssignment pa : partnerAdminAssignmentList){
+            partnerAdminUserIds.add(pa.AssigneeId);
+        }
+        List<User> PartnerUser = [SELECT id,ContactId from User where id in: partnerAdminUserIds];
+        for(User u : PartnerUser){
+            PartnerAdminUser.add(u.ContactId);
+        }        
+        List<Contact> partnerAdminUserList = [SELECT id,Name,Email,Phone from Contact where id in:PartnerAdminUser];
         return partnerAdminUserList;
-    
     }
     
     public static void sendEmailNotification(String formType, Core_Lead_Staging__c leadStageObj,String offeringName,String partnerName){
@@ -514,28 +437,28 @@ public with sharing class PMP_SearchCompanyLeadGenController extends PMP_SearchW
             '           <body>  '  + 
             '               <table style="background-color:#0071c5;'+fontStyle+'" width="75%"><tbody><tr><td style="padding-left:50px;border: 0px;border:none;"><div style="color:white;"><h1>YOUR INQUIRY HAS BEEN SUBMITTED </h1></div></td><td align="right" style="border:none;padding-right:20px;"><img src="'+logoUrl+'"></td></tr></tbody></table>' +
             '               <table width="75%" style="border-collapse: collapse;'+fontStyle+'">   '  + 
-            '            <tr>  '  + 
+            '    				<tr>  '  + 
             '                       <td style="'+borderStyle+'">  '  + 
             '                           Hello<br/><br/>     '  + 
-            '                           Thank you for requesting information from '+partnerName+'. Your inquiry has been submitted. For your reference, please see the details of your request below.<br/>  '  + 
-            '             <p>Thanks again,</p>  '  + 
-            '             <b><p>The Intel® Solutions Marketplace Team</p></b>  '  +  
+            '                           Thanks for your recent request for information from '+partnerName+'. Your inquiry has been submitted. For your reference, please see the details of your request below.<br/>  '  + 
+            '   					<p>Thanks for engaging with the Solutions Marketplace community</p>  '  + 
+            '   					<b><p>The Intel Solutions Marketplace Team</p></b>  '  + 
             '                      <b>INQUIRY DETAILS<br /></b><hr />  '  + 
-            '             Submitted To: '+partnerName+'<br/>  '  + 
-            '             <p>What would you like to know?<br />  '  + leadStageObj.Core_Lead_Notes__c+' <br /><br />  '  + 
+            '   					Submitted To: '+partnerName+'<br/>  '  + 
+            '   					<p>What would you like to know?<br />  '  + leadStageObj.Core_Lead_Notes__c+' <br /><br />  '  + 
             '                       Tell us about you: <br />  '  + 
             '                       First Name: '+leadStageObj.Core_First_Name__c+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Last Name: '+leadStageObj.Core_Last_Name__c+' <br />  '  + 
-            '             Company Name: '+leadStageObj.Core_Company__c+' <br />  '  + 
+            '   					Company Name: '+leadStageObj.Core_Company__c+' <br />  '  + 
             '                       Country/Region: '+leadStageObj.Core_Country__c+' <br />  '  + 
             '                       State: '+leadStageObj.Core_State__c+' <br />  '  + 
             '                       Phone: '+leadStageObj.Core_Business_Phone__c+' <br />  '  + 
             '                       Email: '+leadStageObj.Core_Email__c+' <br/><br/></p>'  + 
-            '                    </td>  '  + 
+            '   	               </td>  '  + 
             '                   </tr>  '  + 
             '                   <!-- Questions/Contact -->  '  + 
             '                           <tr>  '  + 
             '                               <td style="'+borderStyle+'">    '  + 
-            '                                  Looking to collaborate with additional Intel Partners? <br/> ' + 
+            '                                   Looking for more Intel Partners to collaborate with? <br/>  '  + 
             '                                   <a href="'+communityUrl+'" style="color:#0071c5;">  '  + 
             '                                   Explore the Marketplace </a> '  + 
             '                               </td>  '  + 
@@ -543,7 +466,7 @@ public with sharing class PMP_SearchCompanyLeadGenController extends PMP_SearchW
             '                    <!-- Questions/Contact -->  '  + getFooter(communityURL,borderStyle) +
             '              </table>  '  + 
             '           </body>  '  + 
-            '      </html>  ' ;
+            '      </html>  ' ; 
         return emailBody;
     }
     
@@ -555,51 +478,50 @@ public with sharing class PMP_SearchCompanyLeadGenController extends PMP_SearchW
             '           <body>  '  + 
             '               <table style="background-color:#0071c5;'+fontStyle+'" width="75%"><tbody><tr><td style="padding-left:50px;border: 0px;border:none;"><div style="color:white;"><h1>YOUR QUOTE INQUIRY HAS BEEN SUBMITTED </h1></div></td><td align="right" style="border:none;padding-right:20px;"><img src="'+logoUrl+'"></td></tr></tbody></table>' +
             '               <table width="75%" style="border-collapse: collapse;'+fontStyle+'">   '  + 
-            '            <tr>  '  + 
+            '    				<tr>  '  + 
             '                       <td style="'+borderStyle+'">  '  + 
-            '                         Hello<br/><br/>      '  + 
-            '                           Thank you for contacting '+partnerName+' regarding '+offeringName+'. Your quote inquiry has been submitted. For your reference, please see the details of your request below.<br/>  '  + 
-            '             <p>Thanks again,</p>  '  +  
-            '             <b><p>The Intel Solutions Marketplace Team</p></b> '  + 
+            '                       	Hello<br/><br/>      '  + 
+            '                          Thanks for contacting '+partnerName+' regarding '+offeringName+'. Your quote inquiry has been submitted. For your reference, please see the details of your request below.<br/>  '  + 
+            '   					<p>Thanks for taking part in the Solutions Marketplace community</p>  '  + 
+            '   					<b><p>The Intel Solutions Marketplace Team</p></b> '  + 
             '                       <b>INQUIRY DETAILS</b><hr />  '  + 
-            '             Submitted To: '+partnerName + '<br/>' +
-            '             Volume for Quotation: '+leadStageObj.Core_Lead_Quotation_Cnt__c+'<br/>  '  + 
-            '                       <p>Please describe how we can assist with your project: <br />    '  + 
+            '   					Submitted To: '+partnerName + '<br/>' +
+            '   					Volume for Quotation: '+leadStageObj.Core_Lead_Quotation_Cnt__c+'<br/>  '  + 
+            '                       <p>Please describe how we can assist with your project: <br />	  '  + 
             '                       '+leadStageObj.Core_Lead_Notes__c+' </p> '  + 
             '                       <p>Tell us about you:<br />  '  + 
             '                       First Name: '+leadStageObj.Core_First_Name__c+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Last Name: '+leadStageObj.Core_Last_Name__c+' <br />  '  + 
-            '             Company Name: '+leadStageObj.Core_Company__c+' <br />  '  + 
+            '   					Company Name: '+leadStageObj.Core_Company__c+' <br />  '  + 
             '                       Country/Region: '+leadStageObj.Core_Country__c+' <br />  '  + 
             '                       State: '+leadStageObj.Core_State__c+' <br />  '  + 
             '                       Phone: '+leadStageObj.Core_Business_Phone__c+' <br />  '  + 
             '                       Email: '+leadStageObj.Core_Email__c+' <br/><br/></p> '  + 
-            '                    </td>  '  + 
+            '   	               </td>  '  + 
             '                   </tr>  '  + 
             '                   <!-- Questions/Contact -->  '  + 
             '                           <tr>  '  + 
             '                               <td style="'+borderStyle+'">    '  + 
-            '                                  Looking to collaborate with additional Intel Partners? <br/> ' + 
+            '                                   Looking for more Intel Partners to collaborate with? <br/>  '  + 
             '                                   <a href="'+communityURL+'" style="color:#0071c5;">  '  + 
-            '                                   Explore Intel® Solutions Marketplace  </a>'  + 
+            '                                   Explore the Marketplace  </a>'  + 
             '                               </td>  '  + 
             '                            </tr>  '  + 
             '                    <!-- Questions/Contact -->  '  + getFooter(communityURL,borderStyle) +
             '              </table>  '  + 
             '           </body>  '  + 
             '      </html>  ' ; 
-        //system.debug(' quote template emailbody---->'+emailBody);
         return emailBody;
     }
     
     public static String getFooter(String communityURL, String borderStyle){
         String emailFooter = '<tr>      '  + 
-            '              <td style="'+borderStyle+'">  '  + 
-            '                         For FAQs and helpful information about using Intel® Solutions Marketplace, <br/>'  + 
-            '                         please visit <a href="'+System.Label.PMP_IPA_HelpLink+'" style="color:#0071c5;"> Intel® Solutions Marketplace Help. </a> '  + 
+            '        			<td style="'+borderStyle+'">  '  + 
+            '                       	For FAQs and helpful information about using Intel® Solutions Marketplace, <br/>'  + 
+            '                       	please visit <a href="'+communityURL+'/s/help'+'" style="color:#0071c5;"> Marketplace Help. </a> '  + 
             '                   </td></tr>  '  + 
             '                   <tr><td style="font-size:10px;text-align:center;'+borderStyle+'">  '  + 
             '                           This message was sent to you as an important business communication related to your current relationship with Intel Solutions Marketplace<br/>  '  + 
-            '                           &copy; '+date.today().year()+' Intel Corporation <br/>  '  + 
+            '                           ©'+System.Label.PMP_Current_Year+' Intel Corporation <br/>  '  + 
             '                           Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. '  + 
             '                           <a href="www.intel.com" style="color:#0071c5;"> www.intel.com</a><br/>  '  + 
             '                           <a href="www.intel.com/privacy" style="color:#0071c5;">Privacy</a> | &nbsp;  '  + 

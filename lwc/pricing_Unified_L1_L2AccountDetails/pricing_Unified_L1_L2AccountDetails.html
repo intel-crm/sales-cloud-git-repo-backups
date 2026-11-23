@@ -1,0 +1,72 @@
+<!--
+@description       : 
+@author            : ChangeMeIn@UserSettingsUnder.SFDoc
+@group             : 
+@last modified on  : 12-14-2023
+@last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+    <lightning-card title="Intel Account Details" icon-name="standard:account">
+        <div style="height: auto;">
+            <!--<template lwc:if={hasL2AccRecords}>-->
+                <div class="slds-page-header" style="height: 50px;">
+                    <div class="slds-page-header__row">
+                        <div class="slds-page-header__col-title">
+                            <div class="slds-media">
+                                <div class="slds-media__body">
+                                    <div class="slds-page-header__name">
+                                        <div class="slds-page-header__name-title">
+                                            <h2>
+                                                <span class="slds-page-header__title slds-truncate"
+                                                     title="End Customer Country">End Customer
+                                                    Country</span>
+                                            </h2>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <template lwc:if={hasL2AccRecords}>
+                <lightning-datatable key-field="accId" data={l2AccDetails} columns={dataTableColumns}
+                    hide-checkbox-column=true></lightning-datatable>
+            </template>
+            <template lwc:else>
+                <div class="slds-table_edit_container" style=" text-align: center; margin-top: 5px;">
+                    No End Customer Country Account records.
+                </div>
+            </template><br/><br/>
+            <!--<template lwc:if={hasL1AccRecords}>-->
+                <div class="slds-page-header" style="height: 50px;">
+                    <div class="slds-page-header__row">
+                        <div class="slds-page-header__col-title">
+                            <div class="slds-media">
+                                <div class="slds-media__body">
+                                    <div class="slds-page-header__name">
+                                        <div class="slds-page-header__name-title">
+                                            <h2>
+                                                <span class="slds-page-header__title slds-truncate"
+                                                    title="Unified Global/Intermediate">Unified
+                                                    Global/Intermediate</span>
+                                            </h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <template lwc:if={hasL1AccRecords}>
+                <lightning-datatable key-field="accId" data={l1AccDetails} columns={dataTableColumns}
+                    hide-checkbox-column=true></lightning-datatable>
+            </template>
+            <template lwc:else>
+                <div class="slds-table_edit_container" style=" text-align: center; margin-top: 5px;">
+                    No Global/Intermediate Account records.
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+</template>

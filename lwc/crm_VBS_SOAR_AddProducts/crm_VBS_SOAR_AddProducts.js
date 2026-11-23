@@ -490,7 +490,7 @@ handleQuantityChange(event) {
     console.log('event',event.target.value);
     let value = event.target.value;
     const eventName = event.target.name;
-    console.log('eventName',eventName);
+    console.log('eventName',event.target,eventName);
     let blankRow = this.mapRecord;
     if (value%1 !== 0) {
         console.log('no integer; decimal present');

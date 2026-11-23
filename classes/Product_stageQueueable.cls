@@ -2,8 +2,6 @@ public with sharing class Product_stageQueueable implements Queueable{
     public Integer count;
     public list<Core_Products_Staging__c> masterList = new list<Core_Products_Staging__c>();
     public list<Core_Products_Staging__c> masterList2 = new list<Core_Products_Staging__c>();
-    
-    
     public Map<integer,Product_ProcessInboundStagingRecords.InputWrapper> inputWrapperMap = new Map<integer,Product_ProcessInboundStagingRecords.InputWrapper>();
     public Boolean vplchInd ;
     public string ipaasId ;

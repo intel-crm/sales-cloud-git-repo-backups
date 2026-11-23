@@ -1,0 +1,25 @@
+.custom-table {
+    width: 100%;
+    table-layout: fixed; /* Ensures table has fixed layout and columns do not expand based on content */
+}
+
+.custom-cell {
+    word-wrap: break-word; /* Ensures text will break and wrap to the next line if it's too long */
+    white-space: normal;  /* Allows text to wrap, instead of being forced into a single line */
+    max-width: 300px; /* Optional: Set a maximum width for the columns */
+    overflow-wrap: break-word; /* Prevents overflow */
+}
+
+/* Optional: Styling for the table header */
+thead th {
+    text-align: left;
+    padding: 8px;
+    background-color: #f4f6f9;
+    font-weight: bold;
+}
+
+tbody td {
+    padding: 8px;
+    vertical-align: top;
+    word-wrap: break-word;
+}

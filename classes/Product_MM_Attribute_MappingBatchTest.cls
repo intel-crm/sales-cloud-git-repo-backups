@@ -25,7 +25,7 @@ public class Product_MM_Attribute_MappingBatchTest {
         mmAttributes.Level_3_EPM_ID__c = '130103';
         mmAttributes.Level_4_EPM_ID__c = '147261';
         mmAttributes.Level_5_EPM_ID__c = '130211';
-        mmAttributes.MMID__c = '768221';
+        //mmAttributes.MMID__c = '768221'; 
         mmAttributes.Unique_ID__c = '768221;130211;147261;130103;130101;98836';
         mmAttributes.iPaaS_Load_ID__c = '654890';
         mmAttributes.IsActive__c = true;

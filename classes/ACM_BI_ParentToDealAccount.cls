@@ -62,10 +62,8 @@ public without sharing class ACM_BI_ParentToDealAccount implements UCD_ACM_Servi
         }
 
         if(!parentBpIds.isEmpty()){
-            List<Account> parentAccounts;
             // SOQL to get parent account details based on BPID
-            if (Schema.sObjectType.Account.fields.Core_Business_Party_Id__c.isAccessible()){
-             parentAccounts = [
+            List<Account> parentAccounts = [
                 SELECT Id, Name, Core_Business_Party_Id__c, RecordTypeId
                 FROM Account
                 WHERE
@@ -73,7 +71,6 @@ public without sharing class ACM_BI_ParentToDealAccount implements UCD_ACM_Servi
                     AND RecordTypeId = :dealRecordTypeId
                 ORDER BY CreatedDate ASC
             ];
-            }
 
             // Adding data into collection - parent account by BP ID
             if (!parentAccounts.isEmpty()) {

@@ -82,11 +82,11 @@
             <value>1</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Account.Core_Account_BU_Focus__c</column>
+            <column>Account.Core_Sales_Groups__c</column>
             <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>includes</operator>
-            <value>IOTG-AMS</value>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>IOTG Sales Group</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -96,7 +96,7 @@
         <field>FULL_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>AMSPipelineHealth–Opt. Owner Click Here</name>
+    <name>IOTGPipelineHealth–Opt. Owner Click Here</name>
     <params>
         <name>terr</name>
         <value>all</value>

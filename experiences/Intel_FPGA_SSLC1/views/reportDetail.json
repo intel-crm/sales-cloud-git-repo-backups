@@ -5,14 +5,6 @@
   "id" : "9971d79b-e9a0-4c7e-8858-fb85c66e16ef",
   "label" : "Report Detail",
   "regions" : [ {
-    "components" : [ {
-      "componentAttributes" : { },
-      "componentName" : "c:sales_NonEventFeedback",
-      "id" : "7f28ff14-a4cc-4c26-9f09-6ee52f997d48",
-      "renderPriority" : "NEUTRAL",
-      "renditionMap" : { },
-      "type" : "component"
-    } ],
     "id" : "aac45158-10d9-418c-84d4-b66beaecd301",
     "regionName" : "header",
     "type" : "region"
@@ -59,6 +51,7 @@
         "id" : "e74535d6-b08e-44a8-8c67-2dac265a6237",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "市场推广基金",
             "description" : "市场推广基金",
             "title" : "{!Record._Object}: {!Record._Title}"
           }

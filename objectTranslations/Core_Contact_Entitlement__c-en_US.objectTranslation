@@ -17,6 +17,11 @@
         <name>Core_AGS_Pending_Time__c</name>
     </fields>
     <fields>
+        <label><!-- Campaign --></label>
+        <name>Core_Campaign_Id__c</name>
+        <relationshipLabel><!-- Contact Entitlements --></relationshipLabel>
+    </fields>
+    <fields>
         <label><!-- Category --></label>
         <name>Core_Category__c</name>
     </fields>
@@ -54,10 +59,6 @@
         <name>Core_EntitlementDuration__c</name>
     </fields>
     <fields>
-        <label><!-- Entitlement B2B / B2C Indicator --></label>
-        <name>Core_Entitlement_B2B_B2C_Indicator__c</name>
-    </fields>
-    <fields>
         <help><!-- Help text from the Entitlement Detail record. --></help>
         <label><!-- Entitlement Description --></label>
         <name>Core_Entitlement_Help_Txt__c</name>
@@ -77,21 +78,12 @@
         <relationshipLabel><!-- Contact Entitlements --></relationshipLabel>
     </fields>
     <fields>
-        <label><!-- Entitlement Type --></label>
-        <name>Core_Entitlement_Type__c</name>
-    </fields>
-    <fields>
         <label><!-- From Source --></label>
         <name>Core_From_Source__c</name>
     </fields>
     <fields>
         <label><!-- Ops Status --></label>
         <name>Core_Ops_Status__c</name>
-    </fields>
-    <fields>
-        <help><!-- The number of retrigger attempts made to make the assignment successful --></help>
-        <label><!-- Retrigger Attempt --></label>
-        <name>Core_Retrigger_Attempt__c</name>
     </fields>
     <fields>
         <label><!-- Selected --></label>
@@ -136,15 +128,6 @@
     <fields>
         <label><!-- Update Reason --></label>
         <name>Core_Update_Reason__c</name>
-    </fields>
-    <fields>
-        <label><!-- Account Id --></label>
-        <name>ER_Account_Id__c</name>
-    </fields>
-    <fields>
-        <help><!-- Checked if entitlement is removed as part of partner license reclaim --></help>
-        <label><!-- Removal as part of License Reclaim? --></label>
-        <name>Removal_as_part_of_License_Reclaim__c</name>
     </fields>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

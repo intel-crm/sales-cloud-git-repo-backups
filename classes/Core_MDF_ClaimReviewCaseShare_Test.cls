@@ -8,8 +8,8 @@
 * Accenture – Harika P         11/23/2018                   Created Core_MDF_ClaimReviewCaseShare_Test to test case sharing for external users
 * Accenture – Shridhar K       01/08/2019                   Updated testCaseShare method to check whether case is shared with only claim submitter 
 * Accenture – Shridhar K       02/18/2019                   Case is shared with account manager based on PGM records
-* Intel - NP(11630236)         27/08/2019                   Created list to update common objects instead of individual inserts
-* NP(11630236)                 28/2/2020                    Added source for PGM insert
+* Intel - NP(11630236)		   27/08/2019                   Created list to update common objects instead of individual inserts
+* NP(11630236)				   28/2/2020					Added source for PGM insert
 *****************************************************************************************************************************************/
 @isTest(SeeAllData=false)
 private class Core_MDF_ClaimReviewCaseShare_Test {
@@ -36,8 +36,8 @@ Accenture – Shridhar K      01/08/2019                   Updated testCaseShare
         
         System.runAs(usr1){
             // Creating channel program with utility class
-            ChannelProgram cp = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.DCF_PROGRAM,'Data Center CoMarketing Fund', true);
-            ChannelProgram cp1 = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.CCF_PROGRAM,'Client CoMarketing Fund', true);
+            ChannelProgram cp = Core_MDF_CCP_TestDataUtility.createProgram ('Data Center Co-Marketing Fund','Data Center CoMarketing Fund', true);
+            ChannelProgram cp1 = Core_MDF_CCP_TestDataUtility.createProgram ('Client Co-Marketing Fund','Client CoMarketing Fund', true);
             
             // Creating IntelAccount with utility class
             Account intAcc = Core_MDF_CCP_TestDataUtility.createIntelAccount ('Test Account 1', 
@@ -57,11 +57,6 @@ Accenture – Shridhar K      01/08/2019                   Updated testCaseShare
             ccfAcc.Core_MDF_Parent_Fund_Account__c = intAcc.Id;
             accList.add(ccfAcc);
             Database.insert(accList);
-            
-            Core_AGS_Role__c agsRoleRMF = Core_MDF_CCP_TestDataUtility.createAgsRole('Co-Marketing(Salesforce)-RMF User', 'Co-Marketing(Salesforce)-RMF User', true, true);
-            Core_ERPM_Engagement__c erpmEngagementRMF = Core_MDF_CCP_TestDataUtility.createErpmEngagement('RPS_Retailer', 'RPS_Retailer', 'DEDUPGPRET', 'SEC', true, true);
-            // Highlight: Unused Local Variable 
-          //  Core_Entitlement__c entitlementRMF = Core_MDF_CCP_TestDataUtility.createEntitlement('RMF User',agsRoleRMF.Id ,'Consolidated Co-marketing Platform','RMF User',erpmEngagementRMF.Id , true,'Retail Marketing Funds (RMF)',true);
             
             // Creating Contact with utility class
             Contact con = Core_MDF_CCP_TestDataUtility.createContact (intAcc.Id, false);
@@ -129,37 +124,7 @@ Accenture – Shridhar K      01/08/2019                   Updated testCaseShare
             lstGroup.add(grp2);
             lstGroup.add(grp3);
             Database.insert(lstGroup);
-            List<Core_ERPM_Engagement__c> ceeList = new List<Core_ERPM_Engagement__c>();       
-            Core_ERPM_Engagement__c cee=new Core_ERPM_Engagement__c(Name  ='DCF', Core_Engagement_Type__c='SEC',Core_IsActive__c=true,Core_Technical_Engagement_Code__c='DCF');
-            Core_ERPM_Engagement__c cee1=new Core_ERPM_Engagement__c(Name  ='CCF', Core_Engagement_Type__c='SEC',Core_IsActive__c=true,Core_Technical_Engagement_Code__c='CCF');
-            ceeList.add(cee);
-            ceeList.add(cee1);
-            insert ceeList;
-            List<Core_Entitlement__c> entitleList = new List<Core_Entitlement__c>();
-            Core_Entitlement__c entitle = new Core_Entitlement__c (name ='DCF User', Core_Category__c='Intel® Partner Investment Center',Core_Sub_Category__c='Datacenter',Core_Help_Text__c='Help text',Core_ERPM_Engagement_Id__c=cee.id,Core_Display_Name__c='DCF User',Core_IsActive__c=true);
-            Core_Entitlement__c entitle2 = new Core_Entitlement__c (name ='CCF User', Core_Category__c='Intel® Partner Investment Center',Core_Sub_Category__c='Client',Core_Help_Text__c='Help text',Core_ERPM_Engagement_Id__c=cee1.id,Core_Display_Name__c='CCF User',Core_IsActive__c=true);
-            entitleList.add(entitle);
-            entitleList.add(entitle2);
-            insert entitleList;
-            
-            //System.assert(true,entitle.Core_Category__c!= null);
-            List<Core_Contact_Entitlement__c> contactEntList = new List<Core_Contact_Entitlement__c>();
-            
-            Core_Contact_Entitlement__c ce = new Core_Contact_Entitlement__c(Core_Contact_Id__c=con.Id,
-                                                                     Core_Entitlement_Id__c=entitle.id,
-                                                                     Core_Selected__c=true);
-            Core_Contact_Entitlement__c ce1 = new Core_Contact_Entitlement__c(Core_Contact_Id__c=con1.Id,
-                                                                     Core_Entitlement_Id__c=entitle2.id,
-                                                                     Core_Selected__c=true);
-            contactEntList.add(ce);         
-                                                                     
-            Core_Contact_Entitlement__c ce2 = new Core_Contact_Entitlement__c(Core_Contact_Id__c=con2.Id,
-                                                                     Core_Entitlement_Id__c=entitle2.id,
-                                                                     Core_Selected__c=true);
-            contactEntList.add(ce1);    
-                        contactEntList.add(ce2);                             
-
-            insert contactEntList; 
+                        
             // Creating Group Members
             GroupMember grpMember = new GroupMember();
             grpMember.UserOrGroupId = usr2.Id;
@@ -188,7 +153,7 @@ Accenture – Shridhar K      01/08/2019                   Updated testCaseShare
             // Creating Partner Group Mapping
             Core_MDF_Partner_Group_Mapping__c pgm = new Core_MDF_Partner_Group_Mapping__c();
             pgm.Core_MDF_Account__c = intacc.Id;
-            pgm.Core_MDF_Group_Name__c = 'Core_MDF_CCP_INTERNAL_APJ_DCF_TEST';
+            pgm.Core_MDF_Group_Name__c = 'CCP INTERNAL DCF APJ TEST ACCOUNT';
             pgm.Core_MDF_Type_of_Access__c = 'Internal';
             pgm.Core_MDF_Group_Id__c = grp.Id;                
             pgm.Core_MDF_Channel_Program__c = cp.Id;
@@ -196,12 +161,17 @@ Accenture – Shridhar K      01/08/2019                   Updated testCaseShare
             pgm.Core_MDF_AccountIdGroupName__c = pgm.Core_MDF_Account__c + '_' + pgm.Core_MDF_Group_Name__c;
             pgm.Core_MDF_Source_Txt__c = 'Test';
             
-         
-            
+            Core_MDF_Partner_Group_Mapping__c pgm1 = new Core_MDF_Partner_Group_Mapping__c();
+            pgm1.Core_MDF_Account__c = intacc.Id;
+            pgm1.Core_MDF_Group_Name__c = 'Core_MDF_CCP_External';
+            pgm1.Core_MDF_Type_of_Access__c = 'External';
+            pgm1.Core_MDF_Group_Id__c = grp1.Id;                
+            pgm1.Core_MDF_Channel_Program__c = cp.Id;
+            pgm1.Core_MDF_AccountIdGroupName__c = pgm1.Core_MDF_Account__c + '_' + pgm1.Core_MDF_Group_Name__c;
             
             Core_MDF_Partner_Group_Mapping__c pgm2 = new Core_MDF_Partner_Group_Mapping__c();
             pgm2.Core_MDF_Account__c = intacc.Id;
-            pgm2.Core_MDF_Group_Name__c = 'Core_MDF_CCP_INTERNAL_WW_DCF_TEST';
+            pgm2.Core_MDF_Group_Name__c = 'CCP INTERNAL DCF WW TEST ACCOUNT';
             pgm2.Core_MDF_Type_of_Access__c = 'Internal';
             pgm2.Core_MDF_Group_Id__c = grp2.Id;                
             pgm2.Core_MDF_Channel_Program__c = cp.Id;
@@ -211,7 +181,7 @@ Accenture – Shridhar K      01/08/2019                   Updated testCaseShare
             
             Core_MDF_Partner_Group_Mapping__c pgm3 = new Core_MDF_Partner_Group_Mapping__c();
             pgm3.Core_MDF_Account__c = intacc.Id;
-            pgm3.Core_MDF_Group_Name__c = 'Core_MDF_CCP_INTERNAL_WW_CCF_TEST';
+            pgm3.Core_MDF_Group_Name__c = 'CCP INTERNAL CCF WW TEST ACCOUNT';
             pgm3.Core_MDF_Type_of_Access__c = 'Internal';
             pgm3.Core_MDF_Group_Id__c = grp3.Id;                
             pgm3.Core_MDF_Channel_Program__c = cp1.Id;          
@@ -220,15 +190,16 @@ Accenture – Shridhar K      01/08/2019                   Updated testCaseShare
             pgm3.Core_MDF_Source_Txt__c = 'Test';
             
             List<Core_MDF_Partner_Group_Mapping__c> pgmList = new List<Core_MDF_Partner_Group_Mapping__c>();
-            pgmList.add(pgm);pgmList.add(pgm2);pgmList.add(pgm3);
+            pgmList.add(pgm);pgmList.add(pgm1);pgmList.add(pgm2);pgmList.add(pgm3);
             
             Database.insert(pgmList);
             Test.startTest();
                                                                                           
-            //Creating Partner Node User Mapping
-            //Core_MDF_Partner_Node_User_Mapping__c pnum = Core_MDF_CCP_TestDataUtility.createPartnerNodeUserMapping(dcfAcc.Id,usr2.Id,true);
-            //Core_MDF_Partner_Node_User_Mapping__c pnum1 = Core_MDF_CCP_TestDataUtility.createPartnerNodeUserMapping(ccfAcc.Id,usr3.Id,true);
-            
+            // Creating Partner Node User Mapping
+            Core_MDF_Partner_Node_User_Mapping__c pnum = Core_MDF_CCP_TestDataUtility.createPartnerNodeUserMapping(dcfAcc.Id,usr2.Id,true);
+            Core_MDF_Partner_Node_User_Mapping__c pnum1 = Core_MDF_CCP_TestDataUtility.createPartnerNodeUserMapping(ccfAcc.Id,usr3.Id,true);
+            System.debug('pnum :'+ pnum);
+            System.debug('pnum1 :'+ pnum1);
             
             Test.stopTest();  
             
@@ -239,9 +210,7 @@ Accenture – Shridhar K      01/08/2019                   Updated testCaseShare
             cs.recordTypeId = caseAuditRecType;
             cs.AccountId = dcfAcc.Id;
             cs.Core_MDF_Region_SubRegion_txt__c = 'APJ-SA';
-            cs.Core_MDF_Channel_Program_txt__c = Core_MDF_CCP_ConstantClass.DCF_PROGRAM;
-            cs.Origin = 'Manual Selection';
-            cs.Core_MDF_Claim_ID__c = 'ClaimID';
+            cs.Core_MDF_Channel_Program_txt__c = 'Data Center Co-Marketing Fund';
             lstCases.add(cs);
             Database.insert(cs);
             
@@ -252,14 +221,17 @@ Accenture – Shridhar K      01/08/2019                   Updated testCaseShare
                 userOrGroupIdList.add(csShare.UserOrGroupId);
             }
                         
-           
-            //System.assert(!userOrGroupIdList.contains(grp.Id));
-            //System.assert(!userOrGroupIdList.contains(grp2.Id));
+            System.debug('userOrGroupIdList: '+userOrGroupIdList);
+            System.debug('grp.Id: '+grp.Id);
+            System.debug('grp1.Id: '+grp1.Id); 
+            System.debug('usr2.Id: '+usr2.Id);
+            System.assert(userOrGroupIdList.contains(grp.Id));
+            System.assert(userOrGroupIdList.contains(grp2.Id));
             System.assert(!userOrGroupIdList.contains(grp1.Id));            
             System.assert(!userOrGroupIdList.contains(grp3.Id));
             
             //Validating whether case is shared with only claim Submitter or not 
-            //assert.isTrue(userOrGroupIdList.contains(usr2.Id));
+            System.assert(userOrGroupIdList.contains(usr2.Id));
             
             //Covering Exception
             List<Case> caseList = [SELECT id FROM Case WHERE Id=:cs.Id LIMIT 1];

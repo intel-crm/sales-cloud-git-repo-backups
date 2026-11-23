@@ -175,8 +175,20 @@
         <name>PSG_Ready_for_Submission_CheckValidation</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- Please update ListUnit Price of &quot;Intel® Trust Authority for confidential compute attestation – Enterprise custom TRUSTAUTHCSTM&quot; Product before Approve Quote. --></errorMessage>
+        <name>Pricing_SW_CustomProduct_0_ListUnitPrice</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- Please provide Comments before Rejection --></errorMessage>
         <name>Pricing_SW_Rejection_Approval_Comments</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Fields cannot be edited on Approval record. --></errorMessage>
+        <name>Pricing_SW_RestrictEditonApprovalFields</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- BUSOPS is not entitled to approve Quote with negative margin --></errorMessage>
+        <name>test</name>
     </validationRules>
     <webLinks>
         <label>Aprobar</label>

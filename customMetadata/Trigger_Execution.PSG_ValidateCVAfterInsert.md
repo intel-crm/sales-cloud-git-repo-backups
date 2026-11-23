@@ -8,7 +8,7 @@
     </values>
     <values>
         <field>Class_Name__c</field>
-        <value xsi:type="xsd:string">Core_MDF_ContentVersionTriggerHandler</value>
+        <value xsi:type="xsd:string">ContentVersionTriggerHandler</value>
     </values>
     <values>
         <field>Description__c</field>
@@ -20,7 +20,7 @@
     </values>
     <values>
         <field>Inactive_for_User__c</field>
-        <value xsi:type="xsd:string">0053b00000BsUXlAAN</value>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>Object__c</field>

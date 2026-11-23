@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>CampuStore srl Partner User</description>
+    <description>Media Direct s.r.l. - PUBLIC SECTOR Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>CampuStore srl Partner User</name>
+    <name>Media Direct s.r.l. - PUBLIC SECTOR Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>MediaDirectsrlPUBLICSECTORPartnerManager</parentRole>
 </Role>

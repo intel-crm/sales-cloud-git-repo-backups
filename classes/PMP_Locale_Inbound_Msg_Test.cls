@@ -1,15 +1,15 @@
 @isTest
 public class PMP_Locale_Inbound_Msg_Test {
-/*
+
     @isTest
     static void updateLocaleDetails(){
-        test.startTest();
+        
         //Create account
         Account testAccount = new Account();
         testAccount.RecordTypeId = PMP_TestDataUtility.intel_Account_Record_Type;
         testAccount.Name = 'Test Account 19-Jun-19';       
         testAccount.Core_Account_Country__c='India';
-        testAccount.Core_Sales_Group_New__c='US Sales Group';
+        testAccount.Core_Sales_Groups__c='US Sales Group';
         testAccount.Core_Account_Type__c='ODM';
         testAccount.BillingStreet='Bangalore Central';
         testAccount.BillingCity='Bangalore';
@@ -124,8 +124,8 @@ public class PMP_Locale_Inbound_Msg_Test {
         inboundMessage3.Core_Payload1__c='zh-CN';
         insert inboundMessage3;
         
-        system.assertEquals(inboundMessage3.Core_Message_Type__c,'Marketplace Translation','True');
         
+        system.debug(inboundMessage.Core_Payload__c);
          PMP_Locale_Inbound_Msg.targetLanguage='Japanese';
         Map<Id,Core_Integration_Inbound_Message__c> inboundMap=new Map<Id,Core_Integration_Inbound_Message__c>();        
         inboundMap.put(inboundMessage.Id, inboundMessage );
@@ -147,21 +147,19 @@ public class PMP_Locale_Inbound_Msg_Test {
         failedMessages.add(inboundMessage2);
         failedMessages.add(inboundMessage3);
         PMP_Locale_Inbound_Msg.rePublish(failedMessages);
-        test.stopTest();
         
     }
     
        
      @isTest
     static void updateLocaleDetails_PublishedCopy(){
-        test.startTest();
         
         //Create account
         Account testAccount = new Account();
         testAccount.RecordTypeId = PMP_TestDataUtility.intel_Account_Record_Type;
         testAccount.Name = 'Test Account 19-Jun-19';       
         testAccount.Core_Account_Country__c='India';
-        testAccount.Core_Sales_Group_New__c='US Sales Group';
+        testAccount.Core_Sales_Groups__c='US Sales Group';
         testAccount.Core_Account_Type__c='ODM';
         testAccount.BillingStreet='Bangalore Central';
         testAccount.BillingCity='Bangalore';
@@ -189,14 +187,13 @@ public class PMP_Locale_Inbound_Msg_Test {
         partnerOffering.PMP_Translated_Languages__c='English';
         partnerOffering.PMP_Partner_Offering_Start_Dt__c=Date.today().addDays(-1);
         insert partnerOffering;
-        */
+        
         /*PMP_Partner_Offering__c ppo=[Select PMP_Partner_Offering_Lifecycle_Status_Nm__c from PMP_Partner_Offering__c where Id=:partnerOffering.Id limit 1];
         ppo.PMP_Partner_Offering_Lifecycle_Status_Nm__c='Approved';
         update ppo;
       */
-        // system.debug('partnerOffering::'+partnerOffering.Id);
+        system.debug('partnerOffering::'+partnerOffering.Id);
         //Inserting partner record
-        /*
         PMP_Partner_Offering__c partnerOffering2=new PMP_Partner_Offering__c();
         partnerOffering2.Name=String.valueOf(DateTime.now());
         partnerOffering2.PMP_Offering_Language_Nm__c='English';
@@ -209,7 +206,7 @@ public class PMP_Locale_Inbound_Msg_Test {
         partnerOffering2.PMP_Working_Copy_Id__c=partnerOffering.Id;
         partnerOffering2.PMP_Translated_Languages__c='English';
         insert partnerOffering2;
-       // System.debug('partnerOffering2:'+partnerOffering2.Id);
+       System.debug('partnerOffering2:'+partnerOffering2.Id);
        
             
             
@@ -256,7 +253,7 @@ public class PMP_Locale_Inbound_Msg_Test {
 
        
 
-        */
+        
         
          //Published copy
         //Inserting partner record
@@ -273,7 +270,7 @@ public class PMP_Locale_Inbound_Msg_Test {
         partnerOfferingP.PMP_Partner_Offering_Start_Dt__c=Date.today().addDays(-1);
         insert partnerOfferingP;*/
         
-		/*
+
         //partner offering 
         PMP_Partner_Offering_Translation__c partnerOfferingTranslationP=new PMP_Partner_Offering_Translation__c();
         partnerOfferingTranslationP.Name=partnerOffering.Id+'PMP_Partner_Offering_Nm__c';
@@ -352,9 +349,9 @@ public class PMP_Locale_Inbound_Msg_Test {
         inboundMessage3.Core_Payload1__c='Simplified Chinese';
         insert inboundMessage3;
         
-        system.assertEquals(inboundMessage3.Core_Message_Type__c,'Marketplace Translation','True');
-        List<PMP_Languages__mdt> meta=[Select Locale_Nm__c, Language_Code__c FROM PMP_Languages__mdt LIMIT 10];
-         // system.debug('meta:1'+meta);
+        
+        List<PMP_Languages__mdt> meta=[Select Locale_Nm__c, Language_Code__c FROM PMP_Languages__mdt ];
+         system.debug('meta:1'+meta);
         PMP_Locale_Inbound_Msg.targetLanguage='Japanese';
         Map<Id,Core_Integration_Inbound_Message__c> inboundMap=new Map<Id,Core_Integration_Inbound_Message__c>();        
         inboundMap.put(inboundMessage.Id, inboundMessage );
@@ -371,31 +368,26 @@ public class PMP_Locale_Inbound_Msg_Test {
         PMP_Locale_Inbound_Msg lim=new PMP_Locale_Inbound_Msg();
         PMP_Locale_Inbound_Msg.updateLocaleDetails(inboundMap);
         
-        test.stopTest();
-        
     }
     
     
     @isTest
     static void updateLocaleDetailsEmptyInbound(){
-        test.startTest();
         Map<Id,Core_Integration_Inbound_Message__c> inboundMap=new Map<Id,Core_Integration_Inbound_Message__c>(); 
         PMP_Locale_Inbound_Msg lim=new PMP_Locale_Inbound_Msg();
         PMP_Locale_Inbound_Msg.updateLocaleDetails(inboundMap);
-        test.stopTest();
-        system.assertEquals('1','1','True');
     }
     
     
     @isTest
     static void updateLocaleDetailsTargetLanguage(){
-        test.startTest();
+        
         //Create account
         Account testAccount = new Account();
         testAccount.RecordTypeId = PMP_TestDataUtility.intel_Account_Record_Type;
         testAccount.Name = 'Test Account 19-Jun-19';       
         testAccount.Core_Account_Country__c='India';
-        testAccount.Core_Sales_Group_New__c='US Sales Group';
+        testAccount.Core_Sales_Groups__c='US Sales Group';
         testAccount.Core_Account_Type__c='ODM';
         testAccount.BillingStreet='Bangalore Central';
         testAccount.BillingCity='Bangalore';
@@ -510,8 +502,8 @@ public class PMP_Locale_Inbound_Msg_Test {
         inboundMessage3.Core_Payload1__c='zh-CN';
         insert inboundMessage3;
         
-        system.assertEquals(inboundMessage3.Core_Message_Type__c,'Marketplace Translation','True');
-        // system.debug(inboundMessage.Core_Payload__c);
+        
+        system.debug(inboundMessage.Core_Payload__c);
          PMP_Locale_Inbound_Msg.targetLanguage='Japanese';
         Map<Id,Core_Integration_Inbound_Message__c> inboundMap=new Map<Id,Core_Integration_Inbound_Message__c>();        
         inboundMap.put(inboundMessage.Id, inboundMessage );
@@ -533,8 +525,6 @@ public class PMP_Locale_Inbound_Msg_Test {
         failedMessages.add(inboundMessage2);
         failedMessages.add(inboundMessage3);
         PMP_Locale_Inbound_Msg.rePublish(failedMessages);
-        test.stopTest();
         
     }
-*/
 }

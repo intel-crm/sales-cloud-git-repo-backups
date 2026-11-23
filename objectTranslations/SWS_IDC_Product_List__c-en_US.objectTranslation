@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>IDC Product List</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>IDC Products List</value>
+    </caseValues>
+    <fields>
+        <label><!-- Additional Details --></label>
+        <name>SWS_Additional_Details__c</name>
+    </fields>
+    <fields>
+        <help><!-- Check this box to activate the product and add it to the Product list in Credit Request --></help>
+        <label><!-- Product is active --></label>
+        <name>SWS_Product_is_active__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

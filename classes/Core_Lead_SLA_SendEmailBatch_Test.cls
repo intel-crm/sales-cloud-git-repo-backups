@@ -11,72 +11,49 @@ Modification Log :
 
 @isTest
 public class Core_Lead_SLA_SendEmailBatch_Test {
-    
+
     static testMethod void batchTest1(){
-        Profile profileId = [SELECT Id FROM Profile WHERE Name = 'System Administrator' LIMIT 1];
+        String leadRecType = Schema.SObjectType.Lead.getRecordTypeInfosByName().get('Sales Lead').getRecordTypeId();
+        Lead lead1 = new lead();
+        lead1.RecordTypeId = leadRecType;
+        lead1.FirstName = 'Test Lead';
+        lead1.Title = 'title';
+        lead1.City = 'Banglore';
+        lead1.Core_Current_Architecture__c = 'ARM';
+        lead1.LastName = 'Test';
+        lead1.Company = 'Testing';
+        lead1.phone = '9876543210';
+        lead1.Email = 'test@gmail.com';
+        lead1.CountryCode = 'IND';
+        lead1.StateCode = 'KA';
+        lead1.Core_Job_Function__c = 'Branch Manager';
+        lead1.Core_Product_Interest__c = 'Ethernet Controllers';
+        lead1.Core_Project_Phase__c = 'Explore';
+        lead1.Core_Project_Size__c = '$10,000,000 - $5,000,000';
+        lead1.Core_Project_Timeframe__c = '0-6 Months';
+        lead1.Street = 'ECity';
+        lead1.PostalCode = '560099';
+        lead1.LeadSource = 'Intel Customer Support';
+        insert lead1;
+        //lead1.Status = 'Tele Accepted Lead';
+        update lead1;
+        //lead1.Status = 'Tele Qualified Lead';
+        update lead1;
+        lead1.Status = 'Sales Accepted Lead';
+        lead1.Core_SAL_Email_Trigger_Date__c = system.now();
+        lead1.Core_SendEmail__c = false;
+        lead1.Core_SendEmail4__c = false;
+        update lead1;
+        Database.executeBatch(new Core_Lead_SLA_SendEmailBatch());
         
-        User us = new User();
-        us.FirstName = 'test';
-        us.LastName = 'user';
-        us.Email = 'testuser@intel.com';
-        us.Username = 'testinguser@inteltest.com';
-        us.Alias = 'testu';
-        us.CommunityNickname = 'test.userqwert';
-        us.TimeZoneSidKey = 'America/Los_Angeles';
-        us.LocaleSidKey = 'en_US';
-        us.EmailEncodingKey = 'UTF-8';
-        us.ProfileId = profileId.Id;
-        us.LanguageLocaleKey = 'en_US';
-        insert us;
+        lead1.Core_SAL_Email_Trigger_Date__c = null;
+        lead1.Core_SAL_Weekend_Email_Trigger_Date__c = system.now();
+        lead1.Core_SendEmail__c = false;
+        lead1.Core_SendEmail4__c = false;
+        update lead1;
+        Database.executeBatch(new Core_Lead_SLA_SendEmailBatch());
         
-        System.runAs(us){
-            Core_Opp_Bypass_Validation_Rule__c bypass = new Core_Opp_Bypass_Validation_Rule__c();
-            bypass.Bypass__c=TRUE;
-            bypass.SetupOwnerId = us.Id;
-            insert bypass;
-            
-            String leadRecType = Schema.SObjectType.Lead.getRecordTypeInfosByName().get('Sales Lead').getRecordTypeId();
-            Lead lead1 = new lead();
-            lead1.RecordTypeId = leadRecType;
-            lead1.FirstName = 'Test Lead';
-            lead1.Title = 'title';
-            lead1.City = 'Banglore';
-            lead1.Core_Current_Architecture__c = 'ARM';
-            lead1.LastName = 'Test';
-            lead1.Company = 'Testing';
-            lead1.phone = '9876543210';
-            lead1.Email = 'test@gmail.com';
-            lead1.CountryCode = 'IND';
-            lead1.StateCode = 'KA';
-            lead1.Core_Job_Function__c = 'Branch Manager';
-            lead1.Core_Product_Interest__c = 'Ethernet Controllers';
-            lead1.Core_Project_Phase__c = 'Explore';
-            lead1.Core_Project_Size__c = '$10,000,000 - $5,000,000';
-            lead1.Core_Project_Timeframe__c = '0-6 Months';
-            lead1.Street = 'ECity';
-            lead1.PostalCode = '560099';
-            lead1.LeadSource = 'Intel Customer Support';
-            lead1.Status = 'Tele Accepted Lead';
-            insert lead1;
-            lead1.Status = 'Tele Accepted Lead';
-            update lead1;
-            lead1.Status = 'Tele Qualified Lead';
-            update lead1;
-            lead1.Status = 'Sales Accepted Lead';
-            lead1.Core_SAL_Email_Trigger_Date__c = system.now();
-            lead1.Core_SendEmail__c = false;
-            lead1.Core_SendEmail4__c = false;
-            update lead1;
-            Database.executeBatch(new Core_Lead_SLA_SendEmailBatch());
-            
-            lead1.Core_SAL_Email_Trigger_Date__c = null;
-            lead1.Core_SAL_Weekend_Email_Trigger_Date__c = system.now();
-            lead1.Core_SendEmail__c = false;
-            lead1.Core_SendEmail4__c = false;
-            update lead1;
-            Database.executeBatch(new Core_Lead_SLA_SendEmailBatch());
-            String cronExp = '0 0 5 ? * *';
-            system.schedule('Send Email at 5am', cronExp, new Core_Schedule_SendEmail());
-        }
+        String cronExp = '0 0 5 ? * *';
+        system.schedule('Send Email at 5am', cronExp, new Core_Schedule_SendEmail());
     }
 }

@@ -7,6 +7,10 @@
         <value xsi:type="xsd:string">DCG</value>
     </values>
     <values>
+        <field>Pricing_Business_Unit__c</field>
+        <value xsi:type="xsd:string">DCG</value>
+    </values>
+    <values>
         <field>Pricing_Comment_Ref_Id__c</field>
         <value xsi:type="xsd:string">QC-003</value>
     </values>

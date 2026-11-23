@@ -9,13 +9,58 @@
         <value>Content Versions</value>
     </caseValues>
     <fields>
+        <label><!-- Checksum --></label>
+        <name>Checksum__c</name>
+    </fields>
+    <fields>
+        <label><!-- Content Body ID --></label>
+        <name>ContentBodyId__c</name>
+    </fields>
+    <fields>
         <label><!-- ContentDocument ID --></label>
         <name>ContentDocumentId__c</name>
         <relationshipLabel><!-- Content Versions --></relationshipLabel>
     </fields>
     <fields>
+        <label><!-- Content Location --></label>
+        <name>ContentLocation__c</name>
+        <picklistValues>
+            <masterLabel>External</masterLabel>
+            <translation><!-- External --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Salesforce</masterLabel>
+            <translation><!-- Salesforce --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Social Customer Service</masterLabel>
+            <translation><!-- Social Customer Service --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- User ID --></label>
+        <name>ContentModifiedById__c</name>
+    </fields>
+    <fields>
+        <label><!-- Content Modified Date --></label>
+        <name>ContentModifiedDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Size --></label>
+        <name>ContentSize__c</name>
+    </fields>
+    <fields>
+        <label><!-- Content URL --></label>
+        <name>ContentUrl__c</name>
+    </fields>
+    <fields>
         <label><!-- Content Document --></label>
         <name>Core_Content_Document__c</name>
+        <relationshipLabel><!-- Content Versions --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- First Publish Location ID --></label>
+        <name>Core_First_Publish_Location_ID__c</name>
         <relationshipLabel><!-- Content Versions --></relationshipLabel>
     </fields>
     <fields>
@@ -35,12 +80,69 @@
         <name>Description__c</name>
     </fields>
     <fields>
+        <label><!-- External Data Source ID --></label>
+        <name>ExternalDataSourceId__c</name>
+    </fields>
+    <fields>
+        <label><!-- External Document Info1 --></label>
+        <name>ExternalDocumentInfo1__c</name>
+    </fields>
+    <fields>
+        <label><!-- External Document Info2 --></label>
+        <name>ExternalDocumentInfo2__c</name>
+    </fields>
+    <fields>
+        <label><!-- Featured Content Boost --></label>
+        <name>FeaturedContentBoost__c</name>
+    </fields>
+    <fields>
+        <label><!-- Featured Content Date --></label>
+        <name>FeaturedContentDate__c</name>
+    </fields>
+    <fields>
         <label><!-- File Extension --></label>
         <name>FileExtension__c</name>
     </fields>
     <fields>
         <label><!-- File Type --></label>
         <name>FileType__c</name>
+    </fields>
+    <fields>
+        <label><!-- First Publish Location ID --></label>
+        <name>FirstPublishLocationId__c</name>
+        <relationshipLabel><!-- Content Versions --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Asset File Enabled --></label>
+        <name>IsAssetEnabled__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Deleted --></label>
+        <name>IsDeleted__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Latest --></label>
+        <name>IsLatest__c</name>
+    </fields>
+    <fields>
+        <label><!-- Major Version --></label>
+        <name>IsMajorVersion__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Modified By ID --></label>
+        <name>LastModifiedById__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Modified Date --></label>
+        <name>LastModifiedDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Negative Rating Count --></label>
+        <name>NegativeRatingCount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Network ID --></label>
+        <name>NetworkId__c</name>
     </fields>
     <fields>
         <label><!-- Content Origin --></label>
@@ -59,12 +161,80 @@
         <name>OwnerId__c</name>
     </fields>
     <fields>
+        <label><!-- Positive Rating Count --></label>
+        <name>PositiveRatingCount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Publish Status --></label>
+        <name>PublishStatus__c</name>
+        <picklistValues>
+            <masterLabel>Private Library</masterLabel>
+            <translation><!-- Private Library --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Public</masterLabel>
+            <translation><!-- Public --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Upload Interrupted</masterLabel>
+            <translation><!-- Upload Interrupted --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Rating Count --></label>
+        <name>RatingCount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reason For Change --></label>
+        <name>ReasonForChange__c</name>
+    </fields>
+    <fields>
+        <label><!-- Prevent others from sharing and unsharin --></label>
+        <name>SharingOption__c</name>
+        <picklistValues>
+            <masterLabel>Freeze Sharing Off</masterLabel>
+            <translation><!-- Freeze Sharing Off --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Freeze Sharing On</masterLabel>
+            <translation><!-- Freeze Sharing On --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- File Privacy on Records --></label>
+        <name>SharingPrivacy__c</name>
+        <picklistValues>
+            <masterLabel>Private on Records</masterLabel>
+            <translation><!-- Private on Records --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Visible to Anyone With Record Access</masterLabel>
+            <translation><!-- Visible to Anyone With Record Access --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- System Modstamp --></label>
+        <name>SystemModstamp__c</name>
+    </fields>
+    <fields>
+        <label><!-- Tags --></label>
+        <name>TagCsv__c</name>
+    </fields>
+    <fields>
+        <label><!-- Text Preview --></label>
+        <name>TextPreview__c</name>
+    </fields>
+    <fields>
         <label><!-- Title --></label>
         <name>Title__c</name>
     </fields>
     <fields>
         <label><!-- Version Data --></label>
         <name>VersionData__c</name>
+    </fields>
+    <fields>
+        <label><!-- Version Number --></label>
+        <name>VersionNumber__c</name>
     </fields>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExtlClntAppGlobalOauthSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+    <callbackUrl>http://localhost:8000/callback</callbackUrl>
+    <certificate>MIIDmzCCAoOgAwIBAgIUGl6SnOEuGjvW7fC9eo2i85Kz9ZMwDQYJKoZIhvcNAQEL
+BQAwdjELMAkGA1UEBhMCVVMxCzAJBgNVBAgMAkFEMQswCQYDVQQHDAJMQTEMMAoG
+A1UECgwDSU5UMQswCQYDVQQLDAJJVDEMMAoGA1UEAwwDQVJWMSQwIgYJKoZIhvcN
+AQkBFhVBUkFWSU5ELkIuUkBJTlRFTC5DT00wHhcNMjUwMTI4MDk0ODE0WhcNMjYw
+MTI4MDk0ODE0WjB2MQswCQYDVQQGEwJVUzELMAkGA1UECAwCQUQxCzAJBgNVBAcM
+AkxBMQwwCgYDVQQKDANJTlQxCzAJBgNVBAsMAklUMQwwCgYDVQQDDANBUlYxJDAi
+BgkqhkiG9w0BCQEWFUFSQVZJTkQuQi5SQElOVEVMLkNPTTCCASIwDQYJKoZIhvcN
+AQEBBQADggEPADCCAQoCggEBALkEOoz+atlQE28GsE0fQ0Ud67HTtnTgWfml56MA
+E7wYMb29BeGtCwyNK+Lr0TiaSifNuurakDBpKg1JCAmpE/5vdUoMiOjXPQh2P5in
+eIWiCrD5136eO3bTZ02eC6ARBkwCM8KzvZP5XdgRNivKfc29knxPzSxEBiGw0OdZ
+eTd9cC1SXhAjJhCIYduz1p7+DOEZqa2QgFTyzpthkSTyCMTBAnisGFTaxD4QDQ2v
+lILmZ3CDuqTClzyQEmM+yD+wUj4vpQh5kmIl+g/4KuVqvDWogqSts+syZDSg3Hjw
+DvKa7FVWZaukTNWptQAXHXuj/6teDOWc/5DyrFSSCGwmrsMCAwEAAaMhMB8wHQYD
+VR0OBBYEFFSogDcHvrvnI0EO4/MJ1DH5ccl3MA0GCSqGSIb3DQEBCwUAA4IBAQBp
+BqxZtVetS1t5PIQOpb0bS3NJActv+csXm1SQGWQYX3izUSfxbIT/gUdwn603vOou
+MxrQUDSlRf2H4wxnMS12FyBjNc3Tnp6U0BroEi2iMhRj5qvAim0ClPG5JqQjnFIv
+FV4MkW9TN+pggf1CD2BiFV1M0ALO/WkzPRfyZktTt5Q80XMZUcuu1gZgbQO0vvwT
+tM1b1+MPyqYLMrtMsCOOU7uV8qsVp6RYNg8WL0zVNFYnqlAtcAQExvL0xARMa1QE
+y9I4l8FGzVO+OFA5kaRdYetXlOLGIfEU4og2GodIIgFiaPcTGQTRHzK5Dnqpik6X
+b2C1VyhpcwmRbKSte20I</certificate>
+    <consumerKey>3MVG9FxR3Tq3eZN88sLG9b4Pw8IWGDGAqX4sDNWC7EQwzV0nD7Z_6u3dK_rP2hcugUPIRsbArGlMA.ycJkzV6</consumerKey>
+    <externalClientApplication>Connect_SF_from_local</externalClientApplication>
+    <isClientCredentialsFlowEnabled>false</isClientCredentialsFlowEnabled>
+    <isCodeCredFlowEnabled>false</isCodeCredFlowEnabled>
+    <isCodeCredPostOnly>false</isCodeCredPostOnly>
+    <isConsumerSecretOptional>false</isConsumerSecretOptional>
+    <isDPopEnabled>false</isDPopEnabled>
+    <isDeviceFlowEnabled>false</isDeviceFlowEnabled>
+    <isEnforceRefreshTokenTTL>false</isEnforceRefreshTokenTTL>
+    <isIntrospectAllTokens>false</isIntrospectAllTokens>
+    <isMtlsEnabled>false</isMtlsEnabled>
+    <isNamedUserJwtEnabled>false</isNamedUserJwtEnabled>
+    <isPkceRequired>false</isPkceRequired>
+    <isRefreshTokenRotationEnabled>false</isRefreshTokenRotationEnabled>
+    <isSecretRequiredForRefreshToken>true</isSecretRequiredForRefreshToken>
+    <isSecretRequiredForTokenExchange>true</isSecretRequiredForTokenExchange>
+    <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
+    <label>Connect_SF_from_local_glbloauth</label>
+    <shouldRotateConsumerKey>false</shouldRotateConsumerKey>
+    <shouldRotateConsumerSecret>false</shouldRotateConsumerSecret>
+</ExtlClntAppGlobalOauthSettings>

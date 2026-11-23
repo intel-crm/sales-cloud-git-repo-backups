@@ -10,7 +10,13 @@
         <field>PMP_Company__c$PMP_Account_Id__c</field>
     </columns>
     <columns>
-        <field>PMP_Company__c$PMP_Account_Dsc__c</field>
+        <field>PMP_Company__c.PMP_Company_Information_Translations__r$PMP_English_Txt__c</field>
+    </columns>
+    <columns>
+        <field>PMP_Company__c.PMP_Company_Information_Translations__r$PMP_Japanese_Txt__c</field>
+    </columns>
+    <columns>
+        <field>PMP_Company__c.PMP_Company_Information_Translations__r$PMP_Chinese_Txt__c</field>
     </columns>
     <description>This Report is used for identifying the Partners With Out Desription</description>
     <filter>
@@ -20,6 +26,13 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>1</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PMP_Company__c.PMP_Company_Information_Translations__r$PMP_Field_Nm__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>PMP_Account_Dsc__c</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

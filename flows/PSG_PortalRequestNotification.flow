@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>PSG_Disty_Field_Update_Request_From_Chatbot</name>
+        <label>PSG Disty Field Update Request From Chatbot</label>
+        <locationX>412</locationX>
+        <locationY>589</locationY>
+        <actionName>core_cpq_portalrequest__c.Email_alert_for_PSG_Disty_Field_Update_Request_From_Chatbot</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>core_cpq_portalrequest__c.Email_alert_for_PSG_Disty_Field_Update_Request_From_Chatbot</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <name>Quote_Deactivation_Template</name>
+        <label>Quote Deactivation Template</label>
+        <locationX>593</locationX>
+        <locationY>595</locationY>
+        <actionName>core_cpq_portalrequest__c.Email_alert_for_PSG_Disty_Quote_Deactivation_Request_From_Chatbot</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>core_cpq_portalrequest__c.Email_alert_for_PSG_Disty_Quote_Deactivation_Request_From_Chatbot</nameSegment>
+    </actionCalls>
+    <apiVersion>56.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Request_Type</name>
+        <label>Request Type</label>
+        <locationX>387</locationX>
+        <locationY>358</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Field_Update</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.core_cpq_request_type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Field Update</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>PSG_Disty_Field_Update_Request_From_Chatbot</targetReference>
+            </connector>
+            <label>Field Update</label>
+        </rules>
+        <rules>
+            <name>Quote_Deactivation</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.core_cpq_request_type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Quote Deactivation</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Quote_Deactivation_Template</targetReference>
+            </connector>
+            <label>Quote Deactivation</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <interviewLabel>PSG_PortalRequestNotification {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>PSG_PortalRequestNotification</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>285</locationX>
+        <locationY>50</locationY>
+        <connector>
+            <targetReference>Request_Type</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>core_cpq_Status__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Pending</stringValue>
+            </value>
+        </filters>
+        <object>core_cpq_portalrequest__c</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

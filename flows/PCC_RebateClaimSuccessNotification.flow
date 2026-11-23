@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <description>Notify Partner on Success Rebate Claims</description>
+        <name>Notify_Partner_on_Success_Rebate_Claims</name>
+        <label>Notify Partner on Success Rebate Claims</label>
+        <locationX>50</locationX>
+        <locationY>539</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <elementReference>$User.Email</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue>Rebate Claim Successfully created</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <stringValue>Rebate Claim Successfully created</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+    </actionCalls>
+    <apiVersion>61.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <constants>
+        <name>ParentStatusConstant</name>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Claim Submitted</stringValue>
+        </value>
+    </constants>
+    <decisions>
+        <description>Get Submitted records</description>
+        <name>Get_Submitted_records</name>
+        <label>Get Submitted records</label>
+        <locationX>182</locationX>
+        <locationY>323</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Outcome_1_of_Get_Submitted_records</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>RebateClaimStatus</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>ParentStatusConstant</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_all_Claim_Records</targetReference>
+            </connector>
+            <label>Outcome 1 of Get Submitted records</label>
+        </rules>
+    </decisions>
+    <description>Email Notification on Successful creation of Rebate Claims.</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>RebateClaimStatus</name>
+        <dataType>String</dataType>
+        <expression>TEXT($Record.PCC_Rebate_Claim__r.PCC_Claim_Status__c)</expression>
+    </formulas>
+    <interviewLabel>PCC_ {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>PCC_RebateClaimSuccessNotification</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Get all Claim Line Item Records</description>
+        <name>Get_all_Claim_Records</name>
+        <label>Get all Claim Records</label>
+        <locationX>50</locationX>
+        <locationY>431</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Notify_Partner_on_Success_Rebate_Claims</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>PCC_Claim_Status__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Claim Submitted</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>PCC_Rebate_Claim__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Submitted_records</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>PCC_Status__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PCC_Status__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue></stringValue>
+            </value>
+        </filters>
+        <object>PCC_Rebate_Claim_Line_Item__c</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Draft</status>
+</Flow>

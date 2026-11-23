@@ -223,6 +223,29 @@
         <type>Checkbox</type>
     </fields>
     <fields>
+        <fullName>Core_KPI_Current_Status__c</fullName>
+        <label>KPI Current Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Is KPI Refresh</fullName>
+                    <default>false</default>
+                    <label>Is KPI Refresh</label>
+                </value>
+                <value>
+                    <fullName>Is KPI Failed</fullName>
+                    <default>false</default>
+                    <label>Is KPI Failed</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
         <fullName>Core_KPI_Name__c</fullName>
         <externalId>false</externalId>
         <label>KPI Name</label>
@@ -567,29 +590,24 @@
     </fields>
     <label>KPI Staging</label>
     <listViews>
-        <fullName>Today</fullName>
+        <fullName>All</fullName>
         <columns>NAME</columns>
-        <columns>Core_KPI_Record_ID__c</columns>
         <columns>Core_KPI_Name__c</columns>
+        <columns>Core_Opportunity_ID__c</columns>
         <columns>Core_Opportunity_ID_Txt__c</columns>
         <columns>Core_Status__c</columns>
+        <columns>Core_Old_Record__c</columns>
         <columns>Core_Refresh_Type__c</columns>
-        <columns>Core_Begin_Of_File__c</columns>
-        <columns>Core_Is_Delete__c</columns>
-        <columns>Core_End_Of_File__c</columns>
         <columns>Core_Batch_ID__c</columns>
-        <columns>Core_Retry_Counter__c</columns>
-        <columns>Core_KPI_Achieved__c</columns>
-        <columns>Core_Batch_Time__c</columns>
-        <columns>CREATED_DATE</columns>
+        <columns>Core_Is_Delete__c</columns>
+        <columns>Core_Begin_Of_File__c</columns>
+        <columns>Core_End_Of_File__c</columns>
+        <columns>CREATEDBY_USER</columns>
         <columns>Core_Error_Description__c</columns>
+        <columns>Core_Invalid_Record__c</columns>
         <filterScope>Everything</filterScope>
-        <filters>
-            <field>CREATED_DATE</field>
-            <operation>equals</operation>
-            <value>LAST_N_DAYS:2</value>
-        </filters>
-        <label>Today</label>
+        <label>All</label>
+        <language>en_US</language>
     </listViews>
     <nameField>
         <displayFormat>KS-{0000000}</displayFormat>

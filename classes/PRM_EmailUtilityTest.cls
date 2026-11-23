@@ -86,7 +86,7 @@ public class PRM_EmailUtilityTest {
             a1.BillingPostalCode='5600371';
             a1.ownerId= portalAccountOwner1.id ;
             a1.Core_User_Defined_Website__c='www.testww1.com';
-               a1.website='www.testww1.com';
+        	a1.website='www.testww1.com';
             accLst.add(a1);
             //insert a1;
             
@@ -121,14 +121,12 @@ public class PRM_EmailUtilityTest {
             a12.BillingPostalCode='5600322';
             a12.ownerId= portalAccountOwner1.id ;
             a12.Core_User_Defined_Website__c='www.testww122.com';
-               a12.website='www.testww122.com';
+        	a12.website='www.testww122.com';
             accLst.add(a12);
         insert accLst;
             
             cont = PRM_TestUtility.getContact();
-            cont.AccountId=a.Id;
-            cont.MailingCountry='USA';
-            cont.MailingCountryCode = 'USA';
+            cont.AccountId=a.Id;            
             insert cont;
             //system.debug('Contact Id' +cont.Id);
             
@@ -151,25 +149,22 @@ public class PRM_EmailUtilityTest {
             insert cag12;
             
             
-           /* Core_Account_Group_Member__c cag = new Core_Account_Group_Member__c();
+            Core_Account_Group_Member__c cag = new Core_Account_Group_Member__c();
             cag.Core_Intel_Account_Id__c = a.Id;    
             cag.Core_Partner_Account_Id__c = accPAGu.id;
-          //  cag.Core_Inactive_Ind__c = true;*/
-          cag1.Core_Inactive_Ind__c=true;
-          update cag1;
-            listOfCAG.add(cag1);
-            
+          //  cag.Core_Inactive_Ind__c = true;
+            listOfCAG.add(cag);
+            insert listOfCAG;
+            listOfCAG[0].Core_Inactive_Ind__c=true;
+            update listOfCAG[0];
            
-            PRM_EmailUtility.deactivationEmailofLastCAGRecords(listOfCAG,listOfCAGOld);
+             PRM_EmailUtility.deactivationEmailofLastCAGRecords(listOfCAG,listOfCAGOld);
             
             PRM_AccountChannelMembership__c acm = PRM_TestUtility.getMembership();
             acm.PRM_Channel_Program_Id__c=cp.Id;
             acm.PRM_Account_Id__c=a.Id;
-            acm.PRM_Partner_Role__c='Guest';
-            acm.PRM_Status_Reason_Txt__c = 'Testclass';
-            TriggerHandler.bypass('PRM_ACMTriggerHandlerNew');
+            acm.PRM_Partner_Role__c='Seller';
             insert acm;
-            TriggerHandler.clearbypass('PRM_ACMTriggerHandlerNew');
             
             pbenefit= PRM_TestUtility.getPartnerBenefit();
             insert pbenefit;
@@ -188,13 +183,12 @@ public class PRM_EmailUtilityTest {
             //acctContRel.PRM_Account_Channel_Membership_Id__c=acm.Id;
             acctContRel.PRM_Relationship_Id__c=contRelation.Id;
             acctContRel.PRM_InActive_Ind__c=false;
-                                           acctContRel.PRM_Status_Reason_Txt__c = 'Testclass';
             test.startTest();
-            Triggerhandler.bypass('PRM_AcctContRel_TriggerHandlerNew');
             insert acctContRel;
+            
             acctContRel.PRM_Status_Nm__c = System.Label.PRM_ACR_Status;
             update acctContRel;
-            Triggerhandler.clearbypass('PRM_AcctContRel_TriggerHandlerNew');
+            
         }
         
         UserRole ur = new UserRole(DeveloperName = 'MyCustomRole', Name = 'My Role');
@@ -235,10 +229,9 @@ public class PRM_EmailUtilityTest {
             //Test.startTest();
             PRM_EmailUtility.EmailNotification en = new PRM_EmailUtility.EmailNotification();
             Map<String,String> paramMap = new Map<String,String>();
-                                                 en.EmailID= regRequest.PRM_Email_ID__c ;
-                                                 en.Language = regRequest.PRM_Preferred_Language__c ;
-                                                 paramMap.put('Registration_Request_ID',regRequest.id);
-            paramMap.put('Contact_ID',cont.id);
+			      en.EmailID= regRequest.PRM_Email_ID__c ;
+			      en.Language = regRequest.PRM_Preferred_Language__c ;
+			      paramMap.put('Registration_Request_ID',regRequest.id);
             en.BusinessEvent = 'BENEFIT ADDITION40';
             en.InputParameters=paramMap;
             en.ChannelProgram = 'Intel Partner Alliance';
@@ -510,7 +503,6 @@ public class PRM_EmailUtilityTest {
         acm.PRM_Channel_Program_Id__c=cp.Id;
         acm.PRM_Channel_Program_Level_Id__c=cpl.Id;
         acm.PRM_Partner_Role__c='Service Provider';
-                             acm.PRM_Status_Reason_Txt__c = 'Testclass';'
         insert acm;
         
         PRM_Account_Contact_Relationship__c acctContRel=new PRM_Account_Contact_Relationship__c(); //Account Contact Relationship
@@ -519,12 +511,10 @@ public class PRM_EmailUtilityTest {
         acctContRel.PRM_Relationship_Id__c = cr.Id;
         acctContRel.PRM_InActive_Ind__c=false;
         acctContRel.PRM_execute_trigger__c=true;
-                             acctContRel.PRM_Status_Reason_Txt__c = 'Testclass';
-Triggerhandler.bypass('PRM_AcctContRel_TriggerHandlerNew');        
-insert acctContRel;     
+        insert acctContRel;
+        
         acctContRel.PRM_Status_Nm__c = System.Label.PRM_ACR_Status;
         update acctContRel;
-Triggerhandler.clearbypass('PRM_AcctContRel_TriggerHandlerNew');
         
         
         PRM_Specialty__c spec = new PRM_Specialty__c();
@@ -658,7 +648,6 @@ Triggerhandler.clearbypass('PRM_AcctContRel_TriggerHandlerNew');
       acm.PRM_Channel_Program_Id__c=cp.Id;
       acm.PRM_Channel_Program_Level_Id__c=cpl.Id;
       acm.PRM_Partner_Role__c='Service Provider';
-              acm.PRM_Status_Reason_Txt__c = 'Testclass';
       insert acm;
       
       PRM_Account_Contact_Relationship__c acctContRel=new PRM_Account_Contact_Relationship__c(); //Account Contact Relationship
@@ -667,13 +656,10 @@ Triggerhandler.clearbypass('PRM_AcctContRel_TriggerHandlerNew');
       acctContRel.PRM_Relationship_Id__c = cr.Id;
       acctContRel.PRM_InActive_Ind__c=false;
       acctContRel.PRM_execute_trigger__c=true;
-              acctContRel.PRM_Status_Reason_Txt__c = 'Testclass';
-Triggerhandler.bypass('PRM_AcctContRel_TriggerHandlerNew');     
-insert acctContRel;
+      insert acctContRel;
+      
       acctContRel.PRM_Status_Nm__c = System.Label.PRM_ACR_Status;
       update acctContRel;
-Triggerhandler.clearbypass('PRM_AcctContRel_TriggerHandlerNew');   
-
       
       
       PRM_Specialty__c spec = new PRM_Specialty__c();
@@ -786,7 +772,6 @@ Triggerhandler.clearbypass('PRM_AcctContRel_TriggerHandlerNew');
         intelAccntACM.PRM_Channel_Program_Id__c=cp.Id;
         intelAccntACM.PRM_Channel_Program_Level_Id__c=cpl.Id;
         intelAccntACM.PRM_Partner_Role__c='Solution Integrator';
-        intelAccntACM.PRM_Status_Reason_Txt__c = 'Testclass';
         insert intelAccntACM; 
         
         PRM_AccountChannelMembership__c pagAccntACM = new PRM_AccountChannelMembership__c(); //Account Channel Membership
@@ -795,7 +780,6 @@ Triggerhandler.clearbypass('PRM_AcctContRel_TriggerHandlerNew');
         pagAccntACM.PRM_Channel_Program_Id__c=cp.Id;
         pagAccntACM.PRM_Channel_Program_Level_Id__c=cpl.Id;
         pagAccntACM.PRM_Partner_Role__c='Solution Integrator';
-        pagAccntACM.PRM_Status_Reason_Txt__c = 'Testclass';
         insert pagAccntACM;
         
        //List<Contact> con = new List<Contact>();
@@ -810,8 +794,6 @@ Triggerhandler.clearbypass('PRM_AcctContRel_TriggerHandlerNew');
         cont.Core_IPA_PartnerRole__c = 'Solution Integrator';
         cont.Core_Login_Id__c = 'abc';
         cont.Core_Do_Not_Contact__c = false;
-        cont.MailingCountry='USA';
-        cont.MailingCountryCode = 'USA';
         insert cont;
         //con.add(cont);
         
@@ -827,8 +809,6 @@ Triggerhandler.clearbypass('PRM_AcctContRel_TriggerHandlerNew');
         cont1.Core_IPA_PartnerRole__c = 'Solution Integrator';
         cont1.Core_Do_Not_Contact__c = false;
         cont1.Core_Preferred_Language__c = '';
-        cont1.MailingCountry='USA';
-        cont1.MailingCountryCode = 'USA';
         insert cont1;
         
         Contact cont2 = new Contact();  //Contact
@@ -842,8 +822,6 @@ Triggerhandler.clearbypass('PRM_AcctContRel_TriggerHandlerNew');
         cont2.Core_IPA_PartnerRole__c = 'Solution Integrator';
         cont2.Core_Do_Not_Contact__c = false;
         cont2.Core_Preferred_Language__c = 'ENG';
-        cont2.MailingCountry='USA';
-        cont2.MailingCountryCode = 'USA';
         insert cont2;
         
       /*   Contact cont1 = new Contact();  //Contact
@@ -903,10 +881,7 @@ Triggerhandler.clearbypass('PRM_AcctContRel_TriggerHandlerNew');
         acr.PRM_Start_Date_Dt__c= system.today()-2; 
         acr.PRM_Status_Nm__c = 'Complete';
         acr.PRM_End_Date_Dt__c= acr.PRM_Start_Date_Dt__c+1; 
-                             acr.PRM_Status_Reason_Txt__c = 'Testclass';
-Triggerhandler.bypass('PRM_AcctContRel_TriggerHandlerNew');    
-insert acr;
-Triggerhandler.clearbypass('PRM_AcctContRel_TriggerHandlerNew');
+        insert acr;
         //system.debug('acr--1>'+acr);
         
         PRM_Account_Contact_Relationship__c acr1=new PRM_Account_Contact_Relationship__c();//Account Contact Relationship
@@ -919,10 +894,8 @@ Triggerhandler.clearbypass('PRM_AcctContRel_TriggerHandlerNew');
         acr1.PRM_Start_Date_Dt__c= system.today()-2;    
         acr1.PRM_Status_Nm__c = 'Complete';
         acr1.PRM_End_Date_Dt__c= acr.PRM_Start_Date_Dt__c+1; 
-                             acr1.PRM_Status_Reason_Txt__c = 'Testclass';
-Triggerhandler.bypass('PRM_AcctContRel_TriggerHandlerNew');        
-insert acr1;
-Triggerhandler.clearbypass('PRM_AcctContRel_TriggerHandlerNew');      
+        insert acr1;
+        
          PRM_Account_Contact_Relationship__c acr2=new PRM_Account_Contact_Relationship__c();//Account Contact Relationship
         acr2.PRM_InActive_Ind__c= false;
         acr2.PRM_Account_Id__c=childAccount.Id;
@@ -932,10 +905,8 @@ Triggerhandler.clearbypass('PRM_AcctContRel_TriggerHandlerNew');
         acr2.PRM_Start_Date_Dt__c= system.today()-2;    
         acr2.PRM_Status_Nm__c = 'Complete';
         acr2.PRM_End_Date_Dt__c= acr.PRM_Start_Date_Dt__c+1; 
-                             acr2.PRM_Status_Reason_Txt__c = 'Testclass';
-Triggerhandler.bypass('PRM_AcctContRel_TriggerHandlerNew');
         insert acr2;
-Triggerhandler.clearbypass('PRM_AcctContRel_TriggerHandlerNew');
+
        Test.stopTest();   
 
         List<PRM_AccountChannelMembership__c> acmList = new List<PRM_AccountChannelMembership__c>();
@@ -1003,8 +974,6 @@ Triggerhandler.clearbypass('PRM_AcctContRel_TriggerHandlerNew');
         cont.Core_IPA_PartnerRole__c = 'Solution Integrator';
         cont.Core_Login_Id__c = 'abc';
         cont.Core_Do_Not_Contact__c = false;
-        cont.MailingCountry='USA';
-        cont.MailingCountryCode = 'USA';
         insert cont;
         //con.add(cont);
         
@@ -1020,8 +989,6 @@ Triggerhandler.clearbypass('PRM_AcctContRel_TriggerHandlerNew');
         cont1.Core_IPA_PartnerRole__c = 'Solution Integrator';
         cont1.Core_Do_Not_Contact__c = false;
         cont1.Core_Preferred_Language__c = '';
-        cont1.MailingCountry='USA';
-        cont1.MailingCountryCode = 'USA';  
         insert cont1;
         
         Contact cont2 = new Contact();  //Contact
@@ -1035,8 +1002,6 @@ Triggerhandler.clearbypass('PRM_AcctContRel_TriggerHandlerNew');
         cont2.Core_IPA_PartnerRole__c = 'Solution Integrator';
         cont2.Core_Do_Not_Contact__c = false;
         cont2.Core_Preferred_Language__c = 'ENG';
-        cont2.MailingCountry='USA';
-        cont2.MailingCountryCode = 'USA';
         insert cont2;
         
         Profile pf= [Select Id from profile where Name='System Administrator'];
@@ -1056,14 +1021,14 @@ Triggerhandler.clearbypass('PRM_AcctContRel_TriggerHandlerNew');
        insert newUser;
      PRM_Partner_Consent_Distributor__c distr=new PRM_Partner_Consent_Distributor__c();
      distr.PRM_Account_Id__c =childAccount.Id;
-     distr.PRM_Country_Name__c ='United States';
+     //distr.PRM_Country_Name__c ='United States';
      distr.PRM_Distributor_Name_Txt__c ='ASI Corporation';
      distr.PRM_Geo_Nm__c ='ASMO';
      disList.add(distr);
      
      PRM_Partner_Consent_Distributor__c distr1=new PRM_Partner_Consent_Distributor__c();
      distr1.PRM_Account_Id__c =childAccount.Id;
-     distr1.PRM_Country_Name__c ='United States';
+     //distr1.PRM_Country_Name__c ='United States';
      distr1.PRM_Distributor_Name_Txt__c ='Tech Data Corporation';
      distr1.PRM_Geo_Nm__c ='ASMO';
      disList.add(distr1);
@@ -1126,10 +1091,10 @@ Triggerhandler.clearbypass('PRM_AcctContRel_TriggerHandlerNew');
         cont.Core_IPA_PartnerRole__c = 'Solution Integrator';
         cont.Core_Login_Id__c = 'abc';
         cont.Core_Do_Not_Contact__c = false;
-        cont.MailingCountry='USA';
-        cont.MailingCountryCode = 'USA';
         insert cont;
-            
+        
+        
+       
         Profile pf= [Select Id from profile where Name='System Administrator'];
        
         User newUser=new User(firstname = 'Adam', 
@@ -1147,20 +1112,20 @@ Triggerhandler.clearbypass('PRM_AcctContRel_TriggerHandlerNew');
        insert newUser;
      PRM_Partner_Consent_Distributor__c distr=new PRM_Partner_Consent_Distributor__c();
      distr.PRM_Account_Id__c =account.Id;
-     distr.PRM_Country_Name__c ='United States';
+     //distr.PRM_Country_Name__c ='United States';
      distr.PRM_Distributor_Name_Txt__c ='ASI Corporation';
      distr.PRM_Geo_Nm__c ='ASMO';
      distList.add(distr);
      
      PRM_Partner_Consent_Distributor__c distr1=new PRM_Partner_Consent_Distributor__c();
      distr1.PRM_Account_Id__c =account.Id;
-     distr1.PRM_Country_Name__c ='United States';
+     //distr1.PRM_Country_Name__c ='United States';
      distr1.PRM_Distributor_Name_Txt__c ='Tech Data Corporation';
      distr1.PRM_Geo_Nm__c ='ASMO';
      distList.add(distr1);
      PRM_Partner_Consent_Distributor__c distr2=new PRM_Partner_Consent_Distributor__c();
      distr2.PRM_Account_Id__c =account.Id;
-     distr2.PRM_Country_Name__c ='United States';
+     //distr2.PRM_Country_Name__c ='United States';
      distr2.PRM_Distributor_Name_Txt__c ='Tech Corporation';
      distr2.PRM_Geo_Nm__c ='ASMO';
      distList.add(distr2);

@@ -124,10 +124,6 @@ global class Core_Batch_User_GroupMembership implements Database.Batchable<User>
         mail.setSubject('Batch Status: ' + Job.Status);
         mail.setPlainTextBody('The batch Apex job processed ' + Job.TotalJobItems +
             ' items with '+ Job.NumberOfErrors + ' failures.');
-        OrgWideEmailAddress[] owea = [select Id from OrgWideEmailAddress where Address = 'wsm-postmaster@intel.com'LIMIT 1 ];
-                if ( owea.size() > 0 ) {
-                    mail.setOrgWideEmailAddressId(owea.get(0).Id);
-                }
         Messaging.sendEmail(new Messaging.SingleEmailMessage[] { mail });
     }
 }

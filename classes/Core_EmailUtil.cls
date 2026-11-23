@@ -207,7 +207,7 @@ Helpers & private constructors
         }
         return this;
     }
-    
+        
     private static Messaging.SingleEmailMessage[] bulk_stash {
         get {
             if (bulk_stash == null) 
@@ -216,11 +216,11 @@ Helpers & private constructors
         } private set;
     }
     
-    @future 
-    public static void SendEmail_ScheduledJob_Exception(boolean IsSuccess, String JobName, String JobErrorMessage)
+       @future 
+    public static void SendEmail_ScheduledJob_Exception(boolean IsSuccess)
     {
     try
-{
+	{
         system.debug('SendEmail');
         List<OrgWideEmailAddress> orgWideEmailList=new List<OrgWideEmailAddress>();
        
@@ -228,21 +228,20 @@ Helpers & private constructors
         orgWideEmailList = [select id, address from OrgWideEmailAddress where Address =: System.Label.Core_Job_OrgWide_Email limit 1];
         }
         String orgWideEmailId = (orgWideEmailList!=null && orgWideEmailList.size()>0) ? orgWideEmailList[0].id : '';
-        String Email_Template ='';
-        if (IsSuccess)
+    	String Email_Template ='';
+    	if (IsSuccess)
         {
             Email_Template =System.Label.Core_Job_Email_Template;
         }
         else
         {
-             Email_Template =System.Label.Core_Job_Failure_Email_Template;
+        	 Email_Template =System.Label.Core_Job_Failure_Email_Template;
         }
         
-        List<EmailTemplate> emailTemp = [SELECT Id , DeveloperName ,Subject , HtmlValue FROM EmailTemplate WHERE DeveloperName =: Email_Template  LIMIT 1];
+        List<EmailTemplate> emailTemp = [SELECT Id , DeveloperName  FROM EmailTemplate WHERE DeveloperName =: Email_Template  LIMIT 1];
         string templateId = emailTemp.size() > 0 ? emailTemp[0].id : null;
-        string emailSubject = emailTemp.size() > 0 ? emailTemp[0].Subject  : null;
-        string emailBody = emailTemp.size() > 0 ? emailTemp[0].HtmlValue : null;
-        system.debug('templateId--->'+templateId);
+    
+     	system.debug('templateId--->'+templateId);
         List<Core_Exceptions__c> emailException = new List<Core_Exceptions__c>();
         
         String[] sendingTo = System.Label.Core_Job_Custom_Email.split(',');       
@@ -257,9 +256,6 @@ Helpers & private constructors
             email.setTemplateId(templateId);            
             email.setSaveAsActivity(false);
             email.setOrgWideEmailAddressId(orgWideEmailId);
-            email.setSubject(emailSubject.replace('$Job', JobName)); 
-            email.setHtmlBody(emailBody.replace('$Error', JobErrorMessage )); 
-           
         }
             emailList.add(email);
        
@@ -275,13 +271,13 @@ Helpers & private constructors
                System.debug('Email failure.------' + result);
             }
         }
-}
-catch(Exception ex)
-{
+	}
+	catch(Exception ex)
+	{
      System.debug('Exception-->' + ex);
     
-}
+	}
     }
     
-    
+       
 }

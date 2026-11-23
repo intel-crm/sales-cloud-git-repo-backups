@@ -28,7 +28,7 @@ public class Core_Integrate_SF_RestService_Test {
     
     static testMethod void testPost2(){
         Core_Trigger_Executions__c triggerEntry_CIM = new Core_Trigger_Executions__c(
-            Name='xmlAttachNParse', Core_Object__c='Core_CIM_Staging__c', Core_Class_Name__c='Core_CIMIntegraton',
+            Name='xmlAttachNParse', Core_Object__c='Core_CIM_Staging__c', Core_Class_Name__c='Core_CIMIntegrationHandler',
             Core_Trigger_Events__c='after insert', Core_Active__c=true, Core_Description__c='test cim stage trigger');
         insert triggerEntry_CIM;
         RestRequest req = new RestRequest();

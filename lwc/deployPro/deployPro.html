@@ -1,0 +1,26 @@
+<template>
+    <lightning-card title="Salesforce DeployPro: A Master Plan for Efficient Package Rollouts">
+        <div class="slds-m-around_medium">
+            <lightning-combobox
+                name="userSelect"
+                label="Select User"
+                value={selectedUserId}
+                placeholder="Select a User"
+                options={userOptions}
+                onchange={handleUserChange}>
+            </lightning-combobox>
+
+            <lightning-button label="Download File" onclick={handleDownload} class="slds-m-top_medium"></lightning-button>
+
+            <template if:true={showTable}>
+                <lightning-datatable
+                    key-field="id"
+                    data={auditTrailData}
+                    columns={columns}
+                    hide-checkbox-column="true"
+                    class="slds-m-top_medium">
+                </lightning-datatable>
+            </template>
+        </div>
+    </lightning-card>
+</template>

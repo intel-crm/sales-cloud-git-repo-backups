@@ -4,8 +4,12 @@ import { CurrentPageReference } from 'lightning/navigation';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import { NavigationMixin } from 'lightning/navigation';
 import { getRecord } from 'lightning/uiRecordApi';
+import createRecords from '@salesforce/apex/PSG_QuoteRequestController.createQuoteRequest'; 
+import fetchQLI from '@salesforce/apex/PSG_QuoteRequestController.fetchRelatedList';
+import validateOPN from '@salesforce/apex/PSG_QuoteRequestController.validateOPN'; 
 import QUOTE_OBJECT from '@salesforce/schema/SBQQ__Quote__c';
-//import  getUserInformation from '@salesforce/apex/PSG_Utility.getUserInformation';
+import  getUserInformation from '@salesforce/apex/PSG_Utility.getUserInformation';
+import validateGroupMembership from '@salesforce/apex/PSG_QuoteRequestController.validateGroupMembership';
 import { getRelatedListRecords } from 'lightning/uiRelatedListApi';
 //import ACCOUNT_NAMEEEEE from '@salesforce/schema/USER.Account.Name';
 //import UsrRoleName from '@salesforce/schema/User.Account.Name';
@@ -64,21 +68,9 @@ export default class psg_requestQuote extends NavigationMixin(LightningElement) 
     @track showSpinner = false;
     @track radioButtonMsg = false;//added
     @track currentDistributor ;
-    radioButtonValue = '';
-    
-    // Changes made for TWC3133-3750 - Bishal Singh
     @track relatedList = false;
     @track dpaalnRecords;
-    @track dpaAlnColumn = [
-        { label: 'CIS #', fieldName: 'core_cpq_cis__c' , type: 'button', typeAttributes: { label: { fieldName: 'core_cpq_cis__c'} , name: 'redirect_dpa_aln' , variant: 'base'}},
-        { label: 'SAP#', fieldName: 'core_cpq_dpa_aln_no_nbr__c' },
-        { label: 'Status', fieldName: 'core_cpq_status_txt__c' },
-        { label: 'Request Type', fieldName: 'core_cpq_record_type_identifier__c' },
-        { label: 'SAP End Customer', fieldName: 'core_cpq_sap_end_customer_nm__r' },
-        { label: 'SAP Distributor', fieldName: 'core_cpq_sap_distributor__c' },
-        { label: 'Ship Start Date', fieldName: 'core_cpq_ship_start_date_dt__c' },
-        { label: 'Ship End Date', fieldName: 'core_cpq_ship_end_date_dt__c' }
-    ];
+
     @wire(getRelatedListRecords, {
         parentRecordId: '$recordId',
         relatedListId: 'DPA_ALNs__r',
@@ -87,24 +79,12 @@ export default class psg_requestQuote extends NavigationMixin(LightningElement) 
                    'core_cpq_dpa_aln__c.core_cpq_dpa_owner__c', 'core_cpq_dpa_aln__c.core_cpq_ship_start_date_dt__c', 'core_cpq_dpa_aln__c.core_cpq_ship_end_date_dt__c','core_cpq_dpa_aln__c.core_cpq_change_flag__c']
     })getDPAALNRecords({ error, data }) {
         if (data) {
-            let tempRecords = [];
-            data.records.forEach( obj => {
-                let tempRecord = {};
-                tempRecord.Id = obj.fields.Id.value;
-                tempRecord.core_cpq_cis__c = obj.fields.core_cpq_cis__c.value;
-                tempRecord.core_cpq_dpa_aln_no_nbr__c = obj.fields.core_cpq_dpa_aln_no_nbr__c.value;
-                tempRecord.core_cpq_status_txt__c = obj.fields.core_cpq_status_txt__c.value;
-				tempRecord.core_cpq_record_type_identifier__c = obj.fields.core_cpq_record_type_identifier__c.value;
-				tempRecord.core_cpq_sap_end_customer_nm__r = obj.fields.core_cpq_sap_end_customer_nm__r.value;
-				tempRecord.core_cpq_sap_distributor__c = obj.fields.core_cpq_sap_distributor__c.value;
-				tempRecord.core_cpq_ship_start_date_dt__c = obj.fields.core_cpq_ship_start_date_dt__c.value;
-				tempRecord.core_cpq_ship_end_date_dt__c = obj.fields.core_cpq_ship_end_date_dt__c.value;
-                tempRecords.push( tempRecord );
-            } );
-            this.dpaalnRecords = tempRecords;
+            console.log(JSON.stringify(data.records));
+            this.dpaalnRecords = data.records;
             if(this.dpaalnRecords != undefined && this.dpaalnRecords.length>0){
                 this.relatedList=true;
             }
+            console.log(this.dpaalnRecords);
             this.error = undefined;
         } else if (error) {
             this.error = error;
@@ -406,7 +386,7 @@ export default class psg_requestQuote extends NavigationMixin(LightningElement) 
     @track qlRecList=[];
     @track qlEditList=[];
     @track validGroupMember=false;
-    /*@wire(getUserInformation, {})
+    @wire(getUserInformation, {})
     getUserInformation({error,data}){
         if(data){
             //this.result=data;
@@ -417,9 +397,14 @@ export default class psg_requestQuote extends NavigationMixin(LightningElement) 
         if(error){
            // console.log(error);
         }
-    }*/
+    }
     
-    
+    @wire(validateGroupMembership,{quoteId : '$recordId'}) 
+    validateGroupMemb({error,data}){
+        if(data){
+            this.validGroupMember=true;
+        }
+    }
     @wire(getRecord, { recordId: '$recordId', fields: FIELDS , currentDistributor:'$currentDistributor'})
     wiredRecord({ error, data }) {
         if (data) {
@@ -521,7 +506,16 @@ export default class psg_requestQuote extends NavigationMixin(LightningElement) 
         }
     }
   
-    
+    /*@wire(fetchQLI, { quoteId: '$recordId' }) 
+    wiredQLI({data, error}){
+        if(data){
+            this.qlEditList = data;
+        }
+        else if (error) {
+            this.qlEditList = undefined;
+            console.log('wiredQLI error>',error);
+        }
+    };*/
 
     get recordTypeId() {
         const rtis = this.objectInfo.data.recordTypeInfos;
@@ -533,10 +527,21 @@ export default class psg_requestQuote extends NavigationMixin(LightningElement) 
             this.isEditMode=true;
             this.getQLData(this.recordId);
         } 
+        getUserInformation()  
         
-        
+        /*validateGroupMembership({quoteId : this.recordId}).then(data=>{
+            console.log('validateGroupMembership_SUCCESS');
+            console.log(data);
+        }).catch(error=>{
+            console.log('validateGroupMembership_ERROR');
+            console.log(error);
+        }); */          
+                
+        console.log('inReqConnCall');
     }
-    
+    validateopn(){
+        this.template.querySelector('c-psg_quote-line-detail').validateopn();
+    }
     /*
     savequote(){
         this.isOPNValid = true;
@@ -556,7 +561,20 @@ export default class psg_requestQuote extends NavigationMixin(LightningElement) 
         this.saveDataVar = false;
     }
     */
-    
+    getQLData(quoteRecId){
+        
+        fetchQLI({ quoteId: quoteRecId})
+        .then(data => {
+            this.activeSections = ['quoteDetails','notes','dpaAlnRelatedList'];
+            this.qlEditList = data;
+            this.activeSections = ['quoteDetails','notes','quoteLines','dpaAlnRelatedList'];
+        })
+        .catch(error => {
+            this.activeSections = ['quoteDetails','notes','dpaAlnRelatedList'];
+            this.qlEditList = [];
+            this.activeSections = ['quoteDetails', 'notes','quoteLines','dpaAlnRelatedList'];
+        })
+    }
 
     handleOnLoad(){
         this.disableSave=false;
@@ -565,6 +583,7 @@ export default class psg_requestQuote extends NavigationMixin(LightningElement) 
     //Accordian section selection
     handleSectionToggle(event) {
         const openSections = event.detail.openSections;
+        console.log('openSections'+openSections);
     }
     handleChange(event){
         console.log('inside handle event');
@@ -632,11 +651,169 @@ export default class psg_requestQuote extends NavigationMixin(LightningElement) 
         }
     }
 
-    
+    saveData(){
+        this.saveDataVar = true;
+        var isValid = true;
+        this.template.querySelectorAll('lightning-input-field').forEach(element => {
+            isValid = isValid && element.reportValidity();
+        });
+        this.template.querySelectorAll('.customInput').forEach(element => {
+            isValid = isValid && element.reportValidity();
+        });
+        this.template.querySelectorAll('lightning-radio-group').forEach(element => {
+            isValid = isValid && element.reportValidity();
+        });
+        if (isValid) {
+            //this.isSubmitted=true;
+            //this.saveData();
+        console.log('inside save data '+this.isOPNValid);
+        //
+        this.disableSave = true;
+        console.log('inside quotelinedatatable validate '+JSON.stringify(this.qlRecList));
+        var opnList = [];
+        var invalidOPNError = 'Invalid OPN : ';
+        var invalidOPNExists = false;
+        var i = 0;
+        validateOPN({quoteLineList : this.qlRecList})
+        .then(data => {
+            console.log('test 2 '+data);
+            let quoteColorErrorMap = data.quoteColorErrorMap;
+            let error = data.error;
+            console.log('map1 '+JSON.stringify(quoteColorErrorMap));
+            let isValid =  true;
+            if(quoteColorErrorMap != null && quoteColorErrorMap != undefined){
+                console.log('map1 '+JSON.stringify(quoteColorErrorMap));
+                let map1 = new Map();
+                map1 = quoteColorErrorMap;
+                this.qlRecList.forEach(function(element){
+                    console.log('map2 '+JSON.stringify(element));
+                    if(quoteColorErrorMap[element.Id] != null && quoteColorErrorMap[element.Id] != undefined){
+                        console.log('map3 ');
+                        quoteColorErrorMap[element.Id].forEach(function(fieldName){
+                            console.log('map4 ');
+                            element.format = 'applyRedColor';
+                            isValid = false;
+                            console.log('map5 ');
+                            console.log('red color error occuring');
+                        });
+                    }
+                });
+            }
+            if(isValid == false){
+                this.showToast('Error',error,'error');
+                this.disableSave=false;
+                this.isSubmitted=false;
+                console.log('start2222')
+                const returnValue = this.template.querySelector('c-psg_quote-line-detail').sendValidationResult(quoteColorErrorMap);
+                console.log('start5555')
+            }else{
+                //start
+                this.savePendingDataVar = false;
+                this.submitPendingDataVar = false;
+                this.submitDataVar = false;
+                this.saveDataVar = false;
+
+                var qRec=this.quoteRec;
+                this.attachmentList = this.template.querySelector('c-psg_file-uploader').fetchattachmentdata();
+
+                if(this.isEditMode){
+                    qRec.Id=this.recordId;
+                }
+            
+                qRec.RecordTypeId=this.recordTypeId;
+                var quoteData=this.template.querySelectorAll('lightning-input-field');
+                quoteData.forEach(function(element){
+                    qRec[element.fieldName]=element.value;
+
+                })
+                var sucessMsg;
+                if(this.isSubmitted){
+                    qRec.SBQQ__Status__c='New';
+                    qRec.core_cpq_status_txt__c='New';
+                    qRec.core_cpq_active_cb__c=true;
+                    sucessMsg='Quote Request was submitted.';
+                }
+                else if(this.isResubmitted){
+                    qRec.SBQQ__Status__c='In Progress';
+                    qRec.core_cpq_status_txt__c='In Progress';
+                    sucessMsg='Quote Request was submitted.';
+                }
+                else if(this.isPending){
+                    qRec.SBQQ__Status__c='Pending';
+                    qRec.core_cpq_status_txt__c='Pending';
+                    sucessMsg='Quote Request was saved.';
+                }
+                else if(this.recordId == null || this.recordId == undefined || this.recordId == ''){
+                    console.log('entering draft updation '+this.recordId);
+                    qRec.SBQQ__Status__c='Draft';
+                    qRec.core_cpq_status_txt__c='Draft';
+                    sucessMsg='Quote Request was saved.'
+                }
+                console.log('att-->',JSON.stringify(this.attachmentList));
+                console.log('qline-->',JSON.stringify(this.qlRecList));
+                console.log('quote--->',JSON.stringify(qRec));
+
+                createRecords({ quoteRec: qRec, quoteLineList: this.qlRecList, attWrapList:this.attachmentList })
+                .then(data => {
+                    this.disableSave=false;
+                    console.log('inserted!');
+                    this.showToast('Success',sucessMsg,'success');
+                    //this.navigateToHomePage();
+                    //refreshApex(this.quoteObjRec);
+                    if(this.status == 'Pending'){
+                        window.location.reload()
+                    }else{
+                        this.navigateToQuoteDetail(data);
+                    }
+                })
+                .catch(error => {
+                    this.disableSave=false;
+                    this.isSubmitted=false;
+                    console.log('Error Updating Records1234',JSON.stringify(error),'error');
+                    let errorJSON = error.body.pageErrors;
+                    let errorMsg = '';
+                    if(error.body.message != undefined && error.body.message != ''){
+                        errorMsg=error.body.message;
+                    }
+                    if(errorJSON!=null && errorJSON!=undefined){
+                        errorJSON.forEach(function(element){
+                            errorMsg = errorMsg + element.message;
+                        })
+                    }
+                    console.log('error is showing: '+errorMsg);
+                    console.log('Error Updating Records456',JSON.stringify(errorMsg),'error');
+                    if(errorMsg.includes("core_cpq_unique_id__c")){
+                        this.showToast('Error','Duplicate field error','error');
+                    }
+                    else if(errorMsg.includes("Quote Record cannot be created or edited during Freeze Period!")){
+                        this.showToast('Error','Quote Record cannot be created or edited during Freeze Period!','error');
+                    }
+                    else{
+                        this.showToast('Error',JSON.stringify(errorMsg),'error');
+                    }
+                    
+                    
+                }); 
+            }
+            //complete
+        })
+        .catch(error => {
+            this.disableSave = false;
+            this.isSubmitted=false;
+            console.log('error 22222222222');
+            this.showToast('Error Validating OPN',error.body.message,'error');
+            console.log('Error',error.body.message,'error');
+        })   
+        //
+    }else{
+        this.isSubmitted=false;
+        this.showToast('Required Fields Missing','Please fill in all the mandatory fields','error');
+    }   
+    }
     handleRadioSelection(event){
-        this.radiobuttonvalue = event.detail.value;
+        let tempValue = event.detail.value;
         this.radiobuttonvalue = tempValue;
-        if(this.radiobuttonvalue == 'No'){
+        if(tempValue == 'No'){
             this.radioButtonMsg = true;
             //this.showToast('Info','create a Budgetary Quote prior to requesting for a Design Win Quote','warning');
         }else{
@@ -682,7 +859,7 @@ export default class psg_requestQuote extends NavigationMixin(LightningElement) 
         this.inProgressQuote = false;
         this.enableSaveCancel = true;
         this.requestDPAFlag = true;
-        const returnValue = this.template.querySelector('c-psg_quote-line-detail').opencolumnsDPArequest();//added for DPA
+        //const returnValue = this.template.querySelector('c-psg_quote-line-detail').opencolumnsDPArequest();//added for DPA
         if(this.status == 'Approved' && !(this.quoteType == 'Transfer Pricing')){
             this.quoteColumnsLocked = this.dpaQuoteColomns;
             //this.sosFields =[];//added for DPA
@@ -691,6 +868,7 @@ export default class psg_requestQuote extends NavigationMixin(LightningElement) 
         }
         
         this.showSpinner = false;
+        console.log('psg_requestquote'+this.showSpinner);
         console.log('request update DPA');
         
     }
@@ -780,9 +958,6 @@ export default class psg_requestQuote extends NavigationMixin(LightningElement) 
         var quoteMap = {};
         if(this.isEditMode){
             quote.Id = this.recordId;
-	    if(this.radiobuttonvalue != null){
-                quote.core_cpq_confirmed_order__c = this.radiobuttonvalue;
-            }
             quoteMap[quote.Id] = quote;
         }
         var quoteData = this.template.querySelectorAll('lightning-input-field');
@@ -947,18 +1122,15 @@ export default class psg_requestQuote extends NavigationMixin(LightningElement) 
     }
     // Changes made for TWC3133-3750 - Bishal Singh
     navigateToDPAsALNsDetail(event) {
-        switch(event.detail.action.name){
-            case 'redirect_dpa_aln':
-                this[NavigationMixin.Navigate]({
-                    type: 'standard__recordPage',
-                    attributes: {
-                        recordId: event.detail.row.Id,
-                        objectApiName: 'core_cpq_dpa_aln__c',
-                        actionName: 'view'
-                    }
-                });
-        }
-        
+        console.log('Navigating to DPAs & ALNs');
+        this[NavigationMixin.Navigate]({
+            type: 'standard__recordPage',
+            attributes: {
+                recordId: event.currentTarget.dataset.id,
+                objectApiName: 'core_cpq_dpa_aln__c',
+                actionName: 'view'
+            }
+        });
     }
 
     //Navigate to home page

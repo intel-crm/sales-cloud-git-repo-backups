@@ -1,5 +1,5 @@
 import { LightningElement, wire, api, track } from 'lwc';
-/*import { NavigationMixin } from 'lightning/navigation';
+import { NavigationMixin } from 'lightning/navigation';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent'
 import successTxt from '@salesforce/label/c.Sales_Order_Success';
 import successMsg from '@salesforce/label/c.Sales_Order_Success_Msg';
@@ -31,9 +31,9 @@ import SalesSaveOrderHTML from '@salesforce/label/c.Sales_SaveOrder_HTML';
 import { loadStyle } from 'lightning/platformResourceLoader';
 import Orderstylingsheet from '@salesforce/resourceUrl/OrderCreation';
 
-//let rendered = false;*/
-export default class Sales_OrderCreation extends LightningElement {
-   /* @api orderType;
+//let rendered = false;
+export default class Sales_OrderCreation extends NavigationMixin(LightningElement) {
+    @api orderType;
     @track reasonCheck = false;
     @track isAttributeRequired = true;
     @track key;
@@ -55,7 +55,7 @@ export default class Sales_OrderCreation extends LightningElement {
      @api shipState;
      @api endCountry;
      @api endState;*/
-    /*@api accId;
+    @api accId;
     @api soldAccount;
     @api shipAccount;
     @api endAccount;
@@ -150,7 +150,6 @@ export default class Sales_OrderCreation extends LightningElement {
     //         rendered = false;
     //     }
     // }
-		
 
     //Record Creation 
     handleSuccess(event) {
@@ -238,20 +237,20 @@ export default class Sales_OrderCreation extends LightningElement {
             // mode:'dismissable'
          });
          this.dispatchEvent(evt);*/
-     //}
+     }
 
     // handleChange(){
 
     // }
     //Order type change event 
     // connectedCallback() {
-    /*handleChange(event) {//check if order is non commercial and set Order sub type as mandatory 
+    handleChange(event) {//check if order is non commercial and set Order sub type as mandatory 
         /*var today = new Date();
         var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
         var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
         var dateTime = date+' '+time;
         console.log('@@date:'+dateTime)*/
-        /*this.selectVal = event.target.value;
+        this.selectVal = event.target.value;
         console.log('Type>>' + this.selectVal);
         this.orderType = this.selectVal;
         //console.log('Order reason line 166'+this.orderReason);
@@ -317,7 +316,7 @@ export default class Sales_OrderCreation extends LightningElement {
             /* this.handleResetAccount();
              this.handleResetEndAccount();
              this.handleResetSoldAccount();*/
-        /*}
+        }
         else {
             this.isPartner = false;
             this.isSampleOrd = false;
@@ -344,7 +343,7 @@ export default class Sales_OrderCreation extends LightningElement {
     handleKeyChange(event) {
         /* var key = event.detail;
          console.log('Key:'+key);    */
-        /*const searchKey = event.target.value;
+        const searchKey = event.target.value;
         this.searchKey = searchKey;
         this.getLookupResult();
     }
@@ -360,7 +359,7 @@ export default class Sales_OrderCreation extends LightningElement {
           this.isEnter = false; 
          }
      }*/
-/*
+
     removeRecordOnLookup(event) {
         //  event.preventDefault();   
         this.searchKey = "";
@@ -534,7 +533,7 @@ export default class Sales_OrderCreation extends LightningElement {
              else if(this.orderReason === 'Stocking Order'){
                  this.isSampleOrd = true;
              }*/
-  /*      }
+        }
         else {
             this.handleResetEndAccount();
             this.isEndCustPresent = false;
@@ -653,7 +652,7 @@ export default class Sales_OrderCreation extends LightningElement {
             // this.saveNew = true;
         }
         else */
-    /*    if (this.orderReason === 'Stocking Order' && this.selectVal === 'Non Commercial Order') {
+        if (this.orderReason === 'Stocking Order' && this.selectVal === 'Non Commercial Order') {
             this.iserror = true;
             this.loading = false;
             const evt = new ShowToastEvent({
@@ -688,7 +687,7 @@ export default class Sales_OrderCreation extends LightningElement {
             this.dispatchEvent(evt);
 
         }*/
-      /*  else if (this.orderReason === 'Non Stocking Order' && this.selectVal === 'Non Commercial Order' && this.selectedSubType === 'Corporate Order' && this.selectedRecordId == null) {//&& this.isEnter === false
+        else if (this.orderReason === 'Non Stocking Order' && this.selectVal === 'Non Commercial Order' && this.selectedSubType === 'Corporate Order' && this.selectedRecordId == null) {//&& this.isEnter === false
             this.iserror = true;
             this.loading = false;
             const evt = new ShowToastEvent({
@@ -709,7 +708,7 @@ export default class Sales_OrderCreation extends LightningElement {
 
         //For stocking order  OOTB Account is set to Sap Sold to account
 
-        /*if (this.orderReason === 'Stocking Order' && (this.selectVal != 'Non Commercial Order') && this.soldSfdcAcc != null) {
+        if (this.orderReason === 'Stocking Order' && (this.selectVal != 'Non Commercial Order') && this.soldSfdcAcc != null) {
             this.iserror = false;
             console.log('@@Sold to account>>' + this.soldSfdcAcc);
             this.accountVal = this.soldSfdcAcc;
@@ -831,6 +830,6 @@ export default class Sales_OrderCreation extends LightningElement {
             return false
         }
        // return;
-    }*/
+    }
 
 }

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>PMP Learn More URL Mapping</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>PMP Learn More URL&apos;s Mappings</value>
+    </caseValues>
+    <fields>
+        <label><!-- Learn More URL (Chinese) --></label>
+        <name>PMP_Learn_More_Chinese_Url__c</name>
+    </fields>
+    <fields>
+        <label><!-- Learn More URL (English) --></label>
+        <name>PMP_Learn_More_English_Url__c</name>
+    </fields>
+    <fields>
+        <label><!-- Learn More URL (Japanese) --></label>
+        <name>PMP_Learn_More_Japanese_Url__c</name>
+    </fields>
+    <fields>
+        <label><!-- PIM Category Id --></label>
+        <name>PMP_PIM_Category_Id__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

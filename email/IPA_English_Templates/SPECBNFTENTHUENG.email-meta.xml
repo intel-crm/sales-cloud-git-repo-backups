@@ -1,57 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
-    <available>false</available>
+    <available>true</available>
     <encodingKey>ISO-8859-1</encodingKey>
     <name>SPECBNFTENTHUENG</name>
     <style>none</style>
-    <subject>Intel® Partner Alliance Enthusiast PC Specialty</subject>
-    <textOnly>Congratulations on Qualifying!
+    <subject>Congratulations on qualifying for specialty benefits</subject>
+    <textOnly>Congratulations on Becoming an Intel Enthusiast PC Specialist
 
+Welcome to new opportunities to expand your business as an Enthusiast PC Specialist. We are looking forward to deepening our working relationship.
+Click here to view this email as a web page.
 
-{!Contact.FirstName},
+You&apos;ve Qualified!   Access benefits &gt;
+
+FirstName,
 
 Congratulations on becoming an Intel® Technology Provider Enthusiast PC Specialist!
 
-With over one billion PC gamers in the world and a rapidly growing market, you&apos;re well positioned to grow your customer base and drive more revenue with Intel.
+
+With over one billion PC gamers in the world1 and a rapidly growing market, you&apos;re well positioned to grow your customer base and drive more revenue with Intel.
 
 Take advantage of all the benefits available to you now, including:
 
-
-Additional points promotions on products with Intel® Core™ Processors X-, K-, and H-series processors
-Enthusiast PC Specialty designation and visibility on the Intel Technology Provider webpage
-Technical webinars by Intel Experts
-World-class gaming and software packs
+Additional points promotions on products with Intel® Core™ X-, K-, and H-series processors
+Enthusiast PC Specialty designation and visibility on the Intel Technology Provider web page
+Technical webinars by Intel experts
+World class gaming and software packs
 Passes to local e-sports events
 
-To get started, please reply to enthusiast-pc@intel.com with the following information:
-
-
-Primary contact for Enthusiast PC Specialist communications
-Name:
-Email:
-
-
-For additional sales and promotion materials
-Physical Mailing Address:
-Phone:
+Thank you for partnering with Intel.
 
 Access benefits
 
+1Benchmark results were obtained prior to implementation of recent software patches and firmware updates intended to address exploits referred to as &quot;Spectre&quot; and &quot;Meltdown&quot;. Implementation of these updates may make these results inapplicable to your device or system.
 
-*Benefits may vary by geography.
+Software and workloads used in performance tests may have been optimized for performance only on Intel® microprocessors. Performance tests, such as SYSmark* and MobileMark*, are measured using specific computer systems, components, software, operations and functions. Any change to any of those factors may cause the results to vary. You should consult other information and performance tests to assist you in fully evaluating your contemplated purchases, including the performance of that product when combined with other products. For more complete information visit http://www.intel.com/benchmarks.
 
-Intel partners have a long history of innovation, and with Intel Partner Alliance, we’ll help you accelerate building solutions for the data centric economy. Together, we can connect, innovate, and grow, making extraordinary opportunities possible.
-
-Visit intel.com/partnerhelp for help and guidance on optimizing your membership.
-
-
-Thank you,
-Your Intel® Partner Alliance team
-
-This message was sent to you as an important business communication related to your current relationship with Intel® Partner Alliance.
-© {!$Label.PRM_CurrentYear} Intel Corporation
-Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
-Privacy | Cookies</textOnly>
+&apos;);}} div.OutlookMessageHeader {background-image:url(&apos;https://8qr1qit0.emltrk.com/8qr1qit0?f&amp;d=EmailAddress&apos;)} table.moz-email-headers-table {background-image:url(&apos;https://8qr1qit0.emltrk.com/8qr1qit0?f&amp;d=EmailAddress&apos;)} blockquote #_t {background-image:url(&apos;https://8qr1qit0.emltrk.com/8qr1qit0?f&amp;d=EmailAddress&apos;)} #MailContainerBody #_t {background-image:url(&apos;https://8qr1qit0.emltrk.com/8qr1qit0?f&amp;d=EmailAddress&apos;)}</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

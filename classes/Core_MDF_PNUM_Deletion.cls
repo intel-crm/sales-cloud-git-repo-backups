@@ -33,7 +33,6 @@ public without sharing class Core_MDF_PNUM_Deletion {
                                                         from Core_MDF_Partner_Group_Mapping__c 
                                                         where Core_MDF_Group_Id__c in: groupIdsList  
                                                         and Core_MDF_Account__r.Core_MDF_CoMarketingActive__c=true 
-                                                        and Core_MDF_Inactive_Ind__c = false
                                                         and Core_MDF_Type_of_Access__c ='External']){
                 coMarketingActiveAccountIdsList.add(pgm.Core_MDF_Account__c);
                 groupIDToCoMarketingAccountIdMap.put(pgm.Core_MDF_Group_Id__c,pgm.Core_MDF_Account__c);
@@ -44,21 +43,20 @@ public without sharing class Core_MDF_PNUM_Deletion {
             for(Core_MDF_Partner_Node_User_Mapping__c pnum:[select Core_MDF_User__c, Core_MDF_Account__r.Core_MDF_CoMarketing_Ultimate_Account__c, Core_MDF_Account__c, Core_MDF_Account__r.Core_MDF_Channel_Program__c, id 
                                                             from Core_MDF_Partner_Node_User_Mapping__c 
                                                             where Core_MDF_User__c in: userIdsList 
-                                                            and Core_MDF_Account__r.Core_MDF_CoMarketing_Ultimate_Account__c in:coMarketingActiveAccountIdsList
-                                                           and Core_MDF_Active_Ind__c = true]){
+                                                            and Core_MDF_Account__r.Core_MDF_CoMarketing_Ultimate_Account__c in:coMarketingActiveAccountIdsList]){
                 
                 //User may belong to multiple Programs hence adding pnum per user per program per account                                        
                 List<id> groupIds = userIdToGroupMap.get(pnum.Core_MDF_User__c);
                 for(id groupID:groupIds){
                     id channelProgram = groupIdToProgramMap.get(groupID);
                     id account = groupIDToCoMarketingAccountIdMap.get(groupID);
-                                             
+                                                          
                     if(pnum.Core_MDF_Account__r.Core_MDF_Channel_Program__c == channelProgram && pnum.Core_MDF_Account__r.Core_MDF_CoMarketing_Ultimate_Account__c == account){
                         toBeDeletedPnum.add(pnum.id);
                     }     
                 }                                         
             }
-        
+            system.debug('toBeDeletedPnum' + toBeDeletedPnum);
         }
         catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e);}
         
@@ -74,18 +72,18 @@ public without sharing class Core_MDF_PNUM_Deletion {
             for(Core_MDF_Partner_Node_User_Mapping__c log: [select Core_MDF_User__c, Core_MDF_Account__r.Core_MDF_CoMarketing_Ultimate_Account__c, Core_MDF_Account__c, Core_MDF_Account__r.Core_MDF_Channel_Program__c, id 
                                                    from Core_MDF_Partner_Node_User_Mapping__c 
                                                    where id in: pnumids]){
-                Core_MDF_UserGroupMapping_Log__c logobject = new Core_MDF_UserGroupMapping_Log__c();
-                logobject.Core_MDF_User_id__c= log.Core_MDF_User__c;
-                logobject.Core_MDF_Account_id__c = log.Core_MDF_Account__c;
-                logobject.Core_MDF_Action_nm__c = 'PNUM Deletion';
-                logObject.Core_MDF_Status_nm__c= 'In Progress';
-                logObject.Core_MDF_Processed_dtm__c = system.now();
-                logObjectList.add(logobject);
-            }
-            Database.SaveResult[] saveList = Database.insert(logObjectList,false);
-           
-            
+            Core_MDF_UserGroupMapping_Log__c logobject = new Core_MDF_UserGroupMapping_Log__c();
+            logobject.Core_MDF_User_id__c= log.Core_MDF_User__c;
+            logobject.Core_MDF_Account_id__c = log.Core_MDF_Account__c;
+            logobject.Core_MDF_Action_nm__c = 'PNUM Deletion';
+            logObject.Core_MDF_Status_nm__c= 'In Progress';
+            logObject.Core_MDF_Processed_dtm__c = system.now();
+            logObjectList.add(logobject);
         }
+            Database.SaveResult[] saveList = Database.insert(logObjectList,false);
+    		system.debug('saveList' + saveList);   
+        }
+        
         catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e);}
     }
 

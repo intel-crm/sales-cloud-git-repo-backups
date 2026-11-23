@@ -1,17 +1,5 @@
 /**************************************************************************************
-Apex Class Name:  Core_OpportunitySearchController
-Version     : 1.0 
-Created Date: 10 OCT 2014
 Function    : Apex Class (Controller) for Core_OpportunitySearch Page
-Modification Log :
-* Developer                   Date                   Description
-* ----------------------------------------------------------------------------                 
-* Harshith M L             10/10/2014             Original Version
-* Harshith M L             02/17/2015             Added code for optimizing Search ( Line No - 429,482,491-497,500,642-698)
-* Harshith M L             02/17/2015             Added code for Exception handling ( Line No - 666 - 670)
-* Brian Matthews           03/09/2015             Clone Cleanup
-* Brian Matthews           06/18/2015             Opportunity Partner Search
-* Ashwin Dash              06/20/2017             US67789: Commenting the existing sending mail to Owner and adding a path to a new vfpage where we can submit for approval
 *************************************************************************************/
 public without sharing class Core_OpportunitySearchController {//TWC3123-5338 Added without sharing keyword to fix code scan issue
 
@@ -355,8 +343,7 @@ public without sharing class Core_OpportunitySearchController {//TWC3123-5338 Ad
 
 
     /*
-
-* Method name  : comparisonOperator
+     * Method name  : comparisonOperator
      * Description  : Method to add the search parameter with the operator based on the data type of the field
      * Return Type  : String
      * Parameter    : String,String
@@ -465,7 +452,7 @@ public without sharing class Core_OpportunitySearchController {//TWC3123-5338 Ad
         geoCriteria = checkGEOField(inputOpp.Core_Opportunity_Geo_APJ__c,  fieldPrefix + 'Core_Opportunity_Geo_APJ__c',  geoCriteria);                   
         geoCriteria = checkGEOField(inputOpp.Core_Opportunity_Geo_ASMO__c, fieldPrefix + 'Core_Opportunity_Geo_ASMO__c', geoCriteria);                   
         geoCriteria = checkGEOField(inputOpp.Core_Opportunity_Geo_EMEA__c, fieldPrefix + 'Core_Opportunity_Geo_EMEA__c', geoCriteria);                   
-        geoCriteria = checkGEOField(inputOpp.Core_Opportunity_Geo_PRC__c,  fieldPrefix + 'Core_Opportunity_Geo_PRC__c',  geoCriteria);                   
+        geoCriteria = checkGEOField(inputOpp.Core_Opportunity_Geo_PRC__c,  fieldPrefix + 'Core_Opportunity_Geo_PRC__c',  geoCriteria);
         //geoCriteria = checkGEOField(inputOpp.CRM_Opportunity_Geo_INDIA__c, fieldPrefix + 'CRM_Opportunity_Geo_INDIA__c',geoCriteria);
                       
          

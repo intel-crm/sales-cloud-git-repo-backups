@@ -11,6 +11,7 @@ export default class Pricing_ManageDocumentShare extends NavigationMixin(Lightni
     connectedCallback() {
         getDocumentShare({ quoteId: this.recordId })
             .then(result => {
+                console.log('Calling getDocumentShare method' +result);
                 this.recordName = result.name;
                 this.noOfAttachments = result.noOfAttachment;
                 this.docId = result.recordId;

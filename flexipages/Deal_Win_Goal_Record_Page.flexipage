@@ -4,20 +4,6 @@
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
-                    <name>decorate</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>richTextValue</name>
-                    <value>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;strong style=&quot;font-size: 20px; color: red;&quot;&gt;You will not be able to submit Opportunities nor Deal Win Goals for approval between January 1st and January 3&lt;/strong&gt;&lt;strong style=&quot;font-size: 20px; color: red; font-family: Arial, sans-serif;&quot;&gt;0th&amp;nbsp;!!&lt;/strong&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;font-size: 18px; color: rgb(0, 0, 0);&quot;&gt;The 2022 Submission Window has closed, and these would NOT count for 2022 nor 2023 KPI nor Sales Incentives Credit.&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;font-size: 18px; color: rgb(0, 60, 113);&quot;&gt;More details:&lt;/span&gt;&lt;span style=&quot;font-size: 18px;&quot;&gt; &lt;/span&gt;&lt;a href=&quot;https://goto.intel.com/SMGCRMDeadlines&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-size: 18px; color: rgb(0, 113, 197);&quot;&gt;https://goto.intel.com/SMGCRMDeadlines&lt;/a&gt;&lt;/p&gt;</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:richText</componentName>
-                <identifier>flexipage_richText</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
                     <name>collapsed</name>
                     <value>false</value>
                 </componentInstanceProperties>

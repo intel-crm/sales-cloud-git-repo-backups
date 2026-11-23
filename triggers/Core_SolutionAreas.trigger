@@ -19,6 +19,7 @@ trigger Core_SolutionAreas on Core_Solution_Areas__c (Before update, After updat
                mapFunctionalityNameTriggerExecution.get('updateJSONSolutionArea').Core_Active__c){
                    Core_Solution_Area_Controller.addValuesToSolution(trigger.new);
                }
+            
         }
     }
     
@@ -29,6 +30,7 @@ trigger Core_SolutionAreas on Core_Solution_Areas__c (Before update, After updat
                    Core_Solution_Area_Controller.updatedValuesToSolution(trigger.new, trigger.oldMap);
                    Core_Solution_Area_Controller.restrictPicklists(trigger.new, trigger.oldMap);
                }
+            
         }
     }
     
@@ -38,16 +40,14 @@ trigger Core_SolutionAreas on Core_Solution_Areas__c (Before update, After updat
             
             if(mapFunctionalityNameTriggerExecution.containsKey('updateJSONSolutionArea') && 
                mapFunctionalityNameTriggerExecution.get('updateJSONSolutionArea').Core_Active__c){
-                     // For updating OPTY Solution areas based on Solution update
-              		
+                     // For updating OPTY Solution areas based on Solution update             		
 
             		Core_Solution_Area_Controller.updateOpportunitySolutionArea(trigger.new, trigger.oldMap);
                    Core_OpportunityHandler.updateJSONSolutionArea(trigger.new, trigger.oldMap);
                    
-               }
-                     
+               }                   
 
         }
-      
+        
     }
 }

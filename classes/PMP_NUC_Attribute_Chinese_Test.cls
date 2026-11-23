@@ -9,13 +9,9 @@
 ******************************************************************************************************************************************************************************************************/
 @isTest
 public class PMP_NUC_Attribute_Chinese_Test {
-//IPA 2.0- US-TWC729-7980
-    /*testMethod static void testNUCAttributeChinese(){ 
-        test.startTest();
+
+    testMethod static void testNUCAttributeChinese(){       
     	PMP_NUC_Attribute_Chinese nucAttrChn = new PMP_NUC_Attribute_Chinese();
-        PMP_ParseNUCJSON.languageCode = 'zh_CN';
-        List<Database.UpsertResult> response = nucAttrChn.processData('NUC_Attribute_Test');
-        system.assertNotEquals(response, null);
-        test.stopTest();
-    }*/
+        nucAttrChn.processData('NUC_Attribute_Test');
+    }
 }

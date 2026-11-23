@@ -24,6 +24,7 @@ export default class Core_Opp_Support_Status extends LightningElement {
   const {error, data} = value;
  //getStatus({error, data}){
         if(data != undefined){
+          console.log('Inside Console:');
             for(var key in data){
               this.oppSupportStatus = data[key];
               this.recordTypeId = key;
@@ -48,7 +49,9 @@ export default class Core_Opp_Support_Status extends LightningElement {
       this.ratings = undefined;
     }
   }
-
+connectedCallback() {
+  console.log('SAVE RESULT ERROR IS:');
+}
 handleCancel(){
         this.dispatchEvent(new CloseActionScreenEvent());
     } 

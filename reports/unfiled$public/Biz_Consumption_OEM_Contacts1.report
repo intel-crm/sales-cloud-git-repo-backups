@@ -19,6 +19,9 @@
         <field>Account.Core_Customer_Relationship__c</field>
     </columns>
     <columns>
+        <field>Contact.Core_IPA_Partner_Role__c</field>
+    </columns>
+    <columns>
         <field>Account.Core_IPA_Partner_Role__c</field>
     </columns>
     <columns>

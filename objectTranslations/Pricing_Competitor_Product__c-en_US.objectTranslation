@@ -38,8 +38,4 @@
         <errorMessage><!-- Write In competitor product cannot be inactivated. --></errorMessage>
         <name>Pricing_Inactive_Checkbox_For_DPM</name>
     </validationRules>
-    <validationRules>
-        <errorMessage><!-- Record Type cannot be changed for Competitor Product. --></errorMessage>
-        <name>Pricing_Restrict_RecordType_Change</name>
-    </validationRules>
 </CustomObjectTranslation>

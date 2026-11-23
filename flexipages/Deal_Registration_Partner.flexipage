@@ -76,7 +76,7 @@
                         <valueListItems>
                             <value>Core_Design_Registration__c.Pre_Check_Complete</value>
                             <visibilityRule>
-                                <booleanFilter>1 OR 2 OR (3 AND 4)</booleanFilter>
+                                <booleanFilter>1 OR 2 OR ((3 OR 4 )AND 5)</booleanFilter>
                                 <criteria>
                                     <leftValue>{!$User.Profile.Name}</leftValue>
                                     <operator>EQUAL</operator>
@@ -86,6 +86,11 @@
                                     <leftValue>{!$User.Profile.Name}</leftValue>
                                     <operator>EQUAL</operator>
                                     <rightValue>IT Admin</rightValue>
+                                </criteria>
+                                <criteria>
+                                    <leftValue>{!$Permission.CustomPermission.PCC_Deal_Reg_Internal_Admin_Custom}</leftValue>
+                                    <operator>EQUAL</operator>
+                                    <rightValue>true</rightValue>
                                 </criteria>
                                 <criteria>
                                     <leftValue>{!$Permission.CustomPermission.PCC_Deal_Reg_Channel_Ops_Custom}</leftValue>
@@ -102,16 +107,10 @@
                         <valueListItems>
                             <value>Core_Design_Registration__c.PCC_Accept_Deal_Sales_Desk</value>
                             <visibilityRule>
-                                <booleanFilter>1 AND 2</booleanFilter>
                                 <criteria>
                                     <leftValue>{!Record.Core_Design_Registration_Status_Nm__c}</leftValue>
                                     <operator>EQUAL</operator>
                                     <rightValue>Pre-Approved</rightValue>
-                                </criteria>
-                                <criteria>
-                                    <leftValue>{!$Permission.CustomPermission.PCC_Deal_Reg_Internal_Admin_Custom}</leftValue>
-                                    <operator>EQUAL</operator>
-                                    <rightValue>true</rightValue>
                                 </criteria>
                             </visibilityRule>
                         </valueListItems>
@@ -185,7 +184,7 @@
                         <valueListItems>
                             <value>Core_Design_Registration__c.PCC_ApproveDeal</value>
                             <visibilityRule>
-                                <booleanFilter>1 OR 2 OR (3 AND (4 OR 5))</booleanFilter>
+                                <booleanFilter>1 OR 2 OR (3 AND 4)</booleanFilter>
                                 <criteria>
                                     <leftValue>{!$User.Profile.Name}</leftValue>
                                     <operator>EQUAL</operator>
@@ -205,11 +204,6 @@
                                     <leftValue>{!Record.Core_Design_Registration_Status_Nm__c}</leftValue>
                                     <operator>EQUAL</operator>
                                     <rightValue>Deal accepted</rightValue>
-                                </criteria>
-                                <criteria>
-                                    <leftValue>{!Record.Core_Design_Registration_Status_Nm__c}</leftValue>
-                                    <operator>EQUAL</operator>
-                                    <rightValue>Re-Submitted</rightValue>
                                 </criteria>
                             </visibilityRule>
                         </valueListItems>
@@ -768,16 +762,10 @@
         </itemInstances>
         <itemInstances>
             <componentInstance>
-                <componentName>Core_DR_Zero_qunatity_Msg</componentName>
-                <identifier>Core_DR_Zero_qunatity_Msg</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
                 <componentName>showDuplicateDeals</componentName>
-                <identifier>c_showDuplicateDeals</identifier>
+                <identifier>c_showDuplicateDeals2</identifier>
                 <visibilityRule>
-                    <booleanFilter>(1 OR 2 OR 3 OR 4) AND 5</booleanFilter>
+                    <booleanFilter>1 OR 2 OR 3 OR 4</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.Core_Design_Registration_Status_Nm__c}</leftValue>
                         <operator>EQUAL</operator>
@@ -798,12 +786,13 @@
                         <operator>EQUAL</operator>
                         <rightValue>Deal accepted</rightValue>
                     </criteria>
-                    <criteria>
-                        <leftValue>{!Record.RecordType.Name}</leftValue>
-                        <operator>CONTAINS</operator>
-                        <rightValue>Deal</rightValue>
-                    </criteria>
                 </visibilityRule>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentName>Core_DR_Zero_qunatity_Msg</componentName>
+                <identifier>Core_DR_Zero_qunatity_Msg</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>

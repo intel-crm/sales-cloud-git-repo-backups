@@ -3,10 +3,6 @@
     <label>Specialty Benefits</label>
     <protected>false</protected>
     <values>
-        <field>Grey_Image_URL__c</field>
-        <value xsi:nil="true"/>
-    </values>
-    <values>
         <field>PMP_Account_Specialty_Name__c</field>
         <value xsi:type="xsd:string">Specialty Benefits</value>
     </values>
@@ -20,6 +16,6 @@
     </values>
     <values>
         <field>URL__c</field>
-        <value xsi:type="xsd:string">/servlet/servlet.ImageServer?id=0153b000004Pg4p&amp;oid=00Do0000000aRcf</value>
+        <value xsi:type="xsd:string">/servlet/servlet.ImageServer?id=0153b000004Pg4p&amp;oid=00Do0000000aRcf&amp;lastMod=1570256505000</value>
     </values>
 </CustomMetadata>

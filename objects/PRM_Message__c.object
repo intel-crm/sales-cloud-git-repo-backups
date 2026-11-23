@@ -236,149 +236,10 @@
                     <default>false</default>
                     <label>Notification Area</label>
                 </value>
-                <value>
-                    <fullName>MDF</fullName>
-                    <default>false</default>
-                    <label>MDF</label>
-                </value>
-                <value>
-                    <fullName>Marketing Studio</fullName>
-                    <default>false</default>
-                    <label>Marketing Studio</label>
-                </value>
-                <value>
-                    <fullName>Products &amp; Roadmaps</fullName>
-                    <default>false</default>
-                    <label>Products &amp; Roadmaps</label>
-                </value>
-                <value>
-                    <fullName>Partner Help</fullName>
-                    <default>false</default>
-                    <label>Partner Help</label>
-                </value>
-                <value>
-                    <fullName>FPGA Tools and Resources</fullName>
-                    <default>false</default>
-                    <label>FPGA Tools and Resources</label>
-                </value>
-                <value>
-                    <fullName>Pricing, Points and Promotions</fullName>
-                    <default>false</default>
-                    <label>Pricing, Points and Promotions</label>
-                </value>
-                <value>
-                    <fullName>Select Benefit</fullName>
-                    <default>false</default>
-                    <label>Select Benefit</label>
-                </value>
-                <value>
-                    <fullName>Visual Display Solutions Specialty</fullName>
-                    <default>false</default>
-                    <label>Visual Display Solutions Specialty</label>
-                </value>
-                <value>
-                    <fullName>Video Specialty</fullName>
-                    <default>false</default>
-                    <label>Video Specialty</label>
-                </value>
-                <value>
-                    <fullName>Industrial Solutions Builder Specialty</fullName>
-                    <default>false</default>
-                    <label>Industrial Solutions Builder Specialty</label>
-                </value>
-                <value>
-                    <fullName>Device as a Service Specialty</fullName>
-                    <default>false</default>
-                    <label>Device as a Service Specialty</label>
-                </value>
-                <value>
-                    <fullName>Managed Services Specialty</fullName>
-                    <default>false</default>
-                    <label>Managed Services Specialty</label>
-                </value>
-                <value>
-                    <fullName>Optane Client Specialty</fullName>
-                    <default>false</default>
-                    <label>Optane Client Specialty</label>
-                </value>
-                <value>
-                    <fullName>Optane Data Center Specialty</fullName>
-                    <default>false</default>
-                    <label>Optane Data Center Specialty</label>
-                </value>
-                <value>
-                    <fullName>Enthusiast PC Specialty</fullName>
-                    <default>false</default>
-                    <label>Enthusiast PC Specialty</label>
-                </value>
-                <value>
-                    <fullName>High Performance Computing Data Center Specialty</fullName>
-                    <default>false</default>
-                    <label>High Performance Computing Data Center Specialty</label>
-                </value>
-                <value>
-                    <fullName>Cloud Data Center Specialty</fullName>
-                    <default>false</default>
-                    <label>Cloud Data Center Specialty</label>
-                </value>
-                <value>
-                    <fullName>Artificial Intelligence Specialty</fullName>
-                    <default>false</default>
-                    <label>Artificial Intelligence Specialty</label>
-                </value>
-                <value>
-                    <fullName>Networking Specialty</fullName>
-                    <default>false</default>
-                    <label>Networking Specialty</label>
-                </value>
-                <value>
-                    <fullName>Partner Lookup Tool</fullName>
-                    <default>false</default>
-                    <label>Partner Lookup Tool</label>
-                </value>
-                <value>
-                    <fullName>Intel® Developer Zone - Premier</fullName>
-                    <default>false</default>
-                    <label>Intel® Developer Zone - Premier</label>
-                </value>
-                <value>
-                    <fullName>Intel® Developer Zone - Standard</fullName>
-                    <default>false</default>
-                    <label>Intel® Developer Zone - Standard</label>
-                </value>
-                <value>
-                    <fullName>Resource &amp; Documentation Center - Public</fullName>
-                    <default>false</default>
-                    <label>Resource &amp; Documentation Center - Public</label>
-                </value>
-                <value>
-                    <fullName>Resource &amp; Documentation Center - Premier Access</fullName>
-                    <default>false</default>
-                    <label>Resource &amp; Documentation Center - Premier Access</label>
-                </value>
-                <value>
-                    <fullName>Design Enablement Services,DIT</fullName>
-                    <default>false</default>
-                    <label>Design Enablement Services,DIT</label>
-                </value>
-                <value>
-                    <fullName>Design Enablement Services,IDDS</fullName>
-                    <default>false</default>
-                    <label>Design Enablement Services,IDDS</label>
-                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
     <label>Message</label>
-    <listViews>
-        <fullName>All</fullName>
-        <columns>NAME</columns>
-        <columns>PRM_Title_Txt__c</columns>
-        <columns>PRM_Message_Cd__c</columns>
-        <columns>PRM_UI_Display_Area_Nm__c</columns>
-        <filterScope>Everything</filterScope>
-        <label>All</label>
-    </listViews>
     <nameField>
         <displayFormat>M-{0000}</displayFormat>
         <label>Message Name</label>
@@ -392,63 +253,7 @@
         <picklistValues>
             <picklist>PRM_UI_Display_Area_Nm__c</picklist>
             <values>
-                <fullName>Artificial Intelligence Specialty</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Cloud Data Center Specialty</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Design Enablement Services%2CDIT</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Design Enablement Services%2CIDDS</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Device as a Service Specialty</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Enthusiast PC Specialty</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>FPGA Tools and Resources</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>High Performance Computing Data Center Specialty</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Industrial Solutions Builder Specialty</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Developer Zone - Premier</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Developer Zone - Standard</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Leads</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MDF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Managed Services Specialty</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Marketing Studio</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -456,59 +261,11 @@
                 <default>false</default>
             </values>
             <values>
-                <fullName>Networking Specialty</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Notification Area</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Optane Client Specialty</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Optane Data Center Specialty</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Partner Help</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Points</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Pricing%2C Points and Promotions</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Products %26 Roadmaps</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Resource %26 Documentation Center - Premier Access</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Resource %26 Documentation Center - Public</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Select Benefit</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Training</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Video Specialty</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Visual Display Solutions Specialty</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -521,14 +278,6 @@
             <picklist>PRM_UI_Display_Area_Nm__c</picklist>
             <values>
                 <fullName>Leads</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MDF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Marketing Studio</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -551,30 +300,5 @@
     </recordTypes>
     <searchLayouts/>
     <sharingModel>ReadWrite</sharingModel>
-    <validationRules>
-        <fullName>PRM_EndDate_Validation</fullName>
-        <active>true</active>
-        <errorConditionFormula>AND(
-OR(
-ISNEW(),
-ISCHANGED( PRM_End_Date_Dt__c )
-),
-PRM_End_Date_Dt__c &lt;= TODAY()
-)</errorConditionFormula>
-        <errorMessage>End Date has to be in future. Please select a future date.</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>PRM_LimitTitleCharacters</fullName>
-        <active>true</active>
-        <description>Validation rule to limit Title of a message to be within a few characters</description>
-        <errorConditionFormula>AND(
-OR(
-ISNEW(),
-ISCHANGED( PRM_Title_Txt__c )
-),
-LEN( PRM_Title_Txt__c )&gt; 78
-)</errorConditionFormula>
-        <errorMessage>You have exceeded the Title Character Limit, only 78 characters allowed.</errorMessage>
-    </validationRules>
     <visibility>Public</visibility>
 </CustomObject>

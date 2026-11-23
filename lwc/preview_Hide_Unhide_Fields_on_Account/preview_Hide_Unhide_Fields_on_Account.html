@@ -9,47 +9,26 @@
 
                     Preview Fields </div>
                 <div style="margin-top: -1.7em;
-            margin-left: 9em;"> <lightning-helptext content={previewFieldSectionText}></lightning-helptext>
+            margin-left: 9em;"> <lightning-helptext content="Visible : WW23- WW30 and WW49- WW4.                
+             Not Visible : WW5-WW22 and WW31-WW48."></lightning-helptext>
                 </div>
             </div>
-         
+            <lightning-layout multiple-rows="true" style="margin-top: -0.45em;height: 18em;">
               
                 <!-- 1st Row -->
-                <lightning-layout multiple-rows="true" style="margin-top: 0.45em;padding: 0px 4px 0px 14px;">
-                <lightning-layout-item   size="6" large-device-size="6"
-                    medium-device-size="6" small-device-size="12">
-                    <div class="slds-form-element slds-form-element_readonly">
-                        <div class="slds-form-element__static">
-                               <lightning-output-field field-name="Core_Sales_Group_Preview__c"></lightning-output-field>
-                                <template if:true={salesGroupPreviewBool}> <lightning-button-icon variant="bare"
-                                        icon-name="utility:edit" alternative-text="Edit" title="Edit"
-                                        onclick={handleEdit} style="float:right;margin-top: -1.9em;"></lightning-button-icon></template>
-                         
-                        </div>
-                    </div>
-                </lightning-layout-item>
-                <lightning-layout-item style="padding: 0px 14px 0px 14px;" size="6" large-device-size="6"
+                <lightning-layout-item style="padding: 14px 14px 0px 14px;" size="6" large-device-size="6"
                     medium-device-size="6" small-device-size="12">
 
                     <div class="slds-form-element slds-form-element_readonly">
-                         
+                      
                         <div class="slds-form-element__static">
-                            <lightning-output-field field-name="Core_Account_Owner_Preview__c"></lightning-output-field>  
-                                <template if:true={accountOwnerPreviewBool}> <lightning-button-icon variant="bare"
-                                        icon-name="utility:edit" alternative-text="Edit" title="Edit"
-                                        onclick={handleEdit} style="float:right;margin-top: -1.9em;"></lightning-button-icon> </template>
-                           
-                        </div>
-                    </div>
-                </lightning-layout-item> 
-               <!-- <lightning-layout-item style="padding: 14px 14px 0px 14px;" size="6" large-device-size="6"
-                    medium-device-size="6" small-device-size="12">
-
-                 <div class="slds-form-element slds-form-element_readonly">
-                         <lightning-output-field field-name="Core_Sales_Group_Preview__c"></lightning-output-field>
+                            <lightning-output-field field-name="Core_Sales_Group_Preview__c"></lightning-output-field>
                                 <template if:true={salesGroupPreviewBool}><lightning-button-icon variant="bare"
                                         icon-name="utility:edit" alternative-text="Edit" title="Edit"
                                         onclick={handleEdit} style="float:right;margin-top: -1.9em;"></lightning-button-icon> </template>
+                         
+
+                        </div>
                     </div>
                 </lightning-layout-item>
                 <lightning-layout-item style="padding: 19px 14px 0px 14px;" size="6" large-device-size="6"
@@ -65,10 +44,10 @@
                             </div>
                        
                     </div>
-                </lightning-layout-item>-->
+                </lightning-layout-item>
 
-                <!-- 2nd row-->  
-                <lightning-layout-item   size="6" large-device-size="6"
+                <!-- 2nd row-->
+                <lightning-layout-item style="padding: 0px 14px 0px 14px;" size="6" large-device-size="6"
                     medium-device-size="6" small-device-size="12">
                     <div class="slds-form-element slds-form-element_readonly">
                         <div class="slds-form-element__static">
@@ -80,7 +59,7 @@
                         </div>
                     </div>
                 </lightning-layout-item>
-                <lightning-layout-item style="padding: 0px 13px 0px 14px;" size="6" large-device-size="6"
+                <lightning-layout-item style="padding: 0px 14px 0px 14px;" size="6" large-device-size="6"
                     medium-device-size="6" small-device-size="12">
 
                     <div class="slds-form-element slds-form-element_readonly">
@@ -94,34 +73,7 @@
                         </div>
                     </div>
                 </lightning-layout-item>
-
-                <!-- 3rd row-->  
-                <lightning-layout-item   size="6" large-device-size="6"
-                    medium-device-size="6" small-device-size="12">
-                    <div class="slds-form-element slds-form-element_readonly">
-                        <div class="slds-form-element__static">
-                               <lightning-output-field field-name="Core_Account_Level_Preview__c"></lightning-output-field>
-                                <template if:true={accountLevelPreviewBool}> <lightning-button-icon variant="bare"
-                                        icon-name="utility:edit" alternative-text="Edit" title="Edit"
-                                        onclick={handleEdit} style="float:right;margin-top: -1.9em;"></lightning-button-icon></template>
-                         
-                        </div>
-                    </div>
-                </lightning-layout-item>
-                <lightning-layout-item style="padding: 0px 13px 0px 14px;" size="6" large-device-size="6"
-                    medium-device-size="6" small-device-size="12">
-
-                    <div class="slds-form-element slds-form-element_readonly">
-                         
-                        <div class="slds-form-element__static">
-                            <lightning-output-field field-name="Core_Comment_Preview__c"></lightning-output-field>  
-                                <template if:true={accountCommentPreviewBool}> <lightning-button-icon variant="bare"
-                                        icon-name="utility:edit" alternative-text="Edit" title="Edit"
-                                        onclick={handleEdit} style="float:right;margin-top: -1.9em;"></lightning-button-icon> </template>
-                           
-                        </div>
-                    </div>
-                </lightning-layout-item>
+                
           </lightning-layout></div>
        </lightning-card> </lightning-record-view-form> </template>
 
@@ -137,7 +89,7 @@
 
                         Preview Fields </div>
                     <div style="margin-top: -1.7em;
-        margin-left: 9em;"> <lightning-helptext content={previewFieldSectionText}></lightning-helptext>
+        margin-left: 9em;"> <lightning-helptext content="Visible : WW23- WW30 and WW49- WW4. Not Visible : WW5-WW22 and WW31-WW48."></lightning-helptext>
                     </div>
                 </div>
 
@@ -149,7 +101,7 @@
                         <lightning-input-field field-name="Core_Sales_Group_Preview__c"></lightning-input-field>
 
                     </lightning-layout-item>
-                    <lightning-layout-item style="padding: 13px 14px 0px 14px;" size="6" large-device-size="6"
+                    <lightning-layout-item style="padding: 19px 14px 0px 14px;" size="6" large-device-size="6"
                         medium-device-size="6" small-device-size="12">
 
                         <lightning-input-field field-name="Core_Account_Owner_Preview__c"></lightning-input-field>
@@ -160,33 +112,15 @@
                     <lightning-layout-item style="padding: 0px 14px 0px 14px;" size="6" large-device-size="6"
                         medium-device-size="6" small-device-size="12">
 
-                        <lightning-input-field field-name="Core_Account_Category_Preview__c" style="
-                        padding-right: 5em;"></lightning-input-field>
+                        <lightning-input-field field-name="Core_Account_Category_Preview__c"></lightning-input-field>
 
                     </lightning-layout-item>
-                     
+                    
                     <lightning-layout-item style="padding: 0px 14px 0px 14px;" size="6" large-device-size="6"
                         medium-device-size="6" small-device-size="12">
 
                         <lightning-input-field
-                            field-name="Core_Account_Primary_Coverage_Preview__c" ></lightning-input-field>
-
-                    </lightning-layout-item>
-
-                    <!-- 3rd row-->
-                    <lightning-layout-item style="padding: 0px 14px 0px 14px;" size="6" large-device-size="6"
-                        medium-device-size="6" small-device-size="12">
-
-                        <lightning-input-field field-name="Core_Account_Level_Preview__c" style="
-                        padding-right: 5em;"></lightning-input-field>
-
-                    </lightning-layout-item>
-                     
-                    <lightning-layout-item style="padding: 0px 14px 0px 14px;" size="6" large-device-size="6"
-                        medium-device-size="6" small-device-size="12">
-
-                        <lightning-input-field
-                            field-name="Core_Comment_Preview__c" ></lightning-input-field>
+                            field-name="Core_Account_Primary_Coverage_Preview__c"></lightning-input-field>
 
                     </lightning-layout-item>
                 </lightning-layout>

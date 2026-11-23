@@ -1,5 +1,4 @@
-<aura:component></aura:component>
-<!-- <aura:component controller="MarketplaceProductDetailsController">
+<aura:component controller="MarketplaceProductDetailsController">
 
   <aura:attribute name="details" type="object[]" default="[
     {
@@ -23,18 +22,15 @@
         { label: 'Processor', value: '8th Gen Intel Core' }
       ]
     }]" />
-    <aura:attribute name="resourcedetails" type="object[]" default="[]"/>
-    <aura:attribute name="addresourcedetails" type="object[]" default="[]"/>
-    <aura:attribute name="reslabel" type="String" default="Resources"/>
-    Added by raj to populate productcard on create offering wizard-->
-    <!-- <aura:attribute name="offeringName" type="String"/>
+    <!--Added by raj to populate productcard on create offering wizard-->
+    <aura:attribute name="offeringName" type="String"/>
     <aura:handler event="c:PMP_OfferingNameEvent" action="{!c.handleNameEntered}"/>
     <aura:attribute name="offeringDetails" type="Map"/>
     <aura:method name="reInit" action="{!c.doInit}"/>
-    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/> -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
 	<!--End-->
 
-  <!-- <aura:attribute name="isOpen" type="boolean" default="true" />
+  <aura:attribute name="isOpen" type="boolean" default="true" />
   <aura:attribute name="percent" type="integer" default="50" />
 
   <div>
@@ -47,12 +43,15 @@
     </div>
 
     <aura:if isTrue="{!v.isOpen}">
-      <aura:if isTrue="{!v.resourcedetails.length}">
-          <div class="bgWhite slds-p-around_medium slds-m-bottom_xxx-small">
-            <div class="heading-13 uppercase">{!$Label.c.PMP_Media_Gallery}</div>
-               <c:coreIntcGallery thumbnailOnCover="true" images="{!v.resourcedetails}" fixedHeight="true" onopen="{!c.handleModalOpen}"/>
-          </div>
-       </aura:if>
+      <!--<div class="bgWhite slds-p-around_medium slds-m-bottom_xxx-small">
+        <div class="slds-p-bottom_small heading-13 uppercase">{!$Label.c.PMP_Offering_Completeness}</div>
+        <div class="progressBar slds-m-bottom_small">
+          <div class="bar" style="{! 'width:'+ v.percent + '%;'}"></div>
+        </div>
+        <div>{!v.percent}%</div>
+        <div>You’re almost there! You just need to lorem ipsum dolor sit amet.</div>
+          <div>{!$Label.c.PMP_OfferingCompletenessMsg}</div>
+      </div>-->
       <aura:iteration items="{!v.details}" var="category">
         <div class="bgWhite slds-p-around_medium slds-m-bottom_xxx-small">
           <div class="heading-13 uppercase">{!category.categoryLabel}</div>
@@ -63,43 +62,16 @@
             <aura:iteration items="{!category.listing}" var="detail">
               <div class="slds-p-vertical_small">
                 <div>{!detail.label}</div>
-                <div class="slds-p-top_xx-small widthLimit"><b>{!detail.value}</b></div>
+                <div class="slds-p-top_xx-small"><b>{!detail.value}</b></div>
               </div>
             </aura:iteration>
           </aura:if>
         </div>
+
       </aura:iteration>
-          <aura:if isTrue="{!v.addresourcedetails.length}">
-            <div class="bgWhite slds-p-around_medium slds-m-bottom_xxx-small">
-              <div class="heading-13 uppercase">{!$Label.c.PMP_AdditionalResources}</div>
-              <div class="offering-detail-section">
-                    <div slot="content" class="bg-white spoke-content">
-                        <aura:iteration items="{!v.addresourcedetails}" var="resource">
-                            <div key="{!resource.title}" class="offering-detail-resource">
-                                <div>
-                                    <section class="resource-card" key="{!resource.title}">
-                                        <c:ipaOfferingResource
-                                            title="{!resource.title}"
-                                            description="{!resource.description}"
-                                            url="{!resource.url}"
-                                            preview="false"
-                                            resourceType="{!resource.resourceType}"
-                                            fileType="{!resource.fileType}"
-                                            fileSize="{!resource.fileSize}"   
-                                            contentType="{!resource.contentType}"
-                                            downloadUrl="{!resource.downloadUrl}"
-                                            videoType="{!resource.videoType}"
-                                            publishDate="{!resource.publishDate}"
-                                            altText="{!resource.altText}"
-                                            />
-                                    </section>
-                                </div>
-                            </div>
-                        </aura:iteration>
-                    </div>
-            </div>
-            </div>
-      </aura:if>
+
+
     </aura:if>
   </div>
-</aura:component> -->
+
+</aura:component>

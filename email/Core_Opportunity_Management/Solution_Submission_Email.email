@@ -1,0 +1,5 @@
+{!Approval_Requesting_User.Name} has requested your approval for the following Solution: {!Core_Solution_Areas__c.Link} 
+
+Solution Name: {!Core_Solution_Areas__c.Name}
+
+Please click this link to approve or reject this record.

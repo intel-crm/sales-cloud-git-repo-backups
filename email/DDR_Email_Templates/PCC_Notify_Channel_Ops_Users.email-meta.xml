@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>This email is sent to the Channel Ops public group on Deal submission</description>
+    <encodingKey>UTF-8</encodingKey>
+    <letterhead>Core_DDR_Email</letterhead>
+    <name>Notify Channel Ops Users</name>
+    <style>freeForm</style>
+    <subject>Review the new Deal Registration</subject>
+    <textOnly>A new deal is available in the queue for review
+
+Deal Number: {!Core_Design_Registration__c.Name}
+
+Deal Name: {!Core_Design_Registration__c.Core_Design_Registration_Nm__c}
+
+Partner Name: {!Core_Design_Registration__c.Core_Partner_Account_Id__c}
+
+
+
+You can click here to review the deal. {!Core_Design_Registration__c.Link}</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

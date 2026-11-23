@@ -5,6 +5,11 @@
         <name>CRM_VBS_QBRESOURCE</name>
     </customPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Business_Review__c.User_s_Manager__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>CRM_VBS_Product__c.CRM_VBS_Opportunity_Product__c</field>
         <readable>true</readable>
@@ -106,6 +111,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>CRM_VBS_SOAR__c.CRM_VBS_Other_Notes__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>CRM_VBS_SOAR__c.CRM_VBS_Primary_Lawyer__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -137,6 +147,16 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>CRM_VBS_SOAR__c.CRM_VBS_Total_Contract_Value__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CRM_VBS_SOAR__c.CRM_VBS_VBS_Explore_Re_Use__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>SPM_Account_Feedback__c.CRM_CST_Is_Active_Planning_Period__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>

@@ -2,7 +2,7 @@
  * @description       : Wrapper class for Mydeals Request Payload 
  * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
  * @group             : Gravity
- * @last modified on  : 03-27-2025
+ * @last modified on  : 09-02-2024
  * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 public class Pricing_PricingAI_Wrapper {
@@ -54,7 +54,7 @@ public class Pricing_PricingAI_Wrapper {
     public class AccountWrapper {
         public String name{set;get;}
         public String cimId{set;get;}
-        public String CustomerMappingId{set;get;}
         public String id{set;get;}
+        public String CustomerMappingId{set;get;}
     }
 }

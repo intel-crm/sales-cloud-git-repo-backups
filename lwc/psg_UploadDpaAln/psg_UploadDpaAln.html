@@ -1,0 +1,129 @@
+<template>
+    <template if:true={showLoadingSpinner}>
+        <div style="z-index: 10000 !important;">
+            <lightning-spinner alternative-text="Uploading......" size="medium" style="z-index: 10000 !important;"></lightning-spinner>
+        </div>
+    </template>
+
+    <lightning-card title="Bulk Update DPA/ALN/Quote">
+        <div class="slds-p-left_medium">
+            <lightning-layout multiple-rows>
+                <lightning-layout-item size="4">    
+                    <lightning-layout multiple-rows>
+                        <lightning-layout-item size="8">
+                            <div>
+                                <div>
+                                    <lightning-combobox label={picklistlabel} 
+                                                        name={picklistlabel} 
+                                                        onchange={handlePickListValueChange} 
+                                                        options={picklistvalueselected}
+                                                        required = true
+                                                        value={selectedValue}
+                                                        disabled={disableObjectSelection}
+                                                        readonly={readOnly}></lightning-combobox>
+                                </div></br> 
+                            </div>
+                        </lightning-layout-item>
+                        <lightning-layout-item size="8">
+                            <template if:true={enableOperationSelection}>
+                                <div>
+                                    <lightning-combobox label={operationPickListLabel} 
+                                                        name={operationPickListLabel} 
+                                                        onchange={handleOperationValueChange} 
+                                                        options={operationPicklistValues}
+                                                        required = true
+                                                        value={selectedOperationValue}
+                                                        readonly={readOnly}></lightning-combobox>                                   
+                                </div></br>
+                            </template>
+                            <template if:true={enableShipEndDate}>
+                                <div>
+                                    <lightning-input type="date" required="true"
+                                    label="Ship End Date"
+                                    date-style="short"
+                                    name="shipEndDate"
+                                    value={shipEndDate}
+                                    onchange={shipEndDateChange}
+                                    readonly={readOnlyDate}
+                                    min={minDate}
+                                    class="validate"
+                                    message-when-range-underflow="Please select a future date">
+                                    </lightning-input><br/>  
+                                </div> 
+                                <!--<div class="slds-text-body--regular slds-text-color_error">
+                                    {nullObjectError}
+                                </div><br/>-->
+                            </template>
+                        </lightning-layout-item>    
+                    </lightning-layout> 
+                    <template if:true={enableTA}>                 
+                        <div>
+                            <lightning-textarea name="DpaAlnNo" label={textAreaLabel} 
+                            required="true" 
+                            class="validate"
+                            message-when-value-missing="Please enter a value" 
+                            placeholder={textAreaPlaceholder}
+                            onchange={handleChange}
+                            value={DpaAlnNo}
+                            readonly={readOnly}></lightning-textarea>
+                        </div></br>
+                    </template>
+                    <!--<template if:true={enableQuoteTA}>                   
+                        <div>
+                            <lightning-textarea name="QuoteNo" label="Quote No. (Comma Separated)" 
+                            required="true" 
+                            class="validate"
+                            message-when-value-missing="Please enter a value" 
+                            placeholder="Enter Quote No."
+                            onchange={handleChange}
+                            value={QuoteNo}
+                            readonly={readOnly}></lightning-textarea>
+                        </div></br>
+                    </template>-->
+                    <div class="slds-text-body--regular slds-text-color_error">
+                        {count}
+                    </div><br/>
+                </lightning-layout-item>
+            </lightning-layout>
+            <template if:true={note}>
+                <div class="slds-text-body--medium slds-text-title_bold" >
+                    {note}
+                </div><br/>
+            </template>
+            <lightning-layout multiple-rows>
+                <lightning-layout-item>
+                    <lightning-button icon-name="utility:upload" 
+                                      label={UpdateFile} 
+                                      onclick={handleSave} 
+                                      variant="brand" 
+                                      disabled={disableUpdateButton}></lightning-button>
+                </lightning-layout-item>
+                
+                <lightning-layout-item padding="horizontal-small">
+                    <lightning-button icon-name="utility:download" 
+                                      label="Download Result" 
+                                      title="Download Result"
+                                      onclick={handleDownloadClick} variant="brand" disabled={disableResultButton}></lightning-button>
+                </lightning-layout-item>
+                
+            </lightning-layout>
+        </div>
+
+    </lightning-card>
+    
+    <lightning-card title="Upload Result" icon-name="standard:account">
+        <div class="slds-scrollable_y" style="max-height: 200px;;width:1225px">
+            <template if:true={dataTableList}>
+                    <lightning-datatable
+                            data={dataTableList}
+                            columns={columns}
+                            key-field="id"
+                            min-column-width = "50"
+                            hide-checkbox-column
+                            >
+                    </lightning-datatable>
+            </template>
+        </div>
+    </lightning-card>
+    
+</template>

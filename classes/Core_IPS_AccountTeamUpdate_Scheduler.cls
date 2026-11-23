@@ -24,6 +24,7 @@ global class Core_IPS_AccountTeamUpdate_Scheduler implements Database.Batchable<
         try {
             String query = '';
             DateTime lastRunDateTime = AccountTeamBatchHandler.getLastRunDateTime('Core_IPS_AccountTeamUpdate_Scheduler');
+            system.debug('>>>Core_IPS_AccountTeamUpdate_Scheduler lastRunDateTime : ' + lastRunDateTime );
             
             /*if(Test.isRunningTest()){
                 //query = 'select id from Account where id in(select accountid from accountshare where lastmodifieddate >= TODAY)';
@@ -52,22 +53,22 @@ global class Core_IPS_AccountTeamUpdate_Scheduler implements Database.Batchable<
             return Database.getQuerylocator(query);
             
         } catch(Exception e) {  
-            batchProcessing.Batch_Header__c = header.id;
-	    batchProcessing.Core_Exception_Log__c=e.getMessage();
-  	    insert batchProcessing;
-	    return null;        
+            batchProcessing.Batch_Header__c = header.id; batchProcessing.Core_Exception_Log__c=e.getMessage(); insert batchProcessing; return null;        
         }
     }
     
     global void execute(Database.BatchableContext BC, List<AccountShare> scope) {
+        system.debug('executing Core_IPS_AccountTeamUpdate_Scheduler');
         List<AccountShare> failedList = new List<AccountShare>();
         
         batchsize = scope.size();
         
         /*Core_IPS_AccountTeam_Calculation acctTeamCalc = new Core_IPS_AccountTeam_Calculation();
         for(Account acc: scope){
+        system.debug('raga- acc.id'+acc.Id);
         count++;
         acctTeamCalc.calcuateTeam(acc.id,'Batch',batchProcessing.id);
+        system.debug('raga - call for calculate');
         }*/
         
         List<Id> scopeIds = new List<Id>();
@@ -129,6 +130,9 @@ global class Core_IPS_AccountTeamUpdate_Scheduler implements Database.Batchable<
                     toInsertList.add(custom_AT);                  
                 }                
             }
+            
+            System.debug('########3########'+toUpdateList);            
+            System.debug('########4########'+toInsertList);     
             
             if(toInsertList <> null && toInsertList.size() > 0){
                 lineItem.Core_Change_Log__c+='<tr><th>New AccountTeam Members</th><th>'+toInsertList.size()+'</th></tr>';

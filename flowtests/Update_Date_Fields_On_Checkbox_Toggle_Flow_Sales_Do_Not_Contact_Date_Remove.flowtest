@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowTest xmlns="http://soap.sforce.com/2006/04/metadata">
+    <flowApiName>Update_Date_Fields_On_Checkbox_Toggle_Flow</flowApiName>
+    <label>Sales - Do Not Contact Date Remove</label>
+    <testPoints>
+        <elementApiName>Start</elementApiName>
+        <isUseMockOutput>false</isUseMockOutput>
+        <parameters>
+            <leftValueReference>$Record</leftValueReference>
+            <type>InputTriggeringRecordInitial</type>
+            <value>
+                <sobjectValue>{&quot;Company&quot;:&quot;asdfg&quot;,&quot;Core_Account_Conversion_Flag__c&quot;:true,&quot;Core_Ask_to_talk_to_Sales__c&quot;:false,&quot;Core_Cold_Contact_Approved__c&quot;:false,&quot;Core_Confirmed_Budget__c&quot;:false,&quot;Core_Contact_Conversion_Flag__c&quot;:true,&quot;Core_Contact_Established_Engaged__c&quot;:false,&quot;Core_Converted_Lead__c&quot;:false,&quot;Core_Created_Post_NewLead_Process__c&quot;:false,&quot;Core_Created_Post_NewPartnerLead_Process__c&quot;:false,&quot;Core_Customer_Consent_for_Marketing__c&quot;:false,&quot;Core_Do_Not_Contact_Dtm__c&quot;:&quot;2022-10-14T07:27:00.000Z&quot;,&quot;Core_Do_not_call__c&quot;:true,&quot;Core_Having_Tasks__c&quot;:false,&quot;Core_Having_Tasks_in_TQL__c&quot;:false,&quot;Core_Individual_Send_Email__c&quot;:false,&quot;Core_Is_Lead_Shared__c&quot;:false,&quot;Core_Is_Segment_Available_In_Offering__c&quot;:false,&quot;Core_Lead_BANT_Sub_Status__c&quot;:&quot;&quot;,&quot;Core_Lead_Contact_Estb_Dt__c&quot;:false,&quot;Core_Lead_Opt_In_Indicator__c&quot;:false,&quot;Core_Lead_Status__c&quot;:&quot;New&quot;,&quot;Core_Lead_Sub_Status__c&quot;:&quot;&quot;,&quot;Core_Lead_to_Opportunity_Conversion_flag__c&quot;:false,&quot;Core_Marketing_Do_Not_Contact_Ind__c&quot;:false,&quot;Core_Notify_Owner__c&quot;:false,&quot;Core_Ownership_change_in_one_day_TQL__c&quot;:false,&quot;Core_Pre_Validated__c&quot;:false,&quot;Core_Rejected_Flag__c&quot;:false,&quot;Core_Remove_Current_Sharing_Ind__c&quot;:false,&quot;Core_Reprocess_Lead_Sharing__c&quot;:false,&quot;Core_SLA_Listed_User__c&quot;:false,&quot;Core_SendEmail4__c&quot;:false,&quot;Core_SendEmail__c&quot;:false,&quot;Core_System_Update_Address__c&quot;:false,&quot;Core_Unreachable_flag__c&quot;:false,&quot;DaScoopComposer__Is_Created_By_Groove__c&quot;:false,&quot;IsUnreadByOwner&quot;:true,&quot;LastName&quot;:&quot;flow test&quot;,&quot;OwnerId&quot;:&quot;0052D000008HULlQAO&quot;,&quot;Status&quot;:&quot;Marketing Qualified Lead&quot;,&quot;bvd_connector__Unlinked_from_BvD__c&quot;:false}</sobjectValue>
+            </value>
+        </parameters>
+        <parameters>
+            <leftValueReference>$Record</leftValueReference>
+            <type>InputTriggeringRecordUpdated</type>
+            <value>
+                <sobjectValue>{&quot;Company&quot;:&quot;asdfg&quot;,&quot;Core_Account_Conversion_Flag__c&quot;:true,&quot;Core_Ask_to_talk_to_Sales__c&quot;:false,&quot;Core_Cold_Contact_Approved__c&quot;:false,&quot;Core_Confirmed_Budget__c&quot;:false,&quot;Core_Contact_Conversion_Flag__c&quot;:true,&quot;Core_Contact_Established_Engaged__c&quot;:false,&quot;Core_Converted_Lead__c&quot;:false,&quot;Core_Created_Post_NewLead_Process__c&quot;:false,&quot;Core_Created_Post_NewPartnerLead_Process__c&quot;:false,&quot;Core_Customer_Consent_for_Marketing__c&quot;:false,&quot;Core_Do_not_call__c&quot;:false,&quot;Core_Having_Tasks__c&quot;:false,&quot;Core_Having_Tasks_in_TQL__c&quot;:false,&quot;Core_Individual_Send_Email__c&quot;:false,&quot;Core_Is_Lead_Shared__c&quot;:false,&quot;Core_Is_Segment_Available_In_Offering__c&quot;:false,&quot;Core_Lead_BANT_Sub_Status__c&quot;:&quot;&quot;,&quot;Core_Lead_Contact_Estb_Dt__c&quot;:false,&quot;Core_Lead_Opt_In_Indicator__c&quot;:false,&quot;Core_Lead_Status__c&quot;:&quot;New&quot;,&quot;Core_Lead_to_Opportunity_Conversion_flag__c&quot;:false,&quot;Core_Marketing_Do_Not_Contact_Ind__c&quot;:false,&quot;Core_Notify_Owner__c&quot;:false,&quot;Core_Ownership_change_in_one_day_TQL__c&quot;:false,&quot;Core_Pre_Validated__c&quot;:false,&quot;Core_Rejected_Flag__c&quot;:false,&quot;Core_Remove_Current_Sharing_Ind__c&quot;:false,&quot;Core_Reprocess_Lead_Sharing__c&quot;:false,&quot;Core_SLA_Listed_User__c&quot;:false,&quot;Core_SendEmail4__c&quot;:false,&quot;Core_SendEmail__c&quot;:false,&quot;Core_System_Update_Address__c&quot;:false,&quot;Core_Unreachable_flag__c&quot;:false,&quot;DaScoopComposer__Is_Created_By_Groove__c&quot;:false,&quot;IsUnreadByOwner&quot;:true,&quot;LastName&quot;:&quot;flow test&quot;,&quot;OwnerId&quot;:&quot;0052D000008HULlQAO&quot;,&quot;Status&quot;:&quot;Marketing Qualified Lead&quot;,&quot;bvd_connector__Unlinked_from_BvD__c&quot;:false}</sobjectValue>
+            </value>
+        </parameters>
+    </testPoints>
+    <testPoints>
+        <assertions>
+            <conditions>
+                <leftValueReference>$Record.Core_Do_not_call__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+        </assertions>
+        <elementApiName>Finish</elementApiName>
+        <isUseMockOutput>false</isUseMockOutput>
+    </testPoints>
+    <testType>WithAssertion</testType>
+</FlowTest>

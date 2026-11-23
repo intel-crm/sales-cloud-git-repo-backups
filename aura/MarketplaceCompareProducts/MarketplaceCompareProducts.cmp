@@ -1,8 +1,9 @@
-<aura:component implements="forceCommunity:availableForAllPageTypes" ></aura:component>
-<!-- <aura:component extends="c:IPAReduxConnectorLWC" implements="forceCommunity:availableForAllPageTypes" controller="PMP_OfferingDetailsController" >
-    </aura:component>
-    Gireesh:US716270: Changed from baseComponent from MarketplaceRedux  to IPAReduxConnectorLWC
+<aura:component extends="c:MarketplaceRedux" implements="forceCommunity:availableForAllPageTypes" controller="PMP_SearchCategoryCardListController" >
+    
+    
+    
     <aura:set attribute="storeName" value="CompareTray" />
+    
     <aura:attribute name="maxProducts" type="integer" default="4" description="Max Products to compare"/>
     <aura:attribute name="addProductLinkSearchParams" type="object" description="Internal Attribute to be set in Controller"/>
     <aura:attribute name="compareTrayItems" type="object[]" default="[
@@ -15,8 +16,6 @@
     
     <aura:attribute name="sectionGrouping" type="object[]" description="Internal Component"/>
     <aura:attribute name="multipleOfferingDetails" type="object" />
-    <aura:attribute name="multiplePartnerDetails" type="object" />
-    
     
     <aura:attribute name="highlightDifferences" type="boolean" default="true" description="Highlight Differences"/>
     <aura:attribute name="loading" type="boolean" default="true" description="Internal Component"/>
@@ -26,15 +25,10 @@
     <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
     <aura:handler name="change" value="{!v.multipleOfferingDetails}" action="{!c.handlemultipleOfferingDetailsChange}" /> 
     <aura:attribute name="showContactPartner" type="boolean" default= "false" /> 
-    <aura:attribute name="ariaSkip" type="boolean" default= "true" />  -->
-    <!--Gireesh:US716270: To store secondTierCategory -->
-    <!-- <aura:attribute name="secondTierCatId" type="Id"  />
-
-
     
-   <div class="buttonContainer slds-p-top_large" >
+    <div class="buttonContainer">
         <span onclick="{!c.handleClick}">
-            <c:IntelButton>{!$Label.c.PMP_Create_Offering_Form_Back_Button}</c:IntelButton>
+            <c:IntelButton>Back</c:IntelButton>
         </span>
     </div>
     <div class="slds-p-bottom_large">
@@ -56,100 +50,80 @@
             </h4>
         </aura:if>
         
-        <aura:if isTrue="{!!v.loading}"> -->
+        <aura:if isTrue="{!!v.loading}">
             <!-- desktop version -->
-            <!-- <div class="slds-p-top_large slds-show_medium">
+            <div class="slds-p-top_large slds-show_medium">
                 <lightning:layout>
                     <lightning:layoutItem class="compareCard col slds-text-align_center" padding="around-small">
-                        <div> spacer </div>
+                        <div><!-- spacer --></div>
                     </lightning:layoutItem>
                     
                     <aura:iteration items="{!v.productsToCompare}" var="product" indexVar="indexVar">
-                        PRODUCT CARD -->
-                        <!-- <lightning:layoutItem class="compareCard col " padding="around-small">
+                        
+                        <!-- PRODUCT CARD -->
+                        <lightning:layoutItem class="compareCard col " padding="around-small">
                             <div class="innerCard">
                                 <aura:if isTrue="{! indexVar == v.loaderIndex}">
                                     <lightning:spinner alternativeText="Loading"/>
                                 </aura:if>
                                 <div class="top slds-p-around_large slds-text-align_center">
-                                  <aura:if isTrue="{!v.productsToCompare.length > 1}">
-                                         <a  href="javascript:void(0)" class="deleteCard" onclick="{!c.handleRemoveItem}" data-id="{!product.Id }" aria-label="{!$Label.c.PMP_Close_Remove_Card}">
-                                            <lightning:icon class="icn" iconName="utility:close" size="small" />
-
-                                        </a>
+                                    <aura:if isTrue="{!v.productsToCompare.length > 1}">
+                                        <a href="javascript:void(0)" class="deleteCard" onclick="{!c.handleRemoveItem}" data-id="{!product.Id }" aria-label="{!$Label.c.Core_PMP_Close}"><lightning:icon class="icn" iconName="utility:close" size="small" /></a>
                                     </aura:if>
-                                    <c:IntelLink recordId="{! product.Id}"  objectApiName='PMP_Partner_Offering__c' ariaSkip="{!v.ariaSkip}">
+                                    <c:IntelLink recordId="{! product.Id}"  objectApiName='PMP_Partner_Offering__c' >
                                         <img src="{!product.logo}" />
                                     </c:IntelLink>
-                                </div> -->
-                                <!-- <div class="content slds-p-around_medium">
+                                </div>
+                                <div class="content slds-p-around_medium">
                                     <div class="hideTextOverflow">
                                         <c:IntelLink recordId="{! product.Id}"  objectApiName='PMP_Partner_Offering__c' class="h4 heading-24 color-blue" label="{! product.Name}" truncate="50" />                                   
-                                        <p class="slds-m-top_medium byAttribute">{!$Label.c.PMP_By}&nbsp; 
+                                        <p class="slds-m-top_medium byAttribute">{!$Label.c.PMP_By}&nbsp;
                                             <c:IntelLink recordId="{! product.partner.id}" label="{! product.partner.name}" objectApiName='PMP_Company__c' />
                                         </p>
                                     </div>
-                                </div> -->
-                                <!--Gireesh:DE93760: fix contact partner card-->
-                                <!--<aura:if isTrue = "{!v.showContactPartner}">-->
-                                <!-- <aura:if isTrue = "{!product.Data.contactPartnerVisible}">                                    
+                                </div>
+                                <aura:if isTrue = "{!v.showContactPartner}">
                                     <div class="footer slds-p-bottom_large slds-p-horizontal_medium">
-                                        <c:MarketplaceContactPartner label="{!$Label.c.PMP_Contact_Partner}" dataObj="{!product.Data}" isLoggedIn="{!!product.Data.isGuest}" languagePreference="{!product.Data.leadLangPreference}"/>
+                                        <c:MarketplaceContactPartner label="{!$Label.c.PMP_Contact_Partner}" dataObj="{!product.Data}" isLoggedIn="{!!product.Data.isGuest}"/>
                                         
                                     </div>
                                 </aura:if>
                             </div>
-                        </lightning:layoutItem> -->
+                        </lightning:layoutItem>
                         
-                    <!-- </aura:iteration>
+                    </aura:iteration>
                     
                     <aura:if isTrue="{!v.blankProductsToAdd.length}">
                         <aura:iteration items="{!v.blankProductsToAdd}" var="product">
-                            <lightning:layoutItem class="compareCard col slds-text-align_center" size="12" mediumDeviceSize="3" padding="around-small"> -->
-                                <!--<c:IntelLink class="addCard" page="search" searchParams="{!v.addProductLinkSearchParams}" >-->
-                                <!--<c:IntelLink class="addCard" objectApiName="PMP_Category__c" recordId="{! v.secondTierCatId}" >-->
-                                <!-- <aura:if isTrue="{!not(empty(v.secondTierCatId))}">
-                                    <c:IntelLink class="addCard" objectApiName="PMP_Category__c" recordId="{! v.secondTierCatId}" >
-                                        <div class="innerCard slds-p-vertical_medium" > 
-                                            <lightning:layout class="fullWidth fullHeight" verticalAlign="center">
-                                                <lightning:layoutItem class="fullWidth">
-                                                    <lightning:icon class="" iconName="utility:add" />
-                                                </lightning:layoutItem>
-                                            </lightning:layout>
-                                        </div>
-                                    </c:IntelLink>
-                                    
-                                    <aura:set attribute="else">
-                                        <c:IntelLink class="addCard" page="home" >
-                                            <div class="innerCard slds-p-vertical_medium" > 
-                                                <lightning:layout class="fullWidth fullHeight" verticalAlign="center">
-                                                    <lightning:layoutItem class="fullWidth">
-                                                        <lightning:icon class="" iconName="utility:add" />
-                                                    </lightning:layoutItem>
-                                                </lightning:layout>
-                                            </div>
-                                        </c:IntelLink>
-                                    </aura:set>
-                                </aura:if>
+                            <lightning:layoutItem class="compareCard col slds-text-align_center" size="12" mediumDeviceSize="3" padding="around-small">
+                                <c:IntelLink class="addCard" page="search" searchParams="{!v.addProductLinkSearchParams}" >
+                                    <div class="innerCard slds-p-vertical_medium" > 
+                                        <lightning:layout class="fullWidth fullHeight" verticalAlign="center">
+                                            <lightning:layoutItem class="fullWidth">
+                                                <lightning:icon class="" iconName="utility:add" />
+                                            </lightning:layoutItem>
+                                        </lightning:layout>
+                                    </div>
+                                </c:IntelLink>
                                 
                             </lightning:layoutItem>
                         </aura:iteration>
                     </aura:if>
                     
                 </lightning:layout>
-            </div> -->
+            </div>
             <!-- mobile version -->
-            <!-- <lightning:layout class="slds-hide_medium slds-p-around_medium" multipleRows="{!v.mobileViewShowDetails ? true : false}" horizontalAlign="center">
-                <aura:iteration items="{!v.productsToCompare}" var="product" indexVar="indexVar"> -->
+            <lightning:layout class="slds-hide_medium slds-p-around_medium" multipleRows="{!v.mobileViewShowDetails ? true : false}" horizontalAlign="center">
+                <aura:iteration items="{!v.productsToCompare}" var="product" indexVar="indexVar">
                     <!-- mobile view (detailed) -->
-                    <!-- <aura:if isTrue="{!v.mobileViewShowDetails}">
+                    <aura:if isTrue="{!v.mobileViewShowDetails}">
                         <lightning:layoutItem size="12" class="slds-text-align_center slds-m-bottom_small">
                             <lightning:layout verticalAlign="center" class="mobileCard detailed">
                                 <aura:if isTrue="{! indexVar == v.loaderIndex}">
                                     <lightning:spinner alternativeText="Loading"/>
                                 </aura:if>
                                 <div class="mobileImage">
-                                    <c:IntelLink recordId="{! product.Id}"  objectApiName='PMP_Partner_Offering__c' ariaSkip="{!v.ariaSkip}" >
+                                    <c:IntelLink recordId="{! product.Id}"  objectApiName='PMP_Partner_Offering__c'>
                                         <img src="{!product.logo}" />   
                                     </c:IntelLink>
                                 </div>
@@ -158,9 +132,7 @@
                                 
                                 <div class=" slds-p-vertical_medium slds-p-left_medium slds-p-right_large  slds-text-align_left mobileCardText">
                                     <aura:if isTrue="{!v.productsToCompare.length > 1}">
-                                      <a href="javascript:void(0)" class="deleteCard" onclick="{!c.handleRemoveItem}" data-id="{! product.Id }" aria-label="{!$Label.c.PMP_Close_Remove_Card}">
-                                            <lightning:icon class="icn" iconName="utility:close" size="small" />
-                                       </a>
+                                        <a href="javascript:void(0)" class="deleteCard" onclick="{!c.handleRemoveItem}" data-id="{! product.Id }" aria-label="{!$Label.c.Core_PMP_Close}"><lightning:icon class="icn" iconName="utility:close" size="small" /></a>
                                     </aura:if>
                                     <c:IntelLink recordId="{! product.Id}"  objectApiName='PMP_Partner_Offering__c' class="color-blue heading-16" label="{! product.Name}" truncate="50" />
                                     
@@ -171,11 +143,11 @@
                             </lightning:layout>
                         </lightning:layoutItem>
                         
-                         limited view -->
-                        <!-- <aura:set attribute="else">
+                        <!-- limited view -->
+                        <aura:set attribute="else">
                             <lightning:layoutItem size="3" class="mobileCard">
                                 
-                                <c:IntelLink recordId="{! product.Id}"  objectApiName='PMP_Partner_Offering__c' ariaSkip="{!v.ariaSkip}">
+                                <c:IntelLink recordId="{! product.Id}"  objectApiName='PMP_Partner_Offering__c'>
                                     <img src="{!product.logo}" />
                                 </c:IntelLink>
                             </lightning:layoutItem>
@@ -184,9 +156,8 @@
                 </aura:iteration>
                 <aura:if isTrue="{!v.blankProductsToAdd.length}">
                     <aura:iteration items="{!v.blankProductsToAdd}" var="product">
-                        <lightning:layoutItem size="{!v.mobileViewShowDetails ? '12' : '3'}" class="{!'mobileCard' + (v.mobileViewShowDetails ? ' detailed slds-m-bottom_small' : '')}"> -->
-                            <!--<c:IntelLink class="addCard addCardSmall" page="search" searchParams="{!v.addProductLinkSearchParams}"  >-->
-                            <!-- <c:IntelLink class="addCard" objectApiName="PMP_Category__c" recordId="{! v.secondTierCatId}" >
+                        <lightning:layoutItem size="{!v.mobileViewShowDetails ? '12' : '3'}" class="{!'mobileCard' + (v.mobileViewShowDetails ? ' detailed slds-m-bottom_small' : '')}">
+                            <c:IntelLink class="addCard addCardSmall" page="search" searchParams="{!v.addProductLinkSearchParams}"  >
                                 <div class="fullWidth fullHeight">
                                     <lightning:layout class="fullWidth fullHeight" verticalAlign="center">
                                         <lightning:layoutItem class="fullWidth slds-text-align_center">
@@ -198,26 +169,25 @@
                         </lightning:layoutItem>
                     </aura:iteration>
                 </aura:if>
-            </lightning:layout> -->
+            </lightning:layout>
             
-            <!-- <div class="cursor slds-hide_medium slds-m-bottom_medium slds-text-align_center">
+            <div class="cursor slds-hide_medium slds-m-bottom_medium slds-text-align_center">
                 <a href="javascript:void(0);" onclick="{!c.handleToggleMobileViewDetails}">
                     {!v.mobileViewShowDetails ? $Label.c.PMP_HideDetails : $Label.c.PMP_ShowDetails} 
                     <lightning:icon class="iconMediumTransparent slds-m-left_small"
                                     iconName="{!v.mobileViewShowDetails ? 'utility:chevronup' : 'utility:chevrondown'}" />
                 </a>
-            </div> -->
+            </div>
             
             
             <!-- HIGHLIGHT DIFFERENCES -->
-            <!-- <aura:if isTrue="{!and(v.productsToCompare.length gt 0, v.productsToCompare.length le v.maxProducts)}"> -->
+            <aura:if isTrue="{!and(v.productsToCompare.length gt 0, v.productsToCompare.length le v.maxProducts)}">
                 <!-- desktop version -->
-                <!-- <div class="slds-show_medium slds-m-bottom_large slds-m-top_small whiteBg">
+                <div class="slds-show_medium slds-m-bottom_large slds-m-top_small whiteBg">
                     <div class="slds-p-horizontal_large slds-p-top_large">
                         <span class="{!(v.highlightDifferences ? 'highlight' : '') + ' slds-p-around_x-small'}">
                             <input onchange="{!c.handleToggleCheckbox}" type="checkbox" checked="{!v.highlightDifferences}"/>
                             <span class="slds-m-left_medium">{!$Label.c.PMP_Highlight_Differences}</span>
-                        
                         </span>
                     </div>              
                     
@@ -252,19 +222,20 @@
                                                         </div>
                                                     </lightning:layoutItem>
                                                     <aura:iteration items="{!row.data}" var="colData" indexVar="j">
-                                                        <lightning:layoutItem class="col " > -->
+                                                        <lightning:layoutItem class="col" >
                                                             <!-- ashish added class wordWrapOneLine for change word wrap defect -->
-                                                            <!-- <div class="slds-p-around_small wordWrapOneLine"> -->
+                                                            <div class="slds-p-around_small wordWrapOneLine">
                                                                 <!--For Richtext UI line Breaks and HTML Tags-->
-                                                                <!-- <aura:unescapedHtml value="{!colData}" />
+                                                                <aura:unescapedHtml value="{!colData}"/>
                                                             </div>
                                                         </lightning:layoutItem>
                                                     </aura:iteration>
                                                     <aura:if isTrue="{!v.blankProductsToAdd.length}">
                                                         <aura:iteration items="{!v.blankProductsToAdd}" var="product">
-                                                            <lightning:layoutItem class="col"> -->
-                                                               <!-- <div class="slds-p-around_small" > empty spacer </div>
-                                                         </lightning:layoutItem>
+                                                            <lightning:layoutItem class="col">
+                                                                <div class="slds-p-around_small" ><!-- empty spacer --></div>
+                                                            </lightning:layoutItem>
+                                                            
                                                         </aura:iteration>
                                                         
                                                     </aura:if>
@@ -276,10 +247,10 @@
                             </aura:iteration>                       
                         </c:MarketPlaceAccordion>
                     </div>
-                </div> -->
+                </div>
                 
                 <!-- mobile view -->
-                <!-- <div class="slds-hide_medium">
+                <div class="slds-hide_medium">
                     <aura:iteration items="{!v.sectionGrouping}" var="sectionGroup" indexVar="groupIndex">
                         <aura:if isTrue="{! !empty(sectionGroup.groupLabel) }">
                             <h3 class="heading-16 sectionGroupLabel">{!sectionGroup.groupLabel}</h3>
@@ -293,7 +264,7 @@
                                     <lightning:layout class="sectionContent">
                                         <lightning:layoutItem class="col" />
                                         <aura:iteration items="{!v.productsToCompare}" var="product">
-                                            <lightning:layoutItem class="col slds-text-align_center slds-p-around_small wordWrapOneLine">
+                                            <lightning:layoutItem class="col slds-text-align_center slds-p-around_small">
                                                 <b>{!product.Name}</b>
                                             </lightning:layoutItem>
                                         </aura:iteration>
@@ -323,10 +294,8 @@
                                                 </lightning:layoutItem>
                                             </aura:iteration>
                                             <aura:if isTrue="{!row.data.length lt v.maxProducts}">
-                                                <lightning:layoutItem class="col slds-hide"> -->
-                                                    <!-- <div class="slds-p-around_small">empty spacer -->
-
-                                                    <!-- </div>
+                                                <lightning:layoutItem class="col slds-hide">
+                                                    <div class="slds-p-around_small"><!-- empty spacer --></div>
                                                 </lightning:layoutItem>
                                             </aura:if>
                                         </lightning:layout>
@@ -343,4 +312,4 @@
         </aura:if>
     </div>
     
-</aura:component>   -->
+</aura:component>

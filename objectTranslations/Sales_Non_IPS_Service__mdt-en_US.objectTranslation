@@ -24,32 +24,48 @@
             <translation><!-- Having an issue in generating Employee or Evaluation or No-Cost or Legacy Licenses? --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Having issue when generating license for Questa Beta version</masterLabel>
+            <translation><!-- Having issue when generating license for Questa Beta version --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>I am getting errors generating a license file</masterLabel>
             <translation><!-- I am getting errors generating a license file --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>I am getting errors renewing a license</masterLabel>
-            <translation><!-- I am getting errors renewing a license --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>I can&apos;t assign or remove product to/from a computer</masterLabel>
-            <translation><!-- I can&apos;t assign or remove product to/from a computer --></translation>
+            <masterLabel>I can&apos;t assign product to a computer</masterLabel>
+            <translation><!-- I can&apos;t assign product to a computer --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>I can&apos;t generate a companion or temporary license</masterLabel>
             <translation><!-- I can&apos;t generate a companion or temporary license --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>I can&apos;t see/find a product</masterLabel>
-            <translation><!-- I can&apos;t see/find a product --></translation>
+            <masterLabel>I can&apos;t see/find a computer</masterLabel>
+            <translation><!-- I can&apos;t see/find a computer --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>I can&apos;t update License User/delegate admin</masterLabel>
-            <translation><!-- I can&apos;t update License User/delegate admin --></translation>
+            <masterLabel>I can&apos;t see/find a product that I want to license</masterLabel>
+            <translation><!-- I can&apos;t see/find a product that I want to license --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>I can’t merge or split licenses</masterLabel>
-            <translation><!-- I can’t merge or split licenses --></translation>
+            <masterLabel>I can&apos;t see/find my Renewal product</masterLabel>
+            <translation><!-- I can&apos;t see/find my Renewal product --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>I can&apos;t see/find the product for Add Seats</masterLabel>
+            <translation><!-- I can&apos;t see/find the product for Add Seats --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>I can&apos;t update License User</masterLabel>
+            <translation><!-- I can&apos;t update License User --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>I need to merge licenses/seats</masterLabel>
+            <translation><!-- I need to merge licenses/seats --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>I need to remove a product from a computer</masterLabel>
+            <translation><!-- I need to remove a product from a computer --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Other</masterLabel>

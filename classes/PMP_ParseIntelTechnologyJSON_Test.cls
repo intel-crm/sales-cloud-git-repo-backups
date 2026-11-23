@@ -9,8 +9,7 @@
 *************************************************************************************************/
 @isTest
 public class PMP_ParseIntelTechnologyJSON_Test {
-	//IPA 2.0- US-TWC729-7980
-	/*@isTest
+	@isTest
     public static void ParseEnglishIntelTechJSONTest(){
         Test.startTest();
         
@@ -129,9 +128,9 @@ public class PMP_ParseIntelTechnologyJSON_Test {
         spec_value_Proc_CoreX.PMP_Specification_Value_Nm__c = 'Intel® Core™ i5-7640X X-series Processor (6M Cache, up to 4.20 GHz)';
         
         insert spec_value_Proc_CoreX;
-        PMP_ParseIntelTechnologyJSON.languageCode = 'en_US';
-        PMP_ParseIntelTechnologyJSON.parseIntelTechJSON('Intel_Technology_Attribute_English_Test');
-        PMP_IntelTech_CreateJunctionData.createAssociationRecords();
+        PMP_ParseIntelTechnologyJSON.strBaseKey = 'en_US';
+        PMP_ParseIntelTechnologyJSON.ParseIntelTechJSON('Intel_Technology_Attribute_English_Test');
+        PMP_IntelTech_CreateJunctionData.PMP_Inteltech_CreateJunctionDataMet();
         System.assertNotEquals(spec_Main, null);
         
         Test.stopTest();          
@@ -256,9 +255,9 @@ public class PMP_ParseIntelTechnologyJSON_Test {
         spec_value_Proc_CoreX.PMP_Specification_Value_Nm__c = 'Intel® Core™ i5-7640X X-series Processor (6M Cache, up to 4.20 GHz)';
         
         insert spec_value_Proc_CoreX;
-        PMP_ParseIntelTechnologyJSON.languageCode = 'zh_CN';
-        PMP_ParseIntelTechnologyJSON.parseIntelTechJSON('Intel_Technology_Attribute_English_Test');
-        PMP_IntelTech_CreateJunctionData.createAssociationRecords();
+        PMP_ParseIntelTechnologyJSON.strBaseKey = 'zh_CN';
+        PMP_ParseIntelTechnologyJSON.ParseIntelTechJSON('Intel_Technology_Attribute_English_Test');
+        PMP_IntelTech_CreateJunctionData.PMP_Inteltech_CreateJunctionDataMet();
         System.assertNotEquals(spec_Main, null);
         
         Test.stopTest();          
@@ -383,11 +382,11 @@ public class PMP_ParseIntelTechnologyJSON_Test {
         spec_value_Proc_CoreX.PMP_Specification_Value_Nm__c = 'Intel® Core™ i5-7640X X-series Processor (6M Cache, up to 4.20 GHz)';
         
         insert spec_value_Proc_CoreX;
-        PMP_ParseIntelTechnologyJSON.languageCode = 'ja_JP';
-        PMP_ParseIntelTechnologyJSON.parseIntelTechJSON('Intel_Technology_Attribute_English_Test');
-        PMP_IntelTech_CreateJunctionData.createAssociationRecords();
+        PMP_ParseIntelTechnologyJSON.strBaseKey = 'ja_JP';
+        PMP_ParseIntelTechnologyJSON.ParseIntelTechJSON('Intel_Technology_Attribute_English_Test');
+        PMP_IntelTech_CreateJunctionData.PMP_Inteltech_CreateJunctionDataMet();
         System.assertNotEquals(spec_Main, null);
         
         Test.stopTest();          
-    }*/
+    }
 }

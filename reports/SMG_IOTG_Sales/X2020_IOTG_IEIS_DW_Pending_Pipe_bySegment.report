@@ -1,35 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
-    <buckets>
-        <bucketType>picklist</bucketType>
-        <developerName>BucketField_70194091</developerName>
-        <masterLabel>Prod App Groups</masterLabel>
-        <nullTreatment>n</nullTreatment>
-        <otherBucketLabel>Other</otherBucketLabel>
-        <sourceColumnName>Opportunity.Core_Product_Application__c</sourceColumnName>
-        <useOther>true</useOther>
-        <values>
-            <value>Energy</value>
-        </values>
-        <values>
-            <value>Transportation</value>
-        </values>
-        <values>
-            <value>Industrial</value>
-        </values>
-        <values>
-            <value>Medical</value>
-        </values>
-        <values>
-            <value>Smart Home</value>
-        </values>
-        <values>
-            <value>Retail</value>
-        </values>
-        <values>
-            <value>Emb Other</value>
-        </values>
-    </buckets>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>EXP_PRODUCT_AMOUNT</field>
+    </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>OpportunityLineItem.Core_KPI_Total_Price__c</field>
@@ -57,17 +31,10 @@
         <field>Opportunity.Core_Opportunity_Count__c</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>AMOUNT</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Product_Segment__c</field>
-    </columns>
-    <columns>
         <field>Opportunity.Core_Product_Application__c</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Consumption_Market__c</field>
+        <field>PRODUCT_NAME</field>
     </columns>
     <filter>
         <criteriaItems>
@@ -89,7 +56,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Edge Insights for Industrial</value>
+            <value>Industrial Edge Insights Software</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Exclude_From_KPIs__c</column>
@@ -128,6 +95,11 @@
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>STAGE_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Opportunity.Core_Product_Segment__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>2020 IOTG IEIS DW Pending Pipe bySegment</name>

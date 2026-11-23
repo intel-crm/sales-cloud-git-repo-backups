@@ -4,7 +4,8 @@
     <expressionSetDefinition>Pricing_Get_Rebate_Value_for_Product</expressionSetDefinition>
     <label>Pricing Get Rebate Value</label>
     <processType>Bre</processType>
-    <shouldShowExplExternally>false</shouldShowExplExternally>
+    <rank>1</rank>
+    <shouldShowExplExternally>true</shouldShowExplExternally>
     <startDate>2024-03-19T10:01:16.000Z</startDate>
     <status>Active</status>
     <steps>
@@ -13,14 +14,24 @@
             <decisionTableName>Pricing_Rebate_Evaluation_for_Product</decisionTableName>
             <type>DecisionTable</type>
         </decisionTable>
+        <failedExplainerTemplate>IQRTest1</failedExplainerTemplate>
+        <failedMessageTokenMappings>
+            <expressionSetMessageToken>IQRTest</expressionSetMessageToken>
+            <resourceReference>Pricing_Rebate_Evaluation_for_Product__Pricing_Rebate_Amount__c</resourceReference>
+        </failedMessageTokenMappings>
         <hasNestedExplainability>false</hasNestedExplainability>
         <label>Rebate Evaluation for Product</label>
         <name>RebateEvaluationforProduct</name>
+        <passedExplainerTemplate>IQRTest</passedExplainerTemplate>
+        <passedMessageTokenMappings>
+            <expressionSetMessageToken>IQRTest</expressionSetMessageToken>
+            <resourceReference>Pricing_Rebate_Evaluation_for_Product__Pricing_Rebate_Amount__c</resourceReference>
+        </passedMessageTokenMappings>
         <resultIncluded>true</resultIncluded>
         <sequenceNumber>1</sequenceNumber>
         <shouldExposExecPathMsgOnly>true</shouldExposExecPathMsgOnly>
         <shouldExposeConditionDetails>false</shouldExposeConditionDetails>
-        <shouldShowExplExternally>false</shouldShowExplExternally>
+        <shouldShowExplExternally>true</shouldShowExplExternally>
         <stepType>BusinessKnowledgeModel</stepType>
     </steps>
     <variables>

@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>CSV Column Header to Field Mapping</description>
+    <fields>
+        <fullName>PSG_Child_Object__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Child Object</label>
+        <length>100</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PSG_Child_Relationship_Field_Name__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Child Relationship Field Name</label>
+        <length>100</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PSG_Custom_Type__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Custom Type</label>
+        <length>100</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PSG_Field_API_Name__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Field API Name</label>
+        <length>100</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PSG_Field_Name__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Field Name</label>
+        <length>100</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PSG_Lookup_Field_Name_nm__c</fullName>
+        <description>Field on the Lookup object</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>Field on the Lookup object</inlineHelpText>
+        <label>Lookup Field Name</label>
+        <length>100</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PSG_Mapping_Type__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Mapping Type</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Field Mapping</fullName>
+                    <default>true</default>
+                    <label>Field Mapping</label>
+                </value>
+                <value>
+                    <fullName>Relationship Mapping</fullName>
+                    <default>false</default>
+                    <label>Relationship Mapping</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>PSG_Object_API_Name__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Object API Name</label>
+        <length>100</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PSG_Object_Name__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Object Name</label>
+        <length>100</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PSG_Order_Nbr__c</fullName>
+        <description>order of column as in excel sheet .</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Order</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PSG_Parent_Object__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Parent Object</label>
+        <length>100</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PSG_Reference_Field_Name_Nm__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Reference Field Name</label>
+        <length>10</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PSG_Template_Enabler__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>TEMPLATE ENABLER</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>PSG_isActive_cb__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Indicates if the Mapping is valid</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>isActive</label>
+        <type>Checkbox</type>
+    </fields>
+    <label>Upload File Mapping</label>
+    <listViews>
+        <fullName>All_Mappings</fullName>
+        <columns>DeveloperName</columns>
+        <columns>PSG_isActive_cb__c</columns>
+        <columns>PSG_Object_Name__c</columns>
+        <columns>PSG_Object_API_Name__c</columns>
+        <columns>PSG_Template_Enabler__c</columns>
+        <columns>PSG_Field_Name__c</columns>
+        <columns>PSG_Field_API_Name__c</columns>
+        <columns>PSG_Order_Nbr__c</columns>
+        <columns>PSG_Mapping_Type__c</columns>
+        <columns>PSG_Child_Object__c</columns>
+        <columns>PSG_Parent_Object__c</columns>
+        <columns>PSG_Child_Relationship_Field_Name__c</columns>
+        <columns>MasterLabel</columns>
+        <columns>PSG_Custom_Type__c</columns>
+        <columns>NamespacePrefix</columns>
+        <filterScope>Everything</filterScope>
+        <label>All Mappings</label>
+        <language>en_US</language>
+    </listViews>
+    <pluralLabel>Upload File Mappings</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

@@ -38,19 +38,11 @@ public without sharing class PRM_Specialty_Qualitative_Utility {
             }
          }
        } 
-
-       PRM_Specialty_Qualitative_Utility.specialtyDuplicateCheckHelper(duplicateSet,specialtyAssocNewList);
-        
-    }
-
-    public static void specialtyDuplicateCheckHelper(Set<String> duplicateSet2,List<PRM_Specialty_Qualitative_Criteria__c> specialtyAssocNewList2){
-
-        // Set<String> duplicateSet2 = new Set<String>();
-
-        if(duplicateSet2 != null && duplicateSet2.size()>0){
-            for(PRM_Specialty_Qualitative_Criteria__c sqca: specialtyAssocNewList2){
-                //System.debug('specialtyAssocNewList=======>'+sqca);
-                if(duplicateSet2.contains(sqca.PRM_Criteria_Id__c+''+sqca.PRM_Specialty_Id__c)){
+        //iterating over the trigger context and throwing error if duplicate record already exists
+        if(duplicateSet != null && duplicateSet.size()>0){
+            for(PRM_Specialty_Qualitative_Criteria__c sqca: specialtyAssocNewList){
+                System.debug('specialtyAssocNewList=======>'+sqca);
+                if(duplicateSet.contains(sqca.PRM_Criteria_Id__c+''+sqca.PRM_Specialty_Id__c)){
                     sqca.addError(System.label.PRM_Specialty_Qualitative_Criteria_Duplicate_Error);
                 }            
             } 

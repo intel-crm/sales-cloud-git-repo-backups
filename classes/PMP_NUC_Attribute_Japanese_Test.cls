@@ -9,11 +9,9 @@
 ******************************************************************************************************************************************************************************************************/
 @isTest
 public class PMP_NUC_Attribute_Japanese_Test {
-	//IPA 2.0- US-TWC729-7980
-    /*testMethod static void testNUCAttributeJapanese(){       
+	
+    testMethod static void testNUCAttributeJapanese(){       
     	PMP_NUC_Attribute_Japanese nucAttrJap = new PMP_NUC_Attribute_Japanese();
-        PMP_ParseNUCJSON.languageCode = 'ja_JP';
-        List<Database.UpsertResult> response = nucAttrJap.processData('NUC_Attribute_Test'); 
-        system.assertNotEquals(response, null); 
-    }*/
+        nucAttrJap.processData('NUC_Attribute_Test'); 
+    }
 }

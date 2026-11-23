@@ -1,0 +1,99 @@
+<apex:page standardController="Contact" extensions="CustomLoginAsController"  >
+     <script>
+    function myFunction(v) {
+     var option = v.value;
+     if(option =='Yes'){
+			 document.getElementById('WWID').style.display = 'block';
+          }
+		else{
+            document.getElementById('WWID').style.display = 'none';
+
+            }
+    }    
+    </script>
+    <apex:form >
+        <apex:pageMessages id="showmsg"></apex:pageMessages>
+        
+        <apex:pageBlock title="Select Portal Experience to Login to:">
+            
+            <apex:outputPanel >
+                <div class="requiredInput">
+                    <div class="requiredBlock"> </div>
+                    <apex:selectRadio value="{!community}"  >
+                        <apex:selectOptions value="{!communityList}"/>
+                    </apex:selectRadio><p/> 
+                </div>
+            </apex:outputPanel> 
+            
+        </apex:pageBlock>
+        
+        <apex:pageBlock title="Terms & Conditions">
+            <apex:outputPanel >
+                <div class="requiredInput">
+                    <div class="requiredBlock"> </div>
+                    <apex:pageBlockSection columns="1">
+                        <apex:pageBlockSectionItem > 
+                            <apex:outputText value="I agree to the terms and conditions outlined in this document(final verbiage TBD)"/>           
+                        </apex:pageBlockSectionItem>
+                    </apex:pageBlockSection> 
+                    <apex:pageBlockSection columns="2">
+                        <apex:pageBlockSectionItem >  
+                            <apex:outputLabel value="I Accept" />    
+                            <apex:inputCheckbox id="theCheckbox" value="{!em_log.T_C__c}" required="true"/>
+                        </apex:pageBlockSectionItem>   
+                    </apex:pageBlockSection>  
+                </div>
+            </apex:outputPanel> 
+        </apex:pageBlock> 
+        
+        
+        <apex:pageBlock title="Detailed Explanation Why You Are Emulating This User(final label TBD)" id="justification">
+            <div class="requiredInput">
+                <div class="requiredBlock"></div>
+                <apex:inputTextarea id="justification"  title="Justification" rows="3" cols="100" value="{!em_log.Justification_Text__c}" />
+            </div>
+        </apex:pageBlock>
+        
+        <apex:pageBlock title="Do You Have Explicit Consent From This User({!NetworkUserEmail}) To Emulate Them?">
+            <div class="requiredInput">
+                <div class="requiredBlock"> </div>
+                <apex:selectRadio value="{!em_log.Consent_To_Emulate__c}" >
+                    <apex:selectOption itemLabel="Yes" itemvalue="Yes"></apex:selectOption>
+                    <apex:selectOption itemLabel="No" itemvalue="No"></apex:selectOption>
+                </apex:selectRadio><p/>
+            </div>
+        </apex:pageBlock>
+        
+        <apex:pageBlock title="Are you emulating on behalf of someone else ?">
+         
+        
+            <div class="requiredInput">
+                <div class="requiredBlock"> </div>
+                <apex:selectRadio value="{!em_log.Emulating_On_Behalf_Of__c}" onchange="myFunction(this);" >
+                    <apex:selectOption itemLabel="Yes" itemvalue="Yes"></apex:selectOption>
+                    <apex:selectOption itemLabel="No" itemvalue="No"></apex:selectOption>
+                </apex:selectRadio><p/> 
+            </div>
+       
+      
+            <span id="WWID"  style = "display:none">
+            <apex:outputText value="On Whose Behalf(WWID)?  "/>
+            <div class="requiredInput">
+                <div class="requiredBlock"></div>
+                <apex:inputText title="On Whose Behalf?" value="{!em_log.On_Whose_Behalf_WWID__c}" /> 
+            </div>
+            </span> 
+           
+            
+            
+        </apex:pageBlock>
+        
+        
+        <apex:pageBlock >
+            <div align="center" draggable="false" >
+            <p> <apex:commandButton action="{!save}" value="  Emulate  " id="theButton" rerender="showmsg"/></p> 
+            </div>    
+        </apex:pageBlock>
+        
+    </apex:form>
+</apex:page>

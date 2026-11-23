@@ -12,20 +12,9 @@
         <externalId>false</externalId>
         <fieldManageability>DeveloperControlled</fieldManageability>
         <label>Activity Auto Closure Rule</label>
-        <length>50</length>
+        <length>255</length>
         <required>false</required>
         <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Activity_Auto_Closure_SLA_Month__c</fullName>
-        <externalId>false</externalId>
-        <fieldManageability>DeveloperControlled</fieldManageability>
-        <label>Activity Auto-Closure SLA(months)</label>
-        <precision>3</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <type>Number</type>
         <unique>false</unique>
     </fields>
     <fields>
@@ -33,7 +22,7 @@
         <defaultValue>0</defaultValue>
         <externalId>false</externalId>
         <fieldManageability>DeveloperControlled</fieldManageability>
-        <label>Activity Auto-Closure SLA(days)</label>
+        <label>Activity Auto-Closure SLA</label>
         <precision>3</precision>
         <required>false</required>
         <scale>0</scale>
@@ -84,27 +73,6 @@
         <required>false</required>
         <scale>0</scale>
         <type>Number</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Closure_Date_Extension__c</fullName>
-        <externalId>false</externalId>
-        <fieldManageability>DeveloperControlled</fieldManageability>
-        <label>Closure Date Extension</label>
-        <precision>3</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <type>Number</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Closure_date_Extension_Rule__c</fullName>
-        <externalId>false</externalId>
-        <fieldManageability>DeveloperControlled</fieldManageability>
-        <label>Closure date Extension Rule</label>
-        <length>50</length>
-        <required>false</required>
-        <type>Text</type>
         <unique>false</unique>
     </fields>
     <fields>
@@ -1106,18 +1074,6 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Core_MDF_Doc_Submission_Window_Claim_Nbr__c</fullName>
-        <description>Stores the number of days to be given for Document submission if the Claim is selected for Document Hold</description>
-        <externalId>false</externalId>
-        <fieldManageability>DeveloperControlled</fieldManageability>
-        <label>Doc Submission Window(Claim)</label>
-        <precision>18</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <type>Number</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_MDF_Doc_Submission_Window__c</fullName>
         <defaultValue>0</defaultValue>
         <externalId>false</externalId>
@@ -1310,18 +1266,18 @@
         <columns>MasterLabel</columns>
         <columns>Core_MDF_Active__c</columns>
         <columns>Core_MDF_Budget_Type__c</columns>
-        <columns>Core_MDF_Activity_Auto_Closure_Rule__c</columns>
-        <columns>Core_MDF_Doc_Submission_Window_Claim_Nbr__c</columns>
-        <columns>Core_MDF_Activity_Auto_Closure_SLA__c</columns>
-        <columns>Core_MDF_Activity_Auto_Closure_SLA_Month__c</columns>
         <columns>Core_MDF_Case_SLA__c</columns>
         <columns>Core_MDF_Claim_Submission_Window_days__c</columns>
         <columns>Core_MDF_Claim_Submission_Window_mnth__c</columns>
         <columns>Core_MDF_Country__c</columns>
+        <columns>Core_MDF_Doc_Submission_Rule__c</columns>
         <columns>Core_MDF_Doc_Submission_Window__c</columns>
+        <columns>Core_MDF_Escalation_Submission_Rule__c</columns>
+        <columns>Core_MDF_Escalation_Submission_Window__c</columns>
         <columns>Core_MDF_Geo__c</columns>
         <columns>Core_MDF_Program__c</columns>
         <columns>Core_MDF_Quarter__c</columns>
+        <columns>Core_MDF_Sub_Geo__c</columns>
         <filterScope>Everything</filterScope>
         <label>All Fields</label>
         <language>en_US</language>

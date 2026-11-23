@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>Dedicom GmbH Partner User</description>
+    <description>DEDICOM DIREKTCOMPUTER GMBH Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>Dedicom GmbH Partner User</name>
+    <name>DEDICOM DIREKTCOMPUTER GMBH Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>DEDICOMDIREKTCOMPUTERGMBHPartnerManager</parentRole>
 </Role>

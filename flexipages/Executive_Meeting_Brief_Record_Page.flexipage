@@ -34,40 +34,6 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
-                <componentName>force:detailPanel</componentName>
-                <identifier>force_detailPanel</identifier>
-            </componentInstance>
-        </itemInstances>
-        <mode>Replace</mode>
-        <name>detailTabContent</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>active</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>body</name>
-                    <value>detailTabContent</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>title</name>
-                    <value>Standard.Tab.detail</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:tab</componentName>
-                <identifier>detailTab</identifier>
-            </componentInstance>
-        </itemInstances>
-        <mode>Replace</mode>
-        <name>maintabs</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <componentInstance>
                 <componentInstanceProperties>
                     <name>parentFieldApiName</name>
                     <value>Executive_Meeting_Brief__c.Id</value>
@@ -94,9 +60,45 @@
         </itemInstances>
         <itemInstances>
             <componentInstance>
+                <componentName>force:detailPanel</componentName>
+                <identifier>force_detailPanel</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-e0e62d24-475b-4bcf-85a4-fcf8323556e8</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>active</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-e0e62d24-475b-4bcf-85a4-fcf8323556e8</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>title</name>
+                    <value>Standard.Tab.details</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:tab</componentName>
+                <identifier>flexipage_tab</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-e4446a12-d452-41e8-a319-11d51d0a3b1c</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>label</name>
+                    <value>Tabs</value>
+                </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>tabs</name>
-                    <value>maintabs</value>
+                    <value>Facet-e4446a12-d452-41e8-a319-11d51d0a3b1c</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:tabset</componentName>
                 <identifier>flexipage_tabset</identifier>
@@ -117,7 +119,7 @@
                 <identifier>runtime_sales_activities_activityPanel</identifier>
             </componentInstance>
         </itemInstances>
-        <name>Facet-61db3c2a-fba4-4586-91bc-23fa4c1c9fa5</name>
+        <name>Facet-4a7e79d4-537b-427d-abaa-be459a09b8ab</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -129,28 +131,39 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>body</name>
-                    <value>Facet-61db3c2a-fba4-4586-91bc-23fa4c1c9fa5</value>
+                    <value>Facet-4a7e79d4-537b-427d-abaa-be459a09b8ab</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>title</name>
-                    <value>Standard.Tab.activity</value>
+                    <value>Activity</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
-                <identifier>flexipage_tab</identifier>
+                <identifier>flexipage_tab2</identifier>
             </componentInstance>
         </itemInstances>
-        <name>Facet-92932bdb-cc43-44d6-bbd6-f70f190c8653</name>
+        <name>Facet-19698835-bcf6-41cd-be26-99e94151a370</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
+                    <name>label</name>
+                    <value>Tabs</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
                     <name>tabs</name>
-                    <value>Facet-92932bdb-cc43-44d6-bbd6-f70f190c8653</value>
+                    <value>Facet-19698835-bcf6-41cd-be26-99e94151a370</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:tabset</componentName>
                 <identifier>flexipage_tabset2</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!Record.RecordType.DeveloperName}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Executive_Meeting_Brief</rightValue>
+                    </criteria>
+                </visibilityRule>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -165,6 +178,13 @@
                 </componentInstanceProperties>
                 <componentName>runtime_sales_pathassistant:pathAssistant</componentName>
                 <identifier>runtime_sales_pathassistant_pathAssistant</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!Record.RecordType.DeveloperName}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Executive_Meeting_Brief</rightValue>
+                    </criteria>
+                </visibilityRule>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -175,7 +195,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>richTextValue</name>
-                    <value>&lt;p&gt;&lt;strong&gt;Template:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://intel.my.salesforce.com/sfc/p/o0000000aRcf/a/3b000000ieJX/0bu3QZKSDsnoMfBhCQJHam9bGITopPK3uSZjVUHrOko&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Executive Meeting Brief Template&lt;/a&gt;&lt;/p&gt;</value>
+                    <value>&lt;p&gt;&lt;strong&gt;Template:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://intel.my.salesforce.com/sfc/p/o0000000aRcf/a/3b000000ieJX/0bu3QZKSDsnoMfBhCQJHam9bGITopPK3uSZjVUHrOko&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;color: rgb(1, 118, 211);&quot;&gt;Executive Meeting Brief Template&lt;/a&gt;&lt;/p&gt;</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:richText</componentName>
                 <identifier>flexipage_richText</identifier>
@@ -196,7 +216,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>richTextValue</name>
-                    <value>&lt;p&gt;&lt;strong&gt;Template:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://intel--crmqa3.sandbox.my.salesforce.com/sfc/p/2i0000000bck/a/2i0000005JiV/c3XaMwZZfKiZfpB.xYLFGQg9Kg8a.Qzz6M9i6xMCrJI&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Annual Catch Up Template&lt;/a&gt;&lt;/p&gt;</value>
+                    <value>&lt;p&gt;&lt;strong&gt;Template:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://intel--crmqa3.sandbox.my.salesforce.com/sfc/p/2i0000000bck/a/2i0000005JiV/c3XaMwZZfKiZfpB.xYLFGQg9Kg8a.Qzz6M9i6xMCrJI&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;color: rgb(1, 118, 211);&quot;&gt;Annual Catch Up Template&lt;/a&gt;&lt;/p&gt;</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:richText</componentName>
                 <identifier>flexipage_richText2</identifier>
@@ -204,7 +224,7 @@
                     <criteria>
                         <leftValue>{!Record.RecordType.Name}</leftValue>
                         <operator>CONTAINS</operator>
-                        <rightValue>Annual</rightValue>
+                        <rightValue>Executive</rightValue>
                     </criteria>
                 </visibilityRule>
             </componentInstance>
@@ -217,7 +237,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>richTextValue</name>
-                    <value>&lt;p&gt;&lt;strong&gt;Template:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://intel--crmqa3.sandbox.my.salesforce.com/sfc/p/2i0000000bck/a/2i0000005Jia/KSgB4i6_.uDXfc_yOMZ7_c6v7VYGjmzE_0LHokos6Gk&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Overcome Critical Objective Brief Template&lt;/a&gt;&lt;/p&gt;</value>
+                    <value>&lt;p&gt;&lt;strong&gt;Template:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://intel--crmqa3.sandbox.my.salesforce.com/sfc/p/2i0000000bck/a/2i0000005Jia/KSgB4i6_.uDXfc_yOMZ7_c6v7VYGjmzE_0LHokos6Gk&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;color: rgb(1, 118, 211);&quot;&gt;Overcome Critical Objective Brief Template&lt;/a&gt;&lt;/p&gt;</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:richText</componentName>
                 <identifier>flexipage_richText3</identifier>
@@ -225,7 +245,7 @@
                     <criteria>
                         <leftValue>{!Record.RecordType.Name}</leftValue>
                         <operator>CONTAINS</operator>
-                        <rightValue>Overcome</rightValue>
+                        <rightValue>Executive</rightValue>
                     </criteria>
                 </visibilityRule>
             </componentInstance>

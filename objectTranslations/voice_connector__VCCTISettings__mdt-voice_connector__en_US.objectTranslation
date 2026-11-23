@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>VCCTISettings</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>VCCTISettings</value>
+    </caseValues>
+    <fields>
+        <label><!-- Activations First Date --></label>
+        <name>voice_connector__VCActivationsFirstDate__c</name>
+    </fields>
+    <fields>
+        <help><!-- Allow Multiple Calls When Getting Media --></help>
+        <label><!-- AllowMultipleCalls --></label>
+        <name>voice_connector__VCAllowMultipleCalls__c</name>
+    </fields>
+    <fields>
+        <label><!-- Always Call CTI On Recrawl --></label>
+        <name>voice_connector__VCAlwaysCallCTIOnRecrawl__c</name>
+    </fields>
+    <fields>
+        <label><!-- Capture Auto Recording --></label>
+        <name>voice_connector__VCCTICaptureAutoRecording__c</name>
+    </fields>
+    <fields>
+        <label><!-- CreateDynamicRemoteSite --></label>
+        <name>voice_connector__VCCTICreateDynamicRemoteSite__c</name>
+    </fields>
+    <fields>
+        <label><!-- CTI Dev Name --></label>
+        <name>voice_connector__VCCTIDevName__c</name>
+    </fields>
+    <fields>
+        <label><!-- VCCTIIsScheduleable --></label>
+        <name>voice_connector__VCCTIIsScheduleable__c</name>
+    </fields>
+    <fields>
+        <label><!-- CTI Name --></label>
+        <name>voice_connector__VCCTIName__c</name>
+    </fields>
+    <fields>
+        <label><!-- Renewal Subscription --></label>
+        <name>voice_connector__VCCTIRenewalSubscription__c</name>
+    </fields>
+    <fields>
+        <label><!-- Request Needed --></label>
+        <name>voice_connector__VCCTIRequestNeeded__c</name>
+    </fields>
+    <fields>
+        <label><!-- VCCTIRequiredSubscription --></label>
+        <name>voice_connector__VCCTIRequiredSubscription__c</name>
+    </fields>
+    <fields>
+        <label><!-- VCCTIVerificationToken --></label>
+        <name>voice_connector__VCCTIVerificationToken__c</name>
+    </fields>
+    <fields>
+        <label><!-- Call Coaching Media Provider Id --></label>
+        <name>voice_connector__VCCallCoachingMediaProviderId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Client Consent --></label>
+        <name>voice_connector__VCClientConsent__c</name>
+    </fields>
+    <fields>
+        <label><!-- Delay milliseconds --></label>
+        <name>voice_connector__VCDelay__c</name>
+    </fields>
+    <fields>
+        <label><!-- Description --></label>
+        <name>voice_connector__VCDescription__c</name>
+    </fields>
+    <fields>
+        <label><!-- VC Doc Named Credential --></label>
+        <name>voice_connector__VCDocNamedCredential__c</name>
+    </fields>
+    <fields>
+        <label><!-- Document Url --></label>
+        <name>voice_connector__VCDocumentUrl__c</name>
+    </fields>
+    <fields>
+        <label><!-- Filter --></label>
+        <name>voice_connector__VCFilter__c</name>
+    </fields>
+    <fields>
+        <label><!-- Get Call Endpoint With Param --></label>
+        <name>voice_connector__VCGetCallEndpointWithParam__c</name>
+    </fields>
+    <fields>
+        <label><!-- Get Calls Endpoint --></label>
+        <name>voice_connector__VCGetCallsEndpoint__c</name>
+    </fields>
+    <fields>
+        <label><!-- Get Media Endpoint --></label>
+        <name>voice_connector__VCGetMediaEndpoint__c</name>
+    </fields>
+    <fields>
+        <label><!-- In Develop --></label>
+        <name>voice_connector__VCInDevelop__c</name>
+    </fields>
+    <fields>
+        <label><!-- Integration User Id --></label>
+        <name>voice_connector__VCIntegrationUserId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Active --></label>
+        <name>voice_connector__VCIsActive__c</name>
+    </fields>
+    <fields>
+        <label><!-- Max Call Volume When Recrawling --></label>
+        <name>voice_connector__VCMaxCallVolumeWhenRecrawling__c</name>
+    </fields>
+    <fields>
+        <label><!-- Max Date Range When Recrawling By User --></label>
+        <name>voice_connector__VCMaxDateRangeWhenRecrawlingByUser__c</name>
+    </fields>
+    <fields>
+        <label><!-- Min Call Duration --></label>
+        <name>voice_connector__VCMinCallDuration__c</name>
+    </fields>
+    <fields>
+        <label><!-- Must Save Phone Number --></label>
+        <name>voice_connector__VCMustSavePhoneNumber__c</name>
+    </fields>
+    <fields>
+        <label><!-- Named Credentials --></label>
+        <name>voice_connector__VCNamedCredentials__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Phone Number --></label>
+        <name>voice_connector__VCPhoneNumber__c</name>
+    </fields>
+    <fields>
+        <label><!-- Subscription Expiration --></label>
+        <name>voice_connector__VCSubscriptionExpiration__c</name>
+    </fields>
+    <fields>
+        <label><!-- Subscription Id --></label>
+        <name>voice_connector__VCSubscriptionId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Target Id --></label>
+        <name>voice_connector__VCTargetId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Target Type --></label>
+        <name>voice_connector__VCTargetType__c</name>
+    </fields>
+    <fields>
+        <label><!-- Url Expiration Time --></label>
+        <name>voice_connector__VCUrlExpirationTime__c</name>
+    </fields>
+    <fields>
+        <label><!-- Webhook Id --></label>
+        <name>voice_connector__VCWebhookId__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

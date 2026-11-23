@@ -1,0 +1,51 @@
+{
+  "appPageId" : "6b36c665-0609-49d0-9746-033feed642b2",
+  "componentName" : "c:PSGPatnerLayout",
+  "dataProviders" : [ ],
+  "id" : "b7b1fe7a-b462-416c-9c33-be2754d260f8",
+  "label" : "DemoTab",
+  "regions" : [ {
+    "id" : "f93d179f-ecdc-4fe4-a1a6-202766c94e68",
+    "regionName" : "Header",
+    "type" : "region"
+  }, {
+    "id" : "58d5dc8d-90bd-4af7-8a1a-e71f3cb1f082",
+    "regionName" : "mainFullWidth",
+    "type" : "region"
+  }, {
+    "id" : "6e627dab-5d35-46a7-ae1c-530395446eb8",
+    "regionName" : "main",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Licenses Menu"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "c3236e98-8be5-48c6-8702-067618eec74e",
+      "renditionMap" : {
+        "zh_cn" : "c30e256c-cb5b-4f76-88e4-38b8e8eb0480"
+      },
+      "renditions" : [ {
+        "id" : "c30e256c-cb5b-4f76-88e4-38b8e8eb0480",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "customHeadTags" : "市场推广基金",
+            "description" : "市场推广基金",
+            "title" : "Licenses Menu"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "46953828-76a3-4be8-b890-5764bd0a38ec",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-licenses-menu"
+}

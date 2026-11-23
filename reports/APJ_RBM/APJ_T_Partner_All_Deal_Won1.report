@@ -82,6 +82,9 @@
         <field>ROLLUP_DESCRIPTION</field>
     </columns>
     <columns>
+        <field>CLOSE_DATE</field>
+    </columns>
+    <columns>
         <field>ACCOUNT_NAME</field>
     </columns>
     <columns>
@@ -107,7 +110,6 @@
         <field>Opportunity.Core_Product_Segment__c</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
         <field>Opportunity.Core_Architecture_Conversion__c</field>
     </columns>
     <columns>
@@ -181,6 +183,9 @@
         <field>EXP_AMOUNT</field>
     </columns>
     <columns>
+        <field>Opportunity.Core_Risk_Reason__c</field>
+    </columns>
+    <columns>
         <field>Opportunity.Core_At_Risk_Created_Date__c</field>
     </columns>
     <columns>
@@ -189,129 +194,90 @@
     <columns>
         <field>BucketField_12541241</field>
     </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Opportunity.Core_Opportunity_Count__c</field>
-    </columns>
     <filter>
-        <booleanFilter>1 AND 2 AND 3 AND 4 AND ((5 AND 6 AND 7) OR (8 AND 9) OR (10 AND 11)) AND 12 AND 13 AND 14</booleanFilter>
+        <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND ((6 AND 7 AND 8) OR 9)</booleanFilter>
         <criteriaItems>
             <column>Account.Core_Sales_Groups__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>APJ Sales Territory</value>
+            <value>GMP APJ Sales Territory</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>INDUSTRY</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Consulting</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Opportunity_Type__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Deal: Partner Scale-enable,Deal: Sell-through</value>
+            <value>Deal: Sell-through,Deal: Sell-to</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Opportunity.Core_Commissionable__c</column>
+            <column>BucketField_12541241</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Yes</value>
+            <value>Won</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Opportunity.Core_Exclude_From_KPIs__c</column>
+            <column>ROLLUP_DESCRIPTION</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>0</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>CCG</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Account.Core_Account_BU_Focus__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>includes</operator>
-            <value>CCG-Consulting</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Solution_Area__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>CCG Partner Consumption $</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Account.Core_Account_BU_Focus__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>includes</operator>
-            <value>DCG-Consulting</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Solution_Area__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>DCG Partner Consumption $</value>
+            <operator>contains</operator>
+            <value>Ram</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Product_Segment__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Embedded / IOT</value>
+            <value>Comms Infra. / Networking,Data Center Computing</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Opportunity.Core_Solution_Area__c</column>
+            <column>Opportunity.Core_Commissionable__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>IOTG Partner Consumption $</value>
+            <value>No</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Opportunity.Core_Approval_Status__c</column>
+            <column>Opportunity.Core_Exclude_From_KPIs__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Approved</value>
+            <value>1</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OWNER_MANAGER</column>
+            <column>Opportunity.Core_Product_Segment__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>Swee Hoon,Lai Teng,Paul,Sumner,Batra,Sng,Andrew</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>FULL_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>Naomi,Gina</value>
+            <operator>notEqual</operator>
+            <value>Comms Infra. / Networking,Data Center Computing</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>Opportunity.Core_Solution_Type__c</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>OWNER_MANAGER</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
-    <groupingsDown>
         <dateGranularity>Quarter</dateGranularity>
         <field>OpportunityLineItem.Core_KPI_Date__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Asia-T Partner - Deal Won Solution Type</name>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>STAGE_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Opportunity.Core_Solution_Type__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>APJ T Partner - Deal Won *Solution Type</name>
     <params>
         <name>terr</name>
         <value>all</value>

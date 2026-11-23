@@ -1,5 +1,5 @@
 ({
-	doInit : function(component, event, helper) {
+	/*doInit : function(component, event, helper) {
         component.set("v.isSpinner",true);
         var action = component.get("c.updateStatusAndReviewedByRep");
         action.setParams({
@@ -22,6 +22,6 @@
     cancelPopup : function(component, event, helper) {
         $A.get("e.force:closeQuickAction").fire();
         $A.get("e.force:refreshView").fire();
-    },
+    },*/
 	
 })

@@ -1,6 +1,5 @@
-({ 
-	//  IPA2.0 + US TWC4497-1631
-	/* doInit : function(component, event, helper) {
+({
+	doInit : function(component, event, helper) {
 		window.addEventListener('resize', $A.getCallback(function() {
 			helper.handleResize(component);
 		}));
@@ -64,5 +63,5 @@
 		window.setTimeout(function(){
 				helper.handleResize(component, helper);
 		});
-	}*/
+	}
 })

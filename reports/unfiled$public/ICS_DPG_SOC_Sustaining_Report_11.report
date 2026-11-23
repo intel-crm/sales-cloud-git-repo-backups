@@ -1,0 +1,480 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>number</bucketType>
+        <developerName>BucketField_42984781</developerName>
+        <masterLabel>Age Bucket</masterLabel>
+        <nullTreatment>z</nullTreatment>
+        <sourceColumnName>AGE</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <to>9</to>
+            </sourceValues>
+            <value>&lt;10</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>9</from>
+                <to>14</to>
+            </sourceValues>
+            <value>10-14</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>14</from>
+                <to>29</to>
+            </sourceValues>
+            <value>15-29</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>29</from>
+                <to>44</to>
+            </sourceValues>
+            <value>30-44</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>44</from>
+                <to>59</to>
+            </sourceValues>
+            <value>45-59</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>59</from>
+                <to>89</to>
+            </sourceValues>
+            <value>60-89</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>89</from>
+            </sourceValues>
+            <value>90+</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_16473616</developerName>
+        <masterLabel>Product Group</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>Case.Core_IPS_Product_name__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Bay Trail</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Apollo Lake</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Braswell</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Cedarview</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Cherry Trail-IoT</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Pineview</sourceValue>
+            </sourceValues>
+            <value>Atom</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Haswell DC ULT BGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Haswell DT</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Haswell M</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Ibex Peak</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Ivy Bridge</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Ivy Bridge DT (Socket H2) 80W</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Ivy Bridge QC SV BGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Kaby Lake H</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Kaby Lake S</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Kaby Lake U</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Broadwell H</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Broadwell U</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Skylake H CPU</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Skylake PCH</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Skylake S CPU</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Skylake U CPU</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Sandy Bridge DT (Socket H2)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Sandy Bridge QC SV BGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Arrandale</sourceValue>
+            </sourceValues>
+            <value>Core</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Crystal Forest</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Diamondville</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Edisonville</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Gladden</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Grangeville</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Grantley</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Greenlow</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Harrisonville</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Legacy Intel® Xeon® Processor</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>River Forest</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Romley</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Springville</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Lynx Point</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Lynx Point M</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Panther Point</sourceValue>
+            </sourceValues>
+            <value>Server</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Silver Butte</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Quark™ SoC X1000 Series</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Clanton</sourceValue>
+            </sourceValues>
+            <value>MCU</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Pink Ridge</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® IoT Gateway Products</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® IoT Platform Marketplace</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Building Management Platform</sourceValue>
+            </sourceValues>
+            <value>Solutions</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_43376773</developerName>
+        <masterLabel>QBR Category</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>Case.Core_External_Issue_Subcategory__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Opensource</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>OS &gt; Linux</sourceValue>
+            </sourceValues>
+            <value>OpenSource</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>BIOS &gt; Intel® BLDK</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>BIOS &gt; Intel® FSP</sourceValue>
+            </sourceValues>
+            <value>FSP/BLDK</value>
+        </values>
+        <values>
+            <value>Other</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Development Kit/Platform</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Graphics &gt; Yocto Driver</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Installation</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Management Engine Firmware (Intel® ME FW)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Rapid Storage Technology (RST)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Server Platform Services</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Trusted Execution Engine (TXE)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Package/Build</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Reliability, Availability, Serviceability (RAS)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Tool</sourceValue>
+            </sourceValues>
+            <value>Platform SW</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_90309244</developerName>
+        <masterLabel>Support Team</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>ALIAS</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>adolfo1x</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>arojasmx</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>ceaguilx</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>dgamboax</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>evillalx</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>gameissx</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>gasalasx</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>gpbabosx</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>gthoma1x</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>jalizarx</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>jdcubilx</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>jmanle1x</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>jrrojasx</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>juananux</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>marcovfx</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>mmonte3x</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>tomasevx</sourceValue>
+            </sourceValues>
+            <value>Sykes-CR</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>CASE_NUMBER</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Assigned_Queue__c</field>
+    </columns>
+    <columns>
+        <field>CREATED_DATEONLY</field>
+    </columns>
+    <columns>
+        <field>CLOSED_DATEONLY</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Product_name__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Case_Owner_Email__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_Case_Co_Owner__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_External_Issue_Category__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_External_Issue_Subcategory__c</field>
+    </columns>
+    <columns>
+        <field>AGE</field>
+    </columns>
+    <columns>
+        <field>STATUS</field>
+    </columns>
+    <columns>
+        <field>Case.Core_Sub_Status__c</field>
+    </columns>
+    <columns>
+        <field>PRIORITY</field>
+    </columns>
+    <columns>
+        <field>Case.Core_Severity__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_Account_Geo__c</field>
+    </columns>
+    <columns>
+        <field>SUBJECT</field>
+    </columns>
+    <columns>
+        <field>CONTACT.NAME</field>
+    </columns>
+    <columns>
+        <field>Contact.Core_IPS_Intel_Support_Owner__c</field>
+    </columns>
+    <description>ICS Longtail SOC support - For current quarter</description>
+    <filter>
+        <booleanFilter>1 AND (2 or 3 or 4 or 5) AND 6</booleanFilter>
+        <criteriaItems>
+            <column>Case.Core_Product_Organization__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Data</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.core_Account_Name__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>AAEON TECHNOLOGY INC.,ACCTON TECHNOLOGY CORPORATION,ADLINK TECHNOLOGY INC.,&quot;ADVANTECH CO., LTD.&quot;,&quot;AEWIN TECHNOLOGIES CO., LTD.&quot;,AIC INC.,ALPHA NETWORKS INC.,ASROCK INCORPORATION,ASUSTEK COMPUTER INC,AXIOMTEK,&quot;CASWELL, INC.&quot;</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT.NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>&quot;CASWELL, INC.&quot;,&quot;CELESTICA TECHNOLOGY CONSULTING(SHANGHAI) CO., LTD.&quot;,COMPAL ELECTRONICS,INC.,DELTA NETWORKS INC,&quot;FOXCONN TECHNOLOGY CO., LTD.&quot;,&quot;GIGA-BYTE TECHNOLOGY CO., LTD.&quot;,IBASE TECHNOLOGY INC.,INVENTEC CORPORATION</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT.NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>&quot;KTNF Co,Ltd&quot;,LANNER ELECTRONICS INC.,&quot;MICRO-STAR INTERNATIONAL CO., LTD.&quot;,MITAC INTERNATIONAL CORPORATION,&quot;NEXCOM CHINA CO.,LTD&quot;,&quot;NEXCOM INTERNATIONAL CO., LTD.&quot;,Pegatron Corporation,&quot;PORTWELL, INC&quot;</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT.NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Samsung Electronics Co. Ltd. (Network R&amp;D Division),SECUI .COM,USI,WISTRON CORPORATION,WISTRON NEWEB CORPORATION</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_IPS_Product_name__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Bakerville,Grangeville,Harrisonville</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>OWNER</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>ICS – DPG SOC Sustaining Report 1</name>
+    <params>
+        <name>units</name>
+        <value>d</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CaseList@Case.Core_Case_Issue_Sub_Category__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>Case.Core_IPS_Product_name__c</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATEONLY</dateColumn>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
+    </timeFrameFilter>
+</Report>

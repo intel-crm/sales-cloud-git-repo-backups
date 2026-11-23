@@ -1,6 +1,6 @@
 .THIS {
     color: t(white);
-    padding: 2em 0;
+    padding-bottom: 2em;
     width: 100%;
     position: relative;
     background-color: t(darkBlue);
@@ -15,8 +15,6 @@
   font-size: 2rem;
   font-weight: 700;
   line-height: 1.16;
-  display: inline-block;
-  word-wrap: break-word;  
 }
 .THIS .marquee-header:lang(zh) {
   font-family: "intel-clear", "intel-clear-cyrillic", "Microsoft YaHei", SimHei, impact, sans-serif;
@@ -30,12 +28,6 @@
   color: t(white);
   font-size: 1.625rem;
   line-height: 1.25;
-  display: initial;
-  word-wrap: break-word;   
-}
-
-.THIS .marquee-checkbox-container {
-  display: inline-block;
 }
 
 /* Preview Mode Link Override */
@@ -52,12 +44,20 @@
   color: t(white);
 }
 
+.THIS .breadcrumb-container {
+  min-height: 30px;
+}
 .THIS .smallDevicePadding {
   padding: 0 1em;
 }
 
 /*Edit Icon positioning*/
-
+.THIS .cMarketplaceEditPencilCmp {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  background: t(white);
+}
 .THIS .imageWrapper {
   background: t(white);
   width: 150px;
@@ -274,8 +274,17 @@
   .THIS .headerContainer {
     margin-top: 0;
   }
+  .THIS {
+      height: 273px;
+      padding-bottom: 0;
+  }
+  .THIS .breadcrumb-container {
+    min-height: 40px;
+    padding: 0 200px;
+  }
   .THIS .textContainer {
     height: calc(100% - 40px);
+    margin-top: -20px;
     padding: 20px 0;
   }
   .THIS .partnerImage {
@@ -302,14 +311,25 @@
     top: 20px;
     right: 4em;
   }
+  .THIS .breadcrumb-container {
+    padding: 0 190px;
+  }
 }
 
 @media (min-width: 1200px) {
+  .THIS .breadcrumb-container {
+    padding: 0 140px;
+  }
   .THIS .marquee-header {
     font-size: 3rem;
   }
   .THIS .marquee-header.h2 {
     font-size: 2.25rem;
+  }
+}
+@media (min-width: 1650px) {
+  .THIS .breadcrumb-container {
+    padding: 0;
   }
 }
 
@@ -327,23 +347,10 @@
   }
 }
 
-.THIS .pnameCls {
-    cursor: pointer;
-    border-radius: 4px;
-    border: 1px solid #0071c5;
-    padding: 3px;
-    margin-left: 0.5rem;
-    vertical-align: top;
-    background: #ffffff;
-    line-height: 12px;
+.THIS .bookmarkHeight.product {
+  height: 232px;
 }
 
-
-.THIS .pnameCls svg{
-    fill: #0071c5;
-}
-
-
-.THIS .checkbox.addToCompare .slds-form-element__label {
-  color: white !important;
+.THIS .bookmarkHeight.partner {
+  height: 245px;
 }

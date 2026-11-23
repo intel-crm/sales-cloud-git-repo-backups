@@ -52,13 +52,13 @@ global class Core_Batch_BUMapOpportunityLine_MidWeek implements Database.Batchab
     global void execute(Database.BatchableContext BC, List<OpportunityLineItem> scope){
         Core_BU_Mapping_Table__c finalBuMap;
         if(!wrap.extKeyWithBuMap.isEmpty()){
-            for(OpportunityLineItem oppLineItem : scope){
-                finalBuMap = Core_OppLineItem_Batch_Helper.buShortNmUpdateLogic(oppLineItem, wrap);
-                if(finalBuMap == null){
-                    failedList.add(oppLineItem);
-                }else{
-                    oppLineItem.Core_BU_Mapping_record__c = finalBuMap.Id;
-                }
+            for(OpportunityLineItem oppLineItem : scope){               
+                    finalBuMap = Core_OppLineItem_Batch_Helper.buShortNmUpdateLogic(oppLineItem, wrap);
+                    if(finalBuMap == null){
+                        failedList.add(oppLineItem);
+                    }else{
+                        oppLineItem.Core_BU_Mapping_record__c = finalBuMap.Id;
+                    }                
             }
             
             try{

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
-    <active>false</active>
+    <active>true</active>
     <allowRecall>true</allowRecall>
     <allowedSubmitters>
         <type>creator</type>
@@ -399,7 +399,7 @@
             <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
         </assignedApprover>
         <entryCriteria>
-            <formula>AND(ISPICKVAL(Core_MDF_Channel_Program_id__r.Core_MDF_Technical_Program_Name__c, &apos;Retail Marketing Funds&apos;), Core_MDF_Total_Dollar_Impact_amt__c &gt; 0)</formula>
+            <formula>AND(ISPICKVAL(Core_MDF_Channel_Program_id__r.Core_MDF_Technical_Program_Name__c, &apos;Retail Marketing Funds&apos;), ISPICKVAL(Core_MDF_Co_Marketing_Activity_id__r.Core_MDF_Region_cd__c, &apos;ASMO&apos;), ISPICKVAL( Core_MDF_Co_Marketing_Activity_id__r.Core_MDF_Sub_Region_cd__c , &apos;LAR&apos;), Core_MDF_Total_Dollar_Impact_amt__c &gt; 0)</formula>
         </entryCriteria>
         <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
         <label>Approve/Reject by Retail ASMO LAR Geo Lead Queue</label>
@@ -424,7 +424,7 @@
             <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
         </assignedApprover>
         <entryCriteria>
-            <formula>AND(ISPICKVAL(Core_MDF_Channel_Program_id__r.Core_MDF_Technical_Program_Name__c, &apos;Retail Marketing Funds&apos;),  Core_MDF_Total_Dollar_Impact_amt__c &gt; 0)</formula>
+            <formula>AND(ISPICKVAL(Core_MDF_Channel_Program_id__r.Core_MDF_Technical_Program_Name__c, &apos;Retail Marketing Funds&apos;), ISPICKVAL(Core_MDF_Co_Marketing_Activity_id__r.Core_MDF_Region_cd__c, &apos;ASMO&apos;), ISPICKVAL( Core_MDF_Co_Marketing_Activity_id__r.Core_MDF_Sub_Region_cd__c , &apos;NAR&apos;), Core_MDF_Total_Dollar_Impact_amt__c &gt; 0)</formula>
         </entryCriteria>
         <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
         <label>Approve/Reject by Retail ASMO NAR Geo Lead Queue</label>
@@ -449,7 +449,7 @@
             <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
         </assignedApprover>
         <entryCriteria>
-            <formula>AND(ISPICKVAL(Core_MDF_Channel_Program_id__r.Core_MDF_Technical_Program_Name__c, &apos;Retail Marketing Funds&apos;),  Core_MDF_Total_Dollar_Impact_amt__c &gt; 0)</formula>
+            <formula>AND(ISPICKVAL(Core_MDF_Channel_Program_id__r.Core_MDF_Technical_Program_Name__c, &apos;Retail Marketing Funds&apos;), ISPICKVAL(Core_MDF_Co_Marketing_Activity_id__r.Core_MDF_Region_cd__c, &apos;APJ&apos;), Core_MDF_Total_Dollar_Impact_amt__c &gt; 0)</formula>
         </entryCriteria>
         <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
         <label>Approve/Reject by Retail APJ Geo Lead Queue</label>
@@ -474,7 +474,7 @@
             <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
         </assignedApprover>
         <entryCriteria>
-            <formula>AND(ISPICKVAL(Core_MDF_Channel_Program_id__r.Core_MDF_Technical_Program_Name__c, &apos;Retail Marketing Funds&apos;),  Core_MDF_Total_Dollar_Impact_amt__c &gt; 0)</formula>
+            <formula>AND(ISPICKVAL(Core_MDF_Channel_Program_id__r.Core_MDF_Technical_Program_Name__c, &apos;Retail Marketing Funds&apos;), ISPICKVAL(Core_MDF_Co_Marketing_Activity_id__r.Core_MDF_Region_cd__c, &apos;EMEA&apos;), Core_MDF_Total_Dollar_Impact_amt__c &gt; 0)</formula>
         </entryCriteria>
         <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
         <label>Approve/Reject by Retail EMEA Geo Lead Queue</label>
@@ -499,7 +499,7 @@
             <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
         </assignedApprover>
         <entryCriteria>
-            <formula>AND(ISPICKVAL(Core_MDF_Channel_Program_id__r.Core_MDF_Technical_Program_Name__c, &apos;Retail Marketing Funds&apos;),  Core_MDF_Total_Dollar_Impact_amt__c &gt; 0)</formula>
+            <formula>AND(ISPICKVAL(Core_MDF_Channel_Program_id__r.Core_MDF_Technical_Program_Name__c, &apos;Retail Marketing Funds&apos;), ISPICKVAL(Core_MDF_Co_Marketing_Activity_id__r.Core_MDF_Region_cd__c, &apos;PRC&apos;), Core_MDF_Total_Dollar_Impact_amt__c &gt; 0)</formula>
         </entryCriteria>
         <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
         <label>Approve/Reject by Retail PRC Geo Lead Queue</label>
@@ -558,7 +558,7 @@
         </rejectBehavior>
     </approvalStep>
     <description>Escalation Approval flow for Late Claim Record Type</description>
-    <emailTemplate>Testt/Core_MDF_Escalation_Email_Template_for_Approvers_Queue</emailTemplate>
+    <emailTemplate>unfiled$public/Core_MDF_Escalation_Email_Template_for_Approvers_Queue</emailTemplate>
     <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
     <entryCriteria>
         <criteriaItems>
@@ -591,7 +591,7 @@
     </finalRejectionActions>
     <finalRejectionRecordLock>false</finalRejectionRecordLock>
     <label>Escalation Approval for Late Claim</label>
-    <processOrder>2</processOrder>
+    <processOrder>3</processOrder>
     <recallActions>
         <action>
             <name>Core_MDF_Cancel_Status</name>

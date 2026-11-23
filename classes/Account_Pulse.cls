@@ -35,11 +35,13 @@ global with sharing class Account_Pulse {
         
         // Get all users once to avoid hitting SOQL limits
         LIst<UserRole> UsrRole = [SELECT Id FROM UserRole WHERE ParentRoleId IN (SELECT UserRoleId FROM User WHERE Core_WWID__c IN :wwidSet)];
+        system.debug('###UsrRole: '+ UsrRole);
         List<User> allUsers = [
             SELECT Id, Name, Core_WWID__c, UserRoleId 
             FROM User 
             WHERE Core_WWID__c IN :wwidSet OR UserRoleId IN :UsrRole
         ];
+        system.debug('###allUsers: '+ allUsers);
         // Populate the reports map
         for (User user : allUsers) {
             if (!reportsMap.containsKey(user.Core_WWID__c)) {

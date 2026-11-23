@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Sales Goal</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Goals</value>
+    </caseValues>
+    <fields>
+        <label><!-- ActualMonetaryDate --></label>
+        <name>Xvoyant__ActualMonetaryDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- ActualMonetaryGoalAmount --></label>
+        <name>Xvoyant__ActualMonetaryGoalAmount__c</name>
+    </fields>
+    <fields>
+        <label><!-- ActualMonetaryProgressAmount --></label>
+        <name>Xvoyant__ActualMonetaryProgressAmount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Description --></label>
+        <name>Xvoyant__Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- GoalEndDate --></label>
+        <name>Xvoyant__GoalEndDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- GoalScheduleId --></label>
+        <name>Xvoyant__GoalScheduleId__c</name>
+    </fields>
+    <fields>
+        <label><!-- GoalStartDate --></label>
+        <name>Xvoyant__GoalStartDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- MonetaryGoal --></label>
+        <name>Xvoyant__MonetaryGoal__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Value Type --></label>
+        <name>Xvoyant__ProductValueType__c</name>
+    </fields>
+    <fields>
+        <label><!-- Team --></label>
+        <name>Xvoyant__Team__c</name>
+        <relationshipLabel><!-- Goals --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

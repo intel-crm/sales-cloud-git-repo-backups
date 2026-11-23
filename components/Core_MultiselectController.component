@@ -125,6 +125,7 @@ Visualforce prepends the correct prefix to the outputLabel's
         <apex:inputHidden value="{!leftOptionsHidden}" id="leftHiddenLightning" />
         <apex:inputHidden value="{!rightOptionsHidden}" id="rightHiddenLightning" />
     </apex:outputPanel>
+    
     <script type="text/javascript">
     if (!buildOutputString) {
         // Create a string from the content of a listbox

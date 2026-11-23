@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>StageWinRate</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>StageWinRates</value>
+    </caseValues>
+    <fields>
+        <label><!-- Date Limiter Value --></label>
+        <name>Xvoyant__DateLimiterValue__c</name>
+    </fields>
+    <fields>
+        <label><!-- Pipeline Days --></label>
+        <name>Xvoyant__PipeLineDays__c</name>
+    </fields>
+    <fields>
+        <label><!-- Pipeline Opps --></label>
+        <name>Xvoyant__PipeLineOpps__c</name>
+    </fields>
+    <fields>
+        <label><!-- StageName --></label>
+        <name>Xvoyant__StageName__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Advance --></label>
+        <name>Xvoyant__TotalAdvance__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Days --></label>
+        <name>Xvoyant__TotalDays__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Lost --></label>
+        <name>Xvoyant__TotalLost__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Opps --></label>
+        <name>Xvoyant__TotalOpps__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Won --></label>
+        <name>Xvoyant__TotalWon__c</name>
+    </fields>
+    <fields>
+        <label><!-- WinRate --></label>
+        <name>Xvoyant__WinRate__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

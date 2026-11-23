@@ -372,8 +372,6 @@ Cloned_Soln_ID='';
         this.SV_Application_Workload = event.target.value;      
     }
 
-   
-     
     
    navigateToSolutionPage() {   
     
@@ -410,7 +408,6 @@ Cloned_Soln_ID='';
 
  
     handleChange_Industry(event){
-
         this.SV_Industry = event.target.value;
         
         
@@ -547,178 +544,39 @@ Cloned_Soln_ID='';
         this.dispatchEvent(new CloseActionScreenEvent());
     }
 
-
-    
-    
-
    
 
     handleSubmit(event){
         this.disableButton = true;
         this.showWarnings = false;
-       
-         
+         alert(this.showWarnings);
          this.template.querySelectorAll('lightning-input-field').forEach(element => {
             element.reportValidity();
            
         });
-        
-        try{
-           
+
+
         this.Solution_Areas.Name = this.SV_Name;       
-        this.Solution_Areas.Core_Version__c = this.SV_Version;   
-         if  (   this.SV_Application_Workload != null ) 
-       { 
-        this.Solution_Areas.Core_Application_Workload__c='';
-        const result = Array.isArray(this.SV_Application_Workload);     
-        if (!result)   
-       {
-        this.Solution_Areas.Core_Application_Workload__c = this.SV_Application_Workload.toString();
-       } 
-       else
-       {
-        for (let i = 0; i < this.SV_Application_Workload.length; i++) {
-            if (i != this.SV_Application_Workload.length)
-            {
-                if (this.Solution_Areas.Core_Application_Workload__c != null )
-                {
-                    this.Solution_Areas.Core_Application_Workload__c = this.Solution_Areas.Core_Application_Workload__c + this.SV_Application_Workload[i] + ';';
-                }
-                else
-                {
-                    this.Solution_Areas.Core_Application_Workload__c = this.SV_Application_Workload[i] + ';';
-                }
-                
-            }
-            if (i == this.SV_Application_Workload.length)
-            {
-                this.Solution_Areas.Core_Application_Workload__c =  this.SV_Application_Workload[i] ;
-
-            }
-            
-          } 
-        }
-        //this.Solution_Areas.Core_Application_Workload__c = this.SV_Application_Workload.toString().replace(/,/g,';');  
-       }         
-         if  ( this.SV_Industry != null ) 
-       { 
-        this.Solution_Areas.Core_Industry__c ='';
-        const result = Array.isArray(this.SV_Industry);     
-        if (!result)   
-       {
-        this.Solution_Areas.Core_Industry__c = this.SV_Industry.toString();
-       }
-       else{
-
-        for (let i = 0; i < this.SV_Industry.length; i++) {
-            if (i != this.SV_Industry.length)
-            {
-                if (this.Solution_Areas.Core_Industry__c != null )
-                {
-                    this.Solution_Areas.Core_Industry__c = this.Solution_Areas.Core_Industry__c + this.SV_Industry[i] + ';';
-                }
-                else{
-
-                    this.Solution_Areas.Core_Industry__c =  this.SV_Industry[i] + ';';
-                }
-           
-            }
-            if (i == this.SV_Industry.length)
-            {
-                this.Solution_Areas.Core_Industry__c =  this.SV_Industry[i] ;
-
-            }
-            
-          } 
-        }
-
-       // this.Solution_Areas.Core_Industry__c = this.SV_Industry.toString().replace(/,/g,';');
-       }
-        
-       
-        this.Solution_Areas.Core_Status__c = this.SV_Status;    
-         if  ( this.SV_Solution_Type != null ) 
-       {     
+        this.Solution_Areas.Core_Version__c = this.SV_Version;             
           
-        this.Solution_Areas.Core_Solution_Type__c = this.SV_Solution_Type.toString();  
-       }        
-       
-        if  ( this.SV_Industry_Use_Case != null) 
-       { 
-        this.Solution_Areas.Core_Industry_Use_Case__c ='';
-        const result = Array.isArray(this.SV_Industry_Use_Case);  
-
-        if (!result)   
-       {
-        this.Solution_Areas.Core_Industry_Use_Case__c = this.SV_Industry_Use_Case.toString();
-       }
-       else{
-
-        for (let i = 0; i < this.SV_Industry_Use_Case.length; i++) {
-            if (i != this.SV_Industry_Use_Case.length)
-            {
-                if (this.Solution_Areas.Core_Industry_Use_Case__c != null )
-                {
-                    this.Solution_Areas.Core_Industry_Use_Case__c = this.Solution_Areas.Core_Industry_Use_Case__c + this.SV_Industry_Use_Case[i] + ';';
-                }
-                else{
-
-                    this.Solution_Areas.Core_Industry_Use_Case__c =  this.SV_Industry_Use_Case[i] + ';';
-                }
-              
-            }
-            if (i == this.SV_Industry_Use_Case.length)
-            {
-                this.Solution_Areas.Core_Industry_Use_Case__c =  this.SV_Industry_Use_Case[i] ;
-
-            }
-            
-          } 
-        }
+        this.Solution_Areas.Core_Application_Workload__c = this.SV_Application_Workload.toString().replace(/,/g,';');           
+          
+        this.Solution_Areas.Core_Industry__c = this.SV_Industry.toString().replace(/,/g,';');
         
-        //this.Solution_Areas.Core_Industry_Use_Case__c = this.SV_Industry_Use_Case.toString().replace(/,/g,';');  
-       }
+       
+        this.Solution_Areas.Core_Status__c = this.SV_Status;       
+          
+        this.Solution_Areas.Core_Solution_Type__c = this.SV_Solution_Type.toString().replace(/,/g,';');          
        
       
-        this.Solution_Areas.Core_End_Customer_Solution__c= this.SV_End_Customer_Solution;   
-         if  ( this.SV_Technology_Enabled != null) 
-       { 
+        this.Solution_Areas.Core_Industry_Use_Case__c = this.SV_Industry_Use_Case.toString().replace(/,/g,';');  
+       
+      
+        this.Solution_Areas.Core_End_Customer_Solution__c= this.SV_End_Customer_Solution;       
+           
+        this.Solution_Areas.Core_Technology_Enabled__c = this.SV_Technology_Enabled.toString().replace(/,/g,';');
         
-        const result = Array.isArray(this.SV_Technology_Enabled);  
-        this.Solution_Areas.Core_Technology_Enabled__c ='';   
-        if (!result)   
-       {
-        this.Solution_Areas.Core_Technology_Enabled__c = this.SV_Technology_Enabled.toString();
-       }
-       else{
-
-        for (let i = 0; i < this.SV_Technology_Enabled.length; i++) {
-            if (i != this.SV_Technology_Enabled.length)
-            {
-                if (this.Solution_Areas.Core_Technology_Enabled__c != null )
-                {
-                    this.Solution_Areas.Core_Technology_Enabled__c = this.Solution_Areas.Core_Technology_Enabled__c + this.SV_Technology_Enabled[i] + ';';
-                }
-                else
-                {
-                    this.Solution_Areas.Core_Technology_Enabled__c =  this.SV_Technology_Enabled[i] + ';';
-                }
-                
-            }
-            if (i == this.SV_Technology_Enabled.length)
-            {
-                this.Solution_Areas.Core_Technology_Enabled__c =  this.SV_Technology_Enabled[i] ;
-
-            }
-            
-          } 
-        }
-       // this.Solution_Areas.Core_Technology_Enabled__c = this.SV_Technology_Enabled.toString().replace(/,/g,';');
-       }
-           if  (this.SV_Region_of_availability != null ) 
-       {  
         this.Solution_Areas.Core_Region_of_availability__c = this.SV_Region_of_availability.toString().replace(/,/g,';');
-       }
 
                 
         this.Solution_Areas.Core_Design_Visible__c= this.SV_DesignVisible;
@@ -733,26 +591,14 @@ Cloned_Soln_ID='';
 
         this.Validation_Message = "";
         this.ValidationFlag = true;
-        if (  this.Solution_Areas.Name==null )  
-        {
-            this.Validation_Message = "Solution Name ";            
-            this.ValidationFlag = false;
-
-        }
-        if (  this.Solution_Areas.Name!=null && this.Solution_Areas.Name.length > 80)  
-        {
-            this.Validation_Message = "Solution Name max length is 80 characters ";            
-            this.ValidationFlag = false;
-
-        }
-        if (  this.Solution_Areas.Name!=null && this.Solution_Areas.Name.length == 0)  
+        if ( this.Solution_Areas.Name ==='' || this.Solution_Areas.Name===null )  
         {
             this.Validation_Message = "Solution Name ";            
             this.ValidationFlag = false;
 
         }
 
-       if  ( this.Solution_Areas.Core_Application_Workload__c == null   || this.Solution_Areas.Core_Application_Workload__c.length == 0 ) 
+       if  (this.Solution_Areas.Core_Application_Workload__c ==='' || this.Solution_Areas.Core_Application_Workload__c===null ) 
        {
         this.Validation_Message =   this.Validation_Message  +  ", Application Workload ";
         this.ValidationFlag = false;
@@ -760,56 +606,37 @@ Cloned_Soln_ID='';
        }   
        
        
-        if (  this.Solution_Areas.Core_Solution_Description__c == null ) 
-        {
-            this.Validation_Message =   this.Validation_Message  +  ", Solution Description ";
-            this.ValidationFlag = false;
-
-        }
-
-        if (  this.Solution_Areas.Core_Solution_Description__c != null && this.Solution_Areas.Core_Solution_Description__c.length == 0) 
+        if (  this.Solution_Areas.Core_Solution_Description__c ==='' || this.Solution_Areas.Core_Solution_Description__c===null ) 
         {
             this.Validation_Message =   this.Validation_Message  +  ", Solution Description ";
             this.ValidationFlag = false;
 
         }
               
-       if (  this.Solution_Areas.Core_Solution_Type__c == null )  
+       if (  this.Solution_Areas.Core_Solution_Type__c ==='' || this.Solution_Areas.Core_Solution_Type__c===null )  
         {
             this.Validation_Message =   this.Validation_Message  +  ", Solution Type ";
             this.ValidationFlag = false;
 
         }
 
-        if (this.Solution_Areas.Core_Solution_owner_email__c == null )  
+        if (this.Solution_Areas.Core_Solution_owner_email__c ==='' || this.Solution_Areas.Core_Solution_owner_email__c===null )  
         {
             this.Validation_Message =   this.Validation_Message  +  ", Solution Owner Email ";
             this.ValidationFlag = false;
         }
-
-        if (this.Solution_Areas.Core_Solution_owner_email__c != null && this.Solution_Areas.Core_Solution_owner_email__c.length == 0)  
-        {
-            this.Validation_Message =   this.Validation_Message  +  ", Solution Owner Email ";
-            this.ValidationFlag = false;
-        }
-        if (  this.Solution_Areas.Core_Technology_Enabled__c == null  || this.Solution_Areas.Core_Technology_Enabled__c.length == 0)  
+        if ( this.Solution_Areas.Core_Technology_Enabled__c ==='' || this.Solution_Areas.Core_Technology_Enabled__c===null )  
         {
             this.Validation_Message =   this.Validation_Message  +  ", Technology Enabled ";
             this.ValidationFlag = false;
         }
-        if ( this.Solution_Areas.Core_Region_of_availability__c == null || this.Solution_Areas.Core_Region_of_availability__c.length == 0)       
+        if (  this.Solution_Areas.Core_Region_of_availability__c ==='' || this.Solution_Areas.Core_Region_of_availability__c===null )       
         {
             
             
             this.Validation_Message =   this.Validation_Message  +  ", Region of Availability ";
             this.ValidationFlag = false;
 
-        }
-       
-        }
-          catch (error) {
-            this.ValidationFlag = false;
-            console.error('check error here ', error);
         }
 
 
@@ -838,28 +665,28 @@ Cloned_Soln_ID='';
             .catch(error => {
                             console.log('Error: ', error);
                          this.showWarnings = true;
-                         // alert(this.showWarnings);
+                          alert(this.showWarnings);
                           this.Error_Message =  JSON.stringify(error.body.message);
                             this.dispatchEvent(
                                         new ShowToastEvent({
-                                            title: 'Error Message',
+                                            title: 'Application Error',
                                             message:  JSON.stringify(error.body.message) ,
                                             variant: 'Error',
                                             mode: 'Sticky' 
                                         })
                                     );
                                     }); 
-                                    this.disableButton= false;    
+                                    this.disableButton= false;     
       
         }
         else {
            // debugger;
            this.showWarnings = true;
-           //alert(this.showWarnings);
+           alert(this.showWarnings);
            this.Error_Message = 'Enter all the required fields of Solution :: '+  this.Validation_Message;
             this.dispatchEvent(
             new ShowToastEvent({
-                title: 'Error Message',
+                title: 'Application Error',
                 message:  'Enter all the required fields of Solution :: '+  this.Validation_Message ,
                 variant: 'Error',
                 mode: 'Sticky' 

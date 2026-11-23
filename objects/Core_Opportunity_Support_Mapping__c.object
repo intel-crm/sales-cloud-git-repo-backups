@@ -155,6 +155,17 @@
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
     <fields>
+        <fullName>CRM_MS_RecordType__c</fullName>
+        <description>Assign approver based on Marketing Support record type.</description>
+        <externalId>false</externalId>
+        <label>MS RecordType</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Core_BU__c</fullName>
         <label>BU</label>
         <required>false</required>
@@ -196,10 +207,10 @@
                     <label>CCG ECG TSS Support</label>
                 </value>
                 <value>
-                    <fullName>NEX TSS Support​</fullName>
+                    <fullName>Test</fullName>
                     <default>false</default>
                     <isActive>false</isActive>
-                    <label>NEX TSS Support​</label>
+                    <label>Test</label>
                 </value>
             </valueSetDefinition>
             <valueSettings>
@@ -273,65 +284,75 @@
                     <label>Artificial Intelligence (AI)</label>
                 </value>
                 <value>
-                    <fullName>Automotive</fullName>
-                    <default>false</default>
-                    <label>Automotive</label>
-                </value>
-                <value>
-                    <fullName>Comms Service Providers</fullName>
-                    <default>false</default>
-                    <label>Comms Service Providers</label>
-                </value>
-                <value>
-                    <fullName>Education</fullName>
-                    <default>false</default>
-                    <label>Education</label>
-                </value>
-                <value>
-                    <fullName>Energy</fullName>
-                    <default>false</default>
-                    <label>Energy</label>
-                </value>
-                <value>
-                    <fullName>Financial Services Industry</fullName>
-                    <default>false</default>
-                    <label>Financial Services Industry</label>
-                </value>
-                <value>
                     <fullName>Government</fullName>
                     <default>false</default>
                     <label>Government</label>
                 </value>
                 <value>
-                    <fullName>Manufacturing</fullName>
+                    <fullName>Automotive</fullName>
                     <default>false</default>
-                    <label>Manufacturing</label>
+                    <isActive>false</isActive>
+                    <label>Automotive</label>
                 </value>
                 <value>
-                    <fullName>Security</fullName>
+                    <fullName>Comms Service Providers</fullName>
                     <default>false</default>
-                    <label>Security</label>
-                </value>
-                <value>
-                    <fullName>Sustainability</fullName>
-                    <default>false</default>
-                    <label>Sustainability</label>
-                </value>
-                <value>
-                    <fullName>Health and Life Sciences</fullName>
-                    <default>false</default>
-                    <label>Health and Life Sciences</label>
-                </value>
-                <value>
-                    <fullName>Retail</fullName>
-                    <default>false</default>
-                    <label>Retail</label>
+                    <isActive>false</isActive>
+                    <label>Comms Service Providers</label>
                 </value>
                 <value>
                     <fullName>Digital Manufacturing</fullName>
                     <default>false</default>
                     <isActive>false</isActive>
                     <label>Digital Manufacturing</label>
+                </value>
+                <value>
+                    <fullName>Education</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Education</label>
+                </value>
+                <value>
+                    <fullName>Energy</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Energy</label>
+                </value>
+                <value>
+                    <fullName>Financial Services Industry</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Financial Services Industry</label>
+                </value>
+                <value>
+                    <fullName>Health and Life Sciences</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Health and Life Sciences</label>
+                </value>
+                <value>
+                    <fullName>Manufacturing</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Manufacturing</label>
+                </value>
+                <value>
+                    <fullName>Retail and Hospitality</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Retail and Hospitality</label>
+                </value>
+                <value>
+                    <fullName>Security</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Security</label>
+                </value>
+                <value>
+                    <fullName>Sustainability</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Sustainability</label>
                 </value>
             </valueSetDefinition>
             <valueSettings>
@@ -340,47 +361,7 @@
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>COE</controllingFieldValue>
-                <valueName>Automotive</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>COE</controllingFieldValue>
-                <valueName>Comms Service Providers</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>COE</controllingFieldValue>
-                <valueName>Education</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>COE</controllingFieldValue>
-                <valueName>Energy</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>COE</controllingFieldValue>
-                <valueName>Financial Services Industry</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>COE</controllingFieldValue>
                 <valueName>Government</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>COE</controllingFieldValue>
-                <valueName>Manufacturing</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>COE</controllingFieldValue>
-                <valueName>Security</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>COE</controllingFieldValue>
-                <valueName>Sustainability</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>COE</controllingFieldValue>
-                <valueName>Health and Life Sciences</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>COE</controllingFieldValue>
-                <valueName>Retail</valueName>
             </valueSettings>
         </valueSet>
     </fields>
@@ -395,7 +376,7 @@
     <fields>
         <fullName>Core_Record_Type__c</fullName>
         <externalId>false</externalId>
-        <label>Record Type</label>
+        <label>Record Type DNU</label>
         <length>255</length>
         <required>false</required>
         <trackTrending>false</trackTrending>
@@ -412,16 +393,16 @@
         <valueSet>
             <controllingField>Core_OSM_Record_Type__c</controllingField>
             <valueSetDefinition>
-                <sorted>true</sorted>
-                <value>
-                    <fullName>APJ</fullName>
-                    <default>false</default>
-                    <label>APJ</label>
-                </value>
+                <sorted>false</sorted>
                 <value>
                     <fullName>ASMO</fullName>
                     <default>false</default>
                     <label>ASMO</label>
+                </value>
+                <value>
+                    <fullName>APJ</fullName>
+                    <default>false</default>
+                    <label>APJ</label>
                 </value>
                 <value>
                     <fullName>EMEA</fullName>
@@ -437,12 +418,12 @@
             <valueSettings>
                 <controllingFieldValue>CSA</controllingFieldValue>
                 <controllingFieldValue>TSS</controllingFieldValue>
-                <valueName>APJ</valueName>
+                <valueName>ASMO</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>CSA</controllingFieldValue>
                 <controllingFieldValue>TSS</controllingFieldValue>
-                <valueName>ASMO</valueName>
+                <valueName>APJ</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>CSA</controllingFieldValue>
@@ -481,51 +462,13 @@
         <fullName>All</fullName>
         <columns>NAME</columns>
         <columns>Geo_Region__c</columns>
-        <columns>Core_OSM_Record_Type__c</columns>
-        <columns>Core_Record_Type__c</columns>
-        <columns>Core_Opp_Center_of_Excellence__c</columns>
         <columns>User__c</columns>
         <columns>Core_Opportunity_Support_Is_Active__c</columns>
+        <columns>Core_Opp_Center_of_Excellence__c</columns>
         <columns>Core_BU__c</columns>
-        <columns>OWNER.ALIAS</columns>
-        <columns>LAST_UPDATE</columns>
+        <columns>Core_OSM_Record_Type__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
-    </listViews>
-    <listViews>
-        <fullName>COE_ListView</fullName>
-        <columns>NAME</columns>
-        <columns>Core_OSM_Record_Type__c</columns>
-        <columns>Core_Opp_Center_of_Excellence__c</columns>
-        <columns>User__c</columns>
-        <columns>Core_Opportunity_Support_Is_Active__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Core_OSM_Record_Type__c</field>
-            <operation>equals</operation>
-            <value>COE</value>
-        </filters>
-        <filters>
-            <field>Core_Opportunity_Support_Is_Active__c</field>
-            <operation>equals</operation>
-            <value>1</value>
-        </filters>
-        <label>COE</label>
-    </listViews>
-    <listViews>
-        <fullName>CSA</fullName>
-        <columns>NAME</columns>
-        <columns>Geo_Region__c</columns>
-        <columns>Core_OSM_Record_Type__c</columns>
-        <columns>User__c</columns>
-        <columns>Core_Opportunity_Support_Is_Active__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Core_OSM_Record_Type__c</field>
-            <operation>equals</operation>
-            <value>CSA</value>
-        </filters>
-        <label>CSA</label>
     </listViews>
     <listViews>
         <fullName>TSS</fullName>
@@ -556,5 +499,14 @@
     <pluralLabel>Opportunity Support Mappings</pluralLabel>
     <searchLayouts/>
     <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>Users_Not_allowed_to_Edit</fullName>
+        <active>false</active>
+        <errorConditionFormula>AND(OR(ISNEW(),ISCHANGED(User__c)),  
+ $Profile.Name &lt;&gt; &apos;System Administrator&apos;,
+ NOT(ISBLANK($Label.Bypass_Users)),
+(NOT(CONTAINS ($Label.Bypass_Users,$User.FirstName))))</errorConditionFormula>
+        <errorMessage>Users not allowed to edit the Object</errorMessage>
+    </validationRules>
     <visibility>Public</visibility>
 </CustomObject>

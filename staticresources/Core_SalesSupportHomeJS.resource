@@ -32,8 +32,8 @@ function addLoadEvent(currentTab) {
     }
 }*/
 
-function newRequest(requestTypeElementId, sOpportunityId, sOpportunityName, sAccountId, sOrderSeedsURL, sRequestSamplesURL,UserRegion,UIthemedisplayed, sRegURL, sWarningError, sPremierSupportURL) {
-    
+function newRequest(requestTypeElementId, sOpportunityId, sOpportunityName, sAccountId, sOrderSeedsURL, sRequestSamplesURL,UserRegion,UIthemedisplayed, sRegURL, sWarningError, sPremierSupportURL, sWebQuoteURL) {
+ 
     requestType = document.getElementById(requestTypeElementId).value;
    
     var popupUrl = '';
@@ -100,7 +100,10 @@ function newRequest(requestTypeElementId, sOpportunityId, sOpportunityName, sAcc
 	else if(requestType == 'Create PSG Quote') { 
 	   processOpportuntyQuote();
 	}
-        
+	else if(requestType == 'Create Web Quote') { 
+		var redirectWebQuoteUrl = sWebQuoteURL+sOpportunityId;
+		popupUrl = redirectWebQuoteUrl;
+	}        
     if (popupUrl != '') {
         
         //if (isIE()) { // bypass checks because ie cant make cross domain requests without relaxing security

@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <columns>
-        <field>SBQQ__Quote__c$core_cpq_account_program__c</field>
-    </columns>
-    <columns>
-        <field>SBQQ__Quote__c$core_cpq_quote_type_nm__c</field>
-    </columns>
-    <columns>
-        <field>SBQQ__Quote__c.SBQQ__LineItems__r$Core_OPN__c</field>
-    </columns>
-    <columns>
-        <field>SBQQ__Quote__c$core_cpq_opprtunity_id__c</field>
+        <field>SBQQ__Quote__c.SBQQ__LineItems__r$core_cpq_product_nm__c</field>
     </columns>
     <columns>
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$core_cpq_product_family_txt__c</field>
@@ -19,52 +10,15 @@
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$Name</field>
     </columns>
     <columns>
+        <field>SBQQ__Quote__c.SBQQ__LineItems__r$core_cpq_quote_line_type_txt__c</field>
+    </columns>
+    <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>SBQQ__Quote__c$core_cpq_revision_nbr__c</field>
-    </columns>
-    <columns>
-        <field>SBQQ__Quote__c$core_cpq_quote_approved_date_dt__c</field>
-    </columns>
-    <columns>
-        <field>SBQQ__Quote__c$SBQQ__Status__c</field>
-    </columns>
-    <columns>
-        <field>SBQQ__Quote__c$SBQQ__Distributor__c.Name</field>
-    </columns>
-    <columns>
-        <field>SBQQ__Quote__c$SBQQ__Distributor__c.Core_Account_ID__c</field>
-    </columns>
-    <columns>
-        <field>SBQQ__Quote__c$core_cpq_end_customer_nm__c</field>
-    </columns>
-    <columns>
-        <field>SBQQ__Quote__c$core_cpq_parent_account__c</field>
-    </columns>
-    <columns>
-        <field>SBQQ__Quote__c$core_cpq_cmf_pricing_parent_id__c</field>
-    </columns>
-    <columns>
-        <field>SBQQ__Quote__c$core_cpq_business_unit_nm__c</field>
-    </columns>
-    <columns>
-        <field>SBQQ__Quote__c$core_cpq_price_book_nm__c</field>
-    </columns>
-    <columns>
-        <field>SBQQ__Quote__c$core_cpq_first_bm_approver__c</field>
-    </columns>
-    <columns>
-        <field>SBQQ__Quote__c$core_cpq_quote_owner_name__c</field>
+        <field>SBQQ__Quote__c.SBQQ__LineItems__r$core_cpq_PSG_Restricted_Product__c</field>
     </columns>
     <filter>
         <criteriaItems>
             <column>SBQQ__Quote__c$core_cpq_active_cb__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>equals</operator>
-            <value>1</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>SBQQ__Quote__c.SBQQ__LineItems__r$core_cpq_PSG_Restricted_Product__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>equals</operator>

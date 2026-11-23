@@ -258,6 +258,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>SWS_Cloud_Credit_Request__c.SWS_Is_Updating__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>SWS_Cloud_Credit_Request__c.SWS_Job_Title__c</field>
         <readable>true</readable>
@@ -424,6 +429,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>SWS_Cloud_Credit_Request__c.SWS_Submitter_Last_Name__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>SWS_Cloud_Credit_Request__c.SWS_Submitter_Name__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -492,20 +502,8 @@
         <tab>SWS_Cloud_Credit_Request__c</tab>
         <visibility>Visible</visibility>
     </tabSettings>
-    <tabSettings>
-        <tab>standard-SemanticModel</tab>
-        <visibility>Visible</visibility>
-    </tabSettings>
-    <userPermissions>
-        <enabled>true</enabled>
-        <name>RunFlow</name>
-    </userPermissions>
     <userPermissions>
         <enabled>true</enabled>
         <name>RunReports</name>
-    </userPermissions>
-    <userPermissions>
-        <enabled>true</enabled>
-        <name>TransferAnyEntity</name>
     </userPermissions>
 </PermissionSet>

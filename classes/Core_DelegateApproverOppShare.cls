@@ -1,14 +1,7 @@
 /**************************************************************************************
-Apex Class Name: Core_DelegateApproverOppShare
-Version     : 1.0 
-Created Date: 24 AUG 2022
-Function    : Handler class for the sharing and removal of opportunity to the delagate approver
-Modification Log :
-* Developer                   Date                   Description
-* ----------------------------------------------------------------------------                 
-* Megha Kumari             24/08/20222              Original Version               
+Function    : Handler class for the sharing and removal of opportunity to the delagate approver           
 *************************************************************************************/
-public without sharing class Core_DelegateApproverOppShare {
+public without sharing class Core_DelegateApproverOppShare {//TWC3123-5338 Added without sharing keyword to fix code scan issue
     Public static Boolean roleCheck=false;
     public static void opportunityShare(Map<Id,User> oldMap, Map<Id,User> newMap){
         Map<Id,Id> userId=new Map<Id,Id>();
@@ -226,11 +219,12 @@ public without sharing class Core_DelegateApproverOppShare {
                 
                 dealShareId.add(dealShareResults.get(i).getId());
             }
-            if(!dealShareId.isEmpty() && dealShareId!=null ){
+            /*commented below if condition as part of TWC4767-2118
+             * if(!dealShareId.isEmpty() && dealShareId!=null ){
                 /*System.debug('dealShareId--'+dealShareId); //TWC3123-5359 - Commented debug statement
-                System.debug('delegateId--'+delegateId);*/  
-                //database.executebatch(new Core_postDealWinGoalShareBatch (delegateId,dealShareId,userId),50);
-            }
+                System.debug('delegateId--'+delegateId);*
+                database.executebatch(new Core_postDealWinGoalShareBatch (delegateId,dealShareId,userId),50);
+            }*/
         }
     }
     

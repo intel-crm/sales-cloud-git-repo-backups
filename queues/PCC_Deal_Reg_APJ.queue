@@ -3,6 +3,11 @@
     <doesIncludeBosses>true</doesIncludeBosses>
     <doesSendEmailToMembers>false</doesSendEmailToMembers>
     <name>PCC Deal Reg APJ</name>
+    <queueMembers>
+        <users>
+            <user>utkarsh1@intel.com.devsls</user>
+        </users>
+    </queueMembers>
     <queueSobject>
         <sobjectType>Core_Design_Registration__c</sobjectType>
     </queueSobject>

@@ -63,9 +63,8 @@
         <relatedTable>Activity</relatedTable>
         <relatedTableJoinColumn>Account</relatedTableJoinColumn>
     </crossFilters>
-    <description>Accounts owned by A&amp;E or accounts owned by Inactive owners - outstanding request for ownership</description>
+    <description>Accounts owned by A&amp;E - outstanding request for ownership</description>
     <filter>
-        <booleanFilter>1 AND (2 OR 3)</booleanFilter>
         <criteriaItems>
             <column>Account.Core_Deactivated__c</column>
             <columnToColumn>false</columnToColumn>
@@ -80,13 +79,6 @@
             <operator>equals</operator>
             <value>A&amp;E Account Owner,Salesforce System User</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>Account.Core_Account_Owner_Active__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>0</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
@@ -95,7 +87,7 @@
         <field>Account.Core_Geo__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>A&amp;E / Inactive w/ Ownership requested</name>
+    <name>A&amp;E Accounts - Ownership requested</name>
     <params>
         <name>co</name>
         <value>1</value>

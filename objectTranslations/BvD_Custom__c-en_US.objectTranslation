@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>BvD_Custom</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>BvD_Customs</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account Name --></label>
+        <name>Account_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account --></label>
+        <name>Account__c</name>
+        <relationshipLabel><!-- BvD_Customs --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- BvD ID --></label>
+        <name>BvD_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- BvD Record Set --></label>
+        <name>BvD_Record_Set__c</name>
+    </fields>
+    <fields>
+        <label><!-- City --></label>
+        <name>City__c</name>
+    </fields>
+    <fields>
+        <label><!-- Company Name --></label>
+        <name>Company_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Country Code --></label>
+        <name>Country_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Country Name --></label>
+        <name>Country_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last BvD Update --></label>
+        <name>Last_BvD_Update__c</name>
+    </fields>
+    <fields>
+        <label><!-- Phone --></label>
+        <name>Phone__c</name>
+    </fields>
+    <fields>
+        <label><!-- PostalCode --></label>
+        <name>PostalCode__c</name>
+    </fields>
+    <fields>
+        <label><!-- Primary Street --></label>
+        <name>Primary_Street__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reason unlinked from BvD --></label>
+        <name>Reason_unlinked_from_BvD__c</name>
+    </fields>
+    <fields>
+        <label><!-- SF Name --></label>
+        <name>SF_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Unlinked from BvD --></label>
+        <name>Unlinked_from_BvD__c</name>
+    </fields>
+    <fields>
+        <label><!-- User Defined BVD ID --></label>
+        <name>User_Defined_BVD_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Website --></label>
+        <name>Website__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

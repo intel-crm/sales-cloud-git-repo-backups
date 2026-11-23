@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>AC Contact Channel</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value><!-- AC Contact Channel --></value>
+    </caseValues>
+    <fields>
+        <label> Durata lavorativa dopo il contatto </label>
+        <name>amazonconnect__AfterContactWorkDuration__c</name>
+    </fields>
+    <fields>
+        <label> Durata di attesa del cliente dell&apos;agente </label>
+        <name>amazonconnect__AgentCustomerHoldDuration__c</name>
+    </fields>
+    <fields>
+        <label> Nome utente di accesso agente </label>
+        <name>amazonconnect__AgentLoginUsername__c</name>
+    </fields>
+    <fields>
+        <label> Nome agente </label>
+        <name>amazonconnect__AgentName__c</name>
+    </fields>
+    <fields>
+        <label> Attributi </label>
+        <name>amazonconnect__Attributes__c</name>
+    </fields>
+    <fields>
+        <label> Timestamp di fine chiamata </label>
+        <name>amazonconnect__CallEndTimestamp__c</name>
+    </fields>
+    <fields>
+        <label> Registrazione chiamata </label>
+        <name>amazonconnect__CallRecording__c</name>
+    </fields>
+    <fields>
+        <label> Timestamp di inizio chiamata </label>
+        <name>amazonconnect__CallStartTimestamp__c</name>
+    </fields>
+    <fields>
+        <label> Stato della chiamata </label>
+        <name>amazonconnect__CallStatus__c</name>
+        <picklistValues>
+            <masterLabel>Completed</masterLabel>
+            <translation><!-- Completed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In-Progress</masterLabel>
+            <translation><!-- In-Progress --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incoming</masterLabel>
+            <translation><!-- Incoming --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Missed</masterLabel>
+            <translation><!-- Missed --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Case --></label>
+        <name>amazonconnect__Case__c</name>
+        <relationshipLabel><!-- AC Contact Channels --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Channel --></label>
+        <name>amazonconnect__Channel__c</name>
+    </fields>
+    <fields>
+        <label> ContactId </label>
+        <name>amazonconnect__ContactId__c</name>
+    </fields>
+    <fields>
+        <label> Numero richiamata cliente </label>
+        <name>amazonconnect__CustomerCallbackNumber__c</name>
+    </fields>
+    <fields>
+        <label> Numero cliente </label>
+        <name>amazonconnect__CustomerNumber__c</name>
+    </fields>
+    <fields>
+        <label> Numero composto </label>
+        <name>amazonconnect__DialedNumber__c</name>
+    </fields>
+    <fields>
+        <label> Metodo di avvio </label>
+        <name>amazonconnect__InitiationMethod__c</name>
+        <picklistValues>
+            <masterLabel>Callback</masterLabel>
+            <translation><!-- Callback --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Chat</masterLabel>
+            <translation><!-- Chat --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Inbound</masterLabel>
+            <translation><!-- Inbound --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Monitor</masterLabel>
+            <translation><!-- Monitor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Outbound</masterLabel>
+            <translation><!-- Outbound --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transfer</masterLabel>
+            <translation><!-- Transfer --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label> Durata interazione </label>
+        <name>amazonconnect__InteractionDuration__c</name>
+    </fields>
+    <fields>
+        <label> Nome coda </label>
+        <name>amazonconnect__QueueName__c</name>
+    </fields>
+    <fields>
+        <label> RelatedToWhatId </label>
+        <name>amazonconnect__RelatedToWhatId__c</name>
+    </fields>
+    <fields>
+        <label> RelatedToWhoId </label>
+        <name>amazonconnect__RelatedToWhoId__c</name>
+    </fields>
+    <gender>Feminine</gender>
+    <nameFieldLabel>ContactChannel</nameFieldLabel>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

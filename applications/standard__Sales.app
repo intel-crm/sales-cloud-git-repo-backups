@@ -33,16 +33,78 @@
     <tabs>Core_Temp_Dunn_Bradstreet__c</tabs>
     <tabs>Core_Batch_Processing__c</tabs>
     <tabs>CaseMilestoneCompare__c</tabs>
+    <tabs>Core_Account_Team_Review_Data_Ops</tabs>
     <tabs>standard-WaveHome</tabs>
     <tabs>Ask_a_Question</tabs>
     <tabs>Core_BU_Mapping_Table__c</tabs>
+    <tabs>Core_Inquiry__c</tabs>
     <tabs>Core_Prospect__c</tabs>
-    <tabs>SeismicUserDeletion_Config__c</tabs>
+    <tabs>Core_CIM_Staging__c</tabs>
+    <tabs>Core_Oppty_KPI_New__c</tabs>
+    <tabs>Core_Customer_Attendees__c</tabs>
+    <tabs>Core_Opp_FC_Prod_Schedule__c</tabs>
+    <tabs>Sales_License_Generator__c</tabs>
+    <tabs>Sales_License_Group__c</tabs>
+    <tabs>Core_KPI_Staging__c</tabs>
+    <tabs>price_forward_cost__c</tabs>
+    <tabs>Sales_License__c</tabs>
+    <tabs>Sales_License_Order_Product__c</tabs>
+    <tabs>Address__c</tabs>
+    <tabs>Core_Product_Ext_Attribute__c</tabs>
+    <tabs>Core_Opp_KPI_History__c</tabs>
+    <tabs>Core_Account_SoldTo_ShipTo_Rel__c</tabs>
+    <tabs>Sales_License_Generator_Switch__c</tabs>
+    <tabs>Sales_Feedback__c</tabs>
+    <tabs>Core_Contact_GEC_Staging__c</tabs>
+    <tabs>Core_IQR_Products_Staging__c</tabs>
+    <tabs>DP_EAT_Project_Info__c</tabs>
+    <tabs>DP_EAT_Project_Test_Classes__c</tabs>
+    <tabs>DP_EAT_Project_Test_Run_Results__c</tabs>
+    <tabs>Core_Solution_Storage__c</tabs>
+    <tabs>Opportunity_Solution_Area__c</tabs>
+    <tabs>Core_BU_Owner_Table__c</tabs>
+    <tabs>Pricing_Price_Rules__c</tabs>
+    <tabs>Core_Delegate_Approver__c</tabs>
+    <tabs>Self_Help_Request__c</tabs>
+    <tabs>Core_Solution_Area_Product__c</tabs>
+    <tabs>Core_Solution_Areas__c</tabs>
+    <tabs>Case_External</tabs>
+    <tabs>Core_Solution_Area_Partner__c</tabs>
     <tabs>SeismicUserDeletion_User__c</tabs>
-    <tabs>Account_Create_Request__c</tabs>
+    <tabs>SeismicUserDeletion_Config__c</tabs>
+    <tabs>standard-Quote</tabs>
+    <tabs>Core_Opportunity_Forecast__c</tabs>
+    <tabs>SeismicContentSync_DOV__c</tabs>
+    <tabs>SJ_Extend__c</tabs>
+    <tabs>Core_Opportunity_Support__c</tabs>
     <tabs>Seismic_PIMConfig__c</tabs>
     <tabs>Seismic_DOV__c</tabs>
-    <tabs>Seismic_PIMActiveHierarchy__c</tabs>
+    <tabs>Approver__c</tabs>
+    <tabs>Power_BI_Report_VF</tabs>
     <tabs>Account_Plan__c</tabs>
     <tabs>Executive_Meeting_Brief__c</tabs>
+    <tabs>Core_Products_Staging__c</tabs>
+    <tabs>PCC_ODR_Onboarding_Matrix__c</tabs>
+    <tabs>Core_IPS_Opportunity_PAR__c</tabs>
+    <tabs>PSG_Free_License_Request__c</tabs>
+    <tabs>SPM_CST_employee_hierarchy__c</tabs>
+    <tabs>Opportunity_Team_Member</tabs>
+    <tabs>Product_Additional_Attribute__c</tabs>
+    <tabs>Design_Reg_Product__c</tabs>
+    <tabs>Design_Registration_Stage__c</tabs>
+    <tabs>Design_Registration_Product_M2M_Stage__c</tabs>
+    <tabs>CRM_VBS_SOAR__c</tabs>
+    <tabs>PCC_DDR_L5_Product_Mapping__c</tabs>
+    <tabs>PRM_Builder_Strategy__c</tabs>
+    <tabs>SWS_Cloud_Credit_Request__c</tabs>
+    <tabs>PCC_Rebate_Claim__c</tabs>
+    <tabs>PCC_Rebate_Claim_Stage__c</tabs>
+    <tabs>PCC_Deal_Change_Request__c</tabs>
+    <tabs>PCC_Deal_Change_Request_Line_Item__c</tabs>
+    <tabs>CRM_Linked_Opportunities__c</tabs>
+    <tabs>TPT_Tracker__c</tabs>
+    <tabs>PCC_EndCustomerAcc_Mapping__c</tabs>
+    <tabs>Deployment_Components__c</tabs>
+    <tabs>Deployment__c</tabs>
+    <tabs>Test_Generic_Bulk_Upload__c</tabs>
 </CustomApplication>

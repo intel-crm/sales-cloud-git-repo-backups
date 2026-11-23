@@ -28,7 +28,7 @@
                                 "url": "/"
                             });
                              urlEvent.fire();
-                            this.pageReload("/Partnercenter/s/");
+                            window.location.reload(true);
                             
                         }
                         else{
@@ -44,7 +44,7 @@
                                 "url": "/errorpage"
                             });
                              urlEvent.fire();
-                            this.pageReload('/errorpage');
+                        window.location.reload(true);
                     }
                     
                 }
@@ -58,7 +58,7 @@
                                 "url": "/errorpage"
                             });
                              urlEvent.fire();
-                           this.pageReload('/errorpage');
+                           window.location.reload(true); 
                         }
                     } 
                     
@@ -94,7 +94,7 @@
                                 "url": "/errorpage"
                             });
                              urlEvent.fire();
-                    this.pageReload('/errorpage');
+                    window.location.reload(true);
                 }
             }             
             else {
@@ -153,13 +153,6 @@
             resToContentMap[disclaimerDetails[i].tncId]=disclaimerDetails[i].docBody;
             component.set("v.resToContentMap",resToContentMap);
         }
-    },
-    pageReload: function (url) {
-        setTimeout(() => {
-            if(window.location.href.includes(url)) {
-                window.location.reload(true);
-            }
-        }, $A.get("$Label.c.Core_MDF_CommunityPageReload_Timer"))
-    },
+    }
     
 })

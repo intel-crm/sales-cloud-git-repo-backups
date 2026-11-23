@@ -13,8 +13,8 @@ Modification Log :
 global class Core_Opp_Doclnk_LastActvityUpdate_Batch implements Database.Batchable<ContentDocumentLink>, Database.Stateful{   
     
     global Iterable<ContentDocumentLink> start(Database.BatchableContext BC){          
-        //DateTime dt = System.Now().addHours(Integer.valueOf(label.Core_Opportunity_Last_Activity_Date)); 
-       DateTime dt = System.Now().addHours(-4); 
+        DateTime dt = System.Now().addHours(Integer.valueOf(label.Core_Opportunity_Last_Activity_Date)); 
+      // DateTime dt = System.Now().addHours(-4); 
         List<ContentDocumentLink> cntList= [SELECT Id, ContentDocumentId, ContentDocument.Title, ContentDocument.FileType, LinkedEntityId, ShareType, Visibility FROM ContentDocumentLink where LinkedEntityId IN (Select id from Opportunity where Stagename IN('Design','Define','Qualify','Develop')) and ContentDocument.LastModifiedDate >=:dt];       
         return cntList;           
     }

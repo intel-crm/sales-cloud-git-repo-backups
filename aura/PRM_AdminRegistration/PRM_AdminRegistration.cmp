@@ -1,9 +1,4 @@
-<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" 
-controller="PRM_AdminRegistration"  
-access="global" >
-    <aura:attribute type="Boolean" name="restrictEmbargoedCountry" default="true"/>
-    <!--  <ltng:require styles="{!$Resource.MultiLineToast}" /> -->
-    <lightning:notificationsLibrary aura:id="notifLib"/>
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" controller='PRM_AdminRegistration'  access="global" >
     <aura:attribute type="Boolean" name="showUI"/>
     <aura:attribute type="Boolean" name="btn" default="true"/>
     <aura:attribute type="Boolean" name="showTables"/>
@@ -11,7 +6,6 @@ access="global" >
     <aura:attribute type="Boolean" name="loadPage" default="false"/>
     <aura:attribute type="String" name="currentStep" default="step1"/>
     <aura:attribute name="accName" type="String"/>
-    <aura:attribute name="accId" type="String"/>
     <aura:attribute name="conFirstName" type="String"/>
     <aura:attribute name="conLastName" type="String"/>
     <aura:attribute name="conEmail" type="String"/>
@@ -36,17 +30,12 @@ access="global" >
     <aura:attribute name="languageSelected" type="String"/>
     <aura:attribute name="contactCountrySelected" type="String"/>
     <aura:attribute type="Boolean" name="showErrorMsg" default="false"/>
-    <aura:attribute type="Boolean" name="showBlockedContact" default="false"/>
     <aura:attribute type="Boolean" name="showConfirmationPage" default="false"/>
-    <aura:attribute type="Boolean" name="showSBRMsgPage" default="false"/>
     <aura:attribute type="Boolean" name="submissionSpinner" default="false"/>
     <aura:attribute type="Boolean" name="showFinalPage" default="false"/>
     <aura:attribute type="Boolean" name="formSpinner" default="false"/>
-    <aura:attribute type="Boolean" name="showModal" default="false"/>
     <aura:attribute type="Map" name="InputMap" default="{}"/>
-    <aura:attribute type="Map" name="UCDMap" default="{}"/> <!-- Shraddha -->
     <aura:attribute type="Map" name="SelectedRowMap" default="{}"/>
-    <aura:attribute type="Map" name="accountDupStatusMapOnUI" default="{}"/>
     <aura:attribute type="String" name="accountId"/>
     <aura:attribute name="url" type="String"/>
     <aura:attribute name="pageReference" type="Object"/>
@@ -64,25 +53,12 @@ access="global" >
     <aura:attribute name="associatedAccountIsIPA" type="Boolean"/>
     <aura:attribute name="disableAccountInputs" type="Boolean"/>
     <aura:attribute name="partnerRoleTypeMap" type="Map"/>
-    <aura:attribute name="existingContactPartnerRole" type="String"/>
-    <aura:attribute name="userWebsite" type="String"/>
-    <aura:attribute type="Boolean" name="accountIDVisible" default="false"/>
-    <aura:attribute type="Boolean" name="accountNameVisible" default="false"/>
-    <aura:attribute type="Boolean" name="addrLine1Visible" default="false"/>
-    <aura:attribute type="Boolean" name="addrLine2Visible" default="false"/>
-    <aura:attribute type="Boolean" name="countryListVisible" default="false"/>
-    <aura:attribute type="Boolean" name="stateListVisible" default="false"/>
-    <aura:attribute type="Boolean" name="cityAddVisible" default="false"/>
-    <aura:attribute type="Boolean" name="zipCodeVisible" default="false"/>
-    <aura:attribute type="Boolean" name="webVisible" default="false"/>
-    <aura:attribute type="Boolean" name="suppressEmail"/>
-    
-    
     <!--<aura:attribute name="regExpEmailformat" type="String"/>-->
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
     <aura:handler name="myComponentEvent" event="c:PRM_AdminRegistrationEvent" action="{!c.handleMyComponentEvent}"/>
     <aura:handler name="displayButtonEvent" event="c:PRM_AdminRegistrationDisplayEvent" action="{!c.handleButtonEvent}"/>
     <lightning:navigation aura:id="navigationService" />
+    
     <!--
     <aura:if isTrue="{!v.btn}">
         <lightning:button label="Register" onclick="{! c.handleClick }" class="slds-align_absolute-center" />
@@ -96,45 +72,74 @@ access="global" >
     <aura:if isTrue="{!v.submissionSpinner}">
         <lightning:spinner aura:id="submitSpinner" variant="brand"/>
     </aura:if>
-    <aura:if isTrue="{!v.restrictEmbargoedCountry}">
-        <aura:html tag="style">
-            .toastMessage.forceActionsText{
-            white-space : pre-line;
-            }
-        </aura:html>
-    </aura:if>
+    
     <aura:if isTrue="{!v.loadPage}">
         
         <div class="slds-p-top_xx-large">
             <aura:if isTrue="{!v.showProgressBar}">
-                <!--div style="position:absolute;top:calc(-0.6%);left:calc(15% + 8px);transform:translateX(-50%)"-->
-                <div class="position-absolute left-15">
+                <div style="position:absolute;top:calc(-0.6%);left:calc(15% + 8px);transform:translateX(-50%)">
                     <div class="slds-popover slds-popover_tooltip slds-nubbin_bottom" role="tooltip">
                         <div class="slds-popover__body">{!$Label.c.PRM_Account_Contact_Info}</div>
                     </div>
                 </div>
                 
-                <!--div style="position:absolute;top:calc(-0.6%);left:calc(38.52% + 2px);transform:translateX(-50%)"-->
-                <div class="position-absolute left-38">
-                <div class="slds-popover slds-popover_tooltip slds-nubbin_bottom" role="tooltip">
+                <div style="position:absolute;top:calc(-0.6%);left:calc(38.52% + 2px);transform:translateX(-50%)">
+                    <div class="slds-popover slds-popover_tooltip slds-nubbin_bottom" role="tooltip">
                         <div class="slds-popover__body">{!$Label.c.PRM_DuplicateInfo}</div>
                     </div>
                 </div>
                 
-                <!--div style="position:absolute;top:calc(-0.6%);left:calc(61.42% + 2px);transform:translateX(-50%)"-->
-                <div class="position-absolute left-61">
+                <div style="position:absolute;top:calc(-0.6%);left:calc(61.42% + 2px);transform:translateX(-50%)">
                     <div class="slds-popover slds-popover_tooltip slds-nubbin_bottom" role="tooltip">
                         <div class="slds-popover__body">{!$Label.c.PRM_Confirmation}</div>
                     </div>
                 </div>
                 
-                <!--div style="position:absolute;top:calc(-0.6%);right:calc(15.25% + 5px);transform:translateX(50%)"-->
-                <div class="position-absolute right-15">
-                <div class="slds-popover slds-popover_tooltip slds-nubbin_bottom" role="tooltip">
+                <div style="position:absolute;top:calc(-0.6%);right:calc(15.25% + 5px);transform:translateX(50%)">
+                    <div class="slds-popover slds-popover_tooltip slds-nubbin_bottom" role="tooltip">
                         <div class="slds-popover__body">{!$Label.c.PRM_Submission}</div>
                     </div>
                 </div>
-               
+                <!-- <div class="slds-readonly-path">
+                    
+                    <div class="slds-path">
+                        <div class="slds-grid slds-path__track">
+                            <div class="slds-grid slds-path__scroller-container">
+                                <div class="slds-path__scroller" role="application">
+                                    <div class="slds-path__scroller_inner">
+                                        <ul class="slds-path__nav" role="listbox" aria-orientation="horizontal">
+                                            <li aura:id="firstLI" class="slds-path__item slds-is-current slds-is-active" role="presentation">
+                                                <a aria-selected="false" class="slds-path__link" href="javascript:void(0);" id="path-1" role="option" tabindex="0">
+                                                    <span class="slds-path__stage">
+                                                    </span>
+                                                    <span class="slds-path__title" style="color:white;">Account/Contact Info</span>
+                                                </a>
+                                            </li>
+                                            <li aura:id="secondLI" class="slds-path__item slds-is-incomplete" role="presentation">
+                                                <a aria-selected="false" class="slds-path__link" href="javascript:void(0);" id="path-2" role="option" tabindex="-1">
+                                                    <span class="slds-path__stage">
+                                                    </span>
+                                                    <span aura:id="duplicateTitle" class="slds-path__title">Duplicate Information</span>
+                                                </a>
+                                            </li>
+                                            
+                                            <li aura:id="thirdLI" class="slds-path__item slds-is-incomplete" role="presentation">
+                                                <a aria-selected="false" class="slds-path__link" href="javascript:void(0);" id="path-2" role="option" tabindex="-1">
+                                                    <span class="slds-path__stage">
+                                                    </span>
+                                                    <span aura:id="confirmationTitle" class="slds-path__title">Confirmation</span>
+                                                </a>
+                                            </li>
+                                            
+                                            <li aura:id="fourthLI" class="slds-path__item slds-is-incomplete" role="presentation">
+                                                <a aria-selected="false" class="slds-path__link" href="javascript:void(0);" id="path-2" role="option" tabindex="-1">
+                                                    <span class="slds-path__stage">
+                                                    </span>
+                                                    <span aura:id="submissionTitle" class="slds-path__title">Final Submission</span>
+                                                </a>
+                                            </li>
+                                            
+                                        </ul></div></div></div></div></div>-->
                 
                 <lightning:progressIndicator  aura:id="myProgress" currentStep="{!v.currentStep}">
                     <lightning:progressStep value="step1"/>
@@ -150,10 +155,7 @@ access="global" >
             <div style="background-color:white">
                 <aura:if isTrue="{!v.showUI}">
                     
-                    <div class="inlineTitle 
-                                slds-p-top--large slds-p-horizontal--medium 
-                                slds-p-bottom--medium slds-text-heading--medium 
-                                slds-align_absolute-center">
+                    <div class="inlineTitle slds-p-top--large slds-p-horizontal--medium slds-p-bottom--medium slds-text-heading--medium slds-align_absolute-center">
                         {!$Label.c.PRM_Account_Contact_Info}
                     </div>
                     <div class="slds-p-horizontal_x-small">
@@ -166,13 +168,12 @@ access="global" >
                                     {!$Label.c.PRM_Contact_Information} 
                                 </span> 
                             </div>
-                            
+
                             <div class="slds-form__row">
                                 <div class="slds-form__item" role="listitem">
                                     <div class="slds-form-element slds-form-element_stacked slds-is-editing">
                                         <div class="slds-form-element__control">        
-                                            <lightning:input aura:id= "contFirstName" label="{!$Label.c.PRM_Contact_First_Name}" 
-                                            value="{!v.conFirstName}" required="true"/>
+                                            <lightning:input aura:id= "contFirstName" label="{!$Label.c.PRM_Contact_First_Name}" value="{!v.conFirstName}" required="true"/>
                                         </div>
                                     </div>
                                 </div>
@@ -180,25 +181,16 @@ access="global" >
                                 <div class="slds-form__item" role="listitem">
                                     <div class="slds-form-element slds-form-element_stacked slds-is-editing">
                                         <div class="slds-form-element__control">        
-                                            <lightning:input aura:id="contLastName" 
-                                            label="{!$Label.c.PRM_Contact_Last_Name}" 
-                                            value="{!v.conLastName}"
-                                             required="true"/>
+                                            <lightning:input aura:id="contLastName" label="{!$Label.c.PRM_Contact_Last_Name}" value="{!v.conLastName}" required="true"/>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="slds-form__row">
+							<div class="slds-form__row">
                                 <div class="slds-form__item" role="listitem">
                                     <div class="slds-form-element slds-form-element_stacked slds-is-editing">
                                         <div class="slds-form-element__control">        
-                                            <lightning:input aura:id="emailId" 
-                                            type="email" name="email1" 
-                                            label="{!$Label.c.PRM_Contact_Email}" 
-                                            pattern="{!$Label.c.PRM_ContactEmail_Regex}" 
-                                            messageWhenPatternMismatch="Illegal character on username/email id" 
-                                            value="{!v.conEmail}" required="true" onchange="{!c.updateEmail}" 
-                                            oncommit="{!c.getAccount}"/>
+                                            <lightning:input aura:id="emailId" type="email" name="email1" label="{!$Label.c.PRM_Contact_Email}" value="{!v.conEmail}" required="true" onchange="{!c.updateEmail}" oncommit="{!c.getAccount}"/>
                                         </div>
                                     </div>
                                 </div>
@@ -206,89 +198,49 @@ access="global" >
                                 <div class="slds-form__item" role="listitem">
                                     <div class="slds-form-element slds-form-element_stacked slds-is-editing">
                                         <div class="slds-form-element__control">        
-                                            <lightning:combobox aura:id="prefLang" name="language" 
-                                            label="{!$Label.c.PRM_Preferred_Language}" 
-                                            placeholder="Select" options="{!v.optionsLanguage}" 
-                                            dropdownAlignment="auto" value="{!v.languageSelected}" 
-                                            onchange="{!c.handleLanguageChange}" required="true"/>
+                                            <lightning:combobox aura:id="prefLang" name="language" label="{!$Label.c.PRM_Preferred_Language}" placeholder="Select" options="{!v.optionsLanguage}" dropdownAlignment="auto" value="{!v.languageSelected}" onchange="{!c.handleLanguageChange}" required="true"/>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="slds-form__item" role="listitem">
                                     <div class="slds-form-element slds-form-element_stacked slds-is-editing">
                                         <div class="slds-form-element__control">        
-                                            <lightning:combobox aura:id="contCntry" 
-                                            name="contactCountry" label="{!$Label.c.PRM_contactCountry}"
-                                            placeholder="Select" options="{!v.optionsCountry}" 
-                                            dropdownAlignment="auto" value="{!v.contactCountrySelected}" 
-                                            onchange="{!c.handleCountry}" required="true"/>
-                                        </div>
-                                    </div>
-                                </div>
-                                 <div class="slds-form__item" role="listitem">
-                                    <div class="slds-form-element slds-form-element_stacked slds-is-editing">
-                                        <div class="slds-form-element__control">     
-                                        <lightning:input type="checkbox" aura:id="checkbox1" label ="Suppress Email"
-                                         value="{!v.suppressEmail}" onchange="{!c.handleSuppressEmail}" />
+                                            <lightning:combobox aura:id="contCntry" name="contactCountry" label="{!$Label.c.PRM_contactCountry}" placeholder="Select" options="{!v.optionsCountry}" dropdownAlignment="auto" value="{!v.contactCountrySelected}" required="true"/>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             
-                            <!--    <div class="slds-border_top"></div> -->
-                            <div class="slds-section__title slds-theme--shade primaryPaletteBorder 
-                            test-id__section-header-container">
-                                <span class="test-id__section-header-title section-header-title 
-                                slds-p-horizontal--small slds-truncate">
-                                    {!$Label.c.PRM_Account_Information} 
-                                </span> 
-                            </div>
+                        <!--    <div class="slds-border_top"></div> -->
+                        <div class="slds-section__title slds-theme--shade primaryPaletteBorder test-id__section-header-container">
+                            <span class="test-id__section-header-title section-header-title slds-p-horizontal--small slds-truncate">
+                                {!$Label.c.PRM_Account_Information} 
+                            </span> 
+                        </div>
+                            
                             <div class="slds-form__row">
-                                                
-                                
                                 <div class="slds-form__item" role="listitem">
                                     <div class="slds-form-element slds-form-element_stacked slds-is-editing">
                                         <div class="slds-form-element__control">
-                                            <lightning:input aura:id="accountName" name="aName" label="{!$Label.c.PRM_Account_Name}" 
-                                            value="{!v.accName}" required="true"/>
+                                            <lightning:input aura:id="accountName" name="aName" label="{!$Label.c.PRM_Account_Name}" value="{!v.accName}" required="true"/>
                                         </div>
                                     </div>
                                 </div>
-                                
                                 
                                 <div class="slds-form__item" role="listitem">
                                     <div class="slds-form-element slds-form-element_stacked slds-is-editing">
                                         <div class="slds-form-element__control">        
-                                            <lightning:combobox aura:id = "bizOrgType"
-                                             name="orgType" 
-                                             label="{!$Label.c.PRM_Biz_Org_Type}" 
-                                             placeholder="Select" options="{!v.optionsType}" 
-                                             value="{!v.orgTypeSelected}" 
-                                             onchange="{!c.handleOrgTypeChange}"
-                                            required="true"/>
-                                        </div>
-                                    </div>
-                                </div>                                
-                            </div>   
-                            <div class="slds-form__row">
-                                <div class="slds-form__item slds-size_1-of-2" role="listitem">
-                                    <div class="slds-form-element slds-form-element_stacked slds-is-editing">
-                                        <div class="slds-form-element__control">        
-                                            <lightning:input aura:id = "web" name="website" label="{!$Label.c.PRM_UserWebsite}" 
-                                            type="text" value="{!v.userWebsite}"  required="true" />
+                                            <lightning:combobox aura:id = "bizOrgType" name="orgType" label="{!$Label.c.PRM_Biz_Org_Type}" placeholder="Select" options="{!v.optionsType}" value="{!v.orgTypeSelected}" onchange="{!c.handleOrgTypeChange}" required="true"/>
                                         </div>
                                     </div>
                                 </div>
+                                
                             </div>
-                            
-                            <!-- <div class="slds-form__row">
+                           <!-- <div class="slds-form__row">
                                 <div class="slds-form__item slds-size_4-of-8" role="listitem">
                                     <div class="slds-form-element slds-form-element_stacked slds-is-editing">
                                         <div class="slds-form-element__control">
-                                            <lightning:combobox aura:id="partnerRole" name="partnerRole" 
-                                            label="{!$Label.c.PRM_Partner_Role}" placeholder="Select" 
-                                            options="{!v.optionsRole}" value="{!v.roleSelected}" 
-                                            onchange="{!c.handleRoleChange}" required="true" readonly="true"/>
+                                            <lightning:combobox aura:id="partnerRole" name="partnerRole" label="{!$Label.c.PRM_Partner_Role}" placeholder="Select" options="{!v.optionsRole}" value="{!v.roleSelected}" onchange="{!c.handleRoleChange}" required="true" readonly="true"/>
                                         </div>
                                     </div>
                                 </div>
@@ -303,17 +255,14 @@ access="global" >
                                 <div class="slds-form__item" role="listitem">
                                     <div class="slds-form-element slds-form-element_stacked slds-is-editing">
                                         <div class="slds-form-element__control">        
-                                            <lightning:input aura:id="addrLine1"
-                                            name="addrLine1" label="{!$Label.c.PRM_Address_Line1}"
-                                            value="{!v.addressOne}" required="true"/>
+                                            <lightning:input aura:id="addrLine1" name="addrLine1" label="{!$Label.c.PRM_Address_Line1}" value="{!v.addressOne}" required="true"/>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="slds-form__item" role="listitem">
                                     <div class="slds-form-element slds-form-element_stacked slds-is-editing">
                                         <div class="slds-form-element__control">        
-                                            <lightning:input aura:id="addrLine2" name="addrLine2" 
-                                            label="{!$Label.c.PRM_Address_Line2}" value="{!v.addressTwo}"/>
+                                            <lightning:input aura:id="addrLine2" name="addrLine2" label="{!$Label.c.PRM_Address_Line2}" value="{!v.addressTwo}"/>
                                         </div>
                                     </div>
                                 </div>
@@ -322,22 +271,14 @@ access="global" >
                                 <div class="slds-form__item" role="listitem">
                                     <div class="slds-form-element slds-form-element_stacked slds-is-editing">
                                         <div class="slds-form-element__control">        
-                                            <lightning:combobox aura:id="countryList" name="country" 
-                                            label="{!$Label.c.PRM_Country}" placeholder="Select"
-                                            dropdownAlignment="auto" 
-                                            options="{!v.optionsCountry}" value="{!v.countrySelected}" 
-                                            onchange="{!c.handleCountryChange}" required="true"/>
+                                            <lightning:combobox aura:id="countryList" name="country" label="{!$Label.c.PRM_Country}" placeholder="Select" dropdownAlignment="auto" options="{!v.optionsCountry}" value="{!v.countrySelected}" onchange="{!c.handleCountryChange}" required="true"/>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="slds-form__item" role="listitem">
                                     <div class="slds-form-element slds-form-element_stacked slds-is-editing">
                                         <div class="slds-form-element__control">        
-                                            <lightning:combobox aura:id="stateList" 
-                                            name="state" label="{!$Label.c.PRM_State}" 
-                                            placeholder="Select" dropdownAlignment="auto" 
-                                            options="{!v.optionsState}"  value="{!v.stateSelected}" 
-                                            required="true" onchange="{!c.handleStateChange}"/> 
+                                            <lightning:combobox aura:id="stateList" name="state" label="{!$Label.c.PRM_State}" placeholder="Select" dropdownAlignment="auto" options="{!v.optionsState}"  value="{!v.stateSelected}" required="true" onchange="{!c.handleStateChange}"/> 
                                         </div>
                                     </div>
                                 </div>
@@ -346,9 +287,7 @@ access="global" >
                                 <div class="slds-form__item" role="listitem">
                                     <div class="slds-form-element slds-form-element_stacked slds-is-editing">
                                         <div class="slds-form-element__control">
-                                            <lightning:input aura:id="cityAdd" 
-                                            name="city" label="{!$Label.c.PRM_City}" 
-                                            value="{!v.addressCity}" required="true"/>
+                                            <lightning:input aura:id="cityAdd" name="city" label="{!$Label.c.PRM_City}" value="{!v.addressCity}" required="true"/>
                                         </div>
                                     </div>
                                 </div>
@@ -356,18 +295,13 @@ access="global" >
                                 <div class="slds-form__item" role="listitem">
                                     <div class="slds-form-element slds-form-element_stacked slds-is-editing">
                                         <div class="slds-form-element__control">
-                                            <lightning:input 
-                                            aura:id = "zipCode" 
-                                            name="zipCode" 
-                                            label="{!$Label.c.PRM_Zip_Code}" 
-                                            value="{!v.addressZip}" 
-                                            required="true"/>
+                                            <lightning:input aura:id = "zipCode" name="zipCode" label="{!$Label.c.PRM_Zip_Code}" value="{!v.addressZip}" required="true"/>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             
-                            
+                                                        
                         </div>
                     </div>
                 </aura:if>
@@ -377,16 +311,13 @@ access="global" >
         <aura:if isTrue="{!v.showFinalPage}">
             <div style="background-color:white">
                 
-                <div class="inlineTitle slds-p-top--large slds-p-horizontal--medium 
-                slds-p-bottom--medium slds-text-heading--medium slds-align_absolute-center">
+                <div class="inlineTitle slds-p-top--large slds-p-horizontal--medium slds-p-bottom--medium slds-text-heading--medium slds-align_absolute-center">
                     {!$Label.c.PRM_Submission}
                 </div>
                 <div class="slds-border_top"></div>
                 
                 <div class="slds-p-bottom--medium slds-p-top--medium slds-align_absolute-center">
-                    {!$Label.c.PRM_RegistrationCompletion1}&nbsp;<a href="{!v.url}" onclick="{!c.navigateToAccount}" 
-                    rel="noopener noreferrer" 
-                    target="_blank">{!$Label.c.PRM_RegistrationCompletion2}</a>&nbsp;{!$Label.c.PRM_RegistrationCompletion3}
+                    {!$Label.c.PRM_RegistrationCompletion1}&nbsp;<a href="{!v.url}" onclick="{!c.navigateToAccount}" rel="noopener noreferrer" target="_blank">{!$Label.c.PRM_RegistrationCompletion2}</a>&nbsp;{!$Label.c.PRM_RegistrationCompletion3}
                 </div>
             </div>
         </aura:if>
@@ -406,6 +337,8 @@ access="global" >
                 <lightning:button aura:id="cancelBtn" label="Cancel" onclick="{!c.cancelbtn}"/>
                 <lightning:button aura:id="prevButn" class="slds-hide" label="Back" onclick="{!c.previous}"/>
                 <lightning:button aura:id="nextBtn" label="Next" onclick="{!c.next}"/>
+                <!--<lightning:button aura:id="nextDuplicateInfoBtn" class="slds-hide" label="Next" onclick="{!c.confirmation}"/>-->
+                <!--<lightning:button aura:id="prevConfirmationBtn" class="slds-hide" label="Previous" onclick="{!c.duplicateInfo}"/>-->
                 <lightning:button aura:id="submit" class="slds-hide" label="Submit" onclick="{!c.finalSubmission}"/>
                 <lightning:button aura:id="closeBtn" class="slds-hide" label="Close" onclick="{!c.cancelbtn}"/>
                 

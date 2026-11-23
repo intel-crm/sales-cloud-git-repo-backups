@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
     <excludeButtons>ChangeOwnerOne</excludeButtons>
-    <excludeButtons>Submit</excludeButtons>
     <layoutSections>
         <customLabel>false</customLabel>
         <detailHeading>false</detailHeading>
@@ -30,10 +29,6 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>PRM_Reject_Reason__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
                 <field>PRM_Status_Reason__c</field>
             </layoutItems>
             <layoutItems>
@@ -50,7 +45,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Entitlement_Details__c</field>
+                <field>PRM_EV_Token__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -59,10 +54,6 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>PRM_Job_Function__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>PRM_Profession__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -122,6 +113,14 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
+                <field>PRM_EV_flag__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>PRM_Email_Verification_Criteria__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
                 <field>PRM_DeDup_Criteria__c</field>
             </layoutItems>
             <layoutItems>
@@ -154,6 +153,10 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
+                <field>PRM_EmailVerifiedDateTime__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
                 <field>PRM_Email_Domain_Check__c</field>
             </layoutItems>
             <layoutItems>
@@ -179,6 +182,10 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>PRM_Subscriptions__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>PRM_Contact_Login_ID__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -209,6 +216,10 @@
                 <field>PRM_Phy_Country__c</field>
             </layoutItems>
             <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>PRM_Approve_Reject_Link__c</field>
+            </layoutItems>
+            <layoutItems>
                 <behavior>Edit</behavior>
                 <field>PRM_ProcessInstanceWorkItem_Id__c</field>
             </layoutItems>
@@ -230,23 +241,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>PRM_Review_Note_txt__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>PRM_Submitted_Date__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Sync_Profile_Response__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Profile_Response_Sync_Result__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>PRM_New_Account__c</field>
+                <field>PRM_Account_Request_Queue__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -257,14 +252,6 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>PRM_Profile_Response__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>PRM_Wechat_Union_Id__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>PRM_Tax_Number__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
@@ -301,11 +288,6 @@
     <platformActionList>
         <actionListContext>Record</actionListContext>
         <platformActionListItems>
-            <actionName>FeedItem.TextPost</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>0</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
             <actionName>Clone</actionName>
             <actionType>StandardButton</actionType>
             <sortOrder>1</sortOrder>
@@ -326,14 +308,9 @@
             <sortOrder>4</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>PRM_Registration_Request__c.Re_Validate</actionName>
+            <actionName>FeedItem.TextPost</actionName>
             <actionType>QuickAction</actionType>
-            <sortOrder>5</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>PRM_Registration_Request__c.Request_Company_Document</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>6</sortOrder>
+            <sortOrder>0</sortOrder>
         </platformActionListItems>
     </platformActionList>
     <quickActionList>
@@ -357,41 +334,6 @@
         </quickActionListItems>
     </quickActionList>
     <relatedLists>
-        <excludeButtons>MassChangeOwner</excludeButtons>
-        <excludeButtons>New</excludeButtons>
-        <fields>NAME</fields>
-        <fields>PRM_AI_Response__c</fields>
-        <fields>PRM_Status__c</fields>
-        <fields>PRM_AI_Comments__c</fields>
-        <fields>PRM_AI_Evidence__c</fields>
-        <relatedList>PRM_Registration_AI_Agent_Info__c.PRM_Registration_Request__c</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <excludeButtons>MassChangeOwner</excludeButtons>
-        <excludeButtons>New</excludeButtons>
-        <fields>NAME</fields>
-        <fields>CREATED_DATE</fields>
-        <fields>Email_Template_Name__c</fields>
-        <relatedList>PRM_EmailLog__c.PRM_IPA_Registration_Request__c</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <relatedList>RelatedFileList</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <fields>NAME</fields>
-        <fields>PRM_Step_Number__c</fields>
-        <fields>Stage__c</fields>
-        <fields>PRM_Time_Difference__c</fields>
-        <fields>PRM_Registration_Type__c</fields>
-        <fields>PRM_Account__c</fields>
-        <fields>PRM_contact__c</fields>
-        <fields>PRM_Integration_Log__c</fields>
-        <fields>PRM_Log_Entries__c</fields>
-        <relatedList>PRM_Registration_Tracker__c.PRM_Registration__c</relatedList>
-        <sortField>PRM_Step_Number__c</sortField>
-        <sortOrder>Asc</sortOrder>
-    </relatedLists>
-    <relatedLists>
         <fields>CreatedDate</fields>
         <fields>StepStatus</fields>
         <fields>OriginalActor</fields>
@@ -400,11 +342,12 @@
         <relatedList>RelatedProcessHistoryList</relatedList>
     </relatedLists>
     <relatedLists>
-        <relatedList>RelatedEntityHistoryList</relatedList>
+        <fields>NAME</fields>
+        <relatedList>PRM_CIMSearchResults__c.PRM_RegReq_Id__c</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
-        <relatedList>PRM_CIMSearchResults__c.PRM_RegReq_Id__c</relatedList>
+        <relatedList>PRM_Registration_Profile_Response__c.PRM_Registration_Request_Id__c</relatedList>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>
@@ -412,7 +355,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h3b00000eyf5N</masterLabel>
+        <masterLabel>00h4F000000Fkwp</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

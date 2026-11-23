@@ -1,0 +1,15 @@
+<template>
+	<table class="slds-table slds-table_cell-buffer slds-table_bordered"
+		aria-label="Example default base table of Opportunities">
+		<thead>
+			<tr class="slds-line-height_reset">
+				<template for:each={ElementList} for:item="acc" for:index="index">
+					<th class="" scope="col" key={acc.Id} onchange={Change} draggable="true" ondrop={Drop} ontouchstart={DragStart}
+						ondragstart={DragStart} ondragover={DragOver} ontouchend={Drop}  ontouchmove={DragOver} title={index}>
+						<div class="slds-truncate" title={acc.title}>{acc.name}</div>
+					</th>
+				</template>
+			</tr>
+		</thead>
+	</table>
+</template>

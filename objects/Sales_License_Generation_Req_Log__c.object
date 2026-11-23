@@ -164,16 +164,6 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>LicenseId__c</fullName>
-        <externalId>false</externalId>
-        <label>LicenseId</label>
-        <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>License_Id__c</fullName>
         <label>License Id</label>
         <length>131072</length>
@@ -258,16 +248,6 @@
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Sales_License_Contact__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <label>Contact</label>
-        <referenceTo>Contact</referenceTo>
-        <relationshipName>License_Generation_Req_Logs</relationshipName>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Lookup</type>
     </fields>
     <fields>
         <fullName>Sales_License_File__c</fullName>

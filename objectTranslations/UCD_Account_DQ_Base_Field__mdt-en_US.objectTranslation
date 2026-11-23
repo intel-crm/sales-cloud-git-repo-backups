@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>UCD Account DQ Base Field</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>UCD Account DQ Base Fields</value>
+    </caseValues>
+    <fields>
+        <label><!-- fieldAPIName --></label>
+        <name>fieldAPIName__c</name>
+    </fields>
+    <fields>
+        <label><!-- fieldType --></label>
+        <name>fieldType__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

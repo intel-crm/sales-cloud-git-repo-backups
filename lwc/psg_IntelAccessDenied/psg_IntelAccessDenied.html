@@ -1,0 +1,21 @@
+<template>
+    <div if:true={showContent}>
+      <div class="ad-outer-container">
+        <div class="ad-inner-container container">
+          <div class="ad-main-content">
+            <div class="color-white">{label.HeaderHome}</div>
+            <h1 class="title color-white">{label.HeaderLabel}</h1>
+          </div>
+          <div class="ad-right-content">
+            {label.Sidetxt1Label}<br/>
+            <a class="color-pale-blue" href="">{label.SignInLabel}</a> | <a class="color-pale-blue" href="">{label.LearnMoreLabel}</a>
+          </div>
+        </div>
+      </div>
+      <div class="ad-message-container">
+        <div class="ad-message container">
+          {label.ContentLabel}
+        </div>
+      </div>
+    </div>
+  </template>

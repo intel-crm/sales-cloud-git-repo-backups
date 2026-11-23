@@ -1,6 +1,6 @@
 /**************************************************************************************************************
 Apex Class Name:  Core_OpportunityNameSearch_Test
-Version     : 1.0 
+Version     : 2.0 
 Created Date: 15 MAY 2016
 Function    : Test class for custom REST service for Opportunity Name Search
 Modification Log :

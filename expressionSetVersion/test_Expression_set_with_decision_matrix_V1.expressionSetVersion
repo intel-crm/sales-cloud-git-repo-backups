@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExpressionSetDefinitionVersion xmlns="http://soap.sforce.com/2006/04/metadata">
+    <decimalScale>2</decimalScale>
+    <expressionSetDefinition>test_Expression_set_with_decision_matrix</expressionSetDefinition>
+    <label>test Expression set with decision matrix V1</label>
+    <processType>ProductCategoryQualification</processType>
+    <shouldShowExplExternally>false</shouldShowExplExternally>
+    <startDate>2025-04-11T07:40:32.000Z</startDate>
+    <status>Draft</status>
+    <versionNumber>1</versionNumber>
+</ExpressionSetDefinitionVersion>

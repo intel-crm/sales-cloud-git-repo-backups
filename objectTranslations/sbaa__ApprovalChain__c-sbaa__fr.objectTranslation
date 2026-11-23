@@ -16,6 +16,10 @@
             <masterLabel>Opportunity</masterLabel>
             <translation><!-- Opportunity --></translation>
         </picklistValues>
+        <picklistValues>
+            <masterLabel>Quote</masterLabel>
+            <translation><!-- Quote --></translation>
+        </picklistValues>
     </fields>
     <gender>Feminine</gender>
     <nameFieldLabel>Nom de la chaîne</nameFieldLabel>

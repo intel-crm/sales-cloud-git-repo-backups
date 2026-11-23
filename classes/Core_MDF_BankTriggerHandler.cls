@@ -34,8 +34,7 @@ public without sharing class Core_MDF_BankTriggerHandler extends TriggerHandler{
             * @description          : Method for processing the Banks after their Insertion
             * @param Trigger.NEW    : List of Banks that have been Inserted
             */
-            //Core_MDF_BankServiceHandler.shareBankRecordsWithUsers((Map<Id,Core_MDF_Bank__c>) Trigger.newMap);
-            Core_MDF_BankServiceHandler.createShareForBank(new List<Id>(Trigger.newMap.keySet()),'ExtSharing');
+            Core_MDF_BankServiceHandler.shareBankRecordsWithUsers((Map<Id,Core_MDF_Bank__c>) Trigger.newMap);
         }
     }
 

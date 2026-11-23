@@ -1,0 +1,38 @@
+.sow-container {
+    width: 100%;
+}
+
+.sow-item {
+    border: 1px solid #d8dde6;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 0.25rem;
+}
+
+.sow-field {
+    margin-bottom: 0.5rem;
+}
+
+.sow-label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.sow-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.custom-input, .rich-text-wrapper {
+    width: 100%;
+}
+
+.help-icon {
+    margin-left: 0.25rem;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+}

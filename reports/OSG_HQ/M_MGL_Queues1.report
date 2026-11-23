@@ -39,10 +39,6 @@
     <columns>
         <field>Lead.Core_Marketing_Tactic_ID__c</field>
     </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Lead.SWS_Software_Lead__c</field>
-    </columns>
     <description>RT: Leads</description>
     <filter>
         <booleanFilter>((1 AND 2) OR 5) AND 3 AND 4</booleanFilter>

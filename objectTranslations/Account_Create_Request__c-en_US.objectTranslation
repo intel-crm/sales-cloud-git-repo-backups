@@ -17,6 +17,10 @@
         <name>Address__c</name>
     </fields>
     <fields>
+        <label><!-- CCDO Action Time New --></label>
+        <name>CCDO_Action_Time_New__c</name>
+    </fields>
+    <fields>
         <label><!-- UCD Measured SLA (Hours) --></label>
         <name>CCDO_SLA__c</name>
     </fields>
@@ -25,77 +29,47 @@
         <name>Comments__c</name>
     </fields>
     <fields>
-        <help><!-- Customer categorization and selling motion to evaluate Customers and to determine proper SMG coverage model. --></help>
-        <label><!-- Account Category --></label>
+        <label><!-- Semi-Annual Temp Account Category --></label>
         <name>Core_Account_Category__c</name>
         <picklistValues>
-            <masterLabel>Device Builder - MNC</masterLabel>
-            <translation><!-- Device Builder - MNC --></translation>
+            <masterLabel>Distributors</masterLabel>
+            <translation><!-- Distributors --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Device Builder - Regional OxM</masterLabel>
-            <translation><!-- Device Builder - Regional OxM --></translation>
+            <masterLabel>Region Branded Disti</masterLabel>
+            <translation><!-- Region Branded Disti --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Distributors (IA)</masterLabel>
-            <translation><!-- Distributors (IA) --></translation>
+            <masterLabel>Region Direct OxM Accts (non-T30)</masterLabel>
+            <translation><!-- Region Direct OxM Accts (non-T30) --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>End Customer</masterLabel>
-            <translation><!-- End Customer --></translation>
+            <masterLabel>Region Named B2B End User</masterLabel>
+            <translation><!-- Region Named B2B End User --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Extended Sales Force</masterLabel>
-            <translation><!-- Extended Sales Force --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Hyperscaler (AWS, Azure, GCP)</masterLabel>
-            <translation><!-- Hyperscaler (AWS, Azure, GCP) --></translation>
+            <masterLabel>Region Named Billings Accts</masterLabel>
+            <translation><!-- Region Named Billings Accts --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Regional Co-Sell Partners</masterLabel>
             <translation><!-- Regional Co-Sell Partners --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Reseller - Branded Disti</masterLabel>
-            <translation><!-- Reseller - Branded Disti --></translation>
+            <masterLabel>Regional GSI/ISV/MSP</masterLabel>
+            <translation><!-- Regional GSI/ISV/MSP --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Reseller - Named Billing Accounts</masterLabel>
-            <translation><!-- Reseller - Named Billing Accounts --></translation>
+            <masterLabel>Regional Retailer</masterLabel>
+            <translation><!-- Regional Retailer --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Reseller - Retailers</masterLabel>
-            <translation><!-- Reseller - Retailers --></translation>
+            <masterLabel>Strategic Acct/Country Opportunity</masterLabel>
+            <translation><!-- Strategic Acct/Country Opportunity --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Solution Enabler (SI, ISV, CSP, MSP)</masterLabel>
-            <translation><!-- Solution Enabler (SI, ISV, CSP, MSP) --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
-        <help><!-- Segmentation of accounts for focus &amp; resourcing.
-Level 1: High-level customer engagement &amp; dedicated Sales/Technical resources
-Level 2: Transaction and discovery accounts with minimal required resources
-Level 3: Program generated accounts (ODRs, DDRs, DRs)
-No Level: Not Covered Accounts &amp; no Opportunities present --></help>
-        <label><!-- Account Level --></label>
-        <name>Core_Account_Level__c</name>
-        <picklistValues>
-            <masterLabel>Level 1</masterLabel>
-            <translation><!-- Level 1 --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Level 2</masterLabel>
-            <translation><!-- Level 2 --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Level 3</masterLabel>
-            <translation><!-- Level 3 --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>No Level</masterLabel>
-            <translation><!-- No Level --></translation>
+            <masterLabel>Top 30 Global Billings</masterLabel>
+            <translation><!-- Top 30 Global Billings --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -430,12 +404,8 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
             <translation><!-- Chiga --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Chinese Simplified</masterLabel>
-            <translation><!-- Chinese Simplified --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Chinese Traditional</masterLabel>
-            <translation><!-- Chinese Traditional --></translation>
+            <masterLabel>Chinese</masterLabel>
+            <translation><!-- Chinese --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Chinook jargon</masterLabel>
@@ -2019,26 +1989,6 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <name>Core_CRM_Approver_Additional_Info__c</name>
     </fields>
     <fields>
-        <label><!-- Region --></label>
-        <name>Core_Geo__c</name>
-        <picklistValues>
-            <masterLabel>APJ</masterLabel>
-            <translation><!-- APJ --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>ASMO</masterLabel>
-            <translation><!-- ASMO --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>EMEA</masterLabel>
-            <translation><!-- EMEA --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>PRC</masterLabel>
-            <translation><!-- PRC --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
         <help><!-- Please select the Sales Group that YOU work for, and if you’re a Regional Seller and need to claim a Global or Named Account, please request an exception approval via AAQ. More details can be found at goto/SalesOrgHierarchy --></help>
         <label><!-- Sales Group --></label>
         <name>Core_Sales_Groups__c</name>
@@ -2051,12 +2001,20 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
             <translation><!-- APJ Hosted Sales Group --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>APJ India Sales Group</masterLabel>
+            <translation><!-- APJ India Sales Group --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>APJ Japan Sales Group</masterLabel>
             <translation><!-- APJ Japan Sales Group --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>APJ Korea Sales Group</masterLabel>
             <translation><!-- APJ Korea Sales Group --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>APJ Partner Holding</masterLabel>
+            <translation><!-- APJ Partner Holding --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>APJ Partner Led</masterLabel>
@@ -2091,6 +2049,10 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
             <translation><!-- Americas Mexico Sales Group --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Americas Partner Holding</masterLabel>
+            <translation><!-- Americas Partner Holding --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Americas Partner Led</masterLabel>
             <translation><!-- Americas Partner Led --></translation>
         </picklistValues>
@@ -2103,6 +2065,10 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
             <translation><!-- EMEA Hosted Sales Group --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>EMEA Partner Holding</masterLabel>
+            <translation><!-- EMEA Partner Holding --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>EMEA Partner Led</masterLabel>
             <translation><!-- EMEA Partner Led --></translation>
         </picklistValues>
@@ -2111,16 +2077,16 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
             <translation><!-- EMEA Sales Group --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>India Partner Led</masterLabel>
-            <translation><!-- India Partner Led --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>India Sales Group</masterLabel>
-            <translation><!-- India Sales Group --></translation>
+            <masterLabel>Global Solutions &amp; Services Sales Group</masterLabel>
+            <translation><!-- Global Solutions &amp; Services Sales Group --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>PRC Hosted Sales Group</masterLabel>
             <translation><!-- PRC Hosted Sales Group --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRC Partner Holding</masterLabel>
+            <translation><!-- PRC Partner Holding --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>PRC Partner Led</masterLabel>
@@ -2632,1144 +2598,1032 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         </picklistValues>
     </fields>
     <fields>
-        <label><!-- Umbrella Group --></label>
-        <name>Core_Umbrella_Group__c</name>
+        <label><!-- Region --></label>
+        <name>Core_geo__c</name>
         <picklistValues>
-            <masterLabel>Academia HPC account</masterLabel>
-            <translation><!-- Academia HPC account --></translation>
+            <masterLabel>APJ</masterLabel>
+            <translation><!-- APJ --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Affiliated Universities To Moe</masterLabel>
-            <translation><!-- Affiliated Universities To Moe --></translation>
+            <masterLabel>ASMO</masterLabel>
+            <translation><!-- ASMO --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Algeria Government</masterLabel>
-            <translation><!-- Algeria Government --></translation>
+            <masterLabel>EMEA</masterLabel>
+            <translation><!-- EMEA --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Anduril</masterLabel>
-            <translation><!-- Anduril --></translation>
+            <masterLabel>PRC</masterLabel>
+            <translation><!-- PRC --></translation>
         </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Country Region --></label>
+        <name>Country_Region__c</name>
         <picklistValues>
-            <masterLabel>Argonne</masterLabel>
-            <translation><!-- Argonne --></translation>
+            <masterLabel>Afghanistan</masterLabel>
+            <translation><!-- Afghanistan --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Army</masterLabel>
-            <translation><!-- Army --></translation>
+            <masterLabel>Aland Islands</masterLabel>
+            <translation><!-- Aland Islands --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Army &amp; Air Force Exchange Service</masterLabel>
-            <translation><!-- Army &amp; Air Force Exchange Service --></translation>
+            <masterLabel>Albania</masterLabel>
+            <translation><!-- Albania --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Australian Government</masterLabel>
-            <translation><!-- Australian Government --></translation>
+            <masterLabel>Algeria</masterLabel>
+            <translation><!-- Algeria --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Austria Government</masterLabel>
-            <translation><!-- Austria Government --></translation>
+            <masterLabel>American Samoa</masterLabel>
+            <translation><!-- American Samoa --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Aversan</masterLabel>
-            <translation><!-- Aversan --></translation>
+            <masterLabel>Andorra</masterLabel>
+            <translation><!-- Andorra --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>BAE Systems</masterLabel>
-            <translation><!-- BAE Systems --></translation>
+            <masterLabel>Angola</masterLabel>
+            <translation><!-- Angola --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Bahrain Government</masterLabel>
-            <translation><!-- Bahrain Government --></translation>
+            <masterLabel>Anguilla</masterLabel>
+            <translation><!-- Anguilla --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Baker Hughes</masterLabel>
-            <translation><!-- Baker Hughes --></translation>
+            <masterLabel>Antarctica</masterLabel>
+            <translation><!-- Antarctica --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Bangladesh Government</masterLabel>
-            <translation><!-- Bangladesh Government --></translation>
+            <masterLabel>Antigua/Barbuda</masterLabel>
+            <translation><!-- Antigua/Barbuda --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Bank of Baroda</masterLabel>
-            <translation><!-- Bank of Baroda --></translation>
+            <masterLabel>Argentina</masterLabel>
+            <translation><!-- Argentina --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>BeiGene(百济神州）</masterLabel>
-            <translation><!-- BeiGene(百济神州） --></translation>
+            <masterLabel>Armenia</masterLabel>
+            <translation><!-- Armenia --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Belgium Government</masterLabel>
-            <translation><!-- Belgium Government --></translation>
+            <masterLabel>Aruba</masterLabel>
+            <translation><!-- Aruba --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Benin Government</masterLabel>
-            <translation><!-- Benin Government --></translation>
+            <masterLabel>Australia</masterLabel>
+            <translation><!-- Australia --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>BlueForge Alliance</masterLabel>
-            <translation><!-- BlueForge Alliance --></translation>
+            <masterLabel>Austria</masterLabel>
+            <translation><!-- Austria --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Boeing</masterLabel>
-            <translation><!-- Boeing --></translation>
+            <masterLabel>Azerbaijan</masterLabel>
+            <translation><!-- Azerbaijan --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Bonneville Power Administration</masterLabel>
-            <translation><!-- Bonneville Power Administration --></translation>
+            <masterLabel>Bahamas</masterLabel>
+            <translation><!-- Bahamas --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Booz Allen Hamilton</masterLabel>
-            <translation><!-- Booz Allen Hamilton --></translation>
+            <masterLabel>Bahrain</masterLabel>
+            <translation><!-- Bahrain --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Boss Digital-Procurement (博思数采)</masterLabel>
-            <translation><!-- Boss Digital-Procurement (博思数采) --></translation>
+            <masterLabel>Bangladesh</masterLabel>
+            <translation><!-- Bangladesh --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Brookhaven National Laboratory</masterLabel>
-            <translation><!-- Brookhaven National Laboratory --></translation>
+            <masterLabel>Barbados</masterLabel>
+            <translation><!-- Barbados --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Bulgaria Government</masterLabel>
-            <translation><!-- Bulgaria Government --></translation>
+            <masterLabel>Belarus</masterLabel>
+            <translation><!-- Belarus --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>CACI</masterLabel>
-            <translation><!-- CACI --></translation>
+            <masterLabel>Belgium</masterLabel>
+            <translation><!-- Belgium --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>CAE</masterLabel>
-            <translation><!-- CAE --></translation>
+            <masterLabel>Belize</masterLabel>
+            <translation><!-- Belize --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>CENTER FOR DISEASE CONTROL</masterLabel>
-            <translation><!-- CENTER FOR DISEASE CONTROL --></translation>
+            <masterLabel>Benin</masterLabel>
+            <translation><!-- Benin --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>CENTERS FOR MEDICARE AND MEDICAID</masterLabel>
-            <translation><!-- CENTERS FOR MEDICARE AND MEDICAID --></translation>
+            <masterLabel>Bermuda</masterLabel>
+            <translation><!-- Bermuda --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>CHINA - MINISTRY OF EDUCATION (HQ)</masterLabel>
-            <translation><!-- CHINA - MINISTRY OF EDUCATION (HQ) --></translation>
+            <masterLabel>Bhutan</masterLabel>
+            <translation><!-- Bhutan --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>CHINA GOVERNMENT PURCHASE CENTRE</masterLabel>
-            <translation><!-- CHINA GOVERNMENT PURCHASE CENTRE --></translation>
+            <masterLabel>Bolivia</masterLabel>
+            <translation><!-- Bolivia --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>CNCERT（国家互联网应急中心）</masterLabel>
-            <translation><!-- CNCERT（国家互联网应急中心） --></translation>
+            <masterLabel>Bonaire</masterLabel>
+            <translation><!-- Bonaire --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Central Government Procurement Center</masterLabel>
-            <translation><!-- Central Government Procurement Center --></translation>
+            <masterLabel>Bosnia-Herz.</masterLabel>
+            <translation><!-- Bosnia-Herz. --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>China Meteorology Administration （中国气象局）</masterLabel>
-            <translation><!-- China Meteorology Administration （中国气象局） --></translation>
+            <masterLabel>Botswana</masterLabel>
+            <translation><!-- Botswana --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Chinese Academy of Sciences (中国科学院）</masterLabel>
-            <translation><!-- Chinese Academy of Sciences (中国科学院） --></translation>
+            <masterLabel>Bouvet Islands</masterLabel>
+            <translation><!-- Bouvet Islands --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Costa Rica Government</masterLabel>
-            <translation><!-- Costa Rica Government --></translation>
+            <masterLabel>Brazil</masterLabel>
+            <translation><!-- Brazil --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Crystal</masterLabel>
-            <translation><!-- Crystal --></translation>
+            <masterLabel>Brit.Ind.Oc.Ter</masterLabel>
+            <translation><!-- Brit.Ind.Oc.Ter --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Curtiss Wright</masterLabel>
-            <translation><!-- Curtiss Wright --></translation>
+            <masterLabel>Brit.Virgin Is.</masterLabel>
+            <translation><!-- Brit.Virgin Is. --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Czechia Government</masterLabel>
-            <translation><!-- Czechia Government --></translation>
+            <masterLabel>Brunei</masterLabel>
+            <translation><!-- Brunei --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Defense</masterLabel>
-            <translation><!-- Defense --></translation>
+            <masterLabel>Bulgaria</masterLabel>
+            <translation><!-- Bulgaria --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Dem. Rep. Congo Government</masterLabel>
-            <translation><!-- Dem. Rep. Congo Government --></translation>
+            <masterLabel>Burkina Faso</masterLabel>
+            <translation><!-- Burkina Faso --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Denmark Government</masterLabel>
-            <translation><!-- Denmark Government --></translation>
+            <masterLabel>Burundi</masterLabel>
+            <translation><!-- Burundi --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>EU</masterLabel>
-            <translation><!-- EU --></translation>
+            <masterLabel>C Africa Rpblic</masterLabel>
+            <translation><!-- C Africa Rpblic --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>EU Govt – Research</masterLabel>
-            <translation><!-- EU Govt – Research --></translation>
+            <masterLabel>Cambodia</masterLabel>
+            <translation><!-- Cambodia --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Egypt Government</masterLabel>
-            <translation><!-- Egypt Government --></translation>
+            <masterLabel>Cameroon</masterLabel>
+            <translation><!-- Cameroon --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>El Salvador Government</masterLabel>
-            <translation><!-- El Salvador Government --></translation>
+            <masterLabel>Canada</masterLabel>
+            <translation><!-- Canada --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Estonia Government</masterLabel>
-            <translation><!-- Estonia Government --></translation>
+            <masterLabel>Cape Verde</masterLabel>
+            <translation><!-- Cape Verde --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Ethiopia Government</masterLabel>
-            <translation><!-- Ethiopia Government --></translation>
+            <masterLabel>Cayman Islands</masterLabel>
+            <translation><!-- Cayman Islands --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Extreme Engineering</masterLabel>
-            <translation><!-- Extreme Engineering --></translation>
+            <masterLabel>Chad</masterLabel>
+            <translation><!-- Chad --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>FDA</masterLabel>
-            <translation><!-- FDA --></translation>
+            <masterLabel>Chile</masterLabel>
+            <translation><!-- Chile --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Federal Government Of Brazil</masterLabel>
-            <translation><!-- Federal Government Of Brazil --></translation>
+            <masterLabel>China</masterLabel>
+            <translation><!-- China --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Fermilab</masterLabel>
-            <translation><!-- Fermilab --></translation>
+            <masterLabel>Christmas Islnd</masterLabel>
+            <translation><!-- Christmas Islnd --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Fidelis Cybersecurity</masterLabel>
-            <translation><!-- Fidelis Cybersecurity --></translation>
+            <masterLabel>Cocos Islands</masterLabel>
+            <translation><!-- Cocos Islands --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Finland Government</masterLabel>
-            <translation><!-- Finland Government --></translation>
+            <masterLabel>Colombia</masterLabel>
+            <translation><!-- Colombia --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>France Government</masterLabel>
-            <translation><!-- France Government --></translation>
+            <masterLabel>Comoros</masterLabel>
+            <translation><!-- Comoros --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>France Govt - Research</masterLabel>
-            <translation><!-- France Govt - Research --></translation>
+            <masterLabel>Congo</masterLabel>
+            <translation><!-- Congo --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>GACC-General Administration of Customs of PR China</masterLabel>
-            <translation><!-- GACC-General Administration of Customs of PR China --></translation>
+            <masterLabel>Cooks Islands</masterLabel>
+            <translation><!-- Cooks Islands --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>GE Aerospace</masterLabel>
-            <translation><!-- GE Aerospace --></translation>
+            <masterLabel>Costa Rica</masterLabel>
+            <translation><!-- Costa Rica --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>GE Vernova</masterLabel>
-            <translation><!-- GE Vernova --></translation>
+            <masterLabel>Cote d&apos;Ivoire</masterLabel>
+            <translation><!-- Cote d&apos;Ivoire --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>General Dynamics</masterLabel>
-            <translation><!-- General Dynamics --></translation>
+            <masterLabel>Croatia</masterLabel>
+            <translation><!-- Croatia --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Georgia Government</masterLabel>
-            <translation><!-- Georgia Government --></translation>
+            <masterLabel>Cuba</masterLabel>
+            <translation><!-- Cuba --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Germany Government</masterLabel>
-            <translation><!-- Germany Government --></translation>
+            <masterLabel>Curacao</masterLabel>
+            <translation><!-- Curacao --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Germany Govt - Research</masterLabel>
-            <translation><!-- Germany Govt - Research --></translation>
+            <masterLabel>Cyprus</masterLabel>
+            <translation><!-- Cyprus --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Ghana Government</masterLabel>
-            <translation><!-- Ghana Government --></translation>
+            <masterLabel>Czech Republic</masterLabel>
+            <translation><!-- Czech Republic --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Gibraltar Government</masterLabel>
-            <translation><!-- Gibraltar Government --></translation>
+            <masterLabel>Dem. Rep. Congo</masterLabel>
+            <translation><!-- Dem. Rep. Congo --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Gov-Guangdong</masterLabel>
-            <translation><!-- Gov-Guangdong --></translation>
+            <masterLabel>Denmark</masterLabel>
+            <translation><!-- Denmark --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Government Sector (GOV STM Sector)</masterLabel>
-            <translation><!-- Government Sector (GOV STM Sector) --></translation>
+            <masterLabel>Djibouti</masterLabel>
+            <translation><!-- Djibouti --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Government of Anhui Province</masterLabel>
-            <translation><!-- Government of Anhui Province --></translation>
+            <masterLabel>Dominica</masterLabel>
+            <translation><!-- Dominica --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Government of Chongqing</masterLabel>
-            <translation><!-- Government of Chongqing --></translation>
+            <masterLabel>Dominican Rep.</masterLabel>
+            <translation><!-- Dominican Rep. --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Government of Hainan</masterLabel>
-            <translation><!-- Government of Hainan --></translation>
+            <masterLabel>Ecuador</masterLabel>
+            <translation><!-- Ecuador --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Government of Henan</masterLabel>
-            <translation><!-- Government of Henan --></translation>
+            <masterLabel>Egypt</masterLabel>
+            <translation><!-- Egypt --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Government of Hubei Province</masterLabel>
-            <translation><!-- Government of Hubei Province --></translation>
+            <masterLabel>El Salvador</masterLabel>
+            <translation><!-- El Salvador --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Government of Jiangsu</masterLabel>
-            <translation><!-- Government of Jiangsu --></translation>
+            <masterLabel>Equatorial Guin</masterLabel>
+            <translation><!-- Equatorial Guin --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Government of Shandong</masterLabel>
-            <translation><!-- Government of Shandong --></translation>
+            <masterLabel>Eritrea</masterLabel>
+            <translation><!-- Eritrea --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Government of Shanghai</masterLabel>
-            <translation><!-- Government of Shanghai --></translation>
+            <masterLabel>Estonia</masterLabel>
+            <translation><!-- Estonia --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Government of Zhejiang</masterLabel>
-            <translation><!-- Government of Zhejiang --></translation>
+            <masterLabel>Ethiopia</masterLabel>
+            <translation><!-- Ethiopia --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Great Wall Securities</masterLabel>
-            <translation><!-- Great Wall Securities --></translation>
+            <masterLabel>Falkland Islnds</masterLabel>
+            <translation><!-- Falkland Islnds --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Greece Government</masterLabel>
-            <translation><!-- Greece Government --></translation>
+            <masterLabel>Faroe Islands</masterLabel>
+            <translation><!-- Faroe Islands --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Guizhou Government</masterLabel>
-            <translation><!-- Guizhou Government --></translation>
+            <masterLabel>Fiji</masterLabel>
+            <translation><!-- Fiji --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Hongkong Hospital Authority</masterLabel>
-            <translation><!-- Hongkong Hospital Authority --></translation>
+            <masterLabel>Finland</masterLabel>
+            <translation><!-- Finland --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Hongkong SAR Education Bureau</masterLabel>
-            <translation><!-- Hongkong SAR Education Bureau --></translation>
+            <masterLabel>France</masterLabel>
+            <translation><!-- France --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Hungary Government</masterLabel>
-            <translation><!-- Hungary Government --></translation>
+            <masterLabel>French Guiana</masterLabel>
+            <translation><!-- French Guiana --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Idaho National Lab</masterLabel>
-            <translation><!-- Idaho National Lab --></translation>
+            <masterLabel>French Poly.</masterLabel>
+            <translation><!-- French Poly. --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>India Government</masterLabel>
-            <translation><!-- India Government --></translation>
+            <masterLabel>French S. Terr.</masterLabel>
+            <translation><!-- French S. Terr. --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Indonesia Government</masterLabel>
-            <translation><!-- Indonesia Government --></translation>
+            <masterLabel>Gabon</masterLabel>
+            <translation><!-- Gabon --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Iraq Government</masterLabel>
-            <translation><!-- Iraq Government --></translation>
+            <masterLabel>Gambia</masterLabel>
+            <translation><!-- Gambia --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Ireland Government</masterLabel>
-            <translation><!-- Ireland Government --></translation>
+            <masterLabel>Georgia</masterLabel>
+            <translation><!-- Georgia --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Israel Government</masterLabel>
-            <translation><!-- Israel Government --></translation>
+            <masterLabel>Germany</masterLabel>
+            <translation><!-- Germany --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Italy Government</masterLabel>
-            <translation><!-- Italy Government --></translation>
+            <masterLabel>Ghana</masterLabel>
+            <translation><!-- Ghana --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Japan Government</masterLabel>
-            <translation><!-- Japan Government --></translation>
+            <masterLabel>Gibraltar</masterLabel>
+            <translation><!-- Gibraltar --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Japan Local BOE</masterLabel>
-            <translation><!-- Japan Local BOE --></translation>
+            <masterLabel>Greece</masterLabel>
+            <translation><!-- Greece --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Jefferson Lab</masterLabel>
-            <translation><!-- Jefferson Lab --></translation>
+            <masterLabel>Greenland</masterLabel>
+            <translation><!-- Greenland --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Jordan Government</masterLabel>
-            <translation><!-- Jordan Government --></translation>
+            <masterLabel>Grenada</masterLabel>
+            <translation><!-- Grenada --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Kazakhstan Government</masterLabel>
-            <translation><!-- Kazakhstan Government --></translation>
+            <masterLabel>Guadeloupe</masterLabel>
+            <translation><!-- Guadeloupe --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Kenya Government</masterLabel>
-            <translation><!-- Kenya Government --></translation>
+            <masterLabel>Guam</masterLabel>
+            <translation><!-- Guam --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Knolls Atomic Power Laboratory</masterLabel>
-            <translation><!-- Knolls Atomic Power Laboratory --></translation>
+            <masterLabel>Guatemala</masterLabel>
+            <translation><!-- Guatemala --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Kratos Defense &amp; Security Solutions</masterLabel>
-            <translation><!-- Kratos Defense &amp; Security Solutions --></translation>
+            <masterLabel>Guernsey</masterLabel>
+            <translation><!-- Guernsey --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Kuwait Government</masterLabel>
-            <translation><!-- Kuwait Government --></translation>
+            <masterLabel>Guinea</masterLabel>
+            <translation><!-- Guinea --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>L3Harris</masterLabel>
-            <translation><!-- L3Harris --></translation>
+            <masterLabel>Guinea-Bissau</masterLabel>
+            <translation><!-- Guinea-Bissau --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Latvia Government</masterLabel>
-            <translation><!-- Latvia Government --></translation>
+            <masterLabel>Guyana</masterLabel>
+            <translation><!-- Guyana --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Lawerence Berkeley National Laboratory</masterLabel>
-            <translation><!-- Lawerence Berkeley National Laboratory --></translation>
+            <masterLabel>Haiti</masterLabel>
+            <translation><!-- Haiti --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Lawerence Livermore National Laboratory</masterLabel>
-            <translation><!-- Lawerence Livermore National Laboratory --></translation>
+            <masterLabel>Heard/McDon.Isl</masterLabel>
+            <translation><!-- Heard/McDon.Isl --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Lebanon Government</masterLabel>
-            <translation><!-- Lebanon Government --></translation>
+            <masterLabel>Honduras</masterLabel>
+            <translation><!-- Honduras --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Leidos</masterLabel>
-            <translation><!-- Leidos --></translation>
+            <masterLabel>Hong Kong</masterLabel>
+            <translation><!-- Hong Kong --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Leonardo</masterLabel>
-            <translation><!-- Leonardo --></translation>
+            <masterLabel>Hungary</masterLabel>
+            <translation><!-- Hungary --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Libya Government</masterLabel>
-            <translation><!-- Libya Government --></translation>
+            <masterLabel>Iceland</masterLabel>
+            <translation><!-- Iceland --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Liechtenstein Government</masterLabel>
-            <translation><!-- Liechtenstein Government --></translation>
+            <masterLabel>India</masterLabel>
+            <translation><!-- India --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Lithuania Government</masterLabel>
-            <translation><!-- Lithuania Government --></translation>
+            <masterLabel>Indonesia</masterLabel>
+            <translation><!-- Indonesia --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Lockheed Martin</masterLabel>
-            <translation><!-- Lockheed Martin --></translation>
+            <masterLabel>Iran</masterLabel>
+            <translation><!-- Iran --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Los Alamos National Laboratories</masterLabel>
-            <translation><!-- Los Alamos National Laboratories --></translation>
+            <masterLabel>Iraq</masterLabel>
+            <translation><!-- Iraq --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Luxembourg Government</masterLabel>
-            <translation><!-- Luxembourg Government --></translation>
+            <masterLabel>Ireland</masterLabel>
+            <translation><!-- Ireland --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>MGI Life Science</masterLabel>
-            <translation><!-- MGI Life Science --></translation>
+            <masterLabel>Isle of Man</masterLabel>
+            <translation><!-- Isle of Man --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>MISSILE DEFENSE AGENCY</masterLabel>
-            <translation><!-- MISSILE DEFENSE AGENCY --></translation>
+            <masterLabel>Israel</masterLabel>
+            <translation><!-- Israel --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>MITRE</masterLabel>
-            <translation><!-- MITRE --></translation>
+            <masterLabel>Italy</masterLabel>
+            <translation><!-- Italy --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>MOE of Guangdong</masterLabel>
-            <translation><!-- MOE of Guangdong --></translation>
+            <masterLabel>Jamaica</masterLabel>
+            <translation><!-- Jamaica --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>MOE of Shanghai</masterLabel>
-            <translation><!-- MOE of Shanghai --></translation>
+            <masterLabel>Japan</masterLabel>
+            <translation><!-- Japan --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>MOE of Sichuan</masterLabel>
-            <translation><!-- MOE of Sichuan --></translation>
+            <masterLabel>Jersey</masterLabel>
+            <translation><!-- Jersey --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>MOE of Zhejiang</masterLabel>
-            <translation><!-- MOE of Zhejiang --></translation>
+            <masterLabel>Jordan</masterLabel>
+            <translation><!-- Jordan --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>MOH (NHFPC)</masterLabel>
-            <translation><!-- MOH (NHFPC) --></translation>
+            <masterLabel>Kazakhstan</masterLabel>
+            <translation><!-- Kazakhstan --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>MOH-Shaanxi</masterLabel>
-            <translation><!-- MOH-Shaanxi --></translation>
+            <masterLabel>Kenya</masterLabel>
+            <translation><!-- Kenya --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>MOH-Sichuan</masterLabel>
-            <translation><!-- MOH-Sichuan --></translation>
+            <masterLabel>Kiribati</masterLabel>
+            <translation><!-- Kiribati --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Machinechat</masterLabel>
-            <translation><!-- Machinechat --></translation>
+            <masterLabel>Kuwait</masterLabel>
+            <translation><!-- Kuwait --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Malaysia Government</masterLabel>
-            <translation><!-- Malaysia Government --></translation>
+            <masterLabel>Kyrgyzstan</masterLabel>
+            <translation><!-- Kyrgyzstan --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Malta Government</masterLabel>
-            <translation><!-- Malta Government --></translation>
+            <masterLabel>Laos</masterLabel>
+            <translation><!-- Laos --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Mercury Systems</masterLabel>
-            <translation><!-- Mercury Systems --></translation>
+            <masterLabel>Latvia</masterLabel>
+            <translation><!-- Latvia --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Meteorological Bureau Meteorology Development And Planning Institute</masterLabel>
-            <translation><!-- Meteorological Bureau Meteorology Development And Planning Institute --></translation>
+            <masterLabel>Lebanon</masterLabel>
+            <translation><!-- Lebanon --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Military</masterLabel>
-            <translation><!-- Military --></translation>
+            <masterLabel>Lesotho</masterLabel>
+            <translation><!-- Lesotho --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Ministry Of Education Of The Peoples Republic Of China</masterLabel>
-            <translation><!-- Ministry Of Education Of The Peoples Republic Of China --></translation>
+            <masterLabel>Liberia</masterLabel>
+            <translation><!-- Liberia --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Ministry Of Public Security</masterLabel>
-            <translation><!-- Ministry Of Public Security --></translation>
+            <masterLabel>Libya</masterLabel>
+            <translation><!-- Libya --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Ministry of Natural Resources</masterLabel>
-            <translation><!-- Ministry of Natural Resources --></translation>
+            <masterLabel>Liechtenstein</masterLabel>
+            <translation><!-- Liechtenstein --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Moe Of Hunan</masterLabel>
-            <translation><!-- Moe Of Hunan --></translation>
+            <masterLabel>Lithuania</masterLabel>
+            <translation><!-- Lithuania --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Moh</masterLabel>
-            <translation><!-- Moh --></translation>
+            <masterLabel>Luxembourg</masterLabel>
+            <translation><!-- Luxembourg --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Morocco Government</masterLabel>
-            <translation><!-- Morocco Government --></translation>
+            <masterLabel>Macao SAR China</masterLabel>
+            <translation><!-- Macao SAR China --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>NASA</masterLabel>
-            <translation><!-- NASA --></translation>
+            <masterLabel>Macedonia</masterLabel>
+            <translation><!-- Macedonia --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>NATIONAL CANCER INSTITUTE</masterLabel>
-            <translation><!-- NATIONAL CANCER INSTITUTE --></translation>
+            <masterLabel>Madagascar</masterLabel>
+            <translation><!-- Madagascar --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>NCS Technologies</masterLabel>
-            <translation><!-- NCS Technologies --></translation>
+            <masterLabel>Malawi</masterLabel>
+            <translation><!-- Malawi --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>NDRC-National Development and Reform Commission</masterLabel>
-            <translation><!-- NDRC-National Development and Reform Commission --></translation>
+            <masterLabel>Malaysia</masterLabel>
+            <translation><!-- Malaysia --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>NIST</masterLabel>
-            <translation><!-- NIST --></translation>
+            <masterLabel>Maldives</masterLabel>
+            <translation><!-- Maldives --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>NOAA</masterLabel>
-            <translation><!-- NOAA --></translation>
+            <masterLabel>Mali</masterLabel>
+            <translation><!-- Mali --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>NSW Government</masterLabel>
-            <translation><!-- NSW Government --></translation>
+            <masterLabel>Malta</masterLabel>
+            <translation><!-- Malta --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Naprotek</masterLabel>
-            <translation><!-- Naprotek --></translation>
+            <masterLabel>Marshall Islnds</masterLabel>
+            <translation><!-- Marshall Islnds --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>National Archives and Records Administration</masterLabel>
-            <translation><!-- National Archives and Records Administration --></translation>
+            <masterLabel>Martinique</masterLabel>
+            <translation><!-- Martinique --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>National Center for Education Technology (NCET)</masterLabel>
-            <translation><!-- National Center for Education Technology (NCET) --></translation>
+            <masterLabel>Mauritania</masterLabel>
+            <translation><!-- Mauritania --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>National Energy Technology Laboratory - NETL</masterLabel>
-            <translation><!-- National Energy Technology Laboratory - NETL --></translation>
+            <masterLabel>Mauritius</masterLabel>
+            <translation><!-- Mauritius --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>National Healthcare Security Administration (NHSA)</masterLabel>
-            <translation><!-- National Healthcare Security Administration (NHSA) --></translation>
+            <masterLabel>Mayotte</masterLabel>
+            <translation><!-- Mayotte --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>National Institutes of Health</masterLabel>
-            <translation><!-- National Institutes of Health --></translation>
+            <masterLabel>Mexico</masterLabel>
+            <translation><!-- Mexico --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>National Labs</masterLabel>
-            <translation><!-- National Labs --></translation>
+            <masterLabel>Micronesia</masterLabel>
+            <translation><!-- Micronesia --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>National Medical Products Administration</masterLabel>
-            <translation><!-- National Medical Products Administration --></translation>
+            <masterLabel>Minor Outl.Isl.</masterLabel>
+            <translation><!-- Minor Outl.Isl. --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>National Nuclear Security Administration</masterLabel>
-            <translation><!-- National Nuclear Security Administration --></translation>
+            <masterLabel>Moldova</masterLabel>
+            <translation><!-- Moldova --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>National Renewable Energy Laboratory</masterLabel>
-            <translation><!-- National Renewable Energy Laboratory --></translation>
+            <masterLabel>Monaco</masterLabel>
+            <translation><!-- Monaco --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>National Spectrum Consortium</masterLabel>
-            <translation><!-- National Spectrum Consortium --></translation>
+            <masterLabel>Mongolia</masterLabel>
+            <translation><!-- Mongolia --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Netherlands Government</masterLabel>
-            <translation><!-- Netherlands Government --></translation>
+            <masterLabel>Montenegro</masterLabel>
+            <translation><!-- Montenegro --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>New China Life Insurance</masterLabel>
-            <translation><!-- New China Life Insurance --></translation>
+            <masterLabel>Montserrat</masterLabel>
+            <translation><!-- Montserrat --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Nigeria Government</masterLabel>
-            <translation><!-- Nigeria Government --></translation>
+            <masterLabel>Morocco</masterLabel>
+            <translation><!-- Morocco --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Northrop Grumman</masterLabel>
-            <translation><!-- Northrop Grumman --></translation>
+            <masterLabel>Mozambique</masterLabel>
+            <translation><!-- Mozambique --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Norway Government</masterLabel>
-            <translation><!-- Norway Government --></translation>
+            <masterLabel>Myanmar</masterLabel>
+            <translation><!-- Myanmar --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>ORock Technologies</masterLabel>
-            <translation><!-- ORock Technologies --></translation>
+            <masterLabel>N.Mariana Islnd</masterLabel>
+            <translation><!-- N.Mariana Islnd --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Oak Ridge National Lab</masterLabel>
-            <translation><!-- Oak Ridge National Lab --></translation>
+            <masterLabel>Namibia</masterLabel>
+            <translation><!-- Namibia --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Oman Government</masterLabel>
-            <translation><!-- Oman Government --></translation>
+            <masterLabel>Nauru</masterLabel>
+            <translation><!-- Nauru --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Other African Government</masterLabel>
-            <translation><!-- Other African Government --></translation>
+            <masterLabel>Nepal</masterLabel>
+            <translation><!-- Nepal --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Overland AI</masterLabel>
-            <translation><!-- Overland AI --></translation>
+            <masterLabel>Netherlands</masterLabel>
+            <translation><!-- Netherlands --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Pacific Northwest National Laboratory</masterLabel>
-            <translation><!-- Pacific Northwest National Laboratory --></translation>
+            <masterLabel>New Caledonia</masterLabel>
+            <translation><!-- New Caledonia --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Pakistan Government</masterLabel>
-            <translation><!-- Pakistan Government --></translation>
+            <masterLabel>New Zealand</masterLabel>
+            <translation><!-- New Zealand --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Peraton</masterLabel>
-            <translation><!-- Peraton --></translation>
+            <masterLabel>Nicaragua</masterLabel>
+            <translation><!-- Nicaragua --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Petrochina</masterLabel>
-            <translation><!-- Petrochina --></translation>
+            <masterLabel>Niger</masterLabel>
+            <translation><!-- Niger --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Philippines Government</masterLabel>
-            <translation><!-- Philippines Government --></translation>
+            <masterLabel>Nigeria</masterLabel>
+            <translation><!-- Nigeria --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Poland Government</masterLabel>
-            <translation><!-- Poland Government --></translation>
+            <masterLabel>Niue</masterLabel>
+            <translation><!-- Niue --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Portugal Government</masterLabel>
-            <translation><!-- Portugal Government --></translation>
+            <masterLabel>None</masterLabel>
+            <translation><!-- None --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Public Sector Financial Institute</masterLabel>
-            <translation><!-- Public Sector Financial Institute --></translation>
+            <masterLabel>Norfolk Islands</masterLabel>
+            <translation><!-- Norfolk Islands --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Qatar Government</masterLabel>
-            <translation><!-- Qatar Government --></translation>
+            <masterLabel>North Korea</masterLabel>
+            <translation><!-- North Korea --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Queensland Government</masterLabel>
-            <translation><!-- Queensland Government --></translation>
+            <masterLabel>Norway</masterLabel>
+            <translation><!-- Norway --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>RTX</masterLabel>
-            <translation><!-- RTX --></translation>
+            <masterLabel>Oman</masterLabel>
+            <translation><!-- Oman --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Reinsurance</masterLabel>
-            <translation><!-- Reinsurance --></translation>
+            <masterLabel>Pakistan</masterLabel>
+            <translation><!-- Pakistan --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Romania Government</masterLabel>
-            <translation><!-- Romania Government --></translation>
+            <masterLabel>Palau</masterLabel>
+            <translation><!-- Palau --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Rwanda Government</masterLabel>
-            <translation><!-- Rwanda Government --></translation>
+            <masterLabel>Palestine,State</masterLabel>
+            <translation><!-- Palestine,State --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>SAIC</masterLabel>
-            <translation><!-- SAIC --></translation>
+            <masterLabel>Panama</masterLabel>
+            <translation><!-- Panama --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>SASAC of Chongqing</masterLabel>
-            <translation><!-- SASAC of Chongqing --></translation>
+            <masterLabel>Pap. New Guinea</masterLabel>
+            <translation><!-- Pap. New Guinea --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>SASAC of Fujian</masterLabel>
-            <translation><!-- SASAC of Fujian --></translation>
+            <masterLabel>Paraguay</masterLabel>
+            <translation><!-- Paraguay --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>SASAC of Guangdong</masterLabel>
-            <translation><!-- SASAC of Guangdong --></translation>
+            <masterLabel>Peru</masterLabel>
+            <translation><!-- Peru --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>SASAC of Jiangsu</masterLabel>
-            <translation><!-- SASAC of Jiangsu --></translation>
+            <masterLabel>Philippines</masterLabel>
+            <translation><!-- Philippines --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>SASAC of Shandong</masterLabel>
-            <translation><!-- SASAC of Shandong --></translation>
+            <masterLabel>Pitcairn</masterLabel>
+            <translation><!-- Pitcairn --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>SASAC of Shanghai</masterLabel>
-            <translation><!-- SASAC of Shanghai --></translation>
+            <masterLabel>Poland</masterLabel>
+            <translation><!-- Poland --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>SASAC of Shenzhen</masterLabel>
-            <translation><!-- SASAC of Shenzhen --></translation>
+            <masterLabel>Portugal</masterLabel>
+            <translation><!-- Portugal --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>SASAC of Sichuan</masterLabel>
-            <translation><!-- SASAC of Sichuan --></translation>
+            <masterLabel>Puerto Rico</masterLabel>
+            <translation><!-- Puerto Rico --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>STANFORD LINEAR ACCELERATOR CENTER</masterLabel>
-            <translation><!-- STANFORD LINEAR ACCELERATOR CENTER --></translation>
+            <masterLabel>Qatar</masterLabel>
+            <translation><!-- Qatar --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Sandia National Laboratories</masterLabel>
-            <translation><!-- Sandia National Laboratories --></translation>
+            <masterLabel>Reunion</masterLabel>
+            <translation><!-- Reunion --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Saudi Arabia Government</masterLabel>
-            <translation><!-- Saudi Arabia Government --></translation>
+            <masterLabel>Romania</masterLabel>
+            <translation><!-- Romania --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Saudi Arabia Government - Research</masterLabel>
-            <translation><!-- Saudi Arabia Government - Research --></translation>
+            <masterLabel>Russian Fed</masterLabel>
+            <translation><!-- Russian Fed --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Sierra Nevada</masterLabel>
-            <translation><!-- Sierra Nevada --></translation>
+            <masterLabel>Rwanda</masterLabel>
+            <translation><!-- Rwanda --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Singapore Government</masterLabel>
-            <translation><!-- Singapore Government --></translation>
+            <masterLabel>S. Sandwich Ins</masterLabel>
+            <translation><!-- S. Sandwich Ins --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Sinopharm (国药集团）</masterLabel>
-            <translation><!-- Sinopharm (国药集团） --></translation>
+            <masterLabel>S.Tome,Principe</masterLabel>
+            <translation><!-- S.Tome,Principe --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Slovakia Government</masterLabel>
-            <translation><!-- Slovakia Government --></translation>
+            <masterLabel>Saint Lucia</masterLabel>
+            <translation><!-- Saint Lucia --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>South Africa Government</masterLabel>
-            <translation><!-- South Africa Government --></translation>
+            <masterLabel>Saint Martin</masterLabel>
+            <translation><!-- Saint Martin --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>South Korea Government</masterLabel>
-            <translation><!-- South Korea Government --></translation>
+            <masterLabel>Saint Pierre</masterLabel>
+            <translation><!-- Saint Pierre --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Spain Government</masterLabel>
-            <translation><!-- Spain Government --></translation>
+            <masterLabel>Samoa</masterLabel>
+            <translation><!-- Samoa --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>State Administration Of Taxati</masterLabel>
-            <translation><!-- State Administration Of Taxati --></translation>
+            <masterLabel>San Marino</masterLabel>
+            <translation><!-- San Marino --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>State Gov Brazil (Sp + Rj + Mg)</masterLabel>
-            <translation><!-- State Gov Brazil (Sp + Rj + Mg) --></translation>
+            <masterLabel>Saudi Arabia</masterLabel>
+            <translation><!-- Saudi Arabia --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>State of California</masterLabel>
-            <translation><!-- State of California --></translation>
+            <masterLabel>Senegal</masterLabel>
+            <translation><!-- Senegal --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>State of Florida</masterLabel>
-            <translation><!-- State of Florida --></translation>
+            <masterLabel>Serbia</masterLabel>
+            <translation><!-- Serbia --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>State of New York</masterLabel>
-            <translation><!-- State of New York --></translation>
+            <masterLabel>Seychelles</masterLabel>
+            <translation><!-- Seychelles --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>State of Ohio</masterLabel>
-            <translation><!-- State of Ohio --></translation>
+            <masterLabel>Sierra Leone</masterLabel>
+            <translation><!-- Sierra Leone --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>State of Texas</masterLabel>
-            <translation><!-- State of Texas --></translation>
+            <masterLabel>Singapore</masterLabel>
+            <translation><!-- Singapore --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>States Taxation Bureau</masterLabel>
-            <translation><!-- States Taxation Bureau --></translation>
+            <masterLabel>Sint Maarten</masterLabel>
+            <translation><!-- Sint Maarten --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Sweden Government</masterLabel>
-            <translation><!-- Sweden Government --></translation>
+            <masterLabel>Slovakia</masterLabel>
+            <translation><!-- Slovakia --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Switzerland Government</masterLabel>
-            <translation><!-- Switzerland Government --></translation>
+            <masterLabel>Slovenia</masterLabel>
+            <translation><!-- Slovenia --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>SysPro Consulting</masterLabel>
-            <translation><!-- SysPro Consulting --></translation>
+            <masterLabel>Solomon Islands</masterLabel>
+            <translation><!-- Solomon Islands --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>TAL</masterLabel>
-            <translation><!-- TAL --></translation>
+            <masterLabel>Somalia</masterLabel>
+            <translation><!-- Somalia --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Taiwan Government</masterLabel>
-            <translation><!-- Taiwan Government --></translation>
+            <masterLabel>South Africa</masterLabel>
+            <translation><!-- South Africa --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Tanzania Government</masterLabel>
-            <translation><!-- Tanzania Government --></translation>
+            <masterLabel>South Korea</masterLabel>
+            <translation><!-- South Korea --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Thailand Government</masterLabel>
-            <translation><!-- Thailand Government --></translation>
+            <masterLabel>South Sudan</masterLabel>
+            <translation><!-- South Sudan --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Tier 1 University</masterLabel>
-            <translation><!-- Tier 1 University --></translation>
+            <masterLabel>Spain</masterLabel>
+            <translation><!-- Spain --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Tigerlabs</masterLabel>
-            <translation><!-- Tigerlabs --></translation>
+            <masterLabel>Sri Lanka</masterLabel>
+            <translation><!-- Sri Lanka --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Togo Government</masterLabel>
-            <translation><!-- Togo Government --></translation>
+            <masterLabel>St Kitts&amp;Nevis</masterLabel>
+            <translation><!-- St Kitts&amp;Nevis --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Tongcheng Network Technology</masterLabel>
-            <translation><!-- Tongcheng Network Technology --></translation>
+            <masterLabel>St. Barthelemy</masterLabel>
+            <translation><!-- St. Barthelemy --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Trenton Systems</masterLabel>
-            <translation><!-- Trenton Systems --></translation>
+            <masterLabel>St. Helena</masterLabel>
+            <translation><!-- St. Helena --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Tsinghua University</masterLabel>
-            <translation><!-- Tsinghua University --></translation>
+            <masterLabel>St. Vincent</masterLabel>
+            <translation><!-- St. Vincent --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Tunisia Government</masterLabel>
-            <translation><!-- Tunisia Government --></translation>
+            <masterLabel>Sudan</masterLabel>
+            <translation><!-- Sudan --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Turkey Government</masterLabel>
-            <translation><!-- Turkey Government --></translation>
+            <masterLabel>Suriname</masterLabel>
+            <translation><!-- Suriname --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>U.S. Department of Transportation</masterLabel>
-            <translation><!-- U.S. Department of Transportation --></translation>
+            <masterLabel>Svalbard &amp; JM</masterLabel>
+            <translation><!-- Svalbard &amp; JM --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>UAE Government</masterLabel>
-            <translation><!-- UAE Government --></translation>
+            <masterLabel>Swaziland</masterLabel>
+            <translation><!-- Swaziland --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>UK Government</masterLabel>
-            <translation><!-- UK Government --></translation>
+            <masterLabel>Sweden</masterLabel>
+            <translation><!-- Sweden --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>UK Govt - Research</masterLabel>
-            <translation><!-- UK Govt - Research --></translation>
+            <masterLabel>Switzerland</masterLabel>
+            <translation><!-- Switzerland --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>UNITED STATES NUCLEAR REGULATORY COMMISS</masterLabel>
-            <translation><!-- UNITED STATES NUCLEAR REGULATORY COMMISS --></translation>
+            <masterLabel>Syria</masterLabel>
+            <translation><!-- Syria --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>US AFRICA COMMAND</masterLabel>
-            <translation><!-- US AFRICA COMMAND --></translation>
+            <masterLabel>Taiwan</masterLabel>
+            <translation><!-- Taiwan --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>US AIR FORCE</masterLabel>
-            <translation><!-- US AIR FORCE --></translation>
+            <masterLabel>Tajikistan</masterLabel>
+            <translation><!-- Tajikistan --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>US ARMY</masterLabel>
-            <translation><!-- US ARMY --></translation>
+            <masterLabel>Tanzania</masterLabel>
+            <translation><!-- Tanzania --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>US Amber</masterLabel>
-            <translation><!-- US Amber --></translation>
+            <masterLabel>Thailand</masterLabel>
+            <translation><!-- Thailand --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>US CENTCOM</masterLabel>
-            <translation><!-- US CENTCOM --></translation>
+            <masterLabel>Timor-Leste</masterLabel>
+            <translation><!-- Timor-Leste --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>US Courts</masterLabel>
-            <translation><!-- US Courts --></translation>
+            <masterLabel>Togo</masterLabel>
+            <translation><!-- Togo --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>US DEFENSE AGENCIES</masterLabel>
-            <translation><!-- US DEFENSE AGENCIES --></translation>
+            <masterLabel>Tokelau</masterLabel>
+            <translation><!-- Tokelau --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>US DEFENSE INFORMATION SYSTEMS AGENCY</masterLabel>
-            <translation><!-- US DEFENSE INFORMATION SYSTEMS AGENCY --></translation>
+            <masterLabel>Tonga</masterLabel>
+            <translation><!-- Tonga --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>US DEFENSE LOGISTICS AGENCY (DLA)</masterLabel>
-            <translation><!-- US DEFENSE LOGISTICS AGENCY (DLA) --></translation>
+            <masterLabel>Trinidad,Tobago</masterLabel>
+            <translation><!-- Trinidad,Tobago --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>US DEPARTMENT OF AGRICULTURE</masterLabel>
-            <translation><!-- US DEPARTMENT OF AGRICULTURE --></translation>
+            <masterLabel>Tunisia</masterLabel>
+            <translation><!-- Tunisia --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>US DEPARTMENT OF COMMERCE</masterLabel>
-            <translation><!-- US DEPARTMENT OF COMMERCE --></translation>
+            <masterLabel>Turkey</masterLabel>
+            <translation><!-- Turkey --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>US DEPARTMENT OF EDUCATION</masterLabel>
-            <translation><!-- US DEPARTMENT OF EDUCATION --></translation>
+            <masterLabel>Turkmenistan</masterLabel>
+            <translation><!-- Turkmenistan --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>US DEPARTMENT OF ENERGY</masterLabel>
-            <translation><!-- US DEPARTMENT OF ENERGY --></translation>
+            <masterLabel>Turksh Caicosin</masterLabel>
+            <translation><!-- Turksh Caicosin --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>US DEPARTMENT OF HEALTH &amp; HUMAN SERVICES</masterLabel>
-            <translation><!-- US DEPARTMENT OF HEALTH &amp; HUMAN SERVICES --></translation>
+            <masterLabel>Tuvalu</masterLabel>
+            <translation><!-- Tuvalu --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>US DEPARTMENT OF HOMELAND SECURITY</masterLabel>
-            <translation><!-- US DEPARTMENT OF HOMELAND SECURITY --></translation>
+            <masterLabel>Uganda</masterLabel>
+            <translation><!-- Uganda --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>US DEPARTMENT OF INTERIOR</masterLabel>
-            <translation><!-- US DEPARTMENT OF INTERIOR --></translation>
+            <masterLabel>Ukraine</masterLabel>
+            <translation><!-- Ukraine --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>US DEPARTMENT OF JUSTICE</masterLabel>
-            <translation><!-- US DEPARTMENT OF JUSTICE --></translation>
+            <masterLabel>United Kingdom</masterLabel>
+            <translation><!-- United Kingdom --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>US DEPARTMENT OF STATE</masterLabel>
-            <translation><!-- US DEPARTMENT OF STATE --></translation>
+            <masterLabel>United States</masterLabel>
+            <translation><!-- United States --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>US DEPARTMENT OF TRANSPORTATION</masterLabel>
-            <translation><!-- US DEPARTMENT OF TRANSPORTATION --></translation>
+            <masterLabel>Uruguay</masterLabel>
+            <translation><!-- Uruguay --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>US DEPARTMENT OF TRANSPORTATION - FAA</masterLabel>
-            <translation><!-- US DEPARTMENT OF TRANSPORTATION - FAA --></translation>
+            <masterLabel>Utd.Arab Emir.</masterLabel>
+            <translation><!-- Utd.Arab Emir. --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>US DEPARTMENT OF TREASURY</masterLabel>
-            <translation><!-- US DEPARTMENT OF TREASURY --></translation>
+            <masterLabel>Uzbekistan</masterLabel>
+            <translation><!-- Uzbekistan --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>US DEPARTMENT OF VETERANS AFFAIRS (VA)</masterLabel>
-            <translation><!-- US DEPARTMENT OF VETERANS AFFAIRS (VA) --></translation>
+            <masterLabel>Vanuatu</masterLabel>
+            <translation><!-- Vanuatu --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>US Defense Advanced Research Projects Agency</masterLabel>
-            <translation><!-- US Defense Advanced Research Projects Agency --></translation>
+            <masterLabel>Vatican City</masterLabel>
+            <translation><!-- Vatican City --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>US Department of Defense</masterLabel>
-            <translation><!-- US Department of Defense --></translation>
+            <masterLabel>Venezuela</masterLabel>
+            <translation><!-- Venezuela --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>US Diamond</masterLabel>
-            <translation><!-- US Diamond --></translation>
+            <masterLabel>Vietnam</masterLabel>
+            <translation><!-- Vietnam --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>US ENVIRONMENTAL PROTECTION AGENCY</masterLabel>
-            <translation><!-- US ENVIRONMENTAL PROTECTION AGENCY --></translation>
+            <masterLabel>Virgin Islands</masterLabel>
+            <translation><!-- Virgin Islands --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>US EUROPEAN COMMAND</masterLabel>
-            <translation><!-- US EUROPEAN COMMAND --></translation>
+            <masterLabel>Wallis &amp; Futuna</masterLabel>
+            <translation><!-- Wallis &amp; Futuna --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>US Garnet</masterLabel>
-            <translation><!-- US Garnet --></translation>
+            <masterLabel>Western Sahara</masterLabel>
+            <translation><!-- Western Sahara --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>US General Services Administration</masterLabel>
-            <translation><!-- US General Services Administration --></translation>
+            <masterLabel>Yemen</masterLabel>
+            <translation><!-- Yemen --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>US HPC Institutions</masterLabel>
-            <translation><!-- US HPC Institutions --></translation>
+            <masterLabel>Zambia</masterLabel>
+            <translation><!-- Zambia --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>US HigherEd Institutions</masterLabel>
-            <translation><!-- US HigherEd Institutions --></translation>
+            <masterLabel>Zimbabwe</masterLabel>
+            <translation><!-- Zimbabwe --></translation>
         </picklistValues>
-        <picklistValues>
-            <masterLabel>US Housing and Urban Development</masterLabel>
-            <translation><!-- US Housing and Urban Development --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>US ICFM</masterLabel>
-            <translation><!-- US ICFM --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>US ICHQ</masterLabel>
-            <translation><!-- US ICHQ --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>US ICS</masterLabel>
-            <translation><!-- US ICS --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>US ICWF</masterLabel>
-            <translation><!-- US ICWF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>US K-12 Institutions</masterLabel>
-            <translation><!-- US K-12 Institutions --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>US Local Government</masterLabel>
-            <translation><!-- US Local Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>US MARINE CORPS</masterLabel>
-            <translation><!-- US MARINE CORPS --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>US MILITARY HEALTH SYSTEM - DEPARTMENT OF DEFENSE</masterLabel>
-            <translation><!-- US MILITARY HEALTH SYSTEM - DEPARTMENT OF DEFENSE --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>US NAVY</masterLabel>
-            <translation><!-- US NAVY --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>US PATENT &amp; TRADEMARK OFFICE</masterLabel>
-            <translation><!-- US PATENT &amp; TRADEMARK OFFICE --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>US POSTAL SERVICE</masterLabel>
-            <translation><!-- US POSTAL SERVICE --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>US Ruby</masterLabel>
-            <translation><!-- US Ruby --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>US SAPPHIRE</masterLabel>
-            <translation><!-- US SAPPHIRE --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>US SOCIAL SECURITY ADMINISTRATION</masterLabel>
-            <translation><!-- US SOCIAL SECURITY ADMINISTRATION --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>US SPECIAL OPERATIONS COMMAND</masterLabel>
-            <translation><!-- US SPECIAL OPERATIONS COMMAND --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>US Space Force</masterLabel>
-            <translation><!-- US Space Force --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>US State Government</masterLabel>
-            <translation><!-- US State Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>USGS</masterLabel>
-            <translation><!-- USGS --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Uganda Government</masterLabel>
-            <translation><!-- Uganda Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>United Imaging Group</masterLabel>
-            <translation><!-- United Imaging Group --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>United States Securities and Exchange Commission</masterLabel>
-            <translation><!-- United States Securities and Exchange Commission --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>University</masterLabel>
-            <translation><!-- University --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Uruguay Government</masterLabel>
-            <translation><!-- Uruguay Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Uzbekistan Government</masterLabel>
-            <translation><!-- Uzbekistan Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Victoria Government</masterLabel>
-            <translation><!-- Victoria Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Vietnam Government</masterLabel>
-            <translation><!-- Vietnam Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>YangCong Academy_End Customer</masterLabel>
-            <translation><!-- YangCong Academy_End Customer --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Zuoyebang</masterLabel>
-            <translation><!-- Zuoyebang --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>zhengcaiyun.cn(政采云)</masterLabel>
-            <translation><!-- zhengcaiyun.cn(政采云) --></translation>
-        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Country/Region --></label>
+        <name>Country__c</name>
     </fields>
     <fields>
         <label><!-- Customer Aggregation Type --></label>
@@ -3812,6 +3666,10 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- DataOps Action Time New --></label>
+        <name>DataOps_Action_Time_New__c</name>
+    </fields>
+    <fields>
         <label><!-- Dataops Action Time --></label>
         <name>Dataops_Action_Time__c</name>
     </fields>
@@ -3837,7 +3695,7 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         </picklistValues>
     </fields>
     <fields>
-        <label><!-- Digital Identifier --></label>
+        <label><!-- Digital Identifier Value --></label>
         <name>Digital_Identifier_Value__c</name>
     </fields>
     <fields>
@@ -3941,12 +3799,8 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         </picklistValues>
     </fields>
     <fields>
-        <label><!-- IsAddressVerified --></label>
-        <name>IsAddressVerified__c</name>
-    </fields>
-    <fields>
-        <label><!-- IsRevertedOrUnverified --></label>
-        <name>IsRevertedOrUnverified__c</name>
+        <label><!-- Local Language --></label>
+        <name>Local_Language__c</name>
     </fields>
     <fields>
         <label><!-- Process Type --></label>
@@ -3999,6 +3853,10 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <name>Requestor_Email__c</name>
     </fields>
     <fields>
+        <label><!-- Requestor Email --></label>
+        <name>Requestor_Email_formula__c</name>
+    </fields>
+    <fields>
         <label><!-- Requestor Name --></label>
         <name>Requestor_Name__c</name>
     </fields>
@@ -4007,36 +3865,24 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <name>Requestor_WWID__c</name>
     </fields>
     <fields>
-        <label><!-- Standardized Address City --></label>
-        <name>Standardized_Address_City__c</name>
+        <label><!-- State/Province --></label>
+        <name>State_Province__c</name>
+        <picklistValues>
+            <masterLabel>Alaska</masterLabel>
+            <translation><!-- Alaska --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Madrid</masterLabel>
+            <translation><!-- Madrid --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Valencian Community</masterLabel>
+            <translation><!-- Valencian Community --></translation>
+        </picklistValues>
     </fields>
     <fields>
-        <label><!-- Standardized Address Country Code --></label>
-        <name>Standardized_Address_Country_Code__c</name>
-    </fields>
-    <fields>
-        <label><!-- Standardized Address Country --></label>
-        <name>Standardized_Address_Country__c</name>
-    </fields>
-    <fields>
-        <label><!-- Standardized Address Postal Code --></label>
-        <name>Standardized_Address_Postal_Code__c</name>
-    </fields>
-    <fields>
-        <label><!-- Standardized Address State Code --></label>
-        <name>Standardized_Address_State_Code__c</name>
-    </fields>
-    <fields>
-        <label><!-- Standardized Address State --></label>
-        <name>Standardized_Address_State__c</name>
-    </fields>
-    <fields>
-        <label><!-- Standardized Address Street --></label>
-        <name>Standardized_Address_Street__c</name>
-    </fields>
-    <fields>
-        <label><!-- Standardized Address VerificationStatus --></label>
-        <name>Standardized_Address_VerificationStatus__c</name>
+        <label><!-- State --></label>
+        <name>State__c</name>
     </fields>
     <fields>
         <label><!-- Status --></label>
@@ -4108,15 +3954,27 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <name>Billing_state_mandatary</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- Customer Process Engagement Is Mandatory --></errorMessage>
+        <name>CPE_Field_Is_Mandatory</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Bi-Annual Temp Account Category cannot be blank when Account Primary Coverage is &apos;Intel-Led&apos; --></errorMessage>
+        <name>Check_Core_Account_Primary_Coverage</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- If a customer website cannot be found, you can enter N/A --></errorMessage>
+        <name>Digital_Identifier_website_validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Language picklist is mandatory if Account Name Local Language is entered. --></errorMessage>
+        <name>Language_Mandatory_If_LocalLang_Is_Chose</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- Postal code should be Alphanumeric. --></errorMessage>
         <name>Postal_code_Alphanumeric_validation</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- You cannot edit a record once rejected --></errorMessage>
-        <name>Rejection_Flow_Update</name>
-    </validationRules>
-    <validationRules>
         <errorMessage><!-- Postal code should be an integer --></errorMessage>
-        <name>postal_code_should_be_Integer</name>
+        <name>postal_code_should_be_alphanumeric</name>
     </validationRules>
 </CustomObjectTranslation>

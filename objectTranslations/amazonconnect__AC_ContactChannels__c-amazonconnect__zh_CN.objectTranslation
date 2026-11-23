@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>AC 联系渠道</value>
+    </caseValues>
+    <fields>
+        <label>联系后续工作持续时间</label>
+        <name>amazonconnect__AfterContactWorkDuration__c</name>
+    </fields>
+    <fields>
+        <label>代理客户保持持续时间</label>
+        <name>amazonconnect__AgentCustomerHoldDuration__c</name>
+    </fields>
+    <fields>
+        <label>代理登录用户名</label>
+        <name>amazonconnect__AgentLoginUsername__c</name>
+    </fields>
+    <fields>
+        <label>代理姓名</label>
+        <name>amazonconnect__AgentName__c</name>
+    </fields>
+    <fields>
+        <label>属性</label>
+        <name>amazonconnect__Attributes__c</name>
+    </fields>
+    <fields>
+        <label>通话结束时间戳</label>
+        <name>amazonconnect__CallEndTimestamp__c</name>
+    </fields>
+    <fields>
+        <label>通话录音</label>
+        <name>amazonconnect__CallRecording__c</name>
+    </fields>
+    <fields>
+        <label>通话开始时间戳</label>
+        <name>amazonconnect__CallStartTimestamp__c</name>
+    </fields>
+    <fields>
+        <label>通话状态</label>
+        <name>amazonconnect__CallStatus__c</name>
+        <picklistValues>
+            <masterLabel>Completed</masterLabel>
+            <translation><!-- Completed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In-Progress</masterLabel>
+            <translation><!-- In-Progress --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incoming</masterLabel>
+            <translation><!-- Incoming --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Missed</masterLabel>
+            <translation><!-- Missed --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Case --></label>
+        <name>amazonconnect__Case__c</name>
+        <relationshipLabel><!-- AC Contact Channels --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Channel --></label>
+        <name>amazonconnect__Channel__c</name>
+    </fields>
+    <fields>
+        <label>联系 ID</label>
+        <name>amazonconnect__ContactId__c</name>
+    </fields>
+    <fields>
+        <label>客户回拨号码</label>
+        <name>amazonconnect__CustomerCallbackNumber__c</name>
+    </fields>
+    <fields>
+        <label>客户号码</label>
+        <name>amazonconnect__CustomerNumber__c</name>
+    </fields>
+    <fields>
+        <label>拨打的号码</label>
+        <name>amazonconnect__DialedNumber__c</name>
+    </fields>
+    <fields>
+        <label>启动方法</label>
+        <name>amazonconnect__InitiationMethod__c</name>
+        <picklistValues>
+            <masterLabel>Callback</masterLabel>
+            <translation><!-- Callback --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Chat</masterLabel>
+            <translation><!-- Chat --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Inbound</masterLabel>
+            <translation><!-- Inbound --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Monitor</masterLabel>
+            <translation><!-- Monitor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Outbound</masterLabel>
+            <translation><!-- Outbound --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transfer</masterLabel>
+            <translation><!-- Transfer --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>互动持续时间</label>
+        <name>amazonconnect__InteractionDuration__c</name>
+    </fields>
+    <fields>
+        <label>队列名称</label>
+        <name>amazonconnect__QueueName__c</name>
+    </fields>
+    <fields>
+        <label><!-- RelatedToWhatId --></label>
+        <name>amazonconnect__RelatedToWhatId__c</name>
+    </fields>
+    <fields>
+        <label><!-- RelatedToWhoId --></label>
+        <name>amazonconnect__RelatedToWhoId__c</name>
+    </fields>
+    <nameFieldLabel>联系频道</nameFieldLabel>
+</CustomObjectTranslation>

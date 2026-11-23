@@ -13,11 +13,11 @@ Public with sharing class Core_IPS_AddDefault_CaseOwner_Controller{
     public Id productId = ApexPages.currentPage().getParameters().get('productId');
     public Id projectId ;
     public List<User> userList{get;set;}
-    public list<QueueSobject> queuelist{get;set;}
+    public list<Group> queuelist{get;set;}
     public Core_IPS_Product__c prodObj;
     public String profileIds = System.Label.Core_IPS_DefaultCaseOwner_Profile_Id;
     public List<String> lstProfId; 
-    public String partnerProfileID = string.escapeSingleQuotes(System.Label.Core_IPS_Agent_Partner_Profile_id);
+    public String partnerProfileID = System.Label.Core_IPS_Agent_Partner_Profile_id;
     public Boolean searchMadeInt{get;set;}
     public Boolean showErrorMsg{get;set;}
     public String searchText{get;set;}
@@ -61,7 +61,7 @@ Public with sharing class Core_IPS_AddDefault_CaseOwner_Controller{
         try{
             List<Profile> profileLst = new List<Profile>();     
             UserList = new List<User>();
-            Queuelist =new List<QueueSobject>();
+            Queuelist =new List<Group>();
             searchMadeInt = false;
             showErrorMsg = false;
             isSelected = false;
@@ -75,10 +75,7 @@ Public with sharing class Core_IPS_AddDefault_CaseOwner_Controller{
             isDefaultCaseOwnerQueue = false ;
             
             if(productId != null){ 
-                //FLS Check added - Yasasvi
-                if(Core_IPS_Product__c.SObjectType.getDescribe().isAccessible()){
-                    ProdObj = [Select id,Core_IPS_Product_Name__c,Status__c ,Core_Supported_Product__c,Core_IPS_Project__c,Core_IPS_Prodcut_Org__c, Core_IPS_Prod_Def_Case_Owner_ID__c, Core_IPS_Prod_Default_Case_Owner__c  FROM Core_IPS_Product__c where ID =:ProductId ];
-                }
+                ProdObj = [Select id,Core_IPS_Product_Name__c,Status__c ,Core_Supported_Product__c,Core_IPS_Project__c,Core_IPS_Prodcut_Org__c, Core_IPS_Prod_Def_Case_Owner_ID__c, Core_IPS_Prod_Default_Case_Owner__c  FROM Core_IPS_Product__c where ID =:ProductId ];
                 
                 if(String.isNotBlank(ProdObj.Core_IPS_Prod_Def_Case_Owner_ID__c) && String.isNotBlank(ProdObj.Core_IPS_Prod_Default_Case_Owner__c)) {
                     isDefaultCaseOwnerPresent = true;
@@ -99,6 +96,8 @@ Public with sharing class Core_IPS_AddDefault_CaseOwner_Controller{
             }
         }
         catch (exception ex){            
+            System.debug('-- Exception Occured :'+ex.getMessage());
+            System.debug('Error at line ' + ex.getStackTraceString());
         }
     }
     
@@ -110,7 +109,7 @@ Public with sharing class Core_IPS_AddDefault_CaseOwner_Controller{
     }
     
     
-    public void doSearch(){
+    public Void doSearch(){
         String searchableString = '';
         UserList.clear();
         Queuelist.clear();    
@@ -119,18 +118,16 @@ Public with sharing class Core_IPS_AddDefault_CaseOwner_Controller{
             showErrorMsg = true;
             Apexpages.addMessage(new ApexPages.Message(ApexPages.Severity.INFO,''+'Please enter text to be searched.'));                
         }
-        else if( selectDCOoption == 'User' && String.isNotEmpty(searchText)){    
-            searchText = searchText;     
+        else if( selectDCOoption == 'User' && String.isNotEmpty(searchText)){         
             searchableString = '%'+ searchText + '%';        //Starts with search functionality
             searchableString = string.escapeSingleQuotes(searchableString);
-            
             String sQuery;         
             sQuery = 'SELECT Id, Name, FirstName, LastName, Email FROM User ' + 
                 'WHERE (ProfileID IN :lstProfId AND (FirstName like :searchableString OR LastName like ' +
                 ':searchableString OR Email like :searchableString) AND (IsActive = true)) ' + 
                 'ORDER BY ' + sortHeader.sortExpression + ' ' + sortHeader.sortDirection + 
                 ' ' + sortHeader.sortNullFirstLast + ' Limit  1000 ' ;
-            UserList = Database.query(string.escapeSingleQuotes(sQuery));          
+            UserList = Database.query(sQuery);          
         }
         else if ( selectDCOoption =='Partner User' && String.isNotEmpty(searchText)){         
             searchableString = '%'+ searchText + '%' ;       //Starts with search functionality       
@@ -144,18 +141,18 @@ Public with sharing class Core_IPS_AddDefault_CaseOwner_Controller{
                 ' Email like :searchableString) AND (IsActive = true) ' +  
                 ' ORDER BY ' + sortHeader.sortExpression + ' ' + sortHeader.sortDirection + 
                 ' ' + sortHeader.sortNullFirstLast + ' Limit 1000 ';                    
-            UserList =  Database.query(string.escapeSingleQuotes(sQuery));                             
+            UserList =  Database.query(sQuery);                             
         }
         else if( selectDCOoption =='Queue' && String.isNotEmpty(searchText)){         
             searchableString = '%' + searchText + '%';      //Starts with search functionality   
             searchableString = string.escapeSingleQuotes(searchableString);
-            String sobjectTypeCase = string.escapeSingleQuotes('Case');
-            String ipsQueues = string.escapeSingleQuotes('%IPS_%');
+            
             String sQuery;
-            sQuery = 'SELECT QueueId, Queue.Name,Queue.DeveloperName, SobjectType FROM QueueSobject Where SobjectType =:sobjectTypeCase' +
-                ' AND (Queue.NAME like :searchableString OR Queue.DeveloperName like :searchableString) and Queue.DeveloperName like :ipsQueues' +                   
+            sQuery = 'SELECT Id,NAME,DeveloperNAME FROM Group ' +
+                ' WHERE Type =\'Queue\' ' +
+                ' AND ( NAME like :searchableString OR DeveloperNAME like :searchableString ) ' +                   
                 ' Limit 1000 ';
-            Queuelist = Database.query(string.escapeSingleQuotes(sQuery));             
+            Queuelist = Database.query(sQuery);             
         }
         
         if(UserList!=null && UserList.size() > 0 || Queuelist !=null && Queuelist.size() >0 ){
@@ -164,7 +161,7 @@ Public with sharing class Core_IPS_AddDefault_CaseOwner_Controller{
                 userToBecreated =true;
                 //isSelected = true;            
             }
-            for(QueueSobject queueRec : Queuelist){
+            for(Group queueRec : Queuelist){
                 searchMadeInt = true;
                 queueToBeCreated = true;
                 //isSelected = true;
@@ -194,10 +191,10 @@ Public with sharing class Core_IPS_AddDefault_CaseOwner_Controller{
                 } 
             }
             else if(Queuelist.size()>0){         
-                for(QueueSobject iPSqueue : Queuelist){
+                for(Group iPSqueue : Queuelist){
                     Core_IPS_Product__c projProduct = new Core_IPS_Product__c();
-                    projProduct.Core_IPS_Prod_Default_Case_Owner__c = IPSqueue.Queue.DeveloperName;
-                    projProduct.Core_IPS_Prod_Def_Case_Owner_ID__c = IPSqueue.QueueId;
+                    projProduct.Core_IPS_Prod_Default_Case_Owner__c = IPSqueue.DeveloperNAME;
+                    projProduct.Core_IPS_Prod_Def_Case_Owner_ID__c = IPSqueue.id;
                     projProdList.add(projProduct);
                 } 
             }
@@ -210,6 +207,8 @@ Public with sharing class Core_IPS_AddDefault_CaseOwner_Controller{
             }           
         }     
         catch(Exception ex){
+            System.debug('-- Exception Occured :'+ex.getMessage());
+            System.debug('Error at line ' + ex.getStackTraceString());
         }
         return null;
     }
@@ -222,7 +221,8 @@ Public with sharing class Core_IPS_AddDefault_CaseOwner_Controller{
         usrQuery= 'Select id, Name, email from from User where id =: selectedUser';
         String queQuery;
         queQuery = ' Select id,Name from Group where id =: selectedQueue';
-
+        system.debug('UserList'+UserList);
+        system.debug('Queuelist'+Queuelist);
         try{
             if(UserList!= null && !UserList.isEmpty()){                   
                 if(isSelected == true){                        
@@ -271,6 +271,7 @@ Public with sharing class Core_IPS_AddDefault_CaseOwner_Controller{
         //return ref;
     }
     public void refreshSelected() { 
+        system.debug('refreshSelected ');
     }
     
 }

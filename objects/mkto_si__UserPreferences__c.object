@@ -36,14 +36,6 @@ linebreak persists in  last interesting moment Desc field</description>
         <type>Checkbox</type>
     </fields>
     <fields>
-        <fullName>mkto_si__HideSalesQualifierBanner__c</fullName>
-        <defaultValue>false</defaultValue>
-        <deprecated>false</deprecated>
-        <label>Hide Sales Qualifier Banner</label>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
         <fullName>mkto_si__LastWhatIsNewVersion__c</fullName>
         <deprecated>false</deprecated>
         <externalId>false</externalId>

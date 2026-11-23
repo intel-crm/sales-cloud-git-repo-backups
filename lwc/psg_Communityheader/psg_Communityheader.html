@@ -1,0 +1,205 @@
+<template>
+        <c-core-intc-breadcrumbs></c-core-intc-breadcrumbs>
+        <div class="slds-box slds-box_xx-small">
+            <div class="slds-grid slds-gutters">
+                <div class="slds-col slds-size_2-of-12">
+            <span>
+                <!--<lightning-button
+                    icon-name="utility:rows"
+                    onclick={handlerow}>
+            </lightning-button>-->
+            
+               
+               <!--<div class="slds-m-left_small menucolor" >
+
+                    <div class="slds-p-around_small">
+                        <lightning-button-menu alternative-text="MENU" icon-name="utility:rows" variant="border-filled" >
+                            <lightning-menu-subheader label="Generate License"></lightning-menu-subheader>
+                            <lightning-menu-subheader label="License"></lightning-menu-subheader>
+                            <lightning-menu-item value="Unlicensed products" label="Unlicensed products"></lightning-menu-item>
+                            <lightning-menu-item value="Active maintenance licenses" label="Active maintenance licenses"></lightning-menu-item>
+                            <lightning-menu-item value="Maintenance expired licenses" label="Maintenance expired licenses"></lightning-menu-item>
+                            <lightning-menu-item value="Expired licenses" label="Expired licenses"></lightning-menu-item>
+                            <lightning-menu-item value="All licenses" label="All licenses"></lightning-menu-item>
+                            <lightning-menu-subheader label="Sign-Up"></lightning-menu-subheader>
+                            <lightning-menu-item value="Sign-up for evaluation license or early" label="Sign-up for evaluation license or early"></lightning-menu-item>
+                            <lightning-menu-item value="access products" label="access products"></lightning-menu-item>
+                            <lightning-menu-subheader label="Computer & license files"></lightning-menu-subheader>
+                            <lightning-menu-item value="Active Computer" label="Active Computer"></lightning-menu-item>
+                            <lightning-menu-item value="All Computer" label="All Computer"></lightning-menu-item>
+                            <lightning-menu-subheader label="Admins"></lightning-menu-subheader>
+                            <lightning-menu-item value="Add an admin" label="Add an admin"></lightning-menu-item>
+                            <lightning-menu-item value="View and manage admins" label="aView and manage admins"></lightning-menu-item>
+                    </lightning-button-menu>
+                    </div>
+                </div>-->
+                
+            </span>
+        </div>
+            <div class="slds-col">
+            <span>
+                <div class="slds-text-align_left slds-text-heading_large"> 
+                    Intel FPGA Self-service Licensing Center 
+                 </div>
+            </span>
+            </div>
+            <div class="slds-col">
+                <span></span>
+              </div>
+              <div class="slds-col">
+                <span></span>
+              </div>
+              <div class="slds-col">
+                <span></span>
+              </div>
+              <div class="slds-col">
+                <span></span>
+              </div>
+              <div class="slds-col">
+                <span></span>
+              </div>
+              <div class="slds-col">
+                <span></span>
+              </div>
+              
+            <div class="slds-col " >
+            <span>
+                <!--<div class="slds-m-right_large slds-p-around_medium lgc-bg">
+                    <lightning-helptext icon-name="utility:question" content="Frequently asked questions"></lightning-helptext>
+                </div>-->
+                <!--<lightning-button
+                    icon-name="utility:question"
+                    onclick={Question}>
+            </lightning-button>-->
+            
+            <!--<div class=" slds-m-right_small">
+                <div class="slds-p-around_small lgc-bg">
+                    <lightning-button-menu alternative-text="" icon-name="utility:question">
+                        <lightning-menu-item value="MenuItemOne" label="Frequently asked questions"></lightning-menu-item>
+                        <lightning-menu-item value="MenuItemTwo" label="Video tutorials"></lightning-menu-item>
+                        <lightning-menu-item value="MenuItemThree" label="Installation & licensing support center"></lightning-menu-item>
+                        <lightning-menu-item value="MenuItemFour" label="Software licensing troubleshooter Need help - Contact customer service"></lightning-menu-item>
+                    </lightning-button-menu>
+                </div>
+            </div> -->
+            <lightning-button 
+                    icon-name="utility:question"
+                    onclick={handleQuestion}>
+            </lightning-button>
+            </span>
+            </div>
+        </div>
+    </div>    
+    <div class="slds-tabs_default">
+        <ul class="slds-tabs_default__nav" role="tablist">
+            <li class="slds-tabs_default__item slds-is-active" title="Item One" role="presentation">
+                 <a class="slds-tabs_default__link" href="#" role="tab" tabindex="0" aria-selected="true" aria-controls="tab-default-1" id="tab-default-1__item">Licenses</a>
+            </li>
+            <li class="slds-tabs_default__item" title="Item Two" role="presentation">
+                <a class="slds-tabs_default__link" href="#" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-default-2" id="tab-default-2__item">Evaluation, early access and free products</a>
+            </li>
+            <li class="slds-tabs_default__item" title="Item Three" role="presentation">
+                 <a class="slds-tabs_default__link" href="#" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-default-3" id="tab-default-3__item">Computers & license files </a>
+            </li>
+            <li class="slds-tabs_default__item" title="Item Three" role="presentation">
+                <a class="slds-tabs_default__link" href="#" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-default-4" id="tab-default-4__item">Admins </a>
+            </li>
+    </ul>
+        <!-- <div id="tab-default-1" class="slds-tabs_default__content slds-show" role="tabpanel" aria-labelledby="tab-default-1__item">Item One Content</div>
+        <div id="tab-default-2" class="slds-tabs_default__content slds-hide" role="tabpanel" aria-labelledby="tab-default-2__item">Item Two Content</div>
+        <div id="tab-default-3" class="slds-tabs_default__content slds-hide" role="tabpanel" aria-labelledby="tab-default-3__item">Item Three Content</div>
+        <div id="tab-default-4" class="slds-tabs_default__content slds-hide" role="tabpanel" aria-labelledby="tab-default-3__item">Item Four Content</div>-->
+    </div>
+    &nbsp;
+    &nbsp;
+    <div class="slds-grid slds-gutters">
+        <div class="slds-col">
+        <span>
+            <div class="slds-form-element">
+                
+                <div class="slds-form-element__control">
+                <div class="slds-combobox_container slds-size_small">
+                <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click" aria-expanded="false" aria-haspopup="listbox" role="combobox">
+                <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
+                <input type="text" class="slds-input slds-combobox__input slds-combobox__input-value" id="combobox-id-6" aria-activedescendant="option1" aria-controls="listbox-id-6" autocomplete="off" role="textbox" placeholder="Select an Option…" readonly=""
+                value="Unlicensed Products" />
+                <span class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_right">
+                    <lightning-button variant="base" icon-name="utility:down" onclick={handledown} class="slds-m-left_x-small"></lightning-button>
+                  </span>
+                </div>
+
+                <div id="listbox-id-6" class="slds-dropdown slds-dropdown_length-5 slds-dropdown_fluid" role="listbox">
+                <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                <li role="presentation" class="slds-listbox__item">
+                <div aria-checked="true" id="option1" class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-is-selected" role="option">
+                    <span class="slds-media__figure slds-listbox__option-icon">
+                        <span class="slds-icon_container slds-icon-utility-check slds-current-color">
+                            <lightning-button variant="base" icon-name="utility:down" onclick={handledown} class="slds-m-left_x-small"></lightning-button>
+                        </span>
+                      </span> 
+                <span class="slds-media__body">
+                <span class="slds-truncate" title="Unlicensed Products">Unlicensed Products</span>
+                </span>
+                </div>
+                </li>
+                <li role="presentation" class="slds-listbox__item">
+                <div id="option2" class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small" role="option">
+                <span class="slds-media__figure slds-listbox__option-icon"></span>
+                <span class="slds-media__body">
+                <span class="slds-truncate" title="Option B">Option B</span>
+                </span>
+                </div>
+                </li>
+                <li role="presentation" class="slds-listbox__item">
+                <div id="option3" class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small" role="option">
+                <span class="slds-media__figure slds-listbox__option-icon"></span>
+                <span class="slds-media__body">
+                <span class="slds-truncate" title="Option ABCDEFGHIJKLMNOPQRSTUVWXYZ">Option ABCDEFGHIJKLMNOPQRSTUVWXYZ</span>
+                </span>
+                </div>
+                </li>
+                </ul>
+                </div>
+                </div>
+                </div>
+                </div>
+                </div>
+        </span>
+        </div>
+        <div class="slds-col">
+        <span></span>
+        </div>
+        <div class="slds-col">
+        <span>
+            <lightning-button label="Search" title="Search action" icon-name="utility:search" class="slds-m-left-small"></lightning-button>
+        </span>
+        </div>
+        <div class="slds-col">
+        <span>
+            <lightning-button
+                    icon-name="utility:filterList"
+                    onclick={handleFilter}>
+            </lightning-button>
+        </span>
+        </div>
+        <div class="slds-col">
+        <span>
+            <lightning-button
+                                variant="Neutral"
+                                label="Export"
+                                onclick={handleExport}>
+                            </lightning-button>                      
+        </span>
+        </div>
+        <div class="slds-col">
+            <span>         
+            </span>
+            </div>
+    </div>
+    &nbsp;
+    <div>
+        <p>Don't see your Products? <lightning-formatted-url value="https://my/path"  label="Generate license with your License Activation Code." target="_blank" ></lightning-formatted-url></p>
+        
+    </div>
+
+</template>

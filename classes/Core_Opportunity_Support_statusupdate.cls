@@ -1,8 +1,8 @@
 public without sharing class Core_Opportunity_Support_statusupdate {
-     @AuraEnabled(cacheable=true)
+ @AuraEnabled(cacheable=true)
     public static Map<id,String> getStatusValue(String recId){
 
-     
+        
         Map<id,String> opptSuppReqMap = new Map<id,String>();
         Core_Opportunity_Support__c opptSuppReq=  new Core_Opportunity_Support__c();
         try{
@@ -27,7 +27,8 @@ public without sharing class Core_Opportunity_Support_statusupdate {
                 labelString = labelString + groupEmail.UserOrGroup.Email+',';
             }
             labelString = labelString.removeEnd(',');
-            if(labelString.contains(UserInfo.getUserEmail())){update new Core_Opportunity_Support__c(Id = recordId, Core_Status__c = statusvalue);
+            if(labelString.contains(UserInfo.getUserEmail())){
+                update new Core_Opportunity_Support__c(Id = recordId, Core_Status__c = statusvalue);
                 notMSUser = false;
             }
             else{

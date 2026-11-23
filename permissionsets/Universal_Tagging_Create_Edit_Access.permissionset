@@ -14,6 +14,16 @@
     </customPermissions>
     <description>Users can add and remove Taggings from Opportunities, but cannot create, edit, or delete Tags (inventory of Taggings)</description>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Business_Review__c.User_s_Manager__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>SPM_Account_Feedback__c.CRM_CST_Is_Active_Planning_Period__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>UniTag__Tag__c.Core_Business_Owner__c</field>
         <readable>true</readable>

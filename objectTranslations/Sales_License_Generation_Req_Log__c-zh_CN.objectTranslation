@@ -9,15 +9,11 @@
         <name>Evevt_Type__c</name>
     </fields>
     <fields>
-        <label><!-- LicenseId --></label>
-        <name>LicenseId__c</name>
-    </fields>
-    <fields>
         <label>许可 ID</label>
         <name>License_Id__c</name>
     </fields>
     <fields>
-        <label>联系人电子邮件地址</label>
+        <label><!-- Contact&apos;s Email Address --></label>
         <name>Sales_Contact_Email_Address__c</name>
     </fields>
     <fields>
@@ -48,11 +44,6 @@
     <fields>
         <label><!-- Legacy Attachment Name --></label>
         <name>Sales_Legacy_Attachment_Name__c</name>
-    </fields>
-    <fields>
-        <label><!-- Contact --></label>
-        <name>Sales_License_Contact__c</name>
-        <relationshipLabel>许可生成请求</relationshipLabel>
     </fields>
     <fields>
         <label>许可证文件</label>

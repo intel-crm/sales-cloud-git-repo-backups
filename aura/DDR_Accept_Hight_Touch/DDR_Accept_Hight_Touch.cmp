@@ -1,5 +1,5 @@
 <aura:component implements="flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickActionWithoutHeader">
-    <aura:attribute name="actionName" type="String" default="AcceptHighTouch" />
+    <aura:attribute name="actionName" type="String" default="AcceptHightTouch" />
     <aura:attribute name="recordId" type="String" />
     <aura:attribute name="processOk" type="Boolean" default="false" />
     <aura:attribute name="showConfirmation" type="Boolean" default="false" />

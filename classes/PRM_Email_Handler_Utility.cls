@@ -1,8 +1,11 @@
 //Added by Gopi(Agate Team) as a part Suppress Email functionality from Userstory TWC729-174
-public with sharing class PRM_Email_Handler_Utility {
+public class PRM_Email_Handler_Utility {
 
     public static Boolean checkForEmailSupression(Id conId, String Event){
         Boolean supressEmail = false;
+        System.debug('Entered checkForEmailSupression method');
+        //System.debug('Email Parameter'+Email);
+        System.debug('Event Parameter'+Event);
         List<PRM_Email_Handler__c> emailHandlerRecordsToUpdate = new List<PRM_Email_Handler__c>();
         List<PRM_Email_Handler__c> emailHandlerRequests = new List<PRM_Email_Handler__c>();
         emailhandlerRequests = [SELECT Id,PRM_Contact__c,PRM_Email_Id__c,PRM_Email_Handler_Status__c,PRM_Event__c,PRM_Suppress_Email__c,PRM_Email_Suppressed_Time__c 
@@ -19,8 +22,7 @@ public with sharing class PRM_Email_Handler_Utility {
             System.debug('emailHandlerRecordsToUpdate'+emailHandlerRecordsToUpdate);
             System.debug('emailHandlerRecordsToUpdate size===?'+emailHandlerRecordsToUpdate.size());
             if(emailHandlerRecordsToUpdate!=null && !emailHandlerRecordsToUpdate.isEmpty()){
-                //List<Database.SaveResult> results = 
-                    Database.update(emailHandlerRecordsToUpdate,false);
+                List<Database.SaveResult> results = Database.update(emailHandlerRecordsToUpdate,false);
             }
         }
         return supressEmail;
@@ -36,8 +38,7 @@ public with sharing class PRM_Email_Handler_Utility {
     
     public static void updateEmailHandlerDetails(List<PRM_Email_Handler__c> emailHandlerList){
         if(emailHandlerList!=null && !emailHandlerList.isEmpty()){
-            //List<Database.SaveResult> results = 
-                Database.update(emailHandlerList,false);
+            List<Database.SaveResult> results = Database.update(emailHandlerList,false);
         }
     }
 }

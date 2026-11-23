@@ -3,6 +3,11 @@
     <doesIncludeBosses>true</doesIncludeBosses>
     <doesSendEmailToMembers>false</doesSendEmailToMembers>
     <name>Commissions-ASMO CO</name>
+    <queueMembers>
+        <publicGroups>
+            <publicGroup>Core_AAQC_Commissions_ASMO_CO</publicGroup>
+        </publicGroups>
+    </queueMembers>
     <queueSobject>
         <sobjectType>Case</sobjectType>
     </queueSobject>

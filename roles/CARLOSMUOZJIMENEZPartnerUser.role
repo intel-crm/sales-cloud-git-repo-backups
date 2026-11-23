@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>Arroba Computers Distribution Partner User</description>
+    <description>CARLOS MUÑOZ JIMENEZ Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>Arroba Computers Distribution Partner User</name>
+    <name>CARLOS MUÑOZ JIMENEZ Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>CARLOSMUOZJIMENEZPartnerManager</parentRole>
 </Role>

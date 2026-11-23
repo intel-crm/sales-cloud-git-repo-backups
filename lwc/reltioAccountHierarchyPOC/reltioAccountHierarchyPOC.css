@@ -1,0 +1,24 @@
+.account-section {
+    border-left: 3px solid #055; /* Vertical line for each Account */
+    margin-left: 10px;
+}
+
+.contact-list {
+    max-height: 200px; /* Set the maximum height for the contact list */
+    overflow-y: auto; /* Enable vertical scrolling if the content exceeds the maximum height */
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+}
+
+.horizontal-line {
+    border-top: 3px solid #055; /* Horizontal line on the left of each Contact */
+    width: 10px;
+    margin-right: 10px;
+}
+
+.contact-details {
+    padding: 10px;
+}

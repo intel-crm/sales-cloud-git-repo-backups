@@ -49,7 +49,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Approved,Design accepted,Pre-Approved,Re-Submitted,Submitted</value>
+            <value>Approved,Design accepted,Pre-Approved,Re-Submitted,Rejected,Submitted</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

@@ -2,12 +2,10 @@
   
     doInit: function(component, event, helper) {
         helper.setInitialValue(component, helper);
-        // IPA2.0 + US TWC4497-1631
-        // if (component.get('v.fieldName') == 'PMP_Company_Id__c' && component.get('v.apiName')=='offering' && !component.get('v.value')) {
-      	//   window.localStorage.setItem('hideSaveCompany', true);    
-      	// }else if(component.get('v.fieldName') == 'PMP_Company_Id__c' && component.get('v.apiName')=='offering' && component.get('v.value')){
-        //   window.localStorage.setItem('hideSaveCompany', false); 
-        // }
+        
+        if (component.get('v.fieldName') == 'PMP_Company_Id__c' && component.get('v.apiName')=='offering' && !component.get('v.value')) {
+      	  window.localStorage.setItem('hideSaveCompany', true);    
+      	}
         
      /* if(window.localStorage.getItem('hideSaveCompany')){
          component.set('v.touched', false); 
@@ -36,30 +34,18 @@
       
     },
     
-     /*Gireesh:US378991: edit offering visibility 
-     *Logic Changed by Abhishek -->
-     * if initial visiblity is Intel only/Partner only and the user changes it
-     * to public and if the active step is > 0
-     * a confirmation dialogue is showed saying that other tabs data will be lost, if user continues
-     * we just reset the active step to 0, pre-releaese items are not loaded on the UI and hence in the save
-     * the selected pre-release are automatically deleted when user navigates from tab2 to tab3.
-     */
+     /*Gireesh:US378991: edit offering visibility */
     selectedValuesChange:function(component, event, helper) {
-		console.log('step',component.get('v.activeStep'));
-        if(component.get('v.activeStep') != 0 && (event.getParam("oldValue")=='Partner Content'||event.getParam("oldValue")=='Intel Only Content')
+
+        if((event.getParam("oldValue")=='Partner Content'||event.getParam("oldValue")=='Intel Only Content')
            && (event.getParam("value")=='Public Content')
-          ){            
-            var confirmValue = confirm($A.get("$Label.c.PMP_Visibility_Change_Confirmation"));
-            if(confirmValue== true){
-                helper.updateForm(component,'public');        		
-            }
-            else{
-            	//helper.updateForm(component,'nonPublic');
-            	component.set('v._value', event.getParam("oldValue"));
-        	}
+          ){
+            helper.updateForm(component,'public');
             
         }
-        
+        else{
+            helper.updateForm(component,'nonPublic');
+        }
     },
     
     handleChange : function(component, event, helper) {
@@ -68,15 +54,14 @@
       valid = component.find("dropdown").checkValidity();
       component.set('v.touched', true);
       component.set('v.valid', valid);
-        // IPA2.0 + US TWC4497-1631
-      // if (component.get('v.fieldName') == 'PMP_Company_Id__c' && component.get('v.apiName')=='offering' && component.get('v.touched') && component.get('v.valid')) {
-      //   window.localStorage.setItem('hideSaveCompany', false);  
-      // }    
+        
+      if (component.get('v.fieldName') == 'PMP_Company_Id__c' && component.get('v.apiName')=='offering' && component.get('v.touched') && component.get('v.valid')) {
+        window.localStorage.setItem('hideSaveCompany', false);  
+      }    
       helper.updateForm(component);
     },
 
     handleRemovePill : function(component, event, helper) {
-       if(!component.get('v.solutionOffering')){
       var pill = event.currentTarget.dataset.val;
       var options = component.get('v.options');
         options.forEach(function(opt) {
@@ -90,14 +75,11 @@
       component.set('v.touched', true);
       component.set('v.value', component.get('v.isPicklist') ? values.join(';') : values);
       helper.updateForm(component);
-        }      
     },
 
     handleToggleMultipleDropdown : function(component, event, helper) {
-       if(!component.get('v.solutionOffering')){  
       component.set('v.multipleDropdownOpen', !component.get('v.multipleDropdownOpen'));
       if (!component.get('v.multipleDropdownOpen')) component.set('v.touched', true);
-      }   
     },
 
     handleOpenMultipleDropdown : function(component, event, helper) {

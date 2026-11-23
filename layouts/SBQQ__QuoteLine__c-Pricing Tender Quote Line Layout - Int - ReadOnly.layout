@@ -74,10 +74,6 @@
                 <behavior>Readonly</behavior>
                 <field>Pricing_Approval_Price_Rule_Name__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Pricing_Change_Request_Type__c</field>
-            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -121,7 +117,7 @@
                 <field>Pricing_SDM_Fast_Track__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
+                <behavior>Edit</behavior>
                 <field>Pricing_Price_Interval_Txt__c</field>
             </layoutItems>
             <layoutItems>
@@ -495,6 +491,10 @@
                 <behavior>Readonly</behavior>
                 <field>Pricing_Program_Type_Nm__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>CreatedById</field>
+            </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
     </layoutSections>
@@ -531,6 +531,10 @@
     </relatedLists>
     <relatedLists>
         <relatedList>RelatedEntityHistoryList</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>PCC_Rebate_Claim_Stage__c.PCC_Quote_Line_Id__c</relatedList>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>

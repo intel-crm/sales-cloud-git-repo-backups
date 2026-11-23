@@ -1,44 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
     <valueTranslation>
-        <masterLabel>4G/5G Core</masterLabel>
-        <translation><!-- 4G/5G Core --></translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>5G Infrastructure</masterLabel>
         <translation>5G 인프라 </translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>5G Network Transformation</masterLabel>
-        <translation><!-- 5G Network Transformation --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>5G/RAN</masterLabel>
         <translation><!-- 5G/RAN --></translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>AI &amp; Machine Learning</masterLabel>
-        <translation><!-- AI &amp; Machine Learning --></translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>AI / Big Data</masterLabel>
         <translation>AI / 빅 데이터</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>AI Commercial</masterLabel>
-        <translation>상업용 AI</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>AI Consumer</masterLabel>
-        <translation>소비자용 AI</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>AI PC &amp; Consumer</masterLabel>
-        <translation>AI PC 및 소비자</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>AI PC - Commercial</masterLabel>
-        <translation>AI PC - 상업용</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>AI </masterLabel>
@@ -54,23 +26,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Analytics</masterLabel>
-        <translation>분석</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Apple Compete Commercial</masterLabel>
-        <translation>Apple과 경쟁하는 상업용 제품</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Apple Compete Consumer</masterLabel>
-        <translation>Apple과 경쟁하는 소비자 제품</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Apple Compete Workstation</masterLabel>
-        <translation>Apple과 경쟁하는 워크스테이션</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Architectural Conversion</masterLabel>
-        <translation>아키텍처 변환</translation>
+        <translation><!-- Analytics --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Artificial Intelligence</masterLabel>
@@ -78,71 +34,19 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Automotive</masterLabel>
-        <translation>자동차</translation>
+        <translation><!-- Automotive --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Cloud</masterLabel>
-        <translation>클라우드</translation>
+        <translation><!-- Cloud --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Cloud (Public, Private, hybrid, multi)</masterLabel>
-        <translation>클라우드(퍼블릭, 프라이빗, 하이브리드, 멀티)</translation>
+        <translation><!-- Cloud (Public, Private, hybrid, multi) --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Cloud Services</masterLabel>
         <translation>클라우드 서비스</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Commercial</masterLabel>
-        <translation>상업</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Commercial - Education</masterLabel>
-        <translation>상업 - 교육</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Commercial - Government</masterLabel>
-        <translation>상업 - 정부</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Commercial - SMB</masterLabel>
-        <translation>상업 - SMB</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Commercial Evo (non-vPro)</masterLabel>
-        <translation>상업용 Evo(비 vPro)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Commercial non-vPro</masterLabel>
-        <translation>상용 비 vPro</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Commercial vPro</masterLabel>
-        <translation>상용 vPro</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Commercial vPro Evo</masterLabel>
-        <translation>상업용 vPro Evo</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Commercial​ - Large enterprise</masterLabel>
-        <translation>상업 - 대기업</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Connectivity</masterLabel>
-        <translation>연결성</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Consumer</masterLabel>
-        <translation>소비자</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Consumer - Mainstream/Essential</masterLabel>
-        <translation>소비자 - 메인스트림/에센셜</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Consumer - Premium</masterLabel>
-        <translation>소비자 - 프리미엄</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Consumer Chromebook</masterLabel>
@@ -150,11 +54,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Consumer Client</masterLabel>
-        <translation>소비자 클라이언트</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Consumer Evo</masterLabel>
-        <translation>소비자용 Evo</translation>
+        <translation><!-- Consumer Client --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Consumer Intel Optane</masterLabel>
@@ -165,20 +65,8 @@
         <translation>소비자 모던 PC</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Consumer non-Evo</masterLabel>
-        <translation>소비자용 비 Evo</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Consumer refresh of latest gen processors</masterLabel>
         <translation>최신 세대 프로세서의 소비자 리프레쉬</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Consumer​ - Enthusiast</masterLabel>
-        <translation>소비자 - 매니아</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Consumer​ - Mainstream</masterLabel>
-        <translation>소비자 - 메인스트림</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Creator marketing</masterLabel>
@@ -186,19 +74,11 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Datacenter Modernization</masterLabel>
-        <translation>데이터 센터 현대화</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Design Win vs. Comp</masterLabel>
-        <translation>디자인 윈 vs. 컴프</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Digital Transformation</masterLabel>
-        <translation>디지털 혁신</translation>
+        <translation><!-- Datacenter Modernization --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Digital Workplace</masterLabel>
-        <translation>디지털 업무 환경</translation>
+        <translation><!-- Digital Workplace --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Edge</masterLabel>
@@ -209,52 +89,24 @@
         <translation><!-- Edge Computing --></translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Edge Infrastructure Platforms/MEC</masterLabel>
-        <translation><!-- Edge Infrastructure Platforms/MEC --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Edge/ IOT Digital Transformation</masterLabel>
-        <translation>에지/IOT 디지털 트랜스포메이션</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Enterprise AI</masterLabel>
-        <translation>엔터프라이즈 AI</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Enterprise Cloud Networking &amp; Security</masterLabel>
-        <translation><!-- Enterprise Cloud Networking &amp; Security --></translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Enterprise IT</masterLabel>
-        <translation>엔터프라이즈 IT</translation>
+        <translation><!-- Enterprise IT --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Extend Platform Leadership</masterLabel>
         <translation><!-- Extend Platform Leadership --></translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>FPGA</masterLabel>
-        <translation><!-- FPGA --></translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>FPGA Accelerators</masterLabel>
-        <translation>FPGA 가속기</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Fixed/Wireless Access</masterLabel>
-        <translation><!-- Fixed/Wireless Access --></translation>
+        <translation><!-- FPGA Accelerators --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Gaming</masterLabel>
-        <translation>게이밍</translation>
+        <translation><!-- Gaming --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Gaming marketing</masterLabel>
         <translation>게임 마케팅</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Gen-Over-Gen Ramp</masterLabel>
-        <translation>세대 간 증가</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>HPC </masterLabel>
@@ -262,11 +114,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>High Performance Computing</masterLabel>
-        <translation>고성능 컴퓨팅</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>IOT Digital Transformation</masterLabel>
-        <translation>IoT 디지털 혁신</translation>
+        <translation><!-- High Performance Computing --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>IREP</masterLabel>
@@ -274,23 +122,19 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>In-Memory Database/Optane Pmem</masterLabel>
-        <translation>인메모리 데이터베이스/Optane 영구 메모리</translation>
+        <translation><!-- In-Memory Database/Optane Pmem --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Infrastructure Modernization</masterLabel>
         <translation>인프라 현대화</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Infrastructure Optimization</masterLabel>
-        <translation>인프라 최적화</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Instore innovation</masterLabel>
-        <translation>매장내 혁신</translation>
+        <translation><!-- Instore innovation --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Instore merchandise</masterLabel>
-        <translation>매장내 상품</translation>
+        <translation><!-- Instore merchandise --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel/RSP Advocacy</masterLabel>
@@ -299,10 +143,6 @@
     <valueTranslation>
         <masterLabel>Internet of Things</masterLabel>
         <translation>사물 인터넷</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Machine Learning</masterLabel>
-        <translation><!-- Machine Learning --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Mainstream PCs</masterLabel>
@@ -329,10 +169,6 @@
         <translation>최신 모바일 기기</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Multi-Access Edge Computing</masterLabel>
-        <translation><!-- Multi-Access Edge Computing --></translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>NP-Consumer</masterLabel>
         <translation>NP-소비자</translation>
     </valueTranslation>
@@ -357,60 +193,28 @@
         <translation>네트워크 혁신</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>New Business Models</masterLabel>
-        <translation>새로운 비즈니스 모델</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Next Gen IaaS</masterLabel>
         <translation>차세대 IaaS</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>None</masterLabel>
-        <translation><!-- None --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>On Prem</masterLabel>
-        <translation>온프레미스</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Online Performance</masterLabel>
-        <translation>온라인 성과</translation>
+        <translation><!-- Online Performance --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Other</masterLabel>
-        <translation>기타</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Private Wireless Networks</masterLabel>
-        <translation><!-- Private Wireless Networks --></translation>
+        <translation><!-- Other --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>RXT engagement</masterLabel>
-        <translation>RXT 인게이지먼트</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Radio Access Networks</masterLabel>
-        <translation><!-- Radio Access Networks --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Radio Access Networks (RAN)</masterLabel>
-        <translation><!-- Radio Access Networks (RAN) --></translation>
+        <translation><!-- RXT engagement --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Ramping Adjacencies</masterLabel>
-        <translation>램프 인접</translation>
+        <translation><!-- Ramping Adjacencies --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Refresh for vPro</masterLabel>
         <translation>v프로 리프레쉬</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Research &amp; Incubation</masterLabel>
-        <translation>연구 및 인큐베이션</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Security</masterLabel>
-        <translation>보안</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Small Business</masterLabel>
@@ -421,16 +225,8 @@
         <translation>스토리지</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Systems - NUC</masterLabel>
-        <translation>시스템 - NUC</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Target demand gen</masterLabel>
-        <translation>목표 수요 창출</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Technology Adoption</masterLabel>
-        <translation>기술 채택</translation>
+        <translation><!-- Target demand gen --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Telecom Transformation</masterLabel>
@@ -442,7 +238,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Vision</masterLabel>
-        <translation>비전</translation>
+        <translation><!-- Vision --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Visual Cloud</masterLabel>
@@ -458,7 +254,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Win Screen w IPOS</masterLabel>
-        <translation>Win Screen(IPOS 포함)</translation>
+        <translation><!-- Win Screen w IPOS --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Win Volume</masterLabel>
@@ -466,15 +262,15 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Windows 10 Refresh</masterLabel>
-        <translation>Windows 10 새로고침</translation>
+        <translation><!-- Windows 10 Refresh --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Workload Consolidation</masterLabel>
-        <translation>워크로드 통합</translation>
+        <translation><!-- Workload Consolidation --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Workplace Transformation </masterLabel>
-        <translation>업무 환경 혁신 </translation>
+        <translation><!-- Workplace Transformation  --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Workstation</masterLabel>

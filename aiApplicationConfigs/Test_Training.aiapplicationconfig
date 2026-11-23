@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AIApplicationConfig xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aiApplicationDeveloperName>Test_Training</aiApplicationDeveloperName>
+    <applicationId>0PpDf0000004HD2</applicationId>
+    <developerName>Test_Training</developerName>
+    <insightReasonEnabled>true</insightReasonEnabled>
+    <masterLabel>MasterLabel_Test_Training</masterLabel>
+    <rank>1</rank>
+    <scoringMode>Batch</scoringMode>
+</AIApplicationConfig>

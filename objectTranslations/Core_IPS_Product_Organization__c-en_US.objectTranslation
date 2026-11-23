@@ -32,6 +32,10 @@
         <name>Core_IPS_All_Operational_Env_Details_Report</name>
     </webLinks>
     <webLinks>
+        <label><!-- Core_IPS_Create_Map --></label>
+        <name>Core_IPS_Create_Map</name>
+    </webLinks>
+    <webLinks>
         <label><!-- Core_IPS_Env_Details_Master_Q_A_Report --></label>
         <name>Core_IPS_Env_Details_Master_Q_A_Report</name>
     </webLinks>
@@ -46,9 +50,5 @@
     <webLinks>
         <label><!-- Core_IPS_Pending_PAR_Report_Link --></label>
         <name>Core_IPS_Pending_PAR_Report_Link</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- Create_Product_Access --></label>
-        <name>Create_Product_Access</name>
     </webLinks>
 </CustomObjectTranslation>

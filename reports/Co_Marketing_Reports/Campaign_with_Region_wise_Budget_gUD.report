@@ -40,12 +40,6 @@
         <field>Campaign$Core_MDF_Brand__c</field>
     </columns>
     <columns>
-        <field>Campaign$Core_MDF_Industry_Nm__c</field>
-    </columns>
-    <columns>
-        <field>Campaign$Core_MDF_Activity_Category_Type__c</field>
-    </columns>
-    <columns>
         <field>Campaign$Description</field>
     </columns>
     <columns>
@@ -88,7 +82,7 @@
         <field>Campaign.Regionwise_Campaign_Budgets__r$Core_MDF_Second_Year_Budget__c</field>
     </columns>
     <columns>
-        <field>Campaign$Core_MDF_Opal_Budget_Type_Txt__c</field>
+        <field>Campaign$Core_MDF_Budget_Type_txt__c</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>

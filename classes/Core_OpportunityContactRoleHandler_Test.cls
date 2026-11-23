@@ -16,8 +16,11 @@ public class Core_OpportunityContactRoleHandler_Test {
         trigList.add(triggerEntry);
         insert trigList;
         
+        //TWC4767-3990 
+        Id newAccountRecTypeId = [select Id from RecordType where DeveloperName = 'Mastered_Account' and sobjecttype = 'Account' limit 1][0].Id;
+
         Account acct = new Account(Name = 'Test Account1', Industry = 'Agriculture', Core_Sub_Industry__c = 'Forestry', 
-                                   BillingStreet = '123 Fake St',BillingCity = 'Springfield', BillingState = 'IL', BillingCountry = 'USA',
+                                   BillingStreet = '123 Fake St',BillingCity = 'Springfield', BillingState = 'IL', BillingCountry = 'USA', RecordTypeId =  newAccountRecTypeId,
                                    BillingPostalCode = '12345', Core_Sales_Groups__c='EMEA Sales Group');
         insert acct;
         list<opportunity> oppList = new list<opportunity>();
@@ -36,7 +39,6 @@ public class Core_OpportunityContactRoleHandler_Test {
         cont.FirstName = 'Test';
         cont.LastName  = 'Contact';
         cont.AccountId = acct.id;
-        cont.MailingCountry = 'IND';
         cont.Email = 'testingPCC123@example.com';
         insert cont;
     }

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>To store Capability of Feedback</description>
+    <fields>
+        <fullName>Active__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>To activate Capability of feedback</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Active</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Capability__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Capability</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>contact_customer_service</fullName>
+                    <default>false</default>
+                    <label>contact customer service</label>
+                </value>
+                <value>
+                    <fullName>add_new_admin</fullName>
+                    <default>false</default>
+                    <label>add new admin</label>
+                </value>
+                <value>
+                    <fullName>sales license</fullName>
+                    <default>false</default>
+                    <label>sales license</label>
+                </value>
+                <value>
+                    <fullName>feedback</fullName>
+                    <default>false</default>
+                    <label>feedback</label>
+                </value>
+                <value>
+                    <fullName>my-active-delegate-admins</fullName>
+                    <default>false</default>
+                    <label>my-active-delegate-admins</label>
+                </value>
+                <value>
+                    <fullName>all computers</fullName>
+                    <default>false</default>
+                    <label>all computers</label>
+                </value>
+                <value>
+                    <fullName>employee-and-evaluation-licenses</fullName>
+                    <default>false</default>
+                    <label>employee-and-evaluation-licenses</label>
+                </value>
+                <value>
+                    <fullName>Generate License</fullName>
+                    <default>false</default>
+                    <label>Generate License</label>
+                </value>
+                <value>
+                    <fullName>Split Seats</fullName>
+                    <default>false</default>
+                    <label>Split Seats</label>
+                </value>
+                <value>
+                    <fullName>License Chatbot</fullName>
+                    <default>false</default>
+                    <label>License Chatbot</label>
+                </value>
+                <value>
+                    <fullName>sales host</fullName>
+                    <default>false</default>
+                    <label>sales host</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <label>Sales_feedbackCapability</label>
+    <pluralLabel>Sales_feedbackCapabilities</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

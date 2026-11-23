@@ -1,6 +1,6 @@
 @isTest
 public class SWS_SingleCouponGenerationRequestTest {
-	@testSetup 
+  @testSetup 
     static void setup(){
         User u = SWS_TestUtilty.createUser();
         System.runAs(u){
@@ -16,7 +16,7 @@ public class SWS_SingleCouponGenerationRequestTest {
         Test.startTest();
         System.runAs(u){
             List<string> record = new List<string>();
-            List<SWS_Cloud_Credit_Request__c> requestList = [SELECT Id,SWS_Request_Status__c,SWS_Email__c FROM SWS_Cloud_Credit_Request__c LIMIT 1];
+            List<SWS_Cloud_Credit_Request__c> requestList = [SELECT Id,SWS_Request_Status__c FROM SWS_Cloud_Credit_Request__c LIMIT 1];
             List<string> reqList = new List<string>();
             for(SWS_Cloud_Credit_Request__c req : requestList){
                 reqList.add(req.id);               

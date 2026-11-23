@@ -1,5 +1,5 @@
-import { LightningElement } from 'lwc';
-/*import getEvalutionProductList from '@salesforce/apex/Sales_CreateLicenseController.getProductList';
+import { LightningElement,wire,api,track } from 'lwc';
+import getEvalutionProductList from '@salesforce/apex/Sales_CreateLicenseController.getProductList';
 import productoption from '@salesforce/apex/Sales_FreeLicenseProvider.getProductOptions';
 import { NavigationMixin } from 'lightning/navigation';
 import Sales_Path1TextLabel from '@salesforce/label/c.Sales_Path1TextLabel';
@@ -14,10 +14,12 @@ import Sales_NextProductPage from '@salesforce/label/c.Sales_NextProductPage';
 import Sales_SelectAllOptions from '@salesforce/label/c.Sales_SelectAllOptions';
 import Sales_MaintenanceExpirationProductPagetooltip from '@salesforce/label/c.Sales_MaintenanceExpirationProductPagetooltip';
 import Sales_LicenseExpirationProductPageTooltip from '@salesforce/label/c.Sales_LicenseExpirationProductPageTooltip';
-*/
-export default class sales_FreeLicenseProductPage extends LightningElement {
 
-    /*label = {
+export default class sales_FreeLicenseProductPage extends NavigationMixin(LightningElement) {
+
+   // @api flexipageRegionInfo  = 'CLASSIC'; // default to classic. If its lightning, framework will set the value - Soumy added
+
+    label = {
         Sales_Path1TextLabel,
         Sales_Path2TextLabel,
         Sales_Numberofseatstest2,
@@ -88,6 +90,7 @@ export default class sales_FreeLicenseProductPage extends LightningElement {
             this.productSet = true;
             this.defaultValue = this.seats;
           //  this.noOfSeats = this.defaultValue;
+          //this.nextSectionElement = this.template.querySelector('[data-next-section]');
         }
 
     }
@@ -100,22 +103,24 @@ export default class sales_FreeLicenseProductPage extends LightningElement {
             for(let key in result){
                 console.log(JSON.stringify(key));
                 console.log(JSON.stringify(result[key]));
+                
                 //Changes by Bishal Singh
                 this.selectedProductOptions = result[key].map(optionProduct => ({
                     ...optionProduct,
                     checked: false // Initialize checked status to false
                 }));*/
-
-                /******* Vinita Changes start for web description   *******/
-                /*console.log(JSON.stringify(result));
+                /******* Vinita Changes for web description   *******/
+                console.log(JSON.stringify(result));
                 for(let key in result){
                     console.log(JSON.stringify(key));
                     console.log(JSON.stringify(result[key]));
                     let resultCleanUp = [];
-
+    
+                   
                     for(const e of result[key]){
                         var test = {};
-
+                        
+                    
                         let ty=e.split("%");
                         test.Id = ty[1];
                         test.WebDesc =ty[0];
@@ -125,9 +130,12 @@ export default class sales_FreeLicenseProductPage extends LightningElement {
                     }
                     console.log(resultCleanUp);
                     this.selectedProductOptions=resultCleanUp;
+                
+
+
             }
-            /******* Vinita Changes end for web description   *******/
-            /*console.log('this.selectedProductOptions' + this.selectedProductOptions);
+            
+            console.log('this.selectedProductOptions' + this.selectedProductOptions);
             this.inputDisable=true;
             if(this.selectedProductOptions.length>0){
                 console.log(this.selectedProductOptions.length);
@@ -145,6 +153,7 @@ export default class sales_FreeLicenseProductPage extends LightningElement {
             console.log(selectedProduct.licType)
             if (selectedProduct.licType != 'FIXED') {
                 console.log('float');
+                
                 this.inputDisable = false; // Disable the input field for "# of Seats"
             }
             else if (selectedProduct.licType === 'FIXED') {
@@ -152,11 +161,22 @@ export default class sales_FreeLicenseProductPage extends LightningElement {
                 this.defaultValue = 1;
           
             }
-
+            console.log('this.selectedproduct ' +this.selectedproduct);
             if(this.productSet == true){
-                console.log('In side condition');
-                console.log('productOptionnnn outside ' + this.productOption);
-                if(this.productOption != undefined && this.productOption != 0){
+             /*   if(this.selectedproduct != this.productId){
+                    
+                    console.log('Inside our logic');
+                
+                    this.isOptionSelect = false;
+        
+                    this.selectedProductOptions.forEach(element =>{
+                            element.checked = false;
+                    })
+                    this.selectedProductOptions = [];
+                    this.selectedCheckboxes = [];
+                }*/
+               
+                if(this.productOption != undefined){
                     if(this.selectedproduct != this.productId){
                     
                         console.log('Inside our logic');
@@ -166,10 +186,10 @@ export default class sales_FreeLicenseProductPage extends LightningElement {
                         this.selectedProductOptions.forEach(element =>{
                                 element.checked = false;
                         })
-                        
+                        /*
                         this.selectedProductOptions = [];
                         this.selectedCheckboxes = [];
-                        this.productOption = [];
+                        this.productOption = [];*/
                     }
                     console.log('isOptionSelect value ' +this.productOption.length);
                     console.log('In side condition ' + this.selectedCheckboxes.length);
@@ -200,8 +220,8 @@ export default class sales_FreeLicenseProductPage extends LightningElement {
                             console.log('inside foreach ' +elm);
                             if(element.Id == elm){
                                 console.log('Last foreach');
-                                element.checked = true; 
-                                //element.checked = false;
+                                //element.checked = true; soumy
+                                element.checked = false;
                                 if(!this.selectedCheckboxes.includes(elm)){
                                     this.selectedCheckboxes.push(elm);
                                 }
@@ -228,8 +248,8 @@ export default class sales_FreeLicenseProductPage extends LightningElement {
         console.log(selectedProduct);
             if (selectedProduct) {
                 if (selectedProduct.licType !== 'FIXED') {
-                    console.log('float products');
-                   
+                    console.log('float');
+                    
                     this.inputDisable = false; // Disable the input field for "# of Seats"
                 } 
     }
@@ -247,13 +267,22 @@ handleRowClick(event) {
     }));
     this.handleClick(productId);
   
+/*
+    // Find the associated radio button based on the data attribute
+    const radioButton = this.template.querySelector('input[data-radio-id="${productId}"]');
+    //const radioButton = this.result('input[data-product-id="${productId}"]');
+    console.log(radioButton);
+    console.log(productId);
+    if (radioButton) {
+        // Set the radio button to checked
+        radioButton.checked = true;
+
+        // Handle the click event for the radio button (if needed)
+        this.handleClick();
+    }
+    */
 }
     handleClick(productId) {
-       this.defaultValue = 1;
-    
-        this.selectedCheckboxes=[];
-       
-       console.log('selectAllCheckkk ' + this.selectAllCheck);
        if(this.selectAllCheck){
         this.isOptionSelect = false;
        }
@@ -307,14 +336,12 @@ handleRowClick(event) {
         const isChecked = event.target.checked;
         console.log('checkboxOptionId ' + checkboxOptionId);
         console.log('selectedCheckboxesss ' + this.selectedCheckboxes);
-        console.log('selectedProductOptionsssss ' + this.selectedProductOptions);
         if (isChecked) {
             if(!this.selectedCheckboxes.includes(checkboxId)){
              console.log('Inside handleCheckboxChange');
                 this.selectedCheckboxes.push(checkboxId);
                 if (this.selectedCheckboxes.length === this.selectedProductOptions.length) {
                     this.isOptionSelect = true;
-                    this.selectAllCheck = true;
                     this.selectedProductOptions.forEach(element =>{
                         element.checked = true;
                     })
@@ -325,19 +352,56 @@ handleRowClick(event) {
             const index = this.selectedCheckboxes.indexOf(checkboxId); 
         if (index > -1){ 
             if(this.isOptionSelect==true){
-                this.isOptionSelect = false;
-        }
+                    this.isOptionSelect = false;
+            }
                 this.selectedCheckboxes.splice(index, 1);
-                     
           //      this.isOptionSelect = true;
                 this.selectedProductOptions.forEach(element =>{
+                    
                 if(element.Id ===checkboxId && !isChecked){
-                    element.checked = false;
+                  element.checked = false;
+                  
                 }})
             } 
         } 
         console.log('Selected Checkboxes:' + this.selectedCheckboxes.length);
         console.log('HandleCheckbox:: CheckForCommnets ' +this.selectedProductOptions.length);
+        let allCheckbox=false;
+        this.selectedProductOptions.forEach(element =>{
+                    
+            if(element.checked == true){
+              
+                allCheckbox=true;
+            }
+            else{
+                allCheckbox=false;
+
+            }
+            
+        })
+        console.log(allCheckbox);
+        if(allCheckbox==true){
+            this.isOptionSelect=true;
+        }
+            
+        
+     
+
+
+       /* if (this.selectedCheckboxes.length === this.selectedProductOptions.length) {
+            this.isOptionSelect = true;
+            this.selectedProductOptions.forEach(element =>{
+                element.checked = true;
+            })
+        }else {
+            console.log('in else condition');
+            this.isOptionSelect = false;
+            this.selectedProductOptions.forEach(element =>{
+                if(element.Id ===checkboxId && !isChecked){
+                    element.checked = false;
+                }
+            })
+        }*/
     }
 
     handleNextButtonClick() {
@@ -347,6 +411,8 @@ handleRowClick(event) {
 
     // Dispatches the event.
     this.dispatchEvent(selectedEvent);
+
+    //this.nextSectionElement.scrollIntoView({ behavior: 'smooth' });
    }
            
     handleSeatsInputChange(event) {
@@ -361,7 +427,9 @@ handleRowClick(event) {
             
         } else {
             this.isNextButtonDisabled = true; // Disable the Next button if the input value is outside of the range
-           this.template.querySelector(".input-field1").style.border="3px solid red";
+          this.template.querySelector(".input-field1").style.border="3px solid red";
+         // this.template.querySelector(".input-field1").style.border="red";
+
          
             
         }
@@ -381,7 +449,7 @@ handleRowClick(event) {
         ananga.mohan.sen@accenture.com  21/06/2021				 US980732
     ************************************************************/
 
-        /*@wire(getEvalutionProductList,{licenseType:'$licenseType'})
+        @wire(getEvalutionProductList,{licenseType:'$licenseType'})
         getEvalutionProductList({ error, data }) {
             if (data) {
                 this.productWrapper = data;
@@ -432,7 +500,7 @@ handleRowClick(event) {
         Developer                 		Date                    Description
         ananga.mohan.sen@accenture.com  21/06/2021				 US980732
     ************************************************************/
-    /*getSelectedRow(event){
+    getSelectedRow(event){
         this.selectedRows = event.detail.selectedRows; 
         console.log('selectedRows>>'+JSON.stringify(this.selectedRows));
         for (let i = 0; i < this.selectedRows.length; i++){
@@ -458,5 +526,41 @@ handleRowClick(event) {
         }
         console.log('selectedProd value after row select>>'+JSON.stringify(this.selectedProd)); 
         this.termandcondition=true;
+    }
+    
+    /*
+    connectedCallback() {
+        const resizableColumns = this.template.querySelectorAll('.resizable-column');
+
+        let startX;
+        let startWidth;
+
+        resizableColumns.forEach(column => {
+            const resizer = document.createElement('div');
+            resizer.className = 'resizer';
+            column.appendChild(resizer);
+
+            resizer.addEventListener('mousedown', function (e) {
+                startX = e.pageX;
+                startWidth = parseInt(
+                    document.defaultView.getComputedStyle(column).width,
+                    10
+                );
+                document.addEventListener('mousemove', onMouseMove);
+                document.addEventListener('mouseup', onMouseUp);
+            });
+
+            function onMouseMove(e) {
+                const newWidth = startWidth + (e.pageX - startX);
+                column.style.width = newWidth + 'px';
+            }
+
+            function onMouseUp() {
+                document.removeEventListener('mousemove', onMouseMove);
+                document.removeEventListener('mouseup', onMouseUp);
+            }
+        });
     }*/
+
+    // ...
 }

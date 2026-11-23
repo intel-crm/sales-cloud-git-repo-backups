@@ -10,9 +10,9 @@
         <criteriaItems>
             <field>OwnerId</field>
             <operation>notEqual</operation>
-            <value></value>
+            <value>NULL</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>Pricing_Quote_Hold_Status_Age_Sharing_To_Read_Only_Group</fullName>
@@ -24,8 +24,8 @@
         <criteriaItems>
             <field>OwnerId</field>
             <operation>notEqual</operation>
-            <value></value>
+            <value>NULL</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
 </SharingRules>

@@ -1,0 +1,26 @@
+<template>
+    <lightning-card title="Meeting Schedule" icon-name="standard:date_input">
+        <div class="slds-p-around_medium">
+            <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+                <thead>
+                    <tr>
+                        <th scope="col">Time</th>
+                        <th scope="col">Topic</th>
+                        <th scope="col">Presenter</th>
+                        <th scope="col">Location</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template for:each={meetings} for:item="meeting">
+                        <tr key={meeting.id}>
+                            <td>{meeting.time}</td>
+                            <td>{meeting.topic}</td>
+                            <td>{meeting.presenter}</td>
+                            <td>{meeting.location}</td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+        </div>
+    </lightning-card>
+</template>

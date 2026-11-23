@@ -1,7 +1,7 @@
 import { LightningElement , api, wire } from 'lwc';
-/*import { getRecord } from 'lightning/uiRecordApi';
+import { getRecord } from 'lightning/uiRecordApi';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
-//import validateTemporaryNICId from '@salesforce/apex/Sales_GenerateTemporaryLicense.validateTemporaryNICId';
+import validateTemporaryNICId from '@salesforce/apex/Sales_GenerateTemporaryLicense.validateTemporaryNICId';
 import getHostId from '@salesforce/apex/Sales_LicenseGenIntegration_Utility.returnHostIdDetail';
 import SalesLicenseFileFailureMsg from '@salesforce/label/c.Sales_LicenseFileFailure_Msg';
 import Saleslicensetempmsg from '@salesforce/label/c.Sales_license_temp_msg';
@@ -11,12 +11,12 @@ import SalesHostGenValidation from '@salesforce/label/c.Sales_Host_Gen_Validatio
 import Sales_Succmsg from '@salesforce/label/c.Sales_Succmsg';
 import Sales_Failuremsg from '@salesforce/label/c.Sales_Failuremsg';
 import  Sales_ermsg from '@salesforce/label/c.Sales_ermsg';
-*/
+
 
 
 export default class Sales_GenerateTemporaryLicenseComponent extends LightningElement {
     @api recordId;
-    /*@api licPrimaryComputerId;
+    //@api licPrimaryComputerId;
     @api inputType;
     @api input;
     eventType='';
@@ -33,10 +33,10 @@ export default class Sales_GenerateTemporaryLicenseComponent extends LightningEl
 
     connectedCallback() {
             console.log('@@TemporaryrecordId' + this.recordId);
-            //this.validateTemporaryNICId();
+            this.validateTemporaryNICId();
     }
 
-    /*validateTemporaryNICId(){
+    validateTemporaryNICId(){
         console.log('checking validateTemporaryNICId' + this.recordId);   
         validateTemporaryNICId({ hostRecordId: this.recordId})    //pass record Id
         .then((res) => {
@@ -53,8 +53,8 @@ export default class Sales_GenerateTemporaryLicenseComponent extends LightningEl
                 this.closeQuickAction();
                 this.fireToastEvent(this.label.Sales_ermsg, error.body.message, 'error', 'sticky');
         });
-}*/
-        /*verifyLicenseGen() {
+}
+        verifyLicenseGen() {
         console.log('@@recordId' + this.recordId);
         getHostId({ input: this.recordId, inputType: 'HostId',eventType:this.eventType })    //pass record Id and type 
                 .then((result) => {
@@ -95,11 +95,11 @@ export default class Sales_GenerateTemporaryLicenseComponent extends LightningEl
             /*window.setTimeout(function(){ 
                     location.reload(true);
             }, 2000);*/
-    /*}
+    }
 
     closeQuickAction() {
             const closeModal = new CustomEvent('close');
             // Dispatches the event.
             this.dispatchEvent(closeModal);
-    }*/
+    }
 }

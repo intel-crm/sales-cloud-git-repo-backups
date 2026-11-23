@@ -16,9 +16,6 @@
         <field>OPPORTUNITY_ID</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Opportunity_Type__c</field>
-    </columns>
-    <columns>
         <field>STAGE_NAME</field>
     </columns>
     <columns>
@@ -127,7 +124,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>nsg,dcg</value>
+            <value>nsg</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -159,6 +156,8 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

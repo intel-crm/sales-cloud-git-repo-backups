@@ -35,6 +35,7 @@ public without sharing class Pricing_Route_RulesController {
                         Pricing_Tender_Utility.logErrorinLogObject(userErrMsg,'SBQQ__Quote__c',finalFlowInp.quoteId);
                     }
                 } else if(!String.isBlank(finalFlowInp.pricingManagerGroupName)) {
+                    /*List<Group> pricingMgrGroupDtlsList = [select Id, Name, DeveloperName from Group where DeveloperName =: finalFlowInp.pricingManagerGroupName];*/
                     List<GroupMember> pricingMgrGroupDtlsList = [SELECT GroupId, Group.Name, Group.DeveloperName, Group.Type, UserOrGroupId, UserOrGroup.Name FROM GroupMember WHERE UserOrGroup.IsActive = true and Group.Type = 'Regular' and group.DeveloperName =: finalFlowInp.pricingManagerGroupName];
                     if(pricingMgrGroupDtlsList != null && pricingMgrGroupDtlsList.size() > 0) {
                         quote.Pricing_Pricing_Manager_Group_Name_Txt__c = pricingMgrGroupDtlsList[0].Group.DeveloperName;

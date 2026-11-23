@@ -8,6 +8,9 @@
         <field>Core_Opp_FC_Prod_Schedule__c.Core_FC_Last_Modified_Date__c</field>
     </columns>
     <columns>
+        <field>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Approved_Date__c</field>
+    </columns>
+    <columns>
         <field>Core_Opp_FC_Prod_Schedule__c.Core_Core_FC_Appvd_SalesPrice__c</field>
     </columns>
     <filter>
@@ -48,8 +51,8 @@
         <sortOrder>Asc</sortOrder>
     </groupingsAcross>
     <groupingsAcross>
-        <dateGranularity>Quarter</dateGranularity>
-        <field>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Approved_Date__c</field>
+        <dateGranularity>Day</dateGranularity>
+        <field>Opportunity.Core_Opportunity_Owner_Geo__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsAcross>
     <groupingsDown>

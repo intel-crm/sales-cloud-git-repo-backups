@@ -1,0 +1,85 @@
+<template >
+   <div class="c-container">
+        <lightning-card>
+            <div class="slds-section__title slds-theme--shade primaryPaletteBorder test-id__section-header-container">
+                <span class="test-id__section-header-title section-header-title slds-p-horizontal--small slds-truncate">
+                    Account Information
+                </span>
+            </div>
+            <lightning-layout multiple-rows="true">
+                <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+                    small-device-size="12">
+                    <lightning-input type="text" class="validate" name="Name" label="Name"
+                        value={acctformdetails.accountName} onblur={nameChangeHandler} 
+                        required>
+                    </lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+                    small-device-size="12">
+                    <lightning-combobox name="BizOrgType" class="validate" label="Biz Org Type"
+                        value={acctformdetails.bizOrgTypeCode} options={bizorgOptions} onchange={bizorgChangeHandler}
+                        ></lightning-combobox>
+                </lightning-layout-item>
+            </lightning-layout>
+            <div class="slds-section__title slds-theme--shade primaryPaletteBorder test-id__section-header-container">
+                <span class="test-id__section-header-title section-header-title slds-p-horizontal--small slds-truncate">
+                    Address Information
+                </span>
+            </div>
+            <lightning-layout multiple-rows="true">
+                <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+                    small-device-size="12">
+                    <lightning-input type="text" class="validate" name="addressline1" label="Billing Address Line 1"
+                        onchange={addr1ChangeHandler} value={acctformdetails.addressline1} required>
+                    </lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+                    small-device-size="12">
+                    <lightning-input type="text" class="validate" name="addressline2" onchange={addr2ChangeHandler}
+                        label="Billing Address Line 2" value={acctformdetails.addressline2}>
+                    </lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+                    small-device-size="12">
+                    <lightning-combobox name="country" class="validate countrySelect" label="Billing Country"
+                        value={acctformdetails.countryCode} options={countryOptions} onchange={inputChangeHandler}
+                        required></lightning-combobox>
+                </lightning-layout-item>
+
+                <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+                    small-device-size="12">
+                    <lightning-combobox name="state" class="validate" label="Billing State/Province"
+                        value={acctformdetails.stateCode} options={stateOptions} onchange={inputChangeHandler} 
+                        required> 
+                        
+                    </lightning-combobox>
+                </lightning-layout-item>
+                <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+                    small-device-size="12">
+                    <lightning-input type="text" name="city" class="validate" label="Billing City" onblur={cityChangeHandler}
+                        value={acctformdetails.city} 
+                        required>
+                    </lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+                    small-device-size="12">
+                    <lightning-input type="text" name="postalCode" class="validate postCode" label="Billing Zip/Postal Code"
+                        onblur={postalChangeHandler} value={acctformdetails.postalCode}>
+                    </lightning-input>
+                </lightning-layout-item>
+            </lightning-layout>
+            
+            <template if:true={isModalOpen} >
+                <c-ucd-non-latin-language 
+                non-latin-array={nonLatinArray}
+                    onacctlanguagecheckclose={handleCloseModal} onacctlanguagecheck={handleLanguageChange}></c-ucd-non-latin-language>
+             </template>
+            <lightning-button class="slds-p-left_small" onclick={nextClickHandler} label="Next" value="Next">
+            </lightning-button>
+        </lightning-card>
+    </div>
+
+   <!-- <c-ucd-generic-search  object-api-name="Account"                                 	
+                            field-set-name="UCD_SearchField">	
+    </c-ucd-generic-search>	-->
+</template>

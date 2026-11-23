@@ -19,6 +19,10 @@
                 <field>Pricing_FieldAPI_Nm__c</field>
             </layoutItems>
             <layoutItems>
+                <behavior>Required</behavior>
+                <field>Pricing_ObjectAPI_Nm__c</field>
+            </layoutItems>
+            <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Pricing_ObjectAPI_Pkl__c</field>
             </layoutItems>

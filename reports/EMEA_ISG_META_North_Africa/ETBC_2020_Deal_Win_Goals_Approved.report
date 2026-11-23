@@ -139,13 +139,6 @@
             <operator>greaterOrEqual</operator>
             <value>1/2/2020</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>Core_Goal__c.Core_Goal_Approver__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>notContain</operator>
-            <value>Frans</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Matrix</format>
@@ -176,6 +169,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>Core_Goal__c.Core_Goal_Accept_Date__c</dateColumn>
-        <interval>INTERVAL_PREVFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

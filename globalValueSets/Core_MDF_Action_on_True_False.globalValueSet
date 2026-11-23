@@ -67,58 +67,8 @@
     </customValue>
     <customValue>
         <fullName>None</fullName>
-        <default>true</default>
+        <default>false</default>
         <label>None</label>
-    </customValue>
-    <customValue>
-        <fullName>EMEA Reviewer</fullName>
-        <default>false</default>
-        <label>EMEA Reviewer</label>
-    </customValue>
-    <customValue>
-        <fullName>L2 Regional Sales</fullName>
-        <default>false</default>
-        <label>L2 Regional Sales</label>
-    </customValue>
-    <customValue>
-        <fullName>L2 Regional Marketing</fullName>
-        <default>false</default>
-        <label>L2 Regional Marketing</label>
-    </customValue>
-    <customValue>
-        <fullName>Customer Acceptance (Primary Partner)</fullName>
-        <default>false</default>
-        <label>Customer Acceptance (Primary Partner)</label>
-    </customValue>
-    <customValue>
-        <fullName>L1 Approval (Activating Partner)</fullName>
-        <default>false</default>
-        <label>L1 Approval (Activating Partner)</label>
-    </customValue>
-    <customValue>
-        <fullName>L1 Approval (Primary Partner)</fullName>
-        <default>false</default>
-        <label>L1 Approval (Primary Partner)</label>
-    </customValue>
-    <customValue>
-        <fullName>L2 Primary Approval</fullName>
-        <default>false</default>
-        <label>L2 Primary Approval</label>
-    </customValue>
-    <customValue>
-        <fullName>Customer Acceptance (Activating Partner)</fullName>
-        <default>false</default>
-        <label>Customer Acceptance (Activating Partner)</label>
-    </customValue>
-    <customValue>
-        <fullName>Legal Reviewer</fullName>
-        <default>false</default>
-        <label>Legal Reviewer</label>
-    </customValue>
-    <customValue>
-        <fullName>Business Approver</fullName>
-        <default>false</default>
-        <label>Business Approver</label>
     </customValue>
     <description>Picklist values to be associated when action is true or false</description>
     <masterLabel>Action on (True/False)</masterLabel>

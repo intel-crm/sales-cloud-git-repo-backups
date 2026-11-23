@@ -16,432 +16,626 @@
     <sections>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Accepted By</displayNameOverride>
             <field>Core_Accepted_By_Id__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Age of Design</displayNameOverride>
             <field>Core_Age_Of_Design_Txt__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Approved Date</displayNameOverride>
             <field>core_cpq_approved_date__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Approve High Touch Button Visible</displayNameOverride>
             <field>Core_Approve_High_Touch_Button_Visible__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Approve Low Touch Button Visible</displayNameOverride>
             <field>Core_Approve_Low_Touch_Button_Visible__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Are Intel items used for MINDS?</displayNameOverride>
             <field>Core_Military_Aerospace_Gvrnmt_Use_Ind__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>City</displayNameOverride>
             <field>Core_End_Customer_City_Nm__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Competition Assumptions</displayNameOverride>
+            <field>PCC_Competition_Assumptions__c</field>
+            <table>Core_Design_Registration__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Contact Email</displayNameOverride>
             <field>Core_End_Customer_Contact_Email_Txt__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Contact Name</displayNameOverride>
             <field>Core_End_Customer_Contact_Nm__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Contact Phone</displayNameOverride>
             <field>Core_End_Customer_Contact_Phone_Txt__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Contact Title</displayNameOverride>
             <field>Core_End_Customer_Contact_Title_Txt__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Converted from DR</displayNameOverride>
+            <field>Core_Converted_from_DR__c</field>
+            <table>Core_Design_Registration__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Converted Product from DR</displayNameOverride>
+            <field>Core_Converted_Product_from_DR__c</field>
+            <table>Core_Design_Registration__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Country</displayNameOverride>
             <field>Core_End_Customer_Country_Nm__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Created By</displayNameOverride>
             <field>CreatedBy</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Created Date</displayNameOverride>
             <field>CreatedDate</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Decision Date</displayNameOverride>
             <field>Core_Opportunity_Decision_Dt__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Description</displayNameOverride>
             <field>Core_Design_Registration_Dsc__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Design-Deal Registration ID</displayNameOverride>
             <field>Id</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Registration Name</displayNameOverride>
             <field>Core_Design_Registration_Nm__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Design Registration Stage</displayNameOverride>
             <field>Core_Design_Registration_Stage_Id__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Design Solution Network</displayNameOverride>
             <field>Core_Design_Solution_Network_Ind__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>DR Partner Type</displayNameOverride>
             <field>Core_DDR_Partner_Type_Txt__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>DX Demo Field2</displayNameOverride>
+            <field>Core_DX_Field2_Txt__c</field>
+            <table>Core_Design_Registration__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>End Customer Account</displayNameOverride>
             <field>Core_End_Customer_Account_Nm__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>End Customer Account Id</displayNameOverride>
+            <field>End_Customer_Account_Id__c</field>
+            <table>Core_Design_Registration__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>End Customer Account Name</displayNameOverride>
             <field>Core_End_Customer_Account_Id__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>End Customer Account Owner</displayNameOverride>
             <field>Core_End_Customer_Account_Owner__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>End Customer Account RecordType</displayNameOverride>
             <field>Core_End_Customer_Account_RecordType__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>End Customer Export Compliance Block</displayNameOverride>
             <field>Core_End_Customer_Export_Cmplnc_Bloc_Ind__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>End Customer Name</displayNameOverride>
             <field>Core_End_Customer_Nm__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>End Customer PSG Tier</displayNameOverride>
             <field>Core_End_Customer_PSG_Tier_Nm__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>End Customer Sales Geography</displayNameOverride>
+            <field>PCC_End_Customer_Sales_Geography__c</field>
+            <table>Core_Design_Registration__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>End Customer URL</displayNameOverride>
             <field>Core_End_Customer_URL__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>End Customer Use</displayNameOverride>
+            <field>PCC_End_Customer_Use__c</field>
+            <table>Core_Design_Registration__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>External Id</displayNameOverride>
             <field>Core_External_Id__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>First Customer Ship Date</displayNameOverride>
             <field>Core_First_Customer_Ship_Dt__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>FPGA Quote Comments</displayNameOverride>
             <field>Core_FPGA_Quote_Comments_Txt__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Intel DR Owner</displayNameOverride>
             <field>Core_Intel_Technical_Owner_Id__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Intel Platform</displayNameOverride>
             <field>Core_Intel_Platform_Nm__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Intel Response Requested By Date</displayNameOverride>
+            <field>PCC_Intel_Response_Requested_By_Date__c</field>
+            <table>Core_Design_Registration__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Intel Support Status</displayNameOverride>
             <field>Core_Intel_Support_Status__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Internal Comments</displayNameOverride>
             <field>Core_Internal_Comment_Txt__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>is cloned Opportunity</displayNameOverride>
+            <field>Core_is_cloned_Opportunity__c</field>
+            <table>Core_Design_Registration__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>L2 - Approver</displayNameOverride>
+            <field>L2_Approver__c</field>
+            <table>Core_Design_Registration__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Modified By</displayNameOverride>
             <field>LastModifiedBy</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Modified Date</displayNameOverride>
             <field>LastModifiedDate</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Status Change Age</displayNameOverride>
             <field>Core_Last_Status_Change_Age_Cnt__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Status Change Date</displayNameOverride>
             <field>Core_Last_Status_Change_Dt__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Lead</displayNameOverride>
+            <field>PCC_Lead__c</field>
+            <table>Core_Design_Registration__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Level2 approver type</displayNameOverride>
+            <field>Level2_approver_type__c</field>
+            <table>Core_Design_Registration__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Manufacturing Region</displayNameOverride>
             <field>Core_Manufacturing_Region_Cd__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>MINDS Message</displayNameOverride>
             <field>Core_MINDS_Message_Txt__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>My Accepted Design</displayNameOverride>
             <field>Core_My_Accepted_Design_Ind__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity Name</displayNameOverride>
             <field>Core_Opportunity_Id__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity Approver</displayNameOverride>
             <field>Core_Opportunity_Approver_Nm__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity Volume</displayNameOverride>
             <field>Core_Opportunity_Volume_Cnt__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Owner</displayNameOverride>
             <field>Owner</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Owner Name</displayNameOverride>
             <field>Core_Owner_Nm__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Partner Account</displayNameOverride>
             <field>Core_Partner_Account_Nm__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Partner Account Country Code</displayNameOverride>
             <field>Core_Partner_Account_Country_Cd__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Partner Account Geo Region</displayNameOverride>
+            <field>Partner_Account_Region__c</field>
+            <table>Core_Design_Registration__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Partner Account Name</displayNameOverride>
             <field>Core_Partner_Account_Id__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Partner Account Owner Email</displayNameOverride>
             <field>Core_Partner_Account_Owner_Email_Txt__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Partner Account Region</displayNameOverride>
             <field>Core_Partner_Account_Region_Cd__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Partner Account State Code</displayNameOverride>
             <field>Core_Partner_Account_State_Cd__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Partner Contact</displayNameOverride>
             <field>Core_Partner_FAE_Nm__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Partner Contact Email</displayNameOverride>
             <field>DDR_Partner_FAE_Email__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Partner FSR</displayNameOverride>
             <field>Core_Partner_FSR_Nm__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Partner Program</displayNameOverride>
             <field>Core_Partner_Program_Nm__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Pricing End Date</displayNameOverride>
+            <field>PCC_Pricing_End_Date__c</field>
+            <table>Core_Design_Registration__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Pricing Start Date</displayNameOverride>
+            <field>PCC_Pricing_Start_Date__c</field>
+            <table>Core_Design_Registration__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Product Application</displayNameOverride>
             <field>Core_Product_Application_Nm__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Product Group</displayNameOverride>
             <field>Core_Product_Group_Nm__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Production End Date</displayNameOverride>
             <field>Core_Production_End_Dt__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Product Segment</displayNameOverride>
             <field>Core_Product_Segment_Nm__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Proposal Due Date</displayNameOverride>
+            <field>PCC_Proposal_Due_Date__c</field>
+            <table>Core_Design_Registration__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Record Type</displayNameOverride>
             <field>RecordType</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Red Flag Message</displayNameOverride>
             <field>Core_Red_Flag_Message_Txt__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>true</checkedByDefault>
+            <displayNameOverride>Registration Number</displayNameOverride>
             <field>Name</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Rejection Comments</displayNameOverride>
             <field>Core_Rejection_Comment_Txt__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Rejection Reason</displayNameOverride>
             <field>Core_Rejection_Reason_Nm__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>State/Province</displayNameOverride>
             <field>Core_End_Customer_Country_Subdivision_Nm__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Registration Status</displayNameOverride>
             <field>Core_Design_Registration_Status_Nm__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Street1</displayNameOverride>
             <field>Core_End_Customer_Street_Addr_Line1_Txt__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Street2</displayNameOverride>
             <field>Core_End_Customer_Street_Addr_Line2_Txt__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Submission_Type</displayNameOverride>
             <field>Core_Submission_Type__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>System Approved Product Count</displayNameOverride>
             <field>Core_Approved_Product_Cnt__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>System Approver Group Name</displayNameOverride>
             <field>Core_Approver_Grp_Nm__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>System Approver Group Notification Sent</displayNameOverride>
             <field>Core_Approver_Grp_Notification_Sent_Ind__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>System End Customer Industry</displayNameOverride>
             <field>Core_End_Customer_Industry_Nm__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>System End Customer Sales Group</displayNameOverride>
             <field>Core_End_Customer_Sales_Group_Nm__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>System End Customer Sub-Industry</displayNameOverride>
             <field>Core_End_Customer_Sub_Industry__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>System Is End Customer Account Blocked</displayNameOverride>
             <field>Core_Is_End_Customer_Account_Blocked_Ind__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>System Is End Customer Account Covered</displayNameOverride>
             <field>Core_Is_End_Customer_Account_Covered_Ind__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>System Pending Product Count</displayNameOverride>
             <field>Core_Pending_Product_Cnt__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>System Registration Number</displayNameOverride>
             <field>Core_Registration_Number_Id__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Technical Owner</displayNameOverride>
             <field>DDR_Technical_Owner__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Vertical Market</displayNameOverride>
             <field>Core_Vertical_Market_Nm__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Volume Linearity</displayNameOverride>
+            <field>PCC_Volume_Linearity__c</field>
+            <table>Core_Design_Registration__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Workflow Stage</displayNameOverride>
             <field>Workflow_Status__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Zip/Postal Code</displayNameOverride>
             <field>Core_End_Customer_Postal_Cd__c</field>
+            <table>Core_Design_Registration__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Deal Approval Process Message</displayNameOverride>
+            <field>PCC_Deal_Approval_Process_Message__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <masterLabel>Design Registrations</masterLabel>
@@ -449,207 +643,344 @@
     <sections>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Active Status</displayNameOverride>
             <field>Core_Active_Status__c</field>
             <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Additional Comments</displayNameOverride>
+            <field>PCC_Additional_Comments__c</field>
+            <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Comments</displayNameOverride>
             <field>Core_Comment_Txt__c</field>
             <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Competitor Name</displayNameOverride>
+            <field>PCC_Competitor_Name__c</field>
+            <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Competitor OEM Name</displayNameOverride>
+            <field>PCC_Competitor_OEM_Name__c</field>
+            <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Competitor Product</displayNameOverride>
+            <field>PCC_Competitor_Product__c</field>
+            <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Competitor Product Provider</displayNameOverride>
+            <field>PCC_Competitor_Product_Provider__c</field>
+            <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Competitor System Model</displayNameOverride>
+            <field>PCC_Competitor_System_Model__c</field>
+            <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Write In Competitor OEM Name</displayNameOverride>
+            <field>PCC_Competitor_Write_In_OEM_Name__c</field>
+            <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Core_ThrowValidation</displayNameOverride>
             <field>Core_ThrowValidation__c</field>
             <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Created By</displayNameOverride>
             <field>CreatedBy</field>
             <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Created Date</displayNameOverride>
             <field>CreatedDate</field>
             <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
         </columns>
         <columns>
             <checkedByDefault>true</checkedByDefault>
+            <displayNameOverride>Design-Deal Registration Line ID</displayNameOverride>
             <field>Name</field>
             <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Design-Deal Registration Name</displayNameOverride>
             <field>Core_Design_Registration_Nm__c</field>
             <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Design Registration Owner</displayNameOverride>
             <field>Core_Design_Registration_Owner_Nm__c</field>
             <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Design-Deal Registration Product ID</displayNameOverride>
             <field>Id</field>
             <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Design Registration Stage</displayNameOverride>
             <field>Core_Design_Registration_Stage_Id__c</field>
             <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>PCC_Total_Design_Registration_Price__c</field>
-            <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>DR Eligible Status</displayNameOverride>
             <field>Core_DR_Eligible_Status__c</field>
             <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>End Customer Account Name</displayNameOverride>
             <field>Core_End_Customer_Account_Nm__c</field>
             <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>End Customer City</displayNameOverride>
             <field>Core_End_Customer_City_Nm__c</field>
             <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>End Customer Name</displayNameOverride>
             <field>Core_End_Customer_Nm__c</field>
             <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>End Customer State/Province</displayNameOverride>
             <field>Core_End_Customer_Country_Subdivision_Nm__c</field>
             <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>External Id</displayNameOverride>
             <field>Core_External_Id__c</field>
             <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Form Factor</displayNameOverride>
+            <field>PCC_Form_Factor__c</field>
+            <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Intel Technical Owner</displayNameOverride>
             <field>Core_Intel_Technical_Owner_Nm__c</field>
             <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Intel Technical Owner Mail</displayNameOverride>
             <field>Core_Intel_Technical_Owner_Email_Txt__c</field>
             <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Modified By</displayNameOverride>
             <field>LastModifiedBy</field>
             <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Modified Date</displayNameOverride>
             <field>LastModifiedDate</field>
             <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Locked</displayNameOverride>
             <field>Core_Locked_Ind__c</field>
             <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>MMID or Ordering code</displayNameOverride>
             <field>MMID_or_Ordering_code__c</field>
             <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>MMID or Ordering code</displayNameOverride>
+            <field>DDR_MMID_or_Ordering_code__c</field>
+            <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>OEM Name</displayNameOverride>
+            <field>PCC_OEM_Name__c</field>
+            <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>OPN Concatenation</displayNameOverride>
             <field>core_cpq_OPN_Concatenation_txt__c</field>
             <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity</displayNameOverride>
             <field>Core_Opportunity_Nm__c</field>
             <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity Product Id</displayNameOverride>
             <field>Core_Opportunity_Product_Id__c</field>
             <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Partner FAE</displayNameOverride>
             <field>Core_Partner_FAE_Nm__c</field>
             <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Partner Tracking Number</displayNameOverride>
             <field>Core_Partner_Tracking_Cd__c</field>
             <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Product</displayNameOverride>
             <field>Core_Product_Id__c</field>
             <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Product Hierarchy</displayNameOverride>
             <field>core_cpq_product_hierarchy_txt__c</field>
             <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Product List Price</displayNameOverride>
             <field>Core_Product_List_Price_Amt__c</field>
             <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Product Selection information Message</displayNameOverride>
             <field>Product_Selection_information_Message__c</field>
             <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quantity</displayNameOverride>
             <field>Core_Full_Year_Qty__c</field>
             <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line Pricing End Date</displayNameOverride>
+            <field>PCC_Quote_Line_Pricing_End_Date__c</field>
+            <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line Pricing Start Date</displayNameOverride>
+            <field>PCC_Quote_Line_Pricing_Start_Date__c</field>
+            <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Record Type</displayNameOverride>
             <field>RecordType</field>
             <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Retired As Of</displayNameOverride>
             <field>Core_Retired_As_Of_Dt__c</field>
             <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>round off Test</displayNameOverride>
+            <field>round_off_Test__c</field>
+            <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>DR Product Status</displayNameOverride>
             <field>Core_Design_Product_Status_Nm__c</field>
             <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Submission Type</displayNameOverride>
             <field>Core_Submission_Type__c</field>
             <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>System Design Registration Line ID</displayNameOverride>
             <field>Core_Design_Registration_Line_Id__c</field>
             <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>System Model</displayNameOverride>
+            <field>PCC_System_Model__c</field>
+            <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Target Resale Price</displayNameOverride>
             <field>Core_Target_Resale_Amt__c</field>
             <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Target Resale Price Note</displayNameOverride>
             <field>DDR_Target_Resale_Price_Note__c</field>
             <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Value (Full Production Year)</displayNameOverride>
             <field>Core_Full_Year_Value_Amt__c</field>
+            <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Write In Competitor Product</displayNameOverride>
+            <field>PCC_Write_In_Competitor_Product__c</field>
+            <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Write In OEM Name</displayNameOverride>
+            <field>PCC_Write_In_OEM_Name__c</field>
+            <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Deal Product</displayNameOverride>
+            <field>PCC_Product_Additional_Attribute__c</field>
             <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
         </columns>
         <masterLabel>Design Registration Products</masterLabel>
@@ -657,87 +988,328 @@
     <sections>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Created By</displayNameOverride>
             <field>CreatedBy</field>
             <table>Core_Design_Registration__c.Design_Registration_Line_Items__r.DDR_Product_Mappings__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Created Date</displayNameOverride>
             <field>CreatedDate</field>
             <table>Core_Design_Registration__c.Design_Registration_Line_Items__r.DDR_Product_Mappings__r</table>
         </columns>
         <columns>
             <checkedByDefault>true</checkedByDefault>
+            <displayNameOverride>DDR Transactional  Name</displayNameOverride>
             <field>Name</field>
             <table>Core_Design_Registration__c.Design_Registration_Line_Items__r.DDR_Product_Mappings__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Design Registration</displayNameOverride>
             <field>PCC_Design_Registration__c</field>
             <table>Core_Design_Registration__c.Design_Registration_Line_Items__r.DDR_Product_Mappings__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Design-Deal Registration Product Mapping ID</displayNameOverride>
             <field>Id</field>
             <table>Core_Design_Registration__c.Design_Registration_Line_Items__r.DDR_Product_Mappings__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>L4 Product Name</displayNameOverride>
             <field>PCC_L4_Product_Name__c</field>
             <table>Core_Design_Registration__c.Design_Registration_Line_Items__r.DDR_Product_Mappings__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>L5 Product Name</displayNameOverride>
             <field>PCC_L5_Product_Name__c</field>
             <table>Core_Design_Registration__c.Design_Registration_Line_Items__r.DDR_Product_Mappings__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Activity Date</displayNameOverride>
             <field>LastActivityDate</field>
             <table>Core_Design_Registration__c.Design_Registration_Line_Items__r.DDR_Product_Mappings__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Modified By</displayNameOverride>
             <field>LastModifiedBy</field>
             <table>Core_Design_Registration__c.Design_Registration_Line_Items__r.DDR_Product_Mappings__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Modified Date</displayNameOverride>
             <field>LastModifiedDate</field>
             <table>Core_Design_Registration__c.Design_Registration_Line_Items__r.DDR_Product_Mappings__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>MM ID</displayNameOverride>
             <field>PCC_MM_ID__c</field>
             <table>Core_Design_Registration__c.Design_Registration_Line_Items__r.DDR_Product_Mappings__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>PCC_Old_MM_Id__c</field>
-            <table>Core_Design_Registration__c.Design_Registration_Line_Items__r.DDR_Product_Mappings__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity</displayNameOverride>
             <field>PCC_Opportunity__c</field>
             <table>Core_Design_Registration__c.Design_Registration_Line_Items__r.DDR_Product_Mappings__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Ordering Code</displayNameOverride>
             <field>PCC_Ordering_Cd__c</field>
             <table>Core_Design_Registration__c.Design_Registration_Line_Items__r.DDR_Product_Mappings__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Owner</displayNameOverride>
             <field>Owner</field>
             <table>Core_Design_Registration__c.Design_Registration_Line_Items__r.DDR_Product_Mappings__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Product MM Attribute Mapping</displayNameOverride>
             <field>PCC_Product_MM_Attribute_Mapping__c</field>
             <table>Core_Design_Registration__c.Design_Registration_Line_Items__r.DDR_Product_Mappings__r</table>
         </columns>
         <masterLabel>Design Registration Product Mappings</masterLabel>
     </sections>
     <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Programs Eligible</displayNameOverride>
+            <field>PCC_Programs_Eligible__c</field>
+            <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Design Registration Total Price</displayNameOverride>
+            <field>PCC_Total_Design_Registration_Price__c</field>
+            <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Pricing End Date</displayNameOverride>
+            <field>PCC_Pricing_End_Date__c</field>
+            <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Design Deal Registration Status</displayNameOverride>
+            <field>Design_Deal_Registration_Status__c</field>
+            <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Standard Distributor Price</displayNameOverride>
+            <field>PCC_Standard_Distributor_Price__c</field>
+            <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Recommended Customer Price</displayNameOverride>
+            <field>PCC_Recommended_Customer_Price__c</field>
+            <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Change Requested?</displayNameOverride>
+            <field>PCC_Change_Requested__c</field>
+            <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Product JSON</displayNameOverride>
+            <field>PCC_Product_JSON__c</field>
+            <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>DDI Program Payment Expiration Date</displayNameOverride>
+            <field>PCC_Payment_Expiration_Date__c</field>
+            <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>DDI Program Payment Eligible</displayNameOverride>
+            <field>PCC_Eligible_for_DDI_Payment__c</field>
+            <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>DDI Program Pay Rate</displayNameOverride>
+            <field>PCC_DDI_focused__c</field>
+            <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Change Request Line Item</displayNameOverride>
+            <field>PCC_Change_Request_Line_Item__c</field>
+            <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>PCC_L4L5_Product_NewDesignAvailability</displayNameOverride>
+            <field>PCC_L4L5_Product_NewDesignAvailability__c</field>
+            <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
+        </columns>
+        <masterLabel>Design-Deal Registration Products</masterLabel>
+    </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Registration Type</displayNameOverride>
+            <field>PCC_Registration_Type__c</field>
+            <table>Core_Design_Registration__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Market Segment</displayNameOverride>
+            <field>PCC_Market_Segment__c</field>
+            <table>Core_Design_Registration__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Digital Identifier</displayNameOverride>
+            <field>PCC_Digital_Identifier__c</field>
+            <table>Core_Design_Registration__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Digital Identifier Value</displayNameOverride>
+            <field>PCC_Digital_Identifier_Value__c</field>
+            <table>Core_Design_Registration__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>End Customer Alternate Name Language</displayNameOverride>
+            <field>PCC_End_Customer_Alternate_Name_Language__c</field>
+            <table>Core_Design_Registration__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Industry</displayNameOverride>
+            <field>PCC_Industry__c</field>
+            <table>Core_Design_Registration__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Sub Industry</displayNameOverride>
+            <field>PCC_Sub_Industry__c</field>
+            <table>Core_Design_Registration__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>End Customer Country</displayNameOverride>
+            <field>PCC_End_Customer_Country__c</field>
+            <table>Core_Design_Registration__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>End Customer State</displayNameOverride>
+            <field>PCC_End_Customer_State__c</field>
+            <table>Core_Design_Registration__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Deal Description</displayNameOverride>
+            <field>PCC_Deal_Description__c</field>
+            <table>Core_Design_Registration__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Covered Partner Account</displayNameOverride>
+            <field>PCC_CoveredPartnerAccount__c</field>
+            <table>Core_Design_Registration__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Approval Level</displayNameOverride>
+            <field>PCC_Approval_Level__c</field>
+            <table>Core_Design_Registration__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>test df</displayNameOverride>
+            <field>test_df__c</field>
+            <table>Core_Design_Registration__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Project Name</displayNameOverride>
+            <field>PCC_Deal_Project_Name__c</field>
+            <table>Core_Design_Registration__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>External ID</displayNameOverride>
+            <field>PCC_Partner_Reference_ID__c</field>
+            <table>Core_Design_Registration__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Consumption Countries</displayNameOverride>
+            <field>PCC_Consumption_Countries__c</field>
+            <table>Core_Design_Registration__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Deal re-try count</displayNameOverride>
+            <field>PCC_Deal_re_try_count__c</field>
+            <table>Core_Design_Registration__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Current End Customer Product Provider</displayNameOverride>
+            <field>PCC_Current_EndCustomer_Product_Provider__c</field>
+            <table>Core_Design_Registration__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Account Legal Agreement Association</displayNameOverride>
+            <field>PCC_Account_Legal_Agreement_Association__c</field>
+            <table>Core_Design_Registration__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Design Status Checkbox</displayNameOverride>
+            <field>Core_Design_Status_Checkbox__c</field>
+            <table>Core_Design_Registration__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>PCC_StatusChange</displayNameOverride>
+            <field>PCC_StatusChange__c</field>
+            <table>Core_Design_Registration__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Search for Previous End Customer Account</displayNameOverride>
+            <field>PCC_EndCustomerAcc_Mapping__c</field>
+            <table>Core_Design_Registration__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Intel DR Owner Name</displayNameOverride>
+            <field>PCC_Intel_Technical_Owner_Name__c</field>
+            <table>Core_Design_Registration__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>End Customer Selection Note</displayNameOverride>
+            <field>PCC_End_Customer_Selection_Note__c</field>
+            <table>Core_Design_Registration__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Empty Approver Group</displayNameOverride>
+            <field>PCC_Empty_Approver_Group__c</field>
+            <table>Core_Design_Registration__c</table>
+        </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>PCC_Design_Type__c</field>

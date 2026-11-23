@@ -74,14 +74,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Hazlina Ramly,Milly Yeap,Keen Yew Loke,Boon Chiek Tan,Chee Pin Chan,Deshi Lim,Seng Kok Lim,Abd Rahman Abd Rahim,Zawani Mohamad Yusof,Khai Chein Yeoh,GY Ooi,Amin Khalili Ahmad Tarmizi,Jon Way Chin,Nur Aiman Mohd Noor,Eng Wei Oh,Ashlesha Pravin Raut,Yuan Li Soo,Chia Ling Tan,John Tio,Anil Erinchikkadavathu Achoora,Eric Mun Yew Cheah,Eber Lazareen Ignatius,Muhammad Syafieq Mohamad Salehudin,Kenny Ker Wei Tan,Shyan Yew Tan,Boon Beng Teh</value>
+            <value>Hazlina Ramly,Milly Yeap,Keen Yew Loke,Nur Aida Ali,Boon Chiek Tan,Chee Pin Chan,Deshi Lim,Seng Kok Lim,Abd Rahman Abd Rahim,Zawani Mohamad Yusof,Rahul Sreedharan,GY Ooi,Nur Aiman Mohd Noor,Jon Way Chin,Sreekumar Regu Girijakumari,Mohamad Shafiq Mohamad Yusoff,Yuan Li Soo,Chia Ling Tan,John Tio,Ahmed Hassan,Eber Lazareen Ignatius,Fawaz Jumaah,Kenny Ker Wei Tan,Shyan Yew Tan,Khai Chein Yeoh,Mei Yan Lee,Anil Erinchikkadavathu Achoora,Muhammad Syafieq Mohamad Salehudin</value>
         </criteriaItems>
         <criteriaItems>
             <column>Case.Core_IPS_Assigned_Queue__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
-            <operator>startsWith</operator>
-            <value>PSG-GAE</value>
+            <operator>notContain</operator>
+            <value>PSG-IR,PSG-AP,PSG-JP,PSG-ASMO,PSG-EMEA,Admin,CQE,Enpirion,CSTOOLS,Deflected,ZBB,PRISM</value>
         </criteriaItems>
         <criteriaItems>
             <column>Case.Core_Product_Organization__c</column>
@@ -95,7 +95,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>uniquest,altima,arrow,macnica,digi-key,GALAXY FAR EAST CORPORATION,IPS Intel</value>
+            <value>altima,arrow,macnica,digi-key,Intel</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

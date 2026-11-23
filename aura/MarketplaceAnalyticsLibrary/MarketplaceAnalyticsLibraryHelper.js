@@ -5,7 +5,6 @@
   	* @param {string} parentPropertName  The property on the parent object whose value we are setting.
   	* @param {Object} parentObject  The parent object whose property we will add.
     */
-   
     addAnalyticsProperty: function(dataPropertyValue, parentPropertName, parentObject) {
         // Make sure the value to add is defined and the property does not already have a value
         if (dataPropertyValue !== null && dataPropertyValue !== undefined && parentObject[parentPropertName] === undefined) {
@@ -39,21 +38,19 @@
   	*/
     getAnalyticsData : function(component, event, helper) {
         var params = event.getParam("arguments");
-        let url = window.location.href;
-        let querystring = '';
-    
-        // Update if it has a querystring
-        if (url) {
-          const splitUrl = url.split('?');
-          if (splitUrl.length > 1) {
-            [url] = splitUrl;
-            querystring = '?' + splitUrl[1];
-          }
+		var urlStr = window.location.href;
+        var urlStrWithoutQueryParams = window.location.href;
+        var queryStringParamter = '';
+            
+        // Get the URL fields
+        var splittedURL = urlStr.split("?");
+        if(splittedURL != null && splittedURL.length !== undefined && splittedURL.length > 1) {
+        	queryStringParamter = '?' + splittedURL[1];
         }
-      
+        urlStrWithoutQueryParams = splittedURL[0];                
+        
         // Get the Offering and Partner IDs
-        // IPA2.0 + US TWC4497-1631
-        // var offeringId = this.getOfferingId(component, event, helper);
+        var offeringId = this.getOfferingId(component, event, helper);
         var partnerId = this.getPartnerId(component, event, helper);
         
         // Define pageType and title
@@ -64,7 +61,7 @@
         // HEAD script to return an object with meta tag values. This is done since the Locker service
         // stops this component from accessing the meta tags. If window.focus is called without the "true"
         // parameter, the standard window.focus method is called.
-        var metaData = window.focus('meta');
+        var metaData = window.focus(true);
         if (metaData) {
             // Update pageType and title based on meta tags
             if (!pageType) {
@@ -75,13 +72,13 @@
        
         var messageData = {
             analyticsType: 'pageview',
-            // offeringId : offeringId, IPA2.0 + US TWC4497-1631
+            offeringId : offeringId,
             pageType: pageType, 
-            mdaId : partnerId,
-            querystring : querystring,
+            partnerMDAId : partnerId,
+            queryStringParamter : queryStringParamter,
             pageTitle: title,
             type: 'intel.salesForceHit',
-            url : url
+            urlStr : urlStrWithoutQueryParams
         };
         
         return messageData;
@@ -109,29 +106,28 @@
   	* @return {string} The Offering ID if it is available, otherwise
     * an empty string.
   	*/
-    // IPA2.0 + US TWC4497-1631
-  //   getOfferingId : function(component, event, helper) {
-  //       var params = event.getParam("arguments");
-  //       var offeringId = '';
+    getOfferingId : function(component, event, helper) {
+        var params = event.getParam("arguments");
+        var offeringId = '';
         
-  //       // Attempt to get the Offering ID from the component itself
-  //       if (params.sourceComponent) {
-  //           offeringId = params.sourceComponent.get("v.offeringId") || '';
-  //       }
+        // Attempt to get the Offering ID from the component itself
+        if (params.sourceComponent) {
+            offeringId = params.sourceComponent.get("v.offeringId") || '';
+        }
         
-  //       // Only parse the URL if the offeringId attribute is empty
-  //       if (!offeringId) {
-  //           // Get the Offering ID from the URL
-  //           var location = window.location.href;                
-  //           var isOfferingPage = location.match(/\/offering\/[a-zA-Z0-9]{18}/);
-  //           if(isOfferingPage != null){
-  //               isOfferingPage += ''; 
-  //               offeringId = isOfferingPage.slice(10);
-  //           }
-  //       }
+        // Only parse the URL if the offeringId attribute is empty
+        if (!offeringId) {
+            // Get the Offering ID from the URL
+            var location = window.location.href;                
+            var isOfferingPage = location.match(/\/offering\/[a-zA-Z0-9]{18}/);
+            if(isOfferingPage != null){
+                isOfferingPage += ''; 
+                offeringId = isOfferingPage.slice(10);
+            }
+        }
         
-  //       return offeringId;
-	// },
+        return offeringId;
+	},
     
     
     
@@ -181,21 +177,21 @@
             var messageData = params.messageData;
 
             // Get the URL properties if they are not set or are blank
-            if (!messageData.querystring) {
-              let url = window.location.href;
-              let querystring = '';
-          
-              // Update if it has a querystring
-              if (url) {
-                const splitUrl = url.split('?');
-                if (splitUrl.length > 1) {
-                  [url] = splitUrl;
-                  querystring = '?' + splitUrl[1];
+            if (!messageData.queryStringParamter || !messageData.urlStrWithoutQueryParams) {
+                var urlStr = window.location.href;
+                var urlStrWithoutQueryParams = window.location.href;
+                var queryStringParamter = '';
+                
+                if(urlStr !== null || urlStr !== undefined){
+                    var splittedURL = urlStr.split("?");
+                    if(splittedURL != null && splittedURL.length !== undefined && splittedURL.length > 1) {
+                        queryStringParamter = '?' + splittedURL[1];
+                    }
+                    urlStrWithoutQueryParams = splittedURL[0];
                 }
-              }
-          
-              this.addAnalyticsProperty(querystring, 'querystring', messageData);
-              addAnalyticsProperty(url, 'url', messageData);
+            
+                this.addAnalyticsProperty(queryStringParamter, 'queryStringParamter', messageData);
+                this.addAnalyticsProperty(urlStrWithoutQueryParams, 'urlStr', messageData);
             }
 
             // Get the pageType if it is not set or is blank
@@ -204,7 +200,7 @@
                 // HEAD script to return an object with meta tag values. This is done since the Locker service
                 // stops this component from accessing the meta tags. If window.focus is called without the "true"
                 // parameter, the standard window.focus method is called.
-                var metaData = window.focus('meta');
+                var metaData = window.focus(true);
                 if (metaData) {            
                     // Update pageType based on meta tags
                     this.addAnalyticsProperty(metaData.pageType || '', 'pageType', messageData);
@@ -217,7 +213,7 @@
             
             
             // This will be picked up by the listener in the HEAD script
-            window.postMessage(messageData, messageDomain); 
+            window.postMessage(messageData, messageDomain);
         }
 	}
 })

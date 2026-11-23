@@ -34,10 +34,6 @@
                 <behavior>Edit</behavior>
                 <field>Core_MDF_Technology_Nm__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_MDF_Question_Label__c</field>
-            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

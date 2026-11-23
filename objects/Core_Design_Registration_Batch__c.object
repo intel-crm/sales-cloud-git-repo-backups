@@ -232,6 +232,17 @@
         <type>Lookup</type>
     </fields>
     <fields>
+        <fullName>Core_Partner_Prime_Account_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>Core_Partner_Account_Id__r.Core_Prime_Account_Name__c</formula>
+        <label>Partner Prime  Account Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Core_Pass_Design_Cnt__c</fullName>
         <label>Design Count (Pass)</label>
         <summaryFilterItems>
@@ -365,6 +376,6 @@
         <protected>false</protected>
         <showsLocation>false</showsLocation>
         <showsStatus>false</showsStatus>
-        <url>/s/report/00O1J000005K1n7UAC?reportFilters=%5B%7B%22operator%22%3A%22equals%22%2C%22value%22%3A%22{!Core_Design_Registration_Batch__c.Name}%22%2C%22column%22%3A%22CUST_NAME%22%7D%5D</url>
+        <url>/partneradmin/s/report/00O1J000005K1n7?reportFilters=%5B%7B%22operator%22%3A%22equals%22%2C%22value%22%3A%22{!Core_Design_Registration_Batch__c.Name}%22%2C%22column%22%3A%22CUST_NAME%22%7D%5D</url>
     </webLinks>
 </CustomObject>

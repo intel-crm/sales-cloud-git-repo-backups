@@ -19,6 +19,10 @@
         <value xsi:type="xsd:string">Data Center GPU</value>
     </values>
     <values>
+        <field>Pricing_Record_Type__c</field>
+        <value xsi:type="xsd:string">Data Center GPU</value>
+    </values>
+    <values>
         <field>Pricing_SearchColumn_Field__c</field>
         <value xsi:type="xsd:string">AND Name Like &apos;{{searchString}}&apos;</value>
     </values>

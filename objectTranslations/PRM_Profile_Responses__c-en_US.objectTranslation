@@ -41,10 +41,6 @@
         <name>PRM_Question_Display_Text__c</name>
     </fields>
     <fields>
-        <label><!-- Question Type --></label>
-        <name>PRM_Question_Type__c</name>
-    </fields>
-    <fields>
         <label><!-- Reason Text --></label>
         <name>PRM_Reason_Text__c</name>
     </fields>
@@ -55,10 +51,6 @@
     <fields>
         <label><!-- View History --></label>
         <name>PRM_View_History__c</name>
-    </fields>
-    <fields>
-        <label><!-- Unique Key --></label>
-        <name>Unique_Key__c</name>
     </fields>
     <recordTypes>
         <label><!-- Standard --></label>

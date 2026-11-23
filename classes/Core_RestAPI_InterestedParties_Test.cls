@@ -21,6 +21,7 @@
     @testSetup public static void setupData(){
         
         adminUser = [Select Id, email  FROM User where Profile.Name = 'System Administrator' AND isActive = true Limit 1];
+        System.debug(' >>> '+adminUser);
         
         System.runAs(adminUser){
             String accName = 'RestApiUnitTest';
@@ -37,9 +38,11 @@
         List<Account> allAccounts = [Select Name FROM Account];
         Contact nonIpsContact = [Select Name, Core_IPS_Active__c FROM Contact where Core_IPS_Active__c = false Limit 1] ;
         
+        System.debug(' Core_RestAPI_InterestedParties_Test \n Account '+allAccounts+'\n IPS Contacts '+allIPSContacts +'\n Non Contact '+nonIpsContact + ' \n All CommUsers '+allCommUsers);
         
         commUser1 = allCommUsers[0];
         commUser2 = allCommUsers[1];
+        System.debug(' \n allCommUsers  '+allCommUsers);
         
         
         System.runAs(adminUser){
@@ -54,7 +57,7 @@
             commUser1Case.OwnerId = commUser1.Id;
             commUser1Case.ContactId = commUser1.ContactId;
             commUser1Case.AccountId = commUser1.Contact.AccountId;
-            commUser1Case.Core_IPS_Customer_Visible__c = true;
+            
             Case commUser2Case = caseList[2];
             commUser2Case.OwnerId = commUser2.Id;
             commUser2Case.ContactId = commUser2.ContactId;
@@ -65,6 +68,7 @@
             //Insert interested parties to the case
             List<Core_IPS_Case_Interested_Party__c> intPartyList = Core_RestAPI_TestUtilities.getInternalInterestedParties(4, 'External');
             List<Core_IPS_Case_Interested_Party__c> extPartyList = Core_RestAPI_TestUtilities.getInternalInterestedParties(2, 'Internal');
+            System.debug('\n intPartyList '+intPartyList+'\n extPartyList '+extPartyList);
             for(Core_IPS_Case_Interested_Party__c ip : intPartyList){
                 //Added cases to commUser1
                 ip.Case__c = caseList[1].Id;
@@ -78,9 +82,19 @@
             }
             insert intPartyList;
             insert extPartyList;
-            Test.stopTest();
+            
+            
+            //TODO remove the below for loop
+            for(Case c: [Select Id, CaseNumber,  Account.Name, Contact.Name, Owner.Name, Core_IPSPortal_Check__c from Case]){
+                System.debug('+++++++ Case '+c.Id+'+++++++ Case '+c.CaseNumber+' Account Name >>' +c.Account.Name+'>> Contact : '+c.contact.Name+'>> Owner '+c.Owner.Name+'>> Core_IPSPortal_Check__c '+c.Core_IPSPortal_Check__c);
+            }
+            
+            System.debug('\n +++++++ Interested parties '+[Select Id, Name, Case__r.CaseNumber, Case__r.Contact.Name, Type__c from Core_IPS_Case_Interested_Party__c]);
+             Test.stopTest();
         }
        
+            System.debug(' Case TEAM '+[select id from CaseTeamRole where name = 'IPS External Interested Party']);
+            System.debug(' Case TEAM '+[select id from CaseTeamRole where name = 'IPS External Interested Party']);
         
     }
     
@@ -109,7 +123,8 @@
             System.assertEquals(null, apiResponse.errorContent);
             
             RestRequest request = RestContext.request;
-            System.assertEquals(apiResponse.successContent.size() != null, true);
+            System.debug(apiResponse.successContent.size()+' ++++++++request++++++++ '+request.requestURI);
+            System.assertEquals(4, apiResponse.successContent.size(), 'All External active intersted parties retrieved');
             
         }
         //Common Asserts for all versions
@@ -161,10 +176,12 @@
     //Test doGet method
     @isTest public static void test_doGet_getInterestedParties_v1_0_Positive(){
         commUser1  = [Select Name, ContactId FROM User WHERE Name = 'CommUser0 RestApiUnitTest0'];
+        System.debug(' \n\n Running test method test_doGet_getInterestedParties_v1_0 as  '+commUser1);  
         Case caseObj = [Select Id, CaseNumber FROM Case where ContactId =:commUser1.ContactId  Limit 1];
         RestContext.request = doGet_getInterestedParties_VersionRequest(v1_0, caseObj.CaseNumber);
         System.runAs(commUser1){
             Core_RestAPI_Response apiResponse = Core_RestApi_InterestedPartiesV1.doGet();
+            System.debug(' test_doGet_getInterestedParties_v1_0 test_doGet >>>> '+apiResponse); 
             doGet_getInterestedParties_Asserts_Positive(apiResponse,null ,v1_0);
         }  
     }
@@ -175,6 +192,7 @@
         RestContext.request = doGet_getInterestedParties_VersionRequest(v1_0, 'InvalidCaseNumber');
         System.runAs(commUser2){
             Core_RestAPI_Response apiResponse = Core_RestApi_InterestedPartiesV1.doGet();
+            System.debug(' test_doGet_getInterestedParties_v1_0 test_doGet >>>> '+apiResponse); 
             System.assertEquals(false, apiResponse.isSuccess);
         }  
     }

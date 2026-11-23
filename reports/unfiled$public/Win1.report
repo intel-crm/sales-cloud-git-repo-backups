@@ -74,9 +74,6 @@
     <columns>
         <field>Opportunity.Core_Combined_Solution_Detail__c</field>
     </columns>
-    <columns>
-        <field>Opportunity.Core_Approved_Date__c</field>
-    </columns>
     <filter>
         <booleanFilter>(1 AND 2 AND 3) AND (4 OR 5)</booleanFilter>
         <criteriaItems>
@@ -84,7 +81,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Haoyu Chen,Qingdong Man,Yingli Xia</value>
+            <value>Haoyu Chen,Qingdong Man</value>
         </criteriaItems>
         <criteriaItems>
             <column>STAGE_NAME</column>
@@ -151,6 +148,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

@@ -58,7 +58,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Feedback__c</field>
+            <field>DR_Feedback__c</field>
             <table>SPM_Customer_Feedback__c</table>
         </columns>
         <columns>
@@ -128,7 +128,50 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>VP_Feedback__c</field>
+            <table>SPM_Customer_Feedback__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>GM_Feedback__c</field>
+            <table>SPM_Customer_Feedback__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CM_Feedback__c</field>
+            <table>SPM_Customer_Feedback__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Creator_Role__c</field>
+            <table>SPM_Customer_Feedback__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Account_Feedback_Present__c</field>
+            <table>SPM_Customer_Feedback__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>GTM_Model__c</field>
+            <table>SPM_Customer_Feedback__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>CRM_CST_Planning_Period__c</field>
+            <table>SPM_Customer_Feedback__c</table>
+        </columns>
+        <masterLabel>Customer Feedbacks</masterLabel>
+    </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Feedback__c</field>
+            <table>SPM_Customer_Feedback__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CST_Back_Propagation_By_TA__c</field>
             <table>SPM_Customer_Feedback__c</table>
         </columns>
         <columns>
@@ -136,6 +179,11 @@
             <field>CRM_CST_Is_Active_Planning_Period__c</field>
             <table>SPM_Customer_Feedback__c</table>
         </columns>
-        <masterLabel>Customer Feedbacks</masterLabel>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CST_New_Account_Level__c</field>
+            <table>SPM_Customer_Feedback__c</table>
+        </columns>
+        <masterLabel>Customer Feedback</masterLabel>
     </sections>
 </ReportType>

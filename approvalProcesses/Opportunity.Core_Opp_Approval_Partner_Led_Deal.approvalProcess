@@ -38,15 +38,15 @@
         </approvalActions>
         <assignedApprover>
             <approver>
+                <name>Core_Approver_5__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <approver>
                 <name>Core_Approver_4__c</name>
                 <type>relatedUserField</type>
             </approver>
             <approver>
                 <name>Core_Approver_3__c</name>
-                <type>relatedUserField</type>
-            </approver>
-            <approver>
-                <name>Core_Approver_5__c</name>
                 <type>relatedUserField</type>
             </approver>
             <approver>
@@ -145,10 +145,6 @@
         </action>
     </initialSubmissionActions>
     <label>Core Opp Approval - Partner Led Deal</label>
-    <nextAutomatedApprover>
-        <useApproverFieldOfRecordOwner>false</useApproverFieldOfRecordOwner>
-        <userHierarchyField>Manager</userHierarchyField>
-    </nextAutomatedApprover>
     <processOrder>2</processOrder>
     <recallActions>
         <action>

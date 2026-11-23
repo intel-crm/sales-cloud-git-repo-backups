@@ -25,7 +25,7 @@ Workflow rule description: Populate the Prime Account Name of the Account that i
         <name>mainUpdate</name>
         <label>mainUpdate</label>
         <locationX>176</locationX>
-        <locationY>311</locationY>
+        <locationY>287</locationY>
         <inputAssignments>
             <field>Core_Opp_Prime_Account_Name__c</field>
             <value>
@@ -40,7 +40,7 @@ Workflow rule description: Populate the Prime Account Name of the Account that i
         <connector>
             <targetReference>mainUpdate</targetReference>
         </connector>
-        <filterFormula>ISNEW() || ISCHANGED({!$Record.AccountId})</filterFormula>
+        <filterFormula>AND((ISNEW() || ISCHANGED({!$Record.AccountId})),AND(NOT(ISNULL({!$Record.RecordTypeId})),CONTAINS({!$Label.Core_Sales_CRM_Record_Types},{!$Record.RecordType.DeveloperName})))</filterFormula>
         <object>Opportunity</object>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordBeforeSave</triggerType>

@@ -2,7 +2,6 @@
 public class PMP_SearchOfferingImageUtility_Test {
 
     @testSetup static void setupdata(){
-        List<String> conDocIds = new List<String>();
         ContentVersion contentVersion_1 = new ContentVersion(
             Title = 'Test',
             PathOnClient = 'Test.jpg',
@@ -20,8 +19,7 @@ public class PMP_SearchOfferingImageUtility_Test {
         contentDocument cd = new contentDocument();
         cd.Id = contentVersion_2.ContentDocumentId;
         cd.ContentAssetId = ca.Id;
-        conDocIds.add(cd.Id);
-        //PMP_SearchOfferingImageUtility.getContentAssetUrlMap(conDocIds);
+        update cd;
         
     }
 	
@@ -32,11 +30,11 @@ public class PMP_SearchOfferingImageUtility_Test {
         conDocIds.add(contentVersion_2.ContentDocumentId);
         
         Test.startTest();
-       // PMP_SearchOfferingImageUtility searchoff = new PMP_SearchOfferingImageUtility();
+        system.assertNotEquals(null, PMP_SearchOfferingImageUtility.getContentAssetUrlMap(conDocIds));
         Test.stopTest();
     }
     
-   /* @isTest static void testGetContentAssetUrlMapException(){
+    @isTest static void testGetContentAssetUrlMapException(){
         Test.startTest();
         
         
@@ -46,7 +44,7 @@ public class PMP_SearchOfferingImageUtility_Test {
         
         system.assertNotEquals(null, PMP_SearchOfferingImageUtility.getContentAssetUrlMap(conDocIds));
         Test.stopTest();
-    }*/
+    }
     
   /*  @isTest static void getContentVerId_Test(){
         List<String> contIdlst = new List<String>();
@@ -59,7 +57,7 @@ public class PMP_SearchOfferingImageUtility_Test {
         PMP_SearchOfferingImageUtility.getContentVerId(contIdlst);
         PMP_SearchOfferingImageUtility.getContentVerId(null);
         Test.stopTest();
-    }
+    }*/
     @isTest static void getContentDistList_Test(){
         
         List<String> contIdlst = new List<String>();
@@ -72,7 +70,7 @@ public class PMP_SearchOfferingImageUtility_Test {
         PMP_SearchOfferingImageUtility.getContentDistList(contIdlst);
         PMP_SearchOfferingImageUtility.getContentDistList(null);
         Test.stopTest();
-    }   */
+    }   
     
     
 }

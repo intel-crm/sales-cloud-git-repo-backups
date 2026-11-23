@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AIApplicationConfig xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aiApplicationDeveloperName>Test_QL_Win_Prediction</aiApplicationDeveloperName>
+    <applicationId>0PpDf0000004HBz</applicationId>
+    <developerName>Test_QL_Win_Prediction</developerName>
+    <insightReasonEnabled>true</insightReasonEnabled>
+    <masterLabel>MasterLabel_Test_QL_Win_Prediction</masterLabel>
+    <rank>1</rank>
+    <scoringMode>Batch</scoringMode>
+</AIApplicationConfig>

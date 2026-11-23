@@ -9,23 +9,14 @@
         // Standard after render called
         this.superAfterRender();
         
-        // Use the library component to send the data and domain for the analytics message.
+        // Use the library component to generate the data and domain for the analytics message.
         // There is a window message listener in the HEAD script that will call the salesforceHit method.
         var analyticsLibrary = component.find("analyticsLibrary");
+		var messageDomain = analyticsLibrary.getMessageDomain();
+        var messageData = analyticsLibrary.getAnalyticsData(component.get("v.analyticsPageType"));
+        window.postMessage(messageData, messageDomain);
 
-        // Make the analytics call and add the canonical link
-        var analyticsPageType = component.get("v.analyticsPageType");
-        analyticsLibrary.callAnalytics(analyticsPageType, 'Marketplace', true);
-
-        // Get components used for the breadcrumbs
-        var coreIntcBreadcrumbs = component.find("coreIntcBreadcrumbs");
-        var ipaBreadcrumbsServiceMarketplace = component.find("ipaBreadcrumbsServiceMarketplace");
-
-        // Call the service to get the breadcrumbs
-        ipaBreadcrumbsServiceMarketplace.getMarketplaceBreadcrumbs().then((breadcrumbs) => {
-          breadcrumbs.analyticsData = analyticsLibrary.getAnalyticsData(analyticsPageType, 'Marketplace');
-          // Call the component to render the breadcrumbs
-          coreIntcBreadcrumbs.renderBreadcrumbs(breadcrumbs);
-        });
+        // Add a canonical link
+        analyticsLibrary.addCanonicalLink();
 	},
 })

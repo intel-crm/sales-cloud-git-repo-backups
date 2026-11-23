@@ -38,20 +38,21 @@
           type="checkbox" 
           label="Create New Premier Support Project after approval"
           onchange={handleChangeNewProj} 
-          checked={checkBoolean} 
-        ></lightning-input> 
+          checked={checkBoolean}
+          disabled={disableCreateNewProject}> 
+       </lightning-input> 
       </div>
-    </div>    
+    </div>
     <div class="slds-size_1-of-1 slds-float_right ">
       <div class="slds-clearfix">
       
       <div class="slds-size_4-of-12 slds-float_right ">
         <div class="slds-size_9-of-12">
-          <template if:true={show}>      
+          <template if:true={show}>
             <c-core_-i-p-s_-custom-lookup selected-record={projectid} onselectedrec={handleChangeProject} class="lookup"
               query-string={lookupQueryStringProject} searchfield-name={lookupSearchFieldNameProject} is-sosl="false"
               label="" query-execution-required="true" is-read-only={disableProjectEdit} disabled={disableProjectEdit}>
-            </c-core_-i-p-s_-custom-lookup>         
+            </c-core_-i-p-s_-custom-lookup>
           </template>
     
           <template if:false={show}>
@@ -61,7 +62,10 @@
                   autocomplete="off"
                   role="textbox"
                   type="text"
-                  disabled>
+                  value={ipsExistingProjectName}
+                  disabled={showCreateNewProjectCheckText}
+                  onchange={handleProjectValue}
+                  >
                 </lightning-input>
               </div>
             </div>         

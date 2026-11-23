@@ -1,0 +1,9 @@
+<apex:page standardStylesheets="false" showHeader="false" sidebar="false">
+    <iframe
+        src="/lightning/r/Dashboard/01ZDf000000lTQ5MAM/view?isdtp=p1"
+        width="100%"
+        height="600px"
+        frameborder="0"
+        style="border: none;"
+    ></iframe>
+</apex:page>

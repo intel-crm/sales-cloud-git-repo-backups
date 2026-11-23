@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>david.a.hood@intel.com</contactEmail>
+    <label>Salesforce CoE Org</label>
+    <oauthConfig>
+        <callbackUrl>https://java-data-95372-dev-ed.cs69.my.salesforce.com/services/authcallback/Salesforce_CoE_org
+https://efficiency-enterprise-5408-dev-ed.cs92.my.salesforce.com/services/authcallback/Salesforce_CoE_org
+https://intel-sfcoe--LICPOC.my.salesforce.com/services/authcallback/Salesforce_CoE_org
+https://page-ruby-2849-dev-ed.cs70.my.salesforce.com/services/authcallback/Salesforce_CoE_org
+https://enterprise-connect-3283-dev-ed.cs77.my.salesforce.com/services/authcallback/Salesforce_CoE_org</callbackUrl>
+        <consumerKey>3MVG9FxR3Tq3eZN88sLG9b4Pw8OjzZqpRsyGyh_XshwVzVBXttOuSV5P1cnubQUhMztiTtxwWvfj9eYAeeoi8</consumerKey>
+        <isAdminApproved>false</isAdminApproved>
+        <isClientCredentialEnabled>false</isClientCredentialEnabled>
+        <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
+        <isCodeCredentialPostOnly>false</isCodeCredentialPostOnly>
+        <isConsumerSecretOptional>false</isConsumerSecretOptional>
+        <isDPopEnabled>false</isDPopEnabled>
+        <isDeviceFlowEnabled>false</isDeviceFlowEnabled>
+        <isEnforceRefreshTokenTTL>false</isEnforceRefreshTokenTTL>
+        <isIntrospectAllTokens>false</isIntrospectAllTokens>
+        <isIpBindingEnabled>false</isIpBindingEnabled>
+        <isNamedUserJwtEnabled>false</isNamedUserJwtEnabled>
+        <isPKImTLSEnabled>false</isPKImTLSEnabled>
+        <isPkceRequired>false</isPkceRequired>
+        <isRefreshTokenRotationEnabled>false</isRefreshTokenRotationEnabled>
+        <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
+        <isSecretRequiredForTokenExchange>false</isSecretRequiredForTokenExchange>
+        <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
+        <scopes>Api</scopes>
+        <scopes>Full</scopes>
+        <scopes>RefreshToken</scopes>
+    </oauthConfig>
+    <oauthPolicy>
+        <ipRelaxation>ENFORCE</ipRelaxation>
+        <isTokenExchangeFlowEnabled>false</isTokenExchangeFlowEnabled>
+        <refreshTokenPolicy>infinite</refreshTokenPolicy>
+    </oauthPolicy>
+</ConnectedApp>

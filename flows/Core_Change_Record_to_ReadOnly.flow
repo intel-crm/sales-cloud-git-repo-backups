@@ -12,10 +12,10 @@
             <name>Update_record_Type_Id</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>$Record.Core_Forecast_Amount__c</leftValueReference>
-                <operator>GreaterThan</operator>
+                <leftValueReference>$Record.Core_Read_Only__c</leftValueReference>
+                <operator>EqualTo</operator>
                 <rightValue>
-                    <numberValue>750.0</numberValue>
+                    <booleanValue>true</booleanValue>
                 </rightValue>
             </conditions>
             <connector>
@@ -87,16 +87,17 @@
         <connector>
             <targetReference>Get_ReadOnly_Record</targetReference>
         </connector>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
         <filterLogic>or</filterLogic>
         <filters>
             <field>Core_Read_Only__c</field>
-            <operator>IsChanged</operator>
+            <operator>EqualTo</operator>
             <value>
                 <booleanValue>true</booleanValue>
             </value>
         </filters>
         <object>Core_Opportunity_Forecast__c</object>
-        <recordTriggerType>Update</recordTriggerType>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordBeforeSave</triggerType>
     </start>
     <status>Obsolete</status>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>User.Opportunity$LastModifiedById$Name</field>
+    </columns>
+    <columns>
+        <field>User.Opportunity$LastModifiedById$LastModifiedDate</field>
+    </columns>
+    <columns>
+        <field>User*User$Core_User_Profile_Name__c</field>
+    </columns>
+    <columns>
+        <field>User*User$Core_User_Geo__c</field>
+    </columns>
+    <columns>
+        <field>User*User$Core_User_Country_Code__c</field>
+    </columns>
+    <columns>
+        <field>User*User$Core_Employee_Type_Code__c</field>
+    </columns>
+    <customDetailFormulas>
+        <calculatedFormula>IF(TODAY() - DATEVALUE(Opportunity.LastModifiedDate) &lt;= 30,
+   &apos;&lt;= 30 days&apos;,
+   IF(TODAY() -DATEVALUE(Opportunity.LastModifiedDate) &lt;= 60,
+   &apos;31-60 days&apos;,
+   &apos;Over 60 days&apos;))</calculatedFormula>
+        <dataType>Text</dataType>
+        <developerName>CDF1</developerName>
+        <label>Last Modified</label>
+        <scale>2</scale>
+    </customDetailFormulas>
+    <filter>
+        <criteriaItems>
+            <column>User$UserType</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>S</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>User.Opportunity$LastModifiedById$LastModifiedDate</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>LAST_90_DAYS</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>CDF1</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>User$Name</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>User Opportunities Last Modified Date</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Users_with_Opportunities__c</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>User$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,262 +1,341 @@
-@isTest
-/******************************************************************************************************************************************************************************************************
-* Class Name  : PMP_FPGA_CreateJunctionData
-* Created Date: 9th Jan,2019
+/**************************************************************************************
+* Class Name  :   PMP_FPGA_CreateJunctionData
+* Version     : 1.0 
+* Created Date: 2nd Jan,2019
 * Modification Log :
-* Developer       					Version             Date                    Description
-* -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-* Infosys - Sangeetha Ganta          1.0    			09/01/2019           	Class to create association records for FPGAs
-* Infosys - Raj Yadav				 2.0				11/06/2020				Refactored class for easy maintainance 
-******************************************************************************************************************************************************************************************************/
-public with sharing class PMP_FPGA_CreateJunctionData {
-    //IPA 2.0- US-TWC729-7980
-    /*public static String languageCode;
-        public static final String ultimateParentPIMId = 'NPP_FPGA';//UltimateParentId
-        public static final String ultimateParentPIMIdPlatforms = 'NPP_Intel_FPGA_Platforms';//ultimate parent Id for fpga platforms
-        public static final String ultimateParentEnglishNamePlatforms = 'Intel® FPGA Platforms';
-        public static final String specificationType = 'FPGA';
-        public static final String staticResourceFileName = 'FPGA_Attribute_English';//static resource for FPGA
-        public static final String staticResourceTestFileName = 'PMP_FPGA_Attribute_Test';//test static resource for FPGA
-    public static List<Database.UpsertResult> createAssociationRecords(){
+* Developer                 Date                    Description
+* ---------------------------------------------------------------------------------------
+* Sangeetha Ganta          09/01/2019               Created for Parsing the Specification 
+*                                                   JSON and creating Specification and 
+*                                                   Specification Value junction records.
+* Infosys - Sangeetha      02/28/2019               User story - US290905. Active/Deactivate
+*                                                     Spec Value Association
+****************************************************************************************/
+
+public class PMP_FPGA_CreateJunctionData
+{
+
+    public static List<Database.UpsertResult> fpgaCreateJunctionDataMet()
+    {
         
-        String jsonStr;//to store JSON file as string
-        Integer leafLevel;//to store the leaf level of the file which is being processed
-        Map<String, Object> specsByLanguageCode = new Map<String, Object>();//map containing all specs with language code as key (Map<'en_US', [Specifications]>)
-        Set<Id> associatedCategories = new Set<Id>();//set consisting category Ids related to FPGA spec
-        Set<Id> allAssociatedCategories = new Set<Id>();//set containing associated category for both the parents
-        Map<String,PMP_Category_Specification_Association__c> uploadableCatSpecAssocByExternalkey = new Map<String,PMP_Category_Specification_Association__c>();//map containing uploadable cat-spec association records
-        Map<String,PMP_Specification_Value_Association__c> uploadableSpecValuesAssocByExternalkey = new Map<String,PMP_Specification_Value_Association__c>();//map containing uploadable spec-specValues association records
-        List<PMP_Category_Specification_Association__c> uploadableCatSpecAssoc = new List<PMP_Category_Specification_Association__c>();//list of cat-specifications assoc to be uploaded
-        List<PMP_Specification_Value_Association__c> uploadableSpecValueAssoc = new List<PMP_Specification_Value_Association__c>();//list of spec-specificationValues assoc to be uploaded
-        Map<String, PMP_Specification__c> existingSpecsByExternalKey = new Map<String,PMP_Specification__c>();//map to store existing specs by it's externalkey
-        Map<String, PMP_Specification_Value__c> existingSpecValuesByExternalKey = new Map<String,PMP_Specification_Value__c>();//map to store existing specValues by it's externalkey
-        List<Database.UpsertResult> upsertResultData = new List<Database.UpsertResult>();//list containing upsert results of cat-spec assoc records
-        //List<PMP_Specification__c> ultimateParentRecords = new List<PMP_Specification__c>();//specification instance to store ultimateParentRecords
-        Set<Id> ultimateParentIds = new Set<Id>();//set to hold both ultimate parent record Ids of FPGA
-        PMP_Specification__c parentSpecRecord = new PMP_Specification__c();//specification instance to store parentrecord;
-        Map<String, Set<Id>> associatedCategoriesByParent = new Map<String, Set<Id>>{'NPP_FPGA' => new Set<Id>(), 
-            																		 'NPP_Intel_FPGA_Platforms' => new Set<Id>()};//map to hold the associated category for both the parent
-                
-        for(PMP_Specification__c spec : [SELECT Id,Name,PMP_Partner_Product_Specification_Id__c FROM PMP_Specification__c 
-                                                 WHERE (PMP_Partner_Product_Specification_Id__c IN (:ultimateParentPIMId,:ultimateParentPIMIdPlatforms))
-                                                 AND PMP_Active_Ind__c = true]){
-                                                     ultimateParentIds.add(spec.Id);
-                                                 }*/
+        //Variable Declaration
+        final String FPGA_Attribute_English = 'FPGA_Attribute_English';
+        Map<String,Id> catMap = new Map<String,Id>();
+        Map<String,Id> speciPIMMap = new Map<String,Id>();
+        Map<String,Id> speciValMap = new Map<String,Id>();
+        Map<Id,String> catNameMap = new Map<Id,String>();
+        Map<Id,String> catPIMMap = new Map<Id,String>();
+        Set<Id> categoryAssocFPGA = new Set<Id>();
+        Map<String,Boolean> catActiveMap = new Map<String,Boolean>();
+        Map<String,Boolean> specActiveMap = new Map<String,Boolean>();
+        Map<String,Boolean> specValActiveMap = new Map<String,Boolean>();
+        Map<String,PMP_Category_Specification_Association__c> uploadCatSpecMap = new Map<String,PMP_Category_Specification_Association__c>();
+        Map<String,PMP_Specification_Value_Association__c> uploadSpecSpecVMap = new Map<String,PMP_Specification_Value_Association__c>();
+        Map<String,PMP_Specification_Value_Association__c> uploadSpecSpecVMap1 = new Map<String,PMP_Specification_Value_Association__c>();
+        List<PMP_Category_Specification_Association__c> uploadCatSpecJO = new List<PMP_Category_Specification_Association__c>();
+        List<PMP_Specification_Value_Association__c> uploadSpecSpecValJO = new List<PMP_Specification_Value_Association__c>();
+        Set<String> uploadSpecSpecValKeys = new Set<String>();
         
-        /*Added by raj on 02/28, to handle activation and deactivation of association records*/
-        /*Map<String, PMP_Category_Specification_Association__c> existingCatSpecAssocByExternalKey = new Map<String, PMP_Category_Specification_Association__c>();
+        //To fetch the PIM Spec Id for specification called Chipsets
+         
+        PMP_Specification__c fpgaSpecification = [Select Id,PMP_Partner_Product_Specification_Id__c from PMP_Specification__c where PMP_Partner_Product_Specification_Id__c = :PMP_StaticConstants_MasterData.FPGA_PIMId];
+        
+       String fpgaSpecificationPIMId;
+  		/*Added by raj on 02/28*/
+        Map<String, PMP_Category_Specification_Association__c> existingCatSpecAssocByExternalKey = new Map<String, PMP_Category_Specification_Association__c>();
         Map<String, PMP_Specification_Value_Association__c> existingSpecSpecValueAssocByExternalKey = new Map<String, PMP_Specification_Value_Association__c>();
-        for(PMP_Category_Specification_Association__c catSpecAssoc : [SELECT Id,Name,PMP_Active_Ind__c, PMP_Category_Specification_External_Key__c FROM PMP_Category_Specification_Association__c 
-                                                                      WHERE PMP_Specification_Id__r.PMP_Specification_Type_Nm__c =: specificationType FOR UPDATE]){
-                                                                          existingCatSpecAssocByExternalKey.put(catSpecAssoc.PMP_Category_Specification_External_Key__c, catSpecAssoc); 
-                                                                      }
-        for(PMP_Specification_Value_Association__c specSpecValueAssoc : [SELECT id, PMP_Active_Ind__c, PMP_Category_Spec_Value_External_Key__c FROM PMP_Specification_Value_Association__c 
-                                                                         WHERE PMP_Specification_Value_Id__r.PMP_Spec_Value_Type_Nm__c =: specificationType FOR UPDATE]){
-                                                                             existingSpecSpecValueAssocByExternalKey.put(specSpecValueAssoc.PMP_Category_Spec_Value_External_Key__c, specSpecValueAssoc);
-                                                                         }*/
+        for(PMP_Category_Specification_Association__c catSpecAssoc : [SELECT Id,Name,PMP_Active_Ind__c, PMP_Category_Specification_External_Key__c FROM PMP_Category_Specification_Association__c WHERE PMP_Specification_Id__r.PMP_Specification_Type_Nm__c = 'FPGA']){
+            existingCatSpecAssocByExternalKey.put(catSpecAssoc.PMP_Category_Specification_External_Key__c, catSpecAssoc); 
+        }
+        for(PMP_Specification_Value_Association__c specSpecValueAssoc : [select id, PMP_Active_Ind__c, PMP_Category_Spec_Value_External_Key__c from PMP_Specification_Value_Association__c where PMP_Specification_Value_Id__r.PMP_Spec_Value_Type_Nm__c = 'FPGA']){
+            existingSpecSpecValueAssocByExternalKey.put(specSpecValueAssoc.PMP_Category_Spec_Value_External_Key__c, specSpecValueAssoc);
+        }
         /*End*/
-
-      /*for(PMP_Category_Specification_Association__c csa : [SELECT Id,PMP_Specification_Id__r.PMP_Partner_Product_Specification_Id__c, Name,PMP_Active_Ind__c,PMP_Category_Id__c FROM PMP_Category_Specification_Association__c 
-                                                             WHERE PMP_Specification_Id__c IN :ultimateParentIds AND PMP_Active_Ind__c = true]){
-                                                                 if(csa.PMP_Specification_Id__r.PMP_Partner_Product_Specification_Id__c == 'NPP_FPGA'){
-                                                                     associatedCategoriesByParent.get('NPP_FPGA').add(csa.PMP_Category_Id__c);
-                                                                 }
-                                                                 else if(csa.PMP_Specification_Id__r.PMP_Partner_Product_Specification_Id__c == 'NPP_Intel_FPGA_Platforms'){
-                                                                     associatedCategoriesByParent.get('NPP_Intel_FPGA_Platforms').add(csa.PMP_Category_Id__c);
-                                                                 }
-                                                                 allAssociatedCategories.add(csa.PMP_Category_Id__c);
-                                                             }
-        
-        //map containing category records by recordId
-        Map<Id,PMP_Category__c> categoriesById= new Map<Id,PMP_Category__c>([SELECT Id,PMP_Active_Ind__c,PMP_Partner_Product_Category_Cd__c,PMP_Partner_Product_Category_Key__c,Name 
-                                                                             FROM PMP_Category__c WHERE Id in :allAssociatedCategories and PMP_Active_Ind__c = true]);
-
-        for(PMP_Specification__c spec : [SELECT Id,Name,PMP_Specification_Name__c,PMP_Active_Ind__c,PMP_Partner_Product_Specification_Id__c,
-                                         PMP_Ancestor_Specification_Cd__c, PMP_Product_Parent_Specification_Id__c,PMP_Partner_Product_Specification_Key__c 
-                                         FROM PMP_Specification__c WHERE (PMP_Specification_Type_Nm__c =: specificationType 
-                                                                          OR (PMP_Partner_Product_Specification_Id__c IN (:ultimateParentPIMId,:ultimateParentPIMIdPlatforms))) AND PMP_Active_Ind__c = true]){//populate existingSpecsByExternalKey map
-                                                                              existingSpecsByExternalKey.put(spec.PMP_Partner_Product_Specification_Key__c,spec);
-                                                                          }
-        for(PMP_Specification_Value__c specValue : [SELECT Id,Name,PMP_Active_Ind__c,PMP_Product_Specification_Value_Key__c,PMP_Product_Specification_Value_Cd__c 
-                                                    FROM PMP_Specification_Value__c WHERE PMP_Spec_Value_Type_Nm__c =: specificationType AND PMP_Active_Ind__c = true]){//populate existingSpecValuesByExternalKey map
-                                                        existingSpecValuesByExternalKey.put(specValue.PMP_Product_Specification_Value_Key__c,specValue);
-                                                    }
-        
-        //fetch the FPGA JSON file stored in Static Resource and processing it as string
-        if(Test.isRunningTest() && Schema.sObjectType.StaticResource.isAccessible()){
-            StaticResource staticResourceFile = [select id,body from StaticResource Where Name =: staticResourceTestFileName];
-            jsonStr = staticResourceFile.body.toString();
-        }
-        else if(Schema.sObjectType.StaticResource.isAccessible()){
-            StaticResource staticResourceFile = [select id,body from StaticResource Where Name =: staticResourceFileName];
-            jsonStr = staticResourceFile.body.toString(); 
+       System.debug('fpgaSpecification ='+fpgaSpecification);
+       if(fpgaSpecification != null)
+       {
+          fpgaSpecificationPIMId = fpgaSpecification.PMP_Partner_Product_Specification_Id__c;
+           //raj modified here [02/28]
+             List<PMP_Category_Specification_Association__c> categoryAssociated = [SELECT PMP_Category_Id__c FROM PMP_Category_Specification_Association__c WHERE PMP_Specification_Id__c= :fpgaSpecification.Id and PMP_Active_Ind__c = true];
+           
+        System.debug('categoryAssociated ='+categoryAssociated);
+           for(PMP_Category_Specification_Association__c csa : categoryAssociated )
+        {
+            categoryAssocFPGA.add(csa.PMP_Category_Id__c);
+          
         }
         
-        specsByLanguageCode = (Map<String, Object>)JSON.deserializeUntyped(jsonStr);//deserializing string and storing it in a Map<String, Object>
-        leafLevel = PMP_Utility.getLeafNode(specsByLanguageCode);//fetch the leaf level of the current list of specifications.
-        
-        if(!Test.isRunningTest()){
-            languageCode = new list<String>(specsByLanguageCode.keySet())[0];
+        //Fetch the Category ids into a map for reference
+        for(PMP_Category__c cat:[Select Id,PMP_Partner_Product_Category_Cd__c,PMP_Active_Ind__c,PMP_Partner_Product_Category_Key__c,Name from PMP_Category__c where id in :categoryAssocFPGA])
+        {
+            catMap.put(cat.PMP_Partner_Product_Category_Key__c,cat.Id);
+            catNameMap.put(cat.Id,cat.Name);
+            catPIMMap.put(cat.Id,cat.PMP_Partner_Product_Category_Cd__c);
+            catActiveMap.put(cat.Id,cat.PMP_Active_Ind__c);
         }
-        List<Object> specNodes = (List<Object>)specsByLanguageCode.get(languageCode);//get the list of specifications associated with the current language code
-        for(Integer specNodesIndex = 0; specNodesIndex < specNodes.size(); specNodesIndex++){//iterate over all specNodes in the list and create spec and specValue records
-            Map<String, Object> specNodeByAttribute = (Map<String, Object>)specNodes[specNodesIndex];//fetch specNodes and use diiferent attributes to create spec and specValue records
-            if(specNodeByAttribute.containskey(PMP_StaticConstants_MasterData.ParentIdentifier) && specNodeByAttribute.get(PMP_StaticConstants_MasterData.ParentIdentifier) != null){
-            	parentSpecRecord = existingSpecsByExternalKey.get(String.valueOf(specNodeByAttribute.get(PMP_StaticConstants_MasterData.ParentIdentifier)).deleteWhiteSpace().toLowerCase());
-            }
+        
+        //Fetch the Specification ids into a map for reference
+        //Added by Manasa - US439814
+        for(PMP_Specification__c spec:[Select Name,PMP_Specification_Name__c,Id,PMP_Active_Ind__c,PMP_Partner_Product_Specification_Id__c,PMP_Product_Parent_Specification_Id__c,PMP_Partner_Product_Specification_Key__c from PMP_Specification__c where PMP_Ancestor_Specification_Cd__c like '%NPP_FPGA%' OR PMP_Partner_Product_Specification_Id__c = :PMP_StaticConstants_MasterData.FPGA_PIMId])
+        {
             
-            if((parentSpecRecord != null && parentSpecRecord.PMP_Ancestor_Specification_Cd__c != null && String.valueOf(parentSpecRecord.PMP_Ancestor_Specification_Cd__c).contains('NPP_Intel_FPGA_Platforms')) || 
-               (specNodeByAttribute.get(PMP_StaticConstants_MasterData.ParentName) == ultimateParentEnglishNamePlatforms)){
-                associatedCategories = associatedCategoriesByParent.get('NPP_Intel_FPGA_Platforms');
-            }
-            else{
-                associatedCategories = associatedCategoriesByParent.get('NPP_FPGA');
-            }
-            if(!specNodeByAttribute.isEmpty() && specNodeByAttribute.containsKey(PMP_StaticConstants_MasterData.ChildCategories)){//if spec node is not empty and it has child specs
-                List<Object> childSpecifications = (List<Object>)specNodeByAttribute.get(PMP_StaticConstants_MasterData.ChildCategories);//get all the child specs
-                //if childspecAttribute map has level attribute and level is not equals to leaf level then create category-spec association records 
-                if(specNodeByAttribute.containsKey(PMP_StaticConstants_MasterData.Level) && specNodeByAttribute.get(PMP_StaticConstants_MasterData.Level) != leafLevel){
-                    for(Integer specIndex = 0; specIndex < childSpecifications.size(); specIndex++){//iterate over child specs and create spec or specValue records
-                        Map<String, Object> childSpecsByAttribute = (Map<String, Object>)childSpecifications[specIndex];//store child specs in a map
-                        for(Id categoryId : associatedCategories){
-                            PMP_Category_Specification_Association__c categorySpecAssoc = new PMP_Category_Specification_Association__c();
-                            PMP_Category__c categoryRecord = categoriesById.get(categoryId);//get the category record
-                            categorySpecAssoc.PMP_Category_Id__c = categoryId;//associate the related category record Id
-                            if(childSpecsByAttribute.containsKey(PMP_StaticConstants_MasterData.SpecDisplayValue) && childSpecsByAttribute.get(PMP_StaticConstants_MasterData.SpecDisplayValue) != null){
-                                String catSpecAssocName = categoryRecord.Name + 
-                                    PMP_StaticConstants_MasterData.Colon_Symbol +
-                                    childSpecsByAttribute.get(PMP_StaticConstants_MasterData.SpecDisplayValue);
-                                //populate assoc record's name as realated categoryName:specificationName
-                                categorySpecAssoc.Name = catSpecAssocName.length() > 80 ? catSpecAssocName.substring(0, 80) : catSpecAssocName;
-                            }
-                            //associate specification from existing specification records 
-                            if(childSpecsByAttribute.get(PMP_StaticConstants_MasterData.SpecRawValue) != null){
-                                //fetch the specification record
-                                PMP_Specification__c specificationRecord = existingSpecsByExternalKey.get(String.valueOf(childSpecsByAttribute.get(PMP_StaticConstants_MasterData.SpecRawValue)).deleteWhiteSpace().toLowerCase());
-                                //populate assoc rescords external key as PIMCategoryId|specificationExternalkey
-                                categorySpecAssoc.PMP_Category_Specification_External_Key__c = categoryRecord != null ?
-                                    String.valueOf(categoryRecord.PMP_Partner_Product_Category_Cd__c + 
-                                                   PMP_StaticConstants_MasterData.Pipe_Symbol + 
-                                                   childSpecsByAttribute.get(PMP_StaticConstants_MasterData.SpecRawValue)).deleteWhiteSpace().toLowerCase(): null;
-                                categorySpecAssoc.PMP_Specification_Id__c = specificationRecord != null ? specificationRecord.Id : null;
-                                //if both category and specification record is active, make association record active
-                                if(categoryRecord != null && categoryRecord.PMP_Active_Ind__c && specificationRecord != null && specificationRecord.PMP_Active_Ind__c){
-                                    categorySpecAssoc.PMP_Active_Ind__c = true;
+            speciPIMMap.put(spec.PMP_Partner_Product_Specification_Key__c,spec.Id);
+            specActiveMap.put(spec.PMP_Partner_Product_Specification_Key__c,spec.PMP_Active_Ind__c);
+            System.debug('speciPIMMap'+speciPIMMap);
+        }
+
+        
+        for(PMP_Specification_Value__c specv:[Select Id,Name,PMP_Active_Ind__c,PMP_Product_Specification_Value_Key__c,PMP_Product_Specification_Value_Cd__c from PMP_Specification_Value__c])
+        {
+           speciValMap.put(specv.PMP_Product_Specification_Value_Key__c,specv.id);
+           specValActiveMap.put(specv.PMP_Product_Specification_Value_Key__c,specv.PMP_Active_Ind__c);
+            System.debug('speciValMap'+speciValMap);
+        }      
+        
+        //Parse the JSON stored as a static resource
+        String jsonStr ='';
+        string strBaseKey;
+        
+        //Store the Chipsets JSON file in Static Resource and access it as a String
+        
+           if(Test.isRunningTest())
+           {
+               
+                StaticResource srObject = [select id,body from StaticResource Where Name = :PMP_StaticConstants_MasterData.FPGA_Attribute_Test];
+               
+               jsonStr = srObject.body.toString();
+           }
+           else
+           {
+               
+                StaticResource srObject = [select id,body from StaticResource Where Name = :FPGA_Attribute_English];
+               
+               jsonStr = srObject.body.toString();
+           }
+        
+        
+        Map<String, Object> mapSpec = (Map<String, Object>)JSON.deserializeUntyped(jsonStr);
+        /*Added by raj to get the leaf node level for the uploaded file*/
+        Integer leafLevel = PMP_Utility.getLeafNode(mapSpec);
+        System.debug('Got the leaf node' + leafLevel);
+        /*-----------------------End-------------------------------*/
+        for (string theKey:mapSpec.keySet())
+        {
+            system.debug('###theKey:->'+theKey);
+            strBaseKey = theKey;
+            if(mapSpec.size() > 0)        
+            {
+                List<Object> lstSpec = (List<Object>)mapSpec.get(strBaseKey); //get the List of objects associated with key en_US
+                for(integer catIndex=0;catIndex<lstSpec.size();catIndex++)
+                {
+                    Map<String, Object> specMap = (Map<String, Object>)lstSpec[catIndex];
+                    if(specMap != null && !specMap.isEmpty())
+                    {
+                        if(specMap.containsKey(PMP_StaticConstants_MasterData.ChildCategories))
+                        {
+                            List<Object> lstChildCategories = (List<Object>)specMap.get(PMP_StaticConstants_MasterData.ChildCategories);
+                            
+                            for(integer specIndex=0;specIndex<lstChildCategories.size();specIndex++)
+                            {
+                                Map<String, Object> specOrSpecValMap = (Map<String, Object>)lstChildCategories[specIndex];
+                                if(specMap.containsKey(PMP_StaticConstants_MasterData.Level) && specMap.get(PMP_StaticConstants_MasterData.Level) != leafLevel)
+                                {
+                                    // If level value is not 'leaf' then create category specification association record
+                                    for(Id categoryId : categoryAssocFPGA)
+                                    {
+                                       PMP_Category_Specification_Association__c csa = new PMP_Category_Specification_Association__c();
+                                       if(catPIMMap.get(categoryId) != null)
+                                       {
+                                          csa.PMP_Category_Specification_External_Key__c = String.valueOf(catPIMMap.get(categoryId) + PMP_StaticConstants_MasterData.Pipe_Symbol + specOrSpecValMap.get(PMP_StaticConstants_MasterData.SpecRawValue)).toLowerCase(); 
+                                       }
+                                       
+                                       csa.PMP_Category_Id__c = categoryId;
+                                       csa.Name = catNameMap.get(categoryId) + PMP_StaticConstants_MasterData.Colon_Symbol + specOrSpecValMap.get(PMP_StaticConstants_MasterData.SpecDisplayValue);
+                                       
+                                       system.debug('###specOrSpecValMap:->'+specOrSpecValMap);
+                                       system.debug('###speciPIMMap:->'+speciPIMMap);
+                                        if(specOrSpecValMap.get(PMP_StaticConstants_MasterData.SpecRawValue)!= null && speciPIMMap.get(String.valueOf(specOrSpecValMap.get(PMP_StaticConstants_MasterData.SpecRawValue)).deleteWhiteSpace().toLowerCase()) != null)
+                                        {
+                                            
+                                          csa.PMP_Specification_Id__c = speciPIMMap.get(String.valueOf(specOrSpecValMap.get(PMP_StaticConstants_MasterData.SpecRawValue)).deleteWhiteSpace().toLowerCase());  
+                                             system.debug('###csa.PMP_Specification_Id__c:->'+csa.PMP_Specification_Id__c);
+                                              //US290905
+                                            if(Boolean.valueOf(catActiveMap.get(categoryId)) == true && Boolean.valueOf(specActiveMap.get(String.valueOf(specOrSpecValMap.get(PMP_StaticConstants_MasterData.SpecRawValue)).deleteWhiteSpace().toLowerCase())) == true){
+                                                csa.PMP_Active_Ind__c = true;
+                                            }
+                                            else
+                                            {
+                                                csa.PMP_Active_Ind__c = false;
+                                            }  
+                                        }
+                                       system.debug('###uploadCatSpecMap:->'+uploadCatSpecMap);
+                                       system.debug('###csa:->'+csa);
+                                        if(!uploadCatSpecMap.containsKey(csa.PMP_Category_Specification_External_Key__c) && csa.PMP_Category_Specification_External_Key__c != null && csa.PMP_Category_Id__c!= null && csa.PMP_Specification_Id__c != null)
+                                        {
+                                            uploadCatSpecMap.put(csa.PMP_Category_Specification_External_Key__c,csa);
+                                        }
+                                    }                                           
+                                   system.debug('uploadCatSpecMap'+uploadCatSpecMap); 
                                 }
-                                else{
-                                    categorySpecAssoc.PMP_Active_Ind__c = false;
-                                }
-                            }
-                            //if the association record is proper, push it into uploadableMap
-                            if(!uploadableCatSpecAssocByExternalkey.containsKey(categorySpecAssoc.PMP_Category_Specification_External_Key__c) && 
-                               categorySpecAssoc.PMP_Category_Specification_External_Key__c != null && categorySpecAssoc.PMP_Category_Id__c != null &&
-                               categorySpecAssoc.PMP_Specification_Id__c != null){
-                                   uploadableCatSpecAssocByExternalkey.put(categorySpecAssoc.PMP_Category_Specification_External_Key__c, categorySpecAssoc);
-                               }
-                        }
-                    }
+                               else
+                               {
+                                    // If level value is 'leaf' then create Spec and specification value association record
+                                    if(specMap.containsKey(PMP_StaticConstants_MasterData.Level) && specMap.get(PMP_StaticConstants_MasterData.Level) == leafLevel)
+                                    {
+                                       for(Id categoryId : categoryAssocFPGA)
+                                    {
+                                       PMP_Specification_Value_Association__c ssa = new PMP_Specification_Value_Association__c();
+                                       
+                                        if(speciPIMMap.get(String.valueOf(specMap.get(PMP_StaticConstants_MasterData.ParentIdentifier)).deleteWhiteSpace().toLowerCase()) != null)
+                                        {
+                                          ssa.PMP_Specification_Id__c= speciPIMMap.get(String.valueOf(specMap.get(PMP_StaticConstants_MasterData.ParentIdentifier)).deleteWhiteSpace().toLowerCase());  
+                                        }
+                                       
+                                       ssa.PMP_Category_Id__c = categoryId;
+                                       
+                                       if(specOrSpecValMap.get(PMP_StaticConstants_MasterData.SpecRawValue) != null && speciValMap.get(String.valueOf(specOrSpecValMap.get(PMP_StaticConstants_MasterData.SpecRawValue)).deleteWhiteSpace().toLowerCase()) != null)
+                                       {
+                                          ssa.PMP_Specification_Value_Id__c= speciValMap.get(String.valueOf(specOrSpecValMap.get(PMP_StaticConstants_MasterData.SpecRawValue)).deleteWhiteSpace().toLowerCase());
+          
+                                       }
+                                        if(catPIMMap.get(categoryId) != null)
+                                       {
+                                           ssa.PMP_Category_Spec_Value_External_Key__c= String.valueOf(catPIMMap.get(categoryId) + PMP_StaticConstants_MasterData.Pipe_Symbol + specOrSpecValMap.get(PMP_StaticConstants_MasterData.ParentIdentifier) + '|' + specOrSpecValMap.get(PMP_StaticConstants_MasterData.SpecRawValue)).toLowerCase(); 
+                                       }
+                                       String Name = String.valueOf(specOrSpecValMap.get(PMP_StaticConstants_MasterData.SpecDisplayValue));
+                                        if(Name != null && Name.length()>80)
+                                        {
+                                           Name =  Name.substring(0,80);
+                                           ssa.Name = Name;
+                                        }
+                                        else
+                                        {
+                                           ssa.Name = String.valueOf(specOrSpecValMap.get(PMP_StaticConstants_MasterData.SpecDisplayValue)); 
+                                        }
+                                        if(Boolean.valueOf(catActiveMap.get(categoryId)) == true && specActiveMap.get(String.valueOf(specMap.get(PMP_StaticConstants_MasterData.ParentIdentifier)).deleteWhiteSpace().toLowerCase()) != null && specOrSpecValMap.get(PMP_StaticConstants_MasterData.SpecRawValue) != null && specValActiveMap.get(String.valueOf(specOrSpecValMap.get(PMP_StaticConstants_MasterData.SpecRawValue)).deleteWhiteSpace().toLowerCase()) != null && Boolean.valueOf(specActiveMap.get(String.valueOf(specMap.get(PMP_StaticConstants_MasterData.ParentIdentifier)).deleteWhiteSpace().toLowerCase())) == true && Boolean.valueOf(specValActiveMap.get(String.valueOf(specOrSpecValMap.get(PMP_StaticConstants_MasterData.SpecRawValue)).deleteWhiteSpace().toLowerCase())) == true)
+                                        {
+                                            ssa.PMP_Active_Ind__c = true;
+                                        }
+                                        else
+                                        {
+                                            ssa.PMP_Active_Ind__c = false;
+                                        }                                        
+                                        //ssa.PMP_Active_Ind__c = true;
+                                        if(!uploadSpecSpecVMap.containsKey(ssa.PMP_Category_Spec_Value_External_Key__c) && ssa.PMP_Category_Spec_Value_External_Key__c!= null && ssa.PMP_Specification_Id__c!= null && ssa.PMP_Specification_Value_Id__c!= null)
+                                        {
+                                            
+                                            
+                                              uploadSpecSpecVMap.put(ssa.PMP_Category_Spec_Value_External_Key__c,ssa);   
+                                               
+                                        }
+                                    }
+                                    } 
+                                                                            
+                                }                                 
+                            }   
+                                
+                                
+                        }                           
+                        
+                    }   
+                    
                 }
-                else{
-                    PMP_Specification_Value__c specificationValueRecord;
-                    PMP_Specification__c specificationRecord;
-                    for(Integer specIndex = 0; specIndex < childSpecifications.size(); specIndex++){//iterate over child specs and create spec or specValue records
-                        Map<String, Object> childSpecsByAttribute = (Map<String, Object>)childSpecifications[specIndex];//store child specs in a map
-                        if(childSpecsByAttribute.containsKey(PMP_StaticConstants_MasterData.SpecRawValue) && childSpecsByAttribute.get(PMP_StaticConstants_MasterData.SpecRawValue) != null){
-                        	specificationValueRecord = existingSpecValuesByExternalKey.get(String.valueOf(childSpecsByAttribute.get(PMP_StaticConstants_MasterData.SpecRawValue)).deleteWhiteSpace().toLowerCase());
-                        	specificationRecord = existingSpecsByExternalKey.get(String.valueOf(specNodeByAttribute.get(PMP_StaticConstants_MasterData.ParentIdentifier)).deleteWhiteSpace().toLowerCase());
-                        }
-                        for(Id categoryId : associatedCategories){//iterate over all the associated categories
-                            PMP_Category__c categoryRecord = categoriesById.get(categoryId);//get the category record
-                            PMP_Specification_Value_Association__c specSpecValueAssoc = new PMP_Specification_Value_Association__c();
-                            specSpecValueAssoc.PMP_Category_Id__c = categoryId;
-                            specSpecValueAssoc.PMP_Specification_Value_Id__c = specificationValueRecord != null ? specificationValueRecord.Id : null;
-                            specSpecValueAssoc.PMP_Specification_Id__c = specificationRecord != null ? specificationRecord.Id : null;
-                            if(categoryRecord != null && specificationRecord != null && specificationValueRecord != null && childSpecsByAttribute.containsKey(PMP_StaticConstants_MasterData.SpecRawValue)){//if category record is available
-                                    specSpecValueAssoc.PMP_Category_Spec_Value_External_Key__c = String.valueOf(categoryRecord.PMP_Partner_Product_Category_Cd__c + PMP_StaticConstants_MasterData.Pipe_Symbol +
-                                                                                                                specNodeByAttribute.get(PMP_StaticConstants_MasterData.ParentIdentifier) + PMP_StaticConstants_MasterData.Pipe_Symbol + 
-                                                                                                                childSpecsByAttribute.get(PMP_StaticConstants_MasterData.SpecRawValue)).toLowerCase();
-                            }
-                            if(childSpecsByAttribute.containsKey(PMP_StaticConstants_MasterData.SpecDisplayValue) && childSpecsByAttribute.get(PMP_StaticConstants_MasterData.SpecDisplayValue) != null){
-                                String specSpecValueAssocName = String.valueOf(childSpecsByAttribute.get(PMP_StaticConstants_MasterData.SpecDisplayValue));
-                                specSpecValueAssoc.Name = specSpecValueAssocName.length() > 80 ? specSpecValueAssocName.substring(0, 80) : specSpecValueAssocName;
-                            }
-                            //if both spec and specValue is active, make assoc record also as Active else false
-                            if(categoryRecord !=null && categoryRecord.PMP_Active_Ind__c == true && specificationRecord != null && specificationValueRecord != null && specificationRecord.PMP_Active_Ind__c == true && specificationValueRecord.PMP_Active_Ind__c == true){
-                                specSpecValueAssoc.PMP_Active_Ind__c = true; 
-                            }
-                            else{
-                                specSpecValueAssoc.PMP_Active_Ind__c = false;
-                            }
-                            //if the spec-specValue assoc record is proper, push it into uploadable 
-                            if(!uploadableSpecValuesAssocByExternalkey.containsKey(specSpecValueAssoc.PMP_Category_Spec_Value_External_Key__c) && specSpecValueAssoc.PMP_Category_Spec_Value_External_Key__c != null && 
-                               specSpecValueAssoc.PMP_Specification_Id__c != null && specSpecValueAssoc.PMP_Specification_Value_Id__c != null){
-                                   uploadableSpecValuesAssocByExternalkey.put(specSpecValueAssoc.PMP_Category_Spec_Value_External_Key__c,specSpecValueAssoc); 
-                               }
-                        }
-                    }
-                }
-            }
-        }*/
-        /*Added by raj on 02/28, to handle activation-deactication of association records*/
-        /*if(!existingCatSpecAssocByExternalKey.isEmpty() && !uploadableCatSpecAssocByExternalkey.isEmpty()){
-            for(String keyId : existingCatSpecAssocByExternalKey.keySet()){
-                if(!uploadableCatSpecAssocByExternalkey.keySet().contains(keyId)){
+            
+            }   
+        }
+        
+    }
+        system.debug('uploadCatSpecMap'+uploadCatSpecMap);
+        /*Added by raj on 02/28*/
+        if(!existingCatSpecAssocByExternalKey.isEmpty() && !uploadCatSpecMap.isEmpty()){
+       		for(String keyId : existingCatSpecAssocByExternalKey.keySet()){
+                if(!uploadCatSpecMap.keySet().contains(keyId)){
                     PMP_Category_Specification_Association__c csa = existingCatSpecAssocByExternalKey.get(keyId);
                     csa.PMP_Active_Ind__c = false;
-                    uploadableCatSpecAssocByExternalkey.put(csa.PMP_Category_Specification_External_Key__c, csa);
+                    uploadCatSpecMap.put(csa.PMP_Category_Specification_External_Key__c, csa);
                 }
             }
         }
-        if(!existingSpecSpecValueAssocByExternalKey.isEmpty() && !uploadableSpecValuesAssocByExternalkey.isEmpty()){
+        if(!existingSpecSpecValueAssocByExternalKey.isEmpty() && !uploadSpecSpecVMap.isEmpty()){
             for(String keyId : existingSpecSpecValueAssocByExternalKey.keySet()){
-                if(!uploadableSpecValuesAssocByExternalkey.keySet().contains(keyId)){
+                if(!uploadSpecSpecVMap.keySet().contains(keyId)){
                     PMP_Specification_Value_Association__c specSpecValueAssoc = existingSpecSpecValueAssocByExternalKey.get(keyId);
                     specSpecValueAssoc.PMP_Active_Ind__c = false;
-                    uploadableSpecValuesAssocByExternalkey.put(specSpecValueAssoc.PMP_Category_Spec_Value_External_Key__c, specSpecValueAssoc);
+                    uploadSpecSpecVMap.put(specSpecValueAssoc.PMP_Category_Spec_Value_External_Key__c, specSpecValueAssoc);
                 }    
             }    
-        }*/
+        }
         /*End*/
-        /*uploadableCatSpecAssoc.addAll(uploadableCatSpecAssocByExternalkey.values());//adding all the cat-spec records to a list
-        for(String externalId : uploadableSpecValuesAssocByExternalkey.keySet()){
-            if(uploadableSpecValueAssoc.size() < 9000){//if uploadable specs are less than 9000, add it to a list 
-                uploadableSpecValueAssoc.add(uploadableSpecValuesAssocByExternalkey.get(externalId));
+        for(String key1 : uploadCatSpecMap.keySet())
+        {
+            uploadCatSpecJO.add(uploadCatSpecMap.get(key1));
+        }
+        system.debug('uploadSpecSpecVMap'+uploadSpecSpecVMap);
+        system.debug('uploadSpecSpecVMap.size'+uploadSpecSpecVMap.keySet());
+        for(String key2 : uploadSpecSpecVMap.keySet())
+        {
+            system.debug('inside specspecV map'+key2);
+            if(uploadSpecSpecValJO.size()<9000)
+            {
+               uploadSpecSpecValJO.add(uploadSpecSpecVMap.get(key2)); 
             }
-            else{//if more than 9000, call the future method to upload the records
-                String uploadRecJSON = JSON.serialize(uploadableSpecValueAssoc);
+            else
+            {
+                String uploadRecJSON = JSON.serialize(uploadSpecSpecValJO);
                 PMP_FPGA_CreateJunctionData.uploadExcessSpecSpecValueAssRec(uploadRecJSON);
-                uploadableSpecValueAssoc.clear();//clear off the list
+                uploadSpecSpecValJO.clear();                
             }
+            
         }
+        system.debug('uploadSpecSpecValJO'+uploadSpecSpecValJO);
+        if(uploadSpecSpecValJO.size()>0)
+            {
+               String uploadRecJSON = JSON.serialize(uploadSpecSpecValJO);
+               PMP_FPGA_CreateJunctionData.uploadExcessSpecSpecValueAssRec(uploadRecJSON); 
+            }
+        System.debug('size**'+uploadSpecSpecValJO.size());
+        List<Database.UpsertResult> upsertResultData = new List<Database.UpsertResult>();//final upsert records (success and failure)
         
-        if(uploadableSpecValueAssoc.size() > 0){//process the remaining values
-            String uploadRecJSON = JSON.serialize(uploadableSpecValueAssoc);
-            PMP_FPGA_CreateJunctionData.uploadExcessSpecSpecValueAssRec(uploadRecJSON);//again call the future method for the remianing specValues 
-        }
-        if(uploadableCatSpecAssoc.size() > 0){
-            try{
-                Schema.SObjectField upsertSpecKey = PMP_Category_Specification_Association__c.Fields.PMP_Category_Specification_External_Key__c;//fetch the cat-spec externalkey
-                upsertResultData = Database.upsert(uploadableCatSpecAssoc,upsertSpecKey,false);//upsert the records
-            }
-            catch(Exception exp1){
+       if(uploadCatSpecJO.size()>0)
+        {
+           try
+           {
+               //upsert uploadCatSpecJO PMP_Category_Specification_External_Key__c;
+               Schema.SObjectField upsertKey = PMP_Category_Specification_Association__c.Fields.PMP_Category_Specification_External_Key__c;
+               upsertResultData = Database.upsert(uploadCatSpecJO,upsertKey,false);
+           }
+            catch(Exception exp1)
+            {
+                System.debug(PMP_StaticConstants_MasterData.Core_PMP_FPGA_CreateJunctionData_Exception_Message+exp1.getMessage());
                 throw exp1;
             }
         }
-        return upsertResultData;
-    }
-    
-    // future Method to handle Governor Limits for DML on more than 10K records
+            return upsertResultData;
+          
+}
+    // Future Method written to handle Governor Limits for DML on more than 10K records
     @future
-    public static void uploadExcessSpecSpecValueAssRec(String uploadRecsJSON){
-        List<PMP_Specification_Value_Association__c> uploadableSpecValueAssoc = new List<PMP_Specification_Value_Association__c>();
-        uploadableSpecValueAssoc = (List<PMP_Specification_Value_Association__c>)JSON.deserialize(uploadRecsJSON, List<PMP_Specification_Value_Association__c>.class);
-        if(uploadableSpecValueAssoc.size()>0 && Schema.sObjectType.PMP_Specification_Value_Association__c.isCreateable() && Schema.sObjectType.PMP_Specification_Value_Association__c.isUpdateable()){
-            try{
-                upsert uploadableSpecValueAssoc PMP_Category_Spec_Value_External_Key__c;//upsert the spec-specValue assoc records
-            }
-            catch(Exception exp3){
+    public static void uploadExcessSpecSpecValueAssRec(String uploadRecsJSON)
+    {
+        List<PMP_Specification_Value_Association__c> uploadSpecSpecValJO = new List<PMP_Specification_Value_Association__c>();
+        uploadSpecSpecValJO = (List<PMP_Specification_Value_Association__c>)JSON.deserialize(uploadRecsJSON, List<PMP_Specification_Value_Association__c>.class);
+        for(PMP_Specification_Value_Association__c svm : uploadSpecSpecValJO){
+            system.debug('###svm:->'+svm);
+        }
+        if(uploadSpecSpecValJO.size()>0)
+        {
+            
+           try
+           {
+               upsert uploadSpecSpecValJO PMP_Category_Spec_Value_External_Key__c; 
+           }
+            catch(Exception exp3)
+            {
+                System.debug(PMP_StaticConstants_MasterData.Core_PMP_FPGA_CreateJunctionData_Exception_Message+exp3.getMessage());
                 throw exp3;
             }
         }
-    }*/
+        
+    }
+    
 }

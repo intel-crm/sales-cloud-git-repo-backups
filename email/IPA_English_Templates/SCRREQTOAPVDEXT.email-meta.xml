@@ -4,30 +4,24 @@
     <encodingKey>UTF-8</encodingKey>
     <name>SCRREQTOAPVDEXT</name>
     <style>none</style>
-    <subject>Welcome to Intel® Partner Alliance</subject>
-    <textOnly>Your Company is Already Registered
+    <subject>Congratulations and Welcome to Intel’s Partner Program</subject>
+    <textOnly>Duplicate Partner Program Registration
 
+{!PRM_Registration_Request__c.PRM_First_Name__c}
 
-{!PRM_Registration_Request__c.PRM_First_Name__c},
+Your company matches an existing Intel Partner program account, so you have been added to the following company profile:
 
-Congratulations on being an Intel® Partner Alliance partner! Your company matches an existing account, so you have been added to the following Intel® Partner Alliance company profile:
 Company Name: {!Account.Name}
-Business ID: {!Account.AccountNumber}
 
-Log in to view your Intel® Partner Alliance profile details.
+Log in to view your profile details.
 
-Intel partners have a long history of innovation, and with Intel® Partner Alliance, we’ll help you accelerate building solutions for the data centric economy. Together, we can connect, innovate, and grow, making extraordinary opportunities possible.
+Questions? Contact Support here 
 
 
-Visit https://www.intel.com/content/www/{!PRM_Language_Culture_Mapping__mdt.PRM_Country_Cd__c}/{!PRM_Language_Culture_Mapping__mdt.PRM_Culture__c}/partner-alliance/help/overview.html for more help on getting started.
-
-Thank you,
-Your Intel® Partner Alliance team
-
-This message was sent to you as an important business communication related to your current relationship with Intel® Partner Alliance.
-© {!$Label.PRM_CurrentYear} Intel Corporation
-Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
-Privacy | Cookies</textOnly>
+Copyright © 2016 Intel Corporation. All rights reserved. Intel, the Intel logo are trademarks of Intel Corporation in the U.S. and/or other countries.
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. Intel.com
+You may unsubscribe at any time by updating your profile settings at: {!$Label.PRM_MyIntelProfileURL}
+Privacy | Cookies | *Trademarks</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

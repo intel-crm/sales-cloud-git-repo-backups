@@ -69,6 +69,7 @@
             <label>Check Expiry Date Less than 14 days</label>
         </rules>
     </decisions>
+    <description>Handling all the validation error messages on Submit for Approval Custom Action on Quote object.</description>
     <environments>Default</environments>
     <formulas>
         <name>Lessthan14days</name>
@@ -158,7 +159,7 @@
         <allowPause>false</allowPause>
         <fields>
             <name>ExpiryErrorMessage</name>
-            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;Expiry Date must be more than 14 days in the future before quote can be submitted.&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;{!$Label.Pricing_SW_Flow_SubmitForApproval_Min_Max_Expiry_Date_Error}&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
             <styleProperties>
                 <verticalAlignment>

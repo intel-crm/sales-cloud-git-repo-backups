@@ -66,7 +66,7 @@ public with sharing class PCC_DealFormValidationController {
                 String userId = UserInfo.getUserId();
                 User userValues = new User();
                 if (Schema.sObjectType.User.isAccessible()) {
-                    userValues =[select id,name,ContactId,Contact.AccountId,Contact.Email,Contact.FirstName,Contact.LastName from User Where Id =:userId]; // IPA Refresh 2.0 - TWC729-7874
+                    userValues =[select id,name,ContactId,Contact.AccountId from User Where Id =:userId];
                 }
                     // Change status and Record type of Deal if all Validations are passed and submit for approval
                     if(dealRec.Core_Design_Registration_Status_Nm__c!=null && dealRec.Core_Design_Registration_Status_Nm__c=='Draft'){
@@ -112,7 +112,7 @@ public with sharing class PCC_DealFormValidationController {
     List<PRM_AccountLegalAgreemntAssociation__c> updateInsertPartnerLegalAgreement = new List<PRM_AccountLegalAgreemntAssociation__c>();
     PRM_PartnerAgreement__c partnerAgreement = [Select id, name from PRM_PartnerAgreement__c where name = 'Deal_Registration_Terms_and_Conditions'];
         if (Schema.sObjectType.PRM_AccountLegalAgreemntAssociation__c.isAccessible() && userValues.ContactId!=null) {
-            dealLegalAgreement = [Select Id, Name, PRM_Signed_By_Email__c,PRM_Signed_By_Name__c,PCC_Design_Deal_Registration__c,PRM_Account_Id__c,PRM_Agreement_Sign_Dt__c,PRM_Partner_Agreement_Id__c,PCC_Design_Deal_Registration__r.Core_Design_Registration_Status_Nm__c From PRM_AccountLegalAgreemntAssociation__c where PRM_Signed_By_Email__c=:userValues.Contact.Email AND PRM_Partner_Agreement_Id__c=:partnerAgreement.Id];  // IPA Refresh 2.0 - TWC729-7874
+            dealLegalAgreement = [Select Id, Name, PRM_Contact__c,PCC_Design_Deal_Registration__c,PRM_Account_Id__c,PRM_Agreement_Sign_Dt__c,PRM_Partner_Agreement_Id__c,PCC_Design_Deal_Registration__r.Core_Design_Registration_Status_Nm__c From PRM_AccountLegalAgreemntAssociation__c where PRM_Contact__c=:userValues.ContactId AND PRM_Partner_Agreement_Id__c=:partnerAgreement.Id];
         }
         for(PRM_AccountLegalAgreemntAssociation__c ala :dealLegalAgreement){
             dealLegalAgreementList.add(ala.PCC_Design_Deal_Registration__c);

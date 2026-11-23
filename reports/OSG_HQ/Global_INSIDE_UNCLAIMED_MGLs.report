@@ -45,8 +45,8 @@
             <column>CREATED</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>eloqua</value>
+            <operator>equals</operator>
+            <value>user eloqua</value>
         </criteriaItems>
         <criteriaItems>
             <column>RECORDTYPE</column>
@@ -60,7 +60,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>INSIDE,LDR</value>
+            <value>INSIDE</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

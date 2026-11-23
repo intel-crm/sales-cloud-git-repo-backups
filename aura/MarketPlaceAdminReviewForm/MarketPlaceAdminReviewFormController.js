@@ -1,5 +1,5 @@
 ({
-/*
+
   doInit : function(component, event, helper) {
 
     if (!component.get('v.recordId')) {
@@ -19,9 +19,9 @@
     if (component.get('v.category') && !component.get('v._category')) {
       helper.save(component, helper);
       // refresh messages
-      // / *component.find('messaging').forEach(function(messaging) {
-      //   messaging.show();
-      // });* /
+      /*component.find('messaging').forEach(function(messaging) {
+        messaging.show();
+      });*/
     }
   },
 
@@ -126,9 +126,9 @@
       component.set('v.showSpinner', false);
       component.set('v.showSavedMessage', true);
       component.set('v.currentStepTouched', false);
-      //  / *Prakash 6/26 if(component.get('v.currentStep') < 4){
-    	// 	var detailCmp=component.find('details');
-      //       detailCmp.reInit();}* /
+       /*Prakash 6/26 if(component.get('v.currentStep') < 4){
+    		var detailCmp=component.find('details');
+            detailCmp.reInit();}*/
     }));
   },
 
@@ -145,6 +145,6 @@
       });
     });
   },
-*/
+
 
 })

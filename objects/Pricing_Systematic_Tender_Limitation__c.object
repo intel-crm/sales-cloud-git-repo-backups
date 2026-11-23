@@ -128,22 +128,16 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <comment>Action override created by Lightning App Builder during activation.</comment>
-        <content>Pricing_Systematic_Tender_Limitation_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <skipRecordTypeSelect>false</skipRecordTypeSelect>
-        <type>Flexipage</type>
+        <type>Default</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <comment>Action override created by Lightning App Builder during activation.</comment>
-        <content>Pricing_Systematic_Tender_Limitation_Record_Page</content>
         <formFactor>Large</formFactor>
-        <skipRecordTypeSelect>false</skipRecordTypeSelect>
-        <type>Flexipage</type>
+        <type>Default</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
+        <formFactor>Small</formFactor>
         <type>Default</type>
     </actionOverrides>
     <allowInChatterGroups>false</allowInChatterGroups>
@@ -216,6 +210,18 @@
     </fields>
     <label>Pricing Systematic Tender Limitation</label>
     <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Pricing_Active_cb__c</columns>
+        <columns>Pricing_Account__c</columns>
+        <columns>Pricing_Quote_Type__c</columns>
+        <columns>Pricing_Exception_Quota__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>LAST_UPDATE</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <listViews>
         <fullName>IQR_Systematic_Tender_Limitation</fullName>
         <columns>NAME</columns>
         <columns>Pricing_Account__c</columns>
@@ -224,11 +230,9 @@
         <columns>Pricing_Exception_Quota__c</columns>
         <columns>CREATEDBY_USER</columns>
         <columns>CREATED_DATE</columns>
-        <columns>LAST_ACTIVITY</columns>
         <filterScope>Everything</filterScope>
         <label>IQR Systematic Tender Limitation</label>
         <sharedTo>
-            <group>Pricing_All_Internal_Tender_Users</group>
             <group>Pricing_IQR_Division_Admin</group>
         </sharedTo>
     </listViews>
@@ -240,14 +244,8 @@
     </nameField>
     <pluralLabel>Pricing Systematic Tender Limitations</pluralLabel>
     <searchLayouts>
-        <excludedStandardButtons>OpenListInQuip</excludedStandardButtons>
-        <excludedStandardButtons>NewFromDocument</excludedStandardButtons>
-        <excludedStandardButtons>Accept</excludedStandardButtons>
-        <excludedStandardButtons>MassAssignRecordLabel</excludedStandardButtons>
-        <excludedStandardButtons>Import</excludedStandardButtons>
-        <excludedStandardButtons>MassChangeOwner</excludedStandardButtons>
-        <excludedStandardButtons>PrintableListView</excludedStandardButtons>
         <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
+        <excludedStandardButtons>MassChangeOwner</excludedStandardButtons>
     </searchLayouts>
     <sharingModel>Private</sharingModel>
     <validationRules>
@@ -257,6 +255,7 @@
 ISCHANGED(OwnerId),
 PRIORVALUE(OwnerId) != OwnerId
 )</errorConditionFormula>
+        <errorDisplayField>OwnerId</errorDisplayField>
         <errorMessage>Owner cannot be changed.</errorMessage>
     </validationRules>
     <validationRules>
@@ -269,7 +268,8 @@ OR(
 ),
 Pricing_Exception_Quota__c &lt;= 0
 )</errorConditionFormula>
-        <errorMessage>Exception Quota must be greater than zero.</errorMessage>
+        <errorDisplayField>Pricing_Exception_Quota__c</errorDisplayField>
+        <errorMessage>Volume Exception Quota must be greater than zero.</errorMessage>
     </validationRules>
     <visibility>Public</visibility>
 </CustomObject>

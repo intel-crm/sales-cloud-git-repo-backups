@@ -219,8 +219,9 @@ public without sharing class Core_Lead_ExportListview {
         }
         catch(Exception e){
             PMP_Utility.logError(e, 'Core_Lead_ExportListview.fetchRecords');
-        }
+        } 
         return lstRec;
+        
     }
         
     /*method: Apex method to fetch columns for a selected list view.

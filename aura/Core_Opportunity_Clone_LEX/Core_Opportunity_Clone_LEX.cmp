@@ -1,0 +1,114 @@
+<aura:component controller="Core_OpportunityCloneLex" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickActionWithoutHeader" access="global" >
+    <!--attribute-->
+    <aura:attribute name="solArea" type="String"/>
+    <aura:attribute name="closeDate" type="String"/>
+    <aura:attribute name="minds" type="String"/>
+    <aura:attribute name="firstCsDate" type="String"/>
+    <aura:attribute name="recordId" type="String"/>
+    <aura:attribute name="relatedListObj" type="Object"/>
+    <aura:attribute name="isOppFeatures" type="Boolean"/>
+    <aura:attribute name="isOppPtnrs" type="Boolean"/>
+    <aura:attribute name="isOppPrdcts" type="Boolean"/>
+    <aura:attribute name="isAttachment" type="Boolean"/>
+    <aura:attribute name="isInactiveOppProduct" type="Boolean"/>
+    <aura:attribute name="inactiveOppPartner" type="Boolean"/>
+    <aura:attribute name="myTeamMemdata" type="Object"/>
+    <aura:attribute name="myTeamMemcolumns" type="List"/>
+    <aura:attribute name="myInactivePrdctdata" type="Object"/>
+    <aura:attribute name="myInactivePrdctcolumns" type="List"/>
+    <aura:attribute name="myInaFeaturescolumns" type="List"/>
+    <aura:attribute name="myInaFeaturesdata" type="Object"/>
+    <aura:attribute name="myInacPartnercolumns" type="List"/>
+    <aura:attribute name="myInacPartnerdata" type="Object"/>
+    <aura:attribute name="onCheckOppFeatures" type="Boolean" default= "false"/>
+    <aura:attribute name="onCheckOppPtnrs" type="Boolean" default= "false"/>
+    <aura:attribute name="onCheckOppPrdcts" type="Boolean" default= "false"/>
+    <aura:attribute name="onCheckAttachment" type="Boolean" default= "false"/>
+    <aura:attribute name="maxRowSelection" type="Integer" default="5"/>
+    
+    
+    <!--events-->
+    <aura:handler name="init" value="this" action="{!c.doInit}"/>
+    <center><h1><b>Clone Opportunity</b></h1></center>
+	
+    <lightning:card title="">
+        <lightning:accordion aura:id="accordion" activeSectionName="A">
+            <lightning:accordionSection name="A" label="Opportunity Clone Mandatory Field">
+            <lightning:recordEditForm objectApiName="Opportunity" >
+                <lightning:messages />
+                <lightning:inputField fieldName="Core_Solution_Area__c" value="{!v.solArea}"/>
+                <lightning:inputField fieldName="CloseDate" value="{!v.closeDate}"/>
+                <lightning:inputField fieldName="Core_First_Customer_Ship_Date__c" value="{!v.firstCsDate}"/>
+                <lightning:inputField fieldName="Core_Military_Aerospace_Govmt_End_Use__c" value="{!v.minds}"/>
+            </lightning:recordEditForm>
+            </lightning:accordionSection>
+    		<lightning:accordionSection name="B" label="CLONE Related Lists">
+                <aura:if isTrue="{!v.isOppFeatures}">
+                    <ui:inputCheckbox aura:id="checkboxFeatures" label="Opportunity Features" value="{!v.onCheckOppFeatures}"/>
+                </aura:if>
+                <aura:if isTrue="{!v.isOppPtnrs}">
+                    <ui:inputCheckbox aura:id="checkboxPtnrs" label="Opportunity Partners" value="{!v.onCheckOppPtnrs}"/>
+                </aura:if>
+                <aura:if isTrue="{!v.isOppPrdcts}">
+                    <ui:inputCheckbox aura:id="checkboxPrdcts" label="Opportunity Products" value="{!v.onCheckOppPrdcts}"/>
+                </aura:if>
+                <aura:if isTrue="{!v.isAttachment}">
+                    <ui:inputCheckbox aura:id="checkboxAttach" label="Notes and Attachment" value="{!v.onCheckAttachment}"/>
+                </aura:if>
+            </lightning:accordionSection>
+            <lightning:accordionSection name="C" label="CLONE Opportunity Team Members">
+                <div>
+                    <lightning:datatable
+                    columns="{! v.myTeamMemcolumns }"
+                    data="{! v.myTeamMemdata }"
+                    keyField="name"
+                    hideCheckboxColumn="true"/>
+                </div>
+            </lightning:accordionSection>
+            <lightning:accordionSection name="D" label="NOT COPIED - Inactive Opportunity Team Members">
+                <div>
+                    <lightning:datatable
+                    columns="{! v.myInacTeamMemcolumns }"
+                    data="{! v.myInacTeamMemdata }"
+                    keyField="name"
+                    hideCheckboxColumn="true"/>
+                </div>
+            </lightning:accordionSection>
+            <lightning:accordionSection name="E" label="NOT COPIED - Inactive Descriptive Features">
+                <div>
+                    <lightning:datatable
+                    columns="{! v.myInaFeaturescolumns }"
+                    data="{! v.myInaFeaturesdata }"
+                    keyField="name"
+                    hideCheckboxColumn="true"/>
+                </div>
+            </lightning:accordionSection>
+            <aura:if isTrue="{!v.inactiveOppPartner}">
+                <lightning:accordionSection name="F" label="NOT COPIED - Opportunity Partner (Vendor or Inactive)">
+                    <div>
+                        <lightning:datatable
+                        columns="{! v.myInacPartnercolumns }"
+                        data="{! v.myInacPartnerdata }"
+                        keyField="name"
+                        hideCheckboxColumn="true"/>
+                    </div>
+                </lightning:accordionSection>
+            </aura:if>
+            <aura:if isTrue="{!v.isInactiveOppProduct}">
+                <lightning:accordionSection name="G" label="NOT COPIED - Inactive Opportunity Products">
+                    <div>
+                        <lightning:datatable
+                        columns="{! v.myInactivePrdctcolumns }"
+                        data="{! v.myInactivePrdctdata }"
+                        keyField="name"
+                        hideCheckboxColumn="true"/>
+                    </div>
+                </lightning:accordionSection>
+            </aura:if>
+        </lightning:accordion>
+        <lightning:button variant="brand" label="Clone" onclick="{! c.cloneOpp }" />
+        <lightning:spinner aura:id="mySpinner" alternativeText="Processing.." title="Processing.." variant="brand" class="slds-hide"/>
+    </lightning:card>
+        
+    
+</aura:component>

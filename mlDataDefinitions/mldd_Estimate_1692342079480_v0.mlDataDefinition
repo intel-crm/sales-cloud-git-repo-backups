@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MLDataDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
+    <developerName>mldd_Estimate_1692342079480_v0</developerName>
+    <entityDeveloperName>SBQQ__QuoteLine__c</entityDeveloperName>
+    <parentDefinitionDevName>mlpd_Estimate_1692342057379_v0</parentDefinitionDevName>
+    <segmentFilter>
+        <filterName>7f5d7008-5b24-4e24-ab2f-ff9af15a7037</filterName>
+        <lhFilter>
+            <filterName>3e7643f3-b83e-454e-abeb-0314722f6561</filterName>
+            <lhPredictionField>SBQQ__QuoteLine__c.Pricing_Last_Submitted_Date_dt__c</lhPredictionField>
+            <operation>GreaterThanOrEqual</operation>
+            <rhFilter>
+                <filterName>6cdcd87f-5c45-4c8f-859e-bc42b1728f2e</filterName>
+                <lhType>DateTime</lhType>
+                <lhValue>Now</lhValue>
+                <operation>Subtract</operation>
+                <rhType>DateTime</rhType>
+                <rhUnit>Days</rhUnit>
+                <rhValue>180</rhValue>
+            </rhFilter>
+        </lhFilter>
+        <operation>And</operation>
+        <rhFilter>
+            <filterName>e1c10248-4d8b-4a19-b6c2-842a8a8bed4a</filterName>
+            <lhPredictionField>SBQQ__QuoteLine__c.Pricing_Status_Nm__c</lhPredictionField>
+            <operation>Equals</operation>
+            <rhType>String</rhType>
+            <rhValue>Approved</rhValue>
+        </rhFilter>
+    </segmentFilter>
+    <type>Prediction</type>
+</MLDataDefinition>

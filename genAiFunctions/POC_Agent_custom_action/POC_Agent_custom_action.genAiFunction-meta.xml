@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiFunction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>This action gets Design-Deal Registration history records for a Design-Deal Registration record with a requested field</description>
+    <developerName>POC_Agent_custom_action</developerName>
+    <invocationTarget>POC_Agent_custom_action</invocationTarget>
+    <invocationTargetType>flow</invocationTargetType>
+    <isConfirmationRequired>false</isConfirmationRequired>
+    <isIncludeInProgressIndicator>false</isIncludeInProgressIndicator>
+    <masterLabel>POC Agent custom action</masterLabel>
+</GenAiFunction>

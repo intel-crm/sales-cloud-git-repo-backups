@@ -22,15 +22,15 @@
             </value>
         </inputParameters>
         <inputParameters>
-            <name>account</name>
+            <name>leads</name>
             <value>
-                <elementReference>GetAcctOpptyFromEmailAddr.account</elementReference>
+                <elementReference>GetContcLeadsFromEmailAddr.leads</elementReference>
             </value>
         </inputParameters>
         <inputParameters>
-            <name>opportunity</name>
+            <name>account</name>
             <value>
-                <elementReference>GetAcctOpptyFromEmailAddr.opportunity</elementReference>
+                <elementReference>GetAcctOpptyFromEmailAddr.account</elementReference>
             </value>
         </inputParameters>
         <inputParameters>
@@ -206,7 +206,7 @@
             <targetReference>GetUsersFromEmailAddresses</targetReference>
         </connector>
     </start>
-    <status>Active</status>
+    <status>Draft</status>
     <variables>
         <description>Stores the date and time the activity occurred and is passed into the flow.</description>
         <name>activityDate</name>
@@ -245,13 +245,6 @@
         <dataType>String</dataType>
         <isCollection>false</isCollection>
         <isInput>true</isInput>
-        <isOutput>false</isOutput>
-    </variables>
-    <variables>
-        <name>matchedRecords</name>
-        <dataType>String</dataType>
-        <isCollection>false</isCollection>
-        <isInput>false</isInput>
         <isOutput>false</isOutput>
     </variables>
     <variables>

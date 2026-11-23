@@ -40,10 +40,6 @@
         <plural>true</plural>
         <value>Anträge</value>
     </caseValues>
-    <fieldSets>
-        <label><!-- Claim Fields for AI PIC --></label>
-        <name>Core_MDF_Claim_Fields_For_AI_PIC</name>
-    </fieldSets>
     <fields>
         <caseValues>
             <caseType>Nominative</caseType>
@@ -139,30 +135,17 @@
         <name>partnerfundclaim_request</name>
     </fields>
     <fields>
-        <help>Dokumentation von Drittanbietern ist erforderlich, wenn der Wert ausgewählt ist</help>
-        <label>POP-Dokumente von Dritten erforderlich</label>
-        <name>Core_MDF_3rd_Party_POP_Doc_Required_Ind__c</name>
-    </fields>
-    <fields>
-        <label>Wachstum bei ASP (USD)</label>
-        <name>Core_MDF_ASP_Growth_amt__c</name>
-    </fields>
-    <fields>
-        <help>Das Unternehmen, auf das sich der Antrag bezieht</help>
+        <help>Die Firma, auf die sich der Antrag bezieht</help>
         <label>Konto (Firma)</label>
         <name>Core_MDF_AccountCompany__c</name>
     </fields>
     <fields>
-        <label><!-- Account Name --></label>
-        <name>Core_MDF_Account_Name_nm__c</name>
-    </fields>
-    <fields>
-        <help>Die Kategorie für diese Co-Marketing-Aktivität</help>
+        <help>Die Kategorie für diese Werbemaßnahme</help>
         <label>Aktionskategorie</label>
         <name>Core_MDF_Activity_Category__c</name>
     </fields>
     <fields>
-        <help>Enddatum der Co-Marketing-Aktivität</help>
+        <help>Abschlussdatum der Werbemaßnahme</help>
         <label>Abschlussdatum der Werbemaßnahme</label>
         <name>Core_MDF_Activity_End_Date__c</name>
     </fields>
@@ -175,82 +158,24 @@
         <name>Core_MDF_Activity_Prior_to_Occuring_Nbr__c</name>
     </fields>
     <fields>
-        <help>Startdatum der Co-Marketing-Aktivität</help>
+        <help>Beginn der Werbemaßnahme</help>
         <label>Beginn der Werbemaßnahme</label>
         <name>Core_MDF_Activity_Start_Date__c</name>
     </fields>
     <fields>
-        <label><!-- Activity Status --></label>
-        <name>Core_MDF_Activity_Status_nm__c</name>
-    </fields>
-    <fields>
-        <help>Subtyp, auf den sich die Co-Marketing-Aktivität bezieht</help>
-        <label>Untergruppe der Werbemaßnahme</label>
-        <name>Core_MDF_Activity_SubType_nm__c</name>
-    </fields>
-    <fields>
-        <help>Der Typ, dem die Co-Marketing-Aktivität zuzuordnen ist</help>
+        <help>Der Typ, dem die Werbemaßnahme zuzuordnen ist</help>
         <label>Art der Marketingaktivität</label>
         <name>Core_MDF_Activity_Types__c</name>
     </fields>
     <fields>
-        <help>Enddatum der Ausführung</help>
-        <label>Enddatum der Ausführung</label>
+        <help>Das Datum des Endes der Werbeschaltung</help>
+        <label>Enddatum der Werbeschaltung</label>
         <name>Core_MDF_Ad_Run_End_Date__c</name>
     </fields>
     <fields>
-        <help>Startdatum der Ausführung</help>
-        <label>Startdatum der Ausführung</label>
+        <help>Das Datum des Beginns der Werbeschaltung</help>
+        <label>Beginn der Werbeschaltung</label>
         <name>Core_MDF_Ad_Run_Start_Date__c</name>
-    </fields>
-    <fields>
-        <label><!-- Amount Percentage --></label>
-        <name>Core_MDF_Amount_Percentage__c</name>
-    </fields>
-    <fields>
-        <help>Anzuwendender MwSt.-Prozentsatz</help>
-        <label>Anzuwendender MwSt.-Prozentsatz</label>
-        <name>Core_MDF_Applicable_VAT_Percentage_nm__c</name>
-        <picklistValues>
-            <masterLabel>0%</masterLabel>
-            <translation><!-- 0% --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>10%</masterLabel>
-            <translation><!-- 10% --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>20%</masterLabel>
-            <translation><!-- 20% --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>21%</masterLabel>
-            <translation><!-- 21% --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>8%</masterLabel>
-            <translation><!-- 8% --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
-        <label><!-- Approval Stage --></label>
-        <name>Core_MDF_Approval_Stage_nm__c</name>
-        <picklistValues>
-            <masterLabel>Account Manager</masterLabel>
-            <translation><!-- Account Manager --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Technical Approver</masterLabel>
-            <translation><!-- Technical Approver --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
-        <label><!-- Approval Step Counter --></label>
-        <name>Core_MDF_Approval_Step_Counter_nbr__c</name>
-    </fields>
-    <fields>
-        <label><!-- Audit check completed --></label>
-        <name>Core_MDF_Aud_chk_completed_Ind__c</name>
     </fields>
     <fields>
         <label><!-- Review Check InProgress --></label>
@@ -262,7 +187,6 @@
         <name>Core_MDF_Audit_Adjustment_Amount__c</name>
     </fields>
     <fields>
-        <help>Ist markiert, wenn der Antrag für eine Überprüfung ausgewählt ist</help>
         <label>Zurückstellung wegen Prüfung</label>
         <name>Core_MDF_Audit_Hold__c</name>
     </fields>
@@ -270,36 +194,6 @@
         <help><!-- The type of audit process --></help>
         <label><!-- Review Type --></label>
         <name>Core_MDF_Audit_Type__c</name>
-    </fields>
-    <fields>
-        <label>Durchschnittliche Anzeigezeit (Sekunden)</label>
-        <name>Core_MDF_Average_View_Time_nbr__c</name>
-    </fields>
-    <fields>
-        <label>Durchschnittliche Seitenzeit (Sekunden)</label>
-        <name>Core_MDF_Average_time_on_Page_nbr__c</name>
-    </fields>
-    <fields>
-        <label><!-- Backend Review Selection Completed --></label>
-        <name>Core_MDF_BackendReviewSelection_Ind__c</name>
-    </fields>
-    <fields>
-        <label>Informationen zur Einrichtung der Bank</label>
-        <name>Core_MDF_BankSetUpInformation_txt__c</name>
-    </fields>
-    <fields>
-        <help>Um festzustellen, ob die Forderung für die Aufbewahrung von Bankdokumenten infrage kommt.</help>
-        <label><!-- Bank Document Hold Eligibility --></label>
-        <name>Core_MDF_Bank_Doc_Hold_Eligibility_Ind__c</name>
-    </fields>
-    <fields>
-        <help>Ist markiert, wenn das Land der ausgewählten Bank eines der RCIS-Länder ist und bei dem Antrag auf die Ausstellung der Bankdokumente für die Auszahlung gewartet wird</help>
-        <label>Bankdokument aufbewahren</label>
-        <name>Core_MDF_Bank_Doc_Hold_Ind__c</name>
-    </fields>
-    <fields>
-        <label><!-- Bank Legal Entity Code --></label>
-        <name>Core_MDF_Bank_Legal_Entity_Code_cd__c</name>
     </fields>
     <fields>
         <help>Der Aliasname der Bank, an welche die Zahlung für den Antrag erfolgen soll</help>
@@ -312,41 +206,19 @@
         <name>Core_MDF_Batch_Nbr__c</name>
     </fields>
     <fields>
-        <help>Die Marke Intel wird vermarktet</help>
+        <help>Welche Intel-Markenbezeichnung vermarktet wird</help>
         <label>Markenbezeichnung</label>
         <name>Core_MDF_Brand__c</name>
     </fields>
     <fields>
-        <label>Markenbezeichnung</label>
-        <name>Core_MDF_Brand_nm__c</name>
-    </fields>
-    <fields>
-        <help>Art des Budgets</help>
-        <label>Budgettyp</label>
+        <help><!-- Please Select Budget type Field On Activity --></help>
+        <label><!-- Budget Type --></label>
         <name>Core_MDF_Budget_Type_Nm__c</name>
     </fields>
     <fields>
-        <help>Budgettyp der Co-Marketing-Aktivität</help>
-        <label>Budgettyp</label>
-        <name>Core_MDF_Budget_Type_Options_Nm__c</name>
-    </fields>
-    <fields>
-        <label><!-- Claim Review Result Positive Indicator --></label>
-        <name>Core_MDF_CRR_Positive_Ind__c</name>
-    </fields>
-    <fields>
-        <label><!-- CSP Intel-Based Revenue --></label>
-        <name>Core_MDF_CSP_Intel_Based_Revenue_Amt__c</name>
-    </fields>
-    <fields>
-        <label><!-- C Type Indicator --></label>
-        <name>Core_MDF_C_Type_Ind__c</name>
-    </fields>
-    <fields>
-        <help>Zeigt die Kampagne an, der dieser Anspruch zugeordnet ist.</help>
-        <label>Kampagne</label>
+        <label><!-- Campaign --></label>
         <name>Core_MDF_Campaign_Id__c</name>
-        <relationshipLabel><!-- Claims --></relationshipLabel>
+        <relationshipLabel><!-- Partner Fund Claims --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- Cap Type --></label>
@@ -361,10 +233,6 @@
         </picklistValues>
     </fields>
     <fields>
-        <label><!-- Claim Approval Date --></label>
-        <name>Core_MDF_Claim_Approval_Dt__c</name>
-    </fields>
-    <fields>
         <label><!-- Claim Batch Stage --></label>
         <name>Core_MDF_Claim_Batch_Stage__c</name>
         <relationshipLabel><!-- Claims --></relationshipLabel>
@@ -373,27 +241,6 @@
         <help>Wahlfreier Text für den Knoten, auf den sich der Antrag bezieht</help>
         <label>Kommentare zum Antrag</label>
         <name>Core_MDF_Claim_Comments__c</name>
-    </fields>
-    <fields>
-        <label><!-- Claim Creation Duration (Mins) --></label>
-        <name>Core_MDF_Claim_Creation_Dur_Min_nbr__c</name>
-    </fields>
-    <fields>
-        <label><!-- Claim Creation Duration --></label>
-        <name>Core_MDF_Claim_Creation_Duration_txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Claim evaluation in progress --></label>
-        <name>Core_MDF_Claim_EvalInProgress_Ind__c</name>
-    </fields>
-    <fields>
-        <label>Art(en) der Forderungshaltung</label>
-        <name>Core_MDF_Claim_Hold_Type_txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Super Claim --></label>
-        <name>Core_MDF_Claim_Id__c</name>
-        <relationshipLabel><!-- Claims --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- Claim Previous Status --></label>
@@ -415,76 +262,24 @@
             <translation><!-- Denied --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Draft</masterLabel>
-            <translation><!-- Draft --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Hold</masterLabel>
             <translation><!-- Hold --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>PIC Pending</masterLabel>
-            <translation><!-- PIC Pending --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Paid</masterLabel>
             <translation><!-- Paid --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Paid and PIC Pending</masterLabel>
-            <translation><!-- Paid and PIC Pending --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Paid and Pending Documents</masterLabel>
-            <translation><!-- Paid and Pending Documents --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Paid and Resubmission Required</masterLabel>
-            <translation><!-- Paid and Resubmission Required --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Payment Clearance Processing</masterLabel>
-            <translation><!-- Payment Clearance Processing --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Payment Due</masterLabel>
             <translation><!-- Payment Due --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Pending Account Manager Clarification</masterLabel>
-            <translation><!-- Pending Account Manager Clarification --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Pending Available Funds</masterLabel>
             <translation>Warten auf verfügbare Geldmittel</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Pending Clarification</masterLabel>
-            <translation><!-- Pending Clarification --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Pending Documents</masterLabel>
-            <translation><!-- Pending Documents --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Pending Payment</masterLabel>
             <translation><!-- Pending Payment --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Pending Review</masterLabel>
-            <translation><!-- Pending Review --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Queued for Payment</masterLabel>
-            <translation><!-- Queued for Payment --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Resubmission Required</masterLabel>
-            <translation><!-- Resubmission Required --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Resubmission Window Closed</masterLabel>
-            <translation><!-- Resubmission Window Closed --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Submitted</masterLabel>
@@ -502,25 +297,12 @@
         <relationshipLabel><!-- Partner Fund Claims --></relationshipLabel>
     </fields>
     <fields>
-        <label><!-- Claim Submitter --></label>
-        <name>Core_MDF_Claim_Submitter_Id__c</name>
-        <relationshipLabel><!-- Claims (Claim Submitter) --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Comments (Approver only) --></label>
-        <name>Core_MDF_Comments_Appvr_Only_txt__c</name>
-    </fields>
-    <fields>
-        <label>Kosten pro Lead (USD)</label>
-        <name>Core_MDF_Cost_Per_Lead_amt__c</name>
-    </fields>
-    <fields>
-        <help>Das Land, in dem die Co-Marketing-Aktivität stattgefunden hat</help>
+        <help>Das Land, in dem die Werbeschaltung erfolgte</help>
         <label>Land/Region</label>
         <name>Core_MDF_Country_Location__c</name>
     </fields>
     <fields>
-        <help>Das Land, in dem die Co-Marketing-Aktivität stattgefunden hat</help>
+        <help><!-- The Country in which the ad took place --></help>
         <label>Land/Region</label>
         <name>Core_MDF_Country_Location_nm__c</name>
     </fields>
@@ -529,7 +311,6 @@
         <name>Core_MDF_CreatedBy_Nm__c</name>
     </fields>
     <fields>
-        <help>Aktiviert, wenn der Antrag für die zurückgestellten Kriterien anwendbar ist</help>
         <label>Zurückstellung durch Intel</label>
         <name>Core_MDF_Criteria_Hold_Ind__c</name>
     </fields>
@@ -543,57 +324,9 @@
         <name>Core_MDF_Criteria_Hold_Ref_No_Txt__c</name>
     </fields>
     <fields>
-        <help>Die Währung auf dem POC-Dokument, wofür der erstattungsfähige Betrag beantragt wird</help>
-        <label>Nachweis der Kostenwährung</label>
+        <help>Die Währung der Transaktion/Rechnung</help>
+        <label>Währung der Rechnung/Quittung</label>
         <name>Core_MDF_Currency__c</name>
-    </fields>
-    <fields>
-        <label>Anzahl der Installationen</label>
-        <name>Core_MDF_Deployment_Quantity_nbr__c</name>
-    </fields>
-    <fields>
-        <label>Verteilung</label>
-        <name>Core_MDF_Distribution_txt__c</name>
-        <picklistValues>
-            <masterLabel>In-store</masterLabel>
-            <translation><!-- In-store --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Newspaper insert</masterLabel>
-            <translation><!-- Newspaper insert --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
-        <help><!-- Last Date for Document Submission --></help>
-        <label><!-- Doc Sub Due Date --></label>
-        <name>Core_MDF_Doc_Hold_Doc_Sub_Due_Date_Dtm__c</name>
-    </fields>
-    <fields>
-        <label><!-- Doc Hold to Review Hold --></label>
-        <name>Core_MDF_Doc_Hold_to_Review_Hold_Ind__c</name>
-    </fields>
-    <fields>
-        <label><!-- Document Hold Eligibility --></label>
-        <name>Core_MDF_Document_Hold_Eligibility_Ind__c</name>
-    </fields>
-    <fields>
-        <help>Ist markiert, wenn der Antrag für die Vorlage von Leistungsnachweisen ausgewählt ist und das Hochladen eines Dokuments durch den Kunden erwartet wird</help>
-        <label>Zurückstellung wegen fehlendem Dokument</label>
-        <name>Core_MDF_Document_Hold_Ind__c</name>
-    </fields>
-    <fields>
-        <help>Wenn die Dokumente bis zu diesem Datum nicht eingegangen und bestätigt sind, wird der Antrag nicht für Zahlungen bearbeitet.</help>
-        <label>Termin zum Einreichen der Unterlagen</label>
-        <name>Core_MDF_Document_Submission_DueDate_dtm__c</name>
-    </fields>
-    <fields>
-        <label><!-- Document Submission Missed --></label>
-        <name>Core_MDF_Document_Submission_Missed_Ind__c</name>
-    </fields>
-    <fields>
-        <help>Anzahl der Tage, wann das Fenster für den Antrag geschlossen wird.</help>
-        <label>Tage bis Schließung des Antragsfensters</label>
-        <name>Core_MDF_Due_Date_nbr__c</name>
     </fields>
     <fields>
         <label>Antragsduplikat</label>
@@ -601,35 +334,17 @@
     </fields>
     <fields>
         <label>EFT-Nummer</label>
-        <name>Core_MDF_EFT_Number_txt__c</name>
+        <name>Core_MDF_EFT_Nbr__c</name>
     </fields>
     <fields>
-        <help>Ist markiert, wenn der ESD-Zurückstellungsindikator der Bank aktiv ist</help>
         <label>Bank/ESD-Zurückstellung</label>
         <name>Core_MDF_ESD_Hold__c</name>
     </fields>
     <fields>
-        <label><!-- Eligible for PIC --></label>
-        <name>Core_MDF_Eligible_for_PIC__c</name>
-    </fields>
-    <fields>
-        <label><!-- End Time --></label>
-        <name>Core_MDF_EndTime_dtm__c</name>
-    </fields>
-    <fields>
-        <help>Eskalations-ID für diesen Antrag suchen (falls zutreffend)</help>
-        <label>Escalation-ID</label>
+        <help><!-- Lookup the Escalation ID related to this Claim if applicable --></help>
+        <label><!-- Escalation ID --></label>
         <name>Core_MDF_Escalation_Id__c</name>
         <relationshipLabel><!-- Partner Fund Claims --></relationshipLabel>
-    </fields>
-    <fields>
-        <label>Geschätzte Anzeigengröße</label>
-        <name>Core_MDF_Estimated_Ad_Size_nbr__c</name>
-    </fields>
-    <fields>
-        <help>Der Betrag, der vom beantragten Betrag abgezogen wird, wenn er das Aktivitätsausgabelimit überschreitet. Dies wirkt sich auf den Kostenerstattungsbetrag (USD) aus.</help>
-        <label>Überschüssiger Betrag (USD)</label>
-        <name>Core_MDF_Excess_Requested_Amount__c</name>
     </fields>
     <fields>
         <help>Für den Antrag verwendeter Wechselkurs, basierend auf dem Datum, an dem der Antrag eingereicht wird</help>
@@ -641,46 +356,21 @@
         <name>Core_MDF_FlaggedForAudit__c</name>
     </fields>
     <fields>
-        <label><!-- Flagged For Bank Document Hold --></label>
-        <name>Core_MDF_FlaggedForBankDocHold_Ind__c</name>
-    </fields>
-    <fields>
-        <label>Frequenz</label>
-        <name>Core_MDF_Frequency_txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Has Sub Claims --></label>
-        <name>Core_MDF_Has_Sub_Claims_Ind__c</name>
-    </fields>
-    <fields>
-        <label>Wie viele Bildschirme</label>
-        <name>Core_MDF_How_many_screens_nbr__c</name>
-    </fields>
-    <fields>
         <label>Intels Bem. zur man. Zurückstellung</label>
         <name>Core_MDF_Intel_Manual_Hold_Comments_Txt__c</name>
     </fields>
     <fields>
-        <help>Ist markiert, wenn ein interner Benutzer den Antrag zurückstellt</help>
         <label>Manuelle Zurückstellung durch Intel</label>
         <name>Core_MDF_Intel_Manual_Hold_Ind__c</name>
     </fields>
     <fields>
-        <label>Anzahl der Intel Speakerhips/Sitzungen</label>
-        <name>Core_MDF_Intel_Speakerships_Sessions_nbr__c</name>
-    </fields>
-    <fields>
-        <label><!-- Intel Verifier --></label>
-        <name>Core_MDF_Intel_Verifier_Id__c</name>
-    </fields>
-    <fields>
         <help>Das Datum auf dem POC-Dokument, wofür der erstattungsfähige Betrag beantragt wird</help>
-        <label>Datum des Kostennachweises</label>
+        <label>Datum der Rechnung/Quittung</label>
         <name>Core_MDF_Invoice_Date__c</name>
     </fields>
     <fields>
-        <help>Die Nummer auf dem POC-Dokument, für das der erstattungsfähige Betrag beantragt wird</help>
-        <label>Kostennachweisnummer</label>
+        <help>Die Nummer der Transaktion/Rechnung, auf die sich der Antrag bezieht</help>
+        <label>Rechnungs-/Quittungsnummer</label>
         <name>Core_MDF_Invoice_Number__c</name>
     </fields>
     <fields>
@@ -692,60 +382,7 @@
         <name>Core_MDF_Last_ModifiedBy_Nm__c</name>
     </fields>
     <fields>
-        <label>Letztes Wiederherstellungsdatum</label>
-        <name>Core_MDF_Last_Recovery_Dt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Last Reviewed By --></label>
-        <name>Core_MDF_Last_Reviewed_By_id__c</name>
-        <relationshipLabel><!-- Claims (Last Reviewed By) --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Latest Review Cycle Number --></label>
-        <name>Core_MDF_Latest_Review_Cycle_Number_nbr__c</name>
-    </fields>
-    <fields>
-        <label>Anzahl der Leads</label>
-        <name>Core_MDF_Lead_Quantity_nbr__c</name>
-    </fields>
-    <fields>
-        <label><!-- Legacy Claim --></label>
-        <name>Core_MDF_Legacy_Claim_Ind__c</name>
-    </fields>
-    <fields>
-        <label><!-- Legacy Reminder --></label>
-        <name>Core_MDF_Legacy_Reminder_txt__c</name>
-        <picklistValues>
-            <masterLabel>Maximum Attempts Reached</masterLabel>
-            <translation><!-- Maximum Attempts Reached --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Reminder 1</masterLabel>
-            <translation><!-- Reminder 1 --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Reminder 2</masterLabel>
-            <translation><!-- Reminder 2 --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Reminder 3</masterLabel>
-            <translation><!-- Reminder 3 --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
-        <label><!-- Log Info --></label>
-        <name>Core_MDF_Log_Info_txt__c</name>
-    </fields>
-    <fields>
-        <label>Zeitschrift/Zeitung</label>
-        <name>Core_MDF_Magazine_Newspaper_txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Manual Audit Staging --></label>
-        <name>Core_MDF_Manaul_Audit_Staging_Ind__c</name>
-    </fields>
-    <fields>
-        <help>Das für die Co-Marketing-Aktivität verwendete Medienvehikel</help>
+        <help>Der für die Werbeschaltung verwendete Werbeträger, Beispiel: „Time Magazine“</help>
         <label>Werbeträger</label>
         <name>Core_MDF_Media_Vehicle__c</name>
     </fields>
@@ -754,234 +391,32 @@
         <name>Core_MDF_Member_Manual_Hold_Comments_Txt__c</name>
     </fields>
     <fields>
-        <help>Ist markiert, wenn der Programmteilnehmer den Antrag zurückstellt</help>
         <label>Zurückstellung durch Programmteilnehmer</label>
         <name>Core_MDF_Member_Manual_Hold_Ind__c</name>
     </fields>
     <fields>
-        <label>Bewertungskriterien</label>
+        <label><!-- Metrics --></label>
         <name>Core_MDF_Metrics_txt__c</name>
     </fields>
     <fields>
-        <help>Geben Sie die Anzahl der Engagements in Bezug auf den Antrag ein.</help>
+        <help><!-- Enter the number of Engagements related to the claim. --></help>
         <label>Anz. der Kontakte/Bindungen</label>
         <name>Core_MDF_NoOfEngagements_Nbr__c</name>
     </fields>
     <fields>
-        <help>Geben Sie die Anzahl der AdImpressions (Einblendungen) in Bezug auf den Antrag ein. Bei Werbespots im Fernsehen gibt die Anzahl der AdImpressions zum Beispiel an, wie oft die Werbung gesendet wurde.</help>
+        <help><!-- Enter the number of impressions related to the claim. For example, Broadcast - Television the # of impressions should reflect the number of times the ad aired. --></help>
         <label>Anzahl der AdImpressions (Einblendungen)</label>
         <name>Core_MDF_NoOfImpressions_Nbr__c</name>
     </fields>
     <fields>
-        <help>Geben Sie die Anzahl der Leads (Interessenten) in Bezug auf den Antrag ein.</help>
+        <help><!-- Enter the Number of leads related to claim. --></help>
         <label>Anz. der Interessenten</label>
         <name>Core_MDF_NoOfLeads_Nbr__c</name>
     </fields>
     <fields>
-        <help>Geben Sie die Anzahl der Probeaktivierungen in Bezug auf den Antrag ein.</help>
+        <help><!-- Enter Number of Trial Activations related to the claim. --></help>
         <label>Anz. der Probeaktivierungen</label>
         <name>Core_MDF_NoOfTrialActivations_Nbr__c</name>
-    </fields>
-    <fields>
-        <label>Anz. dedizierter Ressourcen</label>
-        <name>Core_MDF_No_Dedicated_Resources_nbr__c</name>
-    </fields>
-    <fields>
-        <label>Anzahl der aktivierten Instanzen</label>
-        <name>Core_MDF_No_of_ActivatedInstance_nbr__c</name>
-    </fields>
-    <fields>
-        <label>Anzahl der Anrufe</label>
-        <name>Core_MDF_No_of_Calls_nbr__c</name>
-    </fields>
-    <fields>
-        <label>Anzahl der erreichten Kontakte</label>
-        <name>Core_MDF_No_of_Contacts_Reached_nbr__c</name>
-    </fields>
-    <fields>
-        <label>Anzahl der Konvertierungen</label>
-        <name>Core_MDF_No_of_Conversions_nbr__c</name>
-    </fields>
-    <fields>
-        <label>Anzahl der Tage</label>
-        <name>Core_MDF_No_of_Days_nbr__c</name>
-    </fields>
-    <fields>
-        <label>Anzahl der registrierten Angebote</label>
-        <name>Core_MDF_No_of_Deals_Registered_nbr__c</name>
-    </fields>
-    <fields>
-        <label># des dedizierten Personals</label>
-        <name>Core_MDF_No_of_Dedicated_Personnel_nbr__c</name>
-    </fields>
-    <fields>
-        <label>Anzahl der Einsätze</label>
-        <name>Core_MDF_No_of_Deployments_nbr__c</name>
-    </fields>
-    <fields>
-        <label>Anzahl der Design-Gewinne</label>
-        <name>Core_MDF_No_of_Design_Wins_nbr__c</name>
-    </fields>
-    <fields>
-        <label># der Downloads</label>
-        <name>Core_MDF_No_of_Downloads_nbr__c</name>
-    </fields>
-    <fields>
-        <label><!-- # of Emails Opened --></label>
-        <name>Core_MDF_No_of_Emails_Opened_nbr__c</name>
-    </fields>
-    <fields>
-        <label><!-- # of End caps --></label>
-        <name>Core_MDF_No_of_End_caps_Nbr__c</name>
-    </fields>
-    <fields>
-        <label>Anzahl der erwarteten Teilnehmer</label>
-        <name>Core_MDF_No_of_Expected_Participants_nbr__c</name>
-    </fields>
-    <fields>
-        <label># der trainierten Personen</label>
-        <name>Core_MDF_No_of_Individuals_Trained_nbr__c</name>
-    </fields>
-    <fields>
-        <label>Anzahl der Instanzen</label>
-        <name>Core_MDF_No_of_Instance_nbr__c</name>
-    </fields>
-    <fields>
-        <help><!-- Enter the number of Leads related to the Claim. --></help>
-        <label>Anz. der Interessenten</label>
-        <name>Core_MDF_No_of_Leads_nbr__c</name>
-    </fields>
-    <fields>
-        <label># der Seitenansichten</label>
-        <name>Core_MDF_No_of_Page_Views_nbr__c</name>
-    </fields>
-    <fields>
-        <label>Anzahl der Platzierungen</label>
-        <name>Core_MDF_No_of_Placements_nbr__c</name>
-    </fields>
-    <fields>
-        <label>Anzahl der Empfänger</label>
-        <name>Core_MDF_No_of_Recipients_nbr__c</name>
-    </fields>
-    <fields>
-        <label><!-- # of Risers --></label>
-        <name>Core_MDF_No_of_Risers_Nbr__c</name>
-    </fields>
-    <fields>
-        <label><!-- # of Signages --></label>
-        <name>Core_MDF_No_of_Signages_Nbr__c</name>
-    </fields>
-    <fields>
-        <label>Anzahl der Auszubildenden</label>
-        <name>Core_MDF_No_of_Trainees_nbr__c</name>
-    </fields>
-    <fields>
-        <label>Anzahl der abgeschlossenen Schulungen</label>
-        <name>Core_MDF_No_of_Trainings_Completed_nbr__c</name>
-    </fields>
-    <fields>
-        <label># der einzigartigen Zuhörer</label>
-        <name>Core_MDF_No_of_Unique_Listeners_nbr__c</name>
-    </fields>
-    <fields>
-        <label># der eindeutigen Besucher</label>
-        <name>Core_MDF_No_of_Unique_Visitors_nbr__c</name>
-    </fields>
-    <fields>
-        <label>Anzahl der verkauften Einheiten</label>
-        <name>Core_MDF_No_of_Units_Sold_nbr__c</name>
-    </fields>
-    <fields>
-        <label>Anzahl der Ansichten</label>
-        <name>Core_MDF_No_of_Views_nbr__c</name>
-    </fields>
-    <fields>
-        <label><!-- # of Visits --></label>
-        <name>Core_MDF_No_of_Visits_Nbr__c</name>
-    </fields>
-    <fields>
-        <label><!-- # of Zones --></label>
-        <name>Core_MDF_No_of_Zones_Nbr__c</name>
-    </fields>
-    <fields>
-        <label><!-- # of placemats --></label>
-        <name>Core_MDF_No_of_placemats_Nbr__c</name>
-    </fields>
-    <fields>
-        <label><!-- # of screens with IPOS --></label>
-        <name>Core_MDF_No_of_screens_with_IPOS_Nbr__c</name>
-    </fields>
-    <fields>
-        <label><!-- # of screens with connected IPOS --></label>
-        <name>Core_MDF_No_of_screens_with_con_IPOS_Nbr__c</name>
-    </fields>
-    <fields>
-        <label><!-- # of stores with video --></label>
-        <name>Core_MDF_No_of_stores_with_video_Nbr__c</name>
-    </fields>
-    <fields>
-        <label><!-- # of video impressions --></label>
-        <name>Core_MDF_No_of_video_impressions_Nbr__c</name>
-    </fields>
-    <fields>
-        <label>Anzahl der Gewinner</label>
-        <name>Core_MDF_Num_of_Potential_Winners_nbr__c</name>
-    </fields>
-    <fields>
-        <label><!-- Number of Recoveries --></label>
-        <name>Core_MDF_Number_Of_Recoveries_Nbr__c</name>
-    </fields>
-    <fields>
-        <label>Anz. verkauft</label>
-        <name>Core_MDF_Number_Sold_Nbr__c</name>
-    </fields>
-    <fields>
-        <label>Anz. Teilnehmer</label>
-        <name>Core_MDF_Number_of_Attendees_Nbr__c</name>
-    </fields>
-    <fields>
-        <label>Anz. Zirkulation</label>
-        <name>Core_MDF_Number_of_Circulation_nbr__c</name>
-    </fields>
-    <fields>
-        <label>Anz. Klicks</label>
-        <name>Core_MDF_Number_of_Clicks_nbr__c</name>
-    </fields>
-    <fields>
-        <label>Anz. geliefert</label>
-        <name>Core_MDF_Number_of_Delivered_nbr__c</name>
-    </fields>
-    <fields>
-        <label><!-- # of Distributed --></label>
-        <name>Core_MDF_Number_of_Distributed_Nbr__c</name>
-    </fields>
-    <fields>
-        <label><!-- # of Locations --></label>
-        <name>Core_MDF_Number_of_Locations_Nbr__c</name>
-    </fields>
-    <fields>
-        <label><!-- # of Promoter days --></label>
-        <name>Core_MDF_Number_of_Promoter_days_Nbr__c</name>
-    </fields>
-    <fields>
-        <label>Anz. RSPs</label>
-        <name>Core_MDF_Number_of_RSPs_nbr__c</name>
-    </fields>
-    <fields>
-        <label>Anz. Empfänger</label>
-        <name>Core_MDF_Number_of_Recipient_nbr__c</name>
-    </fields>
-    <fields>
-        <label><!-- # of Reviews/Ratings --></label>
-        <name>Core_MDF_Number_of_Reviews_nbr__c</name>
-    </fields>
-    <fields>
-        <label>Anzahl der Filialenstandorte</label>
-        <name>Core_MDF_Number_of_Stores_nbr__c</name>
-    </fields>
-    <fields>
-        <label>Öffnungsrate</label>
-        <name>Core_MDF_Open_Rate_txt__c</name>
     </fields>
     <fields>
         <help>Betrag der nicht erstattungsfähigen Kosten dieser Transaktion/Rechnung in der Transaktionswährung</help>
@@ -989,48 +424,14 @@
         <name>Core_MDF_OtherCostsnotReimbursable_Local__c</name>
     </fields>
     <fields>
-        <label>Anzahl Sonstiges</label>
-        <name>Core_MDF_Other_Quantity_nbr__c</name>
-    </fields>
-    <fields>
-        <help>Muss einen numerischen Wert eingeben, der eine messbare Metrik ist</help>
-        <label>Sonstige</label>
-        <name>Core_MDF_Others_txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Outcome Based Camp Ind --></label>
-        <name>Core_MDF_OutcomeBased_Ind__c</name>
-    </fields>
-    <fields>
         <label><!-- Language Locale Key --></label>
         <name>Core_MDF_Owner_LanguageLocaleKey_Cd__c</name>
-    </fields>
-    <fields>
-        <label><!-- Owner Language Locale Key --></label>
-        <name>Core_MDF_Owner_Language_Locale_Key_txt__c</name>
     </fields>
     <fields>
         <label>Inhaber</label>
         <name>Core_MDF_Owner_Nm__c</name>
     </fields>
     <fields>
-        <label><!-- Owner UserType --></label>
-        <name>Core_MDF_Owner_UserType_Txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- PIC Review Completed --></label>
-        <name>Core_MDF_PIC_Review_Completed__c</name>
-    </fields>
-    <fields>
-        <label><!-- Paid By Payment Type --></label>
-        <name>Core_MDF_Paid_By_Payment_Type_nm__c</name>
-    </fields>
-    <fields>
-        <label><!-- Payment Admin Reminder Date --></label>
-        <name>Core_MDF_Payment_Admin_Reminder_Date_Dtm__c</name>
-    </fields>
-    <fields>
-        <help>Ist markiert, wenn die Banktransaktion zurückgestellt ist</help>
         <label>Zurückstellung der Zahlung</label>
         <name>Core_MDF_Payment_Hold_ind__c</name>
     </fields>
@@ -1042,78 +443,6 @@
     <fields>
         <label>Zahlung erfolgte am</label>
         <name>Core_MDF_Payment_Made_Dt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Payment Rollback Reason --></label>
-        <name>Core_MDF_Payment_Rollback_Reason_nm__c</name>
-        <picklistValues>
-            <masterLabel>Business Request</masterLabel>
-            <translation><!-- Business Request --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Payment File Generation Issue</masterLabel>
-            <translation><!-- Payment File Generation Issue --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Payment Run Issue</masterLabel>
-            <translation><!-- Payment Run Issue --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
-        <label><!-- Payment Type --></label>
-        <name>Core_MDF_Payment_Type_nm__c</name>
-    </fields>
-    <fields>
-        <label>% der Intel Geräte</label>
-        <name>Core_MDF_Percentage_of_Intel_Devices_pct__c</name>
-        <picklistValues>
-            <masterLabel>100</masterLabel>
-            <translation><!-- 100 --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>50</masterLabel>
-            <translation><!-- 50 --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>55</masterLabel>
-            <translation><!-- 55 --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>60</masterLabel>
-            <translation><!-- 60 --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>65</masterLabel>
-            <translation><!-- 65 --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>70</masterLabel>
-            <translation><!-- 70 --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>75</masterLabel>
-            <translation><!-- 75 --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>80</masterLabel>
-            <translation><!-- 80 --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>85</masterLabel>
-            <translation><!-- 85 --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>90</masterLabel>
-            <translation><!-- 90 --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>95</masterLabel>
-            <translation><!-- 95 --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
-        <label>Platzierung</label>
-        <name>Core_MDF_Placement_txt__c</name>
     </fields>
     <fields>
         <label><!-- IdealModelResult --></label>
@@ -1156,53 +485,20 @@
         <name>Core_MDF_Predictive_Audit_Retries__c</name>
     </fields>
     <fields>
-        <help>Die Verarbeitungspräferenz gilt, wenn der Anspruch für die Back-End-Überprüfung ausgewählt ist. 
-Bezahlt werden, dann abrechnen – Am besten für die Beschleunigung des Cashflows; Priorisiert Time-to-Money und lässt die Tür für eine mögliche zukünftige Erholung offen. 
-Begleichen, dann bezahlt werden – Am besten zur Minimierung der Rückforderung nach der Zahlung; Priorisiert die endgültige Lösung vor der Zahlung, reduziert das Risiko einer zukünftigen Wiederherstellung.</help>
-        <label>Verarbeitungspräferenz</label>
-        <name>Core_MDF_Processing_Preference_nm__c</name>
-        <picklistValues>
-            <masterLabel>Get paid, then settle</masterLabel>
-            <translation>Bezahlt werden, dann abrechnen</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Settle, then get paid</masterLabel>
-            <translation>Begleichen, dann bezahlt werden</translation>
-        </picklistValues>
-    </fields>
-    <fields>
-        <help>Das Programm, auf das sich der Anspruch bezieht.</help>
+        <help>Das Programm, dem dieser Antrag zuzurechnen ist (CCF/DCF)</help>
         <label>Programm</label>
         <name>Core_MDF_Program__c</name>
-    </fields>
-    <fields>
-        <label><!-- Proposal Based Ind --></label>
-        <name>Core_MDF_Proposal_Based_Ind__c</name>
     </fields>
     <fields>
         <label><!-- Quantity of (Impressions, instances) --></label>
         <name>Core_MDF_Quantity_of_Impression__c</name>
     </fields>
     <fields>
-        <help>Geben Sie die Anzahl vom Beginn der Werbekampagne bis jetzt ein, auch wenn sie 0 ist oder sich seit der letzten Meldung nicht geändert hat.</help>
-        <label>Anzahl bis heute</label>
-        <name>Core_MDF_Quantity_to_Date_Nbr__c</name>
-    </fields>
-    <fields>
-        <label><!-- Quarter Number and Year --></label>
-        <name>Core_MDF_Quarter_Year_Txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Queued Hold Email Sent --></label>
-        <name>Core_MDF_Queued_Email_Sent_Ind__c</name>
-    </fields>
-    <fields>
         <label><!-- Claim Approval Date --></label>
         <name>Core_MDF_RMF_Claim_Approval_Dt__c</name>
     </fields>
     <fields>
-        <help>Ist markiert, wenn für den Antrag eine manuelle Zurückstellung durch Intel oder eine Zurückstellung durch Intel gilt</help>
-        <label>Zurückstellung durch Intel</label>
+        <label><!-- Intel Hold --></label>
         <name>Core_MDF_RMF_Intel_Hold_Ind__c</name>
     </fields>
     <fields>
@@ -1210,19 +506,7 @@ Begleichen, dann bezahlt werden – Am besten zur Minimierung der Rückforderung
         <name>Core_MDF_RMF_Last_POP_Submission_Dt__c</name>
     </fields>
     <fields>
-        <label><!-- Internal Comments --></label>
-        <name>Core_MDF_RecentInternalComments_txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Recommend for Claim Review? --></label>
-        <name>Core_MDF_Recommend_For_ClaimReview__c</name>
-    </fields>
-    <fields>
-        <label>Zur Wiederherstellung halten</label>
-        <name>Core_MDF_Recovery_Hold_Ind__c</name>
-    </fields>
-    <fields>
-        <help>Land/Region Name</help>
+        <help><!-- Region Name --></help>
         <label><!-- Region --></label>
         <name>Core_MDF_Region_Cd__c</name>
     </fields>
@@ -1242,33 +526,9 @@ Begleichen, dann bezahlt werden – Am besten zur Minimierung der Rückforderung
         <name>Core_MDF_Reimbursement_Percent__c</name>
     </fields>
     <fields>
-        <label><!-- Reprocess Claim --></label>
-        <name>Core_MDF_Reprocess_Claim__c</name>
-    </fields>
-    <fields>
         <help>Der für die Kostenerstattung beantragte Betrag nach Anrechnung des Kostenerstattungsanteils</help>
         <label>Beantragter Betrag (USD)</label>
         <name>Core_MDF_Requested_Reimbursement_Amt__c</name>
-    </fields>
-    <fields>
-        <label>Umsatz der verkauften Einheiten (USD)</label>
-        <name>Core_MDF_Revenue_of_Units_Sold_amt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Review Hold Rule --></label>
-        <name>Core_MDF_Review_Hold_Rule_Nm__c</name>
-    </fields>
-    <fields>
-        <label>Läufe pro Stunde</label>
-        <name>Core_MDF_Runs_per_hour_nbr__c</name>
-    </fields>
-    <fields>
-        <label>Anzahl der Social-Media-Likes/Shares</label>
-        <name>Core_MDF_Social_Media_Engagements_nbr__c</name>
-    </fields>
-    <fields>
-        <label><!-- Start Time --></label>
-        <name>Core_MDF_StartTime_dtm__c</name>
     </fields>
     <fields>
         <help>Der Status des Antrags</help>
@@ -1291,84 +551,28 @@ Begleichen, dann bezahlt werden – Am besten zur Minimierung der Rückforderung
             <translation>Abgelehnt</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Draft</masterLabel>
-            <translation>Entwurf</translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Hold</masterLabel>
             <translation>Zurückgestellt</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>PIC Pending</masterLabel>
-            <translation>PIC steht aus</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Paid</masterLabel>
             <translation>Bezahlt</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Paid and PIC Pending</masterLabel>
-            <translation>Bezahlt und PIC steht aus</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Paid and Pending Documents</masterLabel>
-            <translation>Bezahlt und ausstehende Dokumente</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Paid and Resubmission Required</masterLabel>
-            <translation>Bezahlt und erneute Einreichung erforderlich</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Payment Clearance Processing</masterLabel>
-            <translation>Verarbeitung der Zahlungsfreigabe</translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Payment Due</masterLabel>
             <translation>Fällige Zahlung</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Pending Account Manager Clarification</masterLabel>
-            <translation>Ausstehende Klärung des Account Managers</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Pending Available Funds</masterLabel>
             <translation>Warten auf verfügbare Geldmittel</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Pending Clarification</masterLabel>
-            <translation>Ausstehende Klärung</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Pending Documents</masterLabel>
-            <translation>Unterlagen fehlen noch</translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Pending Payment</masterLabel>
             <translation>Zahlung noch nicht erfolgt</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Pending Review</masterLabel>
-            <translation>Prüfung noch nicht erfolgt</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Queued for Payment</masterLabel>
-            <translation><!-- Queued for Payment --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Resubmission Required</masterLabel>
-            <translation>Erneute Einreichung erforderlich</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Resubmission Window Closed</masterLabel>
-            <translation>Fenster für erneute Einreichung geschlossen</translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Submitted</masterLabel>
             <translation>Eingereicht</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Void</masterLabel>
-            <translation><!-- Void --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -1377,23 +581,7 @@ Begleichen, dann bezahlt werden – Am besten zur Minimierung der Rückforderung
         <name>Core_MDF_Sub_Region_Cd__c</name>
     </fields>
     <fields>
-        <label><!-- Approval Alert --></label>
-        <name>Core_MDF_Submit_For_Approval_Alert_txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Super Claim Status --></label>
-        <name>Core_MDF_Super_Claim_Status_nm__c</name>
-    </fields>
-    <fields>
-        <label><!-- SurePay Processed Ind --></label>
-        <name>Core_MDF_SurePay_Processed_Ind__c</name>
-    </fields>
-    <fields>
-        <label>TV-Kanal/Kanäle</label>
-        <name>Core_MDF_TV_Channel_s_txt__c</name>
-    </fields>
-    <fields>
-        <help>Das Publikum, für das die Co-Marketing-Aktivität vorgesehen ist</help>
+        <help>Das Publikum, für das die Werbemaßnahme vorgesehen ist</help>
         <label>Zielpublikum</label>
         <name>Core_MDF_Target_Audience__c</name>
     </fields>
@@ -1403,37 +591,19 @@ Begleichen, dann bezahlt werden – Am besten zur Minimierung der Rückforderung
         <name>Core_MDF_Taxes_Local__c</name>
     </fields>
     <fields>
-        <label>Video auf maximale Dauer einstellen</label>
-        <name>Core_MDF_Time_video_to_last_txt__c</name>
-    </fields>
-    <fields>
         <help><!-- Check the box for claim to go straight to pay. Uncheck the box to determine if the claim should be audited. --></help>
         <label><!-- Straight to Pay --></label>
         <name>Core_MDF_To_Be_Audited_Ind__c</name>
     </fields>
     <fields>
-        <help>Betrag (USD), der den &apos;Angeforderten Betrag (USD)&apos; aufgrund von Anpassungsaufrechnungen reduziert</help>
+        <help>Betrag (USD) reduziert den ,Erstattungsbetrag‘ (USD) aufgrund der angepassten Verrechnung“</help>
         <label>Summe der Verrechnungsbeträge (USD)</label>
         <name>Core_MDF_Total_Claim_Offsets__c</name>
     </fields>
     <fields>
-        <help>Betrag, der aufgrund der Rückforderung vom &apos;Erstattungsfähigen Betrag (USD)&apos; abgezogen wird.</help>
-        <label>Gesamtbetrag der Rückforderung (USD)</label>
-        <name>Core_MDF_Total_Claim_Recovery_Amount__c</name>
-    </fields>
-    <fields>
-        <help>Gesamtbetrag der Transaktion/Rechnung in der Transaktionswährung</help>
+        <help>Gesamtbetrag der Transaktion/Rechnung in Transaktionswährung</help>
         <label>Gesamtbetrag (lokal)</label>
         <name>Core_MDF_Total_Invoice_Amount_Local__c</name>
-    </fields>
-    <fields>
-        <label><!-- Total Review Duration(Minutes) --></label>
-        <name>Core_MDF_Total_Review_Duration_Mins_nbr__c</name>
-    </fields>
-    <fields>
-        <help><!-- Amount (USD) reducing ‘Requested Amount (USD)’ due to Adjustment Offsets --></help>
-        <label><!-- Total Offset Amount (USD) --></label>
-        <name>Core_MDF_Total_SubClaim_Offset_Amt__c</name>
     </fields>
     <fields>
         <label>Antragstyp</label>
@@ -1447,130 +617,10 @@ Begleichen, dann bezahlt werden – Am besten zur Minimierung der Rückforderung
             <translation>Antrag</translation>
         </picklistValues>
     </fields>
-    <fields>
-        <label>Seitentyp</label>
-        <name>Core_MDF_Type_of_Page_txt__c</name>
-        <picklistValues>
-            <masterLabel>Colour double page spread</masterLabel>
-            <translation><!-- Colour double page spread --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Colour half page</masterLabel>
-            <translation><!-- Colour half page --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Colour page</masterLabel>
-            <translation><!-- Colour page --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Mono double page spread</masterLabel>
-            <translation><!-- Mono double page spread --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Mono half page</masterLabel>
-            <translation><!-- Mono half page --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Mono page</masterLabel>
-            <translation><!-- Mono page --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
-        <label>Ressourcentyp</label>
-        <name>Core_MDF_Type_of_Resource_txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- URL --></label>
-        <name>Core_MDF_URL_txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Ultimate Account ID --></label>
-        <name>Core_MDF_Ultimate_Account_ID__c</name>
-    </fields>
-    <fields>
-        <label><!-- Unified Global ID --></label>
-        <name>Core_MDF_Unified_Global_ID__c</name>
-    </fields>
-    <fields>
-        <label><!-- Unified Global Name --></label>
-        <name>Core_MDF_Unified_Global_Name_nm__c</name>
-    </fields>
-    <fields>
-        <label><!-- VAT Amount --></label>
-        <name>Core_MDF_VAT_Amt__c</name>
-    </fields>
-    <fields>
-        <help>Um festzustellen, ob der Antrag umsatzsteuerpflichtig ist oder nicht</help>
-        <label><!-- VAT Eligibility --></label>
-        <name>Core_MDF_VAT_Eligibility_Ind__c</name>
-    </fields>
-    <fields>
-        <help>Ist markiert, wenn der Antrag für die Bearbeitung des Zahlungsbelegs ausgewählt ist</help>
-        <label>Prüfungsaussetzung der Zahlungsdokumente</label>
-        <name>Core_MDF_VAT_Hold_Ind__c</name>
-    </fields>
-    <fields>
-        <help>Wenn Sie „Ja“ auswählen, akzeptieren Sie das Mehrwertsteuerverfahren, wählen Sie „Nein“, wenn Sie es ablehnen möchten.</help>
-        <label>Rechnungsart</label>
-        <name>Core_MDF_VAT_Opt_In__c</name>
-        <picklistValues>
-            <masterLabel>No</masterLabel>
-            <translation>Nein</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Reimbursement Request for 3rd party payment (NET cost only)</masterLabel>
-            <translation>Kostenerstattungsantrag für Zahlung an Dritte (nur Nettokosten)</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Service Invoice to Intel (VAT may apply)</masterLabel>
-            <translation>Servicerechnung an Intel (ggf. mit ausgewiesener MwSt.)</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Yes</masterLabel>
-            <translation>Ja</translation>
-        </picklistValues>
-    </fields>
-    <fields>
-        <label>Rechnungsart</label>
-        <name>Core_MDF_VAT_Opt_In_txt__c</name>
-    </fields>
-    <fields>
-        <label>Wo findet das statt</label>
-        <name>Core_MDF_Where_to_take_place_txt__c</name>
-        <picklistValues>
-            <masterLabel>In-store</masterLabel>
-            <translation>In Verkaufsraum</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Inside</masterLabel>
-            <translation><!-- Inside --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Online</masterLabel>
-            <translation><!-- Online --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Out of store</masterLabel>
-            <translation>Außerhalb des Verkaufsraums</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Outside</masterLabel>
-            <translation><!-- Outside --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
-        <label><!-- Owner swapped with submitter --></label>
-        <name>Core_MDF_owner_swapped_withsubmitter_ind__c</name>
-    </fields>
     <gender>Feminine</gender>
     <recordTypes>
-        <description><!-- Channel MDF Program Record Type --></description>
-        <label>Kanal MDF Kontobasiert</label>
-        <name>Core_MDF_Channel_MDF_Account_Based</name>
-    </recordTypes>
-    <recordTypes>
         <description><!-- CCF Program Record Type --></description>
-        <label>Client</label>
+        <label>Client-Co-Marketing-Fonds</label>
         <name>Core_MDF_Client_Co_Marketing_Fund</name>
     </recordTypes>
     <recordTypes>
@@ -1579,29 +629,9 @@ Begleichen, dann bezahlt werden – Am besten zur Minimierung der Rückforderung
         <name>Core_MDF_Client_Co_Marketing_Fund_Boost</name>
     </recordTypes>
     <recordTypes>
-        <description><!-- Record type for Co-GTM Program --></description>
-        <label><!-- Co-GTM --></label>
-        <name>Core_MDF_Co_GTM</name>
-    </recordTypes>
-    <recordTypes>
         <description><!-- DCF Program Record Type --></description>
-        <label>Rechenzentrum</label>
+        <label>Datacenter-Co-Marketing-Fonds  </label>
         <name>Core_MDF_Data_Center_Co_Marketing_Fund</name>
-    </recordTypes>
-    <recordTypes>
-        <description><!-- Record Type for CCP EEF Program --></description>
-        <label><!-- Ecosystem Extension Fund --></label>
-        <name>Core_MDF_Ecosystem_Extension_Fund</name>
-    </recordTypes>
-    <recordTypes>
-        <description><!-- IPA Account Based Record Type --></description>
-        <label><!-- Intel Partner Alliance Account Based --></label>
-        <name>Core_MDF_IPA_Account_Based</name>
-    </recordTypes>
-    <recordTypes>
-        <description><!-- IPA Program Type --></description>
-        <label><!-- Intel Partner Alliance Proposal Based --></label>
-        <name>Core_MDF_Intel_Partner_Alliance</name>
     </recordTypes>
     <recordTypes>
         <description><!-- It will be used for Retail Co-Marketing purposes --></description>
@@ -1614,27 +644,20 @@ Begleichen, dann bezahlt werden – Am besten zur Minimierung der Rückforderung
         <name>Core_MDF_Service_Provider_Co_Marketing_Fund</name>
     </recordTypes>
     <validationRules>
-        <errorMessage><!-- This claim cannot be reprocessed --></errorMessage>
-        <name>Claim_cannot_be_reprocessed</name>
-    </validationRules>
-    <validationRules>
         <errorMessage>Geben Sie bitte einen Gesamtbetrag größer null ein.</errorMessage>
         <name>Core_MDF_Amount_Validation</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- An application error occurred. Please try again. If error still persists, please contact Support Services. --></errorMessage>
-        <name>Core_MDF_BlockPendingReviewToDraft</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage>Das Start- und Enddatum eines Antrags kann nur einen Zeitraum von 3 Monaten abdecken.</errorMessage>
+        <errorMessage><!-- The start and end date on a claim can cover only a 3 month period. --></errorMessage>
         <name>Core_MDF_ClaimEndDateBetween3Months</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Machen Sie bitte Angaben in den folgenden Pflichtfeldern: Startdatum der Ausführung, Enddatum der Ausführung, Verarbeitungspräferenz, Nachweis der Kostenwährung, Datum des Kostennachweises, Kostennachweisnummer, Nicht erstattungsfähige Kosten (lokal), Steuern (lokal), Gesamtbetrag (lokal), Land/Region</errorMessage>
+        <errorMessage><!-- Please enter following Mandatory fields.
+Ad Run Start Date, Ad Run End Date, Invoice/Receipt Currency, Invoice/Receipt Date, Invoice/Receipt Number, Media Vehicle, Costs not Reimbursable (Local), Taxes (Local), Total Amount (Local), Country/Region --></errorMessage>
         <name>Core_MDF_Claim_Required_Fields</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Der Antrag kann nicht erstellt/aktualisiert werden, da er die geltende Frist überschritten hat. Ein Antrag muss innerhalb von 6 Monaten nach dem Enddatum der Ausführung eingereicht werden.</errorMessage>
+        <errorMessage>Der Antrag kann nicht erstellt/aktualisiert werden, da er die geltende Frist überschritten hat. Anträge müssen innerhalb von 6 Monaten nach Ende der Werbelaufzeit eingereicht werden.</errorMessage>
         <name>Core_MDF_Claim_Window</name>
     </validationRules>
     <validationRules>
@@ -1642,40 +665,24 @@ Begleichen, dann bezahlt werden – Am besten zur Minimierung der Rückforderung
         <name>Core_MDF_Close_Adjustment</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Bitte geben Sie einen nicht erstattungsfähigen Betrag ein, der größer oder gleich null ist</errorMessage>
-        <name>Core_MDF_CostNotReimbursable</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage>Das Enddatum der Ausführung darf nicht in der Zukunft liegen.</errorMessage>
+        <errorMessage>Das Abschlussdatum der Werbeschaltung darf nicht in der Zukunft liegen.</errorMessage>
         <name>Core_MDF_EndDateFutureValidation</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Bitte geben Sie ein Enddatum für die Ausführung ein, das in den geschätzten Datumsbereich der Aktivität fällt.</errorMessage>
+        <errorMessage>Geben Sie bitte ein Abschlussdatum ein, das innerhalb der voraussichtlichen Zeitspanne der Werbemaßnahme liegt.</errorMessage>
         <name>Core_MDF_EndDateValidation</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Bitte geben Sie ein Enddatum für die Ausführung ein, das in den geschätzten Datumsbereich der Ergebnisbasierten Werbekampagne fällt.</errorMessage>
-        <name>Core_MDF_EndDateValidation_OutcomeBased</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage>Sie können diese Ergebnisbasierte Werbekampagne nicht verwenden, da das zugehörige Account inaktiv ist</errorMessage>
-        <name>Core_MDF_InactiveAccountValidation_Outco</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- You cannot use this Activity as the account over the Activity is inactive --></errorMessage>
+        <errorMessage><!-- You cannot use this activity as the account over the activity is inactive --></errorMessage>
         <name>Core_MDF_Inactive_Account_Validation</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Das Datum des Kostennachweises kann kein Datum in der Zukunft sein</errorMessage>
+        <errorMessage>Das Rechnungs-/Quittungsdatum darf nicht in der Zukunft liegen.</errorMessage>
         <name>Core_MDF_Invoice_Date</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- The Amount of a Negative Claim cannot be greater than 0 --></errorMessage>
         <name>Core_MDF_NegativeClaimAmountVal</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Payment Id is mandatory for Pending Payment Claims --></errorMessage>
-        <name>Core_MDF_PaymentId_Check</name>
     </validationRules>
     <validationRules>
         <errorMessage>Geben Sie bitte einen erstattungsfähigen Betrag größer null ein.</errorMessage>
@@ -1686,43 +693,11 @@ Begleichen, dann bezahlt werden – Am besten zur Minimierung der Rückforderung
         <name>Core_MDF_RequestedReimbursementAmt</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Ein Anspruch kann nicht erstellt werden, da die mit dem Anspruch verknüpfte MDF-Intel® Partner Alliance-Aktivität abgelehnt wird.</errorMessage>
-        <name>Core_MDF_RestrictClaimCreationOnDeclined</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage>Ein Antrag kann nicht für eine Ergebnisbasierte Werbekampagne mit dem Status Abgeschlossen/Abgebrochen gestellt werden.</errorMessage>
-        <name>Core_MDF_RestrictClaimforClosed_Outcome</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage>Mit dieser Eskalation wurde bereits ein Anspruch erstellt. Wenn zusätzliche Ansprüche eingereicht werden müssen, lösen Sie bitte eine neue Eskalation aus.</errorMessage>
-        <name>Core_MDF_RestrictCreationOfMultipleClaim</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage>Dieser Benutzer ist nicht berechtigt, diese Aktion ausführen.</errorMessage>
-        <name>Core_MDF_Restrict_Change_Owner</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Claim creation is blocked due to the ‘In-Progress’ Activity needing approval. --></errorMessage>
-        <name>Core_MDF_Restrict_Claim_Creation</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage>Die Antragserstellung ist blockiert, da die Ergebnisbasierte Werbekampagne &apos;In Bearbeitung&apos; genehmigt werden muss.</errorMessage>
-        <name>Core_MDF_Restrict_Claim_Creation_Outcome</name>
-    </validationRules>
-    <validationRules>
         <errorMessage>Ein Antrag kann nicht für Aktivitäten mit dem Status geschlossen/storniert gestellt werden.</errorMessage>
         <name>Core_MDF_Restrict_ClaimforClosedActivity</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Super Claims having sub claims can be set to only Draft, Submitted or Rejected status. --></errorMessage>
-        <name>Core_MDF_Restrict_Status_For_Super_Claim</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Claim Status cannot be updated in its current status --></errorMessage>
-        <name>Core_MDF_Restrict_Status_Update</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage>Der Betrag im Antrag darf nicht höher sein als der bei der Escalation genehmigte Betrag.</errorMessage>
+        <errorMessage><!-- Claim amount cannot exceed the amount that was approved on the escalation. --></errorMessage>
         <name>Core_MDF_RetailAmtLessThanEscalationAmt</name>
     </validationRules>
     <validationRules>
@@ -1730,28 +705,16 @@ Begleichen, dann bezahlt werden – Am besten zur Minimierung der Rückforderung
         <name>Core_MDF_SPCF_Negative_Number_Val</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Das Startdatum der Ausführung darf nicht in der Zukunft liegen</errorMessage>
+        <errorMessage>Das Datum für den Beginn der Werbeschaltung darf nicht in der Zukunft liegen.</errorMessage>
         <name>Core_MDF_StartDateFutureValidation</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Bitte geben Sie ein Ausführungsstartdatum ein, das in den geschätzten Datumsbereich der Aktivität fällt.</errorMessage>
+        <errorMessage>Geben Sie bitte ein Anfangsdatum ein, das innerhalb der voraussichtlichen Zeitspanne der Werbemaßnahme liegt.</errorMessage>
         <name>Core_MDF_StartDateValidation</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Bitte geben Sie ein Startdatum für die Ausführung ein, das in den geschätzten Datumsbereich der Ergebnisbasierten Werbekampagne fällt.</errorMessage>
-        <name>Core_MDF_StartDateValidation_Outcome</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage>Startdatum der Ausführung darf nicht hinter dem Enddatum der Ausführung liegen</errorMessage>
+        <errorMessage>Das Datum für den Beginn der Werbeschaltung darf nicht nach deren Abschlussdatum liegen.</errorMessage>
         <name>Core_MDF_StartDate_EndDate_Validation</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage>Bitte geben Sie einen Steuerbetrag ein, der größer oder gleich null ist</errorMessage>
-        <name>Core_MDF_TaxesLocal</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Bank is not applicable for this Claim due to the Budget Type provided. --></errorMessage>
-        <name>Core_MDF_ValidateBank</name>
     </validationRules>
     <webLinks>
         <label><!-- Core_MDF_Export_List_View --></label>

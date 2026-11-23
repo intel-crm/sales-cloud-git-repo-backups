@@ -33,10 +33,6 @@
         <name>Core_Item_Class_Nm__c</name>
     </fields>
     <fields>
-        <label><!-- Orderable --></label>
-        <name>Core_Item_Orderable_Ind__c</name>
-    </fields>
-    <fields>
         <label><!-- Tool Type --></label>
         <name>Core_Prod_Tool_Type_Nm__c</name>
     </fields>
@@ -53,8 +49,16 @@
         <name>Core_SW_Prod_Non_Commercial_Purpose_Nm__c</name>
     </fields>
     <fields>
+        <label><!-- Feature Number --></label>
+        <name>Feature_Number__c</name>
+    </fields>
+    <fields>
         <label><!-- MSVP L1 --></label>
         <name>PSG_MSVP_L1_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- MSVP L2 --></label>
+        <name>PSG_MSVP_L2_Amt__c</name>
     </fields>
     <fields>
         <label><!-- Description --></label>
@@ -318,6 +322,18 @@
         <help><!-- Check to automatically apply uplift from parent package to this component. Only applies to components that are multi-segmented products. --></help>
         <label><!-- Uplifted By Package --></label>
         <name>SBQQ__UpliftedByPackage__c</name>
+    </fields>
+    <fields>
+        <label><!-- isChecked --></label>
+        <name>isChecked__c</name>
+    </fields>
+    <fields>
+        <label><!-- Broken Cost --></label>
+        <name>price_brokencost_amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Suggested Resale --></label>
+        <name>price_suggested_resale_amt__c</name>
     </fields>
     <startsWith>Consonant</startsWith>
     <validationRules>

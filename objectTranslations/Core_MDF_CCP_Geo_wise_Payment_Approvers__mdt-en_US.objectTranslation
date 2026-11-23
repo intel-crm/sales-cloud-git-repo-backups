@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>CCP Geo-wise Payment Approvers</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>CCP Geo-wise Payment Approvers</value>
+    </caseValues>
+    <fields>
+        <label><!-- Approver WWID --></label>
+        <name>Core_MDF_Approver_WWID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Geo --></label>
+        <name>Core_MDF_Geo__c</name>
+    </fields>
+    <fields>
+        <label><!-- Program --></label>
+        <name>Core_MDF_Program__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

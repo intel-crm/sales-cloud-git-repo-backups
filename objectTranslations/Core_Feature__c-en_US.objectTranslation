@@ -32,9 +32,17 @@
             <translation><!-- NTG --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>PBS</masterLabel>
+            <translation><!-- PBS --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>PSG</masterLabel>
             <translation><!-- PSG --></translation>
         </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Feature Date Value --></label>
+        <name>Core_Feature_Date_Value__c</name>
     </fields>
     <fields>
         <label><!-- Long ID --></label>

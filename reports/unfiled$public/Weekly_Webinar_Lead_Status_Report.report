@@ -48,24 +48,6 @@
     <columns>
         <field>Lead.Core_Lead_Status__c</field>
     </columns>
-    <columns>
-        <field>COUNTRY_CODE</field>
-    </columns>
-    <columns>
-        <field>Lead.Core_Marketing_Tactic_ID__c</field>
-    </columns>
-    <columns>
-        <field>Lead.Core_Last_Activity_Date__c</field>
-    </columns>
-    <columns>
-        <field>LEAD_ID</field>
-    </columns>
-    <columns>
-        <field>Lead.Core_Eloqua_Contact_ID__c</field>
-    </columns>
-    <columns>
-        <field>PARTNER_ACCOUNT_ID</field>
-    </columns>
     <filter>
         <criteriaItems>
             <column>Lead.Core_Geo__c</column>
@@ -89,6 +71,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CREATED_DATE</dateColumn>
-        <interval>INTERVAL_PREVCURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

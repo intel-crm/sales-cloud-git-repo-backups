@@ -1,10 +1,3 @@
-/**
- * @description       : 
- * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
- * @group             : 
- * @last modified on  : 03-31-2026
- * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
-**/
 @isTest
 public class Pricing_UCDIQRBulkAutoRejectionBatchTest {
   //Setting up Test Data
@@ -14,7 +7,7 @@ public class Pricing_UCDIQRBulkAutoRejectionBatchTest {
         Pricing_Test_Utility.createPriceBook();
         System.runAs(adminUserList[0]) {
             Account acc = Pricing_Test_Utility.createAccount();
-            Contact con = Pricing_Test_Utility.createPrimaryContactWithParam(acc.Id,'UCD_IQR_Bulk_Auto_Rejection_Batch_Test');
+            Contact con = Pricing_Test_Utility.createPrimaryContactWithParam(acc.Id,'UCD_IQR_Auto_Rejection_Batch');
             User partnerUser = Pricing_Test_Utility.createPartnerAdminUser(acc.Id);
 
             Test.startTest();
@@ -36,6 +29,7 @@ public class Pricing_UCDIQRBulkAutoRejectionBatchTest {
     static testmethod void testAutoRejectionBulkBatch() {
         Test.startTest();
         List<User> lstUsers4 = [select id from user where email = 'firstName@intel.com' limit 1];
+        List<User> partnerUser = [select id from user where email = 'partner@noemail.com' limit 1];
         List<SBQQ__Quote__c> lstquote = new List<SBQQ__Quote__c>([select id,Pricing_Unified_Global_End_Customer_Nm__c,SBQQ__Account__c from SBQQ__Quote__c Limit 1]);
         List<SBQQ__QuoteLine__c> lstquoteLines = new List<SBQQ__QuoteLine__c>([select id,Pricing_Quote_Line_Number__c from SBQQ__QuoteLine__c where SBQQ__Quote__c=:lstquote[0].id  limit 1]);
         Id commentRecordTypeId = Pricing_Tender_Utility.getRecordTypeId('Pricing_Comments__c',Label.Pricing_Tender_Comment_RecordType_QuoteComment);
@@ -63,6 +57,7 @@ public class Pricing_UCDIQRBulkAutoRejectionBatchTest {
         
         system.runAs(lstUsers4[0]){
             glbVariable = Pricing_Publish_Quote.PublishTenderQuote(lstquote[0].id);
+            System.debug('glbVariable=>'+glbVariable);
             lstquoteLines[0].Pricing_Quote_Line_Status_Number__c = 30;
             lstquoteLines[0].Pricing_Status_Nm__c = Label.Pricing_Tender_QuoteLine_Status_PendingIntelFieldReview;
         	update lstquoteLines[0];

@@ -1,0 +1,101 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickActionWithoutHeader,forceCommunity:availableForAllPageTypes"
+                access="global"
+                controller="PSG_QuoteCloneController">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute name="messageNotification" type="String" />
+    <aura:attribute name="isSuccess" type="Boolean" />
+    <aura:attribute name="isFinal" type="Boolean" />
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="newRecordId" type="String" />
+    <aura:attribute name="Quote" type="SBQQ__Quote__c"/>
+    <aura:attribute type="String" name="quotetype"/>
+    
+    <lightning:navigation aura:id="navService"/>
+    
+    <aura:html tag="style">
+        .slds-modal__content{
+            overflow-y:hidden !important;
+            height:unset !important;
+            max-height:unset !important;
+        }
+    </aura:html>
+    
+     <div class="modal-header slds-modal__header slds-size_1-of-1">
+    	<h4 class="title slds-text-heading--medium">Quote Revision</h4>
+    </div> 
+	<aura:if isTrue="{!not(v.isFinal)}">
+        <lightning:select aura:id="statusPicklist" name="qType" label="Quote Type" required="true" >
+            <option value="Budgetary">Budgetary</option>
+            <option value="Design Win">Design Win</option>
+            <option value="Tools">Tools</option>
+            <option value="Transfer Pricing">Transfer Pricing</option>
+            <!--<option value="Contract Pricing">Contract Pricing</option> -->
+        </lightning:select>
+        <br></br>
+        <br></br>
+	<!--	<div class="slds-float_right">
+            <lightning:button variant="brand" label="Submit" onclick="{!c.handleSubmitOnClick}" />
+    	</div> -->
+        
+        <div class="slds-float_right">
+            <lightning:button iconName="action:approval" variant="brand" label="Submit" onclick="{!c.handleSubmitOnClick}" />
+    	</div>
+        
+     </aura:if> 
+    
+    <aura:if isTrue="{!v.isFinal}">
+        <!-- SPINNER -->
+        <div aura:id="spinner" class="slds-is-relative">
+            <lightning:spinner aura:id="mySpinner" class="slds-hide" size="medium" variant="brand" alternativeText="Please wait..." style="min-height: 20vh;background-color:white;"/>
+    
+            <!-- SUCCESS -->
+           <aura:if isTrue="{!v.isSuccess}">
+                <div class="slds-p-around_medium">
+                    <div aura:id="successMessage" style="height:4rem;">
+                        <div class="slds-is-relative slds-align_absolute-center">
+                            <div class="slds-notify slds-notify_toast slds-theme_success" role="status">
+                                <span class="slds-assistive-text">success</span>
+                                <div class="slds-notify__content">
+                                    <h2 class="slds-text-heading_small" style="text-align:center"> {!v.messageNotification} </h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+               <div class="slds-p-around_medium" style="text-align:center">
+                    <a href="javascript:void(0)" onclick="{!c.navigateToRecord}"> 
+                        Click here to go to the new quote 
+                    </a>
+                </div>
+               
+               
+            </aura:if>
+            <!-- ERROR -->
+            <aura:if isTrue="{!not(v.isSuccess)}">
+                <div class="slds-p-around_medium">
+                    <div aura:id="errorMessage" style="height:4rem;">
+                        <div class="slds-is-relative slds-align_absolute-center">
+                            <div class="slds-notify slds-notify_toast slds-theme_error" role="status">
+                                <span class="slds-assistive-text">error</span>
+                                <div class="slds-notify__content">
+                                    <h2 class="slds-text-heading_small" style="text-align:center"> {!v.messageNotification} </h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="slds-p-around_medium" style="text-align:center">
+                    <a href="javascript:void(0)" onclick="{!c.goBackLink}"> 
+                        Click here to go back to the previous page 
+                    </a>
+                </div>
+            </aura:if> 
+    	</div>
+    </aura:if>    
+        
+        
+        
+
+</aura:component>

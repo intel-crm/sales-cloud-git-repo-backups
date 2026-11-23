@@ -73,7 +73,7 @@
 						</lightning:layoutItem>-->
                         <!--Adding help link as part of US459003-->
                         <lightning:layoutItem   size="12" class="slds-m-vertical_xx-large">
-                            {!$Label.c.PMP_LeadGen_Questions1}&nbsp;<c:IntelLink url="{!$Label.c.PMP_IPA_HelpLink}"> {!$Label.c.PMP_LeadGen_MarketplaceHelp} &rsaquo;</c:IntelLink>
+                            {!$Label.c.PMP_LeadGen_Questions1}&nbsp;<c:IntelLink page="help"> {!$Label.c.PMP_LeadGen_MarketplaceHelp} &rsaquo;</c:IntelLink>
                         </lightning:layoutItem>
 						<lightning:layoutItem   size="12" class="slds-text-align_right">
 							<span onclick="{! c.handleStorefrontAdministratorModal}">

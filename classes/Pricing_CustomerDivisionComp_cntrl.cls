@@ -50,7 +50,7 @@ public without sharing class Pricing_CustomerDivisionComp_cntrl {
     @AuraEnabled
     public static Boolean getstatusPrecedenceNumber(String recordId){
         try{
-        List<SBQQ__Quote__c> quote =[SELECT Id, Pricing_Status_Precedence_Number__c FROM SBQQ__Quote__c WHERE id =: recordId];
+        List<SBQQ__Quote__c> quote =[SELECT Id, Pricing_Status_Precedence_Number__c,Pricing_On_Hold_Cb__c FROM SBQQ__Quote__c WHERE id =: recordId];
         if(quote.size()>0 && quote[0].Pricing_Status_Precedence_Number__c >= 45){
             return true;
         }else {
@@ -62,4 +62,5 @@ public without sharing class Pricing_CustomerDivisionComp_cntrl {
             return false; 
         }
     }
+    
 }

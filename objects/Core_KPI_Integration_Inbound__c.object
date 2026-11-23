@@ -297,19 +297,6 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Core_IAH_KPI_Retry_Counter__c</fullName>
-        <defaultValue>0</defaultValue>
-        <externalId>false</externalId>
-        <label>KPI Retry Counter</label>
-        <precision>18</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Number</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_IAH_KPI_Threshold_Met__c</fullName>
         <label>Threshold Met?</label>
         <required>false</required>
@@ -449,13 +436,7 @@
         <columns>Core_IAH_KPI_Record_ID__c</columns>
         <columns>Core_KPI_Processing_Status__c</columns>
         <columns>Core_IAH_SF_KPI_ID__c</columns>
-        <columns>Core_IAH_KPI_Error_Message__c</columns>
         <filterScope>Everything</filterScope>
-        <filters>
-            <field>Core_IAH_SF_KPI_ID__c</field>
-            <operation>equals</operation>
-            <value>2166</value>
-        </filters>
         <label>All</label>
         <language>en_US</language>
     </listViews>

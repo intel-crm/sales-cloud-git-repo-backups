@@ -60,21 +60,6 @@
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
-        <fullName>Core_Partner_Lead_Admin_Leads</fullName>
-        <accessLevel>Edit</accessLevel>
-        <description>Share all Partner leads to Partner Lead Admin users..</description>
-        <label>Core - Partner Lead Admin - Leads</label>
-        <sharedTo>
-            <group>Core_PG_Partner_Lead_Admin</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>RecordTypeId</field>
-            <operation>equals</operation>
-            <value>Partner Lead</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
         <fullName>Cvent_Integration_User_Leads</fullName>
         <accessLevel>Edit</accessLevel>
         <description>Share all Intel leads to Cvent Integration user.</description>
@@ -85,28 +70,28 @@
         <criteriaItems>
             <field>RecordTypeId</field>
             <operation>equals</operation>
-            <value>Sales Lead</value>
+            <value>Marketing Lead,Sales Lead</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
-        <fullName>Marketo_User_Sharing</fullName>
+        <fullName>PCC_Partner_Campaign_Leads</fullName>
         <accessLevel>Edit</accessLevel>
-        <label>Marketo User Sharing</label>
+        <label>Partner Campaign Leads</label>
         <sharedTo>
-            <group>Marketo_Access_Group</group>
+            <group>Partner_Campaign_Users</group>
         </sharedTo>
         <criteriaItems>
-            <field>CreatedById</field>
+            <field>RecordTypeId</field>
             <operation>equals</operation>
-            <value>005Ho00000KMIKGIA5</value>
+            <value>Partner Campaign Lead</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>SWS_6Sense_Lead_Sharing</fullName>
         <accessLevel>Read</accessLevel>
-        <description>Sharing rule to share record with 6Sense Integration User</description>
+        <description>SWS 6Sense Lead Sharing</description>
         <label>SWS 6Sense Lead Sharing</label>
         <sharedTo>
             <group>SWS_6Sense_Admin_Group</group>
@@ -114,7 +99,21 @@
         <criteriaItems>
             <field>RecordTypeId</field>
             <operation>equals</operation>
-            <value>Sales Lead</value>
+            <value>Software Lead,Marketing Lead,Sales Lead</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>SWS_Marketo_Partner_Lead_Access</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>SWS Marketo Partner Lead Access</label>
+        <sharedTo>
+            <group>Marketo_Partner_Access_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Partner Lead</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
@@ -131,6 +130,6 @@
             <operation>equals</operation>
             <value>IDC Credit Request</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
 </SharingRules>

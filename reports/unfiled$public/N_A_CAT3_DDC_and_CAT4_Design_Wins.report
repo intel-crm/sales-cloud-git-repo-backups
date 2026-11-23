@@ -16,9 +16,6 @@
         <field>OPPORTUNITY_NAME</field>
     </columns>
     <columns>
-        <field>OPPORTUNITY_ID</field>
-    </columns>
-    <columns>
         <field>Opportunity.Core_Opportunity_Type__c</field>
     </columns>
     <columns>
@@ -84,9 +81,6 @@
     <columns>
         <field>Account.Core_Account_PSG_Tier__c</field>
     </columns>
-    <columns>
-        <field>Opportunity.Core_Distributor__c</field>
-    </columns>
     <filter>
         <criteriaItems>
             <column>OpportunityLineItem.Core_Product_Type__c</column>
@@ -107,7 +101,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>includes</operator>
-            <value>PSG-Tier 2,PSG-Tier 3</value>
+            <value>PSG-Tier 2,DCAI PSG-Tier 2,PSG-Tier 3,DCAI PSG-Tier 3</value>
         </criteriaItems>
         <criteriaItems>
             <column>ACCOUNT_NAME</column>
@@ -115,13 +109,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>startsWith</operator>
             <value>Zebra,Shure,Accedian,Advantech,Aerovironment,Belden,Flir,hp inc,Kodak,Pacific star,spacex,telestream,vecima,Hitatchi,Fortive,Thales,Elbit,Electronics for Imaging,EFI,Engineering Design,Giga Byte,Intuitive Surgical,Kulicke,Leidos,Olympus,Omron,Planar,Waters,Mentor Graphics,Viavi,Aeroflex,Wichita,Emerson</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Opportunity_Type__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Design: Original,Design: Secondary</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -134,6 +121,11 @@
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>ACCOUNT_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Opportunity.Core_Distributor__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>N.A. CAT2/3 DDC Design Wins</name>

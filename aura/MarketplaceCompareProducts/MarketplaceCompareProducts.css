@@ -1,13 +1,4 @@
-/* /*
- * .THIS .checkbox-text-float-left{
-    float:left;
-}*/
-
-
-
-
-
-/*.THIS .h4 {
+.THIS .h4 {
   color: t(blue);
 }
 
@@ -43,7 +34,7 @@
 
 /* Mobile Cards */
 
-/*.THIS .mobileCard {
+.THIS .mobileCard {
   background-color: t(white);
   border: 1px solid t(lightGray);
   height: 60px;
@@ -81,7 +72,7 @@
 
 
 /* Desktop Card*/
-/*.THIS .col {
+.THIS .col {
   flex: 1 0 150px;
   width: 20%;
 }
@@ -215,9 +206,6 @@
   .THIS .innerCard .top {
     padding: 1.5rem 1rem 1rem;
   }
-    .THIS .col {/*Added for DE94519 fix*/
- /*   flex: 1 1 150px;
-  }
 }
 
 @media (min-width: 1200px) {
@@ -231,7 +219,4 @@
 }
 .THIS .wordWrapOneLine{
     word-break: break-word;
-     
-    
-    
-} */
+}

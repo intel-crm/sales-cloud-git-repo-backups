@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MLPredictionDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aiApplicationDeveloperName>Test_QL_Win_Prediction_Status</aiApplicationDeveloperName>
+    <developerName>mlpd_Test_QL_Win_Prediction_Status_1736925268339_v0</developerName>
+    <masterLabel>Test QL Win Prediction Status</masterLabel>
+    <negativeExpression>
+        <filterName>3846cf6d-1876-47ed-bc5d-2f140d540eab</filterName>
+        <lhFilter>
+            <filterName>f5188fb4-9a47-495c-849a-06e574dccf7a</filterName>
+            <lhPredictionField>SBQQ__QuoteLine__c.Pricing_Status_Nm__c</lhPredictionField>
+            <operation>Equals</operation>
+            <rhType>String</rhType>
+            <rhValue>Lost</rhValue>
+        </lhFilter>
+        <operation>And</operation>
+        <rhFilter>
+            <filterName>8ba158b8-f962-4407-ba6b-9a43b30e8923</filterName>
+            <lhPredictionField>SBQQ__QuoteLine__c.Pricing_Quote_Program_Nm__c</lhPredictionField>
+            <operation>Equals</operation>
+            <rhType>String</rhType>
+            <rhValue>Tender</rhValue>
+        </rhFilter>
+    </negativeExpression>
+    <positiveExpression>
+        <filterName>0b68516a-1fb5-4675-849d-627ab7958942</filterName>
+        <lhFilter>
+            <filterName>cfd18ebb-58d4-4e8d-a386-d6727a48aeb7</filterName>
+            <lhPredictionField>SBQQ__QuoteLine__c.Pricing_Status_Nm__c</lhPredictionField>
+            <operation>Equals</operation>
+            <rhType>String</rhType>
+            <rhValue>Won</rhValue>
+        </lhFilter>
+        <operation>And</operation>
+        <rhFilter>
+            <filterName>8942fc8b-08d4-43ac-b7e8-5766b0c69795</filterName>
+            <lhPredictionField>SBQQ__QuoteLine__c.Pricing_Quote_Program_Nm__c</lhPredictionField>
+            <operation>Equals</operation>
+            <rhType>String</rhType>
+            <rhValue>Tender</rhValue>
+        </rhFilter>
+    </positiveExpression>
+    <pushbackField>SBQQ__QuoteLine__c.Won_Status__c</pushbackField>
+    <status>Enabled</status>
+    <type>BinaryClassification</type>
+</MLPredictionDefinition>

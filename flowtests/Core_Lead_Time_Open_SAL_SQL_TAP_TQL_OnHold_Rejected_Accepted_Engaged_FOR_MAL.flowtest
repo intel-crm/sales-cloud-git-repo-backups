@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowTest xmlns="http://soap.sforce.com/2006/04/metadata">
+    <flowApiName>Core_Lead_Time_Open_SAL_SQL_TAP_TQL_OnHold_Rejected_Accepted_Engaged</flowApiName>
+    <label>FOR MQL</label>
+    <testPoints>
+        <elementApiName>Start</elementApiName>
+        <isUseMockOutput>false</isUseMockOutput>
+        <parameters>
+            <leftValueReference>$Record</leftValueReference>
+            <type>InputTriggeringRecordInitial</type>
+            <value>
+                <sobjectValue>{&quot;Company&quot;:&quot;Infy&quot;,&quot;Core_1st_Reminder__c&quot;:&quot;2022-11-11&quot;,&quot;Core_2nd_Reminder__c&quot;:&quot;2022-11-18&quot;,&quot;Core_3rd_Reminder__c&quot;:&quot;2022-11-25&quot;,&quot;Core_4th_Reminder__c&quot;:&quot;2022-12-02&quot;,&quot;Core_Account_Conversion_Flag__c&quot;:true,&quot;Core_Ask_to_talk_to_Sales__c&quot;:false,&quot;Core_Cold_Contact_Approved__c&quot;:false,&quot;Core_Confirmed_Budget__c&quot;:false,&quot;Core_Contact_Conversion_Flag__c&quot;:true,&quot;Core_Contact_Established_Engaged__c&quot;:false,&quot;Core_Converted_Lead__c&quot;:false,&quot;Core_Created_Post_NewLead_Process__c&quot;:false,&quot;Core_Created_Post_NewPartnerLead_Process__c&quot;:true,&quot;Core_Customer_Consent_for_Marketing__c&quot;:false,&quot;Core_Do_not_call__c&quot;:false,&quot;Core_Having_Tasks__c&quot;:false,&quot;Core_Having_Tasks_in_TQL__c&quot;:false,&quot;Core_Individual_Send_Email__c&quot;:false,&quot;Core_Is_Lead_Shared__c&quot;:false,&quot;Core_Is_Segment_Available_In_Offering__c&quot;:false,&quot;Core_Lead_Contact_Estb_Dt__c&quot;:false,&quot;Core_Lead_Opt_In_Indicator__c&quot;:false,&quot;Core_Lead_Sharing_Error__c&quot;:&quot;Partner Id or Partner Name is required to process lead sharing.&quot;,&quot;Core_Lead_Source_Pkt__c&quot;:&quot;Insight.Tech&quot;,&quot;Core_Lead_State__c&quot;:&quot;Open&quot;,&quot;Core_Lead_Status__c&quot;:&quot;Accepted&quot;,&quot;Core_Lead_to_Opportunity_Conversion_flag__c&quot;:false,&quot;Core_Marketing_Do_Not_Contact_Ind__c&quot;:false,&quot;Core_Notify_Owner__c&quot;:false,&quot;Core_Ownership_change_in_one_day_TQL__c&quot;:false,&quot;Core_PAL_Entry_Dt__c&quot;:&quot;2022-11-04T04:59:35.000Z&quot;,&quot;Core_PRL_Exit_Dt__c&quot;:&quot;2022-11-04T04:59:35.000Z&quot;,&quot;Core_Partner_Lead_Owner__c&quot;:&quot;0052D000007L5nIQAS&quot;,&quot;Core_Pre_Validated__c&quot;:false,&quot;Core_Rejected_Flag__c&quot;:false,&quot;Core_Remove_Current_Sharing_Ind__c&quot;:false,&quot;Core_Reprocess_Lead_Sharing__c&quot;:false,&quot;Core_SLA_Listed_User__c&quot;:false,&quot;Core_SendEmail4__c&quot;:false,&quot;Core_SendEmail__c&quot;:false,&quot;Core_State_Entrance_Date_Open__c&quot;:&quot;2022-11-04T05:17:45.000Z&quot;,&quot;Core_System_Update_Address__c&quot;:false,&quot;Core_Unreachable_flag__c&quot;:false,&quot;Core_lead_Id__c&quot;:&quot;00Q2D0000075kik&quot;,&quot;DaScoopComposer__Is_Created_By_Groove__c&quot;:false,&quot;Email&quot;:&quot;jerinx.thomas@intel.com&quot;,&quot;FirstName&quot;:&quot;Partner lead&quot;,&quot;IsUnreadByOwner&quot;:true,&quot;LastName&quot;:&quot;Jerin - do not touch&quot;,&quot;LeadSource&quot;:&quot;Outbound Call&quot;,&quot;OwnerId&quot;:&quot;00Go0000001DyQzEAK&quot;,&quot;RecordTypeId&quot;:&quot;012o00000015YqcAAE&quot;,&quot;Salutation&quot;:&quot;Mr.&quot;,&quot;Status&quot;:&quot;Marketing Qualified Lead&quot;,&quot;bvd_connector__Unlinked_from_BvD__c&quot;:false}</sobjectValue>
+            </value>
+        </parameters>
+    </testPoints>
+    <testPoints>
+        <assertions>
+            <conditions>
+                <leftValueReference>For_MQL</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <errorMessage>Entered MQL and satisfied</errorMessage>
+        </assertions>
+        <assertions>
+            <conditions>
+                <leftValueReference>MQL_Entrance</leftValueReference>
+                <operator>WasVisited</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <errorMessage>Entered the MQL entrance</errorMessage>
+        </assertions>
+        <elementApiName>Finish</elementApiName>
+        <isUseMockOutput>false</isUseMockOutput>
+    </testPoints>
+    <testType>WithAssertion</testType>
+</FlowTest>

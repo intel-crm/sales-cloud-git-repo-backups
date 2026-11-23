@@ -1,4 +1,4 @@
-<messaging:emailTemplate subject="Publishing Notification : {!relatedTo.PMP_Partner_Offering_Nm__c} Offering" recipientType="User" relatedToType="PMP_Partner_Offering__c">
+<messaging:emailTemplate subject="Published: Your Marketplace offering has been published" recipientType="User" relatedToType="PMP_Partner_Offering__c">
 <messaging:htmlEmailBody >
     
         <c:PMP_OfferingFuturePreReleaseArriv offeringRecordId="{!relatedTo.Id}"/>

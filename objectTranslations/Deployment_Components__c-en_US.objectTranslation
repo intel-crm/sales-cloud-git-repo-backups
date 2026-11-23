@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Deployment Components</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Deployment Components</value>
+    </caseValues>
+    <fields>
+        <label><!-- Deployment --></label>
+        <name>Deployment__c</name>
+        <relationshipLabel><!-- Deployment Components --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Metadata Name --></label>
+        <name>Metadata_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Metadata Type --></label>
+        <name>Metadata_Type__c</name>
+        <picklistValues>
+            <masterLabel>ApexClass</masterLabel>
+            <translation><!-- ApexClass --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

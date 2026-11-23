@@ -1,0 +1,445 @@
+<template>
+    <template if:false={noAccessToObject}>
+    <lightning-card title="">
+
+        <form>
+            <div class=" slds-theme--shade" style="padding: 5px;">
+                <div class="slds-text-heading_medium">
+                    Account Search
+                </div>
+            </div>
+            <lightning-layout multiple-rows="false">
+                <lightning-layout-item padding="around-small" size="3" large-device-size="3" medium-device-size="3"
+                    small-device-size="12">
+                    <lightning-input type="text" class="validate" name="Name" label="Name" placeholder="Enter Name"
+                        value={acctformdetails.accountName} onchange={nameChangeHandler} required>
+                    </lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item padding="around-small" size="3" large-device-size="3" medium-device-size="3"
+                    small-device-size="12">
+                    <lightning-combobox name="country" class="validate countrySelect" label="Billing Country"
+                        placeholder="Select Country" options={countryOptions} onchange={inputChangeHandler} value={acctformdetails.countryCode} required>
+                    </lightning-combobox>
+                </lightning-layout-item>
+            </lightning-layout>
+            <lightning-layout multiple-rows="true">
+                <lightning-layout-item padding="around-small" size="3" large-device-size="3" medium-device-size="3"
+                    small-device-size="12">
+                    <lightning-input type="text" class="validate" name="addressline1" label="Billing Address Line 1"
+                        placeholder="Enter Address Line 1" onchange={addr1ChangeHandler}
+                        value={acctformdetails.addressline1}>
+                    </lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item padding="around-small" size="3" large-device-size="3" medium-device-size="3"
+                    small-device-size="12">
+                    <lightning-input type="text" class="validate" name="addressline2" onchange={addr2ChangeHandler}
+                        label="Billing Address Line 2" value={acctformdetails.addressline2}
+                        placeholder="Enter Address Line 2">
+                    </lightning-input>
+                </lightning-layout-item>
+                
+
+            </lightning-layout>
+            <lightning-layout multiple-rows="true">                
+                <lightning-layout-item padding="around-small" size="3" large-device-size="3" medium-device-size="3"
+                    small-device-size="12">
+                    <lightning-input type="text" name="city" class="validate" label="Billing City"
+                        placeholder="Enter City" onchange={cityChangeHandler} value={acctformdetails.city}>
+                    </lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item padding="around-small" size="3" large-device-size="3" medium-device-size="3"
+                    small-device-size="12">
+                    <lightning-combobox name="state" class="start-select" label="Billing State/Province"
+                        placeholder="Select State" options={stateOptions} onchange={inputChangeHandler} value={acctformdetails.stateCode}>
+                    </lightning-combobox>
+                </lightning-layout-item>
+                <lightning-layout-item padding="around-small" size="3" large-device-size="3" medium-device-size="3"
+                    small-device-size="12">
+                    <lightning-input type="text" name="postalCode" class="validate postCode"
+                        label="Billing Zip/Postal Code" placeholder="Enter Postal Code" onchange={postalChangeHandler}
+                        value={acctformdetails.postalCode}>
+                    </lightning-input>
+                </lightning-layout-item>
+
+         <lightning-layout-item padding="around-small" size="3" large-device-size="3" medium-device-size="3"
+                small-device-size="12">
+              <!--  <div class="multiselect">  
+                    <div class="slds-form-element">
+                        <label class="slds-form-element__label" for="text-input-id-1">Show Additional Column(s)</label>
+                        <div style="width: 280px;" class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right">
+                            <lightning-icon size="x-small" class="slds-icon slds-input__icon slds-input__icon_right slds-icon-text-default" icon-name="utility:chevrondown"></lightning-icon>
+                            <input type="text" id="text-input-id" placeholder="Select Option" onclick={showCheckboxes} class="slds-input" />
+                        </div>
+                    </div>
+
+                <div id="checkboxes1" style="width: 280px;padding-left: 10px;position: absolute;height: 75px;overflow: scroll;" class={dropclass}>
+                    <lightning-checkbox-group name="Checkbox Group"
+                    options={options}
+                    value={cGvalue}
+                    onchange={cGroupChange}></lightning-checkbox-group>
+                    <lightning-button class="slds-p-right_small" variant="brand" 
+                             onclick={showhideButton} label="Apply" value="Apply">
+                </lightning-button>
+                </div>
+              </div>-->
+        </lightning-layout-item>
+            
+           
+                
+            </lightning-layout>
+            <!--<template if:true={isModalLanguageOpen}>
+                <c-ucd-non-latin-language non-latin-array={nonLatinArray} onacctlanguagecheckclose={handleCloseModal}
+                    onacctlanguagecheck={handleLanguageChange}></c-ucd-non-latin-language>
+            </template>-->
+
+
+
+
+            <!--<lightning-layout multiple-rows="true">
+            <lightning-layout-item padding="around-small" size="3" large-device-size="3" medium-device-size="3"
+            small-device-size="12">
+              <p>Included columns are: {selectedcGValues}</p>
+            </lightning-layout-item>
+            </lightning-layout>-->
+
+
+
+            <br/>
+            <lightning-layout multiple-rows="true">
+                <lightning-button class="slds-p-left_small" variant="brand" disabled={disableButton}
+                    onclick={nextClickHandler} label="Search" value="Search">
+                </lightning-button>
+                <!-- <lightning-button class="slds-p-left_small" variant="brand" onclick={handleReest} label="Reset" value="Reset">
+        </lightning-button>-->
+            </lightning-layout>
+        </form>
+    </lightning-card>
+</template>
+    <br />
+
+    <template if:true={noAccessToObject}>
+        <lightning-card>
+            <h1>You do not have access to use any functionality on this tab </h1>
+        </lightning-card>
+    </template>
+
+
+    <!--<div class=" slds-theme--shade" style= "padding: 5px;">	
+                    <div class="slds-text-heading_medium">	
+                        Search Results
+                    </div>	
+                </div>
+                <br/>-->
+    <!--  <c-ucd-acct-duplicate acctformdetails={payload} if:true={openDupComp}></c-ucd-acct-duplicate>-->
+
+    <lightning-card if:true={openDupComp}>
+        <template if:true={loaded}>
+            <lightning-spinner alternative-text="Loading"></lightning-spinner>
+        </template>
+        <div class="slds-theme--shade" style="padding: 5px;height: 40px;">
+            <div class=" slds-text-heading_medium slds-float_left">
+                Potential Matches
+            </div>
+            <div class="slds-float_right">
+                <template if:true={showpagination}>  
+                    <!--Child component for searching values in the table-->
+                    <!--<c-ucd-search-box records={tableData} onsearchforkey={handlePaginatorChange}>
+                    </c-ucd-search-box>-->
+                       <c-ucd-search-filter records={tableData} onfilterkey={handleSearchChange}>
+                        </c-ucd-search-filter>                        
+                
+                <div class="multiselect">  
+                    <div class="slds-form-element">
+                        <label class="slds-form-element__label" for="text-input-id-1">Show Additional Column(s)</label>
+                        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right" style="width:215px;">
+                            <lightning-icon size="x-small" class="slds-icon slds-input__icon slds-input__icon_right slds-icon-text-default" icon-name="utility:chevrondown"></lightning-icon>
+                            <input type="text" id="text-input-id" placeholder="Select Option" onclick={showCheckboxes} class="slds-input" />
+                        </div>
+                    </div>
+        
+                <div id="checkboxes1" style="position: absolute;z-index:100;height: 135px;background-color:white;width:215px;" class={dropclass}>
+                   <div style = "height:100px; overflow: scroll;">
+                        <lightning-checkbox-group name="Checkbox Group"
+                        options={options}
+                        value={cGvalue}
+                        onchange={cGroupChange}></lightning-checkbox-group>
+                    </div>
+                    <div style="width:200px;">
+                    <lightning-button style = "width:50px;height:30px;"  class="slds-float_left" variant="base" 
+                             onclick={cancelColumnButton} label="Cancel" value="Cancel">
+                    </lightning-button>
+                    <lightning-button  style = "width:50px;height:30px;" class="slds-float_right"  variant="base"
+                             onclick={showColumnButton} label="Apply" value="Apply">
+                    </lightning-button>
+                    </div>
+                </div>
+              </div>
+              </template>
+            </div>
+        </div>
+
+<br/><br/>
+<br/><br/>
+        <template if:true={showpagination}>
+        <table id="accountTable"
+            class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_fixed-layout slds-table_resizable-cols"
+            role="grid">
+            <thead>
+                <tr class="thead_height">
+                    <th class="radiocolum_width" scope="col">
+                    </th>
+                    <th role="gridcell">
+                        <div class="slds-align_absolute-left" title="Name">Legal Name</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title="First Name">CIM ID</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title="Last Name">Account Name</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title="Last Name">Primary Address</div>
+                    </th>                    
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title="Last Name">Owner Name</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-cell-wrap" title="Last Name">Duplicate Account Status</div>
+                    </th>
+                    <!--<template if:true={showIPA}>
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="Last Name">IPA</div>
+                        </th>
+                    </template>
+                    <template if:true={showIPS}>
+                        <th class="" scope="col">                      
+                            <div class="slds-truncate" title="Last Name">IPS</div>                   
+                        </th>
+                    </template>
+                    <template if:true={showB2B}>
+                        <th class="" scope="col">                      
+                            <div class="slds-truncate" title="Last Name">B2B</div>                   
+                        </th>
+                    </template>
+                    <template if:true={showABM}>
+                        <th class="" scope="col">                      
+                            <div class="slds-truncate" title="Last Name">BU Focus</div>                   
+                        </th>
+                    </template>   -->        
+                  <!--  <template for:each={identifierList} for:item="il">
+                            <th class="" scope="col" key={il.columnName}>                      
+                                <div class="slds-cell-wrap" title={il.columnName}>{il.columnName}</div>                   
+                            </th>
+                    </template>-->
+                    <template for:each={identifiersHeaders} for:item="fn">
+                            <th class="" scope="col" key={fn}>                      
+                                <div class="slds-cell-wrap" title={fn}>{fn}</div>                   
+                            </th>
+                    </template>
+                    <template if:true={showContacts}>
+                        <th class="" scope="col">                      
+                            <div class="slds-cell-wrap" title="Last Name">Contacts Associated</div>                   
+                        </th>
+                    </template>
+
+                   
+                </tr>
+            </thead>
+            <tbody>
+                <template for:each={recordsToDisplay} for:item="trow" for:index="indx">
+                    <tr key={trow.cimID}>
+                        <th>
+                            <div class="slds-checkbox">
+                                <lightning-input type="checkbox" onchange={checkBoxSelectionHandler} value={trow.cimID}
+                                    data-element="subscribe-checkbox" name={trow.accId} data-id={trow.cimID}
+                                    placeholder={trow.accOwner}>
+                                </lightning-input>
+                            </div>
+                        </th>
+                        <td class="slds-cell-wrap" data-label="Wrapped, line clamped">
+                            <div class="slds-line-clamp" title={trow.accName}>{trow.accName}</div>
+                        </td>
+                        <th scope="col">
+                            <div class="slds-truncate" title={trow.cimID}>{trow.cimID}</div>
+                        </th>
+                        <th scope="col" style="word-break: break-all;">
+                            <!--   <div class="slds-truncate" title={trow.IPAFlag}>{trow.IPAFlag}</div> -->
+                            <lightning-button variant="base" label={trow.SFaccName} title={trow.accId}
+                                onclick={handleRowAction} class="slds-float_left"> {trow.SFaccName}</lightning-button>
+                        </th>
+                        <td class="slds-cell-wrap" data-label="Wrapped, line clamped">
+                            <div class="" title={trow.fullAddress}>{trow.fullAddress}</div>
+                        </td>                   
+                        <th scope="col">
+                            <div class="slds-truncate" title={trow.accOwner}>{trow.accOwner}</div>
+                            <!--  <lightning-button variant="base" label={trow.accId} title={trow.accName} onclick={handleRowAction} class="slds-m-left_x-small"> {trow.accId}</lightning-button> -->
+                        </th>
+                        <th scope="col">
+                            <div class="slds-truncate" title={trow.searchScore}>{trow.searchScore}</div>
+                        </th>
+                        <!--<template for:each={identifierList} for:item="tcol" for:index="indx">                            
+                            <template if:true={tcol.isCheckbox}>  
+                                <template if:true={tcol.columnValue}>
+                                    <th scope="col" key={tcol.columnName}>
+                                        <input name={tcol.columnValue}  type="checkbox" checked value="1" readonly />
+                                    </th>
+                                </template>
+                            </template>
+                            <template if:false={tcol.isCheckbox}>
+                                <th class="slds-cell-wrap" data-label="Wrapped, line clamped" key={tcol.columnName}>
+                                    <div class="" title={tcol.columnName}>{tcol.columnValue}</div>     
+                                </th>
+                            </template>
+                            
+                        </template>-->
+                       
+                        
+                        <template for:each={trow.addColList} for:item="fn">
+                            <template if:true ={fn.showColumn}>
+                                <th scope="col" key={fn.UILabel} class="slds-cell-wrap" data-label="Wrapped, line clamped">
+                                    
+                                        <template if:true={fn.isCheckbox}> 
+                                        <template if:true={fn.checkboxFieldValue}>                           
+                                                    <input name={fn.UILabel}  type="checkbox" checked value="1" readonly />                                  
+                                            </template>
+                                        </template>               
+                                        <template if:false={fn.isCheckbox}> 
+                                                <div class="" title={fn.UILabel}>{fn.textFieldValue}</div>     
+                                        </template>
+                                    
+                                </th>
+                            </template>
+                        </template>
+                    
+
+                       <!-- <template if:true={showIPA}>
+                            <th scope="col">
+                                <template if:true={trow.IPAFlag}>                
+                                    <input name="IPS_Output" type="checkbox" checked value="1" readonly />
+                                </template> 
+                            </th>
+                        </template>
+                        <template if:true={showIPS}>
+                            <th scope="col">            
+                                <template if:true={trow.IPSFlag}>                
+                                    <input name="IPS_Output" type="checkbox" checked value="1" readonly />
+                                </template>                          
+                            </th>
+                        </template>
+                        <template if:true={showB2B}>
+                            <th scope="col">                            
+                                <template if:true={trow.B2BFlag}>                
+                                    <input name="IPS_Output" type="checkbox" checked value="1" readonly />
+                                </template>                          
+                            </th>
+                        </template>
+                        <template if:true={showABM}>
+                            <th class="slds-cell-wrap" data-label="Wrapped, line clamped">                 
+                                    <div class="" title={trow.ABMFlag}>{trow.ABMFlag}</div>                     
+                            </th>
+                        </template>-->
+                        <template if:true={showContacts}>
+                            <th class="slds-cell-wrap" data-label="Wrapped, line clamped">                 
+                                    <div class="" title={trow.relatedContacts}>{trow.relatedContacts}</div>                     
+                            </th>
+                        </template>
+
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+        </template>
+        <!--Child component showing pagination-->
+        <!-- <div class="slds-truncate" title={trow.IPAFlag}>{trow.IPSFlag}</div>-->
+        <template if:true={showpagination}>
+            <c-ucd-pagination records={tableData} total-records={tableData.length} show-search show-pagination
+                onpaginatorchange={handlePaginatorChange}>
+            </c-ucd-pagination>
+        </template>
+       
+
+        <!--Create Account request Checkbox-->
+        <div class="slds-align_absolute-center">
+            <lightning-input type="checkbox" data-id="checkboxField" label="Did not find any match Create New Account"
+                onchange={handleCheckBoxChange}></lightning-input>
+        </div>
+        <template if:false={showpagination}>
+            <div class="slds-text-heading_small slds-align_absolute-center" style="padding: 5px;">
+                <b>Potential matches not found.</b>
+            </div>
+        </template>
+        <br />
+        
+
+        <!--Page Buttons-->
+        <template if:true={isValidUser}>
+            <lightning-button onclick={openModal} class="slds-p-left_small" variant="brand" value="Next" label="Next">
+            </lightning-button>
+        </template>
+        <template if:false={isValidUser}>
+            <lightning-button onclick={onNextClickHandler} disabled={disabledCondition} data-element="next-button"
+                class="slds-p-left_small" variant="brand" value="Next" label="Next"></lightning-button>
+        </template>
+
+        <!--Markup for account ownership if user selects an account from table which exist in Salesforce and MDM-->
+        <template if:true={isModalOpen}>
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <header class="slds-modal__header">
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Account Claim
+                            Notification</h2>
+                    </header>
+                    <!-- Modal/Popup Box LWC body starts here -->
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+
+                        <p><b>Account is already owned, do you want to open the account
+                            </b></p>
+                    </div>
+                    <!-- Modal/Popup Box LWC footer starts here -->
+                    <footer class="slds-modal__footer">
+                        <button class="slds-button slds-button_neutral" onclick={closeModal}
+                            title="Cancel">Cancel</button>
+                        <button class="slds-button slds-button_brand" onclick={onNextClickHandler}
+                            title="OK">OK</button>
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </template>
+
+        <!--Modal showing the Account record details once user cicks on the Salesforce Id from table-->
+        <template if:true={ShowModal}>
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <!-- modal header start -->
+                    <header class="slds-modal__header">
+                        <lightning-button-icon icon-name="utility:close" class="slds-float_right" onclick={closeModal}
+                            alternative-text="close"></lightning-button-icon>
+                        <h2 id="modal-heading-02" class="slds-text-heading_medium slds-hyphenate">Record Detail:
+                            {recName}</h2>
+                    </header>
+                    <!-- modal body start -->
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-2">
+                        <dl class="slds-wrap">
+                            <lightning-record-form record-id={recId} object-api-name="Account" layout-type="Full"
+                                columns="2" mode="readonly" onsuccess={handleSuccess}>
+                            </lightning-record-form>
+                        </dl>
+                    </div>
+                    <!-- modal footer start-->
+                    <footer class="slds-modal__footer">
+                        <lightning-button variant="brand" label="Close" title="Close" onclick={closeModal}>
+                        </lightning-button>
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </template>
+
+    </lightning-card>
+   
+
+
+</template>

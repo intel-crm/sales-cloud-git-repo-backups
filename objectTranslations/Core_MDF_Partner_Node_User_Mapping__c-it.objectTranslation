@@ -18,18 +18,6 @@
         <relationshipLabel><!-- Account Users --></relationshipLabel>
     </fields>
     <fields>
-        <label><!-- Action Needed --></label>
-        <name>Core_MDF_Action_Needed_nm__c</name>
-        <picklistValues>
-            <masterLabel>Owner Update</masterLabel>
-            <translation><!-- Owner Update --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
-        <label>Attiva</label>
-        <name>Core_MDF_Active_Ind__c</name>
-    </fields>
-    <fields>
         <label><!-- Created By --></label>
         <name>Core_MDF_CreatedBy_Nm__c</name>
     </fields>
@@ -54,12 +42,12 @@
     <nameFieldLabel><!-- Account User Name --></nameFieldLabel>
     <startsWith>Consonant</startsWith>
     <validationRules>
-        <errorMessage>Il campo utente o il campo account non devono essere vuoti</errorMessage>
-        <name>Core_MDF_CCP_User_Should_not_be_empty</name>
+        <errorMessage>Questo utente non ha accesso al programma selezionato</errorMessage>
+        <name>Core_MDF_Account_User_Validation</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- You do not have permission to create an Account User for the selected Program. --></errorMessage>
-        <name>Core_MDF_IPA_Program_Admin_Check</name>
+        <errorMessage>Il campo utente o il campo account non devono essere vuoti</errorMessage>
+        <name>Core_MDF_CCP_User_Should_not_be_empty</name>
     </validationRules>
     <validationRules>
         <errorMessage>L’utente selezionato è stato disattivato. Selezionare un utente con stato attivo.</errorMessage>

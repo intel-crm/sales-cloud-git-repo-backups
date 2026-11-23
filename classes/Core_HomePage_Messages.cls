@@ -73,22 +73,34 @@ public class Core_HomePage_Messages {
        system.debug('line 73'+kpiheadermsg);
     }
     
-  /*  @AuraEnabled(cacheable=true)
+    @AuraEnabled(cacheable=true)
     public static string getBannerTextMsgLWC() {
-        string bannerMessage = '';
+        string bannerMessage;
         // Retrieve the banner settings
         Core_Banner_Setting__c bannerSetting = Core_Banner_Setting__c.getInstance();
         System.debug(bannerSetting.IsBannerVisible__c);
         
         // Check if the banner is visible
         if (bannerSetting.IsBannerVisible__c == true) {
+            Date today = Date.today();
             // Query for the custom banner text
-            List<Core_Banner_Text__c> bannerTextList = [SELECT Core_Text_Message__c FROM Core_Banner_Text__c WHERE core_CRM_type__c = 'Home Page' LIMIT 1];
+            list<Core_Banner_Text__c> bannerTextList = [SELECT core_CRM_type__c, Core_Text_Message__c FROM Core_Banner_Text__c 
+                                                        WHERE (core_CRM_type__c = 'Home Page' AND core_isActive__c=true AND Core_Start_Date__c <= :today AND Core_End_Date__c >= :today) 
+                                                        OR core_CRM_type__c = 'Home Page Default'];
             
             // If a message was found, assign it to the variable
             if (!bannerTextList.isEmpty()) {
-                bannerMessage = bannerTextList[0].Core_Text_Message__c;
-                System.debug('Banner Message: ' + bannerMessage);
+                for(Core_Banner_Text__c banner : bannerTextList) {
+                    if(banner.core_CRM_type__c == 'Home Page' && banner.Core_Text_Message__c <> null) {
+                        bannerMessage = banner.Core_Text_Message__c;
+                        System.debug('Banner Message: ' + bannerMessage);
+                    }
+                    // If no message was found, fall back to the default message
+                    if ((bannerMessage == null || bannerMessage == '') && banner.core_CRM_type__c == 'Home Page Default' && banner.Core_Text_Message__c <> null) {
+                        bannerMessage = banner.Core_Text_Message__c;
+                        System.debug('Default Banner Message: ' + bannerMessage);
+                    }
+                }
             }
             
         }
@@ -97,22 +109,33 @@ public class Core_HomePage_Messages {
     
     @AuraEnabled(cacheable=true)
     public static map<string,string> getkpiTextMsgLWC(){
-        
+        Date today = Date.today();
+        string kpiHeadMsg;
+        string kpiBodyMsgs;
         map<string,string> kpiMsgMap = new map<string,string>();
         // Query for both KPI header and body in a single query
-        List<Core_Banner_Text__c> bannerMessages = [SELECT Core_Text_Message__c, core_CRM_type__c FROM Core_Banner_Text__c WHERE core_CRM_type__c IN ('KPI header', 'KPI body') ];
+        List<Core_Banner_Text__c> bannerMessages = [SELECT Core_Text_Message__c, core_CRM_type__c FROM Core_Banner_Text__c 
+                                                    WHERE (core_CRM_type__c IN ('KPI header', 'KPI body') AND core_isActive__c=true 
+                                                    AND Core_Start_Date__c <= :today AND Core_End_Date__c >= :today) 
+                                                    OR (core_CRM_type__c IN ('KPI header default', 'KPI body default'))];
         
         // Loop through the results and assign messages based on the type
         for (Core_Banner_Text__c banner : bannerMessages) {
             if (banner.core_CRM_type__c == 'KPI header') {
-                kpiheadermsg = banner.Core_Text_Message__c;
-                kpiMsgMap.put('Head',kpiheadermsg);
-            } else if (banner.core_CRM_type__c == 'KPI body') {
-                kpibodymsg = banner.Core_Text_Message__c;
-                kpiMsgMap.put('Body',kpibodymsg);
+                kpiHeadMsg = banner.Core_Text_Message__c;
+                kpiMsgMap.put('Head',kpiHeadMsg);
+            }else if (banner.core_CRM_type__c == 'KPI header default' && kpiHeadMsg == null) {
+                kpiHeadMsg = banner.Core_Text_Message__c;
+                kpiMsgMap.put('Head',kpiHeadMsg);
+            }else if (banner.core_CRM_type__c == 'KPI body') {
+                kpiBodyMsgs = banner.Core_Text_Message__c;
+                kpiMsgMap.put('Body',kpiBodyMsgs);
+            }else if (banner.core_CRM_type__c == 'KPI body default' && kpiBodyMsgs == null) {
+                kpiBodyMsgs = banner.Core_Text_Message__c;
+                kpiMsgMap.put('Body',kpiBodyMsgs);
             }
+          
         }
         return kpiMsgMap;
-        
-    }*/
+    }
 }

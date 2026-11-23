@@ -1,0 +1,11 @@
+.my-icon {
+    --slds-c-icon-color-foreground-default: white;
+    
+}
+.lgc-bc {
+    font-family: 'Work Sans';
+    font-size: 14px;
+    padding-bottom: 60px;
+    padding-top: 30px;
+    padding-left: 58px;
+}

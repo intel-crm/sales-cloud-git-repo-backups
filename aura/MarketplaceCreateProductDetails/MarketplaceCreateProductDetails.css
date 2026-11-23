@@ -1,4 +1,4 @@
-/* .THIS .cursorPointer {
+.THIS .cursorPointer {
   cursor: pointer;
 }
 
@@ -22,11 +22,7 @@
   background-color: t(lightGray);
   height: 5px;
 }
-.THIS .widthLimit {
-  overflow-wrap: break-word;
-  width: 100%;
-}
 .THIS .progressBar .bar {
   background-color: t(progressBarBlue);
   height: 5px;
-} */
+}

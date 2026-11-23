@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Recommend Training Links</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Recommend Training Links</value>
+    </caseValues>
+    <fields>
+        <label><!-- Contact --></label>
+        <name>Contact__c</name>
+        <relationshipLabel><!-- Recommend Training Links --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Partner Training Links --></label>
+        <name>Partner_Training_Links__c</name>
+        <relationshipLabel><!-- Recommend Training Links --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

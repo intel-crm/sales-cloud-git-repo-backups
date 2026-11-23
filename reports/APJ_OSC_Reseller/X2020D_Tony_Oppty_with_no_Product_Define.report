@@ -47,11 +47,11 @@
             <value>Develop,Design</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OWNER_EMAIL</column>
+            <column>OWNER_MANAGER</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>lucy.tran@intel.com,joshua.chen@intel.com,tomomi.aoki@intel.com,xin.yi.chan@intel.com,issac.wei.lun.lee@intel.com,becca.jeong@intel.com,meredy.mun@intel.com</value>
+            <operator>equals</operator>
+            <value>Tony Ferrolino Jr</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

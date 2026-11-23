@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Audience xmlns="http://soap.sforce.com/2006/04/metadata">
+    <audienceName>PSG_TestQuote</audienceName>
+    <container>PSG(to be deleted)</container>
+    <criteria>
+        <criterion>
+            <criteriaNumber>1</criteriaNumber>
+            <criterionValue>
+                <isEnabled>true</isEnabled>
+                <permissionName>PSG_External_Disty</permissionName>
+                <permissionType>Custom</permissionType>
+            </criterionValue>
+            <operator>Equal</operator>
+            <type>Permission</type>
+        </criterion>
+    </criteria>
+    <formulaFilterType>AllCriteriaMatch</formulaFilterType>
+    <isDefaultAudience>false</isDefaultAudience>
+    <targets>
+        <target>
+            <groupName>fcecbf32-ffd9-4279-b72f-cfae79f49312</groupName>
+            <priority>1</priority>
+            <targetType>ExperienceVariation</targetType>
+            <targetValue>Quote_List_Quote_List_Page</targetValue>
+        </target>
+        <target>
+            <groupName>bed49ebd-7aaa-40ea-a38d-f43b0177abfb</groupName>
+            <priority>1</priority>
+            <targetType>ExperienceVariation</targetType>
+            <targetValue>Quote_Detail_Quote_Detail_Page</targetValue>
+        </target>
+    </targets>
+</Audience>

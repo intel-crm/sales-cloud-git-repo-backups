@@ -45,7 +45,8 @@
                 <lightning:icon iconName="utility:chevrondown" class="shiftUp icon-white" size="x-small" />
             </aura:if>
         </button>
-                
+        
+        
             <aura:if isTrue="{! and(!v.singleItem, v.renderOverlay) }">
             	<div class="partner-overlay slds-hide" aura:id="partnerOverlay">
                 <div class="valign-middle"> <!-- slds-p-bottom_medium -->

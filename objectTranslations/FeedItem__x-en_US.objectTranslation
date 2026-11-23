@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Feed Item External</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Feed Items External</value>
+    </caseValues>
+    <fields>
+        <label><!-- Best Comment ID --></label>
+        <name>BestCommentId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Body --></label>
+        <name>Body__c</name>
+    </fields>
+    <fields>
+        <label><!-- Comment Count --></label>
+        <name>CommentCount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Network Connection ID --></label>
+        <name>ConnectionId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Parent ID --></label>
+        <name>Core_Parent_ID__c</name>
+        <relationshipLabel><!-- Feed Items External --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Created By ID --></label>
+        <name>CreatedById__c</name>
+    </fields>
+    <fields>
+        <label><!-- Created Date --></label>
+        <name>CreatedDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Has Content --></label>
+        <name>HasContent__c</name>
+    </fields>
+    <fields>
+        <label><!-- Has Feed Entity Attachment --></label>
+        <name>HasFeedEntity__c</name>
+    </fields>
+    <fields>
+        <label><!-- Has Link --></label>
+        <name>HasLink__c</name>
+    </fields>
+    <fields>
+        <label><!-- Has Verified Comment --></label>
+        <name>HasVerifiedComment__c</name>
+    </fields>
+    <fields>
+        <label><!-- InsertedBy ID --></label>
+        <name>InsertedById__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Closed --></label>
+        <name>IsClosed__c</name>
+    </fields>
+    <fields>
+        <label><!-- Deleted --></label>
+        <name>IsDeleted__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Rich Text --></label>
+        <name>IsRichText__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Edit By ID --></label>
+        <name>LastEditById__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Edit Date --></label>
+        <name>LastEditDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Modified Date --></label>
+        <name>LastModifiedDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Like Count --></label>
+        <name>LikeCount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Link Url --></label>
+        <name>LinkUrl__c</name>
+    </fields>
+    <fields>
+        <label><!-- Network Scope --></label>
+        <name>NetworkScope__c</name>
+        <picklistValues>
+            <masterLabel>All Networks</masterLabel>
+            <translation><!-- All Networks --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Parent ID --></label>
+        <name>ParentId__c</name>
+        <relationshipLabel><!-- Feed Items External --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Related Record ID --></label>
+        <name>RelatedRecordId__c</name>
+        <relationshipLabel><!-- Feed Items External --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Revision --></label>
+        <name>Revision__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Status__c</name>
+        <picklistValues>
+            <masterLabel>Draft</masterLabel>
+            <translation><!-- Draft --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PendingReview</masterLabel>
+            <translation><!-- PendingReview --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Published</masterLabel>
+            <translation><!-- Published --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- System Modstamp --></label>
+        <name>SystemModstamp__c</name>
+    </fields>
+    <fields>
+        <label><!-- Title --></label>
+        <name>Title__c</name>
+    </fields>
+    <fields>
+        <label><!-- Feed Item Type --></label>
+        <name>Type__c</name>
+        <picklistValues>
+            <masterLabel>Activity Change</masterLabel>
+            <translation><!-- Activity Change --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Advanced Text Post</masterLabel>
+            <translation><!-- Advanced Text Post --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Approval Post</masterLabel>
+            <translation><!-- Approval Post --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Attached Article</masterLabel>
+            <translation><!-- Attached Article --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Basic Template Post</masterLabel>
+            <translation><!-- Basic Template Post --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Call Log Feed</masterLabel>
+            <translation><!-- Call Log Feed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Canvas</masterLabel>
+            <translation><!-- Canvas --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Case Comment Feed</masterLabel>
+            <translation><!-- Case Comment Feed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Change Status Feed</masterLabel>
+            <translation><!-- Change Status Feed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Chat Transcript Post</masterLabel>
+            <translation><!-- Chat Transcript Post --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Collaboration Group Created</masterLabel>
+            <translation><!-- Collaboration Group Created --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Collaboration Group Reactivated</masterLabel>
+            <translation><!-- Collaboration Group Reactivated --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Content Post</masterLabel>
+            <translation><!-- Content Post --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Created Record</masterLabel>
+            <translation><!-- Created Record --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Dashboard Component Snapshot</masterLabel>
+            <translation><!-- Dashboard Component Snapshot --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Email Message Feed</masterLabel>
+            <translation><!-- Email Message Feed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Facebook Post</masterLabel>
+            <translation><!-- Facebook Post --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Link Post</masterLabel>
+            <translation><!-- Link Post --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Milestone Event</masterLabel>
+            <translation><!-- Milestone Event --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Poll</masterLabel>
+            <translation><!-- Poll --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Profile Skill Post</masterLabel>
+            <translation><!-- Profile Skill Post --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Question Post</masterLabel>
+            <translation><!-- Question Post --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Reply Post</masterLabel>
+            <translation><!-- Reply Post --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Social Post</masterLabel>
+            <translation><!-- Social Post --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Text Post</masterLabel>
+            <translation><!-- Text Post --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tracked Change</masterLabel>
+            <translation><!-- Tracked Change --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>User Status</masterLabel>
+            <translation><!-- User Status --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WDC Thanks</masterLabel>
+            <translation><!-- WDC Thanks --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>a</masterLabel>
+            <translation><!-- a --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Visibility --></label>
+        <name>Visibility__c</name>
+        <picklistValues>
+            <masterLabel>All Users</masterLabel>
+            <translation><!-- All Users --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Internal Users</masterLabel>
+            <translation><!-- Internal Users --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

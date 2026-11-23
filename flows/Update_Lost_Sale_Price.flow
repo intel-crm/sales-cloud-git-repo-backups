@@ -123,7 +123,7 @@ ISPICKVAL({!$Record.Core_Status__c}, &quot;Cancelled&quot;))))</filterFormula>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordBeforeSave</triggerType>
     </start>
-    <status>Active</status>
+    <status>Obsolete</status>
     <variables>
         <name>NowSalesPrice</name>
         <dataType>Currency</dataType>

@@ -364,25 +364,6 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>PRM_Source__c</fullName>
-        <label>Source</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Picklist</type>
-        <valueSet>
-            <restricted>true</restricted>
-            <valueSetDefinition>
-                <sorted>false</sorted>
-                <value>
-                    <fullName>Reltio SBR</fullName>
-                    <default>false</default>
-                    <label>Reltio SBR</label>
-                </value>
-            </valueSetDefinition>
-        </valueSet>
-    </fields>
-    <fields>
         <fullName>PRM_Subdiv_Cd__c</fullName>
         <description>It stores the Sub-division Code of the country from the CIM system for the matching account</description>
         <externalId>false</externalId>

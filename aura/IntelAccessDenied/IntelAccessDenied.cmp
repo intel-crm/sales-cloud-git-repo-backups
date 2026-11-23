@@ -1,7 +1,7 @@
 <aura:component implements="forceCommunity:availableForAllPageTypes" access="global" description="Determines redirect process when SSO fails">
     <aura:attribute name="lstLines" type="List" default="[ 'Access Denied', 'Access Denied', 'Access Denied' ]"/>
     <aura:attribute name="blShowError" type="Boolean" default="false"/>
-    <c:coreIntcSso aura:id="ssoLibrary" />
+    <c:IntelSignInRedirectLibrary aura:id="signInRedirectLibrary" />
     
     <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
     

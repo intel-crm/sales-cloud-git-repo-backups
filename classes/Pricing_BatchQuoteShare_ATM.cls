@@ -32,6 +32,7 @@ public without sharing class Pricing_BatchQuoteShare_ATM  implements Database.Ba
     * @return List<AccountTeamMember> 
     **/
     public List<AccountTeamMember> start(Database.BatchableContext bc){
+        system.debug('Enetered batch share ATM Class: '+accTeamMembersList);
         return accTeamMembersList;
     }
     
@@ -43,6 +44,7 @@ public without sharing class Pricing_BatchQuoteShare_ATM  implements Database.Ba
     * @param scope 
     **/
     public void execute(Database.BatchableContext bc, List<AccountTeamMember> scope){
+        System.debug('Pricing_BatchQuoteShare_ATM.execute entered. scopeSize=' + scope.size());
         try{        
             Set<Id> userIds = new Set<Id>();
             for(AccountTeamMember atm : scope){
@@ -78,7 +80,9 @@ public without sharing class Pricing_BatchQuoteShare_ATM  implements Database.Ba
             }
         }catch(exception e){ 
             Pricing_Tender_Utility.logError(e);
-        }    
+        } finally {
+            System.debug('Pricing_BatchQuoteShare_ATM.execute completed. scopeSize=' + scope.size());
+        }
     }
     
     /**

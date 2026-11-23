@@ -16,8 +16,6 @@ Public class PRM_ProfileResponseCtlr_Test{
     static testMethod void responseTestMethod(){
         Test.startTest();
         Id recordTypeIdAccount = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
-       Id accountRTPartnerAccountGroup = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get('Core_Partner_Account_Group').getRecordTypeId();
-
         
         Account acc = new Account();
         acc.RecordTypeId = recordTypeIdAccount;
@@ -30,40 +28,8 @@ Public class PRM_ProfileResponseCtlr_Test{
         //acc.PRM_PartnerType__c = 'Cloud Service Provider (CSP)';
         insert acc;
         
-         Account acc1 = new Account();
-        acc1.RecordTypeId = accountRTPartnerAccountGroup;
-        acc1.Name='Partner Account';
-        acc1.Core_Account_Type__c ='Distributor';
-        acc1.Industry='Agriculture';
-        acc1.BillingCity='New Delhi';
-        acc1.BillingCountryCode='IND';
-        acc1.BillingStreet='4th Floor,New Road';
-        acc1.BillingPostalCode='110037';
-        acc1.BillingStateCode='KA';
-        insert acc1;
-        
-          Account acc2 = new Account();
-        acc2.Name='Intel Account - Two';
-        acc2.RecordTypeId = recordTypeIdAccount;
-        acc2.Core_Account_Type__c ='Distributor';
-        acc2.Industry='Agriculture';
-        acc2.BillingCity='Chennai';
-        acc2.BillingCountryCode='IND';
-        acc2.BillingStreet='4th Floor,New Road';
-        acc2.BillingPostalCode='110037';
-        acc2.BillingStateCode='TN';
-        acc2.Core_Intel_Partner_Alliance_PartnerGroup__c =true;
-        insert acc2;
-        
-        Core_Account_Group_Member__c agm2 = new Core_Account_Group_Member__c();
-        agm2.Core_Partner_Account_Id__c = acc1.Id;
-        agm2.Core_Intel_Account_Id__c = acc2.Id;
-        agm2.Core_Inactive_Ind__c = false;
-        insert agm2;
-        
         Contact con = PRM_TestUtility.getContact();
         con.AccountId = acc.Id;
-        con.MailingCountry='USA';
         insert con;
         
         ChannelProgram cp = new ChannelProgram();
@@ -71,7 +37,7 @@ Public class PRM_ProfileResponseCtlr_Test{
         cp.PRM_programCode__c='IPA';
         insert cp;
         
-        //System.debug('cp-->'+cp);
+        System.debug('cp-->'+cp);
         
         ChannelProgramLevel cpl = new ChannelProgramLevel(); 
         cpl.Name='Titanium';
@@ -86,7 +52,7 @@ Public class PRM_ProfileResponseCtlr_Test{
         acctChnlMem.PRM_Partner_Role__c='Seller';
         insert acctChnlMem;
         
-        //System.debug('acctChnlMem-->'+acctChnlMem);
+        System.debug('acctChnlMem-->'+acctChnlMem);
         
         PRM_PartnerType__c pt = new PRM_PartnerType__c();
         pt.Name = 'Cloud Service Provider (CSP)';
@@ -101,7 +67,6 @@ Public class PRM_ProfileResponseCtlr_Test{
         //pq.PRM_Partner_Type_Id__c = pt.Id;
         //pq.PRM_Partner_Role__c='Service Provider';
         pq.PRM_Question_Type_Nm__c = 'Text';
-        pq.PRM_InActive_Ind__c = false;
         insert pq;
         
         PRM_Profile_Questions__c pq1 = new PRM_Profile_Questions__c();
@@ -109,7 +74,6 @@ Public class PRM_ProfileResponseCtlr_Test{
         //pq1.PRM_Partner_Role__c='Service Provider';       
         //pq1.PRM_Partner_Type_Id__c = pt.Id;
         pq1.PRM_Question_Type_Nm__c = 'Textarea';
-        pq1.PRM_InActive_Ind__c = false;
         insert pq1;
         
         PRM_Profile_Questions__c pq2 = new PRM_Profile_Questions__c();
@@ -117,7 +81,6 @@ Public class PRM_ProfileResponseCtlr_Test{
         //pq2.PRM_Partner_Role__c='Service Provider';
         //pq2.PRM_Partner_Type_Id__c = pt.Id;
         pq2.PRM_Question_Type_Nm__c = 'Multiselect';
-        pq2.PRM_InActive_Ind__c = false;
         insert pq2;
         
         PRM_Profile_Questions__c pq3 = new PRM_Profile_Questions__c();
@@ -125,7 +88,6 @@ Public class PRM_ProfileResponseCtlr_Test{
         //pq3.PRM_Partner_Role__c='Service Provider';
         //pq3.PRM_Partner_Type_Id__c = pt.Id;
         pq3.PRM_Question_Type_Nm__c = 'Boolean';
-        pq3.PRM_InActive_Ind__c = false;
         insert pq3;
         
         PRM_Profile_Questions__c pq4 = new PRM_Profile_Questions__c();
@@ -133,7 +95,6 @@ Public class PRM_ProfileResponseCtlr_Test{
         //pq4.PRM_Partner_Role__c='Service Provider';
         //pq4.PRM_Partner_Type_Id__c = pt.Id;
         pq4.PRM_Question_Type_Nm__c = 'Picklist';
-        pq4.PRM_InActive_Ind__c = false;
         insert pq4;
         
         PRM_Profile_Answer__c pa = new PRM_Profile_Answer__c();
@@ -229,11 +190,7 @@ Public class PRM_ProfileResponseCtlr_Test{
         PRM_ProfileResponseCtlr.getResponses(acctChnlMem.Id,'Intel Partner Alliance','PRM_AccountChannelMembership__c');
         PRM_ProfileResponseCtlr.getResponses(acc.Id,'Intel Partner Alliance','Account');
         PRM_ProfileResponseCtlr.getResponses(acc.Id,'Intel Partner Alliance, New Partner Program','Account');
-        PRM_ProfileResponseCtlr.saveResponse(prList,presList,acc.Id);
-        PRM_ProfileResponseCtlr.disableFlagValues(acc2.Id);
-         PRM_ProfileResponseCtlr.disableFlagValues(acc1.Id);
-
-
+        PRM_ProfileResponseCtlr.saveResponse(prList,presList);
         
         System.assertEquals(pr.PRM_Account_Id__c,acc.Id,'Value does not match');
     }

@@ -110,7 +110,6 @@
         <field>Opportunity.Core_Product_Segment__c</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
         <field>Opportunity.Core_Architecture_Conversion__c</field>
     </columns>
     <columns>
@@ -184,6 +183,9 @@
         <field>EXP_AMOUNT</field>
     </columns>
     <columns>
+        <field>Opportunity.Core_Risk_Reason__c</field>
+    </columns>
+    <columns>
         <field>Opportunity.Core_At_Risk_Created_Date__c</field>
     </columns>
     <columns>
@@ -226,7 +228,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Deal: Scale-enable,Deal: Sell-through,Deal: Sell-to</value>
+            <value>Deal: Sell-through,Deal: Sell-to</value>
         </criteriaItems>
         <criteriaItems>
             <column>BucketField_12541241</column>
@@ -243,11 +245,11 @@
             <value>National Solution Integrator (NSI)</value>
         </criteriaItems>
         <criteriaItems>
-            <column>FULL_NAME</column>
+            <column>ROLLUP_DESCRIPTION</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Audrey,Kim,Harish,Estelle,Lara,Ivan,Monchai</value>
+            <operator>notContain</operator>
+            <value>Ram</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Rebate Claim</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Rebate Claims</value>
+    </caseValues>
+    <fields>
+        <label><!-- Approval Date --></label>
+        <name>PCC_Approval_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approved By --></label>
+        <name>PCC_Approved_By__c</name>
+        <relationshipLabel><!-- Rebate Claims (Approved By) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- CSAR ID --></label>
+        <name>PCC_CSAR_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Claim Status --></label>
+        <name>PCC_Claim_Status__c</name>
+        <picklistValues>
+            <masterLabel>Claim Approved - Payment Pending</masterLabel>
+            <translation><!-- Claim Approved - Payment Pending --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Claim Rejected</masterLabel>
+            <translation><!-- Claim Rejected --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Claim Submitted</masterLabel>
+            <translation><!-- Claim Submitted --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Draft</masterLabel>
+            <translation><!-- Draft --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Payment Processed</masterLabel>
+            <translation><!-- Payment Processed --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Date Submitted for Approval --></label>
+        <name>PCC_Date_Submitted_for_Approval__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Account Region --></label>
+        <name>PCC_Partner_Account_Region__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Name --></label>
+        <name>PCC_Partner_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner --></label>
+        <name>PCC_Partner__c</name>
+        <relationshipLabel><!-- Rebate Claims --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Payment Date --></label>
+        <name>PCC_Payment_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Payment Ref Id --></label>
+        <name>PCC_Payment_Ref_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Upload Date --></label>
+        <name>PCC_Submission_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Uploaded By --></label>
+        <name>PCC_Submitted_By__c</name>
+        <relationshipLabel><!-- Rebate Claims (Uploaded By) --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Total sum of QL&apos;s Rebate Claim approved by Rebate Analyst --></help>
+        <label><!-- Total Approved Claim Rebate --></label>
+        <name>PCC_Total_Approved_Rebate__c</name>
+    </fields>
+    <fields>
+        <help><!-- Total sum of QL&apos;s Rebate Per Unit times Claimed Quantity --></help>
+        <label><!-- Total Submitted Claim Rebate --></label>
+        <name>PCC_Total_Claimed_Rebate__c</name>
+    </fields>
+    <fields>
+        <help><!-- Total Number of Quote Lines in Rebate Claim Template --></help>
+        <label><!-- Total Number of Quote Line Items --></label>
+        <name>PCC_Total_Quote_Line_Items__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Rejected Claim Rebate --></label>
+        <name>PCC_Total_Rejected_Rebate__c</name>
+    </fields>
+    <fields>
+        <help><!-- Total Number of unique Deal Opportunities the QLs in Rebate Claim associated with --></help>
+        <label><!-- Total Number of Opportunities --></label>
+        <name>Total_Number_of_Opportunities__c</name>
+    </fields>
+    <recordTypes>
+        <description><!-- Record Type for Rebate Claim --></description>
+        <label><!-- Rebate Claim --></label>
+        <name>PCC_Rebate_Claim</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- You are not authorized to update the payment details. --></errorMessage>
+        <name>PCC_Check_Perm_For_CSAR_Payment_Fields</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Show_QL_Quantity --></label>
+        <name>Show_QL_Quantity</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- View_Staging_Records --></label>
+        <name>View_Staging_Records</name>
+    </webLinks>
+</CustomObjectTranslation>

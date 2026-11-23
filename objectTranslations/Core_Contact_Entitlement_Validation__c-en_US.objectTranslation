@@ -17,10 +17,6 @@
         <name>Core_Account_Owner_Role__c</name>
     </fields>
     <fields>
-        <label><!-- Unified ID --></label>
-        <name>Core_Business_Party_Id__c</name>
-    </fields>
-    <fields>
         <label><!-- CIM ID --></label>
         <name>Core_CIM_ID__c</name>
     </fields>

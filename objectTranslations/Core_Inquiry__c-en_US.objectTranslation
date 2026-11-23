@@ -557,8 +557,12 @@
         <name>Core_Lead_Status__c</name>
     </fields>
     <fields>
-        <label><!-- Owner First Name --></label>
-        <name>Core_Owner_First_Name__c</name>
+        <label><!-- Owner Name --></label>
+        <name>Core_Owner_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Core_Owner --></label>
+        <name>Core_Owner__c</name>
     </fields>
     <fields>
         <label><!-- Pain Point --></label>
@@ -679,10 +683,6 @@
     <fields>
         <label><!-- Reviewed by Rep --></label>
         <name>Core_Reviewed_by_Rep_Chk__c</name>
-    </fields>
-    <fields>
-        <label><!-- Salutation --></label>
-        <name>Core_Salutation_Txt__c</name>
     </fields>
     <fields>
         <label><!-- Sent to Partner --></label>

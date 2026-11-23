@@ -2,334 +2,6 @@
 <CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
     <description>Custom Metadata to store the Program and Geo based Group Names</description>
     <fields>
-        <fullName>Core_MDF_Budget_Type_Abbr_txt__c</fullName>
-        <externalId>false</externalId>
-        <fieldManageability>DeveloperControlled</fieldManageability>
-        <label>Budget Type Abbr</label>
-        <length>6</length>
-        <required>false</required>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Budget_Type_txt__c</fullName>
-        <fieldManageability>DeveloperControlled</fieldManageability>
-        <label>Budget Type</label>
-        <required>false</required>
-        <type>Picklist</type>
-        <valueSet>
-            <restricted>true</restricted>
-            <valueSetDefinition>
-                <sorted>false</sorted>
-                <value>
-                    <fullName>Data Center Specialties MDF</fullName>
-                    <default>false</default>
-                    <label>Data Center Specialties MDF</label>
-                </value>
-                <value>
-                    <fullName>Client Specialties MDF</fullName>
-                    <default>false</default>
-                    <label>Client Specialties MDF</label>
-                </value>
-                <value>
-                    <fullName>Optane Specialties MDF</fullName>
-                    <default>false</default>
-                    <label>Optane Specialties MDF</label>
-                </value>
-                <value>
-                    <fullName>Global SAP Acceleration - MDF</fullName>
-                    <default>false</default>
-                    <label>Global SAP Acceleration - MDF</label>
-                </value>
-                <value>
-                    <fullName>Global VMware Acceleration - MDF</fullName>
-                    <default>false</default>
-                    <label>Global VMware Acceleration - MDF</label>
-                </value>
-                <value>
-                    <fullName>VMWare Amplify - MDF</fullName>
-                    <default>false</default>
-                    <label>VMWare Amplify - MDF</label>
-                </value>
-                <value>
-                    <fullName>Global Red Hat Acceleration - MDF</fullName>
-                    <default>false</default>
-                    <label>Global Red Hat Acceleration - MDF</label>
-                </value>
-                <value>
-                    <fullName>Red Hat &quot;Amplify&quot; - MDF</fullName>
-                    <default>false</default>
-                    <label>Red Hat &quot;Amplify&quot; - MDF</label>
-                </value>
-                <value>
-                    <fullName>Global IBM Acceleration - MDF</fullName>
-                    <default>false</default>
-                    <label>Global IBM Acceleration - MDF</label>
-                </value>
-                <value>
-                    <fullName>Global Suse Acceleration - MDF</fullName>
-                    <default>false</default>
-                    <label>Global Suse Acceleration - MDF</label>
-                </value>
-                <value>
-                    <fullName>Global SAS Acceleration - MDF</fullName>
-                    <default>false</default>
-                    <label>Global SAS Acceleration - MDF</label>
-                </value>
-                <value>
-                    <fullName>Global Ericsson Acceleration - MDF</fullName>
-                    <default>false</default>
-                    <label>Global Ericsson Acceleration - MDF</label>
-                </value>
-                <value>
-                    <fullName>Global Nokia Acceleration - MDF</fullName>
-                    <default>false</default>
-                    <label>Global Nokia Acceleration - MDF</label>
-                </value>
-                <value>
-                    <fullName>Global Microsoft Acceleration - MDF</fullName>
-                    <default>false</default>
-                    <label>Global Microsoft Acceleration - MDF</label>
-                </value>
-                <value>
-                    <fullName>ISV Scale Acceleration - MDF</fullName>
-                    <default>false</default>
-                    <label>ISV Scale Acceleration - MDF</label>
-                </value>
-                <value>
-                    <fullName>Business Client Acceleration - MDF</fullName>
-                    <default>false</default>
-                    <label>Business Client Acceleration - MDF</label>
-                </value>
-                <value>
-                    <fullName>Data Centric Acceleration - MDF</fullName>
-                    <default>false</default>
-                    <label>Data Centric Acceleration - MDF</label>
-                </value>
-                <value>
-                    <fullName>SOEM Data Center MDF</fullName>
-                    <default>false</default>
-                    <label>SOEM Data Center MDF</label>
-                </value>
-                <value>
-                    <fullName>SOEM Client MDF</fullName>
-                    <default>false</default>
-                    <label>SOEM Client MDF</label>
-                </value>
-                <value>
-                    <fullName>DCG MAF</fullName>
-                    <default>false</default>
-                    <label>DCG MAF</label>
-                </value>
-                <value>
-                    <fullName>CCG Market Accelerate</fullName>
-                    <default>false</default>
-                    <label>CCG Market Accelerate</label>
-                </value>
-                <value>
-                    <fullName>Intel MDF Account Based1</fullName>
-                    <default>false</default>
-                    <label>Intel MDF Account Based1</label>
-                </value>
-                <value>
-                    <fullName>Intel MDF Account Based2</fullName>
-                    <default>false</default>
-                    <label>Intel MDF Account Based2</label>
-                </value>
-                <value>
-                    <fullName>Client Market Accelerate</fullName>
-                    <default>false</default>
-                    <label>Client Market Accelerate</label>
-                </value>
-                <value>
-                    <fullName>Data Center Market Accelerate</fullName>
-                    <default>false</default>
-                    <label>Data Center Market Accelerate</label>
-                </value>
-                <value>
-                    <fullName>Intel Rise Technology Initiative</fullName>
-                    <default>false</default>
-                    <label>Intel Rise Technology Initiative</label>
-                </value>
-                <value>
-                    <fullName>Scale Acceleration - MDF</fullName>
-                    <default>false</default>
-                    <label>Scale Acceleration - MDF</label>
-                </value>
-                <value>
-                    <fullName>IoT Premier - MDF</fullName>
-                    <default>false</default>
-                    <label>IoT Premier - MDF</label>
-                </value>
-                <value>
-                    <fullName>IoT Targeted - MDF</fullName>
-                    <default>false</default>
-                    <label>IoT Targeted - MDF</label>
-                </value>
-                <value>
-                    <fullName>IPA Account Based1</fullName>
-                    <default>false</default>
-                    <label>IPA Account Based1</label>
-                </value>
-                <value>
-                    <fullName>IPA Account Based2</fullName>
-                    <default>false</default>
-                    <label>IPA Account Based2</label>
-                </value>
-                <value>
-                    <fullName>ODM Growth Plan - Client MDF</fullName>
-                    <default>false</default>
-                    <label>ODM Growth Plan - Client MDF</label>
-                </value>
-                <value>
-                    <fullName>Proposal I MDF</fullName>
-                    <default>false</default>
-                    <label>Proposal I MDF</label>
-                </value>
-                <value>
-                    <fullName>Proposal II MDF</fullName>
-                    <default>false</default>
-                    <label>Proposal II MDF</label>
-                </value>
-                <value>
-                    <fullName>Account Plan</fullName>
-                    <default>false</default>
-                    <label>Account Plan</label>
-                </value>
-                <value>
-                    <fullName>Cloud</fullName>
-                    <default>false</default>
-                    <label>Cloud</label>
-                </value>
-                <value>
-                    <fullName>Co-Engineering</fullName>
-                    <default>false</default>
-                    <label>Co-Engineering</label>
-                </value>
-                <value>
-                    <fullName>Business Client Acceleration Automated - MDF</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Business Client Acceleration Automated - MDF</label>
-                </value>
-                <value>
-                    <fullName>Business Client Acceleration Managed - MDF</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Business Client Acceleration Managed - MDF</label>
-                </value>
-                <value>
-                    <fullName>Data Centric Acceleration Automated - MDF</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Data Centric Acceleration Automated - MDF</label>
-                </value>
-                <value>
-                    <fullName>Data Centric Acceleration Managed - MDF</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Data Centric Acceleration Managed - MDF</label>
-                </value>
-                <value>
-                    <fullName>Datacenter Market Accelerate</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Datacenter Market Accelerate</label>
-                </value>
-                <value>
-                    <fullName>Intel MDF Proposal Based1</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Intel MDF Proposal Based1</label>
-                </value>
-                <value>
-                    <fullName>Intel MDF Proposal Based2</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Intel MDF Proposal Based2</label>
-                </value>
-                <value>
-                    <fullName>NSP</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>NSP</label>
-                </value>
-                <value>
-                    <fullName>SP AI MDF</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>SP AI MDF</label>
-                </value>
-                <value>
-                    <fullName>SP Cloud MDF</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>SP Cloud MDF</label>
-                </value>
-                <value>
-                    <fullName>SP DaaS MDF</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>SP DaaS MDF</label>
-                </value>
-                <value>
-                    <fullName>SP Enthusiast MDF</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>SP Enthusiast MDF</label>
-                </value>
-                <value>
-                    <fullName>SP HPC MDF</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>SP HPC MDF</label>
-                </value>
-                <value>
-                    <fullName>SP Industry SB MDF</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>SP Industry SB MDF</label>
-                </value>
-                <value>
-                    <fullName>SP MS MDF</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>SP MS MDF</label>
-                </value>
-                <value>
-                    <fullName>SP Optane Client MDF</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>SP Optane Client MDF</label>
-                </value>
-                <value>
-                    <fullName>SP Optane DC MDF</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>SP Optane DC MDF</label>
-                </value>
-                <value>
-                    <fullName>SP Video MDF</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>SP Video MDF</label>
-                </value>
-                <value>
-                    <fullName>SP Visual Retail MDF</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>SP Visual Retail MDF</label>
-                </value>
-                <value>
-                    <fullName>Value Exchange</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Value Exchange</label>
-                </value>
-            </valueSetDefinition>
-        </valueSet>
-    </fields>
-    <fields>
         <fullName>Core_MDF_Check_SubGeo__c</fullName>
         <defaultValue>false</defaultValue>
         <description>To indicate whether a subGeo level sharing has to be done</description>
@@ -360,16 +32,6 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Core_MDF_Payment_Admin_Queue_Id__c</fullName>
-        <externalId>false</externalId>
-        <fieldManageability>DeveloperControlled</fieldManageability>
-        <label>Payment Admin Queue Id</label>
-        <length>50</length>
-        <required>false</required>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_MDF_Program__c</fullName>
         <description>Program</description>
         <fieldManageability>DeveloperControlled</fieldManageability>
@@ -381,19 +43,8 @@
             <valueSetDefinition>
                 <sorted>true</sorted>
                 <value>
-                    <fullName>Channel MDF</fullName>
-                    <default>false</default>
-                    <label>Channel MDF</label>
-                </value>
-                <value>
-                    <fullName>Client</fullName>
-                    <default>true</default>
-                    <label>Client</label>
-                </value>
-                <value>
                     <fullName>Client Co-Marketing Fund</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
+                    <default>true</default>
                     <label>Client Co-Marketing Fund</label>
                 </value>
                 <value>
@@ -402,36 +53,9 @@
                     <label>Client Co-Marketing Fund Boost</label>
                 </value>
                 <value>
-                    <fullName>Co-GTM</fullName>
-                    <default>false</default>
-                    <label>Co-GTM</label>
-                </value>
-                <value>
-                    <fullName>Datacenter</fullName>
-                    <default>false</default>
-                    <label>Datacenter</label>
-                </value>
-                <value>
                     <fullName>Data Center Co-Marketing Fund</fullName>
                     <default>false</default>
-                    <isActive>false</isActive>
                     <label>Data Center Co-Marketing Fund</label>
-                </value>
-                <value>
-                    <fullName>Ecosystem Extension Fund</fullName>
-                    <default>false</default>
-                    <label>Ecosystem Extension Fund</label>
-                </value>
-                <value>
-                    <fullName>Ecosystem Growth Fund</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Ecosystem Growth Fund</label>
-                </value>
-                <value>
-                    <fullName>Intel Partner Alliance</fullName>
-                    <default>false</default>
-                    <label>Intel Partner Alliance</label>
                 </value>
                 <value>
                     <fullName>Retail Marketing Funds</fullName>
@@ -472,20 +96,9 @@
                     <label>EMEA</label>
                 </value>
                 <value>
-                    <fullName>INDIA</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>INDIA</label>
-                </value>
-                <value>
                     <fullName>PRC</fullName>
                     <default>false</default>
                     <label>PRC</label>
-                </value>
-                <value>
-                    <fullName>WW</fullName>
-                    <default>false</default>
-                    <label>WW</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -513,16 +126,6 @@
                 </value>
             </valueSetDefinition>
         </valueSet>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Type_txt__c</fullName>
-        <externalId>false</externalId>
-        <fieldManageability>DeveloperControlled</fieldManageability>
-        <label>Type</label>
-        <length>50</length>
-        <required>false</required>
-        <type>Text</type>
-        <unique>false</unique>
     </fields>
     <label>CCP ProgramGeoGroupMap</label>
     <pluralLabel>CCPProgramGeoGroupMaps</pluralLabel>

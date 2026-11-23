@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>55.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>if_Lead_Inquiry_is_not_Null</name>
+        <label>if Lead Inquiry is not Null</label>
+        <locationX>314</locationX>
+        <locationY>311</locationY>
+        <defaultConnectorLabel>Null</defaultConnectorLabel>
+        <rules>
+            <name>Check_Lead_Inquiry_Owner_Field</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_Lead_Inquiries__r.Owner:User.Email</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Lead_Email</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>Check Lead Inquiry Owner Field</label>
+        </rules>
+        <rules>
+            <name>Check_Contact_Inquiry_Owner</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_Contact_Inquiries__r.Owner.Email</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Contact_Email</targetReference>
+            </connector>
+            <label>Check Contact Inquiry Owner</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <interviewLabel>Core Inquiry Owner Email Update {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Core Inquiry Owner Email Update</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_Contact_Email</name>
+        <label>Update Contact Email</label>
+        <locationX>314</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>Core_Lead_Contact_Owner_Email__c</field>
+            <value>
+                <elementReference>$Record.Core_Contact_Inquiries__r.Owner.Email</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Owner_Name__c</field>
+            <value>
+                <stringValue>{!$Record.Core_Contact_Inquiries__r.Owner.FirstName} {!$Record.Core_Contact_Inquiries__r.Owner.LastName}</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Lead_Email</name>
+        <label>Update Lead Email</label>
+        <locationX>50</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>Core_Lead_Contact_Owner_Email__c</field>
+            <value>
+                <elementReference>$Record.Core_Lead_Inquiries__r.Owner:User.Email</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Owner_Name__c</field>
+            <value>
+                <stringValue>{!$Record.Core_Lead_Inquiries__r.Owner:User.FirstName} {!$Record.Core_Lead_Inquiries__r.Owner:User.LastName}</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>188</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>if_Lead_Inquiry_is_not_Null</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Core_Lead_Contact_Owner_Email__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <object>Core_Inquiry__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+</Flow>

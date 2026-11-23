@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Lead.Cloud_Credit_Requests__r$Name</field>
+    </columns>
+    <columns>
+        <field>Lead.Cloud_Credit_Requests__r$SWS_Request_Status_fm__c</field>
+    </columns>
+    <columns>
+        <field>Lead.Cloud_Credit_Requests__r$SWS_Coupon_Status__c</field>
+    </columns>
+    <columns>
+        <field>Lead$Name</field>
+    </columns>
+    <columns>
+        <field>Lead$Status</field>
+    </columns>
+    <columns>
+        <field>Lead$CreatedDate</field>
+    </columns>
+    <columns>
+        <field>Lead$ConvertedOpportunity.StageName</field>
+    </columns>
+    <columns>
+        <field>Lead$ConvertedOpportunity.CreatedDate</field>
+    </columns>
+    <format>Summary</format>
+    <name>Credit Request-Lead-Opportunity Mapping</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Lead_With_Credit_Request_Oppty__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Lead.Cloud_Credit_Requests__r$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

@@ -143,13 +143,63 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>CRM_CST_Is_Active_Planning_Period__c</field>
+            <displayNameOverride>SF Account ID</displayNameOverride>
+            <field>Account_ID__c.SF_Account__c.Core_Account_ID__c</field>
             <table>SPM_Account_Feedback__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <displayNameOverride>SF Account ID</displayNameOverride>
-            <field>Account_ID__c.SF_Account__c.Core_Account_ID__c</field>
+            <field>SF_Account_Updated__c</field>
+            <table>SPM_Account_Feedback__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>SF_Account_ID__c</field>
+            <table>SPM_Account_Feedback__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>GTM_Model__c</field>
+            <table>SPM_Account_Feedback__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CRM_CST_VP_Feedback__c</field>
+            <table>SPM_Account_Feedback__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CRM_CST_CM_Feedback__c</field>
+            <table>SPM_Account_Feedback__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CRM_CST_GM_Feedback__c</field>
+            <table>SPM_Account_Feedback__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CRM_CST_DR_Feedback__c</field>
+            <table>SPM_Account_Feedback__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Customer_Detail__c</field>
+            <table>SPM_Account_Feedback__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Account_Detail__c</field>
+            <table>SPM_Account_Feedback__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CRM_CST_New_Core_Account_Category__c</field>
+            <table>SPM_Account_Feedback__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Account_Primary_Coverage__c</field>
             <table>SPM_Account_Feedback__c</table>
         </columns>
         <columns>
@@ -158,5 +208,48 @@
             <table>SPM_Account_Feedback__c</table>
         </columns>
         <masterLabel>Account Feedbacks</masterLabel>
+    </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CRM_CST_Feedback_by_RA__c</field>
+            <table>SPM_Account_Feedback__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CST_Feedback_Propagated_By__c</field>
+            <table>SPM_Account_Feedback__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CRM_CST_Geo__c</field>
+            <table>SPM_Account_Feedback__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CRM_CST_Region__c</field>
+            <table>SPM_Account_Feedback__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CRM_CST_Is_Active_Planning_Period__c</field>
+            <table>SPM_Account_Feedback__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CST_New_Account_Level__c</field>
+            <table>SPM_Account_Feedback__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CRM_CST_Customer_Id__c</field>
+            <table>SPM_Account_Feedback__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Unified_ID__c</field>
+            <table>SPM_Account_Feedback__c</table>
+        </columns>
+        <masterLabel>Account Feedback</masterLabel>
     </sections>
 </ReportType>

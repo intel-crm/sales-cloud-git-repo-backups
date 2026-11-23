@@ -6,5 +6,5 @@
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>ITPRO SERVICES SDN BHD Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>ITPROSERVICESSDNBHDPartnerManager</parentRole>
 </Role>

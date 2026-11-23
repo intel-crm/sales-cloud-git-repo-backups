@@ -1,10 +1,10 @@
 import { LightningElement,track,wire, api } from 'lwc';
-/*import checkCapability from '@salesforce/apex/Sales_FeedbackController.checkCapability_NonEvent'; 
+import checkCapability from '@salesforce/apex/Sales_FeedbackController.checkCapability_NonEvent'; 
 import givefeedback from '@salesforce/label/c.Sales_GiveFeedback_Html';
 import give_nonfeedback from '@salesforce/label/c.Sales_Nonevent_GiveFeedback';
-*/
+
 export default class Sales_NonEventFeedback extends LightningElement {
-/*@api isButtonClicked=false;
+@api isButtonClicked=false;
 @track capabilityvalue;
 @track windowURL;
 @track iscapability=false;
@@ -41,5 +41,5 @@ connectedCallback(){
  closeFeedback() {
 	 console.log('cancel feedback');
 	this.isButtonClicked=false;
-}*/
+}
 }

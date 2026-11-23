@@ -1,0 +1,46 @@
+{
+  "appPageId" : "6b36c665-0609-49d0-9746-033feed642b2",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "6fa8cdf0-8262-40f2-9f6c-bf1c7cb0a1e4",
+  "label" : "accessdenied",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:sales_LoginPage",
+      "id" : "8a9f416b-82a6-4cbb-b818-718b356af654",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "3cd510a0-e959-49b5-9e48-1f3d976fa9f4",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "id" : "054be55d-6e66-4565-8b41-343b00d59bc2",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "c6c2e044-1fbb-49df-8c48-c846b2574e38",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "accessdenied"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "fb792665-d9f1-4dd1-a3f5-46fcdcb5f5ca",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "d0f616e2-76d3-462e-bbce-5c03c18d5f79",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-accessdenied"
+}

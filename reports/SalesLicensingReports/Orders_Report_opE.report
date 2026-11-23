@@ -53,7 +53,7 @@
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>ORDER_TOTAL_AMOUNT</field>
+        <field>Order.Core_PSG_Total_Order_Price_Amt__c</field>
     </columns>
     <columns>
         <field>Order.Sales_Header_Special_Instructions_Dsc__c</field>

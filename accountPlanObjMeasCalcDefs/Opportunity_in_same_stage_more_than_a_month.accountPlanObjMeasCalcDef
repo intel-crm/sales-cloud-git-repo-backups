@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AccountPlanObjMeasCalcDef xmlns="http://soap.sforce.com/2006/04/metadata">
+    <conditions>
+        <fieldName>00N2D00000ONBVpUAP</fieldName>
+        <operation>GreaterThan</operation>
+        <value>30.0</value>
+    </conditions>
+    <developerName>Opportunity_in_same_stage_more_than_a_month</developerName>
+    <masterLabel>Opportunity in same stage more than a month</masterLabel>
+    <rollupType>Count</rollupType>
+    <status>Active</status>
+    <targetObject>Opportunity</targetObject>
+</AccountPlanObjMeasCalcDef>

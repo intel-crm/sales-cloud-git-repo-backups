@@ -40,9 +40,5 @@
         <label><!-- MandatoryFieldRestrictionLevel --></label>
         <name>PRM_Restriction_Level__c</name>
     </fields>
-    <fields>
-        <label><!-- Score Bar --></label>
-        <name>Score_Bar__c</name>
-    </fields>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

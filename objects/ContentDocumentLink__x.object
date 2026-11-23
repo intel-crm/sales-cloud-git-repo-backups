@@ -147,6 +147,17 @@
         <type>ExternalLookup</type>
     </fields>
     <fields>
+        <fullName>IsDeleted__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalDeveloperName>IsDeleted</externalDeveloperName>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>Is Deleted</label>
+        <readOnlyProxy>true</readOnlyProxy>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>LinkedEntityId__c</fullName>
         <isFilteringDisabled>false</isFilteringDisabled>
         <isNameField>false</isNameField>
@@ -157,6 +168,77 @@
         <relationshipLabel>Content Document Link</relationshipLabel>
         <relationshipName>Content_Document_Link</relationshipName>
         <type>ExternalLookup</type>
+    </fields>
+    <fields>
+        <fullName>ShareType__c</fullName>
+        <externalDeveloperName>ShareType</externalDeveloperName>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>Share Type</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>V</fullName>
+                    <default>false</default>
+                    <label>Viewer</label>
+                </value>
+                <value>
+                    <fullName>C</fullName>
+                    <default>false</default>
+                    <label>Collaborator</label>
+                </value>
+                <value>
+                    <fullName>I</fullName>
+                    <default>false</default>
+                    <label>Inferred</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>SystemModstamp__c</fullName>
+        <externalDeveloperName>SystemModstamp</externalDeveloperName>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>System Modstamp</label>
+        <readOnlyProxy>true</readOnlyProxy>
+        <required>false</required>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Visibility__c</fullName>
+        <externalDeveloperName>Visibility</externalDeveloperName>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>Visibility</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>AllUsers</fullName>
+                    <default>false</default>
+                    <label>All Users</label>
+                </value>
+                <value>
+                    <fullName>InternalUsers</fullName>
+                    <default>false</default>
+                    <label>Standard Users</label>
+                </value>
+                <value>
+                    <fullName>SharedUsers</fullName>
+                    <default>false</default>
+                    <label>Shared Users</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <label>Content Document Link</label>
     <pluralLabel>Content Document Link</pluralLabel>

@@ -12,18 +12,10 @@
     default=""
     description="Stores which types of the files user is allowed to upload"
   />
-    <aura:attribute name="recordtypeDeveloperName" type="String" default=""
-                    description="Stores the recordtypeName from the parent component" />
   <aura:attribute
     name="displayEventTemplate"
     type="Boolean"
-    default="false"
-    description="Controls whether file upload links to be displayed"
-  />
-    <aura:attribute
-    name="displayIndustryPartnerTemplate"
-    type="Boolean"
-    default="false"
+    default="true"
     description="Controls whether file upload links to be displayed"
   />
   <aura:attribute
@@ -65,9 +57,6 @@
   <aura:attribute name="filedata" type="Object" />
   <aura:attribute name="iserror" type="Boolean" default="false"/>
   <aura:attribute name="errormsg" type="string" default=""/>
-    <aura:attribute name="isOpalActivity" type="Boolean" default="false" />
-    <aura:attribute name="activityBudgetType" type="String" default="" description="Stores the Budget Type selected at Activity" />
-    <aura:attribute name="opalFileUploadBudgetTypes" type="Boolean" default="false" />
 
   <!-- Registering the Component Event for passing the values to parent -->
   <aura:registerEvent
@@ -105,15 +94,6 @@
         <lightning:layoutItem size="6" padding="horizontal-medium" class="slds-float_left">
           <aura:if isTrue="{!v.displayEventTemplate}">
             <div class="slds-list_horizontal slds-has-block-links">
-	    <!-- US1016810 - Added Extra condition to display only single Event Form link for OPAL Activities -->
-            <aura:if isTrue="{!and(v.isOpalActivity)}">
-              <span style="padding-left: 20px;">
-	          <br /><br />
-	          <a href="{!$Label.c.Core_MDF_EventApprovalFormLink2H}" target="_blank">
-	            {!$Label.c.Core_MDF_EventForm2H}
-	          </a>
-              </span>
-              <aura:set attribute="else">
               <span style="padding-left: 20px;">
                   <br /><br />
                   <a href="{!$Label.c.Core_MDF_EventApprovalFormLink}" target="_blank">
@@ -126,33 +106,8 @@
                     {!$Label.c.Core_MDF_EventApprovalForm2020}
                   </a>
               </span>
-              </aura:set>
-              </aura:if>
             </div>
             </aura:if>
-                     <aura:if isTrue="{!(v.displayIndustryPartnerTemplate)}">
-                          <div class="slds-list_horizontal slds-has-block-links">
-                              <aura:if isTrue="{!v.opalFileUploadBudgetTypes}">
-                                  <aura:if isTrue="{!v.recordtypeDeveloperName == $Label.c.Core_MDF_CCF_RecordTypeName}">
-                                 <span style="padding-left: 20px;">
-                                    <br /><br />
-                                   <a href="{!$Label.c.Core_MDF_IP_com_Form_Link_CCF}" target="_blank">
-                                        {!$Label.c.Core_MDF_IndustryPartner_com_Form}
-                                    </a>
-                                </span>
-                                      <aura:set attribute="else">
-									<span style="padding-left: 20px;">
-                                        <br /><br />
-                                        <a href="{!$Label.c.Core_MDF_IP_com_Form_Link_DCF}" target="_blank">
-                                            {!$Label.c.Core_MDF_IndustryPartner_com_Form}
-                                        </a>
-                                    </span>
-                                                                                                                             
-                                     </aura:set>
-                                  </aura:if>                                                                                                        
-                                     </aura:if>                                
-                          </div>
-                      </aura:if>
         </lightning:layoutItem>
       </lightning:layout>
     </aura:if>
@@ -161,7 +116,7 @@
       <div style="width:100%">
         <lightning:layout>
           <lightning:layoutItem flexibility="auto" padding="horizontal-medium">
-            <table class="slds-table slds-table_fixed-layout" style="width:100%">
+            <table class="slds-table slds-table_cell-buffer" style="width:30%">
               <thead>
                 <tr class="slds-text-title_caps">
                   <th scope="col" style="width:80%">
@@ -187,7 +142,6 @@
                         <a
                           href="{!file.docurl}"
                           target="_blank"
-                                                 rel="noopener noreferrer"
                           download="{!file.Title}"
                         >
                           {!file.Title}

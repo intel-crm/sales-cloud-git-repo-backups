@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>55.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Sets Core_MatchOppKPI_Backend and Core_MatchOppKPI_Prev_Backend for &quot;  ISNEW() || ISCHANGED(Core_Opportunity__c) &quot;
+
+---------------------
+Updates Core_MatchOppKPI_Backend for &quot;  ISCHANGED({!$Record.Core_Goal_KPI_Achieved_Flag__c}) || ISCHANGED({!$Record.Core_Goal_KPI_Match_Flag__c})  &quot;</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>Core_Set_MatchOppKPI_Prev_BackendFieldFormula</name>
+        <dataType>String</dataType>
+        <expression>IF(IF($Record.Core_Goal_KPI_Achieved_Flag__c = FALSE &amp;&amp; $Record.Core_Goal_KPI_Match_Flag__c = FALSE, &apos;No KPI Match&apos;, IF($Record.Core_Goal_KPI_Achieved_Flag__c = FALSE &amp;&amp; $Record.Core_Goal_KPI_Match_Flag__c = TRUE, &apos;KPI Not Achieved&apos;, IF($Record.Core_Goal_KPI_Achieved_Flag__c = TRUE &amp;&amp; $Record.Core_Goal_KPI_Match_Flag__c = TRUE, &apos;KPI Achieved&apos;, &apos;&apos;))) == &apos;No KPI Match&apos;, &apos;No KPI Match&apos;, &apos;&apos;)</expression>
+    </formulas>
+    <formulas>
+        <name>Core_Update_MatchOppKPI_Backend_fieldFormula</name>
+        <dataType>String</dataType>
+        <expression>IF($Record.Core_Opportunity__c != null, IF($Record.Core_Goal_KPI_Achieved_Flag__c = FALSE &amp;&amp; $Record.Core_Goal_KPI_Match_Flag__c = FALSE, &apos;No KPI Match&apos;, IF($Record.Core_Goal_KPI_Achieved_Flag__c = FALSE &amp;&amp; $Record.Core_Goal_KPI_Match_Flag__c = TRUE, &apos;KPI Not Achieved&apos;, IF($Record.Core_Goal_KPI_Achieved_Flag__c = TRUE &amp;&amp; $Record.Core_Goal_KPI_Match_Flag__c = TRUE, &apos;KPI Achieved&apos;, &apos;&apos;))),&apos;&apos;)</expression>
+    </formulas>
+    <interviewLabel>Core_Set_and_Update_MatchOppKPI_BackendField {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Core_Set_and_Update_MatchOppKPI_BackendField</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <description>updates Core_Set_MatchOppKPI_BackendField and sets Core_Set_MatchOppKPI_Prev_BackendField</description>
+        <name>Core_Set_MatchOppKPI_BackendField</name>
+        <label>Core_Set_MatchOppKPI_BackendField</label>
+        <locationX>176</locationX>
+        <locationY>311</locationY>
+        <inputAssignments>
+            <field>Core_MatchOppKPI_Backend__c</field>
+            <value>
+                <elementReference>Core_Update_MatchOppKPI_Backend_fieldFormula</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_MatchOppKPI_Prev_Backend__c</field>
+            <value>
+                <elementReference>Core_Set_MatchOppKPI_Prev_BackendFieldFormula</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Core_Set_MatchOppKPI_BackendField</targetReference>
+        </connector>
+        <filterFormula>ISNEW() || ISCHANGED({!$Record.Core_Opportunity__c}) ||  ISCHANGED({!$Record.Core_Goal_KPI_Achieved_Flag__c}) || ISCHANGED({!$Record.Core_Goal_KPI_Match_Flag__c})</filterFormula>
+        <object>Core_Goal__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+</Flow>

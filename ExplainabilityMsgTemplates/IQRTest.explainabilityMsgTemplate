@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExplainabilityMsgTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <evaluationResult>Passed</evaluationResult>
+    <expressionSetStepType>DecisionTableLookup</expressionSetStepType>
+    <expsSetProcessType>Bre</expsSetProcessType>
+    <isDefault>true</isDefault>
+    <masterLabel>IQRTest</masterLabel>
+    <message>calculated rebate amount based on {IQRTest}.</message>
+</ExplainabilityMsgTemplate>

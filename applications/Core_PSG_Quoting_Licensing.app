@@ -3,7 +3,25 @@
     <actionOverrides>
         <actionName>View</actionName>
         <comment>Action override created by Lightning App Builder during activation.</comment>
-        <content>Quote_Document_Record_Page</content>
+        <content>Design_Registration_Intel</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Design_Registration_Intel</content>
+        <formFactor>Small</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Quote_Document_Record_Page2</content>
         <formFactor>Large</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
@@ -12,7 +30,7 @@
     <actionOverrides>
         <actionName>View</actionName>
         <comment>Action override created by Lightning App Builder during activation.</comment>
-        <content>Quote_Document_Record_Page</content>
+        <content>Quote_Document_Record_Page2</content>
         <formFactor>Small</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
@@ -35,6 +53,114 @@
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
         <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>License_Group_Record_Page4</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>Sales_License_Group__c</pageOrSobjectType>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>License_Group_Record_Page4</content>
+        <formFactor>Small</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>Sales_License_Group__c</pageOrSobjectType>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Sales_License_Group_Switch_config_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>Sales_License_Group_Switch_config__c</pageOrSobjectType>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Sales_License_Group_Switch_config_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>Sales_License_Group_Switch_config__c</pageOrSobjectType>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Sales_License_Switch_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>Sales_License_Generator_Switch__c</pageOrSobjectType>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Sales_License_Switch_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>Sales_License_Generator_Switch__c</pageOrSobjectType>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>List_Price_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>core_cpq_list_price__c</pageOrSobjectType>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>List_Price_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>core_cpq_list_price__c</pageOrSobjectType>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Quote_Status_History_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>core_cpq_quote_history__c</pageOrSobjectType>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Quote_Status_History_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>core_cpq_quote_history__c</pageOrSobjectType>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>License_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>Sales_License__c</pageOrSobjectType>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>License_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>Sales_License__c</pageOrSobjectType>
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
@@ -147,25 +273,25 @@
     <actionOverrides>
         <actionName>View</actionName>
         <comment>Action override created by Lightning App Builder during activation.</comment>
-        <content>Order_Product_Record_Page</content>
+        <content>PSG_Price_Book_Entry_Record_Page</content>
         <formFactor>Large</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
-        <pageOrSobjectType>OrderItem</pageOrSobjectType>
+        <pageOrSobjectType>PricebookEntry</pageOrSobjectType>
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
         <comment>Action override created by Lightning App Builder during activation.</comment>
-        <content>Order_Product_Record_Page</content>
+        <content>PSG_Price_Book_Entry_Record_Page</content>
         <formFactor>Small</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
-        <pageOrSobjectType>OrderItem</pageOrSobjectType>
+        <pageOrSobjectType>PricebookEntry</pageOrSobjectType>
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <comment>Action override updated by Lightning App Builder during activation.</comment>
-        <content>Product_Record_Page1</content>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Product_Record_Page</content>
         <formFactor>Large</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
@@ -173,8 +299,8 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <comment>Action override updated by Lightning App Builder during activation.</comment>
-        <content>Product_Record_Page1</content>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Product_Record_Page</content>
         <formFactor>Small</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
@@ -190,7 +316,7 @@
     </actionOverrides>
     <brand>
         <headerColor>#0070D2</headerColor>
-        <logo>intellogo</logo>
+        <logo>intel_newlogo</logo>
         <logoVersion>1</logoVersion>
         <shouldOverrideOrgTheme>false</shouldOverrideOrgTheme>
     </brand>
@@ -205,912 +331,75 @@
     <navType>Standard</navType>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
+        <content>Deal_Registration_Partner</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
         <type>Flexipage</type>
         <profile>Sales Rep-BB</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
+        <content>Deal_Registration_Partner</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>IT @ Intel</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>IT @ Intel</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>MarketingProfile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>MarketingProfile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
         <type>Flexipage</type>
         <profile>Sales Rep-BB</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
+        <content>Deal_Registration_Partner</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>BU Account Collaborator</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>BU Account Collaborator</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>CIM Hub Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>CIM Hub Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>IPS Agent</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>IPS Agent</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>IPS Agent Enhanced</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>IPS Agent Enhanced</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>IPA A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>IPA A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>IPS Support Org Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>IPS Support Org Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Production Support-IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Production Support-IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
         <type>Flexipage</type>
         <profile>Sales Ops</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
+        <content>Deal_Registration_Partner</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
         <type>Flexipage</type>
         <profile>Sales Ops</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
+        <content>Deal_Registration_Partner</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
         <type>Flexipage</type>
         <profile>Sales Rep-CW</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
+        <content>Deal_Registration_Partner</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
         <type>Flexipage</type>
         <profile>Sales Rep-CW</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
+        <content>Design_Registration_Partner</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
         <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
+        <profile>Sales Core Access</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
+        <content>Design_Registration_Partner</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
         <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>IPA A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Agent</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Agent Enhanced</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Support Org Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Support Core Team</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Analytics Cloud Integration User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Analytics Cloud Integration User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Production Release and Checkout</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>SolutionManager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>SolutionManager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Support Core Team</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Support Core Team</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Analytics Cloud Security User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Analytics Cloud Security User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Global Export Compliance</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Global Export Compliance</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Partner Lead Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Partner Lead Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Production Release and Checkout</profile>
+        <profile>Sales Core Access</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
@@ -1119,7 +408,7 @@
         <pageOrSobjectType>Opportunity</pageOrSobjectType>
         <recordType>Opportunity.Core_Deal_Opportunity</recordType>
         <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
+        <profile>Marketing Development Manager</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
@@ -1128,205 +417,7 @@
         <pageOrSobjectType>Opportunity</pageOrSobjectType>
         <recordType>Opportunity.Core_Deal_Opportunity</recordType>
         <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>BU Account Collaborator</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>BU Account Collaborator</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>CIM Hub Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>CIM Hub Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Global Export Compliance</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Global Export Compliance</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>IT @ Intel</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>IT @ Intel</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Production Release and Checkout</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Production Release and Checkout</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
+        <profile>Marketing Development Manager</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
@@ -1353,7 +444,7 @@
         <pageOrSobjectType>Opportunity</pageOrSobjectType>
         <recordType>Opportunity.Core_Deal_Opportunity</recordType>
         <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
+        <profile>Production Support</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
@@ -1362,7 +453,7 @@
         <pageOrSobjectType>Opportunity</pageOrSobjectType>
         <recordType>Opportunity.Core_Deal_Opportunity</recordType>
         <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
+        <profile>Production Support</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
@@ -1370,348 +461,6 @@
         <formFactor>Small</formFactor>
         <pageOrSobjectType>Opportunity</pageOrSobjectType>
         <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>BU Account Collaborator</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>BU Account Collaborator</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>CIM Hub Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>CIM Hub Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>MarketingProfile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>MarketingProfile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Global Export Compliance</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Global Export Compliance</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>IT @ Intel</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>IT @ Intel</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Production Release and Checkout</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Production Release and Checkout</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>Production Support-Display</profile>
     </profileActionOverrides>
@@ -1720,7 +469,7 @@
         <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
         <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>Production Support-Display</profile>
     </profileActionOverrides>
@@ -1729,25 +478,25 @@
         <content>Opportunity_Record_Page1</content>
         <formFactor>Small</formFactor>
         <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
         <type>Flexipage</type>
-        <profile>Production Support-IPS</profile>
+        <profile>Program Core Team</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
         <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
         <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
         <type>Flexipage</type>
-        <profile>Production Support-IPS</profile>
+        <profile>Program Core Team</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
         <content>Opportunity_Record_Page1</content>
         <formFactor>Small</formFactor>
         <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>Reporting Admin</profile>
     </profileActionOverrides>
@@ -1756,7 +505,7 @@
         <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
         <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>Reporting Admin</profile>
     </profileActionOverrides>
@@ -1765,7 +514,25 @@
         <content>Opportunity_Record_Page1</content>
         <formFactor>Small</formFactor>
         <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Sales CRM API</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Sales CRM API</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>Sales Manager</profile>
     </profileActionOverrides>
@@ -1774,1700 +541,9 @@
         <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
         <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>MarketingProfile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>MarketingProfile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>BU Account Collaborator</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Global Export Compliance</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L1</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L2</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Intel</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Intel</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Standard</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Standard</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>Standard</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>Standard</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Standard</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Standard</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Standard</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Standard</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>BU Account Collaborator</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>IT @ Intel</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>IT @ Intel</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>BU Account Collaborator</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>CIM Hub Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>CIM Hub Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>MarketingProfile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>MarketingProfile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>Production Release and Checkout</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>Production Release and Checkout</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Intel</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Intel</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Intel</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Intel</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Intel</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Intel</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Intel</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Intel</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Intel</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Intel</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Intel</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Intel</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Intel</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Intel</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Intel</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Intel</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Intel</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Intel</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Intel</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Intel</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Host_Information_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Sales_Host__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Partner Lead Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Cancelled</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Cancelled</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Cancelled</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Cancelled</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>CIM Hub Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>CIM Hub Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L1</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L1</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L2</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L2</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Cancelled</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Cancelled</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Inactive_Quotes</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_New</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_New</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Inactive_Quotes</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Approved</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Approved</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Approved</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Inactive_Quotes</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Inactive_Quotes</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_ReadOnly</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_ReadOnly</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_ReadOnly</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_ReadOnly</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Host_Information_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Sales_Host__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Partner Community Login User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Host_Information_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Sales_Host__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Partner Community Login User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Host_Information_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Sales_Host__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Partner Community User</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
@@ -3479,1957 +555,11 @@
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
+        <content>Host_Information_Record_Page</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Submitted</recordType>
+        <pageOrSobjectType>Sales_Host__c</pageOrSobjectType>
         <type>Flexipage</type>
-        <profile>Analytics Cloud Integration User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Analytics Cloud Integration User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_New</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_New</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_CP_Quote</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Contract_Pricing</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_CP_Quote</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Contract_Pricing</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_CP_Quote</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Contract_Pricing</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_CP_Quote</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Contract_Pricing</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_CP_Quote</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Contract_Pricing</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Agent</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_CP_Quote</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Contract_Pricing</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Agent</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_CP_Quote</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Contract_Pricing</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_CP_Quote</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Contract_Pricing</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_CP_Quote</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Contract_Pricing</recordType>
-        <type>Flexipage</type>
-        <profile>BU Account Collaborator</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_CP_Quote</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Contract_Pricing</recordType>
-        <type>Flexipage</type>
-        <profile>BU Account Collaborator</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_New</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_New</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Inactive_Quotes</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_ReadOnly</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_ReadOnly</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Approved</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Approved</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Approved</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Inactive_Quotes</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Account_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Account_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Cancelled</recordType>
-        <type>Flexipage</type>
-        <profile>Partner</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Cancelled</recordType>
-        <type>Flexipage</type>
-        <profile>Partner</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Cancelled</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Cancelled</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Cancelled</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Cancelled</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Cancelled</recordType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Cancelled</recordType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Cancelled</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Cancelled</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Cancelled</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Cancelled</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Cancelled</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Approved</recordType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Approved</recordType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Cancelled</recordType>
-        <type>Flexipage</type>
-        <profile>Global Export Compliance</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Cancelled</recordType>
-        <type>Flexipage</type>
-        <profile>Global Export Compliance</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Cancelled</recordType>
-        <type>Flexipage</type>
-        <profile>Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Cancelled</recordType>
-        <type>Flexipage</type>
-        <profile>Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Cancelled</recordType>
-        <type>Flexipage</type>
-        <profile>IT @ Intel</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Cancelled</recordType>
-        <type>Flexipage</type>
-        <profile>IT @ Intel</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Cancelled</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Cancelled</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_New</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_New</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_New</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_New</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_New</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_ReadOnly</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>List_Price_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>core_cpq_list_price__c</pageOrSobjectType>
-        <recordType>core_cpq_list_price__c.PSG_List_Price_Record_Type</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>List_Price_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>core_cpq_list_price__c</pageOrSobjectType>
-        <recordType>core_cpq_list_price__c.PSG_List_Price_Record_Type</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Account_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>List_Price_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>core_cpq_list_price__c</pageOrSobjectType>
-        <recordType>core_cpq_list_price__c.PSG_List_Price_Record_Type</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>List_Price_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>core_cpq_list_price__c</pageOrSobjectType>
-        <recordType>core_cpq_list_price__c.PSG_List_Price_Record_Type</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>List_Price_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>core_cpq_list_price__c</pageOrSobjectType>
-        <recordType>core_cpq_list_price__c.PSG_List_Price_Record_Type</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>List_Price_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>core_cpq_list_price__c</pageOrSobjectType>
-        <recordType>core_cpq_list_price__c.PSG_List_Price_Record_Type</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>List_Price_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>core_cpq_list_price__c</pageOrSobjectType>
-        <recordType>core_cpq_list_price__c.PSG_List_Price_Record_Type</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>List_Price_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>core_cpq_list_price__c</pageOrSobjectType>
-        <recordType>core_cpq_list_price__c.PSG_List_Price_Record_Type</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>List_Price_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>core_cpq_list_price__c</pageOrSobjectType>
-        <recordType>core_cpq_list_price__c.PSG_List_Price_Record_Type</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>List_Price_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>core_cpq_list_price__c</pageOrSobjectType>
-        <recordType>core_cpq_list_price__c.PSG_List_Price_Record_Type</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>List_Price_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>core_cpq_list_price__c</pageOrSobjectType>
-        <recordType>core_cpq_list_price__c.PSG_List_Price_Record_Type</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>List_Price_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>core_cpq_list_price__c</pageOrSobjectType>
-        <recordType>core_cpq_list_price__c.PSG_List_Price_Record_Type</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>List_Price_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>core_cpq_list_price__c</pageOrSobjectType>
-        <recordType>core_cpq_list_price__c.PSG_List_Price_Record_Type</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>List_Price_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>core_cpq_list_price__c</pageOrSobjectType>
-        <recordType>core_cpq_list_price__c.PSG_List_Price_Record_Type</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>List_Price_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>core_cpq_list_price__c</pageOrSobjectType>
-        <recordType>core_cpq_list_price__c.PSG_List_Price_Record_Type</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Price_Book_Entry_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>PricebookEntry</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Price_Book_Entry_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>PricebookEntry</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>List_Price_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>core_cpq_list_price__c</pageOrSobjectType>
-        <recordType>core_cpq_list_price__c.PSG_List_Price_Record_Type</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Account_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Core_Direct_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Core_Direct_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Price_Book_Entry_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>PricebookEntry</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Price_Book_Entry_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>PricebookEntry</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Price_Book_Entry_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>PricebookEntry</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Price_Book_Entry_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>PricebookEntry</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Price_Book_Entry_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>PricebookEntry</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Price_Book_Entry_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>PricebookEntry</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Price_Book_Entry_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>PricebookEntry</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Price_Book_Entry_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>PricebookEntry</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Price_Book_Entry_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>PricebookEntry</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Price_Book_Entry_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>PricebookEntry</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Price_Book_Entry_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>PricebookEntry</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Price_Book_Entry_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>PricebookEntry</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Price_Book_Entry_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>PricebookEntry</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Price_Book_Entry_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>PricebookEntry</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>Tab</actionName>
-        <content>Intel_Order_License_Mgmt_Home</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>standard-home</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>Tab</actionName>
-        <content>Intel_Order_License_Mgmt_Home</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>standard-home</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>Tab</actionName>
-        <content>Intel_Order_License_Mgmt_Home</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>standard-home</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>Tab</actionName>
-        <content>Intel_Order_License_Mgmt_Home</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>standard-home</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>Tab</actionName>
-        <content>Intel_Order_License_Mgmt_Home</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>standard-home</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>Tab</actionName>
-        <content>Intel_Order_License_Mgmt_Home</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>standard-home</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>Tab</actionName>
-        <content>Intel_Order_License_Mgmt_Home</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>standard-home</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>Tab</actionName>
-        <content>Intel_Order_License_Mgmt_Home</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>standard-home</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>Tab</actionName>
-        <content>Intel_Order_License_Mgmt_Home</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>standard-home</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>Tab</actionName>
-        <content>Intel_Order_License_Mgmt_Home</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>standard-home</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_Direct_Account_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Core_Direct_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Account_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_Direct_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Core_Direct_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_Direct_Account_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Core_Direct_Account</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_Direct_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Core_Direct_Account</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_ReadOnly</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L2</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_ReadOnly</recordType>
-        <type>Flexipage</type>
-        <profile>Analytics Cloud Integration User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_ReadOnly</recordType>
-        <type>Flexipage</type>
-        <profile>Analytics Cloud Integration User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_ReadOnly</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_ReadOnly</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_ReadOnly</recordType>
-        <type>Flexipage</type>
-        <profile>CIM Hub Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_ReadOnly</recordType>
-        <type>Flexipage</type>
-        <profile>CIM Hub Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_ReadOnly</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L1</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_ReadOnly</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L1</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_ReadOnly</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L2</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_ReadOnly</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_ReadOnly</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_ReadOnly</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_ReadOnly</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Approved</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Approved</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Approved</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Approved</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Approved</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L1</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Approved</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L2</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Approved</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L2</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Approved</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Approved</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Approved</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Approved</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Inactive_Quotes</recordType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Inactive_Quotes</recordType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Inactive_Quotes</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Inactive_Quotes</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Inactive_Quotes</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Inactive_Quotes</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Inactive_Quotes</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Inactive_Quotes</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Inactive_Quotes</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Inactive_Quotes</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_New</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_New</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_New</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_New</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_New</recordType>
-        <type>Flexipage</type>
-        <profile>Analytics Cloud Integration User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_New</recordType>
-        <type>Flexipage</type>
-        <profile>Analytics Cloud Integration User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_New</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_New</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_New</recordType>
-        <type>Flexipage</type>
-        <profile>CIM Hub Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_New</recordType>
-        <type>Flexipage</type>
-        <profile>CIM Hub Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_New</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L1</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_New</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L1</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_New</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L2</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_New</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L2</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_New</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_New</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_New</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_New</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_New</recordType>
-        <type>Flexipage</type>
-        <profile>Global Export Compliance</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Cancelled</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Cancelled</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_ReadOnly</recordType>
-        <type>Flexipage</type>
-        <profile>IT @ Intel</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Cancelled</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_ReadOnly</recordType>
-        <type>Flexipage</type>
-        <profile>IT @ Intel</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_ReadOnly</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_New</recordType>
-        <type>Flexipage</type>
-        <profile>Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Approved</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Approved</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Inactive_Quotes</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_New</recordType>
-        <type>Flexipage</type>
-        <profile>Global Export Compliance</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_New</recordType>
-        <type>Flexipage</type>
-        <profile>Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Inactive_Quotes</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L2</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Inactive_Quotes</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Inactive_Quotes</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Inactive_Quotes</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Inactive_Quotes</recordType>
-        <type>Flexipage</type>
-        <profile>Analytics Cloud Integration User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Inactive_Quotes</recordType>
-        <type>Flexipage</type>
-        <profile>Analytics Cloud Integration User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Inactive_Quotes</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Inactive_Quotes</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Inactive_Quotes</recordType>
-        <type>Flexipage</type>
-        <profile>CIM Hub Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Partner</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Partner</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>IT @ Intel</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Cancelled</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Cancelled</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Cancelled</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Cancelled</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Cancelled</recordType>
-        <type>Flexipage</type>
-        <profile>Analytics Cloud Integration User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Cancelled</recordType>
-        <type>Flexipage</type>
-        <profile>Analytics Cloud Integration User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Cancelled</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Cancelled</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Cancelled</recordType>
-        <type>Flexipage</type>
-        <profile>CIM Hub Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Cancelled</recordType>
-        <type>Flexipage</type>
-        <profile>CIM Hub Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Approved</recordType>
-        <type>Flexipage</type>
-        <profile>Partner</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Approved</recordType>
-        <type>Flexipage</type>
-        <profile>Partner</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Approved</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Approved</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Approved</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Approved</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-IPS</profile>
+        <profile>Partner Admin</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
@@ -5437,1098 +567,7 @@
         <formFactor>Large</formFactor>
         <pageOrSobjectType>Sales_Host__c</pageOrSobjectType>
         <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Host_Information_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Sales_Host__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Host_Information_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Sales_Host__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Host_Information_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Sales_Host__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Host_Information_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Sales_Host__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Host_Information_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Sales_Host__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Inactive_Quotes</recordType>
-        <type>Flexipage</type>
-        <profile>IT @ Intel</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Inactive_Quotes</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Inactive_Quotes</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Inactive_Quotes</recordType>
-        <type>Flexipage</type>
-        <profile>Partner</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Inactive_Quotes</recordType>
-        <type>Flexipage</type>
-        <profile>Partner</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Inactive_Quotes</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Inactive_Quotes</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Inactive_Quotes</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Inactive_Quotes</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Inactive_Quotes</recordType>
-        <type>Flexipage</type>
-        <profile>CIM Hub Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Inactive_Quotes</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L1</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Inactive_Quotes</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L1</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Inactive_Quotes</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L2</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Inactive_Quotes</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Inactive_Quotes</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Inactive_Quotes</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Inactive_Quotes</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_New</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_New</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_New</recordType>
-        <type>Flexipage</type>
-        <profile>IT @ Intel</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_New</recordType>
-        <type>Flexipage</type>
-        <profile>IT @ Intel</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_New</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_New</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_New</recordType>
-        <type>Flexipage</type>
-        <profile>Partner</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_New</recordType>
-        <type>Flexipage</type>
-        <profile>Partner</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_New</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_New</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Inactive_Quotes</recordType>
-        <type>Flexipage</type>
-        <profile>Global Export Compliance</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Inactive_Quotes</recordType>
-        <type>Flexipage</type>
-        <profile>Global Export Compliance</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Inactive_Quotes</recordType>
-        <type>Flexipage</type>
-        <profile>Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Inactive_Quotes</recordType>
-        <type>Flexipage</type>
-        <profile>Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Inactive_Quotes</recordType>
-        <type>Flexipage</type>
-        <profile>IT @ Intel</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Host_Information_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Sales_Host__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Partner</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_Direct_Account_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Core_Direct_Account</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_Direct_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Core_Direct_Account</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_CP_Quote</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Contract_Pricing</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_CP_Quote</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Contract_Pricing</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_CP_Quote</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Contract_Pricing</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_CP_Quote</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Contract_Pricing</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_CP_Quote</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Contract_Pricing</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_CP_Quote</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Contract_Pricing</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_CP_Quote</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Contract_Pricing</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_CP_Quote</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Contract_Pricing</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_CP_Quote</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Contract_Pricing</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_CP_Quote</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Contract_Pricing</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_CP_Quote</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Contract_Pricing</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_CP_Quote</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Contract_Pricing</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Host_Information_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Sales_Host__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Partner</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Approved</recordType>
-        <type>Flexipage</type>
-        <profile>Analytics Cloud Integration User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Approved</recordType>
-        <type>Flexipage</type>
-        <profile>Analytics Cloud Integration User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Approved</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Approved</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Approved</recordType>
-        <type>Flexipage</type>
-        <profile>CIM Hub Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Approved</recordType>
-        <type>Flexipage</type>
-        <profile>CIM Hub Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Approved</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L1</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Approved</recordType>
-        <type>Flexipage</type>
-        <profile>Global Export Compliance</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Approved</recordType>
-        <type>Flexipage</type>
-        <profile>Global Export Compliance</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Approved</recordType>
-        <type>Flexipage</type>
-        <profile>Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Approved</recordType>
-        <type>Flexipage</type>
-        <profile>Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Approved</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Approved</recordType>
-        <type>Flexipage</type>
-        <profile>IT @ Intel</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Approved</recordType>
-        <type>Flexipage</type>
-        <profile>IT @ Intel</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Approved</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Approved</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Approved</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Approved</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Approved</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Approved</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Approved</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_ReadOnly</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_ReadOnly</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_ReadOnly</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_ReadOnly</recordType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_ReadOnly</recordType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_ReadOnly</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_ReadOnly</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_ReadOnly</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_ReadOnly</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_ReadOnly</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_ReadOnly</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_ReadOnly</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_ReadOnly</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_ReadOnly</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_ReadOnly</recordType>
-        <type>Flexipage</type>
-        <profile>Global Export Compliance</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_ReadOnly</recordType>
-        <type>Flexipage</type>
-        <profile>Global Export Compliance</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_ReadOnly</recordType>
-        <type>Flexipage</type>
-        <profile>Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_ReadOnly</recordType>
-        <type>Flexipage</type>
-        <profile>Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_ReadOnly</recordType>
-        <type>Flexipage</type>
-        <profile>Partner</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_ReadOnly</recordType>
-        <type>Flexipage</type>
-        <profile>Partner</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_ReadOnly</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>IT @ Intel</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Global Export Compliance</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Global Export Compliance</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Cancelled</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Cancelled</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Cancelled</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L1</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Cancelled</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L1</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Cancelled</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L2</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Cancelled</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L2</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Cancelled</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Cancelled</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_ReadOnly</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_New</recordType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_New</recordType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_ReadOnly</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_New</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_New</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_New</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_ReadOnly</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
+        <profile>Partner Admin</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
@@ -6536,2149 +575,1533 @@
         <formFactor>Small</formFactor>
         <pageOrSobjectType>Sales_Host__c</pageOrSobjectType>
         <type>Flexipage</type>
+        <profile>Partner</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Host_Information_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Sales_Host__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Partner</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Host_Information_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Sales_Host__c</pageOrSobjectType>
+        <type>Flexipage</type>
         <profile>Partner Lead Admin</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
+        <content>Host_Information_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Sales_Host__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Partner Lead Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Host_Information_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Sales_Host__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Partnercenter Unified Community Profile</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Host_Information_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Sales_Host__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Partnercenter Unified Community Profile</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>PSG_Quote_Line_Cotract_Pricing_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
+        <recordType>SBQQ__QuoteLine__c.psg_cp_quote_line</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>PSG_Quote_Line_Cotract_Pricing_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
+        <recordType>SBQQ__QuoteLine__c.psg_cp_quote_line</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>PSG_Quote_Line_Cotract_Pricing_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
+        <recordType>SBQQ__QuoteLine__c.psg_cp_quote_line</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>PSG_Quote_Line_Cotract_Pricing_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
+        <recordType>SBQQ__QuoteLine__c.psg_cp_quote_line</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>PSG_Quote_Line_Cotract_Pricing_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
+        <recordType>SBQQ__QuoteLine__c.psg_cp_quote_line</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Host_Information_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Sales_Host__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Host_Information_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Sales_Host__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Host_Information_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Sales_Host__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Sales Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Host_Information_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Sales_Host__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Sales Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Host_Information_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Sales_Host__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Sales Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Host_Information_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Sales_Host__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Sales Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Host_Information_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Sales_Host__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Host_Information_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Sales_Host__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Host_Information_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Sales_Host__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Partner Community Login User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Host_Information_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Sales_Host__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Partner Community Login User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Host_Information_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Sales_Host__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Partner Community User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BM_Level_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>core_cpq_bm_level__c</pageOrSobjectType>
+        <recordType>core_cpq_bm_level__c.core_cpq_bm_level</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_Direct_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Core_Direct_Account</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_Direct_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Core_Direct_Account</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_Direct_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Core_Direct_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_Direct_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Core_Direct_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BM_Level_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>core_cpq_bm_level__c</pageOrSobjectType>
+        <recordType>core_cpq_bm_level__c.core_cpq_bm_level</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BM_Level_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>core_cpq_bm_level__c</pageOrSobjectType>
+        <recordType>core_cpq_bm_level__c.core_cpq_bm_level</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>PSG_CP_Quote</content>
         <formFactor>Small</formFactor>
         <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Submitted</recordType>
+        <recordType>SBQQ__Quote__c.PSG_Quote_Contract_Pricing</recordType>
         <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
+        <profile>IT Admin</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>PSG_Quote_Int_Record_Page</content>
+        <content>PSG_CP_Quote</content>
         <formFactor>Large</formFactor>
         <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.PSG_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Draft</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Draft</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Draft</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Draft</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Draft</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Draft</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Draft</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>IPA A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Draft</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>IPA A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Draft</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
+        <recordType>SBQQ__Quote__c.PSG_Quote_Contract_Pricing</recordType>
         <type>Flexipage</type>
         <profile>IT Admin</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Deal_Registration_Draft</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Draft</content>
+        <content>PSG_CP_Quote</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Draft</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Draft</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Draft</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Draft</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
+        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
+        <recordType>SBQQ__Quote__c.PSG_Quote_Contract_Pricing</recordType>
         <type>Flexipage</type>
         <profile>Sales Rep-BB</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Deal_Registration_Draft</content>
+        <content>PSG_CP_Quote</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
+        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
+        <recordType>SBQQ__Quote__c.PSG_Quote_Contract_Pricing</recordType>
         <type>Flexipage</type>
         <profile>Sales Rep-BB</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Deal_Registration_Draft</content>
+        <content>PSG_CP_Quote</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
+        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
+        <recordType>SBQQ__Quote__c.PSG_Quote_Contract_Pricing</recordType>
         <type>Flexipage</type>
         <profile>Sales Rep-BB-Dual IPS</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Deal_Registration_Draft</content>
+        <content>PSG_CP_Quote</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
+        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
+        <recordType>SBQQ__Quote__c.PSG_Quote_Contract_Pricing</recordType>
         <type>Flexipage</type>
         <profile>Sales Rep-BB-Dual IPS</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Deal_Registration_Draft</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Draft</content>
+        <content>Intel_Account_Record_Page</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Draft</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
         <type>Flexipage</type>
         <profile>Admin</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Deal_Registration_Draft</content>
+        <content>Intel_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Account_Record_Page</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BM_Level_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>core_cpq_bm_level__c</pageOrSobjectType>
+        <recordType>core_cpq_bm_level__c.core_cpq_bm_level</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BM_Assignment_Config_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>core_cpq_bm_assignment_config__c</pageOrSobjectType>
+        <recordType>core_cpq_bm_assignment_config__c.core_cpq_bm_assignment_config</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BM_Assignment_Config_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>core_cpq_bm_assignment_config__c</pageOrSobjectType>
+        <recordType>core_cpq_bm_assignment_config__c.core_cpq_bm_assignment_config</recordType>
         <type>Flexipage</type>
         <profile>Admin</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Deal_Registration_Draft</content>
+        <content>BM_Approval_Threshold_Record_Page1</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
+        <pageOrSobjectType>core_cpq_bm_approval_threshold__c</pageOrSobjectType>
+        <recordType>core_cpq_bm_approval_threshold__c.core_cpq_bm_approval_threshold</recordType>
         <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
+        <profile>Admin</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Deal_Registration_Draft</content>
+        <content>BM_Approval_Threshold_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
+        <pageOrSobjectType>core_cpq_bm_approval_threshold__c</pageOrSobjectType>
+        <recordType>core_cpq_bm_approval_threshold__c.core_cpq_bm_approval_threshold</recordType>
         <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
+        <profile>Admin</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Deal_Registration_Locked</content>
+        <content>PSG_CP_Quote</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
+        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
+        <recordType>SBQQ__Quote__c.PSG_Quote_Contract_Pricing</recordType>
         <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
+        <profile>Sales Rep-CW</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Deal_Registration_Locked</content>
+        <content>BM_Assignment_Config_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
+        <pageOrSobjectType>core_cpq_bm_assignment_config__c</pageOrSobjectType>
+        <recordType>core_cpq_bm_assignment_config__c.core_cpq_bm_assignment_config</recordType>
         <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
+        <profile>Admin</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Deal_Registration_Locked</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Locked</content>
+        <content>PSG_CP_Quote</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
+        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
+        <recordType>SBQQ__Quote__c.PSG_Quote_Contract_Pricing</recordType>
         <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
+        <profile>Sales Rep-CW</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Deal_Registration_Locked</content>
+        <content>PSG_CP_Quote</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
+        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
+        <recordType>SBQQ__Quote__c.PSG_Quote_Contract_Pricing</recordType>
         <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
+        <profile>Admin</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Deal_Registration_Locked</content>
+        <content>PSG_CP_Quote</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
+        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
+        <recordType>SBQQ__Quote__c.PSG_Quote_Contract_Pricing</recordType>
         <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
+        <profile>Admin</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Deal_Registration_Locked</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Locked</content>
+        <content>Quote_Document_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
+        <pageOrSobjectType>SBQQ__QuoteDocument__c</pageOrSobjectType>
         <type>Flexipage</type>
-        <profile>Data Ops</profile>
+        <profile>Admin</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Deal_Registration_Locked</content>
+        <content>Quote_Document_Record_Page1</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>IPA A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Locked</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>IPA A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Locked</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
+        <pageOrSobjectType>SBQQ__QuoteDocument__c</pageOrSobjectType>
         <type>Flexipage</type>
         <profile>IT Admin</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Deal_Registration_Locked</content>
+        <content>BM_Assignment_Config_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
+        <pageOrSobjectType>core_cpq_bm_assignment_config__c</pageOrSobjectType>
+        <recordType>core_cpq_bm_assignment_config__c.core_cpq_bm_assignment_config</recordType>
         <type>Flexipage</type>
         <profile>IT Admin</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Deal_Registration_Locked</content>
+        <content>BM_Approval_Threshold_Record_Page1</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
+        <pageOrSobjectType>core_cpq_bm_approval_threshold__c</pageOrSobjectType>
+        <recordType>core_cpq_bm_approval_threshold__c.core_cpq_bm_approval_threshold</recordType>
         <type>Flexipage</type>
-        <profile>Sales Manager</profile>
+        <profile>IT Admin</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Deal_Registration_Locked</content>
+        <content>BM_Approval_Threshold_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
+        <pageOrSobjectType>core_cpq_bm_approval_threshold__c</pageOrSobjectType>
+        <recordType>core_cpq_bm_approval_threshold__c.core_cpq_bm_approval_threshold</recordType>
         <type>Flexipage</type>
-        <profile>Sales Manager</profile>
+        <profile>IT Admin</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Deal_Registration_Locked</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Locked</content>
+        <content>Quote_Document_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
+        <pageOrSobjectType>SBQQ__QuoteDocument__c</pageOrSobjectType>
         <type>Flexipage</type>
-        <profile>Sales Ops</profile>
+        <profile>IT Admin</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Deal_Registration_Locked</content>
+        <content>Quote_Document_Record_Page1</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
+        <pageOrSobjectType>SBQQ__QuoteDocument__c</pageOrSobjectType>
         <type>Flexipage</type>
         <profile>Sales Rep-BB</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Deal_Registration_Locked</content>
+        <content>Quote_Document_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
+        <pageOrSobjectType>SBQQ__QuoteDocument__c</pageOrSobjectType>
         <type>Flexipage</type>
         <profile>Sales Rep-BB</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Deal_Registration_Locked</content>
+        <content>Quote_Document_Record_Page1</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Locked</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Locked</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Locked</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Locked</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Locked</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Locked</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
+        <pageOrSobjectType>SBQQ__QuoteDocument__c</pageOrSobjectType>
         <type>Flexipage</type>
         <profile>Admin</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Deal_Registration_Locked</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Partner</content>
+        <content>PSG_Quote_Line_Cotract_Pricing_Record_Page</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Partner</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Partner</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Partner</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Partner</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Partner</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Partner</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Partner</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Partner</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>IPA A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Partner</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>IPA A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Partner</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
+        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
+        <recordType>SBQQ__QuoteLine__c.psg_cp_quote_line</recordType>
         <type>Flexipage</type>
         <profile>IT Admin</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Deal_Registration_Partner</content>
+        <content>PSG_Quote_Line_Cotract_Pricing_Record_Page</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
+        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
+        <recordType>SBQQ__QuoteLine__c.psg_cp_quote_line</recordType>
         <type>Flexipage</type>
         <profile>IT Admin</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Deal_Registration_Partner</content>
+        <content>PSG_Quote_Line_Cotract_Pricing_Record_Page</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Partner</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Partner</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Partner</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Partner</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
+        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
+        <recordType>SBQQ__QuoteLine__c.psg_cp_quote_line</recordType>
         <type>Flexipage</type>
         <profile>Sales Rep-BB</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Deal_Registration_Partner</content>
+        <content>PSG_Quote_Line_Cotract_Pricing_Record_Page</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
+        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
+        <recordType>SBQQ__QuoteLine__c.psg_cp_quote_line</recordType>
         <type>Flexipage</type>
         <profile>Sales Rep-BB</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Deal_Registration_Partner</content>
+        <content>PSG_Quote_Line_Cotract_Pricing_Record_Page</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
+        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
+        <recordType>SBQQ__QuoteLine__c.psg_cp_quote_line</recordType>
         <type>Flexipage</type>
         <profile>Sales Rep-BB-Dual IPS</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Deal_Registration_Partner</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Partner</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Partner</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Partner</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Partner</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>IPA A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>IPA A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>IPA A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>IPA A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>IPA A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>IPA A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Product_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>BU Account Collaborator</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>BU Account Collaborator</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>Global Export Compliance</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>Global Export Compliance</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>IPA A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>IPA A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Intel</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>MarketingProfile</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Intel</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>MarketingProfile</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Intel</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
         <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
+        <profile>MarketingProfile</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Intel</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
         <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
+        <profile>MarketingProfile</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Intel</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
         <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
+        <profile>Marketing Development Manager</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Intel</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
         <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
+        <profile>Marketing Development Manager</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Intel</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
         <type>Flexipage</type>
-        <profile>Sales Ops</profile>
+        <profile>Commissions Office Inquiries Admin User</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>BU Account Collaborator</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>BU Account Collaborator</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Locked</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>Data Ops</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Locked</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>Data Ops</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Locked</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
         <type>Flexipage</type>
-        <profile>Global Export Compliance</profile>
+        <profile>Production Support-IPS</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Locked</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
         <type>Flexipage</type>
-        <profile>Global Export Compliance</profile>
+        <profile>Production Support-IPS</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Locked</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
         <type>Flexipage</type>
-        <profile>IPA A&amp;E User</profile>
+        <profile>Production Support</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Locked</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
         <type>Flexipage</type>
-        <profile>IPA A&amp;E User</profile>
+        <profile>Production Support</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>MarketingProfile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>MarketingProfile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Locked</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>Production Support-Display</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Locked</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>Production Support-Display</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Locked</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Program Core Team</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Program Core Team</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>Reporting Admin</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Locked</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>Reporting Admin</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Locked</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Sales CRM API</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Sales CRM API</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>Sales Ops</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Locked</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>Sales Ops</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Locked</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>Sales Rep-BB</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Locked</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>Sales Rep-BB</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Locked</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>Sales Rep-BB-Dual IPS</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Locked</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>Sales Rep-BB-Dual IPS</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Locked</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
         <type>Flexipage</type>
-        <profile>Admin</profile>
+        <profile>Sales Rep-CW</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Locked</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
         <type>Flexipage</type>
-        <profile>Admin</profile>
+        <profile>Sales Rep-CW</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Locked</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>SMG/GMC Read Only</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Locked</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>SMG/GMC Read Only</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Partner</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>A&amp;E User</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Partner</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>A&amp;E User</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Partner</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User (Read Only)</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User (Read Only)</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>CIM Hub Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>CIM Hub Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Commissions Office Inquiries Admin User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Account Brief Team</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Account Brief Team</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>BU Account Collaborator</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Partner</recordType>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>BU Account Collaborator</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Partner</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
         <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
+        <profile>BU Account Collaborator</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Global Export Compliance</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Global Export Compliance</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>IPA A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>IPA A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>MarketingProfile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>MarketingProfile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Partner</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>Sales Ops</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
+        <content>PSG_CP_Quote</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
+        <recordType>SBQQ__Quote__c.PSG_Quote_Contract_Pricing</recordType>
+        <type>Flexipage</type>
+        <profile>Minimum Access Integration Profile</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>PSG_CP_Quote</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Partner</recordType>
+        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
+        <recordType>SBQQ__Quote__c.PSG_Quote_Contract_Pricing</recordType>
+        <type>Flexipage</type>
+        <profile>Minimum Access Integration Profile</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>Sales Ops</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Partner</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>Sales Rep-BB</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Partner</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>Sales Rep-BB</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Partner</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>Sales Rep-BB-Dual IPS</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Partner</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>Sales Rep-BB-Dual IPS</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Partner</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
         <type>Flexipage</type>
-        <profile>Admin</profile>
+        <profile>Sales Rep-CW</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Partner</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
         <type>Flexipage</type>
-        <profile>Admin</profile>
+        <profile>Sales Rep-CW</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Partner</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>SMG/GMC Read Only</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Product_Record_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration_Product__c.Core_Design_Registration_Product_Partner</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>SMG/GMC Read Only</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User (Read Only)</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User (Read Only)</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>CIM Hub Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>CIM Hub Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Commissions Office Inquiries Admin User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Commissions Office Inquiries Admin User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Account Brief Team</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Account Brief Team</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Eloqua Integrator</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Eloqua Integrator</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Finance Program Team</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Finance Program Team</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Global Export Compliance</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Global Export Compliance</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Integration</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Integration</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Integration-IAH</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Integration-IAH</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>IT @ Intel</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>IT @ Intel</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>BU Account Collaborator</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Data Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Data Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Eloqua Integrator</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Eloqua Integrator</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Finance Program Team</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Finance Program Team</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Global Export Compliance</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Global Export Compliance</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Integration</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Integration</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Integration-IAH</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Integration-IAH</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>IT @ Intel</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>IT @ Intel</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Pricing_Financial_Incentive_Quote_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
+        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Create</recordType>
+        <type>Flexipage</type>
+        <profile>CCP - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Pricing_Financial_Incentive_Quote_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
+        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Create</recordType>
+        <type>Flexipage</type>
+        <profile>CCP - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Pricing_Financial_Incentive_Quote_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
+        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
+        <type>Flexipage</type>
+        <profile>CCP - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Pricing_Financial_Incentive_Quote_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
+        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
+        <type>Flexipage</type>
+        <profile>CCP - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Pricing_Financial_Incentive_Quote_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
+        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
+        <type>Flexipage</type>
+        <profile>CCP - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Pricing_Financial_Incentive_Quote_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
+        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
+        <type>Flexipage</type>
+        <profile>CCP - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Intel</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Intel</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
@@ -8715,6 +2138,402 @@
         <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
         <type>Flexipage</type>
         <profile>BU Account Collaborator</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Intel</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>CCP - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Intel</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>CCP - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Intel</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>Data Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Intel</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>Data Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Intel</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>Integration</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Intel</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>Integration</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Intel</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>IPA A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Intel</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>IPA A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Intel</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>IPA System Profile</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Intel</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>IPA System Profile</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Intel</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Intel</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Intel</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>MarketingProfile</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Intel</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>MarketingProfile</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Intel</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>PCC B2B API Integration</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Intel</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>PCC B2B API Integration</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Intel</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support-Display</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Intel</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support-Display</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Intel</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>Program Core Team</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Intel</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>Program Core Team</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Intel</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Intel</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Intel</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>Sales CRM API</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Intel</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>Sales CRM API</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Intel</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Intel</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Intel</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Intel</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Intel</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Intel</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Intel</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Intel</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Intel</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Intel</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Intel</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>SMG/GMC Read Only</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Intel</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>SMG/GMC Read Only</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Intel</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>StandardAul</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Intel</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>StandardAul</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Intel</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>Standard</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Intel</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>Standard</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Intel</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Intel</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Intel</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>Finance Program Team</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Intel</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>Finance Program Team</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
@@ -8741,7 +2560,7 @@
         <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
         <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
         <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
+        <profile>Chatter External User</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
@@ -8750,4309 +2569,2077 @@
         <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
         <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
         <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
+        <profile>Chatter External User</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Intel</content>
+        <content>Deal_Registration_Partner</content>
         <formFactor>Small</formFactor>
         <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>MarketingProfile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Intel</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>MarketingProfile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Intel</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Intel</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>BU Account Collaborator</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>BU Account Collaborator</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Global Export Compliance</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Global Export Compliance</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
+        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
         <type>Flexipage</type>
         <profile>A&amp;E User</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
+        <content>Deal_Registration_Partner</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
         <type>Flexipage</type>
         <profile>A&amp;E User</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
+        <content>Deal_Registration_Partner</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
         <type>Flexipage</type>
         <profile>A&amp;E User (Read Only)</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
+        <content>Deal_Registration_Partner</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
         <type>Flexipage</type>
         <profile>A&amp;E User (Read Only)</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
+        <content>Deal_Registration_Partner</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Analytics Cloud Integration User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Analytics Cloud Integration User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Analytics Cloud Security User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Analytics Cloud Security User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>B2BMA Integration User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>B2BMA Integration User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>BU Account Collaborator</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>BU Account Collaborator</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
         <type>Flexipage</type>
         <profile>CCP - Core Access</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
+        <content>Deal_Registration_Partner</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
         <type>Flexipage</type>
         <profile>CCP - Core Access</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
+        <content>Deal_Registration_Partner</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>ContractManager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>ContractManager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L2</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L2</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L1</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L1</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Core Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Core Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
         <type>Flexipage</type>
         <profile>Data Ops</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
+        <content>Deal_Registration_Partner</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
         <type>Flexipage</type>
         <profile>Data Ops</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
+        <content>Deal_Registration_Partner</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>DDR Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>DDR Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Identity User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Identity User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Intel Partner Admin Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Intel Partner Admin Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Intel Partner Alliance Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Intel Partner Alliance Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Intel Partner Community Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Intel Partner Community Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Intel Premier Support Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Intel Premier Support Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Intel® FPGA SSLC Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Intel® FPGA SSLC Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Intel® Partner Portal Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Intel® Partner Portal Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Intel® Solutions Marketplace Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Intel® Solutions Marketplace Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
         <type>Flexipage</type>
         <profile>IPA A&amp;E User</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
+        <content>Deal_Registration_Partner</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
         <type>Flexipage</type>
         <profile>IPA A&amp;E User</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
+        <content>Deal_Registration_Partner</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
         <type>Flexipage</type>
-        <profile>IPS Agent</profile>
+        <profile>IPA System Profile</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
+        <content>Deal_Registration_Partner</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
         <type>Flexipage</type>
-        <profile>IPS Agent</profile>
+        <profile>IPA System Profile</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
+        <content>Deal_Registration_Partner</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Agent Enhanced</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Agent Enhanced</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Agent-Partner</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Agent-Partner</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>IPS External Customer</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>IPS External Customer</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Lenovo B2B  M2M</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Lenovo B2B  M2M</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Support Org Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Support Org Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Survey Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Survey Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Temp Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Temp Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>IT @ Intel</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>IT @ Intel</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
         <type>Flexipage</type>
         <profile>IT Admin</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
+        <content>Deal_Registration_Partner</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
         <type>Flexipage</type>
         <profile>IT Admin</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
+        <content>Deal_Registration_Partner</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>MarketingProfile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>MarketingProfile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Minimum Access - API Only Integrations</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Minimum Access - API Only Integrations</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Minimum Access - Salesforce</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Minimum Access - Salesforce</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>PCC B2B API Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>PCC B2B API Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Premier Support User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Premier Support User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Production Release and Checkout</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Production Release and Checkout</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Insights Integration User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Insights Integration User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>SalesforceIQ Integration User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>SalesforceIQ Integration User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>SolutionManager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>SolutionManager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>SSO Error Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>SSO Error Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>StandardAul</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>StandardAul</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Standard</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Standard</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Support Core Team</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Support Core Team</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Analytics Cloud Integration User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Analytics Cloud Integration User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Analytics Cloud Security User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Analytics Cloud Security User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>B2BMA Integration User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>B2BMA Integration User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>BU Account Collaborator</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>BU Account Collaborator</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>ContractManager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>ContractManager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L2</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L2</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L1</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L1</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Core Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Core Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>DDR Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>DDR Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Identity User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Identity User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Intel Partner Admin Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Intel Partner Admin Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Intel Partner Alliance Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Intel Partner Alliance Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Intel Partner Community Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Intel Partner Community Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Intel Premier Support Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Intel Premier Support Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Intel® FPGA SSLC Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Intel® FPGA SSLC Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Intel® Partner Portal Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Intel® Partner Portal Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Intel® Solutions Marketplace Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Intel® Solutions Marketplace Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>IPA A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>IPA A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Agent</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Agent</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Agent Enhanced</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Agent Enhanced</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Agent-Partner</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Agent-Partner</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>IPS External Customer</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>IPS External Customer</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Lenovo B2B  M2M</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Lenovo B2B  M2M</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Support Org Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Support Org Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Survey Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Survey Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Temp Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Temp Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>IT @ Intel</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>IT @ Intel</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>MarketingProfile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>MarketingProfile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Minimum Access - API Only Integrations</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Minimum Access - API Only Integrations</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Minimum Access - Salesforce</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Minimum Access - Salesforce</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>PCC B2B API Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>PCC B2B API Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Premier Support User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Premier Support User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Production Release and Checkout</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Production Release and Checkout</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Insights Integration User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Insights Integration User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>SalesforceIQ Integration User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>SalesforceIQ Integration User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>SolutionManager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>SolutionManager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>SSO Error Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>SSO Error Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>StandardAul</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>StandardAul</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Standard</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Standard</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Support Core Team</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Support Core Team</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Analytics Cloud Integration User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Analytics Cloud Integration User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L1</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L1</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L2</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L2</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>ContractManager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>ContractManager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Core Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Core Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>DDR Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>DDR Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Global Export Compliance</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Global Export Compliance</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Intel Partner Admin Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Intel Partner Admin Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Intel Partner Alliance Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Intel Partner Alliance Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Intel Partner Community Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Intel Partner Community Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Intel Premier Support Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Intel Premier Support Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Intel® FPGA SSLC Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Intel® FPGA SSLC Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Intel® Partner Portal Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Intel® Partner Portal Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Intel® Solutions Marketplace Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Intel® Solutions Marketplace Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>IPA A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>IPA A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Agent</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Agent</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Agent Enhanced</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Agent Enhanced</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Agent-Partner</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Agent-Partner</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>IPS External Customer</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>IPS External Customer</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Lenovo B2B  M2M</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Lenovo B2B  M2M</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Support Org Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Support Org Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Survey Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Survey Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Temp Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Temp Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>IT @ Intel</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>IT @ Intel</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>MarketingProfile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>MarketingProfile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Minimum Access - API Only Integrations</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Minimum Access - API Only Integrations</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Minimum Access - Salesforce</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Minimum Access - Salesforce</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
         <type>Flexipage</type>
         <profile>Partner</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
+        <content>Deal_Registration_Partner</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
         <type>Flexipage</type>
         <profile>Partner</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
+        <content>Deal_Registration_Partner</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Partner Community Login User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Partner Community Login User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Partner Community User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Partner Community User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Partner Lead Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Partner Lead Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Partnercenter Unified Community Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Partnercenter Unified Community Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>PCC B2B API Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>PCC B2B API Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Premier Support User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Premier Support User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Production Release and Checkout</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Production Release and Checkout</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Insights Integration User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Insights Integration User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
         <type>Flexipage</type>
         <profile>Sales Manager</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
+        <content>Deal_Registration_Partner</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
         <type>Flexipage</type>
         <profile>Sales Manager</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
+        <content>Deal_Registration_Partner</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
         <type>Flexipage</type>
-        <profile>Sales Ops</profile>
+        <profile>Sales CRM API</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
+        <content>Deal_Registration_Partner</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
         <type>Flexipage</type>
-        <profile>Sales Ops</profile>
+        <profile>Sales CRM API</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
+        <content>Deal_Registration_Partner</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
         <type>Flexipage</type>
         <profile>Sales Rep-BB-Dual IPS</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
+        <content>Deal_Registration_Partner</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
         <type>Flexipage</type>
         <profile>Sales Rep-BB-Dual IPS</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
+        <content>Deal_Registration_Partner</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>SalesforceIQ Integration User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>SalesforceIQ Integration User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
         <type>Flexipage</type>
         <profile>SMG/GMC Read Only</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
+        <content>Deal_Registration_Partner</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
         <type>Flexipage</type>
         <profile>SMG/GMC Read Only</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
+        <content>Deal_Registration_Partner</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>SolutionManager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>SolutionManager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>StandardAul</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>StandardAul</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Standard</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Standard</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Support Core Team</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Support Core Team</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
         <type>Flexipage</type>
         <profile>Admin</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
+        <content>Deal_Registration_Partner</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Edit</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
         <type>Flexipage</type>
         <profile>Admin</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
+        <content>Deal_Registration_Locked</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
         <type>Flexipage</type>
         <profile>A&amp;E User</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
+        <content>Deal_Registration_Locked</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
         <type>Flexipage</type>
         <profile>A&amp;E User</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
+        <content>Deal_Registration_Locked</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
         <type>Flexipage</type>
         <profile>A&amp;E User (Read Only)</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
+        <content>Deal_Registration_Locked</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
         <type>Flexipage</type>
         <profile>A&amp;E User (Read Only)</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
+        <content>Deal_Registration_Locked</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Analytics Cloud Integration User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Analytics Cloud Integration User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
         <type>Flexipage</type>
         <profile>CCP - Core Access</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
+        <content>Deal_Registration_Locked</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
         <type>Flexipage</type>
         <profile>CCP - Core Access</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
+        <content>Deal_Registration_Locked</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L1</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L1</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L2</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L2</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>ContractManager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>ContractManager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Core Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Core Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
         <type>Flexipage</type>
         <profile>Data Ops</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
+        <content>Deal_Registration_Locked</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
         <type>Flexipage</type>
         <profile>Data Ops</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
+        <content>Deal_Registration_Locked</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>DDR Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>DDR Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Global Export Compliance</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Global Export Compliance</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Intel Partner Admin Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Intel Partner Admin Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Intel Partner Alliance Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Intel Partner Alliance Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Intel Partner Community Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Intel Partner Community Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Intel Premier Support Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Intel Premier Support Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Intel® FPGA SSLC Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Intel® FPGA SSLC Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Intel® Partner Portal Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Intel® Partner Portal Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Intel® Solutions Marketplace Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Intel® Solutions Marketplace Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
         <type>Flexipage</type>
         <profile>IPA A&amp;E User</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
+        <content>Deal_Registration_Locked</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
         <type>Flexipage</type>
         <profile>IPA A&amp;E User</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
+        <content>Deal_Registration_Locked</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
         <type>Flexipage</type>
-        <profile>IPS Agent</profile>
+        <profile>IPA System Profile</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
+        <content>Deal_Registration_Locked</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
         <type>Flexipage</type>
-        <profile>IPS Agent</profile>
+        <profile>IPA System Profile</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
+        <content>Deal_Registration_Locked</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Agent Enhanced</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Agent Enhanced</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Agent-Partner</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Agent-Partner</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>IPS External Customer</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>IPS External Customer</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Lenovo B2B  M2M</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Lenovo B2B  M2M</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Support Org Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Support Org Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Survey Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Survey Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Temp Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Temp Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>IT @ Intel</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>IT @ Intel</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
         <type>Flexipage</type>
         <profile>IT Admin</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
+        <content>Deal_Registration_Locked</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
         <type>Flexipage</type>
         <profile>IT Admin</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
+        <content>Deal_Registration_Locked</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
         <type>Flexipage</type>
-        <profile>MarketingProfile</profile>
+        <profile>Sales CRM API</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
+        <content>Deal_Registration_Locked</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
         <type>Flexipage</type>
-        <profile>MarketingProfile</profile>
+        <profile>Sales CRM API</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
+        <content>Deal_Registration_Locked</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Minimum Access - API Only Integrations</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Minimum Access - API Only Integrations</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Minimum Access - Salesforce</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Minimum Access - Salesforce</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Partner</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Partner</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Partner Community Login User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Partner Community Login User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Partner Community User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Partner Community User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Partner Lead Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Partner Lead Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Partnercenter Unified Community Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Partnercenter Unified Community Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>PCC B2B API Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>PCC B2B API Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Premier Support User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Premier Support User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Production Release and Checkout</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Production Release and Checkout</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Insights Integration User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Insights Integration User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
         <type>Flexipage</type>
         <profile>Sales Manager</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
+        <content>Deal_Registration_Locked</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
         <type>Flexipage</type>
         <profile>Sales Manager</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
+        <content>Deal_Registration_Locked</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
         <type>Flexipage</type>
         <profile>Sales Ops</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
+        <content>Deal_Registration_Locked</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
         <type>Flexipage</type>
         <profile>Sales Ops</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
+        <content>Deal_Registration_Locked</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
         <type>Flexipage</type>
         <profile>Sales Rep-BB</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
+        <content>Deal_Registration_Locked</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
         <type>Flexipage</type>
         <profile>Sales Rep-BB</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
+        <content>Deal_Registration_Locked</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
         <type>Flexipage</type>
         <profile>Sales Rep-BB-Dual IPS</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
+        <content>Deal_Registration_Locked</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
         <type>Flexipage</type>
         <profile>Sales Rep-BB-Dual IPS</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
+        <content>Deal_Registration_Locked</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
         <type>Flexipage</type>
         <profile>Sales Rep-CW</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
+        <content>Deal_Registration_Locked</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
         <type>Flexipage</type>
         <profile>Sales Rep-CW</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
+        <content>Deal_Registration_Locked</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>SalesforceIQ Integration User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>SalesforceIQ Integration User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
         <type>Flexipage</type>
         <profile>SMG/GMC Read Only</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
+        <content>Deal_Registration_Locked</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
         <type>Flexipage</type>
         <profile>SMG/GMC Read Only</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
+        <content>Deal_Registration_Locked</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>SolutionManager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>SolutionManager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>StandardAul</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>StandardAul</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Standard</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Standard</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Support Core Team</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Support Core Team</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
         <type>Flexipage</type>
         <profile>Admin</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Line_Record_Page</content>
+        <content>Deal_Registration_Locked</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__QuoteLine__c</pageOrSobjectType>
-        <recordType>SBQQ__QuoteLine__c.Pricing_Financial_Incentive_Quote_Line_Read_Only</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
         <type>Flexipage</type>
         <profile>Admin</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Intel_Contact_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Core_Intel_Contact</recordType>
+        <content>Deal_Registration_Draft</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
         <type>Flexipage</type>
         <profile>A&amp;E User</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Intel_Contact_Record_Page1</content>
+        <content>Deal_Registration_Draft</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Core_Intel_Contact</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Draft</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User (Read Only)</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Draft</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User (Read Only)</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Draft</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>CCP - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Draft</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>CCP - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Draft</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
         <type>Flexipage</type>
         <profile>Data Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Draft</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>Data Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Draft</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>IPA A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Draft</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>IPA A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Draft</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Draft</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Draft</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Draft</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Draft</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>Sales CRM API</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Draft</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>Sales CRM API</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Draft</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Draft</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Draft</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Draft</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Draft</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Draft</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Draft</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Draft</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Draft</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Draft</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Draft</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>SMG/GMC Read Only</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Draft</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>SMG/GMC Read Only</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Draft</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Draft</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User (Read Only)</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User (Read Only)</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>BU Account Collaborator</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>BU Account Collaborator</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>CCP - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>CCP - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>Data Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>Data Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>IPA A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>IPA A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>SMG/GMC Read Only</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>SMG/GMC Read Only</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User (Read Only)</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User (Read Only)</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>BU Account Collaborator</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>BU Account Collaborator</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>CCP - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>CCP - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>Data Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>Data Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>IPA A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>IPA A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>SMG/GMC Read Only</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>SMG/GMC Read Only</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User (Read Only)</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User (Read Only)</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>BU Account Collaborator</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>BU Account Collaborator</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>CCP - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>CCP - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>Data Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>Data Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>IPA A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>IPA A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>SMG/GMC Read Only</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>SMG/GMC Read Only</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Product_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration_Product__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration_Product__c.PCC_Deal_Registration_Product_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User (Read Only)</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User (Read Only)</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>BU Account Collaborator</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>BU Account Collaborator</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>CCP - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>CCP - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>Account Brief Team</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>Account Brief Team</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>CIM Hub Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>CIM Hub Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>Data Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>Data Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>Global Export Compliance</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>Global Export Compliance</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>Integration</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>Integration</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>IPA A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>IPA A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>IPA System Profile</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>IPA System Profile</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>Production Release and Checkout</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>Production Release and Checkout</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support-Display</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support-Display</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>Program Core Team</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>Program Core Team</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>SMG/GMC Read Only</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>SMG/GMC Read Only</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>Support Core Team</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>Support Core Team</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Partner</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Partner</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Partner</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Partner</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Partner</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Partner</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Partner</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Partner</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Partner</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Partner</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Partner</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Partner</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Partner</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Partner</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
@@ -13061,7 +4648,7 @@
         <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
         <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
         <type>Flexipage</type>
-        <profile>IPA A&amp;E User</profile>
+        <profile>IT Admin</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
@@ -13070,2345 +4657,115 @@
         <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
         <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
         <type>Flexipage</type>
-        <profile>IPA A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>IPA A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>IPA A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>IPA A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>IPA A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Intel</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>IPA A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Intel</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>IPA A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L1</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L1</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L2</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L2</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>ContractManager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>ContractManager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Core Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Core Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Intel Partner Admin Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Intel Partner Admin Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>IPA A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>IPA A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
         <profile>IT Admin</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
+        <content>Design_Registration_Partner_Draft</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>MarketingProfile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>MarketingProfile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Premier Support User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Premier Support User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Production Release and Checkout</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Production Release and Checkout</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
         <type>Flexipage</type>
         <profile>Sales Manager</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
+        <content>Design_Registration_Partner_Draft</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
         <type>Flexipage</type>
         <profile>Sales Manager</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
+        <content>Design_Registration_Partner_Draft</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
         <type>Flexipage</type>
         <profile>Sales Ops</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
+        <content>Design_Registration_Partner_Draft</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
         <type>Flexipage</type>
         <profile>Sales Ops</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
+        <content>Design_Registration_Partner_Draft</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
         <type>Flexipage</type>
         <profile>Sales Rep-BB</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
+        <content>Design_Registration_Partner_Draft</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
         <type>Flexipage</type>
         <profile>Sales Rep-BB</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
+        <content>Design_Registration_Partner_Draft</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
         <type>Flexipage</type>
         <profile>Sales Rep-BB-Dual IPS</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
+        <content>Design_Registration_Partner_Draft</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
         <type>Flexipage</type>
         <profile>Sales Rep-BB-Dual IPS</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
+        <content>Design_Registration_Partner_Draft</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
         <type>Flexipage</type>
         <profile>Sales Rep-CW</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
+        <content>Design_Registration_Partner_Draft</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
         <type>Flexipage</type>
         <profile>Sales Rep-CW</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
+        <content>Design_Registration_Partner_Draft</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>SolutionManager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>SolutionManager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>StandardAul</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>StandardAul</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Standard</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Standard</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Support Core Team</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Support Core Team</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
         <type>Flexipage</type>
         <profile>Admin</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
+        <content>Design_Registration_Partner_Draft</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
         <type>Flexipage</type>
         <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L1</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L1</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L2</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L2</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>ContractManager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>ContractManager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>Core Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>Core Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>Intel Partner Admin Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>Intel Partner Admin Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>IPA A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>IPA A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>MarketingProfile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>MarketingProfile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>Premier Support User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>Premier Support User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>Production Release and Checkout</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>Production Release and Checkout</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>SolutionManager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>SolutionManager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>StandardAul</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>StandardAul</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>Standard</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>Standard</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>Support Core Team</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>Support Core Team</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L1</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L1</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L2</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L2</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>ContractManager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>ContractManager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>Core Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>Core Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>Intel Partner Admin Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>Intel Partner Admin Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>IPA A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>IPA A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>MarketingProfile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>MarketingProfile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>Premier Support User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>Premier Support User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>Production Release and Checkout</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>Production Release and Checkout</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>SolutionManager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>SolutionManager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>StandardAul</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>StandardAul</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>Standard</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>Standard</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>Support Core Team</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>Support Core Team</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L1</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L1</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L2</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L2</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>ContractManager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>ContractManager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>Core Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>Core Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>Intel Partner Admin Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>Intel Partner Admin Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>IPA A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>IPA A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>MarketingProfile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>MarketingProfile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>Premier Support User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>Premier Support User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>Production Release and Checkout</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>Production Release and Checkout</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>SolutionManager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>SolutionManager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>StandardAul</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>StandardAul</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>Standard</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>Standard</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>Support Core Team</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>Support Core Team</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L1</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L1</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>UCD_Account_System_Default_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Production Release and Checkout</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>UCD_Account_System_Default_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Production Release and Checkout</profile>
     </profileActionOverrides>
     <tabs>standard-home</tabs>
     <tabs>standard-Account</tabs>
@@ -15417,14 +4774,48 @@
     <tabs>SBQQ__Quote__c</tabs>
     <tabs>standard-Order</tabs>
     <tabs>Sales_License__c</tabs>
+    <tabs>PSG_Analytics</tabs>
     <tabs>standard-Contract</tabs>
     <tabs>standard-File</tabs>
+    <tabs>PSG_Upload_File</tabs>
+    <tabs>PSG_Manage_Price_Books</tabs>
+    <tabs>price_prid__c</tabs>
+    <tabs>price_msvp__c</tabs>
     <tabs>core_cpq_list_price__c</tabs>
     <tabs>standard-report</tabs>
-    <tabs>Sales_Host__c</tabs>
+    <tabs>sbaa__Approval__c</tabs>
+    <tabs>Sales_License_Generator_Switch__c</tabs>
+    <tabs>core_cpq_psg_log_entry__c</tabs>
+    <tabs>PSG_Record_Transfer</tabs>
     <tabs>Sales_Feedback__c</tabs>
-    <tabs>SBQQ__Subscription__c</tabs>
-    <tabs>Account_Create_Request__c</tabs>
+    <tabs>psg_price_increase__c</tabs>
+    <tabs>DP_EAT_Project_Info__c</tabs>
+    <tabs>DP_EAT_Project_Test_Classes__c</tabs>
+    <tabs>DP_EAT_Project_Test_Run_Results__c</tabs>
+    <tabs>TestPowerBi</tabs>
+    <tabs>License_Dashboard1</tabs>
+    <tabs>Core_Solution_Storage__c</tabs>
+    <tabs>Contract_Merge</tabs>
+    <tabs>Opportunity_Solution_Area__c</tabs>
+    <tabs>Pricing_Price_Rules__c</tabs>
+    <tabs>Core_Delegate_Approver__c</tabs>
+    <tabs>core_cpq_portalrequest__c</tabs>
+    <tabs>SJ_Extend__c</tabs>
+    <tabs>Approver__c</tabs>
+    <tabs>Core_Products_Staging__c</tabs>
+    <tabs>PSG_Free_License_Request__c</tabs>
+    <tabs>Opportunity_Team_Member</tabs>
+    <tabs>Design_Registration_Stage__c</tabs>
+    <tabs>Design_Registration_Product_M2M_Stage__c</tabs>
+    <tabs>PCC_DDR_L5_Product_Mapping__c</tabs>
+    <tabs>SWS_Cloud_Credit_Request__c</tabs>
+    <tabs>PCC_Rebate_Claim__c</tabs>
+    <tabs>PCC_Rebate_Claim_Stage__c</tabs>
+    <tabs>PCC_Deal_Change_Request__c</tabs>
+    <tabs>PCC_Deal_Change_Request_Line_Item__c</tabs>
+    <tabs>PCC_EndCustomerAcc_Mapping__c</tabs>
+    <tabs>Deployment_Components__c</tabs>
+    <tabs>Deployment__c</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>Intel_Order_License_Management_App_UtilityBar</utilityBar>
 </CustomApplication>

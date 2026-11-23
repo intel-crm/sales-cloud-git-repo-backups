@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Email template to send to the Logged-In User after the completion of the Bulk upload operation of Quote De-activation or Revision Update.</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>PSG_Quote_Bulk_Upload_Result</name>
+    <style>none</style>
+    <subject>Quote Bulk Deactivation/Revision Result</subject>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

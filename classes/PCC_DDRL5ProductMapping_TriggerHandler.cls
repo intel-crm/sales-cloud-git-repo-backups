@@ -18,15 +18,11 @@ public without sharing class PCC_DDRL5ProductMapping_TriggerHandler extends Trig
     
     public override void afterInsert(){
         List<PCC_DDR_L5_Product_Mapping__c> DDRL5List = (List<PCC_DDR_L5_Product_Mapping__c>) Trigger.new;
-        Boolean triggerExecution = [SELECT Active__c 
-                                    FROM Trigger_Execution__mdt 
-                                    WHERE MasterLabel ='PCC_DDR_L5_Product_Mapping_Trigger' Limit 1].Active__c;
+        Boolean triggerExecution = [SELECT Active__c FROM Trigger_Execution__mdt WHERE MasterLabel ='PCC_DDR_L5_Product_Mapping_Trigger' Limit 1].Active__c;
         if(triggerExecution){
             ShareDDRL5ProductAttributes(DDRL5List);
         }
     }
-  
-    
     /*****************************************************************************************************************
 * Method Name: ShareDDRL5ProductAttributes
 * Date: 21/08/2023    
@@ -36,7 +32,6 @@ public without sharing class PCC_DDRL5ProductMapping_TriggerHandler extends Trig
     Public Static void ShareDDRL5ProductAttributes(List<PCC_DDR_L5_Product_Mapping__c> DDRL5List){
         Set<Id> ddrIds = new Set<Id>();
         String methodOrigin = 'PCC_DDRL5ProductMapping_TriggerHandler.ShareDDRL5ProductAttributes';
-        
         try{
             //collect all designRegistration Ids
             if(!DDRL5List.isEmpty() && DDRL5List != null){
@@ -44,19 +39,13 @@ public without sharing class PCC_DDRL5ProductMapping_TriggerHandler extends Trig
                     ddrIds.add(dlpm.PCC_Design_Registration__c);
                 }
             }
-            
             //share DDR L5 mapping records based on corresponding DDR sharing
             if(!ddrIds.isEmpty() && ddrIds != null){
                 DDRL5MappingsSharing(ddrIds);
             }
-            
         }catch (Exception ex){ Core_Log_Entry.logEntryWithException(ORIGIN, PROJECT, SCOPE, SEVERITY,'', '' ,'' , methodOrigin ,'' ,ex); 
-        }
+                             }
     }
-    
-
-    
-    
     /*****************************************************************************************************************
 * Method Name: DDRL5MappingsSharing
 * Date: 21/08/2023    
@@ -65,18 +54,17 @@ public without sharing class PCC_DDRL5ProductMapping_TriggerHandler extends Trig
 ******************************************************************************************************************/
     @future
     Public Static void DDRL5MappingsSharing(Set<Id> ddrIds){
-        List<Database.SaveResult> ddrL5InsertResults = new List<Database.SaveResult>();
-        List<Database.DeleteResult> ddrL5DeleteResults = new List<Database.DeleteResult>();
-        String InsertError = 'Exception occurred while inserting PCC_DDR_L5_Product_Mapping__Share Records';
-        String DeleteError = 'Exception occurred while deleting PCC_DDR_L5_Product_Mapping__Share Records';
+        //  List<Database.SaveResult> ddrL5InsertResults = new List<Database.SaveResult>();
+        // List<Database.DeleteResult> ddrL5DeleteResults = new List<Database.DeleteResult>();
+        // String InsertError = 'Exception occurred while inserting PCC_DDR_L5_Product_Mapping__Share Records';
+        // String DeleteError = 'Exception occurred while deleting PCC_DDR_L5_Product_Mapping__Share Records';
         String methodOrigin = 'PCC_DDRL5ProductMapping_TriggerHandler.ShareDDRL5ProductAttributes';
         Map<Id, Set<Id>> mapOfDDRIdtoUserOrGroupIdSet = new Map<Id, Set<Id>>();
         Set<Id> ddrL5Ids = new Set<Id>();
         List<PCC_DDR_L5_Product_Mapping__c> DDRL5List = new List<PCC_DDR_L5_Product_Mapping__c>();
-        List<String> keysToRemove = new List<String>();
-		Map<String, PCC_DDR_L5_Product_Mapping__Share> mapOfIdToDlpmShareToDelete = new Map<String, PCC_DDR_L5_Product_Mapping__Share>();
+        // List<String> keysToRemove = new List<String>();
+        Map<String, PCC_DDR_L5_Product_Mapping__Share> mapOfIdToDlpmShareToDelete = new Map<String, PCC_DDR_L5_Product_Mapping__Share>();
         Map<String, PCC_DDR_L5_Product_Mapping__Share> mapOfIdToDlpmShareToInsert = new Map<String, PCC_DDR_L5_Product_Mapping__Share>();
-        
         try{
             if(!ddrIds.isEmpty() && ddrIds!= null){
                 //get list of PCC_DDR_L5_Product_Mapping__c records where we are using updated DDR Ids 
@@ -85,82 +73,60 @@ public without sharing class PCC_DDRL5ProductMapping_TriggerHandler extends Trig
                 for(PCC_DDR_L5_Product_Mapping__c dlpm : DDRL5List){
                     ddrL5Ids.add(dlpm.Id);
                 }
-                
                 //creating map of ddrId to all the groups and users who have access to DDR
-                for(Core_Design_Registration__Share dmlShare : [SELECT Id, ParentId, UserOrGroupId, AccessLevel, UserOrGroup.Name, RowCause 
-                                                                FROM Core_Design_Registration__Share 
-                                                                WHERE ParentId IN : ddrIds]
-                   ){
-                       if(mapOfDDRIdtoUserOrGroupIdSet.containsKey(dmlShare.ParentId)){
-                           mapOfDDRIdtoUserOrGroupIdSet.get(dmlShare.ParentId).add(dmlShare.UserOrGroupId);
-                       }else{
-                           mapOfDDRIdtoUserOrGroupIdSet.put(dmlShare.ParentId, new Set<Id>{dmlShare.UserOrGroupId});
-                       }
-                   }
-                
+                for(Core_Design_Registration__Share dmlShare : [SELECT Id, ParentId, UserOrGroupId, AccessLevel, UserOrGroup.Name, RowCause FROM Core_Design_Registration__Share WHERE ParentId IN : ddrIds]){
+                    if(mapOfDDRIdtoUserOrGroupIdSet.containsKey(dmlShare.ParentId)){
+                        mapOfDDRIdtoUserOrGroupIdSet.get(dmlShare.ParentId).add(dmlShare.UserOrGroupId);
+                    }else{
+                        mapOfDDRIdtoUserOrGroupIdSet.put(dmlShare.ParentId, new Set<Id>{dmlShare.UserOrGroupId});
+                    }
+                }
             }
-            
-            System.debug('mapOfDDRIdtoUserOrGroupIdSet-->'+mapOfDDRIdtoUserOrGroupIdSet);
-            
             //fetching list of old PCC_DDR_L5_Product_Mapping__Share records to delete
-            for(PCC_DDR_L5_Product_Mapping__Share dlpmShare : [SELECT id, AccessLevel, ParentId, RowCause, UserOrGroupId, UserOrGroup.name 
-                                                              FROM PCC_DDR_L5_Product_Mapping__Share 
-                                                              WHERE ParentId IN : ddrL5Ids
-                                                               AND RowCause = 'Manual']
-               ){
-                   mapOfIdToDlpmShareToDelete.put((String)dlpmShare.UserOrGroupId + (String)dlpmShare.ParentId, dlpmShare);
-               }
-            
+            for(PCC_DDR_L5_Product_Mapping__Share dlpmShare : [SELECT id, AccessLevel, ParentId, RowCause, UserOrGroupId, UserOrGroup.name FROM PCC_DDR_L5_Product_Mapping__Share WHERE ParentId IN : ddrL5Ids AND RowCause = 'Manual']){
+                mapOfIdToDlpmShareToDelete.put((String)dlpmShare.UserOrGroupId + (String)dlpmShare.ParentId, dlpmShare);
+            }
             //share PCC_DDR_L5_Product_Mapping__c record based on DDR access
             for(PCC_DDR_L5_Product_Mapping__c dlpm : DDRL5List){
                 if(mapOfDDRIdtoUserOrGroupIdSet.containsKey(dlpm.PCC_Design_Registration__c)){
-                    for(Id UserOrGroupId : mapOfDDRIdtoUserOrGroupIdSet.get(dlpm.PCC_Design_Registration__c)
-                       ){
-                           PCC_DDR_L5_Product_Mapping__Share dlpmShare = new PCC_DDR_L5_Product_Mapping__Share();
-                           dlpmShare.ParentId = dlpm.Id;
-                           dlpmShare.UserOrGroupId = UserOrGroupId;
-                           dlpmShare.AccessLevel = 'Edit';
-                           dlpmShare.RowCause = 'Manual';
-                           mapOfIdToDlpmShareToInsert.put((String)UserOrGroupId + (String)dlpm.Id, dlpmShare);
-                       }
+                    for(Id UserOrGroupId : mapOfDDRIdtoUserOrGroupIdSet.get(dlpm.PCC_Design_Registration__c)){
+                        PCC_DDR_L5_Product_Mapping__Share dlpmShare = new PCC_DDR_L5_Product_Mapping__Share();
+                        dlpmShare.ParentId = dlpm.Id;
+                        dlpmShare.UserOrGroupId = UserOrGroupId;
+                        dlpmShare.AccessLevel = 'Edit';
+                        dlpmShare.RowCause = 'Manual';
+                        mapOfIdToDlpmShareToInsert.put((String)UserOrGroupId + (String)dlpm.Id, dlpmShare);
+                    }
                 }
             }
-                        
+            
+            dlpmShareToDeleteOrInsert(mapOfIdToDlpmShareToInsert,mapOfIdToDlpmShareToDelete);
+            
             // Identify keys to remove
-            for (String uniqueKey : mapOfIdToDlpmShareToInsert.keySet()) {
-                if (mapOfIdToDlpmShareToDelete.containsKey(uniqueKey)) {
-                    keysToRemove.add(uniqueKey);
-                }
-            }
-            
-            // Remove identified keys from both maps
-            for (String key : keysToRemove) {
-                mapOfIdToDlpmShareToDelete.remove(key);
-                mapOfIdToDlpmShareToInsert.remove(key);
-            }
-            
-            System.debug('mapOfIdToDlpmShareToDelete.values()-->'+mapOfIdToDlpmShareToDelete.values());
-            //Delete listOfDLPMSharingToDelete
-            if(!mapOfIdToDlpmShareToDelete.isEmpty() && mapOfIdToDlpmShareToDelete != null){
-                ddrL5DeleteResults = Database.Delete(mapOfIdToDlpmShareToDelete.values(), false);
-            }
-                        
-            //create log entries for DLPM
-            createLogEntriesForDLPM(ddrL5DeleteResults, methodOrigin, DeleteError);
-            
-           // System.debug('mapOfIdToDlpmShareToInsert.values()-->'+JSON.serialize(mapOfIdToDlpmShareToInsert.values()));
-            //Insert ddrL5shareListToInsert
-            if(!mapOfIdToDlpmShareToInsert.isEmpty() && mapOfIdToDlpmShareToInsert != null){
-                ddrL5InsertResults = Database.Insert(mapOfIdToDlpmShareToInsert.values(), false); // DINESH UNCOMMENTED as part of Defect fix
-            }
-            
-            //create log entries for DLPM
-            createLogEntriesForDLPM(ddrL5InsertResults, methodOrigin, InsertError);
-            
+            /*  for (String uniqueKey : mapOfIdToDlpmShareToInsert.keySet()) {
+if (mapOfIdToDlpmShareToDelete.containsKey(uniqueKey)) {
+keysToRemove.add(uniqueKey);
+}
+}
+// Remove identified keys from both maps
+for (String key : keysToRemove) {
+mapOfIdToDlpmShareToDelete.remove(key);
+mapOfIdToDlpmShareToInsert.remove(key);
+}
+//Delete listOfDLPMSharingToDelete
+if(!mapOfIdToDlpmShareToDelete.isEmpty() && mapOfIdToDlpmShareToDelete != null){
+ddrL5DeleteResults = Database.Delete(mapOfIdToDlpmShareToDelete.values(), false);
+}
+//create log entries for DLPM
+createLogEntriesForDLPM(ddrL5DeleteResults, methodOrigin, DeleteError);
+//Insert ddrL5shareListToInsert
+if(!mapOfIdToDlpmShareToInsert.isEmpty() && mapOfIdToDlpmShareToInsert != null){
+ddrL5InsertResults = Database.Insert(mapOfIdToDlpmShareToInsert.values(), false);
+}
+//create log entries for DLPM
+createLogEntriesForDLPM(ddrL5InsertResults, methodOrigin, InsertError);*/
         }catch (Exception ex){ Core_Log_Entry.logEntryWithException(ORIGIN, PROJECT, SCOPE, SEVERITY,'', '' ,'' , methodOrigin ,'' ,ex); 
-        }
-        
-        
+                             }
     }
     
     /*****************************************************************************************************************
@@ -180,21 +146,16 @@ public without sharing class PCC_DDRL5ProductMapping_TriggerHandler extends Trig
                 for (Database.Error err : sr.getErrors()){
                     strDetailsAndEx = '';
                     if( sr.getErrors() != null ){ strDetailsAndEx += 'Message: ' + err.getMessage() + '\n'; strDetailsAndEx += 'Fields: ' + err.Fields.toString() + '\n'; strDetailsAndEx += 'StatusCode: ' + err.getStatusCode() + '\n';
-                    }
+                                                }
                 }
-                
-                listOfLogEntries.add(new Core_Log_Entry__c(Core_Message__c = ErrorMsg, Core_Origin__c = methodOrigin, Core_Details__c = strDetailsAndEx,
-                                                           Core_Severity__c = SEVERITY, Core_When__c = System.Now(), Core_Project__c = PROJECT, 
-                                                           Core_sObjectId__c = sr.getId()));
+                listOfLogEntries.add(new Core_Log_Entry__c(Core_Message__c = ErrorMsg, Core_Origin__c = methodOrigin, Core_Details__c = strDetailsAndEx,Core_Severity__c = SEVERITY, Core_When__c = System.Now(), Core_Project__c = PROJECT, Core_sObjectId__c = sr.getId()));
             }
         }
-        
         // insert a log entry for the failed record
         if(!listOfLogEntries.isEmpty() && listOfLogEntries !=null){
             Core_Log_Entry.createLogEntries(listOfLogEntries);
         }
     }
-    
     /*****************************************************************************************************************
 * Method Name: createLogEntriesForDLPM
 * Date: 21/08/2023    
@@ -211,29 +172,59 @@ public without sharing class PCC_DDRL5ProductMapping_TriggerHandler extends Trig
                 // create the log entry for failed record
                 for (Database.Error err : sr.getErrors()){
                     strDetailsAndEx = '';
-                    if( sr.getErrors() != null ){ strDetailsAndEx += 'Message: ' + err.getMessage() + '\n'; strDetailsAndEx += 'Fields: ' + err.Fields.toString() + '\n';  strDetailsAndEx += 'StatusCode: ' + err.getStatusCode() + '\n';
-                    }
+                    if( sr.getErrors() != null ){ strDetailsAndEx += 'Message: ' + err.getMessage() + '\n'; strDetailsAndEx += 'Fields: ' + err.Fields.toString() + '\n';  strDetailsAndEx += 'StatusCode: ' + err.getStatusCode() + '\n'; }
                 }
-                
-                listOfLogEntries.add(new Core_Log_Entry__c(Core_Message__c = ErrorMsg, Core_Origin__c = methodOrigin, Core_Details__c = strDetailsAndEx,
-                                                           Core_Severity__c = SEVERITY, Core_When__c = System.Now(), Core_Project__c = PROJECT, 
-                                                           Core_sObjectId__c = sr.getId()));
+                listOfLogEntries.add(new Core_Log_Entry__c(Core_Message__c = ErrorMsg, Core_Origin__c = methodOrigin, Core_Details__c = strDetailsAndEx,Core_Severity__c = SEVERITY, Core_When__c = System.Now(), Core_Project__c = PROJECT, Core_sObjectId__c = sr.getId()));
             }
         }
-        
         // insert a log entry for the failed record
         if(!listOfLogEntries.isEmpty() && listOfLogEntries !=null){
             Core_Log_Entry.createLogEntries(listOfLogEntries);
         }
     }
-    
-/*****************************************************************************************************************
+    public static void dlpmShareToDeleteOrInsert( Map<String,PCC_DDR_L5_Product_Mapping__Share> mapOfIdToDlpmShareToInsert,Map<String, PCC_DDR_L5_Product_Mapping__Share> mapOfIdToDlpmShareToDelete){
+        
+        List<String> keysToRemove = new List<String>();
+        List<Database.DeleteResult> ddrL5DeleteResults = new List<Database.DeleteResult>();
+        String methodOrigin = 'PCC_DDRL5ProductMapping_TriggerHandler.ShareDDRL5ProductAttributes';
+        String DeleteError = 'Exception occurred while deleting PCC_DDR_L5_Product_Mapping__Share Records';
+        List<Database.SaveResult> ddrL5InsertResults = new List<Database.SaveResult>();
+        String InsertError = 'Exception occurred while inserting PCC_DDR_L5_Product_Mapping__Share Records';
+        try{
+            // Identify keys to remove
+            for (String uniqueKey : mapOfIdToDlpmShareToInsert.keySet()) {
+                if (mapOfIdToDlpmShareToDelete.containsKey(uniqueKey)) {
+                    keysToRemove.add(uniqueKey);
+                }
+            }
+            // Remove identified keys from both maps
+            for (String key : keysToRemove) {
+                mapOfIdToDlpmShareToDelete.remove(key);
+                mapOfIdToDlpmShareToInsert.remove(key);
+            }
+            //Delete listOfDLPMSharingToDelete
+            if(!mapOfIdToDlpmShareToDelete.isEmpty() && mapOfIdToDlpmShareToDelete != null){
+                ddrL5DeleteResults = Database.Delete(mapOfIdToDlpmShareToDelete.values(), false);
+            }
+            //create log entries for DLPM
+            createLogEntriesForDLPM(ddrL5DeleteResults, methodOrigin, DeleteError);
+            //Insert ddrL5shareListToInsert
+            if(!mapOfIdToDlpmShareToInsert.isEmpty() && mapOfIdToDlpmShareToInsert != null){
+                ddrL5InsertResults = Database.Insert(mapOfIdToDlpmShareToInsert.values(), false);
+            }
+            //create log entries for DLPM
+            createLogEntriesForDLPM(ddrL5InsertResults, methodOrigin, InsertError);
+            
+        }catch (Exception ex){ Core_Log_Entry.logEntryWithException(ORIGIN, PROJECT, SCOPE, SEVERITY,'', '' ,'' , methodOrigin ,'' ,ex); 
+                             }
+    }
+    /*****************************************************************************************************************
 * Method Name: checkDDRPS
 * Date: 4/02/2025    
 * Owner: Manasa
-* Description: This is a method to used to check if the user selected on screen by the Approver user , (chnage Approver button) has ddr ps and also return email id of the user.
+* Description: This is a method to used ti check if the user selected on screen by the Approver user , (chnage technical owner button) hass ddr ps
 ******************************************************************************************************************/
-     public class AssigneeDetails {
+    public class AssigneeDetails {
     @InvocableVariable
     public Id assigneeId;  
     @InvocableVariable
@@ -249,8 +240,7 @@ public without sharing class PCC_DDRL5ProductMapping_TriggerHandler extends Trig
         
 @InvocableMethod(label='Check DDR Permission Set' description='Check if the user has the DDR Permission Set assigned')
 public static List<AssigneeDetails> checkDDRPS(List<Id> userIds) {
-    List<AssigneeDetails> result = new List<AssigneeDetails>();
-    
+    List<AssigneeDetails> result = new List<AssigneeDetails>(); 
     try {
         List<User> userList = [SELECT Id, Core_User_Geo__c, Email FROM User WHERE Id = :userIds[0] limit 1];
         if(!userList.isempty()){

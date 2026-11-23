@@ -80,7 +80,9 @@ public without sharing class Core_Create_SSR_Controller {
     // Intel Partner Led OPTY hide the section -- Pricing or Quoting
     @AuraEnabled
     public static boolean showPricingAndQuoting(Id recordId){
-        List<Opportunity> oppId = [Select Id from Opportunity where Core_Opportunity_Coverage_Nm__c= 'Partner-Led Opportunity' and Core_Coverage_Type_Nm__c= 'Deal Registration' and Id =: recordId ];
+        List<Opportunity> oppId = [Select Id from Opportunity 
+                                   where Core_Opportunity_Coverage_Nm__c= 'Partner-Led Opportunity' 
+                                   and Core_Coverage_Type_Nm__c= 'Deal Registration' and Id =: recordId ];
         if(oppId.IsEmpty()){
             return true;              
         }
@@ -466,6 +468,7 @@ public without sharing class Core_Create_SSR_Controller {
         String dwAmtStr = (dwAmt == null)? '' :String.valueOf(dwAmt.format());
         Core_SmartSheet_URL__c smartSheetForm= 	Core_SmartSheet_URL__c.getValues('AI inference form fields');
         dwAmtStr = (String.isEmpty(dwAmtStr)) ? ' ' : dwAmtStr;
+        //accsalesgrp = (accsalesgrp.contains('&')) ? accsalesgrp.replace('&','%26') : accsalesgrp ;
         oppname = EncodingUtil.urlEncode(oppname,'UTF-8');
         accname = EncodingUtil.urlEncode(accname,'UTF-8');
         accsalesgrp = EncodingUtil.urlEncode(accsalesgrp,'UTF-8');

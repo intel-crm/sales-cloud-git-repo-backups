@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>56.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Migrated from the: Core_Ownership_Change_Within_One_Business_Day_of_Meeting_Task_TQL workflow rule
+Workflow rule description: Lead Stage = Tele Qualified Lead
+If Record is not re-assigned (ownership change) within 1 business day of Meeting Task – Meeting Date (time of the MEETING, not time of the task)&quot;</description>
+    <label>Core_Ownership_Change_Within_One_Business_Day_of_Meeting_Task_TQL</label>
+    <migratedFromWorkflowRuleName>Core_Ownership_Change_Within_One_Business_Day_of_Meeting_Task_TQL</migratedFromWorkflowRuleName>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>mainUpdate</name>
+        <label>mainUpdate</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>Core_Ownership_change_in_one_day_TQL__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>mainUpdate</targetReference>
+        </connector>
+        <filterFormula>AND(  {!$Record.RecordType.DeveloperName} &lt;&gt; &quot;Partner_Lead&quot;,  ISCHANGED({!$Record.OwnerId}),  NOT(ISNULL({!$Record.Core_Meeting_Due_Date__c})),   ISPICKVAL({!$Record.Status}, &apos;Tele Qualified Lead&apos;) )</filterFormula>
+        <object>Lead</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Draft</status>
+</Flow>

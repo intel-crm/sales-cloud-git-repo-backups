@@ -15,8 +15,7 @@ public class Core_MDF_ProcessClmSbmClosureTest {
                                                                   Core_MDF_Quarter__c,Core_MDF_Case_SLA__c, Core_MDF_Claim_Submission_Window_mnth__c, Core_MDF_Claim_Submission_Window_days__c,
                                                                   Core_MDF_Doc_Submission_Window__c,Core_MDF_Doc_Submission_Rule__c,
                                                                   Core_MDF_Escalation_Submission_Window__c,Core_MDF_Escalation_Submission_Rule__c,
-                                                                  Core_MDF_Activity_Auto_Closure_SLA__c,Core_MDF_Activity_Auto_Closure_SLA_Month__c,
-                                                                  Core_MDF_Activity_Auto_Closure_Rule__c    
+                                                                  Core_MDF_Activity_Auto_Closure_SLA__c,Core_MDF_Activity_Auto_Closure_Rule__c    
                                                                   FROM Core_MDF_CCP_Submission_Window__mdt limit 100];
         if(mtdList != null && !mtdList.isEmpty()){
             Map<String,Date> dueDateMap = new Map<String,Date>();
@@ -29,7 +28,7 @@ public class Core_MDF_ProcessClmSbmClosureTest {
                             ':'+mtd.Core_MDF_Country__c+
                             ':'+system.today().format(); 
                 key = key.deleteWhitespace();
-               
+                system.debug('key-----------------      '+key);
                 dueDateMap.put(key,null);
                 keyToDaysSLA.put(key,0);
             }

@@ -11,7 +11,7 @@
         <chartType>HorizontalBar</chartType>
         <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>true</expandOthers>
-        <groupingColumn>SWS_Cloud_Credit_Request__c$SWS_Request_Type_fm__c</groupingColumn>
+        <groupingColumn>SWS_Cloud_Credit_Request__c$SWS_Request_Status__c</groupingColumn>
         <location>CHART_BOTTOM</location>
         <showAxisLabels>true</showAxisLabels>
         <showPercentage>false</showPercentage>
@@ -67,12 +67,12 @@
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>SWS_Cloud_Credit_Request__c$SWS_Request_Type_fm__c</field>
+        <field>SWS_Cloud_Credit_Request__c$SWS_Request_Status__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>SWS_Cloud_Credit_Request__c$SWS_Request_Status__c</field>
+        <field>SWS_Cloud_Credit_Request__c$SWS_Request_Type_fm__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>Credit Request-Lead-Opportunity Mapping</name>

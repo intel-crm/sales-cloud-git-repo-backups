@@ -1,0 +1,28 @@
+li {
+  float: left;
+  list-style: none; 
+}
+
+li a {
+  font-size: 14px;
+  color: white;
+  text-align: center;
+  padding: 6px 6px;
+  text-decoration: none;
+  list-style: none;
+  padding-left: 1.5em;
+}
+
+li a:hover {
+  background-color: rgba(199, 199, 201, 0.289);
+  
+}
+div {
+ height: 30px;
+  width: auto;
+  background-color:#1d1833;
+  }
+
+  .section-background {
+  background-color: #f2f2f2; /* Set your desired background color */
+}

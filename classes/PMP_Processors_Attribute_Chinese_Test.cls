@@ -9,8 +9,8 @@
 * ****************************************************************************************************************************************/
 @isTest
 public class PMP_Processors_Attribute_Chinese_Test {
-//IPA 2.0- US-TWC729-7980
-    /*@isTest
+
+    @isTest
     public static void testProcMethod(){
        
         PMP_Specification__c spec1 = PMP_TestDataUtility.getSpecs();
@@ -21,10 +21,10 @@ public class PMP_Processors_Attribute_Chinese_Test {
         PMP_Processors_Attribute_Chinese testProcessor = new PMP_Processors_Attribute_Chinese();
         
         test.startTest();
-        PMP_ParseProcessorJSON.languageCode = 'zh_CN';
+        PMP_ParseProcessorJSON.strBaseKey = 'zh_CN';
         resultData = testProcessor.processData('PMP_Processors_Attribute_Test');
         system.assertNotEquals(resultData,null);
         test.stopTest();
         
-    }*/
+    }
 }

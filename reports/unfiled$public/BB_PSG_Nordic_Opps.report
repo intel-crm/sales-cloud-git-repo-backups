@@ -41,40 +41,27 @@
     <columns>
         <field>Opportunity.Core_Approved_Date__c</field>
     </columns>
-    <crossFilters>
-        <operation>with</operation>
-        <primaryTableColumn>OPPORTUNITY_ID</primaryTableColumn>
-        <relatedTable>OpportunityLineItem</relatedTable>
-        <relatedTableJoinColumn>Opportunity</relatedTableJoinColumn>
-    </crossFilters>
     <filter>
+        <criteriaItems>
+            <column>Account.Core_Geo__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>EMEA</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FULL_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>,jonas astrom,david clarke,marcus ward,philip milner,matti tommiska,graham copperwheat,Nisha Ruhomutally,Mark Brant,Patrick Barry,Daniel Stackenas,Francois Pequillat,Lena Engdahl,DJ Gianduso,Bettina Smithson,Joerg Matschke,phil milner,Bogdan Stefan Pop,Michael Coade</value>
+        </criteriaItems>
         <criteriaItems>
             <column>Account.Core_Sub_Geo__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>NEUR</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Business_Unit_Territory__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>PSG</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>STAGE_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Cancelled</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Last_Activity_Date__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>greaterThan</operator>
-            <value>3/26/2021</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

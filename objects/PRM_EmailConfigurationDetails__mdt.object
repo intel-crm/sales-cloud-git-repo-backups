@@ -171,36 +171,6 @@
                     <label>Public Group: PMP - All Intel Admin Users</label>
                 </value>
                 <value>
-                    <fullName>Public Group: IPA - All Intel Admin Users</fullName>
-                    <default>false</default>
-                    <label>Public Group: IPA - All Intel Admin Users</label>
-                </value>
-                <value>
-                    <fullName>Public Group: AGS_1PID IPA Admin Group</fullName>
-                    <default>false</default>
-                    <label>Public Group: AGS_1PID IPA Admin Group</label>
-                </value>
-                <value>
-                    <fullName>Public Group: CIMPRIME Support and admin group</fullName>
-                    <default>false</default>
-                    <label>Public Group: CIMPRIME Support and admin group</label>
-                </value>
-                <value>
-                    <fullName>Public Group: AGS_IPA Registration Approvers</fullName>
-                    <default>false</default>
-                    <label>Public Group: AGS_IPA Registration Approvers</label>
-                </value>
-                <value>
-                    <fullName>Public Group: L2 IPA Support</fullName>
-                    <default>false</default>
-                    <label>Public Group: L2 IPA Support</label>
-                </value>
-                <value>
-                    <fullName>Public Group: PRM Tech Email Recipient</fullName>
-                    <default>false</default>
-                    <label>Public Group: PRM Tech Email Recipient</label>
-                </value>
-                <value>
                     <fullName>Public Group: EmailCheck</fullName>
                     <default>false</default>
                     <isActive>false</isActive>

@@ -82,11 +82,6 @@
         <field>STAGE_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>Account.Core_Year_Started__c</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
     <name>Dan_Nguyen_Pipeline_stages</name>
     <params>
         <name>terr</name>

@@ -1,0 +1,38 @@
+<apex:page standardController="SWS_Cloud_Credit_Request__c" id="thePage" recordSetVar="SWS_Cloud_Credit_Request__c">
+    <apex:includeLightning />    
+    <div id="lwcContainer" />
+    <script>
+    $Lightning.use("c:SWS_downloadCreditReqTemplateApp", function() {
+        console.log('Calling the LWC Component 1');
+        $Lightning.createComponent("c:sWS_downloadTemplate",{},"lwcContainer", 
+                                   function(cmp) {
+                                       console.log('Calling the LWC Component 2');
+                                   });
+    });
+    </script>
+    <!--<apex:slds />
+    <apex:form >
+    <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <div id="myModal" class="modal slds-scope">
+            <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open slds-modal_medium" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1">
+                <div class="slds-modal__container">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" onclick="closeModal();">
+                    <svg class="slds-button__icon slds-button__icon_large">
+                       <use xlink:href="{!URLFOR($Asset.SLDS, '/assets/icons/utility-sprite/svg/symbols.svg#close')}"></use>
+                    </svg>
+                    <span class="slds-assistive-text">Cancel and close</span>
+                </button>
+                
+                    <header class="slds-modal__header">
+                        <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate"></h2>
+                    </header>
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+						<div id="lwcContainer" />
+                    </div>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+        </div>
+        </html>
+    </apex:form> -->
+</apex:page>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>52.0</apiVersion>
+    <available>true</available>
+    <description>Send notification to AVP PRID Reviewer when review date is nearing</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>PSG AVP PRID Review Date Notification</name>
+    <style>none</style>
+    <subject>AVP PRID #  due for renewal</subject>
+    <type>visualforce</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

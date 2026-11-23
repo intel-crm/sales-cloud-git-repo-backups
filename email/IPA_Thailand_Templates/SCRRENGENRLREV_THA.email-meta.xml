@@ -4,28 +4,23 @@
     <encodingKey>UTF-8</encodingKey>
     <name>SCRRENGENRLREV_THA</name>
     <style>none</style>
-    <subject>ตรวจสอบที่อยู่อีเมลของคุณ</subject>
-    <textOnly>ตรวจสอบที่อยู่อีเมลของคุณ
+    <subject>การสมัครโปรแกรมพันธมิตร Intel ของคุณ</subject>
+    <textOnly>Verify your Email to Activate your Account
 
-{!PRM_Registration_Request__c.PRM_First_Name__c},
+Dear {!PRM_Registration_Request__c.PRM_First_Name__c},
 
-ของคุณที่ส่งใบสมัครเข้าร่วมใน Intel® Partner Alliance ของคุณเข้ามา
-ก่อนที่เราจะสามารถประมวลผล เราจะต้องตรวจสอบให้แน่ใจว่าที่อยู่อีเมลนี้เป็นของคุณ หากที่อยู่อีเมลของคุณไม่ได้รับการตรวจสอบภายใน 30 วัน ใบสมัครของคุณจะถูกลบออกจากระบบของเรา และคุณจะต้องส่งใบสมัครใหม่อีกครั้งเพื่อพิจารณา
+Thanks for joining Intel’s Partner program. Please click below to activate your account.
 
+Activate Your Account
 
-ยืนยันทันที
-
-ไม่สามารถเข้าถึงลิงก์ด้านบนได้ใช่หรือไม่
-https://signindev.intel.com/PasswordUpdate?var={!PRM_Registration_Request__c.PRM_EV_Token__c}&amp;target=https://ciqa.intel.com/content/www/us/en/secure/partner/forms/ipa-account-search.html
+Can&apos;t access the link above?
+https://www.intel...
 
 
-ขอขอบคุณ
-ทีม Intel® Partner Alliance ของคุณ
-
-ข้อความนี้ถูกส่งถึงคุณเพื่อใช้เป็นการสื่อสารทางธุรกิจที่สำคัญที่เกี่ยวข้องกับความสัมพันธ์ในปัจจุบันของคุณกับ Intel® Partner Alliance
-© {!$Label.PRM_CurrentYear} Intel Corporation
-Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA  www.intel.com
-ความเป็นส่วนตัว | คุ้กกี้</textOnly>
+Copyright © 2016 Intel Corporation. All rights reserved. Intel, the Intel logo are trademarks of Intel Corporation in the U.S. and/or other countries.
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. Intel.com
+You may unsubscribe at any time by updating your profile settings at: {!$Label.PRM_MyIntelProfileURL}
+Privacy | Cookies | *Trademarks</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

@@ -1,4 +1,3 @@
-@isTest
 /****************************************************************************************************************************************
 * Class Name  : PMP_FPGA_Attriute_Chinese_Proc 
 * Version     : 1.0 
@@ -9,10 +8,10 @@
 * PMP Team                      05/10/2019                    Class for Processing FPGA_Attriute_Chinese Static Resource
 * ****************************************************************************************************************************************/
 
-public class PMP_FPGA_Attribute_Chinese  {//implements PMP_ProcessTaxonomyJSON
-     //IPA 2.0- US-TWC729-7980
-   /* public List<Database.UpsertResult> processData(String fileName)
+public class PMP_FPGA_Attribute_Chinese implements PMP_ProcessTaxonomyJSON {
+     
+    public List<Database.UpsertResult> processData(String fileName)
    {
-       return PMP_ParseFPGAJSON.parseFpgaJSON(fileName);
-   }*/
+       return PMP_ParseFPGAJSON.ParseFpgaJSON(fileName);
+   }
 }

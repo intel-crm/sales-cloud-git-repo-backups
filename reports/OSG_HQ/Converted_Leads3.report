@@ -7,9 +7,6 @@
         <field>Lead.Core_Lead_State__c</field>
     </columns>
     <columns>
-        <field>OPP_NAME</field>
-    </columns>
-    <columns>
         <field>RECORDTYPE</field>
     </columns>
     <columns>
@@ -17,6 +14,27 @@
     </columns>
     <columns>
         <field>CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_Locked_MQL_Coverage__c</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_MQL_Lead_Coverage__c</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_TAL_Lead_Coverage__c</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_TQL_Lead_Coverage__c</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_SAL_Lead_Coverage__c</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_Locked_SAL_Coverage__c</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_Locked_SQL_Coverage__c</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
@@ -63,6 +81,9 @@
         <field>CONVERTED_DATE</field>
     </columns>
     <columns>
+        <field>OPP_NAME</field>
+    </columns>
+    <columns>
         <field>OPP_ACCT_NAME</field>
     </columns>
     <columns>
@@ -83,10 +104,6 @@
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>AMOUNT</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Lead.SWS_Software_Lead__c</field>
     </columns>
     <description>RT: Leads with converted lead information.  Converted Lead State</description>
     <filter>
@@ -135,6 +152,6 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CREATED_DATE</dateColumn>
-        <interval>INTERVAL_PREVCURFY</interval>
+        <interval>INTERVAL_PREVCUR2Y</interval>
     </timeFrameFilter>
 </Report>

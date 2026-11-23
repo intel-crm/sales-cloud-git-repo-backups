@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>63.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <customProperties>
+        <name>ScreenProgressIndicator</name>
+        <value>
+            <stringValue>{&quot;location&quot;:&quot;top&quot;,&quot;type&quot;:&quot;simple&quot;}</stringValue>
+        </value>
+    </customProperties>
+    <decisions>
+        <name>Check_qualification_section_is_filled_or_not</name>
+        <label>Check qualification section is filled or not</label>
+        <locationX>314</locationX>
+        <locationY>134</locationY>
+        <defaultConnectorLabel>Qualification Information Filled</defaultConnectorLabel>
+        <rules>
+            <name>Qualification_Information_is_not_filled</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>recordId.Core_Confirmed_Pain_Point__c</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>recordId.Core_Confirmed_Authority__c</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>recordId.Core_Confirmed_Product_of_Interest__c</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>recordId.Core_Confirmed_Project_Timeframe__c</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>recordId.Core_Confirmed_Budget__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>recordId.Core_Confirmed_Budget_Amount__c</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>SWS_Qualification_Information_Warning</targetReference>
+            </connector>
+            <label>Qualification Information is not filled</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <formulas>
+        <name>NotFilledfields</name>
+        <dataType>String</dataType>
+        <expression>&quot;Please review the information entered in the Qualification Information section. Below fields may need attention before proceeding. &quot; &amp; BR() &amp;
+IF(
+    ISBLANK(TEXT({!recordId.Core_Confirmed_Pain_Point__c})),
+    &quot;&lt;b&gt;Confirmed Pain Point&lt;/b&gt;&quot; &amp; BR(),
+    &quot;&quot;
+) &amp; 
+IF(
+    ISBLANK(TEXT({!recordId.Core_Confirmed_Authority__c})),
+    &quot;&lt;b&gt;Confirmed Authority&lt;/b&gt;&quot; &amp; BR(),
+    &quot;&quot;
+) &amp; 
+IF(
+    ISBLANK(TEXT({!recordId.Core_Confirmed_Product_of_Interest__c})),
+    &quot;&lt;b&gt;Confirmed Product of Interest&lt;/b&gt;&quot; &amp; BR(),
+    &quot;&quot;
+) &amp; 
+IF(
+    ISBLANK(TEXT({!recordId.Core_Confirmed_Project_Timeframe__c})),
+    &quot;&lt;b&gt;Confirmed Project Timeframe&lt;/b&gt;&quot; &amp; BR(),
+    &quot;&quot;
+) &amp; 
+IF(
+    NOT({!recordId.Core_Confirmed_Budget__c}),
+    &quot;&lt;b&gt;Confirmed Budget&lt;/b&gt;&quot; &amp; BR(),
+    &quot;&quot;
+) &amp; 
+IF(
+    ISBLANK(TEXT({!recordId.Core_Confirmed_Budget_Amount__c})),
+    &quot;&lt;b&gt;Confirmed Budget Amount&lt;/b&gt;&quot; &amp; BR(),
+    &quot;&quot;
+)</expression>
+    </formulas>
+    <interviewLabel>SWS Qualification Warning {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>SWS Qualification Warning</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <recordUpdates>
+        <name>Bypass_Validation_rule</name>
+        <label>Bypass Validation rule</label>
+        <locationX>50</locationX>
+        <locationY>350</locationY>
+        <connector>
+            <targetReference>Update_Qualification_warning</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Bypass__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Bypass__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <object>Core_Opp_Bypass_Validation_Rule__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Reactivate_Validation_rule</name>
+        <label>Reactivate Validation rule</label>
+        <locationX>50</locationX>
+        <locationY>566</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Bypass__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Bypass__c</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <object>Core_Opp_Bypass_Validation_Rule__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Qualification_warning</name>
+        <label>Update Qualification warning</label>
+        <locationX>50</locationX>
+        <locationY>458</locationY>
+        <connector>
+            <targetReference>Reactivate_Validation_rule</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Error_Message</targetReference>
+        </faultConnector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>SWS_Qualification_Warning__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <object>Lead</object>
+    </recordUpdates>
+    <screens>
+        <name>Error_Message</name>
+        <label>Error Message</label>
+        <locationX>314</locationX>
+        <locationY>566</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>Error</name>
+            <fieldText>&lt;p&gt;{!$Flow.FaultMessage}&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <description>Please fill in the details under Qualification Information</description>
+        <name>SWS_Qualification_Information_Warning</name>
+        <label>Qualification Information Warning</label>
+        <locationX>50</locationX>
+        <locationY>242</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>Bypass_Validation_rule</targetReference>
+        </connector>
+        <fields>
+            <name>SWS_Warning_Message</name>
+            <fieldText>&lt;p&gt;{!NotFilledfields}&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <nextOrFinishButtonLabel>Finish</nextOrFinishButtonLabel>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <start>
+        <locationX>188</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Check_qualification_section_is_filled_or_not</targetReference>
+        </connector>
+    </start>
+    <status>Obsolete</status>
+    <variables>
+        <name>recordId</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <objectType>Lead</objectType>
+    </variables>
+</Flow>

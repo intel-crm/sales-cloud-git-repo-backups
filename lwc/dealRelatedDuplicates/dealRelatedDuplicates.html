@@ -1,0 +1,14 @@
+<template>
+    <lightning-card title="Duplicate Deals and Related">
+    <lightning-breadcrumbs title="Deal Related Duplicates" class="slds-around_small">
+        <template for:each={myBreadcrumbs} for:item="crumbs">
+            <lightning-breadcrumb
+                key={crumbs.id}
+                label={crumbs.label}
+                name={crumbs.name}
+                onclick={handleNavigateTo}>
+            </lightning-breadcrumb>
+        </template>
+    </lightning-breadcrumbs>
+</lightning-card>
+</template>

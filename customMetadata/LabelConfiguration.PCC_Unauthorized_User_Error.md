@@ -8,6 +8,6 @@
     </values>
     <values>
         <field>Value__c</field>
-        <value xsi:type="xsd:string">You are not authorized to approve/reject this record.</value>
+        <value xsi:type="xsd:string">You are not authorized to approve/reject this record</value>
     </values>
 </CustomMetadata>

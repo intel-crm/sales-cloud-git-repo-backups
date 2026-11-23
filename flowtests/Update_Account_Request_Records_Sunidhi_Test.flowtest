@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowTest xmlns="http://soap.sforce.com/2006/04/metadata">
+    <flowApiName>Update_Account_Request_Records</flowApiName>
+    <label>Sunidhi Test</label>
+    <testPoints>
+        <elementApiName>Start</elementApiName>
+        <isUseMockOutput>false</isUseMockOutput>
+        <parameters>
+            <leftValueReference>$Record</leftValueReference>
+            <type>InputTriggeringRecordInitial</type>
+            <value>
+                <sobjectValue>{&quot;Account_Name__c&quot;:&quot;Sunidhi Test 08&quot;,&quot;Address__City__s&quot;:&quot;Hubli&quot;,&quot;Address__CountryCode__s&quot;:&quot;IND&quot;,&quot;Address__GeocodeAccuracy__s&quot;:&quot;Address&quot;,&quot;Address__Latitude__s&quot;:&quot;12&quot;,&quot;Address__Longitude__s&quot;:&quot;12&quot;,&quot;Address__PostalCode__s&quot;:&quot;123456&quot;,&quot;Address__StateCode__s&quot;:&quot;CT&quot;,&quot;Address__Street__s&quot;:&quot;xyz&quot;,&quot;City__c&quot;:&quot;Hubli&quot;,&quot;Core_Sales_Groups__c&quot;:&quot;Global Strategic Account Sales Group&quot;,&quot;Core_Sub_Industry__c&quot;:&quot;Accommodation&quot;,&quot;Country_Region__c&quot;:&quot;Indonesia&quot;,&quot;Customer_Aggregation_Type__c&quot;:&quot;UNFD_GLBL_CUST&quot;,&quot;Customer_Process_Engagement__c&quot;:&quot;SLS_PPLN&quot;,&quot;Industry__c&quot;:&quot;Accommodation and Food Services&quot;,&quot;OwnerId&quot;:&quot;0052D000007L96CQAS&quot;,&quot;Process_Type__c&quot;:&quot;Opportunity Management&quot;,&quot;Requestor_Email__c&quot;:&quot;sunidhix.nadagouda@intel.com&quot;,&quot;Requestor_Name__c&quot;:&quot;Sunidhi Nadagouda&quot;,&quot;Status__c&quot;:&quot;New&quot;}</sobjectValue>
+            </value>
+        </parameters>
+    </testPoints>
+    <testPoints>
+        <assertions>
+            <conditions>
+                <leftValueReference>Get_Data_from_Custom_Meta_Data.Core_Account_Reference_Source_Name__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Opportunity Management</stringValue>
+                </rightValue>
+            </conditions>
+        </assertions>
+        <elementApiName>Finish</elementApiName>
+        <isUseMockOutput>false</isUseMockOutput>
+    </testPoints>
+    <testType>WithAssertion</testType>
+</FlowTest>

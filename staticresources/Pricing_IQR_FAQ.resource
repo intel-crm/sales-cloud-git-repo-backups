@@ -61,7 +61,7 @@
           },
           {
              "question":"Where can I find the definitions of all the field names?",
-             "answer":"Definitions of all the fields in the Tender Request form can be found through the use of tool tips on the IQR form and in the IQR Training site: https://www.intel.com/content/www/us/en/design/support/quote-request/training/welcome.html",
+             "answer":"Definitions of all the fields in the Tender Request form can be found through the use of tool tips on the IQR form and in the IQR Training site: https://www.intel.com/content/www/us/en/resources-documentation/support/quote-request/training/welcome.html",
              "key":"24"
           },
           {
@@ -153,7 +153,7 @@
        "questions":[
           {
              "question":"How will I be trained on the new Intel Quote Request Tool?",
-             "answer":"For each launch, the Tender Requests project team provided live webinars. In the event you were not able to attend, a step by step guide has been created. Refer to the Intel Quote Request Training site. https://www.intel.com/content/www/us/en/design/support/quote-request/training/welcome.html",
+             "answer":"For each launch, the Tender Requests project team provided live webinars. In the event you were not able to attend, a step by step guide has been created. Refer to the Intel Quote Request Training site. https://www.intel.com/content/www/us/en/resources-documentation/support/quote-request/training/welcome.html",
              "key":"41"
           }
        ]

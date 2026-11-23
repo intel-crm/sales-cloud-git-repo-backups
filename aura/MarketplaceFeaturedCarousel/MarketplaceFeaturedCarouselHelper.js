@@ -11,6 +11,8 @@
                 if (status === "SUCCESS") {
                     var returnValue = response.getReturnValue();
                     component.set('v.featuredProductsTabList', returnValue);
+                    
+                    console.log(returnValue);
                     resolve();
                 } else if (status === "INCOMPLETE") {
                     // do something?

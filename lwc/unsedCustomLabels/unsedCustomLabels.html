@@ -1,0 +1,94 @@
+<!-- Component Template -->
+<template>
+
+	<!-- Display Unused Custom Labels -->
+	<lightning-card title="Unused Custom Labels" icon-name="utility:labels"
+		class="slds-m-around_small slds-card__header slds-grid">
+
+		<!-- Export Data as CSV -->
+		<c-export-as-c-s-v-lwc export-data={data} slot="actions" newdata-set-name="Unused Custom Labels Report">
+		</c-export-as-c-s-v-lwc>
+
+		<!-- Main Content Section -->
+		<div class="slds-box">
+
+			<!-- Total Unused Custom Labels -->
+			<p class="slds-p-around_small">Total Unused Custom Labels: {coundOfLables}</p>
+
+			<!-- Lightning Layout -->
+			<lightning-layout>
+
+				<!-- Display Datatable if There is Data -->
+				<lightning-layout-item flexibility="auto">
+					<template if:true={hasData}>
+						<lightning-datatable class="slds-table_bordered slds-table_col-bordered" key-field="Id"
+							data={tableData} columns={columns} show-row-number-column="true" hide-checkbox-column="true"
+							default-sort-direction={sortedDirection} sorted-direction={sortDirection}
+							sorted-by={sortedBy} onsort={updateColumnSorting}></lightning-datatable>
+					</template>
+				</lightning-layout-item>
+
+				<!-- Display Message if There is No Data -->
+				<lightning-layout-item class="slds-align_absolute-center">
+					<template if:false={hasData}>
+						<P>All Custom Labels are used</P>
+					</template>
+				</lightning-layout-item>
+
+			</lightning-layout>
+
+			<!-- Pagination Section -->
+			<div class="slds-p-around_small slds-align_absolute-center">
+				<lightning-button variant="brand" label={prevBtnLbl} onclick={handlePrevious} disabled={loadPrev}
+					style="background-color: white; padding-right: 2px;"></lightning-button>
+				<p class="slds-p-around_small">Showing {showingOfTotal} of {data.length}</p>
+				<lightning-button variant="brand" label={nextBtnLbl} onclick={handleNext} disabled={loadMore}
+					style="background-color: white;"></lightning-button>
+			</div>
+
+		</div>
+
+		<!-- Display Spinner While Loading -->
+		<div>
+			<template if:true={Loading}>
+				<lightning-spinner size="small" alternative-text="Loading..."></lightning-spinner>
+			</template>
+		</div>
+
+	</lightning-card>
+
+	<!-- Show Results of Label Usage Search -->
+	<template if:false={Loading}>
+		<lightning-card title="Locate the usage of the label" icon-name="utility:labels"
+			class="slds-m-around_small slds-card__header slds-grid">
+			<div class="slds-box">
+				<lightning-layout multiple-rows="true">
+
+					<!-- Search Input for Label Developer Name -->
+					<lightning-layout-item flexibility="auto" class="slds-p-around_small">
+						<lightning-input type="search" variant="label-hidden" value={labelDeveloperName}
+							onchange={handleInputChange}></lightning-input>
+					</lightning-layout-item>
+
+					<!-- Button to Perform Label Search -->
+					<lightning-layout-item flexibility="auto" class="slds-p-around_small">
+						<lightning-button icon-name="utility:record_lookup" label="check" onclick={handleSearch}>
+						</lightning-button>
+					</lightning-layout-item>
+
+					<!-- Total Occurrences Observed -->
+					<lightning-layout-item size="12" flexibility="auto" class="slds-p-around_small">
+						<p>Total Occurrences Observed: {getTotal}</p>
+					</lightning-layout-item>
+
+					<!-- Datatable to Display Label Usage Results -->
+					<lightning-layout-item flexibility="auto" class="slds-p-around_small">
+						<lightning-datatable key-field="Id" data={referenceData} columns={referencecolumns}
+							hide-checkbox-column="true" show-row-number-column="true"></lightning-datatable>
+					</lightning-layout-item>
+
+				</lightning-layout>
+			</div>
+		</lightning-card>
+	</template>
+</template>

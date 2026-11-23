@@ -41,12 +41,21 @@
             <type>userLookup</type>
         </recipients>
         <senderType>CurrentUser</senderType>
-        <template>test/DWG_Rejection_Notification</template>
+        <template>unfiled$public/DWG_Rejection_Notification</template>
     </alerts>
     <fieldUpdates>
         <fullName>Core_Goal_CleanOppAtApproval</fullName>
         <field>Core_Goal_Opportunities_at_Approval__c</field>
         <name>Core_Goal_CleanOppAtApproval</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Null</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Core_Goal_Clear_Approved_KPI_Type</fullName>
+        <field>Core_Approved_KPI_Type__c</field>
+        <name>Core_Goal_Clear_Approved_KPI_Type</name>
         <notifyAssignee>false</notifyAssignee>
         <operation>Null</operation>
         <protected>false</protected>
@@ -113,6 +122,16 @@
         <field>Core_Approved_KPI_Revenue__c</field>
         <formula>Core_KPI_Revenue__c</formula>
         <name>Core_Goal_Set_Approved_KPI_Revenue</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Core_Goal_Set_Approved_KPI_Type</fullName>
+        <field>Core_Approved_KPI_Type__c</field>
+        <formula>Core_KPI_Type__c</formula>
+        <name>Core_Goal_Set_Approved_KPI_Type</name>
         <notifyAssignee>false</notifyAssignee>
         <operation>Formula</operation>
         <protected>false</protected>
@@ -292,6 +311,20 @@
         <triggerType>onAllChanges</triggerType>
     </rules>
     <rules>
+        <fullName>Core_Goal_OnCreate_UpdateStatus</fullName>
+        <actions>
+            <name>Core_Goal_UpdateStatus_Draft</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>Core_Goal__c.Core_Goal_Name__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <description>update the status to Draft on creation of any deal win goal record</description>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
         <fullName>Core_Goal_Populate_GoalName_with_Name</fullName>
         <actions>
             <name>Core_Goal_Update_GoalName</name>
@@ -313,7 +346,19 @@
             <type>FieldUpdate</type>
         </actions>
         <active>false</active>
-        <formula>NOT($Setup.Core_KPI_FullRefresh_Check__c.IsFullRefresh__c) &amp;&amp;  Core_Opportunity__c &lt;&gt; null &amp;&amp;  ISCHANGED(Core_MatchOppKPI_Backend__c) &amp;&amp; Core_MatchOppKPI_Backend__c != null</formula>
+        <formula>NOT($Setup.Core_KPI_FullRefresh_Check__c.IsFullRefresh__c) &amp;&amp; 
+Core_Opportunity__c &lt;&gt; null &amp;&amp;  ISCHANGED(Core_MatchOppKPI_Backend__c) &amp;&amp; Core_MatchOppKPI_Backend__c != null</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Core_OnChange_MatchOppKPI_PrevBackendField</fullName>
+        <actions>
+            <name>Update_MatchOppKPI_2nd_Prev_Field</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <formula>NOT($Setup.Core_KPI_FullRefresh_Check__c.IsFullRefresh__c) &amp;&amp; 
+ISCHANGED(Core_MatchOppKPI_Prev_Backend__c) &amp;&amp; Core_MatchOppKPI_Prev_Backend__c != null</formula>
         <triggerType>onAllChanges</triggerType>
     </rules>
     <rules>

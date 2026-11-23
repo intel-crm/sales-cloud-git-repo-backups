@@ -74,19 +74,7 @@ export default class Core_IPS_DetailSectionUtility extends NavigationMixin(Light
     @track isVisible = false;
 
     @track isCurUsrOrgAdminMember = false;
-    @track accessFlagOptions = [{
-            value: 'Par Hidden',
-            label: 'Par Hidden'
-        },
-        {
-            value: 'Auto Approve',
-            label: 'Auto Approve'
-        },
-        {
-            value: 'Approval Required',
-            label: 'Approval Required'
-        }
-    ];
+
     @wire(CurrentPageReference)
         currentPageReference;
     
@@ -220,8 +208,7 @@ export default class Core_IPS_DetailSectionUtility extends NavigationMixin(Light
         let mapRec = {
             Id : this.recordId,
             Core_Name__c : this.mapNameTemp,
-            Core_IPS_MAP_Description__c: this.descTemp,
-            Core_IPS_MAP_Access_Flag__c:this.accessFlagTemp
+            Core_IPS_MAP_Description__c: this.descTemp
         }
         
         updateMAPRecord({ mapRecord : mapRec })
@@ -242,7 +229,6 @@ export default class Core_IPS_DetailSectionUtility extends NavigationMixin(Light
                     this.isEditEnabled = true;
                     this.spinnerOn = false;
                 }
-                eval("$A.get('e.force:refreshView').fire();");
             })
             .catch(error => {
                 if(error!==undefined) {
@@ -269,12 +255,7 @@ export default class Core_IPS_DetailSectionUtility extends NavigationMixin(Light
         console.log('core_IPS_DetailSectionUtility ::: this.mapName ::: '+ event.detail.value);
         this.mapNameTemp = event.detail.value;
     }
-handleAccessFlagChange(event) {
-        console.log('core_IPS_DetailSectionUtility ::: this.accessFlagTemp ::: '+ event.detail.value);
-        console.log('core_IPS_DetailSectionUtility ::: this.accessFlagTempPrevValue ::: '+this.mapAccessFlag);
-       
-        this.accessFlagTemp = event.detail.value;
-    }
+
     handleDescriptionChange(event) {
         this.descTemp = event.detail.value;
     }

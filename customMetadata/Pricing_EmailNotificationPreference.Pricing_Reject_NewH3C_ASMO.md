@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-    <label>Pricing_Reject_NewH3C_ASMO</label>
+    <label>Pricing Reject NewH3C ASMO</label>
     <protected>false</protected>
     <values>
         <field>Account_Id__c</field>
@@ -16,11 +16,15 @@
     </values>
     <values>
         <field>Pricing_Notification_Name_Nm__c</field>
-        <value xsi:type="xsd:string">Quoteline Rejection Notification</value>
+        <value xsi:type="xsd:string">Quoteline_Rejection_Notification</value>
+    </values>
+    <values>
+        <field>Pricing_Notification_Name_Pkl__c</field>
+        <value xsi:type="xsd:string">Quoteline_Rejection_Notification</value>
     </values>
     <values>
         <field>Pricing_Optin_Ind__c</field>
-        <value xsi:type="xsd:boolean">true</value>
+        <value xsi:type="xsd:boolean">false</value>
     </values>
     <values>
         <field>Pricing_Region__c</field>
@@ -28,6 +32,10 @@
     </values>
     <values>
         <field>Pricing_Template_API_Name_Nm__c</field>
+        <value xsi:type="xsd:string">Pricing_QuoteLineRejectedNotification</value>
+    </values>
+    <values>
+        <field>Pricing_Template_API_Name_Pkl__c</field>
         <value xsi:type="xsd:string">Pricing_QuoteLineRejectedNotification</value>
     </values>
     <values>

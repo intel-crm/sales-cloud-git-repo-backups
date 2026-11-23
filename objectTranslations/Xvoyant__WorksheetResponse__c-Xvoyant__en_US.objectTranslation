@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>WorksheetResponse</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>WorksheetResponses</value>
+    </caseValues>
+    <fields>
+        <label><!-- AppLink --></label>
+        <name>Xvoyant__AppLink__c</name>
+    </fields>
+    <fields>
+        <label><!-- InfoText --></label>
+        <name>Xvoyant__InfoText__c</name>
+    </fields>
+    <fields>
+        <label><!-- QuestionNum --></label>
+        <name>Xvoyant__QuestionNum__c</name>
+    </fields>
+    <fields>
+        <label><!-- QuestionText --></label>
+        <name>Xvoyant__QuestionText__c</name>
+    </fields>
+    <fields>
+        <label><!-- QuestionType --></label>
+        <name>Xvoyant__QuestionType__c</name>
+    </fields>
+    <fields>
+        <label><!-- Prompt Created by Sales Rep --></label>
+        <name>Xvoyant__RepCreated__c</name>
+    </fields>
+    <fields>
+        <label><!-- Response --></label>
+        <name>Xvoyant__Response__c</name>
+    </fields>
+    <fields>
+        <label><!-- Worksheet --></label>
+        <name>Xvoyant__Worksheet__c</name>
+        <relationshipLabel><!-- WorksheetResponses --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

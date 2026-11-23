@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>Edit</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>EMP of Lai Teng Tan</description>
+    <description>EMP of Faisal Qamar</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>EMP_11267395_Jason_Kay_Siah_Ang</name>
     <opportunityAccessLevel>Edit</opportunityAccessLevel>
-    <parentRole>EMP_10662527_Lai_Teng_Tan</parentRole>
+    <parentRole>EMP_11147218_Faisal_Qamar</parentRole>
 </Role>

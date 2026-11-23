@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>Synnex FPT Distribution Company Partner User</description>
+    <description>FPT Distribution Company Limited Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>Synnex FPT Distribution Company Partner User</name>
+    <name>FPT Distribution Company Limited Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>EMP_11725584_Hong_Hai_Le</parentRole>
+    <parentRole>FPTDistributionCompanyLimitedPartnerManager</parentRole>
 </Role>

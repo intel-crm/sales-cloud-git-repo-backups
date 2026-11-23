@@ -31,8 +31,6 @@ public class PCC_Constants {
         'Core_Vertical_Market_Nm__c' => 'verticalMarket',
         'Core_Product_Segment_Nm__c'=> 'productSegment',
         'Core_Product_Application_Nm__c'=>'productApplication',
-        'PCC_Design_Type__c' => 'designType',
-        'PCC_ODM_Board_partner__c' => 'odmBoardPartner',
         'Core_Partner_FAE_Nm__c' => 'partnerFAE',
         'Core_End_Customer_Nm__c' => 'endCustomerName',
         'Core_End_Customer_Street_Addr_Line1_Txt__c' => 'endCustomerAddress1',
@@ -55,7 +53,7 @@ public class PCC_Constants {
         'Core_Manufacturing_Region_Cd__c' => 'manufacturingRegion',
         'Core_Design_Registration_Nm__c' => 'designRegistrationName',
         'DDR_Partner_FAE_Email__c' => 'partnerFAEEmail',
-        'MMID_or_Ordering_code__c' => 'mmId/oldMMId/orderingCd'
+        'MMID_or_Ordering_code__c' => 'mmId/orderingCd'
         }; 
             public static Map<String, String> drProductApiToLabelMapV2 = new Map<String, String>{'Core_Design_Registration_Id__c'=> 'designRegistration',
         'Core_Product_Id__c' => 'productId',
@@ -69,8 +67,6 @@ public class PCC_Constants {
         'Core_Vertical_Market_Nm__c' => 'verticalMarket',
         'Core_Product_Segment_Nm__c'=> 'productSegment',
         'Core_Product_Application_Nm__c'=>'productApplication',
-        'PCC_Design_Type__c' => 'designType',
-        'PCC_ODM_Board_partner__c' => 'odmBoardPartner',
         'Core_Partner_FAE_Nm__c' => 'partnerFAE',
         'Core_End_Customer_Nm__c' => 'endCustomerName',
         'Core_End_Customer_Street_Addr_Line1_Txt__c' => 'endCustomerAddress1',
@@ -93,15 +89,13 @@ public class PCC_Constants {
         'Core_Manufacturing_Region_Cd__c' => 'manufacturingRegion',
         'Core_Design_Registration_Nm__c' => 'designRegistrationName',
         'DDR_Partner_FAE_Email__c' => 'partnerFAEEmail',
-        'MMID_or_Ordering_code__c' => 'mmId/oldMMId/orderingCd'
+        'MMID_or_Ordering_code__c' => 'mmId/orderingCd'
         }; 
           public static Set<String> allowedFieldsPostDR = new Set<String>{
         'productGroup',
         'militaryAerospaceGvrnmtUseInd',
         'verticalMarket',
         'productSegment',
-        'designType',
-        'odmBoardPartner',
         'productApplication',
         'partnerFAE',
         'endCustomerName',
@@ -134,8 +128,6 @@ public class PCC_Constants {
         'verticalMarket',
         'productSegment',
         'productApplication',
-        'designType',
-        'odmBoardPartner',
         'partnerFAE',
         'endCustomerName',
         'endCustomerAddress1',
@@ -166,7 +158,8 @@ public class PCC_Constants {
     'comments',
     'partnerTrackingNumber',
     'mmId',
-    'recordId','oldMMId','orderingCd','designRegId'
+    //'recordId','oldMMId','orderingCd','designRegId'
+    'recordId','orderingCd','designRegId'
         };
            
     public static Set<String> allowedFieldsPostDRP = new Set<String>{'quantity',
@@ -261,6 +254,6 @@ public class PCC_Constants {
      public static final String RC_OPPTYSTAGE = 'Design Win';
      public static final String RC_OPPTYSTATUS = 'Approved';
      public static final String RC_CLAIMDATE_INVALID = 'Claim Submission Timeline lapsed';
-     public static final String DEAL_REGISTRATIONTYPE = 'Design Registration';
+     public static final String DEAL_REGISTRATIONTYPE = 'Deal Registration, Design Registration';
 
     }

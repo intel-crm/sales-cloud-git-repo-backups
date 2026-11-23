@@ -54,7 +54,7 @@
             <column>Name</column>
             <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
-            <value>Heaven Zeng,Zhe Wu,Yunxi Li,Huaqing Liu,Xu Zeng</value>
+            <value>Heaven Zeng,Zhe Wu,Yunxi Li</value>
         </criteriaItems>
         <operation>with</operation>
         <primaryTableColumn>OPPORTUNITY_ID</primaryTableColumn>

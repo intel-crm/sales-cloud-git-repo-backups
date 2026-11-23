@@ -52,7 +52,7 @@ public without sharing class Core_KPIDeltaLoadHandler {
             Set<Id> allOpportunityId = new Set<Id>();
             Set<Id> allOpportunityLineId = new Set<Id>();            
             oppIdDeleteSet =  new List<Core_Oppty_KPI_New__c>();
-            //List<Core_Oppty_KPI_New__c> oppIdDeleteList =  new List<Core_Oppty_KPI_New__c>();
+            List<Core_Oppty_KPI_New__c> oppIdDeleteList =  new List<Core_Oppty_KPI_New__c>();
             Set<Core_Oppty_KPI_New__c> oppIdKPIDeleteList =  new Set<Core_Oppty_KPI_New__c>();
             for(Core_KPI_Staging__c staging : newList){
                 allOpportunityId.add(staging.Core_Opportunity_ID_Txt__c);
@@ -92,18 +92,18 @@ public without sharing class Core_KPIDeltaLoadHandler {
             for(Opportunity opp: allOpportunityList){
                 allOpportunityIdSet.add(opp.Id);
                 if (oppWithBatchId.get(opp.Id) != null) {
-                    //String latestKPI = opp.Id + '~' + opp.StageName;
-                    if(oppWithBatchId.get(opp.Id).containsKey('Design Win') && latestOppKPIMap.get(opp.Id + '~Design Win') == null){
+                    String latestKPI = opp.Id + '~' + opp.StageName;
+                    if(opp.StageName == 'Design Win' && oppWithBatchId.get(opp.Id).containsKey('Design Win') && latestOppKPIMap.get(latestKPI) == null){
                         Core_Opportunity_KPI_Batch_Detail__c kpiBatch = new Core_Opportunity_KPI_Batch_Detail__c();
                         kpiBatch.Core_Opportunity_ID_Txt__c = opp.Id;
-                        kpiBatch.Core_Opportunity_Stage_Txt__c = 'Design Win';
+                        kpiBatch.Core_Opportunity_Stage_Txt__c = opp.StageName;
                         kpiBatch.Core_Opportunity_KPI_Batch_ID_Txt__c = oppWithBatchId.get(opp.Id).get('Design Win');
                         KPIBatchDtls.add(kpiBatch);
                     }
-                    if(oppWithBatchId.get(opp.Id).containsKey('Production Win') && latestOppKPIMap.get(opp.Id + '~Production Win') == null){
+                    if(opp.StageName == 'Production Win' && oppWithBatchId.get(opp.Id).containsKey('Production Win') && latestOppKPIMap.get(latestKPI) == null){
                         Core_Opportunity_KPI_Batch_Detail__c kpiBatch = new Core_Opportunity_KPI_Batch_Detail__c();
                         kpiBatch.Core_Opportunity_ID_Txt__c = opp.Id;
-                        kpiBatch.Core_Opportunity_Stage_Txt__c = 'Production Win';
+                        kpiBatch.Core_Opportunity_Stage_Txt__c = opp.StageName;
                         kpiBatch.Core_Opportunity_KPI_Batch_ID_Txt__c = oppWithBatchId.get(opp.Id).get('Production Win');
                         KPIBatchDtls.add(kpiBatch);
                     }
@@ -358,6 +358,7 @@ public without sharing class Core_KPIDeltaLoadHandler {
                             else if(mapBatchIdStatus.get(sta.Core_Batch_ID__c).contains('Failure')){
                                 tempkpiStage.Core_Status__c = 'Failure';
                                 updateEndOfFileStatus.add(tempkpiStage);
+                                errorIdsRemove.add(sta.Core_Opportunity_ID_Txt__c);
                             }
                             else{
                                 tempkpiStage.Core_Status__c = 'Success';
@@ -505,7 +506,7 @@ public without sharing class Core_KPIDeltaLoadHandler {
     */
     public static void seprateRefreshTypes(List<Core_KPI_Staging__c> newList, boolean KPIDeltaLoadCheck , boolean KPIFullLoadCheck ){
         Map<String,Core_Trigger_Executions__c> mapFunctionalityNameTriggerExecution = Core_Trigger_Executions__c.getAll();
-        //map<String, List<Core_KPI_Staging__c>> fullLoadMap = new map<String, List<Core_KPI_Staging__c>>();
+        map<String, List<Core_KPI_Staging__c>> fullLoadMap = new map<String, List<Core_KPI_Staging__c>>();
         List<Core_KPI_Staging__c> deltaLoadList = new List<Core_KPI_Staging__c>();
         List<Core_KPI_Staging__c> fullLoadList = new List<Core_KPI_Staging__c>();
         List<Core_KPI_Staging__c> syncLoadList = new List<Core_KPI_Staging__c>();

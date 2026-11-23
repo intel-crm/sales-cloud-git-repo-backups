@@ -28,6 +28,10 @@
         <field>DUE_DATE</field>
     </columns>
     <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Account.Core_Opportunity_Revenue_for_Account__c</field>
+    </columns>
+    <columns>
         <field>User.Core_WWID__c</field>
     </columns>
     <columns>
@@ -45,14 +49,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>cook,gordan,haynes,waun,weston,o&apos;donnell,omer,swanger,doller,chehreh,tobias,clifton,descheemaeker,robinson,valcich,gillis,cannada,tanik,moorthy,sornson,goh,zurlo,brown,Brian Landi,Gilad Gitlin,Dorin,Michelle Luo,Gina Moore,corredor,westall,wood,covey,thomson,stiles,oldfield,kimrey,allen,bossin,weinstein,carlton,darrah,green</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Account.Core_Sales_Groups__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Americas Named Account Sales Group,Americas US Sales Group</value>
+            <value>Chuck Palmeri,Calfin,Brian Landi,Gilad Gitlin,Oscar Ham,Dorin,Michelle Luo,Gloria Nogales,Radhika Kunte</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -81,7 +78,7 @@
     <scope>organization</scope>
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
-    <showSubTotals>false</showSubTotals>
+    <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CREATED_DATE</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>

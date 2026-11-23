@@ -26,6 +26,12 @@
         <name>Core_IPS_Prodcut_Org__c</name>
     </fields>
     <fields>
+        <help><!-- Default case owner for Project Product. --></help>
+        <label><!-- Default Case Owner --></label>
+        <name>Core_IPS_Product_Case_Owner__c</name>
+        <relationshipLabel><!-- Premier Support Project Products --></relationshipLabel>
+    </fields>
+    <fields>
         <label><!-- Product Name --></label>
         <name>Core_IPS_Product_Name__c</name>
     </fields>
@@ -114,10 +120,6 @@
     <validationRules>
         <errorMessage><!-- Cannot Add Par Hidden Type Supported Product or EOIS type Supported Products --></errorMessage>
         <name>Core_IPS_Prevent_ParHidden_and_EOIS</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Not allowed to create or update record related to Org 025 --></errorMessage>
-        <name>IPS_Altera_Go_Live_Project_Restriction</name>
     </validationRules>
     <webLinks>
         <label><!-- Add_default_case_owner --></label>

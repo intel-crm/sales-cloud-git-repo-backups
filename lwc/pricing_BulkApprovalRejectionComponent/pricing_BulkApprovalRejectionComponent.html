@@ -1,0 +1,21 @@
+<template>
+    <lightning-card title="Items to Approve" icon-name="standard:approval">
+        <template if:true={isSpinner}>
+            <lightning-spinner alternative-text="Loading..." size="medium" variant="brand"
+                                class="spinnerClass">
+                            </lightning-spinner>
+        </template>
+        <lightning-button slot="actions" label="Approve" variant="brand" alternative-text="Approve"
+            class="slds-m-left_xx-small" onclick={handleApproveRejectAction}>
+        </lightning-button>
+        <lightning-button slot="actions" label="Reject" variant="brand" alternative-text="Reject"
+            class="slds-m-left_xx-small" onclick={handleApproveRejectAction}>
+        </lightning-button>
+        <div style="height: 300px;">
+            <lightning-datatable id="Id" key-field="id" columns={columns} data={data}
+                default-sort-direction={defaultSortDirection} sorted-by={sortedBy} sorted-direction={sortDirection}
+                onsort={onHandleSort}  enable-infinite-loading
+                show-row-number-column></lightning-datatable>
+        </div>
+    </lightning-card>
+</template>

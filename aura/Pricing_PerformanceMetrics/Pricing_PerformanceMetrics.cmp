@@ -5,11 +5,9 @@
   @last modified on  : 07-18-2024
   @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 -->
-<aura:component
-  controller="Pricing_PerformanceMetricsController"
-  implements="forceCommunity:availableForAllPageTypes,force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction"
-  access="global"
->
+<aura:component controller="Pricing_PerformanceMetricsController"
+  implements="forceCommunity:availableForAllPageTypes,force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction,lightning:availableForFlowScreens"
+  access="global">
   <aura:attribute name="records" type="Object[]" />
   <aura:attribute name="rows" type="Integer" />
   <aura:attribute name="picklistValues" type="Object" />
@@ -25,10 +23,10 @@
   <aura:attribute name="isReadOnly" type="Boolean" default="false" />
   <aura:attribute name="isDisabled" type="Boolean" default="false" />
   <aura:attribute name="picklistValuesFromParent" type="Object" />
-  <!--override Toast CSS with external [.CSS] file.--> 
+  <!--override Toast CSS with external [.CSS] file.-->
   <ltng:require styles="{!$Resource.multilineToastCSS}" />
-  <aura:attribute name="isStandardQuoteLine" type="Boolean" />  
-  
+  <aura:attribute name="isStandardQuoteLine" type="Boolean" />
+
   <aura:if isTrue="{!v.isStandardQuoteLine}">
     <lightning:card title="Performance Metrics" iconName="standard:performance">
       <aura:set attribute="actions">
@@ -37,46 +35,40 @@
         </aura:if>
       </aura:set>
       <table class="slds-table slds-table_cell-buffer slds-table_bordered">
-        <thead
-          style="background-color: var(--lwc-tableColorBackgroundHeader,rgb(250, 250, 249));"
-        >
+        <thead style="background-color: var(--lwc-tableColorBackgroundHeader,rgb(250, 250, 249));">
           <tr class="slds-line-height_reset">
             <lightning:layout>
               <lightning:layoutItem size="3">
-                <th class="" scope="col">                
-                  <div class="slds-truncate textAlign" title="Performance Metrics Used"
-                    ><span class="required ">*</span>{!$Label.c.Pricing_Tender_label_PerformanceMetricsUsed}
+                <th class="" scope="col">
+                  <div class="slds-truncate textAlign" title="Performance Metrics Used"><span
+                      class="required ">*</span>{!$Label.c.Pricing_Tender_label_PerformanceMetricsUsed}
                   </div>
                 </th>
               </lightning:layoutItem>
               <lightning:layoutItem size="2">
                 <th class="" scope="col">
                   <div class="slds-truncate textAlign" title="Weighting">{!$Label.c.Pricing_Tender_label_Weighting}
-                    <lightning:helptext
-                  content="{!$Label.c.Pricing_Tender_ToolTip_Weighting}"
-                  
-                />
-                    </div>
+                    <lightning:helptext content="{!$Label.c.Pricing_Tender_ToolTip_Weighting}" />
+                  </div>
                 </th>
               </lightning:layoutItem>
-                
+
               <lightning:layoutItem size="2">
                 <th class="" scope="col">
-                  <div class="slds-truncate textAlign" title="Intel SKU Performance"
-                    ><span class="required ">*</span>{!$Label.c.Pricing_Tender_label_Intel_SKU_Performance}</div
-                  >
+                  <div class="slds-truncate textAlign" title="Intel SKU Performance"><span
+                      class="required ">*</span>{!$Label.c.Pricing_Tender_label_Intel_SKU_Performance}</div>
                 </th>
               </lightning:layoutItem>
               <lightning:layoutItem size="2">
                 <th class="" scope="col">
-                  <div class="slds-truncate textAlign" title="Competitor SKU Performance"
-                    ><span class="required ">*</span>{!$Label.c.Pricing_Tender_label_Compe_SKU_Performance}</div
-                  >
+                  <div class="slds-truncate textAlign" title="Competitor SKU Performance"><span
+                      class="required ">*</span>{!$Label.c.Pricing_Tender_label_Compe_SKU_Performance}</div>
                 </th>
               </lightning:layoutItem>
               <lightning:layoutItem size="2">
                 <th class="" scope="col">
-                  <div class="slds-truncate textAlign" title="Other Text">{!$Label.c.Pricing_Tender_label_Other_Text}</div>
+                  <div class="slds-truncate textAlign" title="Other Text">{!$Label.c.Pricing_Tender_label_Other_Text}
+                  </div>
                 </th>
               </lightning:layoutItem>
               <aura:if isTrue="{!and(or(v.hasUpdateAccess,v.hasUpdateAccessPf),!v.isReadOnly)}">
@@ -93,19 +85,13 @@
 
       <aura:iteration items="{!v.records}" var="rec" indexVar="index">
         <lightning:layout>
-          <c:performanceMetricsBlankRow
-            record="{!rec}"
+          <c:performanceMetricsBlankRow record="{!rec}"
             hasUpdateAccess="{!and(or(v.hasUpdateAccess,v.hasUpdateAccessPf),!v.isReadOnly)}"
-            picklistValues="{!v.picklistValues}"
-          />
+            picklistValues="{!v.picklistValues}" />
           <aura:if isTrue="{!and(or(v.hasDeleteAccess,v.hasDeleteAccessPf),!v.isReadOnly)}">
             <lightning:layoutItem size="1" padding="around-small">
               <a name="{!index}" onclick="{!c.remove}">
-                <lightning:icon
-                  iconName="utility:delete"
-                  alternativeText="delete"
-                  size="small"
-                />
+                <lightning:icon iconName="utility:delete" alternativeText="delete" size="small" />
               </a>
             </lightning:layoutItem>
           </aura:if>
@@ -116,10 +102,10 @@
         <div class="slds-col slds-size_6-of-12">
           <aura:if isTrue="{!and(and(v.saveButtonShow,or(!v.hasUpdateAccess,!v.hasUpdateAccessPf)),!v.isReadOnly)}">
             <lightning:button onclick="{!c.save}" variant="brand" disabled="{!v.isDisabled}"
-                              label="{!v.isDisabled == true ? 'Saving...' : 'Save'}"/>
+              label="{!v.isDisabled == true ? 'Saving...' : 'Save'}" />
           </aura:if>
         </div>
       </div>
     </lightning:card>
-  </aura:if>  
+  </aura:if>
 </aura:component>

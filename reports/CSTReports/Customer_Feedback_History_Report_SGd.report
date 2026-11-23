@@ -7,16 +7,22 @@
         <field>field_key</field>
     </columns>
     <columns>
-        <field>CREATED_DATE</field>
-    </columns>
-    <columns>
         <field>OLDVAL</field>
     </columns>
     <columns>
         <field>NEWVAL</field>
     </columns>
     <columns>
+        <field>CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>SPM_Customer_Feedback__c.Customer_ID__c</field>
+    </columns>
+    <columns>
         <field>CUST_CREATED_NAME</field>
+    </columns>
+    <columns>
+        <field>CUST_LAST_UPDATE_NAME</field>
     </columns>
     <columns>
         <field>SPM_Customer_Feedback__c.DR_Feedback__c</field>
@@ -36,22 +42,7 @@
     <columns>
         <field>CUST_NAME</field>
     </columns>
-    <filter>
-        <criteriaItems>
-            <column>SPM_Customer_Feedback__c.CRM_CST_Is_Active_Planning_Period__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>1</value>
-        </criteriaItems>
-        <language>en_US</language>
-    </filter>
-    <format>Summary</format>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>SPM_Customer_Feedback__c.Customer_Name_Formula__c</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
+    <format>Tabular</format>
     <name>Customer Feedback History Report</name>
     <params>
         <name>co</name>

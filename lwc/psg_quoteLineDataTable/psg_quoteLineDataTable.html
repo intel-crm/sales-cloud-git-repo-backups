@@ -1,0 +1,27 @@
+<template>  
+  <lightning-card title="Quote Lines">  
+    <div class="spinner">
+      <template if:true={showSpinner}>
+          <lightning-spinner alternative-text="Loading" variant="brand" size="large"></lightning-spinner>
+      </template>
+    </div>
+    <form>
+      <lightning-layout>
+          <lightning-layout-item size="2" style="padding-left:1.2rem;">
+            <lightning-input type="number" name="Disty %" label="Disty %" onchange={handleChange}></lightning-input>
+          </lightning-layout-item>
+          <lightning-layout-item size="1" style="padding-left:1.2rem;padding-top:1.5rem">
+            <lightning-button label="Update" onclick={updateRecord}></lightning-button> 
+          </lightning-layout-item>
+      </lightning-layout>
+    </form>
+    <br/>
+    <div class="slds-box">  
+      <lightning-datatable data={quoteLineList.data}
+                          columns={cols} 
+                          key-field="Id">  
+      </lightning-datatable> 
+      
+    </div>  
+  </lightning-card>  
+</template>

@@ -6,5 +6,5 @@
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>PLEXCOM NETWORK SYSTEM SDN BHD Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>PLEXCOMNETWORKSYSTEMSDNBHDPartnerManager</parentRole>
 </Role>

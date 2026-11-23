@@ -4,27 +4,22 @@
         <field>CUST_NAME</field>
     </columns>
     <columns>
-        <field>Core_Goal__c.Core_Goal_Oppty_Account_Name__c</field>
-    </columns>
-    <columns>
         <field>Core_Goal__c.Core_Opportunity__c</field>
-    </columns>
-    <columns>
-        <field>Core_Goal__c.Core_Goal_BU_Focus_Area__c</field>
     </columns>
     <columns>
         <field>Core_Goal__c.Core_Goal_Oppty_Owner__c</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Core_Goal__c.Core_KPI_Revenue__c</field>
+        <field>Core_Goal__c.Core_Goal_Status__c</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Core_Goal__c.Core_Approved_KPI_Revenue__c</field>
+        <field>Core_Goal__c.Core_Goal_Approved_Date__c</field>
     </columns>
     <columns>
         <field>CUST_OWNER_NAME</field>
+    </columns>
+    <columns>
+        <field>Core_Goal__c.Core_Goal_Category__c</field>
     </columns>
     <description>2019 Deal Win Goals</description>
     <filter>
@@ -34,13 +29,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
             <value>Chun-Wei Hsu</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Core_Goal__c.Core_Goal_Status__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Approved</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -57,6 +45,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CUST_CREATED_DATE</dateColumn>
-        <interval>INTERVAL_PREVFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

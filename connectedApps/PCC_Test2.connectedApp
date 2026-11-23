@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>testpcccontact@mail7.com</contactEmail>
+    <iconUrl>https://test.salesforce.com/logos/Salesforce/Community/icon.png</iconUrl>
+    <label>PCC Test Demo_PCC_Disti_Account1</label>
+    <oauthConfig>
+        <callbackUrl>https://www.getpostman.com/oauth2/callback
+https://oauth.pstmn.io/v1/callback</callbackUrl>
+        <certificate>MIIDLzCCAhcCFEZI/XyFkH/Xppt1esNJkj1SNAOPMA0GCSqGSIb3DQEBCwUAMFQxCzAJBgNVBAYTAklOMQwwCgYDVQQIDANLQVIxDjAMBgNVBAcMBUJMT1JFMQswCQYDVQQKDAJETTENMAsGA1UECwwEREVNTzELMAkGA1UEAwwCRE0wHhcNMjMwODAyMTEyNTAwWhcNMjQwODAxMTEyNTAwWjBUMQswCQYDVQQGEwJJTjEMMAoGA1UECAwDS0FSMQ4wDAYDVQQHDAVCTE9SRTELMAkGA1UECgwCRE0xDTALBgNVBAsMBERFTU8xCzAJBgNVBAMMAkRNMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAw/ahx9/prTGRNhoN9vZKxCAd83W3d/9SlqiP3IuMMB2m1oeRwQLeuUMAwjpmPvTjUu59d0xZbMKp9OrwPcmwb5JSRjWAVdLtx1C0IiTJqliDLSwN/bwdyL8R8YwRBHMnEo65DiWqL3z/Uf3ADXsr/wGBEGNbAre9cnbRyELqLQaFHO6L/1RF287qgqU5mEGy3Q5OHTgu4utr3vc+/BusSfR8EWgzudGhgCsw3o/w8FaRS1ensXNQcyJkQEa3OFowcf/OfeHHes4XwQAItcuzVCpmpxCK9WQbFOSN40xo+wzv3JXaNPDb2/lXoPWGXqLKTTtWzrQyx+5A3LRZCDPpjQIDAQABMA0GCSqGSIb3DQEBCwUAA4IBAQBKwCavidGGInKIBy6KffTO5cJFaUJQjbuJGrlW8Jisb+2zYzAs4vlk2PWG0u7wNfkLy4W59ftFTp0U575WnY5xW8lL77lMg4hKFrOG6wqwcypy7CDMOIwgcjY6OuhSmpYfpw6DyrHzn5lT5JgUTFGfeYkkSjNWXUpbixsexBSDyvY7o7XWci2f+yXsOmJPvUVMxwYPusVuD60qn75A67OG4Q+D1w5Qvyo5pXewmzL15UdZN1Zu524IGaZX3tbPUPybp2Hx9ReHzyXn+n9x3GXc+cW2r2AYITaKiBEL1x3xIOhIdUVE737Mg1pcBMFZrAq+Be7H7BixhNdwJLtmZZGb</certificate>
+        <consumerKey>3MVG9FxR3Tq3eZN88sLG9b4Pw8NdOGSwBeTDd7nsSwA7iC7vaomnfkKXoqL61pY9HHlXoK9lsXzSxUaepLqFZ</consumerKey>
+        <isAdminApproved>true</isAdminApproved>
+        <isClientCredentialEnabled>false</isClientCredentialEnabled>
+        <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
+        <isCodeCredentialPostOnly>false</isCodeCredentialPostOnly>
+        <isConsumerSecretOptional>false</isConsumerSecretOptional>
+        <isDPopEnabled>false</isDPopEnabled>
+        <isDeviceFlowEnabled>false</isDeviceFlowEnabled>
+        <isEnforceRefreshTokenTTL>false</isEnforceRefreshTokenTTL>
+        <isIntrospectAllTokens>false</isIntrospectAllTokens>
+        <isIpBindingEnabled>false</isIpBindingEnabled>
+        <isNamedUserJwtEnabled>false</isNamedUserJwtEnabled>
+        <isPKImTLSEnabled>false</isPKImTLSEnabled>
+        <isPkceRequired>false</isPkceRequired>
+        <isRefreshTokenRotationEnabled>false</isRefreshTokenRotationEnabled>
+        <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
+        <isSecretRequiredForTokenExchange>false</isSecretRequiredForTokenExchange>
+        <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
+        <scopes>Basic</scopes>
+        <scopes>Api</scopes>
+        <scopes>RefreshToken</scopes>
+    </oauthConfig>
+    <oauthPolicy>
+        <ipRelaxation>ENFORCE</ipRelaxation>
+        <isTokenExchangeFlowEnabled>false</isTokenExchangeFlowEnabled>
+        <refreshTokenPolicy>zero</refreshTokenPolicy>
+    </oauthPolicy>
+    <permissionSetName>DDR Permission Set</permissionSetName>
+    <permissionSetName>Deal Reg Partner Access</permissionSetName>
+    <profileName>B2B API Partner</profileName>
+    <sessionPolicy>
+        <sessionTimeout>60</sessionTimeout>
+    </sessionPolicy>
+</ConnectedApp>

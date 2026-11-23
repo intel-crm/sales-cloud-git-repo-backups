@@ -4,29 +4,24 @@
     <encodingKey>UTF-8</encodingKey>
     <name>SCRREQTOAPVDEXT_FRA</name>
     <style>none</style>
-    <subject>Bienvenue dans le programme Alliance partenaire Intel®</subject>
-    <textOnly>Votre entreprise est déjà enregistrée
+    <subject>Félicitations et bienvenue dans le programme de partenariat Intel</subject>
+    <textOnly>Duplicate Partner Program Registration
+
+{!PRM_Registration_Request__c.PRM_First_Name__c}
+
+Your company matches an existing Intel Partner program account, so you have been added to the following company profile:
+
+Company Name: {!Account.Name}
+
+Log in to view your profile details.
+
+Questions? Contact Support here 
 
 
-{!PRM_Registration_Request__c.PRM_First_Name__c},
-
-Félicitations ! Vous êtes désormais un partenaire de l&apos;Alliance partenaire Intel®. Votre entreprise correspond à un compte existant, vous avez donc été ajouté au profil d&apos;entreprise suivant de l&apos;Alliance partenaire Intel® :
-Nom de la société : {!Account.Name}
-ID d’entreprise : {!Account.AccountNumber}
-
-Connectez-vous pour voir les détails de votre profil Alliance partenaire Intel®.
-
-Les partenaires d&apos;Intel ont un long passé d&apos;innovation. Avec le programme Alliance partenaire Intel®, nous vous aiderons à accélérer la création de solutions pour l&apos;économie centrée sur les données. Ensemble, connectons, innovons et développons, afin de concrétiser des opportunités exceptionnelles.
-
-Consultez le site https://www.intel.com/content/www/fr/fr/partner-alliance/help/overview.html pour vous lancer.
-
-Cordialement,
-Votre équipe Alliance partenaire Intel®
-
-Ce message vous a été envoyé dans le cadre d&apos;une communication commerciale importante liée à votre relation actuelle avec le programme Alliance partenaire Intel®.
-© {!$Label.PRM_CurrentYear} Intel Corporation
-Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
-Confidentialité | Cookies</textOnly>
+Copyright © 2016 Intel Corporation. All rights reserved. Intel, the Intel logo are trademarks of Intel Corporation in the U.S. and/or other countries.
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. Intel.com
+You may unsubscribe at any time by updating your profile settings at: {!$Label.PRM_MyIntelProfileURL}
+Privacy | Cookies | *Trademarks</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

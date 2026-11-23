@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <customValue>
-        <fullName>None</fullName>
-        <default>false</default>
-        <label>None</label>
-    </customValue>
-    <customValue>
-        <fullName>4G/5G Core</fullName>
-        <default>false</default>
-        <label>4G/5G Core</label>
-    </customValue>
-    <customValue>
         <fullName>5G/RAN</fullName>
         <default>false</default>
         <label>5G/RAN</label>
@@ -19,11 +9,6 @@
         <fullName>5G Infrastructure</fullName>
         <default>false</default>
         <label>5G Infrastructure</label>
-    </customValue>
-    <customValue>
-        <fullName>5G Network Transformation</fullName>
-        <default>false</default>
-        <label>5G Network Transformation</label>
     </customValue>
     <customValue>
         <fullName>Advanced Analytics</fullName>
@@ -39,11 +24,6 @@
         <fullName>AI / Big Data</fullName>
         <default>false</default>
         <label>AI / Big Data</label>
-    </customValue>
-    <customValue>
-        <fullName>AI &amp; Machine Learning</fullName>
-        <default>false</default>
-        <label>AI &amp; Machine Learning</label>
     </customValue>
     <customValue>
         <fullName>Always Connected PC</fullName>
@@ -66,11 +46,6 @@
         <label>Automotive</label>
     </customValue>
     <customValue>
-        <fullName>Cloud</fullName>
-        <default>false</default>
-        <label>Cloud</label>
-    </customValue>
-    <customValue>
         <fullName>Cloud (Public, Private, hybrid, multi)</fullName>
         <default>false</default>
         <label>Cloud (Public, Private, hybrid, multi)</label>
@@ -79,46 +54,6 @@
         <fullName>Cloud Services</fullName>
         <default>false</default>
         <label>Cloud Services</label>
-    </customValue>
-    <customValue>
-        <fullName>Commercial - Education</fullName>
-        <default>false</default>
-        <label>Commercial - Education</label>
-    </customValue>
-    <customValue>
-        <fullName>Commercial Evo (non-vPro)</fullName>
-        <default>false</default>
-        <label>Commercial Evo (non-vPro)</label>
-    </customValue>
-    <customValue>
-        <fullName>Commercial - Government</fullName>
-        <default>false</default>
-        <label>Commercial - Government</label>
-    </customValue>
-    <customValue>
-        <fullName>Commercial​ - Large enterprise</fullName>
-        <default>false</default>
-        <label>Commercial​ - Large enterprise</label>
-    </customValue>
-    <customValue>
-        <fullName>Commercial non-vPro</fullName>
-        <default>false</default>
-        <label>Commercial non-vPro</label>
-    </customValue>
-    <customValue>
-        <fullName>Commercial - SMB</fullName>
-        <default>false</default>
-        <label>Commercial - SMB</label>
-    </customValue>
-    <customValue>
-        <fullName>Commercial vPro</fullName>
-        <default>false</default>
-        <label>Commercial vPro</label>
-    </customValue>
-    <customValue>
-        <fullName>Commercial vPro Evo</fullName>
-        <default>false</default>
-        <label>Commercial vPro Evo</label>
     </customValue>
     <customValue>
         <fullName>Consumer Chromebook</fullName>
@@ -131,39 +66,14 @@
         <label>Consumer Client</label>
     </customValue>
     <customValue>
-        <fullName>Consumer​ - Enthusiast</fullName>
-        <default>false</default>
-        <label>Consumer​ - Enthusiast</label>
-    </customValue>
-    <customValue>
-        <fullName>Consumer Evo</fullName>
-        <default>false</default>
-        <label>Consumer Evo</label>
-    </customValue>
-    <customValue>
         <fullName>Consumer Intel Optane</fullName>
         <default>false</default>
         <label>Consumer Intel Optane</label>
     </customValue>
     <customValue>
-        <fullName>Consumer - Mainstream/Essential</fullName>
-        <default>false</default>
-        <label>Consumer - Mainstream/Essential</label>
-    </customValue>
-    <customValue>
         <fullName>Consumer Modern PCs</fullName>
         <default>false</default>
         <label>Consumer Modern PCs</label>
-    </customValue>
-    <customValue>
-        <fullName>Consumer non-Evo</fullName>
-        <default>false</default>
-        <label>Consumer non-Evo</label>
-    </customValue>
-    <customValue>
-        <fullName>Consumer - Premium</fullName>
-        <default>false</default>
-        <label>Consumer - Premium</label>
     </customValue>
     <customValue>
         <fullName>Consumer refresh of latest gen processors</fullName>
@@ -196,34 +106,9 @@
         <label>Edge Computing</label>
     </customValue>
     <customValue>
-        <fullName>Edge Infrastructure Platforms/MEC</fullName>
-        <default>false</default>
-        <label>Edge Infrastructure Platforms/MEC</label>
-    </customValue>
-    <customValue>
-        <fullName>Enterprise Cloud Networking &amp; Security</fullName>
-        <default>false</default>
-        <label>Enterprise Cloud Networking &amp; Security</label>
-    </customValue>
-    <customValue>
-        <fullName>Enterprise IT</fullName>
-        <default>false</default>
-        <label>Enterprise IT</label>
-    </customValue>
-    <customValue>
         <fullName>Extend Platform Leadership</fullName>
         <default>false</default>
         <label>Extend Platform Leadership</label>
-    </customValue>
-    <customValue>
-        <fullName>Fixed/Wireless Access</fullName>
-        <default>false</default>
-        <label>Fixed/Wireless Access</label>
-    </customValue>
-    <customValue>
-        <fullName>FPGA</fullName>
-        <default>false</default>
-        <label>FPGA</label>
     </customValue>
     <customValue>
         <fullName>FPGA Accelerators</fullName>
@@ -249,6 +134,11 @@
         <fullName>HPC </fullName>
         <default>false</default>
         <label>HPC </label>
+    </customValue>
+    <customValue>
+        <fullName>Cloud</fullName>
+        <default>false</default>
+        <label>Cloud</label>
     </customValue>
     <customValue>
         <fullName>Infrastructure Modernization</fullName>
@@ -286,11 +176,6 @@
         <label>IREP</label>
     </customValue>
     <customValue>
-        <fullName>Machine Learning</fullName>
-        <default>false</default>
-        <label>Machine Learning</label>
-    </customValue>
-    <customValue>
         <fullName>Mainstream PCs</fullName>
         <default>false</default>
         <label>Mainstream PCs</label>
@@ -321,11 +206,6 @@
         <label>Modern Mobile Devices</label>
     </customValue>
     <customValue>
-        <fullName>Multi-Access Edge Computing</fullName>
-        <default>false</default>
-        <label>Multi-Access Edge Computing</label>
-    </customValue>
-    <customValue>
         <fullName>Network Cloud (NFV/SDN)</fullName>
         <default>false</default>
         <label>Network Cloud (NFV/SDN)</label>
@@ -334,11 +214,6 @@
         <fullName>Network Transformation</fullName>
         <default>false</default>
         <label>Network Transformation</label>
-    </customValue>
-    <customValue>
-        <fullName>New Business Models</fullName>
-        <default>false</default>
-        <label>New Business Models</label>
     </customValue>
     <customValue>
         <fullName>Next Gen IaaS</fullName>
@@ -371,29 +246,9 @@
         <label>Online Performance</label>
     </customValue>
     <customValue>
-        <fullName>On Prem</fullName>
-        <default>false</default>
-        <label>On Prem</label>
-    </customValue>
-    <customValue>
         <fullName>Other</fullName>
         <default>false</default>
         <label>Other</label>
-    </customValue>
-    <customValue>
-        <fullName>Private Wireless Networks</fullName>
-        <default>false</default>
-        <label>Private Wireless Networks</label>
-    </customValue>
-    <customValue>
-        <fullName>Radio Access Networks</fullName>
-        <default>false</default>
-        <label>Radio Access Networks</label>
-    </customValue>
-    <customValue>
-        <fullName>Radio Access Networks (RAN)</fullName>
-        <default>false</default>
-        <label>Radio Access Networks (RAN)</label>
     </customValue>
     <customValue>
         <fullName>Ramping Adjacencies</fullName>
@@ -411,11 +266,6 @@
         <label>RXT engagement</label>
     </customValue>
     <customValue>
-        <fullName>Security</fullName>
-        <default>false</default>
-        <label>Security</label>
-    </customValue>
-    <customValue>
         <fullName>Small Business</fullName>
         <default>false</default>
         <label>Small Business</label>
@@ -424,11 +274,6 @@
         <fullName>Storage</fullName>
         <default>false</default>
         <label>Storage</label>
-    </customValue>
-    <customValue>
-        <fullName>Systems - NUC</fullName>
-        <default>false</default>
-        <label>Systems - NUC</label>
     </customValue>
     <customValue>
         <fullName>Target demand gen</fullName>
@@ -496,115 +341,15 @@
         <label>Workstation</label>
     </customValue>
     <customValue>
-        <fullName>Consumer​ - Mainstream</fullName>
+        <fullName>Enterprise IT</fullName>
         <default>false</default>
-        <label>Consumer​ - Mainstream</label>
+        <label>Enterprise IT</label>
     </customValue>
     <customValue>
-        <fullName>Connectivity</fullName>
-        <default>false</default>
-        <label>Connectivity</label>
-    </customValue>
-    <customValue>
-        <fullName>IOT Digital Transformation</fullName>
-        <default>false</default>
-        <label>IOT Digital Transformation</label>
-    </customValue>
-    <customValue>
-        <fullName>Edge/ IOT Digital Transformation</fullName>
-        <default>false</default>
-        <label>Edge/ IOT Digital Transformation</label>
-    </customValue>
-    <customValue>
-        <fullName>AI Consumer</fullName>
-        <default>false</default>
-        <label>AI Consumer</label>
-    </customValue>
-    <customValue>
-        <fullName>AI Commercial</fullName>
-        <default>false</default>
-        <label>AI Commercial</label>
-    </customValue>
-    <customValue>
-        <fullName>Apple Compete Consumer</fullName>
-        <default>false</default>
-        <label>Apple Compete Consumer</label>
-    </customValue>
-    <customValue>
-        <fullName>Apple Compete Commercial</fullName>
-        <default>false</default>
-        <label>Apple Compete Commercial</label>
-    </customValue>
-    <customValue>
-        <fullName>Apple Compete Workstation</fullName>
-        <default>false</default>
-        <label>Apple Compete Workstation</label>
-    </customValue>
-    <customValue>
-        <fullName>Consumer</fullName>
-        <default>false</default>
-        <label>Consumer</label>
-    </customValue>
-    <customValue>
-        <fullName>AI PC - Commercial</fullName>
-        <default>false</default>
-        <label>AI PC - Commercial</label>
-    </customValue>
-    <customValue>
-        <fullName>AI PC &amp; Consumer</fullName>
-        <default>false</default>
-        <label>AI PC &amp; Consumer</label>
-    </customValue>
-    <customValue>
-        <fullName>Enterprise AI</fullName>
-        <default>false</default>
-        <label>Enterprise AI</label>
-    </customValue>
-    <customValue>
-        <fullName>Infrastructure Optimization</fullName>
-        <default>false</default>
-        <label>Infrastructure Optimization</label>
-    </customValue>
-    <customValue>
-        <fullName>Commercial</fullName>
-        <default>false</default>
-        <label>Commercial</label>
-    </customValue>
-    <customValue>
-        <fullName>Digital Transformation</fullName>
-        <default>false</default>
-        <label>Digital Transformation</label>
-    </customValue>
-    <customValue>
-        <fullName>Gen-Over-Gen Ramp</fullName>
-        <default>false</default>
-        <label>Gen-Over-Gen Ramp</label>
-    </customValue>
-    <customValue>
-        <fullName>Technology Adoption</fullName>
-        <default>false</default>
-        <label>Technology Adoption</label>
-    </customValue>
-    <customValue>
-        <fullName>Architectural Conversion</fullName>
-        <default>false</default>
-        <label>Architectural Conversion</label>
-    </customValue>
-    <customValue>
-        <fullName>Research &amp; Incubation</fullName>
-        <default>false</default>
-        <label>Research &amp; Incubation</label>
-    </customValue>
-    <customValue>
-        <fullName>Design Win vs. Comp</fullName>
-        <default>false</default>
-        <label>Design Win vs. Comp</label>
-    </customValue>
-    <customValue>
-        <fullName>Server Refresh</fullName>
+        <fullName>Hybrid Cloud</fullName>
         <default>false</default>
         <isActive>false</isActive>
-        <label>Server Refresh</label>
+        <label>Hybrid Cloud</label>
     </customValue>
     <customValue>
         <fullName>Edge Computing </fullName>
@@ -613,30 +358,11 @@
         <label>Edge Computing </label>
     </customValue>
     <customValue>
-        <fullName>Test1</fullName>
+        <fullName>Server Refresh</fullName>
         <default>false</default>
         <isActive>false</isActive>
-        <label>Test1</label>
+        <label>Server Refresh</label>
     </customValue>
-    <customValue>
-        <fullName>AI PC - Consumer</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>AI PC - Consumer</label>
-    </customValue>
-    <customValue>
-        <fullName>AI</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>AI</label>
-    </customValue>
-    <customValue>
-        <fullName>Hybrid Cloud</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Hybrid Cloud</label>
-    </customValue>
-    <description>Store Priority values</description>
     <masterLabel>Priority</masterLabel>
     <sorted>true</sorted>
 </GlobalValueSet>

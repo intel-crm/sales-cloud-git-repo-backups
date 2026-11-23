@@ -1,0 +1,49 @@
+<template>
+    <!-- Button to add a new row -->
+    <lightning-button label="Add Row" onclick={handleAddRow}></lightning-button>
+
+    <!-- Display dynamic rows -->
+    <template for:each={rows} for:item="row">
+        <div key={row.id} class="row-container">
+            <lightning-input-rich-text 
+                label="Account Brief Summary"
+                value={row.Account_Brief_Summary__c}
+                onchange={handleFieldChange}
+                data-id={row.id}
+                data-field="Account_Brief_Summary__c">
+            </lightning-input-rich-text>
+
+            <lightning-input-rich-text 
+                label="Meeting Invite"
+                value={row.Meeting_Invite__c}
+                onchange={handleFieldChange}
+                data-id={row.id}
+                data-field="Meeting_Invite__c">
+            </lightning-input-rich-text>
+
+            <lightning-input-rich-text 
+                label="Attendees"
+                value={row.Attendees__c}
+                onchange={handleFieldChange}
+                data-id={row.id}
+                data-field="Attendees__c">
+            </lightning-input-rich-text>
+        </div>
+    </template>
+
+    <!-- Button to save rows -->
+    <lightning-button label="Save Rows" onclick={handleSave}></lightning-button>
+
+    <!-- Display existing child records for the parent -->
+    <template if:true={childRecords}>
+        <lightning-card title="Existing Rows">
+            <template for:each={childRecords} for:item="childRecord">
+                <p key={childRecord.Id}>
+                    <strong>Account Brief Summary:</strong> {childRecord.Account_Brief_Summary__c}<br />
+                    <strong>Meeting Invite:</strong> {childRecord.Meeting_Invite__c}<br />
+                    <strong>Attendees:</strong> {childRecord.Attendees__c}
+                </p>
+            </template>
+        </lightning-card>
+    </template>
+</template>

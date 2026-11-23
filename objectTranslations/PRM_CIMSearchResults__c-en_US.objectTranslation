@@ -87,14 +87,6 @@
         <name>PRM_SearchScore_Nbr__c</name>
     </fields>
     <fields>
-        <label><!-- Source --></label>
-        <name>PRM_Source__c</name>
-        <picklistValues>
-            <masterLabel>Reltio SBR</masterLabel>
-            <translation><!-- Reltio SBR --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
         <label><!-- Country Subdivision Code --></label>
         <name>PRM_Subdiv_Cd__c</name>
     </fields>

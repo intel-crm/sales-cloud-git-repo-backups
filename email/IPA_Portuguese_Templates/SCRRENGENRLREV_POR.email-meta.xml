@@ -4,35 +4,23 @@
     <encodingKey>UTF-8</encodingKey>
     <name>SCRRENGENRLREV_POR</name>
     <style>none</style>
-    <subject>Confirme seu endereço de e-mail</subject>
-    <textOnly>Verifique seu e-mail e defina sua senha
+    <subject>Inscrição para o programa de parceiros Intel</subject>
+    <textOnly>Verify your Email to Activate your Account
+
+Dear {!PRM_Registration_Request__c.PRM_First_Name__c},
+
+Thanks for joining Intel’s Partner program. Please click below to activate your account.
+
+Activate Your Account
+
+Can&apos;t access the link above?
+https://www.intel...
 
 
-
-{!PRM_Registration_Request__c.PRM_First_Name__c},
-
-Obrigado por iniciar seu registro para a Intel® Partner Alliance!
-Clique no link abaixo para continuar
-
-
-Verifique seu e-mail e defina sua senha
-
-
-Este link expirará em 24 horasPara concluir o próximo passo e definir sua senha, use o nome de usuário listado abaixo
-Nome de usuário: {!PRM_Registration_Request__c.PRM_Email_ID__c}
-
-Não consegue acessar o link acima?
-https://signinpp.intel.com/PasswordUpdate?var={!PRM_Registration_Request__c.PRM_EV_Token__c}&amp;culture=pt&amp;target=https://wcm-ciqa.intel.com/content/www/br/pt/secure/partner/forms/ipa-account-search.html
-
-
-Esperamos ter você no programa!
-Atenciosamente,
-Sua equipe Intel® Partner Alliance
-
-Esta mensagem foi enviada a você como uma importante comunicação comercial relacionada ao seu relacionamento atual com a Intel® Partner Alliance.
-© {!$Label.PRM_CurrentYear} Intel Corporation
-Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.www.intel.com
-Privacidade&amp;verbar;Cookies</textOnly>
+Copyright © 2016 Intel Corporation. All rights reserved. Intel, the Intel logo are trademarks of Intel Corporation in the U.S. and/or other countries.
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. Intel.com
+You may unsubscribe at any time by updating your profile settings at: {!$Label.PRM_MyIntelProfileURL}
+Privacy | Cookies | *Trademarks</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

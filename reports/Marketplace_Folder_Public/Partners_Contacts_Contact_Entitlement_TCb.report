@@ -9,6 +9,9 @@
             <field>Account.Company_Informations__r$Name</field>
         </columns>
         <columns>
+            <field>Account.Company_Informations__r.PMP_Company_Information_Translations__r$Name</field>
+        </columns>
+        <columns>
             <field>Account.Company_Informations__r$PMP_Company_Lifecycle_Status_Nm__c</field>
         </columns>
         <filter>
@@ -52,22 +55,6 @@
         <columns>
             <field>Account.Contacts.Contact_Entitlements__r$Core_Entitlement_Id__c</field>
         </columns>
-        <filter>
-            <criteriaItems>
-                <column>Account.Contacts.Contact_Entitlements__r$Core_Status__c</column>
-                <columnToColumn>false</columnToColumn>
-                <isUnlocked>true</isUnlocked>
-                <operator>equals</operator>
-                <value>Complete</value>
-            </criteriaItems>
-            <criteriaItems>
-                <column>Account.Contacts.Contact_Entitlements__r$Core_Selected__c</column>
-                <columnToColumn>false</columnToColumn>
-                <isUnlocked>true</isUnlocked>
-                <operator>equals</operator>
-                <value>1</value>
-            </criteriaItems>
-        </filter>
         <format>Summary</format>
         <name>Contact &amp;Contact Entitlement Information</name>
         <params>

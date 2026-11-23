@@ -40,7 +40,7 @@
 	<aura:attribute name="_rows" type="object[]"/>
     
     // Added by Sandhya 
-    <aura:attribute name="maxlength" default="50" type="string" description="Attribute corresponds to same on lightning:input."/>
+    <aura:attribute name="maxlength" default="80" type="string" description="Attribute corresponds to same on lightning:input."/>
 	<aura:attribute name="isValid" type="boolean" default="false" />
 	
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
@@ -124,10 +124,9 @@
                                                                         messageWhenPatternMismatch="{!$Label.c.PMP_Invalid_Url_Error}"
 																		max="{!v.max}"
 																		min="{!v.min}"
-                                                                        maxlength="255"
+                                                                        
                                                                                      
 																	/>
-                                                                <div class="disclaimer-text slds-p slds-text-body_small">{!format($Label.c.PMP_Maximum_Character_Limit_Msg,255)}</div>
                                                                 <aura:if isTrue="{!v.hasError}">
                                                                 
                                                                     <span class="error">{!v.errorUrlMessage}</span>

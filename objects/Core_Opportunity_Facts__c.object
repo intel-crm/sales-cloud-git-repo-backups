@@ -220,6 +220,36 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Core_CEG_Comments__c</fullName>
+        <externalId>false</externalId>
+        <label>CEG Comments</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_CEG_Contact__c</fullName>
+        <externalId>false</externalId>
+        <label>CEG Contact</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_CPU_Selection__c</fullName>
+        <externalId>false</externalId>
+        <label>CPU Selection</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Core_CPU__c</fullName>
         <externalId>false</externalId>
         <label>CPU</label>
@@ -280,6 +310,16 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Core_Collaboration_Model__c</fullName>
+        <externalId>false</externalId>
+        <label>Collaboration Model</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Core_Consumer_Factor_Login__c</fullName>
         <externalId>false</externalId>
         <label>Consumer Factor Login</label>
@@ -333,6 +373,46 @@
         <fullName>Core_Crystal_Ridge__c</fullName>
         <externalId>false</externalId>
         <label>Crystal Ridge</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Custom_Silicon_Application__c</fullName>
+        <externalId>false</externalId>
+        <label>Custom Silicon Application</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Custom_Silicon_Product_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Custom Silicon Product Type</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Custom_Silicon_Project_Stage__c</fullName>
+        <externalId>false</externalId>
+        <label>Custom Silicon Project Stage</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Custom_Silicon_Segment__c</fullName>
+        <externalId>false</externalId>
+        <label>Custom Silicon Segment</label>
         <length>255</length>
         <required>false</required>
         <trackTrending>false</trackTrending>
@@ -430,6 +510,16 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Core_Dual_boarded__c</fullName>
+        <externalId>false</externalId>
+        <label>Dual boarded</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Core_Dynamic_Tuning_Technology__c</fullName>
         <externalId>false</externalId>
         <label>Dynamic Tuning Technology</label>
@@ -500,6 +590,36 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Core_Ethernet__c</fullName>
+        <externalId>false</externalId>
+        <label>Ethernet</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Evo_Candidate__c</fullName>
+        <externalId>false</externalId>
+        <label>Evo Candidate</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Exec_Sponsor_Contact__c</fullName>
+        <externalId>false</externalId>
+        <label>Exec Sponsor Contact</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Core_FPGA_Virtualization_Framework__c</fullName>
         <externalId>false</externalId>
         <label>FPGA Virtualization Framework</label>
@@ -563,6 +683,16 @@
         <fullName>Core_Graphics__c</fullName>
         <externalId>false</externalId>
         <label>Graphics</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_IDT__c</fullName>
+        <externalId>false</externalId>
+        <label>IDT</label>
         <length>255</length>
         <required>false</required>
         <trackTrending>false</trackTrending>
@@ -781,6 +911,36 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Core_NRE__c</fullName>
+        <externalId>false</externalId>
+        <label>NRE $</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Networking__c</fullName>
+        <externalId>false</externalId>
+        <label>Networking</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_New_Chassis__c</fullName>
+        <externalId>false</externalId>
+        <label>New Chassis</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Core_New_ID__c</fullName>
         <externalId>false</externalId>
         <label>New ID?</label>
@@ -814,6 +974,16 @@
         <fullName>Core_Number_U2_Slots_NVMe__c</fullName>
         <externalId>false</externalId>
         <label>Number U2 Slots (NVMe)</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Number_of_Thunderbolt_Ports__c</fullName>
+        <externalId>false</externalId>
+        <label>Number of Thunderbolt Ports</label>
         <length>255</length>
         <required>false</required>
         <trackTrending>false</trackTrending>
@@ -912,6 +1082,26 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Core_Personal_Assistant__c</fullName>
+        <externalId>false</externalId>
+        <label>Personal Assistant</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Process_Node__c</fullName>
+        <externalId>false</externalId>
+        <label>Process Node</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Core_Product_Capability_Technology__c</fullName>
         <externalId>false</externalId>
         <label>Product Capability/Technology</label>
@@ -926,6 +1116,66 @@
         <externalId>false</externalId>
         <label>Production Lifecycle</label>
         <length>80</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Project_Code_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Project Code Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Project_Schedule_Engineering_Sample__c</fullName>
+        <externalId>false</externalId>
+        <label>Project Schedule: Engineering Sample</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Project_Schedule_PRQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Project Schedule: PRQ</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Project_Schedule_RFx__c</fullName>
+        <externalId>false</externalId>
+        <label>Project Schedule: RFx</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Project_Schedule_TR_Kick_off__c</fullName>
+        <externalId>false</externalId>
+        <label>Project Schedule: TR Kick off</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Project_Schedule_Tape_In_Out__c</fullName>
+        <externalId>false</externalId>
+        <label>Project Schedule: Tape In/Out</label>
+        <length>255</length>
         <required>false</required>
         <trackTrending>false</trackTrending>
         <type>Text</type>
@@ -1183,6 +1433,16 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Core_TDP_Range__c</fullName>
+        <externalId>false</externalId>
+        <label>TDP Range</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Core_TDP__c</fullName>
         <externalId>false</externalId>
         <label>TDP</label>
@@ -1217,6 +1477,16 @@
         <fullName>Core_Ultrabook__c</fullName>
         <externalId>false</externalId>
         <label>Ultrabook</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Unison__c</fullName>
+        <externalId>false</externalId>
+        <label>Unison</label>
         <length>255</length>
         <required>false</required>
         <trackTrending>false</trackTrending>

@@ -29,10 +29,6 @@
         <label><!-- PartnerRole --></label>
         <name>PRM_PartnerRole__c</name>
         <picklistValues>
-            <masterLabel>Builder</masterLabel>
-            <translation><!-- Builder --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Cloud &amp; Comms Service Provider</masterLabel>
             <translation><!-- Cloud &amp; Comms Service Provider --></translation>
         </picklistValues>
@@ -104,14 +100,6 @@
         <picklistValues>
             <masterLabel>MEMBER</masterLabel>
             <translation><!-- MEMBER --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>PARTNER</masterLabel>
-            <translation><!-- PARTNER --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>PRESTIGE</masterLabel>
-            <translation><!-- PRESTIGE --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>TITANIUM</masterLabel>

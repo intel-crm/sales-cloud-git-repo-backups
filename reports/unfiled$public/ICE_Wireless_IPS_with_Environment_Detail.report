@@ -34,7 +34,7 @@
         <field>CLOSED_DATE</field>
     </columns>
     <columns>
-        <field>Case.Core_IPS_Age__c</field>
+        <field>AGE</field>
     </columns>
     <columns>
         <field>LAST_UPDATE</field>
@@ -63,15 +63,6 @@
     <columns>
         <field>Case.Core_Case_Closure__c</field>
     </columns>
-    <columns>
-        <field>AGE</field>
-    </columns>
-    <columns>
-        <field>Account.Core_Account_IOTG_Tier__c</field>
-    </columns>
-    <columns>
-        <field>Case.Core_End_Customer__c</field>
-    </columns>
     <filter>
         <criteriaItems>
             <column>Case.Core_IPS_Assigned_Queue__c</column>
@@ -85,14 +76,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Thunder Peak 2,Jefferson Peak 2 (CNVi),Windstorm Peak,Cyclone Peak 2,Harrison Peak 2,Typhoon Peak</value>
+            <value>Thunder Peak 2,Jefferson Peak 2 (CNVi),Windstorm Peak,Cyclone Peak 2,Harrison Peak 2</value>
         </criteriaItems>
         <criteriaItems>
             <column>OWNER</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>EMBED - Wireless (ICE) WW,Pony YC Ma,Andrew Chang,Richard Lin,Henry Lee,ChingWen You,Wei-Yeou Lu,Min-Tsang Li,David Lai,Alex Chen,Uday Bhat,Phill Kao,Jackey Huang,Esther Yeh,Cheng Tao Lee,Yi-hsin,yeh,Wenny Wang</value>
+            <value>EMBED - Wireless (ICE) WW,Pony YC Ma,Andrew Chang,Richard Lin,Henry Lee,ChingWen You,Wei-Yeou Lu,Min-Tsang Li,David Lai,Marget Clark,Richard Chung,Alex Chen</value>
         </criteriaItems>
         <criteriaItems>
             <column>Core_IPS_Response__c.Core_IPS_Question__c</column>
@@ -121,8 +112,9 @@
     <sortColumn>CASE_NUMBER</sortColumn>
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
-        <dateColumn>CREATED_DATEONLY</dateColumn>
+        <dateColumn>CLOSED_DATEONLY</dateColumn>
+        <endDate>2019-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2022-01-01</startDate>
+        <startDate>2019-12-01</startDate>
     </timeFrameFilter>
 </Report>

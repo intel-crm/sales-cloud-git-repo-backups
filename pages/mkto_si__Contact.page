@@ -1,5 +1,4 @@
 <apex:page standardController="Contact" extensions="mkto_si.ObjectProxyController" showHeader="false" sidebar="false">
-  <c:SalesQualifierBanner rendered="{!errorMessage == null}" />
   <c:MSITabsGlobal rendered="{!errorMessage == null}"
     mTabSObjectType="{!currentSObjectType}"
     mTabSObjectId="{!sObjectId}"

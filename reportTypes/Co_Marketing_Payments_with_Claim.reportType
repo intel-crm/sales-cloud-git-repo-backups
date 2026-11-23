@@ -65,11 +65,6 @@
             <field>Core_MDF_Payment_Run_Id__c.Core_MDF_Geo_Txt__c</field>
             <table>Core_MDF_Payment__c</table>
         </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Budget_Type_Nm__c</field>
-            <table>Core_MDF_Payment__c</table>
-        </columns>
         <masterLabel>Payments</masterLabel>
     </sections>
     <sections>
@@ -97,12 +92,13 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <displayNameOverride>Proof Of Cost Currency</displayNameOverride>
+            <displayNameOverride>Invoice Currency</displayNameOverride>
             <field>Core_MDF_Currency__c</field>
             <table>Core_MDF_Payment__c.Partner_Fund_Claims__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Invoice Date</displayNameOverride>
             <field>Core_MDF_Invoice_Date__c</field>
             <table>Core_MDF_Payment__c.Partner_Fund_Claims__r</table>
         </columns>
@@ -114,7 +110,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <displayNameOverride>Proof Of Cost #</displayNameOverride>
+            <displayNameOverride>Invoice #</displayNameOverride>
             <field>Core_MDF_Invoice_Number__c</field>
             <table>Core_MDF_Payment__c.Partner_Fund_Claims__r</table>
         </columns>
@@ -153,11 +149,6 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_Activity_Category__c</field>
-            <table>Core_MDF_Payment__c.Partner_Fund_Claims__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Activity_SubType_nm__c</field>
             <table>Core_MDF_Payment__c.Partner_Fund_Claims__r</table>
         </columns>
         <columns>
@@ -217,12 +208,6 @@
             <checkedByDefault>false</checkedByDefault>
             <displayNameOverride>Parent Fund Account</displayNameOverride>
             <field>Request.ChannelPartner.Core_MDF_Parent_Fund_Account__c</field>
-            <table>Core_MDF_Payment__c.Partner_Fund_Claims__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <displayNameOverride>Campaign</displayNameOverride>
-            <field>Core_MDF_Campaign_Id__c</field>
             <table>Core_MDF_Payment__c.Partner_Fund_Claims__r</table>
         </columns>
         <columns>
@@ -292,12 +277,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Budget_Type_Options_Nm__c</field>
-            <table>Core_MDF_Payment__c.Partner_Fund_Claims__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_3rd_Party_POP_Doc_Required_Ind__c</field>
+            <field>Core_MDF_Campaign_Id__c</field>
             <table>Core_MDF_Payment__c.Partner_Fund_Claims__r</table>
         </columns>
         <masterLabel>Claims</masterLabel>

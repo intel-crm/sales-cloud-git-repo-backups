@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <processMetadataValues>
+            <name>apexSelection</name>
+            <value>
+                <stringValue>Core_Platform_Event_Producer</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_1_A1</name>
+        <label>Invoke publish_On_Account_Update() with changes</label>
+        <locationX>100</locationX>
+        <locationY>200</locationY>
+        <actionName>Core_Platform_Event_Producer</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>SObject</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>updatedAccountList</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>maxOccurs</name>
+                <value>
+                    <numberValue>1.0</numberValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>objectType</name>
+                <value>
+                    <stringValue>Account</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>SObject</stringValue>
+                </value>
+            </processMetadataValues>
+            <name>updatedAccountList</name>
+            <value>
+                <elementReference>myVariable_current</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Core_Platform_Event_Producer</nameSegment>
+    </actionCalls>
+    <apiVersion>50.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>0.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision</name>
+        <label>myDecision</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_1</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_1</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_1_A1</targetReference>
+            </connector>
+            <label>On Account Record Change or Created</label>
+        </rules>
+    </decisions>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>AND(([Account].RecordType.DeveloperName &lt;&gt; &apos;Core_Direct_Account&apos; &amp;&amp; [Account].RecordType.DeveloperName &lt;&gt; &apos;Core_MDF_Co_Marketing&apos; &amp;&amp; [Account].RecordType.DeveloperName &lt;&gt;&apos;Core_Partner_Account_Group&apos;), 
+( ISNEW() || ISCHANGED([Account].BillingStreet) || ISCHANGED([Account].BillingCity) || ISCHANGED([Account].BillingPostalCode) || 
+ISCHANGED([Account].BillingCountry) || ISCHANGED([Account].BillingCountryCode) || ISCHANGED([Account].BillingState) || 
+ISCHANGED ([Account].BillingStateCode) || ISCHANGED([Account].Core_Account_Country__c) || ISCHANGED([Account].Core_Account_State_Province__c) || 
+ISCHANGED([Account].Core_Deactivated__c) || ISCHANGED([Account].Phone) || ISCHANGED([Account].Fax) || ISCHANGED([Account].Name) || (ISCHANGED([Account].OwnerId)
+ &amp;&amp; ISCHANGED([Account].Core_Covered_Account__c))) &amp;&amp; (( NOT(ISNEW()) &amp;&amp; $Profile.Name &lt;&gt; &quot;Integration&quot;) || ISNEW() ))</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_1</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(({!myVariable_current.RecordType.DeveloperName} &lt;&gt; &apos;Core_Direct_Account&apos; &amp;&amp; {!myVariable_current.RecordType.DeveloperName} &lt;&gt; &apos;Core_MDF_Co_Marketing&apos; &amp;&amp; {!myVariable_current.RecordType.DeveloperName} &lt;&gt;&apos;Core_Partner_Account_Group&apos;), 
+( ISNEW() || ISCHANGED({!myVariable_current.BillingStreet}) || ISCHANGED({!myVariable_current.BillingCity}) || ISCHANGED({!myVariable_current.BillingPostalCode}) || 
+ISCHANGED({!myVariable_current.BillingCountry}) || ISCHANGED({!myVariable_current.BillingCountryCode}) || ISCHANGED({!myVariable_current.BillingState}) || 
+ISCHANGED ({!myVariable_current.BillingStateCode}) || ISCHANGED({!myVariable_current.Core_Account_Country__c}) || ISCHANGED({!myVariable_current.Core_Account_State_Province__c}) || 
+ISCHANGED({!myVariable_current.Core_Deactivated__c}) || ISCHANGED({!myVariable_current.Phone}) || ISCHANGED({!myVariable_current.Fax}) || ISCHANGED({!myVariable_current.Name}) || (ISCHANGED({!myVariable_current.OwnerId})
+ &amp;&amp; ISCHANGED({!myVariable_current.Core_Covered_Account__c}))) &amp;&amp; (( NOT(ISNEW()) &amp;&amp; {!$Profile.Name} &lt;&gt; &quot;Integration&quot;) || ISNEW() ))</expression>
+    </formulas>
+    <interviewLabel>Core_Platform_Event_Bus_Trigger-6_InterviewLabel</interviewLabel>
+    <label>Core Platform Event Bus Trigger</label>
+    <processMetadataValues>
+        <name>ObjectType</name>
+        <value>
+            <stringValue>Account</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>ObjectVariable</name>
+        <value>
+            <elementReference>myVariable_current</elementReference>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OldObjectVariable</name>
+        <value>
+            <elementReference>myVariable_old</elementReference>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>TriggerType</name>
+        <value>
+            <stringValue>onAllChanges</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Workflow</processType>
+    <startElementReference>myDecision</startElementReference>
+    <status>Active</status>
+    <variables>
+        <name>myVariable_current</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <objectType>Account</objectType>
+    </variables>
+    <variables>
+        <name>myVariable_old</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Account</objectType>
+    </variables>
+</Flow>

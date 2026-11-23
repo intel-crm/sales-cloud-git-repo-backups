@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>Computer Gross Spa Partner User</description>
+    <description>Computer Gross Italia S.p.A Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>Computer Gross Spa Partner User</name>
+    <name>Computer Gross Italia S.p.A Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>EMP_10635811_Artur_Dlugosz</parentRole>
+    <parentRole>ComputerGrossItaliaSpAPartnerManager</parentRole>
 </Role>

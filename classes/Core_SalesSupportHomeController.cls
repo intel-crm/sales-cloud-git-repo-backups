@@ -24,6 +24,7 @@ public with sharing class Core_SalesSupportHomeController {
     public Boolean bSamplesErrorFlag { get; set; }   // Display error messages
     public Boolean bQuotesRenderFlag { get; set; }  // Conditionally render the subsection
     public Boolean bQuotesErrorFlag { get; set; }   // Display error messages
+    public Boolean showPremierSupportErrorMessage { get; set; } // Jahnavi
     public Boolean ucdSwitch { get; set; }          //TWC4767-3431 - implementation of UCD and CIM logic switch
     public String unifiedOrCimLabelSample {get;set;}      //TWC4767-3431 - implementation of UCD and CIM logic switch
     @AuraEnabled public static  List<String>  errorMessage {get;set;}//Shivini 
@@ -141,6 +142,7 @@ public with sharing class Core_SalesSupportHomeController {
         bSamplesErrorFlag = false;
         bQuotesRenderFlag = false;
         bQuotesErrorFlag = false;
+        showPremierSupportErrorMessage = false ; // jahnavi
         ucdSwitch=Core_CRM_Utility.isUCDSwitchOn(); //TWC4767-3431 - implementation of UCD and CIM logic switch
         unifiedOrCimLabelSample = (ucdSwitch == true) ? 'Account Unified ID' : 'Account CIM ID';
         
@@ -393,6 +395,15 @@ public with sharing class Core_SalesSupportHomeController {
         else
            return null;
         //End- Added and edited by Kavyashree HR(Infosys Pegasus Team) on 30/04/2020 to fix security scan issues(US667274)
+    }
+     public PageReference processPremierSupport() {      
+       if (sOppId == null) {
+        showPremierSupportErrorMessage = true; 
+            
+       
+       }  
+         return null;
+        
      }
     
    

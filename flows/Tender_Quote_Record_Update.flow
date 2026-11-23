@@ -38,7 +38,8 @@
                 <stringValue>AND(
 OR(
 	[SBQQ__Quote__c].RecordType.DeveloperName  = &apos;Pricing_Tender_Quote_Edit&apos;,
-	[SBQQ__Quote__c].RecordType.DeveloperName = &apos;Pricing_Tender_Quote_Submitted&apos;
+	[SBQQ__Quote__c].RecordType.DeveloperName = &apos;Pricing_Tender_Quote_Submitted&apos;,
+        [SBQQ__Quote__c].RecordType.DeveloperName = &apos;Pricing_Tender_Quote_ReadOnly&apos;
 ),
 NOT(ISNEW()) ,
 OR(
@@ -59,7 +60,8 @@ OR(
         <expression>AND(
 OR(
 	{!myVariable_current.RecordType.DeveloperName}  = &apos;Pricing_Tender_Quote_Edit&apos;,
-	{!myVariable_current.RecordType.DeveloperName} = &apos;Pricing_Tender_Quote_Submitted&apos;
+	{!myVariable_current.RecordType.DeveloperName} = &apos;Pricing_Tender_Quote_Submitted&apos;,
+        {!myVariable_current.RecordType.DeveloperName} = &apos;Pricing_Tender_Quote_ReadOnly&apos;
 ),
 NOT(ISNEW()) ,
 OR(
@@ -74,7 +76,7 @@ OR(
 ) 
 )</expression>
     </formulas>
-    <interviewLabel>Tender_Quote_Record_Update-19_InterviewLabel</interviewLabel>
+    <interviewLabel>Tender_Quote_Record_Update-20_InterviewLabel</interviewLabel>
     <label>Tender Quote Record Update</label>
     <processMetadataValues>
         <name>ObjectType</name>

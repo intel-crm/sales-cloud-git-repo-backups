@@ -9,7 +9,7 @@
             component.set("v.prefixUrl","/sfc/servlet.shepherd/version/download/");		
         } */
         //if(!component.get('v.prefixUrl').includes($A.get("$Label.c.PMP_CommunityURLSuffix"))){
-            component.set("v.prefixUrl",'/'+component.get('v.prefixUrl'));
+            component.set("v.prefixUrl",$A.get("$Label.c.PMP_CommunityURLSuffix")+component.get('v.prefixUrl'));
             
 
         //}

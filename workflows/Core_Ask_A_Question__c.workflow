@@ -12,7 +12,7 @@
             <type>userLookup</type>
         </recipients>
         <senderType>DefaultWorkflowUser</senderType>
-        <template>Testt/Core_Support_Request_Closed_Status_Email_Alert_to_Submitter</template>
+        <template>unfiled$public/Core_Support_Request_Closed_Status_Email_Alert_to_Submitter</template>
     </alerts>
     <alerts>
         <fullName>Core_AAQ_In_Progress_Email_to_Submitter</fullName>
@@ -26,7 +26,7 @@
             <type>userLookup</type>
         </recipients>
         <senderType>DefaultWorkflowUser</senderType>
-        <template>Testt/Core_Support_Request_In_Progress_Status_Email_Alert_to_Submitter</template>
+        <template>unfiled$public/Core_Support_Request_In_Progress_Status_Email_Alert_to_Submitter</template>
     </alerts>
     <alerts>
         <fullName>Core_AAQ_New_Support_Request_Email_to_Submitter</fullName>
@@ -36,7 +36,7 @@
             <type>creator</type>
         </recipients>
         <senderType>DefaultWorkflowUser</senderType>
-        <template>Testt/Core_Support_Request_New_Status_Email_Alert_to_Submitter</template>
+        <template>unfiled$public/Core_Support_Request_New_Status_Email_Alert_to_Submitter</template>
     </alerts>
     <alerts>
         <fullName>Core_AAQ_On_Hold_Email_to_Submitter</fullName>
@@ -50,7 +50,7 @@
             <type>userLookup</type>
         </recipients>
         <senderType>DefaultWorkflowUser</senderType>
-        <template>Testt/Core_Support_Request_On_Hold_Status_Email_Alert_to_Submitter</template>
+        <template>unfiled$public/Core_Support_Request_On_Hold_Status_Email_Alert_to_Submitter</template>
     </alerts>
     <alerts>
         <fullName>Core_AAQ_On_Support_Owner_Update_Email_to_New_Owner</fullName>
@@ -61,7 +61,7 @@
             <type>userLookup</type>
         </recipients>
         <senderType>CurrentUser</senderType>
-        <template>Testt/Core_Support_Request_Support_Owner_Change_Email_Alert_to_New_Owner</template>
+        <template>unfiled$public/Core_Support_Request_Support_Owner_Change_Email_Alert_to_New_Owner</template>
     </alerts>
     <rules>
         <fullName>Core_AAQ_Closed_Status</fullName>

@@ -2,7 +2,7 @@
   @description       : 
   @author            : Sandeep Chamate
   @group             : 
-  @last modified on  : 02-13-2025
+  @last modified on  : 01-15-2025
   @last modified by  : Vrushabh Uprikar
 -->
 <aura:component controller="Pricing_QuoteLineCloneController"
@@ -156,8 +156,9 @@
 
             <aura:if isTrue="{!AND(v.isRPM == false, AND(v.isFIPM == false, v.quoteLine.Pricing_Program_Type_Nm__c != $Label.c.Pricing_Tender_FinancialIncentive_Quote))}">
                 <lightning:layout multipleRows="true">
+
                     <!-- New field Quote Line Pricing Start Date-->
-                     
+
                     <lightning:layoutItem padding="around-small" size="6" smallDeviceSize="12" mediumDeviceSize="6">
                         <label class="slds-form-element__label" for="text-input-id-1">
                             <abbr class="slds-required" title="required">* </abbr>Quote Line Pricing Start Date

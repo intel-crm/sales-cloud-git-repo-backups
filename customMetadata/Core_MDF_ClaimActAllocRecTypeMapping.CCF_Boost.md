@@ -15,10 +15,6 @@
         <value xsi:type="xsd:string">Core_MDF_Client_CoMarketing_Fund_Boost</value>
     </values>
     <values>
-        <field>Core_MDF_Budget_Cap_RecType_DevName_Txt__c</field>
-        <value xsi:nil="true"/>
-    </values>
-    <values>
         <field>Core_MDF_Channel_Program_Name_txt__c</field>
         <value xsi:type="xsd:string">Client CoMarketing Fund Boost</value>
     </values>
@@ -61,13 +57,5 @@
     <values>
         <field>Core_MDF_Region_cd__c</field>
         <value xsi:nil="true"/>
-    </values>
-    <values>
-        <field>Core_MDF_isProgramBased_Ind__c</field>
-        <value xsi:type="xsd:boolean">false</value>
-    </values>
-    <values>
-        <field>Core_MDF_isProposalBased__c</field>
-        <value xsi:type="xsd:boolean">false</value>
     </values>
 </CustomMetadata>

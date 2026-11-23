@@ -118,7 +118,7 @@
                 <div class="horizontal-border"></div>
                 <div class="description-wrapper">
                     <p>{!v.description}</p>
-                    <a onclick="{!c.handleLinkClick}" href="{!'/'+ v.descriptionLink}" target="{!v.descriptionLinkTarget}">
+                    <a onclick="{!c.handleLinkClick}" href="{!v.descriptionLink}" target="{!v.descriptionLinkTarget}">
                         {!v.descriptionLinkText}
                     </a>
                 </div>

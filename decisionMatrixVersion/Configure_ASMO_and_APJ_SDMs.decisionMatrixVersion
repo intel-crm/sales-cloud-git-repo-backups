@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DecisionMatrixDefinitionVersion xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <columnType>Input</columnType>
+        <dataType>Text</dataType>
+        <displaySequence>1</displaySequence>
+        <isWildcardColumn>false</isWildcardColumn>
+        <name>EndCustomerCountry</name>
+    </columns>
+    <columns>
+        <columnType>Input</columnType>
+        <dataType>Text</dataType>
+        <displaySequence>2</displaySequence>
+        <isWildcardColumn>false</isWildcardColumn>
+        <name>AccountName</name>
+    </columns>
+    <columns>
+        <columnType>Input</columnType>
+        <dataType>Text</dataType>
+        <displaySequence>3</displaySequence>
+        <isWildcardColumn>false</isWildcardColumn>
+        <name>Region</name>
+    </columns>
+    <columns>
+        <columnType>Output</columnType>
+        <dataType>Text</dataType>
+        <displaySequence>2</displaySequence>
+        <isWildcardColumn>false</isWildcardColumn>
+        <name>IntelSalesRep</name>
+    </columns>
+    <decisionMatrixDefinition>Pricing_CountryToSDM_Mapping</decisionMatrixDefinition>
+    <label>Configure ASMO and APJ SDMs</label>
+    <startDate>2023-07-26T14:43:05.000Z</startDate>
+    <status>Draft</status>
+    <versionNumber>7</versionNumber>
+</DecisionMatrixDefinitionVersion>

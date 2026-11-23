@@ -1,6 +1,5 @@
-<aura:component  implements="forceCommunity:availableForAllPageTypes">
-    <!-- IPA2.0 + US TWC4497-1631  -->
-     <!-- controller="MarketplaceCreateProductController"
+<aura:component controller="MarketplaceCreateProductController" implements="forceCommunity:availableForAllPageTypes">
+    
     <lightning:navigation aura:id="navService"/>
     <aura:attribute name="showCreateOfferingButton" type="Boolean" default="false"/>
     
@@ -10,7 +9,7 @@
         <div>
             <lightning:button onclick="{!c.handleCreateNewRecord}" label="{!$Label.c.PMP_Create_New_Offering}" />
         </div>
-    </aura:if> -->
+    </aura:if>
     
     
 </aura:component>

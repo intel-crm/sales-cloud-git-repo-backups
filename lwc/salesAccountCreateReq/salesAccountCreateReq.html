@@ -1,0 +1,24 @@
+<template>
+    <template if:true={showDataTable}>
+        <lightning-card title=''>
+
+            <lightning-button-menu alternative-text="Show List View" label={selectedPickListValue} onselect={handleOnselect} class="slds-m-left--small slds-m-bottom--small">
+                <lightning-menu-item value="All" label="All"></lightning-menu-item>
+                <lightning-menu-item value="Pending" label="Pending"></lightning-menu-item>
+                <lightning-menu-item value="Clarification" label="Clarification"></lightning-menu-item>
+                <lightning-menu-item value="Approved" label="Approved"></lightning-menu-item>
+                <lightning-menu-item value="Invalid" label="Invalid"></lightning-menu-item>
+                <lightning-menu-item value="Duplicate" label="Duplicate"></lightning-menu-item>
+            </lightning-button-menu>
+            <br/>
+            <lightning-datatable
+                    key-field="id"
+                    data={tableData}
+                    columns={columns}
+                    hide-checkbox-column
+                    show-row-number-column
+                    >
+                    </lightning-datatable>
+        </lightning-card>
+    </template>
+</template>

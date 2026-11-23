@@ -48,7 +48,7 @@ public without sharing class CRM_Linked_OpportunityServiceHandler {
 
     private static void validateDesignOriginalToDesignSecondary(CRM_Linked_Opportunities__c junctionOpp, Map<Id, Opportunity> opportunities) {
         Opportunity linkedOppty = opportunities.get(junctionOpp.CRM_Linked_Opportunity__c);
-        if (junctionOpp.CRM_Link_Reason__c == 'Design Original (ODM Board) to Design Secondary (OEM System)' && linkedOppty.RecordType.Name != 'Design Opportunity') {junctionOpp.addError(Core_CRM_Utility.getCRMLabel('Design_Original_to_Design_Secondary'));  
+        if (junctionOpp.CRM_Link_Reason__c == 'Design Original (ODM Board) to Design Secondary (OEM System)' && linkedOppty.RecordType.Name != 'Design Opportunity') {junctionOpp.addError(Core_CRM_Utility.getCRMLabel('Duplicate'));  
         }
     }
 

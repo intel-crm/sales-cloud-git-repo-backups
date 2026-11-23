@@ -95,6 +95,10 @@
             <translation><!-- Rejected --></translation>
         </picklistValues>
     </fields>
+    <fields>
+        <label><!-- Job Function --></label>
+        <name>Cvent_Job_Function__c</name>
+    </fields>
     <startsWith>Consonant</startsWith>
     <webLinks>
         <label><!-- Approve --></label>

@@ -26,10 +26,5 @@
         <name>PMP_Specification_Id__c</name>
         <relationshipLabel><!-- Marketing Profile Regions --></relationshipLabel>
     </fields>
-    <fields>
-        <label><!-- Specification Value --></label>
-        <name>PMP_Specification_Value__c</name>
-        <relationshipLabel><!-- Marketing Profile Regions --></relationshipLabel>
-    </fields>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

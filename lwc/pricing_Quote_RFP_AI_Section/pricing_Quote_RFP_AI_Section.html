@@ -1,0 +1,30 @@
+<template>
+    <div class="slds-card">
+        <div class="slds-section">
+            <h3 class="slds-section__title">
+                <button class="slds-button slds-section__title-action" onclick={handleToggle}>
+                    <lightning-icon icon-name={buttonIcon} size="x-small"></lightning-icon>
+                    <span style="font-weight: 900;">RFP Summary</span>
+                </button>
+            </h3>
+            ISEXPANDED: {isExpanded}
+            <template class="slds-section__content" if:true={isExpanded}>
+                <!-- AI RFP Scraping Status -->
+                <div class="slds-form-element slds-m-bottom_medium">
+                    <label class="slds-form-element__label" style="font-weight: bold; font-size: 1.2rem;">AI RFP Scraping Status</label>
+                    <div class="slds-form-element__control">
+                        <lightning-formatted-text value={aiRfpScrapingStatus}></lightning-formatted-text>
+                    </div>
+                </div>
+                
+                <!-- AI Scraping Recommendation -->
+                <div class="slds-form-element">
+                    <label class="slds-form-element__label" style="font-weight: bold; font-size: 1.2rem;">AI Scraping Recommendation</label>
+                    <div class="slds-form-element__control">
+                        <lightning-formatted-rich-text value={aiScrapingRecommendation}></lightning-formatted-rich-text>
+                    </div>
+                </div>
+            </template>
+        </div>
+    </div>
+</template>

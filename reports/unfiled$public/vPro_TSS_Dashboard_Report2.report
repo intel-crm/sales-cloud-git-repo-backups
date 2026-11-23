@@ -45,11 +45,7 @@
     <columns>
         <field>STAGE_NAME</field>
     </columns>
-    <columns>
-        <field>OWNER_MANAGER</field>
-    </columns>
     <filter>
-        <booleanFilter>1 AND (2 OR 3)</booleanFilter>
         <criteriaItems>
             <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
             <columnToColumn>false</columnToColumn>
@@ -58,18 +54,11 @@
             <value>CCG</value>
         </criteriaItems>
         <criteriaItems>
-            <column>PRODUCT_NAME</column>
+            <column>Account.Core_Sales_Groups__c</column>
             <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>AMT,Unite,Optane,TXT,Transparent</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Product_Application__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
+            <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
-            <value>Workstation</value>
+            <value>GMP APJ Sales Territory,GMP India Sales Group,GMP Japan Sales Group,GMP Korea Sales Group,GMP Taiwan Sales Group,PRC Sales Group</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -84,7 +73,7 @@
         <field>FULL_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>vPro TSS Product Report</name>
+    <name>vPro TSS Dashboard Report</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -108,8 +97,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <endDate>2026-11-22</endDate>
+        <endDate>2026-11-23</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2026-11-22</startDate>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

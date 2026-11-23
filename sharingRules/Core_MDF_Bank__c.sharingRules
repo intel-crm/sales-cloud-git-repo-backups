@@ -7,10 +7,36 @@
         <sharedTo>
             <group>Core_All_Users_CCP_Internal</group>
         </sharedTo>
+        <booleanFilter>1 AND (2 OR 3 OR 4 OR 5 OR 6)</booleanFilter>
         <criteriaItems>
             <field>Core_MDF_Bank_Name__c</field>
             <operation>notEqual</operation>
             <value>[empty]</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Core_MDF_Program_Value__c</field>
+            <operation>contains</operation>
+            <value>Client Co-Marketing Fund;</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Core_MDF_Program_Value__c</field>
+            <operation>contains</operation>
+            <value>Data Center Co-Marketing Fund;</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Core_MDF_Program_Value__c</field>
+            <operation>contains</operation>
+            <value>Service Provider Co-Marketing Fund;</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Core_MDF_Program_Value__c</field>
+            <operation>contains</operation>
+            <value>Client Co-Marketing Fund Boost;</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Core_MDF_Program_Value__c</field>
+            <operation>contains</operation>
+            <value>Retail Marketing Funds;</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
@@ -24,7 +50,7 @@
         <criteriaItems>
             <field>Core_MDF_Program_Value__c</field>
             <operation>contains</operation>
-            <value>Client;</value>
+            <value>Client Co-Marketing Fund;</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
@@ -52,7 +78,7 @@
         <criteriaItems>
             <field>Core_MDF_Program_Value__c</field>
             <operation>contains</operation>
-            <value>Datacenter;</value>
+            <value>Data Center Co-Marketing Fund;</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
@@ -71,20 +97,6 @@
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
-        <fullName>Core_MDF_BANK_EEF</fullName>
-        <accessLevel>Edit</accessLevel>
-        <label>BANK EEF</label>
-        <sharedTo>
-            <group>Core_MDF_Int_EEF_ALL</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>Core_MDF_Program_Value__c</field>
-            <operation>contains</operation>
-            <value>Ecosystem Extension Fund</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
         <fullName>Core_MDF_Bank_CCP_Claim_Case_Reviewer_Internal</fullName>
         <accessLevel>Read</accessLevel>
         <description>Bank - CCP Claim Case Reviewer Internal</description>
@@ -92,10 +104,36 @@
         <sharedTo>
             <group>Core_MDF_CCP_Claim_Case_Reviewer_Q_Group</group>
         </sharedTo>
+        <booleanFilter>1 AND (2 OR 3 OR 4 OR 5 OR 6)</booleanFilter>
         <criteriaItems>
             <field>Core_MDF_Bank_Name__c</field>
             <operation>notEqual</operation>
             <value>[empty]</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Core_MDF_Program_Value__c</field>
+            <operation>contains</operation>
+            <value>Client Co-Marketing Fund;</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Core_MDF_Program_Value__c</field>
+            <operation>contains</operation>
+            <value>Data Center Co-Marketing Fund;</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Core_MDF_Program_Value__c</field>
+            <operation>contains</operation>
+            <value>Service Provider Co-Marketing Fund;</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Core_MDF_Program_Value__c</field>
+            <operation>contains</operation>
+            <value>Client Co-Marketing Fund Boost;</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Core_MDF_Program_Value__c</field>
+            <operation>contains</operation>
+            <value>Retail Marketing Funds;</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>

@@ -18,30 +18,11 @@ private class Core_MDF_Bank_Test {
         usr2.LastName = 'Bank User';
         usr2.UserRoleId = usRole.Id;
         userList.add(usr2);
-        
-        User usr3 = Core_MDF_CCP_TestDataUtility.createUser(false);
-        usr3.Email = 'sysadmin@example.com';
-        userList.add(usr3);
 
         insert userList;
 
         System.runAs(userList[0]){
 
-            List<String> bypassFunctionKeys = new List<String>();
-            bypassFunctionKeys.add('Bypass_MDF_Budget_Access_Validation');
-            bypassFunctionKeys.add('Bypass_MDF_Budget_Access');
-            bypassFunctionKeys.add('Bypass_MDF_Budget_Status_Validation');
-            Set<String> myset1 = new Set<String>();
-            List<String> result1 = new List<String>();
-            myset1.addAll(bypassFunctionKeys);
-            result1.addAll(myset1);
-            
-            List<Core_Trigger_Executions__c> bypassfunctinalitylist1 = Core_MDF_CCP_TestDataUtility.byPassFeature(result1,true,true);
-            Core_MDF_Configuration__c vatConfig = new Core_MDF_Configuration__c();
-            vatConfig.Name = 'ALLOWED_PRG_FOR_RUS_NOTIF';
-            vatConfig.Core_MDF_Value__c = 'Retail Marketing Funds;Intel Partner Alliance';
-            insert vatConfig;
-            
             List<Account> accntList = new List<Account>();
 
             Account acc = Core_MDF_CCP_TestDataUtility.createIntelAccount('Test Account', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, FALSE);
@@ -88,11 +69,11 @@ private class Core_MDF_Bank_Test {
             //Creating Channel Program List
             List<ChannelProgram> cpList = new List<ChannelProgram>();
 
-            ChannelProgram ccfCp = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.CCF_PROGRAM,'Client CoMarketing Fund', false);
+            ChannelProgram ccfCp = Core_MDF_CCP_TestDataUtility.createProgram ('Client Co-Marketing Fund','Client CoMarketing Fund', false);
             cpList.add(ccfCp);
-            ChannelProgram dcfCp = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.DCF_PROGRAM,'Data Center CoMarketing Fund', false);
+            ChannelProgram dcfCp = Core_MDF_CCP_TestDataUtility.createProgram ('Data Center Co-Marketing Fund','Data Center CoMarketing Fund', false);
             cpList.add(dcfCp);
-            ChannelProgram cpRetail = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.RMF_PROGRAM,'Retail Marketing Funds', false);
+            ChannelProgram cpRetail = Core_MDF_CCP_TestDataUtility.createProgram ('Retail Marketing Funds','Retail Marketing Funds', false);
             cpList.add(cpRetail);
 
             insert cpList;
@@ -135,8 +116,8 @@ private class Core_MDF_Bank_Test {
             insert erpmEngagementList;
 
             //Creating Entitlement Detail for CCF and DCF with utility class
-            Core_Entitlement__c entitlementCCF = Core_MDF_CCP_TestDataUtility.createEntitlement('Client Account Budget Administrator', agsRoleList[0].Id,'Intel® Partner Investment Center','CCF Account Budget Administrator', erpmEngagementList[0].Id, true,Core_MDF_CCP_ConstantClass.CCF_PROGRAM,false);
-            Core_Entitlement__c entitlementDCF = Core_MDF_CCP_TestDataUtility.createEntitlement('Datacenter Account Budget Administrator', agsRoleList[1].Id,'Intel® Partner Investment Center','DCF Account Budget Administrator', erpmEngagementList[1].Id, true,Core_MDF_CCP_ConstantClass.DCF_PROGRAM,false);
+            Core_Entitlement__c entitlementCCF = Core_MDF_CCP_TestDataUtility.createEntitlement('CCF Account Budget Administrator', agsRoleList[0].Id,'Consolidated Co-marketing Platform','CCF Account Budget Administrator', erpmEngagementList[0].Id, true,'Client Co-Marketing Fund (CCF)',false);
+            Core_Entitlement__c entitlementDCF = Core_MDF_CCP_TestDataUtility.createEntitlement('DCF Account Budget Administrator', agsRoleList[1].Id,'Consolidated Co-marketing Platform','DCF Account Budget Administrator', erpmEngagementList[1].Id, true,'Data Center Co-Marketing Fund (DCF)',false);
             List<Core_Entitlement__c> entitlementList = new List<Core_Entitlement__c>();
             entitlementList.add(entitlementCCF);
             entitlementList.add(entitlementDCF);
@@ -265,18 +246,16 @@ private class Core_MDF_Bank_Test {
             psaList.add(psAssignment3);
             psaList.add(psAssignment4);
       
-           insert psaList;
+      System.debug('psaList: ' + psaList);
+            insert psaList;
 
             //Creating Campaign from utility class
-            Campaign camp = Core_MDF_CCP_TestDataUtility.createCampaign('Test Camp 13','Gaming','Intel® Core™ i7 Processor','Yes', Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 'Client CoMarketing Fund', System.today()-10, System.today().addDays(30), 10000, 'Always Connected PC', coMarketingAccCCF.Id,'Desktop', false);
-            camp.Core_MDF_Opal_Budget_Type_Txt__c = 'MDF';
-            database.insert(camp);
+            Campaign camp = Core_MDF_CCP_TestDataUtility.createCampaign('Test Camp 13','Gaming','Intel® Core™ i7 Processor', Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 'Client CoMarketing Fund', System.today()-10, System.today().addDays(30), 10000, 'Always Connected PC', coMarketingAccCCF.Id,'Desktop', true);
       Test.stopTest();
             //Creating Partner Marketing Budget
-            PartnerMarketingBudget budget = Core_MDF_CCP_TestDataUtility.createBudget('Test Budget New',Core_MDF_CCP_TestDataUtility.budget_Record_Type,coMarketingAccCCF.Id,cpList[0].Id,10000,System.today() -20,System.today().addDays(40), false);
+            PartnerMarketingBudget budget = Core_MDF_CCP_TestDataUtility.createBudget('Test Budget New',Core_MDF_CCP_TestDataUtility.budget_Record_Type,coMarketingAccCCF.Id,cpList[0].Id,10000,System.today() -20,System.today().addDays(40), true);
+
             
-            budget.Core_MDF_Budget_Type_Txt__c = 'MDF';
-            insert budget;
 
              Core_Trigger_Executions__c bcValidation = new Core_Trigger_Executions__c();
             bcValidation.Core_Active__c = true;
@@ -312,28 +291,8 @@ private class Core_MDF_Bank_Test {
                                                                                            false);
             pfr.Core_MDF_Start_Date__c = system.today()-10;
             pfr.Core_MDF_End_Date__c  = system.today()+10;
-            pfr.Core_MDF_Reimbursement_Rate_txt__c='100%';
-            pfr.Core_MDF_Fund_Request_Status__c='Planned';
             insert pfr;
-			
-            PartnerFundRequest pfrClose = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(String.valueof(camp.Id),
 
-                                                                                           Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,
-                                                                                           String.valueof(coMarketingAccCCF.id),allocation,null,'BRAZIL',
-                                                                                           'Consumer',
-                                                                                           'Desktop',
-                                                                                           'Intel® Core™ i7 Processor',
-                                                                                           'Broadcast',
-                                                                                           'Podcast',
-                                                                                           'Draft',
-                                                                                           false);
-            pfrClose.Core_MDF_Start_Date__c = system.today()-10;
-            pfrClose.Core_MDF_End_Date__c  = system.today()+10;
-            pfrClose.Core_MDF_Reimbursement_Rate_txt__c='100%';
-            pfrClose.Core_MDF_Fund_Request_Status__c='Closed';
-            
-            insert pfrClose;
-            
             //Creating ABM List
             List<Core_MDF_Account_Bank_Mapping__c> abmList = new List<Core_MDF_Account_Bank_Mapping__c>();
 
@@ -389,14 +348,15 @@ private class Core_MDF_Bank_Test {
             bankShare.AccessLevel = Label.Core_MDF_Read_Access;
             insert bankShare;
 
-           // Core_MDF_ShareBanktoBudgetAdmins obj = new Core_MDF_ShareBanktoBudgetAdmins();
-           // DataBase.executeBatch(obj);
+            Core_MDF_ShareBanktoBudgetAdmins obj = new Core_MDF_ShareBanktoBudgetAdmins();
+            DataBase.executeBatch(obj);
 
             //Query on BankShare to find if record is shared with user or not
             List<Core_MDF_Bank__Share> bankShareRecords = [SELECT Id, ParentId, UserOrGroupId FROM Core_MDF_Bank__Share
                                                            WHERE ParentId =: newBank.Id AND
                                                                  UserOrGroupId =: testBankUser.Id
                                                            LIMIT 1];
+                                                            system.debug('bankShareRecords-->'+bankShareRecords);
                                                             if(bankShareRecords.size() > 0)
             System.assertNotEquals(bankShareRecords[0].Id, NULL);
 
@@ -428,25 +388,35 @@ private class Core_MDF_Bank_Test {
             bankShare2.RowCause = Schema.Core_MDF_Bank__Share.RowCause.AccountBudgetAdmin__c;
             bankShare2.AccessLevel = Label.Core_MDF_Read_Access;
             insert bankShare2;
-            // Highlight: Unused Local Variable 
-            //Core_MDF_ShareBanktoBudgetAdmins obj2 = new Core_MDF_ShareBanktoBudgetAdmins();
-           // DataBase.executeBatch(obj);
+
+            Core_MDF_ShareBanktoBudgetAdmins obj2 = new Core_MDF_ShareBanktoBudgetAdmins();
+            DataBase.executeBatch(obj);
 
             //Query on BankShare to find if record is shared with user or not
             List<Core_MDF_Bank__Share> bankShareRecords2 = [SELECT Id, ParentId, UserOrGroupId FROM Core_MDF_Bank__Share
                                                            WHERE ParentId =: newBank.Id AND
                                                                  UserOrGroupId =: testBankUser.Id
                                                            LIMIT 1];
+                                                            system.debug('bankShareRecords-->'+bankShareRecords2);
                                                             if(bankShareRecords2.size() > 0)
             System.assertNotEquals(bankShareRecords2[0].Id, NULL);
 
-           
+            /* newBank.Core_MDF_Account__c = testAccount.id;
+            newBank.Core_MDF_ESD_Update__c = false;
+            update newBank;
+            newBank.Core_MDF_ESD_Update__c = true;
+            newBank.Core_MDF_Bank_Status__c = 'Active';
+            update newBank;
+            Core_MDF_Account_Bank_Mapping__c abmDCF1 = Core_MDF_CCP_TestDataUtility.createAccountBankMap(coMarketingAccDCF.Id, newBank.Id, TRUE);
+
+            newBank.Core_MDF_Program__c = 'Core_MDF_Client_CoMarketing_Fund';
+            update newBank; */
 
             //Validating Program Check in Bank with different Payment Admin User
             System.runAs(dcfPaymentAdmin){
                 try{
                     Account testAccount3 = [Select Id FROM Account WHERE Name = 'Test Account2' LIMIT 1];
-                    Core_MDF_Bank__c newBankCCF = Core_MDF_CCP_TestDataUtility.createBank(testAccount3.id, Core_MDF_CCP_ConstantClass.CCF_PROGRAM, false,'1230007805');
+                    Core_MDF_Bank__c newBankCCF = Core_MDF_CCP_TestDataUtility.createBank(testAccount3.id, 'Client Co-Marketing Fund', false,'1230007805');
                     newBankCCF.Core_MDF_Bank_Status__c = 'Draft';
                     newBankCCF.Core_MDF_DUNS__c = '578299333';
                     newBankCCF.Core_MDF_Bank_Beneficiary_Name__c = 'TEST BENEFICIARY NAME2';
@@ -564,11 +534,10 @@ private class Core_MDF_Bank_Test {
     static void disassociateBankTestWithClaimsAndEscalations(){
 
         User paymentAdmin = [Select Id FROM User Where LastName = 'Bank Payment Admin 123' LIMIT 1];
-        User sysAdminUser = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
         Account testIntelAccount = [Select Id FROM Account WHERE Name = 'Test Account' LIMIT 1];
     Test.startTest();
         Account testCMAccount = [Select Id FROM Account WHERE Name = 'Test Acc CCF' LIMIT 1];
-        ChannelProgram cp = [SELECT Id FROM ChannelProgram WHERE Name =:Core_MDF_CCP_ConstantClass.CCF_PROGRAM LIMIT 1];
+        ChannelProgram cp = [SELECT Id FROM ChannelProgram WHERE Name = 'Client Co-Marketing Fund' LIMIT 1];
 
         AccountShare accshareRecordCCF = new AccountShare();
         accshareRecordCCF.AccountId = testIntelAccount.Id;
@@ -595,22 +564,16 @@ private class Core_MDF_Bank_Test {
                 System.assert(bankRec.Core_MDF_Bank_Status__c != 'Active');
             }
         }
-        
-        System.runAs(sysAdminUser)
-        {
         Core_MDF_Account_Bank_Mapping__c abmCCF1 = Core_MDF_CCP_TestDataUtility.createAccountBankMap(testCMAccount.Id, bankRec.Id, FALSE);
         abmCCF1.Core_MDF_Active_ind__c = TRUE;
         Database.insert(abmCCF1);
 
-        PartnerFundRequest pfr = [Select Id, Core_MDF_Activity_Number__c FROM PartnerFundRequest WHERE Title = 'test' and Core_MDF_Fund_Request_Status__c= 'Closed' LIMIT 1];
-        PartnerFundRequest pfrPlan = [Select Id, Core_MDF_Activity_Number__c FROM PartnerFundRequest WHERE Core_MDF_Fund_Request_Status__c = 'Planned' LIMIT 1];
-        
-        
+        PartnerFundRequest pfr = [Select Id, Core_MDF_Activity_Number__c FROM PartnerFundRequest WHERE Title = 'test' LIMIT 1];
         pfr.Amount = 0;
         update pfr;
         PartnerFundClaim newClaim = new PartnerFundClaim();
         newClaim = Core_MDF_CCP_TestDataUtility.createClaim('Test Claim',
-                                                            Core_MDF_CCP_TestDataUtility.Claim_RecordType_CCF, pfrPlan.Id,
+                                                            Core_MDF_CCP_TestDataUtility.Claim_RecordType_CCF, pfr.Id,
                                                             System.today(), System.today(), 122,
                                                             System.today(), bankRec.Id, false);
         newClaim.Core_MDF_Status__c = 'Submitted';
@@ -628,7 +591,7 @@ private class Core_MDF_Bank_Test {
         esc1.Core_MDF_Channel_Program_id__c = cp.Id;
         esc1.recordtypeid= claimRecType;
         Database.insert(esc1);
-        }
+
         System.runAs(paymentAdmin){
             bankRec.Core_MDF_Ineffective_Selection_ind__c = true;
             try{
@@ -764,9 +727,6 @@ private class Core_MDF_Bank_Test {
     }
     @isTest
     static void updateBankDetailsAsSysAdmin(){
-        User sysAdminUser = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
-        System.runAs(sysAdminUser)
-        {
         Test.startTest();
         Account testAccount = [Select Id FROM Account WHERE Name = 'Test Account' LIMIT 1];
         Core_MDF_Bank__c newBank = Core_MDF_CCP_TestDataUtility.createBank(testAccount.id, 'Core_MDF_Client_CoMarketing_Fund', false,'1234567891');
@@ -807,7 +767,6 @@ private class Core_MDF_Bank_Test {
         System.assert(newBank.OwnerId == dcfPaymentAdmin.Id);
 
         Test.stopTest();
-        }
     }
     @isTest
     static void checkIfDuplicateRecordsInserted(){
@@ -900,9 +859,8 @@ private class Core_MDF_Bank_Test {
                 try{
                     insert(bankList);
                 }catch(Exception ex){
-                    // Highlight: Unused Local Variable
-                  //  Boolean expectedExceptionThrown =  ex.getMessage().contains('No issues found for this record but this has been failed because of some other duplicate records in the batch.') ? true : false;
-                  //System.assertEquals(expectedExceptionThrown, true, ex.getMessage());
+                    Boolean expectedExceptionThrown =  ex.getMessage().contains('No issues found for this record but this has been failed because of some other duplicate records in the batch.') ? true : false;
+                  System.assertEquals(expectedExceptionThrown, true, ex.getMessage());
                 }
               Core_MDF_Bank__c bank3 = Core_MDF_CCP_TestDataUtility.createBank(testIntelAccount.id, 'Core_MDF_Retail_Marketing_Funds', false,'1200567233');
                 bank3.Core_MDF_Bank_Status__c = 'Draft';
@@ -925,7 +883,7 @@ private class Core_MDF_Bank_Test {
                 update bank3;
             }catch(Exception ex){
                 Boolean expectedExceptionThrown =  ex.getMessage().contains('A combination for this Supplier ID, Program and Currency already exists.') ? true : false;
-                System.assertEquals(expectedExceptionThrown, false, ex.getMessage());
+                System.assertEquals(expectedExceptionThrown, true, ex.getMessage());
             }
         }
     }
@@ -962,13 +920,10 @@ private class Core_MDF_Bank_Test {
             newBank.Core_MDF_Currency_cd__c ='TZS';
             insert newBank;
 
-            
             newBank.Core_MDF_Bank_Status__c = 'Active';
             update newBank;
-            
-            System.assertEquals(newBank.Core_MDF_Bank_Status__c, 'Active');
-           // Highlight: Unused Local Variable 
-           // Core_MDF_Account_Bank_Mapping__c abmCCF1 = Core_MDF_CCP_TestDataUtility.createAccountBankMap(coMarketingAccDCF.Id, newBank.Id, TRUE);
+
+            Core_MDF_Account_Bank_Mapping__c abmCCF1 = Core_MDF_CCP_TestDataUtility.createAccountBankMap(coMarketingAccDCF.Id, newBank.Id, TRUE);
 
             //Change Bank Program when ESD Update = false
             newBank.Core_MDF_Program__c = 'Core_MDF_Client_CoMarketing_Fund';

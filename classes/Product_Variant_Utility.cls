@@ -34,26 +34,13 @@ public without sharing class Product_Variant_Utility {
                         
                         for(Core_Flat_Product_Hierarchy__c fph :flatIdsList){
                             String data=fph.Core_Unique_ID__c;
+                            System.debug('data===='+data);
                             List<String> recorddata=data.split(';');
+                            System.debug('recorddata==='+recorddata);
                             for(integer i=0;i<recorddata.size();i++){
-                                System.debug(' This belongs to this org-->'+(assetList[0].Core_Product_Organization__c));
                                 if(recorddata[i]==assetList[0].Core_Product_EPM_ID__c){
-                                    //added by ranjini for PSG
-                                    if(System.label.Core_IPS_MAG_Support_Org.Contains((assetList[0].Core_Product_Organization__c+'').substring(0,15))){
-                                        System.debug(' Entering loop PSG-->'+(assetList[0].Core_Product_Organization__c));
-                                        if(i>0 && i==1){
-                                            ids.add(recorddata.get(i-1));
-                                        }else if(i>0 && i==2){
-                                            ids.add(recorddata.get(i-2));
-                                        }else if(i>0 && i==3){
-                                            ids.add(recorddata.get(i-1));
-                                        }
-                                        //changes ends
-                                    }else{
-                                        if(i>0){
-                                            ids.add(recorddata.get(i-1));
-                                        }
-                                    }
+                                    if(i>0)
+                                        ids.add(recorddata.get(i-1));
                                 }
                             }  
                         }
@@ -66,8 +53,6 @@ public without sharing class Product_Variant_Utility {
                     //Query on Product for showing the product variant names based on EPM ID 
                     if(ids!=null && ids.size()>0){
                         Productlist = database.Query('select id, Name FROM Product2 where Core_Product_Org__c = :strIPS  and Core_Product_Name_EPM_ID__c IN  :ids order by Name');     
-                        System.debug(' Productlist-->'+Productlist);
-                        
                     }
                     
                     variants = new List<SelectOption>();
@@ -79,32 +64,33 @@ public without sharing class Product_Variant_Utility {
                     if(variants.size()>1){
                         blnShowVariant = true;
                     }
-                    System.debug(' variants-->'+variants);
-                    
                     return variants;
                 }
             }
         }
         return null;
     }
-    
-    //This method is written for displaying product varints for NAC (No assigned contact cases) 
-    //Added by sumukh for US107484 for Iteration - 13 , Release - 4.3
-    
-    Public static List<SelectOption> displayProductVariant_NAC(String selectedProductId){ 
+
+//This method is written for displaying product varints for NAC (No assigned contact cases) 
+//Added by sumukh for US107484 for Iteration - 13 , Release - 4.3
+
+  Public static List<SelectOption> displayProductVariant_NAC(String selectedProductId){ 
         blnShowVariant_NAC = false;   
         
-       
+        system.debug('Inside NAC Block');   
+        system.debug('selectedProductId' + selectedProductId);
         if(selectedProductId!=null && selectedProductId!=''){ 
-            if(Core_IPS_Supported_Product__c.SObjectType.getDescribe().isAccessible()){
-            	supportedProdList=database.Query('select id, Core_Product_Organization__c, Name,Core_IPS_Is_Show_Variant__c,Core_Product__c,Core_Product_EPM_ID__c from Core_IPS_Supported_Product__c where id=:selectedProductId');         
-            }
-                if(!supportedProdList.isEmpty() && supportedProdList.size()>0){
-                
+        
+            system.debug('Inside NAC Prod block');        
+            supportedProdList=database.Query('select id, Name,Core_IPS_Is_Show_Variant__c,Core_Product__c,Core_Product_EPM_ID__c from Core_IPS_Supported_Product__c where id=:selectedProductId');         
+            system.debug('supportedProdList' + supportedProdList);
+            if(!supportedProdList.isEmpty() && supportedProdList.size()>0){
+             
                 if(supportedProdList[0].Core_IPS_Is_Show_Variant__c== true){
-                    
+                   
                     //Query on FlatProductHierarchy
                     String strQuery = 'select id,Core_EPM_Hierarchy_Name__c, Core_L1_EPM_ID__c,Core_L1_EPM_Name__c,Core_L2_EPM_ID__c,Core_L2_EPM_Name__c,Core_Unique_ID__c from Core_Flat_Product_Hierarchy__c where Core_Unique_ID__c like \'%;'+supportedProdList[0].Core_Product_EPM_ID__c+';%\'' +'OR Core_Unique_ID__c like'+ '\'%;'+supportedProdList[0].Core_Product_EPM_ID__c+'\'';
+                    
                     flatIdsList= database.Query(strQuery);
                     set<String> ids=new set<String>();                   
                     if(!flatIdsList.isEmpty() && flatIdsList.size()>0){
@@ -113,30 +99,11 @@ public without sharing class Product_Variant_Utility {
                             String data=fph.Core_Unique_ID__c;
                             
                             List<String> recorddata=data.split(';');
+                           
                             for(integer i=0;i<recorddata.size();i++){
-                                /*if(recorddata[i]==supportedProdList[0].Core_Product_EPM_ID__c){
+                                if(recorddata[i]==supportedProdList[0].Core_Product_EPM_ID__c){
                                     if(i>0)
                                         ids.add(recorddata.get(i-1));
-                                }*/
-                                //Added by ranjini
-                                
-                               if(recorddata[i]==supportedProdList[0].Core_Product_EPM_ID__c){
-                                    //added by ranjini for PSG
-                                    if(System.label.Core_IPS_MAG_Support_Org.Contains((supportedProdList[0].Core_Product_Organization__c+'').substring(0,15))){
-                                      
-                                        if(i>0 && i==1){
-                                            ids.add(recorddata.get(i-1));
-                                        }else if(i>0 && i==2){
-                                            ids.add(recorddata.get(i-2));
-                                        }else if(i>0 && i==3){
-                                            ids.add(recorddata.get(i-1));
-                                        }
-                                        //changes ends
-                                    }else{
-                                        if(i>0){
-                                            ids.add(recorddata.get(i-1));
-                                        }
-                                    }
                                 }
                             }  
                         }
@@ -148,9 +115,7 @@ public without sharing class Product_Variant_Utility {
                     
                     //Query on Product for showing the product variant names based on EPM ID 
                     if(ids!=null && ids.size()>0){
-                        if(Product2.SObjectType.getDescribe().isAccessible()){
-                        	Productlist = database.Query('select id, Name FROM Product2 where Core_Product_Org__c = :strIPS  and Core_Product_Name_EPM_ID__c IN  :ids order by Name');     
-                        }
+                        Productlist = database.Query('select id, Name FROM Product2 where Core_Product_Org__c = :strIPS  and Core_Product_Name_EPM_ID__c IN  :ids order by Name');     
                     }
                     
                     variants = new List<SelectOption>();
@@ -160,17 +125,18 @@ public without sharing class Product_Variant_Utility {
                         variants.add(new SelectOption(prod.name,prod.name));
                     }
                     if(variants.size()>1){
-                        blnShowVariant_NAC = true;
+                      blnShowVariant_NAC = true;
                     }
                    
+                    System.debug('variants'+variants);
                     return variants; 
                     
-                }
-            }         
-        }return null; 
-    }          
-    
-    // end By Sumukh for US 107484            
+            }
+        }         
+   }return null; 
+  }          
+            
+  // end By Sumukh for US 107484            
     /***************************************************************************************************
 Method Name:  getplatform_Options
 Method Type: Action Helper Method 
@@ -191,14 +157,8 @@ Modification Log :
         platformOptions.add(new SelectOption('', 'Select Platform'));
         List<Asset> astList = new List<Asset>();
         List<Core_IPS_Supported_Product__c> suppProdList = new List<Core_IPS_Supported_Product__c>();
-        //FLS check added -Venugopal
-        if(Asset.SObjectType.getDescribe().isAccessible()){
-            astList = [select Id,core_supported_product__c from Asset where Id in:idList]; 
-        }
-        //FLS check added -Venugopal
-        if(Core_IPS_Supported_Product__c.SObjectType.getDescribe().isAccessible()){
-            suppProdList = [select Id from Core_IPS_Supported_Product__c where Id in:idList];
-        }
+        astList = [select Id,core_supported_product__c from Asset where Id in:idList];  
+        suppProdList = [select Id from Core_IPS_Supported_Product__c where Id in:idList];      
         List<Id> supportedProductIdList = new List<Id>();
         if(astList <> null && astList.size() > 0){
             for(Asset asset:astList){
@@ -217,8 +177,10 @@ Modification Log :
                     for(Asset asset:astList){
                         if(asset <> null && asset.core_supported_product__c <> null && platformByProduct.get(asset.core_supported_product__c) <> null){
                             for(String pltfrmString:platformByProduct.get(asset.core_supported_product__c)){
+                                system.debug('inside for '+pltfrmString);
                                 if(pltfrmString != null && pltfrmString != ''){
                                     platformOptions.add(new SelectOption(pltfrmString, pltfrmString));
+                                    system.debug('inside for and if'+platformOptions);
                                 }
                             }
                         }
@@ -228,16 +190,20 @@ Modification Log :
                     for(Core_IPS_Supported_Product__c suppProdObj:suppProdList){
                         if(platformByProduct.get(suppProdObj.Id) <> null){
                             for(String pltfrmString:platformByProduct.get(suppProdObj.Id)){
+                                system.debug('inside for '+pltfrmString);
                                 if(pltfrmString != null && pltfrmString != ''){
                                     platformOptions.add(new SelectOption(pltfrmString, pltfrmString));
+                                    system.debug('inside for and if'+platformOptions);
                                 }
                             }
                         }
                     }        
                 }
+                system.debug('#####platformOptions before sorting#####'+platformOptions);
                 if(platformOptions <> null && platformOptions.size() > 0){
                     platformOptions.sort();
                 }
+                system.debug('#####platformOptions after sorting#####'+platformOptions); 
             }          
         }    
         return platformOptions;
@@ -265,12 +231,10 @@ Modification Log :
         Set<String> platfomSet;
         List<Core_IPS_Supported_Product__c> suppPrdList;
         List<Core_Flat_Product_Hierarchy__c> fphList = new List<Core_Flat_Product_Hierarchy__c>();
-       	//FLS check added -Venugopal
         If(suppProductIdList <> null && suppProductIdList.size() > 0){
             suppPrdList = new List<Core_IPS_Supported_Product__c>();
-	    if(Core_IPS_Supported_Product__c.SObjectType.getDescribe().isAccessible()){
-            	suppPrdList = [select Id,Core_Flag_Status__c,Core_Code_Name__c,Core_EOIS__c,Core_Prod_EPM_Id__c,Core_Product__r.Core_Sales_Visible_Flag__c,Core_Product__r.Core_Hierarchy_ID__c from Core_IPS_Supported_Product__c where Id in:suppProductIdList AND Core_Product__r.Core_Sales_Visible_Flag__c =:FALSE AND Core_Product__r.Core_Hierarchy_ID__c=:'59'];
-            }
+            suppPrdList = [select Id,Core_Flag_Status__c,Core_Code_Name__c,Core_EOIS__c,Core_Prod_EPM_Id__c,Core_Product__r.Core_Sales_Visible_Flag__c,Core_Product__r.Core_Hierarchy_ID__c from Core_IPS_Supported_Product__c where Id in:suppProductIdList AND Core_Product__r.Core_Sales_Visible_Flag__c =:FALSE AND Core_Product__r.Core_Hierarchy_ID__c=:'59'];
+            
         }   
         
         If(suppPrdList <> null && suppPrdList.size() > 0){
@@ -280,10 +244,10 @@ Modification Log :
                     epmIdList.add(suppProdObj.Core_Prod_EPM_Id__c); 
                 }
             }
-        }   
-        //FLS check added-Venugopal
-        if(epmIdList <> null && epmIdList.size() > 0 && Core_Flat_Product_Hierarchy__c.SObjectType.getDescribe().isAccessible()){
+        }                                      
+        if(epmIdList <> null && epmIdList.size() > 0){
             fphList = [select Core_L1_EPM_ID__c,Core_L1_EPM_Name__c,Core_L2_EPM_ID__c,Core_L2_EPM_Name__c,Core_L3_EPM_ID__c,Core_L3_EPM_Name__c,Core_L4_EPM_ID__c,Core_L4_EPM_Name__c,Core_L5_EPM_ID__c,Core_L5_EPM_Name__c from Core_Flat_Product_Hierarchy__c where Core_L5_EPM_ID__c in:epmIdList OR Core_L4_EPM_ID__c in:epmIdList OR Core_L2_EPM_ID__c in:epmIdList];        
+            system.debug('RAZZIProdVariantClass'+fphList);
         }
         Map<String, Set<String>> prodHierarchyBySupProd;
         Set<String> platformNameList;

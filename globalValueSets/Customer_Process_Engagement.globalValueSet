@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Direct Price Exception</fullName>
+        <default>true</default>
+        <label>Direct Price Exception</label>
+    </customValue>
+    <customValue>
+        <fullName>Distributor Price Exception</fullName>
+        <default>false</default>
+        <label>Distributor Price Exception</label>
+    </customValue>
+    <customValue>
+        <fullName>Supply Demand Revenue</fullName>
+        <default>false</default>
+        <label>Supply Demand Revenue</label>
+    </customValue>
+    <description>Customer Business Process Usage</description>
+    <masterLabel>Customer Process Engagement</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

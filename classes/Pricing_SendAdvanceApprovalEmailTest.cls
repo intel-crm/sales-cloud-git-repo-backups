@@ -56,7 +56,7 @@ private class Pricing_SendAdvanceApprovalEmailTest {
     }
     
 
-   /* @isTest
+    @isTest
     static void testSendApprovalNotification() {
         Account acc=[SELECT Id from Account where RecordType.Name = 'Direct Account' limit 1];
         List<SBQQ__Quote__c> lstquote = [select id, core_cpq_negative_margin_quote_Value__c from SBQQ__Quote__c ];
@@ -98,7 +98,7 @@ private class Pricing_SendAdvanceApprovalEmailTest {
        Pricing_SendAdvanceApprovalEmail.sendNotification(new List<id>{approvalList[0].id}, orgWideEmailAddress, emailTempDevName);
         Test.stopTest();
    
-    }*/
+    }
 
 
     private static Map<String, Object> setupTestData(String quoteStatus) {

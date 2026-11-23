@@ -133,6 +133,29 @@ public with sharing class Pricing_PriceComparisionController {
         return quoteLineNumber;
     }
 
+    /**
+    * @description Method to call Einstein Discovery model to get predicted value
+    * @author Sandeep Chamate | 08-03-2023 
+    * @param qliId 
+    **/
+    @AuraEnabled
+    public static Decimal getEstimatedECAPfromDiscovery(String qliNumber){
+        Decimal predictedValue;
+        SBQQ__QuoteLine__c quoteline = [SELECT Id FROM SBQQ__QuoteLine__c WHERE Pricing_Quote_Line_Number__c =: qliNumber.trim()];
+        try{
+            ConnectApi.SmartDataDiscoveryPredictInputRecords predictInput = new ConnectApi.SmartDataDiscoveryPredictInputRecords();
+            predictInput.predictionDefinition = '1ORDf0000004CI0OAM';      
+            predictInput.records = new List<Id>{quoteline.Id};
+            ConnectApi.SmartDataDiscoveryPrediction response = ConnectApi.SmartDataDiscovery.predict(predictInput);
+            ConnectApi.SmartDataDiscoveryPredictObject predictedResponse = (ConnectApi.SmartDataDiscoveryPredictObject) response.predictions[0];
+            predictedValue = Decimal.valueOf(predictedResponse.prediction.total);
+        }
+        catch(Exception ex){
+            Pricing_Tender_Utility.logError(ex);
+        }
+        return predictedValue;
+    }
+
     //Wrapper class for Data Table columns
     public class DataTableColumns {
         @AuraEnabled

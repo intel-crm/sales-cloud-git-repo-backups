@@ -25,7 +25,16 @@
         <field>Contact.Core_IPS_Alternate_Support_Org__c</field>
     </columns>
     <columns>
-        <field>Account.Core_Sales_Groups__c</field>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>CONTACT_OWNER</field>
+    </columns>
+    <columns>
+        <field>OWNER_FULL_NAME</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Sales_Group__c</field>
     </columns>
     <filter>
         <criteriaItems>
@@ -33,7 +42,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value></value>
+            <value>emerson,schneider</value>
         </criteriaItems>
         <criteriaItems>
             <column>Contact.Core_IPS_Intel_Support_Owner__c</column>
@@ -49,31 +58,9 @@
             <operator>equals</operator>
             <value>1</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>OWNER_FULL_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Brooke Alviar,Fernanda Prata,Anup Navare,Sidney Cerqueira,Bob Charles,Jim Treveloni,GILBERT LEUNG,Hans Acosta,Mike Mcdonald</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
-    <format>Summary</format>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>OWNER_FULL_NAME</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>ACCOUNT.NAME</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>Account.Core_Account_ID__c</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
+    <format>Tabular</format>
     <name>Field - ISO Report By Account</name>
     <params>
         <name>co</name>

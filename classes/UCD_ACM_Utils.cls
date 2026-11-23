@@ -1,8 +1,8 @@
 public without sharing class UCD_ACM_Utils {
 
     private static Map<String, Account_Create_Process_Mapping__mdt> accountProcessMappingBySourceName = new  Map<String, Account_Create_Process_Mapping__mdt>();
-    private static Map<String, Core_Country_Reference__c> mCountryCodeGeoRef = new map<String, Core_Country_Reference__c>();      
-    private static Map<String, Map<String,String>> controllingInfo=null;
+    private static Map<String, Core_Country_Reference__c> mCountryCodeGeoRef = new map<String, Core_Country_Reference__c>();
+
    /** 
     * description : validate Country Code
     * params : String
@@ -134,9 +134,10 @@ public without sharing class UCD_ACM_Utils {
             
         }
 
-        public static Map<String, Map<String,String>> getGlobalPickList( )  {            
-            if(controllingInfo==null){
-                controllingInfo= new Map<String, Map<String,String>>( ) ;
+
+
+
+        public static Map<String, Map<String,String>> getGlobalPickList( )  {
 
             //Define table name that has picklist value set fields
         
@@ -149,7 +150,12 @@ public without sharing class UCD_ACM_Utils {
             //Define dependent picklist value field
         
             String dependentField =  'BillingStateCode';
-                   
+        
+            //Declare map variable to store list of dependent value for controlling field
+        
+            //Map<String, List<String>> controllingInfo = new Map<String, List<String>>( ) ;
+            Map<String, Map<String,String>> controllingInfo = new Map<String, Map<String,String>>( ) ;
+
             //Get the type being dealt with
         
             Schema.SObjectType objType = Schema.getGlobalDescribe( ).get(objectName) ;
@@ -251,10 +257,12 @@ public without sharing class UCD_ACM_Utils {
                     baseCount  +=  4;
             
                 }
-            }   
-        }        
-            return controllingInfo;           
-    }
+            
+            }
+            
+            return controllingInfo;
+            
+            }
 
     /** 
     * description : Method to get Account Process Mapping
@@ -291,12 +299,10 @@ public without sharing class UCD_ACM_Utils {
     */
     public static String getGeoforCountry(String CountryCode){
         
-        String Validgeo = null;
-        if(mCountryCodeGeoRef.isEmpty()){
-            for(Core_Country_Reference__c sobjStateRef : Core_Country_Reference__c.getall().values()){
-                mCountryCodeGeoRef.put(sobjStateRef.Core_ISO_Code__c,sobjStateRef);
-            }
-        } 
+        String Validgeo = null;  
+        for(Core_Country_Reference__c sobjStateRef : Core_Country_Reference__c.getall().values()){
+           mCountryCodeGeoRef.put(sobjStateRef.Core_ISO_Code__c,sobjStateRef);
+        }
         if(mCountryCodeGeoRef.containsKey(CountryCode)){
             Validgeo = mCountryCodeGeoRef.get(CountryCode).Core_Geo__c;
         }

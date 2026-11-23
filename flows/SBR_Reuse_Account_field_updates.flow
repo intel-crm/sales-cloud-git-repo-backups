@@ -55,11 +55,6 @@
         <expression>LEFT({!$Api.Partner_Server_URL_260}, FIND(&apos;/services&apos;, {!$Api.Partner_Server_URL_260})) &amp; {!accountId}</expression>
     </formulas>
     <formulas>
-        <name>hyperLink</name>
-        <dataType>String</dataType>
-        <expression>HYPERLINK(&quot;https://quoterequest.intel.com/--crmdevsls3.sandbox.my.salesforce.com/0012D00000e9kveQAA&quot;,&quot;Account Name&quot;, &quot;_blank&quot;)</expression>
-    </formulas>
-    <formulas>
         <name>requestLink</name>
         <dataType>String</dataType>
         <expression>LEFT({!$Api.Partner_Server_URL_260}, FIND(&apos;/services&apos;, {!$Api.Partner_Server_URL_260})) &amp; {!Get_account_Request_Queue_Records.Id}</expression>
@@ -170,8 +165,8 @@
     </textTemplates>
     <textTemplates>
         <name>Reuseemailtemplate</name>
-        <isViewedAsPlainText>true</isViewedAsPlainText>
-        <text>&lt;p&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-size: 14px;&quot;&gt;Based on the account criteria you have entered, we recommend that you use the below existing account record. &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-size: 14px;&quot;&gt;Account Name: &lt;/span&gt;&lt;span style=&quot;font-size: 14px;&quot;&gt;{!accountName}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-size: 14px;&quot;&gt;Account ID: {!accountId}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-size: 14px;&quot;&gt;Account URL: {!accountLink}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-size: 14px;&quot;&gt;Unified ID: {!accountBpId}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-size: 14px;&quot;&gt;Account Request URL: {!requestLink}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 14px; color: rgb(0, 0, 0);&quot;&gt;If this recommended account still does not match your use criteria, you can utilize the chatter feature within your account request URL to clarify questions with operations team, OR submit a new account request with revised account information&lt;/span&gt;&lt;span style=&quot;font-size: 14px; color: rgb(112, 48, 160);&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 14px; color: black;&quot;&gt;Regards,&lt;br&gt;Account and Contact Management Team&lt;/br&gt;</text>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;p&gt;&lt;span style=&quot;font-size: 14px; color: rgb(0, 0, 0);&quot;&gt;Based on the account criteria you have entered, we recommend that you use the below existing account record. &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 14px; color: rgb(0, 0, 0);&quot;&gt;Account Name: &lt;/span&gt;&lt;span style=&quot;font-size: 14px;&quot;&gt;{!accountName}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 14px; color: rgb(0, 0, 0);&quot;&gt;Account ID: {!accountId}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 14px; color: rgb(0, 0, 0);&quot;&gt;Account URL: {!accountLink}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 14px; color: rgb(0, 0, 0);&quot;&gt;Unified ID: {!accountBpId}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 14px; color: rgb(0, 0, 0);&quot;&gt;Account Request URL: {!requestLink}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-size: 14px;&quot;&gt;If this recommended account still does not match your use criteria, you can utilize the chatter feature within your account request URL to clarify questions with operations team, OR submit a new account request with revised account information&lt;/span&gt;&lt;span style=&quot;color: rgb(112, 48, 160); font-size: 14px;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: black; font-size: 14px;&quot;&gt;Regards,&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: black; font-size: 14px;&quot;&gt;Account and Contact Management Team&lt;/span&gt;&lt;/p&gt;</text>
     </textTemplates>
     <variables>
         <name>accountBpId</name>

@@ -240,9 +240,6 @@
         <label>Check if Opportunity Exisits</label>
         <locationX>842</locationX>
         <locationY>386</locationY>
-        <defaultConnector>
-            <targetReference>Create_Log_Entry_for_OLI_Opportunity_Exisits</targetReference>
-        </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Opportunity_is_not_null</name>
@@ -266,7 +263,7 @@
         <locationX>974</locationX>
         <locationY>1526</locationY>
         <defaultConnector>
-            <targetReference>Loop_through_Price_Pricebook_Entries</targetReference>
+            <targetReference>Create_Log_Entry_for_OLI_Product_Id_on_PB</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -290,9 +287,6 @@
         <label>check if record is Inserted</label>
         <locationX>534</locationX>
         <locationY>2426</locationY>
-        <defaultConnector>
-            <targetReference>Create_Log_Entry_for_OLI_Check_if_OLIs_are_inserted</targetReference>
-        </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>If_ID_not_Null</name>
@@ -340,9 +334,6 @@
         <label>Subscribe to Re-submission Event Messages</label>
         <locationX>1238</locationX>
         <locationY>170</locationY>
-        <defaultConnector>
-            <targetReference>Create_Log_Entry_for_OLI_1st_Default</targetReference>
-        </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Is_Resubmit_Event</name>
@@ -521,7 +512,7 @@
         <inputAssignments>
             <field>Core_Message__c</field>
             <value>
-                <stringValue>Deal Resubmission : Stage record fault path Executed</stringValue>
+                <stringValue>Deal Resubmission : Opportunity Product Creation Error</stringValue>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -558,120 +549,23 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordCreates>
     <recordCreates>
-        <name>Create_Log_Entry_for_OLI_1st_Default</name>
-        <label>Create Log Entry for OLI - 1st Default</label>
-        <locationX>1634</locationX>
-        <locationY>278</locationY>
+        <name>Create_Log_Entry_for_OLI_Product_Id_on_PB</name>
+        <label>Create Log Entry for OLI - Product Id on PB</label>
+        <locationX>1106</locationX>
+        <locationY>1634</locationY>
+        <connector>
+            <targetReference>Loop_through_Price_Pricebook_Entries</targetReference>
+        </connector>
         <inputAssignments>
             <field>Core_Details__c</field>
             <value>
-                <stringValue>1st Decision Default path Executed</stringValue>
+                <stringValue>Product Id on PB - default path</stringValue>
             </value>
         </inputAssignments>
         <inputAssignments>
             <field>Core_Message__c</field>
             <value>
-                <stringValue>Deal Resubmission : Criteria did not match</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Core_Origin__c</field>
-            <value>
-                <stringValue>PCC Deal Resubmission Flow</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Core_Project__c</field>
-            <value>
-                <stringValue>PCC Deal</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Core_Severity__c</field>
-            <value>
-                <stringValue>High</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Core_When__c</field>
-            <value>
-                <elementReference>$Flow.CurrentDateTime</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Core_sObjectId__c</field>
-            <value>
-                <elementReference>RecordId</elementReference>
-            </value>
-        </inputAssignments>
-        <object>Core_Log_Entry__c</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordCreates>
-    <recordCreates>
-        <name>Create_Log_Entry_for_OLI_Check_if_OLIs_are_inserted</name>
-        <label>Create Log Entry for OLI - Check if OLIs are inserted</label>
-        <locationX>666</locationX>
-        <locationY>2534</locationY>
-        <inputAssignments>
-            <field>Core_Details__c</field>
-            <value>
-                <stringValue>check if OLIs are inserted - default path</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Core_Message__c</field>
-            <value>
-                <stringValue>Deal Resubmission : Opportunity Product is not Added to Opportunity</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Core_Origin__c</field>
-            <value>
-                <stringValue>PCC Deal Resubmission Flow</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Core_Project__c</field>
-            <value>
-                <stringValue>PCC Deal</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Core_Severity__c</field>
-            <value>
-                <stringValue>High</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Core_When__c</field>
-            <value>
-                <elementReference>$Flow.CurrentDateTime</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Core_sObjectId__c</field>
-            <value>
-                <elementReference>RecordId</elementReference>
-            </value>
-        </inputAssignments>
-        <object>Core_Log_Entry__c</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordCreates>
-    <recordCreates>
-        <name>Create_Log_Entry_for_OLI_Opportunity_Exisits</name>
-        <label>Create Log Entry for OLI - Opportunity Exisits</label>
-        <locationX>1370</locationX>
-        <locationY>494</locationY>
-        <inputAssignments>
-            <field>Core_Details__c</field>
-            <value>
-                <stringValue>Opportunity Does not Exists Default path Executed</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Core_Message__c</field>
-            <value>
-                <stringValue>Deal Resubmission : Opportunity Does not exisits</stringValue>
+                <stringValue>Deal Resubmission : Opportunity Product Creation Error</stringValue>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -724,7 +618,7 @@
         <inputAssignments>
             <field>Core_Message__c</field>
             <value>
-                <stringValue>Deal Resubmission : NON FI Product</stringValue>
+                <stringValue>Deal Resubmission : Opportunity Product Creation Error</stringValue>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -1034,14 +928,6 @@
         <isCollection>false</isCollection>
         <isInput>false</isInput>
         <isOutput>false</isOutput>
-    </variables>
-    <variables>
-        <name>LogEntriesList</name>
-        <dataType>SObject</dataType>
-        <isCollection>true</isCollection>
-        <isInput>false</isInput>
-        <isOutput>false</isOutput>
-        <objectType>Core_Log_Entry__c</objectType>
     </variables>
     <variables>
         <name>OpportunityLineItemRecord</name>

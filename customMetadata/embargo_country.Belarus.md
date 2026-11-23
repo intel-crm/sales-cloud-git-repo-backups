@@ -4,11 +4,11 @@
     <protected>false</protected>
     <values>
         <field>Active__c</field>
-        <value xsi:type="xsd:boolean">true</value>
+        <value xsi:type="xsd:boolean">false</value>
     </values>
     <values>
         <field>Country_Code__c</field>
-        <value xsi:type="xsd:string">BLR</value>
+        <value xsi:type="xsd:string">BLR,IRN,UKR,SYR</value>
     </values>
     <values>
         <field>State_Code__c</field>

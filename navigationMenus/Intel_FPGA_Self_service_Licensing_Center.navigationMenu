@@ -4,58 +4,201 @@
     <containerType>Network</containerType>
     <label>Intel FPGA Self-service Licensing Center for External User</label>
     <navigationMenuItem>
-        <label>Sign up for Evaluation or No-Cost Licenses</label>
+        <label>Licenses</label>
         <position>1</position>
-        <publiclyAvailable>true</publiclyAvailable>
-        <target>/sales-signup-evaluationlicenses</target>
-        <type>InternalLink</type>
-    </navigationMenuItem>
-    <navigationMenuItem>
-        <label>Help</label>
-        <position>2</position>
         <publiclyAvailable>true</publiclyAvailable>
         <subMenu>
             <navigationMenuItem>
-                <label>Frequently Asked Questions</label>
+                <label>Find and Generate License By Activation Code</label>
                 <position>0</position>
                 <publiclyAvailable>true</publiclyAvailable>
-                <target>https://www.altera.com/support/support-resources/download/licensing/q-and-a.html</target>
-                <type>ExternalLink</type>
+                <target>/generate-license-by-activation-code</target>
+                <type>InternalLink</type>
             </navigationMenuItem>
             <navigationMenuItem>
-                <label>Learn More About Licensing</label>
+                <defaultListViewId>Sales_Unlicensed_Products_Ext</defaultListViewId>
+                <label>New Licenses</label>
                 <position>1</position>
                 <publiclyAvailable>true</publiclyAvailable>
-                <target>https://www.intel.com/content/www/us/en/support/programmable/licensing/support-center.html</target>
+                <target>Sales_License__c</target>
+                <type>SalesforceObject</type>
+            </navigationMenuItem>
+            <navigationMenuItem>
+                <defaultListViewId>Active_Maintenance_External</defaultListViewId>
+                <label>Licenses With Active Maintenance</label>
+                <position>2</position>
+                <publiclyAvailable>true</publiclyAvailable>
+                <target>Sales_License__c</target>
+                <type>SalesforceObject</type>
+            </navigationMenuItem>
+            <navigationMenuItem>
+                <defaultListViewId>Sales_Inactive_License_Expiration_External</defaultListViewId>
+                <label>Licenses With Expired Maintenance</label>
+                <position>3</position>
+                <publiclyAvailable>false</publiclyAvailable>
+                <target>Sales_License__c</target>
+                <type>SalesforceObject</type>
+            </navigationMenuItem>
+            <navigationMenuItem>
+                <defaultListViewId>All_Licenses_Ext</defaultListViewId>
+                <label>All Licenses</label>
+                <position>4</position>
+                <publiclyAvailable>false</publiclyAvailable>
+                <target>Sales_License__c</target>
+                <type>SalesforceObject</type>
+            </navigationMenuItem>
+            <navigationMenuItem>
+                <defaultListViewId>Sales_Legacy_Licenses_ext</defaultListViewId>
+                <label>Legacy Licenses</label>
+                <position>5</position>
+                <publiclyAvailable>true</publiclyAvailable>
+                <target>Sales_License__c</target>
+                <type>SalesforceObject</type>
+            </navigationMenuItem>
+            <navigationMenuItem>
+                <label>Generate Legacy Licenses</label>
+                <position>6</position>
+                <publiclyAvailable>true</publiclyAvailable>
+                <target>/get-legacy-licenses</target>
+                <type>InternalLink</type>
+            </navigationMenuItem>
+            <navigationMenuItem>
+                <label>Employee and Evaluation Licenses</label>
+                <position>7</position>
+                <publiclyAvailable>true</publiclyAvailable>
+                <target>/employee-and-evaluation-licenses</target>
+                <type>InternalLink</type>
+            </navigationMenuItem>
+            <navigationMenuItem>
+                <label>update licenses with host</label>
+                <position>8</position>
+                <publiclyAvailable>false</publiclyAvailable>
+                <target>/update-host-detail</target>
+                <type>InternalLink</type>
+            </navigationMenuItem>
+        </subMenu>
+        <type>MenuLabel</type>
+    </navigationMenuItem>
+    <navigationMenuItem>
+        <label>Computers and License Files</label>
+        <position>2</position>
+        <publiclyAvailable>false</publiclyAvailable>
+        <subMenu>
+            <navigationMenuItem>
+                <label>Active Computers</label>
+                <position>0</position>
+                <publiclyAvailable>true</publiclyAvailable>
+                <target>/active-computers</target>
+                <type>InternalLink</type>
+            </navigationMenuItem>
+            <navigationMenuItem>
+                <label>All Computers</label>
+                <position>1</position>
+                <publiclyAvailable>true</publiclyAvailable>
+                <target>/all-computers</target>
+                <type>InternalLink</type>
+            </navigationMenuItem>
+        </subMenu>
+        <type>MenuLabel</type>
+    </navigationMenuItem>
+    <navigationMenuItem>
+        <label>Admins</label>
+        <position>3</position>
+        <publiclyAvailable>true</publiclyAvailable>
+        <subMenu>
+            <navigationMenuItem>
+                <label>Add New Admin</label>
+                <position>0</position>
+                <publiclyAvailable>true</publiclyAvailable>
+                <target>/add-new-admin</target>
+                <type>InternalLink</type>
+            </navigationMenuItem>
+            <navigationMenuItem>
+                <defaultListViewId>My_Active_Delegate_Admins</defaultListViewId>
+                <label>View &amp; Manage Admins</label>
+                <position>1</position>
+                <publiclyAvailable>true</publiclyAvailable>
+                <target>/view-and-manage-admin</target>
+                <type>InternalLink</type>
+            </navigationMenuItem>
+        </subMenu>
+        <type>MenuLabel</type>
+    </navigationMenuItem>
+    <navigationMenuItem>
+        <defaultListViewId>All_Licenses_Ext</defaultListViewId>
+        <label>Sign up for Evaluation or No-Cost Licenses</label>
+        <position>4</position>
+        <publiclyAvailable>false</publiclyAvailable>
+        <target>/sales-signup-evalutionlicense</target>
+        <type>InternalLink</type>
+    </navigationMenuItem>
+    <navigationMenuItem>
+        <label>Sign up for Employee Licenses</label>
+        <position>5</position>
+        <publiclyAvailable>false</publiclyAvailable>
+        <target>/signup-EmployeeLicense</target>
+        <type>InternalLink</type>
+    </navigationMenuItem>
+    <navigationMenuItem>
+        <label>Reports</label>
+        <position>6</position>
+        <publiclyAvailable>true</publiclyAvailable>
+        <target>Report</target>
+        <type>SalesforceObject</type>
+    </navigationMenuItem>
+    <navigationMenuItem>
+        <label>Help</label>
+        <position>7</position>
+        <publiclyAvailable>true</publiclyAvailable>
+        <subMenu>
+            <navigationMenuItem>
+                <label>Learn More About Licensing</label>
+                <position>0</position>
+                <publiclyAvailable>true</publiclyAvailable>
+                <target>https://www.intel.com/content/www/us/en/docs/programmable/683472/23-2/using-the-intel-fpga-self-service-licensing.html</target>
                 <type>ExternalLink</type>
             </navigationMenuItem>
             <navigationMenuItem>
                 <label>Using the Intel FPGA SSLC</label>
-                <position>2</position>
+                <position>1</position>
                 <publiclyAvailable>true</publiclyAvailable>
                 <target>https://www.intel.com/content/www/us/en/docs/programmable/683472/23-2/using-the-intel-fpga-self-service-licensing.html</target>
                 <type>ExternalLink</type>
             </navigationMenuItem>
             <navigationMenuItem>
                 <label>Installation &amp; Licensing Support Center</label>
-                <position>3</position>
+                <position>2</position>
                 <publiclyAvailable>true</publiclyAvailable>
                 <target>https://www.intel.com/content/www/us/en/programmable/support/support-resources/design-software/licensing.html</target>
                 <type>ExternalLink</type>
             </navigationMenuItem>
             <navigationMenuItem>
                 <label>Software Licensing Troubleshooter</label>
-                <position>4</position>
+                <position>3</position>
                 <publiclyAvailable>true</publiclyAvailable>
                 <target>https://www.intel.com/content/www/us/en/programmable/support/support-resources/knowledge-base/ts-index/lic.html?fn=lic</target>
                 <type>ExternalLink</type>
             </navigationMenuItem>
             <navigationMenuItem>
+                <label>Need Help? Contact Customer Service</label>
+                <position>4</position>
+                <publiclyAvailable>true</publiclyAvailable>
+                <target>/contact-customer-service</target>
+                <type>InternalLink</type>
+            </navigationMenuItem>
+            <navigationMenuItem>
                 <label>Give Feedback</label>
                 <position>5</position>
-                <publiclyAvailable>true</publiclyAvailable>
+                <publiclyAvailable>false</publiclyAvailable>
                 <target>/feedback</target>
                 <type>InternalLink</type>
+            </navigationMenuItem>
+            <navigationMenuItem>
+                <label>Guidance</label>
+                <position>6</position>
+                <publiclyAvailable>true</publiclyAvailable>
+                <target>https://www.intel.com/content/dam/www/programmable/us/en/pdfs/education/demonstrations/online/licensing/fpga-self-service-licensing-center-user-guide.pdf</target>
+                <type>ExternalLink</type>
             </navigationMenuItem>
         </subMenu>
         <type>MenuLabel</type>

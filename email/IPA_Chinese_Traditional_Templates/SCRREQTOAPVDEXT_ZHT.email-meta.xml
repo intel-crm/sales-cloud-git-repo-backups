@@ -4,29 +4,24 @@
     <encodingKey>UTF-8</encodingKey>
     <name>SCRREQTOAPVDEXT_ZHT</name>
     <style>none</style>
-    <subject>歡迎您加入 Intel® 夥伴聯盟</subject>
-    <textOnly>您的公司已註冊
+    <subject>恭喜您，歡迎加入 Intel 的夥伴計畫</subject>
+    <textOnly>Duplicate Partner Program Registration
+
+{!PRM_Registration_Request__c.PRM_First_Name__c}
+
+Your company matches an existing Intel Partner program account, so you have been added to the following company profile:
+
+Company Name: {!Account.Name}
+
+Log in to view your profile details.
+
+Questions? Contact Support here 
 
 
-{!PRM_Registration_Request__c.PRM_First_Name__c}您好，
-
-恭喜您成為 Intel® 夥伴聯盟的夥伴！貴公司與現有的帳號相符，因此您已加入以下 Intel® 夥伴聯盟的資料中：
-公司名稱： {!Account.Name}
-企業 ID： {!Account.AccountNumber}
-
-登入 以檢視您的 Intel® 夥伴聯盟詳細資料。
-
-Intel 夥伴擁有悠久的創新歷史， 透過 Intel® 夥伴聯盟，我們將協助您加速建立以資料為中心的經濟體的解決方案。透過攜手合作，我們能互相連接，共同創新與成長，讓極佳商機成為可能。
-
-請造訪 https://www.intel.com/content/www/tw/zh/partner-alliance/help/overview.html 取得更多有關入門開始的幫助。
-
-謝謝您，
-您的 Intel® 夥伴聯盟團隊
-
-此訊息作為您目前與 Intel® 夥伴聯盟關係相關的重要商業通訊發送給您。
-© {!$Label.PRM_CurrentYear} Intel Corporation
-Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.  www.intel.com
-隱私權 | Cookies</textOnly>
+Copyright © 2016 Intel Corporation. All rights reserved. Intel, the Intel logo are trademarks of Intel Corporation in the U.S. and/or other countries.
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. Intel.com
+You may unsubscribe at any time by updating your profile settings at: {!$Label.PRM_MyIntelProfileURL}
+Privacy | Cookies | *Trademarks</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

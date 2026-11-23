@@ -28,7 +28,6 @@
         <aggregateTypes>Average</aggregateTypes>
         <field>SBQQ__Quote__c$core_cpq_inreview_days__c</field>
     </columns>
-    <description>It gives an overview of quotes in &apos;In Review&apos; status across Geos over a time period.</description>
     <filter>
         <criteriaItems>
             <column>SBQQ__Quote__c$SBQQ__Status__c</column>
@@ -43,20 +42,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>,APJ,ASMO,EMEA,PRC</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>SBQQ__Quote__c$CreatedDate</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>equals</operator>
-            <value>THIS_YEAR</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>SBQQ__Quote__c$core_cpq_active_cb__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>equals</operator>
-            <value>1</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

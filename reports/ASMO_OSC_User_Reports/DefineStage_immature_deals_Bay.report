@@ -121,20 +121,6 @@
             <value>Define,Qualify</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_KPI_Date__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>equals</operator>
-            <value>THIS_FISCAL_YEAR</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>CLOSE_DATE</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>THIS_FISCAL_QUARTER</value>
-        </criteriaItems>
-        <criteriaItems>
             <column>FULL_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>

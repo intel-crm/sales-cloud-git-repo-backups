@@ -130,21 +130,21 @@
             <assignToReference>StoreParentOpps.Core_Concatenated_Application_workload__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>Application_Workload</elementReference>
+                <stringValue>{!Application_Workload.getLabel()}</stringValue>
             </value>
         </assignmentItems>
         <assignmentItems>
             <assignToReference>StoreParentOpps.Core_Concatenated_Industry_use_case__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>IndustryUseCase</elementReference>
+                <stringValue>{!IndustryUseCase.getLabel()}</stringValue>
             </value>
         </assignmentItems>
         <assignmentItems>
             <assignToReference>StoreParentOpps.Core_Concatenated_Technology_Enabled__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>TechnologyEnabled</elementReference>
+                <stringValue>{!TechnologyEnabled.getLabel()}</stringValue>
             </value>
         </assignmentItems>
         <connector>

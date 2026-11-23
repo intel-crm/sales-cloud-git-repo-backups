@@ -73,13 +73,6 @@
         <field>Core_MDF_Payment__c.Partner_Fund_Claims__r$Core_MDF_Program__c</field>
     </columns>
     <columns>
-        <field>Core_MDF_Payment__c$Core_MDF_Budget_Type_Nm__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Core_MDF_Payment__c.Partner_Fund_Claims__r$Core_MDF_3rd_Party_POP_Doc_Required_Ind__c</field>
-    </columns>
-    <columns>
         <field>Core_MDF_Payment__c.Partner_Fund_Claims__r$Core_MDF_Activity_Start_Date__c</field>
     </columns>
     <columns>
@@ -90,9 +83,6 @@
     </columns>
     <columns>
         <field>Core_MDF_Payment__c.Partner_Fund_Claims__r$Core_MDF_Activity_Types__c</field>
-    </columns>
-    <columns>
-        <field>Core_MDF_Payment__c.Partner_Fund_Claims__r$Core_MDF_Activity_SubType_nm__c</field>
     </columns>
     <columns>
         <field>Core_MDF_Payment__c.Partner_Fund_Claims__r$Request.Core_MDF_Priorities__c</field>
@@ -128,7 +118,6 @@
     </columns>
     <description>Co-Marketing Payment Details</description>
     <filter>
-        <booleanFilter>1 AND 2 AND ((3 AND 4) OR (7 AND 8)) AND 5 AND 6</booleanFilter>
         <criteriaItems>
             <column>Core_MDF_Payment__c$Core_MDF_Payment_Status_Txt__c</column>
             <columnToColumn>false</columnToColumn>
@@ -147,43 +136,8 @@
             <column>Core_MDF_Payment__c.Partner_Fund_Claims__r$Core_MDF_Region_Cd__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value></value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Core_MDF_Payment__c.Partner_Fund_Claims__r$Request.ChannelPartner.Core_MDF_Channel_Program__c.Core_MDF_Technical_Program_Name__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>,Client CoMarketing Fund,Client CoMarketing Fund Boost,Intel Partner Alliance,Retail Marketing Funds,Service Provider CoMarketing Fund,Ecosystem Extension Fund,Data Center CoMarketing Fund</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Core_MDF_Payment__c.Partner_Fund_Claims__r$Core_MDF_Budget_Type_Options_Nm__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>,Account Plan,Business Client Acceleration - MDF,CCF 1.0,Client Market Accelerate,Client Specialties MDF,Cloud,DCF 1.0,Data Center Market Accelerate,Data Centric Acceleration - MDF,Intel Rise Technology Initiative,IoT Premier - MDF,IoT Targeted - MDF,MDF,MDF+,OEM CMP,Proposal I MDF,Proposal II MDF,RSA MD,Retail MDF,SOEM Client MDF,SOEM Data Center MDF,Service Provider CMP,Co-Engineering</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Core_MDF_Payment__c.Partner_Fund_Claims__r$Core_MDF_Campaign_Id__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value></value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Core_MDF_Payment__c.Partner_Fund_Claims__r$Core_MDF_Region_Cd__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value></value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Core_MDF_Payment__c.Partner_Fund_Claims__r$Request.ChannelPartner.Core_MDF_Channel_Program__c.Core_MDF_Technical_Program_Name__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>CoGTM</value>
+            <value>EMEA,PRC,APJ,ASMO</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

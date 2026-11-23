@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>Lappy India Partner User</description>
+    <description>Lappy World Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>Lappy India Partner User</name>
+    <name>Lappy World Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>LappyWorldPartnerManager</parentRole>
 </Role>

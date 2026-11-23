@@ -241,7 +241,7 @@ global with sharing class PCC_CreateDesignRegistrationUtility_V2 {
                 if(decodedId != null && String.isNotBlank(decodedId)){
                     try {
                         //fetch design registration details by passing RecordID/ExternalID
-                        Core_Design_Registration__c ddrRec =  [Select Id, Name, Core_Product_Application_Nm__c, Core_Product_Group_Nm__c, PCC_Design_Type__c,PCC_ODM_Board_partner__c,
+                        Core_Design_Registration__c ddrRec =  [Select Id, Name, Core_Product_Application_Nm__c, Core_Product_Group_Nm__c, 
                                                                Core_Product_Segment_Nm__c, Core_Vertical_Market_Nm__c, Core_Military_Aerospace_Gvrnmt_Use_Ind__c, 
                                                                Core_External_Id__c, Core_Partner_FAE_Nm__c, Core_End_Customer_Nm__c, Core_End_Customer_Street_Addr_Line1_Txt__c, 
                                                                Core_End_Customer_Postal_Cd__c, Core_End_Customer_Country_Nm__c,PCC_End_Customer_Country__c, Core_End_Customer_URL__c, Core_Intel_Platform_Nm__c,
@@ -408,7 +408,7 @@ global with sharing class PCC_CreateDesignRegistrationUtility_V2 {
                         DDR_Target_Resale_Price_Note__c, Core_Design_Product_Status_Nm__c,
                         Core_Comment_Txt__c, Core_Partner_Tracking_Cd__c,Core_Product_List_Price_Amt__c,    
                         Core_Full_Year_Value_Amt__c, Core_Opportunity_Product_Id__c,
-                        (SELECT Id, PCC_MM_ID__c, PCC_Ordering_Cd__c, PCC_L4_Product_Name__c, PCC_L5_Product_Name__c, PCC_Old_MM_Id__c
+                        (SELECT Id, PCC_Ordering_Cd__c, PCC_L4_Product_Name__c, PCC_L5_Product_Name__c
                         FROM DDR_Product_Mappings__r LIMIT 1)
                         FROM Core_Design_Registration_Product__c where Core_Design_Registration_Id__c =:drRecId];
 

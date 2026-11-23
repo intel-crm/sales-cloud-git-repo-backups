@@ -7,31 +7,15 @@
         <field>ACCOUNT.NAME</field>
     </columns>
     <columns>
-        <field>Case.Core_External_Issue_Category__c</field>
-    </columns>
-    <columns>
-        <field>Case.Core_External_Issue_Subcategory__c</field>
-    </columns>
-    <columns>
         <field>CREATED_DATEONLY</field>
     </columns>
     <columns>
         <field>STATUS</field>
     </columns>
     <columns>
-        <field>Case.Core_Case_Closure__c</field>
-    </columns>
-    <columns>
-        <field>Case.Core_IPS_CaseSource_of_Resolution__c</field>
-    </columns>
-    <columns>
-        <field>Case.Core_Case_Resolution_Reason__c</field>
-    </columns>
-    <columns>
         <field>AGE</field>
     </columns>
     <filter>
-        <booleanFilter>1 AND 3 AND (2 OR 4)</booleanFilter>
         <criteriaItems>
             <column>Case.Core_IPS_Product_Org1__c</column>
             <columnToColumn>false</columnToColumn>
@@ -51,14 +35,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>No Impact</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Case.Core_Case_Closure__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>documentation</value>
+            <value></value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -91,6 +68,6 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CREATED_DATEONLY</dateColumn>
-        <interval>INTERVAL_CURY</interval>
+        <interval>INTERVAL_CUSTOM</interval>
     </timeFrameFilter>
 </Report>

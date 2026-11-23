@@ -39,6 +39,10 @@
                 <behavior>Edit</behavior>
                 <field>UCD_Global_Name__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>CST_New_Account_Level__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

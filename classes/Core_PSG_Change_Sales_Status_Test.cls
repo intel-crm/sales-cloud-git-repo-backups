@@ -1,7 +1,7 @@
 @isTest
 public class Core_PSG_Change_Sales_Status_Test {
    
-    /*@isTest static void insertProducts(){
+    @isTest static void insertProducts(){
         test.startTest();
         
         Product2 productComponent = new Product2();
@@ -72,7 +72,7 @@ public class Core_PSG_Change_Sales_Status_Test {
         product6.IsActive = true;
         insert product6;
         
-        Product2 product7 = new Product2();
+ 		Product2 product7 = new Product2();
         product7.Core_Item_Class_Nm__c = '';
         product7.Core_Item_Signal_Cd__c='';
         product7.IsActive = true;
@@ -87,7 +87,7 @@ public class Core_PSG_Change_Sales_Status_Test {
         Sales_License_Group__c lg = new Sales_License_Group__c();
         lg.Name='LicenseGroup1';
         lg.License_Generator__c=lgtr.id;
-        insert lg;
+        insert lg;*/
         
         Core_Product_Ext_Attribute__c extendedAttribute = new Core_Product_Ext_Attribute__c();
         extendedAttribute.Core_Product_Id__c=product5.id;
@@ -106,6 +106,6 @@ public class Core_PSG_Change_Sales_Status_Test {
         
         insert extendedAttribute;
         test.stopTest();
-    }*/
+    }
 
 }

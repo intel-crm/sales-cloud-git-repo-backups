@@ -351,20 +351,23 @@
     </nameField>
     <pluralLabel>SOAR Products</pluralLabel>
     <searchLayouts>
+        <excludedStandardButtons>New</excludedStandardButtons>
         <excludedStandardButtons>OpenListInQuip</excludedStandardButtons>
         <excludedStandardButtons>NewFromDocument</excludedStandardButtons>
         <excludedStandardButtons>Accept</excludedStandardButtons>
-        <excludedStandardButtons>PrintableListView</excludedStandardButtons>
+        <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
+        <excludedStandardButtons>Forward</excludedStandardButtons>
         <excludedStandardButtons>Import</excludedStandardButtons>
         <excludedStandardButtons>MassChangeOwner</excludedStandardButtons>
-        <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
+        <excludedStandardButtons>PrintableListView</excludedStandardButtons>
+        <listViewButtons>Add_New_Product</listViewButtons>
     </searchLayouts>
     <sharingModel>ControlledByParent</sharingModel>
     <validationRules>
         <fullName>CRM_OppProd_Write_In_Name</fullName>
         <active>true</active>
         <errorConditionFormula>IF($Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c=TRUE,FALSE,AND( ISCHANGED( CRM_VBS_Write_In_Product_Name__c ) ,
- CRM_VBS_Product__r.Name = &quot;Write In Product&quot;,
+CRM_VBS_Product__r.Name = &quot;Write In Product&quot;,
 ISBLANK(CRM_VBS_Write_In_Product_Name__c ) = True
 ))</errorConditionFormula>
         <errorMessage>Required for write in products</errorMessage>
@@ -374,9 +377,9 @@ ISBLANK(CRM_VBS_Write_In_Product_Name__c ) = True
         <active>true</active>
         <errorConditionFormula>IF($Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c=TRUE,FALSE,
 AND(
- ISCHANGED(CRM_VBS_Quantity__c) ,
+ISCHANGED(CRM_VBS_Quantity__c) ,
 NOT(REGEX(TEXT( CRM_VBS_Quantity__c ), &quot;^\\d+$&quot;)),
-NOT(CRM_VBS_Quantity__c  =0))
+NOT(CRM_VBS_Quantity__c =0))
 )</errorConditionFormula>
         <errorMessage>Quantity field only supports whole numbers. Edit Quantity field(s) by removing the decimal/negative value to enable saving.</errorMessage>
     </validationRules>
@@ -408,6 +411,19 @@ NOT( ISNEW() )) , TRUE,FALSE))</errorConditionFormula>
         <errorMessage>SOAR Cannot be modified Once Contract is Signed or Opportunity is Closed.</errorMessage>
     </validationRules>
     <visibility>Public</visibility>
+    <webLinks>
+        <fullName>Add_New_Product</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Add New Product</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>/flow/Create_SOAR_Product?recordId={!CRM_VBS_SOAR__c.Id}&amp;retUrl=%2F{!CRM_VBS_SOAR__c.Id}</url>
+    </webLinks>
     <webLinks>
         <fullName>Add_Products</fullName>
         <availability>online</availability>

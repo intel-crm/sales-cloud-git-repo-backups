@@ -4,44 +4,20 @@
     <encodingKey>UTF-8</encodingKey>
     <name>ADMINREG_Portuguese</name>
     <style>none</style>
-    <subject>Ação necessária para concluir seu registro na Intel® Partner Alliance</subject>
-    <textOnly>Ação necessária para concluir seu registro na Intel® Partner Alliance
+    <subject>Etapa final necessária para sua inscrição no programa de parceiros Intel</subject>
+    <textOnly>{!Contact.FirstName},
 
+O administrador da sua empresa ou um representante Intel o adicionou à conta {!Contact.Core_Account_Name__c} do programa de parceiros Intel. Para ativar sua conta e começar a aproveitar seus benefícios, confirme suas informações e complete a seção de requisitos legais.
 
+Salve suas informações de logon para referência futura:
 
+Nome de usuário : {!Contact.Name}
+Endereço de e-mail : {!Contact.Email}
+Nome da empresa : {!Contact.Core_Account_Name__c}
+Sua senha deve ser protegida como confidencial. O uso desta senha nos websites da Intel é regido pelos Termos de Uso da Intel contidos nos links posicionados na parte inferior de cada página da web do respectivo site.
 
-{!Contact.FirstName},
-
-Parabéns, o administrador da sua empresa ou um representante da Intel o adicionou a uma conta na Intel® Partner Alliance! Você está apenas a poucos passos de completar seu registro.
-
-As informações de perfil abaixo foram criadas para você:
-
-Endereço de e-mail: {!Contact.Email}
-Nome da empresa: {{ACCOUNTNAME}}
-ID da empresa na Intel® Partner Alliance: {{ACCOUNTNUMBER}}
-
-
-Clique no link abaixo para concluir seu registro
-
-
-{{ButtonText}}
-
-
-Não consegue acessar o link acima?
-{{EVLINK}}
-Caso tenha alguma pergunta, entre em contato conosco em {{SUPPORTLINK}}.
-Esperamos ter você no programa!
-Saudações,
-Sua equipe Intel® Partner Alliance
-
-
-Esta mensagem foi enviada a você como uma importante comunicação comercial relacionada ao seu relacionamento atual com a Intel® Partner Alliance.
-© {!$Label.PRM_CurrentYear} Intel Corporation
-Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
-Privacidade | Cookies
-
-
-__PRESENT</textOnly>
+PREENCHER AGORA
+Perguntas? Para obter suporte, clique aqui.</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

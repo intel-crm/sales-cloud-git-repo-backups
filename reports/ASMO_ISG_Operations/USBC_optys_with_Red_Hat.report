@@ -273,7 +273,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>includes</operator>
-            <value>PaaS - Red Hat OpenShift,SDN - Red Hat OpenShift,Self Service - Red Hat CloudForms,Self Service - Red Hat Openshift,Self Service - Red Hat OpenStack</value>
+            <value>PaaS - Red Hat OpenShift,Self Service - Red Hat CloudForms,Self Service - Red Hat Openshift,Self Service - Red Hat OpenStack</value>
         </criteriaItems>
         <criteriaItems>
             <column>PARTNER_NAME</column>
@@ -310,6 +310,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

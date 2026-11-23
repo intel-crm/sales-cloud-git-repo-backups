@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>send_lead_for_followup</name>
+        <label>send lead for followup</label>
+        <locationX>228</locationX>
+        <locationY>379</locationY>
+        <actionName>Core_Inquiry__c.Core_Inquiry_Asked_For_Lead_Follow_Up</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Core_Inquiry__c.Core_Inquiry_Asked_For_Lead_Follow_Up</nameSegment>
+    </actionCalls>
+    <apiVersion>55.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Send_Email_for_Lead</name>
+        <label>Send Email for Lead</label>
+        <locationX>608</locationX>
+        <locationY>378</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>For_followup</name>
+            <conditionLogic>(1 OR 5) AND (2 OR 3 OR 4)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_Lead_Inquiries__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue></stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Inquiry_Type_Pkt__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Asked for Follow-up</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Inquiry_Type_Pkt__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Requested Quote</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Inquiry_Type_Pkt__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Sales Approved</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Contact_Inquiries__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue></stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_notes</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>For followup</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <formulas>
+        <name>currdate</name>
+        <dataType>DateTime</dataType>
+        <expression>NOW()</expression>
+    </formulas>
+    <interviewLabel>Inquiry Debug {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Inquiry Debug</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_notes</name>
+        <label>Update notes</label>
+        <locationX>436</locationX>
+        <locationY>417</locationY>
+        <connector>
+            <targetReference>send_lead_for_followup</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_Inquiry_Notes_Txt__c</field>
+            <value>
+                <elementReference>currdate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>490</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>Send_Email_for_Lead</targetReference>
+        </connector>
+        <filterFormula> IF(AND(  ISNEW(), 
+ OR( ISPICKVAL({!$Record.Core_Inquiry_Type_Pkt__c} ,  &apos;Asked for Follow-up&apos;) ,
+	ISPICKVAL({!$Record.Core_Inquiry_Type_Pkt__c} ,  &apos;CNDA Request&apos; ) ,
+	ISPICKVAL({!$Record.Core_Inquiry_Type_Pkt__c} ,  &apos;Requested Quote&apos; ) ,
+	ISPICKVAL({!$Record.Core_Inquiry_Type_Pkt__c} ,  &apos;Sales Approved&apos;  ) )
+)
+||
+ ( ISCHANGED(   {!$Record.Core_Inquiry_Type_Pkt__c} )  
+&amp;&amp;
+	OR( ISPICKVAL({!$Record.Core_Inquiry_Type_Pkt__c} ,  &apos;Asked for Follow-up&apos;) ,
+	ISPICKVAL({!$Record.Core_Inquiry_Type_Pkt__c} ,  &apos;CNDA Request&apos; ) ,
+	ISPICKVAL({!$Record.Core_Inquiry_Type_Pkt__c} ,  &apos;Requested Quote&apos; ) ,
+	ISPICKVAL({!$Record.Core_Inquiry_Type_Pkt__c} ,  &apos;Sales Approved&apos;  ) ) 
+ ), TRUE,FALSE)</filterFormula>
+        <object>Core_Inquiry__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+</Flow>

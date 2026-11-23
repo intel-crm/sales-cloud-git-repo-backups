@@ -20,7 +20,7 @@ public class PMP_Geo_Attribute_Chinese_Test {
         
     	PMP_Geo_Attribute_Chinese testGeo = new PMP_Geo_Attribute_Chinese();
         test.startTest();
-        PMP_ParseGeoRegionsJSON.languageCode = 'zh_CN';
+        PMP_ParseGeoRegionsJSON.strBaseKey = 'zh_CN';
         resultData = testGeo.processData('Geo_Attribute_English_Test');
         system.assertNotEquals(resultData,null);
         test.stopTest();

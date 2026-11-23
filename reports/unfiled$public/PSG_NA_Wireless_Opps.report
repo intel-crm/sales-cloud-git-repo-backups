@@ -59,7 +59,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>RAN/Edge,Wireless &amp; Wireline Core,Wireless Access CRAN/VRAN,Wireless Access Macro/Micro BTS/Small,Wireless Backhaul/Transport,Wireless Baseband,Wireless Fronthaul,Wireless Radio,Wireless Remote Radio Head,Wireline &amp; Broadband Access</value>
+            <value>RAN/Edge,Wireless &amp; Wireline Core,Wireless Access CRAN/VRAN,Wireless Access Macro/Micro BTS/Small,Wireless Backhaul/Transport,Wireless Fronthaul,Wireless Radio,Wireless Remote Radio Head,Wireline &amp; Broadband Access</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Opportunity_Type__c</column>

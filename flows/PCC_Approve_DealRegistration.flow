@@ -3,7 +3,7 @@
     <actionCalls>
         <name>Get_Inactive_LOV_Values</name>
         <label>Get Inactive LOV Values</label>
-        <locationX>630</locationX>
+        <locationX>622</locationX>
         <locationY>458</locationY>
         <actionName>Core_DDR_Accept_Approve_Reject_Design</actionName>
         <actionType>apex</actionType>
@@ -23,7 +23,7 @@
     <actionCalls>
         <name>Update_Status_to_Approve</name>
         <label>Update Status to Approve</label>
-        <locationX>2514</locationX>
+        <locationX>2382</locationX>
         <locationY>1430</locationY>
         <actionName>PCC_InvocableMethods</actionName>
         <actionType>apex</actionType>
@@ -74,7 +74,7 @@
     </assignments>
     <assignments>
         <name>Copy_1_of_Deal_record</name>
-        <label>Deal record pricing start date</label>
+        <label>Copy 1 of Deal record</label>
         <locationX>2250</locationX>
         <locationY>2570</locationY>
         <assignmentItems>
@@ -91,7 +91,7 @@
     <assignments>
         <name>Deal_record</name>
         <label>Deal record</label>
-        <locationX>2514</locationX>
+        <locationX>2382</locationX>
         <locationY>1538</locationY>
         <assignmentItems>
             <assignToReference>recordId.Core_Internal_Comment_Txt__c</assignToReference>
@@ -174,7 +174,7 @@
     <decisions>
         <name>Check_Approval_Status</name>
         <label>Check Approval Status</label>
-        <locationX>2074</locationX>
+        <locationX>2008</locationX>
         <locationY>1214</locationY>
         <defaultConnector>
             <targetReference>Get_Locked_RectypeId</targetReference>
@@ -199,7 +199,7 @@
     <decisions>
         <name>Check_EndCustomer_Account</name>
         <label>Check EndCustomer Account</label>
-        <locationX>340</locationX>
+        <locationX>336</locationX>
         <locationY>350</locationY>
         <defaultConnector>
             <targetReference>Get_Inactive_LOV_Values</targetReference>
@@ -238,7 +238,7 @@
     <decisions>
         <name>Check_for_pending_DRP</name>
         <label>Check for pending DRP</label>
-        <locationX>1315</locationX>
+        <locationX>1282</locationX>
         <locationY>782</locationY>
         <defaultConnector>
             <targetReference>Past_date_present_on_deal</targetReference>
@@ -263,7 +263,7 @@
     <decisions>
         <name>Check_if_User_is_Authorized_to_approve_deal</name>
         <label>Check if User is Authorized to approve deal</label>
-        <locationX>2087</locationX>
+        <locationX>1953</locationX>
         <locationY>242</locationY>
         <defaultConnector>
             <targetReference>Un_authorized_error</targetReference>
@@ -302,7 +302,7 @@
     <decisions>
         <name>Check_Inactive_LOV_Vlaues</name>
         <label>Check Inactive LOV Vlaues</label>
-        <locationX>630</locationX>
+        <locationX>622</locationX>
         <locationY>566</locationY>
         <defaultConnector>
             <targetReference>Has_Atleast_One_DRP</targetReference>
@@ -327,7 +327,7 @@
     <decisions>
         <name>Check_pricing_start_date</name>
         <label>Check pricing start date</label>
-        <locationX>2514</locationX>
+        <locationX>2382</locationX>
         <locationY>1646</locationY>
         <defaultConnector>
             <isGoTo>true</isGoTo>
@@ -378,7 +378,7 @@
     <decisions>
         <name>Comments_Character_limit</name>
         <label>Comments Character limit</label>
-        <locationX>2470</locationX>
+        <locationX>2338</locationX>
         <locationY>1106</locationY>
         <defaultConnector>
             <isGoTo>true</isGoTo>
@@ -419,7 +419,7 @@
     <decisions>
         <name>Has_Atleast_One_DRP</name>
         <label>Has Atleast One DRP</label>
-        <locationX>946</locationX>
+        <locationX>930</locationX>
         <locationY>674</locationY>
         <defaultConnector>
             <targetReference>Check_for_pending_DRP</targetReference>
@@ -444,7 +444,7 @@
     <decisions>
         <name>Is_deal_registration</name>
         <label>Is deal registration?</label>
-        <locationX>3092</locationX>
+        <locationX>2893</locationX>
         <locationY>134</locationY>
         <defaultConnector>
             <targetReference>Uncaught_Exception</targetReference>
@@ -469,7 +469,7 @@
     <decisions>
         <name>Past_date_present_on_deal</name>
         <label>Past date present on deal</label>
-        <locationX>1788</locationX>
+        <locationX>1722</locationX>
         <locationY>890</locationY>
         <defaultConnector>
             <targetReference>Commentssection</targetReference>
@@ -586,8 +586,8 @@
     <recordCreates>
         <name>Create_Log_Entry</name>
         <label>Create Log Entry</label>
-        <locationX>3306</locationX>
-        <locationY>3194</locationY>
+        <locationX>3042</locationX>
+        <locationY>3062</locationY>
         <inputAssignments>
             <field>Core_Details__c</field>
             <value>
@@ -642,7 +642,7 @@
     <recordCreates>
         <name>Create_Log_Entry_for_Approval</name>
         <label>Create Log Entry for Approval</label>
-        <locationX>3042</locationX>
+        <locationX>2778</locationX>
         <locationY>1646</locationY>
         <inputAssignments>
             <field>Core_Details__c</field>
@@ -698,7 +698,7 @@
     <recordLookups>
         <name>Get_Locked_RectypeId</name>
         <label>Get Locked RectypeId</label>
-        <locationX>2514</locationX>
+        <locationX>2382</locationX>
         <locationY>1322</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -742,8 +742,8 @@
     <recordUpdates>
         <name>Update_Approval_Actions_on_DR</name>
         <label>Update Approval Actions on DR</label>
-        <locationX>2074</locationX>
-        <locationY>2978</locationY>
+        <locationX>2008</locationX>
+        <locationY>2846</locationY>
         <connector>
             <targetReference>Succesfully_Approved_Screen</targetReference>
         </connector>
@@ -760,15 +760,12 @@
         <connector>
             <targetReference>Copy_1_of_Deal_record</targetReference>
         </connector>
-        <faultConnector>
-            <targetReference>Faultmessage</targetReference>
-        </faultConnector>
         <inputReference>DRPlist</inputReference>
     </recordUpdates>
     <screens>
         <name>Commentssection</name>
         <label>Comments section</label>
-        <locationX>2470</locationX>
+        <locationX>2338</locationX>
         <locationY>998</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
@@ -801,8 +798,8 @@
     <screens>
         <name>Copy_1_of_PCC_Deal_Approve_Exception</name>
         <label>Copy 1 of PCC Deal Approve Exception</label>
-        <locationX>3306</locationX>
-        <locationY>3086</locationY>
+        <locationX>3042</locationX>
+        <locationY>2954</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -862,31 +859,6 @@
         <fields>
             <name>Display_EndCustAcc</name>
             <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;font-size: 14px; color: rgb(0, 0, 0);&quot;&gt;Please provide End Customer Account as an Active Intel Account.&lt;/span&gt;&lt;/p&gt;</fieldText>
-            <fieldType>DisplayText</fieldType>
-            <styleProperties>
-                <verticalAlignment>
-                    <stringValue>top</stringValue>
-                </verticalAlignment>
-                <width>
-                    <stringValue>12</stringValue>
-                </width>
-            </styleProperties>
-        </fields>
-        <nextOrFinishButtonLabel>Close</nextOrFinishButtonLabel>
-        <showFooter>true</showFooter>
-        <showHeader>false</showHeader>
-    </screens>
-    <screens>
-        <name>Faultmessage</name>
-        <label>Faultmessage</label>
-        <locationX>2514</locationX>
-        <locationY>2570</locationY>
-        <allowBack>false</allowBack>
-        <allowFinish>true</allowFinish>
-        <allowPause>false</allowPause>
-        <fields>
-            <name>Diplaymessage</name>
-            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;There is an issue processing the record. Please raise a support ticket.&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
             <styleProperties>
                 <verticalAlignment>
@@ -1004,7 +976,7 @@
     <screens>
         <name>PCC_Deal_Approve_Exception</name>
         <label>PCC Deal Approve Exception</label>
-        <locationX>3042</locationX>
+        <locationX>2778</locationX>
         <locationY>1538</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
@@ -1032,8 +1004,8 @@
     <screens>
         <name>Succesfully_Approved_Screen</name>
         <label>Succesfully Approved Screen</label>
-        <locationX>2074</locationX>
-        <locationY>3086</locationY>
+        <locationX>2008</locationX>
+        <locationY>2954</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -1057,7 +1029,7 @@
     <screens>
         <name>Un_authorized_error</name>
         <label>Un-authorized error</label>
-        <locationX>3834</locationX>
+        <locationX>3570</locationX>
         <locationY>350</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
@@ -1082,7 +1054,7 @@
     <screens>
         <name>Uncaught_Exception</name>
         <label>Uncaught Exception</label>
-        <locationX>4098</locationX>
+        <locationX>3834</locationX>
         <locationY>242</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
@@ -1105,7 +1077,7 @@
         <showHeader>true</showHeader>
     </screens>
     <start>
-        <locationX>2966</locationX>
+        <locationX>2767</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Is_deal_registration</targetReference>

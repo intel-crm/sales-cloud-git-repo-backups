@@ -39,6 +39,10 @@
                 <behavior>Readonly</behavior>
                 <field>Active_Period__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Active__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

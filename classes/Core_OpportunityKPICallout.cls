@@ -47,7 +47,7 @@ public class Core_OpportunityKPICallout {
             if(res.getStatusCode() == 200 || res.getStatusCode() == 201){
                 Core_Log_Entry__c logEntry = new Core_Log_Entry__c();
                 
-                logEntry.Core_Details__c = req.getBody();
+                logEntry.Core_Details__c = limitStringLength(req.getBody());
                 logEntry.Core_sObjectId__c = oppId;
                 logEntry.Core_sObjectType__c = 'Opportunity';
                 logEntry.Core_Origin__c = 'Delta Load';
@@ -66,7 +66,7 @@ public class Core_OpportunityKPICallout {
             else {
                 Core_Log_Entry__c logEntry = new Core_Log_Entry__c();
         
-                logEntry.Core_Details__c = req.getBody();
+                logEntry.Core_Details__c = limitStringLength(req.getBody());
                 logEntry.Core_sObjectId__c = oppId;
                 logEntry.Core_sObjectType__c = 'Opportunity';
                 logEntry.Core_Origin__c = 'Delta Load';
@@ -94,8 +94,9 @@ public class Core_OpportunityKPICallout {
                 logEntry.Core_When__c = system.now();
                 logEntry.Core_Project__c = 'Sales';
               
-                logEntry.Core_Message__c = 'Failed line number '+e.getLineNumber() ;
-                logEntry.Core_Details__c = 'Req Body ' + reqBody +  'Error Message '+e.getStackTraceString();
+            logEntry.Core_Message__c = 'Failed line number '+e.getLineNumber();
+            String errorDetails = 'Req Body ' + reqBody +  'Error Message '+e.getStackTraceString();
+            logEntry.Core_Details__c = limitStringLength(errorDetails);
                 
                 retWrp.ListlogEntry.add(logEntry);
         }
@@ -125,5 +126,12 @@ public class Core_OpportunityKPICallout {
             Blob mac = Crypto.generateMac(algorithmName, Blob.valueOf(input), Blob.valueOf(key));
             hash = EncodingUtil.base64Encode(mac);
         return hash;
+    }
+
+    /**
+     * Reusable helper method to safely evaluate and truncate strings to fit long text fields.
+     */
+    private static String limitStringLength(String details) {
+        return (details != null && details.length() > 131000) ? details.substring(0, 131000) : details;
     }
 }

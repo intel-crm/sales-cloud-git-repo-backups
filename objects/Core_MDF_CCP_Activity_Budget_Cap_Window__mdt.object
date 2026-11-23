@@ -69,6 +69,16 @@
         </valueSet>
     </fields>
     <fields>
+        <fullName>Core_MDF_Field_Name_10_txt__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Field Name 10</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Core_MDF_Field_Name_1_txt__c</fullName>
         <externalId>false</externalId>
         <fieldManageability>DeveloperControlled</fieldManageability>
@@ -87,6 +97,129 @@
         <required>false</required>
         <type>Text</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Field_Name_3_txt__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Field Name 3</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Field_Name_4_txt__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Field Name 4</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Field_Name_5_txt__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Field Name 5</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Field_Name_6_txt__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Field Name 6</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Field_Name_7_txt__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Field Name 7</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Field_Name_8_txt__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Field Name 8</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Field_Name_9_txt__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Field Name 9</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Operator_10_nm__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Operator 10</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Equal</fullName>
+                    <default>true</default>
+                    <label>Equal</label>
+                </value>
+                <value>
+                    <fullName>Not Equal</fullName>
+                    <default>false</default>
+                    <label>Not Equal</label>
+                </value>
+                <value>
+                    <fullName>Less Than</fullName>
+                    <default>false</default>
+                    <label>Less Than</label>
+                </value>
+                <value>
+                    <fullName>Greater Than</fullName>
+                    <default>false</default>
+                    <label>Greater Than</label>
+                </value>
+                <value>
+                    <fullName>Less Than or Equal</fullName>
+                    <default>false</default>
+                    <label>Less Than or Equal</label>
+                </value>
+                <value>
+                    <fullName>Greater Than or Equal</fullName>
+                    <default>false</default>
+                    <label>Greater Than or Equal</label>
+                </value>
+                <value>
+                    <fullName>In</fullName>
+                    <default>false</default>
+                    <label>In</label>
+                </value>
+                <value>
+                    <fullName>Not In</fullName>
+                    <default>false</default>
+                    <label>Not In</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Core_MDF_Operator_1_nm__c</fullName>
@@ -195,6 +328,387 @@
         </valueSet>
     </fields>
     <fields>
+        <fullName>Core_MDF_Operator_3_nm__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Operator 3</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Equal</fullName>
+                    <default>true</default>
+                    <label>Equal</label>
+                </value>
+                <value>
+                    <fullName>Not Equal</fullName>
+                    <default>false</default>
+                    <label>Not Equal</label>
+                </value>
+                <value>
+                    <fullName>Less Than</fullName>
+                    <default>false</default>
+                    <label>Less Than</label>
+                </value>
+                <value>
+                    <fullName>Greater Than</fullName>
+                    <default>false</default>
+                    <label>Greater Than</label>
+                </value>
+                <value>
+                    <fullName>Less Than or Equal</fullName>
+                    <default>false</default>
+                    <label>Less Than or Equal</label>
+                </value>
+                <value>
+                    <fullName>Greater Than or Equal</fullName>
+                    <default>false</default>
+                    <label>Greater Than or Equal</label>
+                </value>
+                <value>
+                    <fullName>In</fullName>
+                    <default>false</default>
+                    <label>In</label>
+                </value>
+                <value>
+                    <fullName>Not In</fullName>
+                    <default>false</default>
+                    <label>Not In</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Operator_4_nm__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Operator 4</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Equal</fullName>
+                    <default>true</default>
+                    <label>Equal</label>
+                </value>
+                <value>
+                    <fullName>Not Equal</fullName>
+                    <default>false</default>
+                    <label>Not Equal</label>
+                </value>
+                <value>
+                    <fullName>Less Than</fullName>
+                    <default>false</default>
+                    <label>Less Than</label>
+                </value>
+                <value>
+                    <fullName>Greater Than</fullName>
+                    <default>false</default>
+                    <label>Greater Than</label>
+                </value>
+                <value>
+                    <fullName>Less Than or Equal</fullName>
+                    <default>false</default>
+                    <label>Less Than or Equal</label>
+                </value>
+                <value>
+                    <fullName>Greater Than or Equal</fullName>
+                    <default>false</default>
+                    <label>Greater Than or Equal</label>
+                </value>
+                <value>
+                    <fullName>In</fullName>
+                    <default>false</default>
+                    <label>In</label>
+                </value>
+                <value>
+                    <fullName>Not In</fullName>
+                    <default>false</default>
+                    <label>Not In</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Operator_5_nm__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Operator 5</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Equal</fullName>
+                    <default>true</default>
+                    <label>Equal</label>
+                </value>
+                <value>
+                    <fullName>Not Equal</fullName>
+                    <default>false</default>
+                    <label>Not Equal</label>
+                </value>
+                <value>
+                    <fullName>Less Than</fullName>
+                    <default>false</default>
+                    <label>Less Than</label>
+                </value>
+                <value>
+                    <fullName>Greater Than</fullName>
+                    <default>false</default>
+                    <label>Greater Than</label>
+                </value>
+                <value>
+                    <fullName>Less Than or Equal</fullName>
+                    <default>false</default>
+                    <label>Less Than or Equal</label>
+                </value>
+                <value>
+                    <fullName>Greater Than or Equal</fullName>
+                    <default>false</default>
+                    <label>Greater Than or Equal</label>
+                </value>
+                <value>
+                    <fullName>In</fullName>
+                    <default>false</default>
+                    <label>In</label>
+                </value>
+                <value>
+                    <fullName>Not In</fullName>
+                    <default>false</default>
+                    <label>Not In</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Operator_6_nm__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Operator 6</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Equal</fullName>
+                    <default>true</default>
+                    <label>Equal</label>
+                </value>
+                <value>
+                    <fullName>Not Equal</fullName>
+                    <default>false</default>
+                    <label>Not Equal</label>
+                </value>
+                <value>
+                    <fullName>Less Than</fullName>
+                    <default>false</default>
+                    <label>Less Than</label>
+                </value>
+                <value>
+                    <fullName>Greater Than</fullName>
+                    <default>false</default>
+                    <label>Greater Than</label>
+                </value>
+                <value>
+                    <fullName>Less Than or Equal</fullName>
+                    <default>false</default>
+                    <label>Less Than or Equal</label>
+                </value>
+                <value>
+                    <fullName>Greater Than or Equal</fullName>
+                    <default>false</default>
+                    <label>Greater Than or Equal</label>
+                </value>
+                <value>
+                    <fullName>In</fullName>
+                    <default>false</default>
+                    <label>In</label>
+                </value>
+                <value>
+                    <fullName>Not In</fullName>
+                    <default>false</default>
+                    <label>Not In</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Operator_7_nm__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Operator 7</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Equal</fullName>
+                    <default>true</default>
+                    <label>Equal</label>
+                </value>
+                <value>
+                    <fullName>Not Equal</fullName>
+                    <default>false</default>
+                    <label>Not Equal</label>
+                </value>
+                <value>
+                    <fullName>Less Than</fullName>
+                    <default>false</default>
+                    <label>Less Than</label>
+                </value>
+                <value>
+                    <fullName>Greater Than</fullName>
+                    <default>false</default>
+                    <label>Greater Than</label>
+                </value>
+                <value>
+                    <fullName>Less Than or Equal</fullName>
+                    <default>false</default>
+                    <label>Less Than or Equal</label>
+                </value>
+                <value>
+                    <fullName>Greater Than or Equal</fullName>
+                    <default>false</default>
+                    <label>Greater Than or Equal</label>
+                </value>
+                <value>
+                    <fullName>In</fullName>
+                    <default>false</default>
+                    <label>In</label>
+                </value>
+                <value>
+                    <fullName>Not In</fullName>
+                    <default>false</default>
+                    <label>Not In</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Operator_8_nm__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Operator 8</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Equal</fullName>
+                    <default>true</default>
+                    <label>Equal</label>
+                </value>
+                <value>
+                    <fullName>Not Equal</fullName>
+                    <default>false</default>
+                    <label>Not Equal</label>
+                </value>
+                <value>
+                    <fullName>Less Than</fullName>
+                    <default>false</default>
+                    <label>Less Than</label>
+                </value>
+                <value>
+                    <fullName>Greater Than</fullName>
+                    <default>false</default>
+                    <label>Greater Than</label>
+                </value>
+                <value>
+                    <fullName>Less Than or Equal</fullName>
+                    <default>false</default>
+                    <label>Less Than or Equal</label>
+                </value>
+                <value>
+                    <fullName>Greater Than or Equal</fullName>
+                    <default>false</default>
+                    <label>Greater Than or Equal</label>
+                </value>
+                <value>
+                    <fullName>In</fullName>
+                    <default>false</default>
+                    <label>In</label>
+                </value>
+                <value>
+                    <fullName>Not In</fullName>
+                    <default>false</default>
+                    <label>Not In</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Operator_9_nm__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Operator 9</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Equal</fullName>
+                    <default>true</default>
+                    <label>Equal</label>
+                </value>
+                <value>
+                    <fullName>Not Equal</fullName>
+                    <default>false</default>
+                    <label>Not Equal</label>
+                </value>
+                <value>
+                    <fullName>Less Than</fullName>
+                    <default>false</default>
+                    <label>Less Than</label>
+                </value>
+                <value>
+                    <fullName>Greater Than</fullName>
+                    <default>false</default>
+                    <label>Greater Than</label>
+                </value>
+                <value>
+                    <fullName>Less Than or Equal</fullName>
+                    <default>false</default>
+                    <label>Less Than or Equal</label>
+                </value>
+                <value>
+                    <fullName>Greater Than or Equal</fullName>
+                    <default>false</default>
+                    <label>Greater Than or Equal</label>
+                </value>
+                <value>
+                    <fullName>In</fullName>
+                    <default>false</default>
+                    <label>In</label>
+                </value>
+                <value>
+                    <fullName>Not In</fullName>
+                    <default>false</default>
+                    <label>Not In</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Value_10_txt__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Value 10</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Core_MDF_Value_1_txt__c</fullName>
         <externalId>false</externalId>
         <fieldManageability>DeveloperControlled</fieldManageability>
@@ -209,6 +723,76 @@
         <externalId>false</externalId>
         <fieldManageability>DeveloperControlled</fieldManageability>
         <label>Value 2</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Value_3_txt__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Value 3</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Value_4_txt__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Value 4</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Value_5_txt__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Value 5</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Value_6_txt__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Value 6</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Value_7_txt__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Value 7</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Value_8_txt__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Value 8</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Value_9_txt__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Value 9</label>
         <length>255</length>
         <required>false</required>
         <type>Text</type>

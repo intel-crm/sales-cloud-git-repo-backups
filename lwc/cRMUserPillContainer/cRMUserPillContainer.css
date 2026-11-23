@@ -1,0 +1,8 @@
+.custom-container{
+	color : black;
+}
+
+.slds-combobox_container .slds-input{
+	padding-left: 0px !important;
+	width: 103%;
+}

@@ -1,104 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <DashboardFolder xmlns="http://soap.sforce.com/2006/04/metadata">
     <folderShares>
-        <accessLevel>View</accessLevel>
-        <sharedTo>11340481@intel.com.crm</sharedTo>
+        <accessLevel>Manage</accessLevel>
+        <sharedTo>10673051@intel.com.crm</sharedTo>
         <sharedToType>User</sharedToType>
     </folderShares>
     <folderShares>
         <accessLevel>Manage</accessLevel>
-        <sharedTo>12318791@intel.com.crm</sharedTo>
+        <sharedTo>10166818@intel.com.crm</sharedTo>
         <sharedToType>User</sharedToType>
     </folderShares>
-    <folderShares>
-        <accessLevel>Manage</accessLevel>
-        <sharedTo>10668505@intel.com.crm</sharedTo>
-        <sharedToType>User</sharedToType>
-    </folderShares>
-    <folderShares>
-        <accessLevel>Manage</accessLevel>
-        <sharedTo>11577046@intel.com.crm</sharedTo>
-        <sharedToType>User</sharedToType>
-    </folderShares>
-    <folderShares>
-        <accessLevel>Manage</accessLevel>
-        <sharedTo>EMP_10695500_Tiffiny_Fisher</sharedTo>
-        <sharedToType>Role</sharedToType>
-    </folderShares>
-    <folderShares>
-        <accessLevel>View</accessLevel>
-        <sharedTo>EMP_12271211_Brent_Collins</sharedTo>
-        <sharedToType>Role</sharedToType>
-    </folderShares>
-    <folderShares>
-        <accessLevel>View</accessLevel>
-        <sharedTo>EMP_10532081_Madhu_Bramharouthu</sharedTo>
-        <sharedToType>RoleAndSubordinatesInternal</sharedToType>
-    </folderShares>
-    <folderShares>
-        <accessLevel>View</accessLevel>
-        <sharedTo>EMP_10668505_Steven_Darrah</sharedTo>
-        <sharedToType>RoleAndSubordinatesInternal</sharedToType>
-    </folderShares>
-    <folderShares>
-        <accessLevel>View</accessLevel>
-        <sharedTo>EMP_10695500_Tiffiny_Fisher</sharedTo>
-        <sharedToType>RoleAndSubordinatesInternal</sharedToType>
-    </folderShares>
-    <folderShares>
-        <accessLevel>View</accessLevel>
-        <sharedTo>EMP_11222908_Ranajit_Gangopadhyay</sharedTo>
-        <sharedToType>RoleAndSubordinatesInternal</sharedToType>
-    </folderShares>
-    <folderShares>
-        <accessLevel>View</accessLevel>
-        <sharedTo>EMP_11237591_Selin_Browning</sharedTo>
-        <sharedToType>RoleAndSubordinatesInternal</sharedToType>
-    </folderShares>
-    <folderShares>
-        <accessLevel>View</accessLevel>
-        <sharedTo>EMP_11502900_Paul_Mundinger</sharedTo>
-        <sharedToType>RoleAndSubordinatesInternal</sharedToType>
-    </folderShares>
-    <folderShares>
-        <accessLevel>View</accessLevel>
-        <sharedTo>EMP_11520146_Connor_Quigley</sharedTo>
-        <sharedToType>RoleAndSubordinatesInternal</sharedToType>
-    </folderShares>
-    <folderShares>
-        <accessLevel>View</accessLevel>
-        <sharedTo>EMP_11526126_Juanfer_Martinez_S</sharedTo>
-        <sharedToType>RoleAndSubordinatesInternal</sharedToType>
-    </folderShares>
-    <folderShares>
-        <accessLevel>View</accessLevel>
-        <sharedTo>EMP_11578265_Jordan_Catalano</sharedTo>
-        <sharedToType>RoleAndSubordinatesInternal</sharedToType>
-    </folderShares>
-    <folderShares>
-        <accessLevel>View</accessLevel>
-        <sharedTo>EMP_11578477_Martin_A_Hain</sharedTo>
-        <sharedToType>RoleAndSubordinatesInternal</sharedToType>
-    </folderShares>
-    <folderShares>
-        <accessLevel>View</accessLevel>
-        <sharedTo>EMP_11829998_Benjamin_Miller</sharedTo>
-        <sharedToType>RoleAndSubordinatesInternal</sharedToType>
-    </folderShares>
-    <folderShares>
-        <accessLevel>View</accessLevel>
-        <sharedTo>EMP_12067759_Stephen_Phillips</sharedTo>
-        <sharedToType>RoleAndSubordinatesInternal</sharedToType>
-    </folderShares>
-    <folderShares>
-        <accessLevel>View</accessLevel>
-        <sharedTo>EMP_12077379_Alan_Rosenthal</sharedTo>
-        <sharedToType>RoleAndSubordinatesInternal</sharedToType>
-    </folderShares>
-    <folderShares>
-        <accessLevel>View</accessLevel>
-        <sharedTo>EMP_12122308_Brett_Comfort</sharedTo>
-        <sharedToType>RoleAndSubordinatesInternal</sharedToType>
-    </folderShares>
-    <name>US NSP &amp; Integrators Dashboards</name>
+    <name>US INSIDE - HALVERSEN Dashboards</name>
 </DashboardFolder>

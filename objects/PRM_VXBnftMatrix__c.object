@@ -246,7 +246,7 @@
         <fullName>PRM_Partner_Role_Nm__c</fullName>
         <label>Partner Role</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -254,9 +254,9 @@
             <valueSetDefinition>
                 <sorted>false</sorted>
                 <value>
-                    <fullName>Builder</fullName>
+                    <fullName>Not Applicable</fullName>
                     <default>false</default>
-                    <label>Builder</label>
+                    <label>Not Applicable</label>
                 </value>
                 <value>
                     <fullName>Distributor</fullName>
@@ -264,14 +264,29 @@
                     <label>Distributor</label>
                 </value>
                 <value>
+                    <fullName>FPGA Designer</fullName>
+                    <default>false</default>
+                    <label>FPGA Designer</label>
+                </value>
+                <value>
                     <fullName>Independent Software Vendor</fullName>
                     <default>false</default>
                     <label>Independent Software Vendor</label>
                 </value>
                 <value>
+                    <fullName>Manufacturer</fullName>
+                    <default>false</default>
+                    <label>Manufacturer</label>
+                </value>
+                <value>
+                    <fullName>Seller</fullName>
+                    <default>false</default>
+                    <label>Seller</label>
+                </value>
+                <value>
                     <fullName>Service Provider</fullName>
                     <default>false</default>
-                    <label>Cloud &amp; Comms Service Provider</label>
+                    <label>Service Provider</label>
                 </value>
                 <value>
                     <fullName>Solution Integrator</fullName>
@@ -279,50 +294,8 @@
                     <label>Solution Integrator</label>
                 </value>
                 <value>
-                    <fullName>Guest</fullName>
-                    <default>false</default>
-                    <label>Guest</label>
-                </value>
-                <value>
-                    <fullName>FPGA Designer</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>FPGA Design Services</label>
-                </value>
-                <value>
-                    <fullName>Manufacturer</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Manufacturer</label>
-                </value>
-                <value>
-                    <fullName>Not Applicable</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Not Applicable</label>
-                </value>
-                <value>
-                    <fullName>OEM</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>OEM</label>
-                </value>
-                <value>
-                    <fullName>Original Equipment Manufacturer (OEM)</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Original Equipment Manufacturer (OEM)</label>
-                </value>
-                <value>
-                    <fullName>Seller</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Solution Provider</label>
-                </value>
-                <value>
                     <fullName>Sponsor</fullName>
                     <default>false</default>
-                    <isActive>false</isActive>
                     <label>Sponsor</label>
                 </value>
             </valueSetDefinition>
@@ -347,7 +320,7 @@
         <precision>18</precision>
         <required>false</required>
         <scale>0</scale>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
@@ -357,59 +330,16 @@
         <fullName>All</fullName>
         <columns>NAME</columns>
         <columns>PRM_Partner_Benefit_Id__c</columns>
+        <columns>PRM_Channel_Program_Id__c</columns>
         <columns>PRM_Channel_Program_Level_Id__c</columns>
         <columns>PRM_Partner_Type_Id__c</columns>
         <columns>PRM_Partner_Role_Nm__c</columns>
         <columns>PRM_Approval_Type_Nm__c</columns>
-        <columns>PRM_Channel_Program_Id__c</columns>
-        <columns>PRM_Total_Quantity_Nbr__c</columns>
         <columns>PRM_IsActive_Ind__c</columns>
-        <columns>PRM_BenfitMatrix_Combination__c</columns>
+        <columns>PRM_Covered_Account_Ind__c</columns>
+        <columns>PRM_Total_Quantity_Nbr__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
-    </listViews>
-    <listViews>
-        <fullName>Benefit_Matrix_IPA_Refresh</fullName>
-        <columns>NAME</columns>
-        <columns>PRM_Approval_Type_Nm__c</columns>
-        <columns>PRM_Partner_Benefit_Id__c</columns>
-        <columns>PRM_Partner_Role_Nm__c</columns>
-        <columns>PRM_Channel_Program_Level_Id__c</columns>
-        <columns>PRM_Total_Quantity_Nbr__c</columns>
-        <columns>PRM_IsActive_Ind__c</columns>
-        <filterScope>Everything</filterScope>
-        <label>Benefit Matrix - IPA Refresh</label>
-    </listViews>
-    <listViews>
-        <fullName>Copy_of_Copy_of_All</fullName>
-        <booleanFilter>1 AND 2 AND 3</booleanFilter>
-        <columns>NAME</columns>
-        <columns>PRM_Partner_Benefit_Id__c</columns>
-        <columns>PRM_Channel_Program_Level_Id__c</columns>
-        <columns>PRM_Partner_Type_Id__c</columns>
-        <columns>PRM_Partner_Role_Nm__c</columns>
-        <columns>PRM_Approval_Type_Nm__c</columns>
-        <columns>PRM_Channel_Program_Id__c</columns>
-        <columns>PRM_Total_Quantity_Nbr__c</columns>
-        <columns>PRM_IsActive_Ind__c</columns>
-        <columns>PRM_BenfitMatrix_Combination__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>PRM_Approval_Type_Nm__c</field>
-            <operation>equals</operation>
-            <value>Automatic</value>
-        </filters>
-        <filters>
-            <field>PRM_Channel_Program_Level_Id__c</field>
-            <operation>equals</operation>
-            <value>Partner</value>
-        </filters>
-        <filters>
-            <field>PRM_Partner_Role_Nm__c</field>
-            <operation>equals</operation>
-            <value>Builder</value>
-        </filters>
-        <label>Copy of Copy of All</label>
     </listViews>
     <nameField>
         <displayFormat>BX-{000}</displayFormat>
@@ -437,19 +367,27 @@
         <picklistValues>
             <picklist>PRM_Partner_Role_Nm__c</picklist>
             <values>
-                <fullName>Builder</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Distributor</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Guest</fullName>
+                <fullName>FPGA Designer</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>Independent Software Vendor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Manufacturer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Not Applicable</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Seller</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -458,6 +396,10 @@
             </values>
             <values>
                 <fullName>Solution Integrator</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sponsor</fullName>
                 <default>false</default>
             </values>
         </picklistValues>

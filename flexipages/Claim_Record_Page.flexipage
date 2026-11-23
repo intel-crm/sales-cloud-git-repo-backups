@@ -21,218 +21,48 @@
                 </componentInstanceProperties>
                 <componentName>force:highlightsPanel</componentName>
                 <identifier>force_highlightsPanel</identifier>
-                <visibilityRule>
-                    <booleanFilter>1 AND 2 AND 3 AND 4 AND 5</booleanFilter>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
-                        <operator>NE</operator>
-                        <rightValue>Co-GTM</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
-                        <operator>NE</operator>
-                        <rightValue>Intel Partner Alliance</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
-                        <operator>NE</operator>
-                        <rightValue>Client</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
-                        <operator>NE</operator>
-                        <rightValue>Datacenter</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
-                        <operator>NE</operator>
-                        <rightValue>Retail Marketing Funds</rightValue>
-                    </criteria>
-                </visibilityRule>
             </componentInstance>
         </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>fieldAPIName</name>
-                    <value>Core_MDF_Proposal_Based_Ind__c,Core_MDF_OutcomeBased_Ind__c,Core_MDF_Claim_Id__c,Core_MDF_Has_Sub_Claims_Ind__c,Core_MDF_Bank_Doc_Hold_Ind__c,Core_MDF_Campaign_Id__c</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>fieldAPIoperator</name>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>isCompactLayout</name>
-                    <value>Yes</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>objAPIName</name>
-                    <value>PartnerFundClaim</value>
-                </componentInstanceProperties>
-                <componentName>Core_MDF_Compact_Layout</componentName>
-                <identifier>c_Core_MDF_Compact_Layout</identifier>
-                <visibilityRule>
-                    <booleanFilter>1 OR 2 OR 3 OR 4 OR 5</booleanFilter>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Co-GTM</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Intel Partner Alliance</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Client</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Datacenter</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Retail Marketing Funds</rightValue>
-                    </criteria>
-                </visibilityRule>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>backgroundColor</name>
-                    <value>#ffffff</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>fontSize</name>
-                    <value>14</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>fontWeight</name>
-                    <value>normal</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>iconName</name>
-                    <value>utility:info</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>iconVariant</name>
-                    <value>neutral</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>showIcon</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>textAlign</name>
-                    <value>left</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>textColor</name>
-                    <value>#0469C1</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>textContent</name>
-                    <value>Core_MDF_SuccessMsg</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>visibilityCriteria</name>
-                    <value>Core_MDF_Status__c = &apos;Submitted&apos; and Core_MDF_OutcomeBased_Ind__c = True and Core_MDF_Campaign_Id__c = null and Core_MDF_Super_Claim_Status_nm__c = null</value>
-                </componentInstanceProperties>
-                <componentName>core_MDF_staticTextDisplay</componentName>
-                <identifier>c_core_MDF_staticTextDisplay2</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentName>core_MDF_ClaimAmountExceedingLimitMessage</componentName>
-                <identifier>c_core_MDF_ClaimAmountExceedingLimitMessage</identifier>
-                <visibilityRule>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Excess_Requested_Amount__c}</leftValue>
-                        <operator>NE</operator>
-                        <rightValue>0</rightValue>
-                    </criteria>
-                </visibilityRule>
-            </componentInstance>
-        </itemInstances>
+        <mode>Replace</mode>
         <name>header</name>
         <type>Region</type>
     </flexiPageRegions>
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
-                <componentName>Core_MDF_POPWrapperComponent</componentName>
-                <identifier>c_Core_MDF_POPWrapperComponent</identifier>
+                <componentInstanceProperties>
+                    <name>internalUserName</name>
+                    <value>Intel System User</value>
+                </componentInstanceProperties>
+                <componentName>core_MDF_HistoryComponent</componentName>
+                <identifier>core_MDF_HistoryComponent</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
-                    <name>fieldAPIName</name>
-                    <value>Core_MDF_Proposal_Based_Ind__c,Core_MDF_OutcomeBased_Ind__c,Core_MDF_Claim_Id__c,Core_MDF_Has_Sub_Claims_Ind__c,Core_MDF_Campaign_Id__c</value>
+                    <name>relatedListComponentOverride</name>
+                    <value>GRID</value>
                 </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>fieldAPIoperator</name>
-                    <value>AND</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>hasToRetainDecimalValues</name>
-                    <value>Yes</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>isCompactLayout</name>
-                    <value>No</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>isSectionVisible</name>
-                    <value>Yes</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>objAPIName</name>
-                    <value>PartnerFundClaim</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>standardFieldAlign</name>
-                    <value>Yes</value>
-                </componentInstanceProperties>
-                <componentName>core_MDF_CustomLayoutConfig</componentName>
-                <identifier>c_core_MDF_CustomLayoutConfig</identifier>
-                <visibilityRule>
-                    <booleanFilter>1 OR 2</booleanFilter>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Intel Partner Alliance</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Co-GTM</rightValue>
-                    </criteria>
-                </visibilityRule>
+                <componentName>force:relatedListContainer</componentName>
+                <identifier>force_relatedListContainer</identifier>
+            </componentInstance>
+        </itemInstances>
+        <mode>Replace</mode>
+        <name>relatedTabContent</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentName>Core_MDF_ManageAuditDocument</componentName>
+                <identifier>Core_MDF_ManageAuditDocument</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
             <componentInstance>
                 <componentName>force:detailPanel</componentName>
                 <identifier>force_detailPanel</identifier>
-                <visibilityRule>
-                    <booleanFilter>1 AND 2</booleanFilter>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
-                        <operator>NE</operator>
-                        <rightValue>Co-GTM</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
-                        <operator>NE</operator>
-                        <rightValue>Intel Partner Alliance</rightValue>
-                    </criteria>
-                </visibilityRule>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -251,176 +81,25 @@
                 <identifier>core_MDF_KPIDetailSection</identifier>
             </componentInstance>
         </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>hideHeader</name>
-                    <value>false</value>
-                </componentInstanceProperties>
-                <componentName>core_MDF_DisplayProducts</componentName>
-                <identifier>core_MDF_DisplayProducts</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentName>core_MDF_Campaign_Purpose_Detail</componentName>
-                <identifier>c_core_MDF_Campaign_Purpose_Detail</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>editable</name>
-                    <value>false</value>
-                </componentInstanceProperties>
-                <componentName>core_MDF_Tactics_Matric</componentName>
-                <identifier>c_core_MDF_Tactics_Matric</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>editable</name>
-                    <value>false</value>
-                </componentInstanceProperties>
-                <componentName>core_MDF_Tactic_Spending</componentName>
-                <identifier>c_core_MDF_Tactic_Spending</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>additionalCriteria</name>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>componentVisibilityCriteria</name>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>componentVisibilityCriteriaLogic</name>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>criteriaFieldAPIName</name>
-                    <value>Core_MDF_Claim_Id__c</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>hideColumnIfNoData</name>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>messageBelowTable</name>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>relatedobjectApiName</name>
-                    <value>PartnerFundClaim</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>restrictFieldVisiblityCriteriaFieldAPIName</name>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>restrictFieldVisiblityFieldAPIName</name>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>sharingFlag</name>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>strFields</name>
-                    <value>ChannelPartnerId,Core_MDF_Requested_Reimbursement_Amt__c,Core_MDF_Status__c,Core_MDF_Claim_Hold_Type_txt__c,Core_MDF_Bank__c,Core_MDF_VAT_Opt_In__c</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>strLabels</name>
-                    <value>,,Disbursement_Status,,,</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>tableHeader</name>
-                    <value>Payment_Breakdown</value>
-                </componentInstanceProperties>
-                <componentName>core_MDF_Custom_Related_List</componentName>
-                <identifier>c_core_MDF_Custom_Related_List</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>backgroundColor</name>
-                    <value>#ffffff</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>fontSize</name>
-                    <value>14</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>fontWeight</name>
-                    <value>normal</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>iconName</name>
-                    <value>utility:info</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>iconVariant</name>
-                    <value>neutral</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>showIcon</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>textAlign</name>
-                    <value>left</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>textColor</name>
-                    <value>#0469C1</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>textContent</name>
-                    <value>Core_MDF_PaymentBreakdownStatus_StaticText</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>visibilityCriteria</name>
-                    <value>Core_MDF_Has_Sub_Claims_Ind__c = True</value>
-                </componentInstanceProperties>
-                <componentName>core_MDF_staticTextDisplay</componentName>
-                <identifier>c_core_MDF_staticTextDisplay</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>additionalCriteria</name>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>criteriaFieldAPIName</name>
-                    <value>Core_MDF_Claim_Id__c</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>relatedobjectApiName</name>
-                    <value>PartnerFundClaim</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>restrictFieldVisiblityCriteriaFieldAPIName</name>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>restrictFieldVisiblityFieldAPIName</name>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>sharingFlag</name>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>strFields</name>
-                    <value>ChannelPartnerId,Core_MDF_Payment_Id__c,Core_MDF_Payment_Made_Dt__c,Core_MDF_EFT_Number_txt__c</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>tableHeader</name>
-                    <value>Payment_Details</value>
-                </componentInstanceProperties>
-                <componentName>core_MDF_Custom_Related_List</componentName>
-                <identifier>c_core_MDF_Custom_Related_List2</identifier>
-            </componentInstance>
-        </itemInstances>
+        <mode>Replace</mode>
         <name>detailTabContent</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>relatedTabContent</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>title</name>
+                    <value>Standard.Tab.relatedLists</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:tab</componentName>
+                <identifier>relatedListsTab</identifier>
+            </componentInstance>
+        </itemInstances>
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
@@ -439,6 +118,7 @@
                 <identifier>detailTab</identifier>
             </componentInstance>
         </itemInstances>
+        <mode>Replace</mode>
         <name>maintabs</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -453,389 +133,19 @@
                 <identifier>flexipage_tabset</identifier>
             </componentInstance>
         </itemInstances>
-        <name>leftcol</name>
+        <mode>Replace</mode>
+        <name>main</name>
         <type>Region</type>
     </flexiPageRegions>
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
-                <componentName>Core_MDF_ProposalApproval</componentName>
-                <identifier>c_Core_MDF_ProposalApproval</identifier>
+                <componentName>runtime_sales_activities:activityPanel</componentName>
+                <identifier>runtime_sales_activities_activityPanel</identifier>
             </componentInstance>
         </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>recordId</name>
-                    <value>{recordId}</value>
-                </componentInstanceProperties>
-                <componentName>core_MDF_PICReviewDetails</componentName>
-                <identifier>c_core_MDF_PICReviewDetails</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>parentFieldApiName</name>
-                    <value>PartnerFundClaim.Id</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>relatedListApiName</name>
-                    <value>Case_Review_Documents__r</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>relatedListComponentOverride</name>
-                    <value>NONE</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>rowsToDisplay</name>
-                    <value>10</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>showActionBar</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentName>force:relatedListSingleContainer</componentName>
-                <identifier>force_relatedListSingleContainer</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>identifierCheckboxField1</name>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>identifierCheckboxField2</name>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>identifierTextField1</name>
-                    <value>Core_MDF_Program__c</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>identifierTextField2</name>
-                </componentInstanceProperties>
-                <componentName>core_MDF_ApprovalHistoryRelatedList</componentName>
-                <identifier>c_core_MDF_ApprovalHistoryRelatedList</identifier>
-                <visibilityRule>
-                    <booleanFilter>1 OR 2</booleanFilter>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Co-GTM</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Intel Partner Alliance</rightValue>
-                    </criteria>
-                </visibilityRule>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>fieldsToMask</name>
-                    <value>Core_MDF_Claim_Submitter_Id__c;Core_MDF_Last_Reviewed_By_id__c</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>internalUserName</name>
-                    <value>Intel System User</value>
-                </componentInstanceProperties>
-                <componentName>core_MDF_HistoryComponent</componentName>
-                <identifier>core_MDF_HistoryComponent</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>parentFieldApiName</name>
-                    <value>PartnerFundClaim.Id</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>relatedListApiName</name>
-                    <value>Claim_Recoveries__r</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>relatedListComponentOverride</name>
-                    <value>NONE</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>rowsToDisplay</name>
-                    <value>10</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>showActionBar</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentName>force:relatedListSingleContainer</componentName>
-                <identifier>force_relatedListSingleContainer2</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>parentFieldApiName</name>
-                    <value>PartnerFundClaim.Id</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>relatedListApiName</name>
-                    <value>Claim_Offsets__r</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>relatedListComponentOverride</name>
-                    <value>NONE</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>rowsToDisplay</name>
-                    <value>10</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>showActionBar</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentName>force:relatedListSingleContainer</componentName>
-                <identifier>force_relatedListSingleContainer3</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>parentFieldApiName</name>
-                    <value>PartnerFundClaim.Id</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>relatedListApiName</name>
-                    <value>Claim_Offset__r</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>relatedListComponentOverride</name>
-                    <value>NONE</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>rowsToDisplay</name>
-                    <value>10</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>showActionBar</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentName>force:relatedListSingleContainer</componentName>
-                <identifier>force_relatedListSingleContainer7</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>parentFieldApiName</name>
-                    <value>PartnerFundClaim.Id</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>relatedListApiName</name>
-                    <value>Claim_Offsets1__r</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>relatedListComponentOverride</name>
-                    <value>NONE</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>rowsToDisplay</name>
-                    <value>10</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>showActionBar</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentName>force:relatedListSingleContainer</componentName>
-                <identifier>force_relatedListSingleContainer11</identifier>
-                <visibilityRule>
-                    <booleanFilter>1 AND 2 AND 3 AND 4 AND 5</booleanFilter>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Intel Partner Alliance</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Budget_Type_Options_Nm__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Account Plan</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Has_Sub_Claims_Ind__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>false</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Super_Claim_Status_nm__c}</leftValue>
-                        <operator>NE</operator>
-                        <rightValue>&apos;&apos;</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Type_Txt__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Claim</rightValue>
-                    </criteria>
-                </visibilityRule>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>parentFieldApiName</name>
-                    <value>PartnerFundClaim.Id</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>relatedListApiName</name>
-                    <value>Claim_Adjustment_Requests__r</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>relatedListComponentOverride</name>
-                    <value>NONE</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>rowsToDisplay</name>
-                    <value>10</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>showActionBar</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentName>force:relatedListSingleContainer</componentName>
-                <identifier>force_relatedListSingleContainer4</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>parentFieldApiName</name>
-                    <value>PartnerFundClaim.Id</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>relatedListApiName</name>
-                    <value>Claim_Adjustment_Requests1__r</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>relatedListComponentOverride</name>
-                    <value>NONE</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>rowsToDisplay</name>
-                    <value>10</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>showActionBar</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentName>force:relatedListSingleContainer</componentName>
-                <identifier>force_relatedListSingleContainer5</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>parentFieldApiName</name>
-                    <value>PartnerFundClaim.Id</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>relatedListApiName</name>
-                    <value>Claim_Adjustment_Requests2__r</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>relatedListComponentOverride</name>
-                    <value>NONE</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>rowsToDisplay</name>
-                    <value>10</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>showActionBar</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentName>force:relatedListSingleContainer</componentName>
-                <identifier>force_relatedListSingleContainer10</identifier>
-                <visibilityRule>
-                    <booleanFilter>1 AND 2 AND 3 AND 4 AND 5</booleanFilter>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Intel Partner Alliance</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Budget_Type_Options_Nm__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Account Plan</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Has_Sub_Claims_Ind__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>false</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Super_Claim_Status_nm__c}</leftValue>
-                        <operator>NE</operator>
-                        <rightValue>&apos;&apos;</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Type_Txt__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Claim</rightValue>
-                    </criteria>
-                </visibilityRule>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>parentFieldApiName</name>
-                    <value>PartnerFundClaim.Id</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>relatedListApiName</name>
-                    <value>Claim_VAT_Documents__r</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>relatedListComponentOverride</name>
-                    <value>NONE</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>rowsToDisplay</name>
-                    <value>10</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>showActionBar</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentName>force:relatedListSingleContainer</componentName>
-                <identifier>force_relatedListSingleContainer6</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>parentFieldApiName</name>
-                    <value>PartnerFundClaim.Id</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>relatedListApiName</name>
-                    <value>Notes__r</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>relatedListComponentOverride</name>
-                    <value>NONE</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>rowsToDisplay</name>
-                    <value>10</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>showActionBar</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentName>force:relatedListSingleContainer</componentName>
-                <identifier>force_relatedListSingleContainer9</identifier>
-            </componentInstance>
-        </itemInstances>
-        <name>Facet-5611949d-85ab-43be-81d2-0953e7f36c5c</name>
+        <mode>Replace</mode>
+        <name>activityTabContent</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -847,17 +157,18 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>body</name>
-                    <value>Facet-5611949d-85ab-43be-81d2-0953e7f36c5c</value>
+                    <value>activityTabContent</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>title</name>
-                    <value>Standard.Tab.relatedLists</value>
+                    <value>Standard.Tab.activity</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
-                <identifier>flexipage_tab</identifier>
+                <identifier>activityTab</identifier>
             </componentInstance>
         </itemInstances>
-        <name>Facet-f742f2c9-4202-42e7-9504-16e60c27dddd</name>
+        <mode>Replace</mode>
+        <name>sidebartabs</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -865,19 +176,21 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>tabs</name>
-                    <value>Facet-f742f2c9-4202-42e7-9504-16e60c27dddd</value>
+                    <value>sidebartabs</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:tabset</componentName>
                 <identifier>flexipage_tabset2</identifier>
             </componentInstance>
         </itemInstances>
-        <name>rightcol</name>
+        <mode>Replace</mode>
+        <name>sidebar</name>
         <type>Region</type>
     </flexiPageRegions>
     <masterLabel>Claim Record Page</masterLabel>
+    <parentFlexiPage>flexipage__default_rec_L</parentFlexiPage>
     <sobjectType>PartnerFundClaim</sobjectType>
     <template>
-        <name>flexipage:recordHomeTwoColEqualHeaderTemplateDesktop</name>
+        <name>flexipage:recordHomeTemplateDesktop</name>
     </template>
     <type>RecordPage</type>
 </FlexiPage>

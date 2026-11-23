@@ -10,7 +10,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>AIO</masterLabel>
-        <translation>整合式全功能</translation>
+        <translation><!-- AIO --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>All-in-One Desktop</masterLabel>
@@ -26,7 +26,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Appliance</masterLabel>
-        <translation>設備</translation>
+        <translation><!-- Appliance --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Athena</masterLabel>
@@ -37,28 +37,12 @@
         <translation><!-- Chromebook --></translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Client</masterLabel>
-        <translation>用戶端</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Cloud</masterLabel>
         <translation>雲端</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Cloud Instance Consumption</masterLabel>
-        <translation>雲端實例使用量</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Communications</masterLabel>
         <translation>通訊</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Component</masterLabel>
-        <translation>系統元件</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Data Center DGPU</masterLabel>
-        <translation><!-- Data Center DGPU --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Desktop</masterLabel>
@@ -67,22 +51,6 @@
     <valueTranslation>
         <masterLabel>Edge Gateway</masterLabel>
         <translation><!-- Edge Gateway --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Edge/IOT</masterLabel>
-        <translation>邊緣/IOT</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>FPGA Programmable Solution</masterLabel>
-        <translation>FPGA 可程式化解決方案</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>HPC</masterLabel>
-        <translation>高效能運算</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Handheld</masterLabel>
-        <translation>手持裝置</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Hyper Converged Solutions</masterLabel>
@@ -95,10 +63,6 @@
     <valueTranslation>
         <masterLabel>Intel vPro®</masterLabel>
         <translation><!-- Intel vPro® --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intelligent Edge/IoT</masterLabel>
-        <translation>智能邊緣/物聯網</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Core™ i3</masterLabel>
@@ -154,11 +118,11 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Mini PC w/NUC</masterLabel>
-        <translation>搭載 NUC 的迷你型電腦</translation>
+        <translation><!-- Mini PC w/NUC --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Mini PC/NUC</masterLabel>
-        <translation>迷你電腦/NUC</translation>
+        <translation><!-- Mini PC/NUC --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Modern Notebook (2-in-1/T+L)</masterLabel>
@@ -166,23 +130,15 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Motherboard</masterLabel>
-        <translation>主機板</translation>
+        <translation><!-- Motherboard --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>NUC</masterLabel>
         <translation><!-- NUC --></translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Networking &amp; Telecommunications</masterLabel>
-        <translation>網路與電信</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Networking/Ethernet</masterLabel>
-        <translation>網路/乙太網路</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Notebook</masterLabel>
-        <translation>筆記型電腦</translation>
+        <translation><!-- Notebook --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>OpenVINO™</masterLabel>
@@ -190,59 +146,19 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Other</masterLabel>
-        <translation>其他</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Programmable Solution</masterLabel>
-        <translation>可程式化解決方案</translation>
+        <translation><!-- Other --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Server</masterLabel>
         <translation>伺服器</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Server (AI/GPU)</masterLabel>
-        <translation>伺服器（AI/GPU）</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Server (Cloud)</masterLabel>
-        <translation>伺服器（雲端）</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Server (ESMB)</masterLabel>
-        <translation>伺服器（ESMB）</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Server (HPC)</masterLabel>
-        <translation>伺服器 （HPC）</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Server (non-HPC)</masterLabel>
-        <translation>伺服器（非 HPC）</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Service</masterLabel>
-        <translation>服務</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Software</masterLabel>
-        <translation>軟體</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Solution</masterLabel>
-        <translation>解決方案</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Storage</masterLabel>
         <translation>儲存系統</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Telco</masterLabel>
-        <translation>電信</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Thin &amp; Light</masterLabel>
-        <translation>輕薄裝置</translation>
+        <translation><!-- Thin &amp; Light --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Traditional Desktop</masterLabel>
@@ -250,15 +166,11 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Traditional Notebook</masterLabel>
-        <translation>傳統筆記型電腦</translation>
+        <translation><!-- Traditional Notebook --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Workstation</masterLabel>
         <translation><!-- Workstation --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Workstation - Desktop</masterLabel>
-        <translation>工作站 - 桌上型電腦</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Workstation - Fixed</masterLabel>
@@ -267,9 +179,5 @@
     <valueTranslation>
         <masterLabel>Workstation - Mobile</masterLabel>
         <translation>工作站 - 行動電腦</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Xeon</masterLabel>
-        <translation><!-- Xeon --></translation>
     </valueTranslation>
 </GlobalValueSetTranslation>

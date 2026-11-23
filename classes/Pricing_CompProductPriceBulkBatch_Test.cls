@@ -1,10 +1,3 @@
-/**
- * @description       : 
- * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
- * @group             : 
- * @last modified on  : 03-31-2026
- * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
-**/
 @isTest
 public class Pricing_CompProductPriceBulkBatch_Test {
 	@testSetup
@@ -16,6 +9,7 @@ public class Pricing_CompProductPriceBulkBatch_Test {
             Pricing_Test_Utility.createPriceBook();
             Account acc = Pricing_Test_Utility.createAccount();
             Contact con = Pricing_Test_Utility.createPrimaryContact(acc.Id);
+            List<User> accountExecutiveUserList = Pricing_Test_Utility.createAEUser();
             List<User> salesRepUserList = Pricing_Test_Utility.createSalesRepUser();
             AccountTeamMember accTeam = new AccountTeamMember(AccountId = acc.Id,
                                                               TeamMemberRole = 'Technical Sales',UserId = salesRepUserList[0].Id);

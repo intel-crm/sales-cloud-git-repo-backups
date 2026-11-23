@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>This email is to notify the approver whenever an account request is created</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Account Request Creation</name>
+    <style>none</style>
+    <subject>{!Account_Create_Request__c.Name} New Account Request is Created</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

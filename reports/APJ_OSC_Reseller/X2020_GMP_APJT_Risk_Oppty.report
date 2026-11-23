@@ -112,7 +112,7 @@
         <field>Opportunity.Core_Risk_Reason__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>2021 Inside Sales Risk Oppty_New 2Aug</name>
+    <name>2020 GMP APJT Risk Oppty</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -138,6 +138,8 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

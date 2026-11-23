@@ -1,3 +1,10 @@
+/**
+ * @description       : 
+ * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+ * @group             : 
+ * @last modified on  : 11-14-2024
+ * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+**/
 public without sharing class CST_UtilityClass {
     
     @InvocableMethod( label='Map AD and AF Records')    
@@ -10,18 +17,16 @@ public without sharing class CST_UtilityClass {
         Map<Id,SPM_Account_Detail__c > adMap = null;
         
         if(customerFeedbackIds != null){
-        adMap = new Map<Id,SPM_Account_Detail__c>([Select id,Feedback_Id__c,SPM_Customer_ID__c from SPM_Account_Detail__c where SPM_Customer_ID__c in: customerFeedbackIds and  Feedback_Id__c= null ]);
+        adMap = new Map<Id,SPM_Account_Detail__c>([Select id,Feedback_Id__c,SPM_Customer_ID__c from SPM_Account_Detail__c where SPM_Customer_ID__c in: customerFeedbackIds and Feedback_Id__c= null ]);
         }
-        
         if(customerFeedbackIds != null){
            // accDetails = [Select id,Feedback_Id__c,SPM_Customer_ID__c from SPM_Account_Detail__c where SPM_Customer_ID__c in: customerFeedbackIds and  Feedback_Id__c= null ];
             accFeedback = [Select id,Account_ID__c,Account_ID__r.SPM_Customer_ID__c , Account_ID__r.Feedback_Id__c from SPM_Account_Feedback__c where Account_ID__r.SPM_Customer_ID__c  in:customerFeedbackIds and Account_ID__r.Feedback_Id__c = null  ];
             accDetailsToUpdate = new List<SPM_Account_Detail__c>();
-            
             for(SPM_Account_Feedback__c accF : accFeedback){
-                
+
                 for(SPM_Account_Detail__c accD : adMap.values()){
-                    
+
                     if(accD.Id == accF.Account_ID__c ){
                        
                         
@@ -34,13 +39,13 @@ public without sharing class CST_UtilityClass {
                 }
             }
         }
-        
+
         
         if(accDetailsToUpdate != null){
             
             List<Database.SaveResult> saveResults =  Database.update(accDetailsToUpdate, false);
             
-            
+
             List<Core_Log_Entry__c> logErrors = new List<Core_Log_Entry__c>();                        
             
             for(Database.SaveResult sr : saveResults){

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Quote Exhibit List</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Quote Exhibit List</value>
+    </caseValues>
+    <fields>
+        <label><!-- Product --></label>
+        <name>core_cpq_product__c</name>
+        <relationshipLabel><!-- Quote Exhibit List --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Quote --></label>
+        <name>core_cpq_quote__c</name>
+        <relationshipLabel><!-- Quote Exhibit List --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Quote Line --></label>
+        <name>core_cpq_quote_line__c</name>
+        <relationshipLabel><!-- Quote Exhibit List --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

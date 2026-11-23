@@ -155,44 +155,6 @@
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
     <fields>
-        <fullName>Core_MDF_AI_Checklist_Status_Nm__c</fullName>
-        <description>Holds the Checklist Status suggested by AI</description>
-        <label>AI Checklist Status</label>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Picklist</type>
-        <valueSet>
-            <restricted>true</restricted>
-            <valueSetDefinition>
-                <sorted>false</sorted>
-                <value>
-                    <fullName>Compliant</fullName>
-                    <default>false</default>
-                    <label>Compliant</label>
-                </value>
-                <value>
-                    <fullName>Non-Compliant</fullName>
-                    <default>false</default>
-                    <label>Non-Compliant</label>
-                </value>
-                <value>
-                    <fullName>NA</fullName>
-                    <default>false</default>
-                    <label>NA</label>
-                </value>
-            </valueSetDefinition>
-        </valueSet>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_AI_Generated_Comments_Txt__c</fullName>
-        <description>Holds the Checklist Comments suggested by AI</description>
-        <label>AI Generated Comments</label>
-        <length>32768</length>
-        <trackTrending>false</trackTrending>
-        <type>LongTextArea</type>
-        <visibleLines>3</visibleLines>
-    </fields>
-    <fields>
         <fullName>Core_MDF_Case_ID__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <label>Case_ID</label>
@@ -237,26 +199,6 @@
                     <fullName>Submission</fullName>
                     <default>false</default>
                     <label>Submission</label>
-                </value>
-                <value>
-                    <fullName>Attribution</fullName>
-                    <default>false</default>
-                    <label>Attribution</label>
-                </value>
-                <value>
-                    <fullName>POP</fullName>
-                    <default>false</default>
-                    <label>POP</label>
-                </value>
-                <value>
-                    <fullName>Engagement</fullName>
-                    <default>false</default>
-                    <label>Engagement</label>
-                </value>
-                <value>
-                    <fullName>Others</fullName>
-                    <default>false</default>
-                    <label>Others</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -372,29 +314,14 @@
                     <label>Claims outside of 6 months claiming window</label>
                 </value>
                 <value>
-                    <fullName>Claims outside of claiming window</fullName>
-                    <default>false</default>
-                    <label>Claims outside of claiming window</label>
-                </value>
-                <value>
                     <fullName>Competitive element violation</fullName>
                     <default>false</default>
                     <label>Competitive element violation</label>
                 </value>
                 <value>
-                    <fullName>Consistency Issue</fullName>
-                    <default>false</default>
-                    <label>Consistency Issue</label>
-                </value>
-                <value>
                     <fullName>Cost documents altered</fullName>
                     <default>false</default>
                     <label>Cost documents altered</label>
-                </value>
-                <value>
-                    <fullName>Cost documents altered/not valid</fullName>
-                    <default>false</default>
-                    <label>Cost documents altered/not valid</label>
                 </value>
                 <value>
                     <fullName>Duplicate claims</fullName>
@@ -407,24 +334,9 @@
                     <label>Eligible ad space error</label>
                 </value>
                 <value>
-                    <fullName>Eligible Product/Solution Not Prominent/Missing</fullName>
-                    <default>false</default>
-                    <label>Eligible Product/Solution Not Prominent/Missing</label>
-                </value>
-                <value>
-                    <fullName>Embargo countries</fullName>
-                    <default>false</default>
-                    <label>Embargo countries</label>
-                </value>
-                <value>
                     <fullName>Event prior approval violation</fullName>
                     <default>false</default>
                     <label>Event prior approval violation</label>
-                </value>
-                <value>
-                    <fullName>Event prior approval violation. Pre-review documentation violation</fullName>
-                    <default>false</default>
-                    <label>Event prior approval violation. Pre-review documentation violation</label>
                 </value>
                 <value>
                     <fullName>Exceeds Gift &amp; Entertainment guide</fullName>
@@ -436,16 +348,6 @@
                     <default>false</default>
                     <isActive>false</isActive>
                     <label>Exceeds Gifts &amp; Entertainment guide</label>
-                </value>
-                <value>
-                    <fullName>Execution date mismatch</fullName>
-                    <default>false</default>
-                    <label>Execution date mismatch</label>
-                </value>
-                <value>
-                    <fullName>Incorrect/missing Additional Attribution</fullName>
-                    <default>false</default>
-                    <label>Incorrect/missing Additional Attribution</label>
                 </value>
                 <value>
                     <fullName>Incorrect/missing Intel mention</fullName>
@@ -471,11 +373,6 @@
                     <fullName>Incorrect Intel logo/sig ID</fullName>
                     <default>false</default>
                     <label>Incorrect Intel logo/sig ID</label>
-                </value>
-                <value>
-                    <fullName>Incorrect Intel Mention</fullName>
-                    <default>false</default>
-                    <label>Incorrect Intel Mention</label>
                 </value>
                 <value>
                     <fullName>Incorrect Intel Processor Brands</fullName>
@@ -563,11 +460,6 @@
                     <label>Non-eligible Intel product brand</label>
                 </value>
                 <value>
-                    <fullName>Non-eligible product/solution</fullName>
-                    <default>false</default>
-                    <label>Non-eligible product/solution</label>
-                </value>
-                <value>
                     <fullName>Non-reimbursable costs</fullName>
                     <default>false</default>
                     <label>Non-reimbursable costs</label>
@@ -598,39 +490,14 @@
                     <label>POC detail submission error</label>
                 </value>
                 <value>
-                    <fullName>POE documents altered</fullName>
-                    <default>false</default>
-                    <label>POE documents altered</label>
-                </value>
-                <value>
-                    <fullName>POP contain redaction</fullName>
-                    <default>false</default>
-                    <label>POP contain redaction</label>
-                </value>
-                <value>
                     <fullName>POP not in acceptable format</fullName>
                     <default>false</default>
                     <label>POP not in acceptable format</label>
                 </value>
                 <value>
-                    <fullName>Promoting Non-Intel Product</fullName>
-                    <default>false</default>
-                    <label>Promoting Non-Intel Product</label>
-                </value>
-                <value>
-                    <fullName>Proof of Execution altered</fullName>
-                    <default>false</default>
-                    <label>Proof of Execution altered</label>
-                </value>
-                <value>
                     <fullName>Qualified Processor Brands violation</fullName>
                     <default>false</default>
                     <label>Qualified Processor Brands violation</label>
-                </value>
-                <value>
-                    <fullName>SPIF underperformed</fullName>
-                    <default>false</default>
-                    <label>SPIF underperformed</label>
                 </value>
                 <value>
                     <fullName>Third-party logos violation</fullName>
@@ -714,11 +581,18 @@
     <searchLayouts/>
     <sharingModel>Private</sharingModel>
     <validationRules>
+        <fullName>Core_MDF_Validate_Impact_Amount</fullName>
+        <active>true</active>
+        <description>Impact Amount should be greater than 0</description>
+        <errorConditionFormula>if(Core_MDF_Impact_Amount__c &lt;=0,true,false)</errorConditionFormula>
+        <errorMessage>Enter Impact Amounts greater than 0</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>Core_MDF_Validate_NonCompliant_Responses</fullName>
         <active>true</active>
         <description>Validates if every Non-Compliant Checklist response has an Impact Amount tied to it.</description>
-        <errorConditionFormula>IF(AND(ISPICKVAL(Core_MDF_Checklist_Status__c, &apos;Non-Compliant&apos;),  ISNULL(Core_MDF_Impact_Amount__c) || Core_MDF_Impact_Amount__c &lt;0),true,false)</errorConditionFormula>
-        <errorMessage>Enter Impact Amount (local) greater than or equal to 0</errorMessage>
+        <errorConditionFormula>IF(AND(ISPICKVAL(Core_MDF_Checklist_Status__c, &apos;Non-Compliant&apos;),  ISNULL(Core_MDF_Impact_Amount__c)),true,false)</errorConditionFormula>
+        <errorMessage>Enter missing Impact Amounts for items checked Non-compliant</errorMessage>
     </validationRules>
     <visibility>Public</visibility>
 </CustomObject>

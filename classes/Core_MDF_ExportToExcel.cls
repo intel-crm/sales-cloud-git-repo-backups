@@ -5,12 +5,10 @@ public with sharing class Core_MDF_ExportToExcel {
     public static String logEntryMsg = '';
     public String strQuery;        
     public static string domainUrl;
-    public static string pageUrl;
-    public static boolean isVaildSObject;    
+    public static string pageUrl;    
     public static final integer ASCII_FOR_DOUBLE_QUOTE = 34;    
     public static Boolean isPDFExportActive { get; set; }    
-    Boolean isExcelExportActive { get; set; } 
-    public static Boolean isMobileView { get; set; } 
+    Boolean isExcelExportActive { get; set; }    
     public static Boolean isCSVExportActive { get; set; }    
     public static String contentType { get; set; } 
     public static String objName { get; set; }     
@@ -23,44 +21,29 @@ public with sharing class Core_MDF_ExportToExcel {
     public String bom    { get { return '\uFEFF'; } }    
     public String fileName { get; set; }
     public String returnURL;
-    public static Id strFilterId; //Converted the datatype to Id as part of WW49 ATHR fix
+    public static String strFilterId;
     public String errorMsg;
-    public string testendpointUrl;
-    public string sanitizedEndPointUrl;
     
- public Core_MDF_ExportToExcel() { 
+    public Core_MDF_ExportToExcel() { 
         try{
-            //check if the page is opened from salesforce1 mobile app then display info msg else load the page.
-            if(UserInfo.getUiTheme() == 'Theme4t'){
-                ApexPages.Message myMsg = new ApexPages.Message(ApexPages.Severity.Info, 'Export not enabled for mobile app in current version.');
-                ApexPages.addMessage(myMsg);
-                isMobileView=true;
-                return;
-            }
-            else{
-            pageUrl=ApexPages.currentPage().getUrl();    
-            objName =  String.escapeSingleQuotes(ApexPages.currentPage().getUrl().substringAfter('ObjName=').substringBefore('&'));
-           //check if the objname is a valid sobject.
-            for (Schema.SObjectType sObjectType : Schema.getGlobalDescribe().values() ) {
-                 String sobjName = String.valueOf(sObjectType);
-                 if (sobjName.contains(objName) ) {
-                    isVaildSObject = true;
-                    break;
-                 }
-                
-            }
+            pageUrl=ApexPages.currentPage().getUrl();        
+            System.debug('pageUrl: '+pageUrl);
+            objName =  ApexPages.currentPage().getUrl().substringAfter('ObjName=').substringBefore('&');
+            System.debug('objName'+objName);        
             String q = String.escapeSingleQuotes('SELECT Id FROM '+objName+' LIMIT '+ (maxExportRows + 1));
+            system.debug('q:'+q);
             List<sObject> objList = Database.query(q);
+            system.debug('objList:'+objList);
             ApexPages.StandardSetController controller = new ApexPages.StandardSetController(objList);                
+            System.debug('#01 controller.getResultSize(): ' + controller.getResultSize());
             Datetime dtNow = Datetime.now();
             reportDate = dtNow.format('yyyy-MM-dd h:mm a');        
             lstlstObj = new List<List<Object>>();        
             strfilterId = controller.getFilterId();
-            Boolean hasUserAccessToFilterId = false;
+            system.debug('list view filterId:'+strfilterId);                
             List<System.SelectOption> lstSelectOption = controller.getListViewOptions();
             for (System.SelectOption so : lstSelectOption){
-                if (so.getValue() == strfilterId) {
-                    hasUserAccessToFilterId = true;
+                if (so.getValue() == strfilterId) { 
                     filterName = so.getLabel();                    
                     Pattern nonAlphanumeric = Pattern.compile('[^a-zA-Z0-9\\s]');
                     Matcher matcher = nonAlphanumeric.matcher(filterName);       
@@ -69,21 +52,19 @@ public with sharing class Core_MDF_ExportToExcel {
                     break;
                 } 
             }
-            if(!hasUserAccessToFilterId) {
-                ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.Error,Label.Core_MDF_Int_ExportListView_Access_Error));
-                isMobileView = true;
-                return;
-            }
             loadFilterFields();
             //US523018: PRB000091900 : Unable to export raw reports (CSV,xlsx) from CLAIM list page            
-            //domainUrl = (String.isNotBlank(domainUrl) && domainUrl.lastIndexOf('/') == domainUrl.length()-1) ? domainUrl : String.valueOf(URL.getSalesforceBaseUrl().toExternalForm()) +'/';            
-            //returnURL = domainUrl+'lightning/o/'+objName+'/list?filterName='+strfilterId;
-            testendpointUrl = Label.Core_MDF_Export_URL + objName + '/list?filterName='+strfilterId;
-            sanitizedEndPointUrl = String.escapeSingleQuotes(testendpointUrl);
-            if(strQuery != null && strQuery != ''){        
+            domainUrl = (String.isNotBlank(domainUrl) && domainUrl.lastIndexOf('/') == domainUrl.length()-1) ? domainUrl : URL.getSalesforceBaseUrl().toExternalForm() +'/';            
+            system.debug('#07 domainUrl:' + domainUrl);
+            returnURL = domainUrl+'lightning/o/'+objName+'/list?filterName='+strfilterId;
+            System.debug('returnURL:'+returnURL); 
+            if(strQuery != null && strQuery != ''){
+                System.debug('#05 strQuery: ' + strQuery);        
             Integer idx = strQuery.indexOf(' FROM ');
             String strCountQuery = string.escapeSingleQuotes('SELECT Id ') + strQuery.substring(idx);
-            //strCountQuery = String.escapeSingleQuotes(strCountQuery);        
+            //System.debug('#06 strCountQuery: ' + strCountQuery);            
+            //strCountQuery = String.escapeSingleQuotes(strCountQuery);
+            System.debug('#06 strCountQuery: ' + strCountQuery);                
             List<Object> lstObj = Database.query(strCountQuery);
             if (lstObj.size() > maxExportRows || (Test.isRunningTest() &&  lstObj.size() >1)) {
                 ApexPages.Message myMsg = new ApexPages.Message(ApexPages.Severity.Info, Label.Core_MDF_Max_export_limit_exceeded_msg);
@@ -97,32 +78,25 @@ public with sharing class Core_MDF_ExportToExcel {
             isExcelExportActive = true;
             isCSVExportActive   = true; 
             }
-            }
+            
         }
-     catch(Exception e){
-         //Core_MDF_CCP_UtilityClass.logError(e);
-         Core_MDF_Error_Logging__e el = new Core_MDF_Error_Logging__e();
-         el.Core_MDF_Details_txt__c = e.getMessage();
-         el.Core_MDF_Apex_Class_Name_Txt__c = 'Core_MDF_ExportToExcel';
-         el.Core_MDF_Exception_Message_Txt__c = Core_MDF_CCP_UtilityClass.getErrorDetails(e);
-         el.Core_MDF_Severity_txt__c = 'Critical';
-         el.Core_MDF_Project_nm__c = Label.Core_MDF_Program_Name;
-         el.Core_MDF_Tag_txt__c = 'ExportToExcel';
-         el.Core_MDF_Object_Name_Nm__c = e.getStackTraceString().substringBefore(':');
-         EventBus.publish(el);
-         ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.Error,Label.Core_MDF_ApplicationErrorMessage));
-     }
+        catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e);
+                           ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.Error,Label.Core_MDF_ApplicationErrorMessage));
+                          }
     }    
-    public PageReference returnToPage() {   
-        PageReference returnPage = new PageReference(sanitizedEndPointUrl);
+    public PageReference returnToPage() {      
+        System.debug('retUrl:'+returnURL);
+        PageReference returnPage = new PageReference(returnURL);            
         returnPage.setRedirect(true);
         return returnPage;
     }  
     
     public void loadData(Boolean cleanData) {        
+        System.debug('#41 LoadData START - strQuery: ' + strQuery);
         try{
             List<Object> lstObjPage = new List<Object>();        
             integer counter = 0;
+            System.debug('strQuery: '+strQuery);
             for (List<sObject> lstSObj : Database.Query(strQuery)) { 
                 for (sObject sObj : lstSObj) {
                     if (cleanData){ 
@@ -140,6 +114,7 @@ public with sharing class Core_MDF_ExportToExcel {
                 }
             }        
             lstlstObj.add(lstObjPage);
+            system.debug('lstlstObj:'+lstlstObj); 
         }
         catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e);
                            ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.Error,Label.Core_MDF_ApplicationErrorMessage));
@@ -151,12 +126,13 @@ public with sharing class Core_MDF_ExportToExcel {
         Map<String, Object> mapRow = new Map<String, Object>();        
         sObject sObjParent;                
         List<String> lstFieldName;
-         
-        String strFieldValue; 
-        
+        String strFieldName; 
+        String strFieldValue;    
+        Date   dtDateValue;
         try{
             for (SingleColumn sc : lstSingleColumn) {                            
                 if (sc.fieldNameOrPath.contains('.')) {
+                    system.debug('sc.fieldNameOrPath:'+sc.fieldNameOrPath);
                     lstFieldName  = sc.fieldNameOrPath.split('\\.');
                     string child=lstFieldName[0];
                     sObjParent    = sObj.getSOBject(child);
@@ -164,7 +140,7 @@ public with sharing class Core_MDF_ExportToExcel {
                         
                         child = lstFieldName[i];
                         sObjParent    = sObjParent.getSOBject(child);
-                    }    
+                    }                                
                     strFieldValue = fieldToString(sObjParent, lstFieldName[lstFieldName.size()-1], sc.isDateType,sc.type);
                 }    
                 else {
@@ -175,11 +151,10 @@ public with sharing class Core_MDF_ExportToExcel {
                         strFieldValue = strFieldValue.subString(0, maxFieldLength) + '...'; 
                     }                       
                     strFieldValue = strFieldValue.escapeCSV();                        
-                    //ATHR - Deeply Nested if 16209
-                    if (strFieldValue.length() > 0 && strFieldValue.charAt(0) != ASCII_FOR_DOUBLE_QUOTE) {
-                        //if (strFieldValue.charAt(0) != ASCII_FOR_DOUBLE_QUOTE) {
+                    if (strFieldValue.length() > 0) {
+                        if (strFieldValue.charAt(0) != ASCII_FOR_DOUBLE_QUOTE) {
                             strFieldValue = '"' + strFieldValue + '"';                    
-                        //}                               
+                        }                               
                     }                                  
                 }            
                 mapRow.put(sc.fieldNameOrPath, strFieldValue);
@@ -227,69 +202,59 @@ public with sharing class Core_MDF_ExportToExcel {
             req.setHeader('Content-Type', 'application/json');        
             /* Set the Cert here */                        
             req.setClientCertificateName(Label.Core_Self_Signed_Cert);        
-            domainUrl = Label.Core_MDF_domianURL_Export;
+            domainUrl = URL.getSalesforceBaseUrl().toExternalForm();
+            system.debug('#07 domainUrl:' + domainUrl);
             //US523018: PRB000091900 : Unable to export raw reports (CSV,xlsx) from CLAIM list page
             domainUrl = (domainUrl.lastIndexOf('/') == domainUrl.length()-1) ? domainUrl : domainUrl+'/';
+            system.debug('#07 domainUrl after edit:' + domainUrl);
             
             //SF Fix-Ealisha:start
             List<String> whiteListedObjApiNameList = new List<String>();
-            // for(Core_MDF_ListView_Group_Mapping__mdt mdt : [SELECT Core_MDF_Label_txt__c, Core_MDF_Active_ind__c, Core_MDF_SObject_txt__c,Core_MDF_Whitelisted_Object__c FROM Core_MDF_ListView_Group_Mapping__mdt WHERE Core_MDF_Whitelisted_Object__c=true and Core_MDF_Active_ind__c=true]){
-            //                                                 whiteListedObjApiNameList.add(mdt.Core_MDF_SObject_txt__c); 
-            //                                                 }
-            //updated the code for the change of Custom Metadata to Custom Settings - Akanksha(WW32-2024)
-            for(Core_MDF_List_View_Group_Mapping__c itrOnListViewMapping : Core_MDF_List_View_Group_Mapping__c.getall().values()){
-                if(itrOnListViewMapping.Core_MDF_Whitelisted_Object__c && itrOnListViewMapping.Core_MDF_Active_ind__c){
-                    whiteListedObjApiNameList.add(itrOnListViewMapping.Core_MDF_SObject_txt__c); 
-                }
-            }
-            if((isVaildSObject && whiteListedObjApiNameList.contains(objName)) /*&& (strfilterId.length() == 15 || strfilterId.length() == 18)*/){
+            for(Core_MDF_ListView_Group_Mapping__mdt mdt : [SELECT Label, Core_MDF_Active_ind__c, Core_MDF_SObject_txt__c,Core_MDF_Whitelisted_Object__c FROM Core_MDF_ListView_Group_Mapping__mdt WHERE Core_MDF_Whitelisted_Object__c=true and Core_MDF_Active_ind__c=true]){
+                                                            whiteListedObjApiNameList.add(mdt.Core_MDF_SObject_txt__c); 
+                                                            }
+            system.debug('whiteListedObjApiNameList:'+whiteListedObjApiNameList);
+            if(whiteListedObjApiNameList.contains(objName) && (strfilterId.length() == 15 || strfilterId.length() == 18)){
                endpointUrl = domainUrl + Label.Core_MDF_Describe_API_URL4 +objName + Label.Core_MDF_Describe_API_URL2 + strfilterId + Label.Core_MDF_Describe_API_URL3;
             }
             else{
                 ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.Error,Label.Core_MDF_Export_Whitelisting_Error_Message));
             }
             //SF Fix-Ealisha:end
+            
+            system.debug('#08 domain URL' + endpointUrl);
             if(endpointUrl != ''){
             req.setEndpoint(endpointUrl);
             req.setMethod('GET');      
             Http h = new Http();
-            HttpResponse res = h.send(req);             
+            HttpResponse res = h.send(req);
+            system.debug('#09 res: ' + res.getBody());                
             Map<String, Object> root = (Map<String, Object>)JSON.deserializeUntyped(res.getBody());     
             strQuery = (String)root.get('query') + string.escapeSingleQuotes(' LIMIT ') + (maxExportRows + 1);        
-                    
+            System.debug('#10 strQuery: ' + strQuery);        
             // This HAS to be reset every iteration.
             lstColumn = new List<SingleColumn>();        
             //Parsing JSON string to get the column details    
             JSONParser parser = JSON.createParser(res.getBody());
             while (parser.nextToken() != null){ 
-                //ATHR - Deeply Nested if 16209
-                if(parser.getCurrentToken() != JSONToken.START_ARRAY) {
-                    continue;
-                }
-                //if(parser.getCurrentToken() == JSONToken.START_ARRAY) {       
+                if(parser.getCurrentToken() == JSONToken.START_ARRAY) {       
                     while (parser.nextToken() != null) {
-                        //ATHR - Deeply Nested if 16209
-                        if (parser.getCurrentToken() != JSONToken.START_OBJECT) {
-                            continue;
-                        }
-                        //if (parser.getCurrentToken() == JSONToken.START_OBJECT) {                        
+                        if (parser.getCurrentToken() == JSONToken.START_OBJECT) {                        
                             SingleColumn col = (SingleColumn)parser.readValueAs(SingleColumn.class);
-                        	if(col == null || col.hidden == null || col.label == null || col.hidden == true || col.fieldNameOrPath == NULL || col.fieldNameOrPath.contains('Clone')) {
-                                continue;
-                            }
-                            //if(col.hidden == false && col.fieldNameOrPath != NULL && !col.fieldNameOrPath.contains('Clone')) {                                        
+                            if(col.hidden == false && col.fieldNameOrPath != NULL && !col.fieldNameOrPath.contains('Clone')) {                                        
                                 col.label = col.label.replace(',', '');                            
                                 lstColumn.add(col);                    
-                            //}    
-                        //}
+                            }    
+                        }
                     }
-                //}
+                }
             }
             }
+            System.debug('#10 lstColumn: ' + lstColumn);
         }
         catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e);
                            ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.Error,Label.Core_MDF_ApplicationErrorMessage));
-        }
+                          }
     }
     
     public PageReference exportToExcel() {        
@@ -299,6 +264,7 @@ public with sharing class Core_MDF_ExportToExcel {
         catch (Exception e) {
             String consolidatedMessage = e.getTypeName() + ' on line# ' + e.getLineNumber() + ' : ' + e.getMessage();ApexPages.Message myMsg = new ApexPages.Message(ApexPages.Severity.ERROR, consolidatedMessage);ApexPages.addMessage(myMsg);return null;
         }
+        system.debug('fileName:'+fileName);
         contentType = 'application/vnd.ms-excel#' + fileName + '.xls';
         renderType  = '';        
         PageReference excelPage = page.Core_MDF_ListView_Export_Excel;
@@ -338,5 +304,5 @@ public with sharing class Core_MDF_ExportToExcel {
                 return (type != NULL && type.contains('date'));     
             }
         }    
-    }
+    }  
 }

@@ -3,7 +3,7 @@
     <apex:includeScript value="/soap/ajax/29.0/connection.js"/>
     <apex:includeScript value="/support/console/35.0/integration.js"/>
     <apex:includeScript value="{!URLFOR($Resource.Core_IPS_Page_Loading_Animation, 'jquery.min.js')}"/>
-      
+    
     <script type="text/javascript">
     
     function doSearchOnEnter(ev)
@@ -38,9 +38,9 @@
     function  verifyAndRedirect()
     {         
         if(confirm('The changes to the interested party list have been made on this case.')){
-            //console.log(JSON.stringify(sforce.console));        
-            //alert("{HTMLENCODE(JSENCODE(!$CurrentPage.parameters.IsConsole))}");
-            if("{HTMLENCODE(JSENCODE(!$CurrentPage.parameters.IsConsole))}"==true)
+            console.log(JSON.stringify(sforce.console));        
+            alert("{!$CurrentPage.parameters.IsConsole}");
+            if("{!$CurrentPage.parameters.IsConsole}"==true)
             {
                 FinishRedirect();
             }
@@ -53,9 +53,9 @@
     }
     function testIsInConsole() {
         if (sforce.console.isInConsole()) {
-            //alert('in console');
+            alert('in console');
         } else {
-            // alert('not in console');
+            alert('not in console');
         }
     }
     
@@ -200,12 +200,12 @@
                     <apex:pageBlockTable value="{!UserList}" var="usr" rendered="{!UserList!=null && UserList.size>0}">  
                         
                         <apex:column width="20">
-                            <input type="radio" name="usr1" value="{!usr}"  onclick="select_usr('{HTMLENCODE(!usr)}','{HTMLENCODE(!usr.name)}', '{HTMLENCODE(!usr.FirstName)}', '{HTMLENCODE(!usr.LastName)}', '{HTMLENCODE(!usr.Email)}', true, false); " rerender="selectedOwner,selectedOwnerUser,selectedOwnerQueue" escape="false"/> <!--- US967150 --- 16/05/21--- Sai krishna--- Stored XSS--- appsec security vulnerability ---> 
+                            <input type="radio" name="usr1" value="{!usr}" onclick="select_usr('{!usr}','{!usr.name}', '{!usr.FirstName}', '{!usr.LastName}', '{!usr.Email}', true, false); " rerender="selectedOwner,selectedOwnerUser,selectedOwnerQueue" /> 
                             <!--<apex:selectRadio id="test123" value="{!usr.Id}"  onclick="select_usr('{!usr}','{!usr.name}', '{!usr.FirstName}', '{!usr.LastName}', '{!usr.Email}', true, false); ">
-                                <apex:selectOption itemValue="false"       ></apex:selectOption></apex:selectRadio> -->
+                                <apex:selectOption  itemValue="false"       ></apex:selectOption></apex:selectRadio> -->
                                 <apex:actionSupport event="onclick" action="{!refreshSelected}" reRender="crit_block,selectedOwner,selectedOwnerUser,selectedOwnerQueue" status="status1">
                                     <apex:param assignTo="{!selectedUser}" value="{! usr.Id }" name="selectedA"/>
-                                    <apex:param assignTo="{!selectedUserName}" value="{!usr.Name }" name="selectedB"/>
+                                    <apex:param assignTo="{!selectedUserName}" value="{! usr.Name }" name="selectedB"/>
                                     <apex:param assignTo="{!defaultCaseOwnerUserFname}" value="{! usr.FirstName }" name="selectedC"/>
                                     <apex:param assignTo="{!defaultCaseOwnerUserLname}" value="{! usr.LastName }" name="selectedD"/>
                                     <apex:param assignTo="{!defaultCaseOwnerUserEmail}" value="{! usr.Email }" name="selectedE"/>
@@ -236,22 +236,22 @@
                     <apex:pageBlockTable value="{!Queuelist}" var="que" rendered="{!Queuelist!=null && Queuelist.size>0}"> 
                         
                         <apex:column width="20">
-                             <input type="radio" name="que1" value="{!que}" onclick="select_que('{HTMLENCODE(!que)}','{HTMLENCODE(!que.name)}','{HTMLENCODE(!que.name)}','{HTMLENCODE(!que.DeveloperName)}', false, true);" escape="false" /> <!--- US967150 --- 16/05/21--- Sai krishna--- Stored XSS--- appsec security vulnerability --->
+                             <input type="radio" name="que1" value="{!que}" onclick="select_que('{!que}','{!que.name}','{!que.name}','{!que.DeveloperName}', false, true);"  /> 
                             <!--<apex:selectRadio id="que1" value="{!que.Id}">
                                 <apex:selectOption itemValue=""     ></apex:selectOption> </apex:selectRadio> -->
                                 <apex:actionSupport event="onclick" action="{!refreshSelected}" reRender="crit_block,selectedOwner,selectedOwnerUser,selectedOwnerQueue" status="status1">
-                                    <apex:param assignTo="{!selectedQueue}" value="{! que.QueueId }" name="selectedI"/>
-                                    <apex:param assignTo="{!selectedQueueName}" value="{! que.Queue.Name }" name="selectedJ"/>
-                                    <apex:param assignTo="{!defaultCaseOwnerQueueName}" value="{! que.Queue.Name }" name="selectedK"/>
-                                    <apex:param assignTo="{!defaultCaseOwnerQueueDevName}" value="{! que.Queue.DeveloperName }" name="selectedL"/>
+                                    <apex:param assignTo="{!selectedQueue}" value="{! que.Id }" name="selectedI"/>
+                                    <apex:param assignTo="{!selectedQueueName}" value="{! que.Name }" name="selectedJ"/>
+                                    <apex:param assignTo="{!defaultCaseOwnerQueueName}" value="{! que.Name }" name="selectedK"/>
+                                    <apex:param assignTo="{!defaultCaseOwnerQueueDevName}" value="{! que.DeveloperName }" name="selectedL"/>
                                     <apex:param assignTo="{!isDefaultCaseOwnerQueue}" value="true" name="selectedM"/>
                                     <apex:param assignTo="{!isDefaultCaseOwnerUser}" value="false" name="selectedN"/>
                                     <apex:param assignTo="{!isSelected}" value="true" name="selectedO"/>
                                 </apex:actionSupport>
                             
                         </apex:column>
-                        <apex:column value="{!que.Queue.Name}" headerValue="Name"/>
-                        <apex:column value="{!que.Queue.DeveloperNAME}" headerValue="Queue Name"/>                                
+                        <apex:column value="{!que.Name}" headerValue="Name"/>
+                        <apex:column value="{!que.DeveloperNAME}" headerValue="Queue Name"/>                                
                     </apex:pageBlockTable>
                     <apex:outputPanel layout="block" rendered="{!Queuelist==null || Queuelist.size==0}" styleClass="nodata">
                         No data found

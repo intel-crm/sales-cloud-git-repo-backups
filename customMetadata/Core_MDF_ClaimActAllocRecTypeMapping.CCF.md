@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-    <label>Client</label>
+    <label>CCF</label>
     <protected>false</protected>
     <values>
         <field>Core_MDF_Activity_Close_Days__c</field>
@@ -15,16 +15,12 @@
         <value xsi:type="xsd:string">Core_MDF_Client_CoMarketing_Fund</value>
     </values>
     <values>
-        <field>Core_MDF_Budget_Cap_RecType_DevName_Txt__c</field>
-        <value xsi:nil="true"/>
-    </values>
-    <values>
         <field>Core_MDF_Channel_Program_Name_txt__c</field>
         <value xsi:type="xsd:string">Client CoMarketing Fund</value>
     </values>
     <values>
         <field>Core_MDF_Channel_Program_txt__c</field>
-        <value xsi:type="xsd:string">Client</value>
+        <value xsi:type="xsd:string">Client Co-Marketing Fund</value>
     </values>
     <values>
         <field>Core_MDF_ClaimStage_RecordType_txt__c</field>
@@ -61,13 +57,5 @@
     <values>
         <field>Core_MDF_Region_cd__c</field>
         <value xsi:nil="true"/>
-    </values>
-    <values>
-        <field>Core_MDF_isProgramBased_Ind__c</field>
-        <value xsi:type="xsd:boolean">false</value>
-    </values>
-    <values>
-        <field>Core_MDF_isProposalBased__c</field>
-        <value xsi:type="xsd:boolean">false</value>
     </values>
 </CustomMetadata>

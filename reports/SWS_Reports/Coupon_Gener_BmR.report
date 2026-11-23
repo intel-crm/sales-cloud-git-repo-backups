@@ -42,6 +42,9 @@
         <aggregateTypes>Sum</aggregateTypes>
         <field>SWS_Cloud_Credit_Request__c$SWS_Number_of_Redemptions__c</field>
     </columns>
+    <columns>
+        <field>CDF1</field>
+    </columns>
     <customDetailFormulas>
         <calculatedFormula> &apos;Q&apos;+TEXT(Ceiling(Month(Datevalue(SWS_Cloud_Credit_Request__c.CreatedDate)) / 3 ))</calculatedFormula>
         <dataType>Text</dataType>
@@ -56,7 +59,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Coupon_Generated</value>
+            <value>Coupon_Generated,Coupon Generated</value>
         </criteriaItems>
         <criteriaItems>
             <column>SWS_Cloud_Credit_Request__c$RecordType</column>

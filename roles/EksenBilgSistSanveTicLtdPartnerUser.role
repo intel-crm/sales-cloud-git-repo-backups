@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>Eksen Bilg Sist San ve Tic Ltd Partner User</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>Eksen Bilg Sist San ve Tic Ltd Partner User</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>EksenBilgSistSanveTicLtdPartnerManager</parentRole>
+</Role>

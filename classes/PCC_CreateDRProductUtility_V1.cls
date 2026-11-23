@@ -34,7 +34,7 @@ Global with sharing class PCC_CreateDRProductUtility_V1 {
 		String requestedUrl = 'RequestedURI: '+RestContext.request.requestURI+' Params: '+RestContext.request.params;    
         DateTime reqTime = System.now();
         String respBody;
-	Id cpId;
+        Id cpId;
         
         try{
             cpId = [SELECT Id, Name FROM ChannelProgram WHERE Name = :System.label.PCC_Channel_Program_Name LIMIT 1].Id;
@@ -102,12 +102,12 @@ Global with sharing class PCC_CreateDRProductUtility_V1 {
 ******************************************************************************************************************/
     public static PCC_Wrapper.PCC_restAPIDDRDetailsWrapper getDrProd(String decodedId){
         PCC_Wrapper.PCC_restAPIDDRDetailsWrapper respWrp = new PCC_Wrapper.PCC_restAPIDDRDetailsWrapper();
-        Core_Design_Registration_Product__c drProduct =  [SELECT Id,Name,Core_Design_Registration_Id__c, Core_Product_Id__c, Core_Full_Year_Qty__c,
+        Core_Design_Registration_Product__c drProduct =  [SELECT Id, Name,Core_Design_Registration_Id__c, Core_Product_Id__c, Core_Full_Year_Qty__c,
                                                                           Core_Retired_As_Of_Dt__c, Core_External_Id__c, Core_Target_Resale_Amt__c,
                                                                           DDR_Target_Resale_Price_Note__c, Core_Design_Product_Status_Nm__c,
                                                                           Core_Comment_Txt__c, Core_Partner_Tracking_Cd__c,Core_Product_List_Price_Amt__c,	
                                                                           Core_Full_Year_Value_Amt__c, Core_Opportunity_Product_Id__c,
-                                                                          (SELECT Id, PCC_MM_ID__c, PCC_Ordering_Cd__c, PCC_L4_Product_Name__c, PCC_L5_Product_Name__c,PCC_Old_MM_Id__c
+                                                                          (SELECT Id, PCC_Ordering_Cd__c, PCC_L4_Product_Name__c, PCC_L5_Product_Name__c,PCC_Old_MM_Id__c
                                                                           FROM DDR_Product_Mappings__r LIMIT 1)
                                                                           FROM Core_Design_Registration_Product__c
                                                                           WHERE Id = :decodedId WITH USER_MODE

@@ -1,0 +1,23 @@
+<aura:component controller= "Core_Opp_SalesAssistController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	<div style="width:90%;" role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <lightning:buttonIcon iconName="utility:close" onclick="{! c.closeModel }" alternativeText="close" variant="bare-inverse" class="slds-modal__close"/>
+                    <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Sales Assist</h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <iframe src="{!v.urlParams}" width="100%" frameborder="0" scrolling="true" />
+                </div>
+                <footer class="slds-modal__footer">
+                    <lightning:button variant="brand" label="Close" title="Close" onclick="{!c.closeModel}"/>
+                </footer>
+            </div>
+        </div>
+		<div class="slds-backdrop slds-backdrop_open"></div>
+  
+    <aura:if isTrue="{!v.spinner}">
+        <div class="slds-spinner_container slds-is-relative">
+            <lightning:spinner aura:id="mySpinner" variant="brand" alternativeText="Loading" size="small" />
+        </div>
+    </aura:if>
+</aura:component>

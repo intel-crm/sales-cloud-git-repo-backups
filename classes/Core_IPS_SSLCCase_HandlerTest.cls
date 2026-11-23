@@ -56,10 +56,9 @@ public class Core_IPS_SSLCCase_HandlerTest{
         
         //Failed Condition
          email.plainTextBody ='{     "subject":"Type of Licensin"g Issue(from SSLC form)",  "Description":{        "PO:":"&quot;5321365215&quot","License Activation Code/Serial No.:":"123214423<br>NIC/Host/Guard ID: 5123ffdfs","Product Name:":"3rd Generation Intel® Core™ i5 Processors","Description:":"SIO1552959 - [SCIT-SW/NPI/Trumpet/SI2/Q01_0020/IA/W10/FXN] The status of Protected PIN is Not Supported due to Failed to create an protected image when run IA 3.0.0.73 Precheck tool in Client","Contact Name:":"Pooja Khanna","Contact Email":"poojaxx.khanna@intel.com"   }}';
-       	//email.htmlBody = 'HTML Body Test';
-        Messaging.InboundEmailResult failedResult = emailHandler.handleInboundEmail(email, envelope);
+         Messaging.InboundEmailResult failedResult = emailHandler.handleInboundEmail(email, envelope);
         failedResult.message='failed';
         System.assertEquals( result.success  ,true);   
-       	            
-           }
+        
+   }
 }

@@ -7,7 +7,7 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>lms.admin@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>unfiled$public/Core_CoveredAccount_Notification</template>
     </alerts>
@@ -18,7 +18,7 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>lms.admin@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>unfiled$public/Core_Email_notification_for_lead_ownership_change</template>
     </alerts>
@@ -29,7 +29,7 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Core_Partner_Lead_Management/Core_Send_Email_To_PSG_Leads</template>
     </alerts>
@@ -41,16 +41,17 @@
             <type>owner</type>
         </recipients>
         <senderType>DefaultWorkflowUser</senderType>
-        <template>Testt/LeadsNewassignmentnotificationSAMPLE</template>
+        <template>unfiled$public/LeadsNewassignmentnotificationSAMPLE</template>
     </alerts>
     <alerts>
         <fullName>Core_MAQL_SLA_Expired_Alert</fullName>
+        <ccEmails>sathishx.babu.panuganti@intel.com,vijaykumar.s@intel.com</ccEmails>
         <description>Core_MAQL_SLA_Expired Alert</description>
         <protected>false</protected>
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>lms.admin@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>unfiled$public/MAQL_SLA_EXPIRED</template>
     </alerts>
@@ -61,7 +62,7 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>lms.admin@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>unfiled$public/SAL_SLA_Expired</template>
     </alerts>
@@ -72,9 +73,9 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>lms.admin@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/TAL_SLA_Expired</template>
+        <template>unfiled$public/TAL_SLA_Expired</template>
     </alerts>
     <alerts>
         <fullName>Core_TQL_SLA_Expired_Alert</fullName>
@@ -83,9 +84,9 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>lms.admin@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/TQL_SLA_Expired</template>
+        <template>unfiled$public/TQL_SLA_Expired</template>
     </alerts>
     <alerts>
         <fullName>MQL_In_Contact_SLA</fullName>
@@ -143,15 +144,6 @@
         <template>unfiled$public/SGL_Not_Converted_in_30_days</template>
     </alerts>
     <fieldUpdates>
-        <fullName>Clear_One_Partner_Id</fullName>
-        <field>Core_One_Partner_Id__c</field>
-        <name>Clear One Partner Id</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Null</operation>
-        <protected>false</protected>
-        <reevaluateOnChange>false</reevaluateOnChange>
-    </fieldUpdates>
-    <fieldUpdates>
         <fullName>Core_Clear_Lead_Share_Error</fullName>
         <field>Core_Lead_Sharing_Error__c</field>
         <name>Clear Lead Share Error</name>
@@ -174,6 +166,15 @@
         <fullName>Core_Clear_MPI_Id</fullName>
         <field>Core_MPI_Id__c</field>
         <name>Clear MPI Id</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Null</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Core_Clear_One_Partner_Id</fullName>
+        <field>Core_One_Partner_Id__c</field>
+        <name>Clear One Partner Id</name>
         <notifyAssignee>false</notifyAssignee>
         <operation>Null</operation>
         <protected>false</protected>
@@ -858,16 +859,6 @@ AND(
         <name>Recordtype Update</name>
         <notifyAssignee>false</notifyAssignee>
         <operation>LookupValue</operation>
-        <protected>false</protected>
-        <reevaluateOnChange>false</reevaluateOnChange>
-    </fieldUpdates>
-    <fieldUpdates>
-        <fullName>Core_Rejected_Flag</fullName>
-        <field>Core_Rejected_Flag__c</field>
-        <literalValue>0</literalValue>
-        <name>Core_Rejected_Flag</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Literal</operation>
         <protected>false</protected>
         <reevaluateOnChange>false</reevaluateOnChange>
     </fieldUpdates>
@@ -1769,7 +1760,7 @@ Resets all the other State Entrance Dates.</description>
             <name>Core_Stage_TQL</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <formula>AND(  RecordType.DeveloperName &lt;&gt; &apos;Partner_Lead&apos;,  NOT(ISCHANGED(Status)),  ISCHANGED(Core_Lead_Status__c) )</formula>
         <triggerType>onAllChanges</triggerType>
     </rules>
@@ -1862,6 +1853,48 @@ Resets all the other State Entrance Dates.</description>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
     <rules>
+        <fullName>Core_Lead_Reset_Lead_State</fullName>
+        <actions>
+            <name>Core_Lead_Reset_Lead_State_To_Open</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Core_Lead_Reset_Rejection_Comments</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Core_Lead_Reset_Rejection_Reason</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Core_Reset_State_Entrance_Date_Accepted</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Core_Reset_State_Entrance_Date_Engaged</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Core_Reset_State_Entrance_Date_OnHold</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Core_Reset_State_Entrance_Date_Rejected</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Core_Update_State_Entrance_Date_Open</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <description>Resets the value of &apos;Lead State&apos; to &apos;Open&apos;.
+Resets Rejection Reason, Rejection Comments.
+Sets the &apos;State Entrance Date - Open&apos; to current date.
+Resets all the other State Entrance Dates.</description>
+        <formula>AND(ISCHANGED (OwnerId),RecordType.Name = &quot;Partner Lead&quot;)</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
         <fullName>Core_Lead_Reset_Lead_State_New</fullName>
         <actions>
             <name>Core_Reset_State_Entrance_Date_Accepted</name>
@@ -1888,6 +1921,21 @@ Resets all the other State Entrance Dates.</description>
 Sets the &apos;State Entrance Date - Open&apos; to current date.
 Resets all the other State Entrance Dates.</description>
         <formula>AND(ISCHANGED(OwnerId), RecordType.Name != &quot;Partner Lead&quot;)</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Core_Lead_Reset_Rejection_Data</fullName>
+        <actions>
+            <name>Core_Lead_Reset_Rejection_Comments</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Core_Lead_Reset_Rejection_Reason</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <description>Workflow to reset the Rejection Reason, Rejection Comments.</description>
+        <formula>AND( ISCHANGED(Core_Lead_State__c), NOT(ISPICKVAL(Core_Lead_State__c, &apos;Terminated&apos;))  )</formula>
         <triggerType>onAllChanges</triggerType>
     </rules>
     <rules>
@@ -2114,6 +2162,16 @@ Resets all the other State Entrance Dates.</description>
         <triggerType>onAllChanges</triggerType>
     </rules>
     <rules>
+        <fullName>Core_Lead_Transfer_SAL</fullName>
+        <actions>
+            <name>Core_Lead_Transfer_SAL</name>
+            <type>Alert</type>
+        </actions>
+        <active>false</active>
+        <formula>AND((ISCHANGED(  OwnerId  )),  ISPICKVAL( Status, &quot;Sales Accepted Lead&quot; ))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
         <fullName>Core_Lead_Unreachable</fullName>
         <actions>
             <name>Core_Exitt_Datee_TAL</name>
@@ -2207,7 +2265,7 @@ Resets all the other State Entrance Dates.</description>
             <name>Core_Lead_Update_Stage_Change_Date_Time</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Update the date/time when the Lead Stage had last changed.</description>
         <formula>ISCHANGED(Status)</formula>
         <triggerType>onAllChanges</triggerType>
@@ -2218,7 +2276,7 @@ Resets all the other State Entrance Dates.</description>
             <name>Core_Lead_Update_State_Change_Date_Time</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Update the date/time when the Lead State had last changed.</description>
         <formula>ISCHANGED(Core_Lead_State__c)</formula>
         <triggerType>onAllChanges</triggerType>
@@ -2396,21 +2454,7 @@ If Record is not re-assigned (ownership change) within 1 business day of Meeting
         <triggerType>onAllChanges</triggerType>
     </rules>
     <rules>
-        <fullName>Core_Reject_flag_update</fullName>
-        <actions>
-            <name>Core_Rejected_Flag</name>
-            <type>FieldUpdate</type>
-        </actions>
-        <active>false</active>
-        <formula>AND( ISPICKVAL(Core_Lead_State__c, &quot;In Pursuit&quot;), ISPICKVAL(PRIORVALUE(Core_Lead_State__c), &quot;Terminated&quot;), NOT(ISPICKVAL(PRIORVALUE(Core_Lead_Status__c), &quot;Unreachable&quot;)), ISCHANGED(Core_Lead_State__c), OR(RecordType.Name = &quot;Lead&quot;, RecordType.Name = &quot;Sales Lead&quot;) )</formula>
-        <triggerType>onAllChanges</triggerType>
-    </rules>
-    <rules>
         <fullName>Core_Remove_Current_Lead_Sharing</fullName>
-        <actions>
-            <name>Clear_One_Partner_Id</name>
-            <type>FieldUpdate</type>
-        </actions>
         <actions>
             <name>Core_Clear_Lead_Share_Error</name>
             <type>FieldUpdate</type>
@@ -2421,10 +2465,6 @@ If Record is not re-assigned (ownership change) within 1 business day of Meeting
         </actions>
         <actions>
             <name>Core_Clear_MPI_Id</name>
-            <type>FieldUpdate</type>
-        </actions>
-        <actions>
-            <name>Core_Clear_Public_Group</name>
             <type>FieldUpdate</type>
         </actions>
         <actions>

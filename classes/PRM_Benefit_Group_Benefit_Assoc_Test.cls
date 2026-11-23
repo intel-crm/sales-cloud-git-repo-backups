@@ -18,20 +18,20 @@ public class PRM_Benefit_Group_Benefit_Assoc_Test {
         PRM_Benefit_Group__c bg= new PRM_Benefit_Group__c();
         bg.name = 'Benefitgroup Test';
         insert bg;
-        //system.debug('bg========>'+bg);
+        system.debug('bg========>'+bg);
         
         ChannelProgram cp = new ChannelProgram();
         cp.Name='Intel Partner Alliance';
         cp.PRM_programCode__c='IPA';
         insert cp;
-        //system.debug('cp-->'+cp);
+        System.debug('cp-->'+cp);
         
         PRM_PartnerBenefit__c pb = new PRM_PartnerBenefit__c(); //Partner Benefit
         pb.Name = 'Points Redemption';
         pb.PRM_Channel_Program_Id__c = cp.id;
         pb.PRM_Benefit_Cd__c = 'BFTPTSREDM';
         insert pb;
-        //system.debug('pb========>'+pb);
+        system.debug('pb========>'+pb);
         
         PRM_PartnerBenefit__c pb1 = new PRM_PartnerBenefit__c(); //Partner Benefit
         pb1.Name = 'Points Accruals – View';
@@ -56,9 +56,9 @@ public class PRM_Benefit_Group_Benefit_Assoc_Test {
             insert bgba2;
         }
         catch(exception e){
-            //system.debug('Exception occured' +e.getMessage());
+            System.debug('Exception occured' +e.getMessage());
         }
-        
+		
         
         System.assertEquals(bg.id,bgba2.PRM_Benefit_Group_Id__c,'BGBA record should be inserted');
         
@@ -72,14 +72,14 @@ public class PRM_Benefit_Group_Benefit_Assoc_Test {
         cp.Name='Intel Partner Alliance';
         cp.PRM_programCode__c='IPA';
         insert cp;
-        //system.debug('cp-->'+cp);
+        System.debug('cp-->'+cp);
         
         PRM_PartnerBenefit__c pb = new PRM_PartnerBenefit__c(); //Partner Benefit
         pb.Name = 'Points Redemption';
         pb.PRM_Channel_Program_Id__c = cp.id;
         pb.PRM_Benefit_Cd__c = 'BFTPTSREDM';
         insert pb;
-        //system.debug('pb========>'+pb);
+        system.debug('pb========>'+pb);
         
         PRM_PartnerBenefit__c pb1 = new PRM_PartnerBenefit__c(); //Partner Benefit
         pb1.Name = 'Points Accruals – View';
@@ -90,7 +90,7 @@ public class PRM_Benefit_Group_Benefit_Assoc_Test {
         PRM_Benefit_Group__c bg= new PRM_Benefit_Group__c();
         bg.name = 'Benefitgroup Test3';
         insert bg;
-        //system.debug('bg========>'+bg);
+        system.debug('bg========>'+bg);
         
         PRM_Benefit_Group_Benefit_Association__c bgba = new PRM_Benefit_Group_Benefit_Association__c();
         bgba.PRM_Benefit_Id__c = pb.id;
@@ -111,7 +111,7 @@ public class PRM_Benefit_Group_Benefit_Assoc_Test {
             update bgba2;
         }
         Catch(exception e){
-            //system.debug('Exception occured' +e.getMessage());
+            System.debug('Exception occured' +e.getMessage());
         }
         test.stopTest();
         
@@ -129,35 +129,32 @@ public class PRM_Benefit_Group_Benefit_Assoc_Test {
         testAccount.BillingCountry='India';
         testAccount.BillingPostalCode='Postal code';
         testAccount.Core_Account_Type__c = 'Cloud Service Provider (CSP)';
+        testAccount.Core_IPA_Partner_Speciality__c='Video Specialty;Cloud Data Center Specialist';
         testAccount.Core_Intel_Partner_Alliance_PartnerGroup__c = true;
         insert testAccount;
         
-        List<PRM_Specialty__c> specList = new List<PRM_Specialty__c>();
-        
         PRM_Specialty__c spec1 = new PRM_Specialty__c();
-        spec1.name='Select Benefits';
+        spec1.name='Video Specialty';
         spec1.PRM_Description_Txt__c='This is description';
         spec1.PRM_Funding_BU_Nm__c='CCG Sales Group';
         spec1.PRM_Role_Nm__c='Service Provider';
-        spec1.PRM_Tier_Nm__c='Gold';//'Gold';
+        spec1.PRM_Tier_Nm__c='Gold';
         spec1.PRM_Start_Date_Dt__c= system.today() + 7;
         spec1.PRM_End_Date_Dt__c= spec1.PRM_Start_Date_Dt__c + 5;
         spec1.PRM_Access_Level_Nm__c='Public';
-        //insert spec1;
-        specList.add(spec1);
+        insert spec1;
         
         PRM_Specialty__c spec2 = new PRM_Specialty__c();
-        spec2.name='Select Benefits';
+        spec2.name='Cloud Data Center Specialist';
         spec2.PRM_Description_Txt__c='This is description';
         spec2.PRM_Funding_BU_Nm__c='CCG Sales Group';
         spec2.PRM_Role_Nm__c='Service Provider';
         spec2.PRM_Tier_Nm__c='Gold';
         spec2.PRM_Start_Date_Dt__c= system.today() + 7;
-        spec2.PRM_End_Date_Dt__c= spec2.PRM_Start_Date_Dt__c + 5;
+        spec2.PRM_End_Date_Dt__c= spec1.PRM_Start_Date_Dt__c + 5;
         spec2.PRM_Access_Level_Nm__c='Public';
-        //insert spec2;
-        specList.add(spec2);
-        insert specList;
+        insert spec2;
+        
         
         ChannelProgram cpTest = new ChannelProgram();
         cpTest.Name='Intel Partner Alliance';
@@ -165,7 +162,7 @@ public class PRM_Benefit_Group_Benefit_Assoc_Test {
         insert cpTest;
         
         ChannelProgramLevel cplTest = new ChannelProgramLevel(); //Channel Program Level
-        cplTest.Name='Prestige';
+        cplTest.Name='Titanium';
         cplTest.ProgramId=cpTest.Id;
         insert cplTest;
         
@@ -175,7 +172,6 @@ public class PRM_Benefit_Group_Benefit_Assoc_Test {
         acctChnlMemTest.PRM_Channel_Program_Level_Id__c=cplTest.Id;
         acctChnlMemTest.PRM_Partner_Role__c='Service Provider';
         acctChnlMemTest.PRM_Status_Nm__c = 'Approved';
-        acctChnlMemTest.PRM_Status_Reason_Txt__c='Test';
         //acctChnlMemTest.PRM_IsActive_Ind__c = True;
         insert acctChnlMemTest;
         
@@ -184,7 +180,7 @@ public class PRM_Benefit_Group_Benefit_Assoc_Test {
         pbTest.PRM_Benefit_Cd__c = 'BFTTRGUNI';
         pbTest.PRM_InActive_Ind__c = false;
         pbTest.PRM_Channel_Program_Id__c= cpTest.Id;
-       	pbTest.PRM_Account_Type_Nm__c='Both';
+       // pbTest.PRM_Account_Type_Nm__c='Both';
         insert pbTest;
         
         PRM_PartnerBenefit__c pbTest1 = new PRM_PartnerBenefit__c(); //Partner Benefit
@@ -192,7 +188,6 @@ public class PRM_Benefit_Group_Benefit_Assoc_Test {
         pbTest1.PRM_Benefit_Cd__c = 'BFTMKTSTD';
         pbTest1.PRM_InActive_Ind__c = false;
         pbTest1.PRM_Channel_Program_Id__c= cpTest.Id;
-        pbTest1.PRM_Account_Type_Nm__c = 'Both';
         insert pbTest1;
         
         PRM_PartnerType__c ptTest = new PRM_PartnerType__c();
@@ -213,12 +208,11 @@ public class PRM_Benefit_Group_Benefit_Assoc_Test {
         bmTest.PRM_IsActive_Ind__c = true;
         bmTest.PRM_Partner_Role_Nm__c='Service Provider';
         insert bmTest;
-       
+        
         PRM_AccountBenefitAssociation__c abassociationTest = new PRM_AccountBenefitAssociation__c();
         abassociationTest.PRM_Account_Id__c = testAccount.id;
         abassociationTest.PRM_Partner_Benefit_Id__c = pbTest.id;
         abassociationTest.PRM_Status_Nm__c = 'Active';
-        abassociationTest.PRM_Status_Reason_Txt__c='Test';
         insert abassociationTest;
         
         PRM_Benefit_Group__c bg1 = new PRM_Benefit_Group__c();
@@ -231,23 +225,21 @@ public class PRM_Benefit_Group_Benefit_Assoc_Test {
         bg2.PRM_InActive_Ind__c= false;
         insert bg2;
         
-        Test.startTest();
-        
         PRM_Specialty_Benefit_Group_Association__c testSBGA1 = new PRM_Specialty_Benefit_Group_Association__c();
         testSBGA1.PRM_Benefit_Group_Id__c=bg1.id;
-        testSBGA1.PRM_Specialty_Id__c=specList[0].id;
+        testSBGA1.PRM_Specialty_Id__c=spec1.id;
         testSBGA1.PRM_InActive_Ind__c= false;
         insert testSBGA1;
         
         PRM_Specialty_Benefit_Group_Association__c testSBGA2 = new PRM_Specialty_Benefit_Group_Association__c();
         testSBGA2.PRM_Benefit_Group_Id__c=bg2.id;
-        testSBGA2.PRM_Specialty_Id__c=specList[0].id;
+        testSBGA2.PRM_Specialty_Id__c=spec1.id;
         testSBGA2.PRM_InActive_Ind__c= false;
         insert testSBGA2;
         
         PRM_Specialty_Benefit_Group_Association__c testSBGA3 = new PRM_Specialty_Benefit_Group_Association__c();
         testSBGA3.PRM_Benefit_Group_Id__c=bg2.id;
-        testSBGA3.PRM_Specialty_Id__c=specList[1].id;
+        testSBGA3.PRM_Specialty_Id__c=spec2.id;
         testSBGA3.PRM_InActive_Ind__c= false;
         insert testSBGA3;
         
@@ -255,13 +247,13 @@ public class PRM_Benefit_Group_Benefit_Assoc_Test {
         
         PRM_Account_Specialty_Association__c asa = new PRM_Account_Specialty_Association__c();
         asa.PRM_Account_Id__c= testAccount.id;
-        asa.PRM_Specialty_Id__c= specList[0].id;
+        asa.PRM_Specialty_Id__c= spec1.id;
         asa.PRM_InActive_Ind__c= false;
         specialityList.add(asa);
         
         PRM_Account_Specialty_Association__c asa1 = new PRM_Account_Specialty_Association__c();
         asa1.PRM_Account_Id__c= testAccount.id;
-        asa1.PRM_Specialty_Id__c= specList[0].id;
+        asa1.PRM_Specialty_Id__c= spec1.id;
         asa1.PRM_InActive_Ind__c= false;
         specialityList.add(asa1);
         
@@ -291,6 +283,7 @@ public class PRM_Benefit_Group_Benefit_Assoc_Test {
         
         
         List<PRM_Benefit_Group_Benefit_Association__c> lstOfBgba = new List<PRM_Benefit_Group_Benefit_Association__c>(); 
+        Test.startTest();
         BGBA1.PRM_InActive_Ind__c =True;
         lstOfBgba.add(BGBA1);
         BGBA2.PRM_InActive_Ind__c =True;
@@ -299,7 +292,7 @@ public class PRM_Benefit_Group_Benefit_Assoc_Test {
         lstOfBgba.add(BGBA3);
         
         update (lstOfBgba);
-        Test.stopTest();
+		Test.stopTest();
         System.assertNotEquals(Null,lstOfBgba,'List of BGBA should contain records');
     }
         static testmethod void memberBenefitAssign(){
@@ -317,7 +310,6 @@ public class PRM_Benefit_Group_Benefit_Assoc_Test {
         newAccount.BillingPostalCode='Postal code';
         newAccount.Core_Account_Type__c='Cloud Service Provider (CSP)';
         newAccount.Core_Intel_Partner_Alliance_PartnerGroup__c=true;
-        newAccount.Core_User_Defined_Website__c = 'www.Test1234.com';
         acc.add(newAccount);
         
         Account newAccount1 = new Account();//Account
@@ -328,8 +320,8 @@ public class PRM_Benefit_Group_Benefit_Assoc_Test {
         newAccount1.BillingCountry='India';
         newAccount1.BillingPostalCode='Postal code';
         newAccount1.Core_Account_Type__c='Cloud Service Provider (CSP)';
+        newAccount1.Core_IPA_Partner_Speciality__c='Video Specialty;Cloud Data Center Specialist';
         newAccount.Core_Intel_Partner_Alliance_PartnerGroup__c=true;
-        newAccount1.Core_User_Defined_Website__c = 'www.Test1234.com';
         acc.add(newAccount1);
         
         if(acc != null){
@@ -344,9 +336,7 @@ public class PRM_Benefit_Group_Benefit_Assoc_Test {
         cont.email='AdamGrill@rediff.com';
         cont.Core_Job_Function__c='Branch Manager';
         cont.Core_eRPM_Language_Code__c='Eng';
-        cont.Core_IPA_PartnerRole__c = 'Service Provider';
-        cont.MailingCountry = 'USA';
-        
+        cont.Core_IPA_Partner_Role__c = 'Service Provider';
         insert cont;
         
         Contact cont1 = new Contact();  //Contact
@@ -356,8 +346,7 @@ public class PRM_Benefit_Group_Benefit_Assoc_Test {
         cont1.email='AdamGrillada@rediff.com';
         cont1.Core_Job_Function__c='Branch Manager';
         cont1.Core_eRPM_Language_Code__c='Eng';
-        cont1.Core_IPA_PartnerRole__c = 'Service Provider';
-        cont1.MailingCountry = 'USA';
+        cont1.Core_IPA_Partner_Role__c = 'Service Provider';
         insert cont1;
         
         ChannelProgram cp = new ChannelProgram(); //Channel Program
@@ -366,12 +355,12 @@ public class PRM_Benefit_Group_Benefit_Assoc_Test {
         insert cp;
         
         ChannelProgramLevel cpl=new ChannelProgramLevel(); //Channel Program Level
-        cpl.Name='Partner';
+        cpl.Name='Member';
         cpl.ProgramId=cp.Id;
         insert cpl;
         
         ChannelProgramLevel cpl1=new ChannelProgramLevel(); //Channel Program Level
-        cpl1.Name='Partner';
+        cpl1.Name='Member';
         cpl1.ProgramId=cp.Id;
         insert cpl1;
         
@@ -382,38 +371,37 @@ public class PRM_Benefit_Group_Benefit_Assoc_Test {
         acm1.PRM_Channel_Program_Id__c=cp.Id;
         acm1.PRM_Channel_Program_Level_Id__c=cpl1.Id;
         acm1.PRM_Partner_Role__c='Service Provider';
-        acm1.PRM_Status_Reason_Txt__c='Test';
         insert acm1;
         
         PRM_PartnerBenefit__c pb = new PRM_PartnerBenefit__c(); //Partner Benefit
         pb.Name = 'Solution Marketplace Basic Access';
         pb.PRM_Channel_Program_Id__c = cp.id;
         pb.PRM_Benefit_Cd__c = 'BNFTSMBA';
-        //pb.PRM_Account_Type_Nm__c='Both';
+		//pb.PRM_Account_Type_Nm__c='Both';
         insert pb;
-        //system.debug('pb========>'+pb);
+        system.debug('pb========>'+pb);
         
         PRM_PartnerBenefit__c pb1 = new PRM_PartnerBenefit__c(); //Partner Benefit
         pb1.Name = 'Points Accruals – View';
         pb1.PRM_Channel_Program_Id__c = cp.id;
         pb1.PRM_Benefit_Cd__c = 'BFTPTSVIEW';
-        //pb1.PRM_Account_Type_Nm__c='Both';
+		//pb1.PRM_Account_Type_Nm__c='Both';
         insert pb1;
         
         List<PRM_AccountChannelMembership__c> acmrecords = new List<PRM_AccountChannelMembership__c>();
         Datetime lastModifyDate;
         String lastModifiedBy;
         acmrecords= [select LastModifiedById,Name,PRM_Status_Change_Dt__c from PRM_AccountChannelMembership__c where PRM_Status_Nm__c='Approved' limit 1];
-        //system.debug('acmrecords --->'+acmrecords);
+        System.debug('acmrecords --->'+acmrecords);
         lastModifyDate = acmrecords[0].PRM_Status_Change_Dt__c;
         lastModifiedBy = acmrecords[0].LastModifiedById;
-        //system.debug('LM Date is ' +lastModifyDate);
-        //system.debug('LM Id is ' +lastModifiedBy);
+        System.debug('LM Date is ' +lastModifyDate);
+        System.debug('LM Id is ' +lastModifiedBy);
         
         PRM_BatchCustomSetting__c bm = new PRM_BatchCustomSetting__c();//Custom Setting Benefit Mapping
         bm.Name='BatchFieldValues';
         bm.PRM_PartnerType__c='Cloud Service Provider (CSP)';
-        bm.PRM_ChannelProgramLevel__c='Partner;Prestige';
+        bm.PRM_ChannelProgramLevel__c='Gold;Titanium;Member';
         bm.PRM_SchedulingHour__c=6;
         bm.PRM_NoOfRecords__c=300;
         bm.PRM_NoOfBatchEntRecords__c=10;
@@ -421,7 +409,7 @@ public class PRM_Benefit_Group_Benefit_Assoc_Test {
         insert bm;
         
         PRM_ContactRelationships__c contRelation = new PRM_ContactRelationships__c();   //Contact Relationship
-        contRelation.Name=System.Label.PRM_Primary_Contact;
+        contRelation.Name='Primary Contact';
         contRelation.PRM_Contact_Relationship_Cd__c ='RELTNPRCTC';
         contRelation.PRM_Channel_Program_Id__c = cp.Id;
         contRelation.PRM_Default_Relationship_Ind__c = true;
@@ -474,7 +462,7 @@ public class PRM_Benefit_Group_Benefit_Assoc_Test {
         em.PRM_Channel_Program_Level_Id__c = cpl1.Id;
         em.PRM_Contact_Relationship_Id__c = contRelation.id;
         em.PRM_Approval_Type_Nm__c='Automatic';
-        em.PRM_IPA_Partner_Role_Nm__c='Service Provider';
+        em.PRM_Partner_Role_Nm__c='Service Provider';
         em.PRM_IsActive_Ind__c= true;
         insert em;
         
@@ -484,7 +472,7 @@ public class PRM_Benefit_Group_Benefit_Assoc_Test {
         em1.PRM_Channel_Program_Level_Id__c = cpl1.Id;
         em1.PRM_Contact_Relationship_Id__c = contRelation.id;
         em1.PRM_Approval_Type_Nm__c='Automatic';
-            em1.PRM_IPA_Partner_Role_Nm__c='Service Provider';
+        em1.PRM_Partner_Role_Nm__c='Service Provider';
         em1.PRM_IsActive_Ind__c = true;
         insert em1;
         
@@ -494,7 +482,7 @@ public class PRM_Benefit_Group_Benefit_Assoc_Test {
         em2.PRM_Channel_Program_Level_Id__c = cpl1.Id;
         em2.PRM_Contact_Relationship_Id__c = contRelation.id;
         em2.PRM_Approval_Type_Nm__c='Automatic';
-        em2.PRM_IPA_Partner_Role_Nm__c='Service Provider';
+        em2.PRM_Partner_Role_Nm__c='Service Provider';
         em2.PRM_IsActive_Ind__c = true;
         insert em2;
         
@@ -544,7 +532,7 @@ public class PRM_Benefit_Group_Benefit_Assoc_Test {
         em3.PRM_Contact_Relationship_Id__c = contRelation.id;
         em3.PRM_Channel_Program_Level_Id__c = cpl1.Id;
         em3.PRM_Approval_Type_Nm__c='Automatic';
-        em3.PRM_IPA_Partner_Role_Nm__c='Service Provider';
+        em3.PRM_Partner_Role_Nm__c='Service Provider';
         em3.PRM_IsActive_Ind__c= true;
         insert em3;
         
@@ -576,7 +564,7 @@ public class PRM_Benefit_Group_Benefit_Assoc_Test {
         cce2.Core_DontNotify__c = true;
         cce2.Core_From_Source__c = false;
         ceList.add(cce2);
-        Test.startTest();              
+		             
          if(beList != null && !beList.IsEmpty()){
                 insert beList;
                 insert ceList;
@@ -588,10 +576,10 @@ public class PRM_Benefit_Group_Benefit_Assoc_Test {
         // Speciality to benefit flow Start
         
         PRM_Specialty__c spec = new PRM_Specialty__c(); //speciality
-        spec.name='Select Benefits';
+        spec.Name = 'Enthusiast PC Specialty';
         spec.PRM_Description_Txt__c='This is description';
         spec.PRM_Funding_BU_Nm__c='CCG Sales Group';
-        spec.PRM_Role_Nm__c='Service Provider;Distributor';
+        spec.PRM_Role_Nm__c='Service Provider;FPGA Designer';
         spec.PRM_Tier_Nm__c='Gold';
         spec.PRM_Start_Date_Dt__c= system.today() + 7;
         spec.PRM_End_Date_Dt__c= spec.PRM_Start_Date_Dt__c + 5;
@@ -599,17 +587,17 @@ public class PRM_Benefit_Group_Benefit_Assoc_Test {
         insert spec;
         
         PRM_Specialty__c spec1 = new PRM_Specialty__c(); //speciality
-        spec1.name='Addition Select Benefit';
+        spec1.name='Video Specialty';
         spec1.PRM_Description_Txt__c='This is description';
         spec1.PRM_Funding_BU_Nm__c='CCG Sales Group';
         spec1.PRM_Role_Nm__c='Service Provider';
-        spec1.PRM_Tier_Nm__c='Gold';//'Gold';
+        spec1.PRM_Tier_Nm__c='Gold';
         spec1.PRM_Start_Date_Dt__c= system.today() + 7;
         spec1.PRM_End_Date_Dt__c= spec.PRM_Start_Date_Dt__c + 5;
         spec1.PRM_Access_Level_Nm__c='Public';
         insert spec1;
-        
-        PRM_Benefit_Group__c bg1 = new PRM_Benefit_Group__c();
+		
+		PRM_Benefit_Group__c bg1 = new PRM_Benefit_Group__c();
         bg1.Name='Sheetal Test1';
         bg1.PRM_InActive_Ind__c= false;
         insert bg1;
@@ -618,9 +606,7 @@ public class PRM_Benefit_Group_Benefit_Assoc_Test {
         bg2.Name='Sheetal Test2';
         bg2.PRM_InActive_Ind__c= false;
         insert bg2;
-        
-           
-        
+		
         PRM_Specialty_Benefit_Group_Association__c testSBGA1 = new PRM_Specialty_Benefit_Group_Association__c();
         testSBGA1.PRM_Benefit_Group_Id__c=bg1.id;
         testSBGA1.PRM_Specialty_Id__c=spec.id;
@@ -638,12 +624,12 @@ public class PRM_Benefit_Group_Benefit_Assoc_Test {
         testSBGA3.PRM_Specialty_Id__c=spec1.id;
         testSBGA3.PRM_InActive_Ind__c= false;
         insert testSBGA3; 
-        
-        
+		
+		
         PRM_Benefit_Group__c bg= new PRM_Benefit_Group__c();
         bg.name = 'Benefitgroup Test';
         insert bg;
-        //system.debug('bg========>'+bg);
+        system.debug('bg========>'+bg);
         
         PRM_Specialty_Benefit_Group_Association__c sbga = new PRM_Specialty_Benefit_Group_Association__c();
         sbga.PRM_Benefit_Group_Id__c=bg.id;
@@ -652,7 +638,7 @@ public class PRM_Benefit_Group_Benefit_Assoc_Test {
         sbga.PRM_End_Date_Dt__c= sbga.PRM_Start_Date_Dt__c + 7;
         insert sbga;
         
-               //Insertion of ASA
+		       //Insertion of ASA
         List<PRM_Account_Specialty_Association__c> lstOfAsa = new List<PRM_Account_Specialty_Association__c>();
         
         PRM_Account_Specialty_Association__c asa = new PRM_Account_Specialty_Association__c();
@@ -672,11 +658,11 @@ public class PRM_Benefit_Group_Benefit_Assoc_Test {
         asa2.PRM_Specialty_Id__c= spec.id;
         asa2.PRM_InActive_Ind__c = FALSE;
         lstOfAsa.add(asa2);*/
-         
+         Test.startTest();
         if(lstOfAsa != null && !lstOfAsa.isEmpty()){
             insert lstOfAsa;
         }
-        
+		
        
       
         PRM_Benefit_Group_Benefit_Association__c bgba = new PRM_Benefit_Group_Benefit_Association__c();
@@ -695,10 +681,9 @@ public class PRM_Benefit_Group_Benefit_Assoc_Test {
         bgba1.PRM_End_Date_Dt__c= bgba.PRM_Start_Date_Dt__c + 7;
         insert bgba1;
         
-       System.assertEquals('Live',bgba1.PRM_Status_Nm__c,'Value Should Match');
+       
         Test.stopTest(); 
         
-            
     }
         
 }

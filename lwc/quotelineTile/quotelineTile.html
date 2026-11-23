@@ -1,0 +1,178 @@
+<!--
+  @description       : 
+  @author            : Mahesh Biradar
+  @group             : 
+  @last modified on  : 10-20-2022
+  @last modified by  : Mahesh Biradar
+-->
+<template>
+	<div class="slds-card slds-tabs_card tile">
+		<header class="slds-card__header cardHeader tileHeader">
+			<div class="slds-media slds-media_center">
+				<div class="slds-media__body">
+					<div class="slds-grid slds-wrap slds-media_center slds-m-vertical_xx-small">
+						<div class="slds-col slds-size_4-of-12 slds-large-size_8-of-12">
+							<span>
+								<b><h1
+									class="slds-truncate slds-p-left_xx-small slds-p-top_xxx-small slds-text-heading_small">
+									{quoteline.Pricing_Quote_Line_Number__c}
+								</h1></b>
+							</span>
+						</div>
+						<div class="slds-col slds-size_4-of-12">
+							<ul class="slds-list_horizontal slds-has-dividers_right slds-media_center slds-float_right">
+								<template if:true={changeRequest}>
+									<li class="slds-p-right_xx-small slds-p-top_xxx-small">
+										<lightning-icon icon-name="utility:sync"
+											alternative-text="Change Request"
+											variant="success"
+											size="x-small"></lightning-icon>
+									</li>
+								</template>
+
+								<template if:true={showIcons}>
+									<li class="slds-p-right_xx-small slds-p-top_xxx-small">
+										<lightning-icon icon-name={iconName}
+											alternative-text={alternativeText}
+											variant={variant}
+											size="x-small"></lightning-icon>
+									</li>
+								</template>
+
+								<li class="slds-p-right_xx-small slds-p-top_xxx-small">
+									<!--icon-name="utility:threedots_vertical"  class= slds-p-around_x-small  icon-name="utility:connected_apps"-->
+									<lightning-button-menu icon-size="x-small"
+										menu-alignment="right"
+										alternative-text="Menu"
+										title="Menu"
+										onselect={handleMenuItem}>
+										<template for:each={menu}
+											for:item="item">
+											<lightning-menu-item key={item.label}
+												value={item.value}
+												label={item.label}></lightning-menu-item>
+										</template>
+									</lightning-button-menu>
+								</li>
+							</ul>
+						</div>
+					</div>
+
+					<template if:true={showAcronym}>
+						<!--<p class="slds-p-left_x-small"> {acronym}</p>-->
+						<h2 class="slds-truncate slds-p-left_xx-small slds-p-bottom_xx-small slds-text-heading_small">
+							{acronym}</h2>
+					</template>
+
+				</div>
+			</div>
+		</header>
+
+		<div class="slds-card__body"
+			onclick={selectQuoteLineId}
+			style="cursor: pointer;">
+			<slot>
+				<div>
+					<ul class="slds-m-around_xx-small">
+						<template if:true={fieldSet}
+							for:each={fieldSet}
+							for:item="item">
+							<li key={item.value}
+								class="slds-line-clamp_medium">
+								<b>{item.label}</b> {item.value}
+							</li>
+						</template>
+						<!-- <li >{quoteline.Pricing_Processor_Number_Nm__c} </li>
+							<li class="slds-line-clamp_medium">
+								Quantity:{quoteline.Pricing_Total_Volume_Qty__c}
+							</li>
+							<li class="slds-line-clamp_medium">Requested Price:
+								<lightning-formatted-number value={quoteline.Pricing_Req_Discounted_Unit_Price__c} maximum-fraction-digits="2"></lightning-formatted-number>
+							</li>
+							<li class="slds-line-clamp_medium">Approved Qty:{quoteline.Pricing_Approved_Unit_Qty__c}
+							</li>
+							<li class="slds-line-clamp_medium">Approved Price: 
+								<lightning-formatted-number value={quoteline.Pricing_ECAP_Price_Amt__c} maximum-fraction-digits="2"></lightning-formatted-number>
+							</li> 
+							<li class="slds-line-clamp_medium">Deal ID:{quoteline.Pricing_Deal_RFQ_Id__c} </li>-->
+					</ul>
+				</div>
+			</slot>
+		</div>
+	</div>
+
+	<template if:true={showApprovalErrorScreen}>
+		<section role="dialog"
+			tabindex="-1"
+			aria-labelledby="modal-heading-01"
+			aria-modal="true"
+			aria-describedby="modal-content-id-1"
+			class="slds-modal slds-fade-in-open">
+			<div class="slds-modal__container">
+				<header style="padding: 0px; border-bottom: 0px;"
+					class="slds-modal__header">
+					<lightning-button icon-name="utility:close"
+						onclick={closeModel}
+						alternative-text="close"
+						variant="bare-inverse"
+						class="slds-modal__close"></lightning-button>
+
+				</header>
+				<div class="slds-modal__content slds-p-around_medium">
+
+					<!-- Pricing_Publish_Quote need to call -->
+				</div>
+			</div>
+		</section>
+		<div class="slds-backdrop slds-backdrop_open"></div>
+	</template>
+
+
+	<!--###### QuoteLine Record Edit form Modal ######-->
+	<template if:true={isSSDQuoteLineEdit}>
+		<section role="dialog"
+			tabindex="-1"
+			aria-labelledby="modal-heading-01"
+			aria-modal="true"
+			aria-describedby="modal-content-id-1"
+			class="slds-modal slds-fade-in-open slds-modal_medium"
+			style="top:10%">
+			<div class="slds-modal__container"
+				style="width: 53%">
+				<header class="slds-modal__header slds-p-around_medium">
+					<lightning-button-icon icon-name="utility:close" alternative-text="Close this window" size="large"
+                    variant="bare-inverse" onclick={closeModelSSDQuoteLineEdit} class="slds-modal__close">
+                </lightning-button-icon>
+					
+					<h2 id="modal-heading-01"
+						class="slds-text-heading_medium slds-hyphenate">Quote Line Edit</h2>
+				</header>
+				<div class="slds-modal__content">
+					<c-pricing_-edit_-field-set_-form record-id={quoteline.Id} onrefresheventnew={closeModelSSDQuoteLineEdit}>
+					</c-pricing_-edit_-field-set_-form>
+				</div>
+			</div>
+		</section>
+		<div class="slds-backdrop slds-backdrop_open"></div>
+	</template>
+
+	<!--###### RPM Recommendation Form ######-->
+	<template if:true={showRPMRecommendation}>
+		<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" 
+		aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_medium" style="top:10%">
+			<div class="slds-modal__container" style="width: 53%">
+				<header class="slds-modal__header slds-p-around_medium">
+					<lightning-button-icon icon-name="utility:close" alternative-text="Close this window" size="large"
+                    variant="bare-inverse" onclick={closeModalRPMRecommendation} class="slds-modal__close">
+                </lightning-button-icon>
+					<h2 class="slds-text-heading_medium slds-hyphenate">{productName}</h2>
+				</header>
+				<div class="slds-modal__content">
+					<c-pricing-r-p-m-recommendation-form record-id={quoteline.Id}> </c-pricing-r-p-m-recommendation-form>
+				</div>
+			</div>
+		</section>
+		<div class="slds-backdrop slds-backdrop_open"></div>
+	</template>
+	
+</template>

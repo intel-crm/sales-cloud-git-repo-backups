@@ -201,6 +201,10 @@
             <translation><!-- core_cpq_next_approver_nm__c --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>core_cpq_req_email_txt__c</masterLabel>
+            <translation><!-- core_cpq_req_email_txt__c --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>core_cpq_requestor_nm__c</masterLabel>
             <translation><!-- core_cpq_requestor_nm__c --></translation>
         </picklistValues>

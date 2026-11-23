@@ -86,10 +86,6 @@
         <aggregateTypes>Sum</aggregateTypes>
         <field>AMOUNT</field>
     </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Lead.SWS_Software_Lead__c</field>
-    </columns>
     <description>RT: Leads with Converted Lead Information</description>
     <filter>
         <criteriaItems>
@@ -140,7 +136,7 @@
     <scope>org</scope>
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
-    <showSubTotals>true</showSubTotals>
+    <showSubTotals>false</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CREATED_DATE</dateColumn>
         <interval>INTERVAL_PREVCUR2Y</interval>

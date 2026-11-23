@@ -311,5 +311,18 @@ ISCHANGED( Pricing_Active__c)
 )</errorConditionFormula>
         <errorMessage>Product Floor Price cannot be created or updated when the price rule is in the Submitted state.</errorMessage>
     </validationRules>
+    <validationRules>
+        <fullName>Pricing_Restrict_Write_In_Product</fullName>
+        <active>false</active>
+        <errorConditionFormula>AND(
+OR(
+ISNEW(),
+ISCHANGED(Pricing_Product__c)
+),
+Pricing_Product__c == &apos;Write In Product&apos;
+)</errorConditionFormula>
+        <errorDisplayField>Pricing_Product__c</errorDisplayField>
+        <errorMessage>Write in Product can be added. Please select Intel Products.</errorMessage>
+    </validationRules>
     <visibility>Public</visibility>
 </CustomObject>

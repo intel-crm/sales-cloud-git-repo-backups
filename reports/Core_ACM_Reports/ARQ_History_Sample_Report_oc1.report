@@ -37,27 +37,15 @@
         <field>Account_Create_Request__c.Global_Account__c</field>
     </columns>
     <columns>
-        <field>Account_Create_Request__c.Core_Geo__c</field>
-    </columns>
-    <columns>
         <field>Account_Create_Request__c.Dataops_SLA__c</field>
     </columns>
     <columns>
         <field>Account_Create_Request__c.CCDO_SLA__c</field>
     </columns>
     <columns>
+        <aggregateTypes>Sum</aggregateTypes>
         <field>Account_Create_Request__c.Total_Measured_SLA__c</field>
     </columns>
-    <filter>
-        <criteriaItems>
-            <column>Account_Create_Request__c.Status__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Pending Approval</value>
-        </criteriaItems>
-        <language>en_US</language>
-    </filter>
     <format>Tabular</format>
     <name>Pending Account Request Report</name>
     <params>
@@ -69,8 +57,6 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>CUST_CREATED_DATE</sortColumn>
-    <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CREATED_DATE</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>

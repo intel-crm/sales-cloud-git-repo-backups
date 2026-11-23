@@ -44,8 +44,8 @@
             <translation><!-- New License Request --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Other</masterLabel>
-            <translation><!-- Other --></translation>
+            <masterLabel>Others</masterLabel>
+            <translation><!-- Others --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Re-host</masterLabel>
@@ -77,20 +77,20 @@
         <name>Feedback_Date__c</name>
     </fields>
     <fields>
-        <label><!-- Feedback Month --></label>
-        <name>Feedback_Month__c</name>
-    </fields>
-    <fields>
-        <label><!-- Feedback Quarter --></label>
-        <name>Feedback_Quarter__c</name>
-    </fields>
-    <fields>
         <label><!-- Feedback Text --></label>
         <name>Feedback_Text__c</name>
     </fields>
     <fields>
+        <label><!-- Intel Meeting Brief --></label>
+        <name>Intel_Meeting_Brief__c</name>
+    </fields>
+    <fields>
         <label><!-- Days Since Last Feedback Captured --></label>
         <name>Last_Feedback_Captured__c</name>
+    </fields>
+    <fields>
+        <label><!-- Other Party Meeting --></label>
+        <name>Other_Party_Meeting__c</name>
     </fields>
     <fields>
         <label><!-- Rating --></label>
@@ -100,12 +100,12 @@
             <translation><!-- Dissatisfied --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Extremely Satisfied</masterLabel>
-            <translation><!-- Extremely Satisfied --></translation>
+            <masterLabel>Extremely Dissatisfied</masterLabel>
+            <translation><!-- Extremely Dissatisfied --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Extremely Unsatisfied</masterLabel>
-            <translation><!-- Extremely Unsatisfied --></translation>
+            <masterLabel>Extremely Satisfied</masterLabel>
+            <translation><!-- Extremely Satisfied --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Neutral</masterLabel>
@@ -125,9 +125,13 @@
         <name>Reference_Id__c</name>
     </fields>
     <fields>
+        <label><!-- Rich text --></label>
+        <name>Rich_text__c</name>
+    </fields>
+    <fields>
         <label><!-- Contact --></label>
         <name>Sales_Contact__c</name>
-        <relationshipLabel><!-- Feedbacks --></relationshipLabel>
+        <relationshipLabel><!-- Feedback --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- Scale --></label>
@@ -158,4 +162,8 @@
         </picklistValues>
     </fields>
     <startsWith>Consonant</startsWith>
+    <webLinks>
+        <label><!-- Download_PDF --></label>
+        <name>Download_PDF</name>
+    </webLinks>
 </CustomObjectTranslation>

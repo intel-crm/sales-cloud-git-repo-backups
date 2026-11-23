@@ -17,13 +17,14 @@ global class Core_OpportunityPartnerBatchUpdate implements Database.Batchable<sO
         AsyncApexJob a = [SELECT Id, Status, NumberOfErrors, JobItemsProcessed, TotalJobItems, CreatedBy.Email
                           FROM AsyncApexJob WHERE Id =:bc.getJobId()];
         String fromEmailAddress = System.Label.Core_SetFromEmailAddress;
+        
         Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
         mail.setSubject('Opportunity Partner -> Opportunity Facts batch status: ' + a.Status + '!');
         mail.setPlainTextBody('Opportunity Partner -> Opportunity Facts batch status: ' + a.Status + '. ' +
                               'The batch Apex job processed ' + a.TotalJobItems + ' batches with '+
                               a.NumberOfErrors + ' failures.');
-        mail.setOrgWideEmailAddressId(fromEmailAddress);                      
         mail.setToAddresses(new String[]{a.CreatedBy.Email});
+        mail.setOrgWideEmailAddressId(fromEmailAddress);
         Messaging.sendEmail(new Messaging.SingleEmailMessage[]{mail});
     }
 }

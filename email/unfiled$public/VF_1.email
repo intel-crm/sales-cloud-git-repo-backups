@@ -1,0 +1,6 @@
+<messaging:emailTemplate subject="Submit for approval" recipientType="User" relatedToType="SBQQ__Quote__c">
+<messaging:plainTextEmailBody >
+Congratulations!
+This is your new Visualforce Email Template.
+</messaging:plainTextEmailBody>
+</messaging:emailTemplate>

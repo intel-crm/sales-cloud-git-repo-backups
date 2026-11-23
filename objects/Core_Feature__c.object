@@ -187,6 +187,11 @@
                     <label>CCG</label>
                 </value>
                 <value>
+                    <fullName>CCG ECG</fullName>
+                    <default>false</default>
+                    <label>CCG ECG</label>
+                </value>
+                <value>
                     <fullName>DCG</fullName>
                     <default>false</default>
                     <label>DCAI</label>
@@ -202,9 +207,9 @@
                     <label>NTG</label>
                 </value>
                 <value>
-                    <fullName>CCG ECG</fullName>
+                    <fullName>PBS</fullName>
                     <default>false</default>
-                    <label>CCG ECG</label>
+                    <label>PBS</label>
                 </value>
                 <value>
                     <fullName>ADG</fullName>
@@ -231,18 +236,6 @@
                     <label>CORP</label>
                 </value>
                 <value>
-                    <fullName>IOTG</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>IOTG</label>
-                </value>
-                <value>
-                    <fullName>NEX CG</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>NEX CG</label>
-                </value>
-                <value>
                     <fullName>NEX NCCG</fullName>
                     <default>false</default>
                     <isActive>false</isActive>
@@ -262,6 +255,15 @@
                 </value>
             </valueSetDefinition>
         </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_Feature_Date_Value__c</fullName>
+        <description>This field is used to store only the date values which the feature type is date</description>
+        <label>Feature Date Value</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
     </fields>
     <fields>
         <fullName>Core_Feature_Long_ID__c</fullName>
@@ -316,6 +318,7 @@
         <columns>NAME</columns>
         <columns>Core_Multi_Select__c</columns>
         <columns>Core_Feature_BU__c</columns>
+        <columns>CREATED_DATE</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>

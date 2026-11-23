@@ -13,7 +13,7 @@ import hasRAPermission from '@salesforce/customPermission/CST_Regional_Admin';//
 export default class Cst_feedback extends LightningElement {
     
     teamMemberLabel=Team_Member_Label;
-    reasonForChange='';newAccountOwner='';teamMembers='';newSalesGroup='';
+    reasonForChange='';newAccountOwner='';teamMembers='';newSalesGroup=''; newAccountTier='';//TWC3123-6732 newAccountTier
     showFeedbackBy=false;
     Error_Message='';
     showWarnings=false;
@@ -41,14 +41,16 @@ export default class Cst_feedback extends LightningElement {
     acctSG=[];
 
     disabled=true;
-    showChangeToPartnerFields=false;
-    showChangeToUncoveredFields=false;
+    showChangeToIndirectCoveredFields=false;//TWC3123-5894 updated from 'showChangeToPartnerFields' to 'showChangeToIndirectCoveredFields'
+    showChangeToNotCoveredFields=false;//TWC3123-5894 updated from 'showChangeToUncoveredFields' to 'showChangeToNotCoveredFields'
     showChangeOwnershipFields=false;
-    showAddToIntelLedFields=false;
+    showAddToIntelCoveredFields=false;//TWC3123-5894 updated from 'showAddToIntelLedFields' to 'showAddToIntelCoveredFields'
     showPartialFields=false;
     showCstFeedback = false;
-    showChangeToOtherLedFields=false;//TWC3123-6125
+   // showChangeToOtherLedFields=false;//TWC3123-6125,TWC3123-5894- Commented as 'Change to Other Led' feedback is deactivated
     successMessage;
+    acctAccTierOptions;//TWC3123-6732 
+    showChangeAccountLevelFields = false; //TWC3123-6732 
 
     get hasRAPermission() { //TWC3123-6463
         return hasRAPermission;
@@ -75,14 +77,14 @@ export default class Cst_feedback extends LightningElement {
                     if(data.showFeedbackBy == true){
                         this.showFeedbackBy = true;
                     }
-                    let feedbackOptions = []; let SGOptions =[];
+                    let feedbackOptions = []; let SGOptions =[]; let accountTierOptions=[];//TWC3123-6732
                     for (var op in data.feedbackOptions) { 
                         let option = data.feedbackOptions[op].split('|');
                      
                         feedbackOptions.push({ label: option[0], value: option[1]  });
                     }        
                 this.cstFeedbackOptions = feedbackOptions;
-
+                console.log('Feedback op are:'+JSON.stringify(this.cstFeedbackOptions));
                 for (var op in data.salesGroupOptions) { 
                     let option = data.salesGroupOptions[op].split('|');
                  
@@ -92,13 +94,24 @@ export default class Cst_feedback extends LightningElement {
                 this.cstSalesGrpOptions = SGOptions;
                 this.custSG = SGOptions;
                 }
-                    
+                //TWC3123-6732 start
+                console.log('Customer acc tier:'+data.accountTierOptions)
+                 for (var op in data.accountTierOptions) { 
+                    let option = data.accountTierOptions[op].split('|');
+                 
+                    accountTierOptions.push({ label: option[0], value: option[1]  });
+                } 
+                if(accountTierOptions.length !==0){
+                    this.accountTierOptions = accountTierOptions;
+                }
+                //TWC3123-6732 end   
                 }
                 else if(data.objectName=='SPM_Account_Detail__c' && data.showComp == true){
                     this.showComp = true;
                     this.feedbackObjectName = 'SPM_Account_Feedback__c';
                     this.accountFeedback = true;
                     this.coverage = data.coverage;
+                     console.log('Coverage in js acc detail is:'+this.coverage);
                     if(data.stageName == 'DR'){
                         this.stage = 'Director';
                     }
@@ -136,6 +149,13 @@ export default class Cst_feedback extends LightningElement {
                         value: opt.value
                     })
                   );
+                 this.acctAccTierOptions = data.picklistFieldValues.CST_New_Account_Level__c.values.filter(
+                    (opt) => ({
+                        label: opt.label,
+                        value: opt.value
+                    })
+                  );
+                  console.log('Acc Tier options:'+this.acctAccTierOptions);
             }
             /*else{
                 this.cstFeedbackOptions = data.picklistFieldValues.Feedback__c.values.filter(
@@ -161,10 +181,11 @@ export default class Cst_feedback extends LightningElement {
 
     handleCstFeedbackChange(event){
         this.newSalesGroup ='';
+        this.newAccountTier='';//TWC3123-6732
         let SGOptions = this.custSG;
         this.disabled=false;
         this.selectedCstFeedback = event.target.value; 
-        if(this.selectedCstFeedback == 'Change to Partner')  {
+        if(this.selectedCstFeedback == 'Change to Indirect Covered')  { //TWC3123-5894
             let newOp = [];
             for(let op in SGOptions){
                 if(SGOptions[op].label.includes('Partner Led')){
@@ -174,15 +195,17 @@ export default class Cst_feedback extends LightningElement {
                 this.cstSalesGrpOptions = newOp;
                 }
             }
-            this.showChangeToPartnerFields =true;
-            this.showChangeToUncoveredFields=false;
+            this.showChangeToIndirectCoveredFields =true;//TWC3123-5894
+            this.showChangeToNotCoveredFields=false;//TWC3123-5894
             this.showChangeOwnershipFields=false;
-            this.showAddToIntelLedFields=false;
+            this.showAddToIntelCoveredFields=false;//TWC3123-5894
             this.showPartialFields=false;
-            this.showChangeToOtherLedFields=false;
+            //this.showChangeToOtherLedFields=false;
+            this.showChangeAccountLevelFields=false;//TWC3123-6732 
+            this.newAccountTier='Level 3';//TWC3123-6732
             
         }
-        else if(this.selectedCstFeedback == 'Change to Uncovered')  {
+        else if(this.selectedCstFeedback == 'Change to Not Covered')  { //TWC3123-5894
             let newOp = [];
             for(let op in SGOptions){
                 if(SGOptions[op].label.includes('Undefined')){
@@ -192,63 +215,76 @@ export default class Cst_feedback extends LightningElement {
                 this.cstSalesGrpOptions = newOp;
                 }
             }
-            this.showChangeToPartnerFields =false;
-            this.showChangeToUncoveredFields=true;
+            this.showChangeToIndirectCoveredFields =false;//TWC3123-5894 
+            this.showChangeToNotCoveredFields=true;//TWC3123-5894
             this.showChangeOwnershipFields=false;
-            this.showAddToIntelLedFields=false;
+            this.showAddToIntelCoveredFields=false;//TWC3123-5894
             this.showPartialFields=false;
-            this.showChangeToOtherLedFields=false;
+            //this.showChangeToOtherLedFields=false;
+            this.showChangeAccountLevelFields=false;//TWC3123-6732 
+            this.newAccountTier='No Level';//TWC3123-6732
             
         }
         else if(this.selectedCstFeedback == 'Change Ownership')  {
             this.cstSalesGrpOptions = SGOptions;
-            this.showChangeToPartnerFields =false;
-            this.showChangeToUncoveredFields=false;
+            this.showChangeToIndirectCoveredFields =false;//TWC3123-5894 
+            this.showChangeToNotCoveredFields=false;//TWC3123-5894 
             this.showChangeOwnershipFields=true;
-            this.showAddToIntelLedFields=false;
+            this.showAddToIntelCoveredFields=false;//TWC3123-5894
             this.showPartialFields=false;
-            this.showChangeToOtherLedFields=false;
+            //this.showChangeToOtherLedFields=false;
+            this.showChangeAccountLevelFields=false;//TWC3123-6732 
             
         }
         else if(this.selectedCstFeedback == 'Partial')  {
             this.cstSalesGrpOptions = SGOptions;
-            this.showChangeToPartnerFields =false;
-            this.showChangeToUncoveredFields=false;
+            this.showChangeToIndirectCoveredFields =false;//TWC3123-5894 
+            this.showChangeToNotCoveredFields=false;
             this.showChangeOwnershipFields=false;
-            this.showAddToIntelLedFields=false;
+            this.showAddToIntelCoveredFields=false;//TWC3123-5894
             this.showPartialFields=true;
-            this.showChangeToOtherLedFields=false;
+            //this.showChangeToOtherLedFields=false;
+            this.showChangeAccountLevelFields=false;//TWC3123-6732 
             
         }
-        else if(this.selectedCstFeedback == 'Add to Intel led')  {
+        else if(this.selectedCstFeedback == 'Add to Intel Covered')  {//TWC3123-5894
             this.cstSalesGrpOptions = SGOptions;
-            this.showChangeToPartnerFields =false;
-            this.showChangeToUncoveredFields=false;
+            this.showChangeToIndirectCoveredFields =false;//TWC3123-5894 
+            this.showChangeToNotCoveredFields=false;//TWC3123-5894 
             this.showChangeOwnershipFields=false;
-            this.showAddToIntelLedFields=true;
+            this.showAddToIntelCoveredFields=true;//TWC3123-5894
             this.showPartialFields=false;
-            this.showChangeToOtherLedFields=false;
+            //this.showChangeToOtherLedFields=false;
+            this.showChangeAccountLevelFields=false;//TWC3123-6732 
+            this.newAccountTier='Level 2';//TWC3123-6732
            
         }
-        //newly added
-        if(this.selectedCstFeedback == 'Change to Other Led')  {
+        /*if(this.selectedCstFeedback == 'Change to Other Led')  {
             this.cstSalesGrpOptions = SGOptions;
-            this.showChangeToPartnerFields =false;
-            this.showChangeToUncoveredFields=false;
+            this.showChangeToIndirectCoveredFields =false;//TWC3123-5894
+            this.showChangeToNotCoveredFields=false;
             this.showChangeOwnershipFields=false;
-            this.showAddToIntelLedFields=false;
+            this.showAddToIntelCoveredFields=false;//TWC3123-5894
             this.showPartialFields=false;
-            this.showChangeToOtherLedFields=true;
+            //this.showChangeToOtherLedFields=true;
+            this.showChangeAccountLevelFields=false;//TWC3123-6732 
+            this.newAccountTier='Level 2';//TWC3123-6732
             
-        }
+        }*/
+        //TWC3123-6732 
+         if(this.selectedCstFeedback == 'Change Account Level')  {
+              this.showChangeAccountLevelFields=true;
+         }
+         //TWC3123-6732 
     }
 
     handleAcctFeedbackChange(event){
         this.newSalesGroup ='';
+        this.newAccountTier='';//TWC3123-6732
         let SGOptions = this.acctSG;
         this.disabled=false;
         this.selectedAcctFeedback = event.target.value; 
-        if(this.selectedAcctFeedback == 'Change to Partner')  {
+        if(this.selectedAcctFeedback == 'Change to Indirect Covered')  {//TWC3123-5894
             let newOp = [];
             for(let op in SGOptions){
                 if(SGOptions[op].label.includes('Partner Led')){
@@ -258,15 +294,16 @@ export default class Cst_feedback extends LightningElement {
                 this.acctSalesGrpOptions = newOp;
                 }
             }
-            this.showChangeToPartnerFields =true;
-            this.showChangeToUncoveredFields=false;
+            this.showChangeToIndirectCoveredFields =true;//TWC3123-5894
+            this.showChangeToNotCoveredFields=false;
             this.showChangeOwnershipFields=false;
-            this.showAddToIntelLedFields=false;
+            this.showAddToIntelCoveredFields=false;//TWC3123-5894
             this.showPartialFields=false;
-            this.showChangeToOtherLedFields=false;
+            //this.showChangeToOtherLedFields=false;
+            this.showChangeAccountLevelFields=false;//TWC3123-6732 
             
         }
-        else if(this.selectedAcctFeedback == 'Change to Uncovered')  {
+        else if(this.selectedAcctFeedback == 'Change to Not Covered')  {//TWC3123-5894
             let newOp = [];
             for(let op in SGOptions){
                 if(SGOptions[op].label.includes('Undefined')){
@@ -276,46 +313,59 @@ export default class Cst_feedback extends LightningElement {
                 this.acctSalesGrpOptions = newOp;
                 }
             }
-            this.showChangeToPartnerFields =false;
-            this.showChangeToUncoveredFields=true;
+            this.showChangeToIndirectCoveredFields =false;//TWC3123-5894
+            this.showChangeToNotCoveredFields=true;
             this.showChangeOwnershipFields=false;
-            this.showAddToIntelLedFields=false;
+            this.showAddToIntelCoveredFields=false;//TWC3123-5894
             this.showPartialFields=false;
-            this.showChangeToOtherLedFields=false;
+            //this.showChangeToOtherLedFields=false;
+            this.showChangeAccountLevelFields=false;//TWC3123-6732 
+            this.newAccountTier='No Level';//TWC3123-6732
+            this.newAccountTier='Level 3';//TWC3123-6732
             
         }    
         else if(this.selectedAcctFeedback == 'Change Ownership')  {
             this.acctSalesGrpOptions = SGOptions;
-            this.showChangeToPartnerFields =false;
-            this.showChangeToUncoveredFields=false;
+            this.showChangeToIndirectCoveredFields =false;//TWC3123-5894
+            this.showChangeToNotCoveredFields=false;
             this.showChangeOwnershipFields=true;
-            this.showAddToIntelLedFields=false;
+            this.showAddToIntelCoveredFields=false;//TWC3123-5894
             this.showPartialFields=false;
-            this.showChangeToOtherLedFields=false;
+            //this.showChangeToOtherLedFields=false;
+            this.showChangeAccountLevelFields=false;//TWC3123-6732 
             
         }
-        else if(this.selectedAcctFeedback == 'Add to Intel led')  {
+        else if(this.selectedAcctFeedback == 'Add to Intel Covered')  {//TWC3123-5894
             this.acctSalesGrpOptions = SGOptions;
-            this.showChangeToPartnerFields =false;
-            this.showChangeToUncoveredFields=false;
+            this.showChangeToIndirectCoveredFields =false;//TWC3123-5894
+            this.showChangeToNotCoveredFields=false;
             this.showChangeOwnershipFields=false;
-            this.showAddToIntelLedFields=true;
+            this.showAddToIntelCoveredFields=true;//TWC3123-5894
             this.showPartialFields=false;
-            this.showChangeToOtherLedFields=false;
+            //this.showChangeToOtherLedFields=false;
+            this.showChangeAccountLevelFields=false;//TWC3123-6732 
+            this.newAccountTier='Level 2';//TWC3123-6732
             
         }
-        //newly added
-         if(this.selectedAcctFeedback == 'Change to Other Led')  {
+
+         /*if(this.selectedAcctFeedback == 'Change to Other Led')  {
             let newOp = [];
             this.acctSalesGrpOptions = SGOptions;
-            this.showChangeToPartnerFields =false;
-            this.showChangeToUncoveredFields=false;
+            this.showChangeToIndirectCoveredFields =false;//TWC3123-5894
+            this.showChangeToNotCoveredFields=false;
             this.showChangeOwnershipFields=false;
-            this.showAddToIntelLedFields=false;
+            this.showAddToIntelCoveredFields=false;//TWC3123-5894
             this.showPartialFields=false;
-            this.showChangeToOtherLedFields=true;
+            //this.showChangeToOtherLedFields=true;
+            this.showChangeAccountLevelFields=false;//TWC3123-6732 
+            this.newAccountTier='Level 2';//TWC3123-6732
             
-        }
+        }*/
+        //TWC3123-6732 
+         if(this.selectedAcctFeedback == 'Change Account Level')  {
+            this.showChangeAccountLevelFields=true;
+         }
+         //TWC3123-6732
        
     }
 
@@ -324,11 +374,13 @@ export default class Cst_feedback extends LightningElement {
     handleCstTeamMembers(event){this.teamMembers = event.target.value;}
     handleCstSG(event){this.newSalesGroup = event.target.value;}
     handleCstFeedbackBy(event){this.feedbackBy = event.target.value;}
+    handleCstAccountTier(event){this.newAccountTier = event.target.value;}
 
     handleAFAcctOwner(event){this.newAccountOwner = event.target.value;}
     handleAFReason(event){this.reasonForChange = event.target.value;}
     handleAFTeamMembers(event){this.teamMembers = event.target.value;}
     handleAFSG(event){this.newSalesGroup = event.target.value;}
+    handleAFAccountTier(event){this.newAccountTier = event.target.value;}
 
     requiredFieldsCheck(){
         let isValid = true;
@@ -358,6 +410,8 @@ export default class Cst_feedback extends LightningElement {
         this.cstFeedback.SalesGroup = this.newSalesGroup;
         this.cstFeedback.Coverage = this.coverage;
         this.cstFeedback.CustomerId = this.recordId;
+        console.log('NEW ACC TIER IS:'+this.newAccountTier);
+        this.cstFeedback.NewAccTier = this.newAccountTier;//TWC3123-6732
         
         if(this.stage == 'Director'){
             this.cstFeedback.FeedbackType = 'DR';
@@ -369,7 +423,7 @@ export default class Cst_feedback extends LightningElement {
         this.cstFeedback.RecordTypeId = this.recordTypeId;
         this.cstFeedback.FeedbackBy = this.feedbackBy;
         //TWC3123-6463 - START
-        if(this.cstFeedback.Feedback ==  'Change to Partner' || this.cstFeedback.Feedback == 'Change to Uncovered'  || this.cstFeedback.Feedback == 'Change to Other Led' ){
+        if(this.cstFeedback.Feedback ==  'Change to Indirect Covered' || this.cstFeedback.Feedback == '	Change to Not Covered'  /*|| this.cstFeedback.Feedback == 'Change to Other Led'*/ ){//TWC3123-5894
             if(hasRAPermission){
                 this.successMessage ='Account feedbacks have been propagated to the respective accounts. Accounts which already have feedback will be overriden.'
             }
@@ -459,6 +513,7 @@ export default class Cst_feedback extends LightningElement {
         this.acctFeedback.Coverage = this.coverage;
         this.acctFeedback.AccCategoryList = this.selectedAccountCategory;
         this.acctFeedback.AccountId = this.recordId;
+        this.acctFeedback.NewAccTier = this.newAccountTier;//TWC3123-6732
         
         if(this.stage == 'Director'){
             this.acctFeedback.FeedbackType = 'DR';

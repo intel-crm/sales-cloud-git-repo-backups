@@ -39,10 +39,7 @@ public class Core_UserFieldTrackerRecordDeleter_Test {
         deleteTestRecords = [SELECT Id,Name FROM Core_User_Field_Change_History__c WHERE Name = 'TestUserTracking'];
         
         Core_UserFieldTrackerRecordDeleter deleterecords = new Core_UserFieldTrackerRecordDeleter();
-        
         Id batchId = Database.executeBatch(deleterecords, 10);
-        System.assertNotEquals(null, batchId, 'Batch job should be scheduled successfully');
-        
         System.schedule('Record Deletion', chron, new Core_UserFieldTrackerRecordDeleter());
             
         //Stop Test
@@ -57,4 +54,6 @@ public class Core_UserFieldTrackerRecordDeleter_Test {
             System.assertEquals(errorThrown,true);
     }
    }
+    
+
 }

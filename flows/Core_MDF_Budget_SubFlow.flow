@@ -262,7 +262,7 @@
             <targetReference>Core_MDF_Check_if_any_PGM_records_are_there</targetReference>
         </connector>
     </start>
-    <status>Obsolete</status>
+    <status>Active</status>
     <variables>
         <description>This will store the Budget Id.</description>
         <name>BudgetId</name>

@@ -40,13 +40,9 @@
     <groups>NSG-Dell-Client</groups>
     <groups>NSG-Wistron Client</groups>
     <groups>NSG-LCFC Client</groups>
-    <groups>DCG - EMEA ADC</groups>
     <groups>NSG-NetApp</groups>
     <groups>NSG-Google</groups>
-    <groups>CCG - EMEA ADC</groups>
-    <groups>NSG - Vast Data</groups>
     <groups>IPS - Org Admin - NSG</groups>
-    <groups>CCG-SPG - EMEA</groups>
     <groups>NSG - Unassigned</groups>
     <groups>NSG - ASMO</groups>
     <groups>NSG - EMEA</groups>
@@ -80,9 +76,8 @@
     <groups>NSG - Direct-ASMO</groups>
     <groups>NSG - Amazon</groups>
     <groups>NSG - Facebook</groups>
-    <groups>SRVPLT - EMEA Customers</groups>
     <label>IPS - Org Admin - NSG</label>
     <loginAccess>false</loginAccess>
     <roles>IPS Product OrgAdmin</roles>
-    <roles>EMP_11298293_Kenta_Ueda</roles>
+    <roles>IPS Agent</roles>
 </DelegateGroup>

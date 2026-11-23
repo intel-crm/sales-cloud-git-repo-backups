@@ -83,21 +83,21 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>includes</operator>
-            <value>DCG-Tier 2,DCAI-Tier 2</value>
+            <value>DCG-Tier 2</value>
         </criteriaItems>
         <criteriaItems>
             <column>Account.Core_Account_Tier__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>includes</operator>
-            <value>DCG-Tier 3,DCAI-Tier 3</value>
+            <value>DCG-Tier 3</value>
         </criteriaItems>
         <criteriaItems>
             <column>Account.Core_Account_Tier__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>includes</operator>
-            <value>DCG-Tier 4,DCAI-Tier 4</value>
+            <value>DCG-Tier 4</value>
         </criteriaItems>
         <criteriaItems>
             <column>OpportunityLineItem.Core_At_Risk__c</column>

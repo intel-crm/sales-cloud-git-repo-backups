@@ -9,8 +9,8 @@
 * ****************************************************************************************************************************************/
 @isTest
 public class PMP_Processors_Attribute_English_Test {
-    //IPA 2.0- US-TWC729-7980
-    /*@isTest
+    
+    @isTest
     public static void testProcAttrMet()
     {
         List<Database.UpsertResult> resultData = new List<Database.UpsertResult>();
@@ -19,10 +19,10 @@ public class PMP_Processors_Attribute_English_Test {
       
         
         PMP_Processor_CreateJunctionData_Test.PMP_Processor_CreateJunctionData_Test_Met();
-        PMP_ParseProcessorJSON.languageCode = 'en_US';
+        PMP_ParseProcessorJSON.strBaseKey = 'en_US';
         resultData = procAttrEng.processData('PMP_Processors_Attribute_Test');
         system.assertNotEquals(resultData,null);
         
-    }*/
+    }
 
 }

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Pricing IQR Quote Group</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Pricing IQR Quote Groups</value>
+    </caseValues>
+    <fields>
+        <label><!-- Datatable Column Type --></label>
+        <name>Pricing_Column_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- FieldName --></label>
+        <name>Pricing_Field_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Label --></label>
+        <name>Pricing_Label__c</name>
+    </fields>
+    <fields>
+        <label><!-- Type --></label>
+        <name>Pricing_Type__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

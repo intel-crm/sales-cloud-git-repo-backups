@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>Shenzhen Century Joint Innovation Technology Co. Ltd Customer Executive</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>Shenzhen Century Joint Innovation Technology Co. Ltd Customer Executive</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>EMP_11568236_Amy_Tang_Tang</parentRole>
+</Role>

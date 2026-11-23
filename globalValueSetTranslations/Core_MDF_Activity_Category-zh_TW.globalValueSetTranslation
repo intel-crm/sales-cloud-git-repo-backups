@@ -1,72 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
     <valueTranslation>
-        <masterLabel>Audio</masterLabel>
-        <translation>音效</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Audio 2025</masterLabel>
-        <translation>音訊 2025</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Broadcast</masterLabel>
         <translation>廣播</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Broadcast (Pre-2025)</masterLabel>
-        <translation>廣播（2025 年前）</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Buyer Incentive</masterLabel>
-        <translation>買家獎勵</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Buyer Incentive 2025</masterLabel>
-        <translation>買方獎勵 2025</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Digital</masterLabel>
-        <translation>數位式</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Digital 2025</masterLabel>
-        <translation>數位 2025</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Digital Media</masterLabel>
         <translation>數位媒體</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Digital Media (Pre-2025)</masterLabel>
-        <translation>數位媒體（2025 年前）</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Event</masterLabel>
-        <translation>大型活動</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Event (Pre-2025)</masterLabel>
-        <translation>大型活動（2025 年前）</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Event 2025</masterLabel>
-        <translation>活動 2025</translation>
+        <translation>活動</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Incentive</masterLabel>
-        <translation>刺激購買計畫</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Innovation</masterLabel>
-        <translation><!-- Innovation --></translation>
+        <translation><!-- Incentive --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Lead Management</masterLabel>
         <translation>潛在客戶管理</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Lead Management (Pre-2025)</masterLabel>
-        <translation>潛在客戶管理（2025 年前）</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Online Ad</masterLabel>
@@ -74,138 +26,50 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Out of Home</masterLabel>
-        <translation>戶外廣告</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Out of Home (Pre-2025)</masterLabel>
-        <translation>戶外廣告（2025 年前）</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Out of Home 2025</masterLabel>
-        <translation>戶外廣告 2025</translation>
+        <translation><!-- Out of Home --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Out of Home Media</masterLabel>
         <translation>戶外媒體</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Out of Home Media (Pre-2025)</masterLabel>
-        <translation>戶外廣告媒體（2025 年前）</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Outcome-Based</masterLabel>
-        <translation>基於結果</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Paid Social Media</masterLabel>
         <translation>付費社群媒體</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Paid Social Media (Pre-2025)</masterLabel>
-        <translation>付費社群媒體（2025 年前）</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Print</masterLabel>
-        <translation>平面廣告</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Print (Pre-2025)</masterLabel>
-        <translation>平面廣告（2025 年前）</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Print 2025</masterLabel>
-        <translation>平面廣告 2025</translation>
+        <translation><!-- Print --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Print Media</masterLabel>
         <translation>平面廣告媒體</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Print Media (Pre-2025)</masterLabel>
-        <translation>平面廣告媒體（2025 年前）</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Production</masterLabel>
-        <translation>生產</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Production 2025</masterLabel>
-        <translation>生產 2025</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Purchase Incentive</masterLabel>
-        <translation>購買獎勵</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Purchase Incentive (Pre-2025)</masterLabel>
-        <translation>購買獎勵（2025 年前）</translation>
+        <translation><!-- Purchase Incentive --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Sales Incentive</masterLabel>
-        <translation>銷售獎勵</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Sales Incentive (Pre-2025)</masterLabel>
-        <translation>銷售獎勵（2025 年前）</translation>
+        <translation><!-- Sales Incentive --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Sales Readiness</masterLabel>
-        <translation>銷售能力整備</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Sales Readiness (Pre-2025)</masterLabel>
-        <translation>銷售能力整備（2025 年前）</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Sales Readiness 2025</masterLabel>
-        <translation>銷售整備 2025</translation>
+        <translation><!-- Sales Readiness --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Search Engine Marketing (SEM)</masterLabel>
         <translation>搜尋引擎行銷 (SEM)</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Search Engine Marketing (SEM) (Pre-2025)</masterLabel>
-        <translation>搜尋引擎行銷 (SEM)（2025 年前）</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Search Performance</masterLabel>
         <translation><!-- Search Performance --></translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Seller Incentive</masterLabel>
-        <translation>賣家獎勵</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Seller Incentive 2025</masterLabel>
-        <translation>賣家獎勵 2025</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Tech Exploration</masterLabel>
-        <translation>技術探索</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Tech Exploration (Pre-2025)</masterLabel>
-        <translation>技術探索（2025 年前）</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Technical Sales</masterLabel>
-        <translation>技術銷售部門</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Technical Sales 2025</masterLabel>
-        <translation>技術銷售 2025</translation>
+        <translation><!-- Tech Exploration --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Training</masterLabel>
         <translation><!-- Training --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Video</masterLabel>
-        <translation>影片</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Video 2025</masterLabel>
-        <translation>影片 2025</translation>
     </valueTranslation>
 </GlobalValueSetTranslation>

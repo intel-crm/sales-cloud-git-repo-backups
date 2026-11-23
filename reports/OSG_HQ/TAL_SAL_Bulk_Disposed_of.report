@@ -34,16 +34,7 @@
         <field>Lead.Core_Lead_State__c</field>
     </columns>
     <columns>
-        <field>Lead.Core_Lead_Sub_Status__c</field>
-    </columns>
-    <columns>
         <field>LAST_UPDATE</field>
-    </columns>
-    <columns>
-        <field>Lead.Core_Lead_Revive_Date_Original__c</field>
-    </columns>
-    <columns>
-        <field>Lead.Core_Lead_Revive_Date_Most_Recent__c</field>
     </columns>
     <description>RT: Leads  Lead Status = Disqualified   Lead Sub Status = Rep Inactivity</description>
     <filter>
@@ -59,13 +50,13 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Rep Inactivity</value>
+            <value>Expired SLA,Rep Inactivity</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Matrix</format>
     <groupingsAcross>
-        <dateGranularity>Month</dateGranularity>
+        <dateGranularity>Year</dateGranularity>
         <field>CREATED_DATE</field>
         <sortOrder>Asc</sortOrder>
     </groupingsAcross>
@@ -86,6 +77,6 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CREATED_DATE</dateColumn>
-        <interval>INTERVAL_CURY</interval>
+        <interval>INTERVAL_CUSTOM</interval>
     </timeFrameFilter>
 </Report>

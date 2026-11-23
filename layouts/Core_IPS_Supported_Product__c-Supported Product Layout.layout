@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
     <customButtons>Core_Add_Issue_categories</customButtons>
+    <customButtons>New_Core_Add_Environment_Variables</customButtons>
     <customButtons>Core_IPS_Copy_Categories_EnvironmentDetails</customButtons>
     <customButtons>Core_IPS_Set_to_General</customButtons>
     <customButtons>Core_Supported_Product_Make_EOIS</customButtons>
@@ -110,64 +111,6 @@
         <layoutColumns/>
         <style>CustomLinks</style>
     </layoutSections>
-    <platformActionList>
-        <actionListContext>Record</actionListContext>
-        <platformActionListItems>
-            <actionName>Edit</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>0</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>Delete</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>1</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>Core_IPS_Supported_Product__c.Set_To_EOIS</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>2</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>Core_IPS_Supported_Product__c.Set_To_General</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>3</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>Core_IPS_Supported_Product__c.Refresh_Name_LEX</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>4</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>Add_Case_Categories</actionName>
-            <actionType>CustomButton</actionType>
-            <sortOrder>5</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>Add_Environment_Details_LEX</actionName>
-            <actionType>CustomButton</actionType>
-            <sortOrder>6</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>Copy_Categories_EDQ_Lex</actionName>
-            <actionType>CustomButton</actionType>
-            <sortOrder>7</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>ChangeOwnerOne</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>8</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>ChangeRecordType</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>9</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>Submit</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>10</sortOrder>
-        </platformActionListItems>
-    </platformActionList>
     <relatedLists>
         <excludeButtons>New</excludeButtons>
         <fields>ASSET.NAME</fields>
@@ -229,8 +172,6 @@
         <fields>CASES.CREATED_DATE</fields>
         <fields>CASES.MILESTONE_STATUSICON</fields>
         <relatedList>Case.Core_IPS_Supported_Product__c</relatedList>
-        <sortField>CASES.CREATED_DATE</sortField>
-        <sortOrder>Desc</sortOrder>
     </relatedLists>
     <relatedLists>
         <fields>Core_IPS_FileAssignment_Download_URL__c</fields>

@@ -2,7 +2,7 @@
  * @description       : Batch class to auto reject PIFR and PFIR Quotelines which has passed past date check
  * @author            : Sandeep
  * @group             : Accenture
- * @last modified on  : 12-22-2023
+ * @last modified on  : 02-01-2024
  * @last modified by  : Sandeep Chamate
 **/
 public without sharing class Pricing_QuoteLine_AutoRejection_Batch implements Database.Batchable<sObject> {

@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>Nesco Infosystem Private Limited Partner User</description>
+    <description>Networking Electronics System Co Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>Nesco Infosystem Private Limited Partner User</name>
+    <name>Networking Electronics System Co Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>EMP_12163286_Raja_Pratap_Singh</parentRole>
+    <parentRole>NetworkingElectronicsSystemCoPartnerManager</parentRole>
 </Role>

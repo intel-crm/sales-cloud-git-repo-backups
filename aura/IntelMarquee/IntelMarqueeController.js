@@ -1,35 +1,28 @@
 ({
     doInit : function(component, event, helper) {
-        
-        console.log('SHowbreadcrumbs test : ', component.get('v.showBreadcrumbs'));
-        
-        
         var type = component.get('v.type');
-        if(type == 'compareofferings'){
-            component.set('v.heading', $A.get("$Label.c.PMP_Compare_Offerings"));
-        }
         var marketplaceHomeLabel = $A.get("$Label.c.PMP_Breadcrumbs_Marketplace_Home");
         var allMarketplaceLabel = $A.get("$Label.c.PMP_Breadcrumbs_All_Marketplace");
         var allPartnersLabel = $A.get("$Label.c.PMP_Breadcrumbs_All_Partners");
         var allProductsLabel = $A.get("$Label.c.PMP_Breadcrumbs_All_Products");
-        var showSignIn = false;
-        var loginUrl = '';
            
         // Determine if need to display the Sign In Link
-        var ssoLibrary = component.find('ssoLibrary');
-        var ssoSettings = ssoLibrary.getSSOSettings();
-        if (ssoSettings) {
-          showSignIn = !!parseInt(ssoSettings.showSignIn);
-          loginUrl = ssoSettings.ighf.loginUrl;
+        var redirectLibrary = component.find('redirectLibrary');
+        var showMarketplace = $A.get('$Label.c.PMP_SSO_Show_Sign_In_Marketplace');
+        var showLeads = $A.get('$Label.c.PMP_SSO_Show_Sign_In_Leads');
+        
+        // Default to the Marketplace value
+        var showSignIn = !!parseInt(showMarketplace);
+        if (redirectLibrary.whichSite() === 'Leads') {
+            showSignIn = !!parseInt(showLeads);
         }
+        
         
         // Update the sign in variables
         component.set('v.showSignIn', showSignIn);
-        component.set('v.loginUrl', loginUrl);
         component.set('v.userLoggedIn', false);
         if($A.get("$SObjectType.CurrentUser.Email") !== undefined){
-           component.set('v.userLoggedIn', true);  
-             
+            component.set('v.userLoggedIn', true);  
         }
         
         // IF L2 Marquee only
@@ -72,14 +65,9 @@
                         subheading = $A.get("$Label.c.PMP_L1_Offering_Marquee_Sub_Heading");
                     }
                 } else {
-                    
                     label = state.searchHeading;
                     subheading = state.searchSubHeading;
-                    learnMoreLink = state.searchCtaLink;//Category learnMore link
-                    if(state.searchlearMoreLink !=null){
-                        learnMoreLink=state.searchlearMoreLink;//Specialty learMore link
-                   
-                    }
+                    learnMoreLink = state.searchCtaLink;
                 }
                 
                 if (searchType == "partner") {
@@ -118,7 +106,6 @@
                 
                 // convert breadcrumb to no link
                 breadcrumbData[breadcrumbData.length-1].class = 'noLink';
-                console.log('SHowbreadcrumbs test 2: ', component.get('v.showBreadcrumbs'));
                 return {
                     breadcrumbData: breadcrumbData,
                     heading: label,
@@ -190,12 +177,10 @@
     
     handleSignIn : function(component, event, helper) {
         // Create URL so that the user is returned to the page they are on after logging in
-        var ssoLibrary = component.find('ssoLibrary');
-        var ssoSettings = ssoLibrary.getSSOSettings();
-        if (ssoSettings && ssoSettings.ighf && ssoSettings.ighf.loginUrl) {
+        var signInUrl = $A.get("$Label.c.PMP_SSO_MP_Login_URL");
         event.preventDefault();
         event.stopPropagation();
-          window.location = ssoSettings.ighf.loginUrl + '?RelayState=' + encodeURIComponent(window.location.pathname);
-        }  
+        window.location = signInUrl + '?RelayState=' + encodeURIComponent(window.location.pathname);
+        
     }
 })

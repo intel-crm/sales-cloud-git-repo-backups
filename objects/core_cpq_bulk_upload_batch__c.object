@@ -155,7 +155,7 @@
     <externalSharingModel>Private</externalSharingModel>
     <fields>
         <fullName>core_cpq_batch_id__c</fullName>
-        <displayFormat>PSG-BATCH-{0000000}</displayFormat>
+        <displayFormat>BU-{0000000}</displayFormat>
         <externalId>false</externalId>
         <label>Batch ID</label>
         <trackTrending>false</trackTrending>
@@ -205,6 +205,16 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>core_cpq_quote_number__c</fullName>
+        <externalId>false</externalId>
+        <label>Quote Number</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>core_cpq_success_count_nbr__c</fullName>
         <externalId>false</externalId>
         <label>Success Count</label>
@@ -229,13 +239,6 @@
     <label>Bulk Upload Batch</label>
     <listViews>
         <fullName>All</fullName>
-        <columns>NAME</columns>
-        <columns>CREATEDBY_USER</columns>
-        <columns>core_cpq_failure_count_nbr__c</columns>
-        <columns>core_cpq_object_name_nm__c</columns>
-        <columns>core_cpq_success_count_nbr__c</columns>
-        <columns>core_cpq_total_rows_Nbr__c</columns>
-        <columns>CREATED_DATE</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>

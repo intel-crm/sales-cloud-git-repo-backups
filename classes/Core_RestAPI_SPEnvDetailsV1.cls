@@ -18,6 +18,7 @@ global with sharing class Core_RestAPI_SPEnvDetailsV1{
     {
         Core_RestAPI_SPEnvDetailV1_Handler handler = new Core_RestAPI_SPEnvDetailV1_Handler(ENTRY_TIME, RESTAPI_NAME); 
         Core_RestAPI_Response response = handler.getEnvironmentDetails();//For fetching all list of Environment Details a single Supported Product
+        system.debug('response'+response);
         return response;  
        
     }

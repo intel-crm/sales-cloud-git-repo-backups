@@ -3,6 +3,7 @@ import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import getQuoteLineData from '@salesforce/apex/Pricing_PriceComparisionController.getQuoteLineDataforComparision';
 import getColumnList from '@salesforce/apex/Pricing_PriceComparisionController.getDataTableColumns';
 import getQLINumber from '@salesforce/apex/Pricing_PriceComparisionController.getQuoteLineNumber';
+import getPredictedValue from '@salesforce/apex/Pricing_PriceComparisionController.getEstimatedECAPfromDiscovery';
 import { CurrentPageReference } from 'lightning/navigation';
 import noScopeError from '@salesforce/label/c.Pricing_PriceComparision_noScopeMsg';
 import { loadScript } from "lightning/platformResourceLoader";
@@ -31,7 +32,7 @@ export default class Pricing_priceComparisionComponent extends LightningElement 
 
     @track totalRecords = 0;
     DEF_PAGE_SIZE = '10';
-    @track pageSize = this.DEF_PAGE_SIZE;
+    @track pageSize = this.DEF_PAGE_SIZE; // ch
     @track totalPages = 0;
     @track pageNumber = 1;
 
@@ -40,6 +41,10 @@ export default class Pricing_priceComparisionComponent extends LightningElement 
     @track xlsData = []; // store all tables data
     @track filename = ''; // Name of the file
     @track dissableButton = false;
+
+    @track maxValue = 0;
+    @track minValue = 0;
+    @track predictedValue = 0;
 
     get pageSizeOptions() {
         return [
@@ -95,10 +100,30 @@ export default class Pricing_priceComparisionComponent extends LightningElement 
         this.showSpinner = true;
         this.sortDirection = 'asc';
         this.getColumns();
-        getQuoteLineData({qliNumber: this.searchKey, searchType: 'product'})
+        let count = 0;
+        getQuoteLineData({
+            qliNumber: this.searchKey,
+            searchType: 'product'
+        })
             .then(result => {
                 if (result.length > 0) {
-
+                    for (let i = 0; i < result.length; i++) {
+                        if (result[i].ecapPrice != undefined) {
+                            if (count == 0) {
+                                this.maxValue = result[i].ecapPrice;
+                                this.minValue = result[i].ecapPrice;
+                                count++;
+                            }
+                            else {
+                                if (result[i].ecapPrice > this.maxValue) {
+                                    this.maxValue = result[i].ecapPrice;
+                                }
+                                if (result[i].ecapPrice < this.minValue) {
+                                    this.minValue = result[i].ecapPrice;
+                                }
+                            }
+                        }
+                    }
                     this.sortedBy = 'quoteNumber';
                     this.showDetails = true;
                     this.quoteLineData = result;
@@ -106,7 +131,6 @@ export default class Pricing_priceComparisionComponent extends LightningElement 
                     this.totalRecords = result.length;
                     this.pageSize = this.DEF_PAGE_SIZE;
                     this.paginationHelper();
-                    this.showSpinner = false;
                 }
                 else {
                     const toastMessage = new ShowToastEvent({
@@ -119,6 +143,20 @@ export default class Pricing_priceComparisionComponent extends LightningElement 
                     this.showDetails = false;
                     this.showSpinner = false;
                 }
+            }).then(_ => {
+                if (this.quoteLineData.length > 0) {
+                    getPredictedValue({ qliNumber: this.searchKey })
+                        .then(result => {
+                            if (result) {
+                                this.predictedValue = result;
+                            }
+                        })
+                        .catch(error => {
+                            this.showSpinner = false;
+                        });
+                }
+                this.showSpinner = false;
+
             })
             .catch(error => {
                 console.error('Error @ getQuoteLineData =>', JSON.stringify(error));

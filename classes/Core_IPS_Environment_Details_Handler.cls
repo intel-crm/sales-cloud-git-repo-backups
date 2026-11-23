@@ -1,12 +1,8 @@
-public without sharing class Core_IPS_Environment_Details_Handler{
+public class Core_IPS_Environment_Details_Handler{
     public static void updateEnvironmentDetailsOnCase(List<Core_IPS_Environment_Details__c> newList){
         Core_IPS_Environment_Details__c envDetail = newList[0];
-        Case cs;
         List<Case> caseList = new List<Case>();
-         //FLS check added-Venugopal
-        if(Case.SObjectType.getDescribe().isAccessible()){
-            cs = [select id,(select id,Core_Agent_Only__c,Core_Question__c,Core_Answer__c from Environments__r),Core_Environment_Details__c,Core_IPS_External_Environment_Details__c,Asset.Product2.name from case where id=:envDetail.Core_Case__c];
-        }
+        Case cs = [select id,(select id,Core_Agent_Only__c,Core_Question__c,Core_Answer__c from Environments__r),Core_Environment_Details__c,Core_IPS_External_Environment_Details__c,Asset.Product2.name from case where id=:envDetail.Core_Case__c];
         JSONGenerator gen = JSON.createGenerator(true);
         gen.writeStartObject();
         gen.writeFieldName(System.Label.Core_IPS_WriteFieldName); 
@@ -15,7 +11,9 @@ public without sharing class Core_IPS_Environment_Details_Handler{
         cs.Core_IPS_External_Environment_Details__c= '<table border="1" width="100%" style="whiteSpace:pre-line;"><tr><th>Question</th><th>Response</th></tr>';
         for(Core_IPS_Environment_Details__c env:cs.Environments__r){
             String envDetails = env.Core_Answer__c;
+            //system.debug('envDetails:'+envDetails);
             if(envDetails!=null && envDetails.contains('\r\n')){ 
+                //system.debug('envDetails:'+envDetails);
                 envDetails=envDetails.replaceAll('\r\n','<br/>');
             }
             if(env.Core_Agent_Only__c){

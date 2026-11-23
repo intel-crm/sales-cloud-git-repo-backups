@@ -36,7 +36,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>persistent memory,xxv,silicon,omni</value>
+            <value>persistent memory,xxv</value>
         </criteriaItems>
         <criteriaItems>
             <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
@@ -86,6 +86,8 @@
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

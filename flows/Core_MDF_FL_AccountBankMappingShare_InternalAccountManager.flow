@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
-    <apiVersion>63.0</apiVersion>
+    <apiVersion>49.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <decisions>
         <name>Core_MDF_if_vGroupId_is_NOT_NULL_Decision</name>
@@ -25,21 +25,8 @@
         </rules>
     </decisions>
     <description>This will share the Account Bank Mapping records with the corresponding Internal Account Managers.</description>
-    <environments>Default</environments>
     <interviewLabel>Core_MDF_FL_AccountBankMappingShare_InternalAccountManager {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Core_MDF_FL_AccountBankMappingShare_InternalAccountManager</label>
-    <processMetadataValues>
-        <name>BuilderType</name>
-        <value>
-            <stringValue>LightningFlowBuilder</stringValue>
-        </value>
-    </processMetadataValues>
-    <processMetadataValues>
-        <name>CanvasMode</name>
-        <value>
-            <stringValue>FREE_FORM_CANVAS</stringValue>
-        </value>
-    </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <recordCreates>
         <name>Core_MDF_Create_Account_Bank_Mapping_Share</name>
@@ -104,26 +91,13 @@
                 <stringValue>Internal</stringValue>
             </value>
         </filters>
-        <filters>
-            <field>Core_MDF_Inactive_Ind__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <booleanValue>false</booleanValue>
-            </value>
-        </filters>
         <object>Core_MDF_Partner_Group_Mapping__c</object>
         <outputAssignments>
             <assignToReference>vGroupId</assignToReference>
             <field>Core_MDF_Group_Id__c</field>
         </outputAssignments>
     </recordLookups>
-    <start>
-        <locationX>50</locationX>
-        <locationY>50</locationY>
-        <connector>
-            <targetReference>Core_MDF_Fetch_the_Group_Id</targetReference>
-        </connector>
-    </start>
+    <startElementReference>Core_MDF_Fetch_the_Group_Id</startElementReference>
     <status>Active</status>
     <variables>
         <description>This will contain the Record Id of the Account Bank Mapping record.</description>

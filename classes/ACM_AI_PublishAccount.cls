@@ -7,7 +7,7 @@ public without sharing class ACM_AI_PublishAccount implements UCD_ACM_ServiceCon
             try {
                 publishAccount(unitOfWork, oldAccounts, newAccounts);
             } catch (Exception ex) {
-                UCD_ACM_Logger.error('ACM_AI_PublishAccount','execute',ex.getMessage() +  '==>' + ex.getStackTraceString(),null);
+                UCD_ACM_Logger.error('ACM_AI_ParentToChildOnPublish','execute',ex.getMessage() +  '==>' + ex.getStackTraceString(),null);
             }
         }
         runOnce = false;
@@ -18,13 +18,14 @@ public without sharing class ACM_AI_PublishAccount implements UCD_ACM_ServiceCon
     }
 
     private void publishAccount(UCD_ACM_UnitOfWork unitOfWork, Map<Id,Account> oldAccounts, Map<Id, Account> newAccounts){
+        Id intelRecordtypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
         Id endCustomerDealRecordtypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByName().get('End Customer Deal Account').getRecordTypeId();
         Id rejectedAccountRecordtypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByName().get('Rejected Account').getRecordTypeId();
 
         Set<Id> accountIds = new Set<Id>();
         if(newAccounts != null){
             for(Account account : newAccounts.values()){
-                if(account.recordTypeId == endCustomerDealRecordtypeId || account.recordTypeId == rejectedAccountRecordtypeId){
+                if(account.recordTypeId == intelRecordtypeId || account.recordTypeId == endCustomerDealRecordtypeId || account.recordTypeId == rejectedAccountRecordtypeId){
                     accountIds.add(account.Id);
                 }
             }

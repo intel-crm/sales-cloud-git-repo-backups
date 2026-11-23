@@ -1,5 +1,5 @@
 @isTest
-public class PMP_SearchEventPartnerTrigger_Test {/*extends PMP_SearchWrapperStore{
+public class PMP_SearchEventPartnerTrigger_Test extends PMP_SearchWrapperStore{
     @isTest static void testEventOfferingTrigger(){
         Test.startTest(); 
         Account testAccount = PMP_SearchTestDataFactory.createIntelAccount('testAccount', PMP_SearchTestDataFactory.intel_Account_Record_Type, false);
@@ -8,7 +8,7 @@ public class PMP_SearchEventPartnerTrigger_Test {/*extends PMP_SearchWrapperStor
      
         PMP_Company__c testPartner1 =  PMP_SearchTestDataFactory.createCompanyInformation('testPartner1',accId , false);
         
-        testPartner1.PMP_Account_Specialty__c = 'None';       
+        testPartner1.PMP_Account_Specialty__c = 'Video Specialty';       
         testPartner1.PMP_Partner_Program_nm__c = 'ISA;ODM-LOEM';
         testPartner1.PMP_Account_Dsc__c = 'test';
         testPartner1.PMP_Company_Information_Language_Nm__c = 'English';
@@ -41,18 +41,10 @@ public class PMP_SearchEventPartnerTrigger_Test {/*extends PMP_SearchWrapperStor
              evePar1.PMP_Event_Id__c=eve.Id;
              insert evePar1; 
          }catch(Exception e){
-               //system.debug('Some Error occured while insert::'+ e.getMessage());
+             
          }
         
-        try{
-            
-            delete [select id from PMP_Marketplace_Event_Partner__c where PMP_Event_Id__r.name='Test Event']; 
-            
-        }catch(Exception e){
-            //system.debug('Some Error occured while delete::'+ e.getMessage());
-        }
-        
-        system.assertNotEquals(Null,evePar,'failed'); 
+         
         Test.stopTest(); 
-    }*/
+    }
 }

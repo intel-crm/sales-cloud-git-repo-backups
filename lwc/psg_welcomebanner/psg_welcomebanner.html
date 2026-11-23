@@ -1,0 +1,11 @@
+<template>
+    <lightning-card title={result.Name} icon-name='standard:user'>
+    <ul class="slds-list_horizontal slds-p-top_xx-small">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <lightning-icon icon-name="utility:resource_territory" size="x-small" title="Distributor Region"></lightning-icon>&nbsp;
+    <li class="slds-item">{result.Account.Name}  {result.Account.Core_Geo__c}</li> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <lightning-icon icon-name="utility:email" size="x-small" title="Email"></lightning-icon>&nbsp;
+    <li class="slds-item">{result.Email}</li>
+    </ul>
+    </lightning-card>
+   </template>

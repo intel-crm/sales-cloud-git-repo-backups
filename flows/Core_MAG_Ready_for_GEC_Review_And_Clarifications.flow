@@ -191,6 +191,7 @@
             <label>Is Ready for Review</label>
         </rules>
     </decisions>
+    <environments>Default</environments>
     <formulas>
         <description>Checks if all the questions are answered</description>
         <name>IsCompleted</name>

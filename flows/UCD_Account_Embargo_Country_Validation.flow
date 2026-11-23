@@ -6,7 +6,7 @@
         <name>check_embargo_countries</name>
         <label>check embargo countries</label>
         <locationX>182</locationX>
-        <locationY>503</locationY>
+        <locationY>395</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>verifying_Ukraine_States</name>
@@ -38,46 +38,7 @@
             <label>verifying Ukraine States</label>
         </rules>
     </decisions>
-    <decisions>
-        <name>Integration_users_bypass</name>
-        <label>Integration users bypass</label>
-        <locationX>380</locationX>
-        <locationY>287</locationY>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>Reltio_and_cim_users</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>loggedinUser</leftValueReference>
-                <operator>NotEqualTo</operator>
-                <rightValue>
-                    <elementReference>ReltioUser</elementReference>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>loggedinUser</leftValueReference>
-                <operator>NotEqualTo</operator>
-                <rightValue>
-                    <elementReference>CIMOBMuser</elementReference>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>get_embargo_countries</targetReference>
-            </connector>
-            <label>Reltio and cim users</label>
-        </rules>
-    </decisions>
     <environments>Default</environments>
-    <formulas>
-        <name>loggedinUser</name>
-        <dataType>String</dataType>
-        <expression>{!$User.FirstName}</expression>
-    </formulas>
-    <formulas>
-        <name>LoggedinUserProfile</name>
-        <dataType>String</dataType>
-        <expression>{!$Profile.Id}</expression>
-    </formulas>
     <interviewLabel>UCD Account Embargo Country Validation {!$Flow.CurrentDateTime}</interviewLabel>
     <label>UCD Account Embargo Country Validation</label>
     <processMetadataValues>
@@ -103,7 +64,7 @@
         <name>get_embargo_countries</name>
         <label>get embargo countries</label>
         <locationX>182</locationX>
-        <locationY>395</locationY>
+        <locationY>287</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>check_embargo_countries</targetReference>
@@ -116,13 +77,6 @@
                 <elementReference>$Record.BillingCountryCode</elementReference>
             </value>
         </filters>
-        <filters>
-            <field>Active__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </filters>
         <getFirstRecordOnly>true</getFirstRecordOnly>
         <object>embargo_country__mdt</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
@@ -131,7 +85,7 @@
         <name>Update_embargo_field</name>
         <label>Update embargo field</label>
         <locationX>50</locationX>
-        <locationY>611</locationY>
+        <locationY>503</locationY>
         <inputAssignments>
             <field>Core_Not_an_Embargoed_Country__c</field>
             <value>
@@ -141,10 +95,10 @@
         <inputReference>$Record</inputReference>
     </recordUpdates>
     <start>
-        <locationX>254</locationX>
+        <locationX>56</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>Integration_users_bypass</targetReference>
+            <targetReference>get_embargo_countries</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -166,24 +120,4 @@
         <triggerType>RecordBeforeSave</triggerType>
     </start>
     <status>Active</status>
-    <variables>
-        <name>CIMOBMuser</name>
-        <dataType>String</dataType>
-        <isCollection>false</isCollection>
-        <isInput>true</isInput>
-        <isOutput>false</isOutput>
-        <value>
-            <stringValue>CIM.OBM</stringValue>
-        </value>
-    </variables>
-    <variables>
-        <name>ReltioUser</name>
-        <dataType>String</dataType>
-        <isCollection>false</isCollection>
-        <isInput>true</isInput>
-        <isOutput>false</isOutput>
-        <value>
-            <stringValue>Reltio</stringValue>
-        </value>
-    </variables>
 </Flow>

@@ -168,6 +168,14 @@
         <label>Configurator</label>
     </fieldSets>
     <fields>
+        <fullName>Core_Access_External_Id__c</fullName>
+        <displayFormat>PF-{00000}</displayFormat>
+        <externalId>true</externalId>
+        <label>External Id</label>
+        <trackTrending>false</trackTrending>
+        <type>AutoNumber</type>
+    </fields>
+    <fields>
         <fullName>SBQQ__Category__c</fullName>
         <deprecated>false</deprecated>
         <description>Category of options in this feature. Allows for another level of grouping.</description>

@@ -395,7 +395,7 @@ PRIORVALUE({!myVariable_current.Core_MDF_Budget_Status__c}) = {!$Label.Core_MDF_
     </processMetadataValues>
     <processType>Workflow</processType>
     <startElementReference>myDecision</startElementReference>
-    <status>Obsolete</status>
+    <status>Active</status>
     <variables>
         <name>myVariable_current</name>
         <dataType>SObject</dataType>

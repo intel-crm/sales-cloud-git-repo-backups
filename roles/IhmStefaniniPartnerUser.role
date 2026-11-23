@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>IHM Stefanini Group Partner User</description>
+    <description>Ihm Stefanini Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>IHM Stefanini Group Partner User</name>
+    <name>Ihm Stefanini Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>EMP_12006609_Yuri_Daglian</parentRole>
+    <parentRole>IhmStefaniniPartnerManager</parentRole>
 </Role>

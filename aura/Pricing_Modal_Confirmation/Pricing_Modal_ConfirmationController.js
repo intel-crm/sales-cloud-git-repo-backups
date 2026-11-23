@@ -5,6 +5,7 @@
     },
     handleOK: function (component, event, helper) {
         component.set("v.confirmationValue", "OK");
+        
         component.find("overlayLib").notifyClose();
     }
 })

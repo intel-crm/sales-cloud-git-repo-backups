@@ -1,0 +1,123 @@
+<template>
+    <template if:true={showModal}>
+        <section class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <!-- Modal/Popup Header -->
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={handleCancel}>
+                    <lightning-icon icon-name="utility:close" alternative-text="close" size="small"></lightning-icon>
+                    <span class="slds-assistive-text">Close</span>
+         </button>
+                    <h2 class="slds-text-heading_medium slds-text-align_center">New Executive Meeting Brief Form{accountID}</h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium">
+
+                    <div class="slds-p-around_medium">
+
+                        <!-- EVENT DETAILS -->
+                        <div class="custom-section slds-p-around_small">
+                            <div class="section-heading">
+                                <label class="slds-text-heading_medium section-header-title custom-header">EVENT DETAILS</label>
+                            </div>
+                            <div class="slds-grid slds-wrap">
+                                <div class="slds-col slds-size_1-of-3">
+                                    <label class="custom-label">Event Engagement Name</label>
+                                    <lightning-input label="Event Engagement Name" data-id="crmEventEngagementName"
+                                        value={crmEventEngagementName} onchange={handleInputChange} variant="label-hidden"></lightning-input>
+                                </div>
+                                <div class="slds-col slds-size_1-of-3">
+                                    <label class="custom-label">Scheduled Start Time</label>
+                                    <lightning-input type="datetime" label="Scheduled Start Time"
+                                        data-id="crmScheduledStartTime" value={crmScheduledStartTime}
+                                        onchange={handleInputChange} variant="label-hidden"></lightning-input>
+                                </div>
+                                <div class="slds-col slds-size_1-of-3">
+                                    <label class="custom-label">Scheduled End Time</label>
+                                    <lightning-input type="datetime"  label="Scheduled End Time"
+                                        data-id="crmScheduledEndTime" value={crmScheduledEndTime}
+                                        onchange={handleInputChange} variant="label-hidden"></lightning-input>
+                                </div>
+                            </div>
+                              <!--Account Name-->
+                                <div class="slds-grid slds-wrap">
+                                    <div class="slds-col slds-size_1-of-3">
+                                        <label class="custom-label">Account Name </label> {accountID}
+                                        <lightning-record-picker
+                                                label="Select Account"
+                                                object-api-name="Account"
+                                                variant="label-hidden"
+                                                data-id="accountID"
+                                                value={accountID}
+                                                onchange={handleAccountChange}
+                                            ></lightning-record-picker>
+                                    </div>
+                                </div>
+                              <!--Account Name-->
+                        </div>
+                        <!--MEETING OBJECTIVES SECTION-->
+                        <div class="custom-section slds-p-around_medium">
+                            <div class="section-heading">
+                                <label class="slds-text-heading_medium section-header-title custom-header">MEETING OBJECTIVES & KEY MESSAGES</label>
+                            </div>
+                            <label class="custom-label">Intel’s Meeting Objectives</label>
+                            <lightning-helptext content="Replace with: 3 bullets MAX" class="slds-m-left_x-small"></lightning-helptext>
+                            <lightning-input-rich-text class="slds-m-bottom_medium"
+                                label="CRM Intels Meeting Objectives" value={crmIntelsMeetingObjectives}
+                                onchange={handleInputChange} data-id="crmIntelsMeetingObjectives">
+                            </lightning-input-rich-text>
+
+                            <label class="custom-label">Other Party’s Meeting Objectives</label>
+                            <lightning-helptext content="Replace with: 3 bullets MAX" class="slds-m-left_x-small"></lightning-helptext>
+                            <lightning-input-rich-text class="slds-m-bottom_medium"
+                                label="CRM Other Party's Meeting Objectives" value={crmOtherPartysMeetingObjectives}
+                                onchange={handleInputChange} data-id="crmOtherPartysMeetingObjectives">
+                            </lightning-input-rich-text>
+
+                            <label class="custom-label">Most Critical Messages to Get Across</label>
+                            <lightning-helptext content="No more than 3 bullet points that specify what the executive MUST communicate during the meeting" class="slds-m-left_x-small"></lightning-helptext>
+                            <lightning-input-rich-text class="slds-m-bottom_medium"
+                                label="CRM Most Critical Messages to Get Across" value={crmMostCriticalMessages}
+                                onchange={handleInputChange} data-id="crmMostCriticalMessages">
+                            </lightning-input-rich-text>
+                        </div>                           
+                    </div>  
+                    <!--Upload File-->
+                    <div class="custom-section slds-p-around_medium slds-align_absolute-center">
+                        <lightning-file-upload
+                        label="Upload fileeeeee"
+                        name="fileUploader"
+                        accept={acceptedFormats}
+                        record-id={recordId}
+                        onuploadfinished={handleUploadFinished}
+                        multiple
+                        class="slds-align_absolute-center"
+                    >
+                    </lightning-file-upload>
+                    <template if:true={uploadedFiles}>
+                        <template for:each={uploadedFiles} for:item="file">
+                         <li key={file.documentId} class="slds-item">
+                        <lightning-icon icon-name="doctype:attachment" size="x-small" class="slds-m-right_x-small"></lightning-icon>
+                        {file.name}
+                         </li>
+                        </template>
+                    </template>
+                    </div>
+                    <!--Upload File-->
+                </div>
+                <!-- Modal/Popup Footer -->
+                <footer class="slds-modal__footer">
+                    <lightning-button variant="neutral" label="Cancel" onclick={handleCancel}></lightning-button>
+                    <!--<lightning-button class="slds-m-left_small" variant="neutral" label="Save and New"
+                        onclick={handleSave}>
+                    </lightning-button>-->
+                    <lightning-button class="slds-m-left_small" variant="brand" label="Generate Brief" onclick={handleSave}>
+                    </lightning-button>
+                </footer>
+            </div>
+        </section>
+        </div>
+
+
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+</template>

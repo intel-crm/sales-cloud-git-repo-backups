@@ -6,8 +6,12 @@
     </caseValues>
     <caseValues>
         <plural>true</plural>
-        <value>Partner Role Biz Type Default Mappings</value>
+        <value>Partner Role Biz Type Default Mapping</value>
     </caseValues>
+    <fields>
+        <label><!-- Bizorg Type --></label>
+        <name>PRM_Bizorg_Type__c</name>
+    </fields>
     <fields>
         <label><!-- Partner Role --></label>
         <name>PRM_Partner_Role__c</name>

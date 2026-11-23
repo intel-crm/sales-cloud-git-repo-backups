@@ -6,5 +6,5 @@
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>I.Q. Buerotechnik Verkauf und Service Gm Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>IQBuerotechnikVerkaufundServiceGmPartnerManager</parentRole>
 </Role>

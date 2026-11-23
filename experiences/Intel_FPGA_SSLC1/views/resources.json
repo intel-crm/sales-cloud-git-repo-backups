@@ -5,6 +5,16 @@
   "id" : "67c2ea32-c264-4bea-af95-acea1ccf2993",
   "label" : "Resources",
   "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "richTextValue" : "<p><a href=\"https://www.intel.com/content/www/us/en/docs/programmable/683472/23-2/using-the-intel-fpga-self-service-licensing.html\" rel=\"noopener noreferrer\" target=\"null\" style=\"background-color: rgb(255, 255, 255); font-size: 14px; color: rgb(0, 82, 204);\">https://www.intel.com/content/www/us/en/docs/programmable/683472/23-2/using-the-intel-fpga-self-service-licensing.html</a>&nbsp;</p>"
+      },
+      "componentName" : "forceCommunity:richTextInline",
+      "id" : "b1f04eb4-226e-47b3-bb6b-5fdb61224160",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
     "id" : "1df3ff29-c7b0-449d-a74b-84a076da11d9",
     "regionName" : "header",
     "type" : "region"
@@ -80,6 +90,7 @@
         "id" : "fab99ebc-7eaf-40ec-a82f-f5e6fc5d9b86",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "市场推广基金",
             "description" : "市场推广基金",
             "title" : "Resources"
           }

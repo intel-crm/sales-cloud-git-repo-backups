@@ -10,8 +10,5 @@ Modification Log    :
 
 ****************************************************************************************************************************/
 trigger PRM_Benefit_Group_Benefit_Assoc_Trigger on PRM_Benefit_Group_Benefit_Association__c (before insert, before update,after insert, after update) {
-    // bypass added by Dinesh as part of IPA2.0 Refresh change
-    if(!FeatureManagement.checkPermission('PCC_Bypass_Automation')){
-        new PRM_Benefit_Group_Benefit_Assoc_Handler().run();
-    }
+    new PRM_Benefit_Group_Benefit_Assoc_Handler().run();
 }

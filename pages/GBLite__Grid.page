@@ -7,7 +7,7 @@
     </c:EmptyComponent>
     <script type="text/javascript">var errorRecs = new Array(), updatedRecs = {}, insertedRecs = {};</script>
     <!--[if IE 8]>
-        <link rel="stylesheet" type="text/css" href="{!URLFOR($Resource.gb_resources, 'ie8-styles.css')}" />
+        <link rel="stylesheet" type="text/css" href="{!URLFOR($Resource.GBLite__gb_resources, 'ie8-styles.css')}" />
     <![endif]-->
     <div class="gbAppPage gbPage {!IF(showHeader, '', 'gbNoHdr')} {!IF(isFilteringByParentId, 'fbp', '')} gb{!lang.langCode} {!IF(repeatParentHeader, '', 'gbNoRepeatParentHdr')} {!IF(compactView, 'compactView', '')}{!IF(lightningStylesEnabled, ' gbLightning', '')}">
         <apex:outputPanel id="messageBlock"> 
@@ -65,11 +65,6 @@
             <div class="msgBody">{!lang.EnterRequiredDataMsg}</div>
         </div>
         
-        <div class="msgBox warningMsg boxShadow" id="ownerFieldsWarning">
-            <div class="closeX" tabindex="0">{!lang.CloseWarningBoxLbl}&nbsp;<b>X</b></div>
-            <div class="msgBody">{!lang.TransferRecordMsg}</div>
-        </div>
-
         <div class="msgBox warningMsg boxShadow" id="invalidOppProdFieldsWarning">
             <div class="closeX" tabindex="0">{!lang.CloseWarningBoxLbl}&nbsp;<b>X</b></div>
             <div class="msgBody">{!lang.EnterSalesPriceOrTotalPriceMsg}</div>
@@ -431,8 +426,6 @@
     <script type="text/javascript">
         var gridNameForUDF = '{!JSENCODE(gridConfig.Name)}';
     </script>
-    <script src="/soap/ajax/33.0/connection.js" type="text/javascript"></script>
-    <script src="/soap/ajax/33.0/apex.js" type="text/javascript"></script>
     
     <c:LangJSComponent lang="{!lang}"/>
     <!--  do not use includeScript for the jquery include, as this will add the javascript to the <head> tag and slow down the page load -->
@@ -520,20 +513,8 @@
             usageTrackingDisabled = {!usageTrackingDisabled},
             enforceSharingRules = {!enforceSharingRules},
             filterParentFieldOperator = '{!FPOOnParentObject}',
-            hasCharts = {!hasCharts},
-            defaultCaseAccess = '{!defaultCaseAccess}',
-            defaultLeadAccess = '{!defaultLeadAccess}',
-            allowTransferAnyRecord = {!allowTransferAnyRecord},
-            allowTransferAnyLead = {!allowTransferAnyLead},
-            allowTransferAnyCase = {!allowTransferAnyCase},
-            allowModifyAllRecords = {!allowModifyAllRecords},
-            allowModifyAllByObjectName;
-
-        // ownerId is misnamed, it is the current user's id, but I don't want to change it as I worried something
-        // somewhere might break and refactoring between VF page JS variables and included JS scripts does not work well
-        // so I'm adding a second better named variable for use in gb.js
-        const currentUserId = '{!$User.Id}';
-
+            hasCharts = {!hasCharts};
+        
         if (gridIsValid && {!(showHeader==false)}) {
             try {
                 document.title = "{!JSENCODE(gridWindowTitle)}";
@@ -548,11 +529,6 @@
             gridInfoMapLen++;
             
             <apex:repeat value="{!gInfo.metaColumns}" var="metaCol">
-                allowModifyAllByObjectName = [];
-                <apex:repeat value="{!metaCol.objectHasModifyAllPermission}" var="objName">
-                    allowModifyAllByObjectName.push({objName:"{!objName}", value:"{!metaCol.objectHasModifyAllPermission[objName]}"});
-                </apex:repeat>
-
                 optsArr = [];
                 <apex:repeat value="{!metaCol.HTMLEscapedPicklistValues}" var="picklistValue">
                     optsArr.push({v:"{!picklistValue.value}", l:"{!picklistValue.label}"});

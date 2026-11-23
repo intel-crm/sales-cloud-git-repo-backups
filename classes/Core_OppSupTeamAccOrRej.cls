@@ -19,8 +19,8 @@ public  without sharing class Core_OppSupTeamAccOrRej {
         //system.debug('user id'+userID);
         try{
             checkUser =  [select id ,name ,Core_Opportunity_Support__r.Core_CoE_Request_Detail__c,Core_Opportunity_Support__r.Center_of_Excellence__c,Core_Opportunity_Support__r.Opportunity__r.Account.name ,Core_Opportunity_Support__r.RecordType.Name,Core_Opportunity_Support__r.RecordType.DeveloperName,Core_Opportunity_Support__r.Core_Sales_Stages__c, Core_Opportunity_Support__r.Core_Opportunity_Name__c,Core_Opportunity_Support__r.Core_Account_Name__c,Core_Opportunity_Support_Team_Member__c,Core_Opportunity_Support__c ,Core_Opportunity_Support__r.Core_Amount__c,Core_Opportunity_Support__r.Core_Additional_Support_Needed__c,Core_Opportunity_Support__r.Core_Approved_By_c__c , 
-                                                             Core_Opportunity_Support__r.Core_background_info_on_architecture__c,Core_Opportunity_Support__r.Core_Decision_Date__c,Core_Opportunity_Support__r.Core_Opportunity_Description__c,Core_Opportunity_Support__r.Core_Opportunity_Support_Team_Count__c,Core_Opportunity_Support__r.Core_PrimaryBlockers__c ,Core_Opportunity_Support__r.Core_Product_Application__c , Core_Opportunity_Support__r.Core_Product_Segment__c ,Core_Opportunity_Support__r.Core_Region__c ,
-                                                             Core_Opportunity_Support__r.Sales_Group__c,Core_Opportunity_Support__r.Core_Technical_Owner__c,Core_Opportunity_Support__r.Core_TSS_Support_Type__c,Core_Opportunity_Support__r.Core_Vertical_Market__c from Core_Opportunity_Support_Team__c where Core_Opportunity_Support_Team_Member__c =:userID and core_Status__c = 'Pending' WITH SECURITY_ENFORCED order by createddate desc];//TWC3123-5299 Added WITH SECURITY_ENFORCED
+                          Core_Opportunity_Support__r.Core_background_info_on_architecture__c,Core_Opportunity_Support__r.Core_Decision_Date__c,Core_Opportunity_Support__r.Core_Opportunity_Description__c,Core_Opportunity_Support__r.Core_Opportunity_Support_Team_Count__c,Core_Opportunity_Support__r.Core_PrimaryBlockers__c ,Core_Opportunity_Support__r.Core_Product_Application__c , Core_Opportunity_Support__r.Core_Product_Segment__c ,Core_Opportunity_Support__r.Core_Region__c ,
+                          Core_Opportunity_Support__r.Sales_Group__c,Core_Opportunity_Support__r.Core_Technical_Owner__c,Core_Opportunity_Support__r.Core_TSS_Support_Type__c,Core_Opportunity_Support__r.Core_Vertical_Market__c from Core_Opportunity_Support_Team__c where Core_Opportunity_Support_Team_Member__c =:userID and core_Status__c = 'Pending' WITH SECURITY_ENFORCED order by createddate desc];//TWC3123-5299 Added WITH SECURITY_ENFORCED
         }
         catch(Exception e){
             Core_Log_Entry__c logEntry =new Core_Log_Entry__c(Core_Message__c = 'An exception has been thrown for:Class.Core_OppSupTeamAccOrRej.checkUserformOppteam',Core_Details__c = e.getMessage(), Core_Origin__c='Core_OppSupTeamAccOrRej', Core_Severity__c='Info', Core_When__c=System.Now(), Core_Project__c = 'Unicorn');
@@ -28,7 +28,7 @@ public  without sharing class Core_OppSupTeamAccOrRej {
         
         }
         
-       //system.debug('checkUser' + checkUser);        
+       	//system.debug('checkUser' + checkUser);        
         return checkUser;
         
     }

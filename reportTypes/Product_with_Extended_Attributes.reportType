@@ -167,11 +167,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>PSG_Restricted_Product__c</field>
-            <table>Product2.Product_Ext_Attribute__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>Core_Intel_vPro_Platform_Eligibility__c</field>
             <table>Product2</table>
         </columns>
@@ -460,6 +455,91 @@
             <field>Core_SW_Prod_Non_Commercial_Purpose_Nm__c</field>
             <table>Product2</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_SA_Is_EOL__c</field>
+            <table>Product2</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Mem_Amt__c</field>
+            <table>Product2</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Is_Custom_Ind__c</field>
+            <table>Product2</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Forecast_Product_Name__c</field>
+            <table>Product2</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Family_Nm__c</field>
+            <table>Product2</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Business_Org_Nm__c</field>
+            <table>Product2</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Max_TDP__c</field>
+            <table>Product2</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_CoreCount__c</field>
+            <table>Product2</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_VerticalSegment__c</field>
+            <table>Product2</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Platform_Eligibility__c</field>
+            <table>Product2</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Solution_Area__c</field>
+            <table>Product2</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Sales_Serial_Number__c</field>
+            <table>Product2</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>UCASE_CodeName__c</field>
+            <table>Product2</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>INTUCASE_CodeName__c</field>
+            <table>Product2</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Cross_Selling_Product_Type_Nm__c</field>
+            <table>Product2</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_StableImagePlatformProgVer_Ind__c</field>
+            <table>Product2</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_SW_Description_hyperlink__c</field>
+            <table>Product2</table>
+        </columns>
         <masterLabel>Products</masterLabel>
     </sections>
     <sections>
@@ -616,6 +696,21 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_SW_Lic_Windows_Download_URL_Txt__c</field>
+            <table>Product2.Product_Ext_Attribute__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Max_TDP__c</field>
+            <table>Product2.Product_Ext_Attribute__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Count__c</field>
+            <table>Product2.Product_Ext_Attribute__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PSG_Restricted_Product__c</field>
             <table>Product2.Product_Ext_Attribute__r</table>
         </columns>
         <masterLabel>Product Extended Attributes</masterLabel>

@@ -1,0 +1,92 @@
+<template>
+    <lightning-card variant="narrow" icon-name="standard:opportunity">
+        <h1 slot="title">Clone of {oppName}</h1>  
+        <h2 class = "slds-box slds-p-around_small" style="padding-left: 20px;"> Please unselect any items you don’t want to copy to the new opportunity. 
+            <lightning-button class="slds-float_right" label="Collapse All" onclick={handleCollapse}></lightning-button>
+            <lightning-button class="slds-float_right" label="Expand All" onclick={handleExpand}></lightning-button>
+        </h2>
+
+        <template if:true={isLoading}>
+            <div class="spinner-fixed slds-spinner_brand">
+            <lightning-spinner alternative-text="Cloning..." size = "large"></lightning-spinner>
+            </div>
+        </template>
+    
+    <lightning-accordion active-section-name={activeSectionName} allow-multiple-sections-open="true">
+        <lightning-accordion-section name="A" label="Opportunity Clone Mandatory Field">
+            <div class="slds-grid slds-wrap slds-p-around_medium">
+            <div class="slds-col slds-size_12-of-12">
+              <lightning-input name="Opportunity Name" type="text" label="Opportunity Name" required data-id="input" style="width:fit-content" value = {oppName} onchange={handleOppName}
+              field-level-help="A comprehensive name, sufficiently descriptive, identifiable and unique, to distinguish from other opportunities. Consider including the year or quarter, customer name, project name, and/or platform code name. Do not include confidential information.">
+              </lightning-input>
+            </div>
+            <!--<p class = "slds-m-top-small"> CUrrent name : {cloneOppName} </p>-->
+            <div class="slds-col slds-size_6-of-12" style="display:flex;align-items:flex-top">
+              <lightning-input name="Decision Date" type="Date" label="Decision Date" required style="width:fit-content" min={minDate} data-id="input" date-style="short" value = {cloneDesDate} onchange={handleDescDate}
+              field-level-help="The expected date the customer will make decision to award opportunity AND it can be submitted for approval. This date should be continuosly updated based on customer input. More details here : goto/claimdesignwin">
+              </lightning-input>
+              <div class="slds-col slds-size_6-of-12" style = "width:fit-content;padding:30px 10px 5px 10px; text-decoration: underline;color : rgb(21, 0, 255);cursor: pointer;" onclick = {handleDate}> [{currentDate}] </div>
+            </div>
+            <!--<div class="slds-col slds-size_6-of-12" style = "width:fit-content"> [04/14/2025] </div> -->
+            
+            <div class = "slds-col slds-size_12-of-12">
+                <lightning-combobox name = "MINDS" label = "Are Intel items used for MINDS?" required style="width:fit-content" options={options} onchange={handleMINDS} data-id="input"
+                field-level-help= "Military, intelligence, nuclear/biochemical, defense, or space (MINDS) use. Select when items for THIS opportunity are exclusively for MINDS use. Do NOT select when items for this opportunity are for commercial use or for many uses including MINDS.">
+                </lightning-combobox>
+            </div>
+        </div>
+        </lightning-accordion-section>
+
+         <lightning-accordion-section name="B" label="CLONE Related Lists" if:true={showRelatedListSection}>
+            <table class="tab" style="width:450px">
+                <tr><th style="padding:10px 0px 5px 15px">Related List</th><th style="padding:10px 0px 5px 5px;text-align:center">Selected</th></tr>
+                <template if:true={showOppFeatures}>
+                    <tr><td style="padding:10px 0px 5px 15px">Descriptive Features</td><td style="padding:10px 0px 5px 5px;text-align:center"><input type="checkbox" checked onchange={handleDescSelected}></td></tr>
+                </template>
+                <template if:true={showOppPartner}>
+                <tr><td style="padding:10px 0px 5px 15px">Opportunity Partners</td><td style="padding:10px 0px 5px 5px;text-align:center"><input type="checkbox" checked onchange={handleOppPartners}></td></tr>
+                </template>
+                <template if:true={showOpportunityProductOption}>
+                <tr><td style="padding:10px 0px 5px 15px">Opportunity Products</td><td style="padding:10px 0px 5px 5px;text-align:center"><input type="checkbox" checked onchange={handleOppProducts}></td></tr>
+                </template>
+                <template if:true={showOpportunitySolution}>
+                <tr><td style="padding:10px 0px 5px 15px">Solutions</td><td style="padding:10px 0px 5px 5px;text-align:center"><input type="checkbox" checked onchange={handleOppSolutions}></td></tr>
+                </template>
+                <template if:true={isAttachment}>
+                <tr><td style="padding:10px 0px 5px 15px">Attachment</td><td style="padding:10px 0px 5px 5px;text-align:center"><input type="checkbox" checked onchange={handleOppAttachments}></td></tr>
+                </template>
+            </table>
+        </lightning-accordion-section>
+        
+        <lightning-accordion-section name="C" label="CLONE Opportunity Team Members">
+            <div>
+            <lightning-datatable key-field="Id" data = {teamMembers} columns = {teamColumns} selected-rows={selectedRows} onrowselection={handleRowSelection} row-class={getRowClass}> 
+            </lightning-datatable>
+            </div>
+        </lightning-accordion-section>
+
+        <lightning-accordion-section name="D" label="NOT COPIED - Inactive Opportunity Team Members" if:true={showInactiveOppTeam}>
+            <lightning-datatable key-field="Id" data = {inactiveTeamMembers} columns = {inactiveTeam} hide-checkbox-column	> 
+            </lightning-datatable>
+        </lightning-accordion-section>
+        <lightning-accordion-section name="E" label="NOT COPIED - Inactive Descriptive Features" if:true={showInactiveOppFeatures}>
+             <lightning-datatable key-field="Id" data = {inactiveDescFeatures} columns = {oppDescFeaturesColumns} hide-checkbox-column	> 
+            </lightning-datatable>
+        </lightning-accordion-section>
+        <lightning-accordion-section name="F" label="NOT COPIED - Opportunity Partner (Vendor or Inactive)" if:true={showInactiveOppPartner}>
+            <lightning-datatable key-field="Id" data = {inactivePartners} columns = {partnerColumns} hide-checkbox-column	> 
+            </lightning-datatable>
+        </lightning-accordion-section>
+        <lightning-accordion-section name="G" label="NOT COPIED - Inactive Opportunity Products" if:true={showInactiveOppProduct}>
+            <lightning-datatable key-field="Id" data = {inactiveProds} columns = {prodCoulmns} hide-checkbox-column	> 
+            </lightning-datatable>
+        </lightning-accordion-section>
+
+    </lightning-accordion> 
+    
+    <div class="button-container" >
+        <lightning-button label="Save & Create" onclick={handleSave}></lightning-button>
+        <lightning-button label="Cancel" onclick={handleCancel}></lightning-button>
+    </div>
+    </lightning-card>
+</template>

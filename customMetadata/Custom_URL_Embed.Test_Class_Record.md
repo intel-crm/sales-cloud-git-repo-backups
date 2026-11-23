@@ -31,6 +31,10 @@
         <value xsi:nil="true"/>
     </values>
     <values>
+        <field>Dynamic_Filter_and_Value__c</field>
+        <value xsi:type="xsd:string">Name eq:&apos;Name&apos;;Type eq:Core_Account_Type__c</value>
+    </values>
+    <values>
         <field>Dynamic_Filter_and_Value_txt__c</field>
         <value xsi:type="xsd:string">Name eq:&apos;Name&apos;;Type eq:Core_Account_Type__c</value>
     </values>
@@ -43,6 +47,10 @@
         <value xsi:nil="true"/>
     </values>
     <values>
+        <field>No_Access_Error__c</field>
+        <value xsi:type="xsd:string">Sorry, you do not have access to this dashboard. Please work with your IT team.</value>
+    </values>
+    <values>
         <field>No_Access_Error_txt__c</field>
         <value xsi:type="xsd:string">Sorry, you do not have access to this dashboard. Please work with your IT team.</value>
     </values>
@@ -52,7 +60,11 @@
     </values>
     <values>
         <field>Project__c</field>
-        <value xsi:type="xsd:string">Test</value>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Security_Query__c</field>
+        <value xsi:type="xsd:string">select id from Account</value>
     </values>
     <values>
         <field>Security_Query_txt__c</field>
@@ -61,6 +73,10 @@
     <values>
         <field>Security_enforced__c</field>
         <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>Static_Filter_and_Value__c</field>
+        <value xsi:type="xsd:string">year eq 2023</value>
     </values>
     <values>
         <field>Static_Filter_and_Value_txt__c</field>
@@ -73,6 +89,10 @@
     <values>
         <field>URL__c</field>
         <value xsi:type="xsd:string">https://app.powerbi.com/reportEmbed?reportId=adbaad5d-a07f-40ef-ac83-8852a2445fe9&amp;autoAuth=true&amp;navContentPaneEnabled=false</value>
+    </values>
+    <values>
+        <field>User_Filter_and_Value__c</field>
+        <value xsi:type="xsd:string">wwid=:Core_WWID__c;eMail=:Email</value>
     </values>
     <values>
         <field>User_Filter_and_Value_txt__c</field>

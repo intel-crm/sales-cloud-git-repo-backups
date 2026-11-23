@@ -28,6 +28,10 @@
             <masterLabel>core_cpq_quote_line_type_txt__c</masterLabel>
             <translation><!-- core_cpq_quote_line_type_txt__c --></translation>
         </picklistValues>
+        <picklistValues>
+            <masterLabel>core_cpq_quote_type_nm__c</masterLabel>
+            <translation><!-- core_cpq_quote_type_nm__c --></translation>
+        </picklistValues>
     </fields>
     <fields>
         <help><!-- Aggregate function used to calculate this variable. --></help>
@@ -111,16 +115,16 @@
             <translation><!-- SBQQ__ProductName__c --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>core_cpq_PSG_Restricted_Product__c</masterLabel>
-            <translation><!-- core_cpq_PSG_Restricted_Product__c --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>core_cpq_product_family_txt__c</masterLabel>
             <translation><!-- core_cpq_product_family_txt__c --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>core_cpq_quote_line_type_txt__c</masterLabel>
             <translation><!-- core_cpq_quote_line_type_txt__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>core_cpq_quote_type_nm__c</masterLabel>
+            <translation><!-- core_cpq_quote_type_nm__c --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -195,8 +199,16 @@
             <translation><!-- Product Option --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Quote</masterLabel>
+            <translation><!-- Quote --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Quote Line</masterLabel>
             <translation><!-- Quote Line --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SBQQ__QuoteDocument__c</masterLabel>
+            <translation><!-- SBQQ__QuoteDocument__c --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Subscription</masterLabel>

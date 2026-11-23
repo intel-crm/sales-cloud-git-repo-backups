@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>Inphi Corporation Customer Manager</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>Inphi Corporation Customer Manager</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>EMP_11645299_Michael_Ho</parentRole>
+</Role>

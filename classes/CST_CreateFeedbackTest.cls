@@ -98,7 +98,7 @@ public class CST_CreateFeedbackTest {
         Id rcId = [select id from SPM_Regional_Customer__c limit 1][0].Id;
         
         SPM_Customer_Detail__c cd = new SPM_Customer_Detail__c();
-        cd.Coverage__c='Intel Led';
+        cd.Coverage__c='Intel Covered';
         cd.Core_Regional_Customer_Id__c = rcId;
         cd.SPM_Customer_Name__c='TestCST';
         insert cd;
@@ -107,7 +107,7 @@ public class CST_CreateFeedbackTest {
         
         SPM_Customer_Category__c cc = new SPM_Customer_Category__c();
         cc.Customer_Detail__c = cstId;
-        cc.Coverage__c = 'Intel Led';
+        cc.Coverage__c = 'Intel Covered';
         insert cc;
         
         
@@ -119,7 +119,7 @@ public class CST_CreateFeedbackTest {
         }
         Id sfAcctId = [select id from Account where Name='TestAccount' limit 1][0].Id;
         SPM_Account_Detail__c ad = new SPM_Account_Detail__c();
-        ad.Coverage_Type__c='Intel Led';
+        ad.Coverage_Type__c='Intel Covered';
         ad.DR__c = userId;
         ad.VP__c = userId;
         ad.GM__c = userId;
@@ -152,12 +152,12 @@ public class CST_CreateFeedbackTest {
                  cstFeedback.CustomerId = cstId;
         cstFeedback.feedbackBy = userRec.Email;
         cstFeedback.FeedbackType ='DR';
-        cstFeedback.Feedback='Add to Intel Led';
+        cstFeedback.Feedback='Add to Intel Covered';//TWC3123-5894
         cstFeedback.ReasonForChange ='test';
         cstFeedback.NewAcctOwner = userRec.Email;
         cstFeedback.TeamMembers = userRec.Id;
         cstFeedback.SalesGroup='test';
-        cstFeedback.Coverage='Intel Led';
+        cstFeedback.Coverage='Intel Covered';
         //Id cstRecordTypeId = Schema.SObjectType.SPM_Customer_Feedback__c.getRecordTypeInfosByName().get('DR Feedback').getRecordTypeId();
         //cstFeedback.RecordTypeId = cstRecordTypeId;
         
@@ -167,7 +167,7 @@ public class CST_CreateFeedbackTest {
         CST_CreateFeedback.AccountFeedBackFields acctFeedback = new CST_CreateFeedback.AccountFeedBackFields();
         acctFeedback.AccountId = acctId;
         acctFeedback.FeedbackType ='DR';
-        acctFeedback.Feedback='Add to Intel Led';
+        acctFeedback.Feedback='Add to Intel Covered';//TWC3123-5894
         acctFeedback.ReasonForChange ='test';
         acctFeedback.NewAcctOwner = userRec.Email;
         acctFeedback.TeamMembers = userRec.Id;
@@ -194,27 +194,28 @@ public class CST_CreateFeedbackTest {
                  cstFeedback.CustomerId = cstId;
                  cstFeedback.feedbackBy = userRec.Email;
                  cstFeedback.FeedbackType ='VP';
-                 cstFeedback.Feedback='Change to Partner';
+                 cstFeedback.Feedback='	Change to Indirect Covered';//TWC3123-5894
                  cstFeedback.ReasonForChange ='test';
                  cstFeedback.NewAcctOwner = userRec.Email;
                  cstFeedback.TeamMembers = userRec.Id;
                  cstFeedback.SalesGroup='test';
-                 cstFeedback.Coverage='Intel Led';
+                 cstFeedback.Coverage='Indirect Covered';
                  //Id cstRecordTypeId = Schema.SObjectType.SPM_Customer_Feedback__c.getRecordTypeInfosByName().get('VP Feedback').getRecordTypeId();
                  //cstFeedback.RecordTypeId = cstRecordTypeId;
                  
                  Map<Boolean,String> cf = CST_CreateFeedback.createCustomerFeedback(cstFeedback);
+                 system.debug('cf is:'+cf);
                  
                  Id acctId = [select id from SPM_Account_Detail__c limit 1][0].Id;
                  CST_CreateFeedback.AccountFeedBackFields acctFeedback = new CST_CreateFeedback.AccountFeedBackFields();
                  acctFeedback.AccountId = acctId;
                  acctFeedback.FeedbackType ='VP';
-                 acctFeedback.Feedback='Change to Partner';
+                 acctFeedback.Feedback='Change to Indirect Covered';//TWC3123-5894
                  acctFeedback.ReasonForChange ='test';
                  acctFeedback.NewAcctOwner = userRec.Email;
                  acctFeedback.TeamMembers = userRec.Id;
                  acctFeedback.SalesGroup='test';
-                 acctFeedback.Coverage='Intel Led';
+                 acctFeedback.Coverage='Indirect Covered';
                  Id recordTypeId = Schema.SObjectType.SPM_Account_Feedback__c.getRecordTypeInfosByName().get('VP Feedback').getRecordTypeId();
                  acctFeedback.RecordTypeId = recordTypeId;
                  
@@ -222,7 +223,7 @@ public class CST_CreateFeedbackTest {
                  CST_CreateFeedback.FeedBackFields cstF = CST_CreateFeedback.getEmbeddingObjectDetails(cstId);
                  CST_CreateFeedback.FeedBackFields acctF = CST_CreateFeedback.getEmbeddingObjectDetails(acctId);
                  
-                 List<SPM_Regional_Customer__c> regionalView = [select id,stage__c from SPM_Regional_Customer__c where id =: rc.Id limit 1];
+                 List<SPM_Regional_Customer__c> regionalView = [select id,stage__c,Core_Region__c from SPM_Regional_Customer__c where id =: rc.Id limit 1];
                  String queryCustomerFeedback = 'select id,Feedback_Type__c, Customer_ID__r.Core_Regional_Customer_Id__c from SPM_Customer_Feedback__c where Customer_ID__r.Core_Regional_Customer_Id__c	IN: regionalId';
                  Map<Id,SPM_Regional_Customer__c>   regionalData =  new Map<Id,SPM_Regional_Customer__c>(regionalView);
                  SPM_FeedbackStageUpdate batchCustomerUpdate = new SPM_FeedbackStageUpdate('SPM_Customer_Feedback__c',queryCustomerFeedback,regionalData);

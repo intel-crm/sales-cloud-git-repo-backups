@@ -3,7 +3,9 @@ import { NavigationMixin } from 'lightning/navigation';
 import { getObjectInfo,getPicklistValuesByRecordType } from 'lightning/uiObjectInfoApi';
 //Lakshman added to toggle new quote button for PSG and Tenders
 import userId from '@salesforce/user/Id';
-//import getUserPermissionSets from '@salesforce/apex/PSG_Utility.getUserPemissionSets';
+import getUserPermissionSets from '@salesforce/apex/PSG_Utility.getUserPemissionSets';
+import psgPermissionLabel from '@salesforce/label/c.PSG_Permission_Set';
+import tenderPermissionLabel from '@salesforce/label/c.Tender_Permission_Set';
 // button toggle ends
 
 export default class psg_quoteRequestButton extends NavigationMixin(LightningElement) {
@@ -11,7 +13,11 @@ export default class psg_quoteRequestButton extends NavigationMixin(LightningEle
     @track isPSG = false;
     @track isTender = false;
     @track userPemissionSet=[];
-
+   // psgLabel=psgPermissionLabel;
+   label = {
+    psgPermissionLabel,
+    tenderPermissionLabel
+    } 
     handleNavigate() {
         var compDefinition = {
             componentDef: "c:psg_QuoteRequest",
@@ -47,7 +53,7 @@ export default class psg_quoteRequestButton extends NavigationMixin(LightningEle
     }
 
     
-    /*connectedCallback(){
+    connectedCallback(){
         console.log('inside connected call back '+userId);
         this.getUserPermissionSets(userId);
     }      
@@ -56,11 +62,13 @@ export default class psg_quoteRequestButton extends NavigationMixin(LightningEle
         getUserPermissionSets({ userId: userId})
         .then(data => {
             console.log("PermissionSets:" + JSON.stringify(data));
+            console.log("psgLabel222222222:" +this.label.psgPermissionLabel);
+            console.log("tenderLabel222222222:" +this.label.tenderPermissionLabel);
             data.forEach(item => {
-                if((item.PermissionSet.Name).includes('PSG_')) {
+                if((item.PermissionSet.Name).includes(psgPermissionLabel)) {
                     this.isPSG = true;
                 }
-                if((item.PermissionSet.Name).includes('Tender')){
+                if((item.PermissionSet.Name).includes(tenderPermissionLabel)){
                     this.isTender = true;
                 }
             });
@@ -73,13 +81,13 @@ export default class psg_quoteRequestButton extends NavigationMixin(LightningEle
             if(JSON.stringify(data).includes('Tender')){
                 this.isTender = true;
             }
-            
+            */
         })
         .catch(error => {
             console.log('Error Updating Records',JSON.stringify(error),'error');
             this.userPemissionSet = [];
         })
-    }*/
+    }
     //Toggle button ends here
 
     

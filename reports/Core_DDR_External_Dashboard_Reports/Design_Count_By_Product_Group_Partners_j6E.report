@@ -34,7 +34,7 @@
         <field>Core_Design_Registration__c.Core_Product_Group_Nm__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Design Count By Product Group (Partners)</name>
+    <name>Design Count By Product Group Partners</name>
     <params>
         <name>co</name>
         <value>1</value>

@@ -394,17 +394,10 @@
         <connector>
             <targetReference>Update_Opportunity_Sales_Seg_Compute</targetReference>
         </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>Core_Sales_Segments__c</field>
-            <operator>IsChanged</operator>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </filters>
+        <filterFormula>AND(AND(NOT(ISNULL({!$Record.RecordTypeId})),CONTAINS({!$Label.Core_Sales_CRM_Record_Types},{!$Record.RecordType.DeveloperName})),ISCHANGED({!$Record.Core_Sales_Segments__c}))</filterFormula>
         <object>Opportunity</object>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordBeforeSave</triggerType>
     </start>
-    <status>Active</status>
+    <status>Obsolete</status>
 </Flow>

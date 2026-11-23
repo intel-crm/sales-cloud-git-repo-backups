@@ -5,8 +5,8 @@
     <decisions>
         <name>myRule_1</name>
         <label>Update_Opp_Compliance</label>
-        <locationX>578</locationX>
-        <locationY>323</locationY>
+        <locationX>584</locationX>
+        <locationY>371</locationY>
         <defaultConnectorLabel>FALSE_Update_Opp_Compliance</defaultConnectorLabel>
         <rules>
             <name>Update_Opp_Compliance_For_Us</name>
@@ -42,7 +42,7 @@
     <description>This is used to Update the Compliance Status and Compliance SubStatus  based on MINDS</description>
     <environments>Default</environments>
     <interviewLabel>Update Compliance on Change of Account Country {!$Flow.CurrentDateTime}</interviewLabel>
-    <label>ACM Update Compliance on Change of Account Country</label>
+    <label>Update Compliance on Change of Account Country</label>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
@@ -52,118 +52,15 @@
     <processMetadataValues>
         <name>CanvasMode</name>
         <value>
-            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
         </value>
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
-    <recordCreates>
-        <name>Create_Log_Entry_For_Core_Opp_MINDS</name>
-        <label>Create Log Entry For Core Opp MINDS</label>
-        <locationX>314</locationX>
-        <locationY>539</locationY>
-        <inputAssignments>
-            <field>Core_Details__c</field>
-            <value>
-                <elementReference>$Flow.FaultMessage</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Core_Origin__c</field>
-            <value>
-                <stringValue>Update_Compliance_on_Change_of_Account_Country</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Core_Project__c</field>
-            <value>
-                <stringValue>ACM</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Core_Scope__c</field>
-            <value>
-                <stringValue>Core_Opp_MINDS</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Core_Severity__c</field>
-            <value>
-                <stringValue>Error</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Core_Tags__c</field>
-            <value>
-                <elementReference>$Record.Id</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Core_When__c</field>
-            <value>
-                <elementReference>$Flow.CurrentDateTime</elementReference>
-            </value>
-        </inputAssignments>
-        <object>Core_Log_Entry__c</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordCreates>
-    <recordCreates>
-        <name>Create_Log_Entry_For_Update_Opp_NotUs</name>
-        <label>Create Log Entry For Update Opp NotUs</label>
-        <locationX>842</locationX>
-        <locationY>539</locationY>
-        <inputAssignments>
-            <field>Core_Details__c</field>
-            <value>
-                <elementReference>$Flow.FaultMessage</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Core_Origin__c</field>
-            <value>
-                <stringValue>Update_Compliance_on_Change_of_Account_Country</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Core_Project__c</field>
-            <value>
-                <stringValue>ACM</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Core_Scope__c</field>
-            <value>
-                <stringValue>Core_Opp_MINDS</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Core_Severity__c</field>
-            <value>
-                <stringValue>Error</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Core_Tags__c</field>
-            <value>
-                <elementReference>$Record.Id</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Core_When__c</field>
-            <value>
-                <elementReference>$Flow.CurrentDateTime</elementReference>
-            </value>
-        </inputAssignments>
-        <object>Core_Log_Entry__c</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordCreates>
     <recordUpdates>
         <name>myRule_1_A1</name>
         <label>Core_Opp_MINDS</label>
-        <locationX>50</locationX>
-        <locationY>431</locationY>
-        <faultConnector>
-            <targetReference>Create_Log_Entry_For_Core_Opp_MINDS</targetReference>
-        </faultConnector>
+        <locationX>386</locationX>
+        <locationY>479</locationY>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Core_Compliance_Status__c</field>
@@ -203,11 +100,8 @@
     <recordUpdates>
         <name>myRule_4_A1</name>
         <label>Update_Opp_NotUS</label>
-        <locationX>578</locationX>
-        <locationY>431</locationY>
-        <faultConnector>
-            <targetReference>Create_Log_Entry_For_Update_Opp_NotUs</targetReference>
-        </faultConnector>
+        <locationX>864</locationX>
+        <locationY>479</locationY>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Core_Compliance_Status__c</field>
@@ -238,8 +132,8 @@
         <inputReference>$Record.Opportunities</inputReference>
     </recordUpdates>
     <start>
-        <locationX>452</locationX>
-        <locationY>0</locationY>
+        <locationX>458</locationX>
+        <locationY>48</locationY>
         <connector>
             <targetReference>myRule_1</targetReference>
         </connector>

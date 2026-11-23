@@ -22,7 +22,7 @@ covering following methods
         }catch(Exception e){
             
         }
-          System.AssertEquals(u != null, true);
+        
         
     }
     /*
@@ -43,9 +43,8 @@ covering following methods
         PageReference Pg =   Disclaimer.redirect();
         Pg = Disclaimer.redirectAutomate();
         //}
-         System.AssertEquals(Doc != null, true);
+        
     }
-
     /*
 for the class Core_IPS_ContactloginDisclaimer
 covering following methods   
@@ -73,13 +72,13 @@ covering following methods
         System.runAs(CommunityUserwithNoDate){
             
             Core_IPS_ContactloginDisclaimer Disclaimer =  new Core_IPS_ContactloginDisclaimer();
-            System.AssertEquals(Doc != null, true);
             
             Pagereference Pg = Disclaimer.redirectAutomate();
-             System.AssertEquals(CommunityUser != null, true);
+            
         } 
         Test.stopTest();
-        System.AssertEquals(Doc != null, true);
+        
+        
     }
     
     private static User getCustomerUser(String profileName,String type){
@@ -111,8 +110,7 @@ covering following methods
             FirstName = 'portia'+type,
             LastName  = 'portalTestUser',
             email     = 'pb@ff'+type +'.com',
-            Core_IPS_NDA_Acceptance_Date__c = today,
-            MailingCountry = 'India'
+            Core_IPS_NDA_Acceptance_Date__c = today
         );
         insert con;
         
@@ -120,6 +118,7 @@ covering following methods
         System.runAs ( thisUser ) {
             // UserRole ur = [Select PortalType, PortalAccountId From UserRole where PortalType =:'CustomerPortal' limit 1];
             Profile p =   [select Id,name from Profile where Name = :profileName limit 1];
+            system.debug('>>>>>>>>>>>>>>>' + p);
             newUser = new User(
                 //UserRoleId = ur.Id,
                 profileId = p.id,
@@ -133,8 +132,8 @@ covering following methods
                 lastname='lastname',
                 contactId = con.id
             );
+            system.debug(newUser);
             insert newUser;            
-             System.AssertEquals(newUser != null, true);           
         }
         return newUser;
     }

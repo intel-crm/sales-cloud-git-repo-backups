@@ -76,7 +76,7 @@
         <field>Opportunity.Core_ISV_OSV__c</field>
     </columns>
     <filter>
-        <booleanFilter>((1 AND 2 AND (3 or 7) AND 4 AND 5 AND 6) AND 8) AND 9</booleanFilter>
+        <booleanFilter>(1 AND 2 AND (3 or 7) AND 4 AND 5 AND 6) AND 8</booleanFilter>
         <criteriaItems>
             <column>Opportunity.Core_Opportunity_Type__c</column>
             <columnToColumn>false</columnToColumn>
@@ -132,13 +132,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
             <value>oracle,exadata</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Account.Core_Account_BU_Focus__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>includes</operator>
-            <value>DCG-E&amp;G</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

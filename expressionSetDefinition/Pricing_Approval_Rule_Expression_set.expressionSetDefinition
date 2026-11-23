@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExpressionSetDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
+    <executionScale>Low</executionScale>
+    <label>Approval Rule Expression set</label>
+    <processType>Bre</processType>
+    <template>false</template>
+</ExpressionSetDefinition>

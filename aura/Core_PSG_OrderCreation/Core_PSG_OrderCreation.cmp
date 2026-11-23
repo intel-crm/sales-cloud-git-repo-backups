@@ -1,0 +1,63 @@
+<aura:component controller='Core_PSG_OrderCreation' implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction,lightning:actionOverride,force:hasSObjectName" access="global">
+   <aura:dependency resource="markup://force:navigateToSObject" type="EVENT"/>
+    
+    <aura:attribute name="openModal" type="boolean" default="false" />
+    <aura:attribute name="objInfo" type="order" default="{sobjectType : 'Order'}" />  
+    <aura:attribute name="showdiv" type="boolean" default="false" />
+    
+    <!--Declare Attributes-->    
+    <aura:attribute name="orderTypeMap" type="Map"/>
+    <aura:attribute name="orderReasonMap" type="Map"/>
+    <aura:attribute name="order" type="Order" default="{'sobjectType':'Order', 
+                                                       'Type': '',
+                                                       'Sales_Order_Reason__c': 'Non Stocking Order',
+                                                       'Status': 'Draft',
+                                                       'EffectiveDate': '',
+                                                       'AccountId': ''}"/> 
+ 
+            
+            <div role="dialog" class="slds-modal slds-fade-in-open slds-modal_medium" aura:id="Modalbox" >
+                <div class="slds-modal__container">
+                    <div class="slds-modal__header">
+                        <button class="slds-button slds-modal__close slds-button--icon-inverse" title="Close" onclick="{!c.handleCloseModal}">
+                            X
+                            <span class="slds-assistive-text">Cancel</span>
+                        </button>
+                        
+                        <h1 class="slds-text-heading--medium">New Order</h1>
+                    </div>
+                    
+                    
+                    <!--Model Attributes-->
+                    <div class="slds-modal__content slds-p-around_medium">                        
+                        <lightning:recordEditForm objectApiName="Order" recordId="{!v.recordId}" onsuccess="{!c.handleSuccess}"><!--onsuccess="{!c.handleSuccess}">onsubmit="{!c.handleSubmit}"-->
+                            <div class="slds-modal__content slds-p-around_medium" style="height: 300px;">  
+                                <lightning:messages />
+                                <div class="slds-form_horizontal slds-form slds-grid slds-wrap">
+                                    <lightning:inputField aura:id="nameField" fieldName="Sales_Order_Reason__c" value="{!v.order.Sales_Order_Reason__c}" class="slds-size_1-of-2" default="Non Stocking Order" required="true" style="height: 50px;"/>  <!-- fieldName="Core_PSG_Order_Reason__c" -->
+                                    <lightning:inputField aura:id="nameField" fieldName="AccountId" value="{!v.order.AccountId}" class="slds-size_1-of-2" required="true" style="height: 50px;"/>     
+                                    <lightning:inputField aura:id="nameField" fieldName="EffectiveDate" value="{!v.order.EffectiveDate}" class="slds-size_1-of-2" style="height: 50px;"/>
+                                    <lightning:inputField aura:id="orderTypePicklist" fieldName="Type" value="{!v.order.Type}" onchange="{!c.handleOrderType}" class="slds-size_1-of-2" style="height: 50px;"/>
+                                    <aura:if isTrue="{!v.showdiv}">
+                                        <lightning:inputField aura:id="nameField" fieldName="SBQQ__Quote__c" value="{!v.order.SBQQ__Quote__c}" class="slds-size_1-of-2" style="height: 50px;"/>
+                                    </aura:if>   
+                                    <lightning:inputField aura:id="nameField" fieldName="Status" value="{!v.order.Status}" class="slds-hidden" default="Draft" style="height: 50px;"/>
+                                </div>
+                            </div>
+                            
+                            <!--Footer-->
+                            <div class="slds-modal__footer">
+                                <p>
+                                   <!-- <button class="slds-button slds-button_neutral" onclick="{!c.handleCloseModal}">Cancel</button>-->
+                                    <lightning:button class="slds-m-top_small" variant="brand" onclick="{!c.handleCloseModal}" label="Cancel"/>
+                                    <!--<button class="slds-button slds-button_brand" type="submit">Save</button>-->
+                                    <lightning:button class="slds-m-top_small" variant="brand" type="submit" name="Save" label="Save" />
+                                </p>
+                                
+                            </div>                                                   
+                        </lightning:recordEditForm>
+                    </div>
+                </div>
+            </div>
+            <div aura:id="Modalbackdrop" class="slds-backdrop slds-backdrop--open"></div>  
+</aura:component>

@@ -14,10 +14,6 @@
         <name>Core_MDF_Active__c</name>
     </fields>
     <fields>
-        <label><!-- Approval Criteria Description --></label>
-        <name>Core_MDF_Approval_Criteria_Description__c</name>
-    </fields>
-    <fields>
         <label><!-- Approver 10 --></label>
         <name>Core_MDF_Approver_10__c</name>
         <relationshipLabel><!-- Approvers (Approver 10) --></relationshipLabel>
@@ -87,14 +83,6 @@
         <label><!-- Criteria --></label>
         <name>Core_MDF_Criteria__c</name>
         <relationshipLabel><!-- Approvers --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Group Name --></label>
-        <name>Core_MDF_Group_Name_txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Is Approver From Group --></label>
-        <name>Core_MDF_Is_Approver_From_Group_ind__c</name>
     </fields>
     <fields>
         <label><!-- Step Number --></label>

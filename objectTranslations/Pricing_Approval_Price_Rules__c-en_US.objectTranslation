@@ -294,6 +294,10 @@
         <label><!-- Pricing Approval Price Rules - Read Only --></label>
         <name>Pricing_Approval_Price_Rules_Read_Only</name>
     </recordTypes>
+    <recordTypes>
+        <label><!-- test --></label>
+        <name>test</name>
+    </recordTypes>
     <startsWith>Consonant</startsWith>
     <validationRules>
         <errorMessage><!-- Pricing End Date should be today or in future. --></errorMessage>

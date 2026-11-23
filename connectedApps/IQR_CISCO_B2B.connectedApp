@@ -5,8 +5,7 @@
     <oauthConfig>
         <callbackUrl>https://www.getpostman.com/oauth2/callback
 https://oauth.pstmn.io/v1/callback</callbackUrl>
-        <certificate>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</certificate>
-        <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6mBVq64yOk1ECY_6YDrx0CPGz_8w_KVNyB1G56Z_EYom.8578cRVHaMgx2rE</consumerKey>
+        <consumerKey>3MVG9FxR3Tq3eZN88sLG9b4Pw8LN992qkr6.xc8TJhDJ.s0hx7vHsGpIM037cEv0hzyxcQcu6XwtJbLTPTo2L</consumerKey>
         <isAdminApproved>true</isAdminApproved>
         <isClientCredentialEnabled>false</isClientCredentialEnabled>
         <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
@@ -21,7 +20,7 @@ https://oauth.pstmn.io/v1/callback</callbackUrl>
         <isPKImTLSEnabled>false</isPKImTLSEnabled>
         <isPkceRequired>false</isPkceRequired>
         <isRefreshTokenRotationEnabled>false</isRefreshTokenRotationEnabled>
-        <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
+        <isSecretRequiredForRefreshToken>true</isSecretRequiredForRefreshToken>
         <isSecretRequiredForTokenExchange>false</isSecretRequiredForTokenExchange>
         <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
         <scopes>Api</scopes>
@@ -33,7 +32,4 @@ https://oauth.pstmn.io/v1/callback</callbackUrl>
         <refreshTokenPolicy>zero</refreshTokenPolicy>
     </oauthPolicy>
     <permissionSetName>Pricing IQR Cisco B2B</permissionSetName>
-    <sessionPolicy>
-        <sessionTimeout>60</sessionTimeout>
-    </sessionPolicy>
 </ConnectedApp>

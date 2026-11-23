@@ -89,7 +89,7 @@
         <locationY>48</locationY>
         <filterFormula>AND(
 		{!$Record.RecordType.DeveloperName} &lt;&gt; &quot;Partner_Lead&quot;,
-		
+		{!$Record.Days__c} =true,
 		OR(	ISPICKVAL({!$Record.Core_Lead_Priority__c}, &apos;Hot&apos;),
 			ISPICKVAL({!$Record.Core_Lead_Priority__c}, &apos;Warm&apos;),
 			ISPICKVAL({!$Record.Core_Lead_Priority__c}, &apos;Cold&apos;)

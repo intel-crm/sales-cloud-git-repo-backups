@@ -2,12 +2,11 @@
 * @description       : 
 * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
 * @group             : 
-* @last modified on  : 09-18-2026
+* @last modified on  : 08-11-2026
 * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 public without sharing class QuoteLineBusinessLogic { 
     public static boolean changeTwinField = false;
-    public static boolean isStopTriggerFromFlow = false;
     public static Map<Id, Boolean> isAutoPopulateMeetComp = new Map<Id, Boolean>();
     public static boolean hasRunOnce = false;
     public static Boolean isOEMRecall = false;
@@ -27,7 +26,8 @@ public without sharing class QuoteLineBusinessLogic {
     public static Boolean isFinancialIncentive=false;
     public static  Boolean isBillingStartDateUpdate = false;
     public static String accountId;
-    public static Boolean hasAIIntegrationRun = false;//Citrus change
+    public static Map<Id,SBQQ__QuoteLine__c> qlIdToQuoteLinesMap = new Map<Id,SBQQ__QuoteLine__c>();
+     public static Boolean hasAIIntegrationRun = false;//Citrus change
 
     public static void validateChangeRequestEdit(List < SBQQ__QuoteLine__c > lstquoteLines, boolean isInsert, Map < id, SBQQ__QuoteLine__c > oldMap) {
         if(lstquoteLines!=null && !lstquoteLines.isEmpty()){
@@ -52,14 +52,18 @@ public without sharing class QuoteLineBusinessLogic {
                 if(quoteLine.Pricing_Change_Request_cb__c) {
                     if(isOEMField) {
                         if(!Pricing_QuoteLine_AutoApprovalController.isChangeRequestPriceRule){
-                        for(String field: changeRequestFieldsNonEditable) {
-                            if(quoteLine.get(field) != oldMap.get(quoteLine.Id).get(field)) {
-                                quoteLine.addError(Label.Pricing_Tender_Change_Request_OEMField_Validation_Error_Message);
-                                break;
-                            }
+
+                            for(String field: changeRequestFieldsNonEditable) {
+                                system.debug('field11:'+field);
+                                if(quoteLine.get(field) != oldMap.get(quoteLine.Id).get(field)) {
+                                    system.debug('fieldentering:'+field);
+                                    quoteLine.addError(Label.Pricing_Tender_Change_Request_OEMField_Validation_Error_Message);
+                                    break;
+                                }
+                            }   
                         }
                     }
-                    } else if(isRPM) {
+                     else if(isRPM) {
                         for(String field: changeRequestFieldsNonEditable) {
                             if(quoteLine.get(field) != oldMap.get(quoteLine.Id).get(field)) {
                                 quoteLine.addError(Label.Pricing_Tender_Change_Request_RPM_Validation_Error_Message);
@@ -85,8 +89,6 @@ public without sharing class QuoteLineBusinessLogic {
             List<String> RPM_Emails = new List<String>();
             List<String> regionList = new List<String>();
             List<String> programType = Label.Pricing_TenderProgramTypeForMeetCompAutoPopulate.split(',');
-            Boolean  hasPermissionSetAPI = currentUserHasAPIPs();
-            
             for(SBQQ__QuoteLine__c ql: lstquoteLines) {
                 if(!String.isEmpty(ql.Pricing_Additional_RPM_Notify_Recipients__c)){
                     ql.Pricing_Additional_RPM_Notify_Recipients__c = (ql.Pricing_Additional_RPM_Notify_Recipients__c).deleteWhitespace();
@@ -95,16 +97,14 @@ public without sharing class QuoteLineBusinessLogic {
                 quoteIds.add(ql.SBQQ__Quote__c);
                 quoteLineIds.add(ql.Id);
             }
-            
             Map<String,Decimal> quoteLineNumberToStatusMap = new Map<String,Decimal>(); 
             getQuoteLineStatusMap(quoteLineNumberToStatusMap);
             Boolean isRPMUser = checkCurrentUserPs(Label.Pricing_Tender_PermissionSets_PricingTenderRegionalPricingManager);
-            Map<Id, SBQQ__QuoteLine__c> quoteLineMap = new Map<Id, SBQQ__QuoteLine__c>([SELECT Id,Pricing_Program_Type_Nm__c,SBQQ__Quote__r.SBQQ__Account__c,SBQQ__Quote__r.Pricing_ShipmentEndDate_Dt__c,SBQQ__Quote__r.Pricing_End_Customer_Opportunity_Txt__c,SBQQ__Quote__r.Pricing_Market_Segment_values_Nm__c,(SELECT Id,Name,Pricing_Quote_Line__c FROM Performance_Metrics__r),SBQQ__Quote__r.SBQQ__Opportunity2__c,SBQQ__Quote__r.SBQQ__Status__c,Pricing_Competetor_Product__c,SBQQ__Quote__r.Pricing_Intel_Account_Exec_Email_Txt__c,Pricing_Competetor_Product__r.Pricing_Active_cb__c
+            Map<Id, SBQQ__QuoteLine__c> quoteLineMap = new Map<Id, SBQQ__QuoteLine__c>([SELECT Id,Pricing_Program_Type_Nm__c,Pricing_Paired_CPU_Nm__r.Name,SBQQ__Quote__r.SBQQ__Account__c,SBQQ__Quote__r.Pricing_ShipmentEndDate_Dt__c,SBQQ__Quote__r.Pricing_End_Customer_Opportunity_Txt__c,SBQQ__Quote__r.Pricing_Market_Segment_values_Nm__c,(SELECT Id,Name,Pricing_Quote_Line__c FROM Performance_Metrics__r),SBQQ__Quote__r.SBQQ__Opportunity2__c,SBQQ__Quote__r.SBQQ__Status__c,Pricing_Competetor_Product__c,SBQQ__Quote__r.Pricing_Intel_Account_Exec_Email_Txt__c,Pricing_Competetor_Product__r.Pricing_Active_cb__c
                                                                                         FROM SBQQ__QuoteLine__c where Id IN :quoteLineIds]);
-
             
             //querying product2 object to get write in product id.
-            if(!hasPermissionSetAPI){
+            if(!currentUserHasAPIPs()){
                 writeInProdId = [SELECT Id FROM Product2 WHERE name =: Label.Pricing_Tender_Write_In_Product AND isActive = true].Id;
             }
             if(isInsert) {
@@ -118,7 +118,6 @@ public without sharing class QuoteLineBusinessLogic {
                 //querying competitor product price object to auto populate meet comp price on quoteLine.
                 for(SBQQ__QuoteLine__c quoteLine: lstquoteLines) {
 
-
                     //if(rtMap.get(quoteLine.RecordTypeId).getDeveloperName() == Label.Pricing_Tender_QuoteLine_RecordType_Create || rtMap.get(quoteLine.RecordTypeId).getDeveloperName() == Label.Pricing_SVD_Quote_Line_Create) {
                     if(rtMap.get(quoteLine.RecordTypeId).getDeveloperName() == Label.Pricing_Tender_QuoteLine_RecordType_Create || rtMap.get(quoteLine.RecordTypeId).getDeveloperName() == Label.Pricing_SVD_Quote_Line_Create || rtMap.get(quoteLine.RecordTypeId).getDeveloperName() == Label.Pricing_SSD_Quote_Line_Create || rtMap.get(quoteLine.RecordTypeId).getDeveloperName() == Label.Pricing_PMem_Quote_Line_Create  || 
                         rtMap.get(quoteLine.RecordTypeId).getDeveloperName() == Label.Pricing_NIC_Quote_Line_Create  || rtMap.get(quoteLine.RecordTypeId).getDeveloperName() == Label.Pricing_CCG_Quote_Line_Create || rtMap.get(quoteLine.RecordTypeId).getDeveloperName() == Label.Pricing_GPU_DataCenter_QuoteLine_Create || rtMap.get(quoteLine.RecordTypeId).getDeveloperName() == 'Pricing_Financial_Incentive_Quote_Line_Edit') {
@@ -131,7 +130,6 @@ public without sharing class QuoteLineBusinessLogic {
                            
                            if(quoteLine.Pricing_Product_Nm__c != null) {
                             quoteLine.SBQQ__Product__c = quoteLine.Pricing_Product_Nm__c;
-                            quoteLine.Pricing_Product_Series_Name__c = quoteLine.Pricing_Product_Series__c;
                         }
                         if(isRPMUser && quoteLine.Pricing_Program_Type_Nm__c != Label.Pricing_Tender_FinancialIncentive_Quote){
                             populateApprovedFields(quoteLine,quoteDtls,programType,writeInProdId);                            
@@ -153,8 +151,7 @@ public without sharing class QuoteLineBusinessLogic {
                         
                         if((quoteLine.Pricing_Program_Type_Nm__c != quoteDtls.get(quoteLine.SBQQ__Quote__c).Pricing_Program_Type_Nm__c && (quoteDtls.get(quoteLine.SBQQ__Quote__c).Pricing_Program_Type_Nm__c != Label.Pricing_Tender_Standard_Quote ) && (quoteDtls.get(quoteLine.SBQQ__Quote__c).Pricing_Program_Type_Nm__c != Label.Pricing_Tender_CCG_Quote ))
                             || ((quoteLine.Pricing_Program_Type_Nm__c == Label.Pricing_Tender_Small_Volume_Quote || quoteLine.Pricing_Program_Type_Nm__c == Label.Pricing_Tender_CCG_Quote )
-                            && (quoteDtls.get(quoteLine.SBQQ__Quote__c).Pricing_Program_Type_Nm__c == Label.Pricing_Tender_Standard_Quote)) 
-                            || (quoteDtls.get(quoteLine.SBQQ__Quote__c).Pricing_Program_Type_Nm__c == Label.Pricing_Tender_CCG_Quote && quoteLine.Pricing_Program_Type_Nm__c != Label.Pricing_Tender_CCG_Quote)) {
+                            && (quoteDtls.get(quoteLine.SBQQ__Quote__c).Pricing_Program_Type_Nm__c == Label.Pricing_Tender_Standard_Quote))) {
                             String ErrorMsg = Label.Pricing_Quote_Line_Type_Error_Message.replace('{QliType}',quoteLine.Pricing_Program_Type_Nm__c );
                             ErrorMsg = ErrorMsg.replace('{QType}',quoteDtls.get(quoteLine.SBQQ__Quote__c).Pricing_Program_Type_Nm__c );
                             quoteLine.addError(ErrorMsg);
@@ -165,7 +162,7 @@ public without sharing class QuoteLineBusinessLogic {
                             && quoteLine.Pricing_Program_Type_Nm__c != Label.Pricing_Tender_CCG_Quote){
                             quoteLine.Pricing_Market_Segment_values_Nm__c = Label.Pricing_Tender_QuoteLine_Market_Segment_Values_Corp;
                         }
-                        
+    
                         populateTwinFields(quoteLine,quoteDtls);
                     }
 
@@ -173,7 +170,6 @@ public without sharing class QuoteLineBusinessLogic {
                     if(quoteLineNumberToStatusMap.containsKey(quoteLine.Pricing_Status_Nm__c)){
                         quoteLine.Pricing_Quote_Line_Status_Number__c = quoteLineNumberToStatusMap.get(quoteLine.Pricing_Status_Nm__c);
                     }
-
                     //Populate Pricing Manager for Write In Product Quoteline on RPM CR for Write In Product
                     if(String.isBlank(quoteLine.Pricing_Deal_RFQ_Id__c) && 
                        (quoteLine.Pricing_Reference_Quote_Line_Nbr__c != null && 
@@ -182,12 +178,12 @@ public without sharing class QuoteLineBusinessLogic {
                     }
 
                     //Validate QuoteLine Text fields and throw error if Non Latin Characters are present
-                    validateQLTextFieldsForLatinChars(quoteLine,oldMap,true);   
-                    
+                    validateQLTextFieldsForLatinChars(quoteLine,oldMap,true);  
+
                     //Validation for Write in paired CPU
-                    if(!hasPermissionSetAPI && quoteLine.Pricing_Program_Type_Nm__c == Label.Pricing_Tender_DataCenter_GPU){
+                    if(!currentUserHasAPIPs() && quoteLine.Pricing_Program_Type_Nm__c == Label.Pricing_Tender_DataCenter_GPU){
                         validateWriteInPairedCPU(quoteLine, writeInProdId);
-                    }
+                    }   
                     //PAA V2 - Rationale for Pricing default value is set if the quoteline is not eligible for Pricing 
                     if(quoteLine.Pricing_Status_Nm__c == Label.Pricing_Tender_QuoteLine_Status_PendingFurtherIntelReview && Pricing_QuoteLineController.eligibleForPricingSupportCheck(quoteLine)){
                         quoteLine.Pricing_Rationale_for_Pricing__c = Label.Pricing_Not_Eligible_For_Pricing;
@@ -196,6 +192,7 @@ public without sharing class QuoteLineBusinessLogic {
             } else {
                 Map<String,Decimal> accountIdMtdRecordMap = new Map<String,Decimal>();
                 List<String> Emails = new List<String>();
+                Set<id> qlineIds = new Set<id>();
                 boolean isCalculationPending = false;
                 Boolean statusRevertFixSwitch = TriggerHandler.isActive('Pricing_Status_Revert_Fix');
                 Boolean oemStatusRevertFixSwitch = TriggerHandler.isActive('Pricing_OEM_Draft_Status_Revert_Fix');
@@ -204,7 +201,6 @@ public without sharing class QuoteLineBusinessLogic {
                 Boolean ucdSwitch = TriggerHandler.isActive('Pricing_UCD_Switch');
                 Boolean isOEM = (getUserRole() == 'OEM');
                 Map<Id,Id> quoteNotifyMap= new Map <Id,Id>();
-                Set<Id> qlIds = new Set<Id>();
                 if(!RPM_Emails.isEmpty() && isRPMUser){
                     Emails = usersHasValidRPMPermission(RPM_Emails,new Set < String > {
                         Label.Pricing_Tender_PermissionSets_PricingTenderRegionalPricingManager});
@@ -257,6 +253,7 @@ public without sharing class QuoteLineBusinessLogic {
                 String rpmEmailsWithNoPermission='';
                 String rpmEmailsWithoutRPMPS = '';
                 for(SBQQ__QuoteLine__c quoteLine: lstquoteLines){
+                    qlineIds.add(quoteLine.id);
                     //Logic to send notification when the first Quoteline is approved and Quote staus goes to Approved from Submitted
                     if(quotelinemap.containskey(quoteline.id)){
                         if(!quoteNotifyMap.containsKey(quoteLine.SBQQ__Quote__c) && quotelinemap.get(quoteline.id).SBQQ__Quote__r.SBQQ__Status__c == Label.Pricing_Tender_Quote_Status_Submitted && oldMap.get(quoteLine.id).Pricing_Status_Nm__c != quoteLine.Pricing_Status_Nm__c && quoteLine.Pricing_Status_Nm__c == Label.Pricing_Tender_Quote_Status_Approved && quotelinemap.get(quoteline.id).SBQQ__Quote__r.SBQQ__Opportunity2__c == null && !String.isBlank(quotelinemap.get(quoteline.id).SBQQ__Quote__r.Pricing_Intel_Account_Exec_Email_Txt__c) && quoteLine.Pricing_Program_Type_Nm__c != Label.Pricing_Tender_FinancialIncentive_Quote){
@@ -265,15 +262,10 @@ public without sharing class QuoteLineBusinessLogic {
                     }
                     //PAA V2 - Rationale for Pricing default value is set if the quoteline is not eligible for Pricing 
                     if(oldMap.get(quoteLine.Id).Pricing_Status_Nm__c != quoteLine.Pricing_Status_Nm__c &&  quoteLine.Pricing_Status_Nm__c == Label.Pricing_Tender_QuoteLine_Status_PendingFurtherIntelReview && Pricing_QuoteLineController.eligibleForPricingSupportCheck(quoteLine)){
-                        quoteLine.Pricing_Rationale_for_Pricing__c = Label.Pricing_Not_Eligible_For_Pricing;
+                    
+                    quoteLine.Pricing_Rationale_for_Pricing__c = Label.Pricing_Not_Eligible_For_Pricing;
                     
                     }
-                    
-                    if(!System.isBatch() && !System.isFuture() && TriggerHandler.isActive('Pricing_Won_Prediction_Switch') && oldMap.get(quoteLine.Id).Pricing_Status_Nm__c != quoteLine.Pricing_Status_Nm__c && oldMap.get(quoteLine.Id).Pricing_Status_Nm__c == 'Pending Further Intel Review' && quoteLine.Pricing_Status_Nm__c == 'Approved'){
-                        qlIds.add(quoteLine.Id);
-                        
-                    }
-
                     //Validation to prevent RPM to edit Draft Quote Lines
                     if((!Test.isRunningTest()) && isRPMUser && quoteLine.Pricing_Status_Nm__c == Label.Pricing_Tender_QuoteLine_Status_Draft && oldMap.get(quoteLine.Id).Pricing_Status_Nm__c == Label.Pricing_Tender_QuoteLine_Status_Draft && !changeTwinField){
                         quoteLine.addError(Label.Pricing_Prevent_Save_DraftQLStatus_RPM_Err_Msg);
@@ -303,7 +295,7 @@ public without sharing class QuoteLineBusinessLogic {
                     }
                    
                     //Validation for Write in paired CPU
-                    if(!hasPermissionSetAPI && quoteLine.Pricing_Program_Type_Nm__c == Label.Pricing_Tender_DataCenter_GPU && (oldMap.get(quoteLine.Id).Pricing_Paired_CPU_Nm__c != quoteLine.Pricing_Paired_CPU_Nm__c || oldMap.get(quoteLine.Id).Pricing_Write_In_Paired_CPU_Nm__c != quoteLine.Pricing_Write_In_Paired_CPU_Nm__c)){
+                    if(!currentUserHasAPIPs() && quoteLine.Pricing_Program_Type_Nm__c == Label.Pricing_Tender_DataCenter_GPU && (oldMap.get(quoteLine.Id).Pricing_Paired_CPU_Nm__c != quoteLine.Pricing_Paired_CPU_Nm__c || oldMap.get(quoteLine.Id).Pricing_Write_In_Paired_CPU_Nm__c != quoteLine.Pricing_Write_In_Paired_CPU_Nm__c)){
                         validateWriteInPairedCPU(quoteLine, writeInProdId);
                     }
                     if(statusRevertFixSwitch) {
@@ -322,7 +314,9 @@ public without sharing class QuoteLineBusinessLogic {
                     }
                 
                 //Restricting non QTM FSE to edit quoteline during Field review
-                    if(qliToMultipleFSEUserIdMap.get(quoteLine.id) != null && !qliToMultipleFSEUserIdMap.get(quoteLine.id).contains(currentUser.Id) && quoteLine.Pricing_Status_Nm__c == Label.Pricing_Tender_QuoteLine_Status_PendingIntelFieldReview &&
+                if(qliToMultipleFSEUserIdMap.get(quoteLine.id) != null){
+                    
+                    if(!qliToMultipleFSEUserIdMap.get(quoteLine.id).contains(currentUser.Id) && quoteLine.Pricing_Status_Nm__c == Label.Pricing_Tender_QuoteLine_Status_PendingIntelFieldReview &&
                         oldMap.get(quoteLine.Id).Pricing_Status_Nm__c == Label.Pricing_Tender_QuoteLine_Status_PendingIntelFieldReview) {
                             for(String field: fieldsNonEditable) {
                             if(quoteLine.get(field) != oldMap.get(quoteLine.Id).get(field)) {
@@ -331,7 +325,7 @@ public without sharing class QuoteLineBusinessLogic {
                             }
                         }
                     }
-
+                } 
                 
                 if(quoteLine.Pricing_Market_Segment_Nm__c == Label.Pricing_Tender_QuoteLine_Market_Segment_Embedded 
                     && (oldMap.get(quoteLine.id).Pricing_Market_Segment_values_Nm__c != quoteLine.Pricing_Market_Segment_values_Nm__c) 
@@ -446,7 +440,6 @@ public without sharing class QuoteLineBusinessLogic {
                                                                                                               
                                                                                                            }
 
-                    //Billing start date population from Custom metadata
                     if(quoteLine.Pricing_Status_Nm__c != oldMap.get(quoteLine.id).Pricing_Status_Nm__c && ((oldMap.get(quoteLine.id).Pricing_Status_Nm__c == Label.Pricing_Tender_QuoteLine_Status_Draft && quoteLine.Pricing_Status_Nm__c == Label.Pricing_Tender_QuoteLine_Status_PendingFurtherIntelReview) 
                     || (oldMap.get(quoteLine.id).Pricing_Status_Nm__c == Label.Pricing_Tender_QuoteLine_Status_PendingIntelFieldReview && quoteLine.Pricing_Status_Nm__c == Label.Pricing_Tender_QuoteLine_Status_PendingFurtherIntelReview)) && quoteLine.Pricing_Reference_Quote_Line_Nbr__c == null && !accountIdMtdRecordMap.isEmpty() && accountIdMtdRecordMap.containskey(accountId) && accountIdMtdRecordMap.get(accountId) != null) {
                         isBillingStartDateUpdate = true;
@@ -459,7 +452,6 @@ public without sharing class QuoteLineBusinessLogic {
                         quoteLine.Pricing_Integration_Status_Nm__c = '';
                     }  
                 }
-
                 if(!quoteNotifyMap.isEmpty()){
                     Pricing_EmailUtility.sendEmailToReciepents(new Set<Id>(quoteNotifyMap.values()),Label.Pricing_Quote_Line_Approve_AE_Notification);
                 }
@@ -519,10 +511,8 @@ public without sharing class QuoteLineBusinessLogic {
                 }
                 
                 for(SBQQ__QuoteLine__c quoteLine: lstquoteLines){
-                    
                     if(oldMap.get(quoteLine.Id).Pricing_Product_Nm__c != quoteLine.Pricing_Product_Nm__c) {
-                        quoteLine.SBQQ__Product__c = quoteLine.Pricing_Product_Nm__c;
-                        quoteLine.Pricing_Product_Series_Name__c = quoteLine.Pricing_Product_Series__c;
+                        quoteLine.SBQQ__Product__c = quoteLine.Pricing_Product_Nm__c;      
                     }
                     if((oldMap.get(quoteLine.Id).Pricing_Update_Status_to_Rejected_cb__c 
                         != quoteLine.Pricing_Update_Status_to_Rejected_cb__c) 
@@ -624,7 +614,7 @@ public without sharing class QuoteLineBusinessLogic {
                                 }
                                 //flag to populate Approved fields using AI
                                 isAutoAI = checkforAuotoPopLogic(quoteLine, quoteLine.Pricing_Server_Deal_Type_Nm__c, quoteLine.Pricing_EndCustomer_Nm__c) && 
-                                            quoteLine.SBQQ__ProductName__c != Label.Pricing_Tender_Write_In_Product &&  quoteLine.Pricing_Tentative_ECAP_Price_Amt__c == null ? true : false;
+                                            quoteLine.SBQQ__ProductName__c != Label.Pricing_Tender_Write_In_Product ? true : false; //&&  quoteLine.Pricing_Tentative_ECAP_Price_Amt__c == null
                                 if(changeRequestQuoteLineMap.containsKey(quoteLine.Id)){
                                     quoteLine.Pricing_Approved_Start_Date_Dt__c = isAutoAI ? null : changeRequestQuoteLineMap.get(quoteLine.Id).SBQQ__Quote__r.Pricing_ShipmentStDate_Dt__c;
                                 }
@@ -717,12 +707,9 @@ public without sharing class QuoteLineBusinessLogic {
                         oldMap.get(quoteLine.id).Pricing_Quote_Line_Status_Number__c == 45) && quoteLine.Pricing_Quote_Line_Status_Number__c ==20) {
                             quoteLine.Pricing_Previous_Status_Nm__c = 'Rejected';
                     }
-                    if(isBillingStartDateUpdate && !isAutoAI && !changeRequestQuoteLineMap.isEmpty()){
+                    if(isBillingStartDateUpdate && !isAutoAI ){
                         quoteLine.Pricing_Billing_Start_Date_Dt__c = changeRequestQuoteLineMap.get(quoteLine.Id).SBQQ__Quote__r.Pricing_ShipmentStDate_Dt__c.addDays(-Integer.valueOf((accountIdMtdRecordMap.get(accountId))));
                     }
-                }
-                if(qlIds.size() > 0){
-                    Pricing_QuoteLine_WonPrediction.predictionQlStatusMarkAsWon(qlIds);
                 }
             }
             if(!wonQuoteIds.isEmpty() && !System.isBatch()){
@@ -862,10 +849,17 @@ public without sharing class QuoteLineBusinessLogic {
                 Set<Id> aeNotificationSubmittedQli = new Set<Id>();
                 Set<Id> aeNotificationSubmittedQliQuote = new Set<Id>();
                 Map<Id,SBQQ__QuoteLine__c> quoteLineMap = new Map<Id, SBQQ__QuoteLine__c>([SELECT Id, SBQQ__Quote__r.Pricing_On_Hold_Cb__c FROM SBQQ__QuoteLine__c WHERE Id IN: oldMap.keySet()]);
-                Boolean hasPermissionSetAPI = currentUserHasAPIPs();
+                /*List<String> apiUserPermissionSets = label.Pricing_IQR_API_UserPermissionSets.split(',');
+                boolean hasAPIPermissionSet = false;
+                
+                for (PermissionSetAssignment psa : currentUser.PermissionSetAssignments) {
+                    if(apiUserPermissionSets.contains(psa.PermissionSet.Name)){
+                        hasAPIPermissionSet = true;
+                    }
+                }*/
 
                 for(SBQQ__QuoteLine__c ql: lstquoteLines){
-                    if(currentUser.Core_User_Profile_Name__c != Label.Pricing_Tender_Profiles_Partner  && !hasPermissionSetAPI){
+                    if(currentUser.Core_User_Profile_Name__c != Label.Pricing_Tender_Profiles_Partner  && !currentUserHasAPIPs()){
                         if(quoteLineMap.get(ql.Id).SBQQ__Quote__r.Pricing_On_Hold_Cb__c && ql.Pricing_Status_Nm__c != oldMap.get(ql.id).Pricing_Status_Nm__c && oldMap.get(ql.id).Pricing_Status_Nm__c == Label.Pricing_Tender_QuoteLine_Status_PendingIntelFieldReview) {
                             ql.addError(Label.Pricing_Quote_Line_On_Hold_Error_Msg);
                         }
@@ -901,7 +895,8 @@ public without sharing class QuoteLineBusinessLogic {
                         referenceQuoteLineMap.put(quoteLine.Id,quoteLine);
                     }   
                 }
-                
+                 
+                system.debug('quoteLineIdSetToApprove:'+quoteLineIdSetToApprove);
                 if(!quoteLineIdSetToApprove.isEmpty()){
                     Pricing_Publish_Quote.setFSEActionOnQuoteLine(quoteLineIdSetToApprove,Label.Pricing_Tender_QuoteLine_Action_Approve,null,true);
                 }
@@ -917,39 +912,39 @@ public without sharing class QuoteLineBusinessLogic {
                 Set<Id> rejectedFIQLIIds = new Set<Id>();
                 Set<Id> cancelledQLIIds = new Set<Id>();
                 for(SBQQ__QuoteLine__c quoteLine: lstquoteLines) {   
-                    if (!mapFunctionalityNameTriggerExecution.isEmpty() && mapFunctionalityNameTriggerExecution.containsKey('pricingSendOutboundMessagesIQR') &&
-                    mapFunctionalityNameTriggerExecution.get('pricingSendOutboundMessagesIQR').Core_Active__c){
-                    if((oldMap.get(quoteLine.id).Pricing_Status_Nm__c != quoteLine.Pricing_Status_Nm__c) && 
-                       //updated By Naresh
-                       //(quoteLine.SBQQ__ProductName__c != Label.Pricing_Tender_Write_In_Product) &&
-                       ((oldMap.get(quoteLine.id).Pricing_Status_Nm__c == Label.Pricing_Tender_QuoteLine_Status_Approved && 
-                         (quoteLine.Pricing_Status_Nm__c == Label.Pricing_Tender_QuoteLine_Status_Won || 
-                          quoteLine.Pricing_Status_Nm__c == Label.Pricing_Tender_QuoteLine_Status_Lost)) ||
-                        (oldMap.get(quoteLine.id).Pricing_Status_Nm__c == Label.Pricing_Tender_QuoteLine_Status_Lost && 
-                         quoteLine.Pricing_Status_Nm__c == Label.Pricing_Tender_QuoteLine_Status_Approved) ||
-                        (quoteLine.Pricing_Status_Nm__c == Label.Pricing_Tender_QuoteLine_Status_Cancelled) ||
-                        (oldMap.get(quoteLine.id).Pricing_Status_Nm__c == Label.Pricing_Tender_QuoteLine_Status_PendingFurtherIntelReview && 
-                         oldMap.get(quoteLine.id).Pricing_Integration_Status_Nm__c == Label.Pricing_Tender_MyDeal_Integration_Status_Complete
-                         && quoteLine.Pricing_Status_Nm__c == Label.Pricing_Tender_QuoteLine_Status_Rejected)
-                       )){
-                           //updated By Naresh
-                           String action = '';
-                           if(String.isNotBlank(quoteLine.Pricing_Deal_RFQ_Id__c)) {
-                               quoteLineIdSet.add(quoteLine.Id);
-                               action = Label.Pricing_IQR_Event_Action_Won_Lost_Integration;
-                           }else if(quoteLine.Pricing_Program_Type_Nm__c != Label.Pricing_Tender_FinancialIncentive_Quote){
-                               action = Label.Pricing_IQR_Event_Action_Won_Lost_Notification;
-                           } 
-                           if(!String.isEmpty(action)){
-                               if(quoteLineActionMap.containsKey(action)){
-                                   quoteLineActionMap.get(action).add(quoteLine.Id);
-                               }else{
-                                   quoteLineActionMap.put(action, new Set<id>{quoteLine.Id});
+                    if (!mapFunctionalityNameTriggerExecution.isEmpty() &&
+                        mapFunctionalityNameTriggerExecution.containsKey('pricingSendOutboundMessagesIQR') &&
+                        mapFunctionalityNameTriggerExecution.get('pricingSendOutboundMessagesIQR').Core_Active__c){
+                            if((oldMap.get(quoteLine.id).Pricing_Status_Nm__c != quoteLine.Pricing_Status_Nm__c) && 
+                               //updated By Naresh
+                               //(quoteLine.SBQQ__ProductName__c != Label.Pricing_Tender_Write_In_Product) &&
+                               ((oldMap.get(quoteLine.id).Pricing_Status_Nm__c == Label.Pricing_Tender_QuoteLine_Status_Approved && 
+                                 (quoteLine.Pricing_Status_Nm__c == Label.Pricing_Tender_QuoteLine_Status_Won || 
+                                  quoteLine.Pricing_Status_Nm__c == Label.Pricing_Tender_QuoteLine_Status_Lost)) ||
+                                (oldMap.get(quoteLine.id).Pricing_Status_Nm__c == Label.Pricing_Tender_QuoteLine_Status_Lost && 
+                                 quoteLine.Pricing_Status_Nm__c == Label.Pricing_Tender_QuoteLine_Status_Approved) ||
+                                (quoteLine.Pricing_Status_Nm__c == Label.Pricing_Tender_QuoteLine_Status_Cancelled) ||
+                                (oldMap.get(quoteLine.id).Pricing_Status_Nm__c == Label.Pricing_Tender_QuoteLine_Status_PendingFurtherIntelReview && 
+                                 oldMap.get(quoteLine.id).Pricing_Integration_Status_Nm__c == Label.Pricing_Tender_MyDeal_Integration_Status_Complete
+                                 && quoteLine.Pricing_Status_Nm__c == Label.Pricing_Tender_QuoteLine_Status_Rejected)
+                               )){
+                                   //updated By Naresh
+                                   String action = '';
+                                   if(String.isNotBlank(quoteLine.Pricing_Deal_RFQ_Id__c)) {
+                                       quoteLineIdSet.add(quoteLine.Id);
+                                       action = Label.Pricing_IQR_Event_Action_Won_Lost_Integration;
+                                   }else if(quoteLine.Pricing_Program_Type_Nm__c != Label.Pricing_Tender_FinancialIncentive_Quote){
+                                       action = Label.Pricing_IQR_Event_Action_Won_Lost_Notification;
+                                   } 
+                                   if(!String.isEmpty(action)){
+                                       if(quoteLineActionMap.containsKey(action)){
+                                           quoteLineActionMap.get(action).add(quoteLine.Id);
+                                       }else{
+                                           quoteLineActionMap.put(action, new Set<id>{quoteLine.Id});
+                                       }
+                                   }
                                }
-                            }
                         }
-                    }
-
                     //RPM Email Notification Triggering scenario
                     if(oldMap.get(quoteLine.id).Pricing_Status_Nm__c != quoteLine.Pricing_Status_Nm__c && 
                        String.isNotBlank(quoteLine.Pricing_Deal_RFQ_Id__c) && 
@@ -967,18 +962,16 @@ public without sharing class QuoteLineBusinessLogic {
                     }
 
 
-                    if(quoteLine.Pricing_Reference_Quote_Line_Nbr__c != null && quoteLine.Pricing_Status_Nm__c != oldMap.get(quoteLine.id).Pricing_Status_Nm__c 
-                    && (quoteLine.Pricing_Status_Nm__c == Label.Pricing_Tender_QuoteLine_Status_Approved || quoteLine.Pricing_Status_Nm__c == Label.Pricing_Tender_QuoteLine_Status_Won) 
-                    && referenceQuoteLineMap.containsKey(quoteLine.Pricing_Reference_Quote_Line_Nbr__c)){
-                        SBQQ__QuoteLine__c referenceQuoteLine = referenceQuoteLineMap.get(quoteLine.Pricing_Reference_Quote_Line_Nbr__c);
-                        if(referenceQuoteLineUpdateMap.containsKey(referenceQuoteLine.Id)){
-                            referenceQuoteLineUpdateMap.get(referenceQuoteLine.Id).Pricing_Status_Nm__c = Label.Pricing_Tender_QuoteLine_Status_Revised;
-                        }else{
-                            if(referenceQuoteLine.Pricing_Status_Nm__c != Label.Pricing_Tender_QuoteLine_Status_Revised){
-                                referenceQuoteLine.Pricing_Status_Nm__c = Label.Pricing_Tender_QuoteLine_Status_Revised;
-                                referenceQuoteLineUpdateMap.put(referenceQuoteLine.Id,referenceQuoteLine);
-                            }
-                        }
+                    if(quoteLine.Pricing_Reference_Quote_Line_Nbr__c != null && quoteLine.Pricing_Status_Nm__c != oldMap.get(quoteLine.id).Pricing_Status_Nm__c && (quoteLine.Pricing_Status_Nm__c == Label.Pricing_Tender_QuoteLine_Status_Approved 
+                                                                                                                                                                    || quoteLine.Pricing_Status_Nm__c == Label.Pricing_Tender_QuoteLine_Status_Won) && referenceQuoteLineMap.containsKey(quoteLine.Pricing_Reference_Quote_Line_Nbr__c)){
+                                                                                                                                                                        SBQQ__QuoteLine__c referenceQuoteLine = referenceQuoteLineMap.get(quoteLine.Pricing_Reference_Quote_Line_Nbr__c);
+                                                                                                                                                                        if(referenceQuoteLineUpdateMap.containsKey(referenceQuoteLine.Id)){
+                                                                                                                                                                            referenceQuoteLineUpdateMap.get(referenceQuoteLine.Id).Pricing_Status_Nm__c = Label.Pricing_Tender_QuoteLine_Status_Revised;
+                                                                                                                                                                        }else{
+                                                                                                                                                                            referenceQuoteLine.Pricing_Status_Nm__c = Label.Pricing_Tender_QuoteLine_Status_Revised;
+                                                                                                                                                                            referenceQuoteLineUpdateMap.put(referenceQuoteLine.Id,referenceQuoteLine);
+                                                                                                                                                                        }
+                                                                                                                                                                        
                     }
 
                     if((quoteLine.Pricing_Program_Type_Nm__c == Label.Pricing_Tender_FinancialIncentive_Quote && quoteLine.Pricing_Status_Nm__c == Label.Pricing_Tender_QuoteLine_Status_Rejected) && (oldMap.get(quoteLine.id).Pricing_Previous_Status_Nm__c == 'Pending' && quoteLine.Pricing_Previous_Status_Nm__c == 'Rejected') && 
@@ -1100,12 +1093,9 @@ public without sharing class QuoteLineBusinessLogic {
             Set < String > fieldsEditableWithPFIR = new Set < String > ((Label.Pricing_Tender_Field_Edit_With_PFIR).split(':'));
             Set < String > fieldsNonEditable = new Set < String > ();
             Boolean isRPM = checkCurrentUserPs(Label.Pricing_Tender_PermissionSets_PricingTenderRegionalPricingManager);
-        
-        if(!Test.isRunningTest()) {
-            List<User> usr = [SELECT Id, name, username, profileid From User where Id =: UserInfo.getUserId() and profile.name = 'Integration'];
-            if(usr.size() > 0 && usr[0].Name.contains('Integration User')){
-                return;
-            }
+        List<User> usr = [SELECT Id, name, username, profileid From User where Id =: UserInfo.getUserId() and profile.name = 'Integration'];
+        if(usr.size() > 0 && usr[0].Name.contains('Integration User')){
+            return;
         }
         if(!isRPM && !isAutoApproveReject) {
             fieldsNonEditable.addAll(getFieldsFromLayout());
@@ -1125,17 +1115,40 @@ public without sharing class QuoteLineBusinessLogic {
         }
     }
 }
-
+//@InvocableMethod(label = 'performQuotlineAfterInsertOperations' description = 'performQuotlineAfterInsertOperations')
+/*public static void performQuotlineAfterInsertOperations(List < SBQQ__QuoteLine__c > lstquoteLines){
+    Set<Id> QLIdSet = new Set<Id>();
+    List<SBQQ__Quoteline__c> quotelineList = new List<SBQQ__Quoteline__c>();
+    Map<Id,SBQQ__QuoteLine__c> QLMap = new Map<Id,SBQQ__QuoteLine__c>();
+    for(SBQQ__QuoteLine__c quoteLine: lstquoteLines){
+    if(quoteLine.Pricing_Program_Type_Nm__c == Label.Pricing_Tender_DataCenter_GPU){
+        QLIdSet.add(quoteLine.Id);  
+    }  
+}
+    if(QLIdSet.size()>0){
+    QLMap= new Map<Id,SBQQ__QuoteLine__c>([SELECT Id,Pricing_Program_Type_Nm__c,Pricing_Paired_CPU_Nm__r.Name FROM SBQQ__QuoteLine__c WHERE Id IN :QLIdSet]);                             
+    }
+            for(SBQQ__QuoteLine__c QL: QLMap.values()){
+            if(QL.Pricing_Program_Type_Nm__c == Label.Pricing_Tender_DataCenter_GPU){
+                QL.Pricing_CPU_Txt__c = QLMap.get(QL.id).Pricing_Paired_CPU_Nm__r.Name;
+                quotelineList.add(QL); 
+               }
+           }
+           if(quotelineList.size()>0){
+            SBQQ.TriggerControl.disable();
+            update quotelineList;
+            SBQQ.TriggerControl.enable();
+           }        
+}*/
     public static Group adminQueue = null;
     public static List<Pricing_Quote_Line_Status_Age__c> PopulateQLStatusAgeRecord(List <SBQQ__QuoteLine__c> lstquoteLines,
-                                                                                   Map <Id, SBQQ__QuoteLine__c> oldObjectMap,Boolean isInsert,Boolean isIntegration,String userRole,String actorName,DateTime integrationTime,String subStatus){                                                                                    
+                                                                                   Map <Id, SBQQ__QuoteLine__c> oldObjectMap,Boolean isInsert,Boolean isIntegration,String userRole,String actorName,DateTime integrationTime,String subStatus){
                                                                                     Id  tptRecordTypeId = Pricing_Tender_Utility.getRecordTypeId('Pricing_Quote_Line_Status_Age__c','Pricing_Financial_Incentive_TPT');
                                                                                        List<Pricing_Quote_Line_Status_Age__c> statusChanges = new List<Pricing_Quote_Line_Status_Age__c>();
                                                                                        if(adminQueue == null){
                                                                                            adminQueue = [Select Id from Group where DeveloperName =:Label.Pricing_Tender_TPT_Admin_Queue];
-                                                                                       }
-                                                                                       if(isInsert){ 
-                                                                                        
+                                                                                       }                                                           
+                                                                                       if(isInsert){                                                       
                                                                                            for (SBQQ__QuoteLine__c quoteLine: lstquoteLines) {
                                                                                                Pricing_Quote_Line_Status_Age__c statusChange = new Pricing_Quote_Line_Status_Age__c();
                                                                                                //TPT record owner assigned to queue
@@ -1174,9 +1187,9 @@ public without sharing class QuoteLineBusinessLogic {
                                                                                                                                      
                                                                                                                                      if(isIntegration && !String.isBlank(subStatus)){
                                                                                                                                          statusChange.Pricing_TPT_Status_From__c = (quoteLine.Pricing_Status_Nm__c == Label.Pricing_Tender_QuoteLine_Status_PendingFurtherIntelReview)?(subStatus == Label.Pricing_Tender_QuoteLine_Status_Approved) ? 
-                                                                                                                                             subStatus : (quoteLine.Pricing_Status_Nm__c +'-'+subStatus) : quoteLine.Pricing_Status_Nm__c;                                                                                                                                             
+                                                                                                                                             subStatus : (quoteLine.Pricing_Status_Nm__c +'-'+subStatus) : quoteLine.Pricing_Status_Nm__c;
                                                                                                                                     }else{
-                                                                                                                                                     statusChange.Pricing_TPT_Status_From__c = quoteLine.Pricing_Status_Nm__c;                                                                                                                                                     
+                                                                                                                                                     statusChange.Pricing_TPT_Status_From__c = quoteLine.Pricing_Status_Nm__c;
                                                                                                                                                  }
                                                                                                                                      statusChange.Pricing_TPT_From_Actor_Nm__c =  isIntegration ? actorName : UserInfo.getName();
                                                                                                                                      statusChange.Pricing_TPT_Set_Time__c = isIntegration ? integrationTime : Datetime.now();
@@ -1232,22 +1245,19 @@ public without sharing class QuoteLineBusinessLogic {
                     if(externalPs.contains(psUser)){
                         role = 'OEM';
                     }
-                    switch on psUser {
-                        when 'Tender_User' {
-                            role = 'SDM';
-                        }
-                        when 'Tender_Account_Executive' {
-                            role = 'Account Executive';
-                        }
-                        when 'Pricing_Tender_Permission_Set_IT_Specialist' {
-                            role = 'IT Specialist';
-                        }
-                        when 'Pricing_Tender_Regional_Pricing_Manager' , 'Pricing_Financial_Incentive_Regional_Pricing_Manager'{
-                            role ='RPM';
-                        }
-                        when else {
-                            role = '';
-                        }
+                    else if(psUser == 'Tender_User'){
+                        role = 'SDM';
+                    }
+                    else if(psUser == 'Tender_Account_Executive'){
+                        role = 'Account Executive';
+                    }
+                    else if(psUser == 'Pricing_Tender_Permission_Set_IT_Specialist'){
+                        role = 'IT Specialist';
+                    }
+                    else if(psUser == 'Pricing_Tender_Regional_Pricing_Manager'){
+                        role = 'RPM';
+                    }else if(psUser == 'Pricing_Financial_Incentive_Regional_Pricing_Manager'){
+                        role = 'RPM';
                     }
                 }
                 if(!String.isEmpty(role)){
@@ -1264,7 +1274,7 @@ public without sharing class QuoteLineBusinessLogic {
 
     public static void CreateQuoteLineStatusAgeRecord(SBQQ__QuoteLine__c[] newObjects,Boolean isInsert){
         if(newObjects!=null && !newObjects.isEmpty()){
-            try{                
+            try{
                 List<Pricing_Quote_Line_Status_Age__c> tptList = new List<Pricing_Quote_Line_Status_Age__c>();
                 tptList.addAll(PopulateQLStatusAgeRecord(newObjects, null, isInsert,false,null,null,null,null));
                 insert tptList;
@@ -1274,7 +1284,7 @@ public without sharing class QuoteLineBusinessLogic {
     
     public static void UpdateQuoteLineStatusAgeRecord(SBQQ__QuoteLine__c[] updatedObjects, Map<Id, SBQQ__QuoteLine__c> oldObjectMap, 
                                                       Boolean isInsert,Boolean isIntegration,String userRole,String actorName,
-                                                      DateTime integrationTime,String subStatus){                                                          
+                                                      DateTime integrationTime,String subStatus){
                                                           List<Pricing_Quote_Line_Status_Age__c> tptListToUpdate = new List<Pricing_Quote_Line_Status_Age__c>();
                                                           tptListToUpdate.addAll(getTPTRecordsToUpdate(updatedObjects, oldObjectMap, isInsert, isIntegration, userRole, actorName, integrationTime, subStatus));
                                                         if(!tptListToUpdate.isEmpty()){
@@ -1284,7 +1294,7 @@ public without sharing class QuoteLineBusinessLogic {
 
     public static Set<Pricing_Quote_Line_Status_Age__c> getTPTRecordsToUpdate(SBQQ__QuoteLine__c[] updatedObjects, Map<Id, SBQQ__QuoteLine__c> oldObjectMap, 
         Boolean isInsert,Boolean isIntegration,String userRole,String actorName,
-        DateTime integrationTime,String subStatus){        
+        DateTime integrationTime,String subStatus){
         if(updatedObjects!=null && !updatedObjects.isEmpty()){
             try{
                                                                                           Set<Pricing_Quote_Line_Status_Age__c> tptList = new Set<Pricing_Quote_Line_Status_Age__c>();
@@ -1293,7 +1303,7 @@ public without sharing class QuoteLineBusinessLogic {
                 Map<Id,SBQQ__QuoteLine__c> quoteLinesMap = new Map<Id,SBQQ__QuoteLine__c>();
                 Map<Id,Pricing_Quote_Line_Status_Age__c> quoteLineIdToTPTMap = new Map<Id,Pricing_Quote_Line_Status_Age__c>();
                 tptList.addAll(PopulateQLStatusAgeRecord(updatedObjects, oldObjectMap, isInsert,isIntegration,userRole,
-                                                         actorName,integrationTime,subStatus));                
+                                                         actorName,integrationTime,subStatus));
                 
                 for (Pricing_Quote_Line_Status_Age__c statusChange: tptList) {
                     quoteLineIdSet.add(statusChange.Pricing_TPT_Quote_Line_Number__c);  
@@ -1362,7 +1372,7 @@ public without sharing class QuoteLineBusinessLogic {
                                 
                                 oldStatusChange.Pricing_TPT_Role_Aggregate_cb__c = true; 
                                 aggreagateTPTMap.get(oldStatusChange.Pricing_TPT_Quote_Line_Number__c).Pricing_TPT_Role_Aggregate_cb__c = false;
-                                tptList.add(aggreagateTPTMap.get(oldStatusChange.Pricing_TPT_Quote_Line_Number__c));                                
+                                tptList.add(aggreagateTPTMap.get(oldStatusChange.Pricing_TPT_Quote_Line_Number__c));
                             }else{
                                 oldStatusChange.Pricing_TPT_Aggregate_Role_Time__c = oldStatusChange.Pricing_TPT_Status_Time__c;
                                 oldStatusChange.Pricing_TPT_Role_Aggregate_cb__c = true;
@@ -1380,8 +1390,8 @@ public without sharing class QuoteLineBusinessLogic {
                                 }
                             }
                             if(!tptList.contains(oldStatusChange)){
-                                tptList.add(oldStatusChange);                            
-                            }                            
+                                tptList.add(oldStatusChange);
+                            }
                         }
                     }
                 }
@@ -1412,8 +1422,10 @@ public without sharing class QuoteLineBusinessLogic {
                             fieldValue = (String)quoteLine.get(field);
                         }
                     }
-                    if(!String.isEmpty(fieldValue) && Pricing_Tender_Utility.validateNonLatinChars(fieldValue)){
+                    if(!String.isEmpty(fieldValue)){
+                        if(Pricing_Tender_Utility.validateNonLatinChars(fieldValue)){
                             quoteLine.addError(field,Label.Pricing_Non_Latin_Char_Validation_Error);
+                        }
                     }
                 }
             }
@@ -1450,7 +1462,8 @@ public without sharing class QuoteLineBusinessLogic {
             startDate = startDate.toStartOfWeek();
             endDate = endDate.toStartOfWeek();
             
-           
+            //integer dayss = date.newinstance(startDateTime.year(), startDateTime.month(), startDateTime.day()).
+              //  daysBetween(date.newinstance(endDateTime.year(), endDateTime.month(), endDateTime.day()));
             
             integer weeksbetween = startDate.daysBetween(endDate)/7;
             
@@ -1492,21 +1505,21 @@ public without sharing class QuoteLineBusinessLogic {
         
         Boolean isCalculateRun = false;
         if(quoteIds.size() > 0){
-            Map<Id,SBQQ__QuoteLine__c> quoteLineMap = new Map<Id,SBQQ__QuoteLine__c>();
-            for(SBQQ__QuoteLine__c quoteLine : [SELECT id,SBQQ__Quote__c,Pricing_Save_After_Calculation_cb__c FROM SBQQ__QuoteLine__c WHERE SBQQ__Quote__r.Pricing_Auto_generate_Quote_Letter__c=TRUE AND SBQQ__Quote__c IN :quoteIds]){
-                quoteLineMap.put(quoteLine.id,quoteLine);
+            //Map<Id,SBQQ__QuoteLine__c> quoteLineMap = new Map<Id,SBQQ__QuoteLine__c>();
+            for(SBQQ__QuoteLine__c quoteLine : [SELECT id,SBQQ__Quote__c,Pricing_Status_Nm__c,Pricing_Program_Type_Nm__c,Pricing_New_Change_Request_cb__c,Pricing_Save_After_Calculation_cb__c FROM SBQQ__QuoteLine__c WHERE SBQQ__Quote__r.Pricing_Auto_generate_Quote_Letter__c=TRUE AND SBQQ__Quote__c IN :quoteIds]){
+                qlIdToQuoteLinesMap.put(quoteLine.id,quoteLine);
             }
-            if(quoteLineMap.size() > 0){
+            if(qlIdToQuoteLinesMap.size() > 0){
                 String quoteIdsStr = '';
                 Id quoteId;
-                for(Id quoteLineId : quoteLineMap.keySet()){
-                    if(quoteLineMap.get(quoteLineId).Pricing_Save_After_Calculation_cb__c == false){ //SBQQ__Uncalculated__c
+                for(Id quoteLineId : qlIdToQuoteLinesMap.keySet()){
+                    if(qlIdToQuoteLinesMap.get(quoteLineId).Pricing_Save_After_Calculation_cb__c == false){ //SBQQ__Uncalculated__c
                         isCalculateRun = true;
-                        quoteId = quoteLineMap.get(quoteLineId).SBQQ__Quote__c;
+                        quoteId = qlIdToQuoteLinesMap.get(quoteLineId).SBQQ__Quote__c;
                         break;
                     }
                     else{
-                        quoteIdsStr = String.isEmpty(quoteIdsStr) ? String.valueOf(quoteLineMap.get(quoteLineId).SBQQ__Quote__c) : quoteIdsStr+','+String.valueOf(quoteLineMap.get(quoteLineId).SBQQ__Quote__c);
+                        quoteIdsStr = String.isEmpty(quoteIdsStr) ? String.valueOf(qlIdToQuoteLinesMap.get(quoteLineId).SBQQ__Quote__c) : quoteIdsStr+','+String.valueOf(qlIdToQuoteLinesMap.get(quoteLineId).SBQQ__Quote__c);
                     }
                 }
                 if(isCalculateRun  && quoteId != null){
@@ -1518,20 +1531,38 @@ public without sharing class QuoteLineBusinessLogic {
             }
         }
     }
-    public static void publishQuoteLetter(String quoteIdsStr){   
+
+    public static void publishQuoteLetter(String quoteIdsStr){
+        /*Boolean isChangedFIProducts = false;
+        Id quoteId;
+        for(SBQQ__QuoteLine__c ql : qlIdToQuoteLinesMap.values()){
+            if(ql.Pricing_Program_Type_Nm__c == 'Financial Incentive' && ql.Pricing_New_Change_Request_cb__c && ((ql.Pricing_Status_Nm__c == 'Approved' || ql.Pricing_Status_Nm__c == 'Rejected') && ql.Pricing_Status_Nm__c != 'Pending Further Intel Review')){
+                isChangedFIProducts = true;
+            }else{
+                isChangedFIProducts = false;
+            }
+            quoteId = ql.SBQQ__Quote__c;
+        }
+        
+        if(isChangedFIProducts){
+            Database.SaveResult fiCRApproveOrRejectEvent = EventBus.publish(new PCC_Deal_Approval_Process_Communication__e(        
+                                                            PCC_Error_Message__c = 'Success',
+                                                            PCC_Object__c = 'Quote',
+                                                            PCC_Record_ID__c = quoteId,
+                                                            PCC_Type__c = 'Change Request : Products Changed'));
+        }*/
+
         Database.SaveResult result = EventBus.publish(new Pricing_Quote_Letter_Event__e(
                     Pricing_QuoteIds_Txt__c = quoteIdsStr,
                     Pricing_Action_Nm__c = Label.Pricing_Generate_QuoteLetter_Action));
     }
     public static void runCalculatorService(Id quoteId){
-        List<SBQQ__Quote__c> quotesList  = [SELECT id,SBQQ__LastCalculatedOn__c FROM SBQQ__Quote__c WHERE Pricing_Auto_generate_Quote_Letter__c=TRUE AND Id  =: quoteId];
-        if(quotesList.size() > 0){
-            QuoteModel quoteModel = new QuoteModel();
-            quoteModel.record = quotesList[0];
-            Pricing_QuoteCalculator calculator = new Pricing_QuoteCalculator();
-            if(!Test.isRunningTest()){
-                calculator.calculate(quoteModel, 'Pricing_CalculatorCallBack');
-            }
+        SBQQ__Quote__c quote  = [SELECT id,SBQQ__LastCalculatedOn__c FROM SBQQ__Quote__c WHERE Pricing_Auto_generate_Quote_Letter__c=TRUE AND Id  =: quoteId];
+        QuoteModel quoteModel = new QuoteModel();
+        quoteModel.record = quote;
+        Pricing_QuoteCalculator calculator = new Pricing_QuoteCalculator();
+        if(!Test.isRunningTest()){
+            calculator.calculate(quoteModel, 'Pricing_CalculatorCallBack');
         }
     }
     
@@ -1541,13 +1572,13 @@ public without sharing class QuoteLineBusinessLogic {
         Map<String, String> quoteLineTypeProductQueryMap = new Map<String, String>();//product Type ==> product SOQL
         
         //List<Pricing_Dynamic_Data_Table__mdt> productTypeMetadataList = Pricing_Dynamic_Data_Table__mdt.getall().values();
-        List<Pricing_Dynamic_Data_Table__mdt> productTypeMetadataList = [SELECT Id, Pricing_Query__c, Pricing_Record_Type_Pkl__c, Pricing_Where_Clause__c FROM Pricing_Dynamic_Data_Table__mdt WHERE Pricing_Record_Type_Pkl__c IN : prdTypeNewProductListMap.keySet()];
+        List<Pricing_Dynamic_Data_Table__mdt> productTypeMetadataList = [SELECT Id, Pricing_Query__c, Pricing_Record_Type__c, Pricing_Where_Clause__c FROM Pricing_Dynamic_Data_Table__mdt WHERE Pricing_Record_Type__c IN : prdTypeNewProductListMap.keySet()];
         if(productTypeMetadataList.size() > 0) {
             for(Pricing_Dynamic_Data_Table__mdt mdt : productTypeMetadataList ) {
                 if(String.isNotBlank(mdt.Pricing_Query__c) && String.isNotBlank(mdt.Pricing_Where_Clause__c)) {
                     String query =  mdt.Pricing_Query__c + ' ' +mdt.Pricing_Where_Clause__c;
-                    if(!quoteLineTypeProductQueryMap.containsKey(mdt.Pricing_Record_Type_Pkl__c)) {
-                        quoteLineTypeProductQueryMap.put(mdt.Pricing_Record_Type_Pkl__c, query);
+                    if(!quoteLineTypeProductQueryMap.containsKey(mdt.Pricing_Record_Type__c)) {
+                        quoteLineTypeProductQueryMap.put(mdt.Pricing_Record_Type__c, query);
                     }
                 }
             }
@@ -1677,11 +1708,9 @@ public without sharing class QuoteLineBusinessLogic {
                 }
 
                 if(!qliListtoUpdate.isEmpty()){
-                    isStopTriggerFromFlow = true;
                     SBQQ.TriggerControl.disable();
                     Database.SaveResult[] quoteLineUpdatedRecords = Database.update(qliListtoUpdate, false);
                     SBQQ.TriggerControl.enable();
-                    isStopTriggerFromFlow = false;
                 }
             }
         }
@@ -1720,36 +1749,103 @@ public without sharing class QuoteLineBusinessLogic {
             competitorProductsIds.add(quoteLine.Pricing_Competetor_Product__c);
             regionList.add(region);
             applicationSetforAutoPop.add(application);
+        }        
+    }
+
+    @future(callout=true)
+    //@InvocableMethod(callout=true)
+    public static void autoPopulateBillingStartDate(set<Id> qliIdLst){ 
+       try{
+            List<SBQQ__QuoteLine__c> qliLst = [select id,SBQQ__Quote__r.SBQQ__Account__r.Name,Pricing_Billing_Start_Date_Dt__c from SBQQ__QuoteLine__c where id in :qliIdLst];
+            Http http = new Http();
+            HttpRequest request = new HttpRequest();
+            request.setEndpoint('callout:IQR_Access_Test_Cred/services/data/v55.0/actions/custom/runDecisionMatrix/Pricing_BillingStartDateByAccount');
+            request.setMethod('POST');
+            request.setHeader('Content-Type', 'application/json;charset=UTF-8');
+            InputLst reqInput = new InputLst();
+            reqInput.inputs = new List<Inputs>();
+            for(SBQQ__QuoteLine__c qli:qliLst){
+                Inputs input = new Inputs();
+                input.Account = qli.SBQQ__Quote__r.SBQQ__Account__r.Name;
+                reqInput.inputs.add(input);
+            }
+            request.setBody(JSON.serialize(reqInput));
+            HttpResponse response = http.send(request);
+            if(response.getStatusCode() != 200) {
+            } else {
+                List<BreWrapper> json = (List<BreWrapper>) JSON.deserialize(response.getBody(), List<BREWrapper>.class);
+                integer i = 0;
+                for(SBQQ__QuoteLine__c qli:qliLst){
+                    if(json[i].outputValues.BillingStartDate != null){
+                        DateTime billingDate = qli.Pricing_Billing_Start_Date_Dt__c;
+                        Date myDate = date.newinstance(billingDate.year(), billingDate.month(), billingDate.day());
+                        Date newDate = mydate.addDays(Integer.valueOf(json[i].outputValues.BillingStartDate));
+                       // qli.Pricing_Billing_Start_Date_Dt__c = newDate;
+                    }
+                    i++;
+                }
+                if(!qliLst.isEmpty()){
+                    update qliLst;
+                }                
+            }
+        }
+        catch(Exception e){
+            Pricing_Tender_Utility.logError(e);
+        }
+    }
+
+    public class InputLst{
+        public List<Inputs> inputs{get;set;}
     }
     
-}
+    public class Inputs {
+        public String Account{get;set;}
+    }
+    
+    public class BREWrapper{
+        public String actionName{get;set;}
+        public Errors errors{get;set;}
+        public String isSuccess{get;set;}
+        public OutputValue outputValues{get;set;}
+        public Integer version{get;set;}
+    }
 
-/***********************************************************Refactored Methods************************************************************/    
+    public class OutputValue{
+        public Decimal BillingStartDate{get;set;}
+    }
 
-/**
-* @description return set of fields from layout
-* @author Subhanku | 03-16-2023 
-* @return Set<String> 
-**/
-public static Set<String> getFieldsFromLayout(){
-    Set<String> fieldList = new Set<String>();
-    List < Metadata.Metadata > layouts = Metadata.Operations.retrieve(Metadata.MetadataType.Layout, new List < String > {
-        'SBQQ__QuoteLine__c-Pricing Tender Quote Line Layout - Int - Edit'
-            });
-    Metadata.Layout layoutMd = (Metadata.Layout) layouts.get(0);
-    for(Metadata.LayoutSection section: layoutMd.layoutSections) {
-        for(Metadata.LayoutColumn column: section.layoutColumns) {
-            if(column.layoutItems != null) {
-                for(Metadata.LayoutItem item: column.layoutItems) {
-                    if(item.field != null) {
-                        fieldList.add(item.field);
+    public class Errors{
+        public String statusCode{get;set;}
+        public String message{get;set;}
+        public List<String> fields{get;set;}
+    }
+
+    /***********************************************************Refactored Methods************************************************************/    
+    
+    /**
+    * @description return set of fields from layout
+    * @author Subhanku | 03-16-2023 
+    * @return Set<String> 
+    **/
+    public static Set<String> getFieldsFromLayout(){
+        Set<String> fieldList = new Set<String>();
+        List < Metadata.Metadata > layouts = Metadata.Operations.retrieve(Metadata.MetadataType.Layout, new List < String > {
+            'SBQQ__QuoteLine__c-Pricing Tender Quote Line Layout - Int - Edit'
+                });
+        Metadata.Layout layoutMd = (Metadata.Layout) layouts.get(0);
+        for(Metadata.LayoutSection section: layoutMd.layoutSections) {
+            for(Metadata.LayoutColumn column: section.layoutColumns) {
+                if(column.layoutItems != null) {
+                    for(Metadata.LayoutItem item: column.layoutItems) {
+                        if(item.field != null) {
+                            fieldList.add(item.field);
+                        }
                     }
                 }
             }
         }
+        return fieldList;
     }
-    return fieldList;
-}
 
     /**
     * @description create quote line statsu map
@@ -1792,10 +1888,12 @@ public static Set<String> getFieldsFromLayout(){
     public static void populateApprovedFields(SBQQ__QuoteLine__c quoteLine,Map < Id, SBQQ__Quote__c > quoteDtls,List<String> programType,Id writeInProdId){
         quoteLine.Pricing_Status_Nm__c = Label.Pricing_Tender_QuoteLine_Status_PendingFurtherIntelReview;
         quoteLine.RecordTypeId = quoteLine.Pricing_Program_Type_Nm__c == Label.Pricing_Tender_Small_Volume_Quote ? svdSubmitRecordType : standardSubmitRecordType;
+        Boolean isClientType = quoteLine.Pricing_Program_Type_Nm__c == 'Client' ? true : false;
 
+        //Id writeInProdId = [SELECT Id FROM Product2 WHERE Name =: Label.Pricing_Tender_Write_In_Product AND isActive = true].Id;
         //flag to populate Approved fields using AI
         Boolean isAutoAI = checkforAuotoPopLogic(quoteLine, quoteDtls.get(quoteLine.SBQQ__Quote__c).Pricing_Server_Deal_Type_Nm__c, quoteDtls.get(quoteLine.SBQQ__Quote__c).Pricing_End_Customer_Name__c) && 
-                            quoteLine.SBQQ__Product__c != writeInProdId &&  quoteLine.Pricing_Tentative_ECAP_Price_Amt__c == null ? true : false;
+                            quoteLine.SBQQ__Product__c != writeInProdId  ? true : false; //&&  quoteLine.Pricing_Tentative_ECAP_Price_Amt__c == null
         //Revert Status fix
         quoteLine.Pricing_Original_Submitted_By_Id__c = currentUser.Id;
         quoteLine.Pricing_Original_Submitted_Date_dt__c = Datetime.now();
@@ -1811,7 +1909,8 @@ public static Set<String> getFieldsFromLayout(){
         quoteLine.Pricing_Approved_Start_Date_Dt__c = isAutoAI ? null : quoteDtls.get(quoteLine.SBQQ__Quote__c).Pricing_ShipmentStDate_Dt__c;
         quoteLine.Pricing_Approved_End_Date_Dt__c = isAutoAI ? null : quoteLine.Pricing_End_Date_dt__c;
         quoteLine.Pricing_Billing_End_Date_Dt__c = isAutoAI ? null : quoteLine.Pricing_End_Date_dt__c;
-        quoteLine.Pricing_Billing_Start_Date_Dt__c = isAutoAI ? null : quoteDtls.get(quoteLine.SBQQ__Quote__c).Pricing_ShipmentStDate_Dt__c;
+        quoteLine.Pricing_Billing_Start_Date_Dt__c = isAutoAI || isClientType ? null : quoteDtls.get(quoteLine.SBQQ__Quote__c).Pricing_ShipmentStDate_Dt__c;
+        quoteLine.Pricing_Meet_Comp_Price_Amt__c = isClientType  ? null : quoteLine.Pricing_Meet_Comp_Price_Amt__c;
     }
 
     /**
@@ -1895,9 +1994,9 @@ public static Set<String> getFieldsFromLayout(){
             quoteLine.Pricing_Deal_RFQ_Id__c = quoteLine.Pricing_Deal_RFQ_Dup_Id__c = oldMap.get(quoteLine.Id).Pricing_Deal_RFQ_Id__c;
             quoteLine.Pricing_Deal_RFQ_Status_Nm__c = oldMap.get(quoteLine.Id).Pricing_Deal_RFQ_Status_Nm__c;
             quoteLine.Pricing_Last_Approved_Date_dt__c = DateTime.now();
-        }
-
-         //revert status fix Cancelled ==> Approved
+        }  
+        
+        //revert status fix Cancelled ==> Approved
         if((oldMap.get(quoteLine.Id).Pricing_Status_Nm__c != quoteLine.Pricing_Status_Nm__c) && oldMap.get(quoteLine.Id).Pricing_Status_Nm__c == Label.Pricing_Tender_QuoteLine_Status_Cancelled && quoteLine.Pricing_Status_Nm__c == Label.Pricing_Tender_QuoteLine_Status_Approved) {
             quoteLine.Pricing_Status_Nm__c =  Label.Pricing_Tender_QuoteLine_Status_Cancelled;
             //Duplicate filelds populating
@@ -1913,11 +2012,11 @@ public static Set<String> getFieldsFromLayout(){
             quoteLine.Pricing_Last_Approved_Date_dt__c = DateTime.now();
         }
         
-        //revert fix pricing manager value ==> null
+        //revert status fix pricing manager value ==> null
         if((oldMap.get(quoteLine.Id).Pricing_Manager__c != quoteLine.Pricing_Manager__c) && oldMap.get(quoteLine.Id).Pricing_Manager__c != null && quoteLine.Pricing_Manager__c == null) {
             quoteLine.Pricing_Manager__c = oldMap.get(quoteLine.Id).Pricing_Manager__c;
         }
-        
+
         //revert status fix Rejected ==> PFIR
         if((oldMap.get(quoteLine.Id).Pricing_Status_Nm__c != quoteLine.Pricing_Status_Nm__c) && oldMap.get(quoteLine.Id).Pricing_Status_Nm__c == Label.Pricing_Tender_QuoteLine_Status_Rejected && quoteLine.Pricing_Status_Nm__c == Label.Pricing_Tender_QuoteLine_Status_PendingFurtherIntelReview) {
             quoteLine.Pricing_Status_Nm__c =  Label.Pricing_Tender_QuoteLine_Status_Rejected;
@@ -1929,7 +2028,7 @@ public static Set<String> getFieldsFromLayout(){
         }
 
          //revert status fix Revised ==> Approved
-         if((oldMap.get(quoteLine.Id).Pricing_Status_Nm__c != quoteLine.Pricing_Status_Nm__c) && oldMap.get(quoteLine.Id).Pricing_Status_Nm__c == Label.Pricing_Tender_QuoteLine_Status_Revised && (quoteLine.Pricing_Status_Nm__c == Label.Pricing_Tender_QuoteLine_Status_Approved || quoteLine.Pricing_Status_Nm__c == Label.Pricing_Tender_QuoteLine_Status_Won)) {
+         if((oldMap.get(quoteLine.Id).Pricing_Status_Nm__c != quoteLine.Pricing_Status_Nm__c) && oldMap.get(quoteLine.Id).Pricing_Status_Nm__c == Label.Pricing_Tender_QuoteLine_Status_Revised && quoteLine.Pricing_Status_Nm__c == Label.Pricing_Tender_QuoteLine_Status_Approved) {
             quoteLine.Pricing_Status_Nm__c =  Label.Pricing_Tender_QuoteLine_Status_Revised;
         }
     }
@@ -1973,7 +2072,7 @@ public static Set<String> getFieldsFromLayout(){
         return hasAPIPermissionSet;
     }
     
-    /*****************************************************************************************************************************************
+     /*****************************************************************************************************************************************
     Method Name:        handleAIIntegrationForPricing
     Description:        To invoke method for Pricing Application AI Integration
     @Added By:          Sinduja - 30-April-2026
@@ -1992,7 +2091,7 @@ public static Set<String> getFieldsFromLayout(){
             for(SBQQ__QuoteLine__c quoteLine : lstquoteLines) {
                 Boolean notEligibleForPricing = Pricing_QuoteLineController.eligibleForPricingSupportCheck(quoteLine);
                 if(isInsert){
-                    if(quoteLine.Pricing_New_Change_Request_cb__c == false && quoteLine.Pricing_Status_Nm__c == Label.Pricing_Tender_QuoteLine_Status_PendingFurtherIntelReview && !notEligibleForPricing) {
+                 	if(quoteLine.Pricing_New_Change_Request_cb__c == false && quoteLine.Pricing_Status_Nm__c == Label.Pricing_Tender_QuoteLine_Status_PendingFurtherIntelReview && !notEligibleForPricing) {
                         quoteLineIdsForAI.add(quoteLine.Id);
                     }
                 }

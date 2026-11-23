@@ -1,14 +1,12 @@
 @isTest
 private class PRM_RegReqProcessingQueueable_Test {
 	static @isTest void checkRegReqProcessingQueueable() {
-        Id intelAccRecTypeId = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
         Account acc = PRM_TestUtility.getAccount();
         acc.BillingCity='Bengaluru';
         acc.BillingCountry='India';
         acc.BillingStreet='4th Floor,ITPL,Brookfield';
         acc.BillingPostalCode='560037';
-        acc.RecordTypeId=intelAccRecTypeId;
-        insert(acc);
+        insert(acc);  
         
         List<Account> accountList = new List<Account>();
         accountList.add(acc);
@@ -16,7 +14,6 @@ private class PRM_RegReqProcessingQueueable_Test {
         Contact con = PRM_TestUtility.getContact();
         con.Email='testrequest@mailinator.com';
         con.AccountId = acc.Id;
-        con.MailingCountry='USA';
         insert con;
         
         List<Contact> contactList = new List<Contact>();
@@ -36,9 +33,9 @@ private class PRM_RegReqProcessingQueueable_Test {
         
         PRM_PartnerAgreement__c pa1 = PRM_TestUtility.getPartnerAgreement();
         pa1.PRM_Channel_Program_Id__c = cp.Id;
-        pa1.Name='IPA Terms & Condition';
-        pa1.PRM_Language_Codes__c='';
-        pa1.PRM_Agreement_Cd__c='IPA_TANDC';
+        pa1.Name='CSP_ACK_EMEA_ENG';
+        pa1.PRM_Language_Codes__c='ENG';
+        pa1.PRM_Agreement_Cd__c='CSP_ACK_EMEA_ENG';
         insert pa1;
                 
         PRM_AccountChannelMembership__c membership = new PRM_AccountChannelMembership__c();
@@ -64,7 +61,7 @@ private class PRM_RegReqProcessingQueueable_Test {
         newRequest.PRM_EV_Token__c = 'gwiur#@98321327';
         newRequest.PRM_Email_ID__c = 'testuser@gmail.com';
         newRequest.PRM_Channel_Program__c = cp.Id;
-        newRequest.PRM_Legal_Agreements__c = 'IPA_TANDC';
+        newRequest.PRM_Legal_Agreements__c = 'CSP_ACK_EMEA_ENG';
         newRequest.PRM_Partner_Relationship__c = '';
         newRequest.PRM_Preferred_Language__c = '';
         newRequest.PRM_Matching_Contact__c = con.Id;
@@ -75,7 +72,7 @@ private class PRM_RegReqProcessingQueueable_Test {
         newAdminRequest.PRM_CIM_ID__c='CIM1234';
         newAdminRequest.PRM_Salesforce_ID__c=acc.Id;
         newAdminRequest.PRM_Email_Verification_Criteria__c = 'PENDING';
-        newAdminRequest.PRM_Legal_Agreements__c = 'IPA_TANDC';
+        newAdminRequest.PRM_Legal_Agreements__c = 'CSP_ACK_EMEA_ENG';
         newAdminRequest.PRM_Subscriptions__c = 'CSPx2_Sub2';
         newAdminRequest.PRM_Status__c='New';
         newAdminRequest.PRM_Channel_Program__c = cp.Id;
@@ -84,23 +81,11 @@ private class PRM_RegReqProcessingQueueable_Test {
         insert(newAdminRequest);
                 
         
-		
-        /*Test.startTest();
-       List<PRM_CreateAccountAndRelatedRecords.PRM_RegReqProcessingQueueableWrapper> regRequestProcessQueueableList = new List<PRM_CreateAccountAndRelatedRecords.PRM_RegReqProcessingQueueableWrapper>();
-       regRequestProcessQueueableList.add(new PRM_CreateAccountAndRelatedRecords.PRM_RegReqProcessingQueueableWrapper(accountList,contactList,True,'businessEvent',newAdminRequest,true));
-        regRequestProcessQueueableList.add(new PRM_CreateAccountAndRelatedRecords.PRM_RegReqProcessingQueueableWrapper(accountList,contactList,False,'businessEvent',newAdminRequest,true));
-        regRequestProcessQueueableList.add(new PRM_CreateAccountAndRelatedRecords.PRM_RegReqProcessingQueueableWrapper(accountList,contactList,True,'businessEvent',newAdminRequest,false));
-        regRequestProcessQueueableList.add(new PRM_CreateAccountAndRelatedRecords.PRM_RegReqProcessingQueueableWrapper(accountList,contactList,False,'businessEvent',newAdminRequest,false));
-        System.enqueueJob(new PRM_RegReqProcessingQueueable(regRequestProcessQueueableList));
-        Test.stopTest();
-        System.assertEquals(newAdminRequest.PRM_Partner_Role__c, 'Service Provider', 'Value does not match'); */
         Test.startTest();
-        System.enqueueJob( new PRM_RegReqProcessingQueueable(accountList,contactList,True,'businessEvent',newAdminRequest,true));
-        System.enqueueJob( new PRM_RegReqProcessingQueueable(accountList,contactList,False,'businessEvent',newAdminRequest,true));
-        System.enqueueJob( new PRM_RegReqProcessingQueueable(accountList,contactList,True,'businessEvent',newAdminRequest,false));
-        System.enqueueJob( new PRM_RegReqProcessingQueueable(accountList,contactList,False,'businessEvent',newAdminRequest,false));
-        
+        System.enqueueJob( new PRM_RegReqProcessingQueueable(accountList,contactList,True,True,'businessEvent',newAdminRequest));
+        System.enqueueJob( new PRM_RegReqProcessingQueueable(accountList,contactList,True,False,'businessEvent',newAdminRequest));
+        System.enqueueJob( new PRM_RegReqProcessingQueueable(accountList,contactList,False,True,'businessEvent',newAdminRequest));
+        System.enqueueJob( new PRM_RegReqProcessingQueueable(accountList,contactList,False,False,'businessEvent',newAdminRequest));
         Test.stopTest();
-        System.assertEquals(newAdminRequest.PRM_Partner_Role__c, 'Service Provider', 'Value does not match'); 
     }
 }

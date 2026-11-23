@@ -41,13 +41,23 @@
         <aggregateTypes>Sum</aggregateTypes>
         <field>Opportunity.Core_Won_Products__c</field>
     </columns>
+    <filter>
+        <criteriaItems>
+            <column>Opportunity.Product_Total_Price_Sum__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>lessOrEqual</operator>
+            <value>500000</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>STAGE_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Opportunities Closing This FQ</name>
+    <name>Opportunities Closing This FQ &lt; 500k</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -71,6 +81,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURRENT</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

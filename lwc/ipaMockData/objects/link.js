@@ -10,6 +10,7 @@
 
 
 import helpers from './helpers/index';
+
  const linkSample = (index) => {
     let mockLinks = [
         'Submit MDF Campaign',
@@ -24,13 +25,12 @@ import helpers from './helpers/index';
         'Find help and training',
         'View results',
         'Track my learning',
-        'Partner University Pathways', //IPA 2.0
         'My competencies',
         'Browse webinars',
         'All training',
         'View activity',
         'Manage Storefront',
-        //'Create new offering',//IPA2.0:US-4497-1631_OfferingEOL
+        'Create new offering',
         'View results',
         'Marketing asset library',
         'View my campaigns',

@@ -6,5 +6,5 @@
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>IPATEST_CIP_WW22_NEWUSER_ENG1 Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Inactive_Accounts_Role</parentRole>
+    <parentRole>IPATEST_CIP_WW22_NEWUSER_ENG1PartnerManager</parentRole>
 </Role>

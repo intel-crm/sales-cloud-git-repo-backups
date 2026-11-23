@@ -70,9 +70,6 @@
     <columns>
         <field>CREATED_DATE</field>
     </columns>
-    <columns>
-        <field>OWNER_MANAGER</field>
-    </columns>
     <filter>
         <criteriaItems>
             <column>RECORDTYPE</column>

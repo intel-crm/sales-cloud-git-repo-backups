@@ -272,17 +272,10 @@
         <connector>
             <targetReference>Checking_Minds_and_USA</targetReference>
         </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>Core_Military_Aerospace_Govmt_End_Use__c</field>
-            <operator>IsNull</operator>
-            <value>
-                <booleanValue>false</booleanValue>
-            </value>
-        </filters>
+        <filterFormula>AND(AND(NOT(ISNULL({!$Record.RecordTypeId})),CONTAINS({!$Label.Core_Sales_CRM_Record_Types},{!$Record.RecordType.DeveloperName})),NOT(ISPICKVAL({!$Record.Core_Military_Aerospace_Govmt_End_Use__c}, &apos;&apos;)))</filterFormula>
         <object>Opportunity</object>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Active</status>
+    <status>Obsolete</status>
 </Flow>

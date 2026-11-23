@@ -1,0 +1,83 @@
+<template>
+<!-- <lightning-layout multiple-rows> -->
+    <lightning-card title="Opportunity Product" icon-name="custom:custom26">
+        <!-- New Quote Line button goes here -->
+        <!-- <lightning-button variant="neutral" label="New Quote Line" title="New Quote Line"
+            slot="actions" onclick={createNewQuoteLine}></lightning-button> -->
+            <!--<div slot="actions">
+                <template if:true={hasCreateAccess}>
+                    <c-pricing_-manage_-new_-quote-line record-id={recordId} ></c-pricing_-manage_-new_-quote-line>
+                </template>					
+            </div>		-->	
+            
+       
+            <!-- Spinner goes here -->
+            <template if:true={isLoading}>
+                <lightning-spinner alternative-text="Loading" variant="brand"></lightning-spinner>
+            </template>
+            <div class="slds-grid">
+                <lightning-accordion allow-multiple-sections-open>
+                    <div class="slds-p-around_medium">
+                        <template for:each={records} for:item="record">
+                            <lightning-accordion-section key={record.Id} name={record.Name} label={record.Product2.Name}>
+                                <lightning-button-menu slot="actions" alternative-text="Show menu" 
+                                                       icon-size="x-small" menu-alignment="auto" onselect={handleOnselect}>
+                                    <lightning-menu-item value="Edit" label="Edit"></lightning-menu-item>
+                                    <lightning-menu-item value="CR" label="Change Request"></lightning-menu-item>
+                                </lightning-button-menu>
+                                <lightning-layout class="slds-grid slds-wrap" multiple-rows >
+                                <lightning-record-edit-form
+                                    object-api-name="OpportunityLineItem"
+                                    record-id={record.Id}
+                                    form-class="">
+                                <lightning-layout-item size="6" medium-device-size="3" padding="around-small">
+                                    <lightning-output-field field-name="OpportunityId" disabled={fieldEdit}> </lightning-output-field>
+                                    <lightning-input-field field-name="Product2Id" disabled={fieldEdit}> </lightning-input-field>
+                                    <lightning-input-field field-name="Core_Competitor__c"> </lightning-input-field>
+                                    <lightning-input-field field-name="Core_Competitor_Product__c"> </lightning-input-field>
+                                </lightning-layout-item>
+                                <lightning-layout-item size="6" medium-device-size="3" padding="around-small">
+                                    <lightning-input-field field-name="Core_Status__c" disabled={fieldEdit}> </lightning-input-field>
+                                    <lightning-input-field field-name="Quantity" disabled={fieldEdit}> </lightning-input-field>
+                                    <lightning-input-field field-name="UnitPrice"> </lightning-input-field>
+                                    <lightning-input-field field-name="Core_Sales_Price_Note__c"> </lightning-input-field>
+                                    
+                                </lightning-layout-item>
+                                    <div class="slds-var-m-top_medium">
+                                        <lightning-button variant="brand" type="submit" label="Save">
+                                        </lightning-button>
+                                    </div>
+                                </lightning-record-edit-form>
+                            </lightning-layout>
+                                <!--<lightning-layout>
+                                    <lightning-layout-item size="6">
+
+                                    </lightning-layout-item>
+                                </lightning-layout>-->
+                                <!--ITERATIVE MENU ITEM
+                                    <template for:each={menuItemValues} for:item="menuvalue" >  
+                                        <lightning-menu-item 
+                                            label={menuvalue.label}
+                                            value={menuvalue.value}
+                                            key={menuvalue.value}>
+                                        </lightning-menu-item>
+                                    </template>
+                                -->
+                                <div class="slds-grid slds-gutters slds-wrap">
+                                    <div class="slds-col slds-size_2-of-3">
+                                        
+                                        <!--<template for:each={record.fields} for:item="field">
+                                            <div key={field.fieldName} class="slds-text-body_regular"><b>{field.fieldName}:</b> {field.fieldValue}</div>
+                                        </template> -->
+                                    </div>
+                                    <!--<div class="slds-col slds-size_1-of-3">
+                                        <img src={record.ImageURL} class="slds-float_right" style="width:90%;height:90%;" />
+                                    </div>-->
+                                </div>
+                            </lightning-accordion-section>
+                        </template>
+                    </div>
+                </lightning-accordion>
+            </div>
+       </lightning-card>    
+</template>

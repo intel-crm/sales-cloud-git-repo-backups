@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>settings_curveSections</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>settings_curveSections</value>
+    </caseValues>
+    <fields>
+        <label><!-- limitSection0 --></label>
+        <name>Xvoyant__limitSection0__c</name>
+    </fields>
+    <fields>
+        <label><!-- limitSection1 --></label>
+        <name>Xvoyant__limitSection1__c</name>
+    </fields>
+    <fields>
+        <label><!-- limitSection2 --></label>
+        <name>Xvoyant__limitSection2__c</name>
+    </fields>
+    <fields>
+        <label><!-- limitSection3 --></label>
+        <name>Xvoyant__limitSection3__c</name>
+    </fields>
+    <fields>
+        <label><!-- limitSection4 --></label>
+        <name>Xvoyant__limitSection4__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

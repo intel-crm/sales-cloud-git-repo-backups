@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Email Template to send Opportunity Support Rejection notification.</description>
+    <encodingKey>UTF-8</encodingKey>
+    <letterhead>Core_Opportunity_Email</letterhead>
+    <name>Opportunity Support Team Approve Rejection Email Template</name>
+    <style>freeForm</style>
+    <subject>ALERT: Your Opportunity Support Team Request Has Been Approved/Rejected</subject>
+    <textOnly>Your Opportunity support request Team Member has been Approved/Rejected</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

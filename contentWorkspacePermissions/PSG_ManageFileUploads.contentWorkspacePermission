@@ -5,8 +5,9 @@
     <addContentOBO>false</addContentOBO>
     <archiveContent>false</archiveContent>
     <chatterSharing>false</chatterSharing>
-    <deleteContent>false</deleteContent>
-    <deliverContent>false</deliverContent>
+    <deleteContent>true</deleteContent>
+    <deliverContent>true</deliverContent>
+    <description>Grant Access for Users to Upload or to add files and manage Versions</description>
     <featureContent>false</featureContent>
     <manageWorkspace>false</manageWorkspace>
     <modifyComments>false</modifyComments>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Pricing Field Mapping For PRicingAI</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Pricing Field Mapping For PRicingAI</value>
+    </caseValues>
+    <fields>
+        <label><!-- Field API Name --></label>
+        <name>Pricing_Field_API_Name_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field JSON Label --></label>
+        <name>Pricing_Field_JSON_Label_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Active --></label>
+        <name>Pricing_IsActive_Ind__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

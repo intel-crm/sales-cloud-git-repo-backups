@@ -5,70 +5,6 @@
         <value><!-- Partner Offering Resource --></value>
     </caseValues>
     <fields>
-        <label><!-- Alt Text --></label>
-        <name>PMP_Alt_Text__c</name>
-    </fields>
-    <fields>
-        <label><!-- BrightCove Account ID --></label>
-        <name>PMP_BrightCoveVideoAccountID__c</name>
-    </fields>
-    <fields>
-        <label><!-- BrightCove Video Id --></label>
-        <name>PMP_BrightCoveVideoId__c</name>
-    </fields>
-    <fields>
-        <label><!-- BrightCove Video Job Id --></label>
-        <name>PMP_BrightCoveVideoJobId__c</name>
-    </fields>
-    <fields>
-        <label><!-- BrightCove Video Thumbnail URL --></label>
-        <name>PMP_BrightCoveVideoThumbnail_URL__c</name>
-    </fields>
-    <fields>
-        <label><!-- BrightCove Video Extension --></label>
-        <name>PMP_BrightCove_Video_Extension_Txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Delete BrightCove Video --></label>
-        <name>PMP_Delete_BrightCove_Video_Ind__c</name>
-    </fields>
-    <fields>
-        <label><!-- External Source Id --></label>
-        <name>PMP_External_Source_Id__c</name>
-    </fields>
-    <fields>
-        <label><!-- File Size --></label>
-        <name>PMP_File_Size_Txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- BrightCove Integration Status --></label>
-        <name>PMP_Integration_Status_Nm__c</name>
-        <picklistValues>
-            <masterLabel>Aborted</masterLabel>
-            <translation><!-- Aborted --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Failed</masterLabel>
-            <translation><!-- Failed --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Pending</masterLabel>
-            <translation><!-- Pending --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Success</masterLabel>
-            <translation><!-- Success --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
-        <label><!-- BrightCove Integration Status Reason --></label>
-        <name>PMP_Integration_Status_Reason_Txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Is Offering Gallery Video --></label>
-        <name>PMP_Offering_Gallery_Video_Ind__c</name>
-    </fields>
-    <fields>
         <help><!-- Master Detail to the Offering object --></help>
         <label><!-- Offering --></label>
         <name>PMP_Offering_Id__c</name>
@@ -82,10 +18,6 @@
         <help><!-- Holds the URL link of the offering resources (Data Sheet/Product Brief) --></help>
         <label><!-- Partner Offering Resource URL Text --></label>
         <name>PMP_Partner_Offering_Resource_URL_Txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Resource Description --></label>
-        <name>PMP_Resource_Description_Txt__c</name>
     </fields>
     <fields>
         <label><!-- Ordering Sequence --></label>
@@ -104,32 +36,20 @@
             <translation>データシート (英語)</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Demo</masterLabel>
-            <translation>ビデオによるデモ</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Diagram</masterLabel>
-            <translation>ダイアグラム</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>IOT Solutions Aggregator</masterLabel>
-            <translation>インテル® IoT ソリューション・アグリゲーター</translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Image</masterLabel>
             <translation>画像</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Others</masterLabel>
+            <translation>その他</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Product Brief</masterLabel>
             <translation>製品概要</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Reference Architecture</masterLabel>
-            <translation>リファレンス・アーキテクチャー</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Success Story</masterLabel>
-            <translation>事例</translation>
+            <masterLabel>Product Web Page</masterLabel>
+            <translation>製品ウェブページ</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Thumbnail Image</masterLabel>
@@ -140,29 +60,9 @@
             <translation>チュートリアル</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>URL</masterLabel>
-            <translation><!-- URL --></translation>
+            <masterLabel>Video Demo</masterLabel>
+            <translation>ビデオによるデモ</translation>
         </picklistValues>
-        <picklistValues>
-            <masterLabel>Video</masterLabel>
-            <translation>ビデオ</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Web Page</masterLabel>
-            <translation>Web ページ</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Webinar</masterLabel>
-            <translation>ウェビナー</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>White Paper</masterLabel>
-            <translation>ホワイトペーパー</translation>
-        </picklistValues>
-    </fields>
-    <fields>
-        <label><!-- Video Title --></label>
-        <name>PMP_Video_Title_Txt__c</name>
     </fields>
     <nameFieldLabel><!-- Offering Title --></nameFieldLabel>
 </CustomObjectTranslation>

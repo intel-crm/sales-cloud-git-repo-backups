@@ -20,6 +20,10 @@ public class Core_ContentDocumentTriggerHandler extends TriggerHandler{
 
     public override void beforeDelete() {
         PCC_ContentDocumentHelper.preventDeletionForPartners(trigger.old);
+       
+        if(isActive('Pricing_Track_Attachment_Deletion')){
+       		Pricing_TrackAttachmentDeletionHandler.conentDocLinkDtls(Trigger.Old);
+        }
     }
 
     public override void beforeUpdate() {

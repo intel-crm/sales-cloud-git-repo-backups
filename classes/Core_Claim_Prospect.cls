@@ -1,13 +1,3 @@
-/*-------------------------------------------------------------------------------------------
-Apex Class  : Core_Claim_Prospect
-Version     : 1.0 
-Created Date: 22 Sep 2020
-Function    : Apex class for Claim button to change the ownership of record to loggrdin user on click of claim button
-Modification Log :
-* Developer                  Date                   Description
-* ----------------------------------------------------------------------------                 
-* Mahesh                 22/09/2020             Original Version
---------------------------------------------------------------------------------------------*/
 public without sharing class Core_Claim_Prospect {
     
     @auraEnabled

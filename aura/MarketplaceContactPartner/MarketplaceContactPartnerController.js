@@ -7,7 +7,7 @@
         var isClickInside = thisComponent.contains(event.target);
 
         if (!isClickInside) {
-          
+          // console.log('click outside',event.target, event.target.classList, thisComponent);
           component.set('v.toggle', false);
           helper.toggleModal(component, false);
         }
@@ -18,7 +18,7 @@
         
         // handleDataChange
         $A.enqueueAction(component.get('c.handleDataChange'));
-        
+        console.log('data : ' , component.get('v.dataObj'));
     },
     
     
@@ -57,10 +57,8 @@
         var analyticsData = component.find("analyticsData");
         var categoryLabel = (component.get('v.dataObj').categoryLabel == null) ? 'Not-Applicable' : component.get('v.dataObj').categoryLabel;
         var partnerId = (component.get('v.dataObj').id == null) ? 'Not-Applicable' : component.get('v.dataObj').id;
-        // IPA2.0 + US TWC4497-1631
-        // var offeringId =  (component.get('v.dataObj').offRecId == null) ? 'Not-Applicable' : component.get('v.dataObj').offRecId;
-        // var str = 'modal_contact-partner|' + categoryLabel +'|' + partnerId + '|' + offeringId;        
-        var str = 'modal_contact-partner|' + categoryLabel +'|' + partnerId;
+        var offeringId =  (component.get('v.dataObj').offRecId == null) ? 'Not-Applicable' : component.get('v.dataObj').offRecId;
+        var str = 'modal_contact-partner|' + categoryLabel +'|' + partnerId + '|' + offeringId;
         analyticsData.formAnalyticsData('click',str,'ask-a-question');
         //Contact Partner analytics code ends
         
@@ -88,10 +86,8 @@
         var analyticsData = component.find("analyticsData");
         var categoryLabel = (component.get('v.dataObj').categoryLabel == null) ? 'Not-Applicable' : component.get('v.dataObj').categoryLabel;
         var partnerId = (component.get('v.dataObj').id == null) ? 'Not-Applicable' : component.get('v.dataObj').id;
-        // IPA2.0 + US TWC4497-1631
-        // var offeringId =  (component.get('v.dataObj').offRecId == null) ? 'Not-Applicable' : component.get('v.dataObj').offRecId;
-        // var str = 'modal_contact-partner|' + categoryLabel +'|' + partnerId + '|' + offeringId;
-        var str = 'modal_contact-partner|' + categoryLabel +'|' + partnerId ;
+        var offeringId =  (component.get('v.dataObj').offRecId == null) ? 'Not-Applicable' : component.get('v.dataObj').offRecId;
+        var str = 'modal_contact-partner|' + categoryLabel +'|' + partnerId + '|' + offeringId;
         analyticsData.formAnalyticsData('click',str,'request-a-quote');
         //Contact Partner analytics code ends
         
@@ -146,7 +142,7 @@
         window.clearTimeout(debounceIndex);
     }*/
     /*handleContactByFormLoggedIn: function(component,event,helper){
-        
+        console.log('handleContactByFormLoggedIn ');
         // Set logged user details
         var url = window.location.href; 
         var prevUrl=url.substr(0,url.substr(0, url.lastIndexOf("/")).lastIndexOf("/") + 1);
@@ -157,7 +153,7 @@
     
     
     var appEvent = $A.get("e.c:MarketplacePageEvent");
-    
+    console.log('lang contact : '+ component.get("v.languagePreference"));
     appEvent.setParams({
     type: "openLeadGenModal",
     payload: {
@@ -169,7 +165,7 @@
 appEvent.fire();
 },*/
     /*handleContactByEmail: function(component, event, helper) {
-        
+        console.log("handleContactByEmail");
         
         var mockLogin = event && event.target && event.target.dataset ? event.target.dataset.loggedin : component.get("v.loggedin");
         var appEvent = $A.get("e.c:MarketplacePageEvent");

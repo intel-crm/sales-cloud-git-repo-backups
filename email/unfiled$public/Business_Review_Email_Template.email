@@ -1,0 +1,62 @@
+<messaging:emailTemplate subject="Business Review Notification by {!relatedTo.Owner.FirstName} {!relatedTo.Owner.LastName} {!relatedTo.CreatedDate}" recipientType="User" relatedToType="Business_Review__c" >
+<messaging:htmlEmailBody >
+ <table style="background-color: #0071c5;" width="100%">
+   <tbody>
+    <tr>
+      <td style="padding-left: 50px; border: none;">
+        <div style="color: white;">
+          <h1>Business Review Notification</h1>
+         </div>
+        </td>
+        <td style="border: none; padding-right: 20px;" align="right">
+        <apex:image url="https://intel--c.na104.content.force.com/servlet/servlet.ImageServer?id=0153b000004Pg4i&amp;oid=00Do0000000aRcf" /> 
+        </td>
+        </tr>
+        </tbody>
+ </table>
+ 
+  
+  <table style="font-family:intel clear;border: 1px solid #d3d3d3;padding-left:50px;padding-top:5px;padding-bottom:5px;font-size: 14px;" width="100%">
+  <tr>
+    <td>
+     Business Review record {!relatedTo.Name} has been created by {!relatedTo.Owner.FirstName} {!relatedTo.Owner.LastName}
+      <br/>
+     </td>
+    </tr> 
+  <tr>
+    <td>
+       <p>
+       <a href="{!LEFT($Api.Partner_Server_URL_290,FIND('services',$Api.Partner_Server_URL_290)-1)}{!relatedTo.Id}" style="font-size: 14px"> {!relatedTo.Name}</a>
+
+       Click Here to see additional information on this Business Review.<br /><br /></p>
+       <br/>
+     </td>
+    </tr> 
+    <br/>
+    Business Review Details:<br/>
+    <tr><b>Review #:</b> {!relatedTo.Name}</tr><br/>
+    <tr><b>Meeting Date:</b> <apex:outputField value="{!relatedTo.Meeting_Date__c}" /></tr><br/>
+    <tr><b>New/Increased:</b> {!relatedTo.New_Increased__c}</tr><br/>
+    <tr><b>Won:</b> {!relatedTo.Won__c}</tr><br/>
+    <tr><b>Lost:</b> {!relatedTo.Lost__c}</tr><br/>
+    <tr><b>Pushed:</b> {!relatedTo.Pushed__c}</tr><br/>
+    <tr><b>Help Needed:</b> {!relatedTo.Help_Needed__c}</tr><br/>
+    <tr><b>Insights/Trends:</b> {!relatedTo.Insights_Trends__c}</tr><br/>
+    <tr><b>Escalation Review?:</b> {!relatedTo.Escalation_Review__c}</tr><br/>
+    <tr><b>Owner:</b> {!relatedTo.Owner.FirstName} {!relatedTo.Owner.LastName}</tr><br/>
+  </table>   
+ <table style="border: 1px solid #d3d3d3;padding-left:50px;padding-top:5px;padding-bottom:5px;font-size: 20px;" width="100%">
+  <tr>
+   <td>
+    
+     <p style="text-align: center;font-size: 12px;">This message was sent to you as an important business communication related to your current relationship with Intel Corporation<br/>&copy;
+     {! YEAR( TODAY() )} Intel Corporation<br />
+     Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.<br/>
+     <a href="http://www.intel.com">www.intel.com</a><br/>
+     <a href="http://www.intel.com/privacy">Privacy</a> | <a href="http://www.intel.com/cookies">Cookies</a></p>
+     
+      </td>
+     </tr>
+ </table>    
+</messaging:htmlEmailBody>
+</messaging:emailTemplate>

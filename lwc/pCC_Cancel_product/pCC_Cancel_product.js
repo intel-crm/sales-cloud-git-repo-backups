@@ -19,12 +19,10 @@ export default class PCC_Cancel_product extends LightningElement {
     cancelButton=true;
     otherAlert=false;
     cancelledProduct = false;
-    expiredProduct = false;
     exception = false;
     success = false;
     showCommentsPopup = false;
     firstRun=true;
-    disableSave=false;
     UserName='';
 
     @wire(getRecord,{recordId:USER_ID,fields:[User_Name]})
@@ -62,10 +60,6 @@ export default class PCC_Cancel_product extends LightningElement {
                 if (this.status == 'Cancelled') {
                     this.isLoading = false;
                     this.cancelledProduct = true;
-                }
-                if (this.status == 'Expired') {
-                    this.isLoading = false;
-                    this.expiredProduct = true;
                 }else{
                     cancelProductMethod({ recId: this.recordId })
                 .then(result => {
@@ -119,7 +113,6 @@ export default class PCC_Cancel_product extends LightningElement {
                 this.showCommentsPopup=false;
                 this.otherAlert=true;
                 this.cancelButton=true;
-                this.disableSave=true;
                 console.log('line117'); 
                 //this.sendClosePopupToAura();
                 getRecordNotifyChange([{recordId: this.recordId}]);

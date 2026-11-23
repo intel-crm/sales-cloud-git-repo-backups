@@ -10,9 +10,6 @@
         <field>Opportunity.Core_Sales_Groups__c</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Opp_Prime_Account_Name__c</field>
-    </columns>
-    <columns>
         <field>Opportunity.Core_Product_Segment__c</field>
     </columns>
     <columns>
@@ -36,6 +33,9 @@
         <field>Account.Core_Prime_Account_Name__c</field>
     </columns>
     <columns>
+        <field>ACCOUNT_NAME</field>
+    </columns>
+    <columns>
         <field>STAGE_NAME</field>
     </columns>
     <columns>
@@ -50,11 +50,8 @@
     <columns>
         <field>Core_Opp_FC_Prod_Schedule__c.Core_FC_BU_Short_Name__c</field>
     </columns>
-    <columns>
-        <field>ROLLUP_DESCRIPTION</field>
-    </columns>
     <filter>
-        <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6 AND 7 AND 8 AND 9 AND 10</booleanFilter>
+        <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6 AND 7 AND 8 AND 9</booleanFilter>
         <criteriaItems>
             <column>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Quantity__c</column>
             <columnToColumn>false</columnToColumn>
@@ -75,6 +72,13 @@
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
             <value>Lost,Cancelled,Production Lost,Production Cancelled,Group Cancelled,Group Closed</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Core_Opp_FC_Prod_Schedule__c.Core_FC_BU_Short_Name__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>DCG</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Solution_Area__c</column>
@@ -102,7 +106,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>APJ Sales Territory</value>
+            <value>GMP APJ Sales Territory</value>
         </criteriaItems>
         <criteriaItems>
             <column>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Approval_Status__c</column>
@@ -110,20 +114,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Approved</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Opportunity_Type__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Deal: Partner Scale-enable,Deal: Sell-through</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>ROLLUP_DESCRIPTION</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Elaine,Arunava,Ee Lin</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -145,10 +135,10 @@
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>ACCOUNT_NAME</field>
+        <field>Opportunity.Core_Opp_Prime_Account_Name__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>APJT DCAI Partner 6QPS Approved</name>
+    <name>Partner 6QPS Won</name>
     <params>
         <name>terr</name>
         <value>all</value>

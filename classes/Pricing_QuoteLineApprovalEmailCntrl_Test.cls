@@ -65,7 +65,7 @@ public class Pricing_QuoteLineApprovalEmailCntrl_Test {
         p2.quoteLineId = null;
         p2.quoteLineData = null;
         String changedFields2 = p2.getChangedFields();
-        System.assertEquals(changedFields2,'');
+        System.assertEquals(changedFields2,null);
         Test.StopTest();
     }
     

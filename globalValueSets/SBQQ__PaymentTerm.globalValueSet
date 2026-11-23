@@ -12,7 +12,7 @@
     </customValue>
     <customValue>
         <fullName>Net 30</fullName>
-        <default>true</default>
+        <default>false</default>
         <label>Net 30</label>
     </customValue>
     <customValue>
@@ -29,6 +29,11 @@
         <fullName>Net 90</fullName>
         <default>false</default>
         <label>Net 90</label>
+    </customValue>
+    <customValue>
+        <fullName>Net 51</fullName>
+        <default>false</default>
+        <label>Net 51</label>
     </customValue>
     <masterLabel>Payment Term</masterLabel>
     <sorted>false</sorted>

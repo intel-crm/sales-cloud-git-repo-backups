@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>settings_misc</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>settings_misc</value>
+    </caseValues>
+    <fields>
+        <label><!-- Allow Coaches to Delete Worksheets --></label>
+        <name>Xvoyant__allowWorksheetDelete__c</name>
+    </fields>
+    <fields>
+        <label><!-- altCurrency --></label>
+        <name>Xvoyant__altCurrency__c</name>
+    </fields>
+    <fields>
+        <label><!-- appSize --></label>
+        <name>Xvoyant__appSize__c</name>
+    </fields>
+    <fields>
+        <label><!-- Close Date Range --></label>
+        <name>Xvoyant__closeDateRangeOption__c</name>
+    </fields>
+    <fields>
+        <label><!-- coachingFreq --></label>
+        <name>Xvoyant__coachingFreq__c</name>
+    </fields>
+    <fields>
+        <label><!-- 1 = include holding days in velocity --></label>
+        <name>Xvoyant__countHoldingStageInVelocity__c</name>
+    </fields>
+    <fields>
+        <label><!-- When a coaching session is completed --></label>
+        <name>Xvoyant__countSessionCompleted__c</name>
+    </fields>
+    <fields>
+        <label><!-- When a worksheet/agenda is completed --></label>
+        <name>Xvoyant__countWorksheetCompleted__c</name>
+    </fields>
+    <fields>
+        <label><!-- customCloseDateField --></label>
+        <name>Xvoyant__customCloseDateField__c</name>
+    </fields>
+    <fields>
+        <label><!-- customCreatedDateField --></label>
+        <name>Xvoyant__customCreatedDateField__c</name>
+    </fields>
+    <fields>
+        <label><!-- customOppAmountField --></label>
+        <name>Xvoyant__customOppAmountField__c</name>
+    </fields>
+    <fields>
+        <label><!-- customOppIncludeField --></label>
+        <name>Xvoyant__customOppIncludeField__c</name>
+    </fields>
+    <fields>
+        <label><!-- customOutcomeUnit --></label>
+        <name>Xvoyant__customOutcomeUnit__c</name>
+    </fields>
+    <fields>
+        <label><!-- dateLimit --></label>
+        <name>Xvoyant__dateLimit__c</name>
+    </fields>
+    <fields>
+        <label><!-- holdingStage --></label>
+        <name>Xvoyant__holdingStage__c</name>
+    </fields>
+    <fields>
+        <label><!-- oppGroupField --></label>
+        <name>Xvoyant__oppGroupField__c</name>
+    </fields>
+    <fields>
+        <label><!-- quadLabels --></label>
+        <name>Xvoyant__quadLabels__c</name>
+    </fields>
+    <fields>
+        <label><!-- requireEula --></label>
+        <name>Xvoyant__requireEula__c</name>
+    </fields>
+    <fields>
+        <label><!-- sectionType --></label>
+        <name>Xvoyant__sectionType__c</name>
+    </fields>
+    <fields>
+        <label><!-- Disable Settings --></label>
+        <name>Xvoyant__settings_tab_disable__c</name>
+    </fields>
+    <fields>
+        <label><!-- Show the selected Groups full H. Path --></label>
+        <name>Xvoyant__showHierarchyPath__c</name>
+    </fields>
+    <fields>
+        <label><!-- sweetSpot --></label>
+        <name>Xvoyant__sweetSpot__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

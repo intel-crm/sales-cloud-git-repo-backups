@@ -38,26 +38,20 @@
         <aggregateTypes>Sum</aggregateTypes>
         <field>AMOUNT</field>
     </columns>
-    <columns>
-        <field>STAGE_NAME</field>
-    </columns>
-    <columns>
-        <field>CLOSE_DATE</field>
-    </columns>
     <filter>
+        <criteriaItems>
+            <column>ROLLUP_DESCRIPTION</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>EMP of Chris Sassone</value>
+        </criteriaItems>
         <criteriaItems>
             <column>FULL_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Elise Stanberg</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>STAGE_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Design Win</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -74,7 +68,7 @@
     </params>
     <params>
         <name>open</name>
-        <value>closed</value>
+        <value>open</value>
     </params>
     <params>
         <name>probability</name>
@@ -91,8 +85,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2021-12-31</endDate>
+        <endDate>2026-11-23</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2021-01-01</startDate>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

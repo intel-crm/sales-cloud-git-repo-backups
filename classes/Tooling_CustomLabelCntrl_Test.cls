@@ -3,10 +3,9 @@ public class Tooling_CustomLabelCntrl_Test {
     @isTest
     public static void testGetApexBody() {
         Test.startTest();
-        List<String> classnames = Tooling_CustomLabelCntrl.getApexClassNames();
-        List<Tooling_CustomLabelWrapper> getapxbody = Tooling_CustomLabelCntrl.getApexBody('Core_MDF_RMF_SchNotification_Batch_Test');
+        List<Tooling_CustomLabelWrapper> apexBodies = Tooling_CustomLabelCntrl.getApexBody();
         Test.stopTest();
-        System.assertEquals(true, classnames.size()>0);
+        System.assertEquals(true, apexBodies.size()>0);
     }
     
     @isTest
@@ -39,8 +38,7 @@ public class Tooling_CustomLabelCntrl_Test {
         Test.setMock(HttpCalloutMock.class, new Tooling_LWCMockClass());
         
         Test.startTest();
-        List<String> lwcBodies = Tooling_CustomLabelCntrl.getLWCNames();
-        List<Tooling_CustomLabelWrapper> lwcbodies1 = Tooling_CustomLabelCntrl.getLWCResource(new List<String>{'LWCBundle1'});
+        List<Tooling_CustomLabelWrapper> lwcBodies = Tooling_CustomLabelCntrl.getLWCResource();
         Test.stopTest();
         
         // Add your assertions here to check if the lwcBodies list contains the expected data.

@@ -255,10 +255,6 @@
     <pluralLabel>Account Bank Mappings</pluralLabel>
     <searchLayouts/>
     <sharingModel>Private</sharingModel>
-    <sharingReasons>
-        <fullName>Core_MDF_AccountNodeGroup__c</fullName>
-        <label>AccountNodeGroup</label>
-    </sharingReasons>
     <validationRules>
         <fullName>Core_MDF_Check_Bank_Program</fullName>
         <active>true</active>
@@ -271,14 +267,14 @@
 		OR(
 			( 
 				AND( 
-					CONTAINS(Core_MDF_Bank__r.Core_MDF_Program_Value__c,&apos;Client;&apos;) , 
-					Core_MDF_Account__r.Core_MDF_Channel_Program__r.Name = &apos;Client&apos;
+					CONTAINS(Core_MDF_Bank__r.Core_MDF_Program_Value__c,&apos;Client Co-Marketing Fund;&apos;) , 
+					Core_MDF_Account__r.Core_MDF_Channel_Program__r.Name = &apos;Client Co-Marketing Fund&apos;
 				)
 			),
 			( 
 				AND( 
-					CONTAINS(Core_MDF_Bank__r.Core_MDF_Program_Value__c, &apos;Datacenter;&apos;) , 
-					Core_MDF_Account__r.Core_MDF_Channel_Program__r.Name = &apos;Datacenter&apos;
+					CONTAINS(Core_MDF_Bank__r.Core_MDF_Program_Value__c, &apos;Data Center Co-Marketing Fund;&apos;) , 
+					Core_MDF_Account__r.Core_MDF_Channel_Program__r.Name = &apos;Data Center Co-Marketing Fund&apos;
 				) 
 			), 
 			( 
@@ -298,29 +294,11 @@
 					CONTAINS(Core_MDF_Bank__r.Core_MDF_Program_Value__c, &apos;Retail Marketing Funds;&apos;) , 
 					Core_MDF_Account__r.Core_MDF_Channel_Program__r.Name = &apos;Retail Marketing Funds&apos;
 				) 
-			),
-			( 
-				AND( 
-					CONTAINS(Core_MDF_Bank__r.Core_MDF_Program_Value__c, &apos;Intel Partner Alliance;&apos;) , 
-					Core_MDF_Account__r.Core_MDF_Channel_Program__r.Name = &apos;Intel Partner Alliance&apos;
-				) 
-			),
-			( 
-				AND( 
-					CONTAINS(Core_MDF_Bank__r.Core_MDF_Program_Value__c, &apos;Ecosystem Extension Fund;&apos;) , 
-					Core_MDF_Account__r.Core_MDF_Channel_Program__r.Name = &apos;Ecosystem Extension Fund&apos;
-				) 
-			),
-			( 
-				AND( 
-					CONTAINS(Core_MDF_Bank__r.Core_MDF_Program_Value__c, &apos;Co-GTM;&apos;) , 
-					Core_MDF_Account__r.Core_MDF_Channel_Program__r.Name = &apos;Co-GTM&apos;
-				) 
 			)
 		) 
 	,FALSE,TRUE)
 	,FALSE
-	)</errorConditionFormula>
+)</errorConditionFormula>
         <errorMessage>Select Bank with same program as of Account</errorMessage>
     </validationRules>
     <validationRules>

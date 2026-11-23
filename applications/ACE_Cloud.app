@@ -6,7 +6,6 @@
     <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
     <isOmniPinnedViewEnabled>false</isOmniPinnedViewEnabled>
     <label>Salesforce</label>
-    <logo>SharedDocuments/Intel_Logo_with_asterisk.png</logo>
     <tabs>standard-Lead</tabs>
     <tabs>standard-Account</tabs>
     <tabs>standard-Contact</tabs>
@@ -25,10 +24,55 @@
     <tabs>Core_Value_Map__c</tabs>
     <tabs>Core_CCV__c</tabs>
     <tabs>Core_Channel_Data_Search_Tab</tabs>
+    <tabs>Core_Sales_Commissions</tabs>
     <tabs>Core_Channel_Sales_Analysis</tabs>
+    <tabs>Core_Account_Team_Review</tabs>
+    <tabs>Core_Account_Team_Review_Data_Ops</tabs>
     <tabs>Core_Pipeline_Analysis</tabs>
     <tabs>Core_Pipeline_Management</tabs>
     <tabs>Ask_a_Question</tabs>
+    <tabs>Core_Inquiry__c</tabs>
     <tabs>Core_Prospect__c</tabs>
-    <tabs>Account_Create_Request__c</tabs>
+    <tabs>Core_CIM_Staging__c</tabs>
+    <tabs>Core_Oppty_KPI_New__c</tabs>
+    <tabs>Core_Opp_FC_Prod_Schedule__c</tabs>
+    <tabs>Sales_License_Generator__c</tabs>
+    <tabs>Sales_License_Group__c</tabs>
+    <tabs>Core_KPI_Staging__c</tabs>
+    <tabs>price_forward_cost__c</tabs>
+    <tabs>Sales_License__c</tabs>
+    <tabs>Sales_License_Order_Product__c</tabs>
+    <tabs>Address__c</tabs>
+    <tabs>Core_Opp_KPI_History__c</tabs>
+    <tabs>Core_Account_SoldTo_ShipTo_Rel__c</tabs>
+    <tabs>Sales_License_Generator_Switch__c</tabs>
+    <tabs>Sales_Feedback__c</tabs>
+    <tabs>Core_Contact_GEC_Staging__c</tabs>
+    <tabs>DP_EAT_Project_Info__c</tabs>
+    <tabs>DP_EAT_Project_Test_Classes__c</tabs>
+    <tabs>DP_EAT_Project_Test_Run_Results__c</tabs>
+    <tabs>Core_Solution_Storage__c</tabs>
+    <tabs>Opportunity_Solution_Area__c</tabs>
+    <tabs>Core_BU_Owner_Table__c</tabs>
+    <tabs>Pricing_Price_Rules__c</tabs>
+    <tabs>Core_Delegate_Approver__c</tabs>
+    <tabs>SeismicContentSync_DOV__c</tabs>
+    <tabs>SJ_Extend__c</tabs>
+    <tabs>Seismic_PIMActiveHierarchy__c</tabs>
+    <tabs>Approver__c</tabs>
+    <tabs>Core_Products_Staging__c</tabs>
+    <tabs>PSG_Free_License_Request__c</tabs>
+    <tabs>Opportunity_Team_Member</tabs>
+    <tabs>Design_Registration_Stage__c</tabs>
+    <tabs>Design_Registration_Product_M2M_Stage__c</tabs>
+    <tabs>PCC_DDR_L5_Product_Mapping__c</tabs>
+    <tabs>SWS_Cloud_Credit_Request__c</tabs>
+    <tabs>PCC_Rebate_Claim__c</tabs>
+    <tabs>PCC_Rebate_Claim_Stage__c</tabs>
+    <tabs>PCC_Deal_Change_Request__c</tabs>
+    <tabs>PCC_Deal_Change_Request_Line_Item__c</tabs>
+    <tabs>CRM_Linked_Opportunities__c</tabs>
+    <tabs>PCC_EndCustomerAcc_Mapping__c</tabs>
+    <tabs>Deployment_Components__c</tabs>
+    <tabs>Deployment__c</tabs>
 </CustomApplication>

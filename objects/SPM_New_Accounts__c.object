@@ -207,6 +207,39 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>CST_New_Account_Level__c</fullName>
+        <label>New Account Level</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Level1</fullName>
+                    <default>false</default>
+                    <label>Level 1</label>
+                </value>
+                <value>
+                    <fullName>Level2</fullName>
+                    <default>false</default>
+                    <label>Level 2</label>
+                </value>
+                <value>
+                    <fullName>Level3</fullName>
+                    <default>false</default>
+                    <label>Level 3</label>
+                </value>
+                <value>
+                    <fullName>NoLevel</fullName>
+                    <default>false</default>
+                    <label>No Level</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
         <fullName>Company_URL__c</fullName>
         <label>Company URL</label>
         <required>false</required>
@@ -224,31 +257,26 @@
             <valueSetDefinition>
                 <sorted>false</sorted>
                 <value>
-                    <fullName>Intel led</fullName>
+                    <fullName>Intel Covered</fullName>
                     <default>true</default>
-                    <label>Intel-led Account</label>
+                    <label>Intel Covered</label>
                 </value>
                 <value>
-                    <fullName>Partner-led Account</fullName>
+                    <fullName>Indirect Covered</fullName>
                     <default>false</default>
-                    <label>Partner-led Account</label>
+                    <label>Indirect Covered</label>
                 </value>
                 <value>
-                    <fullName>Other-led Account</fullName>
+                    <fullName>Not Covered</fullName>
                     <default>false</default>
-                    <label>Other-led Account</label>
-                </value>
-                <value>
-                    <fullName>Not Covered Account</fullName>
-                    <default>false</default>
-                    <label>Not Covered Account</label>
+                    <label>Not Covered</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
     <fields>
         <fullName>Customer_category__c</fullName>
-        <label>Semi-Annual Temp Account Category</label>
+        <label>Account Category</label>
         <required>false</required>
         <trackTrending>false</trackTrending>
         <type>MultiselectPicklist</type>
@@ -306,18 +334,6 @@
                     <default>false</default>
                     <label>Growth-VBS</label>
                 </value>
-                <value>
-                    <fullName>Growth/VBS</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Growth/VBS</label>
-                </value>
-                <value>
-                    <fullName>Specialty</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Specialty</label>
-                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -370,6 +386,11 @@
                     <fullName>Americas Hosted Sales Group</fullName>
                     <default>false</default>
                     <label>Americas Hosted Sales Group</label>
+                </value>
+                <value>
+                    <fullName>India Sales Group</fullName>
+                    <default>false</default>
+                    <label>India Sales Group</label>
                 </value>
                 <value>
                     <fullName>APJ Japan Sales Group</fullName>
@@ -450,17 +471,6 @@
                     <fullName>India Partner Led</fullName>
                     <default>false</default>
                     <label>India Partner Led</label>
-                </value>
-                <value>
-                    <fullName>India Sales Group</fullName>
-                    <default>false</default>
-                    <label>India Sales Group</label>
-                </value>
-                <value>
-                    <fullName>APJ India Sales Group</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>APJ India Sales Group</label>
                 </value>
                 <value>
                     <fullName>Global Solutions &amp; Services Sales Group</fullName>
@@ -549,7 +559,6 @@
         <columns>New_Account_Owner__c</columns>
         <columns>Customer_category__c</columns>
         <columns>New_Sales_Group__c</columns>
-        <columns>GTM_Model__c</columns>
         <columns>Team_Members__c</columns>
         <columns>Reasoning__c</columns>
         <columns>CREATEDBY_USER</columns>

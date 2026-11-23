@@ -11,18 +11,6 @@
     <fields>
         <label><!-- Access Flag --></label>
         <name>Core_IPS_MAP_Access_Flag__c</name>
-        <picklistValues>
-            <masterLabel>Approval Required</masterLabel>
-            <translation><!-- Approval Required --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Auto Approve</masterLabel>
-            <translation><!-- Auto Approve --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Par Hidden</masterLabel>
-            <translation><!-- Par Hidden --></translation>
-        </picklistValues>
     </fields>
     <fields>
         <label><!-- # Supported Accounts --></label>

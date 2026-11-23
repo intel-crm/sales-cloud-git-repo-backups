@@ -1,0 +1,76 @@
+<template>
+    <div class="sow-container">
+        <template for:each={backgroundItems} for:item="background">
+            <div key={background.id} class="sow-item">
+                <div class="sow-field">
+                    <span class="sow-label">Agenda Topic:</span>
+                    <template if:false={background.isEditing}>
+                        <div>{background.agendaTopic}</div>
+                    </template>
+                    <template if:true={background.isEditing}>
+                        <lightning-textarea class="custom-input" data-id={background.id}
+                            data-field="agendaTopic" value={background.agendaTopic}
+                            onchange={handleInputChange}>
+                        </lightning-textarea>
+                    </template>
+                </div>
+                <div class="sow-field">
+                    <span class="sow-label">Background:</span>
+                    <template if:false={background.isEditing}>
+                        <lightning-formatted-rich-text value={background.backgroundObjective1}
+                            formats={formats}></lightning-formatted-rich-text>
+                    </template>
+                    <template if:true={background.isEditing}>
+                        <lightning-input-rich-text class="custom-input" value={background.backgroundObjective1} formats={formats}
+                            data-id={background.id} data-field="backgroundObjective1"
+                            onchange={handleInputChange} rows="10" placeholder="No more than 2-3 bullets per background section aligned to the meeting objectives">
+                        </lightning-input-rich-text>
+                    </template>
+                </div>
+                <div class="sow-field">
+                    <span class="sow-label">Reactive Talking Points:</span>
+                    <template if:false={background.isEditing}>
+                        <lightning-formatted-rich-text value={background.reactiveTalkingPoints}
+                            formats={formats}></lightning-formatted-rich-text>
+                    </template>
+                    <template if:true={background.isEditing}>
+                        <lightning-input-rich-text class="rich-text-wrapper" label="Reactive Talking Points"
+                            formats={formats} value={background.reactiveTalkingPoints}
+                            data-id={background.id} data-field="reactiveTalkingPoints"
+                            onchange={handleInputChange} placeholder="3 TOPICS MAX PER MEETING HALF HOUR">
+                        </lightning-input-rich-text>
+                    </template>
+                </div>
+                <div class="sow-field">
+                    <span class="sow-label">Proactive Talking Points:</span>
+                    <template if:false={background.isEditing}>
+                        <lightning-formatted-rich-text value={background.proactiveTalkingPoints}
+                            formats={formats}></lightning-formatted-rich-text>
+                    </template>
+                    <template if:true={background.isEditing}>
+                        <lightning-input-rich-text class="rich-text-wrapper"
+                            label="Proactive Talking Points" formats={formats}
+                            value={background.proactiveTalkingPoints} data-id={background.id}
+                            data-field="proactiveTalkingPoints" onchange={handleInputChange} placeholder="3 TOPICS MAX PER MEETING HALF HOUR">
+                        </lightning-input-rich-text>
+                    </template>
+                </div>
+                <div class="sow-actions">
+                    <lightning-button-icon icon-name="utility:edit" alternative-text="Edit"
+                        onclick={handleEdit} data-id={background.id}></lightning-button-icon>
+                    <lightning-button-icon icon-name="utility:delete" alternative-text="Remove"
+                        onclick={handleDeleteRow} data-id={background.id}></lightning-button-icon>
+                    <template if:true={background.isEditing}>
+                        <lightning-button-icon icon-name="utility:close" alternative-text="Cancel"
+                            onclick={handleCancelEdit} data-id={background.id}></lightning-button-icon>
+                    </template>
+                </div>
+            </div>
+        </template>
+    </div>
+    <div class="slds-p-around_medium button-container">
+        <lightning-button label="Add New" onclick={handleAddRow}></lightning-button>
+        <lightning-button label="Save" variant="brand" onclick={handleSave} class="slds-m-left_small">
+        </lightning-button>
+    </div>
+</template>

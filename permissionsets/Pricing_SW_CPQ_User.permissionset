@@ -3640,6 +3640,10 @@
         <enabled>true</enabled>
         <name>Pricing_SW_Custom_Action</name>
     </customPermissions>
+    <customPermissions>
+        <enabled>true</enabled>
+        <name>Pricing_SW_Update_QL_List_Unit_Price</name>
+    </customPermissions>
     <fieldPermissions>
         <editable>true</editable>
         <field>Account.Core_Account_Owner_Preview__c</field>
@@ -4692,6 +4696,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>SBQQ__QuoteLine__c.Pricing_Product_Name__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>SBQQ__QuoteLine__c.Pricing_SW_Additional_Disc__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -4702,7 +4711,22 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>SBQQ__QuoteLine__c.Pricing_SW_Discount__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>SBQQ__QuoteLine__c.Pricing_SW_Exclude_Prepaid_Upfront__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>SBQQ__QuoteLine__c.Pricing_SW_Monthly_Price__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>SBQQ__QuoteLine__c.Pricing_SW_PLI_Approval_Discount__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -5826,6 +5850,21 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__Quote__c.Pricing_SW_CustomerAccPayableDeptPhEmail__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__Quote__c.Pricing_SW_Customer_Contact_Phone_Number__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__Quote__c.Pricing_SW_Customer_Purchase_Order_No__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>SBQQ__Quote__c.Pricing_SW_Days_in_In_Review__c</field>
         <readable>true</readable>
@@ -5833,6 +5872,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>SBQQ__Quote__c.Pricing_SW_Description__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__Quote__c.Pricing_SW_Exclude_Prepaid_Upfront_Total__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -5852,7 +5896,22 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>SBQQ__Quote__c.Pricing_SW_No_Prepaid_Upfront_Note__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>SBQQ__Quote__c.Pricing_SW_Opportunity_Submit_Or_Approve__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>SBQQ__Quote__c.Pricing_SW_Prepaid_Upfront_Note__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__Quote__c.Pricing_SW_Quote_Product_Type__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

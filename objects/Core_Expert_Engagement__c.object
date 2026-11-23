@@ -154,7 +154,7 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <externalSharingModel>Private</externalSharingModel>
+    <externalSharingModel>ReadWrite</externalSharingModel>
     <fields>
         <fullName>Core_Engagement_Date__c</fullName>
         <label>Engagement Date</label>
@@ -173,7 +173,7 @@
         <valueSet>
             <restricted>true</restricted>
             <valueSetDefinition>
-                <sorted>true</sorted>
+                <sorted>false</sorted>
                 <value>
                     <fullName>APJ</fullName>
                     <default>false</default>
@@ -195,15 +195,15 @@
                     <label>HQ</label>
                 </value>
                 <value>
+                    <fullName>PRC</fullName>
+                    <default>false</default>
+                    <label>PRC</label>
+                </value>
+                <value>
                     <fullName>INDIA</fullName>
                     <default>false</default>
                     <isActive>false</isActive>
                     <label>INDIA</label>
-                </value>
-                <value>
-                    <fullName>PRC</fullName>
-                    <default>false</default>
-                    <label>PRC</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -524,6 +524,16 @@
         <errorConditionFormula>ISPICKVAL(Core_Expert_Engagement_Type__c, &quot;CQ&amp;R&quot;) &amp;&amp; ISBLANK(Text(Core_Expert_Engagement_Geo__c))</errorConditionFormula>
         <errorDisplayField>Core_Expert_Engagement_Geo__c</errorDisplayField>
         <errorMessage>Expert Engagement Region field is required for Engagement Type &quot;CQ&amp;R&quot;</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_OptyExEngmn_QuoteSubmittedStatusChk</fullName>
+        <active>true</active>
+        <description>Opportunity Expert Engagement Quote Submitted Status Lock check</description>
+        <errorConditionFormula>IF($Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c=TRUE,FALSE,
+
+AND ( Core_Opportunity_Name__r.Core_Opportunity_Lock_Status__c = true, ISPICKVAL( Core_Opportunity_Name__r.Core_Coverage_Type_Nm__c, &apos;Deal Registration&apos;), ISPICKVAL(Core_Opportunity_Name__r.Core_Opportunity_Coverage_Nm__c , &apos;Partner-Led Opportunity&apos;) )
+)</errorConditionFormula>
+        <errorMessage>Quote associated to this Opportunity is Submitted for Review. No Edits allowed on Opportunity during the Review process.</errorMessage>
     </validationRules>
     <visibility>Public</visibility>
     <webLinks>

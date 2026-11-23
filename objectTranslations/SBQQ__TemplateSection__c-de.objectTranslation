@@ -72,6 +72,10 @@
             <masterLabel>Primary</masterLabel>
             <translation>Primär</translation>
         </picklistValues>
+        <picklistValues>
+            <masterLabel>core_cpq_if_TP__c</masterLabel>
+            <translation><!-- core_cpq_if_TP__c --></translation>
+        </picklistValues>
     </fields>
     <fields>
         <help>Wählen Sie den Vorlageninhalt aus, der in diesem Vorlagenabschnitt angezeigt werden soll.</help>
@@ -99,6 +103,10 @@
         <picklistValues>
             <masterLabel>Pricing_Ready_for_QuoteLetter_cb__c</masterLabel>
             <translation><!-- Pricing_Ready_for_QuoteLetter_cb__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pricing_Status_Nm__c</masterLabel>
+            <translation><!-- Pricing_Status_Nm__c --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>core_cpq_Parent_Quote_Flag_for_documen__c</masterLabel>

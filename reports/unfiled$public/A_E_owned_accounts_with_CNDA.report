@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Account.Core_Is_Active__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Account.Core_MDF_Active_Ind__c</field>
-    </columns>
-    <columns>
         <field>DUE_DATE</field>
     </columns>
     <columns>
@@ -32,13 +24,6 @@
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>Account.Core_B2B_Entitlement__c</field>
-    </columns>
-    <columns>
-        <field>Account.Core_CNDA_Number__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Account.Core_RDC_Content_Restriction__c</field>
     </columns>
     <filter>
         <criteriaItems>

@@ -33,22 +33,21 @@ Accenture - Varun 			04/02/2020					 Updated the if condition in line 95 - Sonar
                 if(pmb.Core_MDF_Budget_Partner__c != null){
                     budgetWithVirtualAccount.put(pmb.Id, pmb.Core_MDF_Budget_Partner__c);
                     budgetIdList.add(pmb.Id);
-                    //System.debug('budgetIdList :' + budgetIdList);
+                    System.debug('budgetIdList :' + budgetIdList);
                 }
                 
             }
             for(Account acc: [SELECT Id, Core_MDF_CoMarketing_Ultimate_Account__c,Core_MDF_Channel_Program__c FROM Account WHERE Id IN: budgetWithVirtualAccount.values()]){
                 if(acc.Core_MDF_CoMarketing_Ultimate_Account__c!= null){
                     virtualAccWithIntelAcc.put(acc.Id, acc.Core_MDF_CoMarketing_Ultimate_Account__c);
-                    //System.debug('virtualAccWithIntelAcc :' + virtualAccWithIntelAcc);
+                    System.debug('virtualAccWithIntelAcc :' + virtualAccWithIntelAcc);
                 }
             }
             
             //Fetching PGM records and storing them in map with Account
             for(Core_MDF_Partner_Group_Mapping__c pgm:[SELECT Id, Core_MDF_Group_Id__c, Core_MDF_Account__c, Core_MDF_Channel_Program__c
                                                        FROM Core_MDF_Partner_Group_Mapping__c WHERE Core_MDF_Type_of_Access__c='External' 
-                                                       AND Core_MDF_Account__c IN :virtualAccWithIntelAcc.values()
-                                                       AND Core_MDF_Inactive_Ind__c = false]){
+                                                       AND Core_MDF_Account__c IN :virtualAccWithIntelAcc.values()]){
                                                            
                                                            if(intelAccIdWithGroup.containsKey(pgm.Core_MDF_Account__c)){
                                                                intelAccIdWithGroup.get(pgm.Core_MDF_Account__c).add(pgm);
@@ -60,7 +59,7 @@ Accenture - Varun 			04/02/2020					 Updated the if condition in line 95 - Sonar
                                                                intelAccIdWithGroup.put(pgm.Core_MDF_Account__c,tempPGM);
                                                            }
                                                        }
-            //System.debug('intelAccIdWithGroup :' + intelAccIdWithGroup);
+            System.debug('intelAccIdWithGroup :' + intelAccIdWithGroup);
             
             //Collecting existing Budget Cap Share Records
             Map<Id,List<Id>> bCapIdWithUserOrGroupId = new Map<Id,List<Id>>();
@@ -79,35 +78,36 @@ Accenture - Varun 			04/02/2020					 Updated the if condition in line 95 - Sonar
             }
             
             
-           // System.debug('budgetIdList : '+budgetIdList);
+            System.debug('budgetIdList : '+budgetIdList);
             
             for(Core_MDF_Budget_Cap__c budgetCap :[SELECT Id, Name, Core_MDF_Budget_Name_id__c,
                                                    Core_MDF_Budget_Name_id__r.Core_MDF_Budget_Partner__r.Core_MDF_CoMarketing_Ultimate_Account__c, 
                                                    Core_MDF_Program_txt__c FROM Core_MDF_Budget_Cap__c 
                                                    WHERE Core_MDF_Budget_Name_id__c IN : budgetIdList]){
                                                        List<Id> userorGroupIdToShare = new List<Id> ();
-                                                       //System.debug('budgetCap : '+budgetCap);
+                                                       System.debug('budgetCap : '+budgetCap);
                                                        Id accountId =budgetCap.Core_MDF_Budget_Name_id__r.Core_MDF_Budget_Partner__r.Core_MDF_CoMarketing_Ultimate_Account__c ;
-                                                        //ATHR - Deeply Nested if 16209
-                                                        if(!intelAccIdWithGroup.containsKey(accountId)){
-                                                            continue;
-                                                        }
+                                                       if(intelAccIdWithGroup.containsKey(accountId)){
                                                            for(Core_MDF_Partner_Group_Mapping__c pgm1  : intelAccIdWithGroup.get(accountId)){
-                                                               //ATHR - Deeply Nested if 16209
-                                                               if(budgetCap.Core_MDF_Program_txt__c == null || budgetCap.Core_MDF_Program_txt__c != pgm1.Core_MDF_Channel_Program__c || pgm1.Core_MDF_Group_Id__c == null){
-                                                                    continue;
-                                                                }
-                                                                if(!(bCapIdWithUserOrGroupId.containsKey(budgetCap.Id) && bCapIdWithUserOrGroupId.get(budgetCap.Id) != null && bCapIdWithUserOrGroupId.get(budgetCap.Id).contains(pgm1.Core_MDF_Group_Id__c))){
+                                                               if(budgetCap.Core_MDF_Program_txt__c != null && budgetCap.Core_MDF_Program_txt__c == pgm1.Core_MDF_Channel_Program__c
+                                                                && pgm1.Core_MDF_Group_Id__c != null){
+                                                                      
                                                                     
+                                                                    
+                                                                    if(!(bCapIdWithUserOrGroupId.containsKey(budgetCap.Id) &&
+                                                                        bCapIdWithUserOrGroupId.get(budgetCap.Id) != null &&
+                                                                        bCapIdWithUserOrGroupId.get(budgetCap.Id).contains(pgm1.Core_MDF_Group_Id__c))){
                                                                             userorGroupIdToShare.add(pgm1.Core_MDF_Group_Id__c);
+                                                                    }
                                                                 }
-                                                                //System.debug('userorGroupIdToShare :' + userorGroupIdToShare);
+                                                                System.debug('userorGroupIdToShare :' + userorGroupIdToShare);
                                                                 if(!userorGroupIdToShare.isEmpty()){
                                                                     objectIdUserGroupIdListMapToShare.Put(budgetCap.Id, userorGroupIdToShare);
                                                                 }                                                                                                                           
                                                             }
+                                                        }                                                       
             }
-           // System.debug('objectIdUserGroupIdListMapToShare :' + objectIdUserGroupIdListMapToShare);
+            System.debug('objectIdUserGroupIdListMapToShare :' + objectIdUserGroupIdListMapToShare);
             
             if(!objectIdUserGroupIdListMapToShare.isEmpty()){
                 //Core_MDF_GenericShareRecordActionClass.createShareRecordList('Core_MDF_Budget_Cap__c', objectIdUserGroupIdListMapToShare);

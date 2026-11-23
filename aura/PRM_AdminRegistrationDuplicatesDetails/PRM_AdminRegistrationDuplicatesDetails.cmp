@@ -57,20 +57,16 @@
                     {!$Label.c.PRM_DuplicateInfo}
                 </div>
                 
-                <lightning:card iconName="standard:account" title="{!$Label.c.PRM_CIM}">
+                <lightning:card iconName="standard:account" title='{!$Label.c.PRM_CIM}'>
                     
                     <!--<aura:if isTrue="{!not(empty(v.AccountList))}">  -->
                     <div class="{!not(empty(v.AccountList)) ? 'slds-show' : 'slds-hide'}"> 
                         <div id = "reqAcc" class="slds-border_top table-align">
-                            <lightning:datatable aura:id="reqAccTbl" data="{! v.ReqAccList }" columns="{! v.requstdaccountColumns }" 
-                            resizeColumnDisabled="true"  keyField="Name" hideCheckboxColumn="false" hideTableHeader="false" 
-                            maxRowSelection="{!v.maxRowSelection}"/>
+                            <lightning:datatable aura:id="reqAccTbl" data="{! v.ReqAccList }" columns="{! v.requstdaccountColumns }" resizeColumnDisabled="true"  keyField="Name" hideCheckboxColumn="false" hideTableHeader="false" maxRowSelection="{!v.maxRowSelection}"/>
                         </div> 
                         
                         <div id ="accsFound" class="table-align">
-                            <lightning:datatable aura:id="accsFoundTable" data="{! v.AccountList }" 
-                            columns="{! v.accountColumns }" keyField="Id" onrowselection="{!c.updateSelectedText}"  
-                            selectedRows = "{!v.selectedList}" hideCheckboxColumn="false" maxRowSelection="{!v.maxRowSelection}" hideTableHeader="false"/>
+                            <lightning:datatable aura:id="accsFoundTable" data="{! v.AccountList }" columns="{! v.accountColumns }" keyField="Id" onrowselection="{!c.updateSelectedText}"  selectedRows = "{!v.selectedList}" hideCheckboxColumn="false" maxRowSelection="{!v.maxRowSelection}" hideTableHeader="false"/>
                         </div>
                         <!-- <aura:if isTrue="{!v.clearSelections}">
                             <div class="slds-p-left_small">
@@ -94,7 +90,7 @@
                                 <!--<aura:if isTrue="{!v.clearSelections}">
                                         <lightning:button aura:id="clearButton" label="Clear" name="button1" onclick="{!c.clearEvent}" disabled="false"/>
                                     </aura:if>-->
-                                <div class="buttonCss">
+                                <div style="padding-left:34%">
                                     <lightning:button label="First" iconName="utility:left" iconPosition="left"
                                                       onclick="{!c.onFirst}" disabled="{! v.currentPageNumber == 1}"/>
                                     <lightning:button iconName="utility:chevronleft" iconPosition="left"
@@ -137,13 +133,12 @@
                     </div>  
                 </lightning:card>
                 
-                <div class="slds-var-p-top_xx-large">
-                    <lightning:card iconName="standard:contact" title="{!$Label.c.PRM_DUPLICATECONTACTS}">
+                <div class="slds-p-top_xx-large">
+                    <lightning:card iconName="standard:contact" title='{!$Label.c.PRM_DUPLICATECONTACTS}'>
                         <aura:if isTrue="{!not(empty(v.ContactList))}">
                             
                             <div id ="cntctsFound" class="slds-border_top table-align">
-                                <lightning:datatable aura:id="cntctsFoundTable" data="{! v.ContactList }" columns="{! v.contactColumns }" 
-                                keyField="ContName" hideCheckboxColumn="false" maxRowSelection ="{!v.maxRowSelection}" hideTableHeader="false"/>  
+                                <lightning:datatable aura:id="cntctsFoundTable" data="{! v.ContactList }" columns="{! v.contactColumns }" keyField="ContName" hideCheckboxColumn="false" maxRowSelection ="{!v.maxRowSelection}" hideTableHeader="false"/>  
                             </div>
                                 
                             <aura:set attribute="else">

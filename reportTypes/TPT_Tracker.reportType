@@ -23,6 +23,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>DealRegistrationProduct__c</field>
+            <table>TPT_Tracker__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>LastActivityDate</field>
             <table>TPT_Tracker__c</table>
         </columns>
@@ -124,6 +129,16 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Opportunity_Owner__c</field>
+            <table>TPT_Tracker__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Rebate_Claim_Upload__c</field>
+            <table>TPT_Tracker__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Rebate_Claim__c</field>
             <table>TPT_Tracker__c</table>
         </columns>
         <masterLabel>TPT Trackers</masterLabel>

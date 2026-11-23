@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <FlowDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
-    <activeVersionNumber>17</activeVersionNumber>
+    <activeVersionNumber>22</activeVersionNumber>
+    <description>Update the Opp Geo Checkbox for the respective region [ APJ, ASMO , EMEA , PRC , INDIA]
+Updated the new design and deal record types for APJ section</description>
+    <masterLabel>Core Update Opp Geo APJ ASMO EMEA PRC</masterLabel>
 </FlowDefinition>

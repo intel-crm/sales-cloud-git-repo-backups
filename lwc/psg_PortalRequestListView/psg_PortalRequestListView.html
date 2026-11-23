@@ -1,0 +1,34 @@
+<template>
+    <lightning-card title="Portal Request for Approval" icon-name="custom:custom4">
+            
+           <!-- <div slot="actions">
+                    <lightning-button-icon icon-name="utility:refresh" onclick={onRefreshClick} alternative-text="Settings" title="Refresh"></lightning-button-icon>
+            </div>-->
+            
+            <template if:true={dataPresent}>
+                   
+                    <div class="slds-scrollable_y" style="height:15rem;">        
+                    <lightning-datatable
+                    key-field="Id" 
+                    data ={PRList} 
+                    columns ={columns}
+                    sorted-by={sortBy}
+                    sorted-direction={sortDirection}
+                    onsort={doSorting}
+                    enable-infinite-loading 
+                    show-row-number-column
+                    hide-checkbox-column
+                    >
+                    </lightning-datatable>
+            </div>
+             
+            </template>
+        
+            <template if:false={dataPresent}>
+                    <div class="slds-align_absolute-center">No Records to Display</div>
+            </template>
+            <template if:true={spinnerOn}>
+                    <lightning-spinner variant="brand"></lightning-spinner>
+            </template>
+    </lightning-card>
+</template>

@@ -20,13 +20,8 @@ public with sharing class Product_Utility {
     public static String epm_FPGA = Product_Staging_StaticConstants.FPGA_EPMId;    
     public static Set<String> charLimit255Fields = new Set<String>(Product_Staging_StaticConstants.charLimit255Fields);
     public static Set<String> charLimit255SalesFields = new Set<String>(Product_Staging_StaticConstants.charLimit255SalesFields);
-    public static Set<String> softwareEpmid = new Set<String>(Product_Staging_StaticConstants.SOFTWARE_EPMID);
-    public static Map<String,Core_Trigger_Executions__c> mapFunctionalityNameTriggerExecution = Core_Trigger_Executions__c.getAll();
-    public static Boolean executeProductOldLogic = mapFunctionalityNameTriggerExecution.containsKey('ExecuteProduct_DeactivationAndLogEntry') && mapFunctionalityNameTriggerExecution.get('ExecuteProduct_DeactivationAndLogEntry').Core_Active__c;
-	public static Boolean isProductDeprecationDateEnabled() {
-		return mapFunctionalityNameTriggerExecution.containsKey('ProductDeprecationDate')&& mapFunctionalityNameTriggerExecution.get('ProductDeprecationDate').Core_Active__c;
-	} 
-    
+    public static Set<String> softwareEpmid = new Set<String>(Product_Staging_StaticConstants.SOFTWARE_EPMID);  
+
     // method to store the metadata mappings for Inbound to Staging to FPH/Product3
     static{
         for (Product_fields_mapping__mdt  mappingRec : Product_fields_mapping__mdt.getall().Values()) {
@@ -77,23 +72,23 @@ public with sharing class Product_Utility {
     public static Boolean IsProductDeactivated(Boolean isFPGA, String prodStatus){
         Boolean foundActiveStatusCode = false;
         Set<String> statusCodes = new Set<String>{'NO','RT','RP','OB'};
-            if(string.isNotBlank(prodStatus)){
-                for(string pStatus : prodStatus.split(';')){
-                    if(isFPGA){
-                        if(pStatus  != 'NO' && pStatus  != 'RT' && pStatus  != 'RP' ){
-                            foundActiveStatusCode = true ;
-                            break;
-                        }
-                    }else{
-                        if(!statusCodes.contains(pStatus)) {
-                            foundActiveStatusCode = true ;
-                            break;
-                        }
+        if(string.isNotBlank(prodStatus)){
+            for(string pStatus : prodStatus.split(';')){
+                if(isFPGA){
+                    if(pStatus  != 'NO' && pStatus  != 'RT' && pStatus  != 'RP' ){
+                        foundActiveStatusCode = true ;
+                        break;
+                    }
+                }else{
+                    if(!statusCodes.contains(pStatus)) {
+                        foundActiveStatusCode = true ;
+                        break;
                     }
                 }
-            }else{ // This means we have not got any inactive code. So we will consider the product as active
-                foundActiveStatusCode = true ;
-            }              
+            }
+        }else{ // This means we have not got any inactive code. So we will consider the product as active
+            foundActiveStatusCode = true ;
+        }              
         return foundActiveStatusCode;                
     }
     
@@ -120,7 +115,7 @@ public with sharing class Product_Utility {
             if(!fieldsExceptionList.contains(String.valueOf(sf))){
                 fields.add(String.valueOf(sf));        
             }  
-        }
+        }                    
         return fields;
     }
     // get OPN i.e. split the string passed and returns the last word
@@ -169,8 +164,8 @@ public with sharing class Product_Utility {
                             String trimmedValue = inbFieldValue.subString(0,255);
                             stagingRec.put(stageField, trimmedValue);
                         } else {
-                            stagingRec.put(stageField, productLevel.get(l5_VPH_fieldMappingTable.get(stageField)));                            
-                        }     
+                            stagingRec.put(stageField, productLevel.get(l5_VPH_fieldMappingTable.get(stageField))); 
+                        }  
                     }                        
                 }     
                 if(productLevel.level_1_epm_name__c == system.label.PSG_Product_Type_Identifier){
@@ -202,11 +197,10 @@ stagingRec.Core_Intel_vPro_Platform_Eligibility__c=True;
             stagingRec.Core_Sales_Visible_Flag__c = stagingRec.Core_Hierarchy_ID__c == '59' ? true : salesConfig != null && salesConfig.Sales_Visible__c;
             
         }   
-		copyLevel5DeactivationDate(productLevel,stagingRec);
         return stagingRec;
     }    
     
-    public static List<Core_Products_Staging__c> createLevelDatawithRollupSales(Map<String,List<Product_Inbound_Staging__c>> levelDataMap, String levelDownApiName, String hierarchyId, List<Product_Inbound_Staging__c> l4WoL5List,  Product_fields_mapping__mdt salesConfig){
+    public static List<Core_Products_Staging__c> createLevelDatawithRollupSales(Map<String, List<Product_Inbound_Staging__c>> levelDataMap, String levelDownApiName, String hierarchyId, List<Product_Inbound_Staging__c> l4WoL5List, Product_fields_mapping__mdt salesConfig) {
         List<Core_Products_Staging__c> prodStagingTobeInserted = new List<Core_Products_Staging__c>();
         List<Product_fields_mapping__mdt> mappings = new List<Product_fields_mapping__mdt>();
         if(hierarchyId == Product_Staging_StaticConstants.vphId && !Sales_Rollup_VPH_Mappings.isEmpty()){
@@ -243,20 +237,20 @@ stagingRec.Core_Intel_vPro_Platform_Eligibility__c=True;
             ldownRec.Core_Product_Family__c = level1stRec.level_2_epm_name__c;
             ldownRec.Core_Product_Series_EPM_ID__c = level1stRec.level_3_epm_id__c;
             ldownRec.Core_Product_Series__c = level1stRec.level_3_epm_name__c;
-            ldownRec.Core_Product_Name_EPM_ID__c =  level1stRec.level_4_epm_id__c;
+            ldownRec.Core_Product_Name_EPM_ID__c = level1stRec.level_4_epm_id__c;
             ldownRec.Core_Product_Name__c = level1stRec.level_4_epm_name__c;
         }
         
         ldownRec.Level__c = '4';
-        ldownRec.Core_Unique_ID__c = level1stRec.level_4_epm_id__c+';'+level1stRec.level_3_epm_id__c+';'+level1stRec.level_2_epm_id__c+';'+level1stRec.level_1_epm_id__c;
+        ldownRec.Core_Unique_ID__c = level1stRec.level_4_epm_id__c + ';' + level1stRec.level_3_epm_id__c + ';' + level1stRec.level_2_epm_id__c + ';' + level1stRec.level_1_epm_id__c;
         ldownRec.Core_Hierarchy_ID__c = hierarchyId;
-        ldownRec.Core_Hierarchy_Name__c = hierarchyId == '43' ? 'Valid Product Hierarchy' : 'Valid Platform Codename Hierarchy';            
+        ldownRec.Core_Hierarchy_Name__c = hierarchyId == '43' ? 'Valid Product Hierarchy' : 'Valid Platform Codename Hierarchy';
         ldownRec.Core_Sales_Visible_Flag__c = true;
         ldownRec.Core_Product_Org__c = 'Sales';
         ldownRec.iPaaS_Load_ID__c = level1stRec.iPaaS_Load_ID__c;
-        ldownRec.Unique_Value__c = ldownRec.Core_Unique_ID__c+';'+ldownRec.iPaaS_Load_ID__c+';'+ ldownRec.Core_Product_Org__c;
+        ldownRec.Unique_Value__c = ldownRec.Core_Unique_ID__c + ';' + ldownRec.iPaaS_Load_ID__c + ';' + ldownRec.Core_Product_Org__c;
         String key = ldownRec.Level__c+';'+ldownRec.Core_Hierarchy_ID__c+';'+ldownRec.Core_Product_Type_EPM_ID__c;
-        ldownRec.Core_Sales_Visible_Flag__c = salesConfig != null &&  salesConfig.Sales_Visible__c;
+        ldownRec.Core_Sales_Visible_Flag__c = salesConfig != null && salesConfig.Sales_Visible__c;
         ldownRec.Core_Is_IQR_Visible__c = salesConfig != null && salesConfig.IQR_Visible__c;
         
         return ldownRec;
@@ -268,24 +262,23 @@ stagingRec.Core_Intel_vPro_Platform_Eligibility__c=True;
             for (Product_Inbound_Staging__c prodStaging : levelData) {
                 String val = prodStaging.get(mapping.Inbound_staging_field__c) != null ? String.valueOf(prodStaging.get(mapping.Inbound_staging_field__c)) : '';
                 if (String.isNotBlank(val)) {
-                    for (String str : val.split(';')){
-                        rollupValue = String.isBlank(rollupValue) ? str : rollupValue+';'+str;
+                    for (String str : val.split(';')) {
+                        rollupValue = String.isBlank(rollupValue) ? str : rollupValue + ';' + str;
                     }
-                }  
+                }
             }
             
-            if(String.isNotBlank(rollupValue)){
-                ldownRec.put(mapping.Product_staging_field__c,removeDuplicateEntries(rollupValue));
+            if (String.isNotBlank(rollupValue)) {
+                ldownRec.put(mapping.Product_staging_field__c, removeDuplicateEntries(rollupValue));
             }
         }
-        return ldownRec;
+		return ldownRec;
     }
     
     public static Core_Products_Staging__c setSalesRollupL4Attributes(Core_Products_Staging__c ldownRec, Product_Inbound_Staging__c level1stRec) {
         // L4 attributes - Start
-        //System.debug('executeProductOldLogic'+executeProductOldLogic);
         ldownRec.Core_Mem_Amt__c = level1stRec.L4_DriveCapacity__c;
-        ldownRec.Core_IsActive__c = executeProductOldLogic ? true : level1stRec.Core_IsActive__c;
+        ldownRec.Core_IsActive__c = true;
         ldownRec.Core_CoreCount__c = level1stRec.L4_CoreCount__c;
         ldownRec.Core_Max_TDP__c = level1stRec.L4_MaxTDP__c;
         ldownRec.Core_StableImagePlatformProgVer_Ind__c = level1stRec.L4_StableImagePlatformProgramVersion__c; //Added by Simran for SIPP
@@ -304,7 +297,7 @@ stagingRec.Core_Intel_vPro_Platform_Eligibility__c=True;
         ldownRec.Status_Code__c = level1stRec.L4_StatusCode__c;
         ldownRec.Core_Expiration_Date__c=level1stRec.L4_DesignExpirationDate__c;
         // L4 attributes - End
-        return ldownRec;
+		return ldownRec;
     }
     
     
@@ -320,7 +313,7 @@ stagingRec.Core_Intel_vPro_Platform_Eligibility__c=True;
             // L4 attributes - Start
             l4Rec.Core_Mem_Amt__c = pis.L4_DriveCapacity__c;
             l4Rec.Core_CoreCount__c = pis.L4_CoreCount__c;
-            l4Rec.Core_Max_TDP__c = pis.L4_MaxTDP__c;      
+            l4Rec.Core_Max_TDP__c = pis.L4_MaxTDP__c;               
             l4Rec.Core_StableImagePlatformProgVer_Ind__c = pis.L4_StableImagePlatformProgramVersion__c; //Added by Simran for SIPP
             l4Rec.Core_Processor_Number_Ta_Nm__c = pis.L4_ProcessorNumber__c;
             //l4Rec.Core_Code_Name__c = pis.L4_CodenameText__c; //Commented as Code Name moved to MM Attribute
@@ -334,7 +327,7 @@ stagingRec.Core_Intel_vPro_Platform_Eligibility__c=True;
             l4Rec.Core_Unique_ID__c = l4Rec.Core_Product_Name_EPM_ID__c+';'+l4Rec.Core_Product_Series_EPM_ID__c+';'+l4Rec.Core_Product_Family_EPM_ID__c+';'+l4Rec.Core_Product_Type_EPM_ID__c;
             l4Rec.Core_Hierarchy_ID__c = hierarchyId;
             l4Rec.Core_Hierarchy_Name__c = hierarchyId == '43' ? 'Valid Product Hierarchy' : 'Valid Platform Codename Hierarchy';
-            l4Rec.Core_IsActive__c = executeProductOldLogic? true : pis.Core_IsActive__c;
+            l4Rec.Core_IsActive__c = true;
             l4Rec.Core_Sales_Visible_Flag__c = true;
             l4Rec.Core_Product_Org__c = 'Sales';
             l4Rec.iPaaS_Load_ID__c = pis.iPaaS_Load_ID__c;
@@ -417,10 +410,10 @@ stagingRec.Core_Intel_vPro_Platform_Eligibility__c=True;
             stagingRec.put('Core_L5_EPM_ID__c',stagingRec.get('Core_L4_EPM_ID__c'));
             stagingRec.put('Core_L5_EPM_Name__c',stagingRec.get('Core_L4_EPM_Name__c'));
         }
-        stagingRec.Core_Product_Org__c= Product_Staging_StaticConstants.FPH;         
+        stagingRec.Core_Product_Org__c= Product_Staging_StaticConstants.FPH;        
         stagingRec.Core_Unique_ID__c= concatenateEpmIdsFPH(stagingRec);
         stagingRec.Unique_Value__c = stagingRec.Core_Unique_ID__c+';'+stagingRec.iPaaS_Load_ID__c+';'+ stagingRec.Core_Product_Org__c;
-        return stagingRec;
+        return stagingRec; 
     }
     
     // IPS     
@@ -480,7 +473,7 @@ stagingRec.Core_Intel_vPro_Platform_Eligibility__c=True;
         ldownRec.Core_Unique_ID__c = (String)level1stRec.get('Core_L'+level+'_EPM_ID__c');
         ldownRec.Core_Hierarchy_ID__c = hierarchyId;
         ldownRec.Core_Hierarchy_Name__c = hierarchyId == '43' ? 'Valid Product Hierarchy' : 'Valid Platform Codename Hierarchy';
-        ldownRec.Core_IsActive__c = executeProductOldLogic? true : level1stRec.Core_IsActive__c;
+        ldownRec.Core_IsActive__c = true;
         //ldownRec.Core_IPS_Visible_Flag_External__c = ((hierarchyId == '43' && (level == 2 || level == 3)) || (hierarchyId == '59' && (level == 2 || level == 4)));
         ldownRec.Core_Product_Org__c = 'IPS';
         ldownRec.iPaaS_Load_ID__c = level1stRec.iPaaS_Load_ID__c;
@@ -515,7 +508,6 @@ stagingRec.Core_Intel_vPro_Platform_Eligibility__c=True;
                     }   
                 }
                 
-                
                 if(String.isNotBlank(rollupValue)){
                     String rollupValueUnique = removeDuplicateEntries(rollupValue);
                     
@@ -531,7 +523,7 @@ stagingRec.Core_Intel_vPro_Platform_Eligibility__c=True;
             }
         }
         return ldownRec;
-    }
+    } 
     
     public static Core_Products_Staging__c processInbStngIPSRecords(Product_Inbound_Staging__c productLevel, Integer level, Map<String,Product_fields_mapping__mdt> ipsConfigMap){
         List<Product_fields_mapping__mdt> mappings = new List<Product_fields_mapping__mdt>();
@@ -556,7 +548,7 @@ stagingRec.Core_Intel_vPro_Platform_Eligibility__c=True;
         }
         
         Core_Products_Staging__c stngRec=populateStngIPSRecAttributes(productLevel, level, ipsConfigMap, stagingRec);
-	    copyLevel5DeactivationDate(productLevel,stngRec);
+        
         if (eligibleLevels.containskey(level) &&  eligibleLevels.get(level)) {
             for (Product_fields_mapping__mdt mapping : mappings) {
                 stngRec.put(mapping.Product_staging_field__c,productLevel.get(mapping.Inbound_staging_field__c)); 
@@ -568,18 +560,18 @@ stagingRec.Core_Intel_vPro_Platform_Eligibility__c=True;
     
     
     public static Core_Products_Staging__c populateStngIPSRecAttributes(Product_Inbound_Staging__c productLevel, Integer level, Map<String, Product_fields_mapping__mdt> ipsConfigMap, Core_Products_Staging__c stagingRec) {
-        stagingRec.Core_Product_Name_EPM_ID__c = (String)productLevel.get('level_'+level+'_epm_id__c');
-        stagingRec.Core_Product_Name__c =  (String)productLevel.get('level_'+level+'_epm_name__c');
-        stagingRec.Core_Product_Org__c= 'IPS';         
-        stagingRec.Core_Unique_ID__c=  (String)productLevel.get('level_'+level+'_epm_id__c');
+        stagingRec.Core_Product_Name_EPM_ID__c = (String) productLevel.get('level_' + level + '_epm_id__c');
+        stagingRec.Core_Product_Name__c = (String) productLevel.get('level_' + level + '_epm_name__c');
+        stagingRec.Core_Product_Org__c = 'IPS';
+        stagingRec.Core_Unique_ID__c = (String) productLevel.get('level_' + level + '_epm_id__c');
         stagingRec.iPaaS_Load_ID__c = productLevel.iPaaS_Load_ID__c;
         stagingRec.Level__c = String.valueOf(level);
         stagingRec.Core_Hierarchy_ID__c = productLevel.Core_Hierarchy_ID__c;
         stagingRec.Core_Hierarchy_Name__c = productLevel.Core_Hierarchy_ID__c == '43' ? 'Valid Product Hierarchy' : 'Valid Platform Codename Hierarchy';
-        stagingRec.Core_IsActive__c = executeProductOldLogic? true : productLevel.Core_IsActive__c;
-        stagingRec.Unique_Value__c = stagingRec.Core_Unique_ID__c+';'+stagingRec.iPaaS_Load_ID__c+';'+ stagingRec.Core_Product_Org__c;
-        String key = stagingRec.Level__c+';'+stagingRec.Core_Hierarchy_ID__c;
-        stagingRec.Core_IPS_Visible_Flag_External__c = ipsConfigMap.containsKey(key) &&  ipsConfigMap.get(key).IPS_Visible_Flag_External__c;
+        stagingRec.Core_IsActive__c = true;
+        stagingRec.Unique_Value__c = stagingRec.Core_Unique_ID__c + ';' + stagingRec.iPaaS_Load_ID__c + ';' + stagingRec.Core_Product_Org__c;
+        String key = stagingRec.Level__c + ';' + stagingRec.Core_Hierarchy_ID__c;
+        stagingRec.Core_IPS_Visible_Flag_External__c = ipsConfigMap.containsKey(key) && ipsConfigMap.get(key).IPS_Visible_Flag_External__c;
         return stagingRec;
     }
     
@@ -693,7 +685,6 @@ stagingRec.Core_Intel_vPro_Platform_Eligibility__c=True;
             }                       
             body += 'Time - ' + system.now() + '.'; 
             mail.setHtmlBody(body);
-            mail.setOrgWideEmailAddressId(Label.Core_Ownership_Orgwide_Email_Id);
             Messaging.sendEmail(new Messaging.SingleEmailMessage []{mail},false);
         }                 
     }  
@@ -713,7 +704,7 @@ stagingRec.Core_Intel_vPro_Platform_Eligibility__c=True;
                     IPS_fieldMappingTable_VPLCH.put(mappingRec.Product_staging_field__c,mappingRec.Inbound_staging_field__c);                    
                 }
             }
-        }   
+        } 
         for(String key : ipsPreProcessMap.keyset()){
             Product_Inbound_Staging__c productLevel = ipsPreProcessMap.get(key);
             String level=key.split(';')[1];
@@ -744,25 +735,11 @@ stagingRec.Core_Intel_vPro_Platform_Eligibility__c=True;
         stagingRec.Level__c = String.valueOf(level);
         stagingRec.Core_Hierarchy_ID__c = productLevel.Core_Hierarchy_ID__c;
         stagingRec.Core_Hierarchy_Name__c = productLevel.Core_Hierarchy_ID__c == '43' ? 'Valid Product Hierarchy' : 'Valid Platform Codename Hierarchy';
-        stagingRec.Core_IsActive__c = executeProductOldLogic? true : productLevel.Core_IsActive__c;
+        stagingRec.Core_IsActive__c = true;
         stagingRec.Unique_Value__c = stagingRec.Core_Unique_ID__c+';'+stagingRec.iPaaS_Load_ID__c+';'+ stagingRec.Core_Product_Org__c; 
         String keyFlag = stagingRec.Level__c+';'+stagingRec.Core_Hierarchy_ID__c;
         stagingRec.Core_IPS_Visible_Flag_External__c = ipsConfigMap.containsKey(keyFlag) &&  ipsConfigMap.get(keyFlag).IPS_Visible_Flag_External__c;
-	    copyLevel5DeactivationDate(productLevel,stagingRec);
         return stagingRec;
     }
-
-	private static void copyLevel5DeactivationDate(Product_Inbound_Staging__c source, Core_Products_Staging__c target) {
-    	if (!isProductDeprecationDateEnabled()) { 
-        return;
-    }
-
-    if (source == null || target == null) {
-        return;
-    }
-
-    if (target.Level__c == '5' && String.isNotBlank(source.level_5_epm_id__c)) {
-        target.Deactivation_Date__c = source.Deactivation_Date__c;
-    }
-}
+    
 }

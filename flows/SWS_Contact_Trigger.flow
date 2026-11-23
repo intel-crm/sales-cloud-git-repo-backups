@@ -52,12 +52,14 @@
         <inputParameters>
             <name>senderType</name>
             <value>
+                <inputConfiguratorMode>Custom</inputConfiguratorMode>
                 <stringValue>OrgWideEmailAddress</stringValue>
             </value>
         </inputParameters>
         <inputParameters>
             <name>senderAddress</name>
             <value>
+                <inputConfiguratorMode>Custom</inputConfiguratorMode>
                 <stringValue>salescrm_sb@intel.com</stringValue>
             </value>
         </inputParameters>
@@ -76,6 +78,7 @@
         <inputParameters>
             <name>emailBody</name>
             <value>
+                <inputConfiguratorMode>Custom</inputConfiguratorMode>
                 <stringValue>Hello,
 The lead you own has been automatically converted because a new contact was created with the same email address. 
 Details:
@@ -600,8 +603,7 @@ The lead information is now associated with the contact record.</stringValue>
             <maxBatchSize>1</maxBatchSize>
             <offsetNumber>0</offsetNumber>
             <offsetUnit>Minutes</offsetUnit>
-            <recordField>CreatedDate</recordField>
-            <timeSource>RecordField</timeSource>
+            <timeSource>RecordTriggerEvent</timeSource>
         </scheduledPaths>
         <triggerType>RecordAfterSave</triggerType>
     </start>

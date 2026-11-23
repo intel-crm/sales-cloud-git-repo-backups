@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <classAccesses>
-        <apexClass>Core_MDF_Smart_Picklist_Maintainence</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>Core_MDF_Smart_Picklist_MaintainenceTest</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
         <apexClass>PicklistManager</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -17,11 +9,17 @@
         <enabled>true</enabled>
     </classAccesses>
     <description>Gives permission to edit the picklist values using Smart Picklist</description>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Business_Review__c.User_s_Manager__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>SPM_Account_Feedback__c.CRM_CST_Is_Active_Planning_Period__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>
     <label>PicklistManager_Edit</label>
     <license>Salesforce</license>
-    <tabSettings>
-        <tab>Smart_Picklist1</tab>
-        <visibility>Visible</visibility>
-    </tabSettings>
 </PermissionSet>

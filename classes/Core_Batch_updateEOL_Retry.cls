@@ -16,10 +16,11 @@ global class Core_Batch_updateEOL_Retry implements Database.Batchable<sObject>,D
     public static String fromEmailAddress = System.Label.Core_SetFromEmailAddress;
     
     
-    global Core_Batch_updateEOL_Retry(Set<String> failedIds,List<product2> prList){
-        batchfailedIds = failedIds;
-        prdList = prList;
-    } 
+    global Core_Batch_updateEOL_Retry(Set<String> failedIds,List<product2> prList, Integer retries) {
+    batchfailedIds = failedIds;
+    prdList = prList;
+    
+	}
     global Database.QueryLocator start(Database.BatchableContext BC){
         
         String query = 'SELECT id,product2Id,product2.Core_SA_Is_EOL__c from Opportunitylineitem where id in : batchfailedIds';

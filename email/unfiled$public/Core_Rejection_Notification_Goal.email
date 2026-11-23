@@ -1,0 +1,5 @@
+{!User.Name} has rejected your request for approval on the following Solution Milestone: {!Core_Goal__c.Link} 
+
+Solution Milestone ID: {!Core_Goal__c.Name} 
+
+Please click this link to make any necessary changes and resubmit as needed.

@@ -34,7 +34,7 @@
         <name>Core_MDF_Ineffective_Dt__c</name>
     </fields>
     <fields>
-        <help><!-- The program, the rule should apply to. --></help>
+        <help><!-- The program, the rule should apply to. (CCF/DCF/SPCF) --></help>
         <label><!-- Program --></label>
         <name>Core_MDF_Program_id__c</name>
         <relationshipLabel><!-- Hold Criteria List --></relationshipLabel>

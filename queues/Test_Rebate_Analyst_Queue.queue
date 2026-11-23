@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesIncludeBosses>true</doesIncludeBosses>
+    <doesSendEmailToMembers>true</doesSendEmailToMembers>
+    <name>Test Rebate Analyst Queue</name>
+    <queueMembers>
+        <users>
+            <user>shivini.sampath@intel.com.crm</user>
+        </users>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>PCC_Rebate_Claim__c</sobjectType>
+    </queueSobject>
+</Queue>

@@ -35,6 +35,10 @@
         <relationshipLabel><!-- Pricing Integration Stagings --></relationshipLabel>
     </fields>
     <fields>
+        <label><!-- Request ID Old --></label>
+        <name>Pricing_Request_ID__c</name>
+    </fields>
+    <fields>
         <label><!-- Retry Number --></label>
         <name>Pricing_Retry_Number__c</name>
     </fields>

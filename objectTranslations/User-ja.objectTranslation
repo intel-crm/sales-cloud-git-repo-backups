@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
     <fieldSets>
+        <label><!-- BT_User_EPIM --></label>
+        <name>BT_User_EPIM</name>
+    </fieldSets>
+    <fieldSets>
         <label><!-- CPQ_Lookup --></label>
         <name>CPQ_Lookup</name>
     </fieldSets>
@@ -8,6 +12,10 @@
         <label><!-- PersonalInfo_EPIM --></label>
         <name>PersonalInfo_EPIM</name>
     </fieldSets>
+    <fields>
+        <label><!-- CheckPreApprover --></label>
+        <name>CheckPreApprover__c</name>
+    </fields>
     <fields>
         <label><!-- Account Owner --></label>
         <name>Core_Account_Owner__c</name>
@@ -122,11 +130,7 @@
         <name>Core_Leads_Rejected_Current_Year__c</name>
     </fields>
     <fields>
-        <label><!-- License Reclaimed on Creation --></label>
-        <name>Core_License_Reclaimed_on_Creation__c</name>
-    </fields>
-    <fields>
-        <label>ログイン ID</label>
+        <label><!-- Login Id --></label>
         <name>Core_Login_Id__c</name>
     </fields>
     <fields>
@@ -143,10 +147,6 @@
         <name>Core_Send_Email__c</name>
     </fields>
     <fields>
-        <label><!-- Status In Denodo --></label>
-        <name>Core_Status_In_Denodo__c</name>
-    </fields>
-    <fields>
         <label><!-- User Country Code --></label>
         <name>Core_User_Country_Code__c</name>
     </fields>
@@ -154,42 +154,29 @@
         <label><!-- User Coverage --></label>
         <name>Core_User_Coverage__c</name>
         <picklistValues>
-            <masterLabel>AUDIT/SECURITY</masterLabel>
-            <translation><!-- AUDIT/SECURITY --></translation>
+            <masterLabel>Field Sales</masterLabel>
+            <translation><!-- Field Sales --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>C-SUITE</masterLabel>
-            <translation><!-- C-SUITE --></translation>
+            <masterLabel>Inside LDR</masterLabel>
+            <translation><!-- Inside LDR --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>MARKETING</masterLabel>
-            <translation><!-- MARKETING --></translation>
+            <masterLabel>Inside SDM</masterLabel>
+            <translation><!-- Inside SDM --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>OPERATIONS</masterLabel>
-            <translation><!-- OPERATIONS --></translation>
+            <masterLabel>Inside SDR</masterLabel>
+            <translation><!-- Inside SDR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Inside Sales</masterLabel>
+            <translation><!-- Inside Sales --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Other</masterLabel>
             <translation><!-- Other --></translation>
         </picklistValues>
-        <picklistValues>
-            <masterLabel>SALES IC</masterLabel>
-            <translation><!-- SALES IC --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SALES MANAGER</masterLabel>
-            <translation><!-- SALES MANAGER --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SALES VP</masterLabel>
-            <translation><!-- SALES VP --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
-        <help><!-- To add this field to the user search layout to see the additional details when searched for a particular user --></help>
-        <label><!-- User Details --></label>
-        <name>Core_User_Fields_Merged__c</name>
     </fields>
     <fields>
         <label><!-- User Region --></label>
@@ -220,16 +207,28 @@
         <name>Core_WWID__c</name>
     </fields>
     <fields>
+        <label><!-- DB Region --></label>
+        <name>DB_Region__c</name>
+        <picklistValues>
+            <masterLabel>APAC</masterLabel>
+            <translation><!-- APAC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEA</masterLabel>
+            <translation><!-- EMEA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LA</masterLabel>
+            <translation><!-- LA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NA</masterLabel>
+            <translation><!-- NA --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
         <label><!-- One Partner ID --></label>
         <name>PMP_One_Partner_ID__c</name>
-    </fields>
-    <fields>
-        <label><!-- PRM_IPA Refresh --></label>
-        <name>PRM_IPA_Refresh__c</name>
-    </fields>
-    <fields>
-        <label><!-- License Reclaimed --></label>
-        <name>Partner_License_Reclaimed__c</name>
     </fields>
     <fields>
         <help>[商品ルックアップ] ページのデフォルトのタブをカスタマイズします。</help>
@@ -277,8 +276,16 @@
         <name>User_Unique__c</name>
     </fields>
     <fields>
-        <label><!-- User_loggedIN --></label>
-        <name>User_loggedIN__c</name>
+        <label><!-- FunctionalGroupID --></label>
+        <name>Xvoyant__FunctionalGroupID__c</name>
+    </fields>
+    <fields>
+        <label><!-- IsAtmUser --></label>
+        <name>Xvoyant__IsAtmUser__c</name>
+    </fields>
+    <fields>
+        <label><!-- Amazon Connect Username --></label>
+        <name>amazonconnect__Amazon_Connect_Username__c</name>
     </fields>
     <fields>
         <label><!-- IsCachingAnonWebActivityList --></label>
@@ -321,8 +328,16 @@
         <name>mkto_si__Sales_Insight_Counter__c</name>
     </fields>
     <fields>
-        <label><!-- User Search Option --></label>
-        <name>rtsync__User_Search_Option__c</name>
+        <label><!-- Aircall User Identifier --></label>
+        <name>voice_connector__Aircall_User_Identifier__c</name>
+    </fields>
+    <fields>
+        <label><!-- Dialpad User Identifier --></label>
+        <name>voice_connector__Dialpad_User_Identifier__c</name>
+    </fields>
+    <fields>
+        <label><!-- RingCentral User Identifier --></label>
+        <name>voice_connector__RingCentral_User_Identifier__c</name>
     </fields>
     <validationRules>
         <errorMessage><!-- you can&apos;t update this User --></errorMessage>

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <columns>
+        <field>Account.Core_IPA_Partner_Speciality__c</field>
+    </columns>
+    <columns>
         <field>FK_NAME</field>
     </columns>
     <columns>
@@ -36,13 +39,6 @@
             <operator>notContain</operator>
             <value>test</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>PRM_Account_Specialty_Association__c.PRM_InActive_Ind__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>0</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
@@ -60,7 +56,7 @@
     <scope>organization</scope>
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
-    <showSubTotals>false</showSubTotals>
+    <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>DUE_DATE</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>

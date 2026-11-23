@@ -1,0 +1,40 @@
+<apex:component access="global" controller="Sales_OrderConfirmationController">   
+  <apex:attribute name="orderId" type="Id" description="Order Id will be passed to the Controller" assignTo="{!ordId}"/>
+ 
+ <style>
+ 
+ .t {
+  border: 1px solid black;
+  width: 80%;
+  border-collapse: collapse;
+  }  
+  
+ .t1 {
+  background-color:rgb(240,240,240);
+ border: 1px solid black;
+  font-size: 12px;
+  text-align: left;
+   }  
+    
+  .t2 {
+  background-color:rgb(192,192,192);
+  border: 1px solid black;
+  font-size: 12px;
+  text-align: left;
+  }                     
+</style>
+
+<table class="t">
+<tr>
+<th class="t2">Product Name</th>
+<th class="t2">Quantity</th>
+</tr>
+<apex:repeat value="{!orderItems}" var="ord">
+<tr>
+<td class="t1">{!ord.Product2.Name}</td>
+<td class="t1">{!ord.Quantity}</td>
+</tr>
+</apex:repeat>
+</table>
+ 
+</apex:component>

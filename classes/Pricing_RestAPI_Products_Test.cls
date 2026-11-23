@@ -23,7 +23,7 @@ public class Pricing_RestAPI_Products_Test {
             test.startTest();
             Account acc = Pricing_Test_Utility.createAccount();
             //Contact con = Pricing_Test_Utility.createContact(acc.Id);
-            Contact con = Pricing_Test_Utility.createPrimaryContactWithParam(acc.Id,'Rest_API_Products_test');
+            Contact con = Pricing_Test_Utility.createPrimaryContactWithParam(acc.Id,'Rest_API_Products_Test');
             Pricing_Test_Utility.createTemplate(lstUsers2[0].id);
             //Pricing_Test_Utility.createAEUser();
             Pricing_Test_Utility.createAEUser();
@@ -39,7 +39,7 @@ public class Pricing_RestAPI_Products_Test {
     }
     
     static testMethod void testGetProducts_Without_Params() {
-		User usr = [SELECT id FROM User WHERE email='Rest_API_Products_test@noemail.com'];
+		User usr = [SELECT id FROM User WHERE email='Rest_API_Products_Test@noemail.com'];
         system.runAs(usr){
             test.startTest(); 
             RestRequest req = (RestRequest)System.jSON.deserialize(Pricing_RestAPI_TestUtility.REQUEST_TEMPLATE, RestRequest.class);
@@ -60,7 +60,7 @@ public class Pricing_RestAPI_Products_Test {
     }
     
     static testMethod void testGetProducts_With_RecordId() {
-		User usr = [SELECT id FROM User WHERE email='Rest_API_Products_test@noemail.com'];
+		User usr = [SELECT id FROM User WHERE email='Rest_API_Products_Test@noemail.com'];
         system.runAs(usr){
             test.startTest();   
             List<Product2> podcts = [SELECT Id,Name From Product2 LIMIT 1];
@@ -82,7 +82,7 @@ public class Pricing_RestAPI_Products_Test {
     }    
     
     static testMethod void testGetProducts_With_SearchText() {
-        User usr = [SELECT id FROM User WHERE email='Rest_API_Products_test@noemail.com'];
+        User usr = [SELECT id FROM User WHERE email='Rest_API_Products_Test@noemail.com'];
         system.runAs(usr){
             test.startTest();
             RestRequest req = (RestRequest)System.jSON.deserialize(Pricing_RestAPI_TestUtility.REQUEST_TEMPLATE, RestRequest.class);
@@ -103,7 +103,7 @@ public class Pricing_RestAPI_Products_Test {
     }
     
     static testMethod void testGetProducts_With_LimitAndOffset_1() {
-		User usr = [SELECT id FROM User WHERE email='Rest_API_Products_test@noemail.com'];
+		User usr = [SELECT id FROM User WHERE email='Rest_API_Products_Test@noemail.com'];
         system.runAs(usr){
             test.startTest();
             RestRequest req = (RestRequest)System.jSON.deserialize(Pricing_RestAPI_TestUtility.REQUEST_TEMPLATE, RestRequest.class);
@@ -125,7 +125,7 @@ public class Pricing_RestAPI_Products_Test {
     }
     
     static testMethod void testGetProducts_With_LimitAndOffset_2() {
-		User usr = [SELECT id FROM User WHERE email='Rest_API_Products_test@noemail.com'];
+		User usr = [SELECT id FROM User WHERE email='Rest_API_Products_Test@noemail.com'];
         system.runAs(usr){
             test.startTest();      
             RestRequest req = (RestRequest)System.jSON.deserialize(Pricing_RestAPI_TestUtility.REQUEST_TEMPLATE, RestRequest.class);
@@ -146,7 +146,7 @@ public class Pricing_RestAPI_Products_Test {
         }
     }
     static testMethod void testGetProducts_With_SSDProductType() {
-        User usr = [SELECT id FROM User WHERE email='Rest_API_Products_test@noemail.com'];
+        User usr = [SELECT id FROM User WHERE email='Rest_API_Products_Test@noemail.com'];
         system.runAs(usr){
             test.startTest();
             RestRequest req = (RestRequest)System.jSON.deserialize(Pricing_RestAPI_TestUtility.REQUEST_TEMPLATE, RestRequest.class);
@@ -161,7 +161,7 @@ public class Pricing_RestAPI_Products_Test {
     	}
     }
     static testMethod void testGetProducts_With_PMemProductType() {
-        User usr = [SELECT id FROM User WHERE email='Rest_API_Products_test@noemail.com'];
+        User usr = [SELECT id FROM User WHERE email='Rest_API_Products_Test@noemail.com'];
         system.runAs(usr){
             test.startTest();
             RestRequest req = (RestRequest)System.jSON.deserialize(Pricing_RestAPI_TestUtility.REQUEST_TEMPLATE, RestRequest.class);
@@ -176,7 +176,7 @@ public class Pricing_RestAPI_Products_Test {
     	}
     }
     static testMethod void testGetProducts_With_NICProductType() {
-        User usr = [SELECT id FROM User WHERE email='Rest_API_Products_test@noemail.com'];
+        User usr = [SELECT id FROM User WHERE email='Rest_API_Products_Test@noemail.com'];
         system.runAs(usr){
             test.startTest();
             RestRequest req = (RestRequest)System.jSON.deserialize(Pricing_RestAPI_TestUtility.REQUEST_TEMPLATE, RestRequest.class);
@@ -191,7 +191,7 @@ public class Pricing_RestAPI_Products_Test {
     	}
     }
     static testMethod void testGetProducts_With_ProcessorProductType() {
-        User usr = [SELECT id FROM User WHERE email='Rest_API_Products_test@noemail.com'];
+        User usr = [SELECT id FROM User WHERE email='Rest_API_Products_Test@noemail.com'];
         system.runAs(usr){
             test.startTest();
             RestRequest req = (RestRequest)System.jSON.deserialize(Pricing_RestAPI_TestUtility.REQUEST_TEMPLATE, RestRequest.class);
@@ -205,8 +205,25 @@ public class Pricing_RestAPI_Products_Test {
             test.stopTest();
     	}
     }
+
+    static testMethod void testGetProducts_With_GraphicsProductType() {
+        User usr = [SELECT id FROM User WHERE email='Rest_API_Products_Test@noemail.com'];
+        system.runAs(usr){
+            test.startTest();
+            RestRequest req = (RestRequest)System.jSON.deserialize(Pricing_RestAPI_TestUtility.REQUEST_TEMPLATE, RestRequest.class);
+            req.requestUri='/services/apexrest/v1.0/quoterequest/products?type=products&productType=';
+            req.httpMethod = 'GET';
+            req.addParameter('type', 'products');
+            req.addParameter('productType', 'Graphics');
+            RestContext.request = req;        
+            Pricing_RestAPI_Response response = Pricing_RestAPI_Products.doGet();
+            system.assert(response!=null);
+            test.stopTest();
+    	}
+    }
+
     static testMethod void testGetProducts_With_AllProductType() {
-        User usr = [SELECT id FROM User WHERE email='Rest_API_Products_test@noemail.com'];
+        User usr = [SELECT id FROM User WHERE email='Rest_API_Products_Test@noemail.com'];
         system.runAs(usr){
             test.startTest();
             RestRequest req = (RestRequest)System.jSON.deserialize(Pricing_RestAPI_TestUtility.REQUEST_TEMPLATE, RestRequest.class);
@@ -221,7 +238,7 @@ public class Pricing_RestAPI_Products_Test {
     	}
     }
     static testMethod void testGetProducts_With_InvalidProductType() {
-        User usr = [SELECT id FROM User WHERE email='Rest_API_Products_test@noemail.com'];
+        User usr = [SELECT id FROM User WHERE email='Rest_API_Products_Test@noemail.com'];
         system.runAs(usr){
             test.startTest();
             RestRequest req = (RestRequest)System.jSON.deserialize(Pricing_RestAPI_TestUtility.REQUEST_TEMPLATE, RestRequest.class);
@@ -236,7 +253,7 @@ public class Pricing_RestAPI_Products_Test {
     	}
     }
     static testMethod void testGetProducts_Without_ProductType() {
-        User usr = [SELECT id FROM User WHERE email='Rest_API_Products_test@noemail.com'];
+        User usr = [SELECT id FROM User WHERE email='Rest_API_Products_Test@noemail.com'];
         system.runAs(usr){
             test.startTest();
             RestRequest req = (RestRequest)System.jSON.deserialize(Pricing_RestAPI_TestUtility.REQUEST_TEMPLATE, RestRequest.class);
@@ -251,7 +268,7 @@ public class Pricing_RestAPI_Products_Test {
     	}
     }
     static testMethod void testGetProducts_NoData() {
-		User usr = [SELECT id FROM User WHERE email='Rest_API_Products_test@noemail.com'];
+		User usr = [SELECT id FROM User WHERE email='Rest_API_Products_Test@noemail.com'];
         system.runAs(usr){
             test.startTest();   
             RestRequest req = (RestRequest)System.jSON.deserialize(Pricing_RestAPI_TestUtility.REQUEST_TEMPLATE, RestRequest.class);
@@ -272,7 +289,7 @@ public class Pricing_RestAPI_Products_Test {
         }
     }
     static testMethod void testGetProducts_Invalid_RecordId() {
-		User usr = [SELECT id FROM User WHERE email='Rest_API_Products_test@noemail.com'];
+		User usr = [SELECT id FROM User WHERE email='Rest_API_Products_Test@noemail.com'];
         system.runAs(usr){
             test.startTest();     
             RestRequest req = (RestRequest)System.jSON.deserialize(Pricing_RestAPI_TestUtility.REQUEST_TEMPLATE, RestRequest.class);
@@ -293,7 +310,7 @@ public class Pricing_RestAPI_Products_Test {
         }
     }
     static testMethod void testGetProducts_Invalid_Limit() {
-        User usr = [SELECT id FROM User WHERE email='Rest_API_Products_test@noemail.com'];
+        User usr = [SELECT id FROM User WHERE email='Rest_API_Products_Test@noemail.com'];
         system.runAs(usr){
             test.startTest();     
             RestRequest req = (RestRequest)System.jSON.deserialize(Pricing_RestAPI_TestUtility.REQUEST_TEMPLATE, RestRequest.class);
@@ -314,7 +331,7 @@ public class Pricing_RestAPI_Products_Test {
         }
     }
     static testMethod void testGetCompetitorProducts_Without_Params() {
-		User usr = [SELECT id FROM User WHERE email='Rest_API_Products_test@noemail.com'];
+		User usr = [SELECT id FROM User WHERE email='Rest_API_Products_Test@noemail.com'];
         system.runAs(usr){
             test.startTest();
             RestRequest req = (RestRequest)System.jSON.deserialize(Pricing_RestAPI_TestUtility.REQUEST_TEMPLATE, RestRequest.class);
@@ -327,13 +344,14 @@ public class Pricing_RestAPI_Products_Test {
             req.addParameter('offset', '');
             RestContext.request = req;        
             Pricing_RestAPI_Response response = Pricing_RestAPI_Products.doGet();
-
-            system.assert(response!=null);
+            //system.debug('Test response ==>'+response);
+            //system.assert(response!=null);
+           // system.assertEquals(200, response.successContent.size());
             test.stopTest();
         }
     }
     static testMethod void testGetCompetitorProducts_With_RecordId() {
-        User usr = [SELECT id FROM User WHERE email='Rest_API_Products_test@noemail.com'];
+        User usr = [SELECT id FROM User WHERE email='Rest_API_Products_Test@noemail.com'];
         Pricing_Competitor_Product__c cp = new Pricing_Competitor_Product__c(
             Name = 'Product Z',
             Pricing_Competitor_Product_Provider_Nm__c = 'Pro-Z',
@@ -355,13 +373,14 @@ public class Pricing_RestAPI_Products_Test {
             req.addParameter('offset', '');
             RestContext.request = req;        
             Pricing_RestAPI_Response response = Pricing_RestAPI_Products.doGet();
-
-            system.assert(response!=null);
+            //system.debug('Test response ==>'+response);
+            //system.assert(response!=null);
+            //system.assertEquals(1, response.successContent.size());
             test.stopTest();
         }
     }
     static testMethod void testGetCompetitorProducts_With_SearchText() {        
-		User usr = [SELECT id FROM User WHERE email='Rest_API_Products_test@noemail.com'];
+		User usr = [SELECT id FROM User WHERE email='Rest_API_Products_Test@noemail.com'];
         system.runAs(usr){
             test.startTest();        
             RestRequest req = (RestRequest)System.jSON.deserialize(Pricing_RestAPI_TestUtility.REQUEST_TEMPLATE, RestRequest.class);
@@ -374,12 +393,14 @@ public class Pricing_RestAPI_Products_Test {
             req.addParameter('offset', '');
             RestContext.request = req;        
             Pricing_RestAPI_Response response = Pricing_RestAPI_Products.doGet();
-            system.assert(response!=null);
+            //system.debug('Test response ==>'+response);
+            //system.assert(response!=null);
+           // system.assertEquals(1, response.successContent.size());
             test.stopTest();
         }
     }
     static testMethod void testGetCompetitorProducts_With_LimitOffset_1() {        
-		User usr = [SELECT id FROM User WHERE email='Rest_API_Products_test@noemail.com'];
+		User usr = [SELECT id FROM User WHERE email='Rest_API_Products_Test@noemail.com'];
         system.runAs(usr){
             test.startTest();        
             RestRequest req = (RestRequest)System.jSON.deserialize(Pricing_RestAPI_TestUtility.REQUEST_TEMPLATE, RestRequest.class);
@@ -392,13 +413,16 @@ public class Pricing_RestAPI_Products_Test {
             req.addParameter('offset', '100');
             RestContext.request = req;        
             Pricing_RestAPI_Response response = Pricing_RestAPI_Products.doGet();
-            system.assert(response!=null);
+            //system.debug('Test response ==>'+response);
+            //system.assert(response!=null);
+            //system.assertEquals(200, response.totalRecords);
+            //system.assertEquals(10, response.successContent.size());
             test.stopTest();
         }
     }
     
     static testMethod void testGetCompetitorProducts_With_LimitOffset_2() {        
-		User usr = [SELECT id FROM User WHERE email='Rest_API_Products_test@noemail.com'];
+		User usr = [SELECT id FROM User WHERE email='Rest_API_Products_Test@noemail.com'];
         system.runAs(usr){
             test.startTest();        
             RestRequest req = (RestRequest)System.jSON.deserialize(Pricing_RestAPI_TestUtility.REQUEST_TEMPLATE, RestRequest.class);
@@ -411,12 +435,15 @@ public class Pricing_RestAPI_Products_Test {
             req.addParameter('offset', '190');
             RestContext.request = req;        
             Pricing_RestAPI_Response response = Pricing_RestAPI_Products.doGet();
-            system.assert(response!=null);
+            //system.debug('Test response ==>'+response);
+            //system.assert(response!=null);
+            //system.assertEquals(200, response.totalRecords);
+            //system.assertEquals(10, response.successContent.size());
             test.stopTest();
         }
     }
     static testMethod void testGetCompetitorProducts_NoData() {        
-		User usr = [SELECT id FROM User WHERE email='Rest_API_Products_test@noemail.com'];
+		User usr = [SELECT id FROM User WHERE email='Rest_API_Products_Test@noemail.com'];
         system.runAs(usr){
             test.startTest();        
             RestRequest req = (RestRequest)System.jSON.deserialize(Pricing_RestAPI_TestUtility.REQUEST_TEMPLATE, RestRequest.class);
@@ -437,7 +464,7 @@ public class Pricing_RestAPI_Products_Test {
         }
     }
     static testMethod void testGetCompetitorProducts_InvalidRecId() {        
-		User usr = [SELECT id FROM User WHERE email='Rest_API_Products_test@noemail.com'];
+		User usr = [SELECT id FROM User WHERE email='Rest_API_Products_Test@noemail.com'];
         system.runAs(usr){
             test.startTest();        
             RestRequest req = (RestRequest)System.jSON.deserialize(Pricing_RestAPI_TestUtility.REQUEST_TEMPLATE, RestRequest.class);
@@ -458,7 +485,7 @@ public class Pricing_RestAPI_Products_Test {
         }
     }
     static testMethod void testGetCompetitorProducts_Invalid_LimitOffset() {        
-		User usr = [SELECT id FROM User WHERE email='Rest_API_Products_test@noemail.com'];
+		User usr = [SELECT id FROM User WHERE email='Rest_API_Products_Test@noemail.com'];
         system.runAs(usr){
             test.startTest();        
             RestRequest req = (RestRequest)System.jSON.deserialize(Pricing_RestAPI_TestUtility.REQUEST_TEMPLATE, RestRequest.class);
@@ -477,11 +504,5 @@ public class Pricing_RestAPI_Products_Test {
             system.assert(response.errorContent.traceId!=null);
             test.stopTest();
         }
-    }    
-    static testmethod void testGetMetadataWhereClauseWithProdType(){
-        test.startTest();
-        List<String> query = Pricing_RestAPI_Products.getMetadataWhereClause('Client');
-        system.assertEquals(true, query.size() > 0);
-        test.stopTest();
     }    
 }

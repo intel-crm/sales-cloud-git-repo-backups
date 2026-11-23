@@ -20,12 +20,6 @@
         <default>false</default>
         <label>PRC</label>
     </customValue>
-    <customValue>
-        <fullName>INDIA</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>INDIA</label>
-    </customValue>
     <masterLabel>Geo</masterLabel>
-    <sorted>false</sorted>
+    <sorted>true</sorted>
 </GlobalValueSet>

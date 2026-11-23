@@ -60,7 +60,7 @@ public class Core_OpportunityTMHandler_Test {
         acct.BIllingStateCode = 'AL';
         acct.BillingCity = 'Alabama123';
         acct.BillingStreet = 'test123';  
-        acct.Core_Sales_Groups__c='Americas Partner Holding';
+        acct.Core_Sales_Groups__c=Core_CRM_Utility.getSalesGroupAPI();
         acct.Industry='Health and Life Sciences'; 
         acct.Core_Sub_Industry__c='Biotechnology';     
         System.runAs(Core_Test_Utility.systemAdminUser) {

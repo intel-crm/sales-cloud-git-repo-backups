@@ -72,7 +72,7 @@
     </customDetailFormulas>
     <description>Time spent by Intel processing the request from first submission to response. Excludes time quote line was in Draft status while OEM made updates for Customer Revision.</description>
     <filter>
-        <booleanFilter>(1 OR (4 AND 5)) AND (2 OR (5 AND 6 AND 7) OR (5 AND 7 AND 8)) AND 3 AND 9 AND 10 AND 11 AND 12 AND 13 AND 14 AND 15</booleanFilter>
+        <booleanFilter>(1 OR (4 AND 5)) AND (2 OR (5 AND 6 AND 7) OR (5 AND 7 AND 8)) AND 3 AND 9 AND 10 AND 11 AND 12 AND 13 AND 14 AND 15 AND 16 AND 17</booleanFilter>
         <criteriaItems>
             <column>Pricing_Quote_Line_Status_Age__c$Pricing_TPT_Status_From__c</column>
             <columnToColumn>false</columnToColumn>
@@ -144,6 +144,13 @@
             <value></value>
         </criteriaItems>
         <criteriaItems>
+            <column>Pricing_Quote_Line_Status_Age__c$Pricing_TPT_Quote_Line_Number__c.Pricing_Server_Deal_Type_Nm__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value></value>
+        </criteriaItems>
+        <criteriaItems>
             <column>Pricing_Quote_Line_Status_Age__c$Pricing_TPT_Quote_Line_Number__c.Pricing_Region_Nm__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
@@ -177,6 +184,13 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Client,Data Center Xeon® CPU,Ethernet,Optane™ PMem,Optane™ SSD,Small Volume Quotes - Data Center Xeon® CPU</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Pricing_Quote_Line_Status_Age__c$Pricing_TPT_Quote_Line_Number__c.SBQQ__Quote__c.Pricing_Quote_Program_Nm__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Tender</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

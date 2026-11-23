@@ -1,0 +1,1321 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>true</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ReadWrite</externalSharingModel>
+    <fields>
+        <fullName>Core_Aggregator__c</fullName>
+        <label>Aggregator</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Act 1</fullName>
+                    <default>false</default>
+                    <label>Act 1</label>
+                </value>
+                <value>
+                    <fullName>Act 2</fullName>
+                    <default>false</default>
+                    <label>Act 2</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_Application_Workload__c</fullName>
+        <label>Application/ Workload</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>5G</fullName>
+                    <default>false</default>
+                    <label>5G</label>
+                </value>
+                <value>
+                    <fullName>Analytics</fullName>
+                    <default>false</default>
+                    <label>Analytics</label>
+                </value>
+                <value>
+                    <fullName>App Dev/PaaS/FaaS</fullName>
+                    <default>false</default>
+                    <label>App Dev/PaaS/FaaS</label>
+                </value>
+                <value>
+                    <fullName>Computer Vision</fullName>
+                    <default>false</default>
+                    <label>Computer Vision</label>
+                </value>
+                <value>
+                    <fullName>Containers</fullName>
+                    <default>false</default>
+                    <label>Containers</label>
+                </value>
+                <value>
+                    <fullName>Data Management/Preparation</fullName>
+                    <default>false</default>
+                    <label>Data Management/Preparation</label>
+                </value>
+                <value>
+                    <fullName>Deep Learning/Training/Inference</fullName>
+                    <default>false</default>
+                    <label>Deep Learning/Training/Inference</label>
+                </value>
+                <value>
+                    <fullName>Digital Content Creation</fullName>
+                    <default>false</default>
+                    <label>Digital Content Creation</label>
+                </value>
+                <value>
+                    <fullName>Energy / Oil and Gas</fullName>
+                    <default>false</default>
+                    <label>Energy / Oil and Gas</label>
+                </value>
+                <value>
+                    <fullName>Financial</fullName>
+                    <default>false</default>
+                    <label>Financial</label>
+                </value>
+                <value>
+                    <fullName>Genomics</fullName>
+                    <default>false</default>
+                    <label>Genomics</label>
+                </value>
+                <value>
+                    <fullName>Health and Life Sciences</fullName>
+                    <default>false</default>
+                    <label>Health and Life Sciences</label>
+                </value>
+                <value>
+                    <fullName>In-Memory Computing</fullName>
+                    <default>false</default>
+                    <label>In-Memory Computing</label>
+                </value>
+                <value>
+                    <fullName>IoT</fullName>
+                    <default>false</default>
+                    <label>IoT</label>
+                </value>
+                <value>
+                    <fullName>Machine Learning/Inference</fullName>
+                    <default>false</default>
+                    <label>Machine Learning/Inference</label>
+                </value>
+                <value>
+                    <fullName>Manufacturing</fullName>
+                    <default>false</default>
+                    <label>Manufacturing</label>
+                </value>
+                <value>
+                    <fullName>NFVi</fullName>
+                    <default>false</default>
+                    <label>NFVi</label>
+                </value>
+                <value>
+                    <fullName>Online Transaction</fullName>
+                    <default>false</default>
+                    <label>Online Transaction</label>
+                </value>
+                <value>
+                    <fullName>Scientific</fullName>
+                    <default>false</default>
+                    <label>Scientific</label>
+                </value>
+                <value>
+                    <fullName>Simulation/Modeling</fullName>
+                    <default>false</default>
+                    <label>Simulation/Modeling</label>
+                </value>
+                <value>
+                    <fullName>Telecommunications/Comms Services</fullName>
+                    <default>false</default>
+                    <label>Telecommunications/Comms Services</label>
+                </value>
+                <value>
+                    <fullName>Video Streaming</fullName>
+                    <default>false</default>
+                    <label>Video Streaming</label>
+                </value>
+                <value>
+                    <fullName>Video Surveillance</fullName>
+                    <default>false</default>
+                    <label>Video Surveillance</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_CSP__c</fullName>
+        <label>CSP</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Act 1</fullName>
+                    <default>false</default>
+                    <label>Act 1</label>
+                </value>
+                <value>
+                    <fullName>Act 2</fullName>
+                    <default>false</default>
+                    <label>Act 2</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>6</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_Content_Label__c</fullName>
+        <label>Content  Label</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_Content_Link__c</fullName>
+        <label>Content Link</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>Core_Distributor__c</fullName>
+        <label>Distributor</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Act 1</fullName>
+                    <default>false</default>
+                    <label>Act 1</label>
+                </value>
+                <value>
+                    <fullName>Act 2</fullName>
+                    <default>false</default>
+                    <label>Act 2</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_End_Customer_Solution__c</fullName>
+        <label>End Customer Solution</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_ISV__c</fullName>
+        <label>ISV</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Act 1</fullName>
+                    <default>false</default>
+                    <label>Act 1</label>
+                </value>
+                <value>
+                    <fullName>Act 2</fullName>
+                    <default>false</default>
+                    <label>Act 2</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>6</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_Industry_Use_Case__c</fullName>
+        <label>Industry Use Case</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Ad Serving</fullName>
+                    <default>false</default>
+                    <label>Ad Serving</label>
+                </value>
+                <value>
+                    <fullName>AI/HPC Convergence</fullName>
+                    <default>false</default>
+                    <label>AI/HPC Convergence</label>
+                </value>
+                <value>
+                    <fullName>Anomaly Detection</fullName>
+                    <default>false</default>
+                    <label>Anomaly Detection</label>
+                </value>
+                <value>
+                    <fullName>Application Development</fullName>
+                    <default>false</default>
+                    <label>Application Development</label>
+                </value>
+                <value>
+                    <fullName>AR/VR</fullName>
+                    <default>false</default>
+                    <label>AR/VR</label>
+                </value>
+                <value>
+                    <fullName>Audit</fullName>
+                    <default>false</default>
+                    <label>Audit</label>
+                </value>
+                <value>
+                    <fullName>Bioinformatics</fullName>
+                    <default>false</default>
+                    <label>Bioinformatics</label>
+                </value>
+                <value>
+                    <fullName>Blockchain</fullName>
+                    <default>false</default>
+                    <label>Blockchain</label>
+                </value>
+                <value>
+                    <fullName>Cloud Native/Cloudification</fullName>
+                    <default>false</default>
+                    <label>Cloud Native/Cloudification</label>
+                </value>
+                <value>
+                    <fullName>Collaboration Tools</fullName>
+                    <default>false</default>
+                    <label>Collaboration Tools</label>
+                </value>
+                <value>
+                    <fullName>Content Delivery Network</fullName>
+                    <default>false</default>
+                    <label>Content Delivery Network</label>
+                </value>
+                <value>
+                    <fullName>Conversational/Chat Bot</fullName>
+                    <default>false</default>
+                    <label>Conversational/Chat Bot</label>
+                </value>
+                <value>
+                    <fullName>Credit Scoring</fullName>
+                    <default>false</default>
+                    <label>Credit Scoring</label>
+                </value>
+                <value>
+                    <fullName>Customer Analytics</fullName>
+                    <default>false</default>
+                    <label>Customer Analytics</label>
+                </value>
+                <value>
+                    <fullName>Cyber Security</fullName>
+                    <default>false</default>
+                    <label>Cyber Security</label>
+                </value>
+                <value>
+                    <fullName>Data Warehouse</fullName>
+                    <default>false</default>
+                    <label>Data Warehouse</label>
+                </value>
+                <value>
+                    <fullName>Distributed Business / Distributed Transaction</fullName>
+                    <default>false</default>
+                    <label>Distributed Business / Distributed Transaction</label>
+                </value>
+                <value>
+                    <fullName>Drug Discovery</fullName>
+                    <default>false</default>
+                    <label>Drug Discovery</label>
+                </value>
+                <value>
+                    <fullName>E-Commerce</fullName>
+                    <default>false</default>
+                    <label>E-Commerce</label>
+                </value>
+                <value>
+                    <fullName>Edge Computing</fullName>
+                    <default>false</default>
+                    <label>Edge Computing</label>
+                </value>
+                <value>
+                    <fullName>Automotive</fullName>
+                    <default>false</default>
+                    <label>Automotive</label>
+                </value>
+                <value>
+                    <fullName>Transportation and Warehouse : Warehousing and Storage</fullName>
+                    <default>false</default>
+                    <label>Transportation and Warehouse : Warehousing and Storage</label>
+                </value>
+                <value>
+                    <fullName>Manufacturing</fullName>
+                    <default>false</default>
+                    <label>Manufacturing</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>6</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_OEM__c</fullName>
+        <label>OEM</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Act 1</fullName>
+                    <default>false</default>
+                    <label>Act 1</label>
+                </value>
+                <value>
+                    <fullName>Act 2</fullName>
+                    <default>false</default>
+                    <label>Act 2</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_OSV__c</fullName>
+        <label>OSV</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Act 1</fullName>
+                    <default>false</default>
+                    <label>Act 1</label>
+                </value>
+                <value>
+                    <fullName>Act 2</fullName>
+                    <default>false</default>
+                    <label>Act 2</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_Partner__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Partner</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipName>Solution_Storages</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_Platform__c</fullName>
+        <externalId>false</externalId>
+        <label>Platform</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Pricing__c</fullName>
+        <label>Pricing</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Core_Product__c</fullName>
+        <label>Product</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Core_MDF_Product_Type</valueSetName>
+        </valueSet>
+        <visibleLines>6</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_Region_Deployed__c</fullName>
+        <label>Region Deployed</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>EMEA</fullName>
+                    <default>false</default>
+                    <label>EMEA</label>
+                </value>
+                <value>
+                    <fullName>APAC</fullName>
+                    <default>false</default>
+                    <label>APAC</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_Region_of_availability__c</fullName>
+        <label>Region of availability</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>LAR</fullName>
+                    <default>false</default>
+                    <label>LAR</label>
+                </value>
+                <value>
+                    <fullName>NAR</fullName>
+                    <default>false</default>
+                    <label>NAR</label>
+                </value>
+                <value>
+                    <fullName>PRC</fullName>
+                    <default>false</default>
+                    <label>PRC</label>
+                </value>
+                <value>
+                    <fullName>APAC</fullName>
+                    <default>false</default>
+                    <label>APAC</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_SI__c</fullName>
+        <label>SI</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Act 1</fullName>
+                    <default>false</default>
+                    <label>Act 1</label>
+                </value>
+                <value>
+                    <fullName>Act 2</fullName>
+                    <default>false</default>
+                    <label>Act 2</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_Solution_Area__c</fullName>
+        <label>Solution Area</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>CCG Commercial Deal $</fullName>
+                    <default>false</default>
+                    <label>CCG Commercial Deal $</label>
+                </value>
+                <value>
+                    <fullName>CCG Partner Consumption $</fullName>
+                    <default>false</default>
+                    <label>CCG Partner Consumption $</label>
+                </value>
+                <value>
+                    <fullName>CCG Partner Enablement Deal #</fullName>
+                    <default>false</default>
+                    <label>CCG Partner Enablement Deal #</label>
+                </value>
+                <value>
+                    <fullName>DCAI Compute Deal $</fullName>
+                    <default>false</default>
+                    <label>DCAI Compute Deal $</label>
+                </value>
+                <value>
+                    <fullName>DCAI Partner Consumption $</fullName>
+                    <default>false</default>
+                    <label>DCAI Partner Consumption $</label>
+                </value>
+                <value>
+                    <fullName>NEX Deal (Sell-To) $ - IOTG</fullName>
+                    <default>false</default>
+                    <label>NEX Deal (Sell-To) $ - IOTG</label>
+                </value>
+                <value>
+                    <fullName>NEX Deal (Sell-To) $ - Networking / Comms</fullName>
+                    <default>false</default>
+                    <label>NEX Deal (Sell-To) $ - Networking / Comms</label>
+                </value>
+                <value>
+                    <fullName>NEX Design</fullName>
+                    <default>false</default>
+                    <label>NEX Design</label>
+                </value>
+                <value>
+                    <fullName>NEX Industry Transformational Engagement (ADDS Process)</fullName>
+                    <default>false</default>
+                    <label>NEX Industry Transformational Engagement (ADDS Process)</label>
+                </value>
+                <value>
+                    <fullName>NEX IOTG Partner Consumption $</fullName>
+                    <default>false</default>
+                    <label>NEX IOTG Partner Consumption $</label>
+                </value>
+                <value>
+                    <fullName>Not Applicable</fullName>
+                    <default>false</default>
+                    <label>Not Applicable</label>
+                </value>
+                <value>
+                    <fullName>One Intel SW Enablement</fullName>
+                    <default>false</default>
+                    <label>One Intel SW Enablement</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_Solution_Description__c</fullName>
+        <label>Solution Description</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_Solution_Title__c</fullName>
+        <externalId>false</externalId>
+        <label>Solution Title</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Solution_Type__c</fullName>
+        <label>Solution Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>Core_Solution_Area__c</controllingField>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Reference architecture</fullName>
+                    <default>false</default>
+                    <label>Reference architecture</label>
+                </value>
+                <value>
+                    <fullName>Technology/ISV enablement</fullName>
+                    <default>false</default>
+                    <label>Technology/ISV enablement</label>
+                </value>
+                <value>
+                    <fullName>Select Solution</fullName>
+                    <default>false</default>
+                    <label>Select Solution</label>
+                </value>
+                <value>
+                    <fullName>Technology/ISV Solutions</fullName>
+                    <default>false</default>
+                    <label>Technology/ISV Solutions</label>
+                </value>
+                <value>
+                    <fullName>Data Centric Solutions Scale Program</fullName>
+                    <default>false</default>
+                    <label>Data Centric Solutions Scale Program</label>
+                </value>
+                <value>
+                    <fullName>Partner Select Solution</fullName>
+                    <default>false</default>
+                    <label>Partner Select Solution</label>
+                </value>
+                <value>
+                    <fullName>Partner Select Solution, Data Centric Solutions Scale Program</fullName>
+                    <default>false</default>
+                    <label>Partner Select Solution, Data Centric Solutions Scale Program</label>
+                </value>
+                <value>
+                    <fullName>CSP-Optimized</fullName>
+                    <default>false</default>
+                    <label>CSP-Optimized</label>
+                </value>
+                <value>
+                    <fullName>Data Centric Solutions Scale Program, Select Solution</fullName>
+                    <default>false</default>
+                    <label>Data Centric Solutions Scale Program, Select Solution</label>
+                </value>
+                <value>
+                    <fullName>AI Inference</fullName>
+                    <default>false</default>
+                    <label>AI Inference</label>
+                </value>
+                <value>
+                    <fullName>Analytics</fullName>
+                    <default>false</default>
+                    <label>Analytics</label>
+                </value>
+                <value>
+                    <fullName>CCG non-vPro Platform</fullName>
+                    <default>false</default>
+                    <label>CCG non-vPro Platform</label>
+                </value>
+                <value>
+                    <fullName>CCG Specialty Programs - Recruitment of new IPA partner to Managed Services and/or DaaS Specialty w/GTM plan</fullName>
+                    <default>false</default>
+                    <label>CCG Specialty Programs - Recruitment of new IPA partner to Managed Services and/or DaaS Specialty w/GTM plan</label>
+                </value>
+                <value>
+                    <fullName>CCG vPro Platform</fullName>
+                    <default>false</default>
+                    <label>CCG vPro Platform</label>
+                </value>
+                <value>
+                    <fullName>CCG vPro Solution Adoption</fullName>
+                    <default>false</default>
+                    <label>CCG vPro Solution Adoption</label>
+                </value>
+                <value>
+                    <fullName>Cloud Infrastructure Other</fullName>
+                    <default>false</default>
+                    <label>Cloud Infrastructure Other</label>
+                </value>
+                <value>
+                    <fullName>Comms Infra. / Networking Solution</fullName>
+                    <default>false</default>
+                    <label>Comms Infra. / Networking Solution</label>
+                </value>
+                <value>
+                    <fullName>Data Center / Cloud Solution</fullName>
+                    <default>false</default>
+                    <label>Data Center / Cloud Solution</label>
+                </value>
+                <value>
+                    <fullName>DSG Solution</fullName>
+                    <default>false</default>
+                    <label>DSG Solution</label>
+                </value>
+                <value>
+                    <fullName>Education | Skills for Innovation - Scale GTM program: Standard offering | Pipeline | Sales out</fullName>
+                    <default>false</default>
+                    <label>Education | Skills for Innovation - Scale GTM program: Standard offering | Pipeline | Sales out</label>
+                </value>
+                <value>
+                    <fullName>High Perf Compute</fullName>
+                    <default>false</default>
+                    <label>High Perf Compute</label>
+                </value>
+                <value>
+                    <fullName>Industrial Other</fullName>
+                    <default>false</default>
+                    <label>Industrial Other</label>
+                </value>
+                <value>
+                    <fullName>Intel Affinity CSP Deal #</fullName>
+                    <default>false</default>
+                    <label>Intel Affinity CSP Deal #</label>
+                </value>
+                <value>
+                    <fullName>Intel Affinity On-Prem Deal #</fullName>
+                    <default>false</default>
+                    <label>Intel Affinity On-Prem Deal #</label>
+                </value>
+                <value>
+                    <fullName>Network Infrastructure</fullName>
+                    <default>false</default>
+                    <label>Network Infrastructure</label>
+                </value>
+                <value>
+                    <fullName>Not Applicable</fullName>
+                    <default>false</default>
+                    <label>Not Applicable</label>
+                </value>
+                <value>
+                    <fullName>One Edge Solution</fullName>
+                    <default>false</default>
+                    <label>One Edge Solution</label>
+                </value>
+                <value>
+                    <fullName>One Intel AI Deal</fullName>
+                    <default>false</default>
+                    <label>One Intel AI Deal</label>
+                </value>
+                <value>
+                    <fullName>PSG Smart NIC</fullName>
+                    <default>false</default>
+                    <label>PSG Smart NIC</label>
+                </value>
+                <value>
+                    <fullName>PSG Storage</fullName>
+                    <default>false</default>
+                    <label>PSG Storage</label>
+                </value>
+                <value>
+                    <fullName>Unite Software - Scale GTM Program: Standard service offering | Pipeline | Revenue Share | Software licensing</fullName>
+                    <default>false</default>
+                    <label>Unite Software - Scale GTM Program: Standard service offering | Pipeline | Revenue Share | Software licensing</label>
+                </value>
+                <value>
+                    <fullName>Use Case: Asset &amp; Operations Optimization</fullName>
+                    <default>false</default>
+                    <label>Use Case: Asset &amp; Operations Optimization</label>
+                </value>
+                <value>
+                    <fullName>Use Case: Control Optimization &amp; Autonomy</fullName>
+                    <default>false</default>
+                    <label>Use Case: Control Optimization &amp; Autonomy</label>
+                </value>
+                <value>
+                    <fullName>Use Case: Energy Monitoring &amp; Management</fullName>
+                    <default>false</default>
+                    <label>Use Case: Energy Monitoring &amp; Management</label>
+                </value>
+                <value>
+                    <fullName>Use Case: Environment Monitoring</fullName>
+                    <default>false</default>
+                    <label>Use Case: Environment Monitoring</label>
+                </value>
+                <value>
+                    <fullName>Use Case: Human Wellness Monitoring</fullName>
+                    <default>false</default>
+                    <label>Use Case: Human Wellness Monitoring</label>
+                </value>
+                <value>
+                    <fullName>Use Case: Interactive Media</fullName>
+                    <default>false</default>
+                    <label>Use Case: Interactive Media</label>
+                </value>
+                <value>
+                    <fullName>Use Case: Logistics &amp; Tracking</fullName>
+                    <default>false</default>
+                    <label>Use Case: Logistics &amp; Tracking</label>
+                </value>
+                <value>
+                    <fullName>Use Case: Machine Condition Monitoring</fullName>
+                    <default>false</default>
+                    <label>Use Case: Machine Condition Monitoring</label>
+                </value>
+                <value>
+                    <fullName>Use Case: Product Inspection</fullName>
+                    <default>false</default>
+                    <label>Use Case: Product Inspection</label>
+                </value>
+                <value>
+                    <fullName>Use Case: Situational Monitoring</fullName>
+                    <default>false</default>
+                    <label>Use Case: Situational Monitoring</label>
+                </value>
+                <value>
+                    <fullName>Use Case: Video Safety and Security</fullName>
+                    <default>false</default>
+                    <label>Use Case: Video Safety and Security</label>
+                </value>
+                <value>
+                    <fullName>Enterprise &amp; Government Other</fullName>
+                    <default>false</default>
+                    <label>Enterprise &amp; Government Other</label>
+                </value>
+                <value>
+                    <fullName>IT Infrastructure</fullName>
+                    <default>false</default>
+                    <label>IT Infrastructure</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>Not Applicable</controllingFieldValue>
+                <valueName>Not Applicable</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>CCG Commercial Deal $</controllingFieldValue>
+                <controllingFieldValue>CCG Partner Consumption $</controllingFieldValue>
+                <valueName>CCG non-vPro Platform</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>CCG Commercial Deal $</controllingFieldValue>
+                <controllingFieldValue>CCG Partner Consumption $</controllingFieldValue>
+                <valueName>CCG vPro Platform</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>CCG Commercial Deal $</controllingFieldValue>
+                <controllingFieldValue>CCG Partner Consumption $</controllingFieldValue>
+                <valueName>CCG vPro Solution Adoption</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>One Intel SW Enablement</controllingFieldValue>
+                <valueName>AI Inference</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>One Intel SW Enablement</controllingFieldValue>
+                <valueName>Comms Infra. / Networking Solution</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>One Intel SW Enablement</controllingFieldValue>
+                <valueName>Data Center / Cloud Solution</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>One Intel SW Enablement</controllingFieldValue>
+                <controllingFieldValue>DCAI Compute Deal $</controllingFieldValue>
+                <controllingFieldValue>DCAI Partner Consumption $</controllingFieldValue>
+                <controllingFieldValue>NEX Deal (Sell-To) $ - IOTG</controllingFieldValue>
+                <controllingFieldValue>NEX Deal (Sell-To) $ - Networking / Comms</controllingFieldValue>
+                <controllingFieldValue>NEX Design</controllingFieldValue>
+                <controllingFieldValue>NEX Industry Transformational Engagement (ADDS Process)</controllingFieldValue>
+                <controllingFieldValue>NEX IOTG Partner Consumption $</controllingFieldValue>
+                <valueName>Network Infrastructure</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>CCG Partner Enablement Deal #</controllingFieldValue>
+                <valueName>CCG Specialty Programs - Recruitment of new IPA partner to Managed Services and/or DaaS Specialty w/GTM plan</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>CCG Partner Enablement Deal #</controllingFieldValue>
+                <valueName>Education | Skills for Innovation - Scale GTM program: Standard offering | Pipeline | Sales out</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>CCG Partner Enablement Deal #</controllingFieldValue>
+                <valueName>Unite Software - Scale GTM Program: Standard service offering | Pipeline | Revenue Share | Software licensing</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>DCAI Compute Deal $</controllingFieldValue>
+                <controllingFieldValue>DCAI Partner Consumption $</controllingFieldValue>
+                <valueName>Analytics</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>DCAI Compute Deal $</controllingFieldValue>
+                <controllingFieldValue>DCAI Partner Consumption $</controllingFieldValue>
+                <valueName>Cloud Infrastructure Other</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>DCAI Compute Deal $</controllingFieldValue>
+                <valueName>DSG Solution</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>DCAI Compute Deal $</controllingFieldValue>
+                <controllingFieldValue>DCAI Partner Consumption $</controllingFieldValue>
+                <controllingFieldValue>NEX Deal (Sell-To) $ - Networking / Comms</controllingFieldValue>
+                <valueName>High Perf Compute</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>DCAI Compute Deal $</controllingFieldValue>
+                <controllingFieldValue>DCAI Partner Consumption $</controllingFieldValue>
+                <controllingFieldValue>NEX Deal (Sell-To) $ - Networking / Comms</controllingFieldValue>
+                <valueName>Intel Affinity CSP Deal #</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>DCAI Compute Deal $</controllingFieldValue>
+                <controllingFieldValue>DCAI Partner Consumption $</controllingFieldValue>
+                <controllingFieldValue>NEX Deal (Sell-To) $ - Networking / Comms</controllingFieldValue>
+                <valueName>Intel Affinity On-Prem Deal #</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>DCAI Compute Deal $</controllingFieldValue>
+                <controllingFieldValue>DCAI Partner Consumption $</controllingFieldValue>
+                <controllingFieldValue>NEX Deal (Sell-To) $ - Networking / Comms</controllingFieldValue>
+                <valueName>One Intel AI Deal</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>DCAI Compute Deal $</controllingFieldValue>
+                <controllingFieldValue>DCAI Partner Consumption $</controllingFieldValue>
+                <controllingFieldValue>NEX Deal (Sell-To) $ - Networking / Comms</controllingFieldValue>
+                <valueName>PSG Smart NIC</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>DCAI Compute Deal $</controllingFieldValue>
+                <controllingFieldValue>DCAI Partner Consumption $</controllingFieldValue>
+                <controllingFieldValue>NEX Deal (Sell-To) $ - Networking / Comms</controllingFieldValue>
+                <valueName>PSG Storage</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>NEX Deal (Sell-To) $ - IOTG</controllingFieldValue>
+                <controllingFieldValue>NEX Deal (Sell-To) $ - Networking / Comms</controllingFieldValue>
+                <controllingFieldValue>NEX Design</controllingFieldValue>
+                <controllingFieldValue>NEX Industry Transformational Engagement (ADDS Process)</controllingFieldValue>
+                <controllingFieldValue>NEX IOTG Partner Consumption $</controllingFieldValue>
+                <valueName>One Edge Solution</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>NEX Deal (Sell-To) $ - IOTG</controllingFieldValue>
+                <controllingFieldValue>NEX Deal (Sell-To) $ - Networking / Comms</controllingFieldValue>
+                <controllingFieldValue>NEX Design</controllingFieldValue>
+                <controllingFieldValue>NEX Industry Transformational Engagement (ADDS Process)</controllingFieldValue>
+                <controllingFieldValue>NEX IOTG Partner Consumption $</controllingFieldValue>
+                <valueName>Use Case: Asset &amp; Operations Optimization</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>NEX Deal (Sell-To) $ - IOTG</controllingFieldValue>
+                <controllingFieldValue>NEX Deal (Sell-To) $ - Networking / Comms</controllingFieldValue>
+                <controllingFieldValue>NEX Design</controllingFieldValue>
+                <controllingFieldValue>NEX Industry Transformational Engagement (ADDS Process)</controllingFieldValue>
+                <controllingFieldValue>NEX IOTG Partner Consumption $</controllingFieldValue>
+                <valueName>Use Case: Control Optimization &amp; Autonomy</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>NEX Deal (Sell-To) $ - IOTG</controllingFieldValue>
+                <controllingFieldValue>NEX Deal (Sell-To) $ - Networking / Comms</controllingFieldValue>
+                <controllingFieldValue>NEX Design</controllingFieldValue>
+                <controllingFieldValue>NEX Industry Transformational Engagement (ADDS Process)</controllingFieldValue>
+                <controllingFieldValue>NEX IOTG Partner Consumption $</controllingFieldValue>
+                <valueName>Use Case: Energy Monitoring &amp; Management</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>NEX Deal (Sell-To) $ - IOTG</controllingFieldValue>
+                <controllingFieldValue>NEX Deal (Sell-To) $ - Networking / Comms</controllingFieldValue>
+                <controllingFieldValue>NEX Design</controllingFieldValue>
+                <controllingFieldValue>NEX Industry Transformational Engagement (ADDS Process)</controllingFieldValue>
+                <controllingFieldValue>NEX IOTG Partner Consumption $</controllingFieldValue>
+                <valueName>Use Case: Environment Monitoring</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>NEX Deal (Sell-To) $ - IOTG</controllingFieldValue>
+                <controllingFieldValue>NEX Deal (Sell-To) $ - Networking / Comms</controllingFieldValue>
+                <controllingFieldValue>NEX Design</controllingFieldValue>
+                <controllingFieldValue>NEX Industry Transformational Engagement (ADDS Process)</controllingFieldValue>
+                <controllingFieldValue>NEX IOTG Partner Consumption $</controllingFieldValue>
+                <valueName>Use Case: Human Wellness Monitoring</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>NEX Deal (Sell-To) $ - IOTG</controllingFieldValue>
+                <controllingFieldValue>NEX Deal (Sell-To) $ - Networking / Comms</controllingFieldValue>
+                <controllingFieldValue>NEX Design</controllingFieldValue>
+                <controllingFieldValue>NEX Industry Transformational Engagement (ADDS Process)</controllingFieldValue>
+                <controllingFieldValue>NEX IOTG Partner Consumption $</controllingFieldValue>
+                <valueName>Use Case: Interactive Media</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>NEX Deal (Sell-To) $ - IOTG</controllingFieldValue>
+                <controllingFieldValue>NEX Deal (Sell-To) $ - Networking / Comms</controllingFieldValue>
+                <controllingFieldValue>NEX Design</controllingFieldValue>
+                <controllingFieldValue>NEX Industry Transformational Engagement (ADDS Process)</controllingFieldValue>
+                <controllingFieldValue>NEX IOTG Partner Consumption $</controllingFieldValue>
+                <valueName>Use Case: Logistics &amp; Tracking</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>NEX Deal (Sell-To) $ - IOTG</controllingFieldValue>
+                <controllingFieldValue>NEX Deal (Sell-To) $ - Networking / Comms</controllingFieldValue>
+                <controllingFieldValue>NEX Design</controllingFieldValue>
+                <controllingFieldValue>NEX Industry Transformational Engagement (ADDS Process)</controllingFieldValue>
+                <controllingFieldValue>NEX IOTG Partner Consumption $</controllingFieldValue>
+                <valueName>Use Case: Machine Condition Monitoring</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>NEX Deal (Sell-To) $ - IOTG</controllingFieldValue>
+                <controllingFieldValue>NEX Deal (Sell-To) $ - Networking / Comms</controllingFieldValue>
+                <controllingFieldValue>NEX Design</controllingFieldValue>
+                <controllingFieldValue>NEX Industry Transformational Engagement (ADDS Process)</controllingFieldValue>
+                <controllingFieldValue>NEX IOTG Partner Consumption $</controllingFieldValue>
+                <valueName>Use Case: Product Inspection</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>NEX Deal (Sell-To) $ - IOTG</controllingFieldValue>
+                <controllingFieldValue>NEX Deal (Sell-To) $ - Networking / Comms</controllingFieldValue>
+                <controllingFieldValue>NEX Design</controllingFieldValue>
+                <controllingFieldValue>NEX Industry Transformational Engagement (ADDS Process)</controllingFieldValue>
+                <controllingFieldValue>NEX IOTG Partner Consumption $</controllingFieldValue>
+                <valueName>Use Case: Situational Monitoring</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>NEX Deal (Sell-To) $ - IOTG</controllingFieldValue>
+                <controllingFieldValue>NEX Deal (Sell-To) $ - Networking / Comms</controllingFieldValue>
+                <controllingFieldValue>NEX Design</controllingFieldValue>
+                <controllingFieldValue>NEX Industry Transformational Engagement (ADDS Process)</controllingFieldValue>
+                <controllingFieldValue>NEX IOTG Partner Consumption $</controllingFieldValue>
+                <valueName>Use Case: Video Safety and Security</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>NEX Deal (Sell-To) $ - Networking / Comms</controllingFieldValue>
+                <valueName>IT Infrastructure</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_Solution_owner_email__c</fullName>
+        <externalId>false</externalId>
+        <label>Solution owner email</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Technology_Enabled__c</fullName>
+        <label>Technology Enabled*</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>SGX</fullName>
+                    <default>false</default>
+                    <label>SGX</label>
+                </value>
+                <value>
+                    <fullName>Vpro</fullName>
+                    <default>false</default>
+                    <label>Vpro</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <label>Solution Storage</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Core_Solution_Title__c</columns>
+        <columns>CREATEDBY_USER</columns>
+        <columns>LAST_UPDATE</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>SolutionArea-{0000}</displayFormat>
+        <label>Solution Area Name</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Solution Storage</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

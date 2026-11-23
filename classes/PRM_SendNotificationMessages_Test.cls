@@ -65,7 +65,7 @@ public class PRM_SendNotificationMessages_Test {
         intelAccount2.Core_IPA_Partner_Role__c = 'Distributor';
         intelAccount2.Core_CNDA_Number__c='';
         intelAccount2.Core_Account_Type__c='Cloud Service Provider (CSP)';
-        intelAccount2.Core_Intel_Partner_Alliance_PartnerGroup__c = true;
+        intelAccount1.Core_Intel_Partner_Alliance_PartnerGroup__c = true;
         insert intelAccount2;
         
         Contact con1 = new Contact();  //Contact
@@ -77,7 +77,6 @@ public class PRM_SendNotificationMessages_Test {
         con1.Core_eRPM_Language_Code__c='Eng';
         con1.Core_IPA_PartnerRole__c = 'Service Provider';
         con1.Core_Login_Id__c = 'abc';
-        con1.MailingCountry='USA';
         insert con1;
         //TestData for Contact 
         Contact con2 =new Contact();
@@ -89,7 +88,6 @@ public class PRM_SendNotificationMessages_Test {
         con2.Core_eRPM_Language_Code__c='Eng';
         con2.Core_IPA_PartnerRole__c = 'Service Provider';
         con2.Core_Login_Id__c = 'Test';
-        con2.MailingCountry='USA';
         insert con2;
         
         Test.startTest();
@@ -118,7 +116,7 @@ public class PRM_SendNotificationMessages_Test {
         insert cpl;
         
         PRM_PartnerBenefit__c pb = new PRM_PartnerBenefit__c(); //Partner Benefit
-        pb.Name='Solutions Marketplace Enhanced';
+        pb.Name='Solution Marketplace Enhanced';
         pb.PRM_Benefit_Cd__c = 'BFTTRGUNI';
         pb.PRM_Channel_Program_Id__c = cp.id;
         insert pb;
@@ -145,13 +143,7 @@ public class PRM_SendNotificationMessages_Test {
         msg1.PRM_Title_Txt__c='Setup your store front';
         msg1.PRM_Message_Cd__c = 'MSGSTRFRNT';
         msg1.RecordTypeId = eventRecordTypeId;
-        insert msg1;
-        
-        PRM_Message__c msg2= new PRM_Message__c();
-        msg2.PRM_Title_Txt__c='Adhoc messgae';
-        msg2.PRM_Message_Cd__c = 'ADHOC';
-        msg2.RecordTypeId = Schema.SObjectType.PRM_Message__c.getRecordTypeInfosByName().get(System.Label.PRM_Adhoc).getRecordTypeId();
-        insert msg2;                
+        insert msg1;      
         
         Core_AGS_Role__c agsRole1 = new Core_AGS_Role__c();
         agsRole1.Name = 'CSP Member';
@@ -219,27 +211,6 @@ public class PRM_SendNotificationMessages_Test {
         ceList.add(ce1);
         
         insert ceList;
-        
-        PRM_Contact_Group__c cg = new PRM_Contact_Group__c();
-        cg.name = 'test group';
-        insert cg; 
-        
-        PRM_Contact_Group_Contact_Association__c cgca = new PRM_Contact_Group_Contact_Association__c();
-        cgca.PRM_Contact_Id__c = con1.id;
-        cgca.PRM_Contact_Group_Id__c = cg.Id;
-        insert cgca;
-
-        
-        PRM_Message_Contact_Group_Association__c mcga = new PRM_Message_Contact_Group_Association__c();
-        mcga.PRM_Message_Id__c = msg2.id;
-        mcga.PRM_Contact_Group_Id__c = cg.id;
-        insert mcga;
-        
-        PRM_Message_log__c msglog = new PRM_Message_log__c();
-        msgLog.PRM_Contact_Id__c = con1.id;
-        msgLog.PRM_Message_Id__c = msg1.id;
-        insert msgLog;
-                        
         Test.stopTest();
     }
     
@@ -256,7 +227,7 @@ public class PRM_SendNotificationMessages_Test {
         Test.startTest();
         PRM_SendNotificationMessages.sendNotifications(msg);
 		Integer actualCount = [Select count() from PRM_Message_log__c];
-		System.assertEquals(2, actualCount);
+		System.assertEquals(1, actualCount);
         
         PRM_Message_log__c mlogs = [Select Id,PRM_Message_Id__c,PRM_Contact_Id__c,PRM_Inactive_Ind__c,PRM_Message_Viewed_Ind__c from PRM_Message_log__c LIMIT 1];
         mlogs.PRM_Inactive_Ind__c = true;
@@ -265,7 +236,7 @@ public class PRM_SendNotificationMessages_Test {
         
         PRM_SendNotificationMessages.sendNotifications(msg);
 		Integer actual = [Select count() from PRM_Message_log__c];
-		System.assertEquals(2, actual);
+		System.assertEquals(1, actual);
 		Test.stopTest();
 		        
     }

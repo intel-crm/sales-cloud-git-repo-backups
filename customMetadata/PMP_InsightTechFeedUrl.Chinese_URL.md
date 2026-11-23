@@ -4,7 +4,7 @@
     <protected>false</protected>
     <values>
         <field>PMP_Feed_URL__c</field>
-        <value xsi:type="xsd:string">https://www.insight.tech/</value>
+        <value xsi:type="xsd:string">https://zh-hans.insight.tech/</value>
     </values>
     <values>
         <field>PMP_Language_Code__c</field>

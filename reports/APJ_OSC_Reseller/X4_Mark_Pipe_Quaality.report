@@ -52,7 +52,6 @@
         <field>Opportunity.Core_Last_Activity_Date__c</field>
     </columns>
     <filter>
-        <booleanFilter>1 AND (2 OR (3 AND 4))</booleanFilter>
         <criteriaItems>
             <column>Opportunity.Core_Pipeline_Heath__c</column>
             <columnToColumn>false</columnToColumn>
@@ -61,25 +60,11 @@
             <value>1</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OWNER_EMAIL</column>
+            <column>OWNER_MANAGER</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>jovern.lim@intel.com,ida.zulaika@intel.com,fransiskus.leonardus@intel.com,hendi.satrio@intel.com,harris.kristanto@intel.com,nicholas.gilbert.samudi@intel.com</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OWNER_EMAIL</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>paul.haines@intel.com</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Account.Core_Account_Country__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Indonesia,Malaysia</value>
+            <value>Mark Burby</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -115,6 +100,8 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
+        <endDate>2021-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2017-10-01</startDate>
     </timeFrameFilter>
 </Report>

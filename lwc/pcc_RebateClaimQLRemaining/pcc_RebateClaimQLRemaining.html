@@ -1,0 +1,36 @@
+<template>
+    <template if:true={isProcessing}>
+        <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+    </template>
+    <template if:true={showMarquee}>
+    <div class="marquee">
+        <span>
+            <p> <a  class="text-color" onclick={handleClick}>Action Required: Due date for submitting your Rebate Claim is fast approaching. 
+           Click to view the list of Quote Lines eligible for Rebate Claim.</a></p>
+        </span>
+    </div>
+    </template>
+    <template if:true={showModal}>
+        <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01" class="slds-modal slds-fade-in-open slds-modal_medium">
+        <div class="slds-modal__container">
+            <div>
+                <lightning-button-icon icon-name="utility:close" variant="bare-inverse" onclick={handleClose} alternative-text="close" class="slds-m-bottom_small slds-float_right" title="close"></lightning-button-icon>
+            </div>
+            <div class="slds-modal__header">
+                <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate" tabindex="-1">QLs Approaching Deadline</h1>
+              </div>
+        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+            <template if:true={hasQLsWithoutRebate}>
+                <lightning-datatable
+                    key-field="Id"
+                    data={qlsWithoutRebate}
+                    columns={columns}
+                    hide-checkbox-column
+                ></lightning-datatable>
+            </template>
+        </div>
+        </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+</template>
+</template>

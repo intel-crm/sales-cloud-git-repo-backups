@@ -4,18 +4,19 @@
     <description>Custom Setting to Bypass UCD related Validation Rules</description>
     <enableFeeds>false</enableFeeds>
     <fields>
-        <fullName>ByPass__c</fullName>
-        <defaultValue>false</defaultValue>
-        <label>ByPass</label>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
         <fullName>Bypass_Flow__c</fullName>
         <defaultValue>false</defaultValue>
         <description>This field is used to bypass validation rules via flows</description>
         <inlineHelpText>This field is used to bypass validation rules via flows</inlineHelpText>
         <label>Bypass Flow</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Bypass__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Field To Bypass Account Validation Rules</description>
+        <label>Bypass</label>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>

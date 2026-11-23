@@ -1,7 +1,7 @@
 import { LightningElement , api, wire } from 'lwc';
-/*import { ShowToastEvent } from 'lightning/platformShowToastEvent';
+import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import getHostId from '@salesforce/apex/Sales_LicenseGenIntegration_Utility.returnHostIdDetail';
-//import validateTemporaryNICId from '@salesforce/apex/Sales_GenerateTemporaryLicense.validateTemporaryNICId';
+import validateTemporaryNICId from '@salesforce/apex/Sales_GenerateTemporaryLicense.validateTemporaryNICId';
 import SalesLicenseFileFailureMsg from '@salesforce/label/c.Sales_LicenseFileFailure_Msg';
 import Saleslicensetempmsg from '@salesforce/label/c.Sales_license_temp_msg';
 import SalesAssignPrimaryCompErr from '@salesforce/label/c.Sales_AssignPrimaryCompErr';
@@ -9,11 +9,11 @@ import SalesFileGenSuccess from '@salesforce/label/c.Sales_File_Gen_Success';
 import Sales_Succmsg from '@salesforce/label/c.Sales_Succmsg';
 import Sales_Failuremsg from '@salesforce/label/c.Sales_Failuremsg';
 import  Sales_ermsg from '@salesforce/label/c.Sales_ermsg';
-*/
+
 
 
 export default class Sales_GenerateTempLicenseCheckout extends LightningElement {
-    /*@api recordId;
+    @api recordId;
     eventType='isTempLicenseGen';
     label={
         SalesLicenseFileFailureMsg,   
@@ -30,7 +30,7 @@ export default class Sales_GenerateTempLicenseCheckout extends LightningElement 
             console.log('Object name>>'+this.objectApiName);
             this.verifyLicenseGen();
     }
-    /*verifyLicenseGen(){
+    verifyLicenseGen(){
         console.log('checking validateTemporaryNICId' + this.recordId);   
         validateTemporaryNICId({ hostRecordId: this.recordId})    //pass record Id
         .then((res) => {
@@ -47,9 +47,9 @@ export default class Sales_GenerateTempLicenseCheckout extends LightningElement 
                 this.closeQuickAction();
                 this.fireToastEvent(this.label.Sales_ermsg, error.body.message, 'error', 'sticky');
         });
-    }*/
+    }
 
-    /*generateTempLicense() {
+    generateTempLicense() {
         console.log('recordId>>>>' + this.recordId);
 
         getHostId({ input: this.recordId, inputType: 'HostId',eventType:this.eventType })    //pass record Id and type 
@@ -91,11 +91,11 @@ export default class Sales_GenerateTempLicenseCheckout extends LightningElement 
             /*window.setTimeout(function(){ 
                     location.reload(true);
             }, 2000);*/
-    /*}
+    }
 
     closeQuickAction() {
             const closeModal = new CustomEvent('close');
             // Dispatches the event.
             this.dispatchEvent(closeModal);
-    }*/
+    }
 }

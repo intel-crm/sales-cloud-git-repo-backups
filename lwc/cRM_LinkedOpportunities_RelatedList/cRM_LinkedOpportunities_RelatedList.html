@@ -1,0 +1,20 @@
+<template>       
+    <lightning-card title={titleWithCount} icon-name="standard:record">
+        <lightning-button label="New" slot="actions" onclick={createNew}></lightning-button>
+        <div slot="footer">
+            <div>
+                <lightning-button label="View All" onclick={navigateToRelatedList}></lightning-button>
+            </div>
+        </div> 
+        <template if:true={records}>
+                                <template for:each={records} for:item="item" for:index="index">
+                                    <tr key={item.Id}>
+                                        <td><a href={item.oppfromURL} target="_blank">{item.CRM_Primary_Opportunity__r.Name}   \n</a></td>
+                                        <td class="Link Reason:">Link Reason:    {item.CRM_Link_Reason__c}   \n</td>
+                                        <td class="Link Description:">Link Description:   {item.CRM_Link_Description__c}   \n</td>
+                                        
+                                    </tr>
+                                </template>
+                            </template>
+    </lightning-card>       
+</template>

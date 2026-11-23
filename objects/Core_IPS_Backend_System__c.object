@@ -401,7 +401,6 @@
         <columns>Core_IPS_Support_Org_Name__c</columns>
         <columns>LAST_UPDATE</columns>
         <columns>CREATED_DATE</columns>
-        <columns>Core_IPS_Routing_Technique__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
         <language>en_US</language>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle
+    xmlns="http://soap.sforce.com/2006/04/metadata">
+
+    <apiVersion>66.0</apiVersion>
+
+    <isExposed>true</isExposed>
+
+    <masterLabel>
+        End Customer Account Search
+    </masterLabel>
+
+    <description>
+        Searches Intel Accounts using the Design Registration
+        End Customer Name, Country, and Website.
+    </description>
+
+    <targets>
+        <target>lightning__RecordPage</target>
+    </targets>
+
+    <targetConfigs>
+        <targetConfig targets="lightning__RecordPage">
+
+            <objects>
+                <object>
+                    Core_Design_Registration__c
+                </object>
+            </objects>
+
+            <supportedFormFactors>
+                <supportedFormFactor type="Large"/>
+            </supportedFormFactors>
+
+        </targetConfig>
+    </targetConfigs>
+
+</LightningComponentBundle>

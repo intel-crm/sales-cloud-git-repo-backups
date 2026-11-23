@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Account.Core_Intel_Partner_Alliance_PartnerGroup__c</field>
-    </columns>
-    <columns>
-        <field>Account.Core_Account_BU_Focus__c</field>
-    </columns>
-    <columns>
         <field>Account.Core_Account_Legal_Name__c</field>
     </columns>
     <columns>
@@ -68,11 +61,11 @@
             <value>Account.Mastered_Account</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Account.Core_Prime_Account_Name__c</column>
+            <column>Account.Core_Geo__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Commscope</value>
+            <value>EMEA</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

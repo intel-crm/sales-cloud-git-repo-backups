@@ -132,6 +132,10 @@
         <label>Typ</label>
         <name>SBQQ__Type__c</name>
     </fields>
+    <fields>
+        <label><!-- Quote Term Name --></label>
+        <name>core_cpq_Quote_Term_Name__c</name>
+    </fields>
     <gender>Feminine</gender>
     <nameFieldLabel>Klauselnummer</nameFieldLabel>
     <webLinks>

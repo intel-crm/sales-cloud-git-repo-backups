@@ -1,7 +1,7 @@
 public class Core_Role_Hierarchy_Accessor
 {
     // READ-WRITE property
-    /*private Set<Id> pUserIds;
+    private Set<Id> pUserIds;
     public  Set<Id> userIds {
         set {
                 pUserIds = value;
@@ -111,6 +111,6 @@ public class Core_Role_Hierarchy_Accessor
 
     // Constructor
     public Core_Role_Hierarchy_Accessor() {
-    }*/
+    }
         
 }

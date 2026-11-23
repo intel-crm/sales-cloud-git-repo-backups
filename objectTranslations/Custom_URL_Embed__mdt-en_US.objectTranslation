@@ -37,6 +37,10 @@
         <name>Core_Tenant_Id__c</name>
     </fields>
     <fields>
+        <label><!-- Dynamic Filter and Value --></label>
+        <name>Dynamic_Filter_and_Value__c</name>
+    </fields>
+    <fields>
         <label><!-- Dynamic Filter and Value txt --></label>
         <name>Dynamic_Filter_and_Value_txt__c</name>
     </fields>
@@ -47,6 +51,10 @@
     <fields>
         <label><!-- Embed_URL_Class --></label>
         <name>Embed_URL_Class__c</name>
+    </fields>
+    <fields>
+        <label><!-- No Access Error --></label>
+        <name>No_Access_Error__c</name>
     </fields>
     <fields>
         <label><!-- No Access Error txt --></label>
@@ -61,12 +69,20 @@
         <name>Project__c</name>
     </fields>
     <fields>
+        <label><!-- Security Query --></label>
+        <name>Security_Query__c</name>
+    </fields>
+    <fields>
         <label><!-- Security Query txt --></label>
         <name>Security_Query_txt__c</name>
     </fields>
     <fields>
         <label><!-- Security enforced --></label>
         <name>Security_enforced__c</name>
+    </fields>
+    <fields>
+        <label><!-- Static Filter and Value --></label>
+        <name>Static_Filter_and_Value__c</name>
     </fields>
     <fields>
         <label><!-- Static Filter and Value txt --></label>
@@ -80,6 +96,10 @@
         <help><!-- Field to store URL --></help>
         <label><!-- URL --></label>
         <name>URL__c</name>
+    </fields>
+    <fields>
+        <label><!-- User Filter and Value --></label>
+        <name>User_Filter_and_Value__c</name>
     </fields>
     <fields>
         <label><!-- User Filter and Value txt --></label>

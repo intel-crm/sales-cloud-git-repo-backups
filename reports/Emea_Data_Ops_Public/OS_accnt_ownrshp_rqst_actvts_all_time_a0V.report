@@ -44,7 +44,7 @@
         <groupingColumn>BucketField_96775487</groupingColumn>
         <legendPosition>Right</legendPosition>
         <location>CHART_BOTTOM</location>
-        <secondaryGroupingColumn>Account.Core_Geo__c</secondaryGroupingColumn>
+        <secondaryGroupingColumn>CDF1</secondaryGroupingColumn>
         <showAxisLabels>false</showAxisLabels>
         <showPercentage>false</showPercentage>
         <showTotal>false</showTotal>
@@ -72,6 +72,13 @@
     <columns>
         <field>Activity.Core_Account_Name__c</field>
     </columns>
+    <customDetailFormulas>
+        <calculatedFormula>TEXT(YEAR(DATEVALUE(CREATED_DATE)))</calculatedFormula>
+        <dataType>Text</dataType>
+        <developerName>CDF1</developerName>
+        <label>Year created</label>
+        <scale>2</scale>
+    </customDetailFormulas>
     <filter>
         <criteriaItems>
             <column>SUBJECT</column>
@@ -91,6 +98,11 @@
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>BucketField_96775487</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>CDF1</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>O/S accnt ownrshp rqst actvts - all time</name>

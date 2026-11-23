@@ -4,44 +4,20 @@
     <encodingKey>UTF-8</encodingKey>
     <name>ADMINREG_Italian</name>
     <style>none</style>
-    <subject>Azione richiesta per completare la registrazione a Intel® Partner Alliance</subject>
-    <textOnly>Azione richiesta per completare la registrazione a Intel® Partner Alliance
+    <subject>Ultimo passaggio richiesto per aderire al programma per i partner Intel</subject>
+    <textOnly>{!Contact.FirstName},
 
+L&apos;amministratore della tua azienda o un rappresentante Intel ti ha aggiunto nell&apos;account del programma per i partner Intel per {!Contact.Core_Account_Name__c}. Per attivare l&apos;account e iniziare a usufruire dei vantaggi, controlla i dati e completa la sezione dei requisiti legali.
 
+Inoltre, salva le informazioni di accesso per consultazione futura:
 
+Nome utente : {!Contact.Name}
+Indirizzo e-mail : {!Contact.Email}
+Nome dell&apos;azienda : {!Contact.Core_Account_Name__c}
+La password deve essere considerata riservata. L&apos;uso di questa password nei siti Web di Intel è regolato dai Termini di utilizzo di Intel, consultabili tramite il collegamento in fondo alle pagine Web dei rispettivi siti.
 
-{!Contact.FirstName},
-
-congratulazioni, l&apos;amministratore della tua azienda o un rappresentante Intel® ti ha aggiunto a un account Intel® Partner Alliance! Per completare la registrazione, ti mancano solo pochi passaggi.
-
-Per il tuo profilo abbiamo creato le seguenti informazioni:
-
-Indirizzo e-mail: {!Contact.Email}
-Nome azienda: {{ACCOUNTNAME}}
-Business ID Intel® Partner Alliance: {{ACCOUNTNUMBER}}
-
-
-Clicca sul link sottostante per completare la registrazione
-
-
-{{ButtonText}}
-
-
-Non riesci ad accedere al collegamento sopra?
-{{EVLINK}}
-Se hai qualche domanda, contattaci all&apos;indirizzo {{SUPPORTLINK}}.
-Non vediamo l&apos;ora di averti nel programma!
-Cordiali saluti,
-Il tuo team Intel® Partner Alliance
-
-
-Questo messaggio ti è stato inviato come un&apos;importante comunicazione aziendale relativa al tuo rapporto attuale con Intel® Partner Alliance.
-© {!$Label.PRM_CurrentYear} Intel Corporation
-Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
-Privacy | Cookies
-
-
-__PRESENT</textOnly>
+COMPLETA ORA
+Domande? Contatta il supporto qui</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

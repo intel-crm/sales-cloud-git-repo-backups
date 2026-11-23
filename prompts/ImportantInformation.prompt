@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Important Information</masterLabel>
+    <promptVersions>
+        <body>&lt;p&gt;&lt;strong&gt;We’re increasingly using&amp;nbsp;&lt;/strong&gt;&lt;a href=&quot;https://goto.intel.com/chatterb&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;color: rgb(11, 92, 171);&quot;&gt;&lt;strong&gt;Chatter&amp;nbsp;&lt;/strong&gt;&lt;/a&gt;&lt;strong&gt;to relay important opportunity updates/requests&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://goto.intel.com/ww10b&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;color: rgb(11, 92, 171);&quot;&gt;&lt;strong&gt;WW10 Sales CRM Updates&amp;nbsp;&lt;/strong&gt;&lt;/a&gt;&lt;strong&gt;with sales Bonus Dashboard &amp;amp; VBS Potential&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;1H24 Seller Bonus Program (VPN)&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://goto.intel.com/bonuscommsb&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;color: rgb(11, 92, 171);&quot;&gt;&lt;strong&gt;Comms&lt;/strong&gt;&lt;/a&gt;&lt;strong&gt;&amp;nbsp;|&amp;nbsp;&lt;/strong&gt;&lt;a href=&quot;https://goto.intel.com/bonustrainingb&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;color: rgb(11, 92, 171);&quot;&gt;&lt;strong&gt;Training Page&lt;/strong&gt;&lt;/a&gt;&lt;strong&gt;&amp;nbsp;|&lt;/strong&gt;&lt;a href=&quot;https://goto.intel.com/bonusvideob&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;color: rgb(11, 92, 171);&quot;&gt;&lt;strong&gt;&amp;nbsp;Video&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Recommended&amp;nbsp;&lt;/strong&gt;&lt;a href=&quot;https://goto.intel.com/forecastingb&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;color: rgb(11, 92, 171);&quot;&gt;&lt;strong&gt;Forecast&amp;nbsp;&lt;/strong&gt;&lt;/a&gt;&lt;strong&gt;Deadlines for Q2 Decision Dates&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;April 5:&amp;nbsp;Managers&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;April 12:&amp;nbsp;Regional/GSS&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;See&amp;nbsp;&lt;/strong&gt;&lt;a href=&quot;http://goto.intel.com/secalendarb&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;color: rgb(11, 92, 171);&quot;&gt;&lt;strong&gt;full calendar&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Callidus EOL:&amp;nbsp;&lt;/strong&gt;&lt;a href=&quot;https://goto.intel.com/calliduseolcommsb&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;color: rgb(11, 92, 171);&quot;&gt;&lt;strong&gt;Save reports&amp;nbsp;&lt;/strong&gt;&lt;/a&gt;&lt;strong&gt;by April 30 (VPN&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</body>
+        <customApplication>BETA_archived</customApplication>
+        <delayDays>1</delayDays>
+        <displayType>DockedComposer</displayType>
+        <experience>Lightning</experience>
+        <header>Important Information</header>
+        <isPublished>true</isPublished>
+        <masterLabel>Important Information</masterLabel>
+        <publishedDate>2024-09-20</publishedDate>
+        <shouldDisplayActionButton>false</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>true</shouldIgnoreGlobalDelay>
+        <startDate>2024-09-16</startDate>
+        <targetPageKey1>home</targetPageKey1>
+        <targetPageType>standard__namedPage</targetPageType>
+        <timesToDisplay>5</timesToDisplay>
+        <title>Important Information</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+</Prompt>

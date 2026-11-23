@@ -33,7 +33,7 @@ public class Core_ContactEntitlementHelper_Test{
                                               BillingCountry='USA', BillingPostalCode='12345',Core_IPS_Active__c = false, Core_CIM_ID__c ='123124',Core_PMP_Membership_Change_Ind__c=false);
             insert testAccount;
             
-            Contact testContact = new Contact(FirstName='testFirstName123', LastName='testLastName', Email='test123@testing.com.test',MailingCountry='India',
+            Contact testContact = new Contact(FirstName='testFirstName123', LastName='testLastName', Email='test123@testing.com.test',
                                               AccountId=testAccount.Id,Core_IPS_Active__c =false,Core_IPS_Intel_Support_Owner__c= itAdminUser.Id);
             insert testContact;
             
@@ -59,7 +59,7 @@ public class Core_ContactEntitlementHelper_Test{
             newlstentitle.add(ce2);
             newlstentitle.add(ce3);
             insert newlstentitle;
-            
+            system.debug('newlstentitle==='+newlstentitle);
             
             List<Core_Contact_Entitlement__c> oldlstentitle = new List<Core_Contact_Entitlement__c>();
             Core_Contact_Entitlement__c conent1 = new Core_Contact_Entitlement__c(id = ce1.id,Core_Contact_Id__c=testContact.Id,Core_Entitlement_Id__c = Label.Core_Entitlement_IPS_Id, Core_Selected__c=true);
@@ -80,6 +80,7 @@ public class Core_ContactEntitlementHelper_Test{
             update  oldlstentitle;
             
             Test.stopTest();
+            system.debug('oldlstentitle==='+oldlstentitle);
             
         }
     }
@@ -108,7 +109,7 @@ public class Core_ContactEntitlementHelper_Test{
                                               BillingCountry='USA', BillingPostalCode='12345',Core_IPS_Active__c = false, Core_CIM_ID__c ='123124',Core_PMP_Membership_Change_Ind__c=false);
             insert testAccount;
             
-            Contact testContact = new Contact(FirstName='testFirstName123', LastName='testLastName', Email='test123@testing.com.test',MailingCountry='India',
+            Contact testContact = new Contact(FirstName='testFirstName123', LastName='testLastName', Email='test123@testing.com.test',
                                               AccountId=testAccount.Id,Core_IPS_Active__c =false,Core_IPS_Intel_Support_Owner__c= itAdminUser.Id);
             insert testContact;
             
@@ -132,6 +133,7 @@ public class Core_ContactEntitlementHelper_Test{
             newlstentitle.add(ce2);
             newlstentitle.add(ce3);
             insert newlstentitle;
+            system.debug('newlstentitle==='+newlstentitle);
             
             List<Core_Contact_Entitlement__c> oldlstentitle = new List<Core_Contact_Entitlement__c>();
             
@@ -144,6 +146,7 @@ public class Core_ContactEntitlementHelper_Test{
             oldlstentitle.add(conent3);
             
             update  oldlstentitle;
+            system.debug('oldlstentitle==='+oldlstentitle);
         }
     }
     
@@ -164,14 +167,14 @@ public class Core_ContactEntitlementHelper_Test{
             cm.Name = 'IPS Standard Entitlement';
             cm.Value__c  = 'IPS Standard Entitlement';
             insert cm;
-            //Id intelAccRecTypeId = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
-            Account testAccount = new Account(Name='testAccount123', Core_Sales_Groups__c='Americas Canada Sales Group', Core_IsODM__c = true,
+            
+            Account testAccount = new Account(Name='testAccount123', Core_Sales_Groups__c='Global Accounts Sales Group', Core_IsODM__c = true,
                                               Core_Account_Type__c='Other', Industry='Others', Core_CNDA_Number__c = '12345',
                                               BillingStreet='1234 tester St', BillingCity='testCity', BillingState='OR',
                                               BillingCountry='USA', BillingPostalCode='12345',Core_IPS_Active__c = false, Core_CIM_ID__c ='123124',Core_PMP_Membership_Change_Ind__c=false);
             insert testAccount;
             
-            Contact testContact = new Contact(FirstName='testFirstName123', LastName='testLastName', Email='test123@testing.com.test',MailingCountry='India',
+            Contact testContact = new Contact(FirstName='testFirstName123', LastName='testLastName', Email='test123@testing.com.test',
                                               AccountId=testAccount.Id,Core_IPS_Active__c =false,Core_IPS_Intel_Support_Owner__c= itAdminUser.Id);
             insert testContact;
             
@@ -196,6 +199,7 @@ public class Core_ContactEntitlementHelper_Test{
             newlstentitle.add(ce2);
             newlstentitle.add(ce3);
             insert newlstentitle;
+            system.debug('newlstentitle==='+newlstentitle);
             
             List<Core_Contact_Entitlement__c> oldlstentitle = new List<Core_Contact_Entitlement__c>();
             
@@ -208,6 +212,7 @@ public class Core_ContactEntitlementHelper_Test{
             oldlstentitle.add(conent3);
             
             update  oldlstentitle;
+            system.debug('oldlstentitle==='+oldlstentitle);
         }
     }
     
@@ -308,299 +313,307 @@ Test.stopTest();
 
 } */
     
-    /*@isTest
-public static void  partnerAccGroupMemtestMethod1 ()
-{ 
-String partnerAccRecTypeId = System.Label.PMP_Partner_Account_Record_Type_Id; 
-List<Account> accts1 = new List<Account>();        
-Account partnerAccount1 = new Account(Name ='PartnerAccount',Core_Account_Type__c = 'Distributor',Core_Sales_Groups__c= 'Americas Canada Sales Group',
-Industry='Agriculture', BillingCity='delhi',BillingCountry='Ind',BillingStreet='abc chowk delhi',RecordTypeId=partnerAccRecTypeId);
-
-accts1.add(partnerAccount1);
-Account intelAccount1 = new Account(Name ='IntelAccount',Core_Account_Type__c = 'Distributor',Core_Sales_Groups__c= 'Americas Canada Sales Group',
-Industry='Agriculture', BillingCity='delhi',BillingCountry='Ind',BillingStreet='cbc chowk delhi');
-
-accts1.add(intelAccount1);
-Insert accts1 ;
-
-List<Account> intelAccId1 = [SELECT ID,Name FROM Account where Name ='IntelAccount'];
-List<Account> partnerAccountIdVar1 = [SELECT ID,Name FROM Account where Name ='PartnerAccount'];
-List<Account>accToUpdate1 = new List<Account>();
-For(Account acc1:accts1){
-acc1.IsPartner = true;
-accToUpdate1.add(acc1);
-}
-Update accToUpdate1 ;
-List<Core_Account_Group_Member__c> accGroupMemlist1 = new List<Core_Account_Group_Member__c>();
-Core_Account_Group_Member__c  accGroupMem1= new Core_Account_Group_Member__c(Core_Partner_Account_Id__c =partnerAccountIdVar1[0].Id,Core_Intel_Account_Id__c =intelAccId1[0].Id);
-accGroupMemlist1.add(accGroupMem1);
-Insert accGroupMemlist1 ;
-
-List<Core_Account_Group_Member__c> gupdate1=new List<Core_Account_Group_Member__c>();
-List<Core_Account_Group_Member__c> gl1=[Select Core_MDA_Ind__c from Core_Account_Group_Member__c];
-For(Core_Account_Group_Member__c g1 : gl1)
-{
-g1.Core_MDA_Ind__c=False;
-gupdate1.add(g1);
-}
-
-
-Contact contact11 = new Contact(firstname='Partner', 
-lastname='Contact1', accountId=intelAccId1[0].id,Email='dellco1234@dell.com');
-//for update
-
-
-Insert contact11;
-
-
-//for update 
-List<Contact> ccupdate1=new List<Contact>();
-List<Contact> cl1=[Select firstname,lastname from Contact];
-For(Contact c1 : cl1)
-{
-c1.firstname='Partner1';
-ccupdate1.add(c1);
-}
-Update ccupdate1 ;
-
-Test.startTest();           
-List<Core_ERPM_Engagement__c> erp1 = new List<Core_ERPM_Engagement__c>();
-Core_ERPM_Engagement__c ee11 = new Core_ERPM_Engagement__c(Name='Access and Entitlements for Marketplace');
-
-Insert ee11 ;
-
-List<Core_Entitlement__c> ent1 = new List<Core_Entitlement__c>();
-Core_Entitlement__c de11 = new Core_Entitlement__c(Name='Partner Admin',Core_Display_Name__c='Partner Admin',Core_ERPM_Engagement_Id__c=ee11.id);
-
-Insert de11 ;
-
-List<Core_Entitlement__c> cnupdate1=new List<Core_Entitlement__c>();
-List<Core_Entitlement__c> cn1=[Select Core_Display_Name__c from  Core_Entitlement__c];
-for(Core_Entitlement__c cn11:cn1)
-{
-cn11.Core_Display_Name__c ='Employee';
-cnupdate1.add(cn11);
-}
-Update cnupdate1 ;
-
-
-
-List<Core_Contact_Entitlement__c> newlstentitle = new List<Core_Contact_Entitlement__c>();
-Core_Contact_Entitlement__c ce1 = new Core_Contact_Entitlement__c(Core_Contact_Id__c=contact11.Id,Core_Entitlement_Id__c = de11.id, Core_Selected__c=true);
-newlstentitle.add(ce1);
-Insert newlstentitle ;
-
-
-List<Core_Contact_Entitlement__c> ccnupdate1=new List<Core_Contact_Entitlement__c>();
-List<Core_Contact_Entitlement__c> ccn1=[Select Core_Selected__c from  Core_Contact_Entitlement__c];
-for(Core_Contact_Entitlement__c ccn11:ccn1)
-{
-ccn11.Core_Selected__c =true;
-ccnupdate1.add(ccn11);
-}
-Update ccnupdate1 ;
-
-User currentUser = [ select Id from User where Id = :UserInfo.getUserId() ];
-List<User> userList = new List<User>();
-System.runAs (currentUser) {
-UserRole userRole = [Select PortalType, PortalAccountId From UserRole where PortalType ='Partner' limit 1];
-Profile profile = [select Id,name from Profile where Name ='Partner'];
-User newUser = new User(
-UserRoleId = userRole.Id,
-profileId = profile.id, 
-username = 'testUser'+String.valueOf(Math.random())+'@CoreMD.com', 
-email = 'pb@ff.com', 
-emailencodingkey = 'UTF-8', 
-localesidkey = 'en_US', 
-languagelocalekey = 'en_US', 
-timezonesidkey = 'America/Los_Angeles', 
-alias='nuser', 
-lastname='lastname', 
-contactId = contact11.id
-);
-userList.add(newUser);
-//insert userList ;
-
-}
-
-try{
-
-Update gupdate1 ;
-
-Test.stopTest();
-
-
-}Catch (DMLException e){
-
-System.assert(e.getMessage().contains('Service Agreement cannot be deleted.'), 'Service Agreement cannot be deleted.');
-}
-
-
-
-
-}
-@isTest
-public static void  partnerAccGroupMemtestMethod ()
-{ 
-
-
-String partnerAccRecTypeId = System.Label.PMP_Partner_Account_Record_Type_Id;
-List<Account> accts = new List<Account>();        
-Account partnerAccount = new Account(Name ='PartnerAccount',Core_Account_Type__c = 'Distributor',Core_Sales_Groups__c= 'Americas Canada Sales Group',
-Industry='Agriculture', BillingCity='delhi',BillingCountry='Ind',BillingStreet='abc chowk delhi',RecordTypeId=partnerAccRecTypeId);
-
-accts.add(partnerAccount);
-Account intelAccount = new Account(Name ='IntelAccount',Core_Account_Type__c = 'Distributor',Core_Sales_Groups__c= 'Americas Canada Sales Group',
-Industry='Agriculture', BillingCity='delhi',BillingCountry='Ind',BillingStreet='cbc chowk delhi');
-
-accts.add(intelAccount);
-Insert accts ;
-
-List<Account> intelAccId = [SELECT ID,Name FROM Account where Name ='IntelAccount'];
-List<Account> partnerAccountIdVar = [SELECT ID,Name FROM Account where Name ='PartnerAccount'];
-List<Account>accToUpdate = new List<Account>();
-For(Account acc:accts){
-acc.IsPartner = true;
-accToUpdate.add(acc);
-}
-Update accToUpdate ;
-List<Core_Account_Group_Member__c> accGroupMemlist = new List<Core_Account_Group_Member__c>();
-Core_Account_Group_Member__c  accGroupMem= new Core_Account_Group_Member__c(Core_Partner_Account_Id__c =partnerAccountIdVar[0].Id,Core_Intel_Account_Id__c =intelAccId[0].Id);
-accGroupMemlist.add(accGroupMem);
-Insert accGroupMemlist ;
-
-List<Core_Account_Group_Member__c> gupdate=new List<Core_Account_Group_Member__c>();
-List<Core_Account_Group_Member__c> gl=[Select Core_MDA_Ind__c from Core_Account_Group_Member__c];
-For(Core_Account_Group_Member__c g : gl)
-{
-g.Core_MDA_Ind__c=False;
-gupdate.add(g);
-}
-
-Update gupdate ;
-Contact contact1 = new Contact(firstname='Partner', 
-lastname='Contact1', accountId=intelAccId[0].id,Email='dellco1234@dell.com');
-//for update
-
-
-Insert contact1;
-
-
-//for update 
-List<Contact> ccupdate=new List<Contact>();
-List<Contact> cl=[Select firstname,lastname from Contact];
-For(Contact c : cl)
-{
-c.firstname='Partner1';
-ccupdate.add(c);
-}
-Update ccupdate ;
-
-Test.startTest(); 
-List<Core_ERPM_Engagement__c> erp = new List<Core_ERPM_Engagement__c>();
-Core_ERPM_Engagement__c ee1 = new Core_ERPM_Engagement__c(Name='Access and Entitlements for Marketplace');
-
-Insert ee1 ;
-
-List<Core_Entitlement__c> ent = new List<Core_Entitlement__c>();
-Core_Entitlement__c de1 = new Core_Entitlement__c(Name='Partner Admin',Core_Display_Name__c='Partner Admin',Core_ERPM_Engagement_Id__c=ee1.id);
-
-Insert de1 ;
-
-List<Core_Entitlement__c> cnupdate=new List<Core_Entitlement__c>();
-List<Core_Entitlement__c> cn=[Select Core_Display_Name__c from  Core_Entitlement__c];
-for(Core_Entitlement__c cn1:cn)
-{
-cn1.Core_Display_Name__c ='Employee';
-cnupdate.add(cn1);
-}
-Update cnupdate ;
-
-
-
-List<Core_Contact_Entitlement__c> newlstentitle = new List<Core_Contact_Entitlement__c>();
-Core_Contact_Entitlement__c ce1 = new Core_Contact_Entitlement__c(Core_Contact_Id__c=contact1.Id,Core_Entitlement_Id__c = de1.id, Core_Selected__c=true);
-newlstentitle.add(ce1);
-Insert newlstentitle ;
-
-
-List<Core_Contact_Entitlement__c> ccnupdate=new List<Core_Contact_Entitlement__c>();
-List<Core_Contact_Entitlement__c> ccn=[Select Core_Selected__c from  Core_Contact_Entitlement__c];
-for(Core_Contact_Entitlement__c ccn1:ccn)
-{
-ccn1.Core_Selected__c =true;
-ccnupdate.add(ccn1);
-}
-Update ccnupdate ;
-
-User currentUser = [ select Id from User where Id = :UserInfo.getUserId() ];
-List<User> userList = new List<User>();
-
-
-System.runAs (currentUser) {
-//UserRole userRole = [Select PortalType, PortalAccountId From UserRole where PortalType ='Partner' limit 1];
-UserRole ur = new UserRole(DeveloperName = 'MyCustomRole', Name = 'Partner Partner User');
-insert ur;
-Profile profile = [select Id,name from Profile where Name ='Partner'];
-User newUser = new User(
-UserRoleId = ur.Id,
-profileId = profile.id, 
-username = 'testUser'+String.valueOf(Math.random())+'@CoreMD.com', 
-email = 'pb@ff.com', 
-emailencodingkey = 'UTF-8', 
-localesidkey = 'en_US', 
-languagelocalekey = 'en_US', 
-timezonesidkey = 'America/Los_Angeles', 
-alias='nuser', 
-lastname='lastname', 
-contactId = contact1.id
-);
-userList.add(newUser);
-//insert userList ;
-
-}
-
-try{
-
-
-
-delete newlstentitle ; 
-Test.stopTest();
-
-}Catch (DMLException e){
-
-System.assert(e.getMessage().contains('Service Agreement cannot be deleted.'), 'Service Agreement cannot be deleted.');
-}
-
-
-
-
-}*/
+    @isTest
+    public static void  partnerAccGroupMemtestMethod1 ()
+    { 
+        String partnerAccRecTypeId = System.Label.PMP_Partner_Account_Record_Type_Id; 
+        List<Account> accts1 = new List<Account>();        
+        Account partnerAccount1 = new Account(Name ='PartnerAccount',Core_Account_Type__c = 'Distributor',Core_Sales_Groups__c= 'Americas Brazil Sales Group',
+                                              Industry='Agriculture', BillingCity='delhi',BillingCountry='Ind',BillingStreet='abc chowk delhi',RecordTypeId=partnerAccRecTypeId);
+        System.debug('partnerAccount ='+partnerAccount1.IsPartner);
+        accts1.add(partnerAccount1);
+        Account intelAccount1 = new Account(Name ='IntelAccount',Core_Account_Type__c = 'Distributor',Core_Sales_Groups__c= 'Americas Brazil Sales Group',
+                                            Industry='Agriculture', BillingCity='delhi',BillingCountry='Ind',BillingStreet='cbc chowk delhi');
+        
+        accts1.add(intelAccount1);
+        Insert accts1 ;
+        
+        List<Account> intelAccId1 = [SELECT ID,Name FROM Account where Name ='IntelAccount'];
+        List<Account> partnerAccountIdVar1 = [SELECT ID,Name FROM Account where Name ='PartnerAccount'];
+        List<Account>accToUpdate1 = new List<Account>();
+        For(Account acc1:accts1){
+            acc1.IsPartner = true;
+            accToUpdate1.add(acc1);
+        }
+        Update accToUpdate1 ;
+        System.debug('accToUpdate ='+accToUpdate1);
+        List<Core_Account_Group_Member__c> accGroupMemlist1 = new List<Core_Account_Group_Member__c>();
+        Core_Account_Group_Member__c  accGroupMem1= new Core_Account_Group_Member__c(Core_Partner_Account_Id__c =partnerAccountIdVar1[0].Id,Core_Intel_Account_Id__c =intelAccId1[0].Id);
+        accGroupMemlist1.add(accGroupMem1);
+        Insert accGroupMemlist1 ;
+        
+        List<Core_Account_Group_Member__c> gupdate1=new List<Core_Account_Group_Member__c>();
+        List<Core_Account_Group_Member__c> gl1=[Select Core_MDA_Ind__c from Core_Account_Group_Member__c];
+        For(Core_Account_Group_Member__c g1 : gl1)
+        {
+            g1.Core_MDA_Ind__c=False;
+            gupdate1.add(g1);
+        }
+        
+        
+        Contact contact11 = new Contact(firstname='Partner', 
+                                        lastname='Contact1', accountId=intelAccId1[0].id,Email='dellco1234@dell.com');
+        //for update
+        
+        
+        Insert contact11;
+        
+        
+        //for update 
+        List<Contact> ccupdate1=new List<Contact>();
+        List<Contact> cl1=[Select firstname,lastname from Contact];
+        For(Contact c1 : cl1)
+        {
+            c1.firstname='Partner1';
+            ccupdate1.add(c1);
+        }
+        Update ccupdate1 ;
+        
+        Test.startTest();           
+        List<Core_ERPM_Engagement__c> erp1 = new List<Core_ERPM_Engagement__c>();
+        Core_ERPM_Engagement__c ee11 = new Core_ERPM_Engagement__c(Name='Access and Entitlements for Marketplace');
+        
+        Insert ee11 ;
+        
+        List<Core_Entitlement__c> ent1 = new List<Core_Entitlement__c>();
+        Core_Entitlement__c de11 = new Core_Entitlement__c(Name='Partner Admin',Core_Display_Name__c='Partner Admin',Core_ERPM_Engagement_Id__c=ee11.id);
+        
+        Insert de11 ;
+        
+        List<Core_Entitlement__c> cnupdate1=new List<Core_Entitlement__c>();
+        List<Core_Entitlement__c> cn1=[Select Core_Display_Name__c from  Core_Entitlement__c];
+        for(Core_Entitlement__c cn11:cn1)
+        {
+            cn11.Core_Display_Name__c ='Employee';
+            cnupdate1.add(cn11);
+        }
+        Update cnupdate1 ;
+        
+        
+        
+        List<Core_Contact_Entitlement__c> newlstentitle = new List<Core_Contact_Entitlement__c>();
+        Core_Contact_Entitlement__c ce1 = new Core_Contact_Entitlement__c(Core_Contact_Id__c=contact11.Id,Core_Entitlement_Id__c = de11.id, Core_Selected__c=true);
+        newlstentitle.add(ce1);
+        Insert newlstentitle ;
+        
+        
+        List<Core_Contact_Entitlement__c> ccnupdate1=new List<Core_Contact_Entitlement__c>();
+        List<Core_Contact_Entitlement__c> ccn1=[Select Core_Selected__c from  Core_Contact_Entitlement__c];
+        for(Core_Contact_Entitlement__c ccn11:ccn1)
+        {
+            ccn11.Core_Selected__c =true;
+            ccnupdate1.add(ccn11);
+        }
+        Update ccnupdate1 ;
+        
+        User currentUser = [ select Id from User where Id = :UserInfo.getUserId() ];
+        List<User> userList = new List<User>();
+        System.debug('currentUser ='+currentUser);
+        
+        System.runAs (currentUser) {
+            UserRole userRole = [Select PortalType, PortalAccountId From UserRole where PortalType ='Partner' limit 1];
+            Profile profile = [select Id,name from Profile where Name ='Partner'];
+            User newUser = new User(
+                UserRoleId = userRole.Id,
+                profileId = profile.id, 
+                username = 'testUser'+String.valueOf(Math.random())+'@CoreMD.com', 
+                email = 'pb@ff.com', 
+                emailencodingkey = 'UTF-8', 
+                localesidkey = 'en_US', 
+                languagelocalekey = 'en_US', 
+                timezonesidkey = 'America/Los_Angeles', 
+                alias='nuser', 
+                lastname='lastname', 
+                contactId = contact11.id
+            );
+            userList.add(newUser);
+            //insert userList ;
+            
+        }
+        System.debug('userList ='+userList);
+        
+        try{
+            
+            Update gupdate1 ;
+            
+            Test.stopTest();
+            
+            
+        }Catch (DMLException e){
+            
+            System.assert(e.getMessage().contains('Service Agreement cannot be deleted.'), 'Service Agreement cannot be deleted.');
+        }
+        
+        
+        
+        
+    }
+    @isTest
+    public static void  partnerAccGroupMemtestMethod ()
+    { 
+        
+        
+        String partnerAccRecTypeId = System.Label.PMP_Partner_Account_Record_Type_Id;
+        List<Account> accts = new List<Account>();        
+        Account partnerAccount = new Account(Name ='PartnerAccount',Core_Account_Type__c = 'Distributor',Core_Sales_Groups__c= 'Americas Brazil Sales Group',
+                                             Industry='Agriculture', BillingCity='delhi',BillingCountry='Ind',BillingStreet='abc chowk delhi',RecordTypeId=partnerAccRecTypeId);
+        System.debug('partnerAccount ='+partnerAccount.IsPartner);
+        accts.add(partnerAccount);
+        Account intelAccount = new Account(Name ='IntelAccount',Core_Account_Type__c = 'Distributor',Core_Sales_Groups__c= 'Americas Brazil Sales Group',
+                                           Industry='Agriculture', BillingCity='delhi',BillingCountry='Ind',BillingStreet='cbc chowk delhi');
+        
+        accts.add(intelAccount);
+        Insert accts ;
+        
+        List<Account> intelAccId = [SELECT ID,Name FROM Account where Name ='IntelAccount'];
+        List<Account> partnerAccountIdVar = [SELECT ID,Name FROM Account where Name ='PartnerAccount'];
+        List<Account>accToUpdate = new List<Account>();
+        For(Account acc:accts){
+            acc.IsPartner = true;
+            accToUpdate.add(acc);
+        }
+        Update accToUpdate ;
+        System.debug('accToUpdate ='+accToUpdate);
+        List<Core_Account_Group_Member__c> accGroupMemlist = new List<Core_Account_Group_Member__c>();
+        Core_Account_Group_Member__c  accGroupMem= new Core_Account_Group_Member__c(Core_Partner_Account_Id__c =partnerAccountIdVar[0].Id,Core_Intel_Account_Id__c =intelAccId[0].Id);
+        accGroupMemlist.add(accGroupMem);
+        Insert accGroupMemlist ;
+        
+        List<Core_Account_Group_Member__c> gupdate=new List<Core_Account_Group_Member__c>();
+        List<Core_Account_Group_Member__c> gl=[Select Core_MDA_Ind__c from Core_Account_Group_Member__c];
+        For(Core_Account_Group_Member__c g : gl)
+        {
+            g.Core_MDA_Ind__c=False;
+            gupdate.add(g);
+        }
+        
+        Update gupdate ;
+        Contact contact1 = new Contact(firstname='Partner', 
+                                       lastname='Contact1', accountId=intelAccId[0].id,Email='dellco1234@dell.com');
+        //for update
+        
+        
+        Insert contact1;
+        
+        
+        //for update 
+        List<Contact> ccupdate=new List<Contact>();
+        List<Contact> cl=[Select firstname,lastname from Contact];
+        For(Contact c : cl)
+        {
+            c.firstname='Partner1';
+            ccupdate.add(c);
+        }
+        Update ccupdate ;
+        
+        Test.startTest(); 
+        List<Core_ERPM_Engagement__c> erp = new List<Core_ERPM_Engagement__c>();
+        Core_ERPM_Engagement__c ee1 = new Core_ERPM_Engagement__c(Name='Access and Entitlements for Marketplace');
+        
+        Insert ee1 ;
+        
+        List<Core_Entitlement__c> ent = new List<Core_Entitlement__c>();
+        Core_Entitlement__c de1 = new Core_Entitlement__c(Name='Partner Admin',Core_Display_Name__c='Partner Admin',Core_ERPM_Engagement_Id__c=ee1.id);
+        
+        Insert de1 ;
+        
+        List<Core_Entitlement__c> cnupdate=new List<Core_Entitlement__c>();
+        List<Core_Entitlement__c> cn=[Select Core_Display_Name__c from  Core_Entitlement__c];
+        for(Core_Entitlement__c cn1:cn)
+        {
+            cn1.Core_Display_Name__c ='Employee';
+            cnupdate.add(cn1);
+        }
+        Update cnupdate ;
+        
+        
+        
+        List<Core_Contact_Entitlement__c> newlstentitle = new List<Core_Contact_Entitlement__c>();
+        Core_Contact_Entitlement__c ce1 = new Core_Contact_Entitlement__c(Core_Contact_Id__c=contact1.Id,Core_Entitlement_Id__c = de1.id, Core_Selected__c=true);
+        newlstentitle.add(ce1);
+        Insert newlstentitle ;
+        
+        
+        List<Core_Contact_Entitlement__c> ccnupdate=new List<Core_Contact_Entitlement__c>();
+        List<Core_Contact_Entitlement__c> ccn=[Select Core_Selected__c from  Core_Contact_Entitlement__c];
+        for(Core_Contact_Entitlement__c ccn1:ccn)
+        {
+            ccn1.Core_Selected__c =true;
+            ccnupdate.add(ccn1);
+        }
+        Update ccnupdate ;
+        
+        User currentUser = [ select Id from User where Id = :UserInfo.getUserId() ];
+        List<User> userList = new List<User>();
+        System.debug('currentUser ='+currentUser);
+        
+        System.runAs (currentUser) {
+            //UserRole userRole = [Select PortalType, PortalAccountId From UserRole where PortalType ='Partner' limit 1];
+            UserRole ur = new UserRole(DeveloperName = 'MyCustomRole', Name = 'Partner Partner User');
+            insert ur;
+            Profile profile = [select Id,name from Profile where Name ='Partner'];
+            User newUser = new User(
+                UserRoleId = ur.Id,
+                profileId = profile.id, 
+                username = 'testUser'+String.valueOf(Math.random())+'@CoreMD.com', 
+                email = 'pb@ff.com', 
+                emailencodingkey = 'UTF-8', 
+                localesidkey = 'en_US', 
+                languagelocalekey = 'en_US', 
+                timezonesidkey = 'America/Los_Angeles', 
+                alias='nuser', 
+                lastname='lastname', 
+                contactId = contact1.id
+            );
+            userList.add(newUser);
+            //insert userList ;
+            
+        }
+        System.debug('userList ='+userList);
+        
+        try{
+            
+            
+            
+            delete newlstentitle ;
+            Test.stopTest();
+            
+        }Catch (DMLException e){
+            
+            System.assert(e.getMessage().contains('Service Agreement cannot be deleted.'), 'Service Agreement cannot be deleted.');
+        }
+        
+        
+        
+        
+    }
     
     @isTest
     public static void  assignRemovePermissionSetsPublicGroups_Test (){
         
         List<Core_Trigger_Executions__c> executeTriggers = new List<Core_Trigger_Executions__c>();
+            Core_Trigger_Executions__c executeTrigger = new Core_Trigger_Executions__c();
+            executeTrigger.Name = 'Core_ContactEntValidationSwitch';
+            executeTrigger.Core_Object__c = 'Core_Contact_Entitlement__c';
+            executeTrigger.Core_Active__c = true;
+            executeTrigger.Core_Trigger_Events__c = 'Before Insert, Before Update';
+            executeTrigger.Core_Description__c = 'Switch the code based on active indicator. In case active call the new method else call old method';
+            executeTrigger.Core_Class_Name__c = 'Core_ContactEntitlementHandler';
+            executeTriggers.add(executeTrigger);
+         
+         	//insert executeTriggers;
         
-        Core_Trigger_Executions__c executeTrigger = new Core_Trigger_Executions__c();
-        executeTrigger.Name = 'Core_ContactEntValidationSwitch';
-        executeTrigger.Core_Object__c = 'Core_Contact_Entitlement__c';
-        executeTrigger.Core_Active__c = true;
-        executeTrigger.Core_Trigger_Events__c = 'Before Insert, Before Update';
-        executeTrigger.Core_Description__c = 'Switch the code based on active indicator. In case active call the new method else call old method';
-        executeTrigger.Core_Class_Name__c = 'Core_Contact_Entitlement_Handler';
-        executeTriggers.add(executeTrigger);
+            Core_Trigger_Executions__c executeTrigger1 = new Core_Trigger_Executions__c();
+            executeTrigger1.Name = 'Core_ContactEntPublishToSvcCld';
+            executeTrigger1.Core_Object__c = 'Core_Contact_Entitlement__c';
+            executeTrigger1.Core_Active__c = true;
+            executeTrigger1.Core_Trigger_Events__c = 'After Insert';
+            executeTrigger1.Core_Description__c = 'Contact Entitlement';
+            executeTrigger1.Core_Class_Name__c = 'Core_Contact_Entitlement_Handler';
+            executeTriggers.add(executeTrigger1);
+         
+         	insert executeTriggers;
         
-        Core_Trigger_Executions__c executeTrigger1 = new Core_Trigger_Executions__c();
-        executeTrigger1.Name = 'Core_ContactEntPublishToSvcCld';
-        executeTrigger1.Core_Object__c = 'Core_Contact_Entitlement__c';
-        executeTrigger1.Core_Active__c = true;
-        executeTrigger1.Core_Trigger_Events__c = 'After Insert';
-        executeTrigger1.Core_Description__c = 'Contact Entitlement';
-        executeTrigger1.Core_Class_Name__c = 'Core_Contact_Entitlement_Handler';
-        executeTriggers.add(executeTrigger1);
-        
-        insert executeTriggers;
         List<PRM_ContactRelationships__c> lstConRelation = new List<PRM_ContactRelationships__c>();
         PRM_ContactRelationships__c cr1 = new PRM_ContactRelationships__c(Name = 'Partner Admin Delegate',PRM_Contact_Relationship_Cd__c = 'PRIMCONTDEL');
         lstConRelation.add(cr1);
@@ -613,8 +626,7 @@ System.assert(e.getMessage().contains('Service Agreement cannot be deleted.'), '
         
         insert lstConRelation;
         
-        Id intelAccRecTypeId = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
-        Account acc = new Account(Name='testAccount123',RecordTypeId=intelAccRecTypeId, Core_Sales_Groups__c='Americas Canada Sales Group', Core_IsODM__c = true,
+        Account acc = new Account(Name='testAccount123', Core_Sales_Groups__c='Global Accounts Sales Group', Core_IsODM__c = true,
                                   Core_Account_Type__c='Other', Industry='Others', Core_CNDA_Number__c = '12345',
                                   BillingStreet='1234 tester St', BillingCity='testCity', BillingState='OR',
                                   BillingCountry='USA', BillingPostalCode='12345',Core_IPS_Active__c = true, Core_CIM_ID__c ='123124',Core_PMP_Membership_Change_Ind__c=false,Core_User_Defined_Website__c = 'https://www.testweb.com');
@@ -622,11 +634,11 @@ System.assert(e.getMessage().contains('Service Agreement cannot be deleted.'), '
         acc.isPartner = true;
         update acc;
         List<Contact> lstCon = new List<Contact>();
-        Contact con = new Contact(FirstName='testFirstName123', LastName='testLastName', Email='test123@testing.com.test',MailingCountry='India',
+        Contact con = new Contact(FirstName='testFirstName123', LastName='testLastName', Email='test123@testing.com.test',
                                   AccountId=acc.Id,Core_IPS_Active__c =false);
-        Contact con1 = new Contact(FirstName='testFirstName1234', LastName='testLastName', Email='test1234@testing.com.test',MailingCountry='India',
+        Contact con1 = new Contact(FirstName='testFirstName1234', LastName='testLastName', Email='test1234@testing.com.test',
                                    AccountId=acc.Id,Core_IPS_Active__c =false);
-        Contact con2 = new Contact(FirstName='testFirstName12345', LastName='testLastName', Email='test12345@testing.com.test',MailingCountry='India',
+        Contact con2 = new Contact(FirstName='testFirstName12345', LastName='testLastName', Email='test12345@testing.com.test',
                                    AccountId=acc.Id,Core_IPS_Active__c =false);
         lstCon.add(con);
         lstCon.add(con1);
@@ -638,13 +650,13 @@ System.assert(e.getMessage().contains('Service Agreement cannot be deleted.'), '
         lstCE.add(entitle);
         Core_Entitlement__c entitle1=new Core_Entitlement__c (Core_Permission_Set_API_Nm__c = 'PMP_External_Partner_Admin', name ='Partner Admin Delegate', Core_Category__c='Intel Partner Alliance (IPA)',Core_Sub_Category__c='Value Exchange',Core_Help_Text__c='Help text',Core_Display_Name__c='Partner Admin Delegate',Core_IsActive__c=true);
         lstCE.add(entitle1);
-        Core_Entitlement__c entitle2=new Core_Entitlement__c (name ='Employee', Core_Category__c='Intel Partner Alliance (IPA)',Core_Sub_Category__c='Solutions Marketplace',Core_Help_Text__c='Help text',Core_Display_Name__c='Employee',Core_IsActive__c=true, Core_Permission_Set_API_Nm__c = 'PMP_External_Employee', Core_Public_Group_API_Nm__c = 'Core_Lead_Partner_Users1' ); 
+        Core_Entitlement__c entitle2=new Core_Entitlement__c (name ='Employee', Core_Category__c='Intel Partner Alliance (IPA)',Core_Sub_Category__c='Solutions Marketplace',Core_Help_Text__c='Help text',Core_Display_Name__c='Employee',Core_IsActive__c=true, Core_Permission_Set_API_Nm__c = 'PMP_External_Employee', Core_Public_Group_API_Nm__c = 'Core_All_Employees_Group' ); 
         lstCE.add(entitle2);
-        Core_Entitlement__c entitle3=new Core_Entitlement__c (name ='Web Ticketing & Return for Credit Dual', Core_Category__c='Support',Core_Sub_Category__c='',Core_Help_Text__c='Help text',Core_Display_Name__c='Web Ticketing & Return for Credit Dual',Core_IsActive__c=true, Core_Permission_Set_API_Nm__c = 'PMP_External_Employee', Core_Public_Group_API_Nm__c = 'Core_Lead_Partner_Users1' ); 
+        Core_Entitlement__c entitle3=new Core_Entitlement__c (name ='Web Ticketing & Return for Credit Dual', Core_Category__c='Support',Core_Sub_Category__c='',Core_Help_Text__c='Help text',Core_Display_Name__c='Web Ticketing & Return for Credit Dual',Core_IsActive__c=true, Core_Permission_Set_API_Nm__c = 'PMP_External_Employee', Core_Public_Group_API_Nm__c = 'Core_All_Employees_Group' ); 
         lstCE.add(entitle3);
         insert lstCE;
         
-        Group gp = new Group(Name = 'Leads Partner Users2', DeveloperName = 'Core_Lead_Partner_Users1', Type = 'Regular');
+        /*Group gp = new Group(Name = 'Test Account', DeveloperName = 'PMP_External_Employee', Type = 'Regular');
         insert gp;
         
         User currentUser = [ select Id from User where Id = :UserInfo.getUserId() ];
@@ -666,37 +678,18 @@ System.assert(e.getMessage().contains('Service Agreement cannot be deleted.'), '
                                   alias='nuser', lastname='lastname', contactId = con1.id);
             lstUsers.add(user1);
             insert lstUsers;
-            List<GroupMember> gms = new List<GroupMember>();
             GroupMember gm = new GroupMember(UserOrGroupId = user.id, GroupId = gp.id);
-            gms.add(gm);
-            GroupMember gm1 = new GroupMember(UserOrGroupId = user1.id, GroupId = gp.id);
-            gms.add(gm1);
-            insert gms;
-            
+            insert gm;
             id psId = [SELECT Id FROM PermissionSet WHERE Name = 'PMP_External_Employee'].id;
-            List<PermissionSetAssignment> psaList = new List<PermissionSetAssignment>();
             PermissionSetAssignment ps = new PermissionSetAssignment(AssigneeId = user.id, PermissionSetId = psId);
-            psaList.add(ps);
-            PermissionSetAssignment ps1 = new PermissionSetAssignment(AssigneeId = user1.id, PermissionSetId = psId);
-            psaList.add(ps1);
-            insert psaList;
-            
-        }
-        
+            insert ps;
+        }*/
         
         PRM_Account_Contact_Relationship__c acr = new PRM_Account_Contact_Relationship__c();
         acr.PRM_Account_Id__c = acc.Id;
         acr.PRM_Contact_Id__c = con.Id;
         acr.PRM_Relationship_Id__c = cr3.Id;
-        acr.PRM_Status_Reason_Txt__c='Test';
         insert acr;
-
-        PRM_Account_Contact_Relationship__c acr1 = new PRM_Account_Contact_Relationship__c();
-        acr1.PRM_Account_Id__c = acc.Id;
-        acr1.PRM_Contact_Id__c = con1.Id;
-        acr1.PRM_Relationship_Id__c = cr3.Id;
-        acr1.PRM_Status_Reason_Txt__c='Test';
-        insert acr1;
         
         List<Core_Contact_Entitlement__c> lstConCE = new List<Core_Contact_Entitlement__c>();
         Core_Contact_Entitlement__c ce1 = new Core_Contact_Entitlement__c(Core_Contact_Id__c=con.Id,Core_Entitlement_Id__c = entitle.Id, Core_Selected__c=false,Core_Status__c='Pending');
@@ -727,7 +720,7 @@ System.assert(e.getMessage().contains('Service Agreement cannot be deleted.'), '
         //update ce12;
         Core_ContactEntitlementHelper.updatePsPgAssignmentRemovalCheck = true;
         //Core_ContactEntitlementHandler.afterMethodFirstEntry=true;
-        update lstToUpdataCE;
+        update lstToUpdataCE; 
         Test.stopTest();
         List<PRM_Account_Contact_Relationship__c> lastAcr = [Select id from PRM_Account_Contact_Relationship__c where Id =: acr.Id];
         System.assert(!lastAcr.isEmpty());
@@ -747,16 +740,16 @@ System.assert(e.getMessage().contains('Service Agreement cannot be deleted.'), '
         lstConRelation.add(cr3);
         
         insert lstConRelation;
-        Id intelAccRecTypeId = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
-        Account acc = new Account(Name='testAccount123',recordtypeid=intelAccRecTypeId, Core_Sales_Groups__c='Americas Brazil Sales Group', Core_IsODM__c = true,
+        
+        Account acc = new Account(Name='testAccount123', Core_Sales_Groups__c='Americas Brazil Sales Group', Core_IsODM__c = true,
                                   Core_Account_Type__c='Other', Industry='Others', Core_CNDA_Number__c = '12345',
                                   BillingStreet='1234 tester St', BillingCity='testCity', BillingState='OR',
                                   BillingCountry='USA', BillingPostalCode='12345',Core_IPS_Active__c = false, Core_CIM_ID__c ='123124',Core_PMP_Membership_Change_Ind__c=false,Core_User_Defined_Website__c = 'https://www.testweb.com');
         insert acc;
         
-        Contact con = new Contact(FirstName='testFirstName123', LastName='testLastName', Email='test123@testing.com.test',MailingCountry='India',
+        Contact con = new Contact(FirstName='testFirstName123', LastName='testLastName', Email='test123@testing.com.test',
                                   AccountId=acc.Id,Core_IPS_Active__c =false);
-        Contact con1 = new Contact(FirstName='testFirstName1234', LastName='testLastName', Email='test1234@testing.com.test',MailingCountry='India',
+        Contact con1 = new Contact(FirstName='testFirstName1234', LastName='testLastName', Email='test1234@testing.com.test',
                                    AccountId=acc.Id,Core_IPS_Active__c =false);
         insert con;
         insert con1;
@@ -772,15 +765,7 @@ System.assert(e.getMessage().contains('Service Agreement cannot be deleted.'), '
         acr.PRM_Account_Id__c = acc.Id;
         acr.PRM_Contact_Id__c = con.Id;
         acr.PRM_Relationship_Id__c = cr3.Id;
-        acr.PRM_Status_Reason_Txt__c='Test';
         insert acr;
-
-        PRM_Account_Contact_Relationship__c acr1 = new PRM_Account_Contact_Relationship__c();
-        acr1.PRM_Account_Id__c = acc.Id;
-        acr1.PRM_Contact_Id__c = con1.Id;
-        acr1.PRM_Relationship_Id__c = cr3.Id;
-        acr1.PRM_Status_Reason_Txt__c='Test';
-        insert acr1;
         
         Core_Contact_Entitlement__c ce1 = new Core_Contact_Entitlement__c(Core_Contact_Id__c=con.Id,Core_Entitlement_Id__c = entitle.Id, Core_Selected__c=false,Core_Status__c='Pending');
         insert ce1;
@@ -823,22 +808,21 @@ System.assert(e.getMessage().contains('Service Agreement cannot be deleted.'), '
         a.BillingStreet='4th Floor,New Road';
         a.BillingPostalCode='110037';
         a.BillingStateCode='KA';
-        a.Core_IPA_Partner_Role__c = 'Service Provider';
-        a.Core_IPA_Badge_Tier__c = 'Partner';//test-fix
+        a.Core_IPA_Partner_Role__c = 'FPGA Designer';
+        a.Core_IPA_Badge_Tier__c = 'Member';
         insert a;
         
         Contact c = PRM_TestUtility.getContact();
         c.AccountId = a.Id;
         c.Email='user.check@maildrop.cc';
-        c.Core_Preferred_Language__c = 'POL';
+        c.Core_Preferred_Language__c = 'ENG';
         c.Core_eRPM_Language_Code__c = 'ENG';
         //   c.RecordTypeId = contactRecordType;
         c.Core_Do_Not_Contact__c = false;
         // c.Core_IPA_Partner_Role__c = 'FPGA Designer';
-        c.Core_IPA_PartnerRole__c = 'Service Provider';
+        c.Core_IPA_PartnerRole__c = 'FPGA Designer';
         c.Core_Login_Id__c = 'abc';
-        c.MailingCountryCode='IN';
-        
+        c.MailingCountryCode='IND';
         
         insert c;
         
@@ -852,7 +836,7 @@ System.assert(e.getMessage().contains('Service Agreement cannot be deleted.'), '
         prmRegRequest.Name = 'checkuser';
         prmRegRequest.PRM_Salesforce_ID__c = a.Id;
         prmRegRequest.PRM_Channel_Program__c =channelPrg.Id;
-        prmRegRequest.PRM_Partner_Role__c='Service Provider';
+        prmRegRequest.PRM_Partner_Role__c='FPGA Designer';
         prmRegRequest.PRM_First_Name__c='Check';
         prmRegRequest.PRM_Last_Name__c='User';
         prmRegRequest.PRM_Email_ID__c='checkuser@mailinator.com';
@@ -881,16 +865,16 @@ System.assert(e.getMessage().contains('Service Agreement cannot be deleted.'), '
         emailQueue.PRM_Contact__c = c.Id;
         emailQueue.PRM_Email_Content__c = 'Email Content';
         emailQueue.PRM_IsInactive__c = false;
-        emailQueue.PRM_PartnerRole__c = 'Service Provider'; //'FPGA Designer';
+        emailQueue.PRM_PartnerRole__c = 'FPGA Designer';
         emailQueue.PRM_Priority__c = 1;
         emailQueue.PRM_Registration_Request__c = prmRegRequest.Id;
         emailQueue.PRM_Status__c = 'PENDING';
-        emailQueue.PRM_Tier__c = 'Partner'; //'MEMBER';
+        emailQueue.PRM_Tier__c = 'MEMBER';
         insert emailQueue;
         
         Test.startTest();       	                
-        // Core_ContactEntitlementHandler.IPAfirstentUpdate=true;
-        Core_ContactEntitlementHelper.IPAfirstentUpdate=true;
+       // Core_ContactEntitlementHandler.IPAfirstentUpdate=true;
+          Core_ContactEntitlementHelper.IPAfirstentUpdate=true;
         conEntitlement.Core_Status__c = 'Complete';
         conEntitlement.Core_Selected__c = true;
         update conEntitlement;
@@ -915,22 +899,21 @@ System.assert(e.getMessage().contains('Service Agreement cannot be deleted.'), '
         a.BillingStreet='4th Floor,New Road';
         a.BillingPostalCode='110037';
         a.BillingStateCode='KA';
-        a.Core_IPA_Partner_Role__c = 'Service Provider';
-        a.Core_IPA_Badge_Tier__c = 'Partner';//test-fix
+        a.Core_IPA_Partner_Role__c = 'FPGA Designer';
+        a.Core_IPA_Badge_Tier__c = 'Member';
         insert a;
         
         Contact c = PRM_TestUtility.getContact();
         c.AccountId = a.Id;
         c.Email='user.check@maildrop.cc';
-        c.Core_Preferred_Language__c = 'ENG';
+        c.Core_Preferred_Language__c = 'POL';
         c.Core_eRPM_Language_Code__c = 'ENG';
         //   c.RecordTypeId = contactRecordType;
         c.Core_Do_Not_Contact__c = false;
         // c.Core_IPA_Partner_Role__c = 'FPGA Designer';
-        c.Core_IPA_PartnerRole__c = 'Service Provider';
+        c.Core_IPA_PartnerRole__c = 'FPGA Designer';
         c.Core_Login_Id__c = 'abc';
-        c.MailingCountryCode='IN';
-        
+        c.MailingCountryCode='USA';
         
         insert c;
         
@@ -944,7 +927,7 @@ System.assert(e.getMessage().contains('Service Agreement cannot be deleted.'), '
         prmRegRequest.Name = 'checkuser';
         prmRegRequest.PRM_Salesforce_ID__c = a.Id;
         prmRegRequest.PRM_Channel_Program__c =channelPrg.Id;
-        prmRegRequest.PRM_Partner_Role__c='Service Provider';
+        prmRegRequest.PRM_Partner_Role__c='FPGA Designer';
         prmRegRequest.PRM_First_Name__c='Check';
         prmRegRequest.PRM_Last_Name__c='User';
         prmRegRequest.PRM_Email_ID__c='checkuser@mailinator.com';
@@ -987,23 +970,23 @@ System.assert(e.getMessage().contains('Service Agreement cannot be deleted.'), '
         emailQueue.PRM_Contact__c = c.Id;
         emailQueue.PRM_Email_Content__c = 'Email Content';
         emailQueue.PRM_IsInactive__c = false;
-        emailQueue.PRM_PartnerRole__c = 'Service Provider';//'FPGA Designer';
+        emailQueue.PRM_PartnerRole__c = 'FPGA Designer';
         emailQueue.PRM_Priority__c = 1;
         emailQueue.PRM_Registration_Request__c = prmRegRequest.Id;
         emailQueue.PRM_Status__c = 'PENDING';
-        emailQueue.PRM_Tier__c =  'Partner'; //'MEMBER';
-        insert emailQueue;
-        
+        emailQueue.PRM_Tier__c = 'MEMBER';
+        insert emailQueue;        
         
         List<Core_Contact_Entitlement__c> lstEnt = new List<Core_Contact_Entitlement__c>();
         Test.startTest(); 
         //Core_ContactEntitlementHandler.IPAfirstentUpdate=true;
-        Core_ContactEntitlementHelper.IPAfirstentUpdate=true;
+         Core_ContactEntitlementHelper.IPAfirstentUpdate=true;
         conEntitlement.Core_Status__c = 'Complete'; 
         conEntitlement1.Core_Status__c = 'Complete';
         lstEnt.add(conEntitlement);
         lstEnt.add(conEntitlement1);    
         update lstEnt;
+        
         Test.stopTest();
         system.assert(!lstEnt.isEmpty());
     }

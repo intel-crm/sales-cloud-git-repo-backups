@@ -28,6 +28,9 @@
         <titleSize>18</titleSize>
     </chart>
     <columns>
+        <field>ROLLUP_DESCRIPTION</field>
+    </columns>
+    <columns>
         <field>ACCOUNT_NAME</field>
     </columns>
     <columns>
@@ -51,6 +54,13 @@
     </columns>
     <filter>
         <criteriaItems>
+            <column>ROLLUP_DESCRIPTION</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>EMP of Swee Hoon Chan</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>STAGE_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
@@ -58,18 +68,11 @@
             <value>Design Win</value>
         </criteriaItems>
         <criteriaItems>
-            <column>ADDRESS1_COUNTRY_CODE</column>
+            <column>ACCOUNT_OWNER</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>SGP</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>FULL_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Jason Kay Siah Ang,I&apos;ng Chin Tan,sachin anand,vanessa ng,siew may cheow,Hung Choong hwang,Vineet Giri,Albert Wang</value>
+            <operator>notEqual</operator>
+            <value>vineet giri</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

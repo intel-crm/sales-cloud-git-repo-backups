@@ -13,6 +13,10 @@
         <name>SWS_Activity_Completed_Date__c</name>
     </fields>
     <fields>
+        <label><!-- Activity Completed Datetime(NOT USED) --></label>
+        <name>SWS_Activity_Completed_Datetime__c</name>
+    </fields>
+    <fields>
         <label><!-- Activity --></label>
         <name>SWS_Activity__c</name>
         <picklistValues>
@@ -28,6 +32,15 @@
         <label><!-- Campaign --></label>
         <name>SWS_Campaign__c</name>
         <relationshipLabel><!-- SW Demo Activities --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Company Participant(NOT USED) --></label>
+        <name>SWS_Company_Participant__c</name>
+        <relationshipLabel><!-- SW Demo Activities (Company Participant(NOT USED)) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Demo conducted or not(NOT USED) --></label>
+        <name>SWS_Demo_conducted_or_not__c</name>
     </fields>
     <fields>
         <label><!-- Description --></label>
@@ -134,6 +147,10 @@
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- Lead Source text(NOT USED) --></label>
+        <name>SWS_Lead_Source_text__c</name>
+    </fields>
+    <fields>
         <help><!-- Lead stage when the activity was booked. --></help>
         <label><!-- Activity Creation Stage --></label>
         <name>SWS_Lead_Stage__c</name>
@@ -179,6 +196,10 @@
         <label><!-- Lead --></label>
         <name>SWS_Lead__c</name>
         <relationshipLabel><!-- SW Demo Activities --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Lead product Interest fm(NOT USED) --></label>
+        <name>SWS_Lead_product_Interest_fm__c</name>
     </fields>
     <fields>
         <label><!-- Opportunity --></label>
@@ -275,6 +296,10 @@
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- Product text(NOT USED) --></label>
+        <name>SWS_Product_text__c</name>
+    </fields>
+    <fields>
         <label><!-- Scheduled Date --></label>
         <name>SWS_Scheduled_Date__c</name>
     </fields>
@@ -297,7 +322,11 @@
     <fields>
         <label><!-- Task Closed by --></label>
         <name>SWS_Task_Closed_by__c</name>
-        <relationshipLabel><!-- SW Demo Activities --></relationshipLabel>
+        <relationshipLabel><!-- SW Demo Activities (Task Closed by) --></relationshipLabel>
     </fields>
     <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Product Interest not present. --></errorMessage>
+        <name>Product_interest_present_or_not_in_lead</name>
+    </validationRules>
 </CustomObjectTranslation>

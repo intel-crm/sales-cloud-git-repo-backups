@@ -8,10 +8,10 @@
     </values>
     <values>
         <field>Subject__c</field>
-        <value xsi:type="xsd:string">Need to assign/remove product from computer</value>
+        <value xsi:type="xsd:string">Can&apos;t find computer</value>
     </values>
     <values>
         <field>Type_of_License_Issue__c</field>
-        <value xsi:type="xsd:string">I can&apos;t assign or remove product to/from a computer</value>
+        <value xsi:type="xsd:string">I can&apos;t see/find a computer</value>
     </values>
 </CustomMetadata>

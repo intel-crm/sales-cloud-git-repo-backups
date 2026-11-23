@@ -150,10 +150,6 @@
         <field>CLOSE_DATE</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>PROBABILITY</field>
-    </columns>
-    <columns>
         <field>STAGE_NAME</field>
     </columns>
     <columns>
@@ -176,7 +172,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Agilex,CPLD,FPGA,Enpirion,BD-,DK-ACB,Rush Creek,DCP-A10,Stratix,Arria,Cyclone,eASIC,Power Solutions</value>
+            <value>CPLD,FPGA,Enpirion,BD-,DK-ACB,Rush Creek,DCP-A10,Stratix,Arria,Cyclone,eASIC,Power Solutions</value>
         </criteriaItems>
         <criteriaItems>
             <column>OpportunityLineItem.Core_Status__c</column>

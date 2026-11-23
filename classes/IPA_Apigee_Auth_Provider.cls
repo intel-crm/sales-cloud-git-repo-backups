@@ -24,6 +24,7 @@ global class IPA_Apigee_Auth_Provider extends Auth.AuthProviderPluginClass {
             'UTF-8');
         
         String url = authUrl + '?response_type=code&client_id='+ key +'&redirect_uri='+ redirectUrl + '&state=' + stateToPropagate;
+        System.debug('url from initiate: ' + url);
         return new PageReference(url);
     }
 
@@ -38,6 +39,7 @@ global class IPA_Apigee_Auth_Provider extends Auth.AuthProviderPluginClass {
         Map<String,String> queryParams = state.queryParameters;
         String code = queryParams.get('code');
         String sfdcState = queryParams.get('state');
+        System.debug('state params: ' + queryParams);
         HttpRequest req = new HttpRequest();
         // Need to split since it's just over 900 chars, due to limits on System.debug
         String body = 'client_id=' + EncodingUtil.urlEncode(key, 'UTF-8') +
@@ -56,7 +58,9 @@ global class IPA_Apigee_Auth_Provider extends Auth.AuthProviderPluginClass {
         Http http = new Http();
         HTTPResponse res = http.send(req);
         String responseBody = res.getBody(); 
+        System.debug('Token response: ' + responseBody);
         TokenResponse tr = (TokenResponse) (JSON.deserialize(responseBody, TokenResponse.Class));
+         System.debug('token response: ' + tr);
         return new Auth.AuthProviderTokenResponse('Apigee', tr.access_token, tr.refresh_token, sfdcState);
     }
     
@@ -89,7 +93,7 @@ global class IPA_Apigee_Auth_Provider extends Auth.AuthProviderPluginClass {
     // We're not currently using this method, so just return blanks/null for now
     global Auth.UserData getUserInfo(Map<string,string> authProviderConfiguration, 
                                      Auth.AuthProviderTokenResponse response) {
-        //String token = response.oauthToken;
+        String token = response.oauthToken;
         Map<String,String> provMap = new Map<String,String>(); 
         provMap.put('what1', 'noidea1'); 
         provMap.put('what2', 'noidea2'); 

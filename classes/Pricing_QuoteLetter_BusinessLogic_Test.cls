@@ -2,8 +2,8 @@
  * @description       : Test Class for Pricing_QuoteLetter_BusinessLogic
  * @author            : Sandeep Chamate
  * @group             : Accenture
- * @last modified on  : 03-09-2026
- * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+ * @last modified on  : 11-02-2023
+ * @last modified by  : Sandeep Chamate
 **/
 @isTest
 public class Pricing_QuoteLetter_BusinessLogic_Test {
@@ -15,7 +15,7 @@ public class Pricing_QuoteLetter_BusinessLogic_Test {
         System.runAs(adminUserList[0]) {
             Test.startTest();
             Account acc = Pricing_Test_Utility.createAccount();
-            Contact con = Pricing_Test_Utility.createPrimaryContactWithParam(acc.Id,'Quote_Letter_Business_Logic_Test');
+            Contact con = Pricing_Test_Utility.createPrimaryContactWithParam(acc.Id,'Quote_Letter_Business_LT');
             
             List<User> accExeUserList = Pricing_Test_Utility.createAEUser();
             List<User> salesRepUserList = Pricing_Test_Utility.createSalesRepUser();
@@ -56,9 +56,7 @@ public class Pricing_QuoteLetter_BusinessLogic_Test {
             String cType = myFile.getContentType();
             try{
                 File myFile1 = File.make(new Attachment());
-            }catch(Exception exp){
-                Pricing_Tender_Utility.logError(exp);
-            }
+            }catch(Exception exp){}
         }
         
         SBQQ__QuoteTemplate__c quoteTemplates = new SBQQ__QuoteTemplate__c();
@@ -73,7 +71,8 @@ public class Pricing_QuoteLetter_BusinessLogic_Test {
         insert quoteTemplates;
     }    
   
-    static testmethod void testGenerateQuoteLetetr_1(){        
+    @isTest
+    static void testGenerateQuoteLetetr_1(){        
         Map<id,SBQQ__Quote__c> quotesMap = new Map<Id,SBQQ__Quote__c>([SELECT id FROM SBQQ__Quote__c WHERE Pricing_Quote_Program_Nm__c = 'Tender' Limit 1]);
         List<SBQQ__QuoteLine__c> quoteLies = new List<SBQQ__QuoteLine__c>();
         
@@ -84,7 +83,7 @@ public class Pricing_QuoteLetter_BusinessLogic_Test {
         }
         if(quoteLies.size() > 0){
             update quoteLies;
-        }   
+        }
         List<SBQQ__QuoteLine__c> qlis = [SELECT id,Pricing_Status_Nm__c,SBQQ__Quote__c,SBQQ__Quote__r.SBQQ__Account__c,SBQQ__Quote__r.name FROM SBQQ__QuoteLine__c WHERE SBQQ__Quote__c IN :quotesMap.keySet()];
         system.assertEquals('Approved', qlis[0].Pricing_Status_Nm__c);
         
@@ -101,7 +100,6 @@ public class Pricing_QuoteLetter_BusinessLogic_Test {
         Set<Id> quoteIdsForQuoteLetter = new Set<Id>();
         Map<Id,List<SBQQ__QuoteLine__c>> quoteIdQLIsMap = new Map<Id,List<SBQQ__QuoteLine__c>>();
         Pricing_QuoteLetter_BusinessLogic.generateQuoteLetterForFI(quoteIds, statuses, quoteIdsForQuoteLetter, quoteIdQLIsMap);
-
     }
     
     static testmethod void testModelClasses(){
@@ -220,8 +218,6 @@ public class Pricing_QuoteLetter_BusinessLogic_Test {
         qtm.locked = null;
         qtm.label = null;
         qtm.id = null;            
-        
         system.assert(true);
     }
-    
 }

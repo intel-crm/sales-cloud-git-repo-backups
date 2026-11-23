@@ -12,6 +12,10 @@
     <aura:attribute name="isPartner" type="Boolean" default="false" />
     <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
     <aura:attribute name="cbaseURL" type="String" access="private" />
+    
+    <!--<div aura:id="runReport" class="slds-align_absolute-center">
+        <br /><br /><br /><a href="{!v.cbaseURL}" target="_blank" onclick="{!c.closeWindow}"> Run Report </a>
+    </div>-->
     <div class="slds-align_absolute-center">
       <lightning:spinner alternative-text="Loading..." variant="brand" class="loadSpinner"/>
       <c:pricing_ReportExport onCloseExport="{!c.closeWindow}" recordId="{!v.recordId}" />

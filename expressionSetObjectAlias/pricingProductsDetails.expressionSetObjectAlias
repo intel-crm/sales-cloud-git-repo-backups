@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExpressionSetObjectAlias xmlns="http://soap.sforce.com/2006/04/metadata">
+    <dataType>sObject</dataType>
+    <mappings>
+        <fieldAlias>VerticalSegment</fieldAlias>
+        <sourceFieldName>Core_VerticalSegment__c</sourceFieldName>
+    </mappings>
+    <objectApiName>Product2</objectApiName>
+    <usageType>Bre</usageType>
+</ExpressionSetObjectAlias>

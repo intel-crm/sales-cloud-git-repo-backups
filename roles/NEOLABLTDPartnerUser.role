@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>Bion Partner User</description>
+    <description>NEOLAB LTD. Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>Bion Partner User</name>
+    <name>NEOLAB LTD. Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Inactive_Accounts_Role</parentRole>
+    <parentRole>NEOLABLTDPartnerManager</parentRole>
 </Role>

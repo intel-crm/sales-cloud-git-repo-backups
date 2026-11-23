@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Content Delivery View External</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Content Delivery Views External</value>
+    </caseValues>
+    <fields>
+        <label><!-- Created By ID --></label>
+        <name>CreatedById__c</name>
+    </fields>
+    <fields>
+        <label><!-- View Date --></label>
+        <name>CreatedDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Content Delivery ID --></label>
+        <name>DistributionId__c</name>
+        <relationshipLabel><!-- Content Delivery Views External --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Deleted --></label>
+        <name>IsDeleted__c</name>
+    </fields>
+    <fields>
+        <label><!-- File Downloaded --></label>
+        <name>IsDownload__c</name>
+    </fields>
+    <fields>
+        <label><!-- Internal View --></label>
+        <name>IsInternal__c</name>
+    </fields>
+    <fields>
+        <label><!-- Content Delivery View ID --></label>
+        <name>ParentViewId__c</name>
+        <relationshipLabel><!-- Content Delivery Views External --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- System Modstamp --></label>
+        <name>SystemModstamp__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

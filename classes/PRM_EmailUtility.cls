@@ -35,10 +35,13 @@ public without sharing class PRM_EmailUtility {
     //             hence, code and the design used for framework will not work for multiple records at once.  
     public static set<String> sendEmail(List<EmailNotification> objEmailNotifList){
         set<String> regRequestIdSet = new set<String>();
+        // System.debug('>>>>>objEmailNotifList inside calling'+objEmailNotifList);
         if(!objEmailNotifList.isEmpty()){
             /*if(System.isBatch() || System.isFuture() || System.isQueueable()){
+                System.debug('aaaaa');
                 sendEmailUtil(objEmailNotifList);
             }else {
+                System.debug('bbbbb');
                 System.enqueueJob(new sendEmailQueuable(objEmailNotifList));
             }*/
             regRequestIdSet = sendEmailUtil(objEmailNotifList);
@@ -46,16 +49,16 @@ public without sharing class PRM_EmailUtility {
         return regRequestIdSet;
     }  
 
-    // public without sharing class sendEmailQueuable implements Queueable { 
-    //     List<EmailNotification> objEmailNotifList = new List<EmailNotification>();
-    //     public sendEmailQueuable(List<EmailNotification> objEmailNotifList) {        
-    //         this.objEmailNotifList = objEmailNotifList;    
-    //     }
+    public without sharing class sendEmailQueuable implements Queueable { 
+        List<EmailNotification> objEmailNotifList = new List<EmailNotification>();
+        public sendEmailQueuable(List<EmailNotification> objEmailNotifList) {        
+            this.objEmailNotifList = objEmailNotifList;    
+        }
         
-    //     public void execute(QueueableContext context) { 
-    //         sendEmailUtil(objEmailNotifList);
-    //     }
-    // }
+        public void execute(QueueableContext context) { 
+            sendEmailUtil(objEmailNotifList);
+        }
+    }
 
     public static set<String> sendEmailUtil(List<EmailNotification> objEmailNotifList){
         List<Messaging.SingleEmailMessage> allmails = new List<Messaging.SingleEmailMessage>();
@@ -65,14 +68,17 @@ public without sharing class PRM_EmailUtility {
                 if(param != null) {inputParamQueryMap.put(param.Input_Parameter__c,param); }
             }
         for(EmailNotification emailNot : objEmailNotifList){
-            lstEmailNotBusinessEvent.add(String.escapeSingleQuotes(emailNot.BusinessEvent));     
+            lstEmailNotBusinessEvent.add(String.escapeSingleQuotes(emailNot.BusinessEvent));          
         }
         queryForTemplateDetails= 'SELECT PRM_BusinessEvent__c, PRM_ChannelProgram__c, PRM_Country__c, PRM_FolderName__c, PRM_Geo__c, PRM_InputParameter__c, PRM_Language__c, PRM_MergeField__c, PRM_PartnerType__c, PRM_Recipient__c, PRM_RecipientLogic__c, PRM_TemplateName__c, PRM_TemplateUniqueName__c ' +
         'FROM PRM_EmailConfigurationDetails__mdt ' +
         'WHERE PRM_BusinessEvent__c IN (\'' + String.join(lstEmailNotBusinessEvent, '\',\'') + '\')';
         emailConfigList = database.query(queryForTemplateDetails);
-        for(EmailNotification emailNot : objEmailNotifList){  
+        for(EmailNotification emailNot : objEmailNotifList){            
+            //System.debug(LoggingLevel.info,'emailNot>>>>'+emailNot);
             SendEmailWrapper sendWrap = sendEmail(emailNot);
+            System.debug(LoggingLevel.info,'sendWrap.allEmails>>>>'+sendWrap.allEmails);
+            System.debug(LoggingLevel.info,'sendWrap.allEmails>>>>'+sendWrap.allEmails.size());
             allmails.addAll(sendWrap.allEmails);
             logList.addAll(sendWrap.logListWrap);
             regReqLst.add(sendWrap.regReqId);
@@ -83,7 +89,7 @@ public without sharing class PRM_EmailUtility {
     public static SendEmailWrapper sendEmail(EmailNotification objEmailNotif)
     {
         List<Messaging.SingleEmailMessage> allmails = new List<Messaging.SingleEmailMessage>();
-        //list<String> regReqLst=new list<String>();
+        list<String> regReqLst=new list<String>();
         String regReqId;
         List<PRM_EmailLog__c> logList = new List<PRM_EmailLog__c>();
         if(objEmailNotif != null)
@@ -98,17 +104,6 @@ public without sharing class PRM_EmailUtility {
             {
                 translationMap.put(rec.Custom_Label_Name__c+rec.Language__c,rec);
             } 
-            
-            String contactId;
-            if(objEmailNotif.InputParameters!=null && !objEmailNotif.InputParameters.isEmpty()){
-                contactId= objEmailNotif.InputParameters.get('Contact_ID');
-            }
-            
-            List<User> listUser;
-            if(String.IsNotBlank(contactId)){
-                listUser = [Select Email,id from User where ContactId=:contactId];
-            }
-            
             //query list of metadata records present with the business_event provided
            
             //execute the logic for each metadata record, corresponding to the business event passed
@@ -118,8 +113,8 @@ public without sharing class PRM_EmailUtility {
             for(PRM_EmailConfigurationDetails__mdt emailConfig : emailConfigList)
             {
                 if((String.isBlank(objEmailNotif.PartnerType) || objEmailNotif.PartnerType == emailConfig.PRM_PartnerType__c) 
-                && (String.isBlank(objEmailNotif.ChannelProgram) || objEmailNotif.ChannelProgram == emailConfig.PRM_ChannelProgram__c)){
-                //don't iterate for the metadata record with same business event and same type of recipient     
+				&& (String.isBlank(objEmailNotif.ChannelProgram) || objEmailNotif.ChannelProgram == emailConfig.PRM_ChannelProgram__c)){
+                     //don't iterate for the metadata record with same business event and same type of recipient     
                 if(! recipientTypeExecuted.contains(emailConfig.PRM_Recipient__c))
                 {
                     recipientTypeExecuted.add(emailConfig.PRM_Recipient__c);
@@ -140,6 +135,7 @@ public without sharing class PRM_EmailUtility {
                              if(inputParamQueryMap.get(inputParam) != null && inputParamQueryMap.get(inputParam).Query_Clause__c != null && objEmailNotif.InputParameters.get(inputParam) != null)  
                              {
                                  dataQuery = 'Select '+inputParamQueryMap.get(inputParam).Query_Clause__c+' from '+inputParamQueryMap.get(inputParam).Object__c+' where id= \''+objEmailNotif.InputParameters.get(inputParam)+'\'' ; 
+                                 // System.debug('here'+dataQuery);
                                  dataQueryList.add(dataQuery);  
                              }
                          }    
@@ -162,16 +158,23 @@ public without sharing class PRM_EmailUtility {
                     //String partnerUser = label.PRM_PartnerUser ;    
                     Boolean isExternalUser = false ;
                     Set<String> recipientObjIdSet = new Set<String>();
+                    //system.debug('recipient-->'+recipient);
+                    //system.debug('objEmailNotif.InputParameters-->'+objEmailNotif.InputParameters);
                     Switch on recipient {
                         when 'Partner User'{
-                            //String contactId= objEmailNotif.InputParameters.get('Contact_ID');
+                            String contactId= objEmailNotif.InputParameters.get('Contact_ID');
                             if(contactId != null)
                             {
                                 recipientContactId = contactId;
-                               
+                                List<User> uList = new List<User>();
+                                for(User us : [Select Email,id from User where ContactId=:contactId])
+                                {
+                                    uList.add(us);
+                                }
+                                //User u = [Select Email,id from User where ContactId=:contactId];
                                 User u ;
-                                if(listUser != null && !listUser.isEmpty()) {
-                                    u = listUser[0] ;
+                                if(uList != null && uList.size()>0) {
+                                    u = uList[0] ;
                                 }
                                 if(u != null)
                                 {
@@ -296,14 +299,14 @@ public without sharing class PRM_EmailUtility {
                         List<SObject> retrivedObjList = Database.query(q);  
                         for(SObject obj : retrivedObjList){
                             Schema.SObjectType objType = obj.getSObjectType();
-                            //String objectType = String.valueOf(objType); 
+                            String objectType = String.valueOf(objType); 
                             recipientObjDetailsMap.put(obj.id,obj); 
                         }
                     }
                     
                     //EmailTemplate emailTemplate = [SELECT Id,Subject,HtmlValue,Body FROM EmailTemplate WHERE DeveloperName =: emailConfig.PRM_TemplateUniqueName__c ];
                     //create mail for each recipient obtained above
-                        // String processedBodyForMergeFields; 
+                    // String processedBodyForMergeFields; 
                     //List<OrgWideEmailAddress> owea = new List<OrgWideEmailAddress>();
                     //owea = [select Id from OrgWideEmailAddress where Address =: Label.PRM_wsm_postmaster_intel_com];
                     
@@ -336,7 +339,7 @@ public without sharing class PRM_EmailUtility {
                         if(objEmailNotif.partnerAdmin == false){ // UTKARSH - US741977 - Changes made for Team RUBY flow
                             htmlValue = processHtmlTemplate(htmlValue ,objDetailsMap ,null,false,objEmailNotif.partnerRole,objEmailNotif.businessEvent,objEmailNotif.language); //Utkarsh - TWC727-864 - Added businessevent and partner role in the parameter for welcome email changes
                         }
-                        
+            
                         //use isExternalUser to identify we need to set recipient address in TargetObjectId or ToAddresses
                         Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
                         mail.setTemplateId(emailTemp.Id);
@@ -370,9 +373,6 @@ public without sharing class PRM_EmailUtility {
                              addString.add(e);
                          }
                          mail.setToAddresses(addString);
-                         if(contactId != null){
-                            mail.setTargetObjectId(contactId);    
-                         }
 
                         }else {   
                             // when emailId is from user or contact
@@ -383,7 +383,7 @@ public without sharing class PRM_EmailUtility {
                         allmails.add(mail);
                        
                         //create log data for each mail entry assuming status as success
-                        logList.addAll(createEmailLogs(mail,emailConfig,logList,idAddressMap,contactIdUserMap,userIdMap,contWrapObj.lang,contWrapObj.templateUniqName)) ;
+                        logList= createEmailLogs(mail,emailConfig,logList,idAddressMap,contactIdUserMap,userIdMap,contWrapObj.lang,contWrapObj.templateUniqName) ;
                         if((objEmailNotif.InputParameters!=null) && (objEmailNotif.InputParameters.get('Registration_Request_ID')!=null))
                             {
                                 regReqId=objEmailNotif.InputParameters.get('Registration_Request_ID');
@@ -393,7 +393,7 @@ public without sharing class PRM_EmailUtility {
                                 update regRequest;*/
                     }
                 }
-            }       
+                }
                
             }       
             }       
@@ -427,6 +427,7 @@ public without sharing class PRM_EmailUtility {
                         targetIdLog.put(l.PRM_User__c,l);
                     }
                 }
+                //system.debug('logList-->'+logList);
                 for(Messaging.SendEmailResult result : resultList)
                 {
                     if(! result.isSuccess())
@@ -448,7 +449,7 @@ public without sharing class PRM_EmailUtility {
                 
                 }   
              }catch (Exception e) {
-                //String eMessage = e.getMessage();  
+                String eMessage = e.getMessage();  
                 //createEmailLogs(false,eMessage,mail,emailConfig,emailTemplate.body);
                 System.debug(e.getMessage()+e.getStackTraceString());
             }
@@ -457,35 +458,37 @@ public without sharing class PRM_EmailUtility {
             Integer count=0;
             string logEntry;
             list<PRM_Registration_Request__c> regReqLstToupdate=new list<PRM_Registration_Request__c>();
-            list<Database.saveResult> saveLogResLst =  Database.insert(logList,false); 
-             for (Database.SaveResult sr : saveLogResLst) {
-                    if (sr.isSuccess()) {
+                list<Database.saveResult> saveLogResLst =  Database.insert(logList,false); 
+                for (Database.SaveResult sr : saveLogResLst) {
+                        if (sr.isSuccess()) {
                         if(regReqLst.size() > count) {
-                            PRM_Registration_Request__c regRequest=new PRM_Registration_Request__c();
-                            regRequest.id=regReqLst[count];
-                            regRequest.PRM_Email_Log__c=sr.getId(); //need to check the method
-                            regReqLstToupdate.add(regRequest);
+                        PRM_Registration_Request__c regRequest=new PRM_Registration_Request__c();
+                                    regRequest.id=regReqLst[count];
+                                    regRequest.PRM_Email_Log__c=sr.getId(); //need to check the method
+                                    regReqLstToupdate.add(regRequest);
                         }  
                     }
-                    else if (!sr.isSuccess()){
-                       // create log entry dml exceptions
-                       logEntry=Core_Log_Entry.logEntryWithDetails(LOG_ENTRY_ORIGIN, LOG_ENTRY_PROJECT, LOG_ENTRY_SCOPE, LOG_ENTRY_SEVERITY,'' ,'' , '', '', '');
-                    }
-                    count++;
+                        else if (!sr.isSuccess()){
+                        // create log entry dml exceptions
+                       //system.debug('Failed records:'+logList[count]);
+                        logEntry=Core_Log_Entry.logEntryWithDetails(LOG_ENTRY_ORIGIN, LOG_ENTRY_PROJECT, LOG_ENTRY_SCOPE, LOG_ENTRY_SEVERITY,'' ,'' , '', '', '');
+                        }
+                        count++;
                 }
+            
     
-           if(!regReqLstToupdate.isEmpty()){
-            list<Database.saveResult> saveRegResLst =  Database.Update(regReqLstToupdate,false); 
-             for (Database.SaveResult sr : saveRegResLst) {
-                   if (!sr.isSuccess()){
-                       // create log entry dml exceptions
-                       logEntry=Core_Log_Entry.logEntryWithDetails(LOG_ENTRY_ORIGIN, LOG_ENTRY_PROJECT, LOG_ENTRY_SCOPE, LOG_ENTRY_SEVERITY,'' ,'' , '', '', '');
-                    }
-        }
-                } 
-                    //passing Registration  request Id
-                    for (PRM_Registration_Request__c regReq : regReqLstToupdate){
-                        regRequestIdSet.add(regReq.Id);
+            if(!regReqLstToupdate.isEmpty()){
+                list<Database.saveResult> saveRegResLst =  Database.Update(regReqLstToupdate,false); 
+                for (Database.SaveResult sr : saveRegResLst) {
+                    if (!sr.isSuccess()){
+                        // create log entry dml exceptions
+                        logEntry=Core_Log_Entry.logEntryWithDetails(LOG_ENTRY_ORIGIN, LOG_ENTRY_PROJECT, LOG_ENTRY_SCOPE, LOG_ENTRY_SEVERITY,'' ,'' , '', '', '');
+                        }
+                }
+            } 
+            //passing Registration  request Id
+            for (PRM_Registration_Request__c regReq : regReqLstToupdate){
+                regRequestIdSet.add(regReq.Id);
             }
         } 
         return regRequestIdSet;
@@ -502,7 +505,7 @@ public without sharing class PRM_EmailUtility {
         Map<String,String> mapContTemplate = new map<String,String>();
         Map<String,EmailTemplate> langEmailTempMap = new Map<String,EmailTemplate>();
         Map<EmailTemplate,String> emailTempMap = new Map<EmailTemplate,String>();
-        //Map<String,Map<EmailTemplate,String>> conEmailMap = new Map<String,Map<EmailTemplate,String>>();
+        // Map<String,Map<EmailTemplate,String>> conEmailMap = new Map<String,Map<EmailTemplate,String>>();
         PRM_EmailConfigurationDetails__mdt emailConfDetails;
         Set<String> businessEventSet = new Set<String>{System.Label.PRM_OPIDGold_BusinessEvent,System.Label.PRM_OPIDTitanium_BusinessEvent};
         Map<String,Set<String>> mapbusinesseventLang = new Map<String,Set<String>>();
@@ -614,8 +617,8 @@ public without sharing class PRM_EmailUtility {
     private static PRM_EmailConfigurationDetails__mdt getEmailConfigDetails(EmailNotification objEmailNotif,PRM_EmailConfigurationDetails__mdt obj,Map<String,PRM_Email_Template_Translations__mdt> translationMap, String rLanguage,String rCountry,String rGeo){
         //identify the metadata as per the recipient's language, country and geo
         PRM_EmailConfigurationDetails__mdt mdtIdentified ;
-        //Set<String> languageSet = new Set<String>{'ENG','ZHO'};
-        //Map<emailTemplate,String> templateBodyMap = new Map<emailTemplate,String>();
+        Set<String> languageSet = new Set<String>{'ENG','ZHO'};
+        Map<emailTemplate,String> templateBodyMap = new Map<emailTemplate,String>();
         //if no language is found then select English as default language to query metadata record
         if (rLanguage == null || rLanguage =='') {rLanguage= 'ENG' ; }
         /*Utkarsh - US709296 - Changes to accomodate Team RUBY Flow*/
@@ -684,7 +687,7 @@ PRM_EmailUtility.templateName= mdtIdentified.PRM_TemplateUniqueName__c ;
     /*Utkarsh - US741977 - Added new parameter partnerAdmin to accomodate Team RUBY Flow*/     
     public static String processHtmlTemplate(String htmlToParse , Map<String,SObject> dataMap , String iterator, boolean partnerAdmin, String partnerRole,String businessEvent, String language)
     {
-        String tempHtmlValue = htmlToParse;
+    String tempHtmlValue = htmlToParse;
         List<String> templateBody1 = tempHtmlValue.split('\\{\\!');
         for(String s1 : templateBody1)
         {
@@ -712,7 +715,7 @@ PRM_EmailUtility.templateName= mdtIdentified.PRM_TemplateUniqueName__c ;
                 {
                     if(DataMap.get(o) != null) 
                     { 
-                        if(DataMap.get(o).get(f)!= null)
+                if(DataMap.get(o).get(f)!= null)
                         {
                             String fieldValue = String.valueOf(DataMap.get(o).get(f));    
                             tempHtmlValue = tempHtmlValue.replace('{!'+o+'.'+f+'}',fieldValue); 
@@ -734,88 +737,71 @@ PRM_EmailUtility.templateName= mdtIdentified.PRM_TemplateUniqueName__c ;
         }
         /*Utkarsh - US741977 - Changes to accomodate Team RUBY Flow*/
         if(partnerAdmin == false){
-            //[TWC729-9164] -- START
-            String twoDigitCode='';
-            Map<String,PRM_Language_Culture_Mapping__mdt > metadataMap = PRM_Language_Culture_Mapping__mdt.getAll();
-
-            if(metadataMap!=null &&  metadataMap.size() > 0){
-                for(PRM_Language_Culture_Mapping__mdt record:metadataMap.values()){
-                    if(record.MasterLabel==language){
-                        if(record.MasterLabel=='SPA'){
-                            twoDigitCode='es_MX';
-                        }
-                        else{
-                            twoDigitCode=record.PRM_Culture__c+'_'+record.PRM_Country_Cd__c;
-                        }
-                        break;
-                    }
-                }
-            }
-            String translatedLangTemplate = System.Label.get('', 'PRM_Secondary_Invite_Link', twoDigitCode);
-            tempHtmlValue = tempHtmlValue.replace(System.Label.PRM_Partner_Admin_Link,translatedLangTemplate);
-           //[TWC729-9164] -- END
-           //tempHtmlValue = tempHtmlValue.replace(System.Label.PRM_Partner_Admin_Link,System.Label.PRM_Non_Partner_Admin_Link);
+           tempHtmlValue = tempHtmlValue.replace(System.Label.PRM_Partner_Admin_Link,System.Label.PRM_Non_Partner_Admin_Link);
         }
         /*END - US741977*/
     /*Utkarsh - TWC727-864 - Remove DZS releated line from welcome email template when contact partner role is Guest*/
+    // system.debug('partnerRole-->'+partnerRole);
+    // system.debug('businessEvent-->'+businessEvent);
     if((businessEvent == System.Label.PRM_Welcome_Email_New_Event) || (businessEvent == System.Label.PRM_Welcome_Email_Existing_Event) || (businessEvent == System.Label.PRM_Email_Admin_Approval_Event)){
-          if(partnerRole == 'Guest'){
-                if(language == 'ENG'){
-                    tempHtmlValue = tempHtmlValue.replace('Access to Intel® Developer Zone','');
-                }
-                if(language == 'ENU'){
-                    tempHtmlValue = tempHtmlValue.replace('Access to Intel® Developer Zone','');
-                }
-                if(language == 'DEU'){
-                    tempHtmlValue = tempHtmlValue.replace('Zugang zur Intel® Developer Zone','');
-                }
-                if(language == 'ZHT'){
-                    tempHtmlValue = tempHtmlValue.replace('Access to Intel® Developer Zone','');
-                }
-                if(language == 'FRA'){
-                    tempHtmlValue = tempHtmlValue.replace('Accès à Intel® Developer Zone','');
-                }
-                if(language == 'IND'){
-                    tempHtmlValue = tempHtmlValue.replace('Akses ke Intel® Developer Zone','');
-                }
-                if(language == 'ITA'){
-                    tempHtmlValue = tempHtmlValue.replace('Accesso a Intel® Developer Zone','');
-                }
-                if(language == 'JPN'){
-                    tempHtmlValue = tempHtmlValue.replace('インテル® デベロッパー・ゾーンへのアクセス','');
-                }
-                if(language == 'POL'){
-                    tempHtmlValue = tempHtmlValue.replace('Dostęp do Intel® Developer Zone','');
-                }
-                if(language == 'POR'){
-                    tempHtmlValue = tempHtmlValue.replace('Acesso ao Espaço do desenvolvedor Intel®','');
-                }
-                if(language == 'ZHO'){
-                    tempHtmlValue = tempHtmlValue.replace('访问英特尔® 开发人员专区','');
-                }
-                if(language == 'SPA'){
-                    tempHtmlValue = tempHtmlValue.replace('Acceso a Intel® Developer Zone','');
-                }
-                if(language == 'ESP'){
-                    tempHtmlValue = tempHtmlValue.replace('Acceso a Intel® Developer Zone','');
-                }
-                if(language == 'THA'){
-                    tempHtmlValue = tempHtmlValue.replace('เข้าถึง Intel® Developer Zone','');
-                }
-                if(language == 'TUR'){
-                    tempHtmlValue = tempHtmlValue.replace('Intel® Developer Zone erişim','');
-                }
-                if(language == 'VIE'){
-                    tempHtmlValue = tempHtmlValue.replace('Truy cập vào Intel® Developer Zone','');
-                }
-          }
+		  if(partnerRole == 'Guest'){
+			system.debug('inside welcome template');
+				if(language == 'ENG'){
+					tempHtmlValue = tempHtmlValue.replace('Access to Intel® Developer Zone','');
+				}
+				if(language == 'ENU'){
+					tempHtmlValue = tempHtmlValue.replace('Access to Intel® Developer Zone','');
+				}
+				if(language == 'DEU'){
+					tempHtmlValue = tempHtmlValue.replace('Zugang zur Intel® Developer Zone','');
+				}
+				if(language == 'ZHT'){
+					tempHtmlValue = tempHtmlValue.replace('Access to Intel® Developer Zone','');
+				}
+				if(language == 'FRA'){
+					tempHtmlValue = tempHtmlValue.replace('Accès à Intel® Developer Zone','');
+				}
+				if(language == 'IND'){
+					tempHtmlValue = tempHtmlValue.replace('Akses ke Intel® Developer Zone','');
+				}
+				if(language == 'ITA'){
+					tempHtmlValue = tempHtmlValue.replace('Accesso a Intel® Developer Zone','');
+				}
+				if(language == 'JPN'){
+					tempHtmlValue = tempHtmlValue.replace('インテル® デベロッパー・ゾーンへのアクセス','');
+				}
+				if(language == 'POL'){
+					tempHtmlValue = tempHtmlValue.replace('Dostęp do Intel® Developer Zone','');
+				}
+				if(language == 'POR'){
+					tempHtmlValue = tempHtmlValue.replace('Acesso ao Espaço do desenvolvedor Intel®','');
+				}
+				if(language == 'ZHO'){
+					tempHtmlValue = tempHtmlValue.replace('访问英特尔® 开发人员专区','');
+				}
+				if(language == 'SPA'){
+					tempHtmlValue = tempHtmlValue.replace('Acceso a Intel® Developer Zone','');
+				}
+				if(language == 'ESP'){
+					tempHtmlValue = tempHtmlValue.replace('Acceso a Intel® Developer Zone','');
+				}
+				if(language == 'THA'){
+					tempHtmlValue = tempHtmlValue.replace('เข้าถึง Intel® Developer Zone','');
+				}
+				if(language == 'TUR'){
+					tempHtmlValue = tempHtmlValue.replace('Intel® Developer Zone erişim','');
+				}
+				if(language == 'VIE'){
+					tempHtmlValue = tempHtmlValue.replace('Truy cập vào Intel® Developer Zone','');
+				}
+		  }
         }
-    /*END - TWC727-864*/
+        //system.debug('tempHtmlValue-->'+tempHtmlValue);
+        /*END - TWC727-864*/
         return tempHtmlValue ;
     }
     
-    public static String processLabelsInBody(String body,String language,Map<String,PRM_Email_Template_Translations__mdt> translationMap)
-    {
+    public static String processLabelsInBody(String body,String language,Map<String,PRM_Email_Template_Translations__mdt> translationMap){
         String temp = body;
         List<String> templateBody1 = temp.split('\\{\\!\\$Label');
         for(String s : templateBody1)
@@ -828,8 +814,7 @@ PRM_EmailUtility.templateName= mdtIdentified.PRM_TemplateUniqueName__c ;
         return temp;
     }    
     
-    public class EmailNotification
-    {
+    public class EmailNotification{
         public String businessEvent;
         public Map<String,String> inputParameters;
         public String emailID;
@@ -842,19 +827,18 @@ PRM_EmailUtility.templateName= mdtIdentified.PRM_TemplateUniqueName__c ;
         public Map<String, String> contactPreferdLang;
         public Map<String,String> contactNameMap;
         public boolean partnerAdmin; // UTKARSH - US741977 - Changes made for Team RUBY flow
-    public String partnerRole; //Utkarsh - TWC727-864 - Added new parameter
-        
+        public String partnerRole; //Utkarsh - TWC727-864 - Added new parameter        
     }
     
     //public static List<PRM_EmailLog__c> createEmailLogs(Boolean emailStatus, String response, Messaging.SingleEmailMessage mail,PRM_EmailConfigurationDetails__mdt obj,List<PRM_EmailLog__c> logList,Map<String,String> idAddrMap,String statusCode)
-    public static List<PRM_EmailLog__c> createEmailLogs(Messaging.SingleEmailMessage mail,PRM_EmailConfigurationDetails__mdt obj,List<PRM_EmailLog__c> logList, Map<String,String> idAddressMap,map<String,User>contactIdUserMap,Map<String,User> userIdMap,String lang,String templateName)
-    {
+    public static List<PRM_EmailLog__c> createEmailLogs(Messaging.SingleEmailMessage mail,PRM_EmailConfigurationDetails__mdt obj,List<PRM_EmailLog__c> logList, Map<String,String> idAddressMap,map<String,User>contactIdUserMap,Map<String,User> userIdMap,String lang,String templateName){
         return createEmailLogsBasedOnType(mail,'IPA', idAddressMap, contactIdUserMap, userIdMap, lang, templateName) ;
     }
     
-    public static List<PRM_EmailLog__c> createEmailLogsBasedOnType(Messaging.SingleEmailMessage mail,String type, Map<String,String> idAddressMap,map<String,User>contactIdUserMap,Map<String,User> userIdMap,String lang,String templateName)
-    {
+    public static List<PRM_EmailLog__c> createEmailLogsBasedOnType(Messaging.SingleEmailMessage mail,String type, Map<String,String> idAddressMap,map<String,User>contactIdUserMap,Map<String,User> userIdMap,String lang,String templateName){
         //apend values in below fields and create record in EmailLogs Object using obtained status  
+        System.debug('createEmailLogsBasedOnType == >  ');
+        System.debug('mail == >  ' + mail);
         List<PRM_EmailLog__c> logList = new List<PRM_EmailLog__c>();
         PRM_EmailLog__c log = new PRM_EmailLog__c();
         String successMsg ='Mail sent successfully !!';
@@ -872,70 +856,55 @@ PRM_EmailUtility.templateName= mdtIdentified.PRM_TemplateUniqueName__c ;
         if(mail.getToAddresses() != null ) {
             log.PRM_ToEmailID__c = string.join(mail.getToAddresses(),';');
             //Added this if-else as part of US-618183
-            if(log.PRM_ToEmailID__c.length() > 255)
-            {
+            if(log.PRM_ToEmailID__c.length() > 255){
                 toEmailId = log.PRM_ToEmailID__c;
                 log.PRM_ToEmailID__c = log.PRM_ToEmailID__c.substring(0,255);
                 log.PRM_ToEmailIDCompleteValue__c = toEmailId;
             }
-            else
-            {
+            else{
                 log.PRM_ToEmailIDCompleteValue__c = log.PRM_ToEmailID__c;
             }
-            //Commenting below code as part of US849818. Email id validation is already done upfront on form.
-            //Removing this regex pattern check to avoid excluding valid email ids, instead updating any errors returned while sending email in email log
-            /*
-            //check if address given is in appropriate email pattern or not for all externalEmails
-            if(obj.PRM_Recipient__c == 'External Emails')
-            {
-                String emailRegex = '^[a-zA-Z0-9._|\\\\%#~`=?&/$^*!}{+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$'; // source: <a href="http://www.regular-expressions.info/email.html" target="_blank" rel="nofollow">http://www.regular-expressions.info/email.html</a>
-                Pattern myPattern = Pattern.compile(emailRegex);
-                Matcher myMatcher = MyPattern.matcher(log.PRM_ToEmailID__c);
-                if (!MyMatcher.matches()) { log.PRM_EmailDeliverabilityStatus__c = false ;  log.PRM_Email_API_Response__c = 'Invalid Email Address !' ; }    
-            }*/
         }
-       if(mail.getTargetObjectId() != null)
-        {
+        if(mail.getTargetObjectId() != null) {
+            System.debug('mail.getTargetObjectId() == >  ' + mail.getTargetObjectId());
             String objType = String.valueof(mail.getTargetObjectId().getSObjectType());
-            if(objType == 'Contact')
-            { log.PRM_Contact__c = mail.getTargetObjectId() ;
-            if(idAddressMap.get(mail.getTargetObjectId()) != null){
-                 log.PRM_ToEmailID__c = idAddressMap.get(mail.getTargetObjectId()) ;       
-             }      
+            System.debug('objType() == >  ' + objType);
+            if(objType == 'Contact'){
+                System.debug(' mail.getTargetObjectId() : ' + mail.getTargetObjectId() );
+                log.PRM_Contact__c = mail.getTargetObjectId(); // conatct
+                System.debug('log.PRM_Contact__c == >  ' + log.PRM_Contact__c);
+                log.PRM_ToEmailID__c = idAddressMap.get(mail.getTargetObjectId()) ;             
+                // logList.add(log);
             }
             else if (objType == 'User') {
                 log.PRM_User__c = mail.getTargetObjectId(); 
                 log.PRM_ToEmailID__c = userIdMap.get(mail.getTargetObjectId()).email;
-                for(String conId : contactIdUserMap.keySet())
-                {
-                    if(contactIdUserMap.get(conId).id == mail.getTargetObjectId()) 
-                    {
+                for(String conId : contactIdUserMap.keySet()) {
+                    if(contactIdUserMap.get(conId).id == mail.getTargetObjectId()) {                        
                         log.PRM_Contact__c =  conId;
                         //log.PRM_ToEmailID__c = contactIdUserMap.get(conId).email ;
+                        System.debug('User log.PRM_Contact__c == >  ' + log.PRM_Contact__c);
                     }    
+                    log.PRM_Contact__c =  conId;
+                    // logList.add(log);
                 }
             }  
         }
-        else{
-
-        }
         
         // iterate over map
-        if(contactIdUserMap != null && !contactIdUserMap.isEmpty()){
-        for(String conId : contactIdUserMap.keySet())
-            {
-                if(contactIdUserMap.get(conId).id == mail.getTargetObjectId()) {
-                    log.PRM_Contact__c =  conId;
-                    log.PRM_ToEmailID__c =  contactIdUserMap.get(conId).email;
-                }
+        if(!contactIdUserMap.isEmpty()){
+            for(String conId : contactIdUserMap.keySet()){
+                log.PRM_Contact__c =  conId;
+                log.PRM_ToEmailID__c =  contactIdUserMap.get(conId).email;
             }
-        logList.add(log);
+            logList.add(log);
         }else{
             logList.add(log);
         }
-        
+        System.debug('logList == >  ' + logList);
         return logList ;
     }
+    
     /* *****************************************************************************************************************************************
 * author:      Tejasree Tadi    
 * Date:        12/3/2020
@@ -1306,7 +1275,7 @@ PRM_EmailUtility.templateName= mdtIdentified.PRM_TemplateUniqueName__c ;
                     } 
                 } 
             }   
-            if(emailLogList != null && !emailLogList.IsEmpty() && emailLogList.size() > 0){
+            if(emailLogList != null){
                 insert emailLogList;
             }
         }
@@ -1439,7 +1408,7 @@ PRM_EmailUtility.templateName= mdtIdentified.PRM_TemplateUniqueName__c ;
             if(mailList!=Null && mailList.size()>0){
                 Messaging.sendEmail(mailList);
             }
-            if(emailLogList != null && !emailLogList.IsEmpty() && emailLogList.size() > 0){
+            if(emailLogList != null){
                 insert emailLogList;
             }
             
@@ -1469,7 +1438,7 @@ PRM_EmailUtility.templateName= mdtIdentified.PRM_TemplateUniqueName__c ;
         String dayString='';
         PRM_EmailLog__c log=new PRM_EmailLog__c();
         List<PRM_EmailLog__c> emailLogList = new List<PRM_EmailLog__c>();
-        //List<String> emailList=new List<String>();
+        List<String> emailList=new List<String>();
         Map<id,String> distributorMap= new Map<id,String>();
         Map<String,String> langTemplateMap = new Map<String,String>();
         Map<String,EmailTemplate>templateIdMap = new Map<String,EmailTemplate>();
@@ -1587,7 +1556,7 @@ PRM_EmailUtility.templateName= mdtIdentified.PRM_TemplateUniqueName__c ;
             if(mailList!=Null && mailList.size()>0){
                 Messaging.sendEmail(mailList);
             }
-            if(emailLogList != null && !emailLogList.IsEmpty() && emailLogList.size() > 0){
+            if(emailLogList != null){
                 insert emailLogList;
             }
             
@@ -1616,8 +1585,8 @@ PRM_EmailUtility.templateName= mdtIdentified.PRM_TemplateUniqueName__c ;
         String dayString='';
         PRM_EmailLog__c log=new PRM_EmailLog__c();
         List<PRM_EmailLog__c> emailLogList = new List<PRM_EmailLog__c>();
-        //Boolean contactflag=false;
-        //List<String> emailList=new List<String>();
+        Boolean contactflag=false;
+        List<String> emailList=new List<String>();
         Map<id,String> distributorMap= new Map<id,String>();
         Map<String,String> langTemplateMap = new Map<String,String>();
         Map<String,EmailTemplate>templateIdMap = new Map<String,EmailTemplate>();
@@ -1735,7 +1704,7 @@ PRM_EmailUtility.templateName= mdtIdentified.PRM_TemplateUniqueName__c ;
             if(mailList!=Null && mailList.size()>0){
                 Messaging.sendEmail(mailList);
             }
-            if(emailLogList != null && !emailLogList.IsEmpty() && emailLogList.size() > 0){
+            if(emailLogList != null){
                 insert emailLogList;
             }
             
@@ -1748,12 +1717,12 @@ PRM_EmailUtility.templateName= mdtIdentified.PRM_TemplateUniqueName__c ;
         
         List <Messaging.SingleEmailMessage> mailList = new List <Messaging.SingleEmailMessage> ();
         List<String> lstUsers = new List<String>();
-        //List<String> emailList = new List<String>();
-        //List<String> mailToAddresses = new List<String>(); 
+        List<String> emailList = new List<String>();
+        List<String> mailToAddresses = new List<String>(); 
         // List<OrgWideEmailAddress> owea = new List<OrgWideEmailAddress>();
         // owea = [select Id from OrgWideEmailAddress where Address =: Label.PRM_wsm_postmaster_intel_com];
         EmailTemplate templateId = [select id, name,HtmlValue,Body,Subject from EmailTemplate where developername =:System.Label.IPA_OPID_ADMIN_TEMPLATE];
-        List<GroupMember> gm = [SELECT UserOrGroupId FROM GroupMember WHERE Group.DeveloperName =:System.Label.IPA_ADMIN_GROUPNAME];
+            List<GroupMember> gm = [SELECT UserOrGroupId FROM GroupMember WHERE Group.Name =:Label.IPA_ADMIN_GROUPNAME];
         List<String> groupUserIdList = new List<String>();
         List<User> usrLst = new List<User>();
         // Fetching the Users Id from the Group
@@ -1770,17 +1739,17 @@ PRM_EmailUtility.templateName= mdtIdentified.PRM_TemplateUniqueName__c ;
                                 }
         }
         //Retriving the IPID and Name Data
-        //Set<id> OPIDAccts = new Set<id>();// to store OPID accnts
+        Set<id> OPIDAccts = new Set<id>();// to store OPID accnts
         Map<Id, Core_Account_Group_Member__c> opidwithCagMap = new Map<Id, Core_Account_Group_Member__c>();
         Set<id> OPIDAcctswithActiveAccounts = new Set<id>();// to store OPID accnts   
-        //Set<id> OPIDwithoutActiveAccount = new Set<id>();// to store OPID accounts 
+        Set<id> OPIDwithoutActiveAccount = new Set<id>();// to store OPID accounts 
         Set<String> OPIDNamesSet = new Set<String>();// to store OPID without Active account Names
         String accountNamesString = '';
-        //String opidRecordIds = '';
+        String opidRecordIds = '';
           
         for(Core_Account_Group_Member__c PAGM:EmailNewList) {
              //The below set will contail all the Id's where account is inactive. 
-            if( PAGM.Core_Inactive_Ind__c ==true && EmailoldMap.get(PAGM.id).Core_Inactive_Ind__c!=PAGM.Core_Inactive_Ind__c){
+            if( PAGM.Core_Inactive_Ind__c ==true){
                 opidwithCagMap.put(PAGM.Core_Partner_Account_Id__c, PAGM);
             }
         }
@@ -1808,7 +1777,7 @@ PRM_EmailUtility.templateName= mdtIdentified.PRM_TemplateUniqueName__c ;
                 opidRecordIds = opidRecordIds + String.valueOf(ids) + '<br/>';
             }
         }*/
-        if(accountNamesString != null && accountNamesString !='' && templateId!=null){
+        if(accountNamesString != null && accountNamesString !=''){
             String htmlBody = templateId.HtmlValue;
             htmlBody = htmlBody.replace('%AccountNames%', accountNamesString); // Replacing HTML Body with the Account Names
             htmlBody = htmlBody.replace('{!$Label.PRM_CurrentYear}', Label.PRM_CurrentYear);
@@ -1836,5 +1805,5 @@ PRM_EmailUtility.templateName= mdtIdentified.PRM_TemplateUniqueName__c ;
         }
         
     }//End of Method    
-   
+       
 }

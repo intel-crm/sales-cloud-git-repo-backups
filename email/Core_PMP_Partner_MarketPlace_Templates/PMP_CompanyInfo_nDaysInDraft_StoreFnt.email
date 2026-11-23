@@ -1,7 +1,7 @@
-<messaging:emailTemplate subject="Reminder: Submit Your {!relatedTo.Name} Storefront" recipientType="User" relatedToType="PMP_Company__c">
+<messaging:emailTemplate subject="Reminder: Submit Your {!relatedTo.Name} Storefront." recipientType="User" relatedToType="PMP_Company__c">
 <messaging:htmlEmailBody >
     
-        <c:PMP_CompanyInfo_nDaysInDraft partnerRecordId="{!relatedTo.Id}" partnerType="storefront"  />
+        <c:PMP_CompanyInfo_nDaysInDraft partnerRecordId="{!relatedTo.Id}" partnerType="Storefront"  />
     
     </messaging:htmlEmailBody>
 </messaging:emailTemplate>

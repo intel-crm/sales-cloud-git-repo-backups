@@ -10,8 +10,8 @@ public class Core_MAGQuestionnaireController_Test {
         Core_MAGQuestionnaireController magController;
         
          Account acct = new Account(Name = 'Test Account 03-25-2015', BillingStreet = '123 Fake St',
-                                   BillingCity = 'Springfield', BillingState = 'IL', BillingCountry = 'USA',Industry='Agriculture',
-                                   BillingPostalCode = '12345', Core_CIM_ID__c = '8675309',Core_Sales_Groups__c='Americas US Sales Group');
+                                   BillingCity = 'Springfield', BillingState = 'IL', BillingCountry = 'USA',
+                                   BillingPostalCode = '12345', Core_CIM_ID__c = '8675309',Core_Sales_Groups__c='DCG Sales Group');
          insert acct;
         // Set up a test opportunity that we'll use
         Opportunity opp;
@@ -66,8 +66,8 @@ public class Core_MAGQuestionnaireController_Test {
         Core_MAGQuestionnaireController magController;
         
          Account acct = new Account(Name = 'Test Account 03-25-2015', BillingStreet = '123 Fake St',
-                                   BillingCity = 'Springfield', BillingState = 'IL', BillingCountry = 'USA',Industry='Agriculture',
-                                   BillingPostalCode = '12345', Core_CIM_ID__c = '8675309',Core_Sales_Groups__c='Americas US Sales Group');
+                                   BillingCity = 'Springfield', BillingState = 'IL', BillingCountry = 'USA',
+                                   BillingPostalCode = '12345', Core_CIM_ID__c = '8675309',Core_Sales_Groups__c='DCG Sales Group');
          insert acct;
         // Set up a test opportunity that we'll use
         Opportunity opp;

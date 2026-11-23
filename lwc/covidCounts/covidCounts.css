@@ -1,0 +1,17 @@
+.header-column {
+  padding: 0 2rem;
+  background-color: gray;
+}
+.field-title {
+  font-size: 1.0rem;
+  line-height: 1.25;
+  color: white;
+}
+.field-value {
+  font-size: 1.5rem;
+  line-height: 1.25;
+  color: white;
+}
+.c-layout-item {
+  background-color: #444040;
+}

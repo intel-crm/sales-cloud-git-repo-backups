@@ -87,10 +87,6 @@
     <columns>
         <field>LAST_UPDATE_BY</field>
     </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Lead.SWS_Software_Lead__c</field>
-    </columns>
     <description>RT: Leads</description>
     <filter>
         <booleanFilter>1 AND 2 AND 3</booleanFilter>

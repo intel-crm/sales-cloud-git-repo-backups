@@ -1,22 +1,22 @@
-import { LightningElement, api } from 'lwc';
-/*import { getRecord } from 'lightning/uiRecordApi';
+import { LightningElement, api, wire,track } from 'lwc';
+import { getRecord } from 'lightning/uiRecordApi';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
-//import getLicenseHostId from '@salesforce/apex/Sales_GetComputerDetailsForCompanion_bot.getLicenseHostId';
+import getLicenseHostId from '@salesforce/apex/Sales_GetComputerDetailsForCompanion_bot.getLicenseHostId';
 import compErrormessage from '@salesforce/label/c.Sales_AssignPrimaryCompErr';
 import errorMsg from '@salesforce/label/c.Sales_Error_Message'; 
 import userId from '@salesforce/user/Id';
-//import validateUserAccess from '@salesforce/apex/Sales_ValidateUserEditAccess.validateUserAccess';
+import validateUserAccess from '@salesforce/apex/Sales_ValidateUserEditAccess.validateUserAccess';
 import Sales_AccessCheckMsg from '@salesforce/label/c.Sales_AccessCheckMsg';
 
 //import propertyName from '@salesforce/community/property';
 //import communityId from '@salesforce/community/Id';
 //import communityBasePath from '@salesforce/community/basePath';
 import { CurrentPageReference } from 'lightning/navigation';
-*/
+
 
 export default class SalesGenerateCompanionLicense extends LightningElement {
         @api recordId;
-        /*@api licPrimaryComputerId;
+        @api licPrimaryComputerId;
         @api currentPageReference;
         @track userId=userId;
         @wire(CurrentPageReference)
@@ -51,7 +51,7 @@ export default class SalesGenerateCompanionLicense extends LightningElement {
                                         this.dispatchEvent(new CustomEvent('close'));
                                 }
                                 else{
-                                /*getLicenseHostId({ recId: this.recordId })
+                                getLicenseHostId({ recId: this.recordId })
                                         .then((result) => {
                                                 console.log('result--?>' + result);
                                                 this.licPrimaryComputerId = result;
@@ -68,9 +68,9 @@ export default class SalesGenerateCompanionLicense extends LightningElement {
                                         .catch((error) => {
                                                 this.closeQuickAction();
                                                 this.fireToastEvent('Error!', error.body.message, 'error', 'sticky');
-                                        });*/
-                                /*}
-                        /*})
+                                        });
+                                }
+                        })
         }
         generateUrls() {
                 this[NavigationMixin.GenerateUrl](this.showPanelPageReference)
@@ -84,7 +84,7 @@ export default class SalesGenerateCompanionLicense extends LightningElement {
                 //window.open(window.location.origin + '/' + primCompId, '_top');
                 //window.open('/' + primCompId, '_blank');  
                 //if(User.ProfileId=='Partner')
-                //window.open('https://licensing.intel.com/psg/detail/'+primCompId) ; 
+                //window.open('https://crmdevsls3-intelcloudcrm.cs69.force.com/psg/s/detail/'+primCompId) ; 
                //else
                //if( isLightningExperienceOrSalesforce1() ) {
                 // Do something for Lightning Experience
@@ -109,8 +109,8 @@ export default class SalesGenerateCompanionLicense extends LightningElement {
 SELECT Name, UrlPathPrefix FROM Network WHERE Name = :communityName;
         String pageURL = Network.getLoginUrl(psgQuotingLicensing.Id).removeEndIgnoreCase('login') + 'detail/' + primCompId;*/
             /*else*/
-            //window.open('https://licensing.intel.com/psg/detail/'+primCompId) ;
-        /*}
+            //window.open('https://crmdevsls3-intelcloudcrm.cs69.force.com/psg/s/detail/'+primCompId) ;
+        }
 
         fireToastEvent(title, message, variant, mode) {
                 const event = new ShowToastEvent({
@@ -130,11 +130,11 @@ SELECT Name, UrlPathPrefix FROM Network WHERE Name = :communityName;
                 /*window.setTimeout(function(){ 
                         location.reload(true);
                 }, 2000);*/
-        /*}
+        }
 
         closeQuickAction() {
                 const closeModal = new CustomEvent('close');
                 // Dispatches the event.
                 this.dispatchEvent(closeModal);
-        }*/
+        }
 }

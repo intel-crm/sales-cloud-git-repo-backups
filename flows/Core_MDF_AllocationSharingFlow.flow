@@ -6,8 +6,8 @@
         <description>This step is to add the PFA share record to the PFA Share Collection that will be used to create Share Records</description>
         <name>Core_MDF_Add_PFAShare_record_to_the_PFAShareCollection</name>
         <label>Add PFAShare record to the PFAShareCollection</label>
-        <locationX>1217</locationX>
-        <locationY>557</locationY>
+        <locationX>912</locationX>
+        <locationY>250</locationY>
         <assignmentItems>
             <assignToReference>soColl_PFAShare</assignToReference>
             <operator>Add</operator>
@@ -23,8 +23,8 @@
         <description>This step is to clear the values in the PFA Share Record</description>
         <name>Core_MDF_Assign_Empty_values_to_PFA_Share_Record</name>
         <label>Assign Empty values to PFA Share Record</label>
-        <locationX>1007</locationX>
-        <locationY>461</locationY>
+        <locationX>647</locationX>
+        <locationY>248</locationY>
         <assignmentItems>
             <assignToReference>so_PFAShare.ParentId</assignToReference>
             <operator>Assign</operator>
@@ -54,8 +54,8 @@
         <description>This step is to assign values to the PFA Share record</description>
         <name>Core_MDF_Assign_the_values_to_the_so_PFAShare_record</name>
         <label>Assign the values to the so_PFAShare record</label>
-        <locationX>1016</locationX>
-        <locationY>700</locationY>
+        <locationX>683</locationX>
+        <locationY>131</locationY>
         <assignmentItems>
             <assignToReference>so_PFAShare.ParentId</assignToReference>
             <operator>Assign</operator>
@@ -81,28 +81,12 @@
             <targetReference>Core_MDF_Add_PFAShare_record_to_the_PFAShareCollection</targetReference>
         </connector>
     </assignments>
-    <assignments>
-        <name>Core_MDF_Assign_To_Program_String_Collection</name>
-        <label>Assign_To_Program_String_Collection</label>
-        <locationX>1009</locationX>
-        <locationY>280</locationY>
-        <assignmentItems>
-            <assignToReference>Channel_Program_Picklist</assignToReference>
-            <operator>Add</operator>
-            <value>
-                <elementReference>Core_MDF_Loop_on_program_metadata.Core_MDF_Technical_Program_Name__c</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Core_MDF_Loop_on_program_metadata</targetReference>
-        </connector>
-    </assignments>
     <decisions>
         <description>This is used to check whether there are any users associated to the given Account, returned by the previous flow</description>
         <name>Core_MDF_Check_if_any_PNUM_records_exist</name>
         <label>Check if any PNUM records exist</label>
-        <locationX>361</locationX>
-        <locationY>280</locationY>
+        <locationX>310</locationX>
+        <locationY>97</locationY>
         <defaultConnectorLabel>[Default Outcome]</defaultConnectorLabel>
         <rules>
             <name>Core_MDF_soColl_PNUMRecods_Exists</name>
@@ -115,7 +99,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Core_MDF_GetMetadataRecords</targetReference>
+                <targetReference>Core_MDF_Loop_through_the_Partner_Node_User_Mapping_Collection</targetReference>
             </connector>
             <label>Partner Node User Mapping Exists</label>
         </rules>
@@ -124,8 +108,8 @@
         <description>This decision is used to check whether any share records are to be created</description>
         <name>Core_MDF_Check_if_PFAShare_Collection_has_records</name>
         <label>Check if PFAShare Collection has records</label>
-        <locationX>334</locationX>
-        <locationY>466</locationY>
+        <locationX>310</locationX>
+        <locationY>375</locationY>
         <defaultConnectorLabel>[Default Outcome]</defaultConnectorLabel>
         <rules>
             <name>Core_MDF_soColl_PFAShare_Exists</name>
@@ -143,114 +127,41 @@
             <label>Exists</label>
         </rules>
     </decisions>
-    <decisions>
-        <description>If the Program is Retail then do not share allocation record with External User</description>
-        <name>Core_MDF_Check_if_Program_Type_is_Retail</name>
-        <label>Check if Program Type is Retail</label>
-        <locationX>741</locationX>
-        <locationY>702</locationY>
-        <defaultConnector>
-            <targetReference>Core_MDF_Loop_through_the_Partner_Node_User_Mapping_Collection</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>Go to next PNUM record</defaultConnectorLabel>
-        <rules>
-            <name>Core_MDF_Share_the_Allocation_with_External_User</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>Channel_Program_Picklist</leftValueReference>
-                <operator>Contains</operator>
-                <rightValue>
-                    <elementReference>so_PNUMRecord.Core_MDF_Account__r.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c</elementReference>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Core_MDF_Assign_the_values_to_the_so_PFAShare_record</targetReference>
-            </connector>
-            <label>Share the Allocation with External User if It is not Retail</label>
-        </rules>
-    </decisions>
     <description>Flow to share the PFA records with the associated users</description>
     <interviewLabel>Partner Fund Allocation Sharing Flow {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Partner Fund Allocation Sharing Flow</label>
     <loops>
-        <name>Core_MDF_Loop_on_program_metadata</name>
-        <label>loop_on_program_metadata</label>
-        <locationX>749</locationX>
-        <locationY>280</locationY>
-        <collectionReference>channel_Program_Col</collectionReference>
-        <iterationOrder>Asc</iterationOrder>
-        <nextValueConnector>
-            <targetReference>Core_MDF_Assign_To_Program_String_Collection</targetReference>
-        </nextValueConnector>
-        <noMoreValuesConnector>
-            <targetReference>Core_MDF_Loop_through_the_Partner_Node_User_Mapping_Collection</targetReference>
-        </noMoreValuesConnector>
-    </loops>
-    <loops>
         <description>Loop through the Partner Node User Mapping Collection</description>
         <name>Core_MDF_Loop_through_the_Partner_Node_User_Mapping_Collection</name>
         <label>Loop through the Partner Node User Mapping Collection</label>
-        <locationX>749</locationX>
-        <locationY>461</locationY>
+        <locationX>311</locationX>
+        <locationY>249</locationY>
         <assignNextValueToReference>so_PNUMRecord</assignNextValueToReference>
         <collectionReference>soColl_PNUMRecords</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
-            <targetReference>Core_MDF_Check_if_Program_Type_is_Retail</targetReference>
+            <targetReference>Core_MDF_Assign_the_values_to_the_so_PFAShare_record</targetReference>
         </nextValueConnector>
         <noMoreValuesConnector>
             <targetReference>Core_MDF_Check_if_PFAShare_Collection_has_records</targetReference>
         </noMoreValuesConnector>
     </loops>
-    <processMetadataValues>
-        <name>BuilderType</name>
-        <value>
-            <stringValue>LightningFlowBuilder</stringValue>
-        </value>
-    </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <recordCreates>
         <name>Core_MDF_Create_PFAShare_Collection</name>
         <label>Create PFAShare Collection</label>
-        <locationX>343</locationX>
-        <locationY>699</locationY>
+        <locationX>311</locationX>
+        <locationY>498</locationY>
         <inputReference>soColl_PFAShare</inputReference>
     </recordCreates>
-    <recordLookups>
-        <name>Core_MDF_GetMetadataRecords</name>
-        <label>GetMetadataRecords</label>
-        <locationX>594</locationX>
-        <locationY>280</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>Core_MDF_Loop_on_program_metadata</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>Core_MDF_Ignore_External_Alloc_Sharing__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <booleanValue>false</booleanValue>
-            </value>
-        </filters>
-        <object>Core_MDF_ChannelProgram__mdt</object>
-        <outputReference>channel_Program_Col</outputReference>
-        <queriedFields>Core_MDF_Technical_Program_Name__c</queriedFields>
-    </recordLookups>
-    <start>
-        <locationX>34</locationX>
-        <locationY>64</locationY>
-        <connector>
-            <targetReference>Fetch_Account_User_Association</targetReference>
-        </connector>
-    </start>
+    <startElementReference>Fetch_Account_User_Association</startElementReference>
     <status>Active</status>
     <subflows>
         <description>This flow is used to get the list of users associated to the given Account</description>
         <name>Fetch_Account_User_Association</name>
         <label>Fetch Account User Association</label>
-        <locationX>160</locationX>
-        <locationY>278</locationY>
+        <locationX>117</locationX>
+        <locationY>98</locationY>
         <connector>
             <targetReference>Core_MDF_Check_if_any_PNUM_records_exist</targetReference>
         </connector>
@@ -272,28 +183,6 @@
             <name>soColl_PNUMRecords</name>
         </outputAssignments>
     </subflows>
-    <variables>
-        <name>channel_Program_Col</name>
-        <dataType>SObject</dataType>
-        <isCollection>true</isCollection>
-        <isInput>false</isInput>
-        <isOutput>false</isOutput>
-        <objectType>Core_MDF_ChannelProgram__mdt</objectType>
-    </variables>
-    <variables>
-        <name>Channel_Program_Picklist</name>
-        <dataType>Picklist</dataType>
-        <isCollection>true</isCollection>
-        <isInput>false</isInput>
-        <isOutput>false</isOutput>
-    </variables>
-    <variables>
-        <name>Channel_Program_Technical_Name</name>
-        <dataType>String</dataType>
-        <isCollection>false</isCollection>
-        <isInput>true</isInput>
-        <isOutput>false</isOutput>
-    </variables>
     <variables>
         <name>so_PFAShare</name>
         <dataType>SObject</dataType>

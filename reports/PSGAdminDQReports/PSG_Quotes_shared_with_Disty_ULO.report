@@ -20,7 +20,13 @@
         <scale>2</scale>
     </customDetailFormulas>
     <filter>
-        <booleanFilter>1 AND 3 AND (2 OR (4 AND 5))</booleanFilter>
+        <criteriaItems>
+            <column>SBQQ__Quote__c$core_cpq_active_cb__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
         <criteriaItems>
             <column>SBQQ__Quote__c$Pricing_Quote_Program_Nm__c</column>
             <columnToColumn>false</columnToColumn>
@@ -41,20 +47,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
             <value></value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>SBQQ__Quote__c$core_cpq_quote_type_nm__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Contract Pricing</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>SBQQ__Quote__c$SBQQ__Status__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Approved</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

@@ -15,11 +15,12 @@
             </value>
         </inputParameters>
         <nameSegment>Opportunity.Core_Opp_Send_Production_Win_EmailAlert</nameSegment>
+        <offset>0</offset>
     </actionCalls>
     <actionCalls>
         <name>Core_Opp_Send_Production_Win_Overdue_Notification_EmailAlert_Flow</name>
         <label>Core_Opp_Send_Production_Win_Overdue_Notification_EmailAlert  Flow</label>
-        <locationX>1018</locationX>
+        <locationX>1106</locationX>
         <locationY>384</locationY>
         <actionName>Opportunity.Core_Opp_Send_Production_Win_Overdue_Notification_EmailAlert</actionName>
         <actionType>emailAlert</actionType>
@@ -31,6 +32,7 @@
             </value>
         </inputParameters>
         <nameSegment>Opportunity.Core_Opp_Send_Production_Win_Overdue_Notification_EmailAlert</nameSegment>
+        <offset>0</offset>
     </actionCalls>
     <apiVersion>56.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
@@ -112,7 +114,7 @@
         <description>Check if the opportunity&apos;s owner&apos;s manager&apos;s email is null</description>
         <name>Check_for_Owner_Manager_Email_2</name>
         <label>Check for Owner Manager Email 2</label>
-        <locationX>1150</locationX>
+        <locationX>1238</locationX>
         <locationY>276</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -189,7 +191,7 @@
         <inputReference>$Record</inputReference>
     </recordUpdates>
     <start>
-        <locationX>540</locationX>
+        <locationX>584</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Check_for_Owner_Manager_Email</targetReference>
@@ -222,5 +224,6 @@
         </scheduledPaths>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Active</status>
+    <status>Obsolete</status>
+    <triggerOrder>900</triggerOrder>
 </Flow>

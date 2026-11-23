@@ -1,0 +1,163 @@
+<template>
+    <div class="slds-grid slds-wrap bg-color-white">
+    <template if:true={isProcessing}>
+        <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+    </template>
+
+    <template if:false={isCreated}>
+        <template if:true={isCreate}>
+            <div class="slds-col slds-size_1-of-1 slds-p-around_small">
+                <div class="border-guidance">
+                    <template if:true={isPartner}><p><b>Instructions for Partners</b></p></template>
+                    <template if:false={isPartner}><p><b>General Instructions for PSAM </b></p></template>
+                    <ul class="slds-p-around_xx-small slds-list_dotted">
+                        <li>Download the Rebate Claim Template from the Download Template Section</li>
+                        <li>Fill up the Details and Upload the document in the Upload Template</li>
+                        <li>Do not change the file Type. Retain the file type as '.csv'</li>
+                        <template if:true={isPartner}><li>Click <a href= {label.rcTempGuidance} target="_blank"><b>here</b></a> to read the instructions for filling up the Rebate Claim template.</li></template>
+                        <template if:false={isPartner}><li>Click <a href="#" onclick={handleClick}><b>here</b></a> to read the instructions for filling up the Rebate Claim template.</li>
+                            <template if:true={showModal2}>
+                            <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-02" class="slds-modal slds-fade-in-open slds-modal_medium guidance_section">
+                                <div class="slds-modal__container guidance_modal" >
+                                <div>
+                                    <lightning-button-icon icon-name="utility:close" variant="bare-inverse" onclick={handleModal2Close} alternative-text="close" class="slds-m-bottom_small slds-float_right" title="close"></lightning-button-icon>
+                                </div>
+                                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                                    <c-pcc_-rebate-claim_-temp_-guidance onbacktofirstmodal={handleModal2Close}></c-pcc_-rebate-claim_-temp_-guidance>
+                                </div>
+                                </div>
+                            </section>
+                            </template>
+                        </template>
+                        <li>In case of multiple rows of Rebate Claim data, ensure there is no blank row in between the lines in the template</li> 
+                    </ul>
+                </div>
+            </div>
+            <template if:false={isPartner}>
+                <div class="slds-col slds-size_1-of-1 slds-p-around_small">
+                    <div class="border-guidance">
+                        <p><b>Partner Information</b></p>
+                        <lightning-input required type="email" label="Mention the Partner Email ID on whose behalf the Rebate Claim is initiated"  value={partnerValue} onchange={handleChange}> </lightning-input>
+                    </div>
+                </div>
+            </template>
+            <div class="slds-col slds-size_6-of-12 slds-p-around_small">
+                <div class="border">
+                <div class="slds-page-header__title">Download Template</div></br>
+                <p>Click on the button shown below to download the Rebate Claim Template</p>
+                <div if:true={fileName}></br></div>
+                </br><lightning-button variant="brand" onclick={downloadBulkuploadTemplateFile} label="Rebate Claim Template"></lightning-button>
+                    </div>
+            </div>
+            
+            <div class="slds-col slds-size_6-of-12 slds-p-around_small">
+                <div class="border">
+                    <div  class="slds-page-header__title">Upload Template</div>
+                    <p> 
+                        <lightning-input type="file" accept=".csv" label="Attachment" onchange={handleFilesChange}></lightning-input>
+                    </p>
+                    </br>
+                    <template if:true={fileName}>
+                    <div class="slds-text-body_small slds-text-color_error slds-m-bottom_x-small">
+                        {fileName}
+                        <lightning-button-icon class="slds-p-left_x-small" size="x-small" icon-name="utility:delete" onclick={deleteFile} alternative-text="Delete File"></lightning-button-icon>
+                    </div>
+                    </template>
+                    <lightning-button variant="brand" onclick={handleSave} label="Upload Rebate Claim Template"></lightning-button>
+                </div>
+            </div>
+
+            <template if:true={showQLSection}>
+                <div class="slds-col slds-size_1-of-2 slds-p-around_small">
+                    <div class="border-guidance">
+                        <p><lightning-icon icon-name="utility:question" size="small"></lightning-icon> Click <a href="#" onclick={handleCalculate}><b>here</b></a> to know your Claimable Quantity </p>
+                    </div>
+                </div>
+
+                <div class="slds-col slds-size_1-of-2 slds-p-around_small">
+                    <div class="border-guidance">
+                        <p><lightning-icon icon-name="utility:download" size="small"></lightning-icon> <span class="floatleftwidth">Download <a href="#" onclick={handleDownload}><b>here</b></a> to know your eligible Quote Lines</span></p>
+                    </div>
+            </div>
+            </template>
+            </template>
+            <template if:false={isCreate}>
+                <template if:true={isClaimScreen}>
+                    <div class="slds-col slds-size_1-of-1 slds-p-around_small">
+                        <lightning-card variant="Narrow"  title="Claimable Quantity" icon-name="custom:custom93">
+                            <lightning-button 
+                                label="Back" 
+                                onclick={handleBack}
+                                slot="actions"
+                                class="slds-m-around_medium">
+                            </lightning-button>
+                        <div class="slds-m-around_medium">
+                            
+                            <label>
+                                <p>Provide the Quote Line Number(s) </p>
+                                <p class="slds-text-body_small">[In case of more than one QL #, separate the Quote Lines using comma. For e.g., Q-XXXX-XXX, Q-XXXX-XXX]</p>
+                            </label>
+                            <lightning-input 
+                                class="slds-p-top_small"
+                                variant="label-hidden"
+                                value={quoteLineNumbers} 
+                                onchange={handleInputChange}>
+                            </lightning-input>
+                            
+                        </br>
+                            <lightning-button 
+                                label="Search" 
+                                onclick={handleSearch} 
+                                variant="brand"
+                                class="slds-m-top_medium">
+                            </lightning-button>
+                        </div>
+                        <div class="slds-m-around_medium">
+                    <template if:true={isEmptymissingQuoteLines}>
+                        <p class="slds-text-color_error"> {missingQuoteLines} is not there in the system</p>
+                    </template>
+                    <template if:true={quantityResults.length}>
+                            <lightning-datatable
+                            key-field="QuoteLine"
+                            data={quantityResults}
+                            columns={columns}
+                            hide-checkbox-column
+                            >
+                        </lightning-datatable>
+                        
+                    </template>
+                    </div>
+                    </lightning-card>
+                    </div>
+                </template>
+                <template if:true={isDownloadScreen}>
+                    <div class="slds-col slds-size_1-of-1 slds-p-around_small">
+                        <lightning-card variant="Narrow"  title="Download Template from QuoteLines" icon-name="custom:custom93">
+                            <lightning-button 
+                                label="Back" 
+                                onclick={handleBack}
+                                slot="actions"
+                                class="slds-m-around_medium">
+                            </lightning-button>
+                            <div class="slds-m-around_medium">
+                                <c-pcc_-rebate-claim-q-lto-c-s-v onbacktocreate={handleBack}></c-pcc_-rebate-claim-q-lto-c-s-v>
+                            </div>
+                        </lightning-card>
+                    </div>
+                </template>
+                
+            </template>
+        </template>
+
+
+        <template if:true={isCreated}>
+            <div class="slds-col slds-size_1-of-1 slds-p-around_small">
+                <p class="slds-align_absolute-center"> Rebate Claim Template has been uploaded. You will be notified on completion of processing of Rebate Claim Template.</p>
+                <p class="slds-align_absolute-center">Your Upload Reference # is <a onclick={navigatetoRecordPage}><b>&nbsp;{parentReferenceName}</b></a></p>
+            </div>
+        </template>
+
+    </div>
+
+
+</template>

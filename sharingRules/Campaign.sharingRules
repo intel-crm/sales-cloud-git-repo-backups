@@ -24,7 +24,7 @@
         <criteriaItems>
             <field>RecordTypeId</field>
             <operation>equals</operation>
-            <value>Client</value>
+            <value>Client Co-Marketing Fund</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
@@ -38,7 +38,7 @@
         <criteriaItems>
             <field>RecordTypeId</field>
             <operation>equals</operation>
-            <value>Datacenter</value>
+            <value>Data Center Co-Marketing Fund</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
@@ -66,7 +66,7 @@
         <criteriaItems>
             <field>RecordTypeId</field>
             <operation>equals</operation>
-            <value>Intel Partner Alliance,Service Provider Co-Marketing Fund,Retail Marketing Funds,Client Co-Marketing Fund Boost,CoGTM,Datacenter,Client</value>
+            <value>Client Co-Marketing Fund,Service Provider Co-Marketing Fund,Data Center Co-Marketing Fund,Client Co-Marketing Fund Boost</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
@@ -81,7 +81,7 @@
         <criteriaItems>
             <field>RecordTypeId</field>
             <operation>equals</operation>
-            <value>Intel Partner Alliance,Service Provider Co-Marketing Fund,Retail Marketing Funds,Client Co-Marketing Fund Boost,CoGTM,Datacenter,Ecosystem Extension Fund,Client</value>
+            <value>Client Co-Marketing Fund,Service Provider Co-Marketing Fund,Data Center Co-Marketing Fund,Retail Marketing Funds,Client Co-Marketing Fund Boost</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
@@ -254,21 +254,6 @@
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
-        <fullName>PRM_Marketing_Campaigns_Admin</fullName>
-        <accessLevel>Edit</accessLevel>
-        <description>Rule to share IPA Marketing Campaigns to IPA Internal Intel Admins</description>
-        <label>IPA Marketing Campaigns Admin</label>
-        <sharedTo>
-            <group>IPA_All_Intel_Admin_Users</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>RecordTypeId</field>
-            <operation>equals</operation>
-            <value>IPA Marketing Campaign</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
         <fullName>SWS_6Sense_Campaign_Sharing</fullName>
         <accessLevel>Read</accessLevel>
         <description>Sharing rule to share record with 6Sense Integration User</description>
@@ -285,7 +270,7 @@
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>SWS_Marketo_Access</fullName>
-        <accessLevel>Edit</accessLevel>
+        <accessLevel>Read</accessLevel>
         <label>SWS Marketo Access</label>
         <sharedTo>
             <group>Marketo_Access_Group</group>
@@ -298,7 +283,7 @@
         <criteriaItems>
             <field>CreatedById</field>
             <operation>equals</operation>
-            <value>005Ho00000KMIKLIA5</value>
+            <value>005Df000009HLkVIAW</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
@@ -318,9 +303,9 @@
         <criteriaItems>
             <field>CreatedById</field>
             <operation>equals</operation>
-            <value>005Ho00000KMIKGIA5</value>
+            <value>005Df000009HLTtIAO</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingOwnerRules>
         <fullName>Core_VSCAPJ_Teleperformance_RW</fullName>

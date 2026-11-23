@@ -4,7 +4,7 @@
     <isDefaultPartition>false</isDefaultPartition>
     <masterLabel>PMPMarketplaceOrgCache</masterLabel>
     <platformCachePartitionTypes>
-        <allocatedCapacity>30</allocatedCapacity>
+        <allocatedCapacity>20</allocatedCapacity>
         <allocatedPartnerCapacity>0</allocatedPartnerCapacity>
         <allocatedPurchasedCapacity>0</allocatedPurchasedCapacity>
         <allocatedTrialCapacity>0</allocatedTrialCapacity>

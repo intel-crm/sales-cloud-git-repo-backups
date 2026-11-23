@@ -9,8 +9,8 @@
 * ****************************************************************************************************************************************/
 @isTest
 public class PMP_Chipsets_Attribute_Japanese_Test {
-    //IPA 2.0- US-TWC729-7980
-    /*@isTest
+    
+    @isTest
     public static void testProcAttrMet()
     {
     
@@ -23,12 +23,12 @@ public class PMP_Chipsets_Attribute_Japanese_Test {
         
         
         test.startTest();
-        PMP_ParseChipSet_JSON.languageCode = 'ja_JP';
+        PMP_ParseChipSet_JSON.strBaseKey = 'ja_JP';
         resultData = procAttrEng.processData('PMP_Chipsets_Attribute_Test');
         system.assertNotEquals(resultData,null);
         test.stopTest();
         
         
-    }*/
+    }
 
 }

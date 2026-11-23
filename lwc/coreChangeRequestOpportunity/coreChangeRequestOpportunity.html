@@ -1,0 +1,79 @@
+<template>
+    <!-- lightning button for open modal window -->
+    <lightning-button variant="brand"
+       label="Change Request"
+       title="Change Request?"
+       onclick={openModal}
+       class="slds-m-left_x-small">
+    </lightning-button>
+    <!--Use template if:true to display/hide popup based on isModalOpen value--> 
+    <template if:true={isModalOpen}>
+        <!-- Modal/Popup Box LWC starts here -->
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <!-- Modal/Popup Box LWC header here -->
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
+                        <lightning-icon icon-name="utility:close"
+                            alternative-text="close"
+                            variant="inverse"
+                            size="small" ></lightning-icon>
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Opportunity Change Request</h2>
+                </header>
+                <!-- Modal/Popup Box LWC body starts here -->
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <lightning-combobox name="Opportunity Line"
+                                        label="Opportunity Product"
+                                        value={value}
+                                        placeholder="Select Product"
+                                        options={options}
+                                        onchange={handleChange} 
+                                        required ></lightning-combobox>
+                <!--<template if:true={records}>-->
+                <!--<lightning-layout>-->
+                    <lightning-record-edit-form
+                        object-api-name="SBQQ__QuoteLine__c"
+                        record-id={quoteId}
+                        form-class="">
+                        <div class="slds-grid">
+                            <div class="slds-col slds-size_1-of-2">
+                                <lightning-input-field field-name="Pricing_Start_Date_dt__c"> </lightning-input-field>
+                                <lightning-input-field field-name="Pricing_New_Quantity_qty__c"> </lightning-input-field>
+                                <lightning-input-field field-name="core_cpq_internal_comments_txt__c"> </lightning-input-field>
+                                <!--<lightning-output-field field-name="OpportunityId"> </lightning-output-field>
+                                <lightning-input-field field-name="Product2Id"> </lightning-input-field>
+                                <lightning-input-field field-name="Core_QL_Start_Dt__c"> </lightning-input-field>
+                                <lightning-input-field field-name="Core_QL_Additional_Comments_Txt__c"> </lightning-input-field>-->
+                            </div>
+                            <div class="slds-col slds-size_1-of-2">
+                                <lightning-input-field field-name="Pricing_End_Date_dt__c"> </lightning-input-field>
+                                <!--<lightning-input type="date" name="QuoteStartDate" label="Quote Line Pricing End Date" required ></lightning-input>
+                                <lightning-output-field field-name="SBQQ__QuoteLine__c"> </lightning-output-field>
+                                <lightning-input-field field-name="Core_Status__c"> </lightning-input-field>
+                                <lightning-input-field field-name="Core_QL_End_Dt__c"> </lightning-input-field>
+                                <lightning-input-field field-name="UnitPrice"> </lightning-input-field> -->
+                                
+                            </div>
+                        </div> 
+                    <!--<lightning-layout-item class="slds-p-around_xx-small" size=6>
+                       
+                    </lightning-layout-item>
+                    <lightning-layout-item class="slds-p-around_xx-small" size=6>
+                        
+                    </lightning-layout-item>-->
+                </lightning-record-edit-form>
+            <!--</lightning-layout>-->
+          <!--  </template>-->
+        </div>
+                <!-- Modal/Popup Box LWC footer starts here -->
+                <footer class="slds-modal__footer">
+                    <button class="slds-button slds-button_neutral" onclick={closeModal} title="Cancel">Cancel</button>
+                    <button class="slds-button slds-button_brand" onclick={submitDetails} title="OK">Submit Change Request</button>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+ </template>

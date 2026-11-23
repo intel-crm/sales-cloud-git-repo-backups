@@ -99,11 +99,11 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Deal: Partner Scale-enable,Deal: Sell-through,Deal: Sell-to</value>
+            <value>Deal: Sell-through,Deal: Sell-to</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
-    <format>Summary</format>
+    <format>Matrix</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>Opportunity.Core_Pipeline_Heath__c</field>

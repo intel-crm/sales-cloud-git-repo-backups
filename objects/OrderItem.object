@@ -86,11 +86,14 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <type>Default</type>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Order_Product_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <formFactor>Large</formFactor>
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
@@ -103,8 +106,8 @@
         <fullName>Sales_Order_Product_Compact_Layout</fullName>
         <fields>OrderItemNumber</fields>
         <fields>Product2Id</fields>
-        <fields>UnitPrice</fields>
         <fields>Quantity</fields>
+        <fields>UnitPrice</fields>
         <fields>TotalPrice</fields>
         <label>Sales Order Product Compact Layout</label>
     </compactLayouts>
@@ -113,12 +116,20 @@
         <fullName>AvailableQuantity</fullName>
     </fields>
     <fields>
+        <fullName>Core_PSG_Maint_Exp_Dt__c</fullName>
+        <label>Maint Exp</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
         <fullName>Description</fullName>
-        <trackHistory>false</trackHistory>
+        <inlineHelpText>Line Special Instructions</inlineHelpText>
+        <trackHistory>true</trackHistory>
     </fields>
     <fields>
         <fullName>EndDate</fullName>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
     </fields>
     <fields>
         <fullName>ListPrice</fullName>
@@ -132,16 +143,6 @@
         <type>Lookup</type>
     </fields>
     <fields>
-        <fullName>PSG_Customer_frght_collect_account__c</fullName>
-        <externalId>false</externalId>
-        <label>Customer frght collect account</label>
-        <length>20</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Product2Id</fullName>
         <type>Lookup</type>
     </fields>
@@ -149,11 +150,29 @@
         <fullName>ProductCode</fullName>
     </fields>
     <fields>
+        <fullName>Product_Expiration_Duration__c</fullName>
+        <externalId>false</externalId>
+        <formula>Product2.Core_Product_Ext_Attribute_Id__r.Core_SW_Prod_Expiration_Duration_Nbr__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Product Expiration Duration (In Days)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Quantity</fullName>
         <trackHistory>true</trackHistory>
     </fields>
     <fields>
         <fullName>QuantityUnitOfMeasureId</fullName>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>QuoteLineItemId</fullName>
         <trackHistory>false</trackHistory>
         <type>Lookup</type>
     </fields>
@@ -273,7 +292,7 @@
         <inlineHelpText>The contract action where this order product is resulted from.</inlineHelpText>
         <label>Contract Action</label>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <type>Picklist</type>
         <valueSet>
             <restricted>true</restricted>
@@ -514,7 +533,7 @@
         <relationshipLabel>Order Products</relationshipLabel>
         <relationshipName>OrderProducts</relationshipName>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <type>Lookup</type>
     </fields>
     <fields>
@@ -868,16 +887,6 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Sales_Integration_Id_Txt__c</fullName>
-        <externalId>false</externalId>
-        <label>Integration Id</label>
-        <length>30</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Sales_IsRecalculated__c</fullName>
         <defaultValue>false</defaultValue>
         <label>IsRecalculated</label>
@@ -907,6 +916,17 @@
         <unique>true</unique>
     </fields>
     <fields>
+        <fullName>Sales_License_Vendor_Txt__c</fullName>
+        <description>This field populate the license Vendor for the Product added on Order Product</description>
+        <externalId>false</externalId>
+        <formula>TEXT(  Product2.Core_Product_Ext_Attribute_Id__r.Core_SW_Lic_Group_Id__r.Sales_License_Generator__r.Sales_License_Vendor__c  )</formula>
+        <label>License Vendor</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Sales_Net_Discount_Percent_Pct__c</fullName>
         <label>Net Discount Percent</label>
         <precision>5</precision>
@@ -929,7 +949,6 @@
         <fullName>Sales_OPN__c</fullName>
         <externalId>false</externalId>
         <formula>Product2.Core_OPN__c</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>OPN</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -1064,7 +1083,7 @@
     </fields>
     <fields>
         <fullName>ServiceDate</fullName>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
     </fields>
     <fields>
         <fullName>SubscriptionTerm</fullName>
@@ -1083,7 +1102,7 @@
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <type>Currency</type>
     </fields>
     <searchLayouts>
@@ -1094,6 +1113,7 @@
         <lookupDialogsAdditionalFields>TotalPrice</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>ODER_ITEM.START_DATE</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>ODER_ITEM.END_DATE</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>QUOTE_LI</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>OriginalOrderItem</lookupDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>Product2</lookupPhoneDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>Quantity</lookupPhoneDialogsAdditionalFields>
@@ -1102,6 +1122,7 @@
         <lookupPhoneDialogsAdditionalFields>TotalPrice</lookupPhoneDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>ODER_ITEM.START_DATE</lookupPhoneDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>ODER_ITEM.END_DATE</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>QUOTE_LI</lookupPhoneDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>OriginalOrderItem</lookupPhoneDialogsAdditionalFields>
         <searchResultsAdditionalFields>Product2</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>UnitPrice</searchResultsAdditionalFields>
@@ -1118,10 +1139,22 @@ ISPICKVAL(Product2.Core_Product_Ext_Attribute_Id__r.Core_Prod_Tool_Type_Nm__c , 
         <errorMessage>Contact is mandatory for corporate OPN.</errorMessage>
     </validationRules>
     <validationRules>
+        <fullName>Intel_product_for_ARM_license_Order</fullName>
+        <active>false</active>
+        <description>prevent addition of Intel product for ARM license Order</description>
+        <errorConditionFormula>IF(  
+	ISPICKVAL(Order.Sales_Order_Sub_Type__c, &quot;ARM standalone license order&quot;),
+	IF( ISPICKVAL( Product2.Core_Product_Ext_Attribute_Id__r.Core_Prod_Tool_Type_Nm__c 	, &quot;Software&quot;) ||
+	ISPICKVAL( Product2.Core_Product_Ext_Attribute_Id__r.Core_Prod_Tool_Type_Nm__c , &quot;IP&quot;) || (  Product2.Core_Item_Class_Nm__c == &quot;BD&quot;) 
+	,TRUE,FALSE),
+	FALSE
+)</errorConditionFormula>
+        <errorMessage>Cannot add intel product, for ARM License Order Type</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>No_Quote_Line_with_Product</fullName>
         <active>true</active>
         <errorConditionFormula>if(!ISBLANK( Product2Id ) &amp;&amp; !ISBLANK(Order.SBQQ__Quote__c) &amp;&amp; ISBLANK(SBQQ__QuoteLine__c), TRUE,FALSE)</errorConditionFormula>
-        <errorDisplayField>SBQQ__Activated__c</errorDisplayField>
         <errorMessage>Please use edit Order Product button to create Products from Quote</errorMessage>
     </validationRules>
     <validationRules>
@@ -1205,7 +1238,6 @@ ISBLANK(Sales_Contact__c),  !(ISPICKVAL( Order.Status , &apos;Activated&apos;)) 
         <active>true</active>
         <description>Validate if the Quantity is  equal to zero.</description>
         <errorConditionFormula>Quantity = 0</errorConditionFormula>
-        <errorDisplayField>SBQQ__Activated__c</errorDisplayField>
         <errorMessage>Quantity can&apos;t be zero.</errorMessage>
     </validationRules>
     <webLinks>

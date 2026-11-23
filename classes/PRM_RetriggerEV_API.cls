@@ -14,20 +14,14 @@ global class PRM_RetriggerEV_API {
     global static void doPost(String LoginID,String BizOrgType)
     {
         RestResponse res = RestContext.response;
-        //Id emailLogID;
+        Id emailLogID;
         try{
             Date endDate = Date.today().addDays(Integer.valueOf(System.label.PRM_RetriggerEV_NumberOfDays));
-            PRM_Retrigger_EV_Utility.Retrigger_EVWrapper obj = new PRM_Retrigger_EV_Utility.Retrigger_EVWrapper();
-            obj.endDate = endDate;
-        	obj.LoginID = LoginID;
-        	obj.BizOrgType = BizOrgType;
-        	obj.fromComponent = false;
-        	obj.regRequestId = null;
-            PRM_Retrigger_EV_Utility.retrigger_EV(obj); //Athr fixes
-            //PRM_Retrigger_EV_Utility.retrigger_EV(endDate,LoginID,BizOrgType,false,null);    
+            PRM_Retrigger_EV_Utility.retrigger_EV(endDate,LoginID,BizOrgType,false,null);    
             res.statusCode = 200;
             res.responseBody = Blob.valueOf('Email has been triggered');                            
         }catch(Exception e){
+            System.debug('ERROR 500!!!!');
             res.statusCode = 500;
             SalesforceError[] errs = new SalesforceError[]{ 
                 new SalesforceError('0005','Email Retrigger Failed')

@@ -1,14 +1,6 @@
 @isTest
 private class PMP_Partner_Locale_Outbound_Msg_Test {
-    @isTest
-    static void testIsWorking() {
-        Boolean result = PMP_Partner_Locale_Outbound_Msg.isWorking();
-        System.assertEquals(true, result);
-        Boolean result1 = PMP_Partner_ScheduleAutoTranslation.isWorking();
-        System.assertEquals(true, result1);
-    }
-//IPA2.0 - As part of TWC729-7977 commented the entire class
-/*
+    
     public class PartnerWrapMain{
         public String SourceLanguage {get; set;}
         public List<PartnerWrapper> partners {get; set;}
@@ -34,8 +26,7 @@ private class PMP_Partner_Locale_Outbound_Msg_Test {
         testpartnerWc.PMP_Company_Lifecycle_Status_Nm__c = 'Approved';
         testpartnerWc.PMP_Company_Information_Language_Nm__c='English';
         testpartnerWc.PMP_Translation_Lifecycle_Status_nm__c='Pending';
-        testpartnerWc.PMP_Partner_Program_nm__c='OEM';
-        testpartnerWc.PMP_Partner_Segment_Nm__c='Internet of Things and Embedded';
+        testpartnerWc.PMP_Partner_Program_nm__c='ISA';
        	insert testpartnerWc;
      
          PMP_Company__c testpartnerWc1 = new PMP_Company__c();
@@ -43,8 +34,7 @@ private class PMP_Partner_Locale_Outbound_Msg_Test {
         testpartnerWc1.PMP_Company_Lifecycle_Status_Nm__c = 'Admin Review';
         testpartnerWc1.PMP_Company_Information_Language_Nm__c='Simplified Chinese';
         testpartnerWc1.PMP_Translation_Lifecycle_Status_nm__c='Pending';
-        testpartnerWc1.PMP_Partner_Program_nm__c='OEM';
-        testpartnerWc1.PMP_Partner_Segment_Nm__c='Internet of Things and Embedded';
+        testpartnerWc1.PMP_Partner_Program_nm__c='ISA';
        	insert testpartnerWc1;
      
         
@@ -53,8 +43,7 @@ private class PMP_Partner_Locale_Outbound_Msg_Test {
         testpartnerWc2.PMP_Company_Lifecycle_Status_Nm__c = 'Admin Review';
         testpartnerWc2.PMP_Company_Information_Language_Nm__c='Japanese';
         testpartnerWc2.PMP_Translation_Lifecycle_Status_nm__c='Pending';
-        testpartnerWc2.PMP_Partner_Program_nm__c='OEM';
-      testpartnerWc2.PMP_Partner_Segment_Nm__c='Internet of Things and Embedded';
+        testpartnerWc2.PMP_Partner_Program_nm__c='ISA';
        	insert testpartnerWc2;
      
      PMP_Company_Translation__c trans=new PMP_Company_Translation__c();
@@ -113,33 +102,30 @@ private class PMP_Partner_Locale_Outbound_Msg_Test {
         
         outMsg.Core_Payload__c = JSON.serialize(ibpd);
         insert outMsg; 
-           
-    }
-    
-    @isTest static void schedulerTest(){ 
+     
+     
           boolean isSuccess = false;
        isSuccess = PMP_Partner_Locale_Outbound_Msg.insertPartnerOutboundMsg();
-       Test.startTest();
+       
         PMP_Partner_ScheduleAutoTranslation lsc = new PMP_Partner_ScheduleAutoTranslation();
         
         String sch = '0 0 0/6 1/1 * ? *';
         
         system.schedule('Market Place Locale Test', sch, lsc);
         
-        System.assert(isSuccess,'Failed'); 
-        Test.stopTest();
+        System.assert(isSuccess);  
+           
     }
     
-    @isTest static void insertPartnerOutboundMsgTest(){       
- 
+    @isTest static void insertPartnerOutboundMsg_Test(){       
+        List<PMP_Partner_Languages__mdt> languages=[select Locale_Name__c,Language_Code__c,PMP_Target_Locale_Nm__c from PMP_Partner_Languages__mdt];
         Test.startTest();
-        PMP_Partner_Locale_Outbound_Msg.insertPartnerOutboundMsg();    
-        List<PMP_Company__c> languages = [select id,name from PMP_Company__c LIMIT 10];
-         System.assertNotEquals(Null,languages,'Failed');
+        PMP_Partner_Locale_Outbound_Msg.insertPartnerOutboundMsg();        
         Test.stopTest();
+        
     } 
     
-    @isTest static void getLocaleOutboundMsgTest(){       
+    @isTest static void getLocaleOutboundMsg_Test(){       
         
         Test.startTest();
         PMP_Partner_Locale_Outbound_Msg.getLocaleOutboundMsg('en-US','English','zh-CN');  
@@ -147,10 +133,8 @@ private class PMP_Partner_Locale_Outbound_Msg_Test {
         PMP_Partner_Locale_Outbound_Msg.getLocaleOutboundMsg('JA','Japanese','en-US'); 
         PMP_Partner_Locale_Outbound_Msg.getLocaleOutboundMsg('zh-CN','Simplified Chinese','JA');  
         PMP_Partner_Locale_Outbound_Msg.getLocaleOutboundMsg('en-US','English','JA');
-        String response = PMP_Partner_Locale_Outbound_Msg.getLocaleOutboundMsg('JA','Japanese','zh-CN'); 
+        PMP_Partner_Locale_Outbound_Msg.getLocaleOutboundMsg('JA','Japanese','zh-CN'); 
         Test.stopTest();
-        //System.assertNotEquals(Null,response,'Failed');
-        System.assertNotEquals(Null, response);
-    }
-*/
+        
+    } 
 }

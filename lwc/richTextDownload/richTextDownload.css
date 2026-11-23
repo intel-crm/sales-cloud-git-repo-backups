@@ -1,0 +1,5 @@
+/* Center the spinner */
+.lightning-spinner {
+    margin: auto;
+    display: block;
+}

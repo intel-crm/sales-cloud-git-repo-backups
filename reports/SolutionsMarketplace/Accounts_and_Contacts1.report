@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <columns>
-        <field>Account$Name</field>
-    </columns>
-    <columns>
         <field>Account.Contacts$FirstName</field>
     </columns>
     <columns>
@@ -17,19 +14,44 @@
     </columns>
     <crossFilters>
         <criteriaItems>
-            <column>Is_Active__c</column>
+            <column>PRM_Partner_Benefit_Id__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>contains</operator>
+            <value>Enhanced</value>
+        </criteriaItems>
+        <operation>with</operation>
+        <primaryTableColumn>Account$Id</primaryTableColumn>
+        <relatedTable>PRM_AccountBenefitAssociation__c</relatedTable>
+        <relatedTableJoinColumn>PRM_Account_Id__c</relatedTableJoinColumn>
+    </crossFilters>
+    <crossFilters>
+        <criteriaItems>
+            <column>PMP_Is_Published_Ind__c</column>
             <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
             <value>1</value>
         </criteriaItems>
+        <criteriaItems>
+            <column>PMP_Company_Lifecycle_Status_Nm__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Draft</value>
+        </criteriaItems>
         <operation>with</operation>
         <primaryTableColumn>Account$Id</primaryTableColumn>
-        <relatedTable>PMP_OPID_MPI_Rel__c</relatedTable>
-        <relatedTableJoinColumn>PMP_One_Partner_ID__c</relatedTableJoinColumn>
+        <relatedTable>PMP_Company__c</relatedTable>
+        <relatedTableJoinColumn>PMP_Account_Id__c</relatedTableJoinColumn>
     </crossFilters>
     <description>Accounts and contacts with cross filters</description>
     <filter>
-        <booleanFilter>(1 OR 2) AND 3</booleanFilter>
+        <booleanFilter>1 OR 2 OR 3</booleanFilter>
+        <criteriaItems>
+            <column>Account.Contacts.Contact_Entitlements__r$Core_Entitlement_Id__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>IPA-MP User</value>
+        </criteriaItems>
         <criteriaItems>
             <column>Account.Contacts.Contact_Entitlements__r$Core_Entitlement_Id__c</column>
             <columnToColumn>false</columnToColumn>
@@ -42,21 +64,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Marketing Specialist</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Account$Core_IPA_One_Partner_Id__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value></value>
+            <value>Access and Entitlements for Marketplace</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>Account$Core_IPA_One_Partner_Id__c</field>
+        <field>Account$Name</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>Accounts and Contacts</name>

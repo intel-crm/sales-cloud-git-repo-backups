@@ -73,6 +73,7 @@ public without sharing class Core_OpptyMappingSupportServiceHandler {
         
         for(Core_Opportunity_Support_Mapping__c oppsuppmapp : triggerNew)
         {
+            //system.debug('Value '+oppsuppmapp.Core_Opportunity_Support_Is_Active__c);
             if (oppsuppmapp.Core_OSM_Record_Type__c=='CSA')
             {
                 if(keyForOSM_CSA.containskey(oppsuppmapp.Core_OSM_Record_Type__c+'_'+oppsuppmapp.Geo_Region__c) )
@@ -83,7 +84,8 @@ public without sharing class Core_OpptyMappingSupportServiceHandler {
                 }
                 if (duplicate_rec.containskey(oppsuppmapp.Core_OSM_Record_Type__c+'_'+oppsuppmapp.Geo_Region__c+'_'+oppsuppmapp.User__c) && oppsuppmapp.Core_Opportunity_Support_Is_Active__c == true)
                 {
-                    oppsuppmapp.addError(Core_CRM_Utility.getCRMLabel('CRM_duplicateOSMApprover'));
+                    oppsuppmapp.adderror('This approver is already added');
+                    //oppsuppmapp.addError(Core_CRM_Utility.getCRMLabel('CRM_duplicateOSMApprover'));
                 }
                 
             }
@@ -95,7 +97,8 @@ public without sharing class Core_OpptyMappingSupportServiceHandler {
                 }
                 if (duplicate_rec.containskey(oppsuppmapp.Core_OSM_Record_Type__c+'_'+oppsuppmapp.Geo_Region__c+'_'+oppsuppmapp.Core_BU__c+'_'+oppsuppmapp.User__c) && oppsuppmapp.Core_Opportunity_Support_Is_Active__c == true)
                 {
-                    oppsuppmapp.addError(Core_CRM_Utility.getCRMLabel('CRM_duplicateOSMApprover'));
+                    oppsuppmapp.adderror('This approver is already added');
+                    //oppsuppmapp.addError(Core_CRM_Utility.getCRMLabel('CRM_duplicateOSMApprover'));
                     
                 }
             }
@@ -105,18 +108,23 @@ public without sharing class Core_OpptyMappingSupportServiceHandler {
                 {
                     oppsuppid=keyForOSM_COE.get(oppsuppmapp.Core_OSM_Record_Type__c+'_'+oppsuppmapp.Core_Opp_Center_of_Excellence__c);                                                                                                                                                                                                                                                                                                  
                 }
+                //system.debug('line 71'+duplicate_rec);
+                //system.debug('line 72'+oppsuppmapp.Core_OSM_Record_Type__c+'_'+oppsuppmapp.Core_Opp_Center_of_Excellence__c+'_'+oppsuppmapp.User__c);
                 if (duplicate_rec.containskey(oppsuppmapp.Core_OSM_Record_Type__c+'_'+oppsuppmapp.Core_Opp_Center_of_Excellence__c+'_'+oppsuppmapp.User__c) && oppsuppmapp.Core_Opportunity_Support_Is_Active__c == true)
                 {
-                    oppsuppmapp.addError(Core_CRM_Utility.getCRMLabel('CRM_duplicateOSMApprover'));
+                    oppsuppmapp.adderror('This approver is already added');
+                    //oppsuppmapp.addError(Core_CRM_Utility.getCRMLabel('CRM_duplicateOSMApprover'));
                 }
             }
             if (oppsuppid!=null && oppsuppid.size()>=10 && oppsuppmapp.Core_OSM_Record_Type__c != 'COE' && oppsuppmapp.Core_Opportunity_Support_Is_Active__c == true)
             {
-                oppsuppmapp.addError(Core_CRM_Utility.getCRMLabel('CRM_nonCOEApproversLimitError'));
+                oppsuppmapp.adderror('No more than 10 approvers can be present');
+                //oppsuppmapp.addError(Core_CRM_Utility.getCRMLabel('CRM_nonCOEApproversLimitError'));
             }
             else if (oppsuppid!=null && oppsuppid.size()>=5 && oppsuppmapp.Core_OSM_Record_Type__c == 'COE' && oppsuppmapp.Core_Opportunity_Support_Is_Active__c == true)
             {
-                oppsuppmapp.addError(Core_CRM_Utility.getCRMLabel('CRM_COEapproversLimitError'));
+                oppsuppmapp.adderror('No more than 5 approvers can be present');
+                //oppsuppmapp.addError(Core_CRM_Utility.getCRMLabel('CRM_COEapproversLimitError'));
             }
         }
     }

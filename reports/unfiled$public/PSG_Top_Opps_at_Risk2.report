@@ -27,12 +27,6 @@
     <columns>
         <field>CREATED_DATE</field>
     </columns>
-    <columns>
-        <field>Opportunity.Core_Support_Requested__c</field>
-    </columns>
-    <columns>
-        <field>OpportunityLineItem.Core_Risk_Detail__c</field>
-    </columns>
     <filter>
         <criteriaItems>
             <column>Opportunity.Core_External_ID__c</column>
@@ -49,25 +43,18 @@
             <value>Qualify,Define,Develop,Design,Design Win,Production Win</value>
         </criteriaItems>
         <criteriaItems>
+            <column>OpportunityLineItem.Core_Risk_Category__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Support Requested</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>Opportunity.Core_External_ID__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
             <value>PSG_NA_TO_HOLD,PSG_TO_ON_HOLD</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OpportunityLineItem.Core_At_Risk__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>1</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OpportunityLineItem.Core_At_Risk_Status__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>New,In-Progress</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -79,7 +66,7 @@
     </params>
     <params>
         <name>open</name>
-        <value>all</value>
+        <value>open</value>
     </params>
     <params>
         <name>probability</name>

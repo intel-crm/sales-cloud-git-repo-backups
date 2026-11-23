@@ -14,10 +14,6 @@
         <name>PMP_Ancestor_Specification_Cd__c</name>
     </fields>
     <fields>
-        <label><!-- Boolean Indicator --></label>
-        <name>PMP_Boolean_Ind__c</name>
-    </fields>
-    <fields>
         <help><!-- Display Type --></help>
         <label><!-- Display Type --></label>
         <name>PMP_Display_Type_Nm__c</name>
@@ -63,34 +59,14 @@
         <name>PMP_Specification_Value_Cd__c</name>
     </fields>
     <fields>
-        <label><!-- Specification Value Chinese --></label>
-        <name>PMP_Specification_Value_Chinese_Nm__c</name>
-    </fields>
-    <fields>
         <label><!-- Specification Value --></label>
         <name>PMP_Specification_Value_Id__c</name>
         <relationshipLabel><!-- Partner Offering Specifications --></relationshipLabel>
     </fields>
     <fields>
-        <label><!-- Specification Value Image URL --></label>
-        <name>PMP_Specification_Value_Image_URL_Nm__c</name>
-    </fields>
-    <fields>
-        <label><!-- Specification Value Japanese --></label>
-        <name>PMP_Specification_Value_Japanese_Nm__c</name>
-    </fields>
-    <fields>
         <help><!-- Specification Value Id --></help>
         <label><!-- Specification Value PIM Id --></label>
         <name>PMP_Specification_Value_Nm__c</name>
-    </fields>
-    <fields>
-        <label><!-- Specification Value PIM Id --></label>
-        <name>PMP_Specification_Value_PIM_Id_Nm__c</name>
-    </fields>
-    <fields>
-        <label><!-- Specification Value Product URL --></label>
-        <name>PMP_Specification_Value_Product_URL_Nm__c</name>
     </fields>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

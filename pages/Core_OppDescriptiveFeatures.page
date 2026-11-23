@@ -91,6 +91,45 @@
         		<apex:pageblocksectionItem rendered="{!selectedPlatformBU='CCG'}"> 
             		Consumer Sales system <apex:inputText value="{!consumerSales1}" html-autocomplete="off" />
             	</apex:pageblocksectionItem>  
+                <apex:pageblocksectionItem rendered="{!selectedPlatformBU='PBS' && sPlatform = 'CUSTOM SILICON'}"> 
+            		Project Code Name <apex:inputText value="{!projectCodeName}" html-autocomplete="off" />
+            	</apex:pageblocksectionItem>
+                <apex:pageblocksectionItem rendered="{!selectedPlatformBU='PBS' && sPlatform = 'CUSTOM SILICON'}"> 
+            		Process Node <apex:inputText value="{!processNode}" html-autocomplete="off" />
+            	</apex:pageblocksectionItem>
+                <apex:pageblocksectionItem rendered="{!selectedPlatformBU='PBS' && sPlatform = 'CUSTOM SILICON'}"> 
+            		Exec Sponsor Contact <apex:inputText value="{!execSponsorContact}" html-autocomplete="off" />
+            	</apex:pageblocksectionItem>
+                <apex:pageblocksectionItem rendered="{!selectedPlatformBU='PBS' && sPlatform = 'CUSTOM SILICON'}"> 
+            		NRE $ <apex:inputText value="{!nreUSD}" html-autocomplete="off" />
+            	</apex:pageblocksectionItem>
+                <apex:pageblocksectionItem rendered="{!selectedPlatformBU='PBS' && sPlatform = 'CUSTOM SILICON'}">
+                    Project Schedule: RFx (MM/DD/YYYY) <apex:inputText value="{!projectScheduleRFx}" html-autocomplete="off" html-placeholder="MM/DD/YYYY" />
+                </apex:pageblocksectionItem>
+                <apex:pageblocksectionItem rendered="{!selectedPlatformBU='PBS' && sPlatform = 'CUSTOM SILICON'}"> 
+            		Project Schedule: TR Kick off (MM/DD/YYYY) <apex:inputText value="{!projectScheduleTRKickOff}" html-autocomplete="off" html-placeholder="MM/DD/YYYY"/>
+            	</apex:pageblocksectionItem>
+                <apex:pageblocksectionItem rendered="{!selectedPlatformBU='PBS' && sPlatform = 'CUSTOM SILICON'}"> 
+            		Project Schedule: Tape In/Out (MM/DD/YYYY) <apex:inputText value="{!projectScheduleTapeInOut}" html-autocomplete="off" html-placeholder="(MM/DD/YYYY)" />
+            	</apex:pageblocksectionItem>
+                <apex:pageblocksectionItem rendered="{!selectedPlatformBU='PBS' && sPlatform = 'CUSTOM SILICON'}"> 
+            		Project Schedule: Engineering Sample (MM/DD/YYYY) <apex:inputText value="{!projectScheduleEngSample}" html-autocomplete="off" html-placeholder="MM/DD/YYYY"/>
+            	</apex:pageblocksectionItem>
+                <apex:pageblocksectionItem rendered="{!selectedPlatformBU='PBS' && sPlatform = 'CUSTOM SILICON'}"> 
+            		Project Schedule: PRQ (MM/DD/YYYY) <apex:inputText value="{!projectSchedulePRQ}" html-autocomplete="off" html-placeholder="MM/DD/YYYY" />
+            	</apex:pageblocksectionItem>
+                <apex:pageblocksectionItem rendered="{!selectedPlatformBU='PBS' && sPlatform = 'CUSTOM SILICON'}"> 
+            		Custom Silicon Segment <apex:inputText value="{!customSiliconSegment}" html-autocomplete="off" />
+            	</apex:pageblocksectionItem>
+                <apex:pageblocksectionItem rendered="{!selectedPlatformBU='PBS' && sPlatform = 'CUSTOM SILICON'}"> 
+            		Custom Silicon Application <apex:inputText value="{!customSiliconApplication}" html-autocomplete="off" />
+            	</apex:pageblocksectionItem>
+                <apex:pageblocksectionItem rendered="{!selectedPlatformBU='PBS' && sPlatform = 'CUSTOM SILICON'}"> 
+            		CEG Contact <apex:inputText value="{!CEGContact}" html-autocomplete="off" />
+            	</apex:pageblocksectionItem>
+                <apex:pageblocksectionItem rendered="{!selectedPlatformBU='PBS' && sPlatform = 'CUSTOM SILICON'}"> 
+            		CEG Comments <apex:inputText value="{!CEGComments}" html-autocomplete="off" />
+            	</apex:pageblocksectionItem>
 
     </apex:pageBlockSection>
     <br/>

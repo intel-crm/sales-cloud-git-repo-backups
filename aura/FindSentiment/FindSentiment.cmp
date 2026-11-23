@@ -1,0 +1,31 @@
+<aura:component controller="EinsteinService" 
+                implements="force:appHostable,flexipage:availableForAllPageTypes" access="global" >
+    
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+    <aura:attribute name="isSpinner" type="boolean" default="false" />
+    <div style="background: #fdfdfd;">
+	<div class="slds-page-header">
+        <div class="slds-media">
+            <div class="slds-media__figure">
+                <span class="slds-icon_container slds-icon-standard-feedback">
+                    <lightning:icon iconName="standard:feedback" alternativeText="Find Sentiment" title="Find Sentiment" />
+                </span>
+            </div>
+            <div class="slds-media__body">
+                <h1 class="slds-page-header__title slds-truncate slds-align-middle">Salesforce Einstein Sentiment API</h1>
+                <p class="slds-text-body_small slds-line-height_reset">Try it out</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="slds-form-element slds-m-top_medium">
+        <label class="slds-form-element__label" for="txt">Enter the Text to Analyse</label>
+        <div class="slds-form-element__control slds-m-top_xx-small">
+            <textarea class="slds-input" id="txtTextToAnalyse"></textarea>
+        </div>
+    </div>
+    
+    <lightning:button variant="brand" class="slds-button slds-button_brand slds-m-top_medium" onclick="{!c.findSentimentResult}"
+            label="{!v.isSpinner ? 'Finding Sentiment...' : 'Find Sentiment'}" disabled="{!v.isSpinner}"></lightning:button>
+    </div>
+</aura:component>

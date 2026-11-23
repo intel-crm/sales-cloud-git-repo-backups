@@ -12,56 +12,47 @@
         },
         {
             "name": "Qualify",
-            //Commented and add the below line by Ankita Roy on 12-05-2020 for US664678 - Security Scan Fix 3 "content": "{!gridPage}gname=Opportunities&sh=0&ssb=0&sbb=1&fpf=StageName&fpv=Qualify",
-            "content": "{!JSENCODE(HTMLENCODE(gridPage))}gname=Opportunities&sh=0&ssb=0&sbb=1&fpf=StageName&fpv=Qualify",
+            "content": "{!gridPage}gname=Opportunities&sh=0&ssb=0&sbb=1&fpf=StageName&fpv=Qualify",
             "id": 1528103197484
         },
         {
             "name": "Define",
-            //Commented and add the below line by Ankita Roy on 12-05-2020 for US664678 - Security Scan Fix 3 "content": "{!gridPage}gname=Opportunities&sh=0&ssb=0&sbb=1&fpf=StageName&fpv=Define",
-            "content": "{!JSENCODE(HTMLENCODE(gridPage))}gname=Opportunities&sh=0&ssb=0&sbb=1&fpf=StageName&fpv=Define",
+            "content": "{!gridPage}gname=Opportunities&sh=0&ssb=0&sbb=1&fpf=StageName&fpv=Define",
             "id": 1528103468316
         },
         {
             "name": "Develop",
-            //Commented and add the below line by Ankita Roy on 12-05-2020 for US664678 - Security Scan Fix 3 "content": "{!gridPage}gname=Opportunities&sh=0&ssb=0&sbb=1&fpf=StageName&fpv=Develop",
-            "content": "{!JSENCODE(HTMLENCODE(gridPage))}gname=Opportunities&sh=0&ssb=0&sbb=1&fpf=StageName&fpv=Develop",
+            "content": "{!gridPage}gname=Opportunities&sh=0&ssb=0&sbb=1&fpf=StageName&fpv=Develop",
             "id": 1528103473939
         },
         {
             "name": "Design",
-            //Commented and add the below line by Ankita Roy on 12-05-2020 for US664678 - Security Scan Fix 3 "content": "{!gridPage}gname=Opportunities&sh=0&ssb=0&sbb=1&fpf=StageName&fpv=Design",
-            "content": "{!JSENCODE(HTMLENCODE(gridPage))}gname=Opportunities&sh=0&ssb=0&sbb=1&fpf=StageName&fpv=Design",
+            "content": "{!gridPage}gname=Opportunities&sh=0&ssb=0&sbb=1&fpf=StageName&fpv=Design",
             "id": 1528103477714
         },
         {
             "name": "Production Win",
-            //Commented and add the below line by Ankita Roy on 12-05-2020 for US664678 - Security Scan Fix 3 "content": "{!gridPage}gname=Opportunities&sh=0&ssb=0&sbb=1&fpf=StageName&fpv=Production Win",
-            "content": "{!JSENCODE(HTMLENCODE(gridPage))}gname=Opportunities&sh=0&ssb=0&sbb=1&fpf=StageName&fpv=Production Win",
+            "content": "{!gridPage}gname=Opportunities&sh=0&ssb=0&sbb=1&fpf=StageName&fpv=Production Win",
             "id": 1528103482996
         },
         {
             "name": "Lost",
-            //Commented and add the below line by Ankita Roy on 12-05-2020 for US664678 - Security Scan Fix 3 "content": "{!gridPage}gname=Opportunities&sh=0&ssb=0&sbb=1&fpf=StageName&fpv=Lost",
-            "content": "{!JSENCODE(HTMLENCODE(gridPage))}gname=Opportunities&sh=0&ssb=0&sbb=1&fpf=StageName&fpv=Lost",
+            "content": "{!gridPage}gname=Opportunities&sh=0&ssb=0&sbb=1&fpf=StageName&fpv=Lost",
             "id": 1528103489780
         },
         {
             "name": "Cancelled",
-            //Commented and add the below line by Ankita Roy on 12-05-2020 for US664678 - Security Scan Fix 3 "content": "{!gridPage}gname=Opportunities&sh=0&ssb=0&sbb=1&fpf=StageName&fpv=Cancelled",
-            "content": "{!JSENCODE(HTMLENCODE(gridPage))}gname=Opportunities&sh=0&ssb=0&sbb=1&fpf=StageName&fpv=Cancelled",
+            "content": "{!gridPage}gname=Opportunities&sh=0&ssb=0&sbb=1&fpf=StageName&fpv=Cancelled",
             "id": 1528103494267
         },
         {
             "name": "Production Lost",
-            //Commented and add the below line by Ankita Roy on 12-05-2020 for US664678 - Security Scan Fix 3 "content": "{!gridPage}gname=Opportunities&sh=0&ssb=0&sbb=1&fpf=StageName&fpv=Production Lost",
-            "content": "{!JSENCODE(HTMLENCODE(gridPage))}gname=Opportunities&sh=0&ssb=0&sbb=1&fpf=StageName&fpv=Production Lost",
+            "content": "{!gridPage}gname=Opportunities&sh=0&ssb=0&sbb=1&fpf=StageName&fpv=Production Lost",
             "id": 1528103498628
         },
         {
             "name": "Production Cancelled",
-            //Commented and add the below line by Ankita Roy on 12-05-2020 for US664678 - Security Scan Fix 3 "content": "{!gridPage}gname=Opportunities&sh=0&ssb=0&sbb=1&fpf=StageName&fpv=Production Cancelled",
-            "content": "{!JSENCODE(HTMLENCODE(gridPage))}gname=Opportunities&sh=0&ssb=0&sbb=1&fpf=StageName&fpv=Production Cancelled",
+            "content": "{!gridPage}gname=Opportunities&sh=0&ssb=0&sbb=1&fpf=StageName&fpv=Production Cancelled",
             "id": 1528103507756
         }
     ],

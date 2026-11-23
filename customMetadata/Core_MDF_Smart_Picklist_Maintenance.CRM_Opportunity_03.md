@@ -16,11 +16,11 @@
     </values>
     <values>
         <field>Core_MDF_Object_API_nm__c</field>
-        <value xsi:type="xsd:string">Opportunity</value>
+        <value xsi:type="xsd:string">Core_MDF_Custom_Picklist__c</value>
     </values>
     <values>
         <field>Core_MDF_Object_Label_nm__c</field>
-        <value xsi:type="xsd:string">Opportunity</value>
+        <value xsi:type="xsd:string">Co-Marketing Attributes</value>
     </values>
     <values>
         <field>Core_MDF_PermissionSetName_txt__c</field>
@@ -40,7 +40,7 @@
     </values>
     <values>
         <field>Core_MDF_RecordTypeAPIName_txt__c</field>
-        <value xsi:type="xsd:string">Core_Opportunity,Core_Solution_Group</value>
+        <value xsi:type="xsd:string">Core_Opportunity,Core_Solution_Group,Core_Deal_Opportunity,Core_Design_Opportunity</value>
     </values>
     <values>
         <field>Core_MDF_RecordType_TabName_txt__c</field>

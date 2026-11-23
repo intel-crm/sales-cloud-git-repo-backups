@@ -21,7 +21,7 @@ global  class Pricing_RestAPI_PickList {
    
     @HttpGet
     global static Pricing_RestAPI_Response doGet(){
-        RestRequest req = RestContext.request;
+ 
         //RestResponse response = RestContext.Response;
         Pricing_RestAPI_PicklistHandler handler = new Pricing_RestAPI_PicklistHandler(ENTRY_TIME, RESTAPI_NAME);    
         return handler.getPicklistValues();

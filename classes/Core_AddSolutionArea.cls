@@ -235,7 +235,6 @@ public with sharing class Core_AddSolutionArea {
         List<Opportunity> oppList = new List<Opportunity>();
         
         try{
-            
             List<Opportunity_Solution_Area__c> csList = [Select Id, Core_Solution_Areas__c,Core_Opportunity__c from Opportunity_Solution_Area__c where Core_Solution_Areas__c IN : solAreaIds AND Core_Opportunity__c  =: OppId ];
             for(Opportunity_Solution_Area__c os: csList){
                 setSolSelector.add(os.Core_Solution_Areas__c);
@@ -374,13 +373,12 @@ public with sharing class Core_AddSolutionArea {
             
             return TechnologyEnabled;
         } catch (Exception e) {
-        //System.debug('Exception: '+e.getMessage());
+        
         return null;}
     }
 
      @AuraEnabled(cacheable=true)
-    public static List<String> Get_Types_Industry_UseCase(){
-       
+    public static List<String> Get_Types_Industry_UseCase(){       
       List<String>  Industry_UseCase = new List<String>();
         try {
             List<Map<String,String>> selectOpt = new List<Map<String,String>>();

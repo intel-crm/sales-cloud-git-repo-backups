@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>Instar Center d.o.o. Partner User</description>
+    <description>Instar informatika Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>Instar Center d.o.o. Partner User</name>
+    <name>Instar informatika Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>InstarinformatikaPartnerManager</parentRole>
 </Role>

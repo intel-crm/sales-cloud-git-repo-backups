@@ -53,9 +53,6 @@
         <aggregateTypes>Sum</aggregateTypes>
         <field>TOTAL_PRICE</field>
     </columns>
-    <columns>
-        <field>PRODUCT_NAME</field>
-    </columns>
     <filter>
         <criteriaItems>
             <column>ROLLUP_DESCRIPTION</column>
@@ -77,13 +74,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>elise stanberg</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>equals</operator>
-            <value>DCG</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -117,8 +107,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2021-12-31</endDate>
+        <endDate>2020-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2021-01-01</startDate>
+        <startDate>2020-01-01</startDate>
     </timeFrameFilter>
 </Report>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>PMP Tiles Image Url</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>PMP Tiles Images Url</value>
+    </caseValues>
+    <fields>
+        <label><!-- Tile Id --></label>
+        <name>PMP_Tile_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Tile Type --></label>
+        <name>PMP_Tile_Type__c</name>
+        <picklistValues>
+            <masterLabel>Intel Partner Directory</masterLabel>
+            <translation><!-- Intel Partner Directory --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Product Categories</masterLabel>
+            <translation><!-- Product Categories --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Specialists Group</masterLabel>
+            <translation><!-- Specialists Group --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Url --></label>
+        <name>PMP_Url__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

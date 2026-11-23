@@ -1,0 +1,9 @@
+.containerWidth{
+    width:45% !important;
+}
+
+.errorClass{
+    background: red;
+    color: white;
+    padding: 1rem;
+}

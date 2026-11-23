@@ -4,7 +4,7 @@
     <encodingKey>UTF-8</encodingKey>
     <name>Deal Ready for Review Email Notification</name>
     <style>none</style>
-    <subject>New Deal Submitted Ready for Review</subject>
+    <subject>New Deal Submitted Ready for Review by PSAM</subject>
     <textOnly>Deal Registration Rejected
 
 Hello {!$Record.Core_Intel_Technical_Owner_Id__r.FirstName},

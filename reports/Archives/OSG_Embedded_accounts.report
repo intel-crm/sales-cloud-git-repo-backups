@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Account.Core_CIM_ID__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_ID__c</field>
+    </columns>
+    <columns>
+        <field>USERS.NAME</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>TYPE</field>
+    </columns>
+    <columns>
+        <field>DUE_DATE</field>
+    </columns>
+    <columns>
+        <field>LAST_UPDATE</field>
+    </columns>
+    <columns>
+        <field>ADDRESS1_STATE_CODE</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>USERS.NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Katarzyna Bielak,Lukasz Chrzanowski,Bartosz Filipowicz,Kamil Guzik,Ariel Hako,Alexey Kostadinov,Emmanuel Le Roux,Tymoteusz Olszewski,Dawid Studzinski,Aaron Voelker,Tatiana Bugrezova,Ekaterina Chernova,MARIA DEMACHEVA,Tatiana Fedotova,Yulia Kargapoltseva,Tatiana Kisel,Anastasia Kuzbit,Ekaterina Minkova,Ivan Pankov,Mikhail Polozov,Michael Shehata,Anna Shkurova,Daria Shutova,Ekaterina Smirnova,Oksana Smolina,Anastasia Smyslova,Olga Speranskaya,Ksenia Zabegalova,Natalia Zaitseva,Amr Adam,Corentin Bernard,Magdalena Dunska,Malgorzata J Dzul,Vladimir Fedorov,Michal Juszczak,Kathleen M Kallot,Roberto Lipari,Katarzyna Makowska,Dmitry Matchin,Gregoire Armand,Nick Christopher Day,Roksana Dylewska,Tobias Grimm,Marco Iacopini,Mariusz Jadwiszczok,Agnieszka Kania,Ewelina Kusmierczyk Flazinska,Marek Lesiewski,Marcin Majchrzak,Marta Muszynska,Nikolay Panov,Murat Simsek,Patrik Staaf,Dorian Witkowski</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>OSG Embedded accounts</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>AccountList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

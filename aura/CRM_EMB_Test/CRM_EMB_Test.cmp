@@ -1,0 +1,7 @@
+<aura:component implements="lightning:actionOverride,force:hasRecordId">
+	 <aura:attribute name="recordId" type="Id" />
+     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+      <c:cRM_ExecutiveMeetingBriefForm
+        recordId="{!v.recordId}"
+        onmodalclose="{!c.handleClose}"></c:cRM_ExecutiveMeetingBriefForm>
+</aura:component>

@@ -2,6 +2,11 @@
     <div class="background">
         <lightning-layout multiple-rows="true">
             <lightning-layout-item padding="around-small" size="12">
+                <template if:true={acctSearchStep}>
+                    <c-ucd-search-accounts onacctsearchnextclick={acctSearchNextClickHandler}
+                        acctformdetails={acctDetails}>
+                    </c-ucd-search-accounts>
+                </template>
                 <template if:true={acctCreateStep}>
                     <c-ucd-create-account onacctcreatebackclick={acctCreateBackClickHandler}
                         acctformdetails={acctDetails}>

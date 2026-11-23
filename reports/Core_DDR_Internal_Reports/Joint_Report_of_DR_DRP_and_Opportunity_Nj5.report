@@ -28,7 +28,7 @@
         <field>Opportunity$Id</field>
     </columns>
     <columns>
-        <field>Opportunity$Account.Name</field>
+        <field>Opportunity$Account</field>
     </columns>
     <columns>
         <field>Opportunity$Core_Opportunity_Owner__c</field>
@@ -37,29 +37,7 @@
         <field>Opportunity$Core_Commissionable__c</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Opportunity$Core_Product_Count__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Opportunity$Amount</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Opportunity$ExpectedRevenue</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Opportunity$TotalOpportunityQuantity</field>
-    </columns>
-    <columns>
-        <field>Opportunity$Account.Core_Account_Primary_Coverage__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity$Core_First_Customer_Ship_Date__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Design_Registrations__r$Name</field>
+        <field>Opportunity$Core_Design_Registration_Id__c</field>
     </columns>
     <columns>
         <field>Opportunity.Design_Registrations__r$Core_Partner_Account_Region_Cd__c</field>
@@ -74,7 +52,7 @@
         <field>Opportunity.Design_Registrations__r$Core_Design_Registration_Status_Nm__c</field>
     </columns>
     <columns>
-        <field>Opportunity.Design_Registrations__r$Core_Partner_Account_Id__c.Name</field>
+        <field>Opportunity.Design_Registrations__r$Core_Partner_Account_Id__c</field>
     </columns>
     <columns>
         <field>Opportunity.Design_Registrations__r$Core_Design_Registration_Nm__c</field>
@@ -84,33 +62,6 @@
     </columns>
     <columns>
         <field>Opportunity.Design_Registrations__r$CreatedDate</field>
-    </columns>
-    <columns>
-        <field>Opportunity$CloseDate</field>
-    </columns>
-    <columns>
-        <field>Opportunity$CreatedDate</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Design_Registrations__r$Core_Internal_Comment_Txt__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Design_Registrations__r$Core_End_Customer_Account_Id__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Design_Registrations__r$Core_End_Customer_Nm__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Design_Registrations__r$Core_Owner_Nm__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Design_Registrations__r$PCC_End_Customer_Country__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Design_Registrations__r$DDR_Partner_FAE_Email__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Design_Registrations__r$Core_Military_Aerospace_Gvrnmt_Use_Ind__c</field>
     </columns>
     <columns>
         <field>Opportunity.Design_Registrations__r$Core_First_Customer_Ship_Dt__c</field>
@@ -131,30 +82,33 @@
         <field>Opportunity.Design_Registrations__r.Design_Registration_Line_Items__r$Core_Partner_Tracking_Cd__c</field>
     </columns>
     <columns>
-        <field>Opportunity.Design_Registrations__r.Design_Registration_Line_Items__r$Core_Product_Id__c.Name</field>
+        <field>Opportunity.Design_Registrations__r.Design_Registration_Line_Items__r$Core_Product_Id__c</field>
     </columns>
     <columns>
         <field>Opportunity.Design_Registrations__r.Design_Registration_Line_Items__r$Core_Opportunity_Product_Id__c</field>
     </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Opportunity.Design_Registrations__r.Design_Registration_Line_Items__r$Core_Full_Year_Qty__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Design_Registrations__r$Workflow_Status__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Opportunity.Design_Registrations__r.Design_Registration_Line_Items__r$Core_Full_Year_Value_Amt__c</field>
-    </columns>
-    <description>Show Design Registration date into Opportunity Report</description>
+    <description>show Design Registration Product Line ID, Partner Tracking #, DR Product Status in the Opportunity report</description>
     <filter>
+        <criteriaItems>
+            <column>Opportunity.Design_Registrations__r$PCC_Registration_Type__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Design Registration</value>
+        </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Design_Registrations__r$Core_Product_Group_Nm__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>notEqual</operator>
             <value>FPGA/Power</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Design_Registrations__r$Core_Design_Registration_Status_Nm__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Approved</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity$Core_Opportunity_Coverage_Nm__c</column>

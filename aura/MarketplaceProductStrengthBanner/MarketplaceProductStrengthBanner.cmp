@@ -1,10 +1,10 @@
-<aura:component ></aura:component>
-<!-- IPA2.0 + US TWC4497-1631 -->
-    <!-- <aura:attribute name="strength" type="Integer" default="3" description="1 - Could be better, 2 - Room to improve, 3 - Good to go" />
-    <aura:attribute name="waysToImprove" type="Object[]" description="{ label: '', formDataApiName: '' }  (TODO) use formDataApiName to link to a field in the form" /> -->
+<aura:component >
+
+    <aura:attribute name="strength" type="Integer" default="3" description="1 - Could be better, 2 - Room to improve, 3 - Good to go" />
+    <aura:attribute name="waysToImprove" type="Object[]" description="{ label: '', formDataApiName: '' } -- (TODO) use formDataApiName to link to a field in the form" />
     
     <!-- these are set with custom labels based on the current strength setting -->
-    <!-- <aura:attribute name="headingPhrase" type="String" />
+    <aura:attribute name="headingPhrase" type="String" />
     <aura:attribute name="description" type="String" />
     <aura:attribute name="subheading" type="String" />
 
@@ -18,6 +18,7 @@
     <div class="slds-p-vertical_large slds-m-bottom_large">
         <div class="{!join(' ', 'container', 'flexCenter', 'strength-' + v.strength)}">
             <div class="strengthIconContainer slds-text-align_center slds-m-right_large">
+                <!-- <lightning:icon class="strengthIcon" iconName="custom:custom109" /> -->
                 <div class="strengthIcon">
                     <img src="{!$Resource.PMP_Resources + '/images/gauge/Gauge0' + v.strength + '_Isolated_2x.png'}"/>
                 </div>
@@ -48,4 +49,4 @@
         </div>
     </div>
 
-</aura:component> -->
+</aura:component>

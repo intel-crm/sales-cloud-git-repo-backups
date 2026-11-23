@@ -9,6 +9,31 @@
         <masterLabel># of Fall-Outs</masterLabel>
         <scale>0</scale>
     </aggregates>
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <axisBinding>y</axisBinding>
+            <column>RowCount</column>
+        </chartSummaries>
+        <chartType>Donut</chartType>
+        <enableHoverLabels>false</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>CDF1</groupingColumn>
+        <legendPosition>Right</legendPosition>
+        <location>CHART_BOTTOM</location>
+        <showAxisLabels>true</showAxisLabels>
+        <showPercentage>true</showPercentage>
+        <showTotal>true</showTotal>
+        <showValues>true</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
     <columns>
         <field>SBQQ__QuoteLine__c$Name</field>
     </columns>
@@ -19,8 +44,21 @@
         <field>SBQQ__QuoteLine__c$SBQQ__Quote__c.core_cpq_navigate_to_iqr__c</field>
     </columns>
     <columns>
+        <field>SBQQ__QuoteLine__c$core_cpq_PRID__c</field>
+    </columns>
+    <columns>
         <field>SBQQ__QuoteLine__c$core_cpq_reviewer__c</field>
     </columns>
+    <columns>
+        <field>SBQQ__QuoteLine__c$core_cpq_PRID__c.core_cpq_prid_reviewer__c.Name</field>
+    </columns>
+    <customDetailFormulas>
+        <calculatedFormula>IF(SBQQ__QuoteLine__c.core_cpq_reviewer__c.Name = SBQQ__QuoteLine__c.core_cpq_PRID__c.core_cpq_prid_reviewer__c.Name__lookup , &quot;Yes&quot;, &quot;No&quot;)</calculatedFormula>
+        <dataType>Text</dataType>
+        <developerName>CDF1</developerName>
+        <label>PRID Reviewer Matched</label>
+        <scale>2</scale>
+    </customDetailFormulas>
     <filter>
         <criteriaItems>
             <column>SBQQ__QuoteLine__c$Pricing_Quote_Program_Nm__c</column>
@@ -50,9 +88,35 @@
             <operator>equals</operator>
             <value>Design Win,Transfer Pricing,Contract Pricing</value>
         </criteriaItems>
+        <criteriaItems>
+            <column>SBQQ__QuoteLine__c$core_cpq_PRID__c.Id</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value></value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>SBQQ__QuoteLine__c$core_cpq_prid_active_cb__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>SBQQ__QuoteLine__c$core_cpq_PRID__c.core_cpq_prid_reviewer__c.Name</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value></value>
+        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>CDF1</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
     <name>PSG PRID Reviewer mismatch Report</name>
     <params>
         <name>co</name>

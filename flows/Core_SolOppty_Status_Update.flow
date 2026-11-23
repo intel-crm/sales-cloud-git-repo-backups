@@ -6,7 +6,7 @@
         <name>Add_in_the_list</name>
         <label>Add in the list</label>
         <locationX>138</locationX>
-        <locationY>755</locationY>
+        <locationY>863</locationY>
         <assignmentItems>
             <assignToReference>StatusStore</assignToReference>
             <operator>Add</operator>
@@ -22,7 +22,7 @@
         <name>Assignment_of_child_opptys_status</name>
         <label>Assignment of child opptys status</label>
         <locationX>138</locationX>
-        <locationY>647</locationY>
+        <locationY>755</locationY>
         <assignmentItems>
             <assignToReference>All_related_opptys.Core_Status_Update__c</assignToReference>
             <operator>Assign</operator>
@@ -38,7 +38,7 @@
         <name>IsChildOpptyFound</name>
         <label>IsChildOpptyFound</label>
         <locationX>182</locationX>
-        <locationY>431</locationY>
+        <locationY>539</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>yes</name>
@@ -73,7 +73,7 @@
         <name>All_related_opptys</name>
         <label>All related opptys</label>
         <locationX>50</locationX>
-        <locationY>539</locationY>
+        <locationY>647</locationY>
         <collectionReference>Get_Related_opptys</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
@@ -106,7 +106,7 @@
         <name>Get_Related_opptys</name>
         <label>Get Related opptys</label>
         <locationX>182</locationX>
-        <locationY>323</locationY>
+        <locationY>431</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>IsChildOpptyFound</targetReference>
@@ -124,17 +124,33 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordUpdates>
+        <name>stamping_dates</name>
+        <label>stamping dates</label>
+        <locationX>182</locationX>
+        <locationY>323</locationY>
+        <connector>
+            <targetReference>Get_Related_opptys</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_Status_Update__c</field>
+            <value>
+                <elementReference>formatted_Status</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
         <name>Update_Child_Opptys_of_Solution_Group</name>
         <label>Update Child Opptys of Solution Group</label>
         <locationX>50</locationX>
-        <locationY>947</locationY>
+        <locationY>1055</locationY>
         <inputReference>StatusStore</inputReference>
     </recordUpdates>
     <start>
         <locationX>56</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>Get_Related_opptys</targetReference>
+            <targetReference>stamping_dates</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -162,7 +178,7 @@
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Active</status>
+    <status>Draft</status>
     <variables>
         <name>NofChildOpptys</name>
         <dataType>Number</dataType>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Opp Support team user addition and remove notify</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Opportunity Team Add and remove</name>
+    <style>none</style>
+    <subject>User added to Opportunity team</subject>
+    <textOnly>{!Core_Opportunity_Support_Team__c.Core_Opportunity_Support_Team_Member__r.FirstName} {!Core_Opportunity_Support_Team__c.Core_Opportunity_Support_Team_Member__r.LastName} added to the Team for the following Opportunity</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

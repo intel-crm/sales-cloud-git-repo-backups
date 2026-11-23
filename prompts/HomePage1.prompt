@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>HomePage1</masterLabel>
+    <promptVersions>
+        <body>&lt;p&gt;Here is the link &quot;&lt;strong&gt;Search SMG Sale﻿s Connect&quot; &lt;/strong&gt;on the home page&lt;/p&gt;</body>
+        <customApplication>standard__LightningSales</customApplication>
+        <delayDays>10</delayDays>
+        <dismissButtonLabel>Dismiss</dismissButtonLabel>
+        <displayType>Targeted</displayType>
+        <isPublished>true</isPublished>
+        <masterLabel>HomePage1 Step 1</masterLabel>
+        <publishedDate>2023-08-07</publishedDate>
+        <referenceElementContext>{&quot;scope&quot;:{&quot;attributes&quot;:{&quot;id&quot;:&quot;flexipage_richText4&quot;}},&quot;version&quot;:2}</referenceElementContext>
+        <shouldDisplayActionButton>false</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>false</shouldIgnoreGlobalDelay>
+        <startDate>2023-07-16</startDate>
+        <stepNumber>1</stepNumber>
+        <targetPageKey1>home</targetPageKey1>
+        <targetPageType>standard__namedPage</targetPageType>
+        <timesToDisplay>30</timesToDisplay>
+        <title>Search SMG Sales Connect</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+    <promptVersions>
+        <body>&lt;p&gt;Design Registrations in the New Tab added to the Sales Home Page&lt;/p&gt;</body>
+        <customApplication>standard__LightningSales</customApplication>
+        <dismissButtonLabel>Next</dismissButtonLabel>
+        <displayType>Targeted</displayType>
+        <isPublished>false</isPublished>
+        <masterLabel>HomePage1 Step 2</masterLabel>
+        <referenceElementContext>{&quot;scope&quot;:{&quot;attributes&quot;:{&quot;id&quot;:&quot;sfdc:TabDefinition.Core_Design_Registration__c&quot;}},&quot;version&quot;:2}</referenceElementContext>
+        <shouldDisplayActionButton>false</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>false</shouldIgnoreGlobalDelay>
+        <stepNumber>2</stepNumber>
+        <targetPageKey1>home</targetPageKey1>
+        <targetPageType>standard__namedPage</targetPageType>
+        <title>Design Registrations</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+    <promptVersions>
+        <body>&lt;p&gt;After WW36 Release ,Data Ops People will not be able to see &quot;Items to Approve&quot; section on Home Page&lt;/p&gt;</body>
+        <customApplication>standard__LightningSales</customApplication>
+        <dismissButtonLabel>Next</dismissButtonLabel>
+        <displayType>Targeted</displayType>
+        <isPublished>false</isPublished>
+        <masterLabel>HomePage1 Step 3</masterLabel>
+        <referenceElementContext>{&quot;scope&quot;:{&quot;attributes&quot;:{&quot;id&quot;:&quot;runtime_approval_process_pendingApprovalCard&quot;}},&quot;version&quot;:2}</referenceElementContext>
+        <shouldDisplayActionButton>false</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>false</shouldIgnoreGlobalDelay>
+        <stepNumber>3</stepNumber>
+        <targetPageKey1>home</targetPageKey1>
+        <targetPageType>standard__namedPage</targetPageType>
+        <title>Items to Approve</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+    <promptVersions>
+        <body>&lt;p&gt;Search SMG Connect Its New&lt;/p&gt;</body>
+        <customApplication>standard__LightningSales</customApplication>
+        <dismissButtonLabel>Dismiss</dismissButtonLabel>
+        <displayType>Targeted</displayType>
+        <elementRelativePosition>RightCenter</elementRelativePosition>
+        <isPublished>false</isPublished>
+        <masterLabel>HomePage1 Step 4</masterLabel>
+        <referenceElementContext>{&quot;scope&quot;:{&quot;attributes&quot;:{&quot;id&quot;:&quot;flexipage_richText&quot;}},&quot;version&quot;:2}</referenceElementContext>
+        <shouldDisplayActionButton>false</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>false</shouldIgnoreGlobalDelay>
+        <stepNumber>4</stepNumber>
+        <targetPageKey1>home</targetPageKey1>
+        <targetPageType>standard__namedPage</targetPageType>
+        <title>Search SMG Connect</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+</Prompt>

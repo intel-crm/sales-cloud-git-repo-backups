@@ -15,8 +15,8 @@ public class PMP_Geo_Attribute_English implements PMP_ProcessTaxonomyJSON{
         List<Database.UpsertResult> totalRecordsJunc = new List<Database.UpsertResult>();
         List<Database.UpsertResult> totalResults = new List<Database.UpsertResult>();
         
-        totalRecords = PMP_ParseGeoRegionsJSON.parseGeoRegionsJSON(fileName);
-        totalRecordsJunc = PMP_GeoRegion_CreateJunctionData.createAssociationRecords();
+        totalRecords = PMP_ParseGeoRegionsJSON.ParseGeoRegionsJSON(fileName);
+        totalRecordsJunc = PMP_GeoRegion_CreateJunctionData.PMP_GeoRegion_CreateJunctionDataMet();
         
         if(totalRecords.size()>0)
         {

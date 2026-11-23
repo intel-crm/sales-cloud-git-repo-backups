@@ -32,7 +32,7 @@
 			action.setParams({
 				objectType: 'Pricing_Performance_Metric__c',
 				selectedField: 'Pricing_Performance_Metric_Nm__c',
-			});			
+			});
 			action.setCallback(this, function (response) {
 				const pklist = response.getReturnValue();
 				component.set('v.picklistValues', pklist);
@@ -48,13 +48,13 @@
 
 			const checkHasUpdateAccess = component.get('c.isUpdateable');
 			checkHasUpdateAccess.setCallback(this, function (response) {
-				component.set('v.hasUpdateAccess', response.getReturnValue());
+				component.set('v.hasUpdateAccessPf', response.getReturnValue());
 			});
 			$A.enqueueAction(checkHasUpdateAccess);
 
 			const checkHasDeleteAccess = component.get('c.isDeletable');
 			checkHasDeleteAccess.setCallback(this, function (response) {
-				component.set('v.hasDeleteAccess', response.getReturnValue());
+				component.set('v.hasDeleteAccessPf', response.getReturnValue());
 			});
 			$A.enqueueAction(checkHasDeleteAccess);
 		}
@@ -94,15 +94,15 @@
 			existingRecords.splice(indexPosition, 1);
 			component.set('v.records', existingRecords);
 			const toastEvent = $A.get('e.force:showToast');
-						toastEvent.setParams({
-							title: 'Message',
-							message: 'Record deleted successfully',
-							duration: ' 3000',
-							key: 'info_alt',
-							type: 'success',
-							mode: 'pester',
-						});
-						toastEvent.fire();
+			toastEvent.setParams({
+				title: 'Message',
+				message: 'Record deleted successfully',
+				duration: ' 3000',
+				key: 'info_alt',
+				type: 'success',
+				mode: 'pester',
+			});
+			toastEvent.fire();
 		}
 		if (component.get('v.records').length > 0) {
 			component.set('v.saveButtonShow', true);
@@ -118,7 +118,7 @@
 		const validRecords = [];
 		if (helper.validateRequired(component, event)) {
 			for (let i = 0; i < existingRecords.length; i++) {
-					validRecords.push(existingRecords[i]);
+				validRecords.push(existingRecords[i]);
 			}
 			component.set('v.records', validRecords);
 			component.set('v.rows', validRecords.length);
@@ -160,5 +160,7 @@
 				$A.enqueueAction(action);
 			}
 		}
+		//$A.get("e.force:refreshView").fire();
 	},
+
 });

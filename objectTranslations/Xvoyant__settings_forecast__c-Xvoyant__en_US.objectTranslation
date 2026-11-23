@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>settings_forecast</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>settings_forecast</value>
+    </caseValues>
+    <fields>
+        <label><!-- Days between Stage Win Rate recalc --></label>
+        <name>Xvoyant__daysBetweenStageWRRecalc__c</name>
+    </fields>
+    <fields>
+        <label><!-- Include Opp Threshold --></label>
+        <name>Xvoyant__includeOppThreshold__c</name>
+    </fields>
+    <fields>
+        <label><!-- useSFProbability --></label>
+        <name>Xvoyant__useSFProbability__c</name>
+    </fields>
+    <fields>
+        <label><!-- # of users per Stage Win rate recalc --></label>
+        <name>Xvoyant__usersPerStageWRRecalc__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

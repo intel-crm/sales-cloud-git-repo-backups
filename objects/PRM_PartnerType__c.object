@@ -234,6 +234,11 @@
         <type>Text</type>
     </nameField>
     <pluralLabel>Partner Types</pluralLabel>
+    <recordTypes>
+        <fullName>Standard</fullName>
+        <active>true</active>
+        <label>Standard</label>
+    </recordTypes>
     <searchLayouts>
         <searchResultsAdditionalFields>PRM_PartneryTypeCode__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>PRM_Role_Name__c</searchResultsAdditionalFields>

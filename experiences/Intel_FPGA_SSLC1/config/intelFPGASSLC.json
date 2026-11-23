@@ -1,12 +1,17 @@
 {
   "forgotPasswordRouteId" : "72e79d11-c61c-4f19-a356-45c550d7c04d",
-  "isAvailableToGuests" : false,
+  "isAvailableToGuests" : true,
   "isFilteredComponentsView" : false,
   "isProgressiveRenderingEnabled" : true,
   "loginAppPageId" : "51c1d074-9f90-4dd9-ac32-69dac1f061f2",
   "mainAppPageId" : "6b36c665-0609-49d0-9746-033feed642b2",
   "preferredDomain" : "none",
   "selfRegistrationRouteId" : "57de924b-3d15-4b4c-b4a2-194ee6349857",
+  "trustedSitesForIFrame" : [ {
+    "id" : "3ee5a4fc-9f9f-4eef-8631-e0d8387e792f",
+    "trustedDomainsForInlineFrames" : [ ],
+    "type" : "trustedSitesForIFrame"
+  } ],
   "trustedSitesForScript" : [ {
     "id" : "f1bfc225-977c-4718-a6d6-e8625d2af651",
     "isActive" : true,
@@ -24,6 +29,12 @@
     "isActive" : true,
     "trustedSiteName" : "Intel",
     "trustedSiteUrl" : "https://www.intel.com/ighf/50recode.2/js/headerchooser.js",
+    "type" : "trustedSitesForScripts"
+  }, {
+    "id" : "c65916f4-89ed-4d54-81f5-f3c55859d699",
+    "isActive" : true,
+    "trustedSiteName" : "ChatBot",
+    "trustedSiteUrl" : "https://d.la2-c1cs-ia6.salesforceliveagent.com/chat/rest/",
     "type" : "trustedSitesForScripts"
   }, {
     "id" : "b03ba326-90d0-4123-85a7-5fdb6ec7c7d5",
@@ -50,34 +61,22 @@
     "trustedSiteUrl" : "https://www.intel.co.cn",
     "type" : "trustedSitesForScripts"
   }, {
-    "id" : "3f04a187-1a54-405b-a08f-d574a2489f52",
+    "id" : "2ab0f3da-2f64-4fc0-b13a-1901527804ab",
     "isActive" : true,
-    "trustedSiteName" : "ChatBot",
-    "trustedSiteUrl" : "https://d.la3-c1-ia7.salesforceliveagent.com/chat/rest/",
+    "trustedSiteName" : "https://service.force.com/embeddedservic",
+    "trustedSiteUrl" : "https://service.force.com/embeddedservice/5.0/esw.min.js",
     "type" : "trustedSitesForScripts"
   }, {
-    "id" : "815af4d2-3ac6-4ff0-96b7-0eec84ecc3d3",
+    "id" : "7805b08d-8fa5-4f0e-a1b7-a48891cdf571",
     "isActive" : true,
-    "trustedSiteName" : "chatbotjs",
-    "trustedSiteUrl" : "https://c.la3-c1-ia7.salesforceliveagent.com/content/g/js/60.0/deployment.js",
+    "trustedSiteName" : "sfederationIntel",
+    "trustedSiteUrl" : "https://sfederation.intel.com",
     "type" : "trustedSitesForScripts"
   }, {
-    "id" : "1352276d-f37d-45cc-92af-3d6b0f8521e8",
+    "id" : "63e4d0b8-25a0-4ff1-b20f-aa2fda5171b6",
     "isActive" : true,
-    "trustedSiteName" : "csp",
-    "trustedSiteUrl" : "https://d.la3-c1-ia6.salesforceliveagent.com/",
-    "type" : "trustedSitesForScripts"
-  }, {
-    "id" : "90d4c113-ad3c-42eb-b971-38c37865b851",
-    "isActive" : true,
-    "trustedSiteName" : "Chatbotia6",
-    "trustedSiteUrl" : "https://d.la3-c1-ia6.salesforceliveagent.com/chat/rest/",
-    "type" : "trustedSitesForScripts"
-  }, {
-    "id" : "ce035e76-cdde-436b-94c8-428f857c9572",
-    "isActive" : true,
-    "trustedSiteName" : "chatbotia6js",
-    "trustedSiteUrl" : "https://d.la3-c1-ia6.salesforceliveagent.com/content/g/js/60.0/deployment.js",
+    "trustedSiteName" : "https://c.la4-c1cs-phx.salesforceliveage",
+    "trustedSiteUrl" : "https://c.la4-c1cs-phx.salesforceliveagent.com/content/g/js/55.0/deployment.js",
     "type" : "trustedSitesForScripts"
   } ],
   "type" : "site"

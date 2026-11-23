@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>PSG_Internal_Edit_Sales_License_Generator_Sharing</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>PSG Internal Edit Sales License Generator Sharing</label>
+        <sharedTo>
+            <group>AGS_PSG_Internal_Users_ReadEdit</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>CreatedById</field>
+            <operation>notEqual</operation>
+            <value></value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PSG_Internal_Read_Sales_License_Generator_Sharing</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>PSG Internal Read Sales License Generator Sharing</label>
+        <sharedTo>
+            <group>AGS_PSG_Internal_Users_ReadOnly</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>CreatedById</field>
+            <operation>notEqual</operation>
+            <value></value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>

@@ -198,28 +198,6 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Core_Contact_WWID__c</fullName>
-        <externalId>false</externalId>
-        <label>Contact WWID</label>
-        <length>55</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_GEC_Blocked_Reason__c</fullName>
-        <externalId>false</externalId>
-        <label>GEC Blocked Reason</label>
-        <length>55</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_GEC_Blocked__c</fullName>
         <defaultValue>false</defaultValue>
         <label>GEC Blocked</label>
@@ -277,11 +255,6 @@
                     <default>false</default>
                     <label>Failed</label>
                 </value>
-                <value>
-                    <fullName>New</fullName>
-                    <default>false</default>
-                    <label>New</label>
-                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -295,6 +268,7 @@
         <columns>Core_Response__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
+        <language>en_US</language>
     </listViews>
     <nameField>
         <displayFormat>GEC-{0000000}</displayFormat>

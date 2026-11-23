@@ -1,0 +1,63 @@
+<template>
+        <!-- Modal/Popup Box LWC starts here -->
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <!-- Modal/Popup Box LWC header here -->
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
+                        <lightning-icon icon-name="utility:close"
+                            alternative-text="close"
+                            variant="inverse"
+                            size="small" ></lightning-icon>
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Edit Opportunity Product</h2>
+                </header>
+                <!-- Modal/Popup Box LWC body starts here -->
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <lightning-spinner alternative-text="Loading" if:true={isLoading} variant="brand" size="medium"></lightning-spinner>
+                    <lightning-record-edit-form 
+                            object-api-name={objectApiName} 
+                            density="Comfy" 
+                            record-id={recordId} 
+                            onsuccess={handleSuccess}
+                            onsubmit={handleSubmit}
+                            onerror={handleError}
+                            onload={handleLoad}>
+                        <lightning-messages></lightning-messages>
+                        <br/> <br/>
+                        <template for:each={formValues} for:item="obj">
+                            <details key={obj.sectionLabel} class="slds-p-around_xx-small style" open>
+                                <summary class="slds-p-around_medium" onclick={handleClick} style="cursor: pointer">
+                                <span class="icon-container">
+                                    <lightning-icon icon-name="utility:chevrondown" size="xx-small" class="slds-p-left_medium slds-p-right_medium slds-p-top_x-small"></lightning-icon>
+                                </span>
+                                <span style="pointer-events: none">
+                                {obj.sectionLabel}
+                                </span>
+                                </summary>
+                                <div class="slds-grid slds-wrap slds-p-around_medium">
+                                <template for:each={obj.Fields} for:item="field">
+                                    <div key={field.APIName} class="slds-col slds-size_1-of-2" style="padding-right: 2rem;" if:false={showEditField}>
+                                        <lightning-output-field field-name={field.APIName} style="border-bottom: #e5e4e3 solid 1.5px;">
+                                        </lightning-output-field>
+                                    </div>
+                                    <div key={field.APIName} class="slds-col slds-size_1-of-2" style="padding-right: 2rem;" if:true={showEditField}>
+                                        <lightning-input-field field-name={field.APIName} >
+                                        </lightning-input-field>
+                                    </div>
+                                </template>
+                                </div>
+                            </details>
+                        </template>
+                    </lightning-record-edit-form>
+                </div>
+                <!-- Modal/Popup Box LWC footer starts here -->
+                <footer class="slds-modal__footer">
+                    <button class="slds-button slds-button_neutral" onclick={closeModal} title="Cancel">Cancel</button>
+                    <button class="slds-button slds-button_brand" onclick={submitDetails} title="OK">OK</button>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+ </template>

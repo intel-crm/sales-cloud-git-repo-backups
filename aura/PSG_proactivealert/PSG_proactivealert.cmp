@@ -1,0 +1,8 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickActionWithoutHeader" controller="PSG_Utility" access="global" >
+	<aura:handler name="init" value="{!this}" action="{!c.doInit}"></aura:handler>
+    
+    <aura:attribute name="showcmp" type="boolean" />
+    <aura:if isTrue="{!v.showcmp}">
+        <div class="slds-text-color_destructive slds-box slds-theme_default " ><b>One of the Line has $ Change Flat Set to True</b></div>
+    </aura:if>
+</aura:component>

@@ -1,0 +1,59 @@
+<messaging:emailTemplate subject="Request for Quote Approval Quote # {!relatedto.Name}"  recipientType="User" relatedToType="SBQQ__Quote__c">
+<messaging:htmlEmailBody >
+<html>
+<head>
+<style>
+.grid-container { 
+  display: grid;
+  grid-template-columns: 100px 100px 100px 100px 100px 100px;
+  grid-template-rows: 60px 60px 60px 60px 60px 60px;
+  padding: 10px;
+ 
+  
+}
+.grid-item {
+  background-color:rgb(192,192,192);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 10px;
+  font-size: 15px;
+  text-align: center;
+  
+}
+.grid-item1 {
+  background-color:rgb(240,240,240);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 10px;
+  font-size: 15px;
+  text-align: center;
+  
+}
+
+
+
+</style>
+</head>
+<body>
+<p style="color:red; font-size: 25px">ACTION REQUIRED</p>
+                <br></br>
+                You have received a Request to approve the Quote {!relatedto.Name}<br/>
+                <br></br>
+<div class="grid-container">
+  <div class="grid-item">Quote #</div>
+  <div class="grid-item">Quote Revision</div> 
+  <div class="grid-item">Quote type</div> 
+  <div class="grid-item">Quote Date</div> 
+  <div class="grid-item">Business Unit</div> 
+  <div class="grid-item">Peak Annual Resale</div>
+  <div class="grid-item1"><apex:outputLink value="{!relatedTo.core_cpq_quote_ref__c}">{!relatedTo.Name}</apex:outputLink></div> 
+  <div class="grid-item1">{!relatedto.core_cpq_revision_nbr__c}</div> 
+  <div class="grid-item1">{!relatedto.core_cpq_quote_type_nm__c}</div> 
+  <div class="grid-item1">{!relatedto.SubmittedDate__c}</div> 
+  <div class="grid-item1">{!relatedto.core_cpq_business_unit_nm__c}</div> 
+  <div class="grid-item1">{!relatedto.00N2D000009ndd5}</div>
+  </div>
+ <p style="padding-top :10px">Kindly contact <a href="mailto:intel-psg-quote-support@intel.com">intel-psq-quote-support</a> for any technical assistance.</p> 
+
+</body>
+</html>
+</messaging:htmlEmailBody>
+</messaging:emailTemplate>

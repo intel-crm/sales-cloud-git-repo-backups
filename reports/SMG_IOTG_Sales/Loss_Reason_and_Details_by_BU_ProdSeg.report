@@ -54,21 +54,12 @@
     <columns>
         <field>OpportunityLineItem.Core_Lost_Total_Price__c</field>
     </columns>
-    <columns>
-        <field>OpportunityLineItem.Core_Claim_Date__c</field>
-    </columns>
-    <columns>
-        <field>OPPORTUNITY_ID</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Competitive_Architecture__c</field>
-    </columns>
     <filter>
         <criteriaItems>
             <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
-            <operator>contains</operator>
+            <operator>equals</operator>
             <value>IOTG</value>
         </criteriaItems>
         <criteriaItems>
@@ -97,7 +88,7 @@
     <format>Matrix</format>
     <groupingsAcross>
         <dateGranularity>Day</dateGranularity>
-        <field>Opportunity.Core_Product_Application__c</field>
+        <field>OpportunityLineItem.Core_BU_Product_Segment_Old__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsAcross>
     <groupingsDown>
@@ -129,7 +120,7 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <endDate>2022-12-31</endDate>
+        <endDate>2020-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
         <startDate>2016-01-01</startDate>
     </timeFrameFilter>

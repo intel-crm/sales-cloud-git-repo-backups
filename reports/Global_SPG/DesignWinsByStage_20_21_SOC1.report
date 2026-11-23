@@ -93,7 +93,6 @@
         <field>Opportunity.Core_Opportunity_ID__c</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
         <field>Opportunity.Core_Architecture_Conversion__c</field>
     </columns>
     <columns>

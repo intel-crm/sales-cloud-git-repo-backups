@@ -1,0 +1,146 @@
+<apex:page controller="Xvoyant.XController" docType="html-5.0" action="{!execQueryStringActions}">
+	<!-- Put all head elements in here -->
+	<apex:stylesheet value="{!URLFOR($Resource.Xvoyant__xvui, 'xvui/css/bootstrap.min.css')}"/>
+	<apex:stylesheet value="{!URLFOR($Resource.Xvoyant__jQueryUI, 'jquery-ui/jquery-ui.min.css')}"/>
+	<apex:stylesheet value="{!URLFOR($Resource.Xvoyant__jQueryUI, 'jquery-ui/jquery.timepicker.min.css')}"/>
+	<apex:stylesheet value="{!URLFOR($Resource.Xvoyant__jQueryUI, 'jquery-ui/jquery-ui.structure.min.css')}"/>
+	<apex:stylesheet value="{!URLFOR($Resource.Xvoyant__jQueryUI, 'jquery-ui/jquery-ui.theme.min.css')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.Xvoyant__WebUIPopup, 'webui-popup/jquery.webui-popover.min.css')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.Xvoyant__xv, 'fonts/font-awesome-core.css')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.Xvoyant__select2, 'css/select2.min.css')}"/>
+	<apex:stylesheet value="{!URLFOR($Resource.Xvoyant__select2, 'css/select2-bootstrap4.min.css')}"/>
+	<!-- Xvoyant CSS -->
+    <apex:stylesheet value="{!URLFOR($Resource.Xvoyant__xv, 'css/lwcUtils.css')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.Xvoyant__xv, 'css/x.css')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.Xvoyant__xv, 'css/dashboard.css')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.Xvoyant__xv, 'css/goal.css')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.Xvoyant__xv, 'css/quad.css')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.Xvoyant__xv, 'css/performanceCurve.css')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.Xvoyant__xv, 'css/scorecard.css')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.Xvoyant__xv, 'css/settings.css')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.Xvoyant__xv, 'css/print.css')}"/>
+	<apex:stylesheet value="{!URLFOR($Resource.Xvoyant__daterangepicker, 'daterangepicker.css')}"/>
+	<!-- End Xvoyant CSS -->
+	<apex:include pageName="Xvoyant__DataBrokerDefines"/>
+	<apex:includeScript value="{!$Resource.Xvoyant__jqueryXV}"/>
+	<apex:includeScript value="{!URLFOR($Resource.Xvoyant__xvui, 'xvui/js/bootstrap.bundle.min.js')}"/>
+	<apex:includeScript value="{!URLFOR($Resource.Xvoyant__jQueryUI, 'jquery-ui/jquery-ui.min.js')}"/>
+	<apex:includeScript value="{!URLFOR($Resource.Xvoyant__jQueryUI, 'jquery-ui/jquery.timepicker.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.Xvoyant__WebUIPopup, 'webui-popup/jquery.webui-popover.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.Xvoyant__select2, 'js/select2.min.js')}"/>
+	<apex:includeScript value="{!$Resource.Xvoyant__d3v3JS}"/>
+	<apex:includeScript value="{!$Resource.Xvoyant__d3shape}"/>
+	<apex:includeScript value="{!$Resource.Xvoyant__d3path}"/>
+	<apex:includeScript value="{!$Resource.Xvoyant__momentJS}"/>
+	<apex:includeScript value="{!URLFOR($Resource.Xvoyant__daterangepicker, 'daterangepicker.js')}"/>
+	<apex:includeScript value="{!URLFOR($Resource.Xvoyant__xv, 'js/vision.js')}"/>
+	<apex:includeLightning />
+	<script>
+		XControllerJS.init({
+			shouldShowDetailsPage: '{!shouldShowDetailsPage}',
+			shouldShowCoachingPage: '{!shouldShowCoachingPage}',
+			shouldShowSection: '{!shouldShowSection}',
+			shouldShowOpportunityPage: '{!shouldShowOpportunityPage}',
+			shouldShowViewAllPage: '{!shouldShowViewAllPage}',
+			shouldOpenWorksheet: '{!shouldOpenWorksheet}',
+			shouldForceActivityLogging: '{!shouldForceActivityLogging}',
+			isInLightning: '{!$User.UITheme == 'Theme4d'}'
+		}, {
+			globalTarget: '{!globalTarget}',
+			globalStaticResourcePath: '{!URLFOR($Resource.xv)}'
+		});
+	</script>
+	<style type="text/css">
+		@font-face {
+			font-family: 'Roboto Light';
+			src: url("{!URLFOR($Resource.xv, 'fonts/Roboto-Light.woff2')}");
+		}
+		@font-face {
+			font-family: 'Roboto Bold';
+			src: url("{!URLFOR($Resource.xv, 'fonts/Roboto-Bold.woff2')}");
+		}
+		@font-face {
+			font-family: 'Roboto Condensed Light';
+			src: url("{!URLFOR($Resource.xv, 'fonts/RobotoCondensed-Light.woff2')}");
+		}
+		@font-face {
+			font-family: 'Roboto Condensed Bold';
+			src: url("{!URLFOR($Resource.xv, 'fonts/RobotoCondensed-Bold.woff2')}");
+		}
+        @font-face {
+            font-family: 'Font Awesome 5 Solid';
+            font-style:normal;
+	        font-weight:900;
+            src: url("{!URLFOR($Resource.xv, 'fonts/fa-solid-900.woff2')}") format("woff2");
+        }
+		@font-face {
+			font-family: 'Roboto';
+            font-style:normal;
+	        font-weight:300;
+			src: url("{!URLFOR($Resource.xv, 'fonts/Roboto-Light.woff2')}");
+		}
+		@font-face {
+			font-family: 'Roboto';
+            font-style:normal;
+	        font-weight:700;
+			src: url("{!URLFOR($Resource.xv, 'fonts/Roboto-Bold.woff2')}");
+		}
+		@font-face {
+			font-family: 'Roboto Condensed';
+            font-style:normal;
+	        font-weight:300;
+			src: url("{!URLFOR($Resource.xv, 'fonts/RobotoCondensed-Light.woff2')}");
+		}
+		@font-face {
+			font-family: 'Roboto Condensed';
+            font-style:normal;
+	        font-weight:700;
+			src: url("{!URLFOR($Resource.xv, 'fonts/RobotoCondensed-Bold.woff2')}");
+		}
+        .fa, .fas {
+            font-family: 'Font Awesome 5 Solid';
+            font-weight: 900
+        }
+
+	</style>
+
+    <div class="xvui">
+        <div id="errDlg" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">×</span>
+                <p id="errText">Some text in the Modal..</p>
+            </div>
+        </div>
+        <div id="deleteDlg" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <p id="delete-text">Some text in the Modal..</p>
+                <button type="button" class="btn btn-danger delete-btn">Delete</button>
+                <button type="button" class="btn btn-primary cancel-btn">Cancel</button>
+            </div>
+        </div>
+        <!-- This is a template for the empty opp pop-over -->
+        <div class="webui-popover-content popover-empty-message" id="oppPopoverEmpty">
+            <h3 id="opp-popover-empty-message">No opportunities are present in this stage</h3>
+        </div>
+
+        <!-- Modals -->
+        <c:WarningDialog />
+        <c:GoalDialog />
+        <c:SalesGoalDialog />
+	    <c:IDPDialog />
+
+        <!-- Top Level Pages -->
+        <c:SplashScreen />
+        <c:TopNav />
+        <c:TeamMemberNav />
+
+	    <!-- Fixed Bottom Items -->
+        <c:FabButton />
+        <c:FixedCoachingWorksheet />
+
+		<!-- SVG SPRITE-->
+	    <c:SVGSprite />
+    </div>
+</apex:page>

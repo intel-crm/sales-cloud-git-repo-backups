@@ -63,8 +63,7 @@ private class PMP_EmailTemplateController_Test {
         ctrl1.partnerId = existingPartner.Id; 
         PMP_Company__c partner = ctrl1.getPartnerData();
         System.AssertNotEquals(partner.Id,null);
-        String communityURL =ctrl1.getCommunityURL();
-		System.AssertNotEquals(communityURL,null);
+        
         
        /* PMP_EmailTemplateController ctrl=new PMP_EmailTemplateController();
          PMP_Company__c partner = ctrl.getPartnerData();

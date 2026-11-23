@@ -35,18 +35,6 @@
         <default>false</default>
         <label>Write In Competitor OEM Name</label>
     </customValue>
-    <customValue>
-        <fullName>Competitor OEM Name 2</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Competitor OEM Name 2</label>
-    </customValue>
-    <customValue>
-        <fullName>Competitor OEM Name 1</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Competitor OEM Name 1</label>
-    </customValue>
     <masterLabel>Competitor OEM Name</masterLabel>
     <sorted>false</sorted>
 </GlobalValueSet>

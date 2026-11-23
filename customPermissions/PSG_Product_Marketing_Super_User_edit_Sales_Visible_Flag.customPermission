@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomPermission xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>PSG product Super Admin have access to edit Sales Visible Flag which should not be overriden via Integration post changes</description>
+    <isLicensed>false</isLicensed>
+    <label>PSG Product Marketing Super User edit Sales Visible Flag</label>
+</CustomPermission>

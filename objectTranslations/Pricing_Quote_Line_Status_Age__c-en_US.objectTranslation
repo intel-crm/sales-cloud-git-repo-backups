@@ -227,6 +227,18 @@
         <name>Pricing_TPT_User_Role__c</name>
     </fields>
     <fields>
+        <label><!-- Pricing_TestField01 --></label>
+        <name>Pricing_TestField01__c</name>
+    </fields>
+    <fields>
+        <label><!-- Pricing_TestField02 --></label>
+        <name>Pricing_TestField02__c</name>
+    </fields>
+    <fields>
+        <label><!-- Pricing_Test --></label>
+        <name>Pricing_Test__c</name>
+    </fields>
+    <fields>
         <label><!-- Revision QuoteLine --></label>
         <name>Revision_QuoteLine__c</name>
     </fields>

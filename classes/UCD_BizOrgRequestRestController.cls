@@ -13,6 +13,20 @@ global without sharing class UCD_BizOrgRequestRestController {
         // Parse request body
         UCD_BizOrgRequestRestModel requestModel = UCD_BizOrgRequestRestModel.parseRequestBody(RestContext.request.requestBody.toString());
         if(requestModel!=null && requestModel.AccountRequests != null){
+
+            for(UCD_BizOrgRequestRestModel.AccountRestDetail accountDetail : requestModel.AccountRequests){
+
+                if(  accountDetail.AccountRequestReferences == null){
+                    UCD_BizOrgRequestRestModel.AccountRestRequestReference requestReference = new UCD_BizOrgRequestRestModel.AccountRestRequestReference();
+                    requestReference.Name = 'MyDeals';
+                    requestReference.Value = '';
+                    List<UCD_BizOrgRequestRestModel.AccountRestRequestReference> requestReferences = new List<UCD_BizOrgRequestRestModel.AccountRestRequestReference>();
+                    requestReferences.add(requestReference);
+
+                    accountDetail.AccountRequestReferences = requestReferences;
+                }
+                
+            }
             // check duplicate requests
             TagDuplicateAccountRequest(requestModel);
             //validate request
@@ -147,8 +161,8 @@ global without sharing class UCD_BizOrgRequestRestController {
             accountModel.CustomerProcessEngagmentCode = requestModelRecord.CustomerProcessEngagmentCode;
             accountModel.RequesterName = requestModelRecord.RequesterName;
             accountModel.RequesterWWID = requestModelRecord.RequesterWWID;
-            accountModel.CustomerURL =  requestModelRecord.CustomerURL;
             accountModel.RequesterEmail = requestModelRecord.RequesterEmail;
+            accountModel.CustomerURL =  requestModelRecord.CustomerURL;
             accountModel.ParentBusinessPartyIdentifierReference = requestModelRecord.ParentBusinessPartyIdentifierReference;
             List< UCD_ACM_Models.AccountAddress > lstofnewModeladdr = new List< UCD_ACM_Models.AccountAddress >();
             for (UCD_BizOrgRequestRestModel.AccountRestAddresses addressRef : requestModelRecord.Addresses) {
@@ -159,14 +173,16 @@ global without sharing class UCD_BizOrgRequestRestController {
                 lstofnewModeladdr.add(newModelAddressRef);
             }
             accountModel.Addresses = lstofnewModeladdr;
-            Map < String , String > mapOfAccReqRef = new Map < String , String >();
+
+                Map < String , String > mapOfAccReqRef = new Map < String , String >();
+
             if(requestModelRecord.AccountRequestReferences != null){
                 if(requestModelRecord.AccountRequestReferences.size() > 0){
-                    for (UCD_BizOrgRequestRestModel.AccountRestRequestReference accountRef : requestModelRecord.AccountRequestReferences) {
-                        //mapOfAccReqRef.put(accountRef.Name, accountRef.Value);	
-                        mapOfAccReqRef.put('MyDeals', accountRef.Value);	
-                    }
-                    accountModel.AccountRequestReferences = mapOfAccReqRef;
+                for (UCD_BizOrgRequestRestModel.AccountRestRequestReference accountRef : requestModelRecord.AccountRequestReferences) {
+                    //mapOfAccReqRef.put(accountRef.Name, accountRef.Value);	
+                    mapOfAccReqRef.put('MyDeals', accountRef.Value);	
+                }
+                accountModel.AccountRequestReferences = mapOfAccReqRef;
                 }else{
                         mapOfAccReqRef.put('MyDeals', '');	
                         accountModel.AccountRequestReferences = mapOfAccReqRef;

@@ -90,21 +90,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>APJ Sales Territory</value>
+            <value>GMP APJ Sales Territory,GMP India Sales Group,GMP Japan Sales Group,GMP Korea Sales Group,GMP Taiwan Sales Group</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OWNER_MANAGER</column>
+            <column>ROLLUP_DESCRIPTION</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>Swee Hoon,Lai Teng,Paul,Sumner,Batra,Sng,Andrew</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>FULL_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>Naomi,Gina</value>
+            <operator>contains</operator>
+            <value>Ram S</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -116,7 +109,7 @@
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>OWNER_MANAGER</field>
+        <field>ROLLUP_DESCRIPTION</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
@@ -124,7 +117,7 @@
         <field>FULL_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Pipeline Health Score</name>
+    <name>Pipeline Health Score - Ram</name>
     <params>
         <name>terr</name>
         <value>all</value>

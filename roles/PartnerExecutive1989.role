@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>遵义经济技术开发区飞轮达电子开发有限公司 Partner Executive</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>遵义经济技术开发区飞轮达电子开发有限公司 Partner Executive</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>Admin</parentRole>
+</Role>

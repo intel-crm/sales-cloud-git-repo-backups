@@ -44,7 +44,7 @@ const supportCard = (index) => {
             ]
         },
         {
-            faIcon: "fa-phone-o",
+            faIcon: "fa-phone-r-o",
             title: "Call Us",
             content: [
                 mockContentType(1),
@@ -70,5 +70,4 @@ export const mockPartnerSupportFooter = () => {
             mockSupportCard(3)
         ]
     }
-
 }

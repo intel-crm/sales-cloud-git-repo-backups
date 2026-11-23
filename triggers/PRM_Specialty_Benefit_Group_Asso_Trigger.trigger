@@ -10,8 +10,5 @@ Modification Log    :
 
 ****************************************************************************************************************************/
 trigger PRM_Specialty_Benefit_Group_Asso_Trigger on PRM_Specialty_Benefit_Group_Association__c (before insert, before update) {
-    // bypass added by Dinesh as part of IPA2.0 Refresh change
-    if(!FeatureManagement.checkPermission('PCC_Bypass_Automation')){
-        new PRM_Specialty_Benefit_Group_Asso_Handler().run();
-    }
+new PRM_Specialty_Benefit_Group_Asso_Handler().run();
 }

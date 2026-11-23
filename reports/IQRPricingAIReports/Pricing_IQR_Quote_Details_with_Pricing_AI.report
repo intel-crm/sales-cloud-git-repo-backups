@@ -75,6 +75,10 @@
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Approved_Unit_Qty__c</field>
     </columns>
     <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Payable_Quantity__c</field>
+    </columns>
+    <columns>
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_OEM_System_Model_Nm__c</field>
     </columns>
     <columns>

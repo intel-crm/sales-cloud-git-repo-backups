@@ -1,4 +1,4 @@
-import { LightningElement, api, track} from 'lwc';
+import { LightningElement, api} from 'lwc';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import oemRollBack from '@salesforce/apex/Pricing_BulkSalesRepActionController.getQuoteLinetoRollback';
 import recallMsg from '@salesforce/label/c.Pricing_QuoteLine_Recall_Msg';
@@ -44,7 +44,7 @@ export default class Pricing_Quote_OEMRollback_Component extends LightningElemen
                             mode: 'dismissable'
                         });
                         this.dispatchEvent(event);
-                        this.closeAction();                      
+                        this.closeAction();
                     });
     }
 

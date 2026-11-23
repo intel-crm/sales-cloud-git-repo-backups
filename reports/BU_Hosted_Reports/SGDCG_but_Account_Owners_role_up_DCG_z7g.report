@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_ID__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Sales_Groups__c</field>
+    </columns>
+    <columns>
+        <field>User.Core_Manager__c</field>
+    </columns>
+    <columns>
+        <field>TYPE</field>
+    </columns>
+    <columns>
+        <field>ADDRESS1_STATE</field>
+    </columns>
+    <columns>
+        <field>DUE_DATE</field>
+    </columns>
+    <columns>
+        <field>LAST_UPDATE</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Account.Core_Sales_Groups__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>DCG Sales Group</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>User.Core_Manager__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Ajay Nijhawan,Wen Li,Binoy Unnikrishnan,Jesse Jensen,Hemant Patel,Howard Chang,Scott Keller,Zhiyong Gao,Ling He,CHEN GUANG YANG,Vince Curella,Allison Doller,Robert Prince,Henry Lyden,Johan Elfsson,Abdul Jarrar,Courtney Harrison,PAUL SCHMISSEUR,Hans Chuang,Scott Sodoma,Yoshikawa Shigeru,Peter Graef,Sujan Kamran,YG Kim,Tim Lauer,Amy Doescher,Matthew Conrod,Michael Mi,Muge Tanik,Robert Burroughs,Ian Wardrope,David Fraser,Richard Walther,Wei Wu,Wai Hong Fong,Ajay Garg,Kai Hu,Albert Diaz,Jason Fedder,Kit Ho Chee,Mark Hocking,Sherri Madison,Tina Knudsen,Valerie Fox,Werner Schaefer,Bengt Nissar,Gary Betrix,Jost Henning Eid,Omid Meshkin,Ryan Brown,Taha Mughir,Diane Takeuchi,James Cole,Jianghua Qi,Qi Stacie Guan,Tianle Liu,Lina Stukov,Travis Palena,Avinash Palaniswamy,Santiago Durante,Scott Overson,Terry Thorn,Maria Aguilar,Zhe Yuan Chang,Adesh Gupta,Andy Nehme,Donal Sartain,Scott Custer,Tal Elgar,Eric Levander,Jon Jadersten,Weichen Ye,Zhiqiang Hou,Ian Barlett,Thomas Sennhauser,Phillip Henry,Tarik Muwafi,Joseph Welsh,Marcel Sutton,Peter Bevan,Bharat Kulkarni,Eyran Eylon,Jeremy Lu,Dennis Fallis,Hong Wei Yi,Monica Livingston,Stephan Gillich,Christopher Gough,John Stewart,Kevin Johnson,Mike Blalock,Andrew Green,CongChao Cheng,Charles Brown,Inna Obolsky</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>USERS.NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Uncovered Account,A&amp;E Account Owner</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>USERS.NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>SG=DCG but Account Owner&apos;s role up ≠ DCG</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>AccountList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

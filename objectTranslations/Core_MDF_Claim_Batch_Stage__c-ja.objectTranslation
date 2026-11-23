@@ -5,54 +5,16 @@
         <value>請求バッチ記録</value>
     </caseValues>
     <fields>
-        <label><!-- 3rd Party POP Documentation Required --></label>
-        <name>Core_MDF_3rd_Party_POP_Doc_Required_Ind__c</name>
-    </fields>
-    <fields>
-        <label><!-- Activity Category --></label>
-        <name>Core_MDF_ActivityCategory__c</name>
-    </fields>
-    <fields>
         <label>活動</label>
         <name>Core_MDF_Activity_Nbr__c</name>
     </fields>
     <fields>
-        <label>活動サブタイプ</label>
-        <name>Core_MDF_Activity_SubType_nm__c</name>
-    </fields>
-    <fields>
-        <label><!-- Activity Type --></label>
-        <name>Core_MDF_Activity_Type_Nm__c</name>
-    </fields>
-    <fields>
-        <label><!-- Activity Type --></label>
-        <name>Core_MDF_Activity_Type__c</name>
-    </fields>
-    <fields>
-        <label>実行終了日</label>
+        <label>広告終了日</label>
         <name>Core_MDF_Ad_Run_End_Dt__c</name>
     </fields>
     <fields>
-        <label>実行開始日</label>
+        <label>広告開始日</label>
         <name>Core_MDF_Ad_Run_Start_Dt__c</name>
-    </fields>
-    <fields>
-        <help>適用される付加価値税の割合</help>
-        <label>適用される付加価値税の割合</label>
-        <name>Core_MDF_Applicable_VAT_Percentage_nm__c</name>
-        <picklistValues>
-            <masterLabel>0%</masterLabel>
-            <translation><!-- 0% --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>10%</masterLabel>
-            <translation><!-- 10% --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
-        <help>銀行口座番号は機密情報です。銀行口座番号の下 4 桁のみ入力してください。全桁の銀行口座番号は、企業サプライヤー・データベースに保存されます。</help>
-        <label>銀行口座番号 (下 4 ケタ)</label>
-        <name>Core_MDF_Bank_Account_Nbr__c</name>
     </fields>
     <fields>
         <label>銀行 ID</label>
@@ -66,15 +28,7 @@
     <fields>
         <label>請求バッチ ID</label>
         <name>Core_MDF_Batch_ID__c</name>
-        <relationshipLabel>請求バッチ記録</relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Budget Type --></label>
-        <name>Core_MDF_Budget_Type_Nm__c</name>
-    </fields>
-    <fields>
-        <label><!-- Budget Type --></label>
-        <name>Core_MDF_Budget_Type__c</name>
+        <relationshipLabel><!-- Claim Batch Records --></relationshipLabel>
     </fields>
     <fields>
         <label>請求コメント</label>
@@ -89,52 +43,28 @@
         <name>Core_MDF_Claim_Reference_Nbr__c</name>
     </fields>
     <fields>
-        <label>国 / 地域</label>
-        <name>Core_MDF_Country_Location_nm__c</name>
-    </fields>
-    <fields>
-        <label><!-- Country --></label>
-        <name>Core_MDF_Country_nm__c</name>
-    </fields>
-    <fields>
         <label>複写を作成</label>
         <name>Core_MDF_Create_Duplicate_ind__c</name>
-    </fields>
-    <fields>
-        <label>作成者</label>
-        <name>Core_MDF_CreatedBy_Nm__c</name>
-    </fields>
-    <fields>
-        <label><!-- Failure Reason --></label>
-        <name>Core_MDF_Failure_Reason_Txt__c</name>
     </fields>
     <fields>
         <label>インプレッション数</label>
         <name>Core_MDF_Impressions_Cnt__c</name>
     </fields>
     <fields>
-        <label>費用証明の通貨</label>
+        <label>請求書 / 領収書の通貨</label>
         <name>Core_MDF_Inv_Receipt_Cur_Cd__c</name>
     </fields>
     <fields>
-        <label>費用証明の日付</label>
+        <label>請求書 / 領収書日付</label>
         <name>Core_MDF_Inv_Receipt_Dt__c</name>
     </fields>
     <fields>
-        <label>費用証明の番号</label>
+        <label>請求書 / 領収書番号</label>
         <name>Core_MDF_Inv_Receipt_Nbr__c</name>
     </fields>
     <fields>
         <label>重複しています</label>
         <name>Core_MDF_Is_Duplicate_ind__c</name>
-    </fields>
-    <fields>
-        <label>最終更新者</label>
-        <name>Core_MDF_Last_ModifiedBy_Nm__c</name>
-    </fields>
-    <fields>
-        <label><!-- Log Info --></label>
-        <name>Core_MDF_Log_Info_txt__c</name>
     </fields>
     <fields>
         <label>メディア</label>
@@ -157,12 +87,7 @@
         <name>Core_MDF_NoOfTrialActivations_Nbr__c</name>
     </fields>
     <fields>
-        <label><!-- Node Account --></label>
-        <name>Core_MDF_Node_Account_Txt__c</name>
-        <relationshipLabel><!-- Claim Batch Records --></relationshipLabel>
-    </fields>
-    <fields>
-        <label>償還不可能な費用 (現地通貨)</label>
+        <label>その他の償還不可能な費用 (現地通貨)</label>
         <name>Core_MDF_Non_Reimbursable_Amt__c</name>
     </fields>
     <fields>
@@ -170,91 +95,30 @@
         <name>Core_MDF_Processing_Status_Nm__c</name>
         <picklistValues>
             <masterLabel>Failed</masterLabel>
-            <translation>障害</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Pending Documents</masterLabel>
-            <translation>ドキュメント提出待ち</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Submitted</masterLabel>
-            <translation>提出完了</translation>
+            <translation><!-- Failed --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Successful</masterLabel>
-            <translation>正常</translation>
+            <translation><!-- Successful --></translation>
         </picklistValues>
-    </fields>
-    <fields>
-        <label><!-- Program --></label>
-        <name>Core_MDF_Program_Txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Program --></label>
-        <name>Core_MDF_Program__c</name>
-    </fields>
-    <fields>
-        <label><!-- Reimbursement Rate (%) --></label>
-        <name>Core_MDF_Reimbursement_Percent_Nbr__c</name>
-    </fields>
-    <fields>
-        <label><!-- Reimbursement Rate (%) --></label>
-        <name>Core_MDF_Reimbursement_Percent__c</name>
     </fields>
     <fields>
         <label>リクエスト ID</label>
         <name>Core_MDF_Request_Id__c</name>
     </fields>
     <fields>
-        <label><!-- Retry Count --></label>
-        <name>Core_MDF_Retry_Count_Nbr__c</name>
-    </fields>
-    <fields>
-        <label><!-- Review Hold Rule --></label>
-        <name>Core_MDF_Review_Hold_Rule_Nm__c</name>
-    </fields>
-    <fields>
         <label>税 (現地通貨)</label>
         <name>Core_MDF_Taxes_Local_Amt__c</name>
     </fields>
     <fields>
-        <label>合計金額 (現地通貨)</label>
+        <label>合計請求金額 (現地通貨)</label>
         <name>Core_MDF_Total_Amt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Ultimate Account ID --></label>
-        <name>Core_MDF_Ultimate_Account_ID__c</name>
-    </fields>
-    <fields>
-        <label><!-- Ultimate Account --></label>
-        <name>Core_MDF_Ultimate_Account_Txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Upload POP Document --></label>
-        <name>Core_MDF_Upload_POP_Document__c</name>
-    </fields>
-    <fields>
-        <label>請求書の種類</label>
-        <name>Core_MDF_VAT_Opt_In__c</name>
-        <picklistValues>
-            <masterLabel>Reimbursement Request for 3rd party payment (NET cost only)</masterLabel>
-            <translation>第三者による支払いの償還請求 (純コストのみ)</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Service Invoice to Intel (VAT may apply)</masterLabel>
-            <translation>インテルへのサービス請求書 (VAT が適用される場合があります)</translation>
-        </picklistValues>
     </fields>
     <nameFieldLabel>請求バッチ記録 ID</nameFieldLabel>
     <recordTypes>
-        <description><!-- Record Type for Client and Datacenter Claims --></description>
-        <label><!-- Claim Client Datacenter Batch Record --></label>
+        <description><!-- Record Type for CCF and DCF Claims --></description>
+        <label><!-- Claim CCF DCF Batch Record --></label>
         <name>Core_MDF_Claim_CCF_DCF_Batch_Record</name>
-    </recordTypes>
-    <recordTypes>
-        <description><!-- claim batch records of RMF program --></description>
-        <label><!-- Claim RMF Batch Record --></label>
-        <name>Core_MDF_Claim_RMF_Batch_Record</name>
     </recordTypes>
     <recordTypes>
         <description><!-- Record Type for SPCF Claims --></description>

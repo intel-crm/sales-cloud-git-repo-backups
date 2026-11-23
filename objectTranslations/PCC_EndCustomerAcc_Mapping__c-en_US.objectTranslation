@@ -43,5 +43,17 @@
         <label><!-- Write In OEM Name --></label>
         <name>PCC_Write_In_OEM_Nm__c</name>
     </fields>
+    <fields>
+        <label><!-- City --></label>
+        <name>TBD_PCC_End_Customer_City_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Country --></label>
+        <name>TBD_PCC_End_Customer_Country_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- State --></label>
+        <name>TBD_PCC_End_Customer_State_Nm__c</name>
+    </fields>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

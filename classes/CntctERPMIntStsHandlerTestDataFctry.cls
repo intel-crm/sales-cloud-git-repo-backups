@@ -27,8 +27,7 @@ public class CntctERPMIntStsHandlerTestDataFctry {
                                     ,LastName = 'Doe' + contactNumberSequence
                                     ,Email = emailId
                                     ,AccountId = accountId
-                                   //,Core_IPA_Partner_Role__c = partnerRoles);
-                                   ,Core_IPA_PartnerRole__c = partnerRoles);
+                                   ,Core_IPA_Partner_Role__c = partnerRoles);
         insert cntct;
         cntct.Core_ERPM_Integration_Status__c = erpmIntegrationStatus;
         update cntct;

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>on the click will create new DPA record with DPA lines</description>
+    <flowDefinition>Create_DPA_from_Approved_Quotes</flowDefinition>
+    <label>Create DPA</label>
+    <optionsCreateFeedItem>false</optionsCreateFeedItem>
+    <type>Flow</type>
+</QuickAction>

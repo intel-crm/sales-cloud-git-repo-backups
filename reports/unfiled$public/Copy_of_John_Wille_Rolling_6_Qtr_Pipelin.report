@@ -172,13 +172,6 @@
             <value>lost,cancel,delete</value>
         </criteriaItems>
         <criteriaItems>
-            <column>CLOSE_DATE</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>THIS_FISCAL_QUARTER,NEXT_N_QUARTERS:5</value>
-        </criteriaItems>
-        <criteriaItems>
             <column>OWNER_MANAGER</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>

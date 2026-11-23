@@ -16,136 +16,163 @@
     <sections>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity Support ID</displayNameOverride>
             <field>Id</field>
             <table>Opportunity.Core_Opportunity_Supports__r</table>
         </columns>
         <columns>
             <checkedByDefault>true</checkedByDefault>
+            <displayNameOverride>Opportunity Support</displayNameOverride>
             <field>Name</field>
             <table>Opportunity.Core_Opportunity_Supports__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Created Date</displayNameOverride>
             <field>CreatedDate</field>
             <table>Opportunity.Core_Opportunity_Supports__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Created By</displayNameOverride>
             <field>CreatedBy</field>
             <table>Opportunity.Core_Opportunity_Supports__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Modified Date</displayNameOverride>
             <field>LastModifiedDate</field>
             <table>Opportunity.Core_Opportunity_Supports__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Modified By</displayNameOverride>
             <field>LastModifiedBy</field>
             <table>Opportunity.Core_Opportunity_Supports__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Account Name</displayNameOverride>
             <field>Core_Account_Name__c</field>
             <table>Opportunity.Core_Opportunity_Supports__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity Name</displayNameOverride>
             <field>Core_Opportunity_Name__c</field>
             <table>Opportunity.Core_Opportunity_Supports__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Sales Stages</displayNameOverride>
             <field>Core_Sales_Stages__c</field>
             <table>Opportunity.Core_Opportunity_Supports__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Amount</displayNameOverride>
             <field>Core_Amount__c</field>
             <table>Opportunity.Core_Opportunity_Supports__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Decision Date</displayNameOverride>
             <field>Core_Decision_Date__c</field>
             <table>Opportunity.Core_Opportunity_Supports__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Sales Group</displayNameOverride>
             <field>Sales_Group__c</field>
             <table>Opportunity.Core_Opportunity_Supports__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Product Segment</displayNameOverride>
             <field>Core_Product_Segment__c</field>
             <table>Opportunity.Core_Opportunity_Supports__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Vertical Market</displayNameOverride>
             <field>Core_Vertical_Market__c</field>
             <table>Opportunity.Core_Opportunity_Supports__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Product Application</displayNameOverride>
             <field>Core_Product_Application__c</field>
             <table>Opportunity.Core_Opportunity_Supports__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity Owner</displayNameOverride>
             <field>Core_Opportunity_Owner__c</field>
             <table>Opportunity.Core_Opportunity_Supports__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Technical Owner</displayNameOverride>
             <field>Core_Technical_Owner__c</field>
             <table>Opportunity.Core_Opportunity_Supports__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity Description</displayNameOverride>
             <field>Core_Opportunity_Description__c</field>
             <table>Opportunity.Core_Opportunity_Supports__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Primary Blockers</displayNameOverride>
             <field>Core_PrimaryBlockers__c</field>
             <table>Opportunity.Core_Opportunity_Supports__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Additional Support Needed</displayNameOverride>
             <field>Core_Additional_Support_Needed__c</field>
             <table>Opportunity.Core_Opportunity_Supports__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Background Information On Architecture</displayNameOverride>
             <field>Core_background_info_on_architecture__c</field>
             <table>Opportunity.Core_Opportunity_Supports__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity Support Team Count</displayNameOverride>
             <field>Core_Opportunity_Support_Team_Count__c</field>
             <table>Opportunity.Core_Opportunity_Supports__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Approver 1</displayNameOverride>
             <field>Core_Approver_1__c</field>
             <table>Opportunity.Core_Opportunity_Supports__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Approver 2</displayNameOverride>
             <field>Core_Approver_2__c</field>
             <table>Opportunity.Core_Opportunity_Supports__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Approver 3</displayNameOverride>
             <field>Core_Approver_3__c</field>
             <table>Opportunity.Core_Opportunity_Supports__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Approver 4</displayNameOverride>
             <field>Core_Approver_4__c</field>
             <table>Opportunity.Core_Opportunity_Supports__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Approver 5</displayNameOverride>
             <field>Core_Approver_5__c</field>
             <table>Opportunity.Core_Opportunity_Supports__r</table>
         </columns>
@@ -176,179 +203,237 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Approved By</displayNameOverride>
             <field>Core_Approved_By_c__c</field>
             <table>Opportunity.Core_Opportunity_Supports__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Region</displayNameOverride>
             <field>Core_Region__c</field>
             <table>Opportunity.Core_Opportunity_Supports__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Approved Date</displayNameOverride>
             <field>Core_Approved_Date__c</field>
             <table>Opportunity.Core_Opportunity_Supports__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>TSS Support Type</displayNameOverride>
             <field>Core_TSS_Support_Type__c</field>
             <table>Opportunity.Core_Opportunity_Supports__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Approval Comments</displayNameOverride>
             <field>Core_Approval_Comments__c</field>
             <table>Opportunity.Core_Opportunity_Supports__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Age</displayNameOverride>
             <field>Core_Age__c</field>
             <table>Opportunity.Core_Opportunity_Supports__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Submitted Date</displayNameOverride>
             <field>Core_Submitted_Date__c</field>
             <table>Opportunity.Core_Opportunity_Supports__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Login User Id</displayNameOverride>
+            <field>Core_Login_User_Id__c</field>
+            <table>Opportunity.Core_Opportunity_Supports__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>true</checkedByDefault>
+            <displayNameOverride>Customer’s Business Challenge</displayNameOverride>
+            <field>CRM_Business_Challenge_Txt__c</field>
+            <table>Opportunity.Core_Opportunity_Supports__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Record Type</displayNameOverride>
             <field>RecordType</field>
             <table>Opportunity.Core_Opportunity_Supports__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity</displayNameOverride>
             <field>Opportunity__c</field>
             <table>Opportunity.Core_Opportunity_Supports__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Status</displayNameOverride>
             <field>Core_Status__c</field>
             <table>Opportunity.Core_Opportunity_Supports__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Center of Excellence</displayNameOverride>
             <field>Center_of_Excellence__c</field>
             <table>Opportunity.Core_Opportunity_Supports__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Start Date</displayNameOverride>
             <field>Core_Start_Date__c</field>
             <table>Opportunity.Core_Opportunity_Supports__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>End Date</displayNameOverride>
             <field>Core_End_Date__c</field>
             <table>Opportunity.Core_Opportunity_Supports__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>CoE Request Detail</displayNameOverride>
             <field>Core_CoE_Request_Detail__c</field>
             <table>Opportunity.Core_Opportunity_Supports__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Response by SME</displayNameOverride>
             <field>Core_Response_by_SME__c</field>
             <table>Opportunity.Core_Opportunity_Supports__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Assignee</displayNameOverride>
             <field>Core_Opportunity_Support_Team_Member__c</field>
             <table>Opportunity.Core_Opportunity_Supports__r</table>
         </columns>
         <columns>
-            <checkedByDefault>true</checkedByDefault>
-            <field>CRM_Business_Challenge_Txt__c</field>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Is reassigned</displayNameOverride>
+            <field>Is_reassigned__c</field>
             <table>Opportunity.Core_Opportunity_Supports__r</table>
         </columns>
         <columns>
             <checkedByDefault>true</checkedByDefault>
+            <displayNameOverride>Solution Summary</displayNameOverride>
             <field>CRM_Solution_Summary_Txt__c</field>
             <table>Opportunity.Core_Opportunity_Supports__r</table>
         </columns>
         <columns>
             <checkedByDefault>true</checkedByDefault>
+            <displayNameOverride>Customer&apos;s Business Results/ Outcomes</displayNameOverride>
             <field>CRM_Cust_Business_Results_Outcomes_Txt__c</field>
             <table>Opportunity.Core_Opportunity_Supports__r</table>
         </columns>
         <columns>
             <checkedByDefault>true</checkedByDefault>
+            <displayNameOverride>Why Intel</displayNameOverride>
             <field>CRM_Why_Intel_Txt__c</field>
             <table>Opportunity.Core_Opportunity_Supports__r</table>
         </columns>
         <columns>
             <checkedByDefault>true</checkedByDefault>
+            <displayNameOverride>Sales Insights</displayNameOverride>
             <field>CRM_Sales_Insights_Txt__c</field>
             <table>Opportunity.Core_Opportunity_Supports__r</table>
         </columns>
         <columns>
             <checkedByDefault>true</checkedByDefault>
+            <displayNameOverride>Customer Willingness</displayNameOverride>
             <field>CRM_Customer_Willingness__c</field>
             <table>Opportunity.Core_Opportunity_Supports__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_AI_Content_in_System__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CRM_Multi_boarded__c</field>
-            <table>Opportunity</table>
+            <field>Core_Auto_Appoval__c</field>
+            <table>Opportunity.Core_Opportunity_Supports__r</table>
         </columns>
         <masterLabel>Opportunity Supports</masterLabel>
     </sections>
     <sections>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity Support Team ID</displayNameOverride>
             <field>Id</field>
             <table>Opportunity.Core_Opportunity_Supports__r.Core_Opportunity_Support_Team__r</table>
         </columns>
         <columns>
             <checkedByDefault>true</checkedByDefault>
+            <displayNameOverride>Opportunity Support Team Name</displayNameOverride>
             <field>Name</field>
             <table>Opportunity.Core_Opportunity_Supports__r.Core_Opportunity_Support_Team__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Created Date</displayNameOverride>
             <field>CreatedDate</field>
             <table>Opportunity.Core_Opportunity_Supports__r.Core_Opportunity_Support_Team__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Created By</displayNameOverride>
             <field>CreatedBy</field>
             <table>Opportunity.Core_Opportunity_Supports__r.Core_Opportunity_Support_Team__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Modified Date</displayNameOverride>
             <field>LastModifiedDate</field>
             <table>Opportunity.Core_Opportunity_Supports__r.Core_Opportunity_Support_Team__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Modified By</displayNameOverride>
             <field>LastModifiedBy</field>
             <table>Opportunity.Core_Opportunity_Supports__r.Core_Opportunity_Support_Team__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity Support Team Member</displayNameOverride>
             <field>Core_Opportunity_Support_Team_Member__c</field>
             <table>Opportunity.Core_Opportunity_Supports__r.Core_Opportunity_Support_Team__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Status</displayNameOverride>
             <field>Core_Status__c</field>
             <table>Opportunity.Core_Opportunity_Supports__r.Core_Opportunity_Support_Team__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>New Name</displayNameOverride>
+            <field>Test_Picklist__c</field>
+            <table>Opportunity.Core_Opportunity_Supports__r.Core_Opportunity_Support_Team__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity</displayNameOverride>
+            <field>Core_Opportunity__c</field>
+            <table>Opportunity.Core_Opportunity_Supports__r.Core_Opportunity_Support_Team__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity Support</displayNameOverride>
             <field>Core_Opportunity_Support__c</field>
             <table>Opportunity.Core_Opportunity_Supports__r.Core_Opportunity_Support_Team__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Record Type</displayNameOverride>
+            <field>RecordType</field>
+            <table>Opportunity.Core_Opportunity_Supports__r.Core_Opportunity_Support_Team__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Approval Comments</displayNameOverride>
             <field>Core_Approval_Comment__c</field>
             <table>Opportunity.Core_Opportunity_Supports__r.Core_Opportunity_Support_Team__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Approval Comment History</displayNameOverride>
             <field>Core_Approval_Comment_History__c</field>
             <table>Opportunity.Core_Opportunity_Supports__r.Core_Opportunity_Support_Team__r</table>
         </columns>
@@ -357,37 +442,799 @@
     <sections>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Account Name</displayNameOverride>
             <field>Account</field>
             <table>Opportunity</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Approval Status</displayNameOverride>
             <field>sbaa__ApprovalStatus__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Design Win Amount</displayNameOverride>
             <field>Amount</field>
             <table>Opportunity</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Approved By</displayNameOverride>
             <field>Core_Approved_By__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Approver</displayNameOverride>
             <field>sbaa__Approver__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Days from Opportunity Create to Submit</displayNameOverride>
             <field>Core_Days_from_Opportunity_Create_to_Su__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Design Win KPI</displayNameOverride>
+            <field>Core_DesignWin_KPI_Txt__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Deal Region</displayNameOverride>
             <field>Core_Opportunity_Geo__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Inactive</displayNameOverride>
+            <field>Core_Inactive__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Lead Source</displayNameOverride>
+            <field>LeadSource</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity ID</displayNameOverride>
+            <field>Core_Opportunity_ID__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Production Win KPI</displayNameOverride>
+            <field>Core_ProductionWin_KPI_Txt__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity Name</displayNameOverride>
+            <field>Name</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity Owner</displayNameOverride>
+            <field>Core_Opportunity_Owner__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity Team Regions</displayNameOverride>
+            <field>Core_Opportunity_Team_Geos__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity Type</displayNameOverride>
+            <field>Core_Opportunity_Type__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Stage</displayNameOverride>
+            <field>StageName</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity Count</displayNameOverride>
+            <field>Core_Opportunity_Count__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Type</displayNameOverride>
+            <field>Type</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Technical Owner</displayNameOverride>
+            <field>Core_Technical_Owner__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Exclude from Confidence</displayNameOverride>
+            <field>Core_Exclude_from_Confidence__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Partner FAE Email</displayNameOverride>
+            <field>Opp_Partner_FAE_Email__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Coverage Type</displayNameOverride>
+            <field>Core_Coverage_Type_Nm__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Test Validation Check</displayNameOverride>
+            <field>Core_Test_Validation_Check__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity Team Member</displayNameOverride>
+            <field>Core_OpportunityTeamMembers__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Technical Owner : City</displayNameOverride>
+            <field>Core_Technical_Owner__c.City</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Technical Owner : Active</displayNameOverride>
+            <field>Core_Technical_Owner__c.IsActive</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Technical Owner : Address</displayNameOverride>
+            <field>Core_Technical_Owner__c.Address</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Technical Owner : Alias</displayNameOverride>
+            <field>Core_Technical_Owner__c.Alias</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Technical Owner : Company Name</displayNameOverride>
+            <field>Core_Technical_Owner__c.CompanyName</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Technical Owner : Country (text only)</displayNameOverride>
+            <field>Core_Technical_Owner__c.Country</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Technical Owner : Profile</displayNameOverride>
+            <field>Core_Technical_Owner__c.Profile</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Technical Owner : Profile : Name</displayNameOverride>
+            <field>Core_Technical_Owner__c.Profile.Name</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Technical Owner : Department</displayNameOverride>
+            <field>Core_Technical_Owner__c.Department</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Technical Owner : Division</displayNameOverride>
+            <field>Core_Technical_Owner__c.Division</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Technical Owner : Email</displayNameOverride>
+            <field>Core_Technical_Owner__c.Email</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Technical Owner : Federation ID</displayNameOverride>
+            <field>Core_Technical_Owner__c.Core_Federation_ID__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Technical Owner : Full Name</displayNameOverride>
+            <field>Core_Technical_Owner__c.Name</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Technical Owner : Manager</displayNameOverride>
+            <field>Core_Technical_Owner__c.Core_Manager__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Technical Owner : Mobile</displayNameOverride>
+            <field>Core_Technical_Owner__c.MobilePhone</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Technical Owner : Nickname</displayNameOverride>
+            <field>Core_Technical_Owner__c.CommunityNickname</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Technical Owner : Phone</displayNameOverride>
+            <field>Core_Technical_Owner__c.Phone</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Technical Owner : Role</displayNameOverride>
+            <field>Core_Technical_Owner__c.UserRole</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Technical Owner : Street</displayNameOverride>
+            <field>Core_Technical_Owner__c.Street</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Technical Owner : Title</displayNameOverride>
+            <field>Core_Technical_Owner__c.Title</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Technical Owner : Time Zone</displayNameOverride>
+            <field>Core_Technical_Owner__c.TimeZoneSidKey</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Technical Owner : User ID</displayNameOverride>
+            <field>Core_Technical_Owner__c.Id</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Technical Owner : Username</displayNameOverride>
+            <field>Core_Technical_Owner__c.Username</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Technical Owner : User Region</displayNameOverride>
+            <field>Core_Technical_Owner__c.Core_User_Geo__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Technical Owner : User Sub Region</displayNameOverride>
+            <field>Core_Technical_Owner__c.Core_User_Sub_Geo__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Technical Owner : User Type</displayNameOverride>
+            <field>Core_Technical_Owner__c.UserType</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Technical Owner : User Unique</displayNameOverride>
+            <field>Core_Technical_Owner__c.User_Unique__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Technical Owner : WWID</displayNameOverride>
+            <field>Core_Technical_Owner__c.Core_WWID__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Opportunity Owner : Department</displayNameOverride>
+            <field>Owner.Department</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Opportunity Owner : Active</displayNameOverride>
+            <field>Owner.IsActive</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Opportunity Owner : Address</displayNameOverride>
+            <field>Owner.Address</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Opportunity Owner : City</displayNameOverride>
+            <field>Owner.City</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Opportunity Owner : Company Name</displayNameOverride>
+            <field>Owner.CompanyName</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Opportunity Owner : Country</displayNameOverride>
+            <field>Owner.CountryCode</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Opportunity Owner : Email</displayNameOverride>
+            <field>Owner.Email</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Opportunity Owner : Division</displayNameOverride>
+            <field>Owner.Division</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Opportunity Owner : Full Name</displayNameOverride>
+            <field>Owner.Name</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Opportunity Owner : Mobile</displayNameOverride>
+            <field>Owner.MobilePhone</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Opportunity Owner : Street</displayNameOverride>
+            <field>Owner.Street</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Opportunity Owner : Title</displayNameOverride>
+            <field>Owner.Title</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Opportunity Owner : Time Zone</displayNameOverride>
+            <field>Owner.TimeZoneSidKey</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Opportunity Owner : Username</displayNameOverride>
+            <field>Owner.Username</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Opportunity Owner : User ID</displayNameOverride>
+            <field>Owner.Id</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Opportunity Owner : User Region</displayNameOverride>
+            <field>Owner.Core_User_Geo__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Opportunity Owner : User Sub Region</displayNameOverride>
+            <field>Owner.Core_User_Sub_Geo__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Opportunity Owner : WWID</displayNameOverride>
+            <field>Owner.Core_WWID__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>18 Digit Opportunity ID</displayNameOverride>
+            <field>X18_Digit_Opportunity_ID__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity Count</displayNameOverride>
+            <field>Opportunity_Count__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>IFL Opportunity</displayNameOverride>
+            <field>Core_IOGM_Opportunity__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity Focus</displayNameOverride>
+            <field>Opportunity_Focus__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>FAD Start Date</displayNameOverride>
+            <field>FAD_Start_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>FAD End Date</displayNameOverride>
+            <field>FAD_End_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>RFP Open Date</displayNameOverride>
+            <field>RFP_Open_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>RFP Close Date</displayNameOverride>
+            <field>RFP_Close_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Desired End State</displayNameOverride>
+            <field>Desired_End_State__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Technology and Readiness Gaps</displayNameOverride>
+            <field>Technology_and_Readiness_Gaps__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Business Need</displayNameOverride>
+            <field>Business_Need__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Technical Need</displayNameOverride>
+            <field>Technical_Need__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Competitor Threat Mitigation</displayNameOverride>
+            <field>Competitor_Threat_Mitigation__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Push Reason</displayNameOverride>
+            <field>Push_Reason__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Push Reason Details</displayNameOverride>
+            <field>Push_Reason_Details__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>POC Start Date</displayNameOverride>
+            <field>POC_Start_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>POC End Date</displayNameOverride>
+            <field>POC_End_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity Lock Status</displayNameOverride>
+            <field>Core_Opportunity_Lock_Status__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Low pipeline confidence</displayNameOverride>
+            <field>Core_Low_pipeline_confidence__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>VBS Potential</displayNameOverride>
+            <field>Core_VBS_Potential__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>VBS Status</displayNameOverride>
+            <field>Core_VBS_Status__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Account Unified ID</displayNameOverride>
+            <field>Core_Account_UCD_ID__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Approved Total Amount</displayNameOverride>
+            <field>Core_Approved_Total_Amount__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opp Owner Changed For VBS</displayNameOverride>
+            <field>CRM_VBS_Opp_Owner_Changed_For_VBS__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Primary VBS Offering Category</displayNameOverride>
+            <field>CRM_VBS_Primary_VBS_Offering_Category__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity Revenue</displayNameOverride>
+            <field>CRM_Opportunity_Revenue__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>VBS Note</displayNameOverride>
+            <field>CRM_VBS_Note__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Contract Start Date</displayNameOverride>
+            <field>CRM_VBS_Contract_Start_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Contract Lifetime in Months</displayNameOverride>
+            <field>CRM_VBS_Contract_Lifetime_in_Months__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Total Contract Value</displayNameOverride>
+            <field>CRM_VBS_Total_Contract_Value__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Annual Recurring Revenue</displayNameOverride>
+            <field>CRM_VBS_Annual_Recurring_Revenue__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Approved Total Contract Value</displayNameOverride>
+            <field>CRM_VBS_App_TotalContractValue__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Approved Annual Recurring Revenue</displayNameOverride>
+            <field>CRM_VBS_App_AnnualRecurringRevenue__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Approved Contract Lifetime in Months</displayNameOverride>
+            <field>CRM_VBS_App_ContractLifetime_in_Months__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Approved Contract Start Date</displayNameOverride>
+            <field>CRM_VBS_App_ContractStartDate__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Other Notes</displayNameOverride>
+            <field>CRM_VBS_Other_Notes__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Date &amp; Time Submitted for Approval</displayNameOverride>
+            <field>Core_Date_Time_Submitted_for_Approval__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>AI Content in System</displayNameOverride>
+            <field>Core_AI_Content_in_System__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Renewed Opportunity</displayNameOverride>
+            <field>Core_Renewed_Opportunity_Ind__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Renewal Opportunity</displayNameOverride>
+            <field>Core_Renewal_Opportunity_Id__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Contract End Date</displayNameOverride>
+            <field>Core_Contract_End_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>IsReverseLowTouchAdmin</displayNameOverride>
+            <field>IsReverseLowTouchAdmin__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Unified Global Customer Name</displayNameOverride>
+            <field>CRM_Unified_Global_Customer_Name__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Unified Global Customer BP Id</displayNameOverride>
+            <field>CRM_Unified_Global_Customer_BP_Id__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Approved Annual Recurring Revenue</displayNameOverride>
+            <field>CRM_Approved_Annual_Recurring_Revenue__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Approved Contract Lifetime in Months</displayNameOverride>
+            <field>CRM_Approved_Contract_Lifetime_in_Months__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Approved Contract Start Date</displayNameOverride>
+            <field>CRM_Approved_Contract_Start_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Approved Total Contract Value</displayNameOverride>
+            <field>CRM_Approved_Total_Contract_Value__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Dual boarded</displayNameOverride>
+            <field>Core_Dual_boarded__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>New Chassis</displayNameOverride>
+            <field>Core_New_Chassis__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Number of Thunderbolt Ports</displayNameOverride>
+            <field>Core_Number_of_Thunderbolt_Ports__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>IDT</displayNameOverride>
+            <field>Core_IDT__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Ethernet</displayNameOverride>
+            <field>Core_Ethernet__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Evo Candidate</displayNameOverride>
+            <field>Core_Evo_Candidate__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Unison</displayNameOverride>
+            <field>Core_Unison__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity URL</displayNameOverride>
+            <field>CRM_Opportunity_URL__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Analysis Rich Text</displayNameOverride>
+            <field>Analysis_Rich_Text__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Stage Change Date</displayNameOverride>
+            <field>Last_Stage_Change_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Core_Is_Processed</displayNameOverride>
+            <field>Core_Is_Processed__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SubmitForApproval Button For PCC</displayNameOverride>
+            <field>SubmitForApproval_Button_For_PCC__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Smartpicklist_TestingField</displayNameOverride>
+            <field>Smartpicklist_TestingField__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Test_Picklist__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
@@ -397,7 +1244,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>CRM_Auditor_Comments__c</field>
+            <field>CRM_Audit_Fail_Reason__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
@@ -407,337 +1254,57 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>CRM_Auditor_Name__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>CRM_Audit_Status__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>CRM_Audit_Fail_Reason__c</field>
+            <field>CRM_Auditor_Comments__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_Low_pipeline_confidence__c</field>
+            <field>CRM_Auditor_Name__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_Inactive__c</field>
+            <field>CRM_is_DW_reversed__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>LeadSource</field>
+            <field>CRM_Opportunity_Geo_INDIA__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_Opportunity_ID__c</field>
+            <field>CRM_Opportunity_Team_Geo_INDIA__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Name</field>
+            <field>CRM_Multi_boarded__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_Opportunity_Owner__c</field>
+            <field>CRM_SLA_Email_Sent_To__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_Opportunity_Team_Geos__c</field>
+            <field>dummy11__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_Opportunity_Type__c</field>
+            <field>Core_Sustainability_Compliance__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>StageName</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Opportunity_Count__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Type</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Technical_Owner__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Exclude_from_Confidence__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Coverage_Type_Nm__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_DesignWin_KPI_Txt__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_ProductionWin_KPI_Txt__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Technical_Owner__c.City</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Technical_Owner__c.IsActive</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Technical_Owner__c.Address</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Technical_Owner__c.Alias</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Technical_Owner__c.CompanyName</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Technical_Owner__c.Country</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Technical_Owner__c.Profile</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Technical_Owner__c.Profile.Name</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Technical_Owner__c.Department</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Technical_Owner__c.Division</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Technical_Owner__c.Email</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Technical_Owner__c.Core_Federation_ID__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Technical_Owner__c.Name</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Technical_Owner__c.Core_Manager__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Technical_Owner__c.MobilePhone</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Technical_Owner__c.CommunityNickname</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Technical_Owner__c.Phone</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Technical_Owner__c.UserRole</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Technical_Owner__c.Street</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Technical_Owner__c.Title</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Technical_Owner__c.TimeZoneSidKey</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Technical_Owner__c.Id</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Technical_Owner__c.Username</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Technical_Owner__c.Core_User_Geo__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Technical_Owner__c.Core_User_Sub_Geo__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Technical_Owner__c.UserType</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Technical_Owner__c.Core_WWID__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Owner.Department</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Owner.IsActive</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Owner.Address</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Owner.City</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Owner.CompanyName</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Owner.CountryCode</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Owner.Email</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Owner.Division</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Owner.Name</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Owner.MobilePhone</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Owner.Street</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Owner.Title</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Owner.TimeZoneSidKey</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Owner.Username</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Owner.Id</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Owner.Core_User_Geo__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Owner.Core_User_Sub_Geo__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Owner.Core_WWID__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_IOGM_Opportunity__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CRM_Opportunity_URL__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Opportunity_Not_Progressed__c</field>
+            <field>Core_Design_Type__c</field>
             <table>Opportunity</table>
         </columns>
         <masterLabel>Opportunities</masterLabel>

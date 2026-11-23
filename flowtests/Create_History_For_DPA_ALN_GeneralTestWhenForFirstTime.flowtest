@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowTest xmlns="http://soap.sforce.com/2006/04/metadata">
+    <flowApiName>Create_History_For_DPA_ALN</flowApiName>
+    <label>GeneralTestWhenForFirstTime</label>
+    <testPoints>
+        <elementApiName>Start</elementApiName>
+        <isUseMockOutput>false</isUseMockOutput>
+        <parameters>
+            <leftValueReference>$Record</leftValueReference>
+            <type>InputTriggeringRecordInitial</type>
+            <value>
+                <sobjectValue>{&quot;OwnerId&quot;:&quot;005Df0000099L7mIAE&quot;,&quot;RecordTypeId&quot;:&quot;0122D000001MKGNQA4&quot;,&quot;core_cpq_Change_Flag_for_flow__c&quot;:false,&quot;core_cpq_account_program__c&quot;:&quot;PSG Demand Creation - Distribution&quot;,&quot;core_cpq_active_quote__c&quot;:&quot;a9YDf0000008lpFMAQ&quot;,&quot;core_cpq_bypass_validation__c&quot;:false,&quot;core_cpq_change_flag__c&quot;:&quot;N&quot;,&quot;core_cpq_comments_txt__c&quot;:&quot;mattis aliquam faucibus purus in massa tempor nec feugiat nisl pretium fusce id velit ut tortor pretium viverra suspendisse potenti nullam ac tortor vitae purus faucibus ornare suspendisse sed nisi lacus sed viverra tellus in hac habitasse platea dictumst vestibulum rhoncus est&quot;,&quot;core_cpq_disty_group_name__c&quot;:&quot;PSG_MOUSER&quot;,&quot;core_cpq_disty_submitted_user__c&quot;:&quot;005Df0000099L7mIAE&quot;,&quot;core_cpq_dollar_change_flag_ind__c&quot;:false,&quot;core_cpq_duration_nbr__c&quot;:12,&quot;core_cpq_inactive_quote_ind__c&quot;:false,&quot;core_cpq_override_price_auth_cb__c&quot;:false,&quot;core_cpq_quote_distributor__c&quot;:&quot;0012D00000U5RSeQAN&quot;,&quot;core_cpq_record_type_identifier__c&quot;:&quot;DPA&quot;,&quot;core_cpq_sap_distributor_nm__c&quot;:&quot;0012D00000bZO7sQAG&quot;,&quot;core_cpq_sap_end_customer_nm__c&quot;:&quot;0012D00000UsIFFQA3&quot;,&quot;core_cpq_ship_end_date_dt__c&quot;:&quot;2024-09-20&quot;,&quot;core_cpq_ship_start_date_dt__c&quot;:&quot;2023-09-20&quot;,&quot;core_cpq_status_txt__c&quot;:&quot;Rejected&quot;,&quot;core_cpq_submitted_to_SAP__c&quot;:false,&quot;core_cpq_update_from_batch_cb__c&quot;:false}</sobjectValue>
+            </value>
+        </parameters>
+        <parameters>
+            <leftValueReference>$Record</leftValueReference>
+            <type>InputTriggeringRecordUpdated</type>
+            <value>
+                <sobjectValue>{&quot;OwnerId&quot;:&quot;005Df0000099L7mIAE&quot;,&quot;RecordTypeId&quot;:&quot;0122D000001MKGNQA4&quot;,&quot;core_cpq_Change_Flag_for_flow__c&quot;:false,&quot;core_cpq_account_program__c&quot;:&quot;PSG Demand Creation - Distribution&quot;,&quot;core_cpq_active_quote__c&quot;:&quot;a9YDf0000008lpFMAQ&quot;,&quot;core_cpq_bypass_validation__c&quot;:false,&quot;core_cpq_change_flag__c&quot;:&quot;N&quot;,&quot;core_cpq_comments_txt__c&quot;:&quot;mattis aliquam faucibus purus in massa tempor nec feugiat nisl pretium fusce id velit ut tortor pretium viverra suspendisse potenti nullam ac tortor vitae purus faucibus ornare suspendisse sed nisi lacus sed viverra tellus in hac habitasse platea dictumst vestibulum rhoncus est&quot;,&quot;core_cpq_disty_group_name__c&quot;:&quot;PSG_MOUSER&quot;,&quot;core_cpq_disty_submitted_user__c&quot;:&quot;005Df0000099L7mIAE&quot;,&quot;core_cpq_dollar_change_flag_ind__c&quot;:false,&quot;core_cpq_duration_nbr__c&quot;:12,&quot;core_cpq_inactive_quote_ind__c&quot;:false,&quot;core_cpq_override_price_auth_cb__c&quot;:false,&quot;core_cpq_quote_distributor__c&quot;:&quot;0012D00000U5RSeQAN&quot;,&quot;core_cpq_record_type_identifier__c&quot;:&quot;DPA&quot;,&quot;core_cpq_sap_distributor_nm__c&quot;:&quot;0012D00000bZO7sQAG&quot;,&quot;core_cpq_sap_end_customer_nm__c&quot;:&quot;0012D00000UsIFFQA3&quot;,&quot;core_cpq_ship_end_date_dt__c&quot;:&quot;2024-09-20&quot;,&quot;core_cpq_ship_start_date_dt__c&quot;:&quot;2023-09-20&quot;,&quot;core_cpq_status_txt__c&quot;:&quot;Approved&quot;,&quot;core_cpq_submitted_to_SAP__c&quot;:false,&quot;core_cpq_update_from_batch_cb__c&quot;:false}</sobjectValue>
+            </value>
+        </parameters>
+    </testPoints>
+    <testPoints>
+        <assertions>
+            <conditions>
+                <leftValueReference>getHistoryDetails</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+        </assertions>
+        <elementApiName>Finish</elementApiName>
+        <isUseMockOutput>false</isUseMockOutput>
+    </testPoints>
+    <testType>WithAssertion</testType>
+</FlowTest>

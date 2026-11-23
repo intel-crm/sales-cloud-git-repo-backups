@@ -94,7 +94,7 @@
         <field>Opportunity.Core_Technical_Owner__c</field>
     </columns>
     <filter>
-        <booleanFilter>((((1 AND 2 AND (3 or 4 or 5 or 8)) AND 6)) AND 7)</booleanFilter>
+        <booleanFilter>(((1 AND 2 AND (3 or 4 or 5)) AND 6)) AND 7</booleanFilter>
         <criteriaItems>
             <column>OpportunityLineItem.Core_Product_Type__c</column>
             <columnToColumn>false</columnToColumn>
@@ -144,13 +144,6 @@
             <operator>notEqual</operator>
             <value>Lost,Cancelled,Deleted,Production Lost,Production Cancelled</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>OPPORTUNITY_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>covid,corona,coronavirus,corona virus</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Matrix</format>
@@ -188,8 +181,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2026-11-22</endDate>
+        <endDate>2026-11-23</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2026-11-22</startDate>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

@@ -1,0 +1,7 @@
+{!Approval_Requesting_User.Name} has requested your approval for the following
+
+Opportunity Support : {!Core_Opportunity_Support__c.Link}
+
+Opportunity Support Name: {!Core_Opportunity_Support__c.Name}
+
+Please click this link to approve or reject this record.

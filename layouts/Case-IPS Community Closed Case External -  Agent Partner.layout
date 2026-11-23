@@ -17,7 +17,15 @@
         <detailHeading>false</detailHeading>
         <editHeading>false</editHeading>
         <label>Alerts &amp; Messages</label>
-        <layoutColumns/>
+        <layoutColumns>
+            <layoutItems>
+                <height>20</height>
+                <page>Core_IPS_Case_Creation_Notification</page>
+                <showLabel>false</showLabel>
+                <showScrollbars>false</showScrollbars>
+                <width>100%</width>
+            </layoutItems>
+        </layoutColumns>
         <style>OneColumn</style>
     </layoutSections>
     <layoutSections>
@@ -61,10 +69,6 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Core_AAQC_Commission_Inquiry_Id__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_IPS_Case_Owner__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -306,7 +310,15 @@
         <detailHeading>true</detailHeading>
         <editHeading>false</editHeading>
         <label>Case Comments</label>
-        <layoutColumns/>
+        <layoutColumns>
+            <layoutItems>
+                <height>700</height>
+                <page>Core_IPS_CaseComments</page>
+                <showLabel>false</showLabel>
+                <showScrollbars>true</showScrollbars>
+                <width>100%</width>
+            </layoutItems>
+        </layoutColumns>
         <style>OneColumn</style>
     </layoutSections>
     <layoutSections>
@@ -429,6 +441,13 @@
         <label>Case Attachments</label>
         <layoutColumns>
             <layoutItems>
+                <height>500</height>
+                <page>Core_IPS_CaseAttachment_Visibility</page>
+                <showLabel>false</showLabel>
+                <showScrollbars>false</showScrollbars>
+                <width>100%</width>
+            </layoutItems>
+            <layoutItems>
                 <height>200</height>
                 <page>Core_IPS_Survey_Response</page>
                 <showLabel>false</showLabel>
@@ -438,36 +457,29 @@
         </layoutColumns>
         <style>OneColumn</style>
     </layoutSections>
-    <quickActionList>
-        <quickActionListItems>
-            <quickActionName>Case.SendEmail</quickActionName>
-        </quickActionListItems>
-    </quickActionList>
+    <quickActionList/>
     <relatedLists>
         <excludeButtons>New</excludeButtons>
         <fields>First_Name__c</fields>
         <fields>Last_Name__c</fields>
         <fields>Email__c</fields>
-        <fields>Active__c</fields>
         <relatedList>Core_IPS_Case_Interested_Party__c.Case__c</relatedList>
     </relatedLists>
     <relatedLists>
-        <relatedList>RelatedEntityHistoryList</relatedList>
+        <excludeButtons>MassChangeOwner</excludeButtons>
+        <excludeButtons>New</excludeButtons>
+        <fields>STOWD__Status__c</fields>
+        <fields>STOWD__Owner__c</fields>
+        <fields>STOWD__From__c</fields>
+        <fields>STOWD__Until__c</fields>
+        <fields>STOWD__Total_Hours__c</fields>
+        <fields>STOWD_Total_Days__c</fields>
+        <relatedList>STOWD__Status_Ownership_Duration__c.STOWD__Parent__c</relatedList>
+        <sortField>STOWD__Until__c</sortField>
+        <sortOrder>Desc</sortOrder>
     </relatedLists>
     <relatedLists>
-        <fields>NAME</fields>
-        <fields>Status__c</fields>
-        <fields>Sub_Status__c</fields>
-        <fields>Owner__c</fields>
-        <fields>Last_Assigned_Queue__c</fields>
-        <fields>Escalated_Level__c</fields>
-        <fields>From__c</fields>
-        <fields>Until__c</fields>
-        <fields>Total_Hours__c</fields>
-        <fields>Total_Days__c</fields>
-        <relatedList>Status_Ownership_Duration__c.Parent__c</relatedList>
-        <sortField>Until__c</sortField>
-        <sortOrder>Desc</sortOrder>
+        <relatedList>RelatedEntityHistoryList</relatedList>
     </relatedLists>
     <relatedObjects>ContactId</relatedObjects>
     <showEmailCheckbox>false</showEmailCheckbox>
@@ -477,7 +489,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>true</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h1J00000DIcUs</masterLabel>
+        <masterLabel>00h3F000000Iuhu</masterLabel>
         <sizeX>3</sizeX>
         <sizeY>4</sizeY>
         <summaryLayoutItems>

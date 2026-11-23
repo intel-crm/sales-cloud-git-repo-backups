@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>test123.test345 company Partner Manager</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>test123.test345 company Partner Manager</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>test123test345companyPartnerExecutive</parentRole>
+</Role>

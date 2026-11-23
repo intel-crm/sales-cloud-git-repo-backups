@@ -780,12 +780,6 @@
         <default>false</default>
         <label>UK BCP</label>
     </customValue>
-    <customValue>
-        <fullName>IA</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>IA</label>
-    </customValue>
     <masterLabel>Shipping Condition</masterLabel>
     <sorted>true</sorted>
 </GlobalValueSet>

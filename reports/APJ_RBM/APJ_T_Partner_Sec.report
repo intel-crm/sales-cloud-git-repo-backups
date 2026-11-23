@@ -109,6 +109,12 @@
         <field>Account.Core_Sales_Groups__c</field>
     </columns>
     <columns>
+        <field>ROLLUP_DESCRIPTION</field>
+    </columns>
+    <columns>
+        <field>CLOSE_DATE</field>
+    </columns>
+    <columns>
         <field>Account.Core_Account_Country__c</field>
     </columns>
     <columns>
@@ -131,7 +137,6 @@
         <field>Opportunity.Core_Product_Segment__c</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
         <field>Opportunity.Core_Architecture_Conversion__c</field>
     </columns>
     <columns>
@@ -208,6 +213,9 @@
         <field>EXP_AMOUNT</field>
     </columns>
     <columns>
+        <field>Opportunity.Core_Risk_Reason__c</field>
+    </columns>
+    <columns>
         <field>Opportunity.Core_At_Risk_Created_Date__c</field>
     </columns>
     <columns>
@@ -220,13 +228,34 @@
         <field>BucketField_12712091</field>
     </columns>
     <filter>
-        <booleanFilter>1 AND 2 AND (3 AND 4) AND 5 AND 6 AND 7</booleanFilter>
+        <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6 AND 7 AND ((8 AND 9 AND 10) OR 11)</booleanFilter>
         <criteriaItems>
             <column>Account.Core_Sales_Groups__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>APJ Sales Territory</value>
+            <value>GMP APJ Sales Territory</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>STAGE_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Qualify,Define,Develop,Design,Design Win,Production Win,Production Lost,Production Cancelled</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OpportunityLineItem.Core_KPI_Date__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>greaterOrEqual</operator>
+            <value>THIS_YEAR</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>INDUSTRY</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Consulting</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Opportunity_Type__c</column>
@@ -234,6 +263,27 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Design: Secondary</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>BucketField_12712091</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Won</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ROLLUP_DESCRIPTION</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Ram</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Product_Segment__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Comms Infra. / Networking,Data Center Computing</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Commissionable__c</column>
@@ -250,44 +300,31 @@
             <value>0</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Opportunity.Core_Approval_Status__c</column>
+            <column>Opportunity.Core_Product_Segment__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Approved</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OWNER_MANAGER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>Swee Hoon,Lai Teng,Paul,Sumner,Batra,Sng,Andrew</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>FULL_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>Naomi,Gina</value>
+            <operator>notEqual</operator>
+            <value>Comms Infra. / Networking,Data Center Computing</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
+        <dateGranularity>Quarter</dateGranularity>
+        <field>OpportunityLineItem.Core_KPI_Date__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>ACCOUNT_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>FULL_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>OWNER_MANAGER</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
-    <groupingsDown>
-        <field>OpportunityLineItem.Core_KPI_Date__c</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
-    <name>Asia-T Partner - Secondary Won</name>
+    <name>APJ T Partner - Secondary Won</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -310,7 +347,7 @@
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
-        <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <interval>INTERVAL_CURY</interval>
+        <dateColumn>CLOSE_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
     </timeFrameFilter>
 </Report>

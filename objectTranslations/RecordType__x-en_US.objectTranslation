@@ -9,12 +9,2172 @@
         <value>Record Types</value>
     </caseValues>
     <fields>
+        <label><!-- Business Process ID --></label>
+        <name>BusinessProcessId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Created By ID --></label>
+        <name>CreatedById__c</name>
+    </fields>
+    <fields>
+        <label><!-- Created Date --></label>
+        <name>CreatedDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Description --></label>
+        <name>Description__c</name>
+    </fields>
+    <fields>
         <label><!-- Record Type Name --></label>
         <name>DeveloperName__c</name>
     </fields>
     <fields>
+        <label><!-- Active --></label>
+        <name>IsActive__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Modified By ID --></label>
+        <name>LastModifiedById__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Modified Date --></label>
+        <name>LastModifiedDate__c</name>
+    </fields>
+    <fields>
         <label><!-- Name --></label>
         <name>Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Namespace Prefix --></label>
+        <name>NamespacePrefix__c</name>
+    </fields>
+    <fields>
+        <label><!-- SObject Type Name --></label>
+        <name>SobjectType__c</name>
+        <picklistValues>
+            <masterLabel>AIError</masterLabel>
+            <translation><!-- AIError --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AIInsightAction</masterLabel>
+            <translation><!-- AIInsightAction --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AIInsightFeedback</masterLabel>
+            <translation><!-- AIInsightFeedback --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AIInsightReason</masterLabel>
+            <translation><!-- AIInsightReason --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AIInsightReasonMLModelFactor</masterLabel>
+            <translation><!-- AIInsightReasonMLModelFactor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AIInsightSource</masterLabel>
+            <translation><!-- AIInsightSource --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AIInsightValue</masterLabel>
+            <translation><!-- AIInsightValue --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AIMetric</masterLabel>
+            <translation><!-- AIMetric --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AIRecordInsight</masterLabel>
+            <translation><!-- AIRecordInsight --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AIState</masterLabel>
+            <translation><!-- AIState --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AITenantProvisionedFeature</masterLabel>
+            <translation><!-- AITenantProvisionedFeature --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Account</masterLabel>
+            <translation><!-- Account --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AccountBrand</masterLabel>
+            <translation><!-- AccountBrand --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Account_Metrics__c</masterLabel>
+            <translation><!-- Account_Metrics__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ActionCadenceAsyncJob</masterLabel>
+            <translation><!-- ActionCadenceAsyncJob --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AgentWork</masterLabel>
+            <translation><!-- AgentWork --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AgentWorkSkill</masterLabel>
+            <translation><!-- AgentWorkSkill --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Announcement</masterLabel>
+            <translation><!-- Announcement --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ApiAnomalyEventStore</masterLabel>
+            <translation><!-- ApiAnomalyEventStore --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Apigee_Wrapper__c</masterLabel>
+            <translation><!-- Apigee_Wrapper__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AppAnalyticsQueryRequest</masterLabel>
+            <translation><!-- AppAnalyticsQueryRequest --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Asset</masterLabel>
+            <translation><!-- Asset --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AssetRelationship</masterLabel>
+            <translation><!-- AssetRelationship --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AssistantProgress</masterLabel>
+            <translation><!-- AssistantProgress --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AssistantStepProgress</masterLabel>
+            <translation><!-- AssistantStepProgress --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AssociatedLocation</masterLabel>
+            <translation><!-- AssociatedLocation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Attachment_Storage__c</masterLabel>
+            <translation><!-- Attachment_Storage__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Audit_Trial_Custom__c</masterLabel>
+            <translation><!-- Audit_Trial_Custom__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AuthorizationForm</masterLabel>
+            <translation><!-- AuthorizationForm --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AuthorizationFormConsent</masterLabel>
+            <translation><!-- AuthorizationFormConsent --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AuthorizationFormDataUse</masterLabel>
+            <translation><!-- AuthorizationFormDataUse --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AuthorizationFormText</masterLabel>
+            <translation><!-- AuthorizationFormText --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BLND_DFAC_Shared_View__c</masterLabel>
+            <translation><!-- BLND_DFAC_Shared_View__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BLND_DFCS_Carousel__c</masterLabel>
+            <translation><!-- BLND_DFCS_Carousel__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BLND_DFCS_Slide__c</masterLabel>
+            <translation><!-- BLND_DFCS_Slide__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BLND_DFDT_Action_Item__c</masterLabel>
+            <translation><!-- BLND_DFDT_Action_Item__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BLND_DFDT_Discussion__c</masterLabel>
+            <translation><!-- BLND_DFDT_Discussion__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BLND_DFDT_Highlight__c</masterLabel>
+            <translation><!-- BLND_DFDT_Highlight__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BLND_DFDT_Issue__c</masterLabel>
+            <translation><!-- BLND_DFDT_Issue__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BLND_DFDT_Linker__c</masterLabel>
+            <translation><!-- BLND_DFDT_Linker__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BLND_DFDT_Project__c</masterLabel>
+            <translation><!-- BLND_DFDT_Project__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BLND_DFDT_Resource__c</masterLabel>
+            <translation><!-- BLND_DFDT_Resource__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BLND_DFDT_Task__c</masterLabel>
+            <translation><!-- BLND_DFDT_Task__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BLND_DFFF_Form__c</masterLabel>
+            <translation><!-- BLND_DFFF_Form__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BLND_DFFF_Page__c</masterLabel>
+            <translation><!-- BLND_DFFF_Page__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BLND_DFTE_Expense__c</masterLabel>
+            <translation><!-- BLND_DFTE_Expense__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BLND_DFTE_Time__c</masterLabel>
+            <translation><!-- BLND_DFTE_Time__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BLND_DFTT_Document__c</masterLabel>
+            <translation><!-- BLND_DFTT_Document__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BLND_DFTT_Entity_Info__c</masterLabel>
+            <translation><!-- BLND_DFTT_Entity_Info__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BLND_DFTT_Folder__c</masterLabel>
+            <translation><!-- BLND_DFTT_Folder__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bot_Switch_Configuration__c</masterLabel>
+            <translation><!-- Bot_Switch_Configuration__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BusinessBrand</masterLabel>
+            <translation><!-- BusinessBrand --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CalendarModel</masterLabel>
+            <translation><!-- CalendarModel --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CalendarView</masterLabel>
+            <translation><!-- CalendarView --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Campaign</masterLabel>
+            <translation><!-- Campaign --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CampaignMember</masterLabel>
+            <translation><!-- CampaignMember --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Case</masterLabel>
+            <translation><!-- Case --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CaseExternalDocument</masterLabel>
+            <translation><!-- CaseExternalDocument --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Case_Metrics__c</masterLabel>
+            <translation><!-- Case_Metrics__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Case_Owner_Contact_Center_Configuration__c</masterLabel>
+            <translation><!-- Case_Owner_Contact_Center_Configuration__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ChannelProgram</masterLabel>
+            <translation><!-- ChannelProgram --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ChannelProgramLevel</masterLabel>
+            <translation><!-- ChannelProgramLevel --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ChannelProgramMember</masterLabel>
+            <translation><!-- ChannelProgramMember --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Clicktools_Survey_Response__c</masterLabel>
+            <translation><!-- Clicktools_Survey_Response__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CollabDocumentMetric</masterLabel>
+            <translation><!-- CollabDocumentMetric --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CollabDocumentMetricRecord</masterLabel>
+            <translation><!-- CollabDocumentMetricRecord --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CollabTemplateMetric</masterLabel>
+            <translation><!-- CollabTemplateMetric --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CollabTemplateMetricRecord</masterLabel>
+            <translation><!-- CollabTemplateMetricRecord --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CollabUserEngagementMetric</masterLabel>
+            <translation><!-- CollabUserEngagementMetric --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CollabUserEngmtRecordLink</masterLabel>
+            <translation><!-- CollabUserEngmtRecordLink --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CollaborationGroup</masterLabel>
+            <translation><!-- CollaborationGroup --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CollaborationGroupRank</masterLabel>
+            <translation><!-- CollaborationGroupRank --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CollaborationGroupRecord</masterLabel>
+            <translation><!-- CollaborationGroupRecord --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CommSubscription</masterLabel>
+            <translation><!-- CommSubscription --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CommSubscriptionChannelType</masterLabel>
+            <translation><!-- CommSubscriptionChannelType --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CommSubscriptionConsent</masterLabel>
+            <translation><!-- CommSubscriptionConsent --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CommSubscriptionTiming</masterLabel>
+            <translation><!-- CommSubscriptionTiming --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CommerceSearchDocChangelist</masterLabel>
+            <translation><!-- CommerceSearchDocChangelist --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CommerceSearchIndexInfo</masterLabel>
+            <translation><!-- CommerceSearchIndexInfo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CommerceSearchIndexLog</masterLabel>
+            <translation><!-- CommerceSearchIndexLog --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CommerceSearchIndexPayload</masterLabel>
+            <translation><!-- CommerceSearchIndexPayload --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CommerceSearchResultsRule</masterLabel>
+            <translation><!-- CommerceSearchResultsRule --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ComponentResponseCache</masterLabel>
+            <translation><!-- ComponentResponseCache --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Contact</masterLabel>
+            <translation><!-- Contact --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ContactPointAddress</masterLabel>
+            <translation><!-- ContactPointAddress --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ContactPointConsent</masterLabel>
+            <translation><!-- ContactPointConsent --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ContactPointEmail</masterLabel>
+            <translation><!-- ContactPointEmail --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ContactPointPhone</masterLabel>
+            <translation><!-- ContactPointPhone --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ContactPointTypeConsent</masterLabel>
+            <translation><!-- ContactPointTypeConsent --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ContactRequest</masterLabel>
+            <translation><!-- ContactRequest --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ContentBuilderChannel</masterLabel>
+            <translation><!-- ContentBuilderChannel --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ContentDocumentListViewMapping</masterLabel>
+            <translation><!-- ContentDocumentListViewMapping --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ContentFolderDistribution</masterLabel>
+            <translation><!-- ContentFolderDistribution --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ContentVersion</masterLabel>
+            <translation><!-- ContentVersion --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Contract</masterLabel>
+            <translation><!-- Contract --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ContractLineItem</masterLabel>
+            <translation><!-- ContractLineItem --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ConvCoachingRecommendation</masterLabel>
+            <translation><!-- ConvCoachingRecommendation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ConversationContextEntry</masterLabel>
+            <translation><!-- ConversationContextEntry --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_CAJunction__c</masterLabel>
+            <translation><!-- Core_CAJunction__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_External_System_Field_Mapping__c</masterLabel>
+            <translation><!-- Core_External_System_Field_Mapping__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_External_System_Synclog__c</masterLabel>
+            <translation><!-- Core_External_System_Synclog__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_External_System_Value_Mapping__c</masterLabel>
+            <translation><!-- Core_External_System_Value_Mapping__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_External_System__c</masterLabel>
+            <translation><!-- Core_External_System__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_Integration_Inbound_Message__c</masterLabel>
+            <translation><!-- Core_Integration_Inbound_Message__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_Integration_Outbound_Message__c</masterLabel>
+            <translation><!-- Core_Integration_Outbound_Message__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_Log_Entry__c</masterLabel>
+            <translation><!-- Core_Log_Entry__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_RestAPI_Log_Transaction__c</masterLabel>
+            <translation><!-- Core_RestAPI_Log_Transaction__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_eRPM_AEngagement__c</masterLabel>
+            <translation><!-- Core_eRPM_AEngagement__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_eRPM_Account__c</masterLabel>
+            <translation><!-- Core_eRPM_Account__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_eRPM_ExtendedAttrib__c</masterLabel>
+            <translation><!-- Core_eRPM_ExtendedAttrib__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_eRPM_IEngagement__c</masterLabel>
+            <translation><!-- Core_eRPM_IEngagement__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Courier1__Courier_Schedule__c</masterLabel>
+            <translation><!-- Courier1__Courier_Schedule__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Courier1__Recipient__c</masterLabel>
+            <translation><!-- Courier1__Recipient__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CredentialStuffingEventStore</masterLabel>
+            <translation><!-- CredentialStuffingEventStore --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer</masterLabel>
+            <translation><!-- Customer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer_BAG_Account_Association__c</masterLabel>
+            <translation><!-- Customer_BAG_Account_Association__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer_BAG_CMF_Association__c</masterLabel>
+            <translation><!-- Customer_BAG_CMF_Association__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer_BAG_Contact_Association__c</masterLabel>
+            <translation><!-- Customer_BAG_Contact_Association__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer_Business_Account_Group__c</masterLabel>
+            <translation><!-- Customer_Business_Account_Group__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer_CMF_Account_Association__c</masterLabel>
+            <translation><!-- Customer_CMF_Account_Association__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer_CMF__c</masterLabel>
+            <translation><!-- Customer_CMF__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer_Distribution_Channel__c</masterLabel>
+            <translation><!-- Customer_Distribution_Channel__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer_Freight_Payment_Type__c</masterLabel>
+            <translation><!-- Customer_Freight_Payment_Type__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer_International_Commerce_Term__c</masterLabel>
+            <translation><!-- Customer_International_Commerce_Term__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer_Partner__c</masterLabel>
+            <translation><!-- Customer_Partner__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer_Physical_Address__c</masterLabel>
+            <translation><!-- Customer_Physical_Address__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer_Return_Receipt_Condition__c</masterLabel>
+            <translation><!-- Customer_Return_Receipt_Condition__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer_Return_Service_Site__c</masterLabel>
+            <translation><!-- Customer_Return_Service_Site__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer_Sales_Area__c</masterLabel>
+            <translation><!-- Customer_Sales_Area__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer_Sales_Issue_Request_Line__c</masterLabel>
+            <translation><!-- Customer_Sales_Issue_Request_Line__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer_Sales_Issue_Request_Subline__c</masterLabel>
+            <translation><!-- Customer_Sales_Issue_Request_Subline__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer_Sales_Issue_Request__c</masterLabel>
+            <translation><!-- Customer_Sales_Issue_Request__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer_Sales_Organization__c</masterLabel>
+            <translation><!-- Customer_Sales_Organization__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DFSS_Permissions__c</masterLabel>
+            <translation><!-- DFSS_Permissions__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DFSS_SnapShot_Item__c</masterLabel>
+            <translation><!-- DFSS_SnapShot_Item__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DFSS_SnapShot_Job_List__c</masterLabel>
+            <translation><!-- DFSS_SnapShot_Job_List__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DFSS_SnapShot_Push__c</masterLabel>
+            <translation><!-- DFSS_SnapShot_Push__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DataAssetSemanticGraphEdge</masterLabel>
+            <translation><!-- DataAssetSemanticGraphEdge --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DataAssetUsageTrackingInfo</masterLabel>
+            <translation><!-- DataAssetUsageTrackingInfo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DataPrepServiceLocator</masterLabel>
+            <translation><!-- DataPrepServiceLocator --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DataUseLegalBasis</masterLabel>
+            <translation><!-- DataUseLegalBasis --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DataUsePurpose</masterLabel>
+            <translation><!-- DataUsePurpose --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DataflowTriggerEvent</masterLabel>
+            <translation><!-- DataflowTriggerEvent --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DeflectionSignal</masterLabel>
+            <translation><!-- DeflectionSignal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DelegatedAccount</masterLabel>
+            <translation><!-- DelegatedAccount --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Depot_Configuration__c</masterLabel>
+            <translation><!-- Depot_Configuration__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Destination__c</masterLabel>
+            <translation><!-- Destination__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DuplicateErrorLog</masterLabel>
+            <translation><!-- DuplicateErrorLog --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DuplicateRecordItem</masterLabel>
+            <translation><!-- DuplicateRecordItem --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DuplicateRecordSet</masterLabel>
+            <translation><!-- DuplicateRecordSet --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EHM_BOLO_Alert__c</masterLabel>
+            <translation><!-- EHM_BOLO_Alert__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EmailThreadingToken</masterLabel>
+            <translation><!-- EmailThreadingToken --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EngagementChannelType</masterLabel>
+            <translation><!-- EngagementChannelType --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Entitlement</masterLabel>
+            <translation><!-- Entitlement --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EntitlementContact</masterLabel>
+            <translation><!-- EntitlementContact --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Environment_Detail_Value__c</masterLabel>
+            <translation><!-- Environment_Detail_Value__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Event</masterLabel>
+            <translation><!-- Event --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EventRelayFeedback</masterLabel>
+            <translation><!-- EventRelayFeedback --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ExpressionFilter</masterLabel>
+            <translation><!-- ExpressionFilter --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ExpressionFilterCriteria</masterLabel>
+            <translation><!-- ExpressionFilterCriteria --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Field_Trip__Field_Analysis__c</masterLabel>
+            <translation><!-- Field_Trip__Field_Analysis__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Field_Trip__Field_Analytic_Config__c</masterLabel>
+            <translation><!-- Field_Trip__Field_Analytic_Config__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Field_Trip__Object_Analysis__c</masterLabel>
+            <translation><!-- Field_Trip__Object_Analysis__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FileBasedDataImport</masterLabel>
+            <translation><!-- FileBasedDataImport --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FileInspectionResult</masterLabel>
+            <translation><!-- FileInspectionResult --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FileSearchActivity</masterLabel>
+            <translation><!-- FileSearchActivity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FlowExecutionEventMetric</masterLabel>
+            <translation><!-- FlowExecutionEventMetric --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FlowRecord</masterLabel>
+            <translation><!-- FlowRecord --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FlowRecordElement</masterLabel>
+            <translation><!-- FlowRecordElement --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FlowRecordRelation</masterLabel>
+            <translation><!-- FlowRecordRelation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FlowRecordVersion</masterLabel>
+            <translation><!-- FlowRecordVersion --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FlowRecordVersionOccurrence</masterLabel>
+            <translation><!-- FlowRecordVersionOccurrence --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FlowStageRelation</masterLabel>
+            <translation><!-- FlowStageRelation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FlowTestResult</masterLabel>
+            <translation><!-- FlowTestResult --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Fuzzy_Match__c</masterLabel>
+            <translation><!-- Fuzzy_Match__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GBLite_GB_Global_Meta__c</masterLabel>
+            <translation><!-- GBLite_GB_Global_Meta__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GeoCountry</masterLabel>
+            <translation><!-- GeoCountry --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GuestUserAnomalyEventStore</masterLabel>
+            <translation><!-- GuestUserAnomalyEventStore --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HawkingTenantProvStatus</masterLabel>
+            <translation><!-- HawkingTenantProvStatus --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_AVM_Chat_Session_Detail__c</masterLabel>
+            <translation><!-- ICS_AVM_Chat_Session_Detail__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_AVM_Content_Ingestion_Status__c</masterLabel>
+            <translation><!-- ICS_AVM_Content_Ingestion_Status__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_Admin_Role_Request__c</masterLabel>
+            <translation><!-- ICS_Admin_Role_Request__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_Automated_Testing_Queue__c</masterLabel>
+            <translation><!-- ICS_Automated_Testing_Queue__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_CIM_Inbound_Message__c</masterLabel>
+            <translation><!-- ICS_CIM_Inbound_Message__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_CIM_Outbound_Message__c</masterLabel>
+            <translation><!-- ICS_CIM_Outbound_Message__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_CX_Deflected_Object__c</masterLabel>
+            <translation><!-- ICS_CX_Deflected_Object__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_CX_MyIntel_Outbound_Message__c</masterLabel>
+            <translation><!-- ICS_CX_MyIntel_Outbound_Message__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_CX_Troubleshooting_Answer_Help_links__c</masterLabel>
+            <translation><!-- ICS_CX_Troubleshooting_Answer_Help_links__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_CX_Troubleshooting_Answer__c</masterLabel>
+            <translation><!-- ICS_CX_Troubleshooting_Answer__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_CX_Troubleshooting_Q_and_A_detail__c</masterLabel>
+            <translation><!-- ICS_CX_Troubleshooting_Q_and_A_detail__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_CX_Troubleshooting_Questions__c</masterLabel>
+            <translation><!-- ICS_CX_Troubleshooting_Questions__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_Case_Chatkey_Wrapper__c</masterLabel>
+            <translation><!-- ICS_Case_Chatkey_Wrapper__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_Case_Environment_Detail__c</masterLabel>
+            <translation><!-- ICS_Case_Environment_Detail__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_Case_Interaction__c</masterLabel>
+            <translation><!-- ICS_Case_Interaction__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_Category_Master__c</masterLabel>
+            <translation><!-- ICS_Category_Master__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_Category__c</masterLabel>
+            <translation><!-- ICS_Category__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_CustomerMaster_Integration_Log_Entry__c</masterLabel>
+            <translation><!-- ICS_CustomerMaster_Integration_Log_Entry__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_Customer_Care_Requests__c</masterLabel>
+            <translation><!-- ICS_Customer_Care_Requests__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_DR_Dispatch_Request_Line_Item__c</masterLabel>
+            <translation><!-- ICS_DR_Dispatch_Request_Line_Item__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_DR_Dispatch_Request__c</masterLabel>
+            <translation><!-- ICS_DR_Dispatch_Request__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_Delivery_Note__c</masterLabel>
+            <translation><!-- ICS_Delivery_Note__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_ECA_Inbound_Message__c</masterLabel>
+            <translation><!-- ICS_ECA_Inbound_Message__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_Entitled_Asset__c</masterLabel>
+            <translation><!-- ICS_Entitled_Asset__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_Environment_Detail_Answer__c</masterLabel>
+            <translation><!-- ICS_Environment_Detail_Answer__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_Environment_Detail_Question__c</masterLabel>
+            <translation><!-- ICS_Environment_Detail_Question__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_FRM_AllTopic__c</masterLabel>
+            <translation><!-- ICS_FRM_AllTopic__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_FRM_Approved_Messages__c</masterLabel>
+            <translation><!-- ICS_FRM_Approved_Messages__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_FRM_Article_Topic_Junction__c</masterLabel>
+            <translation><!-- ICS_FRM_Article_Topic_Junction__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_FRM_Article__c</masterLabel>
+            <translation><!-- ICS_FRM_Article__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_FRM_BestAnswer__c</masterLabel>
+            <translation><!-- ICS_FRM_BestAnswer__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_FRM_Forum_Announcement__c</masterLabel>
+            <translation><!-- ICS_FRM_Forum_Announcement__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_FRM_NavigationTopic__c</masterLabel>
+            <translation><!-- ICS_FRM_NavigationTopic__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_FRM_Related_Topic_Mapping__c</masterLabel>
+            <translation><!-- ICS_FRM_Related_Topic_Mapping__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_FRM_TopicMapping__c</masterLabel>
+            <translation><!-- ICS_FRM_TopicMapping__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_IPA_Account_Channel_Membership__c</masterLabel>
+            <translation><!-- ICS_IPA_Account_Channel_Membership__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_IPA_Account_Group_Member__c</masterLabel>
+            <translation><!-- ICS_IPA_Account_Group_Member__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_IPA_Integration_Data__c</masterLabel>
+            <translation><!-- ICS_IPA_Integration_Data__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_IPA_Service_Contract_Line_items__c</masterLabel>
+            <translation><!-- ICS_IPA_Service_Contract_Line_items__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_Issue_Master__c</masterLabel>
+            <translation><!-- ICS_Issue_Master__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_Issue__c</masterLabel>
+            <translation><!-- ICS_Issue__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_KCS_KM_Hashtag__c</masterLabel>
+            <translation><!-- ICS_KCS_KM_Hashtag__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_KM_Archival_Request_Log__c</masterLabel>
+            <translation><!-- ICS_KM_Archival_Request_Log__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_KM_Article_Product_Report__c</masterLabel>
+            <translation><!-- ICS_KM_Article_Product_Report__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_KM_Article_Publishing_Note__c</masterLabel>
+            <translation><!-- ICS_KM_Article_Publishing_Note__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_KM_Article_Review_Detail__c</masterLabel>
+            <translation><!-- ICS_KM_Article_Review_Detail__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_KM_Coaching__c</masterLabel>
+            <translation><!-- ICS_KM_Coaching__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_KM_Documents__c</masterLabel>
+            <translation><!-- ICS_KM_Documents__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_KM_External_Promotion_Tracker__c</masterLabel>
+            <translation><!-- ICS_KM_External_Promotion_Tracker__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_KM_IPass_Payload__c</masterLabel>
+            <translation><!-- ICS_KM_IPass_Payload__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_KM_KCS_Entitlement__c</masterLabel>
+            <translation><!-- ICS_KM_KCS_Entitlement__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_KM_Launch__c</masterLabel>
+            <translation><!-- ICS_KM_Launch__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_KM_Log_Entry__c</masterLabel>
+            <translation><!-- ICS_KM_Log_Entry__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_KM_PSG_Migration_Reference_Log__c</masterLabel>
+            <translation><!-- ICS_KM_PSG_Migration_Reference_Log__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_KM_PSG_Open_Source_Software__c</masterLabel>
+            <translation><!-- ICS_KM_PSG_Open_Source_Software__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_KM_PSG_Product_Version_Link__c</masterLabel>
+            <translation><!-- ICS_KM_PSG_Product_Version_Link__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_KM_PSG_Product_Version__c</masterLabel>
+            <translation><!-- ICS_KM_PSG_Product_Version__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_KM_Placeholder__c</masterLabel>
+            <translation><!-- ICS_KM_Placeholder__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_KM_Product_Article_Link__c</masterLabel>
+            <translation><!-- ICS_KM_Product_Article_Link__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_KM_Product_Hierarchy_Audit__c</masterLabel>
+            <translation><!-- ICS_KM_Product_Hierarchy_Audit__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_KM_Product__c</masterLabel>
+            <translation><!-- ICS_KM_Product__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_KM_Report_Records__c</masterLabel>
+            <translation><!-- ICS_KM_Report_Records__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_Opt_in_for_Private_Information__c</masterLabel>
+            <translation><!-- ICS_Opt_in_for_Private_Information__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_PFS_Audit_Trail__c</masterLabel>
+            <translation><!-- ICS_PFS_Audit_Trail__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_PFS_Integration_Data__c</masterLabel>
+            <translation><!-- ICS_PFS_Integration_Data__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_Product_Category_Issue__c</masterLabel>
+            <translation><!-- ICS_Product_Category_Issue__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_Product_Category__c</masterLabel>
+            <translation><!-- ICS_Product_Category__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_Product_License__c</masterLabel>
+            <translation><!-- ICS_Product_License__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_Queue_Email_Subscriptions__c</masterLabel>
+            <translation><!-- ICS_Queue_Email_Subscriptions__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_STOWD_Status_Ownership_Duration__c</masterLabel>
+            <translation><!-- ICS_STOWD_Status_Ownership_Duration__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_Thin_Case_Environment_Detail__c</masterLabel>
+            <translation><!-- ICS_Thin_Case_Environment_Detail__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_Thin_Case__c</masterLabel>
+            <translation><!-- ICS_Thin_Case__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_WRR_Prediction__c</masterLabel>
+            <translation><!-- ICS_WRR_Prediction__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_WR_Customer_Warranty_Config_Matrix__c</masterLabel>
+            <translation><!-- ICS_WR_Customer_Warranty_Config_Matrix__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_WR_Depot_Communication__c</masterLabel>
+            <translation><!-- ICS_WR_Depot_Communication__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_WR_Depot_GetRma_Log__c</masterLabel>
+            <translation><!-- ICS_WR_Depot_GetRma_Log__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_WR_Depot_Identification__c</masterLabel>
+            <translation><!-- ICS_WR_Depot_Identification__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_WR_Depot_Screening_Details__c</masterLabel>
+            <translation><!-- ICS_WR_Depot_Screening_Details__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_WR_Depot_Stock__c</masterLabel>
+            <translation><!-- ICS_WR_Depot_Stock__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_WR_Depot__c</masterLabel>
+            <translation><!-- ICS_WR_Depot__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_WR_Email_Notifications__c</masterLabel>
+            <translation><!-- ICS_WR_Email_Notifications__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_WR_Entitlement_Configuration__c</masterLabel>
+            <translation><!-- ICS_WR_Entitlement_Configuration__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_WR_Fuzzy_Shipping__c</masterLabel>
+            <translation><!-- ICS_WR_Fuzzy_Shipping__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_WR_Historical_Warranty_Return__c</masterLabel>
+            <translation><!-- ICS_WR_Historical_Warranty_Return__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_WR_Integration_Queue__c</masterLabel>
+            <translation><!-- ICS_WR_Integration_Queue__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_WR_MMID_BU_Hierarchy__c</masterLabel>
+            <translation><!-- ICS_WR_MMID_BU_Hierarchy__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_WR_MM_Customer_Part__c</masterLabel>
+            <translation><!-- ICS_WR_MM_Customer_Part__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_WR_MM_Stocking__c</masterLabel>
+            <translation><!-- ICS_WR_MM_Stocking__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_WR_Processor_Plan_Activation_Code__c</masterLabel>
+            <translation><!-- ICS_WR_Processor_Plan_Activation_Code__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_WR_Processor_Return_Frequency__c</masterLabel>
+            <translation><!-- ICS_WR_Processor_Return_Frequency__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_WR_Processor_Return_Hotlist__c</masterLabel>
+            <translation><!-- ICS_WR_Processor_Return_Hotlist__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_WR_Shipping_Address__c</masterLabel>
+            <translation><!-- ICS_WR_Shipping_Address__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_WR_Status_Log__c</masterLabel>
+            <translation><!-- ICS_WR_Status_Log__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_WR_Stocking__c</masterLabel>
+            <translation><!-- ICS_WR_Stocking__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_WR_Warranty_Return_LineItem_Detail__c</masterLabel>
+            <translation><!-- ICS_WR_Warranty_Return_LineItem_Detail__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_WR_Warranty_Return_Line_Item__c</masterLabel>
+            <translation><!-- ICS_WR_Warranty_Return_Line_Item__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_WR_Warranty_Return__c</masterLabel>
+            <translation><!-- ICS_WR_Warranty_Return__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_WR_Warranty_Returns_Contact_Info__c</masterLabel>
+            <translation><!-- ICS_WR_Warranty_Returns_Contact_Info__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_eRPM_Inbound_Message__c</masterLabel>
+            <translation><!-- ICS_eRPM_Inbound_Message__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS_eRPM_Outbound_Message__c</masterLabel>
+            <translation><!-- ICS_eRPM_Outbound_Message__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IQOpportunityEmailAddress</masterLabel>
+            <translation><!-- IQOpportunityEmailAddress --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Idea</masterLabel>
+            <translation><!-- Idea --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Image</masterLabel>
+            <translation><!-- Image --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>InboundSocialPost</masterLabel>
+            <translation><!-- InboundSocialPost --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Individual</masterLabel>
+            <translation><!-- Individual --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel_eRetailer_Monitoring__c</masterLabel>
+            <translation><!-- Intel_eRetailer_Monitoring__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Isvc_Wireless_bulk_email__c</masterLabel>
+            <translation><!-- Isvc_Wireless_bulk_email__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Item_Service_Type_And_Receipt_Cndn_Assn__c</masterLabel>
+            <translation><!-- Item_Service_Type_And_Receipt_Cndn_Assn__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>KnowledgeMigrationStat</masterLabel>
+            <translation><!-- KnowledgeMigrationStat --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Knowledge__kav</masterLabel>
+            <translation><!-- Knowledge__kav --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LanguageIO__CustomField__c</masterLabel>
+            <translation><!-- LanguageIO__CustomField__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LanguageIO__LinguistNowCaseCommentDraft__c</masterLabel>
+            <translation><!-- LanguageIO__LinguistNowCaseCommentDraft__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LanguageIO__LinguistNowCaseCommentExtended__c</masterLabel>
+            <translation><!-- LanguageIO__LinguistNowCaseCommentExtended__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LanguageIO__LinguistNowThread__c</masterLabel>
+            <translation><!-- LanguageIO__LinguistNowThread__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LanguageIO__LinguistNowTranslation__c</masterLabel>
+            <translation><!-- LanguageIO__LinguistNowTranslation__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lead</masterLabel>
+            <translation><!-- Lead --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LearningAssignment</masterLabel>
+            <translation><!-- LearningAssignment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LearningAssignmentProgress</masterLabel>
+            <translation><!-- LearningAssignmentProgress --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LearningItem</masterLabel>
+            <translation><!-- LearningItem --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LearningLink</masterLabel>
+            <translation><!-- LearningLink --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LearningLinkProgress</masterLabel>
+            <translation><!-- LearningLinkProgress --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LiSFIntegration__Community_Postback_Comment__c</masterLabel>
+            <translation><!-- LiSFIntegration__Community_Postback_Comment__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LiSFIntegration__Li_Community_User__c</masterLabel>
+            <translation><!-- LiSFIntegration__Li_Community_User__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LiSFIntegration__Private_Message__c</masterLabel>
+            <translation><!-- LiSFIntegration__Private_Message__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LiSFIntegration__RelatedContent__c</masterLabel>
+            <translation><!-- LiSFIntegration__RelatedContent__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LinkedArticle</masterLabel>
+            <translation><!-- LinkedArticle --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ListEmail</masterLabel>
+            <translation><!-- ListEmail --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ListEmailIndividualRecipient</masterLabel>
+            <translation><!-- ListEmailIndividualRecipient --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ListEmailRecipientSource</masterLabel>
+            <translation><!-- ListEmailRecipientSource --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ListEmailSentResult</masterLabel>
+            <translation><!-- ListEmailSentResult --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LiveAgentSession</masterLabel>
+            <translation><!-- LiveAgentSession --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LiveChatFileToken</masterLabel>
+            <translation><!-- LiveChatFileToken --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LiveChatTranscript</masterLabel>
+            <translation><!-- LiveChatTranscript --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Location</masterLabel>
+            <translation><!-- Location --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LocationTrustMeasure</masterLabel>
+            <translation><!-- LocationTrustMeasure --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Location_Country__c</masterLabel>
+            <translation><!-- Location_Country__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Location_Geography__c</masterLabel>
+            <translation><!-- Location_Geography__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Location_Plant__c</masterLabel>
+            <translation><!-- Location_Plant__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LogLicenseUpdates</masterLabel>
+            <translation><!-- LogLicenseUpdates --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MLMigration</masterLabel>
+            <translation><!-- MLMigration --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MLModel</masterLabel>
+            <translation><!-- MLModel --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MLModelFactor</masterLabel>
+            <translation><!-- MLModelFactor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MLModelFactorComponent</masterLabel>
+            <translation><!-- MLModelFactorComponent --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MLModelMetric</masterLabel>
+            <translation><!-- MLModelMetric --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Macro</masterLabel>
+            <translation><!-- Macro --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MacroAction</masterLabel>
+            <translation><!-- MacroAction --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MacroInstruction</masterLabel>
+            <translation><!-- MacroInstruction --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MacroUsage</masterLabel>
+            <translation><!-- MacroUsage --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MalformedTemplateTracker</masterLabel>
+            <translation><!-- MalformedTemplateTracker --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MlAppMigrationStatus</masterLabel>
+            <translation><!-- MlAppMigrationStatus --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MlFeatureValueMetric</masterLabel>
+            <translation><!-- MlFeatureValueMetric --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MobileHomeConfiguration</masterLabel>
+            <translation><!-- MobileHomeConfiguration --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NetworkFeedResponseMetric</masterLabel>
+            <translation><!-- NetworkFeedResponseMetric --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NetworkMemberChunk</masterLabel>
+            <translation><!-- NetworkMemberChunk --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NetworkSearchQueryFrequency</masterLabel>
+            <translation><!-- NetworkSearchQueryFrequency --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NetworkUserHistoryRecent</masterLabel>
+            <translation><!-- NetworkUserHistoryRecent --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ObjectMetadataTag</masterLabel>
+            <translation><!-- ObjectMetadataTag --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ObjectRelatedUrl</masterLabel>
+            <translation><!-- ObjectRelatedUrl --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Opportunity</masterLabel>
+            <translation><!-- Opportunity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OrgDeleteRequest</masterLabel>
+            <translation><!-- OrgDeleteRequest --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OrgMetric</masterLabel>
+            <translation><!-- OrgMetric --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OrgMetricScanResult</masterLabel>
+            <translation><!-- OrgMetricScanResult --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OrgMetricScanSummary</masterLabel>
+            <translation><!-- OrgMetricScanSummary --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OutOfOffice</masterLabel>
+            <translation><!-- OutOfOffice --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PageContentAssignment</masterLabel>
+            <translation><!-- PageContentAssignment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PartnerFundAllocation</masterLabel>
+            <translation><!-- PartnerFundAllocation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PartnerFundClaim</masterLabel>
+            <translation><!-- PartnerFundClaim --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PartnerFundRequest</masterLabel>
+            <translation><!-- PartnerFundRequest --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PartnerMarketingBudget</masterLabel>
+            <translation><!-- PartnerMarketingBudget --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PartyConsent</masterLabel>
+            <translation><!-- PartyConsent --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PendingServiceRouting</masterLabel>
+            <translation><!-- PendingServiceRouting --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PendingServiceRoutingInteractionInfo</masterLabel>
+            <translation><!-- PendingServiceRoutingInteractionInfo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PersonalizationResource</masterLabel>
+            <translation><!-- PersonalizationResource --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Physical_Address_Contact__c</masterLabel>
+            <translation><!-- Physical_Address_Contact__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pricebook2</masterLabel>
+            <translation><!-- Pricebook2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ProcessException</masterLabel>
+            <translation><!-- ProcessException --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Product2</masterLabel>
+            <translation><!-- Product2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Product_Heap_Analysis__c</masterLabel>
+            <translation><!-- Product_Heap_Analysis__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Product_Hierarchy__c</masterLabel>
+            <translation><!-- Product_Hierarchy__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Product_Inbound_Staging__c</masterLabel>
+            <translation><!-- Product_Inbound_Staging__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Product_Staging__c</masterLabel>
+            <translation><!-- Product_Staging__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PromptAction</masterLabel>
+            <translation><!-- PromptAction --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PromptError</masterLabel>
+            <translation><!-- PromptError --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Question</masterLabel>
+            <translation><!-- Question --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>QuickText</masterLabel>
+            <translation><!-- QuickText --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>QuickTextUsage</masterLabel>
+            <translation><!-- QuickTextUsage --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>QuickText_Configuration__c</masterLabel>
+            <translation><!-- QuickText_Configuration__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>R4C_Email_Message__c</masterLabel>
+            <translation><!-- R4C_Email_Message__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>R4C_Error_Record__c</masterLabel>
+            <translation><!-- R4C_Error_Record__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>R4C_Notification_Preferences__c</masterLabel>
+            <translation><!-- R4C_Notification_Preferences__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>R4C_Translation__c</masterLabel>
+            <translation><!-- R4C_Translation__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>R4C_UCD_Inbound_Message__c</masterLabel>
+            <translation><!-- R4C_UCD_Inbound_Message__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RebatePayoutSnapshot</masterLabel>
+            <translation><!-- RebatePayoutSnapshot --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Recommendation</masterLabel>
+            <translation><!-- Recommendation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RecommendationReaction</masterLabel>
+            <translation><!-- RecommendationReaction --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RecommendationResponse</masterLabel>
+            <translation><!-- RecommendationResponse --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RecordAction</masterLabel>
+            <translation><!-- RecordAction --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RecordMergeHistory</masterLabel>
+            <translation><!-- RecordMergeHistory --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RecordOrigin</masterLabel>
+            <translation><!-- RecordOrigin --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ReleaseUpdateStep</masterLabel>
+            <translation><!-- ReleaseUpdateStep --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ReleaseUpdateStepLog</masterLabel>
+            <translation><!-- ReleaseUpdateStepLog --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ReportAnomalyEventStore</masterLabel>
+            <translation><!-- ReportAnomalyEventStore --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ReportResultBlob</masterLabel>
+            <translation><!-- ReportResultBlob --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RequestsForAccessSIQ</masterLabel>
+            <translation><!-- RequestsForAccessSIQ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>STOWD__Status_Ownership_Duration__c</masterLabel>
+            <translation><!-- STOWD__Status_Ownership_Duration__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sales_Issue_API_Message_Log__c</masterLabel>
+            <translation><!-- Sales_Issue_API_Message_Log__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sales_Issue_Customer_Return_Reason__c</masterLabel>
+            <translation><!-- Sales_Issue_Customer_Return_Reason__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sales_Issue_Disti_Channel_Prd_Status__c</masterLabel>
+            <translation><!-- Sales_Issue_Disti_Channel_Prd_Status__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sales_Issue_Matrix__c</masterLabel>
+            <translation><!-- Sales_Issue_Matrix__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sales_Issue_Plant_Contact__c</masterLabel>
+            <translation><!-- Sales_Issue_Plant_Contact__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sales_Issue_Return_Remedy_Type__c</masterLabel>
+            <translation><!-- Sales_Issue_Return_Remedy_Type__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sales_Issue_Return_Request_Status__c</masterLabel>
+            <translation><!-- Sales_Issue_Return_Request_Status__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sales_Issue_SR_Allowance_Matrix__c</masterLabel>
+            <translation><!-- Sales_Issue_SR_Allowance_Matrix__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sales_Issue_SR_Category_OPID__c</masterLabel>
+            <translation><!-- Sales_Issue_SR_Category_OPID__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sales_Issue_SalesOrg_To_Geo_Map__c</masterLabel>
+            <translation><!-- Sales_Issue_SalesOrg_To_Geo_Map__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sales_Issue_Service_And_Remedy_Type_Assn__c</masterLabel>
+            <translation><!-- Sales_Issue_Service_And_Remedy_Type_Assn__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sales_Issue_Service_Type__c</masterLabel>
+            <translation><!-- Sales_Issue_Service_Type__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sales_Issue_Stock_Rotation_Allowance__c</masterLabel>
+            <translation><!-- Sales_Issue_Stock_Rotation_Allowance__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sales_Issue_Stock_Rotation_Category__c</masterLabel>
+            <translation><!-- Sales_Issue_Stock_Rotation_Category__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Scorecard</masterLabel>
+            <translation><!-- Scorecard --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ScorecardAssociation</masterLabel>
+            <translation><!-- ScorecardAssociation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ScorecardMetric</masterLabel>
+            <translation><!-- ScorecardMetric --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SearchActivity</masterLabel>
+            <translation><!-- SearchActivity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SearchIndexFieldConfig</masterLabel>
+            <translation><!-- SearchIndexFieldConfig --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SearchIndexObjectConfig</masterLabel>
+            <translation><!-- SearchIndexObjectConfig --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SearchPromotionRule</masterLabel>
+            <translation><!-- SearchPromotionRule --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Seller</masterLabel>
+            <translation><!-- Seller --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ServiceAppointmentGroup</masterLabel>
+            <translation><!-- ServiceAppointmentGroup --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ServiceContract</masterLabel>
+            <translation><!-- ServiceContract --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ServiceResource</masterLabel>
+            <translation><!-- ServiceResource --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ServiceSetupProvisioning</masterLabel>
+            <translation><!-- ServiceSetupProvisioning --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SessionHijackingEventStore</masterLabel>
+            <translation><!-- SessionHijackingEventStore --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SetupAssistantAnswer</masterLabel>
+            <translation><!-- SetupAssistantAnswer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SetupAssistantProgress</masterLabel>
+            <translation><!-- SetupAssistantProgress --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SetupAssistantStep</masterLabel>
+            <translation><!-- SetupAssistantStep --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SetupFlowProgress</masterLabel>
+            <translation><!-- SetupFlowProgress --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ShapeRepresentation</masterLabel>
+            <translation><!-- ShapeRepresentation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Shipping_Country_Configuration__c</masterLabel>
+            <translation><!-- Shipping_Country_Configuration__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SiqOrgMigrationStatus</masterLabel>
+            <translation><!-- SiqOrgMigrationStatus --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SiqUserBlacklist</masterLabel>
+            <translation><!-- SiqUserBlacklist --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SiteMarketingDataExtensionMapping</masterLabel>
+            <translation><!-- SiteMarketingDataExtensionMapping --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SiteUserViewMode</masterLabel>
+            <translation><!-- SiteUserViewMode --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SocialPost</masterLabel>
+            <translation><!-- SocialPost --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SoftwareProduct</masterLabel>
+            <translation><!-- SoftwareProduct --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Solution</masterLabel>
+            <translation><!-- Solution --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>State__c</masterLabel>
+            <translation><!-- State__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>StrategyMonthlyStats</masterLabel>
+            <translation><!-- StrategyMonthlyStats --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>StreamActivityAccess</masterLabel>
+            <translation><!-- StreamActivityAccess --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Survey</masterLabel>
+            <translation><!-- Survey --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SurveyEngagementContext</masterLabel>
+            <translation><!-- SurveyEngagementContext --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SurveyInvitation</masterLabel>
+            <translation><!-- SurveyInvitation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SurveyPage</masterLabel>
+            <translation><!-- SurveyPage --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SurveyQuestion</masterLabel>
+            <translation><!-- SurveyQuestion --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SurveyQuestionChoice</masterLabel>
+            <translation><!-- SurveyQuestionChoice --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SurveyQuestionResponse</masterLabel>
+            <translation><!-- SurveyQuestionResponse --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SurveyQuestionScore</masterLabel>
+            <translation><!-- SurveyQuestionScore --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SurveyResponse</masterLabel>
+            <translation><!-- SurveyResponse --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SurveySubject</masterLabel>
+            <translation><!-- SurveySubject --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SurveyVersion</masterLabel>
+            <translation><!-- SurveyVersion --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SurveyVersionAddlInfo</masterLabel>
+            <translation><!-- SurveyVersionAddlInfo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SyncTransactionLog</masterLabel>
+            <translation><!-- SyncTransactionLog --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TableauHostMapping</masterLabel>
+            <translation><!-- TableauHostMapping --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Task</masterLabel>
+            <translation><!-- Task --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TenantEntitlementTransaction</masterLabel>
+            <translation><!-- TenantEntitlementTransaction --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TenantSecurityLogin</masterLabel>
+            <translation><!-- TenantSecurityLogin --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TenantSecurityMonitorMetric</masterLabel>
+            <translation><!-- TenantSecurityMonitorMetric --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TenantSecurityTenantInfo</masterLabel>
+            <translation><!-- TenantSecurityTenantInfo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TenantUsageTypeMultiplier</masterLabel>
+            <translation><!-- TenantUsageTypeMultiplier --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Topic_Announcement__c</masterLabel>
+            <translation><!-- Topic_Announcement__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TransactionSecurityAction</masterLabel>
+            <translation><!-- TransactionSecurityAction --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TransactionSecurityActionEvent</masterLabel>
+            <translation><!-- TransactionSecurityActionEvent --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>UserAssistantSummary</masterLabel>
+            <translation><!-- UserAssistantSummary --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>UserEmailPreferredPerson</masterLabel>
+            <translation><!-- UserEmailPreferredPerson --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>UserMetrics</masterLabel>
+            <translation><!-- UserMetrics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>UserNavItem</masterLabel>
+            <translation><!-- UserNavItem --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>UserQuestionnaireAnswer</masterLabel>
+            <translation><!-- UserQuestionnaireAnswer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>UserQuestionnaireSummary</masterLabel>
+            <translation><!-- UserQuestionnaireSummary --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>UserServicePresence</masterLabel>
+            <translation><!-- UserServicePresence --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VideoCall</masterLabel>
+            <translation><!-- VideoCall --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VideoCallParticipant</masterLabel>
+            <translation><!-- VideoCallParticipant --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VideoCallRecording</masterLabel>
+            <translation><!-- VideoCallRecording --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Warranty_Return_Product__c</masterLabel>
+            <translation><!-- Warranty_Return_Product__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Warranty_Return__c</masterLabel>
+            <translation><!-- Warranty_Return__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WeChat_Template_Message__c</masterLabel>
+            <translation><!-- WeChat_Template_Message__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WebCartDocument</masterLabel>
+            <translation><!-- WebCartDocument --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WorkProcedure</masterLabel>
+            <translation><!-- WorkProcedure --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WorkProcedureStep</masterLabel>
+            <translation><!-- WorkProcedureStep --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>abc__c</masterLabel>
+            <translation><!-- abc__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>aqi_ltng_mng__Article_Quality__c</masterLabel>
+            <translation><!-- aqi_ltng_mng__Article_Quality__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>hx__HX_Escalation_Partner__c</masterLabel>
+            <translation><!-- hx__HX_Escalation_Partner__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>hx__HX_Escalation__c</masterLabel>
+            <translation><!-- hx__HX_Escalation__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>hx__HX_Escalation_temp__c</masterLabel>
+            <translation><!-- hx__HX_Escalation_temp__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>hx__HX_Queue__c</masterLabel>
+            <translation><!-- hx__HX_Queue__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>hx__hx_encryption__c</masterLabel>
+            <translation><!-- hx__hx_encryption__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>hx__hx_escalation2__c</masterLabel>
+            <translation><!-- hx__hx_escalation2__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>hx__hx_fromhubqueue__c</masterLabel>
+            <translation><!-- hx__hx_fromhubqueue__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>hx__hx_partner_cache__c</masterLabel>
+            <translation><!-- hx__hx_partner_cache__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>purecloud__Activity_Attribute__c</masterLabel>
+            <translation><!-- purecloud__Activity_Attribute__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>purecloud__CTI_Contact_Search__c</masterLabel>
+            <translation><!-- purecloud__CTI_Contact_Search__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>purecloud__Genesys_Cloud_Site__c</masterLabel>
+            <translation><!-- purecloud__Genesys_Cloud_Site__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>purecloud__Interaction_Attribute__c</masterLabel>
+            <translation><!-- purecloud__Interaction_Attribute__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>purecloud__Omni_Channel_Status_Mapping__c</masterLabel>
+            <translation><!-- purecloud__Omni_Channel_Status_Mapping__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>purecloud__PureCloud_Analytic__c</masterLabel>
+            <translation><!-- purecloud__PureCloud_Analytic__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>purecloud__PureCloud_Call_Response__c</masterLabel>
+            <translation><!-- purecloud__PureCloud_Call_Response__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>purecloud__PureCloud_Call_Rule_Set__c</masterLabel>
+            <translation><!-- purecloud__PureCloud_Call_Rule_Set__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>purecloud__PureCloud_Callable_Time_Set__c</masterLabel>
+            <translation><!-- purecloud__PureCloud_Callable_Time_Set__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>purecloud__PureCloud_Campaign_Schedule__c</masterLabel>
+            <translation><!-- purecloud__PureCloud_Campaign_Schedule__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>purecloud__PureCloud_Campaign_Setting__c</masterLabel>
+            <translation><!-- purecloud__PureCloud_Campaign_Setting__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>purecloud__PureCloud_Campaign_Update_Request__c</masterLabel>
+            <translation><!-- purecloud__PureCloud_Campaign_Update_Request__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>purecloud__PureCloud_Chat_Transcript__c</masterLabel>
+            <translation><!-- purecloud__PureCloud_Chat_Transcript__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>purecloud__PureCloud_Client_Event_Types__c</masterLabel>
+            <translation><!-- purecloud__PureCloud_Client_Event_Types__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>purecloud__PureCloud_Contact_Deletion_Request__c</masterLabel>
+            <translation><!-- purecloud__PureCloud_Contact_Deletion_Request__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>purecloud__PureCloud_Contact_List_Column__c</masterLabel>
+            <translation><!-- purecloud__PureCloud_Contact_List_Column__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>purecloud__PureCloud_Contact_List_Request__c</masterLabel>
+            <translation><!-- purecloud__PureCloud_Contact_List_Request__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>purecloud__PureCloud_DNC_List__c</masterLabel>
+            <translation><!-- purecloud__PureCloud_DNC_List__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>purecloud__PureCloud_Division__c</masterLabel>
+            <translation><!-- purecloud__PureCloud_Division__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>purecloud__PureCloud_Edge_Group__c</masterLabel>
+            <translation><!-- purecloud__PureCloud_Edge_Group__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>purecloud__PureCloud_Entity__c</masterLabel>
+            <translation><!-- purecloud__PureCloud_Entity__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>purecloud__PureCloud_Log__c</masterLabel>
+            <translation><!-- purecloud__PureCloud_Log__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>purecloud__PureCloud_Phone_Field__c</masterLabel>
+            <translation><!-- purecloud__PureCloud_Phone_Field__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>purecloud__PureCloud_Presence_Definition__c</masterLabel>
+            <translation><!-- purecloud__PureCloud_Presence_Definition__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>purecloud__PureCloud_Queue__c</masterLabel>
+            <translation><!-- purecloud__PureCloud_Queue__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>purecloud__PureCloud_Routing_Request__c</masterLabel>
+            <translation><!-- purecloud__PureCloud_Routing_Request__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>purecloud__PureCloud_Script__c</masterLabel>
+            <translation><!-- purecloud__PureCloud_Script__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>rtsync__Log__c</masterLabel>
+            <translation><!-- rtsync__Log__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>rtsync__Reltio_Sync_Config__c</masterLabel>
+            <translation><!-- rtsync__Reltio_Sync_Config__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>rtsync__Reltio_Sync__c</masterLabel>
+            <translation><!-- rtsync__Reltio_Sync__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>rtsync__Sbc_Mapping__c</masterLabel>
+            <translation><!-- rtsync__Sbc_Mapping__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>sf4twitter__Fcbk_Page_Admin__c</masterLabel>
+            <translation><!-- sf4twitter__Fcbk_Page_Admin__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>sf4twitter__Fcbk_Page__c</masterLabel>
+            <translation><!-- sf4twitter__Fcbk_Page__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>sf4twitter__Fcbk_User__c</masterLabel>
+            <translation><!-- sf4twitter__Fcbk_User__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>sf4twitter__Twitter_Account__c</masterLabel>
+            <translation><!-- sf4twitter__Twitter_Account__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>sf4twitter__Twitter_Contributor__c</masterLabel>
+            <translation><!-- sf4twitter__Twitter_Contributor__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>sf4twitter__Twitter_Conversation__c</masterLabel>
+            <translation><!-- sf4twitter__Twitter_Conversation__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>sf4twitter__Twitter_Followers__c</masterLabel>
+            <translation><!-- sf4twitter__Twitter_Followers__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>sf4twitter__Twitter_Scheduler__c</masterLabel>
+            <translation><!-- sf4twitter__Twitter_Scheduler__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>sf4twitter__Twitter_Search__c</masterLabel>
+            <translation><!-- sf4twitter__Twitter_Search__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>spr_sf__ConversationAccountAssociation__c</masterLabel>
+            <translation><!-- spr_sf__ConversationAccountAssociation__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>spr_sf__ConversationCaseAssociation__c</masterLabel>
+            <translation><!-- spr_sf__ConversationCaseAssociation__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>spr_sf__ConversationContactAssociation__c</masterLabel>
+            <translation><!-- spr_sf__ConversationContactAssociation__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>spr_sf__ConversationLeadAssociation__c</masterLabel>
+            <translation><!-- spr_sf__ConversationLeadAssociation__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>spr_sf__ConversationOpportunityAssociation__c</masterLabel>
+            <translation><!-- spr_sf__ConversationOpportunityAssociation__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>spr_sf__Conversation__c</masterLabel>
+            <translation><!-- spr_sf__Conversation__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>spr_sf__SocialPersona__c</masterLabel>
+            <translation><!-- spr_sf__SocialPersona__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>spr_sf__SocialPost__c</masterLabel>
+            <translation><!-- spr_sf__SocialPost__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>spr_sf__Social_Profile_Account_Association__c</masterLabel>
+            <translation><!-- spr_sf__Social_Profile_Account_Association__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>spr_sf__Social_Profile_Contact_Association__c</masterLabel>
+            <translation><!-- spr_sf__Social_Profile_Contact_Association__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>spr_sf__Social_Profile_Lead_Association__c</masterLabel>
+            <translation><!-- spr_sf__Social_Profile_Lead_Association__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>spr_sf__Social_Profile_Opportunity_Association__c</masterLabel>
+            <translation><!-- spr_sf__Social_Profile_Opportunity_Association__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>spr_sf__Social_Profile__c</masterLabel>
+            <translation><!-- spr_sf__Social_Profile__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>spr_sf__UserConfig__c</masterLabel>
+            <translation><!-- spr_sf__UserConfig__c --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- System Modstamp --></label>
+        <name>SystemModstamp__c</name>
     </fields>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

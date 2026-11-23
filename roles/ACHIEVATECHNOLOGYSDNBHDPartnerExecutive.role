@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>ACHIEVA TECHNOLOGY SDN BHD Partner Executive</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>ACHIEVA TECHNOLOGY SDN BHD Partner Executive</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>EMP_11223374_Cheng_Seong_Sim</parentRole>
+</Role>

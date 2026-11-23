@@ -9,10 +9,6 @@
         <value>EmailLogs</value>
     </caseValues>
     <fields>
-        <label><!-- Email_Reminder --></label>
-        <name>Email_Reminder__c</name>
-    </fields>
-    <fields>
         <label><!-- Email Template ID --></label>
         <name>Email_Template_ID__c</name>
     </fields>
@@ -23,16 +19,6 @@
     <fields>
         <label><!-- Language --></label>
         <name>Language__c</name>
-    </fields>
-    <fields>
-        <label><!-- Marketing Profile Information --></label>
-        <name>PMP_Company__c</name>
-        <relationshipLabel><!-- EmailLogs --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Partner Offering --></label>
-        <name>PMP_Partner_Offering__c</name>
-        <relationshipLabel><!-- EmailLogs --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- Contact --></label>
@@ -54,27 +40,6 @@
     <fields>
         <label><!-- Email API Response --></label>
         <name>PRM_Email_API_Response__c</name>
-    </fields>
-    <fields>
-        <label><!-- EnterpriseId --></label>
-        <name>PRM_EnterpriseId__c</name>
-    </fields>
-    <fields>
-        <label><!-- IPA Registration Request --></label>
-        <name>PRM_IPA_Registration_Request__c</name>
-        <relationshipLabel><!-- EmailLogs --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- IsEmailPublished --></label>
-        <name>PRM_IsEmailPublished__c</name>
-    </fields>
-    <fields>
-        <label><!-- Is Deleted --></label>
-        <name>PRM_Is_Deleted__c</name>
-    </fields>
-    <fields>
-        <label><!-- Read --></label>
-        <name>PRM_Read__c</name>
     </fields>
     <fields>
         <label><!-- Subject --></label>
@@ -101,12 +66,13 @@
         </picklistValues>
     </fields>
     <fields>
-        <label><!-- Updated By API --></label>
-        <name>PRM_Updated_By_API__c</name>
-    </fields>
-    <fields>
         <label><!-- User --></label>
         <name>PRM_User__c</name>
+        <relationshipLabel><!-- EmailLogs --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Quote --></label>
+        <name>Quote__c</name>
         <relationshipLabel><!-- EmailLogs --></relationshipLabel>
     </fields>
     <recordTypes>

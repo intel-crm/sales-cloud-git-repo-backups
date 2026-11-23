@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Design Registration Product M2M Stage</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Design Registration Products M2M Stage</value>
+    </caseValues>
+    <fields>
+        <label><!-- Design Registration M2M Stage --></label>
+        <name>Design_Registration_dummy__c</name>
+        <relationshipLabel><!-- Design Registration Products M2M Stage --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- MMID --></label>
+        <name>MMID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Old MMID --></label>
+        <name>Old_MMID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Ordering Code --></label>
+        <name>Ordering_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quantity --></label>
+        <name>Quantity__c</name>
+    </fields>
+    <fields>
+        <label><!-- Record Id from Response --></label>
+        <name>Record_Id_from_Response__c</name>
+    </fields>
+    <fields>
+        <label><!-- Record Id from main object --></label>
+        <name>Record_Id_from_main_object__c</name>
+    </fields>
+    <fields>
+        <label><!-- Response --></label>
+        <name>Response__c</name>
+    </fields>
+    <fields>
+        <label><!-- Target Resale Price --></label>
+        <name>Target_Resale_Price__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

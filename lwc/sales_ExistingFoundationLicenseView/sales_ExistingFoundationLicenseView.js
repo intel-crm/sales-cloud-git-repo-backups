@@ -1,5 +1,10 @@
-import { LightningElement } from 'lwc';
-/*import { ShowToastEvent } from 'lightning/platformShowToastEvent';
+import {
+	LightningElement,
+	api,
+	wire,
+	track
+} from 'lwc';
+import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import getExistingLicenseList from '@salesforce/apex/Sales_ExistingLicenseViewCtrl.getExistingLicenseList';
 import processDistributionAction from '@salesforce/apex/Sales_ExistingLicenseViewCtrl.processDistributionAction';
 import createLicensedForRenewalFixed from '@salesforce/apex/Sales_ExistingLicenseViewCtrl.createLicensedForRenewalFixed';
@@ -116,10 +121,10 @@ const columns = [
 			iconName: { fieldName: 'iconName' }, iconPosition: 'right'
 		},
 	}
-];*/
+];
 
 export default class Sales_ExistingFoundationLicenseView extends LightningElement {
-	/*@track error;
+	@track error;
 	@api orderItemId;
 	@api availableQuantityOfRenewal;
 	@api licenseRowFromParent = {};
@@ -232,7 +237,7 @@ export default class Sales_ExistingFoundationLicenseView extends LightningElemen
 			}
 
 			console.log('this.toolLicenseType' + this.toolLicenseType);
-			if ((/*this.toolLicenseType=='FIXED' && *//*this.totalAvailableQuantityOfOriginal < this.availableQuantityOfRenewal)) {
+			if ((/*this.toolLicenseType=='FIXED' && */this.totalAvailableQuantityOfOriginal < this.availableQuantityOfRenewal)) {
 				console.log('this.allLicenseIds' + this.allLicenseIds);
 				const toRemove = new Set([...this.processedLicIdList]);
 				const difference = this.allLicenseIds.filter(x => !toRemove.has(x));
@@ -249,7 +254,7 @@ export default class Sales_ExistingFoundationLicenseView extends LightningElemen
 			/*else if(this.toolLicenseType!='FIXED'){
 					this.preSelectedRows=this.allLicenseIds;
 			}*/
-			/*this.data = licList;
+			this.data = licList;
 			this.isLoaded = true;
 			const selectedEvent = new CustomEvent("loadedevent");
 			this.dispatchEvent(selectedEvent);
@@ -267,7 +272,7 @@ export default class Sales_ExistingFoundationLicenseView extends LightningElemen
 				this.dispatchEvent(selectEvent);
 				this.showValidationMessage=true;
 		}*/
-	/*}
+	}
 
 
 	@api processLicense() {
@@ -354,7 +359,7 @@ export default class Sales_ExistingFoundationLicenseView extends LightningElemen
 
 	handleRowSelection = event => {
 
-		if ((/*this.toolLicenseType==='FIXED' &&*/ /*this.totalAvailableQuantityOfOriginal < this.availableQuantityOfRenewal)) {
+		if ((/*this.toolLicenseType==='FIXED' &&*/ this.totalAvailableQuantityOfOriginal < this.availableQuantityOfRenewal)) {
 			console.log('1st');
 			console.log('1st' + this.totalAvailableQuantityOfOriginal);
 			console.log('1st' + this.availableQuantityOfRenewal);
@@ -367,8 +372,8 @@ export default class Sales_ExistingFoundationLicenseView extends LightningElemen
 
 			/*const tempPreselectedRows = this.preSelectedRows;
 			this.preSelectedRows=JSON.parse(JSON.stringify(tempPreselectedRows));*/
-		/*}
-		if ((/*this.toolLicenseType==='FIXED' && *//*this.totalAvailableQuantityOfOriginal >= this.availableQuantityOfRenewal)) {
+		}
+		if ((/*this.toolLicenseType==='FIXED' && */this.totalAvailableQuantityOfOriginal >= this.availableQuantityOfRenewal)) {
 			console.log('2nd');
 			const selectedRowsDetails = event.detail.selectedRows;
 			let selectedRowIds = [];
@@ -484,7 +489,7 @@ export default class Sales_ExistingFoundationLicenseView extends LightningElemen
                 {
                         this.loadTableRecords();
                 }*/
-		/*if (this.selectedValue.length === 0) {
+		if (this.selectedValue.length === 0) {
 			//this.loadTableRecords();
 			//this.isDataAvailable = true;
 			this.data = this.final;
@@ -497,5 +502,5 @@ export default class Sales_ExistingFoundationLicenseView extends LightningElemen
 		else {
 			this.data = this.dataReturn;
 		}
-	}*/
+	}
 }

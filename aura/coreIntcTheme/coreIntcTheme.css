@@ -5,7 +5,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* to address older Edge support - https://developer.salesforce.com/docs/component-library/bundle/lightning-layout/documentation */
+/* to address older Edge support - https://developer.salesforce.com/docs/component-library/bundle/lightning-layout/documentation*/
 @media all and (-ms-high-contrast: none) {
   .THIS [class*="slds-size_"],
   .THIS [class*="slds-size--"] {

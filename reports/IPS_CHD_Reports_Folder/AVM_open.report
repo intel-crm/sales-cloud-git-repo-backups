@@ -96,7 +96,7 @@
     <columns>
         <field>OWNER</field>
     </columns>
-    <description>AVM - all open cases with &quot;hot&quot; flag set</description>
+    <description>AVM&apos;s open cases flagged &quot;hot&quot;</description>
     <filter>
         <criteriaItems>
             <column>Case.Core_Product_Organization__c</column>
@@ -148,7 +148,7 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>Case.Core_IPS_HC_Next_Actions__c</sortColumn>
+    <sortColumn>Case.Core_IPS_HC_Help_Needed__c</sortColumn>
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSED_DATEONLY</dateColumn>

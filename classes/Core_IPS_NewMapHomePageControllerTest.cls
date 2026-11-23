@@ -6,18 +6,11 @@ Modification Log :
 ****************************************************************************************/
 @isTest(seeAllData=false)
 private class Core_IPS_NewMapHomePageControllerTest {
-
-    private static void insertUsersWithValidationBypass(List<User> users) {
-        User validationBypassUser = [SELECT Id FROM User WHERE Profile.Name = :System.Label.Core_System_Admin_Profile_Name AND IsActive = true LIMIT 1];
-        System.runAs(validationBypassUser) {
-            insert users;
-        }
-    }
     
     @testSetup 
     static void testSetupData() {
         List<Product2> productList = new List<Product2>();
-      // inserting products
+ 		 // inserting products
         ProductList = TestUtilities.getListOfProduct(3);
         insert ProductList;
         System.assert(ProductList <> null, 'Record not created');
@@ -40,21 +33,7 @@ private class Core_IPS_NewMapHomePageControllerTest {
            }
         insert SuppProductList;
         System.assert(SuppProductList <> null, 'Record not created');
-         Account Accnt = new Account();
-            Accnt.Name = 'Test Account';
-            Accnt.BillingCountryCode = 'USA';
-            Accnt.BillingStateCode = 'AL';
-            Accnt.BillingCity = 'Alabama';
-            Accnt.BillingStreet = 'street';
-            Accnt.Core_IPS_Active__c = true;
-            Accnt.recordTypeId = schema.sobjecttype.Account.getrecordtypeinfosbyname().get('Intel Account').getRecordTypeId();
-            Database.insert(Accnt);
-        
-        Case cs = TestUtilities.getCase();
-        cs.AccountId=Accnt.id;
-        cs.Core_IPS_Supported_Product__c = suppProductList[0].Id;
-        insert cs;
-        
+         
         // inserting Product Access Header
         Core_IPS_MAP_PAR__c mapRec = TestUtilities.getMapPar();
         mapRec.Core_Product_Organization__c = prodOrg.id;
@@ -90,21 +69,15 @@ private class Core_IPS_NewMapHomePageControllerTest {
     private static testMethod void updateMAPRecordTest(){
         Core_IPS_MAP_PAR__c mapRec = new Core_IPS_MAP_PAR__c();
         mapRec = [select name,id from Core_IPS_MAP_PAR__c where core_name__c = 'Test Record-MAP'];
-        List<Case> cs = [Select Id From Case];
         Core_IPS_NewMapHomePageController.updateMAPRecord(mapRec);
         system.assertNotEquals(mapRec, null);
-        Core_IPS_NewMapHomePageController.getattachments(cs.get(0).Id);
        
     }
     
     private static testMethod void getQueryResultTest(){
-               
-        String coreNameLike = 'Test Record-MAP';
-    string queryStr = 'select id from Core_IPS_MAP_PAR__c where core_name__c = \'' +String.escapeSingleQuotes(coreNameLike) +'\''; 
-       
+		string queryStr = 'select id from Core_IPS_MAP_PAR__c where core_name__c = \'Test Record-MAP\'';
         Core_IPS_NewMapHomePageController.getQueryResult(queryStr);    
         system.assertNotEquals(queryStr, null);
-      
     } 
     
     private static testMethod void addSupportedProductToMAPTest(){
@@ -133,7 +106,9 @@ private class Core_IPS_NewMapHomePageControllerTest {
         profile prof = [select id, name from Profile where name = 'Sales Rep-BB' limit 1];
         userlist[0].profileid=prof.id;
         userlist[0].username='salesrep0202.abc@user.com';
-        insertUsersWithValidationBypass(userlist);
+        //System.runAs(ListOfUser.get(0)){
+            insert userlist;
+        //}
         String teamMemberRole = 'Team Member (100%)';
         String accountAccessLevel = 'Edit';
         String opportunityAccessLevel = 'Read';
@@ -171,51 +146,51 @@ private class Core_IPS_NewMapHomePageControllerTest {
         system.assertNotEquals(AccountList, null);
     }
 
-  private static testMethod void createLineItemsTest() {
-    getRecords();
-    
-    // inserting Product Access Header
-    List<Core_IPS_MAP_PAR__c> mapList = new List<Core_IPS_MAP_PAR__c>();
-    Core_IPS_MAP_PAR__c mapRec = TestUtilities.getMapPar();
-    mapRec.Core_Product_Organization__c = prodOrg.id;
-    mapRec.RecordTypeId  = schema.sobjecttype.Core_IPS_MAP_PAR__c.getrecordtypeinfosbyname().get('MAP').getRecordTypeId();
-    mapList.add(mapRec);
-     
-    Core_IPS_MAP_PAR__c mapRec1 = TestUtilities.getMapPar();
-    mapRec1.Core_Product_Organization__c = prodOrg.id;
-    mapRec1.RecordTypeId  = schema.sobjecttype.Core_IPS_MAP_PAR__c.getrecordtypeinfosbyname().get('MAP').getRecordTypeId();
-    mapList.add(mapRec1);
-     
-    insert mapList;
-    
-    List<Core_IPS_MAP_Product__c> mapProdList = new List<Core_IPS_MAP_Product__c>();
-    for(Integer i=0;i<2;i++){
-      Core_IPS_MAP_Product__c mapProd = new Core_IPS_MAP_Product__c();
-      MapProd.Core_MAP_PAR__c=mapRec.id;
-      MapProd.Core_MAP_Supported_Product__c=SuppProductList[i].Id;
-      mapProdList.add(MapProd);
-    }
-    Core_IPS_NewMapHomePageController.addSupportedProductToMAP(mapProdList);
-    
-    Core_IPS_MAP_Account__c accJunc = new Core_IPS_MAP_Account__c();
-    accJunc.Core_Account__c=AccountList[1].id;
-    accJunc.Core_MAP_PAR__c=mapRec.id;
-    Core_IPS_NewMapHomePageController.addAccountToMAP(accJunc);
-    // inserting Product Access Line Items-MAP
-    Id mapLineItemRecTypeId = schema.sobjecttype.Core_IPS_Map_Par_Line_Item__c.getrecordtypeinfosbyname().get('MAP').getRecordTypeId();
-    List<Core_IPS_Map_Par_Line_Item__c> lineItemList = new List<Core_IPS_Map_Par_Line_Item__c>();
-    for(Integer i=0;i<3;i++){
-      Core_IPS_Map_Par_Line_Item__c lineItem = new Core_IPS_Map_Par_Line_Item__c();
-      lineItem.Core_MAP_PAR__c = mapRec.id;
-      lineItem.Core_Supported_Product__c = SuppProductList[i].id;
-      lineItem.Core_Approval_Type__c = 'Auto Approve';
-      lineItem.Core_Account__c = accJunc.id;
-      lineItem.Core_Status__c = 'Active';
-      lineItem.RecordTypeId = mapLineItemRecTypeId;
+	private static testMethod void createLineItemsTest() {
+		getRecords();
+		
+		// inserting Product Access Header
+		List<Core_IPS_MAP_PAR__c> mapList = new List<Core_IPS_MAP_PAR__c>();
+		Core_IPS_MAP_PAR__c mapRec = TestUtilities.getMapPar();
+		mapRec.Core_Product_Organization__c = prodOrg.id;
+		mapRec.RecordTypeId  = schema.sobjecttype.Core_IPS_MAP_PAR__c.getrecordtypeinfosbyname().get('MAP').getRecordTypeId();
+		mapList.add(mapRec);
+		 
+		Core_IPS_MAP_PAR__c mapRec1 = TestUtilities.getMapPar();
+		mapRec1.Core_Product_Organization__c = prodOrg.id;
+		mapRec1.RecordTypeId  = schema.sobjecttype.Core_IPS_MAP_PAR__c.getrecordtypeinfosbyname().get('MAP').getRecordTypeId();
+		mapList.add(mapRec1);
+		 
+		insert mapList;
+		
+		List<Core_IPS_MAP_Product__c> mapProdList = new List<Core_IPS_MAP_Product__c>();
+		for(Integer i=0;i<2;i++){
+			Core_IPS_MAP_Product__c mapProd = new Core_IPS_MAP_Product__c();
+			MapProd.Core_MAP_PAR__c=mapRec.id;
+			MapProd.Core_MAP_Supported_Product__c=SuppProductList[i].Id;
+			mapProdList.add(MapProd);
+		}
+		Core_IPS_NewMapHomePageController.addSupportedProductToMAP(mapProdList);
+		
+		Core_IPS_MAP_Account__c accJunc = new Core_IPS_MAP_Account__c();
+		accJunc.Core_Account__c=AccountList[1].id;
+		accJunc.Core_MAP_PAR__c=mapRec.id;
+		Core_IPS_NewMapHomePageController.addAccountToMAP(accJunc);
+		// inserting Product Access Line Items-MAP
+		Id mapLineItemRecTypeId = schema.sobjecttype.Core_IPS_Map_Par_Line_Item__c.getrecordtypeinfosbyname().get('MAP').getRecordTypeId();
+		List<Core_IPS_Map_Par_Line_Item__c> lineItemList = new List<Core_IPS_Map_Par_Line_Item__c>();
+		for(Integer i=0;i<3;i++){
+			Core_IPS_Map_Par_Line_Item__c lineItem = new Core_IPS_Map_Par_Line_Item__c();
+			lineItem.Core_MAP_PAR__c = mapRec.id;
+			lineItem.Core_Supported_Product__c = SuppProductList[i].id;
+			lineItem.Core_Approval_Type__c = 'Auto Approve';
+			lineItem.Core_Account__c = accJunc.id;
+			lineItem.Core_Status__c = 'Active';
+			lineItem.RecordTypeId = mapLineItemRecTypeId;
             lineItem.Core_Submitter_Comments__c = 'Test Submitter Comment';
-      lineItemList.add(lineItem);
-    }
-    Object obj = Core_IPS_NewMapHomePageController.createLineItems(lineItemList);
+			lineItemList.add(lineItem);
+		}
+		Object obj = Core_IPS_NewMapHomePageController.createLineItems(lineItemList);
                 
         List<Core_IPS_Map_Par_Line_Item__c> lineItemList1 = new List<Core_IPS_Map_Par_Line_Item__c>();
         for(Integer i=0;i<3;i++){
@@ -238,109 +213,108 @@ private class Core_IPS_NewMapHomePageControllerTest {
         update uplineItemList;
         delete uplineItemList[0];
         
-    lineItemList = new List<Core_IPS_Map_Par_Line_Item__c>();
-    for(Integer i=0;i<3;i++){
-      Core_IPS_Map_Par_Line_Item__c lineItem = new Core_IPS_Map_Par_Line_Item__c();
-      lineItem.Core_MAP_PAR__c = mapRec.id;
-      lineItem.Core_Supported_Product__c = SuppProductList[i].id;
-      lineItem.Core_Approval_Type__c = 'Auto Approve';
-      lineItem.Core_Account__c =  AccountList[i].id;//accJunc.id;
-      lineItem.Core_Status__c = 'Active';
-      lineItem.RecordTypeId = mapLineItemRecTypeId;
+		lineItemList = new List<Core_IPS_Map_Par_Line_Item__c>();
+		for(Integer i=0;i<3;i++){
+			Core_IPS_Map_Par_Line_Item__c lineItem = new Core_IPS_Map_Par_Line_Item__c();
+			lineItem.Core_MAP_PAR__c = mapRec.id;
+			lineItem.Core_Supported_Product__c = SuppProductList[i].id;
+			lineItem.Core_Approval_Type__c = 'Auto Approve';
+			lineItem.Core_Account__c =  AccountList[i].id;//accJunc.id;
+			lineItem.Core_Status__c = 'Active';
+			lineItem.RecordTypeId = mapLineItemRecTypeId;
             lineItem.Core_Submitter_Comments__c = 'Test Submitter Comment';
-      lineItemList.add(lineItem);
-    }
-    Core_IPS_NewMapHomePageController.createLineItems(lineItemList);
+			lineItemList.add(lineItem);
+		}
+		Core_IPS_NewMapHomePageController.createLineItems(lineItemList);
         
         Core_IPS_NewMapHomePageController.deleteMAPRecord(mapRec);
         Core_IPS_MAP_Account__c accJunc2 = new Core_IPS_MAP_Account__c();
-    accJunc2.Core_Account__c=AccountList[1].id;
-    accJunc2.Core_MAP_PAR__c=mapRec.id;
+		accJunc2.Core_Account__c=AccountList[1].id;
+		accJunc2.Core_MAP_PAR__c=mapRec.id;
         Core_IPS_NewMapHomePageController.addAccountToMAP(accJunc2);
         Core_IPS_NewMapHomePageController.getFAEAffiliatedAccounts();
-    
         String queryString = 'SELECT Id, Name FROM Core_IPS_MAP_Account__c WHERE Core_MAP_PAR__c = \''+ mapRec.id + '\'';
         Core_IPS_NewMapHomePageController.getFAEAffiliatedMapAccounts(queryString);
-       
+        
         User usr = [Select Id FROM User where username = 'salesrep0202.abc@user.com'];
         System.runAs(usr) {
             Core_IPS_NewMapHomePageController.getFAEAffiliatedAccounts();
         }
         system.assertNotEquals(lineItemList, null);
-  }
+	}
     /*
     private static testMethod void createLineItemsTest1() {
-    getRecords();
-    
-    // inserting Product Access Header
-    List<Core_IPS_MAP_PAR__c> mapList = new List<Core_IPS_MAP_PAR__c>();
-    Core_IPS_MAP_PAR__c mapRec = TestUtilities.getMapPar();
-    mapRec.Core_Product_Organization__c = prodOrg.id;
-    mapRec.RecordTypeId  = schema.sobjecttype.Core_IPS_MAP_PAR__c.getrecordtypeinfosbyname().get('MAP').getRecordTypeId();
-    mapList.add(mapRec);
-    
-    insert mapList;
-    
-    List<Core_IPS_MAP_Product__c> mapProdList = new List<Core_IPS_MAP_Product__c>();
-    for(Integer i=0;i<2;i++){
-      Core_IPS_MAP_Product__c MapProd = new Core_IPS_MAP_Product__c();
-      MapProd.Core_MAP_PAR__c=mapRec.id;
-      MapProd.Core_MAP_Supported_Product__c=SuppProductList[i].Id;
-      mapProdList.add(MapProd);
-    }
-    Core_IPS_NewMapHomePageController.addSupportedProductToMAP(mapProdList);
-    
-    Core_IPS_MAP_Account__c accJunc = new Core_IPS_MAP_Account__c();
-    accJunc.Core_Account__c=AccountList[1].id;
-    accJunc.Core_MAP_PAR__c=mapRec.id;
-    Core_IPS_NewMapHomePageController.addAccountToMAP(accJunc);
-    
-    Id mapLineItemRecTypeId = schema.sobjecttype.Core_IPS_Map_Par_Line_Item__c.getrecordtypeinfosbyname().get('MAP').getRecordTypeId();
-    List<Core_IPS_Map_Par_Line_Item__c> lineItemList = new List<Core_IPS_Map_Par_Line_Item__c>();
-    for(Integer i=0;i<3;i++){
-      Core_IPS_Map_Par_Line_Item__c lineItem = new Core_IPS_Map_Par_Line_Item__c();
-      lineItem.Core_MAP_PAR__c = mapRec.id;
-      lineItem.Core_Supported_Product__c = SuppProductList[i].id;
-      lineItem.Core_Approval_Type__c = 'Auto Approve';
-      lineItem.Core_Account__c = accJunc.id;
-      lineItem.Core_Status__c = 'Active';
-      lineItem.RecordTypeId = mapLineItemRecTypeId;
+		getRecords();
+		
+		// inserting Product Access Header
+		List<Core_IPS_MAP_PAR__c> mapList = new List<Core_IPS_MAP_PAR__c>();
+		Core_IPS_MAP_PAR__c mapRec = TestUtilities.getMapPar();
+		mapRec.Core_Product_Organization__c = prodOrg.id;
+		mapRec.RecordTypeId  = schema.sobjecttype.Core_IPS_MAP_PAR__c.getrecordtypeinfosbyname().get('MAP').getRecordTypeId();
+		mapList.add(mapRec);
+		
+		insert mapList;
+		
+		List<Core_IPS_MAP_Product__c> mapProdList = new List<Core_IPS_MAP_Product__c>();
+		for(Integer i=0;i<2;i++){
+			Core_IPS_MAP_Product__c MapProd = new Core_IPS_MAP_Product__c();
+			MapProd.Core_MAP_PAR__c=mapRec.id;
+			MapProd.Core_MAP_Supported_Product__c=SuppProductList[i].Id;
+			mapProdList.add(MapProd);
+		}
+		Core_IPS_NewMapHomePageController.addSupportedProductToMAP(mapProdList);
+		
+		Core_IPS_MAP_Account__c accJunc = new Core_IPS_MAP_Account__c();
+		accJunc.Core_Account__c=AccountList[1].id;
+		accJunc.Core_MAP_PAR__c=mapRec.id;
+		Core_IPS_NewMapHomePageController.addAccountToMAP(accJunc);
+		
+		Id mapLineItemRecTypeId = schema.sobjecttype.Core_IPS_Map_Par_Line_Item__c.getrecordtypeinfosbyname().get('MAP').getRecordTypeId();
+		List<Core_IPS_Map_Par_Line_Item__c> lineItemList = new List<Core_IPS_Map_Par_Line_Item__c>();
+		for(Integer i=0;i<3;i++){
+			Core_IPS_Map_Par_Line_Item__c lineItem = new Core_IPS_Map_Par_Line_Item__c();
+			lineItem.Core_MAP_PAR__c = mapRec.id;
+			lineItem.Core_Supported_Product__c = SuppProductList[i].id;
+			lineItem.Core_Approval_Type__c = 'Auto Approve';
+			lineItem.Core_Account__c = accJunc.id;
+			lineItem.Core_Status__c = 'Active';
+			lineItem.RecordTypeId = mapLineItemRecTypeId;
             lineItem.Core_Submitter_Comments__c = 'Test Submitter Comment';
-      lineItemList.add(lineItem);
-    }
-    Object obj = Core_IPS_NewMapHomePageController.createLineItems(lineItemList);
-    Core_IPS_NewMapHomePageController.deleteMAPRecord(accJunc);
-    
-    mapProdList = new List<Core_IPS_MAP_Product__c>();
-    for(Integer i=2;i<3;i++){
-      Core_IPS_MAP_Product__c MapProd = new Core_IPS_MAP_Product__c();
-      MapProd.Core_MAP_PAR__c=mapRec.id;
-      MapProd.Core_MAP_Supported_Product__c=SuppProductList[i].Id;
-      mapProdList.add(MapProd);
-    }
-    Core_IPS_NewMapHomePageController.addSupportedProductToMAP(mapProdList);
-    
-    accJunc = new Core_IPS_MAP_Account__c();
-    accJunc.Core_Account__c=AccountList[1].id;
-    accJunc.Core_MAP_PAR__c=mapRec.id;
-    Core_IPS_NewMapHomePageController.addAccountToMAP(accJunc);
-    
-    lineItemList = new List<Core_IPS_Map_Par_Line_Item__c>();
-    for(Integer i=0;i<3;i++){
-      Core_IPS_Map_Par_Line_Item__c lineItem = new Core_IPS_Map_Par_Line_Item__c();
-      lineItem.Core_MAP_PAR__c = mapRec.id;
-      lineItem.Core_Supported_Product__c = SuppProductList[i].id;
-      lineItem.Core_Approval_Type__c = 'Auto Approve';
-      lineItem.Core_Account__c = accJunc.id;
-      lineItem.Core_Status__c = 'Active';
-      lineItem.RecordTypeId = mapLineItemRecTypeId;
+			lineItemList.add(lineItem);
+		}
+		Object obj = Core_IPS_NewMapHomePageController.createLineItems(lineItemList);
+		Core_IPS_NewMapHomePageController.deleteMAPRecord(accJunc);
+		
+		mapProdList = new List<Core_IPS_MAP_Product__c>();
+		for(Integer i=2;i<3;i++){
+			Core_IPS_MAP_Product__c MapProd = new Core_IPS_MAP_Product__c();
+			MapProd.Core_MAP_PAR__c=mapRec.id;
+			MapProd.Core_MAP_Supported_Product__c=SuppProductList[i].Id;
+			mapProdList.add(MapProd);
+		}
+		Core_IPS_NewMapHomePageController.addSupportedProductToMAP(mapProdList);
+		
+		accJunc = new Core_IPS_MAP_Account__c();
+		accJunc.Core_Account__c=AccountList[1].id;
+		accJunc.Core_MAP_PAR__c=mapRec.id;
+		Core_IPS_NewMapHomePageController.addAccountToMAP(accJunc);
+		
+		lineItemList = new List<Core_IPS_Map_Par_Line_Item__c>();
+		for(Integer i=0;i<3;i++){
+			Core_IPS_Map_Par_Line_Item__c lineItem = new Core_IPS_Map_Par_Line_Item__c();
+			lineItem.Core_MAP_PAR__c = mapRec.id;
+			lineItem.Core_Supported_Product__c = SuppProductList[i].id;
+			lineItem.Core_Approval_Type__c = 'Auto Approve';
+			lineItem.Core_Account__c = accJunc.id;
+			lineItem.Core_Status__c = 'Active';
+			lineItem.RecordTypeId = mapLineItemRecTypeId;
             lineItem.Core_Submitter_Comments__c = 'Test Submitter Comment';
-      lineItemList.add(lineItem);
-    }
-    obj = Core_IPS_NewMapHomePageController.createLineItems(lineItemList);
-  }*/
-    
-    
+			lineItemList.add(lineItem);
+		}
+		obj = Core_IPS_NewMapHomePageController.createLineItems(lineItemList);
+	}*/
+		
+		
     
     private static testMethod void isCurrentUserOrgAdminMemberTest1() {
         prodOrg = TestUtilities.getSupportOrg();
@@ -359,7 +333,7 @@ private class Core_IPS_NewMapHomePageControllerTest {
             Usr.ProfileID =  profiles.get('IPS Support Org Admin');
         }
         //ListOfUser[1].ProfileID = profiles.get('Sales Rep-BB');
-        insertUsersWithValidationBypass(ListOfUser);
+        insert ListOfUser;
         prodOrg.ownerId = ListOfUser[0].Id;
         update prodOrg;
         List<Core_IPS_Product_Organization_Admin__c> orgAdminMemList = new List<Core_IPS_Product_Organization_Admin__c>();
@@ -376,16 +350,11 @@ private class Core_IPS_NewMapHomePageControllerTest {
         orgAdminMemList.add(orgAdminMem2);
         
         insert orgAdminMem2;
+        
         System.runAs(ListOfUser.get(1)){
-            try{
             Core_IPS_NewMapHomePageController.isCurrentUserOrgAdminMember(prodOrg.Id);
-            }
-            catch(Exception e)
-            {
-    //Handle exception here
         }
-        }
-       // Core_IPS_NewMapHomePageController.isCurrentUserOrgAdminMember(prodOrg.Id);
+        Core_IPS_NewMapHomePageController.isCurrentUserOrgAdminMember(prodOrg.Id);
         Test.stopTest();
         system.assertNotEquals(prodOrg, null);
     }
@@ -393,9 +362,9 @@ private class Core_IPS_NewMapHomePageControllerTest {
     private static testMethod void getUserIdsFromQPBTest() {
         List<Group> grpList = new List<Group>();
         Group grp1 = new Group(Type='Queue', Name='Queue name');
-    grpList.add(grp1);
+		grpList.add(grp1);
         Group grp2 = new Group(Name='Queue name');
-    grpList.add(grp2);
+		grpList.add(grp2);
         insert grpList;
         
         List<GroupMember> grpMemList = new List<GroupMember>();
@@ -421,37 +390,4 @@ private class Core_IPS_NewMapHomePageControllerTest {
         
         system.assertNotEquals(grpMemList, null);
     }
-    private static testMethod void getCaseTest() {
-        Case testCase = TestUtilities.getCase();
-        insert testCase;
-
-        String status = Core_IPS_NewMapHomePageController.getCase(testCase.Id);
-        System.assert(status == 'New');
-    }
-    /*private static testMethod void isCurrentUserFEETest() {
-        User usr = TestUtilities.getUser();
-        Id prfId = [SELECT Id FROM Profile WHERE Name = 'Sales Rep-BB' LIMIT 1].Id;
-        usr.ProfileId = prfId;
-        insert usr;
-
-        Core_IPS_NewMapHomePageController.checkForFAEandProjects result;
-        System.runAs(usr) {
-            result = Core_IPS_NewMapHomePageController.isCurrentUserFEE('SELECT Id FROM Core_IPS_Opportunity__c');
-        }
-        System.assert(result.isCurrentUserFAE == true);
-        
-    }
-    private static testMethod void isCurrentUserFEETestNegative() {
-        User usr = TestUtilities.getUser();
-        Id prfId = [SELECT Id FROM Profile WHERE Name = 'System Administrator' LIMIT 1].Id;
-        usr.ProfileId = prfId;
-        insert usr;
-
-        Core_IPS_NewMapHomePageController.checkForFAEandProjects result;
-        System.runAs(usr) {
-            result = Core_IPS_NewMapHomePageController.isCurrentUserFEE('SELECT Id FROM Core_IPS_Opportunity__c');
-        }
-        System.assert(result.isCurrentUserFAE == false);
-    }*/
-   
 }

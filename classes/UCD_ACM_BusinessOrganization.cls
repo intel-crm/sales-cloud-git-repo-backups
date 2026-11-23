@@ -16,6 +16,7 @@ global without sharing class UCD_ACM_BusinessOrganization {
     global static UCD_ACM_BusinessOrganizationModel.BusinessOrganizationResponse selectBusinessOrganization() {
         //Long dt1Long = DateTime.now().getTime();
         String Url = RestContext.request.requestURI.subString(RestContext.request.requestURI.lastIndexOf('/')+1);
+        system.debug('Url--> '+Url);
         UCD_ACM_BusinessOrganizationModel requestModel = UCD_ACM_BusinessOrganizationModel.parseRequestBody(RestContext.request.requestBody.toString());
         UCD_ACM_BusinessOrganizationModel.BusinessOrganizationResponse response = businessOrganization(requestModel);
             
@@ -27,9 +28,7 @@ global without sharing class UCD_ACM_BusinessOrganization {
         UCD_ACM_BusinessOrganizationModel.BusinessOrganizationResponse response = mappingInController(requestModel);
         Long dt2Long = DateTime.now().getTime();
         Decimal milliseconds2 = Decimal.valueOf(dt2Long - dt1Long);
-        if(response!=null){
-            response.ExecutionTime = milliseconds2;
-        }
+        response.ExecutionTime = milliseconds2;
         return response;
     }    
 

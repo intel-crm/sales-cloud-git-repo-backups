@@ -1161,6 +1161,11 @@
         <name>Core_Notes_Txt__c</name>
     </fields>
     <fields>
+        <label><!-- Prospect Owner --></label>
+        <name>Core_Prospect_Owner__c</name>
+        <relationshipLabel><!-- Prospects --></relationshipLabel>
+    </fields>
+    <fields>
         <label><!-- Rejected Date --></label>
         <name>Core_Rejected_Date__c</name>
     </fields>
@@ -1201,6 +1206,11 @@
         <name>Core_URLElectronicAddressTxt__c</name>
     </fields>
     <fields>
+        <label><!-- Lead --></label>
+        <name>Lead__c</name>
+        <relationshipLabel><!-- Prospects --></relationshipLabel>
+    </fields>
+    <fields>
         <label><!-- Please click “Save” to own the prospects --></label>
         <name>Please_click_Save_to_own_these_Prospec__c</name>
     </fields>
@@ -1216,6 +1226,10 @@
     <validationRules>
         <errorMessage><!-- Converted prospect cannot be disqualified --></errorMessage>
         <name>Core_Avoid_Converted_To_Disqualified</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This Selected Prospect is already claimed by other user --></errorMessage>
+        <name>Core_Check_IF_Owner_Claimed_or_Not</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- You are already an owner of this Prospect --></errorMessage>

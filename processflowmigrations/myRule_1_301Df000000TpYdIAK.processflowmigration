@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessFlowMigration xmlns="http://soap.sforce.com/2006/04/metadata">
+    <destinationFlowDefinition>Ask_Commissions_Notification_to_case_owner_and_created_by_when_case_comment</destinationFlowDefinition>
+    <destinationFlowVersion>Ask_Commissions_Notification_to_case_owner_and_created_by_when_case_comment-2</destinationFlowVersion>
+    <developerName>myRule_1_301Df000000TpYdIAK</developerName>
+    <masterLabel>Ask Commissions-Notification to case owner and created by when case comment</masterLabel>
+    <migratedCriteriaLabel>CheckCommentIsCreatedByEndUserOrNot</migratedCriteriaLabel>
+    <migratedCriteriaName>myRule_1</migratedCriteriaName>
+    <processVersion>Ask_Commissions_Notification_to_case_owner_and_created_by_when_case_comment_i-3</processVersion>
+</ProcessFlowMigration>

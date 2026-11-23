@@ -5,14 +5,6 @@
   "id" : "178aff8d-2b2e-4111-bff1-b915ba5326a5",
   "label" : "License Related List",
   "regions" : [ {
-    "components" : [ {
-      "componentAttributes" : { },
-      "componentName" : "c:sales_NonEventFeedback",
-      "id" : "faf1ba68-5811-4502-990c-05e819923c43",
-      "renderPriority" : "NEUTRAL",
-      "renditionMap" : { },
-      "type" : "component"
-    } ],
     "id" : "a1fc206a-0dc1-42f3-82de-030908494ea7",
     "regionName" : "header",
     "type" : "region"
@@ -43,5 +35,5 @@
   } ],
   "themeLayoutType" : "Inner",
   "type" : "view",
-  "viewType" : "relatedlist-aBv"
+  "viewType" : "relatedlist-a7o"
 }

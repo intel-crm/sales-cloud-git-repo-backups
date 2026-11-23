@@ -35,8 +35,10 @@
         <field>ADDRESS1_CITY</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
         <field>Opportunity.Core_Architecture_Conversion__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Product_Segment__c</field>
     </columns>
     <filter>
         <criteriaItems>
@@ -59,13 +61,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
             <value>UK</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Product_Segment__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Embedded / IOT</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -94,6 +89,6 @@
     <showSubTotals>false</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_AGO2FY</interval>
+        <interval>INTERVAL_PREVFY</interval>
     </timeFrameFilter>
 </Report>

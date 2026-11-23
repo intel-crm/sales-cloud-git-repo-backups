@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>INFO-SERWIS SP. Z O.O. Partner User</description>
+    <description>INFO-SERWIS SC WOJCIECH RADECKIGRZE Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>INFO-SERWIS SP. Z O.O. Partner User</name>
+    <name>INFO-SERWIS SC WOJCIECH RADECKIGRZE Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>INFOSERWISSCWOJCIECHRADECKIGRZEPartnerManager</parentRole>
 </Role>

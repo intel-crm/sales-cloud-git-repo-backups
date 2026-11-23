@@ -5,32 +5,8 @@
         <value><!-- Marketplace Dashboard --></value>
     </caseValues>
     <fields>
-        <label><!-- External ID --></label>
-        <name>PMP_External_ID__c</name>
-    </fields>
-    <fields>
         <label><!-- PAG ID --></label>
         <name>PMP_PAG_ID__c</name>
-    </fields>
-    <fields>
-        <label><!-- Contact Partner Ask A Question Count --></label>
-        <name>PMP_Rpt_CP_Ask_A_Question_Count__c</name>
-    </fields>
-    <fields>
-        <label><!-- Contact Partner Combined Count --></label>
-        <name>PMP_Rpt_CP_Combined_Count__c</name>
-    </fields>
-    <fields>
-        <label><!-- Contact Partner Open Click Count --></label>
-        <name>PMP_Rpt_CP_Open_Click_Count__c</name>
-    </fields>
-    <fields>
-        <label><!-- Contact Partner Request A Quote Count --></label>
-        <name>PMP_Rpt_CP_Request_A_Quote_Count__c</name>
-    </fields>
-    <fields>
-        <label><!-- Contact Partner Submit --></label>
-        <name>PMP_Rpt_CP_Submit__c</name>
     </fields>
     <fields>
         <label><!-- Language --></label>
@@ -51,10 +27,6 @@
         <relationshipLabel><!-- Marketplace Dashboards --></relationshipLabel>
     </fields>
     <fields>
-        <label><!-- Page Views Count --></label>
-        <name>PMP_Rpt_PageViews_Count__c</name>
-    </fields>
-    <fields>
         <label>ページラベル</label>
         <name>PMP_Rpt_Page_Label__c</name>
     </fields>
@@ -71,14 +43,6 @@
         <name>PMP_Rpt_Page_URL__c</name>
     </fields>
     <fields>
-        <label><!-- Partner Offering Category --></label>
-        <name>PMP_Rpt_Partner_Offering_Category__c</name>
-    </fields>
-    <fields>
-        <label><!-- Partner Website Count --></label>
-        <name>PMP_Rpt_Partner_Website_Count__c</name>
-    </fields>
-    <fields>
         <label>リソース名</label>
         <name>PMP_Rpt_Resource_Name__c</name>
     </fields>
@@ -91,16 +55,8 @@
         <name>PMP_Rpt_Sum_PageViews__c</name>
     </fields>
     <fields>
-        <label><!-- Most Valuable Assert Count --></label>
-        <name>PMP_Rpt_Valuable_Assert_Count__c</name>
-    </fields>
-    <fields>
         <label><!-- ViewInfo --></label>
         <name>PMP_Rpt_Viewinfo__c</name>
-    </fields>
-    <fields>
-        <label><!-- Year --></label>
-        <name>PMP_Rpt_Year__c</name>
     </fields>
     <nameFieldLabel><!-- Marketplace Record ID --></nameFieldLabel>
 </CustomObjectTranslation>

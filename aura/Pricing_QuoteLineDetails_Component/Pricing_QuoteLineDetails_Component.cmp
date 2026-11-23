@@ -2,8 +2,8 @@
   @description       : 
   @author            : ChangeMeIn@UserSettingsUnder.SFDoc
   @group             : 
-  @last modified on  : 11-17-2026
-  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+  @last modified on  : 01-24-2025
+  @last modified by  : Vrushabh Uprikar
 -->
 <aura:component controller="Pricing_QuoteLineController"
     implements="forceCommunity:availableForAllPageTypes,lightning:actionOverride,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction,force:hasSObjectName,lightning:isUrlAddressable"
@@ -79,6 +79,7 @@
     <aura:attribute name="quoteLineType" type="string" default="" />
     <aura:attribute name="toastLineId" type="Id" default="" />
     <aura:attribute name="isSdmFastTrack" type="boolean" default="false" />
+    <aura:attribute name="quoteProgram" type="string" default="" />
 
     <!-- customer revision and field revision -->
     <aura:attribute name="showRevisionFields" type="boolean" default="false" />
@@ -103,7 +104,7 @@
     <!-- Navigation service Added By Naresh as part of US1104647-->
     <lightning:navigation aura:id="navService" />
     <aura:attribute name="showConsumptionParametersEdit" type="Boolean" default="false" />
-
+    
     <!--override Toast CSS with external [.CSS] file.-->
     <ltng:require styles="{!$Resource.multilineToastCSS}" />
     <aura:if isTrue="{!v.isModalOpen}">
@@ -383,7 +384,7 @@
                                                 integrationStatus="{!line.Pricing_Integration_Status_Nm__c}"
                                                 errorMessage="{!line.Pricing_Error_Messages__c}"
                                                 programType="{!line.Pricing_Quote_Program_Nm__c}"
-                                                aiIntegrationStatus="{!line.Pricing_Application_Agent_Status__c}" 
+                                                aiIntegrationStatus="{!line.Pricing_Application_Agent_Status__c}"
                                                 quoteLine="{!line}"/>
                                         </aura:if>
 
@@ -441,7 +442,7 @@
                 <div class="slds-modal__container" style="width: 53%">
                     <header style="padding: 0px; border-bottom: 0px;" class="slds-modal__header">
                         <lightning:buttonIcon iconName="utility:close" onclick="{!c.closeModel}" alternativeText="close"
-                             class="slds-modal__close" />
+                            class="slds-modal__close" />
                     </header>
                     <!-- <header class="slds-modal__header">         </header>  -->
 
@@ -464,7 +465,7 @@
                 <div class="slds-modal__container" style="width: 53%">
                     <header class="slds-modal__header slds-var-p-around_medium">
                         <lightning:buttonIcon iconName="utility:close" onclick="{! c.closeModel }"
-                            alternativeText="close"  class="slds-modal__close" />
+                            alternativeText="close" class="slds-modal__close" />
                         <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Quote Line Edit</h2>
                     </header>
                     <div class="slds-modal__content" id="ql-record-edit-modal-content">
@@ -484,7 +485,7 @@
                 <div class="slds-modal__container" style="width: 53%">
                     <header class="slds-modal__header slds-var-p-around_medium">
                         <lightning:buttonIcon iconName="utility:close" onclick="{! c.closeModel }"
-                            alternativeText="close"  class="slds-modal__close" />
+                            alternativeText="close" class="slds-modal__close" />
                         <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">{!v.productName}</h2>
                     </header>
                     <div class="slds-modal__content" id="rpm-form-modal-content">

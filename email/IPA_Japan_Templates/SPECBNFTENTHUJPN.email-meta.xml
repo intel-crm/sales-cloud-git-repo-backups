@@ -1,56 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
-    <available>false</available>
+    <available>true</available>
     <encodingKey>UTF-8</encodingKey>
     <name>SPECBNFTENTHUJPN</name>
     <style>none</style>
-    <subject>インテル® パートナー・アライアンスのエンスージアスト PC 専攻</subject>
-    <textOnly>認定取得、おめでとうございます !
+    <subject>インテル&amp;reg; エンスージアスト向け PC スペシャリスト認定取得、おめでとうございます</subject>
+    <textOnly>インテル® エンスージアスト向け PC スペシャリスト認定取得、おめでとうございます
 
+エンスージアスト向け PC スペシャリストとして、ビジネス拡大の新たなチャンスをご活用ください。今後とも、弊社との協力関係をいっそう深めていただけますようにお願い申し上げます。
+このメールをウェブページで表示するにはここをクリックしてください。
 
-{!Contact.FirstName} 様、
+認定を取得しました特典を活用する &gt;
+
+FirstName 様
 
 おめでとうございます。インテル® テクノロジー・プロバイダーのエンスージアスト向け PC スペシャリストに認定されました。
 
-PC ゲーマー人口が全世界で 10 億人を超えた今、市場は急速に成長しています。インテルと連携して顧客数を拡大し、売上を伸ばすチャンスです。
 
-以下のようなエンスージアスト向け PC スペシャリストの特典を、大いに活用してください。
+PC ゲームのプレーヤー人口が世界全体で 10 億人を超えた現在1、市場は急速に成長しています。インテルと連携して顧客基盤を拡大し、売上を伸ばすチャンスです。
 
+以下を含むエンスージアスト向け PC スペシャリストの特典を、大いに活用してください。
 
 インテル® Core™ プロセッサー・ファミリー X、K、H シリーズを搭載した製品の追加ポイント・プロモーション
 エンスージアスト向け PC スペシャリストの認定と、インテル® テクノロジー・プロバイダーのウェブページへの掲載
-インテルの専門家による技術ウェビナー
-世界レベルのゲームやソフトウェア・パック
+インテルのエキスパートによるテクニカル・ウェビナー
+世界トップクラスのゲームパックやソフトウェア・パック
 地域の e スポーツイベントへの入場パス
 
-開始するには、以下の情報を明記して enthusiast-pc@intel.com 宛てに返信してください。
-
-
-エンスージアスト向け PC スペシャリスト関連情報の主な連絡先
-名前：電子メール:
-
-
-その他販売やプロモーション素材
-現住所：
-電話番号：
+インテルへのご協力ありがとうございます。
 
 特典を活用する
 
+1 ベンチマーク結果は、「Spectre」および「Meltdown」と呼ばれる脆弱性への対処を目的とした最近のソフトウェア・パッチおよびファームウェア・アップデートの適用前に取得されたものです。アップデートの適用により、これらの結果がお使いのデバイスやシステムに該当しなくなる場合があります。
 
-* 特典は地域によって異なります。
+性能に関するテストに使用されるソフトウェアとワークロードは、性能がインテル® マイクロプロセッサー用に最適化されていることがあります。SYSmark* や MobileMark* などの性能テストは、特定のコンピューター・システム、コンポーネント、ソフトウェア、操作、機能に基づいて行ったものです。結果はこれらの要因によって異なります。製品の購入を検討される場合は、他の製品と組み合わせた場合の本製品の性能など、ほかの情報や性能テストも参考にして、パフォーマンスを総合的に評価することをお勧めします。詳細については、http://www.intel.com/benchmarks/ (英語) を参照してください。
 
-インテルのパートナーはイノベーションの長い歴史を持ち、インテル® パートナー・アライアンスにより、データ中心の経済におけるソリューション構築の促進を支援します。パートナー企業の力を結集し、私達がつながり、革新し、成長することで、類い稀な機会を実現することができます。
-
-メンバーシップの最適化についてのヘルプやガイダンスは、https://www.intel.com/content/www/jp/ja/partner-alliance/help/overview.html を参照してください。
-
-
-よろしくお願いいたします。
-インテル® パートナー・アライアンス
-
-このメッセージは、インテル® パートナー・アライアンス関係者の皆様に、重要なビジネス・コミュニケーションとして送信されました。
-© {!$Label.PRM_CurrentYear} Intel Corporation
-Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.  www.intel.com
-プライバシー  |  Cookies</textOnly>
+&apos;);}} div.OutlookMessageHeader {background-image:url(&apos;https://8qr1qit0.emltrk.com/8qr1qit0?f&amp;d=EmailAddress&apos;)} table.moz-email-headers-table {background-image:url(&apos;https://8qr1qit0.emltrk.com/8qr1qit0?f&amp;d=EmailAddress&apos;)} blockquote νm;_t {background-image:url(&apos;https://8qr1qit0.emltrk.com/8qr1qit0?f&amp;d=EmailAddress&apos;)} νm;MailContainerBody νm;_t {background-image:url(&apos;https://8qr1qit0.emltrk.com/8qr1qit0?f&amp;d=EmailAddress&apos;)}</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

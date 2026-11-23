@@ -18,8 +18,8 @@ public without sharing class CST_CRMNewCustomerBatch implements Database.Batchab
     }
     
     public void execute(Database.BatchableContext context, List<SPM_New_Accounts__c> scope) {
-     //   system.debug('Inside scope:'+scope);
-     //   system.debug('Inside scope size:'+scope.size());
+        system.debug('Inside scope:'+scope);
+        system.debug('Inside scope size:'+scope.size());
         
         Map<Id,SPM_New_Accounts__c> sfAccounIdNewCustomerMap = new  Map<Id,SPM_New_Accounts__c>();
         List<Account> accList = new List<Account>();
@@ -28,37 +28,40 @@ public without sharing class CST_CRMNewCustomerBatch implements Database.Batchab
         Set<Id> uniqueAccId = new Set<Id>();
         List<SPM_New_Accounts__c> customerList = new List<SPM_New_Accounts__c>();
         List<SPM_New_Accounts__c> customerListUpdated = new List<SPM_New_Accounts__c>();
-       	Map<String, CST_New_Customer_Account_Sync__mdt> customerMetadata = CST_New_Customer_Account_Sync__mdt.getAll();
+        Map<String, CST_New_Customer_Account_Sync__mdt> customerMetadata = CST_New_Customer_Account_Sync__mdt.getAll();
         
         for(SPM_New_Accounts__c newCustomer: scope){
             if(newCustomerMap.containsKey(newCustomer.SF_Account__c) && ( (newCustomer.New_Account_Owner__c!=newCustomerMap.get(newCustomer.SF_Account__c).New_Account_Owner__c || newCustomer.New_Sales_Group__c!=newCustomerMap.get(newCustomer.SF_Account__c).New_Sales_Group__c
                || newCustomer.Customer_category__c!=newCustomerMap.get(newCustomer.SF_Account__c).Customer_category__c) ||
                newCustomer.Coverage__c!=newCustomerMap.get(newCustomer.SF_Account__c).Coverage__c)){
                        duplicateId.add(newCustomer.SF_Account__c);
-              //     	system.debug('DID IS:'+newCustomer.SF_Account__c);
+                    system.debug('DID IS:'+newCustomer.SF_Account__c);
               }
              else{
 
                 Account acc = new Account(Id= newCustomer.SF_Account__c);
                 acc.Core_Account_Owner_Preview__c = newCustomer.New_Account_Owner__c;
-            	acc.Core_Sales_Group_Preview__c = newCustomer.New_Sales_Group__c;
+                acc.Core_Sales_Group_Preview__c = newCustomer.New_Sales_Group__c;
                  //API Name for Picklist values are different in New Customer and Account Object
                  //Inorder to handle it CST_New_Customer_Account_Sync__mdt metadata is created where API Names of Picklist are saved
-                 if(newCustomer.Coverage__c == customerMetadata.get('CST_Intel_Led').New_Customer_Value__c){
-                 	 acc.Core_Account_Primary_Coverage_Preview__c  = customerMetadata.get('CST_Intel_Led').Account_Value__c;
+                 /*if(newCustomer.Coverage__c == customerMetadata.get('CST_Intel_Led').New_Customer_Value__c){
+                     acc.Core_Account_Primary_Coverage_Preview__c  = customerMetadata.get('CST_Intel_Led').Account_Value__c;
                  }
                  else{
-                 	acc.Core_Account_Primary_Coverage_Preview__c = newCustomer.Coverage__c;
-                 }
+                    acc.Core_Account_Primary_Coverage_Preview__c = newCustomer.Coverage__c;
+                 }*/
+                 //commented as part of TWC3123-5894
+                 acc.Core_Account_Primary_Coverage_Preview__c = newCustomer.Coverage__c;
                  String categoryPreview='';
-             //    system.debug('CST CATEGORY'+customerMetadata);
-                 for(String category:newCustomer.Customer_category__c.split(';')){
-               //     system.debug('CAT ACC ID:'+newCustomer.SF_Account__c+'Category'+category);
-                     if(category== customerMetadata.get('CST_B2B_End_user').New_Customer_Value__c ){
+                 system.debug('CST CATEGORY'+customerMetadata);
+                 for(String category:newCustomer.Customer_category__c.split(';')) {
+                    system.debug('CAT ACC ID:'+newCustomer.SF_Account__c+'Category'+category);
+                     //TWC3123-6705--start
+                     /*if(category== customerMetadata.get('CST_B2B_End_user').New_Customer_Value__c ){
                         categoryPreview += customerMetadata.get('CST_B2B_End_user').Account_Value__c+';';
                      }
-                    else if(category== customerMetadata.get('CST_Indirect_Billings').New_Customer_Value__c ){
-          				 categoryPreview += customerMetadata.get('CST_Indirect_Billings').Account_Value__c+';';
+                     else if(category== customerMetadata.get('CST_Indirect_Billings').New_Customer_Value__c ){
+                         categoryPreview += customerMetadata.get('CST_Indirect_Billings').Account_Value__c+';';
                      }
                      else if(category== customerMetadata.get('CST_Regional_GSI_ISV_MSP').New_Customer_Value__c ){
                          categoryPreview += customerMetadata.get('CST_Regional_GSI_ISV_MSP').Account_Value__c+';';
@@ -69,54 +72,84 @@ public without sharing class CST_CRMNewCustomerBatch implements Database.Batchab
                      else if(category== customerMetadata.get('CST_Distributors').New_Customer_Value__c ){
                          categoryPreview += customerMetadata.get('CST_Distributors').Account_Value__c+';';
                      }
-                      else if(category== customerMetadata.get('CST_Regional_Retailer').New_Customer_Value__c ){
-                          categoryPreview += customerMetadata.get('CST_Regional_Retailer').Account_Value__c+';';
-                      }
+                     else if(category== customerMetadata.get('CST_Regional_Retailer').New_Customer_Value__c ){
+                        categoryPreview += customerMetadata.get('CST_Regional_Retailer').Account_Value__c+';';
+                     }
                      else if(category== customerMetadata.get('CST_Region_Branded_Disti').New_Customer_Value__c ){
                          categoryPreview += customerMetadata.get('CST_Region_Branded_Disti').Account_Value__c+';';
-                      }
+                      }*/
+                     if(category== customerMetadata.get('CST_Reseller_Named_Billing_Accounts').New_Customer_Value__c ){
+                         categoryPreview += customerMetadata.get('CST_Reseller_Named_Billing_Accounts').Account_Value__c+';';
+                     }
+                     else if(category== customerMetadata.get('CST_Distributors_IA').New_Customer_Value__c ){
+                         categoryPreview += customerMetadata.get('CST_Distributors_IA').Account_Value__c+';';
+                     }
+                     else if(category== customerMetadata.get('CST_Solution_Enabler_SI_ISV_CSP_MSP').New_Customer_Value__c ){
+                         categoryPreview += customerMetadata.get('CST_Solution_Enabler_SI_ISV_CSP_MSP').Account_Value__c+';';
+                     }
+                     else if(category== customerMetadata.get('CST_Reseller_Retailers').New_Customer_Value__c ){
+                         categoryPreview += customerMetadata.get('CST_Reseller_Retailers').Account_Value__c+';';
+                     }
+                     else if(category== customerMetadata.get('CST_Reseller_Branded_Disti').New_Customer_Value__c ){
+                         categoryPreview += customerMetadata.get('CST_Reseller_Branded_Disti').Account_Value__c+';';
+                     }
+                     else if(category== customerMetadata.get('CST_End_Customer').New_Customer_Value__c ){
+                         categoryPreview += customerMetadata.get('CST_End_Customer').Account_Value__c+';';
+                     }
+                     else if(category== customerMetadata.get('CST_Device_Builder_Regional_OxM').New_Customer_Value__c ){
+                         categoryPreview += customerMetadata.get('CST_Device_Builder_Regional_OxM').Account_Value__c+';';
+                     }
+                     else if(category== customerMetadata.get('CST_Hyperscaler_AWS_Azure_GCP').New_Customer_Value__c ){
+                         categoryPreview += customerMetadata.get('CST_Hyperscaler_AWS_Azure_GCP').Account_Value__c+';';
+                     }
+                     else if(category== customerMetadata.get('CST_Device_Builder_MNC').New_Customer_Value__c ){
+                         categoryPreview += customerMetadata.get('CST_Device_Builder_MNC').Account_Value__c+';';
+                     }
+                     else if(category== customerMetadata.get('CST_Regional_Co_Sell_Partners').New_Customer_Value__c ){ //added as part of TWC3123-6260
+                         categoryPreview += customerMetadata.get('CST_Regional_Co_Sell_Partners').Account_Value__c+';';
+                     }
                  }
-             
-            //    system.debug('CAT PREVIEW:'+acc.Id+' '+categoryPreview);
+                //TWC3123-6705--end
+                system.debug('CAT PREVIEW:'+acc.Id+' '+categoryPreview);
                 acc.Core_Account_Category_Preview__c = categoryPreview;
+                //acc.CST_Account_Level_Preview__c = newCustomer.CST_New_Account_Level__c; //TWC3123-5896
                 newCustomerMap.put(newCustomer.SF_Account__c,newCustomer);
                 //Avoid adding same Account twice to accList
                 if(!uniqueAccId.contains(acc.Id)){
-                  accList.add(acc);
+                  accList.add(acc); 
                   uniqueAccId.add(acc.Id);
                 }
             }
                 
         }
-     //   system.debug('DUP IS:'+duplicateId);
-      //  system.debug('DUP SIZDE IS:'+duplicateId.size());
+        
          for(Account acc:accList){
             if(!duplicateId.contains(acc.Id)){
-             //   system.debug('UNIQUE:'+acc.Id);
+                system.debug('UNIQUE:'+acc.Id);
                 finalAccList.add(acc);
             }
         }
-        
+        system.debug('finalAccList'+finalAccList);
          Database.SaveResult[] myResult=Database.update(finalAccList,false);
-	   
+       
            for(Integer i=0; i < myResult.size(); i++) {
                 if(myResult.get(i).isSuccess()) {
                     allSuccessId.add(myResult.get(i).Id);
-                   //     System.debug('Records are updated Successfully'+allSuccessId);
+                    System.debug('Records are updated Successfully'+i);
                 } 
                 else if(!myResult.get(i).isSuccess()) {
                     Database.Error errors =  myResult.get(i).getErrors().get(0);
-               //     System.debug('Error Occurs While Processing The Record'+errors.getMessage());
+                    System.debug('Error Occurs While Processing The Record'+errors.getMessage());
                     allFailedId.add(finalAccList.get(i).Id);
                     errorMap.put(finalAccList.get(i).Id,errors.getMessage());
                 }        
  
-    	}
+        }
        //Update Customer records-> SF_Account_Updated__c= true for processed records
        for(SPM_New_Accounts__c customerRec:scope ){
              if(allSuccessId.contains(customerRec.SF_Account__c)){
-                 	customerRec.SF_Account_Updated__c = true;
-            		customerListUpdated.add(customerRec);
+                    customerRec.SF_Account_Updated__c = true;
+                    customerListUpdated.add(customerRec);
              }
         }
         /*Database.SaveResult[] customerResults;
@@ -125,26 +158,24 @@ public without sharing class CST_CRMNewCustomerBatch implements Database.Batchab
         }*/
         //added for testing
         Database.SaveResult[] customerResults;
+        system.debug('customerListUpdated'+customerListUpdated.size());
         if(customerListUpdated.size()>0){
             customerResults = Database.update(customerListUpdated,false);
-           // system.debug('customerResults --'+customerResults);
+            system.debug('customerResults --'+customerResults);
         }
-        if(customerResults != null && !customerResults.isEmpty()){
-            for(Integer i=0; i < customerResults.size(); i++) {
+        for(Integer i=0; i < customerResults.size(); i++) {
                 if(customerResults.get(i).isSuccess()) {
                     allSuccessCustomerId.add(customerResults.get(i).Id);
-                //    System.debug('NEWCUSTOMER Records are updated Successfully'+allSuccessId);
+                    System.debug('NEWCUSTOMER Records are updated Successfully'+allSuccessId);
                 } 
                 else if(!customerResults.get(i).isSuccess()) {
                     Database.Error errors =  customerResults.get(i).getErrors().get(0);
-                  //  System.debug('NEWCUSTOMER Error Occurs While Processing The Record'+errors.getMessage());
+                    System.debug('NEWCUSTOMER Error Occurs While Processing The Record'+errors.getMessage());
                     allFailedCustomerId.add(customerResults.get(i).Id);
                 }        
-    	}
-
+ 
         }
-        
-       // system.debug('CUSTOMER SUCCESS ID:'+allSuccessCustomerId);
+        system.debug('CUSTOMER SUCCESS ID:'+allSuccessCustomerId);
         //added for testing end
     }
     
@@ -186,7 +217,7 @@ public without sharing class CST_CRMNewCustomerBatch implements Database.Batchab
             mailBody += '</table>';
          }
         
-       //  system.debug('Logged in user is'+loggedUserEmail);
+         //system.debug('Logged in user is'+loggedUserEmail);
          Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
          String fromEmailAddress = System.Label.Core_SetFromEmailAddress;
          mail.setToAddresses(new String[] {loggedUserEmail});
@@ -194,7 +225,8 @@ public without sharing class CST_CRMNewCustomerBatch implements Database.Batchab
          //mail.setSenderDisplayName('Intel Corporation-NoReply');
          mail.setSubject(orgName.toUpperCase()+' CST CRM Customer Update');
          mail.setHtmlBody(mailBody);
-         mail.setOrgWideEmailAddressId(fromEmailAddress);  
+         mail.setOrgWideEmailAddressId(fromEmailAddress);
+            
          Messaging.sendEmail(new Messaging.SingleEmailMessage[] { mail });
         
         
@@ -206,7 +238,7 @@ public without sharing class CST_CRMNewCustomerBatch implements Database.Batchab
 
     {
         Integer batchSize= Integer.valueOf(Core_CRM_Utility.getCRMLabel('CST_CRMAccounUpdateBatchSize'));
-		
+        
         Id jobId = Database.executeBatch(new CST_CRMNewCustomerBatch(),batchSize);
 
     }

@@ -143,7 +143,6 @@
     <allowInChatterGroups>true</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
-    <deprecated>false</deprecated>
     <enableActivities>true</enableActivities>
     <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>
@@ -156,7 +155,6 @@
     <externalSharingModel>ControlledByParent</externalSharingModel>
     <fields>
         <fullName>DP_EAT_Class_Id__c</fullName>
-        <deprecated>false</deprecated>
         <externalId>false</externalId>
         <label>Class Id</label>
         <length>20</length>
@@ -169,7 +167,6 @@
     <fields>
         <fullName>DP_EAT_Compound_Key_Text__c</fullName>
         <caseSensitive>false</caseSensitive>
-        <deprecated>false</deprecated>
         <externalId>true</externalId>
         <label>Compound Key Text</label>
         <length>255</length>
@@ -182,7 +179,6 @@
     <fields>
         <fullName>DP_EAT_Exclude_test_class_for_test_runs__c</fullName>
         <defaultValue>false</defaultValue>
-        <deprecated>false</deprecated>
         <label>Exclude test class for test runs</label>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -190,7 +186,6 @@
     </fields>
     <fields>
         <fullName>DP_EAT_Project_Name__c</fullName>
-        <deprecated>false</deprecated>
         <label>Project Name</label>
         <referenceTo>DP_EAT_Project_Info__c</referenceTo>
         <relationshipLabel>Project Test Classes</relationshipLabel>

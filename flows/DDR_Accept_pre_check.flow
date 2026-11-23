@@ -41,7 +41,7 @@
     <decisions>
         <name>Accept_Prechedk</name>
         <label>Accept Prechedk</label>
-        <locationX>446</locationX>
+        <locationX>512</locationX>
         <locationY>242</locationY>
         <defaultConnector>
             <targetReference>Is_Authorized</targetReference>
@@ -66,7 +66,7 @@
     <decisions>
         <name>Condition_for_pre_check</name>
         <label>Condition for pre-check</label>
-        <locationX>1502</locationX>
+        <locationX>1766</locationX>
         <locationY>242</locationY>
         <defaultConnector>
             <targetReference>Update_DR_record</targetReference>
@@ -91,7 +91,7 @@
     <decisions>
         <name>Deal_or_Design_check</name>
         <label>Deal or Design check?</label>
-        <locationX>1304</locationX>
+        <locationX>1469</locationX>
         <locationY>134</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -128,7 +128,7 @@
     <decisions>
         <name>Is_Authorized</name>
         <label>Is Authorized</label>
-        <locationX>842</locationX>
+        <locationX>974</locationX>
         <locationY>350</locationY>
         <defaultConnector>
             <targetReference>UnAuthorized_Error</targetReference>
@@ -390,7 +390,7 @@
     <recordUpdates>
         <name>Update_DR_record</name>
         <label>Update DR record</label>
-        <locationX>1634</locationX>
+        <locationX>1898</locationX>
         <locationY>350</locationY>
         <connector>
             <targetReference>DR_message</targetReference>
@@ -418,7 +418,7 @@
     <screens>
         <name>completed</name>
         <label>completed</label>
-        <locationX>1370</locationX>
+        <locationX>1634</locationX>
         <locationY>350</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
@@ -492,7 +492,7 @@
     <screens>
         <name>DR_message</name>
         <label>DR message</label>
-        <locationX>1634</locationX>
+        <locationX>1898</locationX>
         <locationY>458</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
@@ -517,7 +517,7 @@
     <screens>
         <name>Exception_Precheck_Complete</name>
         <label>Exception_Precheck_Complete</label>
-        <locationX>1898</locationX>
+        <locationX>2162</locationX>
         <locationY>458</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
@@ -567,7 +567,7 @@
     <screens>
         <name>UnAuthorized_Error</name>
         <label>UnAuthorized Error</label>
-        <locationX>1106</locationX>
+        <locationX>1370</locationX>
         <locationY>458</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
@@ -590,7 +590,7 @@
         <showHeader>false</showHeader>
     </screens>
     <start>
-        <locationX>1178</locationX>
+        <locationX>1343</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Deal_or_Design_check</targetReference>

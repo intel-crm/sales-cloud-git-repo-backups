@@ -105,10 +105,6 @@
         <aggregateTypes>Sum</aggregateTypes>
         <field>AMOUNT</field>
     </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Lead.SWS_Software_Lead__c</field>
-    </columns>
     <description>RT: Leads with converted lead information. Only TALs</description>
     <filter>
         <criteriaItems>

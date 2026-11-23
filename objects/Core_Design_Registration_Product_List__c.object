@@ -440,6 +440,24 @@
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
+    <listViews>
+        <fullName>Deal_ISRs_Core_Design_Registration_Product_List</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Deal ISRs</label>
+        <queue>Deal_ISRs</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Deal_pre_approvers_Core_Design_Registration_Product_List</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Deal pre approvers</label>
+        <queue>Deal_pre_approvers</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
     <nameField>
         <displayFormat>DR-PROD-{0000000}</displayFormat>
         <label>Name</label>

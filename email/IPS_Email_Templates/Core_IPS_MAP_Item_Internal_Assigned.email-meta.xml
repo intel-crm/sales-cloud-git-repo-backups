@@ -6,7 +6,7 @@
     <letterhead>IPS_Letterhead</letterhead>
     <name>Core IPS MAP Item Internal Assigned</name>
     <style>freeForm</style>
-    <subject>{!Core_IPS_Map_Par_Line_Item__c.Core_Support_Org_Name__c}: MAP Approval Required {!Core_IPS_Map_Par_Line_Item__c.Map_Item_internal_Subject__c}</subject>
+    <subject>{!Core_IPS_Map_Par_Line_Item__c.Core_Support_Org_Name__c}: MAP Approval Required ({!Core_IPS_Map_Par_Line_Item__c.Core_Account__c} / {!Core_IPS_Map_Par_Line_Item__c.Core_Supported_Product_Name__c})</subject>
     <textOnly>Intel® Premier Support 
 
 A Product Access Request (PAR) Line Item has been submitted to your Organization and requires Approval or Rejection by one of your Support Org Admins.

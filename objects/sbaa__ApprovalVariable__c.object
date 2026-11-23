@@ -408,6 +408,11 @@
                     <default>false</default>
                     <label>core_cpq_tools_nc_bm_routing_check__c</label>
                 </value>
+                <value>
+                    <fullName>SBQQ__ProductName__c</fullName>
+                    <default>false</default>
+                    <label>SBQQ__ProductName__c</label>
+                </value>
             </valueSetDefinition>
             <valueSettings>
                 <controllingFieldValue>Opportunity Product</controllingFieldValue>
@@ -456,10 +461,6 @@
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>SBQQ__QuoteLine__c</controllingFieldValue>
-                <valueName>core_cpq_Tool_Type__c</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>SBQQ__QuoteLine__c</controllingFieldValue>
                 <valueName>price_msvp_l2_amt__c</valueName>
             </valueSettings>
             <valueSettings>
@@ -473,6 +474,10 @@
             <valueSettings>
                 <controllingFieldValue>SBQQ__QuoteLine__c</controllingFieldValue>
                 <valueName>core_cpq_tools_nc_bm_routing_check__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SBQQ__QuoteLine__c</controllingFieldValue>
+                <valueName>SBQQ__ProductName__c</valueName>
             </valueSettings>
         </valueSet>
     </fields>

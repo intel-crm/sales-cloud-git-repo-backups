@@ -341,13 +341,6 @@
         <errorConditionFormula>AND(NOT(ISNULL(Contact__c)), ISNULL(User__c))</errorConditionFormula>
         <errorMessage>User should not be blank when Contact is Selected</errorMessage>
     </validationRules>
-    <validationRules>
-        <fullName>IPS_Altera_Go_Live_IntPort_Restriction</fullName>
-        <active>true</active>
-        <description>Restricting the user to add Interested Parties on a cases with Altera products during migration</description>
-        <errorConditionFormula>AND($Label.IPS_Altera_Go_Live= &apos;True&apos;,Case__r.Core_IPS_Product_Org_Number__c = &apos;025&apos;,  $User.Id  &lt;&gt;  $Label.Altera_Bypass_UserId )</errorConditionFormula>
-        <errorMessage>Not allowed to create or update record related to Org 025</errorMessage>
-    </validationRules>
     <visibility>Public</visibility>
     <webLinks>
         <fullName>Add</fullName>
@@ -358,8 +351,8 @@
         <openType>onClickJavaScript</openType>
         <protected>false</protected>
         <requireRowSelection>false</requireRowSelection>
-        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/50.0/connection.js&quot;)} 
-{!REQUIRESCRIPT(&quot;/soap/ajax/50.0/apex.js&quot;)} 
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/14.0/connection.js&quot;)} 
+{!REQUIRESCRIPT(&quot;/soap/ajax/14.0/apex.js&quot;)} 
 
 var IPSCaseAtt = new sforce.SObject(&quot;Case&quot;); 
 IPSCaseAtt.Id = &apos;{!Case.Id}&apos;; 
@@ -425,16 +418,36 @@ window.open(&quot;/apex/Core_IPS_Interested_Party_External&quot; + &quot;?id=&qu
 }</url>
     </webLinks>
     <webLinks>
-        <fullName>Manage_Interested_Parties_LWC</fullName>
+        <fullName>Add_Internal_Interested_Party</fullName>
         <availability>online</availability>
         <displayType>massActionButton</displayType>
-        <encodingKey>UTF-8</encodingKey>
-        <height>600</height>
-        <linkType>url</linkType>
-        <masterLabel>Manage Interested Parties</masterLabel>
-        <openType>sidebar</openType>
+        <linkType>javascript</linkType>
+        <masterLabel>Add Internal Interested Party</masterLabel>
+        <openType>onClickJavaScript</openType>
         <protected>false</protected>
-        <requireRowSelection>true</requireRowSelection>
-        <url>/lightning/n/Interested_Parties?c__recordId={!Case.Id}</url>
+        <requireRowSelection>false</requireRowSelection>
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/34.0/connection.js&quot;)} 
+{!REQUIRESCRIPT(&quot;/soap/ajax/34.0/apex.js&quot;)} 
+
+var IPSCaseAtt = new sforce.SObject(&quot;Case&quot;); 
+IPSCaseAtt.Id = &apos;{!Case.Id}&apos;; 
+var IPSCaseAttID = &apos;{!Case.Id}&apos;; 
+
+if ((&quot;{!$Profile.Name}&quot; == &quot;{!$Label.Core_IPS_Partner_AE_ProfileName}&quot;)) 
+{ 
+window.open(&quot;/IPS/Core_IPS_Interested_Party_Internal&quot;+&quot;?id=&quot;+IPSCaseAttID, &apos;_self&apos;); 
+} 
+//Added by Aparna for DE36697-R4.2
+else if(typeof(srcUp) == &apos;function&apos; &amp;&amp; (&quot;{$Profile.Name}&quot; != &quot;{$Label.Core_IPS_Partner_AE_ProfileName}&quot;)) 
+{  
+sforce.console.getEnclosingTabId(function(enclosingResult) { 
+sforce.console.getEnclosingPrimaryTabId(function(primaryResult) { 
+sforce.console.openPrimaryTab(primaryResult.id, &quot;/apex/Core_IPS_Interested_Party_Internal&quot; + &quot;?id=&quot; + IPSCaseAttID, true, &apos;Case: {!Case.CaseNumber}&apos;, null); 
+}); 
+}); 
+} 
+else { 
+window.open(&quot;/apex/Core_IPS_Interested_Party_Internal&quot; + &quot;?id=&quot; + IPSCaseAttID, &apos;_self&apos;); 
+}</url>
     </webLinks>
 </CustomObject>

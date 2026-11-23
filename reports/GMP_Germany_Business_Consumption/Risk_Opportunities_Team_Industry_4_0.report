@@ -12,7 +12,7 @@
         <chartType>Donut</chartType>
         <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>false</expandOthers>
-        <groupingColumn>ACCOUNT_OWNER</groupingColumn>
+        <groupingColumn>Opportunity.Core_Risk_Reason__c</groupingColumn>
         <legendPosition>Bottom</legendPosition>
         <location>CHART_BOTTOM</location>
         <showAxisLabels>false</showAxisLabels>
@@ -47,6 +47,9 @@
     </columns>
     <columns>
         <field>OpportunityLineItem.Core_Risk_Reason1__c</field>
+    </columns>
+    <columns>
+        <field>OpportunityLineItem.Core_Risk_Reason2__c</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Support_Requested__c</field>
@@ -121,11 +124,11 @@
             <value>0</value>
         </criteriaItems>
         <criteriaItems>
-            <column>FULL_NAME</column>
+            <column>OWNER_MANAGER</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Florian Ranner,Donal,Christian Donitzky</value>
+            <operator>equals</operator>
+            <value>Dieter Hoffend</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -138,6 +141,11 @@
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>ACCOUNT_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Opportunity.Core_Risk_Reason__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>@Risk Opportunities Team Industry 4.0</name>

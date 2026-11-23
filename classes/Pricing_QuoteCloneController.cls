@@ -15,18 +15,19 @@ public without sharing class Pricing_QuoteCloneController {
         sObjectId =  String.escapeSingleQuotes(String.valueOf(sObjectId));
         GlobalVariables globalVar = new GlobalVariables();
         
+        Boolean loggedInAEUser = false;
         List<SBQQ__Quote__c> parentSObjects;
         SBQQ__Quote__c parent;
         String query;
         id userId = UserInfo.getUserId();
-        List<PermissionSetAssignment> lstcurrentUserPerSet =new List<PermissionSetAssignment>([SELECT Id, PermissionSet.Name, AssigneeId, Assignee.ContactId
-                                                                                               FROM PermissionSetAssignment
-                                                                                               WHERE AssigneeId =: userId]);
         
         Set<String> cloneAllowedPersonaPS = new Set<String>(Label.Pricing_Tender_Quote_Clone_Permission_Sets.Split(':'));                                                                                       // STORE CURRENT USER'S PERMISSION SETS IN A LIST
         // STORE CURRENT USER'S PERMISSION SETS IN A LIST
         Boolean isQuoteCloneAllowed = false;
-        for (PermissionSetAssignment psa : lstcurrentUserPerSet) {
+        for (PermissionSetAssignment psa : [SELECT Id, PermissionSet.Name, AssigneeId, Assignee.ContactId FROM PermissionSetAssignment WHERE AssigneeId =: userId]) {
+            if(psa.PermissionSet.Name == Label.Pricing_Tender_PermissionSets_TenderAccountExecutive){
+                loggedInAEUser = true;
+            }
             if(cloneAllowedPersonaPS.contains(psa.PermissionSet.Name)){
                 isQuoteCloneAllowed = true;
                 break;
@@ -84,6 +85,7 @@ public without sharing class Pricing_QuoteCloneController {
                     getUsersFromQuoteTeam(parentSObjects);
 
                 //(parent.Pricing_Program_Type_Nm__c == Label.Pricing_Tender_Small_Volume_Quote)? Pricing_Tender_Utility.getRecordTypeId('SBQQ__Quote__c', Label.Pricing_Small_Volume_Quote_Create) : Pricing_Tender_Utility.getRecordTypeId('SBQQ__Quote__c', Label.Pricing_Tender_Quote_Create);
+                Boolean isValidSalesRep = !Pricing_Publish_Quote.quoteSalesRepValidation(parent);
                 parent.Pricing_Bid_Dt__c = parent.Pricing_Bid_Dt__c > date.today() ? parent.Pricing_Bid_Dt__c : dateFormat();
                 parent.Pricing_ShipmentStDate_Dt__c = parent.Pricing_ShipmentStDate_Dt__c > date.today() ? parent.Pricing_ShipmentStDate_Dt__c : dateFormat();          
                 parent.Pricing_ShipmentEndDate_Dt__c = parent.Pricing_ShipmentEndDate_Dt__c > date.today() ? parent.Pricing_ShipmentEndDate_Dt__c : dateFormat();
@@ -95,13 +97,13 @@ public without sharing class Pricing_QuoteCloneController {
                 parent.Pricing_My_Deals_Folio_Name_Nm__c = null;
                 parent.Pricing_Folio_ID_Nm__c= null;
                 parent.Pricing_SecondaryContact_Nm__c= null;
-                parent.Pricing_Intel_Sales_Rep_Email_Txt__c = Pricing_Publish_Quote.quoteSalesRepValidation(parent) == false ? parent.Pricing_Intel_Sales_Rep_Email_Txt__c : null;
-                parent.SBQQ__SalesRep__c = Pricing_Publish_Quote.quoteSalesRepValidation(parent) == false ? parent.SBQQ__SalesRep__c : null;
+                parent.Pricing_Intel_Sales_Rep_Email_Txt__c = isValidSalesRep ? parent.Pricing_Intel_Sales_Rep_Email_Txt__c : null;
+                parent.SBQQ__SalesRep__c = isValidSalesRep ? parent.SBQQ__SalesRep__c : null;
                 parent.Pricing_Auto_generate_Quote_Letter__c = true;
                 parent.Pricing_Intel_Response_Requested_By_Date__c = null;
                 parent.Pricing_Volume_Exception_Quota_Cb__c = false;
                 parent.Pricing_Exclude_from_Volume_Excep_Quota__c = false;
-               
+                parent.Pricing_AI_Host_Node_cb__c = false;
                 parent.Pricing_Is_Covered_Account_cb__c = false;
                 parent.Pricing_Quota_Exclusion_Reason__c = null;
                 parent.Pricing_AdditionalRecipients__c = null;
@@ -132,7 +134,7 @@ public without sharing class Pricing_QuoteCloneController {
                     
                 }
                 
-                String loggedInUserContactId = lstcurrentUserPerSet[0].Assignee.ContactId;
+                String loggedInUserContactId = [SELECT Id, PermissionSet.Name, AssigneeId, Assignee.ContactId FROM PermissionSetAssignment WHERE AssigneeId =: userId limit 1].Assignee.ContactId;
                 List<User> primaryConDetails = [SELECT Id, IsActive, (SELECT Id, PermissionSet.Name, AssigneeId, Assignee.ContactId 
                                                                       FROM PermissionSetAssignments 
                                                                       WHERE PermissionSet.Name IN: Label.Pricing_Tender_PermissionSets_AllExternal.Split(':'))
@@ -157,7 +159,7 @@ public without sharing class Pricing_QuoteCloneController {
             } catch (Exception error) {
                 //Create Error Log when an Exception Occurs
                 Pricing_Tender_Utility.logError(error, sObjectId);
-                globalVar.messageResult = JSON.serialize(error.getMessage());
+                globalVar.messageResult = JSON.serialize(error.getMessage()).contains(Label.Pricing_Duplicate_FSE_Error) ? Label.Pricing_Duplicate_FSE_Error : JSON.serialize(error.getMessage());
                 globalVar.quoteId = null;
                 globalVar.isSuccess = false;
                 return globalVar;
@@ -354,18 +356,17 @@ public without sharing class Pricing_QuoteCloneController {
                 newQuoteLine.Pricing_Reason_for_FeedBack_Txt__c = null;
                 newQuoteLine.Pricing_Recommendation_FeedBack_Nm__c = null;  
                 newQuoteLine.Pricing_Recommended_Price_Amt__c   = null;
-          	    newQuoteLine.Pricing_Price_Interval_Txt__c = null;
-                newQuoteLine.Pricing_Discount_Pct__c = null;
-                newQuoteLine.Pricing_Tentative_ECAP_Price_Amt__c = null;
+                newQuoteLine.Pricing_Price_Interval_Txt__c = null;
                 newQuoteLine.Pricing_HPC_Eligible_Pricing_Envelope__c = null;//PAA V2
                 newQuoteLine.Pricing_Rationale_for_Pricing__c = null;//citrus change
                 newQuoteLine.Pricing_Application_Agent_Status__c = null;//citrus change
+                newQuoteLine.Pricing_Discount_Pct__c = null;
+                newQuoteLine.Pricing_Tentative_ECAP_Price_Amt__c = null;
                 newQuoteLine.Pricing_Debit_Volume_qty__c = null;
                 newQuoteLine.Pricing_Debit_Dollars_Amt__c = null;
                 newQuoteLine.Pricing_Last_Credit_Debit_Date_Dt__c = null;
                 newQuoteLine.Pricing_Credit_Volume_qty__c = null;
                 newQuoteLine.Pricing_Credit_Dollars_Amt__c = null;
-		
                 //insert newQuoteLine;
                 quoteLineList.add(newQuoteLine);
                 //Database.insert(newQuoteLine);
@@ -444,7 +445,10 @@ public without sharing class Pricing_QuoteCloneController {
         Id recordTypeId;
         String recordTypeDeveloperName = '';
         recordTypeDeveloperName = (quoteType == Label.Pricing_Tender_Standard_Quote) ? Label.Pricing_Tender_Quote_RecordType_Create
-            :(quoteType == Label.Pricing_Tender_Small_Volume_Quote) ? Label.Pricing_Small_Volume_Quote_Create : Label.Pricing_Tender_Quote_RecordType_Create;
+            :(quoteType == Label.Pricing_Tender_Small_Volume_Quote) ? Label.Pricing_Small_Volume_Quote_Create
+                //:(quoteType == Label.Pricing_Tender_SSD_Quote) ? Label.Pricing_SSD_Quote_Create
+                    //:(quoteType == Label.Pricing_Tender_PMem_Quote) ? Label.Pricing_PMem_Quote_Create
+                        : Label.Pricing_Tender_Quote_RecordType_Create;
         
         if(recordTypeDeveloperName!= null){
             recordTypeId = Pricing_Tender_Utility.getRecordTypeId('SBQQ__Quote__c',recordTypeDeveloperName);
@@ -489,7 +493,7 @@ public without sharing class Pricing_QuoteCloneController {
     **/
     @AuraEnabled(cacheable=true)
     public static SBQQ__Quote__c  getQuoteDetails(Id recordId) {
-        SBQQ__Quote__c quote = [SELECT Id, Pricing_Program_Type_Nm__c, SBQQ__Account__c FROM SBQQ__Quote__c WHERE Id = : recordId];
+        SBQQ__Quote__c quote = [SELECT Id, Pricing_Program_Type_Nm__c, SBQQ__Account__c  FROM SBQQ__Quote__c WHERE Id = : recordId];
         return quote;
     }
 

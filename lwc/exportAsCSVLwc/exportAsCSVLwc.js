@@ -10,7 +10,7 @@ export default class ExportAsCSVLwc extends LightningElement {
     @api exportData = [];
 
 
-    handleExport() {
-        exportAsCSV(this.newdataSetName, this.currentpage, this.exportData);
+    async handleExport() {
+        await exportAsCSV(this.newdataSetName, this.currentpage, this.exportData);
     }
 }

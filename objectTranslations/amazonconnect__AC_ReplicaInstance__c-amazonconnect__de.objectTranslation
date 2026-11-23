@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <caseType>Nominative</caseType>
+        <plural>false</plural>
+        <value>AC-Replikatinstanz</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Nominative</caseType>
+        <plural>true</plural>
+        <value><!-- AC-Replikatinstanz --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Accusative</caseType>
+        <plural>false</plural>
+        <value><!-- AC-Replikatinstanz --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Accusative</caseType>
+        <plural>true</plural>
+    </caseValues>
+    <caseValues>
+        <caseType>Genitive</caseType>
+        <plural>false</plural>
+        <value><!-- AC-Replikatinstanz --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Genitive</caseType>
+        <plural>true</plural>
+    </caseValues>
+    <caseValues>
+        <caseType>Dative</caseType>
+        <plural>false</plural>
+        <value><!-- AC-Replikatinstanz --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Dative</caseType>
+        <plural>true</plural>
+    </caseValues>
+    <fields>
+        <label> Instance-ARN </label>
+        <name>amazonconnect__Arn__c</name>
+    </fields>
+    <fields>
+        <label> CTI-Adapter </label>
+        <name>amazonconnect__CtiAdapter__c</name>
+        <relationshipLabel><!-- Cti Adapter Replica Instance --></relationshipLabel>
+    </fields>
+    <fields>
+        <label> Amazon Connect-Instance-Alias </label>
+        <name>amazonconnect__Instance__c</name>
+    </fields>
+    <fields>
+        <help><!-- Optional: This is the Named Credential used for the &quot;Recording Controls&quot; feature. If this is empty, a default value of &quot;AmazonConnectAPI&quot; will be assumed. --></help>
+        <label> Anmeldeinformationen mit Namen </label>
+        <name>amazonconnect__NamedCredential__c</name>
+    </fields>
+    <fields>
+        <label> Amazon Connect-Instance-Region </label>
+        <name>amazonconnect__Region__c</name>
+    </fields>
+    <gender>Feminine</gender>
+    <nameFieldLabel>AC-Replikatinstanz</nameFieldLabel>
+    <recordTypes>
+        <description><!-- The standard record type for AC Replica Instances --></description>
+        <label><!-- Standard Record Type --></label>
+        <name>amazonconnect__Standard</name>
+    </recordTypes>
+</CustomObjectTranslation>

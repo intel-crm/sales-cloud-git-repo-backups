@@ -46,7 +46,7 @@ public without sharing class SWS_ValidateRequest {
                 SWS_Utility.createCoreLogEntry(LOG_ENTRY_ORIGIN,'validateRequest',LOG_ENTRY_SCOPE,'',ex,'SWS_Cloud_Credit_Request__c',LOG_ENTRY_SEVERITY,(String) request.get('Id'));
             }
         }
-        if(!credRequest.isEmpty() && !bypassUpdate && !missingRequiredFieldList.isEmpty()){
+        if(!credRequest.isEmpty()){
             SWS_Utility.updateByPass();
             Database.SaveResult[] sr = Database.update(credRequest,false);               
             SWS_Utility.updateByPass();

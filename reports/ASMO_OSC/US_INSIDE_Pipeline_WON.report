@@ -7,6 +7,9 @@
         <field>OPPORTUNITY_NAME</field>
     </columns>
     <columns>
+        <field>OWNER_MANAGER</field>
+    </columns>
+    <columns>
         <field>LAST_STAGE_CHANGE_DATE</field>
     </columns>
     <columns>
@@ -38,35 +41,48 @@
     <columns>
         <field>Opportunity.Core_Opportunity_Coverage__c</field>
     </columns>
-    <description>Pipeline Dashboard</description>
     <filter>
-        <booleanFilter>1 AND 2 AND 3</booleanFilter>
+        <booleanFilter>1 AND 2 AND 3 AND (4 OR 5)</booleanFilter>
+        <criteriaItems>
+            <column>AMOUNT</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>greaterThan</operator>
+            <value>0</value>
+        </criteriaItems>
         <criteriaItems>
             <column>STAGE_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Design Win,Production Win,Production Lost,Production Cancelled</value>
+            <value>Design Win,Production Win</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Sales_Groups__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>americas,hosted</value>
+            <operator>equals</operator>
+            <value>US Sales Group</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Opportunity_Coverage__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>OSC</value>
         </criteriaItems>
         <criteriaItems>
             <column>OWNER_MANAGER</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Thomson,Wood,Stiles,Covey,gordon</value>
+            <value>Halversen,Wood,Swyers,Oldfield,Covey,Merjanian</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
-        <dateGranularity>Quarter</dateGranularity>
+        <dateGranularity>FiscalQuarter</dateGranularity>
         <field>CLOSE_DATE</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
@@ -102,12 +118,12 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>OPPORTUNITY_NAME</sortColumn>
-    <sortOrder>Asc</sortOrder>
+    <sortColumn>AMOUNT</sortColumn>
+    <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2024-12-31</endDate>
+        <endDate>2021-12-25</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2022-01-01</startDate>
+        <startDate>2018-12-30</startDate>
     </timeFrameFilter>
 </Report>

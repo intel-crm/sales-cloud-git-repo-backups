@@ -54,11 +54,16 @@
                             <div class="toggle-icon-active slds-m-around_medium slds-p-around_xxx-small"> Represents active</div>
                             <div class="toggle-icon-inactive slds-m-around_medium slds-p-around_xxx-small"> Represents inactive</div>
                             </div>
+                            <div class="slds-col slds-size_1-of-1 slds-p-bottom_small">
+                                <template if:true={resultsfound}>
+                                    <lightning-input type="checkbox" label="Show Searched Result Only" name="input1" onchange={handleChangeSearchResult}></lightning-input>
+                                </template>
+                            </div>
                         </div>
                         <div class="divsize slds-scrollable colorwhite">
                             <template if:true={found}>
                                 <template for:each={items} for:item="item">
-                                    <c-product-hierarchy-item key={item.id} item={item} onselected={handleItemClick} name-visible={nameVisible} level-visible={levelVisible}></c-product-hierarchy-item>
+                                    <c-product-hierarchy-item key={item.id} item={item} onselected={handleItemClick} name-visible={nameVisible} level-visible={levelVisible} checked={checked}></c-product-hierarchy-item>
                                 </template>
                             </template>
                         </div>

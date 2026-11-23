@@ -12,6 +12,6 @@
     </values>
     <values>
         <field>Query_Clause__c</field>
-        <value xsi:type="xsd:string">PRM_EV_Token__c,PRM_First_Name__c,PRM_Last_Name__c,PRM_Email_ID__c,PRM_Contact_Login_ID__c,Name,PRM_Reject_Reason__c</value>
+        <value xsi:type="xsd:string">PRM_EV_Token__c,PRM_First_Name__c,PRM_Last_Name__c</value>
     </values>
 </CustomMetadata>

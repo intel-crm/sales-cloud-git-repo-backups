@@ -2,7 +2,7 @@
 * @description       : Helper class is created to validate, clone and insert Quote Line and Performance Matrix records.
 * @author            : Rahul Maindalkar
 * @group             : 
-* @last modified on  : 04-27-2026
+* @last modified on  : 07-11-2025
 * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 
@@ -295,7 +295,7 @@ public without sharing class Pricing_QLBulkCRValidationHelper {
                         
                         if(newQuoteLineMap.get(actualQuoteLine.Id).Pricing_Billing_Start_Date_Dt__c != null && newQuoteLineMap.get(actualQuoteLine.Id).Pricing_Approved_Start_Date_Dt__c != null){          
                             Integer noOfDaysBetweenDates = newQuoteLineMap.get(actualQuoteLine.Id).Pricing_Billing_Start_Date_Dt__c.daysBetween(newQuoteLineMap.get(actualQuoteLine.Id).Pricing_Approved_Start_Date_Dt__c);
-                            if(noOfDaysBetweenDates > Integer.valueof(Label.Pricing_AllowedBillingDateBackDating_days)){
+                            if(noOfDaysBetweenDates > Integer.valueof(Label.Pricing_Days)){
                                 errorString = appendErrorMsg(errorString,Label.Pricing_Tender_QuoteLine_Billing_Quarter_Error);
                             }
                         }
@@ -443,7 +443,26 @@ public without sharing class Pricing_QLBulkCRValidationHelper {
                     if(sr.isSuccess() && sr.getId()!=null){
                             successPMIds.add(sr.getId());
                         }
-                } 
+                }
+                /*
+                    if(successPMIds.size()>0){
+                    for(Pricing_Performance_Metric__c PMData:[Select Id, Pricing_Quote_Line__c from Pricing_Performance_Metric__c where Id in : successPMIds]){
+                    successPMQL.add(PMData.Pricing_Quote_Line__c);         
+                    }
+                    for(Id QLId:qlNewOldIdsMap.values()){
+                    if(!successPMQL.contains(QLId) && !quoteLineSucessErrorMap.containsKey(QLId) && !quoteLineIdToErrorMap.containsKey(QLId)){
+                    quoteLineIdToErrorMap.put(QLId, 'Insert Failed - Performance Matrix');  
+                    }
+                    }   
+                    }
+                    else{
+                    for(Id QLId:qlNewOldIdsMap.values()){
+                    if(!quoteLineSucessErrorMap.containsKey(QLId) && !quoteLineIdToErrorMap.containsKey(QLId)){
+                    quoteLineIdToErrorMap.put(QLId, 'Insert Failed - Performance Matrix');  
+                    }
+                    }                      
+                    }
+                */ 
             }
         }
         else{
@@ -496,13 +515,11 @@ public without sharing class Pricing_QLBulkCRValidationHelper {
         parent.Pricing_Update_Status_to_Rejected_cb__c = false;
         parent.Pricing_Previous_Inbound_Msg_Number__c = null;
         
-        parent.Pricing_Reason_for_FeedBack_Txt__c = null;
         parent.Pricing_Recommendation_FeedBack_Nm__c = null;    
         parent.Pricing_Recommended_Price_Amt__c = null;
-  parent.Pricing_Price_Interval_Txt__c = null;
-        parent.Pricing_Discount_Pct__c = null;
-        parent.Pricing_Tentative_ECAP_Price_Amt__c = null;
-        if(parent.SBQQ__ProductName__c == Label.Pricing_Tender_Write_In_Product && String.isBlank(parent.Pricing_Deal_RFQ_Id__c) && parent.Pricing_Product_Nm__c == parentSObjects.Pricing_Product_Nm__c){
+        
+        if(parent.SBQQ__ProductName__c == Label.Pricing_Tender_Write_In_Product && String.isBlank(parent.Pricing_Deal_RFQ_Id__c) && parent.Pricing_Product_Nm__c == parentSObjects.Pricing_Product_Nm__c){ //&& parent.Pricing_Deal_RFQ_Id__c==null && parent.Pricing_Deal_RFQ_Id__c=='' && parent.Pricing_Product_Nm__c == quoteLine.Pricing_Product_Nm__c
+            
             parent.Pricing_Change_Request_cb__c = false;
             parent.Pricing_Last_Approved_Date_dt__c = DateTime.now();
             parent.RecordTypeId = quoteLine.Pricing_Program_Type_Nm__c == Label.Pricing_Tender_Small_Volume_Quote ? Pricing_Tender_Utility.getRecordTypeId('SBQQ__QuoteLine__c', Label.Pricing_SVD_Quote_Line_Read_Only) : Pricing_Tender_Utility.getRecordTypeId('SBQQ__QuoteLine__c', Label.Pricing_Tender_QuoteLine_RecordType_ReadOnly);
@@ -523,7 +540,7 @@ public without sharing class Pricing_QLBulkCRValidationHelper {
                 updateQLStatusToRevisedMap.put(parentSObjects.Id,oldQuoteline);
             }
         }else{
-
+          
             parent.Pricing_Change_Request_cb__c = true;
             parent.Pricing_Status_Nm__c = Label.Pricing_Tender_QuoteLine_Status_PendingFurtherIntelReview;
             parent.RecordTypeId = quoteLine.Pricing_Program_Type_Nm__c == Label.Pricing_Tender_Small_Volume_Quote ? Pricing_Tender_Utility.getRecordTypeId('SBQQ__QuoteLine__c', Label.Pricing_SVD_Quote_Line_Submitted) : Pricing_Tender_Utility.getRecordTypeId('SBQQ__QuoteLine__c', Label.Pricing_Tender_QuoteLine_RecordType_Submitted);
@@ -551,6 +568,7 @@ public without sharing class Pricing_QLBulkCRValidationHelper {
         parent.Pricing_End_Date_dt__c = parent.Pricing_End_Date_dt__c > date.today() ? parent.Pricing_End_Date_dt__c : dateFormat();
         parent.Pricing_Is_Additional_T_C_Not_Blank_cb__c = quoteLine.Pricing_Additional_T_C_s_Txt__c != null ? true : false;
         
+        
         // Update Integration Status to Pending
         parent.Pricing_Integration_Status_Nm__c = parentSObjects.Pricing_Deal_RFQ_Id__c == null ? null : Label.Pricing_Tender_MyDeal_Integration_Status_Pending;
         parent.Pricing_Create_Deal_Actor_Id__c = Userinfo.getUserId();
@@ -563,7 +581,7 @@ public without sharing class Pricing_QLBulkCRValidationHelper {
                 parent.Pricing_Manager__c = quoteLine.Pricing_Manager__c;
             }
         }
-    
+       
         return parent;
     }
     

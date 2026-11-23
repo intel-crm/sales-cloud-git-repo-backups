@@ -1,0 +1,190 @@
+<aura:component controller="Core_Notes_Attachments_Ctrl" implements="force:appHostable,lightning:isUrlAddressable">
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="accRecord" type="Account" default="{ 'sobjectType': 'Account' }" />
+    <aura:attribute name="loaded" type="Boolean" default="false" />
+    <aura:attribute name="isNote" type="boolean" default="false"/>
+    <aura:attribute name="ntAttList" type="List" />
+    <aura:attribute name="ntAttCount" type="Integer" default="0"/>
+    <aura:attribute name="ntAttTitle" type="String" />
+    <aura:attribute name="noteType" type="String" default="Enhanced Note"/>
+    <aura:attribute name="noteId" type="String" default=""/>
+    <aura:attribute name="noteTitle" type="String" default=""/>
+    <aura:attribute name="noteDesc" type="String" default=""/>
+    <aura:attribute name="isOpenPopUp" type="Boolean" default="false"/>
+    <aura:attribute name="popUpType" type="String" default=""/>
+    <aura:attribute name="delRecType" type="String" default=""/>
+    <aura:attribute name="delRecId" type="String" default=""/>
+    <aura:attribute name="delRecName" type="String" default=""/>
+    <aura:attribute name="ltngRecUrl" type="String" default="/one/one.app#/sObject/" />
+    <aura:attribute name="attDownloadUrl" type="String" default="/servlet/servlet.FileDownload?file=" />
+    <aura:attribute name="fileDownloadUrl" type="String" default="/sfc/servlet.shepherd/document/download/" />
+    <aura:attribute name="attSuffix" type="String" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <aura:if isTrue="{!!v.loaded}">
+        <lightning:spinner variant="brand" alternativeText="Loading" />
+    </aura:if>
+    <lightning:card>
+        <aura:set attribute="title">
+            <span>
+                <span style="font-size: small;">
+                    <lightning:breadcrumbs>
+                        <lightning:breadcrumb label="Accounts" href="{!v.ltngRecUrl+''+v.recordId}"/>
+                        <lightning:breadcrumb label="{!v.accRecord.Name}" href="{!v.ltngRecUrl+''+v.recordId}"/>
+                    </lightning:breadcrumbs>
+                </span>
+                <h1 class="slds-page-header__title listViewTitle slds-truncate">{!v.ntAttTitle}</h1>
+                <br/>
+                <span style="font-size: small;">{!v.ntAttCount} items | Sorted by Last Modified</span>
+            </span>
+        </aura:set>
+        <aura:set attribute="actions">
+            <span>
+                <span style="display: inline;">
+                    <lightning:button label="New Note" title="New Note" onclick="{! c.createNotePopup }"/>
+                </span>
+                <span style="display: inline-block;">
+                    <lightning:fileUpload  name="fileUploader" multiple="true" recordId="{!v.recordId}" onuploadfinished="{!c.handleUploadFinished}"/>
+                </span>
+            </span>
+        </aura:set>
+        <p class="slds-p-horizontal_small">
+            <aura:if isTrue="{!v.ntAttCount > 0}">
+                <table class="slds-table slds-table_bordered">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Title</th>
+                            <th>Type</th>
+                            <th>Owner</th>
+                            <th>Last Modified Date</th>
+                            <th>Access Level</th>
+                            <th>Size</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <aura:iteration items="{!v.ntAttList}" var="ntAtt" indexVar="index">
+                            <tr>
+                                <td style="text-align: center;">{!index + 1}</td>
+                                <td style="white-space: break-spaces;">
+                                    <span style="padding-right: 3%;"><lightning:icon iconName="{!'doctype:'+ntAtt.imageName}" size="medium"/></span>
+                                    <span>
+                                        <aura:if isTrue="{!ntAtt.docType == 'Attachment'}">
+                                            <a href="{!v.attDownloadUrl+ntAtt.docId+v.attSuffix}" target="_blank">{!ntAtt.docName}</a>
+                                            <aura:set attribute="else">
+                                                <a href="{!v.ltngRecUrl+ntAtt.docId}" target="_blank">{!ntAtt.docName}</a>
+                                            </aura:set>
+                                        </aura:if>
+                                    </span>
+                                </td>
+                                <td>{!ntAtt.docType}</td>
+                                <td><a href="{!v.ltngRecUrl+''+ntAtt.ownerId}" target="_blank">{!ntAtt.ownerName}</a></td>
+                                <td><lightning:formattedDateTime value="{!ntAtt.lastModiDate}"/></td>
+                                <td>{!ntAtt.accessLevel}</td>
+                                <td>{!ntAtt.fileSize}</td>
+                                <td>
+                                    <lightning:buttonMenu alternativeText="Show menu" menuAlignment="center" tabindex="{!index}" onselect="{!c.handleMenuSelect}" iconSize="x-small" variant="border-filled">
+                                        <aura:if isTrue="{!or(ntAtt.docType == 'Note', ntAtt.docType == 'Enhanced Note')}">
+                                            <lightning:menuItem value="edit" label="Edit" />
+                                        </aura:if>
+                                        <aura:if isTrue="{!or(ntAtt.docType == 'Attachment', ntAtt.docType == 'File')}">
+                                            <lightning:menuItem value="download" label="Download" />
+                                        </aura:if>
+                                        <aura:if isTrue="{!ntAtt.hasAccess}">
+                                            <aura:if isTrue="{!or(ntAtt.docType == 'Attachment', ntAtt.docType == 'File')}">
+                                                <aura:if isTrue="{!ntAtt.accessLevel == 'Private'}">
+                                                    <lightning:menuItem value="makePublic" label="Make Public" />
+                                                    <aura:set attribute="else">
+                                                        <lightning:menuItem value="makePrivate" label="Make Private" />
+                                                    </aura:set>
+                                                </aura:if>
+                                            </aura:if>
+                                            <lightning:menuItem value="delete" label="Delete" />
+                                        </aura:if>
+                                    </lightning:buttonMenu>
+                                </td>
+                            </tr>
+                        </aura:iteration>
+                    </tbody>
+                </table>
+            </aura:if>
+        </p>
+    </lightning:card>
+    
+    <aura:if isTrue="{!v.isNote}">
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <lightning:buttonIcon iconName="utility:close" onclick="{! c.closeModel }" alternativeText="close" variant="bare-inverse" class="slds-modal__close"/>
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">
+                        <aura:if isTrue="{!v.noteId == ''}">
+                            Create Note
+                            <aura:set attribute="else">
+                                Edit Note
+                            </aura:set>
+                        </aura:if>
+                    </h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <lightning:input name="input1" label="Title" value="{!v.noteTitle}" />
+                    <aura:if isTrue="{!v.noteType == 'Note'}">
+                        <lightning:textarea value="{!v.noteDesc}" label="Notes" placeholder="Enter a note..."/>
+                        <aura:set attribute="else">
+                            <lightning:inputRichText value="{!v.noteDesc}" label="Notes" labelVisible="true" placeholder="Enter a note..."/>
+                        </aura:set>
+                    </aura:if>
+                </div>
+                <footer class="slds-modal__footer">
+                    <lightning:button variant="neutral" label="Cancel" title="Cancel" onclick="{! c.closeModel }"/>
+                    <lightning:button variant="brand" label="Save" title="Save" onclick="{!c.saveNote}"/>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </aura:if>
+    
+    <aura:if isTrue="{!v.isOpenPopUp}">
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <lightning:buttonIcon iconName="utility:close" onclick="{!c.closeDelModel}" alternativeText="close" variant="bare-inverse" class="slds-modal__close"/>
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">
+                        <aura:if isTrue="{!v.popUpType == 'Delete'}">
+                            {!v.popUpType}
+                            <aura:set attribute="else">
+                                Change Access Level
+                            </aura:set>
+                        </aura:if>
+                    </h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <p style="text-align: center;">
+                        <aura:if isTrue="{!v.popUpType == 'Delete'}">
+                            <lightning:formattedText value="{!'Do you want to delete ' + v.delRecName + ' ?'}" />
+                        </aura:if>
+                        <aura:if isTrue="{!v.popUpType == 'Public'}">
+                            <lightning:formattedText value="{!'Do you want to change the access level of ' + v.delRecName + ' to public?'}" />
+                        </aura:if>
+                        <aura:if isTrue="{!v.popUpType == 'Private'}">
+                            <lightning:formattedText value="{!'Do you want to change the access level of ' + v.delRecName + ' to private?'}" />
+                        </aura:if>
+                    </p>
+                </div>
+                <footer class="slds-modal__footer">
+                    <lightning:button variant="neutral" label="Cancel" title="Cancel" onclick="{!c.closeDelModel}"/>
+                    <aura:if isTrue="{!v.popUpType == 'Delete'}">
+                        <lightning:button variant="brand" label="Delete" title="Delete" onclick="{!c.deleteRecord}"/>
+                    </aura:if>
+                    <aura:if isTrue="{!v.popUpType == 'Public'}">
+                        <lightning:button variant="brand" label="Make Public" title="Make Public" onclick="{!c.changeAccessLevel}"/>
+                    </aura:if>
+                    <aura:if isTrue="{!v.popUpType == 'Private'}">
+                        <lightning:button variant="brand" label="Make Private" title="Make Private" onclick="{!c.changeAccessLevel}"/>
+                    </aura:if>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </aura:if>
+</aura:component>

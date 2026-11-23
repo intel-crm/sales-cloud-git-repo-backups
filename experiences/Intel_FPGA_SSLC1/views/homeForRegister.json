@@ -1,0 +1,78 @@
+{
+  "appPageId" : "6b36c665-0609-49d0-9746-033feed642b2",
+  "componentName" : "siteforce:sldsTwoCol84Layout",
+  "dataProviders" : [ ],
+  "id" : "5cbf5596-dc06-452c-8820-1db4607ef517",
+  "label" : "Home For register",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:psg_welcomeBannerDistyPortal",
+      "id" : "99dfdb0e-ebc0-446c-a0a4-cf2bbd28afc4",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "4ce755d2-950c-4268-a52f-491479c3e595",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:psg_welcomeBannerDistyPortal",
+      "id" : "b7c105fa-633c-4144-bc8d-5fa691869bd1",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : { },
+      "componentName" : "c:page1",
+      "id" : "eed8e81d-422d-4fce-8a28-5fd21cb4639d",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "aebfe9f2-2850-44a3-9341-5f29093421e2",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "d1319324-8a4d-4852-a2e0-e9007bcfecf6",
+    "regionName" : "sidebar",
+    "type" : "region"
+  }, {
+    "id" : "acef063d-c13b-42d4-9724-e8af80c2a443",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Home"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "10d0544c-2175-4a1b-a5a0-c9eedc5d9d67",
+      "renditionMap" : {
+        "zh_cn" : "e298a254-7092-468e-9d63-4200399dcc68"
+      },
+      "renditions" : [ {
+        "id" : "e298a254-7092-468e-9d63-4200399dcc68",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "customHeadTags" : "市场推广基金",
+            "description" : "市场推广基金",
+            "title" : "Home"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "66f74160-5a54-45ce-916d-41e133ccae5d",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "home"
+}

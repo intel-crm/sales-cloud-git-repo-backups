@@ -9,28 +9,17 @@
   <aura:attribute name="RecId" type="Id" default="" description="This attribute holds the Record Id from calling component"/> 
   <aura:attribute name="selectedOptions" type="List" default="[]" description="This attribute holds the selected value"/>
   <aura:attribute name="disabled" type="boolean" default="false" description="Set the picklist disabled"/>
-  <aura:attribute name="isRequired" type="boolean" default="true" description="Set the picklist disabled"/>
   <aura:attribute name="options" type="String[]" description="This attribute holds the picklist values for activity category and type for CCF record type"/>
   <aura:attribute name="dispLabel" type="String" default="" description="This attribute holds the display label"/>
   <aura:attribute name="CloneRecId" type="Id" default="" description="This attribute holds the Record Id for the cloned Parent component"/>  
-  <aura:attribute name="CommunityRecId" type="Id" default="" description="This attribute holds the Record Id from the Community"/>
-  <aura:attribute name="recStatus" type="String" default="" description="This attribute holds the status of record"/>  
-  <aura:attribute name="isIpaCloneAct" type="boolean" default="" description="This attribute holds the status of record"/>
-  <aura:attribute name="updateCountry" type="boolean" default="false" description="Controls country selected value"/>
-  <aura:attribute name="isCloneIPA" type="boolean" default=""/>
-  <aura:attribute name="dynamicSize" type="integer" default=""/>
-  <!--attribute used to show the help text for the multiselect picklist fields-->
-  <aura:attribute name="helpText" type="String" default=""/>
-  <aura:handler name="change" value="{!v.availableOptions}" action="{!c.getAvailableOptions}"/> 
-  
+  <aura:attribute name="CommunityRecId" type="Id" default="" description="This attribute holds the Record Id from the Community"/>  
   
 
- <lightning:dualListbox aura:id="multiselect" name="multiselect" label="{!v.dispLabel}" disabled="{!v.disabled}" 
-                                 fieldLevelHelp= "{!v.helpText}" required="{!v.isRequired}" 
-                                 sourceLabel="{!$Label.c.Core_MDF_Avbl_Country}" size="{!v.dynamicSize}" 
-                                 selectedLabel="{!$Label.c.Core_MDF_Selected_Country}" options="{!v.availableOptions}"
-                                 value="{!v.selectedOptions}" disableReordering="true" onchange="{!c.alertstatetotest}" />
+ <lightning:dualListbox aura:id="multiselect" name="multiselect" label="{!v.dispLabel}" disabled="{!v.disabled}" required="true" 
+                                sourceLabel="{!$Label.c.Core_MDF_Avbl_Country}"
+                                selectedLabel="{!$Label.c.Core_MDF_Selected_Country}" options="{!v.availableOptions}"
+                                value="{!v.selectedOptions}" disableReordering="true" onchange="{!c.alertstatetotest}" />
      
 
-  <aura:method name="validateErrors" action="{!c.validateErrors}" access="PUBLIC" />  
+    
 </aura:component>

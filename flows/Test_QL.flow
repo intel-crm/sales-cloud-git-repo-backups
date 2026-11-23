@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>60.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>if_any_QL_is_PFIR</name>
+        <label>if any QL is PFIR</label>
+        <locationX>389</locationX>
+        <locationY>733</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>status_PFIR</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>All_associated_QL.Pricing_Status_Nm__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Pending Further Intel Review</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>update_lock_to_true</targetReference>
+            </connector>
+            <label>status PFIR</label>
+        </rules>
+        <rules>
+            <name>status_nonPFIR</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>All_associated_QL.Pricing_Status_Nm__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Pending Further Intel Review</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>All_associated_QL</targetReference>
+            </connector>
+            <label>status nonPFIR</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>If_new_Record</name>
+        <label>If new Record</label>
+        <locationX>527</locationX>
+        <locationY>371</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Update_flag_if_PFIR</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Pricing_Change_Request_cb__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Pricing_Status_Nm__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Pending Further Intel Review</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Oppty_flag</targetReference>
+            </connector>
+            <label>Update flag if PFIR</label>
+        </rules>
+        <rules>
+            <name>If_updated</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Pricing_Status_Nm__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Pricing_Status_Nm__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Pending Further Intel Review</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_flag_to_true</targetReference>
+            </connector>
+            <label>If updated</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <formulas>
+        <name>IsNew</name>
+        <dataType>Boolean</dataType>
+        <expression>ISNEW()</expression>
+    </formulas>
+    <interviewLabel>Test QL {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Test QL</label>
+    <loops>
+        <name>All_associated_QL</name>
+        <label>All associated QL</label>
+        <locationX>747</locationX>
+        <locationY>695</locationY>
+        <collectionReference>Get_all_QL</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>if_any_QL_is_PFIR</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>update_lock_to_false</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_all_QL</name>
+        <label>Get all QL</label>
+        <locationX>747</locationX>
+        <locationY>587</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>All_associated_QL</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>SBQQ__Quote__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.SBQQ__Quote__r.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>SBQQ__QuoteLine__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_flag_to_true</name>
+        <label>Update flag to true</label>
+        <locationX>747</locationX>
+        <locationY>479</locationY>
+        <connector>
+            <targetReference>Get_all_QL</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_Bypass_Field_Validation__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record.SBQQ__Quote__r.SBQQ__Opportunity2__r.Opportunities1__r</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>update_lock_to_false</name>
+        <label>update lock to false</label>
+        <locationX>934</locationX>
+        <locationY>936</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.SBQQ__Quote__r.SBQQ__Opportunity2__c</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Core_Opportunity_Lock_Status__c</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record.SBQQ__Quote__r.SBQQ__PrimaryOpportunities__r</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>update_lock_to_true</name>
+        <label>update lock to true</label>
+        <locationX>244</locationX>
+        <locationY>977</locationY>
+        <inputAssignments>
+            <field>Core_Bypass_Field_Validation__c</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record.SBQQ__Quote__r.SBQQ__Opportunity2__r.Opportunities1__r</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Oppty_flag</name>
+        <label>Update Oppty flag</label>
+        <locationX>43</locationX>
+        <locationY>479</locationY>
+        <inputAssignments>
+            <field>Core_Bypass_Field_Validation__c</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Opportunity_Lock_Status__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record.SBQQ__Quote__r.SBQQ__PrimaryOpportunities__r</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>408</locationX>
+        <locationY>36</locationY>
+        <connector>
+            <targetReference>If_new_Record</targetReference>
+        </connector>
+        <filterFormula>AND(
+		ISPICKVAL({!$Record.SBQQ__Quote__r.Pricing_Program_Type_Nm__c}, &apos;Financial Incentive&apos;), 
+		NOT(ISNULL({!$Record.SBQQ__Quote__r.SBQQ__Opportunity2__c}))
+	)</filterFormula>
+        <object>SBQQ__QuoteLine__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+</Flow>

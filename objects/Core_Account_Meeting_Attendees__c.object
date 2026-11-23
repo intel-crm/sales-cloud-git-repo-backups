@@ -155,31 +155,14 @@
     <externalSharingModel>ControlledByParent</externalSharingModel>
     <fields>
         <fullName>Core_Account_Meeting_Brief_Attendee_Type__c</fullName>
+        <externalId>false</externalId>
         <label>Attendee Type</label>
+        <length>50</length>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
-        <type>Picklist</type>
-        <valueSet>
-            <valueSetDefinition>
-                <sorted>false</sorted>
-                <value>
-                    <fullName>Customer</fullName>
-                    <default>false</default>
-                    <label>Customer</label>
-                </value>
-                <value>
-                    <fullName>Intel</fullName>
-                    <default>false</default>
-                    <label>Intel</label>
-                </value>
-                <value>
-                    <fullName>Other</fullName>
-                    <default>false</default>
-                    <label>Other</label>
-                </value>
-            </valueSetDefinition>
-        </valueSet>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Core_Account_Meeting__c</fullName>

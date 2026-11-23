@@ -201,18 +201,6 @@
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
-    <fields>
-        <fullName>PMP_Specification_Value__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <description>holds the countries for regional coverage</description>
-        <label>Specification Value</label>
-        <referenceTo>PMP_Specification_Value__c</referenceTo>
-        <relationshipLabel>Marketing Profile Regions</relationshipLabel>
-        <relationshipName>Marketing_Profile_Regions</relationshipName>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Lookup</type>
-    </fields>
     <label>Marketing Profile Region</label>
     <nameField>
         <displayFormat>CR-{0000}</displayFormat>

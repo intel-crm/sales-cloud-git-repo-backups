@@ -68,6 +68,15 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Dynamic_Filter_and_Value__c</fullName>
+        <description>Field to store dynamic filter and the corresponding field name for the filter</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Dynamic Filter and Value</label>
+        <length>1000</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
         <fullName>Dynamic_Filter_and_Value_txt__c</fullName>
         <description>Field to store dynamic filter and the corresponding field name for the filter</description>
         <externalId>false</externalId>
@@ -88,7 +97,7 @@
     </fields>
     <fields>
         <fullName>Embed_URL_Class__c</fullName>
-        <description>Embed_URL_Class</description>
+        <description>Class name for service call</description>
         <externalId>false</externalId>
         <fieldManageability>DeveloperControlled</fieldManageability>
         <label>Embed_URL_Class</label>
@@ -96,6 +105,15 @@
         <required>false</required>
         <type>Text</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>No_Access_Error__c</fullName>
+        <description>Error that needs to be displayed if no access</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>No Access Error</label>
+        <length>1000</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
     </fields>
     <fields>
         <fullName>No_Access_Error_txt__c</fullName>
@@ -131,6 +149,15 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Security_Query__c</fullName>
+        <description>The condition that needs to be check. Output can be True/False</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Security Query</label>
+        <length>1000</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
         <fullName>Security_Query_txt__c</fullName>
         <externalId>false</externalId>
         <fieldManageability>DeveloperControlled</fieldManageability>
@@ -147,6 +174,15 @@
         <fieldManageability>DeveloperControlled</fieldManageability>
         <label>Security enforced</label>
         <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Static_Filter_and_Value__c</fullName>
+        <description>Static filter value</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Static Filter and Value</label>
+        <length>1000</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
     </fields>
     <fields>
         <fullName>Static_Filter_and_Value_txt__c</fullName>
@@ -179,6 +215,15 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>User_Filter_and_Value__c</fullName>
+        <description>Query the user info to be appended in the URL</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>User Filter and Value</label>
+        <length>1000</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
         <fullName>User_Filter_and_Value_txt__c</fullName>
         <externalId>false</externalId>
         <fieldManageability>DeveloperControlled</fieldManageability>
@@ -200,13 +245,14 @@
     <listViews>
         <fullName>All_Configurations</fullName>
         <columns>MasterLabel</columns>
+        <columns>NamespacePrefix</columns>
         <columns>DeveloperName</columns>
         <columns>Project__c</columns>
         <columns>URL__c</columns>
         <columns>Dynamic_filter__c</columns>
         <columns>Object__c</columns>
         <columns>Static_filter__c</columns>
-        <columns>Core_Session_Parameter__c</columns>
+        <columns>Static_Filter_and_Value__c</columns>
         <filterScope>Everything</filterScope>
         <label>All Configurations</label>
         <language>en_US</language>

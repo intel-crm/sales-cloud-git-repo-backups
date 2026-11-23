@@ -1,4 +1,4 @@
-<aura:component controller="Core_MDF_LookupSObjectController" implements="lightning:availableForFlowScreens" access="global">
+<aura:component controller="Core_MDF_LookupSObjectController" >
    <ltng:require styles="{!$Resource.Core_MDF_SLDS262 + '/styles/salesforce-lightning-design-system.css'}" />
     <!-- Attributes -->
     <aura:attribute name="sObjectAPIName" type="String" required="true" 
@@ -21,10 +21,6 @@
                     description="The coma seprated API name(s) of the fields to returned" default="id,name"/>
     <aura:attribute name="filterCriteria" type="String" required="false" 
                     description="Where Clause " default=""/>
-    <aura:attribute name="searchFields" type="String" required="false"
-                    description="Comma-separated fields to search. For example: Title,Core_MDF_Claim_Ref_Number__c." />
-    <aura:attribute name="selectedId" type="String" access="global"
-                    description="The selected record Id for Flow output." />
     <aura:attribute name="searchString" type="String" 
                     description="The search string to find." />
     <aura:attribute name="matches" type="Core_MDF_LookupSObjectController.Result[]"
@@ -45,7 +41,7 @@
     <div class="slds"> 
         <div aura:id="lookup-div" class="slds-lookup" data-select="single" data-scope="single" data-typeahead="true">
             <!-- This is the Input form markup -->
-            <div class="slds-form-element slds-var-m-left_small">
+            <div class="slds-form-element">
                 <label class="{!v.labelClass}" for="lookup" title="{!v.helpText}">
                     <aura:if isTrue="{!v.required}">
                         <abbr class="slds-required" title="required">*</abbr></aura:if>
@@ -56,21 +52,18 @@
                             <lightning:icon class="closeIcon" iconName="utility:close" alternativeText="close" size="x-small" />
                         </div>
                         <aura:set attribute="else">
-                            
-                            <lightning:icon class="slds-input__icon slds-show" iconName="utility:search" size="x-small" alternativeText="search"/> 
+                            <c:Core_MDF_svgIcon class="slds-input__icon" xlinkHref="{!$Resource.Core_MDF_SLDS262 +'/icons/utility-sprite/svg/symbols.svg#search'}" />
                         </aura:set>
                     </aura:if>
                     <!-- This markup is for when an item is currently selected -->
                     <div aura:id="lookup-pill" class="slds-pill-container slds-hide">
                         <span class="slds-pill slds-pill_bare">
                             <span class="slds-pill__label">
-                               
-                                <lightning:icon class="slds-icon slds-icon-standard-user slds-icon_small" iconName="standard:client" size="small" alternativeText="User"/>&nbsp;{!v.searchString}
+                                <c:Core_MDF_svgIcon class="{!'slds-icon ' + v.listIconClass + ' slds-icon_small'}" xlinkHref="{!v.listIconSVGPath}" />&nbsp;{!v.searchString}
                             </span>
                             <button aura:id="clearIcon" class="slds-button slds-button_icon-bare" onclick="{!c.clear}">
-                               
-                                <lightning:icon class="closeIcon" iconName="utility:close" alternativeText="Remove" size="x-small" />
-                               
+                                <c:Core_MDF_svgIcon class="slds-button__icon" xlinkHref="{!$Resource.Core_MDF_SLDS262 + '/icons/utility-sprite/svg/symbols.svg#close'}" />
+                                <span class="slds-assistive-text">Remove</span>
                             </button>
                         </span>
                     </div> 
@@ -82,8 +75,7 @@
             <div aura:id="lookuplist" class="slds-lookup__menu slds-hide" role="listbox">
                 <div class="slds-lookup__item">
                     <button class="slds-button">
-                        
-                        <lightning:icon iconName="utility:search" size="small" alternativeText="search"/> 
+                        <c:Core_MDF_svgIcon class="slds-icon slds-icon-text-default slds-icon_small" xlinkHref="{!$Resource.Core_MDF_SLDS262 + '/icons/utility-sprite/svg/symbols.svg#search'}" />
                         &quot;{!v.searchString}&quot; in {!v.pluralLabel}
                     </button>
                 </div>
@@ -91,7 +83,7 @@
                     <aura:iteration items="{!v.matches}" var="match">
                         <li class="slds-lookup__item">
                             <a id="{!globalId + '_id_' + match.objectId}" role="option" onclick="{!c.select}">
-                                <lightning:icon class="slds-icon slds-icon-standard-user slds-icon_small" iconName="standard:client" size="small" alternativeText="User"/>{!match.objectLabel} 
+                                <c:Core_MDF_svgIcon class="{!'slds-icon ' + v.listIconClass + ' slds-icon_small'}" xlinkHref="{!v.listIconSVGPath}" />{!match.objectLabel} 
                             </a>
                         </li>
                     </aura:iteration>

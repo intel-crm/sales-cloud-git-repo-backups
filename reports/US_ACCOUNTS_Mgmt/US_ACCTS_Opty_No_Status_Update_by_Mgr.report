@@ -42,9 +42,9 @@
         <criteriaItems>
             <column>STAGE_NAME</column>
             <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
+            <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
-            <value>Qualify,Define,Develop,Design</value>
+            <value>Qualify,Define,Develop,Design,Lost,Cancelled</value>
         </criteriaItems>
         <criteriaItems>
             <column>AMOUNT</column>
@@ -65,7 +65,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Brian Landi,Gilad Gitlin,Dorin,Michelle Luo,Corredor,Moore,Westall,Legette,yuen,dan russell</value>
+            <value>Palmeri,Calfin,Brian Landi,Gilad Gitlin,Dorin,Michelle Luo,Gloria Nogales,Radhika Kunte,Gina Moore</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -85,7 +85,7 @@
         <field>STAGE_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>US OEM &amp; Strat Opptys NO Status Update</name>
+    <name>US ACCTS Opty No Status Update by Mgr</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -109,6 +109,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_PREVCUR2Y</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

@@ -1,3 +1,10 @@
+/**
+ * @description       : 
+ * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+ * @group             : 
+ * @last modified on  : 09-27-2024
+ * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+**/
 @isTest
 public class Pricing_BatchQuoteShare_ATM_Test {
     //Method to Test Pricing_BatchQuoteShare_ATM class
@@ -5,7 +12,7 @@ public class Pricing_BatchQuoteShare_ATM_Test {
         List<AccountTeamMember> accountTeamMembers = new List<AccountTeamMember>();
        // List<User> lstATMUsers = Pricing_Test_Utility.createFSEUser();
         List<User> lstATMUsers3 =  Pricing_Test_Utility.createFSEUser();
-        List<User> lstATMUsers2 = Pricing_Test_Utility.createAdminUserWithParam('Batch_Quote_Share_ATM_Test');
+        List<User> lstATMUsers2 = Pricing_Test_Utility.createAdminUser();
         List<User> lstATMUsers4 = Pricing_Test_Utility.createAEUser();
         Map<Id,Set<Id>> accIdToUserIdMap = new Map<Id,Set<Id>>();
         //Id userId = lstATMUsers[0].id;
@@ -16,7 +23,7 @@ public class Pricing_BatchQuoteShare_ATM_Test {
             Id commentRecordTypeId = Pricing_Tender_Utility.getRecordTypeId('Pricing_Comments__c',Label.Pricing_Tender_Comment_RecordType_QuoteComment);
             Pricing_Test_Utility.createPriceBook();
             Account acc = Pricing_Test_Utility.createAccount();
-            Contact primaryContactList = Pricing_Test_Utility.createPrimaryContactWithParam(acc.Id,'Batch_Quote_Share_ATM_Test');
+            Contact primaryContactList = Pricing_Test_Utility.createPrimaryContactWithParam(acc.Id,'Batch_Quote_Share_ATM');
             //List<AccountTeamMember> lstAccountTeamMember = Pricing_Test_Utility.createAccountTeamMember(acc.Id, userId);
             accountTeamMembers = Pricing_Test_Utility.createAccountTeamMember(acc.Id, userId1);
             Pricing_Test_Utility.createTemplate(lstATMUsers2[0].id);
@@ -30,20 +37,13 @@ public class Pricing_BatchQuoteShare_ATM_Test {
                 recordtypeId = commentRecordTypeId
             );
             insert comment;
-            ChannelProgram cp=new ChannelProgram();
-            cp.Name='Intel Quote Request';
-            cp.IsActive=true;
-            insert cp;
-            Group grp = new Group();
-            grp.name = 'Test_Group1';
-            grp.Type = 'Regular'; 
-            Insert grp;
-            Core_MDF_Partner_Group_Mapping__c partnerGroup = new Core_MDF_Partner_Group_Mapping__c();
-            partnerGroup.Core_MDF_Account__c=acc.id;
-            partnerGroup.Core_MDF_Group_Name__c='Test_Group1';
-            partnerGroup.Core_MDF_Type_of_Access__c='Internal';
-            partnerGroup.Core_MDF_Channel_Program__c=cp.id;
-            insert partnerGroup;
+
+            ChannelProgram chProg = Pricing_Test_Utility.createChannelProgramRecord();
+
+            Group grp = Pricing_Test_Utility.createGroupRecord();
+
+            List<Core_MDF_Partner_Group_Mapping__c> partnerGroupList = Pricing_Test_Utility.createPGMRecord(acc,grp,chProg,1);
+
             List<AccountTeamMember> lstATMAccountTeamMember = new List<AccountTeamMember>([select id from AccountTeamMember]);
             lstATMAccountTeamMember = [select id,userId,AccountId from AccountTeamMember];
             for(AccountTeamMember atm: accountTeamMembers){
@@ -81,7 +81,7 @@ public class Pricing_BatchQuoteShare_ATM_Test {
         List<AccountTeamMember> accountTeamMembers = new List<AccountTeamMember>();
         //List<User> lstATMUsers = Pricing_Test_Utility.createFSEUser();
         List<User> lstATMUsers3 = Pricing_Test_Utility.createFSEUser();
-        List<User> lstATMUsers2 = Pricing_Test_Utility.createAdminUserWithParam('Batch_Quote_Share_ATM_Test');
+        List<User> lstATMUsers2 = Pricing_Test_Utility.createAdminUser();
         List<User> lstATMUsers4 = Pricing_Test_Utility.createAEUser();
         Map<Id,Set<Id>> accIdToUserIdMap = new Map<Id,Set<Id>>();
         //Id userId = lstATMUsers[0].id;
@@ -92,7 +92,7 @@ public class Pricing_BatchQuoteShare_ATM_Test {
             Id commentRecordTypeId = Pricing_Tender_Utility.getRecordTypeId('Pricing_Comments__c',Label.Pricing_Tender_Comment_RecordType_QuoteComment);
             Pricing_Test_Utility.createPriceBook();
             Account acc = Pricing_Test_Utility.createAccount();
-            Contact primaryContactList = Pricing_Test_Utility.createPrimaryContactWithParam(acc.Id,'Batch_Quote_Share_ATM_Test');
+            Contact primaryContactList = Pricing_Test_Utility.createPrimaryContactWithParam(acc.Id,'Batch_Quote_Share_ATM');
             //List<AccountTeamMember> lstAccountTeamMember = Pricing_Test_Utility.createAccountTeamMember(acc.Id, userId);
             accountTeamMembers = Pricing_Test_Utility.createAccountTeamMember(acc.Id, userId1);
             Pricing_Test_Utility.createTemplate(lstATMUsers2[0].id);
@@ -106,20 +106,13 @@ public class Pricing_BatchQuoteShare_ATM_Test {
                 recordtypeId = commentRecordTypeId
             );
             insert comment;
-            Group grp = new Group();
-            grp.name = 'Test_Group1';
-            grp.Type = 'Regular'; 
-            Insert grp;
-            ChannelProgram cp=new ChannelProgram();
-            cp.Name='Intel Quote Request';
-            cp.IsActive=true;
-            insert cp;
-            Core_MDF_Partner_Group_Mapping__c partnerGroup = new Core_MDF_Partner_Group_Mapping__c();
-            partnerGroup.Core_MDF_Account__c=acc.id;
-            partnerGroup.Core_MDF_Group_Name__c='Test_Group1';
-            partnerGroup.Core_MDF_Type_of_Access__c='Internal';
-            partnerGroup.Core_MDF_Channel_Program__c=cp.id;
-            insert partnerGroup;
+
+            Group grp = Pricing_Test_Utility.createGroupRecord();
+
+            ChannelProgram chProg = Pricing_Test_Utility.createChannelProgramRecord();
+
+            List<Core_MDF_Partner_Group_Mapping__c> partnerGroupList = Pricing_Test_Utility.createPGMRecord(acc,grp,chProg,1);
+
             List<AccountTeamMember> lstATMAccountTeamMember = new List<AccountTeamMember>([select id from AccountTeamMember]);
             lstATMAccountTeamMember = [select id,userId,AccountId from AccountTeamMember];
             for(AccountTeamMember atm: accountTeamMembers){

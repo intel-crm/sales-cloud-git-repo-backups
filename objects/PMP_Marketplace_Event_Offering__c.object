@@ -175,16 +175,10 @@
         <label>Partner Offering Id</label>
         <lookupFilter>
             <active>true</active>
-            <booleanFilter>1 OR 2</booleanFilter>
             <filterItems>
                 <field>PMP_Partner_Offering__c.PMP_Partner_Offering_Lifecycle_Status_Nm__c</field>
                 <operation>equals</operation>
                 <value>Published</value>
-            </filterItems>
-            <filterItems>
-                <field>PMP_Partner_Offering__c.PMP_Partner_Offering_Lifecycle_Status_Nm__c</field>
-                <operation>equals</operation>
-                <value>Approved</value>
             </filterItems>
             <isOptional>false</isOptional>
         </lookupFilter>

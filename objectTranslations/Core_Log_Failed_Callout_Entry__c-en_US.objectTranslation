@@ -33,14 +33,6 @@
         <name>Core_Origin__c</name>
     </fields>
     <fields>
-        <label><!-- Parent Id --></label>
-        <name>Core_Parent_Id__c</name>
-    </fields>
-    <fields>
-        <label><!-- Parent Name --></label>
-        <name>Core_Parent_Name__c</name>
-    </fields>
-    <fields>
         <label><!-- Project --></label>
         <name>Core_Project__c</name>
     </fields>
@@ -51,14 +43,6 @@
     <fields>
         <label><!-- Response Body --></label>
         <name>Core_Response_Body__c</name>
-    </fields>
-    <fields>
-        <label><!-- Response code --></label>
-        <name>Core_Response_code__c</name>
-    </fields>
-    <fields>
-        <label><!-- Response status --></label>
-        <name>Core_Response_status__c</name>
     </fields>
     <fields>
         <label><!-- Retry Count --></label>

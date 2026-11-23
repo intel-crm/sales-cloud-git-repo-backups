@@ -417,7 +417,7 @@ ISPICKVAL({!myVariable_current.Core_AGS_Integration_Status__c} , &apos;Successfu
     </processMetadataValues>
     <processType>Workflow</processType>
     <startElementReference>myPreWaitDecision_myWait_myRule_3</startElementReference>
-    <status>Obsolete</status>
+    <status>Active</status>
     <variables>
         <name>cancelWaits</name>
         <dataType>String</dataType>

@@ -20,7 +20,7 @@
                 <field>PRM_Status_Nm__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Required</behavior>
+                <behavior>Edit</behavior>
                 <field>PRM_Status_Reason_Txt__c</field>
             </layoutItems>
         </layoutColumns>

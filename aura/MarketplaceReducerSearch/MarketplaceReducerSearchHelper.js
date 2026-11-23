@@ -1,6 +1,6 @@
 ({
     
-   /* getCacheFormatter: function() {
+  /*  getCacheFormatter: function() {
         return function(state) {
             return Object.assign({}, state, {
                 categories: Object.assign({}, state.categories, {
@@ -40,7 +40,6 @@
                 searchHeading: '',
                 searchSubHeading: '',
                 searchCtaLink: '',
-                searchlearMoreLink: '',  //Added by Megha as part of Specialty learnMoreLink
                 listDisplayType: 'card',
                 searchString: '',
                 resultsPartners: [],
@@ -232,7 +231,7 @@
                         quickSearchFilters: action.payload.quickSearchFilters                        
                     });
                     
-                case 'updateFilters':
+                /*case 'updateFilters':
                     var filters = action.payload.recentFilters || [];
                     
                     var currentFilter = JSON.parse(sessionStorage.getItem('currentFilter'));
@@ -263,7 +262,7 @@
                     console.log('Filters final : ', filters);
                     return Object.assign({}, state,{
                         filters : filters
-                    });
+                    });*/
                     
                 case 'searchResponse':
                     console.log('response : ', state.searchBoxPageName);
@@ -291,12 +290,11 @@
                         // }
                     }
                     
-                   
+                    
                     return Object.assign({}, state, {
                         searchLoading: false,
                         searchHeading: action.response.searchHeading,
                         searchSubHeading: action.response.categoryDescription,
-                        searchlearMoreLink: action.response.learMoreLink,    //Added by Megha as part of Specialty learnMoreLink
                         resultsPartners: action.response.partnerResults,
                         resultsProducts: action.response.productResults,
                         searchResultsCount: action.response.totalCount,

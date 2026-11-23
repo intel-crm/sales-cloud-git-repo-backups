@@ -1,130 +1,122 @@
 ({
     //Get product info-Gireesh:US519754
     getProductInfo: function(component,helper){
-        
         var userLangCode = $A.get("$Locale.langLocale");
         var action = component.get("c.getProductInformation"); 
         var params = {
-            // IPA2.0 + US TWC4497-1631
-            // offeringId: component.get("v.recordId"),
+            offeringId: component.get("v.recordId"),
             langCode: userLangCode
         };
         action.setParams(params);
         
         action.setCallback(this, function(response) {
-            
             var state = response.getState();
             if (state === "SUCCESS") {
                 var resp = response.getReturnValue();
-                console.log("marquee-response-1", resp);
                 if(resp){
                     var productDetails=resp[0];
                     if(productDetails != null){
-                        /*let allAttributes=productDetails.attributes;
-                        let newAttributes=[];
+                        var allAttributes=productDetails.attributes;
+                        var newAttributes=[];
                     
                         //replace Categories, Industry and Application into approriate format "{name:Category,type:[]... name:Industry,type:[]...name:Application,type:[]...}"
-                        for (let key of Object.keys(allAttributes)) {
+                        for (var key of Object.keys(allAttributes)) {
                             if(key==$A.get("$Label.c.PMP_Search_Categories_Filter") || key==$A.get("$Label.c.PMP_Industry")|| key==$A.get("$Label.c.PMP_application")){                        
-                                let attributes=new Object();
+                                var attributes=new Object();
                                 attributes.name=key;
                                 attributes.types=allAttributes[key];
                                 newAttributes.push(attributes);
                             }
-                        } */
-                        //productDetails.attributes=newAttributes;
+                        } 
+                        productDetails.attributes=newAttributes;
                         component.set("v.productInfo",productDetails);
-                        console.log('#a-productDetails', productDetails);
                     }
                 }
             }else{
                 var errors = response.getError();
-                if(errors){
+                if(errors)
                 console.log("##Error message: " + errors);
-                }
             }
         });
         $A.enqueueAction(action);
     },
-    // IPA2.0 + US TWC4497-1631
-    // getOffering: function(component, id) {
-    //     //Shahrukh : Fix for data update after edit offering
-    //     // let action = isPreview ?component.get("c.previewOfferingDetails"):component.get("c.fetchOfferingDetail");
-        
-    //     var urlString = window.location.href;
-
-    //     var action = component.get("c.getOfferingDetail");
-        
-    //     if(urlString.includes('?Lang=NA')){
-    //         action = component.get("c.getOfferingDetailProductDetails");
-    //     }
-    //         //Added by Abhishek to fetch language from URL
-    //     var language = this.getJsonFromUrl().Lang;
-    //     //Sandhya : US592842
-    //     var isPreview = component.get('v.previewMode');
-    //     if (!isPreview){
-    //         action.setStorable();
-    //     }
-	// 	//In preview mode, if language parameter is not present, then data should appear in base language
-    //     if (!language && component.get('v.previewMode')) {
-    //         language='NA';
-    //     }
-    //     const userLangCode = $A.get("$Locale.langLocale"); //Gireesh: US664733: to support for anonymous user
-    //     console.log('##userLangCodel3:',userLangCode);
-    //     action.setParams({
-    //         offeringId: component.get("v.recordId"),
-    //         bEditOffering: false,
-    //         bViewOffering: true,
-    //         bCompareOffering: false,
-    //         language: language,
-    //         langCode: userLangCode, //Gireesh: US664733: to support for anonymous user
-    //         isPreview:isPreview
+    getOffering: function(component, id) {
+        //Shahrukh : Fix for data update after edit offering
+        // var action = isPreview ?component.get("c.previewOfferingDetails"):component.get("c.fetchOfferingDetail");
+        var action = component.get("c.getOfferingDetail");
+        //Added by Abhishek to fetch language from URL
+        var language = this.getJsonFromUrl().Lang;
+        //Sandhya : US592842
+        var isPreview = component.get('v.previewMode');
+        if (!isPreview){
+            action.setStorable();
+        }
+		//In preview mode, if language parameter is not present, then data should appear in base language
+        if (!language && component.get('v.previewMode')) {
+            language='NA';
+        }
+        //var userLangCode = $A.get("$Locale.langLocale"); //Gireesh: need to uncomment
+        //console.log('##userLangCodel3:',userLangCode);
+        action.setParams({
+            offeringId: component.get("v.recordId"),
+            bEditOffering: false,
+            bViewOffering: true,
+            bCompareOffering: false,
+            language: language,
+            //langCode: userLangCode, //Gireesh: need to uncomment
+            isPreview:isPreview
             
-    //     });
+        });
 
-    //     action.setCallback(this, function(response) {
-    //         var state = response.getState();
-    //         if (state === "SUCCESS") {
-    //                 var resp = response.getReturnValue();
-    //                 console.log("#l3l", JSON.stringify(resp.objectData));
-    //                 if(resp && resp.objectData!=undefined && resp.objectData && resp.objectData.OfferingDetail){
-    //                 console.log("#l3l2", resp.objectData);    
-    //                     component.set("v.product", resp.objectData.OfferingDetail);
-    //                     var windowUrl = window.location.href;
-    //                     var companylink = windowUrl.split("/offering/");
-    //                     companylink = companylink[0].concat("/partner/");
-    //                     companylink = companylink.concat(resp.objectData.OfferingDetail[0].PMP_Company_Id__r.Id);
-    //                     component.set("v.product.partnerLink",companylink);
-    //                     component.set("v.isPublished",component.get("v.product[0].PMP_Partner_Offering_Lifecycle_Status_Nm__c")=="Published");
-                    
-    //                     if (resp.objectData.OfferingDetail[0].PMP_Offering_Status_Update_Dt__c){
-    //                         component.set(
-    //                             "v.lastUpdatedDate",
-    //                             resp.objectData.OfferingDetail[0].PMP_Offering_Status_Update_Dt__c
-    //                         );
-    //                     }
-    //                 }
+        action.setCallback(this, function(response) {
+            var state = response.getState();
+            if (state === "SUCCESS") {
+                var resp = response.getReturnValue();
+                component.set("v.product", resp.objectData.OfferingDetail);
+                var windowUrl = window.location.href;
+                var companylink = windowUrl.split("/offering/");
+                companylink = companylink[0].concat("/partner/");
+                companylink = companylink.concat(resp.objectData.OfferingDetail[0].PMP_Company_Id__r.Id);
+                component.set("v.product.partnerLink",companylink);
+                component.set("v.isPublished",component.get("v.product[0].PMP_Partner_Offering_Lifecycle_Status_Nm__c")=="Published");
+                var productname = component.get(
+                    "v.product[0].PMP_Partner_Offering_Nm__c"
+                );
                 
-    //         } else if (state === "INCOMPLETE") {
-    //             console.log("INCOMPLETE##");
-    //             // do something
-    //         } else if (state === "ERROR") {
-    //             console.log("error##");
-    //             var errors = response.getError();
-    //             if (errors) {
-    //                 if (errors[0] && errors[0].message) {
-    //                     console.log("Error message: " + errors[0].message);
-    //                 }
-    //             } else {
-    //                 console.log("Unknown error");
-    //             }
-    //         }
-    //     });
-    //     $A.enqueueAction(action);
+                
+                var breadcrumbData = [
+                    {label: $A.get("$Label.c.PMP_Breadcrumbs_Marketplace_Home"), page: "home" },
+                    {label: $A.get("$Label.c.PMP_Breadcrumbs_All_Marketplace"), page: "search"},
+                    {label: $A.get("$Label.c.PMP_Breadcrumbs_All_Products"), page: "offerings"},
+                    {label: productname, page: "no_page_needed", class: "noLink" }
+                ];
+                component.set("v.breadcrumbData", breadcrumbData);
+                
+                if (
+                    resp.objectData.OfferingDetail[0].PMP_Offering_Status_Update_Dt__c
+                )
+                    component.set(
+                        "v.lastUpdatedDate",
+                        resp.objectData.OfferingDetail[0].PMP_Offering_Status_Update_Dt__c
+                    );
+            } else if (state === "INCOMPLETE") {
+                // do something
+            } else if (state === "ERROR") {
+                var errors = response.getError();
+                if (errors) {
+                    if (errors[0] && errors[0].message) {
+                        console.log("Error message: " + errors[0].message);
+                    }
+                } else {
+                    console.log("Unknown error");
+                }
+            }
+        });
+        $A.enqueueAction(action);
         
         
         
-    // },
+    },
     
     getPartner: function(component, id) {
         var userLangCode = $A.get("$Locale.langLocale");
@@ -139,7 +131,16 @@
             if (status === "SUCCESS") {
                 var returnValue = response.getReturnValue();
                 component.set("v.partner", returnValue);
-                console.log('Published status : ' , returnValue.publishedStatus);
+                
+                var partnername = component.get("v.partner.name");
+                var breadcrumbData = [
+                    {label: $A.get("$Label.c.PMP_Breadcrumbs_Marketplace_Home"), page: "home"},
+                    {label: $A.get("$Label.c.PMP_Breadcrumbs_All_Marketplace"), page: "search"},
+                    {label: $A.get("$Label.c.PMP_Breadcrumbs_All_Partners"), page: "partners"},
+                    {label: partnername, page: "no_page_needed", class: "noLink"}
+                ];
+                component.set("v.breadcrumbData", breadcrumbData);
+                
                 component.set(
                     "v.showEditPencil",
                     returnValue.hasAccess && !returnValue.isGuest
@@ -154,7 +155,7 @@
                     }
                 }
             } else {
-                this.reject("Unknown error.");
+                reject("Unknown error.");
             }
         });
         $A.enqueueAction(action);
@@ -177,30 +178,5 @@
             result[item[0]] = decodeURIComponent(item[1]);
         });
         return result;
-    },
-    
-    gotoTermsAndCondition: function(component) {
-    	
-        var action = component.get("c.checkLegalAgreementForAllLocations");
-        action.setCallback(this, function(response) {
-            if(response.getState() === "SUCCESS") {
-                var returnValue = response.getReturnValue();
-                console.log(':::checkLegalAgreementForAllLocations:::', returnValue);
-                if(returnValue == false) {
-                    window.location.href = $A.get("$Label.c.PMP_IPA_Home_LoggedIn");
-                }
-            } else if (status === "INCOMPLETE") {
-            } else if (status === "ERROR") {
-                var errors = response.getError();
-                if (errors) {
-                    if (errors[0] && errors[0].message) {
-                        console.error(errors[0].message);
-                    }
-                }
-            } else {
-                this.reject("Unknown error.");
-            }
-        });
-        $A.enqueueAction(action);
-	},
+    }
 });

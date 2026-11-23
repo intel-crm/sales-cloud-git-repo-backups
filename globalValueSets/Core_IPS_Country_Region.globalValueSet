@@ -231,11 +231,6 @@
         <label>Chile</label>
     </customValue>
     <customValue>
-        <fullName>China</fullName>
-        <default>false</default>
-        <label>China</label>
-    </customValue>
-    <customValue>
         <fullName>Christmas Islnd</fullName>
         <default>false</default>
         <label>Christmas Islnd</label>
@@ -296,11 +291,6 @@
         <label>Cyprus</label>
     </customValue>
     <customValue>
-        <fullName>Czechia</fullName>
-        <default>false</default>
-        <label>Czechia</label>
-    </customValue>
-    <customValue>
         <fullName>Dem. Rep. Congo</fullName>
         <default>false</default>
         <label>Dem. Rep. Congo</label>
@@ -354,11 +344,6 @@
         <fullName>Estonia</fullName>
         <default>false</default>
         <label>Estonia</label>
-    </customValue>
-    <customValue>
-        <fullName>Eswatini</fullName>
-        <default>false</default>
-        <label>Eswatini</label>
     </customValue>
     <customValue>
         <fullName>Ethiopia</fullName>
@@ -656,6 +641,11 @@
         <label>Madagascar</label>
     </customValue>
     <customValue>
+        <fullName>China</fullName>
+        <default>false</default>
+        <label>Mainland China</label>
+    </customValue>
+    <customValue>
         <fullName>Malawi</fullName>
         <default>false</default>
         <label>Malawi</label>
@@ -824,11 +814,6 @@
         <fullName>North Korea</fullName>
         <default>false</default>
         <label>North Korea</label>
-    </customValue>
-    <customValue>
-        <fullName>North Macedonia</fullName>
-        <default>false</default>
-        <label>North Macedonia</label>
     </customValue>
     <customValue>
         <fullName>Norway</fullName>
@@ -1246,21 +1231,95 @@
         <label>Zimbabwe</label>
     </customValue>
     <customValue>
+        <fullName>Russia</fullName>
+        <default>false</default>
+        <label>Russia</label>
+    </customValue>
+    <customValue>
+        <fullName>Korea</fullName>
+        <default>false</default>
+        <label>Korea</label>
+    </customValue>
+    <customValue>
+        <fullName>Antilles</fullName>
+        <default>false</default>
+        <label>Antilles</label>
+    </customValue>
+    <customValue>
+        <fullName>Bosnia And Herzegovina</fullName>
+        <default>false</default>
+        <label>Bosnia And Herzegovina</label>
+    </customValue>
+    <customValue>
+        <fullName>British Virgin Islands</fullName>
+        <default>false</default>
+        <label>British Virgin Islands</label>
+    </customValue>
+    <customValue>
+        <fullName>Burma</fullName>
+        <default>false</default>
+        <label>Burma</label>
+    </customValue>
+    <customValue>
+        <fullName>Dominican Republic</fullName>
+        <default>false</default>
+        <label>Dominican Republic</label>
+    </customValue>
+    <customValue>
+        <fullName>Holland</fullName>
+        <default>false</default>
+        <label>Holland</label>
+    </customValue>
+    <customValue>
+        <fullName>N. IRELAND</fullName>
+        <default>false</default>
+        <label>N. IRELAND</label>
+    </customValue>
+    <customValue>
+        <fullName>Scotland</fullName>
+        <default>false</default>
+        <label>Scotland</label>
+    </customValue>
+    <customValue>
+        <fullName>West Indies</fullName>
+        <default>false</default>
+        <label>West Indies</label>
+    </customValue>
+    <customValue>
+        <fullName>Yugoslavia</fullName>
+        <default>false</default>
+        <label>Yugoslavia</label>
+    </customValue>
+    <customValue>
+        <fullName>None</fullName>
+        <default>false</default>
+        <label>None</label>
+    </customValue>
+    <customValue>
+        <fullName>North Macedonia</fullName>
+        <default>false</default>
+        <label>North Macedonia</label>
+    </customValue>
+    <customValue>
+        <fullName>Eswatini</fullName>
+        <default>false</default>
+        <label>Eswatini</label>
+    </customValue>
+    <customValue>
+        <fullName>Czechia</fullName>
+        <default>false</default>
+        <label>Czechia</label>
+    </customValue>
+    <customValue>
         <fullName>Czech Republic</fullName>
         <default>false</default>
         <label>Czech Republic</label>
     </customValue>
     <customValue>
-        <fullName>Swaziland</fullName>
+        <fullName>Turkey</fullName>
         <default>false</default>
         <isActive>false</isActive>
-        <label>Swaziland</label>
-    </customValue>
-    <customValue>
-        <fullName>Serbia and Montenegr</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Serbia and Montenegr</label>
+        <label>Turkey</label>
     </customValue>
     <customValue>
         <fullName>Netherlands Antilles</fullName>
@@ -1269,10 +1328,16 @@
         <label>Netherlands Antilles</label>
     </customValue>
     <customValue>
-        <fullName>Turkey</fullName>
+        <fullName>Serbia and Montenegr</fullName>
         <default>false</default>
         <isActive>false</isActive>
-        <label>Turkey</label>
+        <label>Serbia and Montenegr</label>
+    </customValue>
+    <customValue>
+        <fullName>Swaziland</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Swaziland</label>
     </customValue>
     <customValue>
         <fullName>Macedonia</fullName>
@@ -1282,5 +1347,5 @@
     </customValue>
     <description>Will be used for GEC OverHaul process</description>
     <masterLabel>Country/Region</masterLabel>
-    <sorted>true</sorted>
+    <sorted>false</sorted>
 </GlobalValueSet>

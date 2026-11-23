@@ -61,19 +61,6 @@
                 <identifier>force_relatedListSingleContainer</identifier>
             </componentInstance>
         </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentName>Core_Contact_EloquaProfiler</componentName>
-                <identifier>Core_Contact_EloquaProfiler</identifier>
-                <visibilityRule>
-                    <criteria>
-                        <leftValue>{!$Permission.CustomPermission.Core_Allow_Eloqua_Profiler}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>true</rightValue>
-                    </criteria>
-                </visibilityRule>
-            </componentInstance>
-        </itemInstances>
         <name>Facet-3ad794cc-b907-4500-9b97-0d5db17e2f7b</name>
         <type>Facet</type>
     </flexiPageRegions>

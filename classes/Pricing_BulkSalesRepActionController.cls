@@ -16,7 +16,7 @@ public with sharing class Pricing_BulkSalesRepActionController {
     public static List < SBQQ__QuoteLine__c > getQuoteLineDetails(Id quoteId) {
         List < SBQQ__QuoteLine__c > quoteLineList = [SELECT Id, Pricing_Quote_Line_Number__c, Pricing_Sales_Rep__c, Pricing_Product_Nm__r.Id, Pricing_Product_Nm__r.Name, Pricing_Status_Nm__c,Pricing_Market_Segment_values_Nm__c,Pricing_SIPP_Cb__c,
             Pricing_FSE_Recommended_Price_Nm__c, Pricing_pm_approval_comments_nm__c, Pricing_Rejection_Comments_nm__c, SBQQ__Quote__c,Pricing_Rejection_Reason__c,SBQQ__Quote__r.Id,SBQQ__Quote__r.SBQQ__PrimaryContact__r.Id,Pricing_Last_Submitted_By_Id__c,SBQQ__Quote__r.SBQQ__SalesRep__c,
-            Pricing_Change_Request_cb__c,Pricing_Form_Factor_Nm__c,Pricing_Sales_Rep_Approver__c,Customer_Revision_Count_Cnt__c,Pricing_Other_Product_Nm__c, Pricing_New_Quantity_qty__c, Pricing_Request_Discount_Unit_Price_qty__c, Pricing_Req_Discounted_Unit_Price__c, Pricing_Unit_Qty__c,Pricing_Total_Volume_Qty__c,Pricing_Program_Type_Nm__c,Pricing_SDM_Fast_Track__c,Pricing_Start_Date_dt__c,SBQQ__Quote__r.Pricing_Program_Type_Nm__c,Pricing_Workload_Nm__c,Pricing_New_Change_Request_cb__c FROM SBQQ__QuoteLine__c 
+            Pricing_Change_Request_cb__c,Pricing_Sales_Rep_Approver__c,Customer_Revision_Count_Cnt__c,Pricing_Other_Product_Nm__c, Pricing_New_Quantity_qty__c, Pricing_Request_Discount_Unit_Price_qty__c, Pricing_Req_Discounted_Unit_Price__c, Pricing_Unit_Qty__c,Pricing_Total_Volume_Qty__c,Pricing_Program_Type_Nm__c,Pricing_SDM_Fast_Track__c,Pricing_Start_Date_dt__c,SBQQ__Quote__r.Pricing_Program_Type_Nm__c,Pricing_Workload_Nm__c,Pricing_New_Change_Request_cb__c,Pricing_Form_Factor_Nm__c FROM SBQQ__QuoteLine__c 
             WHERE SBQQ__Quote__c =: quoteId ORDER By Pricing_Quote_Line_Number__c];
 
         List<Pricing_Quote_Team__c> quoteTeamList = [select id from Pricing_Quote_Team__c where Pricing_Quote_Id__c =: quoteId AND Pricing_Quote_Team_Member_Id__r.IsActive = true AND Pricing_Role_Nm__c = 'FSE/SDM' AND Pricing_Quote_Team_Member_Id__c =: UserInfo.getuserId()];
@@ -294,6 +294,29 @@ public with sharing class Pricing_BulkSalesRepActionController {
             SBQQ.TriggerControl.enable();
         }
         return msg;
+    }
+
+    /**
+    * @description Method to update FI Quote lines with Rebate values
+    * @author Sandeep Chamate | 05-02-2024 
+    * @param quoteLineList 
+    **/
+    @InvocableMethod(label = 'updateRebateforFI' description = 'To update rebate value on Quoteline records')
+    public static void updateRebateforFI(List<List<SBQQ__QuoteLine__c>> quoteLineList) {
+        try {
+            List<SBQQ__QuoteLine__c> qliList = new List<SBQQ__QuoteLine__c>();
+            for(List<SBQQ__QuoteLine__c> qli: quoteLineList) {
+                qliList.addAll(qli);
+            }
+            SBQQ.TriggerControl.disable();
+            update qliList;
+            SBQQ.TriggerControl.enable();
+        }
+        catch (Exception ex) {
+            Pricing_Tender_Utility.logError(ex); 
+        } finally {
+            SBQQ.TriggerControl.enable();
+        }
     }
 
     /**

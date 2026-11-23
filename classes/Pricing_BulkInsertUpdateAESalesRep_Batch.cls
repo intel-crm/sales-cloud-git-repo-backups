@@ -2,7 +2,7 @@
 * @description       : 
 * @author            : Accenture
 * @group             : 
-* @last modified on  : 04-26-2026
+* @last modified on  : 04-15-2026
 * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 public without sharing class Pricing_BulkInsertUpdateAESalesRep_Batch implements Database.Batchable<sObject>,Database.Stateful{
@@ -26,8 +26,12 @@ public without sharing class Pricing_BulkInsertUpdateAESalesRep_Batch implements
     public String newFSEName;
     public String oldFSEName;
     public String oldAEEmail;
+    //public String newAEEmailForInactiveUser;
+    //public String oldAEEmailForInactiveUser;
+    //public String newFSEEmailForInactiveUser;
+    //public String oldFSEEmailForInactiveUser;
     
-    public Pricing_BulkInsertUpdateAESalesRep_Batch(String newAEEmailFromFlow, String aeActionFromFlow, String newFSEEmailFromFlow, String oldFSEEmailFromFlow, String fseActionFromFlow,List<PermissionSetAssignment> validPermSetAssignment,String endCustomerId,String endCustomerCountry, String oldAEEmailInput){
+    public Pricing_BulkInsertUpdateAESalesRep_Batch(String newAEEmailFromFlow, String aeActionFromFlow, String newFSEEmailFromFlow, String oldFSEEmailFromFlow, String fseActionFromFlow,List<PermissionSetAssignment> validPermSetAssignment,String endCustomerId,String endCustomerCountry, String oldAEEmailInput /*String newAEEmailInputforInactiveUserFromFlow, String oldAEEmailInputforInactiveUserFromFlow, String newFSEEmailInputforInactiveUserFromFlow, String oldFSEEmailInputforInactiveUserFromFlow*/){
         this.newAEEmail = newAEEmailFromFlow;
         this.aeAction = aeActionFromFlow;
         this.newFSEEmail = newFSEEmailFromFlow;
@@ -37,6 +41,10 @@ public without sharing class Pricing_BulkInsertUpdateAESalesRep_Batch implements
         this.endCustomerId = endCustomerId;
         this.endCustomerCountry = endCustomerCountry;
         this.oldAEEmail = oldAEEmailInput;
+        //this.newAEEmailForInactiveUser = newAEEmailInputforInactiveUserFromFlow;
+        //this.oldAEEmailForInactiveUser = oldAEEmailInputforInactiveUserFromFlow;
+        //this.newFSEEmailForInactiveUser = newFSEEmailInputforInactiveUserFromFlow;
+        //this.oldFSEEmailForInactiveUser = oldFSEEmailInputforInactiveUserFromFlow;
     }
     
     /**
@@ -57,6 +65,10 @@ public without sharing class Pricing_BulkInsertUpdateAESalesRep_Batch implements
         // TWC1972-7639
         String fseOldToReplace = flowInputsList[0].fseOldToReplace;
         String fseNewToReplaceWith = flowInputsList[0].fseNewToReplaceWith;
+       // String newAEEmailForInactiveUser = flowInputsList[0].newAEEmailInputforInactiveUser; // Variable for Inactive Users
+       // String oldAEEmailForInactiveUser = flowInputsList[0].oldAEEmailInputforInactiveUser;
+       // String newFSEEmailForInactiveUser = flowInputsList[0].newFSEEmailInputforInactiveUser;
+       // String oldFSEEmailForInactiveUser = flowInputsList[0].oldFSEEmailInputforInactiveUser;
         if(fseAction == 'Sales Rep Replace'){
             oldFSEEmail = fseOldToReplace;
             newFSEEmail = fseNewToReplaceWith;
@@ -69,20 +81,12 @@ public without sharing class Pricing_BulkInsertUpdateAESalesRep_Batch implements
 
         try{
             List<User> userList = new List<User>();
-            List<User> userAEInactiveList = new List<User>();
-            List<User> userNewAEList = new List<User>();
-            if(!String.isEmpty(aeAction) && aeAction != Label.Pricing_AE_Bulk_Insert_Flow_Action_For_Inactive_Users){
+            if(!String.isEmpty(aeAction)){
                 userList = [SELECT Id ,Name FROM User WHERE Email =:newAEEmail AND IsActive = true];
-            }
-            if(!String.isEmpty(aeAction) && aeAction == Label.Pricing_AE_Bulk_Insert_Flow_Action_For_Inactive_Users){
-                userAEInactiveList = [SELECT Id ,Name FROM User WHERE Email =:oldAEEmail AND IsActive = false];
-            }
-            if(!String.isEmpty(aeAction) && aeAction == Label.Pricing_AE_Bulk_Insert_Flow_Action_For_Inactive_Users){
-                userNewAEList = [SELECT Id ,Name FROM User WHERE Email =:newAEEmail AND IsActive = true];
             }
             String query1 = Label.Pricing_BulkInsertUpdateAESalesRep_Batch_Query1;
 
-            List<SBQQ__Quote__c> quotesList = !String.isEmpty(aeAction) && aeAction != Label.Pricing_AE_Bulk_Insert_Flow_Action_For_Inactive_Users && !aeAction.contains('End Customer') ?  
+            List<SBQQ__Quote__c> quotesList = !String.isEmpty(aeAction) && !aeAction.contains('End Customer') ?  
                 [SELECT Id,Name, Pricing_Intel_Account_Exec_Email_Txt__c FROM SBQQ__Quote__c 
                  WHERE Pricing_Intel_Account_Exec_Email_Txt__c =: UserInfo.getUserEmail() 
                  AND Pricing_Quote_Program_Nm__c =: Label.Pricing_Program_Code_Tender AND Pricing_On_Hold_Cb__c = false] : 
@@ -90,10 +94,6 @@ public without sharing class Pricing_BulkInsertUpdateAESalesRep_Batch implements
                 [SELECT Id,Name, Pricing_Intel_Account_Exec_Email_Txt__c FROM SBQQ__Quote__c 
                  WHERE Pricing_Intel_Sales_Rep_Email_Txt__c =: oldFSEEmail 
                  AND Pricing_Quote_Program_Nm__c =: Label.Pricing_Program_Code_Tender AND Pricing_On_Hold_Cb__c = false] :
-            (!String.isEmpty(aeAction) && aeAction == Label.Pricing_AE_Bulk_Insert_Flow_Action_For_Inactive_Users) ? 
-            [SELECT Id,Name, Pricing_Intel_Account_Exec_Email_Txt__c FROM SBQQ__Quote__c 
-            WHERE Pricing_Intel_Account_Exec_Email_Txt__c =: oldAEEmail 
-            AND Pricing_Quote_Program_Nm__c =: Label.Pricing_Program_Code_Tender AND Pricing_On_Hold_Cb__c = false] :
             (!String.isEmpty(aeAction) && aeAction == Label.Pricing_EC_AE_BulkInsertion_Action && String.isNotBlank(endCustomerCountryName) && String.isNotBlank(unifiedEndCustomerId)) ? 
                 Database.query(query1 + ' AND Pricing_On_Hold_Cb__c =' + false + ' AND ((Pricing_IsUnifiedCustomer__c =' + true +' AND Pricing_Unified_Global_End_Customer_Nm__r.Pricing_Unified_EndCustomer_Id__c =\'' + unifiedEndCustomerId +'\''+') OR (Pricing_IsUnifiedCustomer__c =' + false +' AND Pricing_End_Customer__r.Pricing_Unified_EndCustomer_Id__c =\'' + unifiedEndCustomerId +'\''+')) AND Pricing_End_Customer_Country_Nm__c =\''+ endCustomerCountryName+'\'') :
             (!String.isEmpty(aeAction) && aeAction == Label.Pricing_EC_AE_BulkInsertion_Action && String.isBlank(endCustomerCountryName) && String.isBlank(unifiedEndCustomerId)) ? 
@@ -120,20 +120,14 @@ public without sharing class Pricing_BulkInsertUpdateAESalesRep_Batch implements
                 [SELECT Id, Assignee.Id FROM PermissionSetAssignment WHERE Assignee.Email =: newFSEEmail 
                     AND Assignee.IsActive = true AND PermissionSet.name =: Label.Pricing_Tender_PermissionSets_TenderUser LIMIT 1];
             
-            if(userList.size() == 0 && !String.isEmpty(aeAction) && aeAction != Label.Pricing_AE_Bulk_Insert_Flow_Action_For_Inactive_Users){
-                errorIndicatorUser = Label.Pricing_Bulk_Invalid_AE_User_Err_Msg;
-                errorRespList.add(errorIndicatorUser);
-                createCoreLogEntry(errorIndicatorUser, 'An error has occurred in '+Label.Pricing_IQR_SFDC_Environment+' when processing the Bulk Action - '+ aeAction, aeAction );        
-            }
-            else if((userNewAEList.size() == 0 || userAEInactiveList.size() == 0) && !String.isEmpty(aeAction) && aeAction == Label.Pricing_AE_Bulk_Insert_Flow_Action_For_Inactive_Users){
+            if(userList.size() == 0 && !String.isEmpty(aeAction)){
                 errorIndicatorUser = Label.Pricing_Bulk_Invalid_AE_User_Err_Msg;
                 errorRespList.add(errorIndicatorUser);
                 createCoreLogEntry(errorIndicatorUser, 'An error has occurred in '+Label.Pricing_IQR_SFDC_Environment+' when processing the Bulk Action - '+ aeAction, aeAction );        
             }
             else if(quotesList.size() == 0){
                 errorIndicatorQuote = (!String.isEmpty(fseAction) && (fseAction == Label.Pricing_FSE_Bulk_Insert_Flow_Action || fseAction == Label.Pricing_FSE_Bulk_Insert_Flow_Action_For_Inactive_Users || fseAction == 'Sales Rep Replace')) ?  Label.Pricing_Bulk_AESDM_No_Quotes_Err_Msg.replace('<email address>' , oldFSEEmail) 
-                                      : (!String.isEmpty(aeAction) && aeAction.contains('End Customer')) ? Label.Pricing_bulk_EC_AE_No_Quotes_Msg : 
-                                      (!String.isEmpty(aeAction) && aeAction == Label.Pricing_AE_Bulk_Insert_Flow_Action_For_Inactive_Users)? Label.Pricing_Bulk_AESDM_No_Quotes_Err_Msg.replace('<email address>' , oldAEEmail): Label.Pricing_Bulk_AESDM_No_Quotes_Err_Msg.replace('<email address>' , UserInfo.getUserEmail());
+                                      : (!String.isEmpty(aeAction) && aeAction.contains('End Customer')) ? Label.Pricing_bulk_EC_AE_No_Quotes_Msg : Label.Pricing_Bulk_AESDM_No_Quotes_Err_Msg.replace('<email address>' , UserInfo.getUserEmail());
 
                 errorRespList.add(errorIndicatorQuote);
                 createCoreLogEntry(errorIndicatorQuote,'An error has occurred in '+Label.Pricing_IQR_SFDC_Environment+' when processing the Bulk Action - '+ (!String.isEmpty(aeAction) ? aeAction : fseAction), 
@@ -241,7 +235,7 @@ public without sharing class Pricing_BulkInsertUpdateAESalesRep_Batch implements
                 List<SBQQ__Quote__c> quotesToProcess = new List<SBQQ__Quote__c>();
                 List<List<SBQQ__Quote__c>> results = new List<List<SBQQ__Quote__c>>();
                 if(!String.isEmpty(fseAction)){
-                    // Account team check
+                    // accoount team check
                     results = getValidAccountTeamQuote(quoteRecsList);
                     quotesToProcess = results[0];
                 }else{
@@ -330,7 +324,7 @@ public without sharing class Pricing_BulkInsertUpdateAESalesRep_Batch implements
                 List<SBQQ__Quote__c> quotesToProcess = new List<SBQQ__Quote__c>();
                 List<List<SBQQ__Quote__c>> results = new List<List<SBQQ__Quote__c>>();
                 if(!String.isEmpty(fseAction)){
-                    // Account team check
+                    // accoount team check
                     results = getValidAccountTeamQuote(quoteRecsList);
                     quotesToProcess = results[0];
                 }else{
@@ -347,15 +341,20 @@ public without sharing class Pricing_BulkInsertUpdateAESalesRep_Batch implements
                         countErrorRecs++;
                     }
                 }
+                System.debug('success record quote team id'+quoteTeamIds);
                 List<Pricing_Quote_Team__c> qtmList = new List<Pricing_Quote_Team__c>();
                 for(Pricing_Quote_Team__c qtm : [SELECT Id, Pricing_Quote_Id__c FROM Pricing_Quote_Team__c WHERE Id IN: quoteTeamIds]){
                     quoteIdToMsgMap.put(qtm.Pricing_Quote_Id__c,'Success');
                     quoteIds.add(qtm.Pricing_Quote_Id__c);
+                System.debug('for loop 1');
 
                 }
+                System.debug('record quote ids'+quoteIds);
                 for(Pricing_Quote_Team__c qtm : [SELECT Id, Pricing_Quote_Id__c FROM Pricing_Quote_Team__c WHERE Pricing_Quote_Id__c IN: quoteIds AND ((Pricing_Quote_Team_Member_Id__r.email = :oldAEEmail AND Pricing_Role_Nm__c = :Label.Pricing_Quote_Team_Role_Account_Executive) OR (Pricing_Quote_Team_Member_Id__r.email = :oldFSEEmail AND Pricing_Role_Nm__c = :Label.Pricing_Quote_Team_Role_FSE))]){
                     qtmList.add(qtm);
+                 System.debug('for loop 2');
                 }
+                System.debug('record qtmList'+qtmList);
                 if(qtmList.size() > 0){
                     delete qtmList;
                 }
@@ -781,10 +780,10 @@ public without sharing class Pricing_BulkInsertUpdateAESalesRep_Batch implements
         @InvocableVariable public String oldAEEmailInput;
         @InvocableVariable public String fseOldToReplace;
         @InvocableVariable public String fseNewToReplaceWith;
+        @InvocableVariable public String newAEEmailInputforInactiveUser; // Variable for Inactive Users
         @InvocableVariable public String oldAEEmailInputforInactiveUser;
-        @InvocableVariable public String newAEEmailInputforInactiveUser;
-        @InvocableVariable public String oldFSEEmailInputforInactiveUser;
         @InvocableVariable public String newFSEEmailInputforInactiveUser;
+        @InvocableVariable public String oldFSEEmailInputforInactiveUser;
         public FlowInputs(){
 
         }

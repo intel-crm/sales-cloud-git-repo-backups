@@ -465,7 +465,6 @@ public class Core_Test_Utility {
         For(integer i = 0; i <size; i++) {
             Account accountInstance = new Account();
             accountInstance.name = 'Test ' + (Math.random() * 1000);
-            accountInstance.RecordTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
             accountInstance.BillingCountryCode = 'USA';
             accountInstance.BIllingStateCode = 'AL';
             accountInstance.BillingCity = 'Alabama';
@@ -473,6 +472,27 @@ public class Core_Test_Utility {
             accountInstance.Core_Sales_Groups__c = 'Americas US Sales Group';
             accountInstance.Industry = 'Agriculture';
             accountInstance.Core_Sub_Industry__c = 'Crop Production';
+            accountList.add(accountInstance);
+        }
+        return accountList;
+    }
+    
+    //TWC4767-3990 
+    public static List <Account> createAccountIntel(Integer size) {
+        
+        Id newAccountRecTypeId = [select Id from RecordType where DeveloperName = 'Mastered_Account' and sobjecttype = 'Account' limit 1][0].Id;
+        List <Account> accountList = new List <Account> ();
+        For(integer i = 0; i <size; i++) {
+            Account accountInstance = new Account();
+            accountInstance.name = 'Test ' + (Math.random() * 1000);
+            accountInstance.BillingCountryCode = 'USA';
+            accountInstance.BIllingStateCode = 'AL';
+            accountInstance.BillingCity = 'Alabama';
+            accountInstance.BillingStreet = 'test ' + (Math.random() * 1000);
+            accountInstance.Core_Sales_Groups__c = 'Americas US Sales Group';
+            accountInstance.Industry = 'Agriculture';
+            accountInstance.Core_Sub_Industry__c = 'Crop Production';
+            accountInstance.RecordTypeId =  newAccountRecTypeId;
             accountList.add(accountInstance);
         }
         return accountList;
@@ -507,7 +527,8 @@ public class Core_Test_Utility {
             leadInstance.StateCode = 'AL';
             leadInstance.City = 'Alabama';
             leadInstance.Street = 'test';
-            leadInstance.status = 'Sales Accepted Lead';
+            leadInstance.status = 'Marketing Qualified Lead';
+            leadInstance.Core_Lead_Status__c='New';
             leadInstance.leadSource = 'Email';
             leadInstance.email = 'test@' + i + '.com';
             leadInstance.Core_Last_Activity_Date__c = NULL;
@@ -718,7 +739,7 @@ public class Core_Test_Utility {
             sobjOppRec.CloseDate = system.today();
             sobjOppRec.Name = 'Opportunity' + iRecNo;
             sobjOppRec.StageName = 'Qualify';
-            sobjOppRec.Core_Intel_Platform__c = 'GRIZZLY LAKE';
+            sobjOppRec.Core_Intel_Platform__c = 'ALDER LAKE';
             sobjOppRec.Core_Sales_Group__c = 'Global Accounts';
             lstOpportunity.add(sobjOppRec);
         }

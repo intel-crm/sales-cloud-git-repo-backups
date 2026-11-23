@@ -12,7 +12,7 @@
             }
         });
         $A.enqueueAction(isExternalUser);
-        
+
         const isPricingAgentEligible = component.get("c.isPAAEligible");
             isPricingAgentEligible.setParams({ quoteLine: component.get("v.quoteLine") });
             isPricingAgentEligible.setCallback(this, function (response) {

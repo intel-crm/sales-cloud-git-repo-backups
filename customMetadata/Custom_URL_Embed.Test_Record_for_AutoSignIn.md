@@ -31,6 +31,10 @@
         <value xsi:type="xsd:string">46c98d88-e344-4ed4-8496-4ed7712e255d</value>
     </values>
     <values>
+        <field>Dynamic_Filter_and_Value__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
         <field>Dynamic_Filter_and_Value_txt__c</field>
         <value xsi:nil="true"/>
     </values>
@@ -40,6 +44,10 @@
     </values>
     <values>
         <field>Embed_URL_Class__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>No_Access_Error__c</field>
         <value xsi:nil="true"/>
     </values>
     <values>
@@ -55,12 +63,20 @@
         <value xsi:nil="true"/>
     </values>
     <values>
+        <field>Security_Query__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
         <field>Security_Query_txt__c</field>
         <value xsi:nil="true"/>
     </values>
     <values>
         <field>Security_enforced__c</field>
         <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>Static_Filter_and_Value__c</field>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>Static_Filter_and_Value_txt__c</field>
@@ -73,6 +89,10 @@
     <values>
         <field>URL__c</field>
         <value xsi:type="xsd:string">https://api.powerbi.com/v1.0/myorg/groups/</value>
+    </values>
+    <values>
+        <field>User_Filter_and_Value__c</field>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>User_Filter_and_Value_txt__c</field>

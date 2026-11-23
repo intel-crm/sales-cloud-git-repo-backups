@@ -12,6 +12,6 @@
     </values>
     <values>
         <field>Type_of_License_Issue__c</field>
-        <value xsi:type="xsd:string">I can&apos;t see/find a product</value>
+        <value xsi:type="xsd:string">I can&apos;t see/find a product that I want to license</value>
     </values>
 </CustomMetadata>

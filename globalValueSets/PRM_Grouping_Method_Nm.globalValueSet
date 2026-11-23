@@ -21,16 +21,16 @@
         <label>Country</label>
     </customValue>
     <customValue>
-        <fullName>Country</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Country Old</label>
-    </customValue>
-    <customValue>
         <fullName>Global</fullName>
         <default>false</default>
         <isActive>false</isActive>
         <label>Global Old</label>
+    </customValue>
+    <customValue>
+        <fullName>Country</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Country Old</label>
     </customValue>
     <masterLabel>Grouping Method</masterLabel>
     <sorted>false</sorted>

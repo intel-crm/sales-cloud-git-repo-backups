@@ -50,10 +50,6 @@
                 <behavior>Edit</behavior>
                 <field>Core_MDF_Channel_Program_id__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_MDF_Virtual_Account_id__c</field>
-            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

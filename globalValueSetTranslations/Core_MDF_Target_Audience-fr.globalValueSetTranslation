@@ -14,7 +14,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Business owners</masterLabel>
-        <translation>Propriétaires d&apos;entreprise</translation>
+        <translation><!-- Business owners --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>C-Suite</masterLabel>
@@ -22,7 +22,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Channel Partner</masterLabel>
-        <translation>Partenaire-revendeur</translation>
+        <translation><!-- Channel Partner --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Commercial</masterLabel>
@@ -30,19 +30,11 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Consultant/Influencer</masterLabel>
-        <translation>Consultant/Influenceur</translation>
+        <translation><!-- Consultant/Influencer --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Consumer</masterLabel>
         <translation>Particuliers</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Consumer - Mainstream</masterLabel>
-        <translation>Consommateur - Grand public</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Consumer - Premium</masterLabel>
-        <translation>Consommateur - Premium</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Creator</masterLabel>
@@ -58,27 +50,19 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Distributors</masterLabel>
-        <translation>Distributeurs</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Edge Customers (edge computing)</masterLabel>
-        <translation>Clients de la périphérie (edge computing)</translation>
+        <translation><!-- Distributors --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Education</masterLabel>
-        <translation>Éducation</translation>
+        <translation><!-- Education --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Education Professionals</masterLabel>
-        <translation>Professionnels de l’éducation</translation>
+        <translation><!-- Education Professionals --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Employees</masterLabel>
-        <translation>Employés</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Enterprise</masterLabel>
-        <translation>Grandes entreprises</translation>
+        <translation><!-- Employees --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Enthusiast Gaming</masterLabel>
@@ -86,11 +70,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Entry Gaming</masterLabel>
-        <translation>Jeu occasionnel</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Gamer</masterLabel>
-        <translation><!-- Gamer --></translation>
+        <translation><!-- Entry Gaming --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Gaming</masterLabel>
@@ -102,15 +82,15 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Government agency heads</masterLabel>
-        <translation>Chefs d&apos;organismes gouvernementaux</translation>
+        <translation><!-- Government agency heads --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Government/Public Sector</masterLabel>
-        <translation>Calcul intensif (HPC)</translation>
+        <translation><!-- Government/Public Sector --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Healthcare</masterLabel>
-        <translation>Santé</translation>
+        <translation><!-- Healthcare --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>IT Decision Maker</masterLabel>
@@ -134,31 +114,27 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Mainstream Consumer - Knowledge</masterLabel>
-        <translation>Consommateur principal - Connaissances</translation>
+        <translation><!-- Mainstream Consumer - Knowledge --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Mainstream Consumer - Overwhelmed</masterLabel>
-        <translation>Consommateur principal – Débordé</translation>
+        <translation><!-- Mainstream Consumer - Overwhelmed --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Mainstream Consumer - Tech Knowledgeable</masterLabel>
-        <translation>Consommateur principal – Connaissances en technologies</translation>
+        <translation><!-- Mainstream Consumer - Tech Knowledgeable --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Managed Business</masterLabel>
-        <translation>Entreprises gérées</translation>
+        <translation><!-- Managed Business --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Manufacturer/OEM</masterLabel>
-        <translation>Fabricant/OEM</translation>
+        <translation><!-- Manufacturer/OEM --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Mid Market</masterLabel>
         <translation>Entreprise de taille moyenne</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Mobile Go Getter</masterLabel>
-        <translation>Personne constamment en déplacement</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Modern Consumer (Knowledgeable)</masterLabel>
@@ -166,23 +142,19 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Other</masterLabel>
-        <translation>Autres</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Partner Sales Force</masterLabel>
-        <translation>Force de vente des partenaires</translation>
+        <translation><!-- Other --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Partner </masterLabel>
-        <translation>Partenaire</translation>
+        <translation><!-- Partner  --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Project / program managers</masterLabel>
-        <translation>Directeurs de projet / programme</translation>
+        <translation><!-- Project / program managers --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Purchasing</masterLabel>
-        <translation>Achat</translation>
+        <translation><!-- Purchasing --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Reseller</masterLabel>
@@ -190,23 +162,15 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Sales Leaders</masterLabel>
-        <translation>Responsables des ventes</translation>
+        <translation><!-- Sales Leaders --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Security managers</masterLabel>
-        <translation>Responsables de la sécurité</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Senior Business Decision Maker</masterLabel>
-        <translation>Décideur d&apos;entreprise senior</translation>
+        <translation><!-- Security managers --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Small Business</masterLabel>
         <translation>PME</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Small and Medium Business</masterLabel>
-        <translation>PME-PMI</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Solutions Architect</masterLabel>
@@ -214,18 +178,14 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Sr. Business Decision Maker</masterLabel>
-        <translation>Décisionnaire principal d&apos;entreprise</translation>
+        <translation><!-- Sr. Business Decision Maker --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>System Integrators</masterLabel>
-        <translation>Intégrateurs de systèmes</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Technical Influencer</masterLabel>
-        <translation>Influenceur technique</translation>
+        <translation><!-- System Integrators --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Unmanaged Small Business</masterLabel>
-        <translation>PME non gérée</translation>
+        <translation><!-- Unmanaged Small Business --></translation>
     </valueTranslation>
 </GlobalValueSetTranslation>

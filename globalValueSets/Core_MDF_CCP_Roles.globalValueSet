@@ -1,159 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <customValue>
-        <fullName>Core_MDF_CCP_Int_Channel_MDF_Proposal_Approver_L1</fullName>
-        <default>false</default>
-        <label>CCP Channel MDF Proposal Approver L1</label>
-    </customValue>
-    <customValue>
         <fullName>Core_MDF_CCP_Internal_CCFB_Account_Manager</fullName>
         <default>false</default>
         <label>CCP Internal CCF Boost Account Manager</label>
     </customValue>
     <customValue>
-        <fullName>Core_MDF_CCP_Internal_Channel_MDF_Budget_Approver</fullName>
-        <default>false</default>
-        <label>CCP Internal Channel MDF Budget Approver</label>
-    </customValue>
-    <customValue>
-        <fullName>Core_MDF_CCP_Internal_Channel_MDF_Budget_Loader</fullName>
-        <default>false</default>
-        <label>CCP Internal Channel MDF Budget Loader</label>
-    </customValue>
-    <customValue>
-        <fullName>Core_MDF_CCP_Internal_Channel_MDF_Budget_Manager</fullName>
-        <default>false</default>
-        <label>CCP Internal Channel MDF Budget Manager</label>
-    </customValue>
-    <customValue>
         <fullName>Core_MDF_CCP_Internal_CCF_Field_Acct_Mgr</fullName>
         <default>false</default>
-        <label>CCP Internal Client Field Account Manager</label>
+        <label>CCP Internal CCF Field Account Manager</label>
     </customValue>
     <customValue>
         <fullName>Core_MDF_CCP_Internal_CCF_Acct_Mgr</fullName>
         <default>false</default>
-        <label>CCP Internal Client Marketing Account Manager</label>
-    </customValue>
-    <customValue>
-        <fullName>Core_MDF_CCP_Internal_CCF_MDF_Budget_Approver</fullName>
-        <default>false</default>
-        <label>CCP Internal Client MDF Budget Approver</label>
-    </customValue>
-    <customValue>
-        <fullName>Core_MDF_CCP_Internal_CCF_MDF_Budget_Loader</fullName>
-        <default>false</default>
-        <label>CCP Internal Client MDF Budget Loader</label>
-    </customValue>
-    <customValue>
-        <fullName>Core_MDF_CCP_Internal_CCF_MDF_Payment_Admin</fullName>
-        <default>false</default>
-        <label>CCP Internal Client MDF Payment Admin</label>
-    </customValue>
-    <customValue>
-        <fullName>Core_MDF_CCP_Internal_Co_GTM_Account_Manager</fullName>
-        <default>false</default>
-        <label>CCP Internal Co-Engineering Account Manager​</label>
-    </customValue>
-    <customValue>
-        <fullName>Core_MDF_CCP_Internal_Co_GTM_L2_Approver</fullName>
-        <default>false</default>
-        <label>CCP Internal Co-Engineering Approver L2​</label>
-    </customValue>
-    <customValue>
-        <fullName>Core_MDF_CCP_Internal_Co_GTM_Budget_Approver</fullName>
-        <default>false</default>
-        <label>CCP Internal Co-Engineering Budget Approver​</label>
-    </customValue>
-    <customValue>
-        <fullName>Core_MDF_CCP_Internal_Co_GTM_Budget_Loader</fullName>
-        <default>false</default>
-        <label>CCP Internal Co-Engineering Budget Loader</label>
-    </customValue>
-    <customValue>
-        <fullName>Core_MDF_CCP_Internal_Co_GTM_Budget_Manager</fullName>
-        <default>false</default>
-        <label>CCP Internal Co-Engineering Budget Manager​</label>
-    </customValue>
-    <customValue>
-        <fullName>Core_MDF_CCP_Internal_Co_GTM_Business_Approver</fullName>
-        <default>false</default>
-        <label>CCP Internal Co-Engineering Business Approver</label>
-    </customValue>
-    <customValue>
-        <fullName>Core_MDF_Internal_Co_GTM_Escalation_Reviewer</fullName>
-        <default>false</default>
-        <label>CCP Internal Co-Engineering Escalation Reviewer</label>
-    </customValue>
-    <customValue>
-        <fullName>Core_MDF_Internal_Co_GTM_Exception_Reviewer</fullName>
-        <default>false</default>
-        <label>CCP Internal Co-Engineering Exception Reviewer</label>
-    </customValue>
-    <customValue>
-        <fullName>Core_MDF_CCP_Internal_Co_GTM_Legal_Reviewer</fullName>
-        <default>false</default>
-        <label>CCP Internal Co-Engineering Legal Reviewer</label>
-    </customValue>
-    <customValue>
-        <fullName>Core_MDF_CCP_Internal_Co_GTM_Payment_Adm</fullName>
-        <default>false</default>
-        <label>CCP Internal Co-Engineering Payment Admin​</label>
-    </customValue>
-    <customValue>
-        <fullName>Core_MDF_CCP_Internal_Co_GTM_POR_Approver</fullName>
-        <default>false</default>
-        <label>CCP Internal Co-Engineering POR Approver</label>
-    </customValue>
-    <customValue>
-        <fullName>Core_MDF_CCP_Internal_Co_GTM_Program_Adm</fullName>
-        <default>false</default>
-        <label>CCP Internal Co-Engineering Program Admin​</label>
-    </customValue>
-    <customValue>
-        <fullName>Core_MDF_CCP_Internal_Co_GTM_Technical_Approver</fullName>
-        <default>false</default>
-        <label>CCP Internal Co-Engineering Technical Approver</label>
+        <label>CCP Internal CCF Marketing Account Manager</label>
     </customValue>
     <customValue>
         <fullName>Core_MDF_CCP_Internal_DCF_Field_Acct_Mgr</fullName>
         <default>false</default>
-        <label>CCP Internal Datacenter Field Account Manager</label>
+        <label>CCP Internal DCF Field Account Manager</label>
     </customValue>
     <customValue>
         <fullName>Core_MDF_CCP_Internal_DCF_Acct_Mgr</fullName>
         <default>false</default>
-        <label>CCP Internal Datacenter Marketing Account Manager</label>
-    </customValue>
-    <customValue>
-        <fullName>Core_MDF_CCP_Internal_DCF_MDF_Budget_Approver</fullName>
-        <default>false</default>
-        <label>CCP Internal Datacenter MDF Budget Approver</label>
-    </customValue>
-    <customValue>
-        <fullName>Core_MDF_CCP_Internal_DCF_MDF_Budget_Loader</fullName>
-        <default>false</default>
-        <label>CCP Internal Datacenter MDF Budget Loader</label>
-    </customValue>
-    <customValue>
-        <fullName>Core_MDF_CCP_Internal_DCF_MDF_Payment_Admin</fullName>
-        <default>false</default>
-        <label>CCP Internal Datacenter  MDF Payment Admin</label>
-    </customValue>
-    <customValue>
-        <fullName>Core_MDF_CCP_Internal_IPA_Budget_Approver</fullName>
-        <default>false</default>
-        <label>CCP Internal IPA Budget Approver</label>
-    </customValue>
-    <customValue>
-        <fullName>Core_MDF_CCP_Internal_IPA_Budget_Manager</fullName>
-        <default>false</default>
-        <label>CCP Internal IPA Budget Manager</label>
-    </customValue>
-    <customValue>
-        <fullName>Core_MDF_CCP_Internal_IPA_Finance_Usr</fullName>
-        <default>false</default>
-        <label>CCP Internal IPA Finance User</label>
+        <label>CCP Internal DCF Marketing Account Manager</label>
     </customValue>
     <customValue>
         <fullName>Core_MDF_CCP_Internal_IPA_Program_Adm</fullName>
@@ -161,49 +31,14 @@
         <label>CCP Internal IPA Program Admin</label>
     </customValue>
     <customValue>
-        <fullName>Core_MDF_CCP_Internal_IPA_Budget_Loader</fullName>
-        <default>false</default>
-        <label>CCP Internal IPA Regional Budget Loader</label>
-    </customValue>
-    <customValue>
-        <fullName>Core_MDF_CCP_Internal_Level_1_Manager</fullName>
-        <default>false</default>
-        <label>CCP Internal Level 1 Manager</label>
-    </customValue>
-    <customValue>
         <fullName>Core_MDF_CCP_Internal_MDF_Budget_Manager</fullName>
         <default>false</default>
         <label>CCP Internal MDF Budget Manager</label>
     </customValue>
     <customValue>
-        <fullName>Core_MDF_CCP_Internal_Price_Reviewer</fullName>
-        <default>false</default>
-        <label>CCP Internal Price Reviewer</label>
-    </customValue>
-    <customValue>
-        <fullName>Core_MDF_CCP_Internal_Proposal_Activity_L2_Approver</fullName>
-        <default>false</default>
-        <label>CCP Internal Proposal/Activity L2 Approver</label>
-    </customValue>
-    <customValue>
-        <fullName>Core_MDF_CCP_Internal_Proposal_Activity_POR_Approver</fullName>
-        <default>false</default>
-        <label>CCP Internal Proposal/Activity POR Approver</label>
-    </customValue>
-    <customValue>
         <fullName>Core_MDF_CCP_Int_Read_Only</fullName>
         <default>false</default>
         <label>CCP Internal Read Only</label>
-    </customValue>
-    <customValue>
-        <fullName>Core_MDF_CCP_Internal_Regional_Admin</fullName>
-        <default>false</default>
-        <label>CCP Internal Regional Admin</label>
-    </customValue>
-    <customValue>
-        <fullName>Core_MDF_CCP_Internal_Report_Viewer</fullName>
-        <default>false</default>
-        <label>CCP Internal Report Viewer</label>
     </customValue>
     <customValue>
         <fullName>Core_MDF_CCP_Internal_Retail_Account_Manager</fullName>
@@ -241,86 +76,6 @@
         <label>CCP RMF PRC Claim Operations</label>
     </customValue>
     <customValue>
-        <fullName>Core_MDF_Int_Channel_MDF_Acct_Mgr</fullName>
-        <default>false</default>
-        <label>Channel MDF Account Manager</label>
-    </customValue>
-    <customValue>
-        <fullName>Core_MDF_CCP_Int_Channel_MDF_L1_Manager</fullName>
-        <default>false</default>
-        <label>Channel MDF L1 Manager</label>
-    </customValue>
-    <customValue>
-        <fullName>Core_MDF_First_Level_Manager</fullName>
-        <default>false</default>
-        <label>First Level Manager</label>
-    </customValue>
-    <customValue>
-        <fullName>Core_MDF_Internal_EEF_Activating_Partner_Acct_Mgr</fullName>
-        <default>false</default>
-        <label>Internal EEF Activating Partner Account Manager</label>
-    </customValue>
-    <customValue>
-        <fullName>Core_MDF_Internal_EEF_Activity_L2_Approver</fullName>
-        <default>false</default>
-        <label>Internal EEF Activity L2 Approver</label>
-    </customValue>
-    <customValue>
-        <fullName>Core_MDF_Internal_EEF_Activity_POR_Approver</fullName>
-        <default>false</default>
-        <label>Internal EEF Activity POR Approver</label>
-    </customValue>
-    <customValue>
-        <fullName>Core_MDF_Internal_EEF_Budget_Approver</fullName>
-        <default>false</default>
-        <label>Internal EEF Budget Approver</label>
-    </customValue>
-    <customValue>
-        <fullName>Core_MDF_Internal_EEF_Budget_Loader</fullName>
-        <default>false</default>
-        <label>Internal EEF Budget Loader</label>
-    </customValue>
-    <customValue>
-        <fullName>Core_MDF_Internal_EEF_Budget_Manager</fullName>
-        <default>false</default>
-        <label>Internal EEF Budget Manager</label>
-    </customValue>
-    <customValue>
-        <fullName>Core_MDF_Internal_EEF_Escalation_Reviewer</fullName>
-        <default>false</default>
-        <label>Internal EEF Escalation Reviewer</label>
-    </customValue>
-    <customValue>
-        <fullName>Core_MDF_Internal_EEF_Exception_Reviewer</fullName>
-        <default>false</default>
-        <label>Internal EEF Exception Reviewer</label>
-    </customValue>
-    <customValue>
-        <fullName>Core_MDF_Internal_EEF_Primary_Partner_Acct_Mgr</fullName>
-        <default>false</default>
-        <label>Internal EEF Primary Partner Account Manager</label>
-    </customValue>
-    <customValue>
-        <fullName>Core_MDF_Internal_EEF_Program_Adm</fullName>
-        <default>false</default>
-        <label>Internal EEF Program Admin</label>
-    </customValue>
-    <customValue>
-        <fullName>Core_MDF_Internal_Escalation_Reviewer_L1</fullName>
-        <default>false</default>
-        <label>Internal Escalation Reviewer L1</label>
-    </customValue>
-    <customValue>
-        <fullName>Core_MDF_Internal_Escalation_Reviewer_L2</fullName>
-        <default>false</default>
-        <label>Internal Escalation Reviewer L2</label>
-    </customValue>
-    <customValue>
-        <fullName>Core_MDF_Internal_IPA_Exception_Reviewer</fullName>
-        <default>false</default>
-        <label>IPA Exception Reviewer</label>
-    </customValue>
-    <customValue>
         <fullName>Core_MDF_CCP_Internal_IPA_Acct_Mgr</fullName>
         <default>false</default>
         <label>IPA-MDF Manager</label>
@@ -336,19 +91,74 @@
         <label>IPA-MDF Proposal Approver L1 Manager</label>
     </customValue>
     <customValue>
-        <fullName>Core_MDF_L1_Approver</fullName>
+        <fullName>Core_MDF_CCP_Internal_Level_1_Manager</fullName>
         <default>false</default>
-        <label>L1 Approver</label>
+        <label>CCP Internal Level 1 Manager</label>
     </customValue>
     <customValue>
-        <fullName>Core_MDF_L2_Approver</fullName>
+        <fullName>Core_MDF_CCP_Internal_CCF_MDF_Payment_Admin</fullName>
         <default>false</default>
-        <label>L2 Approver</label>
+        <label>CCP Internal CCF MDF Payment Admin</label>
     </customValue>
     <customValue>
-        <fullName>Core_MDF_Second_Level_Manager</fullName>
+        <fullName>Core_MDF_CCP_Internal_DCF_MDF_Payment_Admin</fullName>
         <default>false</default>
-        <label>Second Level Manager</label>
+        <label>CCP Internal DCF MDF Payment Admin</label>
+    </customValue>
+    <customValue>
+        <fullName>Core_MDF_CCP_Internal_CCF_MDF_Budget_Loader</fullName>
+        <default>false</default>
+        <label>CCP Internal CCF MDF Budget Loader</label>
+    </customValue>
+    <customValue>
+        <fullName>Core_MDF_CCP_Internal_CCF_MDF_Budget_Approver</fullName>
+        <default>false</default>
+        <label>CCP Internal CCF MDF Budget Approver</label>
+    </customValue>
+    <customValue>
+        <fullName>Core_MDF_CCP_Internal_DCF_MDF_Budget_Approver</fullName>
+        <default>false</default>
+        <label>CCP Internal DCF MDF Budget Approver</label>
+    </customValue>
+    <customValue>
+        <fullName>Core_MDF_CCP_Internal_DCF_MDF_Budget_Loader</fullName>
+        <default>false</default>
+        <label>CCP Internal DCF MDF Budget Loader</label>
+    </customValue>
+    <customValue>
+        <fullName>Core_MDF_Int_Channel_MDF_Acct_Mgr</fullName>
+        <default>false</default>
+        <label>Channel MDF Account Manager</label>
+    </customValue>
+    <customValue>
+        <fullName>Core_MDF_CCP_Int_Channel_MDF_Proposal_Approver_L1</fullName>
+        <default>false</default>
+        <label>CCP Channel MDF Proposal Approver L1</label>
+    </customValue>
+    <customValue>
+        <fullName>Core_MDF_CCP_Int_Channel_MDF_L1_Manager</fullName>
+        <default>false</default>
+        <label>Channel MDF L1 Manager</label>
+    </customValue>
+    <customValue>
+        <fullName>Core_MDF_CCP_Internal_Channel_MDF_Budget_Approver</fullName>
+        <default>false</default>
+        <label>CCP Internal Channel MDF Budget Approver</label>
+    </customValue>
+    <customValue>
+        <fullName>Core_MDF_CCP_Internal_Channel_MDF_Budget_Loader</fullName>
+        <default>false</default>
+        <label>CCP Internal Channel MDF Budget Loader</label>
+    </customValue>
+    <customValue>
+        <fullName>Core_MDF_CCP_Internal_Channel_MDF_Budget_Manager</fullName>
+        <default>false</default>
+        <label>CCP Internal Channel MDF Budget Manager</label>
+    </customValue>
+    <customValue>
+        <fullName>Core_MDF_CCP_Internal_Price_Reviewer</fullName>
+        <default>false</default>
+        <label>CCP Internal Price Reviewer</label>
     </customValue>
     <customValue>
         <fullName>Core_MDF_CCP_Internal_Retail_Lvl1_Activity_Approver</fullName>
@@ -357,76 +167,10 @@
         <label>CCP Internal Retail Level1 Activity Approver</label>
     </customValue>
     <customValue>
-        <fullName>Core_MDF_Internal_EGF_Escalation_Reviewer</fullName>
+        <fullName>Core_MDF_CCP_Int_IPA_ProposalL2_Approver</fullName>
         <default>false</default>
         <isActive>false</isActive>
-        <label>Core_MDF_Internal_EGF_Escalation_Reviewer</label>
-    </customValue>
-    <customValue>
-        <fullName>Core_MDF_Internal_EGF_Exception_Reviewer</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Core_MDF_Internal_EGF_Exception_Reviewer</label>
-    </customValue>
-    <customValue>
-        <fullName>Core_MDF_Internal_EGF_Budget_Manager</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Core_MDF_Internal_EGF_Budget_Manager</label>
-    </customValue>
-    <customValue>
-        <fullName>Core_MDF_Internal_EGF_Primary_Partner_Acct_Mgr</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Core_MDF_Internal_EGF_Primary_Partner_Acct_Mgr</label>
-    </customValue>
-    <customValue>
-        <fullName>Core_MDF_Internal_EGF_Budget_Loader</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Core_MDF_Internal_EGF_Budget_Loader</label>
-    </customValue>
-    <customValue>
-        <fullName>Core_MDF_Internal_EGF_Budget_Approver</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Core_MDF_Internal_EGF_Budget_Approver</label>
-    </customValue>
-    <customValue>
-        <fullName>Core_MDF_Internal_EGF_Program_Adm</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Core_MDF_Internal_EGF_Program_Adm</label>
-    </customValue>
-    <customValue>
-        <fullName>Core_MDF_Internal_EGF_Activating_Partner_Acct_Mgr</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Core_MDF_Internal_EGF_Activating_Partner_Acct_Mgr</label>
-    </customValue>
-    <customValue>
-        <fullName>Core_MDF_Internal_EGF_Activity_L2_Approver</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Core_MDF_Internal_EGF_Activity_L2_Approver</label>
-    </customValue>
-    <customValue>
-        <fullName>Core_MDF_CCP_Internal_IPA_Escalation_Reviewer_L1</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>CCP Internal IPA Escalation Reviewer L1</label>
-    </customValue>
-    <customValue>
-        <fullName>Core_MDF_CCP_Internal_IPA_Escalation_Reviewer_L2</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>CCP Internal IPA Escalation Reviewer L2</label>
-    </customValue>
-    <customValue>
-        <fullName>Core_MDF_Internal_CSC_User</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Internal CSC User</label>
+        <label>IPA-MDF Proposal Approver L2</label>
     </customValue>
     <customValue>
         <fullName>Core_MDF_CCP_Internal_Channel_MDF_Account_Admin</fullName>
@@ -435,28 +179,16 @@
         <label>CCP Internal Channel MDF Account Admin</label>
     </customValue>
     <customValue>
-        <fullName>Core_MDF_CCP_Int_IPA_ProposalL2_Approver</fullName>
+        <fullName>Core_MDF_CCP_Internal_Retail_Lvl2_Activity_Approver</fullName>
         <default>false</default>
         <isActive>false</isActive>
-        <label>IPA-MDF Proposal Approver L2</label>
+        <label>CCP Internal Retail Level2 Activity Approver</label>
     </customValue>
     <customValue>
         <fullName>Core_MDF_IPA_Internal_Acct_Mgr</fullName>
         <default>false</default>
         <isActive>false</isActive>
         <label>IPA Internal Account Manager</label>
-    </customValue>
-    <customValue>
-        <fullName>Core_MDF_Internal_EGF_Activity_POR_Approver</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Core_MDF_Internal_EGF_Activity_POR_Approver</label>
-    </customValue>
-    <customValue>
-        <fullName>Core_MDF_CCP_Internal_Retail_Lvl2_Activity_Approver</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>CCP Internal Retail Level2 Activity Approver</label>
     </customValue>
     <masterLabel>CCP Roles</masterLabel>
     <sorted>true</sorted>

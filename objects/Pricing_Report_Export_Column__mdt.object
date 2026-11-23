@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Pricing_Column_Header__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Column Header</label>
+        <length>8000</length>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Pricing_Field_API_Name__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Field API Name</label>
+        <length>1000</length>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Pricing_isExternal__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>isExternal</label>
+        <type>Checkbox</type>
+    </fields>
+    <label>Pricing_Report_Export_Column</label>
+    <pluralLabel>Pricing_Report_Export_Columns</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

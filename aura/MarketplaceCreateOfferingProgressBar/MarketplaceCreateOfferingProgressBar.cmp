@@ -1,5 +1,4 @@
-<aura:component ></aura:component>
-<!-- extends="c:MarketplaceBaseComponent">
+<aura:component extends="c:MarketplaceBaseComponent">
 
   <aura:attribute name="activeStep" type="integer" description="The 'active' step is the farthest along but incomplete step in the wizard process."/>
   <aura:attribute name="currentStep" type="integer" description="The 'current' step is the step currently being shown."/>
@@ -51,4 +50,4 @@
     </div>
   </div>
 
-</aura:component> -->
+</aura:component>

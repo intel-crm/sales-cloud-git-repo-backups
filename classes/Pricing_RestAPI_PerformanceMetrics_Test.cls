@@ -46,7 +46,7 @@ public class Pricing_RestAPI_PerformanceMetrics_Test {
             test.startTest();
             Account acc = Pricing_Test_Utility.createAccount();
             //Contact con = Pricing_Test_Utility.createContact(acc.Id);
-            Contact con = Pricing_Test_Utility.createPrimaryContactWithParam(acc.Id,'Rest_API_Performance_Metrics_Test');
+            Contact con = Pricing_Test_Utility.createPrimaryContactWithParam(acc.Id,'Performance_Metrics_test_11');
             Pricing_Test_Utility.createTemplate(lstUsers2[0].id);
             //Pricing_Test_Utility.createAEUser();
             Pricing_Test_Utility.createAEUser();
@@ -223,17 +223,18 @@ public class Pricing_RestAPI_PerformanceMetrics_Test {
     
     
     @isTest static void testDoPost() {
-        test.startTest();  
-        User usr = [SELECT id FROM User WHERE email='Rest_API_Performance_Metrics_Test@noemail.com'];
+        User usr = [SELECT id FROM User WHERE email='Performance_Metrics_test_11@noemail.com'];
         SBQQ__Quote__c quote = [Select Id,Name from SBQQ__Quote__c quote LIMIT 1];
         SBQQ__QuoteLine__c quoteLine=[Select Id, SBQQ__Quote__c from SBQQ__QuoteLine__c quoteLine where SBQQ__Quote__c = :quote.Id LIMIT 1];
         system.runAs(usr){
+            test.startTest();            
             RestRequest request = new RestRequest();
             request.requestUri = '/services/apexrest/v1.0/quoterequest/performancemetrics';
             request.httpMethod = 'POST';
             request.addHeader('Content-Type', 'application/json');
             request.requestBody = Blob.valueOf('{	"quoteLineId":"'+quoteLine.Id+'",	"performanceMetrics":[{"performanceMetricsReferenceId":"PM-77","performanceMetricsUsed":"Other","weighting":"10","intelScore":10,"compScore":5,"otherText":"Test"},{"performanceMetricsReferenceId":"PM-87","performanceMetricsUsed":"HPCG","weighting":"10","intelScore":10,"compScore":5,"otherText":null}]}');
             RestContext.request = request;
+            
             RestResponse res = new RestResponse();
             RestContext.response= res;
             Pricing_RestAPI_Response restResponse = Pricing_RestAPI_PerformanceMetrics.doPost();
@@ -243,11 +244,11 @@ public class Pricing_RestAPI_PerformanceMetrics_Test {
     }
     
     @isTest static void testDoPost_FailCase() {
-        test.startTest();     
-		 User usr = [SELECT id FROM User WHERE email='Rest_API_Performance_Metrics_Test@noemail.com'];
+		 User usr = [SELECT id FROM User WHERE email='Performance_Metrics_test_11@noemail.com'];
         SBQQ__Quote__c quote = [Select Id,Name from SBQQ__Quote__c quote LIMIT 1];
         SBQQ__QuoteLine__c quoteLine=[Select Id, SBQQ__Quote__c from SBQQ__QuoteLine__c quoteLine where SBQQ__Quote__c = :quote.Id LIMIT 1];
         system.runAs(usr){
+            test.startTest();            
             RestRequest request = new RestRequest();
             request.requestUri = '/services/apexrest/v1.0/quoterequest/performancemetrics';
             request.httpMethod = 'POST';
@@ -264,11 +265,12 @@ public class Pricing_RestAPI_PerformanceMetrics_Test {
    }
      
    static testMethod void testDoGet() {
-        User usr = [SELECT id FROM User WHERE email='Rest_API_Performance_Metrics_Test@noemail.com'];
+		 User usr = [SELECT id FROM User WHERE email='Performance_Metrics_test_11@noemail.com'];
         system.runAs(usr){
             test.startTest();        
             List<Pricing_Performance_Metric__c> pmList = [Select Id from Pricing_Performance_Metric__c limit 1];
             RestRequest req = (RestRequest)System.jSON.deserialize(Pricing_RestAPI_TestUtility.REQUEST_TEMPLATE, RestRequest.class);
+            // Initialize response context explicitly; remove unused local variable
             RestContext.response = new RestResponse();
             req.requestUri='/services/apexrest/v1.0/quoterequest/performancemetrics?id=';
             req.httpMethod = 'GET';
@@ -281,10 +283,11 @@ public class Pricing_RestAPI_PerformanceMetrics_Test {
     }
     
     static testMethod void testDoGet_Negative() {
-		 User usr = [SELECT id FROM User WHERE email='Rest_API_Performance_Metrics_Test@noemail.com'];
+		 User usr = [SELECT id FROM User WHERE email='Performance_Metrics_test_11@noemail.com'];
         system.runAs(usr){
             test.startTest();
             RestRequest req = (RestRequest)System.jSON.deserialize(Pricing_RestAPI_TestUtility.REQUEST_TEMPLATE, RestRequest.class);
+            // Initialize response context explicitly; remove unused local variable
             RestContext.response = new RestResponse();
             req.requestUri='/services/apexrest/v1.0/quoterequest/performancemetrics?id=';
             req.httpMethod = 'GET';
@@ -296,7 +299,7 @@ public class Pricing_RestAPI_PerformanceMetrics_Test {
     	}
     }
     	@isTest static void testSuccessUpdatePM() {
-        User usr = [SELECT id FROM User WHERE email='Rest_API_Performance_Metrics_Test@noemail.com'];
+        User usr = [SELECT id FROM User WHERE email='Performance_Metrics_test_11@noemail.com'];
         system.runAs(usr){
             test.startTest();
             List<SBQQ__QuoteLine__c> quoteLineList = [SELECT Id,Name From SBQQ__QuoteLine__c LIMIT 1];
@@ -305,6 +308,7 @@ public class Pricing_RestAPI_PerformanceMetrics_Test {
             request.requestUri = '/services/apexrest/v1.0/quoterequest/performancemetrics';
             request.httpMethod = 'PATCH';
             request.addHeader('Content-Type', 'application/json');
+           // request.requestBody = Blob.valueOf('{ "quoteLineId":"'+quoteLineList[0].Id+'", "performanceMetrics":[{"performanceMetricsUsed":"Other","weighting":10,"intelScore":10,"compScore":5,"otherText":"Test" }]}');
             request.requestBody = Blob.valueOf('{	"quoteLineId":"'+quoteLineList[0].Id+'",	"performanceMetrics":[{"performanceMetricsId" : "'+pmList[0].id+'","performanceMetricsReferenceId":"PM-77","performanceMetricsUsed":"Other","weighting":"10","intelScore":10,"compScore":5,"otherText":"Test"}]}');
             RestContext.request = request;        
             RestResponse res = new RestResponse();
@@ -316,7 +320,7 @@ public class Pricing_RestAPI_PerformanceMetrics_Test {
     }
     
     @isTest static void testUpdatePM_Negative() {
-        User usr = [SELECT id FROM User WHERE email='Rest_API_Performance_Metrics_Test@noemail.com'];
+        User usr = [SELECT id FROM User WHERE email='Performance_Metrics_test_11@noemail.com'];
         system.runAs(usr){
             test.startTest();
             List<SBQQ__QuoteLine__c> quoteLineList = [SELECT Id,Name From SBQQ__QuoteLine__c LIMIT 1];

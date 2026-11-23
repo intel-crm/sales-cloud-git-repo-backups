@@ -20,17 +20,5 @@
         <label><!-- Permission Set Name --></label>
         <name>PMP_Permission_Set_Name_Txt__c</name>
     </fields>
-    <fields>
-        <label><!-- Entitlement --></label>
-        <name>PRM_Entitlement_Txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Partner Role --></label>
-        <name>PRM_Partner_Role_Txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Profile --></label>
-        <name>PRM_Profile_Txt__c</name>
-    </fields>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

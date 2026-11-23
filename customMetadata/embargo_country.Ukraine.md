@@ -16,6 +16,6 @@
     </values>
     <values>
         <field>State__c</field>
-        <value xsi:type="xsd:string">Crimea,Donetsk,Luhans&apos;ka,Zaporiz&apos;Ka Oblast,Sevastopol,Khersons&apos;ka Oblast,Zaporiz&apos;ka Oblast</value>
+        <value xsi:type="xsd:string">Crimea,Donetsk,Luhans&apos;ka,Zaporizhzhia Oblast,Sevastopol,Khersons&apos;ka Oblast,Zaporiz&apos;ka Oblast</value>
     </values>
 </CustomMetadata>

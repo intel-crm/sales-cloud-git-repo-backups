@@ -260,22 +260,6 @@ Hard Lock: No one can update the Quota Setup Record.</inlineHelpText>
             <allInternalUsers></allInternalUsers>
         </sharedTo>
     </listViews>
-    <listViews>
-        <fullName>Inactive_Quota_Period</fullName>
-        <columns>NAME</columns>
-        <columns>CPT_Quota_Period__c</columns>
-        <columns>CPT_Locked_Status__c</columns>
-        <columns>CPT_Start_Date__c</columns>
-        <columns>CPT_End_Date__c</columns>
-        <columns>CPT_Inactive__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>CPT_Inactive__c</field>
-            <operation>equals</operation>
-            <value>1</value>
-        </filters>
-        <label>Inactive Quota Periods</label>
-    </listViews>
     <nameField>
         <displayFormat>QP-{0000}</displayFormat>
         <label>Quota Period ID</label>

@@ -26,6 +26,9 @@
         <field>Opportunity.Core_Status_Update__c</field>
     </columns>
     <columns>
+        <field>Opportunity.Core_Risk_Reason__c</field>
+    </columns>
+    <columns>
         <field>Opportunity.Core_Support_Requested__c</field>
     </columns>
     <columns>
@@ -36,18 +39,11 @@
     </columns>
     <filter>
         <criteriaItems>
-            <column>STAGE_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>win,cancelled,lost,production</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Opportunity_Type__c</column>
+            <column>FULL_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Design: Secondary</value>
+            <value>,jonas astrom,david clarke,phil milner,graham copperwheat,Nisha Ruhomutally,Mark Brant,Daniel Stackenas,DJ Gianduso,Bettina Smithson,Joerg Matschke,Philip Milner,Bogdan Stefan Pop,Daniel Gianduso</value>
         </criteriaItems>
         <criteriaItems>
             <column>Account.Core_Sub_Geo__c</column>
@@ -61,21 +57,28 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>greaterThan</operator>
-            <value>499999</value>
+            <value>500001</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_At_Risk__c</column>
+            <column>STAGE_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>1</value>
+            <operator>notContain</operator>
+            <value>win,cancelled,lost,production</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
+            <column>PRODUCT_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>PSG</value>
+            <value>BD-,DK-,N3000</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OpportunityLineItem.Core_Risk_Category__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Support Requested</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -116,7 +119,7 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2025-06-30</endDate>
+        <endDate>2021-06-30</endDate>
         <interval>INTERVAL_CUSTOM</interval>
         <startDate>2017-01-01</startDate>
     </timeFrameFilter>

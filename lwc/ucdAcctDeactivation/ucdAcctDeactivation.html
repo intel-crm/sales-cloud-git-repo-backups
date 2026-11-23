@@ -1,0 +1,181 @@
+<template>
+<template if:false={noAccessToObject}>
+<lightning-card>
+    <template if:true={loaded}>
+        <lightning-spinner alternative-text="Loading"></lightning-spinner>
+    </template>
+    <div class="slds-var-m-around_medium">
+        <div class="slds-box slds-theme_shade" style="padding: 7px;height: 40px;text-align:center;">
+            <div class="slds-text-heading_small slds-float_left">
+                Accounts Available for Deactivation:
+            </div>
+            <div class="slds-float_right">                 
+                    <template if:true={showSearch}> 
+                    <c-ucd-search-filter records={accList} onfilterkey={handleSearchChange}>
+                    </c-ucd-search-filter>
+                </template>                  
+            </div>
+        </div>
+        <div class="c-container">
+            <br>
+            <lightning-layout horizontal-align="spread">
+                <lightning-layout-item size="7" padding="around-small" style="padding-top:35px;">
+                    <template if:true={showpagination}>                            
+                        <div class="slds-float_left">
+                            <lightning-button onclick={deactivateHandler} value="Deactivate" label="Deactivate">
+                            </lightning-button>
+                        </div>
+                    </template>                        
+                </lightning-layout-item>                    
+                <lightning-layout-item size="2" padding="around-small">
+                    <lightning-input type="date" label="From" placeholder="Start date" data-id="startdate"
+                        name="startdate" value={startDate} max={maxDate}>
+                    </lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item size="2" padding="around-small">
+                    <lightning-input type="date" label="To" placeholder="End date" data-id="enddate" name="enddate"
+                        value={endDate} max={maxDate} onchange={handleEndDateChange} >                            
+                    </lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item size="1" padding="around-small" style="padding-top:35px;">
+                    <lightning-button label="Filter" disabled={disableFilter} value="Filter"
+                        onclick={handleFilterClick} >
+                    </lightning-button>
+                </lightning-layout-item>
+            </lightning-layout>
+        </div>
+        <table
+            class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_fixed-layout slds-table_resizable-cols">
+            <template if:false={showpagination}>
+                <tr>
+                    <td colspan="8">
+                        <p class="slds-align_absolute-center">No records to display for the selected criteria
+                        </p>
+                    </td>
+                </tr>
+            </template>
+            <template if:true={showpagination}>
+                <thead>
+                    <tr style="height: 40px;">
+                        <th style="width: 50px;" scope="col">
+                            <lightning-input type="checkbox" onchange={selectAllCheckbox}>
+                            </lightning-input>
+                        </th>
+                        <th role="gridcell">
+                            <div class="slds-align_absolute-center" title="Name">Name</div>
+                        </th>
+                        <th role="gridcell">
+                            <div class="slds-align_absolute-center" title="Name">CIM ID</div>
+                        </th>
+                        <th role="gridcell">
+                            <div class="slds-align_absolute-center" title="Name">Account ID</div>
+                        </th>
+                        <th role="gridcell">
+                            <div class="slds-align_absolute-center" title="Name">Prime Account Name</div>
+                        </th>
+                        <th role="gridcell">
+                            <div class="slds-align_absolute-center" title="Name">Sales Group</div>
+                        </th>
+                        <th role="gridcell">
+                            <div class="slds-align_absolute-center" title="Name">Region</div>
+                        </th>
+                        <th role="gridcell">
+                            <div class="slds-align_absolute-center" title="Name">Action</div>
+                        </th>
+
+                    </tr>
+                </thead>
+            
+            <tbody>
+                <template for:each={recordsToDisplay} for:item="trow">
+                    <tr key={trow.Id}>
+                        <td>
+                            <div class="slds-checkbox">
+                                <lightning-input type="checkbox" name={trow.Name} title={indx} data-id={trow.Id}>
+                                </lightning-input>
+                            </div>
+                        </td>
+                        <td role="gridcell">
+                            <lightning-button variant="base" label={trow.Name} value={trow.Id}
+                                onclick={navigateToDetail} class="slds-align_absolute-center"> {trow.Name}
+                            </lightning-button>
+                        </td>
+                        <td role="gridcell">
+                            <div class="slds-truncate slds-align_absolute-center" title={trow.Core_CIM_ID__c}>
+                                {trow.Core_CIM_ID__c }</div>
+                        </td>
+                        <td role="gridcell">
+                            <lightning-button variant="base" label={trow.Id} title={trow.Name}
+                                onclick={showRecordDetail} class="slds-align_absolute-center"> {trow.Id}
+                            </lightning-button>
+                        </td>
+                        <td role="gridcell">
+                            <div class="slds-truncate slds-align_absolute-center"
+                                title={trow.Core_Prime_Account_Name__c}>{trow.Core_Prime_Account_Name__c}</div>
+                        </td>
+                        <td role="gridcell">
+                            <div class="slds-truncate slds-align_absolute-center" title={trow.Core_Sales_Groups__c}>
+                                {trow.Core_Sales_Groups__c}</div>
+                        </td>
+                        <td role="gridcell">
+                            <div class="slds-truncate slds-align_absolute-center" title={trow.Core_Geo__c}>
+                                {trow.Core_Geo__c}</div>
+                        </td>
+                        <td role="gridcell">
+                            <lightning-button variant="base" label="Deactivate" data-id={indx} name={indx}
+                                title={trow.Id} onclick={deactiveSingleRec} class="slds-align_absolute-center">
+                                Deactivate</lightning-button>
+                        </td>
+
+                    </tr>
+                </template>
+            </tbody>
+        </template>
+        </table>
+        <template if:true={showpagination}>
+            <c-ucd-pagination records={accList} show-search show-pagination
+                onpaginatorchange={handlePaginatorChange}>
+            </c-ucd-pagination>
+        </template>
+    </div>
+
+    <template if:true={ShowModal}>
+
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+            aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                
+                <header class="slds-modal__header">
+                    <lightning-button-icon icon-name="utility:close" class="slds-float_right" onclick={closeModal}
+                        alternative-text="close"></lightning-button-icon>
+
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Account Detail
+                        {recName}</h2>
+                </header>
+                
+                <div class="slds-modal__content slds-var-p-around_medium" id="modal-content-id-1">
+                    <dl class="slds-wrap">
+                        <lightning-record-form record-id={recId} object-api-name="Account" layout-type="Full"
+                            columns="2" mode="readonly" onsuccess={handleSuccess}>
+                        </lightning-record-form>
+
+                    </dl>
+                </div>
+                
+                <footer class="slds-modal__footer">
+                    <lightning-button variant="brand" label="Close" title="Close" onclick={closeModal}>
+                    </lightning-button>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+</lightning-card>
+</template>
+<template if:true={noAccessToObject}>
+    <lightning-card>
+        <h1>You do not have access to use any functionality on this tab</h1>
+    </lightning-card>
+</template>
+
+</template>

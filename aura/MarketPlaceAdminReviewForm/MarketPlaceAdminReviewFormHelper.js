@@ -1,36 +1,35 @@
 ({
 
-  /*
   goToSubmit : function(component, helper) {
-    //Added by raj for US341586 to handle status change on submit
+    /*Added by raj for US341586 to handle status change on submit*/
     var action = component.get("c.submitOffering");
     action.setParams({ submitRequest: JSON.stringify(component.get("v.formData")) });
     $A.enqueueAction(action);
-    //---------------End-US341586--------------------------------
+    /*---------------End-US341586--------------------------------*/
     var urlEvent = $A.get("e.force:navigateToURL");
     urlEvent.setParams({ "url": "/create-offering-submit" });
     urlEvent.fire();
-  },*/
+  },
 
- /* returnToList : function(component, helper) {
-	//US340229 to handle cancel scenario across all tabs
-	// var action = component.get("c.cancelOffering");
+  returnToList : function(component, helper) {
+	/* US340229 to handle cancel scenario across all tabs*/
+	/* var action = component.get("c.cancelOffering");
 	   action.setParams({ offeringId: component.get('v.recordId') });
-           $A.enqueueAction(action); 
-    //---------------End-US340229--------------------------------
+           $A.enqueueAction(action); */
+    /*---------------End-US340229--------------------------------*/
     var urlEvent = $A.get("e.force:navigateToURL");
     urlEvent.setParams({ "url": "/pmp-partner-offering/PMP_Partner_Offering__c/" + component.get('v.recordListViewId') });
     urlEvent.fire();
-  },*/
+  },
 
- /* refresh : function(component, helper) {
+  refresh : function(component, helper) {
     component.set('v.showSpinner', true);
     helper.loadData(component, helper).then($A.getCallback(function() {
       component.set('v.showSpinner', false);
     }));
-  },*/
+  },
 
-/*  save : function(component, helper, delta, refreshOnly) {
+  save : function(component, helper, delta, refreshOnly) {
     component.set('v.showSpinner', true);
     helper.saveAndRefreshData(component, helper, delta, refreshOnly).then($A.getCallback(function() {
       component.set('v.showSpinner', false);
@@ -38,9 +37,9 @@
       	  var detailCmp=component.find('details');
           detailCmp.reInit();}
     }));
-  },*/
+  },
 
- /* handleProgressBarChange : function(component, helper, selectedStep) {
+  handleProgressBarChange : function(component, helper, selectedStep) {
     var activeStep          = component.get('v.activeStep'),
         currentStep         = component.get('v.currentStep'),
         currentStepValid    = component.get('v.currentStepValid'),
@@ -110,8 +109,8 @@
       helper.save(component, helper, (selectedStep - currentStep));
     }
   },
-*/
- /* initializeForm : function(component, helper) {
+
+  initializeForm : function(component, helper) {
     component.set('v.formSections', []);
     var promises = component.get('v.currentWizardStep.sections').map(function(section) {
       return new Promise(function(resolve, reject) {
@@ -137,7 +136,7 @@
                     console.log('inside test-->');
                     component.set('v.deleteOffSpec', true);
                 }  //added by abhishek edit POC
-                //Gireesh:US378991: edit offering visibility 
+                /*Gireesh:US378991: edit offering visibility */
                 if(refreshOption=='public'){
                     component.set('v.visibilityChanged',true);
                 }
@@ -145,7 +144,7 @@
                     component.set('v.visibilityChanged',false);
                 }
                 console.log("@refreshOption",refreshOption);
-                //end Gireesh
+                /*end Gireesh*/
 
             }
           })
@@ -172,9 +171,9 @@
       // once all of the inputs (from all of the subsections) resolve their promises, then check the form
       return Promise.all(allInputsBuilt);
     });
-  }, */
+  },
 
-	/*checkForm : function(component, helper) {
+	checkForm : function(component, helper) {
     // gathers the state of the form based on current values of the inputs
     var formValid = false, formTouched = false, allInputs = [];
     helper.getAllSubsections(component, helper).forEach(function(subsection) {
@@ -201,30 +200,30 @@
    console.log('formvalid-->' +formValid);
 
 
-   if(window.localStorage.getItem('hideSave')=='true' || window.localStorage.getItem('hideSaveDesc')=='true')
+    if(window.localStorage.getItem('hideSave')=='true' || window.localStorage.getItem('hideSaveDesc')=='true')
       formTouched = false;
 
     component.set('v.currentStepValid', formValid);
     component.set('v.currentStepTouched', formTouched);
 
     if (formTouched) { component.set('v.showSavedMessage', false); }
-        //Gireesh:US378991:
-        //If Visibility of the Offering changed from Partner/Intel to Public
-        
+        /*Gireesh:US378991:
+        If Visibility of the Offering changed from Partner/Intel to Public
+        */
         if(component.get("v.visibilityChanged")){
             helper.handleVisibilityChange(component, helper);
 
         }
-	}, */
+	},
 
- /* getAllSubsections : function(component, helper) {
+  getAllSubsections : function(component, helper) {
     var sections = component.find("section") ? [].concat(component.find("section")) : [];
     return sections.reduce(function(arr, section) {
       return arr.concat(section.find("subsection") ? [].concat(section.find("subsection")) : []);
     }, []);
-  },*/
+  },
 
- /* setWizardData : function(component, helper, data) {
+  setWizardData : function(component, helper, data) {
     return new Promise(function(resolve, reject) {
         console.log("steps count");
       console.log(data.steps.length);
@@ -239,9 +238,9 @@
       component.set('v.wizardSteps', data.steps);
 
         //Added by Shahrukh US341597 : To Default last step for Admin
-       //if((data.formData.offering.PMP_Current_User_Profile_Nm__c=='1629028@intel.com.crm.nppdevpmp' || data.formData.offering.PMP_Current_User_Profile_Nm__c=='11849006@intel.com') && data.currentStep==0
-         //  || data.formData.offering.PMP_Current_User_Profile_Nm__c=='11871086@intel.com.nppdevpmp'
-         //  ||data.formData.offering.PMP_Current_User_Profile_Nm__c=='11875036@intel.com'){
+       /* if((data.formData.offering.PMP_Current_User_Profile_Nm__c=='1629028@intel.com.crm.nppdevpmp' || data.formData.offering.PMP_Current_User_Profile_Nm__c=='11849006@intel.com') && data.currentStep==0
+           || data.formData.offering.PMP_Current_User_Profile_Nm__c=='11871086@intel.com.nppdevpmp'
+           ||data.formData.offering.PMP_Current_User_Profile_Nm__c=='11875036@intel.com'){*/
         if(data.steps.length == 6){
         	component.set('v.activeStep', 5);
             component.set('v.currentStep', 5);
@@ -259,9 +258,9 @@
   			helper.initializeForm(component, helper).then(resolve).catch(reject);
   		}));
     });
-  },*/
+  },
 
- /* showModal : function(component, header, message, showCancelButton) {
+  showModal : function(component, header, message, showCancelButton) {
     return new Promise(function(resolve, reject) {
       component.set('v.modalInfo', {
         header: 'Warning', message: message, showCancelButton: showCancelButton
@@ -274,14 +273,14 @@
         component.set('v.modalInfo', undefined);
         component.set('v.modalCallback', undefined);
 
-        // var data = component.get("v.responseData");
-        // component.set('v.currentStep', 0);
-        // component.set('v.currentWizardStep', data.steps[0]);
-      	// component.set('v.showSpinner', true);
-        // component.set('v.activeStep',0);
-        // helper.initializeForm(component,helper).then($A.getCallback(function() {
-        // 	component.set('v.showSpinner', false);
-      	// }));	
+        /*var data = component.get("v.responseData");
+        component.set('v.currentStep', 0);
+        component.set('v.currentWizardStep', data.steps[0]);
+      	component.set('v.showSpinner', true);
+        component.set('v.activeStep',0);
+        helper.initializeForm(component,helper).then($A.getCallback(function() {
+        	component.set('v.showSpinner', false);
+      	}));	*/
 
       }));
     });
@@ -321,8 +320,8 @@
       $A.enqueueAction(action);
     });
   },
-*/
-    /*saveIfNoDuplicateError : function(component,helper,params,refreshOnly,resolve){
+
+    saveIfNoDuplicateError : function(component,helper,params,refreshOnly,resolve){
         //console.log("saveIfNoDuplicateError");
         console.log(JSON.stringify(params.formData));
       var action = refreshOnly ? component.get("c.refreshData") : component.get("c.saveOffering");
@@ -343,7 +342,7 @@
             if (component.get('v.debugMode')) {
               console.error('Form Error: Something is wrong with the data setup. ' + e, e);
             }
-            this.reject(e);
+            reject(e);
           });
         } else if (status === "ERROR") {
           var errors = response.getError();
@@ -355,9 +354,9 @@
         }
       });
       $A.enqueueAction(action);
-    },*/
+    },
 
- /* saveAndRefreshData : function(component, helper, stepDelta, refreshOnly) {
+  saveAndRefreshData : function(component, helper, stepDelta, refreshOnly) {
       console.log("category--");
       console.log(component.get("v.category"));
 
@@ -369,18 +368,18 @@
     return new Promise(function(resolve, reject) {
       var stepChange = stepDelta || 0;
         //Duplicate Name check
-        //US-340188: Duplicate Name check - START* Manasa
+        /**US-340188: Duplicate Name check - START* Manasa*/
 
         var callSave = false; // call save method variable : default, false
         var activeStep = component.get('v.activeStep'), currentStep = component.get('v.currentStep');
 
         //Gireesh:US356106: get selected categories
-        // var categories=[]
-        // if(currentStep+stepChange===1){
-        //    categories=component.get('v.formData');
-        //     categories.selectedCategories=JSON.stringify(helper.getSelectedAttributes(helper));
-        //    // component.set('v.formData',categories);
-        // }
+        /*var categories=[]
+        if(currentStep+stepChange===1){
+           categories=component.get('v.formData');
+            categories.selectedCategories=JSON.stringify(helper.getSelectedAttributes(helper));
+           // component.set('v.formData',categories);
+        }*/
 
         var deleteOffSpec = component.get('v.deleteOffSpec');
         console.log('deleteOffSpec-->' +deleteOffSpec);
@@ -421,40 +420,40 @@
                                       toastEvent.fire();
                                   }
                                   // Dont call Save method here
-                                  // *****************START*********************
+                                  /*****************START*********************/
                                   callSave = false;
                                   component.set('v.firstTimePageLoad',false);
                                   component.set('v.showSpinner', false);
-                                  // ****************END***********************
+                                  /*****************END***********************/
                               }
-                      //  / *else if(response === 0){
+                       /*else if(response === 0){
 
-                      //             helper.showModal(component, "Warning","There is another offering with the same name with other Partner. Do you want to continue ?", true)
-                      //             .then($A.getCallback(function(val) {
+                                  helper.showModal(component, "Warning","There is another offering with the same name with other Partner. Do you want to continue ?", true)
+                                  .then($A.getCallback(function(val) {
 
-                      //               if (val) {
-                      //               	component.set('v.showSpinner', false);
-                      //               	console.log('inside modal for warning');
-                      //               	console.log('val--------------->',val);
-                      //               	component.set('v.showModal', true);
-                      //                   component.set('v.modalInfo', true);
-                      //                   component.set('v.modalCallback', true);
-                      //               	// Call Save method here
-                      //                   console.log('Im here in the response 0 log');
+                                    if (val) {
+                                    	component.set('v.showSpinner', false);
+                                    	console.log('inside modal for warning');
+                                    	console.log('val--------------->',val);
+                                    	component.set('v.showModal', true);
+                                        component.set('v.modalInfo', true);
+                                        component.set('v.modalCallback', true);
+                                    	// Call Save method here
+                                        console.log('Im here in the response 0 log');
 
-     									// 	callSave = true;
-                      //                     component.set('v.firstTimePageLoad',true);
-                      //                     helper.saveIfNoDuplicateError(component,helper,params,refreshOnly,resolve);
+     										callSave = true;
+                                          component.set('v.firstTimePageLoad',true);
+                                          helper.saveIfNoDuplicateError(component,helper,params,refreshOnly,resolve);
 
 
-                      //               }
-                      //               else{
-                      //                   callSave = false;
-                      //                   component.set('v.firstTimePageLoad',false);
-                      //                   component.set('v.showSpinner', false);
-                      //               }
-                      //             }));
-                      //         }* /
+                                    }
+                                    else{
+                                        callSave = false;
+                                        component.set('v.firstTimePageLoad',false);
+                                        component.set('v.showSpinner', false);
+                                    }
+                                  }));
+                              }*/
                        else if(response === 0){
                            var retVal = confirm("There is another offering with the same name with other Partner. Do you want to continue ?");
                            if( retVal == true ){
@@ -475,12 +474,12 @@
                            else if(response === 1){
                                // Call Save method here
                                console.log('Im here in the response 1 log');
-                               // *******************START*******************
+                               /********************START*******************/
       							//helper.updateForm(component);
                                callSave = true;
                                     component.set('v.firstTimePageLoad',true);
                                helper.saveIfNoDuplicateError(component,helper,params,refreshOnly,resolve);
-                               // ************END*****************************
+                               /************END*****************************/
                            }
                     }
                     else if (state === "ERROR"){
@@ -511,16 +510,16 @@
      }
         console.log('callSave', callSave);
         console.log('firstTimePageLoad',component.get("v.firstTimePageLoad"));
-        //CALL SAVE METHOD ONLY IF var callSave IS TRUE
+        //CALL SAVE METHOD ONLY IF VAR callSave IS TRUE
         if(callSave){
            helper.saveIfNoDuplicateError(component,helper,params,refreshOnly,resolve);
         }
-              // **US-340188: Duplicate Name check - END*Manasa
+              /**US-340188: Duplicate Name check - END*Manasa*/
     });
-  },*/
+  },
 
 
-  /*loadPreviewData: function(component) {
+  loadPreviewData: function(component) {
     return new Promise(function(resolve, reject) {
       var action = component.get("c.getPreviewData");
       action.setParams({ offeringId: component.get('v.recordId') });
@@ -551,9 +550,9 @@
       });
       $A.enqueueAction(action);
     });
-  },*/
+  },
 
-    //Gireesh:US356106: create category data
+    /*Gireesh:US356106: create category data*/
     /*returnCategoryData:function(helper, arr){
         var  selectedOffering= new Object();
         selectedOffering.PIMCategoryId=arr[1];
@@ -602,7 +601,7 @@
 
     },*/
     //Added by Shahrukh US341597 : To set selected step after hiding warning modals
-   /* adminReviewProgressBarChange:function(component,helper,selectedStep){
+    adminReviewProgressBarChange:function(component,helper,selectedStep){
 		//component.set('v.currentStepValid', true);
         component.set('v.currentStep', selectedStep);
         component.set('v.currentWizardStep', component.get('v.wizardSteps')[selectedStep]);
@@ -611,12 +610,12 @@
       	helper.initializeForm(component, helper).then($A.getCallback(function() {
         	component.set('v.showSpinner', false);
       	}));
-    },*/
+    },
 
     /*Gireesh:US378991:
      * get Categories of the Offering in order to extract pre-release items based on the categories been selected
      * */
-   /* handleVisibilityChange:function(component, helper) {
+    handleVisibilityChange:function(component, helper) {
         var categories=[];
         return new Promise(function(resolve, reject) {
             var action = component.get("c.fetchOfferingDetail");
@@ -656,13 +655,13 @@
             $A.enqueueAction(action);
         });
 
-    },*/
+    },
 
     /*Gireesh:US378991:
      * Get all the pre-release items and check if the curernt offering is holding any pre-release items
      * Throw error if selected and disable save and next buttons
      */
-  /*  getOffsetValues:function(component, helper, selectedCategories, selectedSpecifications) {
+    getOffsetValues:function(component, helper, selectedCategories, selectedSpecifications) {
         var offSetValueIds=[];
         var selectedSpecificationIds=[]
         return new Promise(function(resolve, reject) {
@@ -721,9 +720,9 @@
             });
             $A.enqueueAction(action);
         });
-    }, */
+    },
 
-   /* scrollTop: function(component){
+    scrollTop: function(component){
     var isSmoothScrollSupported = 'scrollBehavior' in document.documentElement.style;
     if (isSmoothScrollSupported){
       window.scrollTo({
@@ -734,5 +733,5 @@
       // usually IE only
       window.scrollTo(0, 0);
     }
-  }*/
+  }
 })

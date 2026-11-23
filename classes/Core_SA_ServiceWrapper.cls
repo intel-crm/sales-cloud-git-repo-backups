@@ -93,13 +93,25 @@ public without sharing class Core_SA_ServiceWrapper {
       
         set;
     }
+    
+    @AuraEnabled
+    public static Boolean saSwitchMethod(){
+        
+        String csReturn = Core_CRM_Utility.getCRMLabel('CRM_SA_Switch');
+        Boolean salesAssistSwitch = (csReturn == 'false') ? false : true;
+        system.debug('value -----'+salesAssistSwitch);
+        return salesAssistSwitch;
+    }
+        
+    
 
     // Method to call Sales Assist API and get the response
     @AuraEnabled
     public static Core_SA_UnreadAssistsDefination getNewAssists(String cim_id, String user_id) {
         String input1;
         Core_SA_UnreadAssistsDefination TotalAssists;
-        
+        String csReturn = Core_CRM_Utility.getCRMLabel('CRM_SA_Switch');
+       
 		//Set up new HTTP Request
 		Http http = new Http();
 		HttpRequest request = new HttpRequest();
@@ -124,7 +136,16 @@ public without sharing class Core_SA_ServiceWrapper {
             
 		try{
 			//publish constructed request to Mulesoft
-			response = http.send(request);
+            system.debug(csReturn.equalsIgnoreCase('true'));
+            if(csReturn.equalsIgnoreCase('false')){
+                System.debug('inside if----- 141');
+                //response = http.send(request);
+                TotalAssists = null;
+                //return TotalAssists;
+                
+            }
+            else {
+                 response = http.send(request);
 			
 			if (response!=Null && response.getStatusCode() == 200) {
         
@@ -143,6 +164,7 @@ public without sharing class Core_SA_ServiceWrapper {
 				}
 			}
         }
+        }
 		catch(Exception e){
             //formulate JSON data
             input1 = '{"content":"You Have 0 Unread Assists!","show":false,"total_count":0}';
@@ -153,8 +175,11 @@ public without sharing class Core_SA_ServiceWrapper {
 		finally {
 
 		}
+            
+           
         // return TotalAssists of Type SAUserAssistsDefination
-   		return(TotalAssists);
+   		system.debug(TotalAssists);
+        return(TotalAssists);
     }
     
 

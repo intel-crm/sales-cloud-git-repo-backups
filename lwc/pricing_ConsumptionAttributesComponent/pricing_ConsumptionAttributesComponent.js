@@ -12,6 +12,7 @@ import QUOTELINE_OBJECT from '@salesforce/schema/SBQQ__QuoteLine__c';
 import CountrySalesGeo_Error from '@salesforce/label/c.Pricing_Consumption_CountrySalesGeo_Error';
 import getParentQuoteLine from "@salesforce/apex/Pricing_ConsumptionAttr_Controller.getParentQuoteLine";
 
+
 const CONSUMPTION_PLATFORM = 'Consumption Platform';
 const CONSUMPTION_SALESGEO = 'Consumption Sales Geo';
 const CONSUMPTION_SEGMENT = 'Consumption Segment';
@@ -188,6 +189,7 @@ export default class Pricing_ConsumptionAttributesComponent extends NavigationMi
                     salesGeoValue: String(this.selectedSalesGeoValues),
                     segmentValue: String(this.selectedSegmentValues)
                 };
+                console.log('consumptionValuesFromApex ' + JSON.stringify(this.consumptionValuesFromApex));
                 this.dispatchEvent(new CustomEvent('consumptionvaluechange', {
                     detail: this.consumptionValuesFromApex
                 }));
@@ -205,7 +207,6 @@ export default class Pricing_ConsumptionAttributesComponent extends NavigationMi
 
     @wire(getParentQuoteLine, { quoteLineId: '$chainQuoteLineId' })
     parentQuoteLineDetails({ error, data }) {
-        console.log('parentQuoteLineDetails ' + JSON.stringify(data));
         if (data != null && data != undefined && data != []) {
             this.parentQuoteLine = JSON.parse(JSON.stringify(data));
         }
@@ -250,18 +251,23 @@ export default class Pricing_ConsumptionAttributesComponent extends NavigationMi
     }
 
     validateChangeRequestConParam() {
-        let salesGeoOptions = this.salesGeoOptions.map(item => item.value);
-        let platformOptions = this.platformOptions.map(item => item.value);
-        let segmentOptions = this.segmentOptions.map(item => item.value);
-        let countryOptions = this.countryOptions.map(item => item.value);
+        let salesGeoOptions = this.salesGeoOptions;
+        let platformOptions = this.platformOptions;
+        let segmentOptions = this.segmentOptions;
+        let countryOptions = this.countryOptions;
         let errors = ['Can not delete the existing '];
         let errorFlg = true;
+        console.log('this.parentQuoteLine => ' + JSON.stringify(this.parentQuoteLine));
         if (this.parentQuoteLine != null) {
             let platformOldValues = (this.parentQuoteLine.Pricing_Consumption_Platform__c != null) && (this.parentQuoteLine.Pricing_Consumption_Platform__c != undefined) && (this.parentQuoteLine.Pricing_Consumption_Platform__c != "") ? this.parentQuoteLine.Pricing_Consumption_Platform__c.split(", ") : [];
             let salesGeoOldValues = (this.parentQuoteLine.Pricing_Consumption_Sale_Geo__c != null) && (this.parentQuoteLine.Pricing_Consumption_Sale_Geo__c != undefined) && (this.parentQuoteLine.Pricing_Consumption_Sale_Geo__c != "") ? this.parentQuoteLine.Pricing_Consumption_Sale_Geo__c.split(", ") : [];
             let countryOldValues = (this.parentQuoteLine.Pricing_Consumption_Country__c != null) && (this.parentQuoteLine.Pricing_Consumption_Country__c != undefined) && (this.parentQuoteLine.Pricing_Consumption_Country__c != "") ? this.parentQuoteLine.Pricing_Consumption_Country__c.split(", ") : [];
             let regionOldValues = (this.parentQuoteLine.Pricing_Consumption_Region__c != null) && (this.parentQuoteLine.Pricing_Consumption_Region__c != undefined) && (this.parentQuoteLine.Pricing_Consumption_Region__c != "") ? this.parentQuoteLine.Pricing_Consumption_Region__c.split(", ") : [];
             let segmentOldValues = (this.parentQuoteLine.Pricing_Consumption_Segment__c != null) && (this.parentQuoteLine.Pricing_Consumption_Segment__c != undefined) && (this.parentQuoteLine.Pricing_Consumption_Segment__c != "") ? this.parentQuoteLine.Pricing_Consumption_Segment__c.split(", ") : [];
+
+            console.log('this.selectedPlatformValue '  + JSON.stringify(this.selectedPlatformValue)); //["Comp Platform12","Test 1","Blank Check"]
+            console.log('this.platformOptions '  + JSON.stringify(platformOptions));
+            console.log('this.platformOldValues '  + JSON.stringify(platformOldValues));
 
             if (!regionOldValues.every(oldValue => this.selectedRegionValues.includes(oldValue))) {
                 errors.push('Consumption Region');
@@ -355,11 +361,12 @@ export default class Pricing_ConsumptionAttributesComponent extends NavigationMi
                     );
                 });
         } else {
+            console.log('Errors  => ' + JSON.stringify(this.error));
             this.loadSpinner = false;
             this.saveLabel = 'Save';
             const event = new ShowToastEvent({
                 title: 'Error',
-                message: this.error.toString(),
+                message: JSON.stringify(this.error),
                 variant: 'error'
             });
             this.dispatchEvent(event);

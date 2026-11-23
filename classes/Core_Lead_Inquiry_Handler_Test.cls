@@ -227,7 +227,7 @@ public class Core_Lead_Inquiry_Handler_Test {
             StateCode = 'AL',
             City = 'Test City',
             Street = 'Test Street',
-            Status = 'Sales Generated Lead',
+            Status = 'Marketing Qualified Lead',
             LeadSource = 'Email',
             Email = 'test@example.com',
             PostalCode = '12345',
@@ -239,9 +239,8 @@ public class Core_Lead_Inquiry_Handler_Test {
             Core_Project_Size__c = '4',
             Core_Project_Timeframe__c = '12-24 Months',
             Core_Lead_State__c = 'In Pursuit',
-            Core_Lead_Status__c = 'Accepted',
-            Core_Sales_Group__c = 'PRC Sales Group',
-            Core_Lead_Sub_Status__c = 'Attempting Contact'
+            Core_Lead_Status__c = 'New',
+            Core_Sales_Group__c = 'PRC Sales Group'
            
         );
         insert testLead;

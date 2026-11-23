@@ -99,8 +99,28 @@
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
+        <fullName>Design_Reviewer_India</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Design Reviewer - India</label>
+        <sharedTo>
+            <group>Core_DDR_Access_APJ</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_Partner_Account_Region_Cd__c</field>
+            <operation>equals</operation>
+            <value>INDIA</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Design Registration - Locked,Design Registration - Intel,Design Registration - Partner,Design Registration - Partner Draft</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
         <fullName>PCC_Channels_Ops_Sharing_Setting</fullName>
         <accessLevel>Edit</accessLevel>
+        <description>Deal Registration record sharing settings for Channel Ops group</description>
         <label>Channels Ops Sharing Setting</label>
         <sharedTo>
             <group>AGS_Channel_Ops_Approver_Group</group>
@@ -111,7 +131,7 @@
             <operation>equals</operation>
             <value>Deal Registration - Partner,Deal Registration - Locked,Deal Registration - Draft</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>PCC_Deal_APJ_Sharing</fullName>
@@ -131,7 +151,7 @@
             <operation>equals</operation>
             <value>APJ</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>PCC_Deal_ASMO_Sharing</fullName>
@@ -151,7 +171,7 @@
             <operation>equals</operation>
             <value>ASMO</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>PCC_Deal_EMEA_Sharing</fullName>
@@ -171,7 +191,7 @@
             <operation>equals</operation>
             <value>EMEA</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>PCC_Deal_PRC_Sharing</fullName>
@@ -191,7 +211,7 @@
             <operation>equals</operation>
             <value>PRC</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>PCC_Deal_WW_Sharing</fullName>
@@ -205,6 +225,6 @@
             <operation>equals</operation>
             <value>Deal Registration - Partner,Deal Registration - Locked,Deal Registration - Draft</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
 </SharingRules>

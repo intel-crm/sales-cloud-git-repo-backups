@@ -1,6 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
     <fields>
+        <label><!-- ActivatedOrderItems --></label>
+        <name>ActivatedOrderItems__c</name>
+    </fields>
+    <fields>
+        <label><!-- Stage --></label>
+        <name>Core_PSG_Stage__c</name>
+        <picklistValues>
+            <masterLabel>Acknowledged</masterLabel>
+            <translation><!-- Acknowledged --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Draft</masterLabel>
+            <translation><!-- Draft --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Reviewed</masterLabel>
+            <translation><!-- Reviewed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Submitted</masterLabel>
+            <translation><!-- Submitted --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Total Order Price --></label>
+        <name>Core_PSG_Total_Order_Price_Amt__c</name>
+    </fields>
+    <fields>
         <label><!-- OrderItemCount --></label>
         <name>OrderItemCount__c</name>
     </fields>
@@ -116,6 +144,9 @@
     </fields>
     <fields>
         <label><!-- End Customer Account --></label>
+        <lookupFilter>
+            <errorMessage><!-- Please select a valid End Customer Account. --></errorMessage>
+        </lookupFilter>
         <name>Sales_End_Customer_Account__c</name>
         <relationshipLabel><!-- Orders (End Customer Account) --></relationshipLabel>
     </fields>
@@ -134,6 +165,10 @@
     <fields>
         <label><!-- End Customer Region --></label>
         <name>Sales_End_Customer_Region_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Customer State Code --></label>
+        <name>Sales_End_Customer_State_Code_Txt__c</name>
     </fields>
     <fields>
         <label><!-- State --></label>
@@ -390,6 +425,9 @@
     </fields>
     <fields>
         <label><!-- Ship To Account --></label>
+        <lookupFilter>
+            <errorMessage><!-- Please select a valid Ship To Account. --></errorMessage>
+        </lookupFilter>
         <name>Sales_Ship_To_Account__c</name>
         <relationshipLabel><!-- Orders (Ship To Account) --></relationshipLabel>
     </fields>
@@ -430,6 +468,14 @@
         <name>Sales_SoldTo_Province_Txt__c</name>
     </fields>
     <fields>
+        <label><!-- ShipTo Account by SoldTo --></label>
+        <lookupFilter>
+            <errorMessage><!-- ShipTo account not applicable for selected SolTo account. --></errorMessage>
+        </lookupFilter>
+        <name>Sales_SoldTo_ShipTo_Acc__c</name>
+        <relationshipLabel><!-- Orders --></relationshipLabel>
+    </fields>
+    <fields>
         <label><!-- State --></label>
         <name>Sales_SoldTo_State_Txt__c</name>
     </fields>
@@ -451,12 +497,27 @@
     </fields>
     <fields>
         <label><!-- Sold To Account --></label>
+        <lookupFilter>
+            <errorMessage><!-- Please select a valid Sold To Account. --></errorMessage>
+        </lookupFilter>
         <name>Sales_Sold_To_Account__c</name>
         <relationshipLabel><!-- Orders --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- Sold To Acct Id --></label>
         <name>Sales_Sold_To_Acct_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- State --></label>
+        <name>Sales_State__c</name>
+        <picklistValues>
+            <masterLabel>Draft</masterLabel>
+            <translation><!-- Draft --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Submitted</masterLabel>
+            <translation><!-- Submitted --></translation>
+        </picklistValues>
     </fields>
     <fields>
         <help><!-- It will store the comments from SAP --></help>
@@ -475,6 +536,10 @@
             <translation><!-- Order Cancelled --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Order Cancelled by SAP</masterLabel>
+            <translation><!-- Order Cancelled by SAP --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Order created successfully</masterLabel>
             <translation><!-- Order created successfully --></translation>
         </picklistValues>
@@ -491,6 +556,18 @@
             <translation><!-- SAP Resubmission In Progress --></translation>
         </picklistValues>
     </fields>
+    <fields>
+        <label><!-- TF --></label>
+        <name>TF__c</name>
+    </fields>
+    <fields>
+        <label><!-- Trigger Time 05 --></label>
+        <name>Trigger_Time_05__c</name>
+    </fields>
+    <fields>
+        <label><!-- time --></label>
+        <name>time__c</name>
+    </fields>
     <recordTypes>
         <description><!-- Default Record type for all Order Records --></description>
         <label><!-- Order Record --></label>
@@ -501,6 +578,15 @@
         <label><!-- Read Only Record --></label>
         <name>Sales_Read_Only_Record</name>
     </recordTypes>
+    <recordTypes>
+        <description><!-- If Picklist Value is Submitted order record type will be change to this record type --></description>
+        <label><!-- Submitted Orders - Do Not Use --></label>
+        <name>Submitted_Orders</name>
+    </recordTypes>
+    <validationRules>
+        <errorMessage><!-- Order&apos;s Sold To, Ship To &amp; End Customer Account does not match with the Sold To, Ship To &amp; End Customer Account on the Quote --></errorMessage>
+        <name>Account_doesnt_match_with_Quote</name>
+    </validationRules>
     <validationRules>
         <errorMessage><!-- Cannot cancel order without providing Cancellation reason --></errorMessage>
         <name>Core_PSG_Cancelled_Reason_On_Order</name>
@@ -522,6 +608,10 @@
         <name>Core_PSG_Mandatory_Fields_Sample_Order</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- Only non stocking order is allowed for ARM standalone license order placed by Disti/OEM --></errorMessage>
+        <name>Core_PSG_Order_Reason_Test_Rule</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- Order Type is defaulted and cannot be changed --></errorMessage>
         <name>Core_PSG_Order_Type_on_Order</name>
     </validationRules>
@@ -530,6 +620,10 @@
 1. Req Ship Date
 2. Price Book --></errorMessage>
         <name>Core_PSG_Partner_License_Order_Mandatory</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You can&apos;t edit the fields on Activated Orders or Cancelled Orders --></errorMessage>
+        <name>Core_PSG_RestrictFieldForSubmittedOrder</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Please make sure the selected quote is Active and Approved --></errorMessage>
@@ -576,7 +670,7 @@
         <name>Sales_ActivateOrd_Type_Reqd</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- User can set the order sub type as  Amend Non Commercial only incase of amend order. --></errorMessage>
+        <errorMessage><!-- User can set the order sub type as Amend Non Commercial only incase of amend order. --></errorMessage>
         <name>Sales_Amend_Non_Commercial_Order_SubType</name>
     </validationRules>
     <validationRules>
@@ -586,6 +680,10 @@
     <validationRules>
         <errorMessage><!-- Order should have atleast one Order Product inorder to Submit to SAP. --></errorMessage>
         <name>Sales_Cant_SubmitToSAP_WithoutOrderItem</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Pricebook at the Quote is not the same as the one in the Order details. --></errorMessage>
+        <name>Sales_Check_PriceBook</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Corporate Order cannot have Stocking Order Reason --></errorMessage>
@@ -628,6 +726,10 @@
         <name>Sales_PSG_Order_Reason</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- Non Commercial order cannot be associated/combined with Quote. --></errorMessage>
+        <name>Sales_QuoteOrderTypeChange_Validation</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- Quote is mandatory for corporate orders. --></errorMessage>
         <name>Sales_Quote_Mandatory</name>
     </validationRules>
@@ -655,8 +757,28 @@
         <errorMessage><!-- Can not select an Inactive Pricebook --></errorMessage>
         <name>Sales_checkActivePricebook</name>
     </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please select sold to account --></errorMessage>
+        <name>ShipToAccount_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- when status is activated ERP so# should not be blank --></errorMessage>
+        <name>check_logs</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- ERP Entry Date Cannot be Blank --></errorMessage>
+        <name>sap_to_salesforce_info</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- order cannot bbe cancle --></errorMessage>
+        <name>test</name>
+    </validationRules>
     <webLinks>
         <label>Modificar productos de pedido</label>
         <name>SBQQ__EditOrderProducts</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Show_report --></label>
+        <name>Show_report</name>
     </webLinks>
 </CustomObjectTranslation>

@@ -137,6 +137,8 @@ export default class Core_OpportunitySupport extends NavigationMixin(LightningEl
     account = undefined;
     
     @track flgisPSGorIQRQuotePresent=false;
+   
+   
 	//As part of TWC3123-6823
     @wire(getRecord, { recordId: '$recordId', fields: fields })
     wiredRecord({ error, data }) {
@@ -336,9 +338,21 @@ export default class Core_OpportunitySupport extends NavigationMixin(LightningEl
         if(data){
             this.result = data;
            this.riskURL=this.result+this.recordId;
-        }else{
-            console.log('Error:',JSON.stringify(error));
-
+        }
+        else if (error){
+             let message = 'Unknown error';
+            if (Array.isArray(error.body)) {
+                message = error.body.map(e => e.message).join(', ');
+            } else if (typeof error.body.message === 'string') {
+                message = error.body.message;
+            }
+            this.dispatchEvent(
+                new ShowToastEvent({
+                    title: 'Error loading  data',
+                    message,
+                    variant: 'error',
+                }),
+            );
         }
     }
     //As part of TWC3123-6823
@@ -362,8 +376,21 @@ export default class Core_OpportunitySupport extends NavigationMixin(LightningEl
                 }
             })
             .catch(error=> {
-                console.error('error'+JSON.stringify(error));
-            });
+                let message = 'Unknown error';
+                if (Array.isArray(error.body)) {
+                    message = error.body.map(e => e.message).join(', ');
+                    } 
+                else if (typeof error.body.message === 'string') {
+                     message = error.body.message;
+                     }
+                this.dispatchEvent(
+                new ShowToastEvent({
+                    title: 'Error loading  data',
+                    message,
+                    variant: 'error',
+                }),
+                 );
+                });
     }
     
     //TWC3123-4852- End
@@ -374,7 +401,19 @@ export default class Core_OpportunitySupport extends NavigationMixin(LightningEl
             this.recordTypeOptions = Object.values(data.recordTypeInfos).filter(option => (option.name != 'Master')).map(option => ({ label: option.name, value: option.recordTypeId }));
         
         } else if (error) {
-            console.log(error);
+             let message = 'Unknown error';
+            if (Array.isArray(error.body)) {
+                message = error.body.map(e => e.message).join(', ');
+            } else if (typeof error.body.message === 'string') {
+                message = error.body.message;
+            }
+            this.dispatchEvent(
+                new ShowToastEvent({
+                    title: 'Error loading user data',
+                    message,
+                    variant: 'error',
+                }),
+            );
         }
     }  
     //End - TWC3123-4852
@@ -565,7 +604,19 @@ async  setQuoteProgramNamesFlags() {
             });
         })
         .catch((error) => {
-            console.error('Error retrieving quote program names:', error);
+            let message = 'Unknown error';
+            if (Array.isArray(error.body)) {
+                message = error.body.map(e => e.message).join(', ');
+            } else if (typeof error.body.message === 'string') {
+                message = error.body.message;
+            }
+            this.dispatchEvent(
+                new ShowToastEvent({
+                    title: 'Error loading user data',
+                    message,
+                    variant: 'error',
+                }),
+            );
         });
 }
 /*@wire(getRecord, {recordId: '$recordId',fields }) Opportunity;
@@ -578,9 +629,9 @@ renderedCallback1() {
     if (this.isCSSLoaded) return;
     this.isCSSLoaded = true;
     loadStyle(this, customCSS).then(() => {
-        console.log('css loaded successfully');
+        
     }).catch(error => {
-        console.log('error to load css');
+        
     });
 }
 
@@ -753,7 +804,6 @@ handleAskAQuestion(){
 //Create WebQuote call
 async createWebQuote(){
     await this.setQuoteProgramNamesFlags();
-    console.log('result:::', this.flgisSWQuotePresent);
     if(this.flgisSWQuotePresent){
         this.showErrorMessage(CRM_SW_SWQuote_Exists_HardStopErrorMsg); //Only Software & Services Quote can be created for Software Opportunities.
     }else if (this.flgshowPricingAndQuoting){
@@ -761,7 +811,7 @@ async createWebQuote(){
     this.closeAction();
     window.open(QUOTE_URL, '_blank');
 }
-else{	console.log('Deal reg so no action required'); }
+else{ }
 }
 //Order Seeds
 orderSeed(){
@@ -771,7 +821,6 @@ orderSeed(){
 // AI inference
 async handleAiInference(){
     await this.aiInferenceURL();   
-    console.log('MV--'+this.getAIURL);
     this.closeAction();
     //window.open(ssFormUrl+ssReqEmail+this.userEmail,'_blank');
     window.open(this.getAIURL,'_blank');
@@ -837,7 +886,7 @@ if(this.flgisSWQuotePresent){
 }
 else
 {
-	 console.log('Deal reg so no action required');  
+	  
 }
 
 }
@@ -845,7 +894,6 @@ else
 
 async handleIQRTender(event) {
     await this.setQuoteProgramNamesFlags(); 
-    console.log('result:::', this.flgisSWQuotePresent);
     if (this.flgisSWQuotePresent) {
         this.showErrorMessage(CRM_SW_SWQuote_Exists_HardStopErrorMsg);//Only Software & Services Quote can be created for Software Opportunities.
     } else if (this.flgshowPricingAndQuoting) {
@@ -855,10 +903,22 @@ async handleIQRTender(event) {
                 window.open(this.result, '_blank');
             })
             .catch(error => {
-                console.error('Error:', error);
+            let message = 'Unknown error';
+            if (Array.isArray(error.body)) {
+                message = error.body.map(e => e.message).join(', ');
+            } else if (typeof error.body.message === 'string') {
+                message = error.body.message;
+            }
+            this.dispatchEvent(
+                new ShowToastEvent({
+                    title: 'Error loading user data',
+                    message,
+                    variant: 'error',
+                }),
+            );
             });
     } else {
-        console.log('Deal reg so no action required');
+        
     }
 }
 
@@ -974,7 +1034,6 @@ handleCollapseAll(){
 //Areefa :TWC4767-2562
 async handleCreateQuote(event){  
     await this.setQuoteProgramNamesFlags();  
-    console.log('result:::', this.flgisPSGorIQRQuotePresent);
     getSWAndServQuoteSuppRequestDetails({ recordId :this.recordId})
         .then(result => {            
             if (!result.isApprovedOppt && result.isOpptPrimaryContactHasData && !this.flgisPSGorIQRQuotePresent && !result.isOneOfTheQuoteAccepted) {

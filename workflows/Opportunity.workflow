@@ -5,12 +5,12 @@
         <description>Email Notification of Amend/Renewal Opportunities</description>
         <protected>false</protected>
         <recipients>
-            <recipient>coe-integration-user@intel.com.crm</recipient>
+            <recipient>11823540@intel.com.crm</recipient>
             <type>user</type>
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>test/Core_Amend_Renewal_Opportunities_Not_Deleted</template>
+        <template>unfiled$public/Core_Amend_Renewal_Opportunities_Not_Deleted</template>
     </alerts>
     <alerts>
         <fullName>Core_Notify_IOTG_Other_Second_Level_Approvers_Alert_10M_1</fullName>
@@ -20,7 +20,8 @@
             <recipient>10770732@intel.com.crm</recipient>
             <type>user</type>
         </recipients>
-        <senderType>DefaultWorkflowUser</senderType>
+        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
         <template>Core_Opportunity_Management/Core_IOTG_Second_level_approver_notification</template>
     </alerts>
     <alerts>
@@ -39,7 +40,12 @@
             <recipient>10770732@intel.com.crm</recipient>
             <type>user</type>
         </recipients>
-        <senderType>DefaultWorkflowUser</senderType>
+        <recipients>
+            <recipient>12229482@intel.com.crm</recipient>
+            <type>user</type>
+        </recipients>
+        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
         <template>Core_Opportunity_Management/Core_IOTG_Second_level_approver_notification</template>
     </alerts>
     <alerts>
@@ -54,7 +60,12 @@
             <recipient>11526272@intel.com.crm</recipient>
             <type>user</type>
         </recipients>
-        <senderType>DefaultWorkflowUser</senderType>
+        <recipients>
+            <recipient>12229482@intel.com.crm</recipient>
+            <type>user</type>
+        </recipients>
+        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
         <template>Core_Opportunity_Management/Core_IOTG_Second_level_approver_notification</template>
     </alerts>
     <alerts>
@@ -77,7 +88,12 @@
             <recipient>11526272@intel.com.crm</recipient>
             <type>user</type>
         </recipients>
-        <senderType>DefaultWorkflowUser</senderType>
+        <recipients>
+            <recipient>12229482@intel.com.crm</recipient>
+            <type>user</type>
+        </recipients>
+        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
         <template>Core_Opportunity_Management/Core_IOTG_Second_level_approver_notification</template>
     </alerts>
     <alerts>
@@ -100,7 +116,12 @@
             <recipient>11378482@intel.com.crm</recipient>
             <type>user</type>
         </recipients>
-        <senderType>DefaultWorkflowUser</senderType>
+        <recipients>
+            <recipient>12229482@intel.com.crm</recipient>
+            <type>user</type>
+        </recipients>
+        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
         <template>Core_Opportunity_Management/Core_IOTG_Second_level_approver_notification</template>
     </alerts>
     <alerts>
@@ -115,7 +136,8 @@
             <recipient>10642036@intel.com.crm</recipient>
             <type>user</type>
         </recipients>
-        <senderType>DefaultWorkflowUser</senderType>
+        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
         <template>Core_Opportunity_Management/Core_IOTG_Second_level_approver_notification</template>
     </alerts>
     <alerts>
@@ -130,7 +152,12 @@
             <recipient>11525404@intel.com.crm</recipient>
             <type>user</type>
         </recipients>
-        <senderType>DefaultWorkflowUser</senderType>
+        <recipients>
+            <recipient>12229482@intel.com.crm</recipient>
+            <type>user</type>
+        </recipients>
+        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
         <template>Core_Opportunity_Management/Core_IOTG_Second_level_approver_notification</template>
     </alerts>
     <alerts>
@@ -153,7 +180,12 @@
             <recipient>11525404@intel.com.crm</recipient>
             <type>user</type>
         </recipients>
-        <senderType>DefaultWorkflowUser</senderType>
+        <recipients>
+            <recipient>12229482@intel.com.crm</recipient>
+            <type>user</type>
+        </recipients>
+        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
         <template>Core_Opportunity_Management/Core_IOTG_Second_level_approver_notification</template>
     </alerts>
     <alerts>
@@ -161,14 +193,15 @@
         <description>Core_Notify IOTG Second Level Approvers Alert_$5M</description>
         <protected>false</protected>
         <recipients>
-            <recipient>10662131@intel.com.crm</recipient>
-            <type>user</type>
-        </recipients>
-        <recipients>
             <recipient>11265583@intel.com.crm</recipient>
             <type>user</type>
         </recipients>
-        <senderType>DefaultWorkflowUser</senderType>
+        <recipients>
+            <recipient>12229482@intel.com.crm</recipient>
+            <type>user</type>
+        </recipients>
+        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
         <template>Core_Opportunity_Management/Core_IOTG_Second_level_approver_notification</template>
     </alerts>
     <alerts>
@@ -184,14 +217,15 @@
             <type>user</type>
         </recipients>
         <recipients>
-            <recipient>10662131@intel.com.crm</recipient>
-            <type>user</type>
-        </recipients>
-        <recipients>
             <recipient>11265583@intel.com.crm</recipient>
             <type>user</type>
         </recipients>
-        <senderType>DefaultWorkflowUser</senderType>
+        <recipients>
+            <recipient>12229482@intel.com.crm</recipient>
+            <type>user</type>
+        </recipients>
+        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
         <template>Core_Opportunity_Management/Core_IOTG_Second_level_approver_notification</template>
     </alerts>
     <alerts>
@@ -201,9 +235,9 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>export.customer@intel.com</senderAddress>
+        <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MINDS_Opportunity_Approved</template>
+        <template>unfiled$public/Core_MINDS_Opportunity_Approved</template>
     </alerts>
     <alerts>
         <fullName>Core_Opp_MAG_Fill_Out_Form</fullName>
@@ -212,9 +246,9 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>export.customer@intel.com</senderAddress>
+        <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MAG_Opportunity_Fill_Out_Form</template>
+        <template>unfiled$public/Core_MAG_Opportunity_Fill_Out_Form</template>
     </alerts>
     <alerts>
         <fullName>Core_Opp_MAG_GEC_Needs_Info</fullName>
@@ -223,21 +257,20 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>export.customer@intel.com</senderAddress>
+        <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MAG_Opportunity_GEC_Needs_Info</template>
+        <template>unfiled$public/Core_MAG_Opportunity_GEC_Needs_Info</template>
     </alerts>
     <alerts>
         <fullName>Core_Opp_MAG_Governance</fullName>
-        <ccEmails>export.customer@intel.com</ccEmails>
         <description>Core_Opp_MAG_Governance</description>
         <protected>false</protected>
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>export.customer@intel.com</senderAddress>
+        <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>test/Core_MAG_Opportunity_Email_to_Owner</template>
+        <template>unfiled$public/Core_MAG_Opportunity_Email_to_Owner</template>
     </alerts>
     <alerts>
         <fullName>Core_Opp_MAG_Not_Approved</fullName>
@@ -246,9 +279,9 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>export.customer@intel.com</senderAddress>
+        <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MAG_Opportunity_Not_Approved</template>
+        <template>unfiled$public/Core_MAG_Opportunity_Not_Approved</template>
     </alerts>
     <alerts>
         <fullName>Core_Opp_Notify_Manager_On_Risk</fullName>
@@ -258,7 +291,8 @@
             <field>Core_System_Owners_Manager__c</field>
             <type>email</type>
         </recipients>
-        <senderType>DefaultWorkflowUser</senderType>
+        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
         <template>Core_Opportunity_Management/Core_Oppotunity_Risk_Email_Template</template>
     </alerts>
     <alerts>
@@ -280,8 +314,9 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderType>DefaultWorkflowUser</senderType>
-        <template>Testt/Core_Rejection_Notification_Opportunity</template>
+        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Core_Rejection_Notification_Opportunity</template>
     </alerts>
     <alerts>
         <fullName>Core_Opp_Send_Production_Win_EmailAlert</fullName>
@@ -322,7 +357,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_Uncovered_Account</template>
+        <template>unfiled$public/Core_Uncovered_Account</template>
     </alerts>
     <alerts>
         <fullName>Core_PCC_OpportunityRejection</fullName>
@@ -335,6 +370,31 @@
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Core_Opportunity_Management/Core_PCC_OpportunityRejectNotification</template>
+    </alerts>
+    <alerts>
+        <fullName>Opportunity_Approval_Email_after_12_days_of_submission</fullName>
+        <description>Opportunity Approval Email after 12 days of submission</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Opportunity_Approval_after_12_days_of_submission</template>
+    </alerts>
+    <alerts>
+        <fullName>Oppty_PCC_Deal_Won</fullName>
+        <description>PCC Deal Reg Notify the PSAM when Opportunity is Closed Won</description>
+        <protected>false</protected>
+        <recipients>
+            <type>accountOwner</type>
+        </recipients>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Core_Opportunity_Management/Core_Oppty_PCC_Deal_Won</template>
     </alerts>
     <fieldUpdates>
         <fullName>At_Risk_Created_Date_Update</fullName>
@@ -936,6 +996,16 @@ Core_Push_Counter__c + 1
         <reevaluateOnChange>false</reevaluateOnChange>
     </fieldUpdates>
     <fieldUpdates>
+        <fullName>Core_Opp_Stage_Update</fullName>
+        <field>StageName</field>
+        <literalValue>Cancelled</literalValue>
+        <name>Core_Opp_Stage_Update</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
         <fullName>Core_Opp_Store_Submitter_Email</fullName>
         <description>Update the &quot;System Submitter&quot; field with Submitter&apos;s email</description>
         <field>Core_System_Submitter__c</field>
@@ -1027,6 +1097,36 @@ Core_Push_Counter__c + 1
         <name>Override CloseDate On Approval</name>
         <notifyAssignee>false</notifyAssignee>
         <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Test</fullName>
+        <field>Core_Project_Size__c</field>
+        <literalValue>$10,000,000 - $5,000,000</literalValue>
+        <name>Test</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Date_and_Time</fullName>
+        <field>Core_Date_Time_Submitted_for_Approval__c</field>
+        <formula>DATETIMEVALUE(TODAY())</formula>
+        <name>Update Date and Time</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>updatefield</fullName>
+        <field>Core_Is_PSG_PrimaryQuote__c</field>
+        <literalValue>1</literalValue>
+        <name>updatefield</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
         <protected>false</protected>
         <reevaluateOnChange>false</reevaluateOnChange>
     </fieldUpdates>
@@ -1210,6 +1310,21 @@ Core_Push_Counter__c + 1
         <triggerType>onCreateOnly</triggerType>
     </rules>
     <rules>
+        <fullName>Core_Opp_Clear_Compliance_Status</fullName>
+        <actions>
+            <name>Core_Opp_Clear_Compliance_Status</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Core_Opp_Clear_Compliance_Sub_Status</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <description>Clears the Compliance Status when you  Create an Opportunity with an existing value</description>
+        <formula>AND(ISBLANK(TEXT(Core_Compliance_Status__c))= False, Text(Core_Military_Aerospace_Govmt_End_Use__c) = &quot;No&quot;, Core_MAG_Account__c = FALSE,Core_Standard_Customer_Refresh__c=FALSE)</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
         <fullName>Core_Opp_Clear_Loss_Cancel_Details</fullName>
         <actions>
             <name>Core_Opp_Clear_Loss_Cancel_Details</name>
@@ -1239,6 +1354,21 @@ Core_Push_Counter__c + 1
         </criteriaItems>
         <description>Updates field values when an Opportunity is cloned in a won status</description>
         <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Core_Opp_Compliance_Status</fullName>
+        <actions>
+            <name>Core_Opp_Compliance_Status</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Core_Opp_Compliance_Sub_Status</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <description>Sets the Compliance Approval Status field to &apos;AR - Owner to fill out MAG Questionnaire&apos; if any of the compliance fields are set to yes/checked and it&apos;s not a standard refresh</description>
+        <formula>OR(     AND(OR(ISBLANK(TEXT(Core_Compliance_Status__c))= True,     ISCHANGED(Core_Standard_Customer_Refresh__c)),     OR(Text(Core_Military_Aerospace_Govmt_End_Use__c) =&quot;Yes&quot;, Core_MAG_Account__c = True),     Core_Standard_Customer_Refresh__c = False, ISBLANK(TEXT(Core_Compliance_Sub_Status__c))),   AND($Profile.Name=&quot;Global Export Compliance&quot;,   OR(       AND(Core_MAG_Account__c=TRUE,Text(Core_Military_Aerospace_Govmt_End_Use__c) =&quot;Yes&quot;,ISCHANGED(Core_Standard_Customer_Refresh__c)),	      AND(Core_MAG_Account__c=TRUE,Text(Core_Military_Aerospace_Govmt_End_Use__c) =&quot;No&quot;,ISCHANGED(Core_Standard_Customer_Refresh__c)),	      AND(Core_MAG_Account__c=FALSE,Text(Core_Military_Aerospace_Govmt_End_Use__c) =&quot;Yes&quot;,ISCHANGED(Core_Standard_Customer_Refresh__c))     )   ) )</formula>
+        <triggerType>onAllChanges</triggerType>
     </rules>
     <rules>
         <fullName>Core_Opp_Decision_Date</fullName>
@@ -1330,6 +1460,45 @@ Core_Push_Counter__c + 1
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
     <rules>
+        <fullName>Core_Opp_MAG_Fill_Out_Form</fullName>
+        <active>false</active>
+        <booleanFilter>(1 OR 2) AND (3 OR 4) AND 5</booleanFilter>
+        <criteriaItems>
+            <field>Opportunity.Core_Military_Aerospace_Govmt_End_Use__c</field>
+            <operation>equals</operation>
+            <value>Yes</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.Core_MAG_Account__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.Core_Compliance_Sub_Status__c</field>
+            <operation>equals</operation>
+            <value>AR - Owner to fill out MAG Questionnaire</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.Core_Compliance_Sub_Status__c</field>
+            <operation>equals</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.Core_Standard_Customer_Refresh__c</field>
+            <operation>notEqual</operation>
+            <value>True</value>
+        </criteriaItems>
+        <description>Sends an email to the opportunity owner if it&apos;s a MAG opportunity and the form still needs to be filled out, 1 hour after opportunity creation</description>
+        <triggerType>onCreateOnly</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Core_Opp_MAG_Fill_Out_Form</name>
+                <type>Alert</type>
+            </actions>
+            <timeLength>1</timeLength>
+            <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
+    <rules>
         <fullName>Core_Opp_MAG_GEC_Needs_Info</fullName>
         <actions>
             <name>Core_Opp_MAG_GEC_Needs_Info</name>
@@ -1343,6 +1512,36 @@ Core_Push_Counter__c + 1
         </criteriaItems>
         <description>Sends an email to the opportunity owner that more information is required</description>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Core_Opp_MAG_Not_Approved</fullName>
+        <actions>
+            <name>Core_Opp_MAG_Not_Approved</name>
+            <type>Alert</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>Opportunity.Core_Compliance_Status__c</field>
+            <operation>equals</operation>
+            <value>Not Approved</value>
+        </criteriaItems>
+        <description>Sends an email to the opportunity owner upon MAG non-approval</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Core_Opp_Notify_Manager_On_Risk</fullName>
+        <actions>
+            <name>Core_Opp_Notify_Manager_On_Risk</name>
+            <type>Alert</type>
+        </actions>
+        <actions>
+            <name>Core_Opp_Set_Owners_Manager_Email</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <description>Sends an email to opportunity owner&apos;s manager when opportunity is flagged at risk. Using the fact that Filed Update occurs first before the Email Alert.</description>
+        <formula>OR ( AND(ISNEW(), ISBLANK(Core_Risk_Reason__c) = false),  AND(ISCHANGED(Core_Risk_Reason__c), PRIORVALUE(Core_Risk_Reason__c) = &apos;&apos;)  )</formula>
+        <triggerType>onAllChanges</triggerType>
     </rules>
     <rules>
         <fullName>Core_Opp_Production_Win_Notification</fullName>
@@ -1464,6 +1663,25 @@ Core_Push_Counter__c + 1
         <active>false</active>
         <description>Set the stage to design win when approved if the prior stage was not Production Win.</description>
         <formula>AND(ISCHANGED(Core_Approval_Status__c),   ISPICKVAL(Core_Approval_Status__c, &apos;Approved&apos;),   NOT(ISPICKVAL(StageName, &apos;Production Win&apos;)) )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Core_Opp_Stage_Update_On_PrimaryQuote</fullName>
+        <actions>
+            <name>Core_Opp_Stage_Update</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>updatefield</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>Opportunity.Core_Is_Renewal_Amend_PSG_Quote__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <description>Update the &apos;Stage&apos; as &apos;Cancelled&apos; when primary quote&apos;s &apos;Quote Program&apos; is &apos;PSG&apos; and &apos;Type&apos; is &apos;Renewal/Amendment&apos;.</description>
         <triggerType>onAllChanges</triggerType>
     </rules>
     <rules>
@@ -1732,5 +1950,41 @@ Core_Push_Counter__c + 1
         <description>Update At Risk Created Date if there is any change in Risk Reason</description>
         <formula>ISCHANGED( Core_Risk_Reason__c )</formula>
         <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Test1</fullName>
+        <active>false</active>
+        <criteriaItems>
+            <field>Opportunity.StageName</field>
+            <operation>equals</operation>
+            <value>Production Lost</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>x Core_Opp_MAG_Governance</fullName>
+        <actions>
+            <name>Core_Opp_MAG_Governance</name>
+            <type>Alert</type>
+        </actions>
+        <active>false</active>
+        <booleanFilter>(1 OR 2) AND 3</booleanFilter>
+        <criteriaItems>
+            <field>Opportunity.Core_Military_Aerospace_Govmt_End_Use__c</field>
+            <operation>equals</operation>
+            <value>Yes</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.Core_MAG_Account__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.Core_Standard_Customer_Refresh__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <description>Sends an email notification to the compliance team and owner if a new MAG Opportunity is created</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
 </Workflow>

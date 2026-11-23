@@ -6,7 +6,7 @@
 
     var delayRenderIndex = [];
     var preReleaseCount = 0;
-    var selectAll = true;                       
+	    
     var recurse = function(boxes, isTopLevel) {
       var anyChecked = false;
       (boxes || []).forEach(function(checkbox, idx) {
@@ -19,9 +19,7 @@
         if (checkbox.subType == 'radio') {
           isChecked = checkbox.radioOptions.find(function(opt) { return opt.isSelected; });
         }
-                 checkbox.checked = isChecked; 
-              
-          
+        checkbox.checked = isChecked;
         if (isChecked) {
           anyChecked = true;
           if(checkbox.prerelease){
@@ -34,8 +32,6 @@
           // adds radio input value
           if (checkbox.subType == 'radio') complexVal.value = checkbox.radioOptions.find(function(opt) { return opt.isSelected; }).value;
           complexValue.push(complexVal);
-        }else if(!isChecked && checkbox.inputSpecId && checkbox.inputSpecId.includes("NPP_GeographicCoverage")){
-            selectAll = false;
         }
 
         var isAnyChildChecked = recurse(checkbox.children, false);
@@ -45,26 +41,13 @@
           delayRenderIndex.push(idx);
         }
       });
-        // IPA2.0 + US TWC4497-1631
-      // if(!selectAll){
-      //    (boxes || []).forEach(function(checkbox, idx) {
-      //        if(checkbox.label==$A.get("$Label.c.PMP_Select_All") && checkbox.apiName =="offering"){
-      //            checkbox.checked=false;
-      //        }
-      //    });   
-      // }else{
-      //     (boxes || []).forEach(function(checkbox, idx) {
-      //        if(checkbox.label==$A.get("$Label.c.PMP_Select_All") && checkbox.apiName =="offering"){
-      //            checkbox.checked=true;
-      //        }
-      //    });
-      // }
-        return anyChecked;
+      return anyChecked;
     };
     recurse(checkboxes, true);
 
     // for performance gain... cmp uses initialCheckboxes
     // (checkboxes would be to store the data)
+    // component.set('v.initialCheckboxes', checkboxes);
     console.time('PERF-FormCheckboxINITIALRenderTest-' + component.get('v.label'))
     component.set('v.checkboxes', checkboxes);
     window.setTimeout(function(){
@@ -87,6 +70,7 @@
     }
     window.setTimeout(delayRenderProcess, 1500);
 
+    // helper.renderTestPerformance(component, helper);
     helper.setInputValue(component, helper, listOfChecked, complexValue);
     if(prereleaseArray.length>0){
           component.set('v.preReleaseCount',1);
@@ -95,17 +79,24 @@
      }   
   },
 
+    //renderTestPerformance : function(component, helper) {
+    //  var checkboxes = component.get('v.checkboxes');
+     // checkboxes.forEach(function(checkbox) {
+      //  checkbox.getElement()
+      //});
+      //document.querySelector('div.checkboxAccordionSectionHeader[data-idx="'+i+'"]').classList.toggle('open');
+    //},
   
     setValue : function(component, helper, value, checkboxValue) {
       var allChecked = [], complexValue = [],prereleaseArray = [],
           recursive = (component.get('v.interactionType') == 'recursive' || component.get('v.interactionType') == 'parent_recursive'),
           parent = (component.get('v.interactionType') == 'parent' || component.get('v.interactionType') == 'parent_recursive');
       var preReleaseCount = 0;
-      var selectAll = true;  
       var recurseCheckboxTree = function(boxes, recursedValue) {
+          console.log("@recurseCheckboxTree",boxes);
           if(boxes)
         boxes.forEach(function(checkbox) {
-
+            
           var newRecursedValue = undefined;
           if (checkbox.value == value) {
             // text input logic
@@ -121,7 +112,7 @@
             //   helper.getElementFromUniqId(component, helper, checkbox.uniqId).checked = checkboxValue;
             // }
             checkbox.checked = checkboxValue;
-
+            
             // recursive - set children to parents value recursively
             if (recursive) newRecursedValue = checkboxValue;
             // parent - uncheck children if parent is unchecked
@@ -151,27 +142,18 @@
           }
 
           if (checkbox.children && checkbox.children.length) {
-
             recurseCheckboxTree(checkbox.children, newRecursedValue);
             // recursive - after recursing tree -- uncheck parents of any unchecked
             if (recursive) {
               if (checkbox.children.find(function(c) { return !c.checked; })) {
-                  
-                   var countryCheck = component.get('v.isPartnerCountry');
-                  if(countryCheck){
-                       checkbox.checked = false;
-                     }
-                
+                 checkbox.checked = false;
 		
                  // ++ performance gain
                 // if (!checkbox.subType && component.get('v.accordionType') == 'search') {
                 //   helper.getElementFromUniqId(component, helper, checkbox.uniqId).checked = false;
                 // }
-              }
-                
-                //else {
-                if (checkbox.children.find(function(c) { return c.checked; }) && checkbox.label !='Select All'){
-					checkbox.checked = true;
+              } else {
+                checkbox.checked = true;
 		// ++ performance gain
                 // if (!checkbox.subType && component.get('v.accordionType') == 'search') {
                 //   helper.getElementFromUniqId(component, helper, checkbox.uniqId).checked = true;
@@ -182,7 +164,7 @@
             if (parent) {
               // if any children are checked, check parent
               if (checkbox.children.find(function(c) { return c.checked; }) && checkbox.label !='Select All') {
-                	checkbox.checked = true;
+                checkbox.checked = true;
 		// ++ performance gain
                 // if (!checkbox.subType && component.get('v.accordionType') == 'search') {
                 //   helper.getElementFromUniqId(component, helper, checkbox.uniqId).checked = true;
@@ -203,27 +185,7 @@
             if (checkbox.subType == 'radio') complexVal.value = checkbox.radioOptions.find(function(opt) { return opt.isSelected; }).value;
             complexValue.push(complexVal);
           }
-          
-            if(!checkbox.checked){
-                selectAll = false;
-            }  
-            
         });
-        // IPA2.0 + US TWC4497-1631
-      //     if(!selectAll){
-      //    (boxes || []).forEach(function(checkbox, idx) {
-      //        if(checkbox.label==$A.get("$Label.c.PMP_Select_All") && checkbox.apiName =="offering"){
-      //            checkbox.checked=false;
-      //        }
-      //    });   
-      // }else{
-      //     (boxes || []).forEach(function(checkbox, idx) {
-      //        if(checkbox.label==$A.get("$Label.c.PMP_Select_All") && checkbox.apiName =="offering"){
-      //            checkbox.checked=true;
-      //        }
-      //    });
-      // } 
-           
         return boxes;
       };
 
@@ -239,6 +201,7 @@
     },
 
     getElementFromUniqId : function(component, helper, uniqId) {
+      console.log('!!!!'. uniqId);
       return document.querySelector('div[data-uniqid="' + uniqId + '"] > lightning-input > div > span > input');
     },
     setInputValue : function(component, helper, listOfChecked, complexValue) {
@@ -252,6 +215,7 @@
       }
       //Prakash 6/26 if ((oldValue && oldValue.length > 0) || value.length > 0) component.set('v.value', value);
       if (oldValue || listOfChecked.length) component.set('v.value', value);
+      // console.log('here', component.get('v.apiName'), value, inputValue);
       component.set('v.valid', helper.isValid(component));
       helper.updateForm(component);
     },
@@ -273,11 +237,12 @@
         var minimumChars = 2;
         var checkboxes = component.get('v.checkboxes');
         var q = component.get('v.searchString').toLowerCase() || false;
+        // console.time('Search');
         if (q && q.length >= minimumChars) {
           q = q.replace(/[-[\]{}()*+?.,\\^$|#]/g, '\\$&');
           q = q.replace(/\s+/g,'(\\\s*?)'); // make white space variable size if it exists 
         }
-        var foundFirstResult = false;
+      var foundFirstResult = false;
         var recurseSearchAndOpenParent = function(chckbxs) {
           var openParent = false;
           chckbxs.forEach(function(child) {
@@ -301,6 +266,7 @@
           if (child.highlight) {
             openParent = true;
             if (!foundFirstResult) {
+              console.log(child.label);
               child.firstResult = true;
               foundFirstResult = true;
             }
@@ -330,7 +296,11 @@
         // ++ performance gain
         // find checkbox toggle open class
       });
+      // console.timeEnd('Search');
+      // console.time('Setting checkboxes');
       component.set('v.checkboxes', checkboxes);
+      // console.timeEnd('Setting checkboxes');
+      // if (!q) helper.setInitialValue(component, helper);
       component.set('v._searching', false);
       if (component.get('v._scrollToResult')) {
         helper.scrollToFirstResult(component, helper);
@@ -348,7 +318,6 @@
         checkboxes[idx].delayRender = false;
         console.time('PERF-FormCheckboxToggleAccordionRender');
         component.set('v.checkboxes', checkboxes);
-           component.set("v.spinnerIndex", -1); 
         window.setTimeout(function(){
           console.timeEnd('PERF-FormCheckboxToggleAccordionRender');
         });
@@ -368,9 +337,7 @@
             isFirstResult = $A.util.hasClass(checkboxes[i], 'firstResult');
             if (isFirstResult) {
               // recurse radio hierarchy to find first highlighted child...
-              var opts = [].concat(checkboxes[i].find('radioChild') || []); 
               var recurseRadio = function(option) {
-                 
                 var rFound = false, children = [].concat(option.find('radioSubChild') || []);
                 if (children.length) {
                   for (var j = 0; j < opts.length; j++) {
@@ -385,7 +352,7 @@
                 }
                 return rFound;
               }
-              var found = false;
+              var found = false, opts = [].concat(checkboxes[i].find('radioChild') || []);
               for (var k = 0; k < opts.length; k++) {
                 if (opts[k].get('v.radio.highlight')) {
                   opts[k].focus(); found = true; break;

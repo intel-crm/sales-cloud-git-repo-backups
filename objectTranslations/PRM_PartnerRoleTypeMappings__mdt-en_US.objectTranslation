@@ -9,32 +9,12 @@
         <value>PRM PartnerRoleType Mappings</value>
     </caseValues>
     <fields>
-        <label><!-- Grouping Method --></label>
-        <name>Grouping_Method__c</name>
-    </fields>
-    <fields>
         <label><!-- Biz Org Type --></label>
         <name>PRM_Biz_Org_Type__c</name>
     </fields>
     <fields>
-        <label><!-- PRM Partner Role Label --></label>
-        <name>PRM_Partner_Role_Label__c</name>
-    </fields>
-    <fields>
         <label><!-- Partner Role --></label>
         <name>PRM_Partner_Role__c</name>
-    </fields>
-    <fields>
-        <label><!-- Partner Segment --></label>
-        <name>PRM_Partner_Segment__c</name>
-    </fields>
-    <fields>
-        <label><!-- isDefault --></label>
-        <name>isDefault__c</name>
-    </fields>
-    <fields>
-        <label><!-- isNotAutoApprove --></label>
-        <name>isNotAutoApprove__c</name>
     </fields>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

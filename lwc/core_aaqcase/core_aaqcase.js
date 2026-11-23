@@ -800,7 +800,7 @@ export default class Core_aaqcase extends NavigationMixin(LightningElement) {
         var mapOfContactWithExternalId = [];
         if (contactList === null || contactList === undefined) {
             this.isAccountAsscoiated = false;
-            this.accessErrorMessageOrNoServiceMessageTagged = this.labels.NoServiceCloudAssociated;
+            this.accessErrorMessageOrNoServiceMessageTagged = this.labels.NoServiceCloud;
         } else {
             contactList.forEach(contact => {
                 let objectOfContact = {

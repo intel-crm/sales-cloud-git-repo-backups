@@ -3,7 +3,7 @@
     <apiVersion>63.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <decisions>
-        <name>Check_if_contact_s_account_is_already_shared_when_it_s_marketing_contact</name>
+        <name>Check_if_contact_s_account_is_already_shared</name>
         <label>Check if contact&apos;s account is already shared when it&apos;s marketing contact</label>
         <locationX>446</locationX>
         <locationY>755</locationY>
@@ -47,13 +47,6 @@
                     <booleanValue>true</booleanValue>
                 </rightValue>
             </conditions>
-            <conditions>
-                <leftValueReference>Get_Account_Shared.RowCause</leftValueReference>
-                <operator>NotEqualTo</operator>
-                <rightValue>
-                    <stringValue>Rule</stringValue>
-                </rightValue>
-            </conditions>
             <connector>
                 <targetReference>Create_Account_Share</targetReference>
             </connector>
@@ -74,13 +67,6 @@
                 <operator>IsNull</operator>
                 <rightValue>
                     <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>Get_Account_Shared.RowCause</leftValueReference>
-                <operator>NotEqualTo</operator>
-                <rightValue>
-                    <stringValue>Rule</stringValue>
                 </rightValue>
             </conditions>
             <connector>
@@ -198,7 +184,7 @@
         <locationY>647</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Check_if_contact_s_account_is_already_shared_when_it_s_marketing_contact</targetReference>
+            <targetReference>Check_if_contact_s_account_is_already_shared</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -213,13 +199,6 @@
             <operator>EqualTo</operator>
             <value>
                 <booleanValue>true</booleanValue>
-            </value>
-        </filters>
-        <filters>
-            <field>Id</field>
-            <operator>NotEqualTo</operator>
-            <value>
-                <elementReference>$Record.Id</elementReference>
             </value>
         </filters>
         <getFirstRecordOnly>false</getFirstRecordOnly>

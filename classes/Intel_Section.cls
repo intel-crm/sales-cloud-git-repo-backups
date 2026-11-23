@@ -10,12 +10,9 @@
 * 
 **************************************************************************************************************************************************************************/
 public class Intel_Section {
-    public static Boolean isWorking() {
-        return true;
-    }
-    //   public String headline { get; set; }
-    //   public Boolean isAccordion { get; set; }
-    //   public List<Intel_Subsection> subsections { get; set; } { subsections = new List<Intel_Subsection>(); }
-    //   public Intel_Section(String h) { headline = h; }
-    // public Intel_Section(){}
+      public String headline { get; set; }
+      public Boolean isAccordion { get; set; }
+      public List<Intel_Subsection> subsections { get; set; } { subsections = new List<Intel_Subsection>(); }
+      public Intel_Section(String h) { headline = h; }
+    public Intel_Section(){}
     }

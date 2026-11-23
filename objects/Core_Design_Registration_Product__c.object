@@ -199,6 +199,46 @@
         </displayedFields>
         <label>CPQ_Lookup</label>
     </fieldSets>
+    <fieldSets>
+        <fullName>DRP_FS</fullName>
+        <description>In Enhanced Related List</description>
+        <displayedFields>
+            <field>Core_Design_Registration_Nm__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_Product_Id__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>PCC_OEM_Name__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_End_Customer_Account_Nm__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_Target_Resale_Amt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_Full_Year_Qty__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>PCC_Form_Factor__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>DRP FS</label>
+    </fieldSets>
     <fields>
         <fullName>Core_Active_Status__c</fullName>
         <formula>Core_Product_Id__r.IsActive</formula>
@@ -389,7 +429,7 @@
     </fields>
     <fields>
         <fullName>Core_External_Id__c</fullName>
-        <externalId>true</externalId>
+        <externalId>false</externalId>
         <label>External Id</label>
         <length>40</length>
         <required>false</required>
@@ -513,7 +553,7 @@
         <inlineHelpText>Name of eligible product added to the Design Registration</inlineHelpText>
         <label>Product</label>
         <lookupFilter>
-            <active>true</active>
+            <active>false</active>
             <booleanFilter>((1 AND 2 AND 3) OR (2 AND 3 AND 7)) OR 4 OR 5 OR 6 OR 8</booleanFilter>
             <filterItems>
                 <field>Product2.Core_Design_Registration_Eligible_Ind__c</field>
@@ -612,12 +652,12 @@
     <fields>
         <fullName>Core_Target_Resale_Amt__c</fullName>
         <description>Same as Sales Price on Oppty Line</description>
-        <inlineHelpText>Target Resale Price is automatically populated by SDC price Once Product is selected  and is read‑only for distributors. In cases where SDC pricing is not available, the field may remain blank at the time of submission and will be completed by Intel during the design registration review process. The displayed Target Resale Price does not constitute approval, endorsement, or a pricing commitment by Intel.</inlineHelpText>
+        <inlineHelpText>Intel will review Target Resale Price as part of the design registration review process, in order to accurately calculate the value of the design registration. Intel will not provide input or guidance on the Target Resale Price, which will/must be inputted by the Distributor registering the design. Submission of the Target Resale Price does not constitute agreement on or endorsement of that price by Intel, and it will not affect the price offered by Intel to the Distributor.</inlineHelpText>
         <label>Target Resale Price</label>
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Currency</type>
     </fields>
@@ -630,8 +670,19 @@
         <type>Checkbox</type>
     </fields>
     <fields>
+        <fullName>DDR_MMID_or_Ordering_code__c</fullName>
+        <externalId>false</externalId>
+        <label>MMID or Ordering code</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>DDR_Target_Resale_Price_Note__c</fullName>
-        <defaultValue>&quot;Target Resale Price is automatically populated by SDC price Once Product is selected  and is read‑only for distributors. In cases where SDC pricing is not available, the field may remain blank at the time of submission and will be completed by Intel during the design registration review process. The displayed Target Resale Price does not constitute approval, endorsement, or a pricing commitment by Intel.&quot;</defaultValue>
+        <defaultValue>&quot;Intel will review Target Resale Price as part of the design registration review process, in order to accurately calculate the value of the design registration. Intel will not provide input or guidance on the Target Resale Price, which will/must be inputted by the Distributor registering the design. Submission of the Target Resale Price does not constitute agreement on or endorsement of that price by Intel, and it will not affect the price offered by Intel to the Distributor.&quot;</defaultValue>
         <label>Target Resale Price Note</label>
         <length>1024</length>
         <trackHistory>false</trackHistory>
@@ -640,12 +691,24 @@
         <visibleLines>5</visibleLines>
     </fields>
     <fields>
+        <fullName>Design_Deal_Registration_Status__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(Core_Design_Registration_Id__r.Core_Design_Registration_Status_Nm__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Design Deal Registration Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>MMID_or_Ordering_code__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <inlineHelpText>Search Product by MMID or Old MMID or Ordering Code</inlineHelpText>
         <label>MMID or Old MMID or Ordering code</label>
         <lookupFilter>
-            <active>true</active>
+            <active>false</active>
             <booleanFilter>(9 OR ((1 OR 6) AND (2) AND (4) AND ((3 OR 5) OR (7 AND 8)))) OR 10</booleanFilter>
             <filterItems>
                 <field>Product_MM_Attribute_Mapping__c.Spec_Code__c</field>
@@ -685,7 +748,7 @@
             <filterItems>
                 <field>$Source.Core_Design_Product_Status_Nm__c</field>
                 <operation>equals</operation>
-                <value>Approved, Cancelled</value>
+                <value>Approved</value>
             </filterItems>
             <filterItems>
                 <field>$Source.Core_Design_Product_Status_Nm__c</field>
@@ -715,6 +778,27 @@
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>PCC_Change_Request_Line_Item__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>This field indicates if product is created from change request line item also, if this field is populated change requested field also will be set to true</description>
+        <label>Change Request Line Item</label>
+        <referenceTo>PCC_Deal_Change_Request_Line_Item__c</referenceTo>
+        <relationshipLabel>Design-Deal Registration Products</relationshipLabel>
+        <relationshipName>Design_Deal_Registration_Products</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>PCC_Change_Requested__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Change Requested?</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>PCC_Competitor_Name__c</fullName>
@@ -759,8 +843,8 @@
         <inlineHelpText>Non-Intel product underlying platform or system that partner&apos;s competitor will bid for this opportunity.</inlineHelpText>
         <label>Competitor Product</label>
         <lookupFilter>
-            <active>true</active>
-            <booleanFilter>((1 OR (4 AND 5)) AND 2 AND 3) OR 6</booleanFilter>
+            <active>false</active>
+            <booleanFilter>((1 OR (4 AND 5)) AND (2 OR 7) AND 3) OR 6</booleanFilter>
             <filterItems>
                 <field>Pricing_Competitor_Product__c.RecordTypeId</field>
                 <operation>equals</operation>
@@ -790,6 +874,11 @@
                 <field>$Profile.Name</field>
                 <operation>equals</operation>
                 <value>System Administrator</value>
+            </filterItems>
+            <filterItems>
+                <field>$Source.Core_Design_Product_Status_Nm__c</field>
+                <operation>equals</operation>
+                <value>Rejected</value>
             </filterItems>
             <isOptional>false</isOptional>
         </lookupFilter>
@@ -904,6 +993,15 @@
         </valueSet>
     </fields>
     <fields>
+        <fullName>PCC_L4L5_Product_NewDesignAvailability__c</fullName>
+        <formula>( MMID_or_Ordering_code__r.L4_Product__c &lt;&gt; null &amp;&amp; (  MMID_or_Ordering_code__r.L4_Product__r.Core_Sales_Visible_Flag__c &amp;&amp;  MMID_or_Ordering_code__r.L4_Product__r.IsActive &amp;&amp; NOT( MMID_or_Ordering_code__r.L4_Product__r.Core_Avail_for_New_Designs__c))) || ( MMID_or_Ordering_code__r.L5_Product__c &lt;&gt; null &amp;&amp; (  MMID_or_Ordering_code__r.L5_Product__r.Core_Sales_Visible_Flag__c &amp;&amp;  MMID_or_Ordering_code__r.L5_Product__r.IsActive &amp;&amp; NOT( MMID_or_Ordering_code__r.L5_Product__r.Core_Avail_for_New_Designs__c)))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>PCC_L4L5_Product_NewDesignAvailability</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>PCC_OEM_Name__c</fullName>
         <inlineHelpText>Please select OEM provider</inlineHelpText>
         <label>OEM Name</label>
@@ -926,12 +1024,32 @@
         <type>Date</type>
     </fields>
     <fields>
+        <fullName>PCC_Pricing_End_Date__c</fullName>
+        <formula>Core_Design_Registration_Id__r.PCC_Pricing_End_Date__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Pricing End Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>PCC_Pricing_Start_Date__c</fullName>
+        <formula>Core_Design_Registration_Id__r.PCC_Pricing_Start_Date__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Pricing Start Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
         <fullName>PCC_Product_Additional_Attribute__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <inlineHelpText>Please select products</inlineHelpText>
         <label>Deal Product</label>
         <lookupFilter>
-            <active>true</active>
+            <active>false</active>
             <booleanFilter>((2 OR 3) AND (1 OR 3)) OR 4</booleanFilter>
             <filterItems>
                 <field>Product_Additional_Attribute__c.Is_Product_Active__c</field>
@@ -962,6 +1080,15 @@
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>PCC_Product_JSON__c</fullName>
+        <label>Product JSON</label>
+        <length>2000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
     </fields>
     <fields>
         <fullName>PCC_Programs_Eligible__c</fullName>
@@ -1083,7 +1210,7 @@
     </fields>
     <fields>
         <fullName>Product_Selection_information_Message__c</fullName>
-        <defaultValue>&quot;Please select Product or MMID or Old MMID or Ordering code&quot;</defaultValue>
+        <defaultValue>&quot;Please select Product or MMID or Ordering code&quot;</defaultValue>
         <externalId>false</externalId>
         <label>Product Selection information Message</label>
         <length>100</length>
@@ -1121,6 +1248,18 @@ IF(Core_Product_Id__r.Core_Hierarchy_ID__c = &apos;43&apos;, Core_Product_Id__r.
         <type>Text</type>
         <unique>false</unique>
     </fields>
+    <fields>
+        <fullName>round_off_Test__c</fullName>
+        <externalId>false</externalId>
+        <label>round off Test</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
     <label>Design-Deal Registration Product</label>
     <listViews>
         <fullName>All_Design_Products</fullName>
@@ -1134,6 +1273,11 @@ IF(Core_Product_Id__r.Core_Hierarchy_ID__c = &apos;43&apos;, Core_Product_Id__r.
         <columns>CREATED_DATE</columns>
         <columns>LAST_UPDATE</columns>
         <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_Full_Year_Qty__c</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filters>
         <label>All Design Products</label>
     </listViews>
     <listViews>
@@ -1154,6 +1298,11 @@ IF(Core_Product_Id__r.Core_Hierarchy_ID__c = &apos;43&apos;, Core_Product_Id__r.
         <columns>Core_Intel_Technical_Owner_Nm__c</columns>
         <columns>Core_Opportunity_Nm__c</columns>
         <filterScope>Everything</filterScope>
+        <filters>
+            <field>Design_Deal_Registration_Status__c</field>
+            <operation>equals</operation>
+            <value>Draft</value>
+        </filters>
         <label>All Design Products - Design Info</label>
     </listViews>
     <nameField>
@@ -1164,7 +1313,6 @@ IF(Core_Product_Id__r.Core_Hierarchy_ID__c = &apos;43&apos;, Core_Product_Id__r.
     </nameField>
     <pluralLabel>Design-Deal Registration Products</pluralLabel>
     <profileSearchLayouts>
-        <fields>NAME</fields>
         <fields>Core_Product_Id__c</fields>
         <profileName>Partner</profileName>
     </profileSearchLayouts>
@@ -1215,31 +1363,7 @@ IF(Core_Product_Id__r.Core_Hierarchy_ID__c = &apos;43&apos;, Core_Product_Id__r.
         <picklistValues>
             <picklist>PCC_Competitor_OEM_Name__c</picklist>
             <values>
-                <fullName>Acer</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Apple</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Asus</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Dell</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>HP</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Lenovo</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Write In Competitor OEM Name</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -1303,31 +1427,7 @@ IF(Core_Product_Id__r.Core_Hierarchy_ID__c = &apos;43&apos;, Core_Product_Id__r.
         <picklistValues>
             <picklist>PCC_OEM_Name__c</picklist>
             <values>
-                <fullName>Acer</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Apple</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Asus</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Dell</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>HP</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Lenovo</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Write In OEM Name</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -1378,30 +1478,6 @@ IF(Core_Product_Id__r.Core_Hierarchy_ID__c = &apos;43&apos;, Core_Product_Id__r.
         <picklistValues>
             <picklist>PCC_Competitor_OEM_Name__c</picklist>
             <values>
-                <fullName>Acer</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Apple</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Asus</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Dell</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>HP</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Lenovo</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Write In Competitor OEM Name</fullName>
                 <default>false</default>
             </values>
@@ -1465,30 +1541,6 @@ IF(Core_Product_Id__r.Core_Hierarchy_ID__c = &apos;43&apos;, Core_Product_Id__r.
         </picklistValues>
         <picklistValues>
             <picklist>PCC_OEM_Name__c</picklist>
-            <values>
-                <fullName>Acer</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Apple</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Asus</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Dell</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>HP</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Lenovo</fullName>
-                <default>false</default>
-            </values>
             <values>
                 <fullName>Write In OEM Name</fullName>
                 <default>false</default>
@@ -1541,27 +1593,7 @@ IF(Core_Product_Id__r.Core_Hierarchy_ID__c = &apos;43&apos;, Core_Product_Id__r.
         <picklistValues>
             <picklist>PCC_Competitor_OEM_Name__c</picklist>
             <values>
-                <fullName>Acer</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Apple</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Asus</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Dell</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>HP</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Lenovo</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -1628,30 +1660,6 @@ IF(Core_Product_Id__r.Core_Hierarchy_ID__c = &apos;43&apos;, Core_Product_Id__r.
         </picklistValues>
         <picklistValues>
             <picklist>PCC_OEM_Name__c</picklist>
-            <values>
-                <fullName>Acer</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Apple</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Asus</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Dell</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>HP</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Lenovo</fullName>
-                <default>false</default>
-            </values>
             <values>
                 <fullName>Write In OEM Name</fullName>
                 <default>false</default>
@@ -2168,8 +2176,16 @@ IF(Core_Product_Id__r.Core_Hierarchy_ID__c = &apos;43&apos;, Core_Product_Id__r.
         <errorMessage>Please enter the comments for rejection</errorMessage>
     </validationRules>
     <validationRules>
+        <fullName>DDR_Product_Not_Available_for_New_Design</fullName>
+        <active>false</active>
+        <description>This rule will be fired when product is not available for new design</description>
+        <errorConditionFormula>NOT(Core_Product_Id__r.Core_Avail_for_New_Designs__c)</errorConditionFormula>
+        <errorDisplayField>Core_Product_Id__c</errorDisplayField>
+        <errorMessage>This Product is not available for Design Submission</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>DDR_Product_validation_Message</fullName>
-        <active>true</active>
+        <active>false</active>
         <errorConditionFormula>AND(NOT(CONTAINS(RecordType.Name, &apos;Deal&apos;)),
 OR(ISCHANGED(Core_Product_Id__c),
 ISCHANGED( MMID_or_Ordering_code__c)),
@@ -2182,10 +2198,23 @@ NOT(AND(ISPICKVAL( Core_Design_Registration_Id__r.Core_Submission_Type__c,&apos;
         <errorMessage>Editing the product is not allowed. If you want to make changes, please cancel the current product and submit a new one.</errorMessage>
     </validationRules>
     <validationRules>
-        <fullName>DDR_Restrict_FPGA_Product</fullName>
-        <active>true</active>
-        <errorConditionFormula>AND(NOT( $Permission.PCC_Bypass_Automation ),CONTAINS(Core_Product_Id__r.Core_Product_Type__c, &quot;FPGA&quot;))</errorConditionFormula>
-        <errorMessage>Registrations for FPGA product group has been disabled.</errorMessage>
+        <fullName>Design_Check</fullName>
+        <active>false</active>
+        <errorConditionFormula>OR(ISPICKVAL(Core_Design_Registration_Id__r.Core_Opportunity_Id__r.StageName,&apos;Design Win&apos;),ISPICKVAL(Core_Design_Registration_Id__r.Core_Opportunity_Id__r.StageName,&apos;Production Win&apos;))</errorConditionFormula>
+        <errorMessage>Product cannot be added as opportunity is in the win state. Update for Portal and M2M</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>EmbeddedIOTrule</fullName>
+        <active>false</active>
+        <errorConditionFormula>AND( Core_Design_Registration_Id__r.PCC_Registration_Type__c = &apos;Design Registration&apos;,
+ISPICKVAL( Core_Design_Registration_Id__r.Core_Product_Group_Nm__c ,&apos;Embedded/IOT&apos;),
+NOT( OR( ISPICKVAL( Core_Design_Registration_Id__r.Core_Product_Segment_Nm__c ,
+&apos;Embedded / IOT&apos;),
+ISPICKVAL(Core_Design_Registration_Id__r.Core_Product_Segment_Nm__c,
+&apos;Comms Infra. / Networking&apos;))),
+NOT(ISPICKVAL(Core_Design_Registration_Id__r.Core_Design_Registration_Status_Nm__c,&apos;Approved&apos;)),
+NOT( $Permission.PCC_Bypass_Automation ))</errorConditionFormula>
+        <errorMessage>wrong product segment value on DR</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>PCC_Competitor_System_Model_is_Required</fullName>
@@ -2194,6 +2223,16 @@ NOT(AND(ISPICKVAL( Core_Design_Registration_Id__r.Core_Submission_Type__c,&apos;
         <errorConditionFormula>AND(Core_Design_Registration_Id__r.PCC_Registration_Type__c =&apos;Deal Registration&apos;,          INCLUDES(PCC_Product_Additional_Attribute__r.Programs_Eligible__c ,&apos;PDI&apos;),  ISBLANK(PCC_Competitor_System_Model__c),NOT( $Permission.PCC_Bypass_Automation ))</errorConditionFormula>
         <errorDisplayField>PCC_Competitor_System_Model__c</errorDisplayField>
         <errorMessage>Required</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>PCC_Deal_Product_Edit_Validation_Rule</fullName>
+        <active>false</active>
+        <errorConditionFormula>AND(ISCHANGED(PCC_Product_Additional_Attribute__c),
+TEXT(Core_Design_Registration_Id__r.Core_Design_Registration_Status_Nm__c) ==&apos;DRAFT&apos;,
+NOT(ISBLANK(Core_Design_Registration_Id__r.Core_Accepted_By_Id__c))
+)</errorConditionFormula>
+        <errorDisplayField>PCC_Product_Additional_Attribute__c</errorDisplayField>
+        <errorMessage>Editing the Deal product is not allowed. If you want to make changes, please delete the current product and submit a new one.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>PCC_Deal_Product_Restriction</fullName>
@@ -2214,7 +2253,7 @@ NOT(AND(ISPICKVAL( Core_Design_Registration_Id__r.Core_Submission_Type__c,&apos;
 		)
 	)
 )</errorConditionFormula>
-        <errorMessage>Products cannot be added at this stage.</errorMessage>
+        <errorMessage>Products cannot be added at this stage, Opportunity is already sent for approval/lost/cancelled.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>PCC_Deal_Product_is_required</fullName>
@@ -2226,7 +2265,7 @@ NOT(AND(ISPICKVAL( Core_Design_Registration_Id__r.Core_Submission_Type__c,&apos;
     </validationRules>
     <validationRules>
         <fullName>PCC_Deal_Product_shoud_be_active</fullName>
-        <active>true</active>
+        <active>false</active>
         <description>Deal Product should be active if deal and Fin Eligible</description>
         <errorConditionFormula>AND(Core_Design_Registration_Id__r.PCC_Registration_Type__c =&apos;Deal Registration&apos;,  NOT(PCC_Product_Additional_Attribute__r.Is_Product_Active__c ),
 NOT(ISPICKVAL(Core_Design_Product_Status_Nm__c,&apos;Rejected&apos;)),NOT( $Permission.PCC_Bypass_Automation ))</errorConditionFormula>
@@ -2261,12 +2300,14 @@ PCC_Quote_Line_Pricing_End_Date__c&lt;today(),
 NOT( $Permission.PCC_Bypass_Automation ),
 NOT(ISPICKVAL(Core_Design_Product_Status_Nm__c,&apos;Rejected&apos;)))</errorConditionFormula>
         <errorDisplayField>PCC_Quote_Line_Pricing_End_Date__c</errorDisplayField>
-        <errorMessage>Quote Line Pricing End Date must be on/after to the current date</errorMessage>
+        <errorMessage>Quote Line Pricing End Date must be on/prior to the current date</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>PCC_Quote_Enddate_Lessthan_Pricing</fullName>
         <active>true</active>
-        <errorConditionFormula>AND(Core_Design_Registration_Id__r.PCC_Registration_Type__c =&apos;Deal Registration&apos;,
+        <errorConditionFormula>AND(
+NOT(PCC_Change_Requested__c),
+Core_Design_Registration_Id__r.PCC_Registration_Type__c =&apos;Deal Registration&apos;,
 PCC_Quote_Line_Pricing_End_Date__c &gt; Core_Design_Registration_Id__r.PCC_Pricing_End_Date__c ,
 NOT( $Permission.PCC_Bypass_Automation ),
 NOT(ISPICKVAL(Core_Design_Product_Status_Nm__c,&apos;Rejected&apos;)),
@@ -2281,6 +2322,7 @@ ISPICKVAL( Core_Design_Registration_Id__r.Core_Design_Registration_Status_Nm__c,
         <fullName>PCC_Quote_Startdate_Greaterthan_Pricing</fullName>
         <active>true</active>
         <errorConditionFormula>AND(
+NOT(PCC_Change_Requested__c),
 Core_Design_Registration_Id__r.PCC_Registration_Type__c =&apos;Deal Registration&apos;,
 OR(Core_Design_Registration_Id__r.PCC_Pricing_End_Date__c &lt; PCC_Quote_Line_Pricing_Start_Date__c ,
 PCC_Quote_Line_Pricing_Start_Date__c &lt;  Core_Design_Registration_Id__r.PCC_Pricing_Start_Date__c ),
@@ -2294,6 +2336,29 @@ ISPICKVAL( Core_Design_Registration_Id__r.Core_Design_Registration_Status_Nm__c,
         <errorMessage>Quote Line Pricing Start Date should be between Deal Reg Pricing Start Date/End Date</errorMessage>
     </validationRules>
     <validationRules>
+        <fullName>PCC_RestrictDRP_DRIdEdit</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(
+    ISNEW(),
+     ISCHANGED(Core_Design_Registration_Id__c)
+)</errorConditionFormula>
+        <errorDisplayField>Core_Design_Registration_Id__c</errorDisplayField>
+        <errorMessage>This Value is changed. Please do not edit this value</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>PCC_Restrict_Partners_from_Save_New</fullName>
+        <active>false</active>
+        <description>Restrict the Partners to click on Save &amp; New Button after Submission of DR.</description>
+        <errorConditionFormula>AND (
+$Profile.Name = &apos;Partner&apos;,
+NOT(ISNEW()),
+NOT($Permission.PCC_Bypass_Automation),
+Core_Design_Registration_Id__r.PCC_Registration_Type__c =&apos;Deal Registration&apos;,
+NOT(ISPICKVAL(Core_Design_Registration_Id__r.Core_Design_Registration_Status_Nm__c,&apos;Draft&apos;))
+)</errorConditionFormula>
+        <errorMessage>Partners cannot add/modify DRP at this stage.</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>PCC_System_Model_is_Required</fullName>
         <active>true</active>
         <description>System Model	is Required if deal and Fin Eligible</description>
@@ -2302,10 +2367,18 @@ ISPICKVAL( Core_Design_Registration_Id__r.Core_Design_Registration_Status_Nm__c,
         <errorMessage>Required</errorMessage>
     </validationRules>
     <validationRules>
-        <fullName>PCC_TargetResalePrice_Mandatory</fullName>
-        <active>true</active>
-        <errorConditionFormula>ISBLANK(Core_Target_Resale_Amt__c) &amp;&amp; ISPICKVAL(Core_Design_Product_Status_Nm__c ,&quot;Approved&quot; )</errorConditionFormula>
-        <errorMessage>Target Resale Price should not be blank or zero.</errorMessage>
+        <fullName>PCC_Update_Pricing_Start_End_Date_Blank</fullName>
+        <active>false</active>
+        <errorConditionFormula>AND(Core_Design_Registration_Id__r.PCC_Registration_Type__c =&apos;Deal Registration&apos;, INCLUDES(PCC_Product_Additional_Attribute__r.Programs_Eligible__c ,&apos;PDI&apos;),OR(ISNULL(PCC_Quote_Line_Pricing_Start_Date__c ) ,ISBLANK(PCC_Quote_Line_Pricing_End_Date__c )))</errorConditionFormula>
+        <errorDisplayField>PCC_Additional_Comments__c</errorDisplayField>
+        <errorMessage>Quote Line Pricing Start Date/Quote Line Pricing End Date is required for Fin eligible product.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>PCC_ValidationOnCompetitorProduct</fullName>
+        <active>false</active>
+        <errorConditionFormula>AND(ISNEW(),OR(PCC_Competitor_Product__r.RecordType.DeveloperName &lt;&gt; &apos;Pricing_Client&apos;,  PCC_Competitor_Product__r.Pricing_Active_cb__c = FALSE),CONTAINS(  RecordType.DeveloperName , &apos;Deal&apos;),NOT( $Permission.PCC_Bypass_Automation ) )</errorConditionFormula>
+        <errorDisplayField>PCC_Competitor_Product__c</errorDisplayField>
+        <errorMessage>Check the status or record type of the product</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>PCC_ValidationOnProductEligibility</fullName>
@@ -2430,6 +2503,20 @@ NOT(ISPICKVAL(Core_Design_Product_Status_Nm__c,&apos;Rejected&apos;)) )</errorCo
         <errorMessage>Quote Line Pricing End Date should not be earlier than the Deal Reg Start Date</errorMessage>
     </validationRules>
     <validationRules>
+        <fullName>PCC_start_dt_cant_be_mor_thn_hdr_end</fullName>
+        <active>false</active>
+        <description>Quote Line Pricing Start Date should not be after than the Deal Reg End Date</description>
+        <errorConditionFormula>AND(
+Core_Design_Registration_Id__r.PCC_Registration_Type__c =&apos;Deal Registration&apos;,
+INCLUDES(PCC_Product_Additional_Attribute__r.Programs_Eligible__c ,&apos;PDI&apos;),
+Core_Design_Registration_Id__r.PCC_Pricing_End_Date__c &lt;  PCC_Quote_Line_Pricing_Start_Date__c ,
+NOT( $Permission.PCC_Bypass_Automation ),
+NOT(ISPICKVAL(Core_Design_Product_Status_Nm__c,&apos;Rejected&apos;))
+ )</errorConditionFormula>
+        <errorDisplayField>PCC_Quote_Line_Pricing_Start_Date__c</errorDisplayField>
+        <errorMessage>Quote Line  Pricing Start Date should not be earlier than the Deal Reg Header End Date</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>PCC_strt_Dt_cant_be_mor_thn_end_dt</fullName>
         <active>true</active>
         <description>Quote Line Pricing Start Date cannot be more than Quote Line Pricing End Date</description>
@@ -2454,25 +2541,40 @@ NOT(ISPICKVAL(Core_Design_Product_Status_Nm__c,&apos;Rejected&apos;)))</errorCon
     </validationRules>
     <validationRules>
         <fullName>Product_selection_error_message</fullName>
-        <active>true</active>
-        <errorConditionFormula>ISNEW() &amp;&amp; AND(TEXT(Core_Submission_Type__c) !=&apos;M2M&apos;, NOT(Core_ThrowValidation__c),NOT($Permission.PCC_Bypass_Automation))</errorConditionFormula>
-        <errorMessage>Please provide value for either Product or MMID or Old MMID or Ordering code, but not both. At least one field must be filled in.</errorMessage>
+        <active>false</active>
+        <errorConditionFormula>AND(
+NOT($Permission.PCC_Bypass_Automation),
+OR(
+AND(
+NOT(ISBLANK(Core_Product_Id__c)),
+NOT(ISBLANK(MMID_or_Ordering_code__c)),
+Core_ThrowValidation__c
+
+),
+AND(
+ISBLANK(Core_Product_Id__c),
+ISBLANK(MMID_or_Ordering_code__c),
+Core_ThrowValidation__c),
+ISCHANGED(Core_Product_Id__c)
+),
+NOT(  $Permission.DDR_PreApprover_Permission )
+)</errorConditionFormula>
+        <errorMessage>Please select product from product dropdown or please provide valid MMID or Ordering code</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Restrict_new_addition_of_new_product</fullName>
-        <active>true</active>
+        <active>false</active>
         <description>Restrict create/update product if Design registration status is cancelled or rejected or abandoned</description>
         <errorConditionFormula>AND( NOT(Core_Locked_Ind__c),
 NOT(AND(OR( $Permission.DDR_Internal_Users , $Permission.DDR_PreApprover_Permission ),ISCHANGED(Core_Comment_Txt__c),NOT(ISCHANGED(Core_Design_Product_Status_Nm__c)))),
 OR(ISPICKVAL(Core_Design_Registration_Id__r.Core_Design_Registration_Status_Nm__c,&apos;Cancelled&apos;),
 ISPICKVAL(Core_Design_Registration_Id__r.Core_Design_Registration_Status_Nm__c,&apos;Rejected&apos;),
 ISPICKVAL(Core_Design_Registration_Id__r.Core_Design_Registration_Status_Nm__c,&apos;Abandoned&apos;),
-ISPICKVAL(Core_Design_Registration_Id__r.Core_Design_Registration_Status_Nm__c,&apos;Expired&apos;),
 
 
 
 
-AND(OR($Profile.Name = &apos;Partner&apos;),OR(ISCHANGED(Core_Target_Resale_Amt__c),ISCHANGED(Core_Full_Year_Qty__c), ISCHANGED(Core_Partner_Tracking_Cd__c)),
+AND(OR($Profile.Name = &apos;Partner&apos;),OR(ISCHANGED(Core_Target_Resale_Amt__c),ISCHANGED(Core_Full_Year_Qty__c), ISCHANGED(Core_Partner_Tracking_Cd__c), OR(ISCHANGED(Core_Product_Id__c))),
 
 OR(
 ISPICKVAL(Core_Design_Registration_Id__r.Core_Design_Registration_Status_Nm__c, &apos;Design accepted&apos;),
@@ -2489,6 +2591,7 @@ ISPICKVAL(PRIORVALUE(Core_Design_Product_Status_Nm__c), &apos;Retired&apos;)
 )
 )),
 NOT( $Permission.PCC_Bypass_Automation )
+
 )</errorConditionFormula>
         <errorMessage>Products cannot be added or edited</errorMessage>
     </validationRules>
@@ -2499,7 +2602,25 @@ NOT( $Permission.PCC_Bypass_Automation )
         <errorDisplayField>Core_Full_Year_Qty__c</errorDisplayField>
         <errorMessage>Quantity must be greater than zero.</errorMessage>
     </validationRules>
+    <validationRules>
+        <fullName>approve_all_test</fullName>
+        <active>false</active>
+        <errorConditionFormula>AND(ISPICKVAL( Core_Design_Product_Status_Nm__c ,&apos;Approved&apos;), $Permission.DDR_Read_Only )</errorConditionFormula>
+        <errorMessage>Cannot approve</errorMessage>
+    </validationRules>
     <visibility>Public</visibility>
+    <webLinks>
+        <fullName>Approve_All_Products</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <linkType>url</linkType>
+        <masterLabel>Approve All Products</masterLabel>
+        <openType>replace</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>/lightning/n/pCC_DDR_ApproveAllProducts</url>
+    </webLinks>
     <webLinks>
         <fullName>Core_Approve_Product</fullName>
         <availability>online</availability>
@@ -2626,8 +2747,12 @@ else if (&apos;{!Core_Design_Registration_Product__c.Core_Active_Status__c}&apos
 else if (&apos;{!Core_Design_Registration_Product__c.Core_DR_Eligible_Status__c}&apos; == false &amp;&amp; &apos;{!Core_Design_Registration_Product__c.Core_Design_Product_Status_Nm__c}&apos; == &apos;Pending&apos;) {
     alert(&apos;This product  is Ineligible and cannot be updated.&apos;);
 }
-
+// Check if the Comment is null
+else if ((&apos;{!Core_Design_Registration_Product__c.Core_Comment_Txt__c}&apos; == null) &amp;&amp; (&apos;{!Core_Design_Registration_Product__c.Core_Design_Product_Status_Nm__c}&apos; == &apos;Rejected&apos;)) {
+    alert(&apos;Please enter the comments to reject the product.&apos;);
+}
 // Reject the Design Registraion Product
+
 else {
     var designRegProduct = new sforce.SObject(&quot;Core_Design_Registration_Product__c&quot;);
     designRegProduct.Id = &quot;{!Core_Design_Registration_Product__c.Id}&quot;;
@@ -2696,6 +2821,19 @@ else {
         <requireRowSelection>false</requireRowSelection>
     </webLinks>
     <webLinks>
+        <fullName>DRP_CR</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>DRP CR</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>/flow/Change_Request_in_Opportunity_Lines</url>
+    </webLinks>
+    <webLinks>
         <fullName>Expired_all_button</fullName>
         <availability>online</availability>
         <displayType>massActionButton</displayType>
@@ -2707,5 +2845,18 @@ else {
         <protected>false</protected>
         <requireRowSelection>true</requireRowSelection>
         <url>/flow/Set_as_Expired_Bulk?recordId={!Core_Design_Registration__c.Id}&amp;retURL={!URLFOR(Core_Design_Registration__c.Id)}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Set_as_Expired_Bulk_Button</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Set as Expired Bulk</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>/flow/Set_as_Expired_Bulk</url>
     </webLinks>
 </CustomObject>

@@ -47,18 +47,18 @@
             <value>Develop,Design</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OWNER_EMAIL</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>peter.pl.pan@intel.com,sk.ng@intel.com,george.neah@intel.com,phoebe1.yeoh@intel.com,chia.hoey.oon@intel.com,jesper.boon@intel.com,clifford.tan@intel.com</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Account.Core_Sales_Groups__c</column>
+            <column>FULL_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>APJ Taiwan Sales Group</value>
+            <value>Chia Hoey Oon,foo choong boon,su yee yeoh,Chian Wei Yow,Say Keat Ng,Chong Heng (Clifford) Tan,Chia Hsin Sze,Yuen Wei Neah,Caseen Sze,George Neah,I&apos;ng Chin Tan,Jae Jiun Koo,JASON WEI LOONG ONG,Kelvin Lum,Clifford Tan,SK Ng,Shermaine Yow</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Sales_Groups__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>GMP Taiwan Sales Group</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

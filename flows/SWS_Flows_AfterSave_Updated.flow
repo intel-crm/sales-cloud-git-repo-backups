@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>MAQL_One_Two_Four_Day_SLA_Expired_Email</name>
+        <label>MAQL_One_Two_Four_Day_SLA_Expired_Email</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <actionName>Lead.Core_MAQL_SLA_Expired_Alert</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Lead.Core_MAQL_SLA_Expired_Alert</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <apiVersion>64.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Core_Lead_Unreachable</name>
+        <label>Core_Lead_Unreachable</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>MQL_No_Tasks_SLA_Alert</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Lead_Unreachable</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_Lead_Sub_Status__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Lead_Sub_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Unreachable</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>mainUpdate</targetReference>
+            </connector>
+            <label>Lead Unreachable</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>MQL_No_Tasks_SLA_Alert</name>
+        <label>MQL No Tasks SLA Alert</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Having_Tasks</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>MQL_No_Tasks_SLA_Entry_Formula</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Marketing Qualified Lead</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Lead_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Accepted</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Lead_Sub_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Attempting Contact</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Having_Tasks__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>MAQL_One_Two_Four_Day_SLA_Expired_Email</targetReference>
+            </connector>
+            <label>Having Tasks</label>
+        </rules>
+    </decisions>
+    <description>combining
+Core_Lead_Unreachable
+MQL No Tasks SLA Alert
+SWS Populate Opportunity On Credit Request
+SWS Sales Group Active Value Validation</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>Core_Exitt_Datee_MAQLFormula</name>
+        <dataType>DateTime</dataType>
+        <expression>IF( ISPICKVAL($Record.Status,&apos;Marketing Qualified Lead&apos;) ,Now(),  $Record.Core_Exit_Date_MAQL__c )</expression>
+    </formulas>
+    <formulas>
+        <name>Core_Exxit_Datee_SALFormula</name>
+        <dataType>DateTime</dataType>
+        <expression>IF( ISPICKVAL($Record.Status,&apos;Sales Accepted Lead&apos;) ,Now(),  $Record.Core_Exit_Date_SAL__c )</expression>
+    </formulas>
+    <formulas>
+        <name>Core_Unreachable_StageFormula</name>
+        <dataType>String</dataType>
+        <expression>Text($Record.Status)</expression>
+    </formulas>
+    <formulas>
+        <name>Core_Unreachable_Start_DateFormula</name>
+        <dataType>DateTime</dataType>
+        <expression>NOW()</expression>
+    </formulas>
+    <formulas>
+        <name>ExitDateSGLFormula</name>
+        <dataType>DateTime</dataType>
+        <expression>IF( ISPICKVAL($Record.Status,&apos;Sales Generated Lead&apos;) ,Now(), {!$Record.SWS_Exit_Date_SGL__c} )</expression>
+    </formulas>
+    <formulas>
+        <name>MQL_No_Tasks_SLA_Entry_Formula</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(
+	{!$Record.RecordType.DeveloperName} &lt;&gt; &quot;Partner_Lead&quot;,
+	OR( 
+		ISPICKVAL({!$Record.Core_Lead_Priority__c}, &apos;Hot&apos;),
+		ISPICKVAL({!$Record.Core_Lead_Priority__c}, &apos;Warm&apos;),
+		ISPICKVAL({!$Record.Core_Lead_Priority__c}, &apos;Cold&apos;)
+		),
+     ISPICKVAL( {!$Record.Status}, &apos;Marketing Qualified Lead&apos;),
+     {!$Record.Core_Having_Tasks__c} = false
+)</expression>
+    </formulas>
+    <interviewLabel>SWS_Flows_ {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>SWS_Flows_AfterSave_Updated</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>mainUpdate</name>
+        <label>mainUpdate</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>MQL_No_Tasks_SLA_Alert</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_Exit_Date_MAQL__c</field>
+            <value>
+                <elementReference>Core_Exitt_Datee_MAQLFormula</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Exit_Date_SAL__c</field>
+            <value>
+                <elementReference>Core_Exxit_Datee_SALFormula</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Lead_State__c</field>
+            <value>
+                <stringValue>Terminated</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Lead_Sub_Status__c</field>
+            <value>
+                <stringValue>Unreachable</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Unreachable_Stage__c</field>
+            <value>
+                <elementReference>Core_Unreachable_StageFormula</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Unreachable_Start_Date__c</field>
+            <value>
+                <elementReference>Core_Unreachable_Start_DateFormula</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Unreachable_flag__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>SWS_Exit_Date_SGL__c</field>
+            <value>
+                <elementReference>ExitDateSGLFormula</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Core_Lead_Unreachable</targetReference>
+        </connector>
+        <object>Lead</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+</Flow>

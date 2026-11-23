@@ -22,6 +22,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Core_Technical_Owner__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_Account_Country__c</field>
             <table>Opportunity</table>
         </columns>
@@ -62,11 +67,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_AI_Content_in_System__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>Core_Approved_By__c</field>
             <table>Opportunity</table>
         </columns>
@@ -98,11 +98,6 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_Approver_1__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Design_Type__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
@@ -152,11 +147,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_Low_pipeline_confidence__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>Core_At_Risk_Created_Date__c</field>
             <table>Opportunity</table>
         </columns>
@@ -173,11 +163,6 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_Biz_MFA__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Account_CIM_Id__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
@@ -252,11 +237,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_Account_UCD_ID__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>Core_Competitive_Architecture__c</field>
             <table>Opportunity</table>
         </columns>
@@ -288,11 +268,6 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_Consumer_Factor_Login__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CRM_Unified_Global_Customer_Name__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
@@ -372,6 +347,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>LID__CurrentGenerators__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_Customer_Project_Details__c</field>
             <table>Opportunity</table>
         </columns>
@@ -397,12 +377,17 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_Date_Submitted_for_Approval__c</field>
+            <field>Data_Quality_Description__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_Opp_Prime_Account_Name__c</field>
+            <field>Data_Quality_Score__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Date_Submitted_for_Approval__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
@@ -433,6 +418,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_Decision_Opportunity_GEO__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LID__DeliveryInstallationStatus__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
@@ -473,36 +463,6 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_Design_Start_Date__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CRM_Audit_Close_Date__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CRM_Auditor_Comments__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CRM_Audit_Start_Date__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CRM_Audit_Status__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CRM_Auditor_Name__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CRM_Audit_Fail_Reason__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
@@ -732,6 +692,16 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>LID__Is_Influenced__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Is_PSG_PrimaryQuote__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_IsBlank_Competitive_Arch__c</field>
             <table>Opportunity</table>
         </columns>
@@ -773,6 +743,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_Is_Product_Vendor_Inactive__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Is_Renewal_Amend_PSG_Quote__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
@@ -872,6 +847,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>LID__LinkedIn_Company_Id__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_LOEM__c</field>
             <table>Opportunity</table>
         </columns>
@@ -922,6 +902,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>LID__MainCompetitors__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_Manufacturing_Geo__c</field>
             <table>Opportunity</table>
         </columns>
@@ -963,6 +948,21 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_Modern_Standby__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LID__My_DateTime__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LID__My_Geolocation__Latitude__s</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LID__My_Geolocation__Longitude__s</field>
             <table>Opportunity</table>
         </columns>
         <columns>
@@ -1053,6 +1053,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_Operating_System__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Xvoyant__oppCreatedDate__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
@@ -1293,6 +1298,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>SBQQ__OrderGroupID__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LID__OrderNumber__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
@@ -1842,11 +1852,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_Technical_Owner__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>Core_Technical_Owner_Email_Txt__c</field>
             <table>Opportunity</table>
         </columns>
@@ -1892,7 +1897,17 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>LID__TrackingNumber__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Type</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>ucdDate__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
@@ -2013,6 +2028,16 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_Write_In_Product_Count__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Xvoyant_Filter__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Xvoyant_Opp_Amount__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
@@ -2147,6 +2172,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Account.Owner</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Account.Core_Account_Owner__c</field>
             <table>Opportunity</table>
         </columns>
@@ -2193,6 +2223,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Account.Core_Account_Record_Type__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Account.Account_Record_Type__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
@@ -2248,11 +2283,6 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Account.MaritzCX__Active__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Account.PRM_Active_Associations__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
@@ -2337,6 +2367,41 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Account.Core_bC_Address__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Account.Core_bC_Industry__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Account.Core_bC_Partner_Segment__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Account.Core_bC_Role__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Account.Core_bC_Telephone_number__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Account.Core_bC_Trading_Name_Doing_business_as__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Account.Core_bC_Website_URL__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Account.BillingAddress</field>
             <table>Opportunity</table>
         </columns>
@@ -2412,17 +2477,17 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Account.Core_BVD9_ID__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Account.Core_Calculated_Sales_Group__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Account.Channel_Partner_Referance__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Account.Core_OnePartnerID__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
@@ -2467,6 +2532,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Account.Core_Compliance_Watch_List__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Account.SBQQ__ContractCoTermination__c</field>
             <table>Opportunity</table>
         </columns>
@@ -2482,6 +2552,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Account.Core_Data_Country_Cd__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Account.Core_Data_Country_Nm__c</field>
             <table>Opportunity</table>
         </columns>
@@ -2493,6 +2568,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Account.SBQQ__CoTerminationEvent__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Account.Core_ShipTo_Country__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
@@ -2533,6 +2613,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Account.MaritzCX__CustomerPriority__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Account.Core_Customer_Process_Engg__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
@@ -2582,7 +2667,27 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Account.Data_Quality_Description__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Account.Data_Quality_Score2__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Account.Data_Quality_Score__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Account.Core_Deactivated__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Account.Core_Deactivate_DateTime__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
@@ -2598,11 +2703,6 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Account.Description</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CRM_Unified_Global_Customer_BP_Id__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
@@ -2747,12 +2847,12 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Account.External_Id__c</field>
+            <field>Account.Core_CMF_Express_Station_Id__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Account.Core_MDF_External_Group_Id__c</field>
+            <field>Account.External_Id__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
@@ -2972,12 +3072,32 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Account.LID__LinkedIn_Company_Id__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Account.Core_MAG_Value__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Account.Core_Marked_for_Deletion__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Account.Core_PMP_Membership_Change_Ind__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Account.Core_Mastered_Country_Nm__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Account.Core_Mastered_Simplified_Account_Nm__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
@@ -2993,6 +3113,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Account.Core_Not_an_Embargoed_Country__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Account.Core_Notify_Owner__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
@@ -3018,11 +3143,6 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Account.Core_Open_Revenue_For_Account__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Account.OPID_Hierarchy__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
@@ -3098,6 +3218,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Account.Core_Partner_Alliance_Program_Member__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Account.Core_IPA_Partner_Speciality__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
@@ -3183,6 +3308,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Account.Core_Geo__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Account.Core_Reltio_DataStewardValidationStatus__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
@@ -3347,6 +3477,16 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Account.Core_ShipTo_Street__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Account.Core_ShipTo1_Street__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Account.Core_Sub_Industry__c</field>
             <table>Opportunity</table>
         </columns>
@@ -3432,6 +3572,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Account.Core_CMF_Train_Station_Id__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Account.Type</field>
             <table>Opportunity</table>
         </columns>
@@ -3442,7 +3587,32 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Account.Core_Unified_Country_Customer__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Account.Core_Unified_Global_Customer__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Account.Core_Unified_Intermediate_Customer__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Account.Core_Unified_Intermediate_Customer_2__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Account.MaritzCX__UpsellOpportunity__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Account.User_Defined_BVD_ID__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
@@ -3477,6 +3647,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Account.Core_Shipto1_Zip_Postal_Code__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Owner.UserRole</field>
             <table>Opportunity</table>
         </columns>
@@ -3502,7 +3677,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Owner.Manager</field>
+            <field>Owner.Core_Manager__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
@@ -3617,7 +3792,37 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_Quantity_count__c</field>
+            <field>Core_Start_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_End_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_difference__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Restrict_Opp_Submission__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_BU_Short_Name_Count_Check__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Account_Record_type__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Is_KPI_Failed__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
@@ -3627,7 +3832,57 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Core_Is_Cloned__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_is_cloned_Opportunity__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Val_Test__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_IsClone__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Primary_Customer_Contact__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Solution_Area_Count__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Pre_Submit_Check__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Contact_Roles_Count__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CoE_Engagement_Needed__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CoE_Status__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Total_Days_From_Creation__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
@@ -3642,82 +3897,197 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Core_Start_Date_of_Current_Stage__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Days_in_Current_Stage__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Decision_Date__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_Technical_Owner__c.Department</field>
+            <field>Core_Oppty_with_No_Products__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_Technical_Owner__c.Division</field>
+            <field>Core_Low_stage_progression__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_Technical_Owner__c.Email</field>
+            <field>Core_Age__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_Technical_Owner__c.Name</field>
+            <field>Core_has_Solution__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_Technical_Owner__c.UserRole</field>
+            <field>Core_Concatenated_Industry_use_case__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_Technical_Owner__c.Title</field>
+            <field>Core_Concatenated_Application_workload__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_Technical_Owner__c.Username</field>
+            <field>Core_Concatenated_Technology_Enabled__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_Technical_Owner__c.Core_User_Geo__c</field>
+            <field>Core_PW_Amount__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_Technical_Owner__c.Core_User_Sub_Geo__c</field>
+            <field>Core_PW_Approval_Status__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Account.Core_MDM_Website__c</field>
+            <field>Core_Exclude_from_Confidence__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Account.Core_Unified_Global_Customer_BP_Id__c</field>
+            <field>Opp_Partner_FAE_Email__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Account.Core_Unified_Global_Customer_Name__c</field>
+            <field>Core_Coverage_Type_Nm__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Account.Unified_Hierarchy_View__c</field>
+            <field>Core_DesignWin_KPI_Txt__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Account.Core_Unified_Intermediate_Customer_BP_Id__c</field>
+            <field>Core_ProductionWin_KPI_Txt__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Account.Core_Unified_Intermediate_Customer_Name__c</field>
+            <field>Core_Test_Validation_Check__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_OpportunityTeamMembers__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Opportunity_Count__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Opportunity_Focus__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>FAD_Start_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>FAD_End_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>RFP_Open_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>RFP_Close_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Desired_End_State__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Technology_and_Readiness_Gaps__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Business_Need__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Technical_Need__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Competitor_Threat_Mitigation__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Push_Reason__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Push_Reason_Details__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>POC_Start_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>POC_End_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Low_pipeline_confidence__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Opportunity_Lock_Status__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_VBS_Potential__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_VBS_Status__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Account_UCD_ID__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
@@ -3727,47 +4097,162 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Account.Core_Group_Id__c</field>
+            <field>Core_Approved_Total_Amount__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Account.Core_Group_Name__c</field>
+            <field>CRM_VBS_Opp_Owner_Changed_For_VBS__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Account.Core_Sales_Group_Preview__c</field>
+            <field>CRM_VBS_Primary_VBS_Offering_Category__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Account.Core_Account_Category_Preview__c</field>
+            <field>CRM_Opportunity_Revenue__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Account.Core_Account_Category__c</field>
+            <field>CRM_VBS_Note__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Account.Core_Account_Primary_Coverage__c</field>
+            <field>CRM_VBS_Contract_Start_Date__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Account.Core_Account_Primary_Coverage_Preview__c</field>
+            <field>CRM_VBS_Contract_Lifetime_in_Months__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Account.Core_Account_Owner_Preview__c</field>
+            <field>CRM_VBS_Total_Contract_Value__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Account.Owner</field>
+            <field>CRM_VBS_Annual_Recurring_Revenue__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CRM_VBS_App_TotalContractValue__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CRM_VBS_App_AnnualRecurringRevenue__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CRM_VBS_App_ContractLifetime_in_Months__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CRM_VBS_App_ContractStartDate__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CRM_VBS_Other_Notes__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_AI_Content_in_System__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Renewed_Opportunity_Ind__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Renewal_Opportunity_Id__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Contract_End_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>IsReverseLowTouchAdmin__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CRM_Unified_Global_Customer_Name__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CRM_Unified_Global_Customer_BP_Id__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CRM_Approved_Annual_Recurring_Revenue__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CRM_Approved_Contract_Lifetime_in_Months__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CRM_Approved_Contract_Start_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CRM_Approved_Total_Contract_Value__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Dual_boarded__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_New_Chassis__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Number_of_Thunderbolt_Ports__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_IDT__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Ethernet__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Evo_Candidate__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Unison__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
@@ -3777,12 +4262,102 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Analysis_Rich_Text__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Last_Stage_Change_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Is_Processed__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>SubmitForApproval_Button_For_PCC__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Smartpicklist_TestingField__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Test_Picklist__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CRM_Audit_Close_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CRM_Audit_Fail_Reason__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CRM_Audit_Start_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CRM_Audit_Status__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CRM_Auditor_Comments__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CRM_Auditor_Name__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CRM_is_DW_reversed__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CRM_Opportunity_Geo_INDIA__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CRM_Opportunity_Team_Geo_INDIA__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CRM_Multi_boarded__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CRM_SLA_Email_Sent_To__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>dummy11__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_Sustainability_Compliance__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_Opportunity_Not_Progressed__c</field>
+            <field>Core_Design_Type__c</field>
             <table>Opportunity</table>
         </columns>
         <masterLabel>Opportunities</masterLabel>
@@ -4020,6 +4595,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Xvoyant__FunctionalGroupID__c</field>
+            <table>Opportunity.OpportunityTeamMembers</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>GeocodeAccuracy</field>
             <table>Opportunity.OpportunityTeamMembers</table>
         </columns>
@@ -4055,12 +4635,12 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_IPA_PartnerRole_Nm__c</field>
+            <field>Core_IPS_IsActiveProxy__c</field>
             <table>Opportunity.OpportunityTeamMembers</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_IPS_IsActiveProxy__c</field>
+            <field>Xvoyant__IsAtmUser__c</field>
             <table>Opportunity.OpportunityTeamMembers</table>
         </columns>
         <columns>
@@ -4070,12 +4650,12 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_Is_FederationId_Valid_Ind__c</field>
+            <field>Core_Is_HQ_User__c</field>
             <table>Opportunity.OpportunityTeamMembers</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_Is_HQ_User__c</field>
+            <field>Core_Is_OSC__c</field>
             <table>Opportunity.OpportunityTeamMembers</table>
         </columns>
         <columns>
@@ -4345,11 +4925,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>User_loggedIN__c</field>
-            <table>Opportunity.OpportunityTeamMembers</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>Core_User_Country_Code__c</field>
             <table>Opportunity.OpportunityTeamMembers</table>
         </columns>
@@ -4390,7 +4965,22 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Core_User_Type__c</field>
+            <table>Opportunity.OpportunityTeamMembers</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_User_Type_Indicator__c</field>
+            <table>Opportunity.OpportunityTeamMembers</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_User_Type_Indicator__c</field>
+            <table>Opportunity.OpportunityTeamMembers</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>User_Unique__c</field>
             <table>Opportunity.OpportunityTeamMembers</table>
         </columns>
         <columns>
@@ -4407,11 +4997,6 @@
             <checkedByDefault>false</checkedByDefault>
             <field>PostalCode</field>
             <table>Opportunity.OpportunityTeamMembers</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CRM_Multi_boarded__c</field>
-            <table>Opportunity</table>
         </columns>
         <masterLabel>Opportunity Team</masterLabel>
     </sections>

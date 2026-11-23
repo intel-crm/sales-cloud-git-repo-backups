@@ -11,7 +11,7 @@
     <aura:attribute name="underReview" type="String" default="Under Review"/>
     <!--Checklist Enhancements v2 - US488875: [Checklist] HIGH: Assign additional Case Checklist permissions to Finance users-->
     <aura:attribute name="editability" type="boolean" default=""/>
-    <aura:attribute name="scorecardDetails" type="Object" /> <!--Scorecard details passed from parent component for AI Audit Changes-->
+    
     <table class="slds-table slds-table--bordered">
         <thead>
             <tr class="slds-line-height_reset">
@@ -107,7 +107,7 @@
                         <td>
                             <!--Checklist Enhancements v1 - US458779: [Case: Checklists] Impact Amount Prevention / Requirement - Added AND condition to disable Imapct Amount if Checklist item is Compliant-->
                             <!--Checklist Enhancements v2 - US497414: [Case: Checklists] Impact Amount Prevention / Requirement - Removed AND condition to enable optional Impact Amount if Checklist item is Compliant-->
-                            <aura:if isTrue="{!v.status == v.underReview &amp;&amp; item.Core_MDF_Checklist_Status__c != v.NA &amp;&amp; item.Core_MDF_Checklist_Status__c != v.Compliant &amp;&amp; v.editability}">
+                            <aura:if isTrue="{!v.status == v.underReview &amp;&amp; item.Core_MDF_Checklist_Status__c != v.NA &amp;&amp; v.editability}">
                                 <lightning:input aura:id="impactamount" name="{!item.Id}" type="number" placeholder = "Amount can include 2 decimal places" title="Amount can include 2 decimal places" value="{!item.Core_MDF_Impact_Amount__c}" onchange="{!c.recordImpactAmount}"/>
                             <aura:set attribute="else">
                                 <lightning:input aura:id="impactamount" name="{!item.Id}" type="number" value="{!item.Core_MDF_Impact_Amount__c}" onchange="{!c.recordImpactAmount}" disabled="true"/>
@@ -116,37 +116,15 @@
                         </td>
                         <td>
                             <aura:if isTrue="{!v.status == v.underReview &amp;&amp; item.Core_MDF_Checklist_Status__c != v.NA &amp;&amp; v.editability}">
-                                <lightning:textarea aura:id="commentcopy" name="{!item.Id}" type="string" placeholder="Enter optional comments here..." title="Enter optional comments here..." value="{!item.Core_MDF_Comment__c}" onchange="{!c.recordComments}"/>
-                                <aura:set attribute="else">
-                                    <lightning:textarea aura:id="commentcopy" name="{!item.Id}" type="string"
-                                        value="{!item.Core_MDF_Comment__c}" onchange="{!c.recordComments}"
-                                        disabled="true" />
-                                </aura:set>
+                                <lightning:textarea  aura:id="commentcopy" name="{!item.Id}" type="string" placeholder="Enter optional comments here..." title="Enter optional comments here..." value="{!item.Core_MDF_Comment__c}" onchange="{!c.recordComments}"/>
+                            <aura:set attribute="else">
+                                <lightning:textarea  aura:id="commentcopy" name="{!item.Id}" type="string" value="{!item.Core_MDF_Comment__c}" onchange="{!c.recordComments}" disabled="true" />
+                            </aura:set>
                             </aura:if>
                         </td>
-                    </tr>
-                <aura:if isTrue="{!v.scorecardDetails.showAIChecklistItemFields}">
-                    <tr>
-                        <td colspan="6" style="border: none">
-                            <strong>AI Checklist Status: </strong> {!item.Core_MDF_AI_Checklist_Status_Nm__c}
-                        </td>
-                    </tr>
-                    <tr>
-                       <td colspan="6" style="white-space: normal;border: none">
-                            <strong>AI Generated Comments: </strong> 
-                            <aura:if isTrue="{!and(not(empty(item.Core_MDF_AI_Checklist_Status_Nm__c)), empty(item.Core_MDF_AI_Generated_Comments_Txt__c))}">
-                                AI comment not available.
-                                <aura:set attribute="else">
-                                    {!item.Core_MDF_AI_Generated_Comments_Txt__c}
-                                </aura:set>
-                            </aura:if>
-                        </td>
-                    </tr>
-                </aura:if>
-                </aura:if>
+                    </tr> 
+                </aura:if>    
             </aura:iteration>
-
         </tbody>
-
     </table>
 </aura:component>

@@ -9,32 +9,6 @@
         <masterLabel>Health%</masterLabel>
         <scale>2</scale>
     </aggregates>
-    <buckets>
-        <bucketType>picklist</bucketType>
-        <developerName>BucketField_7894335</developerName>
-        <masterLabel>Tipo de oportunidad</masterLabel>
-        <nullTreatment>n</nullTreatment>
-        <sourceColumnName>Opportunity.Core_Opportunity_Type__c</sourceColumnName>
-        <useOther>false</useOther>
-        <values>
-            <sourceValues>
-                <sourceValue>Design: Original</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Design: Secondary</sourceValue>
-            </sourceValues>
-            <value>Design</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>Deal: Sell-through</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Deal: Sell-to</sourceValue>
-            </sourceValues>
-            <value>Deal</value>
-        </values>
-    </buckets>
     <columns>
         <field>Opportunity.Core_Opportunity_Entry_Stage__c</field>
     </columns>
@@ -87,11 +61,11 @@
             <value>GMP Americas Sales Territory,GMP Mexico Sales Group,GMP Brazil Sales Group</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OWNER_MANAGER</column>
+            <column>Opportunity.Core_Opportunity_Coverage__c</column>
             <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Hain,Villamil,Vitores,Napolitano</value>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>OSC</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

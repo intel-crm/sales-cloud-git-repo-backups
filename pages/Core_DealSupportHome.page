@@ -380,7 +380,7 @@
                                                             
                                                                 <b>{!$Label.Core_ItemsSent}</b><br/><apex:outputText value="{!seed.productName}" id="username" html-placeholder="Enter a value"/><br/>  
                                                                 <b>{!$Label.Core_QuantitySent}</b><br/><apex:outputText value="{!seed.shippedQty}"  html-placeholder="Enter a value"/><br/>
-                                                                <b>{!$Label.Core_ProductDetail}</b><br/><apex:outputText value="{!seed.productDesc}{!seed.productListDesc}" escape="false" />
+                                                                <b>{!$Label.Core_ProductDetail}</b><br/><apex:outputText value="{!seed.productDesc}{!seed.productListDesc}" />  <!--removed escape="false" -->
                                                                                                     
                                                             </apex:pageBlockSection>
                                                             </apex:outputPanel> 
@@ -408,8 +408,8 @@
                                                         
                                                             <b>{!$Label.Core_Section_Notes}</b> <br/><apex:outputText value="{!seed.notes}"  html-placeholder="{!$Label.Core_EnterValue}" /><br/>
                                                             <b>{!$Label.Core_Submitter}</b> <br/><apex:outputText value="{!seed.Submitter}"  html-placeholder="{!$Label.Core_EnterValue}" /><br/>
-                                                            <br/><apex:outputText value="<b>{!$Label.Core_Account_ID_Name}</b><br/><br/>{!seed.AccountID}"  escape="false" rendered="{!IF(sOppRecName != NULL || sWWID != NULL, true,false)}" /><br/>
-                                                            <br/><apex:outputText value="<b>{!$Label.Core_Opportunity_ID_Name}</b><br/><br/>{!seed.OpportunityID}"  escape="false" rendered="{!IF(sAcctRecName != NULL || sWWID != NULL, true,false)}" />
+                                                            <br/><apex:outputText value="<b>{!$Label.Core_Account_ID_Name}</b><br/><br/>{!seed.AccountID}" rendered="{!IF(sOppRecName != NULL || sWWID != NULL, true,false)}" /><br/>  <!--removed escape="false" -->
+                                                            <br/><apex:outputText value="<b>{!$Label.Core_Opportunity_ID_Name}</b><br/><br/>{!seed.OpportunityID}" rendered="{!IF(sAcctRecName != NULL || sWWID != NULL, true,false)}" />   <!--removed escape="false" -->
                     
                                                         </apex:pageBlockSection>
                                                         </apex:outputPanel>

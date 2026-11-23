@@ -1,0 +1,12 @@
+.custom-container{
+	color : black;
+}
+.bg-color-white{
+    background-color:white;
+}
+.border{
+    border-radius: var(--lwc-borderRadiusMedium, 0.25rem);
+    border: var(--lwc-borderWidthThin, 1px) solid var(--slds-g-color-border-base-1, var(--lwc-colorBorder, #D4D4D4));
+    padding: 0.8rem;
+    height: 15rem;
+ }

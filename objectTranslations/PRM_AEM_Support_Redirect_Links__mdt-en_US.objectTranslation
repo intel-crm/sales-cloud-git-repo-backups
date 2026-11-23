@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>PRM AEM Support &amp; Redirect Links</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>PRM AEM Support &amp; Redirect Links</value>
+    </caseValues>
+    <fields>
+        <label><!-- Partner Role --></label>
+        <name>PRM_Partner_Role__c</name>
+        <picklistValues>
+            <masterLabel>Distributor</masterLabel>
+            <translation><!-- Distributor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA Designer</masterLabel>
+            <translation><!-- FPGA Designer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Independent Software Vendor</masterLabel>
+            <translation><!-- Independent Software Vendor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Manufacturer</masterLabel>
+            <translation><!-- Manufacturer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Seller</masterLabel>
+            <translation><!-- Seller --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service Provider</masterLabel>
+            <translation><!-- Service Provider --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Solution Integrator</masterLabel>
+            <translation><!-- Solution Integrator --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Redirect Link --></label>
+        <name>PRM_Redirect_Link__c</name>
+    </fields>
+    <fields>
+        <label><!-- Support Link --></label>
+        <name>PRM_Support_Link__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

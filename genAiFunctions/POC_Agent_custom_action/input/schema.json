@@ -1,0 +1,21 @@
+{
+  "required" : [ "designId", "fieldToTrack" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "designId" : {
+      "title" : "designId",
+      "description" : "This is the ID of Design-Deal Registration record for which history will be checked",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "fieldToTrack" : {
+      "title" : "fieldToTrack",
+      "description" : "This is the field for which history is requested on Design-Deal Registration record",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

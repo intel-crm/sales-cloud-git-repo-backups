@@ -11,11 +11,11 @@
     <enableGuestPermDisOptOutCruc>false</enableGuestPermDisOptOutCruc>
     <enableGuestSecurityOptOutCruc>false</enableGuestSecurityOptOutCruc>
     <enableGuvSecurityOptOutPref>false</enableGuvSecurityOptOutPref>
-    <enableInviteChatterGuestEnabled>false</enableInviteChatterGuestEnabled>
+    <enableInviteChatterGuestEnabled>true</enableInviteChatterGuestEnabled>
     <enableNameFieldsUserPIIEnabled>false</enableNameFieldsUserPIIEnabled>
-    <enableNetPortalUserReportOpts>false</enableNetPortalUserReportOpts>
+    <enableNetPortalUserReportOpts>true</enableNetPortalUserReportOpts>
     <enableNetworksEnabled>true</enableNetworksEnabled>
-    <enableOotbProfExtUserOpsEnable>false</enableOotbProfExtUserOpsEnable>
+    <enableOotbProfExtUserOpsEnable>true</enableOotbProfExtUserOpsEnable>
     <enablePRMAccRelPref>false</enablePRMAccRelPref>
     <enablePowerCustomerCaseStatus>false</enablePowerCustomerCaseStatus>
     <enablePreventBadgeGuestAccess>true</enablePreventBadgeGuestAccess>

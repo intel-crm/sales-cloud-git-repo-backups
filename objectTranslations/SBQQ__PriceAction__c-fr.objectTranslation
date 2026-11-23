@@ -45,6 +45,10 @@
             <translation><!-- Price Eligibility Date --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Pricing_SW_Additional_Disc__c</masterLabel>
+            <translation><!-- Pricing_SW_Additional_Disc__c --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Pricing_SW_Custom_Product__c</masterLabel>
             <translation><!-- Pricing_SW_Custom_Product__c --></translation>
         </picklistValues>
@@ -69,6 +73,14 @@
             <translation><!-- SBQQ__OptionType__c --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>SBQQ__Quantity__c</masterLabel>
+            <translation><!-- SBQQ__Quantity__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SBQQ__SubscriptionTerm__c</masterLabel>
+            <translation><!-- SBQQ__SubscriptionTerm__c --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Target (%)</masterLabel>
             <translation>Cible (%)</translation>
         </picklistValues>
@@ -81,20 +93,12 @@
             <translation><!-- core_cpq_distributor_margin_pct__c --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>core_cpq_lower_bound_qty_qty__c</masterLabel>
-            <translation><!-- core_cpq_lower_bound_qty_qty__c --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>core_cpq_minimum_qty__c</masterLabel>
             <translation><!-- core_cpq_minimum_qty__c --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>core_cpq_multiple_qty_nbr__c</masterLabel>
             <translation><!-- core_cpq_multiple_qty_nbr__c --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>core_cpq_upper_bound_qty_nbr__c</masterLabel>
-            <translation><!-- core_cpq_upper_bound_qty_nbr__c --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>price_brokencost_amt__c</masterLabel>

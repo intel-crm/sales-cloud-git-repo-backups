@@ -3,14 +3,6 @@
     <label>Retail - ASMO LAR</label>
     <protected>false</protected>
     <values>
-        <field>Core_MDF_Budget_Type_Abbr_txt__c</field>
-        <value xsi:nil="true"/>
-    </values>
-    <values>
-        <field>Core_MDF_Budget_Type_txt__c</field>
-        <value xsi:nil="true"/>
-    </values>
-    <values>
         <field>Core_MDF_Check_SubGeo__c</field>
         <value xsi:type="xsd:boolean">true</value>
     </values>
@@ -23,10 +15,6 @@
         <value xsi:type="xsd:string">Core_MDF_CCP_Int_Retail_ASMO_LAR</value>
     </values>
     <values>
-        <field>Core_MDF_Payment_Admin_Queue_Id__c</field>
-        <value xsi:type="xsd:string">00G3b000003gfQuEAI</value>
-    </values>
-    <values>
         <field>Core_MDF_Program__c</field>
         <value xsi:type="xsd:string">Retail Marketing Funds</value>
     </values>
@@ -37,9 +25,5 @@
     <values>
         <field>Core_MDF_Sub_Region__c</field>
         <value xsi:type="xsd:string">LAR</value>
-    </values>
-    <values>
-        <field>Core_MDF_Type_txt__c</field>
-        <value xsi:nil="true"/>
     </values>
 </CustomMetadata>

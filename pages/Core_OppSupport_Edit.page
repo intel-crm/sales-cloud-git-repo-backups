@@ -1,0 +1,4 @@
+<apex:page standardController="Core_Opportunity_Support__c" extensions="core_OppSupport_EditController" >
+    <apex:form > <apex:commandButton value="Save" action="{!saveRecord}" onclick="return confirmSave();" /> 
+    </apex:form> <script> function confirmSave() { return window.confirm('Are you sure you want to save?'); } </script>
+</apex:page>

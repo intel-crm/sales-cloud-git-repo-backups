@@ -14,8 +14,4 @@
         <field>Pricing_Unified_Customer_Aggregatio_Type__c</field>
         <value xsi:type="xsd:string">Global</value>
     </values>
-    <values>
-        <field>Pricing_Unified_Customer_Type__c</field>
-        <value xsi:type="xsd:string">Global</value>
-    </values>
 </CustomMetadata>

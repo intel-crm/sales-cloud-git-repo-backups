@@ -2,7 +2,7 @@
  * @description       : 
  * @author            : Bharath Chandrashekar
  * @group             : 
- * @last modified on  : 01-20-2025
+ * @last modified on  : 01-24-2025
  * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 public without sharing class Pricing_UCD_BulkRejection_Scheduler implements Schedulable{
@@ -10,6 +10,10 @@ public without sharing class Pricing_UCD_BulkRejection_Scheduler implements Sche
         Pricing_UCD_IQR_BulkAutoRejection_Batch ucdBatch = new Pricing_UCD_IQR_BulkAutoRejection_Batch();
         database.executeBatch(ucdBatch, Integer.valueof(Label.Pricing_UCD_Bulk_Auto_Reject_Batch_Size));
 
+        //schedule auto rejection batch which marks pending quotelines to rejected which has Intel Response Requested by Date and Last Submitted Date check
+        // Pricing_QuoteLine_AutoRejection_Batch autoRejectBatch = new Pricing_QuoteLine_AutoRejection_Batch();
+        // database.executeBatch(autoRejectBatch, Integer.valueof(Label.Pricing_QuoteLine_AutoReject_BatchSize));
+        
         Pricing_IntegrationInboundRetryBatch integrationInboundRetryBatch = new Pricing_IntegrationInboundRetryBatch();
         Database.executeBatch(integrationInboundRetryBatch, Integer.valueof(Label.Pricing_IntegrationRetryBatchSize));
 

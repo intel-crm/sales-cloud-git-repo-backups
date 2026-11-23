@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowTest xmlns="http://soap.sforce.com/2006/04/metadata">
+    <flowApiName>Update_Account_Request_Records</flowApiName>
+    <label>New Test</label>
+    <testPoints>
+        <elementApiName>Start</elementApiName>
+        <isUseMockOutput>false</isUseMockOutput>
+        <parameters>
+            <leftValueReference>$Record</leftValueReference>
+            <type>InputTriggeringRecordInitial</type>
+            <value>
+                <sobjectValue>{&quot;attributes&quot;:{&quot;type&quot;:&quot;Account_Create_Request__c&quot;},&quot;Requestor_Name__c&quot;:&quot;Hafeeza Shaik&quot;,&quot;Process_Type__c&quot;:&quot;Opportunity Management&quot;,&quot;Core_Sales_Groups__c&quot;:&quot;Americas Mexico Sales Group&quot;,&quot;Account_Name__c&quot;:&quot;Test002&quot;,&quot;Industry__c&quot;:&quot;Consulting&quot;,&quot;City__c&quot;:&quot;Kadapa&quot;,&quot;Core_Sub_Industry__c&quot;:&quot;Consulting&quot;,&quot;OwnerId&quot;:&quot;0052D000007LF43QAG&quot;,&quot;Requestor_Email__c&quot;:&quot;hafeezax.shaik@intel.com&quot;,&quot;Core_Account_Reference_Source_Name__c&quot;:&quot;Opportunity Management&quot;,&quot;Status__c&quot;:&quot;New&quot;,&quot;Street__c&quot;:&quot;Maruthi Nagar&quot;,&quot;State__c&quot;:&quot;ANDHRA PRADESH&quot;}</sobjectValue>
+            </value>
+        </parameters>
+    </testPoints>
+    <testPoints>
+        <assertions>
+            <conditions>
+                <leftValueReference>Account_Request_Created</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+        </assertions>
+        <elementApiName>Finish</elementApiName>
+        <isUseMockOutput>false</isUseMockOutput>
+    </testPoints>
+    <testType>WithAssertion</testType>
+</FlowTest>

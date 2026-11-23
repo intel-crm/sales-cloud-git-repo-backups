@@ -2,7 +2,7 @@
 <AnalyticsSettings xmlns="http://soap.sforce.com/2006/04/metadata">
     <alwaysGenPreviews>false</alwaysGenPreviews>
     <analyticsAdoptionMetadata>true</analyticsAdoptionMetadata>
-    <autoInstallApps>false</autoInstallApps>
+    <autoInstallApps>true</autoInstallApps>
     <bundleCachingOptOut>false</bundleCachingOptOut>
     <canAccessAnalyticsViaAPI>true</canAccessAnalyticsViaAPI>
     <canAnnotateDashboards>false</canAnnotateDashboards>
@@ -24,7 +24,7 @@
     <enableCrmaSubsForExpCloud>false</enableCrmaSubsForExpCloud>
     <enableCrtSetupLightningUiPref>true</enableCrtSetupLightningUiPref>
     <enableCurrencySupportInDCRPref>false</enableCurrencySupportInDCRPref>
-    <enableDashboardComponentSnapshot>false</enableDashboardComponentSnapshot>
+    <enableDashboardComponentSnapshot>true</enableDashboardComponentSnapshot>
     <enableDashboardFlexiTable>true</enableDashboardFlexiTable>
     <enableDashboardSubOrgEmailPref>false</enableDashboardSubOrgEmailPref>
     <enableDataCloudReportingPref>true</enableDataCloudReportingPref>
@@ -52,7 +52,7 @@
     <enableOrgHierarchyInDcrPref>false</enableOrgHierarchyInDcrPref>
     <enableOrgWideEmailNotification>false</enableOrgWideEmailNotification>
     <enablePredictFunction>false</enablePredictFunction>
-    <enablePupparazziForNotifications>true</enablePupparazziForNotifications>
+    <enablePupparazziForNotifications>false</enablePupparazziForNotifications>
     <enableQueryLiveConnectors>false</enableQueryLiveConnectors>
     <enableRemoteHomeOrgOps>true</enableRemoteHomeOrgOps>
     <enableRemoveFooterForRepDisplay>false</enableRemoveFooterForRepDisplay>
@@ -64,7 +64,7 @@
     <enableReportInlineEditPref>false</enableReportInlineEditPref>
     <enableReportNotificationsEnable>true</enableReportNotificationsEnable>
     <enableReportRecordPreviewOrgPref>false</enableReportRecordPreviewOrgPref>
-    <enableReportSubOrgEmailPref>true</enableReportSubOrgEmailPref>
+    <enableReportSubOrgEmailPref>false</enableReportSubOrgEmailPref>
     <enableReportTypeSearchPref>false</enableReportTypeSearchPref>
     <enableReportingOnSDMPref>false</enableReportingOnSDMPref>
     <enableRequestPrioritySchdl>false</enableRequestPrioritySchdl>
@@ -80,7 +80,7 @@
     <enableTNAppAutoUpdate>false</enableTNAppAutoUpdate>
     <enableTableauAgenticTransforms>false</enableTableauAgenticTransforms>
     <enableTableauAssetThumbnail>false</enableTableauAssetThumbnail>
-    <enableTableauHyperOutputConnector>false</enableTableauHyperOutputConnector>
+    <enableTableauHyperOutputConnector>true</enableTableauHyperOutputConnector>
     <enableTableauPlatform>false</enableTableauPlatform>
     <enableTableauSdmAiOptimization>false</enableTableauSdmAiOptimization>
     <enableTableauSeamlessAuth>false</enableTableauSeamlessAuth>

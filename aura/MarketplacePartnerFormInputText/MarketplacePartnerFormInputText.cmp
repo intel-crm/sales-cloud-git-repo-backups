@@ -16,7 +16,7 @@
   <aura:attribute name="minLength" type="integer" description="Attribute corresponds to same on lightning:input."/>
   <aura:attribute name="max" type="object" description="Attribute corresponds to same on lightning:input."/>
   <aura:attribute name="min" type="object" description="Attribute corresponds to same on lightning:input."/>
-    
+
   <!-- https://developer.salesforce.com/docs/component-library/bundle/lightning:input -->
   <lightning:input aura:id="input"
     type="{!v.subType}"

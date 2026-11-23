@@ -4,30 +4,22 @@
     <encodingKey>UTF-8</encodingKey>
     <name>ACR_CONTACT_ADDITION_JPN</name>
     <style>none</style>
-    <subject>インテル® パートナー・アライアンスのアカウントに新しいユーザーが追加されました</subject>
-    <textOnly>アカウントの詳細確認のお願い
+    <subject>新しいユーザーが貴社のインテル・パートナー・プログラム・アカウントに追加されました</subject>
+    <textOnly>An individual has been added to the Intel Partner program account of {!Account.Name} by an Intel representative or another contact at your company.
 
-{!UserName} 様、
+Company Name: {!Account.Name}
+Contact Added: Login ID {!ContactLoginId} with e-mail {!ContactEmail}
+Relationship (Role): {!AcrRoles}
 
-インテルの担当者または御社のほかのコンタクトにより、{!Account.Name} 様のインテル® テクノロジー・プロバイダーのアカウントにユーザーが追加されました。
+If you do not approve of this update, please login to remove the user. 
 
-会社名: {!Account.Name}
-ビジネス ID: {!Account.AccountNumber}
-追加されたコンタクト: Eメール {!ContactEmail}
-役割 (職種): {!AcrRoles}
+(Link on login for both FPGA and CSP-
+https://ssl.intel.com/content/www/us/en/secure/my-intel/dashboard.html)
 
-この更新を承認していない場合、ログインしてこの連絡先を削除してください。
-
-ご質問がおありの場合は、次にお問い合わせください: https://signin.intel.com/ContactUs?Culture=ja-jp
-
-
-よろしくお願いいたします。
-インテル® パートナー・アライアンス
-
-このメッセージは、インテル® パートナー・アライアンス関係者の皆様に、重要なビジネス・コミュニケーションとして送信されました。
-© {!$Label.PRM_CurrentYear} Intel Corporation
-Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
-プライバシー・ポリシー  |  Cookie</textOnly>
+Questions? Contact Support here (link).
+Support links:
+for CSP- https://www.intel.com/content/www/us/en/partner/cloud-insider/forms/support.html
+for FPGA: https://signin.intel.com/ContactUs?Culture=en-US</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

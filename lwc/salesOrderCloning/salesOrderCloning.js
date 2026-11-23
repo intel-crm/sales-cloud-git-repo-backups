@@ -1,5 +1,5 @@
 import { LightningElement, wire, api, track} from 'lwc';
-/*import { NavigationMixin } from 'lightning/navigation';
+import { NavigationMixin } from 'lightning/navigation';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent'
 import fetchSoldToDetails from "@salesforce/apex/Sales_OrderController.fetchSoldToDetails";
 import fetchEndCustDetails from "@salesforce/apex/Sales_OrderController.fetchEndCustDetails";
@@ -21,7 +21,7 @@ import SalesEndCustInfoHTML from '@salesforce/label/c.Sales_EndCustInfo_HTML';
 import errorMsg from '@salesforce/label/c.Sales_Error_Message';
 import noncommercialStockingError from '@salesforce/label/c.Sales_NonCommercial_Stocking_Error_Msg';
 import { getRecord } from 'lightning/uiRecordApi';
-//import createOrderProducts from '@salesforce/apex/Sales_CloneOrderwithProductController.insertOrderProducts';
+import createOrderProducts from '@salesforce/apex/Sales_CloneOrderwithProductController.insertOrderProducts';
 const FIELDS = ['Order.Sales_Airbill_Number_Txt__c','Order.SBQQ__PaymentTerm__c','Order.AccountId',
 'Order.Sales_Shipment_Number_Txt__c','Order.Status','Order.Sales_status__c','Order.Type','Order.Sales_Order_Reason__c','Order.Description',
 'Order.Sales_Disty_Channel_Txt__c','Order.Sales_SoldTo_Street_Dsc__c','Order.Sales_SoldTo_City_Txt__c','Order.Sales_SoldTo_Province_Txt__c','Order.Sales_Payment_Terms__c',
@@ -36,9 +36,8 @@ const FIELDS = ['Order.Sales_Airbill_Number_Txt__c','Order.SBQQ__PaymentTerm__c'
 'Order.Sales_Ship_To_Acct_Id__c','Order.Sales_Ship_to_Region_Txt__c','Order.Sales_SoldTo_Account_2_Txt__c','Order.EndDate',
 'Order.SBQQ__Quote__c','Order.Sales_Corporate_Order__c','Order.TotalAmount','Order.OrderReferenceNumber','Order.OrderItemCount__c','Order.Sales_Sold_To_Acct_Id__c','Order.Sales_Sold_To_Account__c',
 'Order.SBQQ__TaxAmount__c','Order.Sales_End_Cust_Acct_Id__c','Order.Sales_Order_Sub_Type__c','Order.Sales_Cancelled_Quote_No__c'];
-*/
-export default class Sales_CloneOrderwithProductController extends LightningElement{
-    /*@api selectval;
+export default class Sales_CloneOrderwithProductController extends NavigationMixin(LightningElement){
+    @api selectval;
     @api recordId;
     @api orderStatus;
     @api accountVal;
@@ -109,7 +108,7 @@ export default class Sales_CloneOrderwithProductController extends LightningElem
         this.dispatchEvent(event);
     }
   
-   /*handleSuccess(event){
+   handleSuccess(event){
         this.loading = false; 
         if(this.selectval!=null){
             this.orderItemCount = this.order.data.fields.OrderItemCount__c.value; 
@@ -165,9 +164,9 @@ export default class Sales_CloneOrderwithProductController extends LightningElem
             }
         });
     }
-}*/
+}
 
-/*get subOrderTypeValue(){
+get subOrderTypeValue(){
     if(this.order.data!=undefined){
         if(this.order.data.fields.Type.value !== 'Non Commercial Order'){
             this.isnotNonCommercial = true;
@@ -455,7 +454,7 @@ get isnotNonCommercial(){
                 this.template.querySelector('lightning-record-edit-form').submit(fields);
             }*/
                    //Added by Shivam -- Focuses on Top of the Modal before we save, benefit for Error Banner Focus
-            /*const topDiv = this.template.querySelector('[data-id="focusOnErrorBannerId"]');
+            const topDiv = this.template.querySelector('[data-id="focusOnErrorBannerId"]');
             topDiv.scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"});
             }
     }
@@ -554,7 +553,7 @@ get isnotNonCommercial(){
                /* else{
                     this.handleResetAccount();
                 }*/   
-           /* }
+            }
             
         }else{
             this.handleResetAccount();
@@ -582,7 +581,7 @@ get isnotNonCommercial(){
                /* else{
                     this.handleResetShipAccount();
                 }*/   
-            /*}
+            }
            
         }else{
             this.handleResetShipAccount();
@@ -616,7 +615,7 @@ get isnotNonCommercial(){
                    /* else{
                         this.handleResetEndAccount();
                     }*/    
-                /*}
+                }
                 
     }else{
         console.log('resetting values');
@@ -643,6 +642,6 @@ handleResetAccount(){
         element.value = null;
       });
 
-}*/
+}
 
 }

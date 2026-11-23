@@ -39,7 +39,7 @@ public without sharing class PRM_Partner_Assist_Utility {
         } 
         }
     
-        if(userRole != null && (userRole == System.label.PRM_Distributor || userRole == System.label.PRM_Guest )){
+        if(userRole != null && (userRole == System.label.PRM_Distributor || userRole == System.label.PRM_Guest)){
             isDesiredRole = False;
         }
 
@@ -59,7 +59,7 @@ public without sharing class PRM_Partner_Assist_Utility {
             displayTempFirstErrorMssg = false;
         }
         
-        //System.debug('userLanguage :- '+userLanguage);
+        System.debug('userLanguage :- '+userLanguage);
         if(userLanguage != null){
             lstOfPartnerTermsAndCondition = [Select id,name,PRM_Content_Code_Txt__c,PRM_Content_Message_Txt__c,PRM_Content_Language_Nm__c,PRM_InActive_Ind__c,PRM_Terms_and_Conditions_Type_Nm__c from PRM_Partner_Terms_and_Conditions__c where PRM_InActive_Ind__c = False AND PRM_Content_Language_Nm__c =:userLanguage AND PRM_Terms_and_Conditions_Type_Nm__c =:System.label.PRM_Consent];
         }
@@ -91,14 +91,17 @@ public without sharing class PRM_Partner_Assist_Utility {
                 }
             }
         }*/
-    /*//System.debug('isIpaAccount :- '+isIpaAccount);
-        //System.debug('userRole :- '+userRole);
-        //System.debug('isDesiredRole :- '+isDesiredRole);
-        //System.debug('lstOfConEnt :- '+lstOfConEnt);
-        //System.debug('isEntitlmentCorrect :- '+isEntitlmentCorrect);
-        //System.debug('displayTempFirstErrorMssg :- '+displayTempFirstErrorMssg);
-        //System.debug('lstOfPartnerAssitConsent :- '+lstOfPartnerAssitConsent);
-        //System.debug('displayTempSecondErrorMssg :- '+displayTempSecondErrorMssg);*/
+    
+        System.debug('tempUpperText :-'+tempUpperText);
+        System.debug('tempLowerText :-'+tempLowerText);
+    /*System.debug('isIpaAccount :- '+isIpaAccount);
+        System.debug('userRole :- '+userRole);
+        System.debug('isDesiredRole :- '+isDesiredRole);
+        System.debug('lstOfConEnt :- '+lstOfConEnt);
+        System.debug('isEntitlmentCorrect :- '+isEntitlmentCorrect);
+        System.debug('displayTempFirstErrorMssg :- '+displayTempFirstErrorMssg);
+        System.debug('lstOfPartnerAssitConsent :- '+lstOfPartnerAssitConsent);
+        System.debug('displayTempSecondErrorMssg :- '+displayTempSecondErrorMssg);*/
 
         PartnerAssitTextWrapper pobj = new PartnerAssitTextWrapper();
         pobj.upperText = tempUpperText;
@@ -106,6 +109,7 @@ public without sharing class PRM_Partner_Assist_Utility {
         pobj.displayFirstErrorMssg = displayTempFirstErrorMssg;
         pobj.displaySecondErrorMssg = displayTempSecondErrorMssg;
 
+        System.debug('pobj :- '+pobj);
 
         return pobj; 
     }
@@ -114,52 +118,41 @@ public without sharing class PRM_Partner_Assist_Utility {
     @AuraEnabled(cacheable=true)
     public static List<DistributorListWrapper> getDistributorList(){
     String userCountry ='';
-    List<String> userGeoList = new List<String>();
+    String userGeo ='';
     String userSubGeo ='';
     List<PRM_Partner_Consent_Distributor__c> lstOfConsentDistributor = new List<PRM_Partner_Consent_Distributor__c>();
     List<PRM_Partner_Consent_Distributor__c> filteredLstOfConsentDistributor = new List<PRM_Partner_Consent_Distributor__c>();
 
     List<DistributorListWrapper> distrubutorList = new List<DistributorListWrapper>();
-    List<string> geoList = LabelConfiguration__mdt.getInstance('PRM_Geo').Value__c.split(',');
 
-    //Id loggedUserId = UserInfo.getUserId();
-    Id accountId=[SELECT AccountId FROM User WHERE Id =: UserInfo.getUserId()].AccountId; 
+    Id loggedUserId =  String.escapeSingleQuotes(UserInfo.getUserId());
+    Id accountId=[SELECT AccountId FROM User WHERE Id =: loggedUserId].AccountId; 
     Id contactId = [Select contactid from User where id =: Userinfo.getUserid()].contactId;
-    //TWC729-7726 : Cim Prime EOL
-    Map<string,string> countryMap = new map<string,string>();
-    for(Core_Country_Code_Mapping__c allCountries : Core_Country_Code_Mapping__c.getAll().values()) {
-        countryMap.put(allCountries.ISO_Code__c, allCountries.Name);
-    }
 
     if(contactId != null){
             // Query on account to fetch details
-            for(Account accObj: [select id,name,BillingCountry,Core_Geo__c,Core_Sub_Geo__c from Account where Id =: accountId Limit 1]){
-                
-                if(geoList.contains(accObj.Core_Geo__c)){
-                    userGeoList.addall(geoList);
-                }
-                else{
-                    userGeoList.add(accObj.Core_Geo__c);
-                    userSubGeo = accObj.Core_Sub_Geo__c;
-                    userCountry = countryMap.get(accObj.BillingCountry) ;//billing address
-                }
+            for(Account accObj: [select id,name,Core_Account_Country__c,Core_Geo__c,Core_Sub_Geo__c from Account where Id =: accountId Limit 1]){
+                userGeo = accObj.Core_Geo__c;
+                userSubGeo = accObj.Core_Sub_Geo__c;
+                userCountry = accObj.Core_Account_Country__c;
             }
         }
 
         //new logic added
 
-        if(userGeoList != null){
-            lstOfConsentDistributor = [Select Id,name,PRM_Country_Name__c,PRM_Geo_Nm__c,PRM_Sub_Region_Nm__c,PRM_Distributor_Name_Txt__c from PRM_Partner_Consent_Distributor__c Where PRM_Geo_Nm__c in:userGeoList AND PRM_Distributor_Name_Txt__c != null];
+        if(userGeo != null){
+            lstOfConsentDistributor = [Select Id,name,PRM_Country_Nm__c,PRM_Geo_Nm__c,PRM_Sub_Region_Nm__c,PRM_Distributor_Name_Txt__c from PRM_Partner_Consent_Distributor__c Where PRM_Geo_Nm__c =:userGeo AND PRM_Distributor_Name_Txt__c != null];
         }
 
         if(lstOfConsentDistributor != null && !lstOfConsentDistributor.isEmpty()){
         for(PRM_Partner_Consent_Distributor__c pcdObj: lstOfConsentDistributor){
-        if((( (String.isBlank(pcdObj.PRM_Sub_Region_Nm__c)) || ((!String.isBlank(pcdObj.PRM_Sub_Region_Nm__c)) &&  (pcdObj.PRM_Sub_Region_Nm__c == userSubGeo)) ) && ((String.isBlank(pcdObj.PRM_Country_Name__c)) || ((!String.isBlank(pcdObj.PRM_Country_Name__c)) && (pcdObj.PRM_Country_Name__c.equalsIgnoreCase(userCountry)) ) )) || geoList.contains(pcdObj.PRM_Geo_Nm__c)) 
+        if(( (String.isBlank(pcdObj.PRM_Sub_Region_Nm__c)) || ((!String.isBlank(pcdObj.PRM_Sub_Region_Nm__c)) &&  (pcdObj.PRM_Sub_Region_Nm__c == userSubGeo)) ) && ((String.isBlank(pcdObj.PRM_Country_Nm__c)) || ((!String.isBlank(pcdObj.PRM_Country_Nm__c)) && (pcdObj.PRM_Country_Nm__c.equalsIgnoreCase(userCountry)) ) )) 
         {
             filteredLstOfConsentDistributor.add(pcdObj);
         }
         }
         }
+        System.debug('filteredLstOfConsentDistributor :-'+filteredLstOfConsentDistributor);
 
         if(filteredLstOfConsentDistributor != null && !filteredLstOfConsentDistributor.isEmpty()){
         for(PRM_Partner_Consent_Distributor__c filterdPcd: filteredLstOfConsentDistributor){
@@ -171,7 +164,7 @@ public without sharing class PRM_Partner_Assist_Utility {
         }
 
     /* if(userCountry != null && userGeo != null && userSubGeo != null){
-            for(PRM_Partner_Consent_Distributor__c pcd: [Select Id,name,PRM_Country_Name__c,PRM_Geo_Nm__c,PRM_Sub_Region_Nm__c,PRM_Distributor_Name_Txt__c from PRM_Partner_Consent_Distributor__c Where PRM_Country_Name__c =:userCountry AND PRM_Geo_Nm__c =:userGeo AND PRM_Sub_Region_Nm__c =:userSubGeo AND PRM_Distributor_Name_Txt__c != null]){
+            for(PRM_Partner_Consent_Distributor__c pcd: [Select Id,name,PRM_Country_Nm__c,PRM_Geo_Nm__c,PRM_Sub_Region_Nm__c,PRM_Distributor_Name_Txt__c from PRM_Partner_Consent_Distributor__c Where PRM_Country_Nm__c =:userCountry AND PRM_Geo_Nm__c =:userGeo AND PRM_Sub_Region_Nm__c =:userSubGeo AND PRM_Distributor_Name_Txt__c != null]){
                 DistributorListWrapper dl = new DistributorListWrapper();
                 dl.label = pcd.PRM_Distributor_Name_Txt__c;
                 dl.value = pcd.Id;
@@ -251,10 +244,13 @@ public without sharing class PRM_Partner_Assist_Utility {
                 Database.SaveResult[] result = Database.insert(toInsertPartnerAssistConsentRecList,false);
                 for(Database.SaveResult sr:result){
                 if(sr.isSuccess()){
+                    //System.debug('Records Updated Successfully: '+sr.getId());
                     successCount++;
                 }else{
                     Database.Error[] errors =sr.getErrors();
                     for(Database.Error er :errors){
+                        //System.debug('Fields:'+er.getFields());
+                        //System.debug('Message:'+er.getMessage());
                         failureCount++;
                     }
                 }

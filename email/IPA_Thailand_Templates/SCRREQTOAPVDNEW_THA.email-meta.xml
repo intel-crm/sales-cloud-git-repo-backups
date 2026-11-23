@@ -4,37 +4,18 @@
     <encodingKey>UTF-8</encodingKey>
     <name>SCRREQTOAPVDNEW_THA</name>
     <style>none</style>
-    <subject>ยินดีต้อนรับสู่ Intel® Partner Alliance</subject>
-    <textOnly>ยินดีต้อนรับสู่ Intel® Partner Alliance
+    <subject>ขอแสดงความยินดีและยินดีต้อนรับสู่โปรแกรมพันธมิตรของ Intel</subject>
+    <textOnly>You Have Been Approved!
 
 
-{!PRM_Registration_Request__c.PRM_First_Name__c},
+Welcome! {!Account.Name} is now a member of Intel’s Partner program. After 30 minutes, please log in here for marketing materials, sales tools and other information about your benefits. If you would like to make changes to your account, please visit your profile here.www.intel.com/content/www/us/en/secure/my-intel/profile.html
 
-ยินดีต้อนรับ {!Account.Name} ขณะนี้เป็นพาร์ทเนอร์ใน Intel® Partner Alliance แล้ว
-เริ่มสร้างธุรกิจของคุณให้เติบโตด้วยการใช้ประโยชน์จากสิทธิประโยชน์ในโปรแกรม ได้แก่:
+Questions? Contact Support here
 
-แผนกสนับสนุนลูกค้าของ Intel พร้อมการช่วยเหลือทั่วโลกทั้งด้านเทคนิค การรับประกันและปัญหาต่างๆ ในโครงการพาร์ทเนอร์ทั้งหมด
-การฝึกอบรมและการสัมมนาบนเว็บทางออนไลน์โดย Intel® Partner University พร้อมหลักสูตรชั้นนำในอุตสาหกรรม
-เครือข่ายพาร์ทเนอร์และตลาดที่กว้างขวางที่ทำงานร่วมกันเพื่อสร้างโซลูชันการรวมศูนย์ข้อมูล
-ทำการตลาดได้ง่ายยิ่งขึ้นด้วยเอกสารและเครื่องมือการขายที่ปรับแต่งได้ตามต้องการ
-เข้าถึง Intel® Developer Zone
-
-
-ล็อกอินเข้า https://crmqa3-intelcloudcrm.cs37.force.com/ipa เพื่อดูและจัดการสิทธิประโยชน์ของคุณ
-
-ล็อกอินเข้า https://crmqa3-intelcloudcrm.cs37.force.com/ipa/s/post-launch-primary เพื่อดูบทบาทของคุณ
-
-
-พาร์ทเนอร์ Intel มีประวัติการพัฒนานวัตกรรมมายาวนาน และด้วย Intel® Partner Alliance เราจะช่วยคุณเร่งสร้างโซลูชันสำหรับเศรษฐกิจแบบรวมศูนย์ข้อมูล เมื่อร่วมมือกัน เราจะสามารถเชื่อมต่อ สร้างสรรค์ และเติบโต ซึ่งสร้างโอกาสพิเศษให้เป็นไปได้
-เข้าไปที่ https://intel.com/content/www/us/en/secure/partner-alliance/help/overview.html เพื่อขอความช่วยเหลือเพิ่มเติมเกี่ยวกับวิธีการเริ่มต้น
-
-ขอขอบคุณ
-ทีม Intel® Partner Alliance ของคุณ
-
-ข้อความนี้ถูกส่งถึงคุณเพื่อใช้เป็นการสื่อสารทางธุรกิจที่สำคัญที่เกี่ยวข้องกับความสัมพันธ์ในปัจจุบันของคุณกับ Intel® Partner Alliance
-© {!Contact.Core_Current_Year__c} Intel Corporation
-Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA  www.intel.com
-ความเป็นส่วนตัว | คุ้กกี้</textOnly>
+Copyright © 2016 Intel Corporation. All rights reserved. Intel, the Intel logo are trademarks of Intel Corporation in the U.S. and/or other countries.
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. Intel.com
+You may unsubscribe at any time by updating your profile settings at: {!$Label.PRM_MyIntelProfileURL}
+Privacy | Cookies | *Trademarks</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

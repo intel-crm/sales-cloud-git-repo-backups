@@ -21,7 +21,7 @@ export default class Core_IPS_DatatableUtility extends LightningElement {
     dataTableHeightStyle;
 
     connectedCallback() {
-        console.log('Core_IPS_DatatableUtility ::: connectedCallback called');
+        console.log('Core_IPS_DatatableUtility ::: connectedCallback called', JSON.stringify(this.records));
         if (this.heightInRem !== undefined && this.heightInRem !== null) {
             this.dataTableHeightStyle = "height: " + this.heightInRem + "rem";
         } else {

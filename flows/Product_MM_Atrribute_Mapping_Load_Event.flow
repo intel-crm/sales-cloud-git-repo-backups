@@ -15,20 +15,6 @@
             </value>
         </inputParameters>
         <inputParameters>
-            <name>senderType</name>
-            <value>
-                <inputConfiguratorMode>Custom</inputConfiguratorMode>
-                <stringValue>OrgWideEmailAddress</stringValue>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>senderAddress</name>
-            <value>
-                <inputConfiguratorMode>Custom</inputConfiguratorMode>
-                <stringValue>wsm-postmaster@intel.com</stringValue>
-            </value>
-        </inputParameters>
-        <inputParameters>
             <name>emailSubject</name>
             <value>
                 <stringValue>Mulesoft Product MM Attribute Load Batch Failure</stringValue>
@@ -100,7 +86,6 @@
         <connector>
             <targetReference>Load_Status</targetReference>
         </connector>
-        <flowRunAsUser>TriggeringUser</flowRunAsUser>
         <object>Product_MM_Attribute_Event__e</object>
         <triggerType>PlatformEvent</triggerType>
     </start>

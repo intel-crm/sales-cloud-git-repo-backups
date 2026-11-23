@@ -9,8 +9,7 @@
 * ****************************************************************************************************************************************/
 @isTest
 public class PMP_Intel_Techn_Attribute_Chinese_Test {
-    //IPA 2.0- US-TWC729-7980
-    /*@isTest
+    @isTest
     public static void testProcAttrMet()
     {
     
@@ -21,9 +20,9 @@ public class PMP_Intel_Techn_Attribute_Chinese_Test {
         List<Database.UpsertResult> resultData = new List<Database.UpsertResult>();
         PMP_Intel_Technology_Attribute_Chinese chipAttrChn = new PMP_Intel_Technology_Attribute_Chinese();
         test.startTest();
-        PMP_ParseIntelTechnologyJSON.languageCode = 'zh_CN';
+        PMP_ParseIntelTechnologyJSON.strBaseKey = 'zh_CN';
         resultData = chipAttrChn.processData('Intel_Technology_Attribute_Chinese');
         system.assertNotEquals(resultData,null);
         test.stopTest();
-    }*/
+    }
 }

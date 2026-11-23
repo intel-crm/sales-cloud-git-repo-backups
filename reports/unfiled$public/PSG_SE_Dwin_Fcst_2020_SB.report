@@ -158,7 +158,14 @@
         <field>CREATED_DATE</field>
     </columns>
     <filter>
-        <booleanFilter>((1 AND (2 OR 3)) AND 4) AND 5 AND 6</booleanFilter>
+        <booleanFilter>((1 AND 2 AND (3 OR 4)) AND 5) AND 6 AND 7</booleanFilter>
+        <criteriaItems>
+            <column>STAGE_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>lost,cancel</value>
+        </criteriaItems>
         <criteriaItems>
             <column>BucketField_97257708</column>
             <columnToColumn>false</columnToColumn>
@@ -192,14 +199,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>lessOrEqual</operator>
-            <value>12/31/2023</value>
+            <value>12/31/2021</value>
         </criteriaItems>
         <criteriaItems>
             <column>ADDRESS1_STATE</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>contains</operator>
-            <value>NC,GA,AL,TN,SC,MS</value>
+            <value>NC,GA,AL,TN</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -210,11 +217,10 @@
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
-        <dateGranularity>Quarter</dateGranularity>
         <field>CLOSE_MONTH</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>PSG SE Opps - NC,SC,GA,AL,TN,MS</name>
+    <name>PSG SE Dwin Fcst - Southbridge</name>
     <params>
         <name>terr</name>
         <value>all</value>

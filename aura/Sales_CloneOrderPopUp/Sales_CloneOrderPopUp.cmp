@@ -1,0 +1,61 @@
+<aura:component implements="force:lightningQuickActionWithoutHeader,force:hasRecordId,forceCommunity:layout" access="global">	
+     <aura:html tag="style">
+        .slds-modal__container{
+        max-width: 70rem !important;
+        width:40% !important;
+        padding: 0rem !important;
+        }
+        .slds-modal__container .cuf-content {
+        padding:1 !important;
+        }
+        .slds-modal__container .slds-p-around--medium {
+        padding: 0rem !important;
+        }
+        .slds-modal__content {
+        height: unset !important;
+        max-height: unset !important;
+        border-bottom-left-radius: unset !important;
+        border-bottom-right-radius: unset !important;
+        }
+        
+    </aura:html>
+    <aura:attribute name="optionValue" type="String" />
+    <aura:attribute name="selectval" type="String" default='option1'/>
+    <aura:attribute name="idval" type="String"/>
+    
+    <aura:attribute name="options" type="List" default="[
+                                                        {'label': 'Clone with Products', 'value': 'option1'},
+                                                        {'label': 'Clone without Products', 'value': 'option2'}
+                                                        ]"/>
+    <aura:attribute name="value" type="String"/>
+    
+    <div class="modal-header slds-modal__header slds-size_1-of-1" >  
+        <h4 class="title slds-text-heading--medium">Clone Order</h4>
+    </div>
+    <div>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+
+    </div>
+    
+    <lightning:radioGroup
+                          aura:id="mygroup"
+                          label=""
+                          options="{! v.options }"
+                          value="{! v.value }"
+                          onchange="{! c.handleChange }" 
+                          required="true"/>
+    
+    <lightning:quickActionAPI aura:id="quickActionAPI" />
+    <div>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+    </div>
+    
+    <div class="slds-col modal-footer slds-modal__footer">
+        <lightning:button class="slds-button slds-button_neutral" variant="neutral" onclick="{!c.handleCloseModal}" label="Cancel"/>
+        <lightning:button class="slds-button slds-button_brand" variant="brand" type="submit" name="Save" label="Next" onclick="{!c.onNext}">
+        </lightning:button>
+    	
+    </div>    
+</aura:component>

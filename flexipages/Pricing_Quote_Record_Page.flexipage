@@ -94,6 +94,15 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
+                <componentInstanceProperties>
+                    <name>recordId</name>
+                </componentInstanceProperties>
+                <componentName>pricing_Show_Warning_Message</componentName>
+                <identifier>c_pricing_Show_Warning_Message2</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
                 <componentName>force:detailPanel</componentName>
                 <identifier>force_detailPanel</identifier>
             </componentInstance>
@@ -103,26 +112,10 @@
                 <componentName>pricing_rfpsummary</componentName>
                 <identifier>c_pricing_rfpsummary</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 AND (2 OR 3 OR 4)</booleanFilter>
                     <criteria>
                         <leftValue>{!$Permission.CustomPermission.Pricing_RFP_Scraping}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>true</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Pricing_AI_RFP_Scraping_Status__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Success</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Pricing_AI_RFP_Scraping_Status__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>In Progress</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Pricing_AI_RFP_Scraping_Status__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Failed</rightValue>
                     </criteria>
                 </visibilityRule>
             </componentInstance>
@@ -315,6 +308,22 @@
                             <value>SBQQ__Quote__c.Pricing_FSEAccountTeam_Sync</value>
                         </valueListItems>
                         <valueListItems>
+                            <value>SBQQ__Quote__c.Create_Opportunity</value>
+                            <visibilityRule>
+                                <booleanFilter>1 OR 2</booleanFilter>
+                                <criteria>
+                                    <leftValue>{!$Permission.CustomPermission.Tender_User}</leftValue>
+                                    <operator>EQUAL</operator>
+                                    <rightValue>true</rightValue>
+                                </criteria>
+                                <criteria>
+                                    <leftValue>{!$Permission.CustomPermission.Tender_Account_Executive}</leftValue>
+                                    <operator>EQUAL</operator>
+                                    <rightValue>true</rightValue>
+                                </criteria>
+                            </visibilityRule>
+                        </valueListItems>
+                        <valueListItems>
                             <value>SBQQ__Quote__c.Pricing_Resubmit_UCD_Request</value>
                             <visibilityRule>
                                 <booleanFilter>1 AND 2 AND 3</booleanFilter>
@@ -354,16 +363,10 @@
                         <valueListItems>
                             <value>SBQQ__Quote__c.Generate_RFP_Scraping</value>
                             <visibilityRule>
-                                <booleanFilter>1 AND 2</booleanFilter>
                                 <criteria>
                                     <leftValue>{!$Permission.CustomPermission.Pricing_RFP_Scraping}</leftValue>
                                     <operator>EQUAL</operator>
                                     <rightValue>true</rightValue>
-                                </criteria>
-                                <criteria>
-                                    <leftValue>{!$Permission.CustomPermission.Pricing_Tender_Divisional_Pricing_Manager}</leftValue>
-                                    <operator>EQUAL</operator>
-                                    <rightValue>false</rightValue>
                                 </criteria>
                             </visibilityRule>
                         </valueListItems>
@@ -386,6 +389,10 @@
                     <value>false</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
+                    <name>hideSlackAction</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
                     <name>numVisibleActions</name>
                     <value>3</value>
                 </componentInstanceProperties>
@@ -395,6 +402,10 @@
         </itemInstances>
         <itemInstances>
             <componentInstance>
+                <componentInstanceProperties>
+                    <name>label</name>
+                    <value>Tabs</value>
+                </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>tabs</name>
                     <value>Facet-2516b5c5-bb61-4202-97df-be928e349d11</value>
@@ -614,6 +625,10 @@
         </itemInstances>
         <itemInstances>
             <componentInstance>
+                <componentInstanceProperties>
+                    <name>label</name>
+                    <value>Tabs</value>
+                </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>tabs</name>
                     <value>Facet-d5cd628a-db1f-43b1-9aa0-911b78788863</value>

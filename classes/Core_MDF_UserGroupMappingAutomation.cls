@@ -11,21 +11,17 @@
     * Intel - Narayani Perachi      05-03-2019                    Created a batch class for logging in Core_MDF_UserGroupMapping_Log__c
     * Intel - Narayani Perachi      19-03-2019                    Made changes to logInUserGroupMappingLogObject() to accomodate populating Channel Programs for Null Group ID
     * Intel - Narayani Perachi      20-03-2019                    Created createMapforNullGroupId() for determining the Channel Programs which did not have PGM Mapping
-    * Accenture - Jayesh Variyani   29-08-2019            US441266:Iteration17 -- Added the logic to update the Account User entries for the User whenever the role is added/removed
-    * Intel - NP(11630236)      11-10-2019            Commented PNUM Update Line#632
+    * Accenture - Jayesh Variyani   29-08-2019					  US441266:Iteration17 -- Added the logic to update the Account User entries for the User whenever the role is added/removed
+    * Intel - NP(11630236)			11-10-2019					  Commented PNUM Update Line#632
     * Intel - NP(11630236)          07-10-2019                    Fixed the error logging issue for Agency users in UserGroupMapping log object
-    * Intel - NP(11630236)      10-06-2020            Commented Core_MDF_ExternalUserSharing code since it was sharing to All Non-Badged Group
+    * Intel - NP(11630236)			10-06-2020					  Commented Core_MDF_ExternalUserSharing code since it was sharing to All Non-Badged Group
     * 
     * Custom Labels used :
     * Label.Core_MDF_User_Group_Mapping_Automation_Audience_List  CCF USER:Client Co-Marketing Fund;DCF USER:Data Center Co-Marketing Fund;SPCF USER:Service Provider Co-Marketing Fund
 **************************************************************************************************************************************************************************************/
-    public without sharing class Core_MDF_UserGroupMappingAutomation /*implements Queueable*/
-    {    //Commented as part of WW24 - 2025
-         //added dummy method to get the code coverage for this class
-    public static void getCodeCoverage(){
-    }
-        //New comment added
-        /*public static List<id> accountIds = new List<id>();
+    public without sharing class Core_MDF_UserGroupMappingAutomation implements Queueable
+    {
+        public static List<id> accountIds = new List<id>();
         public static List<Core_MDF_Partner_Group_Mapping__c> worksForAccount = new List<Core_MDF_Partner_Group_Mapping__c>();
         
         public static Map<id,id> contactToUserMap = new Map<id,id>();
@@ -79,11 +75,11 @@
             {
                 channelProgramToIdMap.put(record.Name,record.id);
             }
-            
-        }*/
+            system.debug('channelPartnerToAudienceMapping' + channelPartnerToAudienceMapping);
+        }
         
         //Main method
-        /*public void execute(QueueableContext context)
+        public void execute(QueueableContext context)
         {
             List<Contact> contactList = new List<Contact>();
             List<id> contactListIds = new List<id>();
@@ -101,7 +97,8 @@
                 channelProgramToAudienceMap();
                 // Get all the CCP external groups
                 getAllCCPExternalGroupIds();
-                
+                system.debug('newContactList' + newContactList);
+                system.debug('channelPartnerToAudienceMapping' + channelPartnerToAudienceMapping);
                 
                 //Identify the records which contain CCF/DCF/SPCF User in Audience List
                 for(contact c: newContactList)
@@ -175,7 +172,8 @@
                 }
                 //contactGroupRemoval = toBeRemoved.values();
                 contactList= toBeProcessed.values();
-             
+                system.debug('toBeRemoved' + toBeRemoved);
+                system.debug('contactList' + contactList);
                 
                 //Check if toBeRemoved records are not there in toBeProcessed records
                 for(id toBeRemovedIds : toBeRemoved.keyset())
@@ -191,7 +189,7 @@
                 
                 if(contactList.size()>0)
                 {
-                    
+                    system.debug('contactList' + contactList);
                     for(contact c : contactList)
                     {
                         contactListIds.add(c.id);
@@ -220,7 +218,7 @@
         /* Creates a Map of Contact, User
          * Creates a Map of User, Contact
          */
-        /*public static Map<id,id> getUser(List<id> contactList)
+        public static Map<id,id> getUser(List<id> contactList)
         {
             Map<id,id> outputMap = new Map<id,id>();
              
@@ -231,31 +229,31 @@
                         outputMap.put(u.contactId, u.id); 
                         userToContactMap.put(u.id,u.contactid); 
                     }
-       
+                system.debug('getUser: ' + outputMap);
             }
             
             catch(exception ex){Core_MDF_CCP_UtilityClass.logError(ex);}       
             
             return outputMap;
-        }*/
+        }
         
         /* Creates a Map of the Contact, Account ID+Channel Partner Name
          * Creates a Map of Contact, Account
          * Creates a List of Account Ids
          * Creates a List of Contacts who have multiple audience
          */
-        /*public static void getAccount(List<contact> contactList)
+        public static void getAccount(List<contact> contactList)
         {
             Map<id,string> outputMap = new Map<id,string>();
             List<string> result;
             string multipleCCPAudience = '';
-            
+            system.debug('contactList' + contactList);
             try
             {
                 for(Contact c : contactList)
                 {
                     string value = c.AccountId;
-
+                    system.debug('c.Core_Audience__c' + c.Core_Audience__c);
                     result = getChannelPartner(c.Core_Audience__c);
                     
                     if(result.size()>1)
@@ -277,20 +275,21 @@
                        value += result[0]; 
                        contactToAccountIDChannelPartner.put(c.id,value);
                     }
-
+                    system.debug('value from getAccount: ' + value);
                     
                     contactToAccountIDMap.put(c.id,c.AccountId);
                     accountIds.add(c.AccountId);
                 }
             }
             catch(exception ex){ Core_MDF_CCP_UtilityClass.logError(ex);}  
-      
-        }*/
+            
+            system.debug('getAccount: ' + contactToAccountIDChannelPartner);       
+        }
         
         // Returns Channel Partner Name of the input Audience
-        /*public static List<string> getChannelPartner(string audience)
+        public static List<string> getChannelPartner(string audience)
         {
-
+            system.debug('audienceList' +audience);
             List<string> audienceList = audience.split(';');
             List<string> output = new List<string>();
             
@@ -305,12 +304,13 @@
                 }         
             }
             catch(exception ex){Core_MDF_CCP_UtilityClass.logError(ex);} 
-
+            
+            system.debug('getChannelPartner: ' + output);
             return output;
-        }*/
+        }
         
         // Returns a List of Partner Group Mapping objects(Group ID List) for the input account IDs
-        /*public static List<Core_MDF_Partner_Group_Mapping__c> getGroupList(List<id> accountIds)
+        public static List<Core_MDF_Partner_Group_Mapping__c> getGroupList(List<id> accountIds)
         {
             
             List<Core_MDF_Partner_Group_Mapping__c> partnerGroupMap = new List<Core_MDF_Partner_Group_Mapping__c>();
@@ -319,20 +319,20 @@
                 partnerGroupMap = [select Core_MDF_Account__c,Core_MDF_Works_For__c,name,Core_MDF_Group_Name__c,Core_MDF_Group_Id__c,Core_MDF_Channel_Program__r.Name,Core_MDF_Channel_Program__c,Core_MDF_Type_of_Access__c 
                                    from Core_MDF_Partner_Group_Mapping__c 
                                    where Core_MDF_Account__c in : accountIds
-                                   and Core_MDF_Inactive_Ind__c = false 
                                    and Core_MDF_Type_of_Access__c='External'];          
             }
             catch(exception ex){Core_MDF_CCP_UtilityClass.logError(ex);}            
             
+            system.debug('getGroupList: ' + partnerGroupMap);
             return partnerGroupMap;
-        }*/
+        }
         
         /* Creates a Map of Account ID+Channel Partner Name, GroupID List
          * Creates a Map, for Agency Accounts, of Account ID+Channel Partner Name, Works For Account ID+Channel Partner Name 
          * Creates a Map, for Agency working for Multiple Accounts, of Works For Account ID+Channel Partner Name,GroupID List
          * Creates a Map of Group ID, Channel Program - For logging purpose
          */
-        /*public static Map<string,id> identifyAgencyAccounts(List<id> accountIds)
+        public static Map<string,id> identifyAgencyAccounts(List<id> accountIds)
         {
             
             Map<string,id> outputMap = new Map<string,id>();
@@ -354,6 +354,7 @@
                     // For Non Agency Accounts
                     if(pgm.Core_MDF_Works_For__c == null)
                     {
+                            //system.debug('outputMap from 125:'+ outputMap);
                             outputMap.put(key,pgm.Core_MDF_Group_Id__c);
                     }
                     
@@ -413,16 +414,18 @@
             
             catch(exception ex){Core_MDF_CCP_UtilityClass.logError(ex); }  
             
+            //system.debug('identifyAgencyAccounts: Non Agency' + outputMap);system.debug('getGroupList: agencyToGroupMap' + agencyToGroupMap);system.debug('getGroupList: worksForMoreAccountsList' + worksForMoreAgencyToPGMMap);      
+            system.debug('outputMap' + outputMap);
             return outputMap;
             
-        }*/
+        }
         
         /* Creates Map of User, GroupID List for Agency,Non-Agency Account
          * Creates Map of User, GroupID List for Agency working for multiple Accounts
          */
-        /*public static Map<id,List<id>> getGroupListForUser(Map<id,string> contactToAccountIDChannelPartner,Map<string,id> nonAgencyAccountIDToGroupListMap)
+        public static Map<id,List<id>> getGroupListForUser(Map<id,string> contactToAccountIDChannelPartner,Map<string,id> nonAgencyAccountIDToGroupListMap)
         {
- 
+            system.debug('getGroupListForUser');
             Map<id,List<id>> userToGroupList = new Map<id,List<id>>();
             List<id> agency = new List<id>();
             List<GroupMember> toBeLogged = new List<GroupMember>();
@@ -431,10 +434,11 @@
             {
                 for(string contact:contactToAccountIDChannelPartner.keyset())
                 {
-                    
+                    system.debug('contactToAccountIDChannelPartner.keyset()' + contactToAccountIDChannelPartner.keyset());
                     string accountToCP = contactToAccountIDChannelPartner.get(contact);
                     id account = contactToAccountIDMap.get(contact);
-                
+                    system.debug('accountToCP' + accountToCP + 'account' + account);
+                    system.debug('nonAgencyAccountIDToGroupListMap' + nonAgencyAccountIDToGroupListMap);
                     
                     List<string> audienceList = accountToCP.split(';');
                     for(string audience : audienceList)
@@ -444,7 +448,7 @@
                         {
                             
                             string value = accountChannelProgramToAgencyMap.get(audience);
-                            
+                            system.debug('contactToUserMap.get(contact)' + contactToUserMap.get(contact) + 'agencyToGroupMap' + agencyToGroupMap + 'value: '+value);
                             
                             //If Agency works for only one Account
                             agency.add(agencyToGroupMap.get(value));
@@ -491,7 +495,7 @@
                             else
                             {
                               agency.add(nonAgencyAccountIDToGroupListMap.get(accountToCP));
-                        
+                                system.debug('agency' + agency);
                               userToGroupList.put(contactToUserMap.get(contact),agency);  
                             }
                         }
@@ -501,15 +505,16 @@
                         
             catch(exception ex){Core_MDF_CCP_UtilityClass.logError(ex);}
     
-
+            //system.debug('getGroupListForUser: userToGroupListAgency' + userToGroupListAgency);
+            system.debug('Final getGroupListForUser: userToGroupList' + userToGroupList);
             return userToGroupList;
-        }*/
+        }
         
         /* Create a Map of User,Existing GroupID List
          * Create a Map of User, GroupID List to be Added
          * Create a Map of User, GroupID List to be Removed
          */
-        /*public static void addOrRemoveUserFromGroup(Map<id,List<id>> userToGroupList)
+        public static void addOrRemoveUserFromGroup(Map<id,List<id>> userToGroupList)
         {
             List<GroupMember> groupList = new List<GroupMember>();
             List<id> toBeRemovedList = new List<id>();
@@ -525,7 +530,7 @@
             {
                 // Query the Group Member table for the input contacts
                 groupList = [SELECT GroupId, UserOrGroupId FROM GroupMember where UserOrGroupId in: userToGroupList.keyset() and groupid in :allCCPExternalGroupIds];
-
+                system.debug('groupList' +groupList);
                 
                 for(GroupMember gm : groupList)
                 {
@@ -542,14 +547,14 @@
                     userGroupList.put(gm.UserOrGroupId,userGroup);
                 }
                 
-            
+                system.debug('userGroupList' + userGroupList);
                 
                 for(id userGmId:userGroupList.keyset())
                 {
                     List<id> inputUserGmID = userToGroupList.get(userGmId);
                     List<id> groupMemberID = userGroupList.get(userGmId);
                     
-                    
+                    system.debug('inputUserGmID'+ inputUserGmID);system.debug('groupMemberID' + groupMemberID);
                     
                     for(id groupMember:groupMemberID)
                     {
@@ -557,7 +562,7 @@
                         {
                             // If required group is already added, ignore
                             inputUserGmID.remove(inputUserGmID.indexOf(groupMember));
-                          
+                            //system.debug('Inside if: '+inputUserGmID);
                         }
                         else
                         {
@@ -606,15 +611,15 @@
                     }
                 }
                 if(toBeInserted.size()>0){
-                    
+                    system.debug('toBeInserted' + toBeInserted);
                     logInUserGroupMappingLogObject(toBeInserted,'Add','In Progress');
                     Database.SaveResult[] saveList = Database.insert(toBeInserted,false);
                 }
               
                 if(toBeDeleted.size()>0){
-                    
+                    system.debug('toBeDeletedLog' + toBeDeletedLog);
                     logInUserGroupMappingLogObject(toBeDeletedLog,'Remove','In Progress');
-                  
+                    system.debug('final call for deletion' + toBeDeleted);
                     Database.executeBatch(new Core_MDF_UserGroupMapping_Deletion(toBeDeleted), 250);
                 } 
                 
@@ -624,47 +629,38 @@
                 if(pnumList != null && pnumList.size() > 0){
                     Database.update(pnumList);
                 } */ 
-        
-                    
-                /*Boolean externalUserSharingSwitch =false;
+				
+				            
+                Boolean externalUserSharingSwitch =false;
                 if(mapFunctionalityNameTriggerExecution.containsKey('callExtUsrSharingFrmUGMAutomation') &&
                    mapFunctionalityNameTriggerExecution.get('callExtUsrSharingFrmUGMAutomation').Core_Active__c){externalUserSharingSwitch = true;}
                 
                  //insert User Sharing record
                  if(externalUserSharingSwitch && userOrGroupIdSet != NULL && userOrGroupIdSet.size() > 0){
-                     
+                     System.debug('userOrGroupIdSet From Contact Trigger---' + userOrGroupIdSet);
                      // Calling the ExternalUserSharing Batch to create the UserShare record and to avoid the Mixed DML Error
                      Database.executeBatch(new Core_MDF_ExternalUserSharing(true,userOrGroupIdSet));
-                }
 
-                if(userToGroupList!=Null && userToGroupList.size()>0)
-                {
-                    ID jobID = System.enqueueJob(new Core_MDF_IPA_AccountUserMapping(userToGroupList));
-                }*/
-                
-               /* if(userToGroupList!=Null && userToGroupList.size()>0)
-              {
-                  ID jobID = System.enqueueJob(new Core_MDF_IPA_AccountUserMapping(userToGroupList));
-              }*/
-            /*}
+                }
+            }
             catch(exception ex){Core_MDF_CCP_UtilityClass.logError(ex); }                
-           
-        }*/
+            system.debug('toBeInserted' + toBeInserted);system.debug('toBeRemoved' + toBeRemoved);
+        }
         // Method to get all the CCP External Groups from PGM
-        /*public static void getAllCCPExternalGroupIds()
+        public static void getAllCCPExternalGroupIds()
         {
             try{
-            for(Core_MDF_Partner_Group_Mapping__c pgm : [select Core_MDF_Group_Id__c from Core_MDF_Partner_Group_Mapping__c where Core_MDF_Type_of_Access__c='External' and Core_MDF_Inactive_Ind__c = false])
+            for(Core_MDF_Partner_Group_Mapping__c pgm : [select Core_MDF_Group_Id__c from Core_MDF_Partner_Group_Mapping__c where Core_MDF_Type_of_Access__c='External'])
             {
                 allCCPExternalGroupIds.add(pgm.Core_MDF_Group_Id__c);
             }
             }
             catch(exception ex){Core_MDF_CCP_UtilityClass.logError(ex); } 
             
-        }*/
+        }
         
         // Method for removal of user from group if the user no longer has a CCP audience 
-       /* public static void sendForGroupRemoval(List<Contact> contactGroupRemoval)
+        public static void sendForGroupRemoval(List<Contact> contactGroupRemoval)
         {
             Map<id,id> contactToUser = new Map<id,id>();
             List<id> contactListIds = new List<id>();
@@ -684,16 +680,16 @@
             }
             
             logInUserGroupMappingLogObject(toBeRemovedLog,'Remove','In Progress');
-           
+            system.debug('toBeRemoved' + toBeRemoved);
             Database.executeBatch(new Core_MDF_UserGroupMapping_Deletion(toBeRemoved), 250);  
             
             }
             
             catch(exception ex){Core_MDF_CCP_UtilityClass.logError(ex);} 
-        }*/
+        }
         
         // Log the identified entries in Core_MDF_UserGroupMapping_Log object
-        /*public static void logInUserGroupMappingLogObject(List<GroupMember> toBeLogged,  string action, string status)
+        public static void logInUserGroupMappingLogObject(List<GroupMember> toBeLogged,  string action, string status)
         {
             List<Core_MDF_UserGroupMapping_Log__c> logObjectList = new List<Core_MDF_UserGroupMapping_Log__c>();
             
@@ -713,12 +709,13 @@
                         //logobject.Core_MDF_Channel_Program_id__c = accountChannelPartnerForAgency.substring(18,accountChannelPartnerForAgency.length());
                     }
                     logobject.Core_MDF_Channel_Program_id__c =  groupIdToChannelProgramMap.get(logobject.Core_MDF_Group_id__c);  
-                   
+                    system.debug('logobject.Core_MDF_Channel_Program_id__c'+ logobject.Core_MDF_Channel_Program_id__c);
+                    system.debug('contactToAccountIDChannelPartner' + contactToAccountIDChannelPartner);
                     
                     if(logobject.Core_MDF_Group_id__c == null)
                     {
                       string audience = contactToAccountIDChannelPartner.get(logobject.Core_MDF_Contact_id__c);
-                        
+                        system.debug('audience' + audience);
                       // If contact contains more than one Channel Partner
                       if(audience.contains(';'))
                       {
@@ -731,10 +728,10 @@
                               for(id cpID : channelProgramId)
                               {
                                   logobject.Core_MDF_Channel_Program_id__c = cpID;
-                                 
+                                  system.debug(cpID);
                                   loggedChannelProgramID.remove(cpID);
                                   userToLoggedChannelProgram.put(logobject.Core_MDF_User_id__c,loggedChannelProgramID);
-                            
+                                  system.debug('userToLoggedChannelProgram - after removal' + userToLoggedChannelProgram);
                                   break;
                               }  
                           }  
@@ -748,7 +745,7 @@
                     logObject.Core_MDF_Processed_dtm__c = system.now();
                     logObjectList.add(logobject);
                 }
-            
+            system.debug('logObjectList' + logObjectList);
             }       
             catch(exception ex){Core_MDF_CCP_UtilityClass.logError(ex);} 
             Database.executeBatch(new Core_MDF_UGMLog(logObjectList), 250);     
@@ -759,7 +756,7 @@
         public static void createMapforNullGroupId (string audience, id userID)
         {
             List<string> audienceList = audience.split(';');
-            
+            system.debug('audienceList' + audienceList);
             try{
                 for(string result : audienceList)
                 {
@@ -785,7 +782,7 @@
                 }
             }
             catch(exception ex){Core_MDF_CCP_UtilityClass.logError(ex);} 
-            
-        }*/
+            system.debug('userToLoggedChannelProgram' + userToLoggedChannelProgram);
+        }
     
     }

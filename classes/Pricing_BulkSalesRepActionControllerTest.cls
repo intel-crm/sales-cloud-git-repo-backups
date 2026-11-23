@@ -22,6 +22,11 @@ public with sharing class Pricing_BulkSalesRepActionControllerTest {
         }    
     }
    
+ 
+
+
+ 
+    
     static testmethod void recordApprovalTest() {
         
         List < User > lstFSEUsers3 = [Select Id, Email from User Where Email = 'firstNameSalesRep@intel.com' Limit 1 ];
@@ -114,7 +119,7 @@ public with sharing class Pricing_BulkSalesRepActionControllerTest {
             Test.stopTest();
         } 
     }
-    
+
     static testmethod void getQuoteLineToRejectByRPMTest() {        
         List < User > adminUserList = [Select Id, Email from User Where Email = 'firstName@intel.com' Limit 1 ];
         SBQQ__Quote__c quote = [SELECT Id FROM SBQQ__Quote__c LIMIT 1];

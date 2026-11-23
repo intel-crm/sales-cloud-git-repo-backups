@@ -50,11 +50,11 @@
             <targetReference>Update_Compliance_Status_and_Sub_Status</targetReference>
         </connector>
         <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
-        <filterFormula>(ISPICKVAL({!$Record.Core_Military_Aerospace_Govmt_End_Use__c},&apos;Yes&apos;) || {!$Record.Account.Core_Military_Aerospace_and_Government__c}=True)  &amp;&amp;
-({!$Record.Core_Standard_Customer_Refresh__c}=True)</filterFormula>
+        <filterFormula>AND(AND(NOT(ISNULL({!$Record.RecordTypeId})),CONTAINS({!$Label.Core_Sales_CRM_Record_Types},{!$Record.RecordType.DeveloperName})),(ISPICKVAL({!$Record.Core_Military_Aerospace_Govmt_End_Use__c},&apos;Yes&apos;) || {!$Record.Account.Core_Military_Aerospace_and_Government__c}=True)  &amp;&amp;
+({!$Record.Core_Standard_Customer_Refresh__c}=True))</filterFormula>
         <object>Opportunity</object>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordBeforeSave</triggerType>
     </start>
-    <status>Active</status>
+    <status>Obsolete</status>
 </Flow>

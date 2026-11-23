@@ -1,4 +1,4 @@
-import { LightningElement ,api,wire } from 'lwc';
+import { LightningElement ,api,wire,track } from 'lwc';
 import getdataForOpportunity from "@salesforce/apex/Core_OpportunitySupport.getOpportunityDetails";
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import LightningConfirm from 'lightning/confirm';
@@ -32,6 +32,8 @@ import CORE_SALES_INSIGHTS from '@salesforce/schema/Core_Opportunity_Support__c.
 /*TWC4767-2678- End*/
 import customerWinErrorMsg from '@salesforce/label/c.Customer_Win_error_msg';
 import { CurrentPageReference } from 'lightning/navigation';
+import createSupportRequestTeamMember from '@salesforce/apex/Core_OpportunitySupport.createSupportRequestTeamMember';//POC added
+import createSupportRequestTeamMemberList from '@salesforce/apex/Core_OpportunitySupport.createSupportRequestTeamMemberList';//POC added
 
 export default class Core_OppurtunitySupportButton extends NavigationMixin(LightningElement) {
     
@@ -72,7 +74,16 @@ export default class Core_OppurtunitySupportButton extends NavigationMixin(Light
     checkForCoE = false;
     isLoading =   false;
     tsshelptext = 'AI TSS – AI architect to dive into the related opportunity \nCCG ECG TSS – Technical Solution Specialist for CCG Edge related opportunity \nCCG TSS – Technical solutions specialist to dive into the CCG related opportunity \nDCAI TSS – Technical solutions support to a general DataCentre compute opportunity \nDAIS (DataCentre AI Solutions) TSS – Technical solutions specialist to support with data center workloads from generative AI and deep learning to analytics, HPC, and graphics.\nNTG TSS – Technical Solution Specialist for Networking & Telcom related opportunity';
-    
+    showTeamMemberSection = false;// POC added
+    supportTeamMember;//POC added
+    supReq;//POC added
+    supportRequestId;//POC added
+    error;//POC added
+     keyIndex = 0;//POC added
+     @track itemList = [{id: 0}];//POC added
+     @track supportTeamMemberList=[];//POC added
+     oppSupportTeamList=[];//POC added
+
     @wire(CurrentPageReference)
     pageRef;
     connectedCallback() {
@@ -215,31 +226,34 @@ export default class Core_OppurtunitySupportButton extends NavigationMixin(Light
         } else if (fieldName === 'Background Information') {
             this.back_acr = value;
         } else if (fieldName === 'TSS Support Type'){
-            this.tss_Supp = value;
-            this.conditionToQr = '  and Core_Status__c IN (\'Submitted\',\'Pending\') and Core_TSS_Support_Type__c = '+ '\''+this.tss_Supp+'\'';
-            const combobox = this.template.querySelector('[data-id="TSS_Support_Type"]');
-            await combobox.setCustomValidity('');
-            this.checkForCoE = true;
-             new Promise((resolve, reject) => {
-                setTimeout(() => {
-                    this.checkRequestExsit();
-                    resolve();
-                }, 0);
-            });
+            if(this.checkRecordType){
+                this.tss_Supp = value;
+                this.conditionToQr = '  and Core_Status__c IN (\'Submitted\',\'Pending\') and Core_TSS_Support_Type__c = '+ '\''+this.tss_Supp+'\'';
+                const combobox = this.template.querySelector('[data-id="TSS_Support_Type"]');
+                await combobox.setCustomValidity('');
+                this.checkForCoE = true;
+                new Promise((resolve, reject) => {
+                    setTimeout(() => {
+                        this.checkRequestExsit();
+                        resolve();
+                    }, 0);
+                });
+            }
         }else if (fieldName === 'Center of Excellence'){
-            this.coe_Supp = value;            
-            this.conditionToQr = ' and Center_of_Excellence__c = '+ '\''+this.coe_Supp+'\'';
-            const combobox = this.template.querySelector('[data-id="Center_of_Excellence"]');
-            await combobox.setCustomValidity('');
-            this.checkForCoE = true;
-            new Promise((resolve, reject) => {
-                setTimeout(() => {
-                    this.checkRequestExsit();
-                    resolve();
-                }, 0);
-            });            
+            if(this.COERecordType){
+                this.coe_Supp = value;            
+                this.conditionToQr = ' and Center_of_Excellence__c = '+ '\''+this.coe_Supp+'\'';
+                const combobox = this.template.querySelector('[data-id="Center_of_Excellence"]');
+                await combobox.setCustomValidity('');
+                this.checkForCoE = true;
+                new Promise((resolve, reject) => {
+                    setTimeout(() => {
+                        this.checkRequestExsit();
+                        resolve();
+                    }, 0);
+                });  
+            }          
         }
-
         //TWC4767-2678- Start
         else if (fieldName === 'Business Challenge') {
             this.bus_chall = value;
@@ -315,7 +329,13 @@ export default class Core_OppurtunitySupportButton extends NavigationMixin(Light
                 const recordInput = { apiName: 'Core_Opportunity_Support__c', fields };
                 createRecord(recordInput)
                 .then((record) => {
-                    this.displaymessage('Success','Opportunity support created','success');                     
+                    this.displaymessage('Success','Opportunity support created','success');     
+                    //POC added start
+                    console.log('RECORD IS:'+JSON.stringify(record));
+                    this.supportRequestId = record.id;
+                    console.log('SUPPORT REQ ID IS:'+this.supportRequestId);
+                    this.createOppSupportTeamMember();
+                    //POC added end                
                     const Oppfield = {};
                     Oppfield[ID_FIELD.fieldApiName] = this.recordId;
                     Oppfield[OPPORTUNITYDESCRIPTION.fieldApiName] =  this.opp_diesc;
@@ -336,7 +356,9 @@ export default class Core_OppurtunitySupportButton extends NavigationMixin(Light
                          
                 })
                 .catch((error) => {
-                    console.log('error'+JSON.stringify(JSON.stringify(error))); 
+                    console.log('error'+JSON.stringify(JSON.stringify(error)));
+                    console.log('DE-PROXIED ERROR:', JSON.parse(JSON.stringify(error)));
+                    //this.displaymessage('Error creating record','There could be a possible error with Approval Process.please reach out to IT for more details','error'); 
                     this.displaymessage('Error creating record','A resource has not been allocated in your region. Please reach out to your regional management team for support','error');   
                     this.handleCancelNew();     
                 });
@@ -363,5 +385,51 @@ export default class Core_OppurtunitySupportButton extends NavigationMixin(Light
     
      
     } 
+    //POC added start
+    handleShowTeamMemberSection(){
+        this.showTeamMemberSection = true;
+    }
+    handleSupportTeamChange(event){
+        this.supportTeamMember = event.detail.value[0];
+        console.log('Inside handleSupportTeamChange'+this.supportTeamMember);
+       
+    }
+    createOppSupportTeamMember(){
+    console.log('Inside create team member method');
+     console.log('Inside create opp support req'+this.supportRequestId+' Team mem:'+this.supportTeamMember);
+     const inputElements = this.template.querySelectorAll('lightning-input-field[data-id="Core_Opportunity_Support_Team_Member__c"]');
+     console.log('Input elements is:'+inputElements);
+    inputElements.forEach(input => {
+            // Push each input field's value to the array
+            this.supportTeamMemberList.push(input.value);
+        });
+     console.log('Inside supportTeamMemberList ids'+JSON.stringify(this.supportTeamMemberList));
+    createSupportRequestTeamMemberList({oppSupportRequest:this.supportRequestId ,suppTeamMemberIds:this.supportTeamMemberList})
+		.then(result => {
+			this.oppSupportTeamList = result;
+            console.log('Support team result:'+JSON.stringify(oppSupportTeamList));
+			this.error = undefined;
+		})
+		.catch(error => {
+			this.error = error;
+			this.oppSupportTeamList = undefined;
+            console.log('Support team error:'+JSON.stringify(this.error));
+		})
+    }
+    addRow() {
+        ++this.keyIndex;
+        console.log('Inside addRow '+this.keyIndex);
+        let newItem = [{ id: this.keyIndex }];
+        this.itemList.push(newItem);
+         console.log('Inside addRow itemList'+JSON.stringify(this.itemList));
+    }
+    removeRow(event) {
+        console.log('Inside removeRow');
+        if (this.itemList.length >= 2) {
+            this.itemList = this.itemList.filter(function (element) {
+                return parseInt(element.id)   !== parseInt(event.target.accessKey);
+            });
+        }
+    }
 
 }

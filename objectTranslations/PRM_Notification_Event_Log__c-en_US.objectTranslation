@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Notification Event Log</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Notification Event Logs</value>
+    </caseValues>
+    <fields>
+        <label><!-- Event Action Value --></label>
+        <name>PRM_Event_Action_Value__c</name>
+    </fields>
+    <fields>
+        <label><!-- Event Type --></label>
+        <name>PRM_Event_Type__c</name>
+        <picklistValues>
+            <masterLabel>Location account association</masterLabel>
+            <translation><!-- Location account association --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Location account removal</masterLabel>
+            <translation><!-- Location account removal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Prime Name Update</masterLabel>
+            <translation><!-- Prime Name Update --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Location Account --></label>
+        <name>PRM_Intel_Account__c</name>
+        <relationshipLabel><!-- Notification Event Logs (Location Account) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- OPID --></label>
+        <name>PRM_One_Partner_Id__c</name>
+        <relationshipLabel><!-- Notification Event Logs --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>PRM_Status__c</name>
+        <picklistValues>
+            <masterLabel>Ignored</masterLabel>
+            <translation><!-- Ignored --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New</masterLabel>
+            <translation><!-- New --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Notification Sent</masterLabel>
+            <translation><!-- Notification Sent --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

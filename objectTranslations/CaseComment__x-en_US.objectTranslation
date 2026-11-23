@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Case Comments External</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Case Comments External</value>
+    </caseValues>
+    <fields>
+        <label><!-- Body --></label>
+        <name>CommentBody__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Network Connection ID --></label>
+        <name>ConnectionReceivedId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Network Connection ID --></label>
+        <name>ConnectionSentId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Created By ID --></label>
+        <name>CreatedById__c</name>
+    </fields>
+    <fields>
+        <label><!-- Created Date --></label>
+        <name>CreatedDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Url of Creator&apos;s Profile Photo --></label>
+        <name>CreatorFullPhotoUrl__c</name>
+    </fields>
+    <fields>
+        <label><!-- Name of Creator --></label>
+        <name>CreatorName__c</name>
+    </fields>
+    <fields>
+        <label><!-- Url of Creator&apos;s Thumbnail Photo --></label>
+        <name>CreatorSmallPhotoUrl__c</name>
+    </fields>
+    <fields>
+        <label><!-- Deleted --></label>
+        <name>IsDeleted__c</name>
+    </fields>
+    <fields>
+        <label><!-- Published --></label>
+        <name>IsPublished__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Modified By ID --></label>
+        <name>LastModifiedById__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Modified Date --></label>
+        <name>LastModifiedDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Parent ID --></label>
+        <name>ParentId__c</name>
+        <relationshipLabel><!-- Case Comments External --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- System Modstamp --></label>
+        <name>SystemModstamp__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -1,29 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <aggregates>
-        <calculatedFormula>PartnerFundAllocation.Core_MDF_Available_Activity_Alloc_Amt__c:SUM</calculatedFormula>
+        <calculatedFormula>PartnerFundAllocation.Core_MDF_Available_Allocation_Amount__c:SUM</calculatedFormula>
         <datatype>currency</datatype>
         <developerName>FORMULA1</developerName>
         <downGroupingContext>PartnerMarketingBudget.PartnerFundAllocations$ChannelPartner</downGroupingContext>
         <isActive>true</isActive>
         <isCrossBlock>false</isCrossBlock>
-        <masterLabel>Activity Available Amount</masterLabel>
-        <scale>2</scale>
-    </aggregates>
-    <aggregates>
-        <calculatedFormula>PartnerFundAllocation.Core_MDF_Available_Allocation_Amount__c:SUM</calculatedFormula>
-        <datatype>currency</datatype>
-        <developerName>FORMULA2</developerName>
-        <downGroupingContext>PartnerMarketingBudget.PartnerFundAllocations$ChannelPartner</downGroupingContext>
-        <isActive>true</isActive>
-        <isCrossBlock>false</isCrossBlock>
-        <masterLabel>Claim Available Amount</masterLabel>
+        <masterLabel>Available Allocation Amount</masterLabel>
         <scale>2</scale>
     </aggregates>
     <aggregates>
         <calculatedFormula>PartnerFundAllocation.Amount:SUM</calculatedFormula>
         <datatype>currency</datatype>
-        <developerName>FORMULA3</developerName>
+        <developerName>FORMULA2</developerName>
         <downGroupingContext>PartnerMarketingBudget.PartnerFundAllocations$ChannelPartner</downGroupingContext>
         <isActive>true</isActive>
         <isCrossBlock>false</isCrossBlock>
@@ -33,22 +23,13 @@
     <aggregates>
         <calculatedFormula>PartnerMarketingBudget.Amount:SUM</calculatedFormula>
         <datatype>currency</datatype>
-        <developerName>FORMULA4</developerName>
+        <developerName>FORMULA3</developerName>
         <downGroupingContext>PartnerMarketingBudget$Name</downGroupingContext>
-        <isActive>false</isActive>
+        <isActive>true</isActive>
         <isCrossBlock>false</isCrossBlock>
         <masterLabel>Budget Amount</masterLabel>
         <scale>2</scale>
     </aggregates>
-    <columns>
-        <field>PartnerMarketingBudget.PartnerFundAllocations.PartnerFundRequests.PartnerFundClaims$Core_MDF_Program__c</field>
-    </columns>
-    <columns>
-        <field>PartnerMarketingBudget$Core_MDF_Budget_Type_Report_txt__c</field>
-    </columns>
-    <columns>
-        <field>PartnerMarketingBudget$Core_MDF_Budget_Status__c</field>
-    </columns>
     <columns>
         <field>PartnerMarketingBudget.PartnerFundAllocations$ChannelPartner.Core_MDF_Active_Ind__c</field>
     </columns>
@@ -64,20 +45,12 @@
     </columns>
     <description>Report that lists account balance for each account node for a given budget year .</description>
     <filter>
-        <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6</booleanFilter>
         <criteriaItems>
             <column>PartnerMarketingBudget.PartnerFundAllocations.PartnerFundRequests.PartnerFundClaims$Core_MDF_Status__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Submitted,Pending Available Fund,Payment Due,Pending Payment,Paid,Hold,Cancelled,Denied,Adjusted,Closed</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>PartnerMarketingBudget.PartnerFundAllocations.PartnerFundRequests.PartnerFundClaims$Core_MDF_Region_Cd__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>APJ,ASMO,EMEA,PRC</value>
         </criteriaItems>
         <criteriaItems>
             <column>PartnerMarketingBudget.PartnerFundAllocations.PartnerFundRequests.PartnerFundClaims$Core_MDF_Type_Txt__c</column>
@@ -87,25 +60,11 @@
             <value>Claim</value>
         </criteriaItems>
         <criteriaItems>
-            <column>PartnerMarketingBudget$Core_MDF_Budget_Type_Txt__c</column>
+            <column>PartnerMarketingBudget.PartnerFundAllocations.PartnerFundRequests.PartnerFundClaims$Core_MDF_Region_Cd__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>,Business Client Acceleration - MDF,CCF 1.0,Client Market Accelerate,Client Specialties MDF,Data Centric Acceleration - MDF,DCF 1.0,Intel Rise Technology Initiative,IoT Premier - MDF,IoT Targeted - MDF,ODM Growth Plan - Client MDF,MDF,MDF+,OEM CMP,Retail MDF,RSA MD,Service Provider CMP,SOEM Client MDF,SOEM Data Center MDF,Account Plan,Proposal I MDF,Cloud,Proposal II MDF</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>PartnerMarketingBudget$Core_MDF_Program__c.Core_MDF_Technical_Program_Name__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>,Channel MDF,Client CoMarketing Fund,Client CoMarketing Fund Boost,Data Center CoMarketing Fund,Intel Partner Alliance,Retail Marketing Funds,Service Provider CoMarketing Fund,Ecosystem Extension Fund</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>PartnerMarketingBudget.PartnerFundAllocations.PartnerFundRequests$Campaign</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>notEqual</operator>
-            <value></value>
+            <value>EMEA,PRC,APJ,ASMO</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

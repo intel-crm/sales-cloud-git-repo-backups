@@ -6,12 +6,10 @@
 * Developer                     Date                          Description
 * -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 * Intel - Narayani Perachi      27-02-2019                    Batch class to delete records from GroupMember table if the audience list no longer contains CCP audience
-* Intel - NP(11630236)      10-06-2020            Commented the User share code
-* Intel - NP(11630236)      11-06-2020            Added code to delete PNUMs on group member deletion
+* Intel - NP(11630236)			10-06-2020					  Commented the User share code
+* Intel - NP(11630236)			11-06-2020					  Added code to delete PNUMs on group member deletion
 **************************************************************************************************************************************************************************************/
-//global class Core_MDF_UserGroupMapping_Deletion implements Database.Batchable<id>, Database.Stateful
-//US949837 - Added without sharing keyword to fix checkmarx issues
-global without sharing class Core_MDF_UserGroupMapping_Deletion implements Database.Batchable<id>, Database.Stateful
+global class Core_MDF_UserGroupMapping_Deletion implements Database.Batchable<id>, Database.Stateful
 {
    public List<id> tobeDeleted = new List<id>();
    public list<id> toBeDeletedPnum = new list<id>();
@@ -56,7 +54,7 @@ global without sharing class Core_MDF_UserGroupMapping_Deletion implements Datab
          
          //Remove User from Groupmember
          Database.DeleteResult[] deleteList = Database.delete(toBeDeleted,false); 
-        
+         system.debug('deleteList' + deleteList);
   
        }
        
@@ -64,14 +62,15 @@ global without sharing class Core_MDF_UserGroupMapping_Deletion implements Datab
    }
 
    global void finish(Database.BatchableContext batchContext)
-   {
+   {    
+       system.debug('pnumSwitch' + pnumSwitch);
        if(pnumSwitch){
            //Log the PNUM deletion in the User Group Mapping Log table
            Core_MDF_PNUM_Deletion.logUGM(toBeDeletedPnum);
            
            //Delete the PNUM records
            Database.DeleteResult[] pnumDeleteList = Database.delete(toBeDeletedPnum,false); 
-         
+           system.debug('pnumdelete' + pnumDeleteList); 
            
            //Check if PNUM deletion indicator is True
            if(mapFunctionalityNameTriggerExecution.containsKey('callExternalUserSharingFromUGMDeletion') &&

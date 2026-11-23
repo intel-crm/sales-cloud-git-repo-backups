@@ -1,0 +1,46 @@
+<template>    
+    <div>
+        <lightning-card title="Search Results" icon-name="utility:search">
+            <lightning-input type="text" label="Search Product" value={searchTerm} onchange={handleSearchChange}></lightning-input>
+            <template if:true={searchResults}>
+                <ul>
+                    <template for:each={searchResults} for:item="result">
+                        <li key={result.Id} onclick={handleSelectedProduct} data-id={result.Id}> {result.Name} </li> 
+                    </template>
+                </ul>
+            </template>
+            <div>
+                <lightning-button style="text-align: center;" label="Submit" onclick={handleSubmitProduct}></lightning-button>
+            </div>
+        </lightning-card>
+    </div>
+
+     <template if:true={isFinancialProduct}>
+        <div>
+            <lightning-record-form 
+            record-type-id="012Df000003baOXIAY" 
+            object-api-name="Core_Design_Registration_Product__c"
+            layout-type="Full"
+            columns="2"
+            mode="edit"
+            onsubmit={handleRecordFormSubmit}></lightning-record-form>
+             fields={fields}
+           
+        </div>
+    </template> 
+     <!-- <template if:false={isFinancialProduct}>
+        <div>
+            <lightning-record-form 
+            record-type-id="0121J000000U313QAC" 
+            object-api-name="Core_Design_Registration_Product__c"
+            layout-type="Full"
+            columns="2"
+            mode="edit"
+           onsubmit={handleRecordFormSubmit}></lightning-record-form>
+           
+           
+        </div>
+    </template>  -->
+
+
+</template>

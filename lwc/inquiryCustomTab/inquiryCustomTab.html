@@ -1,0 +1,19 @@
+<template>
+    <template if:true={Inquiries}>
+        <lightning-card title="Inquiries Record">
+            <ul>
+                <template for:each={Inquiries} for:item="inq">
+                    <li key={inq.id}>
+                        <lightning-formatted-text value={inq.fields.Name.value}></lightning-formatted-text>
+                    </li>
+                </template>
+            </ul>
+        </lightning-card>
+    </template>
+
+    <template if:true={error}>
+        <lightning-card title="Error">
+            <p>{error}</p>
+        </lightning-card>
+    </template>
+</template>

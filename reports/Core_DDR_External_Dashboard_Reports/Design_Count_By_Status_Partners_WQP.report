@@ -49,7 +49,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Approved,Design accepted,Pre-Approved,Re-Submitted,Submitted</value>
+            <value>Approved,Design accepted,Pre-Approved,Re-Submitted,Rejected,Submitted</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -59,7 +59,7 @@
         <field>Core_Design_Registration__c.Core_Design_Registration_Status_Nm__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Design Amount By Status(Partners)</name>
+    <name>Design Amount By Status (Partners)</name>
     <params>
         <name>co</name>
         <value>1</value>

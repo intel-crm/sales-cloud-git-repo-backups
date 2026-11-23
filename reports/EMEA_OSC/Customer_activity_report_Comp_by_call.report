@@ -147,39 +147,11 @@
             <value>Katarzyna Bielak,Gosia Dzul,Jaroslaw Tomala,Jadwiszczok,Galin Dimov,Eran Gal,Alexis Garea</value>
         </criteriaItems>
         <criteriaItems>
-            <column>DUE_DATE</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>equals</operator>
-            <value>THIS_FISCAL_QUARTER</value>
-        </criteriaItems>
-        <criteriaItems>
             <column>ASSIGNED</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Natalia Radtke,Andrzej Taraszkiewicz,Antoine Guinebault,Barbara Barusova Maliszewska,Bene Cazzamali,Bruno Le Gallou,Dawid Studzinski,Dilip James,Dmitry Matchin,Dorian Witkowski,Dorota Prokopowicz,Ekaterina Kotelnikova,Emmanuel Le Roux,Galin Dimov,Hesham Elsaid,Joe Martin,Karim Ghatwary,Katarzyna Makowska,Korcan Erguder,Lukasz Balas,Lukasz Chrzanowski,Maciek Osiecki,Magdalena Dunska-Glowka,Magdalena Witke,Marcin Sochacki,Marek Lesiewski,Marta Muszynska,Martin Opara,Michela Adamo,Milosz Cieszynski,Nikolay Panov,Ozkan Ozdikici,Roberto Lipari,Roksana Dylewska,Stephy Savier,Tomasz Czajko,Vladimir Fedorov,Aaron Voelker,Alexey Belogortsev,Ariel Hako,Bartlomiej Olik-Gajewski,Bartłomiej Olik-Gajewski,Kamil Guzik,Katarzyna Bielak,Michal Nowak,Tim Olszewski,Maciej Hoffman,Julia Samoilov,Michal Wrzosek,Maciej Hoffmann,Daria Serzysko,Wiktor Aleksander Wiszorowski,Filip Ostojski,Joanna Pytlowska,Katarzyna Kubica</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>DUE_DATE</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>equals</operator>
-            <value>THIS_FISCAL_QUARTER</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>DUE_DATE</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>equals</operator>
-            <value>THIS_FISCAL_QUARTER</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>DUE_DATE</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>equals</operator>
-            <value>THIS_FISCAL_QUARTER</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

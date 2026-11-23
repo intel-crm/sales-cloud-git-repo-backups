@@ -25,10 +25,10 @@
                   helper.recalculateElementsOffset(component,event,helper);
                   containerOffsetTop = component.get('v.containerOffsetTop');
                 }
-                if(windowOffset >= containerOffsetTop) {
+                if(windowOffset >= containerOffsetTop - 60) {
                     isSticky = true;
                     $A.util.addClass(stickySectionContainer, 'fixed');
-                } else if(windowOffset < containerOffsetTop) {
+                } else if(windowOffset < containerOffsetTop - 60) {
                     isSticky = false;
                     $A.util.removeClass(stickySectionContainer, 'fixed');
                 }
@@ -42,7 +42,7 @@
 
                 // select the elements basd on scroll position
                 if (tabsOffset){
-                  var headOffset = isSticky ? headerOffset : headerOffset;
+                  var headOffset = isSticky ? headerOffset : headerOffset - 60;
 
                   for (i = 0, i_l = tabsOffset.length; i < i_l; i++){
                       var nextTop = i + 1 < i_l ? tabsOffset[i+1] : 99999; // peek next top;

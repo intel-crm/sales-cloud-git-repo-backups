@@ -11,10 +11,12 @@
     
 	<div class="{! v.class}">
 		<aura:if isTrue="{!not(empty(v.tagline))}">
-        <h4><lightning:formattedRichText value="{!v.tagline}" disableLinkify = "true" /></h4>
+        <h4><lightning:formattedRichText value="{!v.tagline}" /></h4>
         </aura:if>
 		<lightning:formattedRichText value="{!v.displaySection}"/>
-
+       
+        
+      
 		<aura:if isTrue="{! !empty(v.moreSection)}">
 			<div>
                 <aura:if isTrue="{!v.showMoreSectionforEnhanced}"><!--Added for US600134 by Megha-->

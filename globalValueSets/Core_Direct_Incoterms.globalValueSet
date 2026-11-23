@@ -96,16 +96,10 @@
         <label>Free Alongside Ship</label>
     </customValue>
     <customValue>
-        <fullName>Carriage and insurance paid to</fullName>
+        <fullName>Ex Works</fullName>
         <default>false</default>
         <isActive>false</isActive>
-        <label>Carriage and insurance paid to</label>
-    </customValue>
-    <customValue>
-        <fullName>Carriage paid to</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Carriage paid to</label>
+        <label>Ex Works</label>
     </customValue>
     <customValue>
         <fullName>Delivered Duty Paid</fullName>
@@ -114,10 +108,16 @@
         <label>Delivered Duty Paid</label>
     </customValue>
     <customValue>
-        <fullName>Ex Works</fullName>
+        <fullName>Carriage paid to</fullName>
         <default>false</default>
         <isActive>false</isActive>
-        <label>Ex Works</label>
+        <label>Carriage paid to</label>
+    </customValue>
+    <customValue>
+        <fullName>Carriage and insurance paid to</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Carriage and insurance paid to</label>
     </customValue>
     <masterLabel>Incoterms</masterLabel>
     <sorted>false</sorted>

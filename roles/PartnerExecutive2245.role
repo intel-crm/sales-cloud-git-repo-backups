@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>吉林通电实业集团有限公司信息技术分公司 Partner Executive</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>吉林通电实业集团有限公司信息技术分公司 Partner Executive</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>Admin</parentRole>
+</Role>

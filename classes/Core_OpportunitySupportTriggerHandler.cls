@@ -6,14 +6,19 @@ public without sharing class Core_OpportunitySupportTriggerHandler extends Trigg
         if(mapFunctionalityNameTriggerExecution.containsKey('addSupportTeamToOpp') && mapFunctionalityNameTriggerExecution.get('addSupportTeamToOpp').Core_Active__c){
             Core_OpportunitySupportServiceHandler.determineApprovers(Trigger.new);
         }
+       
     }
     
     public override void beforeUpdate() {
         // if(mapFunctionalityNameTriggerExecution.containsKey('determineApprovers') && mapFunctionalityNameTriggerExecution.get('determineApprovers').Core_Active__c)
         //  Core_OpportunitySupportServiceHandler.determineApprovers((Map<Id,Core_Opportunity_Support__c>)Trigger.oldMap, Trigger.new);
+        //  
+        //Core_OpportunitySupportServiceHandler.Core_marketingsupportStatuschange(Trigger.new ,  (Map<Id,Core_Opportunity_Support__c>)trigger.newMap,(Map<Id,Core_Opportunity_Support__c>)Trigger.oldMap);
+        
         if(mapFunctionalityNameTriggerExecution.containsKey('addSupportTeamToOpp') && mapFunctionalityNameTriggerExecution.get('addSupportTeamToOpp').Core_Active__c)  {          
             Core_OpportunitySupportServiceHandler.checkOppSupportTeam(Trigger.new ,  (Map<Id,Core_Opportunity_Support__c>)trigger.newMap,(Map<Id,Core_Opportunity_Support__c>)Trigger.oldMap);
         }
+        
         // here call for warning msg apex
     }
     
@@ -22,11 +27,11 @@ public without sharing class Core_OpportunitySupportTriggerHandler extends Trigg
     }
     
     public override void afterUpdate(){
+      
         if(mapFunctionalityNameTriggerExecution.containsKey('addSupportTeamToOpp') && mapFunctionalityNameTriggerExecution.get('addSupportTeamToOpp').Core_Active__c && firstcall)
         {
-            if(!Test.IsRunningTest()){
+            if(!Test.IsRunningTest())
                 firstcall = false;
-            }
             Core_OpportunitySupportServiceHandler.updateApproveOrRejectComents(Trigger.new ,(Map<Id,Core_Opportunity_Support__c>)Trigger.oldMap);
             Core_OpportunitySupportServiceHandler.addSupportToOpprotunityTeam((Map<Id,Core_Opportunity_Support__c>)Trigger.oldMap, Trigger.new);
         }        

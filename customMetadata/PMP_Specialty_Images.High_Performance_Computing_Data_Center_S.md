@@ -3,10 +3,6 @@
     <label>High Performance Computing Data Center S</label>
     <protected>false</protected>
     <values>
-        <field>Grey_Image_URL__c</field>
-        <value xsi:type="xsd:string">/servlet/servlet.FileDownload?file=0153b000005K8tlAAC</value>
-    </values>
-    <values>
         <field>PMP_Account_Specialty_Name__c</field>
         <value xsi:type="xsd:string">High Performance Computing Data Center Specialty</value>
     </values>
@@ -20,6 +16,6 @@
     </values>
     <values>
         <field>URL__c</field>
-        <value xsi:type="xsd:string">/servlet/servlet.ImageServer?id=0153b000004Pg4f&amp;oid=00Do0000000aRcf</value>
+        <value xsi:type="xsd:string">/servlet/servlet.ImageServer?id=0153b000004Pg4f&amp;oid=00Do0000000aRcf&amp;lastMod=1570256505000</value>
     </values>
 </CustomMetadata>

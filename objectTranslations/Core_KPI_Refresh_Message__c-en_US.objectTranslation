@@ -9,10 +9,6 @@
         <value>KPI Refresh Message</value>
     </caseValues>
     <fields>
-        <label><!-- KPI Retry Failed UserEmails --></label>
-        <name>Core_KPI_Retry_Failed_UserEmails__c</name>
-    </fields>
-    <fields>
         <label><!-- LastModifiedDate --></label>
         <name>Core_LastModifiedDate__c</name>
     </fields>

@@ -65,8 +65,8 @@
             <column>Opportunity.Core_Opportunity_Coverage__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>osc,inside</value>
+            <operator>equals</operator>
+            <value>osc</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

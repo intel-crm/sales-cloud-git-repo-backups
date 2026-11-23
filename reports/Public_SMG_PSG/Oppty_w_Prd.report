@@ -49,11 +49,11 @@
     <description>All PSG Opportunities with Products with filter Product Type=Intel FPGASort Descending by Total Price.</description>
     <filter>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_Product_Type__c</column>
+            <column>Opportunity.Core_AI_Content_in_System__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Intel® FPGAs</value>
+            <operator>contains</operator>
+            <value>Inference on CPU</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>63.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Assignment_2</name>
+        <label>Assignment 2</label>
+        <locationX>176</locationX>
+        <locationY>431</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Core_Account_Plan_Score__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Score_flow</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Account_Plan_Score</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Customer_Name</name>
+        <label>Customer Name</label>
+        <locationX>176</locationX>
+        <locationY>323</locationY>
+        <assignmentItems>
+            <assignToReference>CRM_Customer_Nm_dummy</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.CRM_Customer_Nm__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Assignment_2</targetReference>
+        </connector>
+    </assignments>
+    <description>Helps to update the Account Plan Score based on the number of fields entered</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>Score_flow</name>
+        <dataType>Number</dataType>
+        <expression>(IF(NOT(ISBLANK({!CRM_Customer_Nm_dummy})), 1, 0)/2)*10</expression>
+        <scale>0</scale>
+    </formulas>
+    <interviewLabel>Account Plan Score Update {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Account Plan Score Update</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_Account_Plan_Score</name>
+        <label>Update Account Plan Score</label>
+        <locationX>176</locationX>
+        <locationY>539</locationY>
+        <inputAssignments>
+            <field>Core_Account_Plan_Score_Nm__c</field>
+            <value>
+                <elementReference>Score_flow</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Customer_Name</targetReference>
+        </connector>
+        <object>AccountPlan</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>CRM_Customer_Nm_dummy</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+</Flow>

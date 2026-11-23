@@ -1,0 +1,459 @@
+<!---
+/**************************************************************************************
+Name:  Crm_Opp_ApprovalChecklist
+Version     : 1.0 
+Created Date: February 5, 2025
+Description : Converted from VF-Core_OppApproveChecklist.
+LWC page embedded in opportunity page field as 'Pre-Submit Check' redirect to this Crm_Opp_ApprovalChecklist LWC
+--->
+<template>
+    <lightning-card>
+        <img src={iconUrl} width="50px;"/>
+        <a target="_self" style="font-size:16px;font-weight:bold;text-decoration:underline;" onclick={navigateToRecord} href="javascript:void(0)">{name}</a>
+        <template if:true={pageblocksectionredender}>
+            <div class="slds-is-relative tableCSS">
+                <div if:false={loaded}>
+                    <lightning-spinner alternative-text="Loading" style="position:top;"></lightning-spinner>
+                </div>
+                <h2 class='slds-text-title_bold leftmargin'>Design Opportunity Approval Checklist - Recommendation</h2>
+                <br>
+                <table class="slds-table slds-no-row-hover" width="75%" >
+                    <tr>
+                        <th style="width:10%;"><u>Field Name</u></th>
+                        <th style="width:10%;"><u>Indicator</u></th>
+                        <th style="width:56%;"><u>Field Description</u></th>
+                    </tr>
+                    <tr class="spaceUnder">
+                        <td><br/><b>BU Short Name</b></td>
+                        <td> <br/>
+                            <div if:false={oliWrappedData.BUShortName}><img src={redIcon} width="20" height="18" class="checkIcon"/></div>
+                            <div if:true={oliWrappedData.BUShortName}><img src={greenIcon} width="20" height="18" class="checkIcon"/></div>
+                        </td>
+                        <td><br/>Please check if there is a BU on the Product Line Item assigned for commissions. The system usually 
+                            supplements the missing BU within 24 hours. Should that not happen, submit an Ask a Question. <b>There is no submission for 
+                            approval possible when the BU Short Name is missing. It is relevant for BU KPIs and commissions.</b>
+                        </td>
+                    </tr>
+                    <tr class="spaceUnder">
+                        <td><b>MINDS</b></td>
+                        <td> 
+                            <div if:false={wrappedData.MAGFlag}><img src={redIcon} width="20" height="18" class="checkIcon"/></div>
+                            <div if:true={wrappedData.MAGFlag}><img src={greenIcon} width="20" height="18" class="checkIcon"/></div> 
+                        </td>
+                        <td>Compliance Status does NOT imply or confer government authorization for any transaction. Intel parties must work within defined  
+                            <a href="https://salescrm.intel.com/training-and-help/opportunity-management/minds-opp-handling/#guardrails" target="_blank"> guardrails. 
+                            </a><a href="https://www.intel.com/content/www/us/en/distributor/ddr-training/mag.html " target="_blank"> Non-Intel parties </a> 
+                            are responsible for compliance with any applicable trade regulations.<b> There is no submission for opportunity possible with a 
+                            red compliance indicator.</b>
+                        </td>
+                    </tr>
+                    <tr class="spaceUnder" >
+                        <td><br/><b>Product At Risk</b></td>
+                        <td ><br/>
+                            <div if:true={atRisk}> <img src={redIcon} width="20" height="18" class="checkIcon"/></div>
+                            <div if:false={atRisk}> <img src={greenIcon} width="20" height="18" class="checkIcon"/></div>   
+                        </td>
+                        <td><br/>Please make sure all <a href={riskURL}>products with 
+                                "At Risk"</a> flag have a risk status of "Closed: Support Provided" or "Closed: Support Not Provided" prior to closing your 
+                                opportunity.
+                        </td>
+                    </tr>
+                    <tr class="spaceUnder">
+                        <td><b>Write In Products</b></td>
+                        <td>
+                            <div if:false={oliWrappedData.WriteInProducts}><img src={redIcon} width="20" height="18" class="checkIcon"/></div>
+                            <div if:true={oliWrappedData.WriteInProducts}><img src={greenIcon} width="20" height="18" class="checkIcon"/></div>
+                        </td>
+                        <td>Please insert the correct Intel product from the product list before submitting for approval. If the product you are looking for 
+                            is not found in the pick-list, submit an Ask a Question. <b>There is no submission for approval possible with a write-in product.</b>
+                        </td>
+                    </tr>
+                    <tr class="spaceUnder">
+                        <td><b>Quantity Validate</b></td>
+                        <td>
+                            <div if:false={wrappedData.QuantityValidate}><img src={redIcon} width="20" height="18" class="checkIcon"/></div>
+                            <div if:true={wrappedData.QuantityValidate}><img src={greenIcon} width="20" height="18" class="checkIcon"/></div>
+                        </td>
+                        <td>Product Quantity field only supports whole numbers.  <b>Edit Quantity field(s) by removing the decimal to enable submission.</b></td>
+                    </tr>
+                    <tr class="spaceUnder">
+                        <td><b>Proof of Performance</b></td>
+                        <td>
+                            <div if:true={attachmentRender}><img if:true={attachmentDW} src={redIcon} width="20" height="18" class="checkIcon"/></div>
+                            <div if:false={attachmentRender}><img if:true={attachmentDW} src={yellowIcon} width="20" height="18" class="checkIcon"/></div>
+                            <div if:true={wrappedData.Note_Attachmentsize}><img src={greenIcon} width="20" height="18" class="checkIcon"/></div>
+                        </td>
+                        <td>Please attach a note or document labeled "Proof or Performance" or "POP" prior to submit for approval, that meets the requirements 
+                            as detailed <a href="https://goto/POPTraining" target="_blank">here</a>.
+                        </td>
+                    </tr>
+                    <tr class="spaceUnder">
+                        <td><b>Production Win Proof of Performance</b></td>
+                        <td>
+                            <div if:true={pWattachmentRender}><img if:true={attachmentPW} src={yellowIcon} width="20" height="18" class="checkIcon"/></div>
+                            <div if:false={pWattachmentRender}><img if:true={attachmentPW} src={yellowIcon} width="20" height="18" class="checkIcon"/></div>
+                            <div if:true={wrappedData.PW_Note_Attachmentsize}><img src={greenIcon} width="20" height="18" class="checkIcon"/></div>
+                        </td>
+                        <td>Please attach a note or document labeled "Production Win POP" prior to submit for approval, that meets the requirements as 
+                            detailed <a href="https://goto/POPTraining" target="_blank">here</a>.
+                        </td>
+                    </tr>
+                    <tr class="spaceUnder">
+                        <td>
+                            <!--Areefa:Please dont Remove this Space , this we needed for  distinguishing between Manditory and Optional Checklist -->
+                            <br/>
+                        </td>
+                    </tr>
+                    <tr class="spaceUnder">
+                        <td><b>Opportunity Solutions</b></td> 
+                        <td>
+                            <div if:false={wrappedData.isOppotySolutionAdded}><img src={yellowIcon} width="20" height="18" class="checkIcon"/></div>
+                            <div if:true={wrappedData.isOppotySolutionAdded}><img src={greenIcon} width="20" height="18" class="checkIcon"/></div>
+                        </td>
+                        <td>{textWrapper.OppSolutions}</td>
+                    </tr>
+                    <tr class="spaceUnder">
+                        <td><b>Description Of Contribution</b></td>
+                        <td>
+                            <div if:false={wrappedData.isDescriptionOfContribution}><img src={redIcon} width="20" height="18" class="checkIcon"/></div>
+                            <div if:true={wrappedData.isDescriptionOfContribution}><img src={greenIcon} width="20" height="18" class="checkIcon"/></div>
+                        </td>
+                        <td>{textWrapper.DescOfContri}</td>
+                    </tr>        
+                    <tr class="spaceUnder">
+                        <td><b>Competitive/Architecture Conversion </b></td>
+                        <td> 
+                            <div if:true={compArchRender}><img src={yellowIcon} width="20" height="18" class="checkIcon"/></div>
+                            <div if:false={compArchRender}><img src={greenIcon} width="20" height="18" class="checkIcon"/></div>                       
+                        </td>
+                        <td> {textWrapper.CompArchConversion} </td>
+                    </tr>
+                    <tr class="spaceUnder">
+                        <td><b>Opportunity Description </b></td>
+                        <td>
+                            <div if:true={descriptionCheckRender}><img src={redIcon} width="20" height="18" class="checkIcon"/></div>
+                            <div if:false={descriptionCheckRender}><img src={greenIcon} width="20" height="18" class="checkIcon"/></div>
+                        </td>
+                        <td> {textWrapper.OppDescription}</td>
+                    </tr>
+                    <tr class="spaceUnder">
+                        <td><b>Status Update</b></td>
+                        <td> 
+                            <div if:true={statusUpdateRender}><img src={yellowIcon} width="20" height="18" class="checkIcon"/></div>
+                            <div if:false={statusUpdateRender}><img src={greenIcon} width="20" height="18" class="checkIcon"/></div>                        
+                        </td>
+                        <td >{textWrapper.StatusUpdate}</td>
+                    </tr>
+                    <tr class="spaceUnder">
+                        <td><b> Descriptive Features </b></td>
+                        <td> 
+                            <div if:false={wrappedData.DescriptiveFeature}><img src={yellowIcon} width="20" height="18" class="checkIcon"/></div>
+                            <div if:true={wrappedData.DescriptiveFeature}><img src={greenIcon} width="20" height="18" class="checkIcon"/></div>                        
+                        </td>
+                        <td> {textWrapper.DescriptiveFeatures} </td>
+                    </tr>
+                    <tr class="spaceUnder">
+                        <td><b>First Customer Ship Date </b></td>
+                        <td> 
+                            <div if:false={wrappedData.firstCustomerShipDate}><img src={redIcon} width="20" height="18" class="checkIcon"/></div>
+                            <div if:true={wrappedData.firstCustomerShipDate}><img src={greenIcon} width="20" height="18" class="checkIcon"/></div>                        
+                        </td>
+                        <td> {textWrapper.FirstCustShipDate}</td>
+                    </tr>
+                    <tr class="spaceUnder">
+                        <td><b>Production End Date  </b></td>
+                        <td> 
+                            <div if:false={wrappedData.ProductionDate}><img src={redIcon} width="20" height="18" class="checkIcon"/></div>
+                            <div if:true={wrappedData.ProductionDate}><img src={greenIcon} width="20" height="18" class="checkIcon"/></div>                        
+                        </td>
+                        <td> {textWrapper.ProductionEndDate}</td>
+                    </tr>
+                    <tr class="spaceUnder">
+                        <td><b>Partner </b></td>
+                        <td>
+                            <div if:false={wrappedData.Opptypartnersize}><img src={redIcon} width="20" height="18" class="checkIcon"/></div>
+                            <div if:true={wrappedData.Opptypartnersize}><img src={greenIcon} width="20" height="18" class="checkIcon"/></div>
+                        </td>
+                        <td> {textWrapper.Partner}</td>
+                    </tr>
+                    <tr class="spaceUnder">
+                        <td><b> Manufacturing Region </b></td>
+                        <td>
+                            <div if:true={manufacturingRegionRender}><img src={redIcon} width="20" height="18" class="checkIcon"/></div>
+                            <div if:false={manufacturingRegionRender}><img src={greenIcon} width="20" height="18" class="checkIcon"/></div>
+                        </td>
+                        <td> {textWrapper.ManufacturingRegion}</td>
+                    </tr>
+                    
+                    <tr class="spaceUnder" if:true={excludeVolume}>
+                        <td><b> Volume </b></td>
+                        <td>
+                            <div if:true={volumeRender}><img src={yellowIcon} width="20" height="18" class="checkIcon"/></div>
+                            <div if:false={volumeRender}><img src={greenIcon} width="20" height="18" class="checkIcon"/></div>
+                        </td>
+                        <td> {textWrapper.Volume} </td>
+                    </tr>
+                    
+                    <tr class="spaceUnder">
+                        <td><b> Exclude from KPIs </b></td>
+                            <td> 
+                                <div if:true={wrappedData.ExludeKPIflag}><img src={yellowIcon} width="20" height="18" class="checkIcon"/></div>
+                                <div if:false={wrappedData.ExludeKPIflag}><img src={greenIcon} width="20" height="18" class="checkIcon"/></div>                        
+                            </td>
+                        <td>{textWrapper.ExcludefromKPIs}</td>
+                    </tr>
+                    <tr class="spaceUnder">
+                        <td><b> Inactive Opportunity Account </b></td>
+                        <td>
+                            <div if:true={wrappedData.InactiveOppAccount}><img src={redIcon} width="20" height="18" class="checkIcon"/></div>
+                            <div if:false={wrappedData.InactiveOppAccount}><img src={greenIcon} width="20" height="18" class="checkIcon"/></div>
+                        </td>
+                        <td>{label.Core_InactiveAccountLabel}</td>
+                    </tr>
+                    <tr class="spaceUnder">
+                        <td><b> Inactive Vendor Account </b></td>
+                        <td>
+                            <div if:true={oliWrappedData.InactiveVendorAccount}><img src={redIcon} width="20" height="18" class="checkIcon"/></div>
+                            <div if:false={oliWrappedData.InactiveVendorAccount}><img src={greenIcon} width="20" height="18" class="checkIcon"/></div>
+                        </td>
+                        <td>{label.Core_InactiveVendorLabel}</td>
+                    </tr>
+                    <tr class="spaceUnder">
+                        <td><br/><b>Decision Date</b></td>
+                        <td> <br/>
+                            <div if:true={wrappedData.DecisionDateCheck}><img src={yellowIcon} width="20" height="18" class="checkIcon"/></div>
+                            <div if:false={wrappedData.DecisionDateCheck}><img src={greenIcon} width="20" height="18" class="checkIcon"/></div>                       
+                        </td>
+                        <td > <br/> {textWrapper.DecisionDate}</td>
+                    </tr>
+
+                    <!--LEGENDS-->
+                    <tr class="spaceUnder">
+                        <td><br/><br/><b><u>LEGEND:</u></b></td>
+                        <td> <br/><br/>
+                            <img src={redIcon} width="20" height="18" class="checkIcon"/>
+                        </td>
+                        <td><br/><br/><b> Required per description.</b> </td>
+                    </tr> 
+        
+                    <tr class="spaceUnder">
+                        <td><b> </b></td>
+                        <td> 
+                            <img src={yellowIcon} width="20" height="18" class="checkIcon"/>
+                        </td>
+                        <td><b> Recommended to have this information.</b> </td>
+                    </tr> 
+                    
+                    <tr class="spaceUnder">
+                        <td><b> </b></td>
+                        <td> 
+                            <img src={greenIcon} width="20" height="18" class="checkIcon"/>
+                        </td>
+                        <td><b> Data is complete. </b></td>
+                    </tr> 
+                </table>
+            </div>
+        </template>
+        <template if:false={pageblocksectionredender}>
+            <div class="slds-is-relative tableCSS">
+                <div if:false={loaded}>
+                    <lightning-spinner alternative-text="Loading" style="position:top;"></lightning-spinner>
+                </div>
+                <h2 class='slds-text-title_bold leftmargin'>Deal Opportunity Approval Checklist – Recommendation</h2>
+                <br>
+                <table class="slds-table slds-no-row-hover" width="75%" >
+                    <tr>
+                        <th style="width:10%;"><u>Field Name</u></th>
+                        <th style="width:10%;"><u>Indicator</u></th>
+                        <th style="width:56%;"><u>Field Description</u></th>
+                    </tr>
+                    <tr class="spaceUnder">
+                        <td><br/><b>BU Short Name</b></td>
+                        <td> <br/>
+                            <div if:false={oliWrappedData.BUShortName}><img src={redIcon} width="20" height="18" class="checkIcon"/></div>
+                            <div if:true={oliWrappedData.BUShortName}><img src={greenIcon} width="20" height="18" class="checkIcon"/></div>
+                        </td>
+                        <td><br/>Please check if there is a BU on the Product Line Item assigned for commissions. The system usually 
+                            supplements the missing BU within 24 hours. Should that not happen, submit an Ask a Question. <b>There is no submission for 
+                            approval possible when the BU Short Name is missing. It is relevant for BU KPIs and commissions.</b>
+                        </td>
+                    </tr>
+                    <tr class="spaceUnder">
+                        <td><b>MINDS</b></td>
+                        <td> 
+                            <div if:false={wrappedData.MAGFlag}><img src={redIcon} width="20" height="18" class="checkIcon"/></div>
+                            <div if:true={wrappedData.MAGFlag}><img src={greenIcon} width="20" height="18" class="checkIcon"/></div> 
+                        </td>
+                        <td>Compliance Status does NOT imply or confer government authorization for any transaction. Intel parties must work within defined  
+                            <a href="https://salescrm.intel.com/training-and-help/opportunity-management/minds-opp-handling/#guardrails" target="_blank"> guardrails. 
+                            </a><a href="https://www.intel.com/content/www/us/en/distributor/ddr-training/mag.html " target="_blank"> Non-Intel parties </a> 
+                            are responsible for compliance with any applicable trade regulations.<b> There is no submission for opportunity possible with a 
+                            red compliance indicator.</b>
+                        </td>
+                    </tr>
+                    <tr class="spaceUnder" >
+                        <td><br/><b>Product At Risk</b></td>
+                        <td ><br/>
+                            <div if:true={atRisk}> <img src={redIcon} width="20" height="18" class="checkIcon"/></div>
+                            <div if:false={atRisk}> <img src={greenIcon} width="20" height="18" class="checkIcon"/></div>   
+                        </td>
+                        <td><br/>Please make sure all <a href={riskURL}>products with 
+                                "At Risk"</a> flag have a risk status of "Closed: Support Provided" or "Closed: Support Not Provided" prior to closing your 
+                                opportunity.
+                        </td>
+                    </tr>
+                    <tr class="spaceUnder">
+                        <td><b>Write In Products</b></td>
+                        <td>
+                            <div if:false={oliWrappedData.WriteInProducts}><img src={redIcon} width="20" height="18" class="checkIcon"/></div>
+                            <div if:true={oliWrappedData.WriteInProducts}><img src={greenIcon} width="20" height="18" class="checkIcon"/></div>
+                        </td>
+                        <td>Please insert the correct Intel product from the product list before submitting for approval. If the product you are looking for 
+                            is not found in the pick-list, submit an Ask a Question. <b>There is no submission for approval possible with a write-in product.</b>
+                        </td>
+                    </tr>
+                    <tr class="spaceUnder">
+                        <td><b>Quantity Validate</b></td>
+                        <td>
+                            <div if:false={wrappedData.QuantityValidate}><img src={redIcon} width="20" height="18" class="checkIcon"/></div>
+                            <div if:true={wrappedData.QuantityValidate}><img src={greenIcon} width="20" height="18" class="checkIcon"/></div>
+                        </td>
+                        <td>Product Quantity field only supports whole numbers.  <b>Edit Quantity field(s) by removing the decimal to enable submission.</b></td>
+                    </tr>
+                    <tr class="spaceUnder">
+                        <td><b>Proof of Performance</b></td>
+                        <td>
+                            <div if:true={attachmentRender}><img if:true={attachmentDW} src={redIcon} width="20" height="18" class="checkIcon"/></div>
+                            <div if:true={wrappedData.Note_Attachmentsize}><img src={greenIcon} width="20" height="18" class="checkIcon"/></div>
+                            <div if:false={attachmentRender}><img if:true={attachmentDW} src={yellowIcon} width="20" height="18" class="checkIcon"/></div>
+                        </td>
+                        <td>Please attach a note or document labeled "Proof or Performance" or "POP" prior to submit for approval, that meets the requirements 
+                            as detailed <a href="https://goto/POPTraining" target="_blank">here</a>.
+                        </td>
+                    </tr>
+                    <tr class="spaceUnder">
+                        <td><b>Opportunity Solutions</b></td> 
+                        <td>
+                            <div if:false={wrappedData.isOppotySolutionAdded}><img src={yellowIcon} width="20" height="18" class="checkIcon"/></div>
+                            <div if:true={wrappedData.isOppotySolutionAdded}><img src={greenIcon} width="20" height="18" class="checkIcon"/></div>
+                        </td>
+                        <td>{textWrapper.OppSolutions}</td>
+                    </tr>
+                    <tr class="spaceUnder">
+                        <td><b>Description Of Contribution        </b></td>
+                        <td>
+                            <div if:false={wrappedData.isDescriptionOfContribution}><img src={redIcon} width="20" height="18" class="checkIcon"/></div>
+                            <div if:true={wrappedData.isDescriptionOfContribution}><img src={greenIcon} width="20" height="18" class="checkIcon"/></div>
+                        </td>
+                        <td>{textWrapper.DescOfContri}</td>
+                    </tr>        
+                    <tr class="spaceUnder">
+                        <td><b>Competitive/Architecture Conversion </b></td>
+                        <td> 
+                            <div if:true={compArchRender}><img src={yellowIcon} width="20" height="18" class="checkIcon"/></div>
+                            <div if:false={compArchRender}><img src={greenIcon} width="20" height="18" class="checkIcon"/></div>                       
+                        </td>
+                        <td> {textWrapper.CompArchConversion} </td>
+                    </tr>
+                    <tr class="spaceUnder">
+                        <td><b>Opportunity Description </b></td>
+                        <td>
+                            <div if:true={descriptionCheckRender}><img src={redIcon} width="20" height="18" class="checkIcon"/></div>
+                            <div if:false={descriptionCheckRender}><img src={greenIcon} width="20" height="18" class="checkIcon"/></div>
+                        </td>
+                        <td> {textWrapper.OppDescription}</td>
+                    </tr>
+                    <tr class="spaceUnder">
+                        <td><b>Status Update</b></td>
+                        <td> 
+                            <div if:true={statusUpdateRender}><img src={yellowIcon} width="20" height="18" class="checkIcon"/></div>
+                            <div if:false={statusUpdateRender}><img src={greenIcon} width="20" height="18" class="checkIcon"/></div>                        
+                        </td>
+                        <td >{textWrapper.StatusUpdate}</td>
+                    </tr>
+                    <tr class="spaceUnder">
+                        <td><b>Vendor  </b></td>
+                        <td>
+                            <div if:true={oliWrappedData.Vendorsize}><img src={redIcon} width="20" height="18" class="checkIcon"/></div>
+                            <div if:false={oliWrappedData.Vendorsize}><img src={greenIcon} width="20" height="18" class="checkIcon"/></div>
+                        </td>
+                        <td> {textWrapper.Vendor}</td>
+                    </tr>
+                    <tr class="spaceUnder">
+                        <td><b>Partners </b></td>
+                        <td>
+                            <div if:false={wrappedData.Opptypartnersize}><img src={redIcon} width="20" height="18" class="checkIcon"/></div>
+                            <div if:true={wrappedData.Opptypartnersize}><img src={greenIcon} width="20" height="18" class="checkIcon"/></div>
+                        </td>
+                        <td> {textWrapper.Partner}</td>
+                    </tr>
+                    <tr class="spaceUnder">
+                        <td><b> Exclude from KPIs </b></td>
+                            <td> 
+                                <div if:true={wrappedData.ExludeKPIflag}><img src={yellowIcon} width="20" height="18" class="checkIcon"/></div>
+                                <div if:false={wrappedData.ExludeKPIflag}><img src={greenIcon} width="20" height="18" class="checkIcon"/></div>                        
+                            </td>
+                        <td>{textWrapper.ExcludefromKPIs}</td>
+                    </tr>
+                    <tr class="spaceUnder">
+                        <td><b> Inactive Opportunity Account </b></td>
+                        <td>
+                            <div if:true={wrappedData.InactiveOppAccount}><img src={redIcon} width="20" height="18" class="checkIcon"/></div>
+                            <div if:false={wrappedData.InactiveOppAccount}><img src={greenIcon} width="20" height="18" class="checkIcon"/></div>
+                        </td>
+                        <td>{label.Core_InactiveAccountLabel}</td>
+                    </tr>
+                    <tr class="spaceUnder">
+                        <td><b> Inactive Vendor Account </b></td>
+                        <td>
+                            <div if:true={oliWrappedData.InactiveVendorAccount}><img src={redIcon} width="20" height="18" class="checkIcon"/></div>
+                            <div if:false={oliWrappedData.InactiveVendorAccount}><img src={greenIcon} width="20" height="18" class="checkIcon"/></div>
+                        </td>
+                        <td>{label.Core_InactiveVendorLabel}</td>
+                    </tr>
+                    <tr class="spaceUnder">
+                        <td><br/><b>Decision Date</b></td>
+                        <td> <br/>
+                            <div if:true={wrappedData.DecisionDateCheck}><img src={yellowIcon} width="20" height="18" class="checkIcon"/></div>
+                            <div if:false={wrappedData.DecisionDateCheck}><img src={greenIcon} width="20" height="18" class="checkIcon"/></div>                       
+                        </td>
+                        <td > <br/> {textWrapper.DecisionDate}</td>
+                    </tr>
+
+                    <!--LEGENDS-->
+                    <tr class="spaceUnder">
+                        <td><br/><br/><b><u>LEGEND:</u></b></td>
+                        <td> <br/><br/>
+                            <img src={redIcon} width="20" height="18" class="checkIcon"/>
+                        </td>
+                        <td><br/><br/><b> Required per description.</b> </td>
+                    </tr> 
+        
+                    <tr class="spaceUnder">
+                        <td><b> </b></td>
+                        <td> 
+                            <img src={yellowIcon} width="20" height="18" class="checkIcon"/>
+                        </td>
+                        <td><b> Recommended to have this information.</b> </td>
+                    </tr> 
+                    
+                    <tr class="spaceUnder">
+                        <td><b> </b></td>
+                        <td> 
+                            <img src={greenIcon} width="20" height="18" class="checkIcon"/>
+                        </td>
+                        <td><b> Data is complete. </b></td>
+                    </tr> 
+                </table>
+            </div>
+        </template>
+        <br>
+        <lightning-button 
+            variant="Neutral" 
+            style="margin-left: 38%;" 
+            label="Back to Opportunity" 
+            title="Back to Opportunity" 
+            onclick={navigateToRecord}>
+        </lightning-button>
+    </lightning-card>
+</template>

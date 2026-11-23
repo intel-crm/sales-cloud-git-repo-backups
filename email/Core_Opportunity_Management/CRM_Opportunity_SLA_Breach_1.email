@@ -1,0 +1,33 @@
+<messaging:emailTemplate subject="Weekly Summary: Opportunities Requiring Updates in Sales CRM" recipientType="User" relatedToType="Opportunity">
+<messaging:htmlEmailBody >
+<table style="background-color: #0071c5;" width="100%">
+   <tbody>
+    <tr>
+      <td style="padding-left: 50px; border: none;">
+        <div style="color: white;">
+           <h1>Weekly Summary: Opportunities Requiring Updates in Sales CRM</h1>
+         </div>
+        </td>
+        <td style="border: none; padding-right: 20px;" align="right">
+        <apex:image url="https://intel--c.na104.content.force.com/servlet/servlet.ImageServer?id=0153b000004Pg4i&amp;oid=00Do0000000aRcf" /> 
+        </td>
+        </tr>
+        </tbody>
+ </table>
+ 
+Hello {!relatedTo.Owner.Name},<br /><br />
+Our records show that several of your opportunities have exceeded the SLA for their current pipeline stage and require updates in Sales CRM.<br />
+To help you stay current and maintain pipeline accuracy, we’ve compiled a list of opportunities that may need attention below. Please review each one and update the required fields to ensure they can progress through the pipeline.<br />
+<br/>
+Opportunities Requiring Action:
+
+[REQUIRED_FIELDS]
+
+<br /><br />
+You can view all opportunities currently breaching SLAs in the following report: <a href="[REPORT_LINK]">Report Link</a><br />
+This weekly summary is intended as a gentle reminder to help maintain data quality and pipeline visibility.<br />
+Thank you for your prompt attention to this matter.<br /><br />
+
+Sales Excellence 
+</messaging:htmlEmailBody>
+</messaging:emailTemplate>

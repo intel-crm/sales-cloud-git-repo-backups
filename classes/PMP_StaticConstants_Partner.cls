@@ -78,9 +78,9 @@ public class PMP_StaticConstants_Partner {
     
     //Added as part of US629512
     //Benefit related to the partner's account in Marketing Profile Information
-    //public static final String Solution_Marketplace_Basic_Access = 'Solution Marketplace Basic Access';
+    public static final String Solution_Marketplace_Basic_Access = 'Solution Marketplace Basic Access';
     public static final String Solutions_Marketplace_Basic_Profile = 'Solutions Marketplace Basic Profile';
-    //public static final String Solutions_Marketplace_Enhanced = 'Solutions Marketplace Enhanced';
+    public static final String Solutions_Marketplace_Enhanced = 'Solutions Marketplace Enhanced';
     
     
     //sorting logic constant values
@@ -109,8 +109,8 @@ public class PMP_StaticConstants_Partner {
     
     public static final String sortFieldTier = 'SORT_BY_TIER';
     public static final String sortFieldRecent = 'SORT_BY_MOST_RECENT';
-    public static final String sortByTierOffering = PMP_Utility.getValue('sortByTierOffering');
-    public static final String sortByMostRecentOffering = PMP_Utility.getValue('sortByMostRecentOffering');
+   // public static final String sortByTierOffering = PMP_Utility.getValue('sortByTierOffering');
+    //public static final String sortByMostRecentOffering = PMP_Utility.getValue('sortByMostRecentOffering');
     public static final String sortByTierPartner = 'PMP_Badge_Tier_Sequence_Nbr__c,Name';
     public static final String sortByMostRecentPartner = 'PMP_Company_Status_Update_Dt__c DESC NULLS LAST';
     
@@ -157,10 +157,10 @@ public class PMP_StaticConstants_Partner {
     public static final String Geography = 'Geography';//added by krishna ch
     
     //Used in PMP_SearchFeaturedCarouselController for events tab
-    //public static final String EVENT_TAB_ID = 'Marketplace_Event'; //IPA2.0:TWC729-8114 Topics Removal/Event Removal
+    public static final String EVENT_TAB_ID = 'Marketplace_Event';
     
     //Used in PMP_SearchEventDetailController for events detail page URL
-    //public static final String EVENT_URL = '/pmp-marketplace-event/'; //IPA2.0:TWC729-8114 Topics Removal/Event Removal
+    public static final String EVENT_URL = '/pmp-marketplace-event/';
     
     //Used in PMP_SearchAttributeController   
     public static final List<String> catOrder = new List<String>{PIM_CATEGORY_ID,PIM_INDUSTRY_ID,PIM_APPLICATION_ID};
@@ -172,7 +172,7 @@ public class PMP_StaticConstants_Partner {
     public static final string[] DISPLAY_TYPES = new string[]{CHECKBOX,LABEL,RADIO};
         
     //Used in PMP_SearchEditStorefrontController
-    public static final string LOGO = System.Label.PMP_Edit_Storefront_Company_Information;
+    //public static final string LOGO = System.Label.PMP_Edit_Storefront_Company_Information;
     public static final string COMPANY_DESCRIPTION = System.Label.PMP_Edit_Storefront_Company_Description;
     public static final string COMPANY_DETAILS = System.Label.PMP_Edit_Storefront_Company_Details;
     public static final string COMPANY_RESOURCES = System.Label.PMP_Edit_Storefront_Company_Resources;
@@ -219,7 +219,8 @@ public class PMP_StaticConstants_Partner {
     public static Boolean isCompanyAfterUpdateTriggerActive = true;
     
     //Not used anywhere
-    public static final String[] categoryPluralList = new String[]{System.label.PMP_Component_Plural, System.label.PMP_System_Plural, System.label.PMP_Service_Plural, System.label.PMP_Solution_Plural, System.label.PMP_Software_Plural};
+    public static final String[] categoryPluralList = new String[]{System.label.PMP_Component_Plural, System.label.PMP_System_Plural, System.label.PMP_Service_Plural, System.label.PMP_Solution_Plural, System.label.PMP_Software_Plural}; 
+    public static final String OfferingReferringURL = 'https://nppdevpmp-intelcloudcrm.cs67.force.com/imp/s/offering/offeringID/offeringName';
     public static final String SpecificLeadResource = 'Marketplace';
     public static final String LeadActionAAQ = 'Asked For Follow Up';
     public static final String LeadActionRFQ = 'Requested Quote';
@@ -231,9 +232,9 @@ public class PMP_StaticConstants_Partner {
 //    public static final Map<String,String> taxonomyCtaLabelMap = new Map<String,String>{'offeringCategories' => 'View all offerings by Category', 'offeringIndustries' => 'View all offerings by Industry', 'offeringApplications' => 'View all offerings by Application'};
     // public static final Map<String,String> taxonomyLabelMapNew = new Map<String,String>{'offeringCategories' => 'Offerings by Category', 'offeringIndustries' => 'Offerings by Industry', 'offeringApplications' => 'Offering Applications'};
    	public static final Map<String,String> taxonomyLabelMapNew = new Map<String,String>{'offeringCategories' => 'OfferingCategories', 'offeringIndustries' => 'OfferingIndustries', 'offeringApplications' => 'OfferingApplications'};
-   	public static final Map<String,String> taxonomyLabelMap = new Map<String,String>{'offeringCategories' => System.Label.PMP_L0_Offerings_Category, 'offeringIndustries' => System.Label.PMP_L0_Offerings_Industry, 'offeringApplications' => System.Label.PMP_L0_Offerings_Application};
-    public static final Map<String,String> taxonomyLabelEnglishMap = new Map<String,String>{'offeringCategories' => System.Label.PMP_L0_Offerings_Category_English, 'offeringIndustries' => System.Label.PMP_L0_Offerings_Industry_English, 'offeringApplications' => System.Label.PMP_L0_Offerings_Application_English}; // Added as part of TWC1824-3754
-    public static final Map<String,String> taxonomyCtaLabelMap = new Map<String,String>{'offeringCategories' => System.Label.PMP_L0_ViewAll_Category, 'offeringIndustries' => System.Label.PMP_L0_ViewAll_Industry, 'offeringApplications' => System.Label.PMP_L0_ViewAll_Application};
+   	//public static final Map<String,String> taxonomyLabelMap = new Map<String,String>{'offeringCategories' => System.Label.PMP_L0_Offerings_Category, 'offeringIndustries' => System.Label.PMP_L0_Offerings_Industry, 'offeringApplications' => System.Label.PMP_L0_Offerings_Application};
+    //public static final Map<String,String> taxonomyLabelEnglishMap = new Map<String,String>{'offeringCategories' => System.Label.PMP_L0_Offerings_Category_English, 'offeringIndustries' => System.Label.PMP_L0_Offerings_Industry_English, 'offeringApplications' => System.Label.PMP_L0_Offerings_Application_English}; // Added as part of TWC1824-3754
+    //public static final Map<String,String> taxonomyCtaLabelMap = new Map<String,String>{'offeringCategories' => System.Label.PMP_L0_ViewAll_Category, 'offeringIndustries' => System.Label.PMP_L0_ViewAll_Industry, 'offeringApplications' => System.Label.PMP_L0_ViewAll_Application};
     //Top level Lists for taxonomies
     
         public static final String[] offCategoryTopLevelList = new String[]{'TPS_900002', 'IPA_TYPE_Sys', 'TPS_900003', 'IPA_TYPE_Ser', 'IPA_TYPE_Sol'};
@@ -280,7 +281,7 @@ public class PMP_StaticConstants_Partner {
     	public static final String MemberCardLogo = getValue('PMP_Member_Card_Logo');
     
     	//Event Default Logo
-    	//public static final String eventDefaultLogo = getValue('PMP_Event_Default_Logo'); //IPA2.0:TWC729-8114 Topics Removal/Event Removal
+    	public static final String eventDefaultLogo = getValue('PMP_Event_Default_Logo');
     	
   		//for platform cache supoported languages
   		 public static final String supportedLanguagesForPlatformCache = getValue('PMP_Supported_Languages');

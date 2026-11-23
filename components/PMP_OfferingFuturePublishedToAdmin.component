@@ -1,6 +1,6 @@
-<apex:component access="global"><!--controller="PMP_OfferingEmailAlertsController">-->
+<apex:component access="global" controller="PMP_OfferingEmailAlertsController">
 
-<!--<html>
+<html>
 <style>
 /* Regular */
 @font-face{
@@ -35,7 +35,7 @@ font-style: normal;
 }
     
 table {
-  font-family:  sans-serif; /*arial, sans-serif,Intel Clear;*/
+  font-family: Intel Clear; /*arial, sans-serif;*/
   border-collapse: collapse;
   border-left: 1px solid #dddddd;
   border-right: 1px solid #dddddd;
@@ -52,50 +52,50 @@ td, th {
 }
 
 h1{
-  font-family: sans-serif !important;  
+  font-family: Intel Clear Pro !important;  
 }
 </style>
 
 <apex:attribute name="offeringRecordId" type="Id" description="Offering Record Id" assignTo="{!offeringId}"/>
  
 <body>
--->
+
     <!-- Header Banner -->
-<!--    <c:PMP_Global_Header message="The Showcase offering which was approved by you is published now!"/>-->
+    <c:PMP_Global_Header message="THE MARKETPLACE OFFERING WHICH WAS APPROVED BY YOU IS PUBLISHED NOW!"/>
     <!-- Header Banner -->
     
-<!--    <table width="75%">    -->
+    <table width="75%">    
         
         <!-- Email Body -->
-<!--        <tr>
+        <tr>
             <td style="padding-left:50px;">
-                <br/>Hello Intel Showcase Admin <br/><br/>
-                The Intel® Partner Showcase offering, {!offeringData.PMP_Partner_Offering_Nm__c}, which has been approved by you is now published.<br/><br/>
+                <br/>Hello Intel Marketplace Admin <br/><br/>
+                The Intel® Solutions Marketplace offering which has been approved by you is now published.<br/><br/>
                 Thanks<br/> <br/>
                 
                 <b>Offering Name: {!offeringData.PMP_Partner_Offering_Nm__c} </b><br/>
                 Category: {!offeringData.PMP_Category_nm__c} <br/>
                 Sub-category: {!offeringData.PMP_Sub_Category_nm__c}
             </td>
-          </tr>-->
+          </tr>
           <!-- Email Body -->
           
           <!-- CTA -->
-<!--          <tr>
+          <tr>
             <td style="padding-left:50px;">      
-                <p><apex:outputLink value="{!communityURL}{!publishedOfferingId}" styleClass="intelBlue">View offering preview</apex:outputLink></p>
+                <p><apex:outputLink value="{!communityURL}{!offeringData.Id}" styleClass="intelBlue">View Offering Preview</apex:outputLink></p>
                 
                 <br/>
                 
             </td>
          </tr>        
        </table>
--->  
+        
     <!-- Global Footer -->
-<!--    <c:PMP_Global_Footer />-->
+    <c:PMP_Global_Footer />
     <!-- Global Footer -->
-<!--</body>
+</body>
 
-</html>-->
+</html>
 
 </apex:component>

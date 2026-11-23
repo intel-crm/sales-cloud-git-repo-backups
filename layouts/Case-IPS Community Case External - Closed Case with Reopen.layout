@@ -6,18 +6,9 @@
     <excludeButtons>CloseCase</excludeButtons>
     <excludeButtons>Delete</excludeButtons>
     <excludeButtons>Edit</excludeButtons>
-    <excludeButtons>OpenSlackRecordChannel</excludeButtons>
     <excludeButtons>Share</excludeButtons>
     <excludeButtons>Submit</excludeButtons>
     <headers>PersonalTagging</headers>
-    <layoutSections>
-        <customLabel>true</customLabel>
-        <detailHeading>true</detailHeading>
-        <editHeading>true</editHeading>
-        <label>Alert &amp; Meassages</label>
-        <layoutColumns/>
-        <style>OneColumn</style>
-    </layoutSections>
     <layoutSections>
         <customLabel>true</customLabel>
         <detailHeading>true</detailHeading>
@@ -80,10 +71,6 @@
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>Core_IPS_Legacy_IPS_ID__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_IPS_Case_Owner__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -192,7 +179,15 @@
         <detailHeading>true</detailHeading>
         <editHeading>true</editHeading>
         <label>Case Comment</label>
-        <layoutColumns/>
+        <layoutColumns>
+            <layoutItems>
+                <height>500</height>
+                <page>Core_IPS_CaseComments</page>
+                <showLabel>false</showLabel>
+                <showScrollbars>true</showScrollbars>
+                <width>100%</width>
+            </layoutItems>
+        </layoutColumns>
         <style>OneColumn</style>
     </layoutSections>
     <layoutSections>
@@ -255,7 +250,15 @@
         <detailHeading>true</detailHeading>
         <editHeading>true</editHeading>
         <label>Interested Parties</label>
-        <layoutColumns/>
+        <layoutColumns>
+            <layoutItems>
+                <height>200</height>
+                <page>Core_IPS_Show_IP_External</page>
+                <showLabel>false</showLabel>
+                <showScrollbars>false</showScrollbars>
+                <width>100%</width>
+            </layoutItems>
+        </layoutColumns>
         <style>OneColumn</style>
     </layoutSections>
     <layoutSections>
@@ -263,14 +266,18 @@
         <detailHeading>true</detailHeading>
         <editHeading>true</editHeading>
         <label>Premier Support Case Attachments</label>
-        <layoutColumns/>
+        <layoutColumns>
+            <layoutItems>
+                <height>500</height>
+                <page>Core_IPS_CaseAttachment_Visibility</page>
+                <showLabel>false</showLabel>
+                <showScrollbars>false</showScrollbars>
+                <width>100%</width>
+            </layoutItems>
+        </layoutColumns>
         <style>OneColumn</style>
     </layoutSections>
-    <quickActionList>
-        <quickActionListItems>
-            <quickActionName>Case.SendEmail</quickActionName>
-        </quickActionListItems>
-    </quickActionList>
+    <quickActionList/>
     <relatedContent>
         <relatedContentItems>
             <layoutItem>

@@ -6,5 +6,5 @@
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>Wiarton Office &amp; Computer Centre Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>WiartonOfficeComputerCentrePartnerManager</parentRole>
 </Role>

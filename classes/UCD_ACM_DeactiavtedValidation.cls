@@ -22,9 +22,11 @@ public without sharing class UCD_ACM_DeactiavtedValidation implements UCD_ACM_Se
         runOnce = false;
     }
     private void parentAccountData(Map<Id, Account> oldAccounts, Map<Id, Account> newAccounts){  
+        System.Debug('from parents starting');  
         for(Account account : newAccounts.values()){
             if( oldAccounts.get(account.Id).Core_Deactivated__c != account.Core_Deactivated__c && account.Core_Deactivated__c==true){
                 parentAccountIds.add(account.id);
+                System.Debug('from parent'+parentAccountIds);
             }
         }   
     }
@@ -49,6 +51,7 @@ public without sharing class UCD_ACM_DeactiavtedValidation implements UCD_ACM_Se
 
         }
         
+        System.Debug('from child'+childAccounts);
         for(Account account: childAccounts){
             if(parentAccountIdsWithChild.containsKey(account.id)){
                 parentAccountIdsWithChild.get(account.parent.Id).add(account);

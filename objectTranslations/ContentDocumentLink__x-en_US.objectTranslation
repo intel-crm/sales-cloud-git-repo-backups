@@ -19,9 +19,49 @@
         <relationshipLabel><!-- Content Document Link --></relationshipLabel>
     </fields>
     <fields>
+        <label><!-- Is Deleted --></label>
+        <name>IsDeleted__c</name>
+    </fields>
+    <fields>
         <label><!-- Linked Entity ID --></label>
         <name>LinkedEntityId__c</name>
         <relationshipLabel><!-- Content Document Link --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Share Type --></label>
+        <name>ShareType__c</name>
+        <picklistValues>
+            <masterLabel>Collaborator</masterLabel>
+            <translation><!-- Collaborator --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Inferred</masterLabel>
+            <translation><!-- Inferred --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Viewer</masterLabel>
+            <translation><!-- Viewer --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- System Modstamp --></label>
+        <name>SystemModstamp__c</name>
+    </fields>
+    <fields>
+        <label><!-- Visibility --></label>
+        <name>Visibility__c</name>
+        <picklistValues>
+            <masterLabel>All Users</masterLabel>
+            <translation><!-- All Users --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Shared Users</masterLabel>
+            <translation><!-- Shared Users --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Standard Users</masterLabel>
+            <translation><!-- Standard Users --></translation>
+        </picklistValues>
     </fields>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

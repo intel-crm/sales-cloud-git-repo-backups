@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PathAssistant xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <entityName>Lead</entityName>
+    <fieldName>Core_Lead_Status__c</fieldName>
+    <masterLabel>Partner Campaign Lead Path</masterLabel>
+    <pathAssistantSteps>
+        <info>&lt;p&gt;Testing Guidance for Success - Partner Campaign&lt;/p&gt;</info>
+        <picklistValueName>New</picklistValueName>
+    </pathAssistantSteps>
+    <recordTypeName>PCC_Partner_Campaign_Lead</recordTypeName>
+</PathAssistant>

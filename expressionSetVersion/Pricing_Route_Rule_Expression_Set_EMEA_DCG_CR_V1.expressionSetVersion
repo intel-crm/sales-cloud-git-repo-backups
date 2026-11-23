@@ -99,6 +99,7 @@
     <variables>
         <collection>false</collection>
         <dataType>Text</dataType>
+        <decimalPlaces>2</decimalPlaces>
         <description>Pricing_RouteRule_Id</description>
         <input>false</input>
         <name>Pricing_RouteRule_Id</name>
@@ -108,6 +109,7 @@
     <variables>
         <collection>false</collection>
         <dataType>Text</dataType>
+        <decimalPlaces>2</decimalPlaces>
         <description>Pricing_RouteRule_Name</description>
         <input>false</input>
         <name>Pricing_RouteRule_Name</name>
@@ -117,6 +119,7 @@
     <variables>
         <collection>false</collection>
         <dataType>Text</dataType>
+        <decimalPlaces>2</decimalPlaces>
         <description>Pricing_Routing_Output_Criteria_Nm</description>
         <input>false</input>
         <name>Pricing_Routing_Output_Criteria_Nm</name>
@@ -126,6 +129,7 @@
     <variables>
         <collection>false</collection>
         <dataType>Text</dataType>
+        <decimalPlaces>2</decimalPlaces>
         <description>Pricing_Routing_RPM_Email</description>
         <input>false</input>
         <name>Pricing_Routing_RPM_Email</name>
@@ -135,6 +139,7 @@
     <variables>
         <collection>false</collection>
         <dataType>Text</dataType>
+        <decimalPlaces>2</decimalPlaces>
         <description>Pricing_Routing_RPM_Group</description>
         <input>false</input>
         <name>Pricing_Routing_RPM_Group</name>

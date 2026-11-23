@@ -164,6 +164,10 @@
         <label>Datensatz-ID anzeigen</label>
         <name>SBQQ__ViewRecordId__c</name>
     </fields>
+    <fields>
+        <label><!-- Quote Type Test --></label>
+        <name>core_cpq_quote_type_test__c</name>
+    </fields>
     <gender>Neuter</gender>
     <nameFieldLabel>Dokumentname</nameFieldLabel>
     <recordTypes>

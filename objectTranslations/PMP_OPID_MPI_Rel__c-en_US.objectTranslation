@@ -42,10 +42,6 @@
         <relationshipLabel><!-- OPID MPI Relationships --></relationshipLabel>
     </fields>
     <fields>
-        <label><!-- Relation Last Deactivated date --></label>
-        <name>PMP_RelLastDeactivated__c</name>
-    </fields>
-    <fields>
         <label><!-- Storefront Published Copy --></label>
         <name>PMP_Storefront_Published_Copy__c</name>
     </fields>

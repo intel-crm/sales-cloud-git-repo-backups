@@ -9,7 +9,7 @@ Modification Log :
 *Megha Kumari                05/26/22               Initial Creation
 *********************************************************************************************************************/
 global  class Core_Batch_ReprocessPartnerLeadShare  implements Database.Batchable<sObject>, Database.Stateful {
-   
+    
     global List<lead> mainLeadList = new List<lead>();
     
     global Database.QueryLocator start(Database.BatchableContext BC){
@@ -18,11 +18,10 @@ global  class Core_Batch_ReprocessPartnerLeadShare  implements Database.Batchabl
         String Status = 'PRL';
         String LeadState = 'Unclaimed';
         String LeadOwner = label.Core_Partner_Invalid_Queue_Id;
-       
-       
         String query = 'SELECT id,Core_Remove_Current_Sharing_Ind__c, Core_Reprocess_Lead_Sharing__c from LEAD where  RecordType.DeveloperName =:RecordType and OwnerId =:LeadOwner';
-         return Database.getQueryLocator(query);
+        return Database.getQueryLocator(query);
     }
+    
     global void execute(Database.BatchableContext BC,List<lead> scope){
         try{
             Boolean allOrNone = false;
@@ -32,16 +31,13 @@ global  class Core_Batch_ReprocessPartnerLeadShare  implements Database.Batchabl
             List<Lead> tempList2 = new List<Lead>();
             
             for(lead ld : scope){
-               
-                
                 Ld.Core_Remove_Current_Sharing_Ind__c = true;
                 ld.Core_Reprocess_Lead_Sharing__c =false;
-                
             }
-            database.update(scope,allOrNone);
+            Database.update(scope,allOrNone);
             if(Test.isRunningTest()){
                 allOrNone = null;
-                database.update(scope,allOrNone);
+                Database.update(scope,allOrNone);
             }
         }
         Catch(Exception e){
@@ -50,6 +46,7 @@ global  class Core_Batch_ReprocessPartnerLeadShare  implements Database.Batchabl
         }
         
     }
+    
     global void finish(Database.BatchableContext BC){
         
         if(mainLeadList.size()>0){

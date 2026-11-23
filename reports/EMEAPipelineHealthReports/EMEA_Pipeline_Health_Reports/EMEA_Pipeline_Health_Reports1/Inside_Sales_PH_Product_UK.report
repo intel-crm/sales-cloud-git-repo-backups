@@ -98,7 +98,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>INSIDE</value>
+            <value></value>
         </criteriaItems>
         <criteriaItems>
             <column>ROLLUP_DESCRIPTION</column>

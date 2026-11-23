@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <letterhead>Core_DDR_Email</letterhead>
+    <name>Deal Rejected Notification to Approver Template</name>
+    <style>freeForm</style>
+    <subject>Deal Has Been Rejected</subject>
+    <textOnly>hello  {!Core_Design_Registration__c.Core_Intel_Technical_Owner_Id__c}
+dr is rejected</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

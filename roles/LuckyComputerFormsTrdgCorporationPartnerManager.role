@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>Lucky Computer &amp; Forms Trdg. Corporation Partner Manager</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>Lucky Computer &amp; Forms Trdg. Corporation Partner Manager</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>LuckyComputerFormsTrdgCorporationPartnerExecutive</parentRole>
+</Role>

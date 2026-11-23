@@ -83,6 +83,16 @@
                 <identifier>RecordCoverage_Type_cField</identifier>
             </fieldInstance>
         </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.CRM_CST_Is_Active_Planning_Period__c</fieldItem>
+                <identifier>RecordCRM_CST_Is_Active_Planning_Period__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
         <name>Facet-c46804e1-d184-4ca6-8208-bdfd104bf340</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -141,8 +151,8 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.DR_Feedback__c</fieldItem>
-                <identifier>RecordDR_Feedback_cField</identifier>
+                <fieldItem>Record.Feedback__c</fieldItem>
+                <identifier>RecordFeedback__cField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -178,16 +188,16 @@
                 <fieldItem>Record.Reason_for_change__c</fieldItem>
                 <identifier>RecordReason_for_change_cField</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 OR 2 OR 3 OR 4 OR 5 OR 6</booleanFilter>
+                    <booleanFilter>1 OR 2 OR 3 OR 4 OR 5</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.DR_Feedback__c}</leftValue>
                         <operator>EQUAL</operator>
-                        <rightValue>Change to Partner</rightValue>
+                        <rightValue>Change to Indirect Covered</rightValue>
                     </criteria>
                     <criteria>
                         <leftValue>{!Record.DR_Feedback__c}</leftValue>
                         <operator>EQUAL</operator>
-                        <rightValue>Change to Uncovered</rightValue>
+                        <rightValue>Change to Not Covered</rightValue>
                     </criteria>
                     <criteria>
                         <leftValue>{!Record.DR_Feedback__c}</leftValue>
@@ -197,17 +207,12 @@
                     <criteria>
                         <leftValue>{!Record.DR_Feedback__c}</leftValue>
                         <operator>EQUAL</operator>
-                        <rightValue>Add to Intel led</rightValue>
+                        <rightValue>Add to Intel Covered</rightValue>
                     </criteria>
                     <criteria>
                         <leftValue>{!Record.DR_Feedback__c}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>Partial</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.DR_Feedback__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Change to Other Led</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>
@@ -221,21 +226,16 @@
                 <fieldItem>Record.New_Sales_Group__c</fieldItem>
                 <identifier>RecordNew_Sales_Group_cField</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 OR 2 OR 3</booleanFilter>
+                    <booleanFilter>1 OR 2</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.DR_Feedback__c}</leftValue>
                         <operator>EQUAL</operator>
-                        <rightValue>Change to Partner</rightValue>
+                        <rightValue>Change to Indirect Covered</rightValue>
                     </criteria>
                     <criteria>
                         <leftValue>{!Record.DR_Feedback__c}</leftValue>
                         <operator>EQUAL</operator>
-                        <rightValue>Change to Uncovered</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.DR_Feedback__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Change to Other Led</rightValue>
+                        <rightValue>Change to Not Covered</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>
@@ -263,7 +263,7 @@
                     <criteria>
                         <leftValue>{!Record.DR_Feedback__c}</leftValue>
                         <operator>EQUAL</operator>
-                        <rightValue>Add to Intel led</rightValue>
+                        <rightValue>Add to Intel Covered</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>
@@ -302,8 +302,8 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.VP_Feedback__c</fieldItem>
-                <identifier>RecordVP_Feedback_cField</identifier>
+                <fieldItem>Record.Feedback__c</fieldItem>
+                <identifier>RecordFeedback_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -339,16 +339,16 @@
                 <fieldItem>Record.Reason_for_change__c</fieldItem>
                 <identifier>RecordReason_for_change_cField2</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 OR 2 OR 3 OR 4 OR 5 OR 6</booleanFilter>
+                    <booleanFilter>1 OR 2 OR 3 OR 4 OR 5</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.VP_Feedback__c}</leftValue>
                         <operator>EQUAL</operator>
-                        <rightValue>Change to Partner</rightValue>
+                        <rightValue>Change to Indirect Covered</rightValue>
                     </criteria>
                     <criteria>
                         <leftValue>{!Record.VP_Feedback__c}</leftValue>
                         <operator>EQUAL</operator>
-                        <rightValue>Change to Uncovered</rightValue>
+                        <rightValue>Change to Not Covered</rightValue>
                     </criteria>
                     <criteria>
                         <leftValue>{!Record.VP_Feedback__c}</leftValue>
@@ -358,17 +358,12 @@
                     <criteria>
                         <leftValue>{!Record.VP_Feedback__c}</leftValue>
                         <operator>EQUAL</operator>
-                        <rightValue>Add to Intel led</rightValue>
+                        <rightValue>Add to Intel Covered</rightValue>
                     </criteria>
                     <criteria>
                         <leftValue>{!Record.VP_Feedback__c}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>Partial</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.VP_Feedback__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Change to Other Led</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>
@@ -382,21 +377,16 @@
                 <fieldItem>Record.New_Sales_Group__c</fieldItem>
                 <identifier>RecordNew_Sales_Group_cField2</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 OR 2 OR 3</booleanFilter>
+                    <booleanFilter>1 OR 2</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.VP_Feedback__c}</leftValue>
                         <operator>EQUAL</operator>
-                        <rightValue>Change to Partner</rightValue>
+                        <rightValue>Change to Indirect Covered</rightValue>
                     </criteria>
                     <criteria>
                         <leftValue>{!Record.VP_Feedback__c}</leftValue>
                         <operator>EQUAL</operator>
-                        <rightValue>Change to Uncovered</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.VP_Feedback__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Change to Other Led</rightValue>
+                        <rightValue>Change to Not Covered</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>
@@ -424,7 +414,7 @@
                     <criteria>
                         <leftValue>{!Record.VP_Feedback__c}</leftValue>
                         <operator>EQUAL</operator>
-                        <rightValue>Add to Intel led</rightValue>
+                        <rightValue>Add to Intel Covered</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>
@@ -544,16 +534,16 @@
                 <componentName>flexipage:fieldSection</componentName>
                 <identifier>flexipage_fieldSection2</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 OR 2 OR 3 OR 4 OR 5 OR 6</booleanFilter>
+                    <booleanFilter>1 OR 2 OR 3 OR 4 OR 5</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.DR_Feedback__c}</leftValue>
                         <operator>EQUAL</operator>
-                        <rightValue>Change to Partner</rightValue>
+                        <rightValue>Change to Indirect Covered</rightValue>
                     </criteria>
                     <criteria>
                         <leftValue>{!Record.DR_Feedback__c}</leftValue>
                         <operator>EQUAL</operator>
-                        <rightValue>Change to Uncovered</rightValue>
+                        <rightValue>Change to Not Covered</rightValue>
                     </criteria>
                     <criteria>
                         <leftValue>{!Record.DR_Feedback__c}</leftValue>
@@ -563,17 +553,12 @@
                     <criteria>
                         <leftValue>{!Record.DR_Feedback__c}</leftValue>
                         <operator>EQUAL</operator>
-                        <rightValue>Add to Intel led</rightValue>
+                        <rightValue>Add to Intel Covered</rightValue>
                     </criteria>
                     <criteria>
                         <leftValue>{!Record.DR_Feedback__c}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>Partial</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.DR_Feedback__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Change to Other Led</rightValue>
                     </criteria>
                 </visibilityRule>
             </componentInstance>
@@ -595,16 +580,16 @@
                 <componentName>flexipage:fieldSection</componentName>
                 <identifier>flexipage_fieldSection</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 OR 2 OR 3 OR 4 OR 5 OR 6</booleanFilter>
+                    <booleanFilter>1 OR 2 OR 3 OR 4 OR 5</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.VP_Feedback__c}</leftValue>
                         <operator>EQUAL</operator>
-                        <rightValue>Change to Partner</rightValue>
+                        <rightValue>Change to Indirect Covered</rightValue>
                     </criteria>
                     <criteria>
                         <leftValue>{!Record.VP_Feedback__c}</leftValue>
                         <operator>EQUAL</operator>
-                        <rightValue>Change to Uncovered</rightValue>
+                        <rightValue>Change to Not Covered</rightValue>
                     </criteria>
                     <criteria>
                         <leftValue>{!Record.VP_Feedback__c}</leftValue>
@@ -614,17 +599,12 @@
                     <criteria>
                         <leftValue>{!Record.VP_Feedback__c}</leftValue>
                         <operator>EQUAL</operator>
-                        <rightValue>Add to Intel led</rightValue>
+                        <rightValue>Add to Intel Covered</rightValue>
                     </criteria>
                     <criteria>
                         <leftValue>{!Record.VP_Feedback__c}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>Partial</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.VP_Feedback__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Change to Other Led</rightValue>
                     </criteria>
                 </visibilityRule>
             </componentInstance>

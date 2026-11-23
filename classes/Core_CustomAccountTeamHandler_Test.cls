@@ -19,7 +19,7 @@ public class Core_CustomAccountTeamHandler_Test {
         Contact testContact = new Contact(FirstName='Test', LastName='Contact', Email=TEST_CONTACT_EMAIL, AccountId=testAccount.Id);
         insert testContact;
         
-        Account_Meeting_Brief__c brief = new Account_Meeting_Brief__c(Account__c=testAccount.Id, Core_Account_Meeting_End_Time__c = '12:00 AM', Core_Account_Brief_Event__c='Test Event',
+        Account_Meeting_Brief__c brief = new Account_Meeting_Brief__c(Account__c=testAccount.Id, Core_Account_Brief_Event__c='Test Event',
                                                                       Core_Account_Meeting_Location__c='Quahog', Core_Executive_Name__c='Peter Griffin',
                                                                       Core_Account_Meeting_Date__c=Date.today(), Core_Account_Meeting_Time__c='3:00 am',
                                                                       Core_Account_Meeting_Customer_Contact__c=testContact.Id,
@@ -27,18 +27,10 @@ public class Core_CustomAccountTeamHandler_Test {
         insert brief;
         Core_CustomAccountTeamHandler.Insert_logexception(lst,'Exception Test');
         List<User> testUsers = new List<User>();
-        //Below line added by Ankita Roy for US667275 - DEVELOPMENT ONLY : Security Scan Fixes - 3 for Avoid Calling SOQL and DML Inside Loops.
-        Profile P =[select Id from Profile where Name = 'Sales Rep-BB' ];
         for (Integer i=1; i<5; i++) {
-            //Commneted Below Line by Ankita Roy for US667275 - DEVELOPMENT ONLY : Security Scan Fixes - 3  for Avoiding Calling SOQL and DML Inside Loops.
-            /*User testUser = new User(FirstName='Test', LastName='User '+i, UserName=TEST_USER_EMAIL+i+'.03232016.intel.crm',
-                                     Email=TEST_USER_EMAIL, Alias='testusr'+i, CommunityNickName='test.user'+i+'.03232016',
-                                     Profile P =[select Id from Profile where Name = 'Sales Rep-BB' ] ,
-                                     LANGUAGELOCALEKEY='en_US', LOCALESIDKEY='en_US', TIMEZONESIDKEY='America/Los_Angeles',
-                                     EMAILENCODINGKEY='ISO-8859-1', Core_Employee_Type_Code__c='NB');*/
             User testUser = new User(FirstName='Test', LastName='User '+i, UserName=TEST_USER_EMAIL+i+'.03232016.intel.crm',
                                      Email=TEST_USER_EMAIL, Alias='testusr'+i, CommunityNickName='test.user'+i+'.03232016',
-                                     ProfileId = P.id ,
+                                     ProfileId=[select Id from Profile where Name = 'Sales Rep-BB' limit 1].Id,
                                      LANGUAGELOCALEKEY='en_US', LOCALESIDKEY='en_US', TIMEZONESIDKEY='America/Los_Angeles',
                                      EMAILENCODINGKEY='ISO-8859-1', Core_Employee_Type_Code__c='NB');
             testUsers.add(testUser);
@@ -56,8 +48,8 @@ public class Core_CustomAccountTeamHandler_Test {
         
         System.assertEquals(4, [select count() from Account_Meeting_Brief__Share where Parent.Account__c = :testAccount.Id]);
         
-        User testUser2 = [select Id from User where FirstName = 'Test' and LastName = 'User 2' limit 1];
-        User testUser3 = [select Id from User where FirstName = 'Test' and LastName = 'User 3' limit 1];
+        User testUser2 = [select Id from User where FirstName = 'Test' and LastName = 'User 2'];
+        User testUser3 = [select Id from User where FirstName = 'Test' and LastName = 'User 3'];
         List<Core_Account_Team__c> testTeamMembers = new List<Core_Account_Team__c>{
             new Core_Account_Team__c(Core_Account__c = testAccount.Id, Core_Team_Member__c = testUser2.Id),
             new Core_Account_Team__c(Core_Account__c = testAccount.Id, Core_Team_Member__c = testUser3.Id) };
@@ -72,15 +64,15 @@ public class Core_CustomAccountTeamHandler_Test {
         
         System.assertEquals(4, [select count() from Account_Meeting_Brief__Share where Parent.Account__c = :testAccount.Id]);
         
-        User testUser1 = [select Id from User where FirstName = 'Test' and LastName = 'User 1' limit 1];
-        User testUser4 = [select Id from User where FirstName = 'Test' and LastName = 'User 4' limit 1];
+        User testUser1 = [select Id from User where FirstName = 'Test' and LastName = 'User 1'];
+        User testUser4 = [select Id from User where FirstName = 'Test' and LastName = 'User 4'];
         
         List<Core_Account_Team__c> testTeamMembers =[select Id from Core_Account_Team__c where Core_Account__c = :testAccount.Id
                                                      and (Core_Team_Member__c = :testUser1.Id or Core_Team_Member__c = :testUser4.Id)];
         delete testTeamMembers;
         
         // Ensure Account Meeting Brief sharing record was removed
-       // System.assertEquals(2, [select count() from Account_Meeting_Brief__Share where Parent.Account__c = :testAccount.Id]);
+        System.assertEquals(2, [select count() from Account_Meeting_Brief__Share where Parent.Account__c = :testAccount.Id]);
     }
    
   

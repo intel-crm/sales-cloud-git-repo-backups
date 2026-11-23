@@ -1,6 +1,16 @@
-trigger Core_MDF_Campaign on Campaign (before insert, before update, after insert, after update, before delete) {            
-	
-    if(Core_Trigger_Executions__c.getValues('Core_MDF_Bypass_Campaign_Trigger') == null || !Core_Trigger_Executions__c.getValues('Core_MDF_Bypass_Campaign_Trigger').Core_Active__c || (Core_MDF_Custom_Label_Configration__mdt.getInstance('Core_MDF_L3_Bypass_Users').Core_MDF_Value_Txt__c !=null && !Core_MDF_Custom_Label_Configration__mdt.getInstance('Core_MDF_L3_Bypass_Users').Core_MDF_Value_Txt__c.contains(UserInfo.getUserName()))){
-        new Core_MDF_CampaignTriggerHandler().run();
-    }
+/****************************************************************************************************************************************
+* Trigger Name  : Core_MDF_CampaignBlockCreation_Class 
+* Version     : 1.0 
+* Created Date: 7-10-2018
+* Modification Log :
+* Description:                                                US106392 - Change External Campaign Visibility Date
+* Developer                     Date                          Description
+* ---------------------------------------------------------------------------------------------------------------------------------------
+* Shridhar K                    7/5/2018                     Trigger to handle Core MDF cmapaign functionalities. 
+* Harika P                      8/10/2018                    Added trigger contexts after insert and after update to share campaigns.
+*****************************************************************************************************************************************/
+trigger Core_MDF_Campaign on Campaign (before insert, before update, after insert, after update) {            
+
+    new Core_MDF_CampaignTriggerHandler().run();
+    
 }

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>PTSPROFESSIONALTECHN SYSTEMS1 Partner Manager</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>PTSPROFESSIONALTECHN SYSTEMS1 Partner Manager</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>PTSPROFESSIONALTECHNSYSTEMS1PartnerExecutive</parentRole>
+</Role>

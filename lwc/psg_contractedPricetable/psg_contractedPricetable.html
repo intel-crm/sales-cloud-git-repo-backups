@@ -1,0 +1,42 @@
+<template>
+    <lightning-card title="Contracted Price Records" class="bord" icon-name="standard:contract">
+        <template if:false={dataAvailable}>
+            <lightning-spinner alternative-text="Loading" size="medium" class="slds-m-top_small"></lightning-spinner>
+        </template>
+        <template if:true={dataAvailable}>
+            <lightning-button label="Add New Record" slot="actions" onclick={updateRecords}></lightning-button>
+            <lightning-layout>
+                <lightning-layout-item>
+                    <c-cpcolholder key-field="Id" data={data}
+                        columns={columns}>
+                    </c-cpcolholder>
+                </lightning-layout-item>
+            </lightning-layout>
+            <lightning-layout class="slds-align_absolute-center">
+                <lightning-layout-item>
+                    <lightning-button label="Previous" title="Previous" icon-name="utility:back"
+                        class="slds-m-left_x-small slds-float_left slds-p-right_medium" icon-position="left"
+                        onclick={onPrevClick} disabled={loadPrev}></lightning-button>
+                </lightning-layout-item>
+                <lightning-layout-item>
+                    <p class="slds-p-right_medium slds-p-left_medium">Page :{pageOf} / {totalPages}</p>
+                </lightning-layout-item>
+                <lightning-layout-item>
+                    <lightning-button label="Next" title="Next" icon-name="utility:forward"
+                        class="slds-m-left_x-small slds-float_right slds-p-left_medium" icon-position="right"
+                        onclick={onNextClick} disabled={loadMore}></lightning-button>
+                </lightning-layout-item>
+            </lightning-layout>
+        </template>
+    </lightning-card>
+
+    <!-- 
+    <template if:true={addNewRecords}>
+        <lightning-button variant="Neutral" label="Close" onclick={closeModel}></lightning-button>
+        <lightning-layout>
+            <lightning-layout-item>
+                <c-p-s-g_-dynamic-data-table-u-i></c-p-s-g_-dynamic-data-table-u-i>
+            </lightning-layout-item>
+        </lightning-layout>
+    </template> -->
+</template>

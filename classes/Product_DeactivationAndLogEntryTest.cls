@@ -22,8 +22,5 @@ public class Product_DeactivationAndLogEntryTest {
         DataBase.executeBatch(obj); 
         Test.stopTest();
         System.assertEquals('Private Wireless Network',productRecord.Name);
-
     }
-            
-
 }

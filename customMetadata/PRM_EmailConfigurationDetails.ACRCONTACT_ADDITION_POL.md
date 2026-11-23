@@ -24,7 +24,7 @@
     </values>
     <values>
         <field>PRM_InputParameter__c</field>
-        <value xsi:type="xsd:string">Account_ID;Contact_ID;LanguageCulture_MDT</value>
+        <value xsi:type="xsd:string">Account_ID;EmailContent_Setup</value>
     </values>
     <values>
         <field>PRM_Language__c</field>
@@ -60,6 +60,6 @@
     </values>
     <values>
         <field>PRM_TemplateUniqueName__c</field>
-        <value xsi:type="xsd:string">ACR_CONTACT_ADDITION</value>
+        <value xsi:type="xsd:string">ACR_CONTACT_ADDITION_POL</value>
     </values>
 </CustomMetadata>

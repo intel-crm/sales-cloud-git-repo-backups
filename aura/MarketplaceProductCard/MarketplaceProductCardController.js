@@ -7,9 +7,8 @@
         
         var data = {id: component.get('v.partner.id'),
                     autoPartnerId: component.get('v.partner.autoPartnerId'),
-                    // IPA2.0 + US TWC4497-1631
                     oid: component.get('v.dataObj.autoOffId'),
-                    //offRecId: component.get('v.dataObj.id'),
+                    offRecId: component.get('v.dataObj.id'),
                     contactByEmail: false,
                     contactByForm: true,
                     requestAQuote: true,

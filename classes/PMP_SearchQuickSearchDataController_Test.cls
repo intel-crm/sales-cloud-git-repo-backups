@@ -171,12 +171,13 @@ private class PMP_SearchQuickSearchDataController_Test extends PMP_SearchWrapper
         PMP_Category__c newTestCategory1 = PMP_TestDataUtility.getCategory('Industry','NPP_01_Industry' , 'NPP Taxonomy', 'en_us');
         
         Test.startTest();
-        PMP_SearchQuickSearchDataController searchres = new PMP_SearchQuickSearchDataController();
+        Option result = PMP_SearchQuickSearchDataController.getCategoryOptions('NPP_01_Industry', 'en_US');
+        System.assertNotEquals(null, result.value);
         Test.stopTest();
     }
     
-     /*@isTest static void testGetCategoryOptionsForPIMApp(){
-        PMP_Category__c newTestCategory = PMP_TestDataUtility.getCategory(system.label.PMP_application,'NPP_01_APP' , 'NPP Taxonomy', 'en_us'); // value change from Application to Use Cases
+     @isTest static void testGetCategoryOptionsForPIMApp(){
+        PMP_Category__c newTestCategory = PMP_TestDataUtility.getCategory('Application','NPP_01_APP' , 'NPP Taxonomy', 'en_us');
         Test.startTest();
         Option result = PMP_SearchQuickSearchDataController.getCategoryOptions('NPP_01_App','en_US');
          System.assertNotEquals(null, result.value);
@@ -194,7 +195,7 @@ private class PMP_SearchQuickSearchDataController_Test extends PMP_SearchWrapper
     @isTest static void testGetSearchFilterDataForProduct(){
          Test.startTest();
         Integer noOfFilters = 4;
-        PMP_Category__c newTestCategory = PMP_TestDataUtility.getCategory(system.label.PMP_application,'NPP_01_APP' , 'NPP Taxonomy', 'en_us'); // value change from Application to Use Cases
+        PMP_Category__c newTestCategory = PMP_TestDataUtility.getCategory('Application','NPP_01_APP' , 'NPP Taxonomy', 'en_us');  
         PMP_Category__c newTestCategory1 = PMP_TestDataUtility.getCategory('Industry','NPP_01_Industry' , 'NPP Taxonomy', 'en_us');
          
         PMP_Specification__c Spec = new PMP_Specification__c();
@@ -209,7 +210,7 @@ private class PMP_SearchQuickSearchDataController_Test extends PMP_SearchWrapper
     
     @isTest static void testGetSearchFilterDataForPartner(){
         Integer noOfFilters = 4;
-        PMP_Category__c newTestCategory = PMP_TestDataUtility.getCategory(system.label.PMP_application,'NPP_01_APP' , 'NPP Taxonomy', 'en_us'); // value change from Application to Use Cases
+        PMP_Category__c newTestCategory = PMP_TestDataUtility.getCategory('Application','NPP_01_APP' , 'NPP Taxonomy', 'en_us');  
         PMP_Category__c newTestCategory1 = PMP_TestDataUtility.getCategory('Industry','NPP_01_Industry' , 'NPP Taxonomy', 'en_us');
          
         PMP_Specification__c Spec = new PMP_Specification__c();
@@ -248,7 +249,7 @@ private class PMP_SearchQuickSearchDataController_Test extends PMP_SearchWrapper
         PMP_SearchQuickSearchDataController.getSearchFilterData('Partner','en_US');
         //system.assertEquals(noOfFilters, PMP_SearchQuickSearchDataController.getSearchFilterData('Partner').size());
         Test.stopTest();
-        system.assertNotEquals(user, null);
-    }*/
+        
+    }
     
 }

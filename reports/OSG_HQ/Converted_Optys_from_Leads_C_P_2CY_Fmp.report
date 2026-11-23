@@ -63,16 +63,9 @@
     <columns>
         <field>STATUS</field>
     </columns>
-    <columns>
-        <field>Lead.Core_Lead_State__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Lead.SWS_Software_Lead__c</field>
-    </columns>
     <description>RT: Leads with Conv Info</description>
     <filter>
-        <booleanFilter>((1 OR 6) AND 2 AND 3 AND 4 AND 5) AND 7 AND 8</booleanFilter>
+        <booleanFilter>(1 OR 6) AND 2 AND 3 AND 4 AND 5</booleanFilter>
         <criteriaItems>
             <column>CREATED</column>
             <columnToColumn>false</columnToColumn>
@@ -114,20 +107,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>1</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>CREATED_DATE</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>equals</operator>
-            <value>LAST_YEAR</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>STAGE_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>equals</operator>
-            <value>Qualify</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

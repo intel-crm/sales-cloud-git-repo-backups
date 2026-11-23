@@ -2,8 +2,8 @@
  * @description       :
  * @author            : Sandeep Chamate
  * @group             :
- * @last modified on  : 04-07-2026
- * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+ * @last modified on  : 05-03-2024
+ * @last modified by  : Sandeep Chamate
  **/
 @isTest
 public class PricingIQREventBusinessLogic_Test {
@@ -18,7 +18,7 @@ public class PricingIQREventBusinessLogic_Test {
             Pricing_Test_Utility.createPriceBook();
             Account acc = Pricing_Test_Utility.createAccount();
             //Contact con = Pricing_Test_Utility.createContact(acc.Id);
-            Contact con = Pricing_Test_Utility.createPrimaryContactWithParam(acc.Id,'IQR_Event_Business_Logic_Test');
+            Contact con = Pricing_Test_Utility.createPrimaryContactWithParam(acc.Id,'IQR_Event_Business_logic');
             Pricing_Test_Utility.createTemplate(lstUsers2[0].id);
             //Pricing_Test_Utility.createAEUser();
             List<User> accountExecutiveUserList = Pricing_Test_Utility.createAEUser();
@@ -38,7 +38,13 @@ public class PricingIQREventBusinessLogic_Test {
             AccountTeamMember accountTeamMember=new AccountTeamMember(AccountId=acc.Id,TeamMemberRole = 'Technical Sales',UserId = lstUsers2[0].id);
             insert accountTeamMember;
             teamList.add(accountTeamMember);
+            /*for(Integer i = 0; i< 1; i++) {
+                teamList.add(new AccountTeamMember(AccountId = accList[0].ID,
+                TeamMemberRole = 'Technical Sales',UserId = lstUsers2[0].id));
                 
+            }
+            insert teamList;
+             */
             
             Group grp = Pricing_Test_Utility.createGroupRecord();
             
@@ -60,7 +66,7 @@ public class PricingIQREventBusinessLogic_Test {
         pricing_Event2.Pricing_IQR_Action_Nm__c = Label.Pricing_IQR_Event_Action_Won_Lost_Integration;
         pricingRecList2.add(pricing_Event2);
         Test.startTest();
-        //PricingIQREventBusinessLogic.wonLostQuoteLineIntegration(pricingRecList2);
+        PricingIQREventBusinessLogic.wonLostQuoteLineIntegration(pricingRecList2);
         List<Database.SaveResult> results = EventBus.publish(pricingRecList2);
         boolean isSuccess = false;
         for (Database.SaveResult sr : results) {
@@ -77,6 +83,7 @@ public class PricingIQREventBusinessLogic_Test {
         List<SBQQ__Quote__c> lstquote = [select id,SBQQ__PrimaryContact__c,ownerid,SBQQ__SalesRep__c,Pricing_Intel_Sales_Rep_Email_Txt__c,RecordTypeId,SBQQ__Account__c from SBQQ__Quote__c limit 1];
         SBQQ__Quote__c quoteRec = lstquote[0];
         List<Account> accList = [select id from Account limit 1];
+        List<User> lstUsers3 = [select id from User where email =: (quoteRec.Pricing_Intel_Sales_Rep_Email_Txt__c) Limit 2];
         List<User> lstUsers2 = [select id,Email from User where Email = 'firstName@intel.com'];
         Id commentRecordTypeId = Pricing_Tender_Utility.getRecordTypeId('Pricing_Comments__c',Label.Pricing_Tender_Comment_RecordType_QuoteComment);
         
@@ -84,9 +91,15 @@ public class PricingIQREventBusinessLogic_Test {
         {
             if(quoteRec != null && !lstquote.isEmpty())
             {
+                //List<User> lstUsers4 = Pricing_Test_Utility.createAdminUser();
+                Id UserRecordId = quoteRec.ownerid;
+                
+                List<Contact> conList = Pricing_Test_Utility.createTestContact(accList[0].Id,1);
                 List<Contact> primaryContactList = Pricing_Test_Utility.createPrimaryContact(quoteRec.SBQQ__Account__c,2);
                 List<User> user = Pricing_Test_Utility.createAEUserWithParam('FirstNameAEChange1@intel.com');
+                List<User> user2 = Pricing_Test_Utility.createAEUserWithParam('FirstNameAEChange2@intel.com');
                 quoteRec.Pricing_Intel_Sales_Rep_Email_Txt__c = lstUsers2[0].Email;
+                List<User> lstUsers5 = [select id from User where email =: (quoteRec.Pricing_Intel_Sales_Rep_Email_Txt__c) Limit 2];
                 Test.startTest();
                 QuoteBusinessLogic.UpdateQuoteCommnents(new List<SBQQ__Quote__c>{quoteRec});
                 List<Pricing_Comments__c> lstComments = [select id from Pricing_Comments__c where Pricing_Quote__c =: quoteRec.id and recordtypeid=:commentRecordTypeId];
@@ -100,7 +113,8 @@ public class PricingIQREventBusinessLogic_Test {
                     update quoteRec;
                 }
                 Test.stopTest();
-                                System.assert(lstComments != null, 'Comments list should not be null');
+                // Add assertions to validate the method execution
+                System.assert(lstComments != null, 'Comments list should not be null');
                 System.assert(lstComments.size() >= 0, 'Comments list should not be null');
                 System.assert(result != null, 'Result list should not be null');
             }
@@ -224,7 +238,7 @@ public class PricingIQREventBusinessLogic_Test {
         pricing_Event2.Pricing_IQR_Action_Nm__c = 'ApprovalRequestChange';
         pricingRecList2.add(pricing_Event2);
         Test.startTest();
-        //PricingIQREventBusinessLogic.wonLostQuoteLineIntegration(pricingRecList2);
+        PricingIQREventBusinessLogic.wonLostQuoteLineIntegration(pricingRecList2);
         List<Database.SaveResult> results = EventBus.publish(pricingRecList2);
         boolean isSuccess = false;
         for (Database.SaveResult sr : results) {
@@ -241,6 +255,7 @@ public class PricingIQREventBusinessLogic_Test {
         Test.startTest();
         PricingIQREventBusinessLogic.sendMassEmailNotificationOnWonOrLoss(lstqli,new Set<Id>{lstqli[0].SBQQ__Quote__c});
         Test.stopTest();
+        // Add assertion to verify the method executed without throwing an exception
         System.assert(true, 'sendMassEmailNotificationOnWonOrLoss should execute successfully');
     }
     
@@ -254,7 +269,7 @@ public class PricingIQREventBusinessLogic_Test {
         pricing_Event2.Pricing_IQR_Action_Nm__c = Label.Pricing_Send_EmailNotificationToBot_Event;
         pricingRecList2.add(pricing_Event2);
         Test.startTest();
-        //PricingIQREventBusinessLogic.wonLostQuoteLineIntegration(pricingRecList2);
+        PricingIQREventBusinessLogic.wonLostQuoteLineIntegration(pricingRecList2);
         List<Database.SaveResult> results = EventBus.publish(pricingRecList2);
         boolean isSuccess = false;
         for (Database.SaveResult sr : results) {

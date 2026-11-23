@@ -1,0 +1,32 @@
+<apex:page standardController="AccountPlan" extensions="Core_AccountPlanRecordPrintController" contenttype="application/pdf" renderas="pdf">
+    <h3>{!AccountPlan.Name}</h3>
+    <hr/>
+    <h3>Account Plan Details</h3>
+    <p><Strong>Account Plan Name:</Strong> {!AccountPlan.Name}</p>
+    <p><Strong>Start Date:</Strong> {!formattedStartDate}</p>
+    <p><Strong>End Date:</Strong> {!formattedEndDate}</p>
+    <p><Strong>Account Vision:</Strong> {!AccountPlan.AccountVision}</p>
+    <apex:outputText value="{!AccountPlan.AccountVision}" escape="false" />
+    <p><Strong>Status:</Strong> {!AccountPlan.Status}</p>
+   
+    <p><Strong>Notes:</Strong> {!AccountPlan.Notes}</p>
+    <hr/>
+        <h3>SWOT Analysis</h3>
+    <p><Strong>Strengths:</Strong> {!AccountPlan.RelationshipStrengths}</p>
+    <p><Strong>Opportunities:</Strong> {!AccountPlan.RelationshipOpportunities}</p>
+    <p><Strong>Weakness:</Strong> {!AccountPlan.RelationshipWeaknesses}</p>
+    <p><Strong>Threats:</Strong> {!AccountPlan.RelationshipThreats}</p>
+    <hr/>
+        <h3>Customer Landscape</h3>
+    <p><Strong>Strategic Priorities:</Strong> {!AccountPlan.AccountStrategicPriorities}</p>
+    <p><Strong>Challenges:</Strong> {!AccountPlan.AccountChallenges}</p>
+    <p><Strong>KPIs:</Strong> {!AccountPlan.AccountPrfmIndicators}</p>
+    <p><Strong>Industry Trends:</Strong> {!AccountPlan.AccountIndustryTrends}</p>
+    <hr/>
+        <h3>Competitive Landscape</h3>
+    <p><Strong>Competitive Strengths:</Strong> {!AccountPlan.AccountCompetitiveStrengths}</p>
+    <p><Strong>Competitive Weakness:</Strong> {!AccountPlan.AccountCmptvWeaknesses}</p>
+    <p><Strong>Competitors:</Strong> {!AccountPlan.AccountCompetitors}</p>
+    
+    <apex:image value="{!URLFOR($Resource.shareOfWalletSR)}"/>
+</apex:page>

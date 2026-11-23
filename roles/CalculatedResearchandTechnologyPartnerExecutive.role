@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>Calculated Research and Technology Partner Executive</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>Calculated Research and Technology Partner Executive</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>EMP_11931030_Sharlene_Lal</parentRole>
+</Role>

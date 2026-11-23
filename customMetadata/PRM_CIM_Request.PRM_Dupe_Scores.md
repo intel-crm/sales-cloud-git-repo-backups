@@ -20,7 +20,7 @@
     </values>
     <values>
         <field>PRM_Max_Records__c</field>
-        <value xsi:type="xsd:string">20</value>
+        <value xsi:type="xsd:string">25</value>
     </values>
     <values>
         <field>PRM_Max_Score__c</field>
@@ -28,14 +28,10 @@
     </values>
     <values>
         <field>PRM_Min_Score__c</field>
-        <value xsi:type="xsd:double">10.0</value>
+        <value xsi:type="xsd:double">55.0</value>
     </values>
     <values>
         <field>PRM_Restriction_Level__c</field>
         <value xsi:type="xsd:double">20.0</value>
-    </values>
-    <values>
-        <field>Score_Bar__c</field>
-        <value xsi:type="xsd:double">30.0</value>
     </values>
 </CustomMetadata>

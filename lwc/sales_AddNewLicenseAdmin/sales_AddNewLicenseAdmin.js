@@ -1,8 +1,8 @@
-import { LightningElement } from "lwc";
+import { LightningElement, api, track } from "lwc";
+import { ShowToastEvent } from "lightning/platformShowToastEvent";
 import { NavigationMixin } from 'lightning/navigation';
-/*import { ShowToastEvent } from "lightning/platformShowToastEvent";
-//import createNewLicenseAdmDelegate from '@salesforce/apex/Sales_AddNewLicenseAdminController.createNewLicenseAdmDelegate';
-//import isCommunity from '@salesforce/apex/Sales_AddNewLicenseAdminController.isCommunity';
+import createNewLicenseAdmDelegate from '@salesforce/apex/Sales_AddNewLicenseAdminController.createNewLicenseAdmDelegate';
+import isCommunity from '@salesforce/apex/Sales_AddNewLicenseAdminController.isCommunity';
 import LICENDE_ADMIN_DELEGATE_OBJECT from '@salesforce/schema/Sales_License_Admin_Delegate__c';
 import PRIMARY_ADMIN_CONTACT_FIELD from '@salesforce/schema/Sales_License_Admin_Delegate__c.Sales_License_PrimaryAdmin_Contact__c';
 import FIRSTNAME_FIELD from '@salesforce/schema/Sales_License_Admin_Delegate__c.Sales_License_DlgAdmin_FirstName_Txt__c';
@@ -18,12 +18,12 @@ import Sales_Cancel from '@salesforce/label/c.Sales_Cancel';
 import Sales_FirstName from '@salesforce/label/c.Sales_FirstName';
 import Sales_LastName from '@salesforce/label/c.Sales_LastName';
 import Sales_mail from '@salesforce/label/c.Sales_mail';
-*/
+
 
 
 export default class CreateContactForm extends NavigationMixin(LightningElement) {
 
-  /*@track isLoaded = false;
+  @track isLoaded = false;
   @api isInternal = false;
   @api isRender = false;
   @api licAdmDelegateId;
@@ -39,7 +39,7 @@ export default class CreateContactForm extends NavigationMixin(LightningElement)
 
   }
 
-  /*connectedCallback() {
+  connectedCallback() {
     console.log('in init');
     isCommunity()
       .then(result => {
@@ -55,9 +55,9 @@ export default class CreateContactForm extends NavigationMixin(LightningElement)
   });
   this.dispatchEvent(evt);
   });   
-  }*/
+  }
 
-  /*handleInputFieldChange(event){    
+  handleInputFieldChange(event){    
     var fieldName = event.target.fieldName;
     switch(fieldName) {
       case PRIMARY_ADMIN_CONTACT_FIELD.fieldApiName:
@@ -102,7 +102,7 @@ export default class CreateContactForm extends NavigationMixin(LightningElement)
   });
 }
 
-  /*handleOnSubmitBtnClick(event) {
+  handleOnSubmitBtnClick(event) {
     console.log('in btn click method');
     if (!this.validateFields()) {
       const toast = new ShowToastEvent({
@@ -123,7 +123,7 @@ export default class CreateContactForm extends NavigationMixin(LightningElement)
         const recordInput = { apiName: LICENDE_ADMIN_DELEGATE_OBJECT.objectApiName, fields };
         console.log('recordInput:'+ JSON.stringify(recordInput));
         var licAdmDelRecord = this.getSObject(recordInput); */
-        /*let licAdmDelRecord = {
+        let licAdmDelRecord = {
           sobjectType : LICENDE_ADMIN_DELEGATE_OBJECT.objectApiName,
           Sales_License_PrimaryAdmin_Contact__c : this.primaryAdminContact,
           Sales_License_DlgAdmin_FirstName_Txt__c : this.firstName,
@@ -178,9 +178,9 @@ export default class CreateContactForm extends NavigationMixin(LightningElement)
 	  }
       });   
     }            
-  }*/         
+  }         
     
-  /*navigateToListView() {
+  navigateToListView() {
     console.log('in navigate');
     if(this.isInternal == true){
         this[NavigationMixin.Navigate]({
@@ -199,7 +199,7 @@ export default class CreateContactForm extends NavigationMixin(LightningElement)
             pageName: 'my-active-delegate-admins'
         },        
     });*/ 
-    /*this[NavigationMixin.Navigate]({
+    this[NavigationMixin.Navigate]({
       "type": "standard__webPage",
       "attributes": {
           "url": this.label.Sales_view_manage_admin_Link
@@ -214,7 +214,7 @@ export default class CreateContactForm extends NavigationMixin(LightningElement)
         // reportValidity returns validity and also displays/clear message on element based on validity
         return (validSoFar && field.reportValidity());
     }, true);
-}*/
+}
   
   
 }

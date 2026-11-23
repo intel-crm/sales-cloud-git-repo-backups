@@ -107,6 +107,10 @@
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Approved_Unit_Dup_Qty__c</field>
     </columns>
     <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Payable_Quantity__c</field>
+    </columns>
+    <columns>
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Deal_RFQ_Id__c</field>
     </columns>
     <columns>
@@ -132,10 +136,11 @@
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_No_of_GPUs__c</field>
+        <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_No_of_GPUs_per_system_nbr__c</field>
     </columns>
     <columns>
-        <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_No_of_GPUs_per_system_nbr__c</field>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_No_of_GPUs__c</field>
     </columns>
     <columns>
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_CPUs_per_system_qty__c</field>

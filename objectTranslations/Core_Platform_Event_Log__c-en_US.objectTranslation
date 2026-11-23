@@ -9,6 +9,11 @@
         <value>Core Platform Event Logs</value>
     </caseValues>
     <fields>
+        <label><!-- Account --></label>
+        <name>Account__c</name>
+        <relationshipLabel><!-- Core Platform Event Logs --></relationshipLabel>
+    </fields>
+    <fields>
         <label><!-- IsActive --></label>
         <name>Core_IsActive__c</name>
     </fields>

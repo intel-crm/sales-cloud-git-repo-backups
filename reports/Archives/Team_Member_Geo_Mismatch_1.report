@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Opportunity.Core_Opportunity_ID__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Sales_Segments__c</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY.NAME</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Opportunity_Team_Geos__c</field>
+    </columns>
+    <columns>
+        <field>OpportunityTeamMember.Core_Team_Member_Geo__c</field>
+    </columns>
+    <columns>
+        <field>MEMBER_NAME</field>
+    </columns>
+    <description>pt1 of a report showing mis-matches in the opportunity team geos field</description>
+    <filter>
+        <criteriaItems>
+            <column>Opportunity.Core_Opportunity_ID__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>,006o0000007svNLAAY,006o0000007svQtAAI,006o0000007swmgAAA,006o0000007swn5AAA,006o0000007sww7AAA,006o0000007sx7oAAA,006o0000007sxvyAAA,006o0000007sxwhAAA,006o0000007syMzAAI,006o0000007t028AAA,006o0000007t0JFAAY,006o0000007t0LLAAY,006o0000007t0N7AAI,006o0000007t0QaAAI,006o0000007t0mAAAQ,006o0000007t12rAAA,006o0000007t19YAAQ,006o0000007t1F7AAI,006o0000007t1RwAAI,006o0000007t1U7AAI,006o0000007t1XBAAY,006o0000007t2DYAAY,006o0000007t2ElAAI,006o0000007tYAmAAM,006o0000008OxgsAAC,006o0000008OyWhAAK,006o0000008Oyk3AAC,006o0000008OynXAAS,006o0000008OyoQAAS,006o0000008OypOAAS,006o0000008P3irAAC,006o0000008P3l6AAC,006o0000008PLUBAA4,006o0000008PM15AAG,006o0000008PM8aAAG,006o0000008PMLAAA4,006o0000008PMhfAAG,006o0000008PN8WAAW,006o0000008PN9PAAW,006o0000008PcSeAAK,006o0000008PoV0AAK,006o0000008PweMAAS,006o0000008PwhzAAC,006o0000008Q5CZAA0</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Team Member Geo Mismatch 1</name>
+    <params>
+        <name>terr</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>include</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>OpportunityTeam</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>Opportunity.Core_Opportunity_ID__c</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>CLOSE_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

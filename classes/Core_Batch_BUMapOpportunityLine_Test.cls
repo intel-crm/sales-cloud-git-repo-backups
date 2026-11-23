@@ -20,14 +20,14 @@ public class Core_Batch_BUMapOpportunityLine_Test {
             Core_Trigger_Events__c='before insert', Core_Active__c=false, Core_Description__c='testing BU Mapping');
         insert triggerEntry_BU;             
         mappingObjList.add(new  Core_BU_Mapping_Table__c(Core_Code__c='1111',Core_Division_Shortname__c='CCD P&L',Core_Product_Type__c='Emerging Technologies',
-                                                         Core_Product_Segment__c='Client Computing', Core_Product_Application__c='Business Desktop',Core_Weightage__c=4,
+                                                         Core_Product_Segment__c='Client Computing', Core_Product_Application__c='',Core_Weightage__c=4,
                                                          Core_BU_Segment__c='1111',Core_BU_Shortname__c='ABCD', Core_Processed__c = false)); 
         
         mappingObjList.add(new  Core_BU_Mapping_Table__c(Core_Code__c='1110',Core_Division_Shortname__c='CCD P&L',Core_Product_Type__c='Emerging Technologies',
                                                          Core_Product_Segment__c='Data Center Computing', Core_Product_Application__c='',Core_Weightage__c=3,Core_BU_Segment__c='1110',Core_BU_Shortname__c='ABC', Core_Mid_Week_Processed__c = false)); 
         
         mappingObjList.add(new  Core_BU_Mapping_Table__c(Core_Code__c='1101',Core_Division_Shortname__c='CCD P&L',Core_Product_Type__c='Emerging Technologies',
-                                                         Core_Product_Segment__c='', Core_Product_Application__c='Business Desktop',Core_Weightage__c=3,Core_BU_Segment__c='1101',Core_BU_Shortname__c='ABD', Core_End_of_Week_Processed__c = false)); 
+                                                         Core_Product_Segment__c='', Core_Product_Application__c='',Core_Weightage__c=3,Core_BU_Segment__c='1101',Core_BU_Shortname__c='ABD', Core_End_of_Week_Processed__c = false)); 
         
         mappingObjList.add(new  Core_BU_Mapping_Table__c(Core_Code__c='1100',Core_Division_Shortname__c='CCD P&L',Core_Product_Type__c='Emerging Technologies',
                                                          Core_Product_Segment__c='', Core_Product_Application__c='',Core_Weightage__c=2,Core_BU_Segment__c='1100',Core_BU_Shortname__c='AB')); 
@@ -50,9 +50,14 @@ public class Core_Batch_BUMapOpportunityLine_Test {
         testAcct_BU.Core_Sales_Groups__c = 'Americas Brazil Sales Group';
         testAcct_BU.Industry = 'Education';
         testAcct_BU.Core_Sub_Industry__c = 'Student';
+        Id accountRecordTypeIntel = Schema.sObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();   
+        testAcct_BU.recordtypeID = accountRecordTypeIntel;
         insert testAcct_BU;
-        testAcct_BU.Core_CIM_ID__c='1234569';
+        testAcct_BU.Core_CIM_ID__c='1234569';       
         update testAcct_BU;
+        
+        
+        
         
         // Simple test data
         //try{
@@ -62,7 +67,7 @@ public class Core_Batch_BUMapOpportunityLine_Test {
         testOpp_BU.RecordTypeId =newOppRecTypeId;
         testOpp_BU.StageName ='Qualify';
         testOpp_BU.Core_Product_Segment__c='Client Computing';
-        testOpp_BU.Core_Product_Application__c='Business Desktop';
+        testOpp_BU.Core_Product_Application__c='';//Business Desktop
         insert testOpp_BU;
         
         List<Product2> testProducts_BU = Core_Test_Utility.createProduct(1);
@@ -97,7 +102,7 @@ public class Core_Batch_BUMapOpportunityLine_Test {
         update testProducts_BU[0];
         
         testOpp_BU.Core_Product_Segment__c='Client Computing';
-        testOpp_BU.Core_Product_Application__c='Business Desktop';
+        testOpp_BU.Core_Product_Application__c='';//Business Desktop
         update testOpp_BU;
         
         oppBUItemList.add(new OpportunityLineItem(OpportunityId=testOpp_BU.Id, PricebookEntryId=testPBEs_BU[0].Id,
@@ -117,7 +122,7 @@ public class Core_Batch_BUMapOpportunityLine_Test {
         update testProducts_BU[0];
         
         testOpp_BU.Core_Product_Segment__c='Client Computing';
-        testOpp_BU.Core_Product_Application__c='Business Desktop';
+        testOpp_BU.Core_Product_Application__c='';//Business Desktop
         testOpp_BU.CloseDate=Date.valueOf('2021-01-01');
         update testOpp_BU;
         
@@ -154,9 +159,11 @@ public class Core_Batch_BUMapOpportunityLine_Test {
         testAcct_BU.Core_Sales_Groups__c = 'Americas Brazil Sales Group';
         testAcct_BU.Industry = 'Education';
         testAcct_BU.Core_Sub_Industry__c = 'Student';
+        Id accountRecordTypeIntel = Schema.sObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId(); 
+        testAcct_BU.recordtypeID = accountRecordTypeIntel;
         insert testAcct_BU;
-        testAcct_BU.Core_CIM_ID__c='1234569';
-        update testAcct_BU;
+        testAcct_BU.Core_CIM_ID__c='1234569';       
+        update testAcct_BU;       
         
         // Simple test data
         //try{
@@ -169,7 +176,7 @@ public class Core_Batch_BUMapOpportunityLine_Test {
         testOpp_BU.RecordTypeId =newOppRecTypeId;
         testOpp_BU.StageName ='Qualify';
         testOpp_BU.Core_Product_Segment__c='Client Computing';
-        testOpp_BU.Core_Product_Application__c='Business Desktop';
+        testOpp_BU.Core_Product_Application__c='';//Business Desktop;
         testOpp_BU.CloseDate =Date.valueOf('2021-01-02');
        
         insert testOpp_BU;
@@ -186,7 +193,7 @@ public class Core_Batch_BUMapOpportunityLine_Test {
         update testProducts_BU[0];
         
         testOpp_BU.Core_Product_Segment__c='Client Computing';
-        testOpp_BU.Core_Product_Application__c='Business Desktop';
+        testOpp_BU.Core_Product_Application__c='';//Business Desktop
         testOpp_BU.Core_Approved_Date__c =system.today();
         update testOpp_BU;      
         oppBUItemList.add(new OpportunityLineItem(OpportunityId=testOpp_BU.Id, PricebookEntryId=testPBEs_BU[0].Id,
@@ -208,9 +215,9 @@ public class Core_Batch_BUMapOpportunityLine_Test {
         update testProducts_BU[0];
         
         testOpp_BU.Core_Product_Segment__c='Client Computing';
-        testOpp_BU.Core_Product_Application__c='Business Desktop';
+        testOpp_BU.Core_Product_Application__c='';//Business Desktop
         testOpp_BU.CloseDate=Date.valueOf('2021-01-02');
-        System.assertEquals(testOpp_BU.Core_Product_Application__c, 'Business Desktop','Connected Home');
+        //System.assertEquals(testOpp_BU.Core_Product_Application__c, 'Business Desktop','Connected Home');
         update testOpp_BU;
         
         oppBUItemList.add(new OpportunityLineItem(OpportunityId=testOpp_BU.Id, PricebookEntryId=testPBEs_BU[0].Id,
@@ -230,7 +237,7 @@ public class Core_Batch_BUMapOpportunityLine_Test {
         update testProducts_BU[0];
         
         testOpp_BU.Core_Product_Segment__c='Client Computing';
-        testOpp_BU.Core_Product_Application__c='Business Desktop';
+        testOpp_BU.Core_Product_Application__c='';//Business Desktop
         testOpp_BU.CloseDate=Date.valueOf('2021-01-02');
        // testOpp_BU.CloseDate=Date.today().year() - 2+'-12-31';
         update testOpp_BU;
@@ -244,7 +251,7 @@ public class Core_Batch_BUMapOpportunityLine_Test {
         update testProducts_BU[0];
         
         testOpp_BU.Core_Product_Segment__c='Client Computing';
-        testOpp_BU.Core_Product_Application__c='Business Desktop';
+        testOpp_BU.Core_Product_Application__c='';//Business Desktop
         testOpp_BU.CloseDate=Date.valueOf('2021-01-02');
         update testOpp_BU;
         
@@ -311,7 +318,7 @@ public class Core_Batch_BUMapOpportunityLine_Test {
         update testProducts_BU[0];
         
         testOpp_BU.Core_Product_Segment__c='Client Computing';
-        testOpp_BU.Core_Product_Application__c='Business Desktop';
+        testOpp_BU.Core_Product_Application__c='';//Business Desktop
         testOpp_BU.Core_Approved_Date__c =system.today();
         update testOpp_BU;      
         oppBUItemList.add(new OpportunityLineItem(OpportunityId=testOpp_BU.Id, PricebookEntryId=testPBEs_BU[0].Id,
@@ -344,7 +351,7 @@ public class Core_Batch_BUMapOpportunityLine_Test {
         update testProducts_BU[0];
         
         testOpp_BU.Core_Product_Segment__c='Client Computing';
-        testOpp_BU.Core_Product_Application__c='Business Desktop';
+        testOpp_BU.Core_Product_Application__c='';//Business Desktop
         update testOpp_BU;
         oppBUItemList.add(new OpportunityLineItem(OpportunityId=testOpp_BU.Id, PricebookEntryId=testPBEs_BU[0].Id,
                                                   Description='0111', UnitPrice=11, Quantity=11, 

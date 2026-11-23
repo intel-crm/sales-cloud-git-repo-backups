@@ -41,6 +41,7 @@ export default class PricingRPMBulkReject extends LightningElement {
         this.selectedData = [];
         getQuoteLineToRejectByRPM({ recordId: this.recordId })
             .then(result => {
+                console.log('Calling Apex Method getQuoteLineToRejectByRPM', result);
                 if (result.length == 0) {
                     this.noRecords = true;
                     this.msg = noQLIforActionError.replace('Field Review', 'Pricing Review');

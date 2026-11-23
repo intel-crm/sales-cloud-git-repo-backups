@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>false</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>HG_Insights__Account__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <label>Account Id</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>HG IT Spend</relationshipLabel>
+        <relationshipName>HGITSpendToAccount</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>HG_Insights__City__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The city where the company is headquartered.</description>
+        <externalId>false</externalId>
+        <label>Headquarters City</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>HG_Insights__Company__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Common business name associated with the URL.</description>
+        <externalId>false</externalId>
+        <label>Company</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>HG_Insights__Country_ISO__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Country normalized by the Salesforce ISO Service.</description>
+        <externalId>false</externalId>
+        <label>Country (ISO)</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>HG_Insights__Country__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The country where the company is headquartered.</description>
+        <externalId>false</externalId>
+        <label>Headquarters Country</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>HG_Insights__HGForceId__c</fullName>
+        <caseSensitive>true</caseSensitive>
+        <deprecated>false</deprecated>
+        <externalId>true</externalId>
+        <label>HG Force Id</label>
+        <length>255</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>HG_Insights__HGId__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>HGId</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>HG_Insights__Lead__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <label>LeadId</label>
+        <referenceTo>Lead</referenceTo>
+        <relationshipLabel>HG IT Spend</relationshipLabel>
+        <relationshipName>HGITSpendToLead</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>HG_Insights__SpendDetailItSpendStaticId__c</fullName>
+        <deprecated>false</deprecated>
+        <description>A static 16-character string value that identifies a IT Spend data point on the HG feed. This value does not change month over month for the given record.</description>
+        <externalId>false</externalId>
+        <label>IT Spend ID</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>HG_Insights__SpendDetailItSpend__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Annual amount of the External IT Spend for the company.</description>
+        <externalId>false</externalId>
+        <label>IT Spend</label>
+        <precision>16</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>HG_Insights__SpendDetailSpendCatAmount__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Annual amount spent on the classification of the external IT spend.</description>
+        <externalId>false</externalId>
+        <label>Spend Category Amount</label>
+        <precision>16</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>HG_Insights__SpendDetailSpendCatId__c</fullName>
+        <deprecated>false</deprecated>
+        <description>A static unique identifier for each spend category.</description>
+        <externalId>false</externalId>
+        <label>Spend Category ID</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>HG_Insights__SpendDetailSpendCatName__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Classification of the external IT spend.</description>
+        <externalId>false</externalId>
+        <label>Spend Category Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>HG_Insights__SpendDetailSpendCatPercentOfRevenue__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Annual amount on the classification of the external IT spend as a percentage of the company&apos;s annual revenue.</description>
+        <externalId>false</externalId>
+        <label>Spend Category Revenue (%)</label>
+        <precision>11</precision>
+        <required>false</required>
+        <scale>10</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>HG_Insights__SpendDetailSpendParentCatAmount__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Annual amount spent on the top level classification of the external IT spend.</description>
+        <externalId>false</externalId>
+        <label>Spend Parent Category Amount</label>
+        <precision>16</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>HG_Insights__SpendDetailSpendParentCatId__c</fullName>
+        <deprecated>false</deprecated>
+        <description>A static unique identifier for each spend parent category.</description>
+        <externalId>false</externalId>
+        <label>Spend Parent Category ID</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>HG_Insights__SpendDetailSpendParentCatName__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Top level classification of the external IT spend.</description>
+        <externalId>false</externalId>
+        <label>Spend Parent Category Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>HG_Insights__State__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The state where the company is headquartered.</description>
+        <externalId>false</externalId>
+        <label>Headquarters State</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>HG IT Spend</label>
+    <nameField>
+        <label>Id</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>HG IT Spend</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>HG_Insights__Account_or_Lead_is_required</fullName>
+        <active>true</active>
+        <errorConditionFormula>OR(
+HG_Insights__Account__c == null &amp;&amp; HG_Insights__Lead__c == null,
+HG_Insights__Account__c != null &amp;&amp; HG_Insights__Lead__c != null
+)</errorConditionFormula>
+        <errorMessage>Account or Lead information is required.</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+</CustomObject>

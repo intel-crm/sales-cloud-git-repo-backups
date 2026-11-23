@@ -35,10 +35,6 @@
         <aggregateTypes>Sum</aggregateTypes>
         <field>Core_Goal__c.Core_Goal_Oppty_Amount__c</field>
     </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Core_Goal__c.Core_KPI_Revenue__c</field>
-    </columns>
     <filter>
         <criteriaItems>
             <column>CUST_OWNER_NAME</column>
@@ -67,8 +63,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>Core_Goal__c.Core_Goal_Approved_Date__c</dateColumn>
-        <endDate>2021-12-25</endDate>
+        <endDate>2020-12-26</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2021-01-01</startDate>
+        <startDate>2020-01-01</startDate>
     </timeFrameFilter>
 </Report>

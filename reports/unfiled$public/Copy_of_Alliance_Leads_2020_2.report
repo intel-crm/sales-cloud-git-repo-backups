@@ -92,19 +92,16 @@
         <field>STREET</field>
     </columns>
     <columns>
-        <field>Lead.PMP_MktProfile_BizSegment__c</field>
-    </columns>
-    <columns>
         <field>OWNER</field>
     </columns>
     <filter>
         <booleanFilter>1</booleanFilter>
         <criteriaItems>
-            <column>Lead.Core_Partner_Name__c</column>
+            <column>Lead.PMP_MktProfile_BizSegment__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value></value>
+            <operator>equals</operator>
+            <value>Internet of Things and Embedded</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -123,6 +120,8 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CREATED_DATE</dateColumn>
-        <interval>INTERVAL_PREVCURY</interval>
+        <endDate>2020-12-31</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2020-01-01</startDate>
     </timeFrameFilter>
 </Report>

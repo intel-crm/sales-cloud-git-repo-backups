@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>BEIJING VION TECHNOLOGY INC Customer Executive</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>BEIJING VION TECHNOLOGY INC Customer Executive</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>EMP_11645919_Lin_Zheng</parentRole>
+</Role>

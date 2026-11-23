@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Test Generic Bulk Upload</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Test Generic Bulk Uploads</value>
+    </caseValues>
+    <fieldSets>
+        <label><!-- Object_2_FieldSet --></label>
+        <name>Object_2_FieldSet</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Object_3_FieldSet --></label>
+        <name>Object_3_FieldSet</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- RC_FieldSet --></label>
+        <name>RC_FieldSet</name>
+    </fieldSets>
+    <fields>
+        <label><!-- Country --></label>
+        <name>Country__c</name>
+    </fields>
+    <fields>
+        <label><!-- Developer Name --></label>
+        <name>Developer_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- OEM --></label>
+        <name>OEM__c</name>
+    </fields>
+    <fields>
+        <label><!-- Object Name --></label>
+        <name>Object_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Parent Record --></label>
+        <name>Parent_Record__c</name>
+        <relationshipLabel><!-- Test Generic Bulk Uploads --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Product --></label>
+        <name>ProductId__c</name>
+        <relationshipLabel><!-- Test Generic Bulk Uploads --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Product Name --></label>
+        <name>Product_Name_Dummy__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Status__c</name>
+        <picklistValues>
+            <masterLabel>Failed</masterLabel>
+            <translation><!-- Failed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending</masterLabel>
+            <translation><!-- Pending --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Success</masterLabel>
+            <translation><!-- Success --></translation>
+        </picklistValues>
+    </fields>
+    <recordTypes>
+        <label><!-- Object 2 --></label>
+        <name>Object_2</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Rebate Claim RecType --></label>
+        <name>Rebate_Claim_RecType</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

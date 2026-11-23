@@ -114,33 +114,19 @@
                         </div>
                    </div>
                 </lightning-layout-item>
-                
-                <template if:false={isPeromScreeingFromCwlObj}>
-                    <lightning-layout-item style="padding: 0px 14px 0px 14px;" size="6" large-device-size="6" medium-device-size="6"
-                    small-device-size="12">
-                        <div class="slds-form-element slds-form-element_readonly">
-                            <span class="slds-form-element__label">Compliance Watch Lists</span>
-                            <div class="slds-form-element__control">
-                                <div class="slds-form-element__static">{compliancewatchListLabels}
-                                </div>
-                            </div>
-                        </div>
-                    </lightning-layout-item>
-                </template>
 
-                <template if:true={isPeromScreeingFromCwlObj}>
-                    <lightning-layout-item style="padding: 0px 14px 0px 14px;" size="6" large-device-size="6" medium-device-size="6"
-                    small-device-size="12">
-                        <div class="slds-form-element">
-                            <span class="slds-form-element__label">Compliance Watch List</span>
-                            <div class="slds-form-element__control slds-border_bottom">
-                            <div class="slds-form-element__static">
-                                <div>{cwl}</div>
-                            </div>
-                            </div>
+                <lightning-layout-item style="padding: 0px 14px 0px 14px;" size="6" large-device-size="6" medium-device-size="6"
+                small-device-size="12">
+                    <!--<lightning-textarea type="text" label="Compliance Watch List" value={cwl} readonly="true"></lightning-textarea>-->
+                    <div class="slds-form-element">
+                        <span class="slds-form-element__label">Compliance Watch List</span>
+                        <div class="slds-form-element__control slds-border_bottom">
+                          <div class="slds-form-element__static">
+                            <div>{cwl}</div>
+                          </div>
                         </div>
-                    </lightning-layout-item>
-                </template>
+                      </div>
+                </lightning-layout-item> 
 
 
             </lightning-layout>

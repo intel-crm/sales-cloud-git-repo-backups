@@ -1,6 +1,4 @@
-<aura:component implements="forceCommunity:availableForAllPageTypes,lightning:isUrlAddressable"></aura:component>
-<!-- IPA2.0 + US TWC4497-1631 -->
- <!-- controller="MarketplaceCreateProductController" implements="forceCommunity:availableForAllPageTypes,lightning:isUrlAddressable">
+<aura:component controller="MarketplaceCreateProductController" implements="forceCommunity:availableForAllPageTypes,lightning:isUrlAddressable">
     
     <aura:attribute name="recordId" type="string" default="a3s0n0000002BnzAAE"/>
     <aura:attribute name="debugMode" type="Boolean" default="true" />
@@ -12,4 +10,4 @@
 
     <c:MarketplaceCreateProductPreview aura:id="offeringPreview" />
 	
-</aura:component> -->
+</aura:component>

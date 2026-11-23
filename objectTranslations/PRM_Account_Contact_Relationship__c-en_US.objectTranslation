@@ -9,11 +9,6 @@
         <value>Account Contact Relationships</value>
     </caseValues>
     <fields>
-        <label><!-- Bulk Data Upload --></label>
-        <name>Bulk_Data_Upload__c</name>
-        <relationshipLabel><!-- Account Contact Relationships --></relationshipLabel>
-    </fields>
-    <fields>
         <label><!-- AGS Failure Notified --></label>
         <name>PRM_AGS_Failure_Notified__c</name>
     </fields>
@@ -124,14 +119,6 @@
             <translation><!-- Admin Invite --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Admin Partner Invite</masterLabel>
-            <translation><!-- Admin Partner Invite --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Auto Granted IPA for DZP</masterLabel>
-            <translation><!-- Auto Granted IPA for DZP --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Bulk Add</masterLabel>
             <translation><!-- Bulk Add --></translation>
         </picklistValues>
@@ -160,6 +147,10 @@
         <label><!-- Status --></label>
         <name>PRM_Status_Nm__c</name>
         <picklistValues>
+            <masterLabel>AGS Identity Creation Failed</masterLabel>
+            <translation><!-- AGS Identity Creation Failed --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Complete</masterLabel>
             <translation><!-- Complete --></translation>
         </picklistValues>
@@ -169,7 +160,6 @@
         </picklistValues>
     </fields>
     <fields>
-        <help><!-- On update of any field, Status Reason should also be updated --></help>
         <label><!-- Status Reason --></label>
         <name>PRM_Status_Reason_Txt__c</name>
     </fields>
@@ -189,25 +179,13 @@
         <label><!-- isActive --></label>
         <name>PRM_isActive__c</name>
     </fields>
+    <fields>
+        <label><!-- test - master branch autogetting updated --></label>
+        <name>test_master_branch__c</name>
+    </fields>
     <recordTypes>
         <label><!-- Standard --></label>
         <name>Standard</name>
     </recordTypes>
     <startsWith>Consonant</startsWith>
-    <validationRules>
-        <errorMessage><!-- This email domain is not allowed for Intel Partner Alliance program. Please register with corporate email domain --></errorMessage>
-        <name>PRM_BlockedEmailDomain</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- This registration was denied because the registrant identified their location as an embargoed country or their IP address is from an embargoed country. For more information please visit https://goto.intel.com/gec-sanctioned-country-info --></errorMessage>
-        <name>PRM_Contact_Embargoed_Country_Check</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Contact Relationship is required --></errorMessage>
-        <name>PRM_Contact_Relationship_Check</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Website is mandatory for extending invite --></errorMessage>
-        <name>PRM_WebsiteCheck</name>
-    </validationRules>
 </CustomObjectTranslation>

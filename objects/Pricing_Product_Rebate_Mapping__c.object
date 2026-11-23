@@ -276,6 +276,13 @@
     <label>Product Rebate Mapping</label>
     <listViews>
         <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Pricing_Partner_Type_Nm__c</columns>
+        <columns>Pricing_Is_SIPP_Product_Cb__c</columns>
+        <columns>Pricing_Product_Family_Nm__c</columns>
+        <columns>Pricing_Product_Series_Nm__c</columns>
+        <columns>Pricing_Vertical_Segment_Nm__c</columns>
+        <columns>Pricing_Rebate_Amount__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
@@ -287,6 +294,6 @@
     </nameField>
     <pluralLabel>Product Rebate Mappings</pluralLabel>
     <searchLayouts/>
-    <sharingModel>Private</sharingModel>
+    <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>

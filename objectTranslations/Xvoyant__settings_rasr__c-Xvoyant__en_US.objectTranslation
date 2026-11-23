@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>settings_rasr</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>settings_rasr</value>
+    </caseValues>
+    <fields>
+        <label><!-- Default RASR Program --></label>
+        <name>Xvoyant__Default_RASR_Program__c</name>
+    </fields>
+    <fields>
+        <label><!-- taskLogging_emailDayOfWeek --></label>
+        <name>Xvoyant__taskLogging_emailDayOfWeek__c</name>
+    </fields>
+    <fields>
+        <label><!-- taskLogging_emailEnabled --></label>
+        <name>Xvoyant__taskLogging_emailEnabled__c</name>
+    </fields>
+    <fields>
+        <label><!-- taskLogging_emailFrequency --></label>
+        <name>Xvoyant__taskLogging_emailFrequency__c</name>
+    </fields>
+    <fields>
+        <label><!-- taskLogging_loginDialogEnabled --></label>
+        <name>Xvoyant__taskLogging_loginDialogEnabled__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

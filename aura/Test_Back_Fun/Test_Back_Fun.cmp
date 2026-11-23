@@ -1,0 +1,6 @@
+<aura:component implements="force:lightningQuickActionWithoutHeader,force:appHostable,flexipage:availableForAllPageTypes,lightning:actionOverride,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,lightning:isUrlAddressable" access="global" > 
+   
+    <p>Please Wait.....</p><aura:handler  name="init" value="{!this}" action="{!c.doInit}"/>
+ <lightning:navigation aura:id="navService"/>
+    
+</aura:component>

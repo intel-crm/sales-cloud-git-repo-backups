@@ -1,0 +1,858 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>true</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>Are_Intel_items_used_for_MINDS__c</fullName>
+        <label>Are Intel items used for MINDS?</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>City__c</fullName>
+        <externalId>false</externalId>
+        <label>City</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Country__c</fullName>
+        <externalId>false</externalId>
+        <label>Country</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Decision_Date__c</fullName>
+        <label>Decision Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Description__c</fullName>
+        <label>Description</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>End_Customer_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>End Customer Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>External_Id__c</fullName>
+        <externalId>true</externalId>
+        <label>External Id</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>First_Customer_Ship_Date__c</fullName>
+        <label>First Customer Ship Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Opportunity_Volume__c</fullName>
+        <externalId>false</externalId>
+        <label>Opportunity Volume</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Partner_FAE_Email__c</fullName>
+        <externalId>false</externalId>
+        <label>Partner FAE Email</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Partner_FAE__c</fullName>
+        <externalId>false</externalId>
+        <label>Partner FAE</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Product_Application__c</fullName>
+        <label>Product Application</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Comms Test &amp; Measuring Equipment</fullName>
+                    <default>false</default>
+                    <label>Comms Test &amp; Measuring Equipment</label>
+                </value>
+                <value>
+                    <fullName>ADAS L1-L3 and Mainstream Safety</fullName>
+                    <default>false</default>
+                    <label>ADAS L1-L3 and Mainstream Safety</label>
+                </value>
+                <value>
+                    <fullName>Aerospace/Avionics</fullName>
+                    <default>false</default>
+                    <label>Aerospace/Avionics</label>
+                </value>
+                <value>
+                    <fullName>ASIC Prototyping/Emulation</fullName>
+                    <default>false</default>
+                    <label>ASIC Prototyping/Emulation</label>
+                </value>
+                <value>
+                    <fullName>ATE &amp; Semiconductor Tester</fullName>
+                    <default>false</default>
+                    <label>ATE &amp; Semiconductor Tester</label>
+                </value>
+                <value>
+                    <fullName>Autonomous Driving</fullName>
+                    <default>false</default>
+                    <label>Autonomous Driving</label>
+                </value>
+                <value>
+                    <fullName>Autonomous Driving - Other</fullName>
+                    <default>false</default>
+                    <label>Autonomous Driving - Other</label>
+                </value>
+                <value>
+                    <fullName>Broadcast/Studio</fullName>
+                    <default>false</default>
+                    <label>Broadcast/Studio</label>
+                </value>
+                <value>
+                    <fullName>Business Desktop</fullName>
+                    <default>false</default>
+                    <label>Business Desktop</label>
+                </value>
+                <value>
+                    <fullName>Business Mobility</fullName>
+                    <default>false</default>
+                    <label>Business Mobility</label>
+                </value>
+                <value>
+                    <fullName>Compute Consolidation and SW Cockpit</fullName>
+                    <default>false</default>
+                    <label>Compute Consolidation and SW Cockpit</label>
+                </value>
+                <value>
+                    <fullName>Connected Transportation and Solutions</fullName>
+                    <default>false</default>
+                    <label>Connected Transportation and Solutions</label>
+                </value>
+                <value>
+                    <fullName>Consumer Desktop</fullName>
+                    <default>false</default>
+                    <label>Consumer Desktop</label>
+                </value>
+                <value>
+                    <fullName>Consumer Mobility</fullName>
+                    <default>false</default>
+                    <label>Consumer Mobility</label>
+                </value>
+                <value>
+                    <fullName>Diagnostic, Test &amp; Measurement Equipment</fullName>
+                    <default>false</default>
+                    <label>Diagnostic, Test &amp; Measurement Equipment</label>
+                </value>
+                <value>
+                    <fullName>Drives, Motor Control, Encoders</fullName>
+                    <default>false</default>
+                    <label>Drives, Motor Control, Encoders</label>
+                </value>
+                <value>
+                    <fullName>Electrification and Energy Mgmt</fullName>
+                    <default>false</default>
+                    <label>Electrification and Energy Mgmt</label>
+                </value>
+                <value>
+                    <fullName>Embedded Board</fullName>
+                    <default>false</default>
+                    <label>Embedded Board</label>
+                </value>
+                <value>
+                    <fullName>Gaming &amp; Lottery Machines</fullName>
+                    <default>false</default>
+                    <label>Gaming &amp; Lottery Machines</label>
+                </value>
+                <value>
+                    <fullName>Gateway</fullName>
+                    <default>false</default>
+                    <label>Gateway</label>
+                </value>
+                <value>
+                    <fullName>Health: Diagnostic/Therapeutic/Remote/Clinical Equipment</fullName>
+                    <default>false</default>
+                    <label>Health: Diagnostic/Therapeutic/Remote/Clinical Equipment</label>
+                </value>
+                <value>
+                    <fullName>Imaging Devices (not IP Camera based)</fullName>
+                    <default>false</default>
+                    <label>Imaging Devices (not IP Camera based)</label>
+                </value>
+                <value>
+                    <fullName>Infrastructure (e.g., Roadside, Rail, etc.)</fullName>
+                    <default>false</default>
+                    <label>Infrastructure (e.g., Roadside, Rail, etc.)</label>
+                </value>
+                <value>
+                    <fullName>Interactive Displays &amp; Kiosks</fullName>
+                    <default>false</default>
+                    <label>Interactive Displays &amp; Kiosks</label>
+                </value>
+                <value>
+                    <fullName>Lottery</fullName>
+                    <default>false</default>
+                    <label>Lottery</label>
+                </value>
+                <value>
+                    <fullName>MEC/Edge Cloud</fullName>
+                    <default>false</default>
+                    <label>MEC/Edge Cloud</label>
+                </value>
+                <value>
+                    <fullName>Motion Control and CNC</fullName>
+                    <default>false</default>
+                    <label>Motion Control and CNC</label>
+                </value>
+                <value>
+                    <fullName>Network Appliance: Other</fullName>
+                    <default>false</default>
+                    <label>Network Appliance: Other</label>
+                </value>
+                <value>
+                    <fullName>Network Appliance: Security</fullName>
+                    <default>false</default>
+                    <label>Network Appliance: Security</label>
+                </value>
+                <value>
+                    <fullName>NFVi / OssBss / Mano</fullName>
+                    <default>false</default>
+                    <label>NFVi / OssBss / Mano</label>
+                </value>
+                <value>
+                    <fullName>PLC &amp; PAC</fullName>
+                    <default>false</default>
+                    <label>PLC &amp; PAC</label>
+                </value>
+                <value>
+                    <fullName>POS / ATM</fullName>
+                    <default>false</default>
+                    <label>POS / ATM</label>
+                </value>
+                <value>
+                    <fullName>Public Sector - Ruggedized PCs</fullName>
+                    <default>false</default>
+                    <label>Public Sector - Ruggedized PCs</label>
+                </value>
+                <value>
+                    <fullName>Radar</fullName>
+                    <default>false</default>
+                    <label>Radar</label>
+                </value>
+                <value>
+                    <fullName>RAN/Edge</fullName>
+                    <default>false</default>
+                    <label>RAN/Edge</label>
+                </value>
+                <value>
+                    <fullName>Robotics: Mobile (AGV, AMR)</fullName>
+                    <default>false</default>
+                    <label>Robotics: Mobile (AGV, AMR)</label>
+                </value>
+                <value>
+                    <fullName>Robotics: Stationary</fullName>
+                    <default>false</default>
+                    <label>Robotics: Stationary</label>
+                </value>
+                <value>
+                    <fullName>Routers</fullName>
+                    <default>false</default>
+                    <label>Routers</label>
+                </value>
+                <value>
+                    <fullName>Ruggedized/Industrial/Vertical Grade PCs</fullName>
+                    <default>false</default>
+                    <label>Ruggedized/Industrial/Vertical Grade PCs</label>
+                </value>
+                <value>
+                    <fullName>Ruggedized/Industrial/Vertical Grade Servers</fullName>
+                    <default>false</default>
+                    <label>Ruggedized/Industrial/Vertical Grade Servers</label>
+                </value>
+                <value>
+                    <fullName>Sensor Platform</fullName>
+                    <default>false</default>
+                    <label>Sensor Platform</label>
+                </value>
+                <value>
+                    <fullName>Server - Hybrid Cloud</fullName>
+                    <default>false</default>
+                    <label>Server - Hybrid Cloud</label>
+                </value>
+                <value>
+                    <fullName>Server - On Prem</fullName>
+                    <default>false</default>
+                    <label>Server - On Prem</label>
+                </value>
+                <value>
+                    <fullName>Server - Public Cloud</fullName>
+                    <default>false</default>
+                    <label>Server - Public Cloud</label>
+                </value>
+                <value>
+                    <fullName>Storage</fullName>
+                    <default>false</default>
+                    <label>Storage</label>
+                </value>
+                <value>
+                    <fullName>Switches</fullName>
+                    <default>false</default>
+                    <label>Switches</label>
+                </value>
+                <value>
+                    <fullName>Thin Client, Cloud Client</fullName>
+                    <default>false</default>
+                    <label>Thin Client, Cloud Client</label>
+                </value>
+                <value>
+                    <fullName>vCPE/uCPE/SD-WAN premises</fullName>
+                    <default>false</default>
+                    <label>vCPE/uCPE/SD-WAN premises</label>
+                </value>
+                <value>
+                    <fullName>Vehicles - Non-Automotive (e.g. Trains, Ships, etc.)</fullName>
+                    <default>false</default>
+                    <label>Vehicles - Non-Automotive (e.g. Trains, Ships, etc.)</label>
+                </value>
+                <value>
+                    <fullName>Video (incl. Camera, NVR, AI Box, Video Server)</fullName>
+                    <default>false</default>
+                    <label>Video (incl. Camera, NVR, AI Box, Video Server)</label>
+                </value>
+                <value>
+                    <fullName>Visual Cloud Media</fullName>
+                    <default>false</default>
+                    <label>Visual Cloud Media</label>
+                </value>
+                <value>
+                    <fullName>Wireless Remote Radio Head</fullName>
+                    <default>false</default>
+                    <label>Wireless Remote Radio Head</label>
+                </value>
+                <value>
+                    <fullName>Wireline &amp; Broadband Access</fullName>
+                    <default>false</default>
+                    <label>Wireline &amp; Broadband Access</label>
+                </value>
+                <value>
+                    <fullName>Workstation</fullName>
+                    <default>false</default>
+                    <label>Workstation</label>
+                </value>
+                <value>
+                    <fullName>EV Charger</fullName>
+                    <default>false</default>
+                    <label>EV Charger</label>
+                </value>
+                <value>
+                    <fullName>In-vehicle Zonal and Edge</fullName>
+                    <default>false</default>
+                    <label>In-vehicle Zonal and Edge</label>
+                </value>
+                <value>
+                    <fullName>Wireless Baseband/Radio</fullName>
+                    <default>false</default>
+                    <label>Wireless Baseband/Radio</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Product_Group__c</fullName>
+        <label>Product Group</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>FPGA/Power</fullName>
+                    <default>false</default>
+                    <label>FPGA</label>
+                </value>
+                <value>
+                    <fullName>Embedded/IOT</fullName>
+                    <default>false</default>
+                    <label>Embedded/IOT</label>
+                </value>
+                <value>
+                    <fullName>Embedded/IOT Boards &amp; Systems</fullName>
+                    <default>false</default>
+                    <label>Embedded/IOT Boards &amp; Systems</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Product_Segment__c</fullName>
+        <label>Product Segment</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Client Computing</fullName>
+                    <default>false</default>
+                    <label>Client Computing</label>
+                </value>
+                <value>
+                    <fullName>Comms Infra. / Networking</fullName>
+                    <default>false</default>
+                    <label>Comms Infra. / Networking</label>
+                </value>
+                <value>
+                    <fullName>Data Center Computing</fullName>
+                    <default>false</default>
+                    <label>Data Center Computing</label>
+                </value>
+                <value>
+                    <fullName>Embedded / IOT</fullName>
+                    <default>false</default>
+                    <label>Embedded / IOT</label>
+                </value>
+                <value>
+                    <fullName>Automotive / Transportation</fullName>
+                    <default>false</default>
+                    <label>Automotive / Transportation</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Production_End_Date__c</fullName>
+        <label>Production End Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Record_Id_from_Response__c</fullName>
+        <externalId>false</externalId>
+        <label>Record Id from Response</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Record_Id_from_main_object__c</fullName>
+        <externalId>false</externalId>
+        <label>Record Id from main object</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Response__c</fullName>
+        <externalId>false</externalId>
+        <label>Response</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>State_Province__c</fullName>
+        <externalId>false</externalId>
+        <label>State/Province</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Street1__c</fullName>
+        <externalId>false</externalId>
+        <label>Street1</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Vertical_Market__c</fullName>
+        <label>Vertical Market</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Agriculture</fullName>
+                    <default>false</default>
+                    <label>Agriculture</label>
+                </value>
+                <value>
+                    <fullName>Automotive</fullName>
+                    <default>false</default>
+                    <label>Automotive</label>
+                </value>
+                <value>
+                    <fullName>Cloud Service Providers</fullName>
+                    <default>false</default>
+                    <label>Cloud Service Providers</label>
+                </value>
+                <value>
+                    <fullName>Comms Service Providers</fullName>
+                    <default>false</default>
+                    <label>Comms Service Providers</label>
+                </value>
+                <value>
+                    <fullName>Consumer</fullName>
+                    <default>false</default>
+                    <label>Consumer</label>
+                </value>
+                <value>
+                    <fullName>Education</fullName>
+                    <default>false</default>
+                    <label>Education</label>
+                </value>
+                <value>
+                    <fullName>Energy (Utilities, Oil &amp; Gas, Solar &amp; Wind)</fullName>
+                    <default>false</default>
+                    <label>Energy and Utilities</label>
+                </value>
+                <value>
+                    <fullName>Enterprise</fullName>
+                    <default>false</default>
+                    <label>Enterprise</label>
+                </value>
+                <value>
+                    <fullName>Federal and Aerospace</fullName>
+                    <default>false</default>
+                    <label>Federal and Aerospace</label>
+                </value>
+                <value>
+                    <fullName>Financial Services / Banking</fullName>
+                    <default>false</default>
+                    <label>Financial Services Industry</label>
+                </value>
+                <value>
+                    <fullName>Government</fullName>
+                    <default>false</default>
+                    <label>Government</label>
+                </value>
+                <value>
+                    <fullName>Health and Life Sciences</fullName>
+                    <default>false</default>
+                    <label>Health and Life Sciences</label>
+                </value>
+                <value>
+                    <fullName>Hospitality</fullName>
+                    <default>false</default>
+                    <label>Hospitality</label>
+                </value>
+                <value>
+                    <fullName>Manufacturing</fullName>
+                    <default>false</default>
+                    <label>Manufacturing</label>
+                </value>
+                <value>
+                    <fullName>Retail</fullName>
+                    <default>false</default>
+                    <label>Retail</label>
+                </value>
+                <value>
+                    <fullName>Small Medium Business</fullName>
+                    <default>false</default>
+                    <label>Small Medium Business</label>
+                </value>
+                <value>
+                    <fullName>Smart Cities</fullName>
+                    <default>false</default>
+                    <label>Smart Cities</label>
+                </value>
+                <value>
+                    <fullName>Sports</fullName>
+                    <default>false</default>
+                    <label>Sports</label>
+                </value>
+                <value>
+                    <fullName>Transportation</fullName>
+                    <default>false</default>
+                    <label>Transportation</label>
+                </value>
+                <value>
+                    <fullName>Undefined</fullName>
+                    <default>false</default>
+                    <label>Undefined</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Zip_Postal_Code__c</fullName>
+        <externalId>false</externalId>
+        <label>Zip/Postal Code</label>
+        <length>225</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Design Registration M2M Stage</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Description__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>CREATEDBY_USER</columns>
+        <columns>OBJECT_ID</columns>
+        <columns>Record_Id_from_Response__c</columns>
+        <columns>Record_Id_from_main_object__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <label>Design Registration Stage Name</label>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Design Registrations M2M Stage</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

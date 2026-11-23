@@ -64,19 +64,13 @@
         });
         action1.setCallback(this, function(response){
             var state = response.getState();
-            console.log('#state'+state+JSON.stringify(response));
-            console.log('#response'+JSON.stringify(response.getReturnValue()));
-            console.log('##resSeedURL '+response.getReturnValue().SeedURL);
             if(state === "SUCCESS"){
-                console.log('##insideif');
                 component.set("v.SeedURL",response.getReturnValue().SeedURL+oppID);
-                console.log('##res1SeedURL '+component.get("v.SeedURL"));
                 component.set("v.SampleURL",response.getReturnValue().SampleURL+oppID);
-                console.log('##res1SampleURL '+component.get("v.SampleURL"));
             }else{
                 console.log("Error on fetching Seeds/Sample URL details : "+JSON.stringify(response.getError()));
             }
-
+            
         });
         $A.enqueueAction(action1);
         
@@ -89,9 +83,7 @@
         PCC.setCallback(this, function(data) {
             component.set("v.loaded", true);
             component.set("v.isPCC", data.getReturnValue());
-             console.log('PCC - 92');
             console.log(data.getReturnValue()); });
-       
         $A.enqueueAction(PCC);
     },
     
@@ -119,8 +111,6 @@
     onRiskPriorityChange : function(component, event, helper){
         var selValue = event.getSource().get("v.value");
         var indx = event.getSource().get("v.tabindex");
-        //console.log("selValue "+selValue);
-        //console.log("smgStaff "+JSON.stringify(component.get("v.smgStaffAttentionValue")));
         if(selValue == component.get("v.smgStaffAttentionValue")){
             component.set("v.oppProductList["+indx+"].riskPriority", component.get("v.riskPriorityList["+indx+"]"));
             if(component.get("v.oppProductList["+indx+"].riskStatus") == "New"){
@@ -219,7 +209,7 @@
             component.set("v.oppProductList["+indx+"].riskStatus", prevStatus);
             helper.throwErrorMsg(component, event, "error", $A.get("$Label.c.Core_AtRisk_Validation_Error_Riskstatus"));                
         }*/
-                  
+        
         if(component.get("v.oppProductList["+indx+"].riskStatus").includes("Closed")){
             if(prevStatus == component.get("v.oppProductList["+indx+"].riskStatus")){
                 component.set("v.oppProductList["+indx+"].riskEndDate", component.get("v.riskEndDateList["+indx+"]"));
@@ -232,7 +222,7 @@
     },
     
     /*function to call on click of save button*/
-	saveAction : function(component, event, helper){
+    saveAction : function(component, event, helper){
         var countSupplyProd = 0;  //TWC3123-4227
         var countSystemBuildProd = 0;  //TWC3123-4227
         component.set("v.loaded", false);
@@ -248,73 +238,74 @@
         changeproductList = component.get("v.oppProductList2"); // Added for - TWC3123-4389
         
         //Checkmarx scan fix - check if productList is not empty before using in loop
-        
-        for(var i=0 && productList.length >0 ; i<productList.length   ; i++){
-            //Start - TWC3123-4389
-            if(changeproductList.includes(productList[i].oppLineItemId) && productList[i].riskReason1 == 'Risk - Supply: Sample'){
-                countSupplyProd = countSupplyProd+1;
-                isSystemOrSupply = "true";
+        if(productList!=null){
+            for(var i=0; i<productList.length; i++){
+                //Start - TWC3123-4389
+                if(changeproductList.includes(productList[i].oppLineItemId) && productList[i].riskReason1 == 'Risk - Supply: Sample'){
+                    countSupplyProd = countSupplyProd+1;
+                    isSystemOrSupply = "true";
+                }
+                if(changeproductList.includes(productList[i].oppLineItemId) && productList[i].riskReason1 == 'Risk - Supply: System Build'){
+                    countSystemBuildProd = countSystemBuildProd+1;
+                    isSystemOrSupply = "true";
+                }
+                // End - TWC3123-4389
+                
+                if(productList[i].atRisk == true && ($A.util.isEmpty(productList[i].riskReason1) || productList[i].riskReason1 == undefined || productList[i].riskReason1 == noValue) && ($A.util.isEmpty(productList[i].riskReason2) || productList[i].riskReason2 == undefined || productList[i].riskReason2 == noValue)){
+                    hasError = "true";
+                    i = productList.length;
+                }else if(productList[i].atRisk == true && ($A.util.isEmpty(productList[i].riskPriority) || productList[i].riskPriority == undefined || productList[i].riskPriority == noValue)){
+                    hasError = "true";
+                    i = productList.length;
+                }else if(productList[i].atRisk == true && ($A.util.isEmpty(productList[i].riskStatus) || productList[i].riskStatus == undefined || productList[i].riskStatus == noValue)){
+                    hasError = "true";
+                    i = productList.length;
+                }else if(productList[i].atRisk == true && ($A.util.isEmpty(productList[i].riskDetail) || productList[i].riskDetail == undefined || productList[i].riskDetail == null)){
+                    hasError = "true";
+                    i = productList.length;
+                }   	
             }
-            if(changeproductList.includes(productList[i].oppLineItemId) && productList[i].riskReason1 == 'Risk - Supply: System Build'){
-                countSystemBuildProd = countSystemBuildProd+1;
-                isSystemOrSupply = "true";
-            }
-            // End - TWC3123-4389
-
-            if(productList[i].atRisk == true && ($A.util.isEmpty(productList[i].riskReason1) || productList[i].riskReason1 == undefined || productList[i].riskReason1 == noValue) && ($A.util.isEmpty(productList[i].riskReason2) || productList[i].riskReason2 == undefined || productList[i].riskReason2 == noValue)){
-                hasError = "true";
-                i = productList.length;
-            }else if(productList[i].atRisk == true && ($A.util.isEmpty(productList[i].riskPriority) || productList[i].riskPriority == undefined || productList[i].riskPriority == noValue)){
-                hasError = "true";
-                i = productList.length;
-            }else if(productList[i].atRisk == true && ($A.util.isEmpty(productList[i].riskStatus) || productList[i].riskStatus == undefined || productList[i].riskStatus == noValue)){
-                hasError = "true";
-                i = productList.length;
-            }else if(productList[i].atRisk == true && ($A.util.isEmpty(productList[i].riskDetail) || productList[i].riskDetail == undefined || productList[i].riskDetail == null)){
-                hasError = "true";
-                i = productList.length;
-            }   	
         }
         
-
-            if(hasError == "true"){
+        
+        if(hasError == "true"){
             helper.throwErrorMsg(component, event, "error", $A.get("$Label.c.Core_AtRisk_Validation_Error"));
             component.set("v.loaded", true);              
         }
         //Start - TWC3123-4227
-		else if(isSystemOrSupply == "false"){
+        else if(isSystemOrSupply == "false"){
             helper.saveProdAtRisk(component, event);
         }
         
         if(hasError == "false"){
-        if(countSupplyProd > 0 && countSystemBuildProd > 0){
-            component.set("v.isSave", false);
-            component.set("v.isBoth", true);
-            component.set("v.loaded", true);
-            component.set("v.RiskReasonValue", "both");
-            component.set("v.ButtonLabel", "Fill out the form");
-            var toastEvent = $A.get("e.force:showToast");
-            toastEvent.setParams({
-                "title": "Error!",
-                "message": $A.get("$Label.c.Core_AtRisk_ErrorMsg"),
-                "type": "error"
-            });
-            toastEvent.fire();
-        }
-        if(countSystemBuildProd > 0 && countSupplyProd == 0){
-            component.set("v.isSave", true);
-            component.set("v.isSupplySystemBuild", true);
-            component.set("v.loaded", true);
-            component.set("v.RiskReasonValue", "SystemBuild");
-            component.set("v.ButtonLabel", "Fill out Demo Depot");
-        }
-        if(countSupplyProd > 0 && countSystemBuildProd == 0){
-            component.set("v.isSave", true);
-            component.set("v.isSupplySample", true);
-            component.set("v.loaded", true);
-            component.set("v.RiskReasonValue", "Sample");
-            component.set("v.ButtonLabel", "Fill out My Sample");
-        }
+            if(countSupplyProd > 0 && countSystemBuildProd > 0){
+                component.set("v.isSave", false);
+                component.set("v.isBoth", true);
+                component.set("v.loaded", true);
+                component.set("v.RiskReasonValue", "both");
+                component.set("v.ButtonLabel", "Fill out the form");
+                var toastEvent = $A.get("e.force:showToast");
+                toastEvent.setParams({
+                    "title": "Error!",
+                    "message": $A.get("$Label.c.Core_AtRisk_ErrorMsg"),
+                    "type": "error"
+                });
+                toastEvent.fire();
+            }
+            if(countSystemBuildProd > 0 && countSupplyProd == 0){
+                component.set("v.isSave", true);
+                component.set("v.isSupplySystemBuild", true);
+                component.set("v.loaded", true);
+                component.set("v.RiskReasonValue", "SystemBuild");
+                component.set("v.ButtonLabel", "Fill out Demo Depot");
+            }
+            if(countSupplyProd > 0 && countSystemBuildProd == 0){
+                component.set("v.isSave", true);
+                component.set("v.isSupplySample", true);
+                component.set("v.loaded", true);
+                component.set("v.RiskReasonValue", "Sample");
+                component.set("v.ButtonLabel", "Fill out My Sample");
+            }
         }
         //End - TWC3123-4227
     },
@@ -333,13 +324,12 @@
     
     //Start - TWC3123-4920    
     gotoURL : function(component, event, helper) {
-    var oppID = component.get("v.recordId");
-    var producttype= component.get("v.RiskReasonValue");
+        var oppID = component.get("v.recordId");
+        var producttype= component.get("v.RiskReasonValue");
         //Order Seeds
         if(producttype == "SystemBuild"){
             helper.saveProdAtRisk(component, event);
             var urlToRedirect = component.get("v.SeedURL");
-            console.log('##urlToRedirect '+urlToRedirect);
             $A.get("e.force:navigateToURL").setParams(
                 {"url": urlToRedirect}).fire();
         }
@@ -347,31 +337,15 @@
         else if(producttype == 'Sample'){
             helper.saveProdAtRisk(component, event);
             var urlToRedirect = component.get("v.SampleURL");
-            console.log('##SampleurlToRedirect '+urlToRedirect);
             $A.get("e.force:navigateToURL").setParams(
                 {"url": urlToRedirect}).fire();
-                //window.open(this.SampleURL, '_blank');    
+            //window.open(this.SampleURL, '_blank');    
         }
         component.set("v.isSave", false);
-
-    },
-   //End - TWC3123-4920 
-
-    // callSaveComp : function(component, event, helper){
-    //     var evt = $A.get("e.force:navigateToComponent");
-    //     console.log('Event '+evt);
-    //     var accountFromId = component.get("v.recordId");
-    //     evt.setParams({
-    //         componentDef  : "c:AffiliateSaveForm" ,
-    //         componentAttribute : {
-    //             accId : accountFromId
-    //         }
         
-
-    //     });
-      
-    //     evt.fire();
-    // }
+    },
+    //End - TWC3123-4920 
+    
     openMarkAllPopup : function(component, event, helper){
         var noValue = component.get("v.noneValue");
         component.set("v.markAllAtRisk", true);
@@ -437,7 +411,7 @@
         }
     },
     
-        //Start - TWC3123-4227
+    //Start - TWC3123-4227
     onRiskReasonChange :function(component, event, helper){
         var selValue = event.getSource().get("v.value");
         var indx = event.getSource().get("v.tabindex");
@@ -450,7 +424,7 @@
             component.set("v.oppProductList2",productList);
         }
         //End - TWC3123-4389
-
+        
         component.set("v.isSupplySystemBuild", false);
         component.set("v.isBoth", false);
         component.set("v.isSupplySample", false);
@@ -486,12 +460,12 @@
             }else{
                 console.log("Error on fetching opportunity product details : "+JSON.stringify(response.getError()));
             }
-
+            
         });
         $A.enqueueAction(action);
     },
     //End - TWC3123-4576
-
+    
     saveAllAtRisk : function(component, event, helper){
         var riskRsn1 = component.get("v.allRiskReason1");
         var riskPrty = component.get("v.allRiskPriority");
@@ -526,8 +500,8 @@
                     component.set("v.oppProductList["+i+"].riskCreateDate", component.get("v.allRiskCreateDate"));
                     component.set("v.oppProductList["+i+"].riskEndDate", component.get("v.allRiskEndDate"));
                     component.set("v.oppProductList["+i+"].riskDetail", component.get("v.allRiskDetail"));
-                   
-            	}                           
+                    
+                }                           
             }
             helper.saveProdAtRisk(component, event);
         }

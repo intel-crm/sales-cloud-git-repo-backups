@@ -1,0 +1,4 @@
+<aura:component implements="lightningsnapin:minimizedUI">
+    <lightningsnapin:minimizedAPI aura:id="minimizedAPI"/>
+    <aura:attribute name="message" type="String" description="Message to display."/>
+</aura:component>

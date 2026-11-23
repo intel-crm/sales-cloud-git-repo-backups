@@ -1,11 +1,120 @@
 <aura:component extends="c:MarketplaceCreateProductFormInputBase" implements="forceCommunity:availableForAllPageTypes">
 
   <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
- 
-  <aura:attribute name="recordId" type="string"/>
+
+  <aura:attribute name="newButtonLabel" type="string" default="{!$Label.c.PMP_Manage_Resources}" />
+
+  <aura:attribute name="titleField" type="String" required="true" /><!--moved by raj from ISG Component-->
+  <aura:attribute name="titleLabel" type="string" default="{!$Label.c.PMP_Title}" />
+  <aura:attribute name="urlField" type="String" required="true" /><!--moved by raj from ISG Component-->
+  <aura:attribute name="urlLabel" type="string" default="Url" />
+  <aura:attribute name="typeField" type="String" required="true" /><!--moved by raj from ISG Component-->
+  <aura:attribute name="typeLabel" type="string" default="{!$Label.c.PMP_Type}" />
+  <aura:attribute name="isOpen" type="boolean" default="false"/>
+  <aura:attribute name="max" type="integer" />
+  <aura:attribute name="min" type="integer" default="0" />
     
-  <div>
-      <c:ipaOfferingResourceManager recordId="{!v.recordId}"/>
+  <aura:handler name="change" value="{!v.isOpen}" action="{!c.handleModalClose}" />
+  <aura:handler name="change" value="{!v.rows}" action="{!c.handleRowsChange}" /><!--moved by raj from ISG Component-->
+
+  <aura:attribute name="rows" type="object[]" description="Internal"/>
+  <aura:attribute name="rowsSet" type="Boolean" default="false" description="Internal"/><!--moved by raj from ISG Component-->
+  <aura:attribute name="typeOptions" type="object[]" />
+
+  <aura:attribute name="label" type="string" default="{!$Label.c.PMP_Manage_Resources_Heading}" />
+
+  <div class="{!v.required ? 'isRequired' : ''}">
+
+    <!--Resource Heading-->
+    <lightning:layout class="slds-p-vertical_medium slds-p-horizontal_small manage-resource-heading" multipleRows="true" verticalAlign="center">
+      <lightning:layoutItem size="12" largeDeviceSize="9">
+        <lightning:icon iconName="utility:open_folder" />
+        <span class="label slds-m-left_small">{!v.label}</span>
+      </lightning:layoutItem>
+      <lightning:layoutItem size="12" largeDeviceSize="3">
+        <span class="buttonWide manage-resource-button" onclick="{!c.handleOpenModal}">
+          <c:IntelButton disabled="{!v.disabled}" class="gray inline largeMobile">{!v.newButtonLabel}</c:IntelButton>
+        </span>
+      </lightning:layoutItem>
+    </lightning:layout>
+
+    <!--Resource Modal-->
+    <aura:if isTrue="{!v.isOpen}">
+        <c:MarketplaceFormResourcesModal typeOptions="{!v.typeOptions}" rows="{!v.rows}" isOpen="{!v.isOpen}" max="{!v.max}"/>
+    </aura:if>
+
+     <!--Resource Desktop Body-->
+    <aura:if isTrue="{! v.appState.Settings.currentSldsBreakPoint == 'large' || v.appState.Settings.currentSldsBreakPoint == 'x-large'}">
+      <lightning:layout multipleRows="true">
+        <lightning:layoutItem class="grayBg slds-p-around_small" size="4">
+          <span class="upcase">{!v.titleLabel}</span>
+        </lightning:layoutItem>
+        <lightning:layoutItem class="grayBg slds-p-around_small" size="4">
+          <span class="upcase">{!v.urlLabel}</span>
+        </lightning:layoutItem>
+        <lightning:layoutItem class="grayBg slds-p-around_small" size="4">
+          <span class="upcase">{!v.typeLabel}</span>
+        </lightning:layoutItem>
+        <aura:iteration items="{!v.rows}" var="row">
+          <lightning:layoutItem class="row slds-p-around_small" size="4">
+            {!row.title}
+          </lightning:layoutItem>
+          <lightning:layoutItem class="row slds-p-around_small breakWord" size="4">
+            {!row.url}
+          </lightning:layoutItem>
+          <lightning:layoutItem class="row slds-p-around_small" size="4">
+            {!row.type}
+          </lightning:layoutItem>
+        </aura:iteration>
+        <lightning:layoutItem class="slds-p-around_small" size="4">
+          <!-- blank row -->&nbsp;
+        </lightning:layoutItem>
+        <lightning:layoutItem class="slds-p-around_small" size="4">
+          <!-- blank row -->&nbsp;
+        </lightning:layoutItem>
+        <lightning:layoutItem class="slds-p-around_small" size="4">
+          <!-- blank row -->&nbsp;
+        </lightning:layoutItem>
+      </lightning:layout>
+    </aura:if>
+
+    <!--Resource Mobile Body-->
+    <aura:if isTrue="{! v.appState.Settings.currentSldsBreakPoint == 'medium' || v.appState.Settings.currentSldsBreakPoint == 'small'}">
+        <lightning:layout multipleRows="true">
+            <aura:iteration items="{!v.rows}" var="row">
+              <lightning:layoutItem class="row grayBg slds-p-around_small" size="4">
+                  <span class="upcase">{!v.titleLabel}</span>
+                </lightning:layoutItem>
+              <lightning:layoutItem class="slds-p-around_small" size="8">
+                {!row.title}
+              </lightning:layoutItem>
+              <lightning:layoutItem class="row grayBg slds-p-around_small" size="4">
+                  <span class="upcase">{!v.urlLabel}</span>
+                </lightning:layoutItem>
+              <lightning:layoutItem class="slds-p-around_small" size="8">
+                {!row.url}
+              </lightning:layoutItem>
+              <lightning:layoutItem class="row grayBg slds-p-around_small" size="4">
+                  <span class="upcase">{!v.typeLabel}</span>
+                </lightning:layoutItem>
+              <lightning:layoutItem class="slds-p-around_small" size="8">
+                {!row.type}
+              </lightning:layoutItem>
+            </aura:iteration>
+          </lightning:layout>
+   </aura:if>
+
+<!--
+    <lightning:listView aura:id="listViewAccounts"
+        objectApiName="PMP_Offering__c"
+        listName="ISG"
+        rows="5"
+        showSearchBar="true"
+        showActionBar="false"
+        enableInlineEdit="true"
+        showRowLevelActions="true"
+    /> -->
+
   </div>
 
 </aura:component>

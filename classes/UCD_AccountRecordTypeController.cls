@@ -12,9 +12,7 @@ public with sharing class UCD_AccountRecordTypeController {
             Boolean sbrAccess = FeatureManagement.checkPermission('SBR_Profile_Access');
                 
             List<Id> recordTypeIdList = new List<Id>();
-	    Schema.DescribeSObjectResult accDescribe = Account.SObjectType.getDescribe();
-	    Map<String, Schema.RecordTypeInfo> recordTypeInfoMap = accDescribe.getRecordTypeInfosByName();
-            for(RecordTypeInfo info: recordTypeInfoMap.values()) {
+            for(RecordTypeInfo info: Account.SObjectType.getDescribe().getRecordTypeInfos()) {
                 if(info.isAvailable() && !(info.isMaster()) && (Info.getDeveloperName() != rejectedAccount)) {
                     recordTypeIdList.add(info.getRecordTypeId());
                 } 

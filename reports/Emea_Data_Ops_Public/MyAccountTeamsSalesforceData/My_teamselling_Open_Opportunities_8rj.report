@@ -39,13 +39,6 @@
             <operator>equals</operator>
             <value>Qualify,Define,Develop,Design,Group,Group Open</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>FULL_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>$USER</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
@@ -82,7 +75,7 @@
         <value>1</value>
     </params>
     <reportType>Opportunity</reportType>
-    <scope>salesteamteam</scope>
+    <scope>salesteam</scope>
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>

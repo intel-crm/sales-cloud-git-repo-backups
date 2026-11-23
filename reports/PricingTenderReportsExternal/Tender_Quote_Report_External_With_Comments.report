@@ -63,6 +63,7 @@
             <field>SBQQ__Quote__c$Pricing_Program_Type_Nm__c</field>
         </columns>
         <columns>
+            <aggregateTypes>Sum</aggregateTypes>
             <field>SBQQ__Quote__c$Pricing_Volume_Exception_Quota_Cb__c</field>
         </columns>
         <columns>
@@ -328,7 +329,7 @@
                 <value>Data Center Xeon® CPU,Small Volume Quotes - Data Center Xeon® CPU</value>
             </criteriaItems>
         </filter>
-        <format>Summary</format>
+        <format>Tabular</format>
         <name>Quote with Quote Line With Perfo Metrics</name>
         <params>
             <name>co</name>
@@ -389,7 +390,7 @@
                 <value>Small Volume Quotes - Data Center Xeon® CPU</value>
             </criteriaItems>
         </filter>
-        <format>Summary</format>
+        <format>Tabular</format>
         <name>Quote with Comments</name>
         <params>
             <name>co</name>

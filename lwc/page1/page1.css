@@ -1,0 +1,118 @@
+.slds-box{
+    padding-left: 16%;
+    border: 2px;
+    border-style: groove;
+    border-color: rgb(72, 72, 74);
+
+}
+/*Author:Vinita Chugh*/
+.container {
+    display: inline-block;
+    background-color:radial-gradient(circle, #aeeeff 60%, transparent 61%);
+}
+
+.square {
+    width: 20px;
+    height: 20px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    background-color:radial-gradient(circle, #aeeeff 60%, transparent 61%);
+    align-items: center;
+}
+
+.circle {
+    width: 8px; /* Reduce the circle size to 8 pixels */
+    height: 8px; /* Reduce the circle size to 8 pixels */
+    border-radius: 50%;
+    background-color:radial-gradient(circle, #aeeeff 60%, transparent 61%); /* Light blue color */
+    border-radius: 50%;
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+}
+
+
+input[type='radio']:checked + .circle {
+opacity: 1;
+background-color: #006bff; 
+
+}
+
+.table {
+        margin-top: 10px; /* Add spacing below the radio button */
+        border-collapse: collapse;
+        width: 100%;
+}
+    
+.table th, .table td {
+        border: 1px solid black;
+        padding: 8px;
+}
+    
+.table th {
+        background-color: #f2f2f2;
+        text-align: left;
+}
+.input-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.input-label {
+    margin-right: 10px;
+}
+
+.input-field {
+    display: flex;
+    align-items: center;
+}
+input[type="number"] {
+    width: 100px; /* Adjust the width as needed */
+    margin-right: 10px;
+    padding: 5px;
+}
+
+.max-allowed-text {
+    font-size: 12px;
+    color: #666;
+}
+.center-container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+   
+    
+}
+.table-wrapper {
+    max-height: 200px; /* Set the maximum height for the scrollable area */
+    overflow: auto;    /* Add a scrollbar when content overflows */
+     /* Optional border styling */
+}
+.input-label .required {
+    color: red;
+}
+.tooltip-icon {
+    
+    margin-right: 20px; /* Adjust the spacing as needed */
+    fill: #666; /* Adjust the icon color as needed */
+    
+}
+
+.tool-tip {
+    margin-bottom: 10px;
+}
+
+.input[type="checkbox"] {
+    align-content: left;
+}
+
+
+/*****/

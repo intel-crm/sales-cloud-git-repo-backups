@@ -99,7 +99,7 @@
     <isBestFitEnabled>false</isBestFitEnabled>
     <isIncrementalSyncEnabled>false</isIncrementalSyncEnabled>
     <isVersioned>false</isVersioned>
-    <setupName>Pricing Route Rules APJ CCG Quantity GT 20000</setupName>
+    <setupName>Pricing Route Rules APJ CCG Quantity GTE 20000</setupName>
     <sourceConditionLogic>1 AND 2 AND 3 AND 4</sourceConditionLogic>
     <sourceObject>Pricing_Routing_Rules__c</sourceObject>
     <status>Active</status>

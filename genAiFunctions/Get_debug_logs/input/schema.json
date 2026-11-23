@@ -1,0 +1,14 @@
+{
+  "required" : [ "methodname" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "methodname" : {
+      "title" : "methodname",
+      "description" : "This is a text input which is a method name mentioned in the user input",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

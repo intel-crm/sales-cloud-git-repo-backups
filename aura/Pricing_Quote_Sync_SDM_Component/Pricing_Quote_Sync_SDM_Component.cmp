@@ -1,0 +1,10 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 09-03-2024
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<aura:component implements="lightning:isUrlAddressable,force:lightningQuickActionWithoutHeader" access="global">
+    <c:pricing_Quote_sync_SDM />
+</aura:component>

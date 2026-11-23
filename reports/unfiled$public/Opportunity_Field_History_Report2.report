@@ -25,12 +25,20 @@
         <field>Opportunity.Core_Opportunity_ID__c</field>
     </columns>
     <filter>
+        <booleanFilter>1 OR 2</booleanFilter>
         <criteriaItems>
-            <column>Opportunity.Core_Product_Segment__c</column>
+            <column>DESCRIPTION</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Client Computing</value>
+            <operator>contains</operator>
+            <value>Covid,Corona</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Status_Update__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Covid,Corona</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -57,6 +65,8 @@
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CREATED_DATE</dateColumn>
-        <interval>INTERVAL_LASTTHISMONTH</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

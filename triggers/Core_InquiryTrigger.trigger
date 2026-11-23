@@ -9,9 +9,8 @@ Modification Log :
 * Mahesh Manikonda            29/06/2020              Original Version
 *******************************************************************************************************************************************/
 trigger Core_InquiryTrigger on Core_Inquiry__c (after insert, after update, after delete, before insert, before update, before delete) {
-    
     // Fetching "Custom Setting" containing details to trigger switch on/off
-   /*Map < String, Core_Trigger_Executions__c > mapFunctionalityNameTriggerExecution = Core_Trigger_Executions__c.getAll();
+   /* Map < String, Core_Trigger_Executions__c > mapFunctionalityNameTriggerExecution = Core_Trigger_Executions__c.getAll();
     
     if(trigger.isBefore && trigger.isInsert){
         
@@ -43,7 +42,6 @@ trigger Core_InquiryTrigger on Core_Inquiry__c (after insert, after update, afte
         
     }*/
     
-       
     
     
 }

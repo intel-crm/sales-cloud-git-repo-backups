@@ -610,6 +610,33 @@
         <useOther>true</useOther>
         <values>
             <sourceValues>
+                <sourceValue>Intel® Stratix® 10 GX FPGA</sourceValue>
+            </sourceValues>
+            <value>Stratix 10 GX</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Intel® Stratix® 10 GT FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Stratix® 10 DX FPGA</sourceValue>
+            </sourceValues>
+            <value>Stratix 10 TX DX</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Intel® Stratix® 10 SX FPGA</sourceValue>
+            </sourceValues>
+            <value>Stratix 10 SX</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Intel® Stratix® 10 MX FPGA</sourceValue>
+            </sourceValues>
+            <value>Stratix 10 MX</value>
+        </values>
+        <values>
+            <sourceValues>
                 <sourceValue>Intel® Arria® 10 GT FPGA</sourceValue>
             </sourceValues>
             <sourceValues>
@@ -619,6 +646,84 @@
                 <sourceValue>Intel® Arria® 10 SX FPGA</sourceValue>
             </sourceValues>
             <value>Arria 10</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Intel® Agilex™ M-Series</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Agilex™ F-Series</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Agilex™ I-Series</sourceValue>
+            </sourceValues>
+            <value>Agilex</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Intel® FPGA PAC N3000</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® FPGA PAC D5005</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® PAC With Arria® 10 GX FPGA</sourceValue>
+            </sourceValues>
+            <value>Intel PAC</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Stratix® V GX FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Stratix® V GT FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Stratix® V GS FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Stratix® V E FPGA</sourceValue>
+            </sourceValues>
+            <value>Stratix 5</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Arria® V GT FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Arria® V GX FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Arria® V GZ FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Arria® V ST FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Arria® V SX FPGA</sourceValue>
+            </sourceValues>
+            <value>Arria 5</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Cyclone® V SX FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Cyclone® V ST FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Cyclone® V SE FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Cyclone® V GX FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Cyclone® V GT FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Cyclone® V E FPGA</sourceValue>
+            </sourceValues>
+            <value>Cyclone 5</value>
         </values>
         <values>
             <sourceValues>
@@ -634,81 +739,6 @@
                 <sourceValue>Intel® Cyclone® 10 LP FPGA</sourceValue>
             </sourceValues>
             <value>Cyclone 10</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>Intel® Agilex™ I-Series</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel® Agilex™ I-Series SoC FPGAs</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel® Agilex™ 7 FPGAs and SoC FPGAs I-Series</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel Agilex® 7 FPGAs and SoC FPGAs I-Series</sourceValue>
-            </sourceValues>
-            <value>Agilex 7 I</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>Intel® Agilex™ F-Series</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel® Agilex™ F-Series FPGAs and SoC FPGAs</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel® Agilex™ 7 FPGAs and SoC FPGAs F-Series</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel Agilex® 7 FPGAs and SoC FPGAs F-Series</sourceValue>
-            </sourceValues>
-            <value>Agilex 7 F</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>Intel® Agilex™ 5 FPGAs and SoC FPGAs E-Series</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel Agilex® 5 FPGAs and SoC FPGAs E-Series</sourceValue>
-            </sourceValues>
-            <value>Agilex 5 E</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>Intel® Agilex™ M-Series</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel® Agilex™ 7 FPGAs and SoC FPGAs M-Series</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel Agilex® 7 FPGAs and SoC FPGAs M-Series</sourceValue>
-            </sourceValues>
-            <value>Agilex 7 M</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>Intel® Stratix® 10 GX FPGA</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel® Stratix® 10 DX FPGA</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel® Stratix® 10 GT FPGA</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel® Stratix® 10 MX FPGA</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel® Stratix® 10 NX FPGA</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel® Stratix® 10 SX FPGA</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel® Stratix® 10 TX FPGA</sourceValue>
-            </sourceValues>
-            <value>Stratix 10</value>
         </values>
     </buckets>
     <chart>
@@ -841,7 +871,7 @@
         <field>PRIORITY</field>
     </columns>
     <filter>
-        <booleanFilter>(1 AND (2 OR 4) AND 3) AND 5</booleanFilter>
+        <booleanFilter>((1 AND (2 or 4) AND 3) AND 5) AND 6</booleanFilter>
         <criteriaItems>
             <column>Case.Core_Product_Organization__c</column>
             <columnToColumn>false</columnToColumn>
@@ -877,6 +907,13 @@
             <operator>notContain</operator>
             <value>Intel® ASIC,eASIC,ENPIRI</value>
         </criteriaItems>
+        <criteriaItems>
+            <column>BucketField_37306975</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Stratix 10,Agilex</value>
+        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
@@ -906,8 +943,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CREATED_DATEONLY</dateColumn>
-        <endDate>2023-12-31</endDate>
+        <endDate>2020-06-30</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2018-01-01</startDate>
+        <startDate>2017-01-01</startDate>
     </timeFrameFilter>
 </Report>

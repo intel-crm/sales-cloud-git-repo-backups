@@ -5,6 +5,7 @@
     <name>PSG-SOS-PRC-Cytech</name>
     <queueMembers>
         <publicGroups>
+            <publicGroup>ags_internal_sos</publicGroup>
             <publicGroup>ags_sos_prc_cytech</publicGroup>
         </publicGroups>
     </queueMembers>

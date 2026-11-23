@@ -38,23 +38,16 @@
         <field>ADDRESS1_STATE</field>
     </columns>
     <columns>
+        <field>TYPE</field>
+    </columns>
+    <columns>
+        <field>RATING</field>
+    </columns>
+    <columns>
         <field>LAST_UPDATE</field>
     </columns>
     <columns>
         <field>Account.Core_Geo__c</field>
-    </columns>
-    <columns>
-        <field>Account.Core_Business_ID__c</field>
-    </columns>
-    <columns>
-        <field>Account.Core_CIM_ID__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>PRM_Account_Specialty_Association__c.PRM_InActive_Ind__c</field>
-    </columns>
-    <columns>
-        <field>ACCOUNT_ID</field>
     </columns>
     <filter>
         <criteriaItems>
@@ -71,26 +64,17 @@
             <operator>notContain</operator>
             <value>test</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>PRM_Account_Specialty_Association__c.PRM_InActive_Ind__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>0</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>FK_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>specialt</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>FK_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Account.Core_IPA_Partner_Speciality__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>MKTPLACE Unique Specialty</name>
@@ -102,7 +86,7 @@
     <scope>organization</scope>
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
-    <showSubTotals>false</showSubTotals>
+    <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>DUE_DATE</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>

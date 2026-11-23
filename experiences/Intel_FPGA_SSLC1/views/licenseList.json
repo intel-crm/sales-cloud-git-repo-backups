@@ -5,20 +5,28 @@
   "id" : "89115237-19dd-4ee6-a77a-c18de55e8150",
   "label" : "License List",
   "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:sales_NonEventFeedback",
+      "id" : "308986da-8873-4226-bffa-a5e246a7b7a0",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
     "id" : "2509911d-265e-4c3c-9323-d45d562f5f79",
     "regionName" : "header",
     "type" : "region"
   }, {
     "components" : [ {
       "componentAttributes" : {
-        "enableInlineEdit" : false,
-        "filterName" : "00B2i000001GWhpEAG",
+        "enableInlineEdit" : true,
+        "filterName" : "{!filterId}",
         "layout" : "FULL",
-        "pageSize" : 25,
-        "scope" : "Sales_License__c",
+        "pageSize" : "",
+        "scope" : "{!objectName}",
         "showActionBar" : true,
         "showChartsPanel" : true,
-        "showDisplay" : "showall",
+        "showDisplay" : "grid",
         "showFilterPanel" : true,
         "showImageIcon" : true,
         "showManualRefreshButton" : true,
@@ -39,8 +47,12 @@
     "id" : "af27b3bb-2892-4d75-869d-f35385d4f37b",
     "regionName" : "footer",
     "type" : "region"
+  }, {
+    "id" : "550c4816-61cc-4f31-90f4-1f219d3054b1",
+    "regionName" : "sidebar",
+    "type" : "region"
   } ],
   "themeLayoutType" : "Inner",
   "type" : "view",
-  "viewType" : "list-aBv"
+  "viewType" : "list-a7o"
 }

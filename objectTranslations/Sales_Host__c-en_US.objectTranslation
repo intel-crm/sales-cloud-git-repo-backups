@@ -9,6 +9,11 @@
         <value>Host Information</value>
     </caseValues>
     <fields>
+        <label><!-- License --></label>
+        <name>License__c</name>
+        <relationshipLabel><!-- Host Information --></relationshipLabel>
+    </fields>
+    <fields>
         <label><!-- Account --></label>
         <name>Sales_Account__c</name>
         <relationshipLabel><!-- Host Information --></relationshipLabel>
@@ -34,6 +39,10 @@
     <fields>
         <label><!-- Computer Type --></label>
         <name>Sales_Computer_Type__c</name>
+        <picklistValues>
+            <masterLabel>Disk ID</masterLabel>
+            <translation><!-- Disk ID --></translation>
+        </picklistValues>
         <picklistValues>
             <masterLabel>GUARD ID</masterLabel>
             <translation><!-- GUARD ID --></translation>
@@ -61,7 +70,7 @@
         <name>Sales_IsTemporaryLicense__c</name>
     </fields>
     <fields>
-        <label>Legacy Host Id</label>
+        <label>Primary Computer ID</label>
         <name>Sales_Legacy_Host_Id__c</name>
     </fields>
     <fields>
@@ -136,7 +145,7 @@
         <name>Sales_Float_HOST_NIC_Allowed</name>
     </validationRules>
     <validationRules>
-        <errorMessage>For FLOAT License Type, either none or both Redundant Servers must be added to a host &amp; cannot add Companion Computer for FLOAT license type.</errorMessage>
+        <errorMessage><!-- You must specify both redundant server IDs. --></errorMessage>
         <name>Sales_Float_Lic_NoneorBoth_RedServer_Req</name>
     </validationRules>
     <validationRules>
@@ -144,7 +153,7 @@
         <name>Sales_HostCreation_Validation</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Invalid computer type for companion computer IDs</errorMessage>
+        <errorMessage><!-- Invalid computer type for companion computer IDs --></errorMessage>
         <name>Sales_Valid_Companion_Server_Id</name>
     </validationRules>
     <validationRules>
@@ -152,7 +161,7 @@
         <name>Sales_Valid_PrimaryComputerID</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Invalid computer type for redundant server IDs</errorMessage>
+        <errorMessage><!-- Invalid computer type for redundant server IDs --></errorMessage>
         <name>Sales_Valid_Redundant_Server_Id</name>
     </validationRules>
     <validationRules>
@@ -163,4 +172,8 @@
         <errorMessage>Temporary NIC ID should consist of 12 hexadecimal characters.</errorMessage>
         <name>Temporary_NIC_ID_Validation_Float</name>
     </validationRules>
+    <webLinks>
+        <label><!-- Sales_ComputerType_helpLink --></label>
+        <name>Sales_ComputerType_helpLink</name>
+    </webLinks>
 </CustomObjectTranslation>

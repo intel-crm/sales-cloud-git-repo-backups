@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Notify_Rebate_Analyst_on_Records_Submitted_greater_than_7_days</name>
+        <label>Notify Rebate Analyst on  Records Submitted greater than 7 days</label>
+        <locationX>352</locationX>
+        <locationY>900</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <connector>
+            <targetReference>Create_log_entry</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <stringValue>shivini.sampath@intel.com</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderAddress</name>
+            <value>
+                <stringValue>shivini.sampath@intel.com</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue>Rebate claim Pending in Queue</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>EmailBody</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>sendRichBody</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <apiVersion>62.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Add_end_tag_for_table</name>
+        <label>Add end tag for table</label>
+        <locationX>352</locationX>
+        <locationY>792</locationY>
+        <assignmentItems>
+            <assignToReference>table</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <stringValue>&lt;/table&gt;</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Notify_Rebate_Analyst_on_Records_Submitted_greater_than_7_days</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_column_to_table</name>
+        <label>Assign column to table</label>
+        <locationX>352</locationX>
+        <locationY>384</locationY>
+        <assignmentItems>
+            <assignToReference>table</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>tablecolumn</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_over_Rebate_Claim_records</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_table_rows</name>
+        <label>Assign table rows</label>
+        <locationX>440</locationX>
+        <locationY>600</locationY>
+        <assignmentItems>
+            <assignToReference>table</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>tablerow</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_over_Rebate_Claim_records</targetReference>
+        </connector>
+    </assignments>
+    <environments>Default</environments>
+    <formulas>
+        <name>tablerow</name>
+        <dataType>String</dataType>
+        <expression>&apos; &lt;tr&gt;&lt;td class=&quot;t1&quot;&gt;&apos;+{!Loop_over_Rebate_Claim_records.Name}+
+&apos;&lt;/td&gt;&lt;td class=&quot;t1&quot;&gt;&apos;+TEXT(DATEVALUE({!Loop_over_Rebate_Claim_records.PCC_Submission_Date__c}))+
+&apos;&lt;/td&gt;&lt;td class=&quot;t1&quot;&gt;&apos;+{!Loop_over_Rebate_Claim_records.PCC_Partner__r.Name}+
+&apos;&lt;/td&gt;&lt;td class=&quot;t1&quot;&gt;&apos;+TEXT({!Loop_over_Rebate_Claim_records.PCC_Claim_Status__c})+
+&apos;&lt;/td&gt;&lt;/tr&gt;&apos;</expression>
+    </formulas>
+    <formulas>
+        <name>Today</name>
+        <dataType>Date</dataType>
+        <expression>TODAY()</expression>
+    </formulas>
+    <formulas>
+        <name>varConditionDate</name>
+        <dataType>Date</dataType>
+        <expression>{!Today} - 7</expression>
+    </formulas>
+    <interviewLabel>PCC_Rebate_Analyst_Actions_on_Submission {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>PCC_Rebate_Analyst_Actions_on_Submission</label>
+    <loops>
+        <name>Loop_over_Rebate_Claim_records</name>
+        <label>Loop over Rebate Claim records</label>
+        <locationX>352</locationX>
+        <locationY>492</locationY>
+        <collectionReference>Get_Rebate_Claims</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Assign_table_rows</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Add_end_tag_for_table</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <name>Create_log_entry</name>
+        <label>Create log entry</label>
+        <locationX>352</locationX>
+        <locationY>1008</locationY>
+        <inputAssignments>
+            <field>Core_Details__c</field>
+            <value>
+                <elementReference>$Flow.InterviewGuid</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Message__c</field>
+            <value>
+                <stringValue>Reminder to Rebate Analyst on the Items Pending in Queue</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Origin__c</field>
+            <value>
+                <stringValue>Reminder to Rebate Analyst on the Items Pending in Queue</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Severity__c</field>
+            <value>
+                <stringValue>Normal</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_When__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Core_Log_Entry__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordLookups>
+        <name>Get_Rebate_Claims</name>
+        <label>Get Rebate Claims</label>
+        <locationX>352</locationX>
+        <locationY>276</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Assign_column_to_table</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>PCC_Claim_Status__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Claim Submitted</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PCC_Submission_Date__c</field>
+            <operator>LessThanOrEqualTo</operator>
+            <value>
+                <elementReference>varConditionDate</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>PCC_Rebate_Claim__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <filterFormula>TEXT({!$Record.PCC_Claim_Status__c})=&apos;Claim Submitted&apos;</filterFormula>
+        <object>PCC_Rebate_Claim__c</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <scheduledPaths>
+            <name>Exceeded_7_days</name>
+            <connector>
+                <targetReference>Get_Rebate_Claims</targetReference>
+            </connector>
+            <label>Exceeded 7 days</label>
+            <offsetNumber>7</offsetNumber>
+            <offsetUnit>Days</offsetUnit>
+            <recordField>PCC_Submission_Date__c</recordField>
+            <timeSource>RecordField</timeSource>
+        </scheduledPaths>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Draft</status>
+    <textTemplates>
+        <name>EmailBody</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head title=&quot;Rebate Claim/s Pending In Queue&quot;&gt;
+    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;
+    &lt;/meta&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;p&gt;
+&lt;/p&gt;
+&lt;table class=&quot;body&quot; style=&quot;background: #f3f3f3; margin: 0px; padding: 0px; width: 100%; height: 100%; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; border-collapse: collapse; border-spacing: 0;&quot;&gt;
+ &lt;tbody&gt; 
+ &lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt;
+ &lt;td align=&quot;center&quot; class=&quot;center&quot; valign=&quot;top&quot; style=&quot;margin: 0px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-word-wrap: break-word; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;&quot;&gt;
+ &lt;center style=&quot;width: 100%; min-width: 670px;&quot;&gt;
+ &lt;div align=&quot;center&quot; class=&quot;float-center&quot;&gt;
+ &lt;center style=&quot;width: 100%; min-width: 670px;&quot;&gt; 
+ &lt;table align=&quot;center&quot; class=&quot;float-center&quot; style=&quot;margin: 0px auto; padding: 0px; width: 100%; text-align: center; vertical-align: top; float: none; border-collapse: collapse; max-width: 670px !important; border-spacing: 0;&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt; 
+ &lt;tbody&gt; 
+ &lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt; 
+ &lt;td style=&quot;margin: 0px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-word-wrap: break-word; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;&quot;&gt; 
+ &lt;table align=&quot;center&quot; class=&quot;container&quot; style=&quot;background: #f3f3f3; margin: 0px auto; padding: 0px; width: 670px; text-align: inherit; vertical-align: top; border-collapse: collapse; border-spacing: 0;&quot;&gt; 
+ &lt;tbody&gt; 
+ &lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt; 
+ &lt;td style=&quot;margin: 0px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-word-wrap: break-word; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;&quot;&gt;
+ &lt;table class=&quot;row collapse header&quot; style=&quot;padding: 0px; width: 100%; text-align: left; vertical-align: top; display: table; border-collapse: collapse; position: relative; border-spacing: 0; background-color: #0168B5;&quot;&gt;
+ &lt;tbody&gt;
+ &lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt; 
+ &lt;th class=&quot;small-12 large-12 columns first last&quot; style=&quot;margin: 0px auto; padding: 0px; width: 680px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400;&quot;&gt;
+ &lt;table style=&quot;padding: 0px; width: 100%; text-align: left; vertical-align: top; border-collapse: collapse; border-spacing: 0;&quot;&gt; 
+ &lt;tbody&gt;
+ &lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt; 
+ &lt;th style=&quot;margin: 0px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400;&quot;&gt; 
+ &lt;table class=&quot;row header-content&quot; style=&quot;padding: 0px; width: 100%; text-align: left; vertical-align: top; display: table; border-collapse: collapse; position: relative; border-spacing: 0; background-color: #0071c5;&quot;&gt; 
+ &lt;tbody&gt; 
+ &lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt;
+ &lt;th class=&quot;mobile-padding small-12 large-12 columns first last&quot; style=&quot;margin: 0px auto; padding: 0px 20px; width: 100%; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400;&quot;&gt; 
+ &lt;table style=&quot;padding: 0px; width: 100%; text-align: left; vertical-align: top; border-collapse: collapse; border-spacing: 0;&quot;&gt;
+ &lt;tbody&gt; 
+ &lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt; 
+ &lt;th style=&quot;margin: 0px; padding: 0px 0px 10px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400;&quot;&gt;
+ &lt;h1 style=&quot;margin: 0px 0px 17.39px;padding-top: 25px;text-align: left;color: #fefefe;line-height: 1.3;font-family: Arial,Helvetica,sans-serif;font-size: 18px;font-weight: 400;border-collapse: collapse !important;-ms-word-break: keep-all;-ms-word-wrap: normal;-ms-hyphens: none;-moz-hyphens: none;-webkit-hyphens: none;hyphens: none;&quot;&gt;
+ &lt;/h1&gt; 
+ &lt;/th&gt; 
+ &lt;th class=&quot;callout-inner&quot; style=&quot;padding:25px 15px;&quot;&gt; 
+ &lt;/th&gt;
+ &lt;td&gt;
+ &lt;div style=&quot;color:white;&quot;&gt;
+ &lt;h1&gt;Intel® Partner Rebate Claims&lt;/h1&gt;&lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;img src=&quot;{!$Label.PSG_IntelLogo}&quot; alt=&quot;Intel&quot; title=&quot;Intel&quot; align=&quot;right&quot; class=&quot;float-center&quot; style=&quot;height:100%;width:auto&quot;&gt;&lt;/img&gt; &lt;/td&gt;&lt;th class=&quot;expander&quot; style=&quot;margin: 0px; padding: 0px !important; width: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; visibility: hidden;&quot;&gt;&lt;/th&gt; &lt;/tr&gt; &lt;/tbody&gt; 
+ &lt;/table&gt; &lt;/th&gt; &lt;/tr&gt; &lt;/tbody&gt; &lt;/table&gt; &lt;/th&gt; &lt;/tr&gt; &lt;/tbody&gt; &lt;/table&gt; &lt;/th&gt; &lt;/tr&gt; &lt;/tbody&gt; &lt;/table&gt; 
+ &lt;table class=&quot;spacer&quot; style=&quot;padding: 0px; width: 100%; text-align: left; vertical-align: top; border-collapse: collapse; border-spacing: 0; background-color: #f3f3f3;&quot;&gt; 
+ &lt;/table&gt; &lt;table class=&quot;row module full-width&quot; style=&quot;padding: 0px; width: 100%; text-align: left; vertical-align: top; display: table; border-collapse: collapse; position: relative; border-spacing: 0; background-color: #fefefe;&quot;&gt;
+ &lt;tbody&gt; &lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt; &lt;th class=&quot;small-12 large-12 columns first last&quot; style=&quot;margin: 0px auto; padding: 20px 20px 10px;width: 650px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; background-color: #fefefe;&quot;&gt; 
+ &lt;p&gt;&lt;/p&gt;
+ &lt;p style=&quot;margin: 0px 0px 10px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 11px; font-weight: 400; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;&quot;&gt;&lt;/p&gt;
+ &lt;table style=&quot;padding: 0px; width: 100%; text-align: left; vertical-align: top; border-collapse: collapse; border-spacing: 0;&quot;&gt; 
+ &lt;tbody&gt; 
+ &lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt; 
+ &lt;th style=&quot;margin: 0px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400;&quot;&gt;
+ &lt;p class=&quot;h2&quot; style=&quot;margin: 0px 0px 10px; padding: 0px; text-align: left; color: #0071c5; line-height: 19px; font-family: Arial,Helvetica,sans-serif; font-size: 18px; font-weight: 400; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;&quot;&gt;&lt;span class=&quot;eloquaemail&quot;&gt;&lt;/span&gt;&lt;/p&gt; &lt;p style=&quot;margin: 0px 0px 10px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 11px; font-weight: 400; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;&quot;&gt; 
+ &lt;p style=&quot;color:red; font-size: 18px;font-weight: bold;&quot;&gt;ACTION REQUIRED&lt;/p&gt;&lt;p style=&quot;font-size: 15px;&quot;&gt; 
+Hello ,&lt;br&gt;&lt;/br&gt;
+&lt;p style=&quot;font-size: 15px;&quot;&gt; 
+As on {!Today} the following Rebate Claims are in the submitted state,&lt;br&gt;&lt;/br&gt;
+&lt;/p&gt;
+                          {!table}
+   
+   
+   
+  
+&lt;/p&gt;   
+&lt;p style=&quot;font-size: 15px;&quot;&gt; &lt;b&gt;Please take the necessary actions.&lt;/b&gt;
+&lt;br&gt;&lt;/br&gt;&lt;/p&gt;&lt;p style=&quot;font-size: 15px;&quot;&gt; Please click &lt;a href=&quot;{!$Label.PSG_IPA_Portal_URL}/rebate-claim-stage&quot;&gt;here&lt;/a&gt; for further details. &lt;/p&gt;   &lt;style&gt; .t {   border: 1px solid black;   width: 100%;   border-collapse: collapse;   }       .t1 {   background-color:rgb(240,240,240); border: 1px solid black;   font-size: 15px;   text-align: center;         }          .t2 {   background-color:rgb(192,192,192);   border: 1px solid black;   font-size: 15px;   text-align: center;            }                      &lt;/style&gt;     &lt;br&gt;&lt;/br&gt; &lt;br&gt;&lt;/br&gt; &lt;/p&gt; &lt;/th&gt;&lt;/tr&gt;   &lt;!--&lt;p style=&quot;margin: 0px 0px 10px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 11px; font-weight: 400; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;&quot;&gt;&lt;a href=&quot;http://www.intel.com/partner&quot; style=&quot;color:#FF0000;&quot;&gt;Verify now&lt;/a&gt;&lt;br&gt;--&gt; &lt;/tbody&gt; &lt;/table&gt; &lt;/th&gt; &lt;/tr&gt; &lt;/tbody&gt; &lt;/table&gt; &lt;span class=&quot;remove-absolute&quot; style=&quot;display: block;&quot; elqid=&quot;8645&quot; elqtype=&quot;DynamicContent&quot;&gt; &lt;/span&gt; &lt;table class=&quot;spacer&quot; style=&quot;padding: 0px; width: 100%; text-align: left; vertical-align: top; border-collapse: collapse; border-spacing: 0; background-color: #f3f3f3;&quot;&gt; &lt;tbody&gt; &lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt; &lt;td height=&quot;10&quot; style=&quot;margin: 0px; padding: 0px; text-align: left; color: #555554; line-height: 10px; font-family: Arial,Helvetica,sans-serif; font-size: 10px; font-weight: 400; vertical-align: top; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-word-wrap: break-word; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;&quot;&gt;&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt; &lt;/table&gt; &lt;table class=&quot;body footer_elq&quot; style=&quot;background: 0px 0px; margin: 0px; padding: 0px; width: 100%; height: 100%; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; border-collapse: collapse; border-spacing: 0;&quot;&gt; &lt;tbody&gt; &lt;tr style=&quot;background: 0px 0px; padding: 0px; border: 0px solid transparent; text-align: left; vertical-align: top; border-collapse: collapse;&quot;&gt; &lt;td align=&quot;center&quot; class=&quot;center&quot; valign=&quot;top&quot; style=&quot;background: 0px 0px; margin: 0px; padding: 0px; border: 0px solid transparent; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-word-wrap: break-word; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;&quot;&gt; &lt;div&gt; &lt;table align=&quot;center&quot; style=&quot;background: 0px 0px; padding: 0px; border: 0px solid transparent; width: 100%; text-align: left; vertical-align: top; border-collapse: collapse; max-width: 600px !important; border-spacing: 0;&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt; &lt;tbody&gt; &lt;tr style=&quot;background: 0px 0px; padding: 0px; border: 0px solid transparent; text-align: left; vertical-align: top; border-collapse: collapse;&quot;&gt; &lt;td style=&quot;background: 0px 0px; margin: 0px; padding: 0px; border: 0px solid transparent; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-word-wrap: break-word; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;&quot;&gt; &lt;table class=&quot;row collapse mobile-padding&quot; style=&quot;background: 0px 0px; padding: 0px; border: 0px solid transparent; width: 100%; text-align: left; vertical-align: top; display: table; border-collapse: collapse; position: relative; border-spacing: 0;&quot;&gt; &lt;tbody&gt; &lt;tr style=&quot;background: 0px 0px; padding: 0px; border: 0px solid transparent; text-align: left; vertical-align: top; border-collapse: collapse;&quot;&gt; &lt;th class=&quot;small-12 large-12 columns first last&quot; style=&quot;background: 0px 0px; margin: 0px auto; padding: 0px 0px 20px; border: 0px solid transparent; width: 680px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; border-collapse: collapse;&quot;&gt; &lt;table align=&quot;center&quot; class=&quot;cq-rte-forcedborder&quot; style=&quot;border: 1px dotted #d3d3d3; background-color: #0071c5; border-collapse: collapse; margin: 0px auto; min-width: 670px; width: 700px;&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt; &lt;tbody&gt; &lt;tr&gt; &lt;td style=&quot;font-size: 12px; border: #d3d3d3; padding-left: 10px; padding-right: 30px; padding-bottom: 20px;&quot;&gt; &lt;table width=&quot;100%&quot; class=&quot;cq-rte-forcedborder&quot; style=&quot;border: #d3d3d3; border-collapse: collapse;&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt; &lt;tbody&gt; &lt;tr&gt; &lt;td class=&quot;auto-style1&quot; valign=&quot;top&quot; style=&quot;font-size: 10px; color: #ffffff; font-family: Arial, Helvetica, sans-serif; line-height: 14px; padding-top: 10px; padding-bottom: 10px; text-align: center;&quot;&gt;This message was sent to you as an important business communication related to your current relationship with Intel® Partner Alliance.&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td class=&quot;auto-style1&quot; valign=&quot;top&quot; style=&quot;font-size: 10px;border: #d3d3d3;color: #ffffff; font-family: Arial, Helvetica, sans-serif; line-height: 14px; padding-bottom: 10px; text-align: center;&quot;&gt;© 2020 Intel Corporation&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td class=&quot;auto-style1&quot; valign=&quot;top&quot; style=&quot;font-size: 10px; border: #d3d3d3; color: #ffffff; font-family: Arial, Helvetica, sans-serif; line-height: 14px; padding-bottom: 10px; text-align: center;&quot;&gt;Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.&lt;span class=&quot;Apple-converted-space&quot;&gt; &lt;/span&gt;&lt;a style=&quot;color: #ffffff; text-decoration: none;&quot; href=&quot;http://www.intel.com/&quot; target=&quot;_blank&quot; _rte_href=&quot;http://www.intel.com/&quot;&gt;www.intel.com&lt;/a&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td class=&quot;auto-style1&quot; valign=&quot;top&quot; style=&quot;font-size: 10px; border: 1px #d3d3d3; color: #ffffff; font-family: Arial, Helvetica, sans-serif; line-height: 14px; text-align: center;&quot;&gt;&lt;a style=&quot;color: #ffffff; text-decoration: none;&quot; href=&quot;https://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html&quot; _rte_href=&quot;https://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html&quot;&gt;Privacy&lt;/a&gt;&lt;span class=&quot;Apple-converted-space&quot;&gt; &lt;/span&gt;|&lt;span class=&quot;Apple-converted-space&quot;&gt; &lt;/span&gt;&lt;a style=&quot;color: #ffffff; text-decoration: none;&quot; href=&quot;https://www.intel.com/content/www/us/en/privacy/intel-cookie-notice.html&quot; _rte_href=&quot;https://www.intel.com/content/www/us/en/privacy/intel-cookie-notice.html&quot;&gt;Cookies&lt;/a&gt;&lt;span class=&quot;Apple-converted-space&quot;&gt; &lt;/span&gt;&lt;span class=&quot;Apple-converted-space&quot;&gt; &lt;/span&gt;&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt; &lt;/table&gt; &lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt; &lt;/table&gt; &lt;/th&gt; &lt;/tr&gt; &lt;/tbody&gt; &lt;/table&gt; &lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt; &lt;/table&gt; &lt;/div&gt; &lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt; &lt;/table&gt; &lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt; &lt;/table&gt; &lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt; &lt;/table&gt; &lt;/center&gt;&lt;/div&gt; &lt;/center&gt;&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt; &lt;/table&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <name>tablerowtest</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>&lt;td class=&quot;t1&quot;&gt;{!Loop_over_Rebate_Claim_records.Name}&lt;/td&gt;
+    &lt;td class=&quot;t1&quot;&gt;{!Loop_over_Rebate_Claim_records.PCC_Submission_Date__c}&lt;/td&gt;
+    &lt;td class=&quot;t1&quot;&gt;{!Loop_over_Rebate_Claim_records.PCC_Partner_Name__c}&lt;/td&gt;
+    &lt;td class=&quot;t1&quot;&gt;{!Loop_over_Rebate_Claim_records.PCC_Claim_Status__c}&lt;/td&gt;
+&lt;/tr&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <name>tabletest</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>&lt;style&gt;
+.t {
+  border: 1px solid black;
+  width: 100%;
+  border-collapse: collapse;
+  }  
+  
+ .t1 {
+  background-color:rgb(240,240,240);
+ border: 1px solid black;
+  font-size: 15px;
+  text-align: center;
+   
+    }  
+    
+  .t2 {
+  background-color:rgb(192,192,192);
+  border: 1px solid black;
+  font-size: 15px;
+  text-align: center;
+  
+   
+    }                     
+&lt;/style&gt;
+   
+   
+   
+&lt;table class=&quot;t&quot;&gt;
+ &lt;tr&gt;
+                        &lt;th class=&quot;t2&quot;&gt;Rebate Claim Name&lt;/th&gt;
+                        &lt;th class=&quot;t2&quot;&gt;Submitted Date&lt;/th&gt;
+                        &lt;th class=&quot;t2&quot;&gt;Partner Name&lt;/th&gt;
+                        &lt;th class=&quot;t2&quot;&gt;Claim Status&lt;/th&gt;
+                    &lt;/tr&gt;
+&lt;tr&gt;</text>
+    </textTemplates>
+    <variables>
+        <name>currentItem_Filter_the_get_records</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>PCC_Rebate_Claim__c</objectType>
+    </variables>
+    <variables>
+        <name>RebateClaimRecords</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>PCC_Rebate_Claim__c</objectType>
+    </variables>
+    <variables>
+        <name>table</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <stringValue>&lt;style&gt; .t {   border: 1px solid black;   width: 100%;   border-collapse: collapse;   }       .t1 {   background-color:rgb(240,240,240);  border: 1px solid black;   font-size: 15px;   text-align: center;         }          .t2 {   background-color:rgb(192,192,192);   border: 1px solid black;   font-size: 15px;   text-align: center;            }                      &lt;/style&gt;             &lt;table class=&quot;t&quot;&gt; </stringValue>
+        </value>
+    </variables>
+    <variables>
+        <name>tablecolumn</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <stringValue> &lt;tr&gt;                         &lt;th class=&quot;t2&quot;&gt;Rebate Claim Name&lt;/th&gt;                         &lt;th class=&quot;t2&quot;&gt;Submitted Date&lt;/th&gt;                         &lt;th class=&quot;t2&quot;&gt;Partner Name&lt;/th&gt;                         &lt;th class=&quot;t2&quot;&gt;Claim Status&lt;/th&gt;                     &lt;/tr&gt; </stringValue>
+        </value>
+    </variables>
+</Flow>

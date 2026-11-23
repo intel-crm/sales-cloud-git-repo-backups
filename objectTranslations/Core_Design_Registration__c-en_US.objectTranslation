@@ -14,10 +14,6 @@
         <relationshipLabel><!-- Design-Deal Registrations (Accepted By) --></relationshipLabel>
     </fields>
     <fields>
-        <label><!-- Account Record Type --></label>
-        <name>Core_Account_Record_Type__c</name>
-    </fields>
-    <fields>
         <label><!-- Age of Design --></label>
         <name>Core_Age_Of_Design_Txt__c</name>
     </fields>
@@ -43,6 +39,14 @@
         <name>Core_Approver_Grp_Notification_Sent_Ind__c</name>
     </fields>
     <fields>
+        <label><!-- Converted Product from DR --></label>
+        <name>Core_Converted_Product_from_DR__c</name>
+    </fields>
+    <fields>
+        <label><!-- Converted from DR --></label>
+        <name>Core_Converted_from_DR__c</name>
+    </fields>
+    <fields>
         <label><!-- DR Partner Type --></label>
         <name>Core_DDR_Partner_Type_Txt__c</name>
         <picklistValues>
@@ -53,6 +57,10 @@
             <masterLabel>ODM</masterLabel>
             <translation><!-- ODM --></translation>
         </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- DX Demo Field2 --></label>
+        <name>Core_DX_Field2_Txt__c</name>
     </fields>
     <fields>
         <help><!-- This is a brief description of what the Design will be used for (i.e., what function/value the end-customer&apos;s Product will provide). --></help>
@@ -130,6 +138,10 @@
         <help><!-- Indicates whether this Design Registration is for a DSN Partner. --></help>
         <label><!-- Design Solution Network --></label>
         <name>Core_Design_Solution_Network_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Design Status Checkbox --></label>
+        <name>Core_Design_Status_Checkbox__c</name>
     </fields>
     <fields>
         <help><!-- Name of End Customer designing a product with Intel components.  This is a reference to the Account record in the Opportunity --></help>
@@ -360,16 +372,8 @@
             <translation><!-- COOPER LAKE SP --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>CRESCENT ISLAND</masterLabel>
-            <translation><!-- CRESCENT ISLAND --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>CYCLONE</masterLabel>
             <translation><!-- CYCLONE --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>DUNLOW</masterLabel>
-            <translation><!-- DUNLOW --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>EAGLE STREAM</masterLabel>
@@ -448,20 +452,12 @@
             <translation><!-- KASEYVILLE --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>LOGANVILLE</masterLabel>
-            <translation><!-- LOGANVILLE --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>LUNAR LAKE M</masterLabel>
             <translation><!-- LUNAR LAKE M --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>MALIBOU LAKE</masterLabel>
             <translation><!-- MALIBOU LAKE --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>MAPLE STREAM</masterLabel>
-            <translation><!-- MAPLE STREAM --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>MAX</masterLabel>
@@ -586,10 +582,6 @@
         <picklistValues>
             <masterLabel>WILDCAT LAKE M</masterLabel>
             <translation><!-- WILDCAT LAKE M --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>WILDCAT LAKE REFRESH</masterLabel>
-            <translation><!-- WILDCAT LAKE REFRESH --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>WIZARD LAKE</masterLabel>
@@ -724,6 +716,10 @@
         <label><!-- Partner Account Name --></label>
         <name>Core_Partner_Account_Id__c</name>
         <relationshipLabel><!-- Design-Deal Registrations (Partner Account Name) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Partner Prime  Account Name --></label>
+        <name>Core_Partner_Account_Name__c</name>
     </fields>
     <fields>
         <help><!-- This is Intel&apos;s Partner Account name submitting the Design-Deal Registration. --></help>
@@ -998,7 +994,7 @@
         </picklistValues>
     </fields>
     <fields>
-        <help><!-- This field indicates which Intel product group this Design Registration belongs to. --></help>
+        <help><!-- This field will allow the Disti to indicate which Intel product group this DDR belongs to. --></help>
         <label><!-- Product Group --></label>
         <name>Core_Product_Group_Nm__c</name>
         <picklistValues>
@@ -1008,10 +1004,6 @@
         <picklistValues>
             <masterLabel>Embedded/IOT Boards &amp; Systems</masterLabel>
             <translation><!-- Embedded/IOT Boards &amp; Systems --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>FPGA</masterLabel>
-            <translation><!-- FPGA --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -1218,6 +1210,10 @@
             <translation><!-- Sports --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Test POV New</masterLabel>
+            <translation><!-- Test POV New --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Transportation</masterLabel>
             <translation><!-- Transportation --></translation>
         </picklistValues>
@@ -1225,6 +1221,14 @@
             <masterLabel>Undefined</masterLabel>
             <translation><!-- Undefined --></translation>
         </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- is cloned Opportunity --></label>
+        <name>Core_is_cloned_Opportunity__c</name>
+    </fields>
+    <fields>
+        <label><!-- Created_Through_Mapping_Tab --></label>
+        <name>Created_Through_Mapping_Tab__c</name>
     </fields>
     <fields>
         <help><!-- Partner&apos;s technical owner (field application engineer) email address --></help>
@@ -1236,9 +1240,30 @@
         <name>DDR_Technical_Owner__c</name>
     </fields>
     <fields>
+        <label><!-- End Customer Account Id --></label>
+        <name>End_Customer_Account_Id__c</name>
+    </fields>
+    <fields>
         <label><!-- L2 - Approver --></label>
         <name>L2_Approver__c</name>
         <relationshipLabel><!-- Design-Deal Registrations (L2 - Approver) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Level2 approver type --></label>
+        <name>Level2_approver_type__c</name>
+        <picklistValues>
+            <masterLabel>L2 Approver</masterLabel>
+            <translation><!-- L2 Approver --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Queue</masterLabel>
+            <translation><!-- Queue --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Account Legal Agreement Association --></label>
+        <name>PCC_Account_Legal_Agreement_Association__c</name>
+        <relationshipLabel><!-- Design-Deal Registrations --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- Approval Level --></label>
@@ -1290,16 +1315,15 @@
         <name>PCC_Deal_re_try_count__c</name>
     </fields>
     <fields>
-        <help><!-- Select &quot;Chip-down&quot; if CPU-only. Select &quot;Board-based&quot; for ODM-based solutions. --></help>
         <label><!-- Design Type --></label>
         <name>PCC_Design_Type__c</name>
         <picklistValues>
-            <masterLabel>Board-based</masterLabel>
-            <translation><!-- Board-based --></translation>
+            <masterLabel>Board-based (ODM)</masterLabel>
+            <translation><!-- Board-based (ODM) --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Chip-down</masterLabel>
-            <translation><!-- Chip-down --></translation>
+            <masterLabel>Chip-down (existing)</masterLabel>
+            <translation><!-- Chip-down (existing) --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -3193,6 +3217,14 @@
         <name>PCC_End_Customer_Country__c</name>
     </fields>
     <fields>
+        <label><!-- Quick tip on End Customer selection --></label>
+        <name>PCC_End_Customer_Quick_Tip__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Customer Region --></label>
+        <name>PCC_End_Customer_Region__c</name>
+    </fields>
+    <fields>
         <label><!-- End Customer Sales Geography --></label>
         <name>PCC_End_Customer_Sales_Geography__c</name>
     </fields>
@@ -3205,8 +3237,156 @@
         <label><!-- End Customer State --></label>
         <name>PCC_End_Customer_State__c</name>
         <picklistValues>
+            <masterLabel>Aargau</masterLabel>
+            <translation><!-- Aargau --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Abidjan</masterLabel>
+            <translation><!-- Abidjan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Abseron</masterLabel>
+            <translation><!-- Abseron --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Abu Dhabi</masterLabel>
+            <translation><!-- Abu Dhabi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Acklins</masterLabel>
+            <translation><!-- Acklins --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Acre</masterLabel>
+            <translation><!-- Acre --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ad Daqahliyah</masterLabel>
+            <translation><!-- Ad Daqahliyah --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Adamaoua</masterLabel>
+            <translation><!-- Adamaoua --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Adrar</masterLabel>
+            <translation><!-- Adrar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Agcabadi</masterLabel>
+            <translation><!-- Agcabadi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Agdam</masterLabel>
+            <translation><!-- Agdam --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Agdas</masterLabel>
+            <translation><!-- Agdas --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Agstafa</masterLabel>
+            <translation><!-- Agstafa --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Agsu</masterLabel>
+            <translation><!-- Agsu --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ain Defla</masterLabel>
+            <translation><!-- Ain Defla --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ain Temouchent</masterLabel>
+            <translation><!-- Ain Temouchent --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Aisen</masterLabel>
+            <translation><!-- Aisen --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ajman</masterLabel>
+            <translation><!-- Ajman --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Al Asimah</masterLabel>
+            <translation><!-- Al Asimah --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Al Bahr Al Ahmar</masterLabel>
+            <translation><!-- Al Bahr Al Ahmar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Al Buhayrah</masterLabel>
+            <translation><!-- Al Buhayrah --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Al Fayyum</masterLabel>
+            <translation><!-- Al Fayyum --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Al Fujayrah</masterLabel>
+            <translation><!-- Al Fujayrah --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Al Gharbiyah</masterLabel>
+            <translation><!-- Al Gharbiyah --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Al Iskandariyah</masterLabel>
+            <translation><!-- Al Iskandariyah --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Al Isma&apos; Iliyah</masterLabel>
+            <translation><!-- Al Isma&apos; Iliyah --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Al Janubiyah</masterLabel>
+            <translation><!-- Al Janubiyah --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Al Jizah</masterLabel>
+            <translation><!-- Al Jizah --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Al Minufiyah</masterLabel>
+            <translation><!-- Al Minufiyah --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Al Minya</masterLabel>
+            <translation><!-- Al Minya --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Al Muharraq</masterLabel>
+            <translation><!-- Al Muharraq --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Al Qahirah</masterLabel>
+            <translation><!-- Al Qahirah --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Al Qalyubiyah</masterLabel>
+            <translation><!-- Al Qalyubiyah --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Al Uqsur</masterLabel>
+            <translation><!-- Al Uqsur --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Al Wadi Al Jadid</masterLabel>
+            <translation><!-- Al Wadi Al Jadid --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Alabama</masterLabel>
             <translation><!-- Alabama --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Alagoas</masterLabel>
+            <translation><!-- Alagoas --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Alajuela</masterLabel>
+            <translation><!-- Alajuela --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Alaska</masterLabel>
@@ -3217,6 +3397,86 @@
             <translation><!-- Alberta --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Alger</masterLabel>
+            <translation><!-- Alger --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ali Sabieh</masterLabel>
+            <translation><!-- Ali Sabieh --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Alibori</masterLabel>
+            <translation><!-- Alibori --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Amapa</masterLabel>
+            <translation><!-- Amapa --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Amazonas</masterLabel>
+            <translation><!-- Amazonas --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ammochostos</masterLabel>
+            <translation><!-- Ammochostos --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Andorra la Vella</masterLabel>
+            <translation><!-- Andorra la Vella --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Anhui Sheng</masterLabel>
+            <translation><!-- Anhui Sheng --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Anjouan</masterLabel>
+            <translation><!-- Anjouan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Annaba</masterLabel>
+            <translation><!-- Annaba --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Anseba</masterLabel>
+            <translation><!-- Anseba --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Antioquia</masterLabel>
+            <translation><!-- Antioquia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Antofagasta</masterLabel>
+            <translation><!-- Antofagasta --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Antwerpen</masterLabel>
+            <translation><!-- Antwerpen --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Appenzell Ausserrh.</masterLabel>
+            <translation><!-- Appenzell Ausserrh. --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Appenzell Innerrh</masterLabel>
+            <translation><!-- Appenzell Innerrh --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Aragacotn</masterLabel>
+            <translation><!-- Aragacotn --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ararat</masterLabel>
+            <translation><!-- Ararat --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Arauca</masterLabel>
+            <translation><!-- Arauca --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Arica y Parinacota</masterLabel>
+            <translation><!-- Arica y Parinacota --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Arizona</masterLabel>
             <translation><!-- Arizona --></translation>
         </picklistValues>
@@ -3225,36 +3485,1208 @@
             <translation><!-- Arkansas --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Armavir</masterLabel>
+            <translation><!-- Armavir --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Arta (Djibouti)</masterLabel>
+            <translation><!-- Arta (Djibouti) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Artemisa</masterLabel>
+            <translation><!-- Artemisa --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>As Suways</masterLabel>
+            <translation><!-- As Suways --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ash Shamaliyah</masterLabel>
+            <translation><!-- Ash Shamaliyah --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ash Sharqiyah</masterLabel>
+            <translation><!-- Ash Sharqiyah --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Astara</masterLabel>
+            <translation><!-- Astara --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Aswan</masterLabel>
+            <translation><!-- Aswan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Asyut</masterLabel>
+            <translation><!-- Asyut --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Atacama</masterLabel>
+            <translation><!-- Atacama --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Atacora</masterLabel>
+            <translation><!-- Atacora --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Atlantico</masterLabel>
+            <translation><!-- Atlantico --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Atlantique</masterLabel>
+            <translation><!-- Atlantique --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Australian Capital T</masterLabel>
+            <translation><!-- Australian Capital T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Azuay</masterLabel>
+            <translation><!-- Azuay --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Babak</masterLabel>
+            <translation><!-- Babak --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Badakhshan</masterLabel>
+            <translation><!-- Badakhshan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Baden Wurttemberg</masterLabel>
+            <translation><!-- Baden Wurttemberg --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Badghis</masterLabel>
+            <translation><!-- Badghis --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bagerhat</masterLabel>
+            <translation><!-- Bagerhat --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Baghlan</masterLabel>
+            <translation><!-- Baghlan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bahia</masterLabel>
+            <translation><!-- Bahia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Baki</masterLabel>
+            <translation><!-- Baki --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Balakan</masterLabel>
+            <translation><!-- Balakan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bale</masterLabel>
+            <translation><!-- Bale --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Balkh</masterLabel>
+            <translation><!-- Balkh --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bam</masterLabel>
+            <translation><!-- Bam --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bamingui-Bangoran</masterLabel>
+            <translation><!-- Bamingui-Bangoran --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bamyan</masterLabel>
+            <translation><!-- Bamyan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bandarban</masterLabel>
+            <translation><!-- Bandarban --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bangui</masterLabel>
+            <translation><!-- Bangui --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bani Suwayf</masterLabel>
+            <translation><!-- Bani Suwayf --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Banwa</masterLabel>
+            <translation><!-- Banwa --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Barbuda</masterLabel>
+            <translation><!-- Barbuda --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Barda</masterLabel>
+            <translation><!-- Barda --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Barguna</masterLabel>
+            <translation><!-- Barguna --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Barishal</masterLabel>
+            <translation><!-- Barishal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bas-Sassandra</masterLabel>
+            <translation><!-- Bas-Sassandra --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bas-Uele</masterLabel>
+            <translation><!-- Bas-Uele --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Basel-Landschaft</masterLabel>
+            <translation><!-- Basel-Landschaft --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Basel-Stadt</masterLabel>
+            <translation><!-- Basel-Stadt --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Basse-Kotto</masterLabel>
+            <translation><!-- Basse-Kotto --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Batna</masterLabel>
+            <translation><!-- Batna --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bayern</masterLabel>
+            <translation><!-- Bayern --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bazega</masterLabel>
+            <translation><!-- Bazega --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bechar</masterLabel>
+            <translation><!-- Bechar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Beijing Shi</masterLabel>
+            <translation><!-- Beijing Shi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bejaia</masterLabel>
+            <translation><!-- Bejaia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Belait</masterLabel>
+            <translation><!-- Belait --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Belize</masterLabel>
+            <translation><!-- Belize --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bengo</masterLabel>
+            <translation><!-- Bengo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Benguela</masterLabel>
+            <translation><!-- Benguela --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Berat</masterLabel>
+            <translation><!-- Berat --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Berlin</masterLabel>
+            <translation><!-- Berlin --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bern</masterLabel>
+            <translation><!-- Bern --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bernardo O&apos;Higgins</masterLabel>
+            <translation><!-- Bernardo O&apos;Higgins --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Berry Islands</masterLabel>
+            <translation><!-- Berry Islands --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Beylaqan</masterLabel>
+            <translation><!-- Beylaqan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bhola</masterLabel>
+            <translation><!-- Bhola --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bie</masterLabel>
+            <translation><!-- Bie --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bilasuvar</masterLabel>
+            <translation><!-- Bilasuvar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bimini</masterLabel>
+            <translation><!-- Bimini --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Biobio</masterLabel>
+            <translation><!-- Biobio --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Biskra</masterLabel>
+            <translation><!-- Biskra --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Black Point</masterLabel>
+            <translation><!-- Black Point --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Blagoevgrad</masterLabel>
+            <translation><!-- Blagoevgrad --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Blida</masterLabel>
+            <translation><!-- Blida --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Boa Vista</masterLabel>
+            <translation><!-- Boa Vista --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bogura</masterLabel>
+            <translation><!-- Bogura --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bolivar</masterLabel>
+            <translation><!-- Bolivar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bonaire</masterLabel>
+            <translation><!-- Bonaire --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bordj Badji Mokhtar</masterLabel>
+            <translation><!-- Bordj Badji Mokhtar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bordj Bou Arreridj</masterLabel>
+            <translation><!-- Bordj Bou Arreridj --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Borgou</masterLabel>
+            <translation><!-- Borgou --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bosnia &amp; Herzegovina</masterLabel>
+            <translation><!-- Bosnia &amp; Herzegovina --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bouenza</masterLabel>
+            <translation><!-- Bouenza --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bougouriba</masterLabel>
+            <translation><!-- Bougouriba --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bouira</masterLabel>
+            <translation><!-- Bouira --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Boulgou</masterLabel>
+            <translation><!-- Boulgou --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Boulkiemde</masterLabel>
+            <translation><!-- Boulkiemde --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Boumerdes</masterLabel>
+            <translation><!-- Boumerdes --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Boyaca</masterLabel>
+            <translation><!-- Boyaca --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Brabant wallon</masterLabel>
+            <translation><!-- Brabant wallon --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Brahmanbaria</masterLabel>
+            <translation><!-- Brahmanbaria --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Brandenburg</masterLabel>
+            <translation><!-- Brandenburg --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Brava</masterLabel>
+            <translation><!-- Brava --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Brazzaville</masterLabel>
+            <translation><!-- Brazzaville --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Brcko distrikt</masterLabel>
+            <translation><!-- Brcko distrikt --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bremen</masterLabel>
+            <translation><!-- Bremen --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Brestskaya</masterLabel>
+            <translation><!-- Brestskaya --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>British Columbia</masterLabel>
             <translation><!-- British Columbia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Brunei-Muara</masterLabel>
+            <translation><!-- Brunei-Muara --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Brussels-Capitale</masterLabel>
+            <translation><!-- Brussels-Capitale --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bubanza</masterLabel>
+            <translation><!-- Bubanza --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Buenos Aires</masterLabel>
+            <translation><!-- Buenos Aires --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bujumbura Mairie</masterLabel>
+            <translation><!-- Bujumbura Mairie --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bujumbura Rural</masterLabel>
+            <translation><!-- Bujumbura Rural --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bumthang</masterLabel>
+            <translation><!-- Bumthang --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bur Sa Id</masterLabel>
+            <translation><!-- Bur Sa Id --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Burgas</masterLabel>
+            <translation><!-- Burgas --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Burgenland</masterLabel>
+            <translation><!-- Burgenland --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bururi</masterLabel>
+            <translation><!-- Bururi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Béni Abbès</masterLabel>
+            <translation><!-- Béni Abbès --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cabinda</masterLabel>
+            <translation><!-- Cabinda --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cabrayil</masterLabel>
+            <translation><!-- Cabrayil --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Caldas</masterLabel>
+            <translation><!-- Caldas --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>California</masterLabel>
             <translation><!-- California --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Calilabad</masterLabel>
+            <translation><!-- Calilabad --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Camaguey</masterLabel>
+            <translation><!-- Camaguey --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Canar</masterLabel>
+            <translation><!-- Canar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Canillo</masterLabel>
+            <translation><!-- Canillo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cankuzo</masterLabel>
+            <translation><!-- Cankuzo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Caqueta</masterLabel>
+            <translation><!-- Caqueta --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Carchi</masterLabel>
+            <translation><!-- Carchi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cartago</masterLabel>
+            <translation><!-- Cartago --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Casanare</masterLabel>
+            <translation><!-- Casanare --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cat Island</masterLabel>
+            <translation><!-- Cat Island --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Catamarca</masterLabel>
+            <translation><!-- Catamarca --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cauca</masterLabel>
+            <translation><!-- Cauca --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cayo</masterLabel>
+            <translation><!-- Cayo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ceara</masterLabel>
+            <translation><!-- Ceara --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Central</masterLabel>
+            <translation><!-- Central --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Central Abaco</masterLabel>
+            <translation><!-- Central Abaco --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Central Andros</masterLabel>
+            <translation><!-- Central Andros --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Central Eleuthera</masterLabel>
+            <translation><!-- Central Eleuthera --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Centre</masterLabel>
+            <translation><!-- Centre --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cesar</masterLabel>
+            <translation><!-- Cesar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Chaco</masterLabel>
+            <translation><!-- Chaco --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Chandpur</masterLabel>
+            <translation><!-- Chandpur --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Chapai Nawabganj</masterLabel>
+            <translation><!-- Chapai Nawabganj --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Chattogram</masterLabel>
+            <translation><!-- Chattogram --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Chhukha</masterLabel>
+            <translation><!-- Chhukha --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Chimborazo</masterLabel>
+            <translation><!-- Chimborazo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Chlef</masterLabel>
+            <translation><!-- Chlef --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Chobe</masterLabel>
+            <translation><!-- Chobe --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Choco</masterLabel>
+            <translation><!-- Choco --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Chongqing Shi</masterLabel>
+            <translation><!-- Chongqing Shi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Christ Church</masterLabel>
+            <translation><!-- Christ Church --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Chuadanga</masterLabel>
+            <translation><!-- Chuadanga --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Chubut</masterLabel>
+            <translation><!-- Chubut --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Chuquisaca</masterLabel>
+            <translation><!-- Chuquisaca --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cibao Nordeste</masterLabel>
+            <translation><!-- Cibao Nordeste --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cibao Noroeste</masterLabel>
+            <translation><!-- Cibao Noroeste --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cibao Norte</masterLabel>
+            <translation><!-- Cibao Norte --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cibao Sur</masterLabel>
+            <translation><!-- Cibao Sur --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cibitoke</masterLabel>
+            <translation><!-- Cibitoke --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ciego De Avila</masterLabel>
+            <translation><!-- Ciego De Avila --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cienfuegos</masterLabel>
+            <translation><!-- Cienfuegos --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>City of Freeport</masterLabel>
+            <translation><!-- City of Freeport --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ciudad deBuenosAires</masterLabel>
+            <translation><!-- Ciudad deBuenosAires --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cochabamba</masterLabel>
+            <translation><!-- Cochabamba --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Collines</masterLabel>
+            <translation><!-- Collines --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Colorado</masterLabel>
             <translation><!-- Colorado --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Comoe</masterLabel>
+            <translation><!-- Comoe --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Connecticut</masterLabel>
             <translation><!-- Connecticut --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Constantine</masterLabel>
+            <translation><!-- Constantine --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Coquimbo</masterLabel>
+            <translation><!-- Coquimbo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cordoba</masterLabel>
+            <translation><!-- Cordoba --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Corozal</masterLabel>
+            <translation><!-- Corozal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Corrientes</masterLabel>
+            <translation><!-- Corrientes --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cotopaxi</masterLabel>
+            <translation><!-- Cotopaxi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Couffo</masterLabel>
+            <translation><!-- Couffo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cox&apos;s Bazar</masterLabel>
+            <translation><!-- Cox&apos;s Bazar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Crooked Is &amp; LongCay</masterLabel>
+            <translation><!-- Crooked Is &amp; LongCay --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cuando Cubango</masterLabel>
+            <translation><!-- Cuando Cubango --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cuanza-Norte</masterLabel>
+            <translation><!-- Cuanza-Norte --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cuanza-Sul</masterLabel>
+            <translation><!-- Cuanza-Sul --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Culfa</masterLabel>
+            <translation><!-- Culfa --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cumilla</masterLabel>
+            <translation><!-- Cumilla --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cundinamarca</masterLabel>
+            <translation><!-- Cundinamarca --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cunene</masterLabel>
+            <translation><!-- Cunene --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cuvette</masterLabel>
+            <translation><!-- Cuvette --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cuvette-Ouest</masterLabel>
+            <translation><!-- Cuvette-Ouest --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Dagana</masterLabel>
+            <translation><!-- Dagana --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Daskasan</masterLabel>
+            <translation><!-- Daskasan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Daykundi</masterLabel>
+            <translation><!-- Daykundi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Debub</masterLabel>
+            <translation><!-- Debub --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Debubawi Keyih Bahri</masterLabel>
+            <translation><!-- Debubawi Keyih Bahri --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Delaware</masterLabel>
             <translation><!-- Delaware --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Denguele</masterLabel>
+            <translation><!-- Denguele --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Dhaka</masterLabel>
+            <translation><!-- Dhaka --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Dibër</masterLabel>
+            <translation><!-- Dibër --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Dikhil</masterLabel>
+            <translation><!-- Dikhil --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Dinajpur</masterLabel>
+            <translation><!-- Dinajpur --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Dist CapitlDeBogota</masterLabel>
+            <translation><!-- Dist CapitlDeBogota --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Distrito Federal</masterLabel>
+            <translation><!-- Distrito Federal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Djanet</masterLabel>
+            <translation><!-- Djanet --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Djelfa</masterLabel>
+            <translation><!-- Djelfa --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Dobrich</masterLabel>
+            <translation><!-- Dobrich --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Donga</masterLabel>
+            <translation><!-- Donga --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Dubai</masterLabel>
+            <translation><!-- Dubai --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Dumyat</masterLabel>
+            <translation><!-- Dumyat --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Durrës</masterLabel>
+            <translation><!-- Durrës --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>East</masterLabel>
+            <translation><!-- East --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>East Grand Bahama</masterLabel>
+            <translation><!-- East Grand Bahama --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>El Bayadh</masterLabel>
+            <translation><!-- El Bayadh --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>El Beni</masterLabel>
+            <translation><!-- El Beni --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>El Meghaier</masterLabel>
+            <translation><!-- El Meghaier --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>El Meniaa</masterLabel>
+            <translation><!-- El Meniaa --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>El Oro</masterLabel>
+            <translation><!-- El Oro --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>El Oued</masterLabel>
+            <translation><!-- El Oued --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>El Tarf</masterLabel>
+            <translation><!-- El Tarf --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>El Valle</masterLabel>
+            <translation><!-- El Valle --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Elbasan</masterLabel>
+            <translation><!-- Elbasan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Encamp</masterLabel>
+            <translation><!-- Encamp --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Enriquillo</masterLabel>
+            <translation><!-- Enriquillo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Entre Rios</masterLabel>
+            <translation><!-- Entre Rios --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Equateur</masterLabel>
+            <translation><!-- Equateur --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Erevan</masterLabel>
+            <translation><!-- Erevan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Escaldes-Engordany</masterLabel>
+            <translation><!-- Escaldes-Engordany --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Esmeraldas</masterLabel>
+            <translation><!-- Esmeraldas --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Espirito Santo</masterLabel>
+            <translation><!-- Espirito Santo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Exuma</masterLabel>
+            <translation><!-- Exuma --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Far North</masterLabel>
+            <translation><!-- Far North --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Farah</masterLabel>
+            <translation><!-- Farah --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Faridpur</masterLabel>
+            <translation><!-- Faridpur --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Faryab</masterLabel>
+            <translation><!-- Faryab --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Feni</masterLabel>
+            <translation><!-- Feni --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Fier</masterLabel>
+            <translation><!-- Fier --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Florida</masterLabel>
             <translation><!-- Florida --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Formosa</masterLabel>
+            <translation><!-- Formosa --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Francistown</masterLabel>
+            <translation><!-- Francistown --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Fribourg</masterLabel>
+            <translation><!-- Fribourg --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Fujian Sheng</masterLabel>
+            <translation><!-- Fujian Sheng --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Fuzuli</masterLabel>
+            <translation><!-- Fuzuli --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gaborone</masterLabel>
+            <translation><!-- Gaborone --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gabrovo</masterLabel>
+            <translation><!-- Gabrovo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gadabay</masterLabel>
+            <translation><!-- Gadabay --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gaibandha</masterLabel>
+            <translation><!-- Gaibandha --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Galapagos</masterLabel>
+            <translation><!-- Galapagos --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ganca</masterLabel>
+            <translation><!-- Ganca --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gansu Sheng</masterLabel>
+            <translation><!-- Gansu Sheng --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ganzourgou</masterLabel>
+            <translation><!-- Ganzourgou --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gasa</masterLabel>
+            <translation><!-- Gasa --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gash-Barka</masterLabel>
+            <translation><!-- Gash-Barka --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gazipur</masterLabel>
+            <translation><!-- Gazipur --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gegarkunik</masterLabel>
+            <translation><!-- Gegarkunik --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Geneve</masterLabel>
+            <translation><!-- Geneve --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Georgia</masterLabel>
             <translation><!-- Georgia --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Ghanzi</masterLabel>
+            <translation><!-- Ghanzi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ghardaia</masterLabel>
+            <translation><!-- Ghardaia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ghazni</masterLabel>
+            <translation><!-- Ghazni --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ghor</masterLabel>
+            <translation><!-- Ghor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gitega</masterLabel>
+            <translation><!-- Gitega --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gjirokastër</masterLabel>
+            <translation><!-- Gjirokastër --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Glarus</masterLabel>
+            <translation><!-- Glarus --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gnagna</masterLabel>
+            <translation><!-- Gnagna --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Goh-Djiboua</masterLabel>
+            <translation><!-- Goh-Djiboua --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Goias</masterLabel>
+            <translation><!-- Goias --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gopalganj</masterLabel>
+            <translation><!-- Gopalganj --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Goranboy</masterLabel>
+            <translation><!-- Goranboy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gourma</masterLabel>
+            <translation><!-- Gourma --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Goycay</masterLabel>
+            <translation><!-- Goycay --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Goygol</masterLabel>
+            <translation><!-- Goygol --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Grand Cay</masterLabel>
+            <translation><!-- Grand Cay --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Grande Comore</masterLabel>
+            <translation><!-- Grande Comore --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Granma</masterLabel>
+            <translation><!-- Granma --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Graubunden</masterLabel>
+            <translation><!-- Graubunden --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gribingui</masterLabel>
+            <translation><!-- Gribingui --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Guainia</masterLabel>
+            <translation><!-- Guainia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Guanacaste</masterLabel>
+            <translation><!-- Guanacaste --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Guangdong Sheng</masterLabel>
+            <translation><!-- Guangdong Sheng --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Guangxi Zhuangzu</masterLabel>
+            <translation><!-- Guangxi Zhuangzu --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Guantanamo</masterLabel>
+            <translation><!-- Guantanamo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Guaviare</masterLabel>
+            <translation><!-- Guaviare --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Guayas</masterLabel>
+            <translation><!-- Guayas --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Guelma</masterLabel>
+            <translation><!-- Guelma --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Guizhou Sheng</masterLabel>
+            <translation><!-- Guizhou Sheng --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Haa</masterLabel>
+            <translation><!-- Haa --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Habiganj</masterLabel>
+            <translation><!-- Habiganj --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Haciqabul</masterLabel>
+            <translation><!-- Haciqabul --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hainan Sheng</masterLabel>
+            <translation><!-- Hainan Sheng --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hainaut</masterLabel>
+            <translation><!-- Hainaut --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hamburg</masterLabel>
+            <translation><!-- Hamburg --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Harbour Island</masterLabel>
+            <translation><!-- Harbour Island --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Haskovo</masterLabel>
+            <translation><!-- Haskovo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Haut-Katanga</masterLabel>
+            <translation><!-- Haut-Katanga --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Haut-Lomami</masterLabel>
+            <translation><!-- Haut-Lomami --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Haut-Mbomou</masterLabel>
+            <translation><!-- Haut-Mbomou --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Haut-Uele</masterLabel>
+            <translation><!-- Haut-Uele --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Haute-Kotto</masterLabel>
+            <translation><!-- Haute-Kotto --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Hawaii</masterLabel>
             <translation><!-- Hawaii --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hebei Sheng</masterLabel>
+            <translation><!-- Hebei Sheng --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Heilongjiang Sheng</masterLabel>
+            <translation><!-- Heilongjiang Sheng --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Helmand</masterLabel>
+            <translation><!-- Helmand --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Henan Sheng</masterLabel>
+            <translation><!-- Henan Sheng --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Herat</masterLabel>
+            <translation><!-- Herat --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Heredia</masterLabel>
+            <translation><!-- Heredia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hessen</masterLabel>
+            <translation><!-- Hessen --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Higuamo</masterLabel>
+            <translation><!-- Higuamo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Holguin</masterLabel>
+            <translation><!-- Holguin --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Homyelskaya</masterLabel>
+            <translation><!-- Homyelskaya --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hope Town</masterLabel>
+            <translation><!-- Hope Town --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Horad Minsk</masterLabel>
+            <translation><!-- Horad Minsk --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Houet</masterLabel>
+            <translation><!-- Houet --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hovedstaden</masterLabel>
+            <translation><!-- Hovedstaden --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hrodzyenskaya</masterLabel>
+            <translation><!-- Hrodzyenskaya --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Huambo</masterLabel>
+            <translation><!-- Huambo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hubei Sheng</masterLabel>
+            <translation><!-- Hubei Sheng --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Huila</masterLabel>
+            <translation><!-- Huila --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hunan Sheng</masterLabel>
+            <translation><!-- Hunan Sheng --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Idaho</masterLabel>
@@ -3265,48 +4697,692 @@
             <translation><!-- Illinois --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Illizi</masterLabel>
+            <translation><!-- Illizi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Imbabura</masterLabel>
+            <translation><!-- Imbabura --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Imisli</masterLabel>
+            <translation><!-- Imisli --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In Guezzam</masterLabel>
+            <translation><!-- In Guezzam --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In Salah</masterLabel>
+            <translation><!-- In Salah --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Inagua</masterLabel>
+            <translation><!-- Inagua --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Indiana</masterLabel>
             <translation><!-- Indiana --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ioba</masterLabel>
+            <translation><!-- Ioba --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Iowa</masterLabel>
             <translation><!-- Iowa --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Isla De La Juventud</masterLabel>
+            <translation><!-- Isla De La Juventud --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ismayilli</masterLabel>
+            <translation><!-- Ismayilli --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ituri</masterLabel>
+            <translation><!-- Ituri --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Jamalpur</masterLabel>
+            <translation><!-- Jamalpur --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Janub Sina</masterLabel>
+            <translation><!-- Janub Sina --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Jashore</masterLabel>
+            <translation><!-- Jashore --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Jhalakathi</masterLabel>
+            <translation><!-- Jhalakathi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Jhenaidah</masterLabel>
+            <translation><!-- Jhenaidah --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Jiangsu Sheng</masterLabel>
+            <translation><!-- Jiangsu Sheng --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Jiangxi Sheng</masterLabel>
+            <translation><!-- Jiangxi Sheng --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Jihocesky Kraj</masterLabel>
+            <translation><!-- Jihocesky Kraj --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Jihomoravsky Kraj</masterLabel>
+            <translation><!-- Jihomoravsky Kraj --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Jijel</masterLabel>
+            <translation><!-- Jijel --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Jilin Sheng</masterLabel>
+            <translation><!-- Jilin Sheng --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Jowzjan</masterLabel>
+            <translation><!-- Jowzjan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Joypurhat</masterLabel>
+            <translation><!-- Joypurhat --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Jujuy</masterLabel>
+            <translation><!-- Jujuy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Jura</masterLabel>
+            <translation><!-- Jura --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Jwaneng</masterLabel>
+            <translation><!-- Jwaneng --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kabul</masterLabel>
+            <translation><!-- Kabul --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kadiogo</masterLabel>
+            <translation><!-- Kadiogo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kaernten</masterLabel>
+            <translation><!-- Kaernten --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kafr Ash Shaykh</masterLabel>
+            <translation><!-- Kafr Ash Shaykh --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kalbacar</masterLabel>
+            <translation><!-- Kalbacar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kandahar</masterLabel>
+            <translation><!-- Kandahar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kangarli</masterLabel>
+            <translation><!-- Kangarli --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Kansas</masterLabel>
             <translation><!-- Kansas --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kapisa</masterLabel>
+            <translation><!-- Kapisa --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kardzhali</masterLabel>
+            <translation><!-- Kardzhali --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Karlovarsky Kraj</masterLabel>
+            <translation><!-- Karlovarsky Kraj --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Karuzi</masterLabel>
+            <translation><!-- Karuzi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kasai</masterLabel>
+            <translation><!-- Kasai --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kasai Central</masterLabel>
+            <translation><!-- Kasai Central --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kasai Oriental</masterLabel>
+            <translation><!-- Kasai Oriental --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kayanza</masterLabel>
+            <translation><!-- Kayanza --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kemo-Gribingui</masterLabel>
+            <translation><!-- Kemo-Gribingui --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kenedougou</masterLabel>
+            <translation><!-- Kenedougou --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Kentucky</masterLabel>
             <translation><!-- Kentucky --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Keryneia</masterLabel>
+            <translation><!-- Keryneia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kgalagadi</masterLabel>
+            <translation><!-- Kgalagadi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kgatleng</masterLabel>
+            <translation><!-- Kgatleng --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Khagrachhari</masterLabel>
+            <translation><!-- Khagrachhari --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Khenchela</masterLabel>
+            <translation><!-- Khenchela --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Khost</masterLabel>
+            <translation><!-- Khost --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Khulna</masterLabel>
+            <translation><!-- Khulna --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kinshasa</masterLabel>
+            <translation><!-- Kinshasa --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kirundo</masterLabel>
+            <translation><!-- Kirundo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kishoreganj</masterLabel>
+            <translation><!-- Kishoreganj --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Komondjari</masterLabel>
+            <translation><!-- Komondjari --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kompienga</masterLabel>
+            <translation><!-- Kompienga --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kongo Central</masterLabel>
+            <translation><!-- Kongo Central --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Korçë</masterLabel>
+            <translation><!-- Korçë --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kossi</masterLabel>
+            <translation><!-- Kossi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kotayk</masterLabel>
+            <translation><!-- Kotayk --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kouilou</masterLabel>
+            <translation><!-- Kouilou --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Koulpelogo</masterLabel>
+            <translation><!-- Koulpelogo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kouritenga</masterLabel>
+            <translation><!-- Kouritenga --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kourweogo</masterLabel>
+            <translation><!-- Kourweogo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kraj Vysocina</masterLabel>
+            <translation><!-- Kraj Vysocina --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kralovehradecky</masterLabel>
+            <translation><!-- Kralovehradecky --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kukës</masterLabel>
+            <translation><!-- Kukës --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kunar</masterLabel>
+            <translation><!-- Kunar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kunduz</masterLabel>
+            <translation><!-- Kunduz --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kurdamir</masterLabel>
+            <translation><!-- Kurdamir --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kurigram</masterLabel>
+            <translation><!-- Kurigram --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kushtia</masterLabel>
+            <translation><!-- Kushtia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kwango</masterLabel>
+            <translation><!-- Kwango --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kweneng</masterLabel>
+            <translation><!-- Kweneng --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kwilu</masterLabel>
+            <translation><!-- Kwilu --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kyustendil</masterLabel>
+            <translation><!-- Kyustendil --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>La Araucanía</masterLabel>
+            <translation><!-- La Araucanía --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>La Guajira</masterLabel>
+            <translation><!-- La Guajira --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>La Habana</masterLabel>
+            <translation><!-- La Habana --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>La Massana</masterLabel>
+            <translation><!-- La Massana --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>La Pampa</masterLabel>
+            <translation><!-- La Pampa --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>La Paz</masterLabel>
+            <translation><!-- La Paz --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>La Rioja</masterLabel>
+            <translation><!-- La Rioja --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lacin</masterLabel>
+            <translation><!-- Lacin --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lacs</masterLabel>
+            <translation><!-- Lacs --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Laghman</masterLabel>
+            <translation><!-- Laghman --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Laghouat</masterLabel>
+            <translation><!-- Laghouat --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lagunes</masterLabel>
+            <translation><!-- Lagunes --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lakshmipur</masterLabel>
+            <translation><!-- Lakshmipur --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lalmonirhat</masterLabel>
+            <translation><!-- Lalmonirhat --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lankaran (City)</masterLabel>
+            <translation><!-- Lankaran (City) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lankaran (District)</masterLabel>
+            <translation><!-- Lankaran (District) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Larnaka</masterLabel>
+            <translation><!-- Larnaka --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Las Tunas</masterLabel>
+            <translation><!-- Las Tunas --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lefkosia</masterLabel>
+            <translation><!-- Lefkosia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lekoumou</masterLabel>
+            <translation><!-- Lekoumou --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lemesos</masterLabel>
+            <translation><!-- Lemesos --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Leraba</masterLabel>
+            <translation><!-- Leraba --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lerik</masterLabel>
+            <translation><!-- Lerik --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lezhë</masterLabel>
+            <translation><!-- Lezhë --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lhuentse</masterLabel>
+            <translation><!-- Lhuentse --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Liaoning Sheng</masterLabel>
+            <translation><!-- Liaoning Sheng --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Liberecky Kraj</masterLabel>
+            <translation><!-- Liberecky Kraj --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Liege</masterLabel>
+            <translation><!-- Liege --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Likouala</masterLabel>
+            <translation><!-- Likouala --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Limburg</masterLabel>
+            <translation><!-- Limburg --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Limon</masterLabel>
+            <translation><!-- Limon --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Littoral</masterLabel>
+            <translation><!-- Littoral --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lobatse</masterLabel>
+            <translation><!-- Lobatse --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lobaye</masterLabel>
+            <translation><!-- Lobaye --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Logar</masterLabel>
+            <translation><!-- Logar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Loja</masterLabel>
+            <translation><!-- Loja --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lomami</masterLabel>
+            <translation><!-- Lomami --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Long Island</masterLabel>
+            <translation><!-- Long Island --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Loroum</masterLabel>
+            <translation><!-- Loroum --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lory</masterLabel>
+            <translation><!-- Lory --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Los Lagos</masterLabel>
+            <translation><!-- Los Lagos --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Los Rios</masterLabel>
+            <translation><!-- Los Rios --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Louisiana</masterLabel>
             <translation><!-- Louisiana --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lovech</masterLabel>
+            <translation><!-- Lovech --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lualaba</masterLabel>
+            <translation><!-- Lualaba --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Luanda</masterLabel>
+            <translation><!-- Luanda --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lunda-Norte</masterLabel>
+            <translation><!-- Lunda-Norte --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lunda-Sul</masterLabel>
+            <translation><!-- Lunda-Sul --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Luxembourg</masterLabel>
+            <translation><!-- Luxembourg --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Luzern</masterLabel>
+            <translation><!-- Luzern --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Maakel (Maekel)</masterLabel>
+            <translation><!-- Maakel (Maekel) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Madaripur</masterLabel>
+            <translation><!-- Madaripur --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Magallanes</masterLabel>
+            <translation><!-- Magallanes --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Magdalena</masterLabel>
+            <translation><!-- Magdalena --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Magura</masterLabel>
+            <translation><!-- Magura --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mahilyowskaya</masterLabel>
+            <translation><!-- Mahilyowskaya --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mai-Ndombe</masterLabel>
+            <translation><!-- Mai-Ndombe --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Maine</masterLabel>
             <translation><!-- Maine --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Maio</masterLabel>
+            <translation><!-- Maio --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Makamba</masterLabel>
+            <translation><!-- Makamba --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Malange</masterLabel>
+            <translation><!-- Malange --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mambere-Kadei</masterLabel>
+            <translation><!-- Mambere-Kadei --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Manabi</masterLabel>
+            <translation><!-- Manabi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mangrove Cay</masterLabel>
+            <translation><!-- Mangrove Cay --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Maniema</masterLabel>
+            <translation><!-- Maniema --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Manikganj</masterLabel>
+            <translation><!-- Manikganj --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Manitoba</masterLabel>
             <translation><!-- Manitoba --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Maranhao</masterLabel>
+            <translation><!-- Maranhao --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Maryland</masterLabel>
             <translation><!-- Maryland --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Masalli</masterLabel>
+            <translation><!-- Masalli --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mascara</masterLabel>
+            <translation><!-- Mascara --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Massachusetts</masterLabel>
             <translation><!-- Massachusetts --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Matanzas</masterLabel>
+            <translation><!-- Matanzas --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mato Grosso</masterLabel>
+            <translation><!-- Mato Grosso --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mato Grosso Do Sul</masterLabel>
+            <translation><!-- Mato Grosso Do Sul --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Matruh</masterLabel>
+            <translation><!-- Matruh --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Maule</masterLabel>
+            <translation><!-- Maule --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mayabeque</masterLabel>
+            <translation><!-- Mayabeque --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mayaguana</masterLabel>
+            <translation><!-- Mayaguana --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mbomou</masterLabel>
+            <translation><!-- Mbomou --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mecklenburg-Vorpomm</masterLabel>
+            <translation><!-- Mecklenburg-Vorpomm --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Medea</masterLabel>
+            <translation><!-- Medea --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Meherpur</masterLabel>
+            <translation><!-- Meherpur --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mendoza</masterLabel>
+            <translation><!-- Mendoza --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Meta</masterLabel>
+            <translation><!-- Meta --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Michigan</masterLabel>
             <translation><!-- Michigan --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Midtjylland</masterLabel>
+            <translation><!-- Midtjylland --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mila</masterLabel>
+            <translation><!-- Mila --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Minas Gerais</masterLabel>
+            <translation><!-- Minas Gerais --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mingacevir</masterLabel>
+            <translation><!-- Mingacevir --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Minnesota</masterLabel>
             <translation><!-- Minnesota --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Minskaya</masterLabel>
+            <translation><!-- Minskaya --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Misiones</masterLabel>
+            <translation><!-- Misiones --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Mississippi</masterLabel>
@@ -3317,12 +5393,176 @@
             <translation><!-- Missouri --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Moheli</masterLabel>
+            <translation><!-- Moheli --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mongala</masterLabel>
+            <translation><!-- Mongala --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Monggar</masterLabel>
+            <translation><!-- Monggar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mono</masterLabel>
+            <translation><!-- Mono --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Montagnes</masterLabel>
+            <translation><!-- Montagnes --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Montana</masterLabel>
             <translation><!-- Montana --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Moores Island</masterLabel>
+            <translation><!-- Moores Island --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Moravskoslezsky kraj</masterLabel>
+            <translation><!-- Moravskoslezsky kraj --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Morona Santiago</masterLabel>
+            <translation><!-- Morona Santiago --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mostaganem</masterLabel>
+            <translation><!-- Mostaganem --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mosteiros</masterLabel>
+            <translation><!-- Mosteiros --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mouhoun</masterLabel>
+            <translation><!-- Mouhoun --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Moulvibazar</masterLabel>
+            <translation><!-- Moulvibazar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Moxico</masterLabel>
+            <translation><!-- Moxico --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Msila</masterLabel>
+            <translation><!-- Msila --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Munshiganj</masterLabel>
+            <translation><!-- Munshiganj --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Muramvya</masterLabel>
+            <translation><!-- Muramvya --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Muyinga</masterLabel>
+            <translation><!-- Muyinga --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mwaro</masterLabel>
+            <translation><!-- Mwaro --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mymensingh</masterLabel>
+            <translation><!-- Mymensingh --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Naama</masterLabel>
+            <translation><!-- Naama --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Naftalan</masterLabel>
+            <translation><!-- Naftalan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nahouri</masterLabel>
+            <translation><!-- Nahouri --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Namentenga</masterLabel>
+            <translation><!-- Namentenga --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Namibe</masterLabel>
+            <translation><!-- Namibe --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Namur</masterLabel>
+            <translation><!-- Namur --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nana-Mambere</masterLabel>
+            <translation><!-- Nana-Mambere --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nangarhar</masterLabel>
+            <translation><!-- Nangarhar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Naogaon</masterLabel>
+            <translation><!-- Naogaon --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Napo</masterLabel>
+            <translation><!-- Napo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Narail</masterLabel>
+            <translation><!-- Narail --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Narayanganj</masterLabel>
+            <translation><!-- Narayanganj --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Narino</masterLabel>
+            <translation><!-- Narino --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Narsingdi</masterLabel>
+            <translation><!-- Narsingdi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Natore</masterLabel>
+            <translation><!-- Natore --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Naxcivan</masterLabel>
+            <translation><!-- Naxcivan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nayala</masterLabel>
+            <translation><!-- Nayala --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Nebraska</masterLabel>
             <translation><!-- Nebraska --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Neftcala</masterLabel>
+            <translation><!-- Neftcala --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nei Mongol Zizhiqu</masterLabel>
+            <translation><!-- Nei Mongol Zizhiqu --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Netrakona</masterLabel>
+            <translation><!-- Netrakona --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Neuchatel</masterLabel>
+            <translation><!-- Neuchatel --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Neuquen</masterLabel>
+            <translation><!-- Neuquen --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Nevada</masterLabel>
@@ -3345,12 +5585,92 @@
             <translation><!-- New Mexico --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>New Providence</masterLabel>
+            <translation><!-- New Providence --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New South Wales</masterLabel>
+            <translation><!-- New South Wales --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>New York</masterLabel>
             <translation><!-- New York --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Newfoundland and Labrador</masterLabel>
             <translation><!-- Newfoundland and Labrador --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Newfoundland/Labrado</masterLabel>
+            <translation><!-- Newfoundland/Labrado --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ngozi</masterLabel>
+            <translation><!-- Ngozi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Niari</masterLabel>
+            <translation><!-- Niari --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nidwalden</masterLabel>
+            <translation><!-- Nidwalden --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Niederoesterreich</masterLabel>
+            <translation><!-- Niederoesterreich --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Niedersachsen</masterLabel>
+            <translation><!-- Niedersachsen --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nilphamari</masterLabel>
+            <translation><!-- Nilphamari --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nimroz</masterLabel>
+            <translation><!-- Nimroz --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ningxia Huizu Zizhiqu</masterLabel>
+            <translation><!-- Ningxia Huizu Zizhiqu --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Noakhali</masterLabel>
+            <translation><!-- Noakhali --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nord-Kivu</masterLabel>
+            <translation><!-- Nord-Kivu --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nord-Ubangi</masterLabel>
+            <translation><!-- Nord-Ubangi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nordjylland</masterLabel>
+            <translation><!-- Nordjylland --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nordrhein-Westfalen</masterLabel>
+            <translation><!-- Nordrhein-Westfalen --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Norte De Santander</masterLabel>
+            <translation><!-- Norte De Santander --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>North</masterLabel>
+            <translation><!-- North --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>North Abaco</masterLabel>
+            <translation><!-- North Abaco --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>North Andros</masterLabel>
+            <translation><!-- North Andros --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>North Carolina</masterLabel>
@@ -3361,16 +5681,64 @@
             <translation><!-- North Dakota --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>North East</masterLabel>
+            <translation><!-- North East --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>North Eleuthera</masterLabel>
+            <translation><!-- North Eleuthera --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>North West</masterLabel>
+            <translation><!-- North West --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>North-West</masterLabel>
+            <translation><!-- North-West --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Northern Territory</masterLabel>
+            <translation><!-- Northern Territory --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Northwest Territories</masterLabel>
             <translation><!-- Northwest Territories --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Noumbiel</masterLabel>
+            <translation><!-- Noumbiel --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Nova Scotia</masterLabel>
             <translation><!-- Nova Scotia --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Nuble</masterLabel>
+            <translation><!-- Nuble --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Nunavut</masterLabel>
             <translation><!-- Nunavut --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nuristan</masterLabel>
+            <translation><!-- Nuristan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Oberoesterreich</masterLabel>
+            <translation><!-- Oberoesterreich --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Obock</masterLabel>
+            <translation><!-- Obock --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Obwalden</masterLabel>
+            <translation><!-- Obwalden --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Oguz</masterLabel>
+            <translation><!-- Oguz --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Ohio</masterLabel>
@@ -3381,16 +5749,240 @@
             <translation><!-- Oklahoma --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Olomoucky Kraj</masterLabel>
+            <translation><!-- Olomoucky Kraj --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ombella-Mpoko</masterLabel>
+            <translation><!-- Ombella-Mpoko --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Ontario</masterLabel>
             <translation><!-- Ontario --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Oost-Vlaanderen</masterLabel>
+            <translation><!-- Oost-Vlaanderen --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Oran</masterLabel>
+            <translation><!-- Oran --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Orange Walk</masterLabel>
+            <translation><!-- Orange Walk --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ordino</masterLabel>
+            <translation><!-- Ordino --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ordubad</masterLabel>
+            <translation><!-- Ordubad --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Oregon</masterLabel>
             <translation><!-- Oregon --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Orellana</masterLabel>
+            <translation><!-- Orellana --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Oruro</masterLabel>
+            <translation><!-- Oruro --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ouaka</masterLabel>
+            <translation><!-- Ouaka --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ouargla</masterLabel>
+            <translation><!-- Ouargla --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Oubritenga</masterLabel>
+            <translation><!-- Oubritenga --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Oudalan</masterLabel>
+            <translation><!-- Oudalan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Oueme</masterLabel>
+            <translation><!-- Oueme --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ouham</masterLabel>
+            <translation><!-- Ouham --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ouham-Pende</masterLabel>
+            <translation><!-- Ouham-Pende --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ouled Djellal</masterLabel>
+            <translation><!-- Ouled Djellal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Oum El Bouaghi</masterLabel>
+            <translation><!-- Oum El Bouaghi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ozama</masterLabel>
+            <translation><!-- Ozama --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pabna</masterLabel>
+            <translation><!-- Pabna --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pafos</masterLabel>
+            <translation><!-- Pafos --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Paktia</masterLabel>
+            <translation><!-- Paktia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Paktika</masterLabel>
+            <translation><!-- Paktika --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Panchagarh</masterLabel>
+            <translation><!-- Panchagarh --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pando</masterLabel>
+            <translation><!-- Pando --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Panjshayr</masterLabel>
+            <translation><!-- Panjshayr --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Para</masterLabel>
+            <translation><!-- Para --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Paraiba</masterLabel>
+            <translation><!-- Paraiba --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Parana</masterLabel>
+            <translation><!-- Parana --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pardubicky Kraj</masterLabel>
+            <translation><!-- Pardubicky Kraj --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Paro</masterLabel>
+            <translation><!-- Paro --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Parwan</masterLabel>
+            <translation><!-- Parwan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Passore</masterLabel>
+            <translation><!-- Passore --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pastaza</masterLabel>
+            <translation><!-- Pastaza --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Patuakhali</masterLabel>
+            <translation><!-- Patuakhali --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Paul</masterLabel>
+            <translation><!-- Paul --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pazardzhik</masterLabel>
+            <translation><!-- Pazardzhik --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pema Gatshel</masterLabel>
+            <translation><!-- Pema Gatshel --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Pennsylvania</masterLabel>
             <translation><!-- Pennsylvania --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pernambuco</masterLabel>
+            <translation><!-- Pernambuco --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pernik</masterLabel>
+            <translation><!-- Pernik --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Piaui</masterLabel>
+            <translation><!-- Piaui --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pichincha</masterLabel>
+            <translation><!-- Pichincha --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pinar Del Rio</masterLabel>
+            <translation><!-- Pinar Del Rio --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pirojpur</masterLabel>
+            <translation><!-- Pirojpur --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Plateau</masterLabel>
+            <translation><!-- Plateau --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Plateaux</masterLabel>
+            <translation><!-- Plateaux --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pleven</masterLabel>
+            <translation><!-- Pleven --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Plovdiv</masterLabel>
+            <translation><!-- Plovdiv --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Plzensky Kraj</masterLabel>
+            <translation><!-- Plzensky Kraj --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pointe-Noire</masterLabel>
+            <translation><!-- Pointe-Noire --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Poni</masterLabel>
+            <translation><!-- Poni --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pool</masterLabel>
+            <translation><!-- Pool --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Porto Novo</masterLabel>
+            <translation><!-- Porto Novo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Potosi</masterLabel>
+            <translation><!-- Potosi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Praha, Hlavni mesto</masterLabel>
+            <translation><!-- Praha, Hlavni mesto --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Praia</masterLabel>
+            <translation><!-- Praia --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Prince Edward Island</masterLabel>
@@ -3401,20 +5993,640 @@
             <translation><!-- Puerto Rico --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Punakha</masterLabel>
+            <translation><!-- Punakha --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Puntarenas</masterLabel>
+            <translation><!-- Puntarenas --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Putumayo</masterLabel>
+            <translation><!-- Putumayo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Qabala</masterLabel>
+            <translation><!-- Qabala --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Qax</masterLabel>
+            <translation><!-- Qax --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Qazax</masterLabel>
+            <translation><!-- Qazax --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Qina</masterLabel>
+            <translation><!-- Qina --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Qinghai Sheng</masterLabel>
+            <translation><!-- Qinghai Sheng --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Qobustan</masterLabel>
+            <translation><!-- Qobustan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Quba</masterLabel>
+            <translation><!-- Quba --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Qubadli</masterLabel>
+            <translation><!-- Qubadli --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Quebec</masterLabel>
             <translation><!-- Quebec --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Queensland</masterLabel>
+            <translation><!-- Queensland --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Quindio</masterLabel>
+            <translation><!-- Quindio --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Qusar</masterLabel>
+            <translation><!-- Qusar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ra&apos;s Al Khaymah</masterLabel>
+            <translation><!-- Ra&apos;s Al Khaymah --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ragged Island</masterLabel>
+            <translation><!-- Ragged Island --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rajbari</masterLabel>
+            <translation><!-- Rajbari --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rajshahi</masterLabel>
+            <translation><!-- Rajshahi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rangamati</masterLabel>
+            <translation><!-- Rangamati --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rangpur</masterLabel>
+            <translation><!-- Rangpur --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Razgrad</masterLabel>
+            <translation><!-- Razgrad --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Redonda</masterLabel>
+            <translation><!-- Redonda --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Relizane</masterLabel>
+            <translation><!-- Relizane --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Republika Srpska</masterLabel>
+            <translation><!-- Republika Srpska --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rheinland-Pfalz</masterLabel>
+            <translation><!-- Rheinland-Pfalz --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Rhode Island</masterLabel>
             <translation><!-- Rhode Island --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Ribeira Brava</masterLabel>
+            <translation><!-- Ribeira Brava --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ribeira Grande</masterLabel>
+            <translation><!-- Ribeira Grande --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ribeira Grande deSan</masterLabel>
+            <translation><!-- Ribeira Grande deSan --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Rif Dimashq</masterLabel>
             <translation><!-- Rif Dimashq --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Rio De Janeiro</masterLabel>
+            <translation><!-- Rio De Janeiro --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rio Grande Do Norte</masterLabel>
+            <translation><!-- Rio Grande Do Norte --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rio Grande Do Sul</masterLabel>
+            <translation><!-- Rio Grande Do Sul --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rio Negro</masterLabel>
+            <translation><!-- Rio Negro --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Risaralda</masterLabel>
+            <translation><!-- Risaralda --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rondonia</masterLabel>
+            <translation><!-- Rondonia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Roraima</masterLabel>
+            <translation><!-- Roraima --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rum Cay</masterLabel>
+            <translation><!-- Rum Cay --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rumonge</masterLabel>
+            <translation><!-- Rumonge --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ruse</masterLabel>
+            <translation><!-- Ruse --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rutana</masterLabel>
+            <translation><!-- Rutana --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ruyigi</masterLabel>
+            <translation><!-- Ruyigi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>S Dom de los Tsachil</masterLabel>
+            <translation><!-- S Dom de los Tsachil --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SAL</masterLabel>
+            <translation><!-- SAL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Saarland</masterLabel>
+            <translation><!-- Saarland --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Saatli</masterLabel>
+            <translation><!-- Saatli --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Saba</masterLabel>
+            <translation><!-- Saba --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sabirabad</masterLabel>
+            <translation><!-- Sabirabad --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sabran</masterLabel>
+            <translation><!-- Sabran --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sachsen</masterLabel>
+            <translation><!-- Sachsen --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sachsen-Anhalt</masterLabel>
+            <translation><!-- Sachsen-Anhalt --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sadarak</masterLabel>
+            <translation><!-- Sadarak --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sahbuz</masterLabel>
+            <translation><!-- Sahbuz --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Saida</masterLabel>
+            <translation><!-- Saida --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Saint Andrew</masterLabel>
+            <translation><!-- Saint Andrew --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Saint David</masterLabel>
+            <translation><!-- Saint David --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Saint George</masterLabel>
+            <translation><!-- Saint George --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Saint James</masterLabel>
+            <translation><!-- Saint James --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Saint John</masterLabel>
+            <translation><!-- Saint John --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Saint Joseph</masterLabel>
+            <translation><!-- Saint Joseph --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Saint Lucy</masterLabel>
+            <translation><!-- Saint Lucy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Saint Luke</masterLabel>
+            <translation><!-- Saint Luke --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Saint Mark</masterLabel>
+            <translation><!-- Saint Mark --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Saint Mary</masterLabel>
+            <translation><!-- Saint Mary --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Saint Michael</masterLabel>
+            <translation><!-- Saint Michael --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Saint Patrick</masterLabel>
+            <translation><!-- Saint Patrick --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Saint Paul</masterLabel>
+            <translation><!-- Saint Paul --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Saint Peter</masterLabel>
+            <translation><!-- Saint Peter --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Saint Philip</masterLabel>
+            <translation><!-- Saint Philip --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Saint Thomas</masterLabel>
+            <translation><!-- Saint Thomas --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Saki (City)</masterLabel>
+            <translation><!-- Saki (City) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Saki (District)</masterLabel>
+            <translation><!-- Saki (District) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Salta</masterLabel>
+            <translation><!-- Salta --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Salyan</masterLabel>
+            <translation><!-- Salyan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Salzburg</masterLabel>
+            <translation><!-- Salzburg --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Samangan</masterLabel>
+            <translation><!-- Samangan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Samaxi</masterLabel>
+            <translation><!-- Samaxi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Samdrup Jongkhar</masterLabel>
+            <translation><!-- Samdrup Jongkhar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Samkir</masterLabel>
+            <translation><!-- Samkir --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Samtse</masterLabel>
+            <translation><!-- Samtse --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Samux</masterLabel>
+            <translation><!-- Samux --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>San Andres</masterLabel>
+            <translation><!-- San Andres --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>San Jose</masterLabel>
+            <translation><!-- San Jose --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>San Juan</masterLabel>
+            <translation><!-- San Juan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>San Luis</masterLabel>
+            <translation><!-- San Luis --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>San Salvador</masterLabel>
+            <translation><!-- San Salvador --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sancti Spiritus</masterLabel>
+            <translation><!-- Sancti Spiritus --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sangha</masterLabel>
+            <translation><!-- Sangha --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sangha-Mbaere</masterLabel>
+            <translation><!-- Sangha-Mbaere --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sanguie</masterLabel>
+            <translation><!-- Sanguie --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sankt Gallen</masterLabel>
+            <translation><!-- Sankt Gallen --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sankuru</masterLabel>
+            <translation><!-- Sankuru --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sanmatenga</masterLabel>
+            <translation><!-- Sanmatenga --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sant Julia de Loria</masterLabel>
+            <translation><!-- Sant Julia de Loria --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Santa Catarina</masterLabel>
+            <translation><!-- Santa Catarina --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Santa Catarina do Fo</masterLabel>
+            <translation><!-- Santa Catarina do Fo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Santa Cruz</masterLabel>
+            <translation><!-- Santa Cruz --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Santa Elena</masterLabel>
+            <translation><!-- Santa Elena --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Santa Fe</masterLabel>
+            <translation><!-- Santa Fe --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Santander</masterLabel>
+            <translation><!-- Santander --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Santiago</masterLabel>
+            <translation><!-- Santiago --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Santiago de Cuba</masterLabel>
+            <translation><!-- Santiago de Cuba --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Santiago del Estero</masterLabel>
+            <translation><!-- Santiago del Estero --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sao Domingos</masterLabel>
+            <translation><!-- Sao Domingos --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sao Filipe</masterLabel>
+            <translation><!-- Sao Filipe --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sao Lourenco dos Org</masterLabel>
+            <translation><!-- Sao Lourenco dos Org --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sao Miguel</masterLabel>
+            <translation><!-- Sao Miguel --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sao Paulo</masterLabel>
+            <translation><!-- Sao Paulo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sao Salvador do Mund</masterLabel>
+            <translation><!-- Sao Salvador do Mund --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sao Vicente</masterLabel>
+            <translation><!-- Sao Vicente --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sar-e Pul</masterLabel>
+            <translation><!-- Sar-e Pul --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sarpang</masterLabel>
+            <translation><!-- Sarpang --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sarur</masterLabel>
+            <translation><!-- Sarur --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Saskatchewan</masterLabel>
             <translation><!-- Saskatchewan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sassandra-Marahoue</masterLabel>
+            <translation><!-- Sassandra-Marahoue --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Satkhira</masterLabel>
+            <translation><!-- Satkhira --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Savanes</masterLabel>
+            <translation><!-- Savanes --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Schaffhausen</masterLabel>
+            <translation><!-- Schaffhausen --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Schleswig-Holstein</masterLabel>
+            <translation><!-- Schleswig-Holstein --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Schwyz</masterLabel>
+            <translation><!-- Schwyz --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Selibe Phikwe</masterLabel>
+            <translation><!-- Selibe Phikwe --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Semenawi Keyih Bahri</masterLabel>
+            <translation><!-- Semenawi Keyih Bahri --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Seno</masterLabel>
+            <translation><!-- Seno --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sergipe</masterLabel>
+            <translation><!-- Sergipe --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Setif</masterLabel>
+            <translation><!-- Setif --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Shaanxi Sheng</masterLabel>
+            <translation><!-- Shaanxi Sheng --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Shamal Sina</masterLabel>
+            <translation><!-- Shamal Sina --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Shandong Sheng</masterLabel>
+            <translation><!-- Shandong Sheng --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Shanghai Shi</masterLabel>
+            <translation><!-- Shanghai Shi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Shanxi Sheng</masterLabel>
+            <translation><!-- Shanxi Sheng --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Shariatpur</masterLabel>
+            <translation><!-- Shariatpur --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sharjah</masterLabel>
+            <translation><!-- Sharjah --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sherpur</masterLabel>
+            <translation><!-- Sherpur --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Shkodër</masterLabel>
+            <translation><!-- Shkodër --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Shumen</masterLabel>
+            <translation><!-- Shumen --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sichuan Sheng</masterLabel>
+            <translation><!-- Sichuan Sheng --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sidi Bel Abbes</masterLabel>
+            <translation><!-- Sidi Bel Abbes --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Silistra</masterLabel>
+            <translation><!-- Silistra --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sint Eustatius</masterLabel>
+            <translation><!-- Sint Eustatius --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sirajganj</masterLabel>
+            <translation><!-- Sirajganj --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sirak</masterLabel>
+            <translation><!-- Sirak --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sirvan</masterLabel>
+            <translation><!-- Sirvan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sissli</masterLabel>
+            <translation><!-- Sissli --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Siyazan</masterLabel>
+            <translation><!-- Siyazan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sjaelland</masterLabel>
+            <translation><!-- Sjaelland --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Skikda</masterLabel>
+            <translation><!-- Skikda --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sliven</masterLabel>
+            <translation><!-- Sliven --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Smolyan</masterLabel>
+            <translation><!-- Smolyan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sofia</masterLabel>
+            <translation><!-- Sofia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sofia-Grad</masterLabel>
+            <translation><!-- Sofia-Grad --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Solothurn</masterLabel>
+            <translation><!-- Solothurn --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Souk Ahras</masterLabel>
+            <translation><!-- Souk Ahras --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Soum</masterLabel>
+            <translation><!-- Soum --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sourou</masterLabel>
+            <translation><!-- Sourou --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>South</masterLabel>
+            <translation><!-- South --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>South Abaco</masterLabel>
+            <translation><!-- South Abaco --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>South Andros</masterLabel>
+            <translation><!-- South Andros --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>South Australia</masterLabel>
+            <translation><!-- South Australia --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>South Carolina</masterLabel>
@@ -3425,6 +6637,154 @@
             <translation><!-- South Dakota --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>South East</masterLabel>
+            <translation><!-- South East --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>South Eleuthera</masterLabel>
+            <translation><!-- South Eleuthera --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>South-West</masterLabel>
+            <translation><!-- South-West --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Southern</masterLabel>
+            <translation><!-- Southern --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sowa Town</masterLabel>
+            <translation><!-- Sowa Town --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Spanish Wells</masterLabel>
+            <translation><!-- Spanish Wells --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Stann Creek</masterLabel>
+            <translation><!-- Stann Creek --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Stara Zagora</masterLabel>
+            <translation><!-- Stara Zagora --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Steiermark</masterLabel>
+            <translation><!-- Steiermark --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Stredockesky kraj</masterLabel>
+            <translation><!-- Stredockesky kraj --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sucre</masterLabel>
+            <translation><!-- Sucre --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sucumbios</masterLabel>
+            <translation><!-- Sucumbios --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sud-Kivu</masterLabel>
+            <translation><!-- Sud-Kivu --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sud-Ubangi</masterLabel>
+            <translation><!-- Sud-Ubangi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Suhaj</masterLabel>
+            <translation><!-- Suhaj --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sumqayit</masterLabel>
+            <translation><!-- Sumqayit --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sunamganj</masterLabel>
+            <translation><!-- Sunamganj --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Susa (District)</masterLabel>
+            <translation><!-- Susa (District) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Syddanmark</masterLabel>
+            <translation><!-- Syddanmark --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sylhet</masterLabel>
+            <translation><!-- Sylhet --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Syunik</masterLabel>
+            <translation><!-- Syunik --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tadjourah</masterLabel>
+            <translation><!-- Tadjourah --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Takhar</masterLabel>
+            <translation><!-- Takhar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tamanrasset</masterLabel>
+            <translation><!-- Tamanrasset --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tangail</masterLabel>
+            <translation><!-- Tangail --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tanganyika</masterLabel>
+            <translation><!-- Tanganyika --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tapoa</masterLabel>
+            <translation><!-- Tapoa --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tarapaca</masterLabel>
+            <translation><!-- Tarapaca --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Targovishte</masterLabel>
+            <translation><!-- Targovishte --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tarija</masterLabel>
+            <translation><!-- Tarija --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tarrafal</masterLabel>
+            <translation><!-- Tarrafal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tarrafal de Sao Nico</masterLabel>
+            <translation><!-- Tarrafal de Sao Nico --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tartar</masterLabel>
+            <translation><!-- Tartar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tasmania</masterLabel>
+            <translation><!-- Tasmania --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tavus</masterLabel>
+            <translation><!-- Tavus --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tebessa</masterLabel>
+            <translation><!-- Tebessa --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Temburong</masterLabel>
+            <translation><!-- Temburong --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Tennessee</masterLabel>
             <translation><!-- Tennessee --></translation>
         </picklistValues>
@@ -3433,36 +6793,424 @@
             <translation><!-- Texas --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Thakurgaon</masterLabel>
+            <translation><!-- Thakurgaon --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Thimphu</masterLabel>
+            <translation><!-- Thimphu --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Thurgau</masterLabel>
+            <translation><!-- Thurgau --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Thuringen</masterLabel>
+            <translation><!-- Thuringen --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tianjin Shi</masterLabel>
+            <translation><!-- Tianjin Shi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tiaret</masterLabel>
+            <translation><!-- Tiaret --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ticino</masterLabel>
+            <translation><!-- Ticino --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tierra del Fuego</masterLabel>
+            <translation><!-- Tierra del Fuego --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Timimoun</masterLabel>
+            <translation><!-- Timimoun --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tindouf</masterLabel>
+            <translation><!-- Tindouf --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tipaza</masterLabel>
+            <translation><!-- Tipaza --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tiranë</masterLabel>
+            <translation><!-- Tiranë --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tirol</masterLabel>
+            <translation><!-- Tirol --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tissemsilt</masterLabel>
+            <translation><!-- Tissemsilt --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tizi Ouzou</masterLabel>
+            <translation><!-- Tizi Ouzou --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tlemcen</masterLabel>
+            <translation><!-- Tlemcen --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tocantins</masterLabel>
+            <translation><!-- Tocantins --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Toledo</masterLabel>
+            <translation><!-- Toledo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tolima</masterLabel>
+            <translation><!-- Tolima --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Touggourt</masterLabel>
+            <translation><!-- Touggourt --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tovuz</masterLabel>
+            <translation><!-- Tovuz --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Trashi Yangtse</masterLabel>
+            <translation><!-- Trashi Yangtse --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Trashigang</masterLabel>
+            <translation><!-- Trashigang --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Trongsa</masterLabel>
+            <translation><!-- Trongsa --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tshopo</masterLabel>
+            <translation><!-- Tshopo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tshuapa</masterLabel>
+            <translation><!-- Tshuapa --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tsirang</masterLabel>
+            <translation><!-- Tsirang --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tucuman</masterLabel>
+            <translation><!-- Tucuman --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tungurahua</masterLabel>
+            <translation><!-- Tungurahua --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tutong</masterLabel>
+            <translation><!-- Tutong --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tuy</masterLabel>
+            <translation><!-- Tuy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ucar</masterLabel>
+            <translation><!-- Ucar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Uige</masterLabel>
+            <translation><!-- Uige --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Umm Al Qaywayn</masterLabel>
+            <translation><!-- Umm Al Qaywayn --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Uri</masterLabel>
+            <translation><!-- Uri --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Uruzgan</masterLabel>
+            <translation><!-- Uruzgan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ustecky Kraj</masterLabel>
+            <translation><!-- Ustecky Kraj --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Utah</masterLabel>
             <translation><!-- Utah --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Vakaga</masterLabel>
+            <translation><!-- Vakaga --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Valais</masterLabel>
+            <translation><!-- Valais --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Valdesia</masterLabel>
+            <translation><!-- Valdesia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Valle Del Cauca</masterLabel>
+            <translation><!-- Valle Del Cauca --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Vallee du Bandama</masterLabel>
+            <translation><!-- Vallee du Bandama --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Valparaiso</masterLabel>
+            <translation><!-- Valparaiso --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Varna</masterLabel>
+            <translation><!-- Varna --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Vaud</masterLabel>
+            <translation><!-- Vaud --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Vaupes</masterLabel>
+            <translation><!-- Vaupes --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Vayoc Jor</masterLabel>
+            <translation><!-- Vayoc Jor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Veliko Tarnovo</masterLabel>
+            <translation><!-- Veliko Tarnovo --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Vermont</masterLabel>
             <translation><!-- Vermont --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Vichada</masterLabel>
+            <translation><!-- Vichada --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Victoria</masterLabel>
+            <translation><!-- Victoria --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Vidin</masterLabel>
+            <translation><!-- Vidin --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Villa Clara</masterLabel>
+            <translation><!-- Villa Clara --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Virginia</masterLabel>
             <translation><!-- Virginia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Vitsyebskaya</masterLabel>
+            <translation><!-- Vitsyebskaya --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Vlaams Brabant</masterLabel>
+            <translation><!-- Vlaams Brabant --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Vlorë</masterLabel>
+            <translation><!-- Vlorë --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Vorarlberg</masterLabel>
+            <translation><!-- Vorarlberg --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Vratsa</masterLabel>
+            <translation><!-- Vratsa --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wangdue Phodrang</masterLabel>
+            <translation><!-- Wangdue Phodrang --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wardak</masterLabel>
+            <translation><!-- Wardak --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Washington</masterLabel>
             <translation><!-- Washington --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>West</masterLabel>
+            <translation><!-- West --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>West Grand Bahama</masterLabel>
+            <translation><!-- West Grand Bahama --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>West Virginia</masterLabel>
             <translation><!-- West Virginia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>West-Vlaanderen</masterLabel>
+            <translation><!-- West-Vlaanderen --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Western Australia</masterLabel>
+            <translation><!-- Western Australia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wien</masterLabel>
+            <translation><!-- Wien --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Wisconsin</masterLabel>
             <translation><!-- Wisconsin --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Woroba</masterLabel>
+            <translation><!-- Woroba --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Wyoming</masterLabel>
             <translation><!-- Wyoming --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Xankəndi</masterLabel>
+            <translation><!-- Xankəndi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Xaçmaz</masterLabel>
+            <translation><!-- Xaçmaz --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Xinjiang Uygur</masterLabel>
+            <translation><!-- Xinjiang Uygur --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Xizang Zizhiqu</masterLabel>
+            <translation><!-- Xizang Zizhiqu --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Xizi</masterLabel>
+            <translation><!-- Xizi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Xocali</masterLabel>
+            <translation><!-- Xocali --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Xocavand</masterLabel>
+            <translation><!-- Xocavand --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yagha</masterLabel>
+            <translation><!-- Yagha --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yambol</masterLabel>
+            <translation><!-- Yambol --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yamoussoukro</masterLabel>
+            <translation><!-- Yamoussoukro --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yardimli</masterLabel>
+            <translation><!-- Yardimli --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yatenga</masterLabel>
+            <translation><!-- Yatenga --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yevlax (City)</masterLabel>
+            <translation><!-- Yevlax (City) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yevlax (District)</masterLabel>
+            <translation><!-- Yevlax (District) --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Yukon</masterLabel>
             <translation><!-- Yukon --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yuma</masterLabel>
+            <translation><!-- Yuma --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yunnan Sheng</masterLabel>
+            <translation><!-- Yunnan Sheng --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Zabul</masterLabel>
+            <translation><!-- Zabul --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Zaire</masterLabel>
+            <translation><!-- Zaire --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Zamora Chinchipe</masterLabel>
+            <translation><!-- Zamora Chinchipe --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Zangilan</masterLabel>
+            <translation><!-- Zangilan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Zanzan</masterLabel>
+            <translation><!-- Zanzan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Zaqatala</masterLabel>
+            <translation><!-- Zaqatala --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Zardab</masterLabel>
+            <translation><!-- Zardab --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Zhejiang Sheng</masterLabel>
+            <translation><!-- Zhejiang Sheng --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Zhemgang</masterLabel>
+            <translation><!-- Zhemgang --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ziro</masterLabel>
+            <translation><!-- Ziro --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Zlinsky Kraj</masterLabel>
+            <translation><!-- Zlinsky Kraj --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Zondoma</masterLabel>
+            <translation><!-- Zondoma --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Zou</masterLabel>
+            <translation><!-- Zou --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Zoundweogo</masterLabel>
+            <translation><!-- Zoundweogo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Zug</masterLabel>
+            <translation><!-- Zug --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Zurich</masterLabel>
+            <translation><!-- Zurich --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -3580,38 +7328,21 @@
         <name>PCC_Is_Ownership_Transfered__c</name>
     </fields>
     <fields>
+        <label><!-- Lead --></label>
+        <name>PCC_Lead__c</name>
+        <relationshipLabel><!-- Design-Deal Registrations --></relationshipLabel>
+    </fields>
+    <fields>
         <help><!-- The end customer&apos;s market segment classification. Corp are companies with more than 1000 employees. SMB are companies with fewer than 100 employees. --></help>
         <label><!-- Market Segment --></label>
         <name>PCC_Market_Segment__c</name>
-        <picklistValues>
-            <masterLabel>Consumer Retail Pull</masterLabel>
-            <translation><!-- Consumer Retail Pull --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Corp</masterLabel>
-            <translation><!-- Corp --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Education</masterLabel>
-            <translation><!-- Education --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Government</masterLabel>
-            <translation><!-- Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SMB</masterLabel>
-            <translation><!-- SMB --></translation>
-        </picklistValues>
     </fields>
     <fields>
-        <help><!-- Select the ODM(board partner) for Board-based opportunities --></help>
-        <label><!-- ODM/Board Partner Account --></label>
+        <label><!-- ODM/Board partner --></label>
         <name>PCC_ODM_Board_Partner_Account__c</name>
-        <relationshipLabel><!-- Design-Deal Registrations (ODM/Board Partner Account) --></relationshipLabel>
+        <relationshipLabel><!-- Design-Deal Registrations (ODM/Board partner) --></relationshipLabel>
     </fields>
     <fields>
-        <help><!-- Select the ODM(board partner) for Board-based opportunities --></help>
         <label><!-- ODM/Board partner --></label>
         <name>PCC_ODM_Board_partner__c</name>
         <picklistValues>
@@ -3623,280 +7354,44 @@
             <translation><!-- Aaeon --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Accton</masterLabel>
-            <translation><!-- Accton --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Advantech</masterLabel>
             <translation><!-- Advantech --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Aewin</masterLabel>
-            <translation><!-- Aewin --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Asrock</masterLabel>
-            <translation><!-- Asrock --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Asus</masterLabel>
             <translation><!-- Asus --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Avalue</masterLabel>
-            <translation><!-- Avalue --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Axiomtek</masterLabel>
-            <translation><!-- Axiomtek --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Bits &amp; Bytes</masterLabel>
-            <translation><!-- Bits &amp; Bytes --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>CHINA HP CO., LTD.</masterLabel>
-            <translation><!-- CHINA HP CO., LTD. --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Caswell</masterLabel>
-            <translation><!-- Caswell --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Celestica</masterLabel>
-            <translation><!-- Celestica --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Cincoze</masterLabel>
-            <translation><!-- Cincoze --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Congatec</masterLabel>
             <translation><!-- Congatec --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>DELL CHINA INC</masterLabel>
-            <translation><!-- DELL CHINA INC --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>DFI</masterLabel>
             <translation><!-- DFI --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>E-blue tech .Co, limited</masterLabel>
-            <translation><!-- E-blue tech .Co, limited --></translation>
+            <masterLabel>Demo PCC Disti Account 1</masterLabel>
+            <translation><!-- Demo PCC Disti Account 1 --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>ECS</masterLabel>
             <translation><!-- ECS --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>EVOC INTELLIGENT TECHNOLOGY CO., LTD.</masterLabel>
-            <translation><!-- EVOC INTELLIGENT TECHNOLOGY CO., LTD. --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Ennoconn</masterLabel>
-            <translation><!-- Ennoconn --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Firich Enterprises</masterLabel>
-            <translation><!-- Firich Enterprises --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Flytech</masterLabel>
-            <translation><!-- Flytech --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Getac</masterLabel>
-            <translation><!-- Getac --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Gifa</masterLabel>
-            <translation><!-- Gifa --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Gigabyte</masterLabel>
-            <translation><!-- Gigabyte --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Guangzhou Special Control Electronic Industrial Co;Ltd.</masterLabel>
-            <translation><!-- Guangzhou Special Control Electronic Industrial Co;Ltd. --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>IBASE</masterLabel>
-            <translation><!-- IBASE --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>IEI</masterLabel>
             <translation><!-- IEI --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>J&amp;WIPC Technology Development Ltd</masterLabel>
-            <translation><!-- J&amp;WIPC Technology Development Ltd --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>JETWAY</masterLabel>
-            <translation><!-- JETWAY --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Kontron</masterLabel>
             <translation><!-- Kontron --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Lanner</masterLabel>
-            <translation><!-- Lanner --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Lenovo (Beijing) Limited</masterLabel>
-            <translation><!-- Lenovo (Beijing) Limited --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>MSI</masterLabel>
-            <translation><!-- MSI --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Mele Technologies (shenzhen)Co.,Ltd</masterLabel>
-            <translation><!-- Mele Technologies (shenzhen)Co.,Ltd --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Mitac</masterLabel>
-            <translation><!-- Mitac --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Neousys</masterLabel>
-            <translation><!-- Neousys --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Nexcom</masterLabel>
-            <translation><!-- Nexcom --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Others</masterLabel>
-            <translation><!-- Others --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Partner Tech</masterLabel>
-            <translation><!-- Partner Tech --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Portwell</masterLabel>
-            <translation><!-- Portwell --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Posiflex</masterLabel>
-            <translation><!-- Posiflex --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Protech</masterLabel>
-            <translation><!-- Protech --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Ricoh PFU Computing</masterLabel>
-            <translation><!-- Ricoh PFU Computing --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SHENZHEN ASL INTELLIGENT SYSTEMS LTD</masterLabel>
-            <translation><!-- SHENZHEN ASL INTELLIGENT SYSTEMS LTD --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SHENZHEN COLORFUL TECHNOLOGY &amp; DEVELOPMENT CO LTD</masterLabel>
-            <translation><!-- SHENZHEN COLORFUL TECHNOLOGY &amp; DEVELOPMENT CO LTD --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SHENZHEN COMSTAR TECHNOLOGY COMPANY</masterLabel>
-            <translation><!-- SHENZHEN COMSTAR TECHNOLOGY COMPANY --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SHENZHEN DINGSHENG INTELLIGENCE TECHNOLOGY CO., LTD</masterLabel>
-            <translation><!-- SHENZHEN DINGSHENG INTELLIGENCE TECHNOLOGY CO., LTD --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SHENZHEN ELSKY TECHNOLOGY CO.,LTD</masterLabel>
-            <translation><!-- SHENZHEN ELSKY TECHNOLOGY CO.,LTD --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SHENZHEN EMDOOR ELECTRONIC TECHNOLOGY CO., LTD.</masterLabel>
-            <translation><!-- SHENZHEN EMDOOR ELECTRONIC TECHNOLOGY CO., LTD. --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SHENZHEN HANZSUNG TECHNOLOGY CO LTD</masterLabel>
-            <translation><!-- SHENZHEN HANZSUNG TECHNOLOGY CO LTD --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SHENZHEN NORCO INTELLIGENT TECHNOLOGYCO., LTD.</masterLabel>
-            <translation><!-- SHENZHEN NORCO INTELLIGENT TECHNOLOGYCO., LTD. --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SHENZHEN SEAVO TECHNOLOGY CO;LTD</masterLabel>
-            <translation><!-- SHENZHEN SEAVO TECHNOLOGY CO;LTD --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SHENZHEN WEITEMAI TECHNOLOGY CO., LTD.</masterLabel>
-            <translation><!-- SHENZHEN WEITEMAI TECHNOLOGY CO., LTD. --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SHENZHEN ZEAL-ALL TECHNOLOGY LIMITED</masterLabel>
-            <translation><!-- SHENZHEN ZEAL-ALL TECHNOLOGY LIMITED --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SHENZHEN ZEROONE TECHNOLOGY CO., LTD</masterLabel>
-            <translation><!-- SHENZHEN ZEROONE TECHNOLOGY CO., LTD --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SNS Network</masterLabel>
-            <translation><!-- SNS Network --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SUPER MICRO COMPUTER, INC.</masterLabel>
-            <translation><!-- SUPER MICRO COMPUTER, INC. --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Seco</masterLabel>
             <translation><!-- Seco --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Senao Networks</masterLabel>
-            <translation><!-- Senao Networks --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>ShenZhen Topstar Technology co., Ltd</masterLabel>
-            <translation><!-- ShenZhen Topstar Technology co., Ltd --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Shenzhen Datang Computer Co., Ltd.</masterLabel>
-            <translation><!-- Shenzhen Datang Computer Co., Ltd. --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Shenzhen Minwin Technology CO.,LTd</masterLabel>
-            <translation><!-- Shenzhen Minwin Technology CO.,LTd --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Toshiba</masterLabel>
-            <translation><!-- Toshiba --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Tria</masterLabel>
             <translation><!-- Tria --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>V-Series</masterLabel>
-            <translation><!-- V-Series --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Vecow</masterLabel>
-            <translation><!-- Vecow --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>WEIBU - PRC</masterLabel>
-            <translation><!-- WEIBU - PRC --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Wistron</masterLabel>
-            <translation><!-- Wistron --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>suzhou nodka Automation technology Co., LTD.</masterLabel>
-            <translation><!-- suzhou nodka Automation technology Co., LTD. --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -4449,12 +7944,24 @@
         <name>PCC_VisiblityForNewApprover__c</name>
     </fields>
     <fields>
+        <label><!-- Volume Linearity --></label>
+        <name>PCC_Volume_Linearity__c</name>
+    </fields>
+    <fields>
         <label><!-- Partner Account Geo Region --></label>
         <name>Partner_Account_Region__c</name>
     </fields>
     <fields>
         <label><!-- Resubmission mail design --></label>
         <name>Resubmission_mail_design__c</name>
+    </fields>
+    <fields>
+        <label><!-- Test_Form_Report --></label>
+        <name>Test_Form_Report__c</name>
+    </fields>
+    <fields>
+        <label><!-- Test_Geo --></label>
+        <name>Test_Geo__c</name>
     </fields>
     <fields>
         <label><!-- Workflow Stage --></label>
@@ -4479,6 +7986,18 @@
     <fields>
         <label><!-- Approved Date --></label>
         <name>core_cpq_approved_date__c</name>
+    </fields>
+    <fields>
+        <label><!-- test Geo1 --></label>
+        <name>test_Geo1__c</name>
+    </fields>
+    <fields>
+        <label><!-- test --></label>
+        <name>test__c</name>
+    </fields>
+    <fields>
+        <label><!-- test df --></label>
+        <name>test_df__c</name>
     </fields>
     <recordTypes>
         <description><!-- Design Registration owned by Intel User. --></description>
@@ -4560,8 +8079,16 @@
         <name>DDR_StatusVal_upon_submission_Approval</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- End customer URL cannot be modified. --></errorMessage>
+        <name>DDR_customerURL</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- You cannot change the owner of this record. If required, please raise an IT support request. --></errorMessage>
         <name>Internal_User_not_update_DR_Owner</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You cannot change the Record type of this record. --></errorMessage>
+        <name>Internal_User_not_update_RecordType</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Ensure to have minimum of 2 characters --></errorMessage>
@@ -4573,7 +8100,7 @@
     </validationRules>
     <validationRules>
         <errorMessage><!-- Design Registration Name should not contain the &quot;|&quot; character --></errorMessage>
-        <name>PCC_DDR_Block_Spl_Chars_DRName</name>
+        <name>PCC_Block_Spl_Chars_DRName</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- You cannot edit the field in the given status. --></errorMessage>
@@ -4588,19 +8115,15 @@
         <name>PCC_EndCustAccBlankWithEndCustName</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Registrations for FPGA product group has been disabled. Please refer to the message on Portal for more details --></errorMessage>
-        <name>PCC_FPGA_DesignRegDisable</name>
+        <errorMessage><!-- Either enter End Customer Name or Select End Customer Account --></errorMessage>
+        <name>PCC_EndCustNameAndSearchBlankCheck</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Internal Comments cannot be updated without End Customer --></errorMessage>
         <name>PCC_Internal_Comments_Updation</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- ODM/Board Partner is required when Design Type is Board-based. --></errorMessage>
-        <name>PCC_ODM_Partner_Required_For_Board_Based</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Product Segment selected on Design Details page is not considered for Embedded Designs. Please go back to the Details page to update Product segment to be either Embedded/IOT or Comms Infra. / Networking --></errorMessage>
+        <errorMessage><!-- Product Segment not applicable for Embedded IOT Designs --></errorMessage>
         <name>PCC_ProductSegment_EmbeddedIOT</name>
     </validationRules>
     <validationRules>
@@ -4608,8 +8131,24 @@
         <name>PCC_ProductSegment_EmbeddedIOTBoardSys</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- You do not have access to move the Stage --></errorMessage>
+        <name>PCC_Restrict_Stage_Change</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Add more description --></errorMessage>
+        <name>PCC_ValidationOnDealDescription</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- Please provide valid email address --></errorMessage>
         <name>Partner_FAE_Email_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please Fill the Submission type to M2M --></errorMessage>
+        <name>Submission_type_to_be_mentioned</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- update oopty --></errorMessage>
+        <name>TEST_VAlIDATION</name>
     </validationRules>
     <webLinks>
         <label><!-- Core_Accept_Design --></label>
@@ -4622,5 +8161,9 @@
     <webLinks>
         <label><!-- Core_Reject_Design --></label>
         <name>Core_Reject_Design</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Submit --></label>
+        <name>Submit</name>
     </webLinks>
 </CustomObjectTranslation>

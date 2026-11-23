@@ -17,18 +17,6 @@
         <name>Core_Hierarchy_Name__c</name>
     </fields>
     <fields>
-        <label><!-- IsActive --></label>
-        <name>Core_IsActive__c</name>
-    </fields>
-    <fields>
-        <label><!-- Unique Id --></label>
-        <name>Core_Unique_ID__c</name>
-    </fields>
-    <fields>
-        <label><!-- Deactivation Date --></label>
-        <name>Deactivation_Date__c</name>
-    </fields>
-    <fields>
         <label><!-- Is MMID Blank --></label>
         <name>Is_MMID_Blank__c</name>
     </fields>
@@ -83,6 +71,14 @@
     <fields>
         <label><!-- L4_MaxTDP_rawValue --></label>
         <name>L4_MaxTDP_rawValue__c</name>
+    </fields>
+    <fields>
+        <label><!-- L4_ProcessorNumber_WOR --></label>
+        <name>L4_ProcessorNumber_WOR__c</name>
+    </fields>
+    <fields>
+        <label><!-- L4_ProcessorNumber_WR --></label>
+        <name>L4_ProcessorNumber_WR__c</name>
     </fields>
     <fields>
         <label><!-- L4_ProcessorNumber --></label>
@@ -209,14 +205,6 @@
         <name>L5_Group_withoutBracket__c</name>
     </fields>
     <fields>
-        <label><!-- Line Of Business Description --></label>
-        <name>L5_Line_Of_Business_Description__c</name>
-    </fields>
-    <fields>
-        <label><!-- Line of Business --></label>
-        <name>L5_Line_of_Business__c</name>
-    </fields>
-    <fields>
         <label><!-- L5_MarketCodeName_WOR --></label>
         <name>L5_MarketCodeName_WOR__c</name>
     </fields>
@@ -287,22 +275,6 @@
     <fields>
         <label><!-- L5_ProductDescription --></label>
         <name>L5_ProductDescription__c</name>
-    </fields>
-    <fields>
-        <label><!-- L5_ProfitCenter_WOR --></label>
-        <name>L5_ProfitCenter_WOR__c</name>
-    </fields>
-    <fields>
-        <label><!-- L5_ProfitCenter_WR --></label>
-        <name>L5_ProfitCenter_WR__c</name>
-    </fields>
-    <fields>
-        <label><!-- L5_ProfitCenter --></label>
-        <name>L5_ProfitCenter__c</name>
-    </fields>
-    <fields>
-        <label><!-- Profit Center Description --></label>
-        <name>L5_Profit_Center_Description__c</name>
     </fields>
     <fields>
         <label><!-- L5_mmid_WR --></label>

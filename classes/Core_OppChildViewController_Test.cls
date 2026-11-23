@@ -26,7 +26,7 @@ public class Core_OppChildViewController_Test {
             
             Id masterRecordTypeId = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
         	Account acct = new Account(Name ='Test Account',Core_Account_Type__c = 'End Customer',RecordTypeId=masterRecordTypeId, BillingCity='Seoul',BillingCountry='KOR',BillingStreet='KOR',
-                                       Industry='Accommodation and Food Services',Core_Sub_Industry__c='Accommodation',Core_Sales_Groups__c='Americas Partner Holding');
+                                       Industry='Accommodation and Food Services',Core_Sub_Industry__c='Accommodation',Core_Sales_Groups__c=Core_CRM_Utility.getSalesGroupAPI());
             Database.insert(acct);
             
             
@@ -87,6 +87,13 @@ public class Core_OppChildViewController_Test {
             }
             insert oppTeams;
             
+            //Descriptive Features
+            /*Core_Opportunity_Features__c feature = new Core_Opportunity_Features__c();
+            feature.Core_Feature_Name__c = ;
+            feature.Core_Feature_Type__c = ;
+            feature.Core_Opportunity__c = opps[0].id;
+            insert feature;*/
+            
             //-----------------------------------------------------------------
             // Testing
             
@@ -113,8 +120,10 @@ public class Core_OppChildViewController_Test {
             SelectOption defaultOption = recordTypeOptions[0];
             oppChildViewController.selectedRecordType2 = defaultOption.getValue();
         	oppChildViewController.getNewOppUrl();
+            //oppChildViewController.setNewOppUrl();
         	oppChildViewController.setIsNewOppClickedTotrue();
         	oppChildViewController.getRecordTypeOptions();
+             Core_OppChildViewController.getChildOpptys(solutionGroup.id);
         	Test.stopTest();
         }
     }
@@ -129,7 +138,7 @@ public class Core_OppChildViewController_Test {
                
         Id masterRecordTypeId = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
         Account acct = new Account(Name ='Test Account',Core_Account_Type__c = 'End Customer',RecordTypeId=masterRecordTypeId, BillingCity='Seoul',BillingCountry='KOR',BillingStreet='KOR',
-                                   Industry='Accommodation and Food Services',Core_Sub_Industry__c='Accommodation',Core_Sales_Groups__c='Americas Partner Holding');
+                                   Industry='Accommodation and Food Services',Core_Sub_Industry__c='Accommodation',Core_Sales_Groups__c=Core_CRM_Utility.getSalesGroupAPI());
         Database.insert(acct);
         
         // Master Opportunity with No Subs
@@ -156,5 +165,23 @@ public class Core_OppChildViewController_Test {
         System.assertEquals(oppChildViewController.newOpp(), null);     // Action method shouldn't return anything
         System.assert(oppChildViewController.getNewOppUrl().length() > 0);  // Should return a non-empty string
     }
+    
+   /* static testMethod void testGetChildOpptys(){
+        Opportunity opty = [SELECT Id FROM Opportunity WHERE name = 'Test Opportunity 1 from test method'];
+        Core_OppChildViewController.getChildOpptys(opty.id);
+        
+    }*/
+    static testMethod void testChildRecordWrapper(){
+		Core_OppChildViewController.childRecordsWrapper crWrapper = new Core_OppChildViewController.childRecordsWrapper();
+        crWrapper.Id = null;
+        crWrapper.OppURL = null;
+        crWrapper.OppName = null;
+        crWrapper.TotalOppQuantity = null;
+        crWrapper.CloseDate = null;
+        crWrapper.OpportunityLineItems = null;
+        crWrapper.OpportunityFeatures = null;
+        crWrapper.OpportunityTeamMembers = null;
+    }
+    
 
 }

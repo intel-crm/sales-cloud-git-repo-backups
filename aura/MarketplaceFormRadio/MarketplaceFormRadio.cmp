@@ -6,13 +6,10 @@
     <aura:attribute name="options" type="object[]" description="List of radio option objects. Radio option properties include: 'label', 'value', 'isSelected', 'additionalValues'" />
     <aura:attribute name="valueType" type="string" default="default" description="Can be 'default', 'complex', or 'picklist'" />
     <aura:attribute name="requireAllLevels" type="Boolean" default="false" description="If input is required and 'requireAllLevels' is set to true, input will only be valid if the selection extends to the lowest-most child." />    
-    <aura:attribute name="isChildRequired" type="boolean" default="false" description="Internal" /> <!--psg analysis-->
+    
     <aura:attribute name="handleChange" type="Object" description="Internal" />
-    <aura:attribute name="isInlineRadio" type = "Boolean" default="false" /> <!-- for PSG POC -->
+    
     <aura:attribute name="forceShowError" type="boolean" default="false" description="Internal" />
-    <aura:attribute name="errorMessage" type="string" description="Error message text" />
-    <aura:attribute name="isL3Selected" type="boolean" default="false"/><!--added for PSG POC-->
-    <aura:attribute name="isDropdownValueChanged" type="boolean" default="false" description="Internal" /> 
     
     <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
     <aura:handler name="change" value="{!v.searchTerm}" action="{!c.handleSearch}" />
@@ -36,19 +33,14 @@
       
        <aura:if isTrue="{!v.forceShowError}">
             <div class="errorMessage slds-p-vertical_xxx-small">{!v.errorMessage}</div>
-      </aura:if>
+      </aura:if>  
         
-        
-        <div class = "{!v.isInlineRadio ? 'slds-grid' : ''}">
-            <aura:iteration items="{!v.options}" var="option">
-                <c:MarketplaceFormRadioChild aura:id="radioChild" name="{!v.name}"
-                                             disabled="{!v.disabled}"
-                                             radio="{!option}"
-                                             onchange="{!v.handleChange}" isChildRequired="{!v.isChildRequired}"
-                                             radioFieldName ="{!v.inputSpecId}" errorMessage="{!v.errorMessage}"/>
-            </aura:iteration>
-        </div>
-      
+      <aura:iteration items="{!v.options}" var="option">
+            <c:MarketplaceFormRadioChild aura:id="radioChild" name="{!v.name}"
+                                 disabled="{!v.disabled}"
+                                 radio="{!option}"
+                                 onchange="{!v.handleChange}" />          
+      </aura:iteration>
       
     </div>
 

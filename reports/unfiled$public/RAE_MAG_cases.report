@@ -53,7 +53,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>aanguian,rschutz,scabanda,mberglun,ooderhoh,damarisr</value>
+            <value>aanguian,rschutz,scabanda,mberglun,ooderhoh</value>
         </criteriaItems>
         <criteriaItems>
             <column>STATUS</column>
@@ -91,6 +91,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CREATED_DATEONLY</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

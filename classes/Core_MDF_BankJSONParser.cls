@@ -18,12 +18,8 @@ public class Core_MDF_BankJSONParser {
     public String DUNS_NBR;                 // DUNS
     public String ctry_cd;                  // Country Code
     public String swift_cd;                 // Swift Code
-    public String suppl_nm;				    // Supplier Name
-    public String currency_cd;              // Bank Currency
-    public String suppliercity;             // Bank Supplier City
-    public String supplierregion;           // Bank Supplier Region
-    public String supplierpostal;           // Bank Supplier Postal
-    public String suppliercountry;          // Bank Supplier Country
+    public String suppl_nm;				    //Supplier Name
+    public String currency_cd;              //Bank Currency
 
     /*****************************************************************************************************************************************
     Method Name:                                             parse

@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>CTY TNHH MÁY TÍNH VÀ VT AN KHANG Partner User</description>
+    <description>Công ty TNHH máy tính và viễn thông An K Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>CTY TNHH MÁY TÍNH VÀ VT AN KHANG Partner User</name>
+    <name>Công ty TNHH máy tính và viễn thông An K Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>EMP_11725584_Hong_Hai_Le</parentRole>
+    <parentRole>CngtyTNHHmytnhvvinthngAnKPartnerManager</parentRole>
 </Role>

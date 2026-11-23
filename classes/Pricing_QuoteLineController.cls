@@ -19,7 +19,7 @@ public without sharing class Pricing_QuoteLineController extends TriggerHandler{
     public static List < SBQQ__QuoteLine__c > getQuoteLines(Id recordId) {  
         String getQuoteLinesQuery;
         String statusToExclude = Label.Pricing_Tender_QuoteLine_Status_Revised;
-        getQuoteLinesQuery='SELECT Id, Name, SBQQ__ProductName__c, Pricing_Other_Product_Nm__c, Pricing_Quote_Line_Number__c,Pricing_Application_Agent_Status__c,Pricing_Status_Nm__c,Pricing_Integration_Status_Nm__c, Pricing_Error_Messages__c,Pricing_Program_Type_Nm__c,Pricing_Quote_Program_Nm__c,Pricing_Approved_End_Date_Dt__c,Pricing_ECAP_Price_Amt__c,Pricing_Meet_Comp_Price_Amt__c,Pricing_SIPP_Cb__c, Pricing_Market_Segment_values_Nm__c,Pricing_Change_Request_cb__c,Pricing_Form_Factor_Nm__c FROM SBQQ__QuoteLine__c WHERE SBQQ__Quote__c = : recordId and Pricing_Status_Nm__c != :statusToExclude ORDER BY Pricing_Quote_Line_Number__c ASC';
+        getQuoteLinesQuery='SELECT Id, Name, SBQQ__ProductName__c, Pricing_Other_Product_Nm__c, Pricing_Quote_Line_Number__c,Pricing_Application_Agent_Status__c, Pricing_Status_Nm__c,Pricing_Integration_Status_Nm__c, Pricing_Error_Messages__c,Pricing_Program_Type_Nm__c,Pricing_Quote_Program_Nm__c,Pricing_Approved_End_Date_Dt__c,Pricing_ECAP_Price_Amt__c,Pricing_Meet_Comp_Price_Amt__c,Pricing_SIPP_Cb__c, Pricing_Market_Segment_values_Nm__c,Pricing_Change_Request_cb__c,Pricing_Form_Factor_Nm__c FROM SBQQ__QuoteLine__c WHERE SBQQ__Quote__c = : recordId and Pricing_Status_Nm__c != :statusToExclude ORDER BY Pricing_Quote_Line_Number__c ASC';
         return Database.query(getQuoteLinesQuery);
     }
     
@@ -35,10 +35,7 @@ public without sharing class Pricing_QuoteLineController extends TriggerHandler{
     
     @AuraEnabled(cacheable=true)
     public static Boolean isOEMField() {
-        integer count = [SELECT count() FROM PermissionSetAssignment
-                         WHERE AssigneeId = : Userinfo.getUserId() AND PermissionSet.Name = : Label.Pricing_Tender_PermissionSets_TenderUser
-                        ];
-        return count > 0;
+        return FeatureManagement.checkPermission(Label.Pricing_Tender_PermissionSets_TenderUser);
     }
     
     @AuraEnabled
@@ -46,7 +43,7 @@ public without sharing class Pricing_QuoteLineController extends TriggerHandler{
         SBQQ__QuoteLine__c quoteLine = [SELECT Id, Pricing_Product_Nm__r.Name,Pricing_Other_Product_Nm__c,Pricing_Status_Nm__c, Pricing_Quote_Line_Number__c,SBQQ__Quote__r.Pricing_Server_Deal_Type_Nm__c,SBQQ__Quote__r.SBQQ__Account__c,SBQQ__Quote__r.Pricing_Region_Nm__c,
                                         Pricing_FSE_Recommended_Price_Nm__c, Pricing_ECAP_Price_Amt__c,Pricing_Change_Request_cb__c,Pricing_Form_Factor_Nm__c,Pricing_Reference_Quote_Line_Nbr__r.Pricing_Status_Nm__c,Pricing_Integration_Status_Nm__c,Pricing_Error_Messages__c,
                                         Pricing_Approved_End_Date_Dt__c, Pricing_Approved_Unit_Qty__c,Pricing_Payable_Quantity__c,SBQQ__ProductName__c, Pricing_Other_Competitor_Product_Nm__c, Pricing_Competetor_Product__c,Pricing_EndCustomer_Nm__c,Pricing_FI_Net_RPU_Amt__c,
-                                        Pricing_Approved_Start_Date_Dt__c, Pricing_Meet_Comp_Price_Amt__c, Pricing_Deal_RFQ_Id__c, Pricing_Program_Type_Nm__c,Pricing_Req_Discounted_Unit_Price__c,Pricing_Tentative_ECAP_Price_Amt__c,Pricing_Unit_Qty__c,Pricing_SDM_Fast_Track__c,
+                                        Pricing_Approved_Start_Date_Dt__c, Pricing_Meet_Comp_Price_Amt__c, Pricing_Deal_RFQ_Id__c, Pricing_Program_Type_Nm__c,Pricing_Req_Discounted_Unit_Price__c,Pricing_Unit_Qty__c,Pricing_SDM_Fast_Track__c,
                                         Pricing_Server_Deal_Type_Nm__c,Pricing_Workload_Nm__c,Pricing_New_Change_Request_cb__c,Pricing_SIPP_Cb__c, Pricing_Market_Segment_values_Nm__c FROM SBQQ__QuoteLine__c WHERE Id = : quoteLineId
                                        ];
         return quoteLine;
@@ -166,6 +163,7 @@ public without sharing class Pricing_QuoteLineController extends TriggerHandler{
                 actions.add(Label.Pricing_Tender_QuoteLine_Action_Reject);
                 actions.add(Label.Pricing_Edit_Consumption_Parameters);
                 if(!quoteLine.Pricing_Change_Request_cb__c && checkSVDActiveStatus(quoteLine.Pricing_Program_Type_Nm__c)){
+                    //actions.add(Label.Pricing_Edit_Consumption_Parameters);
                     actions.add(Label.Pricing_Tender_QuoteLine_Action_RevisionRequiredbyOEM);
                 }
             }
@@ -199,6 +197,7 @@ public without sharing class Pricing_QuoteLineController extends TriggerHandler{
                    //Recision Actions Available only for Non-Change Request Non Integration QuoteLines
                    if(quoteLine.Pricing_Integration_Status_Nm__c == null) {
                        actions.add(Label.Pricing_Tender_QuoteLine_Action_Reject);
+                       // Non Change Request and Non SVD
                        
                        if(!quoteLine.Pricing_Change_Request_cb__c && checkSVDActiveStatus(quoteLine.Pricing_Program_Type_Nm__c) ) {
                            actions.add(Label.Pricing_Tender_QuoteLine_Action_RevisionRequiredbyOEM);
@@ -294,7 +293,7 @@ public without sharing class Pricing_QuoteLineController extends TriggerHandler{
         extPersona.add(Label.Pricing_Tender_PermissionSets_PricingTenderPartnerAdministrator);
         extPersona.add(Label.Pricing_Tender_PermissionSets_TenderDrafter);
         if(userHasValidPermissionSet(extPersona)) {
-            actions.add(Label.Pricing_Tender_QuoteLine_Action_Request_Change);
+            actions.add(Label.Pricing_Tender_QuoteLine_Action_Request_Change); // OEM 
         }
         if(userHasValidPermissionSet(new Set < String > {
             Label.Pricing_Tender_PermissionSets_PricingTenderRegionalPricingManager})) {
@@ -340,6 +339,7 @@ public without sharing class Pricing_QuoteLineController extends TriggerHandler{
             actions.add(Label.Pricing_Tender_Cancel_Action);
             //added By ANushaM for US835690
             actions.add(Label.Pricing_Tender_QuoteLine_Action_Request_Change);
+            actions.add(Label.Pricing_QuoteLinenWonLossNotification_Button);
         }
         
         if(allowOnlyForRPM){
@@ -410,6 +410,7 @@ public without sharing class Pricing_QuoteLineController extends TriggerHandler{
                                              //If AppStartdate is in Past then AppEndDate = Cancelation date else Nochange for future deals.
                                              quoteLine.Pricing_Approved_End_Date_Dt__c = quoteLine.Pricing_Approved_End_Date_Dup_Dt__c =  System.today();
                                          }
+                                         //quoteLine.Pricing_Billing_End_Date_Dt__c = quoteLine.Pricing_Approved_Start_Date_Dt__c < System.today() ? quoteLine.Pricing_Billing_End_Date_Dt__c > System.today()  ?  System.today() : quoteLine.Pricing_Billing_End_Date_Dt__c : quoteLine.Pricing_Billing_Start_Date_Dt__c;
                                          quoteLine.Pricing_Billing_End_Date_Dt__c = quoteLine.Pricing_Approved_Start_Date_Dt__c < System.today() && quoteLine.Pricing_Billing_End_Date_Dt__c > System.today()  ?  System.today() : quoteLine.Pricing_Billing_End_Date_Dt__c;
                                      }
                                      else if(quoteLine.Pricing_Quote_Program_Nm__c == Label.Pricing_Tender_FinancialIncentive_Quote && quoteLine.Pricing_Approved_Start_Date_Dt__c < System.today()){
@@ -430,6 +431,9 @@ public without sharing class Pricing_QuoteLineController extends TriggerHandler{
                     if(quoteLine.Pricing_Quote_Program_Nm__c == Label.Pricing_Tender_Quote_Program){
                         Pricing_EmailUtility.sendEmail(qliIds, 'Pricing_QuoteLineCancelEmailNotification');
                     } 
+                    /*else if(quoteLine.Pricing_Quote_Program_Nm__c == Label.Pricing_Tender_FinancialIncentive_Quote){
+                        Pricing_EmailUtility.sendEmail(qliIds, 'Pricing_FI_QL_Cancel_Notification');
+                    }*/
                 }
             }
         }
@@ -490,10 +494,11 @@ public without sharing class Pricing_QuoteLineController extends TriggerHandler{
             Boolean isFieldReviewQL = false;
             Boolean isOEMField = isOEMField();
             String isValidApproval = '';
+            List<Id> quoteLineIds = new List<Id>();
             SBQQ__QuoteLine__c quoteLine = [SELECT Id, Name, Pricing_Status_Nm__c,Pricing_pm_approval_comments_nm__c, Pricing_Rejection_Comments_nm__c,SBQQ__Quote__c,Pricing_Quote_Line_Number__c,Pricing_Integration_Status_Nm__c,Pricing_Error_Messages__c,Pricing_Payable_Quantity__c,Pricing_Approved_Unit_Qty__c,
                                             Pricing_Sales_Rep_Approver__c, Pricing_FSE_Recommended_Price_Nm__c, Pricing_Reference_Quote_Line_Nbr__c,Pricing_Last_Submitted_By_Id__c, Pricing_Rejection_Reason__c, Pricing_Lost_Reason_Nm__c,Pricing_EndCustomer_Nm__c,SBQQ__Quote__r.SBQQ__Account__c,Pricing_New_Change_Request_cb__c,
-                                            Pricing_Change_Request_cb__c, Pricing_Ready_for_Review_cb__c,Customer_Revision_Count_Cnt__c,Pricing_Billing_Start_Date_Dt__c,Field_Revision_Count_Cnt__c, SBQQ__Quote__r.SBQQ__PrimaryContact__r.Id,Pricing_Sales_Rep_Approver__r.Id,SBQQ__Quote__r.Id,SBQQ__Quote__r.Name,Pricing_Won_Lost_Comments_Txt__c,pricing_TDP__c ,Pricing_Additional_Comments_Txt__c,Pricing_Quote_Line_Won_Lost_Status__c,
-                                            Pricing_Program_Type_Nm__c,Pricing_Server_Deal_Type_Nm__c,Pricing_Meet_Comp_Price_Amt__c,Pricing_Unit_Qty__c,Pricing_Tentative_ECAP_Price_Amt__c From SBQQ__QuoteLine__c WHERE Id = : quoteLineId
+                                            Pricing_Change_Request_cb__c, Pricing_SIPP_Cb__c, Pricing_Market_Segment_values_Nm__c, Pricing_Form_Factor_Nm__c, Pricing_Rationale_for_Pricing__c, Pricing_Ready_for_Review_cb__c,Customer_Revision_Count_Cnt__c,Pricing_Billing_Start_Date_Dt__c,Field_Revision_Count_Cnt__c, SBQQ__Quote__r.SBQQ__PrimaryContact__r.Id,Pricing_Sales_Rep_Approver__r.Id,SBQQ__Quote__r.Id,SBQQ__Quote__r.Name,Pricing_Won_Lost_Comments_Txt__c,pricing_TDP__c ,Pricing_Additional_Comments_Txt__c,Pricing_Quote_Line_Won_Lost_Status__c,
+                                            Pricing_Program_Type_Nm__c,Pricing_Server_Deal_Type_Nm__c,Pricing_Meet_Comp_Price_Amt__c,Pricing_Unit_Qty__c From SBQQ__QuoteLine__c WHERE Id = : quoteLineId
                                            ]; 
             Map < string, string > statusMapping = new Map < string, string > ();
             statusMapping.put(Label.Pricing_Tender_QuoteLine_Action_Approve, Label.Pricing_Tender_QuoteLine_Status_Approved);
@@ -524,7 +529,9 @@ public without sharing class Pricing_QuoteLineController extends TriggerHandler{
                     SBQQ.TriggerControl.enable();
                 }
                 if(quoteLine.Pricing_Program_Type_Nm__c == 'Financial Incentive' && (status == 'Approve' || status == 'Reject')){
-                    Pricing_FinancialIncentive_BusinessLogic.populateQLNumberOnOppLineItem(quoteLine.id,null,status);
+                    quoteLineIds.add(quoteLine.Id);
+                    //Pricing_FinancialIncentive_BusinessLogic.populateQLNumberOnOppLineItem(quoteLine.id,null,status);
+                    Pricing_FinancialIncentive_BusinessLogic.populateQLNumberOnOppLineItemBulk(quoteLineIds,status); 
                 }
                 //Create Approval records for only valid FSE on field revision
                 if(isFieldReviewQL){
@@ -556,6 +563,7 @@ public without sharing class Pricing_QuoteLineController extends TriggerHandler{
             quoteLine.Pricing_FSE_Recommended_Price_Nm__c = lineItem.Pricing_FSE_Recommended_Price_Nm__c;
             quoteLine.Pricing_Sales_Rep_Approver__c = UserInfo.getUserId();
             quoteLine.Pricing_SDM_Fast_Track__c = lineItem.Pricing_SDM_Fast_Track__c;
+            //quoteLine.Pricing_Rationale_for_Pricing__c = eligibleForPricingSupportCheck(quoteLine) ? Label.Pricing_Not_Eligible_For_Pricing : '';
             
             if(String.isBlank(rejectionReason)){
                 quoteLine.Pricing_pm_approval_comments_nm__c  = comments == '' ? quoteLine.Pricing_pm_approval_comments_nm__c : comments;
@@ -622,7 +630,7 @@ public without sharing class Pricing_QuoteLineController extends TriggerHandler{
                 quoteLine.Pricing_Meet_Comp_Price_Amt__c = isRPMUser && QuoteLineBusinessLogic.checkforAuotoPopLogic(quoteLine, quoteLine.Pricing_Server_Deal_Type_Nm__c, quoteLine.Pricing_EndCustomer_Nm__c) ? null 
                     : quoteLine.Pricing_Meet_Comp_Price_Amt__c;
                 
-                quoteLine.Pricing_Tentative_ECAP_Price_Amt__c = null;
+                
                 //Blank out Billing Start date if QLI comes under AI Category
                 quoteLine.Pricing_Billing_Start_Date_Dt__c = isRPMUser && QuoteLineBusinessLogic.checkforAuotoPopLogic(quoteLine, quoteLine.Pricing_Server_Deal_Type_Nm__c, quoteLine.Pricing_EndCustomer_Nm__c) ? null 
                     : quoteLine.Pricing_Billing_Start_Date_Dt__c;
@@ -639,7 +647,7 @@ public without sharing class Pricing_QuoteLineController extends TriggerHandler{
                     quoteLine.Pricing_Meet_Comp_Price_Amt__c = isRPMUser && QuoteLineBusinessLogic.checkforAuotoPopLogic(quoteLine, quoteLine.Pricing_Server_Deal_Type_Nm__c, quoteLine.Pricing_EndCustomer_Nm__c) ? null 
                         : quoteLine.Pricing_Meet_Comp_Price_Amt__c;
                     
-                    quoteLine.Pricing_Tentative_ECAP_Price_Amt__c = null;
+                    
                     //Blank out Billing Start date if QLI comes under AI Category
                     quoteLine.Pricing_Billing_Start_Date_Dt__c = isRPMUser && QuoteLineBusinessLogic.checkforAuotoPopLogic(quoteLine, quoteLine.Pricing_Server_Deal_Type_Nm__c, quoteLine.Pricing_EndCustomer_Nm__c) ? null 
                         : quoteLine.Pricing_Billing_Start_Date_Dt__c;
@@ -697,7 +705,7 @@ public without sharing class Pricing_QuoteLineController extends TriggerHandler{
         }
     }
     
-    public static void chatterPostCreation(String revisionComment, SBQQ__QuoteLine__c quoteline, Boolean isFieldRevision, Boolean showRevisionFields ,Boolean isDPMRevision) {
+    public static void chatterPostCreation(String revisionComment, SBQQ__QuoteLine__c quoteline, Boolean isFieldRevision, Boolean showRevisionFields ,Boolean isRollBackRevision) {
         Set<Id> submitterIds = new Set<Id>();
         if(showRevisionFields){
             ConnectApi.FeedItemInput feedItemInput = new ConnectApi.FeedItemInput();
@@ -707,7 +715,7 @@ public without sharing class Pricing_QuoteLineController extends TriggerHandler{
             
             //mention primary contact
             ConnectApi.MentionSegmentInput mentionSegmentInput;
-            if(!isDPMRevision){
+            if(!isRollBackRevision){
                 List<User> primaryContact = [Select Id, ContactId from User where ContactId = :quoteline.SBQQ__Quote__r.SBQQ__PrimaryContact__r.Id];
                 if(!isFieldRevision){
                     if(primaryContact.size() > 0){
@@ -753,7 +761,7 @@ public without sharing class Pricing_QuoteLineController extends TriggerHandler{
             
             // post body
             textSegmentInput = new ConnectApi.TextSegmentInput();
-            String postBody = isDPMRevision ? 'DPM Revision Comments : '+revisionComment : revisionComment;
+            String postBody = revisionComment;
             textSegmentInput.text = '\n'+postBody.stripHtmlTags();
             messageBodyInput.messageSegments.add(textSegmentInput);
             
@@ -772,7 +780,7 @@ public without sharing class Pricing_QuoteLineController extends TriggerHandler{
     // Get the document Id from the name
     @AuraEnabled
     public static Id getDocumentId(string name) {
-        List < Document > document = [SELECT Id FROM Document where Name = : name LIMIT 1];
+        List < Document > document = [SELECT Id, Name FROM Document where Name = : name LIMIT 1];
         return document.isEmpty() ? null : document[0].Id;
     }
     
@@ -789,7 +797,7 @@ public without sharing class Pricing_QuoteLineController extends TriggerHandler{
                                                        SBQQ__Quote__r.Name, Pricing_EndCustomer_Nm__c, SBQQ__Quote__r.Pricing_Folio_ID_Nm__c,SBQQ__Quote__r.Pricing_Deal_Type_Nm__c,
                                                        Pricing_Reference_Quote_Line_Nbr__c,Pricing_Reference_Quote_Line_Nbr__r.Pricing_Quote_Line_Number__c,SBQQ__Quote__r.Pricing_Customer_Nm__c,SBQQ__Quote__r.Pricing_Project_Name_Nm__c,
                                                        SBQQ__Quote__r.Pricing_ShipmentStDate_Dt__c,Pricing_Other_Competitor_Product_Nm__c,SBQQ__Quote__r.Pricing_ShipmentEndDate_Dt__c,
-                                                       Pricing_Server_Deal_Type_Nm__c,SBQQ__Quote__r.Pricing_Program_Type_Nm__c,SBQQ__Quote__r.Pricing_Region_Nm__c,Pricing_Other_Product_Nm__c,Pricing_Manager__c,
+                                                       Pricing_Server_Deal_Type_Nm__c,SBQQ__Quote__r.Pricing_AI_Host_Node_cb__c,SBQQ__Quote__r.Pricing_Program_Type_Nm__c,SBQQ__Quote__r.Pricing_Region_Nm__c,Pricing_Other_Product_Nm__c,Pricing_Manager__c,
                                                        Pricing_Manager__r.Core_WWID__c,SBQQ__Quote__r.SBQQ__Account__r.Id,SBQQ__Quote__r.SBQQ__Account__r.Name,SBQQ__Quote__r.SBQQ__Account__r.Core_Business_Party_Id__c,SBQQ__Quote__r.Pricing_Market_Segment_values_Nm__c,
                                                        Name,Pricing_Revised_Pricing_Start_Date_dt__c,Pricing_Group_Type_nm__c,Pricing_Billing_Start_Date_Dt__c,SBQQ__Product__r.Core_Item_Id__c,
                                                        Pricing_Billing_End_Date_Dt__c,Pricing_Backdate_Reason_Txt__c,Pricing_Reference_Quote_Line_Nbr__r.Pricing_Backdate_Reason_Txt__c,Pricing_Market_Segment_Nm__c,Pricing_ECAP_Price_Amt__c,Pricing_Workload_Nm__c,Pricing_New_Change_Request_cb__c,
@@ -798,7 +806,7 @@ public without sharing class Pricing_QuoteLineController extends TriggerHandler{
                                                        Pricing_Quote_Line_Number__c,SBQQ__Quote__r.Pricing_Unified_Global_End_Customer_Nm__r.Pricing_Unified_EndCustomer_Act_Mapping__r.Pricing_Unified_EndCustomer_Id__c,Pricing_Market_Segment_values_Nm__c,Pricing_Reference_Quote_Line_Nbr__r.Pricing_ECAP_Price_Amt__c,Pricing_Reference_Quote_Line_Nbr__r.Pricing_Approved_Unit_Qty__c,Pricing_Reference_Quote_Line_Nbr__r.Pricing_Approved_Start_Date_Dt__c,
                                                        Pricing_Reference_Quote_Line_Nbr__r.Pricing_Approved_End_Date_Dt__c,Pricing_Reference_Quote_Line_Nbr__r.Pricing_Billing_Start_Date_Dt__c,Pricing_Reference_Quote_Line_Nbr__r.Pricing_Billing_End_Date_Dt__c,Pricing_Reference_Quote_Line_Nbr__r.Pricing_Revised_Pricing_Start_Date_dt__c,Pricing_Consumption_Platform__c,Pricing_Reference_Quote_Line_Nbr__r.Pricing_Consumption_Platform__c,Pricing_Consumption_Sale_Geo__c,Pricing_Reference_Quote_Line_Nbr__r.Pricing_Consumption_Sale_Geo__c,Pricing_Consumption_Country__c,Pricing_Reference_Quote_Line_Nbr__r.Pricing_Consumption_Country__c,Pricing_Consumption_Region__c,Pricing_Reference_Quote_Line_Nbr__r.Pricing_Consumption_Region__c,
                                                        SBQQ__Product__r.Id,SBQQ__Product__r.Name,SBQQ__Product__r.Core_Product_Name_EPM_ID__c,SBQQ__Product__r.Core_Family_Nm__c,SBQQ__Product__r.Core_Forecast_Product_Name__c,SBQQ__Product__r.Core_Processor_Number_Nm__c,Pricing_Product_Nm__r.Name,Pricing_Competetor_Product__r.Id,Pricing_Integration_Status_Nm__c,
-                                                       Pricing_Additional_T_C_s_Txt__c,Pricing_Reference_Quote_Line_Nbr__r.Pricing_Additional_T_C_s_Txt__c,Pricng_Exclude_from_Price_Approval_Rules__c,Pricing_RegionQL_Nm__c,Pricing_Deal_Description__c,Pricing_Reference_Quote_Line_Nbr__r.Pricing_Deal_Description__c,Pricing_Additional_RPM_Notify_Recipients__c,Pricing_Reference_Quote_Line_Nbr__r.Pricing_Additional_RPM_Notify_Recipients__c,Pricing_Competetor_Product__r.Name,SBQQ__Quote__r.Pricing_Unified_Global_End_Customer_Nm__r.Pricing_Unified_EndCustomer_Act_Mapping__r.Name,
+                                                       Pricing_Additional_T_C_s_Txt__c,Pricing_Reference_Quote_Line_Nbr__r.Pricing_Additional_T_C_s_Txt__c,Pricng_Exclude_from_Price_Approval_Rules__c,Pricing_RegionQL_Nm__c,Pricing_Deal_Description__c,Pricing_Reference_Quote_Line_Nbr__r.Pricing_Deal_Description__c,Pricing_Competetor_Product__r.Name,SBQQ__Quote__r.Pricing_Unified_Global_End_Customer_Nm__r.Pricing_Unified_EndCustomer_Act_Mapping__r.Name,
                                                        SBQQ__Quote__r.Pricing_End_Customer__r.Name,SBQQ__Quote__r.Pricing_Unified_Global_End_Customer_Nm__r.Pricing_Unified_EndCustomer_Act_Mapping__c,SBQQ__Quote__r.Pricing_End_Customer__c,SBQQ__Quote__r.Pricing_End_Customer__r.Pricing_Unified_EndCustomer_Id__c,
                                                        SBQQ__Quote__r.Pricing_Unified_Global_End_Customer_Nm__r.Pricing_Unified_Country_EndCustomer_Id__c,SBQQ__Quote__r.Pricing_Unified_Global_End_Customer_Nm__r.Name,SBQQ__Quote__r.Pricing_Unified_Global_End_Customer_Nm__c,SBQQ__Quote__r.Pricing_Unified_Global_End_Customer_Nm__r.Pricing_Compliance_Watch_List__c,SBQQ__Quote__r.Pricing_IsUnifiedCustomer__c,SBQQ__Quote__r.Pricing_End_Customer_Name__c,Pricing_Program_Type_Nm__c,
                                                        SBQQ__Quote__r.Pricing_Is_Sanctioned__c,Pricing_Account_Division_Nm__c,Pricing_Comp_Product_Txt__c,Pricing_Performance_Metric_Nm__c,Pricing_Comp_SKU_Performance_Nbr__c,Pricing_Intel_SKU_Performance_Nbr__c,Pricing_SDM_Fast_Track__c,(SELECT Id,Name,Pricing_Weighting_Pct__c,Pricing_Quote_Line__r.Name,Pricing_Comp_SKU_Performance_Nbr__c,Pricing_Intel_SKU_Performance_Nbr__c,
@@ -887,6 +895,7 @@ to be shown on the UI*/
         List<Pricing_Document__c> documentShareList = new List<Pricing_Document__c>();
         List<Pricing_Quote_Line_Status_Age__c> pricingTPTList = new List<Pricing_Quote_Line_Status_Age__c>();
         List<Pricing_Quote_Team__c> quoteTeamList = new List<Pricing_Quote_Team__c>();
+        System.debug('Exception Testing Quote Id: '+quoteId);
         SBQQ__Quote__c quote = [SELECT id,CreatedbyId,SBQQ__PrimaryContact__c,OwnerId from SBQQ__Quote__c where Id =:quoteId];
         integer count = [SELECT count() FROM PermissionSetAssignment
                          WHERE AssigneeId = : Userinfo.getUserId() AND PermissionSet.Name =:Label.Pricing_Tender_PermissionSets_PricingTenderPartnerAdministrator];
@@ -1046,7 +1055,7 @@ to be shown on the UI*/
     @AuraEnabled
     public static Map<String,List<DataTableColumns>>  getDataTableColumns() {
         Map<String,List<DataTableColumns>> qlTypeToDataTblColMap = new Map<String,List<DataTableColumns>>();
-        List<Pricing_Dynamic_Data_Table__mdt> dynamicDataTableMetadata = [SELECT Id,Pricing_Field_Label__c,Pricing_Field_Value__c, Label, Pricing_Record_Type_Pkl__c FROM Pricing_Dynamic_Data_Table__mdt WHERE Label NOT IN ('Quote', 'Quote Group')];
+        List<Pricing_Dynamic_Data_Table__mdt> dynamicDataTableMetadata = [SELECT Id,Pricing_Field_Label__c,Pricing_Field_Value__c, Label, Pricing_Record_Type_Pkl__c FROM Pricing_Dynamic_Data_Table__mdt WHERE Label NOT IN ('Quote', 'Quote Group', 'Unified L1 and L2 Account Details')];
         for(Pricing_Dynamic_Data_Table__mdt pd: dynamicDataTableMetadata){
             List<string> columnList = new List<string>();
             List<string> fieldAPINameList = new List<string>();
@@ -1167,9 +1176,7 @@ to be shown on the UI*/
 **/
     @AuraEnabled(cacheable=true)
     public static Boolean isFSEorSDM() {
-        integer count = [SELECT count() FROM PermissionSetAssignment 
-                         WHERE AssigneeId = :Userinfo.getUserId() AND (PermissionSet.Name =:Label.Pricing_Tender_PermissionSets_TenderUser)];
-        return count > 0;
+        return FeatureManagement.checkPermission(Label.Pricing_Tender_PermissionSets_TenderUser);
     }
     
     /**
@@ -1188,7 +1195,7 @@ to be shown on the UI*/
 * @description method checks if Enable or disable RPM bulk action for bulk deal creations 
 * @author Accenture | 11-17-2022  
 * @return count 
-**/  
+**/	
     @AuraEnabled(cacheable=true)
     public static Boolean isBulkDealCreations() {
         
@@ -1211,8 +1218,8 @@ to be shown on the UI*/
     * @description method checks if User has RPM Permission Sets assigned or not 
     * @author Accenture  
     * @return count 
-    **/  
-    @AuraEnabled(cacheable=true)
+    **/	
+   @AuraEnabled(cacheable=true)
     public static Boolean hasPricingManagerAccess() {
         integer count = [SELECT count() FROM PermissionSetAssignment 
                          WHERE AssigneeId = :Userinfo.getUserId() AND PermissionSet.Name =:Label.Pricing_Tender_PermissionSets_PricingTenderRegionalPricingManager];
@@ -1223,18 +1230,16 @@ to be shown on the UI*/
     * @description method checks if User has FinancialIncentivePricingManager Permission Sets assigned or not 
     * @author Accenture  
     * @return Boolean true if has access , false is not.
-    **/  
+    **/	
     @AuraEnabled(cacheable=true)
     public static Boolean hasFinancialIncentivePricingManagerPS() {
-        integer count = [SELECT count() FROM PermissionSetAssignment 
-                         WHERE AssigneeId = :Userinfo.getUserId() AND PermissionSet.Name =:Label.Pricing_Tender_PermissionSets_FinancialIncentivePricingManager];
-        return count > 0;
+        return FeatureManagement.checkPermission('Pricing_Financial_Incentive_Regional_Pricing_Manager');
     }
     /**
     * @description method returns picklist options available for Rejection Reasons
     * @author Accenture | 02-02-2023
     * @return options
-    **/  
+    **/	
     @AuraEnabled(cacheable=true)
     public static Map<String, String> getRejectionReasonsValue(Id recId){
 
@@ -1247,7 +1252,7 @@ to be shown on the UI*/
         if(quotes.isEmpty()){
             return options;
         }
-        String quoteProgram = quotes[0].Pricing_Quote_Program_Nm__c;        
+        String quoteProgram = quotes[0].Pricing_Quote_Program_Nm__c;
         Map<String, List<String>> quoteProgramRejectionReasonsMap = Pricing_RestAPI_QuotesUtilityV2.getFieldDependencies('SBQQ__QuoteLine__c', 'Pricing_Quote_Program_Nm__c', 'Pricing_Rejection_Reason__c');
         if(quoteProgramRejectionReasonsMap.size() > 0 && quoteProgramRejectionReasonsMap.containsKey(quoteProgram)){
             for(String rejectionReason : quoteProgramRejectionReasonsMap.get(quoteProgram)){
@@ -1278,7 +1283,7 @@ to be shown on the UI*/
 * @description method will call publishIQR and publish IQR event  
 * @author Accenture | 08-08-2023
 * @param quoteLineId 
-**/  
+**/	
     @AuraEnabled
     public static void handleSyncStatus(Id quoteLineId){
         try {
@@ -1339,13 +1344,13 @@ to be shown on the UI*/
             Map<Id,SBQQ__QuoteLine__c> qliMap = new Map<Id,SBQQ__QuoteLine__c>();
             for(List<SBQQ__Quoteline__c> quoteLines: lstquoteLines){
                 for(SBQQ__QuoteLine__c quoteLine: quoteLines){       
-                    if(quoteLine.Pricing_Program_Type_Nm__c == Label.Pricing_Tender_DataCenter_GPU){
+                    if(quoteLine.Pricing_Program_Type_Nm__c == Label.Pricing_Tender_DataCenter_GPU || quoteLine.Pricing_Program_Type_Nm__c == Label.Pricing_Tender_Standard_QuoteLine){
                         qlIdSet.add(quoteLine.Id);  
                     }  
                 }
             }
             if(qlIdSet.size()>0){
-                qliMap= new Map<Id,SBQQ__QuoteLine__c>([SELECT Id,Pricing_Program_Type_Nm__c,Pricing_Paired_CPU_Nm__r.Name, Pricing_Write_In_Paired_CPU_Nm__c, Pricing_Product_Nm__r.Core_Product_Series__c,Pricing_Product_Nm__r.Name
+                qliMap= new Map<Id,SBQQ__QuoteLine__c>([SELECT Id,Pricing_Program_Type_Nm__c,Pricing_Paired_CPU_Nm__r.Name, Pricing_Write_In_Paired_CPU_Nm__c, Pricing_Product_Nm__r.Core_Product_Series__c
                                                     FROM SBQQ__QuoteLine__c WHERE Id IN :qlIdSet]);                             
             }
             for(SBQQ__QuoteLine__c qli: qliMap.values()){
@@ -1353,8 +1358,8 @@ to be shown on the UI*/
                     qli.Pricing_CPU_Txt__c = (qli.Pricing_Paired_CPU_Nm__r.Name == Label.Pricing_Tender_Write_In_Product)?Label.Pricing_Tender_Write_In_Product:qli.Pricing_Paired_CPU_Nm__r.Name;
                     quotelineList.add(qli); 
                 }
-                else if(qli.Pricing_Product_Nm__r.Name != Label.Pricing_Tender_Write_In_Product && qli.Pricing_Program_Type_Nm__c == Label.Pricing_Tender_Standard_QuoteLine){
-                    qli.Pricing_Product_Series_Name__c = qli.Pricing_Product_Nm__r.Core_Product_Series__c;
+                else if(qli.Pricing_Program_Type_Nm__c == Label.Pricing_Tender_Standard_QuoteLine){
+                    qli.Pricing_Product_Series_Name__c = qliMap.get(qli.Id).Pricing_Product_Nm__r.Core_Product_Series__c;
                     quotelineList.add(qli); 
                 }    
             }
@@ -1412,6 +1417,26 @@ to be shown on the UI*/
         return userPermissionSets;
     }
     /**
+     * @description Sends Won notification exclusively to Account Executives on the
+     *              Quote Team for the given Quote Line. Invoked by RPM users via the
+     *              notification button when the Quote Line is in Won status.
+     * @param quoteLineId Id of the Won Quote Line
+     * @return null on success, error message string on failure
+     */
+    @AuraEnabled
+    public static String sendWonNotificationToAE(Id quoteLineId) {
+        try {
+            Set<Id> qliIds = new Set<Id>{ quoteLineId };
+            system.debug('Entering quote line controller quote line id: '+qliIds);
+            Pricing_EmailUtility.sendWonNotificationToAEOnly(qliIds, Label.Pricing_QuoteLinenWonLossNotification_Template);
+            return null;
+        } catch (Exception e) {
+            Pricing_Tender_Utility.logError(e);
+            return Pricing_Tender_Utility.getExceptionMessage(e);
+        }
+    }
+
+     /**
 * @description method checks if product is Non-SIPP, Market Segment is Corp,Form factor Notebook
 * @author Accenture | 07-03-2026
 * @return Boolean 
@@ -1419,9 +1444,11 @@ to be shown on the UI*/
     @AuraEnabled(cacheable=true)
     public static Boolean eligibleForPricingSupportCheck(SBQQ__QuoteLine__c quoteLine) {//PAA V2
         Boolean notEligibleForPricing = false;
+        
         if(quoteLine.Pricing_Program_Type_Nm__c == Label.Pricing_Tender_CCG_Quote && quoteLine.Pricing_SIPP_Cb__c == false && quoteLine.Pricing_Market_Segment_values_Nm__c == 'Corp' && quoteLine.Pricing_Form_Factor_Nm__c == 'Notebook'){
             notEligibleForPricing = true;
         }
+
         return notEligibleForPricing;
     }
     

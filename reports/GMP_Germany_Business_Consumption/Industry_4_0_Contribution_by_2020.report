@@ -25,18 +25,18 @@
     </columns>
     <filter>
         <criteriaItems>
+            <column>ROLLUP_DESCRIPTION</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>EMP of Dieter Hoffend</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>DESCRIPTION</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
             <value>#Gmp_Ger_I40</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>FULL_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Florian Ranner,Donal,Christian Donitzky</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

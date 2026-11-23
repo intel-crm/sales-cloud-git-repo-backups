@@ -31,8 +31,10 @@ Additional System Information
 
 Contact Id: {!Contact.Id}
 ERPM Id: {!Contact.Core_eRPM_Person_Id__c}
+Login Id: {!Contact.Core_Login_Id__c}
 Account Id: {!Account.Id}
-Account Unified ID:  {!Account.Core_Business_Party_Id__c}
+Account CIM Id: {!Account.Core_CIM_ID__c}
+
 
 _______________________________________________________________
 

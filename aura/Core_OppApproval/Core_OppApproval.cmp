@@ -1,0 +1,24 @@
+<aura:component controller="Core_OppApprovalCtrl" implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickActionWithoutHeader" access="global" >
+    <aura:attribute name="recordId" type="string" />
+    <aura:attribute name="msg" type="string" />
+    <aura:attribute name="comments" type="string" />
+    <!--<aura:handler name="init" value="this" action="{!c.doInit}"/>-->
+    
+    <lightning:card >
+        <aura:set attribute="title">
+            <h2><b>Submit for Approval</b></h2>
+            <br/>
+            <lightning:textarea name="input1" label="Comments" />
+            <lightning:textarea  label="Comments" name ="comments" value="{!v.comments}"/>
+            <br/>
+            <p>{!v.msg}</p>
+        </aura:set>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+    	<aura:set attribute="footer">
+            <lightning:button class="slds-float_right" variant="brand" label="Submit" onclick="{! c.handleClick }" />
+        </aura:set>
+    </lightning:card>
+</aura:component>

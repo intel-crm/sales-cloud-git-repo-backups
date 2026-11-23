@@ -4,11 +4,13 @@
         <description>Adjustment Creation Notification for Adj Req from Adjustment Request</description>
         <name>Adjustment_Creation_Notification_for_Adj_Req_from_Adjustment_Request</name>
         <label>Adjustment Creation Notification for Adj Req from Adjustment Request</label>
-        <locationX>50</locationX>
-        <locationY>518</locationY>
+        <locationX>213</locationX>
+        <locationY>451</locationY>
         <actionName>Core_MDF_Adjustment_Request__c.Core_MDF_Adjustment_Creation_Notification_for_Adj_Req_from_Adjustment_Request</actionName>
         <actionType>emailAlert</actionType>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <connector>
+            <targetReference>Check_if_Reference_Claim_Owner_is_Active_then_Change_Owner_of_Adjustment_Claim</targetReference>
+        </connector>
         <inputParameters>
             <name>SObjectRowId</name>
             <value>
@@ -17,30 +19,17 @@
         </inputParameters>
         <nameSegment>Core_MDF_Adjustment_Request__c.Core_MDF_Adjustment_Creation_Notification_for_Adj_Req_from_Adjustment_Request</nameSegment>
     </actionCalls>
-    <actionCalls>
-        <name>Core_MDF_Adjustment_Creation_Notification_for_Adj_Req_to_Internal_User</name>
-        <label>Adjustment Creation Notification for Adj Req to internal User</label>
-        <locationX>314</locationX>
-        <locationY>518</locationY>
-        <actionName>Core_MDF_Adjustment_Request__c.Core_MDF_Adjustment_Creation_Notification_for_Adj_Req_to_Internal_User</actionName>
-        <actionType>emailAlert</actionType>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
-        <inputParameters>
-            <name>SObjectRowId</name>
-            <value>
-                <elementReference>AdjustmentReqId</elementReference>
-            </value>
-        </inputParameters>
-        <nameSegment>Core_MDF_Adjustment_Request__c.Core_MDF_Adjustment_Creation_Notification_for_Adj_Req_to_Internal_User</nameSegment>
-    </actionCalls>
     <apiVersion>49.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <decisions>
         <description>Check if Adjustment Claim is of type Adjustment then send Notification</description>
         <name>Check_if_Adjustment_Request_is_of_type_Adjustment_then_send_Notification</name>
         <label>Check if Adjustment Claim is of type Adjustment then send Notification</label>
-        <locationX>578</locationX>
-        <locationY>278</locationY>
+        <locationX>197</locationX>
+        <locationY>249</locationY>
+        <defaultConnector>
+            <targetReference>Check_if_Reference_Claim_Owner_is_Active_then_Change_Owner_of_Adjustment_Claim</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Send_Notification</name>
@@ -60,46 +49,32 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Core_MDF_Check_if_Reference_Claim_Owner_is_External_Or_Internal_User</targetReference>
+                <targetReference>Adjustment_Creation_Notification_for_Adj_Req_from_Adjustment_Request</targetReference>
             </connector>
             <label>Send Notification</label>
         </rules>
     </decisions>
     <decisions>
-        <name>Core_MDF_Check_if_Reference_Claim_Owner_is_External_Or_Internal_User</name>
-        <label>Check if Reference Claim Owner is External or Internal User</label>
-        <locationX>314</locationX>
-        <locationY>398</locationY>
+        <description>Check if Reference Claim Owner is Active then Change Owner of Adjustment Claim</description>
+        <name>Check_if_Reference_Claim_Owner_is_Active_then_Change_Owner_of_Adjustment_Claim</name>
+        <label>Check if Reference Claim Owner is Active then Change Owner of Adjustment Claim</label>
+        <locationX>461</locationX>
+        <locationY>303</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
-            <name>Core_MDF_Send_Email_Notification_to_Partner</name>
+            <name>Change_Owner</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>RefClaim_Owner_UserType</leftValueReference>
+                <leftValueReference>ReferenceClaimOwner_isActive</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>PowerPartner</stringValue>
+                    <booleanValue>true</booleanValue>
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Adjustment_Creation_Notification_for_Adj_Req_from_Adjustment_Request</targetReference>
+                <targetReference>Update_Adjustment_Claim_Owner</targetReference>
             </connector>
-            <label>Send Email Notification to Partner</label>
-        </rules>
-        <rules>
-            <name>Core_MDF_Send_Email_Notification_to_Internal_user</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>RefClaim_Owner_UserType</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>Standard</stringValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Core_MDF_Adjustment_Creation_Notification_for_Adj_Req_to_Internal_User</targetReference>
-            </connector>
-            <label>Send Email Notification to Internal user</label>
+            <label>Change Owner</label>
         </rules>
     </decisions>
     <description>Adjustment Notification and Owner Update</description>
@@ -112,12 +87,6 @@
         </value>
     </processMetadataValues>
     <processMetadataValues>
-        <name>CanvasMode</name>
-        <value>
-            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
-        </value>
-    </processMetadataValues>
-    <processMetadataValues>
         <name>OriginBuilderType</name>
         <value>
             <stringValue>LightningFlowBuilder</stringValue>
@@ -125,11 +94,32 @@
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <recordUpdates>
+        <name>Update_Adjustment_Claim_Owner</name>
+        <label>Update Adjustment Claim Owner</label>
+        <locationX>677</locationX>
+        <locationY>340</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>AdjustmentClaim_Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>ReferenceClaim_OwnerId</elementReference>
+            </value>
+        </inputAssignments>
+        <object>PartnerFundClaim</object>
+    </recordUpdates>
+    <recordUpdates>
         <description>Update Reference Claim Owner email into Adjustment Req Object</description>
         <name>Update_Reference_Claim_Owner_email_into_Adjustment_Req_Object</name>
         <label>Update Reference Claim Owner email into Adjustment Req Object</label>
-        <locationX>578</locationX>
-        <locationY>158</locationY>
+        <locationX>50</locationX>
+        <locationY>247</locationY>
         <connector>
             <targetReference>Check_if_Adjustment_Request_is_of_type_Adjustment_then_send_Notification</targetReference>
         </connector>
@@ -149,14 +139,16 @@
         </inputAssignments>
         <object>Core_MDF_Adjustment_Request__c</object>
     </recordUpdates>
-    <start>
-        <locationX>452</locationX>
-        <locationY>0</locationY>
-        <connector>
-            <targetReference>Update_Reference_Claim_Owner_email_into_Adjustment_Req_Object</targetReference>
-        </connector>
-    </start>
-    <status>Obsolete</status>
+    <startElementReference>Update_Reference_Claim_Owner_email_into_Adjustment_Req_Object</startElementReference>
+    <status>Active</status>
+    <variables>
+        <description>Adjustment Claim Id</description>
+        <name>AdjustmentClaim_Id</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
     <variables>
         <description>Adjustment Request Type</description>
         <name>AdjustmentReq_Type</name>
@@ -174,15 +166,16 @@
         <isOutput>false</isOutput>
     </variables>
     <variables>
-        <name>RefClaim_Owner_UserType</name>
+        <description>Reference Claim Owner Email</description>
+        <name>ReferenceClaim_OwnerEmail</name>
         <dataType>String</dataType>
         <isCollection>false</isCollection>
         <isInput>true</isInput>
-        <isOutput>true</isOutput>
+        <isOutput>false</isOutput>
     </variables>
     <variables>
-        <description>Reference Claim Owner Email</description>
-        <name>ReferenceClaim_OwnerEmail</name>
+        <description>Reference Claim OwnerId</description>
+        <name>ReferenceClaim_OwnerId</name>
         <dataType>String</dataType>
         <isCollection>false</isCollection>
         <isInput>true</isInput>

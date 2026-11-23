@@ -5,22 +5,22 @@ public class ACM_BI_SetAccountHierarchyAttributesTest {
 
     @TestSetup
     private static void setCommonData() {
-        Account parentAccount = UCD_ACM_Cntrlr_TestDataInitialization.createAccountByRecordType('Account1','End Customer Deal Account','UNFD_GLBL_CUST');
+        Account parentAccount = UCD_ACM_Cntrlr_TestDataInitialization.createAccountByRecordType('Account1','Intel Account','UNFD_GLBL_CUST');
         parentAccount.Core_Data_Simplified_Account_Nm__c = 'Changed Parent1';
         insert parentAccount;
         
-        Account childAccount = UCD_ACM_Cntrlr_TestDataInitialization.createAccountByRecordType('Account2','End Customer Deal Account','UNFD_CTRY_CUST');
+        Account childAccount = UCD_ACM_Cntrlr_TestDataInitialization.createAccountByRecordType('Account2','Intel Account','UNFD_CTRY_CUST');
         childAccount.Core_Data_Simplified_Account_Nm__c = 'Changed Child1';
         insert childAccount;
         
-        Account parentAccount2 = UCD_ACM_Cntrlr_TestDataInitialization.createAccountByRecordType('Account3','End Customer Deal Account','UNFD_INTRMD_CUST');
+        Account parentAccount2 = UCD_ACM_Cntrlr_TestDataInitialization.createAccountByRecordType('Account3','Intel Account','UNFD_INTRMD_CUST');
         parentAccount2.Core_Data_Simplified_Account_Nm__c = 'Changed Child2';
         insert parentAccount2;
         
-        Account rejectedAccount = UCD_ACM_Cntrlr_TestDataInitialization.createAccountByRecordType('Account4','End Customer Deal Account','UNFD_CTRY_CUST');
+        Account rejectedAccount = UCD_ACM_Cntrlr_TestDataInitialization.createAccountByRecordType('Account4','Rejected Account','UNFD_CTRY_CUST');
         insert rejectedAccount;
         
-        Account requestedAccount = UCD_ACM_Cntrlr_TestDataInitialization.createAccountByRecordType('Account5','End Customer Deal Account','UNFD_CTRY_CUST');
+        Account requestedAccount = UCD_ACM_Cntrlr_TestDataInitialization.createAccountByRecordType('Account5','Requested Account','UNFD_CTRY_CUST');
         insert requestedAccount;
         
         Account nullAccount = UCD_ACM_Cntrlr_TestDataInitialization.createAccountByRecordType('Account6','Intel Account','');

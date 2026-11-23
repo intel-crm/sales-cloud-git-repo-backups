@@ -227,6 +227,25 @@
         <visibleLines>3</visibleLines>
     </fields>
     <fields>
+        <fullName>Send_Email__c</fullName>
+        <defaultValue>true</defaultValue>
+        <label>Send Email</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Test_Text_Area__c</fullName>
+        <label>Test Text Area</label>
+        <length>131072</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
         <fullName>User_s_Manager__c</fullName>
         <externalId>false</externalId>
         <formula>Owner:User.Manager.FirstName+&quot; &quot;+ Owner:User.Manager.LastName</formula>
@@ -254,6 +273,7 @@
         <columns>NAME</columns>
         <columns>Escalation_Review__c</columns>
         <columns>Meeting_Date__c</columns>
+        <columns>User_s_Manager__c</columns>
         <columns>New_Increased__c</columns>
         <columns>Won__c</columns>
         <columns>Lost__c</columns>
@@ -319,8 +339,8 @@
     <pluralLabel>Business Reviews</pluralLabel>
     <searchLayouts>
         <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
-        <excludedStandardButtons>MassChangeOwner</excludedStandardButtons>
         <excludedStandardButtons>Import</excludedStandardButtons>
+        <excludedStandardButtons>MassChangeOwner</excludedStandardButtons>
         <searchResultsAdditionalFields>Escalation_Review__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Meeting_Date__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>New_Increased__c</searchResultsAdditionalFields>
@@ -331,6 +351,6 @@
         <searchResultsAdditionalFields>Insights_Trends__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>CREATEDBY_USER</searchResultsAdditionalFields>
     </searchLayouts>
-    <sharingModel>Private</sharingModel>
+    <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>

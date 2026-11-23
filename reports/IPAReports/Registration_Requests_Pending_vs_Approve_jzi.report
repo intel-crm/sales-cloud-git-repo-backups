@@ -52,9 +52,6 @@
     <columns>
         <field>CUST_ID</field>
     </columns>
-    <columns>
-        <field>PRM_Registration_Request__c.PRM_Contact_Country__c</field>
-    </columns>
     <filter>
         <criteriaItems>
             <column>PRM_Registration_Request__c.PRM_Partner_Role__c</column>
@@ -71,24 +68,10 @@
             <value>New,Approved</value>
         </criteriaItems>
         <criteriaItems>
-            <column>PRM_Registration_Request__c.PRM_Salesforce_ID__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>notContain</operator>
-            <value>ipatest</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>PRM_Registration_Request__c.PRM_Salesforce_ID__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>notContain</operator>
-            <value>ipatest</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>PRM_Registration_Request__c.PRM_Contact_Country__c</column>
+            <column>PRM_Registration_Request__c.PRM_Partner_Role__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
+            <operator>notEqual</operator>
             <value></value>
         </criteriaItems>
         <language>en_US</language>

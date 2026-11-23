@@ -210,9 +210,14 @@
                     <label>Core_SW_Prod_Non_Commercial_Purpose_Nm__c</label>
                 </value>
                 <value>
-                    <fullName>Core_Item_Orderable_Ind__c</fullName>
+                    <fullName>Core_Sales_Visible_Flag__c</fullName>
                     <default>false</default>
-                    <label>Orderable</label>
+                    <label>Core_Sales_Visible_Flag__c</label>
+                </value>
+                <value>
+                    <fullName>price_lifetime_quote_value_amt__c</fullName>
+                    <default>false</default>
+                    <label>Life Time Quote Value</label>
                 </value>
             </valueSetDefinition>
         </valueSet>

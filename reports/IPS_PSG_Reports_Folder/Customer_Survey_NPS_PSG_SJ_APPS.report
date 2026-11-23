@@ -122,14 +122,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>MAG,PSG-IR,Admin,CQE,Enpirion,CSTOOLS,Deflected,ZBB,PRISM,CAT2,eASIC,DCG,DTC,cqe</value>
+            <value>MAG,PSG-IR,Admin,CQE,Enpirion,CSTOOLS,Deflected,ZBB,PRISM,CAT2</value>
         </criteriaItems>
         <criteriaItems>
             <column>ACCOUNT.NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>uniquest,altima,arrow,macnica,digi-key,GALAXY FAR EAST CORPORATION,intel</value>
+            <value>uniquest,altima,arrow,macnica,digi-key,GALAXY FAR EAST CORPORATION</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -139,7 +139,7 @@
         <field>CLOSED_DATE</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Obsolete - Customer Survey NPS - PSG SJ</name>
+    <name>Customer Survey NPS - PSG SJ APPS</name>
     <params>
         <name>units</name>
         <value>d</value>

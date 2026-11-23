@@ -120,9 +120,9 @@ public class Core_Opportunity_KPI_Handler_Test {
             insert acct;
         }
         
-        Opportunity oppForKPI = new Opportunity(Name = 'OpportunityKPICommissionTest', RecordTypeId = newOppRecTypeId,core_approval_status__c = 'Approved', 
+        Opportunity oppForKPI = new Opportunity(Name = 'OpportunityKPICommissionTest', RecordTypeId = newOppRecTypeId,core_approval_status__c = 'Approved', Opportunity_Focus__c= 'Core',Core_Opportunity_Type__c ='Design: Original',
                                                 AccountId = acct.Id,Core_Commissionable__c = 'Yes',Core_Technical_Owner__c=usr.id,Core_Date_Submitted_for_Approval__c = System.Date.today(),
-                                                StageName = 'Qualify', CloseDate = System.Date.today()+1,Opportunity_Focus__c= 'Core',Core_Opportunity_Type__c ='Design: Original');
+                                                StageName = 'Qualify', CloseDate = System.Date.today()+1);
         System.runAs(Core_Test_Utility.systemAdminUser) {
             Core_Opp_Bypass_Validation_Rule__c rec = new Core_Opp_Bypass_Validation_Rule__c();
             rec.Bypass__c = true;
@@ -574,6 +574,7 @@ public class Core_Opportunity_KPI_Handler_Test {
             //lstOpp[0].Core_DesignWin_KPI_Txt__c = '';
             Update lstOpp[0];
         } 
+        //system.debug('###test123: '+kpis);
         System.assertNotEquals('Approved',lstOpp[0].core_approval_status__c);
         Test.startTest();
         Core_CommissionableTransactions.alreadyAddedCommissionableTransactions = false;
@@ -587,5 +588,178 @@ public class Core_Opportunity_KPI_Handler_Test {
         Core_CommissionableTransactions.updateKPIProcessFlag(lstkpi);
         boolean lstkpiFlag = [SELECT Id,Core_IsKPI_Processed__c FROM CORE_OPPTY_KPI_NEW__C where Id =:recId limit 1][0].Core_IsKPI_Processed__c;
         system.assertEquals(lstkpiFlag, true);
+    }
+
+    @isTest
+    static void processOpportunityOnReversalTest() {
+        Opportunity opp = [
+            SELECT Id, Core_DesignWin_KPI_Txt__c
+            FROM Opportunity
+            WHERE Name = 'OpportunityKPICommissionTest'
+            LIMIT 1
+        ];
+        Core_Commission_KPI_Mappings__c designMapping = [
+            SELECT Core_KPI_Name_Nm__c
+            FROM Core_Commission_KPI_Mappings__c
+            WHERE Core_IsActive__c = TRUE AND Core_KPI_Type__c = 'Design'
+            LIMIT 1
+        ];
+        Core_Commissionable_Transaction__c approvedTransaction =
+            new Core_Commissionable_Transaction__c(
+                Core_Opportunity__c = opp.Id,
+                Core_Source_ID__c = opp.Id,
+                Core_Milestone_Area__c = designMapping.Core_KPI_Name_Nm__c,
+                Core_Status__c = 'Approved',
+                Core_Approved_Total_Price__c = 100,
+                Core_Transaction_Timestamp__c = System.now().addMinutes(-1),
+                Core_Last_Approved_Date__c = System.today()
+            );
+
+        System.runAs(Core_Test_Utility.systemAdminUser) {
+            opp.Core_DesignWin_KPI_Txt__c = null;
+            update opp;
+            insert approvedTransaction;
+        }
+        System.assertEquals(
+            1,
+            [SELECT COUNT()
+             FROM Core_Opportunity_KPI_Batch_Detail__c
+             WHERE Core_Opportunity_ID_Txt__c = :opp.Id
+               AND Core_Opportunity_Stage_Txt__c = 'Design Win']
+        );
+
+        Test.startTest();
+        Core_CommissionableTransactions.processOpportunityOnReversal(new List<Id>());
+        Core_CommissionableTransactions.processOpportunityOnReversal(new List<Id>{opp.Id});
+        Test.stopTest();
+
+        List<Core_Commissionable_Transaction__c> pendingTransactions = [
+            SELECT Id, Core_Opportunity__c, Core_Source_ID__c, Core_Milestone_Area__c,
+                   Core_Status__c, Core_Approved_Total_Price__c, Core_Approved_Transaction_Id__c
+            FROM Core_Commissionable_Transaction__c
+            WHERE Core_Approved_Transaction_Id__c = :approvedTransaction.Id
+        ];
+        System.assertEquals(1, pendingTransactions.size(), 'One reversal transaction should be created.');
+        System.assertEquals('Pending', pendingTransactions[0].Core_Status__c);
+        System.assertEquals(opp.Id, pendingTransactions[0].Core_Opportunity__c);
+        System.assertEquals(opp.Id, pendingTransactions[0].Core_Source_ID__c);
+        System.assertEquals(designMapping.Core_KPI_Name_Nm__c, pendingTransactions[0].Core_Milestone_Area__c);
+        System.assertEquals(approvedTransaction.Core_Approved_Total_Price__c, pendingTransactions[0].Core_Approved_Total_Price__c);
+        System.assertEquals(
+            0,
+            [SELECT COUNT()
+             FROM Core_Opportunity_KPI_Batch_Detail__c
+             WHERE Core_Opportunity_ID_Txt__c = :opp.Id
+               AND Core_Opportunity_Stage_Txt__c = 'Design Win'],
+            'The processed Design Win batch should be removed.'
+        );
+    }
+
+    @isTest
+    static void generateApprovedCommissionOnAuditStatusChangeTest() {
+        Opportunity opp = [
+            SELECT Id, AccountId, CRM_Audit_Status__c, CRM_Audit_Close_Date__c
+            FROM Opportunity
+            WHERE Name = 'OpportunityKPICommissionTest'
+            LIMIT 1
+        ];
+        OpportunityTeamMember teamMember = [
+            SELECT UserId
+            FROM OpportunityTeamMember
+            WHERE OpportunityId = :opp.Id AND TeamMemberRole = 'Team Member'
+            LIMIT 1
+        ];
+        Core_Commissions_Percent_Contribution__c contribution =
+            Core_Commissions_Percent_Contribution__c.getInstance('Team Member');
+        Map<String, Core_Commission_KPI_Mappings__c> mappingsByKPIName =
+            new Map<String, Core_Commission_KPI_Mappings__c>();
+        for (Core_Commission_KPI_Mappings__c mapping : Core_Commission_KPI_Mappings__c.getAll().values()) {
+            if (mapping.Core_IsActive__c) {
+                mappingsByKPIName.put(mapping.Core_KPI_Name_Nm__c, mapping);
+            }
+        }
+
+        Map<String, Decimal> expectedValuesByKPIName = new Map<String, Decimal>();
+        Map<String, Set<String>> productGroupsByKPIName = new Map<String, Set<String>>();
+        for (CORE_OPPTY_KPI_NEW__C kpi : [
+                SELECT Name, CORE_KPI_TOTAL_PRICE__C, CORE_OPP_KPI_PRODUCT__R.CORE_INF_KPI_PRODGROUP__C
+                FROM CORE_OPPTY_KPI_NEW__C
+                WHERE Core_KPI_Opportunity__c = :opp.Id
+                  AND CORE_KPI_ACHIEVED__C = TRUE
+                  AND CORE_ISACTIVE__C = TRUE
+            ]) {
+            Core_Commission_KPI_Mappings__c mapping = mappingsByKPIName.get(kpi.Name);
+            if (mapping.Core_Aggregate_Type__c == 'SUM') {
+                Decimal currentValue = expectedValuesByKPIName.containsKey(kpi.Name)
+                    ? expectedValuesByKPIName.get(kpi.Name)
+                    : 0;
+                expectedValuesByKPIName.put(kpi.Name, currentValue + kpi.CORE_KPI_TOTAL_PRICE__C);
+            } else if (mapping.Core_Aggregate_Type__c == 'Unique') {
+                if (!productGroupsByKPIName.containsKey(kpi.Name)) {
+                    productGroupsByKPIName.put(kpi.Name, new Set<String>());
+                }
+                String productGroup = kpi.CORE_OPP_KPI_PRODUCT__R.CORE_INF_KPI_PRODGROUP__C;
+                if (productGroup != null && productGroup != 'Not Applicable') {
+                    productGroupsByKPIName.get(kpi.Name).add(productGroup);
+                }
+                expectedValuesByKPIName.put(kpi.Name, productGroupsByKPIName.get(kpi.Name).size());
+            } else if (mapping.Core_Aggregate_Type__c == 'Count') {
+                expectedValuesByKPIName.put(kpi.Name, 1);
+            }
+        }
+
+        Set<Id> existingTransactionIds = new Map<Id, Core_Commissionable_Transaction__c>([
+            SELECT Id
+            FROM Core_Commissionable_Transaction__c
+            WHERE Core_Opportunity__c = :opp.Id
+        ]).keySet();
+
+        Core_CommissionableTransactions.alreadyGeneratedAuditStatusCommission = false;
+        Test.startTest();
+        Core_CommissionableTransactions.generateApprovedCommissionOnAuditStatusChange(null);
+        Core_CommissionableTransactions.generateApprovedCommissionOnAuditStatusChange(new Set<Id>());
+        Core_CommissionableTransactions.generateApprovedCommissionOnAuditStatusChange(new Set<Id>{opp.Id});
+        Core_CommissionableTransactions.generateApprovedCommissionOnAuditStatusChange(new Set<Id>{opp.Id});
+        Test.stopTest();
+
+        List<Core_Commissionable_Transaction__c> generatedTransactions = new List<Core_Commissionable_Transaction__c>();
+        for (Core_Commissionable_Transaction__c transactionRecord : [
+                SELECT Id, Core_Opportunity__c, Core_Source_ID__c, Core_Account_ID__c,
+                       Core_Employee_ID__c, Core_Milestone_Area__c, Core_Status__c,
+                       Core_Percent_Contribution__c, Core_Approved_Total_Price__c,
+                       Core_KPI_Id__c, Core_Approved_Transaction_Id__c,
+                       CRM_Audit_Status_Txt__c, CRM_Audit_Close_Date__c
+                FROM Core_Commissionable_Transaction__c
+                WHERE Core_Opportunity__c = :opp.Id
+            ]) {
+            if (!existingTransactionIds.contains(transactionRecord.Id)) {
+                generatedTransactions.add(transactionRecord);
+            }
+        }
+
+        System.assertEquals(
+            expectedValuesByKPIName.size(),
+            generatedTransactions.size(),
+            'The method should create one transaction per qualifying Opportunity and KPI.'
+        );
+        Set<String> generatedKPINames = new Set<String>();
+        for (Core_Commissionable_Transaction__c transactionRecord : generatedTransactions) {
+            String kpiName = transactionRecord.Core_Milestone_Area__c;
+            Core_Commission_KPI_Mappings__c mapping = mappingsByKPIName.get(kpiName);
+            generatedKPINames.add(kpiName);
+
+            System.assertEquals(opp.Id, transactionRecord.Core_Opportunity__c);
+            System.assertEquals(opp.Id, transactionRecord.Core_Source_ID__c);
+            System.assertEquals(opp.AccountId, transactionRecord.Core_Account_ID__c);
+            System.assertEquals(teamMember.UserId, transactionRecord.Core_Employee_ID__c);
+            System.assertEquals('Approved', transactionRecord.Core_Status__c);
+            System.assertEquals(contribution.Core_Percent_Contribution__c, transactionRecord.Core_Percent_Contribution__c);
+            System.assertEquals(expectedValuesByKPIName.get(kpiName), transactionRecord.Core_Approved_Total_Price__c);
+            System.assertEquals(mapping.Core_KPI_Id__c, transactionRecord.Core_KPI_Id__c);
+            System.assertEquals(null, transactionRecord.Core_Approved_Transaction_Id__c);
+            System.assertEquals(opp.CRM_Audit_Status__c, transactionRecord.CRM_Audit_Status_Txt__c);
+            System.assertEquals(opp.CRM_Audit_Close_Date__c, transactionRecord.CRM_Audit_Close_Date__c);
+        }
+        System.assertEquals(expectedValuesByKPIName.keySet(), generatedKPINames);
     }
 }

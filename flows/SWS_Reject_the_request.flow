@@ -120,10 +120,6 @@
         <connector>
             <targetReference>Update_Status</targetReference>
         </connector>
-        <faultConnector>
-            <isGoTo>true</isGoTo>
-            <targetReference>Throw_Fault_Message</targetReference>
-        </faultConnector>
         <inputAssignments>
             <field>Bypass__c</field>
             <value>

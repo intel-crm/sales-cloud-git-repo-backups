@@ -1,0 +1,18 @@
+<apex:page >
+<apex:slds >
+    <div style="font-size:14.0pt;color:#000000;margin-left: 0px;" >
+        <b>Hi {!$User.FirstName}! Important information for you:</b><br/>
+    </div>
+    <div style="font-size:10.0pt;color:#000000;margin-left: 0px;" >
+        <p style="margin:10px;">
+            2022 is rapidly coming to a close! Please bookmark <a href="https://salescrm.intel.com/sales-crm-2022_close-2023_prep/">THIS LINK</a> to track all Key Dates and Deadlines.
+        </p><p style="margin:10px;">
+            <b>Attention Sellers:</b> Although the recommended deadline of 12/16/22 has passed, the final deadline of 12/31/2022 is rapidly approaching. <b>Any sellers having issues with submitting must log an <a href="https://intel.lightning.force.com/lightning/n/Ask_a_Question">Ask A Question (Topic Sales CRM)</a> by 12/29/2022 and must include the link(s) to the Opportunities.</b> Submission of 2022 Opportunities/Deal Win Goals will not be possible after December 31st, no exceptions.
+        </p><p style="margin:10px;">
+            <b>Attention Managers:</b> Review and approve or reject Opportunities as quickly as possible to allow CEs to claim DWGs or to make necessary corrections.
+        </p><p style="margin:10px;">
+            If you missed the Q3 Sales Excellence Newsletter, check out the topics covered <a href="https://salescrm.intel.com/sales-crm-q4-2022-newsletter/">HERE</a>.
+        </p>
+    </div>
+</apex:slds>
+</apex:page>

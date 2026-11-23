@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-    <label>Datacenter</label>
+    <label>Data Center Co-Marketing Fund</label>
     <protected>false</protected>
     <values>
         <field>Core_MDF_Approver_WWID__c</field>
@@ -19,14 +19,6 @@
         <value xsi:type="xsd:string">Santa Clara</value>
     </values>
     <values>
-        <field>Core_MDF_Commodity_Code_CSAR__c</field>
-        <value xsi:nil="true"/>
-    </values>
-    <values>
-        <field>Core_MDF_Commodity_Code_Customer_NonPO__c</field>
-        <value xsi:nil="true"/>
-    </values>
-    <values>
         <field>Core_MDF_Commodity_Code__c</field>
         <value xsi:type="xsd:string">95990022</value>
     </values>
@@ -37,14 +29,6 @@
     <values>
         <field>Core_MDF_Country__c</field>
         <value xsi:type="xsd:string">US</value>
-    </values>
-    <values>
-        <field>Core_MDF_GL_Account_CSAR__c</field>
-        <value xsi:nil="true"/>
-    </values>
-    <values>
-        <field>Core_MDF_GL_Account_Customer_NonPO__c</field>
-        <value xsi:nil="true"/>
     </values>
     <values>
         <field>Core_MDF_GL_Account__c</field>
@@ -75,19 +59,11 @@
         <value xsi:type="xsd:string">2100</value>
     </values>
     <values>
-        <field>Core_MDF_Program_ID__c</field>
-        <value xsi:nil="true"/>
-    </values>
-    <values>
         <field>Core_MDF_Program__c</field>
-        <value xsi:type="xsd:string">Datacenter</value>
+        <value xsi:type="xsd:string">Data Center Co-Marketing Fund</value>
     </values>
     <values>
         <field>Core_MDF_Region__c</field>
         <value xsi:type="xsd:string">CA</value>
-    </values>
-    <values>
-        <field>Core_MDF_Ship_to_Postal_Code__c</field>
-        <value xsi:type="xsd:string">95054-1549</value>
     </values>
 </CustomMetadata>

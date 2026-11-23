@@ -169,13 +169,6 @@
                 <elementReference>$Record.CRM_VBS_Other_Notes__c</elementReference>
             </value>
         </assignmentItems>
-        <assignmentItems>
-            <assignToReference>OpportunityRecToBeUpdated.CRM_VBS_Other_Notes__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Record.CRM_VBS_Other_Notes__c</elementReference>
-            </value>
-        </assignmentItems>
         <connector>
             <targetReference>Update_Opportunity_to_Denied</targetReference>
         </connector>
@@ -242,7 +235,7 @@
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>Check_if_QB_Resource_is_present</targetReference>
+            <targetReference>Check_if_Qb_resource_is_present</targetReference>
         </connector>
     </assignments>
     <assignments>
@@ -477,13 +470,6 @@
                 <elementReference>$Record.CRM_VBS_Other_Notes__c</elementReference>
             </value>
         </assignmentItems>
-        <assignmentItems>
-            <assignToReference>OpportunityRecToBeUpdated.CRM_VBS_Other_Notes__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Record.CRM_VBS_Other_Notes__c</elementReference>
-            </value>
-        </assignmentItems>
         <connector>
             <targetReference>update_VBS_status_to_Unqualified</targetReference>
         </connector>
@@ -496,14 +482,14 @@
         </value>
     </constants>
     <decisions>
-        <name>Check_if_QB_Resource_is_present</name>
-        <label>Check if QB Resource is present</label>
+        <name>Check_if_Qb_resource_is_present</name>
+        <label>Check if Qb resource is present</label>
         <locationX>974</locationX>
         <locationY>1055</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>QB_Resource_present</name>
-            <conditionLogic>or</conditionLogic>
+            <conditionLogic>and</conditionLogic>
             <conditions>
                 <leftValueReference>$Record.CRM_VBS_QB_Resource__c</leftValueReference>
                 <operator>IsNull</operator>

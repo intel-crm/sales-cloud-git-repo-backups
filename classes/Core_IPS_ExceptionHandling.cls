@@ -5,7 +5,7 @@
     Description: created to hold all the exception handlign method in one place to increase the code re-usability
     
 */
-Public without sharing Class Core_IPS_ExceptionHandling{
+Public Class Core_IPS_ExceptionHandling{
 
     /*****************************************************************************************************
      @ Description: Inserting DML error logs into LogEntry object
@@ -48,7 +48,7 @@ Public without sharing Class Core_IPS_ExceptionHandling{
            } 
            
            insert objCLEList; 
-          }catch(Exception e) { }            
+          }catch(Exception e) {System.debug('*** Log Entry ' + e.getMessage());   }            
                     
            
      } 
@@ -95,7 +95,7 @@ Public without sharing Class Core_IPS_ExceptionHandling{
                 );
                 
                 insert objCLE;
-            }catch(Exception e) {}
+            }catch(Exception e) { System.debug('*** Log Entry ' + e.getMessage());}
                    
                     
             

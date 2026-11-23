@@ -1,0 +1,47 @@
+.THIS .Th1Cls{
+    width:20%;
+    border-right: 1px solid lightgray;
+}
+
+.THIS .Th2Cls{
+    width:1%;
+    border-right: 1px solid lightgray;
+}
+
+.THIS .Th3Cls{
+    width:1%;
+    border-right: 1px solid lightgray;
+}
+
+.THIS .Th4Cls{
+    width:17%;
+    border-right: 1px solid lightgray;
+}
+
+.THIS .Th5Cls{
+    width:17%;
+    border-right: 1px solid lightgray;
+}
+
+.THIS .Th7Cls{
+    width:15%;
+    border-right: 1px solid lightgray;
+}
+
+.THIS .Th8Cls{
+    width:13%;
+    border-right: 1px solid lightgray;
+}
+
+.THIS .Th9Cls{
+    width:16%;
+}
+
+.THIS .Td1Cls{
+    font-weight: bold;
+    white-space: normal;
+}
+
+.THIS .Td2Cls{
+    text-align:center;
+}

@@ -1,4 +1,4 @@
-<aura:component extends="c:IPAReduxConnectorLWC">
+<aura:component>
 
   <aura:attribute name="class" type="string" description="Adds a CSS class to the element."/>
   <aura:attribute name="label" type="string" description="The label used for the link. If no label is given, it will use v.body."/>
@@ -14,11 +14,6 @@
   <aura:attribute name="tabindex" type="string" default="" description="Tabindex for the link"/>
   <aura:attribute name="truncate" type="integer" default="0" description="Truncates to a certain width and adds elipsis, but only to the label"/>
   <aura:attribute name="truncatedString" type="string" default="" description="Internal"/>
-  <aura:attribute name="ariaSkip" type="boolean" default="false" description="adds aria-hidden=true and tabindex=-1 to the link element"/>
-  <aura:attribute name="ariaHidden" type="boolean" default="false"/> 
-    <!-- Event page behavioural Analytics-->
-  <aura:attribute name="eventPage" type="boolean" default="false" description="checking whether the page is eventdetail page"/>
-  <aura:attribute name="eventName" type="string"  description="eventName"/> 
   
   <!-- Add the ability to bypass the navigateToURL function - MGDANIES 10/29 -->
   <aura:attribute name="useNavigateToURL" type="boolean" default="true" description="Indicates if the navigateToURL function should be used."/>
@@ -29,7 +24,7 @@
   <aura:attribute name="offeringId" type="string" default="" description="Offering MDA ID where the Link is clicked" /> 
   <aura:attribute name="LabelHeader" type="string" default="" description="Section Header name from where the link was clicked" />
   <aura:attribute name="title" type="string" default="" description="Title of URL for which link was clicked" />
-  <c:ipaAnalyticsService aura:id="analyticsLibrary" />
+  <c:MarketplaceAnalyticsLibrary aura:id="analyticsLibrary" />
   <!--Marketplace Web analytics attributes ** End-->  
     
   <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
@@ -43,20 +38,16 @@
   <!-- SEO Friendly URL attribute for Specialty-->
   <aura:attribute name="isSpecialtyPage" type="boolean" default="false" description="For identifying specialty pages for creating SEO Friendly URL" />  
   
-  <aura:attribute name="isFilterApplied" type="boolean" default="false" />
-  <aura:attribute name="filterId" type="string" />
-  <aura:attribute name="filterName" type="string" />
-    
-  <aura:handler name="change" value="{!v.url}" action="{!c.handleReset}" /><!--added as part of code merge[11/1]-->
+    <aura:handler name="change" value="{!v.url}" action="{!c.handleReset}" /><!--added as part of code merge[11/1]-->
   <aura:handler name="change" value="{!v.label}" action="{!c.handleReset}" />
   <aura:handler name="change" value="{!v.page}" action="{!c.handleReset}" />
   <aura:handler name="change" value="{!v.params}" action="{!c.handleReset}" />
   <aura:handler name="change" value="{!v.searchParams}" action="{!c.handleReset}" />
   <aura:handler name="change" value="{!v.pageReference}" action="{!c.handleReset}" />
-    
+
   <lightning:navigation aura:id="navService"/>
   
-  <a class="{!v.class + ' lightningLink'}" href="{!v._href}" onclick="{!c.handleClick}" title="{!v.label}" tabindex="{!v.tabindex}" aria-hidden="{! v.ariaHidden}">
+  <a class="{!v.class + ' lightningLink'}" href="{!v._href}" onclick="{!c.handleClick}" title="{!v.label}" tabindex="{!v.tabindex}">
       <aura:if isTrue="{! !empty(v.truncatedString) }">
           <span class="overflowWrap">{! v.truncatedString}&hellip;</span>
       <aura:set attribute="else">

@@ -109,9 +109,8 @@ Modification Log :
         Integer LogCount;
         init();   
         Test.startTest();
-        //commented for Classic EOL: Tejaswini
-    /*    PageReference pf = page.Core_IPS_File_AssignSPAccount;
-        Test.setCurrentPage(pf); */
+        PageReference pf = page.Core_IPS_File_AssignSPAccount;
+        Test.setCurrentPage(pf);
         ApexPages.currentPage().getParameters().put('Id',FileUplMaster.id);
         ApexPages.StandardController cont = new ApexPages.StandardController(FileUplMaster);
         FileAssign = new Core_IPS_File_AssignSPAccount_Controller(cont);
@@ -142,9 +141,8 @@ Modification Log :
         Integer LogCount;
         init();   
         Test.startTest();
-        //commented for Classic EOL: Tejaswini
-    /*    PageReference pf = page.Core_IPS_File_AssignSPAccount;
-        Test.setCurrentPage(pf); */
+        PageReference pf = page.Core_IPS_File_AssignSPAccount;
+        Test.setCurrentPage(pf);
         ApexPages.currentPage().getParameters().put('Id',FileUplMaster.id);
         ApexPages.StandardController cont = new ApexPages.StandardController(FileUplMaster);
         FileAssign = new Core_IPS_File_AssignSPAccount_Controller(cont);
@@ -175,10 +173,9 @@ Modification Log :
     public static TestMethod void AssignSPAccDuplicateEntry(){ 
         PageReference ResultPgRef;
         init(); 
-        Test.startTest();  
-        //commented for Classic EOL: Tejaswini
-    /*    PageReference pf = page.Core_IPS_File_AssignSPAccount;
-        Test.setCurrentPage(pf); */
+        Test.startTest();     
+        PageReference pf = page.Core_IPS_File_AssignSPAccount;
+        Test.setCurrentPage(pf);
         ApexPages.currentPage().getParameters().put('Id',FileUplMaster.id);
         ApexPages.StandardController cont = new ApexPages.StandardController(FileUplMaster);
         FileAssign = new Core_IPS_File_AssignSPAccount_Controller(cont);
@@ -219,9 +216,8 @@ Modification Log :
         CIPSFA.Core_Supported_Product__c = SuppProd.id;
         CIPSFA.Core_IPS_File_Upload_Master__c = FileUplMaster.id;
         insert CIPSFA;
-        //commented for Classic EOL: Tejaswini
-    /*    PageReference pf = page.Core_IPS_File_AssignSPAccount;
-        Test.setCurrentPage(pf); */
+        PageReference pf = page.Core_IPS_File_AssignSPAccount;
+        Test.setCurrentPage(pf);
         ApexPages.currentPage().getParameters().put('Id',FileUplMaster.id);
         ApexPages.StandardController cont = new ApexPages.StandardController(FileUplMaster);
         FileAssign = new Core_IPS_File_AssignSPAccount_Controller(cont);
@@ -256,9 +252,8 @@ Modification Log :
         PageReference ResultPgRef;
         init(); 
         Test.startTest();
-        //commented for Classic EOL: Tejaswini
-    /*    PageReference pf = page.Core_IPS_File_AssignSPAccount;
-        Test.setCurrentPage(pf); */
+        PageReference pf = page.Core_IPS_File_AssignSPAccount;
+        Test.setCurrentPage(pf);
         ApexPages.currentPage().getParameters().put('Id',FileUplMaster.id);
         ApexPages.StandardController cont = new ApexPages.StandardController(FileUplMaster);
         FileAssign = new Core_IPS_File_AssignSPAccount_Controller(cont);
@@ -289,10 +284,9 @@ Modification Log :
         Integer Index = 0;    
         PageReference ResultPgRef;
         init(); 
-        Test.startTest();   
-        //commented for Classic EOL: Tejaswini
-    /*    PageReference pf = page.Core_IPS_File_AssignSPAccount;
-        Test.setCurrentPage(pf); */
+        Test.startTest();     
+        PageReference pf = page.Core_IPS_File_AssignSPAccount;
+        Test.setCurrentPage(pf);
         ApexPages.currentPage().getParameters().put('Id',FileUplMaster.id);
         ApexPages.StandardController cont = new ApexPages.StandardController(FileUplMaster);
         FileAssign = new Core_IPS_File_AssignSPAccount_Controller(cont);
@@ -332,9 +326,8 @@ Modification Log :
         PageReference ResultPgRef;
         init(); 
         Test.startTest();
-        //commented for Classic EOL: Tejaswini
-    /*    PageReference pf = page.Core_IPS_File_AssignSPAccount;
-        Test.setCurrentPage(pf); */
+        PageReference pf = page.Core_IPS_File_AssignSPAccount;
+        Test.setCurrentPage(pf);
         ApexPages.currentPage().getParameters().put('Id',FileUplMaster.id);
         ApexPages.StandardController cont = new ApexPages.StandardController(FileUplMaster);
         FileAssign = new Core_IPS_File_AssignSPAccount_Controller(cont);
@@ -359,9 +352,8 @@ Modification Log :
         PageReference ResultPgRef;
         init(); 
         Test.startTest();
-        //commented for Classic EOL: Tejaswini
-    /*    PageReference pf = page.Core_IPS_File_AssignSPAccount;
-        Test.setCurrentPage(pf); */
+        PageReference pf = page.Core_IPS_File_AssignSPAccount;
+        Test.setCurrentPage(pf);
         ApexPages.currentPage().getParameters().put('Id',FileUplMaster.id);
         ApexPages.StandardController cont = new ApexPages.StandardController(FileUplMaster);
         FileAssign = new Core_IPS_File_AssignSPAccount_Controller(cont);

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>52.0</apiVersion>
+    <available>true</available>
+    <description>Email template to notify the Disti users on rejection of a DPA</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>PSG - DPA Reject Notification BO</name>
+    <style>none</style>
+    <subject>DPA Request rejected for: CIS #  |</subject>
+    <type>visualforce</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

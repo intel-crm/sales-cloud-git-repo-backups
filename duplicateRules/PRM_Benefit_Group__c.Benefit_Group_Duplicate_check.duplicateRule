@@ -10,7 +10,7 @@
         <matchingRule>Benefit_Group_Duplicate_check_matching_rule</matchingRule>
         <objectMapping xsi:nil="true"/>
     </duplicateRuleMatchRules>
-    <isActive>false</isActive>
+    <isActive>true</isActive>
     <masterLabel>Benefit Group Duplicate check</masterLabel>
     <securityOption>EnforceSharingRules</securityOption>
     <sortOrder>1</sortOrder>

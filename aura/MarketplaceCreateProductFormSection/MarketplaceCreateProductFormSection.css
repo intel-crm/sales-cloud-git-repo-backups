@@ -1,5 +1,4 @@
-/* IPA2.0 + US TWC4497-1631 */
-/* .THIS ~ .formSection {
+.THIS ~ .formSection {
   border-top: 1px solid t(lightestGray);
   padding-top: 1em;
 }
@@ -20,4 +19,4 @@
   border-bottom-width: 1px;
   padding-bottom: 0.25em;
   font-size: 24px;
-} */
+}

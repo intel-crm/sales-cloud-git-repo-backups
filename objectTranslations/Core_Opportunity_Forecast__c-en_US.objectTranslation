@@ -33,12 +33,12 @@
             <translation><!-- Q2 2024 --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Q2 2025</masterLabel>
-            <translation><!-- Q2 2025 --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Q3 2024</masterLabel>
             <translation><!-- Q3 2024 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Q4 2023</masterLabel>
+            <translation><!-- Q4 2023 --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Q4 2024</masterLabel>
@@ -98,5 +98,9 @@
     <validationRules>
         <errorMessage><!-- Cancelled Forecast records cannot be created. --></errorMessage>
         <name>Core_Opp_Prevent_Cancelled_Forecast_Recs</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Quote associated to this Opportunity is Submitted for Review. No Edits allowed on Opportunity during the Review process. --></errorMessage>
+        <name>OPTY_Forecast_QuoteSubmittedStatus</name>
     </validationRules>
 </CustomObjectTranslation>

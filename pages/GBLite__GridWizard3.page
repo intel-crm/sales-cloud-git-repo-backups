@@ -1,6 +1,6 @@
 <apex:page controller="GBLite.GridWizardController" showHeader="{!showHeader}" title="{!lang.GW3Title}" action="{!init}" sidebar="false" tabStyle="Grid_Wizard__tab">
 	<!--[if IE 8]>
-        <link rel="stylesheet" type="text/css" href="{!URLFOR($Resource.gb_resources, 'ie8-styles.css')}" />
+        <link rel="stylesheet" type="text/css" href="{!URLFOR($Resource.GBLite__gb_resources, 'ie8-styles.css')}" />
     <![endif]-->
 	<div class="gbAppPage gbwPage gb{!lang.langCode} gw3{!IF(lightningStylesEnabled, ' gbLightning', '')} {!if(showHeader, '', 'inGrid')}">
 		<c:GridFilterErrorComponent errors="{!errors}"/>

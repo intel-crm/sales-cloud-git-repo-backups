@@ -379,40 +379,6 @@
                 <processMetadataValues>
                     <name>leftHandSideReferenceTo</name>
                     <value>
-                        <stringValue>Contract</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>leftHandSideType</name>
-                    <value>
-                        <stringValue>ID</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>operatorDataType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>rightHandSideType</name>
-                    <value>
-                        <stringValue>GlobalConstant</stringValue>
-                    </value>
-                </processMetadataValues>
-                <leftValueReference>myVariable_current.SBQQ__Contract__c</leftValueReference>
-                <operator>NotEqualTo</operator>
-            </conditions>
-            <conditions>
-                <processMetadataValues>
-                    <name>inputDataType</name>
-                    <value>
-                        <stringValue>ID</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>leftHandSideReferenceTo</name>
-                    <value>
                         <stringValue>Order</stringValue>
                     </value>
                 </processMetadataValues>
@@ -435,6 +401,40 @@
                     </value>
                 </processMetadataValues>
                 <leftValueReference>myVariable_current.OrderId</leftValueReference>
+                <operator>NotEqualTo</operator>
+            </conditions>
+            <conditions>
+                <processMetadataValues>
+                    <name>inputDataType</name>
+                    <value>
+                        <stringValue>ID</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>leftHandSideReferenceTo</name>
+                    <value>
+                        <stringValue>Contract</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>leftHandSideType</name>
+                    <value>
+                        <stringValue>ID</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>operatorDataType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>rightHandSideType</name>
+                    <value>
+                        <stringValue>GlobalConstant</stringValue>
+                    </value>
+                </processMetadataValues>
+                <leftValueReference>myVariable_current.SBQQ__Contract__c</leftValueReference>
                 <operator>NotEqualTo</operator>
             </conditions>
             <conditions>
@@ -1259,8 +1259,8 @@ ISBLANK({!myVariable_current.SBQQ__QuoteLine__r.price_suggested_resale_amt__c}),
 )
 )</expression>
     </formulas>
-    <interviewLabel>Sales_PriceCalculationOnOrderProduct-81_InterviewLabel</interviewLabel>
-    <label>Sales_PriceCalculationOnOrderProduct</label>
+    <interviewLabel>Sales_PriceCalculationOnOrderProduct-83_InterviewLabel</interviewLabel>
+    <label>Sales_PriceCalculationOnOrderProductd</label>
     <processMetadataValues>
         <name>ObjectType</name>
         <value>
@@ -1551,9 +1551,6 @@ ISBLANK({!myVariable_current.SBQQ__QuoteLine__r.price_suggested_resale_amt__c}),
         <label>update contact</label>
         <locationX>1300</locationX>
         <locationY>200</locationY>
-        <connector>
-            <targetReference>myDecision14</targetReference>
-        </connector>
         <filterLogic>and</filterLogic>
         <filters>
             <processMetadataValues>
@@ -1989,7 +1986,7 @@ ISBLANK({!myVariable_current.SBQQ__QuoteLine__r.price_suggested_resale_amt__c}),
         <object>OrderItem</object>
     </recordUpdates>
     <startElementReference>isChangedDecision16_myRule_15_SBQQ_Contract_c</startElementReference>
-    <status>Obsolete</status>
+    <status>Draft</status>
     <variables>
         <name>myVariable_current</name>
         <dataType>SObject</dataType>

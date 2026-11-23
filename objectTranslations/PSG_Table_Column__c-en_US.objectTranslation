@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Table Column</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Table Columns</value>
+    </caseValues>
+    <fields>
+        <label><!-- Column Names --></label>
+        <name>PSG_Column_Names_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Broken Cost</masterLabel>
+            <translation><!-- Broken Cost --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Contracted Price</masterLabel>
+            <translation><!-- Contracted Price --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Distributor Margin %</masterLabel>
+            <translation><!-- Distributor Margin % --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Line Type</masterLabel>
+            <translation><!-- Line Type --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>List Unit Price</masterLabel>
+            <translation><!-- List Unit Price --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSG Reg #</masterLabel>
+            <translation><!-- PSG Reg # --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pricing End Date</masterLabel>
+            <translation><!-- Pricing End Date --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pricing Start Date</masterLabel>
+            <translation><!-- Pricing Start Date --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Product Family</masterLabel>
+            <translation><!-- Product Family --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Product/Part#</masterLabel>
+            <translation><!-- Product/Part# --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Production Start Date</masterLabel>
+            <translation><!-- Production Start Date --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Requested Quantity</masterLabel>
+            <translation><!-- Requested Quantity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Requested Resale</masterLabel>
+            <translation><!-- Requested Resale --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Std/Fwd Cost</masterLabel>
+            <translation><!-- Std/Fwd Cost --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Suggested Resale</masterLabel>
+            <translation><!-- Suggested Resale --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- User --></label>
+        <name>PSG_User_Nm__c</name>
+        <relationshipLabel><!-- Table Columns --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>이지아이테크놀로지 Partner Manager</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>이지아이테크놀로지 Partner Manager</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>PartnerExecutive1996</parentRole>
+</Role>

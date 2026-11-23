@@ -201,7 +201,7 @@ public class Core_Opportunity_RenewalController_Test {
         // Insert the intialized Feature
         List<Database.SaveResult> lstFeatureResults = Database.insert(lstFeature, false);
         
-       
+        
         
         // Construct the Feature Header instances
         List<Core_Feature_Header__c > lstFeatureHeader = Core_Test_Utility.CreateFeatureHeader(80);

@@ -114,23 +114,13 @@
     </actionOverrides>
     <enableFeeds>false</enableFeeds>
     <fields>
-        <fullName>Assigned_To_User_Region__c</fullName>
-        <externalId>false</externalId>
-        <formula>Owner:User.Core_User_Geo__c</formula>
-        <label>Assigned To - User Region</label>
-        <required>false</required>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Assigned_To_User_manager__c</fullName>
-        <externalId>false</externalId>
-        <formula>Owner:User.Manager.Email</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Assigned To - User manager</label>
-        <required>false</required>
-        <type>Text</type>
-        <unique>false</unique>
+        <fullName>Case_External__c</fullName>
+        <label>Case External</label>
+        <length>255</length>
+        <referenceTo>Case__x</referenceTo>
+        <relationshipLabel>Activities</relationshipLabel>
+        <relationshipName>Activities</relationshipName>
+        <type>ExternalLookup</type>
     </fields>
     <fields>
         <fullName>Core_Account_ID__c</fullName>
@@ -560,6 +550,70 @@ IF(TEXT(ActivitySubtype) == &apos;Event&apos;,&apos;Meeting&apos;, TEXT(Core_Tas
         <relationshipName>Activities</relationshipName>
         <required>false</required>
         <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>DB_Activity_Type__c</fullName>
+        <description>This is a field that is installed by and used with the Adoption Dashboard AppExchange package. If your org already has a similar field, you can change the reports that are part of the Adoption Dashboard package to use your custom field and then delete this field.</description>
+        <externalId>false</externalId>
+        <formula>IF(CONTAINS( Subject , &quot;Email&quot;), &quot;Email&quot;, IF(CONTAINS( Subject , &quot;Cold Call&quot;), &quot;Cold Call&quot;, IF(CONTAINS( Subject , &quot;Call&quot;), &quot;Call&quot;, IF(CONTAINS( Subject , &quot;Meeting&quot;), &quot;Meeting&quot;, IF(CONTAINS( Subject , &quot;On Site Visit&quot;), &quot;Site Visit&quot;, IF(CONTAINS( Subject , &quot;Quote&quot;), &quot;Send Letter/Quote&quot;, &quot;Other&quot;))))))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>DB Activity Type</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Data_Quality_Description__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( Data_Quality_Score__c =100, &quot;Key Event/Task Details Captured&quot;,&quot;Missing: &quot;&amp;IF( LEN( Subject ) &lt; 3,&quot;Quality Subject Description, &quot;,&quot;&quot;)&amp;&quot;&quot;&amp;IF(LEN(WhoId)=0,&quot;Contact/Lead Reference, &quot;,&quot;&quot;)&amp;&quot;&quot;&amp;IF(LEN(WhatId)=0,&quot;Account/Opportunity Reference&quot;,&quot;&quot;))</formula>
+        <label>Data Quality Description</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Data_Quality_Score__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( LEN(  Subject  ) &lt; 3, 0,30) + IF( LEN(  WhoId ) = 0, 0,40) + IF( LEN(  WhatId ) = 0, 0,30)</formula>
+        <label>Data Quality Score</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>LID__Date_Sent__c</fullName>
+        <deprecated>false</deprecated>
+        <label>Date Sent</label>
+        <required>false</required>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>LID__URL__c</fullName>
+        <deprecated>false</deprecated>
+        <label>URL</label>
+        <required>false</required>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>Xvoyant__ActivityType__c</fullName>
+        <deprecated>false</deprecated>
+        <label>Coaching Activity</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Xvoyant__Activities</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Xvoyant__Completed_Date__c</fullName>
+        <deprecated>false</deprecated>
+        <description>To track the date the task is completed.</description>
+        <label>Completed Date</label>
+        <required>false</required>
+        <type>Date</type>
     </fields>
     <fields>
         <fullName>jiffle__Meeting_UUID__c</fullName>

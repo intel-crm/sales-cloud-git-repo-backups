@@ -1,0 +1,16 @@
+<template>
+    <div class="slds-box slds-theme_shade">
+        <div class="slds-card__header slds-grid slds-media slds-media_center slds-has-flexi-truncate">
+            <div class="slds-media__figure"><lightning-icon size="small" icon-name="standard:opportunity" alternative-text="Approved" title="Approved"></lightning-icon></div>
+            <h2 class="slds-card__header-title">Quote Line Item </h2>
+        </div>
+    </div>
+    <lightning-record-form
+    object-api-name="SBQQ__QuoteLine__c"
+    record-id={relatedQuoteLineId}
+    fields={fields}
+    mode="readonly"
+    columns="2"
+    >
+    </lightning-record-form>
+</template>

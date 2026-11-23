@@ -16,12 +16,6 @@
         <field>EMAIL</field>
     </columns>
     <columns>
-        <field>STATE_CODE</field>
-    </columns>
-    <columns>
-        <field>COUNTRY_CODE</field>
-    </columns>
-    <columns>
         <field>LEAD_SOURCE</field>
     </columns>
     <columns>

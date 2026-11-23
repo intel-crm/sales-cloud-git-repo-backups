@@ -264,7 +264,7 @@
         <fullName>PRM_Record_ID__c</fullName>
         <externalId>false</externalId>
         <label>Record ID</label>
-        <length>255</length>
+        <length>100</length>
         <required>false</required>
         <trackTrending>false</trackTrending>
         <type>Text</type>
@@ -369,21 +369,13 @@
     </fields>
     <label>Integration Log</label>
     <listViews>
-        <fullName>All_logs</fullName>
+        <fullName>All</fullName>
         <columns>NAME</columns>
-        <columns>PRM_System_Name__c</columns>
-        <columns>PRM_Callout_Type__c</columns>
-        <columns>PRM_Module__c</columns>
-        <columns>PRM_Record_ID__c</columns>
-        <columns>PRM_External_ID__c</columns>
         <columns>PRM_Class__c</columns>
-        <columns>PRM_Request_timestamp__c</columns>
-        <columns>PRM_Response_timestamp__c</columns>
-        <columns>PRM_Transaction_time__c</columns>
-        <columns>CREATEDBY_USER</columns>
         <columns>CREATED_DATE</columns>
+        <columns>CREATEDBY_USER</columns>
         <filterScope>Everything</filterScope>
-        <label>All Integration logs</label>
+        <label>All</label>
     </listViews>
     <nameField>
         <displayFormat>INT-{00000000}</displayFormat>
@@ -391,7 +383,12 @@
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Integration Logs</pluralLabel>
-    <searchLayouts/>
+    <searchLayouts>
+        <searchResultsAdditionalFields>PRM_Record_ID__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>PRM_System_Name__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>PRM_Callout_Type__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>PRM_Transaction_time__c</searchResultsAdditionalFields>
+    </searchLayouts>
     <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>

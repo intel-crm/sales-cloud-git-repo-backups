@@ -96,7 +96,7 @@ ISNEW() ,
 ISCHANGED( {!myVariable_current.Sales_License_DlgAdmin_Contact__c}  )
 )</expression>
     </formulas>
-    <interviewLabel>Sales_License_Admin_Delegate_Process-2_InterviewLabel</interviewLabel>
+    <interviewLabel>Sales_License_Admin_Delegate_Process-3_InterviewLabel</interviewLabel>
     <label>License Admin Delegate Process</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -531,7 +531,7 @@ ISCHANGED( {!myVariable_current.Sales_License_DlgAdmin_Contact__c}  )
         <object>Sales_License_Admin_Delegate__c</object>
     </recordUpdates>
     <startElementReference>myDecision</startElementReference>
-    <status>Obsolete</status>
+    <status>Draft</status>
     <variables>
         <name>myVariable_current</name>
         <dataType>SObject</dataType>

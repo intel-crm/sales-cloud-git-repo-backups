@@ -44,26 +44,21 @@ Accenture – PM        03/04/2020                Created.
             //Creating Contact on above account
             List<Contact> lstContact = new List<Contact>();
             Contact cont = new Contact(Salutation = 'Mr',FirstName = 'Test',LastName='Contact',
-                                          Email='test123@dell.com',MailingCountry='India',
+                                          Email='test123@dell.com',
                                           AccountId=testAccount.id);
             
             lstContact.add(cont);
                         
             Contact cont1 = new Contact(Salutation = 'Mr',FirstName = 'Test1',LastName='Contact1',
-                                          Email='test12@dell.com',MailingCountry='India',
+                                          Email='test12@dell.com',
                                           AccountId=testAccount.id);
             
             lstContact.add(cont1);
             
             Contact cont2 = new Contact(Salutation = 'Mr',FirstName = 'Test2',LastName='Contact2',
-                                          Email='test1@dell.com',MailingCountry='India',
+                                          Email='test1@dell.com',
                                           AccountId=testAccount.id);
             lstContact.add(cont2);
-            
-            Contact cont3 = new Contact(Salutation = 'Mr',FirstName = 'Test3',LastName='Contact3',
-                                          Email='test3@dell.com',MailingCountry='India',
-                                          AccountId=testAccount.id);
-            lstContact.add(cont3);
             
             Database.insert(lstContact);
             
@@ -109,14 +104,10 @@ Accenture – PM        03/04/2020                Created.
             PermissionSet ps2 = new PermissionSet(Name='Core_MDF_DCF_USER1', Label='CCP DCF USER1');
             PermissionSet ps3 = new PermissionSet(Name='Core_MDF_CCF_Boost_USER1', Label='CCP CCF Boost USER1');
             PermissionSet ps4 = new PermissionSet(Name='Core_MDF_CCP_SPCF_USER1', Label='CCP SPCF USER1');
-            PermissionSet ps5 = new PermissionSet(Name='Core_MDF_CCP_Clubbed_PS1', Label='CCP Clubbed PS1');
-            PermissionSet ps6 = new PermissionSet(Name='Core_MDF_CCP_Clubbed_PS2', Label='CCP Clubbed PS2');
             lstPSName.add(ps1);
             lstPSName.add(ps2);
             lstPSName.add(ps3);
             lstPSName.add(ps4);
-            lstPSName.add(ps5);
-            lstPSName.add(ps6);
             database.insert(lstPSName);
             
             //Create Records for ERPM Engagement
@@ -125,19 +116,19 @@ Accenture – PM        03/04/2020                Created.
             
             //create Records for Entitlements
             List< Core_Entitlement__c> entListVal = new List< Core_Entitlement__c>();
-            Core_Entitlement__c entitle1 = new Core_Entitlement__c (name ='CCF User', Core_Category__c='Intel® Partner Investment Center',Core_Help_Text__c='Help text',Core_ERPM_Engagement_Id__c=cee.id,Core_Display_Name__c='CCF User',Core_IsActive__c=true,Core_Permission_Set_API_Nm__c='Core_MDF_CCF_USER1;Core_MDF_CCP_SPCF_USER1',Core_Public_Group_API_Nm__c='Core_DDR_Partner_Users1');
+            Core_Entitlement__c entitle1 = new Core_Entitlement__c (name ='CCF User', Core_Category__c='Consolidated Co-marketing Platform',Core_Sub_Category__c='Client Co-Marketing Fund (CCF)',Core_Help_Text__c='Help text',Core_ERPM_Engagement_Id__c=cee.id,Core_Display_Name__c='CCF User',Core_IsActive__c=true,Core_Permission_Set_API_Nm__c='Core_MDF_CCF_USER1',Core_Public_Group_API_Nm__c='Core_DDR_Partner_Users1');
             entListVal.add(entitle1);
           
-            Core_Entitlement__c entitle2 = new Core_Entitlement__c (name ='DCF User', Core_Category__c='Intel® Partner Investment Center',Core_Help_Text__c='Help text',Core_ERPM_Engagement_Id__c=cee.id,Core_Display_Name__c='DCF User',Core_IsActive__c=true,Core_Permission_Set_API_Nm__c='Core_MDF_DCF_USER1');
+            Core_Entitlement__c entitle2 = new Core_Entitlement__c (name ='DCF User', Core_Category__c='Consolidated Co-marketing Platform',Core_Sub_Category__c='Data Center Co-Marketing Fund (DCF)',Core_Help_Text__c='Help text',Core_ERPM_Engagement_Id__c=cee.id,Core_Display_Name__c='DCF User',Core_IsActive__c=true,Core_Permission_Set_API_Nm__c='Core_MDF_DCF_USER1');
             entListVal.add(entitle2); 
        
-            Core_Entitlement__c entitle3 = new Core_Entitlement__c (name ='SPCF User', Core_Category__c='Intel® Partner Investment Center',Core_Help_Text__c='Help text',Core_ERPM_Engagement_Id__c=cee.id,Core_Display_Name__c='SPCF User',Core_IsActive__c=true,Core_Permission_Set_API_Nm__c='Core_MDF_CCP_SPCF_USER1',Core_Public_Group_API_Nm__c='Core_Leads_Partner_Users1');
+            Core_Entitlement__c entitle3 = new Core_Entitlement__c (name ='SPCF User', Core_Category__c='Consolidated Co-marketing Platform',Core_Sub_Category__c='Service Provider Co-Marketing Fund (SPCF)',Core_Help_Text__c='Help text',Core_ERPM_Engagement_Id__c=cee.id,Core_Display_Name__c='SPCF User',Core_IsActive__c=true,Core_Permission_Set_API_Nm__c='Core_MDF_CCP_SPCF_USER1',Core_Public_Group_API_Nm__c='Core_Leads_Partner_Users1');
             entListVal.add(entitle3);
             
-            Core_Entitlement__c entitle4 = new Core_Entitlement__c (name ='CCF Boost USer', Core_Category__c='Intel® Partner Investment Center',Core_Help_Text__c='Help text',Core_ERPM_Engagement_Id__c=cee.id,Core_Display_Name__c='CCF Boost User',Core_IsActive__c=true,Core_Permission_Set_API_Nm__c='Core_MDF_CCF_Boost_USER1');
+            Core_Entitlement__c entitle4 = new Core_Entitlement__c (name ='CCF Boost USer', Core_Category__c='Consolidated Co-marketing Platform',Core_Sub_Category__c='Client Co-Marketing Fund Boost (CCF Boost)',Core_Help_Text__c='Help text',Core_ERPM_Engagement_Id__c=cee.id,Core_Display_Name__c='CCF Boost User',Core_IsActive__c=true,Core_Permission_Set_API_Nm__c='Core_MDF_CCF_Boost_USER1');
             entListVal.add(entitle4); 
             
-            Core_Entitlement__c entitle5 = new Core_Entitlement__c (name ='CCF Boost USer1', Core_Category__c='Intel® Partner Investment Center',Core_Help_Text__c='Help text',Core_ERPM_Engagement_Id__c=cee.id,Core_Display_Name__c='CCF Boost User1',Core_IsActive__c=true,Core_Permission_Set_API_Nm__c='Core_MDF_CCF_Boost_USER1');
+            Core_Entitlement__c entitle5 = new Core_Entitlement__c (name ='CCF Boost USer1', Core_Category__c='Consolidated Co-marketing Platform',Core_Sub_Category__c='Client Co-Marketing Fund Boost (CCF Boost)',Core_Help_Text__c='Help text',Core_ERPM_Engagement_Id__c=cee.id,Core_Display_Name__c='CCF Boost User1',Core_IsActive__c=true,Core_Permission_Set_API_Nm__c='Core_MDF_CCF_Boost_USER1');
             entListVal.add(entitle5); 
             
             database.insert(entListVal);  
@@ -219,7 +210,7 @@ Accenture – PM        03/04/2020                Created.
         String jobId = system.schedule('Test check', sch, sh1);
         Test.stopTest();
         system.assertEquals(true, jobId != null? true : false , 'Scheduled successfully');
-        //system.debug('batch scheduler  -->'+ jobId != null? true : false);
+        system.debug('batch scheduler  -->'+ jobId != null? true : false);
 
     }
     

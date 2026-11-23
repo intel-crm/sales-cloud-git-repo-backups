@@ -9,32 +9,6 @@
         <masterLabel>Health%</masterLabel>
         <scale>2</scale>
     </aggregates>
-    <buckets>
-        <bucketType>picklist</bucketType>
-        <developerName>BucketField_7894335</developerName>
-        <masterLabel>Tipo de oportunidad</masterLabel>
-        <nullTreatment>n</nullTreatment>
-        <sourceColumnName>Opportunity.Core_Opportunity_Type__c</sourceColumnName>
-        <useOther>false</useOther>
-        <values>
-            <sourceValues>
-                <sourceValue>Design: Original</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Design: Secondary</sourceValue>
-            </sourceValues>
-            <value>Design</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>Deal: Sell-through</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Deal: Sell-to</sourceValue>
-            </sourceValues>
-            <value>Deal</value>
-        </values>
-    </buckets>
     <columns>
         <field>FULL_NAME</field>
     </columns>
@@ -92,7 +66,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>notEqual</operator>
-            <value>INSIDE</value>
+            <value>OSC</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

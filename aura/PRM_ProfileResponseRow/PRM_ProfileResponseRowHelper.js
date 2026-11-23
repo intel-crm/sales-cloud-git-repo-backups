@@ -8,40 +8,19 @@
         var multiString = '';
         var booleanUpdateValue;
         console.dir(objRes);
-       // var today = $A.localizationService.formatDate(new Date(), "YYYY-MM-DD");
-   		       
+       
 		if(objRes.question && objRes.question.PRM_Question_Type_Nm__c == 'Boolean'){
             var returnValue = objRes.response.PRM_Response_Txt__c;
             var booleanValue = cmp.find("checkbox");
-            
-            
-            
+            //booleanUpdateValue = (booleanValue === true);
             if(returnValue && returnValue === 'true'){
                 console.log('>>is true');
                 booleanValue.set("v.value",true);
-            }else if(returnValue != 'true' && returnValue != 'false'  && returnValue != 'null'){
-                console.log('>>date'+JSON.stringify(returnValue));
-            }
-            
-            /*else if(JSON.stringify(returnValue)=='null'){
+            }else{
+                console.log('>>is false');
                 booleanValue.set("v.value",false);
-                //console.log('>>date'+JSON.stringify(returnValue));
-            }*/
-            /*else if(String.isBlank(returnValue)){
-                booleanValue.set("v.value",false);
-                //console.log('>>date'+JSON.stringify(returnValue));}*/
-            
-                else{
-                    console.log('>>is false');
-                    booleanValue.set("v.value",false);
-                    
-                }            
-          //  console.log('booleanValue--->'+booleanValue);
-            
-            
-               
-            
-            
+            }            
+            console.log('booleanValue--->'+booleanValue);
         }
         if(objRes.question && objRes.question.PRM_Question_Type_Nm__c == 'Multiselect'){
             if(objRes.lstMultiResponse){
@@ -69,7 +48,7 @@
         var saveResponse;
         var respAns;
         objRes= cmp.get("v.res");
-        saveResponse = cmp.get("v.objResponse");
+        saveResponse = cmp.get("v.objResponse"); 
         respArr = cmp.get("v.saveResponse");
         //removing existing questions to ensure no duplicate responses are stored in the system
         if(objRes.question.Id){
@@ -82,15 +61,6 @@
         }
         saveResponse.PRM_Profile_Questions_Id__c = objRes.question.Id;
         saveResponse.PRM_Response_Txt__c = String(objRes.response.PRM_Response_Txt__c);
-        //alert('Reason Text 97'+String(objRes.response.PRM_Reason_Text__c));
-         // Added as part of US_2469 
-        if(objRes.response.PRM_Reason_Text__c === undefined){
-            saveResponse.PRM_Reason_Text__c = '';
-        }else{  
-            saveResponse.PRM_Reason_Text__c = String(objRes.response.PRM_Reason_Text__c);            
-        }
-        
-        //saveResponse.PRM_ResponseDate__c = String(objRes.response.PRM_ResponseDate__c);
         saveResponse.PRM_Account_Id__c = cmp.get("v.recordId");
         console.log('objRes.answers.Id-->'+objRes.answers.Id);
         // getting answer records for the corresponding question..
@@ -99,7 +69,7 @@
             respAns = objRes.answers; 
             //filtering out answers if they match the response for the piclist and boolean type
             if(quesType.includes(objRes.question.PRM_Question_Type_Nm__c)){
-                respAns = respAns.filter(function( obj ) {                   
+                respAns = respAns.filter(function( obj ) {
                     return obj.PRM_Answer_Display_Txt__c === String(objRes.response.PRM_Response_Txt__c);
                 });       
             }
@@ -109,9 +79,9 @@
         saveResponse.PRM_Profile_Answer_Id__c = respAns[0].Id;
         respArr.push(saveResponse);
         cmp.set("v.saveResponse",respArr);
-       // console.log('respAns[0].Id--->'+respAns[0].Id);
-        //console.log(saveResponse);
-        //console.log("respArr-->"+JSON.stringify(respArr));
+        console.log('respAns[0].Id--->'+respAns[0].Id);
+        console.log(saveResponse);
+        console.log("respArr-->"+JSON.stringify(respArr));
     },
     multiPicklistChange:function(cmp){
         console.log('Inside multiPicklistChange');
@@ -181,34 +151,7 @@
             respArr.push(saveResponse);
             saveResponse = {};
         }
-       // console.log("response value-->"+JSON.stringify(respArr));
+        console.log("response value-->"+JSON.stringify(respArr));
         cmp.set("v.saveResponse",respArr);       
     },
-    
- 
-       DateforOptIn : function(cmp) {
-          objRes= cmp.get("v.res");
-          var quesType = ["Boolean"];
-        var respArr = [];
-        var objRes;
-        var saveResponse;
-        var respAns;
-        
-        
-        
-     
-        if((objRes.question.PRM_Question_Cd__c == 'PRM_Opt_In' || objRes.question.PRM_Question_Cd__c == 'PRM_Point_Not_Eligible')  && objRes.response.PRM_Response_Txt__c == true)
-        {
-            var today = new Date();
-            var mydate =today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
-
-                    cmp.set('v.res.response.PRM_Response_Txt__c',mydate);
-           }
-
-        var expdate = cmp.find("expdate").get("v.value");
-        
-    },
-    
-  
- 
- })
+})

@@ -1,0 +1,6 @@
+<aura:component implements="flexipage:availableForAllPageTypes,force:hasRecordId">
+    <div style="padding: 20px;">
+        <h2>Account Plan Generator Wrapper</h2>
+        <c:accountplandemo></c:accountplandemo>
+    </div>
+</aura:component>

@@ -8,22 +8,20 @@
         // Current Setup:
         // search for all products/partners
         // using a search keyword of the partner name
-        /*var urlParams = {
+        var urlParams = {
             //type: 'all',
             type: 'product',
             selectedFilters:{Partner:[component.get('v.dataObj').id]}
             //q: component.get('v.dataObj').name
-        };*///Commented by Raj, as we are navigatng to partner storefront now
-        
-        //var pageName = 'search';Commented by Raj, as we are navigatng to partner storefront now
-        var pageName = 'partner';
-        
-        //var searchUrlParams = encodeURIComponent(JSON.stringify(urlParams));Commented by Raj, as we are navigatng to partner storefront now
+        };
         
         
-        //component.set('v.allOfferingsUrl', '/' + pageName + '?search=' + searchUrlParams);Commented by Raj, as we are navigatng to partner storefront now
-        // IPA2.0 + US TWC4497-1631
-        // component.set('v.allOfferingsUrl', '/' + pageName + '/' + component.get('v.dataObj').id);
+        var pageName = 'search';
+        
+        var searchUrlParams = encodeURIComponent(JSON.stringify(urlParams));
+        
+        
+        component.set('v.allOfferingsUrl', '/' + pageName + '?search=' + searchUrlParams);
         window.setTimeout(function() {
             component.set("v.renderAttribute", true);
         });

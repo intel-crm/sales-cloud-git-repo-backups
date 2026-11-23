@@ -1,0 +1,106 @@
+<!-- **********************************************************************************************
+* LWC Name - psg_quoteLineRelatedList
+* Created By - Avani
+* Description - Quote Line Related List section for Internal Users
+************************************************************************************************ -->
+<template>
+    <lightning-card title="Quote Lines" icon-name="standard:account"> 
+        <template if:true={showData}>
+            <lightning-button-icon icon-name="utility:edit" slot="actions" onclick={enableEdit}  alternative-text="Edit Lines" title="Edit Lines"></lightning-button-icon>
+        </template>
+        <lightning-button label="New" slot="actions" onclick={navigateToNewQL}></lightning-button>
+        <div class="spinner">
+            <template if:true={showSpinner}>
+                <lightning-spinner alternative-text="Loading" variant="brand" size="medium"></lightning-spinner>
+            </template>
+        </div>
+        <template if:true={isEdit}>
+            <form>
+                <lightning-layout>
+                    <lightning-layout-item size="4" style="padding-left:1rem;">
+                        <div class="slds-radio_button-group">
+                            <span class="slds-button slds-radio_button">
+                                <input type="radio" name="costType" id="costType1"
+                                    value="DistyMargin" onchange={setInputType} checked={costType1}/>
+                                <label class="slds-radio_button__label" for="costType1">
+                                    <span class="slds-radio_faux">Disty Margin %</span>
+                                </label>
+                            </span>
+                            <span class="slds-button slds-radio_button">
+                                <input type="radio" name="costType" id="costType2"
+                                    value="BrokenCost" onchange={setInputType} checked={costType2} />
+                                <label class="slds-radio_button__label" for="costType2">
+                                    <span class="slds-radio_faux">Broken Cost</span>
+                                </label>
+                            </span>
+                        </div>
+                    </lightning-layout-item>
+                </lightning-layout>
+                <lightning-layout>
+                    <lightning-layout-item size="2" style="padding-left:1rem;">
+                        <template if:true={costTypeSwitch}>
+                            <lightning-input type="number" name="DistyMargin" label="Disty Margin %" onchange={handleChange} class="customInput"></lightning-input>
+                        </template>
+                        <template if:false={costTypeSwitch}>
+                            <lightning-input type="number" name="BrokenCost" label="Broken Cost" onchange={handleChange} class="customInput"></lightning-input>
+                        </template>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="1" style="padding-top:1.5rem;padding-left:1rem;">
+                        <lightning-button label="Apply" onclick={massUpdateRecord} class="customInput"></lightning-button> 
+                        </lightning-layout-item>
+                </lightning-layout>
+            </form>
+            <br/>
+        </template>
+
+        <div class="slds-scrollable slds-box">
+            <!-- *******************Table Headers****************************** -->
+            <table class="slds-table slds-table_col-bordered slds-table_bordered" style="min-width:100px; width:auto;">                        
+                <thead>
+                    <tr>
+                        <th scope="col" style="background-color:rgb(211, 209, 209);">
+                            <div class="slds-truncate">
+                                <lightning-input label=" " onchange={handleAllSelected} type="checkbox" style="min-width:1rem;max-width:1rem;"></lightning-input>
+                            </div>
+                        </th>
+                        <th scope="col" style="min-width:6rem;max-width:6rem;background-color:rgb(211, 209, 209);">
+                            <label class="slds-form-element__label slds-no-flex">Name</label>
+                        </th>
+                        <template for:each={qlColumns} for:item="colItem" for:index="index">
+                            <th key={colItem.fname} style="min-width:8rem;max-width:8rem;background-color:rgb(211, 209, 209);" scope="col" class="slds-cell-wrap">
+                                <template if:true={colItem.required}>
+                                    <label class="slds-form-element__label slds-no-flex">
+                                    <abbr class="slds-required" title="required">*</abbr>{colItem.label}
+                                    </label>
+                                </template>
+                                <template if:false={colItem.required}>
+                                    <label class="slds-form-element__label slds-no-flex">{colItem.label}</label>
+                                </template>
+                            </th>
+                        </template>
+                    </tr>   
+                </thead>
+            </table>
+
+            <template if:true={showData}>
+                <!-- *************Display existing Editable Quote Lines ***************-->
+                <template for:each={qlEditList} for:item="item" for:index="index">
+                    <div key={item.Id}>
+                        <c-psg_quote-line-related-list-child 
+                            item={item}
+                            onchildselection={handleChildSelect}
+                            onchilddeletion={handleChildDelete}
+                            is-edit={isEdit}>
+                        </c-psg_quote-line-related-list-child>
+                    </div>
+                </template>
+            </template>
+        </div>  
+        <template if:true={isEdit}>
+            <footer class="slds-card__footer">
+                <lightning-button class="footer-btn" label="Cancel" title="Cancel" onclick={cancelEdit}></lightning-button>
+                <lightning-button class="footer-btn" label="Save" variant="brand" title="Save" onclick={saveRows}></lightning-button>
+            </footer> 
+        </template>  
+    </lightning-card>
+</template>

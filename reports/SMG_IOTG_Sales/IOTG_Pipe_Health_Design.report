@@ -110,11 +110,11 @@
             <value>Design: Original,Design: Secondary</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Account.Core_Account_BU_Focus__c</column>
+            <column>Opportunity.Core_Sales_Groups__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>includes</operator>
-            <value>IOTG-AMS</value>
+            <operator>equals</operator>
+            <value>IOTG Sales Group</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -124,7 +124,7 @@
         <field>Opportunity.Core_Pipeline_Heath__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>NEX IOTG-AMS Pipe Health Design $</name>
+    <name>IOTG Pipe Health Design $</name>
     <params>
         <name>terr</name>
         <value>all</value>

@@ -29,7 +29,7 @@ Workflow rule description: &quot;</description>
         <name>mainUpdate</name>
         <label>mainUpdate</label>
         <locationX>176</locationX>
-        <locationY>335</locationY>
+        <locationY>323</locationY>
         <inputAssignments>
             <field>Core_Prior_Lost_Opportunity_Stage__c</field>
             <value>
@@ -45,35 +45,7 @@ Workflow rule description: &quot;</description>
             <targetReference>mainUpdate</targetReference>
         </connector>
         <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
-        <filterLogic>(1 OR 2 OR 3 OR 4)</filterLogic>
-        <filters>
-            <field>StageName</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>Lost</stringValue>
-            </value>
-        </filters>
-        <filters>
-            <field>StageName</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>Cancelled</stringValue>
-            </value>
-        </filters>
-        <filters>
-            <field>StageName</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>Production Lost</stringValue>
-            </value>
-        </filters>
-        <filters>
-            <field>StageName</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>Production Cancelled</stringValue>
-            </value>
-        </filters>
+        <filterFormula>AND(AND(NOT(ISNULL({!$Record.RecordTypeId})),CONTAINS({!$Label.Core_Sales_CRM_Record_Types},{!$Record.RecordType.DeveloperName})),OR(ISPICKVAL({!$Record.StageName}, &apos;Lost&apos;),ISPICKVAL({!$Record.StageName}, &apos;Cancelled&apos;),ISPICKVAL({!$Record.StageName}, &apos;Production Lost&apos;),ISPICKVAL({!$Record.StageName}, &apos;Production Cancelled&apos;)))</filterFormula>
         <object>Opportunity</object>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>

@@ -1,6 +1,6 @@
 @isTest
 public class Core_PSG_ProcessSignalCodeTest {
-	 /*@isTest static void processSignalCodeTest(){
+	 @isTest static void processSignalCodeTest(){
      
         List<Product2> prodList = new List<Product2>();
         Product2 pr1=new Product2();
@@ -58,5 +58,5 @@ public class Core_PSG_ProcessSignalCodeTest {
             
         Test.stopTest();
          
-     }*/
+     }
 }

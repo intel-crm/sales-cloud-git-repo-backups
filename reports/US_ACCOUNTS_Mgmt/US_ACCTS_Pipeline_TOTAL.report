@@ -1,15 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
-    <aggregates>
-        <calculatedFormula>DATE(YEAR(TODAY()),12,31) - TODAY()</calculatedFormula>
-        <datatype>number</datatype>
-        <description>how many days left of the calendar year from TODAY</description>
-        <developerName>FORMULA1</developerName>
-        <isActive>true</isActive>
-        <isCrossBlock>false</isCrossBlock>
-        <masterLabel>Days Left of the Year</masterLabel>
-        <scale>2</scale>
-    </aggregates>
     <columns>
         <field>ACCOUNT_NAME</field>
     </columns>
@@ -26,6 +16,9 @@
         <aggregateTypes>Sum</aggregateTypes>
         <aggregateTypes>Average</aggregateTypes>
         <field>AMOUNT</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Risk_Reason__c</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Status_Update__c</field>
@@ -48,20 +41,20 @@
     <columns>
         <field>ROLLUP_DESCRIPTION</field>
     </columns>
-    <description>Pipeline Dashboard</description>
+    <description>Report for Pipeline Dashboard</description>
     <filter>
         <criteriaItems>
             <column>STAGE_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Qualify,Define,Develop,Design,Design Win,Production Win,Production Lost,Production Cancelled</value>
+            <value>Qualify,Define,Develop,Design,Design Win,Production Win</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Sales_Groups__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
+            <operator>equals</operator>
             <value>US Sales Group</value>
         </criteriaItems>
         <criteriaItems>
@@ -69,7 +62,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>palmeri,calfin,Brian Landi,Gilad Gitlin,Dorin,Michelle Luo,Corredor,Moore,Westall,Legette,yuen,russell</value>
+            <value>Palmeri,Calfin,Brian Landi,Gilad Gitlin,Dorin,Michelle Luo,Gloria Nogales,Radhika Kunte,Gina Moore</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -115,8 +108,8 @@
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2022-12-31</endDate>
+        <endDate>2021-12-25</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2020-01-01</startDate>
+        <startDate>2018-12-30</startDate>
     </timeFrameFilter>
 </Report>

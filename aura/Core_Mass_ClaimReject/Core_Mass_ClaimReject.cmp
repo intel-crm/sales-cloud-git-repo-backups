@@ -1,0 +1,43 @@
+<aura:component controller="Core_Reject_Lead_Controller">
+	<aura:attribute name="alertMessage" type="String" default=""/>
+    <aura:attribute name="selectedLeads" type="String"/>
+    <aura:attribute name="listViewUrl" type="String"/>
+    <aura:attribute name="actionType" type="String" />
+    <aura:attribute name="isOpen" type="boolean" default="false"/>
+    <aura:attribute name="rejectionReason" type="String" default=""/>
+    <aura:attribute name="rejectionComments" type="String" default=""/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <div class="slds-m-around_xx-large">
+        <aura:if isTrue="{!v.isOpen}">
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <header class="slds-modal__header">
+                        <lightning:buttonIcon iconName="utility:close" onclick="{! c.closeModel }" alternativeText="close" variant="bare-inverse" class="slds-modal__close"/>
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">{!v.actionType} Leads</h2>
+                    </header>
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                        <aura:if isTrue="{!(v.alertMessage != '')}">
+                            <div class="slds-text-heading_small">{!v.alertMessage}</div>
+                            <aura:set attribute="else">
+                                <ui:inputSelect class="slds-input" aura:id="pickList" multiple="false" label="Rejection Reason" value="{!v.rejectionReason}" required="true"/>
+                                <br/>
+                                <ui:inputTextArea class="slds-input" value="{!v.rejectionComments}" label="Rejection Comments" required="true"/>
+                            </aura:set>
+                        </aura:if>
+                    </div>
+                    <footer class="slds-modal__footer">
+                        <aura:if isTrue="{!(v.alertMessage != '')}">
+                            <lightning:button variant="brand" label="OK" title="OK" onclick="{!c.closeModel}"/>
+                            <aura:set attribute="else">
+                                <lightning:button variant="brand" label="Save" title="Save" onclick="{!c.saveLeads}"/>
+                            </aura:set>
+                        </aura:if>
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </aura:if>
+    </div>
+</aura:component>

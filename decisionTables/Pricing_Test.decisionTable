@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DecisionTable xmlns="http://soap.sforce.com/2006/04/metadata">
+    <conditionCriteria>1</conditionCriteria>
+    <conditionType>All</conditionType>
+    <dataSourceType>SingleSobject</dataSourceType>
+    <decisionTableParameters>
+        <fieldName>pricing_TDP__c</fieldName>
+        <isGroupByField>false</isGroupByField>
+        <isRequired>false</isRequired>
+        <operator>Equals</operator>
+        <sequence>1</sequence>
+        <usage>INPUT</usage>
+    </decisionTableParameters>
+    <decisionTableParameters>
+        <fieldName>pricing_core_count__c</fieldName>
+        <isGroupByField>false</isGroupByField>
+        <isRequired>false</isRequired>
+        <usage>OUTPUT</usage>
+    </decisionTableParameters>
+    <doesConsiderNullValue>false</doesConsiderNullValue>
+    <hasIncrementalSyncFailed>false</hasIncrementalSyncFailed>
+    <isBestFitEnabled>false</isBestFitEnabled>
+    <isIncrementalSyncEnabled>false</isIncrementalSyncEnabled>
+    <isVersioned>false</isVersioned>
+    <setupName>Test</setupName>
+    <sourceObject>SBQQ__QuoteLine__c</sourceObject>
+    <status>Inactive</status>
+</DecisionTable>

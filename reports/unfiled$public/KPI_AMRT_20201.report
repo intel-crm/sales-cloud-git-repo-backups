@@ -1,66 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <columns>
-        <field>ADDRESS1_COUNTRY_CODE</field>
+        <field>Opportunity.Core_Opportunity_ID__c</field>
+    </columns>
+    <columns>
+        <field>OWNER_MANAGER</field>
+    </columns>
+    <columns>
+        <field>ROLLUP_DESCRIPTION</field>
+    </columns>
+    <columns>
+        <field>FULL_NAME</field>
     </columns>
     <columns>
         <field>ACCOUNT_NAME</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Opportunity_Type__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Core_Opportunity_KPI__c.Core_Opp_KPI_Total_Price__c</field>
-    </columns>
-    <columns>
         <field>OPPORTUNITY_NAME</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Opportunity_ID__c</field>
     </columns>
     <columns>
         <field>STAGE_NAME</field>
     </columns>
     <columns>
-        <field>CREATED_DATE</field>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Opportunity.Core_Pipeline_Heath__c</field>
     </columns>
     <columns>
-        <field>CLOSE_DATE</field>
+        <field>AMOUNT</field>
+    </columns>
+    <columns>
+        <field>EXP_AMOUNT</field>
     </columns>
     <columns>
         <field>PROBABILITY</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Consumption_Market__c</field>
+        <field>AGE</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Product_Application__c</field>
+        <field>CLOSE_DATE</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Opportunity_Products__c</field>
+        <field>CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>NEXT_STEP</field>
+    </columns>
+    <columns>
+        <field>LEAD_SOURCE</field>
+    </columns>
+    <columns>
+        <field>TYPE</field>
+    </columns>
+    <columns>
+        <field>CUST_NAME</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>Core_Opportunity_KPI__c.Core_Opp_KPI_Quantity__c</field>
     </columns>
     <columns>
-        <field>FULL_NAME</field>
+        <field>Core_Opportunity_KPI__c.Core_Opp_KPI_Type__c</field>
     </columns>
     <columns>
-        <field>CUST_NAME</field>
+        <field>Core_Opportunity_KPI__c.Core_Opp_KPI_Description__c</field>
     </columns>
     <columns>
-        <field>OWNER_MANAGER</field>
+        <field>Opportunity.Core_Opportunity_Country__c</field>
     </columns>
     <columns>
-        <field>CUST_ID</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_At_Risk_Created_Date__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Risk_Reason__c</field>
+        <field>ADDRESS1_COUNTRY_CODE</field>
     </columns>
     <filter>
         <criteriaItems>
@@ -76,6 +85,11 @@
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>Opportunity.Core_Opportunity_Coverage__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Opportunity.Core_Opportunity_Products__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>KPI AMRT 2020</name>
@@ -102,8 +116,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2020-12-25</endDate>
+        <endDate>2020-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2019-12-30</startDate>
+        <startDate>2019-12-29</startDate>
     </timeFrameFilter>
 </Report>

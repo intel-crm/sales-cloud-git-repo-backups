@@ -4,40 +4,18 @@
     <encodingKey>UTF-8</encodingKey>
     <name>SCRREQTOAPVDNEW_FRA</name>
     <style>none</style>
-    <subject>Action requise : activez votre accès au programme des partenaires dans un délai de 45 jours</subject>
-    <textOnly>Félicitations, votre demande d&apos;adhésion a été approuvée et traitée !
+    <subject>Félicitations et bienvenue dans le programme de partenariat Intel</subject>
+    <textOnly>You Have Been Approved!
 
 
-Bienvenue dans le  Programme Alliance partenaire Intel® !
+Welcome! {!Account.Name} is now a member of Intel’s Partner program. After 30 minutes, please log in here for marketing materials, sales tools and other information about your benefits. If you would like to make changes to your account, please visit your profile here.www.intel.com/content/www/us/en/secure/my-intel/profile.html
 
-Nous sommes ravis de vous accueillir dans notre écosystème unifié, conçu pour permettre à nos partenaires de tirer parti de l&apos;écosystème Intel® afin d&apos;accélérer le développement de solutions innovantes offrant résultats commerciaux et croissance
+Questions? Contact Support here
 
-Afin de garantir un accès continu à votre compte, veuillez vous connecter dans les 45 jours suivant la réception de cet e-mail. En vous connectant, votre profil restera actif et lié à votre entreprise.
-
-Grâce à des avantages adaptés à votre entreprise, vous pourrez :
-
-Générer de nouvelles opportunités commerciales grâce aux solutions, aux formations et aux ressources les plus récentes
-Gagner et échanger des points dans la cadre d&apos;achats et d&apos;activités éligibles
-Accélérer votre réussite marketing et commerciale grâce aux fonds de développement Marketing
-Apprendre, prototyper et tester des charges de travail sur les derniers logiciels Intel®
-Développer vos connaissances grâce aux formations exceptionnelles de l&apos;Université partenaire Intel®
-Créer des produits innovants à l&apos;aide de contenus, de feuilles de route et d&apos;outils de développement sous accord de confidentialité
-Lancer rapidement vos campagnes grâce aux ressources de co-marketing disponibles dans le Studio marketing Intel®
-Obtenir des prospects qualifiés grâce à votre Vitrine des partenaires Intel®
-
-Connectez-vous pour vous lancer
-
-Veuillez cliquer  ici  si vous avez besoin d&apos;aide pour vous connecter à Intel.
-
-
-
-Cordialement,
-Votre équipe Alliance partenaire Intel®
-
-Ce message vous a été envoyé dans le cadre d&apos;une communication commerciale importante liée à votre relation actuelle avec le programme Alliance partenaire Intel®.
-© {!$Label.PRM_CurrentYear} Intel Corporation
-Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054, États-Unis. www.intel.com
-Confidentialité &amp;verbar; Cookies</textOnly>
+Copyright © 2016 Intel Corporation. All rights reserved. Intel, the Intel logo are trademarks of Intel Corporation in the U.S. and/or other countries.
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. Intel.com
+You may unsubscribe at any time by updating your profile settings at: {!$Label.PRM_MyIntelProfileURL}
+Privacy | Cookies | *Trademarks</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

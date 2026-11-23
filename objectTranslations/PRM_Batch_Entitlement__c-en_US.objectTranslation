@@ -9,22 +9,6 @@
         <value>Batch Entitlements</value>
     </caseValues>
     <fields>
-        <label><!-- Account Name --></label>
-        <name>Account_Name__c</name>
-    </fields>
-    <fields>
-        <label><!-- Contact Email --></label>
-        <name>Contact_Email__c</name>
-    </fields>
-    <fields>
-        <label><!-- Date of creation/invitation --></label>
-        <name>Date_of_creation_invitation__c</name>
-    </fields>
-    <fields>
-        <label><!-- Date of purging --></label>
-        <name>Date_of_purging__c</name>
-    </fields>
-    <fields>
         <label><!-- AccountId --></label>
         <name>PRM_Account_Id__c</name>
         <relationshipLabel><!-- Batch Entitlements --></relationshipLabel>
@@ -50,10 +34,6 @@
         <relationshipLabel><!-- Batch Entitlements --></relationshipLabel>
     </fields>
     <fields>
-        <label><!-- PRM_EV Token --></label>
-        <name>PRM_EV_Token__c</name>
-    </fields>
-    <fields>
         <label><!-- Entitlement Matrix --></label>
         <name>PRM_EntitlementMatrix_Id__c</name>
         <relationshipLabel><!-- Batch Entitlements --></relationshipLabel>
@@ -68,10 +48,6 @@
         <name>PRM_Entitlement_RecordType_Txt__c</name>
     </fields>
     <fields>
-        <label><!-- PRM_IdentityAttribute --></label>
-        <name>PRM_IdentityAttribute__c</name>
-    </fields>
-    <fields>
         <label><!-- IsRemove --></label>
         <name>PRM_IsRemove_Ind__c</name>
     </fields>
@@ -84,20 +60,12 @@
         <label><!-- Partner Role --></label>
         <name>PRM_Partner_Role_Nm__c</name>
         <picklistValues>
-            <masterLabel>Cloud &amp; Comms Service Provider</masterLabel>
-            <translation><!-- Cloud &amp; Comms Service Provider --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Distributor</masterLabel>
             <translation><!-- Distributor --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>FPGA Design Services</masterLabel>
-            <translation><!-- FPGA Design Services --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Guest</masterLabel>
-            <translation><!-- Guest --></translation>
+            <masterLabel>FPGA Designer</masterLabel>
+            <translation><!-- FPGA Designer --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Independent Software Vendor</masterLabel>
@@ -108,16 +76,20 @@
             <translation><!-- Manufacturer --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Original Equipment Manufacturer (OEM)</masterLabel>
-            <translation><!-- Original Equipment Manufacturer (OEM) --></translation>
+            <masterLabel>Not Applicable</masterLabel>
+            <translation><!-- Not Applicable --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Service Integrator</masterLabel>
-            <translation><!-- Service Integrator --></translation>
+            <masterLabel>Seller</masterLabel>
+            <translation><!-- Seller --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Solution Provider</masterLabel>
-            <translation><!-- Solution Provider --></translation>
+            <masterLabel>Service Provider</masterLabel>
+            <translation><!-- Service Provider --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Solution Integrator</masterLabel>
+            <translation><!-- Solution Integrator --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Sponsor</masterLabel>
@@ -128,20 +100,8 @@
         <label><!-- Status --></label>
         <name>PRM_Status_Nm__c</name>
         <picklistValues>
-            <masterLabel>Discarded</masterLabel>
-            <translation><!-- Discarded --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Failed</masterLabel>
             <translation><!-- Failed --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Hold</masterLabel>
-            <translation><!-- Hold --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>In Progress</masterLabel>
-            <translation><!-- In Progress --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>New</masterLabel>
@@ -160,39 +120,5 @@
         <label><!-- Unique Id --></label>
         <name>PRM_Unique_Id__c</name>
     </fields>
-    <fields>
-        <label><!-- Request Created By --></label>
-        <name>Request_Created_By__c</name>
-        <relationshipLabel><!-- Batch Entitlements --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Source --></label>
-        <name>Source__c</name>
-        <picklistValues>
-            <masterLabel>Admin Invite</masterLabel>
-            <translation><!-- Admin Invite --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Admin Invite Email</masterLabel>
-            <translation><!-- Admin Invite Email --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Bulk Invite Email</masterLabel>
-            <translation><!-- Bulk Invite Email --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Partner Invite</masterLabel>
-            <translation><!-- Partner Invite --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Self Registration</masterLabel>
-            <translation><!-- Self Registration --></translation>
-        </picklistValues>
-    </fields>
-    <recordTypes>
-        <description><!-- The Archived data will be displayed in this record Type --></description>
-        <label><!-- ArchiveData --></label>
-        <name>Archive_Data</name>
-    </recordTypes>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

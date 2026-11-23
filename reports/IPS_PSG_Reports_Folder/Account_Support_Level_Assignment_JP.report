@@ -4,37 +4,16 @@
         <field>Core_IPS_Product_Organization__c.Core_IPS_Support_Org_Name__c</field>
     </columns>
     <columns>
-        <field>Core_IPS_Support_Level__c.Core_IPS_Account_Id__c</field>
-    </columns>
-    <columns>
-        <field>FK_ACC_PARENT_NAME</field>
-    </columns>
-    <columns>
         <field>FK_NAME</field>
     </columns>
     <columns>
         <field>Core_IPS_Support_Level__c.Core_IPS_Support_Level__c</field>
     </columns>
     <columns>
-        <field>FK_$Account.Core_Intel_Partner_Alliance_PartnerGroup__c</field>
-    </columns>
-    <columns>
         <field>Core_IPS_Support_Level__c.Core_IPS_Account_Geo__c</field>
     </columns>
     <columns>
         <field>FK_$Account.Core_Sub_Geo__c</field>
-    </columns>
-    <columns>
-        <field>FK_$Account.Core_Partner_Alliance_Program__c</field>
-    </columns>
-    <columns>
-        <field>FK_$Account.Core_Sales_Groups__c</field>
-    </columns>
-    <columns>
-        <field>FK_$Account.Core_Account_PSG_Tier__c</field>
-    </columns>
-    <columns>
-        <field>FK_$Account.Core_Account_Tier__c</field>
     </columns>
     <filter>
         <criteriaItems>
@@ -71,7 +50,7 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>Core_IPS_Support_Level__c.Core_IPS_Support_Level__c</sortColumn>
+    <sortColumn>FK_NAME</sortColumn>
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CUST_CREATED_DATE</dateColumn>

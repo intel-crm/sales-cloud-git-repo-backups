@@ -36,7 +36,7 @@ public WITHOUT SHARING class Core_UpdateEOLOppProd {
                 prodList.add(p);
             }
         }
-       if(prodList.size()>0){
+        if(!prodList.isEmpty()) {
             callBatch(prodList);
         }
     }

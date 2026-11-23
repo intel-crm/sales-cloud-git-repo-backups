@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>This will contain the Name of the Program record along with the DeveloperName from the Allocation Record Types.</description>
+    <fields>
+        <fullName>Core_MDF_Allocation_RT_DeveloperName__c</fullName>
+        <description>This will contain the DeveloperName of the Allocation Record Type.</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Allocation RT DeveloperName</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>CCP Record Type</label>
+    <pluralLabel>CCP Record Types</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

@@ -160,31 +160,14 @@ This object will have related Line Items that capture the unique Account/Support
     <fields>
         <fullName>Core_IPS_MAP_Access_Flag__c</fullName>
         <description>It is to easily identify who can see the MAP and how users request to add an Account to the MAP. It is  automatically calculated based on the MAP&apos;s Supported Products (SP)</description>
+        <externalId>false</externalId>
         <label>Access Flag</label>
+        <length>30</length>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
-        <type>Picklist</type>
-        <valueSet>
-            <valueSetDefinition>
-                <sorted>false</sorted>
-                <value>
-                    <fullName>Approval Required</fullName>
-                    <default>false</default>
-                    <label>Approval Required</label>
-                </value>
-                <value>
-                    <fullName>Auto Approve</fullName>
-                    <default>false</default>
-                    <label>Auto Approve</label>
-                </value>
-                <value>
-                    <fullName>Par Hidden</fullName>
-                    <default>false</default>
-                    <label>Par Hidden</label>
-                </value>
-            </valueSetDefinition>
-        </valueSet>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Core_IPS_MAP_Count_Supp_acct__c</fullName>
@@ -535,42 +518,6 @@ This object will have related Line Items that capture the unique Account/Support
             <allInternalUsers></allInternalUsers>
         </sharedTo>
     </listViews>
-    <listViews>
-        <fullName>Core_IPS_Org_026_Core_IPS_MAP_PAR</fullName>
-        <filterScope>Queue</filterScope>
-        <label>IPS - IOG</label>
-        <queue>Core_IPS_Org_026</queue>
-        <sharedTo>
-            <allInternalUsers></allInternalUsers>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>Core_IPS_Org_027_Core_IPS_MAP_PAR</fullName>
-        <filterScope>Queue</filterScope>
-        <label>IPS - AXG-XCC</label>
-        <queue>Core_IPS_Org_027</queue>
-        <sharedTo>
-            <allInternalUsers></allInternalUsers>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>Core_IPS_Org_028_Core_IPS_MAP_PAR</fullName>
-        <filterScope>Queue</filterScope>
-        <label>IPS-SMG</label>
-        <queue>Core_IPS_Org_028</queue>
-        <sharedTo>
-            <allInternalUsers></allInternalUsers>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>Core_IPS_Org_029_Core_IPS_MAP_PAR</fullName>
-        <filterScope>Queue</filterScope>
-        <label>IPS - IGT</label>
-        <queue>Core_IPS_Org_029</queue>
-        <sharedTo>
-            <allInternalUsers></allInternalUsers>
-        </sharedTo>
-    </listViews>
     <nameField>
         <displayFormat>IAR-{0000000000}</displayFormat>
         <label>Access Record</label>
@@ -584,21 +531,6 @@ This object will have related Line Items that capture the unique Account/Support
         <active>true</active>
         <description>Used for MAP</description>
         <label>MAP</label>
-        <picklistValues>
-            <picklist>Core_IPS_MAP_Access_Flag__c</picklist>
-            <values>
-                <fullName>Approval Required</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Auto Approve</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Par Hidden</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
         <picklistValues>
             <picklist>Core_Status__c</picklist>
             <values>
@@ -616,21 +548,6 @@ This object will have related Line Items that capture the unique Account/Support
         <active>true</active>
         <description>Used for PAR</description>
         <label>PAR</label>
-        <picklistValues>
-            <picklist>Core_IPS_MAP_Access_Flag__c</picklist>
-            <values>
-                <fullName>Approval Required</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Auto Approve</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Par Hidden</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
         <picklistValues>
             <picklist>Core_Status__c</picklist>
             <values>

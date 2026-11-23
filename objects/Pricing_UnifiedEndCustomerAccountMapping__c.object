@@ -185,6 +185,11 @@
     </fields>
     <label>End Customer</label>
     <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <listViews>
         <fullName>Pricing_L1_L2_Owner_Queue_Pricing_UnifiedEndCustomerAccountMapping</fullName>
         <filterScope>Queue</filterScope>
         <label>IQR UCD Owner</label>
@@ -199,7 +204,13 @@
         <type>Text</type>
     </nameField>
     <pluralLabel>End Customers</pluralLabel>
-    <searchLayouts/>
+    <profileSearchLayouts>
+        <fields>NAME</fields>
+        <profileName>Partner</profileName>
+    </profileSearchLayouts>
+    <searchLayouts>
+        <searchResultsAdditionalFields>Pricing_Account_Nm__c</searchResultsAdditionalFields>
+    </searchLayouts>
     <sharingModel>Private</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>

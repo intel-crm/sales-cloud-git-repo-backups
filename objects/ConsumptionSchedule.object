@@ -128,7 +128,7 @@
     </actionOverrides>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <enableFeeds>false</enableFeeds>
-    <externalSharingModel>Private</externalSharingModel>
+    <externalSharingModel>Read</externalSharingModel>
     <fieldSets>
         <fullName>SBQQ__CompactLayout</fullName>
         <description>Used on hover of a rate to display information about the Consumption Schedule</description>

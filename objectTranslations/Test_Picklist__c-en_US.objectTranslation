@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Test Picklist</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Test Picklist</value>
+    </caseValues>
+    <fields>
+        <label><!-- Sample Picklist --></label>
+        <name>Sample_Picklist__c</name>
+        <picklistValues>
+            <masterLabel>Test 000</masterLabel>
+            <translation><!-- Test 000 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Test 2</masterLabel>
+            <translation><!-- Test 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Test 3</masterLabel>
+            <translation><!-- Test 3 --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

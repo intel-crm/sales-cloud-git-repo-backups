@@ -248,6 +248,7 @@
             <connector>
                 <targetReference>Sync_Up_Lead_With_Credit_Request</targetReference>
             </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
             <label>Sync Lead With Credit Request</label>
         </rules>
         <rules>

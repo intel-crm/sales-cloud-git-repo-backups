@@ -9,12 +9,24 @@
         <sourceColumnName>Case.Core_Case_Closure__c</sourceColumnName>
         <useOther>true</useOther>
         <values>
+            <sourceValues>
+                <sourceValue>Fix in Intel Documentation</sourceValue>
+            </sourceValues>
             <value>Doc Bug</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Fix in Intel Platform/Tool</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Fix in Intel Software Release</sourceValue>
+            </sourceValues>
             <value>Tool/Software Bug</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Fix in Intel Silicon</sourceValue>
+            </sourceValues>
             <value>Sillicon Bug</value>
         </values>
     </buckets>
@@ -25,39 +37,6 @@
         <nullTreatment>n</nullTreatment>
         <sourceColumnName>Case.Core_IPS_Product_name__c</sourceColumnName>
         <useOther>false</useOther>
-    </buckets>
-    <buckets>
-        <bucketType>picklist</bucketType>
-        <developerName>BucketField_36687567</developerName>
-        <masterLabel>test</masterLabel>
-        <nullTreatment>n</nullTreatment>
-        <otherBucketLabel>Other</otherBucketLabel>
-        <sourceColumnName>Case.Core_Case_Closure__c</sourceColumnName>
-        <useOther>true</useOther>
-        <values>
-            <sourceValues>
-                <sourceValue>Intel &gt; Silicon Fix</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel &gt; Hardware Fix</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel &gt; Firmware Fix</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel &gt; Software Fix</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel &gt; Unknown Fix</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel &gt; Manufacturing</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel &gt; Regression</sourceValue>
-            </sourceValues>
-            <value>BUG</value>
-        </values>
     </buckets>
     <chart>
         <backgroundColor1>#FFFFFF</backgroundColor1>
@@ -131,9 +110,6 @@
     <columns>
         <field>Case.Core_Product_Organization__c</field>
     </columns>
-    <columns>
-        <field>BucketField_36687567</field>
-    </columns>
     <filter>
         <criteriaItems>
             <column>RECORDTYPE</column>
@@ -150,6 +126,13 @@
             <value>Programmable Solutions Group</value>
         </criteriaItems>
         <criteriaItems>
+            <column>Case.Core_External_Issue_Category__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Devices,Quality</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>Case.Core_IPS_Support_Level__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
@@ -163,18 +146,11 @@
             <operator>notContain</operator>
             <value>ROW,Top</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>Case.Core_External_Issue_Category__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Devices,Quality</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Matrix</format>
     <groupingsAcross>
-        <dateGranularity>FiscalYear</dateGranularity>
+        <dateGranularity>Quarter</dateGranularity>
         <field>CLOSED_DATEONLY</field>
         <sortOrder>Asc</sortOrder>
     </groupingsAcross>
@@ -204,7 +180,7 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSED_DATEONLY</dateColumn>
-        <endDate>2021-12-30</endDate>
+        <endDate>2020-06-30</endDate>
         <interval>INTERVAL_CUSTOM</interval>
         <startDate>2019-01-01</startDate>
     </timeFrameFilter>

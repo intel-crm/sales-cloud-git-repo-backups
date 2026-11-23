@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>PCC_Share_APJ_RC_to_APJ_PSAM</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Share APJ RC to APJ PSAM</label>
+        <sharedTo>
+            <group>AGS_Deal_Reg_Access_APJ</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>PCC_Partner_Account_Region__c</field>
+            <operation>equals</operation>
+            <value>APJ</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PCC_Share_ASMO_RC_to_ASMO_PSAM</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Share ASMO RC to ASMO PSAM</label>
+        <sharedTo>
+            <group>AGS_Deal_Reg_ASMO</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>PCC_Partner_Account_Region__c</field>
+            <operation>equals</operation>
+            <value>ASMO</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PCC_Share_All_RC_to_WW_PSAM</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Share All RC to WW PSAM</label>
+        <sharedTo>
+            <group>AGS_Deal_Reg_WW</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Rebate Claim</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PCC_Share_EMEA_RC_to_EMEA_PSAM</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Share EMEA RC to EMEA PSAM</label>
+        <sharedTo>
+            <group>AGS_Deal_Reg_Access_EMEA</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>PCC_Partner_Account_Region__c</field>
+            <operation>equals</operation>
+            <value>EMEA</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PCC_Share_PRC_RC_to_PRC_PSAM</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Share PRC RC to PRC PSAM</label>
+        <sharedTo>
+            <group>AGS_Deal_Reg_PRC</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>PCC_Partner_Account_Region__c</field>
+            <operation>equals</operation>
+            <value>PRC</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_All_Rebate_Claim_Records_with_LegalFinance</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Share All Rebate Claim Records with LegalFinance</label>
+        <sharedTo>
+            <group>Pricing_Fin_Incntv_Read_Only_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Name</field>
+            <operation>notEqual</operation>
+            <value></value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_All_Rebate_Claim_Records_with_RA</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share All Rebate Claim Records with RA</label>
+        <sharedTo>
+            <group>Pricing_Fin_Inctv_Rebate_Analyst_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Name</field>
+            <operation>notEqual</operation>
+            <value></value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_All_Rebate_Claim_Records_with_RPM</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Share All Rebate Claim Records with RPM</label>
+        <sharedTo>
+            <group>Pricing_Fin_Inctv_Pricing_Manager_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Name</field>
+            <operation>notEqual</operation>
+            <value></value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>

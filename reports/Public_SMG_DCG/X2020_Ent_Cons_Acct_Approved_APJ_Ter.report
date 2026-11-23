@@ -71,7 +71,7 @@
         <field>Opportunity.Core_Solution_Area__c</field>
     </columns>
     <filter>
-        <booleanFilter>(1 and 2 and 3 and 4 and 5 and 6 and 7)</booleanFilter>
+        <booleanFilter>1 and 2 and 3 and 4 and 5 and 6 and 7</booleanFilter>
         <criteriaItems>
             <column>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Quantity__c</column>
             <columnToColumn>false</columnToColumn>
@@ -119,7 +119,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>apj sale</value>
+            <value>apj ter</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

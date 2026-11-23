@@ -24,16 +24,6 @@
     </decisionTableParameters>
     <decisionTableParameters>
         <dataType>String</dataType>
-        <fieldName>Pricing_EndCust_HighTouch_List_Ind__c</fieldName>
-        <fieldPath>Pricing_EndCust_HighTouch_List_Ind__c</fieldPath>
-        <isGroupByField>false</isGroupByField>
-        <isRequired>true</isRequired>
-        <operator>Equals</operator>
-        <sequence>3</sequence>
-        <usage>INPUT</usage>
-    </decisionTableParameters>
-    <decisionTableParameters>
-        <dataType>String</dataType>
         <fieldName>Pricing_Routing_Rule_Id__c</fieldName>
         <fieldPath>Pricing_Routing_Rule_Id__c</fieldPath>
         <isGroupByField>false</isGroupByField>
@@ -57,6 +47,16 @@
         <isGroupByField>false</isGroupByField>
         <isRequired>false</isRequired>
         <usage>OUTPUT</usage>
+    </decisionTableParameters>
+    <decisionTableParameters>
+        <dataType>String</dataType>
+        <fieldName>Pricing_EndCust_HighTouch_List_Ind__c</fieldName>
+        <fieldPath>Pricing_EndCust_HighTouch_List_Ind__c</fieldPath>
+        <isGroupByField>false</isGroupByField>
+        <isRequired>true</isRequired>
+        <operator>Equals</operator>
+        <sequence>3</sequence>
+        <usage>INPUT</usage>
     </decisionTableParameters>
     <decisionTableParameters>
         <dataType>String</dataType>
@@ -89,16 +89,16 @@
         <valueType>Literal</valueType>
     </decisionTableSourceCriterias>
     <decisionTableSourceCriterias>
+        <operator>IsNotNull</operator>
+        <sequenceNumber>2</sequenceNumber>
+        <sourceFieldName>Pricing_End_Customer_Country_Nm__c</sourceFieldName>
+        <valueType>Literal</valueType>
+    </decisionTableSourceCriterias>
+    <decisionTableSourceCriterias>
         <operator>Equals</operator>
         <sequenceNumber>4</sequenceNumber>
         <sourceFieldName>Pricing_Is_Routing_Rule_Active_Ind__c</sourceFieldName>
         <value>true</value>
-        <valueType>Literal</valueType>
-    </decisionTableSourceCriterias>
-    <decisionTableSourceCriterias>
-        <operator>IsNotNull</operator>
-        <sequenceNumber>2</sequenceNumber>
-        <sourceFieldName>Pricing_End_Customer_Country_Nm__c</sourceFieldName>
         <valueType>Literal</valueType>
     </decisionTableSourceCriterias>
     <doesConsiderNullValue>false</doesConsiderNullValue>

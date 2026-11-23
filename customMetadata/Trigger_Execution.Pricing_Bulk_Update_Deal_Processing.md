@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-    <label>Pricing Bulk Update Deal Processing</label>
+    <label>Pricing Bulk Update Deal  Processing</label>
     <protected>false</protected>
     <values>
         <field>Active__c</field>
@@ -12,7 +12,7 @@
     </values>
     <values>
         <field>Description__c</field>
-        <value xsi:type="xsd:string">Enable or disable RPM bulk action for bulk CR Processing.</value>
+        <value xsi:type="xsd:string">Enable or disable RPM bulk action for  bulk CR Processing.</value>
     </values>
     <values>
         <field>Inactive_for_Profile__c</field>

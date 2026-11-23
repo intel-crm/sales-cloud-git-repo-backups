@@ -26,11 +26,6 @@
                     <default>false</default>
                     <label>search</label>
                 </value>
-                <value>
-                    <fullName>childAccordin</fullName>
-                    <default>false</default>
-                    <label>childAccordin</label>
-                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -39,7 +34,7 @@
         <externalId>false</externalId>
         <fieldManageability>DeveloperControlled</fieldManageability>
         <label>Display Order</label>
-        <precision>3</precision>
+        <precision>18</precision>
         <required>false</required>
         <scale>0</scale>
         <type>Number</type>
@@ -94,69 +89,12 @@
         <type>Checkbox</type>
     </fields>
     <fields>
-        <fullName>LayoutItem_Size__c</fullName>
-        <externalId>false</externalId>
-        <fieldManageability>DeveloperControlled</fieldManageability>
-        <label>LayoutItem_Size</label>
-        <precision>3</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <type>Number</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>PMP_Field_Label__c</fullName>
         <description>Label to display on UI</description>
         <externalId>false</externalId>
         <fieldManageability>DeveloperControlled</fieldManageability>
         <label>Field Label</label>
         <length>40</length>
-        <required>false</required>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>PMP_Filter_Sequence__c</fullName>
-        <description>To order the filters in the l2 page</description>
-        <externalId>false</externalId>
-        <fieldManageability>DeveloperControlled</fieldManageability>
-        <label>Filter Sequence</label>
-        <precision>18</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <type>Number</type>
-        <unique>true</unique>
-    </fields>
-    <fields>
-        <fullName>PMP_Is_Create_Offering_Ind__c</fullName>
-        <defaultValue>false</defaultValue>
-        <fieldManageability>DeveloperControlled</fieldManageability>
-        <label>Is Create Offering</label>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>PMP_Is_Search_Ind__c</fullName>
-        <defaultValue>false</defaultValue>
-        <fieldManageability>DeveloperControlled</fieldManageability>
-        <label>Is Search</label>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>PMP_Search_Filter_Group_Txt__c</fullName>
-        <externalId>false</externalId>
-        <fieldManageability>DeveloperControlled</fieldManageability>
-        <label>Search Filter Group</label>
-        <length>60</length>
-        <required>false</required>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>PMP_Search_Filter_Label_Txt__c</fullName>
-        <externalId>false</externalId>
-        <fieldManageability>DeveloperControlled</fieldManageability>
-        <label>Filter Label</label>
-        <length>80</length>
         <required>false</required>
         <type>Text</type>
         <unique>false</unique>
@@ -197,14 +135,6 @@
                 </value>
             </valueSetDefinition>
         </valueSet>
-    </fields>
-    <fields>
-        <fullName>is_Inline_Radio__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>Set this flag as true if the radio options need to be displayed inline</description>
-        <fieldManageability>DeveloperControlled</fieldManageability>
-        <label>is Inline Radio</label>
-        <type>Checkbox</type>
     </fields>
     <label>PMP Specifications Tab Mapping</label>
     <pluralLabel>PMP Specifications Tab Mappings</pluralLabel>

@@ -39,4 +39,8 @@
         <errorMessage><!-- Product Floor Price cannot be created or updated when the price rule is in the Submitted state. --></errorMessage>
         <name>Pricing_Restrict_ProductFloorPriceFields</name>
     </validationRules>
+    <validationRules>
+        <errorMessage><!-- Write in Product can be added. Please select Intel Products. --></errorMessage>
+        <name>Pricing_Restrict_Write_In_Product</name>
+    </validationRules>
 </CustomObjectTranslation>

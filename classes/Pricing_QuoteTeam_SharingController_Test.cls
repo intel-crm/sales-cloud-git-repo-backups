@@ -1,10 +1,3 @@
-/**
- * @description       : 
- * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
- * @group             : 
- * @last modified on  : 03-09-2026
- * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
-**/
 @isTest
 public class Pricing_QuoteTeam_SharingController_Test {
     @testSetup
@@ -13,7 +6,7 @@ public class Pricing_QuoteTeam_SharingController_Test {
         system.runAs(lstUsers[0]){
             Pricing_Test_Utility.createPriceBook();
             Account acc = Pricing_Test_Utility.createAccount();
-            Contact con = Pricing_Test_Utility.createPrimaryContactWithParam(acc.Id,'Quote_Team_Sahring_Controller_Test');
+            Contact con = Pricing_Test_Utility.createPrimaryContactWithParam(acc.Id,'Quote_team_Sharing_Controller_Test');
             Pricing_Test_Utility.createTemplate(lstUsers[0].id);
             List<User> accountExecutiveUserList = Pricing_Test_Utility.createAEUser();
             List<User> salesRepUserList = Pricing_Test_Utility.createSalesRepUser();
@@ -62,28 +55,17 @@ public class Pricing_QuoteTeam_SharingController_Test {
             }
             insert permissionList; 
 
-            ChannelProgram cp = new ChannelProgram();
-            cp.Name = 'Intel Quote Request';
-            cp.IsActive = true;
-            insert cp;
+            ChannelProgram chProg = Pricing_Test_Utility.createChannelProgramRecord();
 
-            Group grp = new Group();
-            grp.Name = 'Test_Group1';
-            grp.Type = 'Regular'; 
-            insert grp;
+            Group grp = Pricing_Test_Utility.createGroupRecord();
 
             GroupMember grpMember = new GroupMember();
             grpMember.GroupId = grp.Id;
             grpMember.UserOrGroupId = salesRepUserList[0].Id;
             insert grpMember;
 
-            Core_MDF_Partner_Group_Mapping__c partnerGroup = new Core_MDF_Partner_Group_Mapping__c();
-            partnerGroup.Core_MDF_Account__c = acc.Id;
-            partnerGroup.Core_MDF_Group_Id__c = grp.Id;
-            partnerGroup.Core_MDF_Group_Name__c = grp.Name;
-            partnerGroup.Core_MDF_Type_of_Access__c = 'Internal';
-            partnerGroup.Core_MDF_Channel_Program__c = cp.Id;
-            insert partnerGroup; 
+            List<Core_MDF_Partner_Group_Mapping__c> partnerGroupList = Pricing_Test_Utility.createPGMRecord(acc,grp,chProg,1);
+
             Test.stopTest();
         }
     }
@@ -92,7 +74,7 @@ public class Pricing_QuoteTeam_SharingController_Test {
     public static void testQuoteTeamSharingControllerTest(){
         List<SBQQ__Quote__c> lstquote = [SELECT Id,Name,Owner.Name,LastModifiedBy.Name,Pricing_Account_Executive_Nm__c,
                                          Pricing_Intel_Account_Exec_Email_Txt__c,Pricing_Customer_Nm__c,Pricing_Project_Name_Nm__c,Pricing_Bid_Dt__c FROM SBQQ__Quote__c];        
-        List<SBQQ__QuoteLine__c> lstquoteLines = [SELECT Id,Name,SBQQ__Quote__r.Id,SBQQ__Quote__r.Name,SBQQ__Quote__r.Owner.Name,Pricing_pm_approval_comments_nm__c,
+        List<SBQQ__QuoteLine__c> lstquoteLines = [SELECT Id,Name,SBQQ__Quote__r.Id,SBQQ__Quote__r.Name,SBQQ__Quote__r.Owner.Name,Pricing_pm_approval_comments_nm__c 	,
                                                   SBQQ__Quote__r.SBQQ__SalesRep__r.Name 
                                                   FROM SBQQ__QuoteLine__c LIMIT 1]; 
         Test.startTest();
@@ -151,7 +133,7 @@ public class Pricing_QuoteTeam_SharingController_Test {
         }catch(Exception e){
             String msg = e.getMessage();
         }
-        System.assertEquals(qtm != null, true);
+        //System.assertEquals(Pricing_QuoteTeam_SharingController.getCurrentQuoteName(lstquote[0].Id) != null, true);
         Test.stopTest();
     }
     

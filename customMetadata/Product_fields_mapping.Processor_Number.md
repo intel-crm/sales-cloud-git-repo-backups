@@ -36,7 +36,7 @@
     </values>
     <values>
         <field>Inbound_staging_field__c</field>
-        <value xsi:type="xsd:string">L4_ProcessorNumber__c</value>
+        <value xsi:type="xsd:string">L4_ProcessorNumber_WR__c</value>
     </values>
     <values>
         <field>Is_L4_Mapping_Field__c</field>

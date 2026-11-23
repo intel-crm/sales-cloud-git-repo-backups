@@ -9,6 +9,11 @@
         <value>Core Exceptions</value>
     </caseValues>
     <fields>
+        <label><!-- CoreExceptionProjectInfo --></label>
+        <name>CoreExceptionProjectInfo__c</name>
+        <relationshipLabel><!-- Core Exceptions --></relationshipLabel>
+    </fields>
+    <fields>
         <label><!-- Class Name --></label>
         <name>Core_Class_Name__c</name>
     </fields>
@@ -44,6 +49,10 @@
     <fields>
         <label><!-- Status --></label>
         <name>Core_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Core Unhandled Exception --></label>
+        <name>Core_Unhandled_Exception__c</name>
     </fields>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>CCP Fund Request Picklist</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>CCP Fund Request Picklists</value>
+    </caseValues>
+    <fields>
+        <label><!-- Controlling Field Name --></label>
+        <name>Core_MDF_Controlling_Field_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Controlling Field Value --></label>
+        <name>Core_MDF_Controlling_Field_Value__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field Value --></label>
+        <name>Core_MDF_Field_Value__c</name>
+    </fields>
+    <fields>
+        <label><!-- Object Name --></label>
+        <name>Core_MDF_Object_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field Name --></label>
+        <name>Core_MDF_PickList_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Record Type Name --></label>
+        <name>Core_MDF_Record_Type_Name__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

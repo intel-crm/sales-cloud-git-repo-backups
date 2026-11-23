@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>46.0</apiVersion>
+    <available>true</available>
+    <description>Email requesting Intel MP Admins,when offering is approved and will be published in future</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>PMP_OfferingFuturePublishAdminNotify</name>
+    <style>none</style>
+    <subject>The Marketplace offering which was Approved by you is Published now!</subject>
+    <type>visualforce</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

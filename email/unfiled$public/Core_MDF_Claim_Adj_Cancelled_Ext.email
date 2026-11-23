@@ -1,0 +1,52 @@
+<messaging:emailTemplate recipientType="User"
+                         relatedToType="PartnerFundClaim"
+                         language="{!RelatedTo.Core_MDF_Owner_LanguageLocaleKey_Cd__c}"
+                         subject="{!$Label.Core_MDF_EmailTemp_AdjCancelled_Subject}">
+                          
+                         
+    <messaging:htmlEmailBody >
+        <html>
+            <body>  <div style="font-size:14px;font-family:Calibri">    
+                         
+                                   <p>      
+                                                {!$Label.Core_MDF_EmailTemp_StatusUpdate_DearMember} <br/>
+                                  </p>  
+                                   <p>          {!$Label.Core_MDF_EmailTemp_AdjReq_Create_Body2a } <br/>
+                                                {!$Label.Core_MDF_EmailTemp_StatusUpdate_Body5 }
+                                               
+                                               <apex:outputLink value="{!$Label.Core_MDF_PFRCommunityLink+RelatedTo.Id}"> {!$Label.Core_MDF_EmailTemp_Claim_URL1}</apex:outputLink>
+                                                      
+                                                {!$Label.Core_MDF_EmailTemp_Claim_Body3}          <br/>
+                                                 <ul>
+                                                      <li>{!$Label.Core_MDF_EmailTemp_AdjReq_Create_Body1}&nbsp; : {!RelatedTo.Core_MDF_Claim_Ref_Number__c} </li>
+                                                      <li>{!$Label.Core_MDF_Claim_Adjustment_Name}&nbsp; {!RelatedTo.Title}</li>
+                                                      <li>{!$Label.Core_MDF_EmailTemp_AdjReq_Create_Body4} &nbsp; {!RelatedTo.Core_MDF_AccountCompany__c}<br/> </li>
+                                                      <li>{!$Label.Core_MDF_EmailTemp_Claim_Country} &nbsp;{!RelatedTo.Core_MDF_Country_Location__c} <br/>  </li>  
+                                                 </ul> 
+                                  <p> 
+                                                {!$Label.Core_MDF_EmailTemp_StatusUpdate_Body7}<br/><br/>
+                                                {!RelatedTo.Core_MDF_Program__c} 
+                                                {!$Label.Core_MDF_EmailTemp_Claim_Body5} <br/>
+                       
+                                  </p>  
+                                   <br/></p>
+                                   </div>
+                                   <div style="font-size:11px;font-family:Calibri">
+                                   <p>
+                                     <i>  {!$Label.Core_MDF_EmailTemp_Claim_Footer1}
+                                           <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Customer_Support}"> {!$Label.Core_MDF_EmailTemp_Claim_URL2} </a>
+                                            {!$Label.Core_MDF_EmailTemp_Claim_Footer2}<br/><br/></i>
+                                            {!$Label.Core_MDF_EmailTemp_Claim_Footer3}
+                                            <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Customer_Support}"> {!$Label.Core_MDF_EmailTemp_Claim_URL2} </a>
+                                           {!$Label.Core_MDF_EmailTemp_Claim_Footer4}<br/><br/>
+                                    <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Home}" > {!$Label.Core_MDF_EmailTemp_Footer3} </a> | 
+                                    <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Trademarks}"> {!$Label.Core_MDF_EmailTemp_Footer4} </a> | 
+                                    <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Privacy}"> {!$Label.Core_MDF_EmailTemp_Footer5} </a> |
+                                    <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Cookies}"> {!$Label.Core_MDF_EmailTemp_Footer6} </a>
+                            </p>         
+                    
+                    </div>         
+            </body>
+        </html>
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>

@@ -86,10 +86,6 @@
         <name>Metadata_Name__c</name>
     </fields>
     <fields>
-        <label><!-- IPA Affiliation --></label>
-        <name>PRM_IPA_Affiliation__c</name>
-    </fields>
-    <fields>
         <label><!-- Program --></label>
         <name>Program__c</name>
         <picklistValues>

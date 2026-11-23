@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <excludeButtons>GenerateKnowledge</excludeButtons>
+    <excludeButtons>OpenSlackRecordChannel</excludeButtons>
     <excludeButtons>Submit</excludeButtons>
     <layoutSections>
         <customLabel>false</customLabel>
@@ -36,8 +38,16 @@
                 <field>Pricing_Program_Type_Nm__c</field>
             </layoutItems>
             <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Pricing_ASMO_Country__c</field>
+            </layoutItems>
+            <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Pricing_Routing_RPM_Email__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Pricing_Routing_Rule_Id__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -45,11 +55,23 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
+                <field>Pricing_Route_Rule_Name_Txt__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Pricing_EndCust_Exclusion_List_Ind__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Pricing_RPM_Group_Name_Txt__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
                 <field>Pricing_EndCustomer_CSP_List_Ind__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Pricing_Routing_Output_Criteria_Nm__c</field>
+                <field>Pricing_Decision_Table_Name_Txt__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -66,6 +88,10 @@
                 <field>Pricing_Market_Segment_Nm__c</field>
             </layoutItems>
             <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Pricing_AI_Host_Node_Ind__c</field>
+            </layoutItems>
+            <layoutItems>
                 <behavior>Required</behavior>
                 <field>Pricing_Routing_Rule_End_Dt__c</field>
             </layoutItems>
@@ -78,20 +104,12 @@
                 <field>Pricing_Change_Request_Ind__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Pricing_RPM_Group_Name_Txt__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Pricing_EndCust_Exclusion_List_Ind__c</field>
-            </layoutItems>
-            <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>Pricing_Is_Routing_Rule_Active_Ind__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Pricing_Route_Rule_Name_Txt__c</field>
+                <field>Pricing_Routing_Output_Criteria_Nm__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>

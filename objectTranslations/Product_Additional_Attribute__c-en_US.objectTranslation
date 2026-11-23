@@ -8,6 +8,10 @@
         <plural>true</plural>
         <value>Product Additional Attributes</value>
     </caseValues>
+    <fieldSets>
+        <label><!-- Product Filter FieldSet --></label>
+        <name>Product_Filter_FieldSet</name>
+    </fieldSets>
     <fields>
         <label><!-- Eligible for Deal Reg? --></label>
         <name>Eligible_for_Deal_Reg__c</name>
@@ -23,6 +27,34 @@
     <fields>
         <label><!-- Is Product Active? --></label>
         <name>Is_Product_Active__c</name>
+    </fields>
+    <fields>
+        <label><!-- Intel vPro Platform Eligibility --></label>
+        <name>PCC_Intel_vPro_Platform_Eligibility__c</name>
+    </fields>
+    <fields>
+        <label><!-- Processor Number --></label>
+        <name>PCC_Processor_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Family EPM ID --></label>
+        <name>PCC_Product_Family_EPM_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Name --></label>
+        <name>PCC_Product_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Series EPM ID --></label>
+        <name>PCC_Product_Series_EPM_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Series --></label>
+        <name>PCC_Product_Series__c</name>
+    </fields>
+    <fields>
+        <label><!-- Stable Image Platform Program Version --></label>
+        <name>PCC_Stable_Image_Platform_Prgm_Version__c</name>
     </fields>
     <fields>
         <label><!-- Product Family --></label>
@@ -62,4 +94,8 @@
         <name>Start_Date__c</name>
     </fields>
     <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Please choose a different Product as it is not available anymore --></errorMessage>
+        <name>Is_Product_Selected_Correct</name>
+    </validationRules>
 </CustomObjectTranslation>

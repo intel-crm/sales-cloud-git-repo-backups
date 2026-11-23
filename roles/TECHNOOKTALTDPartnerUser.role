@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>LLC &quot;OKTA SYSTEM&quot; Partner User</description>
+    <description>TECHNO-OKTA LTD. Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>LLC &quot;OKTA SYSTEM&quot; Partner User</name>
+    <name>TECHNO-OKTA LTD. Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Inactive_Accounts_Role</parentRole>
+    <parentRole>TECHNOOKTALTDPartnerManager</parentRole>
 </Role>

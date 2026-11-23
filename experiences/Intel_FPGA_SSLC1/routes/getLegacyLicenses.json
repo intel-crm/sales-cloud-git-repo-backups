@@ -1,0 +1,12 @@
+{
+  "activeViewId" : "f8a20a49-0e7b-4de3-ab06-a9f4e9012492",
+  "appPageId" : "6b36c665-0609-49d0-9746-033feed642b2",
+  "configurationTags" : [ ],
+  "devName" : "Sales_Get_Legacy_Licenses__c",
+  "id" : "541630ac-bfec-41b3-bc77-e9223a852c6b",
+  "label" : "Get Legacy Licenses",
+  "pageAccess" : "UseParent",
+  "routeType" : "custom-get-legacy-licenses",
+  "type" : "route",
+  "urlPrefix" : "get-legacy-licenses"
+}

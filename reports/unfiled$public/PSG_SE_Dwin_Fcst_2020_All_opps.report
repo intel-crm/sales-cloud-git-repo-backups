@@ -1,15 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
-    <aggregates>
-        <calculatedFormula>1-
-(Opportunity.Core_Pipeline_Heath__c:SUM/Opportunity.Core_Open_Oppty__c:SUM)</calculatedFormula>
-        <datatype>percent</datatype>
-        <developerName>FORMULA1</developerName>
-        <isActive>true</isActive>
-        <isCrossBlock>false</isCrossBlock>
-        <masterLabel>Pipeline Health %</masterLabel>
-        <scale>2</scale>
-    </aggregates>
     <buckets>
         <bucketType>picklist</bucketType>
         <developerName>BucketField_99300139</developerName>
@@ -110,12 +100,6 @@
         <field>OPPORTUNITY_NAME</field>
     </columns>
     <columns>
-        <field>FULL_NAME</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Technical_Owner__c</field>
-    </columns>
-    <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>AMOUNT</field>
     </columns>
@@ -129,79 +113,26 @@
         <field>CLOSE_DATE</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Opportunity_Products__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Status_Update__c</field>
-    </columns>
-    <columns>
-        <field>CREATED_DATE</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Business_Unit_Territory__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Sales_Groups__c</field>
-    </columns>
-    <columns>
-        <field>Account.Core_Account_Tier__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Consumption_Market__c</field>
-    </columns>
-    <columns>
-        <field>ACCOUNT_OWNER</field>
-    </columns>
-    <columns>
-        <field>ADDRESS1_CITY</field>
-    </columns>
-    <columns>
-        <field>ADDRESS1_STATE_CODE</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Opportunity.Core_Push_Counter__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Opportunity.Core_Pending_Products__c</field>
-    </columns>
-    <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>EXP_AMOUNT</field>
     </columns>
     <columns>
-        <field>Account.Core_Partner_Alliance_Program__c</field>
+        <field>FULL_NAME</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Product_Segment__c</field>
+        <field>Opportunity.Core_Technical_Owner__c</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_External_ID__c</field>
-    </columns>
-    <columns>
-        <field>Account.Core_Account_ID__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Opportunity_ID__c</field>
-    </columns>
-    <columns>
-        <field>LAST_UPDATE_BY</field>
-    </columns>
-    <columns>
-        <field>LAST_ACTIVITY</field>
-    </columns>
-    <columns>
-        <field>LAST_UPDATE</field>
+        <field>Opportunity.Core_Business_Unit_Territory__c</field>
     </columns>
     <filter>
-        <booleanFilter>(1 AND 2 AND 3 AND 4 AND 5 AND (6 OR 8) AND 7) AND 9</booleanFilter>
+        <booleanFilter>((1 AND 2 AND (3 OR 4)) AND 5) AND 6 AND 7</booleanFilter>
         <criteriaItems>
             <column>STAGE_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>qualify,define,develop,design,win</value>
+            <operator>notContain</operator>
+            <value>lost,cancel</value>
         </criteriaItems>
         <criteriaItems>
             <column>BucketField_97257708</column>
@@ -211,53 +142,39 @@
             <value>Design Win</value>
         </criteriaItems>
         <criteriaItems>
+            <column>OWNER_MANAGER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Ferment</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Technical_Owner_Manager__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Ferment,Foster</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Business_Unit_Territory__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>PSG-NA-SE,PSG-NA-MID,PSG-NA-CHI,PSG-NA-ABOS</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OPPORTUNITY_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>notContain</operator>
+            <value>Nokia MN ABIL - FDD</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>CLOSE_DATE</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>greaterThan</operator>
             <value>1/1/2020</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>FULL_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>notContain</operator>
-            <value>Dolan,Kelley,Ward,Gallagher,Cahill,Nigh,Michael Ho,Cisneros,Charlie Mark,Prigmore,Moawad</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Business_Unit_Territory__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>PSG-NA-MID,PSG-NA-SE,PSG-NA-OHIO,PSG-NA-SC,PSG-NA-SW</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OWNER_MANAGER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Ferment,Cesbron,Finamore,Pederson,Zurlo,Galluccio</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Technical_Owner__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>Spur,Ward,Charlie Mark,Prigmore</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>FULL_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Reichlin,Sayer,Dimtsios,Braley,Gauthier,Kinard,Sork,Thompson,Gann,Griffin</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>CLOSE_DATE</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>equals</operator>
-            <value>LAST_YEAR</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -272,7 +189,7 @@
         <field>CLOSE_MONTH</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Altera South Dwin Fcst - All opps</name>
+    <name>PSG SE Dwin Fcst - All opps</name>
     <params>
         <name>terr</name>
         <value>all</value>

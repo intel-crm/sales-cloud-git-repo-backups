@@ -1,0 +1,86 @@
+.chatbox {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 350px;
+    padding: 15px;
+    background-color: #f4f6f9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Arial, sans-serif;
+}
+
+.header {
+    text-align: center;
+}
+
+.header-image {
+    width: 50px;
+    height: 50px;
+    background-image: url('/resources/images/einstein.png'); /* Update the path as needed */
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-bottom: 10px;
+}
+
+.welcome-message {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.question-button {
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 5px 0;
+    cursor: pointer;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+}
+
+.question-button:hover {
+    background-color: #e6e6e6;
+}
+
+.input-area {
+    display: flex;
+    margin-top: 20px;
+    width: 100%;
+}
+
+input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px;
+    font-size: 14px;
+}
+
+button {
+    background-color: #0070d2;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #005bb5;
+}
+
+.arrow {
+    font-size: 16px;
+    color: #0070d2;
+}

@@ -143,4 +143,8 @@
         <errorMessage><!-- Status Change not allowed once set to Complete --></errorMessage>
         <name>Core_IPS_Prevent_StatusChng_FromComplete</name>
     </validationRules>
+    <webLinks>
+        <label><!-- Core_Assign_SP_Account --></label>
+        <name>Core_Assign_SP_Account</name>
+    </webLinks>
 </CustomObjectTranslation>

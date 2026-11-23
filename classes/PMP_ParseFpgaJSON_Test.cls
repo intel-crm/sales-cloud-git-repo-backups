@@ -10,8 +10,8 @@
 
 @isTest
 public class PMP_ParseFpgaJSON_Test {
-//IPA 2.0- US-TWC729-7980
-    /*@isTest
+
+    @isTest
     public static void parseEnglishFpgaJSONTest(){
     Test.startTest();
      
@@ -104,8 +104,8 @@ public class PMP_ParseFpgaJSON_Test {
         insert spec_value_FPGA_Test3;
         
         system.assertNotEquals(spec_value_FPGA_Test3.Id,null);
-        PMP_ParseFPGAJSON.languageCode = 'en_US';
-        PMP_ParseFPGAJSON.parseFpgaJSON('PMP_FPGA_Attribute_Test');
+        PMP_ParseFPGAJSON.strBaseKey = 'en_US';
+        PMP_ParseFPGAJSON.ParseFpgaJSON('PMP_FPGA_Attribute_Test');
         
      Test.stopTest();
     }
@@ -203,8 +203,8 @@ public class PMP_ParseFpgaJSON_Test {
         insert spec_value_FPGA_Test3;
         
         system.assertNotEquals(spec_value_FPGA_Test3.Id,null);
-        PMP_ParseFPGAJSON.languageCode = 'zh_CN';
-        PMP_ParseFPGAJSON.parseFpgaJSON('PMP_FPGA_Attribute_Test');
+        PMP_ParseFPGAJSON.strBaseKey = 'zh_CN';
+        PMP_ParseFPGAJSON.ParseFpgaJSON('PMP_FPGA_Attribute_Test');
         
      Test.stopTest();
     }
@@ -302,9 +302,9 @@ public class PMP_ParseFpgaJSON_Test {
         insert spec_value_FPGA_Test3;
         
         system.assertNotEquals(spec_value_FPGA_Test3.Id,null);
-        PMP_ParseFPGAJSON.languageCode = 'ja_JP';
-        PMP_ParseFPGAJSON.parseFpgaJSON('PMP_FPGA_Attribute_Test');
+        PMP_ParseFPGAJSON.strBaseKey = 'ja_JP';
+        PMP_ParseFPGAJSON.ParseFpgaJSON('PMP_FPGA_Attribute_Test');
         
      Test.stopTest();
-    }*/
+    }
 }

@@ -1,34 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
-    <available>false</available>
+    <available>true</available>
     <encodingKey>UTF-8</encodingKey>
     <name>ACR_CONTACT_DELETION_THA</name>
     <style>none</style>
-    <subject>อัปเดตบัญชีผู้ใช้ Intel® Partner Alliance</subject>
-    <textOnly>ผู้ใช้ถูกลบออก
+    <subject>อัพเดทบัญชีผู้ใช้ทางธุรกิจสำหรับโปรแกรมพันธมิตร Intel</subject>
+    <textOnly>Intel Business Account Update
 
-{!UserName},
+This notice is to confirm that an individual has been removed from your Intel Partner program business account.
 
+Business Account Name: {!Account.Name}
+Contact Removed : Login ID {!ContactLoginId} with e-mail {!ContactEmail}
+Relationship (Role): {!AcrRoles}
 
-มีการเปลี่ยนแปลงบัญชีผู้ใช้ Intel® Partner Alliance ของคุณ {!ContactEmail} ถูกลบออกจากบัญชีผู้ใช้ของบริษัทของคุณแล้ว
+Visit your business account at any time here to see the personnel list details.
+If you have any other questions, please contact us here.
+ 
+Please DO NOT reply to this e-mail message. This is an automated response.
+To ensure that you continue receiving our e-mails, please add us to your address book.
+ 
+Link on here 
+https://ssl.intel.com/content/www/us/en/secure/my-intel/dashboard.html
 
-ชื่อบริษัท: {!Account.Name}
-ID ธุรกิจ: {!Account.AccountNumber}
-ลบข้อมูลติดต่อแล้ว: อีเมล {!ContactEmail}
-ความสัมพันธ์ (บทบาท): {!AcrRoles}
-
-หากการเปลี่ยนแปลงนี้ไม่ได้รับอนุญาต ล็อกอิน เพื่ออัพเดตบัญชีของคุณ
-หากคุณมีคำถามใดๆ โปรดติดต่อเราได้ที่ https://signin.intel.com/ContactUs?Culture=th-th
-
-
-
-ขอขอบคุณ
-ทีม Intel® Partner Alliance ของคุณ
-
-ข้อความนี้ถูกส่งถึงคุณเพื่อใช้เป็นการสื่อสารทางธุรกิจที่สำคัญที่เกี่ยวข้องกับความสัมพันธ์ในปัจจุบันของคุณกับ Intel® Partner Alliance
-© {!$Label.PRM_CurrentYear} Intel Corporation
-Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA  www.intel.com
-ความเป็นส่วนตัว | คุ้กกี้</textOnly>
+Support links:
+for CSP- https://www.intel.com/content/www/us/en/partner/cloud-insider/forms/support.html
+for FPGA: https://signin.intel.com/ContactUs?Culture=en-US</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

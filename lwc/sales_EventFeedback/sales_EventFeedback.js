@@ -1,6 +1,6 @@
-import { LightningElement } from 'lwc';
-//import createFeedBack from '@salesforce/apex/Sales_FeedbackController.createFeedBack'; 
-/*import ALN_OBJECT from '@salesforce/schema/Sales_License__c';
+import { LightningElement, track,api } from 'lwc';
+import createFeedBack from '@salesforce/apex/Sales_FeedbackController.createFeedBack'; 
+import ALN_OBJECT from '@salesforce/schema/Sales_License__c';
 import { NavigationMixin } from 'lightning/navigation';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent'
 import feedbackicon from '@salesforce/resourceUrl/Feedbackicon';
@@ -19,9 +19,9 @@ import Sales_GiveFeedback_2star  from '@salesforce/label/c.Sales_GiveFeedback_2s
 import Sales_GiveFeedback_3star  from '@salesforce/label/c.Sales_GiveFeedback_3star';
 import Sales_GiveFeedback_4star  from '@salesforce/label/c.Sales_GiveFeedback_4star';
 import Sales_GiveFeedback_5star  from '@salesforce/label/c.Sales_GiveFeedback_5star';
-//import getPickListValues from '@salesforce/apex/Sales_FeedbackController.getPickListValues';
+import getPickListValues from '@salesforce/apex/Sales_FeedbackController.getPickListValues';
 import Sales_capability  from '@salesforce/label/c.Sales_capability';
-*/
+
 
 /******************************************************
     Component Name    : Sales_FeedbackController
@@ -34,7 +34,7 @@ import Sales_capability  from '@salesforce/label/c.Sales_capability';
     chaithanyax.lakshman@intel.com  08/10/2021               US1051031
     *****************************************************/
 export default class sales_EventFeedback extends  NavigationMixin(LightningElement) {
-    /*feedbackiconnew = feedbackicon ;
+    feedbackiconnew = feedbackicon ;
     @track labelvalue='';
     @track labelvaluechatbot='';
     @track  feedText='';
@@ -103,7 +103,7 @@ export default class sales_EventFeedback extends  NavigationMixin(LightningEleme
       }
 
       //  alert('connected callback>>>>');
-      /*getPickListValues({
+      getPickListValues({
         objApiName: this.objectApiName,
         fieldName: this.fieldapiName
     })
@@ -116,9 +116,9 @@ export default class sales_EventFeedback extends  NavigationMixin(LightningEleme
         })
         .catch(error => {
             this.displayError(error);
-        });*/
-        /*console.log('values'+JSON.stringify(this.options)); 
-    /*}
+        });
+        console.log('values'+JSON.stringify(this.options)); 
+    }
     
     handleOnSubmit(){
         console.log('this.eventrating>>>>'+this.eventrating+'<<<this.capablity>>>'+this.capabilitydropdown+'<<this.feedText>>'+this.feedText);
@@ -164,7 +164,7 @@ export default class sales_EventFeedback extends  NavigationMixin(LightningEleme
         this.createRecord(this.eventrating,this.feedText,this.capabilitydropdown,this.recId,this.fromchatbotvariable);
         this.navigatetorecord(this.recId);
     }
-    /*createRecord(rating1,textIP,capabilitydropdown,recID,fromchatbotvariable){
+    createRecord(rating1,textIP,capabilitydropdown,recID,fromchatbotvariable){
         console.log('Apex call for create feedback>>'+rating1+' <<<textIP>>> '+textIP+'fromchatbot'+fromchatbotvariable);
         createFeedBack({rating: rating1,textinput: textIP,capablity:capabilitydropdown,recID:recID,feedbackchatbot:fromchatbotvariable})
         .then(data => {
@@ -173,8 +173,8 @@ export default class sales_EventFeedback extends  NavigationMixin(LightningEleme
         .catch(error => {
            console.log('Failure');
         }); 
-    }*/
-    /*navigatetorecord(rec){
+    }
+    navigatetorecord(rec){
         console.log('Navigate recId>>>'+this.recId);
         this[NavigationMixin.Navigate]({
             type: 'standard__recordPage',
@@ -243,5 +243,5 @@ export default class sales_EventFeedback extends  NavigationMixin(LightningEleme
                     console.log('inside error else');
                    // this.isRatingProvided = true;
                     }
-     }*/
+     }
     }

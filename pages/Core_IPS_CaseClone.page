@@ -40,11 +40,6 @@
         overflow-x: hidden;
         }
         
-        .link a {
-        margin-left:1%; 
-        color:blue;
-        }
-        
     </style>
     
     <script>
@@ -70,7 +65,7 @@
                 
                 this.input = $( "<input>" )
                 .appendTo( this.wrapper )
-                .val( {!JSENCODE('value')} )
+                .val( value )
                 .attr( "title", "" )
                 .attr( "placeholder", "--Select--" )
                 .addClass( "custom-combobox-input ui-widget ui-widget-content ui-state-default ui-corner-left" )
@@ -477,7 +472,6 @@
                                 <apex:inputField value="{!cloneCase[f.fieldPath]}" rendered="{!if(f.label=='Severity',true,false)}" id="PriorityId">
                                     <apex:actionSupport event="onchange" rerender="showSeverityReason" action="{!DisplayPriorityReason}" status="status1"/>
                                 </apex:inputField>
-                                <apex:outputText escape="false" id="SeverityMessage" rendered="{!if(f.label=='Severity',true,false)}" styleClass="link" value="{!$Label.Core_IPS_Severity_Details}" />
                             </div>
                         </apex:outputPanel>
                     </apex:pageBlockSectionItem>

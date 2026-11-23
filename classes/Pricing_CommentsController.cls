@@ -2,10 +2,11 @@
  * @description       : 
  * @author            : Subhanku
  * @group             : Accenture
- * @last modified on  : 09-18-2026
+ * @last modified on  : 10-01-2024
  * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 public without sharing class Pricing_CommentsController {
+    public static Boolean isvalidEnd = false;
     //This method takes Pricing_Quote__c Id as parameter and returns the list of Pricing_Comments__c records assosiated with that Id
     @AuraEnabled(cacheable=true)
     public static List<Pricing_Comments__c> getTenderComments(Id recordId) {
@@ -121,7 +122,7 @@ public without sharing class Pricing_CommentsController {
      * @description       : This Method will return comments for specific account stored in Pricing_AccountId_Comments_Mapping__c custom setting.
      * @author            : Vrushabh
      * @param             : accountId Account Id from Quote.
-     * @last modified on  : 09-18-2026
+     * @last modified on  : 10-01-2024
     **/
     @AuraEnabled(cacheable=true)
     public static Pricing_AccountId_Comments_Mapping__c getAccountIdCommentsMapping(String accountId) {
@@ -138,7 +139,40 @@ public without sharing class Pricing_CommentsController {
     public static Boolean isPricingManagerAlpha() {
         integer count = [SELECT count() FROM PermissionSetAssignment 
                          WHERE AssigneeId = :Userinfo.getUserId() AND PermissionSet.Name = 'Pricing_Tender_Regional_Pricing_Manager_Alpha'];
+        system.debug('count: '+count);
         return count > 0;
+    }
+
+    @AuraEnabled (cacheable=true)
+    public static Boolean validateEndCustOfQuoteAndOppty(Id quoteId) {
+        Boolean isInValid;
+        /*system.debug('id:'+quoteId);
+        List<SBQQ__Quote__History> quoteHistory = [select id,OldValue, NewValue,CreatedDate from SBQQ__Quote__History where ParentId =: quoteId and Field = 'SBQQ__Opportunity2__c' order by CreatedDate desc limit 1]; 
+        system.debug('minuteN'+(system.now().getTime() - quoteHistory[0].CreatedDate.getTime())/1000);
+        system.debug('present'+system.now());
+        system.debug('createddate'+quoteHistory[0].CreatedDate);
+        system.debug('size'+quoteHistory.size());
+        Boolean istrue = (((system.now().getTime() - quoteHistory[0].CreatedDate.getTime())/1000) <= 300)? true :false;
+       
+        if(quoteHistory.size() > 0 && istrue) {
+            system.debug('quoteHistory'+quoteHistory);
+            SBQQ__Quote__c quote = [select id,Pricing_Unified_Global_End_Customer_Nm__r.Pricing_Unified_Country_EndCustomer_Id__c, Pricing_Unified_Global_End_Customer_Nm__r.Pricing_Unified_EndCustomer_Id__c,Pricing_IsUnifiedCustomer__c,
+                                    SBQQ__Opportunity2__r.Account.Core_Business_Party_Id__c, SBQQ__Opportunity2__r.Account.Core_Unified_Global_Customer__r.Core_Business_Party_Id__c  from SBQQ__Quote__c where id =: quoteId];
+            if(quote.Pricing_IsUnifiedCustomer__c &&  quote.Pricing_Unified_Global_End_Customer_Nm__r.Pricing_Unified_Country_EndCustomer_Id__c != quote.SBQQ__Opportunity2__r.Account.Core_Business_Party_Id__c){
+                system.debug('quoteentered');
+                isInValid = true;
+
+            }
+            else{
+system.debug('quoteentered12');
+                isInValid = false;
+            }                         
+        }else{
+system.debug('quoteentered15');
+            isInValid = false;
+        }
+        system.debug('isvalid:'+isInValid);*/
+        return isInValid; 
     }
     
     @AuraEnabled(cacheable=true)

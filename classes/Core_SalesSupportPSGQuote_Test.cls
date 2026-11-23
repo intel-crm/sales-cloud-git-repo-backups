@@ -235,12 +235,14 @@ public class Core_SalesSupportPSGQuote_Test {
             prod.ProductCode = 'Pro-X';
             prod.Core_Product_Type__c = 'Intel® FPGAs';
             prod.isActive = true;
+            prod.Core_Sales_Visible_Flag__c = true;
         }
         else {
             prod.Name = 'Product00034343400';
             prod.ProductCode = 'Pro-7X';
             prod.Core_Product_Type__c = 'Intel® FPGAs11';
             prod.isActive = true;
+            prod.Core_Sales_Visible_Flag__c = true;
         }
         insert prod;
         
@@ -327,12 +329,7 @@ public class Core_SalesSupportPSGQuote_Test {
     static testMethod void testPSGAccountForOpportunityCheck() {
         
         //Code for creating the Account
-        List<Account> accList = new List<Account>();
-        
-        Id masterRecordTypeId = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
-        Account acct = new Account(Name ='Test AccountX4',Core_Account_Type__c = 'End Customer',RecordTypeId=masterRecordTypeId, BillingCity='Seoul',BillingCountry='KOR',BillingStreet='KOR',Industry='Electronics',Core_Sales_Groups__c= 'PRC Sales Group');
-
-        accList.add(acct);
+        List<Account> accList = createAccount(1,false);
         insert accList;
         List<Opportunity> oppList = createOpportunity(1,accList[0]);
         insert oppList;
@@ -356,12 +353,7 @@ public class Core_SalesSupportPSGQuote_Test {
     static testMethod void testOpportunityProductEmptyCheck() {
         
         //Code for creating the Account
-        List<Account> accList = new List<Account>();
-        
-        Id masterRecordTypeId = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
-        Account acct = new Account(Name ='Test AccountX1',Core_Account_Type__c = 'End Customer',RecordTypeId=masterRecordTypeId, BillingCity='Seoul',BillingCountry='KOR',BillingStreet='KOR',Industry='Electronics',Core_Sales_Groups__c= 'PRC Sales Group');
-
-        accList.add(acct);
+        List<Account> accList = createAccount(1,true);
         insert accList;
         List<Opportunity> oppList = createOpportunity(1,accList[0]);
         insert oppList;
@@ -382,12 +374,7 @@ public class Core_SalesSupportPSGQuote_Test {
     static testMethod void testOpportunityProductEmptyCheckWhenPSGSalesisEmpty() {
         
         //Code for creating the Account
-        List<Account> accList = new List<Account>();
-        
-        Id masterRecordTypeId = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
-        Account acct = new Account(Name ='Test AccountX2',Core_Account_Type__c = 'End Customer',RecordTypeId=masterRecordTypeId, BillingCity='Seoul',BillingCountry='KOR',BillingStreet='KOR',Industry='Electronics',Core_Sales_Groups__c= 'PRC Sales Group');
-
-        accList.add(acct);
+        List<Account> accList = createAccount(1,true);
         insert accList;
         accList[0].Core_Sales_Group__c = null;
         update accList;
@@ -412,18 +399,13 @@ public class Core_SalesSupportPSGQuote_Test {
     static testmethod void testOpportuntiyPayloadParse() {
         
         setupTestData();
-        List<Account> accList = new List<Account>();
-        
-        Id masterRecordTypeId = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
-        Account acct = new Account(Name ='Test AccountX3',Core_Account_Type__c = 'End Customer',RecordTypeId=masterRecordTypeId, BillingCity='Seoul',BillingCountry='KOR',BillingStreet='KOR',Industry='Electronics',Core_Sales_Groups__c= 'PRC Sales Group');
-
-        accList.add(acct);
+        List<Account> accList = createAccount(1,true);
         insert accList;
         
         List<Opportunity> oppList = createOpportunity(1,accList[0]);
         
         insert oppList;
-       	List<Core_PSG_Integration_Settings__c>  psgIntegrationSettingList = createPSGIntegrationSetting(1);
+        List<Core_PSG_Integration_Settings__c>  psgIntegrationSettingList = createPSGIntegrationSetting(1);
         insert psgIntegrationSettingList;
         
         ApexPages.currentPage().getParameters().put('OppId', oppList[0].Id);
@@ -478,12 +460,7 @@ public class Core_SalesSupportPSGQuote_Test {
     static testmethod void testSalesSupportHomeCreatePSGQuote_Test() {
         
         setupTestData();
-        List<Account> accList = new List<Account>();
-        
-        Id masterRecordTypeId = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
-        Account acct = new Account(Name ='Test AccountX7',Core_Account_Type__c = 'End Customer',RecordTypeId=masterRecordTypeId, BillingCity='Seoul',BillingCountry='KOR',BillingStreet='KOR',Industry='Electronics',Core_Sales_Groups__c= 'PRC Sales Group');
-
-        accList.add(acct);
+        List<Account> accList = createAccount(1,true);
         insert accList;
         
         List<Opportunity> oppList = createOpportunity(1,accList[0]);
@@ -528,12 +505,7 @@ public class Core_SalesSupportPSGQuote_Test {
     static testmethod void testSalesSupportHomeCreatePSGQuoteForPSGSalesEmpty_Test() {
         
         setupTestData();
-        List<Account> accList = new List<Account>();
-        
-        Id masterRecordTypeId = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
-        Account acct = new Account(Name ='Test AccountX6',Core_Account_Type__c = 'End Customer',RecordTypeId=masterRecordTypeId, BillingCity='Seoul',BillingCountry='KOR',BillingStreet='KOR',Industry='Electronics',Core_Sales_Groups__c= 'PRC Sales Group');
-
-        accList.add(acct);
+        List<Account> accList = createAccount(1,true);
         insert accList;
         
         List<Opportunity> oppList = createOpportunity(1,accList[0]);
@@ -577,12 +549,7 @@ public class Core_SalesSupportPSGQuote_Test {
     static testmethod void testSalesSupportHomeAlreadyProcessingPSGQuote_Test() {
         
         setupTestData();
-        List<Account> accList = new List<Account>();
-        
-        Id masterRecordTypeId = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
-        Account acct = new Account(Name ='Test AccountX5',Core_Account_Type__c = 'End Customer',RecordTypeId=masterRecordTypeId, BillingCity='Seoul',BillingCountry='KOR',BillingStreet='KOR',Industry='Electronics',Core_Sales_Groups__c= 'PRC Sales Group');
-
-        accList.add(acct);
+        List<Account> accList = createAccount(1,true);
         insert accList;
         
         List<Opportunity> oppList = createOpportunity(1,accList[0]);
@@ -632,12 +599,7 @@ public class Core_SalesSupportPSGQuote_Test {
             Core_Trigger_Events__c='before insert', Core_Active__c=true, Core_Description__c='testing, testing');
         lstTriggerExecution.add(triggerEntry);
         insert lstTriggerExecution;
-        List<Account> accList = new List<Account>();
-        
-        Id masterRecordTypeId = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
-        Account acct = new Account(Name ='Test AccountXX',Core_Account_Type__c = 'End Customer',RecordTypeId=masterRecordTypeId, BillingCity='Seoul',BillingCountry='KOR',BillingStreet='KOR',Industry='Electronics',Core_Sales_Groups__c= 'PRC Sales Group');
-
-        accList.add(acct);
+        List<Account> accList = createAccount(1,true);
         insert accList;
         
         List<Opportunity> oppList = createOpportunity(1,accList[0]);
@@ -680,12 +642,8 @@ public class Core_SalesSupportPSGQuote_Test {
     
     static testMethod void validateOpportuntyBeforeQuoteCreation_Test1(){
         Test.startTest();
-        List<Account> accList = new List<Account>();
-        
-        Id masterRecordTypeId = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
-        Account acct = new Account(Name ='Test AccountX8',Core_Account_Type__c = 'End Customer',RecordTypeId=masterRecordTypeId, BillingCity='Seoul',BillingCountry='KOR',BillingStreet='KOR',Industry='Electronics',Core_Sales_Groups__c= 'PRC Sales Group');
-
-        accList.add(acct);
+        List<Account> accList = createAccount(1, false);
+        accList[0].Core_PSG_Account__c = true;
         insert accList;
         
         List<Opportunity> testOpptyList = createOpportunity(3,accList[0]);      

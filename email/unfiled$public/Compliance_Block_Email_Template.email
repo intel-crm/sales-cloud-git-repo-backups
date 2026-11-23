@@ -1,0 +1,12 @@
+Dear {!Account.OwnerFullName},
+
+This is to inform you that {!Account.Name} with CIM ID {!Account.Core_CIM_ID__c}   has been placed on Export Compliance Block (ECB) for transactions by the Global Export Compliance (GEC) team because of the customer being  identified as [{!Account.Core_Export_Compliance_Block_Reason__c}].  Intel and its subsidiaries can no longer do business with this entity, either directly or indirectly.  This means no sales opportunities, shipments, documentation, software and/or technology can be executed, sent, and/or transferred.
+
+Background on ECB (Export Control Block):
+The ECB (Export Control Block) is initiated when a business partner is identified as a party Intel cannot do business with due to the risks associated with the end uses  involving nuclear, chemical, and biological weapons (CBW), or related missile delivery systems, in certain destinations.  Intel Corporation and its subsidiaries are not allowed to conduct business with those listed on the ECB.
+
+Action Required: 
+•        If you have any open opportunities and/or activities with this account, please close them.  
+•        If you have questions on what this means please refer to the information regarding Customer Screening at this site http://goto.intel.com/gec-customerscreening. If you cannot find the answer that you need then please contact Export.Customer@intel.com for additional guidance.   You can also review the Global Export Compliance site for more details on our export compliance program. 
+
+Thank you

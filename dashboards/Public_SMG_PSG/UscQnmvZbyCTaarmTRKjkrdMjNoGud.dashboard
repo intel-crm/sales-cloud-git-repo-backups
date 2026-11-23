@@ -48,10 +48,6 @@
             <values>Jamie Braley</values>
         </dashboardFilterOptions>
         <dashboardFilterOptions>
-            <operator>contains</operator>
-            <values>Joseph Troxel,Joe Troxel,Troxel</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
             <operator>equals</operator>
             <values>John Dimtsios</values>
         </dashboardFilterOptions>
@@ -97,10 +93,6 @@
         <dashboardFilterOptions>
             <operator>equals</operator>
             <values>John Dimtsios</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>contains</operator>
-            <values>Joseph Troxel,Joe Troxel,Troxel</values>
         </dashboardFilterOptions>
         <dashboardFilterOptions>
             <operator>equals</operator>

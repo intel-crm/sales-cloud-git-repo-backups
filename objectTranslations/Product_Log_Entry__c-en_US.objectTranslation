@@ -52,5 +52,9 @@
         <label><!-- Unique ID --></label>
         <name>Unique_ID__c</name>
     </fields>
+    <fields>
+        <label><!-- When --></label>
+        <name>When__c</name>
+    </fields>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

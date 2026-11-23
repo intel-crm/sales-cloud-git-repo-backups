@@ -570,7 +570,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>MAG,PSG-IR,Admin,CQE,Enpirion,CSTOOLS,Deflected,ZBB,PRISM,CAT2,eASIC,-FACR</value>
+            <value>MAG,PSG-IR,Admin,CQE,Enpirion,CSTOOLS,Deflected,ZBB,PRISM,CAT2,eASIC</value>
         </criteriaItems>
         <criteriaItems>
             <column>BucketField_57505999</column>

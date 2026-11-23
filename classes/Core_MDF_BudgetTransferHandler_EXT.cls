@@ -26,9 +26,8 @@ public without sharing class Core_MDF_BudgetTransferHandler_EXT {
             String program = fromAccount.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c;
             
             Map<String,String> mapProgramToRecordTypeAPI = new Map<String,String>();
-            //Avoid using Soql / Sosl queries without filters and limits
-                for(Core_MDF_ObjRecType_Budget_FieldSetMap__mdt  recTypeMetaData:[Select Id,Core_MDF_Channel_Program_Name_txt__c,Core_MDF_Allocation_RecordType_txt__c 
-                                                                               from Core_MDF_ObjRecType_Budget_FieldSetMap__mdt  Limit 5000]){
+                for(Core_MDF_ClaimActAllocRecTypeMapping__mdt recTypeMetaData:[Select Id,Core_MDF_Channel_Program_Name_txt__c,Core_MDF_Allocation_RecordType_txt__c 
+                                                                               from Core_MDF_ClaimActAllocRecTypeMapping__mdt]){
                                                                                    
                                                                                    mapProgramToRecordTypeAPI.put(recTypeMetaData.Core_MDF_Channel_Program_Name_txt__c, recTypeMetaData.Core_MDF_Allocation_RecordType_txt__c);
                                                                                    

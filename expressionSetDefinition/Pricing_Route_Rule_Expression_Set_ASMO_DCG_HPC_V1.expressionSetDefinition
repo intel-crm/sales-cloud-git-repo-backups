@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ExpressionSetDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
+    <executionMode>Cloud</executionMode>
     <executionScale>Low</executionScale>
     <label>Pricing Route Rule Expression Set ASMO DCG HPC V1</label>
     <processType>Bre</processType>
@@ -34,21 +35,21 @@
                 <criteria>
                     <operator>Equals</operator>
                     <sequenceNumber>3</sequenceNumber>
-                    <sourceFieldName>Pricing_RouteRule_Name</sourceFieldName>
-                    <value>&apos;&apos;</value>
-                    <valueType>Literal</valueType>
-                </criteria>
-                <criteria>
-                    <operator>Equals</operator>
-                    <sequenceNumber>4</sequenceNumber>
                     <sourceFieldName>Pricing_Routing_Output_Criteria_Nm</sourceFieldName>
                     <value>&apos;&apos;</value>
                     <valueType>Literal</valueType>
                 </criteria>
                 <criteria>
                     <operator>Equals</operator>
-                    <sequenceNumber>5</sequenceNumber>
+                    <sequenceNumber>4</sequenceNumber>
                     <sourceFieldName>Pricing_Routing_RPM_Group</sourceFieldName>
+                    <value>&apos;&apos;</value>
+                    <valueType>Literal</valueType>
+                </criteria>
+                <criteria>
+                    <operator>Equals</operator>
+                    <sequenceNumber>5</sequenceNumber>
+                    <sourceFieldName>Pricing_RouteRule_Name</sourceFieldName>
                     <value>&apos;&apos;</value>
                     <valueType>Literal</valueType>
                 </criteria>
@@ -497,7 +498,7 @@
             <collection>false</collection>
             <dataType>Boolean</dataType>
             <input>true</input>
-            <lookupName>Pricing_Route_Rules_ASMO_DCG_HPC_TRQ_LTE</lookupName>
+            <lookupName>Pricing_Route_Rules_ASMO_DCG_HPC</lookupName>
             <lookupType>DecisionTable</lookupType>
             <name>Pricing_EndCustomer_CSP_List_Ind__c</name>
             <output>false</output>

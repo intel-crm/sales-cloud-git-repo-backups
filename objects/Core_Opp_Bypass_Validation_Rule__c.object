@@ -3,6 +3,21 @@
     <customSettingsType>Hierarchy</customSettingsType>
     <enableFeeds>false</enableFeeds>
     <fields>
+        <fullName>ByPassVal__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>This will be used for bypassing an update done using Flow</description>
+        <label>ByPassVal</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Bypass_Account_Flow__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Bypass Account Flow</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>Bypass_SOAR_DW_Check__c</fullName>
         <defaultValue>false</defaultValue>
         <label>Bypass SOAR DW Check</label>

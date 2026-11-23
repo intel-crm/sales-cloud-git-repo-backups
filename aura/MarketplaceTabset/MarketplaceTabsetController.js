@@ -39,22 +39,6 @@
         }
         helper.selectTab(component,helper, index);
     },
-
-    handleFocusTabMethod: function(component, event, helper) {
-        var index = event.currentTarget.dataset.index;
-        var navItem = component.find('navItem');
-        if(Array.isArray(navItem)){
-            navItem.forEach(function(cmp, idx) {
-                if (idx == index) {
-                    $A.util.addClass(cmp, 'active');
-                } else {
-                    $A.util.removeClass(cmp, 'active');
-                }
-            });
-        } else {
-        	$A.util.addClass(navItem, 'active');    
-        }
-    },
     
     handlePaddleClick: function(component, event, helper) {
         var direction = event.currentTarget.dataset.direction;

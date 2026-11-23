@@ -22,7 +22,6 @@ global class Core_Batch_ReprocessLeadShare implements Database.Batchable<sObject
         String Status = 'PRL';
         String LeadState = 'Unclaimed';
         String LeadOwner = '';
-        //mainLeadList = [SELECT id,Core_Remove_Current_Sharing_Ind__c, Core_Reprocess_Lead_Sharing__c from LEAD where Core_MPI_Id__c in:mpIdSetBatch and RecordType.DeveloperName =:RecordType and Core_Lead_Status__c =:LeadStatus and Status =:Status and Core_Lead_State__c =:LeadState and Core_Partner_Lead_Owner__c =:LeadOwner ];
         String query = 'SELECT id,Core_Remove_Current_Sharing_Ind__c, Core_Reprocess_Lead_Sharing__c from LEAD where Core_MPI_Id__c in:mpIdSetBatch and RecordType.DeveloperName =:RecordType';
         return Database.getQueryLocator(query);
     }
@@ -48,20 +47,15 @@ global class Core_Batch_ReprocessLeadShare implements Database.Batchable<sObject
         list<lead> scopeLst=[SELECT id,Core_Remove_Current_Sharing_Ind__c, Core_Reprocess_Lead_Sharing__c from LEAD where Core_MPI_Id__c in:mpIdSetBatch and RecordType.DeveloperName =:RecordType];
         Boolean allOrNone = false;
         mainLeadList.addAll(scopeLst);
-        List<Lead> tempList1 = new List<Lead>();
-        List<Lead> tempList2 = new List<Lead>();
-        
+       
         for(lead ld : scopeLst){
-            //Lead LObject = new Lead();
-            //LObject.id = ld.id;
             Ld.Core_Remove_Current_Sharing_Ind__c = true;
             ld.Core_Reprocess_Lead_Sharing__c =false;
-            //tempList1.add(LObject);
         }
-        database.update(scopeLst,allOrNone);
+        Database.update(scopeLst,allOrNone);
         if(Test.isRunningTest()){
             allOrNone = null;
-            database.update(scopeLst,allOrNone);
+            Database.update(scopeLst,allOrNone);
         }
     }
 }

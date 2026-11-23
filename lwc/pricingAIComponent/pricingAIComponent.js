@@ -14,11 +14,8 @@ export default class PricingAIComponent extends NavigationMixin (LightningElemen
    @wire(CurrentPageReference)
    getStateParameters(currentPageReference) {
       this.currentPageReference = currentPageReference;
-      console.log('page reference==>',currentPageReference.state);
          if (this.currentPageReference.state.c__qline !== undefined) {
-            //this.currentPageReference = currentPageReference;
             this.isNotNavigation = false;
-            console.log('inside page reference',currentPageReference);
             this.urlStateParameters = currentPageReference.state;
             setTimeout(function () {
                this.showSpinner = true;
@@ -32,14 +29,11 @@ export default class PricingAIComponent extends NavigationMixin (LightningElemen
             this.showSpinner = false;
          }
       
-       console.log('isnavigation in wire====>',this.isNotNavigation);
    }
 
    connectedCallback(){
-      console.log('inside connected callback==> AI');
       this.showDetails = false;
       this.sfdcBaseURL = window.location.origin+'/lightning/n/Price_Recommendation';
-      console.log('url==>',this.sfdcBaseURL);
    }
 
    handleValueChange(){
@@ -48,8 +42,6 @@ export default class PricingAIComponent extends NavigationMixin (LightningElemen
 
 
    handleQuoteLineSelection(event){
-      console.log('isNavigation==>',this.isNotNavigation); 
-      console.log('quote line selection==>',event.detail.recordId); 
       if(this.isNotNavigation === true) {
          console.log('inside selection event==>');
          this.quoteLineId = event.detail.recordId;

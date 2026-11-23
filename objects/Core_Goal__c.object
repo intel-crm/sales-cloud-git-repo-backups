@@ -157,6 +157,45 @@
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
     <fields>
+        <fullName>Core_Approval_Status__c</fullName>
+        <label>Approval Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Not Submitted</fullName>
+                    <default>false</default>
+                    <label>Not Submitted</label>
+                </value>
+                <value>
+                    <fullName>Submitted</fullName>
+                    <default>false</default>
+                    <label>Submitted</label>
+                </value>
+                <value>
+                    <fullName>Approved</fullName>
+                    <default>false</default>
+                    <label>Approved</label>
+                </value>
+                <value>
+                    <fullName>Rejected</fullName>
+                    <default>false</default>
+                    <label>Rejected</label>
+                </value>
+                <value>
+                    <fullName>Recalled</fullName>
+                    <default>false</default>
+                    <label>Recalled</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
         <fullName>Core_Approved_KPI_Revenue__c</fullName>
         <label>Approved KPI Revenue</label>
         <precision>18</precision>
@@ -167,6 +206,28 @@
         <type>Currency</type>
     </fields>
     <fields>
+        <fullName>Core_Approved_KPI_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Approved KPI Type</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Before_Insert_KPI_Value__c</fullName>
+        <externalId>false</externalId>
+        <label>Before Insert KPI Value</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Core_Bypass_Submission__c</fullName>
         <defaultValue>false</defaultValue>
         <description>Ability for IT to Bypass Submission Block</description>
@@ -174,6 +235,17 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_DeactivatedKPI_Value__c</fullName>
+        <externalId>false</externalId>
+        <label>Deactivated KPI Value</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Core_Deal_Win_Goal_Id__c</fullName>
@@ -384,12 +456,12 @@
             </valueSetDefinition>
             <valueSettings>
                 <controllingFieldValue>CCG Commercial Deal Revenue $</controllingFieldValue>
-                <controllingFieldValue>CCG Strategic Next Gen Design #</controllingFieldValue>
                 <controllingFieldValue>CCG vPro Platform Deal Revenue $</controllingFieldValue>
-                <controllingFieldValue>DCAI Compute Deal $</controllingFieldValue>
                 <controllingFieldValue>DC Growth Deal $</controllingFieldValue>
-                <controllingFieldValue>DC Strategic Next Gen Design #</controllingFieldValue>
+                <controllingFieldValue>DCAI Compute Deal $</controllingFieldValue>
                 <controllingFieldValue>NEX Deal (Sell-To) $</controllingFieldValue>
+                <controllingFieldValue>CCG Strategic Next Gen Design #</controllingFieldValue>
+                <controllingFieldValue>DC Strategic Next Gen Design #</controllingFieldValue>
                 <valueName>Please refer to criteria on https://saleskpi.intel.com/</valueName>
             </valueSettings>
         </valueSet>
@@ -658,6 +730,17 @@
         </valueSet>
     </fields>
     <fields>
+        <fullName>Core_KPI_Product_Group__c</fullName>
+        <externalId>false</externalId>
+        <label>KPI Product Group</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Core_KPI_Revenue_Difference__c</fullName>
         <formula>Core_KPI_Revenue__c -  Core_Approved_KPI_Revenue__c</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
@@ -689,12 +772,23 @@
         <type>Currency</type>
     </fields>
     <fields>
+        <fullName>Core_KPI_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>KPI Type</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Core_MatchOppKPI_2ndPrev_Backend__c</fullName>
         <externalId>false</externalId>
         <label>Core_MatchOppKPI_2ndPrev_Backend</label>
         <length>255</length>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -707,7 +801,7 @@ Do not add it in the layout.</description>
         <label>Core_MatchOppKPI_Backend</label>
         <length>255</length>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -720,10 +814,21 @@ Do not add it in the layout.</description>
         <label>Core_MatchOppKPI_Prev_Backend</label>
         <length>255</length>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Opportunity_Product__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Opportunity Product</label>
+        <referenceTo>OpportunityLineItem</referenceTo>
+        <relationshipName>Deal_Win_Goals</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
     </fields>
     <fields>
         <fullName>Core_Opportunity__c</fullName>
@@ -737,10 +842,21 @@ Do not add it in the layout.</description>
         <type>Lookup</type>
     </fields>
     <fields>
+        <fullName>Core_Product_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Product Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Core_Recall_Reason__c</fullName>
         <label>Recall Comments</label>
         <length>131072</length>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>3</visibleLines>
@@ -847,6 +963,18 @@ Do not add it in the layout.</description>
         <masterLabel>Goal Credit</masterLabel>
         <openType>sidebar</openType>
         <page>Core_Deal_Win_Goal_Credit</page>
+        <protected>false</protected>
+    </webLinks>
+    <webLinks>
+        <fullName>Core_Goal_Recall_Approval</fullName>
+        <availability>online</availability>
+        <description>Used by the manager only</description>
+        <displayType>button</displayType>
+        <height>600</height>
+        <linkType>page</linkType>
+        <masterLabel>Recall Approval</masterLabel>
+        <openType>sidebar</openType>
+        <page>Core_Goal_UnclockRecord_Int</page>
         <protected>false</protected>
     </webLinks>
     <webLinks>

@@ -43,18 +43,13 @@ public class Core_ProductOpportunity_Test {
             triggerSettingList.add(triggerSetting);
         }
         insert triggerSettingList;
-        /***
+        
         List<Account> accountList = Core_Test_Utility.createAccount(6);
         accountList[0].Name = 'Dell';
-        accountList[0].Core_Sales_Groups__c = Core_CRM_Utility.getSalesGroupAPI();
+        accountList[0].Core_Sales_Groups__c = 'PRC Partner Holding';//CCG Sales Group';
         accountList[0].Industry = 'Agriculture';
         accountList[0].Core_Sub_Industry__c = 'Forestry';
-		***/
-        
-        Id masterRecordTypeId = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
-        Account acct = new Account(Name ='Test Account',Core_Account_Type__c = 'End Customer',RecordTypeId=masterRecordTypeId, BillingCity='Seoul',BillingCountry='KOR',BillingStreet='KOR',Industry='Electronics',Core_Sales_Groups__c= Core_CRM_Utility.getSalesGroupAPI());        
-    
-        insert acct;
+        insert accountList;
         
         prodList = new List<Product2>();
         Product2 prod1 = new Product2(Name='Test Product 1');
@@ -79,7 +74,7 @@ public class Core_ProductOpportunity_Test {
         
         
         Opportunity opp = Core_Test_Utility.createOpportunity(1)[0];
-        opp.AccountId = acct.Id;
+        opp.AccountId = accountList[0].Id;
         insert opp;
         
         List<PricebookEntry> priceBookList = new List<PricebookEntry>();
@@ -115,7 +110,7 @@ public class Core_ProductOpportunity_Test {
         }
         Test.startTest();
         update prodList;
-        Core_Batch_updateEOL_Retry obj = new Core_Batch_updateEOL_Retry(lineitemSet,prodList); 
+        Core_Batch_updateEOL_Retry obj = new Core_Batch_updateEOL_Retry(lineitemSet,prodList,0); 
         DataBase.executeBatch(obj);
         Product2 prod = [SELECT id, Core_Is_Name_Changed_Chk__c FROM Product2 WHERE Id=: prodList[0].Id];
         System.assertEquals(True , prod.Core_Is_Name_Changed_Chk__c );

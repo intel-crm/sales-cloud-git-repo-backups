@@ -49,13 +49,6 @@
             <operator>notEqual</operator>
             <value>Win Approved,Production Win,Production Lost,Production Cancelled,Lost,Cancelled,Deleted</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>OpportunityLineItem.Core_KPI_Date__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>THIS_FISCAL_YEAR</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>

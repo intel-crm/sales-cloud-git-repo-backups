@@ -5,22 +5,22 @@
         
         
         var firstLoadLimit = component.get('v.firstLoadLimit');
-        
+        console.log('firstLoadLimit',firstLoadLimit)
         var secondLoadLimit = parseInt($A.get('$Label.c.PMP_Featured_Offering_Limit'));
-         
+         console.log('secondLoadLimit',secondLoadLimit);
         if(secondLoadLimit >= firstLoadLimit){
             secondLoadLimit = secondLoadLimit - firstLoadLimit; //we have to exclude first loaded offerings
-            
+            console.log('secondLoadLimit',secondLoadLimit);
         }else{
             firstLoadLimit = secondLoadLimit;
             secondLoadLimit = 0;
-            
+            console.log('firstLoadLimit',firstLoadLimit)
+            console.log('secondLoadLimit',secondLoadLimit);
         }
         helper.getFeaturedTabs(component).then($A.getCallback(function(){
             
             //onActive function will be called from MarketplaceTabSet component on click of each Tab on the page
             component.set('v.onActive',function(component,index){
-                
                 
                 var currentTab = component.get('v.currentTab'); //MarketplaceTab
                 var carousel = currentTab.get('v.body')[0]; //MarketplaceCardCarousel
@@ -59,7 +59,7 @@
                         var status = response.getState();
                         if (status === "SUCCESS") { //first time offerings loaded (4)
                             var returnValue = response.getReturnValue();
-                            
+                            console.log('first server call ',returnValue)
                             
                             var products = carousel.get('v.featuredProducts');
                             returnValue.forEach(function(prod){
@@ -82,7 +82,7 @@
                                         var status = response.getState();
                                         if(status =="SUCCESS"){
                                             returnValue = response.getReturnValue();
-                                            
+                                            console.log('second server call ',returnValue)
                                             
                                             var products = carousel.get('v.featuredProducts');
                                             
@@ -118,7 +118,7 @@
                                 };
                             }
                         } else {
-                            this.reject('Unknown error.');
+                            reject('Unknown error.');
                         }
                     });
                     $A.enqueueAction(action);

@@ -9,12 +9,48 @@
         <value>Deal Win Goals EOLd</value>
     </caseValues>
     <fields>
+        <label><!-- Approval Status --></label>
+        <name>Core_Approval_Status__c</name>
+        <picklistValues>
+            <masterLabel>Approved</masterLabel>
+            <translation><!-- Approved --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Submitted</masterLabel>
+            <translation><!-- Not Submitted --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Recalled</masterLabel>
+            <translation><!-- Recalled --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rejected</masterLabel>
+            <translation><!-- Rejected --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Submitted</masterLabel>
+            <translation><!-- Submitted --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
         <label><!-- Approved KPI Revenue --></label>
         <name>Core_Approved_KPI_Revenue__c</name>
     </fields>
     <fields>
+        <label><!-- Approved KPI Type --></label>
+        <name>Core_Approved_KPI_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Before Insert KPI Value --></label>
+        <name>Core_Before_Insert_KPI_Value__c</name>
+    </fields>
+    <fields>
         <label><!-- Bypass Submission --></label>
         <name>Core_Bypass_Submission__c</name>
+    </fields>
+    <fields>
+        <label><!-- Deactivated KPI Value --></label>
+        <name>Core_DeactivatedKPI_Value__c</name>
     </fields>
     <fields>
         <label><!-- Deal Win Goal Id --></label>
@@ -228,6 +264,10 @@
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- KPI Product Group --></label>
+        <name>Core_KPI_Product_Group__c</name>
+    </fields>
+    <fields>
         <label><!-- KPI Revenue Difference --></label>
         <name>Core_KPI_Revenue_Difference__c</name>
     </fields>
@@ -238,6 +278,10 @@
     <fields>
         <label><!-- KPI Revenue --></label>
         <name>Core_KPI_Revenue__c</name>
+    </fields>
+    <fields>
+        <label><!-- KPI Type --></label>
+        <name>Core_KPI_Type__c</name>
     </fields>
     <fields>
         <label><!-- Core_MatchOppKPI_2ndPrev_Backend --></label>
@@ -252,9 +296,18 @@
         <name>Core_MatchOppKPI_Prev_Backend__c</name>
     </fields>
     <fields>
+        <label><!-- Opportunity Product --></label>
+        <name>Core_Opportunity_Product__c</name>
+        <relationshipLabel><!-- Deal Win Goals EOLd --></relationshipLabel>
+    </fields>
+    <fields>
         <label><!-- Opportunity Name --></label>
         <name>Core_Opportunity__c</name>
         <relationshipLabel><!-- Deal Win Goals EOLd --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Product Name --></label>
+        <name>Core_Product_Name__c</name>
     </fields>
     <fields>
         <label><!-- Recall Comments --></label>
@@ -280,6 +333,10 @@
     <webLinks>
         <label><!-- Core_Goal_Credit --></label>
         <name>Core_Goal_Credit</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Core_Goal_Recall_Approval --></label>
+        <name>Core_Goal_Recall_Approval</name>
     </webLinks>
     <webLinks>
         <label><!-- Core_Lex_DWG_Sharing --></label>

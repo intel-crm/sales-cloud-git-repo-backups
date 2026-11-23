@@ -9,22 +9,16 @@
             <field>CUST_ID</field>
         </columns>
         <columns>
+            <field>PMP_Company__c.PMP_Account_Id__c</field>
+        </columns>
+        <columns>
+            <field>PMP_Company__c.PMP_Account_Address_Txt__c</field>
+        </columns>
+        <columns>
             <field>CUST_NAME</field>
         </columns>
         <columns>
             <field>PMP_Company__c.PMP_Company_Lifecycle_Status_Nm__c</field>
-        </columns>
-        <columns>
-            <field>PMP_Company__c.PMP_Partner_Segment_Nm__c</field>
-        </columns>
-        <columns>
-            <field>PMP_Company__c.PMP_IPA_Badge_Tier_Txt__c</field>
-        </columns>
-        <columns>
-            <field>PMP_Company__c.PMP_Opid_Sfid_Txt__c</field>
-        </columns>
-        <columns>
-            <field>PMP_Company__c.PMP_Account_Website__c</field>
         </columns>
         <filter>
             <criteriaItems>
@@ -33,20 +27,6 @@
                 <isUnlocked>false</isUnlocked>
                 <operator>equals</operator>
                 <value>1</value>
-            </criteriaItems>
-            <criteriaItems>
-                <column>PMP_Company__c.PMP_Company_Lifecycle_Status_Nm__c</column>
-                <columnToColumn>false</columnToColumn>
-                <isUnlocked>true</isUnlocked>
-                <operator>equals</operator>
-                <value>Published</value>
-            </criteriaItems>
-            <criteriaItems>
-                <column>PMP_Company__c.PMP_Working_Copy_Id__c</column>
-                <columnToColumn>false</columnToColumn>
-                <isUnlocked>true</isUnlocked>
-                <operator>notEqual</operator>
-                <value></value>
             </criteriaItems>
         </filter>
         <format>Tabular</format>
@@ -84,12 +64,6 @@
             <aggregateTypes>Sum</aggregateTypes>
             <field>Account.Core_Partner_Alliance_Program_Member__c</field>
         </columns>
-        <columns>
-            <field>Account.Core_IPA_Partner_Segment__c</field>
-        </columns>
-        <columns>
-            <field>URL</field>
-        </columns>
         <format>Tabular</format>
         <name>Accounts block 1</name>
         <params>
@@ -97,12 +71,13 @@
             <value>1</value>
         </params>
         <reportType>AccountList</reportType>
-        <scope>organization</scope>
+        <scope>user</scope>
         <showGrandTotal>true</showGrandTotal>
         <showSubTotals>true</showSubTotals>
         <timeFrameFilter>
             <dateColumn>CREATED_DATE</dateColumn>
             <interval>INTERVAL_CUSTOM</interval>
+            <startDate>2020-02-04</startDate>
         </timeFrameFilter>
     </block>
     <blockInfo>

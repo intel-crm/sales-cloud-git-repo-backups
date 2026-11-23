@@ -4,30 +4,22 @@
     <encodingKey>UTF-8</encodingKey>
     <name>ACR_CONTACT_ADDITION_SPA</name>
     <style>none</style>
-    <subject>Nuevo usuario añadido a la cuenta de Intel® Partner Alliance</subject>
-    <textOnly>Confirmar información de la cuenta
+    <subject>Nuevo usuario añadido a su cuenta del programa para socios de Intel</subject>
+    <textOnly>An individual has been added to the Intel Partner program account of {!Account.Name} by an Intel representative or another contact at your company.
 
-{!UserName},
+Company Name: {!Account.Name}
+Contact Added: Login ID {!ContactLoginId} with e-mail {!ContactEmail}
+Relationship (Role): {!AcrRoles}
 
-Una persona ha sido agregada a la cuenta de Intel® Partner Alliance de {!Account.Name} por un representante de Intel u otro contacto de su empresa.
+If you do not approve of this update, please login to remove the user. 
 
-Nombre de empresa: {!Account.Name}
-Identificación de la empresa: {!Account.AccountNumber}
-Contacto agregado: correo electrónico {!ContactEmail}
-Relación (función): {!AcrRoles}
+(Link on login for both FPGA and CSP-
+https://ssl.intel.com/content/www/us/en/secure/my-intel/dashboard.html)
 
-Si usted no aprobó esta actualización, inicie sesión para eliminar el contacto.
-
-Si tiene alguna duda, tenga a bien ponerse en contacto con nosotros a través de https://signin.intel.com/ContactUs?Culture=es-xl
-
-
-Atentamente,
-Su equipo de Intel® Partner Alliance
-
-Este mensaje se le envió como una comunicación empresarial importante relacionada con su relación actual con Intel® Partner Alliance.
-© {!$Label.PRM_CurrentYear} Intel Corporation
-Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 EE. UU. www.intel.com
-Privacidad | Cookies</textOnly>
+Questions? Contact Support here (link).
+Support links:
+for CSP- https://www.intel.com/content/www/us/en/partner/cloud-insider/forms/support.html
+for FPGA: https://signin.intel.com/ContactUs?Culture=en-US</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

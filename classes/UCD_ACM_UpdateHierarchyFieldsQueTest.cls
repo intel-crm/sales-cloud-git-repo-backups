@@ -39,7 +39,11 @@ public class UCD_ACM_UpdateHierarchyFieldsQueTest {
         ctryChildAcc.parentId = intChildAcc2.Id;
         insert ctryChildAcc;
 
-		
+        // Create End Customer Deal Account Location child
+        Account locChildAcc = UCD_ACM_Cntrlr_TestDataInitialization.createAccountByRecordType('TestLocChildAccount','End Customer Deal Account','UNFD_LOC_CUST');
+        locChildAcc.parentId = ctryChildAcc.Id;
+        insert locChildAcc;
+
         // Create End Customer Deal Account
         Account acc = UCD_ACM_Cntrlr_TestDataInitialization.createAccountByRecordType('TestChildAccount','End Customer Deal Account','UNFD_GLBL_CUST');
         acc.parentId = parentAccount.Id;
@@ -62,6 +66,12 @@ public class UCD_ACM_UpdateHierarchyFieldsQueTest {
             accountBusinessTypes.add(UCD_ACM_Cntrlr_TestDataInitialization.createAccountBusinessType(acc.Id,businessType.Id));
         }
         insert accountBusinessTypes;
+        
+        // Create Compliance Watch List
+        List<Core_Account_Compliance_Watch_List__c> complianceWatchLists = new List<Core_Account_Compliance_Watch_List__c>();
+        complianceWatchLists.add(UCD_ACM_Cntrlr_TestDataInitialization.createComplianceWatchList(acc.Id,'NOTRDOUT'));
+        complianceWatchLists.add(UCD_ACM_Cntrlr_TestDataInitialization.createComplianceWatchList(acc.Id,'DPL'));
+        insert complianceWatchLists;
         
         // Create Parent Account With Business Party Id
         List<Account> accountToInsertForBpId = new List<Account>();
@@ -110,14 +120,10 @@ public class UCD_ACM_UpdateHierarchyFieldsQueTest {
     
     @isTest
     private static void whenUpdateHierarchyFieldsWithTrue(){
-        Account account = [Select Id,Name,Core_Survivor_Account_Id__c,Core_Business_Party_Id__c,Core_Data_Simplified_Account_Nm__c,Core_Data_Country_Nm__c,Core_Data_Simplified_Local_Language_Nm__c,Unified_Hierarchy_View__c,Core_Customer_Aggregation_Type__c,ParentId,RecordTypeId,BillingCountryCode,BillingCountry,Core_Account_Request_Rejection_Reason__c,Core_Account_Request_Rejection_Notes__c,ShippingCountryCode,ShippingCountry,BillingCity,BillingStreet from Account where Name = 'TestParentAccount' LIMIT 1];
-        Set<Id> loggingAccountIds = new Set<Id>(); 
-        loggingAccountIds.add(account.Id);
-        UCD_ACM_UpdateHierarchyFieldsQueueable updateJob = new UCD_ACM_UpdateHierarchyFieldsQueueable(loggingAccountIds);
+        Account account = [Select Id,Name,Core_Survivor_Account_Id__c,Core_Business_Party_Id__c,Core_Data_Simplified_Account_Nm__c,Core_Data_Country_Nm__c,Core_Data_Simplified_Local_Language_Nm__c,Unified_Hierarchy_View__c,Core_Data_Country_Cd__c,Core_Customer_Aggregation_Type__c,ParentId,RecordTypeId,BillingCountryCode,BillingCountry,Core_Account_Request_Rejection_Reason__c,Core_Account_Request_Rejection_Notes__c,ShippingCountryCode,ShippingCountry,BillingCity,BillingStreet,Core_Unified_Global_Customer__r.Core_Business_Party_Id__c,Core_Unified_Global_Customer__r.Core_Data_Simplified_Account_Nm__c from Account where Name = 'TestParentAccount' LIMIT 1];
+        UCD_ACM_UpdateHierarchyFieldsQueueable updateJob = new UCD_ACM_UpdateHierarchyFieldsQueueable(account.Id);
         test.startTest();
         System.enqueueJob(updateJob);
         test.stopTest();
-        System.assertNotEquals(updateJob,null);
-
     }
 }

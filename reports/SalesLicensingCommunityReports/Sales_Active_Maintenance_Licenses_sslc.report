@@ -76,7 +76,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>,Licensed,Unlicensed,Cancelled,Renewals Applied,Merged</value>
+            <value>,Licensed,Unlicensed,Unassigned,Cancelled,Renewals Applied,Merged</value>
         </criteriaItems>
         <criteriaItems>
             <column>Sales_License__c$Sales_License_Product_Name_Txt__c</column>
@@ -132,7 +132,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>,NIC ID,HOST ID,GUARD ID</value>
+            <value>,NIC ID,HOST ID,GUARD ID,Disk ID</value>
         </criteriaItems>
         <criteriaItems>
             <column>Sales_License__c$Sales_License_Maintenance_Exp_Dt__c</column>

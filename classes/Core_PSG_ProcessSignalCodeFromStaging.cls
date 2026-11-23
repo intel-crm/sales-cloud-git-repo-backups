@@ -9,9 +9,7 @@ Modification Log :
 * Sandhya Dayananda            04/06/2021              Original Version
 
 *************************************************************************************************************************************************************************************************/
-@isTest
-public class Core_PSG_ProcessSignalCodeFromStaging{
-    /* implements Database.Batchable<sObject>{
+public class Core_PSG_ProcessSignalCodeFromStaging implements Database.Batchable<sObject>{
 
     public Database.QueryLocator start(Database.BatchableContext BC){
        
@@ -26,7 +24,6 @@ public class Core_PSG_ProcessSignalCodeFromStaging{
         Map<Id, Core_PIR_Ext_Attributes__c> productIdStagingMap = new Map<Id, Core_PIR_Ext_Attributes__c>();
         List<String> oPNFromProductList = new List<String>();
        // List<String> stageDescWithOPNList = new List<String>();
-       
         try{
             List<Product2> prodListToBeUpdated = new List<Product2>();
             Map<String,Core_PIR_Ext_Attributes__c> PIRAttributeMap = new Map<String,Core_PIR_Ext_Attributes__c>();
@@ -35,24 +32,19 @@ public class Core_PSG_ProcessSignalCodeFromStaging{
                 for(Core_PIR_Ext_Attributes__c PIRAttributeRecord : stagingRecList){
                     if(PIRAttributeRecord.Core_Processing_Status__c=='Pending') {
                         PIRAttributeMap.put(PIRAttributeRecord.Core_Part__c,PIRAttributeRecord);
-                        
                     }
                 }
             }  
             
             Map<Id,Product2> productMap = new Map<Id,Product2>([select Id,Name,Core_Product_Ext_Attribute_Id__c,Core_OPN__c,Core_Item_Signal_Cd__c,Core_Item_Class_Nm__c from Product2 where Core_OPN__c IN:PIRAttributeMap.keySet() and Core_Product_Org__c ='Sales' and Core_Product_Type__c ='Intel® FPGAs']);
-              
             for(Product2 productRec : productMap.values()){
                // stageDescWithOPNList.add(productRec.Core_OPN__c);
-                
                 if(PIRAttributeMap.containsKey(productRec.core_OPN__c)){
 					Core_PIR_Ext_Attributes__c extAttribute = PIRAttributeMap.get(productRec.core_OPN__c);
                     if(extAttribute != null && String.isNotBlank(extAttribute.Core_Component_Product_Class__c)){
-						
 						productRec.Core_Item_Class_Nm__c = extAttribute.Core_Component_Product_Class__c;
 						productRec.Core_Item_Signal_Cd__c= extAttribute.Core_Signal_code__c;
 						prodListToBeUpdated.add(productRec);
-						
 						productIdStagingMap.put(productRec.Id, extAttribute);
 						oPNFromProductList.add(productRec.Core_OPN__c);//list of OPNs available in Product
                     }
@@ -67,7 +59,7 @@ public class Core_PSG_ProcessSignalCodeFromStaging{
                    stageDescWithoutOPN.put(stageRec.Id,stageRec);
                 }
             }*/
-            /*if(prodListToBeUpdated.size() > 0){
+            if(prodListToBeUpdated.size() > 0){
 				Database.SaveResult[] srList = Database.update(prodListToBeUpdated, false);                    
                 for(Integer i=0; i<srList.size(); i++){
 					Core_PIR_Ext_Attributes__c updateStagingRec = new Core_PIR_Ext_Attributes__c();
@@ -94,8 +86,7 @@ public class Core_PSG_ProcessSignalCodeFromStaging{
             	update stageDescWithoutOPN.values();
             }*/	
             
-        /*}catch(Exception e){
-            
+        }catch(Exception e){
             
             
         }
@@ -111,5 +102,5 @@ public class Core_PSG_ProcessSignalCodeFromStaging{
      }
     
     public void finish(Database.BatchableContext BC){
-   }*/
+   }
 }

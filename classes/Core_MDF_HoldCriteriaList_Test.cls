@@ -6,26 +6,14 @@
 * Developer                        Date                          Description
 * ---------------------------------------------------------------------------------------------------------------------------------------
 * Accenture- AD          5/10/2019                    Created to test hold criteria list functionality
-* NP(11630236)           05-03-2020                   Added ABM
+* NP(11630236) 			 05-03-2020				      Added ABM
 *****************************************************************************************************************************************/
 
 @isTest
 private class Core_MDF_HoldCriteriaList_Test
 {
     @TestSetup static void setUpData(){
-   
-        List<String> bypassFunctionKeys = new List<String>();
-        bypassFunctionKeys.add('Bypass_MDF_Budget_Access_Validation');
-        bypassFunctionKeys.add('Bypass_MDF_Budget_Status_Validation');
-        bypassFunctionKeys.add('Bypass_MDF_Budget_Access');
-        
-        Set<String> myset1 = new Set<String>();
-        List<String> result1 = new List<String>();
-        myset1.addAll(bypassFunctionKeys);
-        result1.addAll(myset1);
-        
-        Core_MDF_CCP_TestDataUtility.byPassFeature(result1,true,true);
-        
+ 
         Account accRecord = Core_MDF_CCP_TestDataUtility.createAccount ('Intel Test Account', NULL, Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, false);   
         accRecord.BillingCity = 'Test City';         
         accRecord.BillingCountry= 'AUS';
@@ -49,9 +37,8 @@ private class Core_MDF_HoldCriteriaList_Test
         usr1.isActive = true;
         Database.insert(usr1);
         
-        ChannelProgram cp = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.CCF_PROGRAM,'Client CoMarketing Fund', true);
-        // Highlight: Unused Local Variable 
-       // ChannelProgram cp1 = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.DCF_PROGRAM,'Data Center CoMarketing Fund', true);
+        ChannelProgram cp = Core_MDF_CCP_TestDataUtility.createProgram ('Client Co-Marketing Fund','Client CoMarketing Fund', true);
+        ChannelProgram cp1 = Core_MDF_CCP_TestDataUtility.createProgram ('Data Center Co-Marketing Fund','Data Center CoMarketing Fund', true);
         // Creating Intel Account with utility class
         Account dellCorpAccount = Core_MDF_CCP_TestDataUtility.createAccount ('Dell Corporation', cp.Id,Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, false);   
         dellCorpAccount.BillingCity = 'Test City';         
@@ -88,43 +75,34 @@ private class Core_MDF_HoldCriteriaList_Test
         dellCCFAPACIndia.Core_MDF_Auto_Transfer_Account__c = dellCCFVirtualCorp.ID;
         dellCCFAPACIndia.Core_MDF_Enabled_Auto_Transfer__c = True;
         dellCCFAPACIndia.Core_MDF_CoMarketingActive__c = true;
-        dellCCFAPACIndia.Core_MDF_Channel_Program__c = cp.id;
         Database.insert(dellCCFAPACIndia);
-        
-        //Insert Core_MDF_Configuration__c record - **RG**
-        Core_MDF_CCP_TestDataUtility.createMDFConfigurationData();
         
         //Core_MDF_CCP_TestDataUtility.createPartnerNodeUserMapping(dellCCFAPACIndia.Id, usr1.Id, true);
         
         Id recordTypeIdPMB = Schema.SObjectType.PartnerMarketingBudget.getRecordTypeInfosByName().get('CoMarketing').getRecordTypeId();
         // Create PMB for the above Account 
-        PartnerMarketingBudget  pmbRecord = Core_MDF_CCP_TestDataUtility.createBudget('Dell PMB',RecordTypeIdPMB,dellCCFVirtualCorp.Id,cp.Id,100000,System.today().addDays(-15),System.today().addDays(30),false);
-        pmbRecord.Core_MDF_Budget_Type_Txt__c='OEM CMP';
+        PartnerMarketingBudget  pmbRecord = Core_MDF_CCP_TestDataUtility.createBudget('Dell PMB',RecordTypeIdPMB,dellCCFVirtualCorp.Id,cp.Id,100000,System.today().addDays(-15),System.today().addDays(15),true);
         pmbRecord.IsIgnoreValidation = true;
-        Database.insert(pmbRecord);
+        Database.update(pmbRecord);
         Test.startTest();
         // Create PFA records for the above accounts :
-        // Highlight: Unused Local Variable 
-       // PartnerFundAllocation pfaDellCCFVirtualCorp = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('pfaDellCCFVirtualCorp',pmbRecord, dellCCFVirtualCorp, 10000,true);
+        PartnerFundAllocation pfaDellCCFVirtualCorp = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('pfaDellCCFVirtualCorp',pmbRecord, dellCCFVirtualCorp, 10000,true);
         
         PartnerFundAllocation pfaDellCCFIndia = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('pfaDellCCFIndia',pmbRecord, dellCCFAPACIndia, 1000,true);
         
-        Campaign camp = Core_MDF_CCP_TestDataUtility.createCampaign('Test Camp 12','Gaming','IntelÂ® Coreâ„¢ i7 Processor','Yes', Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 'Client CoMarketing Fund', System.today()-3, System.today()+20, 10000, 'Consumer Chromebook', dellCCFVirtualCorp.Id, '2-in-1', true); 
+        Campaign camp = Core_MDF_CCP_TestDataUtility.createCampaign('Test Camp 12','Gaming','Intel® Core™ i7 Processor', Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 'Client CoMarketing Fund', System.today(), System.today()+20, 10000, 'Consumer Chromebook', dellCCFVirtualCorp.Id, '2-in-1', true); 
           
         PartnerFundRequest indiaActivity = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(camp.Id),Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,
                                                                                                  string.valueof(dellCCFAPACIndia.id),pfaDellCCFIndia,pmbRecord,
                                                                                                  'BRAZIL','Consumer','Desktop','Intel® Core™ i7 Processor','Broadcast','Podcast','Draft'
-                                                                                              ,false);
-       
-        indiaActivity.Core_MDF_Budget_Type_nm__c = 'CCF 1.0';
+                                                                                                 ,false);
         indiaActivity.Title = 'indiaActivity';
         indiaActivity.Core_MDF_Activity_Description__c = 'indiaActivity';
-        indiaActivity.Core_MDF_Start_Date__c = System.today()-2;
-        indiaActivity.Core_MDF_End_Date__c = System.today()+2;
+        indiaActivity.Core_MDF_Start_Date__c = System.today();
+        indiaActivity.Core_MDF_End_Date__c = System.today();
         indiaActivity.RequestedAmount = 100;
         indiaActivity.Core_MDF_Channel_Partner_Led__c = True;
         indiaActivity.Amount = 0;
-        indiaActivity.Core_MDF_Reimbursement_Rate_txt__c='100%';
         Database.insert(indiaActivity);
         
         List<Core_Trigger_Executions__c> executionList = new List<Core_Trigger_Executions__c>();
@@ -162,14 +140,11 @@ private class Core_MDF_HoldCriteriaList_Test
         executionList.add(claimFunctionalityNameTriggerExecution3);
         
         Database.insert(executionList);
-        System.runAs(usr){
-            Core_MDF_Bank__c indiaBank = Core_MDF_CCP_TestDataUtility.createBank(dellCorpAccount.Id, 'Core_MDF_Client_CoMarketing_Fund', false,'1231231230');
-            indiaBank.Core_MDF_Payment_Currency_Cd__c = 'USD';
-            indiaBank.Core_MDF_Bank_Status__c ='Active';
-            Database.insert(indiaBank);
-            // Highlight: Unused Local Variable 
-           // Core_MDF_Account_Bank_Mapping__c abmCCF1 = Core_MDF_CCP_TestDataUtility.createAccountBankMap(dellCCFAPACIndia.id, indiaBank.Id, TRUE);
-        }
+       
+        Core_MDF_Bank__c indiaBank = Core_MDF_CCP_TestDataUtility.createBank(dellCorpAccount.Id, 'Core_MDF_Client_CoMarketing_Fund', true,'1231231230');
+        
+        Core_MDF_Account_Bank_Mapping__c abmCCF1 = Core_MDF_CCP_TestDataUtility.createAccountBankMap(dellCCFAPACIndia.id, indiaBank.Id, TRUE);
+        
         List<Core_MDF_Currency_Exchange_Rates__c> newValues = new List<Core_MDF_Currency_Exchange_Rates__c>();
         
         Core_MDF_Currency_Exchange_Rates__c record1 = new Core_MDF_Currency_Exchange_Rates__c();
@@ -252,18 +227,17 @@ private class Core_MDF_HoldCriteriaList_Test
     @isTest static void testHoldListCriteria(){
         
         Test.startTest();
-        // Highlight: Unused Local Variable 
-       // ChannelProgram cp = [SELECT ID From ChannelProgram where Name =:Core_MDF_CCP_ConstantClass.CCF_PROGRAM];
+        ChannelProgram cp = [SELECT ID From ChannelProgram where Name = 'Client Co-Marketing Fund'];
         User sysAdminUser = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
         
-        PartnerFundRequest indiaActivity = [SELECT Id,Title,Core_MDF_Start_Date__c,Core_MDF_End_Date__c  from PartnerFundRequest where Title='indiaActivity' limit 1];
+        PartnerFundRequest indiaActivity = [SELECT Id,Title,Core_MDF_Start_Date__c,Core_MDF_End_Date__c from PartnerFundRequest where Title='indiaActivity' limit 1];
         
         Core_MDF_Bank__c indiaBank = [Select ID from Core_MDF_Bank__c limit 1];
         
         System.runAs(sysAdminUser){
             PartnerFundClaim indiaClaim = Core_MDF_CCP_TestDataUtility.createClaim('India Claim', Core_MDF_CCP_TestDataUtility.claim_RecordType_CCF, 
                                                                                    indiaActivity.Id, 
-                                                                                   System.today(),System.today(), 
+                                                                                   indiaActivity.Core_MDF_Start_Date__c, indiaActivity.Core_MDF_Start_Date__c, 
                                                                                    100, 
                                                                                    System.today(), indiaBank.ID, false);           
             
@@ -296,7 +270,7 @@ private class Core_MDF_HoldCriteriaList_Test
         Test.startTest();
         User sysAdminUser = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
         Account dellIntelAccount = [SELECT Id from Account where Name='Dell Corporation' limit 1];
-        ChannelProgram dcfCp = [SELECT Id from ChannelProgram where Name=:Core_MDF_CCP_ConstantClass.DCF_PROGRAM limit 1];
+        ChannelProgram dcfCp = [SELECT Id from ChannelProgram where Name='Data Center Co-Marketing Fund' limit 1];
         System.runAs(sysAdminUser){
             
                 Core_MDF_Hold_Criteria__c holdListCriteria  =
@@ -307,7 +281,7 @@ private class Core_MDF_HoldCriteriaList_Test
                     }catch(Exception e){System.assertNotEquals(null,e);}
                 holdListCriteria.Core_MDF_UltimateAccount_Id__c = null;
                 holdListCriteria.Core_MDF_Program_id__c = null;
-                holdListCriteria.Core_MDF_Region_Country_txt__c = 'PRC->MAINLAND CHINA';
+                holdListCriteria.Core_MDF_Region_Country_txt__c = 'PRC->CHINA';
                 try{ Database.update(holdListCriteria);
                 }catch(Exception e){System.assertNotEquals(null,e);}
                 holdListCriteria.Core_MDF_Geo_Txt__c = null;
@@ -322,8 +296,6 @@ private class Core_MDF_HoldCriteriaList_Test
                 try{ Database.update(holdListCriteria);
                 }catch(Exception e){System.assertNotEquals(null,e);}
         }
-        
         Test.stopTest();
-        
     }
 }

@@ -1,0 +1,78 @@
+<apex:page standardController="PCC_Deal_Change_Request_Line_Item__c" recordSetVar="lineItems" extensions="PCC_ApproveRejectChangeLineItems">
+    <apex:variable var="alertMessage" value="{!alertMessage}" />
+    <apex:variable var="retUrl" value="{!retUrl}" />
+    <apex:slds />
+    <style>
+        .slds-page-header {
+        text-align: center;
+        }
+        
+        .slds-form {
+        margin: 0 auto;
+        width: 50%; /* Adjust the width as needed */
+        }
+        .slds-modal {
+        width: 80%;
+        max-width: 40rem; /* Adjust the maximum width as needed */
+        }
+        
+        .custom-page-block {
+        width: 50%; /* Set the desired width */
+        margin: 0 auto; /* Center the table horizontally */
+        background-color: #f0f0f0;
+        border: 1px solid #ccc;
+        padding: 10px;
+        
+        }
+    </style>
+
+<apex:form >
+    <apex:pageMessages />
+                <apex:pageBlock title="Enter Rejection Comments">
+                    <apex:pageBlockSection >
+                          <apex:pageblockSectionItem >
+                            <apex:inputTextarea value="{!commentText}" rows="3" cols="150" styleClass="slds-input"/>
+                        </apex:pageblockSectionItem>
+                    </apex:pageBlockSection>
+               
+                    <apex:pageBlockButtons location="bottom">
+                        <apex:commandButton value="Submit" action="{!RejectLineItems}"
+                         oncomplete="showScript('{!alertMessage}', '{!retUrl}')" 
+                         styleClass="slds-button slds-button_brand" />
+                    </apex:pageBlockButtons>
+                </apex:pageBlock>
+                
+            </apex:form>
+            <div id="modalContainer" class="slds-hide">
+                <div class="slds-modal slds-fade-in-open" 
+                style="display:block; 
+                max-width:100%;
+                 height:auto;">
+                    <div class="slds-modal__container">
+                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                            <p id="modal-message">{!alertMessage}</p>
+                        </div>
+                        <footer class="slds-modal__footer">
+                            <apex:form >
+                                <apex:commandButton value="Close" action="{!setRetUrl}"  reRender="none" styleClass="slds-button slds-button_brand" />
+                            </apex:form>
+                        </footer>
+                    </div>
+                    <div> {!retUrl}</div>
+                </div>
+                <div class="slds-backdrop slds-backdrop_open"></div>
+            </div>
+            <script>
+                function showScript(alertMessage, retUrl) {
+                    // Set modal message
+                    document.getElementById('modal-message').innerHTML = alertMessage;
+                    document.getElementById('modalContainer').classList.remove('slds-hide');
+                }
+                
+                function closeModal() {
+                    // Hide the modal
+                    document.getElementById('modalContainer').classList.add('slds-hide');
+                }
+                </script>
+
+</apex:page>

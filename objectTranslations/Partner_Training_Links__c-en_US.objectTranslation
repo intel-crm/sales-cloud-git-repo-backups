@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Recommendation_Partner Training Links</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Partner Training Links</value>
+    </caseValues>
+    <fields>
+        <label><!-- Training Business Unit --></label>
+        <name>Training_Business_Unit__c</name>
+    </fields>
+    <fields>
+        <label><!-- Training Category --></label>
+        <name>Training_Category__c</name>
+    </fields>
+    <fields>
+        <label><!-- Training Completion Date --></label>
+        <name>Training_Completion_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Training Contact Email --></label>
+        <name>Training_Contact_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Training Created Date --></label>
+        <name>Training_Created_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Training Description --></label>
+        <name>Training_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Training Expiration Date --></label>
+        <name>Training_Expiration_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Training Geography --></label>
+        <name>Training_Geography_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Training Id --></label>
+        <name>Training_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Training Language --></label>
+        <name>Training_Language_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Training Link --></label>
+        <name>Training_Link__c</name>
+    </fields>
+    <fields>
+        <label><!-- Training Name --></label>
+        <name>Training_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Training Name Id --></label>
+        <name>Training_Nm_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Training Type --></label>
+        <name>Training_Type__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

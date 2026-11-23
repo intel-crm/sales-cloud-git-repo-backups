@@ -128,11 +128,14 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <type>Default</type>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Subscription_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <formFactor>Large</formFactor>
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
@@ -141,7 +144,15 @@
         <type>Default</type>
     </actionOverrides>
     <allowInChatterGroups>false</allowInChatterGroups>
-    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <compactLayoutAssignment>License_Compact_Layout</compactLayoutAssignment>
+    <compactLayouts>
+        <fullName>License_Compact_Layout</fullName>
+        <fields>Sales_Avail_Qty_Nbr__c</fields>
+        <fields>SBQQ__StartDate__c</fields>
+        <fields>SBQQ__EndDate__c</fields>
+        <fields>Sales_Expiration_Date_Dtm__c</fields>
+        <label>License Compact Layout</label>
+    </compactLayouts>
     <customHelpPage>SBQQ__SubscriptionHelp</customHelpPage>
     <deploymentStatus>Deployed</deploymentStatus>
     <deprecated>false</deprecated>
@@ -248,11 +259,645 @@
         <label>Subscription Search Results</label>
     </fieldSets>
     <fields>
+        <fullName>Core_PSG_Alt_Megacore__c</fullName>
+        <label>Alt_Megacore</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>MegaCore1</fullName>
+                    <default>false</default>
+                    <label>MegaCore1</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_PSG_AuthCode_Type__c</fullName>
+        <label>AuthCode Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Guard ID</fullName>
+                    <default>false</default>
+                    <label>Guard ID</label>
+                </value>
+                <value>
+                    <fullName>NIC ID</fullName>
+                    <default>false</default>
+                    <label>NIC ID</label>
+                </value>
+                <value>
+                    <fullName>Host ID</fullName>
+                    <default>false</default>
+                    <label>Host ID</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_PSG_CTI_Class_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>CTI Class</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_PSG_City_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>City</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_PSG_Classification_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Classification</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_PSG_Companion_Machine_Id_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Companion Machine Id</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_PSG_Country_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Country</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_PSG_Eval_Type__c</fullName>
+        <label>Eval Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Disk ID</fullName>
+                    <default>false</default>
+                    <label>Disk ID</label>
+                </value>
+                <value>
+                    <fullName>NIC ID</fullName>
+                    <default>false</default>
+                    <label>NIC ID</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_PSG_Gen_Reason__c</fullName>
+        <label>Gen Reason</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Maintenance Problem</fullName>
+                    <default>false</default>
+                    <label>Maintenance Problem</label>
+                </value>
+                <value>
+                    <fullName>In Renewal Process</fullName>
+                    <default>false</default>
+                    <label>In Renewal Process</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_PSG_Guard_ID_Serial_txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Guard ID/Serial #</label>
+        <length>20</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_PSG_IP_Base_Prod_SerialNum_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>IP Base Prod Serial #</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_PSG_License_First_Name_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>License First Name</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_PSG_License_Last_Name_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>License Last Name</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_PSG_MPII_Cust_Rev_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>MPII Cust Rev</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_PSG_MPII_Prod_Rev_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>MPII Prod Rev</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_PSG_MPII_Upgrade_ShipmentStatus_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>MPII Upgrade Shipment Status</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_PSG_Maintenance_Status__c</fullName>
+        <label>Maintenance Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Inactive</fullName>
+                    <default>false</default>
+                    <label>Inactive</label>
+                </value>
+                <value>
+                    <fullName>Inactive-No Upgrade</fullName>
+                    <default>false</default>
+                    <label>Inactive-No Upgrade</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_PSG_Nios_Cust_Rev_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Nios Cust Rev</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_PSG_Nios_Upgrade_ShipmentStatus_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Nios Upgrade Shipment Status</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_PSG_Node_locked__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Node-locked</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_PSG_OSR_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>OSR</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_PSG_Operating_System__c</fullName>
+        <label>Operating System</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+                <value>
+                    <fullName>Ver. 9</fullName>
+                    <default>false</default>
+                    <label>Ver. 9</label>
+                </value>
+                <value>
+                    <fullName>Ver. 10</fullName>
+                    <default>false</default>
+                    <label>Ver. 10</label>
+                </value>
+                <value>
+                    <fullName>Other (Sun)</fullName>
+                    <default>false</default>
+                    <label>Other (Sun)</label>
+                </value>
+                <value>
+                    <fullName>Other (HP)</fullName>
+                    <default>false</default>
+                    <label>Other (HP)</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_PSG_Order_Notes_Altera__c</fullName>
+        <label>Order Notes Altera</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Promotion</fullName>
+                    <default>false</default>
+                    <label>Promotion</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_PSG_Order__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Order</label>
+        <referenceTo>Order</referenceTo>
+        <relationshipLabel>Subscriptions</relationshipLabel>
+        <relationshipName>Subscriptions</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_PSG_POS_Name_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>POS Name</label>
+        <length>35</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_PSG_PO_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>P.O.</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_PSG_Part_Number_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Part Number</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_PSG_Primary_Machine_Name_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Primary Machine Name</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_PSG_Prod_Rev_Nios_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Prod Rev - Nios</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_PSG_Prod_Rev_Quartus_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Prod Rev - Quartus</label>
+        <length>20</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_PSG_Product_Distributor__c</fullName>
+        <label>Product Distributor</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>ARROW</fullName>
+                    <default>false</default>
+                    <label>ARROW</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_PSG_Product_Tools_Type_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Product Tools Type</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_PSG_Quartus_Cust_Rev_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Quartus Cust Rev</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_PSG_Quartus_Upgrade_ShipStatus_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Quartus Upgrade Shipment Status</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_PSG_RU_Platform__c</fullName>
+        <label>Platform</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>HP</fullName>
+                    <default>false</default>
+                    <label>HP</label>
+                </value>
+                <value>
+                    <fullName>Sun (Solaris)</fullName>
+                    <default>false</default>
+                    <label>Sun (Solaris)</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_PSG_Region_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Region</label>
+        <length>25</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_PSG_SO_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>S.O.</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_PSG_Ship_Date_Dt__c</fullName>
+        <label>Ship Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Core_PSG_Ship_to_RegUser__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Ship to RegUser</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_PSG_State_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>State</label>
+        <length>10</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_PSG_VHDL__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>VHDL</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_PSG_Verilog__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Verilog</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_PSG_WarBoard_Region_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>WarBoard Region</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_PSG_Warranty_Type__c</fullName>
+        <label>Warranty Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Full</fullName>
+                    <default>false</default>
+                    <label>Full</label>
+                </value>
+                <value>
+                    <fullName>Hardware Only</fullName>
+                    <default>false</default>
+                    <label>Hardware Only</label>
+                </value>
+                <value>
+                    <fullName>Software Only</fullName>
+                    <default>false</default>
+                    <label>Software Only</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_PSG_Zip_Code__c</fullName>
+        <externalId>false</externalId>
+        <label>Zip Code</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Incomplete_Duplicate_Product_Found__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Incomplete Duplicate Product Found</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>SBQQ__Account__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <deprecated>false</deprecated>
         <description>Account that owns this subscription. This relationship is used for volume discount calculations.</description>
-        <inlineHelpText>Account that owns this subscription. This relationship is used for volume discount calculations.</inlineHelpText>
+        <inlineHelpText>Account that owns this subscription. This relationship is used for volume discount calculations. This is the Sold To Account.</inlineHelpText>
         <label>Account</label>
         <referenceTo>Account</referenceTo>
         <relationshipLabel>Subscriptions</relationshipLabel>
@@ -925,7 +1570,7 @@
         <relationshipLabel>Subscriptions</relationshipLabel>
         <relationshipName>Subscriptions</relationshipName>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -1063,7 +1708,7 @@
         <precision>12</precision>
         <required>false</required>
         <scale>2</scale>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
@@ -1117,7 +1762,7 @@
         <relationshipLabel>Child Subscriptions</relationshipLabel>
         <relationshipName>ChildSubscriptions</relationshipName>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -1286,7 +1931,7 @@
         <inlineHelpText>Matches the quote line end date by default. If blank, it will match the contract end date.</inlineHelpText>
         <label>Subscription End Date</label>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Date</type>
     </fields>
@@ -1297,7 +1942,7 @@
         <inlineHelpText>Method of calculating the subscription price.</inlineHelpText>
         <label>Subscription Pricing</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -1323,7 +1968,7 @@
         <inlineHelpText>Matches the quote line start date by default. If blank, it will match the contract start date.</inlineHelpText>
         <label>Subscription Start Date</label>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Date</type>
     </fields>
@@ -1379,7 +2024,7 @@
         <inlineHelpText>Date the subscription terminated. Automatically populated when covered asset is upgraded.</inlineHelpText>
         <label>Terminated Date</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Date</type>
     </fields>
@@ -1392,9 +2037,74 @@
         <precision>14</precision>
         <required>false</required>
         <scale>2</scale>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Sales_Asset_RowId_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Asset RowId</label>
+        <length>20</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_Avail_Qty_Nbr__c</fullName>
+        <externalId>false</externalId>
+        <label>Available Quantity</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_Available_Rehost_Nbr__c</fullName>
+        <externalId>false</externalId>
+        <label>Available Rehost</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_Comments_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Comments</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_Expiration_Date_Dtm__c</fullName>
+        <label>Expiration Date</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Sales_Host_Node_Id_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Host/Node Id</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Sales_Legacy_Contract_Id__c</fullName>
@@ -1407,6 +2117,57 @@
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_Lic_User_Contact_ID__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Lic.User Contact ID</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Subscriptions</relationshipLabel>
+        <relationshipName>Subscriptions3</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Sales_License_Activation_Code__c</fullName>
+        <caseSensitive>true</caseSensitive>
+        <externalId>false</externalId>
+        <label>License Activation Code</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_License_Flag__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>License Flag</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Sales_License_Number_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>License Number</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_Maintenance_Expiration_Dt__c</fullName>
+        <label>Maintenance Expiration</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
     </fields>
     <fields>
         <fullName>Sales_Product_Active_Check__c</fullName>
@@ -1428,44 +2189,70 @@
         <type>Text</type>
         <unique>false</unique>
     </fields>
+    <fields>
+        <fullName>Sales_SONUM_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>SO#</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_Web_Display_Flag__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Web Display Flag</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
     <label>Subscription</label>
     <listViews>
         <fullName>All1</fullName>
-        <columns>NAME</columns>
-        <columns>SBQQ__ContractNumber__c</columns>
-        <columns>SBQQ__Account__c</columns>
-        <columns>SBQQ__Product__c</columns>
-        <columns>Sales_Product_Active_Check__c</columns>
-        <columns>Sales_Renewal_Status__c</columns>
-        <columns>SBQQ__TerminatedDate__c</columns>
-        <columns>SBQQ__StartDate__c</columns>
-        <columns>SBQQ__EndDate__c</columns>
         <filterScope>Everything</filterScope>
-        <label>All Subscriptions</label>
+        <label>All</label>
     </listViews>
     <listViews>
         <fullName>SBQQ__All</fullName>
         <columns>NAME</columns>
         <columns>SBQQ__ContractNumber__c</columns>
-        <columns>SBQQ__Account__c</columns>
+        <columns>SBQQ__QuoteLine__c</columns>
         <columns>SBQQ__Product__c</columns>
-        <columns>Sales_Product_Active_Check__c</columns>
-        <columns>Sales_Renewal_Status__c</columns>
-        <columns>SBQQ__TerminatedDate__c</columns>
+        <columns>SBQQ__SubscriptionStartDate__c</columns>
         <columns>SBQQ__StartDate__c</columns>
         <columns>SBQQ__EndDate__c</columns>
-        <filterScope>Mine</filterScope>
-        <label>My Subscriptions</label>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>SBQQ__Contract__c</field>
+            <operation>notEqual</operation>
+        </filters>
+        <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>Subscription_List</fullName>
+        <columns>NAME</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>Core_PSG_Order__c</columns>
+        <columns>SBQQ__OrderProduct__c</columns>
+        <columns>SBQQ__Account__c</columns>
+        <columns>SBQQ__TerminatedDate__c</columns>
+        <columns>Sales_Product_Active_Check__c</columns>
+        <columns>Incomplete_Duplicate_Product_Found__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>Subscription List</label>
+        <language>en_US</language>
     </listViews>
     <nameField>
         <displayFormat>SUB-{0000000}</displayFormat>
         <label>Subscription #</label>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Subscriptions</pluralLabel>
     <searchLayouts/>
-    <sharingModel>ReadWrite</sharingModel>
+    <sharingModel>Private</sharingModel>
     <validationRules>
         <fullName>SBQQ__Renewal_Quantity_cannot_be_editable</fullName>
         <active>true</active>

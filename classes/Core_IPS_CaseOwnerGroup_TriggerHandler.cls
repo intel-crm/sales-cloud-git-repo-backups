@@ -1,4 +1,4 @@
-public without sharing class Core_IPS_CaseOwnerGroup_TriggerHandler {
+public class Core_IPS_CaseOwnerGroup_TriggerHandler {
     public static void assignUserValues(list<Core_IPS_Case_Owner_Group__c>ownerListValues){
         
         list<id>userIDlist = new list<id>();
@@ -13,13 +13,15 @@ public without sharing class Core_IPS_CaseOwnerGroup_TriggerHandler {
                 if(userMap.containsKey(cc.Core_IPS_Case_Owner__c)){
                      if(cc.Core_IPS_Case_Owner__c == userMap.get(cc.Core_IPS_Case_Owner__c).id){
                         cc.Core_IPS_Case_Owner_Email__c = userMap.get(cc.Core_IPS_Case_Owner__c).Email;
-                        if(String.isBlank(cc.Core_IPS_Owner_Team_1__c)){
+                        if(userMap.get(cc.Core_IPS_Case_Owner__c).Manager.Name!= ''){
                             cc.Core_IPS_Owner_Team_1__c = userMap.get(cc.Core_IPS_Case_Owner__c).Manager.Name;
+                        }else{cc.Core_IPS_Owner_Team_1__c ='';
                         }
-                        if(String.isBlank(cc.Core_IPS_Owner_Team_2__c)){
+                        if(userMap.get(cc.Core_IPS_Case_Owner__c).Manager.Manager.Name!=''){
                             cc.Core_IPS_Owner_Team_2__c = userMap.get(cc.Core_IPS_Case_Owner__c).Manager.Manager.Name;
+                           }
+                        else{cc.Core_IPS_Owner_Team_2__c ='';
                         }
-                        //else{cc.Core_IPS_Owner_Team_2__c ='';}
                     }
                 }
             }
@@ -83,7 +85,7 @@ apart from the default values assigned during insertion
                     }
                 }
             } 
-        }catch(Exception e){ Core_IPS_ExceptionHandling.logEntryWithException(e, 'Case Owner Group', 'Core_IPS_CaseOwnerGroup_TriggerHandler');}        
+        }catch(Exception e){ Core_IPS_ExceptionHandling.logEntryWithException(e, 'Case Owner Group', 'Core_IPS_CaseOwnerGroup_TriggerHandler');System.debug('Core_IPS_CaseOwnerGroup_TriggerHandler-->updateCOGrecords-->Exception--->'+e.getMessage()+'At Line Number-->'+e.getLineNumber());}        
 
     }
     

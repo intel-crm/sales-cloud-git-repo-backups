@@ -112,7 +112,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>includes</operator>
-            <value>DCG-Tier 2,DCAI-Tier 2,DCG-Tier 3,DCAI-Tier 3,DCG-Tier 4,DCAI-Tier 4</value>
+            <value>DCG-Tier 2,DCG-Tier 3,DCG-Tier 4</value>
         </criteriaItems>
         <criteriaItems>
             <column>FK_$Product2.Core_Product_Type__c</column>

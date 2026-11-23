@@ -16,7 +16,7 @@
     </values>
     <values>
         <field>PRM_FolderName__c</field>
-        <value xsi:type="xsd:string">IPA(English Templates)</value>
+        <value xsi:type="xsd:string">IPA_English_Templates</value>
     </values>
     <values>
         <field>PRM_Geo__c</field>

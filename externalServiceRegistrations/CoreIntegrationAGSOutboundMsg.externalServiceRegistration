@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExternalServiceRegistration xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Service created for Apigee POC work</description>
+    <label>CoreIntegrationAGSOutboundMsg</label>
+    <namedCredentialReference>Apigee_POC_Credentials</namedCredentialReference>
+    <operations>
+        <active>true</active>
+        <name>inititatestheprocess</name>
+    </operations>
+    <schema>{
+  &quot;swagger&quot;: &quot;2.0&quot;,
+  &quot;info&quot;: {
+    &quot;version&quot;: &quot;1.0.0&quot;,
+    &quot;title&quot;: &quot;Access Management&quot;,
+    &quot;description&quot;: &quot;This api is to manage the access and entitlement in ags system\nsupport email -  m2s.middleware.extended@intel.com,\nsupport link - https://wiki.ith.intel.com/display/EBSMiddleware\n&quot;,
+    &quot;contact&quot;: {
+      &quot;email&quot;: &quot;m2s.middleware.extended@intel.com&quot;,
+      &quot;name&quot;: &quot;M2R Middleware&quot;,
+      &quot;url&quot;: &quot;https://wiki.ith.intel.com/display/EBSMiddleware&quot;
+    }
+  },
+  &quot;host&quot;: &quot;apis-stage.intel.com&quot;,
+  &quot;basePath&quot;: &quot;/m2r/v1/access-management/users&quot;,
+  &quot;securityDefinitions&quot;: {
+    &quot;auth&quot;: {
+      &quot;type&quot;: &quot;oauth2&quot;,
+      &quot;flow&quot;: &quot;application&quot;,
+      &quot;tokenUrl&quot;: &quot;https://apis-stage.intel.com/v1/auth/token&quot;,
+      &quot;scopes&quot;: {}
+    }
+  },
+  &quot;schemes&quot;: [
+    &quot;https&quot;
+  ],
+  &quot;consumes&quot;: [
+    &quot;application/json&quot;
+  ],
+  &quot;produces&quot;: [
+    &quot;application/json&quot;
+  ],
+  &quot;paths&quot;: {
+    &quot;/&quot;: {
+      &quot;post&quot;: {
+        &quot;description&quot;: &quot;Inititates the process&quot;,
+        &quot;summary&quot;: &quot;Inititates the process&quot;,
+        &quot;operationId&quot;: &quot;Inititatestheprocess&quot;,
+        &quot;deprecated&quot;: false,
+        &quot;produces&quot;: [
+          &quot;application/xml&quot;
+        ],
+        &quot;consumes&quot;: [
+          &quot;application/xml&quot;
+        ],
+        &quot;parameters&quot;: [
+          {
+            &quot;name&quot;: &quot;body&quot;,
+            &quot;in&quot;: &quot;body&quot;,
+            &quot;required&quot;: true,
+            &quot;description&quot;: &quot;Request Body of the POST method&quot;,
+            &quot;schema&quot;: {
+              &quot;$ref&quot;: &quot;#/definitions/InputObject&quot;
+            }
+          }
+        ],
+        &quot;responses&quot;: {
+          &quot;200&quot;: {
+            &quot;description&quot;: &quot;Successful response&quot;,
+            &quot;schema&quot;: {
+              &quot;$ref&quot;: &quot;#/definitions/Successresponse&quot;
+            },
+            &quot;headers&quot;: {}
+          },
+          &quot;400&quot;: {
+            &quot;description&quot;: &quot;Bad request&quot;,
+            &quot;schema&quot;: {}
+          },
+          &quot;401&quot;: {
+            &quot;description&quot;: &quot;Authentication failed&quot;,
+            &quot;schema&quot;: {}
+          },
+          &quot;403&quot;: {
+            &quot;description&quot;: &quot;Insufficient permissions to perform this request&quot;,
+            &quot;schema&quot;: {}
+          },
+          &quot;404&quot;: {
+            &quot;description&quot;: &quot;Not found&quot;,
+            &quot;schema&quot;: {}
+          },
+          &quot;500&quot;: {
+            &quot;description&quot;: &quot;Internal Server Error&quot;,
+            &quot;schema&quot;: {}
+          }
+        }
+      }
+    }
+  },
+  &quot;definitions&quot;: {
+    &quot;InputObject&quot;: {
+      &quot;title&quot;: &quot;InputObject&quot;,
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;properties&quot;: {
+        &quot;Id&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;sObject&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;Core_MessageType__c&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;Core_Payload__c&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        }
+      },
+      &quot;required&quot;: [
+        &quot;Id&quot;,
+        &quot;sObject&quot;,
+        &quot;Core_MessageType__c&quot;,
+        &quot;Core_Payload__c&quot;
+      ]
+    },
+    &quot;Successresponse&quot;: {
+      &quot;title&quot;: &quot;Successresponse&quot;,
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;properties&quot;: {
+        &quot;success&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;message&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        }
+      },
+      &quot;required&quot;: [
+        &quot;success&quot;,
+        &quot;message&quot;
+      ]
+    }
+  },
+  &quot;security&quot;: [
+    {
+      &quot;auth&quot;: []
+    }
+  ],
+  &quot;tags&quot;: []
+}</schema>
+    <schemaType>OpenApi</schemaType>
+    <serviceBinding>{&quot;host&quot;:&quot;apis-stage.intel.com&quot;,&quot;basePath&quot;:&quot;/m2r/v1/access-management/users&quot;,&quot;allowedSchemes&quot;:[&quot;HTTPS&quot;],&quot;requestMediaTypes&quot;:[&quot;application/json&quot;],&quot;responseMediaTypes&quot;:[&quot;application/json&quot;],&quot;compatibleMediaTypes&quot;:{&quot;application/xml&quot;:&quot;application/xml&quot;},&quot;integrationFlags&quot;:null,&quot;extensions&quot;:{}}</serviceBinding>
+    <status>Complete</status>
+    <systemVersion>2</systemVersion>
+</ExternalServiceRegistration>

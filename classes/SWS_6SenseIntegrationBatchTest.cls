@@ -134,7 +134,7 @@ public class SWS_6SenseIntegrationBatchTest {
             ];
             
             Test.startTest();
-            SWS_6SenseIntegrationBatch batchJob = new SWS_6SenseIntegrationBatch(new List<String>{acc[0].Id});
+            SWS_6SenseIntegrationBatch batchJob = new SWS_6SenseIntegrationBatch(acc[0].Id);
             Database.executeBatch(batchJob, 200);
             Test.stopTest();
             
@@ -169,7 +169,7 @@ public class SWS_6SenseIntegrationBatchTest {
             }
             
             Test.startTest();
-            SWS_6SenseIntegrationBatch batchJob = new SWS_6SenseIntegrationBatch(new List<String>{acc[0].Id});
+            SWS_6SenseIntegrationBatch batchJob = new SWS_6SenseIntegrationBatch(acc[0].Id);
             Database.executeBatch(batchJob, 200);
             Test.stopTest();
             
@@ -196,8 +196,8 @@ public class SWS_6SenseIntegrationBatchTest {
             List<Account> acc = [SELECT Id FROM Account WHERE Is_6Sense_Integration_Enabled__c = true];
             
             Test.startTest();
-            SWS_6SenseIntegrationBatch batchJob = new SWS_6SenseIntegrationBatch(new List<String>{acc[0].Id});
-            System.assertEquals(new List<String>{acc[0].Id}, batchJob.accountIds, 'Account ID should be set correctly');
+            SWS_6SenseIntegrationBatch batchJob = new SWS_6SenseIntegrationBatch(acc[0].Id);
+            System.assertEquals(acc[0].Id, batchJob.accountId, 'Account ID should be set correctly');
             Database.QueryLocator ql = batchJob.start(null);
             System.assertNotEquals(null, ql, 'QueryLocator should not be null');
             Test.stopTest();

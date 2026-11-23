@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <columns>
-        <field>Opportunity.Core_Approved_Date__c</field>
-    </columns>
-    <columns>
         <field>ACCOUNT_NAME</field>
     </columns>
     <columns>
@@ -58,28 +55,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Columbiaville,810,Connorsville</value>
+            <value>Columbiaville,810</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Opportunity.Core_Product_Segment__c</column>
+            <column>OPPORTUNITY_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Data Center Computing</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Approved_Date__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>greaterOrEqual</operator>
-            <value>1/1/2021 12:00 AM</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Commissionable__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Yes</value>
+            <operator>notContain</operator>
+            <value>CG Revenue</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -118,6 +101,6 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURY</interval>
+        <interval>INTERVAL_CURPREVQ</interval>
     </timeFrameFilter>
 </Report>

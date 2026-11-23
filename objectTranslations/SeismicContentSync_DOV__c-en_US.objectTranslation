@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>SeismicContentSync_DOV</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>SeismicContentSync_DOVs</value>
+    </caseValues>
+    <fields>
+        <label><!-- SeismcDOV Value --></label>
+        <name>SeismcDOV_Value__c</name>
+    </fields>
+    <fields>
+        <label><!-- SeismicDOV_ID --></label>
+        <name>SeismicDOV_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- SeismicDOV Name --></label>
+        <name>SeismicDOV_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- SeismicDOV Value Old --></label>
+        <name>SeismicDOV_Value_Old__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

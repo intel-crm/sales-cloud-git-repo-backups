@@ -13,7 +13,7 @@ Modification Log :
 * Sumukh                       06/06/2018              Modified - Handled logic for comment source field I-12, R-4.3, US-105428 
 ****************************************************************************************************/
 
-public without sharing class Core_IPS_CaseComment_EmailHandlerService {
+public class Core_IPS_CaseComment_EmailHandlerService {
 
     public static Core_IPS_Case_Comments__c createCaseComment(String htmlComment, String caseCommentType,String authorType, User usr, Id caseId){
         Core_IPS_Case_Comments__c comment = new Core_IPS_Case_Comments__c();
@@ -34,6 +34,7 @@ public without sharing class Core_IPS_CaseComment_EmailHandlerService {
         Map< String, Attachment > mapEmailAttachments = new Map< String, Attachment >(); 
         List<Attachment> attachmentList = new List<Attachment>();
         String replacedHeaderVal='';
+        //system.debug('=============================================------------->total attachments='+email.binaryAttachments.size());
         for(Messaging.InboundEmail.BinaryAttachment bA : email.binaryAttachments) {
            
             for(integer i = 0; i < bA.headers.size(); i++) {
@@ -41,6 +42,7 @@ public without sharing class Core_IPS_CaseComment_EmailHandlerService {
                 //Header Value
                 String headerValue = bA.headers[i].value;
                 
+                //System.debug('=============== ================>>outside headerValue_'+i+':'+headerValue);
                 //if(headerValue.startsWith('< image')|| headerValue.startsWith('<image') || headerValue.startsWith('<ii') || headerValue.startsWith('<_wpsmail')) {
                 if(headerValue.startsWith('<') && headerValue.endsWith('>') ) {
                     headerValue = headerValue.replaceAll('<', '').replaceAll('>', '');
@@ -49,33 +51,34 @@ public without sharing class Core_IPS_CaseComment_EmailHandlerService {
                 }
             }
         }
+        //System.debug('================================>>  mapattch1'+mapAttachments);
         //Insert attachment
         try{            
             insert mapAttachments.values();
         }catch(Exception ex){
+            System.debug('=============================>>Exception while inserting Attachment'+ex.getMessage());
         }
         
         //Process inline images and update the HTML Body
         for(String headerValue : mapAttachments.keySet()) {
+            //System.debug('------------------>>>>mapAttachments.keySet():'+mapAttachments.keySet());
             //Reference Link
             String refLink = System.Label.Core_IPS_Salesforce_Org_URL+'/servlet/servlet.FileDownload?file=' + mapAttachments.get(headerValue).Id;
+            //System.debug('------------------>>>>refLink:'+refLink);
             comment.Core_IPS_Rich_Comment__c = comment.Core_IPS_Rich_Comment__c.replaceAll('cid:' + headerValue, refLink);
             
             comment.Core_IPS_Rich_Comment__c = (comment.Core_IPS_Rich_Comment__c.length()>131000)? comment.Core_IPS_Rich_Comment__c.subString(0,131000):comment.Core_IPS_Rich_Comment__c;
             
         }
         update comment;
+        //System.debug('------------------>>>>after replace and update comment:'+comment.Core_IPS_Rich_Comment__c);
         return comment;
     }
     
     
     //Process exception email.
     public static void sendExceptionEmailUpdate(String fromAdd, Case mailCase) {
-        List<OrgWideEmailAddress> orgWideEmailList = new List<OrgWideEmailAddress>();
-        //FLS check added-Venugopal
-        if(OrgWideEmailAddress.SObjectType.getDescribe().isAccessible()){
-            orgWideEmailList = [select id, address from OrgWideEmailAddress where displayname = :'Intel Premier Support' limit 1];
-        }
+        List<OrgWideEmailAddress> orgWideEmailList = [select id, address from OrgWideEmailAddress where displayname = :'Intel Premier Support' limit 1];
         String orgWideEmailId = (orgWideEmailList!=null && orgWideEmailList.size()>0) ? orgWideEmailList[0].id : '';
         List<Messaging.SingleEmailMessage> mails = new List<Messaging.SingleEmailMessage>();
         EmailTemplate et = [SELECT Id,Body,HtmlValue,Subject FROM EmailTemplate WHERE DeveloperName ='Core_IPS_Case_Comment_Exception_Email'];
@@ -108,6 +111,10 @@ public without sharing class Core_IPS_CaseComment_EmailHandlerService {
         lskyh.add( new Skyh_Class('Core_IPS_Rich_Comment__c', commentString));
         allObjects.add(new List<Skyh_Class>(lskyh));
 
+        system.debug(JSON.serialize(lskyh));
+        system.debug('All objects   :');
+        system.debug(JSON.serialize(allObjects));
+
         String finalJSON = '{\"Core_IPS_Case_Comments__c\": ' + JSON.serialize(allObjects) + '}';
 
         // Value:https://encapicrm.intelqa.shnpoc.net/encryption/2/encrypt
@@ -117,6 +124,7 @@ public without sharing class Core_IPS_CaseComment_EmailHandlerService {
         //Value: EAASCertificate
         string certName = Label.EAASCertificate_Name;
 
+        System.debug('DEBUG final JSON String:' + finalJSON); 
         req.setBody(finalJSON);
         req.setHeader('Content-Type', 'application/json'); 
         req.setEndpoint(endpoint);
@@ -130,6 +138,7 @@ public without sharing class Core_IPS_CaseComment_EmailHandlerService {
         if(!test.isrunningtest()){
             HTTPResponse res = http.send(req);
             if(res.getStatus()=='OK'){
+                System.debug('DEBUG SEARCH Status:'+res.getStatus()+'||comment Body :' + res.getBody()); 
                 return res.getBody();
             }else
                 return 'Encryption Failed';

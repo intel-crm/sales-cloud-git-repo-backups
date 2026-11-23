@@ -8,6 +8,6 @@
     </values>
     <values>
         <field>Error_Message__c</field>
-        <value xsi:type="xsd:string">For backdated approvedPricingEndDate the {{newRequestedType}} should be null.</value>
+        <value xsi:type="xsd:string">For backdated approvedPricingEndDate the newRequestedDiscountUnitPrice should be null.</value>
     </values>
 </CustomMetadata>

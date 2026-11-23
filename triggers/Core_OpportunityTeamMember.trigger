@@ -22,10 +22,15 @@ trigger Core_OpportunityTeamMember on OpportunityTeamMember (before insert, afte
                 if(Core_OpportunityHandler_2.isNonCloneFunction && mapFunctionalityNameTriggerExecution.containsKey('opportunityTeamMemberQuoteSharing') && 
                    mapFunctionalityNameTriggerExecution.get('opportunityTeamMemberQuoteSharing').Core_Active__c){
                        if(Trigger.isInsert || Trigger.isUpdate){
-                         Core_OpportunityTeamMemberHandler.shareOpptyTeamMembertoQuote(Trigger.new);
+                        // Core_OpportunityTeamMemberHandler.shareOpptyTeamMembertoQuote(Trigger.new);
+                           
+                           /*if (!Core_CRM_Utility.oppLockValidationPerformed && mapFunctionalityNameTriggerExecution.containsKey('DeleteOpportunitySplit') &&
+                                mapFunctionalityNameTriggerExecution.get('DeleteOpportunitySplit').Core_Active__c){
+                                Core_OpportunityTeamMemberHandler.deleteOpportunitySplit(Trigger.new);
+                            } */
 						}
                        if(Trigger.isDelete){
-                         Core_OpportunityTeamMemberHandler.shareOpptyTeamMembertoQuote(Trigger.old);
+                         //Core_OpportunityTeamMemberHandler.shareOpptyTeamMembertoQuote(Trigger.old);
 						}                       
                       }
                 if(mapFunctionalityNameTriggerExecution.containsKey('opportunityTeamMemberHandler') && 
@@ -68,5 +73,21 @@ trigger Core_OpportunityTeamMember on OpportunityTeamMember (before insert, afte
                 Core_OpportunityTeamMemberHandler.checkPCCLock(Trigger.new);
             } 
         }
+//Jahnavi - TWC3123-6233- KTBE: [VBS]: Sync between Opp. Product and SOAR product whenever there is any update/add/deletion on oppty product
+        /* if(Trigger.isBefore && Trigger.isDelete){    
+            //restrict deletion of team member if SOAR process started
+            if(mapFunctionalityNameTriggerExecution.containsKey('DeleteTeamMemberVBS') && 
+               mapFunctionalityNameTriggerExecution.get('DeleteTeamMemberVBS').Core_Active__c){
+                   Core_OpportunityTeamMemberHandler.deleteTeamMemberForVBS(Trigger.old);
+               }
+        }
+        
+        if(Trigger.isBefore && Trigger.isDelete) {
+            
+             if (!Core_CRM_Utility.oppLockValidationPerformed && mapFunctionalityNameTriggerExecution.containsKey('DeleteOpportunitySplit') &&
+                mapFunctionalityNameTriggerExecution.get('DeleteOpportunitySplit').Core_Active__c){
+                Core_OpportunityTeamMemberHandler.deleteOpportunitySplit(Trigger.old);
+            } 
+        }*/
     }
 }

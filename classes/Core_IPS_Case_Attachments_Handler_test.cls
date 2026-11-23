@@ -14,7 +14,6 @@ Modification Log :
 *******************************************************************************************************************/
 
 @istest
-// Added AssertEquals Added By Chiranjeevi - 31-JAN-2024
 public class Core_IPS_Case_Attachments_Handler_test{           
     
     public static testMethod void insertAttachments1() {
@@ -74,12 +73,9 @@ public class Core_IPS_Case_Attachments_Handler_test{
         labels1.value__c='Public to Customers';
         insert labels1;
         
-        // Avoid Hardcoding Id Fix  - Shipra
-        Profile dataMigPrf = [select id, name from Profile where name = 'CCP - Core Access' Limit 1];
         Core_IPS_Labels__c labels2 = new Core_IPS_Labels__c ();
         labels2.name= 'Data Migration Profile Id';
-        labels2.value__c=dataMigPrf.Id;
-        //labels2.value__c='00eo0000000f7Gd';
+        labels2.value__c='00eo0000000f7Gd';
         insert labels2;             
         
         Core_IPS_Labels__c labels3 = new Core_IPS_Labels__c ();
@@ -96,7 +92,7 @@ public class Core_IPS_Case_Attachments_Handler_test{
         labels5.name= 'FAE';
         labels5.value__c='FAE';
         insert labels5;
-        System.AssertEquals(!String.isBlank(labels5.Id), true);
+        
         Core_IPS_Labels__c labels6 = new Core_IPS_Labels__c ();
         labels6.name= 'Agent';
         labels6.value__c='Agent';
@@ -152,7 +148,7 @@ public class Core_IPS_Case_Attachments_Handler_test{
         mapIPS.put(attachments.Core_FileUploadedBy__c,attachments);
         
         delete attachments;
-         System.AssertEquals(attachments != null, true);
+        
     }
     
     
@@ -179,12 +175,10 @@ public class Core_IPS_Case_Attachments_Handler_test{
         labels1.name= 'PUBLIC_TO_CUSTOMERS';
         labels1.value__c='Public to Customers';
         insert labels1;
-         // Avoid Hardcoding Id Fix  - Shipra
-         Profile dataMigPrf = [select id, name from Profile where name = 'CCP - Core Access' Limit 1]; 
+        
         Core_IPS_Labels__c labels2 = new Core_IPS_Labels__c ();
         labels2.name= 'Data Migration Profile Id';
-        labels2.value__c= dataMigPrf.Id;
-        //labels2.value__c='00eo0000000f7Gd';
+        labels2.value__c='00eo0000000f7Gd';
         insert labels2;             
         
         Core_IPS_Labels__c labels3 = new Core_IPS_Labels__c ();
@@ -290,7 +284,7 @@ public class Core_IPS_Case_Attachments_Handler_test{
         commentlist.add(newComment1);                        
         insert newComment1; 
         
-        System.AssertEquals(newComment1 != null, true);
+       
     }   
     
     
@@ -337,12 +331,10 @@ public class Core_IPS_Case_Attachments_Handler_test{
         labels1.name= 'PUBLIC_TO_CUSTOMERS';
         labels1.value__c='Public to Customers';
         insert labels1;
-         // Avoid Hardcoding Id Fix  - Shipra
-         Profile dataMigPrf = [select id, name from Profile where name = 'CCP - Core Access' Limit 1];
+        
         Core_IPS_Labels__c labels2 = new Core_IPS_Labels__c ();
         labels2.name= 'Data Migration Profile Id';
-        labels2.value__c=dataMigPrf.Id;
-      //  labels2.value__c='00eo0000000f7Gd';
+        labels2.value__c='00eo0000000f7Gd';
         insert labels2;             
         
         Core_IPS_Labels__c labels3 = new Core_IPS_Labels__c ();
@@ -404,7 +396,7 @@ public class Core_IPS_Case_Attachments_Handler_test{
         label14.name='Comment Source - Customer';
         label14.value__c='Customer Portal';
         insert label14;
-        System.AssertEquals(label14.Id != null, true);
+        
         Core_IPS_Labels__c label15= new Core_IPS_Labels__c();
         label15.name='N/A';
         label15.value__c='N/A';
@@ -447,7 +439,6 @@ public class Core_IPS_Case_Attachments_Handler_test{
         insert newComment;
         
         att2.Core_File_Description__c='asdasd';
-        //att2.id = att2.id;
         update att2;                   
         
         Core_IPS_Case_Attachments_Handler.deleteAttachmentCaseComment(oldList);
@@ -474,7 +465,7 @@ public class Core_IPS_Case_Attachments_Handler_test{
         //newList.add(att3);
         Core_IPS_Case_Attachments_Handler.updateCase(oldList);
                     //Core_IPS_Case_Attachments_Handler.updateCase(newList);
-       System.AssertEquals(att2 != null, true);
+
         
         test.stoptest();
     }         
@@ -505,12 +496,10 @@ public class Core_IPS_Case_Attachments_Handler_test{
         labels1.name= 'PUBLIC_TO_CUSTOMERS';
         labels1.value__c='Public to Customers';
         insert labels1;
-         // Avoid Hardcoding Id Fix  - Shipra
-         Profile dataMigPrf = [select id, name from Profile where name = 'CCP - Core Access' Limit 1];  
+        
         Core_IPS_Labels__c labels2 = new Core_IPS_Labels__c ();
         labels2.name= 'Data Migration Profile Id';
-        labels2.value__c=dataMigPrf.Id;
-       // labels2.value__c='00eo0000000f7Gd';
+        labels2.value__c='00eo0000000f7Gd';
         insert labels2;             
         
         Core_IPS_Labels__c labels3 = new Core_IPS_Labels__c ();
@@ -602,9 +591,9 @@ public class Core_IPS_Case_Attachments_Handler_test{
         newComment.Core_IPS_Rich_Comment__c = ' New Case Attachment uploaded: ' + '<br/><br/>' +  '<a href='+att1.Core_File_URL__c+' target="Self">Download File</a>' + ' &nbsp; &nbsp; ' +  att1.Core_File_Name__c   +     '   &nbsp  &nbsp      '     +  fileDescriptn         ;               
         commentlist.add(newComment);                        
         insert newComment; 
-        System.AssertEquals(newComment.Id != null, true);
+        
         update commentlist;
-        System.AssertEquals(commentlist.size()>0, true);
+        
     }  
     
     /*******************************************************************************************
@@ -701,7 +690,7 @@ Modification Log :
             attachments.Core_FileSizeInBytes__c='2KB';
             attachments.Core_Upload_Status__c=Core_IPS_Labels__c.getValues('COMPLETE').value__c;
             Insert attachments;
-             System.AssertEquals(attachments != null, true);
+            
             
         }
     }
@@ -798,7 +787,7 @@ Modification Log :
         insert label9;
         
         insert listcstSettings;
-        System.AssertEquals(listcstSettings.size()>0, true);
+        
         user custUser= TestUtilities.getCustomerUser(system.Label.Core_IPS_External_Customer_Profile);
         
         if(custUser != null){
@@ -818,7 +807,7 @@ Modification Log :
                 attachments.Core_FileSizeInBytes__c='2KB';
                 attachments.Core_Upload_Status__c=Core_IPS_Labels__c.getValues('COMPLETE').value__c;
                 Insert attachments;
-                 System.AssertEquals(attachments != null, true);
+                
             }
         }
     }
@@ -901,7 +890,7 @@ Modification Log :
         insert listcstSettings;
         
         user adminUser=TestUtilities.getUser();
-        profile p=[select id,name from profile where name='CCP - Core Access' limit 1];
+        profile p=[select id,name from profile where name='IPS Data Migration' limit 1];
         adminUser.username='adminTest'+Crypto.getRandomLong()+'@intel.com';
         adminUser.profileid =p.id;
         insert adminUser;
@@ -911,7 +900,7 @@ Modification Log :
             Case cs=TestUtilities.getCase();
             if (cs!=null)
             Insert cs;
-            System.AssertEquals(cs.Id != null, true);
+            
             Core_IPS_Case_Attachments__c attachments=new  Core_IPS_Case_Attachments__c();
             attachments.Core_Case__c=cs.id;
             attachments.Core_File_Description__c='Test-Description';
@@ -922,7 +911,7 @@ Modification Log :
             attachments.Core_FileSizeInBytes__c='2KB';
             attachments.Core_Upload_Status__c=Core_IPS_Labels__c.getValues('COMPLETE').value__c;
             Insert attachments;
-             System.AssertEquals(attachments != null, true);
+            
         }
     }
     

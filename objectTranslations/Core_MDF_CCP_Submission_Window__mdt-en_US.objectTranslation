@@ -17,11 +17,7 @@
         <name>Core_MDF_Activity_Auto_Closure_Rule__c</name>
     </fields>
     <fields>
-        <label><!-- Activity Auto-Closure SLA(months) --></label>
-        <name>Core_MDF_Activity_Auto_Closure_SLA_Month__c</name>
-    </fields>
-    <fields>
-        <label><!-- Activity Auto-Closure SLA(days) --></label>
+        <label><!-- Activity Auto-Closure SLA --></label>
         <name>Core_MDF_Activity_Auto_Closure_SLA__c</name>
     </fields>
     <fields>
@@ -39,14 +35,6 @@
     <fields>
         <label><!-- Claim Submission Window(months) --></label>
         <name>Core_MDF_Claim_Submission_Window_mnth__c</name>
-    </fields>
-    <fields>
-        <label><!-- Closure Date Extension --></label>
-        <name>Core_MDF_Closure_Date_Extension__c</name>
-    </fields>
-    <fields>
-        <label><!-- Closure date Extension Rule --></label>
-        <name>Core_MDF_Closure_date_Extension_Rule__c</name>
     </fields>
     <fields>
         <label><!-- Country --></label>
@@ -835,10 +823,6 @@
     <fields>
         <label><!-- Doc Submission Rule --></label>
         <name>Core_MDF_Doc_Submission_Rule__c</name>
-    </fields>
-    <fields>
-        <label><!-- Doc Submission Window(Claim) --></label>
-        <name>Core_MDF_Doc_Submission_Window_Claim_Nbr__c</name>
     </fields>
     <fields>
         <label><!-- Doc Submission Window(days) --></label>

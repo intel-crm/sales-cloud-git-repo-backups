@@ -61,15 +61,15 @@ public class ACM_AI_PublishAccount_Test {
     @isTest
     private static void checkForRecordType(){
         UCD_ACM_UnitOfWork unitOfwork = new UCD_ACM_UnitOfWork();
-        List<Account> rejectedAccount = [Select Id,Core_Business_Party_Id__c,RecordTypeId,Core_Account_Reference_Source_Name__c,ParentId,Core_Customer_Aggregation_Type__c,Core_Data_Simplified_Account_Nm__c,Core_Survivor_Account_Id__c,BillingCountry,ShippingCountry,Core_Data_Country_Nm__c,Core_Account_Request_Rejection_Reason__c,Core_Account_Request_Rejection_Notes__c,Name from account where (Name = 'Account4' )];
+        List<Account> rejectedAccount = [Select Id,Core_Business_Party_Id__c,RecordTypeId,Core_Account_Reference_Source_Name__c,ParentId,Core_Customer_Aggregation_Type__c,Core_Data_Simplified_Account_Nm__c,Core_Survivor_Account_Id__c,BillingCountry,ShippingCountry,Core_Data_Country_Cd__c,Core_Data_Country_Nm__c,Core_Account_Request_Rejection_Reason__c,Core_Account_Request_Rejection_Notes__c,Name from account where (Name = 'Account4' )];
         
-        List<Account> endCustomerRecordType = [Select Id,Core_Business_Party_Id__c,RecordTypeId,Core_Account_Reference_Source_Name__c,ParentId,Core_Customer_Aggregation_Type__c,Core_Data_Simplified_Account_Nm__c,Core_Survivor_Account_Id__c,BillingCountry,ShippingCountry,Core_Data_Country_Nm__c,Core_Account_Request_Rejection_Reason__c,Core_Account_Request_Rejection_Notes__c,Name from account where (Name = 'Account5' )];
+        List<Account> endCustomerRecordType = [Select Id,Core_Business_Party_Id__c,RecordTypeId,Core_Account_Reference_Source_Name__c,ParentId,Core_Customer_Aggregation_Type__c,Core_Data_Simplified_Account_Nm__c,Core_Survivor_Account_Id__c,BillingCountry,ShippingCountry,Core_Data_Country_Cd__c,Core_Data_Country_Nm__c,Core_Account_Request_Rejection_Reason__c,Core_Account_Request_Rejection_Notes__c,Name from account where (Name = 'Account5' )];
         
-        List<Account> intelAccountRecordType = [Select Id,Core_Business_Party_Id__c,RecordTypeId,Core_Account_Reference_Source_Name__c,ParentId,Core_Customer_Aggregation_Type__c,Core_Data_Simplified_Account_Nm__c,Core_Survivor_Account_Id__c,BillingCountry,ShippingCountry,Core_Data_Country_Nm__c,Core_Account_Request_Rejection_Reason__c,Core_Account_Request_Rejection_Notes__c,Name from account where (Name = 'Account6' )];
+        List<Account> intelAccountRecordType = [Select Id,Core_Business_Party_Id__c,RecordTypeId,Core_Account_Reference_Source_Name__c,ParentId,Core_Customer_Aggregation_Type__c,Core_Data_Simplified_Account_Nm__c,Core_Survivor_Account_Id__c,BillingCountry,ShippingCountry,Core_Data_Country_Cd__c,Core_Data_Country_Nm__c,Core_Account_Request_Rejection_Reason__c,Core_Account_Request_Rejection_Notes__c,Name from account where (Name = 'Account6' )];
     	
-        List<Account> accountsBeforeUpdate = [Select Id,Core_Business_Party_Id__c,RecordTypeId,Core_Account_Reference_Source_Name__c,ParentId,Core_Customer_Aggregation_Type__c,Core_Data_Simplified_Account_Nm__c,Core_Survivor_Account_Id__c,BillingCountry,ShippingCountry,Core_Data_Country_Nm__c,Core_Account_Request_Rejection_Reason__c,Core_Account_Request_Rejection_Notes__c,Name from account where (Name =  'Account1' or Name = 'Account2' or Name = 'Account3')];
+        List<Account> accountsBeforeUpdate = [Select Id,Core_Business_Party_Id__c,RecordTypeId,Core_Account_Reference_Source_Name__c,ParentId,Core_Customer_Aggregation_Type__c,Core_Data_Simplified_Account_Nm__c,Core_Survivor_Account_Id__c,BillingCountry,ShippingCountry,Core_Data_Country_Cd__c,Core_Data_Country_Nm__c,Core_Account_Request_Rejection_Reason__c,Core_Account_Request_Rejection_Notes__c,Name from account where (Name =  'Account1' or Name = 'Account2' or Name = 'Account3')];
         
-        List<Account> newAccounts = [Select Id,Core_Business_Party_Id__c,RecordTypeId,Core_Account_Reference_Source_Name__c,ParentId,Core_Customer_Aggregation_Type__c,Core_Data_Simplified_Account_Nm__c,Core_Survivor_Account_Id__c,BillingCountry,ShippingCountry,Core_Data_Country_Nm__c,Core_Account_Request_Rejection_Reason__c,Core_Account_Request_Rejection_Notes__c,Name from account where (Name =  'Account1' or Name =  'Account2' or Name = 'Account3')];
+        List<Account> newAccounts = [Select Id,Core_Business_Party_Id__c,RecordTypeId,Core_Account_Reference_Source_Name__c,ParentId,Core_Customer_Aggregation_Type__c,Core_Data_Simplified_Account_Nm__c,Core_Survivor_Account_Id__c,BillingCountry,ShippingCountry,Core_Data_Country_Cd__c,Core_Data_Country_Nm__c,Core_Account_Request_Rejection_Reason__c,Core_Account_Request_Rejection_Notes__c,Name from account where (Name =  'Account1' or Name =  'Account2' or Name = 'Account3')];
     	newAccounts[0].RecordTypeId = rejectedAccount[0].RecordTypeId;
         newAccounts[1].RecordTypeId = endCustomerRecordType[0].RecordTypeId;
         newAccounts[2].RecordTypeId = intelAccountRecordType[0].RecordTypeId;
@@ -123,7 +123,7 @@ public class ACM_AI_PublishAccount_Test {
         System.assertEquals(recordType[0].RecordTypeId, accountsAfterUpdate[0].RecordTypeId, 'Record Type Assignment is not correct.');	        
     }
     
-    /* @isTest
+     @isTest
     private static void whenSetIntegrationMessage(){
         UCD_ACM_UnitOfWork unitOfwork = new UCD_ACM_UnitOfWork();
         List<Account> accountsBeforeUpdate = [Select Id,Core_Business_Party_Id__c,RecordTypeId,Core_Account_Reference_Source_Name__c,ParentId,Core_Customer_Aggregation_Type__c from account where (Name = 'Account5' )];       
@@ -137,7 +137,7 @@ public class ACM_AI_PublishAccount_Test {
         test.startTest();
         accountServiceInstance.execute(unitOfwork, new Map<Id,Account>(accountsBeforeUpdate), new Map<Id,Account>(accountsAfterUpdate));
         test.stopTest();
-    }*/
+    }
     
     @isTest
     private static void checkIntegrationMessageUpdate(){

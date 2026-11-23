@@ -16,7 +16,7 @@
         </assignmentItems>
     </assignments>
     <description>Migrated from the: Core_Feature_Duplicate_Check workflow rule
-Workflow rule description: Workflow rule to avoid duplication of combination of Type and Value for Feature records..</description>
+Workflow rule description: Workflow rule to avoid duplication of combination of Type and Value for Feature records</description>
     <environments>Default</environments>
     <formulas>
         <name>Core_Feature_Unique_Field_UpdateFormula</name>

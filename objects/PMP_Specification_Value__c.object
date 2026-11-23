@@ -187,65 +187,12 @@
         <type>Url</type>
     </fields>
     <fields>
-        <fullName>PMP_Name_Chinese__c</fullName>
-        <description>This field appends the Pre-Release tag to the specification value if it is a pre-release. if not it just takes the name.</description>
-        <externalId>false</externalId>
-        <formula>IF( PMP_Spec_Pre_Release_Ind__c = true &amp;&amp; NOT(ISBLANK(  PMP_Specification_Value_Chinese_Cd__c )), PMP_Specification_Value_Chinese_Cd__c &amp;&quot; &quot;&amp;&apos;(Pre-Release)&apos;,PMP_Specification_Value_Chinese_Cd__c )</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Name Chinese</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>PMP_Name_Japanese__c</fullName>
-        <description>This field appends the Pre-release tag at the end to the Japanese name value, if it is a pre-release spec value, if not it just takes the name.</description>
-        <externalId>false</externalId>
-        <formula>IF( PMP_Spec_Pre_Release_Ind__c = true &amp;&amp; NOT(ISBLANK( PMP_Specification_Value_Japanese_Cd__c )), PMP_Specification_Value_Japanese_Cd__c&amp;&quot; &quot;&amp;&apos;(Pre-Release)&apos;,PMP_Specification_Value_Japanese_Cd__c )</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Name Japanese</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>PMP_Partner_Off_Roadmap_Ind__c</fullName>
         <defaultValue>false</defaultValue>
         <label>Partner Off-Roadmap Indicator</label>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>PMP_Product_Restriction_Lvl__c</fullName>
-        <description>This determines whether a product is public or not
-0 - Public/Launched
-1 - Pre-Release</description>
-        <label>Restriction Level</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Picklist</type>
-        <valueSet>
-            <restricted>true</restricted>
-            <valueSetDefinition>
-                <sorted>false</sorted>
-                <value>
-                    <fullName>0</fullName>
-                    <default>true</default>
-                    <label>0</label>
-                </value>
-                <value>
-                    <fullName>1</fullName>
-                    <default>false</default>
-                    <label>1</label>
-                </value>
-            </valueSetDefinition>
-        </valueSet>
     </fields>
     <fields>
         <fullName>PMP_Product_Specification_Value_Cd__c</fullName>
@@ -318,7 +265,7 @@
     </fields>
     <fields>
         <fullName>PMP_Spec_Pre_Release_Ind__c</fullName>
-        <formula>ISPICKVAL(PMP_Product_Restriction_Lvl__c, &quot;1&quot;)</formula>
+        <formula>ISPICKVAL(PMP_Product_Status__c, &quot;Roadmap&quot;)</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Specification Pre Release Indicator</label>
         <trackHistory>false</trackHistory>
@@ -332,17 +279,6 @@
         <inlineHelpText>To know if Spec Value is related to Processor or Chipset or Others</inlineHelpText>
         <label>Spec Value Type</label>
         <length>20</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>PMP_Specification_Product_Cd__c</fullName>
-        <externalId>false</externalId>
-        <label>PIM Specification Id</label>
-        <length>100</length>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -413,17 +349,6 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>PMP_Specification_id__c</fullName>
-        <externalId>false</externalId>
-        <label>PMP Specification id</label>
-        <length>50</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
         <unique>false</unique>
     </fields>
     <label>Specification Value</label>

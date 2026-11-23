@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Queue xmlns="http://soap.sforce.com/2006/04/metadata">
     <doesIncludeBosses>true</doesIncludeBosses>
-    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <doesSendEmailToMembers>true</doesSendEmailToMembers>
     <name>PSG-MICROSOFT</name>
     <queueMembers>
         <publicGroups>
             <publicGroup>ags_microsoft</publicGroup>
         </publicGroups>
+        <users>
+            <user>11996466@intel.com.crm</user>
+        </users>
     </queueMembers>
     <queueSobject>
         <sobjectType>SBQQ__Quote__c</sobjectType>

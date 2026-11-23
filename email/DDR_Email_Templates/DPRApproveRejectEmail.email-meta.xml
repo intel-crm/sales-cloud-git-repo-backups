@@ -13,12 +13,14 @@ Please note the status for the following products on your Design Registration
 
 Registration Number: (Core_Design_Registration__c.Name)
 Design Registration Name: (Core_Design_Registration__c.Core_Design_Registration_Nm__c)
+Product Name: (Core_Design_Registration_Product__c.Name)
+Product Status: (Core_Design_Registration_Product__c.Core_Design_Product_Status_Nm__c)
 
 Temp table
 
 It is the Intel Partner&apos;s responsibility to understand the export, customs, and sanction controls applicable to Intel Partner&apos;s company, project, and product and take all actions necessary to ensure compliance.
 
-For more details, you can access it by logging into Portal.
+For more details, you can access it by logging into Salesforce &lt;(Core_Design_Registration_Product__c.Link)&gt;.
 
 Thank you.
 

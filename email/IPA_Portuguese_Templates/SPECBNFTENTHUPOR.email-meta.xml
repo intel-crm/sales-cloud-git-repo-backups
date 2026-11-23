@@ -1,57 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
-    <available>false</available>
+    <available>true</available>
     <encodingKey>UTF-8</encodingKey>
     <name>SPECBNFTENTHUPOR</name>
     <style>none</style>
-    <subject>Especialização da Intel® Partner Alliance em Entusiastas de PC</subject>
-    <textOnly>Parabéns por sua qualificação!
+    <subject>Parabéns por se tornar um especialista em PC entusiasta da Intel</subject>
+    <textOnly>Parabéns por se tornar um especialista em PC entusiasta da Intel
 
+Bem-vindo às novas oportunidades de expandir seus negócios como um especialista em PC entusiasta. Estamos ansiosos para aprofundar nosso relacionamento profissional.
+Clique aqui para exibir este e-mail como uma página web.
 
-{!Contact.FirstName},
+Você se qualificou!Acesse os benefícios &gt;
+
+FirstName,
 
 Parabéns por se tornar um especialista em PC entusiasta do programa Intel® Technology Provider!
 
-Com mais de um bilhão de gamers de PC no mundo e um mercado que cresce rapidamente, você estará bem posicionado para expandir sua base de clientes e aumentar a receita com a Intel.
+
+Com mais de um bilhão de gamers de PC no mundo1 e um mercado que cresce rapidamente, você estará bem posicionado para expandir sua base de clientes e aumentar a receita com a Intel.
 
 Aproveite todos os benefícios agora disponíveis para você, incluindo:
 
-
 Promoções de pontos adicionais para produtos com os processadores Intel® Core™ série X, K e H
-Designação de Especialista em entusiasta de PC e visibilidade na página da web do programa Intel® Technology Provider
+Designação de Especialista em PC entusiasta e visibilidade na página da Web do programa Intel Technology Provider
 Webinars técnicos realizados por especialistas da Intel
-Pacotes de jogos e softwares de nível internacional
+Pacotes de jogos e software de nível mundial
 Credenciais para eventos locais de e-sports
 
-Para dar início ao processo, envie um e-mail de resposta para enthusiast-pc@intel.com , com as seguintes informações:
-
-
-Contato primário para comunicações de especialistas em entusiastas de PC
-Nome:
-E-mail:
-
-
-Para materiais adicionais de vendas e promoção
-Endereço de correspondência físico:
-Telefone:
+Agradecemos sua parceria com a Intel.
 
 Acesse as vantagens
 
+1Os resultados do parâmetro de comparação foram obtidos antes da implementação de patches de software e atualizações de firmware recentes, destinados a lidar com as vulnerabilidades conhecidas como &quot;Spectre&quot; e &quot;Meltdown&quot;. A implementação dessas atualizações pode tornar estes resultados inaplicáveis para seu dispositivo ou sistema.
 
-*As vantagens podem variar de acordo com a região.
+O software e as cargas de trabalho usadas nos testes de desempenho podem ter sido otimizados para desempenho apenas em microprocessadores Intel®. Testes de desempenho, como SYSmark* e MobileMark*, são medidos usando sistemas de computador, componentes, software, operações e funções específicos. Qualquer modificação em qualquer um desses fatores pode provocar variação nos resultados. Consulte outras informações e outros testes de desempenho para ajudá-lo a avaliar melhor suas compras, incluindo o desempenho desse produto quando combinado com outros produtos. Para obter informações mais completas, visite http://www.intel.com/benchmarks.
 
-Os parceiros da Intel têm um longo histórico de inovação e, com a Intel® Partner Alliance, nós ajudaremos você a acelerar a criação de soluções para a economia centrada em dados. Juntos, podemos nos conectar, inovar e crescer, possibilitando oportunidades extraordinárias.
-
-Acesse https://www.intel.com/content/www/br/pt/partner-alliance/help/overview.html para ajuda e orientações sobre como otimizar sua parceria.
-
-
-Obrigado,
-Sua equipe Intel® Partner Alliance
-
-Esta mensagem foi enviada a você como uma importante comunicação comercial relacionada ao seu relacionamento atual com a Intel® Partner Alliance.
-© {!$Label.PRM_CurrentYear} Intel Corporation
-Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
-Privacidade | Cookies</textOnly>
+&apos;);}} div.OutlookMessageHeader {background-image:url(&apos;https://8qr1qit0.emltrk.com/8qr1qit0?f&amp;d=EmailAddress&apos;)} table.moz-email-headers-table {background-image:url(&apos;https://8qr1qit0.emltrk.com/8qr1qit0?f&amp;d=EmailAddress&apos;)} blockquote νm;_t {background-image:url(&apos;https://8qr1qit0.emltrk.com/8qr1qit0?f&amp;d=EmailAddress&apos;)} νm;MailContainerBody νm;_t {background-image:url(&apos;https://8qr1qit0.emltrk.com/8qr1qit0?f&amp;d=EmailAddress&apos;)}</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

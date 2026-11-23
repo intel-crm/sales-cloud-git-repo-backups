@@ -27,7 +27,6 @@ Public class Core_RestAPI_ProjectCaseV1_Handler_Test{
             Case caseObj=Core_RestAPI_TestUtilities.getCase();
             caseObj.ownerId=adminuser.id;
             caseObj.Core_IPS_Project_Case__c=objproject.Id;
-            caseObj.Core_IPS_Customer_Visible__c = true;
             insert caseObj;//inserting Case record for admin user
         }
         

@@ -4,19 +4,37 @@
         <field>ACCOUNT_NAME</field>
     </columns>
     <columns>
-        <field>OPPORTUNITY_NAME</field>
+        <field>Opportunity.Core_Opportunity_Owner_Geo__c</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Technical_Owner__c</field>
+        <field>Opportunity.Core_Distributor__c</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Commissionable__c</field>
+        <field>Account.Core_Sales_Segment__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Architecture_Conversion__c</field>
+    </columns>
+    <columns>
+        <field>OpportunityLineItem.Core_KPI_Product_Group__c</field>
     </columns>
     <columns>
         <field>OWNER_MANAGER</field>
     </columns>
     <columns>
+        <field>OPPORTUNITY_NAME</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Commissionable__c</field>
+    </columns>
+    <columns>
         <field>Opportunity.Core_Opportunity_Type__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Technical_Owner__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Intel_Platform__c</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Sales_Segments__c</field>
@@ -103,18 +121,18 @@
             <value>Design</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Opportunity.Core_Product_Segment__c</column>
+            <column>Opportunity.Core_Sales_Groups__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Embedded / IOT</value>
+            <value>PRC Sales Group</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OWNER_MANAGER</column>
+            <column>Opportunity.Core_Opportunity_Owner_Geo__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Yue Li,John Li,Yixin Fu,Jimmy Wang</value>
+            <operator>equals</operator>
+            <value>PRC</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -143,6 +161,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <interval>INTERVAL_PREVFY</interval>
+        <endDate>2018-12-31</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2018-01-01</startDate>
     </timeFrameFilter>
 </Report>

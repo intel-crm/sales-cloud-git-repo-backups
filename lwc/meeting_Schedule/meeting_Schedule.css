@@ -1,0 +1,5 @@
+/* Custom styles for the meeting schedule table */
+.slds-table th, .slds-table td {
+    text-align: left;
+    vertical-align: middle;
+}

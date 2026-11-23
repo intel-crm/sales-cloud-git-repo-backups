@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Pricing_Report_Export_Column</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Pricing_Report_Export_Columns</value>
+    </caseValues>
+    <fields>
+        <label><!-- Column Header --></label>
+        <name>Pricing_Column_Header__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field API Name --></label>
+        <name>Pricing_Field_API_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- isExternal --></label>
+        <name>Pricing_isExternal__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

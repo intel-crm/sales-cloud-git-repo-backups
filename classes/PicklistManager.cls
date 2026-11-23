@@ -30,27 +30,36 @@ public without sharing class PicklistManager {
     //Call method to Add new PL value or change label of existing PL value from UI and Backfill from other environments
     @AuraEnabled(cacheable=true)
     public static Map<boolean,string> createOrUpdatePLV(PicklistWrapperClass pwcParams, boolean backfill){
+        system.debug('INSIDE APEX createOrUpdatePLV'+pwcParams+' BACKFILL BOOLEAN'+backfill);
         Map<boolean,string> result = new Map<boolean,string>();
         PicklistManagerMetadataService.CustomField plValues = new PicklistManagerMetadataService.CustomField();
+        system.debug('INSIDE APEX createOrUpdatePLV CUSTOMFIELD'+plValues);
+        system.debug('INSIDE APEX PWCPARAMS OBJNAME'+pwcParams.objectName);
+        system.debug('INSIDE APEX PWCPARAMS FIELDNAME'+pwcParams.fieldName);
+        system.debug('INSIDE APEX PWCPARAMS FIELDAPINAME'+pwcParams.fieldAPIName);
+         system.debug('INSIDE APEX PWCPARAMS PICKLISTVALUES'+pwcParams.picklistValues);
         try{
             //Backfill code WIP
-            backfill = false;
+            //backfill = false;
             if(pwcParams.objectName !='' && pwcParams.fieldName !='' && 
                pwcParams.fieldAPIName != '' && pwcParams.picklistValues.size() > 0){
                    plValues = upsertPLV(pwcParams);
+                   system.debug('INSIDE APEX CREATEORUPDATE PICKLISTVALUES'+plValues);
                    if(backfill){
-                       /* Backfill code WIP
-PicklistManagerBackFillBatch queJob = new PicklistManagerBackFillBatch(plValues,'PL');
-ID jobID = System.enqueueJob(queJob); 
-if(jobID!=null) {
-result.put(true, 'Job scheduled successfully: '+ jobID);
-} else {
-result.put(false, 'There has been an error');
-}*/
+                       //Backfill code WIP
+                       	system.debug('INSIDE BACKFILL TRUE');
+                        PicklistManagerBackFillBatch queJob = new PicklistManagerBackFillBatch(plValues);
+                        ID jobID = System.enqueueJob(queJob); 
+                        if(jobID!=null) {
+                        result.put(true, 'Job scheduled successfully: '+ jobID);
+                        } else {
+                        result.put(false, 'There has been an error IN BACKFILL BATCH');
+                        }
                    }
                    else {
                        PicklistManagerMetadataService.MetadataPort service = createService();
                        List<PicklistManagerMetadataService.SaveResult> saveResults = service.updateMetadata(new PicklistManagerMetadataService.CustomField[] { plValues });
+                       system.debug('APEX METADATA RESULT IS:'+saveResults);
                        if(saveResults[0].success) { result.put(true,'Sucess!'); } 
                        else { result.put(false,saveResults[0].errors[0].message); }   
                    }
@@ -62,8 +71,10 @@ result.put(false, 'There has been an error');
     
     //Method to create new Picklist value template for insert/update 
     public static PicklistManagerMetadataService.CustomField upsertPLV(PicklistWrapperClass pwcParams){
+      	system.debug('Inside upsertPLV method');
         List<PickListWrapper> newPicklistValues = new List<PickListWrapper>();
         PicklistManagerMetadataService.CustomField customField = new PicklistManagerMetadataService.CustomField();
+        system.debug('Inside upsertPLV customField'+customField);
         
         try{
             //system.debug('pwcParams: '+pwcParams);
@@ -80,10 +91,10 @@ result.put(false, 'There has been an error');
             // Define the Value Set and Value Set Definitions
             PicklistManagerMetadataService.ValueSet vs = new PicklistManagerMetadataService.ValueSet();
             PicklistManagerMetadataService.ValueSetValuesDefinition vd = new PicklistManagerMetadataService.ValueSetValuesDefinition();
-            
+            system.debug('UPSERT PLV VALUE DEFINITION: '+ vd);
             //Create new picklist values in the field
             List<PicklistManagerMetadataService.CustomValue> customValues = new List<PicklistManagerMetadataService.CustomValue>();
-            
+            system.debug('UPSERT PLV VALUE CUSTOMVALUES: '+ customValues);
             for(PickListWrapper pck:newPicklistValues){
                 PicklistManagerMetadataService.CustomValue cv = new PicklistManagerMetadataService.CustomValue();
                 cv.label = pck.label;
@@ -100,10 +111,13 @@ result.put(false, 'There has been an error');
             
             customField.valueSet  = vs;
             
-            //system.debug('customField: '+ customField.valueSet); 
+            system.debug('UPSERT PLV customField: '+ customField.valueSet); 
         }
         
-        catch(exception ex){PMP_Utility.logError(ex, 'PicklistManager.upsertPLV');}   
+        catch(exception ex){
+            system.debug('UPSERT PLC CATCH'+ex.getMessage());
+            PMP_Utility.logError(ex, 'PicklistManager.upsertPLV');
+                                     }   
         return customField;
     }
     
@@ -224,7 +238,7 @@ result.put(false, 'There has been an error');
             wrapperList.add(wrapper);
         }
         
-        //System.debug('wrapperList'+wrapperList);
+        System.debug('wrapperList'+wrapperList);
         return wrapperList;
     }
     @AuraEnabled(cacheable=true)//fetching the Core_MDF record types based on object

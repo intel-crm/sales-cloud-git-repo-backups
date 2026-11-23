@@ -3,12 +3,12 @@
     <apiVersion>56.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <assignments>
-        <name>Assign_BR_All_Default_Value</name>
-        <label>Assign BR All Default Value</label>
-        <locationX>138</locationX>
+        <name>Assign_BR_DCG_Default_Value</name>
+        <label>Assign BR DCG Default Value</label>
+        <locationX>270</locationX>
         <locationY>971</locationY>
         <assignmentItems>
-            <assignToReference>$Record.CPT_BR_All_Assigned__c</assignToReference>
+            <assignToReference>$Record.CPT_BR_DCAI_Assigned__c</assignToReference>
             <operator>Assign</operator>
             <value>
                 <elementReference>Loop_Over_Quota_Setup_Plan_Defaults.CPT_Default_Value__c</elementReference>
@@ -21,7 +21,7 @@
     <assignments>
         <name>Assign_CR_OEM_Default_Value</name>
         <label>Assign CR OEM Default Value</label>
-        <locationX>578</locationX>
+        <locationX>710</locationX>
         <locationY>971</locationY>
         <assignmentItems>
             <assignToReference>$Record.CPT_CR_OEM_Assigned__c</assignToReference>
@@ -37,7 +37,7 @@
     <assignments>
         <name>Assign_CR_Retail_Default_Value</name>
         <label>Assign CR Retail Default Value</label>
-        <locationX>842</locationX>
+        <locationX>974</locationX>
         <locationY>971</locationY>
         <assignmentItems>
             <assignToReference>$Record.CPT_CR_Retail_Assigned__c</assignToReference>
@@ -51,33 +51,121 @@
         </connector>
     </assignments>
     <assignments>
-        <name>Assign_STG_Default_Value_and_Plan_Value</name>
-        <label>Assign STG Default Value and Plan Value</label>
-        <locationX>1282</locationX>
+        <name>Assign_Wins_Deal_field</name>
+        <label>Assign Wins Deal field</label>
+        <locationX>1678</locationX>
         <locationY>971</locationY>
         <assignmentItems>
-            <assignToReference>$Record.CPT_Sales_Team_Goal_Assigned__c</assignToReference>
+            <assignToReference>$Record.CPT_Wins_Deal_Assigned__c</assignToReference>
             <operator>Assign</operator>
             <value>
                 <elementReference>Loop_Over_Quota_Setup_Plan_Defaults.CPT_Default_Value__c</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>$Record.CPT_Sales_Team_Goal__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <stringValue>GOVERNMENT STG</stringValue>
             </value>
         </assignmentItems>
         <connector>
             <targetReference>Loop_Over_Quota_Setup_Plan_Defaults</targetReference>
         </connector>
     </assignments>
+    <assignments>
+        <name>Assign_Wins_Design_Field</name>
+        <label>Assign Wins Design Field</label>
+        <locationX>1414</locationX>
+        <locationY>971</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.CPT_Wins_Design_Assigned__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Loop_Over_Quota_Setup_Plan_Defaults.CPT_Default_Value__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_Over_Quota_Setup_Plan_Defaults</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Initialize_CR_Assigned_Values</name>
+        <label>Initialize CR Assigned Values</label>
+        <locationX>50</locationX>
+        <locationY>1739</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.CPT_CR_OEM_Assigned__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Initial_CR_OEM_Percentage</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.CPT_CR_Partner_Assigned__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>0%</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.CPT_CR_Retail_Assigned__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>0%</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Quota_Setup_Fields_with_Default_Value</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Set_Fixed_BR_Allocation</name>
+        <label>Set Fixed BR Allocation</label>
+        <locationX>50</locationX>
+        <locationY>1439</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.CPT_BR_CCG_Assigned__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>0%</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.CPT_BR_DCAI_Assigned__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Fixed_BR_DCG_Percentage</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Uses_Territory_CR_Allocation</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Set_Plan_Value_and_Owner</name>
+        <label>Set Plan Value and Owner</label>
+        <locationX>182</locationX>
+        <locationY>431</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.CPT_Plan__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.CPT_Employee__r.CPT_Sales_Compensation_Plan__r.CPT_Plan_Number__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.OwnerId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.CPT_Employee__r.CPT_Manager__r.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Get_Quota_Setup_Plan_Defaults</targetReference>
+        </connector>
+    </assignments>
     <decisions>
         <name>Check_Quota_Setup_Field_Name</name>
         <label>Check Quota Setup Field Name</label>
-        <locationX>996</locationX>
+        <locationX>1260</locationX>
         <locationY>755</locationY>
+        <defaultConnector>
+            <targetReference>Loop_Over_Quota_Setup_Plan_Defaults</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Billings_Revenue</name>
@@ -90,12 +178,12 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Is_BR_All_Field</targetReference>
+                <targetReference>Is_BR_DCG_Field</targetReference>
             </connector>
             <label>Billings Revenue</label>
         </rules>
         <rules>
-            <name>Consumer_Revenue</name>
+            <name>Consumption_Revenue</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
                 <leftValueReference>Loop_Over_Quota_Setup_Plan_Defaults.CPT_Sales_KPI_Type__c</leftValueReference>
@@ -104,65 +192,43 @@
                     <stringValue>CR</stringValue>
                 </rightValue>
             </conditions>
+            <conditions>
+                <leftValueReference>CR_Uses_Territory_Allocation</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
             <connector>
                 <targetReference>Is_CR_Fields</targetReference>
             </connector>
-            <label>Consumer Revenue</label>
+            <label>Consumption Revenue</label>
         </rules>
         <rules>
-            <name>Sales_Team_Goal</name>
+            <name>Wins</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
                 <leftValueReference>Loop_Over_Quota_Setup_Plan_Defaults.CPT_Sales_KPI_Type__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>STG</stringValue>
+                    <stringValue>DW</stringValue>
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Check_STG_Field_Default_Plan</targetReference>
+                <targetReference>Is_Wins_field</targetReference>
             </connector>
-            <label>Sales Team Goal</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <name>Check_STG_Field_Default_Plan</name>
-        <label>Check STG Field &amp; Default Plan ?</label>
-        <locationX>1414</locationX>
-        <locationY>863</locationY>
-        <defaultConnector>
-            <targetReference>Loop_Over_Quota_Setup_Plan_Defaults</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>Is_STG_Field_Default_Plan_Value</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>Loop_Over_Quota_Setup_Plan_Defaults.CPT_QuotaSetup_Field_Name__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>CPT_Sales_Team_Goal_Assigned__c</stringValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>Loop_Over_Quota_Setup_Plan_Defaults.Label</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>403</stringValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Assign_STG_Default_Value_and_Plan_Value</targetReference>
-            </connector>
-            <label>Is STG Field &amp; Default Plan Value ?</label>
+            <label>Wins</label>
         </rules>
     </decisions>
     <decisions>
         <description>...###</description>
         <name>CPT_Check_if_Employee_Record_has_Plan</name>
         <label>Check if Employee Record has Plan</label>
-        <locationX>182</locationX>
+        <locationX>336</locationX>
         <locationY>323</locationY>
+        <defaultConnector>
+            <targetReference>END_ELEMENT_5</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>CPT_Employee_has_the_Plan</name>
@@ -175,40 +241,86 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>CPT_Populate_Plan_Value</targetReference>
+                <targetReference>Set_Plan_Value_and_Owner</targetReference>
             </connector>
             <label>Employee has the Plan</label>
         </rules>
     </decisions>
     <decisions>
-        <name>Is_BR_All_Field</name>
-        <label>Is BR All Field?</label>
-        <locationX>270</locationX>
+        <name>Fixed_BR_Plan</name>
+        <label>Fixed BR Plan?</label>
+        <locationX>182</locationX>
+        <locationY>1331</locationY>
+        <defaultConnector>
+            <targetReference>Uses_Territory_CR_Allocation</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Fixed_BR_Allocation</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.CPT_Plan__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>250</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.CPT_Plan__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>330</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.CPT_Plan__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>630</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.CPT_Plan__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>650</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_Fixed_BR_Allocation</targetReference>
+            </connector>
+            <label>Fixed BR Allocation</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Is_BR_DCG_Field</name>
+        <label>Is BR DCG Field?</label>
+        <locationX>402</locationX>
         <locationY>863</locationY>
         <defaultConnector>
             <targetReference>Loop_Over_Quota_Setup_Plan_Defaults</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
-            <name>Check_if_it_is_BR_All_Field</name>
+            <name>Check_if_it_is_BR_DCG_Field</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
                 <leftValueReference>Loop_Over_Quota_Setup_Plan_Defaults.CPT_QuotaSetup_Field_Name__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>CPT_BR_All_Assigned__c</stringValue>
+                    <stringValue>CPT_BR_DCAI_Assigned__c</stringValue>
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Assign_BR_All_Default_Value</targetReference>
+                <targetReference>Assign_BR_DCG_Default_Value</targetReference>
             </connector>
-            <label>Check if it is BR All Field?</label>
+            <label>Check if it is BR DCG  Field?</label>
         </rules>
     </decisions>
     <decisions>
         <name>Is_CR_Fields</name>
         <label>Is CR Fields?</label>
-        <locationX>842</locationX>
+        <locationX>974</locationX>
         <locationY>863</locationY>
         <defaultConnector>
             <targetReference>Loop_Over_Quota_Setup_Plan_Defaults</targetReference>
@@ -245,14 +357,132 @@
             <label>Is CR - Retail Field ?</label>
         </rules>
     </decisions>
-    <description>[24/Nov/25] [08:00 PM] Flow to populate the plan on the quota setup record whenever the new record is created + Default Value + Test Case</description>
+    <decisions>
+        <name>Is_Wins_field</name>
+        <label>Is Wins field</label>
+        <locationX>1678</locationX>
+        <locationY>863</locationY>
+        <defaultConnector>
+            <targetReference>Loop_Over_Quota_Setup_Plan_Defaults</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Is_Wins_Design_Field</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Loop_Over_Quota_Setup_Plan_Defaults.CPT_QuotaSetup_Field_Name__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>CPT_Wins_Design_Assigned__c</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Wins_Design_Field</targetReference>
+            </connector>
+            <label>Is Wins Design Field</label>
+        </rules>
+        <rules>
+            <name>Is_Wins_Deal_Field</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Loop_Over_Quota_Setup_Plan_Defaults.CPT_QuotaSetup_Field_Name__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>CPT_Wins_Deal_Assigned__c</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Wins_Deal_field</targetReference>
+            </connector>
+            <label>Is Wins Deal Field</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Uses_Territory_CR_Allocation</name>
+        <label>Uses Territory CR Allocation?</label>
+        <locationX>182</locationX>
+        <locationY>1631</locationY>
+        <defaultConnector>
+            <targetReference>Update_Quota_Setup_Fields_with_Default_Value</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Territory_Allocation</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>CR_Uses_Territory_Allocation</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Initialize_CR_Assigned_Values</targetReference>
+            </connector>
+            <label>Territory Allocation</label>
+        </rules>
+    </decisions>
+    <description>[Vats 10/nov/2026] Flow to populate the plan on the quota setup record whenever the new record is created + Default Value</description>
+    <ends>
+        <name>END_ELEMENT_5</name>
+        <locationX>490</locationX>
+        <locationY>431</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_6</name>
+        <locationX>182</locationX>
+        <locationY>2039</locationY>
+    </ends>
     <environments>Default</environments>
+    <formulas>
+        <name>CR_Uses_Territory_Allocation</name>
+        <dataType>Boolean</dataType>
+        <expression>CASE(
+    TEXT({!$Record.CPT_Plan__c}),
+    &quot;120&quot;, 1,
+    &quot;122&quot;, 1,
+    &quot;240&quot;, 1,
+    &quot;250&quot;, 1,
+    &quot;330&quot;, 1,
+    &quot;331&quot;, 1,
+    &quot;620&quot;, 1,
+    &quot;630&quot;, 1,
+    &quot;631&quot;, 1,
+    &quot;640&quot;, 1,
+    &quot;650&quot;, 1,
+    0
+) = 1</expression>
+    </formulas>
+    <formulas>
+        <name>Fixed_BR_DCG_Percentage</name>
+        <dataType>String</dataType>
+        <expression>CASE(
+    TEXT({!$Record.CPT_Plan__c}),
+    &quot;250&quot;, &quot;40%&quot;,
+    &quot;330&quot;, &quot;20%&quot;,
+    &quot;630&quot;, &quot;20%&quot;,
+    &quot;650&quot;, &quot;20%&quot;,
+    &quot;0%&quot;
+)</expression>
+    </formulas>
+    <formulas>
+        <name>Initial_CR_OEM_Percentage</name>
+        <dataType>String</dataType>
+        <expression>CASE(
+    TEXT({!$Record.CPT_Plan__c}),
+    &quot;250&quot;, &quot;60%&quot;,
+    &quot;330&quot;, &quot;30%&quot;,
+    &quot;620&quot;, &quot;20%&quot;,
+    &quot;630&quot;, &quot;40%&quot;,
+    &quot;0%&quot;
+)</expression>
+    </formulas>
     <interviewLabel>CPT Quota Setup - After Insert {!$Flow.CurrentDateTime}</interviewLabel>
     <label>CPT Quota Setup - After Insert</label>
     <loops>
         <name>Loop_Over_Quota_Setup_Plan_Defaults</name>
         <label>Loop Over Quota Setup Plan Defaults</label>
-        <locationX>50</locationX>
+        <locationX>182</locationX>
         <locationY>647</locationY>
         <collectionReference>Get_Quota_Setup_Plan_Defaults</collectionReference>
         <iterationOrder>Asc</iterationOrder>
@@ -260,7 +490,7 @@
             <targetReference>Check_Quota_Setup_Field_Name</targetReference>
         </nextValueConnector>
         <noMoreValuesConnector>
-            <targetReference>Update_Quota_Setup_Fields_with_Default_Value</targetReference>
+            <targetReference>Fixed_BR_Plan</targetReference>
         </noMoreValuesConnector>
     </loops>
     <processMetadataValues>
@@ -285,7 +515,7 @@
     <recordLookups>
         <name>Get_Quota_Setup_Plan_Defaults</name>
         <label>Get Quota Setup Plan Defaults</label>
-        <locationX>50</locationX>
+        <locationX>182</locationX>
         <locationY>539</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -311,36 +541,17 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordUpdates>
-        <name>CPT_Populate_Plan_Value</name>
-        <label>Populate Plan Value &amp; Owner</label>
-        <locationX>50</locationX>
-        <locationY>431</locationY>
-        <connector>
-            <targetReference>Get_Quota_Setup_Plan_Defaults</targetReference>
-        </connector>
-        <inputAssignments>
-            <field>CPT_Plan__c</field>
-            <value>
-                <elementReference>$Record.CPT_Employee__r.CPT_Sales_Compensation_Plan__r.CPT_Plan_Number__c</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>OwnerId</field>
-            <value>
-                <elementReference>$Record.CPT_Employee__r.CPT_Manager__r.Id</elementReference>
-            </value>
-        </inputAssignments>
-        <inputReference>$Record</inputReference>
-    </recordUpdates>
-    <recordUpdates>
         <name>Update_Quota_Setup_Fields_with_Default_Value</name>
         <label>Update Quota Setup Fields with Default Value</label>
-        <locationX>50</locationX>
-        <locationY>1331</locationY>
+        <locationX>182</locationX>
+        <locationY>1931</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_6</targetReference>
+        </connector>
         <inputReference>$Record</inputReference>
     </recordUpdates>
     <start>
-        <locationX>56</locationX>
+        <locationX>210</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>CPT_Check_if_Employee_Record_has_Plan</targetReference>

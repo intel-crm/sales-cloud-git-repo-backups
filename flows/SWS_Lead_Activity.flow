@@ -4,7 +4,7 @@
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <assignments>
         <name>Assign_Input_values_to_Activity_Record</name>
-        <label>Assign Input values to Activity Record with completed or cancelled</label>
+        <label>Assign Input values to Activity Record with completed</label>
         <locationX>50</locationX>
         <locationY>566</locationY>
         <assignmentItems>
@@ -96,8 +96,8 @@
         </connector>
     </assignments>
     <assignments>
-        <name>Assign_Input_values_to_Activity_Record_with_cancelled</name>
-        <label>Assign Input values to Activity Record with cancelled</label>
+        <name>Assign_Input_values_to_Activity_Record_with_Cancelled</name>
+        <label>Assign Input values to Activity Record with Cancelled</label>
         <locationX>314</locationX>
         <locationY>566</locationY>
         <assignmentItems>
@@ -410,7 +410,7 @@
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
-            <name>CompletedActivity</name>
+            <name>Completed_Activity</name>
             <conditionLogic>or</conditionLogic>
             <conditions>
                 <leftValueReference>Activity_Status</leftValueReference>
@@ -422,7 +422,7 @@
             <connector>
                 <targetReference>Assign_Input_values_to_Activity_Record</targetReference>
             </connector>
-            <label>Completed  Activity</label>
+            <label>Completed Activity</label>
         </rules>
         <rules>
             <name>Cancelled_Activity</name>
@@ -435,7 +435,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Assign_Input_values_to_Activity_Record_with_cancelled</targetReference>
+                <targetReference>Assign_Input_values_to_Activity_Record_with_Cancelled</targetReference>
             </connector>
             <label>Cancelled Activity</label>
         </rules>
@@ -921,7 +921,7 @@
         <allowPause>false</allowPause>
         <fields>
             <name>Success_message</name>
-            <fieldText>&lt;p&gt;The Lead activity has been created.&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p&gt;The Demo activity has been created.&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
             <styleProperties>
                 <verticalAlignment>

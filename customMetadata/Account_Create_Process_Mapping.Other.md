@@ -3,6 +3,10 @@
     <label>Other</label>
     <protected>false</protected>
     <values>
+        <field>Active__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
         <field>Core_Account_Reference_Source_Name__c</field>
         <value xsi:type="xsd:string">Other</value>
     </values>
@@ -15,8 +19,24 @@
         <value xsi:type="xsd:string">Sales CRM</value>
     </values>
     <values>
+        <field>Description_Text__c</field>
+        <value xsi:type="xsd:string">Not for Sellers - used by specific Business Process Admins (PSG Admin, IPA Admin, CCP Admin etc). When using this option, do not select a hosted sales group. Acceptable Sales Groups are Undefined or contain Partner holding.</value>
+    </values>
+    <values>
         <field>Duplicate_Rejected__c</field>
         <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>Label_Name__c</field>
+        <value xsi:type="xsd:string">Other Support Use</value>
+    </values>
+    <values>
+        <field>Order__c</field>
+        <value xsi:type="xsd:double">5.0</value>
+    </values>
+    <values>
+        <field>Permission_Set__c</field>
+        <value xsi:type="xsd:string">UCD Intel - Account Access</value>
     </values>
     <values>
         <field>Process_Type_Code__c</field>
@@ -25,6 +45,10 @@
     <values>
         <field>Process_Type_Name__c</field>
         <value xsi:type="xsd:string">Other</value>
+    </values>
+    <values>
+        <field>Profile_Name__c</field>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>RecordType_Developer_Name__c</field>
@@ -36,6 +60,6 @@
     </values>
     <values>
         <field>Set_MDM_Name__c</field>
-        <value xsi:type="xsd:boolean">true</value>
+        <value xsi:type="xsd:boolean">false</value>
     </values>
 </CustomMetadata>

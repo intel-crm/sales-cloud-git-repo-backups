@@ -6,5 +6,5 @@
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>AssisMatica Equipamentos Infor LDA Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>AssisMaticaEquipamentosInforLDAPartnerManager</parentRole>
 </Role>

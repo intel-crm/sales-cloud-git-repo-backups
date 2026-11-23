@@ -431,9 +431,6 @@ public class Core_LeadHandler_Test {
             Test.stopTest();
 
             Lead converted = [SELECT Id, IsConverted, ConvertedAccountId, ConvertedContactId, ConvertedOpportunityId FROM Lead WHERE Id = :l0.Id LIMIT 1];
-            //System.assertEquals(true, converted.IsConverted, 'Lead should be converted by Core_LeadHandler.convertLead');
-           // System.assertNotEquals(null, converted.ConvertedAccountId, 'ConvertedAccountId must be set after conversion');
-           // System.assertNotEquals(null, converted.ConvertedContactId, 'ConvertedContactId must be set after conversion');
         }
     }
 }

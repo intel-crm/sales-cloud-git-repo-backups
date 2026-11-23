@@ -1,20 +1,11 @@
-/**
- * @description       : 
- * @author            : Balaji M
- * @group             : 
- * @last modified on  : 08-24-2020
- * @last modified by  : Balaji M
- * Modifications Log 
- * Ver   Date         Author     Modification
- * 1.0   08-24-2020   Balaji M   Initial Version
-**/
 ({
 
     setInitialValue: function(component, helper) {
         var valid = true,
             value = component.get('v.value'),
             options = component.get('v.options') || [];
-		
+		console.log('value##',value);
+        console.log('options',options);
         if (component.get('v.allowMultipleOptions')) {
             
             var values = [];
@@ -57,22 +48,19 @@
     },
 
     resetMultiplePlaceholder: function(component) {
-        
-        var defaultLabel = $A.get("$Label.c.PMP_Lead_Gen_Lang_No_Preference");
+        var defaultLabel = "No Preference";
         
         var selected = component.get('v.options').filter(function(opt) {
             return opt.selected;
         });
         
         if(selected.length > 0){
-        	//var label = (selected.length) + ' option' + (selected.length == 1 ? '' : 's') + ' selected'; // TODO custom labels
-            var str = selected.length == 1 ?  $A.get("$Label.c.PMP_One_Option_Selected") : $A.get("$Label.c.PMP_Multiple_Options_Selected");
-            var label=str.replace("{0}", (selected.length));
-            component.set('v.placeholder', label);
+        	var label = (selected.length) + ' option' + (selected.length == 1 ? '' : 's') + ' selected'; // TODO custom labels
+        	component.set('v.placeholder', label);
         }else if(selected.length == 0 && component.get('v.isLeadGen'))
             component.set('v.placeholder', defaultLabel);
         else{
-             component.set('v.placeholder', $A.get("$Label.c.PMP_No_Options_Selected"));
+             component.set('v.placeholder', 'No options selected');
          }
         
     

@@ -6,13 +6,8 @@
         <sharedToType>Organization</sharedToType>
     </folderShares>
     <folderShares>
-        <accessLevel>EditAllContents</accessLevel>
-        <sharedTo>11575810@intel.com.crm</sharedTo>
-        <sharedToType>User</sharedToType>
-    </folderShares>
-    <folderShares>
         <accessLevel>View</accessLevel>
-        <sharedTo>EMP_11298293_Kenta_Ueda</sharedTo>
+        <sharedTo>IPS_Agent</sharedTo>
         <sharedToType>Role</sharedToType>
     </folderShares>
     <name>NA RAE Shared Dashboards</name>

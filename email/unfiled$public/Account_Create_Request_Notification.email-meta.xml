@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <letterhead>Blank</letterhead>
+    <name>Account Create Request Notification</name>
+    <style>formalLetter</style>
+    <subject>Account Create Request Submission Notification</subject>
+    <textOnly>Dear Approver,
+An account create request has been submitted by user ....
+
+Please take necessary actions to Approve/Reject the request</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

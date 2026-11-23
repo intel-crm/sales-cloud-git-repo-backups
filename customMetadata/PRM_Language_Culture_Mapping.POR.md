@@ -4,7 +4,7 @@
     <protected>false</protected>
     <values>
         <field>PRM_Country_Cd__c</field>
-        <value xsi:type="xsd:string">br</value>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>PRM_Country__c</field>
@@ -12,6 +12,6 @@
     </values>
     <values>
         <field>PRM_Culture__c</field>
-        <value xsi:type="xsd:string">pt</value>
+        <value xsi:type="xsd:string">br</value>
     </values>
 </CustomMetadata>

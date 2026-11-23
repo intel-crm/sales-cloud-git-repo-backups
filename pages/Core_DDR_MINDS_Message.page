@@ -1,0 +1,14 @@
+<apex:page standardController="Core_Design_Registration__c" showHeader="false" applyHtmlTag="false"> 
+    <apex:form >
+    
+        <apex:outputPanel rendered="true">
+            <apex:outputPanel rendered="{!$User.UITheme == 'Theme3'}">
+                <div  style="font-weight:bold;color:blue;font-size:10px;">It is the Intel partner's responsibility to understand the export customs, and sanctions controls applicable to the Intel Partner's company, project, and product and take all actions necessary to ensure compliance.</div>
+            </apex:outputPanel>
+            <apex:outputPanel rendered="{!$User.UITheme != 'Theme3'}">
+                <div  style="font-weight:bold;color:blue;font-size:10px;">It is the Intel partner's responsibility to understand the export customs, and sanctions controls applicable to the Intel Partner's company, project, and product and take all actions necessary to ensure compliance.</div>
+            </apex:outputPanel>
+        </apex:outputPanel>
+
+    </apex:form>
+</apex:page>

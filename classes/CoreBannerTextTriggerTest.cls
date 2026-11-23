@@ -36,10 +36,10 @@ private class CoreBannerTextTriggerTest {
 
     @isTest
     static void testAllowedUser() {
-        User allowedUser = [SELECT Id FROM User WHERE Email = 'alloweduser@example.com' LIMIT 1];
+        User allowedUser = [SELECT Id FROM User WHERE Email = 'richard.mason@intel.com' LIMIT 1];
         System.runAs(allowedUser) {
             Test.startTest();
-            Core_Banner_Text__c banner = new Core_Banner_Text__c(Name = 'Test Banner',Core_CRM_Project__c='CCP');
+            Core_Banner_Text__c banner = new Core_Banner_Text__c(Name = 'Test Banner',Core_CRM_Project__c='CRM');
             insert banner;
             banner.Name = 'Updated Banner';
             update banner;

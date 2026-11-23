@@ -1,0 +1,175 @@
+<template> 
+    <lightning-card>
+        <div class="slds-grid slds-grid_vertical-align-start">
+            <div class="slds-grid slds-wrap">
+            <template for:each={regMap} for:item="reg" for:index="indexReg"> 
+                <lightning-layout-item key={reg.key} padding="around-small" size="3" large-device-size="3" medium-device-size="3" small-device-size="12">
+                <!--<div key={reg.key} class="slds-col slds-size_1-of-3"> -->
+                    <div class="slds-border_left slds-border_right slds-border_top slds-border_bottom">
+                    <div class="slds-section__title slds-theme--shade primaryPaletteBorder test-id__section-header-container">
+                        <span class="test-id__section-header-title section-header-title slds-p-horizontal--small slds-truncate">
+                            {reg.key}
+                        </span>
+                    </div>
+                    
+                      <div class="slds-scrollable_y" style="height:100%;">
+                    <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered">
+                        <thead>
+                          <tr class="slds-line-height_reset">
+                            <th class="" scope="col">
+                              <div class="slds-truncate" title="CIM ID Name">CIM ID </div>
+                            </th>
+                          <th class="slds-is-resizable slds-is-sortable slds-is-sorted slds-is-sorted_desc" scope="col">
+                              <div class="slds-truncate" title="Duplicate Accounts">
+                                <lightning-button
+                                variant="base" label="Duplicate Accounts"  onclick={sortTable}>Duplicate Accounts</lightning-button>
+                              </div>
+                            </th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                         <template for:each={reg.value} for:item="dup" for:index="indexVar">
+                                                                                        
+                          <tr key={dup.value.Id} class="slds-hint-parent">
+                            <td data-label="Account Name">
+                              <div class="slds-truncate" title="CIM ID"><lightning-button variant="base" label={dup.key} name={dup.key} title={dup.key} onclick={fetchRecord}>{dup.key}</lightning-button></div>
+                            </td>
+                          <td data-label="Account Name">
+                              <div class="slds-truncate" title="No. of Duplicate Accounts">{dup.value.length}</div>
+                            </td>
+                          </tr>
+                          </template>
+                          </tbody>
+                          </table> 
+                          </div>
+                         
+                    </div>                                   
+                <!--</div>-->
+            </lightning-layout-item>
+            </template>
+        </div> 
+        </div>
+    </lightning-card>
+
+<lightning-card>
+  <div>
+    <c-ucd-acct-duplicates-tab></c-ucd-acct-duplicates-tab>
+  </div>
+</lightning-card>
+
+    <template if:true={isModalOpen}>
+        <section role="dialog" tabindex="0" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Duplicate Accounts</h2>
+                </header>
+                  <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped" >              
+                
+                    <thead>
+                      <tr class="slds-text-title_caps">
+                          
+                          <th role="gridcell">
+                              <div class="slds-align_absolute-left"  title="Name">ACCOUNT NAME</div>
+                          </th> 
+                          <th class="" scope="col">
+                              <div class="slds-truncate" title="ACCOUNT OWNER">ACCOUNT OWNER</div>
+                          </th>
+                          <th class="" scope="col">
+                            <div class="slds-truncate" title="IPA">IPA</div>
+                        </th>
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="SALES GROUP">SALES GROUP</div>
+                        </th>
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="SALESCLOUD ID">SALESCLOUD ID</div>
+                        </th>
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="CONTACTS COUNT">CONTACTS COUNT</div>
+                        </th>
+                      </tr>
+                  </thead>
+                  
+                      <tbody>
+                          
+                        <template for:each={acctList} for:item="reg" for:index="indexReg">
+                            <template for:each={reg.value} for:item="dup" for:index="indexVar">
+                                
+                              <tr key={dup.value.Id}>
+                                  
+                                  <td class="slds-cell-wrap" data-label="Wrapped, line clamped">
+                                      <div class="slds-line-clamp" title={dup.value.Id}>{dup.value.Name}</div>
+                                    </td> 
+                                  <th scope="col">
+                                      <div class="slds-truncate" title={dup.value.Id}>{dup.value.Owner.Name}</div>
+                                  </th>
+                                  <th scope="col">
+                                    <div class="slds-truncate" title={dup.value.Id}>{dup.value.Core_Intel_Partner_Alliance_PartnerGroup__c}</div>
+                                </th>
+                                <th scope="col">
+                                    <div class="slds-truncate" title={dup.value.Id}>{dup.value.Core_Sales_Groups__c}</div>
+                                </th>
+                                <th scope="col">
+                                  <!--  <div class="slds-truncate" title={dup.value.Id}>{dup.value.Id}</div> -->
+                                    <lightning-button variant="base" label ={dup.value.Id} value={dup.value.Id} onclick={navigateToDetail} class="slds-m-left_x-small"> {dup.value.Id}</lightning-button>
+                                </th>
+                                <th scope="col">
+                                    <div class="slds-truncate" title={dup.value.Id}>{dup.key}</div>
+                                </th>
+                              </tr>
+                          </template>
+                          
+                        </template>
+                      </tbody>
+              </table>
+                  
+                
+               
+              <footer class="slds-modal__footer">
+                    <button class="slds-button slds-button_brand" onclick={closeModal} title="OK">OK</button>
+                </footer>
+                </div>
+           
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+        </template>
+       <!-- <button class="slds-button slds-button_brand" onclick={sortTable} title="OK">OK</button>
+        <table id="myTable">
+          <tr>
+            <th>Name</th>
+            <th>Country</th>
+          </tr>
+          <tr>
+            <td>Berglunds snabbkop</td>
+            <td>Sweden</td>
+          </tr>
+          <tr>
+            <td>North/South</td>
+            <td>UK</td>
+          </tr>
+          <tr>
+            <td>Alfreds Futterkiste</td>
+            <td>Germany</td>
+          </tr>
+          <tr>
+            <td>Koniglich Essen</td>
+            <td>Germany</td>
+          </tr>
+          <tr>
+            <td>Magazzini Alimentari Riuniti</td>
+            <td>Italy</td>
+          </tr>
+          <tr>
+            <td>Paris specialites</td>
+            <td>France</td>
+          </tr>
+          <tr>
+            <td>Island Trading</td>
+            <td>UK</td>
+          </tr>
+          <tr>
+            <td>Laughing Bacchus Winecellars</td>
+            <td>Canada</td>
+          </tr>
+        </table>
+        -->
+    </template>

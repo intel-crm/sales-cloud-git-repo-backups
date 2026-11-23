@@ -14,9 +14,10 @@ public class Core_RestAPI_OpportunitiesUtility_Test {
 	
     @testSetup 
     private static void createData(){
-        Profile prf = [SELECT id, Name FROM Profile WHERE Name='Sales Rep-BB'];
-        User usr = [SELECT id, Name, isActive FROM User WHERE ProfileId = :prf.Id AND isActive = true AND Core_Employee_Type_Code__c='EMP' and Core_User_Type__c != 'External User' LIMIT 1];
-        
+        //Profile prf = [SELECT id, Name FROM Profile WHERE Name='Sales Rep-BB'];
+        //User usr = [SELECT id, Name, isActive FROM User WHERE ProfileId = :prf.Id AND isActive = true AND Core_Employee_Type_Code__c='EMP' LIMIT 1];
+		PermissionSetAssignment psa = [SELECT Id, PermissionSet.Name,PermissionSetId, AssigneeId from PermissionSetAssignment  where PermissionSet.Name='SalesRepBB' LIMIT 1];
+		User usr = [SELECT id, Name, isActive FROM User WHERE Id = :psa.AssigneeId AND isActive = true AND Core_Employee_Type_Code__c='EMP' LIMIT 1];        
         Id newOppRecTypeId = [select Id from RecordType where DeveloperName = 'Core_Design_Opportunity' limit 1][0].Id;
         
         // Create a product/price book entry to use on the opportunities
@@ -34,7 +35,7 @@ public class Core_RestAPI_OpportunitiesUtility_Test {
 		ddrRec.Core_End_Customer_Nm__c='Arrow Electronics Account';
 		ddrRec.Core_End_Customer_Street_Addr_Line1_Txt__c='12 Street 99';
 		ddrRec.Core_End_Customer_Street_Addr_Line2_Txt__c='';
-		ddrRec.Core_End_Customer_Country_Nm__c='India';
+		ddrRec.PCC_End_Customer_Country__c='India';
 		ddrRec.Core_End_Customer_City_Nm__c='Bangalore';
 		ddrRec.Core_End_Customer_Country_Subdivision_Nm__c='Karnataka';
 		ddrRec.Core_End_Customer_Postal_Cd__c='758854';
@@ -177,8 +178,10 @@ public class Core_RestAPI_OpportunitiesUtility_Test {
 	@isTest static void testDoPut_OpportunityValidationsSuccess() {
         Id newOppRecTypeId = [select Id from RecordType where DeveloperName = 'Core_Design_Opportunity' limit 1][0].Id;
         Account acct = [Select id from Account where name ='TestAccountKPI' LIMIT 1];
-        Profile prf = [SELECT id, Name FROM Profile WHERE Name='Sales Rep-BB'];
-        User usr = [SELECT id, Name, isActive FROM User WHERE ProfileId = :prf.Id AND isActive = true AND Core_Employee_Type_Code__c='EMP' and Core_User_Type__c != 'External User' LIMIT 1];
+        //Profile prf = [SELECT id, Name FROM Profile WHERE Name='Sales Rep-BB'];
+        //User usr = [SELECT id, Name, isActive FROM User WHERE ProfileId = :prf.Id AND isActive = true AND Core_Employee_Type_Code__c='EMP' LIMIT 1];
+		PermissionSetAssignment psa = [SELECT Id, PermissionSet.Name,PermissionSetId, AssigneeId from PermissionSetAssignment  where PermissionSet.Name='SalesRepBB' LIMIT 1];
+		User usr = [SELECT id, Name, isActive FROM User WHERE Id = :psa.AssigneeId AND isActive = true AND Core_Employee_Type_Code__c='EMP' LIMIT 1];        
         List<Core_Design_Registration__c> lstDR = [select id,Name from Core_Design_Registration__c Where Core_Design_Registration_Nm__c='OpportunityDR' limit 1];
         List<Core_Design_Registration_Product__c> lstDRProd = [select id,Name from Core_Design_Registration_Product__c LIMIT 1];
         Opportunity opp = new Opportunity(Name = 'OpportunityPutAPITest2', RecordTypeId = newOppRecTypeId,core_approval_status__c = 'Not Submitted',Core_Design_Registration_Id__c = lstDR[0].Id,

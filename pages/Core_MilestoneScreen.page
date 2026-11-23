@@ -1,35 +1,5 @@
 <apex:page id="mypage" standardController="case" extensions="Core_MilestoneScreenController" sidebar="false" showHeader="false" tabStyle="Case" applyHtmlTag="false">
-    <apex:includeLightning />
-        <apex:outputPanel onclick="return false;" >
-            <div id="caseMilestoneId" />
-        </apex:outputPanel>
-       
-    <script>
-    var userContext = "{!$User.UIThemeDisplayed}";
-    
-    //if(userContext == 'Theme4d' || userContext == 'Theme3'){
-    if(userContext == 'Theme4d'){
-        $Lightning.use("c:core_IPS", function() {
-                $Lightning.createComponent("c:core_IPS_MilestoneScreen",
-                                           { 
-                                               recordId : "{!$CurrentPage.parameters.id}"
-                                           },
-                                           "caseMilestoneId",
-                                           function(component) {
-                                           });
-            }); 
-        }
-    if(userContext == 'Theme4d' || userContext == 'Theme3'){
-    //if(userContext == 'Theme3'){
-    window.onload = resizeWindow(); 
-    function resizeWindow(){
-    
-      top.document.getElementById("0663F000000NS9g").height = "0px";
-    }
-        }
-    </script>
-    <apex:variable var="lightningDesktop" value="{! $User.UIThemeDisplayed == 'Theme4d'}" />
-        <apex:actionRegion rendered="{! !lightningDesktop}">
+
     <apex:form >
         <apex:pageBlock >
              <apex:actionRegion >
@@ -49,5 +19,4 @@
             </apex:actionRegion>
         </apex:pageBlock>
     </apex:form>
-    </apex:actionRegion>
 </apex:page>

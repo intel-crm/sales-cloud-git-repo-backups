@@ -76,7 +76,7 @@
             <operation>notEqual</operation>
             <value>null</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>Pricing_Divisional_Pricing_Manager_Edit</fullName>

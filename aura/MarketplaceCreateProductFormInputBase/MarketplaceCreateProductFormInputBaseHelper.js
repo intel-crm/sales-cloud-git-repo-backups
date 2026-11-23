@@ -4,7 +4,7 @@
         // refreshOption can be undefined, SAVE, or REFRESHONLY
         if (typeof component.get('v.updateFormCallback') === 'function') {
             component.get('v.updateFormCallback')(component, refreshOption);
-            console.log('refreshOptionhelper-->' +refreshOption);
+          //  console.log('refreshOptionhelper-->' +refreshOption);
         } else {
             console.warn('Callback not set.', component.get('v.updateFormCallback'), component.getName());
         }

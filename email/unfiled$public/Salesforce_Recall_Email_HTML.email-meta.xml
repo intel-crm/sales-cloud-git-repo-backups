@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Salesforce Recall Email - HTML</name>
+    <style>none</style>
+    <subject>Salesforce Email Recall - HTML</subject>
+    <textOnly>&lt;EMAILS&gt;dinesh.maruti.mengade@intel.com;&lt;To&gt;dinesh.maruti.mengade@intel.com;&lt;EMAILS&gt;&lt;br&gt;
+
+Hello,&lt;br&gt;&lt;br&gt;
+
+Hi this is test email test.&lt;br&gt;&lt;br&gt;
+
+Thanks,&lt;br&gt;
+Dinesh</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

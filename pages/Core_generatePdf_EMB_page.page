@@ -1,0 +1,370 @@
+<apex:page controller="Core_EMBgeneratePdfController" renderAs="pdf">
+    <head>
+        <title>Meeting Briefing Document</title>
+        <style>
+            <!--  .rich-text img {
+max-width:100%;
+overflow: hidden;
+height: auto;
+display: block;
+}
+
+.rich-text {
+max-width:100%;
+word-wrap: break-word;
+white-space: normal;
+}-->
+            <!--  table{
+width:100%;
+border-collapse: collapse;
+}
+th, td {
+border: 1px solid #000;
+padding: 8px;
+word-wrap: break-word; 
+vertical-align: top; 
+text-align: left; 
+}
+.rich-text {
+max-width: 100%;
+word-wrap: break-word; 
+white-space: normal; 
+overflow: hidden; 
+font-size: 10pt; 
+}
+
+.rich-text img {
+max-width: 500px; 
+width:100%;
+height: auto;
+display: block; 
+margin: 10px 0; 
+}-->
+            body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            }
+            
+            
+            .pageContent {
+            width: 100px;
+            max-width: 600px;
+            margin: 0 auto;
+            }
+            
+            .richTextContainer img {
+            width: 100%;
+            max-width: 100%;
+            height: auto; 
+            overflow: hidden;
+            }
+            
+            .richTextContainer {
+            padding: 10px;
+            box-sizing: border-box;
+            word-wrap: break-word;
+            white-space: normal;
+            }
+             img {
+            
+            width: 10px; 
+            height: 10px; 
+        }
+            <!--
+h1, h2, h3 {
+color: #333;
+}
+ul {
+list-style-type: disc;
+margin-left: 20px;
+}
+.section {
+margin-bottom: 20px;
+}-->
+        </style>
+    </head>
+    <body>
+        <p>MEETING OBJECTIVES &amp; KEY MESSAGES:</p>
+        <table border="1">
+            <tbody class="pageContent">
+                <tr>
+                    <td >
+                        <p><strong>Intel&rsquo;s Meeting Objectives</strong></p>
+                    </td>
+                    <td >
+                        <apex:outputText value="{!meetingBrief.CRM_Intels_Meeting_Objectives__c}" escape="false" />
+                    </td>
+                </tr>
+                <tr>
+                    <td >
+                        <p><strong>Other Party&rsquo;s Meeting Objectives</strong></p>
+                    </td>
+                    <td >
+                        <apex:outputText value="{!meetingBrief.CRM_Other_Partys_Meeting_Objectives__c}" escape="false" />
+                    </td>
+                </tr>
+                <tr>
+                    <td >
+                        <p><strong>Most Critical Messages to Get Across</strong></p>
+                    </td>
+                    <td >
+                        <apex:outputText value="{!meetingBrief.CRM_Most_Critical_Messages_to_Get_Across__c}" escape="false" />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p>LOGISTICS, MEETING CONTACTS &amp; SALESFORCE LINKS:</p>
+        
+        <table border="1">
+            <tbody>
+                <tr>
+                    <td width="151">
+                        <p><strong>Prepared By</strong></p>
+                    </td>
+                    <td width="529">
+                        <p>areefa banu</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="151">
+                        <p><strong>Reviewed By</strong></p>
+                    </td>
+                    <td width="529">
+                        <p>Sinduja Devi</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="151">
+                        <p><strong>Salesforce Acct Link</strong></p>
+                    </td>
+                    <td width="529">
+                        <p>https://intel--crmdevsls3.sandbox.my.salesforce.com/001Df00000iaYQfIAM</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="151">
+                        <p><strong>Location</strong></p>
+                    </td>
+                    <td width="529">
+                        <p>Street, bengaluru, 560098</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="151">
+                        <p><strong>Dress Code</strong></p>
+                    </td>
+                    <td width="529">
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td width="151">
+                        <p><strong>Meeting Owner Contact</strong></p>
+                    </td>
+                    <td width="529">
+                        <p>Anish Kumar</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p>ATTENDEES:</p>
+        
+        <table border="1">
+            <tbody>
+                <tr>
+                    <td width="340">
+                        <p><strong>External Attendees</strong></p>
+                    </td>
+                    <td width="340">
+                        <p><strong>Intel Attendees</strong></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="340">
+                        <p>CiscoTender Test01</p>
+                    </td>
+                    <td width="340">
+                        <p>areefa banu</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="340">
+                        <p>delltestuser iqr</p>
+                    </td>
+                    <td width="340">
+                        <p>NAVNEET KAUR</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="340">
+                        <p>HPETest User01 IQR</p>
+                    </td>
+                    <td width="340">
+                        <p>Sinduja Devi</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p>AGENDA:</p>
+        <p><strong><em><br /> </em></strong></p>
+        <table border="1">
+            <tbody>
+                <tr>
+                    <td >
+                        <p><strong>Time Period</strong></p>
+                    </td>
+                    <td width="378">
+                        <p><strong>Meeting Agenda Items</strong></p>
+                    </td>
+                    <td width="196">
+                        <p><strong>Presenters/Conversation Lead</strong></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td >
+                        <p>2025-03-12 &ndash;</p>
+                        <p>2025-04-04</p>
+                    </td>
+                    <td width="378">
+                        <p>Test generate PDF for executive meeting Brief data</p>
+                    </td>
+                    <td width="196">
+                        <p>Sreekanth Kodathala</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td >
+                        <p>2025-03-27 &ndash;</p>
+                        <p>2025-04-04</p>
+                    </td>
+                    <td width="378">
+                        <p>Test generate PDF for executive meeting Brief data 2</p>
+                    </td>
+                    <td width="196">
+                        <p>Sinduja Devi</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td >
+                        <p>2025-04-01 &ndash;</p>
+                        <p>2025-04-04</p>
+                    </td>
+                    <td width="378">
+                        <p>Test</p>
+                    </td>
+                    <td width="196">
+                        <p>areefa banu</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p>BACKGROUND &amp; TALKING POINTS:</p>
+        
+        <table border="1">
+            <tbody>
+                <tr>
+                    <td rowspan="3" >
+                        
+                        
+                        
+                        
+                        <p><strong>Test</strong></p>
+                    </td>
+                    <td >
+                        <p>Background: undefined</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td >
+                        <p>Proactive Talking Points: Test</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td >
+                        <p>Reactive Talking Points: Test</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td rowspan="3" >
+                        
+                        
+                        
+                        
+                        <p><strong>Test</strong></p>
+                    </td>
+                    <td >
+                        <p>Background: undefined</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td >
+                        <p>Proactive Talking Points: Test</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td >
+                        <p>Reactive Talking Points: Test</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p>ADDITIONAL INFORMATION:</p>
+        
+        <table border="1">
+            <tbody>
+                <tr>
+                    <td >
+                        
+                        
+                        
+                        
+                        
+                        
+                        <p><strong>Additional Info</strong></p>
+                    </td>
+                    <td >
+                        <p>As a part of the DRD Integration EOL,</p>
+                        <p>We will be adding a new option &ldquo;AI Inference Software Support&rdquo; under Opportunity Support which will redirect to SmartSheet Form. Existing Software Expert support will still remain As-is but we will take out this AI inference picklist from Request type.</p>
+                        <p>Once the request is submitted, there is no record saved in SF side.</p>
+                        <p>On request creation, email notifications are sent to the admin(murni), Geo lead, and submitter upon request submission and assignment. The email contains a link to the smartsheet view where the requestor can see all the requests list submitted by him. Under Support status tab, we can add a separate related list to show the submitted &ldquo;AI Inference Software Support&rdquo; requests that are created in smartsheet using below view.we will explore if we can extract the data from this view and show it on SF ,if not show the link to this view.</p>
+                        <p>On request creation, email notifications are sent to the admin(murni), Geo lead, and submitter upon request submission and assignment. The email contains a link to the smartsheet view where the requestor can see all the requests list submitted by him.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td >
+                        
+                        
+                        <p><strong>Additional Legal Guidance</strong></p>
+                    </td>
+                    <td >
+                        <p>As a part of the DRD Integration EOL,</p>
+                        <p>We will be adding a new option &ldquo;AI Inference Software Support&rdquo; under Opportunity Support which will redirect to SmartSheet Form. Existing Software Expert support will still remain As-is but we will take out this AI inference picklist from Request type.</p>
+                        <p>Once the request is submitted, there is no record saved in SF side.</p>
+                        <p>On request creation, email notifications are sent to the admin(murni), Geo lead, and submitter upon request submission and assignment. The email contains a link to the smartsheet view where the requestor can see all the requests list submitted by him.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <table border="1">
+            <tbody>
+                <tr>
+                    <td >
+                        
+                    </td>
+                    <td >
+                        <p>Under Support status tab, we can add a separate related list to show the submitted &ldquo;AI Inference Software Support&rdquo; requests that are created in smartsheet using below view.we will explore if we can extract the data from this view and show it on SF ,if not show the link to this view.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td >
+                        <p><strong>Attendee Bio(s)</strong></p>
+                    </td>
+                    <td >
+                        <p>Test Attendee Bios</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</apex:page>

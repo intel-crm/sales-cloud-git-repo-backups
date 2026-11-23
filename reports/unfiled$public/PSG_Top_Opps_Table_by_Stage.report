@@ -122,30 +122,6 @@
             </sourceValues>
             <value>NA North Central</value>
         </values>
-        <values>
-            <sourceValues>
-                <sourceValue>PSG-NA-SC</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>PSG-NA-SW</sourceValue>
-            </sourceValues>
-            <value>NA Southwest</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>PSG-NA-NW</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>PSG-NA-RM</sourceValue>
-            </sourceValues>
-            <value>NA Northwest</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>PSG-NA-ABAS</sourceValue>
-            </sourceValues>
-            <value>NA Bay Area</value>
-        </values>
     </buckets>
     <columns>
         <field>ACCOUNT_NAME</field>
@@ -188,7 +164,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>PSG_TO,PSG_MWO</value>
+            <value>PSG_TO</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Opportunity_Type__c</column>
@@ -216,7 +192,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>THIS_FISCAL_QUARTER</value>
+            <value>THIS_QUARTER</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_External_ID__c</column>
@@ -231,7 +207,7 @@
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>BucketField_66234661</field>
-        <sortOrder>Asc</sortOrder>
+        <sortOrder>Desc</sortOrder>
     </groupingsDown>
     <name>PSG Top Opps Table by Stage</name>
     <params>

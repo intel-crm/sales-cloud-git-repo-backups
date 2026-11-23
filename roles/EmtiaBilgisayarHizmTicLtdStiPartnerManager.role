@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>Emtia  Bilgisayar  Hizm.Tic. Ltd. Sti Partner Manager</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>Emtia  Bilgisayar  Hizm.Tic. Ltd. Sti Partner Manager</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>EmtiaBilgisayarHizmTicLtdStiPartnerExecutive</parentRole>
+</Role>

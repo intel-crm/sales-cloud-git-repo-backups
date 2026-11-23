@@ -31,8 +31,7 @@
                     
                     component.set("v.showPartnerKeyMetricsTab",false);
                     
-                    //component.set("v.showOfferingTab",false); 
-                    // IPA2.0 + US TWC4497-1631
+                    component.set("v.showOfferingTab",false); 
                 }
                 
                 component.set("v.showTabs", true);
@@ -50,15 +49,14 @@
                 console.log('dashboard');
                 
                 var returnValue = response.getReturnValue();
-                // IPA2.0 + US TWC4497-1631
-                // if(returnValue == true){
+                if(returnValue == true){
                       
-                //      component.set("v.showOfferingTab",false); 
-                // }else{
+                     component.set("v.showOfferingTab",false); 
+                }else{
                     
-                //     component.set("v.showOfferingTab",true);
-                // }
-                // console.log('returnValueOff',returnValue);
+                    component.set("v.showOfferingTab",true);
+                }
+                console.log('returnValueOff',returnValue);
                 component.set("v.showTabs", true);
                 
         

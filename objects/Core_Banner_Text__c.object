@@ -193,94 +193,6 @@
         <type>Date</type>
     </fields>
     <fields>
-        <fullName>Core_Label_de_txt__c</fullName>
-        <label>German Label Trans</label>
-        <length>32768</length>
-        <trackTrending>false</trackTrending>
-        <type>Html</type>
-        <visibleLines>25</visibleLines>
-    </fields>
-    <fields>
-        <fullName>Core_Label_es_MX_txt__c</fullName>
-        <label>Spanish Mex Label Trans</label>
-        <length>32768</length>
-        <trackTrending>false</trackTrending>
-        <type>Html</type>
-        <visibleLines>25</visibleLines>
-    </fields>
-    <fields>
-        <fullName>Core_Label_es_txt__c</fullName>
-        <label>Spanish Label Trans</label>
-        <length>32768</length>
-        <trackTrending>false</trackTrending>
-        <type>Html</type>
-        <visibleLines>25</visibleLines>
-    </fields>
-    <fields>
-        <fullName>Core_Label_fr_txt__c</fullName>
-        <label>French Label Trans</label>
-        <length>32768</length>
-        <trackTrending>false</trackTrending>
-        <type>Html</type>
-        <visibleLines>25</visibleLines>
-    </fields>
-    <fields>
-        <fullName>Core_Label_it_txt__c</fullName>
-        <label>Italian Label Trans</label>
-        <length>32768</length>
-        <trackTrending>false</trackTrending>
-        <type>Html</type>
-        <visibleLines>25</visibleLines>
-    </fields>
-    <fields>
-        <fullName>Core_Label_ja_txt__c</fullName>
-        <label>Japnese Label Trans</label>
-        <length>32768</length>
-        <trackTrending>false</trackTrending>
-        <type>Html</type>
-        <visibleLines>25</visibleLines>
-    </fields>
-    <fields>
-        <fullName>Core_Label_ko_txt__c</fullName>
-        <label>Korean Label Trans</label>
-        <length>32768</length>
-        <trackTrending>false</trackTrending>
-        <type>Html</type>
-        <visibleLines>25</visibleLines>
-    </fields>
-    <fields>
-        <fullName>Core_Label_pt_BR_txt__c</fullName>
-        <label>Portugese Label Trans</label>
-        <length>32768</length>
-        <trackTrending>false</trackTrending>
-        <type>Html</type>
-        <visibleLines>25</visibleLines>
-    </fields>
-    <fields>
-        <fullName>Core_Label_ru_txt__c</fullName>
-        <label>Russian Label Trans</label>
-        <length>32768</length>
-        <trackTrending>false</trackTrending>
-        <type>Html</type>
-        <visibleLines>25</visibleLines>
-    </fields>
-    <fields>
-        <fullName>Core_Label_zh_CN_txt__c</fullName>
-        <label>Chinese Sim Label Trans</label>
-        <length>32768</length>
-        <trackTrending>false</trackTrending>
-        <type>Html</type>
-        <visibleLines>25</visibleLines>
-    </fields>
-    <fields>
-        <fullName>Core_Label_zh_TW_txt__c</fullName>
-        <label>Chinese Trad Label Trans</label>
-        <length>32768</length>
-        <trackTrending>false</trackTrending>
-        <type>Html</type>
-        <visibleLines>25</visibleLines>
-    </fields>
-    <fields>
         <fullName>Core_Start_Date__c</fullName>
         <label>Start Date</label>
         <required>false</required>
@@ -302,6 +214,7 @@
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
+            <restricted>true</restricted>
             <valueSetDefinition>
                 <sorted>false</sorted>
                 <value>
@@ -334,21 +247,6 @@
                     <default>false</default>
                     <label>KPI Body Default</label>
                 </value>
-                <value>
-                    <fullName>Community Home</fullName>
-                    <default>false</default>
-                    <label>Community Home</label>
-                </value>
-                <value>
-                    <fullName>General</fullName>
-                    <default>false</default>
-                    <label>General</label>
-                </value>
-                <value>
-                    <fullName>Common</fullName>
-                    <default>false</default>
-                    <label>Common</label>
-                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -364,64 +262,13 @@
         <fullName>All</fullName>
         <columns>NAME</columns>
         <columns>Core_CRM_Project__c</columns>
-        <columns>core_isActive__c</columns>
         <columns>core_CRM_type__c</columns>
+        <columns>Core_Text_Message__c</columns>
         <columns>Core_Start_Date__c</columns>
         <columns>Core_End_Date__c</columns>
-        <columns>Core_Text_Message__c</columns>
+        <columns>core_isActive__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
-    </listViews>
-    <listViews>
-        <fullName>Home_Page</fullName>
-        <columns>NAME</columns>
-        <columns>Core_CRM_Project__c</columns>
-        <columns>core_isActive__c</columns>
-        <columns>core_CRM_type__c</columns>
-        <columns>Core_Start_Date__c</columns>
-        <columns>Core_End_Date__c</columns>
-        <columns>Core_Text_Message__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>core_CRM_type__c</field>
-            <operation>equals</operation>
-            <value>Home Page</value>
-        </filters>
-        <label>Home Page</label>
-    </listViews>
-    <listViews>
-        <fullName>KPI_Body</fullName>
-        <columns>NAME</columns>
-        <columns>Core_CRM_Project__c</columns>
-        <columns>core_isActive__c</columns>
-        <columns>core_CRM_type__c</columns>
-        <columns>Core_Start_Date__c</columns>
-        <columns>Core_End_Date__c</columns>
-        <columns>Core_Text_Message__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>core_CRM_type__c</field>
-            <operation>equals</operation>
-            <value>KPI Body</value>
-        </filters>
-        <label>KPI Body</label>
-    </listViews>
-    <listViews>
-        <fullName>KPI_Header</fullName>
-        <columns>NAME</columns>
-        <columns>Core_CRM_Project__c</columns>
-        <columns>core_isActive__c</columns>
-        <columns>core_CRM_type__c</columns>
-        <columns>Core_Start_Date__c</columns>
-        <columns>Core_End_Date__c</columns>
-        <columns>Core_Text_Message__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>core_CRM_type__c</field>
-            <operation>equals</operation>
-            <value>KPI Header</value>
-        </filters>
-        <label>KPI Header</label>
     </listViews>
     <nameField>
         <label>Banner Text Name</label>
@@ -432,11 +279,12 @@
         <excludedStandardButtons>OpenListInQuip</excludedStandardButtons>
         <excludedStandardButtons>NewFromDocument</excludedStandardButtons>
         <excludedStandardButtons>Accept</excludedStandardButtons>
-        <excludedStandardButtons>MassAssignRecordLabel</excludedStandardButtons>
+        <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
+        <excludedStandardButtons>Forward</excludedStandardButtons>
         <excludedStandardButtons>Import</excludedStandardButtons>
         <excludedStandardButtons>MassChangeOwner</excludedStandardButtons>
         <excludedStandardButtons>PrintableListView</excludedStandardButtons>
-        <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
+        <excludedStandardButtons>MassAssignRecordLabel</excludedStandardButtons>
         <searchResultsAdditionalFields>Core_CRM_Project__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Core_Text_Message__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>core_CRM_type__c</searchResultsAdditionalFields>
@@ -445,15 +293,5 @@
         <searchResultsAdditionalFields>core_isActive__c</searchResultsAdditionalFields>
     </searchLayouts>
     <sharingModel>ReadWrite</sharingModel>
-    <validationRules>
-        <fullName>Core_StartDate_EndDate_Validation</fullName>
-        <active>true</active>
-        <description>To validate the Start date is greater than the End date</description>
-        <errorConditionFormula>IF(
-Core_Start_Date__c &gt; Core_End_Date__c ,
-TRUE, FALSE
-)</errorConditionFormula>
-        <errorMessage>Start date cannot be greater than End date</errorMessage>
-    </validationRules>
     <visibility>Public</visibility>
 </CustomObject>

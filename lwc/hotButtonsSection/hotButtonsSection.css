@@ -1,0 +1,25 @@
+/* Ensure text wrapping inside the table cells */
+.slds-table td {
+    word-wrap: break-word !important;  /* Break long words onto the next line */
+    white-space: normal !important;    /* Allow text to wrap to the next line */
+    overflow: visible !important;      /* Ensure overflowing text is visible */
+    max-width: 200px !important;       /* Optional: Adjust the max width of the column */
+}
+
+/* Apply wrapping on header cells as well */
+.slds-table th {
+    white-space: normal !important;  /* Allow header cells to wrap */
+    word-wrap: break-word !important;
+}
+
+/* Make sure text inside cells doesn't overflow */
+.slds-table td span {
+    font-size: 14px;
+    line-height: 1.5;
+    overflow: visible;
+}
+
+/* Custom styling for lightning-datatable to control overflow */
+.slds-table {
+    table-layout: auto !important;  /* Ensure table layout adjusts based on content */
+}

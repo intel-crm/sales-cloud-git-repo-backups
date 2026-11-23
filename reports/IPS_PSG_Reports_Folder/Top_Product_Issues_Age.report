@@ -361,18 +361,33 @@
         <sourceColumnName>Case.Core_Case_Closure__c</sourceColumnName>
         <useOther>false</useOther>
         <values>
+            <sourceValues>
+                <sourceValue>Fix in Intel Software Release</sourceValue>
+            </sourceValues>
             <value>Fix in SW</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Fix in Intel Documentation</sourceValue>
+            </sourceValues>
             <value>Fix in Doc</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Fix in Intel Platform/Tool</sourceValue>
+            </sourceValues>
             <value>Fix in Tool</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Fix in Intel Silicon</sourceValue>
+            </sourceValues>
             <value>Fix in Silicon</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>3rd Party Issue/Fix</sourceValue>
+            </sourceValues>
             <value>Fix in 3rd Party</value>
         </values>
     </buckets>
@@ -516,6 +531,6 @@
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CREATED_DATEONLY</dateColumn>
-        <interval>INTERVAL_PREVCURFY</interval>
+        <interval>INTERVAL_CUSTOM</interval>
     </timeFrameFilter>
 </Report>

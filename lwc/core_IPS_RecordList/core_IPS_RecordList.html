@@ -1,25 +1,19 @@
 <template>
     <li role="presentation" class="slds-listbox__item">
         <div id="option1" class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta" role="option" onclick={handleSelect}>
-            <template if:false={isLightingportal}>
         <span class="slds-media__figure slds-listbox__option-icon">
             <lightning-icon icon-name={iconname} size="small"></lightning-icon>
         </span>
-            </template>
         <span class="slds-media__body" > <!-- style="padding-top: 9px;" -->
             <span class="slds-listbox__option-text slds-listbox__option-text_entity" style="font-weight: 600;" title={recordtest}>
             {recordtest}
             </span>
-            <template if:true={extraField3Value}>
-                <span style="padding-top: 2px;" class="slds-listbox__option-meta slds-listbox__option-meta_entity" title={extraField3Value}>{extraField3Label} &nbsp;•&nbsp; {extraField3Value}</span>
-            </template>
             <template if:true={extraField1Value}>
                 <span style="padding-top: 2px;" class="slds-listbox__option-meta slds-listbox__option-meta_entity" title={extraField1Value}>{extraField1Label} &nbsp;•&nbsp; {extraField1Value}</span>
             </template>
             <template if:true={extraField2Value}>
                 <span style="padding-top: 2px;" class="slds-listbox__option-meta slds-listbox__option-meta_entity" title={extraField2Value}>{extraField2Label} &nbsp;•&nbsp; {extraField2Value}</span>
             </template>
-                <hr style="padding: 0; margin:0px;"></hr>
         </span>
         </div>
     </li>

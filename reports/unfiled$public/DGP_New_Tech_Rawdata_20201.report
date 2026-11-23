@@ -52,7 +52,6 @@
         <field>Opportunity.Core_Technical_Owner__c</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
         <field>Opportunity.Core_Architecture_Conversion__c</field>
     </columns>
     <columns>
@@ -126,7 +125,7 @@ Opportunities with Products Report</description>
         <language>en_US</language>
     </filter>
     <format>Tabular</format>
-    <name>DGP New Tech Rawdata 2021</name>
+    <name>DGP New Tech Rawdata 2020</name>
     <params>
         <name>terr</name>
         <value>all</value>

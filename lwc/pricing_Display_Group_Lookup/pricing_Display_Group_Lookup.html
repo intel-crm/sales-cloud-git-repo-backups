@@ -1,0 +1,11 @@
+<template>
+    <template if:true={rpmGroupId}>
+        <lightning-card title="Group Approver Link" icon-name="standard:groups">
+            <div class="slds-var-m-around_medium">
+                <a href="javascript:void(0);" onclick={navigateToGroup} class="slds-text-link_bold">
+                    {groupNameToDisplay}
+                </a>
+            </div>
+        </lightning-card>
+    </template>
+</template>

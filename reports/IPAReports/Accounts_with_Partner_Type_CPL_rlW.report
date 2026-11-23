@@ -40,6 +40,9 @@
         <field>TYPE</field>
     </columns>
     <columns>
+        <field>RATING</field>
+    </columns>
+    <columns>
         <field>LAST_UPDATE</field>
     </columns>
     <columns>
@@ -56,9 +59,9 @@
         <criteriaItems>
             <column>PRM_AccountChannelMembership__c.PRM_Channel_Program_Level_Id__c</column>
             <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
+            <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>PARTNER,PRESTIGE</value>
+            <value>Gold,Titanium,Member</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

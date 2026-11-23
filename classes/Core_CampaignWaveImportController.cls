@@ -123,7 +123,7 @@ global class Core_CampaignWaveImportController {
             List<ExportRecord> exportRecords = new List<ExportRecord>();
             String jsonAction, jsonResponseId, jsonQuery, jsonResponseTime;
             
-            JSONParser parser = JSON.createParser(results);
+            System.JsonParser parser = JSON.createParser(results);
             
             while (parser.nextToken() != null) {                
                 if (parser.getCurrentToken() == JSONToken.FIELD_NAME) {

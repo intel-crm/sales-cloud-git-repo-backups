@@ -14,16 +14,6 @@
     </decisionTableParameters>
     <decisionTableParameters>
         <dataType>String</dataType>
-        <fieldName>Pricing_Overall_Quote_Quantity_Nbr__c</fieldName>
-        <fieldPath>Pricing_Overall_Quote_Quantity_Nbr__c</fieldPath>
-        <isGroupByField>false</isGroupByField>
-        <isRequired>true</isRequired>
-        <operator>GreaterThan</operator>
-        <sequence>2</sequence>
-        <usage>INPUT</usage>
-    </decisionTableParameters>
-    <decisionTableParameters>
-        <dataType>String</dataType>
         <fieldName>Pricing_Routing_Rule_Id__c</fieldName>
         <fieldPath>Pricing_Routing_Rule_Id__c</fieldPath>
         <isGroupByField>false</isGroupByField>
@@ -50,6 +40,16 @@
     </decisionTableParameters>
     <decisionTableParameters>
         <dataType>String</dataType>
+        <fieldName>Pricing_Overall_Quote_Quantity_Nbr__c</fieldName>
+        <fieldPath>Pricing_Overall_Quote_Quantity_Nbr__c</fieldPath>
+        <isGroupByField>false</isGroupByField>
+        <isRequired>true</isRequired>
+        <operator>GreaterThan</operator>
+        <sequence>2</sequence>
+        <usage>INPUT</usage>
+    </decisionTableParameters>
+    <decisionTableParameters>
+        <dataType>String</dataType>
         <fieldName>Pricing_RPM_Group_Name_Txt__c</fieldName>
         <fieldPath>Pricing_RPM_Group_Name_Txt__c</fieldPath>
         <isGroupByField>false</isGroupByField>
@@ -72,13 +72,6 @@
         <valueType>Literal</valueType>
     </decisionTableSourceCriterias>
     <decisionTableSourceCriterias>
-        <operator>GreaterThan</operator>
-        <sequenceNumber>3</sequenceNumber>
-        <sourceFieldName>Pricing_Overall_Quote_Quantity_Nbr__c</sourceFieldName>
-        <value>5000</value>
-        <valueType>Literal</valueType>
-    </decisionTableSourceCriterias>
-    <decisionTableSourceCriterias>
         <operator>Equals</operator>
         <sequenceNumber>2</sequenceNumber>
         <sourceFieldName>Pricing_Region_Nm__c</sourceFieldName>
@@ -86,10 +79,10 @@
         <valueType>Literal</valueType>
     </decisionTableSourceCriterias>
     <decisionTableSourceCriterias>
-        <operator>Equals</operator>
-        <sequenceNumber>5</sequenceNumber>
-        <sourceFieldName>Pricing_Program_Type_Nm__c</sourceFieldName>
-        <value>Client</value>
+        <operator>GreaterThan</operator>
+        <sequenceNumber>3</sequenceNumber>
+        <sourceFieldName>Pricing_Overall_Quote_Quantity_Nbr__c</sourceFieldName>
+        <value>5000</value>
         <valueType>Literal</valueType>
     </decisionTableSourceCriterias>
     <decisionTableSourceCriterias>
@@ -99,6 +92,13 @@
         <value>true</value>
         <valueType>Literal</valueType>
     </decisionTableSourceCriterias>
+    <decisionTableSourceCriterias>
+        <operator>Equals</operator>
+        <sequenceNumber>5</sequenceNumber>
+        <sourceFieldName>Pricing_Program_Type_Nm__c</sourceFieldName>
+        <value>Client</value>
+        <valueType>Literal</valueType>
+    </decisionTableSourceCriterias>
     <doesConsiderNullValue>false</doesConsiderNullValue>
     <dtRowLevelOverrideType>None</dtRowLevelOverrideType>
     <filterResultBy>FirstMatch</filterResultBy>
@@ -106,7 +106,7 @@
     <isBestFitEnabled>false</isBestFitEnabled>
     <isIncrementalSyncEnabled>false</isIncrementalSyncEnabled>
     <isVersioned>false</isVersioned>
-    <setupName>Pricing Route Rules EMEA CCG Quantity GT 5000 and LTE 10000</setupName>
+    <setupName>Pricing Route Rules EMEA CCG Quantity GT 5000 and LTE 20000</setupName>
     <sourceConditionLogic>1 AND 2 AND 3 AND 4 AND 5</sourceConditionLogic>
     <sourceObject>Pricing_Routing_Rules__c</sourceObject>
     <status>Active</status>

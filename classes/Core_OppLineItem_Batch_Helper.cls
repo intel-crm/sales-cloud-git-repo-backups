@@ -37,6 +37,7 @@ public without sharing class Core_OppLineItem_Batch_Helper {
                         extKeyDivAD = extKeyDivAD + tempKey + ';';
                         extKeyDivA = tempKey;
                     }
+                    system.debug('PROD APPLICATION:'+buMap.Core_Product_Application__c+':'+extKey+'extKeyDivABD'+extKeyDivABD+'extKeyDivAB'+extKeyDivAB+'extKeyDivAD'+extKeyDivAD+'extKeyDivA'+extKeyDivA);
                 }
                 //Let's say B = Core_Product_Segment__c
                 if(buMap.Core_Product_Segment__c <> null && buMap.Core_Product_Segment__c <> ''){
@@ -48,6 +49,8 @@ public without sharing class Core_OppLineItem_Batch_Helper {
                         extKeyDivBD = extKeyDivBD + tempKey + ';';
                         extKeyDivB = tempKey;
                     }
+                     system.debug('PROD SEGMENT:'+buMap.Core_Product_Segment__c+':'+extKey+'extKeyDivABD'+extKeyDivABD+'extKeyDivAB'+extKeyDivAB+'extKeyDivAD'+extKeyDivAD+'extKeyDivA'+extKeyDivA);
+             
                 }
                 //Let's say C = Core_Division_Shortname__c
                 if(buMap.Core_Division_Shortname__c <> null && buMap.Core_Division_Shortname__c <> ''){
@@ -64,6 +67,8 @@ public without sharing class Core_OppLineItem_Batch_Helper {
                         extKeyDivAD = extKeyDivAD + tempKey + ';';
                         extKeyDivD = tempKey;
                     }
+                 system.debug('PRODTYPE:'+buMap.Core_Product_Type__c+':'+extKey+'extKeyDivABD'+extKeyDivABD+'extKeyDivAB'+extKeyDivAB+'extKeyDivAD'+extKeyDivAD+'extKeyDivA'+extKeyDivA);
+           
                 }
                 if(extKey <> ''){
                     extKey = extKey.removeEnd(';');
@@ -97,6 +102,7 @@ public without sharing class Core_OppLineItem_Batch_Helper {
                         if(extKeyDivD <> ''){
                             extKeyWithDivShortNmBuMap = prepareMapOfBURecList(extKeyDivD, buMap, extKeyWithDivShortNmBuMap);
                         }
+                       system.debug('EXTKEYDIVSHORT:'+extKeyWithDivShortNmBuMap);
                     }
                 }else{
                     if(!extKeyWeightageMap1.containskey(spaceStr) || (extKeyWeightageMap1.containskey(spaceStr) && buMap.Core_Weightage__c > extKeyWeightageMap1.get(spaceStr))){
@@ -125,6 +131,7 @@ public without sharing class Core_OppLineItem_Batch_Helper {
             extKeyAB = extKeyAB + extKeyA + ';';
             extKeyAC = extKeyAC + extKeyA + ';';
             extKeyAD = extKeyAD + extKeyA + ';';
+            system.debug('BUSHORTNAME UPDATE PROD APPLICATION:'+oppLineItem.Core_Product_Application__c+'extKeyA'+extKeyA+'extKeyABCD'+extKeyABCD+'extKeyABC'+extKeyABC+'extKeyACD'+extKeyACD+'extKeyABD'+extKeyABD+'extKeyAB'+extKeyAB+'extKeyAC'+extKeyAC+'extKeyAD'+extKeyAD);
         }
         //Let's say B = Core_Product_Segment__c
         if(oppLineItem.Core_Product_Segment__c <> null && oppLineItem.Core_Product_Segment__c <> ''){
@@ -136,6 +143,7 @@ public without sharing class Core_OppLineItem_Batch_Helper {
             extKeyAB = extKeyAB + extKeyB + ';';
             extKeyBC = extKeyBC + extKeyB + ';';
             extKeyBD = extKeyBD + extKeyB + ';';
+            system.debug('BUSHORTNAME UPDATE PROD SEGMENT:'+oppLineItem.Core_Product_Segment__c+'extKeyA'+extKeyA+'extKeyABCD'+extKeyABCD+'extKeyABC'+extKeyABC+'extKeyACD'+extKeyACD+'extKeyABD'+extKeyABD+'extKeyAB'+extKeyAB+'extKeyAC'+extKeyAC+'extKeyAD'+extKeyAD);
         }
         //Let's say C = Core_product2_division__c
         if(oppLineItem.Core_product2_division__c <> null && oppLineItem.Core_product2_division__c <> ''){
@@ -147,6 +155,8 @@ public without sharing class Core_OppLineItem_Batch_Helper {
             extKeyAC = extKeyAC + extKeyC + ';';
             extKeyBC = extKeyBC + extKeyC + ';';
             extKeyCD = extKeyCD + extKeyC + ';';
+            system.debug('BUSHORTNAME UPDATE PROD2 DIVISION:'+oppLineItem.Core_product2_division__c+'extKeyA'+extKeyA+'extKeyABCD'+extKeyABCD+'extKeyABC'+extKeyABC+'extKeyACD'+extKeyACD+'extKeyABD'+extKeyABD+'extKeyAB'+extKeyAB+'extKeyAC'+extKeyAC+'extKeyAD'+extKeyAD);
+    
         }
         //Let's say D = Core_Product_Type__c
         if(oppLineItem.Core_Product_Type__c <> null && oppLineItem.Core_Product_Type__c <> ''){
@@ -158,18 +168,22 @@ public without sharing class Core_OppLineItem_Batch_Helper {
             extKeyCD = extKeyCD + extKeyD + ';';
             extKeyAD = extKeyAD + extKeyD + ';';
             extKeyBD = extKeyBD + extKeyD + ';';
+            system.debug('BUSHORTNAME UPDATE PROD TYPE:'+oppLineItem.Core_Product_Type__c+'extKeyA'+extKeyA+'extKeyABCD'+extKeyABCD+'extKeyABC'+extKeyABC+'extKeyACD'+extKeyACD+'extKeyABD'+extKeyABD+'extKeyAB'+extKeyAB+'extKeyAC'+extKeyAC+'extKeyAD'+extKeyAD);
+    
         }
         
         /**************************************Four Fields Check Starts**************************************/
         if(extKeyABCD <> ''){
             extKeyABCD = extKeyABCD.removeEnd(';');
             tempFinalBuMap = getBuMapRecord(wrap.extKeyWithBuMap, extKeyABCD);
+            system.debug('FOUR FIELD CHECK:extKeyABCD'+extKeyABCD+'tempFinalBuMap'+tempFinalBuMap);
         }
         if(tempFinalBuMap == null && oppLineItem.Core_product2_division__c <> null && extKeyABD <> ''){
             extKeyABD = extKeyABD.removeEnd(';');
             if(wrap.extKeyWithDivShortNmBuMap.containskey(extKeyABD)){
                 tempFinalBuMap = getBuMapRec(oppLineItem.Core_product2_division__c, wrap.extKeyWithDivShortNmBuMap.get(extKeyABD));
             }
+            system.debug('FOUR FIELD CHECK:extKeyABCD'+extKeyABCD+'PROD DIVISION:'+oppLineItem.Core_product2_division__c+'tempFinalBuMap'+tempFinalBuMap);
         }
         /**************************************Four Fields Check Ends**************************************/
         
@@ -181,6 +195,7 @@ public without sharing class Core_OppLineItem_Batch_Helper {
                 if(tempBuMap <> null){
                     tempBuMapSet.add(tempBuMap);
                 }
+                system.debug('THREE FIELD CHECK:extKeyABC '+extKeyABC+'TEMPBUMAP:'+tempBuMap);
             }
             if(extKeyBCD <> ''){
                 extKeyBCD = extKeyBCD.removeEnd(';');
@@ -188,6 +203,7 @@ public without sharing class Core_OppLineItem_Batch_Helper {
                 if(tempBuMap <> null){
                     tempBuMapSet.add(tempBuMap);
                 }
+               	system.debug('THREE FIELD CHECK:extKeyBCD '+extKeyBCD+'TEMPBUMAP:'+tempBuMap);
             }
             if(extKeyACD <> ''){
                 extKeyACD = extKeyACD.removeEnd(';');
@@ -195,12 +211,14 @@ public without sharing class Core_OppLineItem_Batch_Helper {
                 if(tempBuMap <> null){
                     tempBuMapSet.add(tempBuMap);
                 }
+                system.debug('THREE FIELD CHECK:extKeyACD '+extKeyACD+'TEMPBUMAP:'+tempBuMap);
             }
             if(extKeyABD <> ''){
                 tempBuMap = getBuMapRecord(wrap.extKeyWithBuMap, extKeyABD);
                 if(tempBuMap <> null){
                     tempBuMapSet.add(tempBuMap);
                 }
+                system.debug('THREE FIELD CHECK:extKeyABD '+extKeyABD+'TEMPBUMAP:'+tempBuMap);
             }
             
             if(!tempBuMapSet.isEmpty()){
@@ -215,23 +233,27 @@ public without sharing class Core_OppLineItem_Batch_Helper {
                 if(wrap.extKeyWithDivShortNmBuMap.containskey(extKeyAB)){
                     tempBuMapSet.addAll(wrap.extKeyWithDivShortNmBuMap.get(extKeyAB));
                 }
+                 system.debug('THREE FIELD CHECK:extKeyAB '+extKeyABD+'tempBuMapSet:'+tempBuMapSet);
             }
             if(extKeyAD <> ''){
                 extKeyAD = extKeyAD.removeEnd(';');
                 if(wrap.extKeyWithDivShortNmBuMap.containskey(extKeyAD)){
                     tempBuMapSet.addAll(wrap.extKeyWithDivShortNmBuMap.get(extKeyAD));
                 }
+                system.debug('THREE FIELD CHECK:extKeyAD '+extKeyAD+'tempBuMapSet:'+tempBuMapSet);
             }
             if(extKeyBD <> ''){
                 extKeyBD = extKeyBD.removeEnd(';');
                 if(wrap.extKeyWithDivShortNmBuMap.containskey(extKeyBD)){
                     tempBuMapSet.addAll(wrap.extKeyWithDivShortNmBuMap.get(extKeyBD));
                 }
+                 system.debug('THREE FIELD CHECK:extKeyBD '+extKeyBD+'tempBuMapSet:'+tempBuMapSet);
             }
             
             if(!tempBuMapSet.isEmpty()){
                 tempFinalBuMap = getBuMapRec(oppLineItem.Core_product2_division__c, tempBuMapSet);
                 tempBuMapSet.clear();
+                system.debug('THREE FIELD tempFinalBuMap '+tempFinalBuMap);
             }
         }
         /**************************************Three Field Check Ends**************************************/
@@ -243,6 +265,7 @@ public without sharing class Core_OppLineItem_Batch_Helper {
                 if(tempBuMap <> null){
                     tempBuMapSet.add(tempBuMap);
                 }
+                system.debug('THREE FIELD CHECK:extKeyAB '+extKeyAB+'tempBuMapSet:'+tempBuMapSet);
             }
             if(extKeyAC <> ''){
                 extKeyAC = extKeyAC.removeEnd(';');
@@ -250,12 +273,14 @@ public without sharing class Core_OppLineItem_Batch_Helper {
                 if(tempBuMap <> null){
                     tempBuMapSet.add(tempBuMap);
                 }
+                system.debug('THREE FIELD CHECK:extKeyAC '+extKeyAC+'tempBuMapSet:'+tempBuMapSet);
             }
             if(extKeyAD <> ''){
                 tempBuMap = getBuMapRecord(wrap.extKeyWithBuMap, extKeyAD);
                 if(tempBuMap <> null){
                     tempBuMapSet.add(tempBuMap);
                 }
+                system.debug('THREE FIELD CHECK:extKeyAD '+extKeyAD+'tempBuMapSet:'+tempBuMapSet);
             }
             if(extKeyBC <> ''){
                 extKeyBC = extKeyBC.removeEnd(';');
@@ -263,12 +288,14 @@ public without sharing class Core_OppLineItem_Batch_Helper {
                 if(tempBuMap <> null){
                     tempBuMapSet.add(tempBuMap);
                 }
+               system.debug('THREE FIELD CHECK:extKeyBC '+extKeyBC+'tempBuMapSet:'+tempBuMapSet);
             }
             if(extKeyBD <> ''){
                 tempBuMap = getBuMapRecord(wrap.extKeyWithBuMap, extKeyBD);
                 if(tempBuMap <> null){
                     tempBuMapSet.add(tempBuMap);
                 }
+                system.debug('THREE FIELD CHECK:extKeyBD '+extKeyBD+'tempBuMapSet:'+tempBuMapSet);
             }
             if(extKeyCD <> ''){
                 extKeyCD = extKeyCD.removeEnd(';');
@@ -276,6 +303,7 @@ public without sharing class Core_OppLineItem_Batch_Helper {
                 if(tempBuMap <> null){
                     tempBuMapSet.add(tempBuMap);
                 }
+                system.debug('THREE FIELD CHECK:extKeyCD '+extKeyCD+'tempBuMapSet:'+tempBuMapSet);
             }
             
             if(!tempBuMapSet.isEmpty()){
@@ -289,21 +317,25 @@ public without sharing class Core_OppLineItem_Batch_Helper {
                 if(wrap.extKeyWithDivShortNmBuMap.containskey(extKeyA)){
                     tempBuMapSet.addAll(wrap.extKeyWithDivShortNmBuMap.get(extKeyA));
                 }
+                system.debug('TWO FIELD CHECK extKeyA'+extKeyA+'tempBuMapSet'+tempBuMapSet);
             }
             if(extKeyB <> ''){
                 if(wrap.extKeyWithDivShortNmBuMap.containskey(extKeyB)){
                     tempBuMapSet.addAll(wrap.extKeyWithDivShortNmBuMap.get(extKeyB));
                 }
+                system.debug('TWO FIELD CHECK extKeyB'+extKeyB+'tempBuMapSet'+tempBuMapSet);
             }
             if(extKeyD <> ''){
                 if(wrap.extKeyWithDivShortNmBuMap.containskey(extKeyD)){
                     tempBuMapSet.addAll(wrap.extKeyWithDivShortNmBuMap.get(extKeyD));
                 }
+                system.debug('TWO FIELD CHECK extKeyD'+extKeyD+'tempBuMapSet'+tempBuMapSet);
             }
             
             if(!tempBuMapSet.isEmpty()){
                 tempFinalBuMap = getBuMapRec(oppLineItem.Core_product2_division__c, tempBuMapSet);
                 tempBuMapSet.clear();
+                system.debug('TWO FIELD CHECK tempFinalBuMap'+tempFinalBuMap);
             }
         }
         /**************************************Two Field Check Ends**************************************/
@@ -323,35 +355,41 @@ public without sharing class Core_OppLineItem_Batch_Helper {
                 if(tempBuMap <> null){
                     tempBuMapSet.add(tempBuMap);
                 }
+                system.debug('ONE FIELD CHECK extKeyA'+extKeyA+'tempBuMapSet'+tempBuMapSet);
             }
             if(extKeyB <> ''){
                 tempBuMap = getBuMapRecord(wrap.extKeyWithBuMap, extKeyB);
                 if(tempBuMap <> null){
                     tempBuMapSet.add(tempBuMap);
                 }
+                system.debug('ONE FIELD CHECK extKeyB'+extKeyB+'tempBuMapSet'+tempBuMapSet);
             }
             if(extKeyC <> ''){
                 tempBuMap = getBuMapRecord(wrap.extKeyWithBuMap, extKeyC);
                 if(tempBuMap <> null){
                     tempBuMapSet.add(tempBuMap);
                 }
+                system.debug('ONE FIELD CHECK extKeyC'+extKeyC+'tempBuMapSet'+tempBuMapSet);
             }
             if(extKeyD <> ''){
                 tempBuMap = getBuMapRecord(wrap.extKeyWithBuMap, extKeyD);
                 if(tempBuMap <> null){
                     tempBuMapSet.add(tempBuMap);
                 }
+                system.debug('ONE FIELD CHECK extKeyD'+extKeyD+'tempBuMapSet'+tempBuMapSet);
             }
             
             if(!tempBuMapSet.isEmpty()){
                 tempFinalBuMap = getBuMapRec(null, tempBuMapSet);
                 tempBuMapSet.clear();
+                 system.debug('ONE FIELD CHECK tempFinalBuMap'+tempFinalBuMap);
             }
         }                
         /**************************************One Field Check Ends**************************************/
         //Check the blank BU Map record only if all the above scenario's doesn't satisfy
         if(tempFinalBuMap == null && wrap.blankBuMapRecord <> null){
             tempFinalBuMap = wrap.blankBuMapRecord;
+             system.debug('ONE FIELD CHECK tempFinalBuMap null'+tempFinalBuMap);
         }
         return tempFinalBuMap;
     }

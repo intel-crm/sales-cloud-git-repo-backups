@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
     <sharingCriteriaRules>
-        <fullName>PMP_External_Coveo_User_Category</fullName>
+        <fullName>PMP_External_Anonymous_Users_Category</fullName>
         <accessLevel>Read</accessLevel>
-        <description>Share all Category records to Coveo Integration User</description>
-        <label>PMP External - Coveo User - Category</label>
+        <description>Share all Category records to all Anonymous Users</description>
+        <label>PMP External - Anonymous Users - Category</label>
         <sharedTo>
-            <group>Core_PG_Coveo_Integrator</group>
+            <group>PMP_All_Anonymous_Users</group>
         </sharedTo>
         <criteriaItems>
             <field>OwnerId</field>
@@ -75,4 +75,19 @@
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
+    <sharingGuestRules>
+        <fullName>PMP_External_Guest_User_Category</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Share all Category records to Guest User</description>
+        <label>PMP External - Guest User - Category</label>
+        <sharedTo>
+            <guestUser>Intel_Solutions_Marketplace</guestUser>
+        </sharedTo>
+        <criteriaItems>
+            <field>OwnerId</field>
+            <operation>notEqual</operation>
+            <value>null</value>
+        </criteriaItems>
+        <includeHVUOwnedRecords>false</includeHVUOwnedRecords>
+    </sharingGuestRules>
 </SharingRules>

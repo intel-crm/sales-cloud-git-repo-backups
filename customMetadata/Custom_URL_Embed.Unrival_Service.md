@@ -31,6 +31,10 @@
         <value xsi:nil="true"/>
     </values>
     <values>
+        <field>Dynamic_Filter_and_Value__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
         <field>Dynamic_Filter_and_Value_txt__c</field>
         <value xsi:nil="true"/>
     </values>
@@ -43,15 +47,23 @@
         <value xsi:type="xsd:string">SWS_UnrivalService</value>
     </values>
     <values>
+        <field>No_Access_Error__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
         <field>No_Access_Error_txt__c</field>
         <value xsi:nil="true"/>
     </values>
     <values>
         <field>Object__c</field>
-        <value xsi:type="xsd:string">Account</value>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>Project__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Security_Query__c</field>
         <value xsi:nil="true"/>
     </values>
     <values>
@@ -63,6 +75,10 @@
         <value xsi:type="xsd:boolean">false</value>
     </values>
     <values>
+        <field>Static_Filter_and_Value__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
         <field>Static_Filter_and_Value_txt__c</field>
         <value xsi:nil="true"/>
     </values>
@@ -72,7 +88,11 @@
     </values>
     <values>
         <field>URL__c</field>
-        <value xsi:type="xsd:string">https://api.intel.insighthub.unrival.net/lookup/accountID?response_mode=json</value>
+        <value xsi:type="xsd:string">https://sandbox-api-intel-insighthub-unrival-net-dzgxf3bjavbxdmgv.eastus-01.azurewebsites.net/lookup/accountID?response_mode=json</value>
+    </values>
+    <values>
+        <field>User_Filter_and_Value__c</field>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>User_Filter_and_Value_txt__c</field>

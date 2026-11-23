@@ -26,8 +26,65 @@ public without sharing class Core_InactiveAccountonOpp {//TWC3123-5299 added wit
         wrp.isOppInactive = false;
         wrp.isVendorInactive = false;
         wrp.isOppPartnerInactive = false;
-        List<Opportunity> opplist = [select id, Account.RecordType.name from Opportunity where id =:oppId WITH SECURITY_ENFORCED];//TWC3123-5299 added WITH SECURITY_ENFORCED
-        //system.debug('opplist-'+opplist);
+        
+        //Vidyadhar
+        //Commission change 2026
+        //PoC for showing warning before approvals when there are more than 4 eligible OTMs for commissions
+        //Start
+        wrp.showApproverWarning = false;
+        //List<Opportunity> opplist = [select id, Account.RecordType.name from Opportunity where id =:oppId WITH SECURITY_ENFORCED];//TWC3123-5299 added WITH SECURITY_ENFORCED
+        List<Opportunity> opplist = [select id,Account.RecordType.name,StageName,owner.ManagerId,Core_Technical_Owner__r.ManagerId,
+                                     Core_Approval_Status__c,Core_PW_Approval_Status__c,owner.Manager.DelegatedApproverId,Core_Technical_Owner__r.Manager.DelegatedApproverId,
+                                     Core_Commissionable__c
+                                     from opportunity where id =:oppId WITH SECURITY_ENFORCED];
+        Opportunity opp = oppList[0];
+        Boolean meetsWarningCriteria =(opp.StageName.equalsIgnoreCase('Design Win') && opp.Core_Approval_Status__c.equalsIgnoreCase('Approved')) ;
+        if (meetsWarningCriteria) {
+            Id currentUserId = UserInfo.getUserId();
+            
+            Set<Id> approverIds = new Set<Id>{opp.Owner.ManagerId,
+                opp.Owner.Manager?.DelegatedApproverId,
+                opp.Core_Technical_Owner__r?.ManagerId,
+                opp.Core_Technical_Owner__r?.Manager?.DelegatedApproverId
+                };
+                    
+            Boolean isCurrentUserApprover = approverIds.contains(currentUserId);
+            
+            if (!isCurrentUserApprover) {
+                List<OpportunityTeamMember> samMemberList = [select Id from OpportunityTeamMember
+                                                                  where OpportunityId = :oppId and Core_Production_Win_Member_Role__c ='Sales Account Manager'
+                                                                  and User.ManagerId = :currentUserId];
+                
+                isCurrentUserApprover = !samMemberList.isEmpty();
+            }
+            
+            wrp.showApproverWarning = isCurrentUserApprover;
+            
+            if (isCurrentUserApprover) {
+                Set<String> eligibleRoles = new Set<String>();
+                String commissionableRoles = Core_CRM_Utility.getCRMLabel('CRM_commissionEligibleRoles');
+                
+                if (String.isNotBlank(commissionableRoles)) {
+                    for (String commissionableRole : commissionableRoles.split(';')) {
+                        if (String.isNotBlank(commissionableRole)) {
+                            eligibleRoles.add(commissionableRole.trim());
+                        }
+                    }
+                }
+                
+                Integer eligibleTeamMemberCount = 0;
+                
+                if (!eligibleRoles.isEmpty()) {
+                    eligibleTeamMemberCount = [select COUNT() from OpportunityTeamMember where OpportunityId = :oppId 
+                                               and TeamMemberRole IN :eligibleRoles];
+                }
+                if (eligibleTeamMemberCount > 4) {
+                    wrp.approverWarningMessage = Core_CRM_Utility.getCRMLabel('CRM_maxCommissionEligibleWarn');
+                }
+            }
+            
+        }
+        //End - Commissions changes 2026
         if(opplist[0].Account.RecordType.name =='Inactive Account') {
             wrp.isOppInactive = true;
             //oppObj.Core_Is_Opportunity_Account_Inactive__c = true;
@@ -126,6 +183,10 @@ public without sharing class Core_InactiveAccountonOpp {//TWC3123-5299 added wit
         public boolean isVendorInactive {get;set;}
         @auraEnabled
         public boolean isOppPartnerInactive {get;set;}
+        @auraEnabled
+        public boolean showApproverWarning {get;set;}
+        @auraEnabled
+        public String approverWarningMessage {get;set;}
         
     }
 }

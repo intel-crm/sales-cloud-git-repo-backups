@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>false</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <fields>
+        <fullName>Core_Effective_End_Date__c</fullName>
+        <label>Effective End Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Core_Effective_Start_Date__c</fullName>
+        <label>Effective Start Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Core_Trusted_Source__c</fullName>
+        <label>Trusted Source</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>AMEX</fullName>
+                    <default>false</default>
+                    <label>American Express</label>
+                </value>
+                <value>
+                    <fullName>BvD</fullName>
+                    <default>false</default>
+                    <label>Bureau Van Dyke</label>
+                </value>
+                <value>
+                    <fullName>BUSNSSUPL</fullName>
+                    <default>false</default>
+                    <label>Business Supplied</label>
+                </value>
+                <value>
+                    <fullName>ISO</fullName>
+                    <default>false</default>
+                    <label>International Standards Organization</label>
+                </value>
+                <value>
+                    <fullName>CRS</fullName>
+                    <default>false</default>
+                    <label>CRS Conversion</label>
+                </value>
+                <value>
+                    <fullName>VIVA</fullName>
+                    <default>false</default>
+                    <label>VIVA</label>
+                </value>
+                <value>
+                    <fullName>USIRS</fullName>
+                    <default>false</default>
+                    <label>USA IRS</label>
+                </value>
+                <value>
+                    <fullName>CONNXUS</fullName>
+                    <default>false</default>
+                    <label>CONNXUS</label>
+                </value>
+                <value>
+                    <fullName>ACCUITY</fullName>
+                    <default>false</default>
+                    <label>Accuity</label>
+                </value>
+                <value>
+                    <fullName>NMFTA</fullName>
+                    <default>false</default>
+                    <label>National Motor Freight Traffic Association</label>
+                </value>
+                <value>
+                    <fullName>RAPIDRATE</fullName>
+                    <default>false</default>
+                    <label>Rapid Ratings</label>
+                </value>
+                <value>
+                    <fullName>INTEL</fullName>
+                    <default>false</default>
+                    <label>Intel</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_Type__c</fullName>
+        <label>Type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>NOTRDOUT</fullName>
+                    <default>false</default>
+                    <label>Block Items from Intel</label>
+                </value>
+                <value>
+                    <fullName>NOTRDIN</fullName>
+                    <default>false</default>
+                    <label>Block Items to Intel</label>
+                </value>
+                <value>
+                    <fullName>NOPAYOUT</fullName>
+                    <default>false</default>
+                    <label>Block Payment from Intel</label>
+                </value>
+                <value>
+                    <fullName>NOPAYIN</fullName>
+                    <default>false</default>
+                    <label>Block Payment to Intel</label>
+                </value>
+                <value>
+                    <fullName>DELIST</fullName>
+                    <default>false</default>
+                    <label>Delist</label>
+                </value>
+                <value>
+                    <fullName>DPL</fullName>
+                    <default>false</default>
+                    <label>Denied Parties List</label>
+                </value>
+                <value>
+                    <fullName>EC</fullName>
+                    <default>false</default>
+                    <label>Embargoed Country</label>
+                </value>
+                <value>
+                    <fullName>EPCI</fullName>
+                    <default>false</default>
+                    <label>Enhanced Proliferation Control Initiative</label>
+                </value>
+                <value>
+                    <fullName>ECB</fullName>
+                    <default>false</default>
+                    <label>Export Compliance Block</label>
+                </value>
+                <value>
+                    <fullName>PAYCOND</fullName>
+                    <default>false</default>
+                    <label>Financial Conditions</label>
+                </value>
+                <value>
+                    <fullName>FGE</fullName>
+                    <default>false</default>
+                    <label>Foreign Government Entity</label>
+                </value>
+                <value>
+                    <fullName>MAG</fullName>
+                    <default>false</default>
+                    <label>Military, Aerospace, or Government</label>
+                </value>
+                <value>
+                    <fullName>NOSNCTN</fullName>
+                    <default>false</default>
+                    <label>No Sanction or Embargo</label>
+                </value>
+                <value>
+                    <fullName>OOB</fullName>
+                    <default>false</default>
+                    <label>Out of Business</label>
+                </value>
+                <value>
+                    <fullName>REVIEWWIP</fullName>
+                    <default>false</default>
+                    <label>Review is pending</label>
+                </value>
+                <value>
+                    <fullName>TRDCOND</fullName>
+                    <default>false</default>
+                    <label>Trade Conditions Apply</label>
+                </value>
+                <value>
+                    <fullName>UA</fullName>
+                    <default>false</default>
+                    <label>Undeliverable Address</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Reltio_Staging__c</fullName>
+        <label>Reltio Staging</label>
+        <referenceTo>Reltio_Staging__c</referenceTo>
+        <relationshipLabel>Compliance Watch List Stage</relationshipLabel>
+        <relationshipName>Compliance_Watch_List_Stage</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <label>Compliance Watch List Stage</label>
+    <nameField>
+        <displayFormat>AQR - {0000}</displayFormat>
+        <label>Compliance Watch List Stage Name</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Compliance Watch List Stage</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

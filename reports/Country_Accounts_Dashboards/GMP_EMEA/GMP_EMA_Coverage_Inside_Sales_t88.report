@@ -72,7 +72,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Inside SDR,Inside LDR,Inside SDM,Inside Sales</value>
+            <value></value>
         </criteriaItems>
         <criteriaItems>
             <column>Account.Core_Sales_Groups__c</column>

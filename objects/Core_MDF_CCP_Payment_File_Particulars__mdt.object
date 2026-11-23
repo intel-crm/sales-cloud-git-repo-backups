@@ -41,30 +41,10 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Core_MDF_Commodity_Code_CSAR__c</fullName>
-        <externalId>false</externalId>
-        <fieldManageability>DeveloperControlled</fieldManageability>
-        <label>Commodity Code CSAR</label>
-        <length>20</length>
-        <required>false</required>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Commodity_Code_Customer_NonPO__c</fullName>
-        <externalId>false</externalId>
-        <fieldManageability>DeveloperControlled</fieldManageability>
-        <label>Commodity Code Customer NonPO</label>
-        <length>20</length>
-        <required>false</required>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_MDF_Commodity_Code__c</fullName>
         <externalId>false</externalId>
         <fieldManageability>DeveloperControlled</fieldManageability>
-        <label>Commodity Code Expense</label>
+        <label>Commodity Code</label>
         <length>20</length>
         <required>false</required>
         <type>Text</type>
@@ -91,30 +71,10 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Core_MDF_GL_Account_CSAR__c</fullName>
-        <externalId>false</externalId>
-        <fieldManageability>DeveloperControlled</fieldManageability>
-        <label>GL Account CSAR</label>
-        <length>30</length>
-        <required>false</required>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_GL_Account_Customer_NonPO__c</fullName>
-        <externalId>false</externalId>
-        <fieldManageability>DeveloperControlled</fieldManageability>
-        <label>GL Account Customer NonPO</label>
-        <length>30</length>
-        <required>false</required>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_MDF_GL_Account__c</fullName>
         <externalId>false</externalId>
         <fieldManageability>DeveloperControlled</fieldManageability>
-        <label>GL Account Expense</label>
+        <label>GL Account</label>
         <length>30</length>
         <required>false</required>
         <type>Text</type>
@@ -164,7 +124,7 @@
         <fullName>Core_MDF_Postal_Code__c</fullName>
         <externalId>false</externalId>
         <fieldManageability>DeveloperControlled</fieldManageability>
-        <label>Buy from Postal Code</label>
+        <label>Postal Code</label>
         <length>20</length>
         <required>false</required>
         <type>Text</type>
@@ -181,21 +141,11 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Core_MDF_Program_ID__c</fullName>
-        <externalId>false</externalId>
-        <fieldManageability>DeveloperControlled</fieldManageability>
-        <label>Program ID</label>
-        <length>25</length>
-        <required>false</required>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_MDF_Program__c</fullName>
         <externalId>false</externalId>
         <fieldManageability>DeveloperControlled</fieldManageability>
         <label>Program</label>
-        <length>50</length>
+        <length>255</length>
         <required>false</required>
         <type>Text</type>
         <unique>false</unique>
@@ -206,17 +156,6 @@
         <fieldManageability>DeveloperControlled</fieldManageability>
         <label>Region</label>
         <length>30</length>
-        <required>false</required>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Ship_to_Postal_Code__c</fullName>
-        <description>Hold Ship to Postal Code value</description>
-        <externalId>false</externalId>
-        <fieldManageability>DeveloperControlled</fieldManageability>
-        <label>Ship to Postal Code</label>
-        <length>20</length>
         <required>false</required>
         <type>Text</type>
         <unique>false</unique>

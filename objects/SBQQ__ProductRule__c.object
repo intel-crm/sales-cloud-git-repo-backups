@@ -283,6 +283,11 @@
                     <default>false</default>
                     <label>SBQQ__Message__c</label>
                 </value>
+                <value>
+                    <fullName>Core_OPN__c</fullName>
+                    <default>false</default>
+                    <label>Core_OPN__c</label>
+                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -303,6 +308,16 @@
                     <default>false</default>
                     <label>SBQQ__LookupData__c</label>
                 </value>
+                <value>
+                    <fullName>Product2</fullName>
+                    <default>false</default>
+                    <label>Product2</label>
+                </value>
+                <value>
+                    <fullName>core_cpq_end_customer_nm__c</fullName>
+                    <default>false</default>
+                    <label>core_cpq_end_customer_nm__c</label>
+                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -322,6 +337,16 @@
                     <fullName>SBQQ__Product__c</fullName>
                     <default>false</default>
                     <label>SBQQ__Product__c</label>
+                </value>
+                <value>
+                    <fullName>Core_OPN__c</fullName>
+                    <default>false</default>
+                    <label>Core_OPN__c</label>
+                </value>
+                <value>
+                    <fullName>Core_Product_Ext_Attribute_Id__c</fullName>
+                    <default>false</default>
+                    <label>Core_Product_Ext_Attribute_Id__c</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -388,6 +413,16 @@
                     <default>false</default>
                     <label>Product</label>
                 </value>
+                <value>
+                    <fullName>Opportunity</fullName>
+                    <default>false</default>
+                    <label>Opportunity</label>
+                </value>
+                <value>
+                    <fullName>Quote Line</fullName>
+                    <default>false</default>
+                    <label>Quote Line</label>
+                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -431,7 +466,11 @@
         <fullName>SBQQ__All</fullName>
         <columns>NAME</columns>
         <columns>SBQQ__Active__c</columns>
+        <columns>SBQQ__Type__c</columns>
         <columns>UPDATEDBY_USER</columns>
+        <columns>CREATEDBY_USER</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>SBQQ__ErrorMessage__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>

@@ -9,6 +9,10 @@
         <value>Core_KPI_FullRefresh_Check</value>
     </caseValues>
     <fields>
+        <label><!-- IsSyncRefresh --></label>
+        <name>Core_IsSyncRefresh__c</name>
+    </fields>
+    <fields>
         <label><!-- IsFullRefresh --></label>
         <name>IsFullRefresh__c</name>
     </fields>

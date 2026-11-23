@@ -16,6 +16,7 @@
         <connector>
             <targetReference>myWaitEvent_myWait_myRule_11_event_0_postWaitExecutionAssignment</targetReference>
         </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>SObjectRowId</name>
             <value>
@@ -40,6 +41,7 @@
         <connector>
             <targetReference>myWaitEvent_myWait_myRule_13_event_0_postWaitExecutionAssignment</targetReference>
         </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>SObjectRowId</name>
             <value>
@@ -64,6 +66,7 @@
         <connector>
             <targetReference>myWaitEvent_myWait_myRule_1_event_0_postWaitExecutionAssignment</targetReference>
         </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>SObjectRowId</name>
             <value>
@@ -88,6 +91,7 @@
         <connector>
             <targetReference>myWaitEvent_myWait_myRule_3_event_0_postWaitExecutionAssignment</targetReference>
         </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>SObjectRowId</name>
             <value>
@@ -112,6 +116,7 @@
         <connector>
             <targetReference>myWaitEvent_myWait_myRule_5_event_0_postWaitExecutionAssignment</targetReference>
         </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>SObjectRowId</name>
             <value>
@@ -136,6 +141,7 @@
         <connector>
             <targetReference>myWaitEvent_myWait_myRule_7_event_0_postWaitExecutionAssignment</targetReference>
         </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>SObjectRowId</name>
             <value>
@@ -160,6 +166,7 @@
         <connector>
             <targetReference>myWaitEvent_myWait_myRule_9_event_0_postWaitExecutionAssignment</targetReference>
         </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>SObjectRowId</name>
             <value>
@@ -170,22 +177,6 @@
     </actionCalls>
     <apiVersion>49.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
-    <assignments>
-        <name>myVariable_waitStartTimeAssignment</name>
-        <label>myVariable_waitStartTimeAssignment</label>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-        <assignmentItems>
-            <assignToReference>myVariable_waitStartTimeVariable</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Flow.CurrentDateTime</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>myPreWaitDecision_myWait_myRule_13</targetReference>
-        </connector>
-    </assignments>
     <assignments>
         <name>myWaitAssignment_myWait_myRule_1</name>
         <label>myWaitAssignment_myWait_myRule_1</label>
@@ -1310,7 +1301,7 @@
 </stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_16_myRule_15_A1_6499680025</name>
+        <name>formula_16_myRule_15_A1_3560347347</name>
         <dataType>DateTime</dataType>
         <expression>DATETIMEVALUE({!myVariable_current.Core_WeekEnd_SLA_Calculation__c}) -1</expression>
     </formulas>
@@ -2244,7 +2235,7 @@ ISPICKVAL({!myVariable_old.Core_Lead_Status__c} , &quot;Accepted&quot;)
 
 )</expression>
     </formulas>
-    <interviewLabel>Email_Alert_on_weekend_for_Lead_SLA_Enforcement-23_InterviewLabel</interviewLabel>
+    <interviewLabel>Email_Alert_on_weekend_for_Lead_SLA_Enforcement-24_InterviewLabel</interviewLabel>
     <label>Email Alert on weekend for Lead SLA Enforcement</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -2279,6 +2270,9 @@ ISPICKVAL({!myVariable_old.Core_Lead_Status__c} , &quot;Accepted&quot;)
             </value>
         </processMetadataValues>
         <processMetadataValues>
+            <name>extraTypeInfo</name>
+        </processMetadataValues>
+        <processMetadataValues>
             <name>isChildRelationship</name>
             <value>
                 <booleanValue>false</booleanValue>
@@ -2289,6 +2283,9 @@ ISPICKVAL({!myVariable_old.Core_Lead_Status__c} , &quot;Accepted&quot;)
             <value>
                 <stringValue>[Lead]</stringValue>
             </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>referenceTargetField</name>
         </processMetadataValues>
         <name>myRule_15_A1</name>
         <label>SAL Email Trigger date update</label>
@@ -2341,13 +2338,13 @@ ISPICKVAL({!myVariable_old.Core_Lead_Status__c} , &quot;Accepted&quot;)
             </processMetadataValues>
             <field>Core_SAL_Weekend_Email_Trigger_Date__c</field>
             <value>
-                <elementReference>formula_16_myRule_15_A1_6499680025</elementReference>
+                <elementReference>formula_16_myRule_15_A1_3560347347</elementReference>
             </value>
         </inputAssignments>
         <object>Lead</object>
     </recordUpdates>
-    <startElementReference>myVariable_waitStartTimeAssignment</startElementReference>
-    <status>Obsolete</status>
+    <startElementReference>myPreWaitDecision_myWait_myRule_13</startElementReference>
+    <status>Draft</status>
     <variables>
         <name>cancelWaits</name>
         <dataType>String</dataType>
@@ -2370,16 +2367,6 @@ ISPICKVAL({!myVariable_old.Core_Lead_Status__c} , &quot;Accepted&quot;)
         <isInput>true</isInput>
         <isOutput>false</isOutput>
         <objectType>Lead</objectType>
-    </variables>
-    <variables>
-        <name>myVariable_waitStartTimeVariable</name>
-        <dataType>DateTime</dataType>
-        <isCollection>false</isCollection>
-        <isInput>false</isInput>
-        <isOutput>false</isOutput>
-        <value>
-            <elementReference>$Flow.CurrentDateTime</elementReference>
-        </value>
     </variables>
     <variables>
         <name>myWaitEvent_myWait_myRule_11_event_0_postActionExecutionVariable</name>

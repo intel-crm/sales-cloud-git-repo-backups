@@ -190,6 +190,15 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Core_Feature_Date_Value__c</fullName>
+        <formula>Core_Feature__r.Core_Feature_Date_Value__c</formula>
+        <label>Feature Date Value</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
         <fullName>Core_Feature_Header__c</fullName>
         <description>This is a field used to associate a master-detail relationship with the Feature Header Object</description>
         <label>Feature Header</label>
@@ -285,6 +294,12 @@
     </listViews>
     <listViews>
         <fullName>All1</fullName>
+        <columns>NAME</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>Core_Header_Name__c</columns>
+        <columns>Core_Feature_Header__c</columns>
+        <columns>Core_Feature_Value__c</columns>
+        <columns>Core_Header_Type__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>

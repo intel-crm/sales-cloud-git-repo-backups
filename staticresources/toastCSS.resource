@@ -1,3 +1,5 @@
 .toastMessage {
-        white-space: break-spaces !important;
+        white-space: pre-line !important;
+		overflow: Scrollbar;
 }
+

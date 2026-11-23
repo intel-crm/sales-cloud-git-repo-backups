@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>Sightcorp B.v. Partner Executive</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>Sightcorp B.v. Partner Executive</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>EMP_11448351_Michal_Wrzosek</parentRole>
+</Role>

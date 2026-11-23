@@ -20,6 +20,10 @@
         <enabled>true</enabled>
         <name>CST_Super_Admin</name>
     </customPermissions>
+    <customPermissions>
+        <enabled>true</enabled>
+        <name>SMG_One_AI_Plugin</name>
+    </customPermissions>
     <fieldPermissions>
         <editable>true</editable>
         <field>Account.Core_Account_Owner_Preview__c</field>
@@ -28,6 +32,16 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Account.Core_Sales_Group_Preview__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Business_Review__c.User_s_Manager__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_Contact_Entitlement__c.Core_Display_Nm__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -46,11 +60,6 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
-        <field>SPM_Account_Detail__c.CIM_ID__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
         <editable>false</editable>
         <field>SPM_Account_Detail__c.CRM_CST_Is_Active_Planning_Period__c</field>
         <readable>true</readable>
@@ -62,16 +71,21 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>SPM_Account_Detail__c.CST_New_Account_Level__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>SPM_Account_Detail__c.CST_Region__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>SPM_Account_Detail__c.CST_Umbrella_Group_ID__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>SPM_Account_Detail__c.CST_Umbrella_Group_Name__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -181,27 +195,22 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
-        <field>SPM_Account_Detail__c.New_Account__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>SPM_Account_Detail__c.Old_Account_Primary_Coverage__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>SPM_Account_Detail__c.Old_Account_owner__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>SPM_Account_Detail__c.Old_Sales_Group__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>SPM_Account_Detail__c.Old_Semi_Annual_Temp_Account_Category__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -212,17 +221,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>SPM_Account_Detail__c.Prime_Name__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>SPM_Account_Detail__c.Region__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
         <field>SPM_Account_Detail__c.Regional_Lead__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SPM_Account_Detail__c.SF_Account__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -273,11 +282,6 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>SPM_Account_Detail__c.X2nd_level_Manager__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>SPM_Account_Feedback__c.Account_Detail__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -351,6 +355,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>SPM_Account_Feedback__c.CST_New_Account_Level__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>SPM_Account_Feedback__c.Category__c</field>
         <readable>true</readable>
@@ -363,11 +372,6 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>SPM_Account_Feedback__c.Coverage_Type__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>SPM_Account_Feedback__c.Customer_Detail__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -423,11 +427,6 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>SPM_Account_Feedback__c.Unified_ID__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>SPM_Customer_Category__c.AI_Group_ID__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -502,6 +501,36 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>SPM_Customer_Category__c.Core_ASP__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SPM_Customer_Category__c.Core_Amt_of_EndCustomers_Past_Year__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SPM_Customer_Category__c.Core_Amt_of_IPA_End_Customers_Past_Year__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SPM_Customer_Category__c.Core_Billings_Revenue_Past_QTR__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SPM_Customer_Category__c.Core_Billings_Revenue_Past_Year__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SPM_Customer_Category__c.Core_Billings_YoY_Growth__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>SPM_Customer_Category__c.Core_Branded_Revenue_Past_Year__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -547,6 +576,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>SPM_Customer_Category__c.Core_Direct_Sales_Revenue_Past_Year__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>SPM_Customer_Category__c.Core_DistiSalesOutPast12_mnt_ofCustomer__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -573,6 +607,16 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>SPM_Customer_Category__c.Core_Disti_Sales_Out_Past_12_months_NEX__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SPM_Customer_Category__c.Core_Disti_Sales_out_revenue_past_year__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SPM_Customer_Category__c.Core_Disti_sales_out_revenue_YoY__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -622,6 +666,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>SPM_Customer_Category__c.Core_Number_of_Accounts_at_CategoryLevel__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>SPM_Customer_Category__c.Core_Number_of_employees__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -637,7 +686,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>SPM_Customer_Category__c.Core_Opportunities_Revenue_Last_Year__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>SPM_Customer_Category__c.Core_Per_ofRevenueOutOfRegionRevenue__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>SPM_Customer_Category__c.Core_Primary_Location__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -717,7 +776,27 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>SPM_Customer_Category__c.Core_Sales_Revenue_Last_QTR__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SPM_Customer_Category__c.Core_Sales_Revenue_Last_Year__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SPM_Customer_Category__c.Core_Sales_YoY__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>SPM_Customer_Category__c.Core_Silicon_Spend__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SPM_Customer_Category__c.Core_Top_companies_in_vertical__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -728,6 +807,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>SPM_Customer_Category__c.Core_UCD_Global_Name__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SPM_Customer_Category__c.Core_YearlyBillings_Weighted_AVG_3_Years__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -827,7 +911,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>SPM_Customer_Category__c.Region__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>SPM_Customer_Category__c.Sales_Group__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SPM_Customer_Category__c.Sub_Region__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -882,7 +976,7 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>SPM_Customer_Detail__c.Coverage__c</field>
+        <field>SPM_Customer_Detail__c.Customer_Category__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -897,12 +991,37 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>SPM_Customer_Detail__c.Device_Builder_MNC__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SPM_Customer_Detail__c.Device_Builder_Regional_OxM__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SPM_Customer_Detail__c.Distributors_IA__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>SPM_Customer_Detail__c.Distributors__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>SPM_Customer_Detail__c.End_Customer__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>SPM_Customer_Detail__c.GM__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SPM_Customer_Detail__c.Hyperscaler_AWS_Azure_GCP__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -967,6 +1086,21 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>SPM_Customer_Detail__c.Reseller_Branded_Disti__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SPM_Customer_Detail__c.Reseller_Named_Billing_Accounts__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SPM_Customer_Detail__c.Reseller_Retailers__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>SPM_Customer_Detail__c.SPM_AI_Group_ID__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -982,7 +1116,7 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>SPM_Customer_Detail__c.Top_Global__c</field>
+        <field>SPM_Customer_Detail__c.Solution_Enabler_SI_ISV_CSP_MSP__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1018,6 +1152,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>SPM_Customer_Feedback__c.CST_Back_Propagation_By_TA__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SPM_Customer_Feedback__c.CST_New_Account_Level__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1126,12 +1265,12 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>SPM_New_Accounts__c.CRM_CST_Is_Active_Planning_Period__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>SPM_New_Accounts__c.CRM_CST_Planning_Period__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -1330,10 +1469,10 @@
     <license>Salesforce</license>
     <objectPermissions>
         <allowCreate>true</allowCreate>
-        <allowDelete>true</allowDelete>
+        <allowDelete>false</allowDelete>
         <allowEdit>true</allowEdit>
         <allowRead>true</allowRead>
-        <modifyAllRecords>true</modifyAllRecords>
+        <modifyAllRecords>false</modifyAllRecords>
         <object>SPM_Account_Detail__c</object>
         <viewAllFields>false</viewAllFields>
         <viewAllRecords>true</viewAllRecords>
@@ -1360,10 +1499,10 @@
     </objectPermissions>
     <objectPermissions>
         <allowCreate>true</allowCreate>
-        <allowDelete>true</allowDelete>
+        <allowDelete>false</allowDelete>
         <allowEdit>true</allowEdit>
         <allowRead>true</allowRead>
-        <modifyAllRecords>true</modifyAllRecords>
+        <modifyAllRecords>false</modifyAllRecords>
         <object>SPM_Customer_Detail__c</object>
         <viewAllFields>false</viewAllFields>
         <viewAllRecords>true</viewAllRecords>
@@ -1390,10 +1529,10 @@
     </objectPermissions>
     <objectPermissions>
         <allowCreate>true</allowCreate>
-        <allowDelete>true</allowDelete>
+        <allowDelete>false</allowDelete>
         <allowEdit>true</allowEdit>
         <allowRead>true</allowRead>
-        <modifyAllRecords>true</modifyAllRecords>
+        <modifyAllRecords>false</modifyAllRecords>
         <object>SPM_Planning_Period__c</object>
         <viewAllFields>false</viewAllFields>
         <viewAllRecords>true</viewAllRecords>
@@ -1410,10 +1549,10 @@
     </objectPermissions>
     <objectPermissions>
         <allowCreate>true</allowCreate>
-        <allowDelete>true</allowDelete>
+        <allowDelete>false</allowDelete>
         <allowEdit>true</allowEdit>
         <allowRead>true</allowRead>
-        <modifyAllRecords>true</modifyAllRecords>
+        <modifyAllRecords>false</modifyAllRecords>
         <object>SPM_Security_Mapping__c</object>
         <viewAllFields>false</viewAllFields>
         <viewAllRecords>true</viewAllRecords>
@@ -1428,6 +1567,10 @@
     </tabSettings>
     <tabSettings>
         <tab>Help</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+    <tabSettings>
+        <tab>New_Account_SBR</tab>
         <visibility>Visible</visibility>
     </tabSettings>
     <tabSettings>
@@ -1462,32 +1605,12 @@
         <tab>SPM_Regional_Customer__c</tab>
         <visibility>Visible</visibility>
     </tabSettings>
+    <tabSettings>
+        <tab>SPM_Security_Mapping__c</tab>
+        <visibility>Available</visibility>
+    </tabSettings>
     <userPermissions>
         <enabled>true</enabled>
         <name>CreateCustomizeFilters</name>
-    </userPermissions>
-    <userPermissions>
-        <enabled>true</enabled>
-        <name>CreateCustomizeReports</name>
-    </userPermissions>
-    <userPermissions>
-        <enabled>true</enabled>
-        <name>CreateReportFolders</name>
-    </userPermissions>
-    <userPermissions>
-        <enabled>true</enabled>
-        <name>EditMyReports</name>
-    </userPermissions>
-    <userPermissions>
-        <enabled>true</enabled>
-        <name>ManageReportsInPubFolders</name>
-    </userPermissions>
-    <userPermissions>
-        <enabled>true</enabled>
-        <name>RunReports</name>
-    </userPermissions>
-    <userPermissions>
-        <enabled>true</enabled>
-        <name>ViewPublicReports</name>
     </userPermissions>
 </PermissionSet>

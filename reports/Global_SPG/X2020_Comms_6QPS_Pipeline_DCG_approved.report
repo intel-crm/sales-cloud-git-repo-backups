@@ -92,7 +92,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>excludes</operator>
-            <value>Solution Integration (SI/ITO/bVAR),Independent Software Vendor (ISV),Telco Equipment Manufacturer (TEM)</value>
+            <value>Solution Integration (SI/ITO/bVAR),Independent Software Vendor (ISV),Telco Equipment Manufacturer (TEM),Other</value>
         </criteriaItems>
         <criteriaItems>
             <column>Account.Core_Account_Type__c</column>

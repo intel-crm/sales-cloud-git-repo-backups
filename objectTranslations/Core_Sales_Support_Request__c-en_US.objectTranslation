@@ -8,6 +8,14 @@
         <plural>true</plural>
         <value>Sales Support Requests</value>
     </caseValues>
+    <fieldSets>
+        <label><!-- Opportunity Support Status IT @ Intel --></label>
+        <name>Opportunity_Support_Status_IT_Intel</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Opportunity Support Status Software Expert --></label>
+        <name>Opportunity_Support_Status_Software_Exp</name>
+    </fieldSets>
     <fields>
         <label><!-- Account Name --></label>
         <name>Core_Account_Name__c</name>

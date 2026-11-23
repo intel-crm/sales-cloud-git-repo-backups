@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>PSG Price Increase</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>PSG Price Increase</value>
+    </caseValues>
+    <fields>
+        <label><!-- Cloned DPA/ALN Id --></label>
+        <name>Cloned_DPA_ALN_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Operation Type --></label>
+        <name>Operation_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Status__c</name>
+        <picklistValues>
+            <masterLabel>Failed</masterLabel>
+            <translation><!-- Failed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending</masterLabel>
+            <translation><!-- Pending --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Processed</masterLabel>
+            <translation><!-- Processed --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Sync Comments --></label>
+        <name>Sync_Comments__c</name>
+    </fields>
+    <fields>
+        <label><!-- DPA/ALN Id --></label>
+        <name>psg_dpa_aln_id__c</name>
+    </fields>
+    <fields>
+        <label><!-- DPA/ALN Number --></label>
+        <name>psg_dpa_aln_nbr__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

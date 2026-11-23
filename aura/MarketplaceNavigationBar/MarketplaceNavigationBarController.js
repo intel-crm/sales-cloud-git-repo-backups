@@ -41,13 +41,13 @@
                             component.set("v.disableManageStorefront",false) 
                         }
                     
-                    // var isSolutionsPage = urlStr.match('/survey/ArdiraSurvey__Survey__c/'); 
-                    // if(isSolutionsPage){
-                    //     component.set("v.disableManageSolutions",true)
-                    // }
-                    // else{
-                    //     component.set("v.disableManageSolutions",false) 
-                    // }
+                    var isSolutionsPage = urlStr.match('/survey/ArdiraSurvey__Survey__c/'); 
+                    if(isSolutionsPage){
+                        component.set("v.disableManageSolutions",true)
+                    }
+                    else{
+                        component.set("v.disableManageSolutions",false) 
+                    }
                 }
             }
             else if (status === "ERROR") {
@@ -62,15 +62,14 @@
         //end
 		
         var urlStr = window.location.href;
-        // IPA2.0 + US TWC4497-1631
-        // var isOfferingPage = urlStr.match('/pmp-partner-offering/PMP_Partner_Offering__c/'); 
-        // if(isOfferingPage){
-        //     component.set("v.disableManageOfferings",true)
-        // }
-        // else{
-        //     component.set("v.disableManageOfferings",false) 
-        // }
-        //TWC4497-1569 changes to remove offering and solutions Button Shivini
+        
+        var isOfferingPage = urlStr.match('/pmp-partner-offering/PMP_Partner_Offering__c/'); 
+        if(isOfferingPage){
+            component.set("v.disableManageOfferings",true)
+        }
+        else{
+            component.set("v.disableManageOfferings",false) 
+        }
         
         var isBasicAccess = false;
         var is_PMP_Manage_Events = false;
@@ -80,13 +79,11 @@
         var is_Intel_Admin_Profile = false;
         var is_PMP_Manage_Leads = false;
         var is_PMP_Manage_Storefront = false;
-        // var is_PMP_Manage_Offerings = false;        // IPA2.0 + US TWC4497-1631
+        var is_PMP_Manage_Offerings = false;
         var is_PMP_Manage_Partners = false;
         var is_PMP_View_Dashboard = false;
-        // var is_Offering_Page =false; //IPA2.0 + US TWC4497-1631
-        var is_PMP_Manage_Solutions = false;
-        var is_PMP_Manage_Storefront = false;
-        // Added by Subash for US842248
+        var is_Offering_Page =false;
+        var is_PMP_Manage_Solutions = false;	// Added by Subash for US842248
         var pageName = window.document.title;
         
         var actionPermissionSet = component.get("c.checkForCustomPermission");
@@ -100,11 +97,10 @@
                     if(storeResponse.PMP_Manage_Leads !== undefined){
                         is_PMP_Manage_Leads = true;
                     }
-// IPA2.0 + US TWC4497-1631
-                    // if(storeResponse.PMP_Manage_Offerings !== undefined){
-                    //     is_PMP_Manage_Offerings = true;
-                    // }
-                    //TWC4497-1569 changes to remove offering and solutions Button Shivini
+
+                    if(storeResponse.PMP_Manage_Offerings !== undefined){
+                        is_PMP_Manage_Offerings = true;
+                    }
                  
                     if(storeResponse.PMP_Manage_Partners !== undefined){
                         is_PMP_Manage_Partners = true;
@@ -121,10 +117,6 @@
                     if(storeResponse.PMP_Manage_Solutions !== undefined){
                         is_PMP_Manage_Solutions = true;
                     }
-                     if(storeResponse.PMP_Manage_Storefront !== undefined){
-                        is_PMP_Manage_Storefront = true;
-                    }
-                    
                 }
                 
                 var action = component.get("c.checkBenefitLevel");
@@ -133,41 +125,28 @@
                     var state = response.getState();
                     if (state === "SUCCESS") {
                         var storeResponse = response.getReturnValue();
-                         //TWC4497-1569 changes to remove offering and solutions Button check label
-                       /* if(storeResponse != '' &&  storeResponse == $A.get("{!$Label.c.PMP_Offering_Benefit}")){ //storeResponse.includes("Enhanced")
+                        if(storeResponse != '' &&  storeResponse == $A.get("{!$Label.c.PMP_Offering_Benefit}")){ //storeResponse.includes("Enhanced")
                             isEnhanced = true;
                         }
                         if(storeResponse == '' || storeResponse == 'Solution Marketplace Basic Access'){
                             isBasicAccess = true;
-                        }*/
+                        }
 
                         //NOTE : Add check for basic access restriction here
                         
                         var actionInternalPermCheck = component.get("c.fetchPermissionSetName");
                         actionInternalPermCheck.setCallback(this, function(response) {
                             var state = response.getState();
-                            
                             if (state === "SUCCESS") {
                                 var storeResponse = response.getReturnValue();
-                               
-                                // if(storeResponse != null && storeResponse.includes("PMP_Internal_Intel_Admin")){ 
-                               // IPA2.0 + US TWC729-8177 - View Dashboard Removal
-                                if(storeResponse != null && (storeResponse.includes("PMP_Internal_Intel_Admin") || storeResponse.includes("PMP_Internal_Intel_Admin_Read_Only") || storeResponse.includes("PMP_Internal_Intel_Read_Only"))){
+                                if(storeResponse != null && storeResponse.includes("PMP_Internal_Intel_Admin")){
                                     is_Intel_Admin_Profile = true;
-                                     
                                 }
-                              
-                                // IPA2.0 + US TWC729-8177 - View Dashboard Removal
-                                // Check if current page is dashboard and user is admin - redirect if admin
-                                var currentUrl = window.location.href;
-                                if(currentUrl.includes('/dashboard') && is_Intel_Admin_Profile == true){
-                                var marketplaceUrl = $A.get('$Label.c.PMP_Marketplace_Community_URL');
-                                window.location.href = marketplaceUrl + '/error';
-                            }
                                 
                                 var actionFetchUserDetails = component.get("c.fetchUser");
                                 
                                 actionFetchUserDetails.setCallback(this, function(response) {
+                                    console.log(response.getState()+'response--->');
                                     var state = response.getState();
                                     if (state === "SUCCESS") {
                                         var storeResponse = response.getReturnValue();
@@ -177,27 +156,26 @@
                                             component.set('v.userName',storeResponse.Name);
                                             component.set('v.loggedInInfo',true);
                                             component.set('v.loggedInCompany',true);
+                                            console.log('loggedInInfo-->');
                                         }
                                         
                                         
                                         if($A.get("$SObjectType.CurrentUser.Email") !== undefined){
                                             component.set('v.userName',storeResponse.Name); 
                                             component.set('v.loggedInInfo',true);
+                                            console.log('loggedInInfo-->');
                                         }
                                         
                                           var isPortal = component.get("v.portal");
        									  var isLoggedincmp = component.get("v.loggedInCompany");
-                                        
                                         //Visibility of buttons logic
                                         if(isPartnerUser == false){
-                                            // IPA2.0 + US TWC4497-1631
-                                            // if(is_PMP_Manage_Offerings == true)                                                
-                                            //     component.set('v.showManageOfferings', true);
+                                            if(is_PMP_Manage_Offerings == true)                                                
+                                                component.set('v.showManageOfferings', true);
                                             if(is_PMP_Manage_Leads == true)
                                                 component.set('v.showManageLeads', true);
-                                            if(is_PMP_View_Dashboard == true && is_Intel_Admin_Profile == false)
+                                            if(is_PMP_View_Dashboard == true)
                                                 component.set('v.showDashboard', true);
-                                            //  viewdash story
                                             if(is_PMP_Manage_Partners == true)
                                                 component.set('v.showManagedPartners', true);
                                             if(is_PMP_Manage_Events == true)
@@ -207,32 +185,31 @@
                                                 component.set('v.showManageSolutions', true);
                                             }
                                         }else{
-                                           // if(!isBasicAccess){
+                                            if(!isBasicAccess){
                                                 // Added isPortal == 'Partner Admin' to show manager storefront button on lead portal -27/01/2022
-                                             if(is_PMP_Manage_Storefront == true) {
-                                                component.set('v.showManageStorefront', true);
-                                            }
-                                                // IPA2.0 + US TWC4497-1631
-                                                // if(is_PMP_Manage_Offerings == true /*&& isEnhanced == true*/){                                          
-                                                //     component.set('v.showManageOfferings', true);
-                                                // }    
+                                                if((isPortal == 'Marketplace'||isPortal == 'Partner Admin') && isLoggedincmp == true){
+                                                    component.set('v.showManageStorefront', true);
+                                                }    
+                                                if(is_PMP_Manage_Offerings == true && isEnhanced == true){                                          
+                                                    component.set('v.showManageOfferings', true);
+                                                }    
                                                 if(is_PMP_Manage_Leads == true){
                                                     component.set('v.showManageLeads', true);
                                                 }    
-                                                if(is_PMP_View_Dashboard == true && is_Intel_Admin_Profile == false){
+                                                if(is_PMP_View_Dashboard == true){
                                                     component.set('v.showDashboard', true);
                                                 }    
-                                                // viewdash story
                                                 // Added by Subash for US842248
                                                 if(is_PMP_Manage_Solutions == true) {
                                                     component.set('v.showManageSolutions', true);
                                                 }
-                                          //  }
-                                          //  else if(isBasicAccess){ //Updated by Hanuma as per Defects raised in QA
+                                            }
+                                            else if(isBasicAccess){ //Updated by Hanuma as per Defects raised in QA
                                                 if(is_PMP_Manage_Solutions == true) {
                                                     component.set('v.showManageSolutions', true);
                                                 }
-                                          //  }
+                                            }
+                                            
                                         }
                                //US757978 - calling the checkAccess helper function          
                                      if(checkPageAccess){
@@ -270,9 +247,7 @@
     },
     
     handleToggleOpen : function(component, event, helper) {
-        if (component.get('v.showManageStorefront') ||  component.get('v.showManageLeads') || component.get('v.showDashboard') || component.get('v.disableManagedMPPartners')  ) {
-            // IPA2.0 + US TWC4497-1631
-        //if (component.get('v.showManageStorefront') || component.get('v.showManageOfferings') || component.get('v.showManageLeads') || component.get('v.showDashboard') || component.get('v.disableManagedMPPartners')  ) {
+        if (component.get('v.showManageStorefront') || component.get('v.showManageOfferings') || component.get('v.showManageLeads') || component.get('v.showDashboard') || component.get('v.disableManagedMPPartners')  ) {
             var isOpen = !component.get('v.open'), callback = component.get('v.ontoggle');
             if (callback && typeof callback == 'function') {
                 callback(component.get('v.name'), isOpen);

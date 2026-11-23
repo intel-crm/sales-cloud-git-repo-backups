@@ -54,20 +54,6 @@
             <value>ARM,ASIC,DSP,FPGA,MIPS,Power,RISC OTHER,SPARC,SuperH,Multiple Competing Arch,None,Other,Unknown,Non-IA x86,GPU</value>
         </criteriaItems>
         <criteriaItems>
-            <column>CLOSE_DATE</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>equals</operator>
-            <value>THIS_FISCAL_YEAR</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>CLOSE_DATE</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>equals</operator>
-            <value>THIS_FISCAL_YEAR</value>
-        </criteriaItems>
-        <criteriaItems>
             <column>ACCOUNT_OWNER</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
@@ -108,6 +94,8 @@
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

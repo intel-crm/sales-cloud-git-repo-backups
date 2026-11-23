@@ -22,7 +22,6 @@ public with sharing class Core_MDF_CustomMultiSelectPicklist {
             if(sanitizedrecordId != null){
                 String squery = 'SELECT Id,' + sanitizedfldName + ' FROM ' + sanitizedObjectName + ' WHERE Id = :sanitizedrecordId';
                 sObject sObj = database.query(squery);
-                
                 String fldvalue = (string)sObj.get(sanitizedfldName);
                 if(fldvalue!=null) //Check if there is saved value for the field
                 {
@@ -31,10 +30,8 @@ public with sharing class Core_MDF_CustomMultiSelectPicklist {
                 }                
             }
             availOpts.selectedOptionLst = selectedOptionLst;
-            
         }
-        catch(exception e){
-        Core_MDF_CCP_UtilityClass.logError(e);} 
+        catch(exception e){system.debug('Error occured due to '+ e.getMessage());} 
         return availOpts; 
     } 
     

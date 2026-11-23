@@ -1,57 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
-    <available>false</available>
+    <available>true</available>
     <encodingKey>UTF-8</encodingKey>
     <name>SPECBNFTENTHUPOL</name>
     <style>none</style>
-    <subject>Specjalizacja w zakresie komputerów wysokiej klasy dla hobbystów programu Intel® Partner Alliance</subject>
-    <textOnly>Gratulujemy zakwalifikowania się!
+    <subject>Gratulujemy uzyskania tytułu specjalisty ds. komputerów wysokiej klasy dla hobbystów</subject>
+    <textOnly>Gratulujemy uzyskania tytułu specjalisty ds. komputerów wysokiej klasy dla hobbystów
 
+Jako specjalista ds. komputerów wysokiej klasy dla hobbystów masz nowe możliwości zwiększania obrotów. Mamy nadzieję na pogłębienie naszej współpracy.
+Aby wyświetlić tę wiadomość na stronie internetowej, kliknij tutaj.
 
-{!Contact.FirstName},
+Spełniasz kryteria!Dostęp do korzyści &gt;
+
+FirstName,
 
 Gratulujemy uzyskania tytułu specjalisty ds. komputerów wysokiej klasy dla hobbystów w programie Intel® Technology Provider!
 
-Na świecie jest ponad miliard graczy komputerowych, a rynek dedykowanych im komputerów szybko się rozwija, co stwarza doskonałą szansę na poszerzanie bazy Twoich klientów i zwiększanie przychodów dzięki Intel.
+
+Na świecie jest ponad miliard graczy1, a rynek dedykowanych im komputerów szybko się rozwija, co stwarza doskonałą szansę na poszerzanie bazy klientów i zwiększanie przychodów ze sprzedaży technologii Intel.
 
 Skorzystaj z wszystkich dostępnych już teraz korzyści, do których zaliczają się:
 
-
 Dodatkowe punkty promocyjne za produkty wyposażone w procesory Intel® Core™ z serii X, K i H
-Tytuł specjalisty ds. komputerów wysokiej klasy dla hobbystów oraz widoczność na stronie programu Intel® Technology Provider
+Tytuł specjalisty ds. komputerów wysokiej klasy dla hobbystów oraz obecność na stronie programu Intel Technology Provider
 Techniczne seminaria internetowe prowadzone przez ekspertów firmy Intel
-Światowej klasy zestawy gier i oprogramowania
+Zestawy gier i oprogramowania światowej klasy
 Wejściówki na lokalne zawody e-sportowe
 
-Aby rozpocząć, wyślij wiadomość na adres enthusiast-pc@intel.com  zawierającą następujące informacje:
-
-
-Główna osoba kontaktowa do komunikacji ze specjalistami ds. komputerów wysokiej klasy dla hobbystów
-Nazwa:
-E-mail:
-
-
-W celu przesyłania dodatkowych materiałów handlowych i promocyjnych
-Adres pocztowy:
-Telefon:
+Dziękujemy za współpracę z firmą Intel.
 
 Dostęp do korzyści
 
+1Wyniki testów uzyskano przed instalacją najnowszych poprawek oprogramowania i aktualizacji oprogramowania sprzętowego, które służą do likwidacji luk w zabezpieczeniach określanych mianem „Spectre” i „Meltdown”. Po zainstalowaniu tych aktualizacji wyniki te mogą nie mieć zastosowania do posiadanego urządzenia lub systemu.
 
-*Korzyści mogą się różnić w zależności od regionu.
+Oprogramowanie i obciążenia wykorzystane w testach wydajności mogły zostać zoptymalizowane pod kątem wydajnego działania tylko na mikroprocesorach Intel®. Testy wydajności, takie jak SYSmark* i MobileMark*, mierzą wydajność określonych systemów komputerowych, podzespołów, oprogramowania i funkcji. Jakakolwiek zmiana wyżej wymienionych czynników może spowodować uzyskanie innych wyników. Aby wszechstronnie ocenić planowany zakup, w tym wydajność danego produktu w porównaniu z konkurencyjnymi, należy zapoznać się z informacjami z innych źródeł oraz innymi testami wydajności. Więcej informacji można znaleźć na stronie http://www.intel.com/benchmarks.
 
-Historia partnerów firmy Intel w zakresie innowacji jest długa. Za pomocą programu Intel® Partner Alliance pomożemy Ci przyspieszyć opracowywanie rozwiązań dla gospodarki opartej na danych. Razem możemy stwarzać nowe, niezwykłe możliwości dzięki połączeniu sił, wprowadzaniu innowacji i wspólnemu rozwojowi.
-
-Odwiedź stronę https://www.intel.com/content/www/pl/pl/partner-alliance/help/overview.html, by uzyskać pomoc i wskazówki dotyczące optymalizacji Twojego uczestnictwa w programie.
-
-
-Dziękujemy.
-Twój zespół Intel® Partner Alliance
-
-Ta wiadomość jest częścią istotnej komunikacji biznesowej dotyczącej Twoich bieżących relacji z programem Intel® Partner Alliance.
-© {!$Label.PRM_CurrentYear} Intel Corporation
-Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
-Ochrona danych | Pliki cookie</textOnly>
+&apos;);}} div.OutlookMessageHeader {background-image:url(&apos;https://8qr1qit0.emltrk.com/8qr1qit0?f&amp;d=EmailAddress&apos;)} table.moz-email-headers-table {background-image:url(&apos;https://8qr1qit0.emltrk.com/8qr1qit0?f&amp;d=EmailAddress&apos;)} blockquote νm;_t {background-image:url(&apos;https://8qr1qit0.emltrk.com/8qr1qit0?f&amp;d=EmailAddress&apos;)} νm;MailContainerBody νm;_t {background-image:url(&apos;https://8qr1qit0.emltrk.com/8qr1qit0?f&amp;d=EmailAddress&apos;)}</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

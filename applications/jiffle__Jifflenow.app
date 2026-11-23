@@ -26,4 +26,14 @@
     <tabs>jiffle__Group_Registration__c</tabs>
     <tabs>jiffle__Registration__c</tabs>
     <tabs>jiffle__Batch_Settings</tabs>
+    <tabs>Design_Registration_Product_M2M_Stage__c</tabs>
+    <tabs>PCC_DDR_L5_Product_Mapping__c</tabs>
+    <tabs>SWS_Cloud_Credit_Request__c</tabs>
+    <tabs>PCC_Rebate_Claim__c</tabs>
+    <tabs>PCC_Rebate_Claim_Stage__c</tabs>
+    <tabs>PCC_Deal_Change_Request__c</tabs>
+    <tabs>PCC_Deal_Change_Request_Line_Item__c</tabs>
+    <tabs>PCC_EndCustomerAcc_Mapping__c</tabs>
+    <tabs>Deployment_Components__c</tabs>
+    <tabs>Deployment__c</tabs>
 </CustomApplication>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>settings_stages</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>settings_stages</value>
+    </caseValues>
+    <fields>
+        <label><!-- stage0 --></label>
+        <name>Xvoyant__stage0__c</name>
+    </fields>
+    <fields>
+        <label><!-- stage1 --></label>
+        <name>Xvoyant__stage1__c</name>
+    </fields>
+    <fields>
+        <label><!-- stage2 --></label>
+        <name>Xvoyant__stage2__c</name>
+    </fields>
+    <fields>
+        <label><!-- stage3 --></label>
+        <name>Xvoyant__stage3__c</name>
+    </fields>
+    <fields>
+        <label><!-- stage4 --></label>
+        <name>Xvoyant__stage4__c</name>
+    </fields>
+    <fields>
+        <label><!-- stage5 --></label>
+        <name>Xvoyant__stage5__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

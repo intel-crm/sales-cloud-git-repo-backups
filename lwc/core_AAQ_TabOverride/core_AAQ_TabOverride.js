@@ -7,6 +7,7 @@ import { EnclosingUtilityId, getInfo,open,getAllUtilityInfo ,updatePanel,updateU
 import chatUrlLabel from '@salesforce/label/c.sales_CRM_ChatUrl';
 import chatUrlMDFLabel from '@salesforce/label/c.core_MDF_ChatUrl';
 import chatUrlIPALabel from '@salesforce/label/c.core_IPA_ChatUrl';
+//import chatUrlIQRLabel from '@salesforce/label/c.core_IQR_ChatUrl';//IQR AAQ
 import chatHeader from '@salesforce/label/c.sales_CRM_ChatHeader';
 import chatBanner from '@salesforce/label/c.chatBanner';
 import chatTooltipSalesCRM from '@salesforce/label/c.chatTooltipSalesCRM';
@@ -24,6 +25,7 @@ export default class Core_AAQ_TabOverride extends NavigationMixin(LightningEleme
     chatUrl = chatUrlLabel; // Use your actual chat URL
     MDFChatUrl = chatUrlMDFLabel;
     IPAChatUrl = chatUrlIPALabel;
+    //IQRChatUrl = chatUrlIQRLabel;//IQR AAQ
     chatHeader = chatHeader;
     chatBanner = chatBanner;
     chatTooltipSalesCRM = chatTooltipSalesCRM;
@@ -116,6 +118,7 @@ export default class Core_AAQ_TabOverride extends NavigationMixin(LightningEleme
                     const isMDFRow = index === 4;
                     // Add a flag for the 8th row (index 7) to use IPA chat URL
                     const isIPARow = index === 7;
+                    //const isIQRRow = index ===8;
                     const chatUrl = isMDFRow ? this.MDFChatUrl : isIPARow ? this.IPAChatUrl : this.chatUrl; //IQR AAQ
                     return Object.assign(
                         {},

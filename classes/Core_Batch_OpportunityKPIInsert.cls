@@ -84,18 +84,18 @@ global class Core_Batch_OpportunityKPIInsert implements Database.Batchable<sObje
         for(Opportunity opp: allOpportunityList){
             allOpportunityIdSet.add(opp.Id);
             if (oppWithBatchId.get(opp.Id) != null) {
-                //String latestKPI = opp.Id + '~' + opp.StageName;
-                if(oppWithBatchId.get(opp.Id).containsKey('Design Win') && latestOppKPIMap.get(opp.Id + '~Design Win') == null){
+                String latestKPI = opp.Id + '~' + opp.StageName;
+                if(opp.StageName == 'Design Win' && oppWithBatchId.get(opp.Id).containsKey('Design Win') && latestOppKPIMap.get(latestKPI) == null){
                     Core_Opportunity_KPI_Batch_Detail__c kpiBatch = new Core_Opportunity_KPI_Batch_Detail__c();
                     kpiBatch.Core_Opportunity_ID_Txt__c = opp.Id;
-                    kpiBatch.Core_Opportunity_Stage_Txt__c = 'Design Win';
+                    kpiBatch.Core_Opportunity_Stage_Txt__c = opp.StageName;
                     kpiBatch.Core_Opportunity_KPI_Batch_ID_Txt__c = oppWithBatchId.get(opp.Id).get('Design Win');
                     KPIBatchDtls.add(kpiBatch);
                 }
-                if(oppWithBatchId.get(opp.Id).containsKey('Production Win') && latestOppKPIMap.get(opp.Id + '~Production Win') == null){
+                if(opp.StageName == 'Production Win' && oppWithBatchId.get(opp.Id).containsKey('Production Win') && latestOppKPIMap.get(latestKPI) == null){
                     Core_Opportunity_KPI_Batch_Detail__c kpiBatch = new Core_Opportunity_KPI_Batch_Detail__c();
                     kpiBatch.Core_Opportunity_ID_Txt__c = opp.Id;
-                    kpiBatch.Core_Opportunity_Stage_Txt__c = 'Production Win';
+                    kpiBatch.Core_Opportunity_Stage_Txt__c = opp.StageName;
                     kpiBatch.Core_Opportunity_KPI_Batch_ID_Txt__c = oppWithBatchId.get(opp.Id).get('Production Win');
                     KPIBatchDtls.add(kpiBatch);
                 }

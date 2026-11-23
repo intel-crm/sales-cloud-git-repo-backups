@@ -2,7 +2,7 @@
 <SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
     <sharingCriteriaRules>
         <fullName>PSGInternal_ReadEdit_Subscription</fullName>
-        <accessLevel>Edit</accessLevel>
+        <accessLevel>Read</accessLevel>
         <label>PSGInternal_ReadEdit_Subscription</label>
         <sharedTo>
             <group>AGS_PSG_Internal_Users_ReadEdit</group>
@@ -15,11 +15,11 @@
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
-        <fullName>PSG_Internal_Read_Subscription</fullName>
+        <fullName>PSGInternal_ReadOnly</fullName>
         <accessLevel>Read</accessLevel>
-        <label>PSG Internal Subscription</label>
+        <label>PSGInternal_ReadOnly</label>
         <sharedTo>
-            <group>ags_internal_sos</group>
+            <group>AGS_PSG_Internal_Users_ReadOnly</group>
         </sharedTo>
         <criteriaItems>
             <field>CreatedById</field>
@@ -29,9 +29,9 @@
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
-        <fullName>PSG_Internal_Subscription</fullName>
-        <accessLevel>Edit</accessLevel>
-        <label>PSG Internal Subscription</label>
+        <fullName>PSG_Internal</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>PSG Internal</label>
         <sharedTo>
             <group>ags_internal_users</group>
         </sharedTo>

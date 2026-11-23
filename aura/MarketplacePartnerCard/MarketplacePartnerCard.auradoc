@@ -1,15 +1,14 @@
 <aura:documentation>
 	<aura:description>
 		<p>Partner Card Component</p>
-		<!-- IPA2.0 + US TWC4497-1631 -->
-		<!-- <a
+		<a
 			href="https://nppdevpmp-intelcloudcrm.cs67.force.com/styleguide/s/product-and-offering-card-variations?language=en_US">
 			Card Variation Listing
 		</a>
 		<br />
 		<a href="https://nppdevpmp-intelcloudcrm.cs67.force.com/styleguide/s/l0-marketplace?language=en_US">
 			Preview in L0 page - Featured Offering Cards - Partner
-		</a> -->
+		</a>
 		<br />
 		<a href="https://nppdevpmp-intelcloudcrm.cs67.force.com/styleguide/s/l2?language=en_US">
 			Preview in L2 Search - Search Results Partner

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>PSG Log Entries</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>PSG Log Entries</value>
+    </caseValues>
+    <fields>
+        <label><!-- Class Name --></label>
+        <name>core_cpq_class_name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Details --></label>
+        <name>core_cpq_details__c</name>
+    </fields>
+    <fields>
+        <label><!-- Message --></label>
+        <name>core_cpq_message__c</name>
+    </fields>
+    <fields>
+        <label><!-- Method Name --></label>
+        <name>core_cpq_method_name__c</name>
+    </fields>
+    <fields>
+        <label><!-- CIS# --></label>
+        <name>core_cpq_sObjectLink__c</name>
+    </fields>
+    <fields>
+        <label><!-- sObjectRecord --></label>
+        <name>core_cpq_sObjectRecord__c</name>
+    </fields>
+    <fields>
+        <label><!-- sObjectType --></label>
+        <name>core_cpq_sObjectType__c</name>
+    </fields>
+    <fields>
+        <label><!-- Severity --></label>
+        <name>core_cpq_severity__c</name>
+    </fields>
+    <fields>
+        <label><!-- sObjectId --></label>
+        <name>core_cpq_sobjectid__c</name>
+    </fields>
+    <fields>
+        <label><!-- sObjectName --></label>
+        <name>core_cpq_sobjectname__c</name>
+    </fields>
+    <fields>
+        <label><!-- Type --></label>
+        <name>core_cpq_type__c</name>
+    </fields>
+    <fields>
+        <label><!-- When --></label>
+        <name>core_cpq_when__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

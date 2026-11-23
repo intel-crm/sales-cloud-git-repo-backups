@@ -12,7 +12,7 @@
     <enablePipelineChangesMetrics>true</enablePipelineChangesMetrics>
     <enablePipelineInspection>true</enablePipelineInspection>
     <enablePipelineInspectionHideMyPipeline>false</enablePipelineInspectionHideMyPipeline>
-    <enablePipelineInspectionSingleCategoryRollup>true</enablePipelineInspectionSingleCategoryRollup>
+    <enablePipelineInspectionSingleCategoryRollup>false</enablePipelineInspectionSingleCategoryRollup>
     <enableServiceCaseInsights>false</enableServiceCaseInsights>
     <enableUpdateReminders>false</enableUpdateReminders>
     <oppAmountDealMotionEnabled>true</oppAmountDealMotionEnabled>

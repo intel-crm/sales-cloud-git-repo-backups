@@ -1,0 +1,11 @@
+<apex:page applyBodyTag="false" applyHtmlTag="false" sidebar="false" showHeader="false" standardStylesheets="false" renderAs="pdf">
+
+ <a target="_blank" href="{!URLFOR($Resource.PCC_DealReg_T_C)}">
+ 
+ </a>
+
+</apex:page>
+<!--<apex:page readonly="true" renderAs="pdf">
+<apex:outputText value="{($Resource.PCC_DealReg_T_C)}"></apex:outputText>
+
+</apex:page>-->

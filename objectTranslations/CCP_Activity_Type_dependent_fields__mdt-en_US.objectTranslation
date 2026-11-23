@@ -13,34 +13,8 @@
         <name>Core_MDF_Activity_Category_Txt__c</name>
     </fields>
     <fields>
-        <label><!-- Activity Subtype --></label>
-        <name>Core_MDF_Activity_Subtype_Txt__c</name>
-    </fields>
-    <fields>
         <label><!-- Activity Type --></label>
         <name>Core_MDF_Activity_Type_Txt__c</name>
-    </fields>
-    <fields>
-        <help><!-- To be checked true is program is account based(CMDF). --></help>
-        <label><!-- Is Account Based --></label>
-        <name>Core_MDF_Is_Account_Based__c</name>
-    </fields>
-    <fields>
-        <label><!-- Is EOLed --></label>
-        <name>Core_MDF_Is_EOLed_Ind__c</name>
-    </fields>
-    <fields>
-        <label><!-- Is Inactive For Activity --></label>
-        <name>Core_MDF_Is_Inactive_For_Activity_Ind__c</name>
-    </fields>
-    <fields>
-        <label><!-- Is Inactive For Claim --></label>
-        <name>Core_MDF_Is_Inactive_For_Claim_Ind__c</name>
-    </fields>
-    <fields>
-        <help><!-- To be checked true if program is proposal based. --></help>
-        <label><!-- Is proposal Based --></label>
-        <name>Core_MDF_Is_Proposal_Based_Ind__c</name>
     </fields>
     <fields>
         <label><!-- Manadtory --></label>
@@ -61,10 +35,6 @@
     <fields>
         <label><!-- Object API Field Name --></label>
         <name>Core_MDF_Object_API_Field_Name__c</name>
-    </fields>
-    <fields>
-        <label><!-- Is Picklist --></label>
-        <name>Core_MDF_Picklist_ind__c</name>
     </fields>
     <fields>
         <label><!-- Program --></label>

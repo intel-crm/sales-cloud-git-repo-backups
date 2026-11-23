@@ -23,12 +23,11 @@
                 <div class="compareButton slds-text-align_center slds-p-horizontal_large slds-p-top_small slds-p-bottom_small">
                     <div>
                         <span onclick="{!c.doSomething}">
-                            <!-- IPA2.0 + US TWC4497-1631 -->
-                            <!-- <c:IntelButton
+                            <c:IntelButton
                                            disabled="{!if(v.items.length > 1, false, true)}"
                                            communityLink="/compare-offerings" buttonClass="white">
                                 {!$Label.c.PMP_Compare}&nbsp;{!v.items.length}/{!v.maxItemsToCompare}
-                            </c:IntelButton> -->
+                            </c:IntelButton>
                         </span>
                         <span onclick="{!c.handleOpenClose}">
                             <lightning:icon iconName="{! and(v.open, v.items.length > 0) ? 'utility:chevrondown' : 'utility:chevronup'}"
@@ -97,12 +96,11 @@
                 <aura:if isTrue="{! v.appState.Settings.currentScreenSize != 'desktop'}">
                     <div class="mobileTray slds-p-around_small">
                         <span onclick="{!c.doSomething}">
-                            <!-- IPA2.0 + US TWC4497-1631 -->
-                            <!-- <c:IntelButton
+                            <c:IntelButton
                                            disabled="{!if(v.items.length > 1, false, true)}"
                                            href="/s/compare-offerings" buttonClass="white">
                                 {!$Label.c.PMP_Compare}&nbsp;{!v.items.length}/{!v.maxItemsToCompare}
-                            </c:IntelButton> -->
+                            </c:IntelButton>
                         </span>
                     </div>
                     

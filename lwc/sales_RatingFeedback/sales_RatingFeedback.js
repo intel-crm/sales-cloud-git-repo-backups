@@ -1,5 +1,5 @@
 import { LightningElement,wire, track,api } from 'lwc';
-/*import createFeedBack from '@salesforce/apex/Sales_FeedbackController.createFeedBack_NonEvent';
+import createFeedBack from '@salesforce/apex/Sales_FeedbackController.createFeedBack_NonEvent';
 import getPickListValues from '@salesforce/apex/Sales_FeedbackController.getPickListValues';
 import checkCapability from '@salesforce/apex/Sales_FeedbackController.checkCapability_NonEvent'; 
 import { ShowToastEvent } from 'lightning/platformShowToastEvent'
@@ -19,10 +19,10 @@ import Sales_GiveFeedback_4star  from '@salesforce/label/c.Sales_GiveFeedback_4s
 import Sales_GiveFeedback_5star  from '@salesforce/label/c.Sales_GiveFeedback_5star';
 import Sales_capability  from '@salesforce/label/c.Sales_capability';
 import Sales_SelectCapability  from '@salesforce/label/c.Sales_SelectCapability';
-*/
+
 
 export default class Sales_RatingFeedback extends LightningElement {
-    /*feedbackiconnew = feedbackicon ;
+    feedbackiconnew = feedbackicon ;
     @track  textfeed='';
     @track remaining = 500;
     @track output=500;
@@ -155,7 +155,7 @@ export default class Sales_RatingFeedback extends LightningElement {
         .catch(error => {
            console.log('Failure'+JSON.stringify(error));
         }); 
-}*/
+}
 
   
 }

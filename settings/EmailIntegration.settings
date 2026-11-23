@@ -14,6 +14,6 @@
     <enableProductivityFeatures>false</enableProductivityFeatures>
     <enableSupplementalContactInfoInMobile>false</enableSupplementalContactInfoInMobile>
     <isLayoutCustomizationAllowed>true</isLayoutCustomizationAllowed>
-    <orgIsSyncingEventsOutbound>false</orgIsSyncingEventsOutbound>
+    <orgIsSyncingEventsOutbound>true</orgIsSyncingEventsOutbound>
     <shouldUseTrustedDomainsList>true</shouldUseTrustedDomainsList>
 </EmailIntegrationSettings>

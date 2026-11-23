@@ -37,5 +37,9 @@
         <label><!-- Inactive Indicator --></label>
         <name>PRM_inactind__c</name>
     </fields>
+    <recordTypes>
+        <label><!-- Standard --></label>
+        <name>Standard</name>
+    </recordTypes>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

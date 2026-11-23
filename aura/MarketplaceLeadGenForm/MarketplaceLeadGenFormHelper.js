@@ -13,94 +13,30 @@
 		};
 	},
 
-    isFormValid : function(component, helper) {
-        
-        let isFNameValid = helper.isNameValid(component, 'fname');
-        let isLNameValid = helper.isNameValid(component, 'lname');
-        let iscompanyValid = helper.isNameValid(component, 'cmpnyName');
-        let formType = component.get('v.formType');
-        let isNoteorDesc = helper.isLeadnotesValid(component, (formType == 'contact' ? 'leadnotce' : 'leadgendesc'));
-        let cusValid = isFNameValid && isLNameValid && iscompanyValid && isNoteorDesc;
-        
-        var allValid = component.find('inputField').reduce(function (validSoFar, inputCmp) {
-            if (inputCmp.reportValidity) {
-                inputCmp.reportValidity();
-            } else if(inputCmp.showHelpMessageIfInvalid) {
-                inputCmp.showHelpMessageIfInvalid();
-            } else {
-                console.log('It doesnt exist for both reportValidity');
-            }
-            return validSoFar && !inputCmp.get('v.validity').valueMissing && cusValid;
-        }, true);
+	isFormValid : function(component, helper) {
+
+		// console.log('handleFormSubmitClick', JSON.stringify(component.get('v.localUserDetails')));
+		var allValid = component.find('inputField').reduce(function (validSoFar, inputCmp) {
+			if (inputCmp.reportValidity) {
+				inputCmp.reportValidity();
+			} else if(inputCmp.showHelpMessageIfInvalid) {
+				inputCmp.showHelpMessageIfInvalid();
+			} else {
+				console.log('It doesnt exist for both reportValidity');
+			}
+			return validSoFar && !inputCmp.get('v.validity').valueMissing;
+		}, true);
         
         component.find('leadPhone').showHelpMessageIfInvalid();
         component.find('leadEmail').showHelpMessageIfInvalid();
         
-        // Checkbox manual validity check
-        var termsChecked = component.find('inputTermsAndCondition').getElement().checked;
-        component.set('v.agreeCheckboxError', !termsChecked);
-        
-        
-        return allValid && termsChecked;
-    },
-    
-    isNameValid: function(component, auraId) {
-        
-        if(auraId) {
-            var com = component.find(auraId);
-            var val = com.get('v.value');
-            var reghtmlformat = /<.*?>/;  
-            com.setCustomValidity("");
-            
-            if(val) {
-                
-                
-                
-                if(val.match(reghtmlformat)) {
-                    com.setCustomValidity($A.get("$Label.c.PMP_Invalid_Notes_URL"));
-                    com.reportValidity();
-                    return false;
-                }
-                else if(val.includes(".") || val.includes("/")) {
-                    com.setCustomValidity($A.get("$Label.c.PMP_Invalid_Notes_URL"));
-                    com.reportValidity();
-                    return false;
-                } else {
-                    com.reportValidity();
-                    return true;
-                }
-            } else {
-                com.setCustomValidity($A.get("$Label.c.PMP_LeadGen_CompleteThisField"));                
-                com.reportValidity();
-                return false;
-            }
-        }
-    },
-    isLeadnotesValid: function(component, auraId) {
-        console.log(':::isLeadnotesValid fn called:::', auraId);
-        if(auraId) {
-            var com = component.find(auraId);
-            var val = com.get('v.value');
-            var reghtmlformat = /<.*?>/; 
-            com.setCustomValidity("");
-            
-            if(val) {
-                if(val.match(reghtmlformat)) {
-                    com.setCustomValidity($A.get("$Label.c.PMP_Invalid_Notes"));
-                    com.reportValidity();
-                    return false;
-                } else {
-                    com.reportValidity();
-                    return true;
-                }
-            } else {
-                com.setCustomValidity($A.get("$Label.c.PMP_LeadGen_CompleteThisField"));
-                com.reportValidity();
-                return false;
-            }
-        }
-    },
-   
+		// Checkbox manual validity check
+		var termsChecked = component.find('inputTermsAndCondition').getElement().checked;
+		component.set('v.agreeCheckboxError', !termsChecked);
+		
+
+		return allValid && termsChecked;
+	},
 	formSubmit: function(component, helper) {
 		// get form data here
 		var data = {};
@@ -126,22 +62,21 @@
             var action = component.get("c.submit");
             var partnerId = '';
             var partnerName = '';
-            // IPA2.0 + US TWC4497-1631 
-            // var offeringId = '';
-            // var offeringName = '';
-            // var offeringLink = '';
+            var offeringId = '';
+            var offeringName = '';
+            var offeringLink = '';
             if(component.get("v.partnerId") != ""){
                 partnerId = component.get("v.partnerId");
                 partnerName = component.get("v.partnerName");
             }
-            // if(component.get("v.productId") != ""){
-            //     offeringId = component.get("v.productId");
-            //     offeringName = component.get("v.offeringName");
-            // }
-            // var offeringRecId = ''; 
-            // if(component.get("v.productRecId") != ""){
-            //     offeringRecId = component.get("v.productRecId");
-            // }
+            if(component.get("v.productId") != ""){
+                offeringId = component.get("v.productId");
+                offeringName = component.get("v.offeringName");
+            }
+            var offeringRecId = ''; 
+            if(component.get("v.productRecId") != ""){
+                offeringRecId = component.get("v.productRecId");
+            }
           
            // String url = $A.get("$Label.c.Offering_Link_URL") + offeringRecId;
            
@@ -162,11 +97,10 @@
                 user : component.get("v.localUserDetails"),
                 formType : component.get("v.formType"),
                 partnerId : partnerId,
-                partnerName : partnerName
-                // IPA2.0 + US TWC4497-1631 
-                // offeringId : offeringId,
-                // offeringName : offeringName,
-                // offeringRecId : offeringRecId
+                partnerName : partnerName,
+                offeringId : offeringId,
+                offeringName : offeringName,
+                offeringRecId : offeringRecId
             });
             console.log('User : ', component.get("v.localUserDetails"));
             action.setCallback(this, function(response){
@@ -185,14 +119,12 @@
 	},
     
     getUserDetails : function(component, helper){
-      console.log('enter intogetuserdetails');
       var action = component.get("c.fetchUser");
-        console.log('calling function');
         action.setCallback(this, function(response) {
             var state = response.getState();
             if (state === "SUCCESS") {
                	
-                console.log('entering to success loop for fetchuser'); 
+                 
                 
                 component.set("v.userDetails",response.getReturnValue());
                 
@@ -200,7 +132,7 @@
                
 				          
                 component.set('v.isOpen', true);
-                helper.getPartnerProfession(component,helper);
+                helper.getJobFunction(component,helper);
                 helper.getCountryStateOptions(component, helper);
                 console.log(response.getReturnValue());
             }
@@ -208,13 +140,13 @@
         $A.enqueueAction(action);  
     },
     
-    getPartnerProfession : function(component, helper){
-        var action = component.get("c.getPartnerProfession");
+    getJobFunction : function(component, helper){
+        var action = component.get("c.getJobFunction");
         action.setCallback(this, function(response) {
             var state = response.getState();
             if (state === "SUCCESS") {
                var response = response.getReturnValue();
-               component.set('v.partnerProfession', response); 
+               component.set('v.jobFunctions', response); 
             }
         });
         $A.enqueueAction(action);  
@@ -274,6 +206,8 @@
         // set the dependentFields variable values to store(State picklist field) on lightning:select
         component.set("v.states", dependentFields);
         
-    },
-   
+    }
+    
+
+    
 })

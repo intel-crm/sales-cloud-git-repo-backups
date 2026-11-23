@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>AC CTI 属性</value>
+    </caseValues>
+    <fields>
+        <label>活动</label>
+        <name>amazonconnect__Active__c</name>
+    </fields>
+    <fields>
+        <label>CTI 适配器</label>
+        <name>amazonconnect__CtiAdapter__c</name>
+        <relationshipLabel><!-- Attributes --></relationshipLabel>
+    </fields>
+    <fields>
+        <label>默认值</label>
+        <name>amazonconnect__DefaultValue__c</name>
+    </fields>
+    <fields>
+        <label>显示</label>
+        <name>amazonconnect__Display__c</name>
+    </fields>
+    <fields>
+        <label>格式</label>
+        <name>amazonconnect__Format__c</name>
+    </fields>
+    <fields>
+        <label>标签</label>
+        <name>amazonconnect__Label__c</name>
+    </fields>
+    <fields>
+        <label>样式</label>
+        <name>amazonconnect__Style__c</name>
+    </fields>
+    <fields>
+        <label>类型</label>
+        <name>amazonconnect__Type__c</name>
+    </fields>
+    <nameFieldLabel>属性</nameFieldLabel>
+</CustomObjectTranslation>

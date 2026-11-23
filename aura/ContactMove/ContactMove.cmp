@@ -1,0 +1,4 @@
+<aura:component implements="lightning:isUrlAddressable,force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:hasSObjectName" access="global">
+    <aura:attribute name="recordId" type="String"/>{!v.recordId}
+    <c:core_IPS_MoveContactPOC recordId="{!v.recordId}"/>
+</aura:component>

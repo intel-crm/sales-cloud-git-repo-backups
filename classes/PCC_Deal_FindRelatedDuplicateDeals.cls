@@ -247,5 +247,8 @@ public without sharing class PCC_Deal_FindRelatedDuplicateDeals {
             return this;
         }
         
+        public RelatedDuplicateWrapper build() {
+            return new RelatedDuplicateWrapper(this);
+        }
     }
 }

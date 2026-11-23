@@ -39,7 +39,6 @@ public class PMP_StaticConstants_MasterData {
     public static final String Client_Computing_PIMId = 'Intel_Segments_Client_Computing';
     public static final String Data_Center_PIMId = 'Intel_Segments_Data_Center';
     public static final String Embedded_IoT_PIMId = 'Intel_Segments_Embedded_IoT';
-    public static final String Programmable_Logic_PIMId = 'Intel_Segments_Field_Programmable_Gate_Array';
     public static final String Business_Segments_PIMId = 'Intel_Segments_NPP_01';
     public static final String Spec_Value = 'Spec Value';
     public static final String Yes = 'Yes';
@@ -47,7 +46,6 @@ public class PMP_StaticConstants_MasterData {
     public static final String Personal_Computers = 'Personal Computers';
     public static final String Server = 'Server';
     public static final String IoT = 'IoT';
-    public static final String ProgrammableLogic = 'Field Programmable Gate Array';
     public static final String Comma_Symbol = ',';
     public static final String SemiColon_Symbol = ';';
     public static final String Core_PMP_ParseCategoryJSON_Exception_Message = 'Error occured from class Core_PMP_ParseCategoryJSON due to ';
@@ -139,9 +137,5 @@ public class PMP_StaticConstants_MasterData {
     public static final String Child_Mandatory_Flag = 'Child_Mandatory_Flag';
     public static final String Intel_Only_Content='Intel Only Content';//Added by Tarangini to check Intel Only Offerings
     public static final String Public_Content = 'Public Content';//Addded by Tarangini to check Intel Only Offerings
-    public static final String Restriction_Level = 'Restriction_Level';
-    public static final String IPQualityMetricPIMId = 'IPQualityMetricsLevel1';
-    public static final String BoardQualityMetricPIMId = 'BoardQualityMetricsLevel1';
-    public static final String Partner_Content = 'Partner Content';//Addded by Vardaan  to check Partner Offerings
-    public static final String Rejected = 'Rejected';//Addded by Vardaan  to check Partner Offerings       
+        
 }

@@ -1,4 +1,4 @@
-import { LightningElement,api } from 'lwc';
+import { LightningElement,api,wire } from 'lwc';
 import getURLFromApex from '@salesforce/apex/Custom_URL_Embed.getURL';
 import getEmbeddingDataForReport from '@salesforce/apex/Custom_URL_Embed.getEmbeddingDataForReport';
 import powerbijs from '@salesforce/resourceUrl/powerbijs';
@@ -10,11 +10,12 @@ export default class Custom_URL_Embed extends LightningElement {
     @api roles;
     @api WorkspaceId;
     @api ReportId;
-		@api height='600px';
+		@api height='600px'; 
     fullUrl='';
     noAccessMsg = '';
     noAccess = false;
     autoSignInEnabled = false;
+
 
     connectedCallback() { 
         this.getURL();
@@ -30,7 +31,7 @@ export default class Custom_URL_Embed extends LightningElement {
         .then((data) => {
             
             var saveRes = JSON.parse(JSON.stringify(data));
-            console.log('saveRes: '+saveRes);
+            console.log('saveRes: '+JSON.stringify(saveRes));
             this.hasAccess = saveRes['hasAccess'];
             if(this.hasAccess){
                 if(saveRes['autoSSOEnabled']){
@@ -45,7 +46,8 @@ export default class Custom_URL_Embed extends LightningElement {
                 this.noAccess = true;
                 this.noAccessMsg = saveRes['reportURL'];
                 }  
-            
+                console.log('FULL URL:'+this.fullUrl);
+                console.log('ACCESS MSG:'+this.noAccessMsg);
         })
         .catch(error => {
             this.error = error;  
@@ -59,9 +61,9 @@ export default class Custom_URL_Embed extends LightningElement {
     }
 
     getEmbedURL(){
+        console.log('Inside Embed URL JS:'+this.WorkspaceId);
         getEmbeddingDataForReport({configName:this.configName,WorkspaceId: this.WorkspaceId,ReportId: this.ReportId,roles:this.roles})
-        .then(response => {
-            
+        .then(response => {    
             console.log('response', response);
                     this.report = response;
                     if (response) {

@@ -6,5 +6,5 @@
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>IPATestCSPLive_CIP_NewUser_Russian Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Inactive_Accounts_Role</parentRole>
+    <parentRole>IPATestCSPLive_CIP_NewUser_RussianPartnerManager</parentRole>
 </Role>

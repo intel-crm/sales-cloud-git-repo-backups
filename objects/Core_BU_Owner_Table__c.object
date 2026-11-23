@@ -180,12 +180,30 @@
         <fullName>All</fullName>
         <columns>NAME</columns>
         <columns>Core_BU_Shortname__c</columns>
-        <columns>Core_BU_Owner__c</columns>
-        <columns>OWNER.FIRST_NAME</columns>
-        <columns>OWNER.LAST_NAME</columns>
-        <columns>CREATED_DATE</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>BU_Owner_Test</fullName>
+        <columns>NAME</columns>
+        <columns>Core_BU_Shortname__c</columns>
+        <columns>Core_BU_Owner__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>LAST_UPDATE</columns>
+        <filterScope>Everything</filterScope>
+        <label>BU Owner Test</label>
+        <sharedTo>
+            <role>Admin</role>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_CCG_BU_Core_BU_Owner_Table</fullName>
+        <filterScope>Queue</filterScope>
+        <label>CCG BU</label>
+        <queue>Core_CCG_BU</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
     </listViews>
     <nameField>
         <displayFormat>Geo-{0000}</displayFormat>

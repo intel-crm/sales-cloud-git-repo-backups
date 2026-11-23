@@ -9,8 +9,7 @@
 * Intel - Narayani Perachi		12/26/2018                    Added Database.AllowsCallouts to allow multiple callouts and added Limit 1 to the query
 * Intel - Narayani Perachi		12/26/2018                    Added Environment Label to the Mail subject to make it more readable
 **************************************************************************************************************************************************************************************/
-//US930209 - Added without sharing keyword to fix checkmarx issues
-global without sharing class Core_MDF_BatchClass_Multicurrency implements Database.Batchable<sObject>, Database.Stateful, Database.AllowsCallouts{
+global class Core_MDF_BatchClass_Multicurrency implements Database.Batchable<sObject>, Database.Stateful, Database.AllowsCallouts{
     
     string query='';
     string sendEmailAddress = '';
@@ -19,7 +18,9 @@ global without sharing class Core_MDF_BatchClass_Multicurrency implements Databa
       
     global Database.queryLocator start(Database.BatchableContext bc)
     {
-        return Database.getQueryLocator('SELECT Id from Core_MDF_ChannelProgram__mdt LIMIT 1');
+     	
+        //system.debug('start');
+        return Database.getQueryLocator('SELECT Id, Core_MDF_Multicurrency_Batch_Indicator__c FROM Core_MDF_CCP_Claim_Window__mdt where Core_MDF_Multicurrency_Batch_Indicator__c = true limit 1'); 
     }
 
     global void execute(Database.BatchableContext batchableContext, List<sObject> scope)
@@ -51,7 +52,6 @@ global without sharing class Core_MDF_BatchClass_Multicurrency implements Databa
                 mail.setToAddresses(toAddresses);
                 mail.setSubject(Label.Core_MDF_SFDC_Environment + ': Salesforce Multicurrency Job ');
                 mail.setHtmlBody(returnMessage);
-                mail.setOrgWideEmailAddressId(Label.Core_MDF_OrgWideId);//17001
         		Messaging.sendEmail(new Messaging.SingleEmailMessage[] {mail});                
             }
     }

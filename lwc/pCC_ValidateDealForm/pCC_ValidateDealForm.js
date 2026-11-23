@@ -6,12 +6,25 @@ export default class PCC_ValidateDealForm extends LightningElement {
     @api recordId;
     isSubmit = true;
 
+    renderedCallback() {
+        //this.applyToastStyles();
+    }
+    applyToastStyles() {
+        const style = document.createElement('style');
+        style.innerText = `
+            .slds-notify_toast {
+                white-space: normal;
+            }
+        `;
+        this.template.appendChild(style);
+    }
     showSubmissionMsg(event){
         const detail = event.detail;
         const message = event.detail.message;
+        
         if(!detail.recordError){
             if (detail.isSuccess) {
-                this.showToast(`Deal Registration ${message} submitted successfully for Approval !!`, 'success',detail.isSuccess);
+                this.showToast(`Deal Registration ${message} submitted successfully for Approval`, 'success',detail.isSuccess);
             } else {
                 this.showToast(detail.message, 'error',detail.isSuccess);
             }
@@ -23,6 +36,7 @@ export default class PCC_ValidateDealForm extends LightningElement {
             title: message,
             message: '',
             variant: variant,
+            label: ''
         });
         this.dispatchEvent(toastEvent);
         setTimeout(() => {

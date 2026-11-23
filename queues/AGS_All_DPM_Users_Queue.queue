@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesIncludeBosses>true</doesIncludeBosses>
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <name>AGS_All DPM Users Queue</name>
+    <queueMembers>
+        <users>
+            <user>dpm_testtenderuser@intel.com.crm</user>
+        </users>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>Pricing_Approval_Price_Rules__c</sobjectType>
+    </queueSobject>
+</Queue>

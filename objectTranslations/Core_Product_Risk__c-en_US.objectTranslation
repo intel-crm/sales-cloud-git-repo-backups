@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Product Risk</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Product Risks</value>
+    </caseValues>
+    <fields>
+        <label><!-- At Risk --></label>
+        <name>Core_At_Risk__c</name>
+    </fields>
+    <fields>
+        <label><!-- Created Date --></label>
+        <name>Core_Created_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Date --></label>
+        <name>Core_End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Product --></label>
+        <name>Core_Opportunity_Product__c</name>
+        <relationshipLabel><!-- Products At Risk --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Product Risk Owner --></label>
+        <name>Core_Product_Risk_Owner__c</name>
+        <relationshipLabel><!-- Product Risks --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Risk Priority --></label>
+        <name>Core_Risk_Priority__c</name>
+        <picklistValues>
+            <masterLabel>1 - RED FLAG – SMG Staff attention</masterLabel>
+            <translation><!-- 1 - RED FLAG – SMG Staff attention --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2 - High – Mission Critical – Action Required</masterLabel>
+            <translation><!-- 2 - High – Mission Critical – Action Required --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3 - Medium – Vital for Opportunity – Action Required</masterLabel>
+            <translation><!-- 3 - Medium – Vital for Opportunity – Action Required --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4 - Medium – Necessary for Opportunity</masterLabel>
+            <translation><!-- 4 - Medium – Necessary for Opportunity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>5 - Low – No immediate impact</masterLabel>
+            <translation><!-- 5 - Low – No immediate impact --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Risk Reason --></label>
+        <name>Core_Risk_Reason__c</name>
+        <picklistValues>
+            <masterLabel>Application Enablement/Software Tuning</masterLabel>
+            <translation><!-- Application Enablement/Software Tuning --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>COVID-19</masterLabel>
+            <translation><!-- COVID-19 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Competition</masterLabel>
+            <translation><!-- Competition --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Feature Gap</masterLabel>
+            <translation><!-- Feature Gap --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IPS-Support</masterLabel>
+            <translation><!-- IPS-Support --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Legal</masterLabel>
+            <translation><!-- Legal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Product Feature/Quality/Performance</masterLabel>
+            <translation><!-- Product Feature/Quality/Performance --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Risk Status --></label>
+        <name>Core_Risk_Status__c</name>
+        <picklistValues>
+            <masterLabel>In-Progress</masterLabel>
+            <translation><!-- In-Progress --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No Longer At Risk</masterLabel>
+            <translation><!-- No Longer At Risk --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Support Granted By HQ</masterLabel>
+            <translation><!-- Support Granted By HQ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Support Not Granted By HQ</masterLabel>
+            <translation><!-- Support Not Granted By HQ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Support Not Provided</masterLabel>
+            <translation><!-- Support Not Provided --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Support Not Required</masterLabel>
+            <translation><!-- Support Not Required --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Support Provided</masterLabel>
+            <translation><!-- Support Provided --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

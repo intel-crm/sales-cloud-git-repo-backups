@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customButtons>Core_Create_PSG_Quote</customButtons>
     <excludeButtons>ChangeOwnerOne</excludeButtons>
     <excludeButtons>ChangeRecordType</excludeButtons>
     <excludeButtons>Clone</excludeButtons>
@@ -70,6 +71,14 @@
                 <behavior>Readonly</behavior>
                 <field>Decision_Date__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_Test_Validation_Check__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_Design_Type__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -103,10 +112,6 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Core_Loss_Cancel_Details__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_Design_Type__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
@@ -265,9 +270,14 @@
             <sortOrder>6</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>Opportunity.Status_Update</actionName>
+            <actionName>Opportunity.Create_PSG_Quote</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>7</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>Opportunity.Status_Update</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>8</sortOrder>
         </platformActionListItems>
     </platformActionList>
     <relatedLists>
@@ -276,21 +286,37 @@
         <excludeButtons>MultiEdit</excludeButtons>
         <excludeButtons>Sort</excludeButtons>
         <fields>Product2</fields>
-        <fields>Core_Design_Registration_Product_Id__c</fields>
-        <fields>Core_Status__c</fields>
-        <fields>Core_Claim_Date__c</fields>
         <fields>Quantity</fields>
+        <fields>Core_Status__c</fields>
         <fields>UnitPrice</fields>
+        <fields>Core_Sales_Price_Note__c</fields>
         <fields>TotalPrice</fields>
+        <fields>Core_Loss_Cancel_Reason__c</fields>
+        <fields>Core_Competitor__c</fields>
+        <fields>Core_Competitor_Product__c</fields>
+        <fields>Core_Design_Registration_Product_Id__c</fields>
         <relatedList>RelatedLineItemList</relatedList>
     </relatedLists>
     <relatedLists>
+        <excludeButtons>New</excludeButtons>
+        <fields>Core_RFQ_ID__c</fields>
+        <fields>CREATED_DATE</fields>
+        <fields>Core_Message_Status__c</fields>
+        <relatedList>Core_PSG_Quote_Generation_History__c.Core_Opportunity__c</relatedList>
+        <sortField>CREATED_DATE</sortField>
+        <sortOrder>Desc</sortOrder>
+    </relatedLists>
+    <relatedLists>
+        <excludeButtons>MassChangeOwner</excludeButtons>
+        <excludeButtons>New</excludeButtons>
         <fields>NAME</fields>
-        <fields>SBQQ__NetAmount__c</fields>
-        <fields>SBQQ__Status__c</fields>
-        <fields>CREATEDBY_USER</fields>
-        <fields>SBQQ__Primary__c</fields>
+        <fields>Pricing_End_Customer_Account__c</fields>
+        <fields>core_cpq_status_txt__c</fields>
+        <fields>price_lifetime_quote_value_amt__c</fields>
+        <fields>Pricing_Account_Name__c</fields>
         <relatedList>SBQQ__Quote__c.SBQQ__Opportunity2__c</relatedList>
+        <sortField>NAME</sortField>
+        <sortOrder>Desc</sortOrder>
     </relatedLists>
     <relatedLists>
         <relatedList>RelatedContentNoteList</relatedList>
@@ -305,14 +331,21 @@
         <relatedList>RelatedEntityHistoryList</relatedList>
     </relatedLists>
     <relatedLists>
-        <excludeButtons>MassChangeOwner</excludeButtons>
-        <excludeButtons>New</excludeButtons>
         <fields>PCC_MM_ID__c</fields>
-        <fields>PCC_Old_MM_Id__c</fields>
         <fields>PCC_Ordering_Cd__c</fields>
         <fields>PCC_L5_Product_Name__c</fields>
         <fields>PCC_Design_Registration__c</fields>
         <relatedList>PCC_DDR_L5_Product_Mapping__c.PCC_Opportunity__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>Core_Status__c</fields>
+        <fields>Core_Reviewer_Email__c</fields>
+        <relatedList>Core_Solution_Areas__c.Opportunity__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>PCC_Rebate_Claim_Stage__c.PCC_Opportunity__c</relatedList>
     </relatedLists>
     <relatedObjects>AccountId</relatedObjects>
     <showEmailCheckbox>false</showEmailCheckbox>

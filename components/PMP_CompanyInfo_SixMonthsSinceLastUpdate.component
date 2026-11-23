@@ -34,7 +34,7 @@
             }
             
             table {
-            font-family: sans-serif; /*arial, sans-serif, Intel Clear;*/
+            font-family: Intel Clear; /*arial, sans-serif;*/
             border-collapse: collapse;
             border-left: 1px solid #dddddd;
             border-right: 1px solid #dddddd;
@@ -50,9 +50,9 @@
             color:#0071c5;
             }
             
-            <!--h1{
-            font-family: Intel Clear !important;  
-            }-->
+            h1{
+            font-family: Intel Clear Pro !important;  
+            }
         </style>
         
         <apex:attribute name="partnerRecordId" type="Id" description="Partner Record Id" assignTo="{!partnerId}"/>
@@ -60,7 +60,7 @@
         <apex:attribute name="partnerType" type="String" description="type of the partner in company"/>
         <body>
             <!-- Header Banner -->
-            <c:PMP_Global_Header message="Review and update your Showcase {!partnerType}"/>
+            <c:PMP_Global_Header message="Review and update your Marketplace {!partnerType}."/>
             <!-- Header Banner -->
             
             <!-- Email content -->
@@ -69,43 +69,43 @@
                 <tr>
                     <td style="padding-left:50px;">
                         <br/>Hello<br/><br/>
-                        We want to ensure your Intel® Partner Showcase {!partnerType} gets the attention it deserves from our global audience.<br/><br/>
-                        We’ve noticed you haven’t updated your <span style ="text-transform:lowercase">{!partnerType} </span> in the past six months.
-                        Please take a moment to review and update your company information and offerings with any necessary updates, revisions, or additions. 
-                        <br/>
-                        <!--Partners who keep their <span style ="text-transform:lowercase">{!partnerType} </span> updated with their latest company and solution information tend to see more traffic, giving them the ability to garner more page views, leads, customers, and strategic partnerships.-->
-                    </td>
-                </tr>
-                      <!-- CTA -->
-                <tr>
-                    <td style="padding-left:50px;">
-                        <p><apex:outputLink value="{!$Label.PMP_PartnerURL}{!partnerRecordId}" styleClass="intelBlue">Update your {!partnerType}</apex:outputLink></p>
+                		
+                        We want to ensure your Intel® Solutions Marketplace {!partnerType} gets the attention it deserves from our global audience. 
+                        <br/><br/>
+                        We’ve noticed you haven’t updated your {!partnerType} in the past six months. Please take a moment to review and update your company information and offerings with any necessary updates, revisions, or additions. 
                         
-                    </td>
-                </tr>
-                <!-- CTA -->
-                    <tr>
-                    <td style="padding-left:50px;">     
-                       
-                        Thanks for your prompt attention,<br/><br/>
-                        The Intel® Partner Showcase Team <br/><br/>
-                       <!-- <b>{!partnerType} Name: {!partnerData.Name}</b><br/> -->
+                        
+                       <br/><br/>
+                        Thanks for being part of our solutions community,<br/><br/>
+                        The Intel® Solutions Marketplace Team <br/> <br/>
+                        <b>{!partnerType} Name: {!partnerData.Name}</b><br/>
                         
                         
                     </td>
                 </tr>
                 <!-- Email Body -->
-                
+                <!-- CTA -->
+                <tr>
+                    <td style="padding-left:50px;">
+                        <p><apex:outputLink value="{!$Label.PMP_PartnerURL}{!partnerData.PMP_Published_Copy_Id__c}" styleClass="intelBlue">Update your {!partnerType}</apex:outputLink></p><br/>
+                        
+                    </td>
+                </tr>
+                <!-- CTA -->
                 <!-- Progress Indication 
-
-                <!-- Progress Indication -->
+<tr>
+<td style="height:50; text-align:center;">
+<apex:image id="bodyImageId" url="{!bodyURL}"/>
+</td>
+</tr>
+<!-- Progress Indication -->
                 <!-- Next Best Step -->
                
                 <!-- Next Best Step -->
                 <!-- Questions/Contact -->
                 <tr>
                     <td style="padding-left:50px;">  
-                        Questions? Reach out to Showcase Admin Team at:<br/>
+                        Questions? Reach out to Marketplace Admin Team at <br/>
                         <apex:outputLink value="mailto:{!$Label.PMP_MailTo}" styleClass="intelBlue">
                             {!$Label.PMP_MailTo}
                         </apex:outputLink><br/><br/>
@@ -115,9 +115,9 @@
                 <!-- Marketplace Help & FAQ -->
                 <!-- <tr>    
 <td style="text-align:center">
-For FAQs and pro-tips on using Intel® Partner Showcase, please visit 
+For FAQs and pro-tips on using Intel Solutions Marketplace, please visit 
 <apex:outputLink value="www.intel.com" styleClass="intelBlue">
-Showcase Help
+Marketplace Help
 </apex:outputLink><br/><br/>
 </td>
 </tr>-->

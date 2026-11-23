@@ -243,11 +243,6 @@
                     <default>false</default>
                     <label>Thumbnail Image</label>
                 </value>
-                <value>
-                    <fullName>Product Website</fullName>
-                    <default>false</default>
-                    <label>Product Website</label>
-                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>

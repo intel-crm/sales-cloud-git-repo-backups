@@ -101,18 +101,6 @@
     <columns>
         <field>Opportunity.Core_Opportunity_ID__c</field>
     </columns>
-    <columns>
-        <field>Opportunity.Core_Opp_Prime_Account_Name__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Sales_Groups__c</field>
-    </columns>
-    <columns>
-        <field>Account.Core_Prime_Account_Name__c</field>
-    </columns>
-    <columns>
-        <field>Account.Core_Sales_Groups__c</field>
-    </columns>
     <filter>
         <criteriaItems>
             <column>Opportunity.Core_Product_Segment__c</column>
@@ -135,32 +123,11 @@
             <operator>equals</operator>
             <value>Win Approved,Win Submitted,Pending,Production Win,Production Lost,Production Cancelled</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Commissionable__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>,Yes</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Exclude_From_KPIs__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>0</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Sales_Groups__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>Russia</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
-        <dateGranularity>Quarter</dateGranularity>
+        <dateGranularity>FiscalQuarter</dateGranularity>
         <field>OpportunityLineItem.Core_KPI_Date__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
@@ -200,6 +167,8 @@
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <interval>INTERVAL_CURY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

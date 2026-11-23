@@ -29,30 +29,20 @@
         <field>ROLLUP_DESCRIPTION</field>
     </columns>
     <columns>
-        <field>FULL_NAME</field>
-    </columns>
-    <columns>
         <field>ACCOUNT_NAME</field>
     </columns>
     <columns>
         <field>OPPORTUNITY_NAME</field>
     </columns>
     <columns>
+        <field>STAGE_NAME</field>
+    </columns>
+    <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>AMOUNT</field>
     </columns>
     <columns>
-        <field>STAGE_NAME</field>
-    </columns>
-    <columns>
         <field>PROBABILITY</field>
-    </columns>
-    <columns>
-        <field>CLOSE_DATE</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Core_Opportunity_KPI__c.Core_Opp_KPI_Total_Price__c</field>
     </columns>
     <filter>
         <criteriaItems>
@@ -69,16 +59,14 @@
             <operator>equals</operator>
             <value>DCG AI Deal $</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>CUST_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>equals</operator>
-            <value>DCG AI Deal $</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>FULL_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>CUST_NAME</field>

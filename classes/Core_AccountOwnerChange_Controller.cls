@@ -21,8 +21,7 @@ public without sharing class Core_AccountOwnerChange_Controller
     private String  currentUserId;
     private ApexPages.StandardController controller {get; set;}
     //private ApexPages.Message myMsg;
-    public static Map<String,Core_ACM_Control_Execution__c> mapAcmClassCheckToEol = Core_ACM_Control_Execution__c.getAll();
-    
+
     private PageReference acctPage;
     
     public Core_AccountOwnerChange_Controller(ApexPages.StandardController paramController)
@@ -30,6 +29,7 @@ public without sharing class Core_AccountOwnerChange_Controller
         controller     = paramController; 
         currentAccount = (Account) controller.getRecord();       
         currentUserId  = UserInfo.getUserId();
+        System.debug('CONSTRUCTOR currentUserId: ' + currentUserId);
         
         
     }
@@ -37,19 +37,13 @@ public without sharing class Core_AccountOwnerChange_Controller
 
     public PageReference returnToAccount()
     {
-        if(mapAcmClassCheckToEol.containsKey('AccountOwnerChangeController') && mapAcmClassCheckToEol.get('AccountOwnerChangeController').IsActive__c)
-        {
-            return acctPage;
-        }
-        return null;
-        
+        return acctPage;
     }
-    
-    
+
+
     public PageReference changeOwnerRequest()
     {
-        if(mapAcmClassCheckToEol.containsKey('AccountOwnerChangeController') && mapAcmClassCheckToEol.get('AccountOwnerChangeController').IsActive__c)
-        {
+        System.debug('START - Method');
         
         // DH 1/20/17: added this, to refresh the current user ID, so test code will work
         // (the user who sets up the controller for testing may not be the one invoking this method)
@@ -57,53 +51,39 @@ public without sharing class Core_AccountOwnerChange_Controller
 
         // Making this an instance variable creates a serialization error.
         ApexPages.Message myMsg;    
-        User user  = new User();
-        List<PermissionSetAssignment> userSuperUserPermSets  = new List<PermissionSetAssignment>();
-        List<User> userList = new List<User>(); 
         
         //Start (Kavyashree HR)- Added the field RecordType.Name in the query      
         try
         {
-            if ((Schema.sObjectType.Account.fields.Name.isAccessible())&& 
-            (Schema.sObjectType.Account.fields.OwnerId.isAccessible())&&
-            (Schema.sObjectType.Account.fields.Industry.isAccessible())&&
-            (Schema.sObjectType.Account.fields.Core_Sub_Industry__c.isAccessible())&&
-            (Schema.sObjectType.Account.fields.Core_Sales_Groups__c.isAccessible())&&
-            (Schema.sObjectType.Account.fields.Core_Owner_Changed_From_Uncovered__c.isAccessible()))
-            {
-                List<Account> accountList = [SELECT Id, Name, OwnerId,Industry,Core_Sub_Industry__c, Core_Sales_Groups__c, RecordType.Name , Core_Owner_Changed_From_Uncovered__c
+            List<Account> accountList = [SELECT Id, Name, OwnerId,Industry,Core_Sub_Industry__c, Core_Sales_Groups__c, RecordType.Name , Core_Owner_Changed_From_Uncovered__c
                                          FROM Account
                                          WHERE Id = :currentAccount.Id];
                                              
-                if (accountList.size() == 0)
-                    return null;
+            if (accountList.size() == 0)
+                return null;
     
-                accountUpdate = accountList[0];    
-            }
-
+            accountUpdate = accountList[0];    
+    
             // Create return page on for current account
             acctPage = new ApexPages.StandardController(accountUpdate).view();
             acctPage.setRedirect(false);
     
             // Get current user INFO
-            if (Schema.sObjectType.User.fields.Name.isAccessible()) {
-                userList = [SELECT Name, Email, IsActive, ProfileId
+            List<User> userList = [SELECT Name, Email, IsActive, ProfileId
                                    FROM User 
                                    WHERE Id = :currentUserId];
-                
-                if (Schema.sObjectType.PermissionSetAssignment.fields.Id.isAccessible()) {
             
-                    userSuperUserPermSets = [
-                        SELECT Id
-                        FROM PermissionSetAssignment
-                        WHERE AssigneeId = :currentUserId and PermissionSetId = :Label.Core_A_E_Super_User_Permission_Set_ID];
+            List<PermissionSetAssignment> userSuperUserPermSets = [
+                SELECT Id
+                FROM PermissionSetAssignment
+                WHERE AssigneeId = :currentUserId and PermissionSetId = :Label.Core_A_E_Super_User_Permission_Set_ID];
             
-                        if (userList.size() == 0)
-                            return acctPage;
-                    }
-                user = userList[0];
-            }
-        
+            if (userList.size() == 0)
+                return acctPage;
+    
+            User user = userList[0];
+            
+            System.debug('Current User Profile ID: ' + user.ProfileId + ', Permission Set query: ' + userSuperUserPermSets);
             
             // Current user is A&E User (profile) but not A&E Super User (perm set) - do nothing
             if ((user.ProfileId == Label.Core_A_E_User_Profile_ID) && (userSuperUserPermSets.size() == 0)) {
@@ -113,8 +93,9 @@ public without sharing class Core_AccountOwnerChange_Controller
                 ApexPages.addMessage(myMsg);        
                 return null;  // cctPage;
             }
-           
+                
             // Account Owner same as Current User - do nothing
+            System.debug('Current User Check: ' + accountUpdate.OwnerId + ' == ' + currentUserId);
             if (accountUpdate.OwnerId == currentUserId)
             {
               
@@ -142,6 +123,8 @@ public without sharing class Core_AccountOwnerChange_Controller
                 }
             //End - Added by Kavyashree HR (Infosys Team) on 9/4/2020 for the US767646         
             // Integration User or Uncovered Account - change owner!
+            System.debug('Integration User Check: ' + accountUpdate.OwnerId + ' == ' + Label.Core_CRM_Integration_User_ID);
+            System.debug('Uncovered Account Check: ' + accountUpdate.OwnerId + ' == ' + Label.Core_Uncovered_Account_ID);
             if ((accountUpdate.OwnerId == Label.Core_CRM_Integration_User_ID) ||
                 (accountUpdate.OwnerId == Label.Core_Uncovered_Account_ID)||  (accountUpdate.OwnerId == Label.Core_A_E_Account_Owner_ID))
             {
@@ -158,12 +141,8 @@ public without sharing class Core_AccountOwnerChange_Controller
                     oldOwner = 'A&E Account Owner';
                 }
                 accountUpdate.OwnerId = user.Id;
-                if(Schema.sObjectType.Account.fields.Core_Owner_Changed_From_Uncovered__c.isUpdateable() &&
-                   Schema.sObjectType.Account.fields.Industry.isUpdateable()  &&
-                   Schema.sObjectType.Account.fields.Core_Sub_Industry__c.isUpdateable()  &&
-                   Schema.sObjectType.Account.fields.OwnerId.isUpdateable()){
                 update accountUpdate;
-                   }
+                
                 //START - Added by Rajesh for change request  on US9595--if Account SalesGroup is Blank and Uncovered Account,displaying the Warning MSG//    
                 /*if(String.isBlank(accountUpdate.Core_Sales_Groups__c) && !(accountUpdate.Core_Covered_Account__c)){
                    myMsg = new ApexPages.Message(ApexPages.Severity.WARNING, System.Label.Core_Acc_SalesGroup_WarningMsg);
@@ -177,8 +156,9 @@ public without sharing class Core_AccountOwnerChange_Controller
                 return null;
             } 
             
-            if (Schema.sObjectType.User.fields.Name.isAccessible()) {
-                userList = [SELECT Name, Email, IsActive 
+            System.debug('Inactive User Check');
+            
+            userList = [SELECT Name, Email, IsActive 
                         FROM User 
                         WHERE Id = :accountUpdate.OwnerId];
             
@@ -189,55 +169,54 @@ public without sharing class Core_AccountOwnerChange_Controller
                 if (userList.size() > 0)
                     ownerName = userliSt[0].Name;
                 
-                
                 accountUpdate.OwnerId = currentUserId;
-
-                    update accountUpdate;
+                update accountUpdate;
                 myMsg = new ApexPages.Message(ApexPages.Severity.INFO, 'Inactive Account Owner "' + ownerName + '" changed to "' + user.Name + '" for account "' + accountUpdate.Name + '"' + ', however, by design, you will not be able to change the Sales Group.  If you wish to change the Sales Group, request via AAQ; include link to Account and detailed justification.');
                 ApexPages.addMessage(myMsg);   
                 return null;
             } 
             
             
+            System.debug('Current User Check');
+            
             User owner = userList[0];
             
             String requestText = 'ACE Cloud user ' + user.Name + ' has requested onwership of your account: ' + accountUpdate.Name + '.  ' +
                 'For your approval, a task to re-assign ownership has been attached to the account in Salesforce.';
             
+            System.debug('E-Mail');
             
-            if(System.Label.Core_Ownership_Orgwide_Email_Id != null && String.isNotBlank(System.Label.Core_Ownership_Orgwide_Email_Id)){
-                // Reserve a single email
-                Messaging.reserveSingleEmailCapacity(1);
-                
-                // Create a new single email message object
-                Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
-                
-                // Strings to hold the email addresses to which you are sending the email.
-                List<String> toAddresses = new List<String> {owner.Email}; 
+            // Reserve a single email
+            Messaging.reserveSingleEmailCapacity(1);
+            
+            // Create a new single email message object
+            Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
+            
+            // Strings to hold the email addresses to which you are sending the email.
+            List<String> toAddresses = new List<String> {owner.Email}; 
                 
                 // Assign the addresses for the To and CC lists to the mail object.
                 mail.setToAddresses(toAddresses);
-                
-                mail.setReplyTo(user.Email);
-
-                mail.setOrgWideEmailAddressId(System.Label.Core_Ownership_Orgwide_Email_Id);
-                
-                // Specify the name used as the display name.
-                
-                // Specify the subject line for your email address.
-                mail.setSubject('Account Ownership change request: ' + accountUpdate.Name);
-                
-                // Optionally append the salesforce.com email signature to the email.
-                // The email address of the user executing the Apex Code will be used.
-                mail.setUseSignature(false);
-                
-                mail.setHtmlBody(requestText);
-                
-                // Send the email you have created.
-                Messaging.sendEmail(new Messaging.SingleEmailMessage[] { mail }); 
-            }               
+            
+            mail.setReplyTo(user.Email);
+            
+            // Specify the name used as the display name.
+            mail.setSenderDisplayName(user.Name);
+            
+            // Specify the subject line for your email address.
+            mail.setSubject('Account Ownership change request: ' + accountUpdate.Name);
+            
+            // Optionally append the salesforce.com email signature to the email.
+            // The email address of the user executing the Apex Code will be used.
+            mail.setUseSignature(false);
+            
+            mail.setHtmlBody(requestText);
+            
+            // Send the email you have created.
+            Messaging.sendEmail(new Messaging.SingleEmailMessage[] { mail });                
             
             
+            System.debug('Task');
             
             Task newTask        = new Task();
             newTask.Description = requestText; 
@@ -246,12 +225,10 @@ public without sharing class Core_AccountOwnerChange_Controller
             newTask.Subject     = 'Account Ownership Change Request from ' + user.Name;
             newTask.Type        = 'Change Ownership';
             newTask.WhatId      = accountUpdate.Id; 
-            if(Schema.sObjectType.Task.fields.Description.isCreateable()){
-                insert newTask;        
-            }
-
-                
-                
+            insert newTask;        
+            
+            System.debug('END - Method');
+             
             myMsg = new ApexPages.Message(ApexPages.Severity.INFO, 'Account Owner Change Request: however, by design, you will not be able to change the Sales Group.  If you wish to change the Sales Group, request via AAQ; include link to Account and detailed justification.');
             ApexPages.addMessage(myMsg);        
             
@@ -262,13 +239,8 @@ public without sharing class Core_AccountOwnerChange_Controller
             ApexPages.addMessage(myMsg);        
             
             myMsg = new ApexPages.Message(ApexPages.Severity.INFO, 'Account Owner Change Request Task added to account: ' + accountUpdate.Name);
-            ApexPages.addMessage(myMsg);
-        //}        
-        //}
-    }
+            ApexPages.addMessage(myMsg);        
             return null;
-        
-        
         }    
         catch (Exception err)
         {
@@ -279,9 +251,7 @@ public without sharing class Core_AccountOwnerChange_Controller
             ApexPages.addMessage(myMsg);        
             
             return null;           
-        }
-	}
-        return null;
-                
+        }        
     }
+
 }

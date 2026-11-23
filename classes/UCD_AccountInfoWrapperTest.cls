@@ -21,7 +21,7 @@ public class UCD_AccountInfoWrapperTest {
         wp.taddressline1 = 'Address line 1';
         wp.taddressline2 = 'Address line 2';
         wp.tcity = 'Test city';
-        //System.debug('Test city' +wp.tcity);
+        system.debug('Test city' +wp.tcity);
         system.assertEquals(wp.tcity, 'Test city');
     }
 }

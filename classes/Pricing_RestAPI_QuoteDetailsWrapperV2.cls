@@ -38,6 +38,7 @@ public with sharing class Pricing_RestAPI_QuoteDetailsWrapperV2 {
         public String partnerName {set;get;}
         public Boolean volumeExceptionQuote {set;get;}
         public String endCustomerUrl {set;get;}
+        
     }
     
     public class QuoteDetailsClient  {
@@ -110,6 +111,7 @@ public with sharing class Pricing_RestAPI_QuoteDetailsWrapperV2 {
         public Decimal noOfCPUsPerSystem {get; set;}
         public Decimal singleSystemPricePoint {get;set;}
         public Decimal customerStdUnitPrice {get;set;}
+        public String quotelineprogramtype {set;get;}
         public Decimal requestedUnitPrice {get;set;}
         public Decimal totalBidWithoutDiscount {get;set;}
         public Decimal additionalDiscount {get;set;}
@@ -139,7 +141,7 @@ public with sharing class Pricing_RestAPI_QuoteDetailsWrapperV2 {
         public String additionalComments {get; set;}
         public String referenceQuoteLineNumberId {get;set;}
         public String referenceQuoteLineNumber {get;set;}
-        public String sourceQuoteLineId{get;set;}
+		public String sourceQuoteLineId{get;set;}
         public String rejectionReason {get;set;}
         public String createdByEmail {get;set;}
         public String lostReason {get;set;}
@@ -198,7 +200,7 @@ public with sharing class Pricing_RestAPI_QuoteDetailsWrapperV2 {
         public String additionalComments {get; set;}
         public String referenceQuoteLineNumberId {get;set;}
         public String referenceQuoteLineNumber {get;set;}
-        public String sourceQuoteLineId{get;set;}
+		public String sourceQuoteLineId{get;set;}
         public String rejectionReason {get;set;}
         public String createdByEmail {get;set;}
         public String lostReason {get;set;}
@@ -262,7 +264,8 @@ public with sharing class Pricing_RestAPI_QuoteDetailsWrapperV2 {
         public String additionalComments {get; set;}
         public String referenceQuoteLineNumberId {get;set;}
         public String referenceQuoteLineNumber {get;set;}
-        public String sourceQuoteLineId{get;set;}
+		public String sourceQuoteLineId{get;set;}
+        public String sourceQuoteLine{get;set;}
         public Decimal competitorNoOfSystems {set;get;}
         public Decimal competitorNoOfUnitsPerSystem {set;get;}
         public String forecastProductName {set;get;}
@@ -322,7 +325,7 @@ public with sharing class Pricing_RestAPI_QuoteDetailsWrapperV2 {
         public String additionalComments {get; set;}
         public String referenceQuoteLineNumberId {get;set;}
         public String referenceQuoteLineNumber {get;set;}
-        public String sourceQuoteLineId{get;set;}
+		public String sourceQuoteLineId{get;set;}
         public String rejectionReason {get;set;}
         public String createdByEmail {get;set;}
         public String lostReason {get;set;}
@@ -372,6 +375,7 @@ public with sharing class Pricing_RestAPI_QuoteDetailsWrapperV2 {
         public String pairedCPU {get;set;}
 	    public String writeInPairedCPU {get;set;}
         public Decimal customerStdUnitPrice {get;set;}
+        public String quotelineprogramtype {set;get;}
         public Decimal requestedUnitPrice {get;set;}
         public Decimal totalBidWithoutDiscount {get;set;}
         public Decimal additionalDiscount {get;set;}
@@ -402,7 +406,7 @@ public with sharing class Pricing_RestAPI_QuoteDetailsWrapperV2 {
         public String additionalComments {get; set;}
         public String referenceQuoteLineNumberId {get;set;}
         public String referenceQuoteLineNumber {get;set;}
-        public String sourceQuoteLineId{get;set;}
+		public String sourceQuoteLineId{get;set;}
         public String rejectionReason {get;set;}
         public String createdByEmail {get;set;}
         public String lostReason {get;set;}
@@ -469,7 +473,7 @@ public with sharing class Pricing_RestAPI_QuoteDetailsWrapperV2 {
         public String additionalComments {get; set;}
         public String referenceQuoteLineNumberId {get;set;}
         public String referenceQuoteLineNumber {get;set;}
-        public String sourceQuoteLineId{get;set;}
+		public String sourceQuoteLineId{get;set;}
         public String rejectionReason {get;set;}
         public String createdByEmail {get;set;}
         public String lostReason {get;set;}

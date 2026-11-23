@@ -1,0 +1,24 @@
+<aura:component implements="forceCommunity:themeLayout" access="global" description="Psg communityPage">
+    <aura:attribute name="templateHeader" type="Aura.Component[]" required="false" />
+    <aura:attribute name="templateFooter" type="Aura.Component[]" required="false"/>
+
+    <div id="recode50header" class="no-animate"></div>
+    <c:IntelHeader />
+
+    <div>
+        <div class="marketplaceTheme">
+            <c:IntelCoreCommunity />
+            <c:MarketplaceUnsupportedBrowser />
+            <div class="mainContentArea">
+                {!v.body}
+            </div>
+        </div>
+
+    </div>
+ 
+    <c:IntelFooter />
+   
+    <div id="recode50footer">
+         
+    </div>
+</aura:component>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Report$Owner.Id</field>
+    </columns>
+    <columns>
+        <field>Report$Owner.Name</field>
+    </columns>
+    <columns>
+        <field>Report$Id</field>
+    </columns>
+    <columns>
+        <field>Report$Name</field>
+    </columns>
+    <columns>
+        <field>Report$DeveloperName</field>
+    </columns>
+    <columns>
+        <field>Report.DashboardComponents$Id</field>
+    </columns>
+    <columns>
+        <field>Report.DashboardComponents$Dashboard</field>
+    </columns>
+    <format>Tabular</format>
+    <name>Reports linked to Dashboards</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Core_Reports_and_Dashboards__c</reportType>
+    <scope>user</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Report$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

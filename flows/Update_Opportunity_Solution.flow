@@ -25,13 +25,64 @@
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <recordLookups>
+        <name>Get_Entity_Definition</name>
+        <label>Get Entity Definition</label>
+        <locationX>176</locationX>
+        <locationY>551</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_Field_Definition</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>QualifiedApiName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Core_Solution_Areas__c</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>EntityDefinition</object>
+        <sortField>DurableId</sortField>
+        <sortOrder>Asc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Field_Definition</name>
+        <label>Get Field Definition</label>
+        <locationX>176</locationX>
+        <locationY>671</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>GetPicklistLabel</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>QualifiedApiName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Core_Industry_Use_Case__c</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>EntityDefinitionId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Entity_Definition.DurableId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>FieldDefinition</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
         <name>Get_Record_Type</name>
         <label>Get Record Type</label>
         <locationX>176</locationX>
         <locationY>431</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>update_Solution_Fields</targetReference>
+            <targetReference>Get_Entity_Definition</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -66,11 +117,41 @@
         <object>Core_Solution_Areas__c</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
+    <recordLookups>
+        <name>GetPicklistLabel</name>
+        <label>GetPicklistLabel</label>
+        <locationX>176</locationX>
+        <locationY>791</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>update_Solution_Fields</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>EntityParticleId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Field_Definition.DurableId</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Value</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Core_Solution_Areas__r.Core_Industry_Use_Case__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>PicklistValueInfo</object>
+        <sortField>Value</sortField>
+        <sortOrder>Asc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
     <recordUpdates>
         <name>update_Solution_Fields</name>
         <label>update Solution Fields</label>
         <locationX>176</locationX>
-        <locationY>551</locationY>
+        <locationY>911</locationY>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Core_Solution_Areas__c</field>
@@ -88,7 +169,7 @@
         <inputAssignments>
             <field>Core_Industry_Use_Case_s__c</field>
             <value>
-                <elementReference>get_Solution.Core_Industry_Use_Case__c</elementReference>
+                <elementReference>GetPicklistLabel.Label</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>

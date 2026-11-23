@@ -1,0 +1,35 @@
+<apex:page standardController="Core_Design_Registration_Product__c">
+    <apex:form >
+        <!-- Your custom popup content -->
+        <apex:pageBlock >
+            <div id="popup" style="display:none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: #fff; padding: 20px; border: 1px solid #ccc; z-index: 1000;">
+                <p>Custom popup message</p>
+                <button onclick="closePopup()">Close</button>
+            </div>
+
+            <apex:pageBlockButtons >
+                <apex:commandButton action="{!save}" value="Save" onclick="return showPopup();"/>
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+        
+        <script>
+            function showPopup() {
+                // Show the popup
+                document.getElementById('popup').style.display = 'block';
+
+                // Prevent the default action of the button click
+                return false;
+            }
+
+            function closePopup() {
+                // Hide the popup
+                document.getElementById('popup').style.display = 'none';
+                
+                // Continue with the standard save functionality
+                // This line will submit the form and trigger the standard save action
+                // The form ID might need to be adjusted based on your specific scenario
+                document.forms[0].submit();
+            }
+        </script>
+    </apex:form>
+</apex:page>

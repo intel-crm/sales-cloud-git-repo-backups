@@ -29,6 +29,10 @@
         <name>Core_FC_4Q_Shed_Revenue__c</name>
     </fields>
     <fields>
+        <label><!-- Approved Claim Quantity --></label>
+        <name>Core_FC_Approved_Claim_Quantity_nbr__c</name>
+    </fields>
+    <fields>
         <label><!-- BU Product Segment --></label>
         <name>Core_FC_BU_Product_Segment__c</name>
     </fields>
@@ -48,6 +52,14 @@
         <label><!-- Opportunity Product --></label>
         <name>Core_FC_Opportunity_Product__c</name>
         <relationshipLabel><!-- Forecast Product Schedules --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Remaining Claim Quantity --></label>
+        <name>Core_FC_Remaining_Claim_Quantity_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Submitted Claim Quantity --></label>
+        <name>Core_FC_Submitted_Claim_Quantity_nbr__c</name>
     </fields>
     <fields>
         <label><!-- Vendor --></label>
@@ -158,4 +170,12 @@
         <name>Core_Opp_Line_Item_RecordID__c</name>
     </fields>
     <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Schedule Quantity cannot be a negative or decimal value. --></errorMessage>
+        <name>Core_Opp_FC_Quantity_Negative_Check</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- No Forecast --></errorMessage>
+        <name>testValidation</name>
+    </validationRules>
 </CustomObjectTranslation>

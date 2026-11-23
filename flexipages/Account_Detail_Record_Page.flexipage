@@ -159,6 +159,16 @@
                 <identifier>RecordCST_Unified_ID_cField</identifier>
             </fieldInstance>
         </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Active__c</fieldItem>
+                <identifier>RecordActive__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
         <name>Facet-a224499e-6606-4a80-95c1-c5c9515d3c69</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -171,16 +181,6 @@
                 </fieldInstanceProperties>
                 <fieldItem>Record.SPM_Customer_ID__c</fieldItem>
                 <identifier>RecordSPM_Customer_ID_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.CIM_ID__c</fieldItem>
-                <identifier>RecordCIM_ID_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>

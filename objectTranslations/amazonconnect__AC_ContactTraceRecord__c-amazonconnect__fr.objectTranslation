@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Enregistrement de suivi du contact</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value><!-- Enregistrement de suivi du contact --></value>
+    </caseValues>
+    <fields>
+        <label> ID de compte AWS </label>
+        <name>amazonconnect__AWSAccountId__c</name>
+    </fields>
+    <fields>
+        <label> Temps de travail après contact </label>
+        <name>amazonconnect__AfterContactWorkDuration__c</name>
+    </fields>
+    <fields>
+        <label> Horodatage de fin de travail après contact </label>
+        <name>amazonconnect__AfterContactWorkEndTimestamp__c</name>
+    </fields>
+    <fields>
+        <label> Horodatage de démarrage de travail après contact </label>
+        <name>amazonconnect__AfterContactWorkStartTimestamp__c</name>
+    </fields>
+    <fields>
+        <label> ARN de l’agent </label>
+        <name>amazonconnect__AgentARN__c</name>
+    </fields>
+    <fields>
+        <label> Horodatage de l’agent connecté à l’agent </label>
+        <name>amazonconnect__AgentConnectedToAgentTimestamp__c</name>
+    </fields>
+    <fields>
+        <label> Tentatives de connexion de l’agent </label>
+        <name>amazonconnect__AgentConnectionAttempts__c</name>
+    </fields>
+    <fields>
+        <label> Temps d’attente du client de l’agent </label>
+        <name>amazonconnect__AgentCustomerHoldDuration__c</name>
+    </fields>
+    <fields>
+        <label> Groupes de hiérarchie des agents </label>
+        <name>amazonconnect__AgentHierarchyGroup__c</name>
+    </fields>
+    <fields>
+        <label> Groupes de hiérarchie des agents </label>
+        <name>amazonconnect__AgentHierarchyGroups__c</name>
+    </fields>
+    <fields>
+        <label> Temps d’interaction de l’agent </label>
+        <name>amazonconnect__AgentInteractionDuration__c</name>
+    </fields>
+    <fields>
+        <label> Temps d’attente le plus long de l’agent </label>
+        <name>amazonconnect__AgentLongestHoldDuration__c</name>
+    </fields>
+    <fields>
+        <label> Nombre d’attentes de l’agent </label>
+        <name>amazonconnect__AgentNumberOfHolds__c</name>
+    </fields>
+    <fields>
+        <label> ARN du profil de routage de l’agent </label>
+        <name>amazonconnect__AgentRoutingProfileARN__c</name>
+    </fields>
+    <fields>
+        <label> Nom du profil de routage de l’agent </label>
+        <name>amazonconnect__AgentRoutingProfileName__c</name>
+    </fields>
+    <fields>
+        <label> Nom d’utilisateur de l’agent </label>
+        <name>amazonconnect__AgentUsername__c</name>
+    </fields>
+    <fields>
+        <label> Attributs </label>
+        <name>amazonconnect__Attributes__c</name>
+    </fields>
+    <fields>
+        <label> Canal </label>
+        <name>amazonconnect__Channel__c</name>
+        <picklistValues>
+            <masterLabel>CHAT</masterLabel>
+            <translation><!-- CHAT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TASK</masterLabel>
+            <translation><!-- TASK --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VOICE</masterLabel>
+            <translation><!-- VOICE --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label> Horodatage de connexion au système </label>
+        <name>amazonconnect__ConnectedToSystemTimestamp__c</name>
+    </fields>
+    <fields>
+        <label> Canal de contact </label>
+        <name>amazonconnect__ContactChannel__c</name>
+        <relationshipLabel><!-- AC Contact Trace Records --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Contact Details --></label>
+        <name>amazonconnect__ContactDetails__c</name>
+    </fields>
+    <fields>
+        <label> ID de contact </label>
+        <name>amazonconnect__ContactId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Customer Endpoint Address --></label>
+        <name>amazonconnect__CustomerEndpointAddress__c</name>
+    </fields>
+    <fields>
+        <label><!-- Disconnect Reason --></label>
+        <name>amazonconnect__DisconnectReason__c</name>
+        <picklistValues>
+            <masterLabel>AGENT_DISCONNECT</masterLabel>
+            <translation><!-- AGENT_DISCONNECT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>API</masterLabel>
+            <translation><!-- API --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CONTACT_FLOW_DISCONNECT</masterLabel>
+            <translation><!-- CONTACT_FLOW_DISCONNECT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CUSTOMER_DISCONNECT</masterLabel>
+            <translation><!-- CUSTOMER_DISCONNECT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EXPIRED</masterLabel>
+            <translation><!-- EXPIRED --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OTHER</masterLabel>
+            <translation><!-- OTHER --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TELECOM_PROBLEM</masterLabel>
+            <translation><!-- TELECOM_PROBLEM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>THIRD_PARTY_DISCONNECT</masterLabel>
+            <translation><!-- THIRD_PARTY_DISCONNECT --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label> Horodatage de déconnexion </label>
+        <name>amazonconnect__DisconnectTimestamp__c</name>
+    </fields>
+    <fields>
+        <label> ID de contact initial </label>
+        <name>amazonconnect__InitialContactId__c</name>
+    </fields>
+    <fields>
+        <label> Horodatage d’initiation </label>
+        <name>amazonconnect__InitiationTimestamp__c</name>
+    </fields>
+    <fields>
+        <label> Méthode d’initiation </label>
+        <name>amazonconnect__Initiation_Method__c</name>
+        <picklistValues>
+            <masterLabel>AGENT_REPLY</masterLabel>
+            <translation><!-- AGENT_REPLY --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>API</masterLabel>
+            <translation><!-- API --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CALLBACK</masterLabel>
+            <translation><!-- CALLBACK --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DISCONNECT</masterLabel>
+            <translation><!-- DISCONNECT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EXTERNAL_OUTBOUND</masterLabel>
+            <translation><!-- EXTERNAL_OUTBOUND --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FLOW</masterLabel>
+            <translation><!-- FLOW --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>INBOUND</masterLabel>
+            <translation><!-- INBOUND --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MONITOR</masterLabel>
+            <translation><!-- MONITOR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OUTBOUND</masterLabel>
+            <translation><!-- OUTBOUND --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>QUEUE_TRANSFER</masterLabel>
+            <translation><!-- QUEUE_TRANSFER --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TRANSFER</masterLabel>
+            <translation><!-- TRANSFER --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label> ARN de l’instance </label>
+        <name>amazonconnect__InstanceARN__c</name>
+    </fields>
+    <fields>
+        <label> Horodatage de la dernière mise à jour </label>
+        <name>amazonconnect__LastUpdateTimestamp__c</name>
+    </fields>
+    <fields>
+        <label> ID de contact suivant </label>
+        <name>amazonconnect__NextContactId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number Of Holds --></label>
+        <name>amazonconnect__NumberOfHolds__c</name>
+    </fields>
+    <fields>
+        <label><!-- PhoneCall --></label>
+        <name>amazonconnect__PhoneCall__c</name>
+        <relationshipLabel><!-- AC Contact Trace Records --></relationshipLabel>
+    </fields>
+    <fields>
+        <label> ID de contact précédent </label>
+        <name>amazonconnect__PreviousContactId__c</name>
+    </fields>
+    <fields>
+        <label> ARN de la file d’attente </label>
+        <name>amazonconnect__QueueARN__c</name>
+    </fields>
+    <fields>
+        <label> Horodatage de la suppression dans la file d’attente </label>
+        <name>amazonconnect__QueueDequeueTimestamp__c</name>
+    </fields>
+    <fields>
+        <label> Durée de la file d’attente </label>
+        <name>amazonconnect__QueueDuration__c</name>
+    </fields>
+    <fields>
+        <label> Horodatage de la mise en file d’attente </label>
+        <name>amazonconnect__QueueEnqueueTimestamp__c</name>
+    </fields>
+    <fields>
+        <label> Nom de la file d’attente </label>
+        <name>amazonconnect__QueueName__c</name>
+    </fields>
+    <fields>
+        <label> Motif de suppression de l’enregistrement </label>
+        <name>amazonconnect__RecordingDeletionReason__c</name>
+    </fields>
+    <fields>
+        <label> Emplacement de l’enregistrement </label>
+        <name>amazonconnect__RecordingLocation__c</name>
+    </fields>
+    <fields>
+        <label> Statut de l’enregistrement </label>
+        <name>amazonconnect__RecordingStatus__c</name>
+        <picklistValues>
+            <masterLabel>AVAILABLE</masterLabel>
+            <translation><!-- AVAILABLE --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- References --></label>
+        <name>amazonconnect__References__c</name>
+    </fields>
+    <fields>
+        <label><!-- Amazon Connect Instance Region --></label>
+        <name>amazonconnect__Region__c</name>
+    </fields>
+    <fields>
+        <label> Adresse du point de terminaison du système </label>
+        <name>amazonconnect__SystemEndpointAddress__c</name>
+    </fields>
+    <fields>
+        <label> Horodatage du transfert terminé </label>
+        <name>amazonconnect__TransferCompletedTimestamp__c</name>
+    </fields>
+    <fields>
+        <label> Transféré vers le point de terminaison </label>
+        <name>amazonconnect__TransferredToEndpoint__c</name>
+    </fields>
+    <gender>Feminine</gender>
+    <nameFieldLabel><!-- Contact Trace Record --></nameFieldLabel>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

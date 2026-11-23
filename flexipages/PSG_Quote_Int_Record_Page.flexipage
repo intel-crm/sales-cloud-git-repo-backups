@@ -64,9 +64,69 @@
                             </visibilityRule>
                         </valueListItems>
                         <valueListItems>
+                            <value>SBQQ__Quote__c.Price_Guidance</value>
+                            <visibilityRule>
+                                <booleanFilter>1 AND 2</booleanFilter>
+                                <criteria>
+                                    <leftValue>{!Record.core_cpq_quote_type_nm__c}</leftValue>
+                                    <operator>EQUAL</operator>
+                                    <rightValue>Budgetary</rightValue>
+                                </criteria>
+                                <criteria>
+                                    <leftValue>{!Record.core_cpq_status_txt__c}</leftValue>
+                                    <operator>EQUAL</operator>
+                                    <rightValue>In Review</rightValue>
+                                </criteria>
+                            </visibilityRule>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>SBQQ__Quote__c.PSG_Clone</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>SBQQ__Quote__c.PSG_Revise</value>
+                            <visibilityRule>
+                                <criteria>
+                                    <leftValue>{!Record.core_cpq_active_cb__c}</leftValue>
+                                    <operator>EQUAL</operator>
+                                    <rightValue>true</rightValue>
+                                </criteria>
+                            </visibilityRule>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>SBQQ__Quote__c.PSG_ChangeStatus</value>
+                            <visibilityRule>
+                                <booleanFilter>1 AND 2</booleanFilter>
+                                <criteria>
+                                    <leftValue>{!Record.SBQQ__Status__c}</leftValue>
+                                    <operator>NE</operator>
+                                    <rightValue>Approved</rightValue>
+                                </criteria>
+                                <criteria>
+                                    <leftValue>{!Record.core_cpq_active_cb__c}</leftValue>
+                                    <operator>EQUAL</operator>
+                                    <rightValue>true</rightValue>
+                                </criteria>
+                            </visibilityRule>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>Delete</value>
+                            <visibilityRule>
+                                <criteria>
+                                    <leftValue>{!Record.SBQQ__Status__c}</leftValue>
+                                    <operator>NE</operator>
+                                    <rightValue>Approved</rightValue>
+                                </criteria>
+                            </visibilityRule>
+                        </valueListItems>
+                        <valueListItems>
                             <value>CustomButton.SBQQ__Quote__c.Preview_Approval</value>
                             <visibilityRule>
-                                <booleanFilter>1 AND 2 AND 3 AND (4 OR (5 AND 6))</booleanFilter>
+                                <booleanFilter>1 AND 2 AND 3 AND 4 AND (5 OR (6 AND 7))</booleanFilter>
+                                <criteria>
+                                    <leftValue>{!Record.SBQQ__Status__c}</leftValue>
+                                    <operator>NE</operator>
+                                    <rightValue>Approved</rightValue>
+                                </criteria>
                                 <criteria>
                                     <leftValue>{!Record.core_cpq_active_cb__c}</leftValue>
                                     <operator>EQUAL</operator>
@@ -78,9 +138,9 @@
                                     <rightValue>0</rightValue>
                                 </criteria>
                                 <criteria>
-                                    <leftValue>{!Record.core_cpq_status_txt__c}</leftValue>
-                                    <operator>NE</operator>
-                                    <rightValue>Approved</rightValue>
+                                    <leftValue>{!Record.core_cpq_pricing_parent_active_cb__c}</leftValue>
+                                    <operator>EQUAL</operator>
+                                    <rightValue>true</rightValue>
                                 </criteria>
                                 <criteria>
                                     <leftValue>{!Record.core_cpq_mandatory_fields_check_cb__c}</leftValue>
@@ -100,9 +160,30 @@
                             </visibilityRule>
                         </valueListItems>
                         <valueListItems>
+                            <value>CustomButton.SBQQ__Quote__c.Recall_Approval</value>
+                            <visibilityRule>
+                                <booleanFilter>1 AND 2 AND 3</booleanFilter>
+                                <criteria>
+                                    <leftValue>{!Record.SBQQ__Status__c}</leftValue>
+                                    <operator>EQUAL</operator>
+                                    <rightValue>In Review</rightValue>
+                                </criteria>
+                                <criteria>
+                                    <leftValue>{!Record.core_cpq_active_cb__c}</leftValue>
+                                    <operator>EQUAL</operator>
+                                    <rightValue>true</rightValue>
+                                </criteria>
+                                <criteria>
+                                    <leftValue>{!Record.core_cpq_User_Check_cb__c}</leftValue>
+                                    <operator>EQUAL</operator>
+                                    <rightValue>true</rightValue>
+                                </criteria>
+                            </visibilityRule>
+                        </valueListItems>
+                        <valueListItems>
                             <value>CustomButton.SBQQ__Quote__c.Submit_for_Approval</value>
                             <visibilityRule>
-                                <booleanFilter>(1 OR 2) AND 3 AND 4 AND 5 AND (6 OR (7 AND 8)) AND 9</booleanFilter>
+                                <booleanFilter>(1 OR 2 ) AND 3 AND 4 AND 5 AND 6 AND (7 OR (8 AND 9)) AND 10</booleanFilter>
                                 <criteria>
                                     <leftValue>{!Record.SBQQ__Status__c}</leftValue>
                                     <operator>EQUAL</operator>
@@ -129,7 +210,17 @@
                                     <rightValue>0</rightValue>
                                 </criteria>
                                 <criteria>
+                                    <leftValue>{!Record.core_cpq_pricing_parent_active_cb__c}</leftValue>
+                                    <operator>EQUAL</operator>
+                                    <rightValue>true</rightValue>
+                                </criteria>
+                                <criteria>
                                     <leftValue>{!Record.core_cpq_mandatory_fields_check_cb__c}</leftValue>
+                                    <operator>EQUAL</operator>
+                                    <rightValue>true</rightValue>
+                                </criteria>
+                                <criteria>
+                                    <leftValue>{!Record.core_cpq_mandatory_fields_for_tools_cb__c}</leftValue>
                                     <operator>EQUAL</operator>
                                     <rightValue>true</rightValue>
                                 </criteria>
@@ -139,11 +230,6 @@
                                     <rightValue>Tools</rightValue>
                                 </criteria>
                                 <criteria>
-                                    <leftValue>{!Record.core_cpq_mandatory_fields_for_tools_cb__c}</leftValue>
-                                    <operator>EQUAL</operator>
-                                    <rightValue>true</rightValue>
-                                </criteria>
-                                <criteria>
                                     <leftValue>{!Record.core_cpq_ready_for_submission__c}</leftValue>
                                     <operator>EQUAL</operator>
                                     <rightValue>true</rightValue>
@@ -151,13 +237,23 @@
                             </visibilityRule>
                         </valueListItems>
                         <valueListItems>
-                            <value>CustomButton.SBQQ__Quote__c.Recall_Approval</value>
+                            <value>SBQQ__Quote__c.Create_Order</value>
                             <visibilityRule>
-                                <booleanFilter>1 AND 2 AND 3</booleanFilter>
                                 <criteria>
-                                    <leftValue>{!Record.SBQQ__Status__c}</leftValue>
+                                    <leftValue>{!Record.core_cpq_active_cb__c}</leftValue>
                                     <operator>EQUAL</operator>
-                                    <rightValue>In Review</rightValue>
+                                    <rightValue>true</rightValue>
+                                </criteria>
+                            </visibilityRule>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>CustomButton.SBQQ__Quote__c.SBQQ__PreviewDocument</value>
+                            <visibilityRule>
+                                <booleanFilter>(1 OR 4 ) AND 2 AND 3</booleanFilter>
+                                <criteria>
+                                    <leftValue>{!Record.core_cpq_record_type__c}</leftValue>
+                                    <operator>CONTAINS</operator>
+                                    <rightValue>PSG Quote - Approved</rightValue>
                                 </criteria>
                                 <criteria>
                                     <leftValue>{!Record.core_cpq_active_cb__c}</leftValue>
@@ -165,9 +261,14 @@
                                     <rightValue>true</rightValue>
                                 </criteria>
                                 <criteria>
-                                    <leftValue>{!Record.core_cpq_User_Check_cb__c}</leftValue>
+                                    <leftValue>{!Record.SBQQ__Status__c}</leftValue>
                                     <operator>EQUAL</operator>
-                                    <rightValue>true</rightValue>
+                                    <rightValue>Approved</rightValue>
+                                </criteria>
+                                <criteria>
+                                    <leftValue>{!Record.core_cpq_record_type__c}</leftValue>
+                                    <operator>EQUAL</operator>
+                                    <rightValue>PSG Quote - Submitted</rightValue>
                                 </criteria>
                             </visibilityRule>
                         </valueListItems>
@@ -198,12 +299,95 @@
                             </visibilityRule>
                         </valueListItems>
                         <valueListItems>
-                            <value>Delete</value>
+                            <value>SBQQ__Quote__c.Create_DPA</value>
                             <visibilityRule>
+                                <booleanFilter>1 AND 2 AND 3 AND (4 OR 5 OR 6)</booleanFilter>
+                                <criteria>
+                                    <leftValue>{!Record.core_cpq_active_cb__c}</leftValue>
+                                    <operator>EQUAL</operator>
+                                    <rightValue>true</rightValue>
+                                </criteria>
                                 <criteria>
                                     <leftValue>{!Record.SBQQ__Status__c}</leftValue>
-                                    <operator>NE</operator>
+                                    <operator>EQUAL</operator>
                                     <rightValue>Approved</rightValue>
+                                </criteria>
+                                <criteria>
+                                    <leftValue>{!$Permission.CustomPermission.PSG_Internal_Biz_Ops}</leftValue>
+                                    <operator>EQUAL</operator>
+                                    <rightValue>true</rightValue>
+                                </criteria>
+                                <criteria>
+                                    <leftValue>{!Record.core_cpq_quote_type_nm__c}</leftValue>
+                                    <operator>EQUAL</operator>
+                                    <rightValue>Design Win</rightValue>
+                                </criteria>
+                                <criteria>
+                                    <leftValue>{!Record.core_cpq_quote_type_nm__c}</leftValue>
+                                    <operator>EQUAL</operator>
+                                    <rightValue>Transfer Pricing</rightValue>
+                                </criteria>
+                                <criteria>
+                                    <leftValue>{!Record.core_cpq_quote_type_nm__c}</leftValue>
+                                    <operator>EQUAL</operator>
+                                    <rightValue>Tools</rightValue>
+                                </criteria>
+                            </visibilityRule>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>SBQQ__Quote__c.Create_ALN</value>
+                            <visibilityRule>
+                                <booleanFilter>1 AND 2 AND 3 AND (4 OR 5 OR 6)</booleanFilter>
+                                <criteria>
+                                    <leftValue>{!Record.core_cpq_active_cb__c}</leftValue>
+                                    <operator>EQUAL</operator>
+                                    <rightValue>true</rightValue>
+                                </criteria>
+                                <criteria>
+                                    <leftValue>{!Record.SBQQ__Status__c}</leftValue>
+                                    <operator>EQUAL</operator>
+                                    <rightValue>Approved</rightValue>
+                                </criteria>
+                                <criteria>
+                                    <leftValue>{!$Permission.CustomPermission.PSG_Internal_Biz_Ops}</leftValue>
+                                    <operator>EQUAL</operator>
+                                    <rightValue>true</rightValue>
+                                </criteria>
+                                <criteria>
+                                    <leftValue>{!Record.core_cpq_quote_type_nm__c}</leftValue>
+                                    <operator>EQUAL</operator>
+                                    <rightValue>Design Win</rightValue>
+                                </criteria>
+                                <criteria>
+                                    <leftValue>{!Record.core_cpq_quote_type_nm__c}</leftValue>
+                                    <operator>EQUAL</operator>
+                                    <rightValue>Transfer Pricing</rightValue>
+                                </criteria>
+                                <criteria>
+                                    <leftValue>{!Record.core_cpq_quote_type_nm__c}</leftValue>
+                                    <operator>EQUAL</operator>
+                                    <rightValue>Tools</rightValue>
+                                </criteria>
+                            </visibilityRule>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>SBQQ__Quote__c.De_Activate</value>
+                            <visibilityRule>
+                                <booleanFilter>1 OR 2 OR 3</booleanFilter>
+                                <criteria>
+                                    <leftValue>{!$Permission.CustomPermission.PSG_Internal_Biz_Manager}</leftValue>
+                                    <operator>EQUAL</operator>
+                                    <rightValue>true</rightValue>
+                                </criteria>
+                                <criteria>
+                                    <leftValue>{!$Permission.CustomPermission.PSG_Internal_Biz_Ops}</leftValue>
+                                    <operator>EQUAL</operator>
+                                    <rightValue>true</rightValue>
+                                </criteria>
+                                <criteria>
+                                    <leftValue>{!$Permission.CustomPermission.PSG_Internal_SOS}</leftValue>
+                                    <operator>EQUAL</operator>
+                                    <rightValue>true</rightValue>
                                 </criteria>
                             </visibilityRule>
                         </valueListItems>
@@ -230,7 +414,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>numVisibleActions</name>
-                    <value>5</value>
+                    <value>3</value>
                 </componentInstanceProperties>
                 <componentName>force:highlightsPanel</componentName>
                 <identifier>force_highlightsPanel</identifier>
@@ -277,6 +461,29 @@
             </componentInstance>
         </itemInstances>
         <name>Facet-dbe39a0d-ad96-4ecb-a864-a1e3c14d7caf</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentName>psg_UploadFile</componentName>
+                <identifier>psg_UploadFile</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 AND 2</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.SBQQ__Status__c}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Approved</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.core_cpq_active_cb__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>true</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-dofp0fpal4p</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -334,6 +541,20 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>body</name>
+                    <value>Facet-dofp0fpal4p</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>title</name>
+                    <value>Bulk Upload</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:tab</componentName>
+                <identifier>customTab2</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
                     <value>Facet-97990feb-ee09-4c2d-99f1-088ad6d43ae7</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
@@ -348,27 +569,6 @@
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>decorate</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>richTextValue</name>
-                    <value>&lt;p&gt;&lt;strong style=&quot;font-size: 16px; color: rgb(254, 3, 3);&quot;&gt;Important for Altera/PSG Users:&amp;nbsp;Starting July 28, 2025, use the new Altera Salesforce for accounts, contacts, leads, design registration, opportunities, quotes (except corporate tool quotes) and DPAs. Exception:&amp;nbsp;Use Intel Salesforce (IQR) for corporate tool quotes, orders, licensing, and IPS. For details, visit the &lt;/strong&gt;&lt;a href=&quot;https://altera.sharepoint.com/sites/AlteraBusinessEnablementSalesforce/SitePages/FAQs.aspx?csf=1&amp;amp;web=1&amp;amp;e=8DrWLE&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-size: 16px; color: rgb(254, 3, 3); background-color: rgb(255, 255, 255);&quot;&gt;&lt;strong&gt;&lt;u&gt;Altera CRM FAQ&lt;/u&gt;&lt;/strong&gt;&lt;/a&gt;&lt;strong style=&quot;font-size: 16px; color: rgb(254, 3, 3);&quot;&gt;.&lt;/strong&gt;&lt;/p&gt;</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:richText</componentName>
-                <identifier>flexipage_richText5</identifier>
-                <visibilityRule>
-                    <criteria>
-                        <leftValue>{!Record.Pricing_Quote_Program_Nm__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>PSG</rightValue>
-                    </criteria>
-                </visibilityRule>
-            </componentInstance>
-        </itemInstances>
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
@@ -404,21 +604,21 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>richTextValue</name>
-                    <value>&lt;p&gt;&lt;strong style=&quot;font-size: 14px; color: rgb(240, 10, 10);&quot;&gt;Please click Edit Lines and check &apos;Ready for Submission&apos; in-order to submit the Quote for Approval&lt;/strong&gt;&lt;/p&gt;</value>
+                    <value>&lt;p&gt;&lt;strong style=&quot;color: rgb(240, 17, 17); font-size: 14px; font-family: -apple-system, BlinkMacSystemFont, &amp;quot;Segoe UI&amp;quot;, Roboto, Oxygen, Ubuntu, &amp;quot;Fira Sans&amp;quot;, &amp;quot;Droid Sans&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, sans-serif;&quot;&gt;Please click Edit Lines and perform &apos;Quick Save&apos; / &apos;Save&apos; atleast once before submitting the Quote for Approval.&lt;/strong&gt;&lt;strong style=&quot;color: rgb(255, 174, 0);&quot;&gt;﻿&lt;/strong&gt;&lt;/p&gt;</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:richText</componentName>
-                <identifier>flexipage_richText1</identifier>
+                <identifier>flexipage_richText2</identifier>
                 <visibilityRule>
                     <booleanFilter>1 AND 2 AND 3</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.SBQQ__Status__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>In Progress</rightValue>
+                    </criteria>
                     <criteria>
                         <leftValue>{!Record.SBQQ__LineItemCount__c}</leftValue>
                         <operator>GT</operator>
                         <rightValue>0</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.core_cpq_status_txt__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>In Progress</rightValue>
                     </criteria>
                     <criteria>
                         <leftValue>{!Record.core_cpq_ready_for_submission__c}</leftValue>
@@ -436,39 +636,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>richTextValue</name>
-                    <value>&lt;p&gt;&lt;b style=&quot;color: rgb(255, 145, 0);&quot;&gt;Life Time Value of this Quote is $0. Check before you proceed.&lt;/b&gt;&lt;/p&gt;</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:richText</componentName>
-                <identifier>flexipage_richText2</identifier>
-                <visibilityRule>
-                    <booleanFilter>1 AND 2 AND 3</booleanFilter>
-                    <criteria>
-                        <leftValue>{!Record.core_cpq_status_txt__c}</leftValue>
-                        <operator>NE</operator>
-                        <rightValue>Approved</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.SBQQ__LineItemCount__c}</leftValue>
-                        <operator>GT</operator>
-                        <rightValue>0</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.price_lifetime_quote_value_amt__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>0.00</rightValue>
-                    </criteria>
-                </visibilityRule>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>decorate</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>richTextValue</name>
-                    <value>&lt;p&gt;&lt;strong style=&quot;color: rgb(238, 132, 0); font-size: 12px;&quot;&gt;Quote Line has PSG Restricted Product&lt;/strong&gt;&lt;/p&gt;</value>
+                    <value>&lt;p&gt;&lt;strong style=&quot;font-family: -apple-system, BlinkMacSystemFont, &amp;quot;Segoe UI&amp;quot;, Roboto, Oxygen, Ubuntu, &amp;quot;Fira Sans&amp;quot;, &amp;quot;Droid Sans&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, sans-serif; font-size: 14px; color: rgb(254, 112, 3);&quot;&gt;Quote Line has PSG Restricted Product&lt;/strong&gt;&lt;/p&gt;</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:richText</componentName>
                 <identifier>flexipage_richText3</identifier>
@@ -480,12 +648,12 @@
                         <rightValue>0</rightValue>
                     </criteria>
                     <criteria>
-                        <leftValue>{!Record.SBQQ__Status__c}</leftValue>
+                        <leftValue>{!Record.core_cpq_status_txt__c}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>In Progress</rightValue>
                     </criteria>
                     <criteria>
-                        <leftValue>{!Record.SBQQ__Status__c}</leftValue>
+                        <leftValue>{!Record.core_cpq_status_txt__c}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>In Review</rightValue>
                     </criteria>
@@ -500,7 +668,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>richTextValue</name>
-                    <value>&lt;p&gt;&lt;strong style=&quot;color: rgb(251, 145, 5); font-size: 14px;&quot;&gt;&apos;Account Program&apos; and &apos;Latest Account Program&apos; do not match&lt;/strong&gt;&lt;/p&gt;</value>
+                    <value>&lt;p&gt;&lt;strong style=&quot;font-size: 14px; color: rgb(251, 145, 5);&quot;&gt;&apos;Account Program&apos; and &apos;Latest Account Program&apos; do not match&lt;/strong&gt;&lt;strong style=&quot;color: rgb(255, 174, 0);&quot;&gt;﻿&lt;/strong&gt;&lt;/p&gt;</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:richText</componentName>
                 <identifier>flexipage_richText4</identifier>
@@ -516,9 +684,26 @@
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
-                    <name>label</name>
-                    <value>Tabs</value>
+                    <name>decorate</name>
+                    <value>true</value>
                 </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>richTextValue</name>
+                    <value>&lt;p&gt;&lt;b style=&quot;color: rgb(255, 145, 0);&quot;&gt;Life Time Value of this Quote is $0. Check before you proceed.&lt;/b&gt;&lt;b style=&quot;color: rgb(250, 15, 15);&quot;&gt;﻿&lt;/b&gt;&lt;/p&gt;</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:richText</componentName>
+                <identifier>flexipage_richText1</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!Record.price_lifetime_quote_value_amt__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>0</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
                 <componentInstanceProperties>
                     <name>tabs</name>
                     <value>Facet-4a9ff7c3-b2d0-4304-98fd-8776548a4918</value>
@@ -604,10 +789,6 @@
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
-                    <name>label</name>
-                    <value>Tabs</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
                     <name>tabs</name>
                     <value>Facet-616cbce7-5c44-4cb9-900b-b4e17e0419ed</value>
                 </componentInstanceProperties>
@@ -639,6 +820,12 @@
                 </componentInstanceProperties>
                 <componentName>force:relatedListSingleContainer</componentName>
                 <identifier>force_relatedListSingleContainer2</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentName>pSG_Feedback_Form</componentName>
+                <identifier>c_pSG_Feedback_Form</identifier>
             </componentInstance>
         </itemInstances>
         <name>sidebar</name>

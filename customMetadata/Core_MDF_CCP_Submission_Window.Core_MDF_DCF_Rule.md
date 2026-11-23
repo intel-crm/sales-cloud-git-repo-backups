@@ -11,20 +11,16 @@
         <value xsi:type="xsd:string">Core_MDF_Activity_Auto_Closure_SLA__c</value>
     </values>
     <values>
-        <field>Core_MDF_Activity_Auto_Closure_SLA_Month__c</field>
-        <value xsi:nil="true"/>
-    </values>
-    <values>
         <field>Core_MDF_Activity_Auto_Closure_SLA__c</field>
-        <value xsi:type="xsd:double">185.0</value>
+        <value xsi:type="xsd:double">0.0</value>
     </values>
     <values>
         <field>Core_MDF_Budget_Type__c</field>
-        <value xsi:type="xsd:string">DCF 1.0</value>
+        <value xsi:type="xsd:string">NA</value>
     </values>
     <values>
         <field>Core_MDF_Case_SLA__c</field>
-        <value xsi:type="xsd:double">25.0</value>
+        <value xsi:type="xsd:double">0.0</value>
     </values>
     <values>
         <field>Core_MDF_Claim_Submission_Window_days__c</field>
@@ -35,24 +31,12 @@
         <value xsi:type="xsd:double">0.0</value>
     </values>
     <values>
-        <field>Core_MDF_Closure_Date_Extension__c</field>
-        <value xsi:type="xsd:double">10.0</value>
-    </values>
-    <values>
-        <field>Core_MDF_Closure_date_Extension_Rule__c</field>
-        <value xsi:type="xsd:string">Core_MDF_Closure_Date_Extension__c</value>
-    </values>
-    <values>
         <field>Core_MDF_Country__c</field>
         <value xsi:nil="true"/>
     </values>
     <values>
         <field>Core_MDF_Doc_Submission_Rule__c</field>
         <value xsi:type="xsd:string">Core_MDF_Doc_Submission_Window__c</value>
-    </values>
-    <values>
-        <field>Core_MDF_Doc_Submission_Window_Claim_Nbr__c</field>
-        <value xsi:nil="true"/>
     </values>
     <values>
         <field>Core_MDF_Doc_Submission_Window__c</field>
@@ -72,7 +56,7 @@
     </values>
     <values>
         <field>Core_MDF_Program__c</field>
-        <value xsi:type="xsd:string">Datacenter</value>
+        <value xsi:type="xsd:string">Data Center Co-Marketing Fund</value>
     </values>
     <values>
         <field>Core_MDF_Quarter__c</field>

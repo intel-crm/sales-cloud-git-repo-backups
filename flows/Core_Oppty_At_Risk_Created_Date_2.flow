@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>60.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Migrated from the: Core_Oppty_At_Risk_Created_Date workflow rule
+Workflow rule description: Update At Risk Created Date if there is any change in Risk Reason&quot;</description>
+    <formulas>
+        <name>At_Risk_Created_Date_UpdateFormula</name>
+        <dataType>Date</dataType>
+        <expression>today()</expression>
+    </formulas>
+    <label>Core_Oppty_At_Risk_Created_Date_2</label>
+    <migratedFromWorkflowRuleName>Core_Oppty_At_Risk_Created_Date</migratedFromWorkflowRuleName>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>mainUpdate</name>
+        <label>mainUpdate</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>Core_At_Risk_Created_Date__c</field>
+            <value>
+                <elementReference>At_Risk_Created_Date_UpdateFormula</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>mainUpdate</targetReference>
+        </connector>
+        <filterFormula>ISCHANGED( {!$Record.Core_Risk_Reason__c} )</filterFormula>
+        <object>Opportunity</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Draft</status>
+</Flow>

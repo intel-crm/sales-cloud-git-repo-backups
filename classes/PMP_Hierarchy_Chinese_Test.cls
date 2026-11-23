@@ -17,7 +17,7 @@ public class PMP_Hierarchy_Chinese_Test
         PMP_Hierarchy_Chinese catHierChn = new PMP_Hierarchy_Chinese();
         
         test.startTest();
-        PMP_ParseCategoryJSON.languageCode = 'zh_CN';
+        PMP_ParseCategoryJSON.strBaseKey = 'zh_CN';
         catHierChn.processData('PMP_Category_Hierarchy_Test');
         system.assertNotEquals(resultData,null);
         test.stopTest();

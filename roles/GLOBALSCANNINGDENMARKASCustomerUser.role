@@ -6,5 +6,5 @@
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>GLOBAL SCANNING DENMARK AS Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>GLOBALSCANNINGDENMARKASCustomerManager</parentRole>
 </Role>

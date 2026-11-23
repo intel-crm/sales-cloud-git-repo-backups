@@ -28,37 +28,39 @@
 <script>
     $(document).ready(function(){
         console.log('in ready function');
-console.log("Training Subtype " + JSON.stringify($(".Core_AAQC_Resolution_Training_Subtype__c")));
-           
+        setTimeout(function(){
         if('{!blnCheckAccess}' == 'true'){
-          console.log('Inside If');
-          //Read only Fields
-          //$('.Core_AAQC_Resolution_Type__c').css('pointer-events','none');
-          //$('.Core_AAQC_Resolution_Type__c').css('background-color','#e6e6e6');  
-          //$('.Core_AAQC_Resolution_Type__c').attr('disabled','disabled'); 
-          //$('.Core_AAQC_Resolution_Comments__c').css('pointer-events','none');
-          //$('.Core_AAQC_Resolution_Comments__c').css('background-color','#e6e6e6'); 
-          //$('.Core_AAQC_Resolution_Comments__c').attr('disabled','disabled');  
-          
-          //Hide the fields
-           $(".Core_AAQC_Related_Case_Number__c").closest("tr").css('display','none');
-           $(".Core_AAQC_Related_Case_Notes__c").closest("tr").css('display','none');
-           $(".Core_AAQC_External_Reference_No__c").closest("tr").css('display','none');
-           $(".Core_AAQC_Commissions_Severity__c").closest("tr").css('display','none');
-           $(".Core_AAQC_Resolution_Type__c").closest("tr").css('display','none');
-           $(".Core_AAQC_Resolution_Comments__c").closest("tr").css('display','none');
-           $(".Core_AAQC_Resolution_Training_Subtype__c").closest("tr").css('display','none');
-         }
-         else {
-          $(".Core_AAQC_Commissions_Severity__c").wrap("<div class='requiredInput'></div>");
-          $(".Core_AAQC_Commissions_Severity__c").before("<div class='requiredBlock'><div>");
-         }
+            console.log('Inside If');
+            //Read only Fields
+            //$('.Core_AAQC_Resolution_Type__c').css('pointer-events','none');
+            //$('.Core_AAQC_Resolution_Type__c').css('background-color','#e6e6e6');  
+            //$('.Core_AAQC_Resolution_Type__c').attr('disabled','disabled'); 
+            //$('.Core_AAQC_Resolution_Comments__c').css('pointer-events','none');
+            //$('.Core_AAQC_Resolution_Comments__c').css('background-color','#e6e6e6'); 
+            //$('.Core_AAQC_Resolution_Comments__c').attr('disabled','disabled');  
+            
+            //Hide the fields
+            
+            $(".Core_AAQC_Related_Case_Number__c").closest("tr").css('display','none');
+            $(".Core_AAQC_Related_Case_Notes__c").closest("tr").css('display','none');
+            $(".Core_AAQC_External_Reference_No__c").closest("tr").css('display','none');
+            $(".Core_AAQC_Commissions_Severity__c").closest("tr").css('display','none');
+            $(".Core_AAQC_Resolution_Type__c").closest("tr").css('display','none');
+            $(".Core_AAQC_Resolution_Comments__c").closest("tr").css('display','none');
+            $(".Core_AAQC_Resolution_Training_Subtype__c").closest("tr").css('display','none');
+        }
+        
+        else {
+            $(".Core_AAQC_Commissions_Severity__c").wrap("<div class='requiredInput'></div>");
+            $(".Core_AAQC_Commissions_Severity__c").before("<div class='requiredBlock'><div>");
+        }
+    }, 100);
      });
 
      function setFocusOnLoad() {}
      
      
- </script>
+ </script> 
  <style>
  .pbSubsection input{
    width: 240px;
@@ -144,8 +146,7 @@ console.log("Training Subtype " + JSON.stringify($(".Core_AAQC_Resolution_Traini
                         <apex:outputField value="{!objCase.Status}" rendered="{!if((blnCheckAdminAccess),FALSE,TRUE)}" />
                     </apex:outputPanel>
                 </apex:pageBlockSectionItem>
-                <!-- Code End as a part of US84920 -->
-                
+                <!-- Code End as a part of US84920 -->   
                 
                 <apex:pageBlockSectionItem rendered="{!if(caseFieldSet.label=='Root Cause Category',true,false)}">
                     <apex:outputLabel >Resolution Type</apex:outputLabel>
@@ -170,6 +171,8 @@ console.log("Training Subtype " + JSON.stringify($(".Core_AAQC_Resolution_Traini
                         <apex:outputField value="{!objCase.Core_AAQC_Resolution_CE_Sub_type__c}" rendered="{!if((blnCheckOBOFieldAccess),FALSE,TRUE)}" />
                     </apex:outputPanel>
                 </apex:pageBlockSectionItem>
+              
+
                 
                 
                 <!-- Code start Added as a part of US76746 --> 
@@ -191,10 +194,12 @@ console.log("Training Subtype " + JSON.stringify($(".Core_AAQC_Resolution_Traini
                    <apex:outputLabel >Resolution Comments</apex:outputLabel>
                     <apex:inputField value="{!objCommissiionsCase.Core_AAQC_Resolution_Comments__c}" styleClass="Core_AAQC_Resolution_Comments__c"/>
                 </apex:pageBlockSectionItem>
-                
+          
 
         </apex:repeat>
-         </apex:pageBlockSection>
+      </apex:pageBlockSection>
+                    
+             
      
      <apex:pageBlockSection id="MiscellaneousInfoId" title="Miscellaneous Information" columns="1">
          <apex:repeat value="{!$ObjectType.Case.FieldSets.Miscellaneous_Info_Ask_Commissions_Field}"  var="caseFieldSet">

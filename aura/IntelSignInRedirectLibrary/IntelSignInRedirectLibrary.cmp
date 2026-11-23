@@ -1,4 +1,4 @@
-<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+<aura:component >
 	<aura:method name="whichSite" action="{!c.whichSite}">
     </aura:method>
  	<aura:method name="getRedirectCookie" action="{!c.getRedirectCookie}">
@@ -10,12 +10,8 @@
     <aura:method name="checkSSOAttempt" action="{!c.checkSSOAttempt}">
         <aura:attribute name="siteName" type="String" />
     </aura:method>
-    <aura:method name="getSSOSettings" action="{!c.getSSOSettings}">
-        <aura:attribute name="siteName" type="String" />
-    </aura:method>
  	<aura:method name="getCookieSetupInfo" action="{!c.getCookieSetupInfo}">
         <aura:attribute name="siteName" type="String" />
         <aura:attribute name="siteAttribute" type="String" />
     </aura:method>
-  <c:coreIntcSso aura:id="ssoLibrary" />
 </aura:component>

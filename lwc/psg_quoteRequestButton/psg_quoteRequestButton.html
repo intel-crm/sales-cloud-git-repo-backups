@@ -7,10 +7,12 @@
         <br/>
         <div class="slds-align_absolute-center">
             <lightning-button-group>
-                <lightning-button if:true={isPSG} label="Create PSG Quote" title="Create PSG Quote"
+                <lightning-button if:true={isPSG} label="Create Quote" title="Create Quote"
                     onclick={openModal}
                     class="slds-align_absolute-center slds-m-left_x-small">
                 </lightning-button>
+                <template if:true={isTender}>
+                </template>
                 <lightning-button if:true={isTender} label="New Quote" title="New Quote"
                     onclick={openNewIQRQuoteForm}
                     class="slds-align_absolute-center slds-m-left_x-small">

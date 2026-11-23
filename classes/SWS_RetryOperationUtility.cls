@@ -39,5 +39,6 @@ public without sharing class SWS_RetryOperationUtility {
             sendEmail.setHtmlBody(body);
             Messaging.SendEmailResult[] results = Messaging.sendEmail(new Messaging.SingleEmailMessage[]{sendEmail});
         }
-    }   
+    }    
+    
 }

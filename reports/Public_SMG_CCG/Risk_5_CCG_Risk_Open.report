@@ -133,7 +133,6 @@
         <field>PROBABILITY</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
         <field>Opportunity.Core_Architecture_Conversion__c</field>
     </columns>
     <columns>
@@ -263,7 +262,7 @@
         <scale>0</scale>
     </customDetailFormulas>
     <filter>
-        <booleanFilter>(1 OR 2) AND 3 AND 4 AND 5 AND 6</booleanFilter>
+        <booleanFilter>(1 OR 2) AND 3 AND 4 AND 5</booleanFilter>
         <criteriaItems>
             <column>OpportunityLineItem.Core_Risk_Reason1__c</column>
             <columnToColumn>false</columnToColumn>
@@ -298,13 +297,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>CCG</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OpportunityLineItem.Core_Status__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>Lost,Cancelled,Deleted</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

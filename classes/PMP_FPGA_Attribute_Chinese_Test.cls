@@ -9,8 +9,8 @@
 * ****************************************************************************************************************************************/
 @isTest
 public class PMP_FPGA_Attribute_Chinese_Test {
-   //IPA 2.0- US-TWC729-7980
-    /*@isTest
+    
+    @isTest
     public static void testProcAttrMet()
     {
 
@@ -23,12 +23,12 @@ public class PMP_FPGA_Attribute_Chinese_Test {
         
         
         test.startTest();
-        PMP_ParseFPGAJSON.languageCode = 'zh_CN';
+        PMP_ParseFPGAJSON.strBaseKey = 'zh_CN';
         resultData = procAttrEng.processData('PMP_FPGA_Attribute_Test');
         system.assertNotEquals(resultData,null);
         test.stopTest();
         
         
-    }*/
+    }
 
 }

@@ -66,7 +66,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>Reliance Jio Infocom,SP Telecom,INTERNET THAILAND PUBLIC COMPANY LIMITED</value>
+            <value>SP Telecom,INTERNET THAILAND PUBLIC COMPANY LIMITED</value>
         </criteriaItems>
         <criteriaItems>
             <column>ROLLUP_DESCRIPTION</column>
@@ -81,13 +81,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Telecommunications</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>STAGE_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Qualify,Define,Develop,Design</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -113,7 +106,7 @@
     </params>
     <params>
         <name>probability</name>
-        <value>gt10</value>
+        <value>gt40</value>
     </params>
     <params>
         <name>co</name>

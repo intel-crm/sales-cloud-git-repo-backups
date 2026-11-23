@@ -17,13 +17,6 @@
         <type>Checkbox</type>
     </fields>
     <fields>
-        <fullName>PRM_Skip_VR_for_OPID_Batch_Ind__c</fullName>
-        <defaultValue>false</defaultValue>
-        <label>Skip VR for OPID Batch</label>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
         <fullName>PRM_Skip_Validation_Rule_Ind__c</fullName>
         <defaultValue>false</defaultValue>
         <label>Skip Validation Rule</label>

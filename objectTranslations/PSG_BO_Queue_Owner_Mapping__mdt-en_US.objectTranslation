@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>BO Queue Owner Mapping</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>BO Queue Owner Mappings</value>
+    </caseValues>
+    <fields>
+        <label><!-- Active --></label>
+        <name>PSG_Active__c</name>
+    </fields>
+    <fields>
+        <label><!-- BO Queue Name --></label>
+        <name>PSG_BO_Queue_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Disti Geo --></label>
+        <name>PSG_Disti_Geo__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

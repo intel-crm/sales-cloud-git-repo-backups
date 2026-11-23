@@ -128,11 +128,14 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <type>Default</type>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Product_Add_on_Configuration_Record_Page2</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <formFactor>Large</formFactor>
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
@@ -153,6 +156,51 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
+    <fieldSets>
+        <fullName>Product_Filter_FieldSet</fullName>
+        <description>Search Filter for the PSAMs</description>
+        <displayedFields>
+            <field>Product__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Product_Type__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Product_Family__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Start_Date__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>End_Date__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Eligible_for_Deal_Reg__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Eligible_for_Design_Reg__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Programs_Eligible__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>Product Filter FieldSet</label>
+    </fieldSets>
     <fields>
         <fullName>Eligible_for_Deal_Reg__c</fullName>
         <defaultValue>false</defaultValue>
@@ -181,6 +229,80 @@
         <fullName>Is_Product_Active__c</fullName>
         <formula>Product__r.IsActive</formula>
         <label>Is Product Active?</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>PCC_Intel_vPro_Platform_Eligibility__c</fullName>
+        <formula>Product__r.Core_Intel_vPro_Platform_Eligibility__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Intel vPro Platform Eligibility</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>PCC_Processor_Number__c</fullName>
+        <externalId>false</externalId>
+        <formula>Product__r.Core_Processor_Number_Nm__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Processor Number</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PCC_Product_Family_EPM_ID__c</fullName>
+        <externalId>false</externalId>
+        <formula>Product__r.Core_Product_Family_EPM_ID__c</formula>
+        <label>Product Family EPM ID</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PCC_Product_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>Product__r.Name</formula>
+        <label>Product Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PCC_Product_Series_EPM_ID__c</fullName>
+        <externalId>false</externalId>
+        <formula>Product__r.Core_Product_Series_EPM_ID__c</formula>
+        <label>Product Series EPM ID</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PCC_Product_Series__c</fullName>
+        <externalId>false</externalId>
+        <formula>Product__r.Core_Product_Series__c</formula>
+        <label>Product Series</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PCC_Stable_Image_Platform_Prgm_Version__c</fullName>
+        <formula>Product__r.Core_StableImagePlatformProgVer_Ind__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Stable Image Platform Program Version</label>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
@@ -325,6 +447,11 @@
         <columns>Programs_Eligible__c</columns>
         <columns>Is_Product_Active__c</columns>
         <filterScope>Everything</filterScope>
+        <filters>
+            <field>Is_Product_Active__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
         <label>All</label>
     </listViews>
     <nameField>
@@ -338,11 +465,19 @@
         <lookupDialogsAdditionalFields>End_Date__c</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>Eligible_for_Deal_Reg__c</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>Programs_Eligible__c</lookupDialogsAdditionalFields>
-        <searchResultsAdditionalFields>Product_Type__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Product_Name__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Product_Type__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Product_Family__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Programs_Eligible__c</searchResultsAdditionalFields>
     </searchLayouts>
     <sharingModel>Private</sharingModel>
+    <validationRules>
+        <fullName>Is_Product_Selected_Correct</fullName>
+        <active>false</active>
+        <errorConditionFormula>AND(ISCHANGED(Product_Add_on_Configuration__c),00NDf00000QM82N.00NDf00000QM84d = FALSE,  
+NOT(ISBLANK(Product_Add_on_Configuration__c )), 
+OR ( 00NDf00000QM82N.00NDf00000QM80R &gt; TODAY(),  00NDf00000QM82N.00NDf00000QM80W &lt;= TODAY()))</errorConditionFormula>
+        <errorMessage>Please choose a different Product as it is not available anymore</errorMessage>
+    </validationRules>
     <visibility>Public</visibility>
 </CustomObject>

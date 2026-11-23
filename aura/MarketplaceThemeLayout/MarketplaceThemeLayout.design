@@ -1,5 +1,4 @@
 <design:component>
   <design:attribute name="portal" label="Portal name" datasource="Marketplace,Lead" />
   <design:attribute name="devCssBundle" label="Use CSS Minified Bundle" datasource="files,minified,minified-sourcemaps" default="minified" description="Ensure this is set to minified in a Production environment to use the minified CSS bundle from the PMP_Resources static resource."></design:attribute>
-  <design:attribute name="coreIntcErrorConfig" label="JSON Configuration String for coreIntcErrorHandler" description="JSON string used to set the configuration for how the coreIntcErrorHandler processes errors."></design:attribute>
 </design:component>

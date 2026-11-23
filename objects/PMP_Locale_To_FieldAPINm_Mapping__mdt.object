@@ -62,16 +62,6 @@
                     <default>false</default>
                     <label>ja_JP</label>
                 </value>
-                <value>
-                    <fullName>ja</fullName>
-                    <default>false</default>
-                    <label>ja</label>
-                </value>
-                <value>
-                    <fullName>zhHansCN</fullName>
-                    <default>false</default>
-                    <label>zhHansCN</label>
-                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -82,7 +72,7 @@
         <fieldManageability>DeveloperControlled</fieldManageability>
         <inlineHelpText>This field contains the name of the object type(i.e category, specification and specification value)</inlineHelpText>
         <label>PMP_Object_Nm</label>
-        <length>60</length>
+        <length>80</length>
         <required>true</required>
         <type>Text</type>
         <unique>false</unique>

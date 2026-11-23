@@ -1,0 +1,27 @@
+<aura:component controller="Sales_PriceBookOverrideController"  implements="force:lightningQuickActionWithoutHeader,force:hasRecordId,forceCommunity:layout" access="global">
+    
+    <aura:html tag="style">
+        .slds-modal__container{
+        max-width: 70rem !important;
+        width:40% !important;
+        padding: 0rem !important;
+        }
+        .slds-modal__container .cuf-content {
+        padding:1 !important;
+        }
+        .slds-modal__container .slds-p-around--medium {
+        padding: 0rem !important;
+        }
+        .slds-modal__content {
+        height: unset !important;
+        max-height: unset !important;
+        }
+        .slds-modal__close {
+        display:none !important;
+        }     
+    </aura:html>
+    
+    <!-- LWC Component -->
+    <c:salesPriceBookOverride recordId="{!v.recordId}" onclose="{!c.closeModal}"/> 
+    
+</aura:component>

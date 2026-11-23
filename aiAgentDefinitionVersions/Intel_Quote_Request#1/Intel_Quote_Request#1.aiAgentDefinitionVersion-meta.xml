@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AiAgentDefinitionVersion xmlns="http://soap.sforce.com/2006/04/metadata">
+    <articleAnswersGPTEnabled>false</articleAnswersGPTEnabled>
+    <citationsEnabled>false</citationsEnabled>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <developerName>Employee_Company</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Employee Company</label>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <developerName>Employee_Name</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Employee Name</label>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <developerName>Employee_Role</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Employee Role</label>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <developerName>Is_Valid_User</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Is Valid User</label>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <developerName>employeeEmail</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Employee Email</label>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <developerName>newEmpRequest</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>newEmpRequest</label>
+    </conversationVariables>
+    <errorMessage>Unfortunately, a system error occurred. I&apos;ll connect you to an agent who can help.</errorMessage>
+    <isScriptCompatibleAgent>false</isScriptCompatibleAgent>
+    <knowledgeActionEnabled>false</knowledgeActionEnabled>
+    <knowledgeFallbackEnabled>false</knowledgeFallbackEnabled>
+    <smallTalkEnabled>false</smallTalkEnabled>
+    <staticPromptsEnabled>false</staticPromptsEnabled>
+    <status>Active</status>
+    <stopRecPrompts>false</stopRecPrompts>
+    <surfacesEnabled>false</surfacesEnabled>
+    <version>1</version>
+    <welcomeMessage>Hi there! I am the Intel Quote Request Bot and I’m here to help you.  Please choose the option which best describes your issue for me to help you better.</welcomeMessage>
+</AiAgentDefinitionVersion>

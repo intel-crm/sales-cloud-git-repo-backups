@@ -46,6 +46,12 @@
     <columns>
         <field>Account.Core_Prime_Account_Name__c</field>
     </columns>
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>Core_Account_ERPM_Engagement__c.Core_ERPM_Engagement_Id__c</field>
+    </columns>
     <filter>
         <criteriaItems>
             <column>Account.Core_Intel_Partner_Alliance_PartnerGroup__c</column>

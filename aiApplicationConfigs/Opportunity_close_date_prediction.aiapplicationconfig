@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AIApplicationConfig xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aiApplicationDeveloperName>Opportunity_close_date_prediction</aiApplicationDeveloperName>
+    <applicationId>0PpDf0000004HAm</applicationId>
+    <developerName>Opportunity_close_date_prediction</developerName>
+    <insightReasonEnabled>true</insightReasonEnabled>
+    <masterLabel>MasterLabel_Opportunity_close_date_prediction</masterLabel>
+    <rank>1</rank>
+    <scoringMode>Batch</scoringMode>
+</AIApplicationConfig>

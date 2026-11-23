@@ -21,8 +21,12 @@
             <translation><!-- Core_SW_Prod_Non_Commercial_Purpose_Nm__c --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Orderable</masterLabel>
-            <translation><!-- Orderable --></translation>
+            <masterLabel>Core_Sales_Visible_Flag__c</masterLabel>
+            <translation><!-- Core_Sales_Visible_Flag__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Life Time Quote Value</masterLabel>
+            <translation><!-- Life Time Quote Value --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Product Class</masterLabel>

@@ -1,4 +1,4 @@
-public with sharing class Core_IPS_ContactloginDisclaimer 
+public class Core_IPS_ContactloginDisclaimer 
 {
     public string docBody{get;set;}
     public  Core_IPS_ContactloginDisclaimer() 
@@ -40,6 +40,7 @@ public with sharing class Core_IPS_ContactloginDisclaimer
         {            
             if(con[0].Core_IPS_NDA_Acceptance_Date__c != null)  
             {
+               system.debug(con[0].Core_IPS_NDA_Acceptance_Date__c + '>=' + System.today().adddays(-Integer.valueOf(System.Label.NDA_Acceptance_Time)));
                 if(con[0].Core_IPS_NDA_Acceptance_Date__c >= System.today().adddays(-Integer.valueOf(System.Label.NDA_Acceptance_Time)) )
                     flag = true;            
                  else

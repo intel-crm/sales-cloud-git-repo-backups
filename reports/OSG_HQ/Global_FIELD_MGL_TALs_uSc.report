@@ -9,22 +9,7 @@
         <useOther>false</useOther>
         <values>
             <sourceValues>
-                <sourceValue>ANZ</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>IJKK</sourceValue>
-            </sourceValues>
-            <sourceValues>
                 <sourceValue>Korea</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>ROA</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>SA</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>SEA</sourceValue>
             </sourceValues>
             <sourceValues>
                 <sourceValue>Taiwan</sourceValue>
@@ -32,39 +17,12 @@
             <value>APJ</value>
         </values>
         <values>
-            <sourceValues>
-                <sourceValue>CEE</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>CER</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>META</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>NEUR</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>RCIS</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>SEUR</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>WEUR</sourceValue>
-            </sourceValues>
             <value>EMEA</value>
         </values>
         <values>
-            <sourceValues>
-                <sourceValue>LAR</sourceValue>
-            </sourceValues>
             <value>LAR</value>
         </values>
         <values>
-            <sourceValues>
-                <sourceValue>NAR</sourceValue>
-            </sourceValues>
             <value>NAR</value>
         </values>
         <values>
@@ -137,19 +95,22 @@
     <columns>
         <field>Lead.Core_Marketing_Tactic_ID__c</field>
     </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Lead.SWS_Software_Lead__c</field>
-    </columns>
     <description>RT: Leads.  Active TALs NOT owned by Inside LDRs</description>
     <filter>
-        <booleanFilter>(1 OR 4) AND 2 AND 3</booleanFilter>
+        <booleanFilter>((1 AND 2) OR 5) AND 3 AND 4</booleanFilter>
+        <criteriaItems>
+            <column>CREATED</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>eloqua</value>
+        </criteriaItems>
         <criteriaItems>
             <column>RECORDTYPE</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>Lead.Sales_Lead,Lead.Partner_Lead</value>
+            <value>Lead.Partner_Lead</value>
         </criteriaItems>
         <criteriaItems>
             <column>Lead.Core_Lead_State__c</column>
@@ -185,7 +146,7 @@
         <field>Lead.Core_Lead_Priority__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>OLD - Sales MGL TALs</name>
+    <name>Sales MGL TALs</name>
     <params>
         <name>co</name>
         <value>1</value>

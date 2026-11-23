@@ -1,0 +1,56 @@
+{
+  "appPageId" : "e42117ba-3add-4856-ac22-1889f6e69417",
+  "componentName" : "siteforce:sldsThreeCol336Layout",
+  "dataProviders" : [ ],
+  "id" : "7e5be30b-8538-4ddd-8be6-3eb408c34f56",
+  "label" : "Home",
+  "regions" : [ {
+    "id" : "63b017a0-ae43-457d-b5be-ff1ee5a42caf",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "richTextValue" : "<p><span style=\"font-size: 48px;\">Let's get started!</span></p><ol><li><span style=\"font-size: 18px;\">Unfamiliar with Build Your Own? Click Take a Tour in the Help menu.</span></li><li><span style=\"font-size: 18px;\">Want to add more pages? Take a look at the Pages menu.</span></li><li><span style=\"font-size: 18px;\">Want more components on your page? Drag and drop components from the Components panel.</span></li><li><span style=\"font-size: 18px;\">Want your users to see your company logo? Head on over to the Theme panel.</span></li><li><span style=\"font-size: 18px;\">Refine the look of your site with a custom theme layout. See the Experience Cloud Developer Guide.</span></li></ol>"
+      },
+      "componentName" : "forceCommunity:richTextInline",
+      "id" : "f618aacd-3e81-463e-a68c-f65fc65afba2",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "73936905-8a0c-4664-a29a-2fcd0c5fb5bf",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "6c36d5a2-3378-4835-a992-cead285efe38",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Home"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "58f7f60e-9e37-49dd-ac29-d330d7250c45",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "19ff4e61-e418-4058-84eb-a04baf477c14",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  }, {
+    "id" : "07ca9bd7-52a0-4393-bd13-621014637cd6",
+    "regionName" : "sidebar",
+    "type" : "region"
+  }, {
+    "id" : "e65bd97c-0347-48f5-b4d0-85f3d01735cf",
+    "regionName" : "sidebarAlt",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "home"
+}

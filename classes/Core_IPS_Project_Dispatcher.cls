@@ -13,9 +13,11 @@ public class Core_IPS_Project_Dispatcher{
          if(trigger.isInsert){
              //Commented by Sugandha for US104746
              //Core_IPS_Project_Handler.DuplicateRecordprevention(newList);
+             system.debug('insert');
          }
          if(trigger.isUpdate){
          /*added by Aayushi 11-03-2017 US80374*/ 
+             System.debug('Project  before update user Dispatcher'+UserInfo.getName());
          Core_IPS_Project_Handler.activateProject(oldMap,newList,newMap);
          }
          if(trigger.isDelete){
@@ -47,6 +49,7 @@ public class Core_IPS_Project_Dispatcher{
 			Core_IPS_Project_Handler.addDefaultCaseOwnerToIST(newList,oldMap);
          }
          if(trigger.isDelete){
+             system.debug('Delete');
          }
     }
 }

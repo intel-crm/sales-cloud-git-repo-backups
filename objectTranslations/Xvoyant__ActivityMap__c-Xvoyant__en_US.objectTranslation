@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>ActivityMap</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>ActivityMaps</value>
+    </caseValues>
+    <fields>
+        <label><!-- MapType --></label>
+        <name>Xvoyant__MapType__c</name>
+    </fields>
+    <fields>
+        <label><!-- MappedApiName --></label>
+        <name>Xvoyant__MappedApiName__c</name>
+    </fields>
+    <fields>
+        <label><!-- RasrComponent --></label>
+        <name>Xvoyant__RasrComponent__c</name>
+        <relationshipLabel><!-- ActivityMaps --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

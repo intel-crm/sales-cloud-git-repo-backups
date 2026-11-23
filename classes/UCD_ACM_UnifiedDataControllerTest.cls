@@ -42,7 +42,7 @@ public class UCD_ACM_UnifiedDataControllerTest {
     
 }*/
 
-@isTest
+@isTest(SeeAllData=true)
 public class UCD_ACM_UnifiedDataControllerTest {
     
         public static testMethod void fieldsetwrapperTest(){
@@ -60,29 +60,28 @@ public class UCD_ACM_UnifiedDataControllerTest {
         
       system.runAs(u){ */
         List<Account> accListNew = new List<Account>();
-        
-
-
         Account acc1 = new Account();
-        acc1.Name = 'Sample';
-        acc1.Core_Customer_Aggregation_Type__c = 'UNFD_GLBL_CUST';
+        acc1.name = 'Sample';
         acc1.RecordTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
-        acc1.BillingCountryCode	= 'IND';
-        acc1.BillingCountry	= 'IND';
-        acc1.BillingCity = 'Amravati';
-        acc1.BillingStateCode = 'MH';
-        acc1.BillingStreet = 'TestStreet';
-        acc1.Core_Business_Party_Id__c = '1234';
-        acc1.ShippingCountryCode = 'IND';
         acc1.Core_Account_Tier__c = '';
         acc1.Industry = '';
         acc1.Core_Intel_Partner_Alliance_PartnerGroup__c = TRUE;
         acc1.core_deactivated__c = FALSE;
+        acc1.BillingCountry = 'India';
+        //acc1.BillingState = 'Tamil Nadu';
         acc1.Core_CIM_ID__c = '123312';
-
+        acc1.BillingCity='test';
+        acc1.BillingStreet='test3';
+        //acc1.OwnerId = u.id;
         insert acc1;
-
-        List<Business_Types__c> businessTypes = new List<Business_Types__c>();
+        
+        List<Core_Account_Compliance_Watch_List__c> complianceWatchLists = new List<Core_Account_Compliance_Watch_List__c>();
+        complianceWatchLists.add(UCD_ACM_Cntrlr_TestDataInitialization.createComplianceWatchList(acc1.Id,'NOTRDOUT'));
+        complianceWatchLists.add(UCD_ACM_Cntrlr_TestDataInitialization.createComplianceWatchList(acc1.Id,'DPL'));
+        insert complianceWatchLists;
+        
+        
+       List<Business_Types__c> businessTypes = new List<Business_Types__c>();
         businessTypes.add(UCD_ACM_Cntrlr_TestDataInitialization.createBusinessType('Direct Price Exception','DIR_PRC_EXCPT1'));
         businessTypes.add(UCD_ACM_Cntrlr_TestDataInitialization.createBusinessType('Supply Demand Revenue','SD_REV1'));
         insert businessTypes;

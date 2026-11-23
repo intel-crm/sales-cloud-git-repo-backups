@@ -91,6 +91,7 @@ private class Core_AccountOwnerChange_Controller_Test {
             
             if(account.Core_Sales_Groups__c == ' ' && account.Core_Covered_Account__c == False){
                 mymsg = Label.Core_Acc_SalesGroup_WarningMsg;
+                System.debug(+mymsg);
                 System.assertEquals(mymsg, mymsg);
             }
             try{
@@ -136,6 +137,7 @@ private class Core_AccountOwnerChange_Controller_Test {
             userList = [SELECT Name, Email, IsActive 
                         FROM User 
                         WHERE Id = :UserInfo.getUserId()];
+            System.debug('Inactive Id'+userList);
             System.runAs(userList[0]) 
             {    
                 // Change User to inactive
@@ -219,7 +221,6 @@ private class Core_AccountOwnerChange_Controller_Test {
 
     static testMethod void accountChangeRequestTest0(){    
         // Start testing the functionality
-        insert new Core_ACM_Control_Execution__c(Name='AccountOwnerChangeController',IsActive__c = true);
         Test.startTest();      
           setupTest(0);
           changeRequestController.changeOwnerRequest();
@@ -227,7 +228,6 @@ private class Core_AccountOwnerChange_Controller_Test {
          
          }         
      static testMethod void accountChangeRequestTest1(){ 
-         insert new Core_ACM_Control_Execution__c(Name='AccountOwnerChangeController',IsActive__c = true);
        Test.startTest();        
           setupTest(1);
           changeRequestController.changeOwnerRequest();
@@ -235,7 +235,6 @@ private class Core_AccountOwnerChange_Controller_Test {
         }
         
        static testMethod void accountChangeRequestTest2(){ 
-          insert new Core_ACM_Control_Execution__c(Name='AccountOwnerChangeController',IsActive__c = true);
         Test.startTest();        
           setupTest(2);
           changeRequestController.changeOwnerRequest();
@@ -243,21 +242,18 @@ private class Core_AccountOwnerChange_Controller_Test {
         }
         
          static testMethod void accountChangeRequestTest3(){ 
-          insert new Core_ACM_Control_Execution__c(Name='AccountOwnerChangeController',IsActive__c = true);
           Test.startTest();     
           setupTest(3);
           changeRequestController.changeOwnerRequest();
          Test.stopTest();
         }
          static testMethod void accountChangeRequestTest4(){ 
-             insert new Core_ACM_Control_Execution__c(Name='AccountOwnerChangeController',IsActive__c = true);
           Test.startTest(); 
            setupTest(4);
            changeRequestController.changeOwnerRequest();
          Test.stopTest();
         }
          static testMethod void accountChangeRequestTest5(){ 
-             insert new Core_ACM_Control_Execution__c(Name='AccountOwnerChangeController',IsActive__c = true);
           Test.startTest(); 
            setupTest(5);
            changeRequestController.changeOwnerRequest();
@@ -267,7 +263,6 @@ private class Core_AccountOwnerChange_Controller_Test {
     // Test A&E User/non-Super User blocking
     static testMethod void testBlockOfAEUser() 
     {
-        insert new Core_ACM_Control_Execution__c(Name='AccountOwnerChangeController',IsActive__c = true);
         setupTest(6);
         
         Id aeProfileId = [select Id from Profile where Name = 'A&E User'][0].Id;
@@ -301,7 +296,6 @@ private class Core_AccountOwnerChange_Controller_Test {
     // Make sure a standard Sales Rep-BB change ownership still works
     static testMethod void testSalesRepBB() 
     {
-        insert new Core_ACM_Control_Execution__c(Name='AccountOwnerChangeController',IsActive__c = true);
         setupTest(7);
         
         User testUser = Core_Test_Utility.Core_User(1)[0];
@@ -316,7 +310,6 @@ private class Core_AccountOwnerChange_Controller_Test {
         changeRequestController.returnToAccount();
     }
     static testmethod void accountownerchange(){
-        insert new Core_ACM_Control_Execution__c(Name='AccountOwnerChangeController',IsActive__c = true);
             accountList     = Core_Test_Utility.createAccount(2);
             account         = accountList[1];
             account.OwnerId = Label.Core_Uncovered_Account_ID;

@@ -17,6 +17,10 @@
         <name>Core_Error_Description__c</name>
     </fields>
     <fields>
+        <label><!-- Core OPN Status Txt --></label>
+        <name>Core_OPN_Status_Txt__c</name>
+    </fields>
+    <fields>
         <label><!-- Package --></label>
         <name>Core_Package__c</name>
     </fields>

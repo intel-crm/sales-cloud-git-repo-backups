@@ -31,6 +31,10 @@
         <value xsi:nil="true"/>
     </values>
     <values>
+        <field>Dynamic_Filter_and_Value__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
         <field>Dynamic_Filter_and_Value_txt__c</field>
         <value xsi:nil="true"/>
     </values>
@@ -41,6 +45,10 @@
     <values>
         <field>Embed_URL_Class__c</field>
         <value xsi:type="xsd:string">SWS_UnrivalService</value>
+    </values>
+    <values>
+        <field>No_Access_Error__c</field>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>No_Access_Error_txt__c</field>
@@ -55,12 +63,20 @@
         <value xsi:nil="true"/>
     </values>
     <values>
+        <field>Security_Query__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
         <field>Security_Query_txt__c</field>
         <value xsi:nil="true"/>
     </values>
     <values>
         <field>Security_enforced__c</field>
         <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>Static_Filter_and_Value__c</field>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>Static_Filter_and_Value_txt__c</field>
@@ -72,7 +88,11 @@
     </values>
     <values>
         <field>URL__c</field>
-        <value xsi:type="xsd:string">https://api.intel.insighthub.unrival.net/companies?include_unavailable=false</value>
+        <value xsi:type="xsd:string">https://sandbox-api-intel-insighthub-unrival-net-dzgxf3bjavbxdmgv.eastus-01.azurewebsites.net/companies?include_unavailable=false</value>
+    </values>
+    <values>
+        <field>User_Filter_and_Value__c</field>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>User_Filter_and_Value_txt__c</field>

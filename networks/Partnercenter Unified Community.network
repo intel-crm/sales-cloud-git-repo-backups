@@ -2,16 +2,16 @@
 <Network xmlns="http://soap.sforce.com/2006/04/metadata">
     <allowInternalUserLogin>false</allowInternalUserLogin>
     <allowMembersToFlag>false</allowMembersToFlag>
-    <changePasswordTemplate>Testt/CommunityChangePasswordEmailTemplate</changePasswordTemplate>
+    <changePasswordTemplate>unfiled$public/CommunityChangePasswordEmailTemplate</changePasswordTemplate>
     <communityRoles/>
     <description>This is one community which will be used for CCP, CPQ, NPP and various other partner programs.</description>
     <disablePvtPagesForPwdResetInLWR>false</disablePvtPagesForPwdResetInLWR>
     <disableReputationRecordConversations>false</disableReputationRecordConversations>
     <emailDomainSubstitutionEnabled>false</emailDomainSubstitutionEnabled>
-    <emailSenderAddress>wsm-postmaster@intel.com</emailSenderAddress>
-    <emailSenderName>Intel Corporation-NoReply</emailSenderName>
+    <emailSenderAddress>hemanta.k.patra@intel.com</emailSenderAddress>
+    <emailSenderName>Partnercenter Unified Community</emailSenderName>
     <embeddedLoginEnabled>true</embeddedLoginEnabled>
-    <enableApexCDNCaching>true</enableApexCDNCaching>
+    <enableApexCDNCaching>false</enableApexCDNCaching>
     <enableCustomVFErrorPageOverrides>false</enableCustomVFErrorPageOverrides>
     <enableDirectMessages>true</enableDirectMessages>
     <enableExpFriendlyUrlsAsDefault>false</enableExpFriendlyUrlsAsDefault>
@@ -33,48 +33,24 @@
     <enableTopicAssignmentRules>true</enableTopicAssignmentRules>
     <enableTopicSuggestions>false</enableTopicSuggestions>
     <enableUpDownVote>true</enableUpDownVote>
-    <forgotPasswordTemplate>Testt/CommunityForgotPasswordEmailTemplate</forgotPasswordTemplate>
+    <forgotPasswordTemplate>unfiled$public/CommunityForgotPasswordEmailTemplate</forgotPasswordTemplate>
     <gatherCustomerSentimentData>false</gatherCustomerSentimentData>
-    <headlessForgotPasswordTemplate>Testt/CommunityHeadlessForgotPasswordTemplate</headlessForgotPasswordTemplate>
-    <headlessRegistrationTemplate>Testt/CommunityHeadlessRegistrationTemplate</headlessRegistrationTemplate>
+    <headlessForgotPasswordTemplate>unfiled$public/CommunityHeadlessForgotPasswordTemplate</headlessForgotPasswordTemplate>
+    <headlessRegistrationTemplate>unfiled$public/CommunityHeadlessRegistrationTemplate</headlessRegistrationTemplate>
     <networkMemberGroups>
+        <permissionSet>Core_SPCF_USER</permissionSet>
+        <permissionSet>Core_MDF_CCP_External_View_Only</permissionSet>
+        <permissionSet>Core_MDF_DCF_USER</permissionSet>
         <permissionSet>Core_MDF_CCF_USER</permissionSet>
         <permissionSet>Core_MDF_CCP_External_Account_Budget_Administrator</permissionSet>
         <permissionSet>Core_MDF_CCP_External_Activity_Submitter</permissionSet>
         <permissionSet>Core_MDF_CCP_External_Claim_Submitter</permissionSet>
         <permissionSet>Core_MDF_CCP_External_Content_Viewer</permissionSet>
         <permissionSet>Core_MDF_CCP_External_User_Admin</permissionSet>
-        <permissionSet>Core_MDF_CCP_External_View_Only</permissionSet>
-        <permissionSet>Core_MDF_DCF_USER</permissionSet>
-        <permissionSet>Core_SPCF_USER</permissionSet>
-        <permissionSet>Core_MDF_CCP_External_Retail_Claim_Submitter</permissionSet>
-        <permissionSet>Core_MDF_CCFB_USER</permissionSet>
-        <permissionSet>Core_MDF_CCP_External_Activity_Approver</permissionSet>
-        <permissionSet>Core_MDF_Retail_USER</permissionSet>
-        <permissionSet>Core_MDF_CCP_External_Retail_View_Only</permissionSet>
-        <permissionSet>Core_MDF_CCP_External_IPA_Claim_Submitter</permissionSet>
-        <permissionSet>Core_MDF_IPA_USER</permissionSet>
-        <permissionSet>Core_MDF_CCP_External_IPA_Proposal_Manager</permissionSet>
-        <permissionSet>Core_MDF_CCP_External_Channel_MDF_User_Admin</permissionSet>
-        <permissionSet>Core_MDF_CCP_External_Channel_MDF_View_Only</permissionSet>
-        <permissionSet>Core_MDF_Channel_MDF_USER</permissionSet>
-        <permissionSet>Core_MDF_CCP_External_Special_Report_Viewer</permissionSet>
-        <permissionSet>Core_MDF_CCP_External_Channel_MDF_Activity_Submitter</permissionSet>
-        <permissionSet>Core_MDF_CCP_External_Channel_MDF_Claim_Submitter</permissionSet>
-        <permissionSet>Core_MDF_CCP_EEF_Activating_Partner_User</permissionSet>
-        <permissionSet>Core_MDF_CCP_EEF_External_Recovery_Administrator</permissionSet>
-        <permissionSet>Core_MDF_CCP_EEF_Primary_Partner_User</permissionSet>
-        <permissionSet>Core_MDF_CCP_External_EEF_Account_Budget_Administrator</permissionSet>
-        <permissionSet>Core_MDF_CCP_External_EEF_Activity_Approver</permissionSet>
-        <permissionSet>Core_MDF_CCP_External_EEF_Activity_Submitter</permissionSet>
-        <permissionSet>Core_MDF_CCP_External_EEF_Claim_Submitter</permissionSet>
-        <permissionSet>Core_MDF_EEF_USER</permissionSet>
-        <permissionSet>Core_MDF_CCP_External_Co_GTM_Claim_Submitter</permissionSet>
-        <permissionSet>Core_MDF_Co_GTM_USER</permissionSet>
-        <permissionSet>Core_MDF_CCP_External_Co_GTM_Project_Approver</permissionSet>
-        <permissionSet>Core_MDF_CCP_External_Co_GTM_Project_Submitter</permissionSet>
-        <profile>it admin</profile>
         <profile>admin</profile>
+        <profile>it admin</profile>
+        <profile>partner</profile>
+        <profile>data ops</profile>
     </networkMemberGroups>
     <networkPageOverrides>
         <changePasswordPageOverrideSetting>Standard</changePasswordPageOverrideSetting>
@@ -95,5 +71,5 @@
         <standardTab>Chatter</standardTab>
     </tabs>
     <urlPathPrefix>Partnercenter</urlPathPrefix>
-    <welcomeTemplate>Testt/CommunityWelcomeEmailTemplate</welcomeTemplate>
+    <welcomeTemplate>unfiled$public/CommunityWelcomeEmailTemplate</welcomeTemplate>
 </Network>

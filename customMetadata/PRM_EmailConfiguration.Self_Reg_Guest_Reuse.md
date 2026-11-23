@@ -11,10 +11,6 @@
         <value xsi:type="xsd:string">Employee</value>
     </values>
     <values>
-        <field>PRM_Inactive_Indicator__c</field>
-        <value xsi:type="xsd:boolean">false</value>
-    </values>
-    <values>
         <field>PRM_PartnerRole__c</field>
         <value xsi:type="xsd:string">Guest</value>
     </values>
@@ -24,6 +20,6 @@
     </values>
     <values>
         <field>PRM_Tier__c</field>
-        <value xsi:type="xsd:string">Member</value>
+        <value xsi:type="xsd:string">Gold</value>
     </values>
 </CustomMetadata>

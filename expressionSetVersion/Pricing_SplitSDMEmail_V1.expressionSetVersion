@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExpressionSetDefinitionVersion xmlns="http://soap.sforce.com/2006/04/metadata">
+    <decimalScale>2</decimalScale>
+    <expressionSetDefinition>Pricing_SplitSDMEmail</expressionSetDefinition>
+    <label>Pricing_SplitSDMEmail V1</label>
+    <processType>Bre</processType>
+    <shouldShowExplExternally>false</shouldShowExplExternally>
+    <startDate>2023-06-26T10:34:17.000Z</startDate>
+    <status>Inactive</status>
+    <versionNumber>1</versionNumber>
+</ExpressionSetDefinitionVersion>

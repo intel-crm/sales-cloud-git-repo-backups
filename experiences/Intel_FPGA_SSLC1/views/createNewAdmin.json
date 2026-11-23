@@ -1,59 +1,119 @@
 {
   "appPageId" : "6b36c665-0609-49d0-9746-033feed642b2",
-  "componentName" : "siteforce:sldsThreeCol363Layout",
+  "componentName" : "siteforce:sldsOneColLayout",
   "dataProviders" : [ ],
-  "id" : "26ceaaf3-b5a6-4b03-b704-b04b11491c71",
+  "id" : "cd1acf58-fcd8-4bcf-9b15-b86e867bdf8a",
   "label" : "Create new admin",
   "regions" : [ {
     "components" : [ {
       "componentAttributes" : { },
       "componentName" : "c:sales_NonEventFeedback",
-      "id" : "42240aab-9445-42a3-98b9-ca297e667c4f",
+      "id" : "35a76e8d-0d17-4f89-a4f5-624a01b90259",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "38172cc9-0aee-4941-a78e-32606efe8f78",
+    "id" : "86a3e277-a2c2-48df-b47a-af6e76baa283",
     "regionName" : "header",
     "type" : "region"
   }, {
-    "id" : "60b0841d-a234-457e-81a8-93d7ffcba4ac",
-    "regionName" : "sidebar",
+    "id" : "a83ad055-e11d-4c94-8878-0f5524455d84",
+    "regionName" : "mainFullWidth",
     "type" : "region"
   }, {
-    "components" : [ {
-      "componentAttributes" : { },
-      "componentName" : "c:sales_AddNewLicenseAdmin",
-      "id" : "2cc232a3-0d92-4591-ae2d-e22bf3f6e113",
-      "renderPriority" : "NEUTRAL",
-      "renditionMap" : { },
-      "type" : "component"
-    } ],
-    "id" : "53b1d4cd-48e3-4129-8658-f76dc0dd2ce4",
-    "regionName" : "content",
-    "type" : "region"
-  }, {
-    "id" : "f6b1b2b2-d898-4932-afe7-4ad87d3e40a2",
-    "regionName" : "sidebarAlt",
-    "type" : "region"
-  }, {
-    "id" : "bca430cc-d0c7-48c5-96c7-2b9622e6404b",
-    "regionName" : "footer",
+    "id" : "2140c2aa-c251-42f0-a3dd-75830900ed6f",
+    "regionName" : "main",
     "type" : "region"
   }, {
     "components" : [ {
       "componentAttributes" : {
         "customHeadTags" : "",
         "description" : "",
-        "title" : "Create new admin"
+        "title" : "Add new admin"
       },
       "componentName" : "forceCommunity:seoAssistant",
-      "id" : "3e07d3ee-48c2-4a2a-8927-9935f449ef00",
+      "id" : "8d5d3afc-95b5-429f-a857-0ee109eb515c",
+      "renditionMap" : {
+        "zh_cn" : "970ab28b-9095-47ca-855a-0f53a7e3e30b"
+      },
+      "renditions" : [ {
+        "id" : "970ab28b-9095-47ca-855a-0f53a7e3e30b",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "customHeadTags" : "市场推广基金",
+            "description" : "市场推广基金",
+            "title" : "Create new admin"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "a320e039-8ec5-4b93-8d64-e6caa9e7b364",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:sales_AddNewLicenseAdmin",
+      "id" : "abd357c8-4953-414e-820c-6dd6b9612eff",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "zh_cn" : "d3175c9c-4dcc-4576-9764-91ad6ad92e56"
+      },
+      "renditions" : [ {
+        "id" : "d3175c9c-4dcc-4576-9764-91ad6ad92e56",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "15f81a2c-a993-4d23-b071-6004c289fe66",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "8246720d-6858-41c9-aa89-3eb52df9b15b",
+    "regionName" : "sidebar",
+    "type" : "region"
+  }, {
+    "id" : "c6b0b652-d8ff-4491-b5f4-8b51be90361b",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "buttonAlignment" : "center",
+        "buttonBgColor" : "",
+        "buttonBgHoverColor" : "",
+        "buttonBorderColor" : "",
+        "buttonMaxWidth" : 100,
+        "buttonRadius" : 0,
+        "buttonTextColor" : "",
+        "buttonTextHoverColor" : "",
+        "confirmationMessage" : "Got it!",
+        "followUpPromptLabel" : "Can we close your question?",
+        "isAskFollowPromptEnabled" : true,
+        "isIncludeArticlesEnabled" : false,
+        "isIncludeDiscussionsEnabled" : true,
+        "isInitialSatisfactionPromptEnabled" : true,
+        "isPublisherDeflectionEnabled" : true,
+        "label" : "Ask a Question",
+        "maxSuggestions" : 5,
+        "satisfactionPromptLabel" : "Did we help to answer your question?",
+        "showDetails" : false,
+        "showTopics" : true,
+        "uneditableTopics" : false
+      },
+      "componentName" : "forceCommunity:askCommunity",
+      "id" : "59e523c6-039e-49d5-8f3a-cae1d9920769",
+      "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "a867c3f7-943c-4f44-89e5-23349c9775ee",
-    "regionName" : "sfdcHiddenRegion",
+    "id" : "d5d47484-f8e9-4f85-87d0-33a05f1a610f",
+    "regionName" : "featured",
     "type" : "region"
   } ],
   "themeLayoutType" : "Inner",

@@ -23,14 +23,12 @@
 	<aura:attribute name="results" type="Object[]" />
     
     <aura:attribute name="mdaId" type="string" default="" />
-    <!-- IPA2.0 + US TWC4497-1631 -->
-    <!-- <aura:attribute name="offeringId" type="Id"/> -->
+    <aura:attribute name="offeringId" type="Id"/>
     <aura:attribute name="Header" type="string" default="" />
     
     	<!-- Optional Card Attribute Count Limit -->
 	<aura:attribute name="enableAttributeCountLimit" type="boolean" default="true" description="Enable Product/Partner Card attribute count limit"/>
 	<aura:attribute name="attributeCountLimit" type="Integer" default="2" description="Product/Partner Card attribute count limit"/>
-    <aura:attribute name="imageResize" type="boolean" default ="false" />
     
     <lightning:layout class="cardList" pullToBoundary="medium" multipleRows="true" aura:id="resultsList" >
         <aura:iteration items="{!v.results}" var="item">
@@ -40,7 +38,6 @@
                                               minHeight="{!v.cardHeightMatch ? v.minHeight : 0}"
                                               buttonFooterminHeight="{!v.cardHeightMatch ? v.buttonFooterminHeight : 0}"
                                               aura:id="card"
-                                              imageResize="true"
                                               partner="{! item.partner }"
                                               product="{! item }"
                                               displayType="{!v.displayType}"
@@ -61,13 +58,12 @@
                                               onImageLoaded="{! v.onImageLoaded}"
                                               dataObj="{!item}" 
                                               mdaId="{!v.mdaId}" 
-                                              
+                                              offeringId="{!v.offeringId}"  
                                               Header="{!v.Header}" 
                                               enableAttributeCountLimit="{! v.enableAttributeCountLimit}"
                                               attributeCountLimit="{! v.attributeCountLimit}"
                                               />
-                                              <!-- IPA2.0 + US TWC4497-1631
-                                              offeringId="{!v.offeringId}"   -->
+                    
                     <aura:set attribute="else">
                         <c:MarketplacePartnerCard
                                                   minHeight="{!v.cardHeightMatch ? v.minHeight : 0}"

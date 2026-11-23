@@ -17,7 +17,7 @@
         <externalId>false</externalId>
         <fieldManageability>DeveloperControlled</fieldManageability>
         <label>Locale Name</label>
-        <length>40</length>
+        <length>50</length>
         <required>false</required>
         <type>Text</type>
         <unique>false</unique>
@@ -28,7 +28,7 @@
         <externalId>false</externalId>
         <fieldManageability>DeveloperControlled</fieldManageability>
         <label>PIM Language Code</label>
-        <length>10</length>
+        <length>255</length>
         <required>false</required>
         <type>Text</type>
         <unique>false</unique>
@@ -39,7 +39,7 @@
         <externalId>false</externalId>
         <fieldManageability>DeveloperControlled</fieldManageability>
         <label>PIM Locale Name</label>
-        <length>30</length>
+        <length>255</length>
         <required>false</required>
         <type>Text</type>
         <unique>false</unique>
@@ -51,7 +51,7 @@
         <fieldManageability>DeveloperControlled</fieldManageability>
         <inlineHelpText>Target Language for the the translation</inlineHelpText>
         <label>Target Locale</label>
-        <length>20</length>
+        <length>32</length>
         <required>false</required>
         <type>Text</type>
         <unique>false</unique>

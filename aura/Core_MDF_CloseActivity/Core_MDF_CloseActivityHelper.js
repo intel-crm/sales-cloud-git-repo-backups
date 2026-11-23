@@ -55,15 +55,14 @@
         var wrapInst = response.getReturnValue();
         if (wrapInst != null) {
           component.set("v.countOfClaimRecords", wrapInst.listOfClaim.length);
-          if (!wrapInst.isValidActStatus && !wrapInst.retailActivity && !wrapInst.ipaActivity) {
+
+          if (!wrapInst.isValidActStatus && !wrapInst.retailActivity) {
             component.set("v.activityerrors", $A.get("$Label.c.Core_MDF_Close_Activity_InValidStatus_Error"));
           } else if(!wrapInst.isValidActStatus && wrapInst.retailActivity){
              component.set("v.activityerrors", $A.get("$Label.c.Core_MDF_Close_Activity_InValidStatus_Retail_Error"));
-          } else if (!wrapInst.isValidActStatus && wrapInst.ipaActivity) {
-            component.set("v.activityerrors", $A.get("$Label.c.Core_MDF_Close_Activity_InValidStatus_IPA_Error"));
           } else if (wrapInst.activityNotStarted) {
             component.set("v.activityerrors", $A.get("$Label.c.Core_MDF_Close_Activity_has_NotStarted"));
-          } else if (wrapInst.isValidActivity && wrapInst.hasActiveClaims ) {
+          } else if (wrapInst.isValidActivity && wrapInst.hasActiveClaims) {
             component.set("v.activityhasActiveClaim", $A.get("$Label.c.Core_MDF_Activity_has_active_claims"));
           } else {
             var toastEvent = $A.get("e.force:showToast");
@@ -73,31 +72,13 @@
               message: $A.get("$Label.c.Core_MDF_CloseActivity_Success_Message")
             });
             toastEvent.fire();
-              var isOutcome = component.get("v.isOutcomeBased");
-              var recordId = component.get("v.recordId");
-              var communityBaseUrl = $A.get("$Label.c.Core_MDF_PFRCommunityLink");
-              var path = window.location.pathname;
-              if (isOutcome) {
-                  var isCommunity = path.includes('/s/');
-                  if (isCommunity) {
-                      window.location.href =
-                          communityBaseUrl + 's/outcome-based-campaign-details?recordId=' + recordId;
-                  } else {
-                      window.location.href =
-                          '/lightning/n/Core_MDF_Outcome_Based_Campaign_Detail?c__recordId=' + recordId;
-                  }
-              }
-              else {
-                  var navEvt = $A.get("e.force:navigateToSObject");
-                  if (navEvt) {
-                      navEvt.setParams({
-                          recordId: recordId,
-                          slideDevName: "detail"
-                      });
-                      navEvt.fire();
-                  }
-              }
-            $A.get("e.force:closeQuickAction").fire();
+
+            var navEvt = $A.get("e.force:navigateToSObject");
+            navEvt.setParams({
+              "recordId": component.get('v.recordId'),
+              "slideDevName": "detail"
+            });
+            navEvt.fire();
             setTimeout(function () {
               window.location.reload();
             }, 2500);
@@ -118,26 +99,5 @@
       }
     });
     $A.enqueueAction(actionclose);
-  },
-    
-    checkOutcomebaseActivity: function (component, event, helper) {
-    var action = component.get("c.isOutcomeBasedActivity");
-    action.setParams({
-        "pfrId": component.get("v.recordId")
-    });
-    action.setCallback(this, function (response) {
-        var state = response.getState();
-        if (state === "SUCCESS") {
-            var result = response.getReturnValue();
-            component.set("v.isOutcomeBased", result);
-        } 
-        else {
-            var errorMessage = $A.get("$Label.c.Core_MDF_ApplicationErrorMessage");
-            helper.fireToastEvent(component, errorMessage, "5000", "error");
-        }
-    });
-
-    $A.enqueueAction(action);
-}
-
+  }
 });

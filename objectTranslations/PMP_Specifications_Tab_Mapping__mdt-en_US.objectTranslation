@@ -16,10 +16,6 @@
             <translation><!-- accordion --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>childAccordin</masterLabel>
-            <translation><!-- childAccordin --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>default</masterLabel>
             <translation><!-- default --></translation>
         </picklistValues>
@@ -61,32 +57,8 @@
         <name>IsSearchable__c</name>
     </fields>
     <fields>
-        <label><!-- LayoutItem_Size --></label>
-        <name>LayoutItem_Size__c</name>
-    </fields>
-    <fields>
         <label><!-- Field Label --></label>
         <name>PMP_Field_Label__c</name>
-    </fields>
-    <fields>
-        <label><!-- Filter Sequence --></label>
-        <name>PMP_Filter_Sequence__c</name>
-    </fields>
-    <fields>
-        <label><!-- Is Create Offering --></label>
-        <name>PMP_Is_Create_Offering_Ind__c</name>
-    </fields>
-    <fields>
-        <label><!-- Is Search --></label>
-        <name>PMP_Is_Search_Ind__c</name>
-    </fields>
-    <fields>
-        <label><!-- Search Filter Group --></label>
-        <name>PMP_Search_Filter_Group_Txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Filter Label --></label>
-        <name>PMP_Search_Filter_Label_Txt__c</name>
     </fields>
     <fields>
         <label><!-- Show Select All --></label>
@@ -107,10 +79,6 @@
             <masterLabel>Tab3</masterLabel>
             <translation><!-- Tab3 --></translation>
         </picklistValues>
-    </fields>
-    <fields>
-        <label><!-- is Inline Radio --></label>
-        <name>is_Inline_Radio__c</name>
     </fields>
     <startsWith>Consonant</startsWith>
     <validationRules>

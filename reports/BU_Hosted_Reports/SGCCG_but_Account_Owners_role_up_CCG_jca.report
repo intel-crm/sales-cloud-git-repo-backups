@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_ID__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Sales_Groups__c</field>
+    </columns>
+    <columns>
+        <field>TYPE</field>
+    </columns>
+    <columns>
+        <field>User.Core_Manager__c</field>
+    </columns>
+    <columns>
+        <field>ADDRESS1_STATE</field>
+    </columns>
+    <columns>
+        <field>DUE_DATE</field>
+    </columns>
+    <columns>
+        <field>LAST_UPDATE</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Account.Core_Sales_Groups__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>CCG Sales Group</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>User.Core_Manager__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Michael Harris,Lakshminarayan Krishnamurty,Steven Swartz,Eliyahu Gavra,Hong Zhao,David Paterson,Laura Barbaro,Li Ting Chu,Qing Lu,Bryan Jensen,Ryan Granchalek,Dorin Vanderjack,Philip Claar,Ramaswamy Ramnath,David Meffe,Cekiel D Danielson,Matt Plant,Paul Goodwin,Summet Syal,Wayne Feng,Bob Charles,Tasha Chuang,Ulf Jahnke,Andrew Wang,Ryan McCurdy,Juergen Scheller,Nina Chen,David Feng,Leighton Phillips,TW Bae,Xavier Petot,Caitlin Anderson,David Germano,Dawei Feng,John Kalvin,Kirsty Hing,Matthew Plant,Patricia Mc Bride,Pei-Yu Chuang,Tae-won Bae,Alexie Manning,Cigdem Ertem,David Buchholz,Russell Pam,Sarah Wieskus,Yasser Rasheed,Jack Huang,Jonathan Chappelle,Lee Machen,Nathan Snow,Ozlem Coday,Juan Garces,Lionel Adnet,Natalie Wossene,Patrick Cassleman,Rose Roberts,Stephanie Salas-Snyder,Ajay Mathur,Jorge Gutierrez,Patrick Bliemer,Tipu Sultan,Yen Nee Goh,Gary Willihnganz,Lori Zabel,Paul Dumke,Stuart Blanch,Adam Martin,Fengli Han,Greg Cnossen,Gregory Myers,James Buland,Julie Malloy,Brian Tucker,Kanako Maeda,Lingyu Feng,Armin Rappl,Jeremy Lin,Nikki Chen,Yu-Shih Chou,Fong Tsai,Ryan Baker,Mike Mariani,Navin Misra,Nicholas Day,Patrick Olson,Ted Pickerrell,Jeremy Ming Yuen Lee,Joseph Ellis,Juan Martinez Granada,Matthew Penny,Yan Wu,Richard Aikman,Sebastian Szocs,Chang-Kyun Lee,HaeChoon Byun,Hye Eun Shin,Won Hee Lee,Won-Ki Son</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>USERS.NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Uncovered Account,A&amp;E Account Owner</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>USERS.NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>SG=CCG but Account Owner&apos;s role up ≠ CCG</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>AccountList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

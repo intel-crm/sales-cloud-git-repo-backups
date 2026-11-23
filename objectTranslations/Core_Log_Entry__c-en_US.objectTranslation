@@ -77,6 +77,46 @@
         <name>File_Name__c</name>
     </fields>
     <fields>
+        <label><!-- New code (POC) --></label>
+        <name>New_code_POC__c</name>
+    </fields>
+    <fields>
+        <label><!-- Old code (POC) --></label>
+        <name>Old_code_POC__c</name>
+    </fields>
+    <fields>
+        <label><!-- Review Status (POC) --></label>
+        <name>Review_Status_POC__c</name>
+        <picklistValues>
+            <masterLabel>Approved</masterLabel>
+            <translation><!-- Approved --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Deployed</masterLabel>
+            <translation><!-- Deployed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Deployment Failed</masterLabel>
+            <translation><!-- Deployment Failed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Draft</masterLabel>
+            <translation><!-- Draft --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Failed</masterLabel>
+            <translation><!-- Failed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending</masterLabel>
+            <translation><!-- Pending --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rejected</masterLabel>
+            <translation><!-- Rejected --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
         <label><!-- Review Status --></label>
         <name>Review_Status__c</name>
         <picklistValues>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>AC Adaptador CTI</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value><!-- AC Adaptador CTI --></value>
+    </caseValues>
+    <fields>
+        <label>Ativar configurações do dispositivo de áudio</label>
+        <name>amazonconnect__AudioDeviceSettings__c</name>
+    </fields>
+    <fields>
+        <label><!-- Automatic CCP Single Sign On (SSO) --></label>
+        <name>amazonconnect__AutomaticCCPSingleSignOn__c</name>
+    </fields>
+    <fields>
+        <label><!-- Bottom Panel --></label>
+        <name>amazonconnect__BottomPanel__c</name>
+    </fields>
+    <fields>
+        <label> Nome de definição da central de atendimento </label>
+        <name>amazonconnect__CallCenter__c</name>
+    </fields>
+    <fields>
+        <label> Versão do CCP </label>
+        <name>amazonconnect__CcpVersion__c</name>
+        <picklistValues>
+            <masterLabel>v1</masterLabel>
+            <translation><!-- v1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>v2</masterLabel>
+            <translation><!-- v2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label> Conectar instância - NÃO USE </label>
+        <name>amazonconnect__ConnectInstance__c</name>
+    </fields>
+    <fields>
+        <label>Toque de chat personalizado</label>
+        <name>amazonconnect__CustomChatRingtone__c</name>
+    </fields>
+    <fields>
+        <label> Toque personalizado </label>
+        <name>amazonconnect__CustomRingtone__c</name>
+    </fields>
+    <fields>
+        <label> Nível de depuração </label>
+        <name>amazonconnect__DebugLevel__c</name>
+    </fields>
+    <fields>
+        <label>Desabilitar cancelamento de eco</label>
+        <name>amazonconnect__DisableEchoCancellation__c</name>
+    </fields>
+    <fields>
+        <label>Captura de microfone pré-chamada</label>
+        <name>amazonconnect__EarlyGum__c</name>
+    </fields>
+    <fields>
+        <label><!-- Enable Softphone Popout --></label>
+        <name>amazonconnect__EnableSoftphonePopout__c</name>
+    </fields>
+    <fields>
+        <label>Instância ARN</label>
+        <name>amazonconnect__InstanceArn__c</name>
+    </fields>
+    <fields>
+        <label> Alias de instância do Amazon Connect </label>
+        <name>amazonconnect__Instance__c</name>
+    </fields>
+    <fields>
+        <label> Sem mídia </label>
+        <name>amazonconnect__Medialess__c</name>
+    </fields>
+    <fields>
+        <help><!-- Optional: This is the Named Credential used for the &quot;Recording Controls&quot; feature. If this is empty, a default value of &quot;AmazonConnectAPI&quot; will be assumed. --></help>
+        <label>Credenciais Nomeadas</label>
+        <name>amazonconnect__NamedCredential__c</name>
+    </fields>
+    <fields>
+        <label>Configurações de tipo de telefone</label>
+        <name>amazonconnect__PhoneTypeSettings__c</name>
+    </fields>
+    <fields>
+        <label> Sincronização de presença habilitada </label>
+        <name>amazonconnect__PresenceSyncEnabled__c</name>
+    </fields>
+    <fields>
+        <label> Região da instância do Amazon Connect </label>
+        <name>amazonconnect__Region__c</name>
+    </fields>
+    <fields>
+        <label> Softphone Popout habilitado </label>
+        <name>amazonconnect__SoftphonePopoutEnabled__c</name>
+    </fields>
+    <fields>
+        <label> Estado de retransmissão SSO </label>
+        <name>amazonconnect__SsoRelayState__c</name>
+    </fields>
+    <fields>
+        <label> SSO Url </label>
+        <name>amazonconnect__SsoUrl__c</name>
+    </fields>
+    <fields>
+        <label><!-- User Defined --></label>
+        <name>amazonconnect__UserDefined__c</name>
+    </fields>
+    <gender>Feminine</gender>
+    <nameFieldLabel>Adaptador CTI</nameFieldLabel>
+</CustomObjectTranslation>

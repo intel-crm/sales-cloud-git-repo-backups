@@ -9,8 +9,8 @@
 * ****************************************************************************************************************************************/
 @isTest
 public class PMP_FPGA_Attribute_Japanese_Test {
-    //IPA 2.0- US-TWC729-7980
-    /*@isTest
+    
+    @isTest
     public static void testProcAttrMet()
     {
     
@@ -23,13 +23,13 @@ public class PMP_FPGA_Attribute_Japanese_Test {
         
         
         test.startTest();
-        PMP_ParseFPGAJSON.languageCode = 'ja_JP';
+        PMP_ParseFPGAJSON.strBaseKey = 'ja_JP';
         resultData = procAttrEng.processData('PMP_FPGA_Attribute_Test');
         system.assertNotEquals(resultData,null);
         test.stopTest();
         
         
         
-    }*/
+    }
 
 }

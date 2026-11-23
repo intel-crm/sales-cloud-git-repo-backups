@@ -63,7 +63,7 @@
         </values>
     </buckets>
     <columns>
-        <field>Account.Core_Sales_Groups__c</field>
+        <field>ACCOUNT_NAME</field>
     </columns>
     <columns>
         <field>Account.Core_Account_ID__c</field>
@@ -139,7 +139,6 @@
         <field>PROBABILITY</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
         <field>Opportunity.Core_Architecture_Conversion__c</field>
     </columns>
     <columns>
@@ -185,6 +184,9 @@
     </columns>
     <columns>
         <field>BucketField_12541241</field>
+    </columns>
+    <columns>
+        <field>OpportunityLineItem.Core_KPI_Date__c</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
@@ -299,17 +301,12 @@
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>ROLLUP_DESCRIPTION</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
-    <groupingsDown>
-        <dateGranularity>Month</dateGranularity>
-        <field>OpportunityLineItem.Core_KPI_Date__c</field>
+        <field>Account.Core_Sales_Groups__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>ACCOUNT_NAME</field>
+        <field>ROLLUP_DESCRIPTION</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>Loss 6 - GMP Loss</name>

@@ -10,15 +10,14 @@ Modification Log :
 * ----------------------------------------------------------------------------      
 * Zay Montalbo              11/03/2016              Original version
 * Saif Alam                 9/20/2018            Added trigger handler for new framework
-* Sankarshana               11/08/2021           Added trigger handler for new framework
+* Sankarshana				11/08/2021			 Added trigger handler for new framework
 *****************************************************************************************************************************************/
 trigger Core_Contact_Entitlement on Core_Contact_Entitlement__c (before insert,after update,after insert, before update, before delete) {
-    if(!FeatureManagement.checkPermission('PCC_Bypass_Automation')){
     Boolean isUpdate = false;
     //public static boolean ceUpdate = false;  
-    
-    //Added by Draco - new trigger framework
-    new Core_Contact_Entitlement_Handler().run();
+	
+	//Added by Draco - new trigger framework
+	new Core_Contact_Entitlement_Handler().run();
     
     /*if(Trigger.isBefore) {
         //if(Core_ContactEntitlementHandler.beforeMethodFirstEntry){
@@ -32,7 +31,7 @@ trigger Core_Contact_Entitlement on Core_Contact_Entitlement__c (before insert,a
         Core_ContactEntitlementHandler.afterMethod(Trigger.old, Trigger.new, Trigger.oldMap, Trigger.newMap);
         //if(Core_ContactEntitlementHandler.afterMethodFirstEntry){
             system.debug('Value of First Entry into afterMethod (before entry): ' + Core_ContactEntitlementHandler.afterMethodFirstEntry);
-            system.debug(Trigger.new.size());
+        	system.debug(Trigger.new.size());
             if(Trigger.isInsert || Trigger.isUpdate) {
                 system.debug('inside insert and update: '+Trigger.new.size());
                 Core_ContactEntitlementHandler.updateIntegrationStatusAfterDataLoad(Trigger.new);
@@ -67,6 +66,5 @@ trigger Core_Contact_Entitlement on Core_Contact_Entitlement__c (before insert,a
     
     
     // Added by Saif to incorporate new Trigger framework
-    new Core_Contact_EntitlementTriggerHandler().run();
-    }        
+    new Core_Contact_EntitlementTriggerHandler().run();        
 }

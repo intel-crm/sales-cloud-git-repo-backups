@@ -7,7 +7,7 @@
         <chartSummaries>
             <aggregate>Sum</aggregate>
             <axisBinding>y</axisBinding>
-            <column>Core_Opportunity_KPI__c.Core_Opp_KPI_Total_Price__c</column>
+            <column>AMOUNT</column>
         </chartSummaries>
         <chartType>HorizontalBarStacked</chartType>
         <enableHoverLabels>false</enableHoverLabels>
@@ -38,7 +38,7 @@
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>Core_Opportunity_KPI__c.Core_Opp_KPI_Total_Price__c</field>
+        <field>AMOUNT</field>
     </columns>
     <columns>
         <field>PROBABILITY</field>

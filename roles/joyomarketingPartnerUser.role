@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>Joyo Marketing Partner User</description>
+    <description>joyo marketing Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>Joyo Marketing Partner User</name>
+    <name>joyo marketing Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>joyomarketingPartnerManager</parentRole>
 </Role>

@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Activity</fullName>
+        <default>false</default>
+        <label>Activity</label>
+    </customValue>
+    <customValue>
+        <fullName>Account Plans</fullName>
+        <default>false</default>
+        <label>Account Plans</label>
+    </customValue>
+    <customValue>
+        <fullName>Account Visit</fullName>
+        <default>false</default>
+        <label>Account Visit</label>
+    </customValue>
+    <customValue>
+        <fullName>Adjacency Selling</fullName>
+        <default>false</default>
+        <label>Adjacency Selling</label>
+    </customValue>
+    <customValue>
+        <fullName>Ask/Manage Customer Commitment</fullName>
+        <default>false</default>
+        <label>Ask/Manage Customer Commitment</label>
+    </customValue>
+    <customValue>
+        <fullName>Business Motivation</fullName>
+        <default>false</default>
+        <label>Business Motivation</label>
+    </customValue>
+    <customValue>
+        <fullName>Compelling Reason To Act</fullName>
+        <default>false</default>
+        <label>Compelling Reason To Act</label>
+    </customValue>
+    <customValue>
+        <fullName>Confirm &amp; Approved NDA</fullName>
+        <default>false</default>
+        <label>Confirm &amp; Approved NDA</label>
+    </customValue>
+    <customValue>
+        <fullName>Co-Selling Engagement</fullName>
+        <default>false</default>
+        <label>Co-Selling Engagement</label>
+    </customValue>
+    <customValue>
+        <fullName>Customer QBR</fullName>
+        <default>false</default>
+        <label>Customer QBR</label>
+    </customValue>
+    <customValue>
+        <fullName>Deal Plan</fullName>
+        <default>false</default>
+        <label>Deal Plan</label>
+    </customValue>
+    <customValue>
+        <fullName>Deal Plans</fullName>
+        <default>false</default>
+        <label>Deal Plans</label>
+    </customValue>
+    <customValue>
+        <fullName>Demonstrates Technical Feasibility</fullName>
+        <default>false</default>
+        <label>Demonstrates Technical Feasibility</label>
+    </customValue>
+    <customValue>
+        <fullName>Effectively Structure The Deal</fullName>
+        <default>false</default>
+        <label>Effectively Structure The Deal</label>
+    </customValue>
+    <customValue>
+        <fullName>Follow Up On AI Sales Feed</fullName>
+        <default>false</default>
+        <label>Follow Up On AI Sales Feed</label>
+    </customValue>
+    <customValue>
+        <fullName>ID And Alleviate Risk</fullName>
+        <default>false</default>
+        <label>ID And Alleviate Risk</label>
+    </customValue>
+    <customValue>
+        <fullName>ID Competitor &amp; Positioning</fullName>
+        <default>false</default>
+        <label>ID Competitor &amp; Positioning</label>
+    </customValue>
+    <customValue>
+        <fullName>ID Decision Maker</fullName>
+        <default>false</default>
+        <label>ID Decision Maker</label>
+    </customValue>
+    <customValue>
+        <fullName>Identify Decision Criteria</fullName>
+        <default>false</default>
+        <label>Identify Decision Criteria</label>
+    </customValue>
+    <customValue>
+        <fullName>Identify Decision Maker</fullName>
+        <default>false</default>
+        <label>Identify Decision Maker</label>
+    </customValue>
+    <customValue>
+        <fullName>Identify Walk Conditions</fullName>
+        <default>false</default>
+        <label>Identify Walk Conditions</label>
+    </customValue>
+    <customValue>
+        <fullName>Make And Meet Commitments</fullName>
+        <default>false</default>
+        <label>Make And Meet Commitments</label>
+    </customValue>
+    <customValue>
+        <fullName>Manage Internal Stakeholders</fullName>
+        <default>false</default>
+        <label>Manage Internal Stakeholders</label>
+    </customValue>
+    <customValue>
+        <fullName>Meet Comp If Needed</fullName>
+        <default>false</default>
+        <label>Meet Comp If Needed</label>
+    </customValue>
+    <customValue>
+        <fullName>New Product Introduction</fullName>
+        <default>false</default>
+        <label>New Product Introduction</label>
+    </customValue>
+    <customValue>
+        <fullName>Ops Review</fullName>
+        <default>false</default>
+        <label>Ops Review</label>
+    </customValue>
+    <customValue>
+        <fullName>Outbound Calls</fullName>
+        <default>false</default>
+        <label>Outbound Calls</label>
+    </customValue>
+    <customValue>
+        <fullName>Outbound Emails</fullName>
+        <default>false</default>
+        <label>Outbound Emails</label>
+    </customValue>
+    <customValue>
+        <fullName>Partner Fulfillment</fullName>
+        <default>false</default>
+        <label>Partner Fulfillment</label>
+    </customValue>
+    <customValue>
+        <fullName>POP Documented</fullName>
+        <default>false</default>
+        <label>POP Documented</label>
+    </customValue>
+    <customValue>
+        <fullName>Proactive Refresh Research</fullName>
+        <default>false</default>
+        <label>Proactive Refresh Research</label>
+    </customValue>
+    <customValue>
+        <fullName>Production Date Confirmed</fullName>
+        <default>false</default>
+        <label>Production Date Confirmed</label>
+    </customValue>
+    <customValue>
+        <fullName>Provide Roadmaps And Case Studies</fullName>
+        <default>false</default>
+        <label>Provide Roadmaps And Case Studies</label>
+    </customValue>
+    <customValue>
+        <fullName>Reconfirming  BANT</fullName>
+        <default>false</default>
+        <label>Reconfirming  BANT</label>
+    </customValue>
+    <customValue>
+        <fullName>Requires Executive Sponsor</fullName>
+        <default>false</default>
+        <label>Requires Executive Sponsor</label>
+    </customValue>
+    <customValue>
+        <fullName>Roadmap Review</fullName>
+        <default>false</default>
+        <label>Roadmap Review</label>
+    </customValue>
+    <customValue>
+        <fullName>Samples If Needed</fullName>
+        <default>false</default>
+        <label>Samples If Needed</label>
+    </customValue>
+    <customValue>
+        <fullName>SME Engaged</fullName>
+        <default>false</default>
+        <label>SME Engaged</label>
+    </customValue>
+    <customValue>
+        <fullName>Social Selling</fullName>
+        <default>false</default>
+        <label>Social Selling</label>
+    </customValue>
+    <customValue>
+        <fullName>Submit Opportunity</fullName>
+        <default>false</default>
+        <label>Submit Opportunity</label>
+    </customValue>
+    <customValue>
+        <fullName>Verify Opportunity Details</fullName>
+        <default>false</default>
+        <label>Verify Opportunity Details</label>
+    </customValue>
+    <customValue>
+        <fullName>Deployment schedule confirmed</fullName>
+        <default>false</default>
+        <label>Deployment schedule confirmed</label>
+    </customValue>
+    <customValue>
+        <fullName>Ecosystem technical alignment</fullName>
+        <default>false</default>
+        <label>Ecosystem technical alignment</label>
+    </customValue>
+    <customValue>
+        <fullName>Contracts</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Contracts</label>
+    </customValue>
+    <customValue>
+        <fullName>Meeting</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Meeting</label>
+    </customValue>
+    <customValue>
+        <fullName>Cold Call</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Cold Call</label>
+    </customValue>
+    <customValue>
+        <fullName>Demo</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Demo</label>
+    </customValue>
+    <description>These are the Activities that a sales rep can accomplish to meet a coaching goal.</description>
+    <masterLabel>Activities</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

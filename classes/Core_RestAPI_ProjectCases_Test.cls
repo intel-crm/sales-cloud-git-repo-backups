@@ -45,6 +45,7 @@
             Case caseObj=caseList[0];
             caseObj.ownerId=adminuser.id;
             caseObj.Core_IPS_Project_Case__c=objproject.Id;
+            system.debug('project for admin'+ caseObj.Core_IPS_Project_Case__c);
             insert caseObj;//inserting case record for admin user
             
             
@@ -58,12 +59,14 @@
             objCase.ownerId = commUser.id;
             objCase.Core_IPS_Project_Case__c = projectObj.Id;
             objCase.AccountId = allAccounts[0].id;
+            system.debug('project for commUser'+ objCase.Core_IPS_Project_Case__c);
             insert objCase;//inserting case record for community user
             
         }  
         System.runAs(commUser){
             
         }
+        System.debug(' JSON Core_IPS_Project_ID__c '+[Select Name,Core_IPS_Project_ID__c FROM Core_IPS_Project__c]);
         Test.stopTest();
     }
     // Asserts for the responses of Cases list

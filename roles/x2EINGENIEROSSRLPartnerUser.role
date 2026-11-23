@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>Grupo 2E SAC Partner User</description>
+    <description>2E INGENIEROS S.R.L. Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>Grupo 2E SAC Partner User</name>
+    <name>2E INGENIEROS S.R.L. Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>x2EINGENIEROSSRLPartnerManager</parentRole>
 </Role>

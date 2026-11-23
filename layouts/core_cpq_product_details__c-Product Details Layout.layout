@@ -17,6 +17,10 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
+                <field>core_cpq_vertical_market_nm__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
                 <field>core_cpq_segment_nm__c</field>
             </layoutItems>
             <layoutItems>

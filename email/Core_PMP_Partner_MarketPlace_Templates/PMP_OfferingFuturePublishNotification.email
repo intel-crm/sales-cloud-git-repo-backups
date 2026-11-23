@@ -1,0 +1,7 @@
+<messaging:emailTemplate subject="Approved & Due to Publish: Your {!relatedTo.PMP_Partner_Offering_Nm__c} offering" recipientType="User" relatedToType="PMP_Partner_Offering__c">
+<messaging:htmlEmailBody >
+    
+        <c:PMP_OfferingFuturePublish offeringRecordId="{!relatedTo.Id}"/>
+    
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>

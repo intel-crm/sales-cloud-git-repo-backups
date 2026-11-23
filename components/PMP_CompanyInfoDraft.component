@@ -1,7 +1,7 @@
 <apex:component access="global" controller="PMP_EmailTemplateController">
     <html>
         <style>
-            /* -Regular */
+            /* Regular */
             @font-face{
             font-family: 'Intel Clear','Intel Clear Pro';
             src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Regular-webfont.eot')}");  /* IE9*/
@@ -34,7 +34,7 @@
             }
             
             table {
-            font-family: sans-serif; /*arial, sans-serif;*/
+            font-family: Intel Clear; /*arial, sans-serif;*/
             border-collapse: collapse;
             border-left: 1px solid #dddddd;
             border-right: 1px solid #dddddd;
@@ -50,9 +50,9 @@
             color:#0071c5;
             }
             
-            /*h1{
-            font-family: Intel Clear !important;  
-            } */
+            h1{
+            font-family: Intel Clear Pro !important;  
+            }
         </style>
         
         <apex:attribute name="partnerRecordId" type="Id" description="Partner Record Id" assignTo="{!partnerId}"/>
@@ -60,7 +60,7 @@
         <apex:attribute name="partnerType" type="String" description="type of the partner in company"/>
         <body>
             <!-- Header Banner -->
-            <c:PMP_Global_Header message="Welcome: Get started with Intel® Partner Showcase - complete your {!partnerType}"/>
+            <c:PMP_Global_Header message="Welcome: Get Started with Intel® Solutions Marketplace - Complete your {!partnerType}."/>
             <!-- Header Banner -->
             
             <!-- Email content -->
@@ -69,47 +69,29 @@
                 <tr>
                     <td style="padding-left:50px;">
                         <br/>Hello<br/><br/>
-                        Make sure your company is visible in the new Intel® Partner Showcase! Since your {!partnerType} is still in draft mode, it will need to be completed and submitted to be seen by our global audience.
+                		Make sure your company is visible on the new Intel® Solutions Marketplace! Since your {!partnerType} is still in draft mode, it will need to be completed and submitted to be seen by our global audience.
                         
                        <br/><br/>
-                        The Intel® Partner Showcase is a new online platform to drive collaboration in today’s exciting data-centric landscape. As a partner, you can <!--explore offerings and --> <!--IPA2.0 TW-->network with other Intel partners. End customers and partners will be able to quickly locate and connect with you, creating leads.
-                        <br/>
-                       </td>
+    					The Intel® Solutions Marketplace is a new online platform to drive collaboration in today’s exciting data-centric landscape. As a partner, you can explore offerings and network with other Intel partners. End customers and partners will be able to quickly locate and connect with you, creating leads.
+                        
+                       <br/><br/>
+                        Thanks for being part of our solutions community,<br/><br/>
+                        The Intel® Solutions Marketplace Team <br/> <br/>
+                        <b>{!partnerType} Name: {!partnerData.Name}</b><br/>
+                        
+                        
+                    </td>
                 </tr>
-                        
-                        
-                       <!-- CTA -->
+                <!-- Email Body -->
+                <!-- CTA -->
                 <tr>
                     <td style="padding-left:50px;">
-                        Please use the link and follow the instructions below to complete and submit your {!partnerType} for Intel review and to get it published.<br/><br/>
-                        <b>INSTRUCTIONS</b><br/>
-                        <ol>
-                         <li>Go to the Showcase&nbsp;<apex:outputLink value="https://www.intel.com/content/www/us/en/partner/showcase/overview.html" styleClass="intelBlue">Home Page</apex:outputLink>.</li>
-                         <li>Click on the User Icon to login.</li>
-                         <li>Enter email and complete MFA to successfully login.</li>
-                         <li>Click on Manage Storefront button.</li>
-                         <li>Click the pencil icon.</li>
-                         <li>Fill all the required information and check all boxes that apply to your storefront.</li>
-                         <li>Click Next at the bottom right of each dialog box to proceed to the next tab.</li>
-                         <li>Submit your storefront to Intel for review.</li>
-                        </ol>
-                        Thanks for your prompt attention,<br/><br/>
-                        The Intel® Partner Showcase Team <br/> <br/>
+                        Please use the link below to complete and submit your {!partnerType} for Intel review and to get it published.<br/>
+                        <p><apex:outputLink value="{!$Label.PMP_PartnerURL}{!partnerData.PMP_Published_Copy_Id__c}" styleClass="intelBlue">Complete your {!partnerType}</apex:outputLink></p><br/>
+                        
                     </td>
                 </tr>
-                <!-- CTA --> 
-                   <!-- <tr>
-                    <td style="padding-left:50px;">    
-                       
-                        Thanks for your prompt attention,<br/><br/>
-                        The Intel® Partner Showcase Team <br/><br/>
-                       <!-- <b>{!partnerType} Name: {!partnerData.Name}</b><br/> 
-                        
-                        
-                    </td>
-                </tr>-->
-                <!-- Email Body -->
-                
+                <!-- CTA -->
                 <!-- Progress Indication 
 <tr>
 <td style="height:50; text-align:center;">
@@ -123,7 +105,7 @@
                 <!-- Questions/Contact -->
                 <tr>
                     <td style="padding-left:50px;">  
-                        Questions? Reach out to Showcase Admin Team at:<br/>
+                        Questions? Reach out to Marketplace Admin Team at <br/>
                         <apex:outputLink value="mailto:{!$Label.PMP_MailTo}" styleClass="intelBlue">
                             {!$Label.PMP_MailTo}
                         </apex:outputLink><br/><br/>

@@ -1,5 +1,5 @@
 /* Popcornapps 6/13/2018 Fixed Outlook client issue   */
-public without sharing class Core_IPS_SSLCCaseCreateHandler{
+public class Core_IPS_SSLCCaseCreateHandler{
  
     public static String createCase(String emailPlainText ){
         String message=null;
@@ -8,7 +8,9 @@ public without sharing class Core_IPS_SSLCCaseCreateHandler{
         Case cs=new Case();
         // Email json parsing
         try{
-           mapCase = (Map<String, Object>)JSON.deserializeUntyped(emailPlainText);           
+           mapCase = (Map<String, Object>)JSON.deserializeUntyped(emailPlainText);
+           system.debug('mapCase ::'+mapCase );
+           
         }catch(Exception ex){
             message='JSON Sent is not correct :: '+emailPlainText+'Exception:: '+ex.getMessage();
             jsonFormat=false;
@@ -16,11 +18,11 @@ public without sharing class Core_IPS_SSLCCaseCreateHandler{
            // return null;
         }
         // Case Subject
-       if (Schema.sObjectType.Case.fields.subject.isCreateable()) { /**--US1038991--08/07/2021--HARITHA--FLS Check for security vulnerability--**/        
-            cs.subject=(String)mapCase.get('subject');
-       }
+        cs.subject=(String)mapCase.get('subject');
         Object caseDesc=mapCase.get('Description');
+        System.debug('caseDesc :: '+caseDesc);        
         String jsonDescModified = JSON.serialize(caseDesc);
+        system.debug('jsonDescModified ::'+jsonDescModified );
         jsonDescModified  = jsonDescModified.replaceall('\\",','<br/>');
         jsonDescModified  = jsonDescModified.replaceall('&lt;br/&gt;','<br/>');
         jsonDescModified  = jsonDescModified.replaceall('&lt;br /&gt;','<br/>');
@@ -29,6 +31,7 @@ public without sharing class Core_IPS_SSLCCaseCreateHandler{
         jsonDescModified = jsonDescModified.replaceall('\\}','');
         jsonDescModified = jsonDescModified.replaceall('\\{','');
         // Case Description
+        system.debug('jsonDescModified  ::'+jsonDescModified  );
         cs.Core_Issue_Description__c=jsonDescModified;
         if(cs.Core_Issue_Description__c != null)
         {
@@ -37,6 +40,7 @@ public without sharing class Core_IPS_SSLCCaseCreateHandler{
             cs.Description = jsonDescModified.replaceall('<br/>','\n');  
         }   
         Map<String, Object> mapCaseDescription=(Map<String, Object>)JSON.deserializeUntyped(JSON.serialize(caseDesc));
+        system.debug('mapCaseDescription ::'+mapCaseDescription);
         // Case Supplied Mail
         cs.SuppliedEmail=(String)mapCaseDescription.get('Contact Email');
         //Default Data Setting Up
@@ -64,11 +68,13 @@ public without sharing class Core_IPS_SSLCCaseCreateHandler{
         // Case Record Type
         String recordTypeNoContactCase = Schema.getGlobalDescribe().get('Case').getDescribe().getRecordTypeInfosByName().get('IPS No Assigned Contact Case').getRecordTypeId();
         cs.recordtypeID =  recordTypeNoContactCase;
+        system.debug('tested');
         if(jsonFormat){    
             try{        
                 insert cs;
             }catch(DmlException e){
                 message='Case Insert Problem :: '+JSON.serialize(cs)+'Exception:: '+e.getMessage();
+                system.debug('message:: '+message);
                 return message;
              // return null;
             }   
@@ -88,6 +94,7 @@ public without sharing class Core_IPS_SSLCCaseCreateHandler{
             envdet.Core_Answer__c= EnvDetailsData.Core_IPS_Default_Data__c;
             envdet.Core_Agent_Only__c=true;
             insert envdet;*/
+            system.debug('csid'+cs.id);
             // Send Mail
             sendMailAfterCaseCreate(cs.id);
         }
@@ -96,10 +103,7 @@ public without sharing class Core_IPS_SSLCCaseCreateHandler{
     }
     
     Public static void sendMailAfterCaseCreate(Id caseId){
-        Case caseObj = new Case();
-        if(Case.SObjectType.getDescribe().isAccessible()){  //FLS check already added - Aditya
-            caseObj=[select id,subject,casenumber,Core_Issue_Description__c ,SuppliedEmail from case where id=:caseId];
-        }
+            Case caseObj=[select id,subject,casenumber,Core_Issue_Description__c ,SuppliedEmail from case where id=:caseId];
             // Step 0: Create a master list to hold the emails we'll send
             List<Messaging.SingleEmailMessage> mails = new List<Messaging.SingleEmailMessage>();
             

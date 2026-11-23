@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>LabelDescription__c</fullName>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>LabelDescription</label>
+        <length>1500</length>
+        <type>LongTextArea</type>
+        <visibleLines>50</visibleLines>
+    </fields>
+    <label>IQRBulkUploadDescription</label>
+    <pluralLabel>IQRBulkUploadDescriptions</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

@@ -27,7 +27,7 @@
             <connector>
                 <targetReference>myRule_1_A1</targetReference>
             </connector>
-            <label>When Restriction Level Changes</label>
+            <label>When Product status changes</label>
         </rules>
     </decisions>
     <description>This flow ensures all change alerts for specification value</description>
@@ -36,17 +36,17 @@
             <name>originalFormula</name>
             <value>
                 <stringValue>AND(
-ISPICKVAL(PRIORVALUE([PMP_Specification_Value__c].PMP_Product_Restriction_Lvl__c) ,&quot;1&quot;) , ISPICKVAL(([PMP_Specification_Value__c].PMP_Product_Restriction_Lvl__c) ,&quot;0&quot;)
+ISPICKVAL(PRIORVALUE([PMP_Specification_Value__c].PMP_Product_Status__c ) ,&quot;Roadmap&quot;) , ISPICKVAL(([PMP_Specification_Value__c].PMP_Product_Status__c) ,&quot;Launched&quot;)
 )</stringValue>
             </value>
         </processMetadataValues>
         <name>formula_myRule_1</name>
         <dataType>Boolean</dataType>
         <expression>AND(
-ISPICKVAL(PRIORVALUE({!myVariable_current.PMP_Product_Restriction_Lvl__c}) ,&quot;1&quot;) , ISPICKVAL(({!myVariable_current.PMP_Product_Restriction_Lvl__c}) ,&quot;0&quot;)
+ISPICKVAL(PRIORVALUE({!myVariable_current.PMP_Product_Status__c} ) ,&quot;Roadmap&quot;) , ISPICKVAL(({!myVariable_current.PMP_Product_Status__c}) ,&quot;Launched&quot;)
 )</expression>
     </formulas>
-    <interviewLabel>PMP_Specification_Value_Change_Alerts-4_InterviewLabel</interviewLabel>
+    <interviewLabel>PMP_Specification_Value_Change_Alerts-2_InterviewLabel</interviewLabel>
     <label>PMP_Specification_Value_Change_Alerts</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -155,7 +155,7 @@ ISPICKVAL(PRIORVALUE({!myVariable_current.PMP_Product_Restriction_Lvl__c}) ,&quo
         <object>PMP_Partner_Offering_Specification__c</object>
     </recordUpdates>
     <startElementReference>myDecision</startElementReference>
-    <status>Obsolete</status>
+    <status>Active</status>
     <variables>
         <name>myVariable_current</name>
         <dataType>SObject</dataType>

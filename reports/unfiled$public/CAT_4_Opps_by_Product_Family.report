@@ -166,23 +166,27 @@
     <columns>
         <field>BucketField_96858621</field>
     </columns>
-    <columns>
-        <field>Opportunity.Core_Technical_Owner__c</field>
-    </columns>
     <filter>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_Product_Type__c</column>
+            <column>Opportunity.Core_External_ID__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>FPGA,Enpirion</value>
+            <value>PSG_TO</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Opportunity.Core_Technical_Owner__c</column>
+            <column>PRODUCT_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Ralph Cisneros</value>
+            <operator>contains</operator>
+            <value>FPGA,Power Solution,BD-,ACB-,PAC,Stratix,Arria</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Product2.Core_Product_Series__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>Intel® FPGA IP,Configuration</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -218,6 +222,7 @@
         <value>1</value>
     </params>
     <reportType>OpportunityProduct</reportType>
+    <roleHierarchyFilter>SMG</roleHierarchyFilter>
     <scope>organization</scope>
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
@@ -226,6 +231,6 @@
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <interval>INTERVAL_CUSTOM</interval>
     </timeFrameFilter>
 </Report>

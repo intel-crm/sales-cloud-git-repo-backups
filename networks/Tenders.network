@@ -2,7 +2,7 @@
 <Network xmlns="http://soap.sforce.com/2006/04/metadata">
     <allowInternalUserLogin>false</allowInternalUserLogin>
     <allowMembersToFlag>false</allowMembersToFlag>
-    <changePasswordTemplate>Testt/CommunityChangePasswordEmailTemplate</changePasswordTemplate>
+    <changePasswordTemplate>unfiled$public/CommunityChangePasswordEmailTemplate</changePasswordTemplate>
     <communityRoles/>
     <disablePvtPagesForPwdResetInLWR>false</disablePvtPagesForPwdResetInLWR>
     <disableReputationRecordConversations>false</disableReputationRecordConversations>
@@ -32,22 +32,23 @@
     <enableTopicAssignmentRules>true</enableTopicAssignmentRules>
     <enableTopicSuggestions>false</enableTopicSuggestions>
     <enableUpDownVote>false</enableUpDownVote>
-    <forgotPasswordTemplate>Testt/CommunityForgotPasswordEmailTemplate</forgotPasswordTemplate>
+    <forgotPasswordTemplate>unfiled$public/CommunityForgotPasswordEmailTemplate</forgotPasswordTemplate>
     <gatherCustomerSentimentData>false</gatherCustomerSentimentData>
-    <headlessForgotPasswordTemplate>Testt/CommunityHeadlessForgotPasswordTemplate</headlessForgotPasswordTemplate>
-    <headlessRegistrationTemplate>Testt/CommunityHeadlessRegistrationTemplate</headlessRegistrationTemplate>
+    <headlessForgotPasswordTemplate>unfiled$public/CommunityHeadlessForgotPasswordTemplate</headlessForgotPasswordTemplate>
+    <headlessRegistrationTemplate>unfiled$public/CommunityHeadlessRegistrationTemplate</headlessRegistrationTemplate>
     <networkMemberGroups>
+        <permissionSet>Tender_Partner_Read_Only</permissionSet>
         <permissionSet>Pricing_Tender_Partner_Administrator</permissionSet>
-        <permissionSet>Tender_Partner_Drafter_Access</permissionSet>
         <permissionSet>Tender_Partner</permissionSet>
+        <permissionSet>Tender_Partner_Drafter_Access</permissionSet>
+        <permissionSet>Tender_Partner_Limited_Access</permissionSet>
         <permissionSet>Tender_Partner_Drafter_Limited_Access</permissionSet>
+        <permissionSet>PSG_External_Disty</permissionSet>
         <permissionSet>Pricing_IQR_HPE_B2B</permissionSet>
         <permissionSet>Pricing_IQR_Cisco_B2B</permissionSet>
-        <permissionSet>Pricing_IQR_Lenovo_B2B</permissionSet>
-        <permissionSet>Pricing_IQR_DELL_B2B</permissionSet>
-        <permissionSet>Pricing_IQR_HPI_B2B</permissionSet>
-        <profile>admin</profile>
         <profile>it admin</profile>
+        <profile>admin</profile>
+        <profile>data ops</profile>
     </networkMemberGroups>
     <networkPageOverrides>
         <changePasswordPageOverrideSetting>Standard</changePasswordPageOverrideSetting>
@@ -68,5 +69,5 @@
         <standardTab>Chatter</standardTab>
     </tabs>
     <urlPathPrefix>tenders</urlPathPrefix>
-    <welcomeTemplate>Testt/CommunityWelcomeEmailTemplate</welcomeTemplate>
+    <welcomeTemplate>unfiled$public/CommunityWelcomeEmailTemplate</welcomeTemplate>
 </Network>

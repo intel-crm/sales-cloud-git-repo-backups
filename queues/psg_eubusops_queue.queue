@@ -7,8 +7,14 @@
         <publicGroups>
             <publicGroup>ags_busops_eu</publicGroup>
         </publicGroups>
+        <users>
+            <user>11996466@intel.com.crm</user>
+        </users>
     </queueMembers>
     <queueSobject>
         <sobjectType>SBQQ__Quote__c</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>core_cpq_dpa_aln__c</sobjectType>
     </queueSobject>
 </Queue>

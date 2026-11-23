@@ -21,12 +21,6 @@
     <columns>
         <field>TYPE</field>
     </columns>
-    <columns>
-        <field>User.Core_Manager__c</field>
-    </columns>
-    <columns>
-        <field>CREATED_DATE</field>
-    </columns>
     <filter>
         <criteriaItems>
             <column>USERS.NAME</column>

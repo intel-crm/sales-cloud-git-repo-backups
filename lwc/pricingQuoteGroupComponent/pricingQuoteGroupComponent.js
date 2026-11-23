@@ -103,6 +103,7 @@ export default class PricingQuoteGroupComponent extends LightningElement {
                 this.iterationEnding = this.recordsPerPage;
                 for (let i = this.iterationStarting; i < this.iterationEnding; i++) {
                     if (result[i] !== undefined) {
+                        console.log('list22' + JSON.stringify(result[i]));
                         this.quoteGroupList.push(result[i]);
                     }
                 }

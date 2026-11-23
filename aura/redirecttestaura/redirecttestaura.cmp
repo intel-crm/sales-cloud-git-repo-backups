@@ -1,0 +1,12 @@
+<aura:component implements="flexipage:availableForAllPageTypes,lightning:isUrlAddressable" access="global" >
+	    <aura:attribute type="String" name="RecordId"/>
+    <aura:attribute type="Boolean" name="truthy" default="false"/>
+    <aura:handler name="init" value="{!this}" action="{!c.init}"/>    
+    <h2> In to navigation comp</h2>
+    <aura:if isTrue="{!v.truthy}">
+   
+ <div>
+        <c:core_OppurtunitySupportButton/>
+ </div>
+</aura:if> 
+</aura:component>

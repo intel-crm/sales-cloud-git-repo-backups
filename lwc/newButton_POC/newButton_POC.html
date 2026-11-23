@@ -1,0 +1,145 @@
+<template>
+
+    <template if:true={displayRecordTypes}>
+        <!-- Modal/Popup Box LWC starts here -->
+        <template if:true={showModalPopUp}>
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container modal_class">
+                    <template if:false={dataLoaded}>
+                        <div class="spinner_class">
+                            <lightning-spinner variant="brand" alternative-text="Loading..."></lightning-spinner>
+                        </div>
+                    </template>
+                    <template if:true={dataLoaded}>
+                        <!-- Modal/Popup Box LWC header here -->
+                        <header class="slds-modal__header">
+                            <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">New Account</h2>
+                        </header>
+
+                        <!-- Modal/Popup Box LWC body starts here -->
+                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                            <template if:true={showError}>
+                                <div class="slds-media">
+                                    <div class="slds-media__figure error_icon">
+                                        <lightning-icon icon-name="utility:error" alternative-text="Error" title="error"
+                                            size="x-small"></lightning-icon>
+                                    </div>
+                                    <div class="slds-media__body slds-form-element__label slds-text-color_destructive">
+                                        <label>{ERROR_MSG}</label>
+                                    </div>
+                                </div>
+                            </template>
+                            <template if:false={showError}>
+                                <fieldset class="slds-form-element">
+                                    <legend
+                                        class="slds-form-element__label slds-p-right_large slds-float_left float_left_label">
+                                        Select a record type
+                                    </legend>
+                                    <div class="slds-form-element__control slds-float_right float_right_content">
+                                        <template for:each={options} for:item="option">
+                                            <div class="slds-media" key={option.recordTypeId}>
+                                                <div class="slds-media__figure">
+                                                    <span class="slds-radio">
+                                                        <input type="radio" id={option.recordTypeId}
+                                                            value={option.recordTypeId} onclick={handleRadioChange}
+                                                            name="default" checked={option.checked} />
+                                                        <label class="slds-radio__label" for={option.recordTypeId}>
+                                                            <span class="slds-radio_faux"></span>
+                                                        </label>
+                                                    </span>
+                                                </div>
+                                                <div class="slds-media__body slds-form-element__label">
+                                                    <h3 class="slds-tile__title" title={option.recordTypeName}>
+                                                        <label for={option.recordTypeId}>{option.recordTypeName}</label>
+                                                    </h3>
+                                                    <div
+                                                        class="slds-tile__detail slds-p-bottom_small slds-p-left_large">
+                                                        <label for={option.recordTypeId}
+                                                            title={option.description}>{option.description}</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </template>
+                                    </div>
+                                </fieldset>
+                            </template>
+                        </div>
+                        <!-- Modal/Popup Box LWC footer starts here -->
+                        <footer class="slds-modal__footer">
+                            <button class="slds-button slds-button_neutral" onclick={handleCancel}
+                                title="Cancel">Cancel</button>
+                            <template if:false={showError}>
+                                <button class="slds-button slds-button_brand" onclick={submitDetails}
+                                    title="Next">Next</button>
+                            </template>
+                        </footer>
+                    </template>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </template>
+        <template if:false={showModalPopUp}>
+            <article class="slds-card">
+                <div class="slds-modal__header">
+                    <header class="slds-align_absolute-center">
+                        <h2 class="slds-text-heading_medium slds-hyphenate">New Account</h2>
+                    </header>
+                </div>
+                <div class="slds-card__body slds-card__body_inner slds-modal__header">
+                    <template if:true={showError}>
+                        <div class="slds-media">
+                            <div class="slds-media__figure error_icon">
+                                <lightning-icon icon-name="utility:error" alternative-text="Error" title="error"
+                                    size="x-small"></lightning-icon>
+                            </div>
+                            <div class="slds-media__body slds-form-element__label slds-text-color_destructive">
+                                <label>{ERROR_MSG}</label>
+                            </div>
+                        </div>
+                    </template>
+                    <template if:false={showError}>
+                        <fieldset class="slds-form-element">
+                            <legend
+                                class="slds-form-element__label slds-p-right_large slds-float_left float_left_label">
+                                Select a record type
+                            </legend>
+                            <div class="slds-form-element__control slds-float_right float_right_content">
+                                <template for:each={options} for:item="option">
+                                    <div class="slds-media" key={option.recordTypeId}>
+                                        <div class="slds-media__figure">
+                                            <span class="slds-radio">
+                                                <input type="radio" id={option.recordTypeId} value={option.recordTypeId}
+                                                    onclick={handleRadioChange} name="default"
+                                                    checked={option.checked} />
+                                                <label class="slds-radio__label" for={option.recordTypeId}>
+                                                    <span class="slds-radio_faux"></span>
+                                                </label>
+                                            </span>
+                                        </div>
+                                        <div class="slds-media__body slds-form-element__label">
+                                            <h3 class="slds-tile__title" title={option.recordTypeName}>
+                                                <label for={option.recordTypeId}>{option.recordTypeName}</label>
+                                            </h3>
+                                            <div class="slds-tile__detail slds-p-bottom_small slds-p-left_large">
+                                                <label for={option.recordTypeId}
+                                                    title={option.description}>{option.description}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </template>
+                            </div>
+                        </fieldset>
+                    </template>
+                </div>
+                <footer class="slds-card__footer">
+                    <button class="slds-button slds-button_neutral" onclick={handleCancel}
+                        title="Cancel">Cancel</button>
+                    <template if:false={showError}>
+                        <button class="slds-button slds-button_brand" onclick={submitDetails} title="Next">Next</button>
+                    </template>
+                </footer>
+            </article>
+        </template>
+    </template>
+</template>

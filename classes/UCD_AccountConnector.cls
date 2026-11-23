@@ -17,15 +17,6 @@ Modification Log :
 * Bhavesh Jain               06/05/2020             Calling CIM system, reading the response from CIM system
 *********************************************************************************************************************/
 public with sharing class UCD_AccountConnector {
-    public static final string LOG_ENTRY_ORIGIN = 'UCD_AccountConnector';
-    public static final String LOG_ENTRY_PROJECT = 'ACM';
-    public static final String LOG_ENTRY_SCOPE = 'GetCIMResult';
-    public static final String LOG_ENTRY_INFO = 'info';
-    public static final String LOG_ENTRY_OBJECT = 'Account';
-    public static final String LOG_ENTRY_ERROR = 'error';
-    public static string LOG_ENTRY_SEVERITY;
-    public static string LOG_ENTRY_Message;
-    public static Map<String,Core_ACM_Control_Execution__c> mapFunctionalityAcmAppSwitch = Core_ACM_Control_Execution__c.getAll();
     public UCD_AccountConnector(){
         
     }
@@ -39,6 +30,7 @@ public with sharing class UCD_AccountConnector {
     /*Code commented by Bhavesh on Nov 9 2020, as it is not been used for SB4C in UCD track
 * @AuraEnabled(cacheable=true)
 public static List<UCD_AccountModel> getDuplicateAccountDetails(UCD_AccountInfoWrapper accountDetails){
+system.debug('Hello 1'+accountDetails.accStateProvince);
 String CountryMatch = accountDetails.accCountry;
 String StateMatch = accountDetails.accStateProvince;
 List<UCD_CIMModel> cimResult = UCD_CIMConnector.getCimResults(accountDetails);
@@ -55,6 +47,8 @@ List<String> cimIDs = new List<String>();
 set<decimal> score = new set<decimal>();
 if(cimResult!=null){
 for(UCD_CIMModel c:cimResult ){
+system.debug('CIM '+c);
+//system.debug('CIM '+CountryMatch);
 // if(c.physicalCountry == CountryMatch)
 //{
 cimIDs.add(c.cimID);
@@ -65,12 +59,14 @@ cimIdandScore.put(c.cimID,c.searchScore);
 }
 
 List<UCD_AccountModel> accResults = getAccountfromOrg(cimIdandScore);
+//system.debug('M55 '+accResults[2]);
 accResults.sort();
 for(UCD_AccountModel ua : accResults){
 if(ua.country == countryMatch && ua.state == StateMatch || ua.country == countryMatch && String.isBlank(StateMatch)){
 //mergedResults = accResults;
 mergedResults.add(ua);
 }
+system.debug('M62 '+ua);
 }
 List<String> cimIDinSalesforce = new List<String>();
 List<String> cimIDnotinSalesforce = new List<String>();
@@ -83,6 +79,7 @@ cimIDinSalesforce.add(m.cimID);
 for(String s:cimIDs ){
 if(!cimIDinSalesforce.contains(s)){
 cimIDnotinSalesforce.add(s);
+system.debug('CIM IS'+s);
 }else{
 }
 }
@@ -105,11 +102,13 @@ temp.searchScore = c.searchScore;
 temp.postalCode=c.physicalPostalCode;
 if((temp.Country !=null || String.isnotEmpty(temp.Country)) && (temp.State != null || String.isnotEmpty(temp.State))  && (temp.City != null || String.isnotEmpty(temp.city))){
 mergedResults.add(temp);
+system.debug('M89 '+mergedresults.size());
 }
 }
 }
 }
 }
+system.debug('merge '+mergedResults);
 return mergedResults;
 } */
     
@@ -123,6 +122,7 @@ List<UCD_AccountModel> noAccountsinSalesforce = new List<UCD_AccountModel>();
 
 string stateName;
 String countryName;
+system.debug(cimandScore.keyset());
 for(Account a : [SELECT Id,Name, Owner.Name,Core_Account_Type__c, Core_Account_Tier__c,RecordtypeID, 
 Industry,Core_Intel_Partner_Alliance_PartnerGroup__c,core_deactivated__c,
 Core_IPA_Partner_Role__c,Core_CIM_ID__c,BillingStreet,BillingCity,BillingCountry,BillingState,
@@ -145,7 +145,9 @@ ac.Country = UCD_AccountConnector.getCountryName((String)ac.primaryAddress.getCo
 ac.State = UCD_AccountConnector.getStateName((String)ac.primaryAddress.getState());
 //ac.accRecordtypeId = a.recordtypeID;
 
+system.debug(ac.primaryAddress);
 if(ac.primaryAddress != null){
+system.debug(ac.primaryAddress);
 stateName = UCD_AccountConnector.getStateName((String)ac.primaryAddress.getState());
 countryName = UCD_AccountConnector.getCountryName((String)ac.primaryAddress.getCountry());
 ac.fullAddress =    ((String)ac.primaryAddress.getStreet()!= null ? (String)ac.primaryAddress.getStreet() : ' ') + ' ' + 
@@ -172,7 +174,7 @@ return accResults;
 * -------------------------------------------------------------------------------------------------------------------*/
     @AuraEnabled (cacheable=true)
     public static String getCountryName(String countrycode){
-        String countryName;     
+        String countryName;
         Map<String,String> maplabelValCountries=new Map<String,String>();
         Schema.sObjectType objType = Account.getSObjectType();
         Schema.DescribeSObjectResult objDescribe = objType.getDescribe();
@@ -183,7 +185,6 @@ return accResults;
         }
         countryName = maplabelValCountries.get(countrycode);
         return countryName;
-
     }
     
     /* ------------------------------------------------------------------------------------------------------------------   
@@ -336,11 +337,15 @@ newAccount.BillingCountryCode = UCD_AccountConnector.getCountryCode(cimRecord.ph
 //newAccount.BillingCountry = [SELECT Name FROM Core_Country_Code_Mapping__c where ISO_Code__c = :newAccount.BillingCountryCode OR Country_Code__c = :newAccount.BillingCountryCode Limit 1].Name;
 newAccount.BillingCountry =  newAccount.BillingCountryCode; 
 //newAccount.ownerId ='005o0000001zEZiAAM'; 
+system.debug('newAccount.BillingCountryCode:::'+newAccount.BillingCountryCode);
+system.debug('newAccount.BillingCountry Name is :::'+newAccount.BillingCountry);
 //newAccount.BillingStateCode = cimRecord.CountrySubdivisionCd;
 // newAccount.BillingCountryCode = 'IND';
 newAccount.BillingStateCode =  UCD_AccountConnector.getStateAndCountryName(cimRecord.physicalState);
 // newAccount.BillingState = cimRecord.CountrySubdivisionNm;
+system.debug(' newAccount.BillingStateCode:::'+ newAccount.BillingStateCode);
 newAccount.BillingState= newAccount.BillingStateCode;
+system.debug('newAccount.BillingState:::'+ newAccount.BillingState);
 /*
 newAccount.AccountSource='';
 newAccount.AnnualRevenue='';
@@ -590,9 +595,11 @@ insert newAccount;
 accCreated.accId=newAccount.id;
 accCreated.accName=newAccount.Name;
 //updateAccountOwners(newAccount.id,cimRecord.cimID);
+system.debug('hello from another');
 return accCreated; 
 } catch(Exception e){
 PRM_ErrorUtilityClass.logError(e);
+System.debug('Exception : '+e);
 }
 return null;
 }
@@ -603,29 +610,22 @@ return null;
 billing address (US740756) */
     @AuraEnabled(cacheable=true)
     public static List<Account> findAccounts(String bStreet1, String bStreet2) {
-        if (mapFunctionalityAcmAppSwitch.containsKey('SwitchAcmApp') && mapFunctionalityAcmAppSwitch.get('SwitchAcmApp').IsActive__c) {
-            String street = bStreet1+' '+bStreet2;
-            return [
-                SELECT Id, Name
-                FROM Account
-                WHERE BillingStreet =: street
-                WITH SECURITY_ENFORCED LIMIT 1
-            ];
-        }
-        else{
-            return null;
-        }
+        String street = bStreet1+' '+bStreet2;
+        return [
+            SELECT Id, Name
+            FROM Account
+            WHERE BillingStreet =: street
+            WITH SECURITY_ENFORCED LIMIT 1
+        ];
     }
     static string a;
     
     @AuraEnabled(cacheable = true)
     public static void findAccountOwners(String cimId, string rId) {
-        if (mapFunctionalityAcmAppSwitch.containsKey('SwitchAcmApp') && mapFunctionalityAcmAppSwitch.get('SwitchAcmApp').IsActive__c) {
-            String cim = cimId;
-            String recId = rId;
-            a = recId;
-            updateAccountOwners(recId,cim);
-        }
+        String cim = cimId;
+        String recId = rId;
+        a = recId;
+        updateAccountOwners(recId,cim);
     }
     //Fixed too many query rows exception by adding count in soql and update Account owner accordingly. 
     @future
@@ -643,5 +643,5 @@ billing address (US740756) */
                 } 
         }
         
-    } 
+    }  
 }

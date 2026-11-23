@@ -15,12 +15,13 @@ First Name: {!Contact.FirstName}
 Last Name: {!Contact.LastName}
 Email Address: {!Contact.Email}
 ERPM Id: {!Contact.Core_eRPM_Person_Id__c}
+Login Id: {!Contact.Core_Login_Id__c}
 
 Account Details
 
 Sales Cloud Id: {!Account.Id}
 Name: {!Account.Name}
-Account Unified ID: {!Account.Core_Business_Party_Id__c}
+CIM Id: {!Account.Core_CIM_ID__c}
 Address:
 {!Account.BillingAddress}</textOnly>
     <type>html</type>

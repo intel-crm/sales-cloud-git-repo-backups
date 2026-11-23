@@ -18,6 +18,7 @@ public class Pricing_RestAPI_ResponseCodes {
     public Static String INVALID_URL_404 = '404';
     public Static String NO_ACCESS_9003 = '9003';
     public Static String NULL_VALUE_VALID_EXP_9002 = '9002';
+    //public Static String No_DATA_IN_THIS_DAYS_1098 = '1098';
     
     public Static Decimal VALID_ERROR_CODE_1001 = 1001;
     public Static Decimal VALID_ERROR_CODE_1002 = 1002;
@@ -118,7 +119,8 @@ public class Pricing_RestAPI_ResponseCodes {
     public Static Decimal VALID_ERROR_CODE_1097 = 1097;
     public Static Decimal VALID_ERROR_CODE_1098 = 1098;
     public Static Decimal VALID_ERROR_CODE_1099 = 1099;
+    public Static Decimal VALID_ERROR_CODE_1100 = 1100;
     public Static Decimal VALID_ERROR_CODE_1101 = 1101;
     public Static Decimal VALID_ERROR_CODE_1102 = 1102;
-    public Static Decimal VALID_ERROR_CODE_1103 = 1103;  
+    public Static Decimal VALID_ERROR_CODE_1103 = 1103; 
     }

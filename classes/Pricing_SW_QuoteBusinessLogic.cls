@@ -1,3 +1,10 @@
+/**
+ * @description       : 
+ * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+ * @group             : 
+ * @last modified on  : 05-19-2025
+ * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+**/
 public without sharing class Pricing_SW_QuoteBusinessLogic {
     /************************************************************************************************************
 *Method Name : updateRecordtypebyStatusandApprovalStatus
@@ -28,6 +35,12 @@ public without sharing class Pricing_SW_QuoteBusinessLogic {
                 validateQuote(quote, oldMap, opportunityMap, isInsert);
                 cloneQuotes(quote, opportunityIds);
                 validateOpportunityProductLost(quote, null, opportunityIds, true);
+                quote.SBQQ__WatermarkShown__c = true;
+                if(quote.Pricing_SW_Quote_Product_Type__c == Label.Pricing_SW_PLI_Quote_Product_Type){ 
+                    quote.HeaderFieldSetName__c = Label.Pricing_SW_PLI_Quote_Field_Set;
+                } else{
+                    quote.HeaderFieldSetName__c = Label.Pricing_SW_ITTA_Quote_Field_Set;
+                }
             }
         }
         if (isUpdate) {
@@ -49,6 +62,12 @@ public without sharing class Pricing_SW_QuoteBusinessLogic {
                     quote.OwnerId=quote.SBQQ__SalesRep__c;
                 }
                 
+                if(oldMap.get(quote.Id).SBQQ__Status__c != quote.SBQQ__Status__c && (quote.SBQQ__Status__c == Label.Pricing_SW_QuoteStatusInReview || (quote.SBQQ__Status__c == Label.Pricing_SW_QuoteStatusDraft && oldMap.get(quote.Id).SBQQ__Status__c == Label.Pricing_SW_QuoteStatusInReview))){
+                    quote.SBQQ__WatermarkShown__c = true;
+                }else if(oldMap.get(quote.Id).SBQQ__Status__c != quote.SBQQ__Status__c && (quote.SBQQ__Status__c == Label.Pricing_SW_QuoteStatusApproved ||quote.SBQQ__Status__c == Label.Pricing_SW_QuoteStatusRejected ||quote.SBQQ__Status__c == Label.Pricing_SW_QuoteStatusDenied ||quote.SBQQ__Status__c == Label.Pricing_SW_QuoteStatusAccepted)){//Approved,Rejected,Denied,Accepted
+                    quote.SBQQ__WatermarkShown__c = false;
+                }
+
                 if(quote.OwnerId!=null && oldMap.get(quote.Id).OwnerId != quote.OwnerId){
                     quote.Pricing_sw_Quote_Owner__c=quote.OwnerId;
                 }
@@ -124,6 +143,7 @@ public without sharing class Pricing_SW_QuoteBusinessLogic {
     
     public static void cloneQuotes(SBQQ__Quote__c quote, Set<Id> opportunityIds) {
         Integer expiryDays = Integer.valueOf(Label.Pricing_SW_AddExpiryDays);
+        Integer maxexpiryDays = Integer.valueOf(Label.Pricing_SW_MaxExpiryDays);
 
         Map<Id, Opportunity> opportunitiesNotSubmittedMap = fetchOpportunitiesNotSubmitted(opportunityIds);
         if (quote.isClone()) {
@@ -137,10 +157,14 @@ public without sharing class Pricing_SW_QuoteBusinessLogic {
             quote.SBQQ__TargetCustomerAmount__c= null;
             quote.Pricing_SW_Approved_Rejected_Date__c = null;
             quote.ApprovalStatus__c = null;
+            quote.Pricing_SW_CustomerAccPayableDeptPhEmail__c = null;
+            quote.Pricing_SW_Customer_Contact_Phone_Number__c = null;
+            quote.Pricing_SW_Customer_Purchase_Order_No__c = null;
+            quote.Pricing_SW_Exclude_Prepaid_Upfront_Total__c = 0;
         quote.SBQQ__StartDate__c = (quote.SBQQ__StartDate__c < System.today()) 
             ? System.today()
             : quote.SBQQ__StartDate__c;
-            quote.Pricing_SW_Expiry_Date__c = (quote.Pricing_SW_Expiry_Date__c < System.today().addDays(expiryDays)) 
+            quote.Pricing_SW_Expiry_Date__c = (quote.Pricing_SW_Expiry_Date__c < System.today().addDays(expiryDays)|| quote.Pricing_SW_Expiry_Date__c > System.today().addDays(maxexpiryDays) ) 
                 ? System.today().addDays(expiryDays) 
                 : quote.Pricing_SW_Expiry_Date__c;
 
@@ -297,7 +321,7 @@ public without sharing class Pricing_SW_QuoteBusinessLogic {
         if (opportunityMap.containsKey(quote.SBQQ__Opportunity2__c)) {
             Opportunity opp = opportunityMap.get(quote.SBQQ__Opportunity2__c);
             
-            if (opp.SBQQ__PrimaryQuote__r != null && opp.SBQQ__PrimaryQuote__r.SBQQ__Status__c == 'Submitted') {
+            if (opp.SBQQ__PrimaryQuote__r != null && opp.SBQQ__PrimaryQuote__r.SBQQ__Status__c == Label.Pricing_SW_OpportunityStatusSubmitted) {
                 return true;  
             }
         }
@@ -315,7 +339,7 @@ public without sharing class Pricing_SW_QuoteBusinessLogic {
     public static Map<Id, Boolean> getOpportunityLostStatusMap(Set<Id> opportunityIds) {
         Map<Id, Boolean> opportunityLostStatusMap = new Map<Id, Boolean>();
         
-        for (OpportunityLineItem oppLineItem : [SELECT OpportunityId FROM OpportunityLineItem WHERE OpportunityId IN :opportunityIds AND Core_Status__c = 'Lost']) {
+        for (OpportunityLineItem oppLineItem : [SELECT OpportunityId FROM OpportunityLineItem WHERE OpportunityId IN :opportunityIds AND Core_Status__c = :Label.Pricing_SW_OpportunityLineItemStatusLost]) {
             opportunityLostStatusMap.put(oppLineItem.OpportunityId, true);
         }
         

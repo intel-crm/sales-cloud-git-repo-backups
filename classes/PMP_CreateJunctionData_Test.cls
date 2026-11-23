@@ -72,7 +72,7 @@ public static testMethod void createJunctionDataTestMet(){
         specAvail.PMP_Specification_Type_Nm__c = 'Other';
         specAvail.PMP_Active_Ind__c = true;
         specAvail.PMP_Display_Type_Nm__c = 'Label';
-        specAvail.PMP_Partner_Product_Specification_Key__c = 'availabilityandpricinglevel1';
+        specAvail.PMP_Partner_Product_Specification_Key__c = 'AvailabilityandPricingLevel1_availabilityandpricinglevel1';
         //specTest.PMP_Partner_Product_Display_Sequence_Nbr__c = 520;
         specAvail.PMP_Specification_Chinese_Nm__c = '上市时间与定价';
         specAvail.PMP_Specification_Japanese_Nm__c = '可用性と価格';
@@ -176,7 +176,7 @@ public static testMethod void createJunctionDataTestMet(){
         specValueReals.PMP_Display_Type_Nm__c = 'Checkbox';
         specValueReals.PMP_Partner_Off_Roadmap_Ind__c = false;
         specValueReals.PMP_Product_Specification_Value_Cd__c = 'Intel® RealSense™ Technology';
-        specValueReals.PMP_Product_Specification_Value_Key__c = 'NPP_IntelTechnologies_intelrealsensetechnology';
+        specValueReals.PMP_Product_Specification_Value_Key__c = 'intelrealsensetechnology';
         specValueReals.PMP_Spec_Value_Type_Nm__c = 'Other';
         specValueReals.PMP_Specification_Value_Chinese_Cd__c = '实感';
         specValueReals.PMP_Specification_Value_Japanese_Cd__c = 'インテル® RealSense™';
@@ -198,17 +198,7 @@ public static testMethod void createJunctionDataTestMet(){
         specValueYes.PMP_Specification_Value_Japanese_Cd__c = 'ソケット搭載プロセッサー';
         specValueYes.PMP_Specification_Value_Nm__c = 'Processor Socketed';
         
-        insert specValueYes;
-    
-    //Create Category Specification Association record
-        PMP_Category_Specification_Association__c test_Proc_CSA = new PMP_Category_Specification_Association__c();
-        test_Proc_CSA.Name = 'System:NUC';
-        test_Proc_CSA.PMP_Active_Ind__c = true;
-        test_Proc_CSA.PMP_Category_Id__c = testCategoryCategories.id;
-        test_Proc_CSA.PMP_Specification_Id__c = specTest.id;
-        test_Proc_CSA.PMP_Category_Specification_External_Key__c = 'npp_02_type_sys|npp_nuc';
-        
-        insert test_Proc_CSA;
+        insert specValueYes; 
     
     //Create Specification Value Association records
     

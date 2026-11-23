@@ -1,0 +1,118 @@
+<apex:page standardController="Core_Opportunity_Features__c" extensions="Core_OppProdDFController_POC" showHeader="true" tabStyle="Opportunity" title="{!$Label.Core_OppDescriptiveFeaturesTitle}" standardStylesheets="{!$User.UITheme == 'Theme3'}"  lightningStylesheets="{!$User.UITheme != 'Theme3'}">
+    <apex:includeLightning />
+    <script>
+    function showHelpText(data, id){
+        $Lightning.use("c:Core_AppForHelpText", function() {
+            $Lightning.createComponent("lightning:helptext",
+                                       { content : data },
+                                       id,
+                                       function(cmp) {
+                                           // do some stuff
+                                       });
+        });
+    }
+    
+    </script>
+    
+    <apex:outputPanel rendered="{!$User.UITheme != 'Theme3'}">
+        <apex:slds />
+    </apex:outputPanel>
+    <apex:form >
+        <apex:sectionHeader title="Descriptive Features Edit" subtitle="{!sOppName}"/>
+        <apex:pageMessages id="PageMessageBlock"></apex:pageMessages>
+        <apex:pageBlock >
+            <br/>
+            <apex:pageBlockSection title="Header" columns="2" collapsible="false" >
+                <apex:repeat value="{!lstPlatformSelectListWrapper}" var="wrap">
+                    <apex:pageblocksectionItem helptext="{!$Label.Core_Intel_Platform_HelpText}" >
+                        {!wrap.sSelectedValue} 
+                        <div id="lightning" style="{!IF($User.UITheme != 'Theme3', 'display:inline', 'display:none')}">
+                            <script type="text/javascript">
+                            new function() { showHelpText("{!$Label.Core_Intel_Platform_HelpText}","lightning"); };
+                            </script>
+                        </div>
+                        <apex:selectList disabled="true" value="{!wrap.sSelectedValue}" size="1" id="values" >
+                            <apex:selectOptions value="{!wrap.lstPlatformOptions}" />
+                            <apex:actionSupport event="onchange" action="{!Core_GetFeature}" reRender="thePageBlock" status="counterStatus"/>
+                            <apex:actionstatus id="counterStatus">
+                                <apex:facet name="start">
+                                    <img src="/img/loading32.gif" style="position:relative;left:52%;top:3px;height:20px;width:20px;"/>
+                                </apex:facet>
+                            </apex:actionstatus>
+                            
+                        </apex:selectList>
+                    </apex:pageblocksectionItem>
+                </apex:repeat>
+                <!-- START - US103701 User Story:US103701, Added below pageblocksectionitem and selectoption to filter the features based on platform BU Dt:05/07/2018  --> 
+                <apex:pageblocksectionItem helptext="{!$Label.Core_Platform_BU_HelpText}">
+                    {!$Label.Core_Platform_BU}
+                    <div id="lightning1" style="{!IF($User.UITheme != 'Theme3', 'display:inline', 'display:none')}">
+                        <script type="text/javascript">
+                        new function() { showHelpText("{!$Label.Core_Platform_BU_HelpText}","lightning1"); };
+                        </script>
+                    </div>
+                    <apex:selectList value="{!selectedPlatformBU}" size="1" id="values" >
+                        <apex:selectOptions value="{!platformBULst}" />
+                        <apex:actionSupport event="onchange" action="{!Core_GetFeature}" reRender="theHeaderBlock,thePageBlock,PageMessageBlock" status="counterStatus"/>
+                        <apex:actionstatus id="counterStatus">
+                            <apex:facet name="start">
+                                
+                                <img src="/img/loading32.gif" style="position:relative;left:52%;top:3px;height:20px;width:20px;" />
+                                
+                                
+                                
+                            </apex:facet>
+                        </apex:actionstatus>
+                        
+                    </apex:selectList>
+                </apex:pageblocksectionItem>
+                <!-- END - US103701 -->
+            </apex:pageBlockSection> 
+            <br/>      
+            <apex:pageBlockSection title="Features" id="thePageBlock" collapsible="false" columns="2">
+                <apex:repeat value="{!lstSelectListWrapper}" var="wrap">
+                    <apex:pageblocksectionItem rendered="{!!wrap.bIsMultiSelect}">
+                        {!wrap.sSelectedValue} 
+                        <apex:selectList value="{!wrap.sSelectedValue}" size="1" id="valuess" multiselect="false">
+                            <apex:selectOptions value="{!wrap.lstPlatformOptions}" />
+                        </apex:selectList>
+                    </apex:pageblocksectionItem>
+                    <apex:pageblocksectionItem rendered="{!wrap.bIsMultiSelect}">
+                        {!wrap.sSelectedValue} 
+                        <c:Core_MultiselectController leftLabel="Available Values"
+                                                      leftOptions="{!wrap.lstPlatformOptions}"
+                                                      rightLabel="Selected Values"
+                                                      rightOptions="{!wrap.lstSelectPlatformOptions}"
+                                                      size="4"
+                                                      width="230px"
+                                                      isLightning="{!$User.UITheme != 'Theme3'}" />
+                    </apex:pageblocksectionItem>       	            
+                </apex:repeat>
+                
+                <apex:pageblocksectionItem rendered="{!selectedPlatformBU='CCG'}"> 
+                    Consumer Sales system <apex:inputText value="{!consumerSales1}" html-autocomplete="off" />
+                </apex:pageblocksectionItem>  
+                
+            </apex:pageBlockSection>
+            <br/>
+            <apex:pageBlockButtons location="Bottom">
+                <!-- START - US103701 User Story:US103701, added action status for existing command button to disable on first click  -->
+                <apex:actionStatus id="SaveButtonStatus">
+                    <apex:facet name="stop">
+                        <apex:outputPanel > 
+                            <apex:commandButton value="Save" action="{!saveUpdatedRecord}" reRender="PageMessageBlock"  status="SaveButtonStatus" styleClass="slds-button slds-button_neutral"/>
+                            <apex:commandButton value="Cancel" action="{!ReturntoOpp}" styleClass="slds-button slds-button_neutral"/>           
+                        </apex:outputPanel>
+                    </apex:facet>
+                    <apex:facet name="start">
+                        <apex:outputPanel >
+                            <apex:commandButton value="Saving..." disabled="true" />
+                            <apex:commandButton value="Saving..." disabled="true" />
+                        </apex:outputPanel>
+                    </apex:facet>
+                </apex:actionStatus>
+                <!-- END - US103701 -->
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form> 
+</apex:page>

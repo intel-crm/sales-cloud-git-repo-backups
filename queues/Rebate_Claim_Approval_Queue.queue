@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesIncludeBosses>true</doesIncludeBosses>
+    <doesSendEmailToMembers>true</doesSendEmailToMembers>
+    <name>Rebate Claim Approval Queue</name>
+    <queueMembers>
+        <users>
+            <user>areefa.banu123@intel.com</user>
+        </users>
+    </queueMembers>
+    <queueRoutingConfig>PCC_RebateClaim_Queue</queueRoutingConfig>
+    <queueSobject>
+        <sobjectType>PCC_Rebate_Claim__c</sobjectType>
+    </queueSobject>
+</Queue>

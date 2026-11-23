@@ -18,6 +18,7 @@
             </value>
         </inputParameters>
         <nameSegment>CST_FlowApexActionController</nameSegment>
+        <offset>0</offset>
         <outputParameters>
             <assignToReference>SecurityMappingRegionCollection</assignToReference>
             <name>listOfRARegions</name>
@@ -38,13 +39,14 @@
             </value>
         </inputParameters>
         <nameSegment>CST_UtilityClass</nameSegment>
+        <offset>0</offset>
     </actionCalls>
     <apiVersion>59.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <assignments>
         <name>Add_to_collection</name>
         <label>Add to collection</label>
-        <locationX>1524</locationX>
+        <locationX>1392</locationX>
         <locationY>2531</locationY>
         <assignmentItems>
             <assignToReference>FinalListtoUpdate</assignToReference>
@@ -60,7 +62,7 @@
     <assignments>
         <name>Add_to_create_collection</name>
         <label>Add to create collection</label>
-        <locationX>1480</locationX>
+        <locationX>1348</locationX>
         <locationY>4031</locationY>
         <assignmentItems>
             <assignToReference>NewAccountFeedbackRecord.CST_Feedback_Propagated_By__c</assignToReference>
@@ -83,7 +85,7 @@
     <assignments>
         <name>Assign_Feedback_Type</name>
         <label>Assign Feedback Type</label>
-        <locationX>1216</locationX>
+        <locationX>1084</locationX>
         <locationY>3239</locationY>
         <assignmentItems>
             <assignToReference>NewAccountFeedbackRecord.Feedback_Type__c</assignToReference>
@@ -99,7 +101,7 @@
     <assignments>
         <name>Assign_Feedback_Type_2</name>
         <label>Assign Feedback Type</label>
-        <locationX>1480</locationX>
+        <locationX>1348</locationX>
         <locationY>3239</locationY>
         <assignmentItems>
             <assignToReference>NewAccountFeedbackRecord.Feedback_Type__c</assignToReference>
@@ -121,7 +123,7 @@
             <assignToReference>Loop_through_ExistingAFRecords.Feedback__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <stringValue>Change to Partner</stringValue>
+                <stringValue>Change to Indirect Covered</stringValue>
             </value>
         </assignmentItems>
         <assignmentItems>
@@ -164,6 +166,13 @@
             <operator>Assign</operator>
             <value>
                 <elementReference>$Record.VP_Feedback__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Loop_through_ExistingAFRecords.CST_New_Account_Level__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.CST_New_Account_Level__c</elementReference>
             </value>
         </assignmentItems>
         <connector>
@@ -179,7 +188,7 @@
             <assignToReference>Loop_through_ExistingAFRecords.Feedback__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <stringValue>Change to Uncovered</stringValue>
+                <stringValue>Change to Not Covered</stringValue>
             </value>
         </assignmentItems>
         <assignmentItems>
@@ -224,62 +233,11 @@
                 <elementReference>$Record.VP_Feedback__c</elementReference>
             </value>
         </assignmentItems>
-        <connector>
-            <targetReference>if_Regional_Lead_updated</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <name>Assign_Values_3</name>
-        <label>Assign Values</label>
-        <locationX>1656</locationX>
-        <locationY>2039</locationY>
         <assignmentItems>
-            <assignToReference>Loop_through_ExistingAFRecords.Feedback__c</assignToReference>
+            <assignToReference>Loop_through_ExistingAFRecords.CST_New_Account_Level__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <stringValue>Change to Other Led</stringValue>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>Loop_through_ExistingAFRecords.Reason_for_change__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Record.Reason_for_change__c</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>Loop_through_ExistingAFRecords.Team_Members__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Record.Team_Members__c</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>Loop_through_ExistingAFRecords.New_Account_Owner__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Record.New_Account_Owner__c</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>Loop_through_ExistingAFRecords.New_Sales_Group__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Record.New_Sales_Group__c</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>Loop_through_ExistingAFRecords.CRM_CST_DR_Feedback__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Record.DR_Feedback__c</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>Loop_through_ExistingAFRecords.CRM_CST_VP_Feedback__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Record.VP_Feedback__c</elementReference>
+                <elementReference>$Record.CST_New_Account_Level__c</elementReference>
             </value>
         </assignmentItems>
         <connector>
@@ -302,7 +260,7 @@
             <assignToReference>NewAccountFeedbackRecord.Feedback__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <stringValue>Change to Partner</stringValue>
+                <stringValue>Change to Indirect Covered</stringValue>
             </value>
         </assignmentItems>
         <assignmentItems>
@@ -352,6 +310,13 @@
             <operator>Assign</operator>
             <value>
                 <elementReference>$Record.VP_Feedback__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>NewAccountFeedbackRecord.CST_New_Account_Level__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.CST_New_Account_Level__c</elementReference>
             </value>
         </assignmentItems>
         <connector>
@@ -374,7 +339,7 @@
             <assignToReference>NewAccountFeedbackRecord.Feedback__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <stringValue>Change to Uncovered</stringValue>
+                <stringValue>Change to Not Covered</stringValue>
             </value>
         </assignmentItems>
         <assignmentItems>
@@ -426,76 +391,11 @@
                 <elementReference>$Record.VP_Feedback__c</elementReference>
             </value>
         </assignmentItems>
-        <connector>
-            <targetReference>if_Regional_Lead</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <name>Assign_Values_7</name>
-        <label>Assign Values</label>
-        <locationX>1612</locationX>
-        <locationY>3539</locationY>
         <assignmentItems>
-            <assignToReference>NewAccountFeedbackRecord.Account_ID__c</assignToReference>
+            <assignToReference>NewAccountFeedbackRecord.CST_New_Account_Level__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>Loop_through_AD_Collection.Id</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>NewAccountFeedbackRecord.Feedback__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <stringValue>Change to Other Led</stringValue>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>NewAccountFeedbackRecord.Reason_for_change__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Record.Reason_for_change__c</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>NewAccountFeedbackRecord.New_Sales_Group__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Record.New_Sales_Group__c</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>NewAccountFeedbackRecord.New_Account_Owner__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Record.New_Account_Owner__c</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>NewAccountFeedbackRecord.Team_Members__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Record.Team_Members__c</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>NewAccountFeedbackRecord.Coverage_Type__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Record.Coverage_Type__c</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>NewAccountFeedbackRecord.CRM_CST_DR_Feedback__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Record.DR_Feedback__c</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>NewAccountFeedbackRecord.CRM_CST_VP_Feedback__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Record.VP_Feedback__c</elementReference>
+                <elementReference>$Record.CST_New_Account_Level__c</elementReference>
             </value>
         </assignmentItems>
         <connector>
@@ -601,7 +501,7 @@
     <assignments>
         <name>Update_Feedback_by_RA_field</name>
         <label>Update Feedback by RA field</label>
-        <locationX>1348</locationX>
+        <locationX>1216</locationX>
         <locationY>3839</locationY>
         <assignmentItems>
             <assignToReference>NewAccountFeedbackRecord.CRM_CST_Feedback_by_RA__c</assignToReference>
@@ -617,7 +517,7 @@
     <assignments>
         <name>Update_Feedback_by_RA_field_existing_records</name>
         <label>Update Feedback by RA field - existing records</label>
-        <locationX>1392</locationX>
+        <locationX>1260</locationX>
         <locationY>2339</locationY>
         <assignmentItems>
             <assignToReference>Loop_through_ExistingAFRecords.CRM_CST_Feedback_by_RA__c</assignToReference>
@@ -889,153 +789,109 @@
     <decisions>
         <name>Feeback</name>
         <label>Feeback?</label>
-        <locationX>1480</locationX>
+        <locationX>1348</locationX>
         <locationY>3431</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
-            <name>Change_to_Partner_2</name>
+            <name>Change_to_Indirect_Covered</name>
             <conditionLogic>or</conditionLogic>
             <conditions>
                 <leftValueReference>$Record.DR_Feedback__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>Change to Partner</stringValue>
+                    <stringValue>Change to Indirect Covered</stringValue>
                 </rightValue>
             </conditions>
             <conditions>
                 <leftValueReference>$Record.VP_Feedback__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>Change to Partner</stringValue>
+                    <stringValue>Change to Indirect Covered</stringValue>
                 </rightValue>
             </conditions>
             <connector>
                 <targetReference>Assign_Values_5</targetReference>
             </connector>
-            <label>Change to Partner</label>
+            <label>Change to Indirect Covered</label>
         </rules>
         <rules>
-            <name>Change_to_Uncovered_2</name>
+            <name>Change_to_Not_Covered_2</name>
             <conditionLogic>or</conditionLogic>
             <conditions>
                 <leftValueReference>$Record.DR_Feedback__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>Change to Uncovered</stringValue>
+                    <stringValue>Change to Not Covered</stringValue>
                 </rightValue>
             </conditions>
             <conditions>
                 <leftValueReference>$Record.VP_Feedback__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>Change to Uncovered</stringValue>
+                    <stringValue>Change to Not Covered</stringValue>
                 </rightValue>
             </conditions>
             <connector>
                 <targetReference>Assign_Values_6</targetReference>
             </connector>
-            <label>Change to Uncovered</label>
-        </rules>
-        <rules>
-            <name>Change_to_Other_Led_2</name>
-            <conditionLogic>or</conditionLogic>
-            <conditions>
-                <leftValueReference>$Record.DR_Feedback__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>Change to Other Led</stringValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>$Record.VP_Feedback__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>Change to Other Led</stringValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Assign_Values_7</targetReference>
-            </connector>
-            <label>Change to Other Led</label>
+            <label>Change to Not Covered</label>
         </rules>
     </decisions>
     <decisions>
         <name>Feedback_Type</name>
         <label>Feedback Type</label>
-        <locationX>1524</locationX>
+        <locationX>1392</locationX>
         <locationY>1931</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
-            <name>Change_to_Partner</name>
+            <name>ChangetoIndirectCovered</name>
             <conditionLogic>or</conditionLogic>
             <conditions>
                 <leftValueReference>$Record.DR_Feedback__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>Change to Partner</stringValue>
+                    <stringValue>Change to Indirect Covered</stringValue>
                 </rightValue>
             </conditions>
             <conditions>
                 <leftValueReference>$Record.VP_Feedback__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>Change to Partner</stringValue>
+                    <stringValue>Change to Indirect Covered</stringValue>
                 </rightValue>
             </conditions>
             <connector>
                 <targetReference>Assign_Values</targetReference>
             </connector>
-            <label>Change to Partner</label>
+            <label>Change to Indirect Covered</label>
         </rules>
         <rules>
-            <name>Change_to_Uncovered</name>
+            <name>Change_to_Not_Covered</name>
             <conditionLogic>or</conditionLogic>
             <conditions>
                 <leftValueReference>$Record.DR_Feedback__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>Change to Uncovered</stringValue>
+                    <stringValue>Change to Not Covered</stringValue>
                 </rightValue>
             </conditions>
             <conditions>
                 <leftValueReference>$Record.VP_Feedback__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>Change to Uncovered</stringValue>
+                    <stringValue>Change to Not Covered</stringValue>
                 </rightValue>
             </conditions>
             <connector>
                 <targetReference>Assign_Values_2</targetReference>
             </connector>
-            <label>Change to Uncovered</label>
-        </rules>
-        <rules>
-            <name>Change_to_Other_Led</name>
-            <conditionLogic>or</conditionLogic>
-            <conditions>
-                <leftValueReference>$Record.DR_Feedback__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>Change to Other Led</stringValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>$Record.VP_Feedback__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>Change to Other Led</stringValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Assign_Values_3</targetReference>
-            </connector>
-            <label>Change to Other Led</label>
+            <label>Change to Not Covered</label>
         </rules>
     </decisions>
     <decisions>
         <name>Feedback_Type_2</name>
         <label>Feedback Type</label>
-        <locationX>1480</locationX>
+        <locationX>1348</locationX>
         <locationY>3131</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -1129,7 +985,7 @@
     <decisions>
         <name>if_Regional_Lead</name>
         <label>if Regional Lead?</label>
-        <locationX>1480</locationX>
+        <locationX>1348</locationX>
         <locationY>3731</locationY>
         <defaultConnector>
             <targetReference>Add_to_create_collection</targetReference>
@@ -1154,7 +1010,7 @@
     <decisions>
         <name>if_Regional_Lead_updated</name>
         <label>if Regional Lead updated?</label>
-        <locationX>1524</locationX>
+        <locationX>1392</locationX>
         <locationY>2231</locationY>
         <defaultConnector>
             <targetReference>Add_to_collection</targetReference>
@@ -1234,7 +1090,14 @@ Added Change to Other Led for propagation in decisions
 Added TA-VP/TA-CM in VP Feedback decision
 Added RA logic based security mapping Region- apex action
 Removed DR is null/ VP is null logic
-Added Account Owner is null false logic</description>
+Added Account Owner is null false logic
+Added Account Level field update
+Updated &apos;Change to Partner&apos; to &apos;Change to Indirect Covered&apos; in entry criteria
+Updated &apos;Change to Uncovered&apos; to &apos;Change to Not Covered&apos; in entry criteria
+Removed &apos;Change to Other Led&apos; in entry criteria
+Updated &apos;Change to Partner&apos; and &apos;Change to Other Led&apos; in assignments
+Account Level changes removed
+Account Level changes added</description>
     <environments>Default</environments>
     <formulas>
         <name>True_Formula</name>
@@ -1559,7 +1422,7 @@ Added Account Owner is null false logic</description>
         <connector>
             <targetReference>Check_for_DR_Feedback</targetReference>
         </connector>
-        <filterFormula>((ISNEW() &amp;&amp; (TEXT({!$Record.DR_Feedback__c}) == &apos;Change to Partner&apos; || TEXT({!$Record.DR_Feedback__c}) == &apos;Change to Uncovered&apos; || TEXT({!$Record.DR_Feedback__c}) == &apos;Change to Other Led&apos;  || TEXT({!$Record.VP_Feedback__c}) == &apos;Change to Partner&apos; || TEXT({!$Record.VP_Feedback__c}) == &apos;Change to Other Led&apos;  || TEXT({!$Record.VP_Feedback__c}) == &apos;Change to Uncovered&apos; )) || ((ISCHANGED({!$Record.DR_Feedback__c}) &amp;&amp; (TEXT({!$Record.Feedback_Type__c}) == &apos;DR&apos; &amp;&amp; (TEXT({!$Record.DR_Feedback__c}) == &apos;Change to Partner&apos; || TEXT({!$Record.DR_Feedback__c}) == &apos;Change to Other Led&apos; || TEXT({!$Record.DR_Feedback__c}) == &apos;Change to Uncovered&apos; ))) || (ISCHANGED({!$Record.VP_Feedback__c}) &amp;&amp; (TEXT({!$Record.Feedback_Type__c}) == &apos;VP&apos; &amp;&amp; (TEXT({!$Record.VP_Feedback__c}) == &apos;Change to Partner&apos; || TEXT({!$Record.VP_Feedback__c}) == &apos;Change to Other Led&apos; || TEXT({!$Record.VP_Feedback__c}) == &apos;Change to Uncovered&apos; )))))</filterFormula>
+        <filterFormula>((ISNEW() &amp;&amp; (TEXT({!$Record.DR_Feedback__c}) == &apos;Change to Indirect Covered&apos; || TEXT({!$Record.DR_Feedback__c}) == &apos;Change to Not Covered&apos; || TEXT({!$Record.VP_Feedback__c}) == &apos;Change to Indirect Covered&apos; ||  TEXT({!$Record.VP_Feedback__c}) == &apos;Change to Not Covered&apos; )) || ((ISCHANGED({!$Record.DR_Feedback__c}) &amp;&amp; (TEXT({!$Record.Feedback_Type__c}) == &apos;DR&apos; &amp;&amp; (TEXT({!$Record.DR_Feedback__c}) == &apos;Change to Indirect Covered&apos; || TEXT({!$Record.DR_Feedback__c}) == &apos;Change to Not Covered&apos; ))) || (ISCHANGED({!$Record.VP_Feedback__c}) &amp;&amp; (TEXT({!$Record.Feedback_Type__c}) == &apos;VP&apos; &amp;&amp; (TEXT({!$Record.VP_Feedback__c}) == &apos;Change to Indirect Covered&apos; || TEXT({!$Record.VP_Feedback__c}) == &apos;Change to Not Covered&apos; )))))</filterFormula>
         <object>SPM_Customer_Feedback__c</object>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>

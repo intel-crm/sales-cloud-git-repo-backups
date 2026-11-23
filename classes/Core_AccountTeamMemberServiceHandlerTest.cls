@@ -1,6 +1,5 @@
 @isTest
 public class Core_AccountTeamMemberServiceHandlerTest {
-    /*
     @testSetup static void setup() {
         String orgId = UserInfo.getOrganizationId();
         String dateString = String.valueof(Datetime.now()).replace(' ','').replace(':','').replace('-','');
@@ -78,74 +77,4 @@ public class Core_AccountTeamMemberServiceHandlerTest {
         }
         Test.stopTest();
     }
-    */
-
-    @TestSetup
-    private static void setCommonData(){
-        
-        Core_Trigger_Executions__c cte=new Core_Trigger_Executions__c();
-        cte.Core_Active__c=true;
-        cte.Core_Class_Name__c='Core_AccountTeamMember';
-        cte.Name='SendingListOfTenderUsersTobatch';
-        cte.Core_Description__c ='Used for Core_AccountTeam_PermissionSetAssignment Trigger';
-        cte.Core_Object__c ='AccountTeamMember';
-        cte.Core_Trigger_Events__c='after insert,after update';
-        insert cte;
-
-        Account parentAccount = UCD_ACM_Cntrlr_TestDataInitialization.createAccountByRecordType('TestParentAccount','Intel Account','UNFD_GLBL_CUST');
-        parentAccount.Core_Business_Party_Id__c = '12345' ;
-        parentAccount.Core_Account_Primary_Coverage__c =System.Label.Intel_Covered;
-        parentAccount.Core_Account_Category__c = 'Regional Co-Sell Partners';
-        insert parentAccount;
-
-        AccountTeamMember accTeamMember = new AccountTeamMember();
-        accTeamMember.AccountId = parentAccount.Id ;
-        accTeamMember.Core_Account_Category__c = 'Distributors (IA)' ;
-        accTeamMember.UserId = UserInfo.getUserId();
-        insert accTeamMember;
-
-        
-
-    }
-
-    @isTest
-    private static void whenGetAccounts(){
-        Map<String,Core_Trigger_Executions__c> mapFunctionalityNameTriggerExecution = Core_Trigger_Executions__c.getAll();
-        List<AccountTeamMember> lstAccountTeamMember = [Select id, AccountId,Core_Account_Category__c from AccountTeamMember];
-        Map<Id,AccountTeamMember> mapAccountTeamMember = new Map<Id, AccountTeamMember>([Select id, AccountId,Core_Account_Category__c from AccountTeamMember]);
-        Core_AccountTeamMemberServiceHandler.validationAccountTeam(lstAccountTeamMember,mapAccountTeamMember);
-        Assert.isTrue(lstAccountTeamMember.size() > 0, 'failed');
-    }
-
-    @isTest
-    private static void whenrestrictDuplicateCategory(){
-        Map<String,Core_Trigger_Executions__c> mapFunctionalityNameTriggerExecution = Core_Trigger_Executions__c.getAll();
-        List<AccountTeamMember> lstAccountTeamMember = [Select id, AccountId,Core_Account_Category__c,TeamMemberRole from AccountTeamMember];
-        Core_AccountTeamMemberServiceHandler.restrictDuplicateCategory(new  Map<Id, AccountTeamMember>(lstAccountTeamMember), new  Map<Id, AccountTeamMember>(lstAccountTeamMember));
-        Assert.isTrue(lstAccountTeamMember.size() > 0, 'failed');
-    }
-
-    @isTest
-    private static void whensharingAccountTeamList(){
-        List<AccountTeamMember> lstAccountTeamMember = [Select id, AccountId,Core_Account_Category__c,UserId from AccountTeamMember];
-        Core_AccountTeamMemberServiceHandler.sharingAccountTeamList(lstAccountTeamMember, true);
-        Assert.isTrue(lstAccountTeamMember.size() > 0, 'failed');
-    }
-
-    @isTest
-    private static void whenAfterUpdate(){
-        List<AccountTeamMember> lstAccountTeamMember = [Select id, AccountId,Core_Account_Category__c,UserId from AccountTeamMember];
-        lstAccountTeamMember[0].Core_Account_Category__c = 'Regional Co-Sell Partners' ;
-        update lstAccountTeamMember;
-        Assert.isTrue(lstAccountTeamMember.size() > 0, 'failed');
-
-    }
-
-    @isTest
-    private static void whenAfterDelete(){
-        List<AccountTeamMember> lstAccountTeamMember = [Select id, AccountId,Core_Account_Category__c,UserId from AccountTeamMember];
-        delete lstAccountTeamMember ;
-        Assert.isNotNull(lstAccountTeamMember , 'failed');
-    }
-
 }

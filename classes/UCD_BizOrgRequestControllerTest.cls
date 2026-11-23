@@ -163,8 +163,8 @@ public class UCD_BizOrgRequestControllerTest {
 		Model.AccountRequests = lstOfRequest;
         system.runAs(uu) {
 			 List<UCD_BizOrgRequestModel.BusinessOrganizationResponse> response = UCD_BizOrgRequestController.createBusinessOrganizationRequest(Model);
-            //System.debug('Model==>'+Model);
-            //System.debug('whenMydealsSendAndAccountInsertForSuccessMissingCountryCode==>'+response);
+            System.debug('Model==>'+Model);
+            System.debug('whenMydealsSendAndAccountInsertForSuccessMissingCountryCode==>'+response);
              System.assertEquals(response[0].Code, '200');
          }
    }
@@ -219,7 +219,7 @@ public class UCD_BizOrgRequestControllerTest {
 		Model.AccountRequests = lstOfRequest1;
          system.runAs(uu) {
 		List<UCD_BizOrgRequestModel.BusinessOrganizationResponse> response1 = UCD_BizOrgRequestController.createBusinessOrganizationRequest(Model);
-             //System.debug('response12==>'+response1);
+             System.debug('response12==>'+response1);
              System.assertEquals(response1[0].Errormessage, 'Duplicate Account');
          }
    }

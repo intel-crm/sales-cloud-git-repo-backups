@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <DuplicateRule xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-    <actionOnInsert>Block</actionOnInsert>
-    <actionOnUpdate>Block</actionOnUpdate>
-    <alertText>Use one of these records?</alertText>
+    <actionOnInsert>Allow</actionOnInsert>
+    <actionOnUpdate>Allow</actionOnUpdate>
+    <alertText xsi:nil="true"/>
     <description>To display all the potential duplicates for the lead in record page from the IDC Credit Request lead source.</description>
     <duplicateRuleFilter>
         <booleanFilter xsi:nil="true"/>
@@ -16,11 +16,13 @@
     </duplicateRuleFilter>
     <duplicateRuleMatchRules>
         <matchRuleSObjectType>Lead</matchRuleSObjectType>
-        <matchingRule>SWS_Lead_Matching_Email</matchingRule>
+        <matchingRule>Standard_Lead_Match_Rule_v1_0</matchingRule>
         <objectMapping xsi:nil="true"/>
     </duplicateRuleMatchRules>
     <isActive>false</isActive>
     <masterLabel>IDC Credit Request Duplication Rule</masterLabel>
+    <operationsOnInsert>Report</operationsOnInsert>
+    <operationsOnUpdate>Report</operationsOnUpdate>
     <securityOption>EnforceSharingRules</securityOption>
     <sortOrder>5</sortOrder>
 </DuplicateRule>

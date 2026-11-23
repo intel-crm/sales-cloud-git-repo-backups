@@ -5,5 +5,5 @@
     <aura:method name="formQuickSearchDetail" action="{!c.formQuickSearchDetail}">
     </aura:method>
     
-    <c:ipaAnalyticsService aura:id="analyticsLibrary" />
+    <c:MarketplaceAnalyticsLibrary aura:id="analyticsLibrary" />
 </aura:component>

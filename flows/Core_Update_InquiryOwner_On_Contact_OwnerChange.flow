@@ -247,7 +247,7 @@
         <object>Core_Inquiry__c</object>
     </recordUpdates>
     <startElementReference>isChangedDecision2_myRule_1_OwnerId</startElementReference>
-    <status>Obsolete</status>
+    <status>Active</status>
     <variables>
         <name>myVariable_current</name>
         <dataType>SObject</dataType>

@@ -1,123 +1,122 @@
-<apex:component access="global"><!--controller="PMP_OfferingEmailAlertsController">-->
-<!--    <html>
+<apex:component access="global" controller="PMP_OfferingEmailAlertsController">
+    <html>
         <style>
-            /* Regular */
-            @font-face{
-            font-family: 'Intel Clear','Intel Clear Pro';
-            src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Regular-webfont.eot')}");  /* IE9*/
-            src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Regular-webfont.eot?#iefix')}") format('embedded-opentype'), /* IE6-IE8 */
-            url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Regular-webfont.woff')}") format('woff');  /* Modern browsers*/
-            font-weight: normal;
-            font-weight: 400;
-            font-style: normal;
-            }
-            
-            /* Light */
-            @font-face{
-            font-family: 'Intel Clear','Intel Clear Pro';
-            src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Light-webfont.eot')}");  /* IE9*/
-            src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Light-webfont.eot?#iefix')}") format('embedded-opentype'), /* IE6-IE8 */
-            url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Light-webfont.woff')}") format('woff');  /* Modern browsers*/
-            font-weight: 200;
-            font-style: normal;
-            }
-            
-            /* Bold */
-            @font-face{
-            font-family: 'Intel Clear','Intel Clear Pro';
-            src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Bold-webfont.eot')}");  /* IE9*/
-            src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Bold-webfont.eot?#iefix')}") format('embedded-opentype'), /* IE6-IE8 */
-            url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Bold-webfont.woff')}") format('woff');  /* Modern browsers*/
-            font-weight: bold;
-            font-weight: 700;
-            font-style: normal;
-            }
-            
-            table {
-            font-family: sans-serif; /*arial, sans-serif,Intel Clear;*/
-            border-collapse: collapse;
-            border-left: 1px solid #dddddd;
-            border-right: 1px solid #dddddd;
-            border-top: 0px;
-            border-bottom: 1px solid #dddddd;
-            }
-            
-            td, th {
-            padding: 8px;
-            }
-            
-            .intelBlue{
-            color:#0071c5;
-            }
-            
-            h1{
-            font-family: sans-serif !important;  
-            }
-        </style>
+/* Regular */
+@font-face{
+font-family: 'Intel Clear','Intel Clear Pro';
+src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Regular-webfont.eot')}");  /* IE9*/
+src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Regular-webfont.eot?#iefix')}") format('embedded-opentype'), /* IE6-IE8 */
+    url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Regular-webfont.woff')}") format('woff');  /* Modern browsers*/
+font-weight: normal;
+font-weight: 400;
+font-style: normal;
+}
+
+/* Light */
+@font-face{
+font-family: 'Intel Clear','Intel Clear Pro';
+src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Light-webfont.eot')}");  /* IE9*/
+src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Light-webfont.eot?#iefix')}") format('embedded-opentype'), /* IE6-IE8 */
+    url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Light-webfont.woff')}") format('woff');  /* Modern browsers*/
+font-weight: 200;
+font-style: normal;
+}
+    
+/* Bold */
+@font-face{
+font-family: 'Intel Clear','Intel Clear Pro';
+src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Bold-webfont.eot')}");  /* IE9*/
+src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Bold-webfont.eot?#iefix')}") format('embedded-opentype'), /* IE6-IE8 */
+    url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Bold-webfont.woff')}") format('woff');  /* Modern browsers*/
+font-weight: bold;
+font-weight: 700;
+font-style: normal;
+}
+    
+table {
+  font-family: Intel Clear; /*arial, sans-serif;*/
+  border-collapse: collapse;
+  border-left: 1px solid #dddddd;
+  border-right: 1px solid #dddddd;
+  border-top: 0px;
+  border-bottom: 1px solid #dddddd;
+}
+
+td, th {
+  padding: 8px;
+}
+
+.intelBlue{
+  color:#0071c5;
+}
+
+h1{
+  font-family: Intel Clear Pro !important;  
+}
+</style>
         <apex:attribute name="offeringRecordId" type="Id" description="Offering Record Id" assignTo="{!offeringId}"/>
-        <body>-->
+        <body>
             <!-- Header Banner -->
-<!--            <c:PMP_Global_Header message="An edit to your Showcase offering was successfully submitted"/>-->
+                <c:PMP_Global_Header message="AN EDIT TO YOUR MARKETPLACE OFFERING WAS SUCCESSFULLY SUBMITTED."/>
             <!-- Header Banner -->
             
             <!-- Email content -->
-<!--            <table width="75%">    -->
+            <table width="75%">    
                 <!-- Email Body -->
-<!--                <tr>
-                    <td style="padding-left:50px;">
-                        <br/>Hello  <br/><br/>
-                        <apex:outputText rendered="{!IF(AND(offeringData.PMP_Offering_Submitter_UserId__c != null, offeringData.PMP_Offering_Submitter_UserId__r.IsActive==false),true,false)}" > {!$Label.PMP_Inactive_User_Message}<br/><br/> </apex:outputText>
-                        Thank you for submitting your edit to your Intel® Partner Showcase offering, {!offeringData.PMP_Partner_Offering_Nm__c}—we’ll review it and send you a response within 3-5 business days.<br/><br/>
-                        Thank you,<br/><br/>
-                        <b>The Intel® Partner Showcase Team</b> <br/> <br/>
-                        
-                        <b>Offering Name: {!offeringData.PMP_Partner_Offering_Nm__c} </b><br/>
-                        Category: {!offeringData.PMP_Category_nm__c} <br/>
-                        Sub-category: {!offeringData.PMP_Sub_Category_nm__c}
-                    </td>
-                </tr>-->
+               <tr>
+            <td style="padding-left:50px;">
+                <br/>Hello  <br/><br/>
+                Thanks for submitting your edit to your Intel®Solutions Marketplace offering — we’ll review it and send you a response within 3-5 business days.<br/><br/>
+                Thank you again<br/>
+                <b>The Intel® Solutions Marketplace Team</b> <br/> <br/>
+                
+                <b>Offering Name: {!offeringData.PMP_Partner_Offering_Nm__c} </b><br/>
+                Category: {!offeringData.PMP_Category_nm__c} <br/>
+                Sub-category: {!offeringData.PMP_Sub_Category_nm__c}
+            </td>
+          </tr>
                 <!-- Email Body -->
-                <!-- CTA -->
-<!--                <tr>
-                    <td style="padding-left:50px;">      
-                        <p><apex:outputLink value="{!communityURL}{!publishedOfferingId}" styleClass="intelBlue">View offering preview</apex:outputLink></p>
-                    </td>
-                </tr>-->
-                <!-- CTA -->
-                <!-- Progress Indication 
-<tr>
-<td style="height:50; text-align:center;">
-<apex:image id="bodyImageId" url="{!bodyURL}"/>
-</td>
-</tr>-->
-<!-- Progress Indication -->
-                <!-- Next Best Step -->
-<!--                <tr>    
-                    <td style="padding-left:50px;">
-                        Would you like to create another offering ?<br/>
-                        <apex:outputLink value="{!createOfferingURL}" styleClass="intelBlue">
-                            Create another offering
-                        </apex:outputLink><br/>
-                    </td>
-                </tr>-->
-                <!-- Next Best Step -->
-                <!-- Questions/Contact -->
-<!--                <tr>
-                    <td style="padding-left:50px;">  
-                        Questions? Reach out to Showcase Admin Team at: <br/>
-                        <apex:outputLink value="mailto:{!$Label.PMP_MailTo}" styleClass="intelBlue">
-                            {!$Label.PMP_MailTo}
-                        </apex:outputLink><br/><br/>
-                    </td>
-                </tr>-->
-                <!-- Questions/Contact -->        
-<!--            </table>  -->               
+            <!-- CTA -->
+          <tr>
+            <td style="padding-left:50px;">      
+                <p><apex:outputLink value="{!communityURL}{!offeringData.Id}" styleClass="intelBlue">View Offering Preview</apex:outputLink></p>
+            </td>
+         </tr>
+        <!-- CTA -->
+        <!-- Progress Indication 
+        <tr>
+            <td style="height:50; text-align:center;">
+                <apex:image id="bodyImageId" url="{!bodyURL}"/>
+            </td>
+        </tr>
+        <!-- Progress Indication -->
+         <!-- Next Best Step -->
+        <tr>    
+            <td style="padding-left:50px;">
+                Would you like to create another Offering ?<br/>
+                <apex:outputLink value="{!createOfferingURL}" styleClass="intelBlue">
+                Create Another Offering
+                </apex:outputLink><br/>
+            </td>
+        </tr>
+        <!-- Next Best Step -->
+        <!-- Questions/Contact -->
+        <tr>
+            <td style="padding-left:50px;">  
+                Questions? Reach out to Marketplace Admin Team at <br/>
+                <apex:outputLink value="mailto:{!$Label.PMP_MailTo}" styleClass="intelBlue">
+                 {!$Label.PMP_MailTo}
+                </apex:outputLink><br/><br/>
+            </td>
+         </tr>
+         <!-- Questions/Contact -->        
+        </table>                 
             <!-- Email content -->
             
             <!-- Global Footer -->
-<!--            <c:PMP_Global_Footer />-->
+                <c:PMP_Global_Footer />
             <!-- Global Footer -->
             
-<!--        </body>
-    </html>-->
+        </body>
+    </html>
 </apex:component>

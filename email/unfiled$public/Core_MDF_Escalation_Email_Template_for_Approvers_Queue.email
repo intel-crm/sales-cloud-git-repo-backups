@@ -1,0 +1,22 @@
+<table border="0" cellpadding="5" width="600" cellspacing="5" height="400" >
+<tr valign="top" height="50" >
+<td tEditID="c1r1" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="0" >
+<![CDATA[]]></td>
+</tr>
+<tr valign="top" height="300" >
+<td tEditID="c1r2" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r2" locked="0" >
+<![CDATA[<div style="color: rgb(0, 0, 0);"><font face="Arial, sans-serif" style=""><font style="">{!Core_MDF_Escalation__c.OwnerFullName}</font>&nbsp;has
+requested your approval for the following item: <font style=""><a href="{!Core_MDF_Escalation__c.Core_MDF_Escalation_Detail_Link_txt__c}">{!Core_MDF_Escalation__c.Name}</a></font></font></div><div style="color: rgb(0, 0, 0);"><font face="Arial, sans-serif"><br></font></div><div style="color: rgb(0, 0, 0);">
+
+<p style="margin: 0in;"><font face="Arial, sans-serif">Please click this
+link to approve or reject this record.</font></p><p style="margin: 0in;"><font face="Arial, sans-serif">&nbsp;</font></p>
+
+<p style="margin: 0in;"><font face="Arial, sans-serif">Thank you,</font></p>
+
+<p style="margin: 0in;"><font face="Arial, sans-serif" style="">Salesforce</font></p></div>]]></td>
+</tr>
+<tr valign="top" height="50" >
+<td tEditID="c1r3" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r3" locked="0" >
+<![CDATA[]]></td>
+</tr>
+</table>

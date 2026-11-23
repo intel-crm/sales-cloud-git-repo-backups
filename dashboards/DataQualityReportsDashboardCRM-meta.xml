@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DashboardFolder xmlns="http://soap.sforce.com/2006/04/metadata">
+    <folderShares>
+        <accessLevel>Manage</accessLevel>
+        <sharedTo>12101607@intel.crm.crmdevsls3.com</sharedTo>
+        <sharedToType>User</sharedToType>
+    </folderShares>
+    <folderShares>
+        <accessLevel>EditAllContents</accessLevel>
+        <sharedTo>12195847@intel.com.devsls3</sharedTo>
+        <sharedToType>User</sharedToType>
+    </folderShares>
+    <name>Data Quality Reports Dashboard CRM</name>
+</DashboardFolder>

@@ -128,16 +128,20 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>New</actionName>
-        <type>Default</type>
-    </actionOverrides>
-    <actionOverrides>
-        <actionName>New</actionName>
-        <formFactor>Large</formFactor>
-        <type>Default</type>
-    </actionOverrides>
-    <actionOverrides>
-        <actionName>New</actionName>
+        <content>Sales_OrderComponent</content>
         <formFactor>Small</formFactor>
+        <skipRecordTypeSelect>true</skipRecordTypeSelect>
+        <type>LightningComponent</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <content>Sales_OrderComponent</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>true</skipRecordTypeSelect>
+        <type>LightningComponent</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
@@ -212,11 +216,14 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <type>Default</type>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Order_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <formFactor>Large</formFactor>
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
@@ -240,8 +247,8 @@
     <fields>
         <fullName>AccountId</fullName>
         <lookupFilter>
-            <active>false</active>
-            <errorMessage>On Account Field on Order, For Partner/Evaluation License Order, you can use only an Active Intel Account &amp; For other order types, Please check if the Sold To(Stocking) / End Customer(Non-Stocking) Account&apos;s Parent Account is an Active Intel Account.</errorMessage>
+            <active>true</active>
+            <errorMessage>On Account Field on Order, For Partner/Evaluation License Order, you can use only an Active Intel Account and For other order types, Please check if the Sold To(Stocking) / End Customer(Non-Stocking) Account&apos;s Parent Account is an Active Intel Account.</errorMessage>
             <filterItems>
                 <field>Account.RecordTypeId</field>
                 <operation>equals</operation>
@@ -270,6 +277,19 @@
         <trackHistory>false</trackHistory>
     </fields>
     <fields>
+        <fullName>ActivatedOrderItems__c</fullName>
+        <label>ActivatedOrderItems</label>
+        <summaryFilterItems>
+            <field>OrderItem.SBQQ__Activated__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </summaryFilterItems>
+        <summaryForeignKey>OrderItem.OrderId</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <type>Summary</type>
+    </fields>
+    <fields>
         <fullName>BillToContactId</fullName>
         <trackHistory>true</trackHistory>
         <type>Lookup</type>
@@ -292,11 +312,53 @@
     </fields>
     <fields>
         <fullName>ContractId</fullName>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <type>Lookup</type>
     </fields>
     <fields>
         <fullName>ContractName</fullName>
+    </fields>
+    <fields>
+        <fullName>Core_PSG_Stage__c</fullName>
+        <label>Stage</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Draft</fullName>
+                    <default>false</default>
+                    <label>Draft</label>
+                </value>
+                <value>
+                    <fullName>Reviewed</fullName>
+                    <default>false</default>
+                    <label>Reviewed</label>
+                </value>
+                <value>
+                    <fullName>Submitted</fullName>
+                    <default>false</default>
+                    <label>Submitted</label>
+                </value>
+                <value>
+                    <fullName>Acknowledged</fullName>
+                    <default>false</default>
+                    <label>Acknowledged</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_PSG_Total_Order_Price_Amt__c</fullName>
+        <label>Total Order Price</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <type>Currency</type>
     </fields>
     <fields>
         <fullName>CustomerAuthorizedById</fullName>
@@ -359,11 +421,16 @@
     </fields>
     <fields>
         <fullName>PoNumber</fullName>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
     </fields>
     <fields>
         <fullName>Pricebook2Id</fullName>
         <trackHistory>true</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>QuoteId</fullName>
+        <trackHistory>false</trackHistory>
         <type>Lookup</type>
     </fields>
     <fields>
@@ -565,7 +632,7 @@
                 <sorted>false</sorted>
                 <value>
                     <fullName>65525 - Sample</fullName>
-                    <default>false</default>
+                    <default>true</default>
                     <label>65525 - Sample</label>
                 </value>
                 <value>
@@ -575,40 +642,16 @@
                     <label>#NA</label>
                 </value>
                 <value>
-                    <fullName>PSG SMG SR 150 SNM</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>PSG SMG SR 150 SNM</label>
-                </value>
-                <value>
-                    <fullName>SAP Samples-AETC 185</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>SAP Samples-AETC 185</label>
-                </value>
-                <value>
                     <fullName>SAP Samples-AETC EU02</fullName>
                     <default>false</default>
                     <isActive>false</isActive>
                     <label>SAP Samples-AETC EU02</label>
                 </value>
                 <value>
-                    <fullName>SAP Samples-AHK 175</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>SAP Samples-AHK 175</label>
-                </value>
-                <value>
                     <fullName>SAP Samples-AHK AP01</fullName>
                     <default>false</default>
                     <isActive>false</isActive>
                     <label>SAP Samples-AHK AP01</label>
-                </value>
-                <value>
-                    <fullName>SAP Samples-AJP 187</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>SAP Samples-AJP 187</label>
                 </value>
                 <value>
                     <fullName>SAP Samples-AJP JP01</fullName>
@@ -697,7 +740,7 @@
         <deleteConstraint>SetNull</deleteConstraint>
         <label>End Customer Account</label>
         <lookupFilter>
-            <active>false</active>
+            <active>true</active>
             <booleanFilter>1 AND 2 AND 3 AND 4</booleanFilter>
             <errorMessage>Please select a valid End Customer Account.</errorMessage>
             <filterItems>
@@ -770,10 +813,20 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Sales_End_Customer_State_Code_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>End Customer State Code</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Sales_End_Customer_State_Txt__c</fullName>
         <externalId>false</externalId>
         <label>State</label>
-        <length>255</length>
+        <length>30</length>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <type>Text</type>
@@ -946,11 +999,32 @@
                     <default>false</default>
                     <label>Amend Non Commercial</label>
                 </value>
+                <value>
+                    <fullName>null</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>null</label>
+                </value>
             </valueSetDefinition>
             <valueSettings>
-                <controllingFieldValue>Non Commercial Order</controllingFieldValue>
-                <controllingFieldValue>Sample Order</controllingFieldValue>
                 <controllingFieldValue>Licensed Tool Order</controllingFieldValue>
+                <controllingFieldValue>Sample Order</controllingFieldValue>
+                <valueName>Dev Kit/PAC ES with license (Quartus and/or ARM) order</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Licensed Tool Order</controllingFieldValue>
+                <controllingFieldValue>Sample Order</controllingFieldValue>
+                <valueName>ARM standalone license order</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Licensed Tool Order</controllingFieldValue>
+                <controllingFieldValue>Sample Order</controllingFieldValue>
+                <valueName>Standalone license order</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Licensed Tool Order</controllingFieldValue>
+                <controllingFieldValue>Sample Order</controllingFieldValue>
+                <controllingFieldValue>Non Commercial Order</controllingFieldValue>
                 <valueName>Corporate Order</valueName>
             </valueSettings>
             <valueSettings>
@@ -968,21 +1042,6 @@
             <valueSettings>
                 <controllingFieldValue>Non Commercial Order</controllingFieldValue>
                 <valueName>Amend Non Commercial</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Sample Order</controllingFieldValue>
-                <controllingFieldValue>Licensed Tool Order</controllingFieldValue>
-                <valueName>Dev Kit/PAC ES with license (Quartus and/or ARM) order</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Sample Order</controllingFieldValue>
-                <controllingFieldValue>Licensed Tool Order</controllingFieldValue>
-                <valueName>ARM standalone license order</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Sample Order</controllingFieldValue>
-                <controllingFieldValue>Licensed Tool Order</controllingFieldValue>
-                <valueName>Standalone license order</valueName>
             </valueSettings>
         </valueSet>
     </fields>
@@ -1225,7 +1284,7 @@
         <fullName>Sales_ShipTo_State_Txt__c</fullName>
         <externalId>false</externalId>
         <label>State</label>
-        <length>255</length>
+        <length>30</length>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <type>Text</type>
@@ -1267,7 +1326,7 @@
         <deleteConstraint>SetNull</deleteConstraint>
         <label>Ship To Account</label>
         <lookupFilter>
-            <active>false</active>
+            <active>true</active>
             <errorMessage>Please select a valid Ship To Account.</errorMessage>
             <filterItems>
                 <field>Account.RecordTypeId</field>
@@ -1388,10 +1447,31 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Sales_SoldTo_ShipTo_Acc__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>ShipTo Account by SoldTo</label>
+        <lookupFilter>
+            <active>true</active>
+            <errorMessage>ShipTo account not applicable for selected SolTo account.</errorMessage>
+            <filterItems>
+                <field>Core_Account_SoldTo_ShipTo_Rel__c.Core_Sold_To_Account__c</field>
+                <operation>equals</operation>
+                <valueField>$Source.Sales_Sold_To_Account__c</valueField>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>Core_Account_SoldTo_ShipTo_Rel__c</referenceTo>
+        <relationshipLabel>Orders</relationshipLabel>
+        <relationshipName>Orders</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
         <fullName>Sales_SoldTo_State_Txt__c</fullName>
         <externalId>false</externalId>
         <label>State</label>
-        <length>255</length>
+        <length>30</length>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <type>Text</type>
@@ -1424,7 +1504,7 @@
     <fields>
         <fullName>Sales_Sold_To_Account_Region_Txt__c</fullName>
         <externalId>false</externalId>
-        <formula>TEXT(Sales_Sold_To_Account__r.Core_Geo__c )</formula>
+        <formula>TEXT(Sales_Sold_To_Account__r.Core_Geo__c)</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Sold To Account Region</label>
         <required>false</required>
@@ -1437,7 +1517,7 @@
         <deleteConstraint>SetNull</deleteConstraint>
         <label>Sold To Account</label>
         <lookupFilter>
-            <active>false</active>
+            <active>true</active>
             <errorMessage>Please select a valid Sold To Account.</errorMessage>
             <filterItems>
                 <field>Account.RecordTypeId</field>
@@ -1477,6 +1557,29 @@
         <trackHistory>false</trackHistory>
         <type>Text</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_State__c</fullName>
+        <label>State</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Draft</fullName>
+                    <default>true</default>
+                    <label>Draft</label>
+                </value>
+                <value>
+                    <fullName>Submitted</fullName>
+                    <default>false</default>
+                    <label>Submitted</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Sales_Sync_Comments_Txt__c</fullName>
@@ -1527,6 +1630,11 @@
                     <default>false</default>
                     <label>Order created successfully</label>
                 </value>
+                <value>
+                    <fullName>Order Cancelled by SAP</fullName>
+                    <default>false</default>
+                    <label>Order Cancelled by SAP</label>
+                </value>
             </valueSetDefinition>
             <valueSettings>
                 <controllingFieldValue>Draft</controllingFieldValue>
@@ -1552,6 +1660,10 @@
                 <controllingFieldValue>Activated</controllingFieldValue>
                 <valueName>Order created successfully</valueName>
             </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Activated</controllingFieldValue>
+                <valueName>Order Cancelled by SAP</valueName>
+            </valueSettings>
         </valueSet>
     </fields>
     <fields>
@@ -1569,152 +1681,81 @@
         <type>Picklist</type>
     </fields>
     <fields>
+        <fullName>TF__c</fullName>
+        <formula>OrderItemCount__c =  ActivatedOrderItems__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>TF</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>TotalAmount</fullName>
         <trackHistory>true</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Trigger_Time_05__c</fullName>
+        <formula>(Now()  -  0.04000)</formula>
+        <label>Trigger Time 05</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>DateTime</type>
     </fields>
     <fields>
         <fullName>Type</fullName>
         <trackHistory>true</trackHistory>
         <type>Picklist</type>
     </fields>
-    <listViews>
-        <fullName>AllActivatedOrders</fullName>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>ORDERS.STATUS_CODE</field>
-            <operation>equals</operation>
-            <value>A</value>
-        </filters>
-        <label>All Activated Orders</label>
-    </listViews>
-    <listViews>
-        <fullName>AllDraftOrders</fullName>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>ORDERS.STATUS_CODE</field>
-            <operation>equals</operation>
-            <value>D</value>
-        </filters>
-        <label>All Draft Orders</label>
-    </listViews>
+    <fields>
+        <fullName>time__c</fullName>
+        <label>time</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>DateTime</type>
+    </fields>
     <listViews>
         <fullName>AllOrders</fullName>
         <columns>ORDERS.ORDER_NUMBER</columns>
-        <columns>ORDERS.STATUS</columns>
+        <columns>Sales_status__c</columns>
+        <columns>SBQQ__Quote__c</columns>
         <columns>Sales_Sold_To_Account__c</columns>
         <columns>Sales_Ship_To_Account__c</columns>
         <columns>Sales_End_Customer_Account__c</columns>
+        <columns>PRICEBOOK2.NAME</columns>
         <columns>ORDERS.TYPE</columns>
         <columns>Sales_PO_Number_Txt__c</columns>
         <columns>Sales_Req_Ship_Date_Dt__c</columns>
-        <columns>ORDERS.TOTAL_AMOUNT</columns>
+        <columns>Core_PSG_Total_Order_Price_Amt__c</columns>
         <columns>Sales_ERP_SO_Txt__c</columns>
+        <columns>Sales_Cost_Center__c</columns>
         <columns>Sales_Order_Reason__c</columns>
-        <columns>SBQQ__Quote__c</columns>
         <columns>Sales_Corporate_Order__c</columns>
-        <columns>ORDERS.CREATED_DATE</columns>
-        <columns>CREATEDBY_USER.ALIAS</columns>
         <filterScope>Everything</filterScope>
+        <filters>
+            <field>SBQQ__Quote__c</field>
+            <operation>notEqual</operation>
+        </filters>
         <label>All Orders</label>
-    </listViews>
-    <listViews>
-        <fullName>All_Commercial_Orders</fullName>
-        <columns>ORDERS.ORDER_NUMBER</columns>
-        <columns>ORDERS.STATUS</columns>
-        <columns>Sales_Sold_To_Account__c</columns>
-        <columns>Sales_Ship_To_Account__c</columns>
-        <columns>Sales_End_Customer_Account__c</columns>
-        <columns>ORDERS.TYPE</columns>
-        <columns>Sales_PO_Number_Txt__c</columns>
-        <columns>Sales_Req_Ship_Date_Dt__c</columns>
-        <columns>ORDERS.TOTAL_AMOUNT</columns>
-        <columns>Sales_ERP_SO_Txt__c</columns>
-        <columns>Sales_Order_Reason__c</columns>
-        <columns>SBQQ__Quote__c</columns>
-        <columns>Sales_Corporate_Order__c</columns>
-        <columns>ORDERS.CREATED_DATE</columns>
-        <columns>CREATEDBY_USER.ALIAS</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>ORDERS.TYPE</field>
-            <operation>equals</operation>
-            <value>Licensed Tool Order</value>
-        </filters>
-        <label>All Commercial Orders</label>
-        <language>en_US</language>
-    </listViews>
-    <listViews>
-        <fullName>All_Non_commercial_Orders</fullName>
-        <columns>ORDERS.ORDER_NUMBER</columns>
-        <columns>ORDERS.STATUS</columns>
-        <columns>Sales_Sold_To_Account__c</columns>
-        <columns>Sales_Ship_To_Account__c</columns>
-        <columns>Sales_End_Customer_Account__c</columns>
-        <columns>ORDERS.TYPE</columns>
-        <columns>Sales_PO_Number_Txt__c</columns>
-        <columns>Sales_Req_Ship_Date_Dt__c</columns>
-        <columns>ORDERS.TOTAL_AMOUNT</columns>
-        <columns>Sales_ERP_SO_Txt__c</columns>
-        <columns>Sales_Order_Reason__c</columns>
-        <columns>SBQQ__Quote__c</columns>
-        <columns>Sales_Corporate_Order__c</columns>
-        <columns>ORDERS.CREATED_DATE</columns>
-        <columns>CREATEDBY_USER.ALIAS</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>ORDERS.TYPE</field>
-            <operation>equals</operation>
-            <value>Non Commercial Order</value>
-        </filters>
-        <label>All Non-commercial Orders</label>
-        <language>en_US</language>
-    </listViews>
-    <listViews>
-        <fullName>All_Sample_Orders</fullName>
-        <columns>ORDERS.ORDER_NUMBER</columns>
-        <columns>ORDERS.STATUS</columns>
-        <columns>Sales_Sold_To_Account__c</columns>
-        <columns>Sales_Ship_To_Account__c</columns>
-        <columns>Sales_End_Customer_Account__c</columns>
-        <columns>ORDERS.TYPE</columns>
-        <columns>Sales_PO_Number_Txt__c</columns>
-        <columns>Sales_Req_Ship_Date_Dt__c</columns>
-        <columns>ORDERS.TOTAL_AMOUNT</columns>
-        <columns>Sales_ERP_SO_Txt__c</columns>
-        <columns>Sales_Order_Reason__c</columns>
-        <columns>SBQQ__Quote__c</columns>
-        <columns>Sales_Corporate_Order__c</columns>
-        <columns>CREATEDBY_USER.ALIAS</columns>
-        <columns>ORDERS.CREATED_DATE</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>ORDERS.TYPE</field>
-            <operation>equals</operation>
-            <value>Sample Order</value>
-        </filters>
-        <label>All Sample Orders</label>
         <language>en_US</language>
     </listViews>
     <listViews>
         <fullName>My_Orders</fullName>
         <columns>ORDERS.ORDER_NUMBER</columns>
-        <columns>ORDERS.STATUS</columns>
+        <columns>Sales_status__c</columns>
         <columns>Sales_Sold_To_Account__c</columns>
         <columns>Sales_Ship_To_Account__c</columns>
         <columns>Sales_End_Customer_Account__c</columns>
+        <columns>PRICEBOOK2.NAME</columns>
         <columns>ORDERS.TYPE</columns>
         <columns>Sales_PO_Number_Txt__c</columns>
         <columns>Sales_Req_Ship_Date_Dt__c</columns>
-        <columns>ORDERS.TOTAL_AMOUNT</columns>
+        <columns>Core_PSG_Total_Order_Price_Amt__c</columns>
         <columns>Sales_ERP_SO_Txt__c</columns>
+        <columns>Sales_Cost_Center__c</columns>
         <columns>Sales_Order_Reason__c</columns>
         <columns>SBQQ__Quote__c</columns>
         <columns>Sales_Corporate_Order__c</columns>
-        <columns>ORDERS.CREATED_DATE</columns>
-        <columns>CREATEDBY_USER.ALIAS</columns>
         <filterScope>Mine</filterScope>
         <label>My Orders</label>
-        <language>en_US</language>
     </listViews>
     <recordTypeTrackHistory>false</recordTypeTrackHistory>
     <recordTypes>
@@ -1724,6 +1765,25 @@
         <description>Default Record type for all Order Records</description>
         <label>Order Record</label>
         <picklistValues>
+            <picklist>Core_PSG_Stage__c</picklist>
+            <values>
+                <fullName>Acknowledged</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Draft</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reviewed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Submitted</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>SBQQ__ContractingMethod__c</picklist>
             <values>
                 <fullName>By Subscription End Date</fullName>
@@ -1731,7 +1791,7 @@
             </values>
             <values>
                 <fullName>Single Contract</fullName>
-                <default>true</default>
+                <default>false</default>
             </values>
         </picklistValues>
         <picklistValues>
@@ -1750,6 +1810,10 @@
             </values>
             <values>
                 <fullName>Net 45</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Net 51</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -1792,7 +1856,7 @@
             <picklist>Sales_Cost_Center__c</picklist>
             <values>
                 <fullName>65525 - Sample</fullName>
-                <default>false</default>
+                <default>true</default>
             </values>
         </picklistValues>
         <picklistValues>
@@ -1850,6 +1914,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>FAS</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>FCA</fullName>
                 <default>false</default>
             </values>
@@ -1874,11 +1942,11 @@
             <picklist>Sales_Order_Reason__c</picklist>
             <values>
                 <fullName>Non Stocking Order</fullName>
-                <default>true</default>
+                <default>false</default>
             </values>
             <values>
                 <fullName>Stocking Order</fullName>
-                <default>false</default>
+                <default>true</default>
             </values>
         </picklistValues>
         <picklistValues>
@@ -1927,6 +1995,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>160</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>30 days due net at End of Mth</fullName>
                 <default>false</default>
             </values>
@@ -1935,7 +2007,59 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>A</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>A15</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AB</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AD</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AG</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AH</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AI</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AK</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AL</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -1943,7 +2067,91 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AN</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AQ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AU</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AW</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AX</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AY</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BB</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BD</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BK</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BV</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Baseline date- End of month</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>C</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CA</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -1963,7 +2171,15 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>E</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>F</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FF</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -1971,11 +2187,39 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>H</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>I</fullName>
                 <default>false</default>
             </values>
             <values>
+                <fullName>I27</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>I30</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>I55</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>I75</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>I90</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>J</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>KA</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -1988,6 +2232,10 @@
             </values>
             <values>
                 <fullName>KD</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>KE</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -2131,6 +2379,18 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>O</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>P</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PK</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Pay immediately w%2Fo deduction</fullName>
                 <default>false</default>
             </values>
@@ -2143,7 +2403,15 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>T</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>U</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>V</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -2151,7 +2419,43 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>XW</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>XX</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>XY</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>XZ</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Y</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Z</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Z27</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ZB1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ZD1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ZDD</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -2665,10 +2969,6 @@
                 <default>false</default>
             </values>
             <values>
-                <fullName>99</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>A00 DHL-DANZAS</fullName>
                 <default>false</default>
             </values>
@@ -2870,6 +3170,17 @@
             </values>
         </picklistValues>
         <picklistValues>
+            <picklist>Sales_State__c</picklist>
+            <values>
+                <fullName>Draft</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Submitted</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>Sales_status__c</picklist>
             <values>
                 <fullName>Draft Order</fullName>
@@ -2877,6 +3188,10 @@
             </values>
             <values>
                 <fullName>Order Cancelled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Order Cancelled by SAP</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -2930,6 +3245,25 @@
         <description>When Order Activated or Cancelled, then Record type of Order will change to this Record type.</description>
         <label>Read Only Record</label>
         <picklistValues>
+            <picklist>Core_PSG_Stage__c</picklist>
+            <values>
+                <fullName>Acknowledged</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Draft</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reviewed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Submitted</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>SBQQ__ContractingMethod__c</picklist>
             <values>
                 <fullName>By Subscription End Date</fullName>
@@ -2937,7 +3271,7 @@
             </values>
             <values>
                 <fullName>Single Contract</fullName>
-                <default>true</default>
+                <default>false</default>
             </values>
         </picklistValues>
         <picklistValues>
@@ -2956,6 +3290,10 @@
             </values>
             <values>
                 <fullName>Net 45</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Net 51</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -3056,6 +3394,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>FAS</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>FCA</fullName>
                 <default>false</default>
             </values>
@@ -3080,11 +3422,11 @@
             <picklist>Sales_Order_Reason__c</picklist>
             <values>
                 <fullName>Non Stocking Order</fullName>
-                <default>true</default>
+                <default>false</default>
             </values>
             <values>
                 <fullName>Stocking Order</fullName>
-                <default>false</default>
+                <default>true</default>
             </values>
         </picklistValues>
         <picklistValues>
@@ -3125,15 +3467,11 @@
         <picklistValues>
             <picklist>Sales_Payment_Terms__c</picklist>
             <values>
-                <fullName>1%25 30%2C 30 days Due NET</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>125</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>30 days due net at End of Mth</fullName>
+                <fullName>160</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -3141,27 +3479,143 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>A</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>A15</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>ALL CREDIT CARDS</fullName>
+                <fullName>AA</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Baseline date- End of month</fullName>
+                <fullName>AB</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>CG</fullName>
+                <fullName>AC</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>CIA</fullName>
+                <fullName>AD</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>CIA CASHIERS CHECK</fullName>
+                <fullName>AE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AG</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AH</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AI</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AK</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AN</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AQ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AU</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AW</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AX</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AY</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BB</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BD</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BK</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BV</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>C</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CA</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -3169,19 +3623,43 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>E</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>F</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>G</fullName>
+                <fullName>FF</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>I</fullName>
+                <fullName>H</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>I55</fullName>
+                <fullName>I27</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>I30</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>I75</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>I90</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>J</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>KA</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -3197,6 +3675,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>KE</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>KF</fullName>
                 <default>false</default>
             </values>
@@ -3205,15 +3687,7 @@
                 <default>false</default>
             </values>
             <values>
-                <fullName>N</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>N31</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>N32</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -3221,31 +3695,11 @@
                 <default>false</default>
             </values>
             <values>
-                <fullName>N38</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>N39</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>N41</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>N42</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>N43</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>N44</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>N46</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -3297,51 +3751,15 @@
                 <default>false</default>
             </values>
             <values>
-                <fullName>NET 15 DAYS</fullName>
+                <fullName>O</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>NET 30DAYS</fullName>
+                <fullName>P</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>NET 41DAYS</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>NET 45DAYS</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>NET 47DAYS</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>NET 48DAYS</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>NET 53DAYS</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>NET 60 DAYS</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>NET 75 DAYS</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>NET 90 DAYS</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Pay immediately w%2Fo deduction</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>R</fullName>
+                <fullName>PK</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -3349,15 +3767,51 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>T</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>U</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>X</fullName>
+                <fullName>V</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Y</fullName>
+                <fullName>XW</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>XX</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>XY</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>XZ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Z</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Z27</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ZB1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ZD1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ZDD</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -4076,6 +4530,17 @@
             </values>
         </picklistValues>
         <picklistValues>
+            <picklist>Sales_State__c</picklist>
+            <values>
+                <fullName>Draft</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Submitted</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>Sales_status__c</picklist>
             <values>
                 <fullName>Draft Order</fullName>
@@ -4083,6 +4548,10 @@
             </values>
             <values>
                 <fullName>Order Cancelled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Order Cancelled by SAP</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -4129,6 +4598,1462 @@
             </values>
         </picklistValues>
     </recordTypes>
+    <recordTypes>
+        <fullName>Submitted_Orders</fullName>
+        <active>true</active>
+        <compactLayoutAssignment>Sales_Compact_Layout</compactLayoutAssignment>
+        <description>If Picklist Value is Submitted order record type will be change to this record type</description>
+        <label>Submitted Orders - Do Not Use</label>
+        <picklistValues>
+            <picklist>Core_PSG_Stage__c</picklist>
+            <values>
+                <fullName>Acknowledged</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Draft</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reviewed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Submitted</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>SBQQ__ContractingMethod__c</picklist>
+            <values>
+                <fullName>By Subscription End Date</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Single Contract</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>SBQQ__PaymentTerm__c</picklist>
+            <values>
+                <fullName>Due on receipt</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Net 15</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Net 30</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Net 45</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Net 51</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Net 60</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Net 90</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>SBQQ__PriceCalcStatus__c</picklist>
+            <values>
+                <fullName>Aborted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Completed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Failed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Not Needed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Not Started</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Queued</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Sales_Cost_Center__c</picklist>
+            <values>
+                <fullName>65525 - Sample</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Sales_Incoterms_Txt__c</picklist>
+            <values>
+                <fullName>AM1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CIF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CIP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CPT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Costs and freight</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DAP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DAT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DDP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Deliverd at Place</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Delivered Duty Unpaid</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Delivered ex quay %28duty paid%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Delivered ex ship</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EXW</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FAS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FCA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FOB</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hand Carry</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N%2FA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PCT</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Sales_Order_Reason__c</picklist>
+            <values>
+                <fullName>Non Stocking Order</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Stocking Order</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Sales_Order_Sub_Type__c</picklist>
+            <values>
+                <fullName>ARM standalone license order</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Amend Non Commercial</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Corporate Order</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Dev Kit%2FPAC ES with license %28Quartus and%2For ARM%29 order</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Evaluation license order</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FPGA university program license request</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Partner license order</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Standalone license order</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Sales_Payment_Terms__c</picklist>
+            <values>
+                <fullName>1%25 30%2C 30 days Due NET</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>125</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>160</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>30 days due net at End of Mth</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>30E</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>A</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>A15</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AB</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AD</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AG</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AH</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AI</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AK</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ALL CREDIT CARDS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AN</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AQ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AU</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AW</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AX</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AY</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BB</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BD</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BK</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BV</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Baseline date- End of month</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>C</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CG</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CIA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CIA CASHIERS CHECK</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DBB</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>E</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>F</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>G</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>H</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>I</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>I27</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>I30</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>I55</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>I75</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>I90</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>J</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>KA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>KB</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>KC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>KD</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>KE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>KF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>M</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N31</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N32</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N34</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N38</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N39</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N41</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N42</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N43</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N44</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N46</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N49</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N50</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N51</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N52</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N53</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N54</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N56</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N57</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N58</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N59</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NB</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NET 15 DAYS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NET 30DAYS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NET 41DAYS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NET 45DAYS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NET 47DAYS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NET 48DAYS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NET 53DAYS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NET 60 DAYS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NET 75 DAYS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NET 90 DAYS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>O</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>P</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PK</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pay immediately w%2Fo deduction</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>R</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>S</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>T</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>U</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>V</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>X</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>XW</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>XX</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>XY</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>XZ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Y</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Z</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Z27</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ZB1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ZD1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ZDD</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Sales_SAP_OrderCancelledReason__c</picklist>
+            <values>
+                <fullName>00</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>01</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>02</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>03</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>04</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>05</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>06</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>07</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>08</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>10</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>11</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>14</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>17</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>18</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>20</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>21</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>23</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>24</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Y1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>YA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ZR</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Sales_Shipping_Condition_Txt__c</picklist>
+            <values>
+                <fullName>0</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1A</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1B</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1C</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1D</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1E</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1F</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1G</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1H</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1J</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1K</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1L</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1M</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1N</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1P</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1Q</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1R</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1S</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1T</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1U</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1V</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1W</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1Z</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2A</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2B</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2C</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2D</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2E</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2F</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2N</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2S</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2U</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2W</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2Z</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3A</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3B</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3C</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3D</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3E</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3F</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3G</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3H</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3J</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3K</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3L</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3M</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3U</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3V</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3W</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4A</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4B</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4C</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4S</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4W</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5A</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5B</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5C</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5D</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5E</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5F</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5G</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5H</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5J</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5K</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5L</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5M</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5N</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5O</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5V</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>61</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>62</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>63</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>64</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6A</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6B</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6C</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6D</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6E</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6F</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6G</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6H</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6J</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6K</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6L</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6M</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6N</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6P</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6Q</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6R</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6S</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6T</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6U</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6V</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6W</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6X</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6Y</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6Z</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>70</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>7L</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>99</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>A00 DHL-DANZAS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>A10 ACE CARGO EXP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>A15 AIR CARGO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>A25 AIR PARCEL POST</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>A56 AIR %26 GROUND WORLD TRANSPORT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>D00 DHL AIR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>D01 DHL GROUND</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>D04 DACHAIN INTL EXP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>D20 DIMERCO EXPRESS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>F00 FEDEX STANDARD OVERNIGHT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>F01 FEDEX PRIORITY OVERNIGHT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>F02 FEDEX EXPRESS SAVER</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>F04 FEDEX 2DAY</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>F05 FEDEX GROUND U%2ES</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>F06 FEDEX INT%27L PRIORITY</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FEDEX INTERNATIONAL ECONOMY</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>G15 GREAT WORLD EXPRESS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>H00 HAND CARRY</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>H26 HCT TRANSPORTATION</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>K00 KINTETSU</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>K10 KAMINO INTERNATIONAL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>K20 KWE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>M30 MARINE-LAND-AIR TRANSPORTATION</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>S50 SECURITY EXPRESS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SCHENKER</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>T25 TRUCK</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>T36 TISCO CUSTOMS SERVICE CO LTD</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>T70 TEAM AIRFREIGHT CORP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>U00 UPS GROUND</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>U01 UPS WORLDWIDE EXPRESS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>U02 UPS 2 DAY AIR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>U03 UPS NEXT DAY AIR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>U04 UPS 3 DAY SELECT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>U05 UPS NEXT DAY AIR SAVER</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>U06 UPS WORLDWIDE EXPEDITED</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>U07 UPS SUPPLY CHAIN SOLUTIONS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>U08 UPS WORLDWIDE SAVER</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>U10 U-FREIGHT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>U16 U-FREIGHT TAIWAN</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Y0</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Y00 YELLOW FREIGHT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Y07 YUSEN AIR %26 SEA SERVICE CO LTD</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Y1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Y2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Y3</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Y4</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Y5</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Y6</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Y7</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ZZZ DEFAULT FREIGHT METHOD</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Sales_State__c</picklist>
+            <values>
+                <fullName>Draft</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Submitted</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Sales_status__c</picklist>
+            <values>
+                <fullName>Draft Order</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Order created successfully</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Status</picklist>
+            <values>
+                <fullName>Activated</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Draft</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type</picklist>
+            <values>
+                <fullName>Licensed Tool Order</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
     <searchLayouts>
         <customTabListAdditionalFields>ORDERS.ORDER_NUMBER</customTabListAdditionalFields>
         <customTabListAdditionalFields>SALES.ACCOUNT.NAME</customTabListAdditionalFields>
@@ -4147,10 +6072,19 @@
     </searchLayouts>
     <sharingModel>Private</sharingModel>
     <validationRules>
+        <fullName>Account_doesnt_match_with_Quote</fullName>
+        <active>false</active>
+        <description>Order Sold To, Ship To &amp; End Customer Account does not match with the Sold To, Ship To &amp; End Customer Account on the Quote</description>
+        <errorConditionFormula>if( OR(ISPICKVAL(Status,  &quot;Activated&quot;),Sales_Is_Verified__c = True)  &amp;&amp; (Sales_End_Customer_Account__c ==  SBQQ__Quote__r.core_cpq_end_customer_nm__c ||  Sales_Ship_To_Account__r.Name ==  SBQQ__Quote__r.SBQQ__ShippingName__c ||  Sales_Ship_To_Account__r.Name ==  SBQQ__Quote__r.SBQQ__BillingName__c),true,false)</errorConditionFormula>
+        <errorDisplayField>Sales_SoldTo_Account_2_Txt__c</errorDisplayField>
+        <errorMessage>Order&apos;s Sold To, Ship To &amp; End Customer Account does not match with the Sold To, Ship To &amp; End Customer Account on the Quote</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>Core_PSG_Cancelled_Reason_On_Order</fullName>
         <active>true</active>
         <description>Cannot cancel order without providing Cancellation reason</description>
         <errorConditionFormula>IF( ISPICKVAL(Sales_status__c, &apos;Order Cancelled&apos;) &amp;&amp; ISBLANK( Sales_Cancelled_Reason_Dsc__c ), true, false)</errorConditionFormula>
+        <errorDisplayField>Sales_Cancelled_Reason_Dsc__c</errorDisplayField>
         <errorMessage>Cannot cancel order without providing Cancellation reason</errorMessage>
     </validationRules>
     <validationRules>
@@ -4247,6 +6181,14 @@ NOT(ISPICKVAL( PRIORVALUE(Status),&apos;Activated&apos;)))
         <errorMessage>Cost Center is mandatory for sample order</errorMessage>
     </validationRules>
     <validationRules>
+        <fullName>Core_PSG_Order_Reason_Test_Rule</fullName>
+        <active>false</active>
+        <description>If Order Type is &apos;ARM License Order&apos;  and Order reason Stocking order then order placed by Disti/OEM allowed.</description>
+        <errorConditionFormula>IF(ISPICKVAL(Type, &quot;ARM license order&quot;),IF(ISPICKVAL( Sales_Order_Reason__c , &quot;Non Stocking Order&quot;),
+IF(ISPICKVAL( Account.Type , &apos;OEM / LOEM&apos;) || ISPICKVAL( Account.Type, &apos;Distributor&apos;) , false,true), FALSE), FALSE)</errorConditionFormula>
+        <errorMessage>Only non stocking order is allowed for ARM standalone license order placed by Disti/OEM</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>Core_PSG_Order_Type_on_Order</fullName>
         <active>false</active>
         <description>View that Order Type is defaulted as &quot;Partner License Order&quot; and cannot be changed</description>
@@ -4281,6 +6223,19 @@ ISBLANK(TEXT(Sales_Order_Sub_Type__c))
 2. Price Book</errorMessage>
     </validationRules>
     <validationRules>
+        <fullName>Core_PSG_RestrictFieldForSubmittedOrder</fullName>
+        <active>false</active>
+        <description>Validation rule to prevent order editing once submitted to SAP ie.Stage of Order is Activated or Acknowledged or the order is cancelled i.e. Status is Cancelled</description>
+        <errorConditionFormula>IF( $Setup.PRM_Execution_Controls__c.Skip_ValidationRule_Order_Status__c, False,
+IF( 
+AND(Sales_Is_Recalled__c=False,OR(ISPICKVAL( PRIORVALUE(Status), &quot;Activated&quot;),(ISPICKVAL( PRIORVALUE(Status), &quot;Acknowledged&quot;)))),
+IF(Ischanged(SBQQ__Contracted__c),false, IF(ISNEW(), FALSE, TRUE))
+&amp;&amp; IF(Ischanged(Sales_Is_Recalled__c),false, IF(ISNEW(), FALSE, TRUE)),false)  || 
+
+(IF( ISPICKVAL( PRIORVALUE(Sales_status__c), &quot;Order Cancelled&quot;), true,false)))</errorConditionFormula>
+        <errorMessage>You can&apos;t edit the fields on Activated Orders or Cancelled Orders</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>Core_PSG_Valid_Quote_Filter_On_Order</fullName>
         <active>true</active>
         <description>This Validation rule which check quote selected on order should be active ,approved and  should have quote type as non non-budgetary. Else it will not allow to save record with non satisfying quotes.</description>
@@ -4294,12 +6249,13 @@ OR(NOT(ISPICKVAL( PRIORVALUE(Status),&apos;Activated&apos;)),Sales_Is_Verified__
     </validationRules>
     <validationRules>
         <fullName>Core_PSG_Valid_Req_Ship_Date_On_Order</fullName>
-        <active>false</active>
+        <active>true</active>
         <errorConditionFormula>AND(Sales_Req_Ship_Date_Dt__c    &lt;   TODAY(),
 NOT( ISPICKVAL(Sales_status__c	, &apos;Order Cancelled&apos;) ),
 OR( Not( Sales_Is_Verified__c ) , NOT( ISPICKVAL( PRIORVALUE( Status ) , &apos;Activated&apos;) )),
 $Setup.PRM_Execution_Controls__c.Skip_ValidationRule_Order_Status__c=false
  )</errorConditionFormula>
+        <errorDisplayField>Sales_Req_Ship_Date_Dt__c</errorDisplayField>
         <errorMessage>Req. Ship date should be present or future date</errorMessage>
     </validationRules>
     <validationRules>
@@ -4433,7 +6389,7 @@ NOT(ISPICKVAL( PRIORVALUE(Status),&apos;Activated&apos;))
     </validationRules>
     <validationRules>
         <fullName>Sales_Amend_Non_Commercial_Order_SubType</fullName>
-        <active>false</active>
+        <active>true</active>
         <description>User can set  the Amend non Commercial order sub type only if the order has quote and Quotes&apos;s type is amendment.</description>
         <errorConditionFormula>IF($Setup.PRM_Execution_Controls__c.Skip_ValidationRule_Order_Status__c, False,
 	AND(
@@ -4448,11 +6404,11 @@ NOT(ISPICKVAL( PRIORVALUE(Status),&apos;Activated&apos;))
 		)
 	)
 )</errorConditionFormula>
-        <errorMessage>User can set the order sub type as  Amend Non Commercial only incase of amend order.</errorMessage>
+        <errorMessage>User can set the order sub type as Amend Non Commercial only incase of amend order.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Sales_Cannot_Activate_Order_Manually</fullName>
-        <active>true</active>
+        <active>false</active>
         <description>Once Order pushed to SAP and order creation failed, It cannot be Activated manually.(Except for Non-Commercial Order)</description>
         <errorConditionFormula>IF($Setup.PRM_Execution_Controls__c.Skip_ValidationRule_Order_Status__c, False,
 OR(
@@ -4474,7 +6430,7 @@ ISPICKVAL(Status, &apos;Activated&apos;)
     </validationRules>
     <validationRules>
         <fullName>Sales_Cant_SubmitToSAP_WithoutOrderItem</fullName>
-        <active>true</active>
+        <active>false</active>
         <description>Order should have atleast one Order Product inorder to Submit to SAP</description>
         <errorConditionFormula>AND( 
 NOT( ISPICKVAL( Sales_status__c , &apos;SAP Order Creation Failed&apos;) ),
@@ -4482,7 +6438,21 @@ NOT( ISPICKVAL( Sales_status__c , &apos;Order Cancelled&apos;) ),
 Sales_Is_Verified__c = True ,   
 OrderItemCount__c = 0
 )</errorConditionFormula>
+        <errorDisplayField>Sales_SoldTo_Account_2_Txt__c</errorDisplayField>
         <errorMessage>Order should have atleast one Order Product inorder to Submit to SAP.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Sales_Check_PriceBook</fullName>
+        <active>false</active>
+        <description>If the Pricebook at the Quote is not the same as the one in the Order details then the user should get a validation error stopping the addition of the Quote. </description>
+        <errorConditionFormula>AND(
+NOT( ISPICKVAL( Type , &quot;Sample Order&quot;) ),
+NOT( ISBLANK( SBQQ__Quote__c ) ),
+NOT(ISBLANK( Pricebook2Id )),
+NOT(ISBLANK( SBQQ__Quote__r.SBQQ__PriceBook__c )),
+NOT(  SBQQ__Quote__r.SBQQ__PriceBook__c  =  Pricebook2Id )
+)</errorConditionFormula>
+        <errorMessage>Pricebook at the Quote is not the same as the one in the Order details.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Sales_Corporate_Reason_Default</fullName>
@@ -4513,7 +6483,7 @@ NOT(ISPICKVAL( PRIORVALUE(Status),&apos;Activated&apos;))
     </validationRules>
     <validationRules>
         <fullName>Sales_EC_Validation_Internal_Account</fullName>
-        <active>false</active>
+        <active>true</active>
         <description>If the sold to account is an internal account (Disti Channel 04) and order reason is non-stocking, you can use only Internal Ship to accounts as an end customer account</description>
         <errorConditionFormula>IF($Setup.PRM_Execution_Controls__c.Skip_ValidationRule_Order_Status__c, False, AND(
 ISPICKVAL( Sales_Order_Reason__c , &apos;Non Stocking Order&apos;),
@@ -4530,11 +6500,11 @@ OR(ISPICKVAL(Status,&apos;Draft&apos;),Sales_Is_Verified__c=true,NOT(ISPICKVAL( 
     </validationRules>
     <validationRules>
         <fullName>Sales_Mandatory_Accounts_For_Order</fullName>
-        <active>false</active>
+        <active>true</active>
         <description>For License ,Sample , Non-commercial(FPGA University, Corporate) all 3 accounts (sold to ,ship to , end customer ) are mandatory.</description>
         <errorConditionFormula>IF($Setup.PRM_Execution_Controls__c.Skip_ValidationRule_Order_Status__c, False,
 AND(
-NOT(ISBLANK(TEXT(Type))),
+NOT(ISBLANK(TEXT(Type))), 
 NOT(ISBLANK(TEXT(Sales_Order_Sub_Type__c))),
 OR( ISPICKVAL(Type,&quot;Licensed Tool Order&quot;), ISPICKVAL(Type,&quot;Sample Order&quot;),AND(ISPICKVAL(Type,&quot;Non Commercial Order&quot;),OR(ISPICKVAL(Sales_Order_Sub_Type__c,&quot;FPGA university program license request&quot;),ISPICKVAL(Sales_Order_Sub_Type__c,&quot;Corporate Order&quot;),ISPICKVAL(Sales_Order_Sub_Type__c,&quot;Amend Non Commercial&quot;)))),
 OR(ISBLANK(Sales_Sold_To_Account__c) ,ISBLANK(Sales_Ship_To_Account__c),AND(ISPICKVAL(Sales_Order_Reason__c, &apos;Non Stocking Order&apos;),ISBLANK(Sales_End_Customer_Account__c))
@@ -4615,12 +6585,26 @@ CONTAINS(Sales_PO_Number_Txt__c, &apos;&amp;&apos;)
     </validationRules>
     <validationRules>
         <fullName>Sales_PSG_Order_Reason</fullName>
-        <active>false</active>
+        <active>true</active>
         <description>You cannot have Stocking Order Reason for Non Commercial order type.</description>
         <errorConditionFormula>IF( $Setup.PRM_Execution_Controls__c.Skip_ValidationRule_Order_Status__c, false, IF( ISPICKVAL(Type,&quot;Non Commercial Order&quot;) 
 &amp;&amp; ISPICKVAL( Sales_Order_Reason__c , &quot;Stocking Order&quot;), true, false))</errorConditionFormula>
         <errorDisplayField>Sales_Order_Reason__c</errorDisplayField>
         <errorMessage>You cannot have Stocking Order Reason for Non Commercial order type.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Sales_QuoteOrderTypeChange_Validation</fullName>
+        <active>false</active>
+        <description>Non Commercial Order cannot be associated/combined with Quote</description>
+        <errorConditionFormula>IF( $Setup.PRM_Execution_Controls__c.Skip_ValidationRule_Order_Status__c,false, 
+(AND
+(
+ NOT(ISBLANK(SBQQ__Quote__c)),
+ ISPICKVAL( Type , &apos;Non Commercial Order&apos;)
+)
+)
+)</errorConditionFormula>
+        <errorMessage>Non Commercial order cannot be associated/combined with Quote.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Sales_Quote_Mandatory</fullName>
@@ -4636,7 +6620,8 @@ NOT(ISPICKVAL (Sales_status__c, &quot;Order Cancelled&quot;))
 ),
 ISPICKVAL( Sales_Order_Sub_Type__c , &quot;Corporate Order&quot;),
 ISBLANK( SBQQ__Quote__c ),
-ISBLANK(Sales_Cancelled_Quote_No__c )
+ISBLANK(Sales_Cancelled_Quote_No__c ),
+NOT(ISPICKVAL( PRIORVALUE(Status),&apos;Activated&apos;))
 )
 )</errorConditionFormula>
         <errorDisplayField>SBQQ__Quote__c</errorDisplayField>
@@ -4644,7 +6629,7 @@ ISBLANK(Sales_Cancelled_Quote_No__c )
     </validationRules>
     <validationRules>
         <fullName>Sales_RestrictFields_Validation</fullName>
-        <active>false</active>
+        <active>true</active>
         <description>Cannot edit Stage, Order start date, Account and also cannot edit Order Products on Orders that are Cancelled And in SAP Resubmission In Progress.</description>
         <errorConditionFormula>IF($Setup.PRM_Execution_Controls__c.Skip_ValidationRule_Order_Status__c, False, AND(
 OR( AND(ISPICKVAL( PRIORVALUE(Sales_status__c) , &apos;SAP Resubmission In Progress&apos;),Sales_Is_Verified__c = False), ISPICKVAL( PRIORVALUE(Sales_status__c) , &apos;Order Cancelled&apos;) ),
@@ -4669,6 +6654,7 @@ ISPICKVAL(Sales_status__c ,&apos;SAP Order Creation Failed&apos;),
 ISPICKVAL(Sales_status__c ,&apos;SAP Resubmission In Progress&apos;)
 )
 ))</errorConditionFormula>
+        <errorDisplayField>Sales_SoldTo_Account_2_Txt__c</errorDisplayField>
         <errorMessage>In &apos;Non Commercial Order&apos; should not allowed Status as &apos;SAP Order Creation Failed&apos; and &apos;SAP Resubmission In Progress&apos;.</errorMessage>
     </validationRules>
     <validationRules>
@@ -4691,17 +6677,20 @@ NOT(ISPICKVAL( PRIORVALUE(Status),&apos;Activated&apos;)))
         <active>false</active>
         <description>The Shipping instruction of sample order should be defaulted from the ship to account but should be editable.</description>
         <errorConditionFormula>IF($Setup.PRM_Execution_Controls__c.Skip_ValidationRule_Order_Status__c, FALSE,
-AND(
+AND( 
 OR(
+
 AND(
 OR( ISPICKVAL( PRIORVALUE(Type) ,&apos;Licensed Tool Order&apos;), ISPICKVAL( PRIORVALUE(Type) ,&apos;Non Commercial Order&apos;) ),
 NOT( ISPICKVAL( Type ,&apos;Sample Order&apos;) ),
 ISCHANGED( Sales_Shipping_Instructions_Dsc__c )
 ),
+
 AND(
 OR( ISPICKVAL( Type ,&apos;Licensed Tool Order&apos;), ISPICKVAL( Type ,&apos;Non Commercial Order&apos;) ),
-Sales_Shipping_Instructions_Dsc__c != Sales_Ship_To_Account__r.Core_Direct_Shipping_Instruction_Txt__c
+Sales_Shipping_Instructions_Dsc__c !=  Sales_Ship_To_Account__r.Core_Direct_Shipping_Instruction_Txt__c 
 )
+
 ),
 NOT(ISCHANGED( Sales_Ship_To_Account__c )),
 NOT(ISPICKVAL( Status,&apos;Activated&apos;))
@@ -4730,6 +6719,39 @@ NOT( ISBLANK( Sales_Cancelled_Reason_Dsc__c ) )
 ))</errorConditionFormula>
         <errorMessage>Can not select an Inactive Pricebook</errorMessage>
     </validationRules>
+    <validationRules>
+        <fullName>ShipToAccount_Validation</fullName>
+        <active>false</active>
+        <description>To display ship to account as per sold to account selected</description>
+        <errorConditionFormula>IF($Setup.PRM_Execution_Controls__c.Skip_ValidationRule_Order_Status__c, FALSE,(AND((ISBLANK(Sales_Sold_To_Account__c)),
+NOT(ISBLANK(Sales_Ship_To_Account__c)),OR((Sales_Is_Verified__c=True),ISPICKVAL( Sales_status__c,&apos;Draft&apos;)))))</errorConditionFormula>
+        <errorDisplayField>Sales_Sold_To_Account__c</errorDisplayField>
+        <errorMessage>Please select sold to account</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>check_logs</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND( ISPICKVAL( Status , &apos;Activated&apos;) , 
+ ! ISBLANK(Sales_ERP_SO_Txt__c ))</errorConditionFormula>
+        <errorDisplayField>Sales_SoldTo_Account_2_Txt__c</errorDisplayField>
+        <errorMessage>when status is activated ERP so# should not be blank</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>sap_to_salesforce_info</fullName>
+        <active>false</active>
+        <errorConditionFormula>AND(
+ISPICKVAL(Status  ,&apos;Activated&apos;),
+! ISBLANK(Sales_ERP_Entry_Date_Dt__c) 
+)</errorConditionFormula>
+        <errorDisplayField>Sales_SoldTo_Account_2_Txt__c</errorDisplayField>
+        <errorMessage>ERP Entry Date Cannot be Blank</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>test</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(ISPICKVAL(Sales_status__c,&apos;Order Cancelled by SAP&apos;) , Sales_Req_Ship_Date_Dt__c &lt; TODAY())</errorConditionFormula>
+        <errorMessage>order cannot bbe cancle</errorMessage>
+    </validationRules>
     <webLinks>
         <fullName>SBQQ__EditOrderProducts</fullName>
         <availability>online</availability>
@@ -4740,5 +6762,24 @@ NOT( ISBLANK( Sales_Cancelled_Reason_Dsc__c ) )
         <openType>noSidebar</openType>
         <page>SBQQ__OrderLineSelector</page>
         <protected>false</protected>
+    </webLinks>
+    <webLinks>
+        <fullName>Show_report</fullName>
+        <availability>online</availability>
+        <displayType>link</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>Show report</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>https://intel--crmdevsls3.sandbox.lightning.force.com/lightning/r/Dashboard/01Z2D000000kyalUAA/view?queryScope=userFolders&amp;fv0={!Order.Type}</url>
     </webLinks>
 </CustomObject>

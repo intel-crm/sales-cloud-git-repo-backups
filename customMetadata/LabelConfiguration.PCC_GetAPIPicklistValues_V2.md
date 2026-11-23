@@ -8,6 +8,6 @@
     </values>
     <values>
         <field>Value__c</field>
-        <value xsi:type="xsd:string">ECC,IPN,MRC,PAN,PGN,PSN,VMN,DTN,ODN</value>
+        <value xsi:type="xsd:string">ECC,IPN,MRC,PAN,PGN,PSN,VMN</value>
     </values>
 </CustomMetadata>

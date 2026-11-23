@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>Caseking Iberia Partner User</description>
+    <description>Globaldata Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>Caseking Iberia Partner User</name>
+    <name>Globaldata Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>GlobaldataPartnerManager</parentRole>
 </Role>

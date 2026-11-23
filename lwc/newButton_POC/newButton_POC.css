@@ -1,0 +1,21 @@
+.modal_class {
+    max-width: 100% !important;
+}
+
+.float_left_label {
+    width: 25%;
+    text-align: right;
+}
+
+.float_right_content {
+    width: 75%;
+}
+
+.spinner_class {
+    height: 12.5rem; 
+    position: relative;
+}
+
+.error_icon {
+    --sds-c-icon-color-foreground-default: red;
+}

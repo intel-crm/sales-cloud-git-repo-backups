@@ -74,14 +74,14 @@
         <aggregateTypes>Sum</aggregateTypes>
         <field>Opportunity.Core_Pipeline_Heath__c</field>
     </columns>
-    <description>Low Velocity – Opportunities that are in the Qualify or Define stage within 60 days of Decision Date</description>
+    <description>Low Velocity – Opportunities that are in the Qualify stage within 90 days of Decision Date</description>
     <filter>
         <criteriaItems>
             <column>STAGE_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Qualify,Define</value>
+            <value>Qualify</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Compliance_Status__c</column>
@@ -116,7 +116,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>NEXT_N_DAYS:59,LAST_N_DAYS:60</value>
+            <value>NEXT_N_DAYS:60,LAST_N_DAYS:120</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

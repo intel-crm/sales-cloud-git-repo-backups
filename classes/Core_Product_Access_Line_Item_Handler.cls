@@ -6,16 +6,15 @@
 * ----------------------------------------------------------------------------     
 * Ganapati                 25/11/2019              Modified for US517861
 * Ganapati                 13/12/2019              Modified for DE62498 - Asset created though MAP is not yet approved
-* Farooq 				   01/10/2024			   Modified the approval prcess as part of ATHR (TWC745-6578)
 ****************************************************************************************************/
 public class Core_Product_Access_Line_Item_Handler{ 
     private static final String APPROVAL_REQUIRED = 'Approval Required';
     private static final String PAR_HIDDEN = 'Par Hidden';
     
+
     /*This method is only for migration purposes*/
     public static void inactivateLItemmigrationonly(List<Core_IPS_Map_Par_Line_Item__c> newList){
         List<Core_IPS_Map_Par_Line_Item__c> lItemList = new List<Core_IPS_Map_Par_Line_Item__c>();
-        if(Core_IPS_Map_Par_Line_Item__c.SObjectType.getDescribe().isAccessible()){ //FLS check already added - Aditya
         List<Core_IPS_Map_Par_Line_Item__c> lItems = [Select id,Core_Supported_Product_EOIS__c,Core_Status__c from Core_IPS_Map_Par_Line_Item__c where id IN: newList];
         for(Core_IPS_Map_Par_Line_Item__c lItem: lItems){
             if(lItem.Core_Supported_Product_EOIS__c == true){
@@ -23,28 +22,30 @@ public class Core_Product_Access_Line_Item_Handler{
                 lItemList.add(lItem);
             }
         }
-        }
         update lItemList;
     }
     
     
     public static List<Asset> getActiveAssets(List<String> accountidList, List<String> supProdList){      
-        List<Asset> assetList = new List<Asset>();      
-        if(AccountidList!=null && AccountidList.get(0)!=null && AccountidList.get(0).startsWith('001') && asset.SObjectType.getDescribe().isAccessible() ){    //FLS check laready added - Aditya    
+        List<Asset> assetList;      
+        if(AccountidList!=null && AccountidList.get(0)!=null && AccountidList.get(0).startsWith('001')){        
             assetList = [SELECT id, accountId, contactId, product2Id,Core_Supported_Product__c , Core_Product_Organization__c,Core_Map_List__c from asset where accountid IN: AccountidList and Core_Supported_Product__c IN:SupProdList and Status!='Inactive'];       
         }
+        System.debug('Existing Assets>>>>>>>>>>>>>>>>>'+assetList);       
         return assetList;       
     }       
     
     public static List<Asset> getInactiveAssets(List<String> accountidList, List<String> supProdList){        
-        List<Asset> inactiveAssetList = new List<Asset>();      
-        if(AccountidList.get(0).startsWith('001') && asset.SObjectType.getDescribe().isAccessible()){ //FLS check already added - Aditya     
+        List<Asset> inactiveAssetList;      
+        if(AccountidList.get(0).startsWith('001')){      
             InactiveAssetList = [Select id, accountId, contactId, product2Id,Core_Supported_Product__c , Core_Product_Organization__c,Core_Map_List__c from asset where accountid IN: AccountidList and Core_Supported_Product__c IN:SupProdList and Status='Inactive'];         
         }
+        System.debug('Inactive Assets>>>>>>>>>>>>>>>>>'+InactiveAssetList);
         return InactiveAssetList;       
     }
     
     public static void submitPARForApproval(List<Core_IPS_Map_Par_Line_Item__c> newList){
+        System.debug('Inside 36 submitPARForApproval ');
         List<Core_IPS_Map_Par_Line_Item__c> mliList= new List<Core_IPS_Map_Par_Line_Item__c>();
         List<Core_IPS_Map_Par_Line_Item__c> mliList1= new List<Core_IPS_Map_Par_Line_Item__c>();
         // Added by Ganapati for - US517861 - start
@@ -87,13 +88,10 @@ public class Core_Product_Access_Line_Item_Handler{
     }
     
     
-     public static void submitApprovalRequestForLineItem(List<Core_IPS_Map_Par_Line_Item__c> litemsForApproval){
-         List<Core_IPS_Map_Par_Line_Item__c> lItemList = new List<Core_IPS_Map_Par_Line_Item__c>();
-         
-        if(Core_IPS_Map_Par_Line_Item__c.SObjectType.getDescribe().isAccessible()){ //FLS check already added - Aditya
-             lItemList =[select Core_MAP_PAR__c, Core_MAP_PAR__r.Core_Product_Organization__c,Core_MAP_PAR__r.Core_Product_Organization__r.OwnerId,Core_Supported_Product__r.Core_Product_Organization__c from Core_IPS_Map_Par_Line_Item__c where id IN:litemsForApproval];        
-        }
-            Set<Id> prodOrgIds = new Set<ID>();
+    public static void submitApprovalRequestForLineItem(List<Core_IPS_Map_Par_Line_Item__c> litemsForApproval){
+        system.debug('###testappr'+litemsForApproval);
+        List<Core_IPS_Map_Par_Line_Item__c> lItemList =[select Core_MAP_PAR__c, Core_MAP_PAR__r.Core_Product_Organization__c,Core_MAP_PAR__r.Core_Product_Organization__r.OwnerId,Core_Supported_Product__r.Core_Product_Organization__c from Core_IPS_Map_Par_Line_Item__c where id IN:litemsForApproval];        
+        Set<Id> prodOrgIds = new Set<ID>();
         Set<Id> ownerIdlist= new Set<Id>();
         List<Core_IPS_Product_Organization__c> prodorgRecords = new List<Core_IPS_Product_Organization__c>();
         Map<Id,Id> orgIdswithOwnerIds = new Map<Id,Id>();
@@ -105,48 +103,47 @@ public class Core_Product_Access_Line_Item_Handler{
             prodOrgIds.add(parRecord.Core_MAP_PAR__r.Core_Product_Organization__c);
             OwnerIdlist.add(parRecord.Core_MAP_PAR__r.Core_Product_Organization__r.OwnerId);
         }
-        List<Core_IPS_Product_Organization__c> prodorgRecList = new List<Core_IPS_Product_Organization__c>();
-        if(Core_IPS_Product_Organization__c.SObjectType.getDescribe().isAccessible()){ //FLS check already added - Aditya
-            prodorgRecList = [Select id,OwnerId from Core_IPS_Product_Organization__c where id IN:prodOrgIds];  
-            for(Core_IPS_Product_Organization__c productorg: prodorgRecList){
-                OrgIdswithOwnerIds.put(Productorg.id,Productorg.OwnerId);
-            }
-        }
-        Map<Id,List<Approval.ProcessSubmitRequest>> mapOfApprovalProcess = new Map<Id,List<Approval.ProcessSubmitRequest>>();
+        
+        
         for(Core_IPS_Map_Par_Line_Item__c litem: LItemList){
-            if(mapOfApprovalProcess.containsKey(Litem.Core_Supported_Product__r.Core_Product_Organization__c)){
-                Approval.ProcessSubmitRequest req2 = new Approval.ProcessSubmitRequest();
-                List<Id> approverIds2= new List<Id>();                    
-                approverIds2.add(OrgIdswithOwnerIds.get(Litem.Core_Supported_Product__r.Core_Product_Organization__c));
-                req2.setObjectId(Litem.id);
-                req2.setNextApproverIds(approverIds2); 
-                mapOfApprovalProcess.get(Litem.Core_Supported_Product__r.Core_Product_Organization__c).add(req2); 
+            if(OrgIdswithListofProductLitemIds1.containsKey(Litem.Core_Supported_Product__r.Core_Product_Organization__c)){
+                OrgIdswithListofProductLitemIds1.get(Litem.Core_Supported_Product__r.Core_Product_Organization__c).add(Litem); 
             }
-            else{   
-                Approval.ProcessSubmitRequest req2 = new Approval.ProcessSubmitRequest();
-                List<Id> approverIds2= new List<Id>();                    
-                approverIds2.add(OrgIdswithOwnerIds.get(Litem.Core_Supported_Product__r.Core_Product_Organization__c));
-                req2.setObjectId(Litem.id);
-                req2.setNextApproverIds(approverIds2); 
-                mapOfApprovalProcess.put(Litem.Core_Supported_Product__r.Core_Product_Organization__c, new List<Approval.ProcessSubmitRequest>{req2}); 
+            else{
+                List<Core_IPS_Map_Par_Line_Item__c> lItemRecordsList = new List<Core_IPS_Map_Par_Line_Item__c>();
+                LItemRecordsList.add(Litem);        
+                OrgIdswithListofProductLitemIds1.put(Litem.Core_Supported_Product__r.Core_Product_Organization__c,LItemRecordsList); 
+                system.debug('org id and line items!!!'+OrgIdswithListofProductLitemIds1);
             }
         }
         
+        List<Core_IPS_Product_Organization__c> prodorgRecList = [Select id,OwnerId from Core_IPS_Product_Organization__c where id IN:prodOrgIds];  
+        for(Core_IPS_Product_Organization__c productorg: prodorgRecList){
+            OrgIdswithOwnerIds.put(Productorg.id,Productorg.OwnerId);
+            system.debug('org id and owner id map@@@'+OrgIdswithOwnerIds);
+        }
         
-        for(Id prodOrgRec1 :mapOfApprovalProcess.keyset()){                   
-            List<Approval.ProcessSubmitRequest> requests = mapOfApprovalProcess.get(prodOrgRec1);               
-            Approval.process(requests);
+        for(Id prodOrgRec1 :OrgIdswithListofProductLitemIds1.keyset()){                   
+            for(Core_IPS_Map_Par_Line_Item__c parRecord : OrgIdswithListofProductLitemIds1.get(ProdOrgRec1)){
+                Approval.ProcessSubmitRequest req2 = new Approval.ProcessSubmitRequest();
+                List<Approval.ProcessResult> result =new List<Approval.ProcessResult>(); 
+                List<Approval.ProcessSubmitRequest> requests = new LIst<Approval.ProcessSubmitRequest>(); 
+                List<Id> approverIds2= new List<Id>();                    
+                approverIds2.add(OrgIdswithOwnerIds.get(ProdOrgRec1));
+                req2.setObjectId(parRecord.id);
+                req2.setNextApproverIds(approverIds2);
+                requests.add(req2);                                                                                                                              
+                result = Approval.process(requests);                                 
+            }
         }
     }
     
     //public static boolean dontAdd = false;
     public static void createUpdateAssetsonLItemInsert(List<Core_IPS_Map_Par_Line_Item__c> trgNew){
-        List<Core_IPS_Map_Par_Line_Item__c> mList = new List<Core_IPS_Map_Par_Line_Item__c>();
         if(!Core_Asset_Dispatcher.Assetfieldupdated){
+            system.debug('coming here!!!!!!!!!!');
       // Below Query Modified by Ganapati for DE62498
-      		if(Core_IPS_Map_Par_Line_Item__c.SObjectType.getDescribe().isAccessible()){ //FLS check already added - Aditya
-                mList = [select id,  Core_Account__c, /*Core_Product__r.name, Core_Product__r.id,*/Core_Status__c,Core_isPARRequest__c, Core_MAP_PAR__r.Core_isPARRequest__c,Core_Supported_Product__r.Core_Supported_Product_Name__c,Core_Supported_Product__r.Core_Supported_Product_Alias__c,Core_MAP_PAR__r.RecordType.Name ,Core_Supported_Product__c,Core_Supported_Product__r.Core_Product__c, Core_MAP_PAR__r.Core_Product_Organization__c,Core_MAP_PAR__r.Core_Product_Organization__r.Name,Core_Approval_Type__c, Core_Line_Item_Approval_Status__c from Core_IPS_Map_Par_Line_Item__c where id IN:TrgNew];
-            }
+            List<Core_IPS_Map_Par_Line_Item__c> mList = [select id,  Core_Account__c, /*Core_Product__r.name, Core_Product__r.id,*/Core_Status__c,Core_isPARRequest__c, Core_MAP_PAR__r.Core_isPARRequest__c,Core_Supported_Product__r.Core_Supported_Product_Name__c,Core_Supported_Product__r.Core_Supported_Product_Alias__c,Core_MAP_PAR__r.RecordType.Name ,Core_Supported_Product__c,Core_Supported_Product__r.Core_Product__c, Core_MAP_PAR__r.Core_Product_Organization__c,Core_MAP_PAR__r.Core_Product_Organization__r.Name,Core_Approval_Type__c, Core_Line_Item_Approval_Status__c from Core_IPS_Map_Par_Line_Item__c where id IN:TrgNew];
             List<Asset> updateassetlist2 = new List<Asset>();
             List<Asset> updateassetlist3 = new List<Asset>();
             Set<id> prodOrgSet = new Set<Id>();
@@ -176,9 +173,11 @@ public class Core_Product_Access_Line_Item_Handler{
             List<Asset> assetList = new List<Asset>();
             if(mlist!=null && mlist.size()>0){
                 for(Core_IPS_Map_Par_Line_Item__c m: mList){
+                    system.debug('coming here********');
                     boolean dontAdd = false;                        
                     //Duplicate Asset prevention                        
                     if(m.Core_Account__c!=null && m.Core_MAP_PAR__c!=null && !m.Core_MAP_PAR__r.Core_isPARRequest__c){
+                        system.debug('coming into Existing Assets IF Condition>>>>>>>>>');
                         for(Asset a:existingActAssets){
                             // below condition Modified by Ganapati for - US517861 
                             if(!updateAssetsId2.contains(a.Id) && a.accountId==m.Core_Account__c  && a.Core_Supported_Product__c==m.Core_Supported_Product__c && a.Core_Product_Organization__c==m.Core_MAP_PAR__r.Core_Product_Organization__c){
@@ -207,16 +206,15 @@ public class Core_Product_Access_Line_Item_Handler{
                         }
                         
                     }
+                    system.debug('dont add value******'+dontAdd);
                     //Asset Creation
                     if(!dontAdd){
                         //If Map record in transaction contains Account add asset at Account Level
       // Below condition Modified by Ganapati for DE62498
                         if(m.Core_MAP_PAR__c!=null && ((m.Core_MAP_PAR__r.RecordType.Name=='MAP' && !'Pending'.equalsIgnoreCase(m.Core_Line_Item_Approval_Status__c) && !'Rejected'.equalsIgnoreCase(m.Core_Line_Item_Approval_Status__c)) || ((!m.Core_isPARRequest__c && m.Core_Approval_Type__c=='Approval Required' && m.Core_MAP_PAR__r.RecordType.Name=='PAR') || (m.Core_isPARRequest__c && m.Core_Approval_Type__c=='Auto Approve' && m.Core_MAP_PAR__r.RecordType.Name=='PAR'))) && (m.Core_Account__c!=null) ){
+                            system.debug('coming here &&&&&&&&&');
                             Asset ast = new Asset();
-                            //FLS check Added- Nishitha
-                            if (Schema.sObjectType.Asset.fields.Name.isCreateable()) {
-                                ast.Name = m.Core_Supported_Product__r.Core_Supported_Product_Name__c; //m.Core_Supported_Product_Name__c-m.Core_Product__r.name
-                            }
+                            ast.name = m.Core_Supported_Product__r.Core_Supported_Product_Name__c; //m.Core_Supported_Product_Name__c-m.Core_Product__r.name
                             ast.Core_Supported_Product__c=m.Core_Supported_Product__c;
                             ast.Core_IPS_Asset__c=true;
                             ast.Product2Id=m.Core_Supported_Product__r.Core_Product__c;
@@ -235,6 +233,9 @@ public class Core_Product_Access_Line_Item_Handler{
                     }   
                 }
             }
+            system.debug('insert!@#'+assetList);
+            system.debug('update actv!@#'+updateassetlist2);
+            system.debug('update obs!@#'+updateassetlist3);
             //insert supProdList;
             if(assetList.size()>0){
                 insert assetList;
@@ -249,27 +250,18 @@ public class Core_Product_Access_Line_Item_Handler{
     }
     
     public static void createUpdateAssetsonLItemUpdate(List<Core_IPS_Map_Par_Line_Item__c> trgNew){
-    	List<Core_IPS_Map_Par_Line_Item__c> mList = new List<Core_IPS_Map_Par_Line_Item__c>();
-        Map<id,Account> accmap = new Map<id,Account>();
-        List<Core_IPS_Map_Par_Line_Item__c> otherLI = new List<Core_IPS_Map_Par_Line_Item__c>();
         if(!Core_Asset_Dispatcher.Assetfieldupdated){
             //Asset Expiration
-            if(Core_IPS_Map_Par_Line_Item__c.SObjectType.getDescribe().isAccessible() && TrgNew != null){ // FLS check already added - Aditya
-	      //  Added by Chiru - 20-08-24 - APEX GURU - SOQL FIX
-                Map<Id, Core_IPS_Map_Par_Line_Item__c> TrgNewMap = new Map<Id, Core_IPS_Map_Par_Line_Item__c>(TrgNew);
-                 mList = [select id, Core_Account__c, /*Core_Product__r.name, Core_Product__r.id,*/Core_Status__c,Core_Supported_Product__r.Core_Supported_Product_Alias__c,Core_Approving_Product_Organization__c,Core_Supported_Product__r.Core_Supported_Product_Name__c,Core_isPARRequest__c, Core_MAP_PAR__r.Core_isPARRequest__c,Core_MAP_PAR__r.RecordType.Name ,Core_Supported_Product__c,Core_Supported_Product__r.Core_Product__c, Core_MAP_PAR__r.Core_Product_Organization__c,Core_MAP_PAR__r.Core_Product_Organization__r.Name,Core_Approval_Type__c, Core_Line_Item_Approval_Status__c from Core_IPS_Map_Par_Line_Item__c where id IN: TrgNewMap.keyset()];
-            }
-                boolean dontAdd1=false;
+            List<Core_IPS_Map_Par_Line_Item__c> mList = [select id, Core_Account__c, /*Core_Product__r.name, Core_Product__r.id,*/Core_Status__c,Core_Supported_Product__r.Core_Supported_Product_Alias__c,Core_Approving_Product_Organization__c,Core_Supported_Product__r.Core_Supported_Product_Name__c,Core_isPARRequest__c, Core_MAP_PAR__r.Core_isPARRequest__c,Core_MAP_PAR__r.RecordType.Name ,Core_Supported_Product__c,Core_Supported_Product__r.Core_Product__c, Core_MAP_PAR__r.Core_Product_Organization__c,Core_MAP_PAR__r.Core_Product_Organization__r.Name,Core_Approval_Type__c, Core_Line_Item_Approval_Status__c from Core_IPS_Map_Par_Line_Item__c where id IN: TrgNew];
+            boolean dontAdd1=false;
             List<Id> acctlist= new List<Id>();
             Set<Id> suppProdSet = new Set<Id>();
             for(Core_IPS_Map_Par_Line_Item__c m1: mList){    
                 acctlist.add(m1.Core_Account__c);
                 suppProdSet.add(m1.Core_Supported_Product__c);
             }
-            if(Account.SObjectType.getDescribe().isAccessible()){
-                 accmap = new Map<Id,Account>([select id, name,(select name,Product2Id,AccountId,Core_Supported_Product__c,Core_Map_List__c from assets where Core_Supported_Product__c IN: suppProdSet) from account where  id IN: acctlist]);
-            }
-                Map<Id,Set<String>> assetWithMapList = New Map<ID,Set<String>>();
+            Map<id,Account> accmap = new Map<Id,Account>([select id, name,(select name,Product2Id,AccountId,Core_Supported_Product__c,Core_Map_List__c from assets where Core_Supported_Product__c IN: suppProdSet) from account where  id IN: acctlist]);
+            Map<Id,Set<String>> assetWithMapList = New Map<ID,Set<String>>();
             Map<ID,List<Core_IPS_Map_Par_Line_Item__c>> assetWithLItems = new Map<Id,List<Core_IPS_Map_Par_Line_Item__c>>();
             Set<String> distinctMapIds = new Set<String>();
             for(id aid : accMap.keySet()){
@@ -283,10 +275,9 @@ public class Core_Product_Access_Line_Item_Handler{
                     }
                 }
             }
-            if(Core_IPS_Map_Par_Line_Item__c.SObjectType.getDescribe().isAccessible()){
-                 otherLI = [select id,Core_Status__c ,Core_MAP_PAR__c,Core_Account__c,Core_Supported_Product__c, Core_Line_Item_Approval_Status__c  from Core_IPS_Map_Par_Line_Item__c where  Core_MAP_PAR__c IN:distinctMapIds and Core_Account__c IN: acctlist and Core_Supported_Product__c IN: suppProdSet ];
-            }
-                for(Id ast : assetWithMapList.keySet()){
+            system.debug('test12###'+assetWithLItems.keyset());
+            List<Core_IPS_Map_Par_Line_Item__c> otherLI = [select id,Core_Status__c ,Core_MAP_PAR__c,Core_Account__c,Core_Supported_Product__c, Core_Line_Item_Approval_Status__c  from Core_IPS_Map_Par_Line_Item__c where  Core_MAP_PAR__c IN:distinctMapIds and Core_Account__c IN: acctlist and Core_Supported_Product__c IN: suppProdSet ];
+            for(Id ast : assetWithMapList.keySet()){
                 for(Core_IPS_Map_Par_Line_Item__c li : otherLI){
                     if(assetWithMapList.get(ast).contains(li.Core_MAP_PAR__c)){
                         if(assetWithLItems.keyset().contains(ast)){
@@ -351,10 +342,7 @@ public class Core_Product_Access_Line_Item_Handler{
                         if(m2.Core_MAP_PAR__c!=null &&((m2.Core_MAP_PAR__r.RecordType.Name=='MAP' && !'Pending'.equalsIgnoreCase(m2.Core_Line_Item_Approval_Status__c) && !'Rejected'.equalsIgnoreCase(m2.Core_Line_Item_Approval_Status__c)) || ((!m2.Core_isPARRequest__c && m2.Core_Approval_Type__c=='Approval Required'&& m2.Core_MAP_PAR__r.RecordType.Name=='PAR') || (m2.Core_isPARRequest__c && m2.Core_Approval_Type__c=='Auto Approve' && m2.Core_MAP_PAR__r.RecordType.Name=='PAR'))) && m2.Core_Account__c!=null && m2.Core_Supported_Product__c!=null){
                             Asset ast1 = new Asset();
                             ast1.Core_Supported_Product__c=m2.Core_Supported_Product__c;
-                            //FLS check Added- Nishitha
-                            if (Schema.sObjectType.Asset.fields.Name.isCreateable()) {
-                                ast1.name = m2.Core_Supported_Product__r.Core_Supported_Product_Name__c;
-                            }
+                            ast1.name = m2.Core_Supported_Product__r.Core_Supported_Product_Name__c;
                             ast1.InstallDate=system.today();
                             ast1.Product2Id=m2.Core_Supported_Product__r.Core_Product__c;
                             ast1.Core_IPS_Asset__c=true;
@@ -383,8 +371,7 @@ public class Core_Product_Access_Line_Item_Handler{
             if(updateassetList.size()>0){
                 update updateassetList;
             }    
-            // New FLS Added By chiru - 07/10/2024
-            if(Asset.SObjectType.getDescribe().isUpdateable() && updateassetList1.size()>0){
+            if(updateassetList1.size()>0){
                 insert updateassetList1;  
             }          
         }

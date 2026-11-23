@@ -14,6 +14,11 @@
     </customPermissions>
     <description>Provides access to CPT (Commissions Planning Tool) Application for Admin Users</description>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Business_Review__c.User_s_Manager__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>CPT_Employee__c.CPT_First_Name__c</field>
         <readable>true</readable>
@@ -220,6 +225,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>CPT_Quota_Setup__c.CPT_BR_Allocation_Editable__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>CPT_Quota_Setup__c.CPT_BR_Allowed__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -244,43 +254,8 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
-        <field>CPT_Quota_Setup__c.CPT_BR_DCAI_DAIS_Assigned__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>CPT_Quota_Setup__c.CPT_BR_DCAI_DAIS_Quota__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
         <editable>false</editable>
         <field>CPT_Quota_Setup__c.CPT_BR_DCAI_Quota__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>CPT_Quota_Setup__c.CPT_BR_Intel_AI_PC_Assigned__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>CPT_Quota_Setup__c.CPT_BR_Intel_AI_PC_Quota__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>CPT_Quota_Setup__c.CPT_BR_NEX_Ethernet_Assigned__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>CPT_Quota_Setup__c.CPT_BR_NEX_Ethernet_Quota__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>CPT_Quota_Setup__c.CPT_BR_SATG_Assigned__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -296,16 +271,6 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>CPT_Quota_Setup__c.CPT_CR_Assigned__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>CPT_Quota_Setup__c.CPT_CR_CCG_Assigned__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>CPT_Quota_Setup__c.CPT_CR_CCG_Quota__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -664,6 +629,41 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>CPT_Quota_Setup__c.CPT_Wins_Allocated__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CPT_Quota_Setup__c.CPT_Wins_Allowed__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CPT_Quota_Setup__c.CPT_Wins_Assigned__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CPT_Quota_Setup__c.CPT_Wins_Deal_Assigned__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CPT_Quota_Setup__c.CPT_Wins_Deal_Quota__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CPT_Quota_Setup__c.CPT_Wins_Design_Assigned__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CPT_Quota_Setup__c.CPT_Wins_Design_Quota__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>CPT_Quota_Setup__c.XX_CPT_Complete__c</field>
         <readable>true</readable>
@@ -720,6 +720,16 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>CPT_Territory_Assignment__c.CPT_BR_CSV_AMS_Target__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CPT_Territory_Assignment__c.CPT_BR_CSV_AMS__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>CPT_Territory_Assignment__c.CPT_BR_DCAI_DAIS_Target__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -760,6 +770,36 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>CPT_Territory_Assignment__c.CPT_BR_NEX_Target__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CPT_Territory_Assignment__c.CPT_BR_NEX__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CPT_Territory_Assignment__c.CPT_BR_SATG_Target__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CPT_Territory_Assignment__c.CPT_BR_SATG__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CPT_Territory_Assignment__c.CPT_CR_CCG_Chan_Ptr_Target__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CPT_Territory_Assignment__c.CPT_CR_CCG_Chan_Ptr__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>CPT_Territory_Assignment__c.CPT_CR_CCG_Consumer_Target__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -785,7 +825,37 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>CPT_Territory_Assignment__c.CPT_CR_DCAI_Chan_Ptr_Target__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CPT_Territory_Assignment__c.CPT_CR_DCAI_Chan_Ptr__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>CPT_Territory_Assignment__c.CPT_CR_DCAI_Target_V2__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CPT_Territory_Assignment__c.CPT_CR_DCAI_nwCSP_Target__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CPT_Territory_Assignment__c.CPT_CR_DCAI_nwCSP__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CPT_Territory_Assignment__c.CPT_CR_NEX_Comms_Target__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CPT_Territory_Assignment__c.CPT_CR_NEX_Comms__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -821,6 +891,26 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>CPT_Territory_Assignment__c.CPT_CR_Retail__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CPT_Territory_Assignment__c.CPT_DR_AXG_Target__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CPT_Territory_Assignment__c.CPT_DR_CCG_Target__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CPT_Territory_Assignment__c.CPT_DR_DCAI_Target__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CPT_Territory_Assignment__c.CPT_DR_NEX_Target__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -915,6 +1005,16 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>CPT_Territory_Assignment__c.CPT_Margin_Account_Target__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CPT_Territory_Assignment__c.CPT_Margin_Account__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>CPT_Territory_Assignment__c.CPT_Quota_Period__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -934,13 +1034,13 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
-        <field>CPT_Territory_Target__c.CPT_BR_NEX_Ethernet_Target__c</field>
+        <editable>false</editable>
+        <field>CPT_Territory_Assignment__c.CPT_Vol_Next_Gen_Target__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>CPT_Territory_Target__c.CPT_CR_CCG_One_Intel_OEM_Target__c</field>
+        <field>CPT_Territory_Assignment__c.CPT_Vol_Next_Gen__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -956,6 +1056,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>SPM_Account_Detail__c.SPM_Customer_ID__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>SPM_Account_Feedback__c.CRM_CST_Is_Active_Planning_Period__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

@@ -1,0 +1,1 @@
+{"emails": [{"type": "work","primary": true,"value":"user_deletion_test@inteldev.com"}],  "userName": "Userdeletion_TestUser"}

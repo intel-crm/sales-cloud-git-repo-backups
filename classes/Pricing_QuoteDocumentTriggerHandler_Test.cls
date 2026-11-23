@@ -1,3 +1,10 @@
+/**
+ * @description       : 
+ * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+ * @group             : 
+ * @last modified on  : 09-26-2024
+ * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+**/
 @isTest
 public class Pricing_QuoteDocumentTriggerHandler_Test {
     @testSetup
@@ -6,7 +13,7 @@ public class Pricing_QuoteDocumentTriggerHandler_Test {
         Pricing_Test_Utility.createPriceBook();
         System.runAs(adminUserList[0]) {
             Account acc = Pricing_Test_Utility.createAccount();
-            Contact con = Pricing_Test_Utility.createPrimaryContact(acc.Id);
+            Contact con = Pricing_Test_Utility.createPrimaryContactWithParam(acc.Id,'Quote_Document_Trigger_Handler');
             
             List<User> accExeUserList = Pricing_Test_Utility.createAEUser();
             List<User> salesRepUserList = Pricing_Test_Utility.createSalesRepUser();
@@ -15,7 +22,7 @@ public class Pricing_QuoteDocumentTriggerHandler_Test {
             
             Test.startTest();
             List<SBQQ__Quote__c> quoteList = Pricing_Test_Utility.createQuoteWithParam(acc.Id, con.Id, 1,salesRepUserList[0].Email,accExeUserList[0].Email);
-            List<SBQQ__QuoteLine__c> quoteLines = Pricing_Test_Utility.createQuoteLines(quoteList[0].Id, 1);                   
+            List<SBQQ__QuoteLine__c> quoteLines = Pricing_Test_Utility.createQuoteLines(quoteList[0].Id, 3);                   
             for(SBQQ__QuoteLine__c quoteLine : quoteLines){
                 Pricing_Test_Utility.createPerformanceMetrics(quoteLine.Id);
             }
@@ -57,13 +64,11 @@ public class Pricing_QuoteDocumentTriggerHandler_Test {
     @isTest
     private static void testQuoteDocumentSendEmail(){
         test.startTest();
-        Contact c = [SELECT Id from Contact LIMIT 1];
         Map<id,SBQQ__Quote__c> quotesMap = new Map<Id,SBQQ__Quote__c>([SELECT id FROM SBQQ__Quote__c Limit 1]);
         List<SBQQ__QuoteLine__c> quoteLies = new List<SBQQ__QuoteLine__c>();
         
-        for(SBQQ__QuoteLine__c qli : [SELECT id,Pricing_Status_Nm__c, Pricing_Primary_Contact_Nm__c FROM SBQQ__QuoteLine__c WHERE SBQQ__Quote__c IN :quotesMap.keySet()]){
+        for(SBQQ__QuoteLine__c qli : [SELECT id,Pricing_Status_Nm__c FROM SBQQ__QuoteLine__c WHERE SBQQ__Quote__c IN :quotesMap.keySet()]){
             qli.Pricing_Status_Nm__c = 'Approved';
-            qli.Pricing_Primary_Contact_Nm__c = c.Id;
             quoteLies.add(qli);
         }
         if(quoteLies.size() > 0){
@@ -86,6 +91,7 @@ public class Pricing_QuoteDocumentTriggerHandler_Test {
         insert sr;
         List<SBQQ__QuoteDocument__c> sr1 = [SELECT id FROM SBQQ__QuoteDocument__c];
         system.assert(sr1.size() > 0);
+        
         test.stopTest();
     }
     

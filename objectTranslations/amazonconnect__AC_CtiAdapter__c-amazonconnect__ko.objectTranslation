@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>AC CTI 어댑터</value>
+    </caseValues>
+    <fields>
+        <label>오디오 디바이스 설정 켜기</label>
+        <name>amazonconnect__AudioDeviceSettings__c</name>
+    </fields>
+    <fields>
+        <label><!-- Automatic CCP Single Sign On (SSO) --></label>
+        <name>amazonconnect__AutomaticCCPSingleSignOn__c</name>
+    </fields>
+    <fields>
+        <label><!-- Bottom Panel --></label>
+        <name>amazonconnect__BottomPanel__c</name>
+    </fields>
+    <fields>
+        <label> 콜 센터 정의 이름 </label>
+        <name>amazonconnect__CallCenter__c</name>
+    </fields>
+    <fields>
+        <label> CCP 버전 </label>
+        <name>amazonconnect__CcpVersion__c</name>
+        <picklistValues>
+            <masterLabel>v1</masterLabel>
+            <translation><!-- v1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>v2</masterLabel>
+            <translation><!-- v2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label> 인스턴스 연결 – 사용하지 마십시오 </label>
+        <name>amazonconnect__ConnectInstance__c</name>
+    </fields>
+    <fields>
+        <label>사용자 지정 채팅 벨소리</label>
+        <name>amazonconnect__CustomChatRingtone__c</name>
+    </fields>
+    <fields>
+        <label> 사용자 지정 벨소리 </label>
+        <name>amazonconnect__CustomRingtone__c</name>
+    </fields>
+    <fields>
+        <label> 디버그 수준 </label>
+        <name>amazonconnect__DebugLevel__c</name>
+    </fields>
+    <fields>
+        <label>에코 캔슬링 비활성화</label>
+        <name>amazonconnect__DisableEchoCancellation__c</name>
+    </fields>
+    <fields>
+        <label>통화 전 마이크 캡처</label>
+        <name>amazonconnect__EarlyGum__c</name>
+    </fields>
+    <fields>
+        <label><!-- Enable Softphone Popout --></label>
+        <name>amazonconnect__EnableSoftphonePopout__c</name>
+    </fields>
+    <fields>
+        <label>인스턴스 ARN</label>
+        <name>amazonconnect__InstanceArn__c</name>
+    </fields>
+    <fields>
+        <label> Amazon Connect 인스턴스 별칭 </label>
+        <name>amazonconnect__Instance__c</name>
+    </fields>
+    <fields>
+        <label> 미디어리스 </label>
+        <name>amazonconnect__Medialess__c</name>
+    </fields>
+    <fields>
+        <help><!-- Optional: This is the Named Credential used for the &quot;Recording Controls&quot; feature. If this is empty, a default value of &quot;AmazonConnectAPI&quot; will be assumed. --></help>
+        <label>명명된 자격 증명</label>
+        <name>amazonconnect__NamedCredential__c</name>
+    </fields>
+    <fields>
+        <label>전화 유형 설정</label>
+        <name>amazonconnect__PhoneTypeSettings__c</name>
+    </fields>
+    <fields>
+        <label> 프레전스 동기화 활성화됨 </label>
+        <name>amazonconnect__PresenceSyncEnabled__c</name>
+    </fields>
+    <fields>
+        <label> Amazon Connect 인스턴스 리전 </label>
+        <name>amazonconnect__Region__c</name>
+    </fields>
+    <fields>
+        <label> 소프트폰 팝아웃 활성화됨 </label>
+        <name>amazonconnect__SoftphonePopoutEnabled__c</name>
+    </fields>
+    <fields>
+        <label> SSO 릴레이 상태 </label>
+        <name>amazonconnect__SsoRelayState__c</name>
+    </fields>
+    <fields>
+        <label> SSO URL </label>
+        <name>amazonconnect__SsoUrl__c</name>
+    </fields>
+    <fields>
+        <label><!-- User Defined --></label>
+        <name>amazonconnect__UserDefined__c</name>
+    </fields>
+    <nameFieldLabel>CTI 어댑터</nameFieldLabel>
+</CustomObjectTranslation>

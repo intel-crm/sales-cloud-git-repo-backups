@@ -29,9 +29,6 @@
         <field>CUST_NAME</field>
     </columns>
     <columns>
-        <field>PMP_Company__c.PMP_One_Partner_ID__c</field>
-    </columns>
-    <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>PMP_Company__c.PMP_Is_Published_Ind__c</field>
     </columns>
@@ -49,6 +46,9 @@
     </columns>
     <columns>
         <field>FK_ACC_ID</field>
+    </columns>
+    <columns>
+        <field>FK_$Account.Core_IPA_Partner_Speciality__c</field>
     </columns>
     <columns>
         <field>FK_ACC_OWNER_NAME</field>
@@ -79,7 +79,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Published,Draft</value>
+            <value>,Admin Review,Approved,Published,Rejected,Update Required,Draft</value>
         </criteriaItems>
         <criteriaItems>
             <column>CUST_NAME</column>
@@ -94,11 +94,6 @@
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>PMP_Company__c.PMP_Company_Lifecycle_Status_Nm__c</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>FK_$Account.Core_IPA_Partner_Speciality__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>MKTPLACE Accounts ALL_Lifecycle Status</name>

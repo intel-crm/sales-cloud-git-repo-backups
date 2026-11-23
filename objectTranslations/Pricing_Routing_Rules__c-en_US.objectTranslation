@@ -9,6 +9,10 @@
         <value>Routing Rules</value>
     </caseValues>
     <fields>
+        <label><!-- AI Host Node --></label>
+        <name>Pricing_AI_Host_Node_Ind__c</name>
+    </fields>
+    <fields>
         <label><!-- Is ASMO Country --></label>
         <name>Pricing_ASMO_Country__c</name>
     </fields>
@@ -49,8 +53,36 @@
         <name>Pricing_Change_Request_Ind__c</name>
     </fields>
     <fields>
+        <label><!-- Change Request Type --></label>
+        <name>Pricing_Change_Request_Type_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Consumption Reason Change</masterLabel>
+            <translation><!-- Consumption Reason Change --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Date Change</masterLabel>
+            <translation><!-- Date Change --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Payable Quantity Change</masterLabel>
+            <translation><!-- Payable Quantity Change --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Price Change</masterLabel>
+            <translation><!-- Price Change --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Volume Change</masterLabel>
+            <translation><!-- Volume Change --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
         <label><!-- Decision Table Name --></label>
         <name>Pricing_Decision_Table_Name_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Decision Table Name --></label>
+        <name>Pricing_Decision_Table_Name__c</name>
     </fields>
     <fields>
         <label><!-- Is End Customer On Exclusion List? --></label>
@@ -157,6 +189,10 @@
         <name>Pricing_Maximum_Quote_Qty_Allowed_Nbr__c</name>
     </fields>
     <fields>
+        <label><!-- Total Requested Quantity Calc --></label>
+        <name>Pricing_Overall_Quote_Quantity_Calc_Nbr__c</name>
+    </fields>
+    <fields>
         <label><!-- Total Requested Quantity --></label>
         <name>Pricing_Overall_Quote_Quantity_Nbr__c</name>
     </fields>
@@ -176,17 +212,13 @@
             <translation><!-- Financial Incentive --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Optane™ PMem</masterLabel>
-            <translation><!-- Optane™ PMem --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Optane™ SSD</masterLabel>
-            <translation><!-- Optane™ SSD --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Small Volume Quotes - Data Center Xeon® CPU</masterLabel>
             <translation><!-- Small Volume Quotes - Data Center Xeon® CPU --></translation>
         </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Program Type --></label>
+        <name>Pricing_Program_Types_Nm__c</name>
     </fields>
     <fields>
         <label><!-- Pricing Manager Group Name --></label>
@@ -203,6 +235,14 @@
     <fields>
         <label><!-- Quote Segmentation --></label>
         <name>Pricing_Routing_Output_Criteria_Nm__c</name>
+        <picklistValues>
+            <masterLabel>CSP</masterLabel>
+            <translation><!-- CSP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Exclusion</masterLabel>
+            <translation><!-- Exclusion --></translation>
+        </picklistValues>
         <picklistValues>
             <masterLabel>High Touch</masterLabel>
             <translation><!-- High Touch --></translation>
@@ -231,6 +271,10 @@
     <fields>
         <label><!-- Routing Rule Start Date --></label>
         <name>Pricing_Routing_Rule_Start_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Routing Rule Active --></label>
+        <name>Routing_Rule_Active_Ind__c</name>
     </fields>
     <startsWith>Consonant</startsWith>
     <validationRules>

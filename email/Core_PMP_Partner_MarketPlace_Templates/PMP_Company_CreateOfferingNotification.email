@@ -1,4 +1,4 @@
-<messaging:emailTemplate subject="Action Required: You can now create Showcase Offering/s" recipientType="User" relatedToType="PMP_Company__c">
+<messaging:emailTemplate subject="Action Required: Create Offerings for Your {!relatedTo.Name}  Storefront" recipientType="User" relatedToType="PMP_Company__c">
     <messaging:htmlEmailBody >
     
         <c:PMP_PartnerCreateOffering partnerRecordId="{!relatedTo.Id}"/>

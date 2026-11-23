@@ -1,0 +1,159 @@
+<template>
+    <lightning-card title="Manage Price List" icon-name="standard:price_books">
+        
+
+        <lightning-layout multiple-rows="true" vertical-align="end">
+            <lightning-layout-item size="12" small-device-size="10" medium-device-size="8" large-device-size="3" padding="around-small">
+                    <div class="slds-form-element">
+                            <div class="slds-form-element__control">
+                                    <lightning-combobox
+                                        name="progress"
+                                        label="Select Price List"
+                                        value={value}
+                                        placeholder="Select price list"
+                                        options={priceListOptions}
+                                        onchange={handleChange}                                        
+                                        ></lightning-combobox>
+                                       
+                            </div>
+                        </div> 
+            </lightning-layout-item>
+            <lightning-layout-item size="12" small-device-size="10" medium-device-size="8" large-device-size="3" padding="around-small">
+                    <div class="slds-form-element">
+                   
+                            <lightning-input
+                                name="enter-search"
+                                label="Product Name/OPN"
+                                type="search"
+                                placeholder="Enter product name /opn..."
+                                onchange={handleSearch}
+                            ></lightning-input>
+                      
+                    </div></lightning-layout-item>
+                   <!--         <div class="slds-form-element__control">
+                                    <lightning-input type="text" 
+                                                     placeholder="Enter product name /opn..."
+                                                     onchange={handleSearch}
+                                                     label="Product Name/OPN"
+                                    ></lightning-input>
+                            </div>
+                        </div> 
+            </lightning-layout-item>
+   <lightning-layout-item size="12" small-device-size="2" medium-device-size="2" large-device-size="2" padding="around-small">
+                   <lightning-button label="go" 
+                                          variant="brand" 
+                                          onclick={loadPBEDataWithProductKey}></lightning-button> 
+                </lightning-layout-item>-->
+                <br/>
+               
+            </lightning-layout><br/>
+            <div if:true={errorMsg} style="margin-left: 3%;">
+                <p style="color: red;">{errorMsg}</p>
+            </div>
+    <!--   
+        <div if:true={showListPrice}>
+            <lightning-layout pull-to-boundary="medium">                
+                <lightning-layout-item flexibility="auto" padding="horizontal-medium" size="6">
+                        <lightning-card title="Price List Items">                            
+                            <div style="height: 300px" class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered">
+                                
+                                <lightning-datatable 
+                                data={pbedata}
+                                columns={pbeColumns}
+                                key-field="Id"
+                                max-row-selection=1    
+                                onrowselection={loadListPriceDataForSelectedProduct}
+                                draft-values={draftValuespbe}
+                                onsave={handlepbeDataSave} 
+                                default-sort-direction={defaultSortDirection}
+                                sorted-direction={sortDirection}
+                                sorted-by={sortedBy}
+                                onsort={onHandleSort}>                                            
+                            
+                            </lightning-datatable>
+                            
+                        </div>
+                        </lightning-card>                
+                </lightning-layout-item>
+                <lightning-layout-item flexibility="auto" padding="horizontal-medium" size="6">
+                        <lightning-card title="Volume Discount Items">     
+                                                   
+                            <div style="height: 300px" class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered"> 
+          
+                                    <lightning-datatable 
+                                    data={lpdata}
+                                    columns={lpColumns}
+                                    key-field="Id"
+                                    column-widths-mode='auto'
+                                    show-row-number-column="true"
+                                    hide-checkbox-column="true"
+                                    draft-values={draftValueslp}
+                                    onsave={handlelpDataSave}
+                                    default-sort-direction={defaultSortDirection}
+                                    sorted-direction={sortDirection}
+                                    sorted-by={sortedBy}
+                                    onsort={onHandleSort}
+                                    >      
+                                    </lightning-datatable>
+                            </div>
+                  
+                        </lightning-card>
+                    
+                </lightning-layout-item>
+            </lightning-layout>
+           
+        </div>-->
+        <div class="slds-box slds-p-around_none slds-m-top_x-small slds-m-bottom_medium slds-m-horizontal_none">
+            <lightning-layout>
+                <lightning-layout-item  size="6" flexibility="auto" padding="around-small">
+                    <lightning-card title="Price List Items" icon-name="standard:price_book_entries">
+
+                    <div class="custom-box slds-box slds-p-around_medium slds-text-align_center">
+                        <div style="height: 300px;">
+                            <lightning-datatable 
+                            data={pbedata}
+                            columns={pbeColumns}
+                            key-field="Id"
+                            max-row-selection=1    
+                            onrowselection={loadListPriceDataForSelectedProduct}
+                            draft-values={draftValuespbe}
+                            onsave={handlepbeDataSave} 
+                            default-sort-direction={defaultSortDirection}
+                            sorted-direction={sortDirection}
+                            sorted-by={sortedBy}
+                            onsort={onHandleSort}>                                            
+                        
+                        </lightning-datatable>
+        </div> 
+                    </div>
+                    </lightning-card>
+
+                </lightning-layout-item>
+                <lightning-layout-item size ="6" flexibility="auto" padding="around-small">
+                    <lightning-card title="Volume Discount Items" icon-name="standard:contract_line_item">
+                    <div class="custom-box slds-box slds-p-around_medium slds-text-align_center">
+                        <div style="height: 300px;">
+                        <lightning-datatable 
+                        data={lpdata}
+                        columns={lpColumns}
+                        key-field="Id"
+                        column-widths-mode='auto'
+                        show-row-number-column="true"
+                        hide-checkbox-column="true"
+                        draft-values={draftValueslp}
+                        onsave={handlelpDataSave}
+                        default-sort-direction={defaultSortDirection}
+                        sorted-direction={sortDirection}
+                        sorted-by={sortedBy}
+                        onsort={onHandleSort}
+                        >      
+                        </lightning-datatable>
+                        </div>
+                    </div>
+                    </lightning-card>
+                </lightning-layout-item>
+                </lightning-layout>
+                </div>
+    </lightning-card>
+
+</template>

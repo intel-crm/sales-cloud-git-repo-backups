@@ -143,6 +143,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Assignee.DB_Region__c</field>
+            <table>PermissionSetAssignment</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Assignee.DefaultGroupNotificationFrequency</field>
             <table>PermissionSetAssignment</table>
         </columns>
@@ -253,6 +258,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Assignee.Xvoyant__FunctionalGroupID__c</field>
+            <table>PermissionSetAssignment</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Assignee.GeocodeAccuracy</field>
             <table>PermissionSetAssignment</table>
         </columns>
@@ -294,6 +304,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Assignee.Core_IPS_IsActiveProxy__c</field>
+            <table>PermissionSetAssignment</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Assignee.Xvoyant__IsAtmUser__c</field>
             <table>PermissionSetAssignment</table>
         </columns>
         <columns>

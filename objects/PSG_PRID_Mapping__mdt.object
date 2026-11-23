@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>PRID Mapping</description>
+    <fields>
+        <fullName>PSG_Active__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Active</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>PSG_PRID_Type__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>PRID Type</label>
+        <length>30</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PSG_Revision_Fields_For_QL_QL__c</fullName>
+        <description>When QL is revised field list in this field will be copied to QL from approved QL</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Revision Fields For QL-QL</label>
+        <length>1500</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>PSG_Triggering_fields__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Triggering fields</label>
+        <length>10</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PSG_Update_PRID__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Update PRID</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>PSG_Update_QuoteLine__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Update QuoteLine</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>core_cpq_updation_trigger_field_prid__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Updation Trigger Field PRID</label>
+        <length>1500</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>psg_cpq_revision_trigger_field_ql__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Revision Trigger Field QL</label>
+        <length>1500</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>psg_revision_fields_QL__c</fullName>
+        <description>When QL is revised the fields in this list will be copied over to the PRID from Approved QL.</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Revision Fields For QL-PRID</label>
+        <length>1500</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>psg_revision_fields_prid__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Revision Fields PRID</label>
+        <length>1500</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>psg_revision_trigger_field_prid__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Revision Trigger Field PRID</label>
+        <length>1500</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>psg_updation_trigger_field_ql__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Updation Trigger Field QL</label>
+        <length>1500</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <label>PRID Mapping</label>
+    <listViews>
+        <fullName>All_PRID_Mapping</fullName>
+        <columns>MasterLabel</columns>
+        <columns>PSG_PRID_Type__c</columns>
+        <columns>psg_updation_trigger_field_ql__c</columns>
+        <columns>psg_revision_fields_QL__c</columns>
+        <columns>PSG_Revision_Fields_For_QL_QL__c</columns>
+        <columns>psg_cpq_revision_trigger_field_ql__c</columns>
+        <columns>core_cpq_updation_trigger_field_prid__c</columns>
+        <columns>psg_revision_trigger_field_prid__c</columns>
+        <columns>psg_revision_fields_prid__c</columns>
+        <columns>PSG_Active__c</columns>
+        <columns>PSG_Triggering_fields__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All PRID Mapping</label>
+        <language>en_US</language>
+    </listViews>
+    <pluralLabel>PRID Mappings</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

@@ -1,0 +1,40 @@
+<apex:page controller="AccountBriefSummaryController" renderAs="pdf">
+  
+    <h1>Child Records for Account Brief Summary Row</h1>
+
+    <!-- Display the parent information -->
+    
+
+    <!-- Display any page messages -->
+    <apex:pageMessages />
+
+    <!-- Child records table -->
+    <apex:pageBlock title="Child Records">
+        <table class="table-container">
+            <!-- Table Header -->
+            <thead>
+                <tr>
+                    <th>Account Brief Summary</th>
+                    <th>Meeting Invite</th>
+                    <th>Attendees</th>
+                </tr>
+            </thead>
+            
+            <!-- Table Body -->
+            <tbody>
+                <apex:repeat value="{!childRecordsvf}" var="child">
+                    <tr>
+                        <td><apex:outputText escape="false" value="{!child.Account_Brief_Summary__c}" /></td>
+            <td><apex:outputText escape="false" value="{!child.Meeting_Invite__c}" /></td>
+            <td><apex:outputText escape="false" value="{!child.Attendees__c}" /></td>
+                    </tr>
+                </apex:repeat>
+            </tbody>
+        </table>
+    </apex:pageBlock>
+
+    <!-- If no child records, show a message -->
+    <apex:outputPanel rendered="{!ISNULL(childRecordsvf) || childRecordsvf.size == 0}">
+        <div class="message">No child records found.</div>
+    </apex:outputPanel>
+</apex:page>

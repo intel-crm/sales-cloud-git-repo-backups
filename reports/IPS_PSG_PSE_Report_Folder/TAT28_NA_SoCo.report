@@ -354,16 +354,17 @@
             <axisBinding>y</axisBinding>
             <column>RowCount</column>
         </chartSummaries>
-        <chartType>Donut</chartType>
+        <chartType>VerticalColumnStackedTo100</chartType>
         <enableHoverLabels>false</enableHoverLabels>
-        <expandOthers>false</expandOthers>
-        <groupingColumn>BucketField_34782821</groupingColumn>
-        <legendPosition>Bottom</legendPosition>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>BucketField_57505999</groupingColumn>
+        <legendPosition>Right</legendPosition>
         <location>CHART_BOTTOM</location>
+        <secondaryGroupingColumn>BucketField_34782821</secondaryGroupingColumn>
         <showAxisLabels>false</showAxisLabels>
-        <showPercentage>true</showPercentage>
-        <showTotal>true</showTotal>
-        <showValues>true</showValues>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>false</showValues>
         <size>Medium</size>
         <summaryAxisRange>Auto</summaryAxisRange>
         <textColor>#000000</textColor>
@@ -454,24 +455,17 @@
             <operator>equals</operator>
             <value>NARAE</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>ALIAS</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>taniamar,damendo1,hectorca,mbecerr2,rshobana,svelagap,delson,shahprat,frodasgo,julianal,mcgongor,lcoronad,aanguian,scabanda,rschutz,dtalley,mberglun</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Quarter</dateGranularity>
         <field>CLOSED_DATEONLY</field>
-        <sortOrder>Desc</sortOrder>
+        <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>ALIAS</field>
+        <field>BucketField_57505999</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>

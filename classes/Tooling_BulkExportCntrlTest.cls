@@ -9,20 +9,13 @@ private class Tooling_BulkExportCntrlTest {
         }
         insert testAccounts;
         
-        
-        Tooling_BulkExportCntrl.RecordQuery testParams = new Tooling_BulkExportCntrl.RecordQuery();
-        testParams.query = 'SELECT Id, Name FROM Account';
-        testParams.filterFieldName = 'Name';
-        testParams.values = new List<String>();
-        
+        // Call the fetchRecords method in the Tooling_BulkExportCntrl class
+        List<String> accountNames = new List<String>();
         for (Account acc : testAccounts) {
-            testParams.values.add(acc.Name);
+            accountNames.add(acc.Name);
         }
-        String jsonString = JSON.serialize(testParams);
         
-        Test.startTest();
-        List<SObject> result = Tooling_BulkExportCntrl.fetchRecords(jsonString);
-        Test.stopTest();
+        List<SObject> result = Tooling_BulkExportCntrl.fetchRecords('SELECT Id, Name FROM Account', 'Name', accountNames);
         
         // Assert that the result contains the correct number of records
         System.assertEquals(testAccounts.size(), result.size());

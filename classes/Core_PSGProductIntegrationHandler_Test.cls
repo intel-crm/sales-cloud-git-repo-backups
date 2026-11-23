@@ -1,6 +1,5 @@
 @isTest
 public class Core_PSGProductIntegrationHandler_Test {
-/*
     @isTest static void insertProductAndExtAttributes(){
         test.startTest();
         List<Product2> prodList = new List<Product2>();
@@ -31,7 +30,7 @@ public class Core_PSGProductIntegrationHandler_Test {
         insert PIRRecord;
         
         Core_PIR_Ext_Attributes__c PIRRecord2 = new Core_PIR_Ext_Attributes__c();
-        PIRRecord2.Core_Processing_Status__c='Pending';
+       PIRRecord2.Core_Processing_Status__c='Pending';
         PIRRecord2.Core_Part__c='123411';
         PIRRecord2.Core_Product_Family__c='Test Family';
         PIRRecord2.Core_Product_Class__c= 'SV';
@@ -60,5 +59,5 @@ public class Core_PSGProductIntegrationHandler_Test {
         test.stopTest();
         
     }
- */   
+    
 }

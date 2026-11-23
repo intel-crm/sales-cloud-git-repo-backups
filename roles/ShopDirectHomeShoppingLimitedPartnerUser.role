@@ -6,5 +6,5 @@
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>Shop Direct Home Shopping Limited Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>ShopDirectHomeShoppingLimitedPartnerManager</parentRole>
 </Role>

@@ -3,8 +3,8 @@
     <contactEmail>harshad.panchal@intel.com</contactEmail>
     <label>Seismic_oauth</label>
     <oauthConfig>
-        <callbackUrl>https://intel.seismic.com/Integration/SalesforceOauth.aspx</callbackUrl>
-        <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6kz2BKmsJ_57IZHA58SLwWNSs39qt4s92Ul.uwUeR66b8MAhZcDNZ.BHCVK0</consumerKey>
+        <callbackUrl>https://inteldev.seismic.com/Integration/SalesforceOauth.aspx</callbackUrl>
+        <consumerKey>3MVG9FxR3Tq3eZN88sLG9b4Pw8KXU.Of8M4_FCXuNx.W5.QyJzFVn7r76w6jaRtuZwMNhLy1L3RxKWYfc707l</consumerKey>
         <isAdminApproved>false</isAdminApproved>
         <isClientCredentialEnabled>false</isClientCredentialEnabled>
         <isCodeCredentialEnabled>false</isCodeCredentialEnabled>

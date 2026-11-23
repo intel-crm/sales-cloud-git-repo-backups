@@ -22,7 +22,7 @@
         <sharedTo>
             <group>Core_MDF_CCP_Claim_Case_Reviewer_Q_Group</group>
         </sharedTo>
-        <booleanFilter>1 OR 2 OR 3 or 4 OR 5 OR 6</booleanFilter>
+        <booleanFilter>1 OR 2</booleanFilter>
         <criteriaItems>
             <field>RecordTypeId</field>
             <operation>equals</operation>
@@ -32,26 +32,6 @@
             <field>RecordTypeId</field>
             <operation>equals</operation>
             <value>Retail Marketing Funds</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>RecordTypeId</field>
-            <operation>equals</operation>
-            <value>Intel Partner Alliance - Proposal Based</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>RecordTypeId</field>
-            <operation>equals</operation>
-            <value>Intel Partner Alliance - Account Based</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>RecordTypeId</field>
-            <operation>equals</operation>
-            <value>Ecosystem Extension Fund</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>RecordTypeId</field>
-            <operation>equals</operation>
-            <value>Co-GTM</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>

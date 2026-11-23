@@ -132,6 +132,10 @@
         <label><!-- View Record Id --></label>
         <name>SBQQ__ViewRecordId__c</name>
     </fields>
+    <fields>
+        <label><!-- Quote Type Test --></label>
+        <name>core_cpq_quote_type_test__c</name>
+    </fields>
     <recordTypes>
         <description><!-- To be used by PSG Team --></description>
         <label><!-- PSG Quote Document --></label>

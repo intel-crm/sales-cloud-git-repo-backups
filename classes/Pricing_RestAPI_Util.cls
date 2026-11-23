@@ -38,6 +38,7 @@ public without sharing class Pricing_RestAPI_Util {
             if(response == null){
                 response = new Pricing_RestAPI_Response();
             }
+            //response.successContent = null;
             response.isSuccess = false;
             response.errorContent = new Pricing_RestAPI_ErrorContent();
             response.Code = objExpName.Core_Code__c ;
@@ -76,6 +77,7 @@ public without sharing class Pricing_RestAPI_Util {
             {
                 response = new Pricing_RestAPI_Response();
             }
+            //response.successContent = null;
             response.isSuccess = false;
             response.errorContent = new Pricing_RestAPI_ErrorContent();
             
@@ -85,6 +87,7 @@ public without sharing class Pricing_RestAPI_Util {
             response.errorContent.traceId = Pricing_RestAPI_LoggingUtil.logError(entryTime, sObjectName, expCode, exp, response);            
             //Set the Http status code
             RestContext.response.statusCode = Integer.valueOf(objExpName.Core_Http_Status_Code__c);
+            //RestContext.response.statusCode = Integer.valueOf(objExpName.Core_Http_Status_Code__c);	
             
         }catch(Exception e){
             Pricing_Tender_Utility.logError(e);

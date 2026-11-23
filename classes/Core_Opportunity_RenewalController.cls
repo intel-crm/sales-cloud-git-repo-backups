@@ -59,7 +59,8 @@ public without sharing class Core_Opportunity_RenewalController {
             renewalOpp.Core_IsClone__c = false;
             renewalOpp.Core_Renewed_Opportunity_Ind__c = true;
             renewalOpp.Opportunity_Focus__c =''; //originalOpportunity.Opportunity_Focus__c; //TWC4767-3906 : we dont need this field anymore. 
-            renewalOpp.CloseDate = originalOpportunity.CRM_VBS_Contract_Start_Date__c.addMonths(originalOpportunity.CRM_VBS_Contract_Lifetime_in_Months__c == null ? 12 : (Integer)originalOpportunity.CRM_VBS_Contract_Lifetime_in_Months__c);
+            renewalOpp.CloseDate = originalOpportunity.CRM_VBS_Contract_Start_Date__c.addMonths( (Integer)originalOpportunity.CRM_VBS_Contract_Lifetime_in_Months__c);//originalOpportunity.CRM_VBS_Contract_Lifetime_in_Months__c == null ? 12 :
+        	
         
         
         try{

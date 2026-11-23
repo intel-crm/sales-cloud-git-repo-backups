@@ -45,8 +45,7 @@
 
             if (state === "SUCCESS") {
                 $A.get("e.force:closeQuickAction").fire();
-               // $A.get("e.force:refreshView").fire();
-                window.location.reload();
+                $A.get("e.force:refreshView").fire();
                 this.showToast("Record Status successfully changed","Record successfully Submitted","success");
                
             } else {
@@ -59,15 +58,9 @@
             }
         });
         $A.enqueueAction(action);
-      //  $A.get("e.force:refreshView").fire();
-        setTimeout(() => {
-                    console.log("Refreshing view");
-                    $A.get("e.force:refreshView").fire();
-                }, 2000);
     },
     cancelPopup : function(component, event, helper) {
         $A.get("e.force:closeQuickAction").fire();
-        $A.get("e.force:refreshView").fire();
     },
 
     showToast: function(title, message, type) {

@@ -160,6 +160,9 @@
     <columns>
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Last_Submitted_By_Id__c</field>
     </columns>
+    <columns>
+        <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Lost_Reason_Nm__c</field>
+    </columns>
     <description>This Ethernet report is connected to the Export Quote button on the quote so that it auto filters to the corresponding quote when the button is clicked.</description>
     <filter>
         <criteriaItems>

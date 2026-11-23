@@ -6,7 +6,7 @@
         <externalId>false</externalId>
         <fieldManageability>DeveloperControlled</fieldManageability>
         <label>Benefit Code</label>
-        <length>20</length>
+        <length>255</length>
         <required>false</required>
         <type>Text</type>
         <unique>false</unique>
@@ -27,27 +27,6 @@
         <required>false</required>
         <type>Text</type>
         <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>PRM_Entitlement_Txt__c</fullName>
-        <fieldManageability>DeveloperControlled</fieldManageability>
-        <label>Entitlement</label>
-        <required>false</required>
-        <type>TextArea</type>
-    </fields>
-    <fields>
-        <fullName>PRM_Partner_Role_Txt__c</fullName>
-        <fieldManageability>DeveloperControlled</fieldManageability>
-        <label>Partner Role</label>
-        <required>false</required>
-        <type>TextArea</type>
-    </fields>
-    <fields>
-        <fullName>PRM_Profile_Txt__c</fullName>
-        <fieldManageability>DeveloperControlled</fieldManageability>
-        <label>Profile</label>
-        <required>false</required>
-        <type>TextArea</type>
     </fields>
     <label>PMP_Dashboard_Tab</label>
     <pluralLabel>PMP_Dashboard_Tabs</pluralLabel>

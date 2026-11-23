@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>SalesforceAppHomePage</masterLabel>
+    <promptVersions>
+        <body>&lt;p&gt;Here you go!!!!&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Salesforce Home Page Details&lt;/li&gt;&lt;li&gt;Training &amp;amp; Resources&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://google.com&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Google&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;</body>
+        <customApplication>ACE_Cloud_Lightning</customApplication>
+        <delayDays>1</delayDays>
+        <description>Salesforce App HomePage</description>
+        <displayType>DockedComposer</displayType>
+        <header>Salesforce Home Page Details</header>
+        <isPublished>true</isPublished>
+        <masterLabel>SalesforceAppHomePage Step 1</masterLabel>
+        <publishedDate>2023-07-17</publishedDate>
+        <shouldDisplayActionButton>false</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>true</shouldIgnoreGlobalDelay>
+        <startDate>2023-07-17</startDate>
+        <stepNumber>1</stepNumber>
+        <timesToDisplay>30</timesToDisplay>
+        <title>Salesforce Home Page Details</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+</Prompt>

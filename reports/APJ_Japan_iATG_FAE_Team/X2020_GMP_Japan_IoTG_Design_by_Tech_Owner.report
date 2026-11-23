@@ -2,9 +2,16 @@
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>TOTAL_PRICE</field>
+        <field>EXP_AMOUNT</field>
     </columns>
     <filter>
+        <criteriaItems>
+            <column>Account.Core_Sub_Geo__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>IJKK</value>
+        </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Opportunity_Type__c</column>
             <columnToColumn>false</columnToColumn>
@@ -38,12 +45,12 @@
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>STAGE_NAME</field>
+        <field>Opportunity.Core_Technical_Owner__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>Opportunity.Core_Technical_Owner__c</field>
+        <field>STAGE_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>2020 GMP-Japan IoTG Design by Tech Owner</name>

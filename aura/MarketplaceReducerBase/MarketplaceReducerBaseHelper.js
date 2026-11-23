@@ -10,7 +10,7 @@
   },
 
   // This is the function to get the main reducer function (required)
-  getReducer: function(component) {
+  getReducer: function() {
     console.warn(
       'Reducer Base Function getReducer called.' + '\n' +
       'Store Name: ' + component.get('v.storeName') + '\n' +

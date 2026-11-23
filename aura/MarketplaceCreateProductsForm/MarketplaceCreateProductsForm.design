@@ -1,6 +1,6 @@
 <design:component label="Create Product Wizard">
 
-   <design:attribute name="cancelButtonText" label="Cancel Button"/>
+  <design:attribute name="cancelButtonText" label="Cancel Button"/>
   <design:attribute name="saveButtonText" label="Save Button"/>
   <design:attribute name="changesSavedText" label="Changes saved message"/>
 

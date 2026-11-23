@@ -28,28 +28,28 @@
     <siteGuestRecordDefaultOwner>partnercloudsupport@intel.com.crm</siteGuestRecordDefaultOwner>
     <siteRedirectMappings>
         <action>Permanent</action>
-        <isActive>true</isActive>
+        <isActive>false</isActive>
         <isDynamic>false</isDynamic>
         <source>/</source>
         <target>/partner</target>
     </siteRedirectMappings>
     <siteRedirectMappings>
         <action>Temporary</action>
-        <isActive>true</isActive>
+        <isActive>false</isActive>
         <isDynamic>false</isDynamic>
         <source>/_ui/common/setup/PersonalSetup</source>
         <target>/015o0000001vYD0</target>
     </siteRedirectMappings>
     <siteRedirectMappings>
         <action>Permanent</action>
-        <isActive>true</isActive>
+        <isActive>false</isActive>
         <isDynamic>false</isDynamic>
         <source>/leads</source>
         <target>/partner/00Q/o</target>
     </siteRedirectMappings>
     <siteRedirectMappings>
         <action>Permanent</action>
-        <isActive>true</isActive>
+        <isActive>false</isActive>
         <isDynamic>false</isDynamic>
         <source>/partner</source>
         <target>https://premiersupport.intel.com/IPS</target>

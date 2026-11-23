@@ -171,17 +171,15 @@
     <columns>
         <field>Opportunity.Core_Technical_Owner_Manager__c</field>
     </columns>
-    <columns>
-        <field>Account.Core_Account_Tier__c</field>
-    </columns>
-    <columns>
-        <field>CREATED_DATE</field>
-    </columns>
-    <columns>
-        <field>PRODUCT_NAME</field>
-    </columns>
     <filter>
-        <booleanFilter>(1 AND 2) AND 3 AND 4 AND 5 AND 6</booleanFilter>
+        <booleanFilter>(1 AND 2 AND 3) AND 4 AND 5</booleanFilter>
+        <criteriaItems>
+            <column>OWNER_MANAGER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>deleon,zurlo,galluccio,ferment,rather,sunil gupta,prengler,guesner,boucher,madormo,walther,casselman</value>
+        </criteriaItems>
         <criteriaItems>
             <column>OpportunityLineItem.Core_Claim_Date__c</column>
             <columnToColumn>false</columnToColumn>
@@ -203,41 +201,20 @@
             <operator>contains</operator>
             <value>FPGA</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Business_Unit_Territory__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>PSG-NA</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Intel_Platform__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>Whitley,Ice Lake,Tiger Lake</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Opportunity_Type__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Design: Original,Design: Secondary</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>BucketField_60027637</field>
-        <sortOrder>Desc</sortOrder>
-    </groupingsDown>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
         <field>BucketField_81099400</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>PSG NA Opens by Status</name>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_60027637</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>PSG NA Open Current Quarter by Status</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -263,6 +240,8 @@
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURRENT</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

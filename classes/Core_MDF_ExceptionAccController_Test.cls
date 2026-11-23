@@ -12,7 +12,7 @@ public class Core_MDF_ExceptionAccController_Test {
     
     @TestSetUp
     static void createExceptionRecord(){
-        Profile ccpCoreProfile = [SELECT Id FROM Profile WHERE Name = 'CCP - Core Access'];
+        
         //Create User with profile -IT ADMIN
         UserRole usRole = [SELECT Id,Name FROM UserRole where Name = 'Admin' LIMIT 1];
         
@@ -28,7 +28,7 @@ public class Core_MDF_ExceptionAccController_Test {
         Test.startTest();
         System.runAs(usr1){
             //ChannelProgram cp1 = Core_MDF_CCP_TestDataUtility.createProgram ('Client Co-Marketing Fund','Client CoMarketing Fund', true);
-            ChannelProgram cp1 = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.CCF_PROGRAM,'Client CoMarketing Fund', true);
+            ChannelProgram cp1 = Core_MDF_CCP_TestDataUtility.createProgram ('Client Co-Marketing Fund','Client CoMarketing Fund', true);
             Account acc = Core_MDF_CCP_TestDataUtility.createIntelAccount('Test Account 1', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, true);
             // Creating Co-marketing Account with utility class
             Account acc1 = Core_MDF_CCP_TestDataUtility.createCoMarketingAccount ('Test Virtual Account map1', cp1.Id,Core_MDF_CCP_TestDataUtility.Account_Record_Type,acc.Id,false);
@@ -46,23 +46,11 @@ public class Core_MDF_ExceptionAccController_Test {
         submitter.UserRoleId = usRole.Id;
         Database.insert(submitter);
         
-        User systemAdmin = Core_MDF_CCP_TestDataUtility.createUser(false);      
-        systemAdmin.LastName = 'SystemAdmin';
-        systemAdmin.UserRoleId = usRole.Id;
-        systemAdmin.ProfileId = ccpCoreProfile.Id;
-        insert systemAdmin;
-        User systemAdmin1 = Core_MDF_CCP_TestDataUtility.createUser(false);      
-        systemAdmin1.LastName = 'SystemAdmin1';
-        systemAdmin1.UserRoleId = usRole.Id;
-        systemAdmin1.ProfileId = ccpCoreProfile.Id;
-        insert systemAdmin1;
         //Assign Exception Submitter permission set
-        PermissionSet submitterPS1 = [SELECT Id, Name FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_CCF_Acct_Mgr' LIMIT 1];
-        PermissionSet submitterPS = [SELECT Id, Name FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_CCF_Exception_Reviewer' LIMIT 1];
+        PermissionSet submitterPS = [SELECT Id, Name FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_CCF_Account_Manager' LIMIT 1];
         PermissionSetAssignment psa1 = new PermissionSetAssignment(PermissionSetId = submitterPS.Id, AssigneeId = submitter.Id);
-        PermissionSetAssignment psa3 = new PermissionSetAssignment(PermissionSetId = submitterPS1.Id, AssigneeId = systemAdmin1.Id);
         Database.insert(psa1);
-        Database.insert(psa3);
+        
         //Create Payment Admin User
         User paymentAdmin = Core_MDF_CCP_TestDataUtility.createUser(false);
         paymentAdmin.LastName = 'Payment Admin';
@@ -76,33 +64,29 @@ public class Core_MDF_ExceptionAccController_Test {
         Database.insert(readOnlyUsr);
         
         //Create Payment Admin permisssion set
-        //PermissionSet readOnlyPS = [SELECT Id, Name FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_Read_Only' LIMIT 1];
-        PermissionSet readOnlyPS = [SELECT Id, Name FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Int_Read_Only' LIMIT 1];
+        PermissionSet readOnlyPS = [SELECT Id, Name FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_Read_Only' LIMIT 1];
         PermissionSetAssignment readOnlyPSAssigment = new PermissionSetAssignment(PermissionSetId = readOnlyPS.Id, AssigneeId = readOnlyUsr.Id);
         Database.insert(readOnlyPSAssigment);
         
         //Create Payment Admin permisssion set
-        //PermissionSet paymentAdminPS = [SELECT Id, Name FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_CCF_Payment_Admin' LIMIT 1];
-        PermissionSet paymentAdminPS = [SELECT Id, Name FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_CCF_Payment_Adm' LIMIT 1];
+        PermissionSet paymentAdminPS = [SELECT Id, Name FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_CCF_Payment_Admin' LIMIT 1];
         PermissionSetAssignment psa2 = new PermissionSetAssignment(PermissionSetId = paymentAdminPS.Id, AssigneeId = paymentAdmin.Id);
         Database.insert(psa2);
-        User submitter1  = [SELECT Id FROM USER WHERE LastName = 'SystemAdmin1' limit 1];
-        System.runAs(submitter1){
-            //Account acc1 = Core_MDF_CCP_TestDataUtility.createIntelAccount('Test Account 2', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, true);
-        Core_MDF_Exception__c expt = new Core_MDF_Exception__c();
-        expt.Core_MDF_Name_of_Exception_nm__c = 'Test Exception Single Acc Country';
-        expt.Core_MDF_Issue_Description_dsc__c = 'Test Description';
-        expt.Core_MDF_Comments_txt__c = 'Test Comments';
-        expt.Core_MDF_Exception_Start_Date_dt__c = System.today();
-        expt.Core_MDF_Exception_End_Date_dt__c = System.today() + 5;
-        expt.Core_MDF_Exception_Reason_nm__c = 'Branding Exception from Activity Catalog';
-        expt.Core_MDF_Program_nm__c = 'Core_MDF_Client_CoMarketing_Fund';
-        expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Broadcast (Pre-2025)->Podcast';
-        expt.Core_MDF_Total_Dollar_Impact_amt__c = 100;
-        expt.Core_MDF_Country_Region_nm__c = 'INDIA';
-        expt.Core_MDF_Account_id__c = null;
-        expt.Core_MDF_Select_All_Accounts_ind__c = false;
-        expt.Core_MDF_Region_txt__c='APJ';
+        
+        System.runAs(submitter){
+            Core_MDF_Exception__c expt = new Core_MDF_Exception__c();
+            expt.Core_MDF_Name_of_Exception_nm__c = 'Test Exception';
+            expt.Core_MDF_Issue_Description_dsc__c = 'Test Description';
+            expt.Core_MDF_Comments_txt__c = 'Test Comments';
+            expt.Core_MDF_Exception_Start_Date_dt__c = System.today();
+            expt.Core_MDF_Exception_End_Date_dt__c = System.today() + 5;
+            expt.Core_MDF_Exception_Reason_nm__c = 'Branding Exception from Activity Catalog';
+            expt.Core_MDF_Program_nm__c = 'Core_MDF_Client_CoMarketing_Fund';
+            expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Broadcast->Podcast';
+            expt.Core_MDF_Total_Dollar_Impact_amt__c = 100;
+            expt.Core_MDF_Country_Region_nm__c = 'India';
+            expt.Core_MDF_Company_Name_txt__c = '';
+            expt.Core_MDF_Exception_Status_nm__c = 'Draft';
             insert expt;
             
         }
@@ -111,7 +95,6 @@ public class Core_MDF_ExceptionAccController_Test {
     
     @isTest
     static void ExceptionPendingReview(){
-        //No records fetched
         User usr = [ SELECT Id FROM User where LastName='Exception Submitter' LIMIT 1];
         
         //Fetch account details
@@ -119,19 +102,17 @@ public class Core_MDF_ExceptionAccController_Test {
         List<String> accIdList = new List<String>();
         accIdList.add(accList[0].Id);
         
-        System.runAs(usr){
+        
         //Fetch Exception
         List<Core_MDF_Exception__c> exptList = [SELECT Id, Core_MDF_Name_of_Exception_nm__c, 
                                                 Core_MDF_Exception_Status_nm__c,Core_MDF_Company_Name_txt__c
                                                 FROM Core_MDF_Exception__c LIMIT 1];
         exptList[0].Core_MDF_Exception_Status_nm__c = 'Pending Review';
-        
-        //exptList[0].Core_MDF_Select_All_Accounts_ind__c=true;
         Test.startTest();
         update(exptList[0]);
         Test.stopTest();
         //Run as Exception Submitter
-        
+        System.runAs(usr){
             
             //Call Test class methods
             Core_MDF_ExceptionAccountsController.getIntelAccountRecords(exptList[0].Id);
@@ -152,9 +133,8 @@ public class Core_MDF_ExceptionAccController_Test {
     
     
     @isTest
-    static void exceptionWithoutAccess(){ 
+    static void exceptionWithoutAccess(){
         
-        //No records fetched
         User usr = [ SELECT Id FROM User where LastName='Payment Admin' LIMIT 1];
         
         //Fetch account details
@@ -162,30 +142,27 @@ public class Core_MDF_ExceptionAccController_Test {
         List<String> accIdList = new List<String>();
         accIdList.add(accList[0].Id);
         
-        System.runAs(usr){
         //Fetch Exception
-            try{
-                List<Core_MDF_Exception__c> exptList = [SELECT Id, Core_MDF_Name_of_Exception_nm__c, 
-                                                        Core_MDF_Exception_Status_nm__c,Core_MDF_Company_Name_txt__c
-                                                        FROM Core_MDF_Exception__c LIMIT 1];
-                System.debug('exptList-> '+exptList);
-                exptList[0].Core_MDF_Exception_Status_nm__c = 'Denied';
-                
-                //exptList[0].Core_MDF_Select_All_Accounts_ind__c=true;
-                Test.startTest();
-                update(exptList[0]);
-                Test.stopTest();
-                //Run as Payment Admin
+        List<Core_MDF_Exception__c> exptList = [SELECT Id, Core_MDF_Name_of_Exception_nm__c, 
+                                                Core_MDF_Exception_Status_nm__c,Core_MDF_Company_Name_txt__c
+                                                FROM Core_MDF_Exception__c LIMIT 1];
         
+        exptList[0].Core_MDF_Exception_Status_nm__c = 'Denied';
+        Test.startTest();
+        update(exptList[0]);
+        Test.stopTest();
+        //Run as Payment Admin
+        System.runAs(usr){
             
-            	Core_MDF_ExceptionAccountsController.saveExceptionAccountMappingRecords(exptList[0].Id, accIdList,
+            Core_MDF_ExceptionAccountsController.saveExceptionAccountMappingRecords(exptList[0].Id, accIdList,
                                                                                     exptList[0].Core_MDF_Exception_Status_nm__c, 
                                                                                     true, 'testAcc');
-            }
-            catch(exception e){
-                System.debug(e.getMessage());
-            }         
         }
+       //Check if test class has suceessfully run 
+        Core_MDF_Exception__c expt = [SELECT Id, Core_MDF_Company_Name_txt__c 
+                                      FROM Core_MDF_Exception__c 
+                                      LIMIT 1];
+        System.assertEquals(NULL,expt.Core_MDF_Company_Name_txt__c);
     } 
     
     @isTest
@@ -211,7 +188,7 @@ public class Core_MDF_ExceptionAccController_Test {
         eam.Core_MDF_Exception_id__c = exptList[0].Id;
         eam.Core_MDF_Account_id__c = accList[0].Id;
         Test.startTest();
-        //insert eam;
+        insert eam;
         Test.stopTest();
         //Run as Exception Submitter
         System.runAs(usr){
@@ -231,12 +208,12 @@ public class Core_MDF_ExceptionAccController_Test {
     @isTest
     static void exceptionWithReadOnlyAccessUser(){
         
-        User usr = [ SELECT Id FROM User where LastName='Exception Submitter' LIMIT 1];
+        User usr = [ SELECT Id FROM User where LastName='Read Only User' LIMIT 1];
         
         //Fetch account details
         List<Account> accList = [SELECT Id, Name
                                  FROM Account
-                                 WHERE Name = 'Test Virtual Account map1'
+                                 WHERE Name = 'Test Account 1'
                                  LIMIT 1];
         List<String> accIdList = new List<String>();
         accIdList.add(accList[0].Id);
@@ -251,7 +228,7 @@ public class Core_MDF_ExceptionAccController_Test {
         eam.Core_MDF_Exception_id__c = exptList[0].Id;
         eam.Core_MDF_Account_id__c = accList[0].Id;
         Test.startTest();
-        //insert eam;
+        insert eam;
         Test.stopTest();
         //Run as Exception Submitter
         System.runAs(usr){
@@ -267,29 +244,4 @@ public class Core_MDF_ExceptionAccController_Test {
                                       LIMIT 1];
         System.assertEquals(NULL,expt.Core_MDF_Company_Name_txt__c);
     }
-    @isTest
-    static void testSendEmailWithValidList() {
-        // Create a list with valid platform events
-        List<Core_MDF_Notify_Account_Manager__e> eventList = new List<Core_MDF_Notify_Account_Manager__e>();
-        
-        Core_MDF_Notify_Account_Manager__e event1 = new Core_MDF_Notify_Account_Manager__e(
-            Core_MDF_Escalation_Id_txt__c = 'a0X000000000001',
-            Core_MDF_errorMessage_txt__c = 'Test error message',
-            Core_MDF_isBusinessError_ind__c = true
-        );
-        
-        Core_MDF_Notify_Account_Manager__e event2 = new Core_MDF_Notify_Account_Manager__e(
-            Core_MDF_Escalation_Id_txt__c = 'a0X000000000002',
-            Core_MDF_errorMessage_txt__c = 'Another test error message',
-            Core_MDF_isBusinessError_ind__c = false
-        );
-        
-        eventList.add(event1);
-        eventList.add(event2);
-        
-        Test.startTest();
-        // This should execute without any errors since the method body is commented
-        Core_MDF_SendEmailHelper.sendEmail(eventList);
-        Test.stopTest();
-}
 }

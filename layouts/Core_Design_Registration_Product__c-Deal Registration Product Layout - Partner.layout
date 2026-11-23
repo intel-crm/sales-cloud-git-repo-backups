@@ -35,6 +35,10 @@
                 <behavior>Readonly</behavior>
                 <field>Core_Active_Status__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>PCC_Change_Request_Line_Item__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

@@ -18,6 +18,10 @@
                 <behavior>Edit</behavior>
                 <field>StartDate</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_Objective_Comments_Section__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

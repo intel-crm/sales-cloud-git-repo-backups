@@ -1,0 +1,262 @@
+<template>
+    <template if:true={recordId}>
+       <lightning-quick-action-panel header="Send Document" >
+         <template if:true={spinnerTrue}>
+            <div class="spinnerClass">
+               <lightning-spinner alternative-text="Loading" size="large" variant="brand"></lightning-spinner>
+           </div>
+         </template>
+         <template if:true={requestorPresent}>
+          <!--Body Section-->
+          <article class="slds-card" style="margin: 2%;padding: 2%;">
+             <div class="slds-card__body slds-card__body_inner">
+                <!--To Section-->
+                <div class="slds-form-element" style="display: flex;">
+                   <label class="slds-form-element__label flex-container-front" for="to" id="to">To:<abbr title="required" class="slds-required">*</abbr></label>
+                   <template if:true={toRecipientList}>
+                      <div class="flex-container-middle">
+                         <template for:each={toRecipientList} for:item="toRecipient">
+                            <div class="slds-form-element__control" style="margin-right: 2%; margin-bottom: 2px" key={to}>
+                               <div class="slds-pill_container">
+                                  <div class="slds-pill slds-pill_link">
+                                     <div role="combobox" tabindex="0" class="slds-input_faux slds-combobox__input slds-combobox__input-m" aria-labelledby="get-ToRecipient" aria-controls="get-ToRecipient" aria-expanded="true" aria-haspopup="listbox">
+                                        <lightning-icon icon-name="utility:email" class="email-icon"  alternative-text="email" title="Email" size="x-small"></lightning-icon>
+                                        &nbsp;
+                                        <span class="slds-pill__label">{toRecipient}</span>
+                                        &nbsp;
+                                        <button data-value={toRecipient} data-btnid="fromTo" class="slds-button slds-button_icon slds-button_icon slds-pill__remove" title="Remove" onclick={removeFromList}>
+                                           <lightning-icon icon-name="utility:close"  alternative-text="close" title="Close"></lightning-icon>
+                                        </button>
+                                     </div>
+                                  </div>
+                               </div>
+                            </div>
+                         </template>
+                      </div>
+                      <div style="margin-top: 2.5px;">
+                         <lightning-button-icon icon-name="utility:add"  alternative-text="add" variant="brand" title="Add Recipient" onclick={handleRecipient}></lightning-button-icon>
+                      </div>
+                   </template>
+                </div>
+                <br>
+                <!--CC Section-->
+                <template if:true={ccRecipient}>
+                   <div class="slds-form-element" style="display: flex;">
+                      <label class="slds-form-element__label flex-container-front" for="to" id="ccRecipient">Cc: </label>
+                      <div class="flex-container-middle">
+                         <template for:each={ccRecipientList} for:item="ccRecipient">
+                            <div class="slds-form-element__control" style="margin-right: 2%; margin-bottom: 2px" key={cc}>
+                               <div class="slds-pill_container">
+                                  <div class="slds-pill slds-pill_link">
+                                     <div role="combobox" tabindex="0" class="slds-input_faux slds-combobox__input slds-combobox__input-value" aria-labelledby="from-getRecord" aria-controls="from-getRecord" aria-expanded="true" aria-haspopup="listbox">
+                                        <lightning-icon icon-name="utility:email" class="email-icon"  alternative-text="email" title="Email" size="x-small"></lightning-icon>
+                                        &nbsp;
+                                        <span class="slds-pill__label">{ccRecipient}</span>
+                                        &nbsp;
+                                        <button data-value={ccRecipient} data-btnid="fromCc" class="slds-button slds-button_icon slds-button_icon slds-pill__remove" title="Remove" onclick={removeFromList}>
+                                           <lightning-icon icon-name="utility:close"  alternative-text="close" title="Close"></lightning-icon>
+                                        </button>
+                                     </div>
+                                  </div>
+                               </div>
+                            </div>
+                         </template>
+                      </div>
+                   </div>
+                </template>
+                <br>
+                <!--BCC Section-->
+                <template if:true={bccRecipient}>
+                   <div class="slds-form-element" style="display: flex;">
+                      <label class="slds-form-element__label flex-container-front" for="to" id="bcc">Bcc: </label>
+                      <div class="flex-container-middle">
+                         <template for:each={bccRecipientList} for:item="bccRecipient">
+                            <div class="slds-form-element__control" style="margin-right: 2%; margin-bottom: 2px" key={bcc}>
+                               <div class="slds-pill_container">
+                                  <div class="slds-pill slds-pill_link">
+                                     <div role="combobox" tabindex="0" class="slds-input_faux slds-combobox__input slds-combobox__input-value" aria-labelledby="from-getRecord" aria-controls="from-getRecord" aria-expanded="true" aria-haspopup="listbox">
+                                        <lightning-icon icon-name="utility:email" class="email-icon"  alternative-text="email" title="Email" size="x-small"></lightning-icon>
+                                        &nbsp;
+                                        <span class="slds-pill__label">{bccRecipient}</span>
+                                        &nbsp;
+                                        <button data-value={bccRecipient} data-btnid="fromBcc" class="slds-button slds-button_icon slds-button_icon slds-pill__remove" title="Remove" onclick={removeFromList}>
+                                           <lightning-icon icon-name="utility:close"  alternative-text="close" title="Close"></lightning-icon>
+                                        </button>
+                                     </div>
+                                  </div>
+                               </div>
+                            </div>
+                         </template>
+                      </div>
+                   </div>
+                </template>
+                <!-- Subject-Body -->
+                  <p class="subject"><b>Subject : </b>&nbsp; {subject}</p>
+                  <br />
+                  <p class="subject"><b>Email body : </b><br /></p>
+                  <p class="body"><lightning-formatted-rich-text value={body}></lightning-formatted-rich-text></p>
+               </div>
+            </article>
+          <!-- Footer Section -->
+          <div slot="footer">
+             <button class="slds-button slds-button_neutral" aria-label="Cancel" onclick={handleCloseAction}>Cancel</button>
+             <template if:false={toRequired}>
+                  <button type="button" class="slds-button slds-button_brand" onclick={handleSendEmail} disabled>Send</button>
+             </template>
+             <template if:true={toRequired}>
+               <button type="button" class="slds-button slds-button_brand" onclick={handleSendEmail}>Send</button>
+            </template>
+          </div>
+         </template>
+       </lightning-quick-action-panel>
+    </template>
+    <!--Lookup Search-->
+    <template if:true={lookupSearch}>
+       <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="Lookup-People" class="slds-modal slds-fade-in-open slds-modal_medium">
+          <div class="slds-modal__container">
+            <div class="slds-modal__header">
+               <h3 id="heading" class="slds-modal__title slds-hyphenate">Search People</h3>
+             </div>
+             <div class="slds-modal__content slds-p-around_medium slds-modal__content_headless" id="searchPeople">
+                <!--Search button-->
+                <div style="display: flex;margin: 1%;padding: 1%; justify-content: center;">
+                   <input type="text" id="toD" class="input" required onkeyup={handleInput} placeholder="Search by name or email..." title="Search people" />
+                   &nbsp;
+                   <div class="select">
+                      <select id="selectObject" class="select-extended" onchange={setOption}>
+                         <option value="Recent" selected>Recent Contact</option>
+                         <option value="Contact">All Contacts</option>
+                         <option value="User">All Users</option>
+                      </select>
+                   </div>
+                   &nbsp;
+                   <lightning-button-icon icon-name="utility:search"  alternative-text="Search" title="Search" onclick={handleSearchRequest} variant="brand"></lightning-button-icon>
+                </div>
+                <!--Dual List Option-->
+                <div style='display: flex;text-align: center;font-weight: 500;margin: 2%;padding: 1%;'>
+                   <div style="display: flex;width: 50%;">
+                      <!-- Available Options List-->
+                      <div class="slds-dueling-list__column slds-dueling-list__column_responsive" style="height: 100%;width: 100%;max-height: 600px;">
+                         <span>Available People</span>
+                         <div class="slds-dueling-list__options " style="height: 95%;width: 100%;">
+                            <ul class="slds-listbox slds-listbox_vertical">
+                              <span class="currentView">{getViewList}</span>
+                              <template if:true={searchTrue}>
+                                 <div class="spinnerClass">
+                                    <lightning-spinner alternative-text="Loading" size="medium" variant="brand"></lightning-spinner>
+                                </div>
+                              </template>
+                              <template if:true={availablePeople}>
+                               <template for:each={availablePeople} for:item="hasPeople">
+                                  <li class="slds-listbox__item" data-value={hasPeople.email} key={hasPeople.email} onclick={handleSelection}>
+                                     <div data-val={hasPeople.email} class="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline" tabindex="0" role="option">
+                                        <span class="slds-media__body" style=" display: flex; align-items: center;">
+                                            <lightning-icon icon-name="utility:profile_alt" alternative-text="email" title="Email" size="medium"></lightning-icon>
+                                            <span style=" display: grid;align-items: center;">
+                                                <span style="text-indent: 6px; font-size: 15px;color: #212529" title={hasPeople.name} class="slds-truncate">{hasPeople.name}</span>
+                                                <span style="text-indent: 6px;color: #6c757d;">{hasPeople.email} </span>
+                                            </span>
+                                        </span>
+                                     </div>
+                                  </li>
+                               </template>
+                               <span style="display: block;text-align: justify;padding: 4%;margin: 2%;">{emptyAvailablePeople}</span>
+                              </template>
+                            </ul>
+                         </div>
+                      </div>
+                   </div>
+                   <div style="display: grid;width:50%;">
+                      <!-- Add To -->
+                      <div class="box-margin slds-dueling-list__column slds-dueling-list__column_responsive" style="margin: 5%">
+                         <span style="text-indent: 20px">Additional To</span>
+                         <div style="display: flex;width: 100%;">
+                            <div style="display: block;width: 10%;">
+                               <lightning-button-icon icon-name="utility:chevronright" data-val="addToSelected" alternative-text="add" title="Add" onclick={handleSelectionAdd}></lightning-button-icon>
+                               <lightning-button-icon icon-name="utility:chevronleft"  data-val="addToSelected" alternative-text="remove" title="Remove" onclick={handleSelectionRemove}></lightning-button-icon>
+                            </div>
+                            <div class="slds-dueling-list__options slds-listbox__option_plain slds-media slds-media_small slds-media_inline" style="width: 90%;margin-left: 5%;height: 150px">
+                               <ul class="slds-listbox slds-listbox_vertical" style="width: 100%;">
+                                  <template for:each={_addToSelectedList} for:item="sel">
+                                     <li class="slds-listbox__item" data-value={sel.email} key={sel.email} onclick={handleSelection}>
+                                       <div data-val={sel.email} class="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline" tabindex="0">
+                                          <span class="slds-media__body" style=" display: flex; align-items: center;">
+                                              <lightning-icon icon-name="utility:profile_alt" alternative-text="email" title="Email" size="small"></lightning-icon>
+                                              <span style=" display: grid;align-items: center;">
+                                                 <span style="text-indent: 6px; font-size: 12px;color: #212529" title={sel.name} class="slds-truncate">{sel.name}</span>
+                                                 <span style="text-indent: 6px;color: #6c757d;font-size:8px">{sel.email} </span>
+                                              </span>
+                                          </span>
+                                      </div>
+                                     </li>
+                                  </template>
+                               </ul>
+                            </div>
+                         </div>
+                      </div>
+                      <!-- CC -->
+                      <div class="box-margin slds-dueling-list__column slds-dueling-list__column_responsive" style="margin: 5%">
+                         <span style="text-indent: 10%">CC</span>
+                         <div style="display: flex;width: 100%;">
+                            <div style="display: block;width: 10%;">
+                               <lightning-button-icon icon-name="utility:chevronright"  data-val="ccSelected" alternative-text="add" title="Add" onclick={handleSelectionAdd}></lightning-button-icon>
+                               <lightning-button-icon icon-name="utility:chevronleft"   data-val="ccSelected" alternative-text="remove" title="Remove" onclick={handleSelectionRemove}></lightning-button-icon>
+                            </div>
+                            <div class="slds-dueling-list__options slds-listbox__option_plain slds-media slds-media_small slds-media_inline" style="width: 90%;margin-left: 5%;height: 150px">
+                               <ul class="slds-listbox slds-listbox_vertical" style="width: 100%;">
+                                  <template for:each={_ccSelectedList} for:item="sel">
+                                     <li  class="slds-listbox__item" data-value={sel.email} key={sel.email} onclick={handleSelection}>
+                                       <div data-val={sel.email} class="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline" tabindex="0">
+                                          <span class="slds-media__body" style=" display: flex; align-items: center;">
+                                              <lightning-icon icon-name="utility:profile_alt" alternative-text="email" title="Email" size="small"></lightning-icon>
+                                              <span style=" display: grid;align-items: center;">
+                                                 <span style="text-indent: 6px; font-size: 12px;color: #212529" title={sel.name} class="slds-truncate">{sel.name}</span>
+                                                 <span style="text-indent: 6px;color: #6c757d;font-size:8px">{sel.email} </span>
+                                              </span>
+                                          </span>
+                                      </div>
+                                     </li>
+                                  </template>
+                               </ul>
+                            </div>
+                         </div>
+                      </div>
+                      <!-- BCC -->
+                      <div class="box-margin slds-dueling-list__column slds-dueling-list__column_responsive" style="margin: 5%">
+                         <span style="text-indent: 10%">BCC</span>
+                         <div style="display: flex;width: 100%;">
+                            <div style="display: block;width: 10%;">
+                               <lightning-button-icon icon-name="utility:chevronright"  data-val="bccSelected" alternative-text="add" title="Add" onclick={handleSelectionAdd}></lightning-button-icon>
+                               <lightning-button-icon icon-name="utility:chevronleft"   data-val="bccSelected" alternative-text="remove" title="Remove" onclick={handleSelectionRemove}></lightning-button-icon>
+                            </div>
+                            <div class="slds-dueling-list__options slds-listbox__option_plain slds-media slds-media_small slds-media_inline" style="width: 90%;margin-left: 5%;height: 150px">
+                               <ul class="slds-listbox slds-listbox_vertical" style="width: 100%;">
+                                  <template for:each={_bccSelectedList} for:item="sel">
+                                     <li  class="slds-listbox__item" data-value={sel.email} key={sel.email} onclick={handleSelection}>
+                                        <div data-val={sel.email} class="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline" tabindex="0">
+                                            <span class="slds-media__body" style=" display: flex; align-items: center;">
+                                                <lightning-icon icon-name="utility:profile_alt" alternative-text="email" title="Email" size="small"></lightning-icon>
+                                                <span style=" display: grid;align-items: center;">
+                                                   <span style="text-indent: 6px; font-size: 12px;color: #212529" title={sel.name} class="slds-truncate">{sel.name}</span>
+                                                   <span style="text-indent: 6px;color: #6c757d;font-size:8px">{sel.email} </span>
+                                                </span>
+                                            </span>
+                                        </div>
+                                     </li>
+                                  </template>
+                               </ul>
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+             </div>
+             <div class="slds-modal__footer">
+                <button class="slds-button slds-button_neutral" aria-label="Cancel" onclick={handleCancel}>Cancel</button>
+                <button class="slds-button slds-button_brand" onclick={handleSave}>Save</button>
+             </div>
+          </div>
+       </section>
+       <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+    </template>
+ </template>

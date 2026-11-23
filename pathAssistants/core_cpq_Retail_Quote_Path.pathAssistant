@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PathAssistant xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <entityName>SBQQ__Quote__c</entityName>
+    <fieldName>core_cpq_Retail_Status_Path__c</fieldName>
+    <masterLabel>Retail Quote Path</masterLabel>
+    <recordTypeName>Retail_Quote_New</recordTypeName>
+</PathAssistant>

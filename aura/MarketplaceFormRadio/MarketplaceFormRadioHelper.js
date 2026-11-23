@@ -20,34 +20,7 @@
                 if (opt.isSelected) {
                     checkParent = true;
                     selected.push(opt);
-                    var children = opt.children;
-                
-                    if(children.length > 0){
-                        
-                        for (i = 0; i < children.length; i++) {
-                            if(children[i].isSelected){
-                               component.set("v.valid", true);
-                                component.set('v.errorAnchorLabel','');
-                                break;   
-                            }else if(children[i].isChildRequired){
-                               component.set("v.valid", false);
-                               component.set('v.errorAnchorLabel','Select level 3 category'); 
-                               component.set('v.isChildRequired',true);  
-                            }
-                            
-                        }    
-                    
-                    }else{
-                        component.set("v.valid", true);
-                        component.set('v.errorAnchorLabel','');
-                        
-                    }
                 }
-                
-                
-                
-                
-                
             });
             return checkParent;
         }
@@ -73,7 +46,7 @@
     },
 
     setInitialValue : function(component, helper) {
-        
+        console.log('options-->insidesetinitial'+component.get('v.options'));
         var options = component.get('v.options'),
             valueType = component.get('v.valueType'),
             value, valid = false, selected = [];
@@ -85,21 +58,12 @@
         var recurse = function(opts) {
             var isSelected = false;
             opts.forEach(function(opt) {
-                if(component.get("v.isDropdownValueChanged")){
-                    if (opt.isSelected) {
-                        opt.isSelected = false;
-                        selected.push(opt);
-                        isSelected = false;
-                        valid = false;
-                    }
-                    
-                }else{
-                    if (opt.isSelected) {
-                        selected.push(opt);
-                        isSelected = true;
-                        valid = true;
-                    }
+                if (opt.isSelected) {
+                    selected.push(opt);
+                    isSelected = true;
+                    valid = true;
                 }
+              //  console.log('opt:->'+opt.children.length);
                 if (opt.children && opt.children.length) {
                     if (valueType == 'default') {
                         throw('Radio Input Error: radio w/ hierarchy cannot have a valueType of "default"');
@@ -142,9 +106,7 @@
         if (value.length) component.set('v.value', value);
         if (component.get("v.required") && !valid) {
             component.set("v.valid", false);
-        } else if(component.get("v.isChildRequired") && !component.get("v.isL3Selected")) {
-            component.set("v.valid", false);
-        }else{
+        } else {
             component.set("v.valid", true);
         }
         helper.updateForm(component);

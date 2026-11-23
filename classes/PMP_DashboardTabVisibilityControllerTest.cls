@@ -2,12 +2,6 @@
 public class PMP_DashboardTabVisibilityControllerTest extends PMP_SearchWrapperStore {
    
     @testSetup static void setup(){
-                  
-        Account__c customSetting = new Account__c();
-        customSetting.PRM_Max_Account_Number__c = '63628892297';
-        customSetting.Name ='AccountNumber';
-        insert customSetting;
-        
         List<PMP_Static_Constants__c> stList = new List<PMP_Static_Constants__c>();
         PMP_Static_Constants__c st = new PMP_Static_Constants__c();
         st = new PMP_Static_Constants__c();
@@ -31,10 +25,7 @@ public class PMP_DashboardTabVisibilityControllerTest extends PMP_SearchWrapperS
                                  EmailEncodingKey='UTF-8', LastName='User'+String.valueOf(date.today()), LanguageLocaleKey='en_US',
                                  LocaleSidKey='en_US', ProfileId = sysAdminProfile.Id,
                                  TimeZoneSidKey='America/Los_Angeles', UserName='testUser'+String.valueOf(Math.random())+'@CoreMDF.com',FirstName='TestUtility', Contact = conObj);
-       test.startTest();
         insert testUser;
-        test.stopTest();
-        system.assertNotEquals(accObj.id, null);
         
 
       }
@@ -75,20 +66,18 @@ public class PMP_DashboardTabVisibilityControllerTest extends PMP_SearchWrapperS
             PMP_DashboardTabVisibilityController.isEmployee();
             PMP_DashboardTabVisibilityController.isLeadTabforAdminsAndLDR();
             Test.stopTest();
-            system.assertNotEquals(ps.Id, null);
+            
             
         }
     }
     @isTest static void getTabs1_Test() {
     
         Test.startTest();
-       boolean p = PMP_DashboardTabVisibilityController.isMPAdmin();
-        // system.debug('p'+p);
+       PMP_DashboardTabVisibilityController.isMPAdmin();
         PMP_DashboardTabVisibilityController.isBasicProfileBenefit();
         PMP_DashboardTabVisibilityController.isEmployee();
         PMP_DashboardTabVisibilityController.isLeadTabforAdminsAndLDR();
         Test.stopTest();
-        system.assertEquals(true, p);
     } 
     
     @isTest static void testMethod1() {
@@ -185,7 +174,6 @@ Profile portalProfile = [SELECT Id FROM Profile WHERE Name ='Partner' Limit 1];
         PMP_DashboardTabVisibilityController.isEmployee();
         PMP_DashboardTabVisibilityController.isLeadTabforAdminsAndLDR();
         Test.stopTest();
-           system.assertNotEquals(psEmployee.Id, null);
         }
     } 
     

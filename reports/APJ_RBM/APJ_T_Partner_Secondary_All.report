@@ -115,6 +115,9 @@
         <field>ROLLUP_DESCRIPTION</field>
     </columns>
     <columns>
+        <field>CLOSE_DATE</field>
+    </columns>
+    <columns>
         <field>Account.Core_Account_Country__c</field>
     </columns>
     <columns>
@@ -137,7 +140,6 @@
         <field>Opportunity.Core_Product_Segment__c</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
         <field>Opportunity.Core_Architecture_Conversion__c</field>
     </columns>
     <columns>
@@ -211,6 +213,9 @@
         <field>EXP_AMOUNT</field>
     </columns>
     <columns>
+        <field>Opportunity.Core_Risk_Reason__c</field>
+    </columns>
+    <columns>
         <field>Opportunity.Core_At_Risk_Created_Date__c</field>
     </columns>
     <columns>
@@ -222,18 +227,14 @@
     <columns>
         <field>BucketField_12712091</field>
     </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Opportunity.Core_Opportunity_Count__c</field>
-    </columns>
     <filter>
-        <booleanFilter>1 AND 2 AND 3 AND (4 AND 5) AND 6 AND 7 AND 8</booleanFilter>
+        <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND ((6 AND 7 AND 8) OR 9)</booleanFilter>
         <criteriaItems>
             <column>Account.Core_Sales_Groups__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>APJ Sales Territory</value>
+            <value>GMP APJ Sales Territory</value>
         </criteriaItems>
         <criteriaItems>
             <column>INDUSTRY</column>
@@ -250,6 +251,27 @@
             <value>Design: Secondary</value>
         </criteriaItems>
         <criteriaItems>
+            <column>BucketField_12712091</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>,Won,Pending,Rejected</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ROLLUP_DESCRIPTION</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Ram</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Product_Segment__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Comms Infra. / Networking,Data Center Computing</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>Opportunity.Core_Commissionable__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
@@ -264,32 +286,18 @@
             <value>0</value>
         </criteriaItems>
         <criteriaItems>
-            <column>STAGE_NAME</column>
+            <column>Opportunity.Core_Product_Segment__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>Lost,Cancelled,Production Lost,Production Cancelled,Group Cancelled</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OWNER_MANAGER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>Swee Hoon,Lai Teng,Paul,Sumner,Batra,Sng,Andrew</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>FULL_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>Naomi,Gina</value>
+            <value>Comms Infra. / Networking,Data Center Computing</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>OWNER_MANAGER</field>
+        <dateGranularity>Quarter</dateGranularity>
+        <field>OpportunityLineItem.Core_KPI_Date__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
@@ -302,7 +310,7 @@
         <field>STAGE_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Asia-T Partner - Secondary All</name>
+    <name>APJ T Partner - Secondary All</name>
     <params>
         <name>terr</name>
         <value>all</value>

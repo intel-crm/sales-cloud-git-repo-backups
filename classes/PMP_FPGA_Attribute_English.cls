@@ -1,4 +1,3 @@
-@isTest
 /****************************************************************************************************************************************
 * Class Name  : PMP_FPGA_Attribute_English_Proc 
 * Version     : 1.0 
@@ -9,16 +8,16 @@
 * PMP Team                      05/10/2019                    Class for Processing FPGA_Attribute_English Static Resource
 * ****************************************************************************************************************************************/
 
-public class PMP_FPGA_Attribute_English  {//implements PMP_ProcessTaxonomyJSON
-//IPA 2.0- US-TWC729-7980
-    /*public List<Database.UpsertResult> processData(String fileName)
+public class PMP_FPGA_Attribute_English implements PMP_ProcessTaxonomyJSON {
+
+    public List<Database.UpsertResult> processData(String fileName)
     {
         List<Database.UpsertResult> totalRecords = new List<Database.UpsertResult>();
         List<Database.UpsertResult> totalRecordsJunc = new List<Database.UpsertResult>();
         List<Database.UpsertResult> totalResults = new List<Database.UpsertResult>();
         
-        totalRecords = PMP_ParseFPGAJSON.parseFpgaJSON(fileName);
-        totalRecordsJunc = PMP_FPGA_CreateJunctionData.createAssociationRecords();
+        totalRecords = PMP_ParseFPGAJSON.ParseFpgaJSON(fileName);
+        totalRecordsJunc = PMP_FPGA_CreateJunctionData.fpgaCreateJunctionDataMet();
         
         if(totalRecords.size()>0)
         {
@@ -38,6 +37,6 @@ public class PMP_FPGA_Attribute_English  {//implements PMP_ProcessTaxonomyJSON
         
         
         return totalResults;
-    }*/
+    } 
     
 }

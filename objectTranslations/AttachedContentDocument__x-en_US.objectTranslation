@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Attached Content Document</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Attached Content Documents</value>
+    </caseValues>
+    <fields>
+        <label><!-- ContentDocument ID --></label>
+        <name>ContentDocumentId__c</name>
+        <relationshipLabel><!-- Attached Content Documents --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Content Size --></label>
+        <name>ContentSize__c</name>
+    </fields>
+    <fields>
+        <label><!-- Content URL --></label>
+        <name>ContentUrl__c</name>
+    </fields>
+    <fields>
+        <label><!-- Created By ID --></label>
+        <name>CreatedById__c</name>
+    </fields>
+    <fields>
+        <label><!-- Created --></label>
+        <name>CreatedDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- External Data Source --></label>
+        <name>ExternalDataSourceName__c</name>
+    </fields>
+    <fields>
+        <label><!-- Class ID --></label>
+        <name>ExternalDataSourceType__c</name>
+        <picklistValues>
+            <masterLabel>AmazonAthena</masterLabel>
+            <translation><!-- AmazonAthena --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AmazonDynamoDb</masterLabel>
+            <translation><!-- AmazonDynamoDb --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Datajourney</masterLabel>
+            <translation><!-- Datajourney --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Identity</masterLabel>
+            <translation><!-- Identity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OData</masterLabel>
+            <translation><!-- OData --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OData4</masterLabel>
+            <translation><!-- OData4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OpenSearch</masterLabel>
+            <translation><!-- OpenSearch --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SciApi</masterLabel>
+            <translation><!-- SciApi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SfdcOrg</masterLabel>
+            <translation><!-- SfdcOrg --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SimpleURL</masterLabel>
+            <translation><!-- SimpleURL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wrapper</masterLabel>
+            <translation><!-- Wrapper --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>contentHubItem</masterLabel>
+            <translation><!-- contentHubItem --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>outgoingemail</masterLabel>
+            <translation><!-- outgoingemail --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>usermobileconfig</masterLabel>
+            <translation><!-- usermobileconfig --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>usrconnectionstatus</masterLabel>
+            <translation><!-- usrconnectionstatus --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- File Extension --></label>
+        <name>FileExtension__c</name>
+    </fields>
+    <fields>
+        <label><!-- File Type --></label>
+        <name>FileType__c</name>
+    </fields>
+    <fields>
+        <label><!-- Deleted --></label>
+        <name>IsDeleted__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Modified By ID --></label>
+        <name>LastModifiedById__c</name>
+    </fields>
+    <fields>
+        <label><!-- Content Modified Date --></label>
+        <name>LastModifiedDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Parent ID --></label>
+        <name>LinkedEntityId__c</name>
+        <relationshipLabel><!-- Attached Content Documents --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Prevent others from sharing and unsharin --></label>
+        <name>SharingOption__c</name>
+        <picklistValues>
+            <masterLabel>Freeze Sharing Off</masterLabel>
+            <translation><!-- Freeze Sharing Off --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Freeze Sharing On</masterLabel>
+            <translation><!-- Freeze Sharing On --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Title --></label>
+        <name>Title__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

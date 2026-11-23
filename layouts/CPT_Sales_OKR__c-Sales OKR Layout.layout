@@ -46,6 +46,10 @@
                 <behavior>Edit</behavior>
                 <field>CPT_Objective_Grading__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>CPT_KPI_Name__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns/>
         <style>TwoColumnsTopToBottom</style>

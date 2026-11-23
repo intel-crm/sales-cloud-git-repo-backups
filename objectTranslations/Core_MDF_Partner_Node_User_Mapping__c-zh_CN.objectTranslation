@@ -14,18 +14,6 @@
         <relationshipLabel><!-- Account Users --></relationshipLabel>
     </fields>
     <fields>
-        <label><!-- Action Needed --></label>
-        <name>Core_MDF_Action_Needed_nm__c</name>
-        <picklistValues>
-            <masterLabel>Owner Update</masterLabel>
-            <translation><!-- Owner Update --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
-        <label>主动</label>
-        <name>Core_MDF_Active_Ind__c</name>
-    </fields>
-    <fields>
         <label><!-- Created By --></label>
         <name>Core_MDF_CreatedBy_Nm__c</name>
     </fields>
@@ -48,12 +36,12 @@
     </fields>
     <nameFieldLabel><!-- Account User Name --></nameFieldLabel>
     <validationRules>
-        <errorMessage>“用户”字段或“帐户”字段不应为空</errorMessage>
-        <name>Core_MDF_CCP_User_Should_not_be_empty</name>
+        <errorMessage>此用户无权访问选定的计划</errorMessage>
+        <name>Core_MDF_Account_User_Validation</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- You do not have permission to create an Account User for the selected Program. --></errorMessage>
-        <name>Core_MDF_IPA_Program_Admin_Check</name>
+        <errorMessage>“用户”字段或“帐户”字段不应为空</errorMessage>
+        <name>Core_MDF_CCP_User_Should_not_be_empty</name>
     </validationRules>
     <validationRules>
         <errorMessage>所选用户处于不活动状态。请选择一个处于活动状态的用户。</errorMessage>

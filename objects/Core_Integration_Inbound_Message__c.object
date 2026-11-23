@@ -153,7 +153,54 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <externalSharingModel>Private</externalSharingModel>
+    <externalSharingModel>ReadWrite</externalSharingModel>
+    <fields>
+        <fullName>Core_CIM_Event_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>CIM Event Type</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_CIM_ID__c</fullName>
+        <externalId>false</externalId>
+        <label>CIM ID</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_CIM_Message_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>CIM Message Type</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_CIM_Processing_Time__c</fullName>
+        <label>CIM Processing Time</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Core_ContentDocument_Id__c</fullName>
+        <externalId>false</externalId>
+        <label>ContentDocument Id</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
     <fields>
         <fullName>Core_Created_Date_Time__c</fullName>
         <description>Returns the system field CreatedDate. Shows the full date+time instead of just the date, in list views and reports, unlike the standard system field.</description>
@@ -204,6 +251,13 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Core_Is_Invalid_Record__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Is Invalid Record</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>Core_Log_Entry__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <label>Log Entry</label>
@@ -213,6 +267,16 @@
         <required>false</required>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_Message_ID__c</fullName>
+        <externalId>false</externalId>
+        <label>CIM Message ID</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Core_Message_Type__c</fullName>
@@ -267,6 +331,11 @@
                     <fullName>Tender</fullName>
                     <default>false</default>
                     <label>Tender</label>
+                </value>
+                <value>
+                    <fullName>PSG_Products</fullName>
+                    <default>false</default>
+                    <label>PSG_Products</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -325,7 +394,17 @@
         <valueSet>
             <restricted>true</restricted>
             <valueSetDefinition>
-                <sorted>false</sorted>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>Failed</fullName>
+                    <default>false</default>
+                    <label>Failed</label>
+                </value>
+                <value>
+                    <fullName>In Process</fullName>
+                    <default>false</default>
+                    <label>In Process</label>
+                </value>
                 <value>
                     <fullName>Pending</fullName>
                     <default>true</default>
@@ -335,16 +414,6 @@
                     <fullName>Successful</fullName>
                     <default>false</default>
                     <label>Successful</label>
-                </value>
-                <value>
-                    <fullName>Failed</fullName>
-                    <default>false</default>
-                    <label>Failed</label>
-                </value>
-                <value>
-                    <fullName>Terminated</fullName>
-                    <default>false</default>
-                    <label>Terminated</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -438,9 +507,9 @@
                     <label>MyDeals</label>
                 </value>
                 <value>
-                    <fullName>ECA</fullName>
+                    <fullName>PIM</fullName>
                     <default>false</default>
-                    <label>ECA</label>
+                    <label>PIM</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -520,6 +589,7 @@
             <value>TODAY</value>
         </filters>
         <label>All</label>
+        <language>en_US</language>
     </listViews>
     <listViews>
         <fullName>All1</fullName>
@@ -531,6 +601,16 @@
         <columns>CREATEDBY_USER</columns>
         <columns>Core_Processing_Status__c</columns>
         <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_Source_System__c</field>
+            <operation>equals</operation>
+            <value>GLS</value>
+        </filters>
+        <filters>
+            <field>Core_Message_Type__c</field>
+            <operation>equals</operation>
+            <value>Marketplace_Translation</value>
+        </filters>
         <label>All</label>
     </listViews>
     <listViews>
@@ -553,7 +633,7 @@
         <filters>
             <field>Core_Source_System__c</field>
             <operation>equals</operation>
-            <value>SAP</value>
+            <value>GLS</value>
         </filters>
         <label>All Messages Today</label>
     </listViews>
@@ -681,7 +761,7 @@
         <columns>Core_Tags__c</columns>
         <columns>CREATEDBY_USER</columns>
         <columns>Core_Created_Date_Time__c</columns>
-        <filterScope>Everything</filterScope>
+        <filterScope>Mine</filterScope>
         <filters>
             <field>Core_Source_System__c</field>
             <operation>equals</operation>
@@ -693,6 +773,7 @@
             <value>Contact</value>
         </filters>
         <label>ERPM Messages - Contact</label>
+        <language>en_US</language>
     </listViews>
     <listViews>
         <fullName>ERPM_Messages_Today_Account</fullName>
@@ -823,6 +904,17 @@
         <columns>Core_Created_Date_Time__c</columns>
         <filterScope>Mine</filterScope>
         <label>My Messages</label>
+    </listViews>
+    <listViews>
+        <fullName>PSG_Product_Messages</fullName>
+        <columns>NAME</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_Message_Type__c</field>
+            <operation>equals</operation>
+            <value>PSG_Products</value>
+        </filters>
+        <label>PSG Product Messages</label>
     </listViews>
     <listViews>
         <fullName>Siebel_Quote_Messages</fullName>

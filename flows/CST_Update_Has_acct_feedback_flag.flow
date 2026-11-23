@@ -153,7 +153,7 @@
             <label>If you are a VP</label>
         </rules>
     </decisions>
-    <description>Added RA Permission check</description>
+    <description>Added RA Permission Check</description>
     <environments>Default</environments>
     <interviewLabel>CST-Update Has acct feedback flag {!$Flow.CurrentDateTime}</interviewLabel>
     <label>CST-Update Has acct feedback flag</label>

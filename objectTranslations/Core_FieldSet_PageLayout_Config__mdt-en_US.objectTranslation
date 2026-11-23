@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Core FieldSet PageLayout Config</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Core FieldSet PageLayout Configs</value>
+    </caseValues>
+    <fields>
+        <label><!-- Field Set Name --></label>
+        <name>Core_Field_Set_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Hide Blank Fields? --></label>
+        <name>Core_Hide_Blank_Fields_cb__c</name>
+    </fields>
+    <fields>
+        <label><!-- Object --></label>
+        <name>Core_Object_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Section Label --></label>
+        <name>Core_Section_Label_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Section Order --></label>
+        <name>Core_Section_Order__c</name>
+    </fields>
+    <fields>
+        <label><!-- Type --></label>
+        <name>Core_Type_Nm__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

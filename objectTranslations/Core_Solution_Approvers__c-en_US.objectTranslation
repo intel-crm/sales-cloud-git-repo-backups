@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Solution Approvers</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Solution Approvers</value>
+    </caseValues>
+    <fields>
+        <label><!-- Approver 1 --></label>
+        <name>Approver_1__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approver 2 --></label>
+        <name>Approver_2__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approver 3 --></label>
+        <name>Approver_3__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

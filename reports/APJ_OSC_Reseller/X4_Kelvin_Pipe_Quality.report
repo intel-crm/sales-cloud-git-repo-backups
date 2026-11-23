@@ -60,18 +60,18 @@
             <value>1</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OWNER_MANAGER</column>
+            <column>FULL_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>kelvin lum</value>
+            <value>Chia Hoey Oon,su yee yeoh,foo choong boon,Chian Wei Yow,Say Keat Ng,Chong Heng (Clifford) Tan,Chia Hsin Sze,Yuen Wei Neah,Caseen Sze,George Neah,I&apos;ng Chin Tan,Jae Jiun Koo,JASON WEI LOONG ONG,Kelvin Lum,Clifford Tan,SK Ng,Shermaine Yow</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Account.Core_Sales_Groups__c</column>
+            <column>Opportunity.Core_Sales_Groups__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>APJ Taiwan Sales Group</value>
+            <value>GMP Taiwan Sales Group</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -107,6 +107,8 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
+        <endDate>2021-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2017-10-01</startDate>
     </timeFrameFilter>
 </Report>

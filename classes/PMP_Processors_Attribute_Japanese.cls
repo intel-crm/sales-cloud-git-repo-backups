@@ -1,4 +1,3 @@
-@isTest
 /****************************************************************************************************************************************
 * Class Name  : PMP_Processors_Attribute_Japanese_Proc 
 * Version     : 1.0 
@@ -8,10 +7,10 @@
 * ---------------------------------------------------------------------------------------------------------------------------------------
 * PMP Team                      05/10/2019                    Class for Processing Processors_Attribute_Japanese Static Resource
 * ****************************************************************************************************************************************/
-public class PMP_Processors_Attribute_Japanese  {//implements PMP_ProcessTaxonomyJSON
-    //IPA 2.0- US-TWC729-7980
-    /*public List<Database.UpsertResult> processData(String fileName)
+public class PMP_Processors_Attribute_Japanese implements PMP_ProcessTaxonomyJSON {
+    
+    public List<Database.UpsertResult> processData(String fileName)
     {
-        return PMP_ParseProcessorJSON.parseProcessorJSON(fileName);
-    }*/
+        return PMP_ParseProcessorJSON.ParseProcessorJSON(fileName);
+    }
 }

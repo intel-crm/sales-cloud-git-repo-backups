@@ -132,17 +132,7 @@ public class Core_RestClient {
     // This method make callout to the end point URL and set the response from API.
     private void sendRequest() {
         response = new HttpResponse();
-		//Ganesh Changes
-		try{
         response = httpInstance.send(request);
-		} catch(Exception ex){
-            UCD_ACM_Logger.error('Core_RestClient','Send Request','Message: '+ex.getMessage()+'. StackTrace: '+ex.getStackTraceString(),NULL);
-        }
-        finally{
-            UCD_ACM_Logger.setLogDetails();
-        }
-		//Ganesh Changes End
-		
     }
 
     // This method is used to get the body of the response from the server.

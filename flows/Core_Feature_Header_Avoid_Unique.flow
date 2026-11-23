@@ -16,7 +16,7 @@
         </assignmentItems>
     </assignments>
     <description>Migrated from the: Core_Feature_Header_Avoid_Unique workflow rule
-Workflow rule description: Workflow rule to avoid duplication of combination of Header Type and Header Name for Feature Header records</description>
+Workflow rule description: Workflow rule to avoid duplication of combination of Header Type and Header Name for Feature Header records&quot;</description>
     <environments>Default</environments>
     <formulas>
         <name>Core_Feature_Header_Unique_Field_UpdateFormula</name>
@@ -40,7 +40,6 @@ FIND(&apos;DUPLICATE_VALUE: &apos;,{!$Flow.FaultMessage}),
         <expression>FIND(&apos;DUPLICATE_VALUE: &apos;, {!$Flow.FaultMessage})</expression>
         <scale>0</scale>
     </formulas>
-    <interviewLabel>Core_Feature_Header_Avoid_Unique {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Core_Feature_Header_Avoid_Unique</label>
     <migratedFromWorkflowRuleName>Core_Feature_Header_Avoid_Unique</migratedFromWorkflowRuleName>
     <processMetadataValues>

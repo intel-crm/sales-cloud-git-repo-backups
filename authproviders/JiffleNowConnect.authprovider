@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <AuthProvider xmlns="http://soap.sforce.com/2006/04/metadata">
-    <authorizeUrl>https://intel.jifflenow.com/api/oauth/authorize</authorizeUrl>
-    <consumerKey>5e3528f6c36de9c2f7d0a0002772e8bc84c0ea2a0844ccdf489940dc84cadbbe</consumerKey>
+    <authorizeUrl>https://intel-staging.jifflenow.com/api/oauth/authorize</authorizeUrl>
+    <consumerKey>8a4183c66dda4a247925dba1389b5c30d7bc2a713ef01fe70b0c80931f687957</consumerKey>
     <consumerSecret>Placeholder_Value</consumerSecret>
     <friendlyName>JiffleNowConnect</friendlyName>
     <includeOrgIdInIdentifier>false</includeOrgIdInIdentifier>
@@ -11,5 +11,5 @@
     <sendAccessTokenInHeader>true</sendAccessTokenInHeader>
     <sendClientCredentialsInHeader>false</sendClientCredentialsInHeader>
     <sendSecretInApis>true</sendSecretInApis>
-    <tokenUrl>https://intel.jifflenow.com/api/oauth/token</tokenUrl>
+    <tokenUrl>https://intel-staging.jifflenow.com/api/oauth/token</tokenUrl>
 </AuthProvider>

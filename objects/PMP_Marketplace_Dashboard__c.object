@@ -156,87 +156,16 @@
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
     <fields>
-        <fullName>PMP_External_ID__c</fullName>
-        <externalId>true</externalId>
-        <label>External ID</label>
-        <length>255</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>PMP_PAG_ID__c</fullName>
         <description>This Field Checks if the User belongs to the same One Partner Group ( used primarily for Dashboard Runtime User)</description>
         <externalId>false</externalId>
-        <formula>IF(OR($Profile.Name = &quot;System Administrator&quot;,$Profile.Name = &quot;IT Admin&quot;),&apos;TRUE&apos;, IF ($User.Core_IPA_One_Partner_Id__c  ==  PMP_Rpt_MP_Partner_ID__r.PMP_One_Partner_ID__c , &apos;TRUE&apos;,IF ($User.Core_IPA_One_Partner_Id__c == &quot;&quot;, &apos;TRUE&apos;, &apos;FALSE&apos;)))</formula>
+        <formula>IF(OR($Profile.Name = &quot;System Administrator&quot;,$Profile.Name = &quot;IT Admin&quot;),&apos;TRUE&apos;, IF ($User.PMP_One_Partner_ID__c  ==  PMP_Rpt_MP_Partner_ID__r.PMP_One_Partner_ID__c , &apos;TRUE&apos;,IF ($User.PMP_One_Partner_ID__c == &quot;&quot;, &apos;TRUE&apos;, &apos;FALSE&apos;)))</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>PAG ID</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>PMP_Rpt_CP_Ask_A_Question_Count__c</fullName>
-        <externalId>false</externalId>
-        <label>Contact Partner Ask A Question Count</label>
-        <precision>18</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Number</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>PMP_Rpt_CP_Combined_Count__c</fullName>
-        <externalId>false</externalId>
-        <label>Contact Partner Combined Count</label>
-        <precision>18</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Number</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>PMP_Rpt_CP_Open_Click_Count__c</fullName>
-        <externalId>false</externalId>
-        <label>Contact Partner Open Click Count</label>
-        <precision>18</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Number</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>PMP_Rpt_CP_Request_A_Quote_Count__c</fullName>
-        <externalId>false</externalId>
-        <label>Contact Partner Request A Quote Count</label>
-        <precision>18</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Number</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>PMP_Rpt_CP_Submit__c</fullName>
-        <externalId>false</externalId>
-        <label>Contact Partner Submit</label>
-        <precision>18</precision>
-        <required>false</required>
-        <scale>2</scale>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Number</type>
         <unique>false</unique>
     </fields>
     <fields>
@@ -290,18 +219,6 @@
         <type>Lookup</type>
     </fields>
     <fields>
-        <fullName>PMP_Rpt_PageViews_Count__c</fullName>
-        <externalId>false</externalId>
-        <label>Page Views Count</label>
-        <precision>18</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Number</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>PMP_Rpt_Page_Label__c</fullName>
         <description>Contains the Static Variables like &quot;Static Vars : PartnerProfile, OfferingDetail, Search, ArticleLink, HomePage, Dashboard, CategoryPage, LeadForm,..&quot;</description>
         <externalId>false</externalId>
@@ -347,29 +264,6 @@
         <type>Url</type>
     </fields>
     <fields>
-        <fullName>PMP_Rpt_Partner_Offering_Category__c</fullName>
-        <externalId>false</externalId>
-        <label>Partner Offering Category</label>
-        <length>255</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>PMP_Rpt_Partner_Website_Count__c</fullName>
-        <externalId>false</externalId>
-        <label>Partner Website Count</label>
-        <precision>18</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Number</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>PMP_Rpt_Resource_Name__c</fullName>
         <description>Company resource name for the  resource url</description>
         <externalId>false</externalId>
@@ -404,34 +298,11 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>PMP_Rpt_Valuable_Assert_Count__c</fullName>
-        <externalId>false</externalId>
-        <label>Most Valuable Assert Count</label>
-        <precision>18</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Number</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>PMP_Rpt_Viewinfo__c</fullName>
         <description>IAH View Info</description>
         <externalId>false</externalId>
         <label>ViewInfo</label>
         <length>255</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>PMP_Rpt_Year__c</fullName>
-        <externalId>false</externalId>
-        <label>Year</label>
-        <length>10</length>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>

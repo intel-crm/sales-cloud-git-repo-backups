@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>VCCTIHttpRequestData</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>VCCTIHttpRequestData</value>
+    </caseValues>
+    <fields>
+        <label><!-- VCCTIDevName --></label>
+        <name>voice_connector__VCCTIDevName__c</name>
+    </fields>
+    <fields>
+        <label><!-- VCHttpBody --></label>
+        <name>voice_connector__VCHttpBody__c</name>
+    </fields>
+    <fields>
+        <label><!-- VCHttpCallId --></label>
+        <name>voice_connector__VCHttpCallId__c</name>
+    </fields>
+    <fields>
+        <label><!-- VCHttpEndpoint --></label>
+        <name>voice_connector__VCHttpEndpoint__c</name>
+    </fields>
+    <fields>
+        <label><!-- VCHttpFilters --></label>
+        <name>voice_connector__VCHttpFilters__c</name>
+    </fields>
+    <fields>
+        <label><!-- VCHttpHeaders --></label>
+        <name>voice_connector__VCHttpHeaders__c</name>
+    </fields>
+    <fields>
+        <label><!-- VCHttpMethod --></label>
+        <name>voice_connector__VCHttpMethod__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

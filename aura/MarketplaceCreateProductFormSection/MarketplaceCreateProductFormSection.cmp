@@ -1,6 +1,6 @@
-<aura:component></aura:component>
-<!-- IPA2.0 + US TWC4497-1631 -->
-  <!-- <aura:attribute name="headline" type="string" required="true" description="The headline for the section"/>
+<aura:component>
+
+  <aura:attribute name="headline" type="string" required="true" description="The headline for the section"/>
   <aura:attribute name="isAccordion" type="boolean" default="false" description="This will show subsections in an accordion view."/>
   <aura:attribute name="isAccordionOnlyShowCurrent" type="boolean" default="false" description="This will only allow one subsection open at a time."/>
   <aura:attribute name="userSelectedLanguage" type="string" />
@@ -9,7 +9,7 @@
   <aura:attribute name="currentStepTouched" type="boolean" default="false" description="Internal"/>
   <aura:attribute name="updateFormCallback" type="object" description="Internal"/>
   <aura:attribute name="notActive" type="boolean" default="true" />	
-    <aura:attribute name = "activeStep" type="integer" />
+  
   <div class="formSection">
     <h2 class="slds-m-horizontal_medium h4">{!v.headline}</h2>
     <aura:if isTrue="{!v.isAccordion}">
@@ -26,8 +26,7 @@
               formData="{!v.formData}"
               currentStepTouched="{!v.currentStepTouched}"                                        
               updateFormCallback="{!v.updateFormCallback}"
-              userSelectedLanguage= "{!v.userSelectedLanguage}"
-              activeStep = "{!v.activeStep}"/>
+              userSelectedLanguage= "{!v.userSelectedLanguage}"/>
           </c:MarketPlaceAccordionSection>
         </aura:iteration>
       </c:MarketPlaceAccordion>
@@ -44,11 +43,10 @@
             formData="{!v.formData}"
             updateFormCallback="{!v.updateFormCallback}"
             userSelectedLanguage= "{!v.userSelectedLanguage}"
-            activeStep = "{!v.activeStep}"
-                                                    />
+            />
         </aura:iteration>
       </aura:set>
     </aura:if>
   </div>
 
-</aura:component> -->
+</aura:component>

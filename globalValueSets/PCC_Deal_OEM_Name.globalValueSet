@@ -35,18 +35,6 @@
         <default>false</default>
         <label>Write In OEM Name</label>
     </customValue>
-    <customValue>
-        <fullName>OEM Name 1</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>OEM Name 1</label>
-    </customValue>
-    <customValue>
-        <fullName>OEM Name 2</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>OEM Name 2</label>
-    </customValue>
     <masterLabel>OEM Name</masterLabel>
     <sorted>false</sorted>
 </GlobalValueSet>

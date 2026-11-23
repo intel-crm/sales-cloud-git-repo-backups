@@ -8,6 +8,6 @@
     </values>
     <values>
         <field>Value__c</field>
-        <value xsi:type="xsd:string">The provided picklist value for endCustomerCountry is Invalid.</value>
+        <value xsi:type="xsd:string">The provided picklist value for endCustomerCountry is Invalid</value>
     </values>
 </CustomMetadata>

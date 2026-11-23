@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>VCCall</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>VCCalls</value>
+    </caseValues>
+    <fields>
+        <label><!-- User --></label>
+        <name>voice_connector__UserId__c</name>
+        <relationshipLabel><!-- VCCalls --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Activity ID --></label>
+        <name>voice_connector__VCActivityId__c</name>
+    </fields>
+    <fields>
+        <label><!-- CTI Name --></label>
+        <name>voice_connector__VCCTIName__c</name>
+        <picklistValues>
+            <masterLabel>Aircall</masterLabel>
+            <translation><!-- Aircall --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AmazonConnect</masterLabel>
+            <translation><!-- AmazonConnect --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Dialpad</masterLabel>
+            <translation><!-- Dialpad --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RingCentral</masterLabel>
+            <translation><!-- RingCentral --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Call Type --></label>
+        <name>voice_connector__VCCallType__c</name>
+        <picklistValues>
+            <masterLabel>Inbound</masterLabel>
+            <translation><!-- Inbound --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Outbound</masterLabel>
+            <translation><!-- Outbound --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- End Date --></label>
+        <name>voice_connector__VCEndDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- External ID --></label>
+        <name>voice_connector__VCExternalID__c</name>
+    </fields>
+    <fields>
+        <label><!-- From Phone Number --></label>
+        <name>voice_connector__VCFromPhoneNumber__c</name>
+    </fields>
+    <fields>
+        <label><!-- VCHangup --></label>
+        <name>voice_connector__VCHangup__c</name>
+    </fields>
+    <fields>
+        <label><!-- Media Provider Id --></label>
+        <name>voice_connector__VCMediaProviderId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number Channels --></label>
+        <name>voice_connector__VCNumberChannels__c</name>
+    </fields>
+    <fields>
+        <label><!-- Processed by ECI (second API call) --></label>
+        <name>voice_connector__VCProcessedByECI2__c</name>
+    </fields>
+    <fields>
+        <label><!-- Processed by ECI (first API call) --></label>
+        <name>voice_connector__VCProcessedByECI__c</name>
+    </fields>
+    <fields>
+        <label><!-- Processed by --></label>
+        <name>voice_connector__VCProcessedBy__c</name>
+        <picklistValues>
+            <masterLabel>Job</masterLabel>
+            <translation><!-- Job --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Recrawl</masterLabel>
+            <translation><!-- Recrawl --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Trigger</masterLabel>
+            <translation><!-- Trigger --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Webhook</masterLabel>
+            <translation><!-- Webhook --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Recording Duration --></label>
+        <name>voice_connector__VCRecordingDuration__c</name>
+    </fields>
+    <fields>
+        <label><!-- Recording Format --></label>
+        <name>voice_connector__VCRecordingFormat__c</name>
+        <picklistValues>
+            <masterLabel>flac</masterLabel>
+            <translation><!-- flac --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>mp3</masterLabel>
+            <translation><!-- mp3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>wav</masterLabel>
+            <translation><!-- wav --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- VCRecording --></label>
+        <name>voice_connector__VCRecording__c</name>
+    </fields>
+    <fields>
+        <label><!-- Start Date --></label>
+        <name>voice_connector__VCStartDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- To Phone Number --></label>
+        <name>voice_connector__VCToPhoneNumber__c</name>
+    </fields>
+    <fields>
+        <label><!-- VCUniqueExternalId --></label>
+        <name>voice_connector__VCUniqueExternalId__c</name>
+    </fields>
+    <fields>
+        <label><!-- User Channel --></label>
+        <name>voice_connector__VCUserChannel__c</name>
+    </fields>
+    <fields>
+        <label><!-- VCVoiceCall --></label>
+        <name>voice_connector__VCVoiceCall__c</name>
+        <relationshipLabel><!-- VCCalls --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

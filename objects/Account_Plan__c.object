@@ -158,11 +158,29 @@
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
     <fields>
+        <fullName>Account_Deactivated__c</fullName>
+        <formula>Account__r.Core_Deactivated__c</formula>
+        <label>Account Deactivated</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Account_Sales_Group__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(Account__r.Core_Sales_Groups__c )</formula>
+        <label>Account Sales Group</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Account__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <label>Account</label>
         <referenceTo>Account</referenceTo>
-        <relationshipLabel>Account Plans</relationshipLabel>
         <relationshipName>Account_Plans1</relationshipName>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
@@ -188,6 +206,14 @@
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>My_Team__c</fullName>
+        <formula>CONTAINS (Owner:User.UserRole.Name ,$UserRole.Name ) &amp;&amp; (( Owner:User.UserRole.Name!= $UserRole.Name &amp;&amp; OwnerId !=$User.Id)) || (OwnerId==$User.Id)</formula>
+        <label>My Team</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>Number_of_Attachments__c</fullName>
@@ -309,11 +335,41 @@
         <type>Number</type>
         <unique>false</unique>
     </fields>
-    <label>Account Plan</label>
+    <label>OLD Account Plan custom</label>
     <listViews>
         <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Plan_Name__c</columns>
+        <columns>Plan_Status__c</columns>
+        <columns>Account__c</columns>
+        <columns>Help_Needed__c</columns>
+        <columns>Core_Document_Link__c</columns>
+        <columns>CREATEDBY_USER</columns>
+        <columns>CREATED_DATE</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>My_Team</fullName>
+        <columns>NAME</columns>
+        <columns>Plan_Name__c</columns>
+        <columns>Plan_Status__c</columns>
+        <columns>Account__c</columns>
+        <columns>Help_Needed__c</columns>
+        <columns>Core_Document_Link__c</columns>
+        <columns>CREATEDBY_USER</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>My_Team__c</columns>
+        <columns>OWNER.FIRST_NAME</columns>
+        <columns>OWNER.LAST_NAME</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>My_Team__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>My Team</label>
+        <language>en_US</language>
     </listViews>
     <nameField>
         <displayFormat>PLAN-{0000000}</displayFormat>
@@ -322,7 +378,7 @@
         <trackHistory>false</trackHistory>
         <type>AutoNumber</type>
     </nameField>
-    <pluralLabel>Account Plans</pluralLabel>
+    <pluralLabel>Account Plans custom</pluralLabel>
     <searchLayouts/>
     <sharingModel>Private</sharingModel>
     <visibility>Public</visibility>

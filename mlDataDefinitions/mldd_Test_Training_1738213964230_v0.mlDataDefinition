@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MLDataDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
+    <developerName>mldd_Test_Training_1738213964230_v0</developerName>
+    <entityDeveloperName>Partner_Training_Links__c</entityDeveloperName>
+    <parentDefinitionDevName>mlpd_Test_Training_1738213937976_v0</parentDefinitionDevName>
+    <type>Prediction</type>
+</MLDataDefinition>

@@ -294,38 +294,11 @@
         <columns>CPT_Quota_Setup__c</columns>
         <columns>CPT_Territory_Target__c</columns>
         <filterScope>Everything</filterScope>
-        <filters>
-            <field>CPT_Validation_Status__c</field>
-            <operation>notEqual</operation>
-            <value>Pass</value>
-        </filters>
         <label>All Records</label>
+        <language>en_US</language>
         <sharedTo>
             <allInternalUsers></allInternalUsers>
         </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>Duplicate_Records</fullName>
-        <columns>NAME</columns>
-        <columns>CPT_Batch_Id__c</columns>
-        <columns>CPT_Employee_WWID__c</columns>
-        <columns>CPT_Territory_Name__c</columns>
-        <columns>CPT_Validation_Status__c</columns>
-        <columns>CPT_Validation_Message__c</columns>
-        <columns>CPT_Quota_Setup__c</columns>
-        <columns>CPT_Territory_Target__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>CPT_Validation_Status__c</field>
-            <operation>equals</operation>
-            <value>Fail</value>
-        </filters>
-        <filters>
-            <field>CPT_Validation_Message__c</field>
-            <operation>contains</operation>
-            <value>Duplicate</value>
-        </filters>
-        <label>Duplicate Records</label>
     </listViews>
     <nameField>
         <displayFormat>TA-STG-{000000}</displayFormat>

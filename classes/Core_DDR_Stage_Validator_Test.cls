@@ -71,8 +71,8 @@ public class Core_DDR_Stage_Validator_Test{
         ddrRec1.Core_Product_Group_Nm__c = 'Embedded/IOT'; // Boards & Systems
         ddrRec1.Core_Military_Aerospace_Gvrnmt_Use_Ind__c = 'Yes';
         ddrRec1.Core_Vertical_Market_Nm__c='Education';
-        ddrRec1.Core_Product_Segment_Nm__c='Embedded / IOT';
-        ddrRec1.Core_Product_Application_Nm__c='Aerospace/Avionics';
+        ddrRec1.Core_Product_Segment_Nm__c='Client Computing';
+        ddrRec1.Core_Product_Application_Nm__c='Business Desktop';
         ddrRec1.Core_Opportunity_Volume_Cnt__c=100;
         ddrRec1.Core_Partner_FAE_Nm__c='Test FAE';
         ddrRec1.Core_Partner_FSR_Nm__c='Test FSR';
@@ -211,7 +211,6 @@ public class Core_DDR_Stage_Validator_Test{
         for(contact con: LstCon)
         {
             con.accountid = LstAcc[0].id;
-            con.MailingCountry ='USA';
         }
         insert LstCon;
         Id p = [select id from profile where name='Partner'].id;
@@ -660,7 +659,6 @@ public class Core_DDR_Stage_Validator_Test{
                 con.Lastname = 'disti1user1';
                 con.email = 'disti1user1@disti1.com';
                 con.accountid = lstAcc1[0].id;
-                con.MailingCountry ='USA';
             }
             insert LstCon1;
             
@@ -691,7 +689,6 @@ public class Core_DDR_Stage_Validator_Test{
                 con.Lastname = 'disti2user1';
                 con.email = 'disti2user1@disti2.com';
                 con.accountid = lstAcc2[0].id;
-                con.MailingCountry ='USA';
             }
             insert LstCon2;
             
@@ -934,7 +931,7 @@ public class Core_DDR_Stage_Validator_Test{
             List<Product2> ProdLst = Core_DDR_Utility.CreateProduct(5);
             insert ProdLst;
             
-            Core_Design_Registration__c designrec = [SELECT id, Name FROM Core_Design_Registration__c  limit 1];
+            Core_Design_Registration__c designrec = [SELECT id, Name FROM Core_Design_Registration__c limit 1];
             designrec.Core_Design_Registration_Stage_Id__c = designRegStage7430[0].id;
             update designrec;
             

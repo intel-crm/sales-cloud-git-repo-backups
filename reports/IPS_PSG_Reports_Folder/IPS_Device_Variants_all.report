@@ -621,9 +621,6 @@
             <sourceValues>
                 <sourceValue>Intel® Stratix® 10 DX FPGA</sourceValue>
             </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel® Stratix® 10 TX FPGA</sourceValue>
-            </sourceValues>
             <value>Stratix 10 TX DX</value>
         </values>
         <values>
@@ -640,12 +637,6 @@
         </values>
         <values>
             <sourceValues>
-                <sourceValue>Intel® Stratix® 10 NX FPGA</sourceValue>
-            </sourceValues>
-            <value>Stratix 10 NX</value>
-        </values>
-        <values>
-            <sourceValues>
                 <sourceValue>Intel® Agilex™ M-Series</sourceValue>
             </sourceValues>
             <sourceValues>
@@ -654,40 +645,7 @@
             <sourceValues>
                 <sourceValue>Intel® Agilex™ I-Series</sourceValue>
             </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel® Agilex™ F-Series FPGAs and SoC FPGAs</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel® Agilex™ I-Series SoC FPGAs</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel® Agilex™ 7 FPGAs and SoC FPGAs F-Series</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel® Agilex™ 7 FPGAs and SoC FPGAs I-Series</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel® Agilex™ 7 FPGAs and SoC FPGAs M-Series</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel Agilex® 7 FPGAs and SoC FPGAs F-Series</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel Agilex® 7 FPGAs and SoC FPGAs I-Series</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel Agilex® 7 FPGAs and SoC FPGAs M-Series</sourceValue>
-            </sourceValues>
-            <value>Agilex 7</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>Intel® Agilex™ 5 FPGAs and SoC FPGAs E-Series</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel Agilex® 5 FPGAs and SoC FPGAs E-Series</sourceValue>
-            </sourceValues>
-            <value>Agilex 5</value>
+            <value>Agilex</value>
         </values>
     </buckets>
     <chart>
@@ -820,7 +778,7 @@
         <field>PRIORITY</field>
     </columns>
     <filter>
-        <booleanFilter>(1 AND (2 OR 4) AND 3) AND 5</booleanFilter>
+        <booleanFilter>((1 AND (2 or 4) AND 3) AND 5)</booleanFilter>
         <criteriaItems>
             <column>Case.Core_Product_Organization__c</column>
             <columnToColumn>false</columnToColumn>
@@ -885,8 +843,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CREATED_DATEONLY</dateColumn>
-        <endDate>2023-12-31</endDate>
+        <endDate>2020-06-30</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2018-01-01</startDate>
+        <startDate>2017-01-01</startDate>
     </timeFrameFilter>
 </Report>

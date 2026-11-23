@@ -8,9 +8,6 @@
 @isTest
 public class Pricing_UCD_ResponseWrapper_Test{
     static testmethod void testUCDResponseWrapper(){
-        Pricing_UCD_ResponseWrapper.Header header = new Pricing_UCD_ResponseWrapper.Header();
-        header.CustomerAggregationType = 'UNFD_CTRY_CUST';
-        header.CustomerProcessEngagement = 'DIR_PRC_EXCPT';
         
         Pricing_UCD_ResponseWrapper.ResponseData ucdResponseObject1 = new Pricing_UCD_ResponseWrapper.ResponseData();
         ucdResponseObject1.AccountId = '';

@@ -1,0 +1,15 @@
+Hello All,
+
+Please find the detail of failed record:
+
+Contact Enterprise Id: {!Core_Contact_GEC_Staging__c.Core_Contact_ID__c}
+Status: {!Core_Contact_GEC_Staging__c.Core_Status__c}
+
+Failed Reason: {!Core_Contact_GEC_Staging__c.Core_Response__c}
+
+Please click on the below link to see all the failed records
+https://intel--crmdevsls3.my.salesforce.com/00O2D000000XFlj
+
+
+Thanks,
+Intel Support Team

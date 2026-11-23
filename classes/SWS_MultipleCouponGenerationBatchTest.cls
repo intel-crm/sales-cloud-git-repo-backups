@@ -5,6 +5,7 @@ public class SWS_MultipleCouponGenerationBatchTest {
         User u = SWS_TestUtilty.createUser();
         System.runAs(u){
             SWS_TestUtilty.createLabel('GenerateCoupon','/billing/coupons');
+            SWS_TestUtilty.createMultipleRequest(2);
             List<SWS_Cloud_Credit_Request__c> req = SWS_TestUtilty.createMultipleRequest(2);
         }
     }
@@ -31,9 +32,9 @@ public class SWS_MultipleCouponGenerationBatchTest {
             input.noOfUsers = 1;
             input.isStandard = true;
             input.requestList = requestList;
-            inputValues.add(input);                     
+            inputValues.add(input);       
             SWS_MultipleCouponGeneration.bulkRequest(inputValues);
-            System.assertEquals(true, true,'As Expected');
+			System.assertEquals(true, true,'As Expected');
         }
         Test.stopTest();   
     }

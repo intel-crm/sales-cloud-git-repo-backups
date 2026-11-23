@@ -2,8 +2,8 @@
  * @description       : 
  * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
  * @group             : 
- * @last modified on  : 11-10-2026
- * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+ * @last modified on  : 12-25-2023
+ * @last modified by  : Rajesh Gajul
 **/
 public with sharing class Pricing_LinkQuotesController {
     public static Boolean isPartnerUser = Pricing_QuoteLineController.isPartnerUser();
@@ -92,7 +92,7 @@ public with sharing class Pricing_LinkQuotesController {
                             Pricing_End_Customer_Country_Nm__c, Pricing_Project_Name_Nm__c, Pricing_Group_Nm__r.Id,Pricing_Group_Nm__r.Name, 
                             Pricing_Program_Type_Nm__c FROM SBQQ__Quote__c 
                             WHERE Id !=: quoteMap.get(quoteId).Id  
-                            AND Pricing_Project_Name_Nm__c LIKE: searchString 
+                            AND  Pricing_Project_Name_Nm__c LIKE: searchString
                             AND SBQQ__Account__c =: quoteMap.get(quoteId).SBQQ__Account__c ORDER BY Name Asc];
         }
         else if(searchCriteria == 'End Customer'){
@@ -100,7 +100,7 @@ public with sharing class Pricing_LinkQuotesController {
                             Pricing_End_Customer_Country_Nm__c, Pricing_Project_Name_Nm__c, Pricing_Group_Nm__r.Id,Pricing_Group_Nm__r.Name, 
                             Pricing_Program_Type_Nm__c FROM SBQQ__Quote__c 
                             WHERE Id !=: quoteMap.get(quoteId).Id  
-                            AND Pricing_End_Customer_Name__c LIKE: searchString  
+                            AND Pricing_End_Customer_Name__c LIKE: searchString
                             AND SBQQ__Account__c =: quoteMap.get(quoteId).SBQQ__Account__c ORDER BY Name Asc];
         }
         else if(searchCriteria == 'Quote Type'){
@@ -315,7 +315,7 @@ public with sharing class Pricing_LinkQuotesController {
     @AuraEnabled(cacheable=true)
     public static boolean getQuoteGroupLinkStatus(Id quoteId){
         try{
-        List<SBQQ__Quote__c> quoteRec = [SELECT Id, Pricing_Group_Nm__c FROM SBQQ__Quote__c WHERE Id =: quoteId]; 
+        List<SBQQ__Quote__c> quoteRec = [SELECT Id, Name, Pricing_Group_Nm__c FROM SBQQ__Quote__c WHERE Id =: quoteId]; 
         if(quoteRec.size()>0 && quoteRec[0].Pricing_Group_Nm__c != null){
             return true;
         }

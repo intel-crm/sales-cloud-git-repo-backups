@@ -14,11 +14,6 @@
         <relationshipLabel><!-- Support Org Admins --></relationshipLabel>
     </fields>
     <fields>
-        <label><!-- Opportunity PAR --></label>
-        <name>Core_IPS_Supported_Org_Admin__c</name>
-        <relationshipLabel><!-- Support Org Admins --></relationshipLabel>
-    </fields>
-    <fields>
         <label><!-- Unique Admin User --></label>
         <name>Core_IPS_Unique_Admin_User__c</name>
     </fields>

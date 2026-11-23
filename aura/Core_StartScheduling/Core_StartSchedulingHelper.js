@@ -105,6 +105,14 @@
         			button.set("v.disabled",true);
                     helper.showToast(component, event, helper,message.message,"error");
                 }
+            }else{
+                var errors = a.getError();
+                if (errors) {
+                    console.log(errors);
+                    if (errors[0] && errors[0].message) {
+                        helper.showToast(component,event,helper, errors[0].message,"error");
+                    }
+                }  
             }
             helper.hideSpinner(component);
         });

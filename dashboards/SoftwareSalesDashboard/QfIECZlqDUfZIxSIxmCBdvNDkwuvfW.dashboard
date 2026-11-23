@@ -20,11 +20,11 @@
         </dashboardFilterOptions>
         <dashboardFilterOptions>
             <operator>equals</operator>
-            <values>LAST_FISCAL_YEAR</values>
+            <values>THIS_FISCAL_YEAR</values>
         </dashboardFilterOptions>
         <dashboardFilterOptions>
             <operator>equals</operator>
-            <values>THIS_FISCAL_YEAR</values>
+            <values>LAST_FISCAL_YEAR</values>
         </dashboardFilterOptions>
         <name>Create Date</name>
     </dashboardFilters>
@@ -44,6 +44,7 @@
                 <dashboardFilterColumns>
                     <column>CREATED_DATE</column>
                 </dashboardFilterColumns>
+                <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
                 <drillEnabled>false</drillEnabled>
                 <drillToDetailEnabled>false</drillToDetailEnabled>
@@ -113,7 +114,7 @@
     </dashboardGridLayout>
     <dashboardType>SpecifiedUser</dashboardType>
     <isGridLayout>true</isGridLayout>
-    <owner>10681329@intel.com.crm</owner>
+    <owner>12258252@intel.com.crm.devsls3</owner>
     <runningUser>salesforce.system.user@intel.com.crm</runningUser>
     <textColor>#000000</textColor>
     <title>HubSpot Lead Stage Conversion Trend Dashboard</title>

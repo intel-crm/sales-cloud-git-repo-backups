@@ -37,7 +37,7 @@ const contactSample = (index) => {
             role: 'Named Account Coverage',
             phone: '(555) 555-5555',
             email: 'rogersimpson@intel.com',
-            iconUrl: 'https://via.placeholder.com/120x90/F9F9F9/555555?text=Intel'
+            iconUrl: 'https://www.intel.com/content/dam/logos/intel-footer-logo.svg'
         }
     ]
     return  index>-1  && mockContacts.length > index ? mockContacts[index] : helpers.sample(mockContacts);

@@ -1,0 +1,70 @@
+<template>
+    <div class="slds-grid slds-wrap slds-p-around_medium">
+        <div class="slds-col slds-size_1-of-1">
+                <div class="slds-p-around_medium">
+                    <template if:true={isEditMode}>
+                        <lightning-input type="search" placeholder="Search People..." variant="label-hidden" value={searchTerm5}
+                            onchange={handleSearchChange5} class="slds-m-bottom_small">
+                        </lightning-input>
+                        <div class="slds-box slds-theme_default slds-m-top_small">
+                            <template for:each={selectedUsers5} for:item="user">
+                                <div key={user.Id} class="slds-pill slds-pill_link slds-m-around_x-small">
+                                    <lightning-avatar size="small" alternative-text="User Avatar" src={avatarImg}></lightning-avatar>
+                                    <span class="slds-pill__label">{user.Name}</span>
+                                    <lightning-button-icon icon-name="utility:close" size="small" alternative-text="Remove"
+                                        onclick={handleRemoveUser5} data-id={user.Id} class="slds-m-left_x-small">
+                                    </lightning-button-icon>
+                                </div>
+                            </template>
+                        </div>
+                    </template>
+                    <template if:false={isEditMode}>
+                        <div class="slds-form-element">
+                            <label class="slds-text-heading_medium section-header-title custom-header">Reviewed by</label>
+                            <span class="slds-form-element__label">Reviewed by</span>
+                            <div class="slds-form-element__control slds-grid slds-align-items-center slds-has-divider_bottom">
+                                <template for:each={selectedUsers5} for:item="user">
+                                    <div key={user.Id} class="slds-grid slds-wrap slds-m-around_x-small hover-card-parent" data-id={user.Id} onmouseover={handleMouseOver} onmouseout={handleMouseOut}>
+                                        <lightning-avatar size="small" alternative-text="User Avatar" src={avatarImg}></lightning-avatar>
+                                        <a href="javascript:void(0);" data-id={user.Id} onclick={handleNavigateToUser} class="slds-m-left_x-small slds-text-link">
+                                            {user.Name}
+                                        </a>
+                                        <div class="hover-card">
+                                            <lightning-card title="User Details">
+                                                <p>Name: {hoverUser.Name}</p>
+                                                <p>Email: {hoverUser.Email}</p>
+                                                <p>Phone: {hoverUser.Phone}</p>
+                                            </lightning-card>
+                                        </div>
+                                    </div>
+                                </template>
+                                <lightning-button-icon icon-name="utility:edit" alternative-text="Edit" onclick={toggleEditMode} class="slds-m-left_x-small"></lightning-button-icon>
+                            </div>
+                        </div>
+                    </template>
+
+                    <div if:true={showDropdown5} class="slds-dropdown_length-5 slds-dropdown_fluid" role="listbox">
+                        <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                            <template for:each={filteredUsers5} for:item="user">
+                                <li key={user.Id} role="presentation" class="slds-listbox__item" onclick={handleUserSelect5}
+                                    data-id={user.Id} data-name={user.Name}>
+                                    <div class="slds-media slds-listbox__option slds-listbox__option_entity">
+                                        <span class="slds-media__figure">
+                                            <lightning-icon icon-name="standard:user" size="small" alternative-text="User"></lightning-icon>
+                                        </span>
+                                        <div class="slds-media__body">
+                                            <span class="slds-listbox__option-text slds-listbox__option-text_entity">{user.Name}</span>
+                                            <span class="slds-listbox__option-meta slds-listbox__option-meta_entity">{user.Email} - {user.Core_User_Type__c}</span>
+                                        </div>
+                                    </div>
+                                </li>
+                            </template>
+                        </ul>
+                    </div>
+
+                    <lightning-button class="slds-m-left_small" variant="brand" label="Save" onclick={handleSave} style="margin-top: 10px;">
+                    </lightning-button>
+                </div>
+        </div>
+    </div>
+</template>

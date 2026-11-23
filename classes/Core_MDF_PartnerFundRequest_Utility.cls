@@ -14,60 +14,44 @@ public without sharing class Core_MDF_PartnerFundRequest_Utility {
     Added By:           SS - 06/17/2019
     Modified By:        Date:      Changes: 
     *******************************************************************************************************/
-     public static Map< String , List< Core_MDF_CCP_Custom_Metadata_Utility__c >> getCCPAttributeMapMetadata(){
-		/*for(CCP_Attributes_Map__mdt ccpAttribute : [SELECT Id, Core_MDF_Activity_Secondary_Pillar_Nm__c, Core_MDF_Activity_Pillar_Nm__c , Type__c, Category__c, Activity_Sub_Type__c, Record_Type_Picklist__c 
-                                                      FROM CCP_Attributes_Map__mdt WHERE DeveloperName != null]){*/
-        Map<String,List<Core_MDF_CCP_Custom_Metadata_Utility__c>> pfrRecordTypeAttributeMetadataMap = new Map<String,List<Core_MDF_CCP_Custom_Metadata_Utility__c>>();
-        String query = 'SELECT Core_MDF_Field_5_txt__c, ' +
-        'Core_MDF_Field_3_txt__c, ' +
-        'Core_MDF_Field_9_txt__c, ' +
-        'Core_MDF_Field_4_txt__c, ' + 
-        'Core_MDF_Field_7_txt__c, ' +
-        'Core_MDF_Sub_Category__c, ' +
-        'Core_MDF_Field_8_txt__c ' +
-        'FROM Core_MDF_CCP_Custom_Metadata_Utility__c ' +
-        'WHERE Core_MDF_Category__c = \'' + String.escapeSingleQuotes(Core_MDF_CCP_ConstantClass.ATTRIBUTES_MAP_CATEGORY) + '\' ' +
-        'AND Core_MDF_Is_Active_Ind__c = TRUE';
+    public static Map< String , List< CCP_Attributes_Map__mdt >> getCCPAttributeMapMetadata(){
+        Map<String,List<CCP_Attributes_Map__mdt>> pfrRecordTypeAttributeMetadataMap = new Map<String,List<CCP_Attributes_Map__mdt>>();
         
-        //Metadata object records, returned based on the above querys
-        List<Core_MDF_CCP_Custom_Metadata_Utility__c> customMetadataUtilityRecords = Core_MDF_Custom_Metadata_Utility.getCustomObjectRecordsUsingDynamicQuery(query);
-        for(Core_MDF_CCP_Custom_Metadata_Utility__c ccpAttribute : customMetadataUtilityRecords){
-            if(pfrRecordTypeAttributeMetadataMap.containsKey(ccpAttribute.Core_MDF_Field_4_txt__c )){                    
-                pfrRecordTypeAttributeMetadataMap.get(ccpAttribute.Core_MDF_Field_4_txt__c ).add(ccpAttribute);
+        for(CCP_Attributes_Map__mdt ccpAttribute : [SELECT Id, Core_MDF_Activity_Secondary_Pillar_Nm__c, Core_MDF_Activity_Pillar_Nm__c , Type__c, Category__c, Activity_Sub_Type__c, Record_Type_Picklist__c 
+                                                      FROM CCP_Attributes_Map__mdt]){
+            if(pfrRecordTypeAttributeMetadataMap.containsKey(ccpAttribute.Record_Type_Picklist__c )){                    
+                pfrRecordTypeAttributeMetadataMap.get(ccpAttribute.Record_Type_Picklist__c ).add(ccpAttribute);
             }
             else {
-                pfrRecordTypeAttributeMetadataMap.put(ccpAttribute.Core_MDF_Field_4_txt__c , new List<Core_MDF_CCP_Custom_Metadata_Utility__c> {ccpAttribute}); 
+                pfrRecordTypeAttributeMetadataMap.put(ccpAttribute.Record_Type_Picklist__c , new List<CCP_Attributes_Map__mdt> {ccpAttribute}); 
             }   
         }
         return pfrRecordTypeAttributeMetadataMap;
     }
-    
-    public static Map< String , List< Core_MDF_CCP_Custom_Metadata_Utility__c >> getCCPAttributeMapMetadata(string recordType){
-	/*[SELECT Id, Core_MDF_Activity_Secondary_Pillar_Nm__c, Core_MDF_Activity_Pillar_Nm__c , Type__c, Category__c, Activity_Sub_Type__c, Record_Type_Picklist__c 
-                                                    FROM CCP_Attributes_Map__mdt WHERE Record_Type_Picklist__c =: recordType]*/
-        Map<String,List<Core_MDF_CCP_Custom_Metadata_Utility__c>> pfrRecordTypeAttributeMetadataMap = new Map<String,List<Core_MDF_CCP_Custom_Metadata_Utility__c>>();
-        String query = 'SELECT Core_MDF_Field_5_txt__c, ' +
-        'Core_MDF_Field_3_txt__c, ' +
-        'Core_MDF_Field_9_txt__c, ' +
-        'Core_MDF_Field_7_txt__c, ' +
-        'Core_MDF_Sub_Category__c, ' +
-        'Core_MDF_Field_8_txt__c, ' + // Removed the trailing space from the previous line
-        'Core_MDF_Field_4_txt__c ' +
-        'FROM Core_MDF_CCP_Custom_Metadata_Utility__c ' +
-        'WHERE Core_MDF_Category__c = \'' + String.escapeSingleQuotes(Core_MDF_CCP_ConstantClass.ATTRIBUTES_MAP_CATEGORY) + '\' ' +
-        'AND Core_MDF_Is_Active_Ind__c = TRUE ' +
-        'AND Core_MDF_Field_4_txt__c = \'' + recordType + '\'';
-
-        List<Core_MDF_CCP_Custom_Metadata_Utility__c> customMetadataUtilityRecords = Core_MDF_Custom_Metadata_Utility.getCustomObjectRecordsUsingDynamicQuery(query);             
-        for(Core_MDF_CCP_Custom_Metadata_Utility__c ccpAttribute : customMetadataUtilityRecords){
-                                                        if(pfrRecordTypeAttributeMetadataMap.containsKey(ccpAttribute.Core_MDF_Field_4_txt__c )){                    
-                                                            pfrRecordTypeAttributeMetadataMap.get(ccpAttribute.Core_MDF_Field_4_txt__c ).add(ccpAttribute);
-                                                        }
-                                                        else {
-                                                            pfrRecordTypeAttributeMetadataMap.put(ccpAttribute.Core_MDF_Field_4_txt__c , new List<Core_MDF_CCP_Custom_Metadata_Utility__c> {ccpAttribute}); 
-                                                        }   
-                                                    }
-        return pfrRecordTypeAttributeMetadataMap;
+    /****************************************************************************************************** 
+    Method Name:        getPfrEventRulesMetadata
+    @return  :          Map<String,List<Core_MDF_PFR_Event_Rule__mdt>>
+    @parameters:        none
+    Description:        returns conditions for the PFR Event Rules to fire
+    Added By:           SS - 06/17/2019
+    Modified By:        Date:      Changes: 
+    *******************************************************************************************************/
+    public static Map<String,List<Core_MDF_PFR_Event_Rule__mdt>> getPfrEventRulesMetadata(){
+        Map<String,List<Core_MDF_PFR_Event_Rule__mdt>> pfrRecordTypeEventMetadataMap = new Map<String,List<Core_MDF_PFR_Event_Rule__mdt>>();
+        for(Core_MDF_PFR_Event_Rule__mdt metadata : ([SELECT Id, Core_MDF_PFR_RecordType__c,Core_MDF_Country_Picklist_Value__c,
+                                                      Core_MDF_Activity_Category__c, Core_MDF_Requested_Amount__c, Core_MDF_Activity_Types__c,
+                                                      Core_MDF_Day_Difference__c, Core_MDF_PFR_RecordType_Id__c, Core_MDF_PFR_StartDate__c,
+                                                      Core_MDF_Amount_Operator__c, Core_MDF_Days_Difference_Operator__c, Core_MDF_Error_Message__c 
+                                                      FROM Core_MDF_PFR_Event_Rule__mdt ])){
+            if(pfrRecordTypeEventMetadataMap.containsKey(metadata.Core_MDF_PFR_RecordType__c)){                    
+                pfrRecordTypeEventMetadataMap.get(metadata.Core_MDF_PFR_RecordType__c).add(metadata);
+            }
+            else
+            {
+                pfrRecordTypeEventMetadataMap.put(metadata.Core_MDF_PFR_RecordType__c, new List<Core_MDF_PFR_Event_Rule__mdt> {metadata}); 
+            }
+        }
+        return pfrRecordTypeEventMetadataMap;
     }
     /****************************************************************************************************** 
     Method Name:        getOwnerLanguage
@@ -125,9 +109,9 @@ public without sharing class Core_MDF_PartnerFundRequest_Utility {
         Map<String, List<String>> programGeoReqMap = new Map<String,List<String>>();
         
         ClaimActAllocRecTypeMappingWrapper claimActAllocRecTypeMappingInstance = new ClaimActAllocRecTypeMappingWrapper();
-        //Avoid using Soql / Sosl queries without filters and limits
-        for(Core_MDF_ObjRecType_Budget_FieldSetMap__mdt mtrecord : [SELECT Id, Core_MDF_Activity_Close_Days__c,Core_MDF_Activity_RecordType_txt__c, Core_MDF_Region_cd__c
-                                                                    FROM Core_MDF_ObjRecType_Budget_FieldSetMap__mdt Limit 5000])
+        
+        for(Core_MDF_ClaimActAllocRecTypeMapping__mdt mtrecord : [SELECT Id, Core_MDF_Activity_Close_Days__c,Core_MDF_Activity_RecordType_txt__c, Core_MDF_Region_cd__c
+                                                                    FROM Core_MDF_ClaimActAllocRecTypeMapping__mdt])
         {
             if (!metadtMap.containsKey(mtrecord.Core_MDF_Activity_RecordType_txt__c))
             {
@@ -163,24 +147,25 @@ public without sharing class Core_MDF_PartnerFundRequest_Utility {
     Modified By:        Date:      Changes: 
     *******************************************************************************************************/
     public static void getActivityPillarAndActivitySecondaryPillar(PartnerFundRequest pfr, String pfrRecordTypeDevName){
-        Map< String , List< Core_MDF_CCP_Custom_Metadata_Utility__c >> activityAttributesMap = new Map< String , List< Core_MDF_CCP_Custom_Metadata_Utility__c >> ();        
+        Map< String , List< CCP_Attributes_Map__mdt >> activityAttributesMap = new Map< String , List< CCP_Attributes_Map__mdt >> ();        
         String activityType = pfr.Core_MDF_Activity_Types__c;
         String actvityCategory = pfr.Core_MDF_ActivityCategory__c;
-        String actvitySubtype = pfr.Core_MDF_Activity_SubType_nm__c;//Core_MDF_Activity_Sub_Type_nm__c
-        activityAttributesMap = getCCPAttributeMapMetadata(pfrRecordTypeDevName);
+        String actvitySubtype = pfr.Core_MDF_Activity_SubType_nm__c;
+
+        activityAttributesMap = getCCPAttributeMapMetadata();
         
-        if(activityType != NULL && actvityCategory != NULL && activityAttributesMap != NULL && activityAttributesMap.size() > 0 && activityAttributesMap.containsKey(pfrRecordTypeDevName)){
-            for(Core_MDF_CCP_Custom_Metadata_Utility__c customMetadata : activityAttributesMap.get(pfrRecordTypeDevName)){
-                //Avoid Deeply Nested IF Statements
-                Boolean actCatCheck = ((activityType.equals(customMetadata.Core_MDF_Field_9_txt__c) && actvityCategory.equals(customMetadata.Core_MDF_Field_7_txt__c)) && 
-                   (String.isBlank(customMetadata.Core_MDF_Sub_Category__c) || String.isBlank(actvitySubtype) || actvitySubtype.equals(customMetadata.Core_MDF_Sub_Category__c)));
-                    if(actCatCheck && String.isNotBlank(customMetadata.Core_MDF_Field_3_txt__c)){
-                        pfr.Core_MDF_Activity_Pillar_Nm__c = customMetadata.Core_MDF_Field_3_txt__c;
+        if(activityAttributesMap != NULL && activityAttributesMap.size() > 0 && activityAttributesMap.containsKey(pfrRecordTypeDevName)){
+            for(CCP_Attributes_Map__mdt customMetadata : activityAttributesMap.get(pfrRecordTypeDevName)){
+                if((activityType.equals(customMetadata.Type__c) && actvityCategory.equals(customMetadata.Category__c)) && 
+                   (String.isBlank(customMetadata.Activity_Sub_Type__c) || actvitySubtype.equals(customMetadata.Activity_Sub_Type__c))){
+                    if(String.isNotBlank(customMetadata.Core_MDF_Activity_Pillar_Nm__c)){
+                        pfr.Core_MDF_Activity_Pillar_Nm__c = customMetadata.Core_MDF_Activity_Pillar_Nm__c;
                     }
-                    if(actCatCheck && String.isNotBlank(customMetadata.Core_MDF_Field_5_txt__c)){
-                        pfr.Core_MDF_Activity_Secondary_Pillar_Nm__c = customMetadata.Core_MDF_Field_5_txt__c;
+                    if(String.isNotBlank(customMetadata.Core_MDF_Activity_Secondary_Pillar_Nm__c)){
+                        pfr.Core_MDF_Activity_Secondary_Pillar_Nm__c = customMetadata.Core_MDF_Activity_Secondary_Pillar_Nm__c;
                     }
                     break;
+                }
             }
         } 
     }
@@ -210,17 +195,6 @@ public without sharing class Core_MDF_PartnerFundRequest_Utility {
             update(pfr);
         }catch (Exception e) {Core_MDF_CCP_UtilityClass.logError(e);}
     }
-        
-	//Method to check if Activity is part of Japan cycle
-   /* public static boolean isJapanCycle(PartnerFundRequest pfr,string program){
-        boolean boolctryflg = false;      
-        if(pfr!=null && string.isNotBlank(program)){
-            if(pfr.Core_MDF_Country_nm__c.containsIgnoreCase(System.Label.Core_MDF_Country_JAPAN) && program.equals(System.Label.Core_MDF_PFR_Retail) && pfr.Core_MDF_Budget_Type_txt__c.equals(System.Label.Core_MDF_Retail_RSAMD_UnTranslated)){
-            	boolctryflg = true;
-            }
-        }        
-        return boolctryflg;
-    } */
         
     
 }

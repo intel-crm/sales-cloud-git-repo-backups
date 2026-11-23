@@ -13,24 +13,6 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>PRM_EntitlementsNotToInactivate__c</fullName>
-        <description>To not inactivate DZS entitlement</description>
-        <externalId>false</externalId>
-        <label>PRM_EntitlementsNotToInactivate</label>
-        <length>100</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>PRM_LastExecutedTime__c</fullName>
-        <label>PRM_LastExecutedTime</label>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>DateTime</type>
-    </fields>
-    <fields>
         <fullName>PRM_MP_Benefits__c</fullName>
         <externalId>false</externalId>
         <label>PRM_MP_Benefits</label>
@@ -39,14 +21,6 @@
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>PRM_Manual_Benefits__c</fullName>
-        <description>This field contains manual benefits of IPA</description>
-        <label>PRM_Manual_Benefits</label>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>TextArea</type>
     </fields>
     <fields>
         <fullName>PRM_NoOfBatchEntRecords__c</fullName>
@@ -96,17 +70,6 @@
         <fullName>PRM_SchedulingHour__c</fullName>
         <externalId>false</externalId>
         <label>PRM_SchedulingHour</label>
-        <precision>18</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackTrending>false</trackTrending>
-        <type>Number</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>PRM_Total_sales_value__c</fullName>
-        <externalId>false</externalId>
-        <label>PRM_Total_sales_value</label>
         <precision>18</precision>
         <required>false</required>
         <scale>0</scale>

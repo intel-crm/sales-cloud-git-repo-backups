@@ -81,8 +81,8 @@ global class Core_Batch_OpportunityKPISyncInactive implements Database.Batchable
     }
     public void finish(Database.BatchableContext batchcontext){
         //System.debug(' Core_Batch_OpportunityKPIDelete FINISHED   ');
-        List<Core_Oppty_KPI_New__c> kpiList1 = new List<Core_Oppty_KPI_New__c>();
-        List<Core_Oppty_KPI_New__c> kpinewList1 = new List<Core_Oppty_KPI_New__c>();
+        //List<Core_Oppty_KPI_New__c> kpiList1 = new List<Core_Oppty_KPI_New__c>();
+        //List<Core_Oppty_KPI_New__c> kpinewList1 = new List<Core_Oppty_KPI_New__c>();
         Core_Batch_OpportunityKPIInsert b=new Core_Batch_OpportunityKPIInsert(batchIDbatch,'Sync');
         database.executebatch(b,integer.valueof(system.label.Core_Batch_Sync_Insert_BatchSize)); 
     }

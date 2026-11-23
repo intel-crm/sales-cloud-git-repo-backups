@@ -9,7 +9,7 @@
                         <valueListItems>
                             <value>FeedItem.ContentNote</value>
                             <visibilityRule>
-                                <booleanFilter>1 OR 2 OR (3 AND 5 )  OR (4 AND 5)</booleanFilter>
+                                <booleanFilter>1 OR 2 OR 3 OR 4</booleanFilter>
                                 <criteria>
                                     <leftValue>{!$User.Profile.Name}</leftValue>
                                     <operator>CONTAINS</operator>
@@ -29,18 +29,13 @@
                                     <leftValue>{!$Permission.CustomPermission.DDR_PreApprover_Permission}</leftValue>
                                     <operator>EQUAL</operator>
                                     <rightValue>true</rightValue>
-                                </criteria>
-                                <criteria>
-                                    <leftValue>{!Record.Core_Design_Registration_Id__r.Core_Product_Group_Nm__c}</leftValue>
-                                    <operator>NE</operator>
-                                    <rightValue>FPGA/Power</rightValue>
                                 </criteria>
                             </visibilityRule>
                         </valueListItems>
                         <valueListItems>
                             <value>Edit</value>
                             <visibilityRule>
-                                <booleanFilter>1 OR 2 OR (3 AND 5)  OR (4 AND 5)</booleanFilter>
+                                <booleanFilter>1 OR 2 OR 3 OR 4</booleanFilter>
                                 <criteria>
                                     <leftValue>{!$User.Profile.Name}</leftValue>
                                     <operator>CONTAINS</operator>
@@ -60,18 +55,13 @@
                                     <leftValue>{!$Permission.CustomPermission.DDR_PreApprover_Permission}</leftValue>
                                     <operator>EQUAL</operator>
                                     <rightValue>true</rightValue>
-                                </criteria>
-                                <criteria>
-                                    <leftValue>{!Record.Core_Design_Registration_Id__r.Core_Product_Group_Nm__c}</leftValue>
-                                    <operator>NE</operator>
-                                    <rightValue>FPGA/Power</rightValue>
                                 </criteria>
                             </visibilityRule>
                         </valueListItems>
                         <valueListItems>
                             <value>Core_Design_Registration_Product__c.Core_Approve_Product_Lex</value>
                             <visibilityRule>
-                                <booleanFilter>(1 OR 2 OR 3 OR 4) AND 5 AND 6 AND 7</booleanFilter>
+                                <booleanFilter>(1 OR 2 OR 3 OR 4) AND 5 AND 6</booleanFilter>
                                 <criteria>
                                     <leftValue>{!$User.Profile.Name}</leftValue>
                                     <operator>CONTAINS</operator>
@@ -101,18 +91,13 @@
                                     <leftValue>{!Record.Core_Design_Product_Status_Nm__c}</leftValue>
                                     <operator>NE</operator>
                                     <rightValue>Expired</rightValue>
-                                </criteria>
-                                <criteria>
-                                    <leftValue>{!Record.Core_Design_Registration_Id__r.Core_Product_Group_Nm__c}</leftValue>
-                                    <operator>NE</operator>
-                                    <rightValue>FPGA/Power</rightValue>
                                 </criteria>
                             </visibilityRule>
                         </valueListItems>
                         <valueListItems>
                             <value>Core_Design_Registration_Product__c.PCC_Cancel_Product</value>
                             <visibilityRule>
-                                <booleanFilter>(1 OR 2 OR 3 OR 4 ) AND 5 AND 6 AND 7</booleanFilter>
+                                <booleanFilter>(1 OR 2 OR 3 OR 4 ) AND 5 AND 6</booleanFilter>
                                 <criteria>
                                     <leftValue>{!$User.Profile.Name}</leftValue>
                                     <operator>CONTAINS</operator>
@@ -142,18 +127,13 @@
                                     <leftValue>{!Record.Core_Design_Product_Status_Nm__c}</leftValue>
                                     <operator>NE</operator>
                                     <rightValue>Expired</rightValue>
-                                </criteria>
-                                <criteria>
-                                    <leftValue>{!Record.Core_Design_Registration_Id__r.Core_Product_Group_Nm__c}</leftValue>
-                                    <operator>NE</operator>
-                                    <rightValue>FPGA/Power</rightValue>
                                 </criteria>
                             </visibilityRule>
                         </valueListItems>
                         <valueListItems>
                             <value>Core_Design_Registration_Product__c.PCC_Reject_Product</value>
                             <visibilityRule>
-                                <booleanFilter>(1 OR 2 OR 3 OR 4) AND 5 AND 6 AND 7</booleanFilter>
+                                <booleanFilter>(1 OR 2 OR 3 OR 4) AND 5 AND 6</booleanFilter>
                                 <criteria>
                                     <leftValue>{!$User.Profile.Name}</leftValue>
                                     <operator>CONTAINS</operator>
@@ -184,17 +164,15 @@
                                     <operator>NE</operator>
                                     <rightValue>Expired</rightValue>
                                 </criteria>
-                                <criteria>
-                                    <leftValue>{!Record.Core_Design_Registration_Id__r.Core_Product_Group_Nm__c}</leftValue>
-                                    <operator>NE</operator>
-                                    <rightValue>FPGA/Power</rightValue>
-                                </criteria>
                             </visibilityRule>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>Core_Design_Registration_Product__c.CR</value>
                         </valueListItems>
                         <valueListItems>
                             <value>Core_Design_Registration_Product__c.Set_as_Expired_DRP</value>
                             <visibilityRule>
-                                <booleanFilter>(1 AND 2 AND 5 AND 6) OR 3 OR 4</booleanFilter>
+                                <booleanFilter>(1 AND 2 AND 5) OR 3 OR 4</booleanFilter>
                                 <criteria>
                                     <leftValue>{!Record.Core_Design_Registration_Id__r.Core_Design_Registration_Status_Nm__c}</leftValue>
                                     <operator>EQUAL</operator>
@@ -217,13 +195,8 @@
                                 </criteria>
                                 <criteria>
                                     <leftValue>{!Record.Core_Design_Product_Status_Nm__c}</leftValue>
-                                    <operator>EQUAL</operator>
-                                    <rightValue>Approved</rightValue>
-                                </criteria>
-                                <criteria>
-                                    <leftValue>{!Record.Core_Design_Registration_Id__r.Core_Product_Group_Nm__c}</leftValue>
                                     <operator>NE</operator>
-                                    <rightValue>FPGA/Power</rightValue>
+                                    <rightValue>Expired</rightValue>
                                 </criteria>
                             </visibilityRule>
                         </valueListItems>
@@ -289,7 +262,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>richTextValue</name>
-                    <value>&lt;p&gt;&lt;strong style=&quot;font-size: inherit; color: rgb(224, 9, 9);&quot;&gt;Target Resale Price is automatically populated by SDC price Once Product is selected&amp;nbsp;and is read‑only for distributors. &lt;/strong&gt;&lt;span style=&quot;font-size: inherit; color: rgb(224, 9, 9);&quot;&gt;In cases where SDC pricing is not available, the field may remain blank at the time of submission and will be completed by Intel during the design registration review process. The displayed Target Resale Price does not constitute approval, endorsement, or a pricing commitment by Intel.&lt;/span&gt;&lt;/p&gt;</value>
+                    <value>&lt;p&gt;&lt;strong style=&quot;color: rgb(253, 19, 11);&quot;&gt;&lt;em&gt;Intel will review Target Resale Price as part of the design registration review process, in order to accurately calculate the value of the design registration. Intel will not provide input or guidance on the Target Resale Price, which will/must be inputted by the Distributor registering the design. Submission of the Target Resale Price does not constitute agreement on or endorsement of that price by Intel, and it will not affect the price offered by Intel to the Distributor.&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:richText</componentName>
                 <identifier>flexipage_richText</identifier>
@@ -351,10 +324,6 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
-                <componentInstanceProperties>
-                    <name>label</name>
-                    <value>Tabs</value>
-                </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>tabs</name>
                     <value>maintabs</value>

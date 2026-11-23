@@ -25,6 +25,7 @@ public class Core_CaseTriggerHandler_Test
         RecordType caseRecordType = [select id from recordType where sObjectType='Case' and name ='CEP Case' limit 1];
         Case cepCase = new Case(contactId=Cont.id,Status ='New',Origin='Email',Core_CEP_Case_Region__c = 'ASMO',Core_CEP_Account_Name__c = accountInstance.id,recordTypeId = caseRecordType.id,Subject='This is a test case');
         insert cepCase;
+          system.debug('@@####***n**'+cepCase.Core_CEP_Case_Region__c);
         Case newCase = [select id,Core_CEP_Case_Region__c from case where id=: cepCase.id limit 1];
         System.assertEquals('ASMO', newCase.Core_CEP_Case_Region__c);
         
@@ -40,11 +41,13 @@ public class Core_CaseTriggerHandler_Test
             update cepCase;
 
              Case newCase2 = [select id,Core_CEP_Case_Region__c from case where id=: cepCase.id limit 1];
+            system.debug('---newCase2--'+newCase2.Core_CEP_Case_Region__c);
             
         }catch(Exception e){
             
         }
            
+            system.debug('-cepCase-----'+cepCase.Core_CEP_Case_Region__c);
         test.stopTest();
     }
     **/

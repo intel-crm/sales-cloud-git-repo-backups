@@ -88,7 +88,7 @@
         <field>FK_LAST_UPDATE_BY</field>
     </columns>
     <columns>
-        <field>FK_$Opportunity.Core_Opportunity_Type__c</field>
+        <field>FK_$Opportunity.Core_Operating_System__c</field>
     </columns>
     <columns>
         <field>FK_ACC_ADDR1_LINE1</field>
@@ -161,9 +161,11 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
+    <sortColumn>FK_OPP_ID</sortColumn>
+    <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CUST_LAST_UPDATE</dateColumn>
-        <endDate>2020-11-12</endDate>
+        <endDate>2020-01-13</endDate>
         <interval>INTERVAL_CUSTOM</interval>
         <startDate>2012-01-01</startDate>
     </timeFrameFilter>

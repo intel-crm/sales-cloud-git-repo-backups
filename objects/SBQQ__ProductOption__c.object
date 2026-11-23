@@ -310,13 +310,6 @@ Quote Program: Software</description>
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Core_Item_Orderable_Ind__c</fullName>
-        <defaultValue>false</defaultValue>
-        <label>Orderable</label>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
         <fullName>Core_Prod_Tool_Type_Nm__c</fullName>
         <externalId>false</externalId>
         <formula>SBQQ__OptionalSKU__r.Core_Prod_Tool_Type_Nm__c</formula>
@@ -353,8 +346,28 @@ Quote Program: Software</description>
         <type>Checkbox</type>
     </fields>
     <fields>
+        <fullName>Feature_Number__c</fullName>
+        <externalId>false</externalId>
+        <formula>LPAD( TEXT( SBQQ__Feature__r.SBQQ__Number__c ), 3, &quot;0&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Feature Number</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>PSG_MSVP_L1_Amt__c</fullName>
         <label>MSVP L1</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>PSG_MSVP_L2_Amt__c</fullName>
+        <label>MSVP L2</label>
         <precision>18</precision>
         <required>false</required>
         <scale>0</scale>
@@ -951,6 +964,31 @@ Quote Program: Software</description>
         <label>Uplifted By Package</label>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>isChecked__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>isChecked</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>price_brokencost_amt__c</fullName>
+        <label>Broken Cost</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>price_suggested_resale_amt__c</fullName>
+        <label>Suggested Resale</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
     </fields>
     <label>Product Option</label>
     <nameField>

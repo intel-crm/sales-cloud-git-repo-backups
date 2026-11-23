@@ -51,8 +51,9 @@
                     </p>
                 </li>
                 <aura:if isTrue="{!!v.isOffering}">
-<!--TranslationEOL<li class="lock"><lightning:icon iconName="utility:lock" size="x-small" /><p>{!$Label.c.PMP_Edit_Storefront_Under_Review_Disclaimer6}</p></li>-->
-			<!--As part of defect fix(DE53264) - Removing the final node--><!--US514657 uncommented-->
+                    <li class="lock"><lightning:icon iconName="utility:lock" size="x-small" /><p>{!$Label.c.PMP_Edit_Storefront_Under_Review_Disclaimer6}
+                        
+                        </p></li><!--As part of defect fix(DE53264) - Removing the final node--><!--US514657 uncommented-->
                 </aura:if>
             </ul>
         </div>
@@ -127,7 +128,7 @@
     <!-- <p class="storefront-submit-disclaimer">{!$Label.c.PMP_Edit_Storefront_Under_Review_Help1}&nbsp;-->
     <p class="{!join(' ', 'storefront-submit-disclaimer', v.isOffering ? 'slds-p-bottom_large' : '')}">{!$Label.c.PMP_LeadGen_Questions1}&nbsp; <!-- 9/25 Merge Changes-->
         
-        <c:IntelLink url="{!$Label.c.PMP_IPA_HelpLink}">
+        <c:IntelLink page="help">
             <!--removed PMP_Edit_Storefront_Under_Review_Help2 label for deployment-->
             <!--replaced PMP_LeadGen_MarketplaceHelp with PMP_Edit_Storefront_Under_Review_Help2 as per styleguide value-->
             {!$Label.c.PMP_LeadGen_HelpLink} <lightning:icon iconName="utility:chevronright"

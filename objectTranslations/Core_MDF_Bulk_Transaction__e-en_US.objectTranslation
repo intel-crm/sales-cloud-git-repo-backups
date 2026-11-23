@@ -9,10 +9,6 @@
         <value>Bulk Transaction</value>
     </caseValues>
     <fields>
-        <label><!-- Action Name --></label>
-        <name>Core_MDF_Action_Name__c</name>
-    </fields>
-    <fields>
         <label><!-- JSON Data --></label>
         <name>Core_MDF_JSON_Data__c</name>
     </fields>

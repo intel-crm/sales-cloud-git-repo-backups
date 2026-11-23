@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ForecastingFilterCondition xmlns="http://soap.sforce.com/2006/04/metadata">
+    <colName>00No000000C97th</colName>
+    <fieldName>Core_Opportunity_Type__c</fieldName>
+    <forecastingFilter>FF_Intel_Led_Opportunity_Revenue0hlDf000000CaSAIA0446337618785323</forecastingFilter>
+    <forecastingSourceDefinition>7syDf000000CaRM</forecastingSourceDefinition>
+    <isProtected>false</isProtected>
+    <masterLabel>FFC_Intel_Led_Opportunity_Revenue0r0Df0000008OIFIA2012938390314793</masterLabel>
+    <operation>notEqual</operation>
+    <sortOrder>2</sortOrder>
+    <value>Deal: Partner Scale-enable</value>
+</ForecastingFilterCondition>

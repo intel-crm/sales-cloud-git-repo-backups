@@ -93,11 +93,11 @@
             <value>1</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OWNER_MANAGER</column>
+            <column>ROLLUP_DESCRIPTION</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>chris sassone</value>
+            <value>EMP of Chris Sassone</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

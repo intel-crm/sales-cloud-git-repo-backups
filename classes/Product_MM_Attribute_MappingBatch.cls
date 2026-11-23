@@ -138,23 +138,7 @@ public with sharing class Product_MM_Attribute_MappingBatch implements Database.
     
     
     public void finish(Database.BatchableContext BC){
-        List<Product_MM_Attribute_Mapping__c> mmLst = new List<Product_MM_Attribute_Mapping__c>();
-        Map<String,Core_Trigger_Executions__c> mapFunctionalityNameTriggerExecution = Core_Trigger_Executions__c.getAll();
-        
-        if((mapFunctionalityNameTriggerExecution.containsKey('ExecuteProduct_DeactivationAndLogEntry') && mapFunctionalityNameTriggerExecution.get('ExecuteProduct_DeactivationAndLogEntry').Core_Active__c)){
-            mmLst = [Select Id, IsActive__c,iPaaS_Load_ID__c from Product_MM_Attribute_Mapping__c where iPaaS_Load_ID__c != :ipaasLoadId and IsActive__c = true limit 45000];
-        }else{
-            // Deactivate MM records where linked Product2 records are inactive
-            mmLst = [SELECT Id, IsActive__c, L4_Product__c, L5_Product__c
-                     FROM Product_MM_Attribute_Mapping__c
-                     WHERE IsActive__c = true
-                     AND (
-                         (L5_Product__c != null AND L5_Product__r.IsActive = false)
-                         OR
-                         (L4_Product__c != null AND L4_Product__r.IsActive = false)
-                     )
-                     LIMIT 9995];
-        }
+        List<Product_MM_Attribute_Mapping__c> mmLst = [Select Id, IsActive__c,iPaaS_Load_ID__c from Product_MM_Attribute_Mapping__c where iPaaS_Load_ID__c != :ipaasLoadId and IsActive__c = true limit 45000];
         if (!mmLst.isEmpty()) {
             for(Product_MM_Attribute_Mapping__c prd : mmLst){
                 prd.IsActive__c = false;

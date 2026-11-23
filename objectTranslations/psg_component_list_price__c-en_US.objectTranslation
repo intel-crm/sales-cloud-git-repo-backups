@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>test</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>test</value>
+    </caseValues>
+    <fields>
+        <label><!-- test field 5 --></label>
+        <name>PSG_List_Price_amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- test field 4 --></label>
+        <name>PSG_LowerBound_Qty__c</name>
+    </fields>
+    <fields>
+        <label><!-- test field 3 --></label>
+        <name>PSG_Product_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Upper Bound qty test --></label>
+        <name>PSG_UpperBound_Qty__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

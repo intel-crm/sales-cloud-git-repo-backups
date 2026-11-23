@@ -9,7 +9,7 @@
 * Infosys - Sangeetha Ganta     02/26/2019                    US247100. Update the Parent Category based on Active Flag values.
 *****************************************************************************************************************************************/
 
-public with sharing class PMP_ParentCategoryUpdate 
+public class PMP_ParentCategoryUpdate 
 {
     //Method to update Parent Category with Salesforce Id for the Categories inserted or updated    
     public static void updateParentOnInsert(List<PMP_Category__c> categories)
@@ -24,46 +24,49 @@ public with sharing class PMP_ParentCategoryUpdate
             catIds.add(cat.id);
         }
         
-            for(PMP_Category__c cat : [Select PMP_Partner_Product_Category_Cd__c,Id,PMP_Partner_Product_Category_Key__c from PMP_Category__c where PMP_Partner_Product_Category_Key__c != null])
-            {  
-                mapParentCategory.put(cat.PMP_Partner_Product_Category_Key__c,cat.Id);
-            }
+        for(PMP_Category__c cat : [Select PMP_Partner_Product_Category_Cd__c,Id,PMP_Partner_Product_Category_Key__c from PMP_Category__c])
+        {
+             
+            mapParentCategory.put(cat.PMP_Partner_Product_Category_Key__c,cat.Id);
+            System.debug('**** Map Values= '+ mapParentCategory);
+            System.debug('mapParentCategory.keyset() ='+mapParentCategory.keyset());
            
-            for(PMP_Category__c cat:[Select PMP_Partner_Product_Category_Cd__c,Id,PMP_Parent_Category_Id__c,PMP_Active_Ind__c,PMP_Partner_Product_Parent_Category_Cd__c from PMP_Category__c where id in :catIds])
+        }
+       
+        for(PMP_Category__c cat:[Select PMP_Partner_Product_Category_Cd__c,Id,PMP_Parent_Category_Id__c,PMP_Active_Ind__c,PMP_Partner_Product_Parent_Category_Cd__c from PMP_Category__c where id in :catIds])
+        {
+           //Setting the Parent Category only to active categories
+            if(cat.PMP_Partner_Product_Parent_Category_Cd__c!= null || cat.PMP_Partner_Product_Parent_Category_Cd__c!='' )
             {
-               
-                //Setting the Parent Category only to active categories
-                if(cat.PMP_Partner_Product_Parent_Category_Cd__c!= null && cat.PMP_Partner_Product_Parent_Category_Cd__c!='' )
+                if(cat.PMP_Active_Ind__c == true)
                 {
-                    if(cat.PMP_Active_Ind__c == true)
-                    {
-                        String key = (cat.PMP_Partner_Product_Parent_Category_Cd__c).toLowerCase();
-                        cat.PMP_Parent_Category_Id__c= mapParentCategory.get(key);
-                        updateCatList.add(cat);
-                        // System.debug(updateCatList);
-                    }
-                    else
-                    {
-                        cat.PMP_Parent_Category_Id__c = null;
-                        updateCatList.add(cat); //Setting the parent category to null for all the inactive categories 
-                        }
-                    
-          
+                    String key = (cat.PMP_Partner_Product_Parent_Category_Cd__c).toLowerCase();
+                    cat.PMP_Parent_Category_Id__c= mapParentCategory.get(key);
+                    updateCatList.add(cat);
+                    System.debug(updateCatList);
                 }
-                
-            }   
-            
-            if(updateCatList.size()>0){
-                    PMP_CategoryTriggerHandler.triggerSwitch = false;
-                    if (Schema.sObjectType.PMP_Category__c.isUpdateable()) {
-                        //update updateCatList;
-                        Database.SaveResult[] catList = Database.update(updateCatList, false);
-						PMP_Utility.logDmlErrors((Object[]) catList, 'PMP_ParentCategoryUpdate-updateParentOnInsert');
-
+                else
+                {
+                    cat.PMP_Parent_Category_Id__c = null;
+                    updateCatList.add(cat); //Setting the parent category to null for all the inactive categories 
                     }
-                  	PMP_CategoryTriggerHandler.triggerSwitch = true;
+                
+      
             }
             
+        }   
+        
+        if(updateCatList.size()>0){
+            try
+            {
+                update updateCatList;
+            }
+            catch(Exception ex)
+            {
+                System.debug('Error occured from trigger NPP_ParentCategoryUpdate due to '+ ex.getMessage());
+            }
+            
+        }
         
     }
     

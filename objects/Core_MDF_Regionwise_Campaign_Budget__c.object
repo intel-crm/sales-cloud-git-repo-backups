@@ -152,18 +152,17 @@
     <enableSearch>false</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <externalSharingModel>Private</externalSharingModel>
     <fields>
         <fullName>Core_MDF_Campaign__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
         <label>Campaign</label>
         <referenceTo>Campaign</referenceTo>
         <relationshipLabel>Regionwise Campaign Budgets</relationshipLabel>
         <relationshipName>Regionwise_Campaign_Budgets</relationshipName>
-        <relationshipOrder>0</relationshipOrder>
-        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <required>true</required>
         <trackTrending>false</trackTrending>
-        <type>MasterDetail</type>
-        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+        <type>Lookup</type>
     </fields>
     <fields>
         <fullName>Core_MDF_First_Year_Budget__c</fullName>
@@ -202,7 +201,7 @@
     </nameField>
     <pluralLabel>Regionwise Campaign Budgets</pluralLabel>
     <searchLayouts/>
-    <sharingModel>ControlledByParent</sharingModel>
+    <sharingModel>Private</sharingModel>
     <validationRules>
         <fullName>Core_MDF_Validate_Negative_Budget</fullName>
         <active>true</active>

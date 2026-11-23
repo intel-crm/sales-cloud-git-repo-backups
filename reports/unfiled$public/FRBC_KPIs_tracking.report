@@ -27,12 +27,7 @@
     <columns>
         <field>ROLLUP_DESCRIPTION</field>
     </columns>
-    <format>Summary</format>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>OPPORTUNITY_NAME</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
+    <format>Tabular</format>
     <name>FRBC_KPIs tracking</name>
     <params>
         <name>terr</name>
@@ -40,7 +35,7 @@
     </params>
     <params>
         <name>open</name>
-        <value>closedwon</value>
+        <value>all</value>
     </params>
     <params>
         <name>probability</name>
@@ -51,14 +46,14 @@
         <value>1</value>
     </params>
     <reportType>OpportunityCustomEntity$Core_Opportunity_KPI__c</reportType>
-    <scope>team</scope>
+    <scope>organization</scope>
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
-        <dateColumn>Opportunity.Core_Approved_Date__c</dateColumn>
-        <endDate>2020-12-31</endDate>
+        <dateColumn>CLOSE_DATE</dateColumn>
+        <endDate>2026-11-23</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2020-01-01</startDate>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

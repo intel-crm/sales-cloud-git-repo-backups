@@ -23,8 +23,6 @@ public class PMP_SearchCompanyLeadGenAction_Test {
         
         PMP_Company__c pubPartner = new PMP_Company__c(Name='pubPartner', PMP_Is_Published_Ind__c=true, PMP_Working_Copy_Id__c=partner.Id);
       	insert pubPartner;
-        PMP_Partner_Offering__c pubOffering = new PMP_Partner_Offering__c(Name='pubOffering', PMP_Partner_Offering_Lifecycle_Status_Nm__c = 'Published', PMP_Company_Id__c=pubPartner.Id);
-        insert pubOffering;
         Test.startTest();
         partner.PMP_Published_Copy_Id__c = pubPartner.Id;
         partner.PMP_Is_Working_Copy_Ind__c = true;
@@ -34,7 +32,7 @@ public class PMP_SearchCompanyLeadGenAction_Test {
         update partner;
         
         Test.stopTest();
-        system.assertNotEquals(pubPartner.Id, null);
+        
     }
     
 }

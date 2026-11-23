@@ -16,10 +16,6 @@
     padding: 5px 0;
     align-items: center;
     margin-top: 35px;
-     /* below line is commented as part of the US-US788273*/
-    /*margin-bottom: 10px;*/                    
-
-    
 }
 .THIS .message {
   color: t(charcoal);

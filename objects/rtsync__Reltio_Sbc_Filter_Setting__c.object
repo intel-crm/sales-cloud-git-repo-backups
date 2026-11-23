@@ -112,34 +112,6 @@
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
-    <fields>
-        <fullName>rtsync__Show_search_fields_in_3_column_layout__c</fullName>
-        <defaultValue>false</defaultValue>
-        <deprecated>false</deprecated>
-        <description>Show search fields in 3 column layout</description>
-        <label>Show search fields in 3 column layout</label>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>rtsync__Use_SOSL__c</fullName>
-        <defaultValue>false</defaultValue>
-        <deprecated>false</deprecated>
-        <label>Use SOSL</label>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>rtsync__User_Search_Option__c</fullName>
-        <deprecated>false</deprecated>
-        <externalId>false</externalId>
-        <label>User Search Option</label>
-        <length>120</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
     <label>Reltio Sbc Filter Settings</label>
     <visibility>Public</visibility>
 </CustomObject>

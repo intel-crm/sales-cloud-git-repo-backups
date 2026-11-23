@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>This mail is sent to the user when the record failed to process for the third time</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SalesAssist Failure Template</name>
+    <style>none</style>
+    <subject>Sales Assist Failure Record Notification</subject>
+    <textOnly>Hello All,
+
+Please find the details of failed Sales Assist record:
+
+Record Id: {!Core_Sales_Assist_Staging__c.Id}
+Error Description : {!Core_Sales_Assist_Staging__c.Core_Error_Description_Txt__c}
+
+
+Thanks,
+Intel Support Team</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

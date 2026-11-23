@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>50.0</apiVersion>
+    <available>true</available>
+    <description>Email template to send to the Product Marketing Specialist after the completion of the Bulk upload operation</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>PSG_MSVP_Bulk_Upload_Results</name>
+    <style>none</style>
+    <subject>MSVP Bulk Upload Result</subject>
+    <type>visualforce</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

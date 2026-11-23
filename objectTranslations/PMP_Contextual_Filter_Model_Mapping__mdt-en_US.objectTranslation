@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Contextual Filter Model Mapping</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Contextual Filter Model Mapping</value>
+    </caseValues>
+    <fields>
+        <label><!-- PIM Specification Id --></label>
+        <name>PIM_Specification_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Mulitlevel --></label>
+        <name>PMP_Is_Mulitlevel__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

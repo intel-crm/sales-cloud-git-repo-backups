@@ -33,7 +33,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Acer</value>
+            <value>HP,Hewlett</value>
         </criteriaItems>
         <criteriaItems>
             <column>OpportunityLineItem.Core_Vendor__c</column>
@@ -57,14 +57,14 @@
         <field>ACCOUNT_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>OEM wins this year</name>
+    <name>HPE wins this year</name>
     <params>
         <name>terr</name>
         <value>all</value>
     </params>
     <params>
         <name>open</name>
-        <value>all</value>
+        <value>closedwon</value>
     </params>
     <params>
         <name>probability</name>
@@ -81,6 +81,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

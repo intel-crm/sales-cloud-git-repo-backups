@@ -9,7 +9,7 @@ export default class ucd_ACM_AccountRecordType_SBR extends NavigationMixin(Light
     @track displayRecordTypes = true;
     @track dataLoaded = false;
     @track showError = false;
-    IntelSBR = 'Intel_SBR';
+
     INTEL_ACCOUNT = 'Mastered_Account';
     ERROR_MSG = 'We encountered a problem, Please contact your system administrator.';
 
@@ -24,10 +24,11 @@ export default class ucd_ACM_AccountRecordType_SBR extends NavigationMixin(Light
                         selectedOption = element.recordTypeId;
                     }
                 });
+
                 this.selectedOption = selectedOption;
 
                 if (this.options.length === 1) {
-                    this.dataLoaded = false;
+                    this.dataLoaded = true;
                     this.submitDetails();
                 } else {
                     this.dataLoaded = true;
@@ -47,13 +48,15 @@ export default class ucd_ACM_AccountRecordType_SBR extends NavigationMixin(Light
         //this.displayRecordTypes = false;
         let recordTypeSelected = [];
         let selectedOption = this.selectedOption;
+
         this.options.forEach(function (element) {
             if (element.recordTypeId === selectedOption) {
                 recordTypeSelected = element;
             }
         });
-        if (recordTypeSelected.recordTypeValue === this.IntelSBR) {
-            this.navigateToSBR();
+
+        if (recordTypeSelected.recordTypeValue === this.INTEL_ACCOUNT) {
+            this.navigateToSBR(recordTypeSelected.recordTypeId);
         } else {
             this.navigateToNewRecordPage(recordTypeSelected.recordTypeId);
         }
@@ -77,13 +80,14 @@ export default class ucd_ACM_AccountRecordType_SBR extends NavigationMixin(Light
         })
     }
 
-    navigateToSBR() {
+    navigateToSBR(recordTypeId) {
         this[NavigationMixin.Navigate]({
             type: 'standard__navItemPage',
             attributes: {
-                apiName: 'New_Account_SBR'            
+                apiName: 'New_Account_SBR'            },
+            state: {
+                "c__recordTypeId": recordTypeId
             },
-           
         });
     }
 

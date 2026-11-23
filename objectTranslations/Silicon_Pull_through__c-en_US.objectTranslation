@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Silicon Pull-through</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Silicon Pull-throughs</value>
+    </caseValues>
+    <fields>
+        <label><!-- Link Reason --></label>
+        <name>CRM_VBS_Link_Reason__c</name>
+        <picklistValues>
+            <masterLabel>Design Original (ODM) to Design Secondary (OEM)</masterLabel>
+            <translation><!-- Design Original (ODM) to Design Secondary (OEM) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ITE Opportunities</masterLabel>
+            <translation><!-- ITE Opportunities --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VBS Original to VBS Consumption</masterLabel>
+            <translation><!-- VBS Original to VBS Consumption --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VBS Original to VBS Renewal</masterLabel>
+            <translation><!-- VBS Original to VBS Renewal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VBS Silicon Pull-through</masterLabel>
+            <translation><!-- VBS Silicon Pull-through --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Opportunity --></label>
+        <name>CRM_VBS_Opportunity__c</name>
+        <relationshipLabel><!-- Silicon Pull-throughs (Opportunity) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Parent Opportunity --></label>
+        <name>CRM_VBS_Parent_Opportunity__c</name>
+        <relationshipLabel><!-- Silicon Pull-throughs --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

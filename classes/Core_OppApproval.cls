@@ -364,7 +364,7 @@ public without sharing class Core_OppApproval { //TWC3123-5359 Added without sha
                 //US102130 : CMSSN: Send Account Prime and KPI Product Group to Commissions - Stamping KPI and Prime account fields -- Ashwin
                 Product.Core_Approved_KPI_Product_Group__c = Product.Core_KPI_Product_Group__c; 
                 Product.CRM_DW_App_UCD_Customer_Name__c= Opp.CRM_Unified_Global_Customer_Name__c;
-                Product.Core_Approved_Prime_Account_Name__c = Opp.Core_Opp_Prime_Account_Name__c;
+                //Product.Core_Approved_Prime_Account_Name__c = Opp.Core_Opp_Prime_Account_Name__c;
                 //US176771 :SMG 2019: CMSSN- Stamp Opportunity Product Segment at Approval 
                 Product.Core_Approved_Opp_Product_Segment__c = Opp.Core_Product_Segment__c;
                 
@@ -385,7 +385,7 @@ public without sharing class Core_OppApproval { //TWC3123-5359 Added without sha
                 Product.Core_Approved_Prime_Account_Name__c ='';
                 //US176771 :SMG 2019: CMSSN- Stamp Opportunity Product Segment at Approval
                 Product.Core_Approved_Opp_Product_Segment__c = '';
-                
+                //Product.Core_Approved_Opportunity_Product_App__c = '';
                 UpdateProducts.add(Product);
                 UpdateOpps.add(Opp.Id);
                 logEntries.add(new Core_Log_Entry__c(Core_Message__c = 'Stage-'+Opp.StageName+' Product Status -'+Product.Core_Status__c, Core_Origin__c ='Core_OppApproval.updateProductLineItems', Core_Severity__c='High',Core_When__c=System.Now(), Core_Project__c = 'Sales Evolve',Core_sObjectId__c=Product.id));
@@ -527,6 +527,36 @@ public without sharing class Core_OppApproval { //TWC3123-5359 Added without sha
                 for(Opportunity opp : approvedOppList) {
                     opp.addError(Core_CRM_Utility.getCRMLabel('Core_SMGApprovalRejectionRestriction'), false);
                 }
+            }
+        }
+        
+    }
+    public static void blockApprovalPartnerLed(List<Opportunity> opportunityList, Map<Id, Opportunity> oldOppMap){
+        
+        CRM_OpportunitySubmissionSwitch__c partnerLedSwitch = CRM_OpportunitySubmissionSwitch__c.getInstance('CRM_PartnerLed');
+        
+        List<Opportunity> blockOppList = new List<Opportunity>();
+        
+        for(Opportunity opp : opportunityList){
+            
+            Boolean dwApproveCheck = opp.Core_Approval_Status__c <> null && 
+                (opp.Core_Approval_Status__c != oldOppMap.get(opp.Id).Core_Approval_Status__c) && 
+                (opp.Core_Approval_Status__c.equalsIgnoreCase('approved'))  && 
+                (oldOppMap.get(opp.Id).Core_Approval_Status__c == 'Submitted') ;
+            
+            Boolean blockApprovalCheck = partnerLedSwitch.Opportunity_Coverage__c.trim().equalsIgnoreCase(opp.Core_Opportunity_Coverage_Nm__c) && 
+                Date.today() >= partnerLedSwitch.Start_Date__c &&
+                Date.today() <= partnerLedSwitch.End_Date__c && 
+                partnerLedSwitch.Active__c == true && partnerLedSwitch.Allow_approval_before_cutoff_date__c == true &&
+                partnerLedSwitch.Submission_cut_off_date__c < opp.Core_Date_Submitted_for_Approval__c;
+            
+            if(dwApproveCheck && blockApprovalCheck){
+                blockOppList.add(opp);  
+            }                  
+        }
+        if(blockOppList.size()>0){
+            for(Opportunity opp:blockOppList){
+                opp.addError(Core_CRM_Utility.getCRMLabel('CRM_restrictOpptyApprovalMsg'), false);
             }
         }
         

@@ -2,7 +2,17 @@
     //Make an Apex call in SAServiceWrapper.getUserSession
     //this function is called from SAShowTop3AssistsController.js
     //this function gathers all the required information and formulates the URL parameters
-	getNewAssists : function(component, event, helper) {
+    //
+    /*saSwitchlogic : function (component, event, helper){
+        var action = component.get("c.saSwitchMethod");
+        action.setCallback(this, function(response){
+            if (response.getReturnValue()){
+                helper.getNewAssists(component, event, helper);
+            }
+        });
+        $A.enqueueAction(action);
+    },*/
+    getNewAssists : function(component, event, helper) {
         
         //retreive local variable to pass it to Apex function
         var accountId = component.get("v.recordId");
@@ -35,7 +45,8 @@
                 console.log("NewAssists-->getNewAssists call cimId: " + component.get('v.cimId'));
                 
                 //now call helper method to make mulesoft Service call
-        		helper.getNewAssistsServiceCall(component, event, helper);
+                 helper.getNewAssistsServiceCall(component, event, helper);
+        		
             }
             else if(state === "INCOMPLETE") {
                 // Call was incomplete log an error
@@ -65,6 +76,7 @@
        	//var wwid =  '1000';  //component.get("v.userWWID");
         var cim_id = component.get("v.cimId");
         var wwid =  component.get("v.userWWID");
+        //let saToggleSwitch = component.get("v.saSwitchToggle");
         
         console.log("ShowNewAssists-->getNewAssistsServiceCall call userWWID: " + component.get('v.userWWID'));
         console.log("ShowNewAssists-->getNewAssistsServiceCall call cimId: " + component.get('v.cimId'));
@@ -80,6 +92,10 @@
             "user_id" : wwid
             });
 
+        //Added unhandled exception fix
+        /*if(saToggleSwitch !== 'true'){
+            return;
+        }*/
         //get the response back
         action.setCallback(this, function(response) {
             var state = response.getState();

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>conetis GmbH Partner Manager</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>conetis GmbH Partner Manager</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>conetisGmbHPartnerExecutive</parentRole>
+</Role>

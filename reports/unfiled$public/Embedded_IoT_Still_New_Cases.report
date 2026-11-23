@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <columns>
-        <field>Case.Core_IPS_Age__c</field>
-    </columns>
-    <columns>
-        <field>PRIORITY</field>
-    </columns>
-    <columns>
-        <field>Case.Core_Sub_Status__c</field>
+        <field>AGE</field>
     </columns>
     <columns>
         <field>CASE_NUMBER</field>
@@ -19,43 +13,16 @@
         <field>Case.Core_IPS_Product_name__c</field>
     </columns>
     <columns>
-        <field>Case.Core_External_Issue_Category__c</field>
-    </columns>
-    <columns>
-        <field>Case.Core_External_Issue_Subcategory__c</field>
-    </columns>
-    <columns>
         <field>OWNER</field>
-    </columns>
-    <columns>
-        <field>SUBJECT</field>
-    </columns>
-    <columns>
-        <field>Case.Core_IPS_Backend_ID__c</field>
-    </columns>
-    <columns>
-        <field>CASE_ID</field>
     </columns>
     <columns>
         <field>Case.Core_IPS_Owner_Manager__c</field>
     </columns>
     <columns>
-        <field>Case.Core_IPS_Case_Owner_Email__c</field>
+        <field>CREATED_DATE</field>
     </columns>
     <columns>
-        <field>CREATED_DATEONLY</field>
-    </columns>
-    <columns>
-        <field>Case.Core_IPS_Last_Update__c</field>
-    </columns>
-    <columns>
-        <field>Case.Core_Latest_Comment_Time_Stamp__c</field>
-    </columns>
-    <columns>
-        <field>Case.Core_Latest_Comment_Submitter__c</field>
-    </columns>
-    <columns>
-        <field>Case.Core_Last_Case_Comment_Submitter__c</field>
+        <field>SUBJECT</field>
     </columns>
     <filter>
         <criteriaItems>
@@ -79,13 +46,6 @@
             <operator>greaterOrEqual</operator>
             <value>5</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>Case.Core_IPS_Last_Update__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>greaterOrEqual</operator>
-            <value>5</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Tabular</format>
@@ -103,7 +63,7 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>Case.Core_IPS_Last_Update__c</sortColumn>
+    <sortColumn>Case.Core_IPS_Owner_Manager__c</sortColumn>
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CREATED_DATEONLY</dateColumn>

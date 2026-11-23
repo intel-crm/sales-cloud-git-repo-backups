@@ -21,10 +21,8 @@
     <aura:attribute name="descriptionList" type="Object" />
     <aura:attribute name="attributes" type="Object[]" />
     <aura:attribute name="mdaId" type="string" default="" />
-    <!-- IPA2.0 + US TWC4497-1631 -->
-    <!-- <aura:attribute name="offeringId" type="Id"/> -->
+    <aura:attribute name="offeringId" type="Id"/>
     <aura:attribute name="Header" type="string" default="" />
-    <aura:attribute name="imageResize" type="boolean" default ="false" />
     
     <!-- Optional Display Controls -->
     <aura:attribute name="showType" type="boolean" default="false" />
@@ -57,8 +55,7 @@
                       <div class="slds-grid slds-wrap">
                             
                             <aura:if isTrue="{! or(v.product.featured, v.product.prerelease)}">
-                                <!-- IPA2.0 + US TWC4497-1631 -->
-                                <!-- <div
+                                <div
                                      class="{! and(v.product.featured, v.product.prerelease) ? ' splitBar offerBar': 'fullBar offerBar'}">
                                     <aura:if isTrue="{! v.product.featured}">
                                         <div class="barItem theme-primary-blue intel-clear-pro">
@@ -67,9 +64,7 @@
                                     </aura:if>
                                     <aura:if isTrue="{! v.product.prerelease}">
                                         <div class="barItem theme-cerulean-blue intel-clear-pro">
-                                            {!$Label.c.PMP_Prerelease} -->
-<!-- IPA2.0 + US TWC4497-1631 end -->
-
+                                            {!$Label.c.PMP_Prerelease}
                                             <!-- commented tooltip until requirement is clear
                                             <a class="tooltip slds-m-left_xx-small" href="javascript:void(0);" >
                                                 <span class="shape-circle">i</span>
@@ -85,33 +80,30 @@
                                                     </div>
                                                 </div>
                                             </a> -->
-                                            <!-- IPA2.0 + US TWC4497-1631 -->
-                                        <!-- </div>
+                                        </div>
                                     </aura:if>
-                                </div> -->
+                                </div>
                                 
                                 <aura:set attribute="else">
                                     <!-- Display Offering tag only if theres no feature etc -->
-                                     <!-- IPA2.0 + US TWC4497-1631 -->
-                                    <!-- <aura:if isTrue="{!v.showType}">
+                                    <aura:if isTrue="{!v.showType}">
                                         <div class="media slds-m-bottom_medium slds-size_12-of-12">
                                             <div class="offeringTag intel-clear-pro">
                                                 {!$Label.c.PMP_Card_Offering}
                                             </div>
                                         </div>
-                                    </aura:if> -->
+                                    </aura:if>
                                 </aura:set>
                             </aura:if>
                             
                             <div class="media slds-m-bottom_medium slds-size_12-of-12">
                                 <div class="mediaWrap">
                                     <aura:if isTrue="{!v.imageUrl}">
-                                        <!-- IPA2.0 + US TWC4497-1631 -->
-                                        <!-- <c:IntelLink recordId="{!v.product.id}" objectApiName="PMP_Partner_Offering__c" PartnerMDAId="{!v.mdaId}" offeringId="{!v.offeringId}" LabelHeader="{!v.Header}">
+                                        <c:IntelLink recordId="{!v.product.id}" objectApiName="PMP_Partner_Offering__c" PartnerMDAId="{!v.mdaId}" offeringId="{!v.offeringId}" LabelHeader="{!v.Header}">
                                                 <div class="{!join(' ', 'imageContainer', v.orientation)}">
-                                                    <img src="{!v.imageUrl}" alt="" onload="{!c.handleOnImageLoad}" class="{! v.imageResize ? 'resize' : '' }"/>
+                                                    <img src="{!v.imageUrl}" alt="" onload="{!c.handleOnImageLoad}"/>
                                                 </div>						
-                                            </c:IntelLink> -->
+                                            </c:IntelLink>
                                     </aura:if>
                                     <!-- TODO USE recordId and objectApiName once record pages are setup-->
                                     <!--<c:IntelLink recordId="{!v.product.id}" openInBlank="true" objectApiName="PMP_Partner_Offering__c">
@@ -121,10 +113,8 @@
                                     <!--START - Added by Manasa US 359436-->
                                     
                                     <aura:if isTrue="{!v.specImageUrl}">
-                                        <!-- IPA2.0 + US TWC4497-1631 -->
-                                        <!-- <c:IntelLink openInBlank="true" url="{!v.specImageUrl}" PartnerMDAId="{!v.mdaId}" offeringId="{!v.offeringId}" LabelHeader="{!v.Header}"> -->
-                                        <c:IntelLink openInBlank="true" url="{!v.specImageUrl}" PartnerMDAId="{!v.mdaId}"  LabelHeader="{!v.Header}">
-                                            <img src="{!v.specImageUrl}" alt="" onload="{!c.handleOnImageLoad}" class="{! v.imageResize ? 'resize' : '' }"/>
+                                        <c:IntelLink openInBlank="true" url="{!v.specImageUrl}" PartnerMDAId="{!v.mdaId}" offeringId="{!v.offeringId}" LabelHeader="{!v.Header}">
+                                            <img src="{!v.specImageUrl}" alt="" onload="{!c.handleOnImageLoad}"/>
                                         </c:IntelLink>
                                         
                                     </aura:if>
@@ -136,8 +126,7 @@
                             <aura:if isTrue="{!v.title}">
                                 <h3 class="intel-clear-light slds-m-bottom_xx-small hideTextOverflow">
                                  <!-- TODO USE recordId and objectApiName once record pages are setup -->
-                                  <!-- IPA2.0 + US TWC4497-1631 -->
-                                    <!-- <c:IntelLink recordId="{!v.product.id}" objectApiName="PMP_Partner_Offering__c" label ="{!v.title}" class="intel-clear-light" truncate="50" PartnerMDAId="{!v.mdaId}" offeringId="{!v.offeringId}" LabelHeader="{!v.Header}"/> -->
+                                    <c:IntelLink recordId="{!v.product.id}" objectApiName="PMP_Partner_Offering__c" label ="{!v.title}" class="intel-clear-light" truncate="50" PartnerMDAId="{!v.mdaId}" offeringId="{!v.offeringId}" LabelHeader="{!v.Header}"/>
                                 </h3>
                                 </aura:if>
                             <aura:if isTrue="{!v.specTitle}">
@@ -158,12 +147,9 @@
                                     <div class="slds-m-bottom_medium">
                                        <aura:iteration items="{!v.descriptionList}" var="item">
                                                 <aura:if isTrue="{!item.productURL}">
-                                                    <!-- IPA2.0 + US TWC4497-1631 -->
-                                                <!-- <c:IntelLink openInBlank="true" label="{!item.description}" class="intel-clear-light" url="{!item.productURL}" PartnerMDAId="{!v.mdaId}" offeringId="{!v.offeringId}" LabelHeader="{!v.Header}"/><br/><br/> -->
-                                                <c:IntelLink openInBlank="true" label="{!item.description}" class="intel-clear-light" url="{!item.productURL}" PartnerMDAId="{!v.mdaId}"  LabelHeader="{!v.Header}"/><br/><br/>                                                   
-                                                <aura:set attribute="else">
-                                                        {!item.description}
-                                                       <!-- <lightning:formattedRichText value="{!item.description}"/><br/>-->
+                                                <c:IntelLink openInBlank="true" label="{!item.description}" class="intel-clear-light" url="{!item.productURL}" PartnerMDAId="{!v.mdaId}" offeringId="{!v.offeringId}" LabelHeader="{!v.Header}"/><br/><br/>
+                                                    <aura:set attribute="else">
+                                                        <lightning:formattedRichText value="{!item.description}"/><br/>
                                                     </aura:set>
                                                 </aura:if>
                                        </aura:iteration>           
@@ -176,18 +162,14 @@
          <img src="{!v.imageUrl}" alt="" />
         </c:IntelLink> -->
                                 <p class="slds-m-bottom_medium padding-mobile-bottom-medium byAttribute hideTextOverflow">
-                                    {!$Label.c.PMP_By}&nbsp;
-                                    <!-- IPA2.0 + US TWC4497-1631 -->
-                                    <!-- <c:IntelLink recordId="{!v.partner.id}" objectApiName="PMP_Company__c"  label="{! v.partner.name}" PartnerMDAId="{!v.mdaId}" offeringId="{!v.offeringId}" LabelHeader="{!v.Header}"/> -->
-                                    <c:IntelLink recordId="{!v.partner.id}" objectApiName="PMP_Company__c"  label="{! v.partner.name}" PartnerMDAId="{!v.mdaId}" LabelHeader="{!v.Header}"/>
-                                                                        </p>
+                                    {!$Label.c.PMP_By}&nbsp;<c:IntelLink recordId="{!v.partner.id}" objectApiName="PMP_Company__c"  label="{! v.partner.name}" PartnerMDAId="{!v.mdaId}" offeringId="{!v.offeringId}" LabelHeader="{!v.Header}"/>
+                                      </p>
                             </aura:if>
                             <aura:if isTrue="{!v.displayCardDescription}">
                                 <aura:if isTrue="{! !empty(v.description) }">
                                     <div class="slds-m-bottom_medium descriptionBlock"> 
-                                        {!v.description}
                                         <!--<aura:unescapedHtml value="{!v.description}"/>-->  <!-- Merged with ISGProductCard-->
-                                        <!--<lightning:formattedRichText value="{!v.description}" />-->
+                                        <lightning:formattedRichText value="{!v.description}" />
                                     </div>
                                 </aura:if>
                                 
@@ -232,9 +214,7 @@
                         <aura:if isTrue="{!v.showAddToCompare}">
                             <div class="indent slds-p-bottom_x-large slds-size_12-of-12 slds-text-align_center" 
                                  aura:id="cta">
-                                <!--Gireesh: Add to Compare 2.0 -->
-                                <c:ipaCompareCheckbox product="{!v.product}" />
-                                <!--<c:MarketplaceCompareCheckbox item="{!v.product}" />-->
+                                <c:MarketplaceCompareCheckbox item="{!v.product}" />
                                 <!--<c:psMpAddToCompareCheckbox offering="{!v.product}"></c:psMpAddToCompareCheckbox>-->
                             </div>
                         </aura:if>
@@ -251,8 +231,7 @@
                 
                 <aura:if isTrue="{!v.displayType == 'list'}">
                     <aura:if isTrue="{! or(v.product.featured, v.product.prerelease)}">
-                        <!-- IPA2.0 + US TWC4497-1631 -->
-                        <!-- <div
+                        <div
                              class="{! and(v.product.featured, v.product.prerelease) ? ' splitBar offerBar': 'fullBar offerBar'}">
                             <aura:if isTrue="{! v.product.featured}">
                                 <div class="barItem theme-primary-blue intel-clear-pro">
@@ -279,17 +258,16 @@
                                     </a>
                                 </div>
                             </aura:if>
-                        </div> -->
+                        </div>
                         
                         
                         <aura:set attribute="else">
                             <!-- Display Offering tag only if theres no feature etc -->
                             <aura:if isTrue="{!v.showType}">
                                 <div class="slds-size_12-of-12">
-                                    <!-- IPA2.0 + US TWC4497-1631 -->
-                                    <!-- <div class="offeringTag intel-clear-pro">
+                                    <div class="offeringTag intel-clear-pro">
                                         {!$Label.c.PMP_Card_Offering}
-                                    </div> -->
+                                    </div>
                                 </div>
                             </aura:if>
                         </aura:set>
@@ -300,12 +278,11 @@
                             							<div class="media slds-size_12-of-12 slds-medium-size_4-of-12">
                                 <div class="mediaWrap">
                                     <aura:if isTrue="{!v.imageUrl}">
-                                        <!-- IPA2.0 + US TWC4497-1631 -->
-                                        <!-- <c:IntelLink recordId="{!v.product.id}" objectApiName="PMP_Partner_Offering__c" PartnerMDAId="{!v.mdaId}" offeringId="{!v.offeringId}" LabelHeader="{!v.Header}">
+                                        <c:IntelLink recordId="{!v.product.id}" objectApiName="PMP_Partner_Offering__c" PartnerMDAId="{!v.mdaId}" offeringId="{!v.offeringId}" LabelHeader="{!v.Header}">
                                                 <div class="{!join(' ', 'imageContainer', v.orientation)}">
-                                                    <img src="{!v.imageUrl}" alt="" onload="{!c.handleOnImageLoad}" class="{! v.imageResize ? 'resize' : '' }"/>
+                                                    <img src="{!v.imageUrl}" alt="" onload="{!c.handleOnImageLoad}"/>
                                                 </div>						
-                                            </c:IntelLink> -->
+                                            </c:IntelLink>
                                     </aura:if>
                                     <!-- TODO USE recordId and objectApiName once record pages are setup
          <c:IntelLink recordId="{!v.id}" objectApiName="PMP_Offering__c">
@@ -314,10 +291,8 @@
                                     <!--START Added by Manasa US 359436-->
                                     
                                     <aura:if isTrue="{!v.specImageUrl}">
-                                        <!-- IPA2.0 + US TWC4497-1631 -->
-                                        <!-- <c:IntelLink openInBlank="true" url="{!v.specImageUrl}" PartnerMDAId="{!v.mdaId}" offeringId="{!v.offeringId}" LabelHeader="{!v.Header}"> -->
-                                        <c:IntelLink openInBlank="true" url="{!v.specImageUrl}" PartnerMDAId="{!v.mdaId}" LabelHeader="{!v.Header}">
-                                            <img src="{!v.specImageUrl}" alt="" onload="{!c.handleOnImageLoad}" class="{! v.imageResize ? 'resize' : '' }"/>
+                                        <c:IntelLink openInBlank="true" url="{!v.specImageUrl}" PartnerMDAId="{!v.mdaId}" offeringId="{!v.offeringId}" LabelHeader="{!v.Header}">
+                                            <img src="{!v.specImageUrl}" alt="" onload="{!c.handleOnImageLoad}"/>
                                         </c:IntelLink>
                                         
                                     </aura:if>
@@ -332,9 +307,7 @@
                                 
                                 <aura:if isTrue="{!and(v.showAddToCompare, v.renderAttribute)}">
                                     <div class="slds-p-top_large slds-align_absolute-center">
-                                        <!--Gireesh: Add to Compare 2.0 -->
-                                        <c:ipaCompareCheckbox product="{!v.product}" />
-                                        <!--<c:MarketplaceCompareCheckbox item="{!v.product}" />-->
+                                        <c:MarketplaceCompareCheckbox item="{!v.product}" />
                                     </div>
                                 </aura:if>
                                
@@ -344,8 +317,7 @@
                                 <aura:if isTrue="{!v.title}">
                                     <h3 class="intel-clear-light slds-m-bottom_xx-small hideTextOverflow">
                                  <!-- TODO USE recordId and objectApiName once record pages are setup -->
-                                 <!-- IPA2.0 + US TWC4497-1631    -->
-                                 <!-- <c:IntelLink recordId="{!v.product.id}" objectApiName="PMP_Partner_Offering__c" label ="{!v.title}" class="intel-clear-light" truncate="50" PartnerMDAId="{!v.mdaId}" offeringId="{!v.offeringId}" LabelHeader="{!v.Header}"/> -->
+                                    <c:IntelLink recordId="{!v.product.id}" objectApiName="PMP_Partner_Offering__c" label ="{!v.title}" class="intel-clear-light" truncate="50" PartnerMDAId="{!v.mdaId}" offeringId="{!v.offeringId}" LabelHeader="{!v.Header}"/>
                                     </h3>
                                     </aura:if>
                             <aura:if isTrue="{!v.specTitle}">
@@ -366,13 +338,9 @@
                                     <div class="slds-m-bottom_medium">
                                        <aura:iteration items="{!v.descriptionList}" var="item">
                                                 <aura:if isTrue="{!item.productURL}">
-                                                    <!-- IPA2.0 + US TWC4497-1631 -->
-                                                <!-- <c:IntelLink openInBlank="true" label="{!item.description}" class="intel-clear-light" url="{!item.productURL}" PartnerMDAId="{!v.mdaId}" offeringId="{!v.offeringId}" LabelHeader="{!v.Header}"/><br/><br/> -->
-                                                <c:IntelLink openInBlank="true" label="{!item.description}" class="intel-clear-light" url="{!item.productURL}" PartnerMDAId="{!v.mdaId}"  LabelHeader="{!v.Header}"/><br/><br/> 
-   
-                                                <aura:set attribute="else">
-                                                        {!item.description}
-                                                        <!--<lightning:formattedRichText value="{!item.description}"/><br/>-->
+                                                <c:IntelLink openInBlank="true" label="{!item.description}" class="intel-clear-light" url="{!item.productURL}" PartnerMDAId="{!v.mdaId}" offeringId="{!v.offeringId}" LabelHeader="{!v.Header}"/><br/><br/>
+                                                    <aura:set attribute="else">
+                                                        <lightning:formattedRichText value="{!item.description}"/><br/>
                                                     </aura:set>
                                                 </aura:if>
                                        </aura:iteration>           
@@ -385,19 +353,14 @@
           <img src="{!v.imageUrl}" alt="" />
          </c:IntelLink> 
          <c:IntelLink page="l3-partner-detail" label="{! v.partner.name}" />--> 
-         
-                                            <!-- IPA2.0 + US TWC4497-1631 -->
-                                             <!-- <p class="slds-m-bottom_medium byAttribute hideTextOverflow">{!$Label.c.PMP_By}&nbsp;<c:IntelLink recordId="{!v.partner.id}" objectApiName="PMP_Company__c"  label="{! v.partner.name}" PartnerMDAId="{!v.mdaId}" offeringId="{!v.offeringId}" LabelHeader="{!v.Header}"/> -->
-
-                                    <p class="slds-m-bottom_medium byAttribute hideTextOverflow">{!$Label.c.PMP_By}&nbsp;<c:IntelLink recordId="{!v.partner.id}" objectApiName="PMP_Company__c"  label="{! v.partner.name}" PartnerMDAId="{!v.mdaId}" LabelHeader="{!v.Header}"/>
+                                    <p class="slds-m-bottom_medium byAttribute hideTextOverflow">{!$Label.c.PMP_By}&nbsp;<c:IntelLink recordId="{!v.partner.id}" objectApiName="PMP_Company__c"  label="{! v.partner.name}" PartnerMDAId="{!v.mdaId}" offeringId="{!v.offeringId}" LabelHeader="{!v.Header}"/>
                                     </p>
                                 </aura:if>
                                 <aura:if isTrue="{!v.displayCardDescription}">
                                     <aura:if isTrue="{! !empty(v.description) }">
                                         <div class="slds-m-bottom_medium descriptionBlock"> 
                                             <!--<aura:unescapedHtml value="{!v.description}" />--> <!-- Merged with ISGProductCard-->
-                                            {!v.description}
-                                            <!--<lightning:formattedRichText value="{!v.description}" />-->
+                                            <lightning:formattedRichText value="{!v.description}" />
                                         </div>
                                     </aura:if>
                                 </aura:if>
@@ -449,8 +412,7 @@
         
         <div class="{!join(' ', 'intelOnlyFooter', v.product.onlyVisibleToIntel ? 'active' : 'inactive')}">
             <span class="{!v.product.onlyVisibleToIntel ? '' : 'slds-hidden'}">
-                <!-- IPA2.0 + US TWC4497-1631 -->
-                <!-- {!$Label.c.PMP_Offer_Only_Visible_in_Intel} -->
+                {!$Label.c.PMP_Offer_Only_Visible_in_Intel}
             </span>
         </div>
         

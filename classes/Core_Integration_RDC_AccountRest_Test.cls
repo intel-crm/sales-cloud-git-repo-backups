@@ -5,7 +5,7 @@
         
         Core_Country_Code_Mapping__c mapping = new Core_Country_Code_Mapping__c(Name='USA',Country_Code__c='US',ISO_Code__c='USA');
         insert mapping;
-        insert new Core_ACM_Control_Execution__c(Name='IntegrationRDCAccountRest',IsActive__c = true);
+        
         Account acctObj = new Account();
         acctObj.Name = 'Outbound Test Account';
         acctObj.Core_CNDA_Number__c = '112233445566';
@@ -24,7 +24,7 @@
         acctObj.Core_CNDA_Number__c = '23456';
         acctObj.Core_Geo__c = 'ASMO';
         acctObj.Core_Sub_Geo__c = 'NAR';
-        acctObj.Core_Sales_Groups__c='Americas US Sales Group';
+        acctObj.Core_Sales_Groups__c='CCG Sales Group';
         insert acctObj;        
     }
     

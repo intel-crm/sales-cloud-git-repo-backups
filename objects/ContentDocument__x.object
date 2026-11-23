@@ -122,6 +122,120 @@
     <externalName>ContentDocument</externalName>
     <externalRepository>Title</externalRepository>
     <fields>
+        <fullName>ArchivedById__c</fullName>
+        <externalDeveloperName>ArchivedById</externalDeveloperName>
+        <externalId>false</externalId>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>User ID</label>
+        <length>18</length>
+        <readOnlyProxy>true</readOnlyProxy>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ArchivedDate__c</fullName>
+        <externalDeveloperName>ArchivedDate</externalDeveloperName>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>Archived Date</label>
+        <readOnlyProxy>true</readOnlyProxy>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>ContentAssetId__c</fullName>
+        <externalDeveloperName>ContentAssetId</externalDeveloperName>
+        <externalId>false</externalId>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>Asset File ID</label>
+        <length>18</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ContentModifiedDate__c</fullName>
+        <externalDeveloperName>ContentModifiedDate</externalDeveloperName>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>Content Modified Date</label>
+        <readOnlyProxy>true</readOnlyProxy>
+        <required>false</required>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>ContentSize__c</fullName>
+        <externalDeveloperName>ContentSize</externalDeveloperName>
+        <externalId>false</externalId>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>Size</label>
+        <precision>9</precision>
+        <readOnlyProxy>true</readOnlyProxy>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CreatedById__c</fullName>
+        <externalDeveloperName>CreatedById</externalDeveloperName>
+        <externalId>false</externalId>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>Created By ID</label>
+        <length>18</length>
+        <readOnlyProxy>true</readOnlyProxy>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CreatedDate__c</fullName>
+        <externalDeveloperName>CreatedDate</externalDeveloperName>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>Created</label>
+        <readOnlyProxy>true</readOnlyProxy>
+        <required>false</required>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Description__c</fullName>
+        <externalDeveloperName>Description</externalDeveloperName>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>Description</label>
+        <length>1000</length>
+        <type>LongTextArea</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>FileExtension__c</fullName>
+        <externalDeveloperName>FileExtension</externalDeveloperName>
+        <externalId>false</externalId>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>File Extension</label>
+        <length>40</length>
+        <readOnlyProxy>true</readOnlyProxy>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>FileType__c</fullName>
         <externalDeveloperName>FileType</externalDeveloperName>
         <externalId>false</externalId>
@@ -136,6 +250,87 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>IsArchived__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalDeveloperName>IsArchived</externalDeveloperName>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>Is Archived</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>IsDeleted__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalDeveloperName>IsDeleted</externalDeveloperName>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>Is Deleted</label>
+        <readOnlyProxy>true</readOnlyProxy>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>LastModifiedById__c</fullName>
+        <externalDeveloperName>LastModifiedById</externalDeveloperName>
+        <externalId>false</externalId>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>Last Modified By ID</label>
+        <length>18</length>
+        <readOnlyProxy>true</readOnlyProxy>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>LastModifiedDate__c</fullName>
+        <externalDeveloperName>LastModifiedDate</externalDeveloperName>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>Last Modified Date</label>
+        <readOnlyProxy>true</readOnlyProxy>
+        <required>false</required>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>LastReferencedDate__c</fullName>
+        <externalDeveloperName>LastReferencedDate</externalDeveloperName>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>Last Referenced Date</label>
+        <readOnlyProxy>true</readOnlyProxy>
+        <required>false</required>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>LastViewedDate__c</fullName>
+        <externalDeveloperName>LastViewedDate</externalDeveloperName>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>Last Viewed Date</label>
+        <readOnlyProxy>true</readOnlyProxy>
+        <required>false</required>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>LatestPublishedVersionId__c</fullName>
+        <externalDeveloperName>LatestPublishedVersionId</externalDeveloperName>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>Latest Published Version ID</label>
+        <length>18</length>
+        <readOnlyProxy>true</readOnlyProxy>
+        <referenceTo>ContentVersion__x</referenceTo>
+        <relationshipName>Content_Documents</relationshipName>
+        <type>ExternalLookup</type>
+    </fields>
+    <fields>
         <fullName>OwnerId__c</fullName>
         <externalDeveloperName>OwnerId</externalDeveloperName>
         <externalId>false</externalId>
@@ -147,6 +342,111 @@
         <required>true</required>
         <type>Text</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ParentId__c</fullName>
+        <externalDeveloperName>ParentId</externalDeveloperName>
+        <externalId>false</externalId>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>Parent ID</label>
+        <length>18</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PublishStatus__c</fullName>
+        <externalDeveloperName>PublishStatus</externalDeveloperName>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>Publish Status</label>
+        <readOnlyProxy>true</readOnlyProxy>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>U</fullName>
+                    <default>false</default>
+                    <label>Upload Interrupted</label>
+                </value>
+                <value>
+                    <fullName>P</fullName>
+                    <default>false</default>
+                    <label>Public</label>
+                </value>
+                <value>
+                    <fullName>R</fullName>
+                    <default>false</default>
+                    <label>Private Library</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>SharingOption__c</fullName>
+        <externalDeveloperName>SharingOption</externalDeveloperName>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>Prevent others from sharing and unsharin</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>A</fullName>
+                    <default>false</default>
+                    <label>Freeze Sharing Off</label>
+                </value>
+                <value>
+                    <fullName>R</fullName>
+                    <default>false</default>
+                    <label>Freeze Sharing On</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>SharingPrivacy__c</fullName>
+        <externalDeveloperName>SharingPrivacy</externalDeveloperName>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>File Privacy on Records</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>N</fullName>
+                    <default>false</default>
+                    <label>Visible to Anyone With Record Access</label>
+                </value>
+                <value>
+                    <fullName>P</fullName>
+                    <default>false</default>
+                    <label>Private on Records</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>SystemModstamp__c</fullName>
+        <externalDeveloperName>SystemModstamp</externalDeveloperName>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>System Modstamp</label>
+        <readOnlyProxy>true</readOnlyProxy>
+        <required>false</required>
+        <type>DateTime</type>
     </fields>
     <fields>
         <fullName>Title__c</fullName>

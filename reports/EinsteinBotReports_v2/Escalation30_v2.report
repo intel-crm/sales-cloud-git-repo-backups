@@ -56,10 +56,6 @@
         <field>ConvDefDialogDailyMetric$DialogDefinitionName</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <groupingsDown>
-        <field>ConvDefDialogDailyMetric$MetricDateTime</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
     <name>Escalation Last 30 Days</name>
     <params>
         <name>co</name>

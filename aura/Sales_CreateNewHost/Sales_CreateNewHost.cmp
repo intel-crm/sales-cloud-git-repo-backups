@@ -1,0 +1,32 @@
+<aura:component implements="lightning:actionOverride,force:lightningQuickActionWithoutHeader,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global">
+    <aura:html tag="style">
+        .slds-modal__container{
+        max-width: 75rem !important;
+        width:49% !important;
+      
+        padding: 0rem !important;
+        }
+        .slds-modal__container .cuf-content {
+        padding:1 !important;
+        }
+        .slds-modal__container .slds-p-around--medium {
+        padding: 0rem !important;
+        }
+        .slds-modal__content {
+        width: 80rem !important;
+        max-width: 100% !important;
+        border-bottom-left-radius: unset !important;
+        border-bottom-right-radius: unset !important;
+        }
+        .slds-modal__footer{
+        box-shadow: none;
+        }
+        .slds-modal__close {
+       <!-- display:none !important;-->
+       visibility:hidden;
+        }
+     
+ 
+    </aura:html>
+    <c:salesCreateNewHost  /> 
+</aura:component>

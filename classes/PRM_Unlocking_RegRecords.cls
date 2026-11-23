@@ -20,10 +20,9 @@ Public Class PRM_Unlocking_RegRecords{
 *  @throws exception : NONE
 **/ 
     
-    
     @InvocableMethod
     public static void unlockRecords(List<PRM_Registration_Request__c> regReqList){
-       /* if(!regReqList.isEmpty() && regReqList != null) {
+        if(!regReqList.isEmpty() && regReqList != null) {
             for(PRM_Registration_Request__c eachReq :regReqList){
                 system.debug('record which will be be unlocked'+eachReq.id);
                 System.debug('record is locked by Approval Process---==>'+Approval.isLocked(eachReq.id));                             
@@ -36,13 +35,13 @@ Public Class PRM_Unlocking_RegRecords{
                         System.debug('Successfully unlocked RegistrationRequest with ID: ' + unlockedRersult.getId());
                         
                     }
-                 //   else {for(Database.Error err : unlockedRersult.getErrors()) {
-                  //          System.debug('The following error has occurred.');                    
-                  //          System.debug(err.getStatusCode() + ': ' + err.getMessage());
-                  //          System.debug('opportunity fields that affected this error: ' + err.getFields());
-                //    }}                
+                 /*   else {for(Database.Error err : unlockedRersult.getErrors()) {
+                            System.debug('The following error has occurred.');                    
+                            System.debug(err.getStatusCode() + ': ' + err.getMessage());
+                            System.debug('opportunity fields that affected this error: ' + err.getFields());
+                        }}     */           
                 }
             } 
-        }*/
-} 
+        }
+}
 }

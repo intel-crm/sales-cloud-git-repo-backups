@@ -1,13 +1,11 @@
 @isTest
 public class Core_PSG_ProductExtendedAttributes_Test {
-/*
     @isTest static void insertProduct(){
         test.startTest();
         Product2 product5 = new Product2();
         product5.Name='testProduct';
         product5.Core_Item_Class_Nm__c = 'IC';
-        product5.Core_Item_Signal_Cd__c='E4';
-        product5.IsActive = true;
+        product5.Core_Item_Signal_Cd__c='';
         insert product5;
         
         Core_Product_Ext_Attribute__c extendedAttribute = new Core_Product_Ext_Attribute__c();
@@ -25,9 +23,8 @@ public class Core_PSG_ProductExtendedAttributes_Test {
         extendedAttributeList.add(extendedAttribute);
         
         insert extendedAttribute;
-        extendedAttribute.PSG_Restricted_Product__c = true;
-        update extendedAttribute;
-        test.stopTest();
-        System.assertEquals('','');
-    }*/
+        
+        test.stopTest(); 
+    }
+    
 }

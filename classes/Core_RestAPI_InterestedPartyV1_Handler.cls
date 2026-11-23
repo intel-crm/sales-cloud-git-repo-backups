@@ -27,6 +27,7 @@ public with sharing class Core_RestAPI_InterestedPartyV1_Handler {
     public Core_RestApi_InterestedPartyV1_Handler(DateTime currTime, String APIname){
         this.entryTime = currTime;
         this.apiName = APIname;
+        System.debug(' INtialization completed CASE_NUMBER '+CASE_NUMBER+' filterCondition '+filterCondition);
     }
     
     //returns all interested parties for the given case number
@@ -40,6 +41,7 @@ public with sharing class Core_RestAPI_InterestedPartyV1_Handler {
             
         }catch(Exception e){
             response.successContent = null;
+            System.debug(LoggingLevel.ERROR, 'Core_RestApi_InterestedPartyV1_Handler Exception : ' + Core_RestAPI_Util.getExceptionAsString(e));    
             Core_RestAPI_Util.processException(e, ERROR_CODE_500, response, apiName, entryTime);
         }finally{         
             if(String.isBlank(response.code))
@@ -52,12 +54,14 @@ public with sharing class Core_RestAPI_InterestedPartyV1_Handler {
     
     //Validate the data , Incase of error set the error code to 
     @testVisible private Boolean doValidations(){
+        System.debug('Core_RestAPI_CaseV1_Handler doValidations Invoked ');
         Boolean isRequestValid = true;
         //List<Case> caseList = [Select Id FROM CASE Where CaseNumber =: CASE_NUMBER Limit 1];
         if(!CASE_NUMBER.isNumeric() || ( CASE_NUMBER != null && CASE_NUMBER.length() != 8 )){
             Core_RestAPI_Util.processException(null ,MALFORMED_INPUT_9011, response, apiName, entryTime);  
             isRequestValid = false;
         }else if(Core_RestAPI_Util.isRequestURIValid(InterestedPartyV1_URI) == false){
+            system.debug('inside isRequestValid ==>> '+isRequestValid );
             Core_RestAPI_Util.processException(null , INVALID_URI_404, response, apiName, entryTime);   
             isRequestValid = false;
         } 
@@ -66,6 +70,7 @@ public with sharing class Core_RestAPI_InterestedPartyV1_Handler {
     
     //Execute the SOQL and populate the result to wrapper list objects 
     public void processRequest(){
+        System.debug(' Core_RestApi_InterestedPartyV1_Handler Entered  getInterestedParties  \n SOQL'+GET_INT_PARTIES_SOQL);
         response.successContent = new List<InterstedPartyWrapper>();
         InterstedPartyWrapper ipWrpr = null;
         List<Core_IPS_Case_Interested_Party__c> lstInterestedParty = Database.query(GET_INT_PARTIES_SOQL);
@@ -80,6 +85,7 @@ public with sharing class Core_RestAPI_InterestedPartyV1_Handler {
             }
         }
         
+        System.debug(' Core_RestApi_InterestedPartyV1_Handler Exited ');
     }
     
     //wrapper class for the response fields    

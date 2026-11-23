@@ -147,9 +147,9 @@
     <enableActivities>false</enableActivities>
     <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>
-    <enableHistory>true</enableHistory>
+    <enableHistory>false</enableHistory>
     <enableLicensing>false</enableLicensing>
-    <enableReports>false</enableReports>
+    <enableReports>true</enableReports>
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
@@ -160,7 +160,6 @@
         <label>Ship To CMF BackEnd Account</label>
         <length>255</length>
         <required>false</required>
-        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -169,7 +168,6 @@
         <fullName>Core_Is_Deactivated_Ind__c</fullName>
         <defaultValue>false</defaultValue>
         <label>Is Deactivated</label>
-        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
@@ -180,7 +178,6 @@
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>ShipTo CMF ID</label>
         <required>false</required>
-        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -207,7 +204,6 @@
         <relationshipLabel>Account SoldTo ShipTo Relationships (Ship To Account)</relationshipLabel>
         <relationshipName>Ship_To_Relationship</relationshipName>
         <required>true</required>
-        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -219,7 +215,6 @@
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Sold To CMF ID</label>
         <required>false</required>
-        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -246,7 +241,6 @@
         <relationshipLabel>Account SoldTo ShipTo Relationships (Sold To Account)</relationshipLabel>
         <relationshipName>Sold_To_Relationship</relationshipName>
         <required>true</required>
-        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -254,24 +248,14 @@
     <listViews>
         <fullName>All</fullName>
         <columns>NAME</columns>
-        <columns>Core_Is_Deactivated_Ind__c</columns>
-        <columns>Core_SolTo_CMF_ID__c</columns>
         <columns>Core_Sold_To_Account__c</columns>
-        <columns>Core_ShipTo_CMF_ID__c</columns>
         <columns>Core_Ship_To_Account__c</columns>
-        <columns>LAST_UPDATE</columns>
         <filterScope>Everything</filterScope>
-        <filters>
-            <field>Core_SolTo_CMF_ID__c</field>
-            <operation>equals</operation>
-            <value>6100002736</value>
-        </filters>
         <label>All</label>
     </listViews>
     <nameField>
         <displayFormat>SHIPTO-{0000}</displayFormat>
         <label>Sold To Ship To Name</label>
-        <trackHistory>false</trackHistory>
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Account SoldTo ShipTo Relationships</pluralLabel>
@@ -283,4 +267,17 @@
     </searchLayouts>
     <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>
+    <webLinks>
+        <fullName>test_search</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>test search</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>https://intel.com</url>
+    </webLinks>
 </CustomObject>

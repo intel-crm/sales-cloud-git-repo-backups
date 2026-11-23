@@ -16,7 +16,5 @@ public with sharing class UCD_ACM_ReltioService_Test {
         mdmServiceInstance.searchAccountReltio(requestPayload);
         mdmServiceInstance.searchAccountReltio(null);
         test.stopTest();
-    }
-     
-
+    } 
 }

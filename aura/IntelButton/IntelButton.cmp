@@ -16,27 +16,23 @@
   <aura:attribute name="buttonClass" type="string" default="" />
   <aura:attribute name="onclick" type="object" default="" />
   <aura:attribute name="communityLink" type="string" />
-  <aura:attribute name="screenReader" type="string" />
-    
+
   <span class="{!v.class}">
     <button
       class="{!join(' ', (v.body.length > 0 ? 'has-body' : ''), (v.icon ? 'has-icon' : ''), (v.buttonClass ? v.buttonClass : ''))}"
-      name="{!v.name}" type="{!v.type}" disabled="{!v.disabled}" onclick="{!c.handleClick}" tabindex="{!v.tabindex}" aria-label="{!v.screenReader}">
-        <aura:if isTrue="{!and(v.icon, v.iconPosition == 'left')}">
-             
+      name="{!v.name}" type="{!v.type}" disabled="{!v.disabled}" onclick="{!c.handleClick}" tabindex="{!v.tabindex}">
+      <aura:if isTrue="{!and(v.icon, v.iconPosition == 'left')}">
         <lightning:icon iconName="{!v.icon}" color="white" size="{!v.iconSize}"/>
       </aura:if>
 
       {!v.body.length > 0 ? v.body : v.label}
- 
+
       <aura:if isTrue="{!and(v.icon, v.iconPosition == 'right')}">
-           
         <lightning:icon class="slds-m-left_x-small" iconName="{!v.icon}" color="white" size="{!v.iconSize}"/>
       </aura:if>
     </button>
 
     <aura:if isTrue="{!v.linkLabel}">
-         
       <a class="slds-m-left_medium" href="{!v.linkLabelHref}">{!v.linkLabel}</a>
     </aura:if>
   </span>

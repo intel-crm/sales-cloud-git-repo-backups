@@ -14,11 +14,6 @@
     <cachePublicVisualforcePagesInProxyServers>true</cachePublicVisualforcePagesInProxyServers>
     <clickjackProtectionLevel>SameOriginOnly</clickjackProtectionLevel>
     <contentSniffingProtection>true</contentSniffingProtection>
-    <customWebAddresses>
-        <certificate>quoterequest_intel_com11</certificate>
-        <domainName>quoterequest.intel.com</domainName>
-        <primary>false</primary>
-    </customWebAddresses>
     <enableAuraRequests>true</enableAuraRequests>
     <fileNotFoundPage>FileNotFound</fileNotFoundPage>
     <genericErrorPage>Exception</genericErrorPage>
@@ -28,58 +23,9 @@
     <redirectToCustomDomain>false</redirectToCustomDomain>
     <referrerPolicyOriginWhenCrossOrigin>true</referrerPolicyOriginWhenCrossOrigin>
     <selfRegPage>CommunitiesSelfReg</selfRegPage>
-    <serverIsDown>SNA_Tenders1_sf_edge_B9jrs</serverIsDown>
+    <serverIsDown>SNA_Tenders1_sf_default_cdn_8ZZXx</serverIsDown>
     <siteAdmin>11579289@intel.com.crm</siteAdmin>
     <siteGuestRecordDefaultOwner>11579289@intel.com.crm</siteGuestRecordDefaultOwner>
-    <siteRedirectMappings>
-        <action>Permanent</action>
-        <isActive>true</isActive>
-        <isDynamic>false</isDynamic>
-        <source>/dpas/dpaExtension</source>
-        <target>https://quoterequest.intel.com/s/</target>
-    </siteRedirectMappings>
-    <siteRedirectMappings>
-        <action>Permanent</action>
-        <isActive>false</isActive>
-        <isDynamic>false</isDynamic>
-        <source>/quotes/*</source>
-        <target>https://quoterequest.intel.com/s/</target>
-    </siteRedirectMappings>
-    <siteRedirectMappings>
-        <action>Permanent</action>
-        <isActive>true</isActive>
-        <isDynamic>false</isDynamic>
-        <source>/quotes/cmQuotes</source>
-        <target>https://quoterequest.intel.com/s/</target>
-    </siteRedirectMappings>
-    <siteRedirectMappings>
-        <action>Permanent</action>
-        <isActive>true</isActive>
-        <isDynamic>false</isDynamic>
-        <source>/quotes/compPricing</source>
-        <target>https://quoterequest.intel.com/s/</target>
-    </siteRedirectMappings>
-    <siteRedirectMappings>
-        <action>Permanent</action>
-        <isActive>true</isActive>
-        <isDynamic>false</isDynamic>
-        <source>/quotes/fieldQuotes</source>
-        <target>https://quoterequest.intel.com/s/</target>
-    </siteRedirectMappings>
-    <siteRedirectMappings>
-        <action>Permanent</action>
-        <isActive>true</isActive>
-        <isDynamic>false</isDynamic>
-        <source>/quotes/myQuotes</source>
-        <target>https://quoterequest.intel.com/s/</target>
-    </siteRedirectMappings>
-    <siteRedirectMappings>
-        <action>Permanent</action>
-        <isActive>true</isActive>
-        <isDynamic>false</isDynamic>
-        <source>/quotes/myTeamQuotes</source>
-        <target>https://quoterequest.intel.com/s/</target>
-    </siteRedirectMappings>
     <siteType>ChatterNetwork</siteType>
     <subdomain>intelcloudcrm</subdomain>
     <urlPathPrefix>tenders</urlPathPrefix>

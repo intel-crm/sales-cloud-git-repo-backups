@@ -4,11 +4,11 @@
     <protected>false</protected>
     <values>
         <field>Account_Feedback_Value__c</field>
-        <value xsi:type="xsd:string">Partner Led</value>
+        <value xsi:type="xsd:string">Indirect Covered</value>
     </values>
     <values>
         <field>Account_Value__c</field>
-        <value xsi:type="xsd:string">Partner-led Account</value>
+        <value xsi:type="xsd:string">Indirect Covered</value>
     </values>
     <values>
         <field>Active__c</field>

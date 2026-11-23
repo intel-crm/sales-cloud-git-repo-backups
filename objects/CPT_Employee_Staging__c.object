@@ -391,6 +391,11 @@
     </fields>
     <label>Commissionable Employee - Staging</label>
     <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <listViews>
         <fullName>All_Records</fullName>
         <columns>NAME</columns>
         <columns>CPT_Batch_Id__c</columns>
@@ -401,69 +406,12 @@
         <columns>CPT_Plan_Name__c</columns>
         <columns>CPT_Validation_Status__c</columns>
         <columns>CPT_Validation_Message__c</columns>
-        <columns>CPT_Manager__c</columns>
-        <columns>CPT_Sales_Compensation_Plan__c</columns>
-        <columns>CPT_Job_Role__c</columns>
-        <columns>UPDATEDBY_USER</columns>
-        <columns>LAST_UPDATE</columns>
         <filterScope>Everything</filterScope>
-        <filters>
-            <field>CPT_Validation_Status__c</field>
-            <operation>notEqual</operation>
-            <value>Pass</value>
-        </filters>
         <label>All Records</label>
+        <language>en_US</language>
         <sharedTo>
             <allInternalUsers></allInternalUsers>
         </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>Failed_Records</fullName>
-        <columns>NAME</columns>
-        <columns>CPT_Batch_Id__c</columns>
-        <columns>CPT_Employee_WWID__c</columns>
-        <columns>CPT_First_Name__c</columns>
-        <columns>CPT_Last_Name__c</columns>
-        <columns>CPT_Manager_WWID__c</columns>
-        <columns>CPT_Plan_Name__c</columns>
-        <columns>CPT_Validation_Status__c</columns>
-        <columns>CPT_Validation_Message__c</columns>
-        <columns>CPT_Manager__c</columns>
-        <columns>CPT_Sales_Compensation_Plan__c</columns>
-        <columns>CPT_Job_Role__c</columns>
-        <columns>UPDATEDBY_USER</columns>
-        <columns>LAST_UPDATE</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>CPT_Validation_Status__c</field>
-            <operation>equals</operation>
-            <value>Fail</value>
-        </filters>
-        <label>Failed Records</label>
-    </listViews>
-    <listViews>
-        <fullName>Passed_Records</fullName>
-        <columns>NAME</columns>
-        <columns>CPT_Batch_Id__c</columns>
-        <columns>CPT_Employee_WWID__c</columns>
-        <columns>CPT_First_Name__c</columns>
-        <columns>CPT_Last_Name__c</columns>
-        <columns>CPT_Manager_WWID__c</columns>
-        <columns>CPT_Plan_Name__c</columns>
-        <columns>CPT_Validation_Status__c</columns>
-        <columns>CPT_Validation_Message__c</columns>
-        <columns>CPT_Manager__c</columns>
-        <columns>CPT_Sales_Compensation_Plan__c</columns>
-        <columns>CPT_Job_Role__c</columns>
-        <columns>UPDATEDBY_USER</columns>
-        <columns>LAST_UPDATE</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>CPT_Validation_Status__c</field>
-            <operation>equals</operation>
-            <value>Pass</value>
-        </filters>
-        <label>Passed Records</label>
     </listViews>
     <nameField>
         <displayFormat>EMP-STG-{000000}</displayFormat>

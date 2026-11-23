@@ -1,14 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
-    <excludeButtons>ChangeOwnerOne</excludeButtons>
-    <excludeButtons>ChangeRecordType</excludeButtons>
-    <excludeButtons>Clone</excludeButtons>
-    <excludeButtons>Delete</excludeButtons>
-    <excludeButtons>Edit</excludeButtons>
-    <excludeButtons>IsotopeSubscription</excludeButtons>
-    <excludeButtons>OpenSlackRecordChannel</excludeButtons>
-    <excludeButtons>PrintableView</excludeButtons>
-    <excludeButtons>Share</excludeButtons>
     <excludeButtons>Submit</excludeButtons>
     <layoutSections>
         <customLabel>false</customLabel>
@@ -21,33 +12,29 @@
                 <field>Name</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
+                <behavior>Edit</behavior>
                 <field>Opportunity__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
+                <behavior>Edit</behavior>
                 <field>Core_IPS_Premier_Support_Project__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
+                <behavior>Edit</behavior>
                 <field>Core_IPS_AddNewProject__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Account__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
-                <behavior>Readonly</behavior>
+                <behavior>Edit</behavior>
                 <field>Core_IPS_Approval_Status__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
+                <behavior>Edit</behavior>
                 <field>Approved_By__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
+                <behavior>Edit</behavior>
                 <field>Core_IPS_Request_Justification__c</field>
             </layoutItems>
         </layoutColumns>
@@ -62,13 +49,6 @@
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>CreatedById</field>
-            </layoutItems>
-            <layoutItems>
-                <height>50</height>
-                <page>OpportunityPARNote</page>
-                <showLabel>false</showLabel>
-                <showScrollbars>true</showScrollbars>
-                <width>100%</width>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -89,42 +69,13 @@
         <layoutColumns/>
         <style>CustomLinks</style>
     </layoutSections>
-    <relatedLists>
-        <fields>CreatedDate</fields>
-        <fields>StepStatus</fields>
-        <fields>Comments</fields>
-        <fields>OriginalActor</fields>
-        <fields>Actor</fields>
-        <relatedList>RelatedProcessHistoryList</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <excludeButtons>MassChangeOwner</excludeButtons>
-        <excludeButtons>New</excludeButtons>
-        <fields>Core_IPS_Supported_Product__c</fields>
-        <fields>Core_IPS_Product_EPM_ID__c</fields>
-        <fields>Core_IPS_Supported_Product_Name__c</fields>
-        <fields>Core_IPS_Flag_Status__c</fields>
-        <fields>Core_IPS_Support_Launch_Date__c</fields>
-        <fields>Core_IPS_Product_Launch_Date__c</fields>
-        <fields>Core_IPS_Support_Org_ID__c</fields>
-        <relatedList>Core_IPS_Opppar_Supported_Product__c.Core_IPS_Opportunity_PAR__c</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <excludeButtons>MassChangeOwner</excludeButtons>
-        <excludeButtons>New</excludeButtons>
-        <fields>Core_IPS_Support_Org_Admin__c</fields>
-        <fields>Core_IPS_Admin__c</fields>
-        <fields>Core_IPS_Primary_Admin__c</fields>
-        <fields>Core_IPS_Product_Organization__c</fields>
-        <relatedList>Core_IPS_Opppar_SuppOrgAdmin__c.Core_IPS_Opportunity_Par__c</relatedList>
-    </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>
     <showInteractionLogPanel>false</showInteractionLogPanel>
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h3b00000fXWdk</masterLabel>
+        <masterLabel>00hDf000005NuGo</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

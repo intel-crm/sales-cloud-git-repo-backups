@@ -68,7 +68,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>includes</operator>
-            <value>DCG-Tier 1,DCAI-Tier 1,DCG-Tier 2,DCAI-Tier 2</value>
+            <value>DCG-Tier 1,DCG-Tier 2</value>
         </criteriaItems>
         <criteriaItems>
             <column>CLOSE_DATE</column>

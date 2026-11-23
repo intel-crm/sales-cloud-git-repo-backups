@@ -1,0 +1,30 @@
+<template>
+    <div class="slds-combobox_container slds-has-inline-listbox">
+        <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click" aria-expanded={showDropdown} aria-haspopup="listbox" role="combobox">
+            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
+                <lightning-input
+                    type="search"                    
+                    class="slds-input"
+                    placeholder="Search"
+                    value={searchTerm}
+                    onchange={handleSearchChange}
+                    onfocus={handleFocus}
+                    onblur={handleBlur}
+                    label={labelName}
+                > 
+                </lightning-input>
+            </div>
+            <div if:true={showDropdown} class="slds-dropdown slds-dropdown_length-5 slds-dropdown_fluid dropdownvalues" role="listbox">
+                <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                    <template for:each={contacts} for:item="contact">
+                        <li key={contact.Id} role="presentation" class="slds-listbox__item">
+                            <div role="option" class="slds-listbox__option slds-listbox__option_plain" onclick={handleSelect} data-id={contact.Id}>
+                                <span class="slds-listbox__option-text slds-listbox__option-text_entity">{contact.Name}</span>
+                            </div>
+                        </li>
+                    </template>
+                </ul>
+            </div>
+        </div>
+    </div>
+</template>

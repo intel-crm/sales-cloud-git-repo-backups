@@ -15,6 +15,10 @@
         <value xsi:type="xsd:string">Client</value>
     </values>
     <values>
+        <field>Pricing_IQR_Product_Type__c</field>
+        <value xsi:type="xsd:string">Client</value>
+    </values>
+    <values>
         <field>Pricing_IsRPM_User__c</field>
         <value xsi:type="xsd:string">Default</value>
     </values>
@@ -32,6 +36,10 @@
     </values>
     <values>
         <field>Pricing_Section_Label_Pkl__c</field>
+        <value xsi:type="xsd:string">Proposed Intel Solution</value>
+    </values>
+    <values>
+        <field>Pricing_Section_Label__c</field>
         <value xsi:type="xsd:string">Proposed Intel Solution</value>
     </values>
     <values>

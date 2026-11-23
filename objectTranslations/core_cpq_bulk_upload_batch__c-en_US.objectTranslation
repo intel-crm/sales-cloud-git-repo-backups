@@ -30,6 +30,10 @@
         <name>core_cpq_quote_link__c</name>
     </fields>
     <fields>
+        <label><!-- Quote Number --></label>
+        <name>core_cpq_quote_number__c</name>
+    </fields>
+    <fields>
         <label><!-- Success Count --></label>
         <name>core_cpq_success_count_nbr__c</name>
     </fields>

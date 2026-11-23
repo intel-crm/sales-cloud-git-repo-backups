@@ -10,7 +10,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Marketing_Support_Request_Submitted</template>
+        <template>unfiled$public/Marketing_Support_Request_Submitted</template>
     </alerts>
     <alerts>
         <fullName>Core_Email_on_Rejection_Opportunity_Support</fullName>
@@ -43,7 +43,7 @@
             <type>userLookup</type>
         </recipients>
         <senderType>DefaultWorkflowUser</senderType>
-        <template>Testt/Core_Opportunity_Support_Rejection_Email_Template</template>
+        <template>unfiled$public/Core_Opportunity_Support_Rejection_Email_Template</template>
     </alerts>
     <alerts>
         <fullName>Core_Opportunity_Approval_Email</fullName>
@@ -80,9 +80,12 @@
         <template>Core_Opportunity_Management/Core_Oppty_Support_Approve_Reject</template>
     </alerts>
     <alerts>
-        <fullName>Email_to_be_sent_to_Approvers_once_the_opportunity_is_submitted</fullName>
-        <description>Email to be sent to Approvers once the opportunity is submitted</description>
+        <fullName>Core_Opportunity_Team_add_remove_notify</fullName>
+        <description>Opportunity team add remove notify</description>
         <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
         <recipients>
             <field>Core_Approver_1__c</field>
             <type>userLookup</type>
@@ -101,6 +104,53 @@
         </recipients>
         <recipients>
             <field>Core_Approver_5__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>DefaultWorkflowUser</senderType>
+        <template>unfiled$public/Opportunity_Team_Add_and_remove</template>
+    </alerts>
+    <alerts>
+        <fullName>Email_to_be_sent_to_Approvers_once_the_opportunity_is_submitted</fullName>
+        <description>Email to be sent to Approvers once the opportunity is submitted</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Core_Approver_10__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <recipients>
+            <field>Core_Approver_1__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <recipients>
+            <field>Core_Approver_2__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <recipients>
+            <field>Core_Approver_3__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <recipients>
+            <field>Core_Approver_4__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <recipients>
+            <field>Core_Approver_5__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <recipients>
+            <field>Core_Approver_6__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <recipients>
+            <field>Core_Approver_7__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <recipients>
+            <field>Core_Approver_8__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <recipients>
+            <field>Core_Approver_9__c</field>
             <type>userLookup</type>
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
@@ -226,7 +276,7 @@
     <fieldUpdates>
         <fullName>Approved_By</fullName>
         <field>Core_Approved_By_c__c</field>
-        <formula>TRIM( $User.FirstName + &apos; &apos; +  $User.LastName )</formula>
+        <formula>TRIM($User.FirstName + &apos; &apos; +  $User.LastName)</formula>
         <name>Approved By</name>
         <notifyAssignee>false</notifyAssignee>
         <operation>Formula</operation>
@@ -252,7 +302,7 @@
         <notifyAssignee>false</notifyAssignee>
         <operation>Literal</operation>
         <protected>false</protected>
-        <reevaluateOnChange>true</reevaluateOnChange>
+        <reevaluateOnChange>false</reevaluateOnChange>
     </fieldUpdates>
     <fieldUpdates>
         <fullName>Core_Clear_Comments</fullName>
@@ -356,6 +406,26 @@
         <name>Update End Date Null</name>
         <notifyAssignee>false</notifyAssignee>
         <operation>Null</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>reassign_true</fullName>
+        <field>Is_reassigned__c</field>
+        <literalValue>1</literalValue>
+        <name>reassign true</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>reassingTrigger</fullName>
+        <field>Is_reassigned__c</field>
+        <literalValue>1</literalValue>
+        <name>reassingTrigger</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
         <protected>false</protected>
         <reevaluateOnChange>false</reevaluateOnChange>
     </fieldUpdates>

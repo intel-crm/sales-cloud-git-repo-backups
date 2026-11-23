@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
-    <customPermissions>
-        <enabled>true</enabled>
-        <name>Lead_Bypass_Permission</name>
-    </customPermissions>
     <fieldPermissions>
         <editable>true</editable>
         <field>Lead.Address</field>
@@ -1126,16 +1122,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Lead.SWS_Non_Partner_Lead__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Lead.SWS_Partner_Qualified_Status__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>Lead.Title</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -1271,11 +1257,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>PRM_Profile_Responses__c.PRM_Question_Type__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>PRM_Profile_Responses__c.PRM_Reason_Text__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -1287,11 +1268,6 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>PRM_Profile_Responses__c.PRM_View_History__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>PRM_Profile_Responses__c.Unique_Key__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>
@@ -1340,6 +1316,10 @@
         <recordType>Lead.Partner_Lead</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <recordType>PRM_Profile_Responses__c.Standard</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
     <userPermissions>
         <enabled>true</enabled>
         <name>ApiEnabled</name>
@@ -1347,9 +1327,5 @@
     <userPermissions>
         <enabled>true</enabled>
         <name>RunFlow</name>
-    </userPermissions>
-    <userPermissions>
-        <enabled>true</enabled>
-        <name>ViewClientSecret</name>
     </userPermissions>
 </PermissionSet>

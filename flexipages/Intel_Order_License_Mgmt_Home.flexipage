@@ -3,67 +3,27 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
-                <componentInstanceProperties>
-                    <name>decorate</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>richTextValue</name>
-                    <value>&lt;p&gt;&lt;strong style=&quot;color: rgb(50, 50, 50); font-size: 18px; font-family: sans-serif;&quot;&gt;PSG Order &amp;amp; Licensing Dashboards&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;For Dashboards related to Order Management and Licensing - Click on below links&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;https://sqlbiprd.intel.com/Reports/powerbi/PSG%20Sales/PSG%20License%20renewals&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-size: 12px; color: rgb(13, 161, 224);&quot;&gt;&lt;u&gt;PSG License Renewals Power BI Dashboard&lt;/u&gt;&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://intel.lightning.force.com/lightning/r/Folder/00l3b000001jmD3AAI/view?queryScope=userFolders&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-size: 12px; color: rgb(13, 161, 224);&quot;&gt;&lt;u&gt;PSG Order and License related Salesforce Dashboard&lt;/u&gt;&lt;/a&gt;&lt;a href=&quot;https://intel.lightning.force.com/lightning/r/Folder/00l3b000001jmD3AAI/view?queryScope=userFolders&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;color: rgb(13, 161, 224);&quot;&gt;&lt;u&gt;s&lt;/u&gt;&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:richText</componentName>
-                <identifier>flexipage_richText3</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>decorate</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>richTextValue</name>
-                    <value>&lt;p&gt;&lt;strong style=&quot;font-size: 16px; color: rgb(254, 3, 3);&quot;&gt;Important for Altera/PSG Users:&amp;nbsp;Starting July 28, 2025, use the new Altera Salesforce for accounts, contacts, leads, design registration, opportunities, quotes (except corporate tool quotes) and DPAs. Exception:&amp;nbsp;Use Intel Salesforce (IQR) for corporate tool quotes, orders, licensing, and IPS. For details, visit the &lt;/strong&gt;&lt;a href=&quot;https://altera.sharepoint.com/sites/AlteraBusinessEnablementSalesforce/SitePages/FAQs.aspx?csf=1&amp;amp;web=1&amp;amp;e=8DrWLE&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-size: 16px; color: rgb(254, 3, 3); background-color: rgb(255, 255, 255);&quot;&gt;&lt;strong&gt;&lt;u&gt;Altera CRM FAQ&lt;/u&gt;&lt;/strong&gt;&lt;/a&gt;&lt;strong style=&quot;font-size: 16px; color: rgb(254, 3, 3);&quot;&gt;.&lt;/strong&gt;&lt;/p&gt;</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:richText</componentName>
-                <identifier>flexipage_richText4</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>enableInlineEdit</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>entityName</name>
-                    <value>PRM_Registration_Request__c</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>filterName</name>
-                    <value>PSG_Request_Pending_Action</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>hideActionBar</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>hideSearchBar</name>
-                    <value>false</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>pageSize</name>
-                    <value>5</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:filterListCard</componentName>
-                <identifier>flexipage_filterListCard</identifier>
+                <componentName>psg_ApprovalListView</componentName>
+                <identifier>psg_ApprovalListView</identifier>
                 <visibilityRule>
+                    <booleanFilter>1 OR 2</booleanFilter>
                     <criteria>
-                        <leftValue>{!$Permission.CustomPermission.PSG_SSLC_Request_List_View}</leftValue>
+                        <leftValue>{!$Permission.CustomPermission.PSG_Internal_Biz_Manager}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>true</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!$Permission.CustomPermission.PSG_Internal_Biz_Ops}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>true</rightValue>
                     </criteria>
                 </visibilityRule>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentName>psg_PortalRequestListView</componentName>
+                <identifier>c_psg_PortalRequestListView</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -129,21 +89,19 @@
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
-                    <name>decorate</name>
-                    <value>true</value>
+                    <name>flowArguments</name>
+                    <value>[]</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
-                    <name>richTextValue</name>
-                    <value>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;font-size: 18px; color: rgb(107, 109, 112);&quot;&gt;Need help? &lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;Answers to many of your questions may be found &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;on the training site &lt;/span&gt;&lt;a href=&quot;https://salescrm.intel.com/intel-quote-request-home/psg-iqr-home/&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-size: 16px; background-color: rgb(255, 255, 255);&quot;&gt;at this link&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 16px; color: rgb(107, 109, 112);&quot;&gt;For business related questions, please contact your lead&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;font-size: 16px; color: rgb(107, 109, 112);&quot;&gt;For IT related support, submit an IT support request below:&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;font-size: 8px;&quot;&gt; &lt;/span&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;https://it.intel.com/#/incident/5700/10009&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-size: 16px; background-color: rgb(255, 255, 255);&quot;&gt;Quoting&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://intel.service-now.com/aem?id=aem_create_incident&amp;amp;route=ea4ca1021b37c15035ffb912cd4bcbf0&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-size: 16px;&quot;&gt;Tools &amp;amp; Licensing&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;</value>
+                    <name>flowLayout</name>
+                    <value>oneColumn</value>
                 </componentInstanceProperties>
-                <componentName>flexipage:richText</componentName>
-                <identifier>flexipage_richText2</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentName>runtime_sales_activities:todayTaskContainer</componentName>
-                <identifier>runtime_sales_activities_todayTaskContainer</identifier>
+                <componentInstanceProperties>
+                    <name>flowName</name>
+                    <value>PSG_Transfer_Quote_DPA_ALN_to_New_Submitter</value>
+                </componentInstanceProperties>
+                <componentName>flowruntime:interview</componentName>
+                <identifier>flowruntime_interview</identifier>
             </componentInstance>
         </itemInstances>
         <name>sidebar</name>

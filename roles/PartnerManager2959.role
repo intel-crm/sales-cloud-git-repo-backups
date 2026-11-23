@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>栾城县志诚电脑科技服务中心 Partner Manager</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>栾城县志诚电脑科技服务中心 Partner Manager</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>PartnerExecutive2959</parentRole>
+</Role>

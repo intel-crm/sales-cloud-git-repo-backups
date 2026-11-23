@@ -12,10 +12,10 @@ Modification Log :
 global class SPM_ShareAccountdetails implements Database.Batchable<SPM_Account_Detail__c>,Database.Stateful  {
     public boolean uncoveredAccount= false;
     public string conditionForAccountQuery = '';
-    public static string intelLed = Core_CRM_Utility.getCRMLabel('Intel_Led');
-    public static string partnerLed = Core_CRM_Utility.getCRMLabel('Partner_led');
-    public static string uncovered = Core_CRM_Utility.getCRMLabel('Uncovered');
-    public static string otherLedAccount = Core_CRM_Utility.getCRMLabel('Other_Led_Account');
+    public static string intelLed = Core_CRM_Utility.getCRMLabel('Intel_Covered');//batch optimzation
+    public static string partnerLed = Core_CRM_Utility.getCRMLabel('Indirect_Covered');//batch optimization
+    public static string uncovered = Core_CRM_Utility.getCRMLabel('Not_Covered');
+    //public static string otherLedAccount = Core_CRM_Utility.getCRMLabel('Other_Led_Account');//TWC3123-5894
     public Map<String,List<SPM_Security_Mapping__c>> securityMap = new Map<String,List<SPM_Security_Mapping__c>>();
     public Map<String,List<SPM_Security_Mapping__c>> regionalLeadMap = new Map<String,List<SPM_Security_Mapping__c>>();
     public Map<String,List<SPM_Security_Mapping__c>> uncoveredAccountUserView = new Map<String,List<SPM_Security_Mapping__c>>();
@@ -44,7 +44,7 @@ global class SPM_ShareAccountdetails implements Database.Batchable<SPM_Account_D
         this.conditionForAccountQuery = conditionForAccountQuery;   
         this.uncoveredAccountUserView = uncoveredAccountUserView;
         this.uncoveredAccountUserViewIntelLed = uncoveredAccountUserViewIntelLed;
-        this.batchSize = batchSize;
+        this.batchSize = batchSize;	
         this.unCoveredAccID = unCoveredAccID;
     }
     // Constructor for the Account owner is not null from flow //TWC3123-6456
@@ -59,8 +59,8 @@ global class SPM_ShareAccountdetails implements Database.Batchable<SPM_Account_D
     
     // Get the Account details based on the Dynamic query
     global Iterable<SPM_Account_Detail__c> start(Database.BatchableContext bc) {  
-        String query = 'SELECT Id, Account_Owner__c,Account_Owner_WWID__c,SPM_Customer_ID__c,SPM_Customer_ID__r.Core_Region__c,SPM_Customer_ID__r.Coverage__c,SPM_Customer_ID__r.Core_Regional_Customer_Id__c, Region__c,Regional_Lead__c, Category__c,DR__c,VP__c,GM__c,TA_VP__c,TA_GM__c FROM SPM_Account_Detail__c ' + conditionForAccountQuery ;  
-        //system.debug('-query--'+query);
+        system.debug('INSIDE START:'+conditionForAccountQuery);
+        String query = 'SELECT Id, Account_Owner__c,Account_Owner_WWID__c,SPM_Customer_ID__c,SPM_Customer_ID__r.Core_Region__c,SPM_Customer_ID__r.Coverage__c,SPM_Customer_ID__r.Core_Regional_Customer_Id__c, Region__c,Regional_Lead__c, Category__c,DR__c,VP__c,GM__c,TA_VP__c,TA_GM__c,CST_Region__c FROM SPM_Account_Detail__c ' + conditionForAccountQuery ;//batch optimization
         
         if(uncoveredAccount)
             List<String> intelLedCovered = unCoveredAccID;        
@@ -70,7 +70,6 @@ global class SPM_ShareAccountdetails implements Database.Batchable<SPM_Account_D
     
     
     global void execute(Database.BatchableContext BC, List<SPM_Account_Detail__c> scope) {
-        
         
         Map< string ,SPM_Account_Detail__Share> shareAccount = new Map<string,SPM_Account_Detail__Share>();
         Map<string ,SPM_Account_Detail__c> updateRolesInAccount = new Map<string ,SPM_Account_Detail__c>();       
@@ -88,36 +87,39 @@ global class SPM_ShareAccountdetails implements Database.Batchable<SPM_Account_D
         Map<string , SPM_Regional_Customer__Share> regionalShare = new Map<string , SPM_Regional_Customer__Share>();
         List<String> regionalIdUsershare = new List<String>();
         Set<Id> regionalCustId = new Set<Id>();
+        //batch optimization start
+        Set<String> accOwnerWWId = new Set<String>();
+        Set<String> regionList = new Set<String>();
+        for(SPM_Account_Detail__c accDetail: scope){
+            accOwnerWWId.add(accDetail.Account_Owner_WWID__c);
+            regionList.add(accDetail.CST_Region__c);
+            
+        }
+        //batch optimization end
         try{
             set<string> uniqueManagerSet = new set<string>();
-            // Create a Security Map to share account details
-            if(securityMap.size() == 0  ){
-                
                 Map<String,List<SPM_Security_Mapping__c>> securityMapTemp = new Map<String,List<SPM_Security_Mapping__c>>();
-                
-                for(SPM_Security_Mapping__c  tempSecurity : [select Id,TA__c, Account_Owner__c,Account_Owner__r.Core_WWID__c, Customer_Category__c,Region__c,Role__c,Manager__c from SPM_Security_Mapping__c where Account_Owner__r.IsActive  = true and Manager__r.IsActive = true ]){
+                for(SPM_Security_Mapping__c  tempSecurity : [select Id,TA__c, Account_Owner__c,Account_Owner__r.Core_WWID__c, Customer_Category__c,Region__c,Role__c,Manager__c from SPM_Security_Mapping__c where Account_Owner__r.IsActive  = true and Manager__r.IsActive = true and (Account_Owner__r.Core_WWID__c IN:accOwnerWWId OR (Role__c='Regional Lead' AND Region__c IN:REGIONLIST))]){//batch optimization added accOwnerWWID
+                    SYSTEM.DEBUG('TEMPSECURITY UNCOVERED:'+uncoveredAccount);
                     if(!uncoveredAccount){
                         if(!securityMapTemp.containsKey(tempSecurity.Account_Owner__r.Core_WWID__c))
                             securityMapTemp.put(tempSecurity.Account_Owner__r.Core_WWID__c, new List<SPM_Security_Mapping__c>());
-                        
+
                         securityMapTemp.get(tempSecurity.Account_Owner__r.Core_WWID__c).add(tempSecurity);
                         securityMap =securityMapTemp;
                     }
                     
                     if(tempSecurity.Role__c == 'Regional Lead'){
-                        
                         if(!regionalLeadMap.containsKey(tempSecurity.Region__c)) {
                             regionalLeadMap.put(tempSecurity.Region__c, new List<SPM_Security_Mapping__c>{tempSecurity});
-                            
                         }
                         else if(!uniqueManagerSet.contains(tempSecurity.Region__c+'_'+tempSecurity.Manager__c)) {
                             regionalLeadMap.get(tempSecurity.Region__c).add(tempSecurity);
                             uniqueManagerSet.add(tempSecurity.Region__c+'_'+tempSecurity.Manager__c);
                         } 
                     }                    
-                }             
-            } 
-            //system.debug('Inside security map size:'+securityMap.size());
+                } 
+            
             //Check whether account details are shared to user       
             Map<id,SPM_Account_Detail__c> accountDetaislID = new Map<Id,SPM_Account_Detail__c>(scope);
             List<String> accountIdUser = getCurrentAccountOwner(accountDetaislID.keySet());
@@ -143,8 +145,8 @@ global class SPM_ShareAccountdetails implements Database.Batchable<SPM_Account_D
                 boolean isPartnerUncoverd = false;
                 List<SPM_Security_Mapping__c> userToShareIds = new List<SPM_Security_Mapping__c>();
                 //check Account is Partner-Led or Uncovered
-                if(uncoveredAccess.containskey(accountDetail.SPM_Customer_ID__c+'_'+accountDetail.Category__c+'_'+partnerLed) || uncoveredAccess.containskey(accountDetail.SPM_Customer_ID__c+'_'+accountDetail.Category__c+'_'+uncovered) || 
-                   uncoveredAccess.containskey(accountDetail.SPM_Customer_ID__c+'_'+accountDetail.Category__c+'_'+otherLedAccount)){
+                if(uncoveredAccess.containskey(accountDetail.SPM_Customer_ID__c+'_'+accountDetail.Category__c+'_'+partnerLed) || uncoveredAccess.containskey(accountDetail.SPM_Customer_ID__c+'_'+accountDetail.Category__c+'_'+uncovered) /*|| 
+                   uncoveredAccess.containskey(accountDetail.SPM_Customer_ID__c+'_'+accountDetail.Category__c+'_'+otherLedAccount)*/){
                        isPartnerUncoverd = true;
                        if(!uncoveredAccount)
                            unCoveredAccID.add(accountDetail.id);                    
@@ -194,7 +196,6 @@ global class SPM_ShareAccountdetails implements Database.Batchable<SPM_Account_D
                 if(uncoveredAccount && isIntelLed && uncoveredAccountUserViewIntelLed.containsKey(accountDetail.SPM_Customer_ID__c))
                     userToShareIds.addAll(uncoveredAccountUserViewIntelLed.get(accountDetail.SPM_Customer_ID__c));
                 //WW45 Sharing for regional lead
-                //system.debug('REGIONALLEADMAP 233 '+accountDetail.SPM_Customer_ID__r.Core_Region__c+':'+regionalLeadMap.get(accountDetail.SPM_Customer_ID__r.Core_Region__c));
                 if( regionalLeadMap.containsKey(accountDetail.SPM_Customer_ID__r.Core_Region__c) && regionalLeadMap.get(accountDetail.SPM_Customer_ID__r.Core_Region__c) != null)
                     userToShareIds.addAll(regionalLeadMap.get(accountDetail.SPM_Customer_ID__r.Core_Region__c));
                 //system.debug('userToShareIds3--'+userToShareIds);
@@ -286,8 +287,8 @@ global class SPM_ShareAccountdetails implements Database.Batchable<SPM_Account_D
                     if(isPartnerUncoverd && checkNotIntelLet && uncoveredAccess.containskey(accountDetail.SPM_Customer_ID__c+'_'+accountDetail.Category__c+'_'+uncovered))
                         custCatIds = uncoveredAccess.get(accountDetail.SPM_Customer_ID__c+'_'+accountDetail.Category__c+'_'+uncovered);
                     
-                    if(isPartnerUncoverd && checkNotIntelLet && uncoveredAccess.containskey(accountDetail.SPM_Customer_ID__c+'_'+accountDetail.Category__c+'_'+otherLedAccount))
-                        custCatIds = uncoveredAccess.get(accountDetail.SPM_Customer_ID__c+'_'+accountDetail.Category__c+'_'+otherLedAccount);
+                    /*if(isPartnerUncoverd && checkNotIntelLet && uncoveredAccess.containskey(accountDetail.SPM_Customer_ID__c+'_'+accountDetail.Category__c+'_'+otherLedAccount))
+                        custCatIds = uncoveredAccess.get(accountDetail.SPM_Customer_ID__c+'_'+accountDetail.Category__c+'_'+otherLedAccount);*///TWC3123-5894
                     for( Id categoryId: custCatIds){
                         SPM_Customer_Category__Share shareCate = new SPM_Customer_Category__Share();
                         shareCate.ParentId = categoryId;
@@ -405,8 +406,6 @@ global class SPM_ShareAccountdetails implements Database.Batchable<SPM_Account_D
     //creating Security map for covered account
     public static Map<String,List<SPM_Security_Mapping__c>> getSecurtiyMape() {
         Map<String,List<SPM_Security_Mapping__c>> securityMapTemp = new Map<String,List<SPM_Security_Mapping__c>>();
-        //  Map<String,List<SPM_Security_Mapping__c>> regionalLeadMap = new Map<String,List<SPM_Security_Mapping__c>>();
-        //set<id> uniqueManagerSet = new set<id>();
         for(SPM_Security_Mapping__c  tempSecurity : [select Id,TA__c, Account_Owner__c,Account_Owner__r.Core_WWID__c, Customer_Category__c,Region__c,Role__c,Manager__c from SPM_Security_Mapping__c where Account_Owner__r.IsActive  = true and Manager__r.IsActive = true ]){
             if(!securityMapTemp.containsKey(tempSecurity.Account_Owner__r.Core_WWID__c))
                 securityMapTemp.put(tempSecurity.Account_Owner__r.Core_WWID__c, new List<SPM_Security_Mapping__c>());
@@ -462,7 +461,7 @@ global class SPM_ShareAccountdetails implements Database.Batchable<SPM_Account_D
         Map<String ,List<Id>> customerGiveAccess = new Map<String, List<Id>>();
         for(SPM_Customer_Category__c  checkCust : [select id,Customer_Detail__c,Coverage__c, Category__c,Core_Recommendation__c from SPM_Customer_Category__c WHERE CRM_CST_Is_Active_Planning_Period__c= TRUE]){
             //string recommendationFromCate = checkCust.Core_Recommendation__c != null ? checkCust.Core_Recommendation__c.toLowerCase(): '';//commented as part of TWC3123-6021
-            if(/*recommendationFromCate.contains(recommendation) &&*/ (checkCust.Coverage__c == partnerLed || checkCust.Coverage__c == uncovered || checkCust.Coverage__c == otherLedAccount)){
+            if(/*recommendationFromCate.contains(recommendation) &&*/ (checkCust.Coverage__c == partnerLed || checkCust.Coverage__c == uncovered /*|| checkCust.Coverage__c == otherLedAccount*/)){
                 if(!customerGiveAccess.containsKey(checkCust.Customer_Detail__c+'_'+checkCust.Category__c+'_'+checkCust.Coverage__c))
                     customerGiveAccess.put(checkCust.Customer_Detail__c+'_'+checkCust.Category__c+'_'+checkCust.Coverage__c, new List<String>());
                 customerGiveAccess.get(checkCust.Customer_Detail__c+'_'+checkCust.Category__c+'_'+checkCust.Coverage__c).add(checkCust.id);

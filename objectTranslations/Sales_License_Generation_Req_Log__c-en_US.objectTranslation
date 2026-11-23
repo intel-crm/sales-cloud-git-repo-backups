@@ -13,10 +13,6 @@
         <name>Evevt_Type__c</name>
     </fields>
     <fields>
-        <label><!-- LicenseId --></label>
-        <name>LicenseId__c</name>
-    </fields>
-    <fields>
         <label>License ID</label>
         <name>License_Id__c</name>
     </fields>
@@ -52,11 +48,6 @@
     <fields>
         <label><!-- Legacy Attachment Name --></label>
         <name>Sales_Legacy_Attachment_Name__c</name>
-    </fields>
-    <fields>
-        <label><!-- Contact --></label>
-        <name>Sales_License_Contact__c</name>
-        <relationshipLabel><!-- License Generation Requests --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- License File --></label>

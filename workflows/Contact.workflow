@@ -8,14 +8,13 @@
             <type>accountOwner</type>
         </recipients>
         <senderType>DefaultWorkflowUser</senderType>
-        <template>Testt/Core_Account_Owner_Contact_Tokenized</template>
+        <template>unfiled$public/Core_Account_Owner_Contact_Tokenized</template>
     </alerts>
     <alerts>
         <fullName>Core_IPS_Contact_Notif_RDC_Access_EA</fullName>
-        <ccEmails>Field.Intel.Support@Intel.com</ccEmails>
         <description>Core IPS Contact Notif RDC Access EA</description>
         <protected>false</protected>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Contact_RDC_Access</template>
     </alerts>
@@ -27,7 +26,7 @@
             <field>Core_IPS_Intel_Support_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Contact</template>
     </alerts>
@@ -43,7 +42,7 @@
             <recipient>11248723@intel.com.crm</recipient>
             <type>user</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_Partner_Agent_Holding_Account_Notification</template>
     </alerts>
@@ -342,10 +341,20 @@
         <protected>false</protected>
         <reevaluateOnChange>false</reevaluateOnChange>
     </fieldUpdates>
+    <fieldUpdates>
+        <fullName>f1</fullName>
+        <field>Fax</field>
+        <formula>&quot;abc&quot;</formula>
+        <name>f1</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
     <outboundMessages>
         <fullName>Core_Intmsg_Contact_New</fullName>
         <apiVersion>32.0</apiVersion>
-        <endpointUrl>https://proxydefault:WJ$K1ZmrZug7@eip-crm-proxy.cloudhub.io/smit/api/eip-crm-sls-contacts-sf2erpm/contact</endpointUrl>
+        <endpointUrl>https://dummydefault:WJ$K1ZmrZug7@eip-crm-dummy.cloudhub.io/smit/api/eip-crm-sls-contacts-sf2erpm/contact</endpointUrl>
         <fields>AccountId</fields>
         <fields>Core_Account_Legal_Name__c</fields>
         <fields>Core_Account_Primary_City__c</fields>
@@ -429,7 +438,7 @@
             <name>Core_Account_Changeable</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <criteriaItems>
             <field>Contact.Core_Account_Changeable__c</field>
             <operation>equals</operation>
@@ -438,12 +447,57 @@
         <triggerType>onAllChanges</triggerType>
     </rules>
     <rules>
+        <fullName>Core Contact Email Change</fullName>
+        <actions>
+            <name>Core_Contact_Old_Email_Field_Update</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <formula>ISCHANGED ( Email ) || (Email !=  Core_Old_Email__c )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Core Contact Old Email Change Equal</fullName>
+        <actions>
+            <name>Core_Contact_Old_Email_Field_Update_Equa</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <formula>Email !=  Core_Old_Email__c</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Core IPS Active Email Change</fullName>
+        <actions>
+            <name>Core_IPS_Contact_Notif_Re_Enable_EA</name>
+            <type>Alert</type>
+        </actions>
+        <actions>
+            <name>Core_IPS_Email_Change_Deactivate</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <description>This workflow deactivates IPS Active contacts who have had an email change. This also notifies the Intel Support Owner so they can reactivate the contact if so needed.</description>
+        <formula>AND(  ISCHANGED( Email ),  Core_IPS_Active__c == TRUE )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Core IPS Contact Notif RDC Access WF</fullName>
+        <actions>
+            <name>Core_IPS_Contact_Notif_RDC_Access_EA</name>
+            <type>Alert</type>
+        </actions>
+        <active>false</active>
+        <formula>AND( (Core_IPS_Active__c = TRUE), ISCHANGED(Core_IPS_Active__c) )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
         <fullName>Core IPS Update Contact Validation Field</fullName>
         <actions>
             <name>Update_By_Pass_Validation_field</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <criteriaItems>
             <field>Contact.Core_IPS_By_Pass_Validation__c</field>
             <operation>equals</operation>
@@ -479,6 +533,17 @@
             <value>True</value>
         </criteriaItems>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Core_Contact_New_Intmsg_Rule</fullName>
+        <actions>
+            <name>Core_Intmsg_Contact_New</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>false</active>
+        <description>On create, edit, send outbound message to IPass</description>
+        <formula>(   ISNEW() || ISCHANGED( FirstName ) || ISCHANGED( LastName ) || ISCHANGED( Phone ) || ISCHANGED( MobilePhone ) || ISCHANGED( Email ) || ISCHANGED( MailingCity ) || ISCHANGED( MailingCountry ) || ISCHANGED( MailingCountryCode ) || ISCHANGED( MailingState ) || ISCHANGED( MailingStateCode ) || ISCHANGED( MailingStreet ) || ISCHANGED( MailingPostalCode ) || ISCHANGED( Core_Language__c ) || ISCHANGED( AccountId ) || ISCHANGED( Core_Do_Not_Contact__c ) || ISCHANGED( Core_Job_Function_Code__c ) || ISCHANGED( Core_IPS_Active__c )   )</formula>
+        <triggerType>onAllChanges</triggerType>
     </rules>
     <rules>
         <fullName>Core_Contact_Tokenize</fullName>
@@ -526,14 +591,13 @@
             <name>Core_Contact_Tokenize_eRPM_person_id</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <criteriaItems>
             <field>Contact.Core_Tokenized__c</field>
             <operation>equals</operation>
             <value>True</value>
         </criteriaItems>
         <description>Triggered from a checkbox field, this will &quot;tokenize&quot; a contact - replace their name &amp; email with junk characters and blank out their phone numbers</description>
-        <failedMigrationToolVersion>254.13.16</failedMigrationToolVersion>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
     <rules>
@@ -542,7 +606,7 @@
             <name>Core_Contact_Update_Personal_Email_Off</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Deselects the &quot;Personal Email Indicator&quot; checkbox when a contact&apos;s email address is updated to one that doesn&apos;t containing a domain on our list of custom email domains</description>
         <formula>ISCHANGED(Email) &amp;&amp; !(CONTAINS($Label.Core_Personal_Email_Domains_01,    RIGHT(Email, (LEN(Email) - FIND(&apos;@&apos;, Email)) + 1)) ||  CONTAINS($Label.Core_Personal_Email_Domains_02,    RIGHT(Email, (LEN(Email) - FIND(&apos;@&apos;, Email)) + 1)) ||  CONTAINS($Label.Core_Personal_Email_Domains_03,    RIGHT(Email, (LEN(Email) - FIND(&apos;@&apos;, Email)) + 1)) ||  CONTAINS($Label.Core_Personal_Email_Domains_04,    RIGHT(Email, (LEN(Email) - FIND(&apos;@&apos;, Email)) + 1)) ||  CONTAINS($Label.Core_Personal_Email_Domains_05,    RIGHT(Email, (LEN(Email) - FIND(&apos;@&apos;, Email)) + 1))  )</formula>
         <triggerType>onAllChanges</triggerType>
@@ -553,10 +617,25 @@
             <name>Core_Contact_Update_Personal_Email_On</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Selects the &quot;Personal Email Indicator&quot; checkbox when a contact&apos;s email address is entered as, or changes to, one containing a domain on our list of custom email domains</description>
         <formula>(ISNEW() ||  ISCHANGED(Email)) &amp;&amp;  (CONTAINS($Label.Core_Personal_Email_Domains_01,   RIGHT(Email, (LEN(Email) - FIND(&apos;@&apos;, Email)) + 1)) ||  CONTAINS($Label.Core_Personal_Email_Domains_02,   RIGHT(Email, (LEN(Email) - FIND(&apos;@&apos;, Email)) + 1)) ||  CONTAINS($Label.Core_Personal_Email_Domains_03,   RIGHT(Email, (LEN(Email) - FIND(&apos;@&apos;, Email)) + 1)) ||  CONTAINS($Label.Core_Personal_Email_Domains_04,   RIGHT(Email, (LEN(Email) - FIND(&apos;@&apos;, Email)) + 1)) ||  CONTAINS($Label.Core_Personal_Email_Domains_05,   RIGHT(Email, (LEN(Email) - FIND(&apos;@&apos;, Email)) + 1)) )</formula>
         <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Core_EPRM_Status_Set_To_Pending</fullName>
+        <actions>
+            <name>Core_Set_ERPM_Integration_Status_Pending</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>Contact.Core_IPS_Employee_Customer__c</field>
+            <operation>notEqual</operation>
+            <value>True</value>
+        </criteriaItems>
+        <description>Set the ERPM Integration Status to pending on contact creation.</description>
+        <triggerType>onCreateOnly</triggerType>
     </rules>
     <rules>
         <fullName>Core_IPS_Update_ERPM_Status_For_Employee_Customer</fullName>
@@ -576,9 +655,49 @@
             <name>Core_IPS_Update_ERPM_Status_To_Blank</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Update ERPM status to blank for Employee Customer.</description>
         <formula>AND( Core_IPS_Employee_Customer__c ,  OR( NOT(ISBLANK(TEXT(Core_ERPM_Integration_Status__c))),      NOT(ISNULL(Core_ERPM_Status_Change_Date_Time__c )),      NOT(ISBLANK(TEXT(Core_AGS_Integration_Status__c))),      NOT(ISNULL(Core_AGS_Status_Change_Date_Time__c )) ))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Core_Republish_AGS_And_ERPM_OBM</fullName>
+        <actions>
+            <name>Core_Reset_Republish_OBM_Checkbox</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Core_Set_AGS_Integration_Status_Pending</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Core_Set_ERPM_Integration_Status_Pending</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <booleanFilter>1 AND 2</booleanFilter>
+        <criteriaItems>
+            <field>Contact.Core_Republish_OBM_s__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Contact.Core_IPS_Employee_Customer__c</field>
+            <operation>notEqual</operation>
+            <value>True</value>
+        </criteriaItems>
+        <description>Used to set ERPM and AGS Integration Status fields on Contact to Pending.</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Core_Set_ERPM_Integration_Status_On_Field_Change</fullName>
+        <actions>
+            <name>Core_Set_ERPM_Integration_Status_Pending</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <description>Set ERPM Integration Status to Pending when certain fields are modified.</description>
+        <formula>AND(OR(   ISCHANGED(Core_Job_Function_Code__c),   ISCHANGED(FirstName),   ISCHANGED(LastName),   ISCHANGED(Email),   ISCHANGED(Phone),   ISCHANGED(MobilePhone),   ISCHANGED(Salutation),   AND ( ISCHANGED(Core_English_Only_First_Name__c), NOT(ISBLANK(PRIORVALUE(Core_English_Only_First_Name__c))) ),    AND ( ISCHANGED(Core_English_Only_Last_Name__c), NOT(ISBLANK(PRIORVALUE(Core_English_Only_Last_Name__c))) ) ), NOT( Core_IPS_Employee_Customer__c ) )</formula>
         <triggerType>onAllChanges</triggerType>
     </rules>
     <rules>
@@ -597,7 +716,7 @@
             <name>Core_Reset_Prevent_Grant_Access_Check</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <criteriaItems>
             <field>Contact.Core_Set_ERPM_Status_Bypass__c</field>
             <operation>equals</operation>
@@ -617,7 +736,7 @@
             <name>Set_eRPM_Language_Code</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Language and Preferred language field to be in sync</description>
         <formula>OR(AND(ISNEW(),NOT(ISBLANK(TEXT(Core_Preferred_Language__c)))),AND(ISCHANGED(Core_Preferred_Language__c) , NOT(ISBLANK(TEXT(Core_Preferred_Language__c)))))</formula>
         <triggerType>onAllChanges</triggerType>

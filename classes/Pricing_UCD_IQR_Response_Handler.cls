@@ -162,16 +162,6 @@ public without sharing class Pricing_UCD_IQR_Response_Handler {
                             }
                         }
                     }
-                    if(ucdResponseObj.ComplianceStatus!=null){
-                            if(!cwlUcdResponse.contains(ucdResponseObj.ComplianceStatus)){
-                                cwlUcdResponse.add(ucdResponseObj.ComplianceStatus);
-                                if(cwlListString == ''){
-                                    cwlListString = ucdResponseObj.ComplianceStatus;
-                                } else {
-                                    cwlListString += ';' + ucdResponseObj.ComplianceStatus;
-                                }
-                            }
-                    }
                     //Creation of L1,L2 records 
                     //Insert L1 records
                     if(requestIdToQuoteIdsMap.size()>0 && requestIdToQuoteIdsMap.containsKey(ucdResponseObj.AccountId)) {
@@ -226,7 +216,7 @@ public without sharing class Pricing_UCD_IQR_Response_Handler {
                     //Update the existing records with CWL values
                     if(cwlUcdResponse.size()>0 && l2IdL2ObjRecordMap.containsKey(ucdResponseObj.BusinessPartyIdentifier)) {
                         if(l2IdL2ObjRecordMap.get(ucdResponseObj.BusinessPartyIdentifier).Pricing_RequestID__c == ucdResponseObj.AccountId) {
-                            List<String> existingCwlInL2 = new List<String>(); //List to store existing CWL values for L2 record
+                            
                             l2IdL2ObjRecordMap.get(ucdResponseObj.BusinessPartyIdentifier).Pricing_Compliance_Watch_List__c = cwlListString;
                             if(!l2RecordsCWLToUpdateList.contains(l2IdL2ObjRecordMap.get(ucdResponseObj.BusinessPartyIdentifier))){
                                 l2RecordsCWLToUpdateList.add(l2IdL2ObjRecordMap.get(ucdResponseObj.BusinessPartyIdentifier));

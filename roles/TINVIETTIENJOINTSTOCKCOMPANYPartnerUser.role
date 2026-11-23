@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>TIN VIET TIEN INFORMATICS JOINT- STOCK COMPANY Partner User</description>
+    <description>TIN VIET TIEN JOINT STOCK COMPANY Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>TIN VIET TIEN INFORMATICS JOINT- STOCK COMPANY Partner User</name>
+    <name>TIN VIET TIEN JOINT STOCK COMPANY Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>EMP_11725584_Hong_Hai_Le</parentRole>
+    <parentRole>TINVIETTIENJOINTSTOCKCOMPANYPartnerManager</parentRole>
 </Role>

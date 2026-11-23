@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>Ай Ай Ти Трейдинг Partner Manager</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>Ай Ай Ти Трейдинг Partner Manager</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>PartnerExecutive4599</parentRole>
+</Role>

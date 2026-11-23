@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Generic Bulk Upload Fields</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Generic Bulk Upload Fields</value>
+    </caseValues>
+    <fields>
+        <label><!-- Active --></label>
+        <name>Active__c</name>
+    </fields>
+    <fields>
+        <label><!-- Actual Object Field API Name --></label>
+        <name>Actual_Object_Field_API_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Actual Object Field Data type --></label>
+        <name>Actual_Object_Field_Data_type__c</name>
+    </fields>
+    <fields>
+        <label><!-- CSV Column Name --></label>
+        <name>CSV_Column_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Stage Field API Name --></label>
+        <name>Stage_Field_API_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Stage Object API Name --></label>
+        <name>Stage_Object_API_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Stage Obj Error Msg Field API Name --></label>
+        <name>Stage_obj_Error_msg_field_API_name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Stage Obj Status Field API Name --></label>
+        <name>Stage_obj_status_field_API_name__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

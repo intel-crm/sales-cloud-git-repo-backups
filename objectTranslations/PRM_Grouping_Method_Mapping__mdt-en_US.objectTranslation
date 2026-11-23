@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Grouping Method Mapping</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Grouping Method Mapping</value>
+    </caseValues>
+    <fields>
+        <label><!-- Grouping Method --></label>
+        <name>Grouping_Method__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Role --></label>
+        <name>Partner_Role__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

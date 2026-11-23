@@ -19,6 +19,9 @@
         <field>Core_IPS_Product__c.Core_IPS_Prod_Def_Case_Owner_ID__c</field>
     </columns>
     <columns>
+        <field>Core_IPS_Product__c.Core_IPS_Product_Case_Owner__c</field>
+    </columns>
+    <columns>
         <field>Core_IPS_Project__c.Core_Status__c</field>
     </columns>
     <columns>
@@ -32,6 +35,13 @@
     </columns>
     <filter>
         <booleanFilter>1 OR 2</booleanFilter>
+        <criteriaItems>
+            <column>Core_IPS_Product__c.Core_IPS_Product_Case_Owner__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value></value>
+        </criteriaItems>
         <criteriaItems>
             <column>Core_IPS_Product__c.Core_IPS_Prod_Def_Case_Owner_ID__c</column>
             <columnToColumn>false</columnToColumn>

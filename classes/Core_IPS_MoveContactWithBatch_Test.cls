@@ -5,42 +5,41 @@ Created Date: 19 June 2018
 Description    : This class is Test class for Core_IPS_MoveContactWithBatch
 ***************************************************************************************/
 @isTest
-// Added AssertEquals Added By Chiranjeevi - 31-JAN-2024
 public class Core_IPS_MoveContactWithBatch_Test{
      static List<User> ListOfUser = new List<User>();
      static void createusers(){
         // Query Profiles
         Map<String,ID> profiles = new Map<String,ID>();
-        List<Profile> ProfileList = [select id, name from Profile where name in ('System Administrator')];//,'Partner','IPS Agent-Partner')];
+        List<Profile> ProfileList = [select id, name from Profile where name in ('Data Ops')];//,'Partner','IPS Agent-Partner')];
         for(Profile prf : ProfileList){
             profiles.put(prf.name, prf.id);
         }
         ListOfUser = TestUtilities.getListOfUser(1);
-        ListOfUser[0].ProfileID =  profiles.get('System Administrator');
+        ListOfUser[0].ProfileID =  profiles.get('Data Ops');
         insert ListOfUser;
     }
     static testMethod void testMoveContactCaseController(){
     Account currentAccount = new Account(Name='testAccount123', Core_Sales_Group__c='Global Accounts', Core_IsODM__c = true,
                                           Core_Account_Type__c='Other', Industry='Others', Core_CNDA_Number__c = '12345',
                                           BillingStreet='1234 tester St', BillingCity='testCity', BillingState='OR',
-                                          BillingCountry='USA', BillingPostalCode='12345',Core_Export_Compliance_Block__c = false, RecordTypeId = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId());
+                                          BillingCountry='USA', BillingPostalCode='12345',Core_Export_Compliance_Block__c = false);
     insert currentAccount ;
     system.assertNOTEquals(null,currentAccount.id);
         
     Contact currentContact = new Contact(FirstName='testFirstName123', LastName='testLastName', Email='test123@testing.com.test',
-                                      Core_IPS_Intel_Support_Owner__c=null, AccountId=currentAccount.Id, MailingCountry = 'INDIA');
+                                      Core_IPS_Intel_Support_Owner__c=null, AccountId=currentAccount.Id);
     insert currentContact;
     system.assertNOTEquals(null,currentContact.id);
     
     Account targetAccount = new Account(Name='testAccount123', Core_Sales_Group__c='Global Accounts', Core_IsODM__c = true,
                                           Core_Account_Type__c='Other', Industry='Others', Core_CNDA_Number__c = '12345',
                                           BillingStreet='1234 testery St', BillingCity='testCity', BillingState='OR',
-                                          BillingCountry='USA', BillingPostalCode='123458',Core_Export_Compliance_Block__c = false, RecordTypeId = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId());
+                                          BillingCountry='USA', BillingPostalCode='123458',Core_Export_Compliance_Block__c = false);
     insert targetAccount;
     system.assertNOTEquals(null,targetAccount.id);
     
     Contact targetContact = new Contact(FirstName='testFirstName123', LastName='testLastName', Email='test1253@testing.com.test',
-                                          Core_IPS_Intel_Support_Owner__c=null, AccountId=targetAccount.Id, MailingCountry = 'INDIA');
+                                          Core_IPS_Intel_Support_Owner__c=null, AccountId=targetAccount.Id);
                                                                          
     insert targetContact;
     system.assertNOTEquals(null,targetContact.id); 
@@ -128,12 +127,15 @@ public class Core_IPS_MoveContactWithBatch_Test{
     createusers();
     System.runAs(ListOfUser[0]){
        
-        List<Account> currentAccount = TestUtilities.getListOfAccounts(1);
-        Insert currentAccount;
-        system.assertNOTEquals(null,currentAccount[0].id);
+        Account currentAccount = new Account(Name='testAccount123', Core_Sales_Group__c='Global Accounts', Core_IsODM__c = true,
+                                              Core_Account_Type__c='Other', Industry='Others', Core_CNDA_Number__c = '12345',
+                                              BillingStreet='1234 tester St', BillingCity='testCity', BillingState='OR',
+                                              BillingCountry='USA', BillingPostalCode='12345',Core_Export_Compliance_Block__c = false);
+        insert currentAccount ;
+        system.assertNOTEquals(null,currentAccount.id);
             
         Contact currentContact = new Contact(FirstName='testFirstName123', LastName='testLastName', Email='test123@testing.com.test',
-                                          Core_IPS_Intel_Support_Owner__c=null, AccountId=currentAccount[0].id, MailingCountry = 'INDIA');
+                                          Core_IPS_Intel_Support_Owner__c=null, AccountId=currentAccount.Id);
         insert currentContact;
         system.assertNOTEquals(null,currentContact.id);
         
@@ -151,7 +153,7 @@ public class Core_IPS_MoveContactWithBatch_Test{
         system.assertNOTEquals(null,targetAccount2.id);
         
         Contact targetContact = new Contact(FirstName='testFirstName123', LastName='testLastName', Email='test1253@testing.com.test',
-                                              Core_IPS_Intel_Support_Owner__c=null, AccountId=targetAccount.Id, MailingCountry = 'INDIA');
+                                              Core_IPS_Intel_Support_Owner__c=null, AccountId=targetAccount.Id);
                                                                              
         insert targetContact;
         system.assertNOTEquals(null,targetContact.id); 
@@ -187,8 +189,8 @@ public class Core_IPS_MoveContactWithBatch_Test{
                  
         String RT = [Select Id,Name From RecordType Where SobjectType = 'Case' and DeveloperName ='IPS_Case_Create'].Id;      
         Case caseReco = new case();
-        caseReco.AccountID = currentAccount[0].id;
-        caseReco.contactID = currentContact.id;
+        caseReco.AccountID = currentAccount.id;
+        caseReco.contactID = currentContact.Id;
         caseReco.RecordTypeid=RT;
         insert caseReco;
            Id assetPublicRecordId=schema.sobjecttype.Asset.getrecordtypeinfosbyname().get('IPS Public Product').getRecordTypeId();
@@ -197,7 +199,7 @@ public class Core_IPS_MoveContactWithBatch_Test{
             // Create Case
             List<Asset> listOfAssets= TestUtilities.getAssetList(10);
             for(Asset AssetRec : listOfAssets){
-                AssetRec.accountid= currentAccount[0].id;
+                AssetRec.accountid= currentAccount.id;
                 AssetRec.Product2Id=objProd.id;
                 AssetRec.recordtypeid=assetPublicRecordId;
             }
@@ -214,7 +216,7 @@ public class Core_IPS_MoveContactWithBatch_Test{
                 }
                 CaseRec.Core_IPS_Product_Org1__c=org.id;
                 CaseRec.Core_IPS_Supported_Product__c=pdt.id;
-                CaseRec.AccountID = currentAccount[0].id;
+                CaseRec.AccountID = currentAccount.Id;
                 CaseRec.contactID = currentContact.Id;
                 //CaseRec.productId = objProd.id;
                 count++;
@@ -245,21 +247,20 @@ public class Core_IPS_MoveContactWithBatch_Test{
         Account currentAccount = new Account(Name='testAccount123', Core_Sales_Group__c='Global Accounts', Core_IsODM__c = true,
                                               Core_Account_Type__c='Other', Industry='Others', Core_CNDA_Number__c = '12345',
                                               BillingStreet='1234 tester St', BillingCity='testCity', BillingState='OR',
-                                              BillingCountry='USA', BillingPostalCode='12345',Core_Export_Compliance_Block__c = false, RecordTypeId = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId());
-
+                                              BillingCountry='USA', BillingPostalCode='12345',Core_Export_Compliance_Block__c = false);
         insert currentAccount ;
      
         Account targetAcc = new Account(Name='testAccount123', Core_Sales_Group__c='Global Accounts', Core_IsODM__c = true,
                                               Core_Account_Type__c='Other', Industry='Others', Core_CNDA_Number__c = '12345',
                                               BillingStreet='1234 testery St', BillingCity='testCity', BillingState='OR',
-                                              BillingCountry='USA', BillingPostalCode='123458',Core_Export_Compliance_Block__c = false, RecordTypeId = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId());
+                                              BillingCountry='USA', BillingPostalCode='123458',Core_Export_Compliance_Block__c = false);
         insert targetAcc;
      
         
-        Contact currContact = new Contact(FirstName='testFirstName123', LastName='testLastName', Email='test123@testing.com.test', Core_IPS_Intel_Support_Owner__c=null, AccountId=currentAccount.Id, MailingCountry = 'INDIA');
+        Contact currContact = new Contact(FirstName='testFirstName123', LastName='testLastName', Email='test123@testing.com.test', Core_IPS_Intel_Support_Owner__c=null, AccountId=currentAccount.Id);
         insert currContact;
        
-        Contact targetAccount = new Contact(FirstName='testFirstName123', LastName='testLastName', Email='test1253@testing.com.test', Core_IPS_Intel_Support_Owner__c=null, AccountId=targetAcc.Id, MailingCountry = 'INDIA');
+        Contact targetAccount = new Contact(FirstName='testFirstName123', LastName='testLastName', Email='test1253@testing.com.test', Core_IPS_Intel_Support_Owner__c=null, AccountId=targetAcc.Id);
         insert targetAccount;
        
         Case caseObj = new Case();
@@ -291,9 +292,8 @@ public class Core_IPS_MoveContactWithBatch_Test{
          }catch(Exception e){}
          moveContactWithBatch.allProcessedcaseId=new Set<Id>() ; 
          moveContactWithBatch.allFailedcaseId=new Set<Id>() ;
-      
-         moveContactWithBatch.execute(null,caseList); 
-        System.AssertEquals(caseList.size()>0, true);
+         
+         moveContactWithBatch.execute(null,caseList);   
         Test.stopTest();
     }
     

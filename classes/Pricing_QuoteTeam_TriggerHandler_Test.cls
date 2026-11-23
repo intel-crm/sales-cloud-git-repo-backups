@@ -2,7 +2,7 @@
  * @description       : 
  * @author            : Siddharth Kant
  * @group             : 
- * @last modified on  : 03-31-2026
+ * @last modified on  : 09-26-2024
  * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 @isTest
@@ -15,10 +15,10 @@ public class Pricing_QuoteTeam_TriggerHandler_Test {
             Pricing_Test_Utility.createPriceBook();
             Account acc = Pricing_Test_Utility.createAccount();
 
-            Contact con = Pricing_Test_Utility.createPrimaryContactWithParam(acc.Id,'Pricing_Quote_Team_Trigger_Handler_Test');        
+            Contact con = Pricing_Test_Utility.createPrimaryContact(acc.Id);        
             Id p = [select id from profile where name =: Label.Pricing_Tender_Profiles_Partner].id;        
             Contact con1 = new Contact();
-            con1.RecordTypeId=Pricing_Tender_Utility.getRecordTypeId('Contact',Label.Pricing_Tender_Contact_RecordType_IntelContact);   
+            con1.RecordTypeId=Pricing_Tender_Utility.getRecordTypeId('Contact',Label.Pricing_Tender_Contact_RecordType_IntelContact); 
             con1.FirstName = 'FirstName2';
             con1.LastName = 'LastName2';
             con1.Email = 'FirstName2@intel.com';
@@ -102,7 +102,7 @@ public class Pricing_QuoteTeam_TriggerHandler_Test {
             permissionList1.add(new PermissionSetAssignment(AssigneeId = u3.Id, PermissionSetId = ps.Id));
             insert permissionList1;
             
-            Pricing_Quote_Team_Role_Access_Mapping__mdt qtmRoleAccessMdt = new Pricing_Quote_Team_Role_Access_Mapping__mdt();
+            Pricing_Quote_Team_Role_AccessMapping__c qtmRoleAccessMdt = new Pricing_Quote_Team_Role_AccessMapping__c();
             qtmRoleAccessMdt.Pricing_Role_Nm__c = 'Account Executive';
             qtmRoleAccessMdt.Pricing_Access_Level_Nm__c = '';
             qtmRoleAccessMdt.Permission_Set_API_Nm__c = '';
@@ -120,18 +120,20 @@ public class Pricing_QuoteTeam_TriggerHandler_Test {
                                                   Pricing_pm_approval_comments_nm__c 	,SBQQ__Quote__r.SBQQ__SalesRep__r.Name 
                                                   FROM SBQQ__QuoteLine__c LIMIT 1];  
         
+        User aeUser = [SELECT Id from User where Email= 'firstAE@intel.com'];
         User itsUser = [SELECT Id from User where Email= 'firstAE@intel.com'];
         User aeQuoteUser = [SELECT Id,Email from User where Email= 'firstNameAE@intel.com'];
+        User primaryContact = [SELECT Id from User where Email= 'primarycontact@noemail.com'];
         User dummyUser = [SELECT Id FROM User WHERE EMail='dummyuser@intel.com' limit 1];
         List<User> fseUser2 = Pricing_Test_Utility.createFSEUser();
         AccountTeamMember act2 =  new AccountTeamMember(AccountId = lstquote[0].SBQQ__Account__c,
                                                             TeamMemberRole = 'Technical Sales',UserId = fseUser2[0].Id);
         
-        Contact con = [Select id from Contact where Email='FirstName2@intel.com'];
+        Contact con = [Select id from Contact where Email='firstname@intel.com'];
         User fseUser = [Select id from User where Email='firstNameSalesRep@intel.com' ];
         
         
-        
+       
         List<Pricing_Quote_Team__c> quoteTeamMemberList = new  List<Pricing_Quote_Team__c>();
         
         Pricing_Quote_Team__c qtm2=new Pricing_Quote_Team__c();
@@ -189,6 +191,7 @@ public class Pricing_QuoteTeam_TriggerHandler_Test {
         quoteTeamMemberList.add(qtm2);
         insert quoteTeamMemberList;
         delete qtm1;
+        SBQQ__Quote__c quote1 = [SELECT Id,SBQQ__SalesRep__c FROM SBQQ__Quote__c WHERE Id= :lstquote[0].Id];
         Test.stopTest();
         system.assert(quoteTeamMemberList.contains(qtm1), 'QuoteTeam did not get deleted.');
     }

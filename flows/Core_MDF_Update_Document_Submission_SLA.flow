@@ -6,8 +6,8 @@
         <description>Choose metadata record based on Program and Budget Type</description>
         <name>Core_MDF_Select_based_on_Program_and_Budget</name>
         <label>Select based on Program and Budget</label>
-        <locationX>801</locationX>
-        <locationY>207</locationY>
+        <locationX>820</locationX>
+        <locationY>225</locationY>
         <defaultConnector>
             <targetReference>Core_MDF_Loop_through_metadata</targetReference>
         </defaultConnector>
@@ -72,7 +72,6 @@
         </rules>
     </decisions>
     <description>Updates the Document Submission SLA based on Program and Budget Type</description>
-    <environments>Default</environments>
     <formulas>
         <name>varDocumentSubmissionDueDate</name>
         <dataType>DateTime</dataType>
@@ -103,12 +102,6 @@
         <name>BuilderType</name>
         <value>
             <stringValue>LightningFlowBuilder</stringValue>
-        </value>
-    </processMetadataValues>
-    <processMetadataValues>
-        <name>CanvasMode</name>
-        <value>
-            <stringValue>FREE_FORM_CANVAS</stringValue>
         </value>
     </processMetadataValues>
     <processMetadataValues>
@@ -217,6 +210,23 @@
         <isInput>false</isInput>
         <isOutput>false</isOutput>
         <objectType>Core_MDF_CCP_Submission_Window__mdt</objectType>
+    </variables>
+    <variables>
+        <name>metadataRecord</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Core_MDF_CCP_Claim_Window__mdt</objectType>
+    </variables>
+    <variables>
+        <description>Stores the metadata records</description>
+        <name>MetadataRecords</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Core_MDF_CCP_Claim_Window__mdt</objectType>
     </variables>
     <variables>
         <name>varBudgetType</name>

@@ -3,4 +3,10 @@
         <c-sales_-free-license-product-page product-id={productId} product-option ={productOptions} seats ={Seats} terms-condition={termsCondition} is-option-select={isOptionSelect} onproductpage={handleChild}></c-sales_-free-license-product-page>
     </template>
     <!--template if:false={comp1}-->
+    <template if:true={comp2}>
+        <c-sales_-free-license-host-page product-id={productId} product-option ={productOptions} seats ={Seats} terms-cond={termsCondition} license-type={toolLicenseType} is-option-select={isOptionSelect} onproductpage1={handleChild1} onlicenseconfirmation ={handleLicense}></c-sales_-free-license-host-page>   
+    </template>
+    <template if:true={comp3}>
+        <c-sales_-free-license-Confirmation license-name={licenseName} license-full-url={licenseFullURL}></c-sales_-free-license-Confirmation>   
+    </template>
 </template>

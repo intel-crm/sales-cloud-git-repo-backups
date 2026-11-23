@@ -6,7 +6,7 @@
         <name>Check_KPI_Refresh_is_true</name>
         <label>Check KPI Refresh is true</label>
         <locationX>374</locationX>
-        <locationY>288</locationY>
+        <locationY>276</locationY>
         <defaultConnectorLabel>False</defaultConnectorLabel>
         <rules>
             <name>True</name>
@@ -24,6 +24,7 @@
             <label>True</label>
         </rules>
     </decisions>
+    <environments>Default</environments>
     <interviewLabel>Core KPI Refresh on Opporunity {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Core KPI Refresh on Opporunity</label>
     <processMetadataValues>
@@ -49,7 +50,7 @@
         <name>Update_KPI_refresh_False</name>
         <label>Update KPI refresh False</label>
         <locationX>242</locationX>
-        <locationY>408</locationY>
+        <locationY>384</locationY>
         <inputAssignments>
             <field>Core_Is_KPI_Refresh__c</field>
             <value>
@@ -61,14 +62,7 @@
     <start>
         <locationX>50</locationX>
         <locationY>0</locationY>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>Core_Is_KPI_Refresh__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </filters>
+        <filterFormula>AND(AND(NOT(ISNULL({!$Record.RecordTypeId})),CONTAINS({!$Label.Core_Sales_CRM_Record_Types},{!$Record.RecordType.DeveloperName})),{!$Record.Core_Is_KPI_Refresh__c} == true)</filterFormula>
         <object>Opportunity</object>
         <recordTriggerType>Update</recordTriggerType>
         <scheduledPaths>

@@ -1,6 +1,7 @@
 public class Core_OpportunityHelper extends TriggerHandler {
     
     map < String, Core_Trigger_Executions__c > mapFunctionalityNameTriggerExecution = Core_Trigger_Executions__c.getAll();
+    Boolean isOwnerChange = false;
     public override void afterInsert() {
         Opportunity opp = (Opportunity)Trigger.new[0];
         
@@ -11,8 +12,7 @@ public class Core_OpportunityHelper extends TriggerHandler {
         
         if (mapFunctionalityNameTriggerExecution.containsKey('opportunityTechnicalOwnerUpdate') &&
                 mapFunctionalityNameTriggerExecution.get('opportunityTechnicalOwnerUpdate').Core_Active__c && !opp.Core_Created_from_CPQ__c)
-            Core_OpportunityHandler.opportunityTechnicalOwnerUpdate(new Map<Id,Opportunity>{}, (Map<Id,Opportunity>)Trigger.Newmap , False);
-        
+            Core_OpportunityHandler.opportunityTechnicalOwnerUpdate(new Map<Id,Opportunity>{}, (Map<Id,Opportunity>)Trigger.Newmap, False);
         
         //Added by Sanket(Infosys Team) for the US661969 on 14/9/2020
         //Navneet To Bypass the KPI Call
@@ -44,6 +44,9 @@ public class Core_OpportunityHelper extends TriggerHandler {
                 Core_POP_Handler.popCheckOnPWApproval(Trigger.New, (Map < Id, Opportunity > ) Trigger.oldMap);
             }//TWC3123-3676- Added check POP for PW(Production Win) approval.
         
+        
+        
+            
         //Technical owner and Cim Id Check 
         if (mapFunctionalityNameTriggerExecution.containsKey('Tech_CIMID_Validation') &&
             mapFunctionalityNameTriggerExecution.get('Tech_CIMID_Validation').Core_Active__c && !opp.Core_Created_from_CPQ__c) {
@@ -57,9 +60,15 @@ public class Core_OpportunityHelper extends TriggerHandler {
             Core_OppApproval.updateProductLineItems((Map<Id,Opportunity>)Trigger.oldMap, Trigger.new);}
         
         //Call the method to update the technical owner on a opportunity
+        
         if (mapFunctionalityNameTriggerExecution.containsKey('opportunityTechnicalOwnerUpdate') &&
-            mapFunctionalityNameTriggerExecution.get('opportunityTechnicalOwnerUpdate').Core_Active__c && !opp.Core_Created_from_CPQ__c)
-            Core_OpportunityHandler.opportunityTechnicalOwnerUpdate((Map<Id,Opportunity>)Trigger.Oldmap, (Map<Id,Opportunity>)Trigger.Newmap , True);
+            mapFunctionalityNameTriggerExecution.get('opportunityTechnicalOwnerUpdate').Core_Active__c && !opp.Core_Created_from_CPQ__c){
+             system.debug('triggeroldmap'+Trigger.Oldmap);
+                system.debug('triggernewmap'+Trigger.Newmap);
+                
+                 Core_OpportunityHandler.opportunityTechnicalOwnerUpdate((Map<Id,Opportunity>)Trigger.Oldmap, (Map<Id,Opportunity>)Trigger.Newmap,True);}
+        
+        
         
         //Call the method to update Pending line items to Lost/Cancelled if opportunity is Lost/Cancelled
         if (Core_OpportunityHandler_2.isNonCloneFunction && mapFunctionalityNameTriggerExecution.containsKey('opportunityStageUpdate') &&
@@ -105,15 +114,20 @@ public class Core_OpportunityHelper extends TriggerHandler {
             Core_OpportunityHandler.FedCRMOpportunityShare(Trigger.New, (Map < Id, Opportunity > ) Trigger.oldMap,Trigger.isInsert,Trigger.isUpdate);
         }
         
+                //Added as part of TWC3123-5419 by Hira for point-> Any update to DW opportunity in stage DW including the submission - > update the pw qty, sales price from DW field for blank values)
+       // if(mapFunctionalityNameTriggerExecution.containsKey('updatePWFieldsonProduct') && mapFunctionalityNameTriggerExecution.get('updatePWFieldsonProduct').Core_Active__c && !Core_OpportunityLineItemHandler.updateForecastRecordsRecCheck){
+        //   Core_OpportunityHandler.updatePWFieldsonProduct(Trigger.New);
+        //}
+        
         //Added as part of TWC3123-5419 by Hira for point-> Any update to DW opportunity in stage DW including the submission - > update the pw qty, sales price from DW field for blank values)
         if(mapFunctionalityNameTriggerExecution.containsKey('updatePWFieldsonProduct') && mapFunctionalityNameTriggerExecution.get('updatePWFieldsonProduct').Core_Active__c && !Core_OpportunityLineItemHandler.updateForecastRecordsRecCheck){
            Core_OpportunityHandler.updatePWFieldsonProduct(Trigger.New);
         }
         
-        /*if (mapFunctionalityNameTriggerExecution.containsKey('OpportunityKPIfieldRefresh') &&
+        if (mapFunctionalityNameTriggerExecution.containsKey('OpportunityKPIfieldRefresh') &&
             mapFunctionalityNameTriggerExecution.get('OpportunityKPIfieldRefresh').Core_Active__c && !opp.Core_Created_from_CPQ__c) {
                 Core_OpportunityHandler.OpportunityKPIBatchUpdate(Trigger.New, (Map<Id,Opportunity>)Trigger.oldMap);
-            }*/
+            }
         
         if(mapFunctionalityNameTriggerExecution.containsKey('PCCDealRegOwnerOptyQuoteSync') && mapFunctionalityNameTriggerExecution.get('PCCDealRegOwnerOptyQuoteSync').Core_Active__c && !opp.Core_Created_from_CPQ__c){
             Core_OpportunityHandler.syncOwner_Opportunity_Quote(Trigger.New, (Map<Id,Opportunity>)Trigger.oldMap);
@@ -122,11 +136,16 @@ public class Core_OpportunityHelper extends TriggerHandler {
         if(mapFunctionalityNameTriggerExecution.containsKey('ILO_syncStatus_Opportunity_IQRQuote') && mapFunctionalityNameTriggerExecution.get('ILO_syncStatus_Opportunity_IQRQuote').Core_Active__c && !opp.Core_Created_from_CPQ__c){
             Core_OpportunityHandler.syncStatus_Opportunity_IQRQuote(Trigger.New, (Map<Id,Opportunity>)Trigger.oldMap);
         }
-        /*Utkarsh - Start - IPA Changes - Partner Deal Registration*/
+        /*Utkarsh - Start - IPA Changes - Partner Deal Registration
         if(mapFunctionalityNameTriggerExecution.containsKey('PRM_PartnerDealSharing') && mapFunctionalityNameTriggerExecution.get('PRM_PartnerDealSharing').Core_Active__c){
+            //Core_OpportunityHandler.syncOwner_Opportunity_Quote(Trigger.New, (Map<Id,Opportunity>)Trigger.oldMap);
             Core_OpportunityHandler_2.sharePRMDealOpptyToOpptyOwner(Trigger.New, (Map<Id,Opportunity>)Trigger.oldMap);
         }
-        /*Utkarsh - End - IPA Changes - Partner Deal Registration*/
+        Utkarsh - End - IPA Changes - Partner Deal Registration*/
+        if (mapFunctionalityNameTriggerExecution.containsKey('auditStatusCommissionGeneration') &&
+        mapFunctionalityNameTriggerExecution.get('auditStatusCommissionGeneration').Core_Active__c && !opp.Core_Created_from_CPQ__c) {
+            Core_OpportunityHandler.generateCommissionOnAuditStatusChange(Trigger.New, (Map<Id,Opportunity>)Trigger.oldMap);
+        }
     }
     
     public override void beforeInsert() {
@@ -159,7 +178,7 @@ public class Core_OpportunityHelper extends TriggerHandler {
             }
         
         //Opportunity Stage Update Blank fields Check - Added by Hira(Accenture Team) as a part of TWC3123-3502
-        if (Core_OpportunityHandler_2.isNonCloneFunction && mapFunctionalityNameTriggerExecution.containsKey('OpportunityStageExitValidation') &&
+        if (Core_OpportunityHandler_2.isNonCloneFunction &&mapFunctionalityNameTriggerExecution.containsKey('OpportunityStageExitValidation') &&
             mapFunctionalityNameTriggerExecution.get('OpportunityStageExitValidation').Core_Active__c && !opp.Core_Created_from_CPQ__c && !opp.CRM_IsLowTouchAdmin_Chk__c && !opp.CRM_SW_Flag_Ind__c ) {
                 Core_OpportunityHandler.restrictBlankFieldUpdates(Trigger.New,null,null,False);
             }
@@ -175,6 +194,7 @@ public class Core_OpportunityHelper extends TriggerHandler {
             mapFunctionalityNameTriggerExecution.get('crmOpportunityHandler').Core_Active__c && !opp.Core_Created_from_CPQ__c) {
                 CRM_OpportunityHandler.BeforeOptyFieldUpdate(trigger.new,(Map<Id,Opportunity>)Trigger.newMap,Trigger.old,(Map<Id,Opportunity>)Trigger.OldMap,false,true);
             }
+        //Core_OpportunityHandlerUpdate.flow_consolidation(trigger.new,(Map<Id,Opportunity>)Trigger.newMap,Trigger.old,(Map<Id,Opportunity>)Trigger.OldMap,false,true);
         //For PCC Oppty, Lock the Opportunity when related Quote's any QuoteLine is in PFIR status - TWC3123-5659-Devashish
        if (!Core_CRM_Utility.oppLockValidationPerformed && mapFunctionalityNameTriggerExecution.containsKey('lockPCCOpportunity') && mapFunctionalityNameTriggerExecution.get('lockPCCOpportunity').Core_Active__c && !opp.Core_Created_from_CPQ__c){
             Core_OpportunityHandler.checkPCCOpptyLock(Trigger.new,(Map<Id,Opportunity>)Trigger.OldMap);
@@ -189,12 +209,17 @@ public class Core_OpportunityHelper extends TriggerHandler {
             mapFunctionalityNameTriggerExecution.get('RestrictSolutionDetailLOV').Core_Active__c && !opp.Core_Created_from_CPQ__c) {
                 Core_OpportunityHandler.validateAllActiveLOV(Trigger.New,(Map<Id,Opportunity>)Trigger.OldMap,false);
             }
-        
+        	
         if (mapFunctionalityNameTriggerExecution.containsKey('smgApprovalReversalSwitch') &&
             mapFunctionalityNameTriggerExecution.get('smgApprovalReversalSwitch').Core_Active__c){
                 Core_OppApproval.smgGmcCheckApprovalRejection(Trigger.New, (Map<Id,Opportunity>)Trigger.oldMap);
+                
             }// Added this switch logic as part of TWC3123-5580
-        
+        //Vidyadhar
+        if (mapFunctionalityNameTriggerExecution.containsKey('blockApprovalPartnerled') &&
+            mapFunctionalityNameTriggerExecution.get('blockApprovalPartnerled').Core_Active__c){
+                Core_OppApproval.blockApprovalPartnerLed(Trigger.New, (Map<Id,Opportunity>)Trigger.oldMap);
+            }
         //DE63809 : Not getting an error message when user tries to update an historical data with old Solution area field LOV's
         if (mapFunctionalityNameTriggerExecution.containsKey('RestrictSolutionAreaInactiveLOV') &&
             mapFunctionalityNameTriggerExecution.get('RestrictSolutionAreaInactiveLOV').Core_Active__c && !opp.Core_Created_from_CPQ__c) {
@@ -230,15 +255,15 @@ public class Core_OpportunityHelper extends TriggerHandler {
             }
         
         //Opportunity Stage Update Blank fields Check - Added by Hira(Accenture Team) as a part of TWC3123-3502
-        if (Core_OpportunityHandler_2.isNonCloneFunction && mapFunctionalityNameTriggerExecution.containsKey('OpportunityStageExitValidation') && mapFunctionalityNameTriggerExecution.get('OpportunityStageExitValidation').Core_Active__c && !opp.Core_Created_from_CPQ__c && !opp.CRM_IsLowTouchAdmin_Chk__c && !opp.CRM_SW_Flag_Ind__c) {
+        if (Core_OpportunityHandler_2.isNonCloneFunction &&mapFunctionalityNameTriggerExecution.containsKey('OpportunityStageExitValidation') && mapFunctionalityNameTriggerExecution.get('OpportunityStageExitValidation').Core_Active__c && !opp.Core_Created_from_CPQ__c && !opp.CRM_IsLowTouchAdmin_Chk__c && !opp.CRM_SW_Flag_Ind__c) {
                 Core_OpportunityHandler.restrictBlankFieldUpdates(Trigger.New,(Map<Id,Opportunity>)Trigger.OldMap,Trigger.Old,True);
             }
         
          //Refreshing PW KPI field on Opportunity - Added by Hira(Accenture Team)
-        /* if (mapFunctionalityNameTriggerExecution.containsKey('OpportunityKPIfieldRefresh') &&
+         if (mapFunctionalityNameTriggerExecution.containsKey('OpportunityKPIfieldRefresh') &&
             mapFunctionalityNameTriggerExecution.get('OpportunityKPIfieldRefresh').Core_Active__c && !opp.Core_Created_from_CPQ__c) {
                 Core_OpportunityHandler.OpportunityKPIfieldRefresh(Trigger.New, (Map<Id,Opportunity>)Trigger.oldMap);
-            }*/
+            }
 
         //Storing the Description Of Contribution of Technical owner and Partner account owner into field whenever Opportunity Owner changed -TWC3123-4957
         if (mapFunctionalityNameTriggerExecution.containsKey('storeOppTeamMemDescription') &&

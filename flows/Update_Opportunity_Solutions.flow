@@ -5,8 +5,8 @@
     <assignments>
         <name>Assign_Values</name>
         <label>Assign Values</label>
-        <locationX>666</locationX>
-        <locationY>307</locationY>
+        <locationX>138</locationX>
+        <locationY>1055</locationY>
         <assignmentItems>
             <assignToReference>Update_Oppo_Solutions.Core_Application_Workload__c</assignToReference>
             <operator>Assign</operator>
@@ -25,7 +25,7 @@
             <assignToReference>Update_Oppo_Solutions.Core_Industry_Use_Case_s__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>$Record.Core_Industry_Use_Case__c</elementReference>
+                <elementReference>Get_Picklist_Value_Info.Label</elementReference>
             </value>
         </assignmentItems>
         <assignmentItems>
@@ -49,8 +49,8 @@
     <assignments>
         <name>Store_All_Records</name>
         <label>Store All Records</label>
-        <locationX>902</locationX>
-        <locationY>313</locationY>
+        <locationX>138</locationX>
+        <locationY>1175</locationY>
         <assignmentItems>
             <assignToReference>AllOppoSolutions</assignToReference>
             <operator>Add</operator>
@@ -65,8 +65,8 @@
     <decisions>
         <name>If_Records_not_Null</name>
         <label>If Records not Null</label>
-        <locationX>595</locationX>
-        <locationY>119</locationY>
+        <locationX>182</locationX>
+        <locationY>455</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Records_Not_Null</name>
@@ -90,12 +90,12 @@
     <loops>
         <name>Update_Oppo_Solutions</name>
         <label>Update Oppo Solutions</label>
-        <locationX>826</locationX>
-        <locationY>109</locationY>
+        <locationX>50</locationX>
+        <locationY>575</locationY>
         <collectionReference>Get_Opportunity_Solution</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
-            <targetReference>Assign_Values</targetReference>
+            <targetReference>Get_Entity_Definition</targetReference>
         </nextValueConnector>
         <noMoreValuesConnector>
             <targetReference>Update_Opportunity_Solutions</targetReference>
@@ -110,7 +110,7 @@
     <processMetadataValues>
         <name>CanvasMode</name>
         <value>
-            <stringValue>FREE_FORM_CANVAS</stringValue>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
         </value>
     </processMetadataValues>
     <processMetadataValues>
@@ -121,10 +121,63 @@
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <recordLookups>
+        <description>Entity Definition</description>
+        <name>Get_Entity_Definition</name>
+        <label>Get Entity Definition</label>
+        <locationX>138</locationX>
+        <locationY>695</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_Field_Definition</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>QualifiedApiName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Core_Solution_Areas__c</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>EntityDefinition</object>
+        <sortField>DurableId</sortField>
+        <sortOrder>Asc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Field Definition</description>
+        <name>Get_Field_Definition</name>
+        <label>Get Field Definition</label>
+        <locationX>138</locationX>
+        <locationY>815</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_Picklist_Value_Info</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>QualifiedApiName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Core_Industry_Use_Case__c</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>EntityDefinitionId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Entity_Definition.DurableId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>FieldDefinition</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
         <name>Get_Opportunity_Solution</name>
         <label>Get Opportunity Solution</label>
-        <locationX>462</locationX>
-        <locationY>122</locationY>
+        <locationX>182</locationX>
+        <locationY>335</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>If_Records_not_Null</targetReference>
@@ -147,16 +200,47 @@
         <queriedFields>Core_Technology_Enabled__c</queriedFields>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
+    <recordLookups>
+        <description>Picklist Value Info</description>
+        <name>Get_Picklist_Value_Info</name>
+        <label>Get Picklist Value Info</label>
+        <locationX>138</locationX>
+        <locationY>935</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Assign_Values</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>EntityParticleId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Field_Definition.DurableId</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Value</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Core_Industry_Use_Case__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>PicklistValueInfo</object>
+        <sortField>Value</sortField>
+        <sortOrder>Asc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
     <recordUpdates>
         <name>Update_Opportunity_Solutions</name>
         <label>Update Opportunity Solutions</label>
-        <locationX>1096</locationX>
-        <locationY>163</locationY>
+        <locationX>50</locationX>
+        <locationY>1391</locationY>
         <inputReference>AllOppoSolutions</inputReference>
     </recordUpdates>
     <start>
-        <locationX>39</locationX>
-        <locationY>32</locationY>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
         <connector>
             <targetReference>Get_Opportunity_Solution</targetReference>
         </connector>
@@ -164,7 +248,7 @@
         <recordTriggerType>Update</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Obsolete</status>
+    <status>Draft</status>
     <variables>
         <name>AllOppoSolutions</name>
         <dataType>SObject</dataType>

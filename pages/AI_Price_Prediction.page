@@ -1,0 +1,17 @@
+<apex:page >
+    <apex:includeLightning />
+    <div id="lightning"  align="center" />
+	<script>
+    $Lightning.use("c:PSG_PricePrediction", function() {
+        	 $Lightning.createComponent("c:psg_AIpredictionLWC", {
+            	   recordId : '{!$CurrentPage.parameters.id}'
+                 },
+              "lightning",
+                function(cmp) {
+                
+              }
+          );
+        });
+   
+    </script>
+</apex:page>

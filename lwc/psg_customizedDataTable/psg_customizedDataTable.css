@@ -1,0 +1,8 @@
+table>thead> .slds-cell-fixed.slds-has-button-menu {
+    border-bottom-style: solid;
+    border-top-style: solid;
+}
+
+table>th{
+    width: 200px;
+}

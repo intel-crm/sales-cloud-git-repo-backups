@@ -6,18 +6,14 @@
     <excludeButtons>ChangeOwnerOne</excludeButtons>
     <excludeButtons>ChangeRecordType</excludeButtons>
     <excludeButtons>Delete</excludeButtons>
+    <excludeButtons>OpenSlackRecordChannel</excludeButtons>
     <excludeButtons>Share</excludeButtons>
-    <excludeButtons>Submit</excludeButtons>
     <layoutSections>
         <customLabel>true</customLabel>
         <detailHeading>true</detailHeading>
         <editHeading>true</editHeading>
         <label>Project Information &amp; Status</label>
         <layoutColumns>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>PCC_Registration_Type__c</field>
-            </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Core_Product_Group_Nm__c</field>
@@ -54,6 +50,34 @@
                 <behavior>Readonly</behavior>
                 <field>Core_Submission_Type__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>PCC_Registration_Type__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>PCC_Rejected_or_Cancelled_Product__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>PCC_Approval_Level__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>PCC_EndCustomerAcc_Mapping__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>PCC_Design_Type__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>PCC_ODM_Board_partner__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>PCC_ODM_Board_Partner_Account__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -87,18 +111,6 @@
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>Core_Intel_Support_Status__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>PCC_Design_Type__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>PCC_ODM_Board_partner__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>PCC_ODM_Board_Partner_Account__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
@@ -139,22 +151,6 @@
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_End_Customer_Contact_Title_Txt__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_End_Customer_Contact_Nm__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_End_Customer_Contact_Email_Txt__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_End_Customer_Contact_Phone_Txt__c</field>
-            </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>Core_End_Customer_URL__c</field>
@@ -253,6 +249,10 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
+                <field>Core_Approver_Grp_Nm__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
                 <field>Core_Approver_Grp_Notification_Sent_Ind__c</field>
             </layoutItems>
         </layoutColumns>
@@ -268,10 +268,6 @@
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>LastModifiedById</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_Approver_Grp_Nm__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
@@ -311,16 +307,6 @@
     <platformActionList>
         <actionListContext>Record</actionListContext>
         <platformActionListItems>
-            <actionName>Edit</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>4</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>Core_Design_Registration__c.Core_Accept_Design_Lex</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>5</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
             <actionName>FeedItem.TextPost</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>0</sortOrder>
@@ -339,6 +325,16 @@
             <actionName>Clone</actionName>
             <actionType>StandardButton</actionType>
             <sortOrder>3</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>Edit</actionName>
+            <actionType>StandardButton</actionType>
+            <sortOrder>4</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>Core_Design_Registration__c.Core_Accept_Design_Lex</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>5</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
             <actionName>Core_Design_Registration__c.Core_Reject_Design_Lex</actionName>
@@ -364,7 +360,7 @@
         <customButtons>Core_Reject_Products_Pending_Lex</customButtons>
         <excludeButtons>New</excludeButtons>
         <fields>NAME</fields>
-        <fields>Core_Product_Id__c</fields>
+        <fields>PCC_Product_Additional_Attribute__c</fields>
         <fields>Core_Design_Product_Status_Nm__c</fields>
         <fields>Core_Full_Year_Qty__c</fields>
         <fields>Core_Target_Resale_Amt__c</fields>
@@ -372,7 +368,6 @@
         <fields>Core_Partner_Tracking_Cd__c</fields>
         <fields>Core_Locked_Ind__c</fields>
         <fields>Core_Active_Status__c</fields>
-        <fields>Core_DR_Eligible_Status__c</fields>
         <relatedList>Core_Design_Registration_Product__c.Core_Design_Registration_Id__c</relatedList>
         <sortField>NAME</sortField>
         <sortOrder>Desc</sortOrder>
@@ -381,7 +376,6 @@
         <excludeButtons>MassChangeOwner</excludeButtons>
         <excludeButtons>New</excludeButtons>
         <fields>PCC_MM_ID__c</fields>
-        <fields>PCC_Old_MM_Id__c</fields>
         <fields>PCC_Ordering_Cd__c</fields>
         <fields>PCC_L5_Product_Name__c</fields>
         <fields>PCC_Design_Registration_Product__c</fields>
@@ -392,14 +386,12 @@
         <relatedList>RelatedEntityHistoryList</relatedList>
     </relatedLists>
     <relatedLists>
-        <excludeButtons>New</excludeButtons>
-        <fields>OPPORTUNITY.NAME</fields>
-        <fields>ACCOUNT.NAME</fields>
-        <fields>Core_Opp_Prime_Account_Name__c</fields>
-        <fields>OPPORTUNITY.STAGE_NAME</fields>
-        <fields>CORE.USERS.FULL_NAME</fields>
-        <fields>Core_Technical_Owner__c</fields>
-        <relatedList>Opportunity.Core_Design_Registration_Id__c</relatedList>
+        <fields>CreatedDate</fields>
+        <fields>StepStatus</fields>
+        <fields>OriginalActor</fields>
+        <fields>Actor</fields>
+        <fields>Comments</fields>
+        <relatedList>RelatedProcessHistoryList</relatedList>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>

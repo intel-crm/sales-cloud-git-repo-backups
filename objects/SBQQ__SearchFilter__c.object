@@ -435,14 +435,39 @@
                     <label>Quotable</label>
                 </value>
                 <value>
-                    <fullName>Core_IQR_Visible__c</fullName>
+                    <fullName>Core_Item_Orderable_Ind__c</fullName>
                     <default>false</default>
-                    <label>Core_IQR_Visible__c</label>
+                    <label>Orderable</label>
+                </value>
+                <value>
+                    <fullName>Core_BU_Operation_Code__c</fullName>
+                    <default>false</default>
+                    <label>Core_BU_Operation_Code__c</label>
+                </value>
+                <value>
+                    <fullName>Core_Item_Class_Nm__c</fullName>
+                    <default>false</default>
+                    <label>Core_Item_Class_Nm__c</label>
+                </value>
+                <value>
+                    <fullName>Core_Product_Org__c</fullName>
+                    <default>false</default>
+                    <label>Core_Product_Org__c</label>
                 </value>
                 <value>
                     <fullName>Core_Product_Series__c</fullName>
                     <default>false</default>
                     <label>Core_Product_Series__c</label>
+                </value>
+                <value>
+                    <fullName>Core_Group_Code__c</fullName>
+                    <default>false</default>
+                    <label>Core_Group_Code__c</label>
+                </value>
+                <value>
+                    <fullName>Core_IQR_Visible__c</fullName>
+                    <default>false</default>
+                    <label>Core_IQR_Visible__c</label>
                 </value>
             </valueSetDefinition>
             <valueSettings>
@@ -484,11 +509,31 @@
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Product</controllingFieldValue>
-                <valueName>Core_IQR_Visible__c</valueName>
+                <valueName>Core_Item_Orderable_Ind__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Product</controllingFieldValue>
+                <valueName>Core_BU_Operation_Code__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Product</controllingFieldValue>
+                <valueName>Core_Item_Class_Nm__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Product</controllingFieldValue>
+                <valueName>Core_Product_Org__c</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Product</controllingFieldValue>
                 <valueName>Core_Product_Series__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Product</controllingFieldValue>
+                <valueName>Core_Group_Code__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Product</controllingFieldValue>
+                <valueName>Core_IQR_Visible__c</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Asset</controllingFieldValue>

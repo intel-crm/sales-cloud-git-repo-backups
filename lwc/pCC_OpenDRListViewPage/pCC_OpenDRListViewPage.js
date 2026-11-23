@@ -8,7 +8,7 @@ export default class ButtonExample extends NavigationMixin(LightningElement) {
             type: 'standard__webPage',
             attributes: {
                 //url: '/partneradmin/s/core-design-registration/Core_Design_Registration__c/Default'
-                url: '/s/design-distribution-stage'
+                url: '/partneradmin/s/design-distribution-stage'
             }
         };
         

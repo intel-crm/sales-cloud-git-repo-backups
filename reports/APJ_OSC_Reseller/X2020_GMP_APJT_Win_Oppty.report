@@ -7,9 +7,6 @@
         <field>OpportunityLineItem.Core_Status__c</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_Opp_OpportunityType__c</field>
-    </columns>
-    <columns>
         <field>STAGE_NAME</field>
     </columns>
     <columns>
@@ -33,6 +30,9 @@
         <field>OPPORTUNITY_NAME</field>
     </columns>
     <columns>
+        <field>OpportunityLineItem.Core_KPI_Product_Group__c</field>
+    </columns>
+    <columns>
         <field>PRODUCT_NAME</field>
     </columns>
     <columns>
@@ -47,6 +47,9 @@
     </columns>
     <columns>
         <field>UNIT_PRICE</field>
+    </columns>
+    <columns>
+        <field>ROLLUP_DESCRIPTION</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
@@ -72,9 +75,6 @@
     </columns>
     <columns>
         <field>OpportunityLineItem.Core_KPI_Date__c</field>
-    </columns>
-    <columns>
-        <field>OWNER_MANAGER</field>
     </columns>
     <filter>
         <criteriaItems>
@@ -135,6 +135,8 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

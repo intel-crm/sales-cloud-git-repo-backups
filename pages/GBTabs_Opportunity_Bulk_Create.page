@@ -1,0 +1,26 @@
+<apex:page standardController="Opportunity" showHeader="false" sidebar="false" title="Opportunity Bulk Create">
+	<GBLite:TabbedPageComponent pageAPIName="GBTabs_Opportunity_Bulk_Create" customJsIds="" customCssIds="">
+	<GBLite:EmbedComponent baseGridUrl="{!$Page.GBLite__Grid}" />
+		<script>
+			var pageDefinition = {
+	"name": "Opportunity Bulk Create",
+	"tabs": [
+		{
+			"name": "Opportunity Bulk Create",
+			"content": "{!gridPage}gname=Opportunity&amp;sh=0&amp;sfname=default",
+			"id": 1679028469841
+		}
+	],
+	"id": 1679028469840,
+	"selectedCustomCSSIds": [],
+	"selectedCustomJSIds": [],
+	"description": "",
+	"globalButtons": true,
+	"object": "Opportunity",
+	"height": "",
+	"showHeader": false,
+	"showSidebar": false
+};
+		</script>
+	</GBLite:TabbedPageComponent>
+</apex:page>

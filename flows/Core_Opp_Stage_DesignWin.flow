@@ -275,5 +275,6 @@ Workflow rule description: Set the stage to design win when approved if the prio
         <recordTriggerType>Update</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Active</status>
+    <status>Obsolete</status>
+    <triggerOrder>800</triggerOrder>
 </Flow>

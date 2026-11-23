@@ -154,6 +154,18 @@
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
     <fields>
+        <fullName>Pricing_Account_Executive_Txt__c</fullName>
+        <description>This field holds the name of the Account Executive(CSP List)</description>
+        <externalId>false</externalId>
+        <label>Account Executive</label>
+        <length>120</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Pricing_Category_Nm__c</fullName>
         <description>This field holds the Pricing Category</description>
         <label>Pricing Category</label>
@@ -189,6 +201,70 @@
         </valueSet>
     </fields>
     <fields>
+        <fullName>Pricing_End_Customer_Alt_Name_1_Txt_del__c</fullName>
+        <externalId>false</externalId>
+        <label>End Customer Alternate Name 1</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Pricing_End_Customer_Alt_Name_2_Txt_del__c</fullName>
+        <externalId>false</externalId>
+        <label>End Customer Alternate Name 2</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Pricing_End_Customer_Alt_Name_3_Txt_del__c</fullName>
+        <externalId>false</externalId>
+        <label>End Customer Alternate Name 3</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Pricing_End_Customer_Alt_Name_4_Txt_del__c</fullName>
+        <externalId>false</externalId>
+        <label>End Customer Alternate Name 4</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Pricing_End_Customer_Alt_Name_5_Txt_del__c</fullName>
+        <externalId>false</externalId>
+        <label>End Customer Alternate Name 5</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Pricing_End_Customer_Alternate_Names_del__c</fullName>
+        <description>This Field holds the alternate names of end customer.</description>
+        <label>End Customer Alternate Names</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
         <fullName>Pricing_End_Customer_Country_Nm__c</fullName>
         <description>This Field holds the Pricing End Customer Country</description>
         <label>End Customer Country</label>
@@ -212,6 +288,59 @@
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Pricing_Pricing_Manager_Email_Txt__c</fullName>
+        <description>This field holds the Pricing RPM Email Id</description>
+        <externalId>false</externalId>
+        <label>Pricing Manager Email</label>
+        <length>80</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Pricing_Pricing_Manager_Name_Txt__c</fullName>
+        <description>This Field holds the Regional Pricing Manager Name</description>
+        <externalId>false</externalId>
+        <label>Pricing Manager Name</label>
+        <length>120</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Pricing_Quote_Routing_Category_Nm__c</fullName>
+        <label>Quote Segmentation</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>High Touch</fullName>
+                    <default>false</default>
+                    <label>High Touch</label>
+                </value>
+                <value>
+                    <fullName>Low Touch</fullName>
+                    <default>false</default>
+                    <label>Low Touch</label>
+                </value>
+                <value>
+                    <fullName>No Touch</fullName>
+                    <default>false</default>
+                    <label>No Touch</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Pricing_Region_Nm__c</fullName>
@@ -238,7 +367,11 @@
         <columns>Pricing_Region_Nm__c</columns>
         <columns>Pricing_End_Customer_Country_Nm__c</columns>
         <columns>Pricing_End_Customer_Name_Txt__c</columns>
+        <columns>Pricing_Pricing_Manager_Email_Txt__c</columns>
         <columns>Pricing_Category_Nm__c</columns>
+        <columns>Pricing_Quote_Routing_Category_Nm__c</columns>
+        <columns>Pricing_Account_Executive_Txt__c</columns>
+        <columns>Pricing_Pricing_Manager_Name_Txt__c</columns>
         <columns>CREATED_DATE</columns>
         <filterScope>Everything</filterScope>
         <label>IQR Route Rule Utility Records</label>

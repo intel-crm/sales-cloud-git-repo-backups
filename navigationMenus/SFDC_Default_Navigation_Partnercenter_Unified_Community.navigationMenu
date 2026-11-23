@@ -16,21 +16,22 @@
                 <type>SalesforceObject</type>
             </navigationMenuItem>
             <navigationMenuItem>
-                <label>Outcome-Based Campaigns</label>
-                <position>1</position>
-                <publiclyAvailable>false</publiclyAvailable>
-                <target>/outcome-based-campaigns-list-view</target>
-                <type>InternalLink</type>
-            </navigationMenuItem>
-            <navigationMenuItem>
+                <defaultListViewId>All_Partner_Fund_Claims</defaultListViewId>
                 <label>Claims</label>
-                <position>2</position>
+                <position>1</position>
                 <publiclyAvailable>false</publiclyAvailable>
                 <target>PartnerFundClaim</target>
                 <type>SalesforceObject</type>
             </navigationMenuItem>
             <navigationMenuItem>
                 <label>Batch Claim Upload</label>
+                <position>2</position>
+                <publiclyAvailable>false</publiclyAvailable>
+                <target>/batch-claim-upload</target>
+                <type>InternalLink</type>
+            </navigationMenuItem>
+            <navigationMenuItem>
+                <label>Batch Claim History</label>
                 <position>3</position>
                 <publiclyAvailable>false</publiclyAvailable>
                 <target>Core_MDF_Claim_Batch__c</target>
@@ -79,11 +80,11 @@
                 <type>SalesforceObject</type>
             </navigationMenuItem>
             <navigationMenuItem>
-                <label>Budget Allocations</label>
+                <label>Budget</label>
                 <position>10</position>
                 <publiclyAvailable>false</publiclyAvailable>
-                <target>/PartnerFundAllocations</target>
-                <type>InternalLink</type>
+                <target>PartnerMarketingBudget</target>
+                <type>SalesforceObject</type>
             </navigationMenuItem>
             <navigationMenuItem>
                 <defaultListViewId>Co_Marketing</defaultListViewId>
@@ -122,35 +123,6 @@
                 <target>Report</target>
                 <type>SalesforceObject</type>
             </navigationMenuItem>
-            <navigationMenuItem>
-                <defaultListViewId>All</defaultListViewId>
-                <label>Escalations</label>
-                <position>16</position>
-                <publiclyAvailable>false</publiclyAvailable>
-                <target>Core_MDF_Escalation__c</target>
-                <type>SalesforceObject</type>
-            </navigationMenuItem>
-            <navigationMenuItem>
-                <label>Exceptions</label>
-                <position>17</position>
-                <publiclyAvailable>false</publiclyAvailable>
-                <target>Core_MDF_Exception__c</target>
-                <type>SalesforceObject</type>
-            </navigationMenuItem>
-            <navigationMenuItem>
-                <label>Claim Recovery</label>
-                <position>18</position>
-                <publiclyAvailable>false</publiclyAvailable>
-                <target>/claim-recovery</target>
-                <type>InternalLink</type>
-            </navigationMenuItem>
-            <navigationMenuItem>
-                <label>Recovery Dashboard</label>
-                <position>19</position>
-                <publiclyAvailable>false</publiclyAvailable>
-                <target>/recovery-dashboard</target>
-                <type>InternalLink</type>
-            </navigationMenuItem>
         </subMenu>
         <type>MenuLabel</type>
     </navigationMenuItem>
@@ -165,8 +137,8 @@
         <label>Training</label>
         <position>3</position>
         <publiclyAvailable>false</publiclyAvailable>
-        <target>https://intel.com/content/www/us/en/secure/co-marketing/partner-investment-center/training-resources.html</target>
-        <type>ExternalLink</type>
+        <target>/Resources</target>
+        <type>InternalLink</type>
     </navigationMenuItem>
     <navigationMenuItem>
         <label>Newsletters</label>

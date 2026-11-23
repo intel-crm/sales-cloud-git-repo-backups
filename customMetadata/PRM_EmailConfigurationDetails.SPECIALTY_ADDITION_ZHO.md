@@ -16,7 +16,7 @@
     </values>
     <values>
         <field>PRM_FolderName__c</field>
-        <value xsi:type="xsd:string">IPA(Simplified Chinese Templates)</value>
+        <value xsi:type="xsd:string">IPA_Simplified_Chinese_Templates</value>
     </values>
     <values>
         <field>PRM_Geo__c</field>
@@ -56,10 +56,10 @@
     </values>
     <values>
         <field>PRM_TemplateName__c</field>
-        <value xsi:type="xsd:string">SPECIALTY_Enthusiast_PC_ZHO</value>
+        <value xsi:type="xsd:string">SPECBNFTENTHUZHO</value>
     </values>
     <values>
         <field>PRM_TemplateUniqueName__c</field>
-        <value xsi:type="xsd:string">SPECIALTY_Enthusiast_PC_ZHO</value>
+        <value xsi:type="xsd:string">SPECBNFTENTHUZHO</value>
     </values>
 </CustomMetadata>

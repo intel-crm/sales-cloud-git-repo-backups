@@ -1,6 +1,5 @@
 ({
     doInit: function (component, event, helper) {
-        component.find("mySpinner").set("v.class", "slds-show");
         const action = component.get("c.getQuoteDetails");
         action.setParams({ recordId: component.get("v.recordId") });
         action.setCallback(this, function (response) {
@@ -23,7 +22,7 @@
                     let options = [];
                     options.push({ value: $A.get("$Label.c.Pricing_Tender_Standard_Quote"), label: $A.get("$Label.c.Pricing_Tender_Standard_Quote") });
 
-                    component.set("v.value", $A.get("$Label.c.Pricing_Tender_Standard_Quote"));
+                    component.set("v.value", $A.get("$Label.c.Pricing_Tender_Small_Volume_Quote"))
                     const isSVDAllowed = component.get("c.isSVDCloneAllowed");
                     if (quoteDetail.Pricing_Program_Type_Nm__c != $A.get("$Label.c.Pricing_Tender_Standard_Quote")) { //Add SVD only if SSD,PMem or Nic quotes
                         isSVDAllowed.setParams({ accId: quoteDetail.SBQQ__Account__c });
@@ -35,11 +34,6 @@
                                     component.set("v.options", options);
                                 } else {
                                     component.set("v.options", options);
-                                    component.set("v.isSVD", false);
-                                    component.set("v.isSuccess", false);
-                                    component.set("v.showMessageScreen", true);
-                                    component.set("v.messageNotification", 'Cloning an SVD quote is no longer allowed.');
-                                    component.find("mySpinner").set("v.class", "slds-hide");
                                 }
                             } else {
                                 component.set("v.options", options);
@@ -50,6 +44,7 @@
                         component.set("v.options", options);
                     }
                 } else {
+                    component.find("mySpinner").set("v.class", "slds-show");
                     component.set("v.showMessageScreen", true);
                     helper.cloneQuote(component);
                 }

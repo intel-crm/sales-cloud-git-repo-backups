@@ -21,8 +21,8 @@
  */
 @isTest
 private class PMP_PublishTranslationsToPIMBatchTest {
-//IPA2.0:US-4497-1631_OfferingEOL  
-    /*static testMethod  void testMethod1() {
+    
+    static testMethod  void testMethod1() {
 		List<PMP_Partner_Offering__c> offeringList = new List<PMP_Partner_Offering__c>();
         
         PMP_Partner_Offering__c offeringRecTest = new PMP_Partner_Offering__c();
@@ -42,9 +42,7 @@ private class PMP_PublishTranslationsToPIMBatchTest {
         
         Test.startTest();
         PMP_PublishTranslationsToPIMBatch obj = new PMP_PublishTranslationsToPIMBatch();
-        ID batchprocessid = Database.executeBatch(obj);
-        
-        system.assertNotEquals(batchprocessid,Null);
+        	Database.executeBatch(obj);
         Test.stopTest();
-    }*/
+    }
 }

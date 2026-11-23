@@ -7,11 +7,13 @@ public class PRM_Specialty_Benefit_Group_Asso_Test {
         bg.name = 'Benefitgroup Test';
         bg.PRM_InActive_Ind__c= false;
         insert bg;
+        system.debug('bg========>'+bg);
         
         PRM_Benefit_Group__c bg1= new PRM_Benefit_Group__c();
         bg1.name = 'Benefitgroup Test1';
         bg1.PRM_InActive_Ind__c= false;
         insert bg1;
+        system.debug('bg========>'+bg1);
         
         PRM_Specialty__c spec = new PRM_Specialty__c();
         spec.PRM_Description_Txt__c='This is description';
@@ -34,7 +36,7 @@ public class PRM_Specialty_Benefit_Group_Asso_Test {
         
         try{ 
             insert sbga1;
-            //System.assert(false);
+            System.assert(false);
         }
         catch(exception e){
             System.debug(e.getMessage());
@@ -47,11 +49,13 @@ public class PRM_Specialty_Benefit_Group_Asso_Test {
         bg.name = 'Benefitgroup Test';
         bg.PRM_InActive_Ind__c= false;
         insert bg;
+        system.debug('bg========>'+bg);
         
         PRM_Benefit_Group__c bg1= new PRM_Benefit_Group__c();
         bg1.name = 'Benefitgroup Test1';
         bg1.PRM_InActive_Ind__c= false;
         insert bg1;
+        system.debug('bg========>'+bg1);
         
         PRM_Specialty__c spec = new PRM_Specialty__c();
         spec.PRM_Description_Txt__c='This is description';
@@ -83,7 +87,7 @@ public class PRM_Specialty_Benefit_Group_Asso_Test {
         
         Test.stopTest(); 
         List<PRM_Specialty_Benefit_Group_Association__c> spbgaList = [select Id,PRM_Benefit_Group_Id__r.Name from PRM_Specialty_Benefit_Group_Association__c where id=:sbga2.Id ];
-        //System.assertNotEquals('Benefitgroup Test', spbgaList[0].PRM_Benefit_Group_Id__r.Name,'Equal');
+        System.assertNotEquals('Benefitgroup Test', spbgaList[0].PRM_Benefit_Group_Id__r.Name,'Equal');
     }
     static testmethod void asactiveacheck(){
         Test.startTest();
@@ -92,11 +96,13 @@ public class PRM_Specialty_Benefit_Group_Asso_Test {
         bg.name = 'Benefitgroup Test';
         bg.PRM_InActive_Ind__c= false;
         insert bg;
+        system.debug('bg========>'+bg);
         
         PRM_Benefit_Group__c bg1= new PRM_Benefit_Group__c();
         bg1.name = 'Benefitgroup Test1';
         bg1.PRM_InActive_Ind__c= false;
         insert bg1;
+        system.debug('bg========>'+bg1);
         
         PRM_Specialty__c spec = new PRM_Specialty__c();
         spec.PRM_Description_Txt__c='This is description';
@@ -114,9 +120,7 @@ public class PRM_Specialty_Benefit_Group_Asso_Test {
         sbga1.PRM_InActive_Ind__c=False;
         insert sbga1;
         
-        Id recordTypeIdAccount = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
         Account newAccount = new Account();//Account
-        newAccount.RecordTypeId = recordTypeIdAccount;
         newAccount.Name='Johngoth Rick';
         newAccount.BillingCity='City';
         newAccount.BillingStreet='Reddick Street';
@@ -125,6 +129,7 @@ public class PRM_Specialty_Benefit_Group_Asso_Test {
         newAccount.Core_Account_Type__c='Cloud Service Provider (CSP)';
         newAccount.Core_Intel_Partner_Alliance_PartnerGroup__c=true;
         insert newAccount;
+        System.debug('first account'+newAccount);
         
         PRM_Account_Specialty_Association__c asa = new PRM_Account_Specialty_Association__c();
         asa.PRM_Account_Id__c= newAccount.id;
@@ -149,7 +154,7 @@ public class PRM_Specialty_Benefit_Group_Asso_Test {
         Test.stopTest(); 
         List<PRM_Specialty_Benefit_Group_Association__c> spbgaList = [select Id,PRM_Benefit_Group_Id__r.Name,PRM_InActive_Ind__c  from PRM_Specialty_Benefit_Group_Association__c where id=:sbga1.Id ];
         String v1 = 'False';
-        //System.assertEquals(false, spbgaList[0].PRM_InActive_Ind__c,v1);
+        System.assertEquals(false, spbgaList[0].PRM_InActive_Ind__c,v1);
         
     }
 }

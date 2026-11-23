@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_60557588</developerName>
+        <masterLabel>Field or OSC</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>OWNER_DEPARTMENT</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>APAC ACER ULTRA PORTABLE</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APAC BIG DATA AND CSIG MARKETI</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APAC MNC Acer Sales</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APAC MNC SALES</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APAC SAMSUNG-FIELD SALES</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APAC-S&amp;M/IDO1</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APAC-S&amp;M/IMY</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APAC-S&amp;M/IPH</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APAC-S&amp;M/ITH1</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APAC-S&amp;M/SGP</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APAC-SALES/ITWN ASUSTEK</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APAC-SALES/ITWN1</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APAC-SANDM/IVT</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APAC-Sales/IAUS1</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APAC-Sales/IAUS2/ANZ CSO OEM</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APAC-TWN Sales- NAND</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Apac-S&amp;M/SEA ESG</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>KOR-DCS</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>ANZ-RCO</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>JP-BDG-PS</sourceValue>
+            </sourceValues>
+            <value>Field</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>APAC OSC - OPERATIONS</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>VSC -  APJ TeleDirect</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>VSC APJ TeleDirect</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>VSC APJ Transcosmos</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PENANG ONLINE SALES CENTER</sourceValue>
+            </sourceValues>
+            <value>OSC + VSC</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>ADDRESS1_COUNTRY_CODE</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT_NAME</field>
+    </columns>
+    <columns>
+        <field>OWNER_DEPARTMENT</field>
+    </columns>
+    <columns>
+        <field>FULL_NAME</field>
+    </columns>
+    <columns>
+        <field>OWNER_MANAGER</field>
+    </columns>
+    <columns>
+        <field>User.Core_Is_OSC__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_OSC_Collaboration_Type__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Sales_Segments__c</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY_NAME</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Solution_Focus__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>OpportunityLineItem.Core_KPI_Quantity__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>OpportunityLineItem.Core_KPI_Total_Price__c</field>
+    </columns>
+    <columns>
+        <field>OpportunityLineItem.Core_Status__c</field>
+    </columns>
+    <columns>
+        <field>Product2.Core_Product_Series__c</field>
+    </columns>
+    <columns>
+        <field>PRODUCT_NAME</field>
+    </columns>
+    <filter>
+        <booleanFilter>1 AND 2 AND 3 AND (4 or 6) AND (5 or 7)</booleanFilter>
+        <criteriaItems>
+            <column>OpportunityLineItem.Core_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Lost,Cancelled,Deleted</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>STAGE_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Lost,Cancelled,Group</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Sales_Segments__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Influencer;Reseller/Channel</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Solution_Focus__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>includes</operator>
+            <value>Education: K12,Education: Post Secondary</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OWNER_MANAGER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>contains</operator>
+            <value>Jonathan Ong,V R Rajkumar,Hermawan Sutanto,Shu Shen Dang,Rajiv Bhalla,Irfan Ahamed,Dinesh Vazirani,HT Kim,Minh Tri Ho,Chantana Shuwannawong,Sharon S Khohayting,teruya ida,makoto ohno,dustin huang</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Consumption_Market__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Education</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Geo_Initiative__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>APJ Education through Channels</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_60557588</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>FiscalQuarter</dateGranularity>
+        <field>OpportunityLineItem.Core_KPI_Date__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>STAGE_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Edu Reseller QoQ w ISAMs</name>
+    <params>
+        <name>terr</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>open</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>OpportunityProduct</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CLOSE_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

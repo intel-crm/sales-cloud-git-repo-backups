@@ -1,140 +1,125 @@
-/****************************************************************************************************************************************
-* Class Name  : CustomerDisclaimer 
-* Created Date: 13-07-2020
-* Modification Log :
-* Developer            Date               Description
-* ---------------------------------------------------------------------------------------------------------------------------------------
-* Ealisha/Sneha        13-07-2020         Controller class to present Disclaimer to External User.
-*****************************************************************************************************************************************/
 public without sharing class CustomerDisclaimer {
-    public static String logEntryMsg = '';  
-  
-    public class DisclaimerDetails{
+public static String logEntryMsg = '';    
+    public class DisclaimerDetails
+    {
         @AuraEnabled public String tncId {get; set;}
         @AuraEnabled public String docBody {get; set;}    
-        @AuraEnabled public String communityUrl {get; set;} 
-    
-    }    
+        @AuraEnabled public String communityUrl {get; set;}     
+    } 
+
     public static Map<String,Terms_and_Conditions__c> tncMap = new Map<String,Terms_and_Conditions__c>{};
+      
+    //Reading from custom object
+    @AuraEnabled
+    public static String redirect(String siteUrl) 
+    {
+        String toBeRedirectedToNDA = 'false';
+        String query;
+        Map<String,String> contentLangToValueMap = new Map<String,String>{};
+        Map<String,Terms_and_Conditions__c> custPermToTAndCMap = new Map<String,Terms_and_Conditions__c>{};
+        Map<String,Terms_and_Conditions__c> tncLangToTAndCMap = new Map<String,Terms_and_Conditions__c>{};
+        Map<Id,Datetime> tncToAcceptedDate = new Map<Id,Datetime>{}; 
+        try{
+            String userId = UserInfo.getUserId();
+            Schema.DescribeFieldResult lang = Terms_and_Conditions__c.Content_Language_nm__c.getDescribe();
+            List<Schema.PicklistEntry> langValues = lang.getPicklistValues();
+            if(langValues != null){
+                for (Schema.PicklistEntry a : langValues){
+                    String[] langToTrans = a.getValue().split(':');
+                    contentLangToValueMap.put(langToTrans[1],a.getValue()); 
+                }  
+            }        
         
-        //Reading from custom object
-        @AuraEnabled
-        public static String redirect(String siteUrl){
-            String toBeRedirectedToNDA = 'false';
-            String query;
-            Map<String,String> contentLangToValueMap = new Map<String,String>{};
-                Map<String,Terms_and_Conditions__c> custPermToTAndCMap = new Map<String,Terms_and_Conditions__c>{};
-                    Map<String,Terms_and_Conditions__c> tncLangToTAndCMap = new Map<String,Terms_and_Conditions__c>{};
-                        Map<Id,Datetime> tncToAcceptedDate = new Map<Id,Datetime>{}; 
-                            try{
-                                //fetching Community URL from Network ID 
-                                // To resolve issue: by Editing Community URL Customers are able to access Community.
-                                ID communityId = Network.getNetworkId();
-                                String baseUrl='';
-                                if(communityId  != null){baseUrl = [SELECT Id, UrlPathPrefix FROM Network WHERE Id = :communityId].UrlPathPrefix;}
-                                
-                                baseUrl ='%'+baseUrl+'%';
-                                String userId = UserInfo.getUserId();
-                                Schema.DescribeFieldResult lang = Terms_and_Conditions__c.Content_Language_nm__c.getDescribe();
-                                List<Schema.PicklistEntry> langValues = lang.getPicklistValues();
-                                if(langValues != null){
-                                    for (Schema.PicklistEntry a : langValues){
-                                        String[] langToTrans = a.getValue().split(':');
-                                        contentLangToValueMap.put(langToTrans[1],a.getValue()); 
-                                    }  
-                                }        
-                            
-                                //Get the user language.
-                                String userLang = UserInfo.getLanguage();
-                                if(String.isBlank(userLang)){userLang = 'en_US';}
-                                
-                                /* SR Commenting as Userinfo was being called twice */
-                                //String userLang = (UserInfo.getLanguage() != null) ? UserInfo.getLanguage() : 'en_US';
-                                
-                                
-                                String engTrans = contentLangToValueMap.get('en_US');
-                                String contentTrans = contentLangToValueMap.get(userLang)==null ? contentLangToValueMap.get('en_US') : contentLangToValueMap.get(userLang);
-                                query = 'Select Site_URL_txt__c,Id,Name,Active_Indicator_ind__c,Channel_Program_id__c,Program_Name_txt__c,Custom_Permission_txt__c,Validity_in_mnths_nbr__c,NDA_Updated_Date_dt__c,Content_Language_nm__c'+
-                                    ' from Terms_and_Conditions__c where Content_Language_nm__c in (\''+String.escapeSingleQuotes(contentTrans)+'\',\''+String.escapeSingleQuotes(engTrans)+'\') and Site_URL_txt__c LIKE \''+baseUrl+'\' and Active_Indicator_ind__c=true';
-                                system.debug('query:'+query);
-                            
-                                List<Terms_and_Conditions__c> tAndConRecds = Database.query(query);
-                                /* SR Added null checks */
-                                Map<String,Terms_and_Conditions__c> userLangcpToTAndCMap = new Map<String,Terms_and_Conditions__c>{};
-                                    Map<String,Terms_and_Conditions__c> engLangcpToTAndCMap = new Map<String,Terms_and_Conditions__c>{};
-                                        if(tAndConRecds != null && !tAndConRecds.isEmpty()){
-                                            for(Terms_and_Conditions__c tc : tAndConRecds){
-                                                if(tc.Content_Language_nm__c.split(':')[1] == userLang){
-                                                    userLangcpToTAndCMap.put(tc.Custom_Permission_txt__c,tc);
-                                                }
-                                                else if(tc.Content_Language_nm__c.split(':')[1] == 'en_US'){
-                                                    engLangcpToTAndCMap.put(tc.Custom_Permission_txt__c,tc);
-                                                }
-                                                
-                                            }
-                                        }
-                                if(userLangcpToTAndCMap != null && !userLangcpToTAndCMap.isEmpty()){
-                                    custPermToTAndCMap = userLangcpToTAndCMap;
-                                }
-                                else{
-                                    custPermToTAndCMap = engLangcpToTAndCMap;
-                                }
-                            
-                                system.debug('custPermToTAndCMap:'+custPermToTAndCMap);
-                                //check if user has already accepted
-                                /*SR : Updated variable name */
-                                List<Customer_Disclaimer__c> discAcceptanceDetails = Database.query('Select User_id__c,Program_txt__c,Terms_and_Conditions_id__c,NDA_Acceptance_Date_dtm__c,Site_URL_txt__c from Customer_Disclaimer__c where User_id__c=:userId and Site_URL_txt__c LIKE \''+baseUrl+'\'');
-                                //List<Customer_Disclaimer__c> discAcceptanceDetails = Database.query('Select User_id__c,Program_txt__c,Terms_and_Conditions_id__c,NDA_Acceptance_Date_dtm__c,Site_URL_txt__c from Customer_Disclaimer__c where User_id__c=:userId and Site_URL_txt__c =:siteUrl');
-                                Map<Id,Customer_Disclaimer__c> userIdToDisRec = new Map<Id,Customer_Disclaimer__c>{};
-                                    if(discAcceptanceDetails != null && !discAcceptanceDetails.isEmpty()){
-                                        for(Customer_Disclaimer__c cd:discAcceptanceDetails){
-                                            tncToAcceptedDate.put(cd.Terms_and_Conditions_id__c,cd.NDA_Acceptance_Date_dtm__c);
-                                        }            
-                                    }
-                                system.debug(' :'+tncToAcceptedDate);
-                            
-                                if(custPermToTAndCMap != null && !custPermToTAndCMap.isEmpty()){
-                                    for(String custPerm:custPermToTAndCMap.keySet()){
-                                        if(FeatureManagement.checkPermission(custPerm)){
-                                            Boolean toBeRedirected = checkNDAValidity(discAcceptanceDetails,custPermToTAndCMap.get(custPerm),tncToAcceptedDate);
-                                            if(toBeRedirected){
-                                                toBeRedirectedToNDA = 'true';
-                                                tncMap.put(custPermToTAndCMap.get(custPerm).Id,custPermToTAndCMap.get(custPerm));
-                                            }
-                                        }            
-                                    }
-                                }
-                                system.debug('tncMap:'+tncMap);
+            //Get the user language.
+            String userLang = UserInfo.getLanguage();
+            if(String.isBlank(userLang)){userLang = 'en_US';}
+            
+            /* SR Commenting as Userinfo was being called twice */
+            //String userLang = (UserInfo.getLanguage() != null) ? UserInfo.getLanguage() : 'en_US';
+            
+            String contentTrans = contentLangToValueMap.get(userLang);
+            String engTrans = contentLangToValueMap.get('en_US');
+            query = 'Select Site_URL_txt__c,Id,Name,Active_Indicator_ind__c,Channel_Program_id__c,Program_Name_txt__c,Custom_Permission_txt__c,Validity_in_mnths_nbr__c,NDA_Updated_Date_dt__c,Content_Language_nm__c'+
+                    ' from Terms_and_Conditions__c where Content_Language_nm__c in (\''+String.escapeSingleQuotes(contentTrans)+'\',\''+String.escapeSingleQuotes(engTrans)+'\') and Site_URL_txt__c=\''+String.escapeSingleQuotes(siteUrl)+'\' and Active_Indicator_ind__c=true';
+            system.debug('query:'+query);
+            
+            List<Terms_and_Conditions__c> tAndConRecds = Database.query(query);
+            /* SR Added null checks */
+            Map<String,Terms_and_Conditions__c> userLangcpToTAndCMap = new Map<String,Terms_and_Conditions__c>{};
+            Map<String,Terms_and_Conditions__c> engLangcpToTAndCMap = new Map<String,Terms_and_Conditions__c>{};
+            if(tAndConRecds != null && !tAndConRecds.isEmpty()){
+                for(Terms_and_Conditions__c tc : tAndConRecds){
+                    if(tc.Content_Language_nm__c.split(':')[1] == userLang){
+                        userLangcpToTAndCMap.put(tc.Custom_Permission_txt__c,tc);
+                    }
+                    else if(tc.Content_Language_nm__c.split(':')[1] == 'en_US'){
+                        engLangcpToTAndCMap.put(tc.Custom_Permission_txt__c,tc);
+                    }
+                    
+                }
+            }
+            if(userLangcpToTAndCMap != null && !userLangcpToTAndCMap.isEmpty()){
+                custPermToTAndCMap = userLangcpToTAndCMap;
+            }
+            else{
+                custPermToTAndCMap = engLangcpToTAndCMap;
+            }
+            
+            system.debug('custPermToTAndCMap:'+custPermToTAndCMap);
+            //check if user has already accepted
+            /*SR : Updated variable name */
+            List<Customer_Disclaimer__c> discAcceptanceDetails = Database.query('Select User_id__c,Program_txt__c,Terms_and_Conditions_id__c,NDA_Acceptance_Date_dtm__c,Site_URL_txt__c from Customer_Disclaimer__c where User_id__c=:userId and Site_URL_txt__c=:siteUrl');
+            Map<Id,Customer_Disclaimer__c> userIdToDisRec = new Map<Id,Customer_Disclaimer__c>{};
+            if(discAcceptanceDetails != null && !discAcceptanceDetails.isEmpty()){
+                for(Customer_Disclaimer__c cd:discAcceptanceDetails){
+                    tncToAcceptedDate.put(cd.Terms_and_Conditions_id__c,cd.NDA_Acceptance_Date_dtm__c);
+                }            
+            }
+            system.debug(' :'+tncToAcceptedDate);
+            
+            if(custPermToTAndCMap != null && !custPermToTAndCMap.isEmpty()){
+                for(String custPerm:custPermToTAndCMap.keySet()){
+                    if(FeatureManagement.checkPermission(custPerm)){
+                        Boolean toBeRedirected = checkNDAValidity(discAcceptanceDetails,custPermToTAndCMap.get(custPerm),tncToAcceptedDate);
+                        if(toBeRedirected){
+                            toBeRedirectedToNDA = 'true';
+                            tncMap.put(custPermToTAndCMap.get(custPerm).Id,custPermToTAndCMap.get(custPerm));
                         }
-            catch(exception ex){toBeRedirectedToNDA='';logEntryMsg = Core_MDF_CCP_UtilityClass.getErrorDetails(ex);Core_MDF_CCP_UtilityClass.logErrorinLogObject(logEntryMsg,'Redirect error from Customer Disclaimer');
-                           }        
+                    }            
+                }
+            }
+            system.debug('tncMap:'+tncMap);
+        }
+        catch(exception ex){toBeRedirectedToNDA='';logEntryMsg = Core_MDF_CCP_UtilityClass.getErrorDetails(ex);Core_MDF_CCP_UtilityClass.logErrorinLogObject(logEntryMsg,'Redirect error from Customer Disclaimer');
+        }        
         return toBeRedirectedToNDA;
     }
-    
+ 
     public static Boolean checkNDAValidity(List<Customer_Disclaimer__c> accdt,Terms_and_Conditions__c tc,Map<Id,Datetime> tncToAcceptedDate){
-        Boolean toBeRedirected = false;        
+        Boolean toBeRedirected = false;    
+
         
         //system.now().dateGMT():Return the Date component of a Datetime in the GMT time zone.
         //if user has never logged in and disclaimer updated date is past date or
         //user has logged in before but nda accepted date is less than latest nda date or
         //user has logged in before but nda accepted date has crossed nda validity date 
         if((tc.NDA_Updated_Date_dt__c == null || String.valueOf(tc.NDA_Updated_Date_dt__c) =='')&&
-           (accdt == null || accdt.size()==0 ||
-            (!tncToAcceptedDate.containsKey(tc.Id))||
-            (tncToAcceptedDate.containsKey(tc.Id) && tncToAcceptedDate.get(tc.Id).date().addMonths(Integer.valueOf(tc.Validity_in_mnths_nbr__c)) < system.now().dateGMT())
-           )
+          (accdt == null || accdt.size()==0 ||
+          (!tncToAcceptedDate.containsKey(tc.Id))||
+          (tncToAcceptedDate.containsKey(tc.Id) && tncToAcceptedDate.get(tc.Id).date().addMonths(Integer.valueOf(tc.Validity_in_mnths_nbr__c)) < system.now().dateGMT())
+          )
           ){
-              toBeRedirected = true;  
-          }
+          toBeRedirected = true;  
+        }
         else if((accdt == null || accdt.size()==0 && system.now().dateGMT() >= Date.valueOf(tc.NDA_Updated_Date_dt__c)) || 
-                (!tncToAcceptedDate.containsKey(tc.Id) && system.now().dateGMT() >= Date.valueOf(tc.NDA_Updated_Date_dt__c))||
-                ((tncToAcceptedDate.containsKey(tc.Id) && tncToAcceptedDate.get(tc.Id).date() > Date.valueOf(tc.NDA_Updated_Date_dt__c)) &&
-                 tncToAcceptedDate.get(tc.Id).date().addMonths(Integer.valueOf(tc.Validity_in_mnths_nbr__c)) < system.now().dateGMT())||
-                (tncToAcceptedDate.containsKey(tc.Id) && tncToAcceptedDate.get(tc.Id).date() < Date.valueOf(tc.NDA_Updated_Date_dt__c) &&
-                 system.now().dateGMT() > Date.valueOf(tc.NDA_Updated_Date_dt__c))
-               ){
-                   toBeRedirected = true;
-               }
+            (!tncToAcceptedDate.containsKey(tc.Id) && system.now().dateGMT() >= Date.valueOf(tc.NDA_Updated_Date_dt__c))||
+            ((tncToAcceptedDate.containsKey(tc.Id) && tncToAcceptedDate.get(tc.Id).date() > Date.valueOf(tc.NDA_Updated_Date_dt__c)) &&
+            tncToAcceptedDate.get(tc.Id).date().addMonths(Integer.valueOf(tc.Validity_in_mnths_nbr__c)) < system.now().dateGMT())||
+           (tncToAcceptedDate.containsKey(tc.Id) && tncToAcceptedDate.get(tc.Id).date() < Date.valueOf(tc.NDA_Updated_Date_dt__c) &&
+           system.now().dateGMT() > Date.valueOf(tc.NDA_Updated_Date_dt__c))
+         ){
+            toBeRedirected = true;
+        }
         return toBeRedirected;
     }
     
@@ -165,7 +150,7 @@ public without sharing class CustomerDisclaimer {
     public static List<DisclaimerDetails> getResourceName(String siteUrl) 
     {
         List<DisclaimerDetails> ddList = new List<DisclaimerDetails>{};
-            Map<String,Id> progToRecId = new Map<String,Id>();
+        Map<String,Id> progToRecId = new Map<String,Id>();
         try{
             String nDAtoBeDisplayed = redirect(siteUrl);
             if(nDAtoBeDisplayed == 'true'){              
@@ -183,7 +168,7 @@ public without sharing class CustomerDisclaimer {
                         ddList.add(dd);
                     }       
                 }
-                
+            
             }
             system.debug('ddList:'+ddList);
         }
@@ -215,7 +200,7 @@ public without sharing class CustomerDisclaimer {
             system.debug(' ##cvToLeMap '+cvToLeMap);
         }
         catch(exception ex){ logEntryMsg = Core_MDF_CCP_UtilityClass.getErrorDetails(ex);Core_MDF_CCP_UtilityClass.logErrorinLogObject(logEntryMsg,'Error from LoadNDABody');
-                           }
+        }
         return cvToLeMap;
     }
     

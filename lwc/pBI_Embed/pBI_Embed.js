@@ -1,5 +1,6 @@
 import { LightningElement, api, wire } from 'lwc';
 import { getRecord, getFieldValue } from 'lightning/uiRecordApi';
+import FORM_FACTOR from "@salesforce/client/formFactor";
 import checkAccess from '@salesforce/apex/PBI_Embed_Class.checkAccess'; 
 
 
@@ -17,6 +18,7 @@ export default class PBI_Embed extends LightningElement {
     @api objectApiName;
     hasAccess = false;
     noAccess = false;
+    deviceType;
    
     @wire(getRecord, { recordId: '$recordId', fields: FIELDS })
     account;
@@ -26,7 +28,10 @@ export default class PBI_Embed extends LightningElement {
 
     connectedCallback() { 
         this.checkVisibility();
+        //this.handleFormFactor();
     }
+   
+    
     checkVisibility(){
         console.log('recordId: '+ this.recordId);
         checkAccess({accountID:this.recordId})

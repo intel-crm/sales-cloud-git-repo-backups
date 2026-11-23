@@ -72,7 +72,7 @@
                      <!--Core_IPS_Sales_RepBB_Profile_Name; Core_IPS_Data_Ops_Profile_Name; Core_IPS_Sales_Manager_Profile_Name; Core_IPS_Sales_Ops_Profile_Name; Core_IPS_Sales_RepBBDual_Profile_Name; Core_IPS_Sales_RepCW_Profile_Name-->
                       
                       <!--For External when created by Internal and public [Note to Customer]-->
-                       <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND(externalUser, comnt.createdBy.Profile.name!= $Label.Core_IPS_Profile_Name, comnt.createdBy.Profile.name!= $Label.Core_IPS_CCP_CoreAccess_ProfileName)}"> <!-- TWC745-6044 -Merging IPS Data Migration Profile to generic profile -CCP Core Access-Begin -->
+                       <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND(externalUser, comnt.createdBy.Profile.name!= $Label.Core_IPS_Profile_Name, comnt.createdBy.Profile.name!= $Label.Core_IPS_Data_Migration_Profile_Name)}" > 
                          <b>{!$Label.Core_IPS_CaseRTF_Notetype_InternalPublic}</b>&nbsp; &nbsp; &nbsp; 
                          <b><apex:outputField value="{!comnt.CreatedDate }" /></b> &nbsp; &nbsp; &nbsp; 
                          <b><apex:outputText value="{!comnt.CreatedBy.FirstName}" rendered="{!AND(externalUser, comnt.createdBy.Profile.name!=$Label.Core_IPS_Profile_Name)}"/></b> <br/> 
@@ -89,7 +89,7 @@
                         </apex:column>
                         <!--For External when created by DataMigration and public [Communication Log]-->
                          
-                         <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND(externalUser, comnt.createdBy.Profile.name == $Label.Core_IPS_CCP_CoreAccess_ProfileName)}" >
+                         <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND(externalUser, comnt.createdBy.Profile.name == $Label.Core_IPS_Data_Migration_Profile_Name)}" >
                          <b>{!$Label.Core_IPS_CaseRTF_Notetype_DataMigration}</b>&nbsp; &nbsp; &nbsp; 
                          <b><apex:outputField value="{!comnt.CreatedDate }" /></b> &nbsp; &nbsp; &nbsp; 
                          <b><apex:outputText value="{!comnt.CreatedBy.FirstName}" rendered="{!AND(externalUser, comnt.createdBy.Profile.name!=$Label.Core_IPS_Profile_Name)}"/></b> <br/> 
@@ -97,19 +97,19 @@
                         </apex:column>
                         
                         <!--For Internal when created by Internal and public[Note to Customer]-->
-                         <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND($Profile.Name!=$Label.Core_IPS_Profile_Name, comnt.createdBy.Profile.name!= $Label.Core_IPS_Profile_Name, comnt.createdBy.Profile.name!= $Label.Core_IPS_Sales_RepBB_Profile_Name, comnt.createdBy.Profile.name!= $Label.Core_IPS_Data_Ops_Profile_Name, comnt.createdBy.Profile.name!= $Label.Core_IPS_Sales_Manager_Profile_Name, comnt.createdBy.Profile.name!= $Label.Core_IPS_Sales_Ops_Profile_Name, comnt.createdBy.Profile.name!= $Label.Core_IPS_Sales_RepCW_Profile_Name, comnt.createdBy.Profile.name!= $Label.Core_IPS_CCP_CoreAccess_ProfileName, comnt.Core_IPS_Case_Comment_Type__c == 'Public to Customers' )}" >    
+                         <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND($Profile.Name!=$Label.Core_IPS_Profile_Name, comnt.createdBy.Profile.name!= $Label.Core_IPS_Profile_Name, comnt.createdBy.Profile.name!= $Label.Core_IPS_Sales_RepBB_Profile_Name, comnt.createdBy.Profile.name!= $Label.Core_IPS_Data_Ops_Profile_Name, comnt.createdBy.Profile.name!= $Label.Core_IPS_Sales_Manager_Profile_Name, comnt.createdBy.Profile.name!= $Label.Core_IPS_Sales_Ops_Profile_Name, comnt.createdBy.Profile.name!= $Label.Core_IPS_Sales_RepCW_Profile_Name, comnt.createdBy.Profile.name!= $Label.Core_IPS_Data_Migration_Profile_Name, comnt.Core_IPS_Case_Comment_Type__c == 'Public to Customers' )}" >    
                          <b>{!$Label.Core_IPS_CaseRTF_Notetype_InternalPublic }</b>&nbsp; &nbsp; &nbsp; 
                          <b><apex:outputField value="{!comnt.CreatedDate }" /></b> &nbsp; &nbsp; &nbsp; 
-                         <b><apex:outputField value="{!comnt.CreatedBy.name}" rendered="{!AND($Profile.Name!=$Label.Core_IPS_Profile_Name, comnt.createdBy.Profile.name!= $Label.Core_IPS_Profile_Name, comnt.createdBy.Profile.name!= $Label.Core_IPS_Sales_RepBB_Profile_Name, comnt.createdBy.Profile.name!= $Label.Core_IPS_Data_Ops_Profile_Name, comnt.createdBy.Profile.name!= $Label.Core_IPS_Sales_Manager_Profile_Name, comnt.createdBy.Profile.name!= $Label.Core_IPS_Sales_Ops_Profile_Name, comnt.createdBy.Profile.name!= $Label.Core_IPS_Sales_RepCW_Profile_Name,comnt.createdBy.Profile.name!= $Label.Core_IPS_CCP_CoreAccess_ProfileName, comnt.Core_IPS_Case_Comment_Type__c == 'Public to Customers')}"/></b> <br/>  
+                         <b><apex:outputField value="{!comnt.CreatedBy.name}" rendered="{!AND($Profile.Name!=$Label.Core_IPS_Profile_Name, comnt.createdBy.Profile.name!= $Label.Core_IPS_Profile_Name, comnt.createdBy.Profile.name!= $Label.Core_IPS_Sales_RepBB_Profile_Name, comnt.createdBy.Profile.name!= $Label.Core_IPS_Data_Ops_Profile_Name, comnt.createdBy.Profile.name!= $Label.Core_IPS_Sales_Manager_Profile_Name, comnt.createdBy.Profile.name!= $Label.Core_IPS_Sales_Ops_Profile_Name, comnt.createdBy.Profile.name!= $Label.Core_IPS_Sales_RepCW_Profile_Name,comnt.createdBy.Profile.name!= $Label.Core_IPS_Data_Migration_Profile_Name, comnt.Core_IPS_Case_Comment_Type__c == 'Public to Customers')}"/></b> <br/>  
                          <apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField>
                         </apex:column>
                         
                         <!--For Internal when created by Internal and not public [Internal note]-->
                            
-                           <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND(not(externalUser), comnt.createdBy.Profile.name !=$Label.Core_IPS_Profile_Name,comnt.createdBy.Profile.name!= $Label.Core_IPS_CCP_CoreAccess_ProfileName, comnt.Core_IPS_Case_Comment_Type__c =='Private to Intel')}" >      
+                           <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND(not(externalUser), comnt.createdBy.Profile.name !=$Label.Core_IPS_Profile_Name,comnt.createdBy.Profile.name!= $Label.Core_IPS_Data_Migration_Profile_Name, comnt.Core_IPS_Case_Comment_Type__c =='Private to Intel')}" >      
                              <b>{!$Label.Core_IPS_CaseRTF_Notetype_InternalPrivate}</b>&nbsp; &nbsp; &nbsp; 
                              <b><apex:outputField value="{!comnt.CreatedDate }" /></b> &nbsp; &nbsp; &nbsp; 
-                             <b><apex:outputField value="{!comnt.CreatedBy.name}" rendered="{!AND(not(externalUser), comnt.createdBy.Profile.name!=$Label.Core_IPS_Profile_Name,comnt.createdBy.Profile.name!= $Label.Core_IPS_CCP_CoreAccess_ProfileName, comnt.Core_IPS_Case_Comment_Type__c =='Private to Intel')}"/></b> <br/>      <!-- TWC745-6044 -Merging IPS Data Migration Profile to generic profile -CCP Core Access-End -->
+                             <b><apex:outputField value="{!comnt.CreatedBy.name}" rendered="{!AND(not(externalUser), comnt.createdBy.Profile.name!=$Label.Core_IPS_Profile_Name,comnt.createdBy.Profile.name!= $Label.Core_IPS_Data_Migration_Profile_Name, comnt.Core_IPS_Case_Comment_Type__c =='Private to Intel')}"/></b> <br/>      
                              <apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> 
                             </apex:column>
                               
@@ -184,19 +184,19 @@
                            
                         
                        <!--For Internal when created by DataMigration and not public [Communication Log]-->
-                           <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND(not(externalUser), comnt.createdBy.Profile.name == $Label.Core_IPS_CCP_CoreAccess_ProfileName,comnt.Core_IPS_Case_Comment_Type__c =='Public to Customers')}" > <!-- TWC745-6044 -Merging IPS Data Migration Profile to generic profile -CCP Core Access-Begin -->
+                           <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND(not(externalUser), comnt.createdBy.Profile.name == $Label.Core_IPS_Data_Migration_Profile_Name,comnt.Core_IPS_Case_Comment_Type__c =='Public to Customers')}" >
                              <b>{!$Label.Core_IPS_CaseRTF_Notetype_DataMigration}</b>&nbsp; &nbsp; &nbsp; 
                              <b><apex:outputField value="{!comnt.CreatedDate }" /></b> &nbsp; &nbsp; &nbsp; 
-                             <b><apex:outputText value="{!comnt.CreatedBy.Name}" rendered="{!AND(not(externalUser), comnt.createdBy.Profile.name == $Label.Core_IPS_CCP_CoreAccess_ProfileName,comnt.Core_IPS_Case_Comment_Type__c =='Public to Customers')}"/></b> <br/>                
+                             <b><apex:outputText value="{!comnt.CreatedBy.Name}" rendered="{!AND(not(externalUser), comnt.createdBy.Profile.name == $Label.Core_IPS_Data_Migration_Profile_Name,comnt.Core_IPS_Case_Comment_Type__c =='Public to Customers')}"/></b> <br/>                
                              <apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField>
                             </apex:column>
                             
                             
                         <!--For Internal when created by DataMigration and public[Communication Log]-->
-                            <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND(not(externalUser), comnt.createdBy.Profile.name == $Label.Core_IPS_CCP_CoreAccess_ProfileName, comnt.Core_IPS_Case_Comment_Type__c =='Public to Customers')}" >  
+                            <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND(not(externalUser), comnt.createdBy.Profile.name == $Label.Core_IPS_Data_Migration_Profile_Name, comnt.Core_IPS_Case_Comment_Type__c =='Public to Customers')}" >  
                              <b>{!$Label.Core_IPS_CaseRTF_Notetype_DataMigration }</b>&nbsp; &nbsp; &nbsp; 
                              <b><apex:outputField value="{!comnt.CreatedDate }" /></b> &nbsp; &nbsp; &nbsp; 
-                             <b><apex:outputField value="{!comnt.CreatedBy.name}" rendered="{!AND(not(externalUser), comnt.createdBy.Profile.name == $Label.Core_IPS_CCP_CoreAccess_ProfileName, comnt.Core_IPS_Case_Comment_Type__c =='Public to Customers')}"/></b> <br/>   
+                             <b><apex:outputField value="{!comnt.CreatedBy.name}" rendered="{!AND(not(externalUser), comnt.createdBy.Profile.name == $Label.Core_IPS_Data_Migration_Profile_Name, comnt.Core_IPS_Case_Comment_Type__c =='Public to Customers')}"/></b> <br/>   
                              <apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField>
                             </apex:column>
                             
@@ -205,7 +205,7 @@
                             <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND((userHasAccess),comnt.Core_IPS_Case_Comment_Type__c=='Private to Agents') }">                                                 
                                 <b>{!$Label.Core_IPS_CaseRTF_Notetype_PrivateToAgents }</b>  &nbsp; &nbsp; &nbsp; 
                               <b><apex:outputField value="{!comnt.CreatedDate }" /></b> &nbsp; &nbsp; &nbsp; 
-                              <b><apex:outputField value="{!comnt.CreatedBy.name}" rendered="{!AND((userHasAccess),comnt.createdBy.Profile.name == $Label.Core_IPS_CCP_CoreAccess_ProfileName,comnt.Core_IPS_Case_Comment_Type__c=='Private to Agents')}" /></b> <br/> <!-- TWC745-6044 -Merging IPS Data Migration Profile to generic profile -CCP Core Access-End -->
+                              <b><apex:outputField value="{!comnt.CreatedBy.name}" rendered="{!AND((userHasAccess),comnt.createdBy.Profile.name == $Label.Core_IPS_Data_Migration_Profile_Name,comnt.Core_IPS_Case_Comment_Type__c=='Private to Agents')}" /></b> <br/> 
                               <apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField>                         
                             </apex:column>  
                             

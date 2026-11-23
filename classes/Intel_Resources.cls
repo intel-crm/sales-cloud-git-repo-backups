@@ -11,13 +11,10 @@
 **************************************************************************************************************************************************************************/
 // RESOURCES
     public class Intel_Resources extends Intel_Input {
-        public static Boolean isWorking() {
-        return true;
-    }
-      // { type = 'resources'; }
-      // { apiName = 'resources'; }
-      // public String titleField { get; set; } { titleField = 'Name'; }
-      // public String urlField { get; set; } { urlField = 'PMP_Partner_Offering_Resource_URL_Txt__c'; }
-      // public String typeField { get; set; } { typeField = 'PMP_Resource_Type_Nm__c'; }
-      // public List<Intel_DropdownOption> typeOptions { get; set; } { typeOptions = new List<Intel_DropdownOption>(); }
+      { type = 'resources'; }
+      { apiName = 'resources'; }
+      public String titleField { get; set; } { titleField = 'Name'; }
+      public String urlField { get; set; } { urlField = 'PMP_Partner_Offering_Resource_URL_Txt__c'; }
+      public String typeField { get; set; } { typeField = 'PMP_Resource_Type_Nm__c'; }
+      public List<Intel_DropdownOption> typeOptions { get; set; } { typeOptions = new List<Intel_DropdownOption>(); }
     }

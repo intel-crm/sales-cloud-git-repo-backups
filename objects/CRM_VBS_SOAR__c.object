@@ -658,18 +658,6 @@
                     <isActive>false</isActive>
                     <label>Paid Partnerships</label>
                 </value>
-                <value>
-                    <fullName>Paid Services</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Paid Services</label>
-                </value>
-                <value>
-                    <fullName>Performance Optimization</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Performance Optimization</label>
-                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -731,6 +719,7 @@
                 </value>
                 <value>
                     <fullName>SOAR5 - Lessons Learned</fullName>
+                    <color>#FFFFFF</color>
                     <default>false</default>
                     <label>SOAR5 - Lessons Learned</label>
                 </value>
@@ -761,11 +750,6 @@
                     <label>SOAR1 Un-qualified</label>
                 </value>
                 <value>
-                    <fullName>SOAR3 Approved</fullName>
-                    <default>false</default>
-                    <label>SOAR3 Approved</label>
-                </value>
-                <value>
                     <fullName>SOAR3 Denied</fullName>
                     <default>false</default>
                     <label>SOAR3 Denied</label>
@@ -779,6 +763,11 @@
                     <fullName>SOAR4 Contract Not Signed</fullName>
                     <default>false</default>
                     <label>SOAR4 Contract Not Signed</label>
+                </value>
+                <value>
+                    <fullName>SOAR3 Approved</fullName>
+                    <default>false</default>
+                    <label>SOAR3 Approved</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -865,6 +854,22 @@ NOT(ISPICKVAL(PRIORVALUE(CRM_VBS_SOAR_VBS_Decision__c ), &apos;SOAR3 Approved&ap
         <errorConditionFormula>IF($Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c=TRUE,FALSE,IF(AND(OR(ISCHANGED( CRM_VBS_Annual_Recurring_Revenue__c ), ISCHANGED( CRM_VBS_Contract_Lifetime_in_Months__c), ISCHANGED( CRM_VBS_Contract_Start_Date__c ) , ISCHANGED( CRM_VBS_Total_Contract_Value__c )), $User.Id != CRM_VBS_QB_Resource__c, $Profile.Name != &quot;Data Ops&quot;, NOT($Permission.CRM_SOAR_Committee)) , TRUE, FALSE))</errorConditionFormula>
         <errorDisplayField>CRM_VBS_Annual_Recurring_Revenue__c</errorDisplayField>
         <errorMessage>You do not have access to change the contract information. Only the assigned Quarter Back/SOAR Committee/Data Ops can do it.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CRM_VBS_Contract_Field_Change</fullName>
+        <active>false</active>
+        <errorConditionFormula>NOT($Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c) || AND(
+            OR(
+                ISNULL(CRM_VBS_Annual_Recurring_Revenue__c), 
+                ISNULL(CRM_VBS_Contract_Lifetime_in_Months__c), 
+                ISNULL(CRM_VBS_Contract_Start_Date__c), 
+                ISNULL(CRM_VBS_Total_Contract_Value__c)
+            ), ISCHANGED(CRM_VBS_SOAR_Stage__c), 
+            ISPICKVAL(CRM_VBS_SOAR_VBS_Decision__c , &apos;Contract Signed&apos;), 
+            ISPICKVAL(PRIORVALUE(CRM_VBS_SOAR_Stage__c), &apos;SOAR4 - Present to Customer&apos;), 
+            ISPICKVAL(CRM_VBS_SOAR_Stage__c,&apos;SOAR5 - Lessons Learned&apos;)
+        )</errorConditionFormula>
+        <errorMessage>Please enter the following mandatory contract information: Annual Recurring Revenue, Contract Lifetime, Contract Start Date, Total Contract Value.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>CRM_VBS_Contract_Fields_Check</fullName>
@@ -982,4 +987,23 @@ ISCHANGED(CRM_VBS_SOAR_Stage__c)),TRUE,FALSE))</errorConditionFormula>
         <errorMessage>Please enter a numeric value.</errorMessage>
     </validationRules>
     <visibility>Public</visibility>
+    <webLinks>
+        <fullName>CRM_VBS_Refresh</fullName>
+        <availability>online</availability>
+        <displayType>link</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>CRM_VBS_Refresh</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>/apex/CRM_VBS_refreshSOAR</url>
+    </webLinks>
 </CustomObject>

@@ -20,7 +20,7 @@ Modification Log :
 *                                                   formatting so it works better with Developer Console auto-formatting.
 *********************************************************************************************************************/
 
-public virtual without sharing class TriggerHandler {
+public virtual class TriggerHandler {
 
     /************* INTEL CODE **************/
     // Collections for optional consolidated DML at the end of trigger execution
@@ -121,6 +121,7 @@ public virtual without sharing class TriggerHandler {
     }
     
     /************* INTEL CODE **************/
+    @AuraEnabled
     public static Boolean isActive(String functionalityName) {
         
         // Note: querying custom metadata is faster than normal SOQL, since it's cached,

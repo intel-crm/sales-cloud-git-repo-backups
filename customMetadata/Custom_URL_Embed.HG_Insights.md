@@ -31,6 +31,10 @@
         <value xsi:nil="true"/>
     </values>
     <values>
+        <field>Dynamic_Filter_and_Value__c</field>
+        <value xsi:type="xsd:string">Firmo%2FUnified_x0020_Global_x0020_Customer_x0020_BPID%20eq :Core_Unified_Global_Customer_BP_Id__c</value>
+    </values>
+    <values>
         <field>Dynamic_Filter_and_Value_txt__c</field>
         <value xsi:type="xsd:string">Firmo%2FUnified_x0020_Global_x0020_Customer_x0020_BPID%20eq :Core_Unified_Global_Customer_BP_Id__c</value>
     </values>
@@ -43,6 +47,10 @@
         <value xsi:nil="true"/>
     </values>
     <values>
+        <field>No_Access_Error__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
         <field>No_Access_Error_txt__c</field>
         <value xsi:nil="true"/>
     </values>
@@ -52,7 +60,11 @@
     </values>
     <values>
         <field>Project__c</field>
-        <value xsi:type="xsd:string">CRM</value>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Security_Query__c</field>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>Security_Query_txt__c</field>
@@ -61,6 +73,10 @@
     <values>
         <field>Security_enforced__c</field>
         <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>Static_Filter_and_Value__c</field>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>Static_Filter_and_Value_txt__c</field>
@@ -73,6 +89,10 @@
     <values>
         <field>URL__c</field>
         <value xsi:type="xsd:string">https://app.powerbi.com/reportEmbed?reportId=4a31512c-0e2a-4dc6-b801-ed13afe2ab82&amp;autoAuth=true&amp;ctid=46c98d88-e344-4ed4-8496-4ed7712e255d&amp;filter=</value>
+    </values>
+    <values>
+        <field>User_Filter_and_Value__c</field>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>User_Filter_and_Value_txt__c</field>

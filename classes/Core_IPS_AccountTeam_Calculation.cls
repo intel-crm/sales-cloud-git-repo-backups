@@ -1,4 +1,4 @@
-public without sharing class Core_IPS_AccountTeam_Calculation {
+public class Core_IPS_AccountTeam_Calculation {
     public Id accId{get;set;}
     List<AccountShare> ashareList;
     List<AccountShare> aShareInsertList;
@@ -7,7 +7,7 @@ public without sharing class Core_IPS_AccountTeam_Calculation {
     List<Core_Account_Team__c> toInsertList;
     List<Core_Account_Team__c> toDeleteList;
     public string context{get;set;}
-    public String successStatus {get;set;} /* US967150 --- 02/06/21--- Sai krishna--- Stored XSS--- appsec security vulnerability */
+    public Boolean successStatus {get;set;}
     public Batch_Processing_Line_Item__c lineItem{get;set;}
     public id batchProcessingId{get;set;}
     public Core_IPS_AccountTeam_Calculation(ApexPages.StandardController controller) {
@@ -32,20 +32,11 @@ public without sharing class Core_IPS_AccountTeam_Calculation {
     public pagereference calculateTeam(){      
       if(accId <> null){
           if(Test.isRunningTest()){
-              //FLS Check Added - Yasasvi
-              if(accountshare.SObjectType.getDescribe().isAccessible()){
               aShareList = [select rowcause, caseaccesslevel, opportunityaccesslevel, accountaccesslevel, userorgroupid, accountid from accountshare where accountid in(select AccountId from Accountteammember) and userorgroupid in(select userid from Accountteammember) and AccountId =:accId];
-                  }
           }else{
-              //FLS Check Added - Yasasvi
-              if(accountshare.SObjectType.getDescribe().isAccessible()){
               aShareList = [select rowcause, caseaccesslevel, opportunityaccesslevel, accountaccesslevel, userorgroupid, accountid from accountshare where accountid in(select AccountId from Accountteammember) and userorgroupid in(select userid from Accountteammember) and AccountId =:accId and Rowcause = 'Team'];
-                  }
           }
-          //FLS Check Added - Yasasvi
-          if(Core_Account_Team__c.SObjectType.getDescribe().isAccessible()){
           custom_atmList = [select Id,Core_Team_Member__c,Core_Case_Access__c,Core_Account__c,Core_Opportunity_Access__c,Core_Account_Access__c from Core_Account_Team__c where Core_Account__c =:accId];
-          }
       }
       if(aShareList <> null && aShareList.size() > 0){
           for(AccountShare actShareObj:aShareList){
@@ -96,9 +87,13 @@ public without sharing class Core_IPS_AccountTeam_Calculation {
                   }
             }              
       }      
-         
+      //System.debug('########1########'+aShareDeleteList);
+      System.debug('########2########'+toDeleteList);
+      System.debug('########3########'+toUpdateList);            
+      System.debug('########4########'+toInsertList);     
       try{
           if(toInsertList <> null && toInsertList.size() > 0){
+              System.debug('@@@@@@Insert@@@@@');
               if(context=='Batch'){
                 lineItem.Core_Change_Log__c+='<tr><th>New AccountTeam Members</th><th>'+toInsertList.size()+'</th></tr>';
                 lineItem.Core_Number_of_Inserts__c = toInsertList.size();
@@ -107,16 +102,16 @@ public without sharing class Core_IPS_AccountTeam_Calculation {
               
           }
           if(toUpdateList <> null && toUpdateList.size() > 0){
-
-            if(context=='Batch'){
+              System.debug('@@@@@@Update@@@@@');
+              if(context=='Batch'){
                 lineItem.Core_Change_Log__c+='<tr><th>Updated AccountTeam Members</th><th>'+toUpdateList.size()+'</th></tr>';
                 lineItem.Core_Number_of_Updates__c = toUpdateList.size();
               }
               update toUpdateList;
           }
           if(toDeleteList <> null && toDeleteList.size() > 0){
-
-            if(context=='Batch'){
+              System.debug('@@@@@@Delete@@@@@');
+              if(context=='Batch'){
                 lineItem.Core_Change_Log__c+='<tr><th>Deleted AccountTeam Members</th><th>'+toDeleteList.size()+'</th></tr>';
                 lineItem.Core_Number_of_Deletes__c = toDeleteList.size();
               }
@@ -126,7 +121,7 @@ public without sharing class Core_IPS_AccountTeam_Calculation {
                lineItem.Core_Change_Log__c+='</table>';
                insert lineItem;
            }
-          successStatus = 'true'; /* US967150 --- 02/06/21--- Sai krishna--- Stored XSS--- appsec security vulnerability */
+          successStatus = true;
           return null;
       }catch(Exception e){
         lineItem.Exception_Log__c = e.getMessage();

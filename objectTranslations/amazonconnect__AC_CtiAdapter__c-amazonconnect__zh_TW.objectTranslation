@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>AC CTI 轉接器</value>
+    </caseValues>
+    <fields>
+        <label>開啟音訊裝置設定</label>
+        <name>amazonconnect__AudioDeviceSettings__c</name>
+    </fields>
+    <fields>
+        <label><!-- Automatic CCP Single Sign On (SSO) --></label>
+        <name>amazonconnect__AutomaticCCPSingleSignOn__c</name>
+    </fields>
+    <fields>
+        <label><!-- Bottom Panel --></label>
+        <name>amazonconnect__BottomPanel__c</name>
+    </fields>
+    <fields>
+        <label> 客服中心定義名稱 </label>
+        <name>amazonconnect__CallCenter__c</name>
+    </fields>
+    <fields>
+        <label> CCP 版本 </label>
+        <name>amazonconnect__CcpVersion__c</name>
+        <picklistValues>
+            <masterLabel>v1</masterLabel>
+            <translation><!-- v1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>v2</masterLabel>
+            <translation><!-- v2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label> 與執行個體連線 - 請勿使用 </label>
+        <name>amazonconnect__ConnectInstance__c</name>
+    </fields>
+    <fields>
+        <label>自訂聊天鈴聲</label>
+        <name>amazonconnect__CustomChatRingtone__c</name>
+    </fields>
+    <fields>
+        <label> 自訂鈴聲 </label>
+        <name>amazonconnect__CustomRingtone__c</name>
+    </fields>
+    <fields>
+        <label> 偵錯層級 </label>
+        <name>amazonconnect__DebugLevel__c</name>
+    </fields>
+    <fields>
+        <label>停用回音取消</label>
+        <name>amazonconnect__DisableEchoCancellation__c</name>
+    </fields>
+    <fields>
+        <label>通話前麥克風捕捉</label>
+        <name>amazonconnect__EarlyGum__c</name>
+    </fields>
+    <fields>
+        <label><!-- Enable Softphone Popout --></label>
+        <name>amazonconnect__EnableSoftphonePopout__c</name>
+    </fields>
+    <fields>
+        <label>執行個體 ARN</label>
+        <name>amazonconnect__InstanceArn__c</name>
+    </fields>
+    <fields>
+        <label> Amazon Connect 執行個體別名 </label>
+        <name>amazonconnect__Instance__c</name>
+    </fields>
+    <fields>
+        <label> 無媒體 </label>
+        <name>amazonconnect__Medialess__c</name>
+    </fields>
+    <fields>
+        <help><!-- Optional: This is the Named Credential used for the &quot;Recording Controls&quot; feature. If this is empty, a default value of &quot;AmazonConnectAPI&quot; will be assumed. --></help>
+        <label>已命名認證</label>
+        <name>amazonconnect__NamedCredential__c</name>
+    </fields>
+    <fields>
+        <label>電話類型設定</label>
+        <name>amazonconnect__PhoneTypeSettings__c</name>
+    </fields>
+    <fields>
+        <label> 已啟用顯示同步 </label>
+        <name>amazonconnect__PresenceSyncEnabled__c</name>
+    </fields>
+    <fields>
+        <label> Amazon Connect 執行個體區域 </label>
+        <name>amazonconnect__Region__c</name>
+    </fields>
+    <fields>
+        <label> 已啟用軟體電話快顯 </label>
+        <name>amazonconnect__SoftphonePopoutEnabled__c</name>
+    </fields>
+    <fields>
+        <label> SSO 轉送狀態 </label>
+        <name>amazonconnect__SsoRelayState__c</name>
+    </fields>
+    <fields>
+        <label> SSO URL </label>
+        <name>amazonconnect__SsoUrl__c</name>
+    </fields>
+    <fields>
+        <label><!-- User Defined --></label>
+        <name>amazonconnect__UserDefined__c</name>
+    </fields>
+    <nameFieldLabel>CTI 轉接器</nameFieldLabel>
+</CustomObjectTranslation>

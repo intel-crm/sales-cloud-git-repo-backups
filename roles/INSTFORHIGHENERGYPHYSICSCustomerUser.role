@@ -6,5 +6,5 @@
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>INST FOR HIGH ENERGY PHYSICS Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>INSTFORHIGHENERGYPHYSICSCustomerManager</parentRole>
 </Role>

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Rebate Claim Upload</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Rebate Claim Upload</value>
+    </caseValues>
+    <fieldSets>
+        <label><!-- RebateClaimFields --></label>
+        <name>PCC_RebateClaimFields</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- PCC_Rebate_Claim_Stage_BU_Fieldset --></label>
+        <name>PCC_Rebate_Claim_Stage_BU_Fieldset</name>
+    </fieldSets>
+    <fields>
+        <label><!-- Consumption Countries --></label>
+        <name>PCC_Country__c</name>
+    </fields>
+    <fields>
+        <label><!-- Error Message --></label>
+        <name>PCC_Error_Message__c</name>
+    </fields>
+    <fields>
+        <label><!-- Error Message --></label>
+        <name>PCC_Error_Messages__c</name>
+    </fields>
+    <fields>
+        <label><!-- Invoice Date --></label>
+        <name>PCC_Invoice_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Error Message New --></label>
+        <name>PCC_Message__c</name>
+    </fields>
+    <fields>
+        <label><!-- OEM --></label>
+        <name>PCC_OEM__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity --></label>
+        <name>PCC_Opportunity__c</name>
+        <relationshipLabel><!-- Rebate Claim Upload --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Parent Record --></label>
+        <name>PCC_Parent_Record__c</name>
+        <relationshipLabel><!-- Rebate Claim Upload --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Partner Contact --></label>
+        <name>PCC_Partner_Contact__c</name>
+        <relationshipLabel><!-- Rebate Claim Upload --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Partner --></label>
+        <name>PCC_Partner__c</name>
+        <relationshipLabel><!-- Rebate Claim Upload --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Product --></label>
+        <name>PCC_ProductId__c</name>
+        <relationshipLabel><!-- Rebate Claim Upload --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Product Name --></label>
+        <name>PCC_Product__c</name>
+    </fields>
+    <fields>
+        <label><!-- Claim Quantity --></label>
+        <name>PCC_Quantity__c</name>
+    </fields>
+    <fields>
+        <label><!-- Invoice Number --></label>
+        <name>PCC_Quote_Invoice_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quote Line --></label>
+        <name>PCC_Quote_Line_Id__c</name>
+        <relationshipLabel><!-- Rebate Claim Upload --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Quote Line Number --></label>
+        <name>PCC_Quote_Line_Number__c</name>
+    </fields>
+    <fields>
+        <help><!-- Unique number generated on successful processing of uploaded Partner Rebate Claim --></help>
+        <label><!-- Rebate Claim Number --></label>
+        <name>PCC_Rebate_Claim__c</name>
+        <relationshipLabel><!-- Rebate Claim Upload --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Outcome of Partner Uploaded Rebate Claim Template --></help>
+        <label><!-- Status --></label>
+        <name>PCC_Status__c</name>
+        <picklistValues>
+            <masterLabel>Failed</masterLabel>
+            <translation><!-- Failed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending</masterLabel>
+            <translation><!-- Pending --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Success</masterLabel>
+            <translation><!-- Success --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Submitted Claim Rebate Amount --></label>
+        <name>PCC_Submitted_Claim_Rebate_Amount__c</name>
+    </fields>
+    <fields>
+        <help><!-- Total Number of Quote Lines in Rebate Claim Template --></help>
+        <label><!-- Total Number of Quote Line Items --></label>
+        <name>PCC_Total_Number_of_Line_Items__c</name>
+    </fields>
+    <recordTypes>
+        <label><!-- Header --></label>
+        <name>Header</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Line Items --></label>
+        <name>Line_Items</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+    <webLinks>
+        <label><!-- View_Rebate_Claim_Upload_History --></label>
+        <name>View_Rebate_Claim_Upload_History</name>
+    </webLinks>
+</CustomObjectTranslation>

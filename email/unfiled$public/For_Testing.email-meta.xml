@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <letterhead>Blank</letterhead>
+    <name>For Testing</name>
+    <style>formalLetter</style>
+    <subject>Testing CNDA request</subject>
+    <textOnly>Hi Janakiraman Test,
+
+
+You are receiving this alert because this person has requested access to the Resource and Design Center and needs CNDA verification/creation. Please take a look at the details below and reach out within three business days to enable access (if applicable).
+
+
+Click here to see this person’s full profile in Salesforce CRM »
+
+
+Here are the person’s details:
+
+
+First Name: FN520
+
+Last Name: Ln520
+
+Company:
+
+Job Title:
+
+Phone Number: 09894140573
+
+Email: test5140615@mailinator.com
+
+
+How they found us originally:
+
+
+
+Some details about their Inquiry:
+
+
+Area of Interest:
+
+Purchase Timeframe:
+
+Project Details:
+
+
+Please remember to log any calls or emails you make when engaging with this person. If you have questions regarding how to manage any Lead/Inquiry assigned to you, please visit our Sales CRM training website
+
+
+
+Sincerely,
+
+Your Marketing Automation Team</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

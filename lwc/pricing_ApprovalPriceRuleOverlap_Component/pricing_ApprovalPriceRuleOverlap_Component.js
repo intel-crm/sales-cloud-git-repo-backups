@@ -3,8 +3,6 @@ import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import overlapApprovalPriceRule from '@salesforce/apex/Pricing_QuoteLine_AutoApprovalController.isOverlapApprovalPriceRule';
 import approvalPriceRuleSuccessMsg from '@salesforce/label/c.Pricing_ApprovalPriceRule_Success_Msg';
 import approvalPriceRuleOverlapMsg from '@salesforce/label/c.Pricing_ApprovalPriceRule_Overlap_Msg';
-import approvalPriceRuleNoProducts from '@salesforce/label/c.Pricing_ApprovalPriceRule_NoProducts_Msg';
-import approvalPriceRuleSubmissionMsg from '@salesforce/label/c.Pricing_ApprovalPriceRule_Submission_Msg';
 import { getRecordNotifyChange } from 'lightning/uiRecordApi';
 
 export default class Pricing_ApprovalPriceRuleOverlap_Component extends LightningElement {
@@ -29,7 +27,7 @@ export default class Pricing_ApprovalPriceRuleOverlap_Component extends Lightnin
                 console.log('msgqq:'+msg);
                 const toastErrorMessage = new ShowToastEvent({
                 title: 'Error',
-                message:  msg == approvalPriceRuleNoProducts || msg == approvalPriceRuleSubmissionMsg ? String(msg) : approvalPriceRuleOverlapMsg + ' ' + String(msg),
+                message:  msg == 'Please check Products and do Submit Record' || msg == 'You can submit record only when status is in Draft.Please check status.' ? String(msg) : approvalPriceRuleOverlapMsg + ' ' + String(msg),
                 variant: 'error',
                 mode: 'dismissable'
                 });

@@ -1,0 +1,123 @@
+<apex:page controller="GEN_SearchLicenseController"  lightningStylesheets="true" >
+   <style>
+      .lightButton{
+            position:relative;
+            display:inline-block;
+            font-size:.75rem;
+            line-height: 1.875rem
+            text-decoration:none;
+            white-space: normal;
+            border-radius:.25rem;
+            background:transparent;
+            background-clip:border-box;
+            color:rgba(27, 82, 151, 1);
+            user-select:none;
+            padding:.25rem;
+            text-align: center;
+            vertical-align: middle;
+            border: 1px solid rgb(221, 219, 218);
+            transition: border 0.15s linear;
+            border-color: rgb(221, 219, 218);
+            background-color:rgb(255, 255, 255);
+            margin-right:80%
+            
+        }
+        
+        .roundImg{
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            max-width: none;
+            vertical-align:middle
+        }
+        .skypeImage{
+            width: 5%;
+            height: 115%;
+            max-width: none;
+            vertical-align:middle
+        }
+        .emailImage{
+            width: 4%;
+            height: 21%;
+            max-width: none;
+            vertical-align:middle
+        }
+        .activeTab1 {
+        background-color: #8A9744;
+        background-image:none; 
+        padding-top:5px;
+        height:15px;
+        color:white;
+        }
+        
+        . { 
+        background-color: lightgrey; 
+        color:black; 
+        background-image:none
+        }
+        
+        .activeTab{
+            display: flex;
+            align-content: center;
+            align-items: center;
+            flex-grow: 1;
+            padding: 0 var(--lwc-spacingSmall,0.75rem);
+            border-radius: 0;
+            min-width: 0%;
+            color: inherit;
+            font-size: var(--lwc-fontSize3,0.8125rem);
+            z-index: 1
+        }
+        
+        
+        .inactiveTab{   
+            display: flex;
+            align-content: center;
+            align-items: stretch;
+            white-space: nowrap;
+            position: relative;
+            max-width: var(--lwc-sizeSmall,15rem);
+            transition: background-color .25s cubic-bezier(0.39, 0.575, 0.565, 1)
+        }
+    </style>
+    
+    <!-- Lookup -->
+            <apex:form id="searchWithContact"> --> 
+                <div align="center">
+                    <apex:outputText value="Select Contact" style="font-size:20px;font-weight:bold"/> &nbsp;&nbsp;
+                    <apex:inputField id="Contact" value="{!adminDelegate.Sales_License_PrimaryAdmin_Contact__c}"/> <br/>
+                    <apex:actionStatus id="searchingResults">
+                    <apex:facet name="stop">
+                        <apex:commandButton value="Search Licenses" action="{!searchLicenses}" rerender="searchWithContact" status="searchingResults,licenses"/>
+                    </apex:facet>
+                    <apex:facet name="start">
+                        <img src="/img/loading.gif" width="30" height="30" style="vertical-align:middle;"/>  Please wait while data is being searched
+                    </apex:facet>
+                    </apex:actionStatus>
+                </div>    
+                
+            </apex:form>
+            <!--lookup end-->
+            
+            
+            <br/><br/>
+            
+            <!-- To display list of Public Groups in which user is added -->
+            <apex:form id="licenses">
+                <apex:pageBlock title="Licenses" rendered="{!IF(AND(licenseList!=null,licenseList.size>=1),true,false)}"  >
+                    <apex:pageBlockTable value="{!licenseList}" var="licenseRecord" >
+                    <!--     <apex:column headerValue="License Id">
+                           <apex:commandLink target="_blank" value=" {!licenseRecord.Id}" action="{!redirecttoPublicGroup}">
+                                <apex:param name="groupId" value="{!licenseRecord.GroupId}" assignTo="{!groupId}"/>
+                            </apex:commandLink> 
+                        </apex:column>-->
+                        <apex:column value="{!licenseRecord.id}"/>
+                        <apex:column value="{!licenseRecord.Name}"/>
+                        
+                    </apex:pageBlockTable>
+                </apex:pageBlock>
+            </apex:form>
+             
+            
+    
+</apex:page>

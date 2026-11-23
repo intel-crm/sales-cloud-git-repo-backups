@@ -10,6 +10,6 @@
 *****************************************************************************************************************************************/
 trigger Core_MDF_BudgetCap on Core_MDF_Budget_Cap__c (before insert, before update, after insert, after update) {
     
-    new Core_MDF_BudgetCapTriggerHandler().run();
+	new Core_MDF_BudgetCapTriggerHandler().run();
     
 }

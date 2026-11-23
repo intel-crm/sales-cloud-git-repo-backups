@@ -128,7 +128,7 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <comment>Action override updated by Lightning App Builder during activation.</comment>
         <content>CPT_Territory_Target_Record_Page</content>
         <formFactor>Large</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
@@ -179,11 +179,11 @@
     </fields>
     <fields>
         <fullName>CPT_BR_All_Target__c</fullName>
-        <defaultValue>(0)</defaultValue>
+        <defaultValue>0</defaultValue>
         <description>Billings Revenue Target amount.</description>
         <label>BR - All Target</label>
         <precision>12</precision>
-        <required>true</required>
+        <required>false</required>
         <scale>0</scale>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
@@ -191,22 +191,11 @@
     </fields>
     <fields>
         <fullName>CPT_BR_CCG_Target__c</fullName>
-        <defaultValue>(0)</defaultValue>
+        <defaultValue>0</defaultValue>
         <description>Billing Revenue target amount for CCG Division.</description>
-        <label>BR - CCG Target</label>
+        <label>BR - CCPG Target</label>
         <precision>12</precision>
         <required>true</required>
-        <scale>0</scale>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Currency</type>
-    </fields>
-    <fields>
-        <fullName>CPT_BR_DCAI_DAIS_Target__c</fullName>
-        <defaultValue>(0)</defaultValue>
-        <label>BR - DCAI Accelerator Target</label>
-        <precision>12</precision>
-        <required>false</required>
         <scale>0</scale>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
@@ -218,41 +207,6 @@
         <label>BR - DCG Target</label>
         <precision>12</precision>
         <required>true</required>
-        <scale>0</scale>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Currency</type>
-    </fields>
-    <fields>
-        <fullName>CPT_BR_Intel_AI_PC_Target__c</fullName>
-        <defaultValue>(0)</defaultValue>
-        <description>Billings Revenue Target for AI PC .</description>
-        <label>BR - Intel AI PC Target</label>
-        <precision>12</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Currency</type>
-    </fields>
-    <fields>
-        <fullName>CPT_BR_NEX_Ethernet_Target__c</fullName>
-        <defaultValue>0</defaultValue>
-        <label>BR - DCAI Ethernet Target</label>
-        <precision>12</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Currency</type>
-    </fields>
-    <fields>
-        <fullName>CPT_CR_CCG_One_Intel_OEM_Target__c</fullName>
-        <defaultValue>(0)</defaultValue>
-        <description>Consumption Revenue target amount for CCG One Intel OEM</description>
-        <label>CR - One Intel OEM Target</label>
-        <precision>12</precision>
-        <required>false</required>
         <scale>0</scale>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
@@ -294,10 +248,9 @@
     </fields>
     <fields>
         <fullName>CPT_MarVol_Margin_CCG_Target__c</fullName>
-        <defaultValue>(0)</defaultValue>
         <label>MarVol - Margin CCG Target</label>
         <precision>18</precision>
-        <required>true</required>
+        <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -305,10 +258,9 @@
     </fields>
     <fields>
         <fullName>CPT_MarVol_Margin_DCG_Target__c</fullName>
-        <defaultValue>(0)</defaultValue>
         <label>MarVol - Margin DCG Target</label>
         <precision>18</precision>
-        <required>true</required>
+        <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -316,11 +268,10 @@
     </fields>
     <fields>
         <fullName>CPT_MarVol_Next_Gen_CCG_LNL_Target__c</fullName>
-        <defaultValue>(0)</defaultValue>
         <externalId>false</externalId>
         <label>MarVol - Next Gen CCG LNL Target</label>
         <precision>18</precision>
-        <required>true</required>
+        <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -329,11 +280,10 @@
     </fields>
     <fields>
         <fullName>CPT_MarVol_Next_Gen_CCG_PTL_Target__c</fullName>
-        <defaultValue>(0)</defaultValue>
         <externalId>false</externalId>
         <label>MarVol - Next Gen CCG PTL Target</label>
         <precision>18</precision>
-        <required>true</required>
+        <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -342,11 +292,10 @@
     </fields>
     <fields>
         <fullName>CPT_MarVol_Next_Gen_CCG_WCL_Target__c</fullName>
-        <defaultValue>(0)</defaultValue>
         <externalId>false</externalId>
         <label>MarVol - Next Gen CCG WCL Target</label>
         <precision>18</precision>
-        <required>true</required>
+        <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -355,11 +304,10 @@
     </fields>
     <fields>
         <fullName>CPT_MarVol_Next_Gen_DCG_GNR_Target__c</fullName>
-        <defaultValue>(0)</defaultValue>
         <externalId>false</externalId>
         <label>MarVol - Next Gen DCG GNR Target</label>
         <precision>18</precision>
-        <required>true</required>
+        <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -387,24 +335,41 @@
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
+    <fields>
+        <fullName>CPT_Wins_Deal_Target__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>Deal Wins Target amount.</description>
+        <inlineHelpText>Enter the required target amount for deal wins in this territory. This field is mandatory. Use whole numbers only. Default is 0. No decimal places allowed.</inlineHelpText>
+        <label>Wins - Deal Target</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>CPT_Wins_Design_Target__c</fullName>
+        <description>Design Wins Target amount.</description>
+        <label>Wins - Design Target</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
     <label>Territory Target</label>
     <listViews>
         <fullName>All_Records</fullName>
         <columns>NAME</columns>
         <columns>CPT_Account_Territory__c</columns>
         <columns>CPT_Quota_Period__c</columns>
-        <columns>CPT_BR_All_Target__c</columns>
         <columns>CPT_BR_CCG_Target__c</columns>
         <columns>CPT_BR_DCAI_Target__c</columns>
         <columns>CPT_CR_OEM_Target__c</columns>
         <columns>CPT_CR_Retail_Target__c</columns>
         <columns>CPT_CR_Partner_Target__c</columns>
-        <columns>CPT_MarVol_Margin_CCG_Target__c</columns>
-        <columns>CPT_MarVol_Margin_DCG_Target__c</columns>
-        <columns>CPT_MarVol_Next_Gen_CCG_LNL_Target__c</columns>
-        <columns>CPT_MarVol_Next_Gen_CCG_PTL_Target__c</columns>
-        <columns>CPT_MarVol_Next_Gen_CCG_WCL_Target__c</columns>
-        <columns>CPT_MarVol_Next_Gen_DCG_GNR_Target__c</columns>
         <filterScope>Everything</filterScope>
         <label>All Records</label>
         <sharedTo>
@@ -415,7 +380,6 @@
         <fullName>Billing_Revenue_Targets</fullName>
         <columns>NAME</columns>
         <columns>CPT_Account_Territory__c</columns>
-        <columns>CPT_BR_All_Target__c</columns>
         <columns>CPT_BR_CCG_Target__c</columns>
         <columns>CPT_BR_DCAI_Target__c</columns>
         <filterScope>Everything</filterScope>
@@ -450,6 +414,22 @@
         <columns>CPT_MarVol_Next_Gen_DCG_GNR_Target__c</columns>
         <filterScope>Everything</filterScope>
         <label>Margin Volume Targets</label>
+    </listViews>
+    <listViews>
+        <fullName>Test_Data</fullName>
+        <columns>NAME</columns>
+        <columns>CPT_Account_Territory__c</columns>
+        <columns>CPT_Quota_Period__c</columns>
+        <columns>CPT_BR_All_Target__c</columns>
+        <columns>CPT_BR_CCG_Target__c</columns>
+        <columns>CPT_BR_DCAI_Target__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CPT_Account_Territory__c</field>
+            <operation>contains</operation>
+            <value>Account Plan</value>
+        </filters>
+        <label>Test Data</label>
     </listViews>
     <nameField>
         <displayFormat>TT-{000000}</displayFormat>

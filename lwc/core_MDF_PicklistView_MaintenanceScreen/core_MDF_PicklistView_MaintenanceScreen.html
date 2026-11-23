@@ -83,7 +83,35 @@
 															</template>
 
 														</td>
-														<td>{fld.value}</td>
+														<!--<td>{fld.value}</td>-->
+														<!--POC start-->
+															<template if:false={fld.isEditable}>
+																	<td>{fld.value}</td>
+																	<template if:true={hasEditAccess}>
+																		<template if:true={fld.showEditIcon}>
+																			<lightning-button-icon variant="info"
+																				size="small"
+																				class="slds-icon slds-icon_small slds-float_right"
+																				icon-name="utility:edit"
+																				alternative-text="edit" onclick={handleEdit}
+																				data-name={fld.id}>
+																			</lightning-button-icon>
+																		</template>
+																	</template>
+																</template>
+																<template if:true={fld.isEditable}>
+																	<lightning-input type="text" variant="standard"
+																		name={fld.id} value={fld.value}
+																		class="slds-col slds-size_2-of-3"
+																		onchange={handleUpdatedValue} data-name={fld.id} data-type="apiname">
+																	</lightning-input>
+																	<lightning-button-icon variant="info" size="small"
+																		class="slds-icon slds-icon_small slds-float_right closeIcon"
+																		icon-name="utility:undo" alternative-text="edit"
+																		onclick={handleInputEditCancel} data-name={fld.id}>
+																	</lightning-button-icon>
+																</template>
+														<!--POC end-->
 														<template if:true={fld.isNew}>
 															<td>
 																<lightning-button-icon variant="info" size="small"
@@ -108,10 +136,10 @@
 												data-name={item.value} onclick={handleSave} class=" slds-m-right_small">
 											</lightning-button>
 											<lightning-button variant="brand" label="Export" title="Export"
-												onclick={handleExport} class=" slds-m-right_small">
+												onclick={handleExport} class=" slds-m-right_small" data-name={item.value}>
 											</lightning-button>
-											<lightning-button variant="brand" label="backfill" title="backfill"
-												onclick={handlebackfill} class=" slds-m-right_small">
+											<lightning-button variant="brand" label="backfill" title="backfill" data-name="backFillBtn"
+												onclick={handleBackFillBtn} class=" slds-m-right_small">
 											</lightning-button>
 										</template>
 										<template if:true={hasReadOnlyAccess}>
@@ -120,7 +148,39 @@
 											</lightning-button>
 										</template>
 									</lightning-button-group>
+								<!--POC START-->
+									<template if:true={showBackFillModal}>
+										<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+												<div class="slds-modal__container">
+												<!-- modal header start -->
+												<header class="slds-modal__header">
+													<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={hideBackFillModal}>
+													<lightning-icon icon-name="utility:close"
+													alternative-text="close"
+													ariant="inverse"
+													size="small" ></lightning-icon>
+													<span class="slds-assistive-text">Close</span>
+													</button>
+														<h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Backfill to Lower Org</h2>
+												</header>
+												
+												<!-- modal body start -->
+												<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+												<p>Show org for backfill</p>
+												<lightning-button variant="brand" label={backFillBtnName} onclick ={handlebackfill} data-name={item.value}></lightning-button>
+												</div>
 
+												<!-- modal footer start-->
+												<footer class="slds-modal__footer">
+													<button class="slds-button slds-button_neutral" onclick={hideBackFillModal}>Cancel</button>
+												</footer>
+												
+												</div>
+										</section>
+											<div class="slds-backdrop slds-backdrop_open"></div>
+									</template>
+										<!-- modal end -->
+										<!--POC END-->
 								</lightning-tab>
 								<lightning-tab label={recordTypeTabName} onactive={handleActive}>
 									<template if:true={showRecordtypeAccordions}>
@@ -158,10 +218,44 @@
 																		title="Export" onclick={handleExport}
 																		class=" slds-m-right_small">
 																	</lightning-button>
-																	<lightning-button variant="brand" label="backfill"
-																		title="backfill" onclick={handlebackfill}
+																	<lightning-button variant="brand" label="backfill" data-name="backFillBtnRecType"
+																		title="backfill" onclick={handleBackFillBtn}
 																		class=" slds-m-right_small">
 																	</lightning-button>
+																	<!--POC START-->
+																	<template if:true={showBackFillRecTypeModal}>
+																		<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+																				<div class="slds-modal__container">
+																				<!-- modal header start -->
+																				<header class="slds-modal__header">
+																					<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={hideBackFillRecTypeModal}>
+																					<lightning-icon icon-name="utility:close"
+																					alternative-text="close"
+																					ariant="inverse"
+																					size="small" ></lightning-icon>
+																					<span class="slds-assistive-text">Close</span>
+																					</button>
+																						<h2 id="modal-heading-02" class="slds-text-heading_medium slds-hyphenate">Backfill to Lower Org</h2>
+																				</header>
+																				
+																				<!-- modal body start -->
+																				<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-2">
+																					<h1>Backfill Values to record types</h1>
+																					<p>Show org for backfill</p>
+																				<lightning-button variant="brand" label={backFillBtnName} onclick ={handlebackfillRecType} data-name={recType.id}></lightning-button>
+																				</div>
+
+																				<!-- modal footer start-->
+																				<footer class="slds-modal__footer">
+																					<button class="slds-button slds-button_neutral" onclick={hideBackFillRecTypeModal}>Cancel</button>
+																				</footer>
+																				
+																				</div>
+																		</section>
+																			<div class="slds-backdrop slds-backdrop_open"></div>
+																	</template>
+																		<!-- modal end -->
+										<!--POC END-->
 																</template>
 																<template if:true={hasReadOnlyAccess}>
 																	<lightning-button variant="brand" label="Export"

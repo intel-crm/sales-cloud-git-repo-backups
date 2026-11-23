@@ -14,7 +14,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Business owners</masterLabel>
-        <translation>経営者</translation>
+        <translation><!-- Business owners --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>C-Suite</masterLabel>
@@ -22,7 +22,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Channel Partner</masterLabel>
-        <translation>チャネルパートナー</translation>
+        <translation><!-- Channel Partner --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Commercial</masterLabel>
@@ -30,27 +30,19 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Consultant/Influencer</masterLabel>
-        <translation>コンサルタント / インフルエンサー</translation>
+        <translation><!-- Consultant/Influencer --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Consumer</masterLabel>
         <translation>コンシューマー</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Consumer - Mainstream</masterLabel>
-        <translation>コンシューマー - メインストリーム</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Consumer - Premium</masterLabel>
-        <translation>コンシューマー - プレミアム</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Creator</masterLabel>
-        <translation>クリエーター</translation>
+        <translation>作成者</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>DIY</masterLabel>
-        <translation>自作 PC</translation>
+        <translation><!-- DIY --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Developer</masterLabel>
@@ -58,27 +50,19 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Distributors</masterLabel>
-        <translation>販売店</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Edge Customers (edge computing)</masterLabel>
-        <translation>エッジ・カスタマー (エッジ・コンピューティング)</translation>
+        <translation><!-- Distributors --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Education</masterLabel>
-        <translation>教育</translation>
+        <translation><!-- Education --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Education Professionals</masterLabel>
-        <translation>教育プロフェッショナル</translation>
+        <translation><!-- Education Professionals --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Employees</masterLabel>
-        <translation>従業員</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Enterprise</masterLabel>
-        <translation>エンタープライズ</translation>
+        <translation><!-- Employees --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Enthusiast Gaming</masterLabel>
@@ -86,15 +70,11 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Entry Gaming</masterLabel>
-        <translation>エントリーレベルのゲーム用 PC</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Gamer</masterLabel>
-        <translation>ゲーマー</translation>
+        <translation><!-- Entry Gaming --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Gaming</masterLabel>
-        <translation>ゲーム用 PC</translation>
+        <translation>ゲーム</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Government</masterLabel>
@@ -102,15 +82,15 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Government agency heads</masterLabel>
-        <translation>政府機関の長</translation>
+        <translation><!-- Government agency heads --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Government/Public Sector</masterLabel>
-        <translation>行政機関 / パブリックセクター</translation>
+        <translation><!-- Government/Public Sector --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Healthcare</masterLabel>
-        <translation>ヘルスケア</translation>
+        <translation><!-- Healthcare --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>IT Decision Maker</masterLabel>
@@ -134,31 +114,27 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Mainstream Consumer - Knowledge</masterLabel>
-        <translation>メインストリームのコンシューマー - 知識あり</translation>
+        <translation><!-- Mainstream Consumer - Knowledge --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Mainstream Consumer - Overwhelmed</masterLabel>
-        <translation>メインストリームのコンシューマー - 困っている</translation>
+        <translation><!-- Mainstream Consumer - Overwhelmed --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Mainstream Consumer - Tech Knowledgeable</masterLabel>
-        <translation>メインストリームのコンシューマー - 技術に明るい</translation>
+        <translation><!-- Mainstream Consumer - Tech Knowledgeable --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Managed Business</masterLabel>
-        <translation>管理されたビジネス</translation>
+        <translation><!-- Managed Business --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Manufacturer/OEM</masterLabel>
-        <translation>製造元 / OEM</translation>
+        <translation><!-- Manufacturer/OEM --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Mid Market</masterLabel>
         <translation>中規模市場</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Mobile Go Getter</masterLabel>
-        <translation>モバイル志向のユーザー</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Modern Consumer (Knowledgeable)</masterLabel>
@@ -166,23 +142,19 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Other</masterLabel>
-        <translation>その他</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Partner Sales Force</masterLabel>
-        <translation>パートナーの販売部門</translation>
+        <translation><!-- Other --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Partner </masterLabel>
-        <translation>パートナー </translation>
+        <translation><!-- Partner  --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Project / program managers</masterLabel>
-        <translation>プロジェクト / プログラム・マネージャー</translation>
+        <translation><!-- Project / program managers --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Purchasing</masterLabel>
-        <translation>購買</translation>
+        <translation><!-- Purchasing --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Reseller</masterLabel>
@@ -190,23 +162,15 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Sales Leaders</masterLabel>
-        <translation>販売リーダー</translation>
+        <translation><!-- Sales Leaders --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Security managers</masterLabel>
-        <translation>セキュリティー・マネージャー</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Senior Business Decision Maker</masterLabel>
-        <translation>シニアビジネス意思決定者</translation>
+        <translation><!-- Security managers --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Small Business</masterLabel>
         <translation>小規模ビジネス</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Small and Medium Business</masterLabel>
-        <translation>中小規模ビジネス</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Solutions Architect</masterLabel>
@@ -214,18 +178,14 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Sr. Business Decision Maker</masterLabel>
-        <translation>企業の上級意思決定者</translation>
+        <translation><!-- Sr. Business Decision Maker --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>System Integrators</masterLabel>
-        <translation>システム・インテグレーター</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Technical Influencer</masterLabel>
-        <translation>テクニカル・インフルエンサー</translation>
+        <translation><!-- System Integrators --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Unmanaged Small Business</masterLabel>
-        <translation>管理されていない小規模ビジネス</translation>
+        <translation><!-- Unmanaged Small Business --></translation>
     </valueTranslation>
 </GlobalValueSetTranslation>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <letterhead>Ask_Commissions_Letterhead</letterhead>
+    <name>Ask Commissions-Notification to Manager when assigned by Direct Report HTML</name>
+    <style>freeForm</style>
+    <subject>You have been added to an Ask Commissions case that was submitted by one of your employees</subject>
+    <textOnly>Input from you is needed so that the Commissions Office may be able to resolve this case.
+
+Case Number: {!Case.CaseNumber}
+Case Status: {!Case.Status}
+
+Please click on the link below to review previous &quot;Case Comments&quot; and add your own &quot;Case Comments&quot; to this case:
+
+{!Case.Link}
+
+
+***NOTE: Do not reply to this mail as there is no inbox being monitored***</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

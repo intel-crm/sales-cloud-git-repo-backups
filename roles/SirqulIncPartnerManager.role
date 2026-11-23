@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>Sirqul Partner Manager</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>Sirqul Partner Manager</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>SirqulIncPartnerExecutive</parentRole>
+</Role>

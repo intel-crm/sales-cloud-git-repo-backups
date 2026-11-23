@@ -210,12 +210,37 @@
         </valueSet>
     </fields>
     <label>Quote Team</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
     <nameField>
         <displayFormat>QTM-{00000000}</displayFormat>
         <label>Quote Team Name</label>
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Quote Teams</pluralLabel>
+    <recordTypes>
+        <fullName>Pricing_IQR_Tender_QuoteTeam</fullName>
+        <active>false</active>
+        <label>Pricing_IQR_Tender_QuoteTeam</label>
+        <picklistValues>
+            <picklist>Pricing_Role_Nm__c</picklist>
+            <values>
+                <fullName>Account Executive</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FSE%2FSDM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ITS</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
     <recordTypes>
         <fullName>Pricing_Tender_QuoteTeam</fullName>
         <active>true</active>

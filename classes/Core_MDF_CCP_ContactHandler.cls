@@ -5,14 +5,10 @@
     * Modification Log :
     * Developer                     Date                          Description
     * --------------------------------------------------------------------------------------------------------------------------------------------------
-    * Intel - Narayani Perachi     21-03-2019            Created determineContactsToBeProcessed() and incorporated the logic for selecting CCP Contacts for processing
+    * Intel - Narayani Perachi 		21-03-2019					  Created determineContactsToBeProcessed() and incorporated the logic for selecting CCP Contacts for processing
 **************************************************************************************************************************************************************************************/
 public without sharing class Core_MDF_CCP_ContactHandler {
-    //Commented as part of WW24 - 2025
-     //added dummy method to get the code coverage for this class
-    public static void getCodeCoverage(){
-    }
-    /*public static String logEntryMsg = '';
+    public static String logEntryMsg = '';
     public static exception ex;
     
     public static void determineContactsToBeProcessed(List<Contact> newContactList, Map<id,Contact> oldContactMap, boolean isInsert, boolean isUpdate)
@@ -48,7 +44,7 @@ public without sharing class Core_MDF_CCP_ContactHandler {
             }
         }
         }
-        catch(exception ex){ logEntryMsg = Core_MDF_CCP_UtilityClass.getErrorDetails(ex); Core_MDF_CCP_UtilityClass.logErrorinLogObject(logEntryMsg,'Core_MDF_CCP_ContactHandler - determineContactsToBeProcessed()'); system.debug('logEntryMsg' + logEntryMsg +isError );} 
-    }*/
+        catch(exception ex){ logEntryMsg = Core_MDF_CCP_UtilityClass.getErrorDetails(ex); Core_MDF_CCP_UtilityClass.logErrorinLogObject(logEntryMsg,'Core_MDF_CCP_ContactHandler - determineContactsToBeProcessed()'); /*system.debug('logEntryMsg' + logEntryMsg +isError );*/} 
+    }
 
 }

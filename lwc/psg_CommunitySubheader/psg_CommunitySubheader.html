@@ -1,0 +1,83 @@
+<template>
+    <div class="slds-grid slds-gutters">
+        <div class="slds-col">
+        <span>
+            <div class="slds-form-element">
+                
+                <div class="slds-form-element__control">
+                <div class="slds-combobox_container slds-size_small">
+                <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click" aria-expanded="false" aria-haspopup="listbox" role="combobox">
+                <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
+                <input type="text" class="slds-input slds-combobox__input slds-combobox__input-value" id="combobox-id-6" aria-activedescendant="option1" aria-controls="listbox-id-6" autocomplete="off" role="textbox" placeholder="Select an Option…" readonly=""
+                value="Unlicensed Products" />
+                </div>
+                <div id="listbox-id-6" class="slds-dropdown slds-dropdown_length-5 slds-dropdown_fluid" role="listbox">
+                <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                <li role="presentation" class="slds-listbox__item">
+                <div aria-checked="true" id="option1" class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-is-selected" role="option">
+                <span class="slds-media__body">
+                <span class="slds-truncate" title="Unlicensed Products">Unlicensed Products</span>
+                </span>
+                </div>
+                </li>
+                <li role="presentation" class="slds-listbox__item">
+                <div id="option2" class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small" role="option">
+                <span class="slds-media__figure slds-listbox__option-icon"></span>
+                <span class="slds-media__body">
+                <span class="slds-truncate" title="Option B">Option B</span>
+                </span>
+                </div>
+                </li>
+                <li role="presentation" class="slds-listbox__item">
+                <div id="option3" class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small" role="option">
+                <span class="slds-media__figure slds-listbox__option-icon"></span>
+                <span class="slds-media__body">
+                <span class="slds-truncate" title="Option ABCDEFGHIJKLMNOPQRSTUVWXYZ">Option ABCDEFGHIJKLMNOPQRSTUVWXYZ</span>
+                </span>
+                </div>
+                </li>
+                </ul>
+                </div>
+                </div>
+                </div>
+                </div>
+                </div>
+        </span>
+        </div>
+        <div class="slds-col">
+        <span></span>
+        </div>
+        <div class="slds-col">
+        <span>
+            <lightning-button label="Search" title="Search action" icon-name="utility:search" class="slds-m-left_x-small"></lightning-button>
+        </span>
+        </div>
+        <div class="slds-col">
+        <span>
+            <lightning-button
+                    icon-name="utility:filterList"
+                    onclick={handleFilter}>
+            </lightning-button>
+        </span>
+        </div>
+        <div class="slds-col">
+        <span>
+            <lightning-button
+                                variant="Neutral"
+                                label="Export"
+                                onclick={handleExport}>
+                            </lightning-button>                      
+        </span>
+        </div>
+        <div class="slds-col">
+            <span>
+       <!--  <lightning-button
+                                    variant="Neutral"
+                                    label="Add a New Computer"
+                                    onclick={handleExport}>
+                                </lightning-button> -->     
+                                <!--<c-sales-submit-order-to-sap></c-sales-submit-order-to-sap>  -->            
+            </span>
+            </div>
+    </div>        
+</template>

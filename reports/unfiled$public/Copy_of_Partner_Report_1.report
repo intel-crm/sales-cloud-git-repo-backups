@@ -51,6 +51,9 @@
         <field>Account.Core_Intel_Partner_Alliance_PartnerGroup__c</field>
     </columns>
     <columns>
+        <field>Account.Core_IPA_Partner_Speciality__c</field>
+    </columns>
+    <columns>
         <field>Account.Core_Partner_Alliance_Program__c</field>
     </columns>
     <columns>

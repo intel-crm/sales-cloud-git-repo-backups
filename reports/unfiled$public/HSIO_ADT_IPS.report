@@ -13,12 +13,6 @@
         <field>STATUS</field>
     </columns>
     <columns>
-        <field>CREATED_DATEONLY</field>
-    </columns>
-    <columns>
-        <field>CLOSED_DATEONLY</field>
-    </columns>
-    <columns>
         <field>SUBJECT</field>
     </columns>
     <columns>

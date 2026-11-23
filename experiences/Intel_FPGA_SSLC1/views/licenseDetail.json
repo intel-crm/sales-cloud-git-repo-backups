@@ -6,18 +6,6 @@
   "label" : "License Detail",
   "regions" : [ {
     "components" : [ {
-      "componentAttributes" : { },
-      "componentName" : "c:sales_NonEventFeedback",
-      "id" : "f967c105-2008-4008-b189-c62a3fec6ac8",
-      "renderPriority" : "NEUTRAL",
-      "renditionMap" : { },
-      "type" : "component"
-    } ],
-    "id" : "a5a31306-3ad8-49ee-bc44-0fde102cadb1",
-    "regionName" : "header",
-    "type" : "region"
-  }, {
-    "components" : [ {
       "componentAttributes" : {
         "recordId" : "{!recordId}"
       },
@@ -37,41 +25,59 @@
       "type" : "component"
     }, {
       "componentAttributes" : {
+        "recordId" : "{!recordId}"
+      },
+      "componentName" : "c:sales_Downtime_Notification",
+      "id" : "79eeea19-2e6b-4dfb-817d-ad432dbf92f1",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "richTextValue" : "<p style=\"text-align: center;\"><strong style=\"color: rgb(230, 0, 0); font-size: 14px; font-family: sans-serif;\">Please Note:&nbsp;</strong><strong style=\"color: red; font-size: 14px;\">Licenses are currently undergoing an outage.</strong></p><p style=\"text-align: center;\"><strong style=\"color: rgb(244, 7, 7); font-size: 14px;\">Please refrain from performing any activity on license.</strong></p>"
+      },
+      "componentName" : "forceCommunity:richTextInline",
+      "id" : "7b718c54-f1a0-4200-bb65-8eb379860ddc",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
         "tabsetConfig" : {
-          "UUID" : "9ba8beb3-fce0-4223-838f-6bf14970af26",
+          "UUID" : "13691708-479d-4cb0-a059-8420220e5699",
           "activeTab" : "",
           "tabs" : [ {
-            "UUID" : "1394e75e-3509-4213-ab68-e9faf66d0756",
-            "allowGuestUser" : true,
-            "locked" : false,
-            "seedComponents" : [ ],
-            "tabKey" : "1",
-            "tabName" : "DETAILS"
-          }, {
-            "UUID" : "3101bc6c-1f75-4e2e-81dc-4a4e5a3d92af",
+            "UUID" : "5ce649f3-7b48-45b8-a5a6-9d4e421691df",
             "allowGuestUser" : false,
             "locked" : false,
             "seedComponents" : [ ],
-            "tabKey" : "5604d",
+            "tabKey" : "1",
+            "tabName" : "Details"
+          }, {
+            "UUID" : "5546b154-30f6-4949-b551-7541a4e6447f",
+            "allowGuestUser" : false,
+            "locked" : false,
+            "seedComponents" : [ ],
+            "tabKey" : "2",
             "tabName" : "Related"
           } ],
           "useOverflowMenu" : false
         }
       },
       "componentName" : "forceCommunity:tabset",
-      "id" : "9ba8beb3-fce0-4223-838f-6bf14970af26",
+      "id" : "13691708-479d-4cb0-a059-8420220e5699",
       "regions" : [ {
         "components" : [ {
           "componentAttributes" : {
             "recordId" : "{!recordId}"
           },
           "componentName" : "forceCommunity:recordDetail",
-          "id" : "a3ba0294-00f1-4e5c-a180-4a0058d2788e",
+          "id" : "46880829-bb43-470b-ab9d-acb0dfa46a4c",
           "renditionMap" : { },
           "type" : "component"
         } ],
-        "id" : "1394e75e-3509-4213-ab68-e9faf66d0756",
-        "regionLabel" : "DETAILS",
+        "id" : "5ce649f3-7b48-45b8-a5a6-9d4e421691df",
+        "regionLabel" : "Details",
         "regionName" : "1",
         "renditionMap" : { },
         "type" : "region"
@@ -79,16 +85,28 @@
         "components" : [ {
           "componentAttributes" : { },
           "componentName" : "c:salesLicenseRelatedList",
-          "id" : "8b3161ec-0210-4cc9-b003-6cd3a013b4dc",
+          "id" : "33d95e38-10f7-41b9-a588-a9f060880fda",
           "renditionMap" : { },
           "type" : "component"
         } ],
-        "id" : "3101bc6c-1f75-4e2e-81dc-4a4e5a3d92af",
+        "id" : "5546b154-30f6-4949-b551-7541a4e6447f",
         "regionLabel" : "Related",
-        "regionName" : "5604d",
+        "regionName" : "2",
         "renditionMap" : { },
         "type" : "region"
       } ],
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "a5a31306-3ad8-49ee-bc44-0fde102cadb1",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:sales_NonEventFeedback",
+      "id" : "52ea46e4-af4f-4bb9-bfd6-710e67d2ae7e",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
@@ -116,6 +134,7 @@
         "id" : "6d8a2a28-77b6-491c-8666-74ff23109e09",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "市场推广基金",
             "description" : "市场推广基金",
             "title" : "{!Record._Object}: {!Record._Title}"
           }
@@ -134,5 +153,5 @@
   } ],
   "themeLayoutType" : "Inner",
   "type" : "view",
-  "viewType" : "detail-aBv"
+  "viewType" : "detail-a7o"
 }

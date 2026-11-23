@@ -11,10 +11,11 @@
                     </div>
                 </header>
             </div>
-            <div class="slds-card__body slds-card__body_inner"> <p> <b> Last coupon details fetched time : </b> 
-            		<apex:outputText value="{!(SWS_Cloud_Credit_Request__c.SWS_Last_Redeem_Run_Date__c)}"/>
-            	</p>
-            </div>
+            <div class="slds-card__body slds-card__body_inner"> <p> <b> 
+                Last coupon details fetched time : </b> 
+                <apex:outputText value="{!(SWS_Cloud_Credit_Request__c.SWS_Last_Redeem_Run_Date__c)}"/>
+               </p>
+        	</div>
         </div>
     </div>
 </apex:page>

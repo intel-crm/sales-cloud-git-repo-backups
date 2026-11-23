@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPlugin xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <aiPluginUtterances>
+        <developerName>utterance_whenwassta0</developerName>
+        <language xsi:nil="true"/>
+        <masterLabel>utterance_whenwassta0</masterLabel>
+        <utterance>When was status of design record changed to approved?</utterance>
+    </aiPluginUtterances>
+    <canEscalate>false</canEscalate>
+    <description>This topic is used to get all the information related to Design-Deal Registration record and it&apos;s related records. It should also include information related Design-Deal Registration history as well.</description>
+    <developerName>Design_Registration_Info</developerName>
+    <genAiFunctions>
+        <functionName>EmployeeCopilot__IdentifyObjectByName</functionName>
+    </genAiFunctions>
+    <genAiFunctions>
+        <functionName>EmployeeCopilot__IdentifyRecordByName</functionName>
+    </genAiFunctions>
+    <genAiFunctions>
+        <functionName>EmployeeCopilot__QueryRecords</functionName>
+    </genAiFunctions>
+    <genAiFunctions>
+        <functionName>EmployeeCopilot__QueryRecordsWithAggregate</functionName>
+    </genAiFunctions>
+    <genAiFunctions>
+        <functionName>POC_Agent_custom_action</functionName>
+    </genAiFunctions>
+    <genAiPluginInstructions>
+        <description>You must get Design-Deal Registration record from the page which user is asking the question. If it&apos;s not available ask user to provide ID of Design-Deal Registration record and you should query  Design-Deal Registration object to get all the details of the record.</description>
+        <developerName>instruction_youmustget0</developerName>
+        <language xsi:nil="true"/>
+        <masterLabel>instruction_youmustget0</masterLabel>
+        <sortOrder>0</sortOrder>
+    </genAiPluginInstructions>
+    <genAiPluginInstructions>
+        <description>If user asks about history of changes of fields on Design-Deal Registration record. Get the exact api name of the field for which history to be checked from the schema of Core_Design_Registration__c object. You must use exact api names of the field passed for fieldToTrack. Double check api name before setting value to fieldToTrack.</description>
+        <developerName>instruction_ifuserasks1</developerName>
+        <language xsi:nil="true"/>
+        <masterLabel>instruction_ifuserasks1</masterLabel>
+        <sortOrder>0</sortOrder>
+    </genAiPluginInstructions>
+    <genAiPluginInstructions>
+        <description>Once you get historyRecs from the custom agent action, filter it out them based on the relevant newvalue and show the user the date which the field was changed. Make sure to show date in the format of dd-mmm-yyyy hh:mm:ss tt</description>
+        <developerName>instruction_onceyouget2</developerName>
+        <language xsi:nil="true"/>
+        <masterLabel>instruction_onceyouget2</masterLabel>
+        <sortOrder>0</sortOrder>
+    </genAiPluginInstructions>
+    <language>en_US</language>
+    <masterLabel>Design Registration Info</masterLabel>
+    <pluginType>Topic</pluginType>
+    <scope>You job is to get the correct answers for questions related to Design-Deal Registration record and related records.</scope>
+</GenAiPlugin>

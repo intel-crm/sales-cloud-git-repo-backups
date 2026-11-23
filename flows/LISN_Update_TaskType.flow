@@ -24,6 +24,27 @@
         </assignmentItems>
     </assignments>
     <assignments>
+        <description>Update the custom task Type to Li ConnectReq if the subject contains Connection Request</description>
+        <name>Update_ConnectReq_TaskType</name>
+        <label>Update ConnectReq TaskType</label>
+        <locationX>842</locationX>
+        <locationY>431</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Core_Task_Type__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>LI ConnectReq</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Core_Activity_Source__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>LinkedIn</stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
         <description>Update the custom task Type to Li InMail if the subject contains InMail</description>
         <name>Update_InMail_TaskType</name>
         <label>Update InMail TaskType</label>
@@ -69,7 +90,7 @@
         <description>Differentiation between types can easily be determined via systemized subjects, which all end with &quot;from Sales Navigator&quot; and start with the type of activity - InMail/Message/Smart Link/Phone Call/Note</description>
         <name>Parse_LISN_Subject</name>
         <label>Parse LISN Subject</label>
-        <locationX>446</locationX>
+        <locationX>578</locationX>
         <locationY>311</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -117,6 +138,21 @@
             </connector>
             <label>Parse LISN Subject for InMail</label>
         </rules>
+        <rules>
+            <name>Parse_LISN_Subject_for_Connection</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Subject</leftValueReference>
+                <operator>StartsWith</operator>
+                <rightValue>
+                    <stringValue>Connection Request</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_ConnectReq_TaskType</targetReference>
+            </connector>
+            <label>Parse LISN Subject for Connection</label>
+        </rules>
     </decisions>
     <interviewLabel>LISN {!$Flow.CurrentDateTime}</interviewLabel>
     <label>LISN Update TaskType</label>
@@ -140,7 +176,7 @@
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <start>
-        <locationX>320</locationX>
+        <locationX>452</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Parse_LISN_Subject</targetReference>

@@ -67,6 +67,10 @@
         <label><!-- Lookup Message Field --></label>
         <name>SBQQ__LookupMessageField__c</name>
         <picklistValues>
+            <masterLabel>Core_OPN__c</masterLabel>
+            <translation><!-- Core_OPN__c --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>SBQQ__Message__c</masterLabel>
             <translation>SBQQ__Message__c</translation>
         </picklistValues>
@@ -76,14 +80,30 @@
         <label><!-- Lookup Object --></label>
         <name>SBQQ__LookupObject__c</name>
         <picklistValues>
+            <masterLabel>Product2</masterLabel>
+            <translation><!-- Product2 --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>SBQQ__LookupData__c</masterLabel>
             <translation>SBQQ__LookupData__c</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>core_cpq_end_customer_nm__c</masterLabel>
+            <translation><!-- core_cpq_end_customer_nm__c --></translation>
         </picklistValues>
     </fields>
     <fields>
         <help>商品アクションの商品ルックアップに対応する参照オブジェクトの項目。この項目は、商品オブジェクトのルックアップにする必要があります。</help>
         <label><!-- Lookup Product Field --></label>
         <name>SBQQ__LookupProductField__c</name>
+        <picklistValues>
+            <masterLabel>Core_OPN__c</masterLabel>
+            <translation><!-- Core_OPN__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_Product_Ext_Attribute_Id__c</masterLabel>
+            <translation><!-- Core_Product_Ext_Attribute_Id__c --></translation>
+        </picklistValues>
         <picklistValues>
             <masterLabel>SBQQ__Product__c</masterLabel>
             <translation>SBQQ__Product__c</translation>
@@ -112,12 +132,20 @@
         <label><!-- Scope --></label>
         <name>SBQQ__Scope__c</name>
         <picklistValues>
+            <masterLabel>Opportunity</masterLabel>
+            <translation><!-- Opportunity --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Product</masterLabel>
             <translation>商品</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Quote</masterLabel>
             <translation>見積</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Quote Line</masterLabel>
+            <translation><!-- Quote Line --></translation>
         </picklistValues>
     </fields>
     <fields>

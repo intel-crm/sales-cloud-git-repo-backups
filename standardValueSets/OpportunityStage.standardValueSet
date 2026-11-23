@@ -3,7 +3,6 @@
     <sorted>false</sorted>
     <standardValue>
         <fullName>Qualify</fullName>
-        <color>#FF6600</color>
         <default>false</default>
         <label>Qualify</label>
         <closed>false</closed>
@@ -136,6 +135,93 @@
         <fullName>Group Closed</fullName>
         <default>false</default>
         <label>Group Closed</label>
+        <closed>true</closed>
+        <forecastCategory>Closed</forecastCategory>
+        <probability>100</probability>
+        <won>true</won>
+    </standardValue>
+    <standardValue>
+        <fullName>Assess Deal</fullName>
+        <color>#FF9900</color>
+        <default>false</default>
+        <label>Assess Deal</label>
+        <closed>false</closed>
+        <forecastCategory>Omitted</forecastCategory>
+        <probability>15</probability>
+        <won>false</won>
+    </standardValue>
+    <standardValue>
+        <fullName>Discover Deal</fullName>
+        <color>#FFCC66</color>
+        <default>false</default>
+        <label>Discover Deal</label>
+        <closed>false</closed>
+        <forecastCategory>Pipeline</forecastCategory>
+        <probability>25</probability>
+        <won>false</won>
+    </standardValue>
+    <standardValue>
+        <fullName>Discover Design</fullName>
+        <color>#FFCC33</color>
+        <default>false</default>
+        <label>Discover Design</label>
+        <closed>false</closed>
+        <forecastCategory>Pipeline</forecastCategory>
+        <probability>25</probability>
+        <won>false</won>
+    </standardValue>
+    <standardValue>
+        <fullName>Asess Design</fullName>
+        <color>#FF9900</color>
+        <default>false</default>
+        <label>Asess Design</label>
+        <closed>false</closed>
+        <forecastCategory>Pipeline</forecastCategory>
+        <probability>15</probability>
+        <won>false</won>
+    </standardValue>
+    <standardValue>
+        <fullName>Scale Deal</fullName>
+        <color>#33CC00</color>
+        <default>false</default>
+        <label>Scale Deal</label>
+        <closed>true</closed>
+        <forecastCategory>Closed</forecastCategory>
+        <probability>100</probability>
+        <won>true</won>
+    </standardValue>
+    <standardValue>
+        <fullName>Scale Design</fullName>
+        <color>#33CC00</color>
+        <default>false</default>
+        <label>Scale Design</label>
+        <closed>true</closed>
+        <forecastCategory>Closed</forecastCategory>
+        <probability>100</probability>
+        <won>true</won>
+    </standardValue>
+    <standardValue>
+        <fullName>Qualification</fullName>
+        <default>false</default>
+        <label>Qualification</label>
+        <closed>false</closed>
+        <forecastCategory>Pipeline</forecastCategory>
+        <probability>10</probability>
+        <won>false</won>
+    </standardValue>
+    <standardValue>
+        <fullName>Prospecting</fullName>
+        <default>false</default>
+        <label>Prospecting</label>
+        <closed>false</closed>
+        <forecastCategory>Pipeline</forecastCategory>
+        <probability>10</probability>
+        <won>false</won>
+    </standardValue>
+    <standardValue>
+        <fullName>Closed Won</fullName>
+        <default>false</default>
+        <label>Closed Won</label>
         <closed>true</closed>
         <forecastCategory>Closed</forecastCategory>
         <probability>100</probability>

@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>Clutch Solutions Partner User</description>
+    <description>Ascentech Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>Clutch Solutions Partner User</name>
+    <name>Ascentech Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>AscentechPartnerManager</parentRole>
 </Role>

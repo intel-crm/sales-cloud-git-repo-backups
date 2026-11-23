@@ -72,7 +72,7 @@
         <field>Lead.Core_Partner_Name__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>US Partner Leads Report - 2019-2022</name>
+    <name>US Partner Leads Report - YTD 2020</name>
     <params>
         <name>co</name>
         <value>1</value>
@@ -86,8 +86,8 @@
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CREATED_DATE</dateColumn>
-        <endDate>2022-12-31</endDate>
+        <endDate>2026-11-23</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2019-01-01</startDate>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

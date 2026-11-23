@@ -14,8 +14,4 @@
         <field>Pricing_Unified_Customer_Aggregatio_Type__c</field>
         <value xsi:type="xsd:string">Intermediate</value>
     </values>
-    <values>
-        <field>Pricing_Unified_Customer_Type__c</field>
-        <value xsi:type="xsd:string">Intermediate</value>
-    </values>
 </CustomMetadata>

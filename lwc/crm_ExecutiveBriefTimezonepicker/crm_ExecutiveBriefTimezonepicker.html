@@ -1,0 +1,20 @@
+<template>
+    <lightning-card title="Edit Timezone">
+        <div class="slds-p-around_medium">
+            <lightning-combobox
+                label="Select Timezone"
+                value={value}
+                options={timezoneOptions}
+                onchange={handleChange}>
+            </lightning-combobox>
+
+            <div class="slds-m-top_medium slds-text-align_right">
+                <lightning-button
+                    variant="brand"
+                    label="Save"
+                    onclick={handleSave}>
+                </lightning-button>
+            </div>
+        </div>
+    </lightning-card>
+</template>

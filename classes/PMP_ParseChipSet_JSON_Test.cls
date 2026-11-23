@@ -11,14 +11,8 @@
 
 @isTest
 public class PMP_ParseChipSet_JSON_Test {
+    
     @isTest
-    static void testIsWorking() {
-        Boolean result = PMP_ParseChipSet_JSON.isWorking();
-        System.assertEquals(true, result);
-    }
-
-    //IPA 2.0- US-TWC729-7980
-    /*@isTest
     public static void parseEnglishChipSetJSONTest(){
         
         //Create test Specifications:
@@ -122,7 +116,7 @@ public class PMP_ParseChipSet_JSON_Test {
         specValueChipTest.PMP_Specification_Value_Nm__c = 'Test';
         
         insert specValueChipTest;
-        PMP_ParseChipSet_JSON.languageCode = 'en_US';
+        PMP_ParseChipSet_JSON.strBaseKey = 'en_US';
         PMP_ParseChipSet_JSON.parseChipSetJSON('Chipsets_Attribute_Test');
         System.assertEquals(specValueChip.PMP_Specification_Value_Nm__c, 'Intel® Z370 Chipset');
         
@@ -233,7 +227,7 @@ public class PMP_ParseChipSet_JSON_Test {
         specValueChipTest.PMP_Specification_Value_Nm__c = 'Test';
         
         insert specValueChipTest;
-        PMP_ParseChipSet_JSON.languageCode = 'zh_CN';
+        PMP_ParseChipSet_JSON.strBaseKey = 'zh_CN';
         PMP_ParseChipSet_JSON.parseChipSetJSON('Chipsets_Attribute_Test');
         System.assertEquals(specValueChip.PMP_Specification_Value_Nm__c, 'Intel® Z370 Chipset');
         
@@ -344,10 +338,10 @@ public class PMP_ParseChipSet_JSON_Test {
         specValueChipTest.PMP_Specification_Value_Nm__c = 'Test';
         
         insert specValueChipTest;
-        PMP_ParseChipSet_JSON.languageCode = 'ja_JP';
+        PMP_ParseChipSet_JSON.strBaseKey = 'ja_JP';
         PMP_ParseChipSet_JSON.parseChipSetJSON('Chipsets_Attribute_Test');
         System.assertEquals(specValueChip.PMP_Specification_Value_Nm__c, 'Intel® Z370 Chipset');
         
         Test.stopTest();     
-    }*/
+    }
 }

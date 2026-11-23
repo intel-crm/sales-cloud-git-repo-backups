@@ -1,0 +1,15 @@
+/********************************************************************************************************************
+    Class Name: Core_Daily_BatchToUpdateBU_Schedule
+    Version     : 1.0 
+    Created Date: 15 Sept 2020
+    Function    : Schedular to class which runs every day to update the BU short Name for Opp line items 
+    *******************************************************************************************************************/
+global without sharing class Core_Daily_BatchToUpdateBU_Schedule implements schedulable
+{
+    global void execute(SchedulableContext sc)
+    {
+        Core_OpportunityLineItem_Daily classObj = new Core_OpportunityLineItem_Daily();
+        //system.debug('======'+database.executebatch(classObj,Integer.valueOf(Label.Core_BU_Batch_Size)));
+        database.executebatch(classObj,Integer.valueOf(Label.Core_BU_Batch_Size));
+    }
+}

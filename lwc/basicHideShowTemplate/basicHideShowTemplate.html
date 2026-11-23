@@ -1,0 +1,18 @@
+<template>
+    <!--Part 5 if block -->
+ <lightning-card  variant="Basic Hide and Show Template"  title="Basic Hide and Show Template">
+<template if:true={showVar}>    
+<lightning-input class="bold-text" type="text" variant="standard" name="Name" label="Name" placeholder="type here your Name..."></lightning-input> <br>
+<lightning-input class="bold-text" type="text" variant="standard" name="Age" label="Age" placeholder="type here your Age..."></lightning-input>
+</template>
+<lightning-button variant="brand" label="Show" title="Show" onclick={handleShow}></lightning-button>
+<lightning-button variant="brand" label="Hide" title="Hide" onclick={handleHide}></lightning-button>
+<br/>
+
+<!--Part 6 for loop-->
+<template for:each={box} for:item="eachapple">
+    One By One : {eachapple} ;
+    <br key={eachApple}/>
+</template>
+ </lightning-card> 
+</template>

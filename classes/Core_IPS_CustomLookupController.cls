@@ -5,11 +5,11 @@
 * Developer                   Date                   Description
 * ----------------------------------------------------------------------------                 
 * Ganapati                    23/10/2019              Created
-* Ganapati                    27/12/2019              Modified for US534054 - LEX: Searching Account within a MAP to quickly return the correct results
+* Ganapati 					  27/12/2019			  Modified for US534054 - LEX: Searching Account within a MAP to quickly return the correct results
 ****************************************************************************************************/
 public with sharing class Core_IPS_CustomLookupController {
-    
-    /***************************************************************************************************
+
+/***************************************************************************************************
 Method Name: findRecords
 Version     : 1.0 
 Created Date: 23 Oct 2019
@@ -18,37 +18,27 @@ Example for queryString - 'SELECT Id, Name FROM Account WHERE Name LIKE :key LIM
 * Developer                   Date                   Description
 * --------------------------------------------------------------------------------------------------               
 * Ganapati                  23/10/2019           Created for US410459
-* Ganapati                  27/12/2019           Modified for US534054
+* Ganapati				    27/12/2019			 Modified for US534054
 
 ****************************************************************************************************/        
     @AuraEnabled(cacheable = true)
     public static List<SObject> findRecords(String searchKey, String queryString, Integer recordLimit, Boolean isSosl){
         String key = '%' + searchKey + '%';
-        List<SObject> sObjectList;
+       	List<SObject> sObjectList;
         if(isSosl) {
-          if(searchKey !=null && searchKey.length() > 2 ){
             key = '*' + searchKey + '*';
-            /*US1038991 - 09/07/2021 - Karthik - security vulnerability --*/
-            /*security fix cannot be done as the functionality is breaking, 
-after creating a case throwing error while adding project & product to the case*/ 
-            List<List<sObject>> searchRes = Search.query(queryString);
-            sObjectList = searchRes[0];    
-            }
-       
+            System.debug('key :::'+key);
+        	List<List<sObject>> searchRes = Search.query(queryString);
+        	sObjectList = searchRes[0];    
+            System.debug('sObjectList size '+sObjectList.size() );
         } else {
-            if(queryString!= null){ 
-             
-            sObjectList = Database.query(queryString, AccessLevel.SYSTEM_MODE);
-            //sObjectList = Core_IPS_QueryService.executeDynamicQuery(queryString);//added by sabira as part of vulnerability fix 06-08-2026
-            
-            }
+            System.debug('key :::'+key);
+            sObjectList = Database.query(queryString);
         }
-        
         return sObjectList;
-          
     }
-    
-    /***************************************************************************************************
+
+/***************************************************************************************************
 Method Name: findTotalRecords
 Version     : 1.0 
 Created Date: 27 Dec 2019
@@ -61,21 +51,14 @@ Example for countQueryString - 'SELECT count() FROM Account WHERE Name LIKE :key
     @AuraEnabled
     public static Integer findTotalRecords(String searchKey, String query){
         String key = '%' + searchKey + '%';
-        /*US1038991 - 09/07/2021 - Karthik - security vulnerability --*/
         Integer result = Database.countQuery(query);
         return result;
     }
     
     @AuraEnabled
     public static Integer findTotalRecordsSosl(String searchKey, String query){
-        if(searchKey !=null && searchKey.length() > 2 ){
         String key = '*' + searchKey + '*';
-        /*US1038991 - 09/07/2021 - Karthik - security vulnerability --*/
-        /*security fix cannot be done as the functionality is breaking, 
-after creating a case throwing error while adding project & product to the case*/ 
         List<List<sObject>> searchRes = Search.query(query);
         return searchRes[0].size();
-         }
-        return 0;
     }
 }

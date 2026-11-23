@@ -15,7 +15,7 @@ public without sharing class Core_Solution_Area_Partner_Controller {
     
      public static void UpsertPartnerValuesToSolution(List<Core_Solution_Area_Partner__c> solutionPartners){
         
-         system.debug('Inside addPartnerValuesToSolution');         
+                
          try
          {
             Set<ID> solnIds= new Set<ID>();
@@ -31,16 +31,16 @@ public without sharing class Core_Solution_Area_Partner_Controller {
              }
              else
              {
-                 System.debug('addPartnerValuesToSolution::: is empty');
+                
              }
              
          }Catch(Exception ex){
-         	System.debug('addPartnerValuesToSolution:::'+ex);
+         	
         }
      }
     
      public static void updatePartnerValuesToSolution(List<Core_Solution_Area_Partner__c> newsolutionAreaPartners, Map<Id, Core_Solution_Area_Partner__c> oldsolutionAreaPartner){
-         system.debug('Inside updatePartnerValuesToSolution');
+        
          
          try
          {           
@@ -56,7 +56,7 @@ public without sharing class Core_Solution_Area_Partner_Controller {
                 UpsertPartnerData(solnIds);
             }
          }Catch(Exception ex){
-         	System.debug('updatePartnerValuesToSolution:::'+ex);
+         	
         } 
      }
    
@@ -64,7 +64,7 @@ public without sharing class Core_Solution_Area_Partner_Controller {
      private static void UpsertPartnerData(Set<ID> solnIds) {
         
 		try{
-			System.debug('solnIds.size---'+solnIds.size());
+		
 			String PartnerName;
 			Id Solution_ID;
          	List<Core_Solution_Areas__c> SolnArea = new List<Core_Solution_Areas__c>();
@@ -72,7 +72,9 @@ public without sharing class Core_Solution_Area_Partner_Controller {
             Map<Id,set<String>> SA_PartnersIds= new Map<Id,set<String>>();
 
          if(solnIds != null && solnIds.size()>0){
-            for(Core_Solution_Area_Partner__c solnId: [Select  Core_Solution_Area__c,Core_Solution_Partner__r.name from Core_Solution_Area_Partner__c  where Core_Solution_Area__c= :solnIds]){
+             //Part TWC3123-6629 Removed and replaced solutionAreaPartner outside for loop to fix soql query inside loop
+             List<Core_Solution_Area_Partner__c> solutionAreaPartner = [Select Core_Solution_Area__c,Core_Solution_Partner__r.name from Core_Solution_Area_Partner__c  where Core_Solution_Area__c= :solnIds];
+            for(Core_Solution_Area_Partner__c solnId: solutionAreaPartner){
                 set<String> csPartnername = new set<String>();
                 if(SA_PartnersIds.containsKey(solnId.Core_Solution_Area__c) ){
                     csPartnername =SA_PartnersIds.get(solnId.Core_Solution_Area__c);

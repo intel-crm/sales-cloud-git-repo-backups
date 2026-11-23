@@ -1,10 +1,3 @@
-/**
- * @description       : 
- * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
- * @group             : 
- * @last modified on  : 03-31-2026
- * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
-**/
 @isTest
 public class Pricing_QuoteLine_AutoRejectionBatchTest {
     
@@ -14,7 +7,7 @@ public class Pricing_QuoteLine_AutoRejectionBatchTest {
         Pricing_Test_Utility.createPriceBook();
         System.runAs(adminUserList[0]) {
             Account acc = Pricing_Test_Utility.createAccount();
-            Contact con = Pricing_Test_Utility.createPrimaryContactWithParam(acc.Id,'Quote_Line_Auto_Rejection_Batch_Test');
+            Contact con = Pricing_Test_Utility.createPrimaryContactWithParam(acc.Id,'Auto_Rejection_Batch');
             User partnerUser = Pricing_Test_Utility.createPartnerAdminUser(acc.Id);
 
             Test.startTest();
@@ -46,7 +39,7 @@ public class Pricing_QuoteLine_AutoRejectionBatchTest {
            update quoteLineList[0];
         }
         Pricing_QuoteLine_AutoRejection_Batch autoRejectBatch = new Pricing_QuoteLine_AutoRejection_Batch();
-        autoRejectBatch.start(null);
+        Database.QueryLocator ql = autoRejectBatch.start(null);
         autoRejectBatch.execute(null,quoteLineList);
         autoRejectBatch.Finish(null);
         System.assertEquals(Label.Pricing_Tender_QuoteLine_Status_Rejected, quoteLineList[0].Pricing_Status_Nm__c , 'QuoteLine status is not updated.');

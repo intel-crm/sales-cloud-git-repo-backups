@@ -2,7 +2,7 @@
  * @description       : 
  * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
  * @group             : 
- * @last modified on  : 03-16-2026
+ * @last modified on  : 03-06-2026
  * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 @isTest
@@ -138,7 +138,7 @@ public class Pricing_BatchPricingInboundMsgTest {
                                                                    SBQQ__Quote__r.SBQQ__Account__r.Id,SBQQ__Quote__r.Pricing_Unified_Global_End_Customer_Nm__r.Pricing_Unified_EndCustomer_Act_Mapping__r.Pricing_Unified_EndCustomer_Id__c,SBQQ__Quote__r.SBQQ__Account__r.Name,Name,Pricing_Revised_Pricing_Start_Date_dt__c,Pricing_Reference_Quote_Line_Nbr__r.Pricing_Quote_Line_Number__c,
                                                                    Pricing_Group_Type_nm__c,Pricing_Billing_Start_Date_Dt__c,Pricing_Billing_End_Date_Dt__c,Pricing_Backdate_Reason_Txt__c,Pricing_Market_Segment_Nm__c,Pricing_ECAP_Price_Amt__c,Pricing_Meet_Comp_Price_Amt__c,Pricing_Unit_Qty__c,Pricing_Deal_RFQ_Id__c,Pricing_Status_Nm__c,SBQQ__Quote__r.Pricing_End_Customer_Country_Nm__c,
                                                                    Pricing_Approved_Start_Date_Dt__c,Pricing_Approved_End_Date_Dt__c,Pricing_Approved_Unit_Qty__c,Pricing_Deal_RFQ_Status_Nm__c, Pricing_Quote_Line_Number__c,Pricing_Market_Segment_values_Nm__c,Pricing_Consumption_Region__c,Pricing_Consumption_Country__c,Pricing_Consumption_Sale_Geo__c,Pricing_Consumption_Platform__c,Pricing_Consumption_Segment__c, 
-                                                                   SBQQ__Quote__r.Pricing_Program_Type_Nm__c,SBQQ__Quote__r.Pricing_Unified_Global_End_Customer_Nm__r.Pricing_Compliance_Watch_List__c,SBQQ__Quote__r.Pricing_Market_Segment_values_Nm__c,SBQQ__Product__r.Id,SBQQ__Product__r.Name,Pricing_Product_Nm__r.Name,SBQQ__Product__r.Core_Product_Name_EPM_ID__c,Pricing_Competetor_Product__r.Id,Pricing_Integration_Status_Nm__c,Pricing_Additional_T_C_s_Txt__c,Pricng_Exclude_from_Price_Approval_Rules__c,Pricing_RegionQL_Nm__c,Pricing_Deal_Description__c,
+                                                                   SBQQ__Quote__r.Pricing_Program_Type_Nm__c,SBQQ__Quote__r.Pricing_AI_Host_Node_cb__c,SBQQ__Quote__r.Pricing_Unified_Global_End_Customer_Nm__r.Pricing_Compliance_Watch_List__c,SBQQ__Quote__r.Pricing_Market_Segment_values_Nm__c,SBQQ__Product__r.Id,SBQQ__Product__r.Name,Pricing_Product_Nm__r.Name,SBQQ__Product__r.Core_Product_Name_EPM_ID__c,Pricing_Competetor_Product__r.Id,Pricing_Integration_Status_Nm__c,Pricing_Additional_T_C_s_Txt__c,Pricng_Exclude_from_Price_Approval_Rules__c,Pricing_RegionQL_Nm__c,Pricing_Deal_Description__c,
                                                                    Pricing_Competetor_Product__r.Name,SBQQ__Quote__r.Pricing_IsUnifiedCustomer__c, SBQQ__Quote__r.Pricing_Unified_Global_End_Customer_Nm__r.Name, SBQQ__Quote__r.Pricing_Unified_Global_End_Customer_Nm__r.Pricing_Unified_EndCustomer_Act_Mapping__c, SBQQ__Quote__r.Pricing_End_Customer__r.Name,SBQQ__Quote__r.Pricing_End_Customer__r.Pricing_Unified_EndCustomer_Id__c,SBQQ__Quote__r.Pricing_End_Customer_Name__c,
                                                                    SBQQ__Quote__r.Pricing_Unified_Global_End_Customer_Nm__r.Pricing_Unified_Country_EndCustomer_Id__c,SBQQ__Quote__r.Pricing_Is_Sanctioned__c,Pricing_Account_Division_Nm__c,Pricing_Program_Type_Nm__c,SBQQ__Product__r.Core_Family_Nm__c,SBQQ__Product__r.Core_Forecast_Product_Name__c,SBQQ__Product__r.Core_Processor_Number_Nm__c,
                                                                    Pricing_Performance_Metric_Nm__c,Pricing_Comp_SKU_Performance_Nbr__c,Pricing_Intel_SKU_Performance_Nbr__c,(SELECT Id,Name,Pricing_Weighting_Pct__c,Pricing_Quote_Line__r.Name,Pricing_Comp_SKU_Performance_Nbr__c,Pricing_Intel_SKU_Performance_Nbr__c,Pricing_Performance_Metric_Nm__c
@@ -150,7 +150,7 @@ public class Pricing_BatchPricingInboundMsgTest {
                 quoteLineIdToActionMap.put(quoteLine[3].Id,Label.Pricing_Tender_Integration_Header_Action_Create);
                 quoteLineIdToActionMap.put(quoteLine[4].Id,Label.Pricing_Tender_Integration_Header_Action_Update);
                 quoteLineIdToActionMap.put(quoteLine[5].Id,Label.Pricing_Tender_Integration_Header_Action_UpdateStatus);
-                
+
                 User loggedInUser = [SELECT Id,Name,Core_WWID__c from User where Id =: userInfo.getUserId()];
                 Pricing_IntegrationSFDCToPricingSystems.insertQuoteOutBoundMessage(quoteLineIdToActionMap, quoteLineMap,loggedInUser.Core_WWID__c,true,qlIdToRuleIdRuleNameMap);
                 Pricing_JSONString JSONVar;

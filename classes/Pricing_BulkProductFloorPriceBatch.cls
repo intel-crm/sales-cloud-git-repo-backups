@@ -2,7 +2,7 @@
  * @description       : 
  * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
  * @group             : 
- * @last modified on  : 04-28-2026
+ * @last modified on  : 04-27-2026
  * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 public with sharing class Pricing_BulkProductFloorPriceBatch implements Database.Batchable<sObject>, Database.Stateful {
@@ -44,7 +44,7 @@ public with sharing class Pricing_BulkProductFloorPriceBatch implements Database
         String csvFile = csvColumnHeader + String.join(csvRowValues,'\n');
         List<OrgWideEmailAddress> orgWideEmailAdd = [SELECT Id from OrgWideEmailAddress where Address=:Label.Pricing_OrgWideEmailAddress];
         Id orgWideEmailAddId = orgWideEmailAdd[0].id;
-        Pricing_Approval_Price_Rules__c rule = [select Name from Pricing_Approval_Price_Rules__c where Id =: recordId];
+        
         //send email
         Messaging.SingleEmailMessage message = new Messaging.SingleEmailMessage();
         Messaging.EmailFileAttachment attachFile = new Messaging.EmailFileAttachment();
@@ -62,8 +62,8 @@ public with sharing class Pricing_BulkProductFloorPriceBatch implements Database
         message.setToAddresses(toAddresses);
         message.setccAddresses(ccAddresses);
          message.setOrgWideEmailAddressId(orgWideEmailAddId);
-        message.setSubject('Result : Bulk Product Floor Price Upload For : '+rule.Name); 
-        message.setHtmlBody('Floor Product and Floor Price upload has completed. Please see the attached file for upload results.');
+        message.setSubject('Result : Bulk Product Floor Price Operation'); 
+        message.setHtmlBody('Please see attached Bulk Product Floor Price success error csv file');
         message.setSaveAsActivity(false);
         Messaging.sendEmail(new Messaging.SingleEmailMessage[] { message });
     }

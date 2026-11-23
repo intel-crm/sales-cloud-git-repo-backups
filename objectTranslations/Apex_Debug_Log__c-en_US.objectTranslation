@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Apex Debug Log</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Apex Debug Logs</value>
+    </caseValues>
+    <fields>
+        <label><!-- Apex methods --></label>
+        <name>Apex_methods__c</name>
+    </fields>
+    <fields>
+        <label><!-- CPU Time --></label>
+        <name>CPU_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- DML Count --></label>
+        <name>DML_Count__c</name>
+    </fields>
+    <fields>
+        <label><!-- Heap Size --></label>
+        <name>Heap_Size__c</name>
+    </fields>
+    <fields>
+        <label><!-- Log Status --></label>
+        <name>Log_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Log User --></label>
+        <name>Log_User__c</name>
+    </fields>
+    <fields>
+        <label><!-- SOQL Count --></label>
+        <name>SOQL_Count__c</name>
+    </fields>
+    <fields>
+        <label><!-- SOQL Queries --></label>
+        <name>SOQL_Queries__c</name>
+    </fields>
+    <startsWith>Vowel</startsWith>
+</CustomObjectTranslation>

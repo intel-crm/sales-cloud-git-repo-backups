@@ -2,9 +2,9 @@
 <StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <sorted>false</sorted>
     <standardValue>
-        <fullName>Non Commercial Order</fullName>
+        <fullName>Licensed Tool Order</fullName>
         <default>false</default>
-        <label>Non Commercial Order</label>
+        <label>Licensed Tool Order</label>
     </standardValue>
     <standardValue>
         <fullName>Sample Order</fullName>
@@ -12,8 +12,8 @@
         <label>Sample Order</label>
     </standardValue>
     <standardValue>
-        <fullName>Licensed Tool Order</fullName>
+        <fullName>Non Commercial Order</fullName>
         <default>false</default>
-        <label>Licensed Tool Order</label>
+        <label>Non Commercial Order</label>
     </standardValue>
 </StandardValueSet>

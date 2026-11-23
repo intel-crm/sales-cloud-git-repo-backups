@@ -146,7 +146,6 @@
     <allowInChatterGroups>true</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
-    <deprecated>false</deprecated>
     <enableActivities>true</enableActivities>
     <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>
@@ -159,7 +158,6 @@
     <externalSharingModel>Private</externalSharingModel>
     <fields>
         <fullName>DP_EAT_Email_Addresses__c</fullName>
-        <deprecated>false</deprecated>
         <inlineHelpText>Enter comma separated email IDs to get notification with test run results.</inlineHelpText>
         <label>Email Addresses</label>
         <length>32768</length>
@@ -170,7 +168,6 @@
     </fields>
     <fields>
         <fullName>DP_EAT_Job_Id__c</fullName>
-        <deprecated>false</deprecated>
         <externalId>false</externalId>
         <label>Job Id</label>
         <length>255</length>
@@ -182,19 +179,17 @@
     </fields>
     <fields>
         <fullName>DP_EAT_Job_Status__c</fullName>
-        <deprecated>false</deprecated>
         <externalId>false</externalId>
         <label>Job Status</label>
         <length>255</length>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
     </fields>
     <fields>
         <fullName>DP_EAT_Number_of_Compilation_Failures__c</fullName>
-        <deprecated>false</deprecated>
         <externalId>false</externalId>
         <label>Compilation Failures in last run</label>
         <precision>18</precision>
@@ -207,7 +202,6 @@
     </fields>
     <fields>
         <fullName>DP_EAT_Number_of_last_ran_Test_Classes__c</fullName>
-        <deprecated>false</deprecated>
         <label>Number of Test Classes in last run</label>
         <summaryFilterItems>
             <field>DP_EAT_Project_Test_Classes__c.DP_EAT_Exclude_test_class_for_test_runs__c</field>
@@ -222,7 +216,6 @@
     </fields>
     <fields>
         <fullName>DP_EAT_Number_of_last_ran_Test_Methods__c</fullName>
-        <deprecated>false</deprecated>
         <externalId>false</externalId>
         <label>Number of Test Methods in last run</label>
         <precision>18</precision>
@@ -235,7 +228,6 @@
     </fields>
     <fields>
         <fullName>DP_EAT_Number_of_last_ran_Tests_Failed__c</fullName>
-        <deprecated>false</deprecated>
         <externalId>false</externalId>
         <label>Number of Tests Failed in last run</label>
         <precision>18</precision>
@@ -248,7 +240,6 @@
     </fields>
     <fields>
         <fullName>DP_EAT_Number_of_last_ran_Tests_Passed__c</fullName>
-        <deprecated>false</deprecated>
         <externalId>false</externalId>
         <label>Number of Tests Passed in last run</label>
         <precision>18</precision>
@@ -262,21 +253,19 @@
     <fields>
         <fullName>DP_EAT_Pause_Time_in_minutes__c</fullName>
         <defaultValue>60</defaultValue>
-        <deprecated>false</deprecated>
         <externalId>false</externalId>
         <inlineHelpText>Enter minutes in which the selected test classes will run completely.</inlineHelpText>
         <label>Pause Time in minutes</label>
         <precision>18</precision>
         <required>false</required>
         <scale>0</scale>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
     <fields>
         <fullName>DP_EAT_Prefixes__c</fullName>
-        <deprecated>false</deprecated>
         <externalId>false</externalId>
         <inlineHelpText>Enter comma separated prefix strings.</inlineHelpText>
         <label>Prefixes</label>
@@ -290,7 +279,6 @@
     <fields>
         <fullName>DP_EAT_Project_Key_Contact_1__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
-        <deprecated>false</deprecated>
         <label>Project Key Contact 1</label>
         <referenceTo>User</referenceTo>
         <relationshipName>Project_Info</relationshipName>
@@ -302,7 +290,6 @@
     <fields>
         <fullName>DP_EAT_Project_Key_Contact_2__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
-        <deprecated>false</deprecated>
         <label>Project Key Contact 2</label>
         <referenceTo>User</referenceTo>
         <relationshipName>Project_Info1</relationshipName>
@@ -312,32 +299,8 @@
         <type>Lookup</type>
     </fields>
     <fields>
-        <fullName>DP_EAT_Result_Summary__c</fullName>
-        <deprecated>false</deprecated>
-        <externalId>false</externalId>
-        <formula>HYPERLINK(&quot;https://intel.lightning.force.com/lightning/r/Report/00O3b000007Ra2aEAC/view?queryScope=userFolders&amp;fv0=&quot;+IF( 
-CONTAINS(  Name , &quot; &quot;) , 
-SUBSTITUTE(Name , &quot; &quot;, &quot;%20&quot;), 
- IF(
-  CONTAINS( Name , &quot;&amp;&quot;), 
-  SUBSTITUTE(Name , &quot;&amp;&quot;, &quot;%26&quot;), 
-  Name 
- ) 
-)
-, 
-&quot;Report Link&quot; ,
-&quot;_blank&quot;)</formula>
-        <label>Result Summary</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>DP_EAT_Run_related_apex_tests_daily__c</fullName>
         <defaultValue>false</defaultValue>
-        <deprecated>false</deprecated>
         <label>Run related apex tests daily</label>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -346,11 +309,23 @@ SUBSTITUTE(Name , &quot; &quot;, &quot;%20&quot;),
     <fields>
         <fullName>DP_EAT_Send_Email__c</fullName>
         <defaultValue>true</defaultValue>
-        <deprecated>false</deprecated>
         <label>Send Email</label>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>DP_EAT_TestRunButtonCount__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>This field holds the count of clicks on &apos;Execute Test Run&apos; button</inlineHelpText>
+        <label>Number of clicks on test run button</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
     </fields>
     <label>Project Info</label>
     <listViews>
@@ -362,6 +337,9 @@ SUBSTITUTE(Name , &quot; &quot;, &quot;%20&quot;),
         <columns>DP_EAT_Number_of_last_ran_Tests_Passed__c</columns>
         <columns>DP_EAT_Run_related_apex_tests_daily__c</columns>
         <columns>DP_EAT_Pause_Time_in_minutes__c</columns>
+        <columns>CREATEDBY_USER</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>UPDATEDBY_USER</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>

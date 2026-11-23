@@ -8,7 +8,6 @@
 @isTest
 public without sharing class Pricing_Test_Utility {
     Public static PermissionSet permissionRec;
-    //Get perm record by label
     Static{
         permissionRec = [SELECT Id, Name FROM PermissionSet where Name=:Label.Pricing_CPQ_Managed_License_User Limit 1];
     }
@@ -40,14 +39,22 @@ public without sharing class Pricing_Test_Utility {
     
     // This method creates Account Team Members and Account Share Settings
     Public static List<AccountTeamMember> createAccountTeamMember(Id accId, Id userId){
-        List<AccountTeamMember> lstAccountTeamMember = new List<AccountTeamMember>();        
-        AccountShare accShare = new AccountShare(AccountId = accId, AccountAccessLevel ='Edit', OpportunityAccessLevel ='Edit',
-                                                 CaseAccessLevel='Edit', UserOrGroupId = userId);
+        List<AccountTeamMember> lstAccountTeamMember = new List<AccountTeamMember>();
+        
+        AccountShare accShare = new AccountShare(AccountId = accId,
+                                                 AccountAccessLevel ='Edit',
+                                                 OpportunityAccessLevel ='Edit',
+                                                 CaseAccessLevel='Edit',
+                                                 UserOrGroupId = userId);
         insert accShare;        
-        AccountTeamMember accountTeamMember = new AccountTeamMember(AccountId = accId, TeamMemberRole = 'Team Member (100%)',
-                                                                    AccountAccessLevel ='Edit', OpportunityAccessLevel ='Edit',
-                                                                    CaseAccessLevel='Edit', UserId = userId);
-        lstAccountTeamMember.add(accountTeamMember);
+        
+        AccountTeamMember accountTeamMember = new AccountTeamMember(AccountId = accId,
+                                                                    TeamMemberRole = 'Team Member (100%)',
+                                                                    AccountAccessLevel ='Edit',
+                                                                    OpportunityAccessLevel ='Edit',
+                                                                    CaseAccessLevel='Edit',
+                                                                    UserId = userId);
+        lstAccountTeamMember.add(accountTeamMember);        
         
         insert lstAccountTeamMember;
         return lstAccountTeamMember;
@@ -266,6 +273,8 @@ public without sharing class Pricing_Test_Utility {
             quoteLine.Pricing_Quote_Program_Nm__c = Label.Pricing_Program_Code_Tender;
             quoteLine.Pricing_Status_Nm__c =system.label.Quote_Pricing_Status;
             quoteLine.Pricing_Consumption_Platform__c = 'Test platform 1,test platform 2';
+            //quoteLine.Pricing_Consumption_Sale_Geo__c = 'Test sales Geo,test sales Geo 2';
+            //quoteLine.Pricing_Consumption_Segment__c = 'Test segment,test segment 2';
             quoteLine.Pricing_Consumption_Region__c = 'ASMO';
             quoteLine.Pricing_Project_Nm__c = 'test project';
             quoteLine.Pricing_Ready_for_Review_cb__c = false;
@@ -570,6 +579,7 @@ public without sharing class Pricing_Test_Utility {
         for(Profile proId : [SELECT id  FROM Profile  WHERE Name IN: profileNameSet]){
             userProfileIdSet.add(proId.Id);
         }
+        
         List<User> lstUser = new List<User>();
         User thisUser = [SELECT Id FROM User WHERE Id = :UserInfo.getUserId()];
         System.runAs(thisUser){
@@ -593,6 +603,7 @@ public without sharing class Pricing_Test_Utility {
         }  
         return lstUser;
     }
+    
     public static List<User> createAdminUser2(){
         Set<String> profileNameSet=new Set<String>{Label.Pricing_Tender_Profiles_SystemAdministrator};
             
@@ -600,6 +611,7 @@ public without sharing class Pricing_Test_Utility {
         for(Profile proId : [SELECT id  FROM Profile  WHERE Name IN: profileNameSet]){
             userProfileIdSet.add(proId.Id);
         }
+        
         List<User> lstUser = new List<User>();
         User thisUser = [SELECT Id FROM User WHERE Id = :UserInfo.getUserId()];
         User u1 = new User();
@@ -1272,7 +1284,8 @@ insert et;
             insert partnerGroupList;
             return partnerGroupList;
         }catch(Exception e){
-                        return null;
+            System.debug('Exception is: '+e.getMessage());
+            return null;
         }
     }
     
@@ -1289,14 +1302,18 @@ insert et;
                                          Core_VerticalSegment__c = 'Mobile',
                                          IsActive = true);
             insert prod;
+            System.debug('After prod creation: 1223'+ prod);
             Product_Additional_Attribute__c dealprod = new Product_Additional_Attribute__c();
             dealprod.Name = 'Deal Reg Product';
             dealprod.Product__c = prod.Id;
             dealprod.Eligible_for_Deal_Reg__c = true;
             dealprod.Programs_Eligible__c = 'PDI';
+            System.debug('After Deal prod creation: 1228' +prod);
             insert dealprod;
+            System.debug('After Insertion: 1230' +dealprod);
             return dealprod;
         }catch(Exception exp){
+            System.debug('Exception1233: '+exp.getMessage());
             return null;
         }
     }
@@ -1304,6 +1321,7 @@ insert et;
     public static List<OpportunityLineItem> createOpportunityProduct(Id oppId, Integer noOfRecs){
         try{
             List<OpportunityLineItem> oppItemList = new List<OpportunityLineItem>();
+            System.debug('Inside opp creation method');
             Product_Additional_Attribute__c dealRegProd = createDealRegProduct();
             PricebookEntry testPBE = new PricebookEntry();
             testPBE.UnitPrice = 1;
@@ -1313,6 +1331,7 @@ insert et;
             testPBE.UseStandardPrice = false;
             insert testPBE;
             
+            System.debug('Inside opp creation method');
             for(Integer i=0; i < noOfRecs; i++) {
                 OpportunityLineItem oppRec = new OpportunityLineItem();
                 oppRec.OpportunityId = oppId;
@@ -1328,9 +1347,13 @@ insert et;
                 //oppRec.TotalPrice = 200;
                 oppItemList.add(oppRec);
             }
+            System.debug('Inside opp creation method 1244');
             insert oppItemList;
+            System.debug('Inside opp creation method 1246');
             return oppItemList;
         }catch(Exception exp) {
+            System.debug('Inside opp creation method catch block');
+            System.debug('Exception: '+exp.getMessage());
             return null;
         }
     }

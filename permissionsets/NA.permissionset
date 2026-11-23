@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <classAccesses>
+        <apexClass>Pricing_QuoteAgentic_Utility</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Pricing_RFP_Scraping_AI_Integration</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <customPermissions>
+        <enabled>true</enabled>
+        <name>Pricing_RFP_Scraping</name>
+    </customPermissions>
+    <description>Permissionset for MSP&apos;s to access the RFP</description>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__Quote__c.Pricing_AI_RFP_Scraping_Status__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__Quote__c.Pricing_AI_Scraping_Recommendation_Nm__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>NA</label>
+    <license>Salesforce</license>
+</PermissionSet>

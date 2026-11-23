@@ -1,0 +1,41 @@
+<template>
+    <div class="container">
+        <!-- Section 1: Donut Chart -->
+        <div class="chart-section">
+            <div class="chart-wrapper">
+                <canvas class="chart"></canvas>
+                <div class="chart-center">
+                    <p class="total-opportunities">{totalOpportunities}</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: Stage Names with Counts (Colored Radio Buttons) -->
+        <div class="stage-section">
+            <h2>Open Opportunities by Stage ({totalOpportunities})</h2>
+            <div class="stages-container">
+                <template for:each={opportunityStages} for:item="stage">
+                    <div key={stage.stage} class="stage-item">
+                        <span class="stage-radio" style="background-color: {stage.color}"></span>
+                        <span class="stage-text">{stage.count} {stage.stage}</span>
+                    </div>
+                </template>
+            </div>
+        </div>
+
+        <!-- Section 3: Opportunity Win Rate -->
+        <div class="metrics-section">
+            <h3>Opportunity Win Rate</h3>
+            <div class="metric-values">
+                <div>
+                    <p class="value">{opportunityWinRate}%</p>
+                    <p class="subtext">Last Quarter</p>
+                </div>
+                <div>
+                    <p class="value">0%</p>
+                    <p class="subtext">This Quarter</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

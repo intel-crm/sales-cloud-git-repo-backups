@@ -1,0 +1,6 @@
+<messaging:emailTemplate subject="IQR Status for {!relatedTo.SBQQ__Quote__r.Name}/{!relatedTo.Pricing_EndCustomer_Nm__c}/{!relatedTo.Pricing_Project_Nm__c}/{!relatedTo.Pricing_End_Customer_Country__c}{!IF(relatedTo.Pricing_Customer_Reference_txt__c != Null, '/', '')}{!relatedTo.Pricing_Customer_Reference_txt__c}" recipientType="User" relatedToType="SBQQ__QuoteLine__c"
+renderUsingSystemContextWithoutSharing="True">
+    <messaging:htmlEmailBody >
+        <c:Pricing_QLIRollbackEmailNotification quoteLineRecordId="{!relatedTo.Id}"/>
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>

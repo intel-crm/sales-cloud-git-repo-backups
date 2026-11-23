@@ -1,0 +1,27 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	<div class="slds-grid slds-wrap">
+    <table class="slds-table slds-table_bordered">
+        <thead>
+            <tr class="TrCls">
+                <th class="Th1Cls">Product Name</th>
+                <th class="Th2Cls">Vendor</th>
+                <th class="Th3Cls"></th>
+                <th class="Th4Cls">Risk Reason 1</th>
+                <th class="Th5Cls">Risk Reason 2</th>
+                <th class="Th7Cls">Risk Priority</th>
+                <th class="Th8Cls">Risk Category</th>
+                <th class="Th9Cls">Risk Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <aura:iteration items="{!v.oppProductList}" var="oppProduct" indexVar="index">
+            <tr class="TrCls">
+                <td class="Th4Cls">
+                    
+                </td>
+            </tr>
+            </aura:iteration>
+        </tbody>
+    </table>
+    </div>
+</aura:component>

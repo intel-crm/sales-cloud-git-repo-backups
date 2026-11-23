@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>This email template is used when a New Solution is requested by the User</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Core New Solution Request</name>
+    <style>none</style>
+    <subject>Request for New Solution</subject>
+    <textOnly>Hi Team,&lt;/br&gt;
+&lt;/br&gt;
+
+
+{!body}
+&lt;/br&gt;&lt;/br&gt;
+
+Thanks</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

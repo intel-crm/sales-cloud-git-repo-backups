@@ -1,0 +1,87 @@
+{
+  "defaultCode" : "en_US",
+  "defaultLabel" : "English (US)",
+  "id" : "133d00d2-67b4-48c1-bf56-e785afcb0cfc",
+  "languages" : [ {
+    "countryCode" : "",
+    "fallbackLanguageId" : null,
+    "id" : "70b7be4a-1564-4c9e-ab29-4517471748a2",
+    "isActive" : true,
+    "label" : "English",
+    "languageCode" : "ms",
+    "type" : "language"
+  }, {
+    "countryCode" : "HK",
+    "fallbackLanguageId" : null,
+    "id" : "dae55f33-e03f-4778-8aef-6738003c3e42",
+    "isActive" : true,
+    "label" : "Chinese (Hong Kong) (HK)",
+    "languageCode" : "zh",
+    "type" : "language"
+  }, {
+    "countryCode" : "SG",
+    "fallbackLanguageId" : null,
+    "id" : "48f4124a-34fc-4b02-8182-fd3c42f58ff9",
+    "isActive" : true,
+    "label" : "Chinese (Singapore) (SG)",
+    "languageCode" : "zh",
+    "type" : "language"
+  }, {
+    "countryCode" : "ZA",
+    "fallbackLanguageId" : null,
+    "id" : "07585cdd-aa58-4546-82e3-0b21ab101dd8",
+    "isActive" : true,
+    "label" : "English (South Africa) (ZA)",
+    "languageCode" : "en",
+    "type" : "language"
+  }, {
+    "countryCode" : "GB",
+    "fallbackLanguageId" : null,
+    "id" : "65491b14-1bd9-4a9a-98aa-51afdfca0612",
+    "isActive" : true,
+    "label" : "English (UK) (GB)",
+    "languageCode" : "en",
+    "type" : "language"
+  }, {
+    "countryCode" : "",
+    "fallbackLanguageId" : null,
+    "id" : "8de34985-638e-4c95-b270-6bda337ce6be",
+    "isActive" : true,
+    "label" : "Japanese",
+    "languageCode" : "ja",
+    "type" : "language"
+  }, {
+    "countryCode" : "",
+    "fallbackLanguageId" : null,
+    "id" : "e53adf05-309d-46e6-812b-fa98af133d00",
+    "isActive" : true,
+    "label" : "Korean",
+    "languageCode" : "ko",
+    "type" : "language"
+  }, {
+    "countryCode" : "",
+    "fallbackLanguageId" : null,
+    "id" : "eff71fb2-63ce-41e5-8c52-2dc0ccf5850f",
+    "isActive" : true,
+    "label" : "Spanish",
+    "languageCode" : "es",
+    "type" : "language"
+  }, {
+    "countryCode" : "",
+    "fallbackLanguageId" : null,
+    "id" : "388fb551-17f7-4f31-ad86-1a2ec57244ab",
+    "isActive" : true,
+    "label" : "Thai",
+    "languageCode" : "th",
+    "type" : "language"
+  }, {
+    "countryCode" : "",
+    "fallbackLanguageId" : null,
+    "id" : "f838ecfb-b812-41ca-9766-b19239d20902",
+    "isActive" : true,
+    "label" : "Vietnamese",
+    "languageCode" : "vi",
+    "type" : "language"
+  } ],
+  "type" : "languageContainer"
+}

@@ -14,22 +14,14 @@
         <criterion>
             <criteriaNumber>2</criteriaNumber>
             <criterionValue>
-                <isEnabled>true</isEnabled>
-                <permissionName>Core_MDF_CCF_BOOST_USER</permissionName>
-                <permissionType>Custom</permissionType>
+                <entityField>Contact.$Contact.Core_Audience__c</entityField>
+                <entityType>User</entityType>
+                <fieldValue>CCF Boost User</fieldValue>
             </criterionValue>
-            <operator>Equal</operator>
-            <type>Permission</type>
+            <operator>Contains</operator>
+            <type>FieldBased</type>
         </criterion>
     </criteria>
     <formulaFilterType>AnyCriterionMatches</formulaFilterType>
     <isDefaultAudience>false</isDefaultAudience>
-    <targets>
-        <target>
-            <groupName>33377e4b-1257-47dc-b86f-398bbcddd619$#$28813983-ab6b-4595-b85e-cd2ba9056979</groupName>
-            <priority>1</priority>
-            <targetType>ExperienceVariation</targetType>
-            <targetValue>Resources_core_MDF_dynamicURLsOnCommunity_10_Component</targetValue>
-        </target>
-    </targets>
 </Audience>

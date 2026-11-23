@@ -20,20 +20,12 @@
                 <field>PRM_Agreement_Sign_Dt__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>PRM_Signed_By_Name__c</field>
+                <behavior>Required</behavior>
+                <field>PRM_Contact__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>PRM_Signed_By_Email__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>PRM_InActive_Ind__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>PRM_Notes_Txt__c</field>
+                <field>PRM_Legal_Agreement_Name_Text__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns/>

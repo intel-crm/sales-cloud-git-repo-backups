@@ -48,7 +48,6 @@ public class Core_IPS_CaseUpdateQueueable_Test {
                 ContactRec.Core_IPS_Intel_Support_Owner__c = intelSupportOwner;
                 ContactRec.core_ips_Active__c=true;
                 ContactRec.Accountid = ListOfAccounts.get(0).Id; 
-                ContactRec.MailingCountry = 'India';
             }
             insert ListOfContacts;
             System.assert(ListOfContacts[0].Id != null, 'Record not created');

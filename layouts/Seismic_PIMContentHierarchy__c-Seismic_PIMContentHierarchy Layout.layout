@@ -8,6 +8,10 @@
         <layoutColumns>
             <layoutItems>
                 <behavior>Required</behavior>
+                <field>Name</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Required</behavior>
                 <field>DisplayName__c</field>
             </layoutItems>
             <layoutItems>
@@ -16,11 +20,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Required</behavior>
-                <field>HierarchyID__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Required</behavior>
-                <field>Hierarchy_Name__c</field>
+                <field>TaggingPath__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Required</behavior>
@@ -28,15 +28,15 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Required</behavior>
+                <field>Hierarchy_Name__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Required</behavior>
                 <field>Seismic_Hierarchy_Name__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Required</behavior>
-                <field>TaggingPath__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Required</behavior>
-                <field>Name</field>
+                <field>HierarchyID__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -75,15 +75,6 @@
         <layoutColumns/>
         <style>CustomLinks</style>
     </layoutSections>
-    <miniLayout>
-        <fields>DisplayName__c</fields>
-        <fields>GUID__c</fields>
-        <fields>HierarchyID__c</fields>
-        <fields>Hierarchy_Name__c</fields>
-        <fields>PIMTimestamp__c</fields>
-        <fields>Seismic_Hierarchy_Name__c</fields>
-        <fields>TaggingPath__c</fields>
-    </miniLayout>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>
     <showInteractionLogPanel>false</showInteractionLogPanel>

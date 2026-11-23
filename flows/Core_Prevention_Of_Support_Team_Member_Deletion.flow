@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>59.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <customErrors>
+        <name>PreventDeletion</name>
+        <label>PreventDeletion</label>
+        <locationX>176</locationX>
+        <locationY>287</locationY>
+        <customErrorMessages>
+            <errorMessage>Deletion of Support Team Member is not allowed at this stage.</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <description>Will take This from Next Relese. iyts not there in Prod</description>
+    <environments>Default</environments>
+    <interviewLabel>Prevention Of Support Team Member Deletion {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Prevention Of Support Team Member Deletion</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>PreventDeletion</targetReference>
+        </connector>
+        <filterFormula>AND({!$Profile.Name}&lt;&gt;&apos;System Administrator&apos;,{!$Profile.Name}&lt;&gt; &apos;IT Admin&apos;, NOT(ISPICKVAL({!$Record.Core_Status__c}, &apos;New&apos;)))</filterFormula>
+        <object>Core_Opportunity_Support_Team__c</object>
+        <recordTriggerType>Delete</recordTriggerType>
+        <triggerType>RecordBeforeDelete</triggerType>
+    </start>
+    <status>Draft</status>
+</Flow>

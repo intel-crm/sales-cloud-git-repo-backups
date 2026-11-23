@@ -1,33 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
-    <available>false</available>
+    <available>true</available>
     <encodingKey>UTF-8</encodingKey>
     <name>ACR_CONTACT_ADDITION_ITA</name>
     <style>none</style>
-    <subject>Nuovo utente aggiunto all&apos;account Intel® Partner Alliance</subject>
-    <textOnly>Conferma dei dettagli dell&apos;account
+    <subject>Nuovo utente aggiunto all&apos;account del programma per i partner Intel</subject>
+    <textOnly>An individual has been added to the Intel Partner program account of {!Account.Name} by an Intel representative or another contact at your company.
 
-{!UserName},
+Company Name: {!Account.Name}
+Contact Added: Login ID {!ContactLoginId} with e-mail {!ContactEmail}
+Relationship (Role): {!AcrRoles}
 
-una persona è stata aggiunta all&apos;account Intel® Partner Alliance {!Account.Name} da un rappresentante Intel o da un altro contatto della tua azienda.
+If you do not approve of this update, please login to remove the user. 
 
-Nome azienda: {!Account.Name}
-Business ID: {!Account.AccountNumber}
-Contatto aggiunto: E-mail {!ContactEmail}
-Rapporto (ruolo): {!AcrRoles}
+(Link on login for both FPGA and CSP-
+https://ssl.intel.com/content/www/us/en/secure/my-intel/dashboard.html)
 
-Se non hai approvato questo aggiornamento, effettua il login per rimuovere il contatto.
-
-Per qualunque domanda, contattare Intel https://signin.intel.com/ContactUs?Culture=it-it
-
-
-Grazie.
-Il tuo team Intel® Partner Alliance
-
-Questo messaggio ti è stato inviato come un&apos;importante comunicazione aziendale relativa al tuo rapporto attuale con Intel® Partner Alliance.
-© {!$Label.PRM_CurrentYear} Intel Corporation
-Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
-Privacy | Cookies</textOnly>
+Questions? Contact Support here (link).
+Support links:
+for CSP- https://www.intel.com/content/www/us/en/partner/cloud-insider/forms/support.html
+for FPGA: https://signin.intel.com/ContactUs?Culture=en-US</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

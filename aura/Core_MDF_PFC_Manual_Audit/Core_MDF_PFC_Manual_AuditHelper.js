@@ -9,12 +9,11 @@
                 var result = response.getReturnValue();
                 var success = $A.get('$Label.c.Core_MDF_Success');
                 if(!$A.util.isUndefinedOrNull(result)){
-                    if(result.message === success){
-                            component.set("v.showManualAudit",result.message);
-                        	component.set("v.isPICReviewCompleted",result.isPICReviewCompleted);
+                    if(result === success){
+                            component.set("v.showManualAudit",result);
                         }
                     else{
-                        component.set('v.accessErrorMsg', result.message); 
+                        component.set('v.accessErrorMsg', result); 
                     }            
                 }
             }else if(state === "ERROR"){
@@ -45,16 +44,14 @@
                             $A.util.addClass(cmpTarget, "slds-hide");
                         }
                     }), component.get("v.fadeTimeout"));
-                    //$A.get('e.force:refreshView').fire();
+                    $A.get('e.force:refreshView').fire();
                 }else{
                 	this.handleServerExceptions(component,response);
                 }
             }else if(state === "ERROR"){
                 this.handleServerExceptions(component,response);
             } 
-            setTimeout(function () {
-                                window.location.reload();
-                            }, component.get("v.fadeTimeout"));
+            
         });
         $A.enqueueAction(action);
     },
@@ -92,7 +89,7 @@
             if(component.isValid()) {
                 $A.util.addClass(errToast, "slds-hide");
             }
-        }),component.get("v.fadeTimeout"));
+        }), component.get("v.fadeTimeout"));
     }
     
 })

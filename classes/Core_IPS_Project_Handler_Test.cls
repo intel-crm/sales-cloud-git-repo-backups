@@ -302,7 +302,7 @@ Modification Log :
 * ----------------------------------------------------------------------------                 
 * Deepak Jetty              25/01/2016                Created
 ****************************************************************************************************/ 
-  /*  static testmethod void projectAccessControlInactiveUpdateTest(){
+    static testmethod void projectAccessControlInactiveUpdateTest(){
         getrecords();
         // Get intelSupportOwner Id (User Id)
         Id intelSupportOwner = ListOfUser.get(0).id;
@@ -335,8 +335,6 @@ Modification Log :
                 IL.Value__c = 'Submitted Pending' ;
             }
         }
-           Test.startTest();
-      
         System.runAs(ListOfUser.get(0)){
             Insert IPSLabels;
         }
@@ -345,7 +343,8 @@ Modification Log :
         System.runAs(ListOfUser.get(0)){
             insert ListOfIpsProjects;
         }
-       
+        Test.startTest();
+        
         System.runAs(ListOfUser.get(0)){
             TestUtilities.addAccMemProdToProject(ListOfIpsProjects);  //added by Aayushi US79852
             for(Core_IPS_Project__c proj:ListOfIpsProjects){
@@ -359,7 +358,7 @@ Modification Log :
         }
         System.assert(ListOfIpsProjects.get(0).Core_Status__c == 'Inactive', 'Record not Updated');        
         Test.stopTest();
-    } */
+    }
     /***************************************************************************************************
 Method Name:  ProjectAccessControlActiveToNonInactiveUpdateTest
 Method Type: Test Method
@@ -372,7 +371,7 @@ Modification Log :
 * ----------------------------------------------------------------------------                 
 * Deepak Jetty              25/01/2016                Created
 ****************************************************************************************************/ 
- /*   static testmethod void projectAccessControlActiveToNonInactiveUpdateTest(){
+    static testmethod void projectAccessControlActiveToNonInactiveUpdateTest(){
         getrecords();
         // Get intelSupportOwner Id (User Id)
         Id intelSupportOwner = ListOfUser.get(0).id;
@@ -410,21 +409,20 @@ Modification Log :
         System.runAs(ListOfUser.get(0)){
             Insert IPSLabels;
         }
-          
         // Create Ips Project1
         List<Core_IPS_Project__c> listOfIpsProjects = TestUtilities.getListOfIpsProjects(1);
         System.runAs(ListOfUser.get(0)){
             insert ListOfIpsProjects;
         }
-       
+        Test.startTest();
+        
         System.runAs(ListOfUser.get(0)){
             TestUtilities.addAccMemProdToProject(ListOfIpsProjects); //added by Aayushi US79852
             for(Core_IPS_Project__c proj:ListOfIpsProjects){
                 proj.Core_Status__c = 'Active';
             }
+            System.debug('>>ListOfIpsProjects>>'+ListOfIpsProjects);
             Update ListOfIpsProjects;
-             Test.startTest();
-      
             for(Core_IPS_Project__c proj:ListOfIpsProjects){
                 proj.Core_Status__c = 'Submitted Pending';
             }
@@ -432,7 +430,7 @@ Modification Log :
         }
         System.assert(ListOfIpsProjects.get(0).Core_Status__c != 'Inactive', 'Record not Updated');        
         Test.stopTest();
-    } */
+    }
     /***************************************************************************************************
 Method Name:  ProjectPreventDeleteNewTest
 Method Type: Test Method
@@ -507,7 +505,6 @@ Modification Log :
 * Deepak Jetty              25/01/2016                Created
 ****************************************************************************************************/ 
     static testmethod void projectPreventDeleteNonNewTest(){
-        Test.startTest();
         getrecords();
         // Get intelSupportOwner Id (User Id)
         Id intelSupportOwner = ListOfUser.get(0).id;
@@ -547,9 +544,8 @@ Modification Log :
         List<Core_IPS_Project__c> listOfIpsProjects = TestUtilities.getListOfIpsProjects(1);
         System.runAs(ListOfUser.get(0)){
             insert ListOfIpsProjects;
-        }  
-        Test.stopTest();
-       
+        }
+        Test.startTest();
         System.runAs(ListOfUser.get(0)){
             TestUtilities.addAccMemProdToProject(ListOfIpsProjects); //added by Aayushi US79852
             
@@ -564,7 +560,8 @@ Modification Log :
                 ExceptionError = E.getMessage(); 
             }
         }
-      
+        System.assert(ExceptionError.contains('Cannot delete this when status is Submitted Pending or Active'), 'Record deleted Error not fired');        
+        Test.stopTest();
     }
     /***************************************************************************************************
 Method Name:  ProjectPreventDeleteInactiveTest
@@ -578,7 +575,7 @@ Modification Log :
 * ----------------------------------------------------------------------------                 
 * Deepak Jetty              25/01/2016                Created
 ****************************************************************************************************/ 
-  /*  static testmethod void projectPreventDeleteInactiveTest(){
+    static testmethod void projectPreventDeleteInactiveTest(){
         getrecords();
         // Get intelSupportOwner Id (User Id)
         Id intelSupportOwner = ListOfUser.get(0).id;
@@ -614,13 +611,12 @@ Modification Log :
         System.runAs(ListOfUser.get(0)){
             Insert IPSLabels;
         }
-         Test.startTest();
-       
         // Create Ips Project1
         List<Core_IPS_Project__c> listOfIpsProjects = TestUtilities.getListOfIpsProjects(1);
         System.runAs(ListOfUser.get(0)){
             insert ListOfIpsProjects;
         }
+        Test.startTest();
         
         System.runAs(ListOfUser.get(0)){
             TestUtilities.addAccMemProdToProject(ListOfIpsProjects); //added by Aayushi US79852
@@ -639,14 +635,10 @@ Modification Log :
             }Catch (Exception E){
                 ExceptionError = E.getMessage(); 
             }
-        }         
-          Test.stopTest();
-        
-         List<Core_IPS_Project__c> projList =[Select Id FROM Core_IPS_Project__c WHERE Id In :ListOfIpsProjects];
-        System.assert(projList.isEmpty(), true);        
-       // System.assert(ExceptionError.contains('Cannot delete this when status is Submitted Pending or Active'), 'Record deleted Error not fired');        
-        
-    }*/
+        }
+        System.assert(ExceptionError.contains('Cannot delete this when status is Submitted Pending or Active'), 'Record deleted Error not fired');        
+        Test.stopTest();
+    }
     /***************************************************************************************************
 Method Name:  ProjectPreventDeleteSubmitTest
 Method Type: Test Method
@@ -659,9 +651,8 @@ Modification Log :
 * ----------------------------------------------------------------------------                 
 * Deepak Jetty              25/01/2016                Created
 ****************************************************************************************************/ 
-  /*  static testmethod void projectPreventDeleteSubmitTest(){
-         Test.startTest(); 
-         getrecords();
+    static testmethod void projectPreventDeleteSubmitTest(){
+        getrecords();
         // Get intelSupportOwner Id (User Id)
         Id intelSupportOwner = ListOfUser.get(0).id;
         String exceptionError;
@@ -701,7 +692,8 @@ Modification Log :
         System.runAs(ListOfUser.get(0)){
             insert ListOfIpsProjects;
         }
-        Test.stopTest();  
+        Test.startTest();
+        
         System.runAs(ListOfUser.get(0)){
             TestUtilities.addAccMemProdToProject(ListOfIpsProjects); //added by Aayushi US79852
             
@@ -722,8 +714,8 @@ Modification Log :
             }
         }
         System.assert(ExceptionError.contains('Cannot delete this when status is Submitted Pending or Active'), 'Record deleted Error not fired');        
-       
-    } */
+        Test.stopTest();
+    }
     /***************************************************************************************************
 Method Name         : activateProjectTest
 Method Type         : Test Method
@@ -737,8 +729,8 @@ Modification Log :
 * Yogesh Sharma               03/01/2018             Created
 ****************************************************************************************************/ 
     
- /*   static testmethod void activateProjectTest(){
-         
+    static testmethod void activateProjectTest(){
+        Test.startTest();
         getrecords();
         // Query Profiles
         Map<String,ID> profiles = new Map<String,ID>();
@@ -794,7 +786,7 @@ Modification Log :
         triggerExecution.Core_Description__c = 'Activate the Project based on status update';
         triggerExecution.Core_Object__c = 'Core_IPS_Project__c';
         triggerExecution.Core_Trigger_Events__c = 'before update,after update';
-        Test.startTest();
+        
         // Create Support Org
         List<Core_IPS_Product_Organization__c> listOfSupportOrg  = TestUtilities.getListOfSupportOrg(2);
         ListOfSupportOrg.get(0).ownerId = ListOfUser1.get(0).Id;
@@ -828,7 +820,7 @@ Modification Log :
             insert ListOfProducts;
         }
         System.assert(ListOfProducts[0].id != null,'Record not created');
-          Test.stopTest();
+        
         counter = 0;
         // Create Supported product
         List<Core_IPS_Supported_Product__c> listOfSupportedProduct = TestUtilities.getListOfSupportedProduct(2);
@@ -869,7 +861,7 @@ Modification Log :
                 //Add Member And Account to Project 
                 TestUtilities.addAccMemProdToProject(ListOfIpsProjects);
             } 
-         // Create IPS Product
+        // Create IPS Product
         List<Core_IPS_Product__c> listOfIpsProductsOne = TestUtilities.getListOfIpsProducts(4);
         for(Core_IPS_Product__c ipsProduct:listOfIpsProductsOne){
             if(counter<2){
@@ -906,8 +898,8 @@ Modification Log :
         }
         System.assert(listOfIpsProductsTwo[0].Id != null, 'Record not created'); 
         
-      
-    }   */
+        Test.stopTest();
+    }  
     
     
     
@@ -978,7 +970,6 @@ Modification Log :
         
         //Get Record Type
         Id projectRecordTypeId = Schema.SObjectType.Core_IPS_Project__c.getRecordTypeInfosByName().get('Active').getRecordTypeId();
-        Test.startTest();
         
         Integer counter = 0;
         //Create Ips Project
@@ -997,7 +988,7 @@ Modification Log :
                 //Add Member And Account to Project 
                 TestUtilities.addAccMemProdToProject(ListOfIpsProjects);
             } 
-            
+        
         // Create Accounts
         List<Account> listOfAccounts = TestUtilities.getListOfAccounts(1);
         System.runAs(ListOfUser.get(0)){
@@ -1010,7 +1001,6 @@ Modification Log :
             ContactRec.Core_IPS_Intel_Support_Owner__c = intelSupportOwner;
             ContactRec.Accountid = ListOfAccounts.get(0).Id;
             ContactRec.Core_IPS_Active__c = true;
-            ContactRec.MailingCountry = 'India';
         }
         System.runAs(ListOfUser.get(0)){
             insert ListOfContacts;
@@ -1024,7 +1014,6 @@ Modification Log :
         System.runAs(ListOfUser.get(0)){
             insert ListOfIpsAccounts;
         }
-         Test.stopTest();
         System.assert(ListOfIpsAccounts[0].Id != null, 'Record not created');
         Id externalUserProfileId = [select id, name from Profile where name='IPS External Customer'].Id;
         User customerUser = TestUtilities.getListOfUser(1).get(0);
@@ -1058,18 +1047,17 @@ Modification Log :
         System.runAs(ListOfUser.get(0)){
             insert ist;
         }
+        Test.startTest();
         System.runAs(ListOfUser.get(0)){
             ipsProjectRecord.Core_IPS_Enable_ISTasInterested_Parties__c = true;
             ipsProjectRecord.Core_IPS_EnableMemberasInterestedParties__c = true;
-            try{
             update ipsProjectRecord;
-            }catch(exception ex){}
             
             ipsProjectRecord.Core_IPS_Enable_ISTasInterested_Parties__c = false;
             ipsProjectRecord.Core_IPS_EnableMemberasInterestedParties__c = false;
             update ipsProjectRecord;
         }
-       
+        Test.stopTest();
     } 
    /***************************************************************************************************
 Method Name         : activateProjectTest
@@ -1155,7 +1143,7 @@ Modification Log :
                 insert ast;
             }
             
-       system.assertnotEquals(ast.id, null);
+			 system.assertnotEquals(ast.id, null);
             
         }   
     }
@@ -1194,8 +1182,8 @@ Modification Log :
             Core_MPNDA__c='',
             Core_IPS_Private__c=true
         );
-                    
-                    
+    	            	
+                	  
         List<Core_IPS_Project__c> listOfIpsProjects = new List<Core_IPS_Project__c>{ipsProjectRecord};
             
             System.runAs(ListOfUser.get(0)){
@@ -1229,28 +1217,31 @@ Modification Log :
             Core_IPS_Private__c=false,
             OwnerId=ListOfUser.get(0).Id
         );
-                    
-                    
+    	            	
+                	  
         List<Core_IPS_Project__c> listOfIpsProjects = new List<Core_IPS_Project__c>{ipsProjectRecord};
             
             System.runAs(ListOfUser.get(0)){
                 insert triggerExecutionList;
                 insert ListOfIpsProjects;
             }
+        System.debug('-------------------->**Project owner:'+ListOfIpsProjects.get(0).OwnerId);
         Core_IPS_Intel_Support_Team__c istInsertRec = new Core_IPS_Intel_Support_Team__c();
         for(Core_IPS_Project__c proj:ListOfIpsProjects){
-                      istInsertRec.Core_IPS_Project__c  = proj.id;
-                      istInsertRec.Core_IPS_User__c = proj.OwnerId;
-                      istInsertRec.Status__c = 'Inactive';
+            System.debug('-------------------->Project owner:'+proj.OwnerId);
+                  		istInsertRec.Core_IPS_Project__c  = proj.id;
+                    	istInsertRec.Core_IPS_User__c = proj.OwnerId;
+                    	istInsertRec.Status__c = 'Inactive';
         }    
         System.runAs(ListOfUser.get(0)){
                 insert istInsertRec;
             }
+        System.debug('-------------------->IST Rec:'+istInsertRec.Id+istInsertRec.Status__c);
         List<Core_IPS_Project__c> listOfIpsProjects1 = new List<Core_IPS_Project__c>();
         //Update Ips Project
         for(Core_IPS_Project__c proj: ListOfIpsProjects){
                 proj.Core_IPS_Private__c=true;
-              ListOfIpsProjects1.add(proj);
+            	ListOfIpsProjects1.add(proj);
             }
          System.runAs(ListOfUser.get(0)){
                 update ListOfIpsProjects1;

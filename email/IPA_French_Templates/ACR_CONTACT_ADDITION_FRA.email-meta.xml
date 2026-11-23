@@ -4,30 +4,22 @@
     <encodingKey>UTF-8</encodingKey>
     <name>ACR_CONTACT_ADDITION_FRA</name>
     <style>none</style>
-    <subject>Nouvel utilisateur ajouté à votre compte Alliance partenaire Intel®</subject>
-    <textOnly>Confirmez les détails de votre compte
+    <subject>Nouvel utilisateur ajouté à votre compte pour le programme de partenariat Intel</subject>
+    <textOnly>An individual has been added to the Intel Partner program account of {!Account.Name} by an Intel representative or another contact at your company.
 
-{!UserName},
+Company Name: {!Account.Name}
+Contact Added: Login ID {!ContactLoginId} with e-mail {!ContactEmail}
+Relationship (Role): {!AcrRoles}
 
-Une personne a été ajoutée au compte Alliance partenaire Intel® appartenant à {!Account.Name} par un représentant d&apos;Intel ou un autre contact au sein de votre entreprise.
+If you do not approve of this update, please login to remove the user. 
 
-Nom de la société : {!Account.Name}
-ID d’entreprise : {!Account.AccountNumber}
-Contact ajouté : E-mail {!ContactEmail}
-Relation (Rôle) : {!AcrRoles}
+(Link on login for both FPGA and CSP-
+https://ssl.intel.com/content/www/us/en/secure/my-intel/dashboard.html)
 
-Si vous n&apos;avez pas approuvé cette mise à jour, connectez-vous à votre compte pour supprimer le contact.
-
-Pour toute question, veuillez nous contacter à https://signin.intel.com/ContactUs?Culture=fr-fr
-
-
-Cordialement,
-Votre équipe Alliance partenaire Intel®
-
-Ce message vous a été envoyé dans le cadre d&apos;une communication commerciale importante liée à votre relation actuelle avec le programme Alliance partenaire Intel®.
-© {!$Label.PRM_CurrentYear} Intel Corporation
-Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054, États-Unis. www.intel.com
-Confidentialité | Cookies</textOnly>
+Questions? Contact Support here (link).
+Support links:
+for CSP- https://www.intel.com/content/www/us/en/partner/cloud-insider/forms/support.html
+for FPGA: https://signin.intel.com/ContactUs?Culture=en-US</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

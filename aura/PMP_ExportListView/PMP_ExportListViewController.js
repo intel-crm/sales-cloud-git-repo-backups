@@ -1,22 +1,16 @@
 ({
     doInit : function(component, event, helper) {
-        let pageUrl = window.location.href;
-        if(pageUrl.includes('PMP_Partner_Offering__c')||pageUrl.includes('PMP_Company__c')){
-            console.log('@@==>'+pageUrl.includes('PMP_Partner_Offering__c'))
-            console.log('@@1==>'+pageUrl.includes('PMP_Company__c'))
-            component.set("v.showSearchButton",true);
-        }
         //get the name of object from the url.
-        let action = component.get('c.sObjectNames');
+        var action = component.get('c.sObjectNames');
         action.setCallback(this, function(response) {
             
-            let state = response.getState();
+            var state = response.getState();
             if (state === "SUCCESS") {
                 
-                let data = response.getReturnValue();
-                let sobjectName = [];
-                let hyperlinkFields = [];
-                for(let i=0; i<data.length; i++){
+                var data = response.getReturnValue();
+                var sobjectName = [];
+                var hyperlinkFields = [];
+                for(var i=0; i<data.length; i++){
                     
                     sobjectName.push(data[i].sobjectName);
                     
@@ -29,10 +23,10 @@
                 component.set("v.sObjectList",unique);
                 component.set("v.urlFields",hyperlinkFields);
                 
-                let objList = component.get('v.sObjectList');
-                let pathname = window.location;
+                var objList = component.get('v.sObjectList');
+                var pathname = window.location;
                 pathname = pathname.toString();                
-                for(let i=0; i<objList.length; i++){
+                for(var i=0; i<objList.length; i++){
                     
                     if(pathname.includes(objList[i])){
                         
@@ -48,7 +42,7 @@
         
         
         component.set("v.maxRecordWarning",'');
-        let radioList = [];
+        var radioList = [];
         
         radioList.push({
             label : $A.get("$Label.c.PMP_ExportButton"),
@@ -66,10 +60,10 @@
         component.set("v.accessErrorMsg",'');
         component.set("v.maxRecordWarning",'');
         //get the selected list view id.
-        let lstViewId = component.find("selectedViewId").get("v.value");
-        let lstView = component.get("v.listViewResult"); 
+        var lstViewId = component.find("selectedViewId").get("v.value");
+        var lstView = component.get("v.listViewResult"); 
         //get the list view name.
-       let lstViewName=lstView.find(o => o.listViewId === lstViewId).label;
+        var lstViewName=lstView.find(o => o.listViewId === lstViewId).label;
         //set the current list view id and name.
         component.set("v.currentListViewName", lstViewName);
         component.set("v.currentListViewId", lstViewId);
@@ -78,19 +72,19 @@
     exportRecords : function(component, event, helper) {
         
         //get the selected list view id.
-        let lstViewId = component.find("selectedViewId").get("v.value");
+        var lstViewId = component.find("selectedViewId").get("v.value");
         
-       let lstView = component.get("v.listViewResult");
+        var lstView = component.get("v.listViewResult");
         
         //get the list view name.
-        let lstViewName=lstView.find(o => o.listViewId === lstViewId).label;
+        var lstViewName=lstView.find(o => o.listViewId === lstViewId).label;
         // var lstViewName=lstView.find(o => o.listViewId === lstViewId).label;
         
         //set the current list view id and name.
         component.set("v.currentListViewName", lstViewName);
         component.set("v.currentListViewId", lstViewId);
         //set the export type as csv/excel based on the button label.
-        let	 exportBtnType = event.getSource().get("v.label");
+        var exportBtnType = event.getSource().get("v.label");
         
         if(exportBtnType=='Export CSV'){
             component.set("v.exportType",'csv');

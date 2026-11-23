@@ -18,6 +18,21 @@
     <columns>
         <field>PMP_Company__c$PMP_Account_Specialty__c</field>
     </columns>
+    <columns>
+        <field>PMP_Company__c.PMP_Company_Information_Translations__r$PMP_Field_Nm__c</field>
+    </columns>
+    <columns>
+        <field>PMP_Company__c.PMP_Company_Information_Translations__r$Name</field>
+    </columns>
+    <columns>
+        <field>PMP_Company__c.PMP_Company_Information_Translations__r$PMP_English_Txt__c</field>
+    </columns>
+    <columns>
+        <field>PMP_Company__c.PMP_Company_Information_Translations__r$PMP_Chinese_Txt__c</field>
+    </columns>
+    <columns>
+        <field>PMP_Company__c.PMP_Company_Information_Translations__r$PMP_Japanese_Txt__c</field>
+    </columns>
     <description>Created to verif the dataload from SD</description>
     <filter>
         <criteriaItems>

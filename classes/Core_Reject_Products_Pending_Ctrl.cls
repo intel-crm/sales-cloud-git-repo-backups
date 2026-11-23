@@ -59,22 +59,24 @@ public with sharing class Core_Reject_Products_Pending_Ctrl {
     public Core_Reject_Products_Pending_Ctrl(ApexPages.StandardSetController stdSetCtrl) {
         commentText = '';  
         designRegId = apexpages.currentpage().getParameters().get('Id');
-        DDRRecord=[SELECT Id, OwnerId,Core_Vertical_Market_Nm__c,Core_Opportunity_Id__r.StageName,Core_Intel_Platform_Nm__c,Core_End_Customer_Account_Id__r.RecordType.Name,Core_Product_Segment_Nm__c,Core_Product_Application_Nm__c,Core_Design_Registration_Status_Nm__c, RecordTypeId,Core_End_Customer_Account_Owner__c,Core_End_Customer_Account_Id__c,PCC_Registration_Type__c,Core_Accepted_By_Id__c ,Core_Accepted_By_Id__r.DelegatedApproverId from Core_Design_Registration__c where Id =: designRegId];               
+        DDRRecord=[SELECT Id, OwnerId,Core_Vertical_Market_Nm__c,Core_Opportunity_Id__r.StageName,Core_Intel_Platform_Nm__c,Core_End_Customer_Account_Id__r.RecordType.Name,Core_Product_Segment_Nm__c,Core_Product_Application_Nm__c,Core_Design_Registration_Status_Nm__c, RecordTypeId,Core_End_Customer_Account_Owner__c,Core_End_Customer_Account_Id__c,PCC_Registration_Type__c,Core_Accepted_By_Id__c ,Core_Accepted_By_Id__r.DelegatedApproverId from Core_Design_Registration__c where Id =: designRegId WITH SECURITY_ENFORCED ];               
         registrationTypeDR = DDRRecord.PCC_Registration_Type__c;
-       
+        hasDDRPreApproverPermission = checkDDRPreApproverPermission(UserInfo.getUserId());
         List<Core_Design_Registration_Product__c> selectedProducts = stdSetCtrl.getSelected(); // added by dinesh
-        isSuccess = false;   
+        System.debug('selectedProducts -->'+JSON.serialize(selectedProducts));
+       isSuccess = false;   
        //Id DealProdPartnerRecordTypeid = Schema.SObjectType.Core_Design_Registration_Product__c.getRecordTypeInfosByDeveloperName().get('PCC_Deal_Registration_Product_Partner').getRecordTypeId();
-       //Id DealProdLockedRecordTypeid = Schema.SObjectType.Core_Design_Registration_Product__c.getRecordTypeInfosByDeveloperName().get('PCC_Deal_Registration_Product_Locked').getRecordTypeId(); 
+       //Id DealProdLockedRecordTypeid = Schema.SObjectType.Core_Design_Registration_Product__c.getRecordTypeInfosByDeveloperName().get('PCC_Deal_Registration_Product_Locked').getRecordTypeId();
+
         count = 0;
         
         status=Core_DRR_ApproveAllPendingProducts.coreDRStatus(DDRRecord);
-        hasDDRPreApproverPermission = checkDDRPreApproverPermission(UserInfo.getUserId());
+        
 
         if(selectedProducts!=null && selectedProducts.size()>0) {
-        designprods =[SELECT id,Core_Design_Product_Status_Nm__c, Core_DR_Eligible_Status__c,Core_Comment_Txt__c,Core_Active_Status__c,Core_Locked_Ind__c,Core_Design_Registration_Id__c,RecordTypeId,Core_Design_Registration_Id__r.PCC_Registration_Type__c FROM Core_Design_Registration_Product__c WHERE Core_Design_Registration_Id__c = :designRegId and id in :selectedProducts];
+        designprods =[SELECT id,Core_Design_Product_Status_Nm__c, Core_DR_Eligible_Status__c,Core_Comment_Txt__c,Core_Active_Status__c,Core_Locked_Ind__c,Core_Design_Registration_Id__c,RecordTypeId FROM Core_Design_Registration_Product__c WHERE Core_Design_Registration_Id__c = :designRegId and id in :selectedProducts WITH SECURITY_ENFORCED];
         } else{
-            designprods =[SELECT id,Core_Design_Product_Status_Nm__c, Core_DR_Eligible_Status__c,Core_Comment_Txt__c,Core_Active_Status__c,Core_Locked_Ind__c,Core_Design_Registration_Id__c,RecordTypeId,Core_Design_Registration_Id__r.PCC_Registration_Type__c FROM Core_Design_Registration_Product__c WHERE Core_Design_Registration_Id__c = :designRegId];
+            designprods =[SELECT id,Core_Design_Product_Status_Nm__c, Core_DR_Eligible_Status__c,Core_Comment_Txt__c,Core_Active_Status__c,Core_Locked_Ind__c,Core_Design_Registration_Id__c,RecordTypeId FROM Core_Design_Registration_Product__c WHERE Core_Design_Registration_Id__c = :designRegId WITH SECURITY_ENFORCED];
         }
         
         for (Core_Design_Registration_Product__c designRegProd : designprods) {
@@ -154,7 +156,10 @@ public with sharing class Core_Reject_Products_Pending_Ctrl {
     }*/
     public PageReference rejectProductsPending() {
         try {
-           if (isCommentTextBlank()) {
+            system.debug('isdealprod'+registrationTypeDR);
+
+
+            if (isCommentTextBlank()) {
                 alertMessage = 'Please enter the comments before rejecting';
             }
             else if(!String.isEmpty(registrationTypeDR)&&registrationTypeDR.contains('Deal')){
@@ -195,17 +200,18 @@ public with sharing class Core_Reject_Products_Pending_Ctrl {
                 throw new System.DMLException();
             }
         } catch (Exception e) {
+            alertMessage = LabelConfiguration__mdt.getInstance('Core_DDR_Button_Exceptions').Value__c;
             handleException(e);
         }
         
         return null;
     }
 
-   /* private boolean isDealProduct(){
+    private boolean isDealProduct(){
         system.debug('inside retueen deal'+allDealRegProds.size());
         //system.debug('inside retueen '+allDealRegProds.size()>0);
         return allDealRegProds.size()>0;
-    }*/
+    }
     
     private boolean isCommentTextBlank() {
         return String.isBlank(commentText);
@@ -242,7 +248,7 @@ public with sharing class Core_Reject_Products_Pending_Ctrl {
         Integer newApprovedDRP = 0;
         Boolean hasNewAprvdDRP = false;
         allDesignRegProds = [SELECT Id, Core_Locked_Ind__c, Core_Design_Product_Status_Nm__c FROM Core_Design_Registration_Product__c WHERE Core_Design_Registration_Id__c =: designRegId 
-                                AND Core_Design_Product_Status_Nm__c = :APPROVED_DDR];
+                                AND Core_Design_Product_Status_Nm__c = :APPROVED_DDR  WITH SECURITY_ENFORCED];
        
         for(Core_Design_Registration_Product__c drp : allDesignRegProds) {
             if(!drp.Core_Locked_Ind__c && drp.Core_Design_Product_Status_Nm__c == APPROVED_DDR) {
@@ -256,7 +262,7 @@ public with sharing class Core_Reject_Products_Pending_Ctrl {
 
         List<Core_Design_Registration_Product__c> pendingDDRProds = new List<Core_Design_Registration_Product__c>();
         pendingDDRProds = [SELECT Id FROM Core_Design_Registration_Product__c WHERE Core_Design_Registration_Id__c =: designRegId 
-                            AND Core_Design_Product_Status_Nm__c = :PENDING_DDR];
+                            AND Core_Design_Product_Status_Nm__c = :PENDING_DDR  WITH SECURITY_ENFORCED];
         List<Core_Design_Registration__c> parentDDR = [SELECT Id, Core_Design_Registration_Status_Nm__c FROM Core_Design_Registration__c
                                                         WHERE Id = :designRegId LIMIT 1];
         if(!allDesignRegProds.isEmpty() && pendingDDRProds.isEmpty() && !hasNewAprvdDRP ) {
@@ -274,7 +280,6 @@ public with sharing class Core_Reject_Products_Pending_Ctrl {
         }
         if(updateCheck) {
             try{
-                Core_DDR_Design_Handler_Utility.AfterUpdateIterated = true;
                 update tempDDRRec;
                 if(Test.isRunningTest()) {
                     tempDDRRec.add(new Core_Design_Registration__c(Core_Design_Registration_Nm__c='test'));
@@ -302,7 +307,8 @@ public with sharing class Core_Reject_Products_Pending_Ctrl {
               //  desProd.Core_Comment_Txt__c = desProd.Core_Comment_Txt__c!= null ?desProd.Core_Comment_Txt__c + '\n'+rejectionText : rejectionText;
                 desProdList.add(desProd);
             }
-            update desProdList; 
+            update desProdList;
+            //Database.update(desProdList,false); 
             isSuccess = true;
             if(Test.isRunningTest()) {
                 tempDDRProdRec.add(new Core_Design_Registration_Product__c(Core_Comment_Txt__c='test'));
@@ -323,7 +329,7 @@ public with sharing class Core_Reject_Products_Pending_Ctrl {
             WHERE AssigneeId = :userId
                 AND (PermissionSet.Name = 'DDR_Pre_Approver_permission_set' OR PermissionSet.Name='DDR_PreApprover_Permission'
                 OR PermissionSet.Name='DDR_Pre_Approver_permission_set_Read_Only'OR PermissionSet.Name='DDR_Internal_Users'
-                OR PermissionSet.Name='DDR_Internal_Users_Read_Only') 
+                OR PermissionSet.Name='DDR_Internal_Users_Read_Only')  WITH SECURITY_ENFORCED
         ];
 
         return !permissionSetAssignments.isEmpty();

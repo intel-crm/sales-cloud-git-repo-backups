@@ -76,6 +76,9 @@
         <field>Account.Core_Partner_Alliance_Program_Member__c</field>
     </columns>
     <columns>
+        <field>Account.Core_IPA_Partner_Speciality__c</field>
+    </columns>
+    <columns>
         <field>Account.Core_Business_Partner_Id__c</field>
     </columns>
     <columns>

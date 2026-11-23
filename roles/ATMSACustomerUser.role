@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>Atman sp. z o.o Customer User</description>
+    <description>ATM S.A. Customer User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>Atman sp. z o.o Customer User</name>
+    <name>ATM S.A. Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>EMP_11967018_ALICJA_GARGAS</parentRole>
+    <parentRole>ATMSACustomerManager</parentRole>
 </Role>

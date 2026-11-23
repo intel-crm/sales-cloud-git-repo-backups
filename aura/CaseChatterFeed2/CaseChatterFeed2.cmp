@@ -1,0 +1,49 @@
+<!--1 of 2 components for the feed-->
+<!--1: Aura component for the posting feature only-->
+<!--2: The LWC for the feed itself is in the caseFeed.html-->
+<!--Contains a rich text input box, a button to post, and a picklist to change the visibility of the post-->
+<aura:component controller="CaseChatterFeed2"
+                implements="flexipage:availableForAllPageTypes,force:hasRecordId,force:appHostable,flexipage:availableForRecordHome,forceCommunity:availableForAllPageTypes,force:lightningQuickAction"	
+                access="global">
+    <!--Variables for visibility picklist and text box String-->
+    <aura:attribute name="vis" type="String[]" default="Intel Corporation... Only,All with access"/>    
+    <aura:attribute name="message" type="String" />
+    
+    <!--Container for the posting feature of the feed-->
+    <div class="slds-m-top_medium slds-m-bottom_x-large">
+        <div class = "slds-box">
+            Make a Post
+            <div>
+                <!--Creates a rich text input box-->
+                <lightning:inputRichText
+                                         value="{!v.message}"
+                                         disabledCategories="FORMAT_FONT,ALIGN_TEXT"     
+                                         label="Write your message:"
+                                         variant="bottom-toolbar"
+                                         placeholder="Share an update...">
+                    <lightning:insertImageButton />
+                </lightning:inputRichText>
+                <footer>
+                    <!--Creates the picklist for the visibility-->
+                    <lightning:select aura:id="sel" name="select" label="To ">
+                        <aura:iteration items="{!v.vis}" var="va">
+                            <option text="{!va}" value= "{!va}"></option>
+                        </aura:iteration>
+                    </lightning:select>
+                </footer>
+                <h2 class="slds-text-heading_medium slds-m-bottom_medium"> 
+                </h2>
+                <!--Creates the Share button-->
+                <lightning:button type="submit"
+                                  variant="brand"
+                                  label="Share"
+                                  value = "{!v.message}"
+                                  onclick="{!c.handleClick}"
+                                  class="slds-m-left_x-small"
+                                  ></lightning:button>
+                <h2 class="slds-text-heading_medium slds-m-bottom_large"> 
+                </h2>
+            </div>
+        </div>
+    </div>
+</aura:component>

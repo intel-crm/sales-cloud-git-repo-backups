@@ -1,0 +1,507 @@
+<aura:component controller="Core_MDF_AuditDocumentHelper"
+                implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction,force:hasSObjectName"
+                access="global">
+    <aura:attribute name="accept" type="List" description="list of file formats which are allowed to upload" />
+    <aura:attribute name="sobjectType" type="String" default="{!v.sObjectName}" />
+    <aura:attribute name="claimStatus" type="String" description="Holds the status of the claim" />
+    <aura:attribute name="caseStatus" type="String" description="Holds the status of the case" default="Under Review" />
+    <aura:attribute name="toggleClaimMessagePopUp" type="boolean" default="false"
+                    description="Boolean value will be used to open/close the model" />
+    <aura:attribute name="claimSubmitterMessage" type="String" description="Holds Claim Submitter Message" />
+    <aura:attribute name="DocumentType" type="String" default="Core_MDF_Document_Types__c" access="global" />
+    <aura:attribute name="auditDocument" type="Core_MDF_Audit_Document__c[]"
+                    default="{'sobjectType':'Core_MDF_Audit_Document__c'}" />
+    <aura:attribute name="isOpen" type="boolean" default="false"
+                    description="Boolean value will be used to open/close the model" />
+    <aura:attribute name="isInsert" type="boolean" default="false"
+                    description="Boolean value will be used to display recently uploaded documents" />
+    <aura:attribute name="isEnableCancel" type="boolean" default="false"
+                    description="Boolean value will be used to display conditional Cancel/Close button" />
+    <aura:attribute name="isManageDocEnabled" type="boolean" default="false"
+                    description="Boolean value will be used to display manage button" />
+    <aura:attribute name="isSubmitEnabled" type="boolean" default="false"
+                    description="Boolean value will be used to display submit button" />
+    <aura:attribute name="isManageButtonClicked" type="boolean" default="false"
+                    description="Boolean value will be used to check whether manage button is clicked or not" />
+    <aura:attribute name="isSaveAndCloseClicked" type="boolean" default="false"
+                    description="Boolean value will be used retain modal for performing Save and Close action" />
+    <aura:attribute name="sObjectDocumentWrapper" type="object" default="null" />
+    <aura:attribute name="isResponseReceived" type="boolean" default="false"
+                    description="Boolean value will be used to display component once we receive response" />
+    <aura:attribute name="disabled" type="Boolean" default="false"
+                    description="Conditionally disabling the upload functionality" />
+    <aura:attribute name="contentdocumentids" type="String[]" default=""
+                    description="Stores the content document ids of the uploaded files " />
+    <aura:attribute name="userInfo" type="string"
+                    description="Stores the userinfo of logged in user used for dummy storage" />
+    <aura:attribute name="filedata" type="Object" />
+    <aura:attribute name="iserror" type="Boolean" default="false" />
+    <aura:attribute name="errormsg" type="string" default="" />
+    <aura:attribute name="selectedDocumentId" type="string" default="" />
+    
+    <aura:attribute name="checkfileuploadcondition" type="Boolean" default="false" />
+    <aura:attribute name="documents" type="String[]" default=""
+                    description="Stores the content documents of the uploaded files " />
+    <aura:attribute name="isFileUploadOnClaimCreation" type="Boolean" default="false" />
+    <aura:attribute name="docType" type="String[]" default="" />
+    <aura:attribute name="checkDocTypeSelected" type="Boolean" default="false" />
+    <aura:attribute name="isFileTypeSelected" type="Boolean" default="false" />
+    <aura:attribute name="showToast" type="Boolean" default="false" />
+    <aura:attribute name="loaded" type="boolean" default="true" />
+    <aura:attribute name="diableComponentfromClaim" type="boolean" />
+    
+    <aura:attribute name="editClaimId" type="Id"/>
+    <aura:attribute name="recordIdForPop" type="Id" default="{!v.editClaimId != null ? v.editClaimId : v.recordId}"/>
+    <aura:attribute name="isSaveEnabled" type="boolean" default="true"
+                    description="Boolean value will be used to save a claim" />
+    <aura:attribute name="recordtypeDeveloperName" type="String" default=""
+                    description="Stores the recordtypeDeveloperName from the parent component" />
+    <aura:attribute name="typeOfDocument" type="List" default="[]"
+                    description="Stores the concatenated value of document type and Value" />
+    <aura:attribute name="docTypeName" type="List"
+                    description="Stores the Document Types Applicable for the record based on Program/Budget Type" />
+    <aura:attribute name="docTypesSelected" type="Map" description="Stores Document Types Selected" />
+    <aura:attribute name="budgetType" type="String" default=""
+                    description="Stores the value of budget type from the parent component" />
+    <aura:attribute type="Core_MDF_POP_Document_Types__mdt[]" name="metadataMap" default=""
+                    description="Stores the metadata values from the server side" />
+    <aura:attribute name="reqDocName" type="String" description="Holds the required document types" />
+    <aura:attribute name="reqDocNameList" type="List" description="Holds the required document types as List" />
+    <aura:attribute name="reqDocTypesForEnablingSubmitBtn" type="List"
+                    description="Holds the required document types as List used for enabling/disabling submit button" />
+    <aura:attribute name="fileOnClaimCreationSide" type="Boolean" default="false" 
+                    description="This is used to decide whether files are uploaded on claim creation or not"/>
+    <aura:attribute name="existingDocList" type="Core_MDF_Audit_Document__c[]"
+                    default="{'sobjectType':'Core_MDF_Audit_Document__c'}" />
+    <aura:attribute name="isMandateDocsUnchecked" type="boolean" default="false"
+                    description="Boolean value will be used to save a claim from Details Page" />
+    <aura:attribute name="isfileDeleted" type="boolean" default="false"
+                    description="Boolean value will be used to recalculate the save flag" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <!-- Handler for the checkbox change event is defined below -->
+    <aura:handler event="c:Core_MDF_checkboxChangeEvent" action="{!c.checkSubmitEnable}" />
+    <!--<p>record id in ManageAudit: {!v.recordId}</p>-->
+    <!--<p>User info in ManageAudit: {!v.userInfo}</p>-->
+    <!-- All the buttons which appears on page are placed in this section-->
+    <div class="slds-modal__header" align="left">
+        <h2 id="header43" class="slds-text-heading--small"> {!$Label.c.Core_MDF_Proof_of_Documents_Submission}</h2>
+        <div class="c-container">
+            <aura:if isTrue="{!v.isResponseReceived}">
+                <lightning:layout multipleRows="true">
+                    <div>
+                        <aura:if isTrue="{!v.checkDocTypeSelected}">
+                            <lightning:layoutItem padding="horizontal-small">
+                                <div>
+                                    <h1>{!$Label.c.Core_MDF_Manage_Document_Error_Message}</h1>
+                                </div>
+                            </lightning:layoutItem>
+                            
+                            
+                        </aura:if>
+                    </div>
+                    
+                    <!-- Upload Document Button-->
+                    <lightning:layoutItem>
+                        <aura:if isTrue="{!or(v.sobjectType == 'Case',v.sObjectDocumentWrapper.sObjName == 'Case')}">
+                            <aura:if
+                                     isTrue="{!and(v.sObjectDocumentWrapper.caseStatus==$Label.c.Core_MDF_Case_Status_Pending_Document,or(v.sObjectDocumentWrapper.isEditable,v.sObjectDocumentWrapper.isPartner))}">
+                                <div Style="position: relative;margin:5px;">
+                                    <lightning:fileUpload accept="{!v.accept}" recordId="{!v.recordId}"
+                                                          onuploadfinished="{!c.handleUploadFinished}" multiple="true"
+                                                          aura:id="lightningfileUpload" />
+                                </div>
+                                <aura:set attribute="else">
+                                    <div Style="position: relative;margin:5px;">
+                                        <lightning:fileUpload accept="{!v.accept}" recordId="{!v.recordId}"
+                                                              onuploadfinished="{!c.handleUploadFinished}" multiple="true"
+                                                              aura:id="lightningfileUpload" disabled="true" />
+                                    </div>
+                                </aura:set>
+                            </aura:if>
+                        </aura:if>
+                        
+                        <aura:if
+                                 isTrue="{!or(v.sobjectType=='PartnerFundClaim',v.sObjectDocumentWrapper.sObjName == 'PartnerFundClaim')}">
+                            
+                            <aura:if
+                                     isTrue="{!or((and(v.sObjectDocumentWrapper== 'null',v.isFileUploadOnClaimCreation)),v.sObjectDocumentWrapper.enableComponentOnDetail)}">
+                                <div Style="position: relative;margin:5px;">
+                                    <lightning:fileUpload accept="{!v.accept}" recordId="{!v.userInfo}"
+                                                          onuploadfinished="{!c.handleUploadFinished}" multiple="true"
+                                                          aura:id="lightningfileUpload" />
+                                </div>
+                                <aura:set attribute="else">
+                                    <div Style="position: relative;margin:5px;">
+                                        <lightning:fileUpload accept="{!v.accept}" recordId="{!v.userInfo}"
+                                                              onuploadfinished="{!c.handleUploadFinished}" multiple="true"
+                                                              aura:id="lightningfileUpload" disabled="true" />
+                                    </div>
+                                </aura:set>
+                            </aura:if>
+                        </aura:if>
+                        
+                    </lightning:layoutItem>
+                    
+                    <!-- Disabling Manage and Download Documents buttons on Claim Creation page-->
+                    
+                    <aura:if isTrue="{!v.isFileUploadOnClaimCreation}">
+                        <lightning:layoutItem>
+                            <div Style="position: relative;top:19px;margin:5px;">
+                                <!-- Check for any existing docs-->                                
+                                <aura:if isTrue="{!or((and(v.isManageDocEnabled,
+                                                 v.sObjectDocumentWrapper.pfcRec.Core_MDF_Claim_Review_Case__c == null)),
+                                                 (and(v.isManageDocEnabled,
+                                                 v.sObjectDocumentWrapper.caseStatus==$Label.c.Core_MDF_Case_Status_Pending_Document,
+                                                 v.editClaimId != 'null')))}">
+                                    <lightning:button variant="neutral"
+                                                      label="{!$Label.c.Core_MDF_Manage_Document_Button_Label}"
+                                                      title="{!$Label.c.Core_MDF_Manage_Document_Button_Label}"
+                                                      onclick="{!c.openModal}" />
+                                    <aura:set attribute="else">
+                                        <!-- Code when is false -->
+                                        <lightning:button variant="neutral"
+                                                          label="{!$Label.c.Core_MDF_Manage_Document_Button_Label}"
+                                                          title="{!$Label.c.Core_MDF_Manage_Document_Button_Label}"
+                                                          onclick="{!c.openModal}" disabled="true" />
+                                    </aura:set>
+                                </aura:if>
+                                <lightning:button variant="neutral"
+                                                  label="{!$Label.c.Core_MDF_Download_All_Document_Button_Label}"
+                                                  title="{!$Label.c.Core_MDF_Download_All_Document_Button_Label}"
+                                                  onclick="{!c.downloadAllDocument}" class="slds-hide" />
+                            </div>
+                        </lightning:layoutItem>
+                        <aura:set attribute="else">
+                            
+                            <!--Detail Section
+                             Manage Document Button-->
+                            <lightning:layoutItem>
+                                <div Style="position: relative;top:19px;margin:5px;">
+                                    <!--<aura:if isTrue ="{!and(v.isManageDocEnabled,v.caseDocumentWrapper.caseStatus==$Label.c.Core_MDF_Case_Status_Pending_Document,or(v.caseDocumentWrapper.isEdiatable,v.caseDocumentWrapper.isPartner))}">-->
+                                    <aura:if
+                                             isTrue="{!or(v.sobjectType == 'Case',v.sObjectDocumentWrapper.sObjName == 'Case')}">
+                                        
+                                        <aura:if
+                                                 isTrue="{!and(v.sObjectDocumentWrapper.caseStatus==$Label.c.Core_MDF_Case_Status_Pending_Document,and(v.isManageDocEnabled,or(v.sObjectDocumentWrapper.isEditable,v.sObjectDocumentWrapper.isPartner)))}">
+                                            <lightning:button variant="neutral"
+                                                              label="{!$Label.c.Core_MDF_Manage_Document_Button_Label}"
+                                                              title="{!$Label.c.Core_MDF_Manage_Document_Button_Label}"
+                                                              onclick="{!c.openModal}" />
+                                            <aura:set attribute="else">
+                                                <lightning:button variant="neutral"
+                                                                  label="{!$Label.c.Core_MDF_Manage_Document_Button_Label}"
+                                                                  title="{!$Label.c.Core_MDF_Manage_Document_Button_Label}"
+                                                                  disabled="true" onclick="{!c.openModal}" />
+                                            </aura:set>
+                                        </aura:if>
+                                    </aura:if>
+                                    
+                                    <aura:if
+                                             isTrue="{!or(v.sobjectType == 'PartnerFundClaim',v.sObjectDocumentWrapper.sObjName == 'PartnerFundClaim')}">
+                                        <aura:if
+                                                 isTrue="{!and(v.isManageDocEnabled,v.sObjectDocumentWrapper.enableComponentOnDetail)}">
+                                            <lightning:button variant="neutral"
+                                                              label="{!$Label.c.Core_MDF_Manage_Document_Button_Label}"
+                                                              title="{!$Label.c.Core_MDF_Manage_Document_Button_Label}"
+                                                              onclick="{!c.openModal}" />
+                                            
+                                            <aura:set attribute="else">
+                                                <lightning:button variant="neutral"
+                                                                  label="{!$Label.c.Core_MDF_Manage_Document_Button_Label}"
+                                                                  title="{!$Label.c.Core_MDF_Manage_Document_Button_Label}"
+                                                                  disabled="true" onclick="{!c.openModal}" />
+                                            </aura:set>
+                                        </aura:if>
+                                    </aura:if>
+                                    
+                                </div>
+                            </lightning:layoutItem>
+                            
+                            <!-- Download All Document-->
+                            <lightning:layoutItem>
+                                <div Style="position: relative;top:19px;margin:5px;">
+                                    
+                                    <aura:if
+                                             isTrue="{!and(!v.sObjectDocumentWrapper.isPartner, v.sobjectType =='Case')}">
+                                        <aura:if isTrue="{!v.isManageDocEnabled}">
+                                            <lightning:button variant="neutral"
+                                                              label="{!$Label.c.Core_MDF_Download_All_Document_Button_Label}"
+                                                              title="{!$Label.c.Core_MDF_Download_All_Document_Button_Label}"
+                                                              onclick="{!c.downloadAllDocument}" />
+                                            
+                                            <aura:set attribute="else">
+                                                <lightning:button variant="neutral"
+                                                                  label="{!$Label.c.Core_MDF_Download_All_Document_Button_Label}"
+                                                                  title="{!$Label.c.Core_MDF_Download_All_Document_Button_Label}"
+                                                                  disabled="true" onclick="{!c.downloadAllDocument}" />
+                                                
+                                            </aura:set>
+                                        </aura:if>
+                                    </aura:if>
+                                </div>
+                            </lightning:layoutItem>
+                        </aura:set>
+                    </aura:if>
+                    <!-- Displaying the list of documents attached -->
+                    <aura:if isTrue="{!v.checkfileuploadcondition}">
+                        <lightning:layoutItem size="12"></lightning:layoutItem>
+                        <br /><br />
+                        <aura:if isTrue="{!not(empty(v.auditDocument))}">
+                            <lightning:layoutItem size="12">
+                                <tr>
+                                    <aura:if isTrue="{!v.reqDocName.length > 0}">
+                                        <div class="slds-float_none">
+                                            <p style="color:red">*{!$Label.c.Core_MDF_Mandatory_Document_Types}: {!v.reqDocName}</p>
+                                        </div>
+                                    </aura:if>
+                                </tr>
+                                <br></br>
+                                <div class="slds-modal__content " id="modal-content-id-1">
+                                    <table class="slds-table_bordered" align="left">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    <div class="slds-truncate">
+                                                        <label>{!$Label.c.Core_MDF_Document_Title}</label>
+                                                    </div>
+                                                </th>
+                                                <aura:iteration items="{!v.typeOfDocument}" var="type" indexVar="index">
+                                                    <th>
+                                                        <div class="slds-col--padded">
+                                                            <center><label>{!type.DocNameLabel}</label></center>
+                                                        </div>
+                                                    </th>
+                                                </aura:iteration>
+                                                <th>
+                                                    <div class="slds-col--padded">
+                                                        <div class="slds-truncate" title="Delete"></div>
+                                                    </div>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <aura:iteration items="{!v.auditDocument}" var="file" indexVar="indx">
+                                                <tr class="slds-hint-parent">
+                                                    <td data-label="{!$Label.c.Core_MDF_Document_Title}">
+                                                        
+                                                        <div class="slds-cell-wrap">
+                                                            <a href="{!file.Core_MDF_Document_Id__c}" target="_blank"
+                                                               download="{!file.Core_MDF_Document_Title__c}">
+                                                                {!file.Core_MDF_Document_Title__c} </a>
+                                                        </div>
+                                                        
+                                                    </td>
+                                                    <aura:iteration items="{!v.typeOfDocument}" var="item"
+                                                                    indexVar="indx">
+                                                        <td> 
+                                                            <center><label>
+                                                                <c:Core_MDF_AuraIfAdvanced
+                                                                                           checkboxName="{!(file.Core_MDF_Document_Id__c+';#'+item.DocName)}"
+                                                                                           documentTypes="{!file.Core_MDF_Document_Types__c}"
+                                                                                           element="{!item.DocName}"
+                                                                                           disabled = "true"
+                                                                                           checkboxvalue = "{!item.Value}" />  
+                                                                </label></center>
+                                                        </td>
+                                                    </aura:iteration>
+                                                    <aura:if isTrue="{!v.editClaimId == null}">
+                                                        <th scope="row">
+                                                            <div>                                                        
+                                                                <a onclick="{!c.deleteSelected}"
+                                                                   data-Id="{!file.Core_MDF_Document_Id__c}"
+                                                                   data-index="{!indx}">
+                                                                    <lightning:buttonIcon variant="info"
+                                                                                          iconName="utility:delete"
+                                                                                          class="slds-icon slds-icon_small" iconClass="dark"
+                                                                                          size="small" alternativeText="Delete" />                                                                                                                        
+                                                                    <span class="slds-assistive-text">Delete
+                                                                        Icon</span>
+                                                                </a>
+                                                            </div>
+                                                        </th>
+                                                    </aura:if>
+                                                </tr>
+                                            </aura:iteration>                                        
+                                        </tbody>
+                                    </table>                               
+                                </div>
+                            </lightning:layoutItem>
+                        </aura:if>
+                    </aura:if>
+                    
+                    <!-- Claim Submitter Message Button-->
+                    <lightning:layoutItem>
+                        <div Style="position: relative;top:19px;margin:5px;">
+                            <aura:if
+                                     isTrue="{!and(or(v.sObjectDocumentWrapper.caseStatus==$Label.c.Core_MDF_Case_Status_Pending_Document,v.sObjectDocumentWrapper.caseStatus==$Label.c.Core_MDF_Case_Status_Under_Review),and(v.sObjectDocumentWrapper.isPartner,v.sObjectDocumentWrapper.sObjName == 'Case'))}">
+                                <lightning:button variant="neutral" label="{!$Label.c.Core_MDF_SubmitMessage}"
+                                                  title="{!$Label.c.Core_MDF_SubmitMessage}"
+                                                  onclick="{!c.callClaimSubmitterAction}" />
+                                
+                            </aura:if>
+                        </div>
+                    </lightning:layoutItem>
+                </lightning:layout>
+            </aura:if>
+        </div>
+        
+        <!--Claim SubmitterMessage Popup-->
+        <div class="slds-m-around_xx-medium">
+            
+            <aura:if isTrue="{!v.toggleClaimMessagePopUp}">
+                <aura:if isTrue="{!v.loaded }">
+                    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                             aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                        <div class="slds-modal__container">
+                            <div class="slds-modal__header">
+                                <button class="slds-button slds-modal__close slds-button--icon-inverse" title="Close"
+                                        onclick="{!c.onCancel}">
+                                    X<span class="slds-assistive-text">{!$Label.c.Core_MDF_Cancel}</span>
+                                </button>
+                                <h2 id="header43" class="slds-text-heading--medium">
+                                    {!$Label.c.Core_MDF_SubmitMessage_ReplacesCurrent}</h2>
+                            </div>
+                            <div class="slds-modal__content slds-p-around--max-small" id="modal-content-id-1">
+                                <lightning:layoutItem flexibility="auto" padding="around-large">
+                                    <lightning:textarea value="{!v.claimSubmitterMessage}" aura:Id="txtarea" />
+                                </lightning:layoutItem>
+                            </div>
+                            <div class="slds-modal__footer">
+                                <div>
+                                    <lightning:button variant="neutral" label="{!$Label.c.Core_MDF_Cancel}"
+                                                      title="{!$Label.c.Core_MDF_Cancel}" onclick="{!c.onCancel}" />
+                                    <lightning:button variant="brand" label="{!$Label.c.Core_MDF_Submit_Button_Label}"
+                                                      title="{!$Label.c.Core_MDF_Submit_Button_Label}" onclick="{!c.onSubmit}" />
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="slds-backdrop slds-backdrop_open"></div>
+                    <aura:set attribute="else">
+                        <lightning:spinner alternativeText="Loading" />
+                    </aura:set>
+                </aura:if>
+            </aura:if>
+        </div>
+        
+        <!--Use "slds-m-around_xx-large" class to add standard X-Large padding to the component-->
+        <!-- Model begins from here-->
+        <div class="slds-m-around_xx-large">
+            <aura:if isTrue="{!v.isOpen}">
+                <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                         aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_large">
+                    
+                    <div class="slds-modal__container">
+                        <header class="slds-modal__header">
+                            <aura:if isTrue="{!v.isEnableCancel}">
+                                <lightning:buttonIcon iconName="utility:close" onclick="{!c.closeModal}"
+                                                      alternativeText="{!$Label.c.Core_MDF_Close}" variant="bare-inverse"
+                                                      class="slds-modal__close" />
+                            </aura:if>
+                            
+                            <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">
+                                {!$Label.c.Core_MDF_Manage_Document_Header}</h2>
+                        </header>
+                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                            <tr>
+                                <aura:if isTrue="{!v.reqDocName.length > 0}">
+                                    <div class="slds-float_none">
+                                        <p style="color:red">*{!$Label.c.Core_MDF_Mandatory_Document_Types}: {!v.reqDocName}</p>
+                                    </div>
+                                </aura:if>
+                            </tr>
+                            <br></br>
+                            <center>
+                                <table>
+                                    <tr>
+                                        <th>
+                                            <label>{!$Label.c.Core_MDF_Document_Title}</label>
+                                        </th>
+                                        
+                                        <aura:iteration items="{!v.typeOfDocument}" var="type" indexVar="index">
+                                            <td>
+                                                <center>
+                                                    <th>
+                                                        <center><label>{!type.DocNameLabel}</label></center>
+                                                    </th>
+                                                </center>
+                                            </td>
+                                        </aura:iteration>
+                                    </tr>
+                                    <aura:iteration items="{!v.auditDocument}" var="file" indexVar="indx">
+                                        <tr class="slds-hint-parent">                                            
+                                            <td>
+                                                <label>{!file.Core_MDF_Document_Title__c}</label>
+                                            </td>                                            
+                                            <aura:iteration items="{!v.typeOfDocument}" var="item" indexVar="indx">                                                
+                                                <td>  
+                                                    <center>
+                                                        <c:Core_MDF_AuraIfAdvanced
+                                                                                   checkboxName="{!(file.Core_MDF_Document_Id__c+';#'+item.DocName)}"
+                                                                                   documentTypes="{!file.Core_MDF_Document_Types__c}"
+                                                                                   element="{!item.DocName}"
+                                                                                   checkboxvalue = "{!item.Value}" />
+                                                    </center>
+                                                </td>                                                
+                                            </aura:iteration>                                            
+                                        </tr>
+                                    </aura:iteration>
+                                </table>
+                            </center>
+                        </div>
+                        
+                        <footer class="slds-modal__footer">
+                            
+                            <aura:if isTrue="{!v.isEnableCancel}">
+                                <lightning:button variant="neutral" type="submit" label="{!$Label.c.Core_MDF_Cancel}"
+                                                  title="{!$Label.c.Core_MDF_Cancel}" onclick="{!c.closeModal }" />
+                                
+                            </aura:if>
+                            
+                            
+                            <aura:if isTrue="{!!v.isFileUploadOnClaimCreation}">
+                                <lightning:button class="slds-button slds-button_brand" type="submit"
+                                                  label="{!$Label.c.Core_MDF_Save}" title="{!$Label.c.Core_MDF_Save}"
+                                                  onclick="{!c.save}" />
+                                
+                                <lightning:button class="slds-button slds-button_brand" type="submit"
+                                                  label="{!$Label.c.Core_MDF_Save_and_Close_Button_Label}"
+                                                  title="{!$Label.c.Core_MDF_Save_and_Close_Button_Label}"
+                                                  onclick="{!c.saveAndClose}" />
+                                <aura:if isTrue="{!v.sObjectDocumentWrapper.submitButton}">
+                                    <lightning:button class="slds-button slds-button_brand" type="submit"
+                                                      label="{!$Label.c.Core_MDF_Submit_Button_Label}"
+                                                      title="{!$Label.c.Core_MDF_Submit_Button_Label}" disabled="true"
+                                                      onclick="{!c.submit}" />
+                                    <aura:set attribute="else">
+                                        <aura:if isTrue="{!v.isSubmitEnabled}">
+                                            <lightning:button class="slds-button slds-button_brand" type="submit"
+                                                              label="{!$Label.c.Core_MDF_Submit_Button_Label}"
+                                                              title="{!$Label.c.Core_MDF_Submit_Button_Label}"
+                                                              onclick="{!c.submit}" />
+                                            <aura:set attribute="else">
+                                                <lightning:button class="slds-button slds-button_brand" type="submit"
+                                                                  label="{!$Label.c.Core_MDF_Submit_Button_Label}"
+                                                                  title="{!$Label.c.Core_MDF_Submit_Button_Label}" disabled="true"
+                                                                  onclick="{!c.submit}" />
+                                            </aura:set>
+                                        </aura:if>
+                                    </aura:set>
+                                </aura:if>
+                                <aura:set attribute="else">
+                                    <lightning:button class="slds-button slds-button_brand" type="submit"
+                                                      label="{!$Label.c.Core_MDF_Save}" title="{!$Label.c.Core_MDF_Save}"
+                                                      onclick="{!c.save}" />
+                                </aura:set>                                
+                            </aura:if>
+                        </footer>
+                    </div>
+                </section>
+                <div class="slds-backdrop slds-backdrop_open"></div>
+            </aura:if>
+        </div>        
+    </div>
+    <!-- Modal ends here-->
+    
+</aura:component>

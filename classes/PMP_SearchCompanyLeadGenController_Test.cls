@@ -70,12 +70,7 @@ public class PMP_SearchCompanyLeadGenController_Test extends PMP_SearchWrapperSt
         User u = PMP_SearchTestDataFactory.createUser(true);
         System.runAs(u){
             Test.startTest();
-            UserDetails userdet=null;
-
-            userdet = PMP_SearchCompanyLeadGenController.fetchUser();
-            
-            System.assertEquals(userdet != null, true, 'user detail is null');
-
+            PMP_SearchCompanyLeadGenController.fetchUser();
             Test.stopTest();
         } 
         
@@ -93,10 +88,16 @@ public class PMP_SearchCompanyLeadGenController_Test extends PMP_SearchWrapperSt
     @isTest
     static void getJobFunctionsTest(){
         Test.startTest();
-        System.assertNotEquals(null, PMP_SearchCompanyLeadGenController.getPartnerProfession());
+        System.assertNotEquals(null, PMP_SearchCompanyLeadGenController.getJobFunction());
         Test.stopTest();
     }
-
+    
+    @isTest
+    static void getCommunityUrlTest(){
+        Test.startTest();
+        System.assertNotEquals(null, PMP_SearchCompanyLeadGenController.getCommunityURL());
+        Test.stopTest();
+    }
     
     @isTest static void submitTest1(){
         User u = PMP_SearchTestDataFactory.createUser(true);
@@ -105,7 +106,7 @@ public class PMP_SearchCompanyLeadGenController_Test extends PMP_SearchWrapperSt
             UserDetails userDet = PMP_SearchCompanyLeadGenController.fetchUser();
             userDet.firstName = 'firstName1';
             userDet.lastName = 'lastName1';
-            userDet.profession = 'profession1';
+            //userDet.jobTitle = 'jobTitle1';
             userDet.companyName = 'intel1';
             userDet.country = 'India';
             userDet.state = 'Karnataka';
@@ -117,8 +118,7 @@ public class PMP_SearchCompanyLeadGenController_Test extends PMP_SearchWrapperSt
             userDet.partnerProgramSegment = 'test1;test2';
             userDet.sessionId = 'testSessionId';
             Test.setMock(HttpCalloutMock.class, new PMP_SearchCompanyLeadGenHttpResponse(201));
-            PMP_SearchCompanyLeadGenController.submit(userDet, 'quote', 'partnerId', 'partnerName', 'offeringId', 'offeringName', 'offeringLink', true);
-            System.assertEquals(userDet != null, true, 'user detail is null');
+            PMP_SearchCompanyLeadGenController.submit(userDet, 'quote', 'partnerId', 'partnerName', 'offeringId', 'offeringName', 'offeringLink');
             Test.stopTest();
         } 
     }
@@ -130,7 +130,7 @@ public class PMP_SearchCompanyLeadGenController_Test extends PMP_SearchWrapperSt
             UserDetails userDet = PMP_SearchCompanyLeadGenController.fetchUser();
             userDet.firstName = 'firstName1';
             userDet.lastName = 'lastName1';
-            userDet.profession = 'profession1';
+            //userDet.jobTitle = 'jobTitle1';
             userDet.companyName = 'intel1';
             userDet.country = 'India';
             userDet.state = 'Karnataka';
@@ -141,8 +141,7 @@ public class PMP_SearchCompanyLeadGenController_Test extends PMP_SearchWrapperSt
             userDet.deliveryDate = date.today();
             userDet.partnerProgramSegment = 'test1;test2';
             Test.setMock(HttpCalloutMock.class, new PMP_SearchCompanyLeadGenHttpResponse(200));
-            PMP_SearchCompanyLeadGenController.submit(userDet, 'contact', 'partnerId', 'partnerName', 'offeringId', 'offeringName', 'offeringLink', true);
-            System.assertEquals(userDet != null, true, 'user detail is null');
+            PMP_SearchCompanyLeadGenController.submit(userDet, 'contact', 'partnerId', 'partnerName', 'offeringId', 'offeringName', 'offeringLink');
             Test.stopTest();
         } 
     }
@@ -165,64 +164,64 @@ public class PMP_SearchCompanyLeadGenController_Test extends PMP_SearchWrapperSt
     }
     
     @isTest static void testGetPartnerAdminAccounts(){
-        Profile itAdminPrf = [select id, name from Profile where name = 'System Administrator' Limit 1];
+        //Create portal account owner
+        UserRole portalRole = [Select Id From UserRole Where PortalType = 'None' Limit 1];
+        Profile profile1 = [Select Id from Profile where name = 'System Administrator'];
+        User portalAccountOwner1 = new User(
+            UserRoleId = portalRole.Id,
+            ProfileId = profile1.Id,
+            Username = 'testUser'+String.valueOf(Math.random())+'@example.com',
+            Alias = 'batman',
+            Email='testUser'+String.valueOf(Math.random())+'@example.com',
+            EmailEncodingKey='UTF-8',
+            Firstname='Bruce',
+            Lastname='Wayne',
+            LanguageLocaleKey='en_US',
+            LocaleSidKey='en_US',
+            TimeZoneSidKey='America/Los_Angeles'
+        );
+        Database.insert(portalAccountOwner1);
         
-        User itAdminUser = new User(Alias = 'itAdm21',   Email='itAdminTestx21@intel.com', 
-                                    EmailEncodingKey='UTF-8',   LastName='UnitTestAdmin1',
-                                    LanguageLocaleKey='en_US',  LocaleSidKey='en_US', 
-                                    ProfileId = itAdminPrf.Id,  TimeZoneSidKey='America/Los_Angeles',
-                                    UserName='salesRepTestx21@intel.com');
-        insert itAdminUser;
-        
-        User user = [SELECT AccountId FROM User WHERE id =:Userinfo.getUserId()];
-        
-        Id devRecordTypeId = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
-        Id recordTypeIdPagAccount = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Partner Account Group').getRecordTypeId(); //added
-        Account accObj = PMP_TestDataUtility.createIntelAccount('test class Account',devRecordTypeId,true);
-        
-        List<Account> accts = new List<Account>();
-        Account newPagAccount = new Account();//Account
-        newPagAccount.RecordTypeId = recordTypeIdPagAccount;
-        newPagAccount.Name='Greg Thomas';
-        newPagAccount.BillingCity='City';
-        newPagAccount.BillingStreet='Street';
-        newPagAccount.BillingCountry='India';
-        newPagAccount.BillingPostalCode='Postal code';
-        newPagAccount.Core_Account_Type__c='Intel Authorized Distributor (IAD);Intel Approved Device Supplier (IADS)';
-        accts.add(newPagAccount);
-        insert accts;
-        
-        Core_Account_Group_Member__c coreAccnt = new Core_Account_Group_Member__c();
-        coreAccnt.Core_Partner_Account_Id__c = newPagAccount.id;
-        coreAccnt.Core_Intel_Account_Id__c = user.AccountId; 
-        coreAccnt.Core_Inactive_Ind__c = false;
-        insert coreAccnt;
-        
-        PMP_Company__c company=new PMP_Company__c();
-        company.Name=accObj.Name;
-        //company.PMP_Account_Id__c=accObj.id;
-        //company.PMP_One_Partner_ID__c = newPagAccount.id; //linked pag with intel account
-        company.PMP_Benefit_Update_Ind__c=False;
-        company.PMP_Partner_Inactive_Ind__c = False;
-        company.PMP_Company_Lifecycle_Status_Nm__c =PMP_StaticConstants_Partner.Published;
-        //company.PMP_Partner_Benefit_Type__c = PMP_StaticConstants_Partner.Solutions_Marketplace_Enhanced;
-        company.PMP_Partner_Benefit_Type__c = PMP_StaticConstants_Partner.Solutions_Marketplace_Basic_Profile;
-        company.PMP_Is_Published_Ind__c=true;
-      
-        insert company;
-        System.assertNotEquals(company, Null);
-       
-        PMP_OPID_MPI_Rel__c jun= new PMP_OPID_MPI_Rel__c();
-        jun.PMP_One_Partner_ID__c= newPagAccount.Id;
-        jun.PMP_Marketing_Profile_Id__c= company.Id;
-        jun.Is_Active__c=true;     
-        insert jun;
-        system.runAs(user){
-            Test.startTest();
-            PMP_PartnerAdminAccounts.getPartnerAdminAccounts();
-            PMP_SearchCompanyLeadGenController.getPartnerAdminAccounts();
-            Test.stopTest();
-        }
-        
+        System.runAs(portalAccountOwner1){
+            //Create account
+            Account portalAccount1 = new Account(
+                Name = 'TestAcc1',
+                RecordTypeId = PMP_SearchTestDataFactory.intel_Account_Record_Type,
+                OwnerId = portalAccountOwner1.Id,
+                Core_Account_Type__c='Distributor',
+                BillingCity='Bangalore', BillingCountry='IND', BillingStreet = 'TestStreet'
+            );
+            Database.insert(portalAccount1);
+            portalAccount1.IsPartner = true;
+ 			Database.update(portalAccount1);        
+            //Create contact
+            Contact contact1 = new Contact(
+                    FirstName = 'Test',
+                    Lastname = 'McTesty',
+                    AccountId = portalAccount1.Id,
+                    Email = 'testcontact'+String.valueOf(Math.random())+'@example.com'
+            );
+            Database.insert(contact1);
+                    
+            Id p = [select id from profile where name='Partner'].id;
+            Account testPartAccount = PMP_SearchTestDataFactory.createIntelAccount('TestPartAcc1', PMP_SearchTestDataFactory.Partner_Account_Record_Type, true);
+            Core_Account_Group_Member__c testpagmbr = PMP_SearchTestDataFactory.createPAGMember(testPartAccount.Id,portalAccount1.Id,true,false,true);
+            User usr = new User(Alias = String.valueOf(datetime.now()).substring(0,8), Email=contact1.Email,
+                                         EmailEncodingKey='UTF-8', LastName=contact1.LastName, LanguageLocaleKey='en_US',
+                                         LocaleSidKey='en_US', ProfileId = p,IsActive = true,
+                                         TimeZoneSidKey='America/Los_Angeles', UserName=contact1.Email,FirstName=contact1.FirstName, ContactId = contact1.Id);
+            insert usr;            
+            System.runAs(usr){
+                /**PermissionSet ps = [SELECT Id FROM PermissionSet WHERE Name =:PMP_StaticConstants_Partner.PARTNER_ADMIN];
+                PermissionSetAssignment psa = new PermissionSetAssignment();
+                psa.AssigneeId = usrTest.Id;
+                psa.PermissionSetId = ps.Id;
+                insert psa;**/
+                Test.startTest();
+                PMP_SearchCompanyLeadGenController.getPartnerAdminAccounts();
+                Test.stopTest();
+            }
+        }        
+                
     }
 }

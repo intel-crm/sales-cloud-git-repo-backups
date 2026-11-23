@@ -141,7 +141,15 @@
         <type>Default</type>
     </actionOverrides>
     <allowInChatterGroups>true</allowInChatterGroups>
-    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <compactLayoutAssignment>UploadedDocumentLayout</compactLayoutAssignment>
+    <compactLayouts>
+        <fullName>UploadedDocumentLayout</fullName>
+        <fields>Name</fields>
+        <fields>Title__c</fields>
+        <fields>Account__c</fields>
+        <fields>Document_Type__c</fields>
+        <label>UploadedDocumentLayout</label>
+    </compactLayouts>
     <deploymentStatus>Deployed</deploymentStatus>
     <description>This object will store documents uploaded at account object level.</description>
     <enableActivities>true</enableActivities>

@@ -2,6 +2,16 @@
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>56.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <customErrors>
+        <name>Check_for_failures</name>
+        <label>Check for failures</label>
+        <locationX>842</locationX>
+        <locationY>431</locationY>
+        <customErrorMessages>
+            <errorMessage>{!errorMessageText}</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
     <decisions>
         <name>Check_Status_of_Product</name>
         <label>Check Status of Product</label>
@@ -83,6 +93,11 @@
 2.Core_OppProd_Open_to_Lost_Step_2</description>
     <environments>Default</environments>
     <formulas>
+        <name>errorMessageText</name>
+        <dataType>String</dataType>
+        <expression>MID({!$Flow.FaultMessage}, FIND(&apos;FIELD_CUSTOM_VALIDATION_EXCEPTION: &apos;, {!$Flow.FaultMessage}) + LEN(&apos;FIELD_CUSTOM_VALIDATION_EXCEPTION: &apos;), FIND(&apos;. You can look up ExceptionCode&apos;, {!$Flow.FaultMessage}) - FIND(&apos;FIELD_CUSTOM_VALIDATION_EXCEPTION: &apos;, {!$Flow.FaultMessage}) - LEN(&apos;FIELD_CUSTOM_VALIDATION_EXCEPTION: &apos;))</expression>
+    </formulas>
+    <formulas>
         <name>f_IsNew</name>
         <dataType>Boolean</dataType>
         <expression>ISNEW()</expression>
@@ -136,6 +151,9 @@
         <connector>
             <targetReference>Core_OppProd_Open_to_Lost_Step_2</targetReference>
         </connector>
+        <faultConnector>
+            <targetReference>Check_for_failures</targetReference>
+        </faultConnector>
         <inputAssignments>
             <field>Core_Lost_Sales_Price__c</field>
             <value>
@@ -177,5 +195,5 @@
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Obsolete</status>
+    <status>Draft</status>
 </Flow>

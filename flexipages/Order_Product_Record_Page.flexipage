@@ -4,6 +4,24 @@
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
+                    <name>runInSystemMode</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>toastMode</name>
+                    <value>dismissable</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>toastVariant</name>
+                    <value>info</value>
+                </componentInstanceProperties>
+                <componentName>platformEventToast</componentName>
+                <identifier>platformEventToast</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
                     <name>collapsed</name>
                     <value>true</value>
                 </componentInstanceProperties>
@@ -71,6 +89,16 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
+                <componentName>sales_ExistingLicenseView</componentName>
+                <identifier>sales_ExistingLicenseView</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-ec722c75-57b5-4203-8448-5445f39890c9</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
                 <componentInstanceProperties>
                     <name>active</name>
                     <value>true</value>
@@ -87,16 +115,26 @@
                 <identifier>detailTab</identifier>
             </componentInstance>
         </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-ec722c75-57b5-4203-8448-5445f39890c9</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>title</name>
+                    <value>Licenses</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:tab</componentName>
+                <identifier>customTab</identifier>
+            </componentInstance>
+        </itemInstances>
         <name>maintabs</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
-                <componentInstanceProperties>
-                    <name>label</name>
-                    <value>Tabs</value>
-                </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>tabs</name>
                     <value>maintabs</value>
@@ -132,7 +170,7 @@
                     <value>warning</value>
                 </componentInstanceProperties>
                 <componentName>platformEventToast</componentName>
-                <identifier>platformEventToast</identifier>
+                <identifier>platformEventToast2</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -162,7 +200,37 @@
                     <value>warning</value>
                 </componentInstanceProperties>
                 <componentName>platformEventToast</componentName>
-                <identifier>platformEventToast2</identifier>
+                <identifier>platformEventToast3</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>runInSystemMode</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>toastKeys</name>
+                    <value>Unit price mismatch with broken price</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>toastMessage</name>
+                    <value>Unit price on Order Product doesn&apos;t match with broken price on the quote</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>toastMode</name>
+                    <value>sticky</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>toastTitle</name>
+                    <value>Warning!</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>toastVariant</name>
+                    <value>warning</value>
+                </componentInstanceProperties>
+                <componentName>platformEventToast</componentName>
+                <identifier>platformEventToast4</identifier>
             </componentInstance>
         </itemInstances>
         <name>main</name>

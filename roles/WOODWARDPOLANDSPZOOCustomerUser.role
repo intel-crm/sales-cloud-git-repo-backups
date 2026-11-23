@@ -6,5 +6,5 @@
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>WOODWARD POLAND SP. Z O.O. Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>WOODWARDPOLANDSPZOOCustomerManager</parentRole>
 </Role>

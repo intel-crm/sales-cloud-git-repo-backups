@@ -1,0 +1,62 @@
+<template>
+   
+    <lightning-card title="Select the desired QL(s) to proceed with Rebate Claim">
+       
+        <template if:true={isError}>
+           
+                <template for:each={errorMessage} for:item="errorItem">
+                 <div key={errorItem} class="slds-m-bottom_x-small slds-notify slds-notify_alert slds-alert_error">   
+                <lightning-icon key={errorItem} icon-name="utility:error" variant="error" size="xx-small"> </lightning-icon> <span key={errorItem}>{errorItem.key} </span>
+                <ul class="slds-p-left_medium" key={errorItem}>
+                    <template for:each={errorItem.value} for:item="errorItem">
+                <li class="lisize" key={errorItem}>{errorItem}</li> 
+                </template>
+                </ul>
+                </div>
+                </template>
+             
+        </template>
+        <div class="height">
+            
+            <template if:true={isLoading}>
+                <lightning-spinner alternative-text="Uploading..." size="large"></lightning-spinner>
+            </template>
+            <template if:false={isProceed}>
+                <div class="slds-m-around_medium">
+                    <lightning-input type="text" label="Search" onchange={handleSearch}></lightning-input>
+                </div>
+            </template>
+            <template if:true={data}>
+                <lightning-datatable
+                    key-field="Id"
+                    data={data}
+                    columns={columns}
+                    draft-values={draftValues}
+                    errors = {error}
+                    suppress-bottom-bar="true"
+                    onrowselection={handleRowSelection}>
+                </lightning-datatable>
+            
+        </template>
+        </div>
+      
+        <div slot="footer">
+            <template if:true={isProceed}>
+                <lightning-button  variant="brand" label="<<Back" onclick={handleBack}></lightning-button>
+                <span class="slds-p-left_medium"></span>
+            </template>
+            <template if:false={isProceed}>
+                <lightning-button  variant="brand" label="Proceed>>" onclick={handleProceed}></lightning-button>
+            </template>
+            <!--<template if:true={isSave}>
+                <lightning-button  variant="brand" label="Submit Rebate Claims" onclick={handleSave}></lightning-button>
+            </template>-->
+            <template if:true={isSave}>
+                <lightning-button  variant="brand" label="Export Rebate Claim Template" onclick={handleCSV}></lightning-button>
+            </template>
+        </div>
+      
+    </lightning-card>
+   
+       
+</template>

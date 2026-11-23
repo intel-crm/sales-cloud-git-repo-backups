@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Assessment</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Assessments</value>
+    </caseValues>
+    <fields>
+        <label><!-- Coaching Goal --></label>
+        <name>Xvoyant__CoachingGoal__c</name>
+        <relationshipLabel><!-- Assessments --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- FormulaVersion --></label>
+        <name>Xvoyant__FormulaVersion__c</name>
+    </fields>
+    <fields>
+        <label><!-- Score --></label>
+        <name>Xvoyant__Score__c</name>
+    </fields>
+    <startsWith>Vowel</startsWith>
+</CustomObjectTranslation>

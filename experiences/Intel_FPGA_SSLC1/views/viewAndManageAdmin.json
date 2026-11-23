@@ -2,19 +2,118 @@
   "appPageId" : "6b36c665-0609-49d0-9746-033feed642b2",
   "componentName" : "siteforce:sldsOneColLayout",
   "dataProviders" : [ ],
-  "id" : "068148de-4752-4961-9fcd-6c394dbf1844",
-  "label" : "View and Manage Admin",
+  "id" : "9395fcef-ffd6-4d02-b981-fe753f822fbc",
+  "label" : "View and  manage Admin",
   "regions" : [ {
     "components" : [ {
       "componentAttributes" : { },
       "componentName" : "c:sales_NonEventFeedback",
-      "id" : "d991848a-9037-4a48-b1cd-7eba18377511",
+      "id" : "5b0a7adf-b60c-462e-a6de-4e33351ae1a1",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "82704fc3-76b7-434e-be20-fd056f64a910",
+    "id" : "702ae7ab-14ce-4801-ae3a-13c9868b75dc",
     "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "allowPrepopulatePrechatFields" : true,
+        "avatarImgURL" : "",
+        "codeSettingsName" : "",
+        "defaultMinimizedText" : "Chat with an Expert",
+        "displayHelpButton" : true,
+        "eswConfigurationJSON" : {
+          "baseCoreURL" : "https://intel--crmdevsls3.my.salesforce.com",
+          "baseLiveAgentContentURL" : "https://c.la4-c1cs-dfw.salesforceliveagent.com/content",
+          "baseLiveAgentURL" : "https://d.la4-c1cs-dfw.salesforceliveagent.com/chat",
+          "buttonId" : "5732D0000008S0r",
+          "deploymentId" : "5722D0000008RRn",
+          "enabledFeatures" : [ "LiveAgent" ],
+          "entryFeature" : "LiveAgent",
+          "eswConfigDevName" : "PSG_Sales_Chat_Group",
+          "eswConfigId" : "04I2D00000000E2UAI",
+          "eswLiveAgentDevName" : "PSG_Sales_Chat_Group",
+          "gslbBaseURL" : "https://service.force.com",
+          "isOfflineCasesEnabled" : "0",
+          "orgId" : "00D2D000000E9ZK"
+        },
+        "externalScripts" : "",
+        "externalStyles" : "",
+        "fallbackRouting" : "",
+        "offlineSupportMinimizedText" : "Contact Us",
+        "offlineText" : "Agent Offline",
+        "onlineLoadingText" : "Loading",
+        "prechatBackgroundImgURL" : "",
+        "smallCompanyLogoImgURL" : "",
+        "snippetSettingsFile" : "",
+        "storageDomain" : "",
+        "waitingStateBackgroundImgURL" : ""
+      },
+      "componentName" : "forceCommunity:embeddedService",
+      "id" : "0d32e0e6-da61-49a1-a05e-1f9267ab2aa3",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "7d9e3e0a-e87b-4517-8265-345a6c9c15d3",
+    "regionName" : "mainFullWidth",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "enableInlineEdit" : false,
+        "filterName" : "My_Active_Delegate_Admins",
+        "layout" : "FULL",
+        "pageSize" : 25,
+        "scope" : "Sales_License_Admin_Delegate__c",
+        "showActionBar" : true,
+        "showChartsPanel" : true,
+        "showDisplay" : "showall",
+        "showFilterPanel" : true,
+        "showImageIcon" : true,
+        "showManualRefreshButton" : true,
+        "showObjectName" : true,
+        "showPinnedList" : false,
+        "showSearchBar" : true
+      },
+      "componentName" : "forceCommunity:objectHome",
+      "id" : "5d86ad41-02e4-4fad-a79e-4d63dbc5e3a4",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "6aa931d9-807a-47e6-b777-3831b26a8130",
+    "regionName" : "main",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "View and  manage Admin"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "76541bdc-10f1-4a41-a0cf-ed3b92bf5099",
+      "renditionMap" : {
+        "zh_cn" : "b268ffac-cef7-4344-9687-0a0a5ac79957"
+      },
+      "renditions" : [ {
+        "id" : "b268ffac-cef7-4344-9687-0a0a5ac79957",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "customHeadTags" : "市场推广基金",
+            "description" : "市场推广基金",
+            "title" : "View and  manage Admin"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "d02c03ef-9c36-4301-86e0-c8dcf54b930c",
+    "regionName" : "sfdcHiddenRegion",
     "type" : "region"
   }, {
     "components" : [ {
@@ -35,32 +134,17 @@
         "showSearchBar" : true
       },
       "componentName" : "forceCommunity:objectHome",
-      "id" : "761dcd31-f033-4a7b-bb92-94fb1e661c39",
+      "id" : "fe227aef-0e68-4b9a-99ed-ef6bf3cae431",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "b50ad38e-33fb-47d5-ac36-318c796d7dac",
+    "id" : "18c3deac-9352-41e6-8562-fed557ee8c4e",
     "regionName" : "content",
     "type" : "region"
   }, {
-    "id" : "025efac2-aeb6-4db2-8500-1e6cfd5cafe7",
+    "id" : "2db1b3ed-e0f1-4839-abfe-edafc48c92ca",
     "regionName" : "footer",
-    "type" : "region"
-  }, {
-    "components" : [ {
-      "componentAttributes" : {
-        "customHeadTags" : "",
-        "description" : "",
-        "title" : "View and Manage Admin"
-      },
-      "componentName" : "forceCommunity:seoAssistant",
-      "id" : "6f3bdd40-8f96-4e78-8c40-e9206c7c6d70",
-      "renditionMap" : { },
-      "type" : "component"
-    } ],
-    "id" : "c5a4b9c1-1fbd-4385-ab5a-e60c6a7e1a99",
-    "regionName" : "sfdcHiddenRegion",
     "type" : "region"
   } ],
   "themeLayoutType" : "Inner",

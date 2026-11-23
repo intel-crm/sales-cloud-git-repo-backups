@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customButtons>Core_IPS_Edit_Related_Data</customButtons>
     <customButtons>Core_IPS_Accept_Case</customButtons>
     <customButtons>Core_IPS_New_Comment</customButtons>
     <emailDefault>true</emailDefault>
@@ -11,6 +12,13 @@
         <editHeading>false</editHeading>
         <label>Message</label>
         <layoutColumns>
+            <layoutItems>
+                <height>20</height>
+                <page>Core_IPS_Case_Creation_Notification</page>
+                <showLabel>false</showLabel>
+                <showScrollbars>false</showScrollbars>
+                <width>100%</width>
+            </layoutItems>
             <layoutItems>
                 <behavior>Required</behavior>
                 <field>Core_IPS_Classification__c</field>
@@ -123,10 +131,6 @@
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>Core_Report_User__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_IPS_Case_Owner__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -390,7 +394,15 @@
         <detailHeading>true</detailHeading>
         <editHeading>false</editHeading>
         <label>Case Comments</label>
-        <layoutColumns/>
+        <layoutColumns>
+            <layoutItems>
+                <height>700</height>
+                <page>Core_IPS_CaseComments</page>
+                <showLabel>false</showLabel>
+                <showScrollbars>true</showScrollbars>
+                <width>100%</width>
+            </layoutItems>
+        </layoutColumns>
         <style>OneColumn</style>
     </layoutSections>
     <layoutSections>
@@ -511,9 +523,6 @@
         <quickActionListItems>
             <quickActionName>FeedItem.LinkPost</quickActionName>
         </quickActionListItems>
-        <quickActionListItems>
-            <quickActionName>Case.SendEmail</quickActionName>
-        </quickActionListItems>
     </quickActionList>
     <relatedContent>
         <relatedContentItems>
@@ -578,11 +587,11 @@
     </relatedLists>
     <relatedLists>
         <customButtons>Add_External_Interested_Party</customButtons>
+        <customButtons>Add_Internal_Interested_Party</customButtons>
         <excludeButtons>New</excludeButtons>
         <fields>First_Name__c</fields>
         <fields>Last_Name__c</fields>
         <fields>Email__c</fields>
-        <fields>Active__c</fields>
         <relatedList>Core_IPS_Case_Interested_Party__c.Case__c</relatedList>
     </relatedLists>
     <relatedLists>

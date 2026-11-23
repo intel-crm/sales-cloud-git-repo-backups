@@ -307,11 +307,11 @@ public without sharing  class Core_OpportunityTeamMemberHandler {//TWC3123-5359 
 converting this flow->Core_OppTeamMember_Notify_Member_On_Addition into Trigger
 */
     public static void sendEmailtoNewTeamMember(Map<Id,OpportunityTeamMember> mapNewTeamMembers) {
-        ID emailTemplate;
+       ID emailTemplate;
         try {
             List<Messaging.SingleEmailMessage> mails = new List<Messaging.SingleEmailMessage>();
             //querying email template, which was already there in system
-            emailTemplate = [Select Id, Name,Subject, HtmlValue, Body From EmailTemplate Where Name ='Opportunity Team Email Template'][0].id;
+            emailTemplate = [Select Id From EmailTemplate Where Name ='Opportunity Team Email Template'][0].id;
             //TWC3123-5552--Restrict Sending emails to External Users; addition into query
             Map<Id, OpportunityTeamMember> newMaps = new Map<Id, OpportunityTeamMember>([SELECT Id, OpportunityId, UserId, User.IsActive, Core_User_Type__c
                                                                                          FROM OpportunityTeamMember 
@@ -413,4 +413,8 @@ SWOppId.add(opp.Id);
             Pricing_SW_QuoteBusinessLogic.createQuoteSharesForSW(setSWOppId);
         }
     }
+     
+
+     
+        
 }

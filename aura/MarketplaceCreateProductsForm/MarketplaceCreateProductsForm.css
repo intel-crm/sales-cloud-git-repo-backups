@@ -1,5 +1,4 @@
-/* IPA2.0 + US TWC4497-1631 */
-/* .THIS {
+.THIS {
   min-height: 300px;
 }
 
@@ -29,11 +28,6 @@
 
 .THIS .mainSpinner .slds-spinner {
   top: 15em;
-}
-
-.THIS .show-next-page-message{
-    font-weight: bold;
-    padding-left: 15px;
 }
 
 .THIS .changesSaved {
@@ -89,4 +83,4 @@
                 max-height: 0;
                 overflow: hidden;
             }
-        } */
+        }

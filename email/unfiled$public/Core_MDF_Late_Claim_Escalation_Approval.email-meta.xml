@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Email Template to notify Claim Submitter upon Late Claim Escalation Approval</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>CCP_letterhead</letterhead>
+    <name>Late Claim Escalation Approval</name>
+    <style>formalLetter</style>
+    <subject>Late Claim Escalation Request ID {!Core_MDF_Escalation__c.Name} is approved to take action on Claim</subject>
+    <textOnly>Escalation request ID: {!Core_MDF_Escalation__c.Name} for Late Claim Escalation is approved.
+Please create Claim</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -1,0 +1,14 @@
+<template>
+    <lightning-card title={accountTypeName} icon-name="utility:chart">
+        
+        <template if:true={chartConfigurations}>
+           
+            <c-screenchart chart-config={chartConfigurations} total-count={totalCount}></c-screenchart>
+            
+        </template>
+        <p slot="footer">
+            <b>Total:{totalCount}</b>
+        </p>
+       
+    </lightning-card>
+</template>

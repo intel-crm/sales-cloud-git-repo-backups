@@ -7,15 +7,8 @@ public class PCC_InvocableMethodTest {
     Id dealRecordTypeIDLocked = Schema.getGlobalDescribe().get('Core_Design_Registration__c').getDescribe().getRecordTypeInfosByName().get('Deal Registration - Locked').getRecordTypeId();
     DDRLst[0].recordTypeId =  dealRecordTypeIDLocked;
     DDRLst[0].Core_Accepted_By_Id__c = UserInfo.getUserId();
-    DDRLst[0].PCC_Consumption_Countries__c = 'US';
-     DDRLst[1].PCC_Consumption_Countries__c = 'US';
-        DDRLst[2].PCC_Consumption_Countries__c = 'US';
-         DDRLst[0].PCC_Current_EndCustomer_Product_Provider__c= 'US';
-        DDRLst[1].PCC_Current_EndCustomer_Product_Provider__c= 'US';
-        DDRLst[2].PCC_Current_EndCustomer_Product_Provider__c= 'US';
     insert DDRLst;
-     Test.startTest();
-    //PCC_DealFormValidationController.callDealApprovalProcess(DDRLst[0].id);
+    PCC_DealFormValidationController.callDealApprovalProcess(DDRLst[0].id);
     List<PCC_InvocableMethods.ApprovalWrapper> approvalParam = new List<PCC_InvocableMethods.ApprovalWrapper>();
 
 // Create a new instance of ApprovalWrapper and add it to the list
@@ -28,7 +21,7 @@ public class PCC_InvocableMethodTest {
         
     //PCC_InvocableMethods.isAuthorizedUser(DDRLst[0]); 
     PCC_InvocableMethods.isAuthorizedUser(DDRLst[1]); 
-        Test.stopTest();
+        
     system.assertequals(true,PCC_InvocableMethods.isAuthorizedUser(DDRLst[0]));    
 }
 }

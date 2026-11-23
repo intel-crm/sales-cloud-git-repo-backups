@@ -23,7 +23,6 @@ global without sharing class Core_OpportunityShareRemovalBatch implements Databa
     }
     global void execute(Database.BatchableContext BC,List<Core_Delegate_Approver__c> scope){
         List<String> oppId = new List<String>();
-        //Map<Id,List<String>> delegateOppMap = new Map<Id,List<String>>();
         List<String> opporShareId= new List<String>();
         List<String> dealId = new List<String>();
         List<Core_Delegate_Approver__c> delegateUpdate= new List<Core_Delegate_Approver__c>();
@@ -37,7 +36,7 @@ global without sharing class Core_OpportunityShareRemovalBatch implements Databa
                 deleApp.Core_Deal_win_Goal_Share_Id__c='';
                 deleApp.Core_Active__c=false;
                 delegateUpdate.add(deleApp);
-                //delegateOppMap.put(deleApp.Core_User__c,oppId);
+                
             }
         }
         List<Core_Delegate_Approver__c> deleAudit= [Select id,Core_Opportunity_ID__c,Core_User__c,OwnerId,Core_Manager__c,Core_Deal_win_Goal_Share_Id__c from Core_Delegate_Approver__c where Core_User__c In:delegateUserRemoveShare and Core_Manager__c Not In: uservalue and Core_Active__c=: true];
@@ -65,10 +64,7 @@ global without sharing class Core_OpportunityShareRemovalBatch implements Databa
         List<Database.DeleteResult> drList=Database.Delete(oppShare, false);
         Database.Delete(goalShare, false);
         for(Database.DeleteResult dr : drList) {
-            if (dr.isSuccess()) {
-                //System.debug('Successfully deleted account with ID: ' + dr.getId());
-            }
-            else {
+            if (!dr.isSuccess()) {
                 // Operation failed, so get all errors             
                 for(Database.Error err : dr.getErrors()) {
                     Core_Exceptions__c ExcepLog = new Core_Exceptions__c( Core_Class_Name__c = 'Core_DelegateRemovalOfOpportunity', 
@@ -77,9 +73,7 @@ global without sharing class Core_OpportunityShareRemovalBatch implements Databa
                     exceptionList.add(ExcepLog);
                     
                 }
-                //TWC3123-5267 Commented by Hira
-               /* if(!exceptionList.isEmpty())
-                    insert exceptionList;*/
+                
             } 
         }
         //TWC3123-5267

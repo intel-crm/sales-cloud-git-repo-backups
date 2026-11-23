@@ -19,7 +19,7 @@
                 }
                 else if (state === 'ERROR'){
                     let returnValue = response.getReturnValue(); 
-                    component.set("v.messageNotification", returnValue != null || returnValue != undefined ? returnValue.messageResult : 'Error occurred while processing the request. Please try again.');
+                    component.set("v.messageNotification", returnValue != null || returnValue != undefined ? returnValue.messageResult : 'Error occured while processing the request. Please contact IT Support.');
                     component.set("v.isSuccess", returnValue != null || returnValue != undefined ? returnValue.isSuccess : false);
                     component.find("mySpinner").set("v.class", "slds-hide");
                 }

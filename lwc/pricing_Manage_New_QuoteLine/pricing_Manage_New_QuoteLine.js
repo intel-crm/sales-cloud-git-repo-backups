@@ -40,7 +40,7 @@ export default class Pricing_Manage_New_QuoteLine extends NavigationMixin(Lightn
     @track isSpinner = false;
     @track quoteLineType;
     @track isStandardQuote = false;
-    @track value = standardQuoteLine;
+    @track value;
     @track isSvdQuote = false;
     @track isCcgQuote = false;
     @track isFinancialIncentive = false;
@@ -60,6 +60,13 @@ export default class Pricing_Manage_New_QuoteLine extends NavigationMixin(Lightn
     };
 
     @track error;
+    productId;
+    openRecordModalForm = false;
+    uiPageLayoutView;
+    objectName = 'SBQQ__QuoteLine__c';
+    openPerfomanceMetric = false;
+    @api inputVariables = [];
+    isSubmitSpinner = false;
 
     //Wire method to get Quote Pricing End Date and Quote Line Type for pre-defaulting the value in the Combobox
     @wire(getRecord, { recordId: '$recordId', fields: [QUOTE_END_DATE_FIELD, PROGRAM_TYPE_FIELD] })
@@ -70,6 +77,7 @@ export default class Pricing_Manage_New_QuoteLine extends NavigationMixin(Lightn
             if (this.quoteProgramType == standardQuote) {
                 this.quoteLineType = standardQuoteLine;
                 this.isStandardQuote = true;
+                this.value = standardQuoteLine;
             }
             else if (this.quoteProgramType == smallVolumeQuote) {
                 this.quoteLineType = smallVolumeQuote;
@@ -78,6 +86,7 @@ export default class Pricing_Manage_New_QuoteLine extends NavigationMixin(Lightn
             else if (this.quoteProgramType == ccgQuote) {
                 this.isCcgQuote = true;
                 this.quoteLineType = ccgQuote;
+                this.value = ccgQuote;
             }
             else if (this.quoteProgramType == financialIncentiveQuote) {
                 this.isFinancialIncentive = true;
@@ -85,20 +94,6 @@ export default class Pricing_Manage_New_QuoteLine extends NavigationMixin(Lightn
             }
             this.endDate = data.fields.Pricing_ShipmentEndDate_Dt__c.value;
             this.getMetadataColumns();
-        } else if (error) {
-            this.dispatchEvent(new ShowToastEvent({
-                title: TITLE_TEXT,
-                variant: ERROR_VAR_TEXT,
-                message: error.body.message
-            }));
-        }
-    };
-
-    //Wire method to get Quote Line Record Type Id based on Quote Line Type
-    @wire(getQLRecordTypeId, { quoteLineType: '$quoteLineType' })
-    recordType({ error, data }) {
-        if (data) {
-            this.qlRecordTypeId = data;
         } else if (error) {
             this.dispatchEvent(new ShowToastEvent({
                 title: TITLE_TEXT,
@@ -144,6 +139,24 @@ export default class Pricing_Manage_New_QuoteLine extends NavigationMixin(Lightn
         }
     }
 
+    //method to get Quote Line Record Type Id based on Quote Line Type
+    createQuoteLineRecordPageNavi(reocrdType, productId) {
+        getQLRecordTypeId({ quoteLineType: reocrdType })
+            .then(result => {
+                this.qlRecordTypeId = result;
+            })
+            .then(_ => {
+                this.showCreateLayout(this.qlRecordTypeId, productId);
+            })
+            .catch(error => {
+                this.dispatchEvent(new ShowToastEvent({
+                    title: TITLE_TEXT,
+                    variant: ERROR_VAR_TEXT,
+                    message: error.body.message
+                }));
+            });
+    }
+
     handleKeyUp(event) {
         this.productRecords = null;
         clearTimeout(this.typingTimer);
@@ -183,9 +196,10 @@ export default class Pricing_Manage_New_QuoteLine extends NavigationMixin(Lightn
                         message: error.body.message
                     }));
                     this.productRecords = null;
-                    this.isSpinner = false;
+                    this.isSpinner = false
                 });
-        } else {
+        }
+        else {
             this.productRecords = null;
             this.isSpinner = false;
         }
@@ -202,7 +216,8 @@ export default class Pricing_Manage_New_QuoteLine extends NavigationMixin(Lightn
             if (product.length > 0) {
                 this.openModal = false;
                 document.body.style.overflow = 'visible';
-                this.showCreateLayout(this.qlRecordTypeId, product[0].Id);
+                this.productId = product[0].Id;
+                this.createQuoteLineRecordPageNavi(this.quoteLineType, product[0].Id);
             } else {
                 const event = new ShowToastEvent({
                     title: TITLE_TEXT,
@@ -260,7 +275,13 @@ export default class Pricing_Manage_New_QuoteLine extends NavigationMixin(Lightn
                 navigationLocation: 'RELATED_LIST',
             }
         };
-        this[NavigationMixin.Navigate](recordPage);
+
+        if (this.quoteLineType == standardQuoteLine || this.quoteLineType == smallVolumeQuote) {
+            this.openRecordModalForm = true;
+            this.loadSpinner = true;
+        } else {
+            this[NavigationMixin.Navigate](recordPage);
+        }
         this.disableNext = true;
     }
 
@@ -298,6 +319,8 @@ export default class Pricing_Manage_New_QuoteLine extends NavigationMixin(Lightn
         this.datatableColumns = null;
         this.value = this.quoteLineType = (this.quoteLineType == dataCenterGPUQuote) ? dataCenterGPUQuote : (this.quoteLineType == ssdQuote) ? ssdQuote : (this.quoteLineType == pmemQuote) ? pmemQuote : (this.quoteLineType == nicQuote) ? nicQuote : (this.isStandardQuote) ? standardQuoteLine : (this.isSvdQuote) ? smallVolumeQuote : ccgQuote;
         this.disableNext = true;
+        this.openRecordModalForm = false;
+        this.loadSpinner = false;
     }
 
     onHandleSort(event) {
@@ -331,6 +354,74 @@ export default class Pricing_Manage_New_QuoteLine extends NavigationMixin(Lightn
 
     handleConsumptionValueChange(event) {
         this.consumptionValues = event.detail;
+    }
+
+
+    handleRecordEditFormLoad(event) {
+        console.log('Layout => ', JSON.stringify(event.detail.layout));
+        this.uiPageLayoutView = event.detail.layout;
+        let allFIelds = this.template.querySelectorAll('lightning-input-field');
+
+        if (allFIelds) {
+            allFIelds.forEach(field => {
+                if (field.fieldName === 'SBQQ__Quote__c') {
+                    field.value = this.recordId;
+                }
+                if (field.fieldName === 'Pricing_End_Date_dt__c') {
+                    field.value = this.endDate;
+                }
+                if (field.fieldName === 'Pricing_Product_Nm__c') {
+                    field.value = this.productId;
+                }
+                if (field.fieldName === 'Pricing_Consumption_Platform__c') {
+                    field.value = String(this.consumptionValues.platformValue === undefined ? '' : this.consumptionValues.platformValue);
+                }
+                if (field.fieldName === 'Pricing_Consumption_Region__c') {
+                    field.value = String(this.consumptionValues.regionValue === undefined ? '' : this.consumptionValues.regionValue);
+                }
+                if (field.fieldName === 'Pricing_Consumption_Country__c') {
+                    field.value = String(this.consumptionValues.countryValue === undefined ? '' : this.consumptionValues.countryValue);
+                }
+                if (field.fieldName === 'Pricing_Consumption_Sale_Geo__c') {
+                    field.value = String(this.consumptionValues.salesGeoValue === undefined ? '' : this.consumptionValues.salesGeoValue);
+                }
+                if (field.fieldName === 'Pricing_Consumption_Segment__c') {
+                    field.value = String(this.consumptionValues.segmentValue === undefined ? '' : this.consumptionValues.segmentValue);
+                }
+            });
+        }
+        this.loadSpinner = false;
+    }
+
+    handleSuccess(event) {
+        console.log('successNewRecordInsert  => ' + JSON.stringify(event.detail));
+        if (event.detail.id) {
+            this.closeModal();
+            this.inputVariables = [{
+                name: 'quoteLineId',
+                type: 'String',
+                value: event.detail.id
+            }];
+            this.openPerfomanceMetric = true;
+        }
+        this.isSubmitSpinner = false;
+    }
+
+    handleSubmit(event) {
+        console.log('handleSubmit');
+        this.isSubmitSpinner = true;
+        event.preventDefault();
+        const field = event.detail.fields;
+        console.log('handleSubmit field ' + JSON.stringify(field));
+        this.template.querySelector('lightning-record-edit-form').submit(field);
+    }
+
+    handleStatusChange(event) {
+        console.log('handleStatusChange ' + JSON.stringify(event.detail));
+        if (event.detail.status === 'FINISHED') {
+            console.log('handleStatusChange ' + JSON.stringify(event.detail));
+            this.openPerfomanceMetric = false;
+        }
     }
 
 }

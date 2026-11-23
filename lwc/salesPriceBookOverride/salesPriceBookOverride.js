@@ -8,7 +8,7 @@ Modification Log :
 * Puja Ingale        3-Apr-2021             PricebookOverrideLWC LWC Component
 * ---------------------------------------------------------------------------------------------------------*/
 import { LightningElement,api,wire } from 'lwc';
-/*import { ShowToastEvent } from 'lightning/platformShowToastEvent';
+import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import { getRecord } from 'lightning/uiRecordApi';
 
 import setPricebook from '@salesforce/apex/Sales_PriceBookOverrideController.setPricebook';
@@ -25,10 +25,10 @@ import SalesChangedPricebookSuccess from '@salesforce/label/c.Sales_ChangedPrice
 //Error title
 
 const FIELDS = [ 'Order.Id', 'Order.Pricebook2Id', 'Order.OrderItemCount__c','Order.SBQQ__Quote__c'];
-*/
+
 export default class SalesPriceBookOverride extends LightningElement {
 
-	/*@api recordId;
+	@api recordId;
 	@api showModal;
 	@api pricebookId;
 	@api orderProductCount;
@@ -44,7 +44,7 @@ export default class SalesPriceBookOverride extends LightningElement {
 		this.record = undefined;
 	}*/
 
-/*
+
 	label = {
         successTxt,	
         errorMsg,
@@ -116,7 +116,7 @@ export default class SalesPriceBookOverride extends LightningElement {
 			/*setTimeout(function() {
 					eval("$A.get('e.force:refreshView').fire();");
 			}, 2000);*/
-	/*}
+	}
 
 	closeQuickAction() {
 		const closeModal = new CustomEvent('close');
@@ -138,4 +138,3 @@ export default class SalesPriceBookOverride extends LightningElement {
 					this.closeQuickAction();
 					this.fireToastEvent('Error!',error.body.message,'error','sticky');
 			}); */
-}

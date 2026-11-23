@@ -13,14 +13,13 @@
 *                                                             Simplified Chinese
 *****************************************************************************************************************************************/
 
-public without sharing class PMP_ParseSpecificationJSON {
+public class PMP_ParseSpecificationJSON {
     
     public static String strBaseKey; 
-    Public static final String Other_Spec = 'Other';
     public static List<Database.UpsertResult> ParseSpecificationJSON(String StaticResourceName)
     {
         //Constants
-        
+        final String Other_Spec = 'Other';
         
         //Variable Declaration
         List<PMP_Specification__c> uploadSpec = new List<PMP_Specification__c>();
@@ -72,7 +71,7 @@ public without sharing class PMP_ParseSpecificationJSON {
             if(!Test.isRunningTest()){
                 strBaseKey = new list<String>(mapSpec.keySet())[0];
             }
-            //System.debug('^^^TheKey--->'+strBaseKey);//###toberemoved
+        	System.debug('^^^TheKey--->'+strBaseKey);//###toberemoved
             
             if(mapSpec.size() > 0 && strBaseKey == PMP_StaticConstants_MasterData.English_JSON)        
             {
@@ -112,7 +111,7 @@ public without sharing class PMP_ParseSpecificationJSON {
                         {
                             
                             List<Object> lstFeature = (List<Object>)specMap.get(PMP_StaticConstants_MasterData.Features);
-                            //List<String> catsegment = new List<String>();
+                            List<String> catsegment = new List<String>();
                             
                             for(integer specIndex=0;specIndex<lstFeature.size();specIndex++)
                             {
@@ -153,6 +152,7 @@ public without sharing class PMP_ParseSpecificationJSON {
                                                 
                                             }
                                         }
+                                        
                                         for(integer nodeIndex=0;nodeIndex<levelvalues.size();nodeIndex++)
                                         {
                                             if(!String.isBlank(levelvalues[nodeIndex]))
@@ -160,6 +160,7 @@ public without sharing class PMP_ParseSpecificationJSON {
                                                 highestlevel = nodeIndex;
                                             }
                                         }
+                                        
                                         //for rest of the levels other than leaf node create specification with respective spec ids having level in id name
                                         
                                         for(integer speclevelIndex=0;speclevelIndex<highestlevel;speclevelIndex++)
@@ -167,14 +168,14 @@ public without sharing class PMP_ParseSpecificationJSON {
                                             PMP_Specification__c spec2 = new PMP_Specification__c();
                                             String specid = String.valueOf(levelvalues[speclevelIndex]);
                                             spec2.Name=String.valueOf(levelvalues[speclevelIndex]);
-                                            //Added by Manasa - US439814
-                                            spec2.PMP_Specification_Name__c = String.valueOf(levelvalues[speclevelIndex]);
+											//Added by Manasa - US439814
+											spec2.PMP_Specification_Name__c = String.valueOf(levelvalues[speclevelIndex]);
                                             if(featureMap.containsKey(PMP_StaticConstants_MasterData.Is_Active))
                                             {
                                                 spec2.PMP_Active_Ind__c = Boolean.valueOf(featureMap.get(PMP_StaticConstants_MasterData.Is_Active));
                                             }
                                             spec2.PMP_Specification_Type_Nm__c = Other_Spec;
-                                            //Added by Manasa - US439814
+          									//Added by Manasa - US439814
                                             String specmapkey2 = spec2.PMP_Specification_Name__c.toLowerCase();
                                             pimParentSpec.add(specmapkey2);
                                             String MYKEY2 = String.join(pimParentSpec,PMP_StaticConstants_MasterData.Pipe_Symbol);
@@ -183,6 +184,7 @@ public without sharing class PMP_ParseSpecificationJSON {
                                             {
                                                 templevel = speclevelIndex+1;
                                                 spec2.PMP_Partner_Product_Specification_Id__c = specid.deleteWhitespace()+PMP_StaticConstants_MasterData.Level+templevel;
+                                                
                                                 if(speclevelIndex>0)
                                                 {
                                                     
@@ -210,8 +212,8 @@ public without sharing class PMP_ParseSpecificationJSON {
                                         PMP_Specification__c spec1 = new PMP_Specification__c();
                                         spec1.PMP_Partner_Product_Specification_Id__c = String.valueOf(featureMap.get(PMP_StaticConstants_MasterData.Spec_Identifier));
                                         spec1.Name=String.valueOf(levelvalues[highestlevel]);
-                                        //Added by Manasa - US439814
-                                        spec1.PMP_Specification_Name__c = String.valueOf(levelvalues[highestlevel]);
+										//Added by Manasa - US439814
+										spec1.PMP_Specification_Name__c = String.valueOf(levelvalues[highestlevel]);
                                         spec1.PMP_Mandatory_Offering_Category_Nm__c = String.valueOf(featureMap.get(PMP_StaticConstants_MasterData.Mandatory_for_Category));
                                         if(featureMap.containsKey(PMP_StaticConstants_MasterData.Is_Active))
                                         {
@@ -292,7 +294,6 @@ public without sharing class PMP_ParseSpecificationJSON {
                                                     {               
                                                         PMP_Specification_Value__c osv = new PMP_Specification_Value__c();
                                                         osv.PMP_Spec_Value_Type_Nm__c = PMP_StaticConstants_MasterData.Other_Spec_Value;
-                                                        osv.PMP_Active_Ind__c = true;
                                                         //osv.Name = value;                                                               
                                                         //osv.PMP_Specification_Value_Nm__c = value;
                                                         //osv.PMP_Product_Specification_Value_Cd__c = String.valueOf(identifier);
@@ -304,18 +305,12 @@ public without sharing class PMP_ParseSpecificationJSON {
                                                             osv.PMP_Specification_Value_Nm__c = String.valueOf(levelvalues[highestlevel]);
                                                             osv.PMP_Product_Specification_Value_Cd__c = String.valueOf(featureMap.get(PMP_StaticConstants_MasterData.Spec_Identifier));  
                                                         }
-                                                        else if(identifier == 'Yes_Boolean' || identifier == 'No_Boolean'){
-                                                            osv.Name = value.split('_')[0];                                                               
-                                                            osv.PMP_Specification_Value_Nm__c = value.split('_')[0];
-                                                            osv.PMP_Product_Specification_Value_Cd__c = String.valueOf(identifier);
-                                                        }
                                                         else
                                                         {
                                                             osv.Name = value;                                                               
                                                             osv.PMP_Specification_Value_Nm__c = value;
                                                             osv.PMP_Product_Specification_Value_Cd__c = String.valueOf(identifier);
                                                         }
-                                                        osv.PMP_Specification_Product_Cd__c = String.valueOf(featureMap.get(PMP_StaticConstants_MasterData.Spec_Identifier));
                                                         String specvalmapkey = osv.PMP_Product_Specification_Value_Cd__c;
                                                         String keyspec = specvalmapkey.deleteWhitespace();
                                                         
@@ -353,8 +348,9 @@ public without sharing class PMP_ParseSpecificationJSON {
                                                             osv.PMP_Specification_Value_Sequence_Nbr__c = featureMapSequence + specvalueSequence;
                                                         }
                                                         /*Raj Modified here*/
-                                                        String externalKey = (String.valueOf(featureMap.get(PMP_StaticConstants_MasterData.Spec_Identifier)) + '_' + keyspec.toLowerCase()).deleteWhitespace();
+                                                        String externalKey = String.valueOf(featureMap.get(PMP_StaticConstants_MasterData.Spec_Identifier)) + '_' + keyspec.toLowerCase();
                                                         osv.PMP_Product_Specification_Value_Key__c = externalKey;//raj to modify here
+                                                        
                                                         if(!specValueUploadMap.containsKey(externalKey))
                                                         {
                                                             
@@ -385,8 +381,8 @@ public without sharing class PMP_ParseSpecificationJSON {
             //US301406
             if(mapSpec.size() > 0 && strBaseKey != PMP_StaticConstants_MasterData.English_JSON)
             {
-                List<PMP_Specification__c> existingSpecs = [Select id,Name,PMP_Specification_Name__c,PMP_Partner_Product_Specification_Id__c,PMP_Product_Parent_Specification_Id__c,PMP_Specification_Chinese_Nm__c,PMP_Specification_Japanese_Nm__c from PMP_Specification__c where Name != null];
-                List<PMP_Specification_Value__c> existingSpecValues = [Select id,Name,PMP_Specification_Value_Nm__c,PMP_Product_Specification_Value_Key__c,PMP_Specification_Value_Chinese_Cd__c,PMP_Specification_Value_Japanese_Cd__c from PMP_Specification_Value__c where Name != null];              
+                List<PMP_Specification__c> existingSpecs = [Select id,Name,PMP_Specification_Name__c,PMP_Partner_Product_Specification_Id__c,PMP_Product_Parent_Specification_Id__c,PMP_Specification_Chinese_Nm__c,PMP_Specification_Japanese_Nm__c from PMP_Specification__c];
+                List<PMP_Specification_Value__c> existingSpecValues = [Select id,Name,PMP_Specification_Value_Nm__c,PMP_Product_Specification_Value_Key__c,PMP_Specification_Value_Chinese_Cd__c,PMP_Specification_Value_Japanese_Cd__c from PMP_Specification_Value__c];              
                 if(existingSpecs.size()>0)
                 {
                     for(PMP_Specification__c existingSpec : existingSpecs)
@@ -416,7 +412,7 @@ public without sharing class PMP_ParseSpecificationJSON {
                         if(specMap.containsKey(PMP_StaticConstants_MasterData.Features))
                         {
                             List<Object> lstFeature = (List<Object>)specMap.get(PMP_StaticConstants_MasterData.Features);
-                            //List<String> catsegment = new List<String>();
+                            List<String> catsegment = new List<String>();
                             
                             for(integer specIndex=0;specIndex<lstFeature.size();specIndex++)
                             {
@@ -428,10 +424,10 @@ public without sharing class PMP_ParseSpecificationJSON {
                                     {
                                         List<String> levelValues = new List<String>();
                                         integer highestlevel = 0;
-                                        //integer templevel = 0;
-                                        //List<String> pimParentSpec = new List<String>();
-                                        //List<String> pimParentKey = new List<String>(); 
-                                        //integer featureMapSequence = 0;
+                                        integer templevel = 0;
+                                        List<String> pimParentSpec = new List<String>();
+                                        List<String> pimParentKey = new List<String>(); 
+                                        integer featureMapSequence = 0;
                                         if(featureMap.containsKey(PMP_StaticConstants_MasterData.Spec_Identifier)) 
                                         {
                                             
@@ -533,7 +529,7 @@ public without sharing class PMP_ParseSpecificationJSON {
                                                 if(highestlevel == 0)
                                                 {
                                                     
-                                                    //System.debug('Spec0-->'+String.valueOf(featureMap.get(PMP_StaticConstants_MasterData.Spec_Identifier)));
+                                                    System.debug('Spec0-->'+String.valueOf(featureMap.get(PMP_StaticConstants_MasterData.Spec_Identifier)));
                                                     PMP_Specification__c speclevel00 = getexistingSpecs.get(String.valueOf(featureMap.get(PMP_StaticConstants_MasterData.Spec_Identifier)));
                                                     if (speclevel00 != null)
                                                     {
@@ -660,7 +656,7 @@ public without sharing class PMP_ParseSpecificationJSON {
                                                     if(identifier.length()>0)
                                                     {
                                                         if(identifier == PMP_StaticConstants_MasterData.Yes && value == PMP_StaticConstants_MasterData.Yes)
-                                                        {   
+                                                        {	
                                                             String externalKey = featureMap.get(PMP_StaticConstants_MasterData.Spec_Identifier) + '_' + ((String.valueOf(featureMap.get(PMP_StaticConstants_MasterData.Spec_Identifier))).deleteWhitespace()).toLowerCase();
                                                             
                                                             PMP_Specification_Value__c specValue = getexistingSpecValues.get(externalKey);
@@ -692,9 +688,9 @@ public without sharing class PMP_ParseSpecificationJSON {
                                                             
                                                         }
                                                         else
-                                                        {   
+                                                        {	
                                                             String externalKey = featureMap.get(PMP_StaticConstants_MasterData.Spec_Identifier) + '_' + (identifier.deleteWhitespace()).toLowerCase();
-                                                            //System.debug('&&&externalkey'+externalKey);
+                                                            System.debug('&&&externalkey'+externalKey);
                                                             PMP_Specification_Value__c specValue = getexistingSpecValues.get(externalKey);
                                                             if(specValue!= null && strBaseKey == PMP_StaticConstants_MasterData.Chinese_JSON)
                                                             {
@@ -744,23 +740,22 @@ public without sharing class PMP_ParseSpecificationJSON {
         //}[Removed for loop as part code scan fix]   
         
         //to handle deactivation of Spec Values
-        if ((existingEngSpecValuesMap != null && !existingEngSpecValuesMap.isEmpty()) && (specValueUploadMap != null && !specValueUploadMap.isEmpty()))
+        if ((existingEngSpecValuesMap != null || !existingEngSpecValuesMap.isEmpty()) && (specValueUploadMap != null || !specValueUploadMap.isEmpty()))
         {
             for(String keyId: existingEngSpecValuesMap.Keyset())
             {
                 //if 2nd map does not have that key
-                // System.debug('keyId1 ='+keyId);
                 if(!specValueUploadMap.keyset().contains(keyId))
                 {
-                    // System.debug('keyId ='+keyId);
+                    System.debug('keyId ='+keyId);
                     PMP_Specification_Value__c SpecValue = existingEngSpecValuesMap.get(keyId);
                     SpecValue.PMP_Active_Ind__c = false;
                     SpecValuesDeactiveMap.put(keyId,SpecValue);
-                    // System.debug('SpecValuesDeactiveMap'+SpecValuesDeactiveMap);
+                    System.debug('SpecValuesDeactiveMap'+SpecValuesDeactiveMap);
                 }
                 
             }
-            if(SpecValuesDeactiveMap != null && !SpecValuesDeactiveMap.isEmpty())
+            if(SpecValuesDeactiveMap != null || !SpecValuesDeactiveMap.isEmpty())
             {
                 for(String key : SpecValuesDeactiveMap.keySet())
                 {
@@ -776,22 +771,22 @@ public without sharing class PMP_ParseSpecificationJSON {
             finalSpecUploadMap.put(specUploadMap.get(key).PMP_Partner_Product_Specification_Key__c,specUploadMap.get(key));
         }
         //to handle deactivation of Specifications
-        if ((existingEngSpecsMap != null && !existingEngSpecsMap.isEmpty()) && (finalSpecUploadMap != null && !finalSpecUploadMap.isEmpty()))
+        if ((existingEngSpecsMap != null || !existingEngSpecsMap.isEmpty()) && (finalSpecUploadMap != null || !finalSpecUploadMap.isEmpty()))
         {
             for(String keyId: existingEngSpecsMap.Keyset())
             {
                 //if 2nd map does not have that key
                 if(!finalSpecUploadMap.keyset().contains(keyId))
                 {
-                    // System.debug('keyIdSpec ='+keyId);
+                    System.debug('keyIdSpec ='+keyId);
                     PMP_Specification__c Spec = existingEngSpecsMap.get(keyId);
                     Spec.PMP_Active_Ind__c = false;
                     SpecsDeactiveMap.put(keyId,Spec);
-                    //System.debug('SpecsDeactiveMap'+SpecsDeactiveMap);
+                    System.debug('SpecsDeactiveMap'+SpecsDeactiveMap);
                 }
                 
             }
-            if(SpecsDeactiveMap != null && !SpecsDeactiveMap.isEmpty())
+            if(SpecsDeactiveMap != null || !SpecsDeactiveMap.isEmpty())
             {
                 for(String key : SpecsDeactiveMap.keySet())
                 {

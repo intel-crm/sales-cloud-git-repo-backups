@@ -1,0 +1,36 @@
+<template>
+    <lightning-card title="CONTACT CUSTOMER SERVICE" >
+        <div class="slds-var-p-around_medium">
+                          <lightning-radio-group name="Have you already purchased a license?"
+                          label="Have you already purchased a license?"
+                          options={options}
+                          onchange={getSelection}
+                          type="radio">
+                        </lightning-radio-group> 
+                        <lightning-button variant="Base" label="Have a Technical Issue/Question?" onclick={viewRecord}></lightning-button>
+                         <!-- <p><lightning-formatted-url value="https://salesforce.com" tooltip="Use https://domain-name" label="Have a Technical Issue/Question?" target="_blank" ></lightning-formatted-url></p> -->
+        </div> 
+        <!--
+        <template if:true={isYES}>                
+            <div class="slds-var-m-around_medium slds-text-heading_small">
+            </div>
+        </template>
+        <template if:true={isNO}>                
+            <div class="slds-var-m-around_medium slds-text-heading_small">
+                <p>if you would like to purchase anew subscription license,please 
+                    <lightning-formatted-url value="https://salesforce.com" tooltip="Use https://domain-name" label="contact your distributor." target="_blank" ></lightning-formatted-url>
+                </p>
+                <p>
+                   You can also:    
+                </p>
+                <ul class="slds-list_dotted">
+                    <li>Get a Free <lightning-formatted-url value="https://salesforce.com" tooltip="Use https://domain-name" label="30 day trial license" target="_blank" ></lightning-formatted-url></li>
+                    <li>Get a Free <lightning-formatted-url value="https://salesforce.com" tooltip="Use https://domain-name" label="Quartus || Web edition" target="_blank" ></lightning-formatted-url></li>
+                    <li>Get a Free <lightning-formatted-url value="https://salesforce.com" tooltip="Use https://domain-name" label="Maxplus || license" target="_blank" ></lightning-formatted-url></li>
+                </ul>
+            </div>
+        </template>
+        -->
+    </lightning-card>      
+  </template>
+</template>

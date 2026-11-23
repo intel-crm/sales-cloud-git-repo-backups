@@ -8,8 +8,11 @@
         <name>HighTouch_LowTouch</name>
         <dataType>String</dataType>
         <expression>IF(
+    ISPICKVAL({!$Record.Core_Product_Group_Nm__c}, &apos;FPGA/Power&apos;),
+    &apos;PSG Design Registration&apos;,
+    IF(
         ISPICKVAL({!$Record.Core_Product_Group_Nm__c}, &apos;Embedded/IOT&apos;) &amp;&amp;
-        ({!$Record.Core_Partner_Account_Region_Cd__c} = &apos;APJ&apos; || {!$Record.Core_Partner_Account_Region_Cd__c} = &apos;PRC&apos;),
+        ({!$Record.Core_Partner_Account_Region_Cd__c} = &apos;APJ&apos;  || {!$Record.Core_Partner_Account_Region_Cd__c} = &apos;PRC&apos;),
         &apos;Disti Design Registration High&apos;,
         IF(
             ISPICKVAL({!$Record.Core_Product_Group_Nm__c}, &apos;Embedded/IOT&apos;) &amp;&amp;
@@ -23,6 +26,7 @@ NOT(ISBLANK(TEXT({!$Record__Prior.Core_Intel_Support_Status__c}))) &amp;&amp;
 )
        
         )
+    )
 )</expression>
     </formulas>
     <formulas>
@@ -56,6 +60,14 @@ NOT(ISBLANK(TEXT({!$Record__Prior.Core_Intel_Support_Status__c}))) &amp;&amp;
         <label>High/Low</label>
         <locationX>176</locationX>
         <locationY>287</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>PCC_Registration_Type__c</field>
+            <operator>Contains</operator>
+            <value>
+                <stringValue>Design</stringValue>
+            </value>
+        </filters>
         <inputAssignments>
             <field>Core_Intel_Support_Status__c</field>
             <value>

@@ -48,7 +48,6 @@ private class Core_MDF_ApprovalCriteriaHelper_Test
             
             //Creating Approver Set record
             Core_MDF_Approver__c approverSet = Core_MDF_CCP_TestDataUtility.createApprover(cr.Id,usr.Id, false);
-            approverSet.Core_MDF_Approver_Type__c = 'Internal';
             Database.insert(approverSet);
             
             //Creating Criteria Rules

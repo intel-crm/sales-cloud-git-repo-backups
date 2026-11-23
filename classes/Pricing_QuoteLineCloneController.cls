@@ -2,15 +2,15 @@
 * @description       : 
 * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
 * @group             : 
-* @last modified on  : 09-08-2026
+* @last modified on  : 04-28-2026
 * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 public without sharing class Pricing_QuoteLineCloneController {   
     /**
-    * @description Clone parent and its children
-    * @param id of the parent sObject
-    * @return new parent id
-    */
+* @description Clone parent and its children
+* @param id of the parent sObject
+* @return new parent id
+*/
     
     static Boolean isChangedProduct = false;
     
@@ -39,11 +39,11 @@ public without sharing class Pricing_QuoteLineCloneController {
                     ),
                         String.valueOf(SBQQ__QuoteLine__c.SObjectType),
                         String.escapeSingleQuotes(sObjectId)
-                }
+                        }
             );            
             // Query and gets results
             parentSObjects = Database.query(query);
- 
+            
             // Clone the original object. Here you can change anything without affecting the original sObject
             parent = parentSObjects[0].clone(false, true, false, false);
             if(action == Label.Pricing_Tender_QuoteLine_Action_Request_Change){
@@ -74,7 +74,7 @@ public without sharing class Pricing_QuoteLineCloneController {
             }
             //Validate FSE and create Approval records for valid FSEs
             if(parent.Pricing_Status_Nm__c == Label.Pricing_Tender_QuoteLine_Status_PendingIntelFieldReview && parent.Pricing_Change_Request_cb__c == true){
-            //Retrigger Approval Process for OEM Change Request
+                //Retrigger Approval Process for OEM Change Request
                 quoteIdQTMMemberIdMap = Pricing_Publish_Quote.validateQtmFse(new Set<Id>{parent.SBQQ__Quote__c});
                 if(quoteIdQTMMemberIdMap.size() > 0){
                     Pricing_Publish_Quote.publishQuoteLinesToMultipleFSE(new Set<Id>{parent.Id});
@@ -148,9 +148,6 @@ public without sharing class Pricing_QuoteLineCloneController {
         }
         else{
             cloneAutopopulation(parent, quoteLine);
-        
-            
-            
         }
         Parent.Pricing_Deal_RFQ_Dup_Id__c = null; //Duplicate Field            
         parent.Pricing_Previous_Status_Nm__c = 'Pending';
@@ -190,17 +187,16 @@ public without sharing class Pricing_QuoteLineCloneController {
         }
         
         //blank out AI fields on clone, OEM CR, RPM CR
-        parent.Pricing_Reason_for_FeedBack_Txt__c = null;
-        parent.Pricing_Recommendation_FeedBack_Nm__c = null;	
-        parent.Pricing_Recommended_Price_Amt__c	= null;
-        parent.Pricing_Price_Interval_Txt__c = null;
-        parent.Pricing_Discount_Pct__c = null;
-        parent.Pricing_Tentative_ECAP_Price_Amt__c = null;
+        
+        parent.Pricing_Recommendation_FeedBack_Nm__c = null;  
+        parent.Pricing_Recommended_Price_Amt__c = null;
+        
         parent.Pricing_Rejection_Reason__c = null;
         parent.Pricing_Save_After_Calculation_cb__c = false;
         parent.Pricing_Lost_Reason_Nm__c = null;
-        parent.Pricing_Application_Agent_Status__c = null;//citrus changes
-        parent.Pricing_Rationale_for_Pricing__c = null;//citrus changes
+        
+        parent.Pricing_Application_Agent_Status__c = null; 
+        parent.Pricing_Rationale_for_Pricing__c = null;
         parent.Pricing_HPC_Eligible_Pricing_Envelope__c = null;//PAA V2
         return parent;
     }
@@ -232,7 +228,7 @@ public without sharing class Pricing_QuoteLineCloneController {
     
     @AuraEnabled
     public static SBQQ__QuoteLine__c getQuoteLine(Id quoteLineId){
-        SBQQ__QuoteLine__c quoteLine = [SELECT Id, Pricing_Status_Nm__c,Pricing_Other_Product_Nm__c,SBQQ__ProductName__c,Pricing_Quote_Line_Number__c,Pricing_New_Change_Request_cb__c,
+        SBQQ__QuoteLine__c quoteLine = [SELECT Id, Pricing_Status_Nm__c,Pricing_Other_Product_Nm__c,SBQQ__ProductName__c,Pricing_Quote_Line_Number__c,
                                         Pricing_FSE_Recommended_Price_Nm__c, Pricing_ECAP_Price_Amt__c, Pricing_Approved_Start_Date_Dt__c,Pricing_Quote_Program_Nm__c,SBQQ__Quote__r.Pricing_Region_Nm__c,
                                         Pricing_Revised_Pricing_Start_Date_dt__c,Pricing_Billing_Start_Date_Dt__c,Pricing_Billing_End_Date_Dt__c,Pricing_Reference_Quote_Line_Nbr__r.Pricing_Approved_Unit_Qty__c,
                                         Pricing_Approved_End_Date_Dt__c,Pricing_Approved_Unit_Qty__c,Pricing_Payable_Quantity__c,Pricing_Meet_Comp_Price_Amt__c,Pricing_Additional_Comments_Txt__c,
@@ -243,7 +239,7 @@ public without sharing class Pricing_QuoteLineCloneController {
                                         Pricing_Product_Nm__c,Pricing_SIPP_Cb__c,Pricing_Market_Segment_values_Nm__c,Pricing_Change_Request_cb__c,Pricing_Additional_RPM_Notify_Recipients__c From SBQQ__QuoteLine__c WHERE Id= :quoteLineId];
         return quoteLine;
     }
-
+    
     @AuraEnabled
     public static Boolean restrictedAccountMethod(Id recordId, String pricingRegion){
         Boolean accountRestriced = false;
@@ -338,42 +334,45 @@ public without sharing class Pricing_QuoteLineCloneController {
     public static Date fetchDate(){
         return System.today();
     } 
-
+    
     public static void rpmCRAutoPopulation(SBQQ__QuoteLine__c parentQL ,SBQQ__QuoteLine__c parent, SBQQ__QuoteLine__c quoteLine){
-         parent.Pricing_Change_Request_Type__c = populateChangeRequestType(parent,quoteLine,false);
-        if((parent.SBQQ__ProductName__c == Label.Pricing_Tender_Write_In_Product && String.isBlank(parent.Pricing_Deal_RFQ_Id__c) && parent.Pricing_Product_Nm__c == quoteLine.Pricing_Product_Nm__c) || parent.Pricing_Quote_Program_Nm__c == Label.Pricing_Tender_FinancialIncentive_Quote){
-            parent.Pricing_Change_Request_cb__c = false;
-            parent.Pricing_Last_Approved_Date_dt__c = DateTime.now();
-            parent.RecordTypeId = quoteLine.Pricing_Program_Type_Nm__c == Label.Pricing_Tender_Small_Volume_Quote ? Pricing_Tender_Utility.getRecordTypeId('SBQQ__QuoteLine__c', Label.Pricing_SVD_Quote_Line_Read_Only) : quoteLine.Pricing_Program_Type_Nm__c == Label.Pricing_Tender_FinancialIncentive_Quote ? Pricing_Tender_Utility.getRecordTypeId('SBQQ__QuoteLine__c', 'Pricing_Financial_Incentive_Quote_Line_Read_Only') : Pricing_Tender_Utility.getRecordTypeId('SBQQ__QuoteLine__c', Label.Pricing_Tender_QuoteLine_RecordType_ReadOnly);
-            parent.Pricing_Approved_Start_Date_Dup_Dt__c = quoteLine.Pricing_Approved_Start_Date_Dt__c;
-            parent.Pricing_Approved_End_Date_Dup_Dt__c = quoteLine.Pricing_Approved_End_Date_Dt__c;
-            parent.Pricing_Approved_Unit_Dup_Qty__c = quoteLine.Pricing_Approved_Unit_Qty__c;
-            parent.Pricing_ECAP_Price_Dup_Amt__c = quoteLine.Pricing_ECAP_Price_Amt__c;
-            parent.Pricing_Revised_Pricing_Start_Date_D_dt__c = quoteLine.Pricing_Revised_Pricing_Start_Date_dt__c;
-            parent.Pricing_Quote_Line_Won_Lost_Status__c = (quoteLine.Pricing_Status_Nm__c == Label.Pricing_Tender_QuoteLine_Status_Won)?Label.Pricing_Tender_QuoteLine_Status_Won:null;
-            SBQQ__QuoteLine__c oldQuoteline = new SBQQ__QuoteLine__c(Id = parentQL.Id,
-                                                                     Pricing_Status_Nm__c = Label.Pricing_Tender_QuoteLine_Status_Revised);
-            if(parentQL.Id != null){
-                update oldQuoteline;
-            }
-        }else{
-            if(parent.Pricing_Product_Nm__c != quoteLine.Pricing_Product_Nm__c){ // set product from WIP to Non-WIP RPM CR 
-                isChangedProduct = true;
-                parent.Pricing_Product_Nm__c = quoteLine.Pricing_Product_Nm__c;
-                parent.SBQQ__Product__c = quoteLine.SBQQ__Product__c;
-                parent.Pricing_Other_Product_Nm__c = null;
-            }
-            parent.Pricing_Change_Request_cb__c = true;
-            parent.Pricing_Status_Nm__c = Label.Pricing_Tender_QuoteLine_Status_PendingFurtherIntelReview;
-            parent.RecordTypeId = quoteLine.Pricing_Program_Type_Nm__c == Label.Pricing_Tender_Small_Volume_Quote ? Pricing_Tender_Utility.getRecordTypeId('SBQQ__QuoteLine__c', Label.Pricing_SVD_Quote_Line_Submitted) : quoteLine.Pricing_Program_Type_Nm__c == Label.Pricing_Tender_FinancialIncentive_Quote ? Pricing_Tender_Utility.getRecordTypeId('SBQQ__QuoteLine__c', 'Pricing_Financial_Incentive_Quote_Line_Read_Only') : Pricing_Tender_Utility.getRecordTypeId('SBQQ__QuoteLine__c', Label.Pricing_Tender_QuoteLine_RecordType_Submitted);
-            parent.Pricing_Approved_Start_Date_Dup_Dt__c = null;
-            parent.Pricing_Approved_End_Date_Dup_Dt__c = null;
-            parent.Pricing_Approved_Unit_Dup_Qty__c = null;
-            parent.Pricing_ECAP_Price_Dup_Amt__c = null;
-            parent.Pricing_Revised_Pricing_Start_Date_D_dt__c = quoteLine.Pricing_Revised_Pricing_Start_Date_dt__c;
-            parent.Pricing_Last_Approved_Date_dt__c = null;
-            parent.Pricing_Quote_Line_Won_Lost_Status__c = null;            
-        } 
+        parent.Pricing_Change_Request_Type__c = populateChangeRequestType(parent,quoteLine,false);
+        if((parent.SBQQ__ProductName__c == Label.Pricing_Tender_Write_In_Product && 
+            String.isBlank(parent.Pricing_Deal_RFQ_Id__c) && 
+            parent.Pricing_Product_Nm__c == quoteLine.Pricing_Product_Nm__c) || 
+           parent.Pricing_Quote_Program_Nm__c == Label.Pricing_Tender_FinancialIncentive_Quote){
+               parent.Pricing_Change_Request_cb__c = false;
+               parent.Pricing_Last_Approved_Date_dt__c = DateTime.now();
+               parent.RecordTypeId = quoteLine.Pricing_Program_Type_Nm__c == Label.Pricing_Tender_Small_Volume_Quote ? Pricing_Tender_Utility.getRecordTypeId('SBQQ__QuoteLine__c', Label.Pricing_SVD_Quote_Line_Read_Only) : quoteLine.Pricing_Program_Type_Nm__c == Label.Pricing_Tender_FinancialIncentive_Quote ? Pricing_Tender_Utility.getRecordTypeId('SBQQ__QuoteLine__c', 'Pricing_Financial_Incentive_Quote_Line_Read_Only') : Pricing_Tender_Utility.getRecordTypeId('SBQQ__QuoteLine__c', Label.Pricing_Tender_QuoteLine_RecordType_ReadOnly);
+               parent.Pricing_Approved_Start_Date_Dup_Dt__c = quoteLine.Pricing_Approved_Start_Date_Dt__c;
+               parent.Pricing_Approved_End_Date_Dup_Dt__c = quoteLine.Pricing_Approved_End_Date_Dt__c;
+               parent.Pricing_Approved_Unit_Dup_Qty__c = quoteLine.Pricing_Approved_Unit_Qty__c;
+               parent.Pricing_ECAP_Price_Dup_Amt__c = quoteLine.Pricing_ECAP_Price_Amt__c;
+               parent.Pricing_Revised_Pricing_Start_Date_D_dt__c = quoteLine.Pricing_Revised_Pricing_Start_Date_dt__c;
+               parent.Pricing_Quote_Line_Won_Lost_Status__c = (quoteLine.Pricing_Status_Nm__c == Label.Pricing_Tender_QuoteLine_Status_Won)?Label.Pricing_Tender_QuoteLine_Status_Won:null;
+               SBQQ__QuoteLine__c oldQuoteline = new SBQQ__QuoteLine__c(Id = parentQL.Id,
+                                                                        Pricing_Status_Nm__c = Label.Pricing_Tender_QuoteLine_Status_Revised);
+               if(parentQL.Id != null){
+                   update oldQuoteline;
+               }
+           }else{
+               if(parent.Pricing_Product_Nm__c != quoteLine.Pricing_Product_Nm__c){ // set product from WIP to Non-WIP RPM CR 
+                   isChangedProduct = true;
+                   parent.Pricing_Product_Nm__c = quoteLine.Pricing_Product_Nm__c;
+                   parent.SBQQ__Product__c = quoteLine.SBQQ__Product__c;
+                   parent.Pricing_Other_Product_Nm__c = null;
+               }
+               parent.Pricing_Change_Request_cb__c = true;
+               parent.Pricing_Status_Nm__c = Label.Pricing_Tender_QuoteLine_Status_PendingFurtherIntelReview;
+               parent.RecordTypeId = quoteLine.Pricing_Program_Type_Nm__c == Label.Pricing_Tender_Small_Volume_Quote ? Pricing_Tender_Utility.getRecordTypeId('SBQQ__QuoteLine__c', Label.Pricing_SVD_Quote_Line_Submitted) : quoteLine.Pricing_Program_Type_Nm__c == Label.Pricing_Tender_FinancialIncentive_Quote ? Pricing_Tender_Utility.getRecordTypeId('SBQQ__QuoteLine__c', 'Pricing_Financial_Incentive_Quote_Line_Read_Only') : Pricing_Tender_Utility.getRecordTypeId('SBQQ__QuoteLine__c', Label.Pricing_Tender_QuoteLine_RecordType_Submitted);
+               parent.Pricing_Approved_Start_Date_Dup_Dt__c = null;
+               parent.Pricing_Approved_End_Date_Dup_Dt__c = null;
+               parent.Pricing_Approved_Unit_Dup_Qty__c = null;
+               parent.Pricing_ECAP_Price_Dup_Amt__c = null;
+               parent.Pricing_Revised_Pricing_Start_Date_D_dt__c = quoteLine.Pricing_Revised_Pricing_Start_Date_dt__c;
+               parent.Pricing_Last_Approved_Date_dt__c = null;
+               parent.Pricing_Quote_Line_Won_Lost_Status__c = null;            
+           } 
         
         parent.Pricing_Approved_Start_Date_Dt__c = quoteLine.Pricing_Approved_Start_Date_Dt__c;
         parent.Pricing_Approved_End_Date_Dt__c = quoteLine.Pricing_Approved_End_Date_Dt__c;
@@ -403,7 +402,7 @@ public without sharing class Pricing_QuoteLineCloneController {
             parent.Pricing_Write_In_Performance_Metric_Nm__c = quoteLine.Pricing_Write_In_Performance_Metric_Nm__c;
         }
     }
-
+    
     @TestVisible
     private static void oEMCRAutoPopulation(SBQQ__QuoteLine__c parent , SBQQ__QuoteLine__c quoteLine){
         parent.Pricing_Change_Request_Type__c = populateChangeRequestType(parent,quoteLine,true);
@@ -439,12 +438,12 @@ public without sharing class Pricing_QuoteLineCloneController {
         parent.Pricing_Consumption_Country__c = quoteLine.Pricing_Consumption_Country__c;
         parent.Pricing_Consumption_Region__c = quoteLine.Pricing_Consumption_Region__c; 
         parent.Pricing_Consumption_Segment__c = quoteLine.Pricing_Consumption_Segment__c;
-        if(quoteLine.Pricing_Status_Nm__c == Label.Pricing_Tender_QuoteLine_Status_Won && Pricing_QuoteLineCloneController.restrictedAccountMethod(quoteLine.SBQQ__Quote__r.SBQQ__Account__c,'') &&  parent.Pricing_New_Change_Request_cb__c == false){
+        if(quoteLine.Pricing_Status_Nm__c == Label.Pricing_Tender_QuoteLine_Status_Won && Pricing_QuoteLineCloneController.restrictedAccountMethod(quoteLine.SBQQ__Quote__r.SBQQ__Account__c,'') /*&&  parent.Pricing_New_Change_Request_cb__c == false*/){
             parent.Pricing_Payable_Quantity__c = 0;
         }
         
     }
-
+    
     private static void cloneAutopopulation(SBQQ__QuoteLine__c parent , SBQQ__QuoteLine__c quoteLine){
         SBQQ__QuoteLine__c qli = [SELECT Id, Pricing_Competetor_Product__r.Pricing_Active_cb__c FROM SBQQ__QuoteLine__c 
                                   WHERE Id =: quoteLine.Id];
@@ -453,7 +452,7 @@ public without sharing class Pricing_QuoteLineCloneController {
             userHasRPMPermissionSetIds = Pricing_EmailUtility.checkUserHasValidPermission(userIds,Label.Pricing_Tender_PermissionSets_PricingTenderRegionalPricingManager);      
         parent.Pricing_Status_Nm__c = Label.Pricing_Tender_QuoteLine_Status_Draft;
         parent.RecordTypeId = (parent.Pricing_Program_Type_Nm__c == Label.Pricing_Tender_Small_Volume_Quote)?Pricing_Tender_Utility.getRecordTypeId('SBQQ__QuoteLine__c', Label.Pricing_SVD_Quote_Line_Create):Pricing_Tender_Utility.getRecordTypeId('SBQQ__QuoteLine__c', Label.Pricing_Tender_QuoteLine_RecordType_Create);
-       
+        
         parent.SBQQ__Source__c=quoteline.Id;
         parent.Pricing_Reference_Quote_Line_Nbr__c = null;
         parent.Pricing_Quote_Line_Number__c = null;
@@ -465,8 +464,8 @@ public without sharing class Pricing_QuoteLineCloneController {
         parent.Pricing_FSE_Recommended_Price_Nm__c = null;
         parent.Pricing_Change_Request_cb__c = false;
         
-        parent.Pricing_Change_Request_Type__c = null;
-        
+       parent.Pricing_Change_Request_Type__c = null;
+
         parent.Pricing_New_Quantity_qty__c = null;
         parent.Pricing_Request_Discount_Unit_Price_qty__c = null;
         parent.Pricing_Original_Submitted_By_Id__c = null;
@@ -474,7 +473,6 @@ public without sharing class Pricing_QuoteLineCloneController {
         parent.Pricing_Last_Submitted_By_Id__c = null;
         parent.Pricing_Last_Submitted_Date_dt__c = null;
         parent.Pricing_Start_Date_dt__c = null;
-       
         
         parent.Pricing_RegionQL_Nm__c = Label.Pricing_Tender_Default_Region_Worldwide;
         parent.Pricing_Deal_RFQ_Id__c = null;
@@ -526,22 +524,52 @@ public without sharing class Pricing_QuoteLineCloneController {
             parent.Pricing_Market_Segment_Nm__c = Label.Pricing_Tender_Market_Segment_Default;
             parent.Pricing_Market_Segment_values_Nm__c = Label.Pricing_Tender_Market_Segment_Values_Default;
         }
+        
     }
-
+    
     //Billing start date check for Quarter logic on RPM change Request
     @AuraEnabled
     public static Boolean billingStartDateCheck(SBQQ__QuoteLine__c quoteLine) {
+        
         Boolean startDateValid = false;
         if(quoteLine.Pricing_Billing_Start_Date_Dt__c != null && quoteLine.Pricing_Approved_Start_Date_Dt__c != null){          
-                    Integer noOfDaysBetweenDates = quoteLine.Pricing_Billing_Start_Date_Dt__c.daysBetween(quoteLine.Pricing_Approved_Start_Date_Dt__c);
-                    if(noOfDaysBetweenDates > Integer.valueof(Label.Pricing_AllowedBillingDateBackDating_days)){
-                        startDateValid = true;
-                    }
-                }
+            Integer noOfDaysBetweenDates = quoteLine.Pricing_Billing_Start_Date_Dt__c.daysBetween(quoteLine.Pricing_Approved_Start_Date_Dt__c);
+            if(noOfDaysBetweenDates > Integer.valueof(Label.Pricing_AllowedBillingDateBackDating_days)){
+                startDateValid = true;
+            }
+        }
+        
+        /* Boolean startDateValid = false;
+Map<Date,Date> dateMap = new Map<Date,Date>();
+for(Period periodRec: [Select Id,startdate, EndDate, number From Period Where type = 'Quarter'
+AND EndDate <=:quoteLine.Pricing_Approved_Start_Date_Dt__c order by startdate desc  LIMIT 1]){
+if(periodRec.startdate != null){
+dateMap.put(periodRec.startdate,periodRec.EndDate);
+}
+}
+integer count = [SELECT count() FROM PermissionSetAssignment
+WHERE AssigneeId = :Userinfo.getUserId() AND PermissionSet.Name = :Label.Pricing_Tender_PermissionSets_PricingTenderRegionalPricingManager
+];
+
+if(quoteLine.Pricing_Billing_Start_Date_Dt__c != null && quoteLine.Pricing_Approved_Start_Date_Dt__c != null){          
+Date previousDate = null;
+billingStartDatePreviousDate(dateMap, quoteLine, previousDate);
+
+if(quoteLine.Pricing_Billing_Start_Date_Dt__c < previousDate && count > 0){
+startDateValid =  true;
+}
+}*/
         return startDateValid;
     }
     
-
+    /*public static void billingStartDatePreviousDate(Map<Date,Date> dateMap,SBQQ__QuoteLine__c quoteLine,Date previousDate){
+for(Date startDate : dateMap.keySet()){
+if((startDate <= quoteLine.Pricing_Approved_Start_Date_Dt__c) && (quoteLine.Pricing_Approved_Start_Date_Dt__c <= dateMap.get(startDate)) && previousDate != null){
+break;
+}
+previousDate = startDate;
+}
+}*/
     
     //Method to validate Quote Team FSE on OEM Change Request.
     @AuraEnabled
@@ -564,26 +592,26 @@ public without sharing class Pricing_QuoteLineCloneController {
     } 
     
     /**
-    * @description Search Project and return product list
-    * @param searchKey Seach Key 
-    * @param quoteLineType Quote Line Type
-    * @return  List<Product2>
-    */
+* @description Search Project and return product list
+* @param searchKey Seach Key 
+* @param quoteLineType Quote Line Type
+* @return  List<Product2>
+*/
     @AuraEnabled
     public static List<Product2> searchProductsSOQL(String searchKey, String quoteLineType){
         return Pricing_QuoteLineController.searchProductsSOQL(searchKey,quoteLineType);
     }
-     
+    
     @AuraEnabled
     public static List<Pricing_ConsumptionAccountMapping__c> getConsumptionPicklistValues(String quoteId){ 
         return Pricing_ConsumptionAttr_Controller.getPlatformAndSalesGeoPickList(quoteId); 
     }
-
+    
     /**
-    * @description Method return true if user is having 'Tender Business User Admin' Permission Set
-    * @author Bharath Chandrashekar | 09-29-2022 
-    * @param UserId 
-    **/
+* @description Method return true if user is having 'Tender Business User Admin' Permission Set
+* @author Bharath Chandrashekar | 09-29-2022 
+* @param UserId 
+**/
     @InvocableMethod(label = 'getLoggedinUserPermissionSetBusinessAdmin' description = 'return true if user is having Tender Business User Admin Permission Set')
     public static List<String> getLoggedinUserPermissionSetBusinessAdmin(){
         return QuoteLineBusinessLogic.checkCurrentUserPs(Label.Pricing_Tender_PermissionSets_TenderBusinessUserAdmin) ? new List<String>{'True'} : new List<String>{'False'};
@@ -594,6 +622,7 @@ Description:       Method to track the field values changed during change reques
 Added By:          Rishabh - 14-April-2026
 Modified By:        Date:       Changes:
 **********************************************************************************************************/
+    
     public static String populateChangeRequestType(SBQQ__QuoteLine__c parent, SBQQ__QuoteLine__c quoteLine, Boolean oemCR) {
         
         Set<String> changeRequestTypes = new Set<String>();
@@ -682,13 +711,11 @@ Modified By:        Date:       Changes:
         
         return String.join(new List<String>(changeRequestTypes), ';');
     }
-   
+    
     private static Boolean hasConsumptionFieldChanged(String a, String b) {
-        
         String valA = String.isBlank(a) ? '' : a.trim();
         String valB = String.isBlank(b) ? '' : b.trim();
-        
-        if (!String.isBlank(b)) {
+        if (!String.isBlank(a) && !String.isBlank(b)) {
             return valA != valB;
         }
         

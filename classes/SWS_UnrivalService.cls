@@ -63,8 +63,10 @@ public with sharing class SWS_UnrivalService implements SWS_DynamicMethodInterfa
 			reqUnrival.setHeader('Content-Type', 'application/json');
 			reqUnrival.setHeader(urlConfig.Core_Client_ID__c, urlConfig.Core_Client_Secret__c); 
             HttpResponse resUnrival = httpUnrival.send(reqUnrival);
-            
+            system.debug(resUnrival.getStatusCode());
+            system.debug(resUnrival.getBody());
           if (resUnrival.getStatusCode() == 200) {
+           
             // Deserialize the JSON string into a generic Map
             Map<String, Object> jsonMap = (Map<String, Object>) JSON.deserializeUntyped(resUnrival.getBody());            
             // Access the list of companies
@@ -74,13 +76,13 @@ public with sharing class SWS_UnrivalService implements SWS_DynamicMethodInterfa
                 Map<String, Object> firstCompany = (Map<String, Object>) companies[0];                
                 // Extract the salesforce_id
                  salesforceId = (String) firstCompany.get('salesforce_id');
-            
+            	system.debug('Extract the salesforce_id:' + salesforceId);
             } 
             }
         }
        catch(Exception ex){
           // PMP_Utility.logError(ex, 'SWS_UnrivalService.GetUnrivalServiceData');
-         
+            system.debug(ex);
         }      
    
    return salesforceId;

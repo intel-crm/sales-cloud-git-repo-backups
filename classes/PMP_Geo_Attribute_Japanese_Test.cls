@@ -20,7 +20,7 @@ public class PMP_Geo_Attribute_Japanese_Test {
         
     	PMP_Geo_Attribute_Japanese testGeo = new PMP_Geo_Attribute_Japanese();
         test.startTest();
-        PMP_ParseGeoRegionsJSON.languageCode = 'ja_JP';
+        PMP_ParseGeoRegionsJSON.strBaseKey = 'ja_JP';
         resultData = testGeo.processData('Geo_Attribute_English_Test');
         system.assertNotEquals(resultData,null);
         test.stopTest();

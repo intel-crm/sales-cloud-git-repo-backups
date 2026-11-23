@@ -233,12 +233,11 @@ export const mockSubComponent = (type) => {
           responsibility: "Primary Lead Designated Rep",
           employee: "open"
         },
-        //IPA2.0:US-4497-1631_OfferingEOL
-        // {
-        //   highlight: false,
-        //   responsibility: "Offering Editor",
-        //   employee: "open"
-        // },
+        {
+          highlight: false,
+          responsibility: "Offering Editor",
+          employee: "open"
+        },
         {
           highlight: false,
           responsibility: "Marketing Specialist",

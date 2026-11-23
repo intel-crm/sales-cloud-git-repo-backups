@@ -285,14 +285,9 @@
                     <label>Price Eligibility Date</label>
                 </value>
                 <value>
-                    <fullName>core_cpq_lower_bound_qty_qty__c</fullName>
+                    <fullName>SBQQ__Quantity__c</fullName>
                     <default>false</default>
-                    <label>core_cpq_lower_bound_qty_qty__c</label>
-                </value>
-                <value>
-                    <fullName>core_cpq_upper_bound_qty_nbr__c</fullName>
-                    <default>false</default>
-                    <label>core_cpq_upper_bound_qty_nbr__c</label>
+                    <label>SBQQ__Quantity__c</label>
                 </value>
                 <value>
                     <fullName>SBQQ__EndDate__c</fullName>
@@ -303,6 +298,16 @@
                     <fullName>Pricing_SW_Custom_Product__c</fullName>
                     <default>false</default>
                     <label>Pricing_SW_Custom_Product__c</label>
+                </value>
+                <value>
+                    <fullName>Pricing_SW_Additional_Disc__c</fullName>
+                    <default>false</default>
+                    <label>Pricing_SW_Additional_Disc__c</label>
+                </value>
+                <value>
+                    <fullName>SBQQ__SubscriptionTerm__c</fullName>
+                    <default>false</default>
+                    <label>SBQQ__SubscriptionTerm__c</label>
                 </value>
             </valueSetDefinition>
             <valueSettings>
@@ -337,6 +342,7 @@
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Quote</controllingFieldValue>
+                <controllingFieldValue>Quote Line</controllingFieldValue>
                 <valueName>SBQQ__EndDate__c</valueName>
             </valueSettings>
             <valueSettings>
@@ -403,11 +409,15 @@
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Quote Line</controllingFieldValue>
-                <valueName>core_cpq_lower_bound_qty_qty__c</valueName>
+                <valueName>SBQQ__Quantity__c</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Quote Line</controllingFieldValue>
-                <valueName>core_cpq_upper_bound_qty_nbr__c</valueName>
+                <valueName>Pricing_SW_Additional_Disc__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Quote Line</controllingFieldValue>
+                <valueName>SBQQ__SubscriptionTerm__c</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Quote Line Pricing Guidance</controllingFieldValue>

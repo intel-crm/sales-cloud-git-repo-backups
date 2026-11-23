@@ -19,7 +19,7 @@
       "components" : [ {
         "componentAttributes" : { },
         "componentName" : "c:sales_FPGA_IntelAccessDenied",
-        "id" : "f9a92cb4-ccbc-4f41-8357-94b66524bdf9",
+        "id" : "e2fe49b8-79e5-4870-8eb5-8c43d20c956e",
         "renditionMap" : { },
         "type" : "component"
       } ],
@@ -128,8 +128,17 @@
           "hideHomeText" : false
         },
         "componentName" : "forceCommunity:globalNavigation",
-        "id" : "24b01f2a-3375-45fb-9a93-d3749608f345",
-        "renditionMap" : { },
+        "id" : "f8430b01-3b4d-48cc-955f-228beaa30bc5",
+        "renditionMap" : {
+          "zh_cn" : "4b69fc73-6b24-461a-af0e-c833f64a2832"
+        },
+        "renditions" : [ {
+          "id" : "4b69fc73-6b24-461a-af0e-c833f64a2832",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        } ],
         "type" : "component"
       } ],
       "id" : "8aa8251b-3fb1-45ae-8a74-00601f686236",
@@ -146,10 +155,40 @@
     }, {
       "components" : [ {
         "componentAttributes" : {
-          "richTextValue" : "<p style=\"text-align: center;\"><span style=\"font-size: 18px; color: rgb(230, 0, 0);\">&nbsp;The Intel® FPGA Self-Service Licensing Center (SSLC) is upgrading to a new location on the altera.com domain. To ensure a smooth transition of your data, the current site will not accept new license requests from </span><strong style=\"font-size: 18px; color: rgb(230, 0, 0);\">February 23rd</strong><span style=\"font-size: 18px; color: rgb(230, 0, 0);\"> through </span><strong style=\"font-size: 18px; color: rgb(230, 0, 0);\">March 15th</strong><span style=\"font-size: 18px; color: rgb(230, 0, 0);\">. </span></p><p style=\"text-align: center;\"><span style=\"font-size: 18px; color: rgb(230, 0, 0);\">You will still be able to create evaluation and no-cost licenses on the intel.com SSLC during this time</span></p>"
+          "allowPrepopulatePrechatFields" : true,
+          "avatarImgURL" : "",
+          "codeSettingsName" : "",
+          "defaultMinimizedText" : "License Assistant",
+          "displayHelpButton" : true,
+          "eswConfigurationJSON" : {
+            "baseCoreURL" : "https://intel--crmdevsls3.sandbox.my.salesforce.com",
+            "baseLiveAgentContentURL" : "https://c.la2-c1cs-ia6.salesforceliveagent.com/content",
+            "baseLiveAgentURL" : "https://d.la2-c1cs-ia6.salesforceliveagent.com/chat",
+            "buttonId" : "5732D0000008S0r",
+            "deploymentId" : "5722D0000008RRn",
+            "enabledFeatures" : [ "LiveAgent" ],
+            "entryFeature" : "LiveAgent",
+            "eswConfigDevName" : "PSG_Sales_Chat_Group",
+            "eswConfigId" : "04I2D00000000E2UAI",
+            "eswLiveAgentDevName" : "PSG_Sales_Chat_Group",
+            "gslbBaseURL" : "https://service.force.com",
+            "isOfflineCasesEnabled" : "0",
+            "orgId" : "00D2D000000E9ZK"
+          },
+          "externalScripts" : "",
+          "externalStyles" : "",
+          "fallbackRouting" : "",
+          "offlineSupportMinimizedText" : "Contact Us",
+          "offlineText" : "Agent Offline",
+          "onlineLoadingText" : "Loading",
+          "prechatBackgroundImgURL" : "",
+          "smallCompanyLogoImgURL" : "",
+          "snippetSettingsFile" : "Sales_Bot_PreChat",
+          "storageDomain" : "",
+          "waitingStateBackgroundImgURL" : ""
         },
-        "componentName" : "forceCommunity:richTextInline",
-        "id" : "32c6dd21-f94e-4a88-9b14-8a0c71642fcd",
+        "componentName" : "forceCommunity:embeddedService",
+        "id" : "12ef3b6b-7908-410c-9557-41abe88a0165",
         "renditionMap" : { },
         "type" : "component"
       } ],

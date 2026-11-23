@@ -61,6 +61,16 @@
         <name>Product_group__c</name>
     </fields>
     <fields>
+        <label><!-- Rebate Claim Upload --></label>
+        <name>Rebate_Claim_Upload__c</name>
+        <relationshipLabel><!-- TPT Trackers --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Rebate Claim --></label>
+        <name>Rebate_Claim__c</name>
+        <relationshipLabel><!-- TPT Trackers --></relationshipLabel>
+    </fields>
+    <fields>
         <label><!-- Registration Type --></label>
         <name>Registration_Type__c</name>
     </fields>

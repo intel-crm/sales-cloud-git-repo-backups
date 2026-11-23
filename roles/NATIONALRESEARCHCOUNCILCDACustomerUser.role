@@ -6,5 +6,5 @@
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>NATIONAL RESEARCH COUNCIL CDA Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>NATIONALRESEARCHCOUNCILCDACustomerManager</parentRole>
 </Role>

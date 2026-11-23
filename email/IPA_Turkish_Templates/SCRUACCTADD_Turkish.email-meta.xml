@@ -1,47 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
     <available>true</available>
-    <encodingKey>UTF-8</encodingKey>
+    <encodingKey>ISO-8859-1</encodingKey>
     <name>SCRUACCTADD_Turkish</name>
     <style>none</style>
-    <subject>Intel® Ortağı İş Birliği Kaydınızı Tamamlamak için Eylem Gerekli</subject>
-    <textOnly>Intel® Ortağı İş Birliği Kaydınızı Tamamlamak için Eylem Gerekli
+    <subject>Intel&apos;in İş Ortağı Programına Kaydolmanız İçin Son Adımı Tamamlamanız Gerekli</subject>
+    <textOnly>{!Contact.FirstName},
 
+Şirket yöneticiniz veya bir Intel temsilcisi, sizi {!Contact.Core_Account_Name__c} adlı Intel iş ortağı programı hesabına ekledi. Hesabınızı etkinleştirip avantajlarınızdan yararlanmaya başlamak için lütfen bilgilerinizi gözden geçirin ve yasal koşullar bölümünü tamamlayın.
 
+Gelecekte hatırlamak için lütfen giriş bilgilerinizi de kaydedin:
 
+Kullanıcı Adı : {!Contact.Name}
+E-posta Adresi : {!Contact.Email}
+Şirket Adı : {!Contact.Core_Account_Name__c}
+Parolanızı gizli bilgi olarak korumanız gerekiyor. Bu parolanın Intel&apos;in web sitelerinde kullanılması, Intel&apos;in ilgili sitedeki her web sayfasının alt bölümünde yer alan Kullanım Koşulları&apos;na tabidir.
 
-{!Contact.FirstName},
-
-Tebrikler; şirket yöneticiniz veya Intel temsilcisi sizi bir Intel® Ortağı İş Birliği hesabına ekledi! Kaydınızı tamamlamak için yalnızca birkaç adım kaldı.
-
-Sizin için aşağıdaki profil bilgileri oluşturuldu:
-
-E-posta Adresi: {!Contact.Email}
-Şirket Adı: {{ACCOUNTNAME}}
-Intel® Ortağı İş Birliği İş Kimlik No.: {{ACCOUNTNUMBER}}
-
-
-Kaydınızı tamamlamak için lütfen aşağıdaki bağlantıya tıklayın
-
-
-{{ButtonText}}
-
-
-Yukarıdaki bağlantıya erişemiyor musunuz?
-{{EVLINK}}
-Herhangi bir sorunuz varsa lütfen şu sayfada bizimle iletişime geçin: {{SUPPORTLINK}}.
-Sizi programda görmek için sabırsızlanıyoruz!
-Saygılarımızla,
-Intel® Ortağı İş Birliği ekibiniz
-
-
-Bu mesaj, Intel® Ortağı İş Birliği ile halihazırda kurduğunuz iş ilişkisiyle ilgili önemli bir iş yazışması olarak gönderildi.
-© {!$Label.PRM_CurrentYear} Intel Corporation
-Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 ABD. www.intel.com
-Gizlilik | Çerezler
-
-
-__PRESENT</textOnly>
+ŞİMDİ TAMAMLAYIN
+Sorularınız mı var? Destek ile buradan iletişime geçin.</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

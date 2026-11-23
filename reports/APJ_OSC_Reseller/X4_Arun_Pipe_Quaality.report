@@ -60,11 +60,18 @@
             <value>1</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OWNER_MANAGER</column>
+            <column>FULL_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Arun Raghavan</value>
+            <value>Ji Hyun Yoo,Eun Bi Cho,Rajesh Enkhia,Arun Raghavan,Pankaj Garg,Roy Yoo,Janice Cho,Neunghwan kim,Bomin Kim,Foo Choong Boon</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Sales_Groups__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>GMP India Sales Group,GMP Korea Sales Group</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -100,6 +107,8 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
+        <endDate>2021-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2017-10-01</startDate>
     </timeFrameFilter>
 </Report>

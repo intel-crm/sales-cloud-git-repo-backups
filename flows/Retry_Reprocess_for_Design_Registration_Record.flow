@@ -3,7 +3,7 @@
     <actionCalls>
         <name>DDR_Retry</name>
         <label>DDR Retry</label>
-        <locationX>110</locationX>
+        <locationX>308</locationX>
         <locationY>276</locationY>
         <actionName>Core_DDR_Design_Handler_Utility</actionName>
         <actionType>apex</actionType>
@@ -15,49 +15,9 @@
             </value>
         </inputParameters>
         <nameSegment>Core_DDR_Design_Handler_Utility</nameSegment>
-        <offset>0</offset>
-    </actionCalls>
-    <actionCalls>
-        <name>IPA_Retry</name>
-        <label>IPA Retry</label>
-        <locationX>374</locationX>
-        <locationY>384</locationY>
-        <actionName>PRM_RetryIPAFlow</actionName>
-        <actionType>apex</actionType>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
-        <inputParameters>
-            <name>recordIds</name>
-            <value>
-                <elementReference>$Record.Id</elementReference>
-            </value>
-        </inputParameters>
-        <nameSegment>PRM_RetryIPAFlow</nameSegment>
-        <offset>0</offset>
     </actionCalls>
     <apiVersion>55.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
-    <decisions>
-        <name>IPA_Lock_Row</name>
-        <label>IPA Lock Row</label>
-        <locationX>506</locationX>
-        <locationY>276</locationY>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>IPA</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>$Record.Core_Project__c</leftValueReference>
-                <operator>Contains</operator>
-                <rightValue>
-                    <stringValue>IPA</stringValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>IPA_Retry</targetReference>
-            </connector>
-            <label>IPA</label>
-        </rules>
-    </decisions>
     <environments>Default</environments>
     <formulas>
         <name>oppErrorMsg</name>
@@ -88,7 +48,7 @@
     <start>
         <locationX>50</locationX>
         <locationY>0</locationY>
-        <filterLogic>(1 OR 2 OR 6 OR 7 OR 9 OR 10) AND (3 AND 4) AND 5 AND (8 OR 11)</filterLogic>
+        <filterLogic>(1 OR 2 OR 6 OR 7) AND (3 AND 4) AND 5 AND 8</filterLogic>
         <filters>
             <field>Core_Origin__c</field>
             <operator>EqualTo</operator>
@@ -142,28 +102,7 @@
             <field>Core_Message__c</field>
             <operator>Contains</operator>
             <value>
-                <stringValue>unable to obtain exclusive access to this record or</stringValue>
-            </value>
-        </filters>
-        <filters>
-            <field>Core_Origin__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>CreateAccountAndRelatedRecords</stringValue>
-            </value>
-        </filters>
-        <filters>
-            <field>Core_Scope__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>Account_Update</stringValue>
-            </value>
-        </filters>
-        <filters>
-            <field>Core_Details__c</field>
-            <operator>Contains</operator>
-            <value>
-                <stringValue>unable to obtain exclusive access to this record or</stringValue>
+                <stringValue>unable to obtain exclusive access to this record or 1 records</stringValue>
             </value>
         </filters>
         <object>Core_Log_Entry__c</object>
@@ -173,26 +112,14 @@
             <connector>
                 <targetReference>DDR_Retry</targetReference>
             </connector>
-            <label>After 5 Min DDR</label>
+            <label>After 5 Min</label>
             <maxBatchSize>1</maxBatchSize>
             <offsetNumber>5</offsetNumber>
             <offsetUnit>Minutes</offsetUnit>
             <recordField>Core_Next_Scheduled_Run__c</recordField>
             <timeSource>RecordField</timeSource>
         </scheduledPaths>
-        <scheduledPaths>
-            <name>After_min</name>
-            <connector>
-                <targetReference>IPA_Lock_Row</targetReference>
-            </connector>
-            <label>After 5 Min IPA</label>
-            <maxBatchSize>1</maxBatchSize>
-            <offsetNumber>3</offsetNumber>
-            <offsetUnit>Minutes</offsetUnit>
-            <recordField>LastModifiedDate</recordField>
-            <timeSource>RecordField</timeSource>
-        </scheduledPaths>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Draft</status>
+    <status>Active</status>
 </Flow>

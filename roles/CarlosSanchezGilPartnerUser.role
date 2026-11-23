@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>VTR Partner User</description>
+    <description>Carlos Sanchez Gil Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>VTR Partner User</name>
+    <name>Carlos Sanchez Gil Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>CarlosSanchezGilPartnerManager</parentRole>
 </Role>

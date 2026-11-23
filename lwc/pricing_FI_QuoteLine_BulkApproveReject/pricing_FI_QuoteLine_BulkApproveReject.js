@@ -14,7 +14,7 @@ import Pricing_rejection_reason_other_value from '@salesforce/label/c.Pricing_re
 import getFIPricingManagerSearch from '@salesforce/apex/Pricing_BulkSalesRepActionController.getFIPricingManagerSearch';
 import Pricing_FI_ApproveReject_PageSize from '@salesforce/label/c.Pricing_FI_ApproveReject_PageSize';
 
-const pageNumberConst = 1;
+const pageNumber = 1;
 const showIt = 'visibility:visible';
 const hideIt = 'visibility:hidden';
 export default class Pricing_FI_QuoteLine_BulkApproveReject extends LightningElement {
@@ -47,12 +47,14 @@ export default class Pricing_FI_QuoteLine_BulkApproveReject extends LightningEle
     @track totalRecords; //Total no.of records; valid type is Integer
     @track pageSize; //No.of records to be displayed per page
     @track totalPages; //Total no.of pages
-    @track pageNumber = pageNumberConst; //Page number
+    @track pageNumber = pageNumber; //Page number
     @track controlPagination = showIt;
     @track controlPrevious = hideIt; //Controls the visibility of Previous page button
     @track controlNext = showIt; //Controls the visibility of Next page button
 
     @track quoteLineDataHasError = false;
+   // @api isFIBulkApproveButton;
+    //@api isFIBulkRejectButton;
 
     connectedCallback() {
         this.today = this.getTodaysDate();
@@ -70,15 +72,15 @@ export default class Pricing_FI_QuoteLine_BulkApproveReject extends LightningEle
         }
         return today.getFullYear() + '-' + mm + '-' + dd;
     }
-
+//@api
     openApproveDataTable() {
-        this.openBulkApproveModal = true;
+        this.openBulkApproveModal = true;//this.isFIBulkApproveButton == true ? true :false;
         this.openBulkRejectModal = false;
         this.getQuoteLines();
     }
-
+//@api
     openRejectDataTable() {
-        this.openBulkRejectModal = true;
+        this.openBulkRejectModal = true //this.isFIBulkRejectButton == true ? true :false;;
         this.openBulkApproveModal = false;
         this.getQuoteLines();
     }
@@ -109,6 +111,7 @@ export default class Pricing_FI_QuoteLine_BulkApproveReject extends LightningEle
                         this.quoteLineData[i]["isSelected"] = false;
                         this.quoteLineData[i]["isError"] = false;
                         this.quoteLineData[i]["errorMsg"] = '';
+                        this.quoteLineData[i]["approveRejectComments"] = '';
                         this.quoteLineData[i]["partnerType"] = '';
                         this.quoteLineData[i].Pricing_Product_Nm__r.Name = this.quoteLineData[i].hasOwnProperty('Pricing_Product_Nm__r') ? this.getValueFix(this.quoteLineData[i].Pricing_Product_Nm__r.Name) : '';
                         this.quoteLineData[i]["searchKey"] = '';
@@ -125,8 +128,6 @@ export default class Pricing_FI_QuoteLine_BulkApproveReject extends LightningEle
                         this.quoteLineData[i].Pricing_Approved_End_Date_Dt__c = this.quoteLineData[i].hasOwnProperty('Pricing_Approved_End_Date_Dt__c') ? this.getValueFix(this.quoteLineData[i].Pricing_Approved_End_Date_Dt__c) : '';
                         this.quoteLineData[i].Pricing_Additional_Comments_Txt__c = this.quoteLineData[i].hasOwnProperty('Pricing_Additional_Comments_Txt__c') ? this.getValueFix(this.quoteLineData[i].Pricing_Additional_Comments_Txt__c) : '';
                         this.quoteLineData[i].Pricing_Additional_T_C_s_Txt__c = this.quoteLineData[i].hasOwnProperty('Pricing_Additional_T_C_s_Txt__c') ? this.getValueFix(this.quoteLineData[i].Pricing_Additional_T_C_s_Txt__c) : '';
-                        this.quoteLineData[i].Pricing_pm_approval_comments_nm__c = this.quoteLineData[i].hasOwnProperty('Pricing_pm_approval_comments_nm__c') ? this.getValueFix(this.quoteLineData[i].Pricing_pm_approval_comments_nm__c) : '';
-                        this.quoteLineData[i].Pricing_Rejection_Comments_nm__c = this.quoteLineData[i].hasOwnProperty('Pricing_Rejection_Comments_nm__c') ? this.getValueFix(this.quoteLineData[i].Pricing_Rejection_Comments_nm__c) : '';
                         this.quoteLineData[i]["pricingManager"] = this.quoteLineData[i].hasOwnProperty('Pricing_Manager__r') ? this.quoteLineData[i].Pricing_Manager__r.Name : '';
                     }
 
@@ -135,6 +136,7 @@ export default class Pricing_FI_QuoteLine_BulkApproveReject extends LightningEle
                         this.quoteLineData[i]["isSelected"] = false;
                         this.quoteLineData[i]["isError"] = false;
                         this.quoteLineData[i]["errorMsg"] = '';
+                        this.quoteLineData[i]["approveRejectComments"] = '';
                         this.quoteLineData[i]["partnerType"] = '';
                         this.quoteLineData[i].Pricing_Product_Nm__r.Name = this.quoteLineData[i].hasOwnProperty('Pricing_Product_Nm__r') ? this.getValueFix(this.quoteLineData[i].Pricing_Product_Nm__r.Name) : '';
                         this.quoteLineData[i].Pricing_Rejection_Reason__c = this.quoteLineData[i].hasOwnProperty('Pricing_Rejection_Reason__c') ? this.getValueFix(this.quoteLineData[i].Pricing_Rejection_Reason__c) : '';
@@ -395,21 +397,21 @@ export default class Pricing_FI_QuoteLine_BulkApproveReject extends LightningEle
         this.handleApprovalValidation();
     }
 
-    handleApproveComments(event) {
+    handleApproveRejectComments(event) {
         let element = this.quoteLineDataToDisaplay.find(ele => ele.Id === event.target.dataset.id);
-        element.Pricing_pm_approval_comments_nm__c = event.target.value;
+        element.approveRejectComments = event.target.value;
+        this.getCopyToQuoteLineData(event.target.dataset.id, event.target.value, 'approveRejectComments');
+        if(this.openBulkApproveModal){
+            element.Pricing_pm_approval_comments_nm__c = element.approveRejectComments;
             this.getCopyToQuoteLineData(event.target.dataset.id, event.target.value, 'Pricing_pm_approval_comments_nm__c');
             this.quoteLineDataToDisaplay = [...this.quoteLineDataToDisaplay];
             this.handleApprovalValidation();
-      
-    }
-
-    handleRejectComments(event) {
-        let element = this.quoteLineDataToDisaplay.find(ele => ele.Id === event.target.dataset.id);     
-            element.Pricing_Rejection_Comments_nm__c = event.target.value;
+        }else{
+            element.Pricing_Rejection_Comments_nm__c = element.approveRejectComments;
             this.getCopyToQuoteLineData(event.target.dataset.id, event.target.value, 'Pricing_Rejection_Comments_nm__c');
             this.quoteLineDataToDisaplay = [...this.quoteLineDataToDisaplay];
             this.handleRejectionValidation();
+        }        
     }
 
     getCopyToQuoteLineData(id, data, field) { // keep Copy of eldited field in main JSON
@@ -463,7 +465,7 @@ export default class Pricing_FI_QuoteLine_BulkApproveReject extends LightningEle
                     this.quoteLineDataToDisaplay[i].isError = true;
                 }
 
-                if ((!this.quoteLineDataToDisaplay[i].Pricing_pm_approval_comments_nm__c == null || !this.quoteLineDataToDisaplay[i].Pricing_pm_approval_comments_nm__c == undefined || !this.quoteLineDataToDisaplay[i].Pricing_pm_approval_comments_nm__c == '') && !this.quoteLineDataToDisaplay[i].Pricing_pm_approval_comments_nm__c.match(commentRegex)) {
+                if ((!this.quoteLineDataToDisaplay[i].approveRejectComments == null || !this.quoteLineDataToDisaplay[i].approveRejectComments == undefined || !this.quoteLineDataToDisaplay[i].approveRejectComments == '') && !this.quoteLineDataToDisaplay[i].approveRejectComments.match(commentRegex)) {
                     this.error = this.quoteLineDataToDisaplay[i].errorMsg += nonLatinCharacters + ' ';
                     this.quoteLineDataToDisaplay[i].isError = true;
                 }
@@ -517,7 +519,7 @@ export default class Pricing_FI_QuoteLine_BulkApproveReject extends LightningEle
                     this.error = this.quoteLineDataToDisaplay[i].errorMsg += 'Approved Quantity must be greater than 0. ';
                 }
 
-
+               
 
                 this.getCopyToQuoteLineData(this.quoteLineDataToDisaplay[i].Id, this.quoteLineDataToDisaplay[i].isError, 'isError');
                 this.getCopyToQuoteLineData(this.quoteLineDataToDisaplay[i].Id, this.quoteLineDataToDisaplay[i].errorMsg, 'errorMsg');
@@ -535,7 +537,7 @@ export default class Pricing_FI_QuoteLine_BulkApproveReject extends LightningEle
         for (let i in this.quoteLineDataToDisaplay) {
             if (this.quoteLineDataToDisaplay[i].isSelected == true) {
 
-                if ((!this.quoteLineDataToDisaplay[i].Pricing_Rejection_Comments_nm__c == null || !this.quoteLineDataToDisaplay[i].Pricing_Rejection_Comments_nm__c == undefined || !this.quoteLineDataToDisaplay[i].Pricing_Rejection_Comments_nm__c == '') && !this.quoteLineDataToDisaplay[i].Pricing_Rejection_Comments_nm__c.match(commentRegex)) {
+                if ((!this.quoteLineDataToDisaplay[i].approveRejectComments == null || !this.quoteLineDataToDisaplay[i].approveRejectComments == undefined || !this.quoteLineDataToDisaplay[i].approveRejectComments == '') && !this.quoteLineDataToDisaplay[i].approveRejectComments.match(commentRegex)) {
                     this.error = this.quoteLineDataToDisaplay[i].errorMsg = nonLatinCharacters + ' ';
                     this.quoteLineDataToDisaplay[i].isError = true;
                 }
@@ -546,10 +548,9 @@ export default class Pricing_FI_QuoteLine_BulkApproveReject extends LightningEle
                     this.quoteLineDataToDisaplay[i].isError = true;
                 }
 
-                if (this.quoteLineDataToDisaplay[i].Pricing_Rejection_Reason__c == Pricing_rejection_reason_other_value && (this.quoteLineDataToDisaplay[i].Pricing_Rejection_Comments_nm__c == '' || this.quoteLineDataToDisaplay[i].Pricing_Rejection_Comments_nm__c == null || this.quoteLineDataToDisaplay[i].Pricing_Rejection_Comments_nm__c == undefined)) {
+                if (this.quoteLineDataToDisaplay[i].Pricing_Rejection_Reason__c == Pricing_rejection_reason_other_value && (this.quoteLineDataToDisaplay[i].approveRejectComments == '' || this.quoteLineDataToDisaplay[i].approveRejectComments == null || this.quoteLineDataToDisaplay[i].approveRejectComments == undefined)) {
                     this.error = this.quoteLineDataToDisaplay[i].errorMsg += rejectionError.replace('Approval/Rejection', 'Rejection');
                     this.quoteLineDataToDisaplay[i].isError = true;
-
                 }
 
                 this.getCopyToQuoteLineData(this.quoteLineDataToDisaplay[i].Id, this.quoteLineDataToDisaplay[i].isError, 'isError');
@@ -573,6 +574,7 @@ export default class Pricing_FI_QuoteLine_BulkApproveReject extends LightningEle
                 this.selectedData.push(JSON.parse(JSON.stringify(this.quoteLineData[index])));
             }
         }
+        console.log('1selectedData ' + JSON.stringify(this.selectedData));
         if (this.selectedData.length > 0 && this.error.length == 0 && !this.quoteLineDataHasError) {
             this.disabledBtn = true;
             this.selectedData.forEach(ql => {
@@ -582,6 +584,7 @@ export default class Pricing_FI_QuoteLine_BulkApproveReject extends LightningEle
                 delete ql.isError;
                 ql.Pricing_Status_Nm__c = action;
             });
+            console.log('2selectedData ' + JSON.stringify(this.selectedData));
             await bulkApprovalRejectionQuoteLineRPM({ quoteLineData: this.selectedData, action: action, quoteType: FIQuoteType })
                 .then(result => {
                     if (result == 'Success') {

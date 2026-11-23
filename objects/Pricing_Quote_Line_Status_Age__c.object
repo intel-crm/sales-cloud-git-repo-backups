@@ -206,7 +206,7 @@ null)</formula>
     <fields>
         <fullName>Pricing_ApprovedRejectedMonth__c</fullName>
         <externalId>false</externalId>
-        <formula>if(LEN(Pricing_TPT_Quote_Line_Number__r.Pricing_Approved_Rejected_Month_Txt__c) = 6, SUBSTITUTE(Pricing_TPT_Quote_Line_Number__r.Pricing_Approved_Rejected_Month_Txt__c,&apos;-&apos;, &apos;-0&apos;),Pricing_TPT_Quote_Line_Number__r.Pricing_Approved_Rejected_Month_Txt__c)</formula>
+        <formula>Pricing_TPT_Quote_Line_Number__r.Pricing_Approved_Rejected_Month_Txt__c</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Approved/Rejected Month</label>
         <required>false</required>
@@ -719,6 +719,49 @@ NULL))</formula>
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Pricing_TestField01__c</fullName>
+        <formula>Pricing_TPT_Quote_Line_Number__r.Pricing_Intel_Response_Requested_By_Date__c &gt; DATEVALUE(Pricing_TPT_Quote_Line_Number__r.Pricing_Last_Approved_Date_dt__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Pricing_TestField01</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Pricing_TestField02__c</fullName>
+        <formula>Pricing_TestField01__c == False</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Pricing_TestField02</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Pricing_Test__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(YEAR (DATEVALUE( Pricing_TPT_Quote_Line_Number__r.Pricing_Last_Submitted_Date_dt__c ))) +&apos;-&apos;+ CASE(MONTH(DATEVALUE( Pricing_TPT_Quote_Line_Number__r.Pricing_Last_Submitted_Date_dt__c )),
+    1, &apos;Q1&apos;,
+    2, &apos;Q1&apos;,
+    3, &apos;Q1&apos;,
+    4, &apos;Q2&apos;,
+    5, &apos;Q2&apos;,
+    6, &apos;Q2&apos;,
+    7, &apos;Q3&apos;,
+    8, &apos;Q3&apos;,
+    9, &apos;Q3&apos;,
+    10, &apos;Q4&apos;,
+    11, &apos;Q4&apos;,
+    12, &apos;Q4&apos;,
+    null)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Pricing_Test</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Revision_QuoteLine__c</fullName>
         <defaultValue>false</defaultValue>
         <label>Revision QuoteLine</label>
@@ -727,6 +770,11 @@ NULL))</formula>
         <type>Checkbox</type>
     </fields>
     <label>Quote Line Status Age</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
     <listViews>
         <fullName>Pricing_TPT_Admin_Queue_Pricing_Quote_Line_Status_Age</fullName>
         <filterScope>Queue</filterScope>

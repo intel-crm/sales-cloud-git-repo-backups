@@ -15,7 +15,7 @@ public class Core_Batch_DDR_PriceBook_Del_Test
     public static testmethod void PartnerPriceBook_Test1() 
     {
         List<Pricebook2> lstPriceBook = new List<Pricebook2>();
-        
+        //testing
         
         Pricebook2 pb1 = new Pricebook2();
         pb1.name = 'Standard Price Book';

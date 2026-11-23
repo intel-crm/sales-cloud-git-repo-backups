@@ -165,6 +165,14 @@
         <type>Date</type>
     </fields>
     <fields>
+        <fullName>SWS_Activity_Completed_Datetime__c</fullName>
+        <label>Activity Completed Datetime(NOT USED)</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
         <fullName>SWS_Activity__c</fullName>
         <label>Activity</label>
         <required>false</required>
@@ -209,6 +217,38 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>SWS_Company_Participant__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Company Participant(NOT USED)</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>User.ContactId</field>
+                <operation>equals</operation>
+                <value></value>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>User</referenceTo>
+        <relationshipName>SW_Lead_Activities1</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>SWS_Demo_conducted_or_not__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( AND(ISPICKVAL( SWS_Status__c , &quot;Completed&quot;), SWS_Lead__r.IsConverted), &quot;Demo Conducted&quot;, &quot;Demo not conducted&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Demo conducted or not(NOT USED)</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>SWS_Description__c</fullName>
@@ -360,6 +400,17 @@
         </valueSet>
     </fields>
     <fields>
+        <fullName>SWS_Lead_Source_text__c</fullName>
+        <externalId>false</externalId>
+        <label>Lead Source text(NOT USED)</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>SWS_Lead_Stage__c</fullName>
         <inlineHelpText>Lead stage when the activity was booked.</inlineHelpText>
         <label>Activity Creation Stage</label>
@@ -464,6 +515,23 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>SWS_Lead_product_Interest_fm__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF ( INCLUDES ( SWS_Lead__r.Core_Product_Interest__c , &quot;Intel® Max Series GPU&quot; ), &quot;Intel® Max Series GPU; &quot;,null ) &amp;
+IF ( INCLUDES ( SWS_Lead__r.Core_Product_Interest__c , &quot;4th Generation Intel® Xeon® Scalable processors&quot; ), &quot;4th Generation Intel® Xeon® Scalable processors; &quot;,null ) &amp;
+IF ( INCLUDES ( SWS_Lead__r.Core_Product_Interest__c , &quot;Intel® Xeon® CPU Max Series processor with high bandwidth memory (HBM)&quot; ), &quot;Intel® Xeon® CPU Max Series processor with high bandwidth memory (HBM); &quot;,null ) &amp;
+IF ( INCLUDES ( SWS_Lead__r.Core_Product_Interest__c , &quot;Intel® Data Center GPU Flex Series on latest Intel® Xeon® processors&quot; ), &quot;Intel® Data Center GPU Flex Series on latest Intel® Xeon® processors; &quot;,null ) &amp;
+IF ( INCLUDES ( SWS_Lead__r.Core_Product_Interest__c , &quot;Intel® Gaudi2 Deep Learning Server featuring eight Gaudi2 HL-225H mezzanine cards (SMC)&quot; ), &quot;	Intel® Gaudi2 Deep Learning Server featuring eight Gaudi2 HL-225H mezzanine cards (SMC); &quot;,null ) &amp;
+IF ( INCLUDES ( SWS_Lead__r.Core_Product_Interest__c , &quot;Multiple platforms&quot; ), &quot;Multiple platforms; &quot;,null )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Lead product Interest fm(NOT USED)</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>SWS_Opportunity__c</fullName>
@@ -622,6 +690,17 @@
         </valueSet>
     </fields>
     <fields>
+        <fullName>SWS_Product_text__c</fullName>
+        <externalId>false</externalId>
+        <label>Product text(NOT USED)</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>SWS_Scheduled_Date__c</fullName>
         <label>Scheduled Date</label>
         <required>false</required>
@@ -685,6 +764,17 @@
         <type>Lookup</type>
     </fields>
     <label>SW Demo Activity</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>SWS_Activity__c</columns>
+        <columns>SWS_Status__c</columns>
+        <columns>SWS_Lead_Stage__c</columns>
+        <columns>SWS_Lead_Stage_when_Closed__c</columns>
+        <columns>SWS_Product_Interest__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
     <nameField>
         <displayFormat>ACT-{0000}</displayFormat>
         <label>Demo Activity Name</label>
@@ -694,5 +784,12 @@
     <pluralLabel>SW Demo Activities</pluralLabel>
     <searchLayouts/>
     <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>Product_interest_present_or_not_in_lead</fullName>
+        <active>false</active>
+        <errorConditionFormula>NOT(CONTAINS(SWS_Lead_product_Interest_fm__c, TEXT(SWS_Product_Interest__c)))</errorConditionFormula>
+        <errorDisplayField>SWS_Product_Interest__c</errorDisplayField>
+        <errorMessage>Product Interest not present.</errorMessage>
+    </validationRules>
     <visibility>Public</visibility>
 </CustomObject>

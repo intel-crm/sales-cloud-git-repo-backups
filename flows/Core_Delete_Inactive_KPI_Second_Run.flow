@@ -10,7 +10,7 @@
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <nameSegment>Core_DeleteInactiveKPIs</nameSegment>
     </actionCalls>
-    <apiVersion>52.0</apiVersion>
+    <apiVersion>53.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <description>two flows are scheduled. Tues and Thursday</description>
     <interviewLabel>Delete Inactive KPI Second Run {!$Flow.CurrentDateTime}</interviewLabel>

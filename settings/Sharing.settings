@@ -13,7 +13,7 @@
     <enablePortalUserCaseSharing>true</enablePortalUserCaseSharing>
     <enablePortalUserVisibility>true</enablePortalUserVisibility>
     <enableRemoveTMGroupMembership>false</enableRemoveTMGroupMembership>
-    <enableRestrictAccessLookupRecords>true</enableRestrictAccessLookupRecords>
+    <enableRestrictAccessLookupRecords>false</enableRestrictAccessLookupRecords>
     <enableSecureGuestAccess>false</enableSecureGuestAccess>
     <enableStandardReportVisibility>true</enableStandardReportVisibility>
 </SharingSettings>

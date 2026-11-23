@@ -8,11 +8,11 @@ public without sharing class Core_OpportunityTeamAccessReq_Controller { //TWC312
         oppty = new Opportunity();
         String opptyID = ApexPages.currentPage().getParameters().get('id');
         userID = ApexPages.currentPage().getParameters().get('usr');
-        //System.debug('Opportunity  Id = '+opptyID);
+        
         if(opptyID != null && opptyID != '') {
             oppty = [SELECT id, Name FROM Opportunity WHERE id = :opptyID LIMIT 1];
         }
-        //System.debug('Oppty got - '+oppty);
+        
         opptyTeamAccObj = new Core_Oppty_Team_Access__c();        
     }
     

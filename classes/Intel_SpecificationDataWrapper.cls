@@ -10,11 +10,8 @@
 * 
 **************************************************************************************************************************************************************************/
 public class Intel_SpecificationDataWrapper {
-    public static Boolean isWorking() {
-        return true;
-    }
 
-  // public String id { get; set; }
-  // public String value { get; set; }
-  // public String relatedId { get; set; }
+  public String id { get; set; }
+  public String value { get; set; }
+  public String relatedId { get; set; }
 }

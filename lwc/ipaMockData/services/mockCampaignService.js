@@ -17,9 +17,7 @@ export default {
         // eslint-disable-next-line @lwc/lwc/no-async-operation
         //await new Promise(r => setTimeout(r, 1000)) // mock server delay
         return {
-            //IPA2.0:US-4497-1631_OfferingEOL
-            //heading: 'Covid-19 ' + (cardType === 'partner' ? 'Partners' : 'Offerings'), // use for dynamic heading
-            heading: 'Covid-19 ' + partner, // use for dynamic heading
+            heading: 'Covid-19 ' + (cardType === 'partner' ? 'Partners' : 'Offerings'), // use for dynamic heading
             cards,
             // total: 73 // only needed if lazy loaded (page param passed in)
         }

@@ -64,7 +64,7 @@
         <schedule>
             <frequency>Daily</frequency>
             <startDate>2022-03-14</startDate>
-            <startTime>11:30:00.000Z</startTime>
+            <startTime>03:30:00.000Z</startTime>
         </schedule>
         <triggerType>Scheduled</triggerType>
     </start>

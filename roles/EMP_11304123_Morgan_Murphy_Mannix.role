@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>Edit</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>EMP of Elizabeth Broers</description>
+    <description>EMP of Users With No Manager</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>EMP_11304123_Morgan_Murphy_Mannix</name>
     <opportunityAccessLevel>Edit</opportunityAccessLevel>
-    <parentRole>EMP_10548673_Elizabeth_Broers</parentRole>
+    <parentRole>Role_Users_With_No_Manager</parentRole>
 </Role>

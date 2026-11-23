@@ -1,0 +1,68 @@
+<aura:component implements="lightning:actionOverride,force:lightningQuickActionWithoutHeader,force:hasRecordId" access="global" controller="Core_FieldSetFormController">
+
+    <!--<c:core_Edit_Opportunityproduct/>-->
+    <aura:attribute name="isLoading" type="Boolean" default="false"/>
+    <aura:attribute name="showEditField" type="Boolean" default="false"/>
+    <aura:attribute name="formValues" type="sobject[]"/>
+    <aura:attribute name="objectApiName" type="String" default="OpportunityLineItem" />
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+     <div class="slds-modal__container">
+	            <div class="slds-modal__header">
+	           		<h2 class="slds-text-heading--medium">
+	           			Edit Opportunity Product
+	           		</h2>
+	                <button class="slds-button slds-modal__close slds-button--icon-inverse" title="Close" onclick="{!c.defaultCloseAction}">
+	                   <!-- <c:svg svgPath="/resource/SLDS214/assets/icons/utility-sprite/svg/symbols.svg#close" category="standard" size="large" name="close" /> -->
+	                    X
+	                </button>
+	            </div>
+         <!--MY AURA START-->
+				<div class="slds-modal__content slds-p-around--medium">
+					 <div>
+						<!--loading spinner start-->
+                         <aura:if isTrue="{!v.isLoading}">
+                            <lightning:spinner alternative-text="Loading" variant="brand" size="medium"/>
+                         </aura:if>
+                        <!-- Loading spinner end-->  
+                       <lightning:recordEditForm objectApiName="{!v.objectApiName}" density="Comfy" recordId="{!v.recordId}" onsuccess="{!c.handleSuccess}">
+                           <br/><br/>
+                           <aura:iteration items="{!v.formValues}" var="obj">
+                               <details key="{!obj.sectionLabel}" class="slds-p-around_xx-small style">                            
+                                    <summary class="slds-p-around_medium" onclick="{!c.handleClick}" style="cursor: pointer">
+                                        <span class="icon-container">
+                                            <lightning:icon icon-name="utility:chevrondown" size="xx-small" class="slds-p-left_medium slds-p-right_medium slds-p-top_x-small"></lightning:icon>
+                                        </span>  
+                                        <span style="pointer-events: none">
+                                            {!obj.sectionLabel}
+                                        </span>
+                                    </summary>
+                                   
+                                  	<div class="slds-grid slds-wrap slds-p-around_medium">
+                                        <aura:iteration items="{!obj.Fields}" var="field">
+                                            <div key="{!field.APIName}" class="slds-col slds-size_1-of-2" style="padding-right: 2rem;">
+                                       			<lightning:outputField field-name= "{!field.APIName}" style="border-bottom: #e5e4e3 solid 1.5px;">	
+                                            	</lightning:outputField>
+                                   			 </div>
+                                            <div key="{!field.APIName}" class="slds-col slds-size_1-of-2" style="padding-right: 2rem;">
+                                                <lightning:inputField fieldName="{!field.APIName}" >
+                                                </lightning:inputField>
+                                        	</div>
+                                        </aura:iteration>
+                                   </div>
+                                
+                               </details>
+                           </aura:iteration>
+                       </lightning:recordEditForm>
+                     </div>
+				</div>
+         <!--MY AURA END-->
+	            <div class="slds-modal__footer">
+	           	    <!-- <aura:if isTrue="{! !empty(v.cancelLabel)}"> -->
+                            <button class="slds-button slds-button--neutral" onclick="{!c.fireCancelEvent}">Cancel</button>
+               		<!-- </aura:if>	-->
+	               <button class="slds-button slds-button--brand" onclick="{!c.fireSaveEvent}">Save</button>
+	            </div>
+	</div>
+</aura:component>

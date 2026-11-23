@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Product Density Rule</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Product Density Rules</value>
+    </caseValues>
+    <fields>
+        <label><!-- Code Name --></label>
+        <name>Code_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Density End Char --></label>
+        <name>Density_End_Char__c</name>
+    </fields>
+    <fields>
+        <label><!-- Density Start Char --></label>
+        <name>Density_Start_Char__c</name>
+    </fields>
+    <fields>
+        <label><!-- Density Output Suffix --></label>
+        <name>Density__c</name>
+    </fields>
+    <fields>
+        <label><!-- IsActive --></label>
+        <name>IsActive__c</name>
+    </fields>
+    <fields>
+        <label><!-- OPN Char Contain --></label>
+        <name>OPN_Char_Contain__c</name>
+    </fields>
+    <fields>
+        <label><!-- OPN End Char --></label>
+        <name>OPN_End_Char__c</name>
+    </fields>
+    <fields>
+        <label><!-- OPN Start Char --></label>
+        <name>OPN_Start_Char__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -53,9 +53,6 @@
     <columns>
         <field>Account_Meeting_Brief__c$Core_Account_Meeting_Business_Summary__c</field>
     </columns>
-    <columns>
-        <field>Account_Meeting_Brief__c$Core_New_Opportunities_Notes__c</field>
-    </columns>
     <filter>
         <criteriaItems>
             <column>Account_Meeting_Brief__c$Core_Account_Meeting_Location__c</column>

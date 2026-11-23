@@ -2,7 +2,7 @@
  * @description       :
  * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
  * @group             :
- * @last modified on  : 04-07-2026
+ * @last modified on  : 09-26-2024
  * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
  **/
 @isTest
@@ -83,7 +83,10 @@ public class Pricing_QuoteLineStatusAgeTest {
         grp.Type = 'Regular';
         grp.DeveloperName = 'Test_Group22';
         Insert grp;
+        
+        // Verify Group was created
         System.assert(grp.Id != null, 'Group should be created successfully');
+        
         ChannelProgram chProg = [Select Id from ChannelProgram where Name=:Label.Pricing_Tender_PGM_Channel];
         
         List<Core_MDF_Partner_Group_Mapping__c> partnerGroupList = new List<Core_MDF_Partner_Group_Mapping__c>();
@@ -97,8 +100,11 @@ public class Pricing_QuoteLineStatusAgeTest {
         partnerGroupList.add(partnerGroup);
         
         insert partnerGroupList;
+        
+        // Verify Partner Group Mapping was created
         System.assert(partnerGroupList.size() > 0, 'Partner Group Mapping list should not be empty');
         System.assert(partnerGroupList[0].Id != null, 'Partner Group Mapping should be created successfully');
+        
         SBQQ__QuoteLine__c QL2= [Select Id from SBQQ__QuoteLine__c where SBQQ__Quote__c =:lstquote[0].Id Limit 1];
         
         Pricing_Quote_Line_Status_Age__c ql=New Pricing_Quote_Line_Status_Age__c();
@@ -106,7 +112,10 @@ public class Pricing_QuoteLineStatusAgeTest {
         ql.Pricing_TPT_Quote_Line_Number__c = QL2.Id;
         ql.Name='Test';
         insert ql;
+        
+        // Verify Pricing_Quote_Line_Status_Age record was created
         System.assert(ql.Id != null, 'Pricing_Quote_Line_Status_Age record should be created successfully');
+        
         Test.stopTest();
     }
     

@@ -1,4 +1,4 @@
-public  without sharing class ContactEntitlementSubordinatesRemoval{
+public class ContactEntitlementSubordinatesRemoval{
     @testVisible static Map<String, List<Contact_Entitlement_Subordinates_Removal__mdt>> customMetadataRecordsMap = new Map<String, List<Contact_Entitlement_Subordinates_Removal__mdt>>();
      
     public List<Contact_Entitlement_Subordinates_Removal__mdt> getCustomMetadataRecords(String query) {

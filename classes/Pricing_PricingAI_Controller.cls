@@ -2,10 +2,11 @@
 * @description       : 
 * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
 * @group             : 
-* @last modified on  : 03-27-2025
+* @last modified on  : 10-01-2024
 * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 public without sharing class Pricing_PricingAI_Controller {
+    //Pricing_PricingAI_Controller.getQuoteLineDetails('a9U2D000000PxtnUAC');
     @AuraEnabled
     public static List<String> makeCallout(String quoteLineId){     
         quoteLineId = String.escapeSingleQuotes(quoteLineId);
@@ -17,7 +18,7 @@ public without sharing class Pricing_PricingAI_Controller {
         List<String> pricingAIRespJSONString = new List<String>();
         List<Core_Log_Entry__c> logEntryList = new List<Core_Log_Entry__c>();
         try{
-            SBQQ__QuoteLine__c qlRec = [SELECT Id, Name, Pricing_Recommended_Price_Amt__c,Pricing_Recommendation_FeedBack_Nm__c,Pricing_Price_Interval_Txt__c, Pricing_Discount_Pct__c
+            SBQQ__QuoteLine__c qlRec = [SELECT Id, Name, Pricing_Recommended_Price_Amt__c,Pricing_Recommendation_FeedBack_Nm__c
                                         FROM SBQQ__QuoteLine__c WHERE Id =: quoteLineId LIMIT 1];
             Map<String,String> successMsgMap = new Map<String,String>();
             Map<String,String> errorMsgMap = new Map<String,String>();
@@ -34,55 +35,50 @@ public without sharing class Pricing_PricingAI_Controller {
                 req.setMethod('POST');
                 req.setBody(inputJSON);
                 HttpResponse response = new Http().send(req);
-                if(response.getStatusCode() == 200){
-                    Map<String,Object> results = (Map<String,Object>)JSON.deserializeUntyped(response.getBody());
-                    List<Object> resultslist = (List<Object>)results.get('successContent');
-                    if(resultslist != null && resultsList.size()>0){
-                        resp.isSuccess = true;
-                        resp.successContent = response.getBody();
-                        successMsgMap.put(qlRec.Name,inputJSON);
-                        qlNameToQLIdMap.put(qlRec.Name,qlRec.Id);
-                        logEntryList.addAll(Pricing_Tender_Utility.logErrorinLogObjectPricingAIIntegration(successMsgMap, qlNameToQLIdMap, 'Low'));
-                        if(logEntryList.size() > 0){
-                            insert logEntryList;    
-                        }
-                        for(Object resultMap:resultslist ){
-                            Map<String,Object> tempMap = new MAP<String,Object>((Map<String,Object>)resultMap);
-                            Pricing_PricingAI_Controller.QuoteLineWrapper qlWrap = new Pricing_PricingAI_Controller.QuoteLineWrapper();
-                            qlWrap.recommendedPrice = ((Decimal)tempMap.get('recommendedPrice'))!=null?(Decimal)tempMap.get('recommendedPrice'):0;
-                            qlWrap.priceInterval = (String.valueOf(tempMap.get('priceInterval')))!=null?String.valueOf(tempMap.get('priceInterval')):'';
-                            discountPrice = ((String)tempMap.get('discount')).replaceAll('%', '');
-                            qlWrap.discount = (Decimal.valueOf(discountPrice))*100;
-                            qlWrap.warningMessage = (String.valueOf(tempMap.get('warningMessage'))) != null ? String.valueOf(tempMap.get('warningMessage')) : '';
-                            qlRecJSONString = JSON.serialize(qlWrap);
-                            pricingAIRespJSONString.add(qlRecJSONString);
-                        }
+                Map<String,Object> results = (Map<String,Object>)JSON.deserializeUntyped(response.getBody());
+                List<Object> resultslist = (List<Object>)results.get('successContent');
+                if(resultslist != null && resultsList.size()>0){
+                    resp.isSuccess = true;
+                    resp.successContent = response.getBody();
+                    successMsgMap.put(qlRec.Name,inputJSON);
+                    qlNameToQLIdMap.put(qlRec.Name,qlRec.Id);
+                    logEntryList.addAll(Pricing_Tender_Utility.logErrorinLogObjectPricingAIIntegration(successMsgMap, qlNameToQLIdMap, 'Low'));
+                    if(logEntryList.size() > 0){
+                        insert logEntryList;    
                     }
-                    else{
-                        resp.isSuccess = false;
-                        resp.successContent = null;
-                        Map<String,Object> errorRes = (Map<String,Object>)JSON.deserializeUntyped(response.getBody());                    
-                        List<Object> errResList = (List<Object>)errorRes.get('errorContent');                        
-                        for(Object errResMap:errResList ){                                
-                            Map<String,Object> tempErrMap = new MAP<String,Object>((Map<String,Object>)errResMap);
-                            Pricing_PricingAI_Controller.errorContentWrapper errContentWrap = new Pricing_PricingAI_Controller.errorContentWrapper();
-                            errContentWrap.message = String.valueOf(tempErrMap.get('message'));
-                            errContentWrap.quoteLineNumber = String.valueOf(tempErrMap.get('quoteLineNumber'));
-                            errRespJSONString = JSON.serialize(errContentWrap);
-                            pricingAIRespJSONString.add(errRespJSONString);
-                            errorMsgMap.put(qlRec.Name,errContentWrap.message);
-                            errorQLNameToQLIdMap.put(qlRec.Name,qlRec.Id);
-                            logEntryList.addAll(Pricing_Tender_Utility.logErrorinLogObjectPricingAIIntegration(errorMsgMap, errorQLNameToQLIdMap, 'Critical'));
-                        }                    
-                        
-                        if(logEntryList.size() > 0){
-                            insert logEntryList;    
-                        }
-                        return pricingAIRespJSONString;
+                    for(Object resultMap:resultslist ){
+                        Map<String,Object> tempMap = new MAP<String,Object>((Map<String,Object>)resultMap);
+                        Pricing_PricingAI_Controller.QuoteLineWrapper qlWrap = new Pricing_PricingAI_Controller.QuoteLineWrapper();
+                        qlWrap.recommendedPrice = ((Decimal)tempMap.get('recommendedPrice'))!=null?(Decimal)tempMap.get('recommendedPrice'):0;
+                        qlWrap.priceInterval = (String.valueOf(tempMap.get('priceInterval')))!=null?String.valueOf(tempMap.get('priceInterval')):'';
+                        discountPrice = ((String)tempMap.get('discount')).replaceAll('%', '');
+                        qlWrap.discount = (Decimal.valueOf(discountPrice))*100;
+                        qlWrap.warningMessage = (String.valueOf(tempMap.get('warningMessage'))) != null ? String.valueOf(tempMap.get('warningMessage')) : '';
+                        qlRecJSONString = JSON.serialize(qlWrap);
+                        pricingAIRespJSONString.add(qlRecJSONString);
                     }
-                }else{
-                    List<String> newVariable = new List<String>();
-                    return newVariable;
+                }
+                else{
+                    resp.isSuccess = false;
+                    resp.successContent = null;
+                    Map<String,Object> errorRes = (Map<String,Object>)JSON.deserializeUntyped(response.getBody());                    
+                    List<Object> errResList = (List<Object>)errorRes.get('errorContent');                        
+                    for(Object errResMap:errResList ){                                
+                        Map<String,Object> tempErrMap = new MAP<String,Object>((Map<String,Object>)errResMap);
+                        Pricing_PricingAI_Controller.errorContentWrapper errContentWrap = new Pricing_PricingAI_Controller.errorContentWrapper();
+                        errContentWrap.message = String.valueOf(tempErrMap.get('message'));
+                        errContentWrap.quoteLineNumber = String.valueOf(tempErrMap.get('quoteLineNumber'));
+                        errRespJSONString = JSON.serialize(errContentWrap);
+                        pricingAIRespJSONString.add(errRespJSONString);
+                        errorMsgMap.put(qlRec.Name,errContentWrap.message);
+                        errorQLNameToQLIdMap.put(qlRec.Name,qlRec.Id);
+                        logEntryList.addAll(Pricing_Tender_Utility.logErrorinLogObjectPricingAIIntegration(errorMsgMap, errorQLNameToQLIdMap, 'Critical'));
+                    }                    
+                    
+                    if(logEntryList.size() > 0){
+                        insert logEntryList;    
+                    }
+                    return pricingAIRespJSONString;
                 }
             }else{
                 resp.isSuccess = false;
@@ -130,7 +126,7 @@ public without sharing class Pricing_PricingAI_Controller {
                                               SBQQ__Quote__r.Pricing_Market_Segment_values_Nm__c,
                                               //Quote Line Details
                                               Pricing_EndCustomer_Nm__c,Pricing_UnifiedEndCustomer__c,Pricing_Group_Type_nm__c,Pricing_Approved_Start_Date_Dt__c,SBQQ__Product__r.Core_Product_Family__c,Pricing_Approved_End_Date_Dt__c,
-                                              SBQQ__ProductFamily__c,Pricing_Meet_Comp_Price_Amt__c,Pricing_Tentative_ECAP_Price_Amt__c,Pricing_Req_Discounted_Unit_Price__c,
+                                              SBQQ__ProductFamily__c,Pricing_Meet_Comp_Price_Amt__c,Pricing_Req_Discounted_Unit_Price__c,
                                               SBQQ__Quote__r.Pricing_End_Customer__r.Pricing_Unified_EndCustomer_Id__c,SBQQ__Quote__r.Pricing_Unified_Global_End_Customer_Nm__r.Pricing_Unified_Country_EndCustomer_Id__c,
                                               Pricing_Region_Nm__c,Pricing_End_Customer_Country__c,Pricing_Billing_Start_Date_Dt__c,Pricing_Billing_End_Date_Dt__c,Pricing_RegionQL_Nm__c,Pricing_Market_Segment_Nm__c,Pricing_Market_Segment_values_Nm__c,
                                               SBQQ__Quote__r.Pricing_ShipmentStDate_Dt__c,Pricing_Approved_Unit_Qty__c,Pricing_CPUs_per_system_qty__c,Pricing_Comp_CPUs_per_system_Cnt__c,
@@ -149,8 +145,6 @@ public without sharing class Pricing_PricingAI_Controller {
             accountDetails.name = quoteLines[0].SBQQ__Quote__r.SBQQ__Account__r.Name;
             
             accountDetails.cimId = Pricing_Tender_Utility.getCIMId(quoteLines[0].SBQQ__Quote__r.SBQQ__Account__c, quoteLines[0].SBQQ__Quote__r.SBQQ__Account__r.Core_Business_Party_Id__c);
-            //Forming Customer mapping Id and assigning CIM Id (If CIM Id is present we are passing CIM Id, If not there then we are passing Business party id)
-            accountDetails.CustomerMappingId = Pricing_Tender_Utility.getCIMId(quoteLines[0].SBQQ__Quote__r.SBQQ__Account__c, quoteLines[0].SBQQ__Quote__r.SBQQ__Account__r.Core_Business_Party_Id__c);
             
             accountDetails.id = quoteLines[0].SBQQ__Quote__r.SBQQ__Account__c;
             calloutWrapper.accountDetails = accountDetails;
@@ -175,9 +169,7 @@ public without sharing class Pricing_PricingAI_Controller {
             calloutWrapper.productFamily = quoteLines[0].SBQQ__Product__r.Core_Product_Family__c!=null? quoteLines[0].SBQQ__Product__r.Core_Product_Family__c: '';
             calloutWrapper.processorNumber = quoteLines[0].SBQQ__Product__r.Core_Processor_Number_Nm__c!=null? quoteLines[0].SBQQ__Product__r.Core_Processor_Number_Nm__c: '';
             calloutWrapper.meetCompPrice = quoteLines[0].Pricing_Meet_Comp_Price_Amt__c;
-            calloutWrapper.tentativeECAPPrice = QuoteLineBusinessLogic.checkforAuotoPopLogic(quoteLines[0], quoteLines[0].Pricing_Server_Deal_Type_Nm__c, quoteLines[0].Pricing_EndCustomer_Nm__c) && quoteLines[0].Pricing_Tentative_ECAP_Price_Amt__c == null ?
-                Integer.valueOf(Label.Pricing_TentaticeEcapValue_AutoAI) : quoteLines[0].Pricing_Tentative_ECAP_Price_Amt__c;
-            
+           
             calloutWrapper.requestedDiscountPrice = quoteLines[0].Pricing_New_Change_Request_cb__c == true && quoteLines[0].Pricing_Req_Discounted_Unit_Price__c==null?quoteLines[0].Pricing_Request_Discount_Unit_Price_qty__c:quoteLines[0].Pricing_Req_Discounted_Unit_Price__c;
             calloutWrapper.unifiedCountryEndCustomerId = quoteLines[0].SBQQ__Quote__r.Pricing_Unified_Global_End_Customer_Nm__r.Pricing_Unified_Country_EndCustomer_Id__c;
             calloutWrapper.competitorProductName = quoteLines[0].Pricing_Competetor_Product__r.Name!=Label.Pricing_Tender_Write_In_Product ? quoteLines[0].Pricing_Competetor_Product__r.Name: quoteLines[0].Pricing_Other_Competitor_Product_Nm__c;
@@ -206,7 +198,8 @@ public without sharing class Pricing_PricingAI_Controller {
             List<Pricing_PricingAI_Wrapper.CalloutInputWrapper> calloutWrapperList = new List<Pricing_PricingAI_Wrapper.CalloutInputWrapper>();
             calloutWrapperList.add(calloutWrapper);
             jsonObj = JSON.serialize(calloutWrapperList);            
-        }        
+        }  
+        system.debug('jsonObj:'+jsonObj);      
         return jsonObj;        
     }    
     
@@ -229,6 +222,7 @@ public without sharing class Pricing_PricingAI_Controller {
                 if(!String.isEmpty(searchObj.filterFieldName) && !String.isEmpty(searchObj.filterFieldvalue)){
                     query = query + ' AND '+searchObj.filterFieldName+'=\''+searchObj.filterFieldvalue+'\'';
                 }
+                query = String.escapeSingleQuotes(String.valueOf(query));
                 List<Sobject> records = database.query(query);
                 if(records.size() > 0){
                     resWrapper.isSuccess = true;

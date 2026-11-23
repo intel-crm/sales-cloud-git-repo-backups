@@ -2,38 +2,8 @@
 <DashboardFolder xmlns="http://soap.sforce.com/2006/04/metadata">
     <folderShares>
         <accessLevel>View</accessLevel>
-        <sharedTo>11842200@intel.com.crm</sharedTo>
-        <sharedToType>User</sharedToType>
-    </folderShares>
-    <folderShares>
-        <accessLevel>View</accessLevel>
-        <sharedTo>10651135@intel.com.crm</sharedTo>
-        <sharedToType>User</sharedToType>
-    </folderShares>
-    <folderShares>
-        <accessLevel>Manage</accessLevel>
-        <sharedTo>11764367@intel.com.crm</sharedTo>
-        <sharedToType>User</sharedToType>
-    </folderShares>
-    <folderShares>
-        <accessLevel>EditAllContents</accessLevel>
-        <sharedTo>11675697@intel.com.crm</sharedTo>
-        <sharedToType>User</sharedToType>
-    </folderShares>
-    <folderShares>
-        <accessLevel>View</accessLevel>
-        <sharedTo>11954486@intel.com.crm</sharedTo>
-        <sharedToType>User</sharedToType>
-    </folderShares>
-    <folderShares>
-        <accessLevel>View</accessLevel>
-        <sharedTo>11270906@intel.com.crm</sharedTo>
-        <sharedToType>User</sharedToType>
-    </folderShares>
-    <folderShares>
-        <accessLevel>View</accessLevel>
-        <sharedTo>10694149@intel.com.crm</sharedTo>
-        <sharedToType>User</sharedToType>
+        <sharedTo>EMP_10651135_Gary_He</sharedTo>
+        <sharedToType>Role</sharedToType>
     </folderShares>
     <folderShares>
         <accessLevel>View</accessLevel>
@@ -42,28 +12,13 @@
     </folderShares>
     <folderShares>
         <accessLevel>View</accessLevel>
-        <sharedTo>EMP_10651135_Gary_Ho</sharedTo>
+        <sharedTo>EMP_10651135_Gary_He</sharedTo>
         <sharedToType>RoleAndSubordinates</sharedToType>
     </folderShares>
     <folderShares>
-        <accessLevel>EditAllContents</accessLevel>
-        <sharedTo>EMP_11302777_Heaven_Zeng</sharedTo>
-        <sharedToType>RoleAndSubordinatesInternal</sharedToType>
-    </folderShares>
-    <folderShares>
-        <accessLevel>Manage</accessLevel>
-        <sharedTo>EMP_11378882_Karen_S_Zhang</sharedTo>
-        <sharedToType>RoleAndSubordinatesInternal</sharedToType>
-    </folderShares>
-    <folderShares>
-        <accessLevel>EditAllContents</accessLevel>
-        <sharedTo>EMP_11578471_Yi_Zhang</sharedTo>
-        <sharedToType>RoleAndSubordinatesInternal</sharedToType>
-    </folderShares>
-    <folderShares>
-        <accessLevel>EditAllContents</accessLevel>
-        <sharedTo>EMP_11895308_Yunxi_Li</sharedTo>
-        <sharedToType>RoleAndSubordinatesInternal</sharedToType>
+        <accessLevel>View</accessLevel>
+        <sharedTo>EMP_10651135_Gary_Ho</sharedTo>
+        <sharedToType>RoleAndSubordinates</sharedToType>
     </folderShares>
     <name>PRC OSC</name>
 </DashboardFolder>

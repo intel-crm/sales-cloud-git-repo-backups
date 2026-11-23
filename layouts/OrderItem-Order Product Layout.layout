@@ -21,10 +21,6 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>SBQQ__OrderedQuantity__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
                 <field>Sales_Contact__c</field>
             </layoutItems>
             <layoutItems>
@@ -33,7 +29,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>PSG_Customer_frght_collect_account__c</field>
+                <field>Sales_Customer_frght_collect_account__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -46,14 +42,6 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Sales_Suggested_Resale_Price__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>SBQQ__QuotedQuantity__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>UnitPriceForceOverride__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -92,10 +80,6 @@
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>Sales_QuoteId__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>SBQQ__QuoteLine__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
@@ -142,16 +126,13 @@
         <fields>UnitPrice</fields>
         <fields>Quantity</fields>
     </miniLayout>
-    <multilineLayoutFields>OrderItemNumber</multilineLayoutFields>
     <multilineLayoutFields>Product2Id</multilineLayoutFields>
+    <multilineLayoutFields>UnitPrice</multilineLayoutFields>
     <multilineLayoutFields>Quantity</multilineLayoutFields>
     <multilineLayoutFields>Sales_Contact__c</multilineLayoutFields>
-    <multilineLayoutFields>UnitPrice</multilineLayoutFields>
-    <multilineLayoutFields>UnitPriceForceOverride__c</multilineLayoutFields>
+    <multilineLayoutFields>ListPrice</multilineLayoutFields>
     <multilineLayoutFields>Description</multilineLayoutFields>
-    <multilineLayoutFields>SBQQ__QuotedQuantity__c</multilineLayoutFields>
-    <multilineLayoutFields>SBQQ__QuoteLine__c</multilineLayoutFields>
-    <multilineLayoutFields>PSG_Customer_frght_collect_account__c</multilineLayoutFields>
+    <multilineLayoutFields>Sales_Customer_frght_collect_account__c</multilineLayoutFields>
     <multilineLayoutFields>OrderId</multilineLayoutFields>
     <relatedLists>
         <fields>NAME</fields>
@@ -163,13 +144,17 @@
     <relatedLists>
         <fields>NAME</fields>
         <fields>Sales_License_Product__c</fields>
-        <fields>Sales_License_Avbl_Qty_Nbr__c</fields>
-        <fields>Sales_License_Avbl_Rehost_Nbr__c</fields>
-        <fields>Sales_License_Lic_User_Contact_ID__c</fields>
-        <fields>Sales_License_Maintenance_Exp_Dt__c</fields>
-        <fields>Sales_License_Order__c</fields>
+        <fields>Sales_License_Activation_Code__c</fields>
         <fields>Sales_License_Primary_Admin_Contact__c</fields>
+        <fields>Sales_License_Avbl_Qty_Nbr__c</fields>
+        <fields>Sales_License_Maintenance_Exp_Dt__c</fields>
+        <fields>Sales_License_Expiration_Date_Dt__c</fields>
+        <fields>Sales_License_Status__c</fields>
         <relatedList>Sales_License__c.Sales_License_Order_Product__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>Sales_License_Order_Product__c.Sales_Order_Product__c</relatedList>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>

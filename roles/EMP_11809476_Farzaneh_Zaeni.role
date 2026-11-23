@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>Edit</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>EMP of Venkat Yadavalli</description>
+    <description>EMP of Rina Raman</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>EMP_11809476_Farzaneh_Zaeni</name>
     <opportunityAccessLevel>Edit</opportunityAccessLevel>
-    <parentRole>EMP_11644139_Venkat_Yadavalli</parentRole>
+    <parentRole>EMP_11728602_Rina_Raman</parentRole>
 </Role>

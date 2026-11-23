@@ -249,31 +249,6 @@
                 <identifier>force_relatedListSingleContainer2</identifier>
             </componentInstance>
         </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>parentFieldApiName</name>
-                    <value>CPT_Quota_Period__c.Id</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>relatedListApiName</name>
-                    <value>AttachedContentDocuments</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>relatedListComponentOverride</name>
-                    <value>GRID</value>
-                </componentInstanceProperties>
-                <componentName>force:relatedListSingleContainer</componentName>
-                <identifier>force_relatedListSingleContainer</identifier>
-                <visibilityRule>
-                    <criteria>
-                        <leftValue>{!Record.CPT_Quota_Period__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Archived</rightValue>
-                    </criteria>
-                </visibilityRule>
-            </componentInstance>
-        </itemInstances>
         <name>Facet-62a9566a-abc4-4a0d-a42b-21f8b18d16db</name>
         <type>Facet</type>
     </flexiPageRegions>

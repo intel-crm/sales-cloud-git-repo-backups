@@ -6,5 +6,5 @@
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>MARYLAND PROCUREMENT OFFICE Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>MARYLANDPROCUREMENTOFFICECustomerManager</parentRole>
 </Role>

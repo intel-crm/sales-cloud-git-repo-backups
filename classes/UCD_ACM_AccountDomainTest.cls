@@ -62,6 +62,12 @@ public class UCD_ACM_AccountDomainTest {
             accountBusinessTypes.add(UCD_ACM_Cntrlr_TestDataInitialization.createAccountBusinessType(acc1.Id,businessType.Id));
         }
         insert accountBusinessTypes;
+        
+        // Create Compliance Watch List
+        List<Core_Account_Compliance_Watch_List__c> complianceWatchLists = new List<Core_Account_Compliance_Watch_List__c>();
+        complianceWatchLists.add(UCD_ACM_Cntrlr_TestDataInitialization.createComplianceWatchList(acc1.Id,'NOTRDOUT'));
+        complianceWatchLists.add(UCD_ACM_Cntrlr_TestDataInitialization.createComplianceWatchList(acc1.Id,'DPL'));
+        insert complianceWatchLists;
     }
     
 	@isTest
@@ -107,7 +113,6 @@ public class UCD_ACM_AccountDomainTest {
         test.stopTest();
         
     }
-    /*
     @isTest
     private static void whenMapAccountResponseModel(){
         Map<Id,Account> parentAccountById = new Map<Id,Account>();
@@ -115,26 +120,26 @@ public class UCD_ACM_AccountDomainTest {
         Account parentAccount = [Select Id,Name,Core_Business_Party_Id__c,Core_Data_Simplified_Account_Nm__c,
                                              Core_Account_Request_Rejection_Reason__c,Core_Account_Request_Rejection_Notes__c,BillingCountry,ShippingCountry,
                                              Core_Data_Country_Cd__c,Core_Customer_Aggregation_Type__c,Core_Survivor_Account_Id__c,RecordTypeId from Account where Name = 'TestDuplicateAccount' limit 1];
-        //System.debug('parentAccount--> '+parentAccount);
+        system.debug('parentAccount--> '+parentAccount);
         parentAccountById.put(parentAccount.Id,parentAccount);
 
         Account childAccount  = [Select Id,Name,Core_Business_Party_Id__c,Core_Data_Simplified_Account_Nm__c,
                                              Core_Account_Request_Rejection_Reason__c,Core_Account_Request_Rejection_Notes__c,BillingCountry,ShippingCountry,
                                              Core_Data_Country_Cd__c,Core_Customer_Aggregation_Type__c,Core_Survivor_Account_Id__c,RecordTypeId from Account where Name = 'TestChildAccount' limit 1];
         
-        //System.debug('childAccount--> '+childAccount);
+        system.debug('childAccount--> '+childAccount);
 
         List<Account_Business_Types__c> accountBusinessTypes = [Select Id,Account__c,Business_Types__c,Effective_Start_Date__c from Account_Business_Types__c where Account__c =: childAccount.Id];
     	
         List<Business_Types__c> businessTypes = [Select Id,Name,Business_Type_Code__c from Business_Types__c where Business_Type_Code__c =:accountBusinessTypes[0].Business_Types__c];
        
         List<Core_Account_Compliance_Watch_List__c> complianceWatchLists = [Select Id,Core_Account_Id__c,Core_Type__c,Core_Effective_Start_Date__c from Core_Account_Compliance_Watch_List__c where Core_Account_Id__c =:childAccount.Id];
-        
+
         test.startTest();
-        //UCD_ACM_Models.AccountResponseModel model = UCD_ACM_AccountDomain.mapAccountResponseModel(childAccount,parentAccountById,new Map<Id,List<Business_Types__c>>{childAccount.Id => businessTypes},new Map<Id,List<Core_Account_Compliance_Watch_List__c>>{childAccount.Id => complianceWatchLists});
+        UCD_ACM_Models.AccountResponseModel model = UCD_ACM_AccountDomain.mapAccountResponseModel(childAccount,parentAccountById,new Map<Id,List<Business_Types__c>>{childAccount.Id => businessTypes},new Map<Id,List<Core_Account_Compliance_Watch_List__c>>{childAccount.Id => complianceWatchLists});
         //UCD_ACM_Models.AccountResponseModel model = UCD_ACM_AccountDomain.mapAccountResponseModel(childAccounts,parentAccountById,Null,Null);
         test.stopTest();
-    }*/
+    }
     
     @isTest
     private static void whenValidateDuplicateAccountRequests(){
@@ -149,7 +154,6 @@ public class UCD_ACM_AccountDomainTest {
         test.stopTest();
     }
     
-    /*
     @isTest
     private static void whenRestrictUpdatingSFFields(){
         Account oldAccount = [Select Id,Name,OwnerId,BillingCity,BillingCountry,BillingCountryCode,BillingGeocodeAccuracy,BillingLatitude,
@@ -164,7 +168,7 @@ public class UCD_ACM_AccountDomainTest {
         test.startTest();
         accountDomianInstance.restrictUpdatingSFFields(new List<Account>{newAccount},new List<Account>{oldAccount});
         test.stopTest();
-    } */
+    }
 
     @isTest
     private static void whenParentUpdate(){
@@ -235,7 +239,6 @@ public class UCD_ACM_AccountDomainTest {
 
     }
 
-    /*
     @isTest
     private static void updateRecordtypewithBPid(){
         List<Account> ecdParents = [Select Id,Name,RecordtypeId,ParentId,Core_Business_Party_Id__c,LastModifiedById,Core_Account_Reference_Source_Name__c from Account Where Core_Business_Party_Id__c = '12' LIMIT 1];
@@ -247,11 +250,11 @@ public class UCD_ACM_AccountDomainTest {
         intelParents1[0].ParentId = ecdParents[0].Id;
         intelParents2[0].ParentId = ecdChild[0].Id;
         Map<Id, Account> oldAccount = new Map<Id, Account>(intelParents2);
-        //accountDomianInstance.updateRecordtype(intelParents1,oldAccount);
-       // accountDomianInstance.updateParentAccountRecordtype(new UCD_ACM_UnitOfWork(), intelParents1,oldAccount);
+        accountDomianInstance.updateRecordtype(intelParents1,oldAccount);
+        accountDomianInstance.updateParentAccountRecordtype(new UCD_ACM_UnitOfWork(), intelParents1,oldAccount);
                
 
-    }*/
+    }
      @isTest
     private static void updateRecordtypewithNullBpId(){
         List<Account> ecdParents = [Select Id,Name,RecordtypeId,ParentId,Core_Business_Party_Id__c,LastModifiedById,Core_Account_Reference_Source_Name__c from Account Where Core_Business_Party_Id__c = '12' LIMIT 1];
@@ -266,7 +269,7 @@ public class UCD_ACM_AccountDomainTest {
         intelParents2[0].RecordTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
         
         Map<Id, Account> oldAccount = new Map<Id, Account>(intelParents2);
-       // accountDomianInstance.updateRecordtype(intelParents1,oldAccount);
+        accountDomianInstance.updateRecordtype(intelParents1,oldAccount);
       
 
     }

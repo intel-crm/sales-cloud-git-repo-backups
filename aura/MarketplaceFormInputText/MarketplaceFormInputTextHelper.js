@@ -2,11 +2,8 @@
 
   processInput : function(component, helper) {
     var valid = component.find("input").reportValidity();
-      if(!component.get('v.required') && !component.get('v.value')){
-          console.log('insideNot required' );
-          valid = true;
-      }  
-    component.set('v.valid', valid);
+ 
+		component.set('v.valid', valid);
     component.set('v.touched', true);
     helper.updateForm(component);
   },
@@ -34,41 +31,18 @@
   setComplexValue : function(component, helper) {
       //console.log('additionalValues',JSON.stringify(component.get('v.additionalValues')));
       var obj=component.get('v.additionalValues');
-     /* console.log('obj::',obj);
+      console.log('obj::',obj);
     component.set('v.value', Object.assign({},
       component.get('v.additionalValues') || {}, 
       { value: component.get('v._value') }
-    ));*/
-    console.log('obj::', obj);
-//SemGrep Fix TWC729-7771
-    // Get the additionalValues or set it to an empty object if it doesn't exist
-    var additionalValues = component.get('v.additionalValues') || {};
-    
-    // Create a new object for merged values
-    var mergedValues = {};
-    
-    // Copy properties from additionalValues into mergedValues
-    for (var key in additionalValues) {
-        if (additionalValues.hasOwnProperty(key)) {
-            mergedValues[key] = additionalValues[key];
-        }
-    }
-    
-    // Add the value property
-    mergedValues.value = component.get('v._value');
-    
-    // Set the merged values to the component
-    component.set('v.value', mergedValues);
-    
-
-
+    ));
       
       //component.get('v.additionalValues').length>0?component.set('v.value', component.get('v.additionalValues')):'';
     //console.log('additionalValues1',component.get('v.value'));
   },
   
     checkError : function(component, helper, label){
-        
+        console.log('inside checkerror');
         component.set("v.valid", false);
         component.set('v.hasError', true);
         component.set('v.error',label); 
@@ -79,7 +53,7 @@
     },
     
     checkNoError : function(component, helper){
-        
+        console.log('inside checkno error');
        component.set("v.valid", true);
        component.set('v.hasError', false);
         window.localStorage.setItem('hideSave', false);
@@ -88,10 +62,10 @@
         
     },
     getLanguageName : function(languageCode) {
-      
+
 		// this map is a list of the available languages and their locale names
 		var languageMap = {
-      
+
 		  zh_CN:           "Simplified Chinese",
 		  en_US:       "English",
 		  ja_JP:       "Japanese", 

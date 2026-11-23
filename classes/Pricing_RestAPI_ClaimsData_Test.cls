@@ -2,7 +2,7 @@
  * @description       : 
  * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
  * @group             : 
- * @last modified on  : 03-31-2026
+ * @last modified on  : 09-26-2024
  * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 @isTest
@@ -33,6 +33,7 @@ public class Pricing_RestAPI_ClaimsData_Test {
             insert prod;
             insert cp;
             
+            List<User> fseUserList = Pricing_Test_Utility.createFSEUser();
             Pricing_Test_Utility.createPriceBook();
             Account acc = Pricing_Test_Utility.createAccount();
             con = Pricing_Test_Utility.createPrimaryContact(acc.Id);

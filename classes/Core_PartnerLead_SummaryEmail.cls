@@ -9,36 +9,19 @@ Modification Log :
 * Sougata Sarkar             28/08/2019              Original Version
 *************************************************************************************/
 global class Core_PartnerLead_SummaryEmail implements Database.Batchable<sObject>{
-    
-    
-    List<String> partnerSegmentList = new List<String>();
-    public Integer currentYear = date.today().year();
-    
-    //Public group name suffix
-    public static String adminPublicGroupNameSuffix = 'Leads';
-    
-    global Core_PartnerLead_SummaryEmail(){
-        Schema.sObjectType objType = Schema.getGlobalDescribe().get('Account');
-        Schema.DescribeSObjectResult objDescribe = objType.getDescribe();
-        map<String, Schema.SObjectField> fieldMap = objDescribe.fields.getMap();
-        list<Schema.PicklistEntry> values = fieldMap.get('Core_IPA_Partner_Segment__c').getDescribe().getPickListValues();
-        for (Schema.PicklistEntry a : values){
-            partnerSegmentList.add(a.getValue());
-        }
-    }
+
     global Database.QueryLocator start(Database.BatchableContext BC){
-        String partnerRecTypeId = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Partner Account Group').getRecordTypeId();
-        //String testPAGid='0013b00001phGiUAAU';
-        String query = 'select id, Name from Account where recordtypeId =: partnerRecTypeId';
+        String partnerRecType = System.Label.Core_Partner_Lead_Record_Id;
+        Date todayDt = Date.today();
+        DateTime startOfDT = DateTime.newInstance(todayDt.year(),todayDt.month(),todayDt.day(),0,0,0);
+        DateTime endOfDT = DateTime.newInstance(todayDt.year(),todayDt.month(),todayDt.day(),23,59,59);
+        String query = 'select Id, country, FirstName, LastName, Core_Is_Lead_Shared__c, Company, Core_Lead_Source_Pkt__c, Core_Lead_PMP_Action__c, OwnerId, Core_PSG_Lead__c from Lead where createdDate >=: startOfDT AND createdDate <=: endOfDT AND recordTypeId =: partnerRecType';
         return Database.getQueryLocator(query);
     }
     
-    global void execute(Database.BatchableContext BC, List<Account> opidList){
-        Core_PartnerLeadHandler.sendLeadEmailNotifications(opidList,false,partnerSegmentList);	
-        
+    global void execute(Database.BatchableContext BC, List<Lead> leadList){
+        Core_PartnerLeadHandler.sendNotificationEmails(leadList,false);
     }
-    
-    
     
     global void finish(Database.BatchableContext BC){
         

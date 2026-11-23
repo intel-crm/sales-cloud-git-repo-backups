@@ -47,6 +47,7 @@ public with sharing class Pricing_RestAPI_QuoteDtlsWrapperV2_Test {
         qliCPU.quoteLineId = null;
         qliCPU.quoteLineNumber = null;
         qliCPU.quoteLineStatus = null;
+        qliCPU.quotelineprogramtype = null;
         qliCPU.changeRequest = null;
         qliCPU.approvedPricingStartDate = null;
         qliCPU.approvedPricingEndDate = null;
@@ -295,6 +296,7 @@ public with sharing class Pricing_RestAPI_QuoteDtlsWrapperV2_Test {
         qliGPU.quoteLineNumber = null;
         qliGPU.quoteLineStatus = null;
         qliGPU.quoteLineType = null;
+        qliGPU.quotelineprogramtype = null;
         qliGPU.changeRequest = null;
         qliGPU.approvedPricingStartDate = null;
         qliGPU.approvedPricingEndDate = null;

@@ -34,7 +34,7 @@
             }
             
             table {
-            font-family: sans-serif; /*arial, sans-serif;*/
+            font-family: Intel Clear; /*arial, sans-serif;*/
             border-collapse: collapse;
             border-left: 1px solid #dddddd;
             border-right: 1px solid #dddddd;
@@ -50,17 +50,14 @@
             color:#0071c5;
             }
             
-            
-            <!--h1{
+            h1{
             font-family: Intel Clear Pro !important;  
-            }-->
-            
-
+            }
         </style>
         <apex:attribute name="partnerRecordId" type="Id" description="Partner Record Id" assignTo="{!partnerId}"/>
         <body>
             <!-- Header Banner -->
-          <c:PMP_Global_Header message="Your Showcase storefront has been declined"/>
+          <c:PMP_Global_Header message="SORRY, YOUR MARKETPLACE STOREFRONT HAS BEEN DECLINED."/>
             <!-- Header Banner -->
             
             <!-- Email content -->
@@ -69,28 +66,27 @@
                 <tr>
                     <td style="padding-left:50px;">
                         <br/>Hello<br/><br/>
-                        <apex:outputText rendered="{!IF(AND(partnerData.PMP_Partner_Submitter_UserId__c != null, partnerData.PMP_Partner_Submitter_UserId__r.IsActive==false,partnerData.PMP_Partner_Submitter_UserId__r.Partner_License_Reclaimed__c==false),true,false)}" > {!$Label.PMP_Inactive_User_Message}<br/><br/> </apex:outputText>
-                        Thank you for submitting your storefront. Unfortunately, it has been declined. For the specific reasons why,&nbsp;<apex:outputLink value="{!$Label.PMP_PartnerURL}{!partnerData.PMP_Published_Copy_Id__c}" styleClass="intelBlue">please follow this link to a message from your Intel Representative.</apex:outputLink><br/><br/>
-                        Thanks again,<br/><br/>
-                        The Intel® Partner Showcase Team<br/> <br/>
+                        Thanks again for submitting your storefront. Unfortunately, it has been declined. For the specific reasons why,&nbsp;<apex:outputLink value="{!$Label.PMP_PartnerURL}{!partnerData.PMP_Published_Copy_Id__c}" styleClass="intelBlue">please follow this link to a message from your Intel Representative.</apex:outputLink><br/><br/>
+                        Best<br/><br/>
+                        The Intel® Solutions Marketplace Team<br/> <br/>
                     </td>   
                 </tr>
                 <!-- Questions/Contact -->
                 <tr>
                     <td style="padding-left:50px;">  
-                        Questions? Reach out to the Showcase Admin Team at <br/>
+                        Questions? Reach out to Marketplace Admin Team at <br/>
                         <apex:outputLink value="mailto:{!$Label.PMP_MailTo}" styleClass="intelBlue">
                             {!$Label.PMP_MailTo}
                         </apex:outputLink><br/><br/>
                     </td>
                 </tr>
                 <!-- Questions/Contact -->
-                <!-- Showcase Help & FAQ -->
+                <!-- Marketplace Help & FAQ -->
                 <!-- <tr>    
                     <td style="text-align:center">
-                    For FAQs and pro-tips on using Intel® Partner Showcase, please visit 
+                    For FAQs and pro-tips on using Intel Solutions Marketplace, please visit 
                     <apex:outputLink value="www.intel.com" styleClass="intelBlue">
-                    Showcase Help
+                    Marketplace Help
                     </apex:outputLink><br/><br/>
                     </td>
                     </tr>-->

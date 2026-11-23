@@ -2,8 +2,8 @@
 * @description       : Class containing all the validation related to Ver>2 API
 * @author            : Accenture
 * @group             : Gravity
-* @last modified on  : 03-09-2026
-* @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+* @last modified on  : 06-20-2025
+* @last modified by  : Bharath Chandrashekar
 **/
 global without sharing class Pricing_RestAPI_QuotesUtilityV2 extends TriggerHandler {
     
@@ -50,6 +50,7 @@ global without sharing class Pricing_RestAPI_QuotesUtilityV2 extends TriggerHand
     public static Boolean isOverAllQtyLess = false;
     public static Boolean isSubmitQuote = false;
     public static List<SBQQ__Quoteline__c> quotelineList;
+    public Boolean isMarketSegmentConsumerRetail = false;
     public static String marketSegmentValue = '';
     
     //recordTypeId variables
@@ -91,7 +92,7 @@ global without sharing class Pricing_RestAPI_QuotesUtilityV2 extends TriggerHand
         quoteTeamRecordTypeId = Pricing_Tender_Utility.getRecordTypeId('Pricing_Quote_Team__c',Label.Pricing_Tender_Quote_Team_RecordType);
         quoteCreateRecordTypeId = [SELECT Id,Name,DeveloperName FROM RecordType WHERE SobjectType='SBQQ__Quote__c' and DeveloperName = 'Pricing_Tender_Quote_Create' limit 1].Id;
         quoteLineCreateRecordTypeId = [SELECT Id,Name,DeveloperName FROM RecordType WHERE SobjectType='SBQQ__QuoteLine__c' and DeveloperName = 'Pricing_Tender_Quote_Line_Create' limit 1].Id;
-        writeInUnifiedId = [Select Id from Pricing_UnifiedEndCustomerAccountMapping__c where Name = :Label.Pricing_IQR_API_WriteInEndCustomer limit 1].Id;
+        writeInUnifiedId = [Select Id, Name from Pricing_UnifiedEndCustomerAccountMapping__c where Name = :Label.Pricing_IQR_API_WriteInEndCustomer limit 1].Id;
     }
     
     /*************************** validate Quote details **********************************/
@@ -344,12 +345,26 @@ global without sharing class Pricing_RestAPI_QuotesUtilityV2 extends TriggerHand
                     }
                 }
                 
+                /* 
+                //validate End Customer URL using Regex
+                String regexendCustomerUrl = '^(https?://)?(www\\.)?[a-zA-Z0-9-]+(\\.[a-zA-Z]{2,})+(/.*)?$';
+                if(!String.isBlank(quoteDetails.endCustomerUrl)){
+                    if(!Pattern.matches(regexendCustomerUrl, quoteDetails.endCustomerUrl.trim()) ){
+                    addValidationError( quoteMsgs.quoteErrors, 'endCustomerUrl', Pricing_RestAPI_ResponseCodes.VALID_ERROR_CODE_1102, null);
+                    isValid = false;
+                    }
+                }
+                */
+
                 if(isSubmit){
                     //validate quotelines and quote comments if isSubmit is true(submit quote API-action=submit)
                     quoteMsgs.quoteLineErrorMsgs = new List<QuoteLineErrorMsg>();
                     calledFromQuote=true;
                     validateQuoteLines(quoteDetails.quoteLines,(isPricingStartDateValid ? Date.parse(quoteDetails.pricingStartDate) : null), quoteMsgs, isSubmit, quoteDetails.marketSegment);
                     validateQuoteComments(quoteDetails.quoteComments, quoteMsgs,Pricing_RestAPI_QuotesV2.isResubmit?quoteWrapper.quoteId.trim():null);
+                    if(quoteDetails.marketSegment == 'Consumer Retail Pull'){
+                        isMarketSegmentConsumerRetail = true;
+                    }
                 }
             }
         }
@@ -749,7 +764,7 @@ global without sharing class Pricing_RestAPI_QuotesUtilityV2 extends TriggerHand
             isValid = false;
             addValidationError(errorMsgs, 'primaryContactEmail', Pricing_RestAPI_ResponseCodes.VALID_ERROR_CODE_1051, null);
         }
-        List<Contact> contact = [Select Id from Contact where Email= :primaryContactEmail and Account.Id = :currentUser.AccountId];
+        List<Contact> contact = [Select Id, Account.Id from Contact where Email= :primaryContactEmail and Account.Id = :currentUser.AccountId];
         if(contact.size()>0){
             //checking weather user is having permission set or not
             if(!hasPartnerPermissionSet(primaryContactEmail) || contact == null){
@@ -913,6 +928,8 @@ global without sharing class Pricing_RestAPI_QuotesUtilityV2 extends TriggerHand
                 if(quoteList.size()>0){
                     isSvd =  quoteList[0].Pricing_Program_Type_Nm__c == Label.Pricing_Tender_Small_Volume_Quote;
                     isClient = quoteList[0].Pricing_Program_Type_Nm__c == Label.Pricing_Tender_CCG_Quote;
+                   // isDataCenterCPU = quoteList[0].Pricing_Program_Type_Nm__c == Label.Pricing_Tender_Standard_QuoteLine;
+                    isDataCenterQuote = quoteList[0].Pricing_Program_Type_Nm__c == Label.Pricing_Tender_Standard_Quote;
                     if(quoteList[0].Pricing_Program_Type_Nm__c==Label.Pricing_Tender_Small_Volume_Quote){
                         Pricing_RestAPI_QuotelinesV2.isSvdQuoteLine = true;
                     }
@@ -975,7 +992,7 @@ global without sharing class Pricing_RestAPI_QuotesUtilityV2 extends TriggerHand
             }
             else if(Pricing_RestAPI_QuotelinesV2.isChangeReq ){
                 qErrorMsg.quoteErrors = new Map<String, ErrorMsg>(); 
-                Set<Id> qliAPIIds = new Set<Id>();
+                List<Id> qliAPIIds = new List<Id>();
                 if(quoteLineWrapper.quoteId == null || String.isEmpty(quoteLineWrapper.quoteId.trim())){
                     addValidationError(qErrorMsg.quoteErrors, 'quoteId', Pricing_RestAPI_ResponseCodes.VALID_ERROR_CODE_1008, null);
                     isValid = false;
@@ -1015,26 +1032,25 @@ global without sharing class Pricing_RestAPI_QuotesUtilityV2 extends TriggerHand
                         for(SBQQ__QuoteLine__c qli: hasCR){
                             hasCRMap.put(qli.Pricing_Reference_Quote_Line_Nbr__c,qli.Pricing_Quote_Line_Number__c);
                         }   
-                        Map<Id,SBQQ__QuoteLine__c> quotelineMap = new Map<Id,SBQQ__QuoteLine__c>([Select Id,Pricing_Status_Nm__c,Pricing_Quote_Line_Number__c,SBQQ__Quote__c,SBQQ__Quote__r.SBQQ__Account__c,SBQQ__Quote__r.Pricing_ShipmentStDate_Dt__c,Pricing_Approved_End_Date_Dt__c,Pricing_Approved_Unit_Qty__c,Pricing_ECAP_Price_Amt__c,Pricing_Approved_Start_Date_Dt__c,Pricing_Consumption_Platform__c ,Pricing_Consumption_Sale_Geo__c,Pricing_Consumption_Country__c,Pricing_Consumption_Region__c,Pricing_Consumption_Segment__c from SBQQ__QuoteLine__c where Id IN :qliAPIIds and SBQQ__Quote__r.SBQQ__Account__c = :currentUser.AccountId]);
-                        
-                        for(QLICRWonLost quoteline: quoteLineWrapper.quoteLines){
-                            validateChangeReqQuoteline(quoteline,qErrorMsg.quoteLineErrorMsgs, sObjQuoteLineFieldMap,quotelineMap,hasCRMap);
+                        Map<Id,SBQQ__QuoteLine__c> quotelineMap = new Map<Id,SBQQ__QuoteLine__c>([Select Id,Pricing_Status_Nm__c,Pricing_Quote_Line_Number__c,SBQQ__Quote__c,SBQQ__Quote__r.SBQQ__Account__c,SBQQ__Quote__r.Pricing_ShipmentStDate_Dt__c,Pricing_Approved_End_Date_Dt__c,Pricing_Approved_Unit_Qty__c,Pricing_ECAP_Price_Amt__c,Pricing_Approved_Start_Date_Dt__c,Pricing_Consumption_Platform__c ,Pricing_Consumption_Sale_Geo__c,Pricing_Consumption_Country__c,Pricing_Consumption_Region__c,Pricing_Consumption_Segment__c,Pricing_Program_Type_Nm__c,SBQQ__Quote__r.Pricing_Program_Type_Nm__c from SBQQ__QuoteLine__c where Id IN :qliAPIIds and SBQQ__Quote__r.SBQQ__Account__c = :currentUser.AccountId]);
+                                for(QLICRWonLost quoteline: quoteLineWrapper.quoteLines){
+                                    validateChangeReqQuoteline(quoteline,qErrorMsg.quoteLineErrorMsgs, sObjQuoteLineFieldMap,quotelineMap,hasCRMap);
+                                }
                         }
+                        else{
+                            addValidationError(qErrorMsg.quoteErrors, 'quoteId', Pricing_RestAPI_ResponseCodes.VALID_ERROR_CODE_1007, null);
+                            isValid = false; 
+                        }       
                     }
-                    else{
-                        addValidationError(qErrorMsg.quoteErrors, 'quoteId', Pricing_RestAPI_ResponseCodes.VALID_ERROR_CODE_1007, null);
-                        isValid = false; 
-                    }       
                 }
-            }
-            if(qErrorMsg.quoteErrors.isEmpty() && qErrorMsg.quoteLineErrorMsgs.isEmpty() ){
-                return true;
-            }else{
-                if(qErrorMsg.quoteErrors.isEmpty()){
-                    qErrorMsg.quoteErrors=null;
-                }
-                return false;
-            }
+                    if(qErrorMsg.quoteErrors.isEmpty() && qErrorMsg.quoteLineErrorMsgs.isEmpty() ){
+                        return true;
+                    }else{
+                        if(qErrorMsg.quoteErrors.isEmpty()){
+                            qErrorMsg.quoteErrors=null;
+                        }
+                        return false;
+                    }
         }
         catch(Exception ex){
             qErrorMsg.quoteLineErrorMsgs = null;
@@ -1050,7 +1066,7 @@ global without sharing class Pricing_RestAPI_QuotesUtilityV2 extends TriggerHand
         List<String> compProductNameList = new List<String>();
         List<String> compProductClientNameList = new List<String>();
         List<String> quotelinesIds = new List<String>();
-        Set<String> quotelineIdsSet = new Set<String>(); 
+        Set<String> quotelineIdsSet = new Set<String>();
         if(quoteLines!=null && !((quoteLines.DataCenterCPU == null || quoteLines.DataCenterCPU.isEmpty()) && (quoteLines.OptaneSSD == null || quoteLines.OptaneSSD.isEmpty()) && (quoteLines.OptanePMem == null || quoteLines.OptanePMem.isEmpty()) && (quoteLines.Ethernet == null || quoteLines.Ethernet.isEmpty()) && (quoteLines.Client == null || quoteLines.Client.isEmpty()) && (quoteLines.DataCenterGPU == null || quoteLines.DataCenterGPU.isEmpty()))){
             quoteLines.DataCenterCPU = quoteLines.DataCenterCPU != null && !isClient ? quoteLines.DataCenterCPU : new List<QuotelineCPU>();
             quoteLines.OptaneSSD = quoteLines.OptaneSSD != null && !isSvd && !isClient ? quoteLines.OptaneSSD : new List<QuotelineSSD>();
@@ -1246,15 +1262,14 @@ global without sharing class Pricing_RestAPI_QuotesUtilityV2 extends TriggerHand
         if(isSubmitQuote || (Pricing_RestAPI_QuotesV2.isResubmit && quotelineList.size() > 0 && quotelineList[0].Pricing_Original_Submitted_Date_dt__c == null && quotelineList[0].SBQQ__Quote__r.SBQQ__Status__c == Label.Pricing_Tender_Quote_Status_Draft)){
             List<String> productSeriesList = Label.Pricing_Product_Series_Exclude.split(',');
             for(QuoteLineCPU q : quoteLinesCPU){
-
-                if(productIdMap.containsKey(q.productId)){
-                    String productSeries = productIdMap.get(q.productId).Name == Label.Pricing_Tender_Write_In_Product ? Label.Pricing_Tender_Write_In_Product : productIdMap.get(q.productId).Core_Product_Series__c;
-                    if(q.noOfCPUsPerSystem>0 && q.noOfSystems>0 && (!productSeriesList.contains(productIdMap.get(q.productId).Core_Product_Series__c) && productSeries != null && productSeries != '' && !productSeries.startswith('Intel Atom® Processor'))){
-                        overallQuantityCPU = overallQuantityCPU+(q.noOfCPUsPerSystem * q.noOfSystems);                    
-                    }
+                system.debug('PROD ID MAP:'+productIdMap.get(q.productId));
+                String productSeries = productIdMap.get(q.productId).Name == Label.Pricing_Tender_Write_In_Product ? Label.Pricing_Tender_Write_In_Product : productIdMap.get(q.productId).Core_Product_Series__c;
+                if(q.noOfCPUsPerSystem>0 && q.noOfSystems>0 && (!productSeriesList.contains(productIdMap.get(q.productId).Core_Product_Series__c) && productSeries != null && productSeries != '' && !productSeries.startswith('Intel Atom® Processor'))){
+                    overallQuantityCPU = overallQuantityCPU+(q.noOfCPUsPerSystem * q.noOfSystems);                    
                 }
-            }
+           // }
             validateExceptionQuotaCheck(qErrorMsg.quoteErrors);
+            }
         }
         productIdMap = new Map<Id,Product2>();
         return isValid;
@@ -1809,9 +1824,9 @@ global without sharing class Pricing_RestAPI_QuotesUtilityV2 extends TriggerHand
                 Id recId = Id.valueOf(productId);
                 writeInProduct = !String.isEmpty(writeInProduct) ?writeInProduct.trim() : writeInProduct;
                 if(productIdMap.containsKey(recId)){
-                    String prodType =  Label.Pricing_Tender_SSD_BU_OpCode.split(',').contains(productIdMap.get(productId).Core_Profit_Center__c) ? Label.Pricing_Tender_SSD_Quote :
-                    Label.Pricing_Tender_PMem_BU_OpCode.split(',').contains(productIdMap.get(productId).Core_Profit_Center__c)? Label.Pricing_Tender_PMem_Quote :
-                    Label.Pricing_Tender_Ethernet_BU_OpCode.split(',').contains(productIdMap.get(productId).Core_Profit_Center__c)? Label.Pricing_Tender_NIC_Quote : 
+                    String prodType =  Label.Pricing_Tender_SSD_BU_OpCode.split(',').contains(productIdMap.get(productId).Core_BU_Operation_Code__c) ? Label.Pricing_Tender_SSD_Quote :
+                    Label.Pricing_Tender_PMem_BU_OpCode.split(',').contains(productIdMap.get(productId).Core_BU_Operation_Code__c)? Label.Pricing_Tender_PMem_Quote :
+                    Label.Pricing_Tender_Ethernet_BU_OpCode.split(',').contains(productIdMap.get(productId).Core_BU_Operation_Code__c)? Label.Pricing_Tender_NIC_Quote : 
                     qliType == Label.Pricing_Tender_CCG_Quote && (Label.Pricing_Tender_CCG_ProdType.split(',').contains(productIdMap.get(productId).Core_VerticalSegment__c) || productIdMap.get(productId).Core_Cross_Selling_Product_Type_Nm__c == Label.Pricing_Tender_CCG_Quote) ? Label.Pricing_Tender_CCG_Quote :  
                     productIdMap.get(productId).Core_Product_Type__c == Label.Pricing_Tender_Processor_Product ? Label.Pricing_Tender_Standard_QuoteLine : 
                     productIdMap.get(productId).Core_Product_Type__c == Label.Pricing_Tender_Graphics_Product ? Label.Pricing_Tender_DataCenter_GPU : 
@@ -1927,6 +1942,7 @@ global without sharing class Pricing_RestAPI_QuotesUtilityV2 extends TriggerHand
             ' WHERE (' + Label.Pricing_RestAPI_Products_CommonFilter + ')':
         ' ' + ((Pricing_RestAPI_Products.getMetadataWhereClause(quoteLineType))[0]);
         String query = Label.Pricing_RestAPI_Prodcuts_Query + whereClause;
+        system.debug('PRODUCT QUERY:'+query);
         List<Product2> productList = Database.query(query);
         productIdMap = new Map<Id,Product2>(productList);
     } 
@@ -2490,112 +2506,53 @@ global without sharing class Pricing_RestAPI_QuotesUtilityV2 extends TriggerHand
         return isCurrencyValid;
     }
     
-      
-    public static Boolean validatePicklistValues(Map<String, Schema.SObjectField> objectMap,String fieldName,String fldValue,Boolean isMandatory,Map<String, ErrorMsg> errorMsgs,String jsonLabel) {
-    Boolean isFldValid = false;
-    Boolean isEmpty = false;
-    Map<String, String> consumptionCountryStoreMap = new Map<String, String>();
-    
-    if (!isMandatory && String.isBlank(fldValue)) {
-        isFldValid = true;
-    } else {
-        Schema.DescribeFieldResult fldRes = objectMap.get(fieldName).getDescribe();
-	List<Schema.PicklistEntry> ple = fldRes.getPicklistValues();
- 
-        if (String.isBlank(fldValue)) {
-            isEmpty = true;
-            addValidationError(
-                errorMsgs,
-                jsonLabel,
-                Pricing_RestAPI_ResponseCodes.VALID_ERROR_CODE_1020,
-                null
-            );
-        }
-        else if (jsonLabel == 'consumptionCountry') {
-            consumptionCountryStoreMap.remove(fldValue);
- 
-            Set<String> activeValues = new Set<String>();
- 
-            for (Schema.PicklistEntry entry : ple) {
-                if (entry.isActive()) {
-                    activeValues.add(entry.getValue());
-                }
-            }
- 
-            List<String> tokens = fldValue.split(',');
-            List<String> selected = new List<String>();
-            Integer tokenIndex = 0;
- 
-            isFldValid = !fldValue.trim().endsWith(',');
- 
-            while (isFldValid && tokenIndex < tokens.size()) {
-                String matchedValue = null;
-                Integer matchedTokens = 0;
-                String candidate = '';
- 
-                for (Integer j = tokenIndex; j < tokens.size(); j++) {
-                    candidate = j == tokenIndex
-                        ? tokens[j].trim()
-                        : candidate + ',' + tokens[j].trim();
- 
-                    // Preserve commas inside the longest valid country value.
-                    if (activeValues.contains(candidate)) {
-                        matchedValue = candidate;
-                        matchedTokens = j - tokenIndex + 1;
+    public static boolean validatePicklistValues(Map<String,Schema.SObjectField> objectMap, String fieldName, String fldValue, boolean isMandatory, Map<String,ErrorMsg> errorMsgs, String jsonLabel){
+        boolean isFldValid = false;
+        boolean isEmpty = false;
+        if(!isMandatory && String.isBlank(fldValue)){
+            isFldValid = true;
+            //do nothing - value can be blank if the field is not mandatory
+        }else{
+            Schema.DescribeFieldResult fldRes = objectMap.get(fieldName).getDescribe();
+            List<Schema.PicklistEntry> ple = fldRes.getPicklistValues();
+            if(!String.isBlank(fldValue) && !fldValue.contains(',')){               
+                for( Schema.PicklistEntry f : ple)
+                {
+                    if(f.isActive() && f.getValue() == fldValue){
+                        isFldValid =  true; 
+                        break;
                     }
                 }
- 
-                if (matchedValue == null) {
+            }
+            //For checking Multi Picklist values for consumption country and region.
+            else if(!String.isBlank(fldValue) && fldValue.contains(',')){
+                List<String> multiFldValue = fldValue.split(',');
+                integer count = 0;
+                for( Schema.PicklistEntry f : ple)
+                {
+                    if(f.isActive() && multiFldValue.contains(f.getValue())){
+                        count++;
+                    }
+                }
+                if(count == multiFldValue.size()){
+                    isFldValid =  true;
+                }
+                else{
                     isFldValid = false;
-                    break;
-                }
- 
-                selected.add(matchedValue);
-                tokenIndex += matchedTokens;
+                }  
             }
- 
-            if (isFldValid) {
-                consumptionCountryStoreMap.put(
-                    fldValue,
-                    String.join(selected, ', ')
-                );
+            else {
+                isEmpty = true;
+                addValidationError(errorMsgs, jsonLabel, Pricing_RestAPI_ResponseCodes.VALID_ERROR_CODE_1020, null);
+            }
+            if(!isEmpty && !isFldValid){
+                addValidationError(errorMsgs, jsonLabel, Pricing_RestAPI_ResponseCodes.VALID_ERROR_CODE_1026, 
+                                   new Map<String,String>{'{{fieldValue}}' => fldValue});
             }
         }
-        else if (fldRes.getType() != Schema.DisplayType.MultiPicklist ||
-             !fldValue.contains(',')) {
-            for (Schema.PicklistEntry entry : ple) {
-                if (entry.isActive() && entry.getValue() == fldValue) {
-                    isFldValid = true;
-                    break;
-                }
-            }
-        }
-        else if (fldValue.contains(',')) {
-            List<String> multiFldValue = fldValue.split(',');
-            Integer count = 0;
- 
-            for (Schema.PicklistEntry entry : ple) {
-                if (entry.isActive() &&
-                    multiFldValue.contains(entry.getValue())) {
-                    count++;
-                }
-            }
- 
-            isFldValid = count == multiFldValue.size();
-        }
- 
-        if (!isEmpty && !isFldValid) {
-            addValidationError(
-                errorMsgs,
-                jsonLabel,
-                Pricing_RestAPI_ResponseCodes.VALID_ERROR_CODE_1026,
-                new Map<String, String>{ '{{fieldValue}}' => fldValue }
-            );
-        }
+        return isFldValid;
     }
- 
-    return isFldValid;
-}    
+    
     public static Map<String, List<String>> getFieldDependencies(String objectName, String controllingField, String dependentField){
         
         Map<String, List<String>> controllingInfo = new Map<String, List<String>>();        
@@ -2731,7 +2688,7 @@ global without sharing class Pricing_RestAPI_QuotesUtilityV2 extends TriggerHand
         }
         for(String fseEmail : validFSEEmailIdMap.keySet()){
             Id userId = validFSEEmailIdMap.get(fseEmail);
-            if(!userIds.contains(userId) && !primaryFSEEmail.equalsIgnoreCase(fseEmail)){
+            if(!userIds.contains(userId) && (String.isblank(primaryFSEEmail) || !primaryFSEEmail.equalsIgnoreCase(fseEmail))){
                 userIds.add(userId);
                 fseQTM.add(new Pricing_Quote_Team__c(Pricing_Quote_Id__c=newQuoteId, Pricing_Quote_Team_Member_Id__c=userId, 
                                                      Pricing_Role_Nm__c = Label.Pricing_Quote_Team_Role_FSE,
@@ -2746,7 +2703,7 @@ global without sharing class Pricing_RestAPI_QuotesUtilityV2 extends TriggerHand
         List<Pricing_Quote_Team__c> aeQTM = new List<Pricing_Quote_Team__c>();
         for(User aeUser : AEEmailUserList){
             Id userId = aeUser.Id;
-            if(!userIds.contains(userId) && (!primaryAEEmail.equalsIgnoreCase(aeUser.Email) || Pricing_RestAPI_QuotesV2.isCreateQuoteTeam)){
+            if(!userIds.contains(userId)){
                 userIds.add(userId);
                 aeQTM.add(new Pricing_Quote_Team__c(Pricing_Quote_Id__c=newQuoteId, Pricing_Quote_Team_Member_Id__c=userId, 
                                                     Pricing_Role_Nm__c = Label.Pricing_Quote_Team_Role_Account_Executive, RecordTypeId = quoteTeamRecordTypeId));
@@ -3585,18 +3542,18 @@ global without sharing class Pricing_RestAPI_QuotesUtilityV2 extends TriggerHand
                                         && quoteline.consumptionSegment == quotelineMap.get(quoteline.quotelineId).Pricing_Consumption_Segment__c
                                         && date.parse(quoteline.quoteLinePricingEndDate) == quotelineMap.get(quoteline.quotelineId).Pricing_Approved_End_Date_Dt__c
                                         && (String.isEmpty(quoteline.quoteLinePricingStartDate) || (String.isNotEmpty(quoteline.quoteLinePricingStartDate) && date.parse(quoteline.quoteLinePricingStartDate) == quotelineMap.get(quoteline.quotelineId).Pricing_Approved_Start_Date_Dt__c))){
-                                            addValidationError(qle.quoteLineErrors, 'newRequestedPrice', Pricing_RestAPI_ResponseCodes.VALID_ERROR_CODE_1061, new Map<String, String>{'{{newRequestedType}}' => 'New Requested Price'});
-                                            addValidationError(qle.quoteLineErrors, 'newQuantity', Pricing_RestAPI_ResponseCodes.VALID_ERROR_CODE_1061, new Map<String, String>{'{{newRequestedType}}' => newRequestedType});
-                                            addValidationError(qle.quoteLineErrors, 'quoteLinePricingEndDate', Pricing_RestAPI_ResponseCodes.VALID_ERROR_CODE_1061, new Map<String, String>{'{{newRequestedType}}' => newRequestedType});
-                                                // Consumption error added.
-                                            addValidationError(qle.quoteLineErrors, 'consumptionPlatform', Pricing_RestAPI_ResponseCodes.VALID_ERROR_CODE_1061, new Map<String, String>{'{{newRequestedType}}' => newRequestedType});
-                                            addValidationError(qle.quoteLineErrors, 'consumptionSalesGeo', Pricing_RestAPI_ResponseCodes.VALID_ERROR_CODE_1061, new Map<String, String>{'{{newRequestedType}}' => newRequestedType});
-                                            addValidationError(qle.quoteLineErrors, 'consumptionCountry', Pricing_RestAPI_ResponseCodes.VALID_ERROR_CODE_1061, new Map<String, String>{'{{newRequestedType}}' => newRequestedType});
-                                            addValidationError(qle.quoteLineErrors, 'consumptionRegion', Pricing_RestAPI_ResponseCodes.VALID_ERROR_CODE_1061, new Map<String, String>{'{{newRequestedType}}' => newRequestedType});
-                                            addValidationError(qle.quoteLineErrors, 'consumptionSegment', Pricing_RestAPI_ResponseCodes.VALID_ERROR_CODE_1061, new Map<String, String>{'{{newRequestedType}}' => newRequestedType});
-
+                                            addValidationError(qle.quoteLineErrors, 'newRequestedPrice', Pricing_RestAPI_ResponseCodes.VALID_ERROR_CODE_1061, new Map<String, String>{'{{newRequestedType}}' => 'New Requested Price'});                                        
+                                            addValidationError(qle.quoteLineErrors, 'newQuantity', Pricing_RestAPI_ResponseCodes.VALID_ERROR_CODE_1061, new Map<String, String>{'{{newRequestedType}}' => 'New Requested Price'});
+                                            addValidationError(qle.quoteLineErrors, 'quoteLinePricingEndDate', Pricing_RestAPI_ResponseCodes.VALID_ERROR_CODE_1061, new Map<String, String>{'{{newRequestedType}}' => 'New Requested Price'});
+                                            // Consumption error added.
+                                            addValidationError(qle.quoteLineErrors, 'consumptionPlatform', Pricing_RestAPI_ResponseCodes.VALID_ERROR_CODE_1061, new Map<String, String>{'{{newRequestedType}}' => 'New Requested Price'});
+                                            addValidationError(qle.quoteLineErrors, 'consumptionSalesGeo', Pricing_RestAPI_ResponseCodes.VALID_ERROR_CODE_1061, new Map<String, String>{'{{newRequestedType}}' => 'New Requested Price'});
+                                            addValidationError(qle.quoteLineErrors, 'consumptionCountry', Pricing_RestAPI_ResponseCodes.VALID_ERROR_CODE_1061, new Map<String, String>{'{{newRequestedType}}' => 'New Requested Price'});
+                                            addValidationError(qle.quoteLineErrors, 'consumptionRegion', Pricing_RestAPI_ResponseCodes.VALID_ERROR_CODE_1061, new Map<String, String>{'{{newRequestedType}}' => 'New Requested Price'});
+                                            addValidationError(qle.quoteLineErrors, 'consumptionSegment', Pricing_RestAPI_ResponseCodes.VALID_ERROR_CODE_1061, new Map<String, String>{'{{newRequestedType}}' => 'New Requested Price'});
+                                            
                                             if(String.isNotEmpty(quoteline.quoteLinePricingStartDate)){
-                                            addValidationError(qle.quoteLineErrors, 'quoteLinePricingStartDate', Pricing_RestAPI_ResponseCodes.VALID_ERROR_CODE_1061, new Map<String, String>{'{{newRequestedType}}' => newRequestedType});
+                                                addValidationError(qle.quoteLineErrors, 'quoteLinePricingStartDate', Pricing_RestAPI_ResponseCodes.VALID_ERROR_CODE_1061, new Map<String, String>{'{{newRequestedType}}' => 'New Requested Price'});
                                             }
                                         }
                                 }
@@ -3707,7 +3664,7 @@ global without sharing class Pricing_RestAPI_QuotesUtilityV2 extends TriggerHand
         Map<String, boolean> fldValidMap = new Map<String, boolean>();
         if (quotelineMap.get(quotelineId).Pricing_Approved_End_Date_Dt__c<System.today() && fieldValue != null)
         {
-            addValidationError(quoteLineErrors, fieldName, Pricing_RestAPI_ResponseCodes.VALID_ERROR_CODE_1060, new Map<String, String>{'{{newRequestedType}}' => 'newRequestedPrice'});
+            addValidationError(quoteLineErrors, fieldName, Pricing_RestAPI_ResponseCodes.VALID_ERROR_CODE_1060, new Map<String, String>{'{{newRequestedType}}' => 'New Requested Price'});
         }
         else{
             
@@ -3728,12 +3685,12 @@ global without sharing class Pricing_RestAPI_QuotesUtilityV2 extends TriggerHand
         for(Pricing_ConsumptionAccountMapping__c rec : [SELECT Id,Name,Pricing_Active_ind__c, Pricing_Consumption_Type_Nm__c,Pricing_Account_Nm__r.Name 
                                                         FROM Pricing_ConsumptionAccountMapping__c 
                                                         WHERE Pricing_Account_Nm__c =: currentUser.AccountId AND Pricing_Active_ind__c = true]){
-            if(consumptionTypeToValueMap.containsKey(rec.Pricing_Consumption_Type_Nm__c)){
-                consumptionTypeToValueMap.get(rec.Pricing_Consumption_Type_Nm__c).add(rec.Name);
-            } else{
-                consumptionTypeToValueMap.put(rec.Pricing_Consumption_Type_Nm__c,new List<String>{rec.Name});
-            }
-        }
+                                                            if(consumptionTypeToValueMap.containsKey(rec.Pricing_Consumption_Type_Nm__c)){
+                                                                consumptionTypeToValueMap.get(rec.Pricing_Consumption_Type_Nm__c).add(rec.Name);
+                                                            } else{
+                                                                consumptionTypeToValueMap.put(rec.Pricing_Consumption_Type_Nm__c,new List<String>{rec.Name});
+                                                            }
+                                                        }
     }    
     /***********************************************************************************************/
     

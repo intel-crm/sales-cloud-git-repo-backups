@@ -6,10 +6,10 @@
     </caseValues>
     <caseValues>
         <plural>true</plural>
-        <value>CCP Program Budget RecordTypes</value>
+        <value>CCP Program Budget RecordType</value>
     </caseValues>
     <fields>
-        <label><!-- Account Manager Permission Set API Name --></label>
+        <label><!-- Account Manager Permissions Set API Name --></label>
         <name>Core_MDF_Account_Manager_PS_API_Name__c</name>
     </fields>
     <fields>
@@ -24,24 +24,16 @@
             <translation><!-- Channel MDF --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Client</masterLabel>
-            <translation><!-- Client --></translation>
+            <masterLabel>Client Co-Marketing Fund</masterLabel>
+            <translation><!-- Client Co-Marketing Fund --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Client Co-Marketing Fund Boost</masterLabel>
             <translation><!-- Client Co-Marketing Fund Boost --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Co-GTM</masterLabel>
-            <translation><!-- Co-GTM --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Datacenter</masterLabel>
-            <translation><!-- Datacenter --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Ecosystem Extension Fund</masterLabel>
-            <translation><!-- Ecosystem Extension Fund --></translation>
+            <masterLabel>Data Center Co-Marketing Fund</masterLabel>
+            <translation><!-- Data Center Co-Marketing Fund --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Intel Partner Alliance</masterLabel>

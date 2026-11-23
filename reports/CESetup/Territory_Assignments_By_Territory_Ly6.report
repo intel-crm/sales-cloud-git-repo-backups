@@ -4,6 +4,9 @@
         <field>CPT_Territory_Assignment__c.CPT_Employee_Name__c</field>
     </columns>
     <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>CPT_Territory_Assignment__c.CPT_BR_CCG__c</field>
     </columns>
@@ -18,14 +21,6 @@
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>CPT_Territory_Assignment__c.CPT_BR_DCAI_Target__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>CPT_Territory_Assignment__c.CPT_BR_All__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>CPT_Territory_Assignment__c.CPT_BR_All_Target__c</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
@@ -50,54 +45,6 @@
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>CPT_Territory_Assignment__c.CPT_CR_Partner_Target__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>CPT_Territory_Assignment__c.CPT_MarVol_Margin_CCG__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>CPT_Territory_Assignment__c.CPT_MarVol_Margin_CCG_Target__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>CPT_Territory_Assignment__c.CPT_MarVol_Margin_DCG__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>CPT_Territory_Assignment__c.CPT_MarVol_Margin_DCG_Target__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>CPT_Territory_Assignment__c.CPT_MarVol_Next_Gen_CCG_LNL__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>CPT_Territory_Assignment__c.CPT_MarVol_Next_Gen_CCG_LNL_Target__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>CPT_Territory_Assignment__c.CPT_MarVol_Next_Gen_CCG_PTL__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>CPT_Territory_Assignment__c.CPT_MarVol_Next_Gen_CCG_PTL_Target__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>CPT_Territory_Assignment__c.CPT_MarVol_Next_Gen_CCG_WCL__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>CPT_Territory_Assignment__c.CPT_MarVol_Next_Gen_CCG_WCL_Target__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>CPT_Territory_Assignment__c.CPT_MarVol_Next_Gen_DCG_GNR__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>CPT_Territory_Assignment__c.CPT_MarVol_Next_Gen_DCG_GNR_Target__c</field>
     </columns>
     <format>Summary</format>
     <groupingsDown>

@@ -1,8 +1,8 @@
-import { LightningElement } from 'lwc';
-import { NavigationMixin } from 'lightning/navigation';
-/*import { getRecord } from 'lightning/uiRecordApi';
+import { LightningElement, api, wire, track } from 'lwc';
+import { getRecord } from 'lightning/uiRecordApi';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import { createRecord } from "lightning/uiRecordApi";
+import { NavigationMixin } from 'lightning/navigation';
 import { CloseActionScreenEvent } from 'lightning/actions';
 
 
@@ -54,11 +54,11 @@ import Sales_LicenseTypeToolTipComputerPage from '@salesforce/label/c.Sales_Lice
 const FIELDS = ['Sales_Host__c.Sales_License_Type__c','Sales_Host__c.Name',
     'Sales_Host__c.Sales_Companion_Server2_Txt__c', 'Sales_Host__c.Sales_Companion_Server1_Txt__c',
     'Sales_Host__c.Sales_Computer_Type__c', 'Sales_Host__c.Sales_Computer_Name_Txt__c', 'Sales_Host__c.Sales_Contact__c', 'Sales_Host__c.Sales_Redundant_Server1_Txt__c', 'Sales_Host__c.Sales_Redundant_Server2_Txt__c'];
-*/
+
 export default class sslcCreateNewComputerButton extends NavigationMixin(LightningElement) {
 
     
-    /*@api fromlac;
+    @api fromlac;
     @track showmodal=true;
     @api recordid;
     @track callingfronOnchange=false;
@@ -252,7 +252,9 @@ export default class sslcCreateNewComputerButton extends NavigationMixin(Lightni
             //Add by Tejaswini
             if(fields.Sales_Computer_Type__c=='NIC ID'){
                 fields.Name = this.getNICId; 
+               
             }
+
     
             console.log('new Fields'+fields.Sales_Host_Is_Created_From_Custom_Page__c);
             fields.Sales_isActiveHost__c = true;
@@ -314,12 +316,106 @@ export default class sslcCreateNewComputerButton extends NavigationMixin(Lightni
         //console.log(hostId);
        // this.redirectPage();
        console.log('redirect');
+       //window.location.reload()
+       
+            /* var compDetails = {
+                 componentDef: "c:page2",
+                 attributes: {
+                    //Value you want to pass to the next lwc component
+                    currhostId : event.detail.id         
+    
+                }
+                               
+             };
+              // Base64 encode the compDefinition JS object
+              var encodedCompDetails = btoa(JSON.stringify(compDetails));
+              this[NavigationMixin.Navigate]({
+                  type: 'standard__webPage',
+                  attributes: {
+                      url: '/one/one.app#' + encodedCompDetails
+                  }                  
+              });*/
+             
+              //eval("$A.get('e.force:refreshView').fire();")
+        /*this.buttonClicked=true;
+        console.log('button disabled'+this.buttonClicked);
+        //if(this.fromlicensegenerate==true){
+        this.newHostId = event.detail.id;
+        var results;
+        if (this.validContact == true) {
+           // createNewHost({ hostId: this.newHostId})
+           createNewHost()
+                .then(result => {
+                    console.log('license type'+this.toollicensetype);
+                    console.log('contactid'+this.getContactValue);
+                    console.log('license type');
+                    console.log('Primary Computer ID');
+                    results = result;
+                    console.log('createhost op'+result);
+                    if(results.includes(this.label.Sales_SuccessHostReassignment)){
+
+                    console.log('Order record' + result);
+                    //this.licensefileGenerationQueue();
+                    }
+                    else{  
+                        this.buttonClicked=false;
+                        console.log('create host else line 266');
+                        const evt = new ShowToastEvent({
+                                variant:'info',
+                                title: result,
+                                message: '',
+                        });
+                        this.dispatchEvent(evt);
+                    }
+                  //  alert('before if this.fromComponent>>>'+this.fromComponent);
+                    /*if (!this.fromComponent) {
+                        alert('this.fromComponent>>>'+this.fromComponent);
+                        this.reloadPage();
+                    }*/
+                /*})
+                .catch(error => {
+                    this.buttonClicked=false;
+                    const evt = new ShowToastEvent({
+                        variant: 'error',
+                        title: 'Error',
+                        message: ''
+                    });
+                    this.dispatchEvent(evt);
+                })
+        }
+    //}
+    else{
+        console.log('button disabled'+this.buttonClicked);
+        this.buttonClicked=true;
+        const evt = new ShowToastEvent({
+            title: 'Success',
+            message: this.label.Saleslicenseadminsucess,
+            variant: 'success',
+            mode: 'dismissable'
+        });
+        this.dispatchEvent(evt);
+       // this.navigateToListView();
+         this.handleCancelNew();
+    }*/
 
     }
 
     handleCancelNew() {
         let evt=new CustomEvent('cancel');
         this.dispatchEvent(evt);
+        // navigate to order record page
+        /*console.log("createComputer"+ this.createComputer);
+        console.log('fromcmp:'+this.fromcomponent);
+      
+            this[NavigationMixin.Navigate]({
+                type: 'standard__recordPage',
+                attributes: {
+                    //recordId: this.licneserecordid,
+                    objectApiName: 'Sales_License__c', // objectApiName is optional
+                    actionName: 'view'
+                }
+            });*/
+           // this.redirectPage();
         }
 
     onchangePrimaryAdmin(event){
@@ -391,6 +487,11 @@ export default class sslcCreateNewComputerButton extends NavigationMixin(Lightni
 
            this.isfixedRecord = false;
             this.isfloatRecord = false;
+          /*  if (this.toollicensetype == 'FIXED') {
+                this.isfixedRecord = true;
+            } else if (this.toollicensetype == 'FLOAT') {
+                this.isfloatRecord = true;
+            }*/
             return false;
         }
         else if(this.callingfronOnchange==true){
@@ -410,6 +511,23 @@ export default class sslcCreateNewComputerButton extends NavigationMixin(Lightni
         }
     }
 
+    /*handleCancelNew(){
+        if(this.isInternal == true){
+            console.log('internal user');
+            this[NavigationMixin.Navigate]({
+              type: 'standard__objectPage',
+              attributes: {
+                  objectApiName: 'Sales_Host__c',
+                  actionName: 'list'
+              },
+              state: 'recent'
+          });  
+        }
+        else{
+        console.log('external user');
+        this.reloadPage();
+        }
+    }*/
     handleOnChange(event){
         this.callingfronOnchange=true;
         this.toollicensetype= event.target.value;
@@ -426,6 +544,24 @@ export default class sslcCreateNewComputerButton extends NavigationMixin(Lightni
         }
 
     }
+ /*   openPage(hostId){
+        console.log('origin'+window.location.origin);
+        if(JSON.stringify(window.location.origin ).includes('.lightning.'))
+        { console.log(window.location.origin);
+            setTimeout(function() {
+                window.open(window.location.origin+'/lightning/r/Sales_Host__c/' + hostId+'/related/License_Generation_Req_Logs__r/view', '_top');        
+
+       }, 4000);  
+            }else{
+                //console.log('final approach'+JSON.parse(JSON.stringify(JSON.parse(JSON.stringify(window.location.href))).split('s/')[0]+'"')+hostId, '_blank');
+                setTimeout(function() {
+                    window.open(window.location.origin+'/psg/s/relatedlist/' + hostId+'/License_Generation_Req_Logs__r', '_top'); 
+    
+           }, 4000);
+              //  window.open(JSON.parse(JSON.stringify(JSON.parse(JSON.stringify(window.location.href))).split('s/')[0]+'"')+hostId, '_top');
+            }    
+        
+        }*/
         redirectPage(){
             console.log('redirect');
              var compDetails = {
@@ -441,5 +577,5 @@ export default class sslcCreateNewComputerButton extends NavigationMixin(Lightni
                   }
               });
             
-     }*/
+     }
 }

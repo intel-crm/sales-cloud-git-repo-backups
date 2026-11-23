@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>CCP Claim Window</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>CCP Claim Windows</value>
+    </caseValues>
+    <fields>
+        <label><!-- Accounts To Be Audited --></label>
+        <name>Core_MDF_Accounts_To_Be_Audited_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Activity Type Percentage --></label>
+        <name>Core_MDF_Activity_Type_Percentage_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Activity Types --></label>
+        <name>Core_MDF_Activity_Types_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Threshold Amount --></label>
+        <name>Core_MDF_Amount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Amount --></label>
+        <name>Core_MDF_Amount_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Baseline Random Number --></label>
+        <name>Core_MDF_Baseline_Random_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Budget Percentage --></label>
+        <name>Core_MDF_Budget_Percentage_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Budget Type --></label>
+        <name>Core_MDF_Budget_Type_Txt__c</name>
+        <picklistValues>
+            <masterLabel>NA</masterLabel>
+            <translation><!-- NA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RSA MD</masterLabel>
+            <translation><!-- RSA MD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retail MDF</masterLabel>
+            <translation><!-- Retail MDF --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Case SLA --></label>
+        <name>Core_MDF_Case_SLA_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Claim Window --></label>
+        <name>Core_MDF_Claim_Window__c</name>
+    </fields>
+    <fields>
+        <label><!-- Enable Predictive Audit --></label>
+        <name>Core_MDF_Enable_Predictive_Audit__c</name>
+    </fields>
+    <fields>
+        <label><!-- Enable Random Audit --></label>
+        <name>Core_MDF_Enable_Random_Audit__c</name>
+    </fields>
+    <fields>
+        <label><!-- Mark All Claims For Predictive --></label>
+        <name>Core_MDF_Mark_All_Claims_For_Predictive__c</name>
+    </fields>
+    <fields>
+        <label><!-- Multicurrency Batch Indicator --></label>
+        <name>Core_MDF_Multicurrency_Batch_Indicator__c</name>
+    </fields>
+    <fields>
+        <label><!-- Predictive Audit --></label>
+        <name>Core_MDF_Predictive_Audit__c</name>
+    </fields>
+    <fields>
+        <label><!-- Program Text --></label>
+        <name>Core_MDF_Program_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Program --></label>
+        <name>Core_MDF_Program__c</name>
+        <picklistValues>
+            <masterLabel>Client Co-Marketing Fund</masterLabel>
+            <translation><!-- Client Co-Marketing Fund --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client Co-Marketing Fund Boost</masterLabel>
+            <translation><!-- Client Co-Marketing Fund Boost --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Center Co-Marketing Fund</masterLabel>
+            <translation><!-- Data Center Co-Marketing Fund --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retail Marketing Funds</masterLabel>
+            <translation><!-- Retail Marketing Funds --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service Provider Co-Marketing Fund</masterLabel>
+            <translation><!-- Service Provider Co-Marketing Fund --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Random Audit --></label>
+        <name>Core_MDF_Random_Audit__c</name>
+    </fields>
+    <fields>
+        <label><!-- Region --></label>
+        <name>Core_MDF_Region_nm__c</name>
+        <picklistValues>
+            <masterLabel>APJ</masterLabel>
+            <translation><!-- APJ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASMO</masterLabel>
+            <translation><!-- ASMO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEA</masterLabel>
+            <translation><!-- EMEA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NA</masterLabel>
+            <translation><!-- NA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRC</masterLabel>
+            <translation><!-- PRC --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Submission SLA --></label>
+        <name>Core_MDF_Submission_SLA_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Target Percentage --></label>
+        <name>Core_MDF_Target_Percentage__c</name>
+    </fields>
+    <fields>
+        <label><!-- is Eligible For Batch Audit --></label>
+        <name>Core_MDF_isEligibleForBatchAudit_ind__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Baseline Random Number should be less than or equal to 100/ Target Percentage --></errorMessage>
+        <name>Core_MDF_Baseline_Random_Number</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please provide values for Target Percentage, Baseline Random Number, Threshold Amount --></errorMessage>
+        <name>Core_MDF_Check_Empty_Fields</name>
+    </validationRules>
+</CustomObjectTranslation>

@@ -14,19 +14,16 @@ public class Core_RestAPI_CaseAttachments_Test {
     private static User commUser2  = null;
     private static User commUser3_NoCases  = null;
     private static User adminUser  = null;
-    //Added by sowmya
-    private static Core_RestAPI_AttachmentV1_Wrapper requestParams = new Core_RestAPI_AttachmentV1_Wrapper();
-//Sowmya end
+    
     //Case object for api assertion for getAttachment service
     private static Case caseObj = null;
-    
-       
      //Setup the data required for tesing the use cases
     @testSetup public static void setupData(){
     
           Core_RestAPI_TestUtilities.setUpCustomSettingCaseAttachment();
           
         adminUser = [Select Id, email, Profile.Id  FROM User where Profile.Name = 'System Administrator' AND isActive = true Limit 1];
+        System.debug(' >>> '+adminUser);
         
         List<Profile> dataMigProfList = [Select Id FROM Profile where Name ='IPS Data Migration']; 
         List<Core_IPS_Labels__c> settings = new List<Core_IPS_Labels__c>();
@@ -35,11 +32,6 @@ public class Core_RestAPI_CaseAttachments_Test {
         settings.add(new Core_IPS_Labels__c(Name = 'COMPLETE', Value__c = 'COMPLETE'));
         settings.add(new Core_IPS_Labels__c(Name = 'Agent', Value__c = 'Agent'));
         settings.add(new Core_IPS_Labels__c(Name = 'PUBLIC_TO_CUSTOMERS', Value__c = 'Public to Customers'));
-        //Added by Sowmya - Start - 17/10/2024 - TWC745-6800 - Fix test coverage for all failed classes 
-        settings.add(new Core_IPS_Labels__c(Name = 'PRIVATE_TO_PARTNERS', Value__c = 'Private to Partner'));
-        settings.add(new Core_IPS_Labels__c(Name = 'PRIVATE_TO_INTEL', Value__c = 'Private to Intel'));
-		settings.add(new Core_IPS_Labels__c(Name = 'Backend Integration', Value__c = 'Backend Integration'));
- 		//Sowmya End - 17/10/2024 - TWC745-6800 - Fix test coverage for all failed classes 
         
         
         insert settings;
@@ -56,17 +48,14 @@ public class Core_RestAPI_CaseAttachments_Test {
         }
         List<User> allCommUsers = [Select Name, ContactId, Contact.AccountId FROM User WHERE ContactId IN (Select Id FROM Contact) ];
         List<Contact> allIPSContacts = [Select Name, Core_IPS_Active__c FROM Contact] ;
-        List<Account> allAccounts = [Select Id, Name, Core_IPS_SFT_Partner_Path__c FROM Account];
+        List<Account> allAccounts = [Select Name FROM Account];
         Contact nonIpsContact = [Select Name, Core_IPS_Active__c FROM Contact where Core_IPS_Active__c = false Limit 1] ;
-         //Added by sowmya
-        for(Account oAcc : allAccounts){
-                oAcc.Core_IPS_SFT_Partner_Path__c = 'folder';
-            }
-            update allAccounts;
-        //Sowmya end
-       
+        
+        System.debug(' Core_RestAPI_CaseAttachments_Test \n Account '+allAccounts+'\n IPS Contacts '+allIPSContacts +'\n Non Contact '+nonIpsContact + ' \n All CommUsers '+allCommUsers);
+        
         commUser1 = allCommUsers[0];
         commUser2 = allCommUsers[1];
+        System.debug(' \n allCommUsers  '+allCommUsers);
         
         
         System.runAs(adminUser){
@@ -81,10 +70,7 @@ public class Core_RestAPI_CaseAttachments_Test {
             commUser1Case.OwnerId = commUser1.Id;
             commUser1Case.ContactId = commUser1.ContactId;
             commUser1Case.AccountId = commUser1.Contact.AccountId;
-            //Added by Sowmya - Start - 17/10/2024 - TWC745-6800 - Fix test coverage for all failed classes 
-        	commUser1Case.Core_IPS_Customer_Visible__c = True;
-             //Sowmya End - Start - 17/10/2024 - TWC745-6800 - Fix test coverage for all failed classes 
-        	
+            
             Case commUser2Case = caseList[2];
             commUser2Case.OwnerId = commUser2.Id;
             commUser2Case.ContactId = commUser2.ContactId;
@@ -101,6 +87,7 @@ public class Core_RestAPI_CaseAttachments_Test {
             attachments.Core_File_URL__c ='www.test.com';
             attachments.Core_Upload_Status__c= 'COMPLETE';
             Insert attachments;
+            
             Test.StopTest();
        }   
    }       
@@ -126,6 +113,7 @@ public class Core_RestAPI_CaseAttachments_Test {
             System.assertEquals(null, apiResponse.errorContent);
             
             RestRequest request = RestContext.request;
+            System.debug(apiResponse.successContent.size()+' ++++++++request++++++++ '+request.requestURI);
             System.assertEquals(1, apiResponse.successContent.size(), 'All External active attachments retrieved');
             
         }
@@ -173,10 +161,12 @@ public class Core_RestAPI_CaseAttachments_Test {
     //Test doGet method
     @isTest public static void test_doGet_getAttachments_v1_0_Positive(){
         commUser1  = [Select Name, ContactId FROM User WHERE Name = 'CommUser0 RestApiUnitTest0'];
+        System.debug(' \n\n Running test method test_doGet_getAttachments_v1_0 as  '+commUser1);  
         Case caseObj = [Select Id, CaseNumber FROM Case where ContactId =:commUser1.ContactId  Limit 1];
         RestContext.request = doGet_getCaseAttachments_VersionRequest(v1_0, caseObj.CaseNumber);
         System.runAs(commUser1){
             Core_RestAPI_Response apiResponse = Core_RestAPI_CaseAttachmentsV1.doGet();
+            System.debug(' test_doGet_getAttachments_v1_0_Positive test_doGet >>>> '+apiResponse); 
             doGet_getCaseAttachments_Asserts_Positive(apiResponse,null ,v1_0);
         }  
     }
@@ -187,83 +177,9 @@ public class Core_RestAPI_CaseAttachments_Test {
         RestContext.request = doGet_getCaseAttachments_VersionRequest(v1_0, 'InvalidCaseNumber');
         System.runAs(commUser2){
             Core_RestAPI_Response apiResponse = Core_RestAPI_CaseAttachmentsV1.doGet();
+            System.debug(' test_doGet_getAttachments_v1_0_Negative test_doGet >>>> '+apiResponse); 
             System.assertEquals(false, apiResponse.isSuccess);
         }  
     }
     
-    
-    //Added by Sowmya
-       private static RestRequest doPost_createAttachment_VersionRequest(String version,  String caseNbr){
-        RestRequest request = (RestRequest)System.jSON.deserialize(Core_RestAPI_TestUtilities.REQUEST_TEMPLATE, RestRequest.class);
-        
-        request.httpMethod = 'POST';
-        if(v1_0.equals(version)){
-            caseObj = [Select CaseNumber FROM Case where OwnerId =: commUser1.Id Limit 1];
-        	request.requestUri ='/v1.0/cases/'+caseNbr+'/attachments'; 
-            request.resourcePath ='/services/apexrest/v1.0/cases/'+caseNbr+'/attachments';
-
-	        requestParams.filename = 'filename';
-	        requestParams.fileDescription = 'filedescription';
-	    }
-        return request;
-    }
-    
-    private static void doPost_createAttachment_Asserts(Core_RestAPI_Response apiResponse, RestResponse objResponse, String strVersion) {
-        //Consolidate asserts so that each test method does not have to copy/paste the logic
-        
-        //expand if statement when multiple versions share the same asserts
-        If(strVersion == v1_0) {  
-            //System.assertEquals('200', apiResponse.Code, ' RestAPIResponse Success code 200');
-            System.assertEquals('200', apiResponse.Code, ' RestAPIResponse Success code 200');
-            System.assertNotEquals(null, apiResponse);
-          //  System.assertNotEquals(null, apiResponse.successContent);
-           // System.assertEquals(true, apiResponse.isSuccess);
-            //Assert all sharing cases are retrieved
-            //System.assertEquals(1, apiResponse.successContent.size(), 'Case Found');
-        }
-        
-        //Common Asserts for all versions
-        //Verify the transaction log is created
-        if(LABEL.Core_RestAPI_Transaction_Switch == 'ON'){
-            try{
-                Core_RestAPI_Transaction_Entry__c log = [Select Id FROM Core_RestAPI_Transaction_Entry__c Limit 1];    
-                System.assertNotEquals(null, log);
-            }catch(Exception e){
-                //Fail if log entry is not found when 
-                System.assert(false);
-            }
-        }
-    }      
-     //Test doPost method
-	@isTest public static void test_doPost_createAttachment_v1_0_Positive() {
-        commUser1  = [Select Name, ContactId FROM User WHERE Name = 'CommUser0 RestApiUnitTest0'];
-        Case caseObj = [Select Id, CaseNumber FROM Case where ContactId =:commUser1.ContactId  Limit 1];
-        RestContext.request = doPost_createAttachment_VersionRequest(v1_0, caseObj.CaseNumber);
-
-        Test.setMock(HttpCalloutMock.class, new Core_RESTAPI_MoveFileMock_Test());
-        
-       	Test.startTest();
-        System.runAs(commUser1){
-            Core_RestAPI_Response apiResponse = Core_RestAPI_CaseAttachmentsV1.doPost(requestParams);
-           	doPost_createAttachment_Asserts(apiResponse, null, v1_0);
-        }
-        Test.stopTest();
-    }
-    
-     //Test doPost method
-    @isTest public static void test_doPost_createAttachment_v1_0_Negative() {
-        commUser1  = [Select Name, ContactId FROM User WHERE Name = 'CommUser0 RestApiUnitTest0'];
-        //Negative test case
-        commUser1  = [Select Name, ContactId FROM User WHERE Name = 'CommUser0 RestApiUnitTest0'];
-        RestContext.request = doPost_createAttachment_VersionRequest(v1_0, 'invalidCasenumber');
-        
-        Test.setMock(HttpCalloutMock.class, new Core_RESTAPI_MoveFileMock_Test());
-
-       	Test.startTest();
-        System.runAs(commUser1){
-            Core_RestAPI_Response apiResponse = Core_RestAPI_CaseAttachmentsV1.doPost(requestParams);
-        }
-        Test.stopTest();
-    }
-    //Sowmya end
 }

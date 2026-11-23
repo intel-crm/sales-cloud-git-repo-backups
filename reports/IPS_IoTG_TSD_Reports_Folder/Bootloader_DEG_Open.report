@@ -47,7 +47,6 @@
     </columns>
     <description>ABL/Bootloader DEG open tickets</description>
     <filter>
-        <booleanFilter>(1 OR 5) AND 2 AND 3 AND 4</booleanFilter>
         <criteriaItems>
             <column>Case.Core_External_Issue_Category__c</column>
             <columnToColumn>false</columnToColumn>
@@ -75,13 +74,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
             <value>Close-Pending</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Case.Core_External_Issue_Category__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>ABL</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

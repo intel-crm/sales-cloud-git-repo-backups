@@ -6,5 +6,5 @@
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>THALES AIR SYSTEMS SAS Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>THALESAIRSYSTEMSSASCustomerManager</parentRole>
 </Role>

@@ -49,19 +49,22 @@
     <columns>
         <field>RECORDTYPE</field>
     </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Lead.SWS_Software_Lead__c</field>
-    </columns>
     <description>RT:LEADS</description>
     <filter>
-        <booleanFilter>(1 OR 4) AND 2 AND 3</booleanFilter>
+        <booleanFilter>((1 AND 2) OR 5) AND 3 AND 4</booleanFilter>
+        <criteriaItems>
+            <column>CREATED</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>eloqua</value>
+        </criteriaItems>
         <criteriaItems>
             <column>RECORDTYPE</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>Lead.Sales_Lead,Lead.Partner_Lead</value>
+            <value>Lead.Partner_Lead</value>
         </criteriaItems>
         <criteriaItems>
             <column>Lead.Core_Lead_State__c</column>

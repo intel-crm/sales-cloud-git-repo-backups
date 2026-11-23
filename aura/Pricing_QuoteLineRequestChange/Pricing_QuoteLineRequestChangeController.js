@@ -102,7 +102,7 @@
                 }
                
                 let oldQuoteLine = JSON.parse(JSON.stringify(response.getReturnValue()));  //NOSONAR
-                oldQuoteLine.Pricing_Backdate_Reason_Txt__c = oldQuoteLine.Pricing_Backdate_Reason_Txt__c != undefined ? oldQuoteLine.Pricing_Backdate_Reason_Txt__c : '';
+                //let isRPMUser = component.get('v.isRPM');
                 oldQuoteLine.Pricing_Consumption_Platform__c = oldQuoteLine.Pricing_Consumption_Platform__c != undefined ? oldQuoteLine.Pricing_Consumption_Platform__c : '';
                 oldQuoteLine.Pricing_Consumption_Sale_Geo__c = oldQuoteLine.Pricing_Consumption_Sale_Geo__c != undefined ? oldQuoteLine.Pricing_Consumption_Sale_Geo__c : '';
                 oldQuoteLine.Pricing_Consumption_Country__c = oldQuoteLine.Pricing_Consumption_Country__c != undefined ? oldQuoteLine.Pricing_Consumption_Country__c : '';
@@ -132,9 +132,6 @@
                     } else {
                         component.set('v.disableBackDateReason', 'true');
                         component.set('v.backDateReasonValue', '');
-                        // FIX : TWC1972-8059 : BackDate Reason value is getting stored in backend
-                        component.set('v.isBakcDateReasonChanged', 'false');
-                        component.set('v.quoteLine.Pricing_Backdate_Reason_Txt__c', '');
                     }
                     /*let maxDate = todayDateValue;
                     if (maxDate < quoteLineObject.Pricing_Revised_Pricing_Start_Date_dt__c) {
@@ -249,9 +246,6 @@
         } else {
             component.set('v.disableBackDateReason', 'true');
             component.set('v.backDateReasonValue', '');
-            // FIX : TWC1972-8059 : BackDate Reason value is getting stored in backend
-            component.set('v.isBakcDateReasonChanged', 'false');
-            component.set('v.quoteLine.Pricing_Backdate_Reason_Txt__c', '');
         }
     },
     onAdditionalCommentsChange: function (component, event, helper) {

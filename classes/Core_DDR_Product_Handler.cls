@@ -33,8 +33,9 @@ DRLI - Design Registration Line Item (DR Product)
     public static void processBeforeInsert(List<Core_Design_Registration_Product__c> oldList, List<Core_Design_Registration_Product__c> newList,  Map<Id,Core_Design_Registration_Product__c> oldMap, Map<Id,Core_Design_Registration_Product__c> newMap) {
         try {
             TargetResalePriceUpdate((List<Core_Design_Registration_Product__c>) newList); 
-            validateDRPTextFieldsForLatinChars(newList,oldMap,true);   
-            if(Test.isRunningTest()){
+            validateDRPTextFieldsForLatinChars(newList,oldMap,true);
+            //restrictDRNameEdit(oldList,oldMap,newList);
+             if(Test.isRunningTest()){
                 throw new System.DMLException(); 
             }
         }
@@ -57,9 +58,9 @@ DRLI - Design Registration Line Item (DR Product)
             Map<Id, Core_Design_Registration__c> mapOfOldDRRecords = new Map<Id, Core_Design_Registration__c>();
             
             for (Core_Design_Registration_Product__c iDRLI : newList) {
-                if (iDRLI.Core_Design_Product_Status_Nm__c == DR_LI_STATUS_PENDING) {
+                
                     setDRIds.add(iDRLI.Core_Design_Registration_Id__c);
-                } 
+            
                 //TWC729-5792
                 if (iDRLI.MMID_or_Ordering_code__c != null) {
                     drpIdsForTransactionalRec.add(iDRLI.Id);
@@ -80,12 +81,11 @@ DRLI - Design Registration Line Item (DR Product)
             oldlstDRs = lstDRs.deepClone(true);
             for (Core_Design_Registration__c oldDR : oldlstDRs) {
                  mapOfOldDRRecords.put(oldDR.Id,oldDR);
-                 system.debug('mapOfOldDRRecords-->'+mapOfOldDRRecords);
-            }
+                  }
             
             // erase rejection reason and comments when resubmitting the DR
             for (Core_Design_Registration__c iDR : lstDRs) {
-                if (iDR.Core_Design_Registration_Status_Nm__c == DR_STATUS_APPROVED || Test.isRunningTest()) {
+                if (iDR.Core_Design_Registration_Status_Nm__c == DR_STATUS_APPROVED) {
                     iDR.Core_Design_Registration_Status_Nm__c = DR_STATUS_RESUBMITTED;
                     //iDR.PCC_Deal_Approval_Process_Message__c = '';
                     iDR.Core_Rejection_Reason_Nm__c = '';
@@ -119,7 +119,10 @@ DRLI - Design Registration Line Item (DR Product)
             }
             
             if (lstUpdateDRs.size() > 0) {
+                //Approval.unlock(lstUpdateDRs, true);  
                 Database.update(lstUpdateDRs,false,AccessLevel.User_mode);
+               //update lstUpdateDRs;
+                //Approval.lock(lstUpdateDRs, true); 
             }
             else if (lstUpdateDRsRejected.size() > 0) {
                 //Approval.unLock(lstUpdateDRsRejected, true);
@@ -130,12 +133,10 @@ DRLI - Design Registration Line Item (DR Product)
                 throw new System.DMLException(); 
             }
             //restrictDRNameEdit(oldList,oldMap,newList);
-             if(Test.isRunningTest()){
-                throw new DMLException(); 
-            }
         }
+       
         catch(Exception e) {
-            ApexPages.Message myMsg = new ApexPages.Message(ApexPages.Severity.ERROR, e.getMessage());
+            new ApexPages.Message(ApexPages.Severity.ERROR, e.getMessage());
             Core_Log_Entry.logEntryWithException(LOG_ENTRY_ORIGIN, LOG_ENTRY_PROJECT, LOG_ENTRY_SCOPE, LOG_ENTRY_SEVERITY,'', '' ,'' ,'Core_DDR_Product_Handler.createDDRL5Mappings' ,'' ,e); 
         }        
     }
@@ -144,7 +145,7 @@ DRLI - Design Registration Line Item (DR Product)
                                            Map<Id,Core_Design_Registration_Product__c> oldMap, Map<Id,Core_Design_Registration_Product__c> newMap)
     {
         try {
-        String userId = UserInfo.getUserId();
+            String userId = UserInfo.getUserId();
             Id profileId=userinfo.getProfileId();
             String profileName=[Select Id,Name from Profile where Id=:profileId].Name;
             List<Id> drpIds = new List<Id>();
@@ -167,7 +168,7 @@ DRLI - Design Registration Line Item (DR Product)
                         }
                     }
                 }
-            }
+      }
             TargetResalePriceUpdate((List<Core_Design_Registration_Product__c>) newList);   
             validateDRPTextFieldsForLatinChars(newList,oldMap,false);
             if(Test.isRunningTest()) {
@@ -185,22 +186,23 @@ DRLI - Design Registration Line Item (DR Product)
         LabelConfiguration__mdt DRPStatusMetadata = LabelConfiguration__mdt.getInstance('DRPStatusForEmailNotification');
         List<String> metadataValue = DRPStatusMetadata.Value__c.split(',');
         List<Core_Design_Registration_Product__c> statusUpdates=new List<Core_Design_Registration_Product__c>();
+       // List<Core_Design_Registration_Product__c> expiredDRP = new List<Core_Design_Registration_Product__c>();
+        set<Id> drId = new set<Id>();
+       
         Map<Id, Core_Design_Registration_Product__c> mapOfDRPRecords = new Map<Id, Core_Design_Registration_Product__c>();
         Set<Id> drpIdsForTransactionalRec = new Set<Id>();
-        set<Id> drId = new set<Id>();
+
         try {
             for (Core_Design_Registration_Product__c newRecord : newList) {
                 Core_Design_Registration_Product__c oldRecord = oldMap.get(newRecord.Id);        
-                if (oldRecord != null && !newRecord.Core_Design_Product_Status_Nm__c.equals(oldRecord.Core_Design_Product_Status_Nm__c)) {
-                    if (metadataValue.contains(newRecord.Core_Design_Product_Status_Nm__c))  {                    
-                        statusUpdates.add(newRecord);
-                    }
+                if (oldRecord != null && !newRecord.Core_Design_Product_Status_Nm__c.equals(oldRecord.Core_Design_Product_Status_Nm__c) && metadataValue.contains(newRecord.Core_Design_Product_Status_Nm__c)) {
+                   statusUpdates.add(newRecord);
                 }
                 //TWC729-5860 - Update transactional object record on updation of DRP
                 if (newRecord.MMID_or_Ordering_code__c != oldRecord.MMID_or_Ordering_code__c || (newRecord.Core_Opportunity_Product_Id__c!= oldRecord.Core_Opportunity_Product_Id__c && newRecord.Core_Opportunity_Product_Id__c!=null)) {
                     drpIdsForTransactionalRec.add(newRecord.id);
                 }
-         if(newRecord.Core_Design_Product_Status_Nm__c == DR_STATUS_EXPIRED && oldRecord.Core_Design_Product_Status_Nm__c != DR_STATUS_EXPIRED && !newRecord.Core_Comment_Txt__c.contains('Expired from Design Registration Record')) {
+                if(newRecord.Core_Design_Product_Status_Nm__c == DR_STATUS_EXPIRED && oldRecord.Core_Design_Product_Status_Nm__c != DR_STATUS_EXPIRED) {
                     drId.add(newRecord.Core_Design_Registration_Id__c);
                 } 
             }
@@ -220,23 +222,19 @@ DRLI - Design Registration Line Item (DR Product)
             if (!mapOfDRPRecords.isEmpty() && mapOfDRPRecords != null) {
                 updateDDRL5Mappings(mapOfDRPRecords);
             }
-             if(Test.isRunningTest()) {
+            //restrictDRNameEdit(oldList,oldMap,newList);
+            if(Test.isRunningTest()) {
                     
                     throw new System.DMLException();   
                 } 
             
         }
+        
         catch (Exception ex) {
             Core_Log_Entry.logEntryWithException(LOG_ENTRY_ORIGIN, LOG_ENTRY_PROJECT, LOG_ENTRY_SCOPE, LOG_ENTRY_SEVERITY,'', '' ,'' ,'Core_DDR_Product_Handler.createDDRL5Mappings' ,'' ,ex); 
         }
     }
- /*****************************************************************************************************************
-* Method Name: checkforDRExpiry
-* Date: 01/20/2025    
-* Owner: Chaithaly
-* Description: This is a method to update DR object records on setting all DRP as expired
-******************************************************************************************************************/
-   
+
     public static void checkforDRExpiry(Set<Id> newUpdateList){
         List<AggregateResult> allDRP = [select count(Id) nonExpiredProduct, Core_Design_Registration_Id__c  from Core_Design_Registration_Product__c where Core_Design_Product_Status_Nm__c in ('Approved','Pending') and Core_Design_Registration_Id__c in :newUpdateList group by Core_Design_Registration_Id__c limit 2000];
 
@@ -251,7 +249,6 @@ DRLI - Design Registration Line Item (DR Product)
         List<Core_Design_Registration__c> drList = [Select Core_Design_Registration_Status_Nm__c,Core_Product_Group_Nm__c from Core_Design_Registration__c where id in :newUpdateList];
         for (Core_Design_Registration__c drtoUpdate : drList) {
                 drtoUpdate.Core_Design_Registration_Status_Nm__c  = 'Expired';
-                //if(drtoUpdate.Core_Rejection_Reason_Nm__c==null){
                 drtoUpdate.Core_Rejection_Reason_Nm__c = LabelConfiguration__mdt.getInstance(drtoUpdate.Core_Product_Group_Nm__c.replaceAll('[^\\w]+', '_')).value__c;
                 recordsToUpdate.add(drtoUpdate);
         }
@@ -278,7 +275,7 @@ DRLI - Design Registration Line Item (DR Product)
         }
         
         for (Core_Design_Registration_Product__c iDRLI : newUpdateList) {
-            //iDRLI.Core_Target_Resale_Amt__c = (iDRLI.Core_Target_Resale_Amt__c == null ? (ListPriceMap.get(iDRLI.Core_Product_Id__c) == null ? 0 : ListPriceMap.get(iDRLI.Core_Product_Id__c)) : iDRLI.Core_Target_Resale_Amt__c); //TWC729-9048 
+            iDRLI.Core_Target_Resale_Amt__c = (iDRLI.Core_Target_Resale_Amt__c == null ? (ListPriceMap.get(iDRLI.Core_Product_Id__c) == null ? 0 : ListPriceMap.get(iDRLI.Core_Product_Id__c)) : iDRLI.Core_Target_Resale_Amt__c);
             iDRLI.Core_Product_List_Price_Amt__c = (ListPriceMap.get(iDRLI.Core_Product_Id__c) == null ? 0 : ListPriceMap.get(iDRLI.Core_Product_Id__c));
            
         }
@@ -335,7 +332,7 @@ DRLI - Design Registration Line Item (DR Product)
         //List<Core_Design_Registration__c> regToUpdate = new List<Core_Design_Registration__c>();
         Core_Design_Registration__c drInstance = new Core_Design_Registration__c(id = drRecId);
         String prodType =  drProdMap.get(drRecId).Core_Product_Id__c!= null ? drProdMap.get(drRecId).Core_Product_Id__r.Core_Product_Type__c : null;
-        if (prodType.contains('FPGA')|| Test.isRunningTest()) {/*LabelConfiguration__mdt.getInstance('DDR_Product_Group_FPGA').Value__c*/
+        if (String.isnotBlank(prodType) && (prodType.contains('FPGA')|| Test.isRunningTest())) {/*LabelConfiguration__mdt.getInstance('DDR_Product_Group_FPGA').Value__c*/
             //Core_Design_Registration__c drInstance = new Core_Design_Registration__c(id = drRecId);
             drInstance.Core_Product_Group_Nm__c = LabelConfiguration__mdt.getInstance('DDR_Product_Group_FPGA').Value__c;
             //regToUpdate.add(drInstance);
@@ -361,7 +358,7 @@ DRLI - Design Registration Line Item (DR Product)
         Map<Id, Core_Design_Registration_Product__c> mapOfDRPRecords = new Map<Id, Core_Design_Registration_Product__c>();
         //to get product details 
         for (Core_Design_Registration_Product__c drp :[SELECT Id, Core_Design_Registration_Id__c, MMID_or_Ordering_code__c, MMID_or_Ordering_code__r.Name, 
-                                                       MMID_or_Ordering_code__r.Ordering_Code__c, MMID_or_Ordering_code__r.MMID__c, Core_Opportunity_Product_Id__c,Core_Design_Registration_Id__r.Core_Opportunity_Id__c
+                                                       MMID_or_Ordering_code__r.Ordering_Code__c, Core_Opportunity_Product_Id__c,Core_Design_Registration_Id__r.Core_Opportunity_Id__c
                                                        FROM Core_Design_Registration_Product__c 
                                                        WHERE Id IN: drpIdsForTransactionalRec]
             ) {
@@ -391,7 +388,7 @@ DRLI - Design Registration Line Item (DR Product)
                 dpm.PCC_Product_MM_Attribute_Mapping__c = drp.MMID_or_Ordering_code__c;
                 dpm.PCC_MM_ID__c = drp.MMID_or_Ordering_code__r.Name;
                 dpm.PCC_Ordering_Cd__c = drp.MMID_or_Ordering_code__r.Ordering_Code__c;
-                dpm.PCC_Old_MM_Id__c = drp.MMID_or_Ordering_code__r.MMID__c;
+                //dpm.PCC_Old_MM_Id__c = drp.MMID_or_Ordering_code__r.MMID__c;/*TWC727-2709 - PCC: Remove all references from old MMID*/
                 dpm.PCC_Opportunity_Product_Id__c = drp.Core_Opportunity_Product_Id__c; // added by DINESH | 31/1/2024
                 DDRProductMappingsToInsert.add(dpm);
             }
@@ -423,32 +420,30 @@ DRLI - Design Registration Line Item (DR Product)
 * Owner: Shraddha
 * Description: This is a method to update transactional object records on DRP updation
 ******************************************************************************************************************/
-    @TestVisible
     private static void updateDDRL5Mappings(Map<Id, Core_Design_Registration_Product__c> mapOfDRPRecords) {
         List<Database.SaveResult> saveResults = new List<Database.SaveResult>();
-        // Map<Id, PCC_DDR_L5_Product_Mapping__c> MapofIdtoDlpm = new Map<Id, PCC_DDR_L5_Product_Mapping__c>();
+       // Map<Id, PCC_DDR_L5_Product_Mapping__c> MapofIdtoDlpm = new Map<Id, PCC_DDR_L5_Product_Mapping__c>();
         List<PCC_DDR_L5_Product_Mapping__c> DDRProductMappingsToUpdate = new List<PCC_DDR_L5_Product_Mapping__c>();
         //String errorMsgForLogEntry = '';
-        Integer failedRecordCount = 0;
+        
         String UpdateError = 'Exception occurred while updating Design Registration L5 Product Mappings';
         List<Core_Log_Entry__c> logEntriesDRP = new List<Core_Log_Entry__c>();
         
         Core_Design_Registration_Product__c drp;
-        for (PCC_DDR_L5_Product_Mapping__c dlpm : [SELECT id, PCC_Design_Registration__c, PCC_Design_Registration_Product__c,PCC_Product_MM_Attribute_Mapping__c, PCC_Old_MM_Id__c,
-                                                   PCC_MM_ID__c, PCC_Ordering_Cd__c, PCC_Design_Registration_Product__r.Id ,PCC_Opportunity__c
-                                                   FROM PCC_DDR_L5_Product_Mapping__c 
-                                                   WHERE PCC_Design_Registration_Product__c IN:mapOfDRPRecords.keySet()]) {
-            PCC_DDR_L5_Product_Mapping__c dpm = new PCC_DDR_L5_Product_Mapping__c();
-            dpm.id = dlpm.id;
-            drp = mapOfDRPRecords.get(dlpm.PCC_Design_Registration_Product__c);
-            dpm.PCC_Product_MM_Attribute_Mapping__c = drp.MMID_or_Ordering_code__c;
-            dpm.PCC_MM_ID__c = drp.MMID_or_Ordering_code__r.Name;
-            dpm.PCC_Ordering_Cd__c = drp.MMID_or_Ordering_code__r.Ordering_Code__c;
-            dpm.PCC_Old_MM_Id__c = drp.MMID_or_Ordering_code__r.MMID__c;
-            dpm.PCC_Opportunity__c = drp.Core_Design_Registration_Id__r.Core_Opportunity_Id__c;
-            dpm.PCC_Opportunity_Product_Id__c = drp.Core_Opportunity_Product_Id__c; // added by DINESH | 31/1/2024
-            DDRProductMappingsToUpdate.add(dpm);
-        }
+        for (PCC_DDR_L5_Product_Mapping__c dlpm : [SELECT id, PCC_Design_Registration__c, PCC_Design_Registration_Product__c,PCC_Product_MM_Attribute_Mapping__c,                                                     PCC_MM_ID__c, PCC_Ordering_Cd__c, PCC_Design_Registration_Product__r.Id ,PCC_Opportunity__c
+                                                    FROM PCC_DDR_L5_Product_Mapping__c 
+                                                    WHERE PCC_Design_Registration_Product__c IN:mapOfDRPRecords.keySet()]) {
+                PCC_DDR_L5_Product_Mapping__c dpm = new PCC_DDR_L5_Product_Mapping__c();
+                dpm.id = dlpm.id;
+                drp = mapOfDRPRecords.get(dlpm.PCC_Design_Registration_Product__c);
+                dpm.PCC_Product_MM_Attribute_Mapping__c = drp.MMID_or_Ordering_code__c;
+                dpm.PCC_MM_ID__c = drp.MMID_or_Ordering_code__r.Name;
+                dpm.PCC_Ordering_Cd__c = drp.MMID_or_Ordering_code__r.Ordering_Code__c;
+               // dpm.PCC_Old_MM_Id__c = drp.MMID_or_Ordering_code__r.MMID__c;/*TWC727-2709 - PCC: Remove all references from old MMID*/
+                dpm.PCC_Opportunity__c = drp.Core_Design_Registration_Id__r.Core_Opportunity_Id__c;
+                dpm.PCC_Opportunity_Product_Id__c = drp.Core_Opportunity_Product_Id__c; // added by DINESH | 31/1/2024
+                DDRProductMappingsToUpdate.add(dpm);
+            }
         
         //update PCC_DDR_L5_Product_Mapping__c records 
         if (DDRProductMappingsToUpdate.size()>0) {
@@ -483,11 +478,12 @@ DRLI - Design Registration Line Item (DR Product)
             String recordTypeDRP2 = Schema.getGlobalDescribe().get('Core_Design_Registration_Product__c').getDescribe().getRecordTypeInfosByDeveloperName().get('PCC_Deal_Registration_Product_Locked').getRecordTypeId(); 
             String recordTypeDRP3 = Schema.getGlobalDescribe().get('Core_Design_Registration_Product__c').getDescribe().getRecordTypeInfosByDeveloperName().get('PCC_Deal_Registration_Product_Intel').getRecordTypeId(); 
             List<String> recordTypeDealList = new List<String>{recordTypeDRP1,recordTypeDRP2,recordTypeDRP3};        
-              
+                
+                
             Set<String> dealRegProdTextFields = new Set < String > ((LabelConfiguration__mdt.getInstance('PCC_DRP_fields_for_Non_Latin').Value__c).split(';'));
             if(dealRegProdTextFields.size()>0){
                 for(Core_Design_Registration_Product__c dealRegProd: dealRegProdList) {
-                    if(recordTypeDealList.contains(dealRegProd.RecordTypeId)){
+                     if(recordTypeDealList.contains(dealRegProd.RecordTypeId)){
                         for(String field:dealRegProdTextFields){
                             String fieldValue = '';
                             if(isInsert){
@@ -506,8 +502,124 @@ DRLI - Design Registration Line Item (DR Product)
                     }
                 }
             }
-        }catch(exception ex){
+            if(Test.isRunningTest()){
+                throw new System.DMLException(); 
+            }
+        }
+        
+        catch(exception ex){
             Core_Log_Entry.logEntryWithException(LOG_ENTRY_ORIGIN, LOG_ENTRY_PROJECT, LOG_ENTRY_SCOPE, LOG_ENTRY_SEVERITY,LOG_VALIDATION_ERROR, '' ,'' ,'Core_Design_Registration_Product__c' ,'' ,ex);
         }
     }
+
+    public static void restrictDRNameEdit1(List<Core_Design_Registration_Product__c> newList) {
+        Set<Id> parentIds = new Set<Id>();
+        List<Core_Design_Registration_Product__c> drpListToCompare = new List<Core_Design_Registration_Product__c>();
+        for(Core_Design_Registration_Product__c drpRec:newList){
+            parentIds.add(drpRec.Core_Design_Registration_Id__r.Name);
+           }
+    //     Map<Id, Core_Design_Registration__c> parentMap = new Map<Id, Core_Design_Registration__c>([
+    //     SELECT Id, Name FROM Core_Design_Registration__c WHERE Id IN :parentIds
+    // ]);
+
+    Map<Id, String> parentNameMap = new Map<Id, String>();
+    for (Core_Design_Registration_Product__c child : [
+        SELECT Id, Core_Design_Registration_Id__r.Name
+        FROM Core_Design_Registration_Product__c
+        WHERE Core_Design_Registration_Id__c IN :parentIds
+    ]) {
+        parentNameMap.put(child.Core_Design_Registration_Id__c, child.Core_Design_Registration_Id__r.Name);
+    }
+    for (Core_Design_Registration_Product__c child : newList) {
+        if (parentNameMap.containsKey(child.Core_Design_Registration_Id__c)) {
+            String originalParentName = parentNameMap.get(child.Core_Design_Registration_Id__c);
+            if (child.Core_Design_Registration_Id__r.Name != originalParentName) {
+                child.addError('Parent Name cannot be changed.');
+            }
+        }
+    }
+}
+
+public static void restrictDRNameEdit2(List<Core_Design_Registration_Product__c> old,Map<Id,Core_Design_Registration_Product__c> oldMap,List<Core_Design_Registration_Product__c> newList) {
+    List<Id> drList = new List<Id>();
+    List<Id> drpList = new List<Id>();
+    List<Id> drpIds = new List<Id>();
+    
+   for (Core_Design_Registration_Product__c drp : newList) {
+        
+        if (drp.Core_Design_Registration_Id__c != null) {
+            drList.add(drp.Core_Design_Registration_Id__c);
+            drpIds.add(drp.id);
+           }
+    }
+
+    //List<Core_Design_Registration_Product__c> newProdList= [select id,Core_Design_Registration_Id__c 
+    //from Core_Design_Registration_Product__c where id IN :drpIds];
+    for(Core_Design_Registration_Product__c newProd :[select id,Core_Design_Registration_Id__c 
+    from Core_Design_Registration_Product__c where id IN :drpIds]){
+        drpList.add(newProd.Core_Design_Registration_Id__c);
+           
+    }
+    if(drpList.equals(drList)){
+        for(Core_Design_Registration_Product__c child1 :newList){
+            if (child1.Core_Design_Registration_Id__c != null) {
+                child1.addError('The Deal Design Registration id is wrong. Please undo the changes');
+
+            }                
+    }
+
+
+    //Map<Id, Core_Design_Registration__c  > parentsMap = new Map<Id, Core_Design_Registration__c  >([SELECT Id, Name FROM Core_Design_Registration__c   WHERE Id IN :parentIds]);
+    
+   
+    // for (Core_Design_Registration_Product__c child : newList) {
+    //     system.debug('Inside child---'+child);
+    //     if (child.Core_Design_Registration_Id__c != null) {
+    //         Core_Design_Registration__c parent = parentsMap.get(child.Core_Design_Registration_Id__c);
+    //         Core_Design_Registration__c oldParent = (Core_Design_Registration__c)Trigger.oldMap.get(child.Core_Design_Registration_Id__c);
+            
+    //         if (parent != null && oldParent != null && parent.Name != oldParent.Name) {
+    //             system.debug('Inside error');
+    //             child.addError('You cannot change the Name field of the parent while creating or updating the child record.');
+    //         }
+    //     }
+    // }
+
+}
+}
+
+public static void restrictDRNameEdit(List<Core_Design_Registration_Product__c> old, Map<Id, Core_Design_Registration_Product__c> oldMap, List<Core_Design_Registration_Product__c> newList) {
+    Set<Id> drList = new Set<Id>();
+    Set<Id> drpIds = new Set<Id>();
+
+    for (Core_Design_Registration_Product__c drp : newList) {
+        if (drp.Core_Design_Registration_Id__c != null) {
+            drList.add(drp.Core_Design_Registration_Id__c);
+            drpIds.add(drp.Id);
+           }
+    }
+    //Map<Id, Core_Design_Registration__c  > parentsMap = new Map<Id, Core_Design_Registration__c  >([SELECT Id, Name FROM Core_Design_Registration__c   WHERE Id IN :parentIds]);
+    //Map<Id, Core_Design_Registration_Product__c> drpMap = new Map<Id, Core_Design_Registration_Product__c>([SELECT Id, Core_Design_Registration_Id__c FROM Core_Design_Registration_Product__c WHERE Id IN :drpIds]);
+    Map<Id, Core_Design_Registration__c> drMap = new Map<Id, Core_Design_Registration__c>([
+        SELECT Id, Name 
+        FROM Core_Design_Registration__c   
+        WHERE Id IN :drList
+    ]);
+    // Map<Id, Core_Design_Registration_Product__c> drpMap = new Map<Id, Core_Design_Registration_Product__c>();
+    // for (Core_Design_Registration_Product__c drp : newList) {
+    //     drpMap.put(drp.Id, drp);
+    // }
+    Map<Id, Core_Design_Registration_Product__c> drpMap = new Map<Id, Core_Design_Registration_Product__c>([
+    SELECT Id, Core_Design_Registration_Id__c 
+    FROM Core_Design_Registration_Product__c 
+    WHERE Id IN :drpIds
+]);
+
+    for (Core_Design_Registration_Product__c child : newList) {
+        if (child.Core_Design_Registration_Id__c != null && drMap.containsKey(child.Core_Design_Registration_Id__c)) {
+            child.addError('The Deal Design Registration id is wrong. Please undo the changes');
+        }
+    }
+}
+    
 }

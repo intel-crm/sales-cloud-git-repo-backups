@@ -1,10 +1,13 @@
 ({
     editRecord: function (component, event, helper, quoteLineId) {
+        console.log('quoteLineId::'+quoteLineId);
+       
         const editRecordEvent = $A.get("e.force:editRecord");
         editRecordEvent.setParams({
             navigationLocation: "RELATED_LIST_ROW",
             recordId: quoteLineId
         });
+        console.log('editRecordEvent.fire():'+editRecordEvent);
         editRecordEvent.fire();
     },
     deleteRecord: function (component, event, helper, quoteLineId) {
@@ -120,6 +123,7 @@
         $A.enqueueAction(action);
     },
     showToastMessage: function (component, event, helper, type, message, title, modeStr) {
+        console.log('SHOW TOAST IN:'+message);
         const toastEvent = $A.get("e.force:showToast");
         toastEvent.setParams({
             title: title,
@@ -390,6 +394,8 @@
     getRejectionReasonsValue: function (component, event) {
         const rid = component.get("v.recordId");
         var action = component.get("c.getRejectionReasonsValue");
+        console.log('Enetered the getRejectionReasonsValue method' + action);
+        console.log('Record Id: ' + rid);
         action.setParams({
             recId: rid
         });

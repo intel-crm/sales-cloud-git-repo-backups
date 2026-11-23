@@ -177,7 +177,7 @@
         <caseSensitive>false</caseSensitive>
         <externalId>false</externalId>
         <label>Legal Agreement Code</label>
-        <length>30</length>
+        <length>20</length>
         <required>true</required>
         <trackTrending>false</trackTrending>
         <type>Text</type>
@@ -237,6 +237,11 @@
             <valueSetDefinition>
                 <sorted>false</sorted>
                 <value>
+                    <fullName>Not Applicable</fullName>
+                    <default>false</default>
+                    <label>Not Applicable</label>
+                </value>
+                <value>
                     <fullName>Distributor</fullName>
                     <default>false</default>
                     <label>Distributor</label>
@@ -244,7 +249,7 @@
                 <value>
                     <fullName>FPGA Designer</fullName>
                     <default>false</default>
-                    <label>FPGA Design Services</label>
+                    <label>FPGA Designer</label>
                 </value>
                 <value>
                     <fullName>Independent Software Vendor</fullName>
@@ -259,44 +264,22 @@
                 <value>
                     <fullName>Seller</fullName>
                     <default>false</default>
-                    <label>Solution Provider</label>
+                    <label>Seller</label>
                 </value>
                 <value>
                     <fullName>Service Provider</fullName>
                     <default>false</default>
-                    <label>Cloud &amp; Comms Service Provider</label>
+                    <label>Service Provider</label>
                 </value>
                 <value>
                     <fullName>Solution Integrator</fullName>
                     <default>false</default>
-                    <label>Service Integrator</label>
+                    <label>Solution Integrator</label>
                 </value>
                 <value>
                     <fullName>Sponsor</fullName>
                     <default>false</default>
                     <label>Sponsor</label>
-                </value>
-                <value>
-                    <fullName>Original Equipment Manufacturer (OEM)</fullName>
-                    <default>false</default>
-                    <label>Original Equipment Manufacturer (OEM)</label>
-                </value>
-                <value>
-                    <fullName>Guest</fullName>
-                    <default>false</default>
-                    <label>Guest</label>
-                </value>
-                <value>
-                    <fullName>Not Applicable</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Not Applicable</label>
-                </value>
-                <value>
-                    <fullName>OEM</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>OEM</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -374,10 +357,6 @@
                 <default>false</default>
             </values>
             <values>
-                <fullName>Guest</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Independent Software Vendor</fullName>
                 <default>false</default>
             </values>
@@ -386,7 +365,7 @@
                 <default>false</default>
             </values>
             <values>
-                <fullName>Original Equipment Manufacturer %28OEM%29</fullName>
+                <fullName>Not Applicable</fullName>
                 <default>false</default>
             </values>
             <values>

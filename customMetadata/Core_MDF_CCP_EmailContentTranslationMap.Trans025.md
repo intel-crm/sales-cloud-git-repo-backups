@@ -72,10 +72,10 @@
     </values>
     <values>
         <field>Core_MDF_Program__c</field>
-        <value xsi:type="xsd:string">Client</value>
+        <value xsi:type="xsd:string">Client Co-Marketing Fund</value>
     </values>
     <values>
         <field>Core_MDF_Translated_Program__c</field>
-        <value xsi:type="xsd:string">クライアント</value>
+        <value xsi:type="xsd:string">クライアント共同マーケティング・ファンド (CCF)</value>
     </values>
 </CustomMetadata>

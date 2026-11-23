@@ -40,7 +40,7 @@ public class Pricing_PriceRulesEmailController_Test {
             
             Pricing_Approval_Price_Rules__c approvalPriceRule = new Pricing_Approval_Price_Rules__c(
                 Pricing_Rule_Name__c = 'Test Rule',
-            Pricing_Approval_Status__c = 'Draft',
+            Pricing_Approval_Status__c = 'Submitted',
             Pricing_End_Date__c = Date.today().addMonths(1),
             Pricing_Quote_Type__c = 'Client',
             Pricing_Account__c = acc.Id,

@@ -1,0 +1,12 @@
+{
+  "activeViewId" : "972bb4e8-e5e3-4de4-8565-2634f3dbca5f",
+  "appPageId" : "6b36c665-0609-49d0-9746-033feed642b2",
+  "configurationTags" : [ ],
+  "devName" : "updatehostdetail__c",
+  "id" : "ae8da30b-68ae-4b4c-ac62-a8b03a1e2cc9",
+  "label" : "update host detail",
+  "pageAccess" : "UseParent",
+  "routeType" : "custom-update-host-detail",
+  "type" : "route",
+  "urlPrefix" : "update-host-detail"
+}

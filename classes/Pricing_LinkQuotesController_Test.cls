@@ -1,10 +1,3 @@
-/**
- * @description       : 
- * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
- * @group             : 
- * @last modified on  : 03-06-2026
- * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
-**/
 @isTest
 public class Pricing_LinkQuotesController_Test {
     @testSetup
@@ -19,7 +12,7 @@ public class Pricing_LinkQuotesController_Test {
             Test.startTest();
             Pricing_Test_Utility.createPriceBook();
             acc = Pricing_Test_Utility.createAccount();
-            con = Pricing_Test_Utility.createPrimaryContactWithParam(acc.Id,'Link_Quotes_Controller_test');
+            con = Pricing_Test_Utility.createPrimaryContactWithParam(acc.Id,'Link_Quote_Controller_test');
             accountExecutiveUserList = Pricing_Test_Utility.createAEUser();
             salesRepUserList = Pricing_Test_Utility.createSalesRepUser();
             AccountTeamMember accTeam = new AccountTeamMember(AccountId = acc.Id,
@@ -64,7 +57,6 @@ public class Pricing_LinkQuotesController_Test {
         System.runAs(adminUser){
             Test.startTest();
             Pricing_LinkQuotesController.getQuotes(quoteList[0].Id);
-            System.assertEquals(true, quoteList.size() > 0);
             Test.stopTest();
         }
     }
@@ -74,7 +66,6 @@ public class Pricing_LinkQuotesController_Test {
         System.runAs(extUser){
             Test.startTest();
             Pricing_LinkQuotesController.getQuotes(quoteList[0].Id);
-            System.assertEquals(true, quoteList.size() > 0);
             Test.stopTest();
         }
     }
@@ -82,7 +73,6 @@ public class Pricing_LinkQuotesController_Test {
         List<SBQQ__Quote__c> quoteList = [SELECT Id, Name, Pricing_Group_Nm__c from SBQQ__Quote__c LIMIT 1];
         Test.startTest();
         Pricing_LinkQuotesController.getQuoteLinkStatus(quoteList[0].Id);
-        System.assertEquals(true, quoteList.size() > 0);
         Test.stopTest();
     }
     static testMethod void testGetQuoteLinkStatusWGrp(){
@@ -92,14 +82,12 @@ public class Pricing_LinkQuotesController_Test {
         update quoteList;
         Test.startTest();
         Pricing_LinkQuotesController.getQuoteLinkStatus(quoteList[0].Id);
-        System.assertEquals(true, quoteList.size() > 0);
         Test.stopTest();
     }
     static testMethod void testGetQuoteGroup(){
         List<SBQQ__Quote__c> quoteList = [SELECT Id, Name, Pricing_Group_Nm__c,Pricing_Group_Nm__r.Name from SBQQ__Quote__c LIMIT 1];
         Test.startTest();
         Pricing_LinkQuotesController.getQuoteGroup(quoteList[0].Id);
-        System.assertEquals(true, quoteList.size() > 0);
         Test.stopTest();
     }
     static testMethod void testGetQuoteGroupExt(){
@@ -109,7 +97,6 @@ public class Pricing_LinkQuotesController_Test {
         System.runAs(extUser){
             Test.startTest();
             Pricing_LinkQuotesController.getQuoteGroup(quoteList[0].Id);
-            System.assertEquals(true, quoteList.size() > 0);
             Test.stopTest();
         }
     }
@@ -117,7 +104,6 @@ public class Pricing_LinkQuotesController_Test {
         List<SBQQ__Quote__c> quoteList = [SELECT Id, Name, Pricing_Group_Nm__c from SBQQ__Quote__c LIMIT 1];
         Test.startTest();
         Pricing_LinkQuotesController.findRecords(quoteList[0].Id,'Data','Quote Type');
-        System.assertEquals(true, quoteList.size() > 0);
         Test.stopTest();
     }
     static testMethod void testFindRecordsQuoteTypeExt(){
@@ -126,7 +112,6 @@ public class Pricing_LinkQuotesController_Test {
         System.runAs(extUser){
             Test.startTest();
             Pricing_LinkQuotesController.findRecords(quoteList[0].Id,'Data','Quote Type');
-            System.assertEquals(true, quoteList.size() > 0);
             Test.stopTest();
         }
     }
@@ -135,21 +120,18 @@ public class Pricing_LinkQuotesController_Test {
                                           from SBQQ__Quote__c LIMIT 1];
         Test.startTest();
         Pricing_LinkQuotesController.findRecords(quoteList[0].Id,'Q','Quote Number');
-        System.assertEquals(true, quoteList.size() > 0);
         Test.stopTest();
     }
     static testMethod void testFindRecordsProject(){
         List<SBQQ__Quote__c> quoteList = [SELECT Id, Name, Pricing_Group_Nm__c from SBQQ__Quote__c LIMIT 1];
         Test.startTest();
         Pricing_LinkQuotesController.findRecords(quoteList[0].Id,'Test','Project');
-        System.assertEquals(true, quoteList.size() > 0);
         Test.stopTest();
     }
     static testMethod void testFindRecordsEndCust(){
         List<SBQQ__Quote__c> quoteList = [SELECT Id, Name, Pricing_Group_Nm__c from SBQQ__Quote__c LIMIT 1];
         Test.startTest();
         Pricing_LinkQuotesController.findRecords(quoteList[0].Id,'End','End Customer');
-        System.assertEquals(true, quoteList.size() > 0);
         Test.stopTest();
     }
     static testMethod void testLinkQuotes(){
@@ -162,7 +144,6 @@ public class Pricing_LinkQuotesController_Test {
         }
         Test.startTest();
         Pricing_LinkQuotesController.linkQuotes(quoteNumList,quoteList[0].Id);
-        System.assertEquals(true, quoteList.size() > 0);
         Test.stopTest();
     }
     static testMethod void testLinkQuoteWoGrp(){
@@ -178,7 +159,6 @@ public class Pricing_LinkQuotesController_Test {
         update quotLstRecs;
         Test.startTest();
         Pricing_LinkQuotesController.linkQuoteWoGrp(quoteNumList,qGrp.Name,quoteList[0].Id);
-        System.assertEquals(true, quoteList.size() > 0);
         Test.stopTest();
     }
     static testMethod void testRemoveQuoteLink(){
@@ -188,7 +168,6 @@ public class Pricing_LinkQuotesController_Test {
         Pricing_Quote_Group__c qGrp = [SELECT Id, Name FROM Pricing_Quote_Group__c LIMIT 1];
         Test.startTest();
         Pricing_LinkQuotesController.removeQuoteLink(quoteList[0].Id,quoteNumList);
-        System.assertEquals(true, quoteList.size() > 0);
         Test.stopTest();
     }
     static testMethod void testGetQuoteGroupDtlsUnlinkWGrp(){
@@ -200,7 +179,6 @@ public class Pricing_LinkQuotesController_Test {
         update quoteList;
         Test.startTest();
         Pricing_LinkQuotesController.getQuoteGroupDtlsUnlink(quoteList[0].Id,qGrp.Id);
-        System.assertEquals(true, quoteList.size() > 0);
         Test.stopTest();
     }
     static testMethod void testGetQuoteGroupDtlsUnlinkWGrpTwoQuotes(){
@@ -216,7 +194,6 @@ public class Pricing_LinkQuotesController_Test {
         update quoteListUpd;
         Test.startTest();
         Pricing_LinkQuotesController.getQuoteGroupDtlsUnlink(quoteList[0].Id,qGrp.Id);
-        System.assertEquals(true, quoteList.size() > 0);
         Test.stopTest();
     }
     static testMethod void testGetQuoteGroupDtlsUnlinkWGrpExt(){
@@ -231,7 +208,6 @@ public class Pricing_LinkQuotesController_Test {
             quoteList[0].Pricing_Group_Nm__c = qGrp.Id;
             update quoteList;
             Pricing_LinkQuotesController.getQuoteGroupDtlsUnlink(quoteList[0].Id,qGrp.Id);
-            System.assertEquals(true, quoteList.size() > 0);
             Test.stopTest();
         }
     }
@@ -251,7 +227,6 @@ public class Pricing_LinkQuotesController_Test {
         System.runAs(extUser){
             Test.startTest();
             Pricing_LinkQuotesController.getQuoteGroupDtlsUnlink(quoteList[0].Id,qGrp.Id);
-            System.assertEquals(true, quoteList.size() > 0);
             Test.stopTest();
         }
     }
@@ -264,7 +239,6 @@ public class Pricing_LinkQuotesController_Test {
         Pricing_Quote_Group__c qGrp = [SELECT Id, Name FROM Pricing_Quote_Group__c LIMIT 1];
         Test.startTest();
         Pricing_LinkQuotesController.getQuoteGroupDtlsUnlink(quoteList[0].Id,qGrp.Id);
-        System.assertEquals(true, quoteList.size() > 0);
         Test.stopTest();
     }
     static testMethod void testGetQuoteGroupDtlsUnlinkWoGrpExt(){
@@ -279,7 +253,6 @@ public class Pricing_LinkQuotesController_Test {
             Test.startTest();
             Pricing_Quote_Group__c qGrp = [SELECT Id, Name FROM Pricing_Quote_Group__c LIMIT 1];
             Pricing_LinkQuotesController.getQuoteGroupDtlsUnlink(quoteList[0].Id,qGrp.Id);
-            System.assertEquals(true, quoteList.size() > 0);
             Test.stopTest();
         }
     }
@@ -298,7 +271,6 @@ public class Pricing_LinkQuotesController_Test {
         update quoteLstUpd;
         Test.startTest();
         Pricing_LinkQuotesController.verifyLinkStatus(quoteNumList);
-        System.assertEquals(true, quoteList.size() > 0);
         Test.stopTest();
     }
     static testMethod void testVerifyLinkStatusOneQuote(){
@@ -310,7 +282,6 @@ public class Pricing_LinkQuotesController_Test {
         Pricing_Quote_Group__c qGrp = [SELECT Id, Name FROM Pricing_Quote_Group__c LIMIT 1];
         Test.startTest();
         Pricing_LinkQuotesController.verifyLinkStatus(quoteNumList);
-        System.assertEquals(true, quoteList.size() > 0);
         Test.stopTest();
     }
     static testMethod void testVerifyLinkStatusOneQuoteWGrp(){
@@ -324,7 +295,6 @@ public class Pricing_LinkQuotesController_Test {
         update quoteList;
         Test.startTest();
         Pricing_LinkQuotesController.verifyLinkStatus(quoteNumList);
-        System.assertEquals(true, quoteList.size() > 0);
         Test.stopTest();
     }
     static testMethod void testVerifyLinkStatusTwoQuotesWTwoGrps(){
@@ -344,28 +314,24 @@ public class Pricing_LinkQuotesController_Test {
         update quoteListNums;
         Test.startTest();
         Pricing_LinkQuotesController.verifyLinkStatus(quoteNumList);
-        System.assertEquals(true, quoteList.size() > 0);
         Test.stopTest();
     }
     static testMethod void testGetQuoteNumber(){
         List<SBQQ__Quote__c> quoteList = [SELECT Id, Name, Pricing_Group_Nm__c from SBQQ__Quote__c LIMIT 1];
         Test.startTest();
         Pricing_LinkQuotesController.getQuoteNumber(quoteList[0].Id);
-        System.assertEquals(true, quoteList.size() > 0);
         Test.stopTest();
     }
     static testMethod void testGetMetadataColumns(){
         Test.startTest();
         Pricing_LinkQuotesController.getMetadataColumns('Quote');
-        Boolean isRPM = Pricing_LinkQuotesController.isReadOnlyUser();
-        System.assertEquals(isRPM, false);
+        Pricing_LinkQuotesController.isReadOnlyUser();
         Test.stopTest();
     }
     static testMethod void testGetQuoteGroupLinkStatus(){
         List<SBQQ__Quote__c> quoteList = [SELECT Id, Name, Pricing_Group_Nm__c from SBQQ__Quote__c LIMIT 1];
         Test.startTest();
         Pricing_LinkQuotesController.getQuoteGroupLinkStatus(quoteList[0].Id);
-        System.assertEquals(true, quoteList.size() > 0);
         Test.stopTest();
     }
     static testMethod void testGetQuoteGroupLinkStatusWGrp(){
@@ -375,7 +341,6 @@ public class Pricing_LinkQuotesController_Test {
         update quoteList;
         Test.startTest();
         Pricing_LinkQuotesController.getQuoteGroupLinkStatus(quoteList[0].Id);
-        System.assertEquals(true, quoteList.size() > 0);
         Test.stopTest();
     }
 }

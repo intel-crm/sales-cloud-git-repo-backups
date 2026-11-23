@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <name>PSG Account</name>
+    <profiles>customer community login user</profiles>
+    <profiles>customer community user</profiles>
+    <profiles>partner community user</profiles>
+</SharingSet>

@@ -19,13 +19,11 @@
             
             Contact conObj = Core_RestAPI_TestUtilities.getContact();
             conObj.AccountId= accObj.id;
-            conObj.MailingCountry = 'India';
             insert conObj;
             
             Contact conObj1 = Core_RestAPI_TestUtilities.getContact();
             conObj1.AccountId= accObj.id;
             conObj1.Email = 'Contact123Dell@gmail.com';
-            conObj1.MailingCountry = 'India';
             insert conObj1;
             
             Core_IPS_Product_Organization__c  org =new Core_IPS_Product_Organization__c ( 
@@ -62,8 +60,7 @@
             
             Core_IPS_Supported_Product__c sp= new Core_IPS_Supported_Product__c(
                 Core_Product_Organization__c = org.Id,
-                //commented by nagendra for Aspn fixes
-                Core_EOIS__c = false,
+                Core_EOIS__c = true,
                 Core_Supported_Product_Name__c = 'Haswell EP',
                 Core_Product__c=prod.id
             );
@@ -252,6 +249,9 @@
                          WHERE Core_Agent_Only__c = false AND Core_Status__c='Active' ];
     
             
+            System.debug('lstAssEnvVar  ==>> '+lstAssEnvVar);
+            System.debug('lstAssEnvVar  ==>> '+lstAssEnvVar[0].Core_IPS_Question__r.Core_IPS_Question__c);
+            System.debug('lstAssEnvVar  ==>> '+lstAssEnvVar[0].Core_IPS_Question__r.name);
             
             
             
@@ -285,6 +285,8 @@
             objWrapper.envDetails= lstquestWrpr;
             
             case cs1 = [select id,CaseNumber from case limit 1];
+            System.debug('CaseNumber--->'+ cs1);
+            System.debug('CaseNumber--->'+ cs1.CaseNumber);
             String csNumber = cs1.CaseNumber;
             
             RestRequest  request = (RestRequest)System.jSON.deserialize(Core_RestAPI_TestUtilities.REQUEST_TEMPLATE, RestRequest.class);
@@ -296,10 +298,9 @@
             Core_RestAPI_Case_UpdateV1_Handler handler = new Core_RestAPI_Case_UpdateV1_Handler('UpdateCase', System.now(), objWrapper);
             Core_RestAPI_Response response= handler.updateCase();
             
-            
+            handler.updateCaseDetails();
             handler.isProductOrProjectValid();
             handler.doAllEnvDetailValidations();
-            handler.updateCaseDetails();
             handler.updateEnvironmentDetails();
             
             Core_RestAPI_Case_UpdateV1_Wrapper.EnvQuestionWrapper questWrpr2 = new Core_RestAPI_Case_UpdateV1_Wrapper.EnvQuestionWrapper();
@@ -688,6 +689,7 @@
             handler.doAllEnvDetailValidations();
             
         }catch(Exception e){
+            system.debug('e ==>> '+e);
             
         } 
     }

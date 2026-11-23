@@ -2,8 +2,8 @@
 * @description       : Class is created to check if the operation is run by RPM user and to call validate and create Change Request batch
 * @author            : Rahul Maindalkar
 * @group             : 
-* @last modified on  : 08-24-2022
-* @last modified by  : Rahul Maindalkar
+* @last modified on  : 09-26-2024
+* @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 public without sharing class Pricing_QLBulkCRValidation {
     
@@ -13,7 +13,7 @@ public without sharing class Pricing_QLBulkCRValidation {
 * @param newQLMap 
 **/
     public static void validateBulkCR(Map<String,SBQQ__QuoteLine__c> newQLMap, Map<String,Id> wwIdUserIdMap){
-        
+
         List<String> userRPMList = New List<String>();
         userRPMList = Pricing_QuoteLineCloneController.userHasRPMPermissionSet();
         if(userRPMList.size()>0){

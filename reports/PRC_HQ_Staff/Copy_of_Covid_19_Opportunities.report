@@ -2,32 +2,6 @@
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <buckets>
         <bucketType>picklist</bucketType>
-        <developerName>BucketField_38395921</developerName>
-        <masterLabel>Oppty Type</masterLabel>
-        <nullTreatment>n</nullTreatment>
-        <sourceColumnName>Opportunity.Core_Opportunity_Type__c</sourceColumnName>
-        <useOther>false</useOther>
-        <values>
-            <sourceValues>
-                <sourceValue>Design: Original</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Design: Secondary</sourceValue>
-            </sourceValues>
-            <value>Design</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>Deal: Sell-through</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Deal: Sell-to</sourceValue>
-            </sourceValues>
-            <value>Deal</value>
-        </values>
-    </buckets>
-    <buckets>
-        <bucketType>picklist</bucketType>
         <developerName>BucketField_57030681</developerName>
         <masterLabel>Sales Team</masterLabel>
         <nullTreatment>n</nullTreatment>
@@ -67,7 +41,7 @@
         <chartType>HorizontalBar</chartType>
         <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>true</expandOthers>
-        <groupingColumn>BucketField_38395921</groupingColumn>
+        <groupingColumn>BucketField_57030681</groupingColumn>
         <location>CHART_BOTTOM</location>
         <showAxisLabels>false</showAxisLabels>
         <showPercentage>false</showPercentage>
@@ -219,11 +193,6 @@
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>BucketField_38395921</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
         <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
@@ -251,8 +220,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <endDate>2026-11-22</endDate>
+        <endDate>2026-11-23</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2026-11-22</startDate>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

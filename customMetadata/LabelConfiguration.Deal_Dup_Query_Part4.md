@@ -8,6 +8,6 @@
     </values>
     <values>
         <field>Value__c</field>
-        <value xsi:type="xsd:string">AND Id != :Id AND Core_Design_Registration_Status_Nm__c != &apos;Draft&apos; ORDER BY CreatedDate DESC</value>
+        <value xsi:type="xsd:string">AND Id != :Id AND Core_Design_Registration_Status_Nm__c != &apos;Draft&apos; AND RecordType.DeveloperName like :RecordTypeDevName ORDER BY CreatedDate DESC</value>
     </values>
 </CustomMetadata>

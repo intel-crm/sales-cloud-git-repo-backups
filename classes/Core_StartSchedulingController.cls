@@ -13,41 +13,41 @@ Modification Log :
 public without sharing class Core_StartSchedulingController {
     
     public static final Set<String> Core_Status = new Set<String>{'Lost','Cancelled','Deleted','On Hold','Production Lost','Production Cancelled'};
-    /*
-    * Method name  : checkOldFCRecords
-    * Description  : This Method used to check already existing scheduling for those line items.
-    * Return Type  : boolean
-    * Parameter    : String opportunityId
-    */ 
-    @AuraEnabled
-    public static boolean checkOldFCRecords(String opportunityId){
-        boolean giveWarning= false;
-        Set<Id> opptyIdSet = new Set<Id>();
-        Set<Id> oliIdSet = new Set<Id>();
-        List<opportunity> opp = [select id, Core_Opportunity_Type__c,Core_First_Customer_Ship_Date__c,(select id,name,OpportunityId,Product2Id,Core_Vendor__c from OpportunityLineItems) from opportunity where id =:opportunityId];
-        if(opp.size() > 0 ){
-            for(opportunity o : opp){
-                if(o.OpportunityLineItems.size()>0){
-                    for(OpportunityLineItem oli : o.OpportunityLineItems){
-                        opptyIdSet.add(oli.OpportunityId);
-                        oliIdSet.add(oli.Id);
+        /*
+* Method name  : checkOldFCRecords
+* Description  : This Method used to check already existing scheduling for those line items.
+* Return Type  : boolean
+* Parameter    : String opportunityId
+*/ 
+        @AuraEnabled
+        public static boolean checkOldFCRecords(String opportunityId){
+            boolean giveWarning= false;
+            Set<Id> opptyIdSet = new Set<Id>();
+            Set<Id> oliIdSet = new Set<Id>();
+            List<opportunity> opp = [select id, Core_Opportunity_Type__c,Core_First_Customer_Ship_Date__c,(select id,name,OpportunityId,Product2Id,Core_Vendor__c from OpportunityLineItems) from opportunity where id =:opportunityId];
+            if(opp.size() > 0 ){
+                for(opportunity o : opp){
+                    if(o.OpportunityLineItems.size()>0){
+                        for(OpportunityLineItem oli : o.OpportunityLineItems){
+                            opptyIdSet.add(oli.OpportunityId);
+                            oliIdSet.add(oli.Id);
+                        }
                     }
                 }
             }
+            List<Core_Opp_FC_Prod_Schedule__c> fps = [SELECT id, Core_Opp_FC_Approval_Status__c, Core_Opp_FC_Opportunity__c, Core_Opp_FC_Product__r.Name, Core_Opp_FC_Quarter_Date__c, Core_Opp_Line_Item_RecordID__c FROM Core_Opp_FC_Prod_Schedule__c WHERE Core_Opp_Line_Item_RecordID__c IN :oliIdSet AND Core_Opp_FC_isdeleted__c = false ORDER BY Core_Opp_FC_Product__r.Name,Core_Opp_FC_Quarter_Date__c];
+            if(fps.size() > 0){
+                giveWarning = true;
+            }
+            return giveWarning;
         }
-        List<Core_Opp_FC_Prod_Schedule__c> fps = [SELECT id, Core_Opp_FC_Approval_Status__c, Core_Opp_FC_Opportunity__c, Core_Opp_FC_Product__r.Name, Core_Opp_FC_Quarter_Date__c, Core_Opp_Line_Item_RecordID__c FROM Core_Opp_FC_Prod_Schedule__c WHERE Core_Opp_Line_Item_RecordID__c IN :oliIdSet AND Core_Opp_FC_isdeleted__c = false ORDER BY Core_Opp_FC_Product__r.Name,Core_Opp_FC_Quarter_Date__c];
-        if(fps.size() > 0){
-            giveWarning = true;
-        }
-        return giveWarning;
-    }
     
     /*
-    * Method name  : showQuarters
-    * Description  : This Method used to show the eligible quarters on the UI.
-    * Return Type  : forecastWrapper
-    * Parameter    : String opportunityId 
-    */ 
+* Method name  : showQuarters
+* Description  : This Method used to show the eligible quarters on the UI.
+* Return Type  : forecastWrapper
+* Parameter    : String opportunityId 
+*/ 
     @AuraEnabled
     public static forecastWrapper showQuarters(String opportunityId){
         boolean checkBlankDates = false;
@@ -100,11 +100,11 @@ public without sharing class Core_StartSchedulingController {
     }    
     
     /*
-    * Method name  : submitData
-    * Description  : This Method used to create Forecast records on selection of Start date and number of quarters.
-    * Return Type  : forecastWrapper
-    * Parameter    : date startDate,integer selectedQuarters, String opportunityId
-    */ 
+* Method name  : submitData
+* Description  : This Method used to create Forecast records on selection of Start date and number of quarters.
+* Return Type  : forecastWrapper
+* Parameter    : date startDate,integer selectedQuarters, String opportunityId
+*/ 
     @AuraEnabled
     public static forecastWrapper submitData(string startDate,integer selectedQuarters, String opportunityId){
         String message= null;
@@ -127,7 +127,7 @@ public without sharing class Core_StartSchedulingController {
         List<Integer> approvedList = new List<Integer>();
         List<Core_Opp_FC_Prod_Schedule__c> Fcp = new List<Core_Opp_FC_Prod_Schedule__c>();
         List<String> divisionLogic = (Label.Core_FC_ForecastDivision).split(';');
-        
+        List<Core_Opp_FC_Prod_Schedule__c> postWinList = null;
         List<opportunity> opp = [select id, Core_Opportunity_Type__c,Core_First_Customer_Ship_Date__c,StageName,(select id,name,OpportunityId,Product2Id,Core_Vendor__c,quantity,Core_PW_Sales_Price__c,Core_PW_Quantity__c,Core_Status__c,UnitPrice from OpportunityLineItems) from opportunity where id =:opportunityId];//TWC3123-4884 added Core_PW_Sales_Price__c,Core_PW_Quantity__c,StageName
         if(opp.size() > 0 ){
             for(opportunity o : opp){
@@ -138,8 +138,11 @@ public without sharing class Core_StartSchedulingController {
                     }
                 }
             }
+            
+            postWinList = [Select id,Core_Is_Post_Win__c,Core_Opp_FC_Quarter__c,Core_Opp_Line_Item_RecordID__c,Core_Opp_FC_Product__c from Core_Opp_FC_Prod_Schedule__c where Core_Opp_FC_Opportunity__c =: opportunityId and Core_Is_Post_Win__c = true];
+            
         }
-        
+        system.debug('oliIdSet size is:'+oliIdSet);
         if(opp[0].Core_Opportunity_Type__c.contains('Deal')){
             referenceDate = system.today();
             
@@ -156,6 +159,8 @@ public without sharing class Core_StartSchedulingController {
         if(oliPresentMap != null && !oliPresentMap.isEmpty()){
             Fcp = [SELECT id, Core_Opp_FC_Approval_Status__c, Core_Opp_FC_Opportunity__c, Core_Opp_FC_Product__r.Name, Core_Opp_FC_Quarter_Date__c, Core_Opp_Line_Item_RecordID__c FROM Core_Opp_FC_Prod_Schedule__c WHERE Core_Opp_FC_Opportunity__c IN : opptyIdSet and Core_Is_Post_Win__c=false];//TWC3123-4884 Core_Is_Post_Win__c=falseto exclude Post Win records
         }
+        system.debug('FCP size is:'+Fcp.size());
+        system.debug('FCP rec is:'+Fcp);
         Date qtrDate;
         for(OpportunityLineItem oli : opp[0].OpportunityLineItems){
             
@@ -165,54 +170,85 @@ public without sharing class Core_StartSchedulingController {
             //String[] qtrs = startDate.split('\\-');
             date fc_Qtr_date = getFcQuarterDate(startDate);
             /*if(qtrs[1].contains('1')){
-                fc_Qtr_date = Date.newInstance(integer.valueof(qtrs[0]),1,1);
-            }
-            else if(qtrs[1].contains('2')){
-                fc_Qtr_date = Date.newInstance(integer.valueof(qtrs[0]),4,1);
-            }
-            else if(qtrs[1].contains('3')){
-                fc_Qtr_date = Date.newInstance(integer.valueof(qtrs[0]),7,1);
-            }
-            else{
-                fc_Qtr_date = Date.newInstance(integer.valueof(qtrs[0]),10,1);
-            }*/
+fc_Qtr_date = Date.newInstance(integer.valueof(qtrs[0]),1,1);
+}
+else if(qtrs[1].contains('2')){
+fc_Qtr_date = Date.newInstance(integer.valueof(qtrs[0]),4,1);
+}
+else if(qtrs[1].contains('3')){
+fc_Qtr_date = Date.newInstance(integer.valueof(qtrs[0]),7,1);
+}
+else{
+fc_Qtr_date = Date.newInstance(integer.valueof(qtrs[0]),10,1);
+}*/
             for(integer i=0;i<selectedQuarters;i++){
                 approvalStatus = '';
                 
-                 if(opp[0].Core_Opportunity_Type__c.contains('Deal')){
+                if(opp[0].Core_Opportunity_Type__c.contains('Deal')){
                     
                     qty = 0;
                     considerSalesPrice = oli.UnitPrice;
                 }
                 else if(opp[0].Core_Opportunity_Type__c.contains('Design')){
                     //TWC3123-4911 start If Opp Stage is 'Production Win' or 'Design Win' or Post-Win Product it will take Core_PW_Quantity__c and Core_PW_Sales_Price__c for calculation
-                    if((opp[0].StageName == 'Production Win' || opp[0].StageName == 'Design Win') && oli.Core_Status__c!='Post-Win')  {
-                         if(oli.Core_PW_Quantity__c!=null){
-                              qty =((oli.Core_PW_Quantity__c)/(Integer.valueOf(divisionLogic[i]))).round(System.RoundingMode.HALF_UP);
-                          }
-                         if(oli.Core_PW_Sales_Price__c!=null){
-                              considerSalesPrice = oli.Core_PW_Sales_Price__c;
-                         }
-                     }
-                    //If Opp Stage is not in 'Production Win' or 'Design Win' it will take Quantity and UnitPrice for calculation
-                    else{
-                        if(oli.Quantity!=null){
-                              qty = ((oli.Quantity)/(Integer.valueOf(divisionLogic[i]))).round(System.RoundingMode.HALF_UP);
-                          }
-                        if(oli.UnitPrice!=null){
-                            considerSalesPrice = oli.UnitPrice;
+                    if(!Core_Status.contains(oli.Core_Status__c)){
+                        if((opp[0].StageName == 'Production Win' || opp[0].StageName == 'Design Win') && oli.Core_Status__c!='Post-Win') {
+                            if(oli.Core_PW_Quantity__c!=null){
+                                qty =((oli.Core_PW_Quantity__c)/(Integer.valueOf(divisionLogic[i]))).round(System.RoundingMode.HALF_UP);
+                            }
+                            if(oli.Core_PW_Sales_Price__c!=null){
+                                considerSalesPrice = oli.Core_PW_Sales_Price__c;
+                            }
                         }
-                                         
-                    }  
-             }//TWC3123-4911 end
-            system.debug('Inside considerSalesPrice is"'+considerSalesPrice);    
-        
-            forecastRecList.add(new Core_Opp_FC_Prod_Schedule__c(Core_FC_Opportunity_Product__c=oli.id,Core_Opp_FC_Opportunity__c = oli.OpportunityId, Core_Opp_FC_Quarter_Date__c= fc_Qtr_date ,Core_Opp_Line_Item_RecordID__c = oli.Id, Core_Opp_FC_Product__c = oli.Product2Id, Core_Opp_FC_Quantity__c = qty, Core_Opp_FC_isdeleted__c = false, Core_FC_Vendor__c = oli.Core_Vendor__c, Core_Opp_FC_Prod_Sales_Price__c = considerSalesPrice, Core_Opp_FC_Approval_Status__c = approvalStatus, Core_FC_BU_Product_Segment__c = oliPresentMap.get(oli.Id).Core_BU_Product_Segment__c,Core_FC_BU_Short_Name__c = oliPresentMap.get(oli.Id).Core_BU_Short_Name__c));//changed Core_Opp_FC_Prod_Sales_Price__c = oliPresentMap.get(oli.Id).UnitPrice to considerSalesPrico 
+                        //If Opp Stage is not in 'Production Win' or 'Design Win' it will take Quantity and UnitPrice for calculation
+                        else{
+                            if(oli.Quantity!=null){
+                                qty = ((oli.Quantity)/(Integer.valueOf(divisionLogic[i]))).round(System.RoundingMode.HALF_UP);
+                            }
+                            if(oli.UnitPrice!=null){
+                                considerSalesPrice = oli.UnitPrice;
+                            }
+                        } 
+                    }
+                }//TWC3123-4911 end
+                system.debug('Inside considerSalesPrice is"'+considerSalesPrice);    
+                
+                forecastRecList.add(new Core_Opp_FC_Prod_Schedule__c(Core_FC_Opportunity_Product__c=oli.id,Core_Opp_FC_Opportunity__c = oli.OpportunityId, Core_Opp_FC_Quarter_Date__c= fc_Qtr_date ,Core_Opp_Line_Item_RecordID__c = oli.Id, Core_Opp_FC_Product__c = oli.Product2Id, Core_Opp_FC_Quantity__c = qty, Core_Opp_FC_isdeleted__c = false, Core_FC_Vendor__c = oli.Core_Vendor__c, Core_Opp_FC_Prod_Sales_Price__c = considerSalesPrice, Core_Opp_FC_Approval_Status__c = approvalStatus, Core_FC_BU_Product_Segment__c = oliPresentMap.get(oli.Id).Core_BU_Product_Segment__c,Core_FC_BU_Short_Name__c = oliPresentMap.get(oli.Id).Core_BU_Short_Name__c));//changed Core_Opp_FC_Prod_Sales_Price__c = oliPresentMap.get(oli.Id).UnitPrice to considerSalesPrico 
                 fc_Qtr_date = fc_Qtr_date.addMonths(3);
                 
             }
+            
+            
             qtrDate = fc_Qtr_date;
+            
         }
+        
+        if(postWinList.size()>0){
+            date fc_Qtr_date = getFcQuarterDate(startDate);
+            Decimal considerSalesPrice;
+            for( Core_Opp_FC_Prod_Schedule__c postWinProd: postWinList){
+                for(integer i=0;i<selectedQuarters;i++){
+                    approvalStatus = '';
+                    
+                    if(opp[0].Core_Opportunity_Type__c.contains('Deal')){
+                        
+                        qty = 0;
+                        
+                    }
+                    else if(opp[0].Core_Opportunity_Type__c.contains('Design')){
+                       qty =((postWinProd.Core_Opp_FC_Quantity__c)/(Integer.valueOf(divisionLogic[i]))).round(System.RoundingMode.HALF_UP);
+                     
+                    }
+                    
+                    //
+                    forecastRecList.add(new Core_Opp_FC_Prod_Schedule__c(Core_Opp_FC_Opportunity__c = postWinProd.Core_Opp_FC_Opportunity__c, Core_Opp_FC_Quarter_Date__c= fc_Qtr_date ,Core_Opp_Line_Item_RecordID__c = postWinProd.Core_Opp_Line_Item_RecordID__c, Core_Opp_FC_Product__c = postWinProd.Core_Opp_FC_Product__c, Core_Opp_FC_Quantity__c = qty, Core_Opp_FC_isdeleted__c = false, Core_FC_Vendor__c = postWinProd.Core_FC_Vendor__c, Core_Opp_FC_Prod_Sales_Price__c = postWinProd.Core_Opp_FC_Prod_Sales_Price__c , Core_Opp_FC_Approval_Status__c = postWinProd.Core_Opp_FC_Approval_Status__c , Core_FC_BU_Product_Segment__c =postWinProd.Core_FC_BU_Product_Segment__c ,Core_FC_BU_Short_Name__c =postWinProd.Core_FC_BU_Short_Name__c));//changed Core_Opp_FC_Prod_Sales_Price__c = oliPresentMap.get(oli.Id).UnitPrice to considerSalesPrico 
+                    fc_Qtr_date = fc_Qtr_date.addMonths(3);
+                    
+                }
+            }
+            
+        }
+        
         Set<Id> fcIdSet = new Set<Id>();
         List<Core_Opp_FC_Prod_Schedule__c> toLockRecords = new List<Core_Opp_FC_Prod_Schedule__c>();
         try{

@@ -1,10 +1,3 @@
-/**
- * @description       : 
- * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
- * @group             : 
- * @last modified on  : 03-06-2026
- * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
-**/
 @isTest
 public class Pricing_ManageEmailPreference_Test {
     
@@ -51,7 +44,6 @@ public class Pricing_ManageEmailPreference_Test {
             List<Pricing_IQR_Email_Preferences__c> lstEmailPreference=[SELECT Id,Pricing_Opt_In_Ind__c,Pricing_Notification_Name_Nm__c FROM Pricing_IQR_Email_Preferences__c];    
             Test.startTest();
             Pricing_ManageEmailPreference.getEmailPreference();
-            System.assertEquals(true , lstEmailPreference.size() > 0 );
             Test.stopTest();
         }
         
@@ -68,7 +60,6 @@ public class Pricing_ManageEmailPreference_Test {
         {            
             Test.startTest();
             Pricing_ManageEmailPreference.getEmailPreference();
-            System.assertEquals(true , iqrEmailPreferences3 != null );
             Test.stopTest();
         }
         
@@ -86,7 +77,6 @@ public class Pricing_ManageEmailPreference_Test {
             List<Pricing_IQR_Email_Preferences__c> lstEmailPreference=[SELECT Id,Pricing_Opt_In_Ind__c,Pricing_Notification_Name_Nm__c FROM Pricing_IQR_Email_Preferences__c];    
             Test.startTest();
             Pricing_ManageEmailPreference.getEmailPreference();
-            System.assertEquals(true , iqrEmailPreferences3 != null );
             Test.stopTest();
         }
         
@@ -97,7 +87,6 @@ public class Pricing_ManageEmailPreference_Test {
         List<Pricing_IQR_Email_Preferences__c> lstEmailPreference=[SELECT Id,Pricing_Opt_In_Ind__c,Pricing_Notification_Name_Nm__c FROM Pricing_IQR_Email_Preferences__c];   
         Test.startTest();
         Pricing_ManageEmailPreference.getEmailPreference();
-        System.assertEquals(true , lstEmailPreference.size() > 0 );
         Test.stopTest();       
     }
     @isTest
@@ -112,7 +101,6 @@ public class Pricing_ManageEmailPreference_Test {
             Pricing_ManageEmailPreference.savePreferences(jsonMap);
             Pricing_ManageEmailPreference.getEmailPreference();
             Boolean loggedInUser = Pricing_ManageEmailPreference.getUserPemissionSets(salesRepUserList[0].Id);
-            System.assertEquals(true , lstEmailPreference.size() > 0 );
             Test.stopTest();
         }
         
@@ -122,8 +110,7 @@ public class Pricing_ManageEmailPreference_Test {
     {         
         Test.startTest();
         String jsonMap = '[{"optInOut" : true,"notificationName" : "Won/Loss Notification"},{"optInOut" : false,"notificationName" : "QuoteTeam Notification"}]';
-        Boolean isTrue = Pricing_ManageEmailPreference.savePreferences(jsonMap);
-        System.assertEquals(true , isTrue );
+        Pricing_ManageEmailPreference.savePreferences(jsonMap);
         Test.stopTest();       
     }
     

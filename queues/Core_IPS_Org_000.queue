@@ -8,11 +8,10 @@
             <publicGroup>Core_IPS_Org_000</publicGroup>
         </publicGroups>
         <users>
-            <user>ipsorgadm2@intel.com</user>
-            <user>10660044@intel.com.crm</user>
             <user>11631392@intel.com.crm</user>
             <user>salesrep1.test@intel.com.crm</user>
-            <user>12140730@intel.com.crm</user>
+            <user>ketkix.pradeep.dhapke@intel.com.test</user>
+            <user>testsalesrep@intel.com.devsls</user>
         </users>
     </queueMembers>
     <queueSobject>

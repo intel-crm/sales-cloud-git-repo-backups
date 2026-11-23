@@ -39,10 +39,6 @@
     <columns>
         <field>CREATED</field>
     </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Lead.SWS_Software_Lead__c</field>
-    </columns>
     <description>RT: Leads</description>
     <filter>
         <booleanFilter>(1 AND 2) OR 3</booleanFilter>

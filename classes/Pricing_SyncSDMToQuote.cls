@@ -2,6 +2,7 @@ public without sharing class Pricing_SyncSDMToQuote {
     
     @InvocableMethod(label = 'addCurrentUserToPublicGroups' description = 'Add current user to account specific public groups')
     public static List<String> addCurrentUserToPublicGroups(List<Id> Ids) {
+        String errorMsg;
         List<String> errorMsgList = new List<String>();
         try{ 
             // Get the current user

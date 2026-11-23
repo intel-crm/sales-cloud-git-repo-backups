@@ -64,19 +64,5 @@
         <type>Date</type>
     </fields>
     <label>FC Commission Criterias</label>
-    <listViews>
-        <fullName>My_View</fullName>
-        <columns>NAME</columns>
-        <columns>Core_Account_Tier__c</columns>
-        <columns>Core_BU_Focus__c</columns>
-        <columns>Core_BU_Short_Name__c</columns>
-        <columns>Core_Opportunity_Type__c</columns>
-        <columns>Core_Schedule_Quarter_Start_Date__c</columns>
-        <columns>Core_Schedule_Quarter_End_Date__c</columns>
-        <columns>Core_Is_Active__c</columns>
-        <filterScope>Everything</filterScope>
-        <label>My View</label>
-        <language>en_US</language>
-    </listViews>
     <visibility>Public</visibility>
 </CustomObject>

@@ -1,34 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
     <sharingCriteriaRules>
-        <fullName>AGS_PSG_Internal_Quote</fullName>
-        <accessLevel>Edit</accessLevel>
-        <label>AGS PSG Internal Quote</label>
-        <sharedTo>
-            <group>ags_internal_pms</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>Pricing_Quote_Program_Nm__c</field>
-            <operation>equals</operation>
-            <value>PSG</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>AGS_PSG_Internal_Telesales_Quote</fullName>
-        <accessLevel>Edit</accessLevel>
-        <label>AGS PSG Internal Telesales Quote</label>
-        <sharedTo>
-            <group>AGS_PSG_Internal_Tele_Sales</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>Pricing_Quote_Program_Nm__c</field>
-            <operation>equals</operation>
-            <value>PSG</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
         <fullName>All_Pricing_Read_Only_User</fullName>
         <accessLevel>Read</accessLevel>
         <label>All Pricing Read Only User</label>
@@ -39,6 +11,25 @@
             <field>Pricing_Quote_Program_Nm__c</field>
             <operation>equals</operation>
             <value>Tender</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PSG_Arrow_KOR_Sharing_Rule</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>PSG Arrow KOR Sharing Rule</label>
+        <sharedTo>
+            <group>PSG_ARROW_KOR</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>core_cpq_disty_group_name__c</field>
+            <operation>equals</operation>
+            <value>PSG_ARROW_KOR</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Pricing_Quote_Program_Nm__c</field>
+            <operation>equals</operation>
+            <value>PSG</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
@@ -67,12 +58,488 @@
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
+        <fullName>PSG_CP_Quote_Sharing_for_SOS_APJ</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>PSG CP Quote Sharing for SOS APJ</label>
+        <sharedTo>
+            <group>ags_sos_apj</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>core_cpq_quote_type_nm__c</field>
+            <operation>equals</operation>
+            <value>Contract Pricing</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>core_cpq_ec_region_txt__c</field>
+            <operation>equals</operation>
+            <value>APJ</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Pricing_Quote_Program_Nm__c</field>
+            <operation>equals</operation>
+            <value>PSG</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PSG_CP_Quote_Sharing_for_SOS_ASMO</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>PSG CP Quote Sharing for SOS ASMO</label>
+        <sharedTo>
+            <group>ags_sos_asmo</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>core_cpq_quote_type_nm__c</field>
+            <operation>equals</operation>
+            <value>Contract Pricing</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>core_cpq_ec_region_txt__c</field>
+            <operation>equals</operation>
+            <value>ASMO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Pricing_Quote_Program_Nm__c</field>
+            <operation>equals</operation>
+            <value>PSG</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PSG_CP_Quote_Sharing_for_SOS_EMEA</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>PSG CP Quote Sharing for SOS EMEA</label>
+        <sharedTo>
+            <group>ags_sos_emea</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>core_cpq_quote_type_nm__c</field>
+            <operation>equals</operation>
+            <value>Contract Pricing</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>core_cpq_ec_region_txt__c</field>
+            <operation>equals</operation>
+            <value>EMEA</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Pricing_Quote_Program_Nm__c</field>
+            <operation>equals</operation>
+            <value>PSG</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PSG_CP_Quote_Sharing_for_SOS_PRC</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>PSG CP Quote Sharing for SOS PRC</label>
+        <sharedTo>
+            <group>ags_sos_prc</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>core_cpq_quote_type_nm__c</field>
+            <operation>equals</operation>
+            <value>Contract Pricing</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>core_cpq_ec_region_txt__c</field>
+            <operation>equals</operation>
+            <value>PRC</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Pricing_Quote_Program_Nm__c</field>
+            <operation>equals</operation>
+            <value>PSG</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
         <fullName>PSG_Custom_Ops</fullName>
         <accessLevel>Edit</accessLevel>
         <label>PSG - Custom Ops</label>
         <sharedTo>
             <group>AGS_PSG_Internal_Custom_Ops</group>
         </sharedTo>
+        <criteriaItems>
+            <field>Pricing_Quote_Program_Nm__c</field>
+            <operation>equals</operation>
+            <value>PSG</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PSG_DIsty_BRAEMAC_Sharing</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>PSG DIsty BRAEMAC Sharing</label>
+        <sharedTo>
+            <group>PSG_BRAEMAC</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>core_cpq_disty_group_name__c</field>
+            <operation>equals</operation>
+            <value>PSG_BRAEMAC</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Pricing_Quote_Program_Nm__c</field>
+            <operation>equals</operation>
+            <value>PSG</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PSG_Disty_ARROW_EU_Sharing</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>PSG Disty ARROW EU Sharing</label>
+        <sharedTo>
+            <group>PSG_ARROW_EU</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>core_cpq_disty_group_name__c</field>
+            <operation>equals</operation>
+            <value>PSG_ARROW_EU</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Pricing_Quote_Program_Nm__c</field>
+            <operation>equals</operation>
+            <value>PSG</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PSG_Disty_ARROW_NA_Sharing</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>PSG Disty ARROW NA Sharing</label>
+        <sharedTo>
+            <group>PSG_ARROW_NA</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>core_cpq_disty_group_name__c</field>
+            <operation>equals</operation>
+            <value>PSG_ARROW_NA</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Pricing_Quote_Program_Nm__c</field>
+            <operation>equals</operation>
+            <value>PSG</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PSG_Disty_ARROW_SGP_Sharing</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>PSG Disty ARROW SGP Sharing</label>
+        <sharedTo>
+            <group>PSG_ARROW_SGP</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>core_cpq_disty_group_name__c</field>
+            <operation>equals</operation>
+            <value>PSG_ARROW_SGP</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Pricing_Quote_Program_Nm__c</field>
+            <operation>equals</operation>
+            <value>PSG</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PSG_Disty_ARROW_TW_Sharing</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>PSG Disty ARROW TW Sharing</label>
+        <sharedTo>
+            <group>PSG_ARROW_TW</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>core_cpq_disty_group_name__c</field>
+            <operation>equals</operation>
+            <value>PSG_ARROW_TW</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Pricing_Quote_Program_Nm__c</field>
+            <operation>equals</operation>
+            <value>PSG</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PSG_Disty_Altima_Sharing</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>PSG Disty Altima Sharing</label>
+        <sharedTo>
+            <group>PSG_ALTIMA</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>core_cpq_disty_group_name__c</field>
+            <operation>equals</operation>
+            <value>PSG_ALTIMA</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Pricing_Quote_Program_Nm__c</field>
+            <operation>equals</operation>
+            <value>PSG</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PSG_Disty_Arrow_IND_Sharing</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>PSG Disty Arrow IND Sharing</label>
+        <sharedTo>
+            <group>PSG_ARROW_IND</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>core_cpq_disty_group_name__c</field>
+            <operation>equals</operation>
+            <value>PSG_ARROW_IND</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Pricing_Quote_Program_Nm__c</field>
+            <operation>equals</operation>
+            <value>PSG</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PSG_Disty_Arrow_PD_Sharing</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>PSG Disty Arrow PD Sharing</label>
+        <sharedTo>
+            <group>PSG_ARROW_PD</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>core_cpq_disty_group_name__c</field>
+            <operation>equals</operation>
+            <value>PSG_ARROW_PD</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Pricing_Quote_Program_Nm__c</field>
+            <operation>equals</operation>
+            <value>PSG</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PSG_Disty_Arrow_PRC_sharing</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>PSG Disty Arrow PRC sharing</label>
+        <sharedTo>
+            <group>PSG_ARROW_PRC</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>core_cpq_disty_group_name__c</field>
+            <operation>equals</operation>
+            <value>PSG_ARROW_PRC</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Pricing_Quote_Program_Nm__c</field>
+            <operation>equals</operation>
+            <value>PSG</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PSG_Disty_DIGI_KEY_Sharing</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>PSG Disty DIGI-KEY Sharing</label>
+        <sharedTo>
+            <group>PSG_DIGI_KEY</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>core_cpq_disty_group_name__c</field>
+            <operation>equals</operation>
+            <value>PSG_DIGI_KEY</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Pricing_Quote_Program_Nm__c</field>
+            <operation>equals</operation>
+            <value>PSG</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PSG_Disty_EASTRONICS_Sharing</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>PSG Disty EASTRONICS Sharing</label>
+        <sharedTo>
+            <group>PSG_EASTRONICS</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>core_cpq_disty_group_name__c</field>
+            <operation>equals</operation>
+            <value>PSG_EASTRONICS</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Pricing_Quote_Program_Nm__c</field>
+            <operation>equals</operation>
+            <value>PSG</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PSG_Disty_GALAXY_Sharing</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>PSG Disty GALAXY Sharing</label>
+        <sharedTo>
+            <group>PSG_GALAXY</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>core_cpq_disty_group_name__c</field>
+            <operation>equals</operation>
+            <value>PSG_GALAXY</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Pricing_Quote_Program_Nm__c</field>
+            <operation>equals</operation>
+            <value>PSG</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PSG_Disty_MACNICA_NA_Sharing</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>PSG Disty MACNICA NA Sharing</label>
+        <sharedTo>
+            <group>PSG_MACNICA_NA</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>core_cpq_disty_group_name__c</field>
+            <operation>equals</operation>
+            <value>PSG_MACNICA_NA</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Pricing_Quote_Program_Nm__c</field>
+            <operation>equals</operation>
+            <value>PSG</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PSG_Disty_MACNICA_PRC_Sharing</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>PSG Disty MACNICA PRC Sharing</label>
+        <sharedTo>
+            <group>PSG_MACNICA_PRC</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>core_cpq_disty_group_name__c</field>
+            <operation>equals</operation>
+            <value>PSG_MACNICA_PRC</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Pricing_Quote_Program_Nm__c</field>
+            <operation>equals</operation>
+            <value>PSG</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PSG_Disty_MACNICA_SGP_Sharing</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>PSG Disty MACNICA  SGP Sharing</label>
+        <sharedTo>
+            <group>PSG_MACNICA_SGP</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>core_cpq_disty_group_name__c</field>
+            <operation>equals</operation>
+            <value>PSG_MACNICA_SGP</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Pricing_Quote_Program_Nm__c</field>
+            <operation>equals</operation>
+            <value>PSG</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PSG_Disty_MOUSER_Sharing</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>PSG Disty MOUSER Sharing</label>
+        <sharedTo>
+            <group>PSG_MOUSER</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>core_cpq_disty_group_name__c</field>
+            <operation>equals</operation>
+            <value>PSG_MOUSER</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Pricing_Quote_Program_Nm__c</field>
+            <operation>equals</operation>
+            <value>PSG</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PSG_Disty_Macnica_Ind_Sharing</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>PSG Disty Macnica Ind Sharing</label>
+        <sharedTo>
+            <group>PSG_MACNICA_IND</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>core_cpq_disty_group_name__c</field>
+            <operation>equals</operation>
+            <value>PSG_MACNICA_IND</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Pricing_Quote_Program_Nm__c</field>
+            <operation>equals</operation>
+            <value>PSG</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PSG_Disty_Newtronix_Sharing</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>PSG Disty Newtronix Sharing</label>
+        <sharedTo>
+            <group>PSG_NEWTRONIX</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>core_cpq_disty_group_name__c</field>
+            <operation>equals</operation>
+            <value>PSG_NEWTRONIX</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Pricing_Quote_Program_Nm__c</field>
+            <operation>equals</operation>
+            <value>PSG</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PSG_Disty_Ocs_Russia_Sharing</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>PSG Disty Ocs Russia Sharing</label>
+        <sharedTo>
+            <group>PSG_OCS_RUSSIA</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>core_cpq_disty_group_name__c</field>
+            <operation>equals</operation>
+            <value>PSG_OCS_RUSSIA</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Pricing_Quote_Program_Nm__c</field>
+            <operation>equals</operation>
+            <value>PSG</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PSG_Disty_UNIQUEST_Sharing</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>PSG Disty UNIQUEST Sharing</label>
+        <sharedTo>
+            <group>PSG_UNIQUEST</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>core_cpq_disty_group_name__c</field>
+            <operation>equals</operation>
+            <value>PSG_UNIQUEST</value>
+        </criteriaItems>
         <criteriaItems>
             <field>Pricing_Quote_Program_Nm__c</field>
             <operation>equals</operation>
@@ -247,7 +714,7 @@
             <operation>equals</operation>
             <value>Financial Incentive</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>Pricing_Financial_Incentive_Rebate_Analyst</fullName>
@@ -308,7 +775,7 @@
             <operation>equals</operation>
             <value>In Review,Approved,Rejected</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>Pricing_SW_CPQ_Custom_workload_Approver</fullName>
@@ -327,7 +794,7 @@
             <operation>equals</operation>
             <value>Draft</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>Pricing_SW_CPQ_Read_All_Access</fullName>
@@ -341,7 +808,7 @@
             <operation>equals</operation>
             <value>Software &amp; Services</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>Pricing_Share_Quotes_To_CDB_Intg_User</fullName>
@@ -380,7 +847,106 @@
             <operation>equals</operation>
             <value>Tender</value>
         </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Quote_Order_PMS_Sharing</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Quote Order PMS Sharing</label>
+        <sharedTo>
+            <group>ags_internal_pms</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Pricing_Quote_Program_Nm__c</field>
+            <operation>equals</operation>
+            <value>PSG</value>
+        </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Quote_Order_TeleSales_Sharing</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Quote Order TeleSales Sharing</label>
+        <sharedTo>
+            <group>AGS_PSG_Internal_Tele_Sales</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Pricing_Quote_Program_Nm__c</field>
+            <operation>equals</operation>
+            <value>PSG</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Read_Write_Access_for_BM</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Sets Read/Write Access for BM</description>
+        <label>Read/Write Access for BM</label>
+        <sharedTo>
+            <group>ags_internal_bm</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>notEqual</operation>
+            <value>PSG Quote Cancelled</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Pricing_Quote_Program_Nm__c</field>
+            <operation>equals</operation>
+            <value>PSG</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Read_Write_Access_for_BO</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Sets read and write access to BO</description>
+        <label>Read/Write Access for BO</label>
+        <sharedTo>
+            <group>ags_internal_bo</group>
+        </sharedTo>
+        <booleanFilter>1 AND 2</booleanFilter>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>notEqual</operation>
+            <value>PSG Quote Cancelled</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Pricing_Quote_Program_Nm__c</field>
+            <operation>equals</operation>
+            <value>PSG</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Test_Group_By_VB</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Test Group By VB</label>
+        <sharedTo>
+            <group>Pricing_ASMO_DCG_HighTouch_PM_Mgr_Grp</group>
+        </sharedTo>
+        <booleanFilter>1 AND (2 OR 3) AND 4</booleanFilter>
+        <criteriaItems>
+            <field>Pricing_Quote_Program_Nm__c</field>
+            <operation>equals</operation>
+            <value>Tender</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Pricing_Program_Type_Nm__c</field>
+            <operation>equals</operation>
+            <value>Client</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Pricing_Program_Type_Nm__c</field>
+            <operation>equals</operation>
+            <value>Data Center</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Pricing_Pricing_Manager_Group_Name_Txt__c</field>
+            <operation>equals</operation>
+            <value>Pricing_RR_ASMO_DCG_HPC_RPM_Group</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingOwnerRules>
         <fullName>PSG_Geo_Based_Sharing_to_EMEA</fullName>

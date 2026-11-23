@@ -1,0 +1,105 @@
+<template>
+    <div class="container">
+        <lightning-card>
+            <lightning-layout multiple-rows="true">
+            <lightning-layout-item class="width-box">
+                <div class="slds-checkbox slds-m-bottom-medium">
+                   <input type="checkbox" name="options" onclick={userConfirmChkHandler} id="checkbox-unique-id-73" value="checkbox-unique-id-73" />
+                    <label class="slds-checkbox__label" for="checkbox-unique-id-73">
+                      <span class="slds-checkbox_faux"></span>
+                      <span class="slds-form-element__label">Create new Account</span>
+                    </label>
+                  </div>
+            </lightning-layout-item>
+        </lightning-layout>
+            <br>
+                <div class="slds-section__title slds-theme--shade slds-m-top-small primaryPaletteBorder test-id__section-header-container">
+                    <span class="test-id__section-header-title section-header-title slds-p-horizontal--small slds-truncate">
+                        Potential Matches
+                    </span>
+                </div>
+            
+            <lightning-layout multiple-rows="true">
+               
+                <lightning-layout-item size="12" padding="around-medium">
+                    <!--<div class="slds-align_absolute-center">-->
+                    <div class="slds-cell-wrap slds-table_resizable-cols slds-truncate">
+                        <lightning-datatable class="width-box slds-align_absolute-center" key-field="CimId" data={currentPageData} columns={pageColumns}
+                        max-row-selection=1 onrowaction={handleRowAction} onrowselection={getSelectedRow} selected-rows={unselectcheckbox}>
+                        </lightning-datatable>
+                    </div>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="12" margin="around-small">
+                    <div class="slds-align_absolute-center">
+                        <ul class="slds-button-group-row">
+                            <li class="slds-button-group-item">
+                                <lightning-button label="First" title="First Page" onclick={onFirst}
+                                    class="slds-m-left_x-small" disabled={isFirst}></lightning-button>
+                            </li>
+                            <li class="slds-button-group-item">
+                                <lightning-button label="<" title="Previous" onclick={onPrev}
+                                    class="slds-m-left_x-small" disabled={isFirst}></lightning-button>
+                            </li>
+                            <template for:each={pagesList} for:item="pageNumber">
+                                <li class="slds-button-group-item" key={pageNumber}>
+                                    <button data-id={pageNumber} class="slds-button slds-m-left_x-small"
+                                        onclick={onPageClick}>{pageNumber}</button>
+                                </li>
+                            </template>
+                            <li class="slds-button-group-item">
+                                <lightning-button disabled={isLast} label=">" title="Next" class="slds-m-left_x-small"
+                                    onclick={onNext}></lightning-button>
+                            </li>
+                            <li class="slds-button-group-item">
+                                <lightning-button label="Last" title="Last Page" onclick={onLast}
+                                    class="slds-m-left_x-small" disabled={isLast}></lightning-button>
+                            </li>
+
+                        </ul>
+                    </div>
+                </lightning-layout-item>
+
+            </lightning-layout>
+        </lightning-card>
+    </div>
+    <template if:true={ShowModal}>
+        <section role="dialog" tabindex="-1"
+                aria-labelledby="modal-heading-01"
+                aria-modal="true"
+                aria-describedby="modal-content-id-1"
+                class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container">
+            <!-- modal header start -->
+            <header class="slds-modal__header">
+                <lightning-button-icon icon-name="utility:close" class="slds-float_right" onclick={closeModal} alternative-text="close"></lightning-button-icon>
+
+                <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Record Detail: {recName}</h2>
+            </header>
+            <!-- modal body start -->
+            <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                <dl class="slds-wrap">
+                    <lightning-record-form
+                    record-id={recId} 
+                    object-api-name={accountObject}
+                    layout-type="Full" 
+                    columns="2" 
+                    mode="readonly"
+                    onsuccess={handleSuccess}>
+                </lightning-record-form>
+                
+                </dl>
+            </div>
+            <!-- modal footer start-->
+            <footer class="slds-modal__footer">
+                <lightning-button variant="brand"
+                label="Close"
+                title="Close"
+                onclick={closeModal}
+                ></lightning-button>
+            </footer>
+        </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+</template>

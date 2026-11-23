@@ -1,12 +1,14 @@
-<template>
+<template >
     <lightning-quick-action-panel header="Submit for Approval">
-    
+        
+        
+          
         <div class="slds-is-relative" >
             <template if:true={loaded}>
                 
                 <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
             </template>
-            
+           <template if:true={displayDataforPCC}>  
             <template if:true={showHideTab} >
                  
                 <lightning-tabset variant="scoped" class="tab-active" style="height:200px" active-tab-value={activeTab}>
@@ -36,8 +38,8 @@
                    
                      <template if:true={showEPACData}>
                          
-                         <lightning-tab icon-name="standard:entitlement_template" label="Override Sales Price"  value="3" onactive={handleActive}>
-                            <div  style="height: 300px;" >
+                         <lightning-tab icon-name="standard:entitlement_template" label="Override Sales Price" class="slds-scrollable_y accordionClassScroll" value="3" onactive={handleActive}>
+                            <div class="slds-table_col-bordered slds-table_bordered" >
                                  
                              <lightning-datatable
                                  key-field="Sequence"
@@ -63,7 +65,7 @@
             
         
             <lightning-textarea label="Comments" value={comments} onchange={commentChange} class="custom-textarea" ></lightning-textarea>
-        
+        </template>
         </div>
         <div slot="footer">
                 <lightning-button  if:true={showEPACData} variant="brand" label="Back" disabled={bDisableBackBtn} onclick={goBack}></lightning-button>
@@ -72,6 +74,8 @@
                 <lightning-button variant="brand" class="slds-m-left_x-small" label="Submit" onclick={handleSubmitClick} disabled={submitDisabled}></lightning-button>
                 
         </div>
+        
+        
     </lightning-quick-action-panel>
    
 </template>

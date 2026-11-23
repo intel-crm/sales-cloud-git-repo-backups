@@ -1,4 +1,4 @@
-<apex:page standardController="Core_IPS_Assigned_Environment_Variables__c"  action="{!getAssignedEnvironmentVariables}" extensions="Core_EnvironmentVariablesController"  lightningStyleSheets="true">
+<apex:page standardController="Core_IPS_Assigned_Environment_Variables__c"  action="{!getAssignedEnvironmentVariables}" extensions="Core_EnvironmentVariablesController">
 <apex:includeScript value="{!$Resource.Core_IPS_Jquery11}"/>
 
    <script> var previousOnload = window.onload; window.onload = function() { if (previousOnload) { previousOnload(); } 
@@ -16,7 +16,6 @@
     <script language="javascript">
         
         function enableRequiredAndAgentOnly(val1,val2,val3) {
-           
             if(document.getElementById(val1).checked){
                 document.getElementById(val2).disabled=false;
                 document.getElementById(val3).disabled=false;
@@ -55,10 +54,10 @@ $( document ).ready(function() {
    </apex:pageblock>
   
   <apex:pageblock rendered="{!(ErrorMessage == null)}">
- <apex:pageBlockButtons location="bottom">
-     <apex:commandButton value="Save" action="{!saveEvn}"/>
-  		<apex:commandButton value="Cancel" action="{!cancel}"/>
-      </apex:pageBlockButtons>
+  <apex:pageBlockButtons >
+  <apex:commandButton value="Save" action="{!saveEvn}"/>
+  <apex:commandButton value="Cancel" action="{!cancel}"/>
+  </apex:pageBlockButtons>
   <apex:pageBlockSection >  
   <apex:repeat value="{!$ObjectType.Core_IPS_Assigned_Environment_Variables__c.FieldSets.Environment_Details_Edit_FieldSet}" var="Evn">  
   
@@ -72,7 +71,6 @@ $( document ).ready(function() {
    </apex:pageBlockSectionItem>
 </apex:repeat> 
 </apex:pageBlockSection> 
-  
    </apex:pageblock>
   </apex:form>
 </apex:page>

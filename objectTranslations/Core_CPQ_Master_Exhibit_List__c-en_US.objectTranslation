@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Master Exhibit List</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Master Exhibit List</value>
+    </caseValues>
+    <fields>
+        <label><!-- Product --></label>
+        <name>core_cpq_product__c</name>
+        <relationshipLabel><!-- Master Exhibit Lists --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Group Name --></label>
+        <name>core_cpq_product_group__c</name>
+        <relationshipLabel><!-- Master Exhibit Lists --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <description>Call Training Links Parser</description>
+        <name>Call_Training_Links_Parser</name>
+        <label>Call Training Links Parser</label>
+        <locationX>176</locationX>
+        <locationY>134</locationY>
+        <actionName>01pDf00000MDKv0NotFound</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>contextRecordIds</name>
+            <value>
+                <stringValue>contactIdList</stringValue>
+            </value>
+        </inputParameters>
+        <offset>0</offset>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <apiVersion>62.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Einstein Training Link Parser</description>
+    <environments>Default</environments>
+    <interviewLabel>Einstein Training Link Parser {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Einstein Training Link Parser</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Call_Training_Links_Parser</targetReference>
+        </connector>
+    </start>
+    <status>Draft</status>
+    <variables>
+        <name>ContactIdList</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+</Flow>

@@ -1,0 +1,4 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:lightningQuickAction,force:hasRecordId" access="global" >
+    <!--<aura:attribute name="recordId" type="Id" />-->
+    <c:core_OppApprovalLWC recordId="{!v.recordId}"></c:core_OppApprovalLWC>
+</aura:component>

@@ -35,6 +35,9 @@
         <field>SBQQ__Quote__c$Pricing_Server_Deal_Type_Nm__c</field>
     </columns>
     <columns>
+        <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Workload_Nm__c</field>
+    </columns>
+    <columns>
         <field>SBQQ__Quote__c$Pricing_Intel_Response_Requested_By_Date__c</field>
     </columns>
     <columns>
@@ -120,6 +123,10 @@
     </columns>
     <columns>
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_ECAP_Price_Dup_Amt__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_SDM_Fast_Track__c</field>
     </columns>
     <columns>
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Billing_Start_Date_Dt__c</field>

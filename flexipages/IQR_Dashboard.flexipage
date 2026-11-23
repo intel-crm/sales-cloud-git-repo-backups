@@ -17,7 +17,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>height</name>
-                    <value>1400</value>
+                    <value>1200</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>hideOnError</name>
@@ -44,7 +44,7 @@
                     <value>false</value>
                 </componentInstanceProperties>
                 <componentName>wave:waveDashboard</componentName>
-                <identifier>wave_waveDashboard</identifier>
+                <identifier>wave_waveDashboard1</identifier>
             </componentInstance>
         </itemInstances>
         <name>region1</name>

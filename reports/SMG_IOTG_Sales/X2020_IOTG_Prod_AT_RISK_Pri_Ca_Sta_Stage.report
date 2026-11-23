@@ -101,7 +101,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>,Design: Original,Design: Secondary,Deal: Scale-enable,Deal: Sell-through,Deal: Sell-to</value>
+            <value>,Design: Original,Design: Secondary,Deal: Sell-through,Deal: Sell-to</value>
         </criteriaItems>
         <criteriaItems>
             <column>OpportunityLineItem.Core_Status__c</column>
@@ -140,7 +140,7 @@
         <field>STAGE_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>2020_21 IOTG Prod. AtRisk_Pri_Ca_Sta-Stg</name>
+    <name>2020 IOTG Prod. AT RISK_Pri_Ca_Sta-Stage</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -164,7 +164,7 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2021-12-31</endDate>
+        <endDate>2020-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
         <startDate>2020-01-01</startDate>
     </timeFrameFilter>

@@ -8,17 +8,15 @@
     <style>freeForm</style>
     <subject>ALERT: Your Opportunity Has Been Rejected</subject>
     <textOnly>{!User.Name} has rejected your request for approval on the following Opportunity:
-{!Opportunity.Link}
 
-Opportunity Name: {!Opportunity.Name}
+Opportunity Name:{!Opportunity.Name}
 
-Rejection Comments: {!ApprovalRequest.Comments}
+Rejection Comments:{!ApprovalRequest.Comments}
 
-Please click the above link to make any necessary changes and resubmit as needed.
-
+Click Hereto make any necessary changes and resubmit as needed.
 
 
-This message contains Intel Confidential information and should be handled in accordance with your Non-Disclosure Agreement (NDA) with Intel. Access to this e-mail by anyone other than the intended recipient is unauthorized. If you are not the intended recipient (or responsible for delivery of the message to such person), you may not use, copy, distribute, or deliver this message or any part of its contents or take any action in reliance on it, and in such case, you should destroy this message. 
+This message contains Intel Confidential information and should be handled in accordance with your Non-Disclosure Agreement (NDA) with Intel. Access to this e-mail by anyone other than the intended recipient is unauthorized. If you are not the intended recipient (or responsible for delivery of the message to such person), you may not use, copy, distribute, or deliver this message or any part of its contents or take any action in reliance on it, and in such case, you should destroy this message.
 
 Copyright ©Intel Corporation. All rights reserved. Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054-1549 USA www.intel.com (408) 765-8080</textOnly>
     <type>html</type>

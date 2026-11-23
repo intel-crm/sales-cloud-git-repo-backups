@@ -1,6 +1,6 @@
-<aura:component ></aura:component>
-<!-- IPA2.0 + US TWC4497-1631-->
-  <!-- <aura:attribute name="idx" type="string" />
+<aura:component >
+
+  <aura:attribute name="idx" type="string" />
   <aura:attribute name="title" type="string" />
   <aura:attribute name="assistiveText" type="string" />
 
@@ -32,4 +32,4 @@
     </a>
   </li>
 
-</aura:component> -->
+</aura:component>

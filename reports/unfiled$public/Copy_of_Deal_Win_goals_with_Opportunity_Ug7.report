@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>FK_NAME</field>
+    </columns>
+    <columns>
+        <field>Core_Goal__c.Core_Deal_Win_Goal_Owner_Manager__c</field>
+    </columns>
+    <columns>
+        <field>Core_Goal__c.Core_Deal_Win_Goal_Owner_Manager_Email__c</field>
+    </columns>
+    <format>Tabular</format>
+    <name>Deal Win goals with Opportunity NameTest</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Core_Goal__c@Core_Goal__c.Core_Opportunity__c</reportType>
+    <scope>user</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Core_Goal__c.Core_Goal_Accept_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

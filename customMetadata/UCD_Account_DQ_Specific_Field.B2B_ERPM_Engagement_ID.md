@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>B2B ERPM Engagement ID</label>
+    <protected>false</protected>
+    <values>
+        <field>accountType__c</field>
+        <value xsi:type="xsd:string">a&amp;e</value>
+    </values>
+    <values>
+        <field>fieldAPIName__c</field>
+        <value xsi:type="xsd:string">Core_B2B_ERPM_Account_Number__c</value>
+    </values>
+    <values>
+        <field>fieldType__c</field>
+        <value xsi:type="xsd:string">Text</value>
+    </values>
+</CustomMetadata>

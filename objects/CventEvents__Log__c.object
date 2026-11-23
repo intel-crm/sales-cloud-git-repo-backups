@@ -441,7 +441,7 @@
         <filters>
             <field>CREATED_DATE</field>
             <operation>greaterOrEqual</operation>
-            <value>LAST_N_WEEKS:2</value>
+            <value>YESTERDAY</value>
         </filters>
         <label>Recent</label>
     </listViews>
@@ -463,9 +463,9 @@
         <customTabListAdditionalFields>CventEvents__Scope__c</customTabListAdditionalFields>
         <excludedStandardButtons>New</excludedStandardButtons>
         <excludedStandardButtons>OpenListInQuip</excludedStandardButtons>
-        <excludedStandardButtons>Accept</excludedStandardButtons>
-        <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
         <excludedStandardButtons>MassChangeOwner</excludedStandardButtons>
+        <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
+        <excludedStandardButtons>Accept</excludedStandardButtons>
         <searchResultsAdditionalFields>CventEvents__LogDate__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>CventEvents__Level__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>CventEvents__Severity__c</searchResultsAdditionalFields>

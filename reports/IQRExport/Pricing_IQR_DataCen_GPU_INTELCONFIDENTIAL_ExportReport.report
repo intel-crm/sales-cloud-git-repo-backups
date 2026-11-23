@@ -127,6 +127,7 @@
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_ECAP_Price_Dup_Amt__c</field>
     </columns>
     <columns>
+        <aggregateTypes>Sum</aggregateTypes>
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_SDM_Fast_Track__c</field>
     </columns>
     <columns>
@@ -291,6 +292,7 @@
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Market_Segment_values_Nm__c</field>
     </columns>
     <columns>
+        <aggregateTypes>Sum</aggregateTypes>
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricng_Exclude_from_Price_Approval_Rules__c</field>
     </columns>
     <filter>

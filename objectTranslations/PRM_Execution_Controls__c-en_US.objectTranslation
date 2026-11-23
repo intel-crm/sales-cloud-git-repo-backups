@@ -17,10 +17,6 @@
         <name>PRM_Skip_Process_Builder_Ind__c</name>
     </fields>
     <fields>
-        <label><!-- Skip VR for OPID Batch --></label>
-        <name>PRM_Skip_VR_for_OPID_Batch_Ind__c</name>
-    </fields>
-    <fields>
         <label><!-- Skip Validation Rule --></label>
         <name>PRM_Skip_Validation_Rule_Ind__c</name>
     </fields>

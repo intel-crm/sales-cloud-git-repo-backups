@@ -1,0 +1,24 @@
+<template>
+  <div class="slds-theme--default">
+    <template if:true={covidCounts.cases}>
+      <div class="slds-text-heading_large slds-text-align_center slds-box slds-box_x-small c-heading">
+        COVID-19 Worldwide Statistics
+      </div>
+      <!--Covid Numbers-->
+      <c-covid-counts covid-counts={covidCounts}></c-covid-counts>
+      <!--Covid country specific info-->
+      <template if:true={countryName}>
+        <c-covid-country-info
+          country-name={countryName}
+          country-covid-info={countryCovidInfo}
+        ></c-covid-country-info>
+      </template>
+      <!--Covid Table-->
+      <c-covid-table
+        covid-info={_covidInfo}
+        onfilter={filterCovidInfo}
+        onmoreinfo={displayMoreInfo}
+      ></c-covid-table>
+    </template>
+  </div>
+</template>

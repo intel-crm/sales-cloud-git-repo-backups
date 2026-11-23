@@ -1,5 +1,5 @@
 import { LightningElement, wire, track} from 'lwc';
-/*import { getRecord } from 'lightning/uiRecordApi';
+import { getRecord } from 'lightning/uiRecordApi';
 import fetchNonIPSCaseCreation from '@salesforce/apex/Sales_NonIPSCaseCreation.fetchNonIPSCaseCreation';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import validateFieldsCaseCreation from '@salesforce/apex/Sales_NonIPSCaseCreation.validateFieldsCaseCreation';
@@ -20,10 +20,10 @@ import Sales_Description from '@salesforce/label/c.Sales_Description';
 import Sales_Contact_Customer_Title from '@salesforce/label/c.Sales_Contact_Customer_Title';
 import Sales_Nonips_description from '@salesforce/label/c.Sales_Nonips_description';
 import Sales_Nonips_Licenseissue from '@salesforce/label/c.Sales_Nonips_Licenseissue';
-*/
+
 
 export default class LwcNonIpsSubmitCase extends LightningElement {
-    /*@track pickListValues = [];
+    @track pickListValues = [];
     @track value;
     @track showLoadingSpinner = false;
     label={ validateFieldsCaseCreation,SalesAdditionalInfoHtml,SalesDescriptionCustomerService,SalesThankYoumsg,SalesReqFields,SalesProvideDetails,SalesErrorMsg,Sales_Required_field_Missing,
@@ -138,7 +138,7 @@ export default class LwcNonIpsSubmitCase extends LightningElement {
             this.showToast('Required Fields Missing','Please fill PO/ActivationCode/HostId','error');
         }*/
         
-        /*}
+        }
         if ((isValid == false)&& (typeofissue != null || typeofissue != '' || typeofissue != undefined)&&(description != null || description != '' || description != undefined)) {
             this.showToast(this.label.Sales_Required_field_Missing,this.label.SalesReqFields,'error');
             this.showLoadingSpinner = false;
@@ -156,7 +156,7 @@ export default class LwcNonIpsSubmitCase extends LightningElement {
 
         }*/
         //this.showLoadingSpinner = false;
-      /*}
+      }
         catch (e){
             console.error("An error occurred");
             this.showToast('Error',e,'error');
@@ -177,5 +177,5 @@ export default class LwcNonIpsSubmitCase extends LightningElement {
 
     handleChange(event) {
         this.value = event.detail.value;
-    }*/
+    }
 }

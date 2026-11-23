@@ -14,6 +14,6 @@ Venu Karumuru             08/15/2016              Initial Version
 global without sharing class Core_Lead_Daily_PartnerNotification implements schedulable{
     // Main method that gets called by the sechduler and is required
     global void execute(SchedulableContext sc){
-        Database.executeBatch(new Core_PartnerLead_SummaryEmail(), Integer.valueOf(Label.Core_Summary_Email_Batch_Size));
+        Database.executeBatch(new Core_PartnerLead_SummaryEmail(), 100);
     }
 }

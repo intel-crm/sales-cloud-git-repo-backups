@@ -1,0 +1,47 @@
+<template>
+    <lightning-card variant="Narrow" title="Manage Admin" icon-name="standard:swarm_request">
+
+        <div slot="actions">
+            <lightning-button label="Add New Admin"></lightning-button>
+        </div>
+
+        <p class="slds-p-horizontal_small slds-p-vertical_small">
+            Click <strong>Add New Admin</strong> to grant other users access to all the products and computers you
+            manage.
+        </p>
+
+        <template if:true={tableHasData}>
+            <div class="slds-m-around_medium">
+               <!-- <div style="height: 300px;"> --> 
+                    <lightning-datatable key-field="id" data={tableData} columns={columns} onrowaction={handleRowAction}
+                        hide-checkbox-column="true">    <!--show-row-number-column="true"-->
+                    </lightning-datatable>
+               <!-- </div> -->
+            </div>
+            <div>
+                <lightning-layout horizontal-align="space">
+                    <lightning-layout-item flexibility="auto">
+                        <lightning-button label="Previous" icon-name="utility:chevronleft" onclick={previousHandler} data-id="paginationButton">
+                        </lightning-button>
+                    </lightning-layout-item>
+                    <lightning-layout-item flexibility="auto">
+                        Page {page} of {totalPage}
+                    </lightning-layout-item>
+                    <lightning-layout-item flexibility="auto">
+                        <lightning-button label="Next" icon-name="utility:chevronright" icon-position="right" onclick={nextHandler} data-id="paginationButton">                            
+                        </lightning-button>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </div>
+        </template>
+
+        <template if:false={tableHasData}>
+            <div class="slds-m-around_medium">
+                <p style="text-align: center;">
+                    Primary Admin has no associated Delegate Admin.
+                </p>
+            </div>
+        </template>
+        
+    </lightning-card>
+</template>

@@ -1,14 +1,20 @@
 <aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" 
                 access="global" extends="c:Core_MDF_BudgetBase" controller="Core_MDF_BudgetTransfer">
-    <ltng:require styles="{!$Resource.Core_MDF_AccountTransferCSS}"/>
+       
     <aura:attribute name="hasAccess" type="Boolean" default="false"/>
     <aura:attribute name="accessErrorMsg" type="String" default=""/>
     <!-- Attributes start-->        
+    <aura:attribute name="partnersDataFrom" type="Object[]" access="public" /> 
+    <!--<aura:attribute name="partnerDataFrom" type="Account" access="public" />-->
+    <aura:attribute name="partnersDataTo" type="Object[]" access="public" /> 
     <aura:attribute name="PartnerMarketingBudgetList" type="Object[]" access="public" />
     <aura:attribute name="budget" type="Decimal"  access="public" />
     <aura:attribute name="totalAmount" type="Decimal"  access="public" />
     <aura:attribute name="button" type="boolean" default="true"  access="public" />
     <aura:attribute name="error" type="boolean" default="false" access="public"/>
+    <aura:attribute name="searchAcc" type="String" access="public" />
+    <aura:attribute name="searchAccRes" type="Object[]" default="[{'Id':'', 'Name':''}]" access="public" />   
+    <aura:attribute name="selectedValue" type="Map" access="public" default="{'Id':'','Name':''}" />
     <aura:attribute name="autoSelected" type="boolean" default="true" access="public" />
     <aura:attribute name="partnerTransferTo" type="String" access="public" /> 
     <aura:attribute name="fadeTimeout" type="Integer" default="5000"/>
@@ -17,27 +23,18 @@
     <aura:attribute name="amountTransferExceedsError" type="boolean" default="false" access="public"/>
     <aura:attribute name="onSuccessAmount" type="Decimal" access="public"/>
     
-    <aura:attribute name="fromAccountList" type="List" default="[]"/>
-    <aura:attribute name="fromAccountSelectedValue" type="Object" access="public" default="{'Id':'','Name':''}" />
-    <aura:attribute name="budgetSelectedValue" type="Map" access="public" default="{'Id':'','Name':''}" />
-	<aura:attribute name="toAccountList" type="List" default="[]"/>
-    <aura:attribute name="toAccountSelectedValue" type="Map" access="public" default="{'Id':'','Name':''}" />
-    <aura:attribute name="disableBudget" type="boolean" default="true" access="public"/>
-    <aura:attribute name="disableToAccount" type="boolean" default="true" access="public"/>
-    <aura:attribute name="disableTransferAmount" type="boolean" default="true" access="public"/>
     <!-- Attributes end-->
+    
     
     <!--Handlers start-->
     <aura:handler name="init" value="{!this}" action="{!c.DoInit}"/>
     
     <!--Handlers end-->
     
-    <aura:if isTrue="{!v.hasAccess}">   
+    <aura:if isTrue="{!v.hasAccess}"> 
+        
         <lightning:layout class="slds-page-header slds-page-header--object-home" >
-            
-    <!--loading spinner start-->
-         <lightning:spinner aura:id="accountTransferSpinner" variant="brand" size="x-small" class="slds-hide"/>
-    <!-- Loading spinner end--> 
+        
         
         <lightning:layoutItem >
             <lightning:icon iconName="custom:custom16" alternativeText="Account"/>
@@ -58,40 +55,87 @@
                 <legend ><b>
                     {!$Label.c.Core_MDF_From_Account}</b>
                 </legend>
-                
-                
-
-                <lightning:notificationsLibrary aura:id="notifyId"/>
-                <!-- From Account  -->
-                <c:core_MDF_Searchable_Dropdownlist aura:id="fromAccountComponent" 
-                                                    placeHolder="{!$Label.c.Core_MDF_Search +'...'}" 
-                                                    inputDataList="{! v.fromAccountList }" 
-                                                    selectedItemName="{!v.fromAccountSelectedValue.Name}"
-                                                    requiredMessage="{!$Label.c.Core_MDF_CompleteThisField_ErrorMessage}"
-                                                    defaultListMessage="{!$Label.c.Core_MDF_NoRecordsFound}"
-                                                    isRequired="true"
-                                                    onselectedItem="{!c.fromAccountToChange}" 
-                                                    oninputFieldValueClear="{!c.ClearFromAccount}"
-                                                    onclick="{!c.fromAccountClick}"/>                
-                <!-- Budget  -->
-                <c:core_MDF_Searchable_Dropdownlist aura:id="PMBComponent" 
-                                                    fieldLabel="{!$Label.c.Core_MDF_Budget}" 
-                                                    placeHolder="{!$Label.c.Core_MDF_Search +'...'}" 
-                                                    inputDataList="{!v.PartnerMarketingBudgetList}" 
-                                                    isRequired="true"
-                                                    requiredMessage="{!$Label.c.Core_MDF_CompleteThisField_ErrorMessage}"
-                                                    defaultListMessage="{!$Label.c.Core_MDF_NoRecordsFound}"
-                                                    fieldDisabled = "{!v.disableBudget}"
-                                                    onselectedItem="{!c.OnBudgetChange}" 
-                                                    oninputFieldValueClear="{!c.ClearBudget}"/>
-                
+                <div onkeyup="{! c.SearchAccounts }">
+                    <div class="slds-form-element" >
+                        <!--<label class="slds-form-element__label" for="combobox-id-3">Relate to</label>-->
+                        <div class="slds-form-element__control">
+                            <div class="slds-combobox_container">
+                                <div aura:id="fromAccountDropDown" class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click" aria-expanded="false" aria-haspopup="listbox" 
+                                     role="combobox">
+                                    <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
+                                        
+                                        
+                                        
+                                        <lightning:input type="search" class="slds-p-around_xx-small slds-has-focus slds-combobox__input-value" required="true"
+                                                         aura:id="partner_" 
+                                                         aria-activedescendant="option1" aria-autocomplete="list" 
+                                                         aria-controls="listbox-id-3" autocomplete="off" role="textbox" 
+                                                         placeholder="{!$Label.c.Core_MDF_Search +'...'}" 
+                                                         name="fromAccount"
+                                                         value="{!v.selectedValue.Name}"
+                                                         label="{!$Label.c.Core_MDF_From_Account}"
+                                                         onclick="{!c.CloseButton}"
+                                                         variant = "label-hidden"
+                                                         flexibility="grow"
+                                                         
+                                                         />
+                                        
+                                        
+                                    </div>
+                                    <div aura:id="listbox-id-3" class="slds-dropdown slds-dropdown_length-with-icon-7 slds-dropdown_fluid" role="listbox"
+                                         
+                                         >
+                                        <ul class="slds-listbox slds-listbox_vertical" role="presentation" >
+                                            <aura:iteration items="{!v.searchAccRes}" var="searchAccResData" indexVar="indx">
+                                                <li role="presentation" class="slds-listbox__item" aura:id="testli"  onclick="{!c.DropDownCombo}" data-id="{!indx}">
+                                                    
+                                                    <div  aura:id="iteration" class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta" role="option" tabindex="0">
+                                                        <span class="slds-media__figure">
+                                                            <span class="slds-icon_container slds-icon-standard-account">
+                                                                <c:svg class="slds-icon slds-icon_small" aria-hidden="true"
+                                                                       xlinkHref="{!$Resource.	Core_MDF_SLDS262 + '/icons/standard-sprite/svg/symbols.svg#account'}" />  
+                                                            </span>
+                                                        </span>
+                                                        <span class="slds-media__body">
+                                                            <span class="slds-listbox__option-text slds-listbox__option-text_entity">
+                                                                
+                                                                {!searchAccResData.Name} 
+                                                                
+                                                            </span>
+                                                            <span class="slds-listbox__option-meta slds-listbox__option-meta_entity">{!searchAccResData.Core_MDF_Channel_Program__r.Name}</span>
+                                                        </span>
+                                                    </div>
+                                                </li>
+                                            </aura:iteration>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <lightning:select aura:id="partner_" label="{!$Label.c.Core_MDF_Budget}" name="partnerAllocation"  
+                                  required="true"  class="slds-p-around_xx-small"
+                                  onchange="{!c.OnBudgetChange }"> 
+                    
+                    <option value="">{!$Label.c.Core_MDF_choose_one}...</option>                         
+                    <aura:iteration items="{!v.PartnerMarketingBudgetList}" var="PartnerMarketingBudget">
+                       <aura:if isTrue="{!PartnerMarketingBudget.Core_MDF_Budget_Type__c != Null}">
+                           <option value="{!PartnerMarketingBudget.Id}">{!PartnerMarketingBudget.Title} - {!PartnerMarketingBudget.Core_MDF_Budget_Type__c}</option>
+                        <aura:set attribute="else">
+                        <option value="{!PartnerMarketingBudget.Id}">{!PartnerMarketingBudget.Title}</option>  
+                        </aura:set>
+                 	   </aura:if>
+                    </aura:iteration>                
+                </lightning:select>
                 <div class="slds-hide" aura:id="availableAmount">
                     <lightning:input aura:id="partner_" label="{!$Label.c.Core_MDF_Total_Available_Amount}" 
                                      type="number" formatter="currency" min="0" disabled="true"  readonly="true"
-                                     name="totalAmount" fieldLevelHelp="{!$Label.c.Core_MDF_Total_Available_Amount_Helptext}"
-                                     value="{!v.totalAmount}" class="slds-p-around_xx-small"
-                                     flexibility="grow"                                     
-                                     /> 
+                                     name="totalAmount"  value="{!v.totalAmount}"   class="slds-p-around_xx-small"
+                                     flexibility="grow"
+                                     />  
+                    
+                    
                 </div>   
             </fieldset>
             <fieldset class="slds-box slds-box_xx-small slds-container--small slds-p-top_none"  >
@@ -100,21 +144,23 @@
                     </b>
                 </legend>
                 
-                <!-- To Account  -->
-                
-                <c:core_MDF_Searchable_Dropdownlist aura:id="toAccountComponent" 
-                                                    placeHolder="{!$Label.c.Core_MDF_Search +'...'}" 
-                                                    inputDataList="{! v.toAccountList }" 
-                                                    isRequired="true"
-                                                    requiredMessage="{!$Label.c.Core_MDF_CompleteThisField_ErrorMessage}"
-                                                    defaultListMessage="{!$Label.c.Core_MDF_NoRecordsFound}"
-                                                    fieldDisabled = "{!v.disableToAccount}"
-                                                    onselectedItem="{!c.toAccountToChange}" 
-                                                    oninputFieldValueClear="{!c.ClearToAccount}"/>
+                <lightning:select aura:id="partner_" label="{!$Label.c.Core_MDF_To_Account}" name="partnerTo"  
+                                  required="true" class="slds-p-around_xx-small" onchange="{!c.OnAccountToChange }"
+                                  variant = "label-hidden"
+                                  
+                                  > 
                     
+                    <option value="">{!$Label.c.Core_MDF_choose_one}...</option>                         
+                    <aura:iteration items="{!v.partnersDataTo}" var="partnerDataTo">
+                        <option value="{!partnerDataTo.Id}">{!partnerDataTo.Name}</option>    
+                    </aura:iteration>                
+                </lightning:select>
+                
+                
+                
                 <lightning:input aura:id="partner_" label="{!$Label.c.Core_MDF_Amount_to_Transfer}" type="number" formatter="currency" min="0.1"
-                                 name="budget"  value="{!v.budget}" maxlength="13" onblur="{!c.HandleBlur }" step="0.01" required="true"
-                                 class="slds-p-around_xx-small Budget" disabled="{!v.disableTransferAmount}"
+                                 name="budget"  value="{!v.budget}" onblur="{!c.HandleBlur }" step="0.01" required="true"
+                                 class="slds-p-around_xx-small"
                                  flexibility="grow"
                                  /> 
             </fieldset>
@@ -134,6 +180,7 @@
                               onclick="{!c.Clear}"/> 
         </lightning:layoutItem>
         <lightning:layoutItem>
+            
             <div class=" slds-hide" aura:id="toast" style="height:4rem;">
                 <div class="slds-notify_container slds-is-absolute ">
                     <div class="slds-notify slds-notify_toast slds-theme_success" role="alert">
@@ -147,7 +194,7 @@
                         <div class="slds-notify__content">
                             <h2 class="slds-text-heading_small ">{!$Label.c.Core_MDF_Transfer_of} ${!v.onSuccessAmount}&nbsp;{!$Label.c.Core_MDF_to} "{!v.partnerTransferTo}" {!$Label.c.Core_MDF_is_successful}</h2>
                         </div>
-                        <button class="slds-button slds-button_icon slds-notify__close " title="{!$Label.c.Core_MDF_Close}" 
+                        <button class="slds-button slds-button_icon slds-notify__close slds-button_icon-inverse" title="{!$Label.c.Core_MDF_Close}" 
                                 onclick="{!c.CloseToast}">
                             <c:svg class="slds-button__icon slds-button__icon_large" aria-hidden="true"
                                    xlinkHref="{!$Resource.	Core_MDF_SLDS262 + '/icons/utility-sprite/svg/symbols.svg#close'}" /> 
@@ -155,7 +202,7 @@
                         </button>
                     </div>
                 </div>
-            </div> 
+            </div>            
         </lightning:layoutItem>
         <lightning:layoutItem>
             <div class=" slds-hide" aura:id="errorToast" style="height: 4rem;">
@@ -171,7 +218,7 @@
                         <div class="slds-notify__content">
                             <h2 class="slds-text-heading_small ">{!v.errorMsg}</h2>
                         </div>
-                        <button class="slds-button slds-button_icon slds-notify__close" title="{!$Label.c.Core_MDF_Close}"
+                        <button class="slds-button slds-button_icon slds-notify__close slds-button_icon-inverse" title="{!$Label.c.Core_MDF_Close}"
                                 onclick="{!c.CloseErrorToast}"
                                 >
                             <c:svg class="slds-button__icon slds-button__icon_large" aria-hidden="true"
@@ -190,6 +237,7 @@
         {!v.accessErrorMsg}
     </lightning:card>
 </aura:set>
-</aura:if>
+
+ </aura:if> 
     
 </aura:component>

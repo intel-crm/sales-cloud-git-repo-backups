@@ -1,6 +1,6 @@
 embedded_svc.snippetSettingsFile.extraPrechatFormDetails = [
   { 
-    "label":"Username", "transcriptFields":[ "Username__c" ],
+    "label":"Username", "transcriptFields":[ "Username__c" ],//transcript object fields
   },{
     "label":"Cognome", "transcriptFields": ["LastName__c"]
   },{

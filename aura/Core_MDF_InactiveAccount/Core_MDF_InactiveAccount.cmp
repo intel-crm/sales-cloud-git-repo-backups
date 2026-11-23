@@ -12,8 +12,6 @@
     <aura:attribute name = "wrapperClassVar"  type = "Core_MDF_InactivateAccount"/>
     <aura:attribute name="countOfClaimRecords" type="Integer" default="0"/>
     <aura:attribute name="countOfActivityRecords" type="Integer" default="0"/>
-    <aura:attribute name="countOfCampaignRecords" type="Integer" default="0"/>
-    <aura:attribute name = "accounthasCampaigns" type = "String" default="" />
 
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
     <aura:handler name="checkAccountEligibilty" value="{!v.recordId}" action="{!c.checkAccountEligibiltyForInactivation}"/>
@@ -50,10 +48,7 @@
         <aura:if isTrue="{!not(empty(v.accounthasAllocation))}">
         <p>{!v.accounthasAllocation}</p><br/>
         </aura:if>
-        <aura:if isTrue="{!not(empty(v.accounthasCampaigns))}">
-            {!format($Label.c.Core_MDF_Account_has_Campaigns, v.countOfCampaignRecords)}
-            <br/><br/>  
-        </aura:if>
+        
         <aura:if isTrue="{!not(empty(v.accounthasActivities))}">
             {!format($Label.c.Core_MDF_Account_has_activities, v.countOfActivityRecords)}
             <br/><br/> 

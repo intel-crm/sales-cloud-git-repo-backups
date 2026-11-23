@@ -23,7 +23,7 @@
         <label>Campaign Approved - Sales Campaign</label>
         <name>Core_Campaign_Approved_Sales_Campaign</name>
     </approvalStep>
-    <emailTemplate>Testt/Core_Campaign_Approval_Template_Sales_Campaign</emailTemplate>
+    <emailTemplate>unfiled$public/Core_Campaign_Approval_Template_Sales_Campaign</emailTemplate>
     <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
     <entryCriteria>
         <criteriaItems>

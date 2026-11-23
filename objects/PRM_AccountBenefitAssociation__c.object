@@ -180,32 +180,15 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>PRM_Account_RT__c</fullName>
-        <externalId>false</externalId>
-        <formula>PRM_Account_Id__r.RecordType.DeveloperName</formula>
-        <label>Account RT</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>PRM_Partner_Benefit_Id__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <label>Partner Benefit</label>
         <lookupFilter>
             <active>true</active>
-            <errorMessage>The selected Partner Benefit is either Inactive or doesn&apos;t belong to &quot;Intel Partner Alliance&quot; program. Please verify your selection.</errorMessage>
             <filterItems>
                 <field>PRM_PartnerBenefit__c.PRM_Channel_Program_Id__r.Name</field>
                 <operation>equals</operation>
                 <value>Intel Partner Alliance</value>
-            </filterItems>
-            <filterItems>
-                <field>PRM_PartnerBenefit__c.PRM_InActive_Ind__c</field>
-                <operation>equals</operation>
-                <value>False</value>
             </filterItems>
             <isOptional>false</isOptional>
         </lookupFilter>
@@ -247,21 +230,15 @@
                     <label>Tier</label>
                 </value>
                 <value>
-                    <fullName>Select Benefit</fullName>
+                    <fullName>Specialty</fullName>
                     <default>false</default>
-                    <label>Select Benefit</label>
+                    <label>Specialty</label>
                 </value>
                 <value>
                     <fullName>Program Benefit</fullName>
                     <default>false</default>
                     <isActive>false</isActive>
                     <label>Program Benefit</label>
-                </value>
-                <value>
-                    <fullName>Specialty</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Specialty</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -272,7 +249,7 @@
         <description>It will display the date when the status is changed</description>
         <label>Status Change Date</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>DateTime</type>
     </fields>
@@ -302,9 +279,8 @@
     </fields>
     <fields>
         <fullName>PRM_Status_Reason_Txt__c</fullName>
-        <inlineHelpText>On update of any field, Status Reason should also be updated</inlineHelpText>
         <label>Status Reason</label>
-        <required>true</required>
+        <required>false</required>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>TextArea</type>
@@ -313,7 +289,7 @@
         <fullName>PRM_Suppress_Email__c</fullName>
         <defaultValue>false</defaultValue>
         <label>Suppress Email</label>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
@@ -343,7 +319,7 @@
         <picklistValues>
             <picklist>PRM_Source__c</picklist>
             <values>
-                <fullName>Select Benefit</fullName>
+                <fullName>Specialty</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -369,7 +345,7 @@
         <fullName>PRM_Status_Reason_Removal_Mandatory</fullName>
         <active>true</active>
         <description>This is used to restrict user from keeping the Status reason field as Blank when the Status is selected as Inactive.</description>
-        <errorConditionFormula>NOT( $Permission.PCC_Bypass_Automation ) &amp;&amp; IF($Setup.PRM_Execution_Controls__c.PRM_Skip_Validation_Rule_Ind__c=TRUE,FALSE,OR(AND(ISCHANGED(PRM_Status_Nm__c),(ISPICKVAL(PRM_Status_Nm__c, &apos;Inactive&apos;)), ISBLANK(PRM_Status_Reason_Txt__c)),AND((ISPICKVAL(PRM_Status_Nm__c, &apos;Inactive&apos;)), ISBLANK(PRM_Status_Reason_Txt__c))))</errorConditionFormula>
+        <errorConditionFormula>IF($Setup.PRM_Execution_Controls__c.PRM_Skip_Validation_Rule_Ind__c=TRUE,FALSE,OR(AND(ISCHANGED(PRM_Status_Nm__c),(ISPICKVAL(PRM_Status_Nm__c, &apos;Inactive&apos;)), ISBLANK(PRM_Status_Reason_Txt__c)),AND((ISPICKVAL(PRM_Status_Nm__c, &apos;Inactive&apos;)), ISBLANK(PRM_Status_Reason_Txt__c))))</errorConditionFormula>
         <errorMessage>Please add a reason in the Status reason</errorMessage>
     </validationRules>
     <visibility>Public</visibility>

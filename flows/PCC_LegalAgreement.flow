@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>60.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <description>Check registration is Deal</description>
+        <name>Check_Registration_Type</name>
+        <label>Check Registration Type</label>
+        <locationX>575</locationX>
+        <locationY>243</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Deal_Registration</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>recordId.PCC_Design_Deal_Registration__r.PCC_Registration_Type__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>Deal</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Create_Legal_Agreement</targetReference>
+            </connector>
+            <label>Deal Registration</label>
+        </rules>
+    </decisions>
+    <description>This Flow Create Legal Agreement Record for Deal Partners.</description>
+    <environments>Default</environments>
+    <interviewLabel>PCC_LegalAgreement {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>PCC_LegalAgreement</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <recordCreates>
+        <description>Create Legal Agreement Record For Partners.</description>
+        <name>Create_Legal_Agreement</name>
+        <label>Create Legal Agreement</label>
+        <locationX>576</locationX>
+        <locationY>360</locationY>
+        <inputAssignments>
+            <field>PCC_Design_Deal_Registration__c</field>
+            <value>
+                <elementReference>recordId.PCC_Design_Deal_Registration__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>PRM_Account_Id__c</field>
+            <value>
+                <elementReference>recordId.PCC_Design_Deal_Registration__r.Core_Partner_Account_Id__r.Name</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>PRM_Contact__c</field>
+            <value>
+                <elementReference>recordId.PCC_Design_Deal_Registration__r.CreatedBy.Name</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>PRM_Partner_Agreement_Id__c</field>
+            <value>
+                <stringValue>a5tDf000000B6DLIA0</stringValue>
+            </value>
+        </inputAssignments>
+        <object>PRM_AccountLegalAgreemntAssociation__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <start>
+        <locationX>458</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>Check_Registration_Type</targetReference>
+        </connector>
+    </start>
+    <status>Obsolete</status>
+    <variables>
+        <description>This variable holds record Id.</description>
+        <name>recordId</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <objectType>PRM_AccountLegalAgreemntAssociation__c</objectType>
+    </variables>
+</Flow>

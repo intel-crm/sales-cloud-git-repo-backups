@@ -73,10 +73,6 @@
         <name>Core_IAH_KPI_Record_ID__c</name>
     </fields>
     <fields>
-        <label><!-- KPI Retry Counter --></label>
-        <name>Core_IAH_KPI_Retry_Counter__c</name>
-    </fields>
-    <fields>
         <label><!-- Threshold Met? --></label>
         <name>Core_IAH_KPI_Threshold_Met__c</name>
         <picklistValues>

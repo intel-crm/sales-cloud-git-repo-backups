@@ -4,7 +4,7 @@
   @description       : 
   @author            : Vrushabh
   @group             : 
-  @last modified on  : 02-03-2026
+  @last modified on  : 12-01-2024
   @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 -->
 <template>
@@ -55,8 +55,8 @@
                         </template>
 
                         <lightning-datatable data={productRecords} columns={datatableColumns} key-field="id"
-                            max-row-selection = 1 onrowselection = {handleRowSelection}
-                            default-sort-direction = {defaultSortDirection} sorted-direction={sortDirection}
+                            max-row-selection=1 onrowselection={handleRowSelection}
+                            default-sort-direction={defaultSortDirection} sorted-direction={sortDirection}
                             sorted-by={sortedBy} onsort={onHandleSort}>
                         </lightning-datatable>
 
@@ -67,7 +67,7 @@
                             onconsumptionvaluechange={handleConsumptionValueChange}>
                         </c-pricing_-consumption-attributes-component>
                     </template>
-                    
+
                 </div>
                 <footer class="slds-modal__footer">
                     <button class="slds-button slds-button_neutral" onclick={closeModal}>Cancel</button>
@@ -78,4 +78,125 @@
         </section>
         <div class="slds-backdrop slds-backdrop_open"></div>
     </template>
+
+    <template if:true={openRecordModalForm}>
+        <section role="dialog" tabindex="-1" aria-labelledby="new-quote-line-Data-Center" aria-modal="true"
+            aria-describedby="new-quote-line-area2" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container" style="width: 75%;max-width: 80rem;">
+                <header style="padding: 0px; border-bottom: 0px;" class="slds-modal__header">
+                    <lightning-button-icon icon-name="utility:close" onclick={closeModal} alternative-text="close"
+                         class="slds-modal__close">
+                    </lightning-button-icon>
+                </header>
+
+                <!-- Modal/Popup Box Header Starts here-->
+                <header class="slds-modal__header">                    
+                    <h2 id="new-quote-line2" class="slds-text-heading_medium slds-hyphenate" style="text-align: center;">
+                        Create Quote Line
+                    </h2>
+                </header>
+
+                <div class="slds-modal__content slds-p-around_medium" style="padding-top: 0px; padding-bottom: 0px;">
+                    <lightning-record-edit-form onload={handleRecordEditFormLoad} onsuccess={handleSuccess}
+                        density="Comfy" object-api-name="SBQQ__QuoteLine__c" onsubmit={handleSubmit} record-type-id={qlRecordTypeId}>
+                        <lightning-messages></lightning-messages>
+                        <template if:true={errorMsg}>
+                            <div class="errorClass slds-text-heading_small">{errorMsg}</div>
+                        </template>
+
+                        <template if:true={uiPageLayoutView}>
+                            <lightning-layout multiple-rows="true">
+                                <lightning-layout-item size="12">
+                                    <template for:each={uiPageLayoutView.sections} for:item="section">
+                                        <div key={section.id} class="slds-grid slds-wrap">
+                                            <div class="row slds-grid slds-gutters row-width">
+                                                <h3 class="slds-p-vertical_xx-small slds-p-left_medium" style="font-size: 16px;">{section.heading}</h3>
+                                            </div>
+                                            <lightning-layout multiple-rows="true">
+                                                <template for:each={section.layoutRows} for:item="layoutRow">
+                                                    <template for:each={layoutRow.layoutItems} for:item="layoutItem">
+                                                        <template for:each={layoutItem.layoutComponents} for:item="layoutComponent">
+                                                            <lightning-layout-item key={layoutComponent.apiName} size="6" padding="horizontal-small">
+                                                                <template if:true={layoutItem.editableForNew}>
+                                                                    <lightning-input-field data-fieldname={layoutComponent.apiName}
+                                                                        field-name={layoutComponent.apiName} required={layoutItem.required}>
+                                                                    </lightning-input-field>
+                                                                </template>
+                                                                <template if:false={layoutItem.editableForNew}>
+                                                                    <template if:true={layoutComponent.apiName}>
+                                                                        <lightning-output-field field-name={layoutComponent.apiName}></lightning-output-field>
+                                                                    </template>
+                                                                </template>
+                                                            </lightning-layout-item>
+                                                        </template>
+                                                    </template>
+                                                </template>
+                                            </lightning-layout>
+                                        </div>
+                                    </template>
+                                </lightning-layout-item>
+                            </lightning-layout>
+                        </template>
+
+                        <div class="slds-docked-form-footer slds-modal__footer footerStyle">
+                            <footer style="padding-top: 10px">
+                                <div class="slds-align_absolute-center">
+                                    <lightning-button variant="neutral" label="Cancel" title="Cancel" onclick={closeModal}></lightning-button>
+
+                                    <lightning-button variant="brand" title="Save" type="submit" class="slds-m-left_x-small" name="Save" label="Save"> </lightning-button>
+                                </div>
+                            </footer>
+                        </div>
+
+                        <template if:true={loadSpinner}>
+                            <div class="spinnerPadding">
+                                <lightning-spinner alternative-text="Loading..." size="medium" variant="brand"
+                                    class="saveSpinner">
+                                </lightning-spinner>
+                            </div>
+                        </template>
+
+                        <template if:true={isSubmitSpinner}>
+                            <lightning-spinner alternative-text="Loading" size="medium" class="spinnerStyle"
+                                variant="brand">
+                            </lightning-spinner>
+                        </template>
+                        
+                    </lightning-record-edit-form>
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+
+    <template if:true={openPerfomanceMetric}>
+        <section role="dialog" tabindex="-1" aria-labelledby="new-quote-line4" aria-modal="true"
+            aria-describedby="new-quote-line-area4" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container" style="width: 75%;max-width: 80rem;">
+                <header style="padding: 0px; border-bottom: 0px;" class="slds-modal__header">
+                    <lightning-button-icon icon-name="utility:close" onclick={closeModal} alternative-text="close"
+                         class="slds-modal__close">
+                    </lightning-button-icon>
+                </header>
+
+                <!-- Modal/Popup Box Header Starts here-->
+                <header class="slds-modal__header">
+                    <lightning-icon icon-name="custom:custom26" size="medium" class="slds-icon slds-input__icon"
+                        style="float:left;"></lightning-icon>
+                    <h2 id="new-quote-line3" class="slds-text-heading_medium slds-hyphenate" style="text-align: left;margin-left: 40px;">
+                        Create Performance Matrics
+                    </h2>
+                </header>
+
+                <div class="slds-modal__content slds-p-around_medium" style="padding-top: 0px; padding-bottom: 0px;">
+                    <lightning-flow flow-api-name='Performance_Metrics_Create' flow-input-variables={inputVariables}
+                        onstatuschange={handleStatusChange}> </lightning-flow>
+                </div>
+
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+        
+    </template>
+
 </template>

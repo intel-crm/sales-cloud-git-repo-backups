@@ -11,6 +11,9 @@
         <field>UNREAD</field>
     </columns>
     <columns>
+        <field>Lead.Core_Entrance_Date_MAQL__c</field>
+    </columns>
+    <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>Lead.Core_Is_Covered_Account__c</field>
     </columns>
@@ -53,8 +56,8 @@
             <column>CREATED</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>eloqua</value>
+            <operator>equals</operator>
+            <value>user eloqua</value>
         </criteriaItems>
         <criteriaItems>
             <column>RECORDTYPE</column>
@@ -82,7 +85,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
-            <value>INSIDE</value>
+            <value>OSC</value>
         </criteriaItems>
         <criteriaItems>
             <column>UNREAD</column>
@@ -109,7 +112,7 @@
         <field>Lead.Core_Lead_State__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>TBD Global Inside MGL MAQLs Unread</name>
+    <name>Global Inside MGL MAQLs Unread</name>
     <params>
         <name>co</name>
         <value>1</value>

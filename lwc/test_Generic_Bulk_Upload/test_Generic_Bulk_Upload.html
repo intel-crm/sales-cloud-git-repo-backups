@@ -1,0 +1,79 @@
+<template>
+    <!-- <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01" class="slds-modal slds-fade-in-open slds-modal_medium">-->
+
+<!--<div class="slds-modal__container">
+            <div>
+              <lightning-button-icon icon-name="utility:close" variant="bare-inverse" onclick={handleClose} alternative-text="close" class="slds-m-bottom_small slds-float_right" title="close"></lightning-button-icon>
+            </div>
+<template if:false={downloadModal}>
+  <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+        <lightning-card title="Select Object" >
+        
+         <lightning-combobox
+            name="objName"
+            label="Object Name"
+            value={value}
+            placeholder="Select Object"
+            options={options}
+            onchange={handleChange} >
+         </lightning-combobox>
+
+         <p>Selected value is: {objLabel}</p>
+ 
+         </lightning-card>
+      <lightning-button variant="brand" label="Next" title="Next" onclick={handleNextClick} class="slds-m-left_x-small"></lightning-button>
+    </div>
+</template>--->
+<!--<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-2">
+    <template if:true={downloadModal}>--->
+      <div class="slds-grid slds-wrap bg-color-white">
+     <template if:true={isProcessing}>
+        <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+    </template>
+
+       <!-- <div class="slds-modal__container">
+          <div class="slds-col slds-size_6-of-12 slds-p-around_small">
+                <div class="border">
+                <div class="slds-page-header__title">Download Template</div></br>
+                <p>Click on the button shown below to download the {objLabel} Template</p>
+                <div if:true={fileName}></br></div>
+                 
+                </br><lightning-button variant="brand" onclick={downloadBulkuploadTemplateFile} label="Rebate Claim Template"></lightning-button>
+                    </div>
+         </div>
+   
+        </div>-->
+         <div class="slds-col slds-size_6-of-12 slds-p-around_small">
+                <div class="border">
+                <div class="slds-page-header__title">Download Template</div></br>
+                <p>Click on the button shown below to download the Template</p>
+                <div if:true={fileName}></br></div>
+                </br><lightning-button variant="brand" onclick={downloadBulkuploadTemplateFile} label="Download Template"></lightning-button>
+                    </div>
+            </div>
+            
+            <div class="slds-col slds-size_6-of-12 slds-p-around_small">
+                <div class="border">
+                    <div  class="slds-page-header__title">Upload Template</div>
+                    <p> 
+                        <lightning-input type="file" accept=".csv" label="Attachment" onchange={handleFilesChange}></lightning-input>
+                    </p>
+                    </br>
+                    <template if:true={fileName}>
+                    <div class="slds-text-body_small slds-text-color_error slds-m-bottom_x-small">
+                        {fileName}
+                        <lightning-button-icon class="slds-p-left_x-small" size="x-small" icon-name="utility:delete" onclick={deleteFile} alternative-text="Delete File"></lightning-button-icon>
+                    </div>
+                    </template>
+                    <lightning-button variant="brand" onclick={handleSave} label="Upload Template"></lightning-button>
+                </div>
+            </div>
+     
+      </div>
+  <!--  </template>
+</div>
+</div>
+  
+</section>
+<div class="slds-backdrop slds-backdrop_open" role="presentation"></div>-->
+</template>

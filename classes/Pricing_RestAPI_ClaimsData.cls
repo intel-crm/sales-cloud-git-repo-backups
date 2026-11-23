@@ -13,7 +13,6 @@ global without sharing class Pricing_RestAPI_ClaimsData extends TriggerHandler{
     private static final DateTime ENTRY_TIME = System.now();
     private static final String RESTAPI_NAME = Pricing_RestAPI_ClaimsData.class.getName();
     public static Pricing_RestAPI_Response response = new Pricing_RestAPI_Response();
-    
     /**
     * @description method which receives the request payload
     * @author Accenture | 04-06-2022 
@@ -22,8 +21,7 @@ global without sharing class Pricing_RestAPI_ClaimsData extends TriggerHandler{
     @HttpPost
     global static Pricing_RestAPI_Response doPost(){
         try{
-            //Enable/Disable Underlying Integration for Claims data
-            if(TriggerHandler.isActive('Pricing_Claims_Data_Switch')){
+            if(TriggerHandler.isActive('Pricing_Underlying_Integration')){
                 RestRequest req = RestContext.request;
                 processRequest(req.requestBody.toString());
             }

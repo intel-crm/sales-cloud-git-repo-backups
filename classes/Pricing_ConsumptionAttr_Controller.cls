@@ -123,7 +123,8 @@ public with sharing class Pricing_ConsumptionAttr_Controller {
             }
             return parentQuoteLines;
         } catch (Exception e) {
+            System.debug('Error retrieving parent quote line: ' + e.getMessage());
             return null;
         }
-    }
+    }    
 }

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Parametri in tempo reale AC</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value><!-- Parametri in tempo reale AC --></value>
+    </caseValues>
+    <fields>
+        <label> Agenti attività successive al contatto </label>
+        <name>amazonconnect__Agents_After_Contact_Work__c</name>
+    </fields>
+    <fields>
+        <label> Agenti disponibili </label>
+        <name>amazonconnect__Agents_Available__c</name>
+    </fields>
+    <fields>
+        <label> Errore agenti </label>
+        <name>amazonconnect__Agents_Error__c</name>
+    </fields>
+    <fields>
+        <label> Agenti non produttivi </label>
+        <name>amazonconnect__Agents_Non_Productive__c</name>
+    </fields>
+    <fields>
+        <label> Agenti in chiamata </label>
+        <name>amazonconnect__Agents_On_Call__c</name>
+    </fields>
+    <fields>
+        <label> Agenti online </label>
+        <name>amazonconnect__Agents_Online__c</name>
+    </fields>
+    <fields>
+        <label> Agenti dello staff </label>
+        <name>amazonconnect__Agents_Staffed__c</name>
+    </fields>
+    <fields>
+        <label> Contatti in coda </label>
+        <name>amazonconnect__Contacts_In_Queue__c</name>
+    </fields>
+    <fields>
+        <label> Contatti pianificati </label>
+        <name>amazonconnect__Contacts_Scheduled__c</name>
+    </fields>
+    <fields>
+        <label> Età meno recente dei contatti </label>
+        <name>amazonconnect__Oldest_Contact_Age__c</name>
+    </fields>
+    <fields>
+        <label> ARN coda </label>
+        <name>amazonconnect__Queue_ARN__c</name>
+    </fields>
+    <fields>
+        <label> ID coda </label>
+        <name>amazonconnect__Queue_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Amazon Connect Instance Region --></label>
+        <name>amazonconnect__Region__c</name>
+    </fields>
+    <gender>Feminine</gender>
+    <nameFieldLabel><!-- Queue Name --></nameFieldLabel>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

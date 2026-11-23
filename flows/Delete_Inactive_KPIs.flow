@@ -3,8 +3,8 @@
     <actionCalls>
         <name>deleteInactiveKPIs</name>
         <label>deleteInactiveKPIs</label>
-        <locationX>176</locationX>
-        <locationY>358</locationY>
+        <locationX>180</locationX>
+        <locationY>351</locationY>
         <actionName>Core_DeleteInactiveKPIs</actionName>
         <actionType>apex</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -36,14 +36,14 @@
     <processType>AutoLaunchedFlow</processType>
     <start>
         <locationX>50</locationX>
-        <locationY>49</locationY>
+        <locationY>50</locationY>
         <connector>
             <targetReference>deleteInactiveKPIs</targetReference>
         </connector>
         <schedule>
-            <frequency>Weekly</frequency>
-            <startDate>2021-09-23</startDate>
-            <startTime>20:30:00.000Z</startTime>
+            <frequency>Daily</frequency>
+            <startDate>2021-08-29</startDate>
+            <startTime>23:30:00.000Z</startTime>
         </schedule>
         <triggerType>Scheduled</triggerType>
     </start>

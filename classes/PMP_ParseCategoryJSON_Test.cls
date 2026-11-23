@@ -52,7 +52,7 @@ public class PMP_ParseCategoryJSON_Test {
         
         insert testCategoryComp;
     
-        PMP_ParseCategoryJSON.languageCode = 'en_US';
+        PMP_ParseCategoryJSON.strBaseKey = 'en_US';
         PMP_ParseCategoryJSON.parseCategoryJSON('Test_Category_Hierarchy');
         System.assertEquals(testCategoryComp.PMP_Parent_Category_Id__c, testCategoryCategories.id);
 
@@ -99,7 +99,7 @@ public class PMP_ParseCategoryJSON_Test {
         
         insert testCategoryComp;
     
-        PMP_ParseCategoryJSON.languageCode = 'zh_CN';
+        PMP_ParseCategoryJSON.strBaseKey = 'zh_CN';
         PMP_ParseCategoryJSON.parseCategoryJSON('Test_Category_Hierarchy');
         System.assertEquals(testCategoryComp.PMP_Parent_Category_Id__c, testCategoryCategories.id);
 
@@ -146,7 +146,7 @@ public class PMP_ParseCategoryJSON_Test {
         
         insert testCategoryComp;
     
-        PMP_ParseCategoryJSON.languageCode = 'ja_JP';
+        PMP_ParseCategoryJSON.strBaseKey = 'ja_JP';
         PMP_ParseCategoryJSON.parseCategoryJSON('Test_Category_Hierarchy');
         System.assertEquals(testCategoryComp.PMP_Parent_Category_Id__c, testCategoryCategories.id);
 

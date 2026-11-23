@@ -1,0 +1,38 @@
+<template>
+
+Clone Opportunity
+<!---Accordion-->
+   <lightning-accordion
+        allow-multiple-sections-open
+        active-section-name={activeSections}>
+        <lightning-accordion-section name="A" label="Opportunity Clone Mandatory Field">
+            <p>This is the content area for section A.</p>
+             <div>
+                <lightning-input type="text" label="Opportunity Name"></lightning-input>
+                    <lightning-helptext content="You'll receive weekly updates"></lightning-helptext>
+             </div>
+             <div>
+                <lightning-input type="date" label="Decision Date"> </lightning-input>
+                    
+             </div>
+        </lightning-accordion-section>
+
+        <lightning-accordion-section name="B" label="CLONE Related List">
+            <p>This is the content area for section B.</p>
+        </lightning-accordion-section>
+
+        <lightning-accordion-section name="C" label="CLONE Opportunity Team Members">
+            <lightning-datatable
+                data={opportunityTeamMember}
+                columns={columns}
+                key-field="Id"
+                onrowselection={handleRowSelection}>
+            </lightning-datatable>
+        </lightning-accordion-section>
+    </lightning-accordion>
+    <!---/Accordion-->
+        <lightning-button label="Save and Create" title="Save" onclick={handleSaveClick} class="slds-m-left_x-small"></lightning-button>
+
+        <lightning-button label="Cancel" title="Cancel" onclick={handleCancelClick} class="slds-m-left_x-small"></lightning-button>
+     <!--footer button-->
+</template>

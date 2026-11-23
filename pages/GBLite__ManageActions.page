@@ -1,6 +1,6 @@
 <apex:page controller="GBLite.ManageActionsController" showHeader="{!showHeader}" sidebar="false" action="{!init}" title="{!pageTitle}" tabStyle="Grid_Wizard__tab">
 	<!--[if IE 8]>
-    <link rel="stylesheet" type="text/css" href="{!URLFOR($Resource.gb_resources, 'ie8-styles.css')}" />
+    <link rel="stylesheet" type="text/css" href="{!URLFOR($Resource.GBLite__gb_resources, 'ie8-styles.css')}" />
 	<![endif]-->
 	<c:EmptyComponent rendered="{!actionsEnabled}">
 

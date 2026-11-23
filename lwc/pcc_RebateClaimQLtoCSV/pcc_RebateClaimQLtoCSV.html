@@ -1,0 +1,40 @@
+<template>
+    
+        
+            <template if:true={isLoading}>
+                <lightning-spinner alternative-text="Loading..." size="large"></lightning-spinner>
+            </template>
+            <template if:true={isLevel1}>
+                <div class="slds-p-around_x-small">
+                    <lightning-input type="text" label="Search" onchange={handleSearch}></lightning-input>
+                    <p class="slds-text-body_small">[In case of more than one QL #, separate the Quote Lines using comma. For e.g., Q-XXXX-XXX, Q-XXXX-XXX]</p>
+                </div>
+            </template>
+            <template if:true={data}>
+                <div class="height">
+                <lightning-datatable
+                    key-field="Id"
+                    data={data}
+                    columns={columns}
+                    draft-values={draftValues}
+                    errors = {error}
+                    suppress-bottom-bar="true"
+                    onrowselection={handleRowSelection}
+                    show-row-number-column={checkboxhidden}
+                    hide-checkbox-column={checkboxhidden}>
+                </lightning-datatable>
+            </div>
+            </template>
+            <div class="slds-align_absolute-center slds-p-top_small">
+            <template if:true={isLevel2}>
+                <lightning-button  variant="brand" label="<<Back" onclick={handleBack}></lightning-button>
+                <span class="slds-p-left_medium"></span>
+            </template>
+            <template if:true={isLevel1}>
+                <lightning-button variant="brand" label="Proceed>>" onclick={handleProceed}></lightning-button>
+            </template>
+            <template if:true={isLevel2}>
+                <lightning-button  variant="brand" label="Export Rebate Claim Template" onclick={handleCSV}></lightning-button>
+            </template>
+        </div>
+</template>

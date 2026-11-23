@@ -1,0 +1,7 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global" >
+    <aura:attribute name="isenanbleChat" type="Boolean" /> 
+    <lightning:button variant="brand" label="Chat" title="Chat with an Expert" onclick="{!c.handleClick}"/>
+    <aura:if isTrue="{!v.isenanbleChat}">
+        <ltng:require scripts="{!$Resource.Sales_ChatButton}"></ltng:require>
+    </aura:if>
+</aura:component>

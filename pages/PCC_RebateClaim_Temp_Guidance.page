@@ -1,0 +1,27 @@
+<apex:page lightningStylesheets="true" showHeader="true" applyBodyTag="true" applyHtmlTag="true">
+   
+    <div style="text-align:center;font-size: 25px;font-weight: bold;">
+        <apex:outputText value="Guidance for filling RC Template" /> 
+    </div>
+    <br/><br/>
+    <div style="text-align:left;font-size: 20px;">
+        <p style ="color: black;"><b style="color: red">Note : </b> All the attributes in RC template are mandatory.</p>
+    </div>
+    <br/>
+    <div style= "font-size: 20px;">
+        <li><b>Quote Line # :</b><p style="color: black;">It should present in system and should be in valid format (Ex: <b>Q-12345-001-004</b> )</p>
+        </li>
+         <li><b>Product Name :</b><p style="color: black;">It should match against the QL # provided in RC template and should be in proper format as there in system. </p>
+        </li>
+       <li><b>Claim Quantity :</b><p style="color: black;"> </p></li>
+         <li><b>OEM :</b><p style="color: black;"> </p></li>
+         <li><b>Consumption Countries :</b><p style="color: black;"> </p></li>
+        <li><b>Invoice # : </b><p style="color: black;"> </p></li>
+        <li><b>Invoice Date : </b><p style="color: black;">It should be in <b>MM-DD-YYYY</b> format and should be between Pricing start date and Pricing end date </p></li>
+        
+    </div>
+    
+    
+    
+    
+</apex:page>

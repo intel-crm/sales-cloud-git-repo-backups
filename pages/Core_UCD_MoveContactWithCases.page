@@ -1,0 +1,324 @@
+<apex:page extensions="Core_IPS_MoveContactWithCases_Controller" standardController="Contact" sidebar="false" id="pgid"
+           standardStylesheets="{!$User.UITheme == 'Theme3'}" lightningStylesheets="{!$User.UITheme != 'Theme3'}">
+    <apex:outputPanel rendered="{!$User.UITheme != 'Theme3'}">
+        <apex:slds />
+    </apex:outputPanel>
+    <apex:includeScript value="{!URLFOR($Resource.Core_Jquery)}"/> 
+    <style type="text/css">
+        .customPopup {
+        	background-color: white; border-width: 1px; border-style: solid; z-index: 9999; left: 50%; border-radius:6px; padding:11px; position: absolute; width: 600px; margin-left: -240px; top:100px;
+        }
+        .popupBackground{ background-color:black; opacity: 0.20; filter: alpha(opacity = 20); position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 9998; } 
+        .closeButton {
+        	float: right;
+        }
+        
+        }
+    </style>
+    <style>
+        .errorMessageInline{
+            position: relative;
+            font-size: 12px;
+            font-family: Arial;
+            color: #fc4c02;
+            font-weight: bold;
+        }
+        .tdBgColor{
+            bgcolor:#A3E4D7
+        }
+        .pbTitle{
+                display: inherit;
+        }
+        .btns {
+            width:125px;
+            margin:0 auto;
+        }
+        body .btns input.btn {
+           margin-right: 10px;
+           padding: 5px 10px;
+                
+         }
+         .contactBlock .tertiaryPalette {
+            background-color: #ffc !important;
+            color:#27282e !important;
+         }
+    </style>
+    
+    <script type="text/javascript"> 
+    
+    $ = jQuery.noConflict();
+    //Validation for Contact and Account fields on clicking on save cases
+    function validateSave(){
+        var callFun = true;
+        var keepCaseExists = false;
+        var MoveCasesExists = false;
+        var caseCount = '{!caseCount}';
+        var hasAccessToAcctSelection = '{!hasAccessToAcctSelection}';
+        if(hasAccessToAcctSelection == 'false'){
+            $('[id$=errorMessage]').text('User do not have the permission to perform the operation. Only Data Ops can perform the change');
+            return false;
+        }
+        
+        $('[id$=chkbxKeepCases]').each(function(){
+            console.log(this.checked);
+            if(this.checked == true){
+                keepCaseExists = true;
+            }
+            if(this.checked == true){
+                MoveCasesExists = true;
+            }
+        });
+        $('[id$=chkbxKeepCasesRows]').each(function(){
+            console.log(this.checked);
+            if(this.checked == true){
+                keepCaseExists = true;
+            }
+        });
+
+        
+        if(keepCaseExists == true && $('[id$=conId]').val() == '' && caseCount > 0 ){
+            $('[id$=errorMessage]').text('Please Select Contact');
+            callFun = false; 
+        }
+        if(MoveCasesExists == true && $('[id$=accId]').val() == ''){
+            $('[id$=errorMessage]').text('Please Select Account');
+            callFun = false;
+        }
+        if($('[id$=accId]').val() == ''){
+            $('[id$=errorMessage]').text('Please Select Account');
+            callFun = false;
+        }
+        if(callFun == true){
+            saveCases(); 
+        }
+        return  callFun;
+    }
+    //End of Validation for Contact and Account fields on clicking on save cases
+    //Code for override contact lookup
+    function openLookup(baseURL, width, modified, searchParam){
+        var originalbaseURL = baseURL;
+        var originalwidth = width;
+        var originalmodified = modified;
+        var originalsearchParam = searchParam;
+        
+        var lookupType = baseURL.substr(baseURL.length-3, 3);
+        if (modified == '1') 
+            baseURL = baseURL + searchParam;
+        
+        var isCustomLookup = false;
+        
+        // Following "001" is the lookup type for Account object so change this as per your standard or custom object
+        if(lookupType == "003"){
+            
+            var urlArr = baseURL.split("&");
+            console.log('==urlArr='+urlArr);
+            var txtId = '';
+            if(urlArr.length > 2) {
+                urlArr = urlArr[1].split('=');
+                txtId = urlArr[1];
+            }
+            console.log('===came here==='+lookupType);
+            // Following is the url of Custom Lookup page. You need to change that accordingly
+            baseURL = "/apex/Core_CustomContactLookup?txt=" + txtId+'&conaccid='+'{!currContact.Accountid}';
+            
+            // Following is the id of apex:form control "myForm". You need to change that accordingly
+            baseURL = baseURL + "&frm=" + escapeUTF("{!$Component.myForm}");
+            if (modified == '1') {
+                baseURL = baseURL + "&lksearch=" + searchParam;
+            }
+            
+            // Following is the ID of inputField that is the lookup to be customized as custom lookup
+            console.log(txtId.indexOf('conId'));
+            if(txtId.indexOf('conId') > -1 ){
+                isCustomLookup = true;
+            }
+        }
+        
+        if(isCustomLookup == true){
+            openPopup(baseURL, "lookup", 350, 480, "width="+width+",height=480,toolbar=no,status=no,directories=no,menubar=no,resizable=yes,scrollable=no", true);
+        }
+        else {
+            if (modified == '1') originalbaseURL = originalbaseURL + originalsearchParam;
+            openPopup(originalbaseURL, "lookup", 350, 480, "width="+originalwidth+",height=480,toolbar=no,status=no,directories=no,menubar=no,resizable=yes,scrollable=no", true);
+        } 
+    }
+    //Code for override contact lookup
+    </script>
+    
+    <apex:form >
+        <!--<apex:actionFunction action="{!updateCasesOnSave}" name="saveCases"></apex:actionFunction> -->
+        <!-- <apex:actionFunction action="{!cancelPage}" name="callCancel"></apex:actionFunction> -->
+        <apex:sectionHeader title="Account : {!currContact.Account.Name}" subtitle="{!currContact.Name}"/>
+        
+        <apex:pageBlock >
+            <apex:pageMessages escape="false"></apex:pageMessages>
+            <apex:pageBlockButtons location="top" id="pbBtns" >
+                  <apex:outputPanel id="buttonPanel" layout="block" rendered="{!NOT(gecCaseFound)}" style="text-align: center;">
+                    <apex:outputLabel rendered="{!hasAccessToAcctSelection}" > Identify the Account to move the selected Contact to: &nbsp;
+                        <apex:inputField value="{!targetAccount.AccountId}" id="accId" styleClass="slds-is-open"/>
+                    </apex:outputLabel>
+                    
+                    <apex:outputLabel rendered="{!hasAccessToAcctSelection}" > Keep Entitlements intact with transfer
+                        <apex:inputCheckbox value="{!keepEntitlements}"  id="chkbxKeepEnt" style="vertical-align:middle;margin-left: 5px;" disabled="{!IF((entitlements.size > 0 && hasSelectedEntitlements == true), false, true)}">
+                            <apex:actionSupport event="onclick" reRender="entitlementTable"/>
+                        </apex:inputCheckbox>
+                    </apex:outputLabel>&nbsp;&nbsp;&nbsp;
+                     <!--<input type="Button" class="btn" value=" Save " onClick="validateSave();" />&nbsp;&nbsp;&nbsp; -->
+                    <apex:commandButton action="{!updateCasesOnSave}" value=" Save " onClick="return  validateSave();"  rendered="{!(hasAccessToAcctSelection)}" styleClass="slds-button slds-button_neutral"></apex:commandButton>&nbsp;&nbsp;&nbsp;
+                    <apex:commandButton action="{!updateCasesOnSave}" value=" Save " onClick="return  false;"  rendered="{!NOT(hasAccessToAcctSelection)}" disabled="true" styleClass="slds-button slds-button_neutral"></apex:commandButton>&nbsp;&nbsp;&nbsp;
+                    <!-- <input type="Button" class="btn" value="Cancel" onClick="callCancel();"/>&nbsp;&nbsp;&nbsp; -->
+                    <apex:commandButton action="{!cancel}" value="Cancel "  styleClass="slds-button slds-button_neutral"></apex:commandButton>
+                    <span id="errorMessage" class="errorMessageInline"></span>
+                    <apex:commandButton action="{!cancelPage}" value=" Cancel " rendered="{!gecCaseFound}"  styleClass="slds-button slds-button_neutral"></apex:commandButton>
+                </apex:outputPanel>    
+            </apex:pageBlockButtons>
+            <apex:outputPanel id="popup" >
+                <apex:outputPanel styleClass="popupBackground" layout="block" rendered="{!displayPopUp}"/> 
+                <apex:outputPanel id="popInnerOutputPnl" styleClass="customPopup" layout="block" rendered="{!displayPopUp}" style="text-align:center;">
+                    <apex:pageBlockSection title="Warning Message" collapsible="false"/>
+                    <apex:outputPanel rendered="{!$User.UITheme == 'Theme3'}">
+                        <br/>
+                    </apex:outputPanel>
+                    <apex:outputtext value="{!moveAccoutWarningMessage}" escape="false"/><br/><br/>
+                    <div class="btns" style="{!IF($User.UITheme == 'Theme3', 'display:block;', 'display:none;')}">
+                            <apex:commandButton value="Cancel" title="Close the popup"  action="{!closePopup}" styleClass="closeButton slds-button slds-button_neutral"  rerender="accId,popup"/> <!--action="{!closePopup}-->
+                            <apex:commandButton value="Ok"  action="{!moveAccountchange}"  styleClass="closeButton slds-button slds-button_neutral" />
+                    </div>
+                    <apex:outputPanel rendered="{!$User.UITheme != 'Theme3'}">
+                        <div style="display:inline;">
+                            <apex:commandButton value="Ok"  action="{!moveAccountchange}"  styleClass="slds-button slds-button_neutral" />
+                        </div>
+                        <div style="display:inline;">
+                            <apex:commandButton value="Cancel" title="Close the popup"  action="{!closePopup}" styleClass="slds-button slds-button_neutral"  rerender="accId,popup"/> <!--action="{!closePopup}-->
+                        </div>
+                    </apex:outputPanel>
+                </apex:outputPanel>
+            </apex:outputPanel>
+            <apex:pageblockSection columns="1" >
+            <apex:outputPanel rendered="{!(hasAccessToAcctSelection )}" >
+                <apex:outputLabel rendered="{!casesWithOUTprojectId.size > 0}" > Select to transfer Cases to another Contact (on the original Account):
+                            <apex:inputCheckbox value="{!keepCases}"  id="chkbxKeepCases" style="vertical-align:middle;margin-left: 5px;" >
+                                <apex:actionSupport event="onchange" reRender="caseTable1, caseTable2"/>
+                            </apex:inputCheckbox>
+                 </apex:outputLabel>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <apex:outputLabel rendered="{!casesWithOUTprojectId.size > 0}" >  Identify the Contact to transfer the Cases to: &nbsp;
+                        <apex:inputField value="{!contactLookUp.ContactId}" id="conId"/>
+                    </apex:outputLabel>
+            </apex:outputPanel>     
+            </apex:pageblockSection>
+           
+            <table border ="0.1"  width="100%">
+                <tr> <td  colspan="2" bgcolor="#A3E4D7" style="font-size:115%"> Entitlements:  </td></tr>
+                <tr>
+                    <td  colspan="2">
+                        <apex:pageBlockTable value="{!entitlements}" var="wrapper" id="entitlementTable">
+                            <apex:column headerValue="Name" value="{!wrapper.ent.Name}"/>
+                            <apex:column headerValue="Contact Name" value="{!wrapper.ent.Core_Contact_Id__r.Name}"/>
+                            <!-- <apex:column headerValue="Engagment Tier" value="{!wrapper.ent.Core_Engagement_Tier__c}"/>  <apex:column headerValue="From Source" value="{!wrapper.ent.Core_From_Source__c}"/> <apex:column headerValue="Keep Entitlement " > <apex:inputCheckbox value="{!wrapper.ent}" id="chkbxKeepEntId"/> </apex:column>-->
+                            <apex:column headerValue="Entitlement " value="{!wrapper.ent.Core_Entitlement_Id__r.Core_Display_Name__c}"/>
+                            <apex:column headerValue="Entitlement Type" value="{!wrapper.ent.Core_Type__c}"/>
+                            <apex:column headerValue="Selected" value="{!wrapper.ent.Core_Selected__c}"/>
+                        </apex:pageBlockTable>
+                    </td>
+                </tr>
+                <tr>
+                    <td bgcolor="#A3E4D7" style="font-size:115%"><apex:outputLabel style="font-size: 100%;color: black;"> Cases without Projects that can remain with the orginal Account: </apex:outputLabel></td>
+                    <!-- <td bgcolor="#A3E4D7"><apex:outputLabel > Assets </apex:outputLabel></td> -->
+                </tr>
+                <tr> <!-- Section Contact Cases with out project ID -->
+                    <td valign="top">
+                        <apex:pageBlockTable value="{!casesWithOUTprojectId}" var="conCase" id="caseTable1" rendered="{!$ObjectType.Case.fields.caseNumber.Accessible}">
+                            <apex:column headerValue="Contact Name " value="{!conCase.cs.Contact.Name}"/>
+                            <apex:column headerValue="CaseNumber " value="{!conCase.cs.caseNumber}"/>
+                            <apex:column headerValue="Status " value="{!conCase.cs.status}"/>
+                            <apex:column headerValue="Owner " value="{!conCase.cs.owner.Name}"/>
+                            <apex:column headerValue="Product Name "  value="{!conCase.cs.Product.Name}"/>
+                            <apex:column headerValue="IPS Project " value="{!conCase.cs.Core_IPS_Project_Case__r.Name}"/>
+                            <apex:column headerValue="IPS Product " value="{!conCase.cs.Core_IPS_Product_Org1__r.Name}"/>
+                            <apex:column headerValue="IPS Supported Product " value="{!conCase.cs.Core_IPS_Supported_Product__r.Name}"/>
+                            <apex:column headerValue="Asset Id " value="{!conCase.cs.AssetId}"/>
+                            <apex:column headerValue="GEC Status " value="{!conCase.cs.Core_IPS_GEC_Status__c}"/> 
+                            <apex:column headerValue="GEC Case " value="{!conCase.cs.Core_IPS_GEC_Case__c}"/>
+                            
+                            <apex:column headerValue="Account Name " value="{!conCase.cs.AccountId}"/>
+                            <!--
+                            <apex:column headerValue="Keep case " >
+                                <apex:inputCheckbox value="{!conCase.keepCase}" id="chkbxKeepCasesRows"/>
+                            </apex:column>
+                            -->
+                        </apex:pageBlockTable>
+                    </td><!--
+                    <td valign="top">
+                        <apex:pageBlockTable value="{!assetWithOUTprojectId}" var="asset" id="assetTable1" >
+                            <apex:column headerValue="Asset Name" value="{!asset.Name}"/>
+                            <apex:column headerValue="IPS Asset " value="{!asset.Core_IPS_Asset__c}"/>
+                            <apex:column headerValue="IPS Project" value="{!asset.Core_IPS_Project_Name__c}"/>
+                            <apex:column headerValue="Asset Id" value="{!asset.Id}"/>
+                            <apex:column headerValue="Install Date" value="{!asset.InstallDate}"/>
+                            <apex:column headerValue="Usage End Date" value="{!asset.UsageEndDate}"/>
+                            <apex:column headerValue="Status" value="{!asset.status}"/>
+                            
+                        </apex:pageBlockTable>
+                    </td> -->
+                </tr>
+                
+                <tr>
+                    <td bgcolor="#A3E4D7" style="font-size:115%"><apex:outputLabel style="font-size: 100%;color: black;">Cases with Projects that require manual intervention to move to new Account or Contact: </apex:outputLabel></td>
+                  <!--  <td bgcolor="#A3E4D7"><apex:outputLabel > Assets </apex:outputLabel></td> -->
+                </tr>
+                
+                <tr> <!-- Section Contact Cases with  project ID -->
+                    <td valign="top">
+                        <apex:pageBlockTable value="{!casesWithProjectId}" var="conCase" id="caseTable2"  rendered="{!$ObjectType.Case.fields.caseNumber.Accessible}">
+                            <apex:column headerValue="Contact Name " value="{!conCase.cs.Contact.Name}"/>
+                            <apex:column headerValue="CaseNumber " value="{!conCase.cs.caseNumber}"/>
+                            <apex:column headerValue="Status " value="{!conCase.cs.status}"/>
+                            <apex:column headerValue="Owner " value="{!conCase.cs.owner.Name}"/>
+                            <apex:column headerValue="Product Name "  value="{!conCase.cs.Product.Name}"/>
+                            <apex:column headerValue="IPS Project " value="{!conCase.cs.Core_IPS_Project_Case__r.Name}"/>
+                            <apex:column headerValue="IPS Product " value="{!conCase.cs.Core_IPS_Product_Org1__r.Name}"/>
+                            <apex:column headerValue="IPS Supported Product " value="{!conCase.cs.Core_IPS_Supported_Product__r.Name}"/>
+                            <apex:column headerValue="Asset Id " value="{!conCase.cs.AssetId}"/>
+                            <apex:column headerValue="GEC Status " value="{!conCase.cs.Core_IPS_GEC_Status__c}"/>
+                            <apex:column headerValue="Account Name " value="{!conCase.cs.AccountId}"/>
+                            <!--
+                            <apex:column headerValue="Keep case " >
+                                <apex:inputCheckbox value="{!conCase.keepCase}" disabled="true"/>
+                            </apex:column>
+                            -->
+                        </apex:pageBlockTable>
+                    </td>
+                    <!--
+                    <td valign="top" >
+                        <apex:pageBlockTable value="{!assetWithProjectId}" var="asset" id="assetTable2" >
+                            <apex:column headerValue="Asset Name" value="{!asset.Name}"/>
+                            <apex:column headerValue="IPS Asset " value="{!asset.Core_IPS_Asset__c}"/>
+                            <apex:column headerValue="IPS Project" value="{!asset.Core_IPS_Project_Name__c}"/>
+                            <apex:column headerValue="Asset Id" value="{!asset.Id}"/>
+                            <apex:column headerValue="Install Date" value="{!asset.InstallDate}"/>
+                            <apex:column headerValue="Usage End Date" value="{!asset.UsageEndDate}"/>
+                            <apex:column headerValue="Status" value="{!asset.status}"/>
+                        </apex:pageBlockTable>
+                    </td> -->
+                </tr>
+                <tr>
+                    <td  colspan="2" bgcolor="#A3E4D7" style="font-size:115%" ><apex:outputLabel style="font-size: 100%;color: black;"> Premier Support Projects: </apex:outputLabel></td>
+                </tr>
+                <tr>
+                    <td valign="top"  colspan="2">
+                        <apex:pageBlockTable value="{!IPSProjects}" var="ipsProj" id="ipsProjectTable"  rendered="{!$ObjectType.Core_IPS_Project_Member__c.fields.Name.Accessible}" >
+                            <apex:column headerValue="Account" value="{!ipsProj.Core_IPS_Contact_Account__c }"/>
+                            <apex:column headerValue="Premier Support Project" value="{!ipsProj.Core_IPS_Project__r.Name }"/>
+                            <apex:column headerValue="Provisioning Date" value="{!ipsProj.Core_IPS_Provisioning_Date__c }"/>
+                            <apex:column headerValue="Selective Member" value="{!ipsProj.Core_Selective_Member__c }"/>
+                            <apex:column headerValue="User" value="{!ipsProj.Core_User__c  }"/>
+                            <apex:column headerValue="Status" value="{!ipsProj.Core_Status__c }"/>
+                        </apex:pageBlockTable>
+                    </td> 
+                </tr>
+                
+            </table>
+            
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

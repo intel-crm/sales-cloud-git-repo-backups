@@ -424,7 +424,6 @@
         <field>Case.Core_Product_Organization__c</field>
     </columns>
     <filter>
-        <booleanFilter>1 AND 2 AND 3 AND 4 AND ((5 AND 6) OR (7 AND 8))</booleanFilter>
         <criteriaItems>
             <column>RECORDTYPE</column>
             <columnToColumn>false</columnToColumn>
@@ -459,27 +458,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
             <value>Top_Opps_NA15</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Case.Core_Case_Resolution_Reason__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>Top_Opps_NA15_Removed</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Case.Core_IPS_HC_Help_Needed__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Top_Opps_NA15</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Case.Core_IPS_HC_Help_Needed__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>Top_Opps_NA15_Removed</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

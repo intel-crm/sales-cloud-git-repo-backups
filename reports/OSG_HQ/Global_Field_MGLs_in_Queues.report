@@ -43,13 +43,16 @@
     <columns>
         <field>Lead.Core_Marketing_Tactic_ID__c</field>
     </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Lead.SWS_Software_Lead__c</field>
-    </columns>
     <description>RT: Leads</description>
     <filter>
-        <booleanFilter>(1 OR 2) AND 3</booleanFilter>
+        <booleanFilter>(1 AND 2) OR 3</booleanFilter>
+        <criteriaItems>
+            <column>CREATED</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>eloqua</value>
+        </criteriaItems>
         <criteriaItems>
             <column>RECORDTYPE</column>
             <columnToColumn>false</columnToColumn>
@@ -63,13 +66,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>1</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Lead.Core_Lead_State__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>Terminated,Rejected</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -89,7 +85,7 @@
         <field>Lead.Core_Lead_Priority__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>OLD - Global Field MGLs in Queues</name>
+    <name>Global Field MGLs in Queues</name>
     <params>
         <name>co</name>
         <value>1</value>

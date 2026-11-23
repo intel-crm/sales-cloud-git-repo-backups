@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPlugin xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <aiPluginUtterances>
+        <developerName>utterance_findadupli0</developerName>
+        <language xsi:nil="true"/>
+        <masterLabel>utterance_findadupli0</masterLabel>
+        <utterance>Find a duplicate record for this design</utterance>
+    </aiPluginUtterances>
+    <aiPluginUtterances>
+        <developerName>utterance_canyoufind1</developerName>
+        <language xsi:nil="true"/>
+        <masterLabel>utterance_canyoufind1</masterLabel>
+        <utterance>Can you find duplicates of this design record?</utterance>
+    </aiPluginUtterances>
+    <aiPluginUtterances>
+        <developerName>utterance_whenwassta2</developerName>
+        <language xsi:nil="true"/>
+        <masterLabel>utterance_whenwassta2</masterLabel>
+        <utterance>when was status changed to Design in Review?</utterance>
+    </aiPluginUtterances>
+    <canEscalate>false</canEscalate>
+    <description>This topic handles duplicate records related to  Design-Deal Registrations.</description>
+    <developerName>Design_registration_Duplicates</developerName>
+    <genAiFunctions>
+        <functionName>EmployeeCopilot__IdentifyObjectByName</functionName>
+    </genAiFunctions>
+    <genAiFunctions>
+        <functionName>EmployeeCopilot__IdentifyRecordByName</functionName>
+    </genAiFunctions>
+    <genAiFunctions>
+        <functionName>EmployeeCopilot__QueryRecords</functionName>
+    </genAiFunctions>
+    <genAiFunctions>
+        <functionName>EmployeeCopilot__QueryRecordsWithAggregate</functionName>
+    </genAiFunctions>
+    <genAiFunctions>
+        <functionName>EmployeeCopilot__SummarizeRecord</functionName>
+    </genAiFunctions>
+    <genAiFunctions>
+        <functionName>EmployeeCopilot__GetRecordDetails</functionName>
+    </genAiFunctions>
+    <genAiPluginInstructions>
+        <description>You should always pick the Design-Deal Registration record from the current page. If not available, ask the user to provide ID and query Design-Deal Registration object using ID to get all the record details.</description>
+        <developerName>instruction_youshoulda0</developerName>
+        <language xsi:nil="true"/>
+        <masterLabel>instruction_youshoulda0</masterLabel>
+        <sortOrder>0</sortOrder>
+    </genAiPluginInstructions>
+    <genAiPluginInstructions>
+        <description>After getting the Design-Deal Registration record, ask the user to provide fields to check duplicates as conditions. You must ask user confirmation before this step and show  Registration Number, Registration Name and Registration Status of the record picked for duplicate search. You must check twice before sending, make sure to return proper data.</description>
+        <developerName>instruction_aftergetti1</developerName>
+        <language xsi:nil="true"/>
+        <masterLabel>instruction_aftergetti1</masterLabel>
+        <sortOrder>0</sortOrder>
+    </genAiPluginInstructions>
+    <genAiPluginInstructions>
+        <description>Upon getting the fields for duplicate conditions, query Design-Deal Registration object with given fields in the where conditions and ID of the record what was picked earlier. Make sure to get records which has close match if not the exact same. Exclude the record which is used for finding duplicates. You must check twice before sending, make sure to return proper data,</description>
+        <developerName>instruction_upongettin2</developerName>
+        <language xsi:nil="true"/>
+        <masterLabel>instruction_upongettin2</masterLabel>
+        <sortOrder>0</sortOrder>
+    </genAiPluginInstructions>
+    <genAiPluginInstructions>
+        <description>If there are no records found, ask user again to provide fields for duplicate check.</description>
+        <developerName>instruction_ifthereare3</developerName>
+        <language xsi:nil="true"/>
+        <masterLabel>instruction_ifthereare3</masterLabel>
+        <sortOrder>0</sortOrder>
+    </genAiPluginInstructions>
+    <genAiPluginInstructions>
+        <description>When user asks about any field change, query the Core_Design_Registration__share object with parentid as the Design-Deal Registratio Id and return the user with the date when the field was changed</description>
+        <developerName>instruction_whenuseras4</developerName>
+        <language xsi:nil="true"/>
+        <masterLabel>instruction_whenuseras4</masterLabel>
+        <sortOrder>0</sortOrder>
+    </genAiPluginInstructions>
+    <language>en_US</language>
+    <masterLabel>Design registration Duplicates</masterLabel>
+    <pluginType>Topic</pluginType>
+    <scope>Your job inform user about duplicated of Design-Deal Registration record exist in the system.</scope>
+</GenAiPlugin>

@@ -26,10 +26,6 @@
                 <behavior>Edit</behavior>
                 <field>PMP_Specialty_Name_Japanese__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Grey_Image_URL__c</field>
-            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

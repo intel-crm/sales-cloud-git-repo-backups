@@ -356,7 +356,7 @@ public without sharing class Pricing_QuoteLineController_Test {
             update quoteLine;
             Test.stopTest();
             Pricing_QuoteLineController.recordApproval(quoteLine.Id, 'Test', 'Customer Revision', quoteLine, '', false, 'Test', '');
-           	System.assertEquals(quoteList.size() > 0, true);
+            System.assertEquals(quoteList.size() > 0, true);
             //System.assert(String.isNotBlank(msg), 'failed to approve record');
             //Test.stopTest();
         }
@@ -482,46 +482,46 @@ public without sharing class Pricing_QuoteLineController_Test {
     }
 
     static testMethod void testGetProductName(){
-		List<SBQQ__Quote__c> quoteList = [SELECT Id from SBQQ__Quote__c LIMIT 1];
-		List<SBQQ__QuoteLine__c> quoteLineList = [SELECT Id, Pricing_Product_Nm__r.Name, Pricing_Other_Product_Nm__c, Pricing_Sales_Rep__c, Pricing_Status_Nm__c from SBQQ__QuoteLine__c LIMIT 1];
-		User adminUser = [Select id from User where Email='quoteLineControllerAdmin@intel.com'];
+        List<SBQQ__Quote__c> quoteList = [SELECT Id from SBQQ__Quote__c LIMIT 1];
+        List<SBQQ__QuoteLine__c> quoteLineList = [SELECT Id, Pricing_Product_Nm__r.Name, Pricing_Other_Product_Nm__c, Pricing_Sales_Rep__c, Pricing_Status_Nm__c from SBQQ__QuoteLine__c LIMIT 1];
+        User adminUser = [Select id from User where Email='quoteLineControllerAdmin@intel.com'];
         String str;
-		System.runAs(adminUser){
+        System.runAs(adminUser){
             Test.startTest();
             str = Pricing_QuoteLineController.getProductName(quoteLineList[0].Id);
             Test.stopTest();
-		}        
+        }        
         System.assert(str != '','Product name should not be empty');
-	}
+    }
 
     static testMethod void testGetDataColumn(){
  
-		List<SBQQ__Quote__c> quoteList = [SELECT Id from SBQQ__Quote__c LIMIT 1];
-		List<SBQQ__QuoteLine__c> quoteLineList = [SELECT Id, Pricing_Sales_Rep__c, Pricing_Status_Nm__c from SBQQ__QuoteLine__c LIMIT 1];
-		User adminUser = [Select id from User where Email='quoteLineControllerAdmin@intel.com'];
+        List<SBQQ__Quote__c> quoteList = [SELECT Id from SBQQ__Quote__c LIMIT 1];
+        List<SBQQ__QuoteLine__c> quoteLineList = [SELECT Id, Pricing_Sales_Rep__c, Pricing_Status_Nm__c from SBQQ__QuoteLine__c LIMIT 1];
+        User adminUser = [Select id from User where Email='quoteLineControllerAdmin@intel.com'];
         Map<String,List<Pricing_QuoteLineController.DataTableColumns>> dataTableColumnsMap = new Map<String,List<Pricing_QuoteLineController.DataTableColumns>>();
-		System.runAs(adminUser){
+        System.runAs(adminUser){
             Test.startTest();
             Pricing_QuoteLineController.DataTableColumns dataTable = new  Pricing_QuoteLineController.DataTableColumns('test','Pricing_SecondaryContact_Nm__c','SSD', true);
             //Pricing_QuoteLineController.getDataTableColumns(Label.Pricing_Tender_SSD_Quote);
             dataTableColumnsMap = Pricing_QuoteLineController.getDataTableColumns(); //CH
             Test.stopTest();  
             System.assert(!dataTableColumnsMap.isEmpty(),'DataTableColumns should not be empty');      
-		}        
-	}
+        }        
+    }
 
     static testMethod void testListValues(){
 
-		User adminUser = [Select id from User where Email='quoteLineControllerAdmin@intel.com'];
-		System.runAs(adminUser){
+        User adminUser = [Select id from User where Email='quoteLineControllerAdmin@intel.com'];
+        System.runAs(adminUser){
             Test.startTest();
             List<Pricing_QuoteLineController.listViewWrapper> listWrapper = new List<Pricing_QuoteLineController.listViewWrapper>();
             
             listWrapper = Pricing_QuoteLineController.listValues('SBQQ__QuoteLine__c');            
             Test.stopTest();
             System.assert(!listWrapper.isEmpty(),'Quote Line List should not be empty');
-		}    
-	}
+        }    
+    }
 
     static testMethod void testisPricingManager(){
         Boolean isRPM;
@@ -663,4 +663,10 @@ public without sharing class Pricing_QuoteLineController_Test {
         }
         Test.stopTest();
     }
+     static testMethod void testeligibleForPricingSupportCheck(){        
+        Test.startTest();
+        SBQQ__QuoteLine__C quoteLine = [SELECT Id,Name, Pricing_Program_Type_Nm__c,Pricing_SIPP_Cb__c,Pricing_Market_Segment_values_Nm__c,Pricing_Form_Factor_Nm__c from SBQQ__QuoteLine__c LIMIT 1];
+        Pricing_QuoteLineController.eligibleForPricingSupportCheck(quoteLine);
+        Test.stopTest(); 
+     }
 }

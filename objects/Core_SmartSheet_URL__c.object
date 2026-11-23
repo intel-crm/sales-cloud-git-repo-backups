@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
     <customSettingsType>List</customSettingsType>
+    <description>Has URL string stored for different fields on AI inference SSR</description>
     <enableFeeds>false</enableFeeds>
     <fields>
         <fullName>Account_Geo__c</fullName>

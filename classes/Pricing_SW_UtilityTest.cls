@@ -40,7 +40,7 @@ public class Pricing_SW_UtilityTest {
                 ,BIllingStateCode = 'AL'
                 ,BillingCity = 'Alabama'
                 ,BillingStreet = 'test ' + (Math.random() * 1000)
-                ,Core_Sales_Groups__c = 'APJ Japan Sales Group'
+                ,Core_Sales_Groups__c = 'Americas US Sales Group'
                 ,Industry = 'Agriculture'
                 ,Core_Sub_Industry__c = 'Crop Production'           
             );
@@ -57,7 +57,7 @@ public class Pricing_SW_UtilityTest {
                 ,BIllingStateCode = 'AL'
                 ,BillingCity = 'Alabama'
                 ,BillingStreet = 'test ' + (Math.random() * 1000)
-                ,Core_Sales_Groups__c = 'APJ Japan Sales Group'
+                ,Core_Sales_Groups__c = 'Americas US Sales Group'
                 ,Industry = 'Agriculture'
                 ,Core_Sub_Industry__c = 'Crop Production'
             ));
@@ -412,7 +412,7 @@ public class Pricing_SW_UtilityTest {
         acc.BillingCity = 'Texas';
         acc.BillingCountry = 'USA';
         acc.BillingStreet = 'G-2101'; 
-        acc.Core_Sales_Groups__c = 'APJ Japan Sales Group'; 
+        acc.Core_Sales_Groups__c = 'APJ Partner Holding'; 
         acc.Core_Geo__c = 'APJ';
         acc.Core_Sub_Geo__c = 'IJKK';
         acc.Core_PSG_Account__c = true;
@@ -452,7 +452,7 @@ public class Pricing_SW_UtilityTest {
         directacc.BillingCity = 'Texas';
         directacc.BillingCountry = 'USA';
         directacc.BillingStreet = 'G-2101'; 
-        directacc.Core_Sales_Groups__c = 'APJ Japan Sales Group';
+        directacc.Core_Sales_Groups__c = 'PRC Sales Group';
         directacc.Core_Geo__c = 'APJ';
         directacc.Core_Sub_Geo__c = 'IJKK';
         directacc.Core_PSG_Account__c = true;
@@ -522,7 +522,7 @@ public class Pricing_SW_UtilityTest {
         status.add('In Review');
         for(Integer i=0;i<numberOfQuotes;i++){ 
             SBQQ__Quote__c quote = new SBQQ__Quote__c();
-            //quote.RecordTypeId = PSG_Utility.getRecordTypeId('SBQQ__Quote__c', 'PSG_Quote_New');
+            quote.RecordTypeId = PSG_Utility.getRecordTypeId('SBQQ__Quote__c', 'PSG_Quote_New');
             quote.SBQQ__Account__c = accId;
             quote.SBQQ__PrimaryContact__c = conId;
             quote.core_cpq_price_book_nm__c =  pb.Id;
@@ -592,7 +592,7 @@ public class Pricing_SW_UtilityTest {
         List<SBQQ__QuoteLine__c> quoteLines = new List<SBQQ__QuoteLine__c>();
         for(Product2 prod1 : products){
             SBQQ__QuoteLine__c quoteLine = new SBQQ__QuoteLine__c(); 
-            //quoteLine.RecordTypeId=PSG_Utility.getRecordTypeId('SBQQ__QuoteLine__c', 'PSG_Quote_Line_Create');
+            quoteLine.RecordTypeId=PSG_Utility.getRecordTypeId('SBQQ__QuoteLine__c', 'PSG_Quote_Line_Create');
             quoteLine.SBQQ__Product__c = prod1.Id;
             quoteLine.SBQQ__Quote__c = quoteId;
             quoteLine.price_suggested_resale_amt__c = 100;

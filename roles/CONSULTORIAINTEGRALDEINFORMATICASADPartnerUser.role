@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>CONSULTORIA INTEGRAL DE INFORMATICA SAPI DE CV Partner User</description>
+    <description>CONSULTORIA INTEGRAL DE INFORMATICA SA D Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>CONSULTORIA INTEGRAL DE INFORMATICA SAPI DE CV Partner User</name>
+    <name>CONSULTORIA INTEGRAL DE INFORMATICA SA D Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>CONSULTORIAINTEGRALDEINFORMATICASADPartnerManager</parentRole>
 </Role>

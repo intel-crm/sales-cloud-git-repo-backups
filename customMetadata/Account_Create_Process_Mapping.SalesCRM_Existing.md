@@ -3,6 +3,10 @@
     <label>SalesCRM Existing</label>
     <protected>false</protected>
     <values>
+        <field>Active__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
         <field>Core_Account_Reference_Source_Name__c</field>
         <value xsi:type="xsd:string">SalesCRM Existing</value>
     </values>
@@ -15,8 +19,24 @@
         <value xsi:type="xsd:string">Sales Pipeline</value>
     </values>
     <values>
+        <field>Description_Text__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
         <field>Duplicate_Rejected__c</field>
         <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>Label_Name__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Order__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Permission_Set__c</field>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>Process_Type_Code__c</field>
@@ -25,6 +45,10 @@
     <values>
         <field>Process_Type_Name__c</field>
         <value xsi:type="xsd:string">SalesCRM Existing</value>
+    </values>
+    <values>
+        <field>Profile_Name__c</field>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>RecordType_Developer_Name__c</field>

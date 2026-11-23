@@ -29,7 +29,7 @@ Workflow rule description:  Update the default decision date from lead conversi
         <name>mainUpdate</name>
         <label>mainUpdate</label>
         <locationX>176</locationX>
-        <locationY>335</locationY>
+        <locationY>323</locationY>
         <inputAssignments>
             <field>CloseDate</field>
             <value>
@@ -44,7 +44,7 @@ Workflow rule description:  Update the default decision date from lead conversi
         <connector>
             <targetReference>mainUpdate</targetReference>
         </connector>
-        <filterFormula>AND( ISNEW(), {!$Record.Core_Lead_Conversion_Flag__c} )</filterFormula>
+        <filterFormula>AND(AND(NOT(ISNULL({!$Record.RecordTypeId})),CONTAINS({!$Label.Core_Sales_CRM_Record_Types},{!$Record.RecordType.DeveloperName})),AND( ISNEW(), {!$Record.Core_Lead_Conversion_Flag__c} ))</filterFormula>
         <object>Opportunity</object>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>

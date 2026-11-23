@@ -9,2149 +9,637 @@
     <navType>Console</navType>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>A&amp;E User</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>A&amp;E User (Read Only)</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
         <type>Flexipage</type>
-        <profile>Analytics Cloud Integration User</profile>
+        <profile>Account Brief Team</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Analytics Cloud Security User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>B2BMA Integration User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>BU Account Collaborator</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
         <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
+        <profile>CIM Hub Admin</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>Commissions Office Inquiries Admin User</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>ContractManager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L2</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L1</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Core Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>Data Ops</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
         <type>Flexipage</type>
-        <profile>DDR Profile</profile>
+        <profile>Eloqua Integrator</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
         <type>Flexipage</type>
-        <profile>Identity User</profile>
+        <profile>Finance Program Team</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Global Export Compliance</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>Integration</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
         <type>Flexipage</type>
-        <profile>Intel Partner Admin Profile</profile>
+        <profile>Integration-IAH</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Intel Partner Alliance Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Intel Partner Community Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Intel Premier Support Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Intel® FPGA SSLC Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Intel® Partner Portal Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Intel® Solutions Marketplace Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>IPA A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Agent</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Agent Enhanced</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Agent-Partner</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>IPS External Customer</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Lenovo B2B  M2M</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Support Org Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Survey Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Temp Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>IT @ Intel</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>IT Admin</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>IT @ Intel</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Marketing Development Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>MarketingProfile</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Minimum Access - API Only Integrations</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Minimum Access - Salesforce</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>PCC B2B API Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Premier Support User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Production Release and Checkout</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>Production Support-IPS</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support-Display</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Program Core Team</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>Reporting Admin</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
         <type>Flexipage</type>
-        <profile>Sales Insights Integration User</profile>
+        <profile>Sales CRM API</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>Sales Manager</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>Sales Ops</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>Sales Rep-BB</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>Sales Rep-BB-Dual IPS</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>Sales Rep-CW</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>SalesforceIQ Integration User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>SMG/GMC Read Only</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>SolutionManager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>SSO Error Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>StandardAul</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Standard</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
-        <type>Flexipage</type>
-        <profile>Support Core Team</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>Admin</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>A&amp;E User</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>A&amp;E User (Read Only)</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
         <type>Flexipage</type>
-        <profile>Analytics Cloud Integration User</profile>
+        <profile>Account Brief Team</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Analytics Cloud Security User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>B2BMA Integration User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>BU Account Collaborator</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
         <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
+        <profile>CIM Hub Admin</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>Commissions Office Inquiries Admin User</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>ContractManager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L2</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L1</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Core Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>Data Ops</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
         <type>Flexipage</type>
-        <profile>DDR Profile</profile>
+        <profile>Eloqua Integrator</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
         <type>Flexipage</type>
-        <profile>Identity User</profile>
+        <profile>Finance Program Team</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Global Export Compliance</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>Integration</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
         <type>Flexipage</type>
-        <profile>Intel Partner Admin Profile</profile>
+        <profile>Integration-IAH</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
         <type>Flexipage</type>
-        <profile>Intel Partner Alliance Profile</profile>
+        <profile>IT Admin</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Intel Partner Community Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Intel Premier Support Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Intel® FPGA SSLC Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Intel® Partner Portal Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Intel® Solutions Marketplace Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>IPA A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Agent</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Agent Enhanced</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Agent-Partner</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>IPS External Customer</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Lenovo B2B  M2M</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Support Org Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Survey Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Temp Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>IT @ Intel</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
         <type>Flexipage</type>
-        <profile>IT Admin</profile>
+        <profile>Marketing Development Manager</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>MarketingProfile</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Minimum Access - API Only Integrations</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Minimum Access - Salesforce</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>PCC B2B API Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Premier Support User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Production Release and Checkout</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>Production Support-IPS</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Insights Integration User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>SalesforceIQ Integration User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>SolutionManager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>SSO Error Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>StandardAul</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Standard</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Support Core Team</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_Financial_Incentive_Quote_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L1</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L2</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>ContractManager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Core Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Intel Partner Admin Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>IPA A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>MarketingProfile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Premier Support User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Production Release and Checkout</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>Production Support</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>Production Support-Display</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
         <type>Flexipage</type>
-        <profile>Production Support-IPS</profile>
+        <profile>Program Core Team</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>SolutionManager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>StandardAul</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Standard</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Support Core Team</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Edit</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L1</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L2</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>ContractManager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>Core Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>Intel Partner Admin Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>IPA A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>MarketingProfile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>Premier Support User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>Production Release and Checkout</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>Reporting Admin</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Sales CRM API</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>Sales Manager</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>Sales Ops</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>Sales Rep-BB</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>Sales Rep-BB-Dual IPS</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>Sales Rep-CW</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>SMG/GMC Read Only</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
+        <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>SolutionManager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>StandardAul</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>Standard</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>Support Core Team</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Readonly</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L1</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L2</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>ContractManager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>Core Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>Intel Partner Admin Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>IPA A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>MarketingProfile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>Premier Support User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>Production Release and Checkout</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>SolutionManager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>StandardAul</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>Standard</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>Support Core Team</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Submit</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L1</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L2</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>ContractManager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>Core Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>Intel Partner Admin Profile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>IPA A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>MarketingProfile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>Premier Support User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>Production Release and Checkout</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>SolutionManager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>StandardAul</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>Standard</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
-        <type>Flexipage</type>
-        <profile>Support Core Team</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Pricing_SW_Quote_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>SBQQ__Quote__c</pageOrSobjectType>
-        <recordType>SBQQ__Quote__c.Pricing_Software_Quote_Create</recordType>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>Admin</profile>
     </profileActionOverrides>
     <tabs>standard-OrgMetric</tabs>
+    <tabs>Core_Account_SoldTo_ShipTo_Rel__c</tabs>
+    <tabs>Sales_License_Generator_Switch__c</tabs>
+    <tabs>Sales_Feedback__c</tabs>
+    <tabs>DP_EAT_Project_Info__c</tabs>
+    <tabs>DP_EAT_Project_Test_Classes__c</tabs>
+    <tabs>DP_EAT_Project_Test_Run_Results__c</tabs>
+    <tabs>Core_Solution_Storage__c</tabs>
+    <tabs>Opportunity_Solution_Area__c</tabs>
+    <tabs>Core_BU_Owner_Table__c</tabs>
+    <tabs>Pricing_Price_Rules__c</tabs>
+    <tabs>Core_Delegate_Approver__c</tabs>
+    <tabs>SJ_Extend__c</tabs>
+    <tabs>Approver__c</tabs>
+    <tabs>Core_Products_Staging__c</tabs>
+    <tabs>PSG_Free_License_Request__c</tabs>
+    <tabs>Opportunity_Team_Member</tabs>
+    <tabs>Design_Registration_Stage__c</tabs>
+    <tabs>Design_Registration_Product_M2M_Stage__c</tabs>
+    <tabs>PCC_DDR_L5_Product_Mapping__c</tabs>
+    <tabs>SWS_Cloud_Credit_Request__c</tabs>
+    <tabs>PCC_Rebate_Claim__c</tabs>
+    <tabs>PCC_Rebate_Claim_Stage__c</tabs>
+    <tabs>PCC_Deal_Change_Request__c</tabs>
+    <tabs>PCC_Deal_Change_Request_Line_Item__c</tabs>
+    <tabs>PCC_EndCustomerAcc_Mapping__c</tabs>
+    <tabs>Deployment_Components__c</tabs>
+    <tabs>Deployment__c</tabs>
     <uiType>Lightning</uiType>
     <workspaceConfig>
+        <mappings>
+            <tab>Approver__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Core_Account_SoldTo_ShipTo_Rel__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Core_BU_Owner_Table__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Core_Delegate_Approver__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Core_Products_Staging__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Core_Solution_Storage__c</tab>
+        </mappings>
+        <mappings>
+            <tab>DP_EAT_Project_Info__c</tab>
+        </mappings>
+        <mappings>
+            <tab>DP_EAT_Project_Test_Classes__c</tab>
+        </mappings>
+        <mappings>
+            <tab>DP_EAT_Project_Test_Run_Results__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Deployment_Components__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Deployment__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Design_Registration_Product_M2M_Stage__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Design_Registration_Stage__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Opportunity_Solution_Area__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Opportunity_Team_Member</tab>
+        </mappings>
+        <mappings>
+            <tab>PCC_DDR_L5_Product_Mapping__c</tab>
+        </mappings>
+        <mappings>
+            <tab>PCC_Deal_Change_Request_Line_Item__c</tab>
+        </mappings>
+        <mappings>
+            <tab>PCC_Deal_Change_Request__c</tab>
+        </mappings>
+        <mappings>
+            <tab>PCC_EndCustomerAcc_Mapping__c</tab>
+        </mappings>
+        <mappings>
+            <tab>PCC_Rebate_Claim_Stage__c</tab>
+        </mappings>
+        <mappings>
+            <tab>PCC_Rebate_Claim__c</tab>
+        </mappings>
+        <mappings>
+            <tab>PSG_Free_License_Request__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Pricing_Price_Rules__c</tab>
+        </mappings>
+        <mappings>
+            <tab>SJ_Extend__c</tab>
+        </mappings>
+        <mappings>
+            <tab>SWS_Cloud_Credit_Request__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Sales_Feedback__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Sales_License_Generator_Switch__c</tab>
+        </mappings>
         <mappings>
             <tab>standard-OrgMetric</tab>
         </mappings>

@@ -98,8 +98,7 @@ public with sharing class Core_SAPXMLParser {
                 if(String.isEmpty(accountEA.expressStationId) && existingSAPAccountMap.containsKey(accountEA.sAPAccountNumber)){
                     accountDoesntExist = False;
                 }
-                ////
-             
+                //
                 if(accountDoesntExist && ((String.isEmpty(accountEA.trainStationId) && accountEA.x_ALT_SAP_ACCT_TYPE == ENDCUSTOMERTYPE) || (!String.isEmpty(accountEA.trainStationId) && accountIdValidateMap.containsKey(accountEA.trainStationId) && accountIdValidateMap.get(accountEA.trainStationId).Core_Account_Record_Type__c=='Intel Account')
                   ))
                 {
@@ -115,7 +114,7 @@ public with sharing class Core_SAPXMLParser {
                     acct.Name = accountEA.name;
                     acct.Core_Direct_Account_Id__c = accountEA.sAPAccountNumber;
                     acct.Core_Direct_Incoterm_Dsc__c = accountEA.freightTerms;
-                    //acct.Core_CIM_ID__c = accountEA.type;
+                    acct.Core_CIM_ID__c = accountEA.type;
                     acct.Core_Direct_Payment_Term_Nm__c = accountEA.x_ALT_PAYTERMS;
                     acct.Core_Direct_Account_Type_Nm__c = accountEA.x_ALT_SAP_ACCT_TYPE;
                     acct.Core_Direct_Shipping_Condition_Nm__c = accountEA.shippingCondition;
@@ -358,7 +357,7 @@ public with sharing class Core_SAPXMLParser {
             try{
                 if(logEntryList!=null && logEntryList.size()>0){
                     insert logEntryList;
-                   
+                    //system.debug('#G:logEntryList:'+logEntryList);
                 }
                 
                 

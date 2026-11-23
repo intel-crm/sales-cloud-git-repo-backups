@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Sales License Generator</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Sales License Generators</value>
+    </caseValues>
+    <fields>
+        <label><!-- Legacy License Generator Id --></label>
+        <name>Sales_Legacy_License_Generator_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Feature Line Syntax --></label>
+        <name>Sales_License_Feature_Lyn_Syntx_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Generator --></label>
+        <name>Sales_License_Generator_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- License Vendor --></label>
+        <name>Sales_License_Vendor__c</name>
+    </fields>
+    <fields>
+        <label><!-- Vendor --></label>
+        <name>Sales_License_vendor_txt__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

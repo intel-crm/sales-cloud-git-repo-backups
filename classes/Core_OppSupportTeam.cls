@@ -2,7 +2,7 @@
  * @description       : 
  * @author            : Rajesh Gajul
  * @group             : 
- * @last modified on  : 08-05-2024
+ * @last modified on  : 08-22-2024
  * @last modified by  : Rajesh Gajul
 **/
 public without sharing class Core_OppSupportTeam { //TWC3123-5359 Added without sharing keyword to fix code scan issue
@@ -19,6 +19,9 @@ public without sharing class Core_OppSupportTeam { //TWC3123-5359 Added without 
                 List<Id> supTeamId = new List<Id>();
                 // if(opp_suppTeam.Core_Opportunity_Support_Team_Member__c != triggerOldMap.get(opp_suppTeam.id).Core_Opportunity_Support_Team_Member__c)
                 //   	opp_suppTeam.core_Status__c  = 'Pending';
+
+                if(opp_suppTeam.Core_Opportunity_Support__r.Core_Sales_Stages__c=='Design Win'){
+                }
                 
                 if(isdeleteOpperation || (triggerOldMap != null &&  opp_suppTeam.Core_Opportunity_Support_Team_Member__c != triggerOldMap.get(opp_suppTeam.id).Core_Opportunity_Support_Team_Member__c)){                
                     // add a user to map to remove from Opportunity team sharing using trigger.Old map 
@@ -73,7 +76,8 @@ public without sharing class Core_OppSupportTeam { //TWC3123-5359 Added without 
         
         for(Core_Opportunity_Support__c opp_supp : [select id,Opportunity__c,Core_Approved_Date__c from Core_Opportunity_Support__c 
                                                     where (id IN: userOppSupMapToDelete.keySet() OR id IN: userOppSupMapToAdd.keySet())  
-                                                    AND (Core_Status__c = 'Approved' OR Core_Status__c = 'Pending')]){
+                                                    AND (Core_Status__c = 'Approved' OR Core_Status__c = 'Pending' 
+                                                         OR Core_Status__c = 'Closed : Support Provided' OR Core_Status__c = 'Closed : Support Not Provided' )]){
             if(userOppSupMapToDelete.containsKey(opp_supp.id)){
                 string userTeamDesc = orgInstance + '/' + opp_supp.id;
                 userIdToRemove.addAll(userOppSupMapToDelete.get(opp_supp.id));
@@ -181,7 +185,7 @@ public without sharing class Core_OppSupportTeam { //TWC3123-5359 Added without 
     public static void updateOppSupteamStatus(List<Core_Opportunity_Support_Team__c> triggerNew,Map<Id,Core_Opportunity_Support_Team__c> triggerOldMap){
         List<Id> OppSupportRequest = new List<Id>();
         Map<Id,string> OppSupportStatus = new Map<Id,string>();
-        
+        Map<Id,string> OppSupportType = new Map<Id,string>();
         List<Id> approvedRecords = new List<Id>();
         List<Core_Opportunity_Support__c> oppSuppReqList = new List<Core_Opportunity_Support__c>();
         //Get the Opportunity support requset id
@@ -189,10 +193,11 @@ public without sharing class Core_OppSupportTeam { //TWC3123-5359 Added without 
             OppSupportRequest.add(team.Core_Opportunity_Support__c);
         
         //Update the map with support request ID and status of support request
-        for(Core_Opportunity_Support__c opp_supp : [select id,Opportunity__c,Core_Status__c from Core_Opportunity_Support__c 
+        for(Core_Opportunity_Support__c opp_supp : [select id,Opportunity__c,Core_Status__c,RecordType.DeveloperName from Core_Opportunity_Support__c 
                                                     where id IN: OppSupportRequest]){
-            OppSupportStatus.put(opp_supp.id,opp_supp.Core_Status__c);
-           } 
+                                                        OppSupportStatus.put(opp_supp.id,opp_supp.Core_Status__c);
+                                                        OppSupportType.put(opp_supp.id,opp_supp.RecordType.DeveloperName);
+                                                    }
         
         //check record got Approved or not 
         for(ProcessInstance approvedList :[SELECT Id, TargetObjectId, Status  FROM ProcessInstance WHERE TargetObjectId IN :OppSupportRequest AND Status = 'Approved' order by CreatedDate desc] )
@@ -213,7 +218,7 @@ public without sharing class Core_OppSupportTeam { //TWC3123-5359 Added without 
                 
             }
             
-            if((Trigger.IsUpdate && team.Core_Opportunity_Support_Team_Member__c != triggerOldMap.get(team.id).Core_Opportunity_Support_Team_Member__c) )
+           if((Trigger.IsUpdate && team.Core_Opportunity_Support_Team_Member__c != triggerOldMap.get(team.id).Core_Opportunity_Support_Team_Member__c) )
             {	
                 if(OppSupportStatus.containsKey(team.Core_Opportunity_Support__c) && (OppSupportStatus.get(team.Core_Opportunity_Support__c) == 'Closed : Support Not Provided' || OppSupportStatus.get(team.Core_Opportunity_Support__c) == 'Closed : Support Provided')){
                     team.addError(Core_CRM_Utility.getCRMLabel('OppSup_CloseStateError'));

@@ -142,7 +142,7 @@ public class Core_ActivityHandler
 	                 List<Event> lstLeadRelatedEvents = new List<Event>();
 	                 
 	                 
-	                 lstLeadUpdate =[SELECT Id,Core_Last_Activity_Date__c,(SELECT Id,LastModifiedDate FROM Tasks ORDER BY LastModifiedDate DESC),
+	                 lstLeadUpdate =[SELECT Id,Core_Last_Activity_Date__c,Core_Having_Tasks__c,(SELECT Id,LastModifiedDate FROM Tasks ORDER BY LastModifiedDate DESC),
 	                                 (SELECT Id,LastModifiedDate FROM Events ORDER BY LastModifiedDate DESC) From Lead Where Id IN :setLeadIds];
 	                 
 	                 for(Lead leadInstance : lstLeadUpdate)

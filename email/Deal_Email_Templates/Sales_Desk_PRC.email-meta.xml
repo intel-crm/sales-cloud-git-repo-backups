@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <letterhead>Core_DDR_Email</letterhead>
+    <name>Sales Desk PRC</name>
+    <style>freeForm</style>
+    <subject>Approve Deal</subject>
+    <textOnly>Hi,
+
+A Deal is pending for approval. Please click on &apos;Accept Deal&apos; button.</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

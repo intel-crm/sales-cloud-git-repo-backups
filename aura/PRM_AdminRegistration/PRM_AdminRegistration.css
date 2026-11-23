@@ -4,32 +4,3 @@
     padding-left: 185px;
     padding-bottom:16px;
 }
-.THIS .slds-checkbox_faux {
-    top: 25px;
-    left: 24px;
-}
-.THIS .SBRInfoMsg{
-    padding-top: 57px;
-    padding-bottom: 57px;
-}
-.THIS .position-absolute {
-    position: absolute;
-    top: calc(-0.6%);
-    transform: translateX(-50%);
-}
-.THIS .left-15 {
-    left: calc(15% + 8px);
-}
-.THIS .left-38 {
-    left: calc(38.52% + 2px);
-}
-.THIS .left-61 {
-    left: calc(61.42% + 2px);
-}
-.THIS .right-15 {
-    right: calc(15.25% + 5px);
-    transform: translateX(50%);
-}
-.THIS .bwhite {
-    background-color:white;
-}

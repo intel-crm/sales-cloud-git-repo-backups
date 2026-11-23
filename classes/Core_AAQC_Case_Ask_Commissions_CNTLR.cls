@@ -166,14 +166,18 @@ public with sharing class Core_AAQC_Case_Ask_Commissions_CNTLR
      */
     public pagereference customCancel(){
         PageReference pageRefURL = new PageReference('/');
-       
-        if(retURL!=null && retURL!='')
+        PageReference lightningPageRef = new PageReference('/lightning/n/Ask_Commissions');
+        
+        if(retURL.contains('/lightning/')){
+            pageRefURL = lightningPageRef;
+        }
+        else if(retURL!=null && retURL!='')
         {
            /*if(retURL.startsWith('/'))
            {
               retURL=retURL.replaceFirst('/','');
            } */
-         pageRefURL = new PageReference(retURL);
+            pageRefURL = new PageReference(retURL);
         }
         pageRefURL.setRedirect(true);
         return pageRefURL;

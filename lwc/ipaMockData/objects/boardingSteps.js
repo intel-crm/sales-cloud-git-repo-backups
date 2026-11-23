@@ -27,8 +27,7 @@
  */
 
 import helpers from './helpers/index';
-//import IPARefresh from '@salesforce/label/c.PRM_IPARefresh'; //IPA2.0-TWC727-2913 // IPA Switch Removal
-//const  ipaRefresh = IPARefresh.toLowerCase() === 'true'; //IPA2.0-TWC727-2913 // IPA Switch Removal
+
 export const mockBoardingSteps = (type) => {
 
     let allSample = {
@@ -217,8 +216,7 @@ export const mockBoardingSteps = (type) => {
                 completed: false,
                 modalTitle: "Terms & Conditions"
               },
-            
-             /*...(!ipaRefresh ? [ {  //IPA2.0-TWC727-2913
+              {
                 stepId: helpers.id(),
                 component: "c-ipa-partner-modal-communities",
                 componentData: "community-picklist",
@@ -228,7 +226,7 @@ export const mockBoardingSteps = (type) => {
                 completedDescription: "You've chosen your community",
                 completed: false,
                 modalTitle: "Communities (Optional)"
-              }]:[]),*/ // IPA Switch Removal
+              },
               {
                 stepId: helpers.id(),
                 component: "c-ipa-partner-modal-view-confirmation",
@@ -271,7 +269,7 @@ export const mockBoardingSteps = (type) => {
                 completed: false,
                 modalTitle: "Terms & Conditions"
               },
-            /*...(!ipaRefresh ? [ { // IPA2.0-TWC727-2913
+              {
                 stepId: helpers.id(),
                 component: "c-ipa-partner-modal-communities",
                 componentData: "community-picklist-non-primary",
@@ -281,7 +279,7 @@ export const mockBoardingSteps = (type) => {
                 completedDescription: "You've chosen your community",
                 completed: false,
                 modalTitle: "Communities (Optional)"
-              }]:[])*/ // // IPA Switch Removal
+              }
         ]
     }
 

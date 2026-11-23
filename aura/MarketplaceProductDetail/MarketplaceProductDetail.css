@@ -106,17 +106,3 @@
 .THIS .cloneBtnView{
   float: right;
 }
-.THIS .sectionFooter {
-  padding: 20px 0 20px 0;
-}
-.THIS .intelOnlyFooter {
-  display: none;
-}
- /*  paddingtop created as part of the US-US788273*/
-.THIS.paddingtop{
-    padding-top: 10px;
-}
- /*created as part of the US-US788273*/
-.THIS.top-padding-if-no-banner{
-        padding-top: 1.75rem;
-}

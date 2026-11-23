@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Coaching Goal</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Coaching Goals</value>
+    </caseValues>
+    <fields>
+        <label><!-- Accepted --></label>
+        <name>Xvoyant__Accepted__c</name>
+    </fields>
+    <fields>
+        <label><!-- Activity --></label>
+        <name>Xvoyant__Activity__c</name>
+    </fields>
+    <fields>
+        <label><!-- Actual Value --></label>
+        <name>Xvoyant__Actual_Value__c</name>
+    </fields>
+    <fields>
+        <label><!-- Assessment Count --></label>
+        <name>Xvoyant__AssessmentCount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Coaching Category (Deprecated) --></label>
+        <name>Xvoyant__Coaching_Category__c</name>
+        <picklistValues>
+            <masterLabel>Calls</masterLabel>
+            <translation><!-- Calls --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Goals</masterLabel>
+            <translation><!-- Goals --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New Opportunities</masterLabel>
+            <translation><!-- New Opportunities --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Opportunity Starts</masterLabel>
+            <translation><!-- Opportunity Starts --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pipeline Velocity</masterLabel>
+            <translation><!-- Pipeline Velocity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Preparation</masterLabel>
+            <translation><!-- Preparation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Referrals</masterLabel>
+            <translation><!-- Referrals --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Training</masterLabel>
+            <translation><!-- Training --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Coaching Focus Other (Deprecated) --></label>
+        <name>Xvoyant__Coaching_Focus_Other__c</name>
+    </fields>
+    <fields>
+        <label><!-- Coaching Focus (Deprecated) --></label>
+        <name>Xvoyant__Coaching_Focus__c</name>
+        <picklistValues>
+            <masterLabel>Avg Size of Opp Starts</masterLabel>
+            <translation><!-- Avg Size of Opp Starts --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Behavior</masterLabel>
+            <translation><!-- Behavior --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Number F2F Calls</masterLabel>
+            <translation><!-- Number F2F Calls --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Number Joint Calls</masterLabel>
+            <translation><!-- Number Joint Calls --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Number Other Calls</masterLabel>
+            <translation><!-- Number Other Calls --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Number Prospect Calls</masterLabel>
+            <translation><!-- Number Prospect Calls --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Number of Calls</masterLabel>
+            <translation><!-- Number of Calls --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Number of New Opps</masterLabel>
+            <translation><!-- Number of New Opps --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Number of Opp Starts</masterLabel>
+            <translation><!-- Number of Opp Starts --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Number of Opps Per Call</masterLabel>
+            <translation><!-- Number of Opps Per Call --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Overall Production</masterLabel>
+            <translation><!-- Overall Production --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Prospect Calls</masterLabel>
+            <translation><!-- Prospect Calls --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Quality</masterLabel>
+            <translation><!-- Quality --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Total Dollars Opp Starts</masterLabel>
+            <translation><!-- Total Dollars Opp Starts --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Training Course</masterLabel>
+            <translation><!-- Training Course --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Comment --></label>
+        <name>Xvoyant__Comment__c</name>
+    </fields>
+    <fields>
+        <label><!-- Comment_rich --></label>
+        <name>Xvoyant__Comment_rich__c</name>
+    </fields>
+    <fields>
+        <label><!-- Completion_Date --></label>
+        <name>Xvoyant__Completion_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Draft Status --></label>
+        <name>Xvoyant__Draft__c</name>
+    </fields>
+    <fields>
+        <label><!-- Driver --></label>
+        <name>Xvoyant__Driver__c</name>
+        <relationshipLabel><!-- Coaching Goals --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Event Count --></label>
+        <name>Xvoyant__Event_Count__c</name>
+    </fields>
+    <fields>
+        <label><!-- ExcludedIds --></label>
+        <name>Xvoyant__ExcludedIds__c</name>
+    </fields>
+    <fields>
+        <label><!-- Follow Up Date/Time --></label>
+        <name>Xvoyant__Follow_Up_DateTime__c</name>
+    </fields>
+    <fields>
+        <label><!-- Follow Up Date (Deprecated) --></label>
+        <name>Xvoyant__Follow_Up_Date_Deprecated__c</name>
+    </fields>
+    <fields>
+        <label><!-- Follow Up Date --></label>
+        <name>Xvoyant__Follow_Up_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Goal Accepted Date --></label>
+        <name>Xvoyant__GoalAcceptedDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Goal Creator --></label>
+        <name>Xvoyant__GoalCreator__c</name>
+        <relationshipLabel><!-- Coaching Goals --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Goal Due Date --></label>
+        <name>Xvoyant__GoalDueDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Goal Start Date --></label>
+        <name>Xvoyant__GoalStartDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Goal Month --></label>
+        <name>Xvoyant__Goal_Month__c</name>
+    </fields>
+    <fields>
+        <label><!-- Goal Status --></label>
+        <name>Xvoyant__Goal_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Goal Value --></label>
+        <name>Xvoyant__Goal_Value__c</name>
+    </fields>
+    <fields>
+        <label><!-- IncludedIds --></label>
+        <name>Xvoyant__IncludedIds__c</name>
+    </fields>
+    <fields>
+        <label><!-- Goal Achieved --></label>
+        <name>Xvoyant__IsAchieved__c</name>
+    </fields>
+    <fields>
+        <label><!-- Manually closed out --></label>
+        <name>Xvoyant__ManualCloseOut__c</name>
+    </fields>
+    <fields>
+        <label><!-- OpportunityStage --></label>
+        <name>Xvoyant__OpportunityStage__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity --></label>
+        <name>Xvoyant__Opportunity__c</name>
+        <relationshipLabel><!-- Coaching Goals --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- RasrComponent --></label>
+        <name>Xvoyant__RasrComponent__c</name>
+        <relationshipLabel><!-- Coaching Goals --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Resource --></label>
+        <name>Xvoyant__Resource__c</name>
+        <picklistValues>
+            <masterLabel>Resource</masterLabel>
+            <translation><!-- Resource --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Skill --></label>
+        <name>Xvoyant__Skill__c</name>
+    </fields>
+    <fields>
+        <label><!-- Stage/Driver --></label>
+        <name>Xvoyant__Stage_Driver__c</name>
+    </fields>
+    <fields>
+        <label><!-- Willingness To Change --></label>
+        <name>Xvoyant__Willingness_To_Change__c</name>
+    </fields>
+    <fields>
+        <label><!-- acceptedBy --></label>
+        <name>Xvoyant__acceptedBy__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- This is a required field --></errorMessage>
+        <name>Xvoyant__Coaching_Focus_Other</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- A future date needs to be selected --></errorMessage>
+        <name>Xvoyant__Follow_Up_Date_in_Future</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Month must be between 0 and 11. --></errorMessage>
+        <name>Xvoyant__Valid_Goal_Month</name>
+    </validationRules>
+</CustomObjectTranslation>

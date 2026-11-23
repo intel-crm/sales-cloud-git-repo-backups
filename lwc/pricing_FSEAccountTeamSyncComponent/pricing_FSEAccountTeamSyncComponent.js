@@ -6,7 +6,6 @@ export default class Pricing_FSEAccountTeamSyncComponent extends LightningElemen
     @api recordId;
 
     @api invoke() {
-        console.log(this.recordId);
         let quoteIdList = [];
         quoteIdList.push(this.recordId);
         getFSEUsers({ quoteIds: quoteIdList })

@@ -209,6 +209,35 @@ Modified By:        Date:       Changes:
             insert logEntry;
         }
     }
+    @AuraEnabled(cacheable=true)
+public static List<DocumentWrapper> getQuoteDocuments(List<Id> quoteId) {
+
+    List<DocumentWrapper> result = new List<DocumentWrapper>();
+
+    for(ContentDocumentLink cdl : [
+        SELECT ContentDocumentId,
+               ContentDocument.Title
+        FROM ContentDocumentLink
+        WHERE LinkedEntityId IN :quoteId
+    ]) {
+        result.add(new DocumentWrapper(
+            cdl.ContentDocumentId,
+            cdl.ContentDocument.Title
+        ));
+    }
+
+    return result;
+}
+
+public class DocumentWrapper {
+    @AuraEnabled public String ContentDocumentId;
+    @AuraEnabled public String Title;
+
+    public DocumentWrapper(String docId, String title) {
+        this.ContentDocumentId = docId;
+        this.Title = title;
+    }
+}
     
 	  //Quote Wrapper
     public class QuoteWrapper

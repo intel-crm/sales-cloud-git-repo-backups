@@ -19,7 +19,7 @@ public class Core_OpportunityDataFetcherTest {
         System.runAs(adminUser) {
             // Create test Account
             Id accDealID = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
-            Account acct = new Account(Name = 'Test Account', BillingStreet = '123 Fake St', Industry ='Gaming', Core_Sub_Industry__c ='eSports',
+            Account acct = new Account(Name = 'Test Account0812', BillingStreet = '123 Fake St', Industry ='Gaming', Core_Sub_Industry__c ='eSports',
                                        BillingCity = 'Springfield', BillingState = 'IL', BillingCountry = 'USA',
                                        BillingPostalCode = '12345', Core_Sales_Groups__c=Core_CRM_Utility.getSalesGroupAPI(), RecordTypeId = accDealID);
             insert acct;
@@ -30,7 +30,7 @@ public class Core_OpportunityDataFetcherTest {
             // Create test Opportunity
             //Id newOppRecTypeId = [SELECT Id FROM RecordType WHERE DeveloperName = 'Core_Design_Opportunity' LIMIT 1][0].Id;
             Opportunity testOpportunity = new Opportunity(
-                Name = 'Test Opportunity',
+                Name = 'Test Opportunity0812',
                 StageName = 'Qualify',
                 CloseDate = Date.today().addDays(30),
                 AccountId = acct.Id,
@@ -45,10 +45,10 @@ public class Core_OpportunityDataFetcherTest {
             insert testOpportunity;
             
             // Create test OpportunityLineItem with different product names to trigger determineProSeg logic
-            Product2 testProduct1 = new Product2(Name = 'Emerald Rapids', IsActive = true);
-            Product2 testProduct2 = new Product2(Name = 'Granulate™', IsActive = true);
-            Product2 testProduct3 = new Product2(Name = 'Intel vPro® Platform', IsActive = true);
-            Product2 testProduct4 = new Product2(Name = 'NEX', IsActive = true);
+            Product2 testProduct1 = new Product2(Name = 'Emerald Rapids', IsActive = true, Core_Sales_Visible_Flag__c = true);
+            Product2 testProduct2 = new Product2(Name = 'Granulate™', IsActive = true, Core_Sales_Visible_Flag__c = true);
+            Product2 testProduct3 = new Product2(Name = 'Intel vPro® Platform', IsActive = true, Core_Sales_Visible_Flag__c = true);
+            Product2 testProduct4 = new Product2(Name = 'NEX', IsActive = true, Core_Sales_Visible_Flag__c = true);
             insert new List<Product2>{testProduct1, testProduct2, testProduct3, testProduct4};
             
             PricebookEntry testPricebookEntry1 = new PricebookEntry(
@@ -131,42 +131,42 @@ public class Core_OpportunityDataFetcherTest {
     
     @isTest
     static void testGetOpportunityData() {
-        Account testAccount = [SELECT Id FROM Account WHERE Name = 'Test Account' LIMIT 1];
+        Account testAccount = [SELECT Id FROM Account WHERE Name = 'Test Account0812' LIMIT 1];
         List<Core_OpportunityDataFetcher.OpportunityWrapper> result = Core_OpportunityDataFetcher.getOpportunityData(testAccount.Id);
-        System.assertEquals(0, result.size(), 'Expected non-zero result size');
+        System.assertNotEquals(0, result.size(), 'Expected non-zero result size');
     }
     
     @isTest
     static void testGetOpportunityDataBySeller() {
-        Account testAccount = [SELECT Id FROM Account WHERE Name = 'Test Account' LIMIT 1];
+        Account testAccount = [SELECT Id FROM Account WHERE Name = 'Test Account0812' LIMIT 1];
         List<Core_OpportunityDataFetcher.OpportunityWrapper> result = Core_OpportunityDataFetcher.getOpportunityInfo('Test User', testAccount.Id);
         System.assertNotEquals(0, result.size(), 'Expected non-zero result size');
     }
     
     @isTest
     static void testGetSparseOpportunity() {
-        Account testAccount = [SELECT Id FROM Account WHERE Name = 'Test Account' LIMIT 1];
+        Account testAccount = [SELECT Id FROM Account WHERE Name = 'Test Account0812' LIMIT 1];
         List<Core_OpportunityDataFetcher.OpportunityWrapper> result = Core_OpportunityDataFetcher.getSparseOpportunity('Testing01', testAccount.Id);
         System.assertEquals(0, result.size(), 'Expected non-zero result size');
     }
     
     @isTest
     static void testGetOpenOpportunity() {
-        Account testAccount = [SELECT Id FROM Account WHERE Name = 'Test Account' LIMIT 1];
+        Account testAccount = [SELECT Id FROM Account WHERE Name = 'Test Account0812' LIMIT 1];
         List<Core_OpportunityDataFetcher.OpportunityWrapper> result = Core_OpportunityDataFetcher.getOpenOpportunity('Testing01', testAccount.Id);
         System.assertEquals(0, result.size(), 'Expected non-zero result size');
     }
     
     @isTest
     static void testGetAllOpportunityInfo() {
-        Account testAccount = [SELECT Id FROM Account WHERE Name = 'Test Account' LIMIT 1];
+        Account testAccount = [SELECT Id FROM Account WHERE Name = 'Test Account0812' LIMIT 1];
         List<Core_OpportunityDataFetcher.OpportunityWrapper> result = Core_OpportunityDataFetcher.getAllOpportunityInfo('Testing01', testAccount.Id);
         System.assertNotEquals(0, result.size(), 'Expected non-zero result size');
     }
     
     @isTest
     static void testGetOpportunity() {
-        Opportunity testOpportunity = [SELECT Id FROM Opportunity WHERE Name = 'Test Opportunity' LIMIT 1];
+        Opportunity testOpportunity = [SELECT Id FROM Opportunity WHERE Name = 'Test Opportunity0812' LIMIT 1];
         List<Core_OpportunityDataFetcher.OpportunityWrapper> result = Core_OpportunityDataFetcher.getOpportunity(testOpportunity.Id);
         System.assertNotEquals(0, result.size(), 'Expected non-zero result size');
     }

@@ -1,0 +1,106 @@
+<template>
+    
+    <div class="slds-m-top_medium slds-m-bottom_x-large">
+        <br>
+        <div  class="slds-p-around_small lgc-bg">
+            <lightning-tile label="Is easy to use" type="media">
+             
+                <div class="rate">
+                    <div class="rate">
+                        <input type="radio" id="star15" name="etu" value="5" onchange={rating} />
+                        <label for="star15" title="text">5 stars</label>
+                        <input type="radio" id="star14" name="etu" value="4" onchange={rating} />
+                        <label for="star14" title="text">4 stars</label>
+                        <input type="radio" id="star13" name="etu" value="3" onchange={rating} />
+                        <label for="star13" title="text">3 stars</label>
+                        <input type="radio" id="star12" name="etu" value="2" onchange={rating} />
+                        <label for="star12" title="text">2 stars</label>
+                        <input type="radio" id="star11" name="etu" value="1" onchange={rating} />
+                        <label for="star11" title="text">1 star</label>
+                    </div>
+                </div>
+            </lightning-tile>
+
+        </div>
+    </div>
+    <div class="slds-m-top_medium slds-m-bottom_x-large">
+
+        <div class="slds-p-around_medium lgc-bg">
+            <lightning-tile label="Has the features I want" type="media">
+                
+                <div class="rate">
+                    <div class="rate">
+                        <input type="radio" id="star25" name="hfw" value="5" onchange={rating} />
+                        <label for="star25" title="text">5 stars</label>
+                        <input type="radio" id="star24" name="hfw" value="4" onchange={rating} />
+                        <label for="star24" title="text">4 stars</label>
+                        <input type="radio" id="star23" name="hfw" value="3" onchange={rating} />
+                        <label for="star23" title="text">3 stars</label>
+                        <input type="radio" id="star22" name="hfw" value="2" onchange={rating} />
+                        <label for="star22" title="text">2 stars</label>
+                        <input type="radio" id="star21" name="hfw" value="1" onchange={rating} />
+                        <label for="star21" title="text">1 star</label>
+                    </div>
+                </div>
+            </lightning-tile>
+
+        </div>
+    </div>
+    <div class="slds-m-top_medium slds-m-bottom_x-large">
+
+        <div class="slds-p-around_medium lgc-bg">
+            <lightning-tile label="Is fast and responsive" type="media">
+              
+                <div class="rate">
+                    <div class="rate">
+                        <input type="radio" id="star45" name="ifr" value="5" onchange={rating} />
+                        <label for="star45" title="text">5 stars</label>
+                        <input type="radio" id="star44" name="ifr" value="4" onchange={rating} />
+                        <label for="star44" title="text">4 stars</label>
+                        <input type="radio" id="star43" name="ifr" value="3" onchange={rating} />
+                        <label for="star43" title="text">3 stars</label>
+                        <input type="radio" id="star42" name="ifr" value="2" onchange={rating} />
+                        <label for="star42" title="text">2 stars</label>
+                        <input type="radio" id="star41" name="ifr" value="1" onchange={rating} />
+                        <label for="star41" title="text">1 star</label>
+                    </div>
+                </div>
+            </lightning-tile>
+
+        </div>
+    </div>
+    <div class="slds-m-top_medium slds-m-bottom_x-large">
+
+        <div class="slds-p-around_medium lgc-bg">
+            <lightning-tile label="Is secured" type="media">
+                
+                <div class="rate">
+                    <div class="rate">
+                        <input type="radio" id="star35" name="isec" value="5" onchange={rating} />
+                        <label for="star35" title="text">5 stars</label>
+                        <input type="radio" id="star34" name="isec" value="4" onchange={rating} />
+                        <label for="star34" title="text">4 stars</label>
+                        <input type="radio" id="star33" name="isec" value="3" onchange={rating} />
+                        <label for="star33" title="text">3 stars</label>
+                        <input type="radio" id="star32" name="isec" value="2" onchange={rating} />
+                        <label for="star32" title="text">2 stars</label>
+                        <input type="radio" id="star31" name="isec" value="1" onchange={rating} />
+                        <label for="star31" title="text">1 star</label>
+                    </div>
+                </div>
+               
+        
+            </lightning-tile>
+            <lightning-tile label="Optional Questions" type="media">
+               
+                <div>
+                    <br>
+                    <textarea id="w3review" name="w3review" rows="2" cols="30" placeholder="Optional Feedback" onchange={rating} ></textarea>
+                    <br>
+                    </div>
+                </lightning-tile>
+                <br>
+            <lightning-button label="Submit" onclick={submitAction} class="slds-align_absolute-center"> </lightning-button>
+        </div>
+    </div>
+</template>

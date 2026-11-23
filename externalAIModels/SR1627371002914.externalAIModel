@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExternalAIModel xmlns="http://soap.sforce.com/2006/04/metadata">
+    <applicationSourceType>UTTERANCE_RECOMMENDATION</applicationSourceType>
+    <externalModelKey>a2a4edbd-2204-4fba-8806-a8fab4315df0</externalModelKey>
+    <externalModelStatus>DISABLED</externalModelStatus>
+    <name>SR1627371002914</name>
+    <trainingJobName>smt-ore-00D2D000000E9ZKUA0-225d8c3c-385e-4249-bd98-e346d616dbe5</trainingJobName>
+</ExternalAIModel>

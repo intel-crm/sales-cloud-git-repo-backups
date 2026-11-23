@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>True Digital Surgery Customer User</description>
+    <description>Truevision Systems, Inc. Customer User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>True Digital Surgery Customer User</name>
+    <name>Truevision Systems, Inc. Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>TruevisionSystemsIncCustomerManager</parentRole>
 </Role>

@@ -7,19 +7,18 @@
         <chartSummaries>
             <aggregate>Sum</aggregate>
             <axisBinding>y</axisBinding>
-            <column>AMOUNT</column>
+            <column>OPP_QUANTITY</column>
         </chartSummaries>
-        <chartType>HorizontalBarStacked</chartType>
+        <chartType>Funnel</chartType>
         <enableHoverLabels>false</enableHoverLabels>
-        <expandOthers>true</expandOthers>
-        <groupingColumn>CLOSE_DATE2</groupingColumn>
+        <expandOthers>false</expandOthers>
+        <groupingColumn>STAGE_NAME</groupingColumn>
         <legendPosition>Right</legendPosition>
         <location>CHART_BOTTOM</location>
-        <secondaryGroupingColumn>Opportunity.Core_Approval_Status__c</secondaryGroupingColumn>
         <showAxisLabels>false</showAxisLabels>
-        <showPercentage>false</showPercentage>
+        <showPercentage>true</showPercentage>
         <showTotal>false</showTotal>
-        <showValues>false</showValues>
+        <showValues>true</showValues>
         <size>Medium</size>
         <summaryAxisRange>Auto</summaryAxisRange>
         <textColor>#000000</textColor>
@@ -28,9 +27,6 @@
         <titleSize>18</titleSize>
     </chart>
     <columns>
-        <field>STAGE_NAME</field>
-    </columns>
-    <columns>
         <field>ACCOUNT_NAME</field>
     </columns>
     <columns>
@@ -38,11 +34,10 @@
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>AMOUNT</field>
+        <field>OPP_QUANTITY</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>OPP_QUANTITY</field>
+        <field>AMOUNT</field>
     </columns>
     <columns>
         <field>DESCRIPTION</field>
@@ -51,13 +46,10 @@
         <field>Opportunity.Core_Status_Update__c</field>
     </columns>
     <columns>
-        <field>CLOSE_DATE</field>
-    </columns>
-    <columns>
         <field>AGE</field>
     </columns>
     <columns>
-        <field>LAST_UPDATE</field>
+        <field>CLOSE_DATE</field>
     </columns>
     <filter>
         <criteriaItems>
@@ -65,26 +57,19 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>contains</operator>
-            <value>jovern,ammar,poon,ida</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>STAGE_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>Lost,Cancelled</value>
+            <value>jovern,ammar,poon</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>Opportunity.Core_Approval_Status__c</field>
+        <dateGranularity>FiscalQuarter</dateGranularity>
+        <field>CLOSE_DATE2</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
-        <dateGranularity>FiscalQuarter</dateGranularity>
-        <field>CLOSE_DATE2</field>
+        <dateGranularity>Day</dateGranularity>
+        <field>STAGE_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>Malaysia</name>
@@ -94,7 +79,7 @@
     </params>
     <params>
         <name>open</name>
-        <value>all</value>
+        <value>open</value>
     </params>
     <params>
         <name>probability</name>
@@ -113,8 +98,6 @@
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2026-11-22</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2026-11-22</startDate>
     </timeFrameFilter>
 </Report>

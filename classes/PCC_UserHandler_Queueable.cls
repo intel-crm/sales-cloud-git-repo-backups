@@ -48,14 +48,9 @@ public class PCC_UserHandler_Queueable implements queueable{
                 //create log entries User Sharing Delete Records
                 PCC_DDRL5ProductMapping_TriggerHandler.createLogEntriesForDLPM(userShareDeleteResults, methodOrigin, DeleteError);
             }     
-            
-            if(Test.isRunningTest()){
-                throw new System.DMLException();   
-            }   
         }
         catch(exception ex) { 
-            Core_Log_Entry.logEntryWithException(LOG_ENTRY_ORIGIN, LOG_ENTRY_PROJECT, LOG_ENTRY_SCOPE, 
-                                                 LOG_ENTRY_SEVERITY, '', '', '', 'PCC_UserHandler_Queueable.execute', '', ex);
+            Core_Log_Entry.logEntryWithException(LOG_ENTRY_ORIGIN, LOG_ENTRY_PROJECT, LOG_ENTRY_SCOPE, LOG_ENTRY_SEVERITY, '', '', '', 'PCC_UserHandler_Queueable.execute', '', ex);
         }
     }
     
@@ -66,10 +61,10 @@ public class PCC_UserHandler_Queueable implements queueable{
         // Un-share the user with the Integration User
         if(!urRoleIdToDeleteShares.isEmpty() && !roleToIntUserIdMap.isEmpty()){
              userSharesToDelete = [SELECT Id, UserId, User.UserRoleId, UserOrGroupId 
-                                   FROM UserShare 
-                                   WHERE UserId IN: urRoleIdToDeleteShares 
-                                   AND UserOrGroupId IN: roleToIntUserIdMap.values() 
-                                   AND RowCause = 'Manual'];
+                              FROM UserShare 
+                              WHERE UserId IN: urRoleIdToDeleteShares 
+                              AND UserOrGroupId IN: roleToIntUserIdMap.values() 
+                              AND RowCause = 'Manual'];
         }
         
         return userSharesToDelete;

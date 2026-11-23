@@ -57,18 +57,25 @@
     </columns>
     <filter>
         <criteriaItems>
-            <column>OWNER_MANAGER</column>
+            <column>Opportunity.Core_Opportunity_Coverage__c</column>
             <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Napolitano</value>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>OSC</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Sales_Groups__c</column>
             <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>GMP Americas Sales Territory</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OWNER_MANAGER</column>
+            <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>ELAR</value>
+            <value>hain</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

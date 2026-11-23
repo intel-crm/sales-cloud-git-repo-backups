@@ -2,24 +2,24 @@
   "appPageId" : "6b36c665-0609-49d0-9746-033feed642b2",
   "componentName" : "siteforce:sldsOneColLayout",
   "dataProviders" : [ ],
-  "id" : "f6cc1729-aec8-4f8e-b3b4-81c6bd37d5dd",
+  "id" : "0c0abda3-9b6b-47fc-9e3d-7e65e5675185",
   "label" : "All license internal",
   "regions" : [ {
     "components" : [ {
       "componentAttributes" : { },
       "componentName" : "c:sales_NonEventFeedback",
-      "id" : "6b223868-81a6-4808-91b5-353e5da5d242",
+      "id" : "17547fb4-d5d7-4765-a138-24e38386c64e",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "a074f127-94b8-4ab5-965b-db5e460e424e",
+    "id" : "ac277e60-d3ce-49ef-828a-b0234161debb",
     "regionName" : "header",
     "type" : "region"
   }, {
     "components" : [ {
       "componentAttributes" : {
-        "enableInlineEdit" : true,
+        "enableInlineEdit" : false,
         "filterName" : "All_Licenses_Ext",
         "layout" : "FULL",
         "pageSize" : 25,
@@ -35,16 +35,16 @@
         "showSearchBar" : true
       },
       "componentName" : "forceCommunity:objectHome",
-      "id" : "c831251b-b15f-4270-b6c6-cae2c9c86e79",
+      "id" : "f58cddd9-525b-4733-bc61-b94a444f3eec",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "8901a2df-1bcd-444c-9cd0-1a75d37f6ad6",
+    "id" : "37e10d46-e953-4219-9d94-1ee7c68f0e46",
     "regionName" : "content",
     "type" : "region"
   }, {
-    "id" : "c9c3fed9-1f74-4a94-9e80-6ae2dfd21ac0",
+    "id" : "6a924f29-c06f-411d-9752-ecce8f190a9e",
     "regionName" : "footer",
     "type" : "region"
   }, {
@@ -55,11 +55,11 @@
         "title" : "All license internal"
       },
       "componentName" : "forceCommunity:seoAssistant",
-      "id" : "1b3b9b94-a6db-4fa0-9684-2056869c5e2b",
+      "id" : "8788845c-3577-4bd1-8154-3802cf948c81",
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "8ad9a37e-6d2c-4c5a-b6b1-a94e0af73474",
+    "id" : "8ac787df-d79f-4a13-949c-72e841761a8d",
     "regionName" : "sfdcHiddenRegion",
     "type" : "region"
   } ],

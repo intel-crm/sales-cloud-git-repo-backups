@@ -61,6 +61,7 @@
         <field>SBQQ__Quote__c$Pricing_Program_Type_Nm__c</field>
     </columns>
     <columns>
+        <aggregateTypes>Sum</aggregateTypes>
         <field>SBQQ__Quote__c$Pricing_Volume_Exception_Quota_Cb__c</field>
     </columns>
     <columns>
@@ -188,9 +189,6 @@
     </columns>
     <columns>
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Last_Approved_Date_dt__c</field>
-    </columns>
-    <columns>
-        <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Rejection_Reason__c</field>
     </columns>
     <columns>
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Last_Submitted_By_Id__c</field>

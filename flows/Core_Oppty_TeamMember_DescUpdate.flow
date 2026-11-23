@@ -3,40 +3,10 @@
     <apiVersion>58.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <assignments>
-        <name>Assign_Pior_Val</name>
-        <label>Assign Pior_Val</label>
-        <locationX>578</locationX>
-        <locationY>395</locationY>
-        <assignmentItems>
-            <assignToReference>Prior_Val</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Record__Prior</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>Cur_Val</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Record</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>TMName</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Record.User.Name</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>If_Team_Member_Role_is_Opportunity_Owner_or_Technical_Owner</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
         <name>Blank_out_Description_Of_Contribution_for_Previous_Opp_Owner_or_Tech_Owner</name>
         <label>Blank out Description Of Contribution for Previous Opp Owner or Tech Owner</label>
         <locationX>578</locationX>
-        <locationY>611</locationY>
+        <locationY>503</locationY>
         <assignmentItems>
             <assignToReference>$Record.Core_Description_of_Contribution__c</assignToReference>
             <operator>Assign</operator>
@@ -60,7 +30,7 @@
         <name>Update_TM_Description</name>
         <label>Update TM Description</label>
         <locationX>314</locationX>
-        <locationY>611</locationY>
+        <locationY>503</locationY>
         <assignmentItems>
             <assignToReference>$Record.Core_Description_of_Contribution__c</assignToReference>
             <operator>Assign</operator>
@@ -76,7 +46,7 @@
         <locationX>314</locationX>
         <locationY>287</locationY>
         <defaultConnector>
-            <targetReference>Assign_Pior_Val</targetReference>
+            <targetReference>If_Team_Member_Role_is_Opportunity_Owner_or_Technical_Owner</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>no</defaultConnectorLabel>
         <rules>
@@ -103,7 +73,7 @@
         <name>If_Team_Member_Role_is_Opportunity_Owner_or_Technical_Owner</name>
         <label>If Team Member Role is Opportunity Owner or Technical Owner</label>
         <locationX>578</locationX>
-        <locationY>503</locationY>
+        <locationY>395</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>TeamMember_Role_is_Opportunity_Owner_or_Technical_Owner</name>
@@ -238,7 +208,7 @@ v19- Defaulting logic for opp owner and technical owner, Blank out for Previous 
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordBeforeSave</triggerType>
     </start>
-    <status>Draft</status>
+    <status>Obsolete</status>
     <variables>
         <name>Cur_Val</name>
         <dataType>SObject</dataType>

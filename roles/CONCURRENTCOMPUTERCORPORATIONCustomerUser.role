@@ -6,5 +6,5 @@
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>CONCURRENT COMPUTER CORPORATION Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>CONCURRENTCOMPUTERCORPORATIONCustomerManager</parentRole>
 </Role>

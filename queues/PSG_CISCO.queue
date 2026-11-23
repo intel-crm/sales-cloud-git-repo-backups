@@ -11,4 +11,7 @@
     <queueSobject>
         <sobjectType>SBQQ__Quote__c</sobjectType>
     </queueSobject>
+    <queueSobject>
+        <sobjectType>core_cpq_portalrequest__c</sobjectType>
+    </queueSobject>
 </Queue>

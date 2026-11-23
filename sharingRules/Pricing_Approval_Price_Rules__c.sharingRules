@@ -12,7 +12,7 @@
             <operation>notEqual</operation>
             <value></value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>AGS_All_DPM_Group_For_Approval_Price_Rules</fullName>
@@ -40,6 +40,6 @@
             <operation>notEqual</operation>
             <value></value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
 </SharingRules>

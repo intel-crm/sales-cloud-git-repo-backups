@@ -6,7 +6,7 @@
         <name>Add_collection</name>
         <label>Add collection</label>
         <locationX>138</locationX>
-        <locationY>674</locationY>
+        <locationY>782</locationY>
         <assignmentItems>
             <assignToReference>updateddrp</assignToReference>
             <operator>Add</operator>
@@ -22,7 +22,7 @@
         <name>SetDRP</name>
         <label>SetDRP</label>
         <locationX>138</locationX>
-        <locationY>566</locationY>
+        <locationY>674</locationY>
         <assignmentItems>
             <assignToReference>Drploop.Core_Design_Product_Status_Nm__c</assignToReference>
             <operator>Assign</operator>
@@ -89,12 +89,7 @@
     <formulas>
         <name>RejectionComments</name>
         <dataType>String</dataType>
-        <expression>{!Drploop.Core_Comment_Txt__c} &amp; BR() &amp; {!Rejection_Comments} &amp; BR() &amp; {!ExpiredComment}</expression>
-    </formulas>
-    <formulas>
-        <name>RejectionCommentsDR</name>
-        <dataType>String</dataType>
-        <expression>{!Rejection_Comments}</expression>
+        <expression>{!GetDRPComments.Core_Comment_Txt__c} &amp; BR() &amp; {!Rejection_Comments}</expression>
     </formulas>
     <formulas>
         <name>RejectionReason</name>
@@ -112,7 +107,7 @@
         <name>Drploop</name>
         <label>Drploop</label>
         <locationX>50</locationX>
-        <locationY>458</locationY>
+        <locationY>566</locationY>
         <collectionReference>GetDRP</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
@@ -145,7 +140,7 @@
         <name>Log_Entry</name>
         <label>Log Entry</label>
         <locationX>314</locationX>
-        <locationY>1082</locationY>
+        <locationY>1190</locationY>
         <connector>
             <targetReference>Error_Message</targetReference>
         </connector>
@@ -204,7 +199,7 @@
         <name>GetDRP</name>
         <label>GetDRP</label>
         <locationX>50</locationX>
-        <locationY>350</locationY>
+        <locationY>458</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Drploop</targetReference>
@@ -223,11 +218,32 @@
         <sortOrder>Desc</sortOrder>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
+    <recordLookups>
+        <name>GetDRPComments</name>
+        <label>GetDRPComments</label>
+        <locationX>50</locationX>
+        <locationY>350</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>GetDRP</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Core_Design_Registration_Id__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Core_Design_Registration_Product__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
     <recordUpdates>
         <name>Update_DR</name>
         <label>Update DR</label>
         <locationX>50</locationX>
-        <locationY>974</locationY>
+        <locationY>1082</locationY>
         <connector>
             <targetReference>Messagesuccess</targetReference>
         </connector>
@@ -251,7 +267,7 @@
         <inputAssignments>
             <field>Core_Rejection_Comment_Txt__c</field>
             <value>
-                <elementReference>RejectionCommentsDR</elementReference>
+                <elementReference>RejectionComments</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -266,7 +282,7 @@
         <name>updateDRP</name>
         <label>updateDRP</label>
         <locationX>50</locationX>
-        <locationY>866</locationY>
+        <locationY>974</locationY>
         <connector>
             <targetReference>Update_DR</targetReference>
         </connector>
@@ -277,7 +293,7 @@
         <name>Error_Message</name>
         <label>Error Message</label>
         <locationX>314</locationX>
-        <locationY>1190</locationY>
+        <locationY>1298</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -302,7 +318,7 @@
         <name>Messagesuccess</name>
         <label>Messagesuccess</label>
         <locationX>50</locationX>
-        <locationY>1082</locationY>
+        <locationY>1190</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -333,7 +349,7 @@
         <allowPause>false</allowPause>
         <backButtonLabel>Cancel</backButtonLabel>
         <connector>
-            <targetReference>GetDRP</targetReference>
+            <targetReference>GetDRPComments</targetReference>
         </connector>
         <fields>
             <name>Rejection</name>
@@ -379,16 +395,6 @@
         </connector>
     </start>
     <status>Active</status>
-    <variables>
-        <name>ExpiredComment</name>
-        <dataType>String</dataType>
-        <isCollection>false</isCollection>
-        <isInput>false</isInput>
-        <isOutput>false</isOutput>
-        <value>
-            <stringValue>(Expired from Design Registration Record)</stringValue>
-        </value>
-    </variables>
     <variables>
         <name>Object</name>
         <dataType>String</dataType>

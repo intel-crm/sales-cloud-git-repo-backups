@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexTestSuite xmlns="http://soap.sforce.com/2006/04/metadata">
+    <testClassName>Pricing_IQR_UploadFile_Test</testClassName>
+    <testClassName>Pricing_Publish_Quote_Test</testClassName>
+    <testClassName>Pricing_QLBulkCR_Test</testClassName>
+    <testClassName>Pricing_QuoteEmailAlertController_Test</testClassName>
+    <testClassName>Pricing_QuoteLine_AutoRejectionBatchTest</testClassName>
+    <testClassName>Pricing_QuoteLineApprovalEmailCntrl_Test</testClassName>
+    <testClassName>Pricing_QuoteLineBusinessLogic_Test</testClassName>
+    <testClassName>Pricing_QuoteLineController_Test</testClassName>
+    <testClassName>Pricing_QuoteTeam_SharingController_Test</testClassName>
+    <testClassName>Pricing_QuoteTeam_TriggerHandler_Test</testClassName>
+    <testClassName>Pricing_QuoteTeamEmailController_Test</testClassName>
+    <testClassName>Pricing_RestAPI_ChangeRequestQLI_Test</testClassName>
+    <testClassName>Pricing_RestAPI_GetAllQuotes_Test</testClassName>
+    <testClassName>Pricing_RestAPI_GetAllQuotesV2_Test</testClassName>
+    <testClassName>Pricing_RestAPI_PerformanceMetrics_Test</testClassName>
+    <testClassName>Pricing_RestAPI_Quotelines_Test</testClassName>
+    <testClassName>Pricing_RestAPI_QuotelinesV2_Test</testClassName>
+    <testClassName>Pricing_RestAPI_Quotes_Test</testClassName>
+    <testClassName>Pricing_RestAPI_QuotesUtilityTest</testClassName>
+    <testClassName>Pricing_RestAPI_QuotesUtilityV2_Test</testClassName>
+    <testClassName>Pricing_RestAPI_QuotesV2_Test</testClassName>
+    <testClassName>Pricing_Test_Utility</testClassName>
+</ApexTestSuite>

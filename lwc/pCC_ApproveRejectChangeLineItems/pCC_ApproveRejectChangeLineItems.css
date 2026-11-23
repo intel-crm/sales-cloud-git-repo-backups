@@ -1,0 +1,16 @@
+.ul:not(.browser-default) {
+    list-style-type: disc !important;
+}
+.no-edit {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.customHighlight {
+   text-decoration-color : #d7f3a2 ;  /* Light green background */
+   font-weight: bold !important;
+}
+
+.hi{
+    font-weight: lighter;
+}

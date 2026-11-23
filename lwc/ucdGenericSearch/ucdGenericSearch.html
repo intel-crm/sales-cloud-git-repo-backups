@@ -1,0 +1,122 @@
+<template>
+    <lightning-card>
+        <lightning-layout multiple-rows="false">
+            <template for:each={fieldSetFields} for:item="frow">
+                <lightning-layout-item key={frow.fieldAPIName} padding="around-small" size="3" large-device-size="3" medium-device-size="3" small-device-size="12">
+                    <lightning-input type="text" class="validate" name={frow.fieldAPIName} label={frow.fieldLabel} 
+                     value={frow.fieldValue} onchange={inputHandler} required>
+                    </lightning-input>
+                </lightning-layout-item>
+            </template>
+        </lightning-layout>
+
+        <lightning-button class="slds-p-left_small" variant="brand" onclick={search} label="Search" value="Search">
+        </lightning-button>
+
+    </lightning-card>
+
+    <template if:true={showResult}>
+    <lightning-card>
+        <!--<lightning-datatable
+            key-field="id"
+            data={searchResult}
+            columns={columns}
+            onrowaction={handleRowAction}>
+    </lightning-datatable>-->
+
+    <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_fixed-layout slds-table_resizable-cols" role="grid">              
+        <thead>
+          <tr class="thead_height">
+              <th class="radiocolum_width" scope="col">
+              </th>
+              <th role="gridcell">
+                  <div class="slds-align_absolute-left"  title="Name">Name</div>
+              </th> 
+              <th class="" scope="col">
+                  <div class="slds-truncate" title="First Name">CIM ID</div>
+              </th>
+              <th class="" scope="col">
+                  <div class="slds-truncate" title="Account ID">Account ID</div>
+              </th>
+              <th class="" scope="col">
+                  <div class="slds-truncate" title="Primary Address">Primary Address</div>
+              </th>
+              <th class="" scope="col">
+                  <div class="slds-truncate" title="IPA Account">IPA Account</div>
+              </th>
+              <th class="" scope="col">
+                <div class="slds-truncate" title="Owner Name">Owner Name</div>
+            </th>
+              <th class="" scope="col">
+                  <div class="slds-truncate" title="Duplicate Account Status">Duplicate Account Status</div>
+              </th>
+          </tr>
+      </thead>
+      <tbody>
+          <template for:each={searchResult} for:item="trow" for:index="indx">
+              <tr key={trow.cimID}>
+                  <th>
+                      <div class="slds-checkbox">
+                          <lightning-input type="checkbox" onchange={checkBoxSelectionHandler} value={trow.cimID}  
+                                  data-element="subscribe-checkbox"
+                                  name={trow.accId} data-id={trow.cimID} placeholder={trow.accOwner}>
+                          </lightning-input>                                  
+                      </div>
+                  </th>
+                  <td class="slds-cell-wrap" data-label="Wrapped, line clamped">
+                      <div class="slds-line-clamp" title={trow.accName}>{trow.accName}</div>
+                  </td> 
+                      <th scope="col">
+                          <div class="slds-truncate" title={trow.cimID}>{trow.cimID}</div>
+                      </th>
+                      <th scope="col">
+                       <!--   <div class="slds-truncate" title={trow.IPAFlag}>{trow.IPAFlag}</div> -->
+                          <lightning-button variant="base" label={trow.accId} title={trow.accName} onclick={handleRowAction} class="slds-m-left_x-small"> {trow.accId}</lightning-button>
+                      </th>
+                      <td class="slds-cell-wrap" data-label="Wrapped, line clamped">
+                          <div class="slds-line-clamp" title={trow.fullAddress}>{trow.fullAddress}</div>
+                        </td>
+                      <th scope="col">
+                          <div class="slds-truncate" title={trow.IPAFlag}>{trow.IPAFlag}</div>
+                      </th>
+                      <th scope="col">
+                         <div class="slds-truncate" title={trow.accOwner}>{trow.accOwner}</div> 
+                       <!--  <lightning-button variant="base" label={trow.accId} title={trow.accName} onclick={handleRowAction} class="slds-m-left_x-small"> {trow.accId}</lightning-button> -->
+                         
+                      </th>
+                      <th scope="col">
+                        <div class="slds-truncate" title={trow.searchScore}>{trow.searchScore}</div>
+                    </th>
+                  </tr>
+              </template>
+          </tbody>
+  </table>
+
+    </lightning-card>
+    </template> 
+    <lightning-card>
+    <lightning-tabset variant="scoped">
+    <template for:each={idata} for:item="iTab" >
+        
+        <lightning-tab  key={iTab.UI_Label__c} label={iTab.UI_Label__c} >
+            {iTab.UI_Label__c}
+            <iframe width="800" height="400" src="www.google.com"></iframe>
+        </lightning-tab>
+    
+    </template>
+</lightning-tabset>
+</lightning-card>
+    <!--<lightning-card  title="System Information" icon-name="custom:custom59">
+        <div class="slds-m-around_medium">
+            <iframe width="800" height="400" src={fullUrl}></iframe>
+        </div>    
+    </lightning-card>
+    
+   
+        <div class="iframe-container" lwc:dom="manual"></div>
+        <template if:true={loading}>
+            <lightning-spinner variant="brand" size="large" ></lightning-spinner>
+        </template>-->
+
+    
+</template>

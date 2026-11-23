@@ -1,0 +1,44 @@
+<template>
+<lightning-quick-action-panel >
+
+<div class="slds-is-relative" >
+
+<div class="slds-card slds-m-around_xx-small">
+<lightning-layout horizontal-align="center" multiple-rows="true">
+    <lightning-layout-item flexibility="grow" size="12" small-device-size="12" medium-device-size="10" large-device-size="10" padding="around-small">
+    <h2 style="text-align: center;font-size: 20px;">Descriptive Featuers</h2> 
+    </lightning-layout-item>
+</lightning-layout>
+<hr style='margin:-0.5px -1px -9px -1px;border-top: 2.3px solid #ccc'/>
+</div>  
+
+
+<template if:true={loaded}>
+    <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
+</template>
+
+<template if:true={showTable} >   
+<div class="slds-table_col-bordered slds-table_bordered" >
+                        
+        <lightning-datatable
+        key-field="Sequence"
+        data={dataList}
+        row-number-offset={rowOffset}
+        show-row-number-column
+        columns={dataTableColumns}
+        column-widths-mode = "auto"
+        suppress-bottom-bar=true
+        >
+                        
+    </lightning-datatable>
+    </div>  
+    </template>
+    
+</div>
+</lightning-quick-action-panel>
+
+ <footer slot="footer" class='slds-modal__footer slds-p-vertical_small'>
+      <lightning-button variant="neutral" class="slds-m-left_x-small" label="Cancel" onclick={closeAction} disabled={disableButton}></lightning-button>
+      <lightning-button variant="brand" class="slds-m-left_x-small" label="Submit" onclick={handleSubmit} disabled={disableButton}></lightning-button>
+    </footer>
+</template>

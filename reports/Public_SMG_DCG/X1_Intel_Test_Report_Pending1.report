@@ -44,9 +44,6 @@
         <field>OPPORTUNITY_NAME</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Solution_Type__c</field>
-    </columns>
-    <columns>
         <field>Opportunity.Core_Consumption_Market__c</field>
     </columns>
     <columns>
@@ -113,8 +110,8 @@
         <criteriaItems>
             <column>Name</column>
             <isUnlocked>false</isUnlocked>
-            <operator>contains</operator>
-            <value>DCG AI Deal $,One Intel AI Deal $</value>
+            <operator>equals</operator>
+            <value>DCG AI Deal $</value>
         </criteriaItems>
         <criteriaItems>
             <column>Core_Opp_KPI_Achieved__c</column>
@@ -204,6 +201,6 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <interval>INTERVAL_PREVCURY</interval>
+        <interval>INTERVAL_CURY</interval>
     </timeFrameFilter>
 </Report>

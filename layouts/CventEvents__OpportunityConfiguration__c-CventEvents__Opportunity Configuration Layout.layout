@@ -79,7 +79,7 @@
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
-                <behavior>Readonly</behavior>
+                <behavior>Required</behavior>
                 <field>CventEvents__OpportunityCloseDate__c</field>
             </layoutItems>
             <layoutItems>

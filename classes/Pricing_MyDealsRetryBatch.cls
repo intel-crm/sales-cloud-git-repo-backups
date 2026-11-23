@@ -1,27 +1,21 @@
-/**
- * @description       : 
- * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
- * @group             : 
- * @last modified on  : 04-27-2026
- * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
-**/
 global without sharing class Pricing_MyDealsRetryBatch extends TriggerHandler implements Database.Batchable<sObject>, Database.AllowsCallouts{
     public DateTime dtWhen;
     public Pricing_MyDealsRetryBatch(){
         dtWhen = system.now();
     }
     public Database.QueryLocator start(Database.BatchableContext bc){
+        System.debug('TriggerHandler.isActive = ' +TriggerHandler.isActive('Pricing_MyDealsRetryBatch'));
         return (TriggerHandler.isActive('Pricing_MyDealsRetryBatch'))?
-            							 Database.getQueryLocator([SELECT Id,Name,Pricing_Retry_Number__c,Pricing_Status__c,Pricing_SObject__c,
+            Database.getQueryLocator([SELECT Id,Name,Pricing_Retry_Number__c,Pricing_Status__c,Pricing_SObject__c,
                                          Pricing_SObjectId__c,Pricing_Payload__c FROM Pricing_Integration_Staging__c 
-                                         WHERE Pricing_Status__c = 'Failed' AND Pricing_Retry_Number__c >= 3]): Database.getQueryLocator([SELECT id FROM Pricing_Integration_Staging__c WHERE Id=null LIMIT 1]);
+                                         WHERE Pricing_Status__c = 'Failed' AND Pricing_Retry_Number__c >= 3]):null;
     }
     public void execute(Database.BatchableContext bc, List<Pricing_Integration_Staging__c> scope){
         try
-        {           
+        {
             if(scope.size() > 0 ){
                 system.enqueueJob(new Pricing_MyDeals_RetryIntegration(scope));
-            } 
+            }
         }
         catch(exception ex)
         {
@@ -31,7 +25,7 @@ global without sharing class Pricing_MyDealsRetryBatch extends TriggerHandler im
     public void finish(Database.BatchableContext bc)
     {
         List<Core_Log_Entry__c> lstLogEntryRecords = createLogEntryRecords();
-        List<Database.SaveResult> resultsCreateLogRecords = Database.insert(lstLogEntryRecords, false);
+        Database.insert(lstLogEntryRecords, false);
     }
     private List<Core_Log_Entry__c> createLogEntryRecords(){
         List<Core_Log_Entry__c> lstLogEntry = new List<Core_Log_Entry__c>();
@@ -47,7 +41,7 @@ global without sharing class Pricing_MyDealsRetryBatch extends TriggerHandler im
         addLogEntry.Core_Message__c = 'Batch for Retry Logic when MyDeals is down';
         addLogEntry.Core_When__c = dtWhen;
         addLogEntry.Core_Details__c = 'Duration: ' + duration+' for processing batch';
-        lstLogEntry.add(addLogEntry);        
+        lstLogEntry.add(addLogEntry);
         return(lstLogEntry);
     }
 }

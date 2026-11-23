@@ -1,5 +1,5 @@
-import { LightningElement } from 'lwc';
-/*import { CloseActionScreenEvent } from 'lightning/actions';
+import { LightningElement, track, wire, api } from 'lwc';
+import { CloseActionScreenEvent } from 'lightning/actions';
 import { getRecord, getFieldValue } from "lightning/uiRecordApi";
 import strUserId from '@salesforce/user/Id';
 import PROFILE_NAME_FIELD from '@salesforce/schema/User.Profile.Name';
@@ -9,7 +9,7 @@ import Sales_OrderClose from '@salesforce/label/c.Sales_OrderClose';
 import Sales_validProfile from '@salesforce/label/c.Sales_validProfile';
 import Sales_AccessCheckMsg from '@salesforce/label/c.Sales_AccessCheckMsg';
 
-//import checkUserPermissionSet from '@salesforce/apex/Sales_ApplyRenewalController.checkUserPermissionSet';
+import checkUserPermissionSet from '@salesforce/apex/Sales_ApplyRenewalController.checkUserPermissionSet';
 import getLicense from '@salesforce/apex/Sales_CreateLicenseProvider.getLicense';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import validateUserAccess from '@salesforce/apex/Sales_ValidateUserEditAccess.validateUserAccess';
@@ -19,10 +19,10 @@ const fields = [
     'Sales_License__c.Sales_License_Order_Product__c',
     'Sales_License__c.Sales_Tool_License_Type__c',
     'Sales_License__c.Sales_License_Type__c'
-]*/
+]
 
 export default class Sales_CreateOptionalLicenseParentCmp extends LightningElement {
-    /*@track callanothercomp = false;
+    @track callanothercomp = false;
     @api recordId;
     @track error;
     @track licenseRow={};
@@ -169,7 +169,7 @@ export default class Sales_CreateOptionalLicenseParentCmp extends LightningEleme
         const isButtonClicked = event.detail;
         this.buttonClicked = isButtonClicked;
     }
-    /*checkUser(){
+    checkUser(){
         checkUserPermissionSet()
             .then((result) => {
                
@@ -186,6 +186,6 @@ export default class Sales_CreateOptionalLicenseParentCmp extends LightningEleme
                
              }
         });
-    }*/
+    }
    
 }

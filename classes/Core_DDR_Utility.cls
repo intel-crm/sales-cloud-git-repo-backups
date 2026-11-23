@@ -53,7 +53,7 @@ public with sharing class Core_DDR_Utility {
         }        
        // insert NewPBE2;
        Database.insert(NewPBE2,false,AccessLevel.User_mode);            
-        return NewPBE2;
+       return NewPBE2;
     }   
     
     /*Designs*/
@@ -143,7 +143,7 @@ public with sharing class Core_DDR_Utility {
             new Core_Location_To_Approver_Group_Mapping__c(name = 'PSG JPN', Core_Approver_Group_Nm__c = 'Core_DDR_Approver_PSG_Japan', Core_Country_Cd__c = 'JPN', Core_State_Cd__c = '', Core_Product_Group_Nm__c = 'FPGA/Power', Core_Active_Ind__c = true),
             new Core_Location_To_Approver_Group_Mapping__c(name = 'PSG USA-OR', Core_Approver_Group_Nm__c = 'Core_DDR_Approver_PSG_USA_Oregon', Core_Country_Cd__c = 'USA', Core_State_Cd__c = 'OR', Core_Product_Group_Nm__c = 'FPGA/Power', Core_Active_Ind__c = true)
         };
-        insert NewLocToAppGroMap;
+       insert NewLocToAppGroMap;
         //Database.insert(NewLocToAppGroMap,false,AccessLevel.User_mode);            
        
         return NewLocToAppGroMap;
@@ -155,7 +155,7 @@ public with sharing class Core_DDR_Utility {
         List<Core_LogEntry_Switch__c> LogEntryLst = new List<Core_LogEntry_Switch__c> {
             new Core_LogEntry_Switch__c(name = 'Core_DDR_LogEntry_Check', Is_Selected__c = true)
         };
-        insert LogEntryLst;
+       insert LogEntryLst;
         //Database.insert(LogEntryLst,false,AccessLevel.User_mode);            
         return LogEntryLst;
     }

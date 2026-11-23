@@ -172,7 +172,7 @@
                 //CTA: 'All Marketplace help',
                 //CTAUrl: '/imp/s/help'
                 CTA: $A.get("$Label.c.PMP_All_Marketplace_Help"), 
-                CTAUrl: $A.get("$Label.c.PMP_IPA_HelpLink")
+                CTAUrl: $A.get("$Label.c.PMP_All_Marketplace_Help_URL")
             }
         }
 //commented by raushan

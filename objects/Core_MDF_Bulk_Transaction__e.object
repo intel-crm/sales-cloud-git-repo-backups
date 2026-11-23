@@ -3,18 +3,6 @@
     <deploymentStatus>Deployed</deploymentStatus>
     <eventType>HighVolume</eventType>
     <fields>
-        <fullName>Core_MDF_Action_Name__c</fullName>
-        <externalId>false</externalId>
-        <isFilteringDisabled>false</isFilteringDisabled>
-        <isNameField>false</isNameField>
-        <isSortingDisabled>false</isSortingDisabled>
-        <label>Action Name</label>
-        <length>255</length>
-        <required>false</required>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_MDF_JSON_Data__c</fullName>
         <isFilteringDisabled>false</isFilteringDisabled>
         <isNameField>false</isNameField>
@@ -22,7 +10,7 @@
         <label>JSON Data</label>
         <length>121072</length>
         <type>LongTextArea</type>
-        <visibleLines>4</visibleLines>
+        <visibleLines>3</visibleLines>
     </fields>
     <fields>
         <fullName>Core_MDF_Object_Name__c</fullName>

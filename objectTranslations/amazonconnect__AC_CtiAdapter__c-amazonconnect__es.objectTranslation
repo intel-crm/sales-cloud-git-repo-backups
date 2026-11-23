@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>AC Adaptador CTI</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value><!-- AC Adaptador CTI --></value>
+    </caseValues>
+    <fields>
+        <label>Activar la configuración del dispositivo de audio</label>
+        <name>amazonconnect__AudioDeviceSettings__c</name>
+    </fields>
+    <fields>
+        <label><!-- Automatic CCP Single Sign On (SSO) --></label>
+        <name>amazonconnect__AutomaticCCPSingleSignOn__c</name>
+    </fields>
+    <fields>
+        <label><!-- Bottom Panel --></label>
+        <name>amazonconnect__BottomPanel__c</name>
+    </fields>
+    <fields>
+        <label> Nombre de definición del centro de llamadas </label>
+        <name>amazonconnect__CallCenter__c</name>
+    </fields>
+    <fields>
+        <label> Versión de CCP </label>
+        <name>amazonconnect__CcpVersion__c</name>
+        <picklistValues>
+            <masterLabel>v1</masterLabel>
+            <translation><!-- v1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>v2</masterLabel>
+            <translation><!-- v2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label> Instancia de conexión - NO USAR </label>
+        <name>amazonconnect__ConnectInstance__c</name>
+    </fields>
+    <fields>
+        <label>Tono de llamada de chat personalizado</label>
+        <name>amazonconnect__CustomChatRingtone__c</name>
+    </fields>
+    <fields>
+        <label> Tono personalizado </label>
+        <name>amazonconnect__CustomRingtone__c</name>
+    </fields>
+    <fields>
+        <label> Nivel de depuración </label>
+        <name>amazonconnect__DebugLevel__c</name>
+    </fields>
+    <fields>
+        <label>Desactivar la cancelación de eco</label>
+        <name>amazonconnect__DisableEchoCancellation__c</name>
+    </fields>
+    <fields>
+        <label>Captura de micrófono previa a la llamada</label>
+        <name>amazonconnect__EarlyGum__c</name>
+    </fields>
+    <fields>
+        <label><!-- Enable Softphone Popout --></label>
+        <name>amazonconnect__EnableSoftphonePopout__c</name>
+    </fields>
+    <fields>
+        <label>ARN de instancia</label>
+        <name>amazonconnect__InstanceArn__c</name>
+    </fields>
+    <fields>
+        <label> Alias de instancia de Amazon Connect </label>
+        <name>amazonconnect__Instance__c</name>
+    </fields>
+    <fields>
+        <label> Sin medios </label>
+        <name>amazonconnect__Medialess__c</name>
+    </fields>
+    <fields>
+        <help><!-- Optional: This is the Named Credential used for the &quot;Recording Controls&quot; feature. If this is empty, a default value of &quot;AmazonConnectAPI&quot; will be assumed. --></help>
+        <label>Credenciales nombradas</label>
+        <name>amazonconnect__NamedCredential__c</name>
+    </fields>
+    <fields>
+        <label>Configuración del tipo de teléfono</label>
+        <name>amazonconnect__PhoneTypeSettings__c</name>
+    </fields>
+    <fields>
+        <label> Sincronización de presencia habilitada </label>
+        <name>amazonconnect__PresenceSyncEnabled__c</name>
+    </fields>
+    <fields>
+        <label> Región de instancia de Amazon Connect </label>
+        <name>amazonconnect__Region__c</name>
+    </fields>
+    <fields>
+        <label> Ventana emergente de teléfono virtual habilitada </label>
+        <name>amazonconnect__SoftphonePopoutEnabled__c</name>
+    </fields>
+    <fields>
+        <label> Estado de retransmisión SSO </label>
+        <name>amazonconnect__SsoRelayState__c</name>
+    </fields>
+    <fields>
+        <label> URL de SSO </label>
+        <name>amazonconnect__SsoUrl__c</name>
+    </fields>
+    <fields>
+        <label><!-- User Defined --></label>
+        <name>amazonconnect__UserDefined__c</name>
+    </fields>
+    <gender>Feminine</gender>
+    <nameFieldLabel>Adaptador CTI</nameFieldLabel>
+</CustomObjectTranslation>

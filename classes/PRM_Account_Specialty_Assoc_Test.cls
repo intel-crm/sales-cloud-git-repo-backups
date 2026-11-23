@@ -4,7 +4,6 @@ public class PRM_Account_Specialty_Assoc_Test {
     static testmethod void testduplicateRecordCheck(){
         Test.startTest();
         Id specid = Schema.SObjectType.PRM_Specialty__c.getRecordTypeInfosByName().get('Select Benefits').getRecordTypeId();
-        Id intelAccRecTypeId = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
         
         Account newAccount = new Account();//Account
         newAccount.Name='Johngoth Rick';
@@ -14,7 +13,6 @@ public class PRM_Account_Specialty_Assoc_Test {
         newAccount.BillingPostalCode='Postal code';
         newAccount.Core_Account_Type__c='Cloud Service Provider (CSP)';
         newAccount.Core_Intel_Partner_Alliance_PartnerGroup__c=true;
-        newAccount.RecordTypeId=intelAccRecTypeId;
         insert newAccount;
         System.debug('first account'+newAccount);
         
@@ -66,7 +64,6 @@ public class PRM_Account_Specialty_Assoc_Test {
     static testmethod void updatetestduplicateRecordCheck(){
         Test.startTest();
         Id specid = Schema.SObjectType.PRM_Specialty__c.getRecordTypeInfosByName().get('Select Benefits').getRecordTypeId();
-        Id intelAccRecTypeId = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
         
         Account newAccount = new Account();//Account
         newAccount.Name='John Rick';
@@ -76,7 +73,6 @@ public class PRM_Account_Specialty_Assoc_Test {
         newAccount.BillingPostalCode='Postal code';
         newAccount.Core_Account_Type__c='Cloud Service Provider (CSP)';
         newAccount.Core_Intel_Partner_Alliance_PartnerGroup__c=true;
-        newAccount.RecordTypeId=intelAccRecTypeId;
         insert newAccount;
         System.debug('first account'+newAccount);
         
@@ -143,7 +139,7 @@ public class PRM_Account_Specialty_Assoc_Test {
         newAccount.Core_Account_Type__c='Cloud Service Provider (CSP)';
         newAccount.Core_Intel_Partner_Alliance_PartnerGroup__c=true;
         newAccount.Core_IPA_Partner_Role__c = 'Service Provider';
-        newAccount.recordtypeId = intelid;
+        //newAccount.recordtypeId = intelid;
         insert newAccount;
         
        /* Account newAccount1 = new Account();//Account
@@ -277,8 +273,7 @@ public class PRM_Account_Specialty_Assoc_Test {
         acm.PRM_Status_Nm__c='Approved';
         acm.PRM_Channel_Program_Id__c=cp.Id;
         acm.PRM_Channel_Program_Level_Id__c=cpl.Id;
-        acm.PRM_Partner_Role__c='Builder';
-        acm.PRM_Status_Reason_Txt__c='test';
+        acm.PRM_Partner_Role__c='FPGA Designer';
         acmList.add(acm);
        // insert acm;
         
@@ -287,8 +282,7 @@ public class PRM_Account_Specialty_Assoc_Test {
         acm1.PRM_Status_Nm__c='Approved';
         acm1.PRM_Channel_Program_Id__c=cp.Id;
         acm1.PRM_Channel_Program_Level_Id__c=cpl.Id;
-        acm1.PRM_Partner_Role__c='Builder';
-        acm1.PRM_Status_Reason_Txt__c='test';
+        acm1.PRM_Partner_Role__c='FPGA Designer';
         acmList.add(acm1);
         insert acmList;
         
@@ -449,7 +443,6 @@ public class PRM_Account_Specialty_Assoc_Test {
         cont.Core_Job_Function__c='Branch Manager';
         cont.Core_eRPM_Language_Code__c='Eng';
         cont.Core_IPA_PartnerRole__c = 'Service Provider';
-        cont.MailingCountry='USA';
         insert cont;
         
         Contact cont1 = new Contact();  //Contact
@@ -460,7 +453,6 @@ public class PRM_Account_Specialty_Assoc_Test {
         cont1.Core_Job_Function__c='Branch Manager';
         cont1.Core_eRPM_Language_Code__c='Eng';
         cont1.Core_IPA_PartnerRole__c = 'Service Provider';
-        cont1.MailingCountry='USA';
         insert cont1;
         
         ChannelProgram cp = new ChannelProgram(); //Channel Program
@@ -485,7 +477,6 @@ public class PRM_Account_Specialty_Assoc_Test {
         acm1.PRM_Channel_Program_Id__c=cp.Id;
         acm1.PRM_Channel_Program_Level_Id__c=cpl1.Id;
         acm1.PRM_Partner_Role__c='Service Provider';
-        acm1.PRM_Status_Reason_Txt__c='test';
         insert acm1;
         
         PRM_PartnerBenefit__c pb = new PRM_PartnerBenefit__c(); //Partner Benefit
@@ -536,7 +527,6 @@ public class PRM_Account_Specialty_Assoc_Test {
         acctContRel1.PRM_Relationship_Id__c=contRelation.Id;
         acctContRel1.PRM_InActive_Ind__c=false;
         acctContRel1.PRM_Status_Nm__c =System.Label.PRM_ACR_Status;
-        acctContRel1.PRM_Status_Reason_Txt__c='test';
         insert acctContRel1;
         
         acctContRel1.PRM_Status_Nm__c='Complete';
@@ -571,7 +561,7 @@ public class PRM_Account_Specialty_Assoc_Test {
         em.PRM_Entitlement_Id__c = ed.id;
         em.PRM_Contact_Relationship_Id__c = contRelation.id;
         em.PRM_Approval_Type_Nm__c='Automatic';
-        em.PRM_IPA_Partner_Role_Nm__c='Service Provider';
+        em.PRM_Partner_Role_Nm__c='Service Provider';
         insert em;
         
         PRM_VXEnttlmntMatrix__c em1= new PRM_VXEnttlmntMatrix__c(); //Entitlement Matrix
@@ -579,7 +569,7 @@ public class PRM_Account_Specialty_Assoc_Test {
         em1.PRM_Entitlement_Id__c = ed1.id;
         em1.PRM_Contact_Relationship_Id__c = contRelation.id;
         em1.PRM_Approval_Type_Nm__c='Automatic';
-        em1.PRM_IPA_Partner_Role_Nm__c='Service Provider';
+        em1.PRM_Partner_Role_Nm__c='Service Provider';
         insert em1;
         
         PRM_VXEnttlmntMatrix__c em2= new PRM_VXEnttlmntMatrix__c(); //Entitlement Matrix
@@ -587,7 +577,7 @@ public class PRM_Account_Specialty_Assoc_Test {
         em2.PRM_Entitlement_Id__c = ed2.id;
         em2.PRM_Contact_Relationship_Id__c = contRelation.id;
         em2.PRM_Approval_Type_Nm__c='Automatic';
-        em2.PRM_IPA_Partner_Role_Nm__c='Service Provider';
+        em2.PRM_Partner_Role_Nm__c='Service Provider';
         insert em2;
         
         List<PRM_Batch_Entitlement__c> beList = new List<PRM_Batch_Entitlement__c>();
@@ -636,7 +626,7 @@ public class PRM_Account_Specialty_Assoc_Test {
         em3.PRM_Contact_Relationship_Id__c = contRelation.id;
         em3.PRM_Channel_Program_Level_Id__c = cpl.Id;
         em3.PRM_Approval_Type_Nm__c='Automatic';
-        em3.PRM_IPA_Partner_Role_Nm__c='Service Provider';
+        em3.PRM_Partner_Role_Nm__c='Service Provider';
         insert em3;
         
         //List<PRM_Batch_Entitlement__c> beList = new List<PRM_Batch_Entitlement__c>();
@@ -769,7 +759,7 @@ public class PRM_Account_Specialty_Assoc_Test {
         newAccount.BillingCountry='India';
         newAccount.BillingPostalCode='Postal code';
         newAccount.Core_Account_Type__c='Cloud Service Provider (CSP)';
-        newAccount.Core_IPA_Partner_Role__c='Solution Integrator';
+        newAccount.Core_IPA_Partner_Role__c='FPGA Designer';
         newAccount.Core_Intel_Partner_Alliance_PartnerGroup__c=true;
         acclist.add(newAccount);
        // insert newAccount;
@@ -782,7 +772,7 @@ public class PRM_Account_Specialty_Assoc_Test {
         newAccount1.BillingCountry='India';
         newAccount1.BillingPostalCode='Postal code';
         newAccount1.Core_Account_Type__c='Cloud Service Provider (CSP)';
-        newAccount1.Core_IPA_Partner_Role__c='Builder';
+        newAccount1.Core_IPA_Partner_Role__c='FPGA Designer';
         newAccount1.Core_Intel_Partner_Alliance_PartnerGroup__c=true;
         acclist.add(newAccount1);
         insert acclist;
@@ -805,8 +795,7 @@ public class PRM_Account_Specialty_Assoc_Test {
         acm.PRM_Status_Nm__c='Approved';
         acm.PRM_Channel_Program_Id__c=cp.Id;
         acm.PRM_Channel_Program_Level_Id__c=cpl.Id;
-        acm.PRM_Partner_Role__c='Builder';
-        acm.PRM_Status_Reason_Txt__c='test';
+        acm.PRM_Partner_Role__c='FPGA Designer';
         acmList.add(acm);
        // insert acm;
         
@@ -815,8 +804,7 @@ public class PRM_Account_Specialty_Assoc_Test {
         acm1.PRM_Status_Nm__c='Approved';
         acm1.PRM_Channel_Program_Id__c=cp.Id;
         acm1.PRM_Channel_Program_Level_Id__c=cpl.Id;
-        acm1.PRM_Partner_Role__c='Builder';
-        acm1.PRM_Status_Reason_Txt__c='test';
+        acm1.PRM_Partner_Role__c='FPGA Designer';
         acmList.add(acm1);
         insert acmList;
         
@@ -831,7 +819,7 @@ public class PRM_Account_Specialty_Assoc_Test {
         spec.name='Select Benefits';
         spec.PRM_Description_Txt__c='This is description';
         spec.PRM_Funding_BU_Nm__c='CCG Sales Group';
-        spec.PRM_Role_Nm__c='Solution Integrator';
+        spec.PRM_Role_Nm__c='FPGA Designer';
         spec.PRM_Tier_Nm__c='Gold';
         spec.PRM_Start_Date_Dt__c= system.today() + 7;
         spec.PRM_End_Date_Dt__c= spec.PRM_Start_Date_Dt__c + 5;

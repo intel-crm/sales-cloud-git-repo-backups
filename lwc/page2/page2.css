@@ -1,0 +1,65 @@
+.table {
+    margin-top: 10px; /* Add spacing below the radio button */
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.table th, .table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+}
+
+.table th {
+    background-color: #f2f2f2;
+    text-align: left;
+}
+input[type='radio']:checked + .circle {
+    opacity: 1;
+    
+    }
+input[type='radio']::content+ .circle {
+        background-color: #d1d3d1;
+        
+}
+.slds-box{
+    padding-left: 16%;
+    border: 2px;
+    border-style: groove;
+    border-color: rgb(72, 72, 74);
+
+}
+
+.lgb-bttn {
+  
+  padding: 20px;
+  margin-left: 80%;
+}
+
+.lgc-bg {
+    font-family: sans-serif;
+    margin-bottom: 130px;
+}
+
+.lkm-pg {
+    font-size: 10px;
+    font-family: sans-serif;
+    
+}
+.table-wrapper {
+    max-height: 150px;
+    max-width: 350px;
+    overflow: auto; 
+margin-right: 375px;
+border-color: black;
+ }
+
+input[type='radio']:checked + .circle {
+        opacity: 1;
+        
+}
+input[type='radio']::content+ .circle {
+    background-color: #d1d3d1;}
+            
+.req-cck {
+    margin-left: -10px;
+}

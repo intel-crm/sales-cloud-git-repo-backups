@@ -37,6 +37,13 @@
         <fullName>ContentSizeLong</fullName>
     </fields>
     <fields>
+        <fullName>Core_Is_Public__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Is Public</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>Description</fullName>
         <trackHistory>false</trackHistory>
     </fields>

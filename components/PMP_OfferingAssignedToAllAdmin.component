@@ -1,5 +1,5 @@
-<apex:component access="global"><!-- controller="PMP_OfferingEmailAlertsController">-->
-<!--    <html>
+<apex:component access="global" controller="PMP_OfferingEmailAlertsController">
+    <html>
         <style>
             /* Regular */
             @font-face{
@@ -34,7 +34,7 @@
             }
                 
             table {
-              font-family:  sans-serif; /*arial, sans-serif,Intel Clear;*/
+              font-family: Intel Clear; /*arial, sans-serif;*/
               border-collapse: collapse;
               border-left: 1px solid #dddddd;
               border-right: 1px solid #dddddd;
@@ -51,20 +51,20 @@
             }
             
             h1{
-              font-family: sans-serif !important;  
+              font-family: Intel Clear Pro !important;  
             }
         </style>
         <apex:attribute name="offeringRecordId" type="Id" description="Offering Record Id" assignTo="{!offeringId}"/>
-        <body>-->
+        <body>
             <!-- Header Banner -->
-<!--            <c:PMP_Global_Header message="A new showcase offering has been assigned to you!"/>-->
+            <c:PMP_Global_Header message="A NEW MARKETPLACE OFFERING HAS BEEN ASSIGNED TO YOU!"/>
             <!-- Header Banner -->
             
-<!--            <table width="75%">-->
+            <table width="75%">
                 <!-- Email Body -->
-<!--                <tr>
+                <tr>
                     <td style="padding-left:50px;">
-                        <br/>Hello Intel Showcase Admin <br/><br/>
+                        <br/>Hello Intel Marketplace Admin <br/><br/>
                         The offering {!offeringData.PMP_Partner_Offering_Nm__c} by Partners {!companyName} has been assigned to {!offeringData.PMP_Intel_Admin_Nm__c}.<br/><br/>
                         Thanks <br/> <br/>
                         
@@ -72,22 +72,22 @@
                         Category: {!offeringData.PMP_Category_nm__c} <br/>
                         Sub-category: {!offeringData.PMP_Sub_Category_nm__c}
                     </td>
-                  </tr>-->
+                  </tr>
                   <!-- Email Body -->
                   
                   <!-- CTA -->
-<!--                  <tr>
+                  <tr>
                     <td style="padding-left:50px;">      
-                        <p><apex:outputLink value="{!communityURL}{!publishedOfferingId}" styleClass="intelBlue">View offering preview</apex:outputLink></p>
+                        <p><apex:outputLink value="{!communityURL}{!offeringData.Id}" styleClass="intelBlue">View Offering Preview</apex:outputLink></p>
                         <br/>
                     </td>
                  </tr>        
             </table>
             
--->
+            
             <!-- Global Footer -->
-<!--            <c:PMP_Global_Footer />-->
+            <c:PMP_Global_Footer />
             <!-- Global Footer -->
-<!--        </body>
-    </html>-->
+        </body>
+    </html>
 </apex:component>

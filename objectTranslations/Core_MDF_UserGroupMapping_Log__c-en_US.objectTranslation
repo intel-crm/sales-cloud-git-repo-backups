@@ -25,34 +25,6 @@
             <translation><!-- Add --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Marketing User Update</masterLabel>
-            <translation><!-- Marketing User Update --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>PGM Activate</masterLabel>
-            <translation><!-- PGM Activate --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>PGM Inactivate</masterLabel>
-            <translation><!-- PGM Inactivate --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>PGM Initial Log</masterLabel>
-            <translation><!-- PGM Initial Log --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>PGM User Addition</masterLabel>
-            <translation><!-- PGM User Addition --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>PGM User Removal</masterLabel>
-            <translation><!-- PGM User Removal --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>PNUM Addition</masterLabel>
-            <translation><!-- PNUM Addition --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>PNUM Deletion</masterLabel>
             <translation><!-- PNUM Deletion --></translation>
         </picklistValues>
@@ -107,11 +79,6 @@
         <label><!-- User --></label>
         <name>Core_MDF_User_id__c</name>
         <relationshipLabel><!-- UserGroupMapping Logs --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Virtual Account --></label>
-        <name>Core_MDF_Virtual_Account_id__c</name>
-        <relationshipLabel><!-- UserGroupMapping Logs (Virtual Account) --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- Works For Account --></label>

@@ -16,7 +16,7 @@
             <name>Core_IPS_SupportOrgAndAccountKeyUpdate</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Update the SupportOrgAndAccountKey Field.</description>
         <formula>true</formula>
         <triggerType>onAllChanges</triggerType>

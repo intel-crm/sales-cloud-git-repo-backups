@@ -34,7 +34,7 @@ public without sharing class Pricing_UCD_IQR_FormRequest{
                 }  
             }
             //create log entry if flow is returning quote ids if label has value 1
-            if(Label.Pricing_UCD_Log_Entry_Switch == '1' && objectIdMsgMap.size() > 0 && objectIdDetailsMap.size() > 0) {
+            if(System.Label.Pricing_UCD_Log_Entry_Switch == '1' && objectIdMsgMap.size() > 0 && objectIdDetailsMap.size() > 0) {
                 createUCDLogEntry(objectIdMsgMap, objectIdDetailsMap,'');
             }
             createPayloadAsynch(recordIdList);
@@ -51,7 +51,7 @@ public without sharing class Pricing_UCD_IQR_FormRequest{
     @future
     public static void createPayloadAsynch(List<Id> recordIdList) {
 
-    List<Pricing_Integration_Staging__c> PISRecordsList = new List<Pricing_Integration_Staging__c>();
+		List<Pricing_Integration_Staging__c> PISRecordsList = new List<Pricing_Integration_Staging__c>();
 
         Map<String, String> mapEndCustomerNameAndCountry = new Map<String, String>();
         Datetime fiveMinBack = Datetime.now().addMinutes(-5);
@@ -61,13 +61,13 @@ public without sharing class Pricing_UCD_IQR_FormRequest{
             mapEndCustomerNameAndCountry.put(quoteLines.SBQQ__Quote__r.Pricing_End_Customer_Name__c,quoteLines.SBQQ__Quote__r.Pricing_End_Customer_Country_Nm__c );
         }
  
-    for(Pricing_Integration_Staging__c pis : [SELECT Id, Pricing_Payload__c FROM  Pricing_Integration_Staging__c WHERE Pricing_QuoteID__c IN :recordIdList AND CreatedDate >= :fiveMinBack]){
+		for(Pricing_Integration_Staging__c pis : [SELECT Id, Pricing_Payload__c FROM  Pricing_Integration_Staging__c WHERE Pricing_QuoteID__c IN :recordIdList AND CreatedDate >= :fiveMinBack]){
             for(String endCustomerName : mapEndCustomerNameAndCountry.keySet()){
                 if(pis.Pricing_Payload__c.contains(endCustomerName) && pis.Pricing_Payload__c.contains(mapEndCustomerNameAndCountry.get(endCustomerName))){
                     PISRecordsList.add(pis);
                 }
             }
-    }
+		}
 
         if(PISRecordsList.isEmpty()) {
             createPayloads(recordIdList);
@@ -83,12 +83,12 @@ public without sharing class Pricing_UCD_IQR_FormRequest{
             Map<Id, String> objIdMsgMap = new Map<Id, String>(); //objId==>core log entry msg
             Map<Id, String> objIdDetailsMap = new Map<Id, String>(); //objId==>core log entry details(Request payload)
             List<SBQQ__Quote__C> quoteList = [SELECT Id,Name,Pricing_End_Customer__r.Name,Pricing_End_Customer__r.Pricing_Unified_EndCustomer_Id__c,Pricing_End_Customer_Country_Nm__c,Pricing_End_Customer_Name__c,Pricing_Intel_Account_Exec_Email_Txt__c,Pricing_Account_Executive_Nm__c,Pricing_Intel_Sales_Rep_Email_Txt__c,SBQQ__SalesRep__c,Pricing_Account_Executive_Nm__r.Name, SBQQ__SalesRep__r.Name,Pricing_End_Customer_URL__c FROM SBQQ__Quote__C WHERE Id IN: recordIdList]; //CH
-            Map<String, UCD_BizOrgRequestModel.AccountDetail> endCustCountryRequestPayloadMap = new Map<String, UCD_BizOrgRequestModel.AccountDetail>();//'customer Name : Country'==>Request Payload
+			Map<String, UCD_BizOrgRequestModel.AccountDetail> endCustCountryRequestPayloadMap = new Map<String, UCD_BizOrgRequestModel.AccountDetail>();//'customer Name : Country'==>Request Payload
             Map<String, List<UCD_BizOrgRequestModel.BusinessOrganizationResponse>> customerCountryResponsePayloadsMap = new  Map<String, List<UCD_BizOrgRequestModel.BusinessOrganizationResponse>>();//'customer Name : Country' ==> response payloads
             List<UCD_BizOrgRequestModel.BusinessOrganizationResponse> errorResponseList = new List<UCD_BizOrgRequestModel.BusinessOrganizationResponse>();//to create log entry in bulk scenario
             List<Pricing_Quote_Team__c> quoteTeamList = [SELECT Id, Pricing_Quote_Team_Member_Id__c, Pricing_Quote_Id__c,Pricing_Role_Nm__c,Pricing_Quote_Team_Member_Id__r.Email,Pricing_Quote_Team_Member_Id__r.Name FROM Pricing_Quote_Team__c WHERE Pricing_Quote_Id__c IN: recordIdList AND Pricing_Quote_Team_Member_Id__r.IsActive = true AND Pricing_Grant_Access_Ind__c = true];
             String pricingMgrEmail;//to store RPM Email
-      String pricingMgrName;//to store RPM Name
+			String pricingMgrName;//to store RPM Name
             Id currentLoggedInUserId = UserInfo.getUserId();
             User userDetail = [Select Id, Name, Email from User where Id =: currentLoggedInUserId];
 
@@ -101,7 +101,7 @@ public without sharing class Pricing_UCD_IQR_FormRequest{
                 pricingMgrName = userDetail.Name;
             }
 
-      if(recordIdList.size() > 0) {
+			if(recordIdList.size() > 0) {
                 for(SBQQ__Quote__C quoteRecord: quoteList) {
                     UCD_BizOrgRequestModel.AccountDetail requestModel = new UCD_BizOrgRequestModel.AccountDetail();
                     UCD_BizOrgRequestModel.AccountAddresses addressDetails = new UCD_BizOrgRequestModel.AccountAddresses();
@@ -113,21 +113,21 @@ public without sharing class Pricing_UCD_IQR_FormRequest{
                     //UCD Request Details
                     requestModel.Name = quoteRecord.Pricing_End_Customer_Name__c;
                     requestModel.CustomerUrl = quoteRecord.Pricing_End_Customer_URL__c;
-                    requestModel.CustomerProcessEngagmentCode = Label.Pricing_UCD_Customer_Process_Engagement;//'DIR_PRC_EXCPT';
-                    requestModel.CustomerAggregationTypeCode = Label.Pricing_UCD_Customer_Aggregation_Type;//'UNFD_CTRY_CUST';
+                    requestModel.CustomerProcessEngagmentCode = System.Label.Pricing_UCD_Customer_Process_Engagement;//'DIR_PRC_EXCPT';
+                    requestModel.CustomerAggregationTypeCode = System.Label.Pricing_UCD_Customer_Aggregation_Type;//'UNFD_CTRY_CUST';
                     
                     //CH.Start
                     // Check primary AE
-                    if(isActiveAndHasPS(quoteRecord.Pricing_Account_Executive_Nm__c, Label.Pricing_Tender_PermissionSets_TenderAccountExecutive)){ // persmission Set check 
+                    if(isActiveAndHasPS(quoteRecord.Pricing_Account_Executive_Nm__c, System.Label.Pricing_Tender_PermissionSets_TenderAccountExecutive)){ // persmission Set check 
                         requestModel.RequesterEmail = quoteRecord.Pricing_Intel_Account_Exec_Email_Txt__c;//stores QL's AE Email
                         requestModel.RequesterName = quoteRecord.Pricing_Account_Executive_Nm__r.Name;//stores QL's AE Name 
-                    }else if((userData = getUserNameEmail(quoteTeamList, Label.Pricing_Quote_Team_Role_Account_Executive, quoteRecord.Id, Label.Pricing_Tender_PermissionSets_TenderAccountExecutive)).email != null ){ // Check Quote Team AE
+                    }else if((userData = getUserNameEmail(quoteTeamList, System.Label.Pricing_Quote_Team_Role_Account_Executive, quoteRecord.Id, System.Label.Pricing_Tender_PermissionSets_TenderAccountExecutive)).email != null ){ // Check Quote Team AE
                         requestModel.RequesterEmail = userData.email;//stores QL's Shared AE Email
                         requestModel.RequesterName = userData.name;//stores QL's Shared AE Name
-                    }else if(isActiveAndHasPS(quoteRecord.SBQQ__SalesRep__c,Label.Pricing_Tender_PermissionSets_TenderUser )){ //Check primary Sales rep
+                    }else if(isActiveAndHasPS(quoteRecord.SBQQ__SalesRep__c,System.Label.Pricing_Tender_PermissionSets_TenderUser )){ //Check primary Sales rep
                         requestModel.RequesterEmail = quoteRecord.Pricing_Intel_Sales_Rep_Email_Txt__c;//stores QL's Sales Rep Email
                         requestModel.RequesterName = quoteRecord.SBQQ__SalesRep__r.Name;//stores QL's Sales Rep Name 
-                    } else if((userData = getUserNameEmail(quoteTeamList, Label.Pricing_Quote_Team_Role_FSE, quoteRecord.Id, Label.Pricing_Tender_PermissionSets_TenderUser)).email != null ){ // Check Quote Team AE
+                    } else if((userData = getUserNameEmail(quoteTeamList, System.Label.Pricing_Quote_Team_Role_FSE, quoteRecord.Id, System.Label.Pricing_Tender_PermissionSets_TenderUser)).email != null ){ // Check Quote Team AE
                         requestModel.RequesterEmail = userData.email;//stores QL's Shared AE Email
                         requestModel.RequesterName = userData.name;//stores QL's Shared AE Name
                     } else{ // If AE and Sales Rep Not Available 
@@ -136,7 +136,7 @@ public without sharing class Pricing_UCD_IQR_FormRequest{
                     }
                     //CH.End
                     //check if the End Customer is not Write In End Customer
-                    if(quoteRecord.Pricing_End_Customer__r.Name != Label.Pricing_IQR_API_WriteInEndCustomer){
+                    if(quoteRecord.Pricing_End_Customer__r.Name != System.Label.Pricing_IQR_API_WriteInEndCustomer){
                          requestModel.ParentBusinessPartyIdentifierReference = quoteRecord.Pricing_End_Customer__r.Pricing_Unified_EndCustomer_Id__c;
                     }
                     //UCD Address details
@@ -179,7 +179,7 @@ public without sharing class Pricing_UCD_IQR_FormRequest{
                 }
                 
                  //create log entry with request payload is label has value 1
-                if(Label.Pricing_UCD_Log_Entry_Switch == '1' && objIdMsgMap.size() > 0 && objIdDetailsMap.size() > 0) {
+                if(System.Label.Pricing_UCD_Log_Entry_Switch == '1' && objIdMsgMap.size() > 0 && objIdDetailsMap.size() > 0) {
                     createUCDLogEntry(objIdMsgMap, objIdDetailsMap,'');
                 } 
                 
@@ -196,7 +196,7 @@ public without sharing class Pricing_UCD_IQR_FormRequest{
                 if(quoteList.Size() > 1) {
                     //form the map of ('customer name : country name' ==> List of Responses)
                     for(UCD_BizOrgRequestModel.BusinessOrganizationResponse response : responseModelList) {
-                        if(response.Status == Label.Pricing_UCD_Error_Status && response.Errormessage != Label.Pricing_UCD_Duplicate_Error_Msg) {
+                        if(response.Status == System.Label.Pricing_UCD_Error_Status && response.Errormessage != System.Label.Pricing_UCD_Duplicate_Error_Msg) {
                             if(!errorResponseList.contains(response)) {
                                 errorResponseList.add(response);
                             }
@@ -251,9 +251,10 @@ public without sharing class Pricing_UCD_IQR_FormRequest{
     //method to create record in staging object 
     public static void createPISRecord(Map<Id, List<UCD_BizOrgRequestModel.BusinessOrganizationResponse>> recordIdResponseMap) {
         List<Pricing_Integration_Staging__c> stagingList = new List<Pricing_Integration_Staging__c>();
+        //List<String> accountIdList =  new List<String>();
         List<Pricing_Integration_Staging__c> existingStagingRecordList = [SELECT Id, Pricing_SObjectId__c,Pricing_QuoteID__c, Pricing_UCD_Response_Type__c 
                                                                          FROM  Pricing_Integration_Staging__c 
-                                                                         WHERE Pricing_Message_Type__c =:Label.Pricing_UCD_PIS_Message_Type 
+                                                                         WHERE Pricing_Message_Type__c =:System.Label.Pricing_UCD_PIS_Message_Type 
                                                                             AND Pricing_SObjectId__c IN : recordIdResponseMap.keySet()];
         List<Pricing_Integration_Staging__c> pisRecordsToUpdateList = new List<Pricing_Integration_Staging__c>();
         Map<Id, String> quoteIdMsgMap = new Map<Id, String>();//objId==>core log entry msg
@@ -269,30 +270,30 @@ public without sharing class Pricing_UCD_IQR_FormRequest{
             pis.Pricing_SObjectId__c = recordId;
             pis.Pricing_QuoteID__c = recordId;
             pis.Pricing_SObject__c = recordId.getSObjectType().getDescribe().getName();
-            pis.Pricing_Status__c = (response.Status == Label.Pricing_UCD_Error_Status && response.Errormessage != Label.Pricing_UCD_Duplicate_Error_Msg) ? 'Failed' : 'Successful';
-            //pis.Core_Origin__c = Label.Pricing_UCD_LogEntry_Origin; //
+            pis.Pricing_Status__c = (response.Status == System.Label.Pricing_UCD_Error_Status && response.Errormessage != System.Label.Pricing_UCD_Duplicate_Error_Msg) ? 'Failed' : 'Successful';
+            //pis.Core_Origin__c = System.Label.Pricing_UCD_LogEntry_Origin; //
 
             //check the duplicate account and stamp request Id and the Duplicate request field
-            if( String.isNotBlank(data.DuplicateAccountId) && (data.DuplicateAccountRecordType != Label.Pricing_UCD_Account_Duplicate_Requested_Record_Type)) {
+            if( String.isNotBlank(data.DuplicateAccountId) && (data.DuplicateAccountRecordType != System.Label.Pricing_UCD_Account_Duplicate_Requested_Record_Type)) {
                 pis.Pricing_RequestID__c = data.DuplicateAccountId;
-                pis.Pricing_UCD_Response_Type__c = Label.Pricing_UCD_Duplicate_Error_Msg;
+                pis.Pricing_UCD_Response_Type__c = System.Label.Pricing_UCD_Duplicate_Error_Msg;
                 duplicateResponseModelList.add(data.DuplicateAccountInfo);
                 //accountIdList.add(data.DuplicateAccountId);
-            } else if(String.isNotBlank(data.DuplicateAccountId) && (data.DuplicateAccountRecordType == Label.Pricing_UCD_Account_Duplicate_Requested_Record_Type)) {
+            } else if(String.isNotBlank(data.DuplicateAccountId) && (data.DuplicateAccountRecordType == System.Label.Pricing_UCD_Account_Duplicate_Requested_Record_Type)) {
                 pis.Pricing_RequestID__c = data.DuplicateAccountId;
-                pis.Pricing_UCD_Response_Type__c = Label.Pricing_UCD_Requested_Duplicate_Account;
+                pis.Pricing_UCD_Response_Type__c = System.Label.Pricing_UCD_Requested_Duplicate_Account;
             } else if(String.isNotBlank(data.AccountId)) {
                 pis.Pricing_RequestID__c = data.AccountId;
-                pis.Pricing_UCD_Response_Type__c = Label.Pricing_UCD_Requested_Account;
+                pis.Pricing_UCD_Response_Type__c = System.Label.Pricing_UCD_Requested_Account;
             } else {
               //  pis.Pricing_RequestID__c = '';
             }
 
-            pis.Pricing_Message_Type__c = Label.Pricing_UCD_PIS_Message_Type;
+            pis.Pricing_Message_Type__c = System.Label.Pricing_UCD_PIS_Message_Type;
             stagingList.add(pis);
 
             //add the record to map if response is failed
-            if(response.status == Label.Pricing_UCD_Error_Status && response.Errormessage != Label.Pricing_UCD_Duplicate_Error_Msg) {
+            if(response.status == System.Label.Pricing_UCD_Error_Status && response.Errormessage != System.Label.Pricing_UCD_Duplicate_Error_Msg) {
                 if(!quoteIdMsgMap.containsKey(recordId)) {
                     quoteIdMsgMap.put(recordId, 'Error ocurred in UCD response: ');
                 }
@@ -304,7 +305,7 @@ public without sharing class Pricing_UCD_IQR_FormRequest{
         }
 
         for(Pricing_Integration_Staging__c pisRec : existingStagingRecordList) {
-            pisRec.Pricing_UCD_Response_Type__c = Label.Pricing_UCD_Response_Type_Resubmitted;
+            pisRec.Pricing_UCD_Response_Type__c = System.Label.Pricing_UCD_Response_Type_Resubmitted;
             if(!pisRecordsToUpdateList.contains(pisRec)) {
                 pisRecordsToUpdateList.add(pisRec);
             }
@@ -338,7 +339,7 @@ public without sharing class Pricing_UCD_IQR_FormRequest{
             UCD_ACM_BusinessOrganizationModel accSurvivorRequestModel = new UCD_ACM_BusinessOrganizationModel();
             UCD_ACM_BusinessOrganizationModel.BusinessOrganizationData bizOrgAccModel = new UCD_ACM_BusinessOrganizationModel.BusinessOrganizationData();
             List<UCD_ACM_BusinessOrganizationModel.AttributesData> bizOrgAttributeList = new List<UCD_ACM_BusinessOrganizationModel.AttributesData>();
-            List < String > attributeList = new List < String > ((Label.Pricing_UCD_Account_Reuse_Attributes).split(':'));
+            List < String > attributeList = new List < String > ((System.Label.Pricing_UCD_Account_Reuse_Attributes).split(':'));
 
             for(String arrString : attributeList) {
                 UCD_ACM_BusinessOrganizationModel.AttributesData bizOrgAttribute = new UCD_ACM_BusinessOrganizationModel.AttributesData();
@@ -370,7 +371,7 @@ public without sharing class Pricing_UCD_IQR_FormRequest{
                 custProcessEngSet.add(custEng.Code);
             } 
             // if CustomerAggregationType = UNFD_CTRY_CUST and CustomerProcessEngagement has 'DIR_PRC_EXCPT' for the pulisher response and process it
-            if(data.AccountInformation.CustomerAggregationType.Code == Label.Pricing_UCD_Customer_Aggregation_Type && custProcessEngSet.contains(Label.Pricing_UCD_Customer_Process_Engagement)) {
+            if(data.AccountInformation.CustomerAggregationType.Code == System.Label.Pricing_UCD_Customer_Aggregation_Type && custProcessEngSet.contains(System.Label.Pricing_UCD_Customer_Process_Engagement)) {
                 Pricing_UCD_ResponseWrapper.ResponseData responseWrapper = new Pricing_UCD_ResponseWrapper.ResponseData();
                 List<Pricing_UCD_ResponseWrapper.CustomerProcessEngagement> processEngList =  new List<Pricing_UCD_ResponseWrapper.CustomerProcessEngagement>();
                 List<Pricing_UCD_ResponseWrapper.ComplianceWatchList> cwlList = new List<Pricing_UCD_ResponseWrapper.ComplianceWatchList>();
@@ -380,6 +381,7 @@ public without sharing class Pricing_UCD_IQR_FormRequest{
                 responseWrapper.AccountName = data.AccountInformation.AccountName;
                 responseWrapper.AccountId = data.AccountInformation.AccountId;
                 responseWrapper.MasteredSimplifiedAccountName = data.AccountMasteredDetails.SimplifiedAccountName;
+                responseWrapper.MasteredSimplifiedAccountLocalLanguageName = data.AccountMasteredDetails.SimplifiedLocalLanguageName;
                 //Address Details
                 for(UCD_ACM_BusinessOrganizationModel.AccountAddressInformation addressInfo : data.AccountAddressInformation) {
                     Pricing_UCD_ResponseWrapper.AccountAddress address = new Pricing_UCD_ResponseWrapper.AccountAddress();
@@ -388,11 +390,11 @@ public without sharing class Pricing_UCD_IQR_FormRequest{
                     address.CountryName = getCountryLabel(addressInfo.Countrycode);
                     //address.CountryName = addressInfo.CountryName;
                     //Secondary address details
-                    if(addressInfo.AddressType == Label.Pricing_UCD_Address_Type_Shipping) {
+                    if(addressInfo.AddressType == System.Label.Pricing_UCD_Address_Type_Shipping) {
                         responseWrapper.SecondaryAddress = address;
                     }
                     //Primary address details
-                    if(addressInfo.AddressType == Label.Pricing_UCD_Address_Type_Billing) {
+                    if(addressInfo.AddressType == System.Label.Pricing_UCD_Address_Type_Billing) {
                         responseWrapper.PrimaryAddress = address;
                     }
                 }
@@ -465,10 +467,10 @@ public without sharing class Pricing_UCD_IQR_FormRequest{
             logEntry.Core_sObjectId__c = quoteId;
             logEntry.Core_sObjectType__c = quoteId.getSObjectType().getDescribe().getName();
             logEntry.Core_Severity__c = (quoteIdMsgMap.get(quoteId).contains('UCD Request Flow executed for Quote Id:') || quoteIdMsgMap.get(quoteId).contains('UCD Request sent successfully:')) ? 'Low' :'Critical';
-            logEntry.Core_Project__c = Label.Pricing_IQR_Program_Name;
-            logEntry.Core_Origin__c = Label.Pricing_UCD_LogEntry_Origin;
-            logEntry.Core_Support_Email__c = Label.Pricing_IQR_Support_Email;
-            logEntry.Core_Message__c =String.isNotBlank(classMethodName) ? Label.Pricing_IQR_SFDC_Environment + ':' +quoteIdMsgMap.get(quoteId) + ' ' + 'Class.' +classMethodName+ ' sObject Id:' +quoteId : quoteIdMsgMap.get(quoteId);
+            logEntry.Core_Project__c = System.Label.Pricing_IQR_Program_Name;
+            logEntry.Core_Origin__c = System.Label.Pricing_UCD_LogEntry_Origin;
+            logEntry.Core_Support_Email__c = System.Label.Pricing_IQR_Support_Email;
+            logEntry.Core_Message__c =String.isNotBlank(classMethodName) ? System.Label.Pricing_IQR_SFDC_Environment + ':' +quoteIdMsgMap.get(quoteId) + ' ' + 'Class.' +classMethodName+ ' sObject Id:' +quoteId : quoteIdMsgMap.get(quoteId);
             logEntry.Core_Details__c = quoteIdMsgDetailsMap.get(quoteId);
             logEntry.Core_When__c = system.now();
             logEntryList.add(logEntry);
@@ -485,9 +487,9 @@ public without sharing class Pricing_UCD_IQR_FormRequest{
             Core_Log_Entry__c logEntry = new Core_Log_Entry__c();
 
             logEntry.Core_Severity__c = 'Critical';
-            logEntry.Core_Project__c = Label.Pricing_IQR_Program_Name;
-            logEntry.Core_Origin__c = Label.Pricing_UCD_LogEntry_Origin;
-            logEntry.Core_Message__c = Label.Pricing_IQR_SFDC_Environment + ': Error occured in UCD Response : Class.Pricing_UCD_IQR_FormRequest.createPayloads';
+            logEntry.Core_Project__c = System.Label.Pricing_IQR_Program_Name;
+            logEntry.Core_Origin__c = System.Label.Pricing_UCD_LogEntry_Origin;
+            logEntry.Core_Message__c = System.Label.Pricing_IQR_SFDC_Environment + ': Error occured in UCD Response : Class.Pricing_UCD_IQR_FormRequest.createPayloads';
             logEntry.Core_sObjectType__c = recordIdList[0].getSObjectType().getDescribe().getName();
             logEntry.Core_Details__c = JSON.serialize(ucdResponse) + '\nQuote Ids: ' + recordIdList;
             logEntry.Core_When__c = system.now();
@@ -540,9 +542,9 @@ public without sharing class Pricing_UCD_IQR_FormRequest{
             List<Id> quoteIds = new List<Id>();
             List<Pricing_Integration_Staging__c> pisList = [SELECT Id, Pricing_Message_Type__c, Pricing_QuoteID__c, Pricing_QuoteID__r.Pricing_IsUnifiedCustomer__c, Pricing_RequestID__r.RecordType.Name, 
                                                         Pricing_UCD_Response_Type__c FROM Pricing_Integration_Staging__c 
-                                                        WHERE Pricing_Message_Type__c =: Label.Pricing_UCD_PIS_Message_Type AND Pricing_QuoteID__c IN: quoteIdList ORDER BY CreatedDate desc];
+                                                        WHERE Pricing_Message_Type__c =: System.Label.Pricing_UCD_PIS_Message_Type AND Pricing_QuoteID__c IN: quoteIdList ORDER BY CreatedDate desc];
             if(pisList.size() > 0){
-                if(pisList[0].Pricing_RequestID__r.RecordType.Name == Label.Pricing_UCD_Record_Type_Rejected_Account){
+                if(pisList[0].Pricing_RequestID__r.RecordType.Name == System.Label.Pricing_UCD_Record_Type_Rejected_Account){
                     quoteIds.add(pisList[0].Pricing_QuoteID__c);
                 }
             }
@@ -559,6 +561,145 @@ public without sharing class Pricing_UCD_IQR_FormRequest{
         }
         return ucdPISRequestExists;
     }
+
+    /**
+    * @description Method to return End Customer Country and Unified Global/Intermediate Account Details of Type Intel. 
+    * @author Divya Gangasaram| 12-13-2023 
+    * @param recordId 
+    * @return List<unifiedL1AndL2Wrapper> 
+    **/
+    @AuraEnabled
+    public static List<unifiedL1AndL2Wrapper> getL1andL2AccDetails(Id recordId){
+        List<unifiedL1AndL2Wrapper> unifyEndCustAndCountryList = new List<unifiedL1AndL2Wrapper>();
+        try{
+            Set<String> unifyL1L2Ids = new Set<String>();
+            Set<String> unifyL1Id = new Set<String>();
+
+            for(Pricing_UnifiedEndCustomerAccountMapping__c l1Record : [Select Pricing_Unified_EndCustomer_Id__c from Pricing_UnifiedEndCustomerAccountMapping__c where id =: recordId]){
+                if(l1Record != null){
+                unifyL1Id.add(l1Record.Pricing_Unified_EndCustomer_Id__c);
+                }
+            }
+                for(Pricing_UnifiedEndCustomerCountryMapping__c L2record : [Select Pricing_Unified_Country_EndCustomer_Id__c,Pricing_Unified_EndCustomer_Id__c from Pricing_UnifiedEndCustomerCountryMapping__c where id =: recordId]){
+                    unifyL1L2Ids.add(L2record.Pricing_Unified_Country_EndCustomer_Id__c);
+                    unifyL1L2Ids.add(L2record.Pricing_Unified_EndCustomer_Id__c);
+                }
+
+                if(unifyL1L2Ids.size() > 0 || unifyL1Id.size() > 0){
+                    List<Account> accRecord = [select id,Name,OwnerId,Owner.Name,Unified_Hierarchy_View__c,Core_Customer_Aggregation_Type__c,Core_Business_Party_Id__c from  Account where Core_Business_Party_Id__c IN :unifyL1L2Ids.size()>0 ? unifyL1L2Ids : unifyL1Id and RecordType.Name = 'Intel Account'];     
+                    for(Integer i=0; i<accRecord.size(); i++){
+                        unifiedL1AndL2Wrapper wrapper = new unifiedL1AndL2Wrapper();
+                        wrapper.accId = accRecord[i].id;
+                        wrapper.accName = accRecord[i].Name;
+                        wrapper.accOwner = accRecord[i].Owner.Name;
+                        wrapper.unifiedHierarchy = accRecord[i].Unified_Hierarchy_View__c;
+                        wrapper.accAggregateType = accRecord[i].Core_Customer_Aggregation_Type__c;
+                        wrapper.accOwnerUrl = URL.getSalesforceBaseURL().toExternalForm()+'/'+accRecord[i].OwnerId;
+                        wrapper.accNameUrl = URL.getSalesforceBaseURL().toExternalForm()+'/'+accRecord[i].id;
+    
+                        unifyEndCustAndCountryList.add(wrapper);
+                    }
+                }
+                    
+        }
+            catch (Exception e) {
+                Pricing_Tender_Utility.logError(e);
+            }
+            return unifyEndCustAndCountryList;
+    }
+
+    public class unifiedL1AndL2Wrapper{
+        @AuraEnabled public String accId {set;get;}
+        @AuraEnabled public String accName {set;get;}
+        @AuraEnabled public String accOwner {set;get;}
+        @AuraEnabled public String unifiedHierarchy {set;get;}
+        @AuraEnabled public String accAggregateType{set;get;}  
+        @AuraEnabled public String accOwnerUrl{set;get;}
+        @AuraEnabled public String accNameUrl{set;get;}     
+    }
+
+    /**
+    * @description 
+    * @author Divya Gangasaram | 12-13-2023 
+    * @return List<DataTableColumns> 
+    **/
+    @AuraEnabled(cacheable=true)
+    public static List<DataTableColumns> getDataTableColumns(){
+        List<DataTableColumns> lstDataColumns = new List<DataTableColumns>();
+        List<string> columnList = new List<string>();
+        List<string> fieldAPINameList = new List<string>();
+        Pricing_Dynamic_Data_Table__mdt dynamicDataTableMetadata = [SELECT Id, Label, Pricing_Field_Label__c, Pricing_Field_Value__c 
+                                                                    FROM Pricing_Dynamic_Data_Table__mdt WHERE Label = 'Unified L1 and L2 Account Details'];
+        if(dynamicDataTableMetadata != null) {
+            if(dynamicDataTableMetadata.Pricing_Field_Label__c != null) {
+                columnList = dynamicDataTableMetadata.Pricing_Field_Label__c.split(',');
+            }
+            if(dynamicDataTableMetadata.Pricing_Field_Value__c != null) {
+                fieldAPINameList = dynamicDataTableMetadata.Pricing_Field_Value__c.split(',');
+            }
+            if(columnList.size() > 0) {
+                for(integer i = 0; i < columnList.size(); i++) {
+                    DataTableColumns datacolumn = new DataTableColumns(columnList[i].trim(), 
+                                                                       fieldAPINameList[i].substringBefore(':').trim(), 
+                                                                       fieldAPINameList[i].substringAfter(':').trim());
+
+                    TypeAttributes tyb = new TypeAttributes('_blank');
+                    Label lbl = new Label(fieldAPINameList[i].substringBefore(':').trim());
+                    tyb.label = lbl;
+                    datacolumn.typeAttributes = tyb;
+                    lstDataColumns.add(datacolumn);
+                }
+                return lstDataColumns;
+            }
+            else {
+                return null;
+            } 
+        } 
+        else {
+            return null;
+        }
+    }
+
+    //Wrapper class to return Dynamic DataTable columns based on Quote Type
+    public class DataTableColumns {
+        @AuraEnabled
+        public String label {get;set;}
+        @AuraEnabled       
+        public String fieldName {get;set;}
+        @AuraEnabled
+        public String type {get;set;}
+        @AuraEnabled
+        public TypeAttributes typeAttributes {get;set;}
+       // @AuraEnabled
+        //public Boolean sortable {get;set;}
+
+        public DataTableColumns(String label, String fieldName, String type)
+        {
+            this.label     = label;
+            this.fieldName = (fieldName == 'accOwner' || fieldName == 'accName')?fieldName+'Url':fieldName;
+            this.type      = type;  
+            //this.sortable = sortable;        
+        }
+    }
+
+    public class TypeAttributes{
+        @AuraEnabled
+        public Label label {get;set;}
+        @AuraEnabled
+        public String target {get;set;}
+        public TypeAttributes(String target){
+            this.target = target;
+        }
+    }
+    
+    public class Label{
+        @AuraEnabled
+        public String fieldName {get;set;}
+        public Label(String fieldName){
+            this.fieldName = fieldName;
+        }
+    }
+
 
     public static userNameEmailWrapper getUserNameEmail(List<Pricing_Quote_Team__c> quoteTeamList, String role, Id quoteId, String permissionSet){
         userNameEmailWrapper u = new userNameEmailWrapper(); 

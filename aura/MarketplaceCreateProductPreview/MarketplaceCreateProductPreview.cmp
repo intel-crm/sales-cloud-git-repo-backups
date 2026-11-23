@@ -1,7 +1,4 @@
-<aura:component ></aura:component>
-    <!-- IPA2.0 + US TWC4497-1631 -->
-
-<!-- extends="c:MarketplaceRedux" implements="forceCommunity:availableForAllPageTypes">
+<aura:component extends="c:MarketplaceRedux" implements="forceCommunity:availableForAllPageTypes">
     <aura:set attribute="storeName" value="Settings" />
     <aura:attribute name="data" type="Object" description="Offering Data"/>
     <aura:attribute name="breadcrumbData" type="object[]" description="Breadcrumb Data"/>
@@ -13,15 +10,38 @@
     
     <aura:attribute name="offeringId" type="Id" />
     
-    <aura:handler name="init" value="{!this}" action="{!c.doInit}" /> -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
 
-    <!-- <div aura:id="offferingDetail" style="min-width=200px">
+    <div aura:id="offferingDetail">
         <aura:if isTrue="{! !empty(v.appState.Settings.currentScreenSize)}">
             <aura:if isTrue="{!v.appState.Settings.currentScreenSize == 'desktop'}">
                 <div aura:id="outerContainer" class="outerContainer" onclick="{!c.handleClick}">
                     <div aura:id="innerContent" class="scaledInnerContainer" >
+                        <div class="marquee">
+                            
+                            <!--								<c:MarketplaceL3Marquee
+          previewMode="true"
+          displayType="product"
+          product="{!v.data.productDetails}"
+          partner="{!v.data.partnerDetails}"
+          showSignIn="false"
+          lastUpdatedDate="12/12/18"
+          breadcrumbData="{!v.breadcrumbData}"
+         />-->
+                            
+                            
+                            <c:MarketplaceL3Marquee
+                                                    previewMode="true"
+                                                    displayType="product"
+                                                    showSignIn="false"
+                                                    recordId="{!v.offeringId}"
+                                                    analyticsPageType="OfferingDetailPage"
+                                                    />
+                            
+                            
+                        </div>
                         <div class="slds-p-horizontal_xx-large">
-                            <c:ipaOfferingDetail previewMode="true" recordId="{!v.offeringId}"/>
+                            <c:MarketplaceProductDetail previewMode="true" offeringId="{!v.offeringId}"/>
                         </div>
                     </div>
                 </div>
@@ -37,7 +57,24 @@
                             </a>
                         </div>
                         <div class="body create-offering-body">
-                            <c:ipaOfferingDetail previewMode="true" recordId="{!v.offeringId}"/>
+                            <div class="marquee">
+                                <!--<c:MarketplaceL3Marquee
+           previewMode="true"
+           displayType="product"
+           product="{!v.data.productDetails}"
+           partner="{!v.data.partnerDetails}"
+           showSignIn="true"
+           lastUpdatedDate="12/12/18"
+           breadcrumbData="{!v.breadcrumbData}"
+          />-->
+                                <c:MarketplaceL3Marquee
+                                                        previewMode="true"
+                                                        displayType="product"
+                                                        showSignIn="false"
+                                                        recordId="{!v.offeringId}"	
+                                                        />
+                            </div>
+                            <c:MarketplaceProductDetail previewMode="true"  offeringId="{!v.offeringId}"/>
                         </div>
                     </div>
                 </aura:set>
@@ -47,6 +84,6 @@
         
         
         
-    </div> -->
+    </div>
     
-<!-- </aura:component> -->
+</aura:component>

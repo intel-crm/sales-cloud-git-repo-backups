@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>57.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <description>Check if Current Status is SAL</description>
+        <name>Check_if_Current_Status_is_SAL</name>
+        <label>Check if Current Status is SAL</label>
+        <locationX>182</locationX>
+        <locationY>1103</locationY>
+        <defaultConnector>
+            <targetReference>Update_TAL_Coverage</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Update_TQL</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Sales Accepted Lead</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_TQL_Coverage</targetReference>
+            </connector>
+            <label>Update TQL</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>If prior value is Marketing Qualified Lead</description>
+        <name>Is_Prior_value_MQL</name>
+        <label>Is Prior value MQL</label>
+        <locationX>380</locationX>
+        <locationY>1535</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Check_for_Current_Status</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record__Prior.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Marketing Qualified Lead</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_MQL_Coverage</targetReference>
+            </connector>
+            <label>Check for Current Status</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Is_Prior_value_SAL</name>
+        <label>Is Prior value SAL</label>
+        <locationX>380</locationX>
+        <locationY>647</locationY>
+        <defaultConnector>
+            <targetReference>Is_Prior_Value_TAL</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Update_SAL_Coverage</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record__Prior.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Sales Accepted Lead</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_SAL</targetReference>
+            </connector>
+            <label>Update SAL Coverage</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Is Prior Value TAL</description>
+        <name>Is_Prior_Value_TAL</name>
+        <label>Is Prior Value TAL</label>
+        <locationX>380</locationX>
+        <locationY>983</locationY>
+        <defaultConnector>
+            <targetReference>Is_Prior_value_MQL</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Check_Current_Status</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record__Prior.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Tele Accepted Lead</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_if_Current_Status_is_SAL</targetReference>
+            </connector>
+            <label>Check Current Status</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Is_Prior_value_TQL</name>
+        <label>Is Prior value TQL</label>
+        <locationX>380</locationX>
+        <locationY>311</locationY>
+        <defaultConnector>
+            <targetReference>Is_Prior_value_SAL</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Update_TQL_Coverage2</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record__Prior.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Tele Qualified Lead</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_TQL_Coverage3</targetReference>
+            </connector>
+            <label>Update TQL Coverage2</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Is Status SAL and Record Type Lead</description>
+        <name>Is_Status</name>
+        <label>Is Status SAL and Record Type Lead</label>
+        <locationX>182</locationX>
+        <locationY>1775</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>UpdateTALTQL</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Sales Accepted Lead</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.RecordType.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Lead</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>UpdateTAL_TQL</targetReference>
+            </connector>
+            <label>Update TAL &amp; TQL</label>
+        </rules>
+    </decisions>
+    <description>Core_Stamp_Coverage_For_Stage_SAL_MQL_TAL_TQL</description>
+    <environments>Default</environments>
+    <formulas>
+        <description>Core_Coverage_MAQL_FastTrack1</description>
+        <name>Core_Coverage_MAQL_FastTrack1</name>
+        <dataType>String</dataType>
+        <expression>IF(AND (ISPICKVAL({!$Record__Prior.Status},&quot;Marketing Qualified Lead&quot;), ISPICKVAL({!$Record.Status}, &quot;Sales Accepted Lead&quot;), {!$Record.RecordType.Name} = &quot;Lead&quot; ), 
+ (IF(ISBLANK (TEXT({!$Record.Owner:User.Core_User_Coverage__c})),&apos;Other&apos;,TEXT({!$Record.Owner:User.Core_User_Coverage__c}))),{!$Record.Core_Locked_TAL_Coverage__c})</expression>
+    </formulas>
+    <formulas>
+        <description>Core_Coverage_MAQL_FastTrack2</description>
+        <name>Core_Coverage_MAQL_FastTrack2</name>
+        <dataType>String</dataType>
+        <expression>IF(AND (ISPICKVAL({!$Record__Prior.Status},&quot;Marketing Qualified Lead&quot;), ISPICKVAL({!$Record.Status}, &quot;Sales Accepted Lead&quot;), {!$Record.RecordType.Name} = &quot;Lead&quot; ), 
+ (IF(ISBLANK (TEXT({!$Record.Owner:User.Core_User_Coverage__c})),&apos;Other&apos;,TEXT({!$Record.Owner:User.Core_User_Coverage__c}))),{!$Record.Core_Locked_TQL_Coverage__c})</expression>
+    </formulas>
+    <formulas>
+        <description>Core_Coverage_TAL_SAL_FastTrack</description>
+        <name>Core_Coverage_TAL_SAL_FastTrack</name>
+        <dataType>String</dataType>
+        <expression>IF(AND (ISPICKVAL({!$Record__Prior.Status},&quot;Tele Accepted Lead&quot;), ISPICKVAL({!$Record.Status}, &quot;Sales Accepted Lead&quot;)), 
+ (IF(ISBLANK (TEXT({!$Record.Owner:User.Core_User_Coverage__c})),&apos;Other&apos;,TEXT({!$Record.Owner:User.Core_User_Coverage__c}))),{!$Record.Core_Locked_TQL_Coverage__c})</expression>
+    </formulas>
+    <formulas>
+        <description>Update MQL Lead Coverage</description>
+        <name>UpdateMQLLeadCoverage</name>
+        <dataType>String</dataType>
+        <expression>IF(ISPICKVAL({!$Record__Prior.Status},&quot;Marketing Qualified Lead&quot;), (IF(ISBLANK (TEXT({!$Record.Owner:User.Core_User_Coverage__c})),&apos;Other&apos;,TEXT({!$Record.Owner:User.Core_User_Coverage__c}))),{!$Record.Core_Locked_MQL_Coverage__c})</expression>
+    </formulas>
+    <formulas>
+        <description>Update SAL</description>
+        <name>UpdateSAL</name>
+        <dataType>String</dataType>
+        <expression>IF(ISPICKVAL({!$Record__Prior.Status},&quot;Sales Accepted Lead&quot;), (IF(ISBLANK (TEXT({!$Record.Owner:User.Core_User_Coverage__c})),&apos;Other&apos;,TEXT({!$Record.Owner:User.Core_User_Coverage__c}))),{!$Record.Core_Locked_SAL_Coverage__c})</expression>
+    </formulas>
+    <formulas>
+        <description>Update TAL Lead Coverage</description>
+        <name>UpdateTALLeadCoverage</name>
+        <dataType>String</dataType>
+        <expression>IF(AND(ISPICKVAL({!$Record__Prior.Status}, &quot;Tele Accepted Lead&quot;), ISCHANGED({!$Record.Status})), (IF(ISBLANK(TEXT({!$Record.Owner:User.Core_User_Coverage__c})),&apos;Other&apos;,TEXT({!$Record.Owner:User.Core_User_Coverage__c}))),{!$Record.Core_Locked_TAL_Coverage__c})</expression>
+    </formulas>
+    <formulas>
+        <description>Update TQL Lead Coverage</description>
+        <name>UpdateTQLLeadCoverage</name>
+        <dataType>String</dataType>
+        <expression>IF(ISPICKVAL({!$Record__Prior.Status},&quot;Tele Qualified Lead&quot;), (IF(ISBLANK (TEXT({!$Record.Owner:User.Core_User_Coverage__c})),&apos;Other&apos;,TEXT({!$Record.Owner:User.Core_User_Coverage__c}))),{!$Record.Core_Locked_TQL_Coverage__c})</expression>
+    </formulas>
+    <formulas>
+        <description>Update Unqualified Lead Coverage</description>
+        <name>UpdateUnqualifiedLeadCoverage</name>
+        <dataType>String</dataType>
+        <expression>IF(ISPICKVAL({!$Record__Prior.Status},&quot;Unqualified&quot;), (IF(ISBLANK (TEXT({!$Record.Owner:User.Core_User_Coverage__c})),&apos;Other&apos;,TEXT({!$Record.Owner:User.Core_User_Coverage__c}))),{!$Record.Core_Locked_Unqualified_Coverage__c})</expression>
+    </formulas>
+    <formulas>
+        <name>UserCoverage</name>
+        <dataType>String</dataType>
+        <expression>IF(ISBLANK (TEXT({!$Record.Owner:User.Core_User_Coverage__c})),&apos;Other&apos;,TEXT({!$Record.Owner:User.Core_User_Coverage__c}))</expression>
+    </formulas>
+    <interviewLabel>Core_Stamp_Coverage_For_Stage_SAL_MQL_TAL_TQL {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Core_Stamp_Coverage_For_Stage_SAL_MQL_TAL_TQL</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <description>Update MQL Coverage</description>
+        <name>Update_MQL_Coverage</name>
+        <label>Update MQL Coverage</label>
+        <locationX>182</locationX>
+        <locationY>1655</locationY>
+        <connector>
+            <targetReference>Is_Status</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_Locked_MQL_Coverage__c</field>
+            <value>
+                <elementReference>UserCoverage</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Update SAL Coverage</description>
+        <name>Update_SAL</name>
+        <label>Update SAL</label>
+        <locationX>248</locationX>
+        <locationY>767</locationY>
+        <connector>
+            <targetReference>Is_Prior_Value_TAL</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_Locked_SAL_Coverage__c</field>
+            <value>
+                <elementReference>UserCoverage</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Update TAL Coverage</description>
+        <name>Update_TAL_Coverage</name>
+        <label>Update TAL Coverage</label>
+        <locationX>314</locationX>
+        <locationY>1223</locationY>
+        <connector>
+            <targetReference>Is_Prior_value_MQL</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_Locked_TAL_Coverage__c</field>
+            <value>
+                <elementReference>UserCoverage</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Update TQL Coverage</description>
+        <name>Update_TQL_Coverage</name>
+        <label>Update TQL Coverage</label>
+        <locationX>50</locationX>
+        <locationY>1223</locationY>
+        <connector>
+            <targetReference>Is_Prior_value_MQL</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_Locked_TQL_Coverage__c</field>
+            <value>
+                <elementReference>UserCoverage</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Update TQL Coverage3</description>
+        <name>Update_TQL_Coverage3</name>
+        <label>Update TQL Coverage3</label>
+        <locationX>248</locationX>
+        <locationY>431</locationY>
+        <connector>
+            <targetReference>Is_Prior_value_SAL</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_Locked_TQL_Coverage__c</field>
+            <value>
+                <elementReference>UserCoverage</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>UpdateTAL&amp;TQL</description>
+        <name>UpdateTAL_TQL</name>
+        <label>UpdateTAL&amp;TQL</label>
+        <locationX>50</locationX>
+        <locationY>1895</locationY>
+        <inputAssignments>
+            <field>Core_Locked_TAL_Coverage__c</field>
+            <value>
+                <elementReference>UserCoverage</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Locked_TQL_Coverage__c</field>
+            <value>
+                <elementReference>UserCoverage</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>254</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Is_Prior_value_TQL</targetReference>
+        </connector>
+        <filterFormula> AND( OR( ISNEW(), ISCHANGED({!$Record.Status}) ), LEFT({!$Record.OwnerId}, 3) = &apos;005&apos;, OR(ISPICKVAL({!$Record__Prior.Status},&quot;Unqualified&quot;), ISPICKVAL({!$Record__Prior.Status},&quot;Sales Accepted Lead&quot;), ISPICKVAL({!$Record__Prior.Status},&quot;Marketing Qualified Lead&quot;), ISPICKVAL({!$Record__Prior.Status},&quot;Tele Qualified Lead&quot;),ISPICKVAL({!$Record__Prior.Status},&quot;Tele Accepted Lead&quot; )))</filterFormula>
+        <object>Lead</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+</Flow>

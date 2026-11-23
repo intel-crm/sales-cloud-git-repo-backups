@@ -15,22 +15,6 @@
             }
         });
         $A.enqueueAction(action);
-         
-        var recordTypeDevNamePropInd = component.get("c.getActRecordTypeDevNamePropInd");
-        recordTypeDevNamePropInd.setParams({
-            "recordId" : component.get("v.recordId")
-        });
-        recordTypeDevNamePropInd.setCallback(this, function(response) {
-            var state = response.getState();
-            if (state == "SUCCESS") {
-                var result = response.getReturnValue();
-                component.set("v.recordtypeDeveloperName", result.RecordType.DeveloperName);
-                component.set("v.recordtypeName", result.RecordType.Name);
-                component.set("v.propBasedIndicator", result.Core_MDF_Proposal_Based_Ind__c); 
-                component.set("v.isOutcomeBased", result.Core_MDF_Is_Outcome_Based_Ind__c); 
-            }
-        });
-        $A.enqueueAction(recordTypeDevNamePropInd);
     },
     
     // Function Called on Cancel or "X"

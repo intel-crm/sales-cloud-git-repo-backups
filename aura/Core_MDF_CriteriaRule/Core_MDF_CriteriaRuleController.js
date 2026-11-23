@@ -11,13 +11,13 @@
         operatorList.push({class: "optionClass",label: "Greater Than",value: "Greater Than"});
         operatorList.push({class: "optionClass",label: "Less Than or Equal",value: "Less Than or Equal"});
         operatorList.push({class: "optionClass",label: "Greater Than or Equal",value: "Greater Than or Equal"});
-        operatorList.push({class: "optionClass",label: "Any",value: "Any"});
         
         component.set("v.operatorOptions", operatorList);
         
         
         //Setting Approval Criteria record on load
         var apprRecId = component.get("v.recordId");
+        
         var action = component.get("c.getCriteriaRule");
         action.setParams({ recId : apprRecId });                
         action.setCallback(this, function(res) {

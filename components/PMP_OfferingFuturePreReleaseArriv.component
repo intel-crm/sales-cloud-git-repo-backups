@@ -1,5 +1,5 @@
-<apex:component access="global"><!--controller="PMP_OfferingEmailAlertsController"> -->
-<!--    <html>
+<apex:component access="global" controller="PMP_OfferingEmailAlertsController"> 
+    <html>
         <style>
             /* Regular */
             @font-face{
@@ -34,7 +34,7 @@
             }
             
             table {
-            font-family: sans-serif; /*arial, sans-serif,Intel Clear;*/
+            font-family: Intel Clear; /*arial, sans-serif;*/
             border-collapse: collapse;
             border-left: 1px solid #dddddd;
             border-right: 1px solid #dddddd;
@@ -51,77 +51,71 @@
             }
             
             h1{
-            font-family: sans-serif !important;  
+            font-family: Intel Clear Pro !important;  
             }
         </style>
         <apex:attribute name="offeringRecordId" type="Id" description="Offering Record Id" assignTo="{!offeringId}"/>
-        <body>-->
+        <body>
             <!-- Header Banner -->
-<!--            <c:PMP_Global_Header message="Your Offering Will Be Live Soon!"/>-->
+            <c:PMP_Global_Header message="Your Marketplace offering has been published."/>
             <!-- Header Banner -->
             
             <!-- Email content -->
-<!--            <table width="75%">    -->
+            <table width="75%">    
                 <!-- Email Body -->
-<!--                <tr>
+                <tr>
                     <td style="padding-left:50px;">
                         <br/>Hello <br/><br/>
-                        <apex:outputText rendered="{!IF(AND(offeringData.PMP_Offering_Submitter_UserId__c != null, offeringData.PMP_Offering_Submitter_UserId__r.IsActive==false),true,false)}" > {!$Label.PMP_Inactive_User_Message}<br/><br/> </apex:outputText>
-                        The pre-release product associated with your offering, {!offeringData.Name}, has been released. As a result, your offering page will begin the publishing process and will soon be live on Intel® Partner Showcase. <b>NOTE: </b>The publishing process can take up to two hours to complete from the time this email was sent.
-                        <br/>
-                        <p><apex:outputLink value="{!communityURL}{!publishedOfferingId}" styleClass="intelBlue">View offering</apex:outputLink></p>
-                        Would you like to create another offering ?<br/>
-                        <apex:outputLink value="{!createOfferingURL}" styleClass="intelBlue">
-                            Create another offering
-                        </apex:outputLink><br/><br/>
-                        Thank you,<br/><br/>
-                        <b>The Intel® Partner Showcase Team</b> 
+                        The pre-release product/s associated with your Marketplace Offering, {!offeringData.Name}, has been released and your offering has been published and is currently live.
+                        <br/><br/>
+                        Thanks for being part of our solutions community<br/>
+                        <b>The Intel® Solutions Marketplace Team</b> 
                         
                     </td>
-                </tr>-->
+                </tr>
                 <!-- Email Body -->
                 <!-- CTA -->
-                <!--<tr>
+                <tr>
                     <td style="padding-left:50px;">      
-                        <p><apex:outputLink value="{!communityURL}{!offeringData.Id}" styleClass="intelBlue">View offering</apex:outputLink></p>               
+                        <p><apex:outputLink value="{!communityURL}{!offeringData.Id}" styleClass="intelBlue">View Offering Preview</apex:outputLink></p>               
                     </td>
-                </tr>   -->
+                </tr>
                 <!-- CTA -->
                 <!-- Progress Indication 
                     <tr>
                     <td style="height:50; text-align:center;">
                     <apex:image id="bodyImageId" url="{!bodyURL}"/>
                     </td>
-                    </tr>-->
+                    </tr>
                 <!-- Progress Indication -->
                 <!-- Next Best Step -->
-               <!-- <tr>    
+                <tr>    
                     <td style="padding-left:50px;">
-                        Would you like to create another offering ?<br/>
+                        Would you like to create another Offering ?<br/>
                         <apex:outputLink value="{!createOfferingURL}" styleClass="intelBlue">
-                            Create another offering
+                            Create Another Offering
                         </apex:outputLink><br/>
                         
                     </td>
-                </tr> -->
+                </tr>
                 <!-- Next Best Step -->
                 <!-- Questions/Contact -->
-<!--                <tr>
+                <tr>
                     <td style="padding-left:50px;">  
-                        Questions? Reach out to Showcase Admin Team at:<br/>
+                        Questions? Reach out to Marketplace Admin Team at <br/>
                         <apex:outputLink value="mailto:{!$Label.PMP_MailTo}" styleClass="intelBlue">
                             {!$Label.PMP_MailTo}
                         </apex:outputLink><br/><br/>
                     </td>
-                </tr>-->
+                </tr>
                 <!-- Questions/Contact -->
-<!--           </table>      -->           
+            </table>                 
             <!-- Email content -->
             
             <!-- Global Footer -->
-<!--            <c:PMP_Global_Footer />-->
+            <c:PMP_Global_Footer />
             <!-- Global Footer -->
             
-<!--        </body>
-    </html>-->
+        </body>
+    </html>
 </apex:component>

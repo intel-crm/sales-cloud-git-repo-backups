@@ -11,7 +11,6 @@ export default class PrmSelectedPartnerRow extends LightningElement {
     @track comments;
     @api index = [];
     @api checked = false;
-    @api supChecked = false;
     @api singleRecChecked = false;
     @api showcheckbox = false;
     @api isSelect = false;
@@ -85,20 +84,6 @@ export default class PrmSelectedPartnerRow extends LightningElement {
         const selectedCommentEvent = new CustomEvent('mapcommentvalue', { detail: commentMap });
         this.dispatchEvent(selectedCommentEvent);
     }
-    handleSuppressEmailChange(evt){
-        var supEmail = evt.target.checked;
-        var suppressEmailMap;
-        if (this.supChecked === false) {
-            this.supChecked = true;
-        }
-        else if (this.supChecked === true) {
-            this.supChecked = false;
-        }
-        suppressEmailMap = new Map([[this.sobKey.id, this.supChecked]]);
-        const selectedSupEmailEvent = new CustomEvent('mapsupemailvalue', { detail: suppressEmailMap });
-        this.dispatchEvent(selectedSupEmailEvent);
-    }
-
 
     handleCheckboxValue(event) {
         var reccheckboxMap;

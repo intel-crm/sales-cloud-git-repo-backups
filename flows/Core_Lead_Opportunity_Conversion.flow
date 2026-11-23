@@ -106,7 +106,7 @@ ISPICKVAL(({!myVariable_current.Core_Lead_Status__c}), &quot;Accepted&quot;),
 OR(ISCHANGED({!myVariable_current.Core_Lead_Status__c}),ISCHANGED({!myVariable_current.Status}))
 )</expression>
     </formulas>
-    <interviewLabel>Core_Lead_Opportunity_Conversion-4_InterviewLabel</interviewLabel>
+    <interviewLabel>Core_Lead_Opportunity_Conversion-5_InterviewLabel</interviewLabel>
     <label>Core_Lead_Opportunity_Conversion</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -296,7 +296,7 @@ OR(ISCHANGED({!myVariable_current.Core_Lead_Status__c}),ISCHANGED({!myVariable_c
         <object>Lead</object>
     </recordUpdates>
     <startElementReference>myDecision</startElementReference>
-    <status>Obsolete</status>
+    <status>Draft</status>
     <variables>
         <name>myVariable_current</name>
         <dataType>SObject</dataType>

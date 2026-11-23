@@ -3,8 +3,10 @@
     <apiVersion>56.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <description>Migrated from the: Core_Opp_All_Products_Pending workflow rule
-Workflow rule description: When all won products are set back to pending and the stage is not &quot;Design&quot;, set the stage back to &quot;Design&quot;.&quot;</description>
+Workflow rule description: When all won products are set back to pending and the stage is not &quot;Design&quot;, set the stage back to &quot;Design&quot;.&quot;
+TWC3123-4144- Removed {!$Record.Core_Pending_Product_Count__c} &gt;= PRIORVALUE({!$Record.Core_Won_Product_Count__c}) from entry criteria</description>
     <environments>Default</environments>
+    <interviewLabel>Core_Opp_All_Products_Pending {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Core_Opp_All_Products_Pending</label>
     <migratedFromWorkflowRuleName>Core_Opp_All_Products_Pending</migratedFromWorkflowRuleName>
     <processMetadataValues>
@@ -25,7 +27,7 @@ Workflow rule description: When all won products are set back to pending and the
         <name>mainUpdate</name>
         <label>mainUpdate</label>
         <locationX>176</locationX>
-        <locationY>311</locationY>
+        <locationY>287</locationY>
         <inputAssignments>
             <field>StageName</field>
             <value>
@@ -40,10 +42,10 @@ Workflow rule description: When all won products are set back to pending and the
         <connector>
             <targetReference>mainUpdate</targetReference>
         </connector>
-        <filterFormula>AND(   NOT(OR(ISPICKVAL({!$Record.StageName}, &apos;Design&apos;), ISPICKVAL({!$Record.StageName}, &apos;Qualify&apos;))),   {!$Record.Core_Won_Product_Count__c} = 0,   PRIORVALUE({!$Record.Core_Won_Product_Count__c}) &gt; 0 )</filterFormula>
+        <filterFormula>AND(AND(NOT(OR(ISPICKVAL({!$Record.StageName}, &apos;Design&apos;), ISPICKVAL({!$Record.StageName}, &apos;Qualify&apos;))),   {!$Record.Core_Won_Product_Count__c} = 0,   PRIORVALUE({!$Record.Core_Won_Product_Count__c}) &gt; 0 ),AND((ISNEW() || ISCHANGED({!$Record.AccountId})),AND((ISNEW() || ISCHANGED({!$Record.AccountId})),AND(NOT(ISNULL({!$Record.RecordTypeId})),CONTAINS({!$Label.Core_Sales_CRM_Record_Types},{!$Record.RecordType.DeveloperName})))))</filterFormula>
         <object>Opportunity</object>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordBeforeSave</triggerType>
     </start>
-    <status>Active</status>
+    <status>Obsolete</status>
 </Flow>

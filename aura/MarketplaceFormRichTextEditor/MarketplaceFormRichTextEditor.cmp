@@ -8,10 +8,9 @@
 	
     <aura:attribute name="showInvalid" type="boolean" default="false" description="Internal"/>
    <aura:handler name="change" value="{!v.value}" action="{!c.handleValueChange}" />
-    <!--US954587:ADDED fromStorefront attribute -->
-    <aura:attribute name="fromStorefront" type="boolean" default="false" description="Flag to check if the input is from storefront component"/>
-    <aura:method name="reportValidity" action="{!c.handleReportValidity}" />
- 
+   
+    <aura:method name="reportValidity" action="{!c.handleReportValidity}" /> 
+    
     <div class="{!join(' ', '', v.required ? 'isRequired' : 'isNotRequired', v.disabled ? 'isDisabled' : 'isNotDisabled')}" onkeydown="{!c.handleTouch}" onkeyup="{!c.handleChange}">
       <lightning:inputRichText
           aura:id="richtext"
@@ -25,10 +24,5 @@
           messageWhenBadInput="{!v.errorMessage}"/>
         	
     </div>
-    <!-- IPA2.0 + US TWC4497-1631 -->
-    <!-- <aura:if isTrue="{!and(or(v.fieldName == 'PMP_Partner_Offering_Dsc__c',v.fromStorefront), v.value.length lt 131073)}"> -->
-      <aura:if isTrue="{!and(v.fromStorefront, v.value.length lt 131073)}">
-		<p class="disclaimer-text slds-p slds-text-body_small"><b>{!format($Label.c.PMP_Description_Characters_Remaining,131072-v.value.length)}</b></p>
-	</aura:if>
 
 </aura:component>

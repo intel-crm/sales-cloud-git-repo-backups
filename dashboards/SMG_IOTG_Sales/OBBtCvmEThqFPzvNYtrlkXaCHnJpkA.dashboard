@@ -9,6 +9,41 @@
     <dashboardColorPalette>unity</dashboardColorPalette>
     <dashboardFilters>
         <dashboardFilterOptions>
+            <operator>notContain</operator>
+            <values>IoT-TSD,IoT-ASD</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>IoT-Ind/Energy</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>IoT-RBHE</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>IoT-VMC</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>IoT-ASD</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>IoT-TSD</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>IoT-eODM</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>IoT-TSD,IoT-ASD</values>
+        </dashboardFilterOptions>
+        <name>BU Product Segment</name>
+    </dashboardFilters>
+    <dashboardFilters>
+        <dashboardFilterOptions>
             <operator>equals</operator>
             <values>IOTG Sales Group</values>
         </dashboardFilterOptions>
@@ -89,118 +124,7 @@
     <dashboardFilters>
         <dashboardFilterOptions>
             <operator>equals</operator>
-            <values>Aerospace/Avionics,ASIC Prototyping/Emulation,ATE &amp; Semiconductor Tester,Broadcast/Studio,&quot;Diagnostic, Test &amp; Measurement Equipment&quot;,&quot;Drives, Motor Control, Encoders&quot;,Gaming &amp; Lottery Machines,Gateway,Imaging Devices (not IP Camera based),&quot;Infrastructure (e.g., Roadside, Rail, etc.)&quot;,Interactive Displays &amp; Kiosks,IOTG Other,Military/Defense,Motion Control and CNC,PLC &amp; PAC,POS / ATM,Radar,&quot;Robotics: Mobile (AGV, AMR)&quot;,Robotics: Stationary,Ruggedized/Industrial/Vertical Grade PCs,Ruggedized/Industrial/Vertical Grade Servers,Smart Places Compute,&quot;Thin Client, Cloud Client&quot;,&quot;Vehicles - Non-Automotive (e.g. Trains, Ships, etc.)&quot;,&quot;Video (incl. Camera, NVR, AI Box, Video Server)&quot;</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>Aerospace/Avionics</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>Automotive</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>&quot;Diagnostic, Test &amp; Measurement Equipment&quot;</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>Gaming &amp; Lottery Machines</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>Gateway</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>Imaging Devices (not IP Camera based)</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>&quot;Infrastructure (e.g., Roadside, Rail, etc.)&quot;</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>Interactive Displays &amp; Kiosks</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>IOTG Other</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>Military/Defense</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>Motion Control and CNC</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>PLC &amp; PAC</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>POS / ATM</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>Radar</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>&quot;Robotics: Mobile (AGV, AMR)&quot;</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>Robotics: Stationary</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>Ruggedized/Industrial/Vertical Grade PCs</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>Ruggedized/Industrial/Vertical Grade Servers</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>Smart Places Compute</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>&quot;Thin Client, Cloud Client&quot;</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>&quot;Video (incl. Camera, NVR, AI Box, Video Server)&quot;</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>&quot;Vehicles - Non-Automotive (e.g. Trains, Ships, etc.)&quot;</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>ATE &amp; Semiconductor Tester</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>ASIC Prototyping/Emulation</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>Broadcast/Studio</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>&quot;Drives, Motor Control, Encoders&quot;</values>
-        </dashboardFilterOptions>
-        <name>Product Application</name>
-    </dashboardFilters>
-    <dashboardFilters>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>Design: Original,Design: Secondary,Design: Software-enable</values>
+            <values>Design: Original,Design: Secondary</values>
         </dashboardFilterOptions>
         <dashboardFilterOptions>
             <operator>equals</operator>
@@ -212,15 +136,11 @@
         </dashboardFilterOptions>
         <dashboardFilterOptions>
             <operator>equals</operator>
-            <values>Design: Software-enable</values>
+            <values>Deal: Scale-enable,Deal: Sell-through,Deal: Sell-to</values>
         </dashboardFilterOptions>
         <dashboardFilterOptions>
             <operator>equals</operator>
-            <values>Deal: Partner Scale-enable,Deal: Sell-through,Deal: Sell-to</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>Deal: Partner Scale-enable</values>
+            <values>Deal: Sell-to</values>
         </dashboardFilterOptions>
         <dashboardFilterOptions>
             <operator>equals</operator>
@@ -228,7 +148,7 @@
         </dashboardFilterOptions>
         <dashboardFilterOptions>
             <operator>equals</operator>
-            <values>Deal: Sell-to</values>
+            <values>Deal: Scale-enable</values>
         </dashboardFilterOptions>
         <name>Opportunity Type</name>
     </dashboardFilters>
@@ -244,10 +164,10 @@
                 </chartSummary>
                 <componentType>Metric</componentType>
                 <dashboardFilterColumns>
-                    <column>Account.Core_Sales_Groups__c</column>
+                    <column>OpportunityLineItem.Core_BU_Product_Segment_Old__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
-                    <column>Opportunity.Core_Product_Application__c</column>
+                    <column>Account.Core_Sales_Groups__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
                     <column>Opportunity.Core_Opportunity_Type__c</column>
@@ -255,7 +175,7 @@
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
                 <groupingSortProperties/>
-                <header>2020 &amp; 2021 IOTG Revenue AT RISK</header>
+                <header>2020 IOTG Revenue AT RISK</header>
                 <indicatorBreakpoint1>33.0</indicatorBreakpoint1>
                 <indicatorBreakpoint2>67.0</indicatorBreakpoint2>
                 <indicatorHighColor>#C31818</indicatorHighColor>
@@ -279,10 +199,10 @@
                 </chartSummary>
                 <componentType>Metric</componentType>
                 <dashboardFilterColumns>
-                    <column>Account.Core_Sales_Groups__c</column>
+                    <column>OpportunityLineItem.Core_BU_Product_Segment_Old__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
-                    <column>Opportunity.Core_Product_Application__c</column>
+                    <column>Account.Core_Sales_Groups__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
                     <column>Opportunity.Core_Opportunity_Type__c</column>
@@ -290,7 +210,7 @@
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
                 <groupingSortProperties/>
-                <header>2020 &amp; 2021 IOTG Opts. AT RISK</header>
+                <header>2020 IOTG Opts. AT RISK</header>
                 <indicatorBreakpoint1>33.0</indicatorBreakpoint1>
                 <indicatorBreakpoint2>67.0</indicatorBreakpoint2>
                 <indicatorHighColor>#C31818</indicatorHighColor>
@@ -316,10 +236,10 @@
                 </chartSummary>
                 <componentType>Bar</componentType>
                 <dashboardFilterColumns>
-                    <column>Account.Core_Sales_Groups__c</column>
+                    <column>OpportunityLineItem.Core_BU_Product_Segment_Old__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
-                    <column>Opportunity.Core_Product_Application__c</column>
+                    <column>Account.Core_Sales_Groups__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
                     <column>Opportunity.Core_Opportunity_Type__c</column>
@@ -337,7 +257,7 @@
                         <sortOrder>a</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>2020 &amp; 2021 IOTG Products AT RISK - By Priority</header>
+                <header>2020 IOTG Products AT RISK - By Priority</header>
                 <legendPosition>Bottom</legendPosition>
                 <report>SMG_IOTG_Sales/X2020_IOTG_Prod_AT_RISK_Prio_Cat_Status</report>
                 <showPercentage>false</showPercentage>
@@ -363,10 +283,10 @@
                 </chartSummary>
                 <componentType>Bar</componentType>
                 <dashboardFilterColumns>
-                    <column>Account.Core_Sales_Groups__c</column>
+                    <column>OpportunityLineItem.Core_BU_Product_Segment_Old__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
-                    <column>Opportunity.Core_Product_Application__c</column>
+                    <column>Account.Core_Sales_Groups__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
                     <column>Opportunity.Core_Opportunity_Type__c</column>
@@ -385,7 +305,7 @@
                         <sortOrder>d</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>2020 &amp; 2021 IOTG Products AT RISK - by Category</header>
+                <header>2020 IOTG Products AT RISK - by Category</header>
                 <legendPosition>Bottom</legendPosition>
                 <report>SMG_IOTG_Sales/X2020_IOTG_Prod_AT_RISK_Prio_Cat_Status</report>
                 <showPercentage>false</showPercentage>
@@ -411,10 +331,10 @@
                 </chartSummary>
                 <componentType>Bar</componentType>
                 <dashboardFilterColumns>
-                    <column>Account.Core_Sales_Groups__c</column>
+                    <column>OpportunityLineItem.Core_BU_Product_Segment_Old__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
-                    <column>Opportunity.Core_Product_Application__c</column>
+                    <column>Account.Core_Sales_Groups__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
                     <column>Opportunity.Core_Opportunity_Type__c</column>
@@ -433,7 +353,7 @@
                         <sortOrder>d</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>2020 &amp; 2021 IOTG Products AT RISK - By Status</header>
+                <header>2020 IOTG Products AT RISK - By Status</header>
                 <legendPosition>Bottom</legendPosition>
                 <report>SMG_IOTG_Sales/X2020_IOTG_Prod_AT_RISK_Prio_Cat_Status</report>
                 <showPercentage>false</showPercentage>
@@ -459,10 +379,10 @@
                 </chartSummary>
                 <componentType>Bar</componentType>
                 <dashboardFilterColumns>
-                    <column>Account.Core_Sales_Groups__c</column>
+                    <column>OpportunityLineItem.Core_BU_Product_Segment_Old__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
-                    <column>Opportunity.Core_Product_Application__c</column>
+                    <column>Account.Core_Sales_Groups__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
                     <column>Opportunity.Core_Opportunity_Type__c</column>
@@ -480,7 +400,7 @@
                         <sortOrder>a</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>2020 &amp; 2021 IOTG Prod. AT RISK by Priority</header>
+                <header>2020 IOTG Prod. AT RISK by Priority</header>
                 <legendPosition>Bottom</legendPosition>
                 <report>SMG_IOTG_Sales/X2020_IOTG_Prod_AT_RISK_P_C_S_Last_7_day</report>
                 <showPercentage>false</showPercentage>
@@ -507,10 +427,10 @@
                 </chartSummary>
                 <componentType>Bar</componentType>
                 <dashboardFilterColumns>
-                    <column>Account.Core_Sales_Groups__c</column>
+                    <column>OpportunityLineItem.Core_BU_Product_Segment_Old__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
-                    <column>Opportunity.Core_Product_Application__c</column>
+                    <column>Account.Core_Sales_Groups__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
                     <column>Opportunity.Core_Opportunity_Type__c</column>
@@ -528,7 +448,7 @@
                         <sortOrder>a</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>2020 &amp; 2021 IOTG Prod. AT RISK by Category</header>
+                <header>2020 IOTG Prod. AT RISK by Category</header>
                 <legendPosition>Bottom</legendPosition>
                 <report>SMG_IOTG_Sales/X2020_IOTG_Prod_AT_RISK_P_C_S_Last_7_day</report>
                 <showPercentage>false</showPercentage>
@@ -555,10 +475,10 @@
                 </chartSummary>
                 <componentType>Bar</componentType>
                 <dashboardFilterColumns>
-                    <column>Account.Core_Sales_Groups__c</column>
+                    <column>OpportunityLineItem.Core_BU_Product_Segment_Old__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
-                    <column>Opportunity.Core_Product_Application__c</column>
+                    <column>Account.Core_Sales_Groups__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
                     <column>Opportunity.Core_Opportunity_Type__c</column>
@@ -576,7 +496,7 @@
                         <sortOrder>a</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>2020 &amp; 2021 IOTG Prod. AT RISK by Status</header>
+                <header>2020 IOTG Prod. AT RISK by Status</header>
                 <legendPosition>Bottom</legendPosition>
                 <report>SMG_IOTG_Sales/X2020_IOTG_Prod_AT_RISK_P_C_S_Last_7_day</report>
                 <showPercentage>false</showPercentage>
@@ -603,10 +523,10 @@
                 </chartSummary>
                 <componentType>Donut</componentType>
                 <dashboardFilterColumns>
-                    <column>Account.Core_Sales_Groups__c</column>
+                    <column>OpportunityLineItem.Core_BU_Product_Segment_Old__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
-                    <column>Opportunity.Core_Product_Application__c</column>
+                    <column>Account.Core_Sales_Groups__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
                     <column>Opportunity.Core_Opportunity_Type__c</column>
@@ -625,7 +545,7 @@
                         <sortOrder>d</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>2020 &amp; 2021 IOTG Products AT RISK - Risk Reason 1</header>
+                <header>2020 IOTG Products AT RISK - Risk Reason 1</header>
                 <legendPosition>Right</legendPosition>
                 <maxValuesDisplayed>6</maxValuesDisplayed>
                 <report>SMG_IOTG_Sales/X2020_IOTG_Products_AT_RISK_RR</report>
@@ -653,10 +573,10 @@
                 </chartSummary>
                 <componentType>Donut</componentType>
                 <dashboardFilterColumns>
-                    <column>Account.Core_Sales_Groups__c</column>
+                    <column>OpportunityLineItem.Core_BU_Product_Segment_Old__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
-                    <column>Opportunity.Core_Product_Application__c</column>
+                    <column>Account.Core_Sales_Groups__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
                     <column>Opportunity.Core_Opportunity_Type__c</column>
@@ -675,7 +595,7 @@
                         <sortOrder>d</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>2020 &amp; 2021 IOTG Products AT RISK - Risk Reason 2</header>
+                <header>2020 IOTG Products AT RISK - Risk Reason 2</header>
                 <legendPosition>Right</legendPosition>
                 <maxValuesDisplayed>6</maxValuesDisplayed>
                 <report>SMG_IOTG_Sales/X2020_IOTG_Products_AT_RISK_RR</report>
@@ -703,10 +623,10 @@
                 </chartSummary>
                 <componentType>Donut</componentType>
                 <dashboardFilterColumns>
-                    <column>Account.Core_Sales_Groups__c</column>
+                    <column>OpportunityLineItem.Core_BU_Product_Segment_Old__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
-                    <column>Opportunity.Core_Product_Application__c</column>
+                    <column>Account.Core_Sales_Groups__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
                     <column>Opportunity.Core_Opportunity_Type__c</column>
@@ -724,7 +644,7 @@
                         <sortOrder>a</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>2020 &amp; 2021 IOTG Products AT RISK</header>
+                <header>2020 IOTG Products AT RISK</header>
                 <legendPosition>Right</legendPosition>
                 <maxValuesDisplayed>6</maxValuesDisplayed>
                 <report>SMG_IOTG_Sales/X2020_IOTG_Products_AT_RISK_RR</report>
@@ -752,10 +672,10 @@
                 </chartSummary>
                 <componentType>Donut</componentType>
                 <dashboardFilterColumns>
-                    <column>Account.Core_Sales_Groups__c</column>
+                    <column>OpportunityLineItem.Core_BU_Product_Segment_Old__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
-                    <column>Opportunity.Core_Product_Application__c</column>
+                    <column>Account.Core_Sales_Groups__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
                     <column>Opportunity.Core_Opportunity_Type__c</column>
@@ -774,7 +694,7 @@
                         <sortOrder>d</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>2020 &amp; 2021 IOTG Products AT RISK</header>
+                <header>2020 IOTG Products AT RISK</header>
                 <legendPosition>Right</legendPosition>
                 <maxValuesDisplayed>20</maxValuesDisplayed>
                 <report>SMG_IOTG_Sales/X2020_IOTG_Products_AT_RISK_RR</report>
@@ -802,10 +722,10 @@
                 </chartSummary>
                 <componentType>Donut</componentType>
                 <dashboardFilterColumns>
-                    <column>Account.Core_Sales_Groups__c</column>
+                    <column>OpportunityLineItem.Core_BU_Product_Segment_Old__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
-                    <column>Opportunity.Core_Product_Application__c</column>
+                    <column>Account.Core_Sales_Groups__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
                     <column>Opportunity.Core_Opportunity_Type__c</column>
@@ -824,7 +744,7 @@
                         <sortOrder>d</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>2020 &amp; 2021 IOTG Prods. AT RISK by Platform</header>
+                <header>2020 IOTG Prods. AT RISK by Platform</header>
                 <legendPosition>Right</legendPosition>
                 <maxValuesDisplayed>15</maxValuesDisplayed>
                 <report>SMG_IOTG_Sales/X2020_IOTG_Prods_AT_RISK_Platform</report>
@@ -851,10 +771,10 @@
                 </chartSummary>
                 <componentType>BarStacked</componentType>
                 <dashboardFilterColumns>
-                    <column>Account.Core_Sales_Groups__c</column>
+                    <column>OpportunityLineItem.Core_BU_Product_Segment_Old__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
-                    <column>Opportunity.Core_Product_Application__c</column>
+                    <column>Account.Core_Sales_Groups__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
                     <column>Opportunity.Core_Opportunity_Type__c</column>
@@ -877,7 +797,7 @@
                         <sortOrder>a</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>2020 &amp; 2021 IOTG Prod. AT RISK by Stage</header>
+                <header>2020 IOTG Prod. AT RISK by Stage</header>
                 <legendPosition>Right</legendPosition>
                 <report>SMG_IOTG_Sales/X2020_IOTG_Prod_AT_RISK_Pri_Ca_Sta_Stage</report>
                 <showPercentage>false</showPercentage>
@@ -897,10 +817,10 @@
                 <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
                 <componentType>FlexTable</componentType>
                 <dashboardFilterColumns>
-                    <column>Account.Core_Sales_Groups__c</column>
+                    <column>OpportunityLineItem.Core_BU_Product_Segment_Old__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
-                    <column>Opportunity.Core_Product_Application__c</column>
+                    <column>Account.Core_Sales_Groups__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
                     <column>Opportunity.Core_Opportunity_Type__c</column>
@@ -942,7 +862,7 @@
                         <sortOrder>a</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>2020 &amp; 2021 IOTG Prods. AT RISK_Platform</header>
+                <header>2020 IOTG Prods. AT RISK_Platform</header>
                 <report>SMG_IOTG_Sales/X2020_IOTG_Prods_AT_RISK_Platform</report>
             </dashboardComponent>
             <rowIndex>43</rowIndex>
@@ -961,10 +881,10 @@
                 </chartSummary>
                 <componentType>BarGrouped</componentType>
                 <dashboardFilterColumns>
-                    <column>Account.Core_Sales_Groups__c</column>
+                    <column>OpportunityLineItem.Core_BU_Product_Segment_Old__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
-                    <column>Opportunity.Core_Product_Application__c</column>
+                    <column>Account.Core_Sales_Groups__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
                     <column>Opportunity.Core_Opportunity_Type__c</column>
@@ -988,7 +908,7 @@
                         <sortOrder>a</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>2020 &amp; 2021 IOTG Top 20 Opts. At RISK - Require Action/Closure</header>
+                <header>2020 IOTG Top 20 Opts. At RISK - Require Action/Closure</header>
                 <legendPosition>Bottom</legendPosition>
                 <maxValuesDisplayed>20</maxValuesDisplayed>
                 <report>SMG_IOTG_Sales/X2020_IOTG_Prods_AT_RISK_Act_Opt</report>
@@ -1013,10 +933,10 @@
                 </chartSummary>
                 <componentType>Metric</componentType>
                 <dashboardFilterColumns>
-                    <column>Account.Core_Sales_Groups__c</column>
+                    <column>OpportunityLineItem.Core_BU_Product_Segment_Old__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
-                    <column>Opportunity.Core_Product_Application__c</column>
+                    <column>Account.Core_Sales_Groups__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
                     <column>Opportunity.Core_Opportunity_Type__c</column>
@@ -1024,7 +944,7 @@
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
                 <groupingSortProperties/>
-                <header>IOTG AT RISK - Opt. Level - Old format (All Time)</header>
+                <header>2020 IOTG AT RISK - Opt. Level - Old format</header>
                 <indicatorBreakpoint1>33.0</indicatorBreakpoint1>
                 <indicatorBreakpoint2>67.0</indicatorBreakpoint2>
                 <indicatorHighColor>#C21919</indicatorHighColor>
@@ -1048,10 +968,10 @@
                 </chartSummary>
                 <componentType>Metric</componentType>
                 <dashboardFilterColumns>
-                    <column>Account.Core_Sales_Groups__c</column>
+                    <column>OpportunityLineItem.Core_BU_Product_Segment_Old__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
-                    <column>Opportunity.Core_Product_Application__c</column>
+                    <column>Account.Core_Sales_Groups__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
                     <column>Opportunity.Core_Opportunity_Type__c</column>
@@ -1059,7 +979,7 @@
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
                 <groupingSortProperties/>
-                <header>IOTG AT RISK - Opt. Level - Old format (All Time)</header>
+                <header>2020 IOTG AT RISK - Opt. Level - Old format</header>
                 <indicatorBreakpoint1>33.0</indicatorBreakpoint1>
                 <indicatorBreakpoint2>67.0</indicatorBreakpoint2>
                 <indicatorHighColor>#C31818</indicatorHighColor>
@@ -1085,10 +1005,10 @@
                 </chartSummary>
                 <componentType>BarGrouped</componentType>
                 <dashboardFilterColumns>
-                    <column>Account.Core_Sales_Groups__c</column>
+                    <column>OpportunityLineItem.Core_BU_Product_Segment_Old__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
-                    <column>Opportunity.Core_Product_Application__c</column>
+                    <column>Account.Core_Sales_Groups__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
                     <column>Opportunity.Core_Opportunity_Type__c</column>
@@ -1112,7 +1032,7 @@
                         <sortOrder>a</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>IOTG AT RISK - Opt. Level - Old format (All Time)</header>
+                <header>2020 IOTG AT RISK - Opt. Level - Old format</header>
                 <legendPosition>Right</legendPosition>
                 <report>SMG_IOTG_Sales/X2020_IOTG_Opts_AT_RISK_Old_format</report>
                 <showPercentage>false</showPercentage>
@@ -1132,10 +1052,10 @@
                 <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
                 <componentType>FlexTable</componentType>
                 <dashboardFilterColumns>
-                    <column>Account.Core_Sales_Groups__c</column>
+                    <column>OpportunityLineItem.Core_BU_Product_Segment_Old__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
-                    <column>Opportunity.Core_Product_Application__c</column>
+                    <column>Account.Core_Sales_Groups__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
                     <column>Opportunity.Core_Opportunity_Type__c</column>
@@ -1176,7 +1096,7 @@
                         <sortOrder>a</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>IOTG AT RISK - Opt. Level - Old format (All Time)</header>
+                <header>2020 IOTG AT RISK - Opt. Level - Old format</header>
                 <report>SMG_IOTG_Sales/X2020_IOTG_Opts_AT_RISK_Old_format</report>
                 <title>SLATED for EOL</title>
             </dashboardComponent>
@@ -1192,7 +1112,7 @@
     <owner>10770732@intel.com.crm</owner>
     <runningUser>10770732@intel.com.crm</runningUser>
     <textColor>#000000</textColor>
-    <title>2020 &amp; 2021 IOTG AT RISK Prd. Lvl.</title>
+    <title>2020 IOTG AT RISK Prd. Lvl.</title>
     <titleColor>#000000</titleColor>
     <titleSize>12</titleSize>
 </Dashboard>

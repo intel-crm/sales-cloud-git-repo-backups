@@ -110,7 +110,7 @@ private class Core_IPS_Questions_Utility_Test {
             System.assert(EnvironmentalDetailsList[0].Id != null, 'Record not created');
             
             List<Core_IPS_Response__c> lstResponse = new List<Core_IPS_Response__c>();
-            for(Core_IPS_Question__c objQues : [SELECT Id,Core_IPS_Datatype__c,(SELECT Id, Core_IPS_Answer__c FROM Core_Answers__r LIMIT 1) FROM Core_IPS_Question__c LIMIT 999]) {//ATHR Query limit fix
+            for(Core_IPS_Question__c objQues : [SELECT Id,Core_IPS_Datatype__c,(SELECT Id, Core_IPS_Answer__c FROM Core_Answers__r LIMIT 1) FROM Core_IPS_Question__c]) {
                 for(Core_IPS_Answer__c objAns : objQues.Core_Answers__r) {
                     Core_IPS_Response__c objResponse = new Core_IPS_Response__c();
                     objResponse.Core_IPS_Case__c = CaseRecord.Id;
@@ -140,7 +140,6 @@ private class Core_IPS_Questions_Utility_Test {
         for(Core_IPS_EnvironmentDetailQuestion objEDQ : lstEDQ) {
             lstResp.addAll(Core_IPS_Questions_Utility.constructResponse(objEDQ, CaseRecord));
         }
-         system.assert(lstResp!= null);
         //Core_IPS_Questions_Utility.makeIPSResponse(Id CaseId, Id QuestionId, Id AnswerId, Boolean isAgentOnly)
         List<Core_IPS_EnvironmentDetailQuestion> lstEDO2 = Core_IPS_Questions_Utility.getAllWithChildEnvDetails(lstEDQ);
         Map<Id,Boolean> mapAccess = Core_IPS_Questions_Utility.recordEditAccessMap(new Set<Id>{ControllingAnsId}, sysAdimUser.Id);

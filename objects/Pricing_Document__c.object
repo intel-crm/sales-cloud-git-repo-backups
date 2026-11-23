@@ -159,7 +159,7 @@
         <label>Quote</label>
         <referenceTo>SBQQ__Quote__c</referenceTo>
         <relationshipLabel>Document Share</relationshipLabel>
-        <relationshipName>Document_Shares1</relationshipName>
+        <relationshipName>Pricing_Documents</relationshipName>
         <required>false</required>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
@@ -175,7 +175,7 @@
         </sharedTo>
     </listViews>
     <nameField>
-        <label>Document Share Name</label>
+        <label>Pricing Document Name</label>
         <type>Text</type>
     </nameField>
     <pluralLabel>Pricing Documents</pluralLabel>

@@ -1,5 +1,5 @@
 import { LightningElement,wire,api,track } from 'lwc';
-/*import { ShowToastEvent } from 'lightning/platformShowToastEvent'
+import { ShowToastEvent } from 'lightning/platformShowToastEvent'
 import { NavigationMixin } from 'lightning/navigation';
 import SalesSerialError from '@salesforce/label/c.Sales_SerialError';
 import Sales_Statuserror  from '@salesforce/label/c.Sales_LicenseStatusError';
@@ -31,9 +31,9 @@ import Sales_ViewAllComputers from '@salesforce/label/c.Sales_ViewAllComputers';
 import Sales_ViewAllComputersURL from '@salesforce/label/c.Sales_ViewAllComputersURL';
 
 const FIELDS = [ 'Sales_License__c.Id', 'Sales_License__c.Sales_License_Web_Display_Flag__c','Sales_License__c.Sales_Tool_License_Type__c','Sales_License__c.Sales_License_Activation_Code__c','Sales_License__c.Sales_License_Host_Node_Id__c','Sales_License__c.Sales_License_Primary_Admin_Contact__c','Sales_License__c.Sales_License_Lic_User_Contact_ID__c','Sales_License__c.Sales_License_Type__c','Sales_License__c.Sales_License_Product__r.Core_Product_Ext_Attribute_Id__r.Core_Prod_Tool_Type_Nm__c','Sales_License__c.Sales_License_Status__c'];
-*/
-export default class sales_FreeLicenseHostPage extends LightningElement {
-    /*@api fromlac;
+
+export default class sales_FreeLicenseHostPage extends NavigationMixin(LightningElement) {
+    @api fromlac;
     @track userId=userId;
     @api primarycontact;
     @api tooltype;//added for tool type
@@ -108,8 +108,10 @@ label = {
     @track hostDetails=[];
     error;
 
-  /*  connectedCallback()
+    /*connectedCallback()
     {
+        const topDiv = this.template.querySelector('[data-id="redDiv"]');
+        topDiv.scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"});
        console.log('productoption '+this.productOption);
        console.log('productId '+this.productId);
        console.log('seats '+this.seats);
@@ -118,7 +120,7 @@ label = {
        
     }*/
 
-    /*renderedCallback() {
+    renderedCallback() {
         const topDiv = this.template.querySelector('[data-id="redDiv"]');
         topDiv.scrollTop=0;
         console.log('isOptionSelect in host ' +this.isOptionSelect);
@@ -257,9 +259,9 @@ label = {
 
       /*  this.template.querySelectorAll(`[data-hostid=${this.currhostId}]`)[0].defaultChecked=true;
         this.template.querySelectorAll(`[data-hostid=${this.currhostId}]`)[0].checked=true;*/
-    //}
+    }
     //Changes made by -Bishal Singh
-    /*handleTandC(event){
+    handleTandC(event){
         console.log('isGenerateButtonDisableddd ' +this.isGenerateButtonDisabled);
         console.log('currhostIdTANDC ' +this.currhostId);
         const checkVal = event.currentTarget.checked;
@@ -282,5 +284,5 @@ label = {
     }
     handleOptin(event){
 
-    }*/
+    }
 }

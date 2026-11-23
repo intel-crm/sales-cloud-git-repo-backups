@@ -47,6 +47,9 @@
         <field>PRODUCT_NAME</field>
     </columns>
     <columns>
+        <field>DESCRIPTION</field>
+    </columns>
+    <columns>
         <field>Opportunity.Core_Loss_Cancel_Details__c</field>
     </columns>
     <columns>
@@ -57,9 +60,6 @@
     </columns>
     <columns>
         <field>OpportunityLineItem.Core_Loss_Cancel_Reason__c</field>
-    </columns>
-    <columns>
-        <field>DESCRIPTION</field>
     </columns>
     <columns>
         <field>OpportunityLineItem.Core_Product_Segment__c</field>
@@ -138,6 +138,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_Claim_Date__c</dateColumn>
-        <interval>INTERVAL_CURRENT</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

@@ -44,6 +44,26 @@
                 <behavior>Edit</behavior>
                 <field>EndDate</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Sales_status__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Sales_Is_Recalled__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>time__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Sales_SoldTo_ShipTo_Acc__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Sales_Contract_Id__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -57,10 +77,6 @@
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>ActivatedById</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Type</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
@@ -175,15 +191,15 @@
     <relatedLists>
         <excludeButtons>EditAllProduct</excludeButtons>
         <fields>Product2</fields>
-        <fields>ProductCode</fields>
-        <fields>SBQQ__QuotedListPrice__c</fields>
+        <fields>Sales_SAPLine_Nbr__c</fields>
+        <fields>Quantity</fields>
         <fields>UnitPrice</fields>
         <fields>TotalPrice</fields>
-        <fields>SBQQ__OrderedQuantity__c</fields>
+        <fields>Sales_Contact__c</fields>
         <fields>SBQQ__QuotedQuantity__c</fields>
         <fields>SBQQ__QuoteLine__c</fields>
-        <fields>SBQQ__RevisedOrderProduct__c</fields>
-        <fields>SBQQ__ContractAction__c</fields>
+        <fields>Sales_OPN__c</fields>
+        <fields>Sales_Product_OPN__c</fields>
         <relatedList>RelatedOrderItemList</relatedList>
     </relatedLists>
     <relatedLists>
@@ -235,12 +251,19 @@
     <relatedLists>
         <relatedList>RelatedNoteList</relatedList>
     </relatedLists>
+    <relatedLists>
+        <fields>ORDERS.ORDER_NUMBER</fields>
+        <fields>SALES.ACCOUNT.NAME</fields>
+        <fields>ORDERS.STATUS</fields>
+        <fields>ORDERS.TOTAL_AMOUNT</fields>
+        <relatedList>Order.Sales_Original_Order__c</relatedList>
+    </relatedLists>
     <relatedObjects>AccountId</relatedObjects>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h5000000V0Hw6</masterLabel>
+        <masterLabel>00h2D000000kBVZ</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

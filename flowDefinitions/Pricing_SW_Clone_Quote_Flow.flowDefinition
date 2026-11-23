@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <FlowDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
-    <activeVersionNumber>1</activeVersionNumber>
+    <activeVersionNumber>20</activeVersionNumber>
+    <description>Used in Clone Action on Quote object for Software &amp; Services Quotes</description>
+    <masterLabel>Pricing_SW Clone Quote Flow</masterLabel>
 </FlowDefinition>

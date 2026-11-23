@@ -48,16 +48,10 @@
         <field>Case.Core_Last_Case_Comment__c</field>
     </columns>
     <columns>
-        <field>Case.Core_Last_Case_Comment_Timestamp__c</field>
-    </columns>
-    <columns>
         <field>CREATED_DATE</field>
     </columns>
     <columns>
-        <field>Case.Core_IPS_Date_Time_Close_Pending__c</field>
-    </columns>
-    <columns>
-        <field>CLOSED_DATE</field>
+        <field>Case.Core_Last_Case_Comment_Timestamp__c</field>
     </columns>
     <columns>
         <field>Case.Core_IPS_Age__c</field>
@@ -70,9 +64,6 @@
     </columns>
     <columns>
         <field>Case.Core_External_Issue_Subcategory__c</field>
-    </columns>
-    <columns>
-        <field>ACCOUNT.NAME</field>
     </columns>
     <columns>
         <field>FK_NAME</field>
@@ -88,7 +79,7 @@
         </criteriaItems>
         <language>en_US</language>
     </filter>
-    <format>Summary</format>
+    <format>Matrix</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>STATUS</field>
@@ -99,7 +90,7 @@
         <field>Case.Core_Sub_Status__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Stellantis R1 - Harman</name>
+    <name>FCA - Harman R1</name>
     <params>
         <name>units</name>
         <value>h</value>

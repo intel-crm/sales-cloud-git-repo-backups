@@ -109,12 +109,12 @@ public without sharing class Pricing_Manage_Small_Volume_Deal  extends TriggerHa
                              Decimal capSize = quoteProgram.Pricing_Exception_Quota__c;
                              creationAllowed = 'false:'+capSize+':'+capSize;
                              svdCreationAllowed.put(quoteProgram.Pricing_Quote_Type__c,creationAllowed);
-                         }
-                     }
+                }
+            } 
                  } 
-                 return svdCreationAllowed;   
-             }else {
-                 return null;
+            return svdCreationAllowed;   
+        }else {
+            return null;
              }
         }
         catch(exception ex){

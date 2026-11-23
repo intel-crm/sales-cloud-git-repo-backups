@@ -36,6 +36,7 @@ export default class Pricing_QuoteLine_BulkSalesRepAction extends LightningEleme
 
     @api recordId;
     @track data = [];
+    @track dataToDisplay = [];
     @track error = '';
     @track selectedData = [];
     @api objectApiName;
@@ -60,6 +61,7 @@ export default class Pricing_QuoteLine_BulkSalesRepAction extends LightningEleme
     @track headerTitle;
     @track issdmfastrack = false;
     @track isDataCenterCPU = false;
+    @track isQUoteDataCenter = false;
 
     showSoftWarning = false;
     sftw_Action = '';
@@ -89,6 +91,7 @@ export default class Pricing_QuoteLine_BulkSalesRepAction extends LightningEleme
         this.isSpinner = true;
         this.noRecords = false;
         this.data = [];
+        console.log('Fetching quote lines for recordId: ' + this.recordId);
         getQuoteLineDetails({ quoteId: this.recordId })
             .then(result => {
                 if (result.length == 0) {
@@ -128,9 +131,29 @@ export default class Pricing_QuoteLine_BulkSalesRepAction extends LightningEleme
             });
     }
 
+    handlePaginatorChange(event) {
+        this.dataToDisplay = event.detail;
+        this.isSpinner = false;
+    }
+
+    // allSelected(event) {
+    //     let selectedRows = this.template.querySelectorAll('lightning-input');
+    //     for (let i = 0; i < selectedRows.length; i++) {
+    //         if (selectedRows[i].type === 'checkbox' && selectedRows[i].className.includes('checkBoxForUpdate')) {
+    //             selectedRows[i].checked = event.target.checked;
+    //             if (i > 0) {
+    //                 let element = this.dataToDisplay.find(ele => ele.Id === selectedRows[i].dataset.id);
+    //                 element.isSelected = event.target.checked;
+    //                 this.dataToDisplay = [...this.dataToDisplay];
+    //             }
+    //         }
+    //     }
+    //     this.disabledBtn = this.dataToDisplay.find(ele => ele.isSelected == true) ? false : true;
+    // }
+
     allSelected(event) {
         let selectedRows = this.template.querySelectorAll('lightning-input');
-        let newDataToDisplay = [...this.data]; // Clone the data to avoid direct mutation
+        let newDataToDisplay = [...this.dataToDisplay]; // Clone the data to avoid direct mutation
 
         for (let i = 0; i < selectedRows.length; i++) {
             if (selectedRows[i].type === 'checkbox' && selectedRows[i].className.includes('checkBoxForUpdate')) {
@@ -148,9 +171,9 @@ export default class Pricing_QuoteLine_BulkSalesRepAction extends LightningEleme
                 }
             }
         }
-        this.data = newDataToDisplay; // Replace the reactive property with the updated array    
+        this.dataToDisplay = newDataToDisplay; // Replace the reactive property with the updated array    
         // Update the button's disabled state based on selection
-        this.disabledBtn = this.data.find(ele => ele.isSelected == true) ? false : true;
+        this.disabledBtn = newDataToDisplay.some(ele => ele.isSelected === true) ? false : true;
     }
 
 
@@ -190,9 +213,18 @@ export default class Pricing_QuoteLine_BulkSalesRepAction extends LightningEleme
         parObj.style.width = newWidth + 'px';
     }
 
+    // handleCheckBox(event) {
+    //     let element = this.dataToDisplay.find(ele => ele.Id === event.target.dataset.id);
+    //     element.isSelected = event.target.checked;
+    //     this.dataToDisplay = [...this.dataToDisplay];
+    //     let allSelect = this.template.querySelector(`[data-id="selectAllCheckBox"]`);
+    //     allSelect.checked = event.target.checked == false ? false : false;
+    //     this.disabledBtn = this.dataToDisplay.find(ele => ele.isSelected == true) ? false : true;
+    // }
+
     handleCheckBox(event) {
         const itemId = event.target.dataset.id; // Get the ID of the item being checked
-        const newDataToDisplay = this.data.map(item => {
+        const newDataToDisplay = this.dataToDisplay.map(item => {
             if (item.Id === itemId) {
                 return {
                     ...item, // Spread the existing properties
@@ -201,26 +233,25 @@ export default class Pricing_QuoteLine_BulkSalesRepAction extends LightningEleme
             }
             return item; // Return the item as is if it's not the one being updated
         });
-
-        this.data = newDataToDisplay; // Update the reactive property
-
+    
+        this.dataToDisplay = newDataToDisplay; // Update the reactive property
+    
         // Update the "Select All" checkbox based on whether all rows are selected
         const allSelectCheckbox = this.template.querySelector(`[data-id="selectAllCheckBox"]`);
         const areAllChecked = newDataToDisplay.every(item => item.isSelected);
         allSelectCheckbox.checked = areAllChecked;
-
         // Enable or disable the button based on selection
-        this.disabledBtn = this.data.find(ele => ele.isSelected == true) ? false : true;
+        this.disabledBtn = this.dataToDisplay.find(ele => ele.isSelected == true) ? false : true;
     }
-
-
     closeModal() {
         this.openModal = false;
         this.data = [];
+        this.dataToDisplay = [];
         this.error = '';
         this.selectedData = [];
         this.disabledBtn = true;
         this.showCommentField = false;
+        //this.isBulkCustRevision = false;
         this.showSoftWarning = false;
         this.revisionComments = '';
         this.commentLength = 0;
@@ -229,23 +260,23 @@ export default class Pricing_QuoteLine_BulkSalesRepAction extends LightningEleme
 
     handleRecommendedPriceChange(event) {
         // on Change of Pricing_FSE_Recommended_Price_Nm__c
-        let element = this.data.find(ele => ele.Id === event.target.dataset.id);
+        let element = this.dataToDisplay.find(ele => ele.Id === event.target.dataset.id);
         element.Pricing_FSE_Recommended_Price_Nm__c = event.target.value;
-        this.data = [...this.data];
+        this.dataToDisplay = [...this.dataToDisplay];
     }
 
     handleCommentChange(event) {
         // on Change of approveRejectComments
-        let element = this.data.find(ele => ele.Id === event.target.dataset.id);
+        let element = this.dataToDisplay.find(ele => ele.Id === event.target.dataset.id);
         element.approveRejectComments = event.target.value;
-        this.data = [...this.data];
+        this.dataToDisplay = [...this.dataToDisplay];
     }
 
     handleSdmFastTrackChange(event) {
         // on Change of SdmFastrack
-        let element = this.data.find(ele => ele.Id === event.target.dataset.id);
+        let element = this.dataToDisplay.find(ele => ele.Id === event.target.dataset.id);
         element.Pricing_SDM_Fast_Track__c = event.target.checked;
-        this.data = [...this.data];
+        this.dataToDisplay = [...this.dataToDisplay];
     }
 
     async handleAction(event) {
@@ -254,7 +285,7 @@ export default class Pricing_QuoteLine_BulkSalesRepAction extends LightningEleme
         this.disabledBtn = true;
         this.selectedData = [];
 
-        this.data.forEach(element => {
+        this.dataToDisplay.forEach(element => {
             if (element.isSelected) {
                 delete element.Pricing_Product_Nm__c;
                 delete element.SBQQ__Quote__c;
@@ -278,7 +309,7 @@ export default class Pricing_QuoteLine_BulkSalesRepAction extends LightningEleme
 
         if (action == 'Approved' && (this.selectedData.length > 0) && (this.error.length === 0)) {
             this.selectedData.forEach(element => {
-                if (element.isSelected && (element.Pricing_Program_Type_Nm__c == clientQuoteLine) && (element.Pricing_SIPP_Cb__c == false) && (element.hasOwnProperty('Pricing_Market_Segment_values_Nm__c')) && (element.Pricing_Market_Segment_values_Nm__c == "Corp") && (element.Pricing_Change_Request_cb__c == false) && (element.Pricing_Form_Factor_Nm__c == 'Notebook')) {
+                if (element.isSelected && (element.Pricing_Program_Type_Nm__c == clientQuoteLine) && (element.Pricing_SIPP_Cb__c == false) && (element.hasOwnProperty('Pricing_Market_Segment_values_Nm__c')) && (element.Pricing_Market_Segment_values_Nm__c == "Corp") && (element.Pricing_Change_Request_cb__c == false)&&(element.Pricing_Form_Factor_Nm__c == "Notebook")) {
                     this.isSpinner = false;
                     this.showSoftWarning = true;
                     this.sftw_Action = action;
@@ -379,15 +410,15 @@ export default class Pricing_QuoteLine_BulkSalesRepAction extends LightningEleme
     }
 
     workloadChange(event) {
-        let workloadelement = this.data.find(ele => ele.Id === event.target.dataset.id);
+        let workloadelement = this.dataToDisplay.find(ele => ele.Id === event.target.dataset.id);
         workloadelement.Pricing_Workload_Nm__c = event.target.value;
-        this.data = [...this.data];
+        this.dataToDisplay = [...this.dataToDisplay];
     }
 
     rejectionReasonsChange(event) {
-        let element = this.data.find(ele => ele.Id === event.target.dataset.id);
+        let element = this.dataToDisplay.find(ele => ele.Id === event.target.dataset.id);
         element.Pricing_Rejection_Reason__c = event.target.value;
-        this.data = [...this.data];
+        this.dataToDisplay = [...this.dataToDisplay];
     }
 
     handleContinueSoftWarning() {

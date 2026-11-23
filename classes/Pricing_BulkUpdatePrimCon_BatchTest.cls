@@ -26,11 +26,11 @@ public class Pricing_BulkUpdatePrimCon_BatchTest {
             acc1.BillingCity = 'Texas';
             acc1.BillingCountry = 'USA';
             acc1.BillingStreet = 'G-210';
-            acc1.Core_Sales_Groups__c = 'Americas Brazil Sales Group';
+            acc1.Core_Sales_Groups__c = 'Americas Partner Led';
             insert acc1;
 
             List<Contact> contactListwithSameAccount = Pricing_Test_Utility.createPrimaryContact(acc.Id, 2);
-            Contact contactwithDiffAccount = Pricing_Test_Utility.createPrimaryContact(acc1.Id);
+            Contact contactwithDiffAccount = Pricing_Test_Utility.createPrimaryContactWithParam(acc1.Id,'BulkUpdate_PrimCon_Batch');
 
             //Partner Users for Test Account
             User partnerUser = Pricing_Test_Utility.createPartnerUser(acc.Id);

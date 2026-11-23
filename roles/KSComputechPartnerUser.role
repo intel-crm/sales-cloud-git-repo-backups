@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>KS Computech Partner User</description>
+    <description>K S Computech Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>KS Computech Partner User</name>
+    <name>K S Computech Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>KSComputechPartnerManager</parentRole>
 </Role>

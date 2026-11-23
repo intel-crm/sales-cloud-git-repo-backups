@@ -11,35 +11,7 @@
     </fields>
     <fields>
         <label>請求バッチのステータス</label>
-        <name>Core_MDF_ClaimBatch_Status_Nm__c</name>
-        <picklistValues>
-            <masterLabel>Failed</masterLabel>
-            <translation>障害</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Pending Documents</masterLabel>
-            <translation>ドキュメント提出待ち</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Submitted</masterLabel>
-            <translation>提出完了</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Successful</masterLabel>
-            <translation>正常</translation>
-        </picklistValues>
-    </fields>
-    <fields>
-        <label>請求バッチのステータス</label>
         <name>Core_MDF_Claim_Batch_Status_Nm__c</name>
-    </fields>
-    <fields>
-        <label>請求件数 (提出完了)</label>
-        <name>Core_MDF_Claim_Count_InProgress_Cnt__c</name>
-    </fields>
-    <fields>
-        <label>請求数 (保留中の文書)</label>
-        <name>Core_MDF_Claim_Count_Pending_Document__c</name>
     </fields>
     <fields>
         <label>請求数 (不合格)</label>
@@ -54,25 +26,9 @@
         <name>Core_MDF_Claim_Total_Cnt__c</name>
     </fields>
     <fields>
-        <label>作成者</label>
-        <name>Core_MDF_CreatedBy_Nm__c</name>
-    </fields>
-    <fields>
-        <label>最終更新者</label>
-        <name>Core_MDF_Last_ModifiedBy_Nm__c</name>
-    </fields>
-    <fields>
-        <label>担当者</label>
-        <name>Core_MDF_Owner_Nm__c</name>
-    </fields>
-    <fields>
         <label>プログラム</label>
         <name>Core_MDF_Program_Id__c</name>
         <relationshipLabel><!-- Claim Batches --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Send Email --></label>
-        <name>Core_MDF_Send_Email__c</name>
     </fields>
     <nameFieldLabel>請求バッチ名</nameFieldLabel>
 </CustomObjectTranslation>

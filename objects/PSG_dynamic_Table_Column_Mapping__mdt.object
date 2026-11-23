@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Metadata for store table columns</description>
+    <fields>
+        <fullName>PSG_Column__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Column</label>
+        <length>32768</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>PSG_Context__c</fullName>
+        <description>Describes the context of the datatable</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Context</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>dynamic Table Column Mapping</label>
+    <listViews>
+        <fullName>All_Data</fullName>
+        <columns>PSG_Column__c</columns>
+        <columns>PSG_Context__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All Data</label>
+        <language>en_US</language>
+    </listViews>
+    <pluralLabel>dynamic Table Column Mappings</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

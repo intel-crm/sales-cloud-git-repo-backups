@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>Edit</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>EMP of Susan Blocher</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>EMP_10482098_Rob_Rollinger_Jr</name>
+    <opportunityAccessLevel>Edit</opportunityAccessLevel>
+    <parentRole>EMP_11814778_Susan_Blocher</parentRole>
+</Role>

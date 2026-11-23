@@ -6,5 +6,5 @@
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>KWARK Komputer Tysiaczni S.J. Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>KWARKKomputerTysiaczniSJPartnerManager</parentRole>
 </Role>

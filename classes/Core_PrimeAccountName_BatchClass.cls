@@ -29,7 +29,7 @@ global class Core_PrimeAccountName_BatchClass implements Database.Batchable<sObj
     }  
     global Database.QueryLocator start(Database.BatchableContext BC){       
         Core_Batch_header__c batchHeader = [Select id,Last_Run_Date_Time__c,Email_Distribution_List__c from Core_Batch_Header__c where name = :batchClassName limit 1];
-        String query = 'SELECT id,Core_Opp_Prime_Account_Name__c,Accountid,Account.Core_Prime_Account_Name__c FROM Opportunity';                                    
+        String query = 'SELECT id,Core_Opp_Prime_Account_Name__c,Accountid FROM Opportunity';  //removed Core_Prime_Account_Name__c                                   
         batchProcessing.Batch_Header__C = batchHeader.id;
         batchProcessing.Core_Email_Distribution_List__c = batchHeader.Email_Distribution_List__c;
         batchProcessing.Core_Salesforce_Job_Id__c = BC.getJobId();
@@ -65,7 +65,7 @@ global class Core_PrimeAccountName_BatchClass implements Database.Batchable<sObj
             accIdList.add(oppObj.AccountId);
             oppAccMap.put(oppObj,oppObj.AccountId);
         }
-        accList = [select Id,  Core_Prime_Account_Name__c from Account where id in:accIdList];
+        accList = [select Id,  Core_Unified_Global_Customer_Name__c from Account where id in:accIdList];
         for(Account a: accList){
             accPrimeMap.put(a.Id,a);
             system.debug('accPrimeMap-->'+accPrimeMap);

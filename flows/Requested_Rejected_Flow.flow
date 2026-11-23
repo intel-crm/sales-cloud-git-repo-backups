@@ -1,10 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <actionCalls>
+        <name>Error_Message</name>
+        <label>Error Message</label>
+        <locationX>842</locationX>
+        <locationY>674</locationY>
+        <actionName>c:ToastMessage</actionName>
+        <actionType>component</actionType>
+        <connector>
+            <targetReference>Redirect_to_Record</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>messageText</name>
+            <value>
+                <elementReference>Rejection_Error</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>type</name>
+            <value>
+                <elementReference>Rejection_Error</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>c:ToastMessage</nameSegment>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <actionCalls>
         <name>Redirect_to_Record</name>
         <label>Redirect to Record Page</label>
-        <locationX>314</locationX>
-        <locationY>890</locationY>
+        <locationX>710</locationX>
+        <locationY>1190</locationY>
         <actionName>c:navigateToUrl</actionName>
         <actionType>component</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -15,14 +41,13 @@
             </value>
         </inputParameters>
         <nameSegment>c:navigateToUrl</nameSegment>
-        <offset>0</offset>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </actionCalls>
     <actionCalls>
         <name>Send_Request_Rejection_Email_To_User</name>
         <label>Send Request Rejection  Email to User</label>
-        <locationX>314</locationX>
-        <locationY>782</locationY>
+        <locationX>578</locationX>
+        <locationY>998</locationY>
         <actionName>emailSimple</actionName>
         <actionType>emailSimple</actionType>
         <connector>
@@ -66,13 +91,12 @@
             </value>
         </inputParameters>
         <nameSegment>emailSimple</nameSegment>
-        <offset>0</offset>
     </actionCalls>
     <actionCalls>
         <name>Show_Rejected_Message</name>
         <label>Show Rejected Message</label>
-        <locationX>314</locationX>
-        <locationY>674</locationY>
+        <locationX>578</locationX>
+        <locationY>890</locationY>
         <actionName>c:ToastMessage</actionName>
         <actionType>component</actionType>
         <connector>
@@ -86,7 +110,6 @@
             </value>
         </inputParameters>
         <nameSegment>c:ToastMessage</nameSegment>
-        <offset>0</offset>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </actionCalls>
     <apiVersion>56.0</apiVersion>
@@ -94,10 +117,10 @@
     <decisions>
         <name>check_account_reject_status</name>
         <label>check account reject status</label>
-        <locationX>314</locationX>
+        <locationX>281</locationX>
         <locationY>242</locationY>
         <defaultConnector>
-            <targetReference>Check_Request_Status</targetReference>
+            <targetReference>check_account_request_is_null</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -117,12 +140,44 @@
         </rules>
     </decisions>
     <decisions>
-        <name>Check_Request_Status</name>
-        <label>Check Request Status</label>
-        <locationX>578</locationX>
+        <name>check_account_request_is_null</name>
+        <label>check account request  is null</label>
+        <locationX>512</locationX>
         <locationY>350</locationY>
         <defaultConnector>
-            <targetReference>Rejection_Error_Screen_Message</targetReference>
+            <targetReference>Rejection_Reason_Input_Screen</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>request_flow</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Account_Request.Requested_Account__r.Name</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Account_Request.Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>In Process</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>status_check</targetReference>
+            </connector>
+            <label>request flow</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_Request_Status</name>
+        <label>Check Request Status</label>
+        <locationX>710</locationX>
+        <locationY>566</locationY>
+        <defaultConnector>
+            <targetReference>Error_Message</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -143,7 +198,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Rejection_Reason_Input_Screen</targetReference>
+                <targetReference>Update_Status_Values</targetReference>
             </connector>
             <label>Request Status Value</label>
         </rules>
@@ -154,8 +209,26 @@
         <dataType>String</dataType>
         <expression>LEFT({!$Api.Partner_Server_URL_260}, FIND(&apos;/services&apos;, {!$Api.Partner_Server_URL_260})) &amp; {!recordId}</expression>
     </formulas>
+    <formulas>
+        <name>PlatformHeader</name>
+        <dataType>String</dataType>
+        <expression>
+&apos;{&apos;+
+&apos;CustomerProcessEngagement:&apos;+TEXT({!Get_Account_Request.Customer_Process_Engagement__c}) +&apos;,&apos; +
+&apos;CustomerAggregationType:&apos; +TEXT({!Get_Account_Request.Customer_Aggregation_Type__c})+
+&apos;}&apos;</expression>
+    </formulas>
+    <formulas>
+        <name>UpdateACMRecord</name>
+        <dataType>String</dataType>
+        <expression>
+&apos;{&apos;+
+&apos;status:&apos;+TEXT({!Get_Account_Request.Status__c}) +&apos;,&apos; +
+&apos;AQId:&apos; +{!Get_Account_Request.Id} +
+&apos;}&apos;</expression>
+    </formulas>
     <interviewLabel>Requested Rejected Flow {!$Flow.CurrentDateTime}</interviewLabel>
-    <label>UCD ACM Requested Rejected Flow</label>
+    <label>Requested Rejected Flow</label>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
@@ -176,117 +249,37 @@
     </processMetadataValues>
     <processType>Flow</processType>
     <recordCreates>
-        <name>Create_Log_Entry_For_Get_Account_Request_Record</name>
-        <label>Create Log Entry For Get Account Request Record</label>
-        <locationX>1106</locationX>
-        <locationY>242</locationY>
-        <inputAssignments>
-            <field>Core_Details__c</field>
-            <value>
-                <elementReference>$Flow.FaultMessage</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Core_Origin__c</field>
-            <value>
-                <stringValue>Requested_Rejected_Flow</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Core_Project__c</field>
-            <value>
-                <stringValue>ACM</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Core_Scope__c</field>
-            <value>
-                <stringValue>Get Account Request</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Core_Severity__c</field>
-            <value>
-                <stringValue>Error</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Core_Tags__c</field>
-            <value>
-                <elementReference>Get_Account_Request.Id</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Core_When__c</field>
-            <value>
-                <elementReference>$Flow.CurrentDateTime</elementReference>
-            </value>
-        </inputAssignments>
-        <object>Core_Log_Entry__c</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordCreates>
-    <recordCreates>
-        <name>Create_Log_Entry_For_Update_Status_value</name>
-        <label>Create Log Entry For Update Status value</label>
+        <name>Create_Records_1</name>
+        <label>Create Records 1</label>
         <locationX>578</locationX>
-        <locationY>674</locationY>
+        <locationY>782</locationY>
+        <connector>
+            <targetReference>Show_Rejected_Message</targetReference>
+        </connector>
         <inputAssignments>
-            <field>Core_Details__c</field>
+            <field>Headers__c</field>
             <value>
-                <elementReference>$Flow.FaultMessage</elementReference>
+                <elementReference>PlatformHeader</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
-            <field>Core_Origin__c</field>
+            <field>Message__c</field>
             <value>
-                <stringValue>Requested_Rejected_Flow</stringValue>
+                <elementReference>UpdateACMRecord</elementReference>
             </value>
         </inputAssignments>
-        <inputAssignments>
-            <field>Core_Project__c</field>
-            <value>
-                <stringValue>ACM</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Core_Scope__c</field>
-            <value>
-                <stringValue>Update Status Value</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Core_Severity__c</field>
-            <value>
-                <stringValue>Error</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Core_Tags__c</field>
-            <value>
-                <elementReference>Get_Account_Request.Id</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Core_When__c</field>
-            <value>
-                <elementReference>$Flow.CurrentDateTime</elementReference>
-            </value>
-        </inputAssignments>
-        <object>Core_Log_Entry__c</object>
+        <object>ACM_Account_Change_Event__e</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordCreates>
     <recordLookups>
         <name>Get_Account_Request</name>
         <label>Get Account Request</label>
-        <locationX>314</locationX>
+        <locationX>281</locationX>
         <locationY>134</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>check_account_reject_status</targetReference>
         </connector>
-        <faultConnector>
-            <targetReference>Create_Log_Entry_For_Get_Account_Request_Record</targetReference>
-        </faultConnector>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
@@ -302,14 +295,11 @@
     <recordUpdates>
         <name>Update_Status_Values</name>
         <label>Update Status Values</label>
-        <locationX>314</locationX>
-        <locationY>566</locationY>
+        <locationX>578</locationX>
+        <locationY>674</locationY>
         <connector>
-            <targetReference>Show_Rejected_Message</targetReference>
+            <targetReference>Create_Records_1</targetReference>
         </connector>
-        <faultConnector>
-            <targetReference>Create_Log_Entry_For_Update_Status_value</targetReference>
-        </faultConnector>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
@@ -348,7 +338,7 @@
         <allowPause>false</allowPause>
         <fields>
             <name>error_text_status</name>
-            <fieldText>&lt;p&gt;Cannot reject the record&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p&gt;This request has been already rejected&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
             <styleProperties>
                 <verticalAlignment>
@@ -364,47 +354,23 @@
         <showHeader>true</showHeader>
     </screens>
     <screens>
-        <name>Rejection_Error_Screen_Message</name>
-        <label>Rejection Error Screen Message</label>
-        <locationX>842</locationX>
-        <locationY>458</locationY>
-        <allowBack>false</allowBack>
-        <allowFinish>true</allowFinish>
-        <allowPause>false</allowPause>
-        <fields>
-            <name>Rejection_Error_Message</name>
-            <fieldText>&lt;p&gt;Cannot reject the record&lt;/p&gt;</fieldText>
-            <fieldType>DisplayText</fieldType>
-            <styleProperties>
-                <verticalAlignment>
-                    <stringValue>top</stringValue>
-                </verticalAlignment>
-                <width>
-                    <stringValue>12</stringValue>
-                </width>
-            </styleProperties>
-        </fields>
-        <nextOrFinishButtonLabel>Ok</nextOrFinishButtonLabel>
-        <showFooter>true</showFooter>
-        <showHeader>true</showHeader>
-    </screens>
-    <screens>
         <name>Rejection_Reason_Input_Screen</name>
         <label>Rejection Reason Input Screen</label>
-        <locationX>314</locationX>
+        <locationX>710</locationX>
         <locationY>458</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
         <backButtonLabel>Cancel</backButtonLabel>
         <connector>
-            <targetReference>Update_Status_Values</targetReference>
+            <targetReference>Check_Request_Status</targetReference>
         </connector>
         <fields>
             <name>Rejection_Reason</name>
             <dataType>String</dataType>
             <fieldText>Rejection Reason</fieldText>
             <fieldType>InputField</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>true</isRequired>
             <styleProperties>
                 <verticalAlignment>
@@ -419,8 +385,33 @@
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
     </screens>
+    <screens>
+        <name>status_check</name>
+        <label>status check</label>
+        <locationX>314</locationX>
+        <locationY>458</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>error_Account_Requested</name>
+            <fieldText>&lt;p&gt;&lt;span style=&quot;font-size: 14px; font-family: -apple-system, BlinkMacSystemFont, &amp;quot;Segoe UI&amp;quot;, system-ui, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Web&amp;quot;, sans-serif;&quot;&gt;The request is approved in Sales CRM. The approval is pending in MDM system.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <nextOrFinishButtonLabel>OK</nextOrFinishButtonLabel>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
     <start>
-        <locationX>188</locationX>
+        <locationX>155</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Get_Account_Request</targetReference>
@@ -429,8 +420,8 @@
     <status>Active</status>
     <textTemplates>
         <name>Request_Rejection_Email_Body</name>
-        <isViewedAsPlainText>false</isViewedAsPlainText>
-        <text>&lt;p&gt;Hi {!Get_Account_Request.Requestor_Name__c},&lt;/p&gt;&lt;p&gt;Your&amp;nbsp;new account create request has not been approved due to certain criteria entered is not meeting standards for creation. To view the specific reason for the rejection, review the Account Request URL link below and see the Rejected Reason field.&lt;/p&gt;&lt;p&gt;If you believe this is an error, you can utilize the chatter feature within your account request URL to clarify questions with operations team, OR submit a new account request with revised account information.&lt;/p&gt;&lt;p&gt;{!AccountLink}&lt;/p&gt;
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>&lt;p&gt;Hi {!Get_Account_Request.Requestor_Name__c},&lt;/p&gt;&lt;p&gt;Your&amp;nbsp;new account create request has not been approved due to certain criteria entered is not meeting standards for creation. If you believe this is an error, you can utilize the chatter feature within your account request URL to clarify questions with operations team, OR submit a new account request with revised account information.&lt;/p&gt;&lt;p&gt;{!AccountLink}&lt;/p&gt;
 Regards,&lt;br&gt;Account and Contact Management Team.&lt;/br&gt;</text>
     </textTemplates>
     <variables>

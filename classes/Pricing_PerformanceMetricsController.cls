@@ -2,8 +2,8 @@
  * @description       : Class for Performance Metrics Aura Component
  * @author            : Sandeep Chamate
  * @group             : Accenture
- * @last modified on  : 02-06-2024
- * @last modified by  : Sandeep Chamate
+ * @last modified on  : 09-28-2024
+ * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 public without sharing class Pricing_PerformanceMetricsController {
     
@@ -21,11 +21,13 @@ public without sharing class Pricing_PerformanceMetricsController {
                 }
                 if(!perfMetricsToUpdate.isEmpty())
                 {
-                    update perfMetricsToUpdate;
+                    //update perfMetricsToUpdate
+                    Pricing_DatabaseOperation.performUpdate(perfMetricsToUpdate,true,false);
                 }
                 if(!perfMetricsToInsert.isEmpty())
                 {
-                    insert perfMetricsToInsert;
+                    //insert perfMetricsToInsert;
+                    Pricing_DatabaseOperation.performInsert(perfMetricsToInsert,true,false);
                 }
                 return true;
             }else{
@@ -91,7 +93,7 @@ public without sharing class Pricing_PerformanceMetricsController {
         }*/
         return [SELECT Id,Pricing_Performance_Metric_Nm__c, Pricing_Weighting_Pct__c, Pricing_Intel_SKU_Performance_Nbr__c ,
                 Pricing_Comp_SKU_Performance_Nbr__c, Pricing_Other_Nm__c,Pricing_Quote_Line__r.RecordType.Name
-                FROM Pricing_Performance_Metric__c WHERE Pricing_Quote_Line__c = :recordId order by Id];    
+                FROM Pricing_Performance_Metric__c WHERE Pricing_Quote_Line__c = :recordId order by Id];
     }
     //This method takes QuoteLine record Id as input and returns True if the page layout is ReadOnly
     //Else it returns false
@@ -112,7 +114,7 @@ public without sharing class Pricing_PerformanceMetricsController {
             lstPermissionSets.add(psa.PermissionSet.Name);
             if(Label.Pricing_Tender_PermissionSets_AllExternal.split(':').contains(psa.PermissionSet.Name)) {
                 isPartnerUser = true;
-        }
+            }
         }
 
         if(quoteLine.SBQQ__Quote__r.Pricing_On_Hold_Cb__c && !isPartnerUser) {
@@ -170,7 +172,8 @@ public without sharing class Pricing_PerformanceMetricsController {
             List<Pricing_Performance_Metric__c> data = new List<Pricing_Performance_Metric__c>();
             data= [Select Id FROM Pricing_Performance_Metric__c where Id =:recordId];
             if(data.size() > 0){
-                delete data;
+                //delete data;
+                Pricing_DatabaseOperation.performDelete(data,true,false);
             }  
         }
         catch(Exception e){

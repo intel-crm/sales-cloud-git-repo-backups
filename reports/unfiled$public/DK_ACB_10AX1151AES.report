@@ -13,9 +13,6 @@
         <field>CREATED_DATE</field>
     </columns>
     <columns>
-        <field>FAMILY</field>
-    </columns>
-    <columns>
         <field>Product2.Core_Platform_Name__c</field>
     </columns>
     <columns>
@@ -31,6 +28,9 @@
         <field>Product2.Core_Code_Name__c</field>
     </columns>
     <columns>
+        <field>Account.Core_Is_Active__c</field>
+    </columns>
+    <columns>
         <field>PRODUCT_ACTIVE</field>
     </columns>
     <filter>
@@ -42,16 +42,16 @@
             <value>FPGA</value>
         </criteriaItems>
         <criteriaItems>
-            <column>PRODUCT_NAME</column>
+            <column>Product2.Core_Platform_Config__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>AGFA012R24B2E2V</value>
+            <value>Arria</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Tabular</format>
-    <name>Product w Hierarchy</name>
+    <name>DK-ACB-10AX1151AES</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -73,10 +73,8 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>Product2.Core_OPN__c</sortColumn>
-    <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
-        <dateColumn>CLOSE_DATE</dateColumn>
+        <dateColumn>OpportunityLineItem.Core_Approved_Date__c</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>
     </timeFrameFilter>
 </Report>

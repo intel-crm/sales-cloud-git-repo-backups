@@ -1,21 +1,11 @@
-/****************************************************************************************************
-Apex Class Name : PCC_UpdateSDPFlowController
-Created Date    : 16/06/2026
-Function        : Controller class for the apex action in flow 'PCC_Update_SDP_Price'
-Modifications   :
-*****************************************************************************************************
-* Developer                   Date                   Description
-* ----------------------------------------------------------------------------
-* Varun                     16/06/2026             Created
-*****************************************************************************************************/
-public with sharing class PCC_UpdateSDPFlowController { 
+public with sharing class PCC_UpdateSDPFlowController {
     
     @InvocableMethod(label='Bulk Update DRP SDP Price')
     public static List<BulkUpdateResponse> bulkUpdateDRPRecords(List<BulkUpdateRequest> requests) {
         
         List<BulkUpdateResponse> responses = new List<BulkUpdateResponse>();
         
-        // Use a Map instead of a List to automatically deduplicate records by ID
+        // 🛡️ FIX: Use a Map instead of a List to automatically deduplicate records by ID
         Map<Id, Core_Design_Registration_Product__c> uniqueRecordsToUpdateMap = new Map<Id, Core_Design_Registration_Product__c>();
         
         // Track which records belong to which request position index
@@ -43,7 +33,7 @@ public with sharing class PCC_UpdateSDPFlowController {
                         drp.PCC_Standard_Distributor_Price__c = request.standardDistiPrice;
                         validRecordsForThisRequest.add(drp);
                         
-                        // Putting it in a Map ensures that if the same ID appears twice, it is only updated once
+                        // 🛡️ Putting it in a Map ensures that if the same ID appears twice, it is only updated once
                         uniqueRecordsToUpdateMap.put(drp.Id, drp); 
                     }
                 }
@@ -55,7 +45,7 @@ public with sharing class PCC_UpdateSDPFlowController {
 if(!uniqueRecordsToUpdateMap.isEmpty()) {
     List<Core_Design_Registration_Product__c> deduplicatedList = uniqueRecordsToUpdateMap.values();
     
-    //  Cleanse the list of all system, read-only, and hidden fields before updating
+    // 🛡️ FIX: Cleanse the list of all system, read-only, and hidden fields before updating
     SObjectAccessDecision decision = Security.stripInaccessible(AccessType.UPDATABLE, deduplicatedList);
     List<Core_Design_Registration_Product__c> cleansedList = (List<Core_Design_Registration_Product__c>) decision.getRecords();
     
@@ -99,7 +89,7 @@ if(!uniqueRecordsToUpdateMap.isEmpty()) {
                                 errorMsg += '; ';
                             }
                             response.errorMessages.add(errorMsg);
-                            System.debug('Partial Commit Failure logged: ' + errorMsg);
+                            System.debug('❌ Partial Commit Failure logged: ' + errorMsg);
                         }
                     }
                 }

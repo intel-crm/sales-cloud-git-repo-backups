@@ -76,7 +76,6 @@
     <columns>
         <field>TYPE</field>
     </columns>
-    <description>**Do not Edit without Approval**</description>
     <filter>
         <criteriaItems>
             <column>STAGE_NAME</column>

@@ -47,8 +47,8 @@
             <column>FK_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Org-005</value>
+            <operator>notEqual</operator>
+            <value>Org-000</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

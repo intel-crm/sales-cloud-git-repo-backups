@@ -4,22 +4,18 @@
     <protected>false</protected>
     <values>
         <field>API_Key__c</field>
-        <value xsi:type="xsd:string">https://apis.intel.com/v1/auth/token</value>
+        <value xsi:type="xsd:string">IUgUsxGqUH9r9Dce5CKEQxorKIKliQCw</value>
     </values>
     <values>
         <field>EndPointURL__c</field>
-        <value xsi:type="xsd:string">https://apis.intel.com/m2r/v1/sales-cloud/admin/registration/partners</value>
+        <value xsi:type="xsd:string">https://eip-generic-proxy1.cloudhub.io/eip-m2s-sls-adminreg/v1/sls/adminpartner/reg</value>
     </values>
     <values>
         <field>Password__c</field>
-        <value xsi:type="xsd:string">Zaa8Q~-E0uzRMDmEYTM1Z5zUWiuIiJAYIuB65bp-</value>
-    </values>
-    <values>
-        <field>Scope__c</field>
-        <value xsi:nil="true"/>
+        <value xsi:type="xsd:string">pW@adMinReg789!</value>
     </values>
     <values>
         <field>Username__c</field>
-        <value xsi:type="xsd:string">66d60bd5-1f92-47b8-a11f-4ae50ab9f8bd</value>
+        <value xsi:type="xsd:string">admin$regUser</value>
     </values>
 </CustomMetadata>

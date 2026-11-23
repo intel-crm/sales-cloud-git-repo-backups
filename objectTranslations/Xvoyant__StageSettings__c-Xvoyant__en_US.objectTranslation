@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>StageSettings</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>StageSettings</value>
+    </caseValues>
+    <fields>
+        <label><!-- CoachId --></label>
+        <name>Xvoyant__CoachId__c</name>
+    </fields>
+    <fields>
+        <label><!-- FunctionalGroupId --></label>
+        <name>Xvoyant__FunctionalGroupId__c</name>
+    </fields>
+    <fields>
+        <label><!-- StageId --></label>
+        <name>Xvoyant__StageId__c</name>
+    </fields>
+    <fields>
+        <label><!-- TrackName --></label>
+        <name>Xvoyant__TrackName__c</name>
+    </fields>
+    <fields>
+        <label><!-- TrackNum --></label>
+        <name>Xvoyant__TrackNum__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

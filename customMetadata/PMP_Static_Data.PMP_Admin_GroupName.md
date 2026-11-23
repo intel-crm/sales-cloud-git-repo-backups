@@ -4,6 +4,6 @@
     <protected>false</protected>
     <values>
         <field>Value__c</field>
-        <value xsi:type="xsd:string">PMP_All_Intel_Admin_Users</value>
+        <value xsi:type="xsd:string">PMP - All Intel Admin Users</value>
     </values>
 </CustomMetadata>

@@ -47,9 +47,9 @@ private class PCC_Deal_FindRelatedDuplicateDealsTest {
             
             Pricing_Competitor_Product__c cp = new Pricing_Competitor_Product__c(
                 Name = 'Write In Product',
-            Pricing_Competitor_Product_Provider_Nm__c = 'Pro-Z',
-            Pricing_Active_cb__c = true
-                );
+                Pricing_Competitor_Product_Provider_Nm__c = 'Pro-Z',
+                Pricing_Active_cb__c = true
+            );
             insert prod;
             insert cp;
             
@@ -65,8 +65,7 @@ private class PCC_Deal_FindRelatedDuplicateDealsTest {
             accTeam.add(new AccountTeamMember(AccountId = acc1.Id, TeamMemberRole = 'Technical Sales',UserId = fseUserList[0].Id));
             insert accTeam;
             
-            // User partnerUser =
-            Pricing_Test_Utility.createPartnerAdminUser(acc1.Id);
+            User partnerUser = Pricing_Test_Utility.createPartnerAdminUser(acc1.Id);
             Pricing_QuoteLineController.getDocumentId(Label.Pricing_Tender_T_C_Document);
             
             List<PricebookEntry> testPBEs = Core_Test_Utility.createPriceBookEntry(1, new List<Product2>{prod}, Test.getStandardPricebookId());
@@ -74,12 +73,12 @@ private class PCC_Deal_FindRelatedDuplicateDealsTest {
             
             
             
-            Id newOppRecTypeId = [select Id from RecordType where DeveloperName = 'Core_New_Opportunity' limit 1][0].Id;
+            Id newOppRecTypeId = [select Id from RecordType where DeveloperName = 'Core_New_Opportunity' limit 1][0].Id;       
             Opportunity opp = new Opportunity(Name = 'OppCAS', RecordTypeId = newOppRecTypeId,
-            AccountId = acc1.Id,Opportunity_Focus__c='',
-            StageName = 'Qualify', CloseDate = System.Date.today().addYears(1));
+                                              AccountId = acc1.Id,Opportunity_Focus__c='',
+                                              StageName = 'Qualify', CloseDate = System.Date.today().addYears(1));
             insert opp;
-            
+
             // create opportunity partner record
             
             Core_Opportunity_Partner__c partner = new Core_Opportunity_Partner__c();
@@ -91,10 +90,10 @@ private class PCC_Deal_FindRelatedDuplicateDealsTest {
             
             OpportunityLineItem oppLineItem = new OpportunityLineItem(
                 OpportunityId = opp.Id,
-            //Core_Design_Registration_Product_Id__c = prod.Id,
-            UnitPrice = 1000,
-            Quantity = 5,
-            PricebookEntryId = testPBEs[0].Id
+                //Core_Design_Registration_Product_Id__c = prod.Id,
+                UnitPrice = 1000,
+                Quantity = 5,
+                PricebookEntryId = testPBEs[0].Id
                 
             );
             insert oppLineItem;
@@ -114,13 +113,11 @@ private class PCC_Deal_FindRelatedDuplicateDealsTest {
             insert document;
             Test.startTest();
             
-            // boolean isPartner =
-            Pricing_QuoteLineController.isPartnerUser();
+            boolean isPartner = Pricing_QuoteLineController.isPartnerUser();
             //System.assert(isPartner, 'logged in user is not a Partner');
             System.runAs(adminUser[0]){
                 List<SBQQ__Quote__c> quotes = Pricing_Test_Utility.createQuoteWithParam(acc.Id, con.Id, 1,salesRepUserList[0].Email,accountExecutiveUserList[0].Email);
-                // List<SBQQ__QuoteLine__c> quoteLines =
-                Pricing_Test_Utility.createQuoteLines(quotes[0].Id, 1);
+                List<SBQQ__QuoteLine__c> quoteLines = Pricing_Test_Utility.createQuoteLines(quotes[0].Id, 1);
             }
             Test.stopTest();
         }
@@ -166,8 +163,8 @@ private class PCC_Deal_FindRelatedDuplicateDealsTest {
         
         for(Core_Design_Registration__c design : reg){
             Core_Design_Registration_Product__c product = new Core_Design_Registration_Product__c(PCC_Product_Additional_Attribute__c = additionalatt.Id,PCC_Competitor_System_Model__c='PROC',PCC_System_Model__c='PROC',
-            Core_Design_Registration_Id__c = design.Id,Core_Product_Id__c=lstProduct[0].Id,Core_Target_Resale_Amt__c=20,Core_Full_Year_Qty__c=100,Core_Design_Product_Status_Nm__c='Approved'
-                );
+                                                                                                  Core_Design_Registration_Id__c = design.Id,Core_Product_Id__c=lstProduct[0].Id,Core_Target_Resale_Amt__c=20,Core_Full_Year_Qty__c=100,Core_Design_Product_Status_Nm__c='Approved'
+                                                                                                 );
             products.add(product);
         }
         
@@ -187,7 +184,9 @@ private class PCC_Deal_FindRelatedDuplicateDealsTest {
         try{
             result = PCC_Deal_FindRelatedDuplicateDeals.getRelatedDuplicates(reg[0].Id);
             //result = PCC_Deal_FindRelatedDuplicateDeals.getRelatedDuplicates(reg[2].Id);
-        }catch(Exception ex){}
+        }catch(Exception ex){
+            
+        }
         Test.stopTest();
         
         // Perform assertions
@@ -204,7 +203,7 @@ private class PCC_Deal_FindRelatedDuplicateDealsTest {
         reg[2].Core_End_Customer_Account_Id__c = [select Id from account where Name ='Test Account'].Id;
         reg[2].Core_Partner_Account_Id__c = reg[2].Core_End_Customer_Account_Id__c;
         update reg[2];
-        
+		
         System.debug(JSON.serialize([SELECT Id,Name,AccountId, (SELECT Id, Name,product2Id FROM OpportunityLineItems) FROM Opportunity]));
         System.debug(JSON.serialize([select Core_Opportunity__r.AccountId,Core_Partner__c from Core_Opportunity_Partner__c]));
         

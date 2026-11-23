@@ -1,4 +1,4 @@
-public without sharing class Core_IPS_Opportunity_Handler{
+public class Core_IPS_Opportunity_Handler{
 
     /***************************************************************************************************
     Version     : 1.0 
@@ -22,10 +22,7 @@ public without sharing class Core_IPS_Opportunity_Handler{
     ***************************************************************************************************/ 
     public static void DuplicateRecordprevention(List<Core_IPS_Opportunity__c> newList){
         if(newList <> null && newList.size()>0){
-            List<Core_IPS_Opportunity__c> ExistingOpportunities = new List<Core_IPS_Opportunity__c>();
-            if(Core_IPS_Opportunity__c.SObjectType.getDescribe().isAccessible()){
-                ExistingOpportunities = [Select id,Core_IPS_Project__c,Core_Opportunity__c from Core_IPS_Opportunity__c where Core_IPS_Project__c =: newList[0].Core_IPS_Project__c];       
-            }
+            List<Core_IPS_Opportunity__c> ExistingOpportunities = [Select id,Core_IPS_Project__c,Core_Opportunity__c from Core_IPS_Opportunity__c where Core_IPS_Project__c =: newList[0].Core_IPS_Project__c];       
             if(ExistingOpportunities <> null && ExistingOpportunities.size()>0){
                 for(Core_IPS_Opportunity__c NewOpportunity: newList){
                     for(Core_IPS_Opportunity__c ExistingOpportunity: ExistingOpportunities){

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessFlowMigration xmlns="http://soap.sforce.com/2006/04/metadata">
+    <destinationFlowDefinition>PSG_Opportunity_Process_1</destinationFlowDefinition>
+    <destinationFlowVersion>PSG_Opportunity_Process_1-1</destinationFlowVersion>
+    <developerName>myRule_3_301Df000000Tp6oIAC</developerName>
+    <masterLabel>PSG Opportunity Process_1</masterLabel>
+    <migratedCriteriaLabel>OppWithPrimaryQuote</migratedCriteriaLabel>
+    <migratedCriteriaName>myRule_3</migratedCriteriaName>
+    <processVersion>PSG_Opportunity_Process-24</processVersion>
+</ProcessFlowMigration>

@@ -1,0 +1,9 @@
+.main{
+  margin-left: 0px;
+  margin-right: 0px;
+  overflow-x: auto; 
+  width: 900;
+  background-color:white;
+  border-radius: 5px;
+  border: var(--lwc-borderWidthThin,1px) solid var(--lwc-colorBorder,rgb(221, 219, 218));
+}

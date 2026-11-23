@@ -71,6 +71,10 @@
         <label>Campo de mensaje de búsqueda</label>
         <name>SBQQ__LookupMessageField__c</name>
         <picklistValues>
+            <masterLabel>Core_OPN__c</masterLabel>
+            <translation><!-- Core_OPN__c --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>SBQQ__Message__c</masterLabel>
             <translation><!-- SBQQ__Message__c --></translation>
         </picklistValues>
@@ -80,14 +84,30 @@
         <label>Objeto de búsqueda</label>
         <name>SBQQ__LookupObject__c</name>
         <picklistValues>
+            <masterLabel>Product2</masterLabel>
+            <translation><!-- Product2 --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>SBQQ__LookupData__c</masterLabel>
             <translation><!-- SBQQ__LookupData__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>core_cpq_end_customer_nm__c</masterLabel>
+            <translation><!-- core_cpq_end_customer_nm__c --></translation>
         </picklistValues>
     </fields>
     <fields>
         <help><!-- Field on Lookup Object corresponding to Product Action Product Lookup. Field must be a lookup to the Product object. --></help>
         <label>Campo de producto de búsqueda</label>
         <name>SBQQ__LookupProductField__c</name>
+        <picklistValues>
+            <masterLabel>Core_OPN__c</masterLabel>
+            <translation><!-- Core_OPN__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_Product_Ext_Attribute_Id__c</masterLabel>
+            <translation><!-- Core_Product_Ext_Attribute_Id__c --></translation>
+        </picklistValues>
         <picklistValues>
             <masterLabel>SBQQ__Product__c</masterLabel>
             <translation><!-- SBQQ__Product__c --></translation>
@@ -116,12 +136,20 @@
         <label>Ámbito</label>
         <name>SBQQ__Scope__c</name>
         <picklistValues>
+            <masterLabel>Opportunity</masterLabel>
+            <translation><!-- Opportunity --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Product</masterLabel>
             <translation><!-- Product --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Quote</masterLabel>
             <translation><!-- Quote --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Quote Line</masterLabel>
+            <translation><!-- Quote Line --></translation>
         </picklistValues>
     </fields>
     <fields>

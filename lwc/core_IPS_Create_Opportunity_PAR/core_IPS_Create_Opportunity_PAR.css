@@ -1,4 +1,6 @@
-.header {
+.dummy{
+	color : black;
+}.header {
     background: #1a315b;
     color: white;
     padding: 15px;

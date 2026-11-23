@@ -12,6 +12,7 @@ static List<Product2>  lstProducts;
             prod.IsActive = true;
         }
         insert lstProducts;
+        
 //create your opportunity line item.  This assumes you already have an opportunity created, called opp
        List<PriceBookEntry> lstPriceBookEntry = Core_Test_Utility.createPriceBookEntry(20, lstProducts,Test.getStandardPricebookId() );
         
@@ -35,14 +36,8 @@ static List<Product2>  lstProducts;
         insert opportunityToClone;
         List<OpportunityLineItem> lstOpportunityLineItem = Core_Test_Utility.createOpportunityLineItems(20, lstPriceBookEntry, opportunityToClone);
         insert lstOpportunityLineItem;
-        test.startTest();
-        list<opportunityLineItem> oli = new list<opportunityLineItem>();
-        Core_OpptyController ctrl = new Core_OpptyController();
         List<OpportunityLineItem> litem1 = [select Product2.Name,Core_Status__c,Core_Claim_Date__c,Quantity,UnitPrice,TotalPrice from opportunityLineItem where Opportunity.id =: opportunityToClone.id];
-		oli = ctrl.getopp();
-        system.assertequals(litem1.size()>0,true);
-	        test.stopTest();
+        
     }
-    
 
 }

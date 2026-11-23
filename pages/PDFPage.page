@@ -1,0 +1,11 @@
+<apex:page standardController="Account_Brief_Summary_POC__c" renderAs="pdf">
+    <apex:pageMessages />
+    <h1>Account Brief Meetings</h1>
+    <apex:pageBlock title="Meeting Details">
+        <apex:pageBlockTable value="{!Account_Brief_Summary_POC__c}" var="brief">
+            <apex:column headerValue="Account Brief Summary" value="{!brief.Account_Brief_Summary__c}"/>
+            <apex:column headerValue="Meeting Invite" value="{!brief.Meeting_Invite__c}"/>
+            <apex:column headerValue="Attendees" value="{!brief.Attendees__c}"/>
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+</apex:page>

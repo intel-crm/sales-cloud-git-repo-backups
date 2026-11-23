@@ -41,6 +41,7 @@
                     for (var i = 0; i < quoteLine.length; i++) {
                         quoteLineType = quoteLine[i].Pricing_Program_Type_Nm__c;
                         component.set("v.quoteLineType", quoteLineType);
+                        component.set("v.quoteProgram", quoteLine[i].Pricing_Quote_Program_Nm__c);
                         qliIdToQliTypeMap[quoteLine[i].Id] = quoteLine[i].Pricing_Program_Type_Nm__c;
                         qliIdToApprovedEndDateMap[quoteLine[i].Id] = quoteLine[i].Pricing_Approved_End_Date_Dt__c;
                         // Setting Acronym Status 
@@ -153,6 +154,7 @@
         component.set("v.hideLostComments", true);
         helper.getRejectionReasonsValue(component, event);
         helper.getLostReasonValue(component, event);
+
     },
     refreshcomp: function (component, event, helper) {
         $A.get("e.force:refreshView").fire();
@@ -171,13 +173,8 @@
         let quoteLineById = quotelinedata.filter(element => element.Id == component.get("v.quoteLineId"));
 
         if (menuValue == "Clone") {
-            // Filter the "Clone" option if it is a Small Volume Quote
-            if (component.get("v.isSVDActive") && component.get("v.isSmallVolumeQuote")) {
-                helper.showToastMessage(component, event, helper, "error", "Cloning an SVD quoteline is no longer allowed.", "Error", "sticky");
-            } else {
-                component.set("v.menuItemDisable", true);
-                helper.clone(component, event, helper, quoteLineId);
-            }
+            component.set("v.menuItemDisable", true);
+            helper.clone(component, event, helper, quoteLineId);
         } else if (menuValue == "Edit") {
             if (component.get("v.isPricingManager") && component.get("v.qliIdToQliTypeMap")[quoteLineId] != $A.get("$Label.c.Pricing_Tender_FinancialIncentive_Quote")) {
                 component.set("v.showRPMRecommendation", true);
@@ -192,41 +189,43 @@
                 $A.enqueueAction(getProduct);
             } else if (component.get("v.qliIdToQliTypeMap")[quoteLineId] === $A.get("$Label.c.Pricing_Tender_SSD_Quote") || component.get("v.qliIdToQliTypeMap")[quoteLineId] === $A.get("$Label.c.Pricing_Tender_PMem_Quote") || component.get("v.qliIdToQliTypeMap")[quoteLineId] === $A.get("$Label.c.Pricing_Tender_NIC_Quote") || component.get("v.qliIdToQliTypeMap")[quoteLineId] === $A.get("$Label.c.Pricing_Tender_CCG_Quote") || component.get("v.qliIdToQliTypeMap")[quoteLineId] === $A.get("$Label.c.Pricing_Tender_DataCenter_GPU")) {
                 component.set("v.isSSDQuoteLineEdit", true);
+                console.log('entering SSD');
             } else {
+                console.log('Entering123');
                 helper.editRecord(component, event, helper, quoteLineId)
             }
         } else if (menuValue == "Delete") {
             helper.deleteRecord(component, event, helper, quoteLineId);
         } else if (menuValue == $A.get("$Label.c.Pricing_Send_Request_MD_Button_Label")) {
             if(component.get("v.hasPricingManagerAccess") && (quoteLineById[0].Pricing_Program_Type_Nm__c == $A.get("$Label.c.Pricing_Tender_CCG_Quote")) && (((quoteLineById[0].hasOwnProperty('Pricing_ECAP_Price_Amt__c')) && (quoteLineById[0].Pricing_ECAP_Price_Amt__c)) < ((quoteLineById[0].hasOwnProperty('Pricing_Meet_Comp_Price_Amt__c')) && (quoteLineById[0].Pricing_Meet_Comp_Price_Amt__c)))){
-                component.set("v.continueSoftWarningLabel", 'Continue');
+                component.set("v.continueSoftWarningLabel", 'Continue');//Continue and Create Deal
                 component.set("v.qliSoftWarningApprovedECAP", true);
                 component.set('v.quoteLineId', quoteLineId);
             }
             if (component.get("v.hasPricingManagerAccess") && (quoteLineById[0].Pricing_Program_Type_Nm__c == $A.get("$Label.c.Pricing_Tender_CCG_Quote")) && (quoteLineById[0].Pricing_SIPP_Cb__c == false)  && (quoteLineById[0].hasOwnProperty('Pricing_Market_Segment_values_Nm__c')) && (quoteLineById[0].Pricing_Market_Segment_values_Nm__c == "Corp") && (quoteLineById[0].Pricing_Change_Request_cb__c == false) && (quoteLineById[0].Pricing_Form_Factor_Nm__c == "Notebook")) {
-                component.set("v.continueSoftWarningLabel", 'Continue');
+                component.set("v.continueSoftWarningLabel", 'Continue'); //Continue and Create Deal
                 component.set("v.qliSoftWarning", true);
                 component.set('v.quoteLineId', quoteLineId);
-            }
-            if (component.get("v.qliSoftWarning") == false && component.get("v.qliSoftWarningApprovedECAP") == false) {
+            } 
+            if(component.get("v.qliSoftWarning")==false && component.get("v.qliSoftWarningApprovedECAP")==false){
                 helper.sendRequest(component, event, helper, quoteLineId, "Create");
             }
 
         } else if (menuValue == $A.get("$Label.c.Pricing_Update_Deal_MD_button_label")) {
-            if (component.get("v.hasPricingManagerAccess") && (quoteLineById[0].Pricing_Program_Type_Nm__c == $A.get("$Label.c.Pricing_Tender_CCG_Quote")) && (((quoteLineById[0].hasOwnProperty('Pricing_ECAP_Price_Amt__c')) && (quoteLineById[0].Pricing_ECAP_Price_Amt__c)) < ((quoteLineById[0].hasOwnProperty('Pricing_Meet_Comp_Price_Amt__c')) && (quoteLineById[0].Pricing_Meet_Comp_Price_Amt__c)))) {
-                component.set("v.continueSoftWarningLabel", 'Continue');
+            if(component.get("v.hasPricingManagerAccess") && (quoteLineById[0].Pricing_Program_Type_Nm__c == $A.get("$Label.c.Pricing_Tender_CCG_Quote")) && (((quoteLineById[0].hasOwnProperty('Pricing_ECAP_Price_Amt__c')) && (quoteLineById[0].Pricing_ECAP_Price_Amt__c)) < ((quoteLineById[0].hasOwnProperty('Pricing_Meet_Comp_Price_Amt__c')) && (quoteLineById[0].Pricing_Meet_Comp_Price_Amt__c)))){
+                component.set("v.continueSoftWarningLabel", 'Continue'); //Continue and Update Deal
                 component.set("v.qliSoftWarningApprovedECAP", true);
                 component.set('v.quoteLineId', quoteLineId);
             }
             if ((quoteLineById[0].Pricing_Program_Type_Nm__c == $A.get("$Label.c.Pricing_Tender_CCG_Quote")) && (quoteLineById[0].Pricing_SIPP_Cb__c == false)  && (quoteLineById[0].hasOwnProperty('Pricing_Market_Segment_values_Nm__c')) && (quoteLineById[0].Pricing_Market_Segment_values_Nm__c == "Corp") && (quoteLineById[0].Pricing_Change_Request_cb__c == false) && (quoteLineById[0].Pricing_Form_Factor_Nm__c == "Notebook")) {
-                component.set("v.continueSoftWarningLabel", 'Continue');
+                component.set("v.continueSoftWarningLabel", 'Continue');//Continue and Update Deal
                 component.set("v.qliSoftWarning", true);
                 component.set('v.quoteLineId', quoteLineId);
             }
-            if (component.get("v.qliSoftWarning") == false && component.get("v.qliSoftWarningApprovedECAP") == false) {
+            if(component.get("v.qliSoftWarning")==false && component.get("v.qliSoftWarningApprovedECAP")==false){
                 helper.sendRequest(component, event, helper, quoteLineId, "Update");
             }
-
+             
         } else if (menuValue == $A.get("$Label.c.Pricing_Tender_Cancel_Action")) {
             component.set("v.actionStr", menuValue);
             helper.requestChange(component, event, helper, quoteLineId);
@@ -338,6 +337,23 @@
                 }
             });
             $A.enqueueAction(getSyncStatus);
+        }else if (menuValue === $A.get("$Label.c.Pricing_QuoteLinenWonLossNotification_Button")) { //added as part of re-trigger email for AE's
+            const sendWonNotif = component.get("c.retriggerWonNotification");
+            sendWonNotif.setParams({ quoteLineId: quoteLineId });
+            sendWonNotif.setCallback(this, function (response) {
+                const state = response.getState();
+                if (state === "SUCCESS") {
+                    const retMsg = response.getReturnValue();
+                    if (retMsg) {
+                        helper.showToastMessage(component, event, helper, "error", retMsg, "Error", "dismissible");
+                    } else {
+                        helper.showToastMessage(component, event, helper, "success", "Won notification sent successfully.", "Success", "dismissible");
+                    }
+                } else {
+                    helper.showToastMessage(component, event, helper, "error", "Failed to send Won notification.", "Error", "dismissible");
+                }
+            });
+            $A.enqueueAction(sendWonNotif);
         } else if (menuValue === $A.get("$Label.c.Pricing_Edit_Consumption_Parameters")) {
             component.set("v.showConsumptionParametersEdit", true);
         } else if (menuValue == $A.get("$Label.c.Pricing_Tender_QuoteLine_RollBack")) {
@@ -358,6 +374,11 @@
             const state = response.getState();
             if (state === "SUCCESS") {
                 let values = response.getReturnValue() || []; //handles null or undefined values
+                // Filter the "Clone" option if it is a Small Volume Quote
+                if (component.get("v.isSVDActive") && component.get("v.isSmallVolumeQuote")) {
+                    values = values.filter(val => val !== 'Clone');
+                }
+                // Set the menu options and disable the menu item if no valid options are available
                 if (values.length > 0) {
                     component.set("v.menuOptions", values);
                     component.set("v.menuItemDisable", false);
@@ -422,7 +443,7 @@
             const commentRegex = $A.get('$Label.c.Pricing_Latin_Characters_Regular_Expr_Label');
             if (currentAction == "Approve" && quoteLn.Pricing_Status_Nm__c == $A.get("$Label.c.Pricing_Tender_QuoteLine_Status_PendingFurtherIntelReview")) {
 
-                if ((quoteLn.Pricing_Program_Type_Nm__c != $A.get("$Label.c.Pricing_Tender_SSD_Quote") && quoteLn.Pricing_Program_Type_Nm__c != $A.get("$Label.c.Pricing_Tender_PMem_Quote") && quoteLn.Pricing_Program_Type_Nm__c != $A.get("$Label.c.Pricing_Tender_FinancialIncentive_Quote")) && quoteLn.Pricing_Meet_Comp_Price_Amt__c == null) {
+                if ((quoteLn.Pricing_Program_Type_Nm__c != $A.get("$Label.c.Pricing_Tender_SSD_Quote") && quoteLn.Pricing_Program_Type_Nm__c != $A.get("$Label.c.Pricing_Tender_PMem_Quote")) && quoteLn.Pricing_Program_Type_Nm__c != $A.get("$Label.c.Pricing_Tender_FinancialIncentive_Quote") && quoteLn.Pricing_Meet_Comp_Price_Amt__c == null) {
                     isValid = false;
                     errorMessage += $A.get("$Label.c.Pricing_My_Deals_Meet_Comp_Price_ApprovalError");
                     i = i + 1;
@@ -548,6 +569,7 @@
     },
 
     setModalAttribute: function (component, event) {
+        console.log('event.getParam:'+event.getParam('value'));
         component.set("v.isSSDQuoteLineEdit", event.getParam('value'));
         component.set("v.showRPMRecommendation", event.getParam('modalOpenValue'));
     },

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Sales CRM Downtime</masterLabel>
+    <promptVersions>
+        <body>&lt;p&gt;Sales CRM is undergoing maintenance from November 3-5, please refrain from using Sales CRM during this time as it may introduce data quality issues while this maintenance is being completed - thanks so much for your understanding&lt;/p&gt;</body>
+        <delayDays>1</delayDays>
+        <dismissButtonLabel>Dismiss</dismissButtonLabel>
+        <displayPosition>MiddleCenter</displayPosition>
+        <displayType>FloatingPanel</displayType>
+        <isPublished>true</isPublished>
+        <masterLabel>Sales CRM Downtime</masterLabel>
+        <publishedDate>2023-09-29</publishedDate>
+        <shouldDisplayActionButton>false</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>true</shouldIgnoreGlobalDelay>
+        <startDate>2023-09-29</startDate>
+        <themeColor>Theme1</themeColor>
+        <themeSaturation>Dark</themeSaturation>
+        <timesToDisplay>30</timesToDisplay>
+        <title>Sales CRM Downtime</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+</Prompt>

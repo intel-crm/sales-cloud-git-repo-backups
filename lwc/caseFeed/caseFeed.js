@@ -838,7 +838,7 @@ export default class caseFeed extends LightningElement {
 			this.taggedUsers.push(user);
 		}
 
-		const formattedMention = `[${user.name}]`;
+		const formattedMention = `<a href="#">[${user.name}]</a>`;
 		const mentionRegex = new RegExp(`@(${this.searchTerm})\\b`, 'g');
 
 		if (mentionRegex.test(this.message)) {
@@ -973,7 +973,9 @@ export default class caseFeed extends LightningElement {
 		};
 
 		Array.from(doc.body.childNodes).forEach(processNode);
-		const resultString = jsonOutput.map(entry => {
+		const cleanJSONOutput = this.removeHyperlinkAndKeepMention(jsonOutput);
+
+		const resultString = cleanJSONOutput.map(entry => {
 			return JSON.stringify(entry);
 		}).join(', ');
 
@@ -1588,5 +1590,33 @@ export default class caseFeed extends LightningElement {
 		});
 
 		return tempDiv.innerHTML;
+	}
+	
+	/****************************************************************************************** 
+	 * Clean JSON Output.
+	 * @param {data} JSON - pass the messageSegement JSON Values.
+	*******************************************************************************************/
+	removeHyperlinkAndKeepMention(data) {
+		const result = [];
+		let skipNext = false;
+
+		for (let i = 0; i < data.length; i++) {
+			const current = data[i];
+			if (current.markupType === "Hyperlink" && !skipNext) {
+				if (i + 1 < data.length && data[i + 1].type === "Mention") {
+					skipNext = true;
+					continue;
+				}
+			}
+			if (current.markupType === "Hyperlink" && skipNext) {
+				if (current.type === "MarkupEnd") {
+					skipNext = false;
+					continue;
+				}
+			}
+			result.push(current);
+		}
+
+		return result;
 	}
 }

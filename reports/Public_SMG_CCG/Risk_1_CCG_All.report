@@ -20,6 +20,66 @@
             </sourceValues>
             <value>Gov</value>
         </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Accommodation and Food Services</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Agriculture</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Arts, Entertainment and Recreation</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Automotive (Non Manufacturing)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Construction</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Consulting</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Defense and Space</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Energy and Utilities</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Finance and Insurance</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Gaming</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Manufacturing</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Media</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Professional and Business Services</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Real Estate, Rental and Leasing</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Retail</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Software and Services</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Telecommunications</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Transportation, Travel and Warehousing</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Not For Profit</sourceValue>
+            </sourceValues>
+            <value>LE</value>
+        </values>
     </buckets>
     <buckets>
         <bucketType>picklist</bucketType>
@@ -84,12 +144,12 @@
         <chartSummaries>
             <aggregate>Sum</aggregate>
             <axisBinding>y</axisBinding>
-            <column>Opportunity.Core_Volume__c</column>
+            <column>CDF1</column>
         </chartSummaries>
         <chartType>HorizontalBar</chartType>
         <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>true</expandOthers>
-        <groupingColumn>OpportunityLineItem.Core_At_Risk__c</groupingColumn>
+        <groupingColumn>BucketField_87488721</groupingColumn>
         <location>CHART_BOTTOM</location>
         <showAxisLabels>true</showAxisLabels>
         <showPercentage>false</showPercentage>
@@ -112,9 +172,6 @@
         <field>ACCOUNT_OWNER</field>
     </columns>
     <columns>
-        <field>Account.Core_Sales_Groups__c</field>
-    </columns>
-    <columns>
         <field>Account.Core_Account_Country__c</field>
     </columns>
     <columns>
@@ -122,9 +179,6 @@
     </columns>
     <columns>
         <field>INDUSTRY</field>
-    </columns>
-    <columns>
-        <field>BucketField_87488721</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Opportunity_ID__c</field>
@@ -188,7 +242,6 @@
         <field>PROBABILITY</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
         <field>Opportunity.Core_Architecture_Conversion__c</field>
     </columns>
     <columns>
@@ -255,6 +308,15 @@
         <field>Opportunity.Core_Products_At_Risk_Count__c</field>
     </columns>
     <columns>
+        <field>Opportunity.Core_Support_Requested__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Risk_Reason__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_At_Risk_Created_Date__c</field>
+    </columns>
+    <columns>
         <field>Opportunity.Core_Loss_Cancel_Reason__c</field>
     </columns>
     <columns>
@@ -264,10 +326,20 @@
         <field>Opportunity.Core_Loss_Cancel_Details__c</field>
     </columns>
     <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>OpportunityLineItem.Core_At_Risk__c</field>
+    </columns>
+    <columns>
+        <field>OpportunityLineItem.Core_Risk_Category__c</field>
+    </columns>
+    <columns>
         <field>OpportunityLineItem.Core_Risk_Priority__c</field>
     </columns>
     <columns>
         <field>OpportunityLineItem.Core_Risk_Reason1__c</field>
+    </columns>
+    <columns>
+        <field>OpportunityLineItem.Core_Risk_Reason2__c</field>
     </columns>
     <columns>
         <field>OpportunityLineItem.Core_At_Risk_Status__c</field>
@@ -284,11 +356,16 @@
         <field>OpportunityLineItem.Core_KPI_Days_DesignWin_to_ProductionWin__c</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_Risk_Create_Date__c</field>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>CDF1</field>
     </columns>
-    <columns>
-        <field>OpportunityLineItem.Core_Risk_Detail__c</field>
-    </columns>
+    <customDetailFormulas>
+        <calculatedFormula>CASE(OpportunityLineItem.Core_Risk_Reason1__c,&quot;&quot;,case(OpportunityLineItem.Core_Risk_Reason2__c,&quot;&quot;,0,1),1)*OpportunityLineItem.Core_KPI_Total_Price__c</calculatedFormula>
+        <dataType>Double</dataType>
+        <developerName>CDF1</developerName>
+        <label>Risk $ (Formula)</label>
+        <scale>0</scale>
+    </customDetailFormulas>
     <filter>
         <criteriaItems>
             <column>STAGE_NAME</column>
@@ -304,19 +381,17 @@
             <operator>equals</operator>
             <value>CCG</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>OpportunityLineItem.Core_Status__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>Lost,Cancelled,Deleted</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>OpportunityLineItem.Core_At_Risk__c</field>
+        <field>BucketField_87488721</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Account.Core_Sales_Groups__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>@Risk 1 - CCG All</name>
@@ -326,7 +401,7 @@
     </params>
     <params>
         <name>open</name>
-        <value>open</value>
+        <value>all</value>
     </params>
     <params>
         <name>probability</name>
@@ -345,6 +420,6 @@
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <interval>INTERVAL_CURY</interval>
     </timeFrameFilter>
 </Report>

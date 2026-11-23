@@ -6,7 +6,7 @@
                 <lightning-layout>
 
                     <template if:true={hasData}>
-                        <lightning-layout-item size="12" flexibility="auto" class="slds-p-around_small">
+                        <lightning-layout-item size="12" flexibility="auto">
 
                             <lightning-datatable key-field="id" data={gridData} columns={gridColumns} wrap-table-header
                                 hide-checkbox-column="true" show-row-number-column></lightning-datatable>

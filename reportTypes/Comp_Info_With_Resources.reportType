@@ -200,6 +200,11 @@
             <field>PMP_Working_Copy_Id__c</field>
             <table>PMP_Company__c</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PMP_Partner_Benefit_Type__c</field>
+            <table>PMP_Company__c</table>
+        </columns>
         <masterLabel>Marketing Profile Informations</masterLabel>
     </sections>
     <sections>
@@ -254,5 +259,13 @@
             <table>PMP_Company__c.Company_Resources__r</table>
         </columns>
         <masterLabel>Marketing  Profile Resources</masterLabel>
+    </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>IsPartnerSegmentChanged__c</field>
+            <table>PMP_Company__c</table>
+        </columns>
+        <masterLabel>Marketing Profile Information</masterLabel>
     </sections>
 </ReportType>

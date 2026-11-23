@@ -56,6 +56,7 @@ export default class ProductHierarchy  extends NavigationMixin(LightningElement)
     isLoading=true;
     isLoading2=false;
     isLoading3=false;
+    checked=false;
     columns = [
         { label: 'Name', fieldName: 'Name', type: 'button', typeAttributes: { label: { fieldName: 'Name' }, variant: 'base' ,  rowActions: [
             { label: 'Open', name: 'openRecord', disabled: false },
@@ -91,6 +92,7 @@ export default class ProductHierarchy  extends NavigationMixin(LightningElement)
     table;
     isSelected='EPM Id';
     error;
+    resultsfound=false;
 
 
     addSearchInput() {
@@ -110,6 +112,14 @@ export default class ProductHierarchy  extends NavigationMixin(LightningElement)
     connectedCallback(){
         this.productData(this.HierarchyValue,'true');
         this.productData(this.HierarchyValue,'false');    
+    }
+    handleChangeSearchResult(event){
+        if(event.target.checked){
+            this.checked=true;
+        }
+        else{
+            this.checked=false;
+        }
     }
 
      loadRelatedData(ProductId,event){
@@ -136,6 +146,8 @@ export default class ProductHierarchy  extends NavigationMixin(LightningElement)
      activeChange(event){
         try{
             this.isLoading=true;
+            this.checked=false;
+            this.resultsfound=false;
             if(event.target.value=="true"){
                 this.activeValue="true";
                 this.items =  this.buildTreeWithChildren(this.data1);
@@ -164,6 +176,8 @@ export default class ProductHierarchy  extends NavigationMixin(LightningElement)
         this.isLoading=true;
         this.epmIdtoNameMap ={};
         this.prodIdtoEpmMap={};
+        this.checked=false;
+        this.resultsfound=false;
         if(event.target.value=="43"){
             this.HierarchyValue="43";
             this.activeValue='true';
@@ -606,6 +620,8 @@ export default class ProductHierarchy  extends NavigationMixin(LightningElement)
     handleSearch(event) {
         this.isLoading=true;
         this.addSearchName=[];
+        this.checked=false;
+        this.resultsfound=true;
         this.reset(this.items);
         this.found=false;
         this.table=false;
@@ -623,6 +639,7 @@ export default class ProductHierarchy  extends NavigationMixin(LightningElement)
         this.inputText='';
         this.recordId='';
         this.table=false;
+        this.resultsfound=false;
         this.items=this.reset(this.items);
         this.items= JSON.parse(JSON.stringify(this.items));
         this.found=true;

@@ -1,6 +1,7 @@
 ({
     doInit : function(component, event, helper) {
         //get the name of object from the url.
+        console.log('hello');
         component.set("v.maxRecordWarning",'');
         var radioList = [];
         radioList.push({

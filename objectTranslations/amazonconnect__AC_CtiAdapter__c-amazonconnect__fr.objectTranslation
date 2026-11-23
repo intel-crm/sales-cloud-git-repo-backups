@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>AC Adaptateur CTI</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value><!-- AC Adaptateur CTI --></value>
+    </caseValues>
+    <fields>
+        <label>Activer les paramètres de l&apos;appareil audio</label>
+        <name>amazonconnect__AudioDeviceSettings__c</name>
+    </fields>
+    <fields>
+        <label><!-- Automatic CCP Single Sign On (SSO) --></label>
+        <name>amazonconnect__AutomaticCCPSingleSignOn__c</name>
+    </fields>
+    <fields>
+        <label><!-- Bottom Panel --></label>
+        <name>amazonconnect__BottomPanel__c</name>
+    </fields>
+    <fields>
+        <label> Nom de définition du centre d’appels </label>
+        <name>amazonconnect__CallCenter__c</name>
+    </fields>
+    <fields>
+        <label> Version CCP </label>
+        <name>amazonconnect__CcpVersion__c</name>
+        <picklistValues>
+            <masterLabel>v1</masterLabel>
+            <translation><!-- v1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>v2</masterLabel>
+            <translation><!-- v2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label> Instance Connect – NE PAS UTILISER </label>
+        <name>amazonconnect__ConnectInstance__c</name>
+    </fields>
+    <fields>
+        <label>Sonnerie de discussion personnalisée</label>
+        <name>amazonconnect__CustomChatRingtone__c</name>
+    </fields>
+    <fields>
+        <label> Sonnerie personnalisée </label>
+        <name>amazonconnect__CustomRingtone__c</name>
+    </fields>
+    <fields>
+        <label> Niveau de débogage </label>
+        <name>amazonconnect__DebugLevel__c</name>
+    </fields>
+    <fields>
+        <label>Désactiver l&apos;annulation de l&apos;écho</label>
+        <name>amazonconnect__DisableEchoCancellation__c</name>
+    </fields>
+    <fields>
+        <label>Capture de micro avant appel</label>
+        <name>amazonconnect__EarlyGum__c</name>
+    </fields>
+    <fields>
+        <label><!-- Enable Softphone Popout --></label>
+        <name>amazonconnect__EnableSoftphonePopout__c</name>
+    </fields>
+    <fields>
+        <label>ARN de l’instance</label>
+        <name>amazonconnect__InstanceArn__c</name>
+    </fields>
+    <fields>
+        <label> Alias de l’instance Amazon Connect </label>
+        <name>amazonconnect__Instance__c</name>
+    </fields>
+    <fields>
+        <label> Sans média </label>
+        <name>amazonconnect__Medialess__c</name>
+    </fields>
+    <fields>
+        <help><!-- Optional: This is the Named Credential used for the &quot;Recording Controls&quot; feature. If this is empty, a default value of &quot;AmazonConnectAPI&quot; will be assumed. --></help>
+        <label>Identifiants nommés</label>
+        <name>amazonconnect__NamedCredential__c</name>
+    </fields>
+    <fields>
+        <label>Paramètres du type de téléphone</label>
+        <name>amazonconnect__PhoneTypeSettings__c</name>
+    </fields>
+    <fields>
+        <label> Synchronisation de présence activée </label>
+        <name>amazonconnect__PresenceSyncEnabled__c</name>
+    </fields>
+    <fields>
+        <label> Région de l’instance Amazon Connect </label>
+        <name>amazonconnect__Region__c</name>
+    </fields>
+    <fields>
+        <label> Fenêtre du logiciel de téléphonie par Internet activée </label>
+        <name>amazonconnect__SoftphonePopoutEnabled__c</name>
+    </fields>
+    <fields>
+        <label> État du relais SSO </label>
+        <name>amazonconnect__SsoRelayState__c</name>
+    </fields>
+    <fields>
+        <label> URL SSO </label>
+        <name>amazonconnect__SsoUrl__c</name>
+    </fields>
+    <fields>
+        <label><!-- User Defined --></label>
+        <name>amazonconnect__UserDefined__c</name>
+    </fields>
+    <gender>Feminine</gender>
+    <nameFieldLabel>Adaptateur CTI</nameFieldLabel>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

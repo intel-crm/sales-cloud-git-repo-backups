@@ -1,9 +1,7 @@
 ({
     
     doInit : function(component, event, helper) {
-        
-
-        //let partnerId = component.get('v.recordId'); 
+        var partnerId = component.get('v.recordId'); 
         //component.set('v.modalHeading', $A.get("$Label.c.PMP_Edit_Storefront_Heading"));
         // Summarizes all data in the last tab of the form
         component.set("v.summaryData", { 
@@ -18,13 +16,8 @@
             tagline: '',
             language: ''
         });
-                
-        component.set('v.partner', {});
-        component.set('v.showText', false);
-        component.set("v.partnerNames", []);
         component.set('v.isAdmin', true);
         component.set('v.isProfileAdmin',true);
-        component.set('v.isOpenCheckbox', true);
         helper.resetHeading(component, helper);
         
         
@@ -35,27 +28,21 @@
             
             // Tab Change callback (Edit state)
             component.set("v.onTabChange", $A.getCallback(function(step) {
-                
+                console.log('Tab changed : ', step);
                 component.set("v.currentStep", parseInt(step));
-                if(step == 0) {
-                   component.find("switch").set("v.checked", component.get("v.showText"));
-                    /*
-                    setTimeout($A.getCallback(function(){
-                        helper.highlightInvalidFields(component, helper);
-                    }),1000)
-                    */
-                }
             }));
             
             // Progress Bar callback (Create state)
             component.set('v.onstepchange', $A.getCallback(function(step) {
                 
                 helper.handleProgressBarChange(component, helper, step);
+                console.log('Step = ', step);
             }));
             
             // Form inputs callback
             component.set('v.updateFormCallback', $A.getCallback(function(cmp) {
-                const currentStep = component.get('v.currentStep');
+                var currentStep = component.get('v.currentStep');
+                
                 if (cmp.get("v.touched")) {
                     component.set("v.formTouched", true);
                     
@@ -74,26 +61,29 @@
                         component.set("v.summaryData.companyDetail.isUpdated", true);
                         component.set("v.summaryData.isUpdated", true);
                     }
-                  //  component.set("v.formValid", helper.isFormValid(component, helper));
+                    
                     // Input Change:
                     window.setTimeout($A.getCallback(function() {
                         // If errors are showing, see if we can remove them
                         if (component.get("v.showErrors")) {
-                            
+                            console.log('resetting errors');
                             helper.resetErrorsForCurrentStep(component, helper, component.get('v.currentStep'));
                         }
                         // Check if entire form is valid (for next/submit buttons)
-                       component.set("v.formValid", helper.isFormValid(component, helper));
-                    }),5000);
-                    
+                        component.set("v.formValid", helper.isFormValid(component, helper));
+                    }));
+                    console.log('Validity check : ', helper.isFormValid(component, helper));
                 }
                 
                 // if  callback, check logo status
                 /*if (cmp && cmp.getLocalId() == 'uploader1') {
+                    console.log('img len : ', cmp.get('v.images').length);
                     
+                    console.log('logourl : ', cmp.get("v.images")[0].url);
                     component.set('v.hasLogo', cmp.get('v.images').length > 0);
-                    
+                    console.log('hasLogo : ', component.get("v.hasLogo"));
                     if (component.get("v.hasLogo")) {
+                        console.log('logourl inside if : ', cmp.get("v.images")[0].url);
                         component.set("v.logourl", cmp.get("v.images")[0].url);
                     } else {
                         component.set("v.logourl", null);
@@ -104,30 +94,26 @@
                 {
                     component.set('v.hasLogo', cmp.get('v.images').length > 0);
                     component.set('v.LogoCheck',  cmp.get('v.images').length > 0);
-                    
                 }
-                
-                const url = component.get('c.getlogoUrl');
-                const workingCopyId = component.get('v.workingCopyId');
+                var url = component.get('c.getlogoUrl');
                 
                 url.setParams({
-                    partnerId: workingCopyId
+                    partnerId: component.get('v.workingCopyId')
                     
                 });
-                if(workingCopyId) {
-                    url.setCallback(this, function(response) {
-                        const status = response.getState();
-                        
-                        if (status === "SUCCESS") {
-                            const returnvalue = response.getReturnValue();
-                            component.set('v.logourl', returnvalue);
-                        }
-                        
-                    });
-                    $A.enqueueAction(url); 
-                }
+                url.setCallback(this, function(response) {
+                    var status = response.getState();
+                    
+                    if (status === "SUCCESS") {
+                        var returnvalue = response.getReturnValue();
+                        component.set('v.logourl', returnvalue);
+                    }
+                    
+                });
+                $A.enqueueAction(url); 
+                
                 // if region callback, Reset Region Values
-                if (cmp /*&& cmp.getLocalId() == 'regionDropdown'*/) {
+                if (cmp && cmp.getLocalId() == 'regionDropdown') {
                     helper.resetRegionValues(component, helper);
                 }
                 component.set('v.nextButtonDisabled', !helper.isCurrentStepValid(component, helper));
@@ -136,9 +122,9 @@
             
             // close modal handler
             component.set('v.closeModalCallback', $A.getCallback(function() {
-                const confirmLabel = $A.get("$Label.c.PMP_Edit_Storefront_Cancel_Alert_Msg");
+                var confirmLabel = $A.get("$Label.c.PMP_Edit_Storefront_Cancel_Alert_Msg");
                 if (component.get('v.formTouched') && component.get('v.currentStep') != 5) {
-                    if (window.confirm(confirmLabel)){ component.set('v.isOpen', false);}
+                    if (window.confirm(confirmLabel)) component.set('v.isOpen', false);
                 } else {
                     component.set('v.isOpen', false);
                 }
@@ -149,14 +135,14 @@
             
             
             
-            const tempSum ={ 
+            var tempSum ={ 
                 logo: {},
                 description: {},
                 companyDetail: {},
                 resources: {},
                 isUpdated: false // keeps track of the modified state of the entire form
             };
-            const summary = Object.assign({}, tempSum);
+            var summary = Object.assign({}, tempSum);
             component.set('v.summaryData', summary);
             
             
@@ -164,7 +150,7 @@
         
         
         /* window.setTimeout(function() {
-        let leadSettings = {
+        var leadSettings = {
           administrator: {
             name: 'Jane Johanssen',
             email: 'jjohanssen@pyramidtech.com',
@@ -189,18 +175,15 @@
           component.set('v.leadSettings', data);
         }));
         
-        
+        console.log('v.leadSettings', leadSettings);
       }, 3000); */
-
     },
-
+    
     handlePageEvent: function(component, event, helper) {
         // alert('inside handlepageevent');
-        
-        component.set('v.partner', {});
-        component.set('v.showText', false);
-        component.set("v.partnerNames", []);
-        const paramType = event.getParam('type');
+        console.log('IsIntelAdmin : ', component.get('v.isIntelAdmin'));
+        console.log('status : ', component.get('v.currentStatus'));
+        let paramType = event.getParam('type');
         
         if (paramType == 'openEditStoreFront' || paramType == 'openEditStoreFrontFromDraft' || paramType == 'openEditStoreFrontFromLink') {
             component.set('v.showModal', false);	
@@ -211,23 +194,22 @@
             } else if(paramType == 'openEditStoreFrontFromLink') {
                 component.set('v.isFromLink', true);
             }
-            
+            console.log(':::steps:::', component.get('v.steps'));
             if(!component.get('v.isFromLink')) { 
                 if(component.get('v.steps').length == 0 || component.get("v.isIntelAdmin")) { //Defect Fix DE76742
                     
-                    const action = component.get("c.getSteps");
+                    var action = component.get("c.getSteps");
                     
                     action.setCallback(this, function(response) {
-                        const status = response.getState();
-                        
+                        var status = response.getState();
                         if (status === "SUCCESS") {
                             
                             component.set('v.steps',response.getReturnValue());
-                            
+                            console.log('Steps : ' , response.getReturnValue());
                         } else if (status === "INCOMPLETE") {
-                          
+                            console.log('callback Incomplete');
                         } else if (status === "ERROR") {
-                            const errors = response.getError();
+                            var errors = response.getError();
                             
                             if (errors) {
                                 if (errors[0] && errors[0].message) {
@@ -236,7 +218,7 @@
                                 };
                             }
                         } else {
-                            this.reject('Unknown error.');
+                            reject('Unknown error.');
                         }
                     });
                     $A.enqueueAction(action);
@@ -246,8 +228,8 @@
                 component.set('v.steps', ['']);   	
                 helper.fetchData(component, helper); 	
             }
-            const payload = event.getParam('payload');
-            
+            var payload = event.getParam('payload');
+            console.log('payload:::',payload.currentStep);
             component.set('v.currentStep', parseInt(payload.currentStep) || 0);
             
             //component.set('v.activeStep', 2);
@@ -258,7 +240,9 @@
             }
             helper.resetHeading(component, helper);
             component.set('v.isOpen', true); //This step calls the handleformopen 
-                        
+            
+        
+            
         }     
     },
     
@@ -274,16 +258,19 @@
     
     handlePrevStep : function(component, event, helper) {
         component.set('v.currentStep', component.get('v.currentStep') - 1);
-        const tabset = component.find("tabset");
-        if (tabset){ tabset.changeTab(component.get("v.currentStep"));}
+        var tabset = component.find("tabset");
+        if (tabset) tabset.changeTab(component.get("v.currentStep"));
         component.set("v.showErrors", false);
     },
     
     handleNextStep : function(component, event, helper) {
-        
-        const steps = component.get("v.steps"); 
-        let currentStep = component.get("v.currentStep");
-        
+        console.log('step',component.get('v.currentStep'));
+        var steps = component.get("v.steps"); 
+        var currentStep = component.get("v.currentStep");
+        var isAdmin = component.get('v.isAdmin'); 
+        console.log('isAdmin',isAdmin);
+        var isProfileAdmin = component.get('v.isProfileAdmin');
+        console.log('isProfileAdmin',isProfileAdmin);
         //component.set('v.leadSettings',true);
         if (!helper.isStepValid(component, helper)) {
             helper.highlightInvalidFields(component, helper);
@@ -291,7 +278,7 @@
             return;
         }
         
-         currentStep = component.get("v.currentStep");
+        var currentStep = component.get("v.currentStep");
         if (component.get('v.currentStep') == steps.length-1) {
             component.set('v.showSpinner', true);
             
@@ -305,7 +292,7 @@
                     setTimeout($A.getCallback(function(){
                         helper.handleUpdateStatusAdmin(component, helper).then($A.getCallback(function() {
                             component.set('v.showSpinner', false);
-                            
+                            console.log('handleUpdateStatusAdmin called');
                         }));
                         
                     }),5000);
@@ -318,32 +305,34 @@
             component.set('v.currentStep', currentStep+1);
         } else {
             component.set("v.currentStep", currentStep + 1);
-            const tabset = component.find("tabset");
-            if (tabset) {tabset.changeTab(currentStep + 1);}
+            var tabset = component.find("tabset");
+            if (tabset) tabset.changeTab(currentStep + 1);
         }
         
+        
         /* if (currentStep == 5) {
-            
+            // console.log('proceedbutton',component.get('v.currentStep'));
             component.set("v.showSpinner", true);
             // setTimeout($A.getCallback(function(){
             component.set("v.currentStep", 6);//Lead Gen
             component.set('v.leadSettings',true);
             
             helper.handleReSubmit(component, helper).then($A.getCallback(function() {
-                
+                //  console.log('callback',component.get('v.currentStep'));
                 component.set("v.showSpinner", false);
             }));
             // }),50);
         } else {
-            
+            console.log('callback else',component.get('v.currentStep')); 
             component.set("v.currentStep", currentStep + 1);
-            let tabset = component.find("tabset");
+            var tabset = component.find("tabset");
             if (tabset) tabset.changeTab(currentStep + 1);
         }*/
+        
+        
     },
     
     handleStepChange : function(component, event, helper) {
-
         component.set("v.showErrors", false);
         helper.resetSubHeading(component, helper);
         helper.resetHeading(component, helper);
@@ -352,56 +341,19 @@
         component.set('v.activeStep', 6);
         if (event.getParam("oldValue") < event.getParam("value")) {
             window.setTimeout($A.getCallback(function() {
-                if (component.find("modal")) {component.find("modal").scrollTo();}
+                if (component.find("modal")) component.find("modal").scrollTo();
             }));
         }
         
         if (component.get('v.currentStep') == 3) {
             if (component.get('v.resources').length == 0) {
                 // add resource w/ default values if none exists
-            //    component.set('v.resources', [{ title: '', url: 'https://', type: '' }]); //commented and replaced with below line as part of US848310
-                component.set('v.resources', [{ title: '', url: '', type: '' }]);
+                component.set('v.resources', [{ title: '', url: 'https://', type: '' }]);
             }            
         }
         if(component.get('v.currentStep') == 4){
-            const regionOptions1 = component.get('v.regionOptions');
-             helper.formatSummaryData(component, helper)
-             
-             const regionsToDisplay = regionOptions1;
-             
-             const regionsMap = new Map();
-             
-            
-            for(let i=0;i<regionsToDisplay.length;i++){
-                if(regionsToDisplay[i].children){
-                    for(let j=0;j<regionsToDisplay[i].children.length;j++){
-                        for(let k=0;k<regionsToDisplay[i].children[j].children.length;k++){
-                            if(regionsToDisplay[i].children[j].children[k].checked==true){
-                                regionsMap.set(regionsToDisplay[i].children[j].label,regionsToDisplay[i].children[j].children[k].label);
-                            }
-                        }
-                    }
-                }
-            }
-            
-            const regionsToDisplayFinal=[];
-            
-            for(let i=0;i<regionsToDisplay.length;i++){
-                if(regionsToDisplay[i].checked && regionsToDisplay[i].children){
-                    for(let j=0;j<regionsToDisplay[i].children.length;j++){
-                        for(let k=0;k<regionsToDisplay[i].children[j].children.length;k++){
-                            regionsToDisplay[i].children[j].children[k].last = false;
-                            if(regionsToDisplay[i].children[j].children[k].checked==true && regionsMap.get(regionsToDisplay[i].children[j].label)==regionsToDisplay[i].children[j].children[k].label){
-                               regionsToDisplay[i].children[j].children[k].last = true; 
-                            }
-                        }
-                    }
-                    regionsToDisplayFinal.push(regionsToDisplay[i]);
-                }
-            }
-            
-            component.set('v.regionsToDisplay',regionsToDisplayFinal); 
-            
+            helper.formatSummaryData(component, helper)
+            //console.log('logourl###',url);
             if (component.get("v.currentStep") < 4) {
                 component.set("v.stepLoading", true);
                 window.setTimeout($A.getCallback(function() {
@@ -409,20 +361,21 @@
                 }), 350);
             }
         }
+        
     },
     
     handleGoToSummary: function(component, event, helper) {
-        if(component.get("v.isPublishedCopyDraft") || component.get("v.isIntelAdmin")) {
-            component.set("v.currentStep", 4); /*Added by Manjula as part of DE77034*/
-        } else {
-            component.find("tabset").changeTab(4);
-        }
+       if(component.get('v.isIntelAdmin')){
+          var steps = component.get("v.steps");
+          component.set("v.currentStep", 4); 
+       }else
+       component.find("tabset").changeTab(4); //Added as part of DE81109
+        
     },
     
     handleAddResource : function(component, event, helper) {
-        const resources = component.get('v.resources');
-   //   resources.push({ title: '', url: 'https://', type: '' });  //commented and replaced with below line as part of US848310
-   	    resources.push({ title: '', url: '', type: '' });
+        var resources = component.get('v.resources');
+        resources.push({ title: '', url: 'https://', type: '' });
         component.set('v.resources', resources.slice());
         window.setTimeout($A.getCallback(function() {
             component.set('v.formValid', helper.isFormValid(component, helper));
@@ -432,8 +385,8 @@
     },
     
     handleDeleteResource : function(component, event, helper) {
-        const idx = event.target.dataset.idx;
-        const resources = component.get('v.resources');
+        var idx = event.target.dataset.idx;
+        var resources = component.get('v.resources');
         resources.splice(idx, 1);
         component.set('v.resources', resources);
         window.setTimeout($A.getCallback(function() {
@@ -465,7 +418,7 @@
         event.getSource().reportValidity();
         component.set("v.formTouched", true);
         component.set("v.formValid", helper.isFormValid(component, helper));
-        if (component.get('v.showErrors')) {helper.resetErrorsForCurrentStep(component, helper);}
+        if (component.get('v.showErrors')) helper.resetErrorsForCurrentStep(component, helper);
         component.set("v.summaryData.resources.isUpdated", true);
         component.set("v.summaryData.isUpdated", true);
     },
@@ -473,16 +426,17 @@
     handleDropdownChange : function(component, event, helper) {
         component.set("v.formTouched", true);
         component.set("v.formValid", helper.isFormValid(component, helper));
-        if (component.get('v.showErrors')) {helper.resetErrorsForCurrentStep(component, helper);}
+        if (component.get('v.showErrors')) helper.resetErrorsForCurrentStep(component, helper);
         component.set("v.summaryData.resources.isUpdated", true);
         component.set("v.summaryData.isUpdated", true);
     },
+    
     
     handleClose : function(component, event, helper) {
         
         component.set('v.leadSettings', false);
         if(component.get('v.currentStep') == 6 && !component.get('v.isIntelAdmin')){
-            const appEvent = $A.get("e.c:MarketplacePageEvent");
+            var appEvent = $A.get("e.c:MarketplacePageEvent");
             appEvent.setParams({
                 type: 'saveLeadSettings'
             });
@@ -490,67 +444,36 @@
             
         }
         
-        const confirmLabel = $A.get("$Label.c.PMP_Edit_Storefront_Cancel_Alert_Msg");
-        if (component.get("v.formTouched") && component.get("v.currentStep") < 5) {
-            if(window.confirm(confirmLabel)) { 
-                component.set("v.isOpen", false);
-            }
+        var confirmLabel = $A.get("$Label.c.PMP_Edit_Storefront_Cancel_Alert_Msg");
+        if (
+            component.get("v.formTouched") &&
+            component.get("v.currentStep") != 5
+        ) {
+            if (window.confirm(confirmLabel)) component.set("v.isOpen", false);
         } else {
             component.set('v.isOpen', false);
         }
     },    
+    
     handleUploadAdditional : function(component, event, helper) {
         component.set('v.showAdditionalUploader', true);
     },
-        
+    
+    
+    
     /* region */
     handleRegionChangeAll: function (component, event, helper) {
-        
-        const selected = component.find('selectAllRegionCheckbox').get('v.checked');
-        const options = component.get('v.regionOptions')
-        const anyChecked=false;
-        //added for select All functionality.
-        if(selected){
-            options.forEach(function (opt) {
-               opt.checked = false; 
-                opt.children.forEach(function (child) {
-                    child.checked = false; 
-                    child.children.forEach(function (subchild) {
-                        subchild.checked = false; 
-                    });
-                });
-                
-            });
-            
-            
-        component.set('v.regionOptions', options);
-            
+        var selected = component.find('selectAllRegionCheckbox').get('v.checked');
+        var options = component.get('v.regionOptions'), anyChecked = false;
         options.forEach(function (opt) {
-            opt.checked = true; // top level region || triggers handleRegionChange
+            opt.checked = selected;
             opt.children.forEach(function (child) {
-                child.checked = true; // sub-region
-            
-            child.children.forEach(function (subchild) {
-                subchild.checked = true; // countries.
+                child.selected = selected;
             });
-            });    
-            
         });
-        }else{
-            options.forEach(function (opt) {
-            opt.checked = false; // top level region || triggers handleRegionChange
-            opt.children.forEach(function (child) {
-                child.checked = false; // sub-region
-            
-            child.children.forEach(function (subchild) {
-                subchild.checked = false; // countries.
-            });
-            });    
-            
-        });
-            component.set('v.regionOptions', options);
-        }    
         component.set('v.regionOptions', options);
+        if(component.find('regionDropdown'))
+            [].concat(component.find('regionDropdown')).forEach(function (drop) { drop.update(); });
         component.set('v.regionError', !selected);
         if(component.get('v.errorInputs').length > 0){
             component.set("v.showErrors", !anyChecked);
@@ -562,57 +485,47 @@
         component.set('v.nextButtonDisabled', !helper.isCurrentStepValid(component, helper));
     },
     handleRegionChange : function(component, event, helper) {
-        let allSelected = true;
-        const options = component.get('v.regionOptions');
-        let anyChecked = false;
+        
+        var allSelected = true;
+        var options = component.get('v.regionOptions'), anyChecked = false;
+        
+        /*options.forEach(function(opt) {
+			if (opt.checked) {
+				anyChecked = true;
+				//opt.selections = [opt.children[0].value];    //Commented by Nikhil Not needed
+			} else {
+				opt.children.forEach(function(child) { child.selected = false; });
+				opt.selections = [];
+                allSelected = false;
+			}
+		});*/
         //Logic updated by Nikhil
         options.forEach(function(opt) {
             if(opt.checked){
                 anyChecked = true
-
             }else{
-                opt.children.forEach(function(child) { 
-                    child.checked = false; 
-                    child.children.forEach(function(subchild){
-                       subchild.checked = false;
-                    });    
-                }); 
+                opt.children.forEach(function(child) { child.selected = false; });
                 opt.selections = [];
                 allSelected = false;
-                
             }
-            let anyChild = false;
+            var anyChild = false;
             opt.children.forEach(function(child){
-                if(child.checked){
-                     //added by krishna ch
+                if(child.selected){
                     anyChild = true;
-                  child.children.forEach(function(subchild){  //added by krishna ch
-                    if(subchild.checked){
-                       subchild.checked = child.checked;
-                     
-                    }
-                      else{
-                          subchild.checked = false;
-                           allSelected = false;
-                      }
-                                           
-                  });
-                    
                 }
-                else{
-                    child.checked = false;
-                     allSelected = false;
-                }
-            });
+            })
             if(!anyChild){
                 opt.children = opt.children.map(function (child) {
+                    child.selected = opt.checked;
                     return child;
                 });	
             }
-
         });
+        
         component.set('v.regionOptions', options);
         component.set('v.regionsSelectedAll', allSelected);
+        if(component.find('regionDropdown'))
+            [].concat(component.find('regionDropdown')).forEach(function (drop) { drop.update(); });
         component.set("v.regionError", !anyChecked);
         if(component.get('v.errorInputs').length > 0){
             component.set("v.showErrors", !anyChecked);
@@ -621,14 +534,13 @@
         component.set("v.summaryData.isUpdated", true);
         component.set("v.formValid", helper.isFormValid(component, helper));
         component.set('v.nextButtonDisabled', !helper.isCurrentStepValid(component, helper));
-        component.set('v.isOpenCheckbox', false);//added by krishna ch
     },
     /* Industry */
     handleIndustryChange : function(component, event, helper) {
         
+        console.log('handleIndustryChange');
         
-        
-        const options = component.get('v.industryOptions');let anyChecked = false;
+        var options = component.get('v.industryOptions'), anyChecked = false;
         
         options.forEach(function(opt) {
             if (opt.checked) {
@@ -652,14 +564,13 @@
     },
     /* Application */
     handleApplicationChange : function(component, event, helper) {
-        let anyChecked = component.get('v.applicationOptions').find(function(opt) {
+        var anyChecked = component.get('v.applicationOptions').find(function(opt) {
             return opt.checked;
         });
         component.set('v.applicationError', !anyChecked);
+        console.log('handleApplicationChange');
         
-        
-        const options = component.get('v.applicationOptions');
-        anyChecked = false;
+        var options = component.get('v.applicationOptions'), anyChecked = false;
         
         options.forEach(function(opt) {
             if (opt.checked) {
@@ -687,10 +598,10 @@
     },
     
     handleSubmitEdits: function(component, event, helper) {
-        const steps = component.get("v.steps");
+        var steps = component.get("v.steps");
         component.set("v.showSpinner", true);
-        component.set("v.currentStep", 0);
-        if (component.find("modal")) {component.find("modal").scrollTo();}
+        component.set("v.currentStep", 5);
+        if (component.find("modal")) component.find("modal").scrollTo();
         helper.handleReSubmit(component, helper).then($A.getCallback(function() {
             component.set('v.currentStep', steps.length);
             component.set('v.showSpinner', false);
@@ -712,89 +623,40 @@
     },
     
     handleGoBack: function(component, event, helper) {
-        const incompleteTab = event.target.dataset.tab;
+        var incompleteTab = event.target.dataset.tab;
         
         // Tabset used on edit your storefront
-        const tabset = component.find("tabset");
+        var tabset = component.find("tabset");
         
         //If Edit your Storefront
         if (tabset) {
-            if (incompleteTab === "logo") {tabset.changeTab("0");}
-            if (incompleteTab === "description") {tabset.changeTab("1");}
-            if (incompleteTab === "regions") {tabset.changeTab("2");}
-            if (incompleteTab === "resources") {tabset.changeTab("3");}
+            if (incompleteTab === "logo") tabset.changeTab("0");
+            if (incompleteTab === "description") tabset.changeTab("1");
+            if (incompleteTab === "regions") tabset.changeTab("2");
+            if (incompleteTab === "resources") tabset.changeTab("3");
             //Else Add/Create your storefront
         } else {
-            if (incompleteTab === "logo") {component.set("v.currentStep", 0);}
-            if (incompleteTab === "description") {component.set("v.currentStep", 1);}
-            if (incompleteTab === "regions") {component.set("v.currentStep", 2);}
-            if (incompleteTab === "resources") {component.set("v.currentStep", 3);}
+            if (incompleteTab === "logo") component.set("v.currentStep", 0);
+            if (incompleteTab === "description") component.set("v.currentStep", 1);
+            if (incompleteTab === "regions") component.set("v.currentStep", 2);
+            if (incompleteTab === "resources") component.set("v.currentStep", 3);
         }
     },
     
     handleErrorClick: function(component, event, helper) {
-        const id = event.currentTarget.id;
-        
-        const element = document.getElementById(id);
+        var id = event.currentTarget.id;
+        console.log('element id : ', id);
+        var element = document.getElementById(id);
         element.scrollIntoView(true);
     },
     
     //
     handleLogoCheck : function(component, event, helper){
         
-        const childObj = component.find('uploader1');
+        var childObj = component.find('uploader1');
         component.set('v.logoCheck', childObj.get('v.logoCheck'));
-        console.log('check data method call');
-    },
-    
-    switchToText: function(component, event, helper) {
-        const swtch = component.find("switch");
-        const flag = swtch.get("v.checked");
-        component.set("v.showText", flag);
-    },
-  onSuppressEmailCheck: function(component, event, helper) {
-        const flag = component.find("suppressEmail").get("v.checked");
-        component.set("v.suppressEmail", flag);
-    },
-    //Added by Subash for US682883 & US685085
-    companyInformationValidation: function(component, event, helper) {
-       component.set("v.websiteReturnValue",true);
-       helper.companyInformationValidation(component, event, helper);
-    }, 
-    
-    partnerNameDropDownChange: function(component, event, helper) {
-        const part = component.get("v.partwrapMap")
-        const partner = part[component.get("v.pnameDropdown")];
         
-        component.set("v.partner", partner);
-        component.set("v.pnameFreeText", partner.name); //on chance of picklist the free text wil populate the same
-        helper.fetchCountryAndState(component);
-        helper.companyInformationValidation(component, event, helper);
     },
     
-    //Added by Subash for US686667
-    onCountryChange : function(component, event, helper) {
-        let partner = component.get('v.partner');
-        partner = partner ? partner : {};
-        partner.country = event.getSource().get("v.value");
-        partner.state = "";
-        component.set('v.partner', partner);
-        helper.fetchCountryAndState(component);
-        helper.companyInformationValidation(component, event, helper);
-    },
     
-    onStateChange : function(component, event, helper){
-        let partner = component.get('v.partner');
-        partner = partner ? partner : {};
-        partner.state = event.getSource().get("v.value");
-        component.set('v.partner', partner);
-        helper.companyInformationValidation(component, event, helper);
-    },
-    //End of US686667
-
-    //Added by Ajay for form validation and tab content visibility logic
-    handleCurrentStepValueChange : function(component, event, helper){
-        helper.handleTabContentVisibility(component, helper, event.getParam('value'));
-        console.log('check update : '+event.getParam('value'));
-    },
 })

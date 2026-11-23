@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Order SAP LOV Mapping</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Order SAP LOV Mapping</value>
+    </caseValues>
+    <fields>
+        <label><!-- InActive Indicator --></label>
+        <name>Sales_InActive_Indicator__c</name>
+    </fields>
+    <fields>
+        <label><!-- Object --></label>
+        <name>Sales_Object__c</name>
+    </fields>
+    <fields>
+        <label><!-- SAP Field LOV Value --></label>
+        <name>Sales_SAP_LOV_Value__c</name>
+    </fields>
+    <fields>
+        <label><!-- Salesforce field LOV Value --></label>
+        <name>Sales_SF_LOV_Value__c</name>
+    </fields>
+    <fields>
+        <label><!-- Salesforce Field --></label>
+        <name>Sales_Salesforce_Field__c</name>
+    </fields>
+    <fields>
+        <label><!-- Type --></label>
+        <name>Sales_Type__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -1,3 +1,188 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata"/>
-
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>L2_IPA_Support_Users_Offering_Sharing</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Share all Offering records to all members of L2 IPA Support public group</description>
+        <label>L2 IPA Support Users - Offering Sharing</label>
+        <sharedTo>
+            <group>Core_L2_IPA_Support</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>PMP_Offering_Id__c</field>
+            <operation>notEqual</operation>
+            <value>null</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PMP_External_Anonymous_Users_Offering</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Share all Published, Public Offering records to all Anonymous Users</description>
+        <label>PMP External - Anonymous Users - Offering</label>
+        <sharedTo>
+            <group>PMP_All_Anonymous_Users</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>PMP_Partner_Offering_Lifecycle_Status_Nm__c</field>
+            <operation>equals</operation>
+            <value>Published</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>PMP_Partner_Offering_Visibility_Nm__c</field>
+            <operation>equals</operation>
+            <value>Public Content</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PMP_External_Partner_Users_Offering</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Share all Published, Public Offering records to all Partner Users</description>
+        <label>PMP External - Partner Users - Offering</label>
+        <sharedTo>
+            <group>PMP_All_Partner_Users</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>PMP_Partner_Offering_Lifecycle_Status_Nm__c</field>
+            <operation>equals</operation>
+            <value>Published</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>PMP_Partner_Offering_Visibility_Nm__c</field>
+            <operation>equals</operation>
+            <value>Public Content</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PMP_External_Partner_Users_Offering_Non_ODM</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Share all Published, Partner, Non-ODM Offering records to all Partner Users</description>
+        <label>PMP External - Partner Users - Offering Non ODM</label>
+        <sharedTo>
+            <group>PMP_All_Partner_Users</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>PMP_Partner_Offering_Lifecycle_Status_Nm__c</field>
+            <operation>equals</operation>
+            <value>Published</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>PMP_Partner_Offering_Visibility_Nm__c</field>
+            <operation>equals</operation>
+            <value>Partner Content</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>PMP_Is_ODM_Ind__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PMP_External_Partner_Users_Offering_ODM</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Share all Published, Partner, ODM Offering records to all Non-ODM Partner Users</description>
+        <label>PMP External - Partner Users - Offering ODM</label>
+        <sharedTo>
+            <group>PMP_All_Partner_Users_Non_ODM</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>PMP_Partner_Offering_Lifecycle_Status_Nm__c</field>
+            <operation>equals</operation>
+            <value>Published</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>PMP_Partner_Offering_Visibility_Nm__c</field>
+            <operation>equals</operation>
+            <value>Partner Content</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>PMP_Is_ODM_Ind__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PMP_Internal_Intel_CW_Users_Offering</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Share all Published Offering records to all Intel CW Users</description>
+        <label>PMP Internal - Intel CW Users - Offering</label>
+        <sharedTo>
+            <group>Core_All_Contingent_Workers_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>PMP_Partner_Offering_Lifecycle_Status_Nm__c</field>
+            <operation>equals</operation>
+            <value>Published</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PMP_Internal_Intel_Users_Offering</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Share all Published Offering records to all Anonymous Users</description>
+        <label>PMP Internal - Intel Users - Offering</label>
+        <sharedTo>
+            <group>Core_All_Employees_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>PMP_Partner_Offering_Lifecycle_Status_Nm__c</field>
+            <operation>equals</operation>
+            <value>Published</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PMP_Internal_Intel_Users_Offering_Admin</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Share all non-Published Offering records to all Intel Admin Users</description>
+        <label>PMP Internal - Intel Users - Offering - Admin</label>
+        <sharedTo>
+            <group>PMP_All_Intel_Admin_Users</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>PMP_Partner_Offering_Lifecycle_Status_Nm__c</field>
+            <operation>notEqual</operation>
+            <value>Published</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PMP_Internal_Intel_Vendor_Users_Offering</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Share all Published Offering records to all Intel Vendor Users</description>
+        <label>PMP Internal - Intel Vendor Users - Offering</label>
+        <sharedTo>
+            <group>PMP_All_IOT_Vendor_Users</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>PMP_Partner_Offering_Lifecycle_Status_Nm__c</field>
+            <operation>equals</operation>
+            <value>Published</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingGuestRules>
+        <fullName>PMP_External_Guest_User_Offering</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Share all Published, Public Offering records to Guest User</description>
+        <label>PMP External - Guest User - Offering</label>
+        <sharedTo>
+            <guestUser>Intel_Solutions_Marketplace</guestUser>
+        </sharedTo>
+        <criteriaItems>
+            <field>PMP_Partner_Offering_Lifecycle_Status_Nm__c</field>
+            <operation>equals</operation>
+            <value>Published</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>PMP_Partner_Offering_Visibility_Nm__c</field>
+            <operation>equals</operation>
+            <value>Public Content</value>
+        </criteriaItems>
+        <includeHVUOwnedRecords>false</includeHVUOwnedRecords>
+    </sharingGuestRules>
+</SharingRules>

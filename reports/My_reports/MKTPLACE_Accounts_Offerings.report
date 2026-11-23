@@ -54,9 +54,6 @@
             <field>CUST_NAME</field>
         </columns>
         <columns>
-            <field>PMP_Partner_Offering__c.PMP_Partner_Offering_Dsc__c</field>
-        </columns>
-        <columns>
             <field>PMP_Partner_Offering__c.PMP_Current_Step_Txt__c</field>
         </columns>
         <columns>

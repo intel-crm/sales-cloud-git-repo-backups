@@ -38,6 +38,44 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Pricing_Notification_Name_Pkl__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Notification Name</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Quoteline_Rejection_Notification</fullName>
+                    <default>false</default>
+                    <label>Quoteline_Rejection_Notification</label>
+                </value>
+                <value>
+                    <fullName>Quoteline Rejection Notification</fullName>
+                    <default>false</default>
+                    <label>Quoteline Rejection Notification</label>
+                </value>
+                <value>
+                    <fullName>Quote_Team_Notification</fullName>
+                    <default>false</default>
+                    <label>Quote_Team_Notification</label>
+                </value>
+                <value>
+                    <fullName>Quote_Line_Cancellation_Notification</fullName>
+                    <default>false</default>
+                    <label>Quote_Line_Cancellation_Notification</label>
+                </value>
+                <value>
+                    <fullName>Quote_Letter_Notification</fullName>
+                    <default>false</default>
+                    <label>Quote_Letter_Notification</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
         <fullName>Pricing_Optin_Ind__c</fullName>
         <defaultValue>false</defaultValue>
         <fieldManageability>SubscriberControlled</fieldManageability>
@@ -86,6 +124,39 @@
         <required>false</required>
         <type>Text</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Pricing_Template_API_Name_Pkl__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Template API Name</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Pricing_QuoteLineRejectedNotification</fullName>
+                    <default>false</default>
+                    <label>Pricing_QuoteLineRejectedNotification</label>
+                </value>
+                <value>
+                    <fullName>Pricing_QuoteTeam_EmailNotification</fullName>
+                    <default>false</default>
+                    <label>Pricing_QuoteTeam_EmailNotification</label>
+                </value>
+                <value>
+                    <fullName>Pricing_QuoteLineCancelEmailNotification</fullName>
+                    <default>false</default>
+                    <label>Pricing_QuoteLineCancelEmailNotification</label>
+                </value>
+                <value>
+                    <fullName>Pricing_QuoteLetterEmailNotification</fullName>
+                    <default>false</default>
+                    <label>Pricing_QuoteLetterEmailNotification</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Pricing_Visible_to_Permission_Set__c</fullName>

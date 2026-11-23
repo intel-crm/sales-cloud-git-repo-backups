@@ -38,7 +38,13 @@ export default class Pricing_CustomerDivisionComponent extends NavigationMixin(L
             let quoteData = JSON.parse(JSON.stringify(data));
             this.disabled = quoteData.fields.Pricing_On_Hold_Cb__c.value; // Hold value to disabled flag
         } else if (error) {
-            console.error('Error @ getQuoteData ' + error);
+            /*const evt = new ShowToastEvent({
+                title: 'Error',
+                message: error.body.message,
+                variant: 'Error',
+            });
+            this.dispatchEvent(evt);*/
+            console.error(error);
         }
     }
 

@@ -38,7 +38,7 @@
                                     }
                                 }                               
                                 // If Claim is already on Manual Hold
-                                if(result.claimObj.Core_MDF_Status__c == "Hold" || result.claimObj.Core_MDF_Intel_Manual_Hold_Ind__c == true || result.claimObj.Core_MDF_Member_Manual_Hold_Ind__c == true )
+                                if(result.claimObj.Core_MDF_Status__c == "Hold")
                                 { 
                                     component.set('v.accessErrorMsg', $A.get('$Label.c.Core_MDF_Claim_Cannot_Be_Hold'));
                                 } 

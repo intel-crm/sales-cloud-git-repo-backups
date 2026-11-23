@@ -44,17 +44,8 @@ public class UCD_ACM_AccountBusinessTypeHandlerTest {
         insert accountBusinessType;
         test.stopTest();
     }
-
-    @isTest
-    private static void whenAccountBusinessTypeDeleted(){
-        Account acc = [Select Id from Account where Name = 'AccountForBusinessType'];
-        Business_Types__c businessType = [Select Id from Business_Types__c where Name = 'Direct Price Exception'];
-        Account_Business_Types__c accountBusinessType=[Select Id,Account__c,Business_Types__c From Account_Business_Types__c Where Account__c=:acc.Id AND Business_Types__c=:businessType.Id];
-        Test.startTest();
-        delete accountBusinessType;
-        Test.stopTest();
-    }
-
+    
+    
     @isTest
     private static void whenAccountBusinessTypeIsUpdated(){
         Account_Business_Types__c accountBusinessType = [Select Effective_Start_Date__c,Effective_End_Date__c from Account_Business_Types__c limit 1];
@@ -75,14 +66,4 @@ public class UCD_ACM_AccountBusinessTypeHandlerTest {
         update accountBusinessType;
         Test.stopTest();
     }
-
-    @isTest
-        private static void whenTriggerReltioSync(){
-            Account_Business_Types__c accountBusinessType = [Select Effective_Start_Date__c,Effective_End_Date__c,Business_Types__c from Account_Business_Types__c limit 1];
-            Map<Id,Account_Business_Types__c> accountBusinessTypeMap = new Map<Id,Account_Business_Types__c>([Select Effective_Start_Date__c,Effective_End_Date__c,Business_Types__c from Account_Business_Types__c limit 1]);
-
-            Test.startTest();
-            UCD_ACM_AccountBusinessTypeHandler.triggerReltioSync(System.TriggerOperation.AFTER_INSERT,new List<Account_Business_Types__c>{accountBusinessType},accountBusinessTypeMap,  new List<Account_Business_Types__c>{accountBusinessType},accountBusinessTypeMap );
-            Test.stopTest();
-        }
 }

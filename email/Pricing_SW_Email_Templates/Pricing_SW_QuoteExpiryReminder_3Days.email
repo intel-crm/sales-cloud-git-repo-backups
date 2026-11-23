@@ -1,0 +1,5 @@
+<messaging:emailTemplate renderUsingSystemContextWithoutSharing="True" subject="Status for Quote: {!relatedTo.Name}/{!relatedTo.Pricing_SW_Account_Name__c}" recipientType="User" relatedToType="SBQQ__Quote__c">
+    <messaging:htmlEmailBody >
+        <c:Pricing_SW_QuoteExpiryReminder_3Days quoteRecordId="{!relatedTo.Id}" quoteApprovalRecordId="{!relatedTo.Id}"/>
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>

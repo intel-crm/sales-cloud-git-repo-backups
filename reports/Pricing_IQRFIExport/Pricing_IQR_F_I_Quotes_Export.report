@@ -25,13 +25,13 @@
         <field>SBQQ__Quote__c$Pricing_Market_Segment_values_Nm__c</field>
     </columns>
     <columns>
-        <field>SBQQ__Quote__c$Pricing_Decision_Date__c</field>
-    </columns>
-    <columns>
         <field>SBQQ__Quote__c$Pricing_Project_Name_Nm__c</field>
     </columns>
     <columns>
         <field>SBQQ__Quote__c$SBQQ__PrimaryContact__c</field>
+    </columns>
+    <columns>
+        <field>SBQQ__Quote__c$Pricing_Decision_Date__c</field>
     </columns>
     <columns>
         <field>SBQQ__Quote__c$Pricing_ShipmentStDate_Dt__c</field>

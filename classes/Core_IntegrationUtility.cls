@@ -120,7 +120,7 @@ global without sharing class Core_IntegrationUtility {
     }
 
     // Class to hold the XML Account message from ERPM
-    /*public class ERPM_Account {
+    public class ERPM_Account {
 
         public String erpmAccountNumber = '';
         public String cimId             = '';
@@ -157,7 +157,7 @@ global without sharing class Core_IntegrationUtility {
         public String website           = '';
         public String employeeGrp       = '';
         // ----------- #REGION :: eRPM Code Changes :: END   ------------- //
-    }*/
+    }
 
     // Class to hold the ERPM "Blackbox" response -- basically success or failure of our
     // attempt to set up user/entitlements/etc. in ERPM
@@ -309,8 +309,7 @@ global without sharing class Core_IntegrationUtility {
     }
 
     // Class to wrap contacts in the format Box B needs them
-    //This method is no more in Use and related class is being EOL
-   global class BoxB_ContactWrapper {
+    global class BoxB_ContactWrapper {
 
         public String CST_ID            = '';
         public String INTRNL_LGN_ID     = '';
@@ -454,8 +453,10 @@ global without sharing class Core_IntegrationUtility {
 
             // Perform DML INSERTs for ERPM Engagements & Entitlements
             System.debug('##### erpmEngagementsToInsert: ' + erpmEngagementsToInsert);
-            if (erpmEngagementsToInsert.size() > 0)
-                insert erpmEngagementsToInsert;
+            if (erpmEngagementsToInsert.size() > 0){
+
+                    insert erpmEngagementsToInsert;
+            }
 
             // Re-pull our full set of ERPM Engagements now, and build a map of Engg Code to ID
             fullSetERPMEngagements = [select Id, Core_Technical_Engagement_Code__c from Core_ERPM_Engagement__c];
@@ -478,8 +479,14 @@ global without sharing class Core_IntegrationUtility {
             }
 
             System.debug('##### entitlementsToInsert: ' + entitlementsToInsert);
-            if (entitlementsToInsert.size() > 0)
-                insert entitlementsToInsert;
+            if (entitlementsToInsert.size() > 0){
+                if(Schema.sObjectType.Core_Entitlement__c.fields.Core_ERPM_Engagement_Id__c.isCreateable() &&
+                Schema.sObjectType.Core_Entitlement__c.fields.Core_IsActive__c.isCreateable() &&
+                Schema.sObjectType.Core_Entitlement__c.fields.Core_Display_Name__c.isCreateable() &&
+                Schema.sObjectType.Core_Entitlement__c.fields.Name.isCreateable()){
+                    insert entitlementsToInsert;
+                }
+            }
         }
     }
     // Helper method to assist with building our Tags in Log Entries

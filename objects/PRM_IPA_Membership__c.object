@@ -197,11 +197,15 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>PRM_Comments__c</fullName>
-        <label>Notes</label>
+        <fullName>PRM_Approve_Reject_Link__c</fullName>
+        <externalId>false</externalId>
+        <formula>HYPERLINK( &apos;/lightning/r/ProcessInstanceWorkitem/&apos; &amp; PRM_ProcessInstanceWorkItem_Id__c &amp; &apos;/view&apos; ,&apos;Approve/Reject&apos;,&quot;_blank&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Approval/Rejection Link</label>
         <required>false</required>
         <trackTrending>false</trackTrending>
-        <type>TextArea</type>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>PRM_Old_Partner_Role__c</fullName>
@@ -225,31 +229,18 @@
             <valueSetDefinition>
                 <sorted>false</sorted>
                 <value>
-                    <fullName>Partner</fullName>
+                    <fullName>Member</fullName>
                     <default>false</default>
-                    <label>Partner</label>
-                </value>
-                <value>
-                    <fullName>Prestige</fullName>
-                    <default>false</default>
-                    <label>Prestige</label>
+                    <label>Member</label>
                 </value>
                 <value>
                     <fullName>Gold</fullName>
                     <default>false</default>
-                    <isActive>false</isActive>
                     <label>Gold</label>
-                </value>
-                <value>
-                    <fullName>Member</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Member</label>
                 </value>
                 <value>
                     <fullName>Titanium</fullName>
                     <default>false</default>
-                    <isActive>false</isActive>
                     <label>Titanium</label>
                 </value>
             </valueSetDefinition>
@@ -275,6 +266,16 @@
         <required>true</required>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>PRM_ProcessInstanceWorkItem_Id__c</fullName>
+        <externalId>false</externalId>
+        <label>Process Instance Work Item</label>
+        <length>20</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>PRM_Status__c</fullName>
@@ -328,6 +329,21 @@
         </valueSet>
     </fields>
     <fields>
+        <fullName>PRM_Suppress_Email__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Creating a new field as part of this user story#US96902</description>
+        <label>Suppress Email</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Submitted_for_Approval__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Submitted for Approval</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>prm_error_summary__c</fullName>
         <description>Populate Errors in transaction as part of this change request</description>
         <label>Error summary</label>
@@ -348,7 +364,7 @@
     <validationRules>
         <fullName>PRM_IPA_Tier_Selection</fullName>
         <active>true</active>
-        <errorConditionFormula>NOT( $Permission.PCC_Bypass_Automation ) &amp;&amp; PRM_Partner_Tier__r.Program.Name !=&apos;Intel Partner Alliance&apos;</errorConditionFormula>
+        <errorConditionFormula>PRM_Partner_Tier__r.Program.Name !=&apos;Intel Partner Alliance&apos;</errorConditionFormula>
         <errorDisplayField>PRM_Partner_Tier__c</errorDisplayField>
         <errorMessage>Please select IPA specific Partner tier</errorMessage>
     </validationRules>
@@ -356,22 +372,15 @@
         <fullName>PRM_PartOf_1PID</fullName>
         <active>true</active>
         <description>If the location account is part of 1PID then there will be validation to disallow admins from submitting a role/tier update through this option.</description>
-        <errorConditionFormula>NOT( $Permission.PCC_Bypass_Automation ) &amp;&amp; NOT(ISBLANK(PRM_Account_Channel_Membership__r.PRM_Account_Id__r.Core_IPA_One_Partner_Id__c)) &amp;&amp;  PRM_Account_Channel_Membership__r.PRM_Account_Id__r.RecordType.Name  = &apos;Mastered_Account&apos;</errorConditionFormula>
+        <errorConditionFormula>NOT(ISBLANK(PRM_Account_Channel_Membership__r.PRM_Account_Id__r.Core_IPA_One_Partner_Id__c)) &amp;&amp;  PRM_Account_Channel_Membership__r.PRM_Account_Id__r.RecordType.Name  = &apos;Mastered_Account&apos;</errorConditionFormula>
         <errorMessage>The request cannot be submitted as the Location account is a part of 1PID.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>PRM_Partner_Role_Tier_Combination</fullName>
         <active>true</active>
         <description>Validation to dis allow and new request with the same role tier combination when the request is not in Rejected state</description>
-        <errorConditionFormula>AND(NOT( $Permission.PCC_Bypass_Automation ),ISNEW(),(TEXT(PRM_Account_Channel_Membership__r.PRM_Partner_Role__c ) = TEXT(PRM_Partner_Role__c ) &amp;&amp; (PRM_Account_Channel_Membership__r.PRM_Channel_Program_Level_Id__r.Name = PRM_Partner_Tier__r.Name )))</errorConditionFormula>
+        <errorConditionFormula>AND(ISNEW(),(TEXT(PRM_Account_Channel_Membership__r.PRM_Partner_Role__c ) = TEXT(PRM_Partner_Role__c ) &amp;&amp; (PRM_Account_Channel_Membership__r.PRM_Channel_Program_Level_Id__r.Name = PRM_Partner_Tier__r.Name )))</errorConditionFormula>
         <errorMessage>Partner Role and Partner tier Combination already exist.</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>PRM_Validate_Tier</fullName>
-        <active>true</active>
-        <errorConditionFormula>AND(PRM_Partner_Tier__r.PRM_inactind__c, PRM_Partner_Tier__r.Program.Name  = &apos;Intel Partner Alliance&apos;, $Label.PRM_IPARefresh =&apos;True&apos;)</errorConditionFormula>
-        <errorDisplayField>PRM_Partner_Tier__c</errorDisplayField>
-        <errorMessage>Please select either Partner/Prestige tier</errorMessage>
     </validationRules>
     <visibility>Public</visibility>
 </CustomObject>

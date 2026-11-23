@@ -58,10 +58,6 @@
     <columns>
         <field>Lead.Core_Entrance_Date_SQL__c</field>
     </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Lead.SWS_Software_Lead__c</field>
-    </columns>
     <description>RT: New History Report</description>
     <filter>
         <criteriaItems>

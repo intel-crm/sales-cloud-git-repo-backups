@@ -10,12 +10,14 @@ Modification Log :
 * Saif Alam              09/18/2018              Original version 
 ******************************************************************************/
 
-public without sharing class Core_ContactEntitlementAudienceUpdate {
+public class Core_ContactEntitlementAudienceUpdate {
  public static void updateContactAudience(List<Core_Contact_Entitlement__c> oldList, 
                                          List<Core_Contact_Entitlement__c> newList, 
                                          Map<Id,Core_Contact_Entitlement__c> oldMap, 
                                          Map<Id,Core_Contact_Entitlement__c> newMap)
 {
+
+   List<String> pickListToAdd = new List<String>(); // valid picklist values
    List<ID> contactIDList = new List<ID>(); //Contact ID list
    List<ID> entIDList = new List<ID>();  // Entitlement Detail ID list 
    Map<ID,Contact> contactMap = new  Map<ID,Contact>();
@@ -35,6 +37,8 @@ public without sharing class Core_ContactEntitlementAudienceUpdate {
               entIDList.add(conEntObj.Core_Entitlement_Id__c);
            }   
     }//for loop
+    System.debug('SA contactIDList:'+contactIDList);
+    System.debug('SA entIDListList:'+entIDList);
 
        // Do not proceed further if there are no entries in 2 list 
 if (contactIDList.size() >0 || entIDList.size() > 0){
@@ -48,6 +52,7 @@ if (contactIDList.size() >0 || entIDList.size() > 0){
          for(Schema.Picklistentry pl : fld){
               pickList.add(pl.getValue());
             }
+     System.debug('SA Core_Audience_List__c valid pickList values:'+pickList);
      
                //Build the contact and entitlement maps
    List<Contact> contactList = [SELECT ID, Name,Core_Audience_List__c  FROM Contact WHERE ID IN :contactIDList];   
@@ -55,6 +60,8 @@ if (contactIDList.size() >0 || entIDList.size() > 0){
                // convert the lists to maps
                contactMap.putAll(contactList);
                entMap.putAll(entitlementList);
+               System.debug('SA contactMap before change:'+contactMap);
+               System.debug('SA entMap:'+entMap);
                
                
      //Loop thru each contact entitlement record. Get the the contact record and 
@@ -69,6 +76,8 @@ if (contactIDList.size() >0 || entIDList.size() > 0){
               Core_Entitlement__c entitlementVar = entMap.get(conEntObj.Core_Entitlement_Id__c);
               String entName = '';
               if(entitlementVar != null){entName = entitlementVar.Name;}
+              System.debug('SA entName:'+entName);
+              System.debug('SA contactVar.Core_Audience_List__c value ' + contactVar.Core_Audience_List__c );  
               // get the list of audience values of the contact 
               allAudienceValues.clear();
                if((contactVar != null) && (contactVar.Core_Audience_List__c != null) )
@@ -90,6 +99,7 @@ if (contactIDList.size() >0 || entIDList.size() > 0){
                       //put contact back in map
                       contactMap.put(conEntObj.Core_Contact_Id__c,contactVar);
                       updateFlag = true;
+                      System.debug('SA Adding to audience entName:'+entName);     
                        }
                    }
                    else  //remove picklist value
@@ -117,15 +127,18 @@ if (contactIDList.size() >0 || entIDList.size() > 0){
                          //put contact back in map
                         contactMap.put(conEntObj.Core_Contact_Id__c,contactVar); 
                         updateFlag = true;
+                       System.debug('SA Removing audience entName:'+entName);         
                            }   //if(contactVar.Core_Audience_List__c != null)
                      }
                    }   
               }
                } // end of for(Core_Contact_Entitlement__c conEntObj : Trigger.new)
     
+               System.debug('SA contactMap After Change:'+contactMap);
              //Update Contact Records
     if(updateFlag == true){
                Update contactMap.values();
+               System.debug('SA contactMap.values was Updated');
      }
      
      }// if (contactEntAddList.size() >0 || contactEntRemoveList.size() > 0)      

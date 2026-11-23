@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <AuthProvider xmlns="http://soap.sforce.com/2006/04/metadata">
     <customMetadataTypeRecord>API_M_Auth_Provider__mdt.Apigee_SalesAssist_Auth_Provider</customMetadataTypeRecord>
-    <executionUser>ipa_registration_integration.user@intel.com.crm</executionUser>
+    <executionUser>saapijeeuser@intel.com.crm.crmdevsls3</executionUser>
     <friendlyName>Apigee_SalesAssist_Auth_Provider</friendlyName>
     <includeOrgIdInIdentifier>false</includeOrgIdInIdentifier>
     <isPkceEnabled>false</isPkceEnabled>
@@ -10,5 +10,5 @@
     <requireMfa>false</requireMfa>
     <sendAccessTokenInHeader>false</sendAccessTokenInHeader>
     <sendClientCredentialsInHeader>false</sendClientCredentialsInHeader>
-    <sendSecretInApis>true</sendSecretInApis>
+    <sendSecretInApis>false</sendSecretInApis>
 </AuthProvider>

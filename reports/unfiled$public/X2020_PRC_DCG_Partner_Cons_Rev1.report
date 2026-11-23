@@ -79,7 +79,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>yingli xia</value>
+            <value>qingdong man</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Solution_Area__c</column>
@@ -110,12 +110,12 @@
     </groupingsAcross>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>FULL_NAME</field>
+        <field>ACCOUNT_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>ACCOUNT_NAME</field>
+        <field>FULL_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>2020 PRC DCG Partner Cons Rev</name>

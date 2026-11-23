@@ -46,9 +46,8 @@ public without sharing class ACM_BI_SetAttributesOnMDMCreate implements UCD_ACM_
                 account.OwnerId =  System.Label.Core_UncoveredAccount_UserId;
                 account.RecordTypeId = rejAccountRTId;
                 account.Name = account.Core_Data_Simplified_Account_Nm__c;
-                account.Core_Sales_Groups__c = null;
                 if (account.Core_MDM_Status__c == 'APRV') {
-                    account.RecordTypeId = dealAccountRTId;                    
+                    account.RecordTypeId = dealAccountRTId;
                 }
             }
  

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>POST_to_API_Proxy_Apex_Action</name>
+        <label>POST to API Proxy (Apex Action)</label>
+        <locationX>176</locationX>
+        <locationY>253</locationY>
+        <actionName>Core_IntegrationOutboundAGSMsgPost</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>POST_to_API_Proxy_External_Service</targetReference>
+        </connector>
+        <inputParameters>
+            <name>myId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>myMessageType</name>
+            <value>
+                <elementReference>$Record.Core_MessageType__c</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>myPayload</name>
+            <value>
+                <elementReference>$Record.Core_Payload__c</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>mySObject</name>
+            <value>
+                <stringValue>Core_Integration_Outbound_Message__c</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>Core_IntegrationOutboundAGSMsgPost</nameSegment>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <actionCalls>
+        <name>POST_to_API_Proxy_External_Service</name>
+        <label>POST to API Proxy (External Service)</label>
+        <locationX>176</locationX>
+        <locationY>373</locationY>
+        <actionName>CoreIntegrationAGSOutboundMsg.Inititatestheprocess</actionName>
+        <actionType>externalService</actionType>
+        <nameSegment>CoreIntegrationAGSOutboundMsg.Inititatestheprocess</nameSegment>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <apiVersion>50.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Option 1 for migrating from WF rule + OBM to Apigee service that can connect via OAuth</description>
+    <formulas>
+        <name>messageBody</name>
+        <dataType>String</dataType>
+        <expression>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;InputObject&gt;
+	&lt;Id&gt;{!$Record.Id}&lt;/Id&gt;
+	&lt;sObject&gt;Core_Integration_Outbound_Message__c&lt;/sObject&gt;
+	&lt;Core_MessageType__c&gt;{!$Record.Core_MessageType__c}&lt;/Core_MessageType__c&gt;
+	&lt;Core_Payload__c&gt;{!$Record.Core_Payload__c}&lt;/Core_Payload__c&gt;
+&lt;/InputObject&gt;</expression>
+    </formulas>
+    <interviewLabel>Integration Outbound Message {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Integration Outbound Message - Apigee POC Option 1</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>POST_to_API_Proxy_Apex_Action</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Core_MessageType__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>AGS Contact Entitlement</stringValue>
+            </value>
+        </filters>
+        <object>Core_Integration_Outbound_Message__c</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>InvalidDraft</status>
+    <variables>
+        <name>messageBodyText</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <elementReference>messageBody</elementReference>
+        </value>
+    </variables>
+</Flow>

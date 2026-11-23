@@ -9,9 +9,11 @@
         } else {
            component.set("v.isOpen", true);
        }
+
        //set v._rows to v.rows
        //clone object
        component.set("v._rows", component.get('v.rows') || []);
+      
        //helper.validate(component);
     },
 
@@ -23,7 +25,8 @@
 
     handleAddResource: function(component, event, helper) {
         var rows = component.get('v._rows') || [];
-        rows.push({ title: '', url: '', type: ''});
+        rows.push({ title: '', url: '', type: '' });
+        console.log('rows',rows);
         component.set('v._rows', rows);
         component.set("v.isFormValid", false);
         component.set("v.hideButton",true);
@@ -79,17 +82,11 @@
     },
 
     handleDropdownChange: function(component, event, helper) {
+        console.log('handleDropdownChange');
         var valid = event.getSource().checkValidity();
-        /*Raj's changes to get the label of the option*/
-        var options = component.get('v.options');
-        var value = event.getSource().get("v.value");
-        var index = options.findIndex(item => item.value == value),
-    	optionLabel = index >= 0? options[index].label: null;
-        var row = component.get('v._rows')[event.target.dataset.idx];
-        row.label = optionLabel;
-        /*End*/
         //var valid = component.find("dropdown").checkValidity();
         component.set('v.valid', valid);
+        console.log('valid on change?',valid);
         helper.validate(component);
     },
     

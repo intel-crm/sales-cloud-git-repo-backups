@@ -9,12 +9,24 @@
         <sourceColumnName>Case.Core_Case_Closure__c</sourceColumnName>
         <useOther>true</useOther>
         <values>
+            <sourceValues>
+                <sourceValue>Fix in Intel Documentation</sourceValue>
+            </sourceValues>
             <value>Doc Bug</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Fix in Intel Platform/Tool</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Fix in Intel Software Release</sourceValue>
+            </sourceValues>
             <value>Tool/Software Bug</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Fix in Intel Silicon</sourceValue>
+            </sourceValues>
             <value>Sillicon Bug</value>
         </values>
     </buckets>
@@ -162,7 +174,7 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSED_DATEONLY</dateColumn>
-        <endDate>2020-06-30</endDate>
+        <endDate>2020-03-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
         <startDate>2018-10-01</startDate>
     </timeFrameFilter>

@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_75342587</developerName>
+        <masterLabel>Conversion Point</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>Lead.Core_Lead_Conversion_Point__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>EDC - Design-in Tools</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EDC - Embedded Innovator 8</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EDC - Eval Platform - Approved - Norco BIS-6630 Intel Atom D2550</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EDC - Get Help</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EDC - ISX Dev Kit Content Inquiry</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EDC - Registration</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EDC - Samples - Approved</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EDC - Samples - Declined</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EDC - Schematic and Layout Review</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EDC - Solutions Directory</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EDC - WBQ - Embedded Innovator 10</sourceValue>
+            </sourceValues>
+            <value>EDC</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_96739627</developerName>
+        <masterLabel>Creator</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>CREATED_ALIAS</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>eloq</sourceValue>
+            </sourceValues>
+            <value>Eloqua</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_54531020</developerName>
+        <masterLabel>Other</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>Lead.Core_Lead_Conversion_Point__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>EDC - Design-in Tools</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EDC - Embedded Innovator 8</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EDC - Eval Platform - Approved - Norco BIS-6630 Intel Atom D2550</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EDC - Get Help</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EDC - ISX Dev Kit Content Inquiry</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EDC - Registration</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EDC - Samples - Approved</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EDC - Samples - Declined</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EDC - Schematic and Layout Review</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EDC - Solutions Directory</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EDC - WBQ - Embedded Innovator 10</sourceValue>
+            </sourceValues>
+            <value>EDC</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>ea - aaeon-onyx</sourceValue>
+            </sourceValues>
+            <value>Other</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_58099976</developerName>
+        <masterLabel>Owner</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>ALIAS</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>EMEA OSC</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA OSC - French</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA OSC - German</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA OSC - Hebrew</sourceValue>
+            </sourceValues>
+            <value>OSC</value>
+        </values>
+    </buckets>
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <axisBinding>y</axisBinding>
+            <column>RowCount</column>
+        </chartSummaries>
+        <chartType>HorizontalBarGrouped</chartType>
+        <enableHoverLabels>false</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>LEAD_SOURCE</groupingColumn>
+        <legendPosition>Right</legendPosition>
+        <location>CHART_TOP</location>
+        <secondaryGroupingColumn>BucketField_96739627</secondaryGroupingColumn>
+        <showAxisLabels>true</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>false</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
+    <columns>
+        <field>Lead.Core_Stagnant_Lead_Stage_Time__c</field>
+    </columns>
+    <columns>
+        <field>CREATED_ALIAS</field>
+    </columns>
+    <columns>
+        <field>OWNER</field>
+    </columns>
+    <columns>
+        <field>STATUS</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_Lead_Priority__c</field>
+    </columns>
+    <columns>
+        <field>BucketField_54531020</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_Lead_Score__c</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_Lead_Conversion_Point__c</field>
+    </columns>
+    <columns>
+        <field>ALIAS</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_Lead_Stage_Change_Date_Time__c</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_Lead_State__c</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_Product_Interest__c</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_Project_Phase__c</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_Project_Phase_Score__c</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_Project_Size__c</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_Project_Size_Score__c</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_Project_Timeframe__c</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_Sales_Segment__c</field>
+    </columns>
+    <columns>
+        <field>FIRST_NAME</field>
+    </columns>
+    <columns>
+        <field>LAST_NAME</field>
+    </columns>
+    <columns>
+        <field>COMPANY</field>
+    </columns>
+    <columns>
+        <field>RATING</field>
+    </columns>
+    <columns>
+        <field>STREET</field>
+    </columns>
+    <columns>
+        <field>EMAIL</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Lead.Core_Geo__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>EMEA</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Lead.Core_Geo__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>EMEA</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_96739627</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>LEAD_SOURCE</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Carey lead source and stage</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>LeadList</reportType>
+    <scope>org</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

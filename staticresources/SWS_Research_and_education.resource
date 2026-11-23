@@ -1,0 +1,1 @@
+﻿Request Type,Create New Lead,First Name,Last Name,Requester Email Address,Community Program Name,Community Program - Coupon Type,Compute/Service Requirements,Submitter Email same as Requester Email,Submitter Name,Submitter Email Address,Start Date,Expiry Date,Coupon Value,Number of Uses,Is Standard?

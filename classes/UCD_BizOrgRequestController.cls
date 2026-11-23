@@ -9,10 +9,24 @@ public without sharing class UCD_BizOrgRequestController {
     public static List<UCD_BizOrgRequestModel.BusinessOrganizationResponse> createBusinessOrganizationRequest(UCD_BizOrgRequestModel requestModel){  
         List<UCD_BizOrgRequestModel.BusinessOrganizationResponse> invalidRequests = new List<UCD_BizOrgRequestModel.BusinessOrganizationResponse>();
         List<UCD_BizOrgRequestModel.AccountDetail> validAccountRequests = new List<UCD_BizOrgRequestModel.AccountDetail>();
-        
-        UCD_ACM_Logger.information('UCD_BizOrgRequestController', 'createBusinessOrganizationRequest', 'requestModel : '+JSON.serialize(requestModel), null);
-
         if(requestModel!=null){
+
+            for(UCD_BizOrgRequestModel.AccountDetail accountDetail : requestModel.AccountRequests){
+
+                if( accountDetail.AccountRequestReferences == null){
+                    UCD_BizOrgRequestModel.AccountRequestReference requestReference = new UCD_BizOrgRequestModel.AccountRequestReference();
+                    requestReference.Name = 'IQR';
+                    requestReference.Value = '';
+                    List<UCD_BizOrgRequestModel.AccountRequestReference> requestReferences = new List<UCD_BizOrgRequestModel.AccountRequestReference>();
+                    requestReferences.add(requestReference);
+
+                    accountDetail.AccountRequestReferences = requestReferences;
+                }
+                
+            }
+            
+            
+            
             // check duplicate requests
             TagDuplicateAccountRequest(requestModel);
             //validate request
@@ -21,13 +35,10 @@ public without sharing class UCD_BizOrgRequestController {
             List <UCD_BizOrgRequestModel.BusinessOrganizationResponse> serviceResponse = createAccountAndResponse(validAccountRequests);
             //return response
             serviceResponse.addAll(invalidRequests);
-            
-            UCD_ACM_Logger.information('UCD_BizOrgRequestController', 'createBusinessOrganizationRequest', 'response : '+JSON.serialize(serviceResponse), null);
             return serviceResponse;
         }
         return null;
     }
-
     /**
     * description:- Validate request (Diffrentiate Valid Account and Invalid Account)
     * params:-UCD_BizOrgRequestModel,  List<UCD_BizOrgRequestModel.AccountDetail>, List<UCD_BizOrgRequestModel.BusinessOrganizationResponse>
@@ -160,7 +171,7 @@ public without sharing class UCD_BizOrgRequestController {
             }
             accountModel.Addresses = lstofnewModeladdr;
 
-            Map < String , String > mapOfAccReqRef = new Map < String , String >();                
+                Map < String , String > mapOfAccReqRef = new Map < String , String >();                
         if(requestModelRecord.AccountRequestReferences != null){
             if(requestModelRecord.AccountRequestReferences.size() > 0){
                 for (UCD_BizOrgRequestModel.AccountRequestReference accountRef : requestModelRecord.AccountRequestReferences) {
@@ -176,7 +187,7 @@ public without sharing class UCD_BizOrgRequestController {
         }else if(  requestModelRecord.AccountRequestReferences == null){
             mapOfAccReqRef.put('IQR', '');	
             accountModel.AccountRequestReferences = mapOfAccReqRef;
-        }
+            }
 
             lstaccountModel.add(accountModel);
         }

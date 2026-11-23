@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>CTY TNHH TM DV TIN HỌC TD Partner User</description>
+    <description>DNTN TM DV TIN HOC T&amp;D Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>CTY TNHH TM DV TIN HỌC TD Partner User</name>
+    <name>DNTN TM DV TIN HOC T&amp;D Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>EMP_11725584_Hong_Hai_Le</parentRole>
+    <parentRole>DNTNTMDVTINHOCTDPartnerManager</parentRole>
 </Role>

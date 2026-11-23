@@ -244,6 +244,9 @@
     <columns>
         <field>SBQQ__Quote__c.SBQQ__LineItems__r.Performance_Metrics__r$Pricing_Other_Nm__c</field>
     </columns>
+    <columns>
+        <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Lost_Reason_Nm__c</field>
+    </columns>
     <description>This Data Center report is connected to the Export Quote button on the quote so that it auto filters to the corresponding quote when the button is clicked.</description>
     <filter>
         <criteriaItems>

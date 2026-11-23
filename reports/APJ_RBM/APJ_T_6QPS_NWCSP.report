@@ -4,6 +4,9 @@
         <field>Account.Core_Sales_Groups__c</field>
     </columns>
     <columns>
+        <field>ACCOUNT_NAME</field>
+    </columns>
+    <columns>
         <field>Account.Core_Account_Country__c</field>
     </columns>
     <columns>
@@ -14,6 +17,9 @@
     </columns>
     <columns>
         <field>OPPORTUNITY_NAME</field>
+    </columns>
+    <columns>
+        <field>FULL_NAME</field>
     </columns>
     <columns>
         <field>OWNER_EMAIL</field>
@@ -69,7 +75,6 @@
         <field>PROBABILITY</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
         <field>Opportunity.Core_Architecture_Conversion__c</field>
     </columns>
     <columns>
@@ -94,9 +99,6 @@
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>Opportunity.Core_Low_Velocity__c</field>
-    </columns>
-    <columns>
-        <field>Core_Opp_FC_Prod_Schedule__c.Core_FC_BU_Short_Name__c</field>
     </columns>
     <columns>
         <field>FK_$Product2.Core_Inf_KPI_ProdGroup__c</field>
@@ -133,6 +135,9 @@
         <field>Opportunity.Core_At_Risk_Created_Date__c</field>
     </columns>
     <columns>
+        <field>Opportunity.Core_Risk_Reason__c</field>
+    </columns>
+    <columns>
         <field>Opportunity.Core_Loss_Cancel_Reason__c</field>
     </columns>
     <columns>
@@ -142,7 +147,20 @@
         <field>ACCOUNT_OWNER</field>
     </columns>
     <filter>
-        <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6 AND 7</booleanFilter>
+        <criteriaItems>
+            <column>Opportunity.Core_Exclude_From_KPIs__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>0</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Quarter__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>2020,2021,2022</value>
+        </criteriaItems>
         <criteriaItems>
             <column>Account.Core_Sales_Groups__c</column>
             <columnToColumn>false</columnToColumn>
@@ -151,46 +169,18 @@
             <value>GMP APJ Sales Territory</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Quantity__c</column>
+            <column>Account.Core_Account_ID__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>0</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Account.Core_Account_BU_Focus__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>includes</operator>
-            <value>DCG-Cloud</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Account.Core_Account_Tier__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>includes</operator>
-            <value>DCG-Tier 2,DCAI-Tier 2,DCG-Tier 3,DCAI-Tier 3,DCG-Tier 4,DCAI-Tier 4</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Core_Opp_FC_Prod_Schedule__c.Core_FC_BU_Short_Name__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>DCG</value>
+            <operator>equals</operator>
+            <value>0011J00001MZRwxQAH,0011J00001Nne3rQAB,0011J00001QsKIWQA3,001o000000qqVJJAA2,0013b00001q99FnAAI,0011J00001CYewnQAD,0011J00001CY65IQAT,001o0000011lLS8AAM,0011J00001CY67SQAT,001o000000OTf5HAAT,0013b00001r3mXvAAI,001o000000OSVjWAAX,0013b00001q99G2AAI,0011J00001L7JJTQA3,0013b00001q99OBAAY,0011J00001CZjpYQAT,001o000000OSjlxAAD,0013b00001q99NwAAI,0011J00001G3JJYQA3,0013b00001r419AAAQ,0013b00001r408LAAQ,0013b00001r5HCTAA2,001o000000p2I5eAAE,0013b00001r5HCnAAM</value>
         </criteriaItems>
         <criteriaItems>
             <column>STAGE_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>Lost,Cancelled,Production Lost,Production Cancelled,Group Cancelled,Group Closed</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Approval_Status__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Approved</value>
+            <value>Qualify,Define,Develop,Design,Design Win,Production Win</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -202,15 +192,15 @@
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>FULL_NAME</field>
+        <field>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Approval_Status__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>ACCOUNT_NAME</field>
+        <field>Core_Opp_FC_Prod_Schedule__c.Core_FC_BU_Short_Name__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>APJT NW CSP (6QPS Approved)</name>
+    <name>APJ T 6QPS - NWCSP</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -233,7 +223,7 @@
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
-        <dateColumn>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Quarter_Date__c</dateColumn>
-        <interval>INTERVAL_CURNEXTY</interval>
+        <dateColumn>CLOSE_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
     </timeFrameFilter>
 </Report>

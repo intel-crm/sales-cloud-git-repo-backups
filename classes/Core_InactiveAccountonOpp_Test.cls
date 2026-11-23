@@ -82,7 +82,7 @@ public class Core_InactiveAccountonOpp_Test{
         Core_InactiveAccountonOpp.getData(opp.Id);
         accountList[0].Core_Deactivated__c = true;
         accountList[0].Core_Deactivation_Reason__c = 'dd';
-       // update accountList[0];
+        update accountList;
         Core_InactiveAccountonOpp.getData(opp.Id);
         Test.stopTest();
     }
@@ -101,14 +101,12 @@ public class Core_InactiveAccountonOpp_Test{
         List<OpportunityLineItem> NewOppLineItemList = new List<OpportunityLineItem>();
         Opportunity opps = new Opportunity(Name = 'Opportunity to Lose 03-24-2015', RecordTypeId = newOppRecTypeId,
                                            AccountId = acct.Id,
-                                           StageName = 'Qualify', CloseDate = System.Date.today().addYears(1));
+                                           StageName = 'Design', CloseDate = System.Date.today().addYears(1));
     	System.runAs(Core_Test_Utility.systemAdminUser) {
             opps.Core_Opportunity_Type__c = 'Design: Original';
             opps.Core_First_Customer_Ship_Date__c = system.today()-1000;
             opps.Core_Number_of_Quarters__c = 6;
             insert opps;
-            opps.StageName = 'Design';
-            Update opps;
         }
         // Create a product/price book entry to use on the opportunities
             Product2 p = new Product2(Name = 'Test Product 03-24-2015');
@@ -134,6 +132,7 @@ public class Core_InactiveAccountonOpp_Test{
         System.runAs(Core_Test_Utility.systemAdminUser) {
             Test.StartTest();
             Boolean Flag=Core_InactiveAccountonOpp.get6QPSData(opps.Id);
+            System.debug('&&Flag'+Flag);
             system.assertEquals(true,Flag);
             opps.Core_First_Customer_Ship_Date__c=System.today();
             update fcRec;

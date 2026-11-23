@@ -19,6 +19,9 @@
         <field>FK_$Core_Design_Registration__c.Core_Design_Registration_Status_Nm__c</field>
     </columns>
     <columns>
+        <field>FK_$Core_Design_Registration__c.Core_Partner_Account_Name__c</field>
+    </columns>
+    <columns>
         <field>FK_$Core_Design_Registration__c.Core_Partner_Account_Nm__c</field>
     </columns>
     <columns>

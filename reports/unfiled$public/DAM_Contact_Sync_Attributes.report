@@ -16,6 +16,9 @@
         <field>ACCOUNT.NAME</field>
     </columns>
     <columns>
+        <field>Contact.Core_Marketing_Score__c</field>
+    </columns>
+    <columns>
         <field>Contact.Core_Job_Function__c</field>
     </columns>
     <columns>

@@ -87,8 +87,8 @@
             <column>Opportunity.Core_Opportunity_Coverage__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
-            <operator>contains</operator>
-            <value>OSC,INSIDE</value>
+            <operator>equals</operator>
+            <value>OSC</value>
         </criteriaItems>
         <criteriaItems>
             <column>User.Core_User_Geo__c</column>

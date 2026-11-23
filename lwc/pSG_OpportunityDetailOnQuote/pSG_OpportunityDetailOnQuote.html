@@ -1,0 +1,61 @@
+<template>
+    <lightning-card title="Opportunity Details">
+        <!-- Using Child attribute to access parent to get final parent field & realatd ID to display parent fileds-->
+        <template if:true={optyId}>
+            <template if:true={ownerId}>
+                <lightning-record-form
+                              
+                              record-id={optyId}
+                              object-api-name="Opportunity"
+                              fields={fields}
+                              columns="2"
+                              mode="readonly">
+                </lightning-record-form>
+                <lightning-record-form
+                           
+                              record-id={ownerId}
+                              object-api-name="User"
+                              fields={fieldsOwner}
+                              columns="2"
+                              mode="readonly">
+                </lightning-record-form>  
+            </template>  
+            <template if:false={ownerId}>
+                <lightning-record-form
+                              
+                              record-id=""
+                              object-api-name="Opportunity"
+                              fields={fields}
+                              columns="2"
+                              mode="readonly">
+                </lightning-record-form>
+                <lightning-record-form
+                           
+                              record-id=""
+                              object-api-name="User"
+                              fields={fieldsOwner}
+                              columns="2"
+                              mode="readonly">
+                </lightning-record-form>                 
+            </template>                    
+    </template>
+    <template if:false={optyId}>
+                <lightning-record-form
+                              
+                              record-id=""
+                              object-api-name="Opportunity"
+                              fields={fields}
+                              columns="2"
+                              mode="readonly">
+                </lightning-record-form>
+                <lightning-record-form
+                           
+                              record-id=""
+                              object-api-name="User"
+                              fields={fieldsOwner}
+                              columns="2"
+                              mode="readonly">
+                </lightning-record-form>  
+    </template>
+    </lightning-card>
+</template>

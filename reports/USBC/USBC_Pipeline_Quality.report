@@ -102,7 +102,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>cook,weston,gordon,haynes,descheemaeker,o&apos;donnell,swanger,herrmann,wood</value>
+            <value>cook,weston,gordon,haynes,descheemaeker,o&apos;donnell,swanger,mushahwar,herrmann,rodman,wood</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FULL_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>benjamin miller,ruiz,smiley,thomson</value>
         </criteriaItems>
         <criteriaItems>
             <column>RECORDTYPE</column>

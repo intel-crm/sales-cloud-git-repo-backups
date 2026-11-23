@@ -4,10 +4,6 @@
         <label><!-- New Sales Lead --></label>
         <name>Groove_New_Sales_Lead</name>
     </fieldSets>
-    <fieldSets>
-        <label><!-- Mass Assign to Partner --></label>
-        <name>ImpartnerPRM__MassAssignToPartner</name>
-    </fieldSets>
     <fields>
         <label><!-- 1st Reminder --></label>
         <name>Core_1st_Reminder__c</name>
@@ -1603,6 +1599,7 @@
         <name>Core_Is_Segment_Available_In_Offering__c</name>
     </fields>
     <fields>
+        <help><!-- This field is inactive. Please use Profession field. Contact AAQ for questions. --></help>
         <label><!-- Job Function --></label>
         <name>Core_Job_Function__c</name>
         <picklistValues>
@@ -2042,6 +2039,22 @@
     <fields>
         <label><!-- Specific Lead Source --></label>
         <name>Core_Lead_Source_Pkt__c</name>
+        <picklistValues>
+            <masterLabel>Insight.Tech</masterLabel>
+            <translation><!-- Insight.Tech --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel Product Catal</masterLabel>
+            <translation><!-- Intel Product Catal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel Website</masterLabel>
+            <translation><!-- Intel Website --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Marketplace</masterLabel>
+            <translation><!-- Marketplace --></translation>
+        </picklistValues>
     </fields>
     <fields>
         <help><!-- Workflow till record when the lead has change state. --></help>
@@ -2332,6 +2345,11 @@ Terminated (Indicates that this Lead is ‘Dead’ and no longer being pursued) 
     <fields>
         <label><!-- Marketing Priority --></label>
         <name>Core_Marketing_Priority__c</name>
+    </fields>
+    <fields>
+        <label><!-- Marketing Profile Information --></label>
+        <name>Core_Marketing_Profile_Information__c</name>
+        <relationshipLabel><!-- Leads --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- Marketing Score --></label>
@@ -3210,7 +3228,7 @@ Terminated (Indicates that this Lead is ‘Dead’ and no longer being pursued) 
         <relationshipLabel><!-- Leads --></relationshipLabel>
     </fields>
     <fields>
-        <help><!-- This ID helps track the lead while loading data for HubSpot. --></help>
+        <help><!-- This ID helps track the lead while loading data for Hubspot. --></help>
         <label><!-- Source ID --></label>
         <name>Core_SourceSystem_Id__c</name>
     </fields>
@@ -3257,7 +3275,7 @@ Terminated (Indicates that this Lead is ‘Dead’ and no longer being pursued) 
         <name>Core_State__c</name>
     </fields>
     <fields>
-        <label><!-- Storefront Name --></label>
+        <label><!-- Storefront_Name --></label>
         <name>Core_Storefront_Name__c</name>
     </fields>
     <fields>
@@ -3278,6 +3296,10 @@ Terminated (Indicates that this Lead is ‘Dead’ and no longer being pursued) 
         <picklistValues>
             <masterLabel>IJKK</masterLabel>
             <translation><!-- IJKK --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>INDIA</masterLabel>
+            <translation><!-- INDIA --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Korea</masterLabel>
@@ -3585,6 +3607,10 @@ Terminated (Indicates that this Lead is ‘Dead’ and no longer being pursued) 
         <name>Core_System_Update_Address__c</name>
     </fields>
     <fields>
+        <label><!-- TAL Count --></label>
+        <name>Core_TAL_Count__c</name>
+    </fields>
+    <fields>
         <label><!-- TAL Lead Coverage --></label>
         <name>Core_TAL_Lead_Coverage__c</name>
     </fields>
@@ -3648,8 +3674,28 @@ Terminated (Indicates that this Lead is ‘Dead’ and no longer being pursued) 
         <name>Core_lead_Id__c</name>
     </fields>
     <fields>
+        <label><!-- Created From --></label>
+        <name>Created_From__c</name>
+    </fields>
+    <fields>
         <label><!-- Cvent Contact Stub --></label>
         <name>CventEvents__ContactStub__c</name>
+    </fields>
+    <fields>
+        <label><!-- DB Created Date without Time --></label>
+        <name>DB_Created_Date_without_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- DB Lead Age --></label>
+        <name>DB_Lead_Age__c</name>
+    </fields>
+    <fields>
+        <label><!-- Data Quality Description --></label>
+        <name>Data_Quality_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Data Quality Score --></label>
+        <name>Data_Quality_Score__c</name>
     </fields>
     <fields>
         <label><!-- Days --></label>
@@ -3660,54 +3706,72 @@ Terminated (Indicates that this Lead is ‘Dead’ and no longer being pursued) 
         <name>Groove_Convert_Lead_Lightning__c</name>
     </fields>
     <fields>
-        <label><!-- Date Assigned to Partner --></label>
-        <name>ImpartnerPRM__DateAssignedToPartner__c</name>
+        <label><!-- Current Generator(s) --></label>
+        <name>HG_Insights__CurrentGenerators__c</name>
     </fields>
     <fields>
-        <label><!-- Deal Registration Denied --></label>
-        <name>ImpartnerPRM__DealRegistrationDenied__c</name>
+        <label><!-- HG Id --></label>
+        <name>HG_Insights__HG_Id__c</name>
     </fields>
     <fields>
-        <label><!-- Deal Registration Status --></label>
-        <name>ImpartnerPRM__DealRegistrationStatus__c</name>
+        <label><!-- HG Match Status --></label>
+        <name>HG_Insights__HG_Match_Status__c</name>
     </fields>
     <fields>
-        <label><!-- Is Deal Registration --></label>
-        <name>ImpartnerPRM__IsDealRegistration__c</name>
+        <label><!-- HG Matched Date --></label>
+        <name>HG_Insights__HG_Matched_Date__c</name>
     </fields>
     <fields>
-        <label><!-- Notify Partner --></label>
-        <name>ImpartnerPRM__NotifyPartner__c</name>
+        <label><!-- Number of Locations --></label>
+        <name>HG_Insights__NumberofLocations__c</name>
     </fields>
     <fields>
-        <label><!-- Partner Account --></label>
-        <name>ImpartnerPRM__PartnerAccount__c</name>
-        <relationshipLabel><!-- Leads --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Partner Contact --></label>
-        <name>ImpartnerPRM__PartnerContact__c</name>
-        <relationshipLabel><!-- Leads --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Partner Last Modified Date --></label>
-        <name>ImpartnerPRM__PartnerLastModifiedDate__c</name>
-    </fields>
-    <fields>
-        <label><!-- Partner Lead Acceptance --></label>
-        <name>ImpartnerPRM__PartnerLeadAcceptance__c</name>
+        <label><!-- Primary --></label>
+        <name>HG_Insights__Primary__c</name>
         <picklistValues>
-            <masterLabel>Accepted</masterLabel>
-            <translation><!-- Accepted --></translation>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Pending</masterLabel>
-            <translation><!-- Pending --></translation>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Product Interest --></label>
+        <name>HG_Insights__ProductInterest__c</name>
+        <picklistValues>
+            <masterLabel>GC1000 series</masterLabel>
+            <translation><!-- GC1000 series --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Rejected</masterLabel>
-            <translation><!-- Rejected --></translation>
+            <masterLabel>GC3000 series</masterLabel>
+            <translation><!-- GC3000 series --></translation>
         </picklistValues>
+        <picklistValues>
+            <masterLabel>GC5000 series</masterLabel>
+            <translation><!-- GC5000 series --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- SIC Code --></label>
+        <name>HG_Insights__SICCode__c</name>
+    </fields>
+    <fields>
+        <label><!-- Global Entity ID --></label>
+        <name>HG_Insights__globalEntityId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Match Company ID --></label>
+        <name>HG_Insights__matchCompanyId__c</name>
+    </fields>
+    <fields>
+        <label><!-- LinkedIn Company Id --></label>
+        <name>LID__LinkedIn_Company_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- LinkedIn Member Token --></label>
+        <name>LID__LinkedIn_Member_Token__c</name>
     </fields>
     <fields>
         <label><!-- Please click “Save” to own these Leads. --></label>
@@ -3718,8 +3782,141 @@ Terminated (Indicates that this Lead is ‘Dead’ and no longer being pursued) 
         <name>MQL_to_SAL_Count__c</name>
     </fields>
     <fields>
-        <label><!-- MQL to TAL Count --></label>
-        <name>MQL_to_TAL_Count__c</name>
+        <label><!-- Are Intel items used for MINDS? --></label>
+        <name>PCC_Are_Intel_items_used_for_MINDS__c</name>
+        <picklistValues>
+            <masterLabel>NO</masterLabel>
+            <translation><!-- NO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>YES</masterLabel>
+            <translation><!-- YES --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- City --></label>
+        <name>PCC_City__c</name>
+    </fields>
+    <fields>
+        <label><!-- Country --></label>
+        <name>PCC_Country__c</name>
+    </fields>
+    <fields>
+        <label><!-- Decision Date --></label>
+        <name>PCC_Decision_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Description --></label>
+        <name>PCC_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Deal Registration Name --></label>
+        <name>PCC_Design_Registration_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Customer Account Name --></label>
+        <name>PCC_End_Customer_Account_Name__c</name>
+        <relationshipLabel><!-- Leads (End Customer Account Name) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- End Customer Name --></label>
+        <name>PCC_End_Customer_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- First Customer Ship Date --></label>
+        <name>PCC_First_Customer_Ship_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Intel Platform --></label>
+        <name>PCC_Intel_Platform__c</name>
+        <picklistValues>
+            <masterLabel>AgileX</masterLabel>
+            <translation><!-- AgileX --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Alder Lake D</masterLabel>
+            <translation><!-- Alder Lake D --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Volume --></label>
+        <name>PCC_Opportunity_Volume__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner FAE --></label>
+        <name>PCC_Partner_FAE__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Application --></label>
+        <name>PCC_Product_Application__c</name>
+        <picklistValues>
+            <masterLabel>ATE &amp; Semiconductor Tester</masterLabel>
+            <translation><!-- ATE &amp; Semiconductor Tester --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Aerospace/Avionics</masterLabel>
+            <translation><!-- Aerospace/Avionics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Autonomous Driving</masterLabel>
+            <translation><!-- Autonomous Driving --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Business Desktop</masterLabel>
+            <translation><!-- Business Desktop --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Product Segment --></label>
+        <name>PCC_Product_Segment__c</name>
+        <picklistValues>
+            <masterLabel>Automotive</masterLabel>
+            <translation><!-- Automotive --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client Computing</masterLabel>
+            <translation><!-- Client Computing --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Product group --></label>
+        <name>PCC_Product_group__c</name>
+        <picklistValues>
+            <masterLabel>Embedded/IOT</masterLabel>
+            <translation><!-- Embedded/IOT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA/Power</masterLabel>
+            <translation><!-- FPGA/Power --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PCC Product</masterLabel>
+            <translation><!-- PCC Product --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Production End Date --></label>
+        <name>PCC_Production_End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- State/Province --></label>
+        <name>PCC_State_Province__c</name>
+    </fields>
+    <fields>
+        <label><!-- Vertical Market --></label>
+        <name>PCC_Vertical_Market__c</name>
+        <picklistValues>
+            <masterLabel>Agriculture</masterLabel>
+            <translation><!-- Agriculture --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Automotive</masterLabel>
+            <translation><!-- Automotive --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Zip/Postalcode --></label>
+        <name>PCC_Zip_Postalcode__c</name>
     </fields>
     <fields>
         <label><!-- Partner ID --></label>
@@ -3802,8 +3999,34 @@ Terminated (Indicates that this Lead is ‘Dead’ and no longer being pursued) 
         <name>SAL_to_SQL_Count__c</name>
     </fields>
     <fields>
+        <label><!-- SALnoTasks Email Sent --></label>
+        <name>SALnoTasks_Email_Sent__c</name>
+    </fields>
+    <fields>
         <label><!-- Claimed Date --></label>
         <name>SWS_Claimed_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- SWS Convert To Contact --></label>
+        <name>SWS_Convert_To_Contact__c</name>
+    </fields>
+    <fields>
+        <label><!-- Disqualified flag --></label>
+        <name>SWS_Disqualified_flag__c</name>
+    </fields>
+    <fields>
+        <help><!-- Email Invalid Cause --></help>
+        <label><!-- Email Invalid Cause --></label>
+        <name>SWS_Email_Invalid_Cause__c</name>
+    </fields>
+    <fields>
+        <label><!-- Email Invalid Status --></label>
+        <name>SWS_Email_Invalid_Status__c</name>
+    </fields>
+    <fields>
+        <help><!-- Email Invalid Status --></help>
+        <label><!-- Email Invalid --></label>
+        <name>SWS_Email_Invalid__c</name>
     </fields>
     <fields>
         <label><!-- Entrance Date - MEL --></label>
@@ -3830,16 +4053,16 @@ Terminated (Indicates that this Lead is ‘Dead’ and no longer being pursued) 
         <name>SWS_InContact_Email_Sent__c</name>
     </fields>
     <fields>
+        <label><!-- IsMarketingRecord --></label>
+        <name>SWS_IsMarketingRecord__c</name>
+    </fields>
+    <fields>
         <label><!-- Last Modified Date By Non System User --></label>
         <name>SWS_Last_Modified_Date_By_Non_Sys_User__c</name>
     </fields>
     <fields>
         <label><!-- Status --></label>
         <name>SWS_LeadConverted_fm__c</name>
-    </fields>
-    <fields>
-        <label><!-- Lead Deletion --></label>
-        <name>SWS_Lead_Deletion__c</name>
     </fields>
     <fields>
         <help><!-- Indicates the source of the lead, such as HubSpot. --></help>
@@ -3863,8 +4086,16 @@ Terminated (Indicates that this Lead is ‘Dead’ and no longer being pursued) 
         <name>SWS_Locked_SGL_Coverage__c</name>
     </fields>
     <fields>
+        <label><!-- Is Locked? --></label>
+        <name>SWS_Locked__c</name>
+    </fields>
+    <fields>
         <label><!-- MQL no task Calculation --></label>
         <name>SWS_MQL_no_task_Calculation__c</name>
+    </fields>
+    <fields>
+        <label><!-- Marketo Email Invalid Cause --></label>
+        <name>SWS_Marketo_Email_Invalid_Cause__c</name>
     </fields>
     <fields>
         <label><!-- No Schedule --></label>
@@ -3907,12 +4138,37 @@ Terminated (Indicates that this Lead is ‘Dead’ and no longer being pursued) 
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- Partner Status Qualified --></label>
+        <name>SWS_Partner_Status_Qualified__c</name>
+    </fields>
+    <fields>
+        <label><!-- Priority --></label>
+        <name>SWS_Priority__c</name>
+    </fields>
+    <fields>
+        <label><!-- Qualification Information formula --></label>
+        <name>SWS_Qualification_Information_formula__c</name>
+    </fields>
+    <fields>
+        <help><!-- Fill in Qualification Information --></help>
+        <label><!-- Qualification Warning --></label>
+        <name>SWS_Qualification_Warning__c</name>
+    </fields>
+    <fields>
         <label><!-- QualifiedInContact Date --></label>
         <name>SWS_QualifiedInContact_Date__c</name>
     </fields>
     <fields>
         <label><!-- Quarter --></label>
         <name>SWS_Quarter__c</name>
+    </fields>
+    <fields>
+        <label><!-- SWS_Record_Type --></label>
+        <name>SWS_Record_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Relative Urgency --></label>
+        <name>SWS_Relative_Urgency__c</name>
     </fields>
     <fields>
         <label><!-- SGL Lead Coverage --></label>
@@ -3923,12 +4179,25 @@ Terminated (Indicates that this Lead is ‘Dead’ and no longer being pursued) 
         <name>SWS_Software_Lead__c</name>
     </fields>
     <fields>
+        <label><!-- Cloud Credit Request --></label>
+        <name>SW_Cloud_Credit_Request__c</name>
+        <relationshipLabel><!-- Credit Request --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Street1 --></label>
+        <name>Street1__c</name>
+    </fields>
+    <fields>
         <label><!-- TAL to TQL Count --></label>
         <name>TAL_to_TQL_Count__c</name>
     </fields>
     <fields>
         <label><!-- TQL to SAL Count --></label>
         <name>TQL_to_SAL_Count__c</name>
+    </fields>
+    <fields>
+        <label><!-- Text Field1 --></label>
+        <name>Text_Field__c</name>
     </fields>
     <fields>
         <label><!-- Add to Marketo Campaign --></label>
@@ -4011,10 +4280,19 @@ Terminated (Indicates that this Lead is ‘Dead’ and no longer being pursued) 
         <label>à_View in Marketo_ô</label>
         <name>mkto_si__View_in_Marketo__c</name>
     </fields>
+    <fields>
+        <label><!-- testing Date fields --></label>
+        <name>testing_Date_fields__c</name>
+    </fields>
     <recordTypes>
         <description><!-- DO NOT USE - Marketo ONLY --></description>
         <label><!-- Marketing Lead --></label>
         <name>Lead</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Partner Campaign Lead for PCC --></description>
+        <label><!-- Partner Campaign Lead --></label>
+        <name>PCC_Partner_Campaign_Lead</name>
     </recordTypes>
     <recordTypes>
         <description><!-- Creates a Partner Lead --></description>
@@ -4025,6 +4303,10 @@ Terminated (Indicates that this Lead is ‘Dead’ and no longer being pursued) 
         <description><!-- Creates a Tele Prospect --></description>
         <label><!-- Prospect --></label>
         <name>Prospect</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Software Lead --></label>
+        <name>SWS_Software_Lead</name>
     </recordTypes>
     <recordTypes>
         <description><!-- Creates a Sales Lead from Salesforce --></description>
@@ -4224,10 +4506,6 @@ Terminated (Indicates that this Lead is ‘Dead’ and no longer being pursued) 
         <name>Core_Parner_Lead_Claim_Check</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Please use the &apos;Reject&apos; button to Reject or Terminate the lead. --></errorMessage>
-        <name>Core_Partner_Lead_Reject_Button_Required</name>
-    </validationRules>
-    <validationRules>
         <errorMessage><!-- Cannot bypass “Contacted” status - please select the next status in the lead path. --></errorMessage>
         <name>Core_Partner_Lead_Status_Skip</name>
     </validationRules>
@@ -4371,6 +4649,34 @@ Terminated (Indicates that this Lead is ‘Dead’ and no longer being pursued) 
         <errorMessage><!-- &quot;Invalid substatus selection. Allowed substatus for the data condition: Not target profile,Already Engaged with Intel, or Rep Inactivity.&quot; --></errorMessage>
         <name>Core_Validate_salelead_substatus_for_SAL</name>
     </validationRules>
+    <validationRules>
+        <errorMessage><!-- CompanyId should be a numeric value --></errorMessage>
+        <name>LID__Check_CompanyId_Value</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- CompanyId should be a numeric value --></errorMessage>
+        <name>LID__Check_Company_Id_Value</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Lead source cannot be changed for Leads created from Credit request --></errorMessage>
+        <name>SWS_CreditRequest_LeadSrc_cannot_change</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Last Name and Email are required field. --></errorMessage>
+        <name>SWS_LastnameEmail_are_Required</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Lead once disqualified cannot be edited or modified. --></errorMessage>
+        <name>SWS_Lead_Locked_for_disqualifed</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please change status to &quot;Sales Qualified&quot; before converting --></errorMessage>
+        <name>SWS_Lead_cannot_be_CTO_before_SQL</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Cannot change Lead Sub Status when Lead Status is disqualified. Use the revive button to change the Lead status as Accepted before changing the Lead Sub Status. --></errorMessage>
+        <name>SWS_cannotchange_LeadSubStatus_ondisqual</name>
+    </validationRules>
     <webLinks>
         <label><!-- AltavistaNews --></label>
         <name>AltavistaNews</name>
@@ -4388,12 +4694,20 @@ Terminated (Indicates that this Lead is ‘Dead’ and no longer being pursued) 
         <name>Core_Accept_Partner_Lead</name>
     </webLinks>
     <webLinks>
+        <label><!-- Core_Accept_Partner_Lead_Lex --></label>
+        <name>Core_Accept_Partner_Lead_Lex</name>
+    </webLinks>
+    <webLinks>
         <label><!-- Core_Accept_Partner_Leads --></label>
         <name>Core_Accept_Partner_Leads</name>
     </webLinks>
     <webLinks>
         <label><!-- Core_Accept_Prospect --></label>
         <name>Core_Accept_Prospect</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Core_BulkReject --></label>
+        <name>Core_BulkReject</name>
     </webLinks>
     <webLinks>
         <label><!-- Core_Convert_to_Opportunity --></label>
@@ -4414,6 +4728,10 @@ Terminated (Indicates that this Lead is ‘Dead’ and no longer being pursued) 
     <webLinks>
         <label><!-- Core_Mass_Claim_Classic --></label>
         <name>Core_Mass_Claim_Classic</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Core_Mass_Reject_Classic --></label>
+        <name>Core_Mass_Reject_Classic</name>
     </webLinks>
     <webLinks>
         <label><!-- Core_Partner_Claim --></label>
@@ -4472,12 +4790,16 @@ Terminated (Indicates that this Lead is ‘Dead’ and no longer being pursued) 
         <name>HooversProfile</name>
     </webLinks>
     <webLinks>
-        <label><!-- MassAssignToPartner --></label>
-        <name>ImpartnerPRM__MassAssignToPartner</name>
-    </webLinks>
-    <webLinks>
         <label><!-- LeadActivityOverview --></label>
         <name>LeadActivityOverview</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Email_Docs --></label>
+        <name>SDOC__Email_Docs</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- S_Docs --></label>
+        <name>SDOC__S_Docs</name>
     </webLinks>
     <webLinks>
         <label><!-- SendGmail --></label>
@@ -4522,5 +4844,9 @@ Terminated (Indicates that this Lead is ‘Dead’ and no longer being pursued) 
     <webLinks>
         <label><!-- Send_Sales_Email --></label>
         <name>mkto_si__Send_Sales_Email</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- vy_Send_Lead_Email --></label>
+        <name>vidyard__vy_Send_Lead_Email</name>
     </webLinks>
 </CustomObjectTranslation>

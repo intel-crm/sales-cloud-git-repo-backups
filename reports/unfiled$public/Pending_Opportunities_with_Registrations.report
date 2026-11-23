@@ -54,6 +54,11 @@
         <field>Opportunity.Core_Opportunity_Owner_Geo__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>FK_$Core_Design_Registration__c.Core_Partner_Account_Name__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
     <name>Pending Opportunities with Registrations</name>
     <params>
         <name>terr</name>

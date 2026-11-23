@@ -1,0 +1,30 @@
+<template>
+    <lightning-card title="Async Job Monitor" icon-name="standard:apex_plugin">
+        <div slot="actions">
+            <lightning-button label="Refresh" icon-name="utility:refresh" onclick={handleRefresh}></lightning-button>
+        </div>
+
+        <div class="slds-p-around_medium slds-border_bottom">
+            <lightning-layout multiple-rows="true" vertical-align="end">
+                <lightning-layout-item size="12" small-device-size="4" class="slds-p-around_small">
+                    <lightning-combobox label="Status" value={statusFilter} options={statusOptions} onchange={handleStatusChange}></lightning-combobox>
+                </lightning-layout-item>
+                <lightning-layout-item size="12" small-device-size="4" class="slds-p-around_small">
+                    <lightning-input type="text" label="Apex Class Name" value={classFilter} onchange={handleClassChange}></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item size="12" small-device-size="4" class="slds-p-around_small">
+                    <lightning-input type="date" label="Created Date" value={dateFilter} onchange={handleDateChange}></lightning-input>
+                </lightning-layout-item>
+            </lightning-layout>
+        </div>
+
+        <div style="height: 400px;">
+            <lightning-datatable
+                key-field="Id"
+                data={jobs}
+                columns={columns}
+                hide-checkbox-column="true">
+            </lightning-datatable>
+        </div>
+    </lightning-card>
+</template>

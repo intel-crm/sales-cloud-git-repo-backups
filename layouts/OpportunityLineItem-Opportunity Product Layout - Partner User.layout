@@ -32,6 +32,14 @@
                 <behavior>Readonly</behavior>
                 <field>Core_Vendor_InActive__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Core_Opportunity_Type_RecordId__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Core_Total_Amount__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -47,7 +55,7 @@
                 <field>Core_PW_Quantity__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Required</behavior>
+                <behavior>Readonly</behavior>
                 <field>UnitPrice</field>
             </layoutItems>
             <layoutItems>
@@ -157,6 +165,10 @@
         <fields>PCC_Design_Registration_Product__c</fields>
         <fields>PCC_Opportunity__c</fields>
         <relatedList>PCC_DDR_L5_Product_Mapping__c.PCC_Opportunity_Product_Id__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>PCC_Deal_Change_Request_Line_Item__c.PCC_Opportunity_Product_Id__c</relatedList>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>

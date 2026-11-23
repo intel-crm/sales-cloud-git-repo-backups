@@ -170,14 +170,9 @@
                 </div>
                 <div class="slds-p-horizontal--small slds-size--1-of-2">
                     <div class="slds-form-element slds-form-element_readonly slds-p-around--xxx-small">
-                        
+                        <span class="slds-form-element__label" title="Access Flag">Access Flag</span>
                         <div class="slds-form-element__control">
-                            <div class="slds-form-element__static" title={mapAccessFlag}>
-                              
-                               <lightning-combobox name="Access Flag" label="Access Flag" placeholder="Choose Access Flag" value={mapAccessFlag}
-        onchange={handleAccessFlagChange} options={accessFlagOptions}>
-    </lightning-combobox>
-                            </div>
+                            <div class="slds-form-element__static" title={mapAccessFlag}>{mapAccessFlag}</div>
                         </div>
                     </div>
                 </div>

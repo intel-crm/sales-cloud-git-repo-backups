@@ -156,158 +156,6 @@
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>ControlledByParent</externalSharingModel>
     <fields>
-        <fullName>PMP_Alt_Text__c</fullName>
-        <externalId>false</externalId>
-        <label>Alt Text</label>
-        <length>255</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>PMP_BrightCoveVideoAccountID__c</fullName>
-        <externalId>false</externalId>
-        <label>BrightCove Account ID</label>
-        <length>255</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>PMP_BrightCoveVideoId__c</fullName>
-        <externalId>false</externalId>
-        <label>BrightCove Video Id</label>
-        <length>255</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>PMP_BrightCoveVideoJobId__c</fullName>
-        <externalId>false</externalId>
-        <label>BrightCove Video Job Id</label>
-        <length>255</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>PMP_BrightCoveVideoThumbnail_URL__c</fullName>
-        <label>BrightCove Video Thumbnail URL</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Url</type>
-    </fields>
-    <fields>
-        <fullName>PMP_BrightCove_Video_Extension_Txt__c</fullName>
-        <description>this is used to store video file extension</description>
-        <externalId>false</externalId>
-        <label>BrightCove Video Extension</label>
-        <length>255</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>PMP_Delete_BrightCove_Video_Ind__c</fullName>
-        <defaultValue>false</defaultValue>
-        <label>Delete BrightCove Video</label>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>PMP_External_Source_Id__c</fullName>
-        <description>Captures the Additional Resource External Document Id</description>
-        <externalId>false</externalId>
-        <label>External Source Id</label>
-        <length>255</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>PMP_File_Size_Txt__c</fullName>
-        <description>this is used to store content document file size</description>
-        <externalId>false</externalId>
-        <label>File Size</label>
-        <length>255</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>PMP_Integration_Status_Nm__c</fullName>
-        <description>This field is used to capture status of video integration</description>
-        <label>BrightCove Integration Status</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Picklist</type>
-        <valueSet>
-            <restricted>true</restricted>
-            <valueSetDefinition>
-                <sorted>false</sorted>
-                <value>
-                    <fullName>Success</fullName>
-                    <default>false</default>
-                    <label>Success</label>
-                </value>
-                <value>
-                    <fullName>Failed</fullName>
-                    <default>false</default>
-                    <label>Failed</label>
-                </value>
-                <value>
-                    <fullName>Pending</fullName>
-                    <default>false</default>
-                    <label>Pending</label>
-                </value>
-                <value>
-                    <fullName>Aborted</fullName>
-                    <default>false</default>
-                    <label>Aborted</label>
-                </value>
-            </valueSetDefinition>
-        </valueSet>
-    </fields>
-    <fields>
-        <fullName>PMP_Integration_Status_Reason_Txt__c</fullName>
-        <description>This is used to capture the integration status reason for the video</description>
-        <externalId>false</externalId>
-        <label>BrightCove Integration Status Reason</label>
-        <length>255</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>PMP_Offering_Gallery_Video_Ind__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>This indicator is used to determine whether its a gallery video or additional resource video</description>
-        <label>Is Offering Gallery Video</label>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
         <fullName>PMP_Offering_Id__c</fullName>
         <description>Master Detail  to the Offering object</description>
         <inlineHelpText>Master Detail to the Offering object</inlineHelpText>
@@ -345,15 +193,6 @@
         <type>Url</type>
     </fields>
     <fields>
-        <fullName>PMP_Resource_Description_Txt__c</fullName>
-        <description>This field is used to store the resource description text values.</description>
-        <label>Resource Description</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>TextArea</type>
-    </fields>
-    <fields>
         <fullName>PMP_Resource_Sequence_Nbr__c</fullName>
         <description>Field to store order of  attached files</description>
         <externalId>false</externalId>
@@ -378,11 +217,11 @@
         <valueSet>
             <restricted>true</restricted>
             <valueSetDefinition>
-                <sorted>true</sorted>
+                <sorted>false</sorted>
                 <value>
-                    <fullName>Additional Resources</fullName>
+                    <fullName>Product Web Page</fullName>
                     <default>false</default>
-                    <label>Additional Resources</label>
+                    <label>Product Web Page</label>
                 </value>
                 <value>
                     <fullName>Data Sheet</fullName>
@@ -390,14 +229,14 @@
                     <label>Data Sheet</label>
                 </value>
                 <value>
-                    <fullName>Demo</fullName>
+                    <fullName>Product Brief</fullName>
                     <default>false</default>
-                    <label>Demo</label>
+                    <label>Product Brief</label>
                 </value>
                 <value>
-                    <fullName>Diagram</fullName>
+                    <fullName>Additional Resources</fullName>
                     <default>false</default>
-                    <label>Diagram</label>
+                    <label>Additional Resources</label>
                 </value>
                 <value>
                     <fullName>Image</fullName>
@@ -405,35 +244,9 @@
                     <label>Image</label>
                 </value>
                 <value>
-                    <fullName>IOT Solutions Aggregator</fullName>
+                    <fullName>Video Demo</fullName>
                     <default>false</default>
-                    <label>IOT Solutions Aggregator</label>
-                </value>
-                <value>
-                    <fullName>Others</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Others</label>
-                </value>
-                <value>
-                    <fullName>Product Brief</fullName>
-                    <default>false</default>
-                    <label>Product Brief</label>
-                </value>
-                <value>
-                    <fullName>Reference Architecture</fullName>
-                    <default>false</default>
-                    <label>Reference Architecture</label>
-                </value>
-                <value>
-                    <fullName>Success Story</fullName>
-                    <default>false</default>
-                    <label>Success Story</label>
-                </value>
-                <value>
-                    <fullName>Thumbnail Image</fullName>
-                    <default>false</default>
-                    <label>Thumbnail Image</label>
+                    <label>Video Demo</label>
                 </value>
                 <value>
                     <fullName>Tutorials</fullName>
@@ -441,50 +254,17 @@
                     <label>Tutorials</label>
                 </value>
                 <value>
-                    <fullName>URL</fullName>
+                    <fullName>Others</fullName>
                     <default>false</default>
-                    <label>URL</label>
+                    <label>Others</label>
                 </value>
                 <value>
-                    <fullName>Video</fullName>
+                    <fullName>Thumbnail Image</fullName>
                     <default>false</default>
-                    <label>Video</label>
-                </value>
-                <value>
-                    <fullName>Video/mp4</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Video/mp4</label>
-                </value>
-                <value>
-                    <fullName>Webinar</fullName>
-                    <default>false</default>
-                    <label>Webinar</label>
-                </value>
-                <value>
-                    <fullName>Web Page</fullName>
-                    <default>false</default>
-                    <label>Web Page</label>
-                </value>
-                <value>
-                    <fullName>White Paper</fullName>
-                    <default>false</default>
-                    <label>White Paper</label>
+                    <label>Thumbnail Image</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
-    </fields>
-    <fields>
-        <fullName>PMP_Video_Title_Txt__c</fullName>
-        <description>created as a part of upload and  display of Gallery Video</description>
-        <externalId>false</externalId>
-        <label>Video Title</label>
-        <length>255</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
     </fields>
     <label>Partner Offering Resource</label>
     <listViews>

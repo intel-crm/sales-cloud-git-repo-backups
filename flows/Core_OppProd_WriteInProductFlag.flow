@@ -3,10 +3,50 @@
     <apiVersion>56.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <decisions>
+        <description>of Risk Status ( Core_At_Risk_Status__c )</description>
+        <name>Based_on_the_picklist_value</name>
+        <label>Based on the picklist value</label>
+        <locationX>1106</locationX>
+        <locationY>395</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>if_Closed_Support_Not_Provided_selected</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_At_Risk_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Closed: Support Not Provided</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>update_the_Support_Not_Provided_Date</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>if Closed: Support Not Provided selected</label>
+        </rules>
+        <rules>
+            <name>if_Closed_Support_Provided_selected</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_At_Risk_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Closed: Support Provided</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>update_the_Support_Provided_Date</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>if Closed: Support Provided selected</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>Core_OppProd_WriteInProductFlag</name>
         <label>Core_OppProd_WriteInProductFlag</label>
-        <locationX>182</locationX>
-        <locationY>311</locationY>
+        <locationX>974</locationX>
+        <locationY>287</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Product_Name_Write_In_Product</name>
@@ -19,9 +59,92 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Write_In_Product_Flag_True</targetReference>
+                <targetReference>Write_in_product_true_and_Support_not_Provided_or_Support_Provided</targetReference>
             </connector>
             <label>Product Name = Write In Product</label>
+        </rules>
+        <rules>
+            <name>Core_Update_date_for_selected_risk_status</name>
+            <conditionLogic>1 AND( 2 OR 3)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_At_Risk_Status__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_At_Risk_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Closed: Support Provided</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_At_Risk_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Closed: Support Not Provided</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Based_on_the_picklist_value</targetReference>
+            </connector>
+            <label>Core Update date for selected risk status</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Write_in_product_true_and_Support_not_Provided_or_Support_Provided</name>
+        <label>Write in product true and Support not Provided or Support Provided</label>
+        <locationX>314</locationX>
+        <locationY>395</locationY>
+        <defaultConnector>
+            <targetReference>Write_In_Product_Flag_True</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Outcome_2_of_Decision_3</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_At_Risk_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Closed: Support Not Provided</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_At_Risk_Status__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Write_In_Product_Flag_True_and_Update_support_Not_Provided</targetReference>
+            </connector>
+            <label>Write in product true and Support not Provided</label>
+        </rules>
+        <rules>
+            <name>Outcome_3_of_Decision_3</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_At_Risk_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Closed: Support Provided</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_At_Risk_Status__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Copy_2_of_Write_In_Product_Flag_True</targetReference>
+            </connector>
+            <label>Write in product true and Support Provided</label>
         </rules>
     </decisions>
     <environments>Default</environments>
@@ -47,10 +170,76 @@
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <recordUpdates>
+        <name>Copy_2_of_Write_In_Product_Flag_True</name>
+        <label>Write In Product Flag = True and update support Provided</label>
+        <locationX>314</locationX>
+        <locationY>503</locationY>
+        <inputAssignments>
+            <field>Core_Support_Provided_Not_Entrance_Date__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Write_In_Product_Flag__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>update the Support Not Provided Date (Core_Support_Not_Provided_Date__c) field with the NOW() time</description>
+        <name>update_the_Support_Not_Provided_Date</name>
+        <label>update the Support Not Provided Date</label>
+        <locationX>842</locationX>
+        <locationY>503</locationY>
+        <inputAssignments>
+            <field>Core_Support_Not_Provided_Date__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>update the Support Provided Date	(Core_Support_Provided_Not_Entrance_Date__c) field with the NOW() time</description>
+        <name>update_the_Support_Provided_Date</name>
+        <label>update the Support Provided Date</label>
+        <locationX>1106</locationX>
+        <locationY>503</locationY>
+        <inputAssignments>
+            <field>Core_Support_Provided_Not_Entrance_Date__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
         <name>Write_In_Product_Flag_True</name>
         <label>Write In Product Flag = True</label>
+        <locationX>578</locationX>
+        <locationY>503</locationY>
+        <inputAssignments>
+            <field>Core_Write_In_Product_Flag__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Write_In_Product_Flag_True_and_Update_support_Not_Provided</name>
+        <label>Write In Product Flag = True and Update support Not Provided</label>
         <locationX>50</locationX>
-        <locationY>431</locationY>
+        <locationY>503</locationY>
+        <inputAssignments>
+            <field>Core_Support_Not_Provided_Date__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
         <inputAssignments>
             <field>Core_Write_In_Product_Flag__c</field>
             <value>
@@ -60,7 +249,7 @@
         <inputReference>$Record</inputReference>
     </recordUpdates>
     <start>
-        <locationX>56</locationX>
+        <locationX>848</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Core_OppProd_WriteInProductFlag</targetReference>

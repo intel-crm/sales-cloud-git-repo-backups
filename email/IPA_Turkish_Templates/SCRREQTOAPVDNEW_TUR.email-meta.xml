@@ -4,37 +4,18 @@
     <encodingKey>UTF-8</encodingKey>
     <name>SCRREQTOAPVDNEW_TUR</name>
     <style>none</style>
-    <subject>Intel® Ortağı İş Birliği&apos;ne hoş geldiniz</subject>
-    <textOnly>Intel® Ortağı İş Birliği&apos;ne hoş geldiniz
+    <subject>Tebrikler! Intel&apos;in İş Ortağı Programına Hoş Geldiniz</subject>
+    <textOnly>You Have Been Approved!
 
 
-{!PRM_Registration_Request__c.PRM_First_Name__c},
+Welcome! {!Account.Name} is now a member of Intel’s Partner program. After 30 minutes, please log in here for marketing materials, sales tools and other information about your benefits. If you would like to make changes to your account, please visit your profile here.www.intel.com/content/www/us/en/secure/my-intel/profile.html
 
-Hoş geldiniz! {!Account.Name} artık bir Intel® Ortağı İş Birliği iş ortağı.
-Aşağıdakiler dahil olmak üzere program ayrıcalıklarından yararlanarak işletmenizi büyütmeye başlayın:
+Questions? Contact Support here
 
-Teknik konularda, garantiyle ilgili ve iş ortağı programı hakkındaki tüm sorunlar için küresel yardım sunan Intel müşteri desteği
-Sektörde öncü bir programa sahip Intel® Ortağı Üniversitesi&apos;nde çevrimiçi eğitim ve web seminerleri
-Veri merkezli çözümler üzerinde işbirliği yapmak için kapsamlı bir iş ortağı ağı ve pazar
-Özelleştirilebilir malzemeler ve satış araçlarıyla daha kolay bir pazarlama deneyimi
-Intel® Developer Zone erişim
-
-
-Ayrıcalıklarınızı görüntülemek ve yönetmek için https://crmqa3-intelcloudcrm.cs37.force.com/ipa adresine giriş yapın.
-
-Rolünüz için https://crmqa3-intelcloudcrm.cs37.force.com/ipa/s/post-launch-primary adresine giriş yapın.
-
-
-Intel iş ortakları köklü bir inovasyon geçmişine sahiptir. Intel® Ortağı İş Birliği sayesinde, veri merkezli ekonomide çözüm oluşturma sürecini hızlandırmanıza yardımcı olabiliriz. Birlikte bağlantı kurabilir, yeniliklere imza atabilir ve büyüyebiliriz. Sıradışı fırsatları gerçeğe dönüştürebiliriz.
-Başlama konusunda daha fazla yardım almak için https://intel.com/content/www/us/en/secure/partner-alliance/help/overview.html adresini ziyaret edin.
-
-Teşekkür ederiz,
-Intel® Ortağı İş Birliği ekibiniz
-
-Bu mesaj, Intel® Ortağı İş Birliği ile halihazırda kurduğunuz iş ilişkisiyle ilgili önemli bir iş yazışması olarak gönderildi.
-© {!Contact.Core_Current_Year__c} Intel Corporation
-Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
-Gizlilik | Çerezler</textOnly>
+Copyright © 2016 Intel Corporation. All rights reserved. Intel, the Intel logo are trademarks of Intel Corporation in the U.S. and/or other countries.
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. Intel.com
+You may unsubscribe at any time by updating your profile settings at: {!$Label.PRM_MyIntelProfileURL}
+Privacy | Cookies | *Trademarks</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

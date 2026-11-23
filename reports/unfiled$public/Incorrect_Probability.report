@@ -108,35 +108,35 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>0</value>
+            <value>0.0</value>
         </criteriaItems>
         <criteriaItems>
             <column>PROBABILITY</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>25</value>
+            <value>25.00</value>
         </criteriaItems>
         <criteriaItems>
             <column>PROBABILITY</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>50</value>
+            <value>50.0</value>
         </criteriaItems>
         <criteriaItems>
             <column>PROBABILITY</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>75</value>
+            <value>75.00</value>
         </criteriaItems>
         <criteriaItems>
             <column>PROBABILITY</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>100</value>
+            <value>100.0</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

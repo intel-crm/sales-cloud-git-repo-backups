@@ -117,7 +117,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>includes</operator>
-            <value>PSG-Tier 4</value>
+            <value>PSG-Tier 4,DCAI PSG-Tier 4</value>
         </criteriaItems>
         <criteriaItems>
             <column>Account.Core_Account_Tier__c</column>
@@ -131,21 +131,21 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>excludes</operator>
-            <value>PSG-Tier 2</value>
+            <value>PSG-Tier 2,DCAI PSG-Tier 2</value>
         </criteriaItems>
         <criteriaItems>
             <column>Account.Core_Account_Tier__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>excludes</operator>
-            <value>PSG-Tier 3</value>
+            <value>PSG-Tier 3,DCAI PSG-Tier 3</value>
         </criteriaItems>
         <criteriaItems>
             <column>Account.Core_Account_Tier__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>excludes</operator>
-            <value>PSG-Tier 4</value>
+            <value>PSG-Tier 4,DCAI PSG-Tier 4</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

@@ -2,7 +2,7 @@
  * @description       : Class to process bulk won/lost records in batches
  * @author            : Sandeep Chamate
  * @group             : Accenture
- * @last modified on  : 04-26-2026
+ * @last modified on  : 04-15-2026
  * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 public class Pricing_QuoteLine_BulkWonLostBatch implements Database.Batchable<sObject>, Database.Stateful{
@@ -35,6 +35,9 @@ public class Pricing_QuoteLine_BulkWonLostBatch implements Database.Batchable<sO
         Map<String, String> quoteLineSuccessErrorMap = new Map<String, String>();
         quoteLineSuccessErrorMap = Pricing_QuoteLine_BulkWonLost.validateWonLostQuoteLines(quoteLineNumberMap, quoteLineList);
         resultMap.putAll(quoteLineSuccessErrorMap);
+        System.debug('Is entering inside for Quoteline Id for Success/Error maps' +quoteLineSuccessErrorMap);
+        System.debug('Is entering inside for Quoteline Id Results Map' +resultMap);
+        System.debug('Is entering inside for Quoteline Id Quoteline lists' +quoteLineList);
     }
 
     /**
@@ -64,10 +67,11 @@ public class Pricing_QuoteLine_BulkWonLostBatch implements Database.Batchable<sO
         b = Blob.valueOf(csvFile);                        
         
         String emailAddress = UserInfo.getUserEmail();
-        String ccemailAddress = Label.Pricing_Bulk_CR_Email;        
+        String ccemailAddress = Label.Pricing_Bulk_CR_Email;
         attachFile.setFileName('Bulk Won/Lost Success Error File_'+string.valueOf(system.now())+'.csv');
         attachFile.setBody(b);
         message.setFileAttachments(new Messaging.EmailFileAttachment[]{attachFile});
+        message.setTargetObjectId(UserInfo.getUserId());
         String[] toAddresses = new String[] {emailAddress};
         String[] ccAddresses = new String[] {ccemailAddress};
         message.setToAddresses(toAddresses);
@@ -75,8 +79,8 @@ public class Pricing_QuoteLine_BulkWonLostBatch implements Database.Batchable<sO
         message.setOrgWideEmailAddressId(orgWideEmailAddId);
         message.setSubject('Result : Bulk Won/Lost Operation'); 
         message.setHtmlBody('Please see attached Bulk Won/Lost success error csv file');
+        message.setSaveAsActivity(false);//added
         Messaging.sendEmail(new Messaging.SingleEmailMessage[] { message });
-
         Pricing_QuoteLine_BulkWonLost.updateAtRiskForWonQuotelines(resultMap);
     }
 }

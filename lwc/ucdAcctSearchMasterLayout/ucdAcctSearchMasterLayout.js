@@ -5,8 +5,14 @@ export default class UcdAcctSearchMasterLayout extends LightningElement {
     acctSearchStep = true;
     acctCreateStep = false;
 
+    acctSearchNextClickHandler(event) {
+        this.acctDetails = event.detail;
+        this.acctCreateStep = true;
+        this.acctSearchStep = false;
+    }
+
     acctCreateBackClickHandler(event) {
-        console.log('inside prev click');
+        console.log('insode prev click');
         this.acctDetails = event.detail;
         this.acctCreateStep = false;
         this.acctSearchStep = true;

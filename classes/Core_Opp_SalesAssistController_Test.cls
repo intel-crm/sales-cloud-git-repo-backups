@@ -1,7 +1,7 @@
 @isTest
 public class Core_Opp_SalesAssistController_Test {
     static testMethod void getEOLDataTest() {
-        List<account> LstAcc = Core_Test_Utility.createAccount(1);
+        List<account> LstAcc = Core_Test_Utility.createAccountIntel(1);
         insert LstAcc;
         List <Opportunity> oppList= Core_Test_Utility.createOpportunity(5);
         List <Opportunity> oppListItem=new List<Opportunity>();
@@ -30,7 +30,7 @@ public class Core_Opp_SalesAssistController_Test {
     }
     
     static testMethod void getUserSessionDataTest() {
-        List<account> LstAcc = Core_Test_Utility.createAccount(1);
+        List<account> LstAcc = Core_Test_Utility.createAccountIntel(1);
         insert LstAcc;
         List <Opportunity> oppList2= Core_Test_Utility.createOpportunity(5);
         List <Opportunity> oppListItem=new List<Opportunity>();
@@ -59,7 +59,7 @@ public class Core_Opp_SalesAssistController_Test {
        
     
     static testMethod void enableSalesAssistCheckBoxTest() {
-        List<account> LstAcc = Core_Test_Utility.createAccount(1);
+        List<account> LstAcc = Core_Test_Utility.createAccountIntel(1);
         insert LstAcc;
         List <Opportunity> oppList1= Core_Test_Utility.createOpportunity(5);
         List <Opportunity> oppListItem=new List<Opportunity>();

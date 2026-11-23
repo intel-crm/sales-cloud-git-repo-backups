@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>Dustin Netherlands B.V. Partner User</description>
+    <description>Central Point Europe B.V. Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>Dustin Netherlands B.V. Partner User</name>
+    <name>Central Point Europe B.V. Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>EMP_10713630_Nawras_Sawsou</parentRole>
+    <parentRole>CentralPointEuropeBVPartnerManager</parentRole>
 </Role>

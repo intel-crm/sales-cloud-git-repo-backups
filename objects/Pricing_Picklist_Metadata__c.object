@@ -214,12 +214,21 @@
     <listViews>
         <fullName>All</fullName>
         <columns>NAME</columns>
-        <columns>Pricing_Field_API_Nm__c</columns>
         <columns>Pricing_Field_Label_Txt__c</columns>
-        <columns>Pricing_IsActive_Ind__c</columns>
         <columns>Pricing_Object_API_Nm__c</columns>
         <columns>Pricing_Picklist_Item_Label_Txt__c</columns>
         <columns>Pricing_Picklist_Item_Value_Txt__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>All1</fullName>
+        <columns>NAME</columns>
+        <columns>Pricing_Field_Label_Txt__c</columns>
+        <columns>Pricing_Picklist_Item_Label_Txt__c</columns>
+        <columns>Pricing_Picklist_Item_Value_Txt__c</columns>
+        <columns>Pricing_Object_API_Nm__c</columns>
+        <columns>RECORDTYPE</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>

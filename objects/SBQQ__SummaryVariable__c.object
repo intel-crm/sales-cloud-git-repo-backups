@@ -150,7 +150,7 @@
     <enableBulkApi>true</enableBulkApi>
     <enableEnhancedLookup>false</enableEnhancedLookup>
     <enableFeeds>false</enableFeeds>
-    <enableHistory>false</enableHistory>
+    <enableHistory>true</enableHistory>
     <enableLicensing>false</enableLicensing>
     <enableReports>false</enableReports>
     <enableSearch>true</enableSearch>
@@ -164,6 +164,7 @@
         <inlineHelpText>Quote Line field that&apos;s acted upon by the aggregate function.</inlineHelpText>
         <label>Aggregate Field</label>
         <required>false</required>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -178,6 +179,11 @@
                     <fullName>core_cpq_quote_line_type_txt__c</fullName>
                     <default>false</default>
                     <label>core_cpq_quote_line_type_txt__c</label>
+                </value>
+                <value>
+                    <fullName>core_cpq_quote_type_nm__c</fullName>
+                    <default>false</default>
+                    <label>core_cpq_quote_type_nm__c</label>
                 </value>
                 <value>
                     <fullName>SBQQ__Quantity__c</fullName>
@@ -199,6 +205,7 @@
         <inlineHelpText>Aggregate function used to calculate this variable.</inlineHelpText>
         <label>Aggregate Function</label>
         <required>false</required>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -243,6 +250,7 @@
         <relationshipLabel>Composed By</relationshipLabel>
         <relationshipName>CombinedBy</relationshipName>
         <required>false</required>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -253,6 +261,7 @@
         <inlineHelpText>Specify how this variable should be composed with Variable Element or Value Element.</inlineHelpText>
         <label>Composite Operator</label>
         <required>false</required>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -288,6 +297,7 @@
         <inlineHelpText>If you want to limit records further based on a quote field, select the field that you want to match against the same field on the quote.</inlineHelpText>
         <label>Constraint Field</label>
         <required>false</required>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -313,6 +323,7 @@
         <inlineHelpText>Select the field to use when filtering items for inclusion in this summary variable.</inlineHelpText>
         <label>Filter Field</label>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -339,9 +350,9 @@
                     <label>core_cpq_quote_line_type_txt__c</label>
                 </value>
                 <value>
-                    <fullName>core_cpq_PSG_Restricted_Product__c</fullName>
+                    <fullName>core_cpq_quote_type_nm__c</fullName>
                     <default>false</default>
-                    <label>core_cpq_PSG_Restricted_Product__c</label>
+                    <label>core_cpq_quote_type_nm__c</label>
                 </value>
                 <value>
                     <fullName>SBQQ__ProductName__c</fullName>
@@ -360,6 +371,7 @@
         <label>Filter Value</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -371,6 +383,7 @@
         <inlineHelpText>Choose the operator to use in your filter.</inlineHelpText>
         <label>Operator</label>
         <required>false</required>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -431,6 +444,7 @@
         <inlineHelpText>Enter the scope of your summary variable.</inlineHelpText>
         <label>Scope</label>
         <required>false</required>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -456,6 +470,7 @@
         <inlineHelpText>Select the object you want to aggregate.</inlineHelpText>
         <label>Target Object</label>
         <required>false</required>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -481,6 +496,16 @@
                     <default>false</default>
                     <label>Subscription</label>
                 </value>
+                <value>
+                    <fullName>Quote</fullName>
+                    <default>false</default>
+                    <label>Quote</label>
+                </value>
+                <value>
+                    <fullName>SBQQ__QuoteDocument__c</fullName>
+                    <default>false</default>
+                    <label>SBQQ__QuoteDocument__c</label>
+                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -494,6 +519,7 @@
         <precision>16</precision>
         <required>false</required>
         <scale>4</scale>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
@@ -513,6 +539,7 @@
     </listViews>
     <nameField>
         <label>Variable Name</label>
+        <trackHistory>false</trackHistory>
         <type>Text</type>
     </nameField>
     <pluralLabel>Summary Variables</pluralLabel>

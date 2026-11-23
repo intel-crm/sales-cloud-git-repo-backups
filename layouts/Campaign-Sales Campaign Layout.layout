@@ -7,6 +7,7 @@
     <excludeButtons>AdvancedSetup</excludeButtons>
     <excludeButtons>Clone</excludeButtons>
     <excludeButtons>ManageMembers</excludeButtons>
+    <excludeButtons>OpenSlackRecordChannel</excludeButtons>
     <headers>PersonalTagging</headers>
     <layoutSections>
         <customLabel>false</customLabel>
@@ -33,6 +34,14 @@
             <layoutItems>
                 <behavior>Required</behavior>
                 <field>StartDate</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_MDF_Spending_Cap_Amt__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_MDF_RMF_Delta_Budget_Amt__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -87,6 +96,10 @@
             <layoutItems>
                 <behavior>Required</behavior>
                 <field>Core_Activity_Types__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_MDF_Opal_Budget_Type_Txt__c</field>
             </layoutItems>
         </layoutColumns>
         <style>OneColumn</style>

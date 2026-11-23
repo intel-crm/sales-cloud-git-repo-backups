@@ -20,12 +20,24 @@ trigger Core_OpportunityLineItem on OpportunityLineItem (before insert, before u
     Map<String,Core_Trigger_Executions__c> mapFunctionalityNameTriggerExecution = Core_Trigger_Executions__c.getAll();
     
     if(!mapFunctionalityNameTriggerExecution.isEmpty()) {
+        List<OpportunityLineItem> newList = trigger.new;
+        Map<Id,OpportunityLineItem> newMap = trigger.newMap;
+        List<OpportunityLineItem> oldList = trigger.old;
+        Map<Id,OpportunityLineItem> oldMap = trigger.oldMap;
+        System.debug('<27> newList'+newList);
+        System.debug('<28> trigger.new'+ trigger.new);
+        System.debug('<29> newMap'+newMap);
+        System.debug('<30> trigger.newMap'+ trigger.newMap);
+        System.debug('<31> oldList'+oldList);
+        System.debug('<32> trigger.old'+ trigger.old );
+        System.debug('<33> oldMap'+oldMap);
+        System.debug('<34> trigger.oldMap'+trigger.oldMap);
         if (trigger.isAfter) {
             if(trigger.isDelete){
                 if(mapFunctionalityNameTriggerExecution.containsKey('opportunityLineItemAfterHandler') && 
                    mapFunctionalityNameTriggerExecution.get('opportunityLineItemAfterHandler').Core_Active__c && !trigger.old[0].Core_Created_from_CPQ__c) {
                        Core_OpportunityLineItemHandler.opportunityLineItemAfterHandler(trigger.new, trigger.newMap, trigger.old, trigger.oldMap, trigger.isInsert, trigger.isUpdate, trigger.isDelete);
-                   } 
+                   }
                 //TWC3123-6134
                 if(mapFunctionalityNameTriggerExecution.containsKey('opportunityLineItemFcDelete') && 
                    mapFunctionalityNameTriggerExecution.get('opportunityLineItemFcDelete').Core_Active__c && !trigger.old[0].Core_Created_from_CPQ__c) {
@@ -249,12 +261,12 @@ trigger Core_OpportunityLineItem on OpportunityLineItem (before insert, before u
                 
                 if(mapFunctionalityNameTriggerExecution.containsKey('deleteNewKPIonProductDelete') && mapFunctionalityNameTriggerExecution.get('deleteKPIonProductDelete').Core_Active__c && !trigger.old[0].Core_Created_from_CPQ__c){
                     Core_OpportunityLineItemHandler.deleteNewKPI(Trigger.old);
-                }
-                
+                } 
                 //TWC4767-4569 KIIT: Disable Salesreps from instant deletion of products
                 if(mapFunctionalityNameTriggerExecution.containsKey('stopDirectDeletefromEditPage') && mapFunctionalityNameTriggerExecution.get('stopDirectDeletefromEditPage').Core_Active__c && !trigger.old[0].Core_Created_from_CPQ__c){
                     Core_OpportunityLineItemHandler.stopInstantDeletion(Trigger.old);
-                }
+                } 
+                
             }
             
         }

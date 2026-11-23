@@ -7,9 +7,6 @@
         <field>FULL_NAME</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Technical_Owner__c</field>
-    </columns>
-    <columns>
         <field>OPPORTUNITY_NAME</field>
     </columns>
     <columns>
@@ -19,24 +16,35 @@
         <field>CLOSE_DATE</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Opportunity.Core_Products_At_Risk_Count__c</field>
-    </columns>
-    <columns>
         <field>PRODUCT_NAME</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>QUANTITY</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_Risk_Create_Date__c</field>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Opportunity.Core_At_Risk__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>OpportunityLineItem.Core_At_Risk__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_At_Risk_Created_Date__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Opportunity.Core_Products_At_Risk_Count__c</field>
     </columns>
     <columns>
         <field>OpportunityLineItem.Core_Risk_Reason1__c</field>
+    </columns>
+    <columns>
+        <field>OpportunityLineItem.Core_Risk_Reason2__c</field>
     </columns>
     <columns>
         <field>OpportunityLineItem.Core_Risk_Priority__c</field>
@@ -45,13 +53,10 @@
         <field>OpportunityLineItem.Core_Risk_Category__c</field>
     </columns>
     <columns>
+        <field>Opportunity.Core_Support_Requested__c</field>
+    </columns>
+    <columns>
         <field>OpportunityLineItem.Core_At_Risk_Status__c</field>
-    </columns>
-    <columns>
-        <field>OpportunityLineItem.Core_Product_Risk_Owner__c</field>
-    </columns>
-    <columns>
-        <field>OpportunityLineItem.Core_Risk_Detail__c</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
@@ -60,18 +65,18 @@
     <description>My Team&apos;s Pipeline Health dashboard</description>
     <filter>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_At_Risk__c</column>
+            <column>Opportunity.Core_At_Risk__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>1</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_At_Risk_Status__c</column>
+            <column>Opportunity.Core_Products_At_Risk_Count__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>New,In-Progress</value>
+            <operator>greaterThan</operator>
+            <value>0</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

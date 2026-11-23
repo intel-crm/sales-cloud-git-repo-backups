@@ -1,0 +1,326 @@
+<template>
+    <div>
+        
+    
+    <div class="slds-p-top_medium slds-p-bottom_medium slds-align_absolute-center">
+<div class="slds-region_medium" style="width:1000px">
+    <div class="slds-path">
+    <div class="slds-grid slds-path__track">
+    <div class="slds-grid slds-path__scroller-container">
+    <div class="slds-path__scroller">
+    <div class="slds-path__scroller_inner">
+    <ul class="slds-path__nav " role="listbox" aria-orientation="horizontal" aria-labelledby="slds-path__stage-name">
+    
+    
+    <li class="slds-path__item slds-is-active slds-is-current" role="presentation">
+    <a aria-selected="true"  class="slds-path__link" href="#" id="path-52" role="option" tabindex="0">
+    <span class="slds-path__stage">
+    
+    <span class="slds-assistive-text">Current Stage:</span>
+    </span>
+    <span class="slds-path__title">Select Product &#38; Add Additional Details</span>
+    </a>
+    </li>
+    
+    <li class="slds-path__item slds-is-incomplete" role="presentation">
+    <a aria-selected="false" class="slds-path__link" href="#" id="path-54" role="option" tabindex="-1">
+    <span class="slds-path__stage">
+    
+    </span>
+    <span class="slds-path__title">Add Host &#38; Generate License</span>
+    </a>
+    </li>
+    </ul>
+    </div>
+    </div>
+    </div>
+    
+    </div>
+    </div>
+    </div>
+    
+    
+</div>
+
+    <div class="slds-p-top_medium slds-p-bottom_medium slds-align_absolute-center">
+        
+
+    <!--Custom Table starts here-->
+    <table class="slds-table slds-table_cell-buffer slds-table_bordered " role="grid">
+        <thead>
+        <tr class="slds-line-height_reset">
+        <th class="slds-text-align_right slds-cell_action-mode" scope="col" style="width:3.25rem">
+        <span id="column-group-header" class="slds-assistive-text">Choose a row</span>
+        <div class="slds-th__action slds-th__action_form">
+
+        </div>
+        </th>
+        
+        <th aria-label="Web Description" aria-sort="none" class="slds-is-resizable slds-is-sortable slds-cell_action-mode" scope="col">
+        <a class="slds-th__action slds-text-link_reset" href="#" role="button" tabindex="0">
+        <span class="slds-assistive-text">Sort by: </span>
+        <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+        <span class="slds-truncate" title="Web Description">Web Description</span>
+        <span class="slds-icon_container slds-icon-utility-arrowdown">
+        
+        </span>
+        </div>
+        </a>
+        <div class="slds-resizable">
+        <input type="range" aria-label="Account Name column width" class="slds-resizable__input slds-assistive-text" id="cell-resize-handle-534" max="1000" min="20" tabindex="0" />
+        <span class="slds-resizable__handle">
+        <span class="slds-resizable__divider"></span>
+        </span>
+        </div>
+        </th>
+        <th aria-label="Maintainance Expiration" aria-sort="none" class="slds-is-resizable slds-is-sortable slds-cell_action-mode" scope="col">
+        <a class="slds-th__action slds-text-link_reset" href="#" role="button" tabindex="0">
+        <span class="slds-assistive-text">Sort by: </span>
+        <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+        <span class="slds-truncate" title="Maintainance Expiration">Maintainance Expiration</span>
+        <span class="slds-icon_container slds-icon-utility-arrowdown">
+        
+        </span>
+        </div>
+        </a>
+        <div class="slds-resizable">
+        <input type="range" aria-label="Close Date column width" class="slds-resizable__input slds-assistive-text" id="cell-resize-handle-535" max="1000" min="20" tabindex="0" />
+        <span class="slds-resizable__handle">
+        <span class="slds-resizable__divider"></span>
+        </span>
+        </div>
+        </th>
+        <th aria-label="License Expiration" aria-sort="none" class="slds-is-resizable slds-is-sortable slds-cell_action-mode" scope="col">
+            <a class="slds-th__action slds-text-link_reset" href="#" role="button" tabindex="0">
+            <span class="slds-assistive-text">Sort by: </span>
+            <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+            <span class="slds-truncate" title="License Expiration">License Expiration</span>
+            <span class="slds-icon_container slds-icon-utility-arrowdown">
+            
+            </span>
+            </div>
+            </a>
+            <div class="slds-resizable">
+            <input type="range" aria-label="Close Date column width" class="slds-resizable__input slds-assistive-text" id="cell-resize-handle-5354" max="1000" min="20" tabindex="0" />
+            <span class="slds-resizable__handle">
+            <span class="slds-resizable__divider"></span>
+            </span>
+            </div>
+        </th>
+        </tr>
+        </thead>
+
+        <tbody>
+            <template for:each={result} for:item="product">
+				<tr key={product.Id}>
+					<th scope="col">
+                        
+                        <div class="container">
+                            <label for={product.Id}  class="square">
+                                <input
+                                type="radio"
+                                name="eachitem"
+                                id={product.Id}
+                                checked={product.checked} 
+                                value={product.prodId}
+                                onchange={handleClick}
+                                    
+                                />
+                                <div class="circle"></div>
+                            </label>
+                        </div>
+					</th>
+                    <th >
+						<div>{product.prodName}</div>
+					</th>                   
+					<th scope="col">
+						<div>{product.maintenenceExp}</div>
+					</th>
+                    <th scope="col">
+						<div>{product.licExp}</div>
+					</th>
+				</tr>
+			</template>
+        </tbody>
+        </table>
+   
+        <br>
+        <br>
+        </div>
+        </div>
+        <!--<div class="slds-p-top_medium">
+            <template for:each={selectedProductOptions[product.Id]}>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Column 1</th>
+                            <th>Column 2</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template for:each={product.productOptions} for:item="option">
+                            <tr key={option.Id}>
+                                <td>{option.Column1}</td>
+                                <td>{option.Column2}</td>
+                                
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+            </template>
+            <template if:false={product.productOptions}>
+                
+                <p>No additional data available.</p>
+            </template>-->
+            <div class="slds-p-top_medium">
+                <template if:true={showTable}>
+                <div  class="table-wrapper">
+                    <table class="table">
+                        <template if:true={showseats}>
+                        <thead>
+                            <div class="slds-text-heading_small" >
+                            <div class="slds-text-align_center">
+                            Select Optional Products
+                        </div>
+                    </div>
+                        </thead>
+                    </template>
+                </table>
+
+                    <table>
+                        <tbody>
+                            
+                            <template for:each={selectedProductOptions} for:item="option">
+                                <tr key={option.Id}>
+                                    <td><input type="checkbox" data-id={option.Id} onchange={handleCheckboxChange}></td>
+                                    <td>{option.WebDesc}</td>
+                                    
+                                </tr>
+                                
+                            </template>
+                        </tbody>
+                    </table>
+                </div>
+                               <!-- <template if:true={showTable}>
+                
+                
+                <div class="table-wrapper">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Select</th>
+                            <th>Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        <tr>
+                            <td><input type="checkbox" /></td>
+                            <td>Dummy Value 1</td></tr>
+        <tr>
+            <td><input type="checkbox" /></td>
+            <td>Dummy Value 2</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" /></td>
+            <td>Dummy Value 2</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" /></td>
+            <td>Dummy Value 2</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" /></td>
+            <td>Dummy Value 2</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" /></td>
+            <td>Dummy Value 2</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" /></td>
+            <td>Dummy Value 2</td>
+        </tr>
+        
+    </tbody>
+
+</table>
+</div>
+-->
+
+
+    
+<template if:true={inputDisable}>
+<div class="input-wrapper slds-p-top_medium">
+    <label for="seats" class="input-label">
+        <span class="required">*</span> # of Seats
+        <lightning-helptext content="Help Text"></lightning-helptext>
+        
+    </label>
+    
+        
+            
+          
+    
+    <div class="input-field">
+        <input
+        type="number"
+        id={pid}
+        min="1"
+        max="9999"
+        
+        value={defaultValue}
+        disabled='True'
+    />
+
+        
+        <div class="max-allowed-text">Max allowed 9,999</div>
+    </div>
+</div>
+</template>
+<template if:false={inputDisable}>
+    <div class="input-wrapper slds-p-top_medium">
+        <label for="seats" class="input-label">
+            <span class="required">*</span> # of Seats
+            <div class="tool-tip">
+            <lightning-helptext content="You'll receive weekly updates"></lightning-helptext>
+        </div>
+        </label>
+        
+            
+                
+                    
+                
+              
+        
+        <div class="input-field">
+            <input
+            type="number"
+            id={pid}
+            min="1"
+            max="9999"
+            oninput={handleSeatsInputChange}
+            value={defaultValue}
+            
+        />
+    
+            
+            <div class="max-allowed-text">Max allowed 9,999</div>
+        </div>
+    </div>
+    </template>
+</template>
+</div>
+       <!--
+        <div class="slds-col">
+			<span>
+				<lightning-button disabled="false" label="Next" onclick={showStage} style="margin-left: 90%" variant="brand"></lightning-button>
+			</span>
+		</div>
+    -->
+    
+        <div class="slds-p-top_medium">
+            <lightning-button label="Next" onclick={handleNextButtonClick} style="margin-left: 90%" disabled={isNextButtonDisabled} variant="brand" ></lightning-button>
+        </div>
+</template>

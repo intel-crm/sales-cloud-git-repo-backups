@@ -1,0 +1,49 @@
+<template>
+	<lightning-card>
+
+		<div class="slds-box slds slds-m-around_xxx-small">
+			<lightning-layout multiple-rows="true">
+				<lightning-layout-item size="12">
+					<lightning-textarea onchange={handleQueryChange} label="Query Editor" placeholder="Input Query"
+						value={query}></lightning-textarea>
+				</lightning-layout-item>
+
+				<lightning-layout-item size="12" class="slds-m-bottom_small">
+					<lightning-input placeholder="Filter Field API Name" value={filteringField}
+						onchange={handleFieldFilterChange}></lightning-input>
+				</lightning-layout-item>
+
+				<lightning-layout-item size="12" class="slds-m-bottom_small">
+					<lightning-textarea label="Filtering Values" value={filteringValues} onchange={handleFilterChange}
+						placeholder="Provide comma separated values">
+						<!-- onchange={handleFilterChange} -->
+					</lightning-textarea>
+
+				</lightning-layout-item>
+
+				<lightning-layout-item alignment-bump="right" class="slds-p-bottom_small">
+					<lightning-button variant="brand" label="Export" onclick={handlerExport}></lightning-button>
+				</lightning-layout-item>
+				
+				<!-- Error Box -->
+				<lightning-layout-item>
+					<p></p>
+				</lightning-layout-item>
+				<!-- Output Box -->
+
+				<lightning-layout-item>
+					<lightning-datatable show-row-number-column="true" hide-checkbox-column="true" key-field="id"
+						data={data} columns={columns}></lightning-datatable>
+				</lightning-layout-item>
+                <lightning-layout-item > 
+					<c-export-as-c-s-v-lwc export-data={data}
+						newdata-set-name="Unused Custom Fields Report">
+					</c-export-as-c-s-v-lwc>
+				</lightning-layout-item>
+
+			</lightning-layout>
+
+
+		</div>
+	</lightning-card>
+</template>

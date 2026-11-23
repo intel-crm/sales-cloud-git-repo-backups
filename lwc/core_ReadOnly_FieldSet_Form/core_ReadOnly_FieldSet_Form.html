@@ -12,8 +12,8 @@
       </lightning-messages>
       <div class="slds-float_right">
          <template lwc:if={showEditField}>
-            <lightning-button variant="brand-outline" type="reset" name="Cancel" label="Cancel" onclick={handleCancelButtonClick} class="slds-var-m-left_x-small" if:false={invokedFromAura}></lightning-button>
-            <lightning-button variant="brand" name="Save" label="Save" class="slds-m-top_small slds-var-m-left_x-small" onclick={handleSave} if:false={invokedFromAura}></lightning-button>
+            <lightning-button variant="brand-outline" type="reset" name="Cancel" label="Cancel" onclick={handleCancelButtonClick} class="slds-var-m-left_x-small" if:false={invokedFromAura} ></lightning-button>
+            <lightning-button variant="brand" name="Save" label="Save" class="slds-m-top_small slds-var-m-left_x-small" onclick={handleSave} if:false={invokedFromAura} ></lightning-button>
          </template>
          <template lwc:else>
             <lightning-button variant="brand-outline" name="Edit" label="Edit" alignment-bump="right" onclick={handleEdit} if:false={invokedFromAura}></lightning-button>
@@ -68,7 +68,7 @@
                      </span>
                      </div>   
                      </template>
-                     <lightning-input-field field-name="Quantity" onchange={handleQuantity} disabled={toDisableQty}></lightning-input-field>
+                     <lightning-input-field field-name="Quantity"  field-level-help="Test" onchange={handleQuantity} disabled={toDisableQty}></lightning-input-field>
                      <template if:true={DesignOrDeal}>
                      <lightning-input-field field-name="Core_PW_Quantity__c" onchange={handlePWQty}></lightning-input-field>
                      </template>

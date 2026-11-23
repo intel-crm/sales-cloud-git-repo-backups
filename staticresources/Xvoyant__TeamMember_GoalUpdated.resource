@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/xhtml" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; margin: 0; padding: 0;">
+<head>
+<!-- If you delete this tag, the sky will fall on your head -->
+<meta name="viewport" content="width=device-width" />
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Xvoyant: Creating the World's Greatest Sales Coaches</title>
+
+<!-- <link rel="stylesheet" type="text/css" href="styles.css" /> -->
+
+<style>
+/* -------------------------------------------
+		PHONE
+		For clients that support media queries.
+		Nothing fancy.
+-------------------------------------------- */
+@media only screen and (max-width: 720px) {
+
+	a[class="btn"], a[class="btn-secondary"] { display:block!important; margin-bottom:10px!important; background-image:none!important; margin-right:0!important;}
+
+	div[class="column"] { width: auto!important; float:none!important;}
+
+	table.social div[class="column"] {
+		width:auto!important;
+	}
+
+}
+</style>
+
+</head>
+
+<body bgcolor="#F3F3F3" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; -webkit-text-size-adjust: none; width: 100% !important; height: 100%; margin: 0; padding: 0;">
+
+<!-- HEADER -->
+<table class="head-wrap" bgcolor="#F3F3F3" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; border-spacing: 0; width: 100%; margin: 0; padding: 0;">
+	<tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; margin: 0; padding: 0;">
+		<td style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; margin: 0; padding: 0;"></td>
+		<td class="header container" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; display: block !important; max-width: 720px !important; clear: both !important; margin: 0 auto; padding: 0;">
+
+				<div class="content" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; max-width: 720px; display: block; margin: 0 auto; padding: 15px;">
+					<table bgcolor="#F3F3F3" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; border-spacing: 0; width: 100%; margin: 0; padding: 0;">
+					<tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; margin: 0; padding: 0;">
+						<!-- <td style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; margin: 0; padding: 0;"></td>
+						<td align="center" style="color: #A9A9A9; font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; margin: 0; padding: 24px 0px 0px;">Email not appearing properly? <a href="" target="_blank" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; color: #29407B; text-decoration: none; margin: 0; padding: 0;">View email in browser</a></td> -->
+					</tr>
+				</table>
+				</div>
+
+		</td>
+		<td style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; margin: 0; padding: 0;"></td>
+	</tr>
+</table>
+<!-- /HEADER -->
+
+<!-- BODY -->
+<table class="body-wrap" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; font-weight: normal; font-size: 16px; border-spacing: 0; width: 100%; margin: 0; padding: 0;">
+	<tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; margin: 0; padding: 0;">
+		<td style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; margin: 0; padding: 0;"></td>
+		<td class="container" bgcolor="#FFFFFF" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; display: block !important; max-width: 720px !important; clear: both !important; margin: 0 auto; padding: 0;">
+			<div class="content" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; max-width: 720px; display: block; margin: 0 auto; padding: 15px;">
+			<table style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; border-spacing: 0; width: 100%; margin: 0; padding: 0;">
+				<tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; margin: 0; padding: 0;">
+					<td style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; margin: 0; padding: 0;">
+						<a href="http://www.xvoyant.com/" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; color: #29407B; text-decoration: none; margin: 0; padding: 0;"><img src="https://www.xvoyant.com/images/app/email-logo.png" alt="Xvoyant Logo" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; max-width: 100%; margin: 0; padding: 0;" /></a>
+					</td>
+				</tr>
+				<tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; margin: 0; padding: 0;">
+					<td style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; margin: 0; padding: 0;">
+						<h3 style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; line-height: 1.1; color: #000; font-weight: normal; font-size: 16px; margin: 0 0 15px; padding: 0;">{!Recipient.Name},</h3>
+						<p class="lead" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; font-weight: normal; font-size: 16px; line-height: 1.6; margin: 0 0 10px; padding: 0;">The following coaching goal has been updated.</p>
+						<br />
+						<h2 style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; line-height: 1.1; color: #000; font-weight: bolder; font-size: 16px; margin: 0 0 6px; padding: 0;">{!CoachingGoal.Name}</h2>
+						<p class="lead" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; font-weight: normal; font-size: 16px; line-height: 1.6; margin: 0 0 10px; padding: 0;">
+							{!CoachingGoal.ActivityOrSkill}: {!CoachingGoal.ActivityOrSkillType}
+							<br />
+							{!CoachingGoal.GoalValue}
+							{!CoachingGoal.ResourceLinks}
+							Comments:
+							<br />
+							{!CoachingGoal.Comment}
+						</p>
+
+						<br />
+
+						<a href="{!SiteAddress_Details}" class="btn" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; color: #FFF; text-decoration: none; text-transform: uppercase; font-weight: bold; text-align: center; cursor: pointer; display: inline-block; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; background-color: #29407b; margin: 0 10px 0 0; padding: 10px 16px;">View Coaching Goal</a>
+
+						<br />
+						<br />
+						<br />
+
+						<span style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; font-weight: normal; font-size: 16px; line-height: 1.6; margin: 0; padding: 0;">Thanks,</span>
+
+						<br />
+						<br />
+
+						<span style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; font-weight: normal; font-size: 16px; line-height: 1.6; margin: 0; padding: 0;">The Xvoyant Team</span>
+					</td>
+				</tr>
+			</table>
+			</div>
+
+		</td>
+		<td style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; margin: 0; padding: 0;"></td>
+	</tr>
+</table>
+<!-- /BODY -->
+
+<!-- FOOTER -->
+<table class="footer-wrap" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; border-spacing: 0; width: 100%; clear: both !important; margin: 0; padding: 0;">
+	<tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; margin: 0; padding: 0;">
+		<td style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; margin: 0; padding: 0;"></td>
+		<td class="container" bgcolor="#FFFFFF" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; display: block !important; max-width: 720px !important; clear: both !important; margin: 0 auto; padding: 0;">
+			<!-- content -->
+			<div class="content" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; max-width: 720px; display: block; margin: 0 auto; padding: 15px;">
+				<table style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; border-spacing: 0; width: 100%; margin: 0; padding: 0;">
+					<tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; margin: 0; padding: 0;">
+						<td align="center" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; margin: 0; padding: 0;">
+							<br />
+							<br />
+							<br />
+							<br />
+							<p style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; font-weight: normal; font-size: 14px; line-height: 1.6; margin: 0; padding: 0;">
+								<a href="{!SiteAddress}" target="_blank" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; color: #29407B; text-decoration: none; margin: 0; padding: 0;">Login to Xvoyant</a>
+							</p>
+							<p style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; font-weight: normal; font-size: 14px; line-height: 1.6; margin: 0; padding: 0;">
+								<a href="http://www.twitter.com/@xvoyant" target="_blank" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; color: #29407B; text-decoration: none; margin: 0; padding: 0;">Twitter</a> |
+								<a href="http://www.facebook.com/xvoyant/" target="_blank" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; color: #29407B; text-decoration: none; margin: 0; padding: 0;">Facebook</a> |
+								<a href="https://www.linkedin.com/company/10673353?trk=tyah&amp;trkInfo=clickedVertical%3Acompany%2CentityType%3AentityHistoryName%2CclickedEntityId%3Acompany_10673353%2Cidx%3A0" target="_blank" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; color: #29407B; text-decoration: none; margin: 0; padding: 0;">LinkedIn</a>
+							</p>
+							<p style="color: #A9A9A9; font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; font-weight: normal; font-size: 14px; line-height: 1.6; margin: 0 0 10px; padding: 0;">Copyright Xvoyant 2016-{!HT_CURRENT_YEAR} - All Right Reserved.</p>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<!-- /content -->
+		</td>
+		<td style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; margin: 0; padding: 0;"></td>
+	</tr>
+</table>
+<!-- /FOOTER -->
+</body>
+</html>

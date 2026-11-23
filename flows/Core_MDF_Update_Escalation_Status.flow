@@ -16,7 +16,6 @@
         <connector>
             <targetReference>myDecision13</targetReference>
         </connector>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <processMetadataValues>
                 <name>dataType</name>
@@ -158,7 +157,6 @@
         <locationY>200</locationY>
         <actionName>Core_MDF_Escalation__c.Notify_Claim_Case_Reviewer_Manager_upon_Claim_Case_Review_Result_Escalation_Appr</actionName>
         <actionType>emailAlert</actionType>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>SObjectRowId</name>
             <value>
@@ -175,7 +173,7 @@
             </value>
         </processMetadataValues>
         <name>myRule_16_A1</name>
-        <label>Notify Retail Account Manager and PRC Claim Submitters</label>
+        <label>Notify Retail Acc Mgr</label>
         <locationX>1600</locationX>
         <locationY>200</locationY>
         <actionName>Core_MDF_DetermineEmailRecipients</actionName>
@@ -183,7 +181,6 @@
         <connector>
             <targetReference>myRule_16_A2</targetReference>
         </connector>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <processMetadataValues>
                 <name>dataType</name>
@@ -349,7 +346,7 @@
             </processMetadataValues>
             <name>permissionSetName</name>
             <value>
-                <elementReference>formula_20_myRule_16_A1_6104187903</elementReference>
+                <elementReference>formula_20_myRule_16_A1_6446658480</elementReference>
             </value>
         </inputParameters>
         <inputParameters>
@@ -451,7 +448,6 @@
         <locationY>300</locationY>
         <actionName>Core_MDF_DetermineEmailRecipients</actionName>
         <actionType>apex</actionType>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <processMetadataValues>
                 <name>dataType</name>
@@ -659,7 +655,7 @@
             </processMetadataValues>
             <name>permissionSetName</name>
             <value>
-                <elementReference>formula_18_myRule_16_A2_1358438257</elementReference>
+                <elementReference>formula_18_myRule_16_A2_7579679687</elementReference>
             </value>
         </inputParameters>
         <inputParameters>
@@ -701,7 +697,7 @@
             </processMetadataValues>
             <name>accountId</name>
             <value>
-                <elementReference>formula_19_myRule_16_A2_3635732526</elementReference>
+                <elementReference>formula_19_myRule_16_A2_3605638712</elementReference>
             </value>
         </inputParameters>
         <nameSegment>Core_MDF_DetermineEmailRecipients</nameSegment>
@@ -734,7 +730,6 @@
         <connector>
             <targetReference>myDecision2</targetReference>
         </connector>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>objectId</name>
             <value>
@@ -774,7 +769,6 @@
         <connector>
             <targetReference>myRule_22_A2</targetReference>
         </connector>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>SObjectRowId</name>
             <value>
@@ -796,29 +790,6 @@
         <locationY>300</locationY>
         <actionName>Core_MDF_Escalation__c.Core_MDF_Notify_the_Escalation_Submitter_when_Approved</actionName>
         <actionType>emailAlert</actionType>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
-        <inputParameters>
-            <name>SObjectRowId</name>
-            <value>
-                <elementReference>myVariable_current.Id</elementReference>
-            </value>
-        </inputParameters>
-        <nameSegment>Core_MDF_Escalation__c.Core_MDF_Notify_the_Escalation_Submitter_when_Approved</nameSegment>
-    </actionCalls>
-    <actionCalls>
-        <processMetadataValues>
-            <name>emailAlertSelection</name>
-            <value>
-                <stringValue>Core_MDF_Notify_the_Escalation_Submitter_when_Approved</stringValue>
-            </value>
-        </processMetadataValues>
-        <name>myRule_25_A1</name>
-        <label>Notify Escalation Submitter</label>
-        <locationX>2500</locationX>
-        <locationY>200</locationY>
-        <actionName>Core_MDF_Escalation__c.Core_MDF_Notify_the_Escalation_Submitter_when_Approved</actionName>
-        <actionType>emailAlert</actionType>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>SObjectRowId</name>
             <value>
@@ -831,7 +802,7 @@
         <processMetadataValues>
             <name>processSelection</name>
             <value>
-                <stringValue>Escalation Approval for Late Claim - Core_MDF_Claim_Escalation_AP_v5</stringValue>
+                <stringValue>Escalation Approval for Late Claim - Core_MDF_Claim_Escalation_AP_v4</stringValue>
             </value>
         </processMetadataValues>
         <processMetadataValues>
@@ -855,7 +826,6 @@
         <connector>
             <targetReference>myDecision4</targetReference>
         </connector>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>objectId</name>
             <value>
@@ -868,7 +838,7 @@
         <inputParameters>
             <name>processDefinitionNameOrId</name>
             <value>
-                <stringValue>Core_MDF_Claim_Escalation_AP_v5</stringValue>
+                <stringValue>Core_MDF_Claim_Escalation_AP_v4</stringValue>
             </value>
         </inputParameters>
         <inputParameters>
@@ -883,7 +853,7 @@
         <processMetadataValues>
             <name>processSelection</name>
             <value>
-                <stringValue>Escalation Approval for Case - Core_MDF_Case_Escalation_AP_v5</stringValue>
+                <stringValue>Escalation Approval for Case - Core_MDF_Case_Escalation_AP_v4</stringValue>
             </value>
         </processMetadataValues>
         <processMetadataValues>
@@ -907,7 +877,6 @@
         <connector>
             <targetReference>myDecision6</targetReference>
         </connector>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>objectId</name>
             <value>
@@ -920,7 +889,7 @@
         <inputParameters>
             <name>processDefinitionNameOrId</name>
             <value>
-                <stringValue>Core_MDF_Case_Escalation_AP_v5</stringValue>
+                <stringValue>Core_MDF_Case_Escalation_AP_v4</stringValue>
             </value>
         </inputParameters>
         <inputParameters>
@@ -947,7 +916,6 @@
         <connector>
             <targetReference>myDecision10</targetReference>
         </connector>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <processMetadataValues>
                 <name>dataType</name>
@@ -1148,7 +1116,7 @@
         <locationX>0</locationX>
         <locationY>0</locationY>
         <defaultConnector>
-            <targetReference>isChangedDecision26_myRule_25_Core_MDF_Escalation_Status_nm_c</targetReference>
+            <targetReference>myDecision</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>default</defaultConnectorLabel>
         <rules>
@@ -1169,41 +1137,9 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>isChangedDecision26_myRule_25_Core_MDF_Escalation_Status_nm_c</targetReference>
-            </connector>
-            <label>isChangedRule_23_myRule_22_Core_MDF_Escalation_Status_nm_c</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <name>isChangedDecision26_myRule_25_Core_MDF_Escalation_Status_nm_c</name>
-        <label>isChangedDecision26_myRule_25_Core_MDF_Escalation_Status_nm_c</label>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-        <defaultConnector>
-            <targetReference>myDecision</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>default</defaultConnectorLabel>
-        <rules>
-            <name>isChangedRule_26_myRule_25_Core_MDF_Escalation_Status_nm_c</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>myVariable_old</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>myVariable_old.Core_MDF_Escalation_Status_nm__c</leftValueReference>
-                <operator>NotEqualTo</operator>
-                <rightValue>
-                    <elementReference>myVariable_current.Core_MDF_Escalation_Status_nm__c</elementReference>
-                </rightValue>
-            </conditions>
-            <connector>
                 <targetReference>myDecision</targetReference>
             </connector>
-            <label>isChangedRule_26_myRule_25_Core_MDF_Escalation_Status_nm_c</label>
+            <label>isChangedRule_23_myRule_22_Core_MDF_Escalation_Status_nm_c</label>
         </rules>
     </decisions>
     <decisions>
@@ -1670,9 +1606,6 @@
         <label>myDecision21</label>
         <locationX>50</locationX>
         <locationY>0</locationY>
-        <defaultConnector>
-            <targetReference>myDecision24</targetReference>
-        </defaultConnector>
         <defaultConnectorLabel>default</defaultConnectorLabel>
         <rules>
             <name>myRule_22</name>
@@ -1904,151 +1837,6 @@
         <processMetadataValues>
             <name>index</name>
             <value>
-                <numberValue>8.0</numberValue>
-            </value>
-        </processMetadataValues>
-        <name>myDecision24</name>
-        <label>myDecision24</label>
-        <locationX>50</locationX>
-        <locationY>0</locationY>
-        <defaultConnectorLabel>default</defaultConnectorLabel>
-        <rules>
-            <name>myRule_25</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <processMetadataValues>
-                    <name>inputDataType</name>
-                    <value>
-                        <stringValue>Picklist</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>leftHandSideType</name>
-                    <value>
-                        <stringValue>Picklist</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>operatorDataType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>rightHandSideType</name>
-                    <value>
-                        <stringValue>Picklist</stringValue>
-                    </value>
-                </processMetadataValues>
-                <leftValueReference>myVariable_current.Core_MDF_Channel_Program_id__r.Core_MDF_Technical_Program_Name__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>Intel Partner Alliance</stringValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <processMetadataValues>
-                    <name>inputDataType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>leftHandSideType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>operatorDataType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>rightHandSideType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <leftValueReference>myVariable_current.RecordType.DeveloperName</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>Core_MDF_Late_Claim</stringValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <processMetadataValues>
-                    <name>inputDataType</name>
-                    <value>
-                        <stringValue>Boolean</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>leftHandSideType</name>
-                    <value>
-                        <stringValue>Picklist</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>operatorDataType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>rightHandSideType</name>
-                    <value>
-                        <stringValue>Boolean</stringValue>
-                    </value>
-                </processMetadataValues>
-                <leftValueReference>isChangedRule_26_myRule_25_Core_MDF_Escalation_Status_nm_c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <processMetadataValues>
-                    <name>inputDataType</name>
-                    <value>
-                        <stringValue>Picklist</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>leftHandSideType</name>
-                    <value>
-                        <stringValue>Picklist</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>operatorDataType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>rightHandSideType</name>
-                    <value>
-                        <stringValue>Picklist</stringValue>
-                    </value>
-                </processMetadataValues>
-                <leftValueReference>myVariable_current.Core_MDF_Escalation_Status_nm__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>Approved</stringValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>myRule_25_A1</targetReference>
-            </connector>
-            <label>Notification for IPA Late Claim Escalation Approval</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <processMetadataValues>
-            <name>index</name>
-            <value>
                 <numberValue>2.0</numberValue>
             </value>
         </processMetadataValues>
@@ -2232,7 +2020,7 @@
                 <stringValue>$Label.Core_MDF_Retail_Claim_Submitter_Permission_Set</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_18_myRule_16_A2_1358438257</name>
+        <name>formula_18_myRule_16_A2_7579679687</name>
         <dataType>String</dataType>
         <expression>{!$Label.Core_MDF_Retail_Claim_Submitter_Permission_Set}</expression>
     </formulas>
@@ -2243,7 +2031,7 @@
                 <stringValue>[Core_MDF_Escalation__c].Core_MDF_Co_Marketing_Activity_id__c.ChannelPartner.Id</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_19_myRule_16_A2_3635732526</name>
+        <name>formula_19_myRule_16_A2_3605638712</name>
         <dataType>String</dataType>
         <expression>{!myVariable_current.Core_MDF_Co_Marketing_Activity_id__r.ChannelPartner.Id}</expression>
     </formulas>
@@ -2251,12 +2039,12 @@
         <processMetadataValues>
             <name>originalFormula</name>
             <value>
-                <stringValue>$Label.Core_MDF_Retail_Account_Manager_Permission_Set+&apos;;&apos;+$Label.Core_MDF_CCP_PRC_ClaimSubmitter</stringValue>
+                <stringValue>$Label.Core_MDF_Retail_Account_Manager_Permission_Set</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_20_myRule_16_A1_6104187903</name>
+        <name>formula_20_myRule_16_A1_6446658480</name>
         <dataType>String</dataType>
-        <expression>{!$Label.Core_MDF_Retail_Account_Manager_Permission_Set}+&apos;;&apos;+{!$Label.Core_MDF_CCP_PRC_ClaimSubmitter}</expression>
+        <expression>{!$Label.Core_MDF_Retail_Account_Manager_Permission_Set}</expression>
     </formulas>
     <formulas>
         <processMetadataValues>
@@ -2331,7 +2119,7 @@ ISBLANK({!myVariable_current.Core_MDF_Claim_Number_id__c} )
 	OR(ISNEW(),ISCHANGED({!myVariable_current.Core_MDF_Escalation_Status_nm__c} ))
 )</expression>
     </formulas>
-    <interviewLabel>Core_MDF_Update_Escalation_Status-50_InterviewLabel</interviewLabel>
+    <interviewLabel>Core_MDF_Update_Escalation_Status-41_InterviewLabel</interviewLabel>
     <label>Core_MDF_Update Escalation Status</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -2359,7 +2147,7 @@ ISBLANK({!myVariable_current.Core_MDF_Claim_Number_id__c} )
     </processMetadataValues>
     <processType>Workflow</processType>
     <startElementReference>isChangedDecision8_myRule_7_Core_MDF_Approval_Flag_ind_c</startElementReference>
-    <status>Obsolete</status>
+    <status>Active</status>
     <variables>
         <name>myVariable_current</name>
         <dataType>SObject</dataType>

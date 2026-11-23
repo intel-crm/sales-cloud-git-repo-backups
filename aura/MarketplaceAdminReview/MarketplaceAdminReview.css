@@ -1,4 +1,4 @@
-/* .THIS .create-offering-overlay {
+.THIS .create-offering-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -70,5 +70,6 @@
 @media (min-width: 768px) {
   .THIS  {
     border: 1px solid t(lightGray);
+    /* transform: scale(0.95) translateY(-2%); */
   }
-} */
+}

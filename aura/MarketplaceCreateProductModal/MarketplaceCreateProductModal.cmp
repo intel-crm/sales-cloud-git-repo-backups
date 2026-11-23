@@ -1,24 +1,18 @@
-<aura:component ></aura:component>
- 
-<!-- IPA2.0 + US TWC4497-1631 -->
-<!-- extends="c:MarketplaceBaseComponent" implements="forceCommunity:availableForAllPageTypes" controller="MarketplaceCreateProductController">
+<aura:component extends="c:MarketplaceBaseComponent" implements="forceCommunity:availableForAllPageTypes" controller="MarketplaceCreateProductController">
         <aura:attribute name="isOpen" type="boolean" default="false"/>
         <aura:attribute name="category" type="string"/>
         <aura:attribute name="viewAll" type="boolean" />
-        <aura:attribute name="categories" type="Object[]" default="[]" /> -->
+        <aura:attribute name="categories" type="Object[]" default="[]" />
         <!--Set previousPage to true if you want to navigate to previous page or false if you want to close the modal-->
-        <!-- <aura:attribute name="previousPage" type="boolean" default="true"/>
-     	<aura:attribute name="solutionToastMessage" type="boolean" default="false"/>
-   	    <aura:attribute name="solution" type="boolean" default="false"/>
-        <aura:attribute name="cancelredirect" type="boolean" default="false"/>
+        <aura:attribute name="previousPage" type="boolean" default="true"/>
 
         <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
-        <div class="slds-m-around_xx-large"> -->
+        <div class="slds-m-around_xx-large">
             <!--<lightning:button variant="brand"
                               label="How to Create an Offering"
                               title="How to Create an Offering"
                               onclick="{! c.openModal }" />-->
-            <!-- <aura:if isTrue="{!v.isOpen}">
+            <aura:if isTrue="{!v.isOpen}">
                     <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
                         <div class="slds-modal__container">
                             <aura:if isTrue="{! v.appState.Settings.currentSldsBreakPoint == 'large' || v.appState.Settings.currentSldsBreakPoint == 'x-large'}">
@@ -128,32 +122,4 @@
                 <div class="slds-backdrop slds-backdrop_open"></div>
             </aura:if>
         </div>
-    
-    <div class="slds-m-around_xx-large"> -->
-        <!--Use aura:if tag to display/hide popup based on solutionToastMessage value-->  
-        <!-- <aura:if isTrue="{!v.solutionToastMessage}"> -->
-             
-            <!-- Modal/Popup Box starts here-->
-            <!-- <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
-                <div class="slds-modal__container"> -->
-				<!-- Modal/Popup Box Header Starts here-->
-                    <!-- <header class="slds-modal__header slds-modal__header_empty">
-                       <lightning:buttonIcon iconName="utility:close"
-                                              onclick="{! c.closesolutionToastMessage }"
-                                              alternativeText="close"
-                                              variant="bare-inverse"
-                                              class="slds-modal__close"/>
-                    </header> -->
-                    <!--Modal/Popup Box Body Starts here-->
-                    <!-- <div class="slds-modal__content slds-p-around_medium solution-submission-modal-style" id="modal-content-id-1">
-                        <p><ui:outputText value="{!$Label.c.PSS_Solution_Redirect_Modalbox_Message}"/><br/>
-                        <a href="javascript:void(0)" class="link-style" onclick="{!c.closesolutionToastMessage}">Cancel redirect</a>
-                        </p>
-                    </div> -->
-                    <!--Modal/Popup Box Footer Starts here-->
-                <!-- </div>
-            </section>
-            <div class="slds-backdrop slds-backdrop_open"></div>
-        </aura:if>
-    </div>
-    </aura:component> -->
+    </aura:component>

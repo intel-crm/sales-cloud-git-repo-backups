@@ -29,9 +29,9 @@
                 <sourceValue>Intel® Stratix® 10 GT FPGA</sourceValue>
             </sourceValues>
             <sourceValues>
-                <sourceValue>Intel® Stratix® 10 TX FPGA</sourceValue>
+                <sourceValue>Intel® Stratix® 10 DX FPGA</sourceValue>
             </sourceValues>
-            <value>S10 TX</value>
+            <value>S10 TX DX</value>
         </values>
         <values>
             <sourceValues>
@@ -49,17 +49,11 @@
             <sourceValues>
                 <sourceValue>Intel® Agilex™ F-Series</sourceValue>
             </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel® Agilex™ F-Series FPGAs and SoC FPGAs</sourceValue>
-            </sourceValues>
             <value>Agilex F</value>
         </values>
         <values>
             <sourceValues>
                 <sourceValue>Intel® Agilex™ I-Series</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel® Agilex™ I-Series SoC FPGAs</sourceValue>
             </sourceValues>
             <value>Agilex I</value>
         </values>
@@ -159,18 +153,6 @@
             </sourceValues>
             <value>Cyclone V</value>
         </values>
-        <values>
-            <sourceValues>
-                <sourceValue>Intel® Stratix® 10 DX FPGA</sourceValue>
-            </sourceValues>
-            <value>S10 DX</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>Intel® Stratix® 10 NX FPGA</sourceValue>
-            </sourceValues>
-            <value>S10 NX</value>
-        </values>
     </buckets>
     <buckets>
         <bucketType>text</bucketType>
@@ -223,12 +205,6 @@
             <sourceValues>
                 <sourceValue>Intel® Agilex™ M-Series</sourceValue>
             </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel® Agilex™ F-Series FPGAs and SoC FPGAs</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel® Agilex™ I-Series SoC FPGAs</sourceValue>
-            </sourceValues>
             <value>Agilex</value>
         </values>
         <values>
@@ -246,12 +222,6 @@
             </sourceValues>
             <sourceValues>
                 <sourceValue>Intel® Stratix® 10 SX FPGA</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel® Stratix® 10 NX FPGA</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel® Stratix® 10 TX FPGA</sourceValue>
             </sourceValues>
             <value>Stratix 10</value>
         </values>
@@ -348,9 +318,6 @@
         <field>Case.Core_Case_Closure__c</field>
     </columns>
     <columns>
-        <field>Case.Core_Product_Variant__c</field>
-    </columns>
-    <columns>
         <field>OWNER</field>
     </columns>
     <columns>
@@ -373,13 +340,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
             <value>PSG-IR,Admin,CQE,Enpirion,CSTOOLS,Deflected,ZBB,PRISM</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>ACCOUNT.NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>IPS Test Account</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -407,8 +367,8 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CREATED_DATEONLY</dateColumn>
-        <endDate>2024-12-31</endDate>
+        <endDate>2020-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2021-01-01</startDate>
+        <startDate>2019-01-01</startDate>
     </timeFrameFilter>
 </Report>

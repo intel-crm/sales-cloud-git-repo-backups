@@ -2,8 +2,8 @@
 <DashboardFolder xmlns="http://soap.sforce.com/2006/04/metadata">
     <folderShares>
         <accessLevel>View</accessLevel>
-        <sharedTo>Admin</sharedTo>
-        <sharedToType>Role</sharedToType>
+        <sharedTo>12186501@intel.com.crm</sharedTo>
+        <sharedToType>User</sharedToType>
     </folderShares>
     <name>APJ Acer Review</name>
 </DashboardFolder>

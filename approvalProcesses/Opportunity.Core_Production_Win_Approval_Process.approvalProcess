@@ -38,25 +38,25 @@
                 <type>relatedUserField</type>
             </approver>
             <approver>
-                <name>Core_Approver_3__c</name>
-                <type>relatedUserField</type>
-            </approver>
-            <approver>
                 <name>Core_Approver_4__c</name>
                 <type>relatedUserField</type>
             </approver>
             <approver>
-                <name>Core_Approver_1__c</name>
+                <name>Core_Approver_3__c</name>
                 <type>relatedUserField</type>
             </approver>
             <approver>
                 <name>Core_Approver_2__c</name>
                 <type>relatedUserField</type>
             </approver>
+            <approver>
+                <name>Core_Approver_1__c</name>
+                <type>relatedUserField</type>
+            </approver>
             <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
         </assignedApprover>
         <label>Opportunity Approved for Production Win</label>
-        <name>Opportunity_Approved</name>
+        <name>Opportunity_Approved_for_Production_Win</name>
     </approvalStep>
     <description>Approval process to handle Opportunity approval from Design Win stage to Production Win stage</description>
     <emailTemplate>Core_Opportunity_Management/Core_Opportunity_Approval_Email</emailTemplate>

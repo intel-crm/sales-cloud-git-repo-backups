@@ -21,12 +21,6 @@
         <field>CREATED_DATE</field>
     </columns>
     <columns>
-        <field>Lead.Core_Lead_Revive_Date_Original__c</field>
-    </columns>
-    <columns>
-        <field>Lead.Core_Lead_Revive_Date_Most_Recent__c</field>
-    </columns>
-    <columns>
         <aggregateTypes>Average</aggregateTypes>
         <field>Lead.Core_Age_of_Lead__c</field>
     </columns>
@@ -60,20 +54,14 @@
     <columns>
         <field>RECORDTYPE</field>
     </columns>
-    <columns>
-        <field>Lead.Core_SAL_Lead_Coverage__c</field>
-    </columns>
-    <columns>
-        <field>LEAD_ID</field>
-    </columns>
     <description>RT: Leads</description>
     <filter>
         <criteriaItems>
             <column>CREATED</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>eloqua</value>
+            <operator>equals</operator>
+            <value>user eloqua</value>
         </criteriaItems>
         <criteriaItems>
             <column>RECORDTYPE</column>
@@ -100,15 +88,8 @@
             <column>Lead.Core_SAL_Lead_Coverage__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>INSIDE,OSC</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Lead.Core_Age_of_Lead__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>greaterOrEqual</operator>
-            <value>60</value>
+            <operator>equals</operator>
+            <value>OSC</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -128,7 +109,7 @@
         <field>Lead.Core_Lead_State__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>TBD Global Inside MGL SALs</name>
+    <name>Global Inside MGL SALs</name>
     <params>
         <name>co</name>
         <value>1</value>

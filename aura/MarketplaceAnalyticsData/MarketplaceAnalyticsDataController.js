@@ -13,7 +13,7 @@
         'pageType'  	: params[4]   
 		};
         
-        analyticsLibrary.makeIpaAnalyticsCall(messageData, component);
+        analyticsLibrary.makeAnalyticsCall(messageData);
 	},
     
     /**

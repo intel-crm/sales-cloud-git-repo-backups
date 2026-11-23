@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>FK_NAME</field>
+    </columns>
+    <columns>
+        <field>SWS_Cloud_Credit_Request__c.SWS_Duration_For_Coupon_Generation__c</field>
+    </columns>
+    <columns>
+        <field>SWS_Cloud_Credit_Request__c.SWS_Duration_For_Coupon_Rejection__c</field>
+    </columns>
+    <columns>
+        <field>SWS_Cloud_Credit_Request__c.SWS_Duration_For_Awaiting_Submission__c</field>
+    </columns>
+    <format>Summary</format>
+    <name>Request Status Delay Chart (InProgress)</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$SWS_Cloud_Credit_Request__c@SWS_Cloud_Credit_Request__c.SWS_Lead__c</reportType>
+    <scope>user</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>SWS_Cloud_Credit_Request__c.SWS_Coupon_Created_On__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

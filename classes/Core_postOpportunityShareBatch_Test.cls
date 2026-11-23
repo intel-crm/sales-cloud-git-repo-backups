@@ -35,14 +35,16 @@ global class Core_postOpportunityShareBatch_Test {
         System.runAs(Core_Test_Utility.systemAdminUser) {
             insert testUser1;}
        
-        Account acct = new Account(Name = 'Test Account 08-24-2022', BillingStreet = '123 Fake St',
+        Account acct = new Account(Name = 'Test Account', BillingStreet = '123 Fake St',
                                    BillingCity = 'Springfield', BillingState = 'IL', BillingCountry = 'USA',Industry='Agriculture',Core_Sub_Industry__c= 'Crop Production',
                                    BillingPostalCode = '12345', Core_Business_Party_Id__c = '8675309',Core_Sales_Groups__c='Americas Brazil Sales Group');
         System.runAs(Core_Test_Utility.systemAdminUser) {
             insert acct;
         }
+        
+       // Id accId = [Select id from Account where Core_Business_Party_Id__c != null and RecordType.Name = 'Intel Account' limit 1][0].Id;
         Id newOppRecTypeId = [select Id from RecordType where DeveloperName = 'Core_New_Opportunity' limit 1][0].Id;
-        Opportunity oppForLoss = new Opportunity(Name = 'Opportunity to Lose 03-24-2015', RecordTypeId = newOppRecTypeId,
+        Opportunity oppForLoss = new Opportunity(Name = 'Opportunity to tEST for class', RecordTypeId = newOppRecTypeId,
                                                  AccountId = acct.Id,
                                                  StageName = 'Qualifying', CloseDate = System.Date.today().addYears(1),Core_Approver_1__c= testUser1.Id,
                                                  Core_Approver_2__c=testUser1.Id,Core_Approver_3__c=testUser1.Id,Core_Approver_4__c=testUser1.Id,Core_Approver_5__c=testUser1.Id,
@@ -62,6 +64,7 @@ global class Core_postOpportunityShareBatch_Test {
         //Database.SaveResult delegateResults= new Database.SaveResult();
           System.runAs(Core_Test_Utility.systemAdminUser) {
                Database.SaveResult delegateResults=DataBase.insert(oppShare,false);
+               
               oppShareId.add(delegateResults.getId());
           } 
         Map<Id,opportunity> opp=new Map<Id,opportunity>();
@@ -73,6 +76,9 @@ global class Core_postOpportunityShareBatch_Test {
         
         
         database.executebatch(new Core_postOpportunityShareBatch (opp,oppShareId,userId),50);
+        
+       
+        
         Test.stopTest(); 
     }
 }

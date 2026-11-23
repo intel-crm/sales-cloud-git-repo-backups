@@ -10,31 +10,19 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Declined</masterLabel>
-        <translation>Abgelehnt</translation>
+        <translation><!-- Declined --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Draft</masterLabel>
-        <translation>Entwurf</translation>
+        <translation><!-- Draft --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>In-Progress</masterLabel>
         <translation>In Bearbeitung</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>In-Progress Pending Approval</masterLabel>
-        <translation>In Bearbeitung – Genehmigung ausstehend</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>In-Progress Pending Review</masterLabel>
-        <translation>In Bearbeitung – Überprüfung ausstehend</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>In-Progress Revision Required</masterLabel>
-        <translation>In Bearbeitung – Überarbeitung erforderlich</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Pending Approval</masterLabel>
-        <translation>Genehmigung ausstehend</translation>
+        <translation><!-- Pending Approval --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Pending Review</masterLabel>

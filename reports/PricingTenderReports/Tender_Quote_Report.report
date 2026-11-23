@@ -91,6 +91,10 @@
             <field>SBQQ__Quote__c$Pricing_Program_Type_Nm__c</field>
         </columns>
         <columns>
+            <aggregateTypes>Sum</aggregateTypes>
+            <field>SBQQ__Quote__c$Pricing_AI_Host_Node_cb__c</field>
+        </columns>
+        <columns>
             <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Product_Nm__c</field>
         </columns>
         <columns>
@@ -278,9 +282,6 @@
             <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Additional_Comments_Txt__c</field>
         </columns>
         <columns>
-            <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Reference_QuoteLine_Link_Nbr__c</field>
-        </columns>
-        <columns>
             <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Original_Submitted_Date_dt__c</field>
         </columns>
         <columns>
@@ -369,7 +370,7 @@
                 <value>Data Center Xeon® CPU,Small Volume Quotes - Data Center Xeon® CPU</value>
             </criteriaItems>
         </filter>
-        <format>Summary</format>
+        <format>Tabular</format>
         <name>Quote With Quote Line With Perfo Metric</name>
         <params>
             <name>co</name>
@@ -379,8 +380,6 @@
         <scope>organization</scope>
         <showGrandTotal>true</showGrandTotal>
         <showSubTotals>true</showSubTotals>
-        <sortColumn>SBQQ__Quote__c$Name</sortColumn>
-        <sortOrder>Asc</sortOrder>
         <timeFrameFilter>
             <dateColumn>SBQQ__Quote__c$CreatedDate</dateColumn>
             <interval>INTERVAL_LAST7</interval>
@@ -430,7 +429,7 @@
                 <value>Data Center,Small Volume Quotes - Data Center Xeon® CPU</value>
             </criteriaItems>
         </filter>
-        <format>Summary</format>
+        <format>Tabular</format>
         <name>Quote with Comments</name>
         <params>
             <name>co</name>

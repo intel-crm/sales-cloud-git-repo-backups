@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
-    <description>This Metadata used to manage Program,BudgetType and Recordtype</description>
     <fields>
         <fullName>Core_MDF_Account_Manager_PS_API_Name__c</fullName>
         <externalId>false</externalId>
         <fieldManageability>DeveloperControlled</fieldManageability>
-        <label>Account Manager Permission Set API Name</label>
-        <length>80</length>
+        <label>Account Manager Permissions Set API Name</label>
+        <length>250</length>
         <required>false</required>
         <type>Text</type>
         <unique>false</unique>
@@ -37,22 +36,22 @@
                     <label>Retail Marketing Funds</label>
                 </value>
                 <value>
-                    <fullName>Client CoMarketing Fund</fullName>
+                    <fullName>Client Co-Marketing Fund</fullName>
                     <default>false</default>
-                    <label>Client</label>
+                    <label>Client Co-Marketing Fund</label>
                 </value>
                 <value>
-                    <fullName>Data Center CoMarketing Fund</fullName>
+                    <fullName>Data Center Co-Marketing Fund</fullName>
                     <default>false</default>
-                    <label>Datacenter</label>
+                    <label>Data Center Co-Marketing Fund</label>
                 </value>
                 <value>
-                    <fullName>Client CoMarketing Fund Boost</fullName>
+                    <fullName>Client Co-Marketing Fund Boost</fullName>
                     <default>false</default>
                     <label>Client Co-Marketing Fund Boost</label>
                 </value>
                 <value>
-                    <fullName>Service Provider CoMarketing Fund</fullName>
+                    <fullName>Service Provider Co-Marketing Fund</fullName>
                     <default>false</default>
                     <label>Service Provider Co-Marketing Fund</label>
                 </value>
@@ -65,16 +64,6 @@
                     <fullName>Channel MDF</fullName>
                     <default>false</default>
                     <label>Channel MDF</label>
-                </value>
-                <value>
-                    <fullName>Ecosystem Extension Fund</fullName>
-                    <default>false</default>
-                    <label>Ecosystem Extension Fund</label>
-                </value>
-                <value>
-                    <fullName>CoGTM</fullName>
-                    <default>false</default>
-                    <label>Co-GTM</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -90,6 +79,6 @@
         <unique>false</unique>
     </fields>
     <label>CCP Program Budget RecordType</label>
-    <pluralLabel>CCP Program Budget RecordTypes</pluralLabel>
+    <pluralLabel>CCP Program Budget RecordType</pluralLabel>
     <visibility>Public</visibility>
 </CustomObject>

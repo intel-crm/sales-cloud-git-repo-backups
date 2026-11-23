@@ -38,7 +38,7 @@
                 <showPicturesOnCharts>false</showPicturesOnCharts>
                 <showValues>false</showValues>
                 <sortBy>RowLabelAscending</sortBy>
-                <sortLegendValues>false</sortLegendValues>
+                <sortLegendValues>true</sortLegendValues>
                 <useReportChart>true</useReportChart>
             </dashboardComponent>
             <rowIndex>0</rowIndex>
@@ -49,7 +49,7 @@
     </dashboardGridLayout>
     <dashboardType>SpecifiedUser</dashboardType>
     <isGridLayout>true</isGridLayout>
-    <owner>10681329@intel.com.crm</owner>
+    <owner>nikitha@intel.com.devsls</owner>
     <runningUser>salesforce.system.user@intel.com.crm</runningUser>
     <textColor>#000000</textColor>
     <title>ITAC Inquiry Request</title>

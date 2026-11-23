@@ -4,44 +4,20 @@
     <encodingKey>UTF-8</encodingKey>
     <name>SCRUACCTADD_Chinese</name>
     <style>none</style>
-    <subject>完成英特尔® 合作伙伴联盟注册需要执行的操作</subject>
-    <textOnly>完成英特尔® 合作伙伴联盟注册需要执行的操作
+    <subject>申请加入英特尔合作伙伴计划所需的最后一步</subject>
+    <textOnly>{!Contact.FirstName},
 
+贵公司的管理员或英特尔代表已将您添加至 {!Contact.Core_Account_Name__c} 的英特尔合作伙伴计划账户。若要激活您的帐户并开始享用您的权益，请核实您的帐户信息并完成法律要求部分.
 
+另请保存您的登录信息以供将来参考:
 
+用户名称 : {!Contact.Name}
+电子邮件地址 : {!Contact.Email}
+公司名称 : {!Contact.Core_Account_Name__c}
+您的密码应该像机密一样受到保护。在英特尔网站上使用此密码受英特尔使用条款约束，链接详见每个网站页面的底部。
 
-尊敬的 {!Contact.FirstName}：
-
-恭喜，您的公司管理员或英特尔代表已将您添加到英特尔® 合作伙伴联盟帐户！您离完成注册只有几步之遥了。
-
-已为您创建以下资料信息：
-
-电子邮件地址： {!Contact.Email}
-公司名称： {{ACCOUNTNAME}}
-英特尔® 合作伙伴联盟业务代码： {{ACCOUNTNUMBER}}
-
-
-请单击以下链接完成您的注册
-
-
-{{ButtonText}}
-
-
-无法访问上面的链接？
-{{EVLINK}}
-如果您有任何问题，请通过 {{SUPPORTLINK}} 与我们联系。
-衷心期待您参加本计划！
-顺祝商祺
-英特尔® 合作伙伴联盟团队
-
-
-本邮件是有关您与英特尔® 合作伙伴联盟当前合作关系的重要业务邮件。
-© {!$Label.PRM_CurrentYear} 英特尔公司
-Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
-隐私条款 | Cookie
-
-
-__PRESENT</textOnly>
+立即完成
+有疑问？点击此处联系支持团队。</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

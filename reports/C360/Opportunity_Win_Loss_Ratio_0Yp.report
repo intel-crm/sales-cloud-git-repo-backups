@@ -62,7 +62,6 @@
     <columns>
         <field>FULL_NAME</field>
     </columns>
-    <description>**Do not Edit without Approval**</description>
     <filter>
         <criteriaItems>
             <column>STAGE_NAME</column>

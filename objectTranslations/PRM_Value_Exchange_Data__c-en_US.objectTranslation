@@ -104,15 +104,15 @@
         <relationshipLabel><!-- Value Exchange Data --></relationshipLabel>
     </fields>
     <fields>
-        <label><!-- Measurement Period --></label>
+        <label><!-- TimePeriod --></label>
         <name>PRM_TimePeriod_Nm__c</name>
         <picklistValues>
-            <masterLabel>Q4 2025 - Q3 2026</masterLabel>
-            <translation><!-- Q4 2025 - Q3 2026 --></translation>
+            <masterLabel>Q4 2021 - Q3 2022</masterLabel>
+            <translation><!-- Q4 2021 - Q3 2022 --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Q4 2026 - Q3 2027</masterLabel>
-            <translation><!-- Q4 2026 - Q3 2027 --></translation>
+            <masterLabel>Q4 2022 - Q3 2023</masterLabel>
+            <translation><!-- Q4 2022 - Q3 2023 --></translation>
         </picklistValues>
     </fields>
     <fields>

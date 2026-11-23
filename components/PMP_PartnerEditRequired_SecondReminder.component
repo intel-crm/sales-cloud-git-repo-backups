@@ -34,7 +34,7 @@
             }
             
             table {
-            font-family: sans-serif; /*arial, sans-serif;*/
+            font-family: Intel Clear; /*arial, sans-serif;*/
             border-collapse: collapse;
             border-left: 1px solid #dddddd;
             border-right: 1px solid #dddddd;
@@ -50,14 +50,14 @@
             color:#0071c5;
             }
             
-           <!-- h1{
+            h1{
             font-family: Intel Clear Pro !important;  
-            }-->
+            }
         </style>
         <apex:attribute name="partnerRecordId" type="Id" description="Partner Record Id" assignTo="{!partnerId}"/>
         <body>
             <!-- Header Banner -->
-                <c:PMP_Global_Header message="Don’t forget: edit(s) required for your showcase storefront"/>
+                <c:PMP_Global_Header message="DON’T FORGET: EDIT(S) REQUIRED FOR YOUR MARKETPLACE STOREFRONT"/>
             <!-- Header Banner -->
             
             <!-- Email content -->
@@ -68,7 +68,7 @@
                 <br/>Hello<br/><br/>
                 As we recently let you know, your action is required before we can publish your storefront. Please follow this link below for instructions from your Intel Representative.<br/><br/>         
                 Thanks for your prompt attention,<br/><br/>
-                The Intel® Partner Showcase Team <br/> <br/>
+                The Intel Solutions Marketplace Team <br/> <br/>
             </td>
           </tr>
                 <!-- Email Body -->
@@ -88,11 +88,20 @@
             </td>
         </tr>
         <!-- Progress Indication -->
+         <!-- Next Best Step -->
+       <!-- <tr>    
+            <td style="padding-left:50px;">
+                Would you like to create an Offering ?
+                <apex:outputLink value="https://crmqa2-intelcloudcrm.cs93.force.com//s/pmp-partner-offering/PMP_Partner_Offering__c/00B0n000000zKq0EAE?language=en_US" styleClass="intelBlue">
+                Get Started
+                </apex:outputLink><br/><br/>
+            </td>
+        </tr>-->
         <!-- Next Best Step -->
                 <!-- Questions/Contact -->
                         <tr>
                             <td style="padding-left:50px;">  
-                                Questions? Reach out to Showcase Admin Team at <br/>
+                                Questions? Reach out to Marketplace Admin Team at <br/>
                                 <apex:outputLink value="mailto:{!$Label.PMP_MailTo}" styleClass="intelBlue">
                                 {!$Label.PMP_MailTo}
                                 </apex:outputLink><br/><br/>
@@ -102,9 +111,9 @@
                 <!-- Marketplace Help & FAQ -->
                 <!-- <tr>    
                     <td style="text-align:center">
-                    For FAQs and pro-tips on using Intel® Partner Showcase, please visit 
+                    For FAQs and pro-tips on using Intel Solutions Marketplace, please visit 
                     <apex:outputLink value="www.intel.com" styleClass="intelBlue">
-                    Showcase Help
+                    Marketplace Help
                     </apex:outputLink><br/><br/>
                     </td>
                     </tr>-->
@@ -113,8 +122,8 @@
             <!-- Email content -->
             
             <!-- Global Footer -->
-                <c:PMP_Global_Footer />
-                <!-- <c:PMP_PartnerFooterComponent /> -->
+            	<c:PMP_Global_Footer />
+            	<!-- <c:PMP_PartnerFooterComponent /> -->
             <!-- Global Footer -->
             
         </body>

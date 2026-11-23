@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>Ab S A Partner User</description>
+    <description>AB S.A. Integracja Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>Ab S A Partner User</name>
+    <name>AB S.A. Integracja Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>EMP_10635811_Artur_Dlugosz</parentRole>
+    <parentRole>ABSAIntegracjaPartnerManager</parentRole>
 </Role>

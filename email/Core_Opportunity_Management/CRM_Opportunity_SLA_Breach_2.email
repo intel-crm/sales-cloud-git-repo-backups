@@ -1,0 +1,30 @@
+<messaging:emailTemplate subject="Weekly Summary: Opportunities Requiring Updates in Sales CRM" recipientType="User" relatedToType="Opportunity">
+<messaging:htmlEmailBody >
+<table style="background-color: #0071c5;" width="100%">
+   <tbody>
+    <tr>
+      <td style="padding-left: 50px; border: none;">
+        <div style="color: white;">
+           <h1>Weekly Summary: Opportunities Requiring Updates in Sales CRM</h1>
+         </div>
+        </td>
+        <td style="border: none; padding-right: 20px;" align="right">
+        <apex:image url="https://intel--c.na104.content.force.com/servlet/servlet.ImageServer?id=0153b000004Pg4i&amp;oid=00Do0000000aRcf" /> 
+        </td>
+        </tr>
+        </tbody>
+ </table>
+Hello {!relatedTo.Owner.Manager.Name},<br /><br />
+The following opportunities under your team have remained without updates for more than 14 days after an SLA breach in the Sales CRM.<br/>
+To ensure visibility and progress, please review the list below and work with the corresponding sellers to take the necessary action. If a listed seller is inactive, please help update the opportunity with the appropriate owner.
+<br /><br />
+Opportunities Requiring Attention:
+[REQUIRED_FIELDS]
+
+<br /><br />
+You can view all opportunities currently breaching SLAs in the following report: <a href="[REPORT_LINK]">Report Link</a><br/>
+This is a visibility summary to support data quality and ensure timely updates across your team’s pipeline <br /><br />
+Sales Excellence 
+
+</messaging:htmlEmailBody>
+</messaging:emailTemplate>

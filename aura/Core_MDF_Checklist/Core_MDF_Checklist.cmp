@@ -17,17 +17,13 @@
         <!--Checklist Enhancements v2 - US488875: [Checklist] HIGH: Assign additional Case Checklist permissions to Finance users-->
         <aura:attribute name="isAClaimCaseReviewerOrManager" type="Boolean" default=""/>
         <aura:attribute name="underReview" type="String" default="Under Review"/>
-    	<aura:attribute name="checklistItemsWithCat" type="List"/>
-    	<aura:attribute name="checklistCompletionPer" type="integer" default=""/>
-    	<aura:attribute name="scorecardDetails" type="Object"/><!--Audit Functionality-->
-    	<aura:attribute name="aiStatusMessage" type="String"/><!--Audit Functionality-->
         
         <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
         <aura:handler event="force:refreshView" action="{!c.doInit}"/>
         
         <div class="slds-var-p-around_large">
-                <div class="slds-align_absolute-center"><strong>{!v.checklistCompletionPer}% </strong></div>
-                <lightning:progressBar value="{!v.checklistCompletionPer}" size="large" variant="circular" title="Checklist Completion"/>
+                <div class="slds-align_absolute-center"><strong>{!v.checklistItems[0].Core_MDF_Completion_Percentage__c}% </strong></div>
+                <lightning:progressBar value="{!v.checklistItems[0].Core_MDF_Completion_Percentage__c}" size="large" variant="circular" title="Checklist Completion"/>
         </div>
         <aura:if isTrue="{!and(v.caseStatus == v.underReview,v.isAClaimCaseReviewerOrManager)}">
                 <div class="slds-align_absolute-center">
@@ -35,35 +31,19 @@
                 </div>
         </aura:if>   
         <div>
-        <!--Audit start Display AI Audit Status Message-->
-        <aura:if isTrue="{!v.scorecardDetails.showAIMessage}">
-        	 <div style="text-align: center; color: #0176d3; margin-bottom: 16px; font-size: 14px;">
-             	{!v.aiStatusMessage}
-              </div>
-         </aura:if>
-        <!--Audit end-->
                  <!--Checklist Enhancements v2 - US488875: [Checklist] HIGH: Assign additional Case Checklist permissions to Finance users - Passing new boolean value isAClaimCaseReviewerOrManager -->
                  <!-- US567200: Violation Message Display-->
                 <lightning:accordion aura:id="accordion" allowMultipleSectionsOpen="true">
-                    <aura:iteration items="{!v.checklistItemsWithCat}" var="cl" indexVar="key">
-                        <lightning:accordionSection name="{!cl.key}" label="{!cl.key}"> <div class="slds-text-align_right italics">*Customers would see if marked Non-Compliant</div>
-                                <c:Core_MDF_ChecklistItems editability = "{!v.isAClaimCaseReviewerOrManager}" status="{!v.caseStatus}" checklist="{!cl.value}" checklisttype="{!cl.key}" checklistMap="{!v.checklistMap}" impactAmount="{!v.impactAmount}" commentCopy="{!v.commentCopy}" scorecardDetails="{!v.scorecardDetails}"/>
+                        <!--Show Non-compliant finding below Checklist Item -->
+                        <lightning:accordionSection name="Branding" label="Branding"> <div class="slds-text-align_right italics">*Customers would see if marked Non-Compliant</div>
+                                <c:Core_MDF_ChecklistItems editability = "{!v.isAClaimCaseReviewerOrManager}" status="{!v.caseStatus}" checklist="{!v.checklistItems}" checklisttype="Branding" checklistMap="{!v.checklistMap}" impactAmount="{!v.impactAmount}" commentCopy="{!v.commentCopy}"/>
                         </lightning:accordionSection>
-                    </aura:iteration>
-                    
-                        <!--Show Non-compliant finding below Checklist Item 
-                        <lightning:accordionSection name="Attribution" label="Attribution"> <div class="slds-text-align_right italics">*Customers would see if marked Non-Compliant</div>
-                                <c:Core_MDF_ChecklistItems editability = "{!v.isAClaimCaseReviewerOrManager}" status="{!v.caseStatus}" checklist="{!v.checklistItems}" checklisttype="Attribution" checklistMap="{!v.checklistMap}" impactAmount="{!v.impactAmount}" commentCopy="{!v.commentCopy}"/>
+                        <lightning:accordionSection name="Documentation" label="Documentation"> <div class="slds-text-align_right italics">*Customers would see if marked Non-Compliant</div>
+                                <c:Core_MDF_ChecklistItems editability = "{!v.isAClaimCaseReviewerOrManager}" status="{!v.caseStatus}" checklist="{!v.checklistItems}" checklisttype="Documentation" checklistMap="{!v.checklistMap}" impactAmount="{!v.impactAmount}" commentCopy="{!v.commentCopy}"/>
                         </lightning:accordionSection>
-                        <lightning:accordionSection name="POP" label="POP"> <div class="slds-text-align_right italics">*Customers would see if marked Non-Compliant</div>
-                                <c:Core_MDF_ChecklistItems editability = "{!v.isAClaimCaseReviewerOrManager}" status="{!v.caseStatus}" checklist="{!v.checklistItems}" checklisttype="POP" checklistMap="{!v.checklistMap}" impactAmount="{!v.impactAmount}" commentCopy="{!v.commentCopy}"/>
+                        <lightning:accordionSection name="Submission" label="Submission"> <div class="slds-text-align_right italics">*Customers would see if marked Non-Compliant</div>
+                                <c:Core_MDF_ChecklistItems editability = "{!v.isAClaimCaseReviewerOrManager}" status="{!v.caseStatus}" checklist="{!v.checklistItems}" checklisttype="Submission" checklistMap="{!v.checklistMap}" impactAmount="{!v.impactAmount}" commentCopy="{!v.commentCopy}"/>
                         </lightning:accordionSection>
-                        <lightning:accordionSection name="Engagement" label="Engagement"> <div class="slds-text-align_right italics">*Customers would see if marked Non-Compliant</div>
-                                <c:Core_MDF_ChecklistItems editability = "{!v.isAClaimCaseReviewerOrManager}" status="{!v.caseStatus}" checklist="{!v.checklistItems}" checklisttype="Engagement" checklistMap="{!v.checklistMap}" impactAmount="{!v.impactAmount}" commentCopy="{!v.commentCopy}"/>
-                        </lightning:accordionSection>
-                    	<lightning:accordionSection name="Others" label="Others"> <div class="slds-text-align_right italics">*Customers would see if marked Non-Compliant</div>
-                                <c:Core_MDF_ChecklistItems editability = "{!v.isAClaimCaseReviewerOrManager}" status="{!v.caseStatus}" checklist="{!v.checklistItems}" checklisttype="Others" checklistMap="{!v.checklistMap}" impactAmount="{!v.impactAmount}" commentCopy="{!v.commentCopy}"/>
-                        </lightning:accordionSection> -->
                 </lightning:accordion>
         </div>
         <aura:if isTrue="{!and(v.caseStatus == v.underReview,v.isAClaimCaseReviewerOrManager)}">
@@ -73,7 +53,7 @@
         </aura:if>
 
         <!--Checklist Enhancements v1 - Checklist Enhancements v1 - US458776: [Case: Edit] Automatic Status for Checklist Results-->
-        <!--<div class="slds-m-around_xx-large">
+        <div class="slds-m-around_xx-large">
                 <aura:if isTrue="{!v.isOpen}">
                     <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
                         <div class="slds-modal__container">
@@ -102,5 +82,5 @@
                     </section>
                     <div class="slds-backdrop slds-backdrop_open"></div>
                 </aura:if>
-            </div>     -->  
+            </div>       
 </aura:component>

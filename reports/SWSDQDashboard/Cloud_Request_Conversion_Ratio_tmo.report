@@ -49,7 +49,7 @@
         <titleSize>18</titleSize>
     </chart>
     <columns>
-        <field>Lead$Name</field>
+        <field>Lead.Cloud_Credit_Requests__r$SWS_Full_Name__c</field>
     </columns>
     <columns>
         <field>Lead.Cloud_Credit_Requests__r$Name</field>
@@ -68,7 +68,7 @@
     <groupingsAcross>
         <dateGranularity>Day</dateGranularity>
         <field>Lead$SWS_LeadConverted_fm__c</field>
-        <sortOrder>Desc</sortOrder>
+        <sortOrder>Asc</sortOrder>
     </groupingsAcross>
     <groupingsDown>
         <dateGranularity>Month</dateGranularity>
@@ -86,7 +86,7 @@
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
-        <dateColumn>Lead$CreatedDate</dateColumn>
+        <dateColumn>Lead.Cloud_Credit_Requests__r$CreatedDate</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>
     </timeFrameFilter>
 </Report>

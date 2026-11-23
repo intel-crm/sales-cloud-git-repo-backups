@@ -70,10 +70,6 @@
         <aggregateTypes>Average</aggregateTypes>
         <field>Opportunity.Core_Days_from_Opportunity_Create_to_Su__c</field>
     </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Lead.SWS_Software_Lead__c</field>
-    </columns>
     <description>RT: Leads with Conv Info</description>
     <filter>
         <booleanFilter>(1 AND 2) OR 3</booleanFilter>

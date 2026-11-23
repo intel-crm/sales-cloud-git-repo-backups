@@ -148,8 +148,8 @@
     <enableFeeds>false</enableFeeds>
     <enableHistory>false</enableHistory>
     <enableLicensing>false</enableLicensing>
-    <enableReports>false</enableReports>
-    <enableSearch>true</enableSearch>
+    <enableReports>true</enableReports>
+    <enableSearch>false</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
@@ -181,7 +181,7 @@
     <fields>
         <fullName>Partner_Program__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
-        <label>Partner Program</label>
+        <label>Channel Program</label>
         <referenceTo>ChannelProgram</referenceTo>
         <relationshipLabel>Account Whitelisted Domains</relationshipLabel>
         <relationshipName>Account_Whitelisted_Domains</relationshipName>
@@ -190,13 +190,6 @@
         <type>Lookup</type>
     </fields>
     <label>Account Whitelisted Domains</label>
-    <listViews>
-        <fullName>All</fullName>
-        <columns>NAME</columns>
-        <columns>Account__c</columns>
-        <filterScope>Everything</filterScope>
-        <label>All</label>
-    </listViews>
     <nameField>
         <label>Acceptable Domain Name</label>
         <type>Text</type>

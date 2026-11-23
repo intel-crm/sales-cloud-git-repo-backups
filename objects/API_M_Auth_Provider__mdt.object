@@ -42,6 +42,14 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>No_Refresh_Token__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Field has been added by software sales to give the grant type access using cred.</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>No Refresh Token</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>Redirect_Url_Suffix__c</fullName>
         <externalId>false</externalId>
         <fieldManageability>DeveloperControlled</fieldManageability>

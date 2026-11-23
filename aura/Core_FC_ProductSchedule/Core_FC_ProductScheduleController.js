@@ -5,6 +5,8 @@
         action.setParams({
             oppId : component.get("v.recordId")
         });
+        
+        
         action.setCallback(this, function(response){
             if(response.getState() === "SUCCESS"){
                 var result = response.getReturnValue();
@@ -21,10 +23,13 @@
                 component.set("v.totalQuantityError", result.totalQuantityError);
                 component.set("v.QuartersNotAligned", result.isQuartersAligned);
                 component.set("v.isPartner", result.isPartnerUser);
+                component.set("v.negativeErrorMessage", result.negativeQuantityError);
                 // TWC3123-5786 Start
                 if(result.oppRecord.Core_Opportunity_Coverage_Nm__c == "Partner-Led Opportunity" && result.oppRecord.Core_Coverage_Type_Nm__c == 'Deal Registration' && result.oppRecord.RecordType.Name == 'Deal Opportunity' ){
                     component.set("v.isPCCDealOpp", false);
                 }
+                
+                
                 // TWC3123-5786 End
                 if(result.fcDisplayWrapList.length > 0){
                     var qtTotalList = [];
@@ -67,13 +72,14 @@
                 const errors = response.getError();
                 if (errors) {
                     if (errors[0] && errors[0].message) {
-                        helper.toastMessage(component, "error", errors[0].message);
+                        helper.toastMessage(component, "error",  errors[0].message);
                     }
                 }
             }
         });
         $A.enqueueAction(action);
     },
+    
     scheduleQuarter : function(component, event, helper){
         //TWC3123-5786 Start
         if(component.get("v.isOppLocked") && component.get("v.oppCoverage") == "Partner-Led Opportunity" && component.get("v.coverageType") == "Deal Registration"
@@ -96,16 +102,19 @@
                 helper.toastMessage(component, "error", $A.get("$Label.c.Core_6QPS_QLI_Not_Approved_Error"));
         }//TWC3123-5786 End
         else{
-        if(component.get("v.fcWrapper.canAddQuarter") == true){
-            component.set("v.isAddQuarter", true);
-        }else{
+            if(component.get("v.fcWrapper.canAddQuarter") == true){
+                component.set("v.isAddQuarter", true);
+        }
+		else{
             if(component.get("v.fcWrapper.oppProductCount") > 0){
                 if(component.get("v.fcWrapper.oppProductCount") == component.get("v.fcWrapper.invalidProductCount")){
                     helper.toastMessage(component, "error", $A.get("$Label.c.Core_FC_lost_AddQuarter"));
-                }else{
+                }
+                else{
                     helper.toastMessage(component, "error", $A.get("$Label.c.Core_FC_Max_AddQuarter"));
                 }
-            }else{
+            }
+            else{
                 helper.toastMessage(component, "error", $A.get("$Label.c.Core_FC_NoProd_AddQuarter"));
             }
         }
@@ -179,6 +188,7 @@
             component.set("v.canShowPostWinDelete",showDeletePostWin);
         }
     },
+    
     saveAllQuarter : function(component, event, helper){
         var actType = '';
         var comingFrom = '';
@@ -190,14 +200,16 @@
         var ProductNumberListAura = [];
 		var fcWrapListForEditQty = [];
 		var fcWrapListForEditQtyDummy = [];
+        var invalidLineItems = [];
         component.set("v.QuantityEditRestriction", false);
-        
+        //Duplicate qtr fix - poc - start
         var saveBtn = event.getSource();
         saveBtn.set("v.disabled", true);
-        
+        //Duplicate qtr fix - poc - end
         if(component.get("v.isAddQuarter") == true){
                 actType = 'addQuarter';
                 fcWrapList = component.get("v.dummyFcDisplayWrapList");
+            	
            		
             }else{
                 actType = 'editQuarter';
@@ -208,10 +220,19 @@
                     if(fcWrapList[i].scheduledList[j].scheduledQuantity == ""){
                         fcWrapList[i].scheduledList[j].scheduledQuantity = 0;
                     }
+                     else if( isNaN(fcWrapList[i].scheduledList[j].scheduledQuantity) || (fcWrapList[i].scheduledList[j].scheduledQuantity < 0) || (fcWrapList[i].scheduledList[j].scheduledQuantity % 1 !== 0)){
+                          invalidLineItems.push(i+1); 
+                        
+                        }
                 }
             }
-        
-        
+             invalidLineItems = [...new Set(invalidLineItems)];
+
+        if(invalidLineItems.length > 0) {
+    helper.toastMessage(component, "error", component.get("v.negativeErrorMessage") + invalidLineItems);
+    return;
+        }
+
         //TWC3123-5771 Start
         if(component.get("v.isAddQuarter") == true){
                 actType = 'addQuarter';
@@ -221,8 +242,8 @@
                 fcWrapList1 = component.get("v.fcDisplayWrapList");
             }
         component.set("v.schQuantityError",false);
-        
-        for(var i=0; i<fcWrapList1.length; i++){
+        //TWC3123-6665 Commented as part ofTWC3123-6665
+        /*for(var i=0; i<fcWrapList1.length; i++){
             var rowNum;
             var totschedQty = 0;
             var k=0;
@@ -248,13 +269,14 @@
                 }
             }
             k=0;
-        }  
+        } */ 
         
 		//Devashish
         if (component.get("v.oppCoverage") == "Partner-Led Opportunity" && component.get("v.coverageType") == "Deal Registration") 
         {
             var errorMessage1;
             var errorMessage2;
+            var oliRowNumLess='';//TWC3123-6665
         
             if(component.get("v.isAddQuarter") == true){
                 component.set("v.dummyFcDisplayWrapList", fcWrapList);
@@ -265,6 +287,47 @@
             }
             component.set("v.canShowPostWinDelete",false);
             component.set("v.loaded", false);
+            
+            //TWC3123-6665 start
+           var action = component.get("c.checkQuantityValidation");
+          action.setParams({
+            fcDisplayWrapStr: JSON.stringify(fcWrapListForEditQty),
+			dummyFcDisplayWrapStr : JSON.stringify(fcWrapListForEditQtyDummy),
+            oppObject: component.get("v.oppRecord"),
+			actionType : actType
+          });
+            
+          action.setCallback(this, function(response) {
+            if (response.getState() === "SUCCESS") {
+              var ItemNoList;
+              var result = response.getReturnValue();
+                 console.log('Aura result is:'+result);
+                if(result.length !=0)
+				{
+					for(var l=0; l<result.length; l++)
+					{                    
+						if(oliRowNumLess != ''){
+						 oliRowNumLess = oliRowNumLess+'/'+'Item#'+result[l]+' ';
+					}
+					else{
+						oliRowNumLess = 'Item#'+result[l]+' ';
+						}
+					}
+                    component.set("v.schQuantityError",true);
+                }
+			 
+            } else {
+              const errors = response.getError();
+              if (errors) {
+                if (errors[0] && errors[0].message) {
+                    component.set("v.isEditQuarter", false);
+                  helper.toastMessage(component, "error", errors[0].message);
+                }
+              }
+            }
+          });
+          $A.enqueueAction(action);
+          //TWC3123-6665 end
             
           var action = component.get("c.checkQLDates");
           action.setParams({
@@ -282,7 +345,7 @@
                 var oliRowNum1='';
                 ProductNumberListAura = component.get("v.QLQuarterList");
                 if(ProductNumberListAura.length !=0)
-				{
+				{					
 					for(var l=0; l<ProductNumberListAura.length; l++)
 					{                    
 						if(oliRowNum1 != ''){
@@ -293,12 +356,14 @@
 						}
 					}
                     component.set("v.QuantityEditRestriction", true);
+					
                     errorMessage1 = oliRowNum1+$A.get("$Label.c.Core_PCC_6QPSEditQtyRestriction");
-                    errorMessage2 = oliRowNum+$A.get("$Label.c.Core_6QPS_Schedule_Error");
+                    errorMessage2 = $A.get("$Label.c.Core_Oppo_Sch_prod_Qty_Ck")+' '+oliRowNumLess;//TWC3123-6665  changed Core_6QPS_Schedule_Error/oliRowNum
                     helper.showToast(component, event, errorMessage1, errorMessage2);
+
               }
                 else if(component.get("v.schQuantityError") == true){
-            helper.toastMessage(component, "error", oliRowNum+$A.get("$Label.c.Core_6QPS_Schedule_Error"));            
+            helper.toastMessage(component, "error", $A.get("$Label.c.Core_Oppo_Sch_prod_Qty_Ck")+' '+oliRowNumLess);//TWC3123-6665 changed Core_6QPS_Schedule_Error/oliRowNum           
         }
                 else{
                     component.set("v.loaded", false);
@@ -322,6 +387,7 @@
 					action.setCallback(this, function(response){
                 if(response.getState() === "SUCCESS"){
                     component.set("v.fcDisplayWrapList", fcWrapList);// add newly 18th Oct
+                    console.log('Before success toast');
                     helper.toastMessage(component, "success", $A.get("$Label.c.Core_FC_SaveAll"));
                     $A.get('e.force:refreshView').fire();
                 }else{
@@ -388,6 +454,8 @@
                 component.set("v.isAddQuarter", false);
             });
             $A.enqueueAction(action);
+      //     }
+
         }
         component.set("v.loaded", true);
     },
@@ -396,20 +464,22 @@
         //TWC3123-5786 Start
         if(component.get("v.isOppLocked") && component.get("v.oppCoverage") == "Partner-Led Opportunity" && component.get("v.coverageType") == "Deal Registration"
            && component.get("v.oppRecord.RecordType.Name") == 'Deal Opportunity'){
-                helper.toastMessage(component, "error", $A.get("$Label.c.Core_6QPS_QLI_Not_Approved_Error"));
+               helper.toastMessage(component, "error", $A.get("$Label.c.Core_6QPS_QLI_Not_Approved_Error"));
         }//TWC3123-5786 End
         else if(component.get("v.oppRecord.StageName") != 'Production Win' && component.get("v.oppRecord.RecordType.Name") == 'Design Opportunity'){
             helper.toastMessage(component, "error", $A.get("$Label.c.Core_FC_Not_PW")); 
         }
+             
         //TWC3123-5771 Start
         else if(component.get("v.totalQuantityError") != '' && component.get("v.oppCoverage") == "Partner-Led Opportunity" && component.get("v.coverageType") == "Deal Registration" 
                 && component.get("v.oppRecord.RecordType.Name") == 'Deal Opportunity'){
-            helper.toastMessage(component, "error", component.get("v.totalQuantityError")+$A.get("$Label.c.Core_6QPS_Schedule_Error"));            
+            helper.toastMessage(component, "error", $A.get("$Label.c.Core_Oppo_Sch_prod_Qty_Ck")+' '+component.get("v.totalQuantityError")); //TWC3123-6665 updated label from Core_6QPS_Schedule_Error           
         }//TWC3123-5771 End
                  
 		//Devashish
         else if (component.get("v.oppCoverage") == "Partner-Led Opportunity" && component.get("v.coverageType") == "Deal Registration") 
         {
+            
 		var comingFrom = '';
 		var fcWrapListForEditQty = [];
 		var fcWrapListForEditQtyDummy = [];
@@ -475,9 +545,7 @@
                     var title = $A.get("$Label.c.Core_6QPS_Quarter_Error");
                     helper.toastMessage(component, "error", title, msg);
                     component.set("v.isSubmitQuarter", false);
-                }
-		//Bypass NoManager error for PCC
-		else if(component.get("v.fcWrapper.noManager") == true && !(component.get("v.oppCoverage") == "Partner-Led Opportunity" && component.get("v.coverageType") == "Deal Registration")){
+                }else if(component.get("v.fcWrapper.noManager") == true && !(component.get("v.oppCoverage") == "Partner-Led Opportunity" && component.get("v.coverageType") == "Deal Registration")){
                     helper.toastMessage(component, "error", $A.get("$Label.c.Core_FC_NoManager"));
                 }else{
                     component.set("v.isSubmitQuarter", true);
@@ -519,6 +587,7 @@
             }
         });
         $A.enqueueAction(action);
+    
     },
     
     approveForecast : function(component, event, helper){
@@ -671,7 +740,7 @@
     closeAddEditPopup : function(component, event, helper){
         component.set("v.isAddQuarter", false);
         component.set("v.isEditQuarter", false);
-        $A.get('e.force:refreshView').fire();
+        $A.get('e.force:refreshView').fire(); 
     },
     
     redirectToReport : function(component, event, helper){

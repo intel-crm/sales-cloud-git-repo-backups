@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSetGroup xmlns="http://soap.sforce.com/2006/04/metadata">
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Tender Account Execuive</label>
+    <permissionSets>CPQ_Managed_License_User</permissionSets>
+    <permissionSets>Tender_Account_Executive</permissionSets>
+    <status>Updated</status>
+</PermissionSetGroup>

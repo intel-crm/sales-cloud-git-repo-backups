@@ -28,7 +28,7 @@ private class Core_OpptyBatch_Del_Inactive_rec_Test {
         Test.stopTest();  
 
         // Verify that the records have been deleted  
-        //List<Core_Sales_Assist_Staging__c> remainingRecords = [SELECT Id FROM Core_Sales_Assist_Staging__c where Core_Status_Pkt__c = 'Failure'];  
-        System.assertEquals(0, 0, 'Batch job did not delete records');  
+        List<Core_Sales_Assist_Staging__c> remainingRecords = [SELECT Id FROM Core_Sales_Assist_Staging__c];  
+        System.assertEquals(0, remainingRecords.size(), 'Batch job did not delete records');  
     }  
 }

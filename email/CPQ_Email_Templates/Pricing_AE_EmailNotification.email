@@ -1,0 +1,5 @@
+<messaging:emailTemplate subject="You have been added to IQR quote {!relatedTo.Name}" recipientType="User" relatedToType="SBQQ__Quote__c">
+    <messaging:htmlEmailBody >
+        <c:Pricing_AE_EmailNotification quoteRecordId="{!relatedTo.Id}"/>
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>

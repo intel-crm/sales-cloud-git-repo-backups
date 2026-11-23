@@ -1,7 +1,6 @@
-<aura:component></aura:component>
-    <!-- IPA2.0 + US TWC4497-1631 -->
+<aura:component>
 
-  <!-- <aura:attribute name="headline" type="string" description="This is the headline of the subsection"/>
+  <aura:attribute name="headline" type="string" description="This is the headline of the subsection"/>
   <aura:attribute name="showHeadline" type="boolean" default="true" description="Internal" />
   <aura:attribute name="additionalText" type="string" description="Any additional paragraph text" />
   <aura:attribute name="notActive" type="boolean" default="true" />
@@ -12,7 +11,6 @@
   <aura:attribute name="currentStepTouched" type="boolean" default="false" description="Internal"/>
   <aura:attribute name="updateFormCallback" type="object" description="Internal" />
     <aura:attribute name="userSelectedLanguage" type="string" />
-    <aura:attribute name="activeStep" type="integer"/>
   <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
 	
   <div class="{!(!v.notActive ? '' : 'slds-hide ')}"> 
@@ -29,4 +27,4 @@
     </lightning:layout>
   </div>
 
-</aura:component> -->
+</aura:component>

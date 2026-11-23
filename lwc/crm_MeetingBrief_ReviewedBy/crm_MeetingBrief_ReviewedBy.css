@@ -1,0 +1,75 @@
+.custom-container {
+    color: black;
+}
+
+.slds-form-element__control.custom-divider {
+    border-bottom: 1px solid #d8dde6;
+    padding-bottom: 0.5rem;
+}
+
+.slds-dropdown_fluid {
+    position: absolute;
+    width: 400px;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1000;
+    background-color: white;
+    border: 1px solid #d8dde6;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.hover-card-parent {
+    position: relative; /* Ensure the parent is positioned relative for absolute positioning of the card */
+    flex: 1 50%;
+}
+
+.hover-card {
+    position: absolute;
+    top: 100%; /* Position the card directly below the hovered element */
+    left: 0;
+    z-index: 1000;
+    padding: 0 14px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    background-color: white;
+    border-radius: 0.25rem;
+    display: none;
+    width: 300px; /* Adjust width as needed */
+}
+
+.hover-card-parent:hover .hover-card {
+    display: block; /* Show the card on hover */
+}
+
+.user-column {
+    padding: 0.5rem;
+    text-align: center;
+}
+
+.user-pill {
+    display: inline-block;
+    margin: 0.5rem;
+    cursor: pointer;
+}
+
+.avatar-name-container {
+    margin-right: 10px;
+    min-width: 60px;
+    display: flex;
+}
+
+.u-name {
+    width: calc(100% - 30px);
+}
+.a-avatar {
+    width: 30px;
+    min-width: 30px;
+    display: inline-block;
+}
+
+.u-nm {
+    display: inline-block;
+}
+
+.slds-has-divider_bottom {
+    flex-wrap: wrap;
+}

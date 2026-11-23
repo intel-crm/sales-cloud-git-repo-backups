@@ -1,0 +1,91 @@
+<template>
+    <template if:true={valueFromAPex}>
+    <lightning-card>
+        <!--<div class="section-header" onclick={toggleSection}>
+           <div class="slds-theme--shade" style="padding: 5px;">
+               <div class="slds-text-heading_small" onclick={sectionHideUnHide}>
+                    <div if:true={isExpanded} ><lightning-icon icon-name="utility:chevrondown" size="x-small" 
+                        style=" margin-right: 0.55em;margin-left: 0.2em;"></lightning-icon>Preview Fields</div>  
+                     <div if:false={isExpanded}><lightning-icon icon-name="utility:chevronright" size="x-small" style=" margin-right: 0.55em;margin-left: 0.2em;" ></lightning-icon>Preview Fields</div> 
+                  
+                </div>  
+            </div>
+           
+            </div>-->
+            
+         <!--   <div if:true={isExpanded}  >-->
+                <!-- Your section content goes here -->
+           
+       <div  style="padding: 5px;">
+            <div class="slds-text-heading_small" style="margin-top: -1em;margin-top: -1em;
+            margin-left: 0.55em;">
+                
+                 Preview Fields </div>
+                <div style="margin-top: -1.7em;
+                margin-left: 9em;">  <lightning-helptext content="Preview Fields"></lightning-helptext>
+            </div>
+        </div> 
+        <lightning-layout multiple-rows="true" style="margin-top: -0.45em;height: 18em;">
+            <!-- 1st Row -->
+            <lightning-layout-item style="padding: 14px 14px 0px 14px;"  size="6" large-device-size="6" medium-device-size="6"
+            small-device-size="12">
+               <!-- <lightning-input class = "slds-form-element slds-form-element_readonly" type="text" label="Simplified Account Name *English Only" value={MasterAccountName} read-only="true"></lightning-input>-->
+               <div class="slds-form-element slds-form-element_readonly">
+                    <label class="slds-form-element__label">Sales Group Preview</label>
+                    <div class="slds-form-element__control">
+                        <label class="test-id__field-value slds-form-element__static slds-grow word-break-ie11 is-read-only">{salesGroupReview}
+                        </label>
+                    </div>
+               </div>
+            </lightning-layout-item>
+            <lightning-layout-item style="padding: 14px 14px 0px 14px;" size="6" large-device-size="6" medium-device-size="6"
+            small-device-size="12">
+               <!-- <lightning-input class = "slds-form-element slds-form-element_readonly" type="text" label="Simplified Local Language Name" value={localName} readonly="true"></lightning-input>-->
+               <div class="slds-form-element slds-form-element_readonly">
+                    <span class="slds-form-element__label">Account Owner Preview</span>
+                    <div class="slds-form-element__control">
+                        <div class="slds-form-element__static">{accountOwnerPreview}
+                        </div>
+                    </div>
+               </div>
+            </lightning-layout-item>
+
+            <!-- 2nd row-->
+            <lightning-layout-item style="padding: 0px 14px 0px 14px;" size="6" large-device-size="6" medium-device-size="6"
+            small-device-size="12">
+              <!--  <lightning-input  class = "slds-form-element slds-form-element_readonly" type="text" label="Unified Hierarchy" value={unifiedHierarchy} readonly="true" ></lightning-input>-->
+              <div class="slds-form-element slds-form-element_readonly">
+                <span class="slds-form-element__label">Semi-Annual Account Category Preview</span>
+                <div class="slds-form-element__control">
+                    <div class="slds-form-element__static">{semiAccountCategoryPreview}
+                    </div>
+                </div>
+           </div>
+            </lightning-layout-item>
+            <lightning-layout-item style="padding: 0px 14px 0px 14px;" size="6" large-device-size="6" medium-device-size="6"
+            small-device-size="12">
+              <!--  <lightning-input  class = "slds-form-element slds-form-element_readonly" type="text" label="Unified Hierarchy" value={unifiedHierarchy} readonly="true" ></lightning-input>-->
+              <div class="slds-form-element slds-form-element_readonly">
+                <span class="slds-form-element__label">Account Primary Coverage Preview</span>
+                <div class="slds-form-element__control">
+                    <div class="slds-form-element__static">{accountPrimaryCoveragePreview}
+                    </div>
+                </div>
+           </div>
+            </lightning-layout-item>
+            <lightning-layout-item style="padding: 0px 14px 0px 14px;" size="6" large-device-size="6" medium-device-size="6"
+            small-device-size="12">
+              <!--  <lightning-input class = "slds-form-element slds-form-element_readonly" type="text" label="Unified Customer Type" value={customerAggType} readonly="true"></lightning-input>-->
+              <div class="slds-form-element slds-form-element_readonly">
+                <span class="slds-form-element__label">GTM Model Preview</span>
+                <div class="slds-form-element__control">
+                    <div class="slds-form-element__static">{gtmModelReview}
+                    </div>
+                </div>
+           </div>
+            </lightning-layout-item>
+
+          
+
+
+        </lightning-layout> </lightning-card></template></template>

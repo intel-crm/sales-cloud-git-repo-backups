@@ -4,7 +4,7 @@
     <protected>false</protected>
     <values>
         <field>PRM_Country_Cd__c</field>
-        <value xsi:type="xsd:string">kr</value>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>PRM_Country__c</field>

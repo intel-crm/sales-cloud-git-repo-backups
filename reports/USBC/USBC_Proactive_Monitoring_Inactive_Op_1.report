@@ -126,7 +126,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>cook,haynes,gordon,weston,descheemaeker,o&apos;donnell,swanger,herrmann,wood</value>
+            <value>cook,haynes,gordon,weston,descheemaeker,o&apos;donnell,swanger,mushahwar,herrmann,rodman,wood</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FULL_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>benjamin miller,gregory thomson,zackary smiley,baltazar ruiz</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -172,6 +179,6 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <interval>INTERVAL_CUSTOM</interval>
     </timeFrameFilter>
 </Report>

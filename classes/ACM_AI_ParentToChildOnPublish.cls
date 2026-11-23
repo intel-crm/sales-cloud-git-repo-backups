@@ -22,18 +22,17 @@ public without sharing class ACM_AI_ParentToChildOnPublish implements UCD_ACM_Se
         return userInfo.getUserId() == Label.UCD_ACM_ReltioUser;
     }
     private List<Account> getChildAccountColl() {
-        List<Account> childAccounts;
-        if (Schema.sObjectType.Account.fields.Core_Parent_Business_Party_Id__c.isAccessible() &&
-        Schema.sObjectType.Account.fields.ParentId.isAccessible()){
-        childAccounts= [
+        List<Account> childAccounts= [
             Select Id, RecordTypeId, Core_Parent_Business_Party_Id__c, ParentId
             From Account
             Where ParentId = null 
             AND RecordTypeId =: dealAccountRTId
-            AND Core_Parent_Business_Party_Id__c IN:parentAccountByBPID.keySet()
+            AND Core_Customer_Aggregation_Type__c != null
+            AND Core_Business_Party_Id__c != null
+            AND Core_Parent_Business_Party_Id__c IN:parentAccountByBPID.keySet() LIMIT 100 
         ];
-        }
-        return childAccounts;
+        System.debug('$#@childAccounts '+childAccounts);
+        return childAccounts; 
     }
 
     private void setParentToChildAccount(UCD_ACM_UnitOfWork unitOfWork, List<Account> childAccounts) {

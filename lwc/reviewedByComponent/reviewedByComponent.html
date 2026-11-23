@@ -1,0 +1,35 @@
+<template>
+    <template if:true={isEditMode}>
+        <lightning-input type="search" placeholder="Search People..." label="Reviewed by"
+            value={searchTerm} onchange={handleSearchChange}>
+        </lightning-input>
+        <template if:true={showDropdown}>
+            <ul class="slds-dropdown slds-dropdown_fluid">
+                <template for:each={filteredUsers} for:item="user">
+                    <li key={user.Id} class="slds-dropdown__item"
+                        onclick={handleUserSelect} data-id={user.Id} data-name={user.Name}>
+                        <span class="slds-media__figure">
+                            <lightning-icon icon-name="standard:user" size="small" alternative-text="User"></lightning-icon>
+                        </span>
+                        <span>{user.Name}</span>
+                    </li>
+                </template>
+            </ul>
+        </template>
+        <template for:each={selectedUsers} for:item="user">
+            <span key={user.Id} class="slds-pill">
+                <span class="slds-pill__label">{user.Name}</span>
+                <button class="slds-button slds-button_icon" onclick={handleRemoveUser} data-id={user.Id}>
+                    <lightning-icon icon-name="utility:close" size="xx-Small" alternative-text="Remove"></lightning-icon>
+                </button>
+            </span>
+        </template>
+    </template>
+    <template if:false={isEditMode}>
+        <template for:each={selectedUsers} for:item="user">
+            <span key={user.Id} class="slds-pill">
+                <span class="slds-pill__label">{user.Name}</span>
+            </span>
+        </template>
+    </template>
+</template>

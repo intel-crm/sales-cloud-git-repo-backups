@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>COMTEGRA S.A. Partner User</description>
+    <description>COMTEGRA SP. Z O.O. Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>COMTEGRA S.A. Partner User</name>
+    <name>COMTEGRA SP. Z O.O. Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>COMTEGRASPZOOPartnerManager</parentRole>
 </Role>

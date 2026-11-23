@@ -151,14 +151,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
-            <value>SBQQ__Quote__c.Pricing_Tender_Client_Quote_Create,SBQQ__Quote__c.Pricing_Tender_Quote_Create,SBQQ__Quote__c.Pricing_Tender_Client_Quote_Edit,SBQQ__Quote__c.Pricing_Tender_Client_Quote_ReadOnly,SBQQ__Quote__c.Pricing_Tender_Client_Quote_Submitted,SBQQ__Quote__c.Pricing_Tender_Quote_Edit,SBQQ__Quote__c.Pricing_Tender_Quote_ReadOnly,SBQQ__Quote__c.Pricing_Tender_Quote_Submitted,SBQQ__Quote__c.Pricing_Small_Volume_Quote_Create</value>
+            <value>SBQQ__Quote__c.Pricing_Tender_Client_Quote_Create,SBQQ__Quote__c.Pricing_Tender_Quote_Create,SBQQ__Quote__c.Pricing_Financial_Incentive_Create,SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Read_Only,SBQQ__Quote__c.Pricing_Financial_Incentive_Quote_Submitted,SBQQ__Quote__c.Pricing_Tender_Client_Quote_Edit,SBQQ__Quote__c.Pricing_Tender_Client_Quote_ReadOnly,SBQQ__Quote__c.Pricing_Tender_Client_Quote_Submitted,SBQQ__Quote__c.Pricing_Tender_Quote_Edit,SBQQ__Quote__c.Pricing_Tender_Quote_ReadOnly,SBQQ__Quote__c.Pricing_Tender_Quote_Submitted,SBQQ__Quote__c.Pricing_Small_Volume_Quote_Create</value>
         </criteriaItems>
         <criteriaItems>
             <column>SBQQ__Quote__c$Pricing_Program_Type_Nm__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
-            <value>Client,Data Center,Small Volume Quotes - Data Center Xeon® CPU</value>
+            <value>Client,Data Center,Financial Incentive,Small Volume Quotes - Data Center Xeon® CPU</value>
         </criteriaItems>
         <criteriaItems>
             <column>SBQQ__Quote__c$Pricing_On_Hold_Cb__c</column>

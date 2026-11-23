@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>Guidecom. Co., Ltd. Partner User</description>
+    <description>LCDZONE Corporation Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>Guidecom. Co., Ltd. Partner User</name>
+    <name>LCDZONE Corporation Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>LCDZONECorporationPartnerManager</parentRole>
 </Role>

@@ -192,18 +192,6 @@
         <type>Checkbox</type>
     </fields>
     <label>Message log</label>
-    <listViews>
-        <fullName>All</fullName>
-        <columns>NAME</columns>
-        <columns>PRM_Message_Id__c</columns>
-        <columns>PRM_Contact_Id__c</columns>
-        <columns>PRM_Inactive_Ind__c</columns>
-        <columns>PRM_Message_Viewed_Ind__c</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>UPDATEDBY_USER</columns>
-        <filterScope>Everything</filterScope>
-        <label>All</label>
-    </listViews>
     <nameField>
         <displayFormat>ML-{0000}</displayFormat>
         <label>Message Log Name</label>

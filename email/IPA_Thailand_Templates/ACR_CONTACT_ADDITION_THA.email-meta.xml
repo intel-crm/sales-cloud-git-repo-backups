@@ -1,33 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
-    <available>false</available>
+    <available>true</available>
     <encodingKey>UTF-8</encodingKey>
     <name>ACR_CONTACT_ADDITION_THA</name>
     <style>none</style>
-    <subject>เพิ่มผู้ใช้ใหม่ในบัญชีผู้ใช้ Intel® Partner Alliance แล้ว</subject>
-    <textOnly>ยืนยันรายละเอียดบัญชี
+    <subject>มีผู้ใช้ใหม่ถูกเพิ่มลงในบัญชีโปรแกรมพันธมิตร Intel ของคุณ</subject>
+    <textOnly>An individual has been added to the Intel Partner program account of {!Account.Name} by an Intel representative or another contact at your company.
 
-{!UserName},
+Company Name: {!Account.Name}
+Contact Added: Login ID {!ContactLoginId} with e-mail {!ContactEmail}
+Relationship (Role): {!AcrRoles}
 
-พนักงานของ Intel หรือผู้ติดต่ออื่นในบริษัทของคุณได้เพิ่มผู้ใช้ใน {!Account.Name} ของบัญชี Intel® Partner Alliance แล้ว
+If you do not approve of this update, please login to remove the user. 
 
-ชื่อบริษัท: {!Account.Name}
-ID ธุรกิจ: {!Account.AccountNumber}
-เพิ่มข้อมูลติดต่อแล้ว: อีเมล {!ContactEmail}
-ความสัมพันธ์ (บทบาท): {!AcrRoles}
+(Link on login for both FPGA and CSP-
+https://ssl.intel.com/content/www/us/en/secure/my-intel/dashboard.html)
 
-หากคุณยังไม่ได้อนุมัติการอัพเดตนี้ โปรด ล็อกอิน เพื่อลบผู้ติดต่อ
-
-หากคุณมีคำถามใดๆ โปรดติดต่อเราที่ https://signin.intel.com/ContactUs?Culture=th-th
-
-
-ขอขอบคุณ
-ทีม Intel® Partner Alliance ของคุณ
-
-ข้อความนี้ถูกส่งถึงคุณเพื่อใช้เป็นการสื่อสารทางธุรกิจที่สำคัญที่เกี่ยวข้องกับความสัมพันธ์ในปัจจุบันของคุณกับ Intel® Partner Alliance
-© {!$Label.PRM_CurrentYear} Intel Corporation
-Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA  www.intel.com
-ความเป็นส่วนตัว | คุ้กกี้</textOnly>
+Questions? Contact Support here (link).
+Support links:
+for CSP- https://www.intel.com/content/www/us/en/partner/cloud-insider/forms/support.html
+for FPGA: https://signin.intel.com/ContactUs?Culture=en-US</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

@@ -34,8 +34,20 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
-                <componentName>crm_quoteLineRelatedList</componentName>
-                <identifier>c_crm_quoteLineRelatedList</identifier>
+                <componentInstanceProperties>
+                    <name>relatedListComponentOverride</name>
+                    <value>NONE</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>rowsToDisplay</name>
+                    <value>10</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showActionBar</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentName>force:relatedListContainer</componentName>
+                <identifier>force_relatedListContainer</identifier>
             </componentInstance>
         </itemInstances>
         <mode>Replace</mode>
@@ -45,29 +57,14 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
-                <componentInstanceProperties>
-                    <name>decorate</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>richTextValue</name>
-                    <value>&lt;p&gt;&lt;strong style=&quot;color: rgb(240, 2, 2); font-size: 12px;&quot;&gt;&lt;em&gt;Intel will review Sales Price as part of the design registration review process, in order to accurately calculate the value of the design registration. Intel will not provide input or guidance on the Sales Price, which will/must be inputted by the Distributor registering the design. Submission of the Sales Price does not constitute agreement on or endorsement of that price by Intel, and it will not affect the price offered by Intel to the Distributor.&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:richText</componentName>
-                <identifier>flexipage_richText</identifier>
-                <visibilityRule>
-                    <criteria>
-                        <leftValue>{!$Permission.CustomPermission.DDR_Internal_Users}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>true</rightValue>
-                    </criteria>
-                </visibilityRule>
+                <componentName>force:detailPanel</componentName>
+                <identifier>force_detailPanel</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
             <componentInstance>
-                <componentName>core_ReadOnly_FieldSet_Form</componentName>
-                <identifier>c_core_ReadOnly_FieldSet_Form</identifier>
+                <componentName>core_opportunityproduct_listprice</componentName>
+                <identifier>c_core_opportunityproduct_listprice</identifier>
             </componentInstance>
         </itemInstances>
         <mode>Replace</mode>

@@ -1,12 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Send_Email_Alert_for_Approval</name>
+        <label>Send Email Alert for Approval</label>
+        <locationX>50</locationX>
+        <locationY>431</locationY>
+        <actionName>Core_Design_Registration__c.Core_DDR_Notify_Design_Owner_On_Approval</actionName>
+        <actionType>emailAlert</actionType>
+        <connector>
+            <targetReference>Update_record_type_to_locked</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Core_Design_Registration__c.Core_DDR_Notify_Design_Owner_On_Approval</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <name>Send_Email_on_Rejection</name>
+        <label>Send Email on Rejection</label>
+        <locationX>314</locationX>
+        <locationY>431</locationY>
+        <actionName>Core_Design_Registration__c.Core_DDR_Notify_Design_Owner_On_Rejection</actionName>
+        <actionType>emailAlert</actionType>
+        <connector>
+            <targetReference>Update_record_type_to_locked</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Core_Design_Registration__c.Core_DDR_Notify_Design_Owner_On_Rejection</nameSegment>
+    </actionCalls>
     <apiVersion>55.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <decisions>
         <name>Send_Email_Alert_for_Approve_Or_Reject</name>
         <label>Send Email Alert for Approve Or Reject</label>
-        <locationX>389</locationX>
-        <locationY>397</locationY>
+        <locationX>798</locationX>
+        <locationY>323</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>If_Status_is_Approved</name>
@@ -26,7 +64,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Update_record_type_to_locked</targetReference>
+                <targetReference>Send_Email_Alert_for_Approval</targetReference>
             </connector>
             <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
             <label>If Status is Approved</label>
@@ -49,7 +87,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Update_record_type_to_locked</targetReference>
+                <targetReference>Send_Email_on_Rejection</targetReference>
             </connector>
             <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
             <label>If Status is Rejected</label>
@@ -156,12 +194,40 @@
             <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
             <label>If user&apos;s Profile Name does not contain Partner</label>
         </rules>
+        <rules>
+            <name>If_Deal_Status_is_Rejected</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_Design_Registration_Status_Nm__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Rejected</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PCC_Registration_Type__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>Deal</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_record_type_deal_registration_locked</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>If Deal Status is Rejected</label>
+        </rules>
     </decisions>
     <environments>Default</environments>
     <formulas>
         <name>c_Core_DDR_Design_Locked_Record_Type_ID</name>
         <dataType>String</dataType>
         <expression>{!$Label.Core_DDR_Design_Locked_Record_Type_ID}</expression>
+    </formulas>
+    <formulas>
+        <name>PCC_Deal_Registration_Locked</name>
+        <dataType>String</dataType>
+        <expression>{!$Label.PCC_Deal_Registration_Locked}</expression>
     </formulas>
     <interviewLabel>Design Registration {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Design Registration Actions</label>
@@ -174,7 +240,7 @@
     <processMetadataValues>
         <name>CanvasMode</name>
         <value>
-            <stringValue>FREE_FORM_CANVAS</stringValue>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
         </value>
     </processMetadataValues>
     <processMetadataValues>
@@ -185,10 +251,31 @@
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <recordUpdates>
+        <name>Update_record_type_deal_registration_locked</name>
+        <label>Update record type deal registration locked</label>
+        <locationX>1282</locationX>
+        <locationY>431</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>RecordTypeId</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <elementReference>PCC_Deal_Registration_Locked</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>RecordTypeId</field>
+            <value>
+                <elementReference>PCC_Deal_Registration_Locked</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
         <name>Update_Record_Type_to_Design_Registration_Intel</name>
         <label>Update Record Type to Design Registration - Intel</label>
-        <locationX>125</locationX>
-        <locationY>582</locationY>
+        <locationX>1018</locationX>
+        <locationY>431</locationY>
         <inputAssignments>
             <field>RecordTypeId</field>
             <value>
@@ -200,8 +287,8 @@
     <recordUpdates>
         <name>Update_record_type_to_locked</name>
         <label>Update record type to locked</label>
-        <locationX>602</locationX>
-        <locationY>636</locationY>
+        <locationX>798</locationX>
+        <locationY>731</locationY>
         <filterLogic>and</filterLogic>
         <filters>
             <field>RecordTypeId</field>
@@ -221,8 +308,8 @@
     <recordUpdates>
         <name>Update_RecordType_to_Design_Registration_Partner</name>
         <label>Update RecordType to Design Registration - Partner</label>
-        <locationX>75</locationX>
-        <locationY>405</locationY>
+        <locationX>754</locationX>
+        <locationY>431</locationY>
         <inputAssignments>
             <field>RecordTypeId</field>
             <value>
@@ -232,12 +319,13 @@
         <inputReference>$Record</inputReference>
     </recordUpdates>
     <start>
-        <locationX>271</locationX>
-        <locationY>137</locationY>
+        <locationX>672</locationX>
+        <locationY>0</locationY>
         <connector>
             <targetReference>Send_Email_Alert_for_Approve_Or_Reject</targetReference>
         </connector>
         <filterFormula>AND (
+CONTAINS({!$Record__Prior.RecordType.DeveloperName}, &apos;Design&apos;),
     OR (
         ISCHANGED({!$Record.Core_Design_Registration_Status_Nm__c}) ,
 {!$Record.RecordTypeId} = {!$Label.Core_DDR_Design_Locked_Record_Type_ID}

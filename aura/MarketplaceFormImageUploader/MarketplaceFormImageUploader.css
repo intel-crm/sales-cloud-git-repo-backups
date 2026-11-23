@@ -23,17 +23,12 @@
     border: none;
 }
 
-.THIS .slds-truncate {
-    white-space: break-spaces;
-}
-
 .THIS .minImageDisplayWidth {
     min-width: 300px;
 }
 
 .THIS .borderDashed {
     border: 1px dashed t(lightGray);
-    overflow-wrap: anywhere;
 }
 
 .THIS .slds-file-selector, .THIS .slds-file-selector__dropzone,
@@ -62,18 +57,6 @@
 .THIS .slds-file-selector__button {
     margin: 20px 95px;
     color: t(progressBarBlue);
-}
-
-.THIS [data-disabled="true"] lightning-file-upload {
-    pointer-events: none;
-}
-
-.THIS .slds-file-selector__input[disabled] ~ .slds-file-selector__body > .slds-file-selector__button {
-    color: var(--carbon-shade1, #525252);
-}
-
-.THIS .slds-icon-utility-download .slds-icon, .THIS .slds-icon-utility-delete .slds-icon {
-    fill: var(--sds-c-icon-color-foreground-default, var(--lwc-colorTextIconDefault,rgb(107, 109, 112)));
 }
 
 /* Images */
@@ -114,8 +97,4 @@
     .THIS .slds-show_inline-block {
         display: block;
     }
-}
-
-.THIS .altTextDisclaimer {
-    font-size: 0.65rem;
 }

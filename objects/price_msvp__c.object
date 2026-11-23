@@ -128,11 +128,14 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <type>Default</type>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>MSVP_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <formFactor>Large</formFactor>
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
@@ -334,7 +337,9 @@
     <listViews>
         <fullName>All</fullName>
         <columns>NAME</columns>
+        <columns>core_cpq_product_nm__c</columns>
         <columns>core_cpq_product_opn__c</columns>
+        <columns>core_cpq_isactive__c</columns>
         <columns>price_prototype_amt__c</columns>
         <columns>price_250u_y_amt__c</columns>
         <columns>price_500u_y_amt__c</columns>
@@ -346,11 +351,11 @@
         <columns>price_level_2_amt__c</columns>
         <columns>core_cpq_effective_date_dt__c</columns>
         <columns>CREATED_DATE</columns>
-        <columns>core_cpq_product_nm__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
-            <field>core_cpq_product_nm__c</field>
-            <operation>contains</operation>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>price_msvp__c.PSG_MSVP_Record_Type</value>
         </filters>
         <label>All</label>
     </listViews>
@@ -358,6 +363,7 @@
         <fullName>FPGA_Product_s_MSVP</fullName>
         <columns>NAME</columns>
         <columns>core_cpq_product_opn__c</columns>
+        <columns>core_cpq_isactive__c</columns>
         <columns>price_prototype_amt__c</columns>
         <columns>price_250u_y_amt__c</columns>
         <columns>price_500u_y_amt__c</columns>
@@ -380,11 +386,6 @@
             <field>core_cpq_effective_date_dt__c</field>
             <operation>lessOrEqual</operation>
             <value>NEXT_N_YEARS:5</value>
-        </filters>
-        <filters>
-            <field>core_cpq_product_opn__c</field>
-            <operation>contains</operation>
-            <value>5CSXFC6D6F31I7N</value>
         </filters>
         <label>01 - MSVP (NEXT 05 years)</label>
         <sharedTo>

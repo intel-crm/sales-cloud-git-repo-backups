@@ -141,7 +141,16 @@
         <type>Default</type>
     </actionOverrides>
     <allowInChatterGroups>true</allowInChatterGroups>
-    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <compactLayoutAssignment>Core_Opportunity_KPI_Compact</compactLayoutAssignment>
+    <compactLayouts>
+        <fullName>Core_Opportunity_KPI_Compact</fullName>
+        <fields>Core_isDeleted__c</fields>
+        <fields>Core_KPI_Achieved__c</fields>
+        <fields>Core_KPI_Opportunity__c</fields>
+        <fields>Core_KPI_Quantity__c</fields>
+        <fields>Core_KPI_Total_Price__c</fields>
+        <label>Opportunity KPI Compact</label>
+    </compactLayouts>
     <deploymentStatus>Deployed</deploymentStatus>
     <description>This Object is used in the New Architecture with Azure Integration.</description>
     <enableActivities>true</enableActivities>
@@ -153,7 +162,7 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <externalSharingModel>Private</externalSharingModel>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
     <fields>
         <fullName>Core_Batch_Time__c</fullName>
         <label>Batch Time</label>
@@ -210,6 +219,29 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Core_KPI_Current_Status__c</fullName>
+        <label>KPI Current Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Is KPI Refresh</fullName>
+                    <default>false</default>
+                    <label>Is KPI Refresh</label>
+                </value>
+                <value>
+                    <fullName>Is KPI Failed</fullName>
+                    <default>false</default>
+                    <label>Is KPI Failed</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
         <fullName>Core_KPI_Description__c</fullName>
         <label>KPI Description</label>
         <length>131072</length>
@@ -232,15 +264,16 @@
     </fields>
     <fields>
         <fullName>Core_KPI_Opportunity__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
         <label>KPI Opportunity</label>
         <referenceTo>Opportunity</referenceTo>
         <relationshipLabel>Opportunity KPI</relationshipLabel>
         <relationshipName>KPI_Opportunity</relationshipName>
-        <required>false</required>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
-        <type>Lookup</type>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
     </fields>
     <fields>
         <fullName>Core_KPI_Quantity__c</fullName>
@@ -365,9 +398,9 @@
             <valueSetDefinition>
                 <sorted>false</sorted>
                 <value>
-                    <fullName>Salesforce Opp KPI Product Group Count</fullName>
+                    <fullName>Salesforce Pipeline Opp Count</fullName>
                     <default>false</default>
-                    <label>Salesforce Opp KPI Product Group Count</label>
+                    <label>Salesforce Pipeline Opp Count</label>
                 </value>
                 <value>
                     <fullName>Salesforce Pipeline $</fullName>
@@ -375,14 +408,14 @@
                     <label>Salesforce Pipeline $</label>
                 </value>
                 <value>
-                    <fullName>Salesforce Pipeline Opp Count</fullName>
-                    <default>false</default>
-                    <label>Salesforce Pipeline Opp Count</label>
-                </value>
-                <value>
                     <fullName>Salesforce Pipeline Units</fullName>
                     <default>false</default>
                     <label>Salesforce Pipeline Units</label>
+                </value>
+                <value>
+                    <fullName>Salesforce Production Win Opp Count</fullName>
+                    <default>false</default>
+                    <label>Salesforce Production Win Opp Count</label>
                 </value>
                 <value>
                     <fullName>Salesforce Production Win $</fullName>
@@ -390,9 +423,9 @@
                     <label>Salesforce Production Win $</label>
                 </value>
                 <value>
-                    <fullName>Salesforce Production Win Opp Count</fullName>
+                    <fullName>Salesforce Opp KPI Product Group Count</fullName>
                     <default>false</default>
-                    <label>Salesforce Production Win Opp Count</label>
+                    <label>Salesforce Opp KPI Product Group Count</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -494,14 +527,18 @@
     </fields>
     <label>Opportunity KPI</label>
     <listViews>
-        <fullName>TODAY</fullName>
+        <fullName>All</fullName>
         <columns>NAME</columns>
+        <columns>Core_IsActive__c</columns>
         <columns>Core_KPI_Opportunity__c</columns>
+        <columns>Core_KPI_Achieved__c</columns>
+        <columns>Core_KPI_Record_Id__c</columns>
+        <columns>Core_KPI_Opportunity_Product_Name__c</columns>
         <columns>CREATEDBY_USER</columns>
         <columns>CREATED_DATE</columns>
-        <columns>LAST_UPDATE</columns>
         <filterScope>Everything</filterScope>
-        <label>TODAY</label>
+        <label>All</label>
+        <language>en_US</language>
     </listViews>
     <nameField>
         <label>Opportunity KPI Name</label>
@@ -510,7 +547,26 @@
     </nameField>
     <pluralLabel>Opportunity KPI</pluralLabel>
     <searchLayouts/>
-    <sharingModel>Private</sharingModel>
+    <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>Core_OPTY_KPI_QuoteSubmittedStatusLock</fullName>
+        <active>true</active>
+        <description>Opportunity KPI Quote Submitted Status Lock check</description>
+        <errorConditionFormula>IF($Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c=TRUE,FALSE,
+AND(
+Core_KPI_Opportunity__r.Core_Opportunity_Lock_Status__c  = true,
+ISPICKVAL( Core_KPI_Opportunity__r.Core_Coverage_Type_Nm__c, &apos;Deal Registration&apos;), ISPICKVAL(Core_KPI_Opportunity__r.Core_Opportunity_Coverage_Nm__c , &apos;Partner-Led Opportunity&apos;)
+ 
+)
+)</errorConditionFormula>
+        <errorMessage>Quote associated to this Opportunity is Submitted for Review. No Edits allowed on Opportunity during the Review process.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>test_Dummy_Validation_Rule</fullName>
+        <active>false</active>
+        <errorConditionFormula>AND( Core_IsActive__c  = true,  ISNEW() )</errorConditionFormula>
+        <errorMessage>Test Dummy Success</errorMessage>
+    </validationRules>
     <visibility>Public</visibility>
     <webLinks>
         <fullName>Core_Opportunity_Credit</fullName>
@@ -523,6 +579,19 @@
         <protected>false</protected>
         <requireRowSelection>true</requireRowSelection>
         <url>{!URLFOR(&apos;/apex/Core_Opportunity_Credit?Id=&apos;&amp;  Opportunity.Id   , null)}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Refresh_KPI_LWC</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Refresh KPI LWC</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>{!URLFOR(&apos;/lightning/cmp/c__crm_RefreshKPIs?c__Id=&apos;&amp; Opportunity.Id , null)}</url>
     </webLinks>
     <webLinks>
         <fullName>Refresh_KPIs</fullName>

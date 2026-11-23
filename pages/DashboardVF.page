@@ -1,0 +1,9 @@
+<apex:page >
+
+       <apex:form >
+
+            <apex:commandButton value="Print" onclick="window.print();"/>
+
+        </apex:form>
+<apex:iframe src="/dashboard/01ZDf000000lTQ5MAM" width="100%" height="800px" />
+</apex:page>

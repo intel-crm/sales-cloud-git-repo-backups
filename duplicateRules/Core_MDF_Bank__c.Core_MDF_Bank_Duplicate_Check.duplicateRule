@@ -10,7 +10,7 @@
         <matchingRule>Core_MDF_Bank_Duplicate_Check_matching_rule</matchingRule>
         <objectMapping xsi:nil="true"/>
     </duplicateRuleMatchRules>
-    <isActive>false</isActive>
+    <isActive>true</isActive>
     <masterLabel>Core_MDF_Bank_Duplicate_Check</masterLabel>
     <securityOption>BypassSharingRules</securityOption>
     <sortOrder>1</sortOrder>

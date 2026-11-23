@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPlugin xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aiPluginUtterances>
+        <developerName>utterance_giveasumma0</developerName>
+        <language>en_US</language>
+        <masterLabel>utterance_giveasumma0</masterLabel>
+        <utterance>Give a summary of debug logs generated for processOpportunity</utterance>
+    </aiPluginUtterances>
+    <canEscalate>false</canEscalate>
+    <description>This topic gives the summary of governor limits, used soql queries and apex methods from apex debug logs. It handles user requests specific to an apex debug log for a specific starting method or general enquiries.</description>
+    <developerName>Apex_Debug_Log_Summary</developerName>
+    <genAiFunctions>
+        <functionName>EmployeeCopilot__GetRecordDetails</functionName>
+    </genAiFunctions>
+    <genAiFunctions>
+        <functionName>Get_debug_logs</functionName>
+    </genAiFunctions>
+    <genAiFunctions>
+        <functionName>EmployeeCopilot__IdentifyRecordByName</functionName>
+    </genAiFunctions>
+    <genAiPluginInstructions>
+        <description>Never ask user for any input whenever user asks for any specific apex debug log info. Always fetch it from the json output from  Get_debug_logs action. Make sure to display just one record.</description>
+        <developerName>instruction_neveraskus0</developerName>
+        <language>en_US</language>
+        <masterLabel>instruction_neveraskus0</masterLabel>
+        <sortOrder>0</sortOrder>
+    </genAiPluginInstructions>
+    <genAiPluginInstructions>
+        <description>Summarise the output from Get_debug_logs action which will be in json format. Give overall summary to the user. DO NOT show the complete set of records, understand the patter of  change and show just the summary</description>
+        <developerName>instruction_summariset1</developerName>
+        <language>en_US</language>
+        <masterLabel>instruction_summariset1</masterLabel>
+        <sortOrder>0</sortOrder>
+    </genAiPluginInstructions>
+    <genAiPluginInstructions>
+        <description>When user requests summary of a debug log, user Get_debug_logs action to get all the matching debug logs with the given name input</description>
+        <developerName>instruction_whenuserre2</developerName>
+        <language>en_US</language>
+        <masterLabel>instruction_whenuserre2</masterLabel>
+        <sortOrder>0</sortOrder>
+    </genAiPluginInstructions>
+    <language>en_US</language>
+    <masterLabel>Apex Debug Log Summary</masterLabel>
+    <pluginType>Topic</pluginType>
+    <scope>Your job is to give a summary of an apex debug log which includes governor limits, used soql queries and apex methods</scope>
+</GenAiPlugin>

@@ -37,6 +37,10 @@
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- Linked_Opp_Key --></label>
+        <name>CRM_Linked_Opp_Key__c</name>
+    </fields>
+    <fields>
         <help><!-- Displayed list of opportunities are linked TO current opportunity --></help>
         <label><!-- Opportunity Linked To --></label>
         <name>CRM_Linked_Opportunity__c</name>
@@ -54,7 +58,15 @@
     </fields>
     <startsWith>Consonant</startsWith>
     <validationRules>
+        <errorMessage><!-- Opportunity From Cannot be blank on click of save and new button --></errorMessage>
+        <name>CRM_Restrict_Creation_For_Save_And_New</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- You cannot modify this record since it is created through Renewal. --></errorMessage>
         <name>CRM_Restrict_Deletion_for_Renewed_Opp</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Your are not allowed to create Linked Opportunity. --></errorMessage>
+        <name>isAllowedToCreateLinkedOppt</name>
     </validationRules>
 </CustomObjectTranslation>

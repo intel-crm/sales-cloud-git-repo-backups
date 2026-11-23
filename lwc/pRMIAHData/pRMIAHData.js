@@ -89,7 +89,6 @@ export default class DatatableUpdateExample extends LightningElement {
     @track error;
     @track globalMap = new Map();
     @track globalCommentMap = new Map();
-    @track globalSuppressEmailMap = new Map();
     @api specialty;
     @api recordId;
     @track confirmscreen = false;
@@ -98,7 +97,6 @@ export default class DatatableUpdateExample extends LightningElement {
     @track critMap = [];
     @track critListMap = [];
     @track stringValofGlobalCommentMap = [];
-    @track stringValofGlobalSuppressEmailMap = [];
     @track singleRecChecked = false;
     @track headercheckboxval = true;
     @track accIdCheckedMap = new Map();
@@ -106,7 +104,6 @@ export default class DatatableUpdateExample extends LightningElement {
     @track showSelectPartner = false;
     @track checked = false;
     @track lstcommentschngAccId = [];
-    @track lstSuppressEmailchngAccId = [];
     @track size = 0;
     @track selectedrows = [];
     @track showcheckboxInConfSc = false;
@@ -135,6 +132,8 @@ export default class DatatableUpdateExample extends LightningElement {
     // @track isSpinnerLoaded = false;    
     // @track isSpCritSelected = true;
     // @track lstOfWrapperRecToDelete = [];    
+
+
     connectedCallback() {
         this.searchData = [];
         this.isSearchData = false;
@@ -147,12 +146,16 @@ export default class DatatableUpdateExample extends LightningElement {
         if (this.selectedRecordLst === null || this.selectedRecordLst === undefined || this.selectedRecordLst.length === 0) {
             this.isData = false;
         }
+
     }
+
+
     @wire(fetchCustomSettingValues) custsettingValues({ error, data }) {
         if (data) {
             this.lstOfcustsettingValues = data;
         }
     }
+
     @wire(fetchPendingData, { currentspecialtyId: '$recordId' }) pendingLst({ error, data }) {
         if (data) {
             let nameUrl;
@@ -270,9 +273,6 @@ export default class DatatableUpdateExample extends LightningElement {
             deleteUnselectedSpCrit({ specialtyId: this.recordId, currentaccId: accIdToDeleteSpCrit, partnerRole: currentPartnerRole, spCritId: lstToDeleteUnselectedSpCrit })
         }
     }
-    //mapSuppressEmailValueChange
-    //mapCommentValueChange
-
     mapCommentValueChange(event) {
         var mapOfComment = new Map(event.detail);
         for (let accKey of mapOfComment.keys()) {
@@ -282,34 +282,8 @@ export default class DatatableUpdateExample extends LightningElement {
             }
             this.stringValofGlobalCommentMap = JSON.stringify(Array.from(this.globalCommentMap.entries()));
         }
-        //alert('globalCommentMap###'+JSON.stringify(this.globalCommentMap));
-        //alert('stringValofGlobalCommentMap'+JSON.stringify(this.stringValofGlobalCommentMap));
     }
-    mapSuppressEmailValueChange(event) {
-        var mapOfSuppressEmail = new Map(event.detail);
-        for (let accKey of mapOfSuppressEmail.keys()) {
-            this.lstSuppressEmailchngAccId.push(accKey);
-            for (let suppressEmailValues of mapOfSuppressEmail.values()) {
-                this.globalSuppressEmailMap.set(accKey, suppressEmailValues);
-            }
-            this.stringValofGlobalSuppressEmailMap = JSON.stringify(Array.from(this.globalSuppressEmailMap.entries()));
-        }
-        //alert('stringValofGlobalSuppressEmailMap'+JSON.stringify(this.stringValofGlobalSuppressEmailMap));
 
-    }
-    mapSuppressEmailValueChange(event) {
-        var mapOfSuppressEmail = new Map(event.detail);
-        for (let accKey of mapOfSuppressEmail.keys()) {
-            this.lstSuppressEmailchngAccId.push(accKey);
-            for (let suppressEmailValues of mapOfSuppressEmail.values()) {
-                this.globalSuppressEmailMap.set(accKey, suppressEmailValues);
-            }
-            this.stringValofGlobalSuppressEmailMap = JSON.stringify(Array.from(this.globalSuppressEmailMap.entries()));
-        }
-        //alert('stringValofGlobalSuppressEmailMap'+JSON.stringify(this.stringValofGlobalSuppressEmailMap));
-
-    }
-    
     approvePartners() {
         var optionVal = { label: '', value: '' };
         var message;
@@ -335,22 +309,12 @@ export default class DatatableUpdateExample extends LightningElement {
             }
             this.stringValofGlobalCommentMap = JSON.stringify(Array.from(this.globalCommentMap.entries()));
 
-            for(let i =0; i <this.selectedRecordLst.length; i++){
-                if (this.lstSuppressEmailchngAccId.length === 0) {
-                    this.globalSuppressEmailMap.set(this.selectedRecordLst[i].id, false);
-                }
-                if (this.lstSuppressEmailchngAccId.length > 0 && this.lstSuppressEmailchngAccId.indexOf(this.selectedRecordLst[i].id) < 0) {
-                    this.globalSuppressEmailMap.set(this.selectedRecordLst[i].id, false);
-                }
-            }
-            this.stringValofGlobalSuppressEmailMap =JSON.stringify(Array.from(this.globalSuppressEmailMap.entries()));
-
             this.critListMap = JSON.stringify((this.critMap));
             console.log('critListMap?????', JSON.stringify(this.critListMap));
             console.log('lstOfSpCritIdsReltoSp approve>>>', JSON.stringify(this.lstOfSpCritIdsReltoSp));
             //let finallstOfSpCritRelToSp = JSON.stringify(Array.from(this.lstOfSpCritIdsReltoSp));
 
-            insertRelatedRecords({ lstaccIdAndAcm: this.finalAccounts, specialtyId: this.recordId, accCommentsMap: this.stringValofGlobalCommentMap, lstOfTotalSpCritRelSp: this.lstOfSpCritIdsReltoSp,accSuppressEmailMap:this.stringValofGlobalSuppressEmailMap })
+            insertRelatedRecords({ lstaccIdAndAcm: this.finalAccounts, specialtyId: this.recordId, accCommentsMap: this.stringValofGlobalCommentMap, lstOfTotalSpCritRelSp: this.lstOfSpCritIdsReltoSp })
                 .then(result => {
                     if (result === 'Success') {
                         this.dispatchEvent(

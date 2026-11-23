@@ -26,7 +26,7 @@ public class PCC_DealFormValidationTest {
         
         dealRec.Core_First_Customer_Ship_Dt__c = system.today()+21;
         dealRec.Core_Production_End_Dt__c = system.today()+22;
-        dealRec.Core_Intel_Platform_Nm__c='Agilex';
+        dealRec.Core_Intel_Platform_Nm__c='ALDER LAKE';
         dealRec.Core_Design_Registration_Nm__c='Test DR Name Arrow';
         dealRec.Core_Design_Registration_Dsc__c='Test Des';
         dealRec.DDR_Partner_FAE_Email__c = 'test.diqhwqi@test.com';
@@ -53,46 +53,8 @@ public class PCC_DealFormValidationTest {
     @isTest
     static void testGetFileDetails() {
          // Create test data
-        Core_Design_Registration__c dealRec = new  Core_Design_Registration__c();
-        
-        dealRec.Core_Vertical_Market_Nm__c='Education';
-        dealRec.Core_Product_Segment_Nm__c='Client Computing';
-        dealRec.Core_Product_Application_Nm__c='Business Desktop';
-        
-        dealRec.Core_Partner_FAE_Nm__c='Test FAE';
-        dealRec.Core_Partner_FSR_Nm__c='Test FSR';
-        dealRec.Core_End_Customer_Nm__c='Arrow Electronics Account';
-        dealRec.Core_End_Customer_Street_Addr_Line1_Txt__c='12 Street 99';
-        dealRec.Core_End_Customer_Street_Addr_Line2_Txt__c='';
-        dealRec.PCC_End_Customer_Country__c='India';
-        dealRec.Core_End_Customer_City_Nm__c='Bangalore';
-        dealRec.Core_End_Customer_Country_Subdivision_Nm__c='Karnataka';
-        dealRec.Core_End_Customer_Postal_Cd__c='758854';
-        dealRec.Core_End_Customer_Contact_Title_Txt__c='Mr.';
-        dealRec.Core_End_Customer_Contact_Nm__c='Arrow Electronics Partner User 01';
-        dealRec.Core_End_Customer_Contact_Email_Txt__c='arrowelec.partneruser01@marketstar.com';
-        dealRec.Core_End_Customer_Contact_Phone_Txt__c='7826499722';
-        dealRec.Core_Manufacturing_Region_Cd__c='ASMO';
-        
-        dealRec.Core_First_Customer_Ship_Dt__c = system.today()+21;
-        dealRec.Core_Production_End_Dt__c = system.today()+22;
-        dealRec.Core_Intel_Platform_Nm__c='Agilex';
-        dealRec.Core_Design_Registration_Nm__c='Test DR Name Arrow';
-        dealRec.Core_Design_Registration_Dsc__c='Test Des';
-        dealRec.DDR_Partner_FAE_Email__c = 'test.diqhwqi@test.com';
-        dealRec.Core_End_Customer_URL__c = 'Test';
-        dealRec.Core_Design_Registration_Status_Nm__c ='Draft';
-        dealRec.PCC_Pricing_End_Date__c = system.today()-4;
-        dealRec.PCC_Pricing_Start_Date__c = system.today()-2;
-        dealRec.PCC_Deal_Description__c='Test';
-        dealRec.PCC_End_Customer_Use__c='Test';
-        dealRec.PCC_Competition_Assumptions__c='Test';
-        dealRec.PCC_Intel_Response_Requested_By_Date__c=system.today();
-        dealRec.PCC_Proposal_Due_Date__c = system.today()-2;
-        dealRec.Core_Opportunity_Decision_Dt__c = system.today()+2;
-        dealRec.PCC_Consumption_Countries__c='INDIA';
-        dealRec.PCC_Current_EndCustomer_Product_Provider__c='test';
-        insert dealRec; 
+        Core_Design_Registration__c deal1 = new Core_Design_Registration__c();
+        insert deal1;
         
         Blob beforeblob=Blob.valueOf('Unit Test Attachment Body');
         ContentVersion cv1 = new ContentVersion();
@@ -104,52 +66,14 @@ public class PCC_DealFormValidationTest {
         ContentVersion testContent1 = [SELECT id, ContentDocumentId FROM ContentVersion where Id = :cv1.Id];
 
         ContentDocumentLink contentlink1=new ContentDocumentLink();
-        contentlink1.LinkedEntityId=dealRec.id;
+        contentlink1.LinkedEntityId=deal1.id;
         contentlink1.ShareType= 'V';
         contentlink1.ContentDocumentId=testcontent1.ContentDocumentId;
         contentlink1.Visibility = 'AllUsers'; 
         insert contentlink1;
         
-        Core_Design_Registration__c dealRec2 = new  Core_Design_Registration__c();
-        
-        dealRec2.Core_Vertical_Market_Nm__c='Education';
-        dealRec2.Core_Product_Segment_Nm__c='Client Computing';
-        dealRec2.Core_Product_Application_Nm__c='Business Desktop';
-        
-        dealRec2.Core_Partner_FAE_Nm__c='Test FAE deal 2';
-        dealRec2.Core_Partner_FSR_Nm__c='Test FSR deal 2';
-        dealRec2.Core_End_Customer_Nm__c='Arrow Electronics Account deal 2';
-        dealRec2.Core_End_Customer_Street_Addr_Line1_Txt__c='12 Street 99';
-        dealRec2.Core_End_Customer_Street_Addr_Line2_Txt__c='';
-        dealRec2.PCC_End_Customer_Country__c='India';
-        dealRec2.Core_End_Customer_City_Nm__c='Bangalore';
-        dealRec2.Core_End_Customer_Country_Subdivision_Nm__c='Karnataka';
-        dealRec2.Core_End_Customer_Postal_Cd__c='758854';
-        dealRec2.Core_End_Customer_Contact_Title_Txt__c='Mr.';
-        dealRec2.Core_End_Customer_Contact_Nm__c='Arrow Electronics Partner User 01';
-        dealRec2.Core_End_Customer_Contact_Email_Txt__c='arrowelec.partneruser02@marketstar.com';
-        dealRec2.Core_End_Customer_Contact_Phone_Txt__c='7826499722';
-        dealRec2.Core_Manufacturing_Region_Cd__c='ASMO';
-        
-        dealRec2.Core_First_Customer_Ship_Dt__c = system.today()+21;
-        dealRec2.Core_Production_End_Dt__c = system.today()+22;
-        dealRec2.Core_Intel_Platform_Nm__c='Agilex';
-        dealRec2.Core_Design_Registration_Nm__c='Test DR Name Arrow';
-        dealRec2.Core_Design_Registration_Dsc__c='Test Des';
-        dealRec2.DDR_Partner_FAE_Email__c = 'test.diqhwqi2@test.com';
-        dealRec2.Core_End_Customer_URL__c = 'Test';
-        dealRec2.Core_Design_Registration_Status_Nm__c ='Draft';
-        dealRec2.PCC_Pricing_End_Date__c = system.today()-4;
-        dealRec2.PCC_Pricing_Start_Date__c = system.today()-2;
-        dealRec2.PCC_Deal_Description__c='Test';
-        dealRec2.PCC_End_Customer_Use__c='Test';
-        dealRec2.PCC_Competition_Assumptions__c='Test';
-        dealRec2.PCC_Intel_Response_Requested_By_Date__c=system.today();
-        dealRec2.PCC_Proposal_Due_Date__c = system.today()-2;
-        dealRec2.Core_Opportunity_Decision_Dt__c = system.today()+2;
-        dealRec2.PCC_Consumption_Countries__c='INDIA';
-        dealRec2.PCC_Current_EndCustomer_Product_Provider__c='test';
-        insert dealRec2; 
+        Core_Design_Registration__c deal2 = new Core_Design_Registration__c();
+        insert deal2;
         
         ContentVersion cv2 = new ContentVersion();
         cv2.title = 'test content trigger.mp3'; 
@@ -161,48 +85,23 @@ public class PCC_DealFormValidationTest {
 
 
         ContentDocumentLink contentlink2=new ContentDocumentLink();
-        contentlink2.LinkedEntityId=dealRec2.id;
+        contentlink2.LinkedEntityId=deal2.id;
         contentlink2.ShareType= 'V';
         contentlink2.ContentDocumentId=testContent2.ContentDocumentId;
         contentlink2.Visibility = 'AllUsers'; 
         insert contentlink2;
         
         List<string> result = new List<String>();
-        result = PCC_DealFormValidationController.getFileDetails(dealRec.id);
+        result = PCC_DealFormValidationController.getFileDetails(deal1.id);
         System.assertEquals(result.size(),0);
         
         List<String> result1 = new List<String>();
-        result1 = PCC_DealFormValidationController.getFileDetails(dealRec2.id);
+        result1 = PCC_DealFormValidationController.getFileDetails(deal2.id);
         System.assertEquals(result1.size(),1);
    }
     
     @isTest
     static void testApprovalFlow(){
-
-        String sProfileName = 'Standard User';
-
-        String sLastName = 'Test User1';
-        String sAlias = 'tuser1';
-        String sEmail = 'testuser1@intel.com';
-        String sUserName = 'testuser1@intel.com.crm.testclass';
-
-        List<Profile> lstProfiles = null;
-        Id profileId;
-
-        lstProfiles = [SELECT Id FROM Profile WHERE Name = :sProfileName LIMIT 1];
-            if (lstProfiles.size() == 0){
-                profileId = null;
-            }
-            else{
-                profileId = lstProfiles[0].Id;
-            }
-
-
-        User testUser = new User(LastName = sLastName, Alias = sAlias, Email = sEmail, UserName = sUserName, ProfileId = profileId,
-                                     EmailEncodingKey = 'UTF-8', TimeZoneSidKey = 'America/Los_Angeles', LocaleSidKey = 'en_US', LanguageLocaleKey = 'en_US');
-
-        insert testUser;
-
         List<Core_Design_Registration__c> DDRLst = Core_DDR_Utility.createDDR(4);
         DDRLst[0].PCC_Consumption_Countries__c='INDIA';
         DDRLst[1].PCC_Consumption_Countries__c='INDIA';
@@ -212,12 +111,9 @@ public class PCC_DealFormValidationTest {
         DDRLst[1].PCC_Current_EndCustomer_Product_Provider__c='test';
         DDRLst[2].PCC_Current_EndCustomer_Product_Provider__c='test';
         DDRLst[3].PCC_Current_EndCustomer_Product_Provider__c='test';
-         /*DDRLst[3].Core_Accepted_By_Id__c = UserInfo.getUserId();
+         DDRLst[3].Core_Accepted_By_Id__c = UserInfo.getUserId();
          DDRLst[0].Core_Accepted_By_Id__c = UserInfo.getUserId();
-         DDRLst[1].Core_Accepted_By_Id__c = UserInfo.getUserId();*/
-         DDRLst[3].Core_Accepted_By_Id__c = testUser.Id;
-         DDRLst[0].Core_Accepted_By_Id__c = testUser.Id;
-         DDRLst[1].Core_Accepted_By_Id__c = testUser.Id;
+         DDRLst[1].Core_Accepted_By_Id__c = UserInfo.getUserId();
          DDRLst[1].PCC_Approval_Level__c = 'Level 1';
          DDRLst[0].Core_Design_Registration_Status_Nm__c='Draft';
          DDRLst[1].Core_Design_Registration_Status_Nm__c='Draft';
@@ -275,7 +171,7 @@ public class PCC_DealFormValidationTest {
         
         dealRecExc.Core_First_Customer_Ship_Dt__c = system.today()+21;
         dealRecExc.Core_Production_End_Dt__c = system.today()+22;
-        dealRecExc.Core_Intel_Platform_Nm__c='Agilex';
+        dealRecExc.Core_Intel_Platform_Nm__c='ALDER LAKE';
         dealRecExc.Core_Design_Registration_Nm__c='Test DR Name Arrow';
         dealRecExc.Core_Design_Registration_Dsc__c='Test Des';
         dealRecExc.DDR_Partner_FAE_Email__c = 'test.diqhwqi@test.com';
@@ -320,7 +216,6 @@ public class PCC_DealFormValidationTest {
         c1.RecordTypeId = contactRecordType;
         c1.Core_IPA_Partner_Role__c = 'Service Provider';
         c1.Email = 'test.diqhwqi@test.com';
-        c1.MailingCountry = 'USA';
         insert c1;
         
         UserRole userRole = new UserRole(Name = 'Test Role');
@@ -380,7 +275,7 @@ public class PCC_DealFormValidationTest {
         
         dealRec.Core_First_Customer_Ship_Dt__c = system.today()+21;
         dealRec.Core_Production_End_Dt__c = system.today()+22;
-        dealRec.Core_Intel_Platform_Nm__c='Agilex';
+        dealRec.Core_Intel_Platform_Nm__c='ALDER LAKE';
         dealRec.Core_Design_Registration_Nm__c='Test DR Name Arrow';
         dealRec.Core_Design_Registration_Dsc__c='Test Des';
         dealRec.DDR_Partner_FAE_Email__c = 'test.diqhwqi@test.com';
@@ -421,7 +316,7 @@ public class PCC_DealFormValidationTest {
         
         dealRec1.Core_First_Customer_Ship_Dt__c = system.today()+21;
         dealRec1.Core_Production_End_Dt__c = system.today()+22;
-        dealRec1.Core_Intel_Platform_Nm__c='Agilex';
+        dealRec1.Core_Intel_Platform_Nm__c='ALDER LAKE';
         dealRec1.Core_Design_Registration_Nm__c='Test DR Name Arrow';
         dealRec1.Core_Design_Registration_Dsc__c='Test Des';
         dealRec1.DDR_Partner_FAE_Email__c = 'test.diqhwqi@test.com';
@@ -558,7 +453,6 @@ public class PCC_DealFormValidationTest {
         c1.RecordTypeId = contactRecordType;
         c1.Core_IPA_Partner_Role__c = 'Service Provider';
         c1.Email = 'testUsercoreMPM1245@intel.com';
-        c1.MailingCountry = 'USA';
         insert c1;
         
         Profile profile1 = [Select Id from Profile where name = 'Partner' Limit 1];
@@ -647,7 +541,7 @@ public class PCC_DealFormValidationTest {
         
         dealRec.Core_First_Customer_Ship_Dt__c = system.today()+21;
         dealRec.Core_Production_End_Dt__c = system.today()+22;
-        dealRec.Core_Intel_Platform_Nm__c='Agilex';
+        dealRec.Core_Intel_Platform_Nm__c='ALDER LAKE';
         dealRec.Core_Design_Registration_Nm__c='Test DR Name Arrow';
         dealRec.Core_Design_Registration_Dsc__c='Test Des';
         dealRec.DDR_Partner_FAE_Email__c = 'test.diqhwqi@test.com';
@@ -689,7 +583,7 @@ public class PCC_DealFormValidationTest {
         
         dealRec1.Core_First_Customer_Ship_Dt__c = system.today()+21;
         dealRec1.Core_Production_End_Dt__c = system.today()+22;
-        dealRec1.Core_Intel_Platform_Nm__c='Agilex';
+        dealRec1.Core_Intel_Platform_Nm__c='ALDER LAKE';
         dealRec1.Core_Design_Registration_Nm__c='Test DR Name Arrow';
         dealRec1.Core_Design_Registration_Dsc__c='Test Des';
         dealRec1.DDR_Partner_FAE_Email__c = 'test.diqhwqi@test.com';
@@ -744,7 +638,6 @@ public class PCC_DealFormValidationTest {
         c1.RecordTypeId = contactRecordType;
         c1.Core_IPA_Partner_Role__c = 'Service Provider';
         c1.Email = 'testUsercoreMPM1245@intel.com';
-        c1.MailingCountry = 'USA';
         insert c1;
         
         Profile profile1 = [Select Id from Profile where name = 'Partner' Limit 1];
@@ -778,7 +671,7 @@ public class PCC_DealFormValidationTest {
         
         dealRec.Core_First_Customer_Ship_Dt__c = system.today()+21;
         dealRec.Core_Production_End_Dt__c = system.today()+22;
-        dealRec.Core_Intel_Platform_Nm__c='Agilex';
+        dealRec.Core_Intel_Platform_Nm__c='ALDER LAKE';
         dealRec.Core_Design_Registration_Nm__c='Test DR Name Arrow';
         dealRec.Core_Design_Registration_Dsc__c='Test Des';
         dealRec.DDR_Partner_FAE_Email__c = 'test.diqhwqi@test.com';
@@ -814,7 +707,7 @@ public class PCC_DealFormValidationTest {
             accountInstance.BillingCountryCode = 'USA';accountInstance.BIllingStateCode = 'AL';accountInstance.BillingCity = 'Alabama testobc';accountInstance.BillingStreet = 'test jkhl';
         }
         insert LstAcc2;
-        Contact testContact = new Contact(FirstName='testFirstName12345', LastName='testLastName', Email='test123456@testing.com.test',AccountId=LstAcc2[0].Id,Core_IPS_Active__c =false,MailingCountry='USA');
+        Contact testContact = new Contact(FirstName='testFirstName12345', LastName='testLastName', Email='test123456@testing.com.test',AccountId=LstAcc2[0].Id,Core_IPS_Active__c =false);
         insert testContact;
         Profile partnerProfile = [SELECT Id FROM Profile WHERE Name='Partner' LIMIT 1];
         
@@ -825,7 +718,6 @@ public class PCC_DealFormValidationTest {
         Id DealProductRecordTypeid = Schema.SObjectType.Core_Design_Registration_Product__c.getRecordTypeInfosByDeveloperName().get('PCC_Deal_Registration_Product_Partner').getRecordTypeId();
         Id DealRecordTypeid = Schema.SObjectType.Core_Design_Registration__c.getRecordTypeInfosByDeveloperName().get('Deal_Registration_Draft').getRecordTypeId();
         system.runas(u1){
-
             List<Core_Design_Registration__c> DDRLst = new list<Core_Design_Registration__c>();
             Core_Design_Registration__c ddrRec2 = new  Core_Design_Registration__c();
             ddrRec2.Core_Military_Aerospace_Gvrnmt_Use_Ind__c = 'Yes';
@@ -835,7 +727,7 @@ public class PCC_DealFormValidationTest {
             ddrRec2.Core_Opportunity_Volume_Cnt__c=100;
             ddrRec2.Core_Partner_FAE_Nm__c='Test FAE';
             ddrRec2.Core_Partner_FSR_Nm__c='Test FSR';
-            //ddrRec2.Core_End_Customer_Nm__c='Arrow Electronics Account';
+            ddrRec2.Core_End_Customer_Nm__c='Arrow Electronics Account';
             ddrRec2.Core_End_Customer_Street_Addr_Line1_Txt__c='12 Street 99';
             ddrRec2.Core_End_Customer_Street_Addr_Line2_Txt__c='';
             ddrRec2.PCC_End_Customer_Country__c='India';
@@ -850,7 +742,7 @@ public class PCC_DealFormValidationTest {
             ddrRec2.Core_Opportunity_Decision_Dt__c = system.today()+20;
             ddrRec2.Core_First_Customer_Ship_Dt__c = system.today()+21;
             ddrRec2.Core_Production_End_Dt__c = system.today()+22;
-            ddrRec2.Core_Intel_Platform_Nm__c='Agilex';
+            ddrRec2.Core_Intel_Platform_Nm__c='ALDER LAKE';
             ddrRec2.Core_Design_Registration_Nm__c='Test DR Name Arrow9';
             ddrRec2.Core_Design_Registration_Dsc__c='Test Des';
             ddrRec2.Core_External_Id__c='abczd001';
@@ -860,55 +752,12 @@ public class PCC_DealFormValidationTest {
             ddrRec2.PCC_Current_EndCustomer_Product_Provider__c='Test';
             ddrRec2.RecordTypeId=DealRecordTypeid;
             DDRLst.add(ddrRec2);
-            //insert DDRLst;
-
-        /*List<Core_Design_Registration__c> DDRLst = new list<Core_Design_Registration__c>();
-        Core_Design_Registration__c dealRec = new  Core_Design_Registration__c();
-        
-        dealRec.Core_Vertical_Market_Nm__c='Education';
-        dealRec.Core_Product_Segment_Nm__c='Client Computing';
-        dealRec.Core_Product_Application_Nm__c='Business Desktop';
-        
-        dealRec.Core_Partner_FAE_Nm__c='Test FAE';
-        dealRec.Core_Partner_FSR_Nm__c='Test FSR';
-        dealRec.Core_End_Customer_Nm__c='Arrow Electronics Account';
-        dealRec.Core_End_Customer_Street_Addr_Line1_Txt__c='12 Street 99';
-        dealRec.Core_End_Customer_Street_Addr_Line2_Txt__c='';
-        dealRec.PCC_End_Customer_Country__c='India';
-        dealRec.Core_End_Customer_City_Nm__c='Bangalore';
-        dealRec.Core_End_Customer_Country_Subdivision_Nm__c='Karnataka';
-        dealRec.Core_End_Customer_Postal_Cd__c='758854';
-        dealRec.Core_End_Customer_Contact_Title_Txt__c='Mr.';
-        dealRec.Core_End_Customer_Contact_Nm__c='Arrow Electronics Partner User 01';
-        dealRec.Core_End_Customer_Contact_Email_Txt__c='arrowelec.partneruser01@marketstar.com';
-        dealRec.Core_End_Customer_Contact_Phone_Txt__c='7826499722';
-        dealRec.Core_Manufacturing_Region_Cd__c='ASMO';
-        
-        dealRec.Core_First_Customer_Ship_Dt__c = system.today()+21;
-        dealRec.Core_Production_End_Dt__c = system.today()+22;
-        dealRec.Core_Intel_Platform_Nm__c='Agilex';
-        dealRec.Core_Design_Registration_Nm__c='Test DR Name Arrow';
-        dealRec.Core_Design_Registration_Dsc__c='Test Des';
-        dealRec.DDR_Partner_FAE_Email__c = 'test.diqhwqi@test.com';
-        dealRec.Core_End_Customer_URL__c = 'Test';
-        dealRec.Core_Design_Registration_Status_Nm__c ='Draft';
-        //dealRec.PCC_Pricing_End_Date__c = system.today()-4;
-        //dealRec.PCC_Pricing_Start_Date__c = system.today()-2;
-        dealRec.PCC_Deal_Description__c='';
-        dealRec.PCC_End_Customer_Use__c='Test';
-        dealRec.PCC_Competition_Assumptions__c='';
-        dealRec.PCC_Intel_Response_Requested_By_Date__c=system.today();
-        dealRec.PCC_Proposal_Due_Date__c = system.today()-2;
-        dealRec.Core_Opportunity_Decision_Dt__c = system.today()+2;
-        dealRec.PCC_Consumption_Countries__c='INDIA';
-        dealRec.PCC_Current_EndCustomer_Product_Provider__c='test';
-        DDRLst.add(dealRec);
-        insert DDRLst; */
+            insert DDRLst; 
            
         
         
         Test.startTest();
-        //PCC_DealFormValidationController.callDealApprovalProcess(ddrRec2.Id);
+        PCC_DealFormValidationController.callDealApprovalProcess(ddrRec2.Id);
         Test.stopTest();
         }
         

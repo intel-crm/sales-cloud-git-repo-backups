@@ -22,7 +22,7 @@
         <name>Inactive_Indicator__c</name>
     </fields>
     <fields>
-        <label><!-- Partner Program --></label>
+        <label><!-- Channel Program --></label>
         <name>Partner_Program__c</name>
         <relationshipLabel><!-- Account Whitelisted Domains --></relationshipLabel>
     </fields>

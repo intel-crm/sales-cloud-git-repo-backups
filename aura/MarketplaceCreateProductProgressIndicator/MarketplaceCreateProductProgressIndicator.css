@@ -1,5 +1,4 @@
-/* IPA2.0 + US TWC4497-1631 */
-/* .THIS .slds-icon-utility-success {
+.THIS .slds-icon-utility-success {
     position: absolute;
     top: -1px;
     left: 46%;
@@ -118,4 +117,4 @@
     .THIS.slds-progress_vertical .slds-progress__item:after {
         top: 80%;
     }
-} */
+}

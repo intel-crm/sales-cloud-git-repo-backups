@@ -2,7 +2,7 @@
   @description       : LWC for Bulk Actions - Approve/Reject/Customer Revision for FSE/SDM.
   @author            : ChangeMeIn@UserSettingsUnder.SFDoc
   @group             : Accenture
-  @last modified on  : 01-27-2025
+  @last modified on  : 01-29-2025
   @last modified by  : Vrushabh Uprikar
 -->
 <template>
@@ -286,7 +286,7 @@
                                     </thead>
 
                                     <tbody>
-                                        <template for:each={data} for:item="qli">
+                                        <template for:each={dataToDisplay} for:item="qli">
                                             <tr key={qli.Id} aria-selected="false" class="slds-hint-parent"
                                                 style="height: 8px;">
 
@@ -346,6 +346,7 @@
                                                         </lightning-formatted-date-time>
                                                     </td>
 
+                                                    <!--template lwc:if={isQUoteDataCenter}-->
                                                         <template if:true={isDataCenterCPU}>
                                                             <td scope="col" class="">
                                                                 <div style=" overflow: visible;">
@@ -377,6 +378,7 @@
                                                                 </div>
                                                             </td>   
                                                         </template>
+                                                    <!--/template--> 
 
                                                     <td scope="col" class="">
                                                         <div style=" overflow: visible;">
@@ -443,6 +445,8 @@
                                         </template>
                                     </tbody>
                                 </table>
+                                <!-- pagination added -->
+                                <c-pricing-pagination onpaginatorchange={handlePaginatorChange} records={data} total-records={data.length} show-pagination></c-pricing-pagination>
                             </div>
 
                         </template>

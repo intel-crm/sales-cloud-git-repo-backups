@@ -1,101 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <actionCalls>
-        <name>FInd_Opportunity_by_product</name>
-        <label>FInd Opportunity by product</label>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-        <actionName>SWS_FindSingleOpportunityByProduct</actionName>
-        <actionType>apex</actionType>
-        <connector>
-            <targetReference>Assign_Final_Oppty_Column</targetReference>
-        </connector>
-        <flowTransactionModel>Automatic</flowTransactionModel>
-        <inputParameters>
-            <name>body</name>
-            <value>
-                <elementReference>Sub_HtmlBody</elementReference>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>opportunityIds</name>
-            <value>
-                <elementReference>ForProduct</elementReference>
-            </value>
-        </inputParameters>
-        <nameSegment>SWS_FindSingleOpportunityByProduct</nameSegment>
-        <offset>0</offset>
-        <outputParameters>
-            <assignToReference>FinalOpptyId.Id</assignToReference>
-            <name>opportunityId</name>
-        </outputParameters>
-    </actionCalls>
-    <actionCalls>
-        <name>SplitString_EmailAddress</name>
-        <label>SplitString_EmailAddress</label>
+        <name>SplitString_CCAddress</name>
+        <label>SplitString_CCAddress</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
         <actionName>SWS_StringSplitUtility</actionName>
         <actionType>apex</actionType>
         <connector>
-            <targetReference>From_To_and_CC_are_present</targetReference>
+            <targetReference>SplitString_FromEmails</targetReference>
         </connector>
         <flowTransactionModel>Automatic</flowTransactionModel>
         <inputParameters>
             <name>inputString</name>
             <value>
-                <elementReference>Email_Concat_Value</elementReference>
+                <elementReference>Sub_ccAdressList</elementReference>
             </value>
         </inputParameters>
         <nameSegment>SWS_StringSplitUtility</nameSegment>
         <offset>0</offset>
         <outputParameters>
-            <assignToReference>ToAddressContact</assignToReference>
-            <name>splitContactValues</name>
+            <assignToReference>CCEmails</assignToReference>
+            <name>splitValues</name>
         </outputParameters>
+    </actionCalls>
+    <actionCalls>
+        <name>SplitString_FromEmails</name>
+        <label>SplitString_FromEmails</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <actionName>SWS_StringSplitUtility</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>SplitString_ToAddress</targetReference>
+        </connector>
+        <flowTransactionModel>Automatic</flowTransactionModel>
+        <inputParameters>
+            <name>inputString</name>
+            <value>
+                <elementReference>Sub_FromAddressList</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>SWS_StringSplitUtility</nameSegment>
+        <offset>0</offset>
         <outputParameters>
-            <assignToReference>ToAddressUser</assignToReference>
-            <name>splitUserValues</name>
+            <assignToReference>FromEmails</assignToReference>
+            <name>splitValues</name>
+        </outputParameters>
+    </actionCalls>
+    <actionCalls>
+        <name>SplitString_ToAddress</name>
+        <label>SplitString_ToAddress</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <actionName>SWS_StringSplitUtility</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>Get_Contacts_based_Email_address</targetReference>
+        </connector>
+        <flowTransactionModel>Automatic</flowTransactionModel>
+        <inputParameters>
+            <name>inputString</name>
+            <value>
+                <elementReference>Sub_ToAddressList</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>SWS_StringSplitUtility</nameSegment>
+        <offset>0</offset>
+        <outputParameters>
+            <assignToReference>ToAddress</assignToReference>
+            <name>splitValues</name>
         </outputParameters>
     </actionCalls>
     <apiVersion>65.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
-    <assignments>
-        <name>Account_Data_Assignment</name>
-        <label>Account Data Assignment</label>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-        <assignmentItems>
-            <assignToReference>FinalAccount.Id</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>Get_Accounts_based_on_Opty.AccountId</elementReference>
-            </value>
-        </assignmentItems>
-    </assignments>
-    <assignments>
-        <name>Assign_Account_ID</name>
-        <label>Assign Account ID</label>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-        <assignmentItems>
-            <assignToReference>FinalAccount.Id</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>Loop_get_contacts_to_populate_account.AccountId</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>SkipLoop</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Loop_get_contacts_to_populate_account</targetReference>
-        </connector>
-    </assignments>
     <assignments>
         <name>Assign_Contact_Ids</name>
         <label>Assign Contact Ids</label>
@@ -113,36 +91,34 @@
         </connector>
     </assignments>
     <assignments>
-        <name>Assign_Final_Oppty_Column</name>
-        <label>Assign Final Oppty Column</label>
+        <name>Assign_Final_Opportunity</name>
+        <label>Assign Final Opportunity</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
         <assignmentItems>
             <assignToReference>FinalOpptyCol</assignToReference>
             <operator>Add</operator>
             <value>
-                <elementReference>FinalOpptyId.Id</elementReference>
+                <elementReference>Loop_Opportunity_from_Team_members</elementReference>
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>Get_Accounts_based_on_Opty</targetReference>
+            <isGoTo>true</isGoTo>
+            <targetReference>Loop_Contact_role_Opportunities</targetReference>
         </connector>
     </assignments>
     <assignments>
-        <name>Assign_Opportunity_Ids</name>
-        <label>Assign Opportunity Ids</label>
+        <name>Assign_Final_Opportunity_Collection</name>
+        <label>Assign Final Opportunity Collection</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
         <assignmentItems>
-            <assignToReference>ForProduct</assignToReference>
-            <operator>Add</operator>
+            <assignToReference>FinalOpportunityCollection</assignToReference>
+            <operator>Assign</operator>
             <value>
-                <elementReference>Loop_final_opportunities.Id</elementReference>
+                <elementReference>Get_Final_Opportunities</elementReference>
             </value>
         </assignmentItems>
-        <connector>
-            <targetReference>Loop_final_opportunities</targetReference>
-        </connector>
     </assignments>
     <assignments>
         <name>Assign_Opportunity_Ids_from_Contact_Roles</name>
@@ -158,29 +134,6 @@
         </assignmentItems>
         <connector>
             <targetReference>Loop_Get_contact_roles</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <name>Assign_Single_Opportunity</name>
-        <label>Assign Single Opportunity</label>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-        <assignmentItems>
-            <assignToReference>FinalOpptyId</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>Loop_Opportunity_collection</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>FinalAccount.Id</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>Loop_Opportunity_collection.AccountId</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Loop_Opportunity_collection</targetReference>
         </connector>
     </assignments>
     <assignments>
@@ -223,116 +176,6 @@
         </connector>
     </assignments>
     <assignments>
-        <name>Contacts_Assignment_2</name>
-        <label>Contacts Assignment 2</label>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-        <assignmentItems>
-            <assignToReference>GetContacts</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>Get_Contacts_based_Email_address</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>RecordCount</assignToReference>
-            <operator>AssignCount</operator>
-            <value>
-                <elementReference>Get_Contacts_based_Email_address</elementReference>
-            </value>
-        </assignmentItems>
-    </assignments>
-    <assignments>
-        <name>From_To_CC_Email_Concat</name>
-        <label>From_To_CC_Email_Concat</label>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-        <assignmentItems>
-            <assignToReference>Email_Concat_Value</assignToReference>
-            <operator>Add</operator>
-            <value>
-                <elementReference>Sub_FromAddressList</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>Email_Concat_Value</assignToReference>
-            <operator>Add</operator>
-            <value>
-                <stringValue>;</stringValue>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>Email_Concat_Value</assignToReference>
-            <operator>Add</operator>
-            <value>
-                <elementReference>Sub_ToAddressList</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>Email_Concat_Value</assignToReference>
-            <operator>Add</operator>
-            <value>
-                <stringValue>;</stringValue>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>Email_Concat_Value</assignToReference>
-            <operator>Add</operator>
-            <value>
-                <elementReference>Sub_ccAdressList</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>SplitString_EmailAddress</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <name>From_To_Email_Concat</name>
-        <label>From_To_Email_Concat</label>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-        <assignmentItems>
-            <assignToReference>Email_Concat_Value</assignToReference>
-            <operator>Add</operator>
-            <value>
-                <elementReference>Sub_FromAddressList</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>Email_Concat_Value</assignToReference>
-            <operator>Add</operator>
-            <value>
-                <stringValue>;</stringValue>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>Email_Concat_Value</assignToReference>
-            <operator>Add</operator>
-            <value>
-                <elementReference>Sub_ToAddressList</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>SplitString_EmailAddress</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <name>Get_count_of_Opportunity_list</name>
-        <label>Get count of Opportunity list</label>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-        <assignmentItems>
-            <assignToReference>OpptyCount</assignToReference>
-            <operator>AssignCount</operator>
-            <value>
-                <elementReference>Get_Final_Opportunities</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Based_on_opportunity_count</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
         <name>Opportunity_IDs</name>
         <label>Opportunity IDs</label>
         <locationX>0</locationX>
@@ -365,49 +208,12 @@
         </connector>
     </assignments>
     <decisions>
-        <name>Based_on_opportunity_count</name>
-        <label>Based on opportunity count</label>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>Greater_than_1</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>OpptyCount</leftValueReference>
-                <operator>GreaterThan</operator>
-                <rightValue>
-                    <numberValue>1.0</numberValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Loop_final_opportunities</targetReference>
-            </connector>
-            <label>Greater than 1</label>
-        </rules>
-        <rules>
-            <name>Equals_1</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>OpptyCount</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <numberValue>1.0</numberValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Loop_Opportunity_collection</targetReference>
-            </connector>
-            <label>Equals 1</label>
-        </rules>
-    </decisions>
-    <decisions>
         <name>CC_Address_Null_Check</name>
         <label>CC Address Null Check</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
         <defaultConnector>
-            <targetReference>From_To_CC_Email_Concat</targetReference>
+            <targetReference>SplitString_CCAddress</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -427,181 +233,35 @@
                     <booleanValue>true</booleanValue>
                 </rightValue>
             </conditions>
-            <conditions>
-                <leftValueReference>Sub_ccAdressList</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue></stringValue>
-                </rightValue>
-            </conditions>
             <connector>
-                <targetReference>From_To_Email_Concat</targetReference>
+                <targetReference>SplitString_FromEmails</targetReference>
             </connector>
             <label>Null CC Email Address</label>
         </rules>
     </decisions>
     <decisions>
-        <name>Check_opportunity_team_member_present_or_not</name>
-        <label>Check opportunity team member present or not</label>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>Oppty_Team_member_is_present</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>Get_Opportunity_Team_Member_based_on_Email_address</leftValueReference>
-                <operator>IsEmpty</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Opty_Team_Member_Assignment</targetReference>
-            </connector>
-            <label>Oppty Team member is present</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <name>Contact_Role_present_or_not</name>
-        <label>Contact Role present or not</label>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>Contact_Role_is_present</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>Get_Contact_role_records</leftValueReference>
-                <operator>IsEmpty</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Loop_Get_contact_roles</targetReference>
-            </connector>
-            <label>Contact Role is present</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <name>Exit_Loop_after_populating_account_ID</name>
-        <label>Exit Loop after populating account ID</label>
+        <name>Oppty_as_both_contact_role_and_team_member</name>
+        <label>Oppty as both contact role and team member</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
         <defaultConnector>
-            <isGoTo>true</isGoTo>
-            <targetReference>Contacts_Assignment</targetReference>
+            <targetReference>Loop_Opportunity_from_Team_members</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
-            <name>Skip_Loop_after_first_run</name>
+            <name>Oppty_Equals</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>SkipLoop</leftValueReference>
+                <leftValueReference>Loop_Opportunity_from_Team_members</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <booleanValue>false</booleanValue>
+                    <elementReference>Loop_Contact_role_Opportunities</elementReference>
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Assign_Account_ID</targetReference>
+                <targetReference>Assign_Final_Opportunity</targetReference>
             </connector>
-            <label>Skip Loop after first run</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <name>From_To_and_CC_are_present</name>
-        <label>From,To and CC are present?</label>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>Present</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>ToAddressContact</leftValueReference>
-                <operator>IsEmpty</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Get_Contacts_based_Email_address</targetReference>
-            </connector>
-            <label>Present</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <name>Get_Contacts_is_present_or_not</name>
-        <label>Get Contacts is present or not</label>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-        <defaultConnector>
-            <targetReference>Contacts_Assignment_2</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>Contact_records_are_Present</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>Get_Contacts_based_Email_address</leftValueReference>
-                <operator>IsEmpty</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Loop_get_contacts_to_populate_account</targetReference>
-            </connector>
-            <label>Contact records are Present</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <name>If_opportunity_Contains</name>
-        <label>If opportunity Contains</label>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-        <defaultConnector>
-            <targetReference>Get_Accounts_based_on_Opty</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>Compare_opportunity</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>FinalOpptyCol</leftValueReference>
-                <operator>Contains</operator>
-                <rightValue>
-                    <elementReference>Get_Accounts_based_on_Opty.Id</elementReference>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Account_Data_Assignment</targetReference>
-            </connector>
-            <label>Compare opportunity</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <name>Recepient_list_is_available</name>
-        <label>Recepient list is available</label>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>Yes</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>ToAddressUser</leftValueReference>
-                <operator>IsEmpty</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Get_User_based_on_Email_address</targetReference>
-            </connector>
-            <label>Yes</label>
+            <label>Oppty Equals for both</label>
         </rules>
     </decisions>
     <decisions>
@@ -615,7 +275,7 @@
             <conditionLogic>and</conditionLogic>
             <conditions>
                 <leftValueReference>Get_User_based_on_Email_address</leftValueReference>
-                <operator>IsEmpty</operator>
+                <operator>IsNull</operator>
                 <rightValue>
                     <booleanValue>false</booleanValue>
                 </rightValue>
@@ -631,17 +291,6 @@
     <interviewLabel>Match Email to Records Subflow {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Match Email to Records Subflow</label>
     <loops>
-        <name>Get_Accounts_based_on_Opty</name>
-        <label>Get Accounts based on Opty</label>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-        <collectionReference>Get_Final_Opportunities</collectionReference>
-        <iterationOrder>Desc</iterationOrder>
-        <nextValueConnector>
-            <targetReference>If_opportunity_Contains</targetReference>
-        </nextValueConnector>
-    </loops>
-    <loops>
         <name>Get_Each_User</name>
         <label>Get Each User</label>
         <locationX>0</locationX>
@@ -656,17 +305,17 @@
         </noMoreValuesConnector>
     </loops>
     <loops>
-        <name>Loop_final_opportunities</name>
-        <label>Loop final opportunities</label>
+        <name>Loop_Contact_role_Opportunities</name>
+        <label>Loop Contact role Opportunities</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
-        <collectionReference>Get_Final_Opportunities</collectionReference>
+        <collectionReference>opptyFromContactRole</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
-            <targetReference>Assign_Opportunity_Ids</targetReference>
+            <targetReference>Loop_Opportunity_from_Team_members</targetReference>
         </nextValueConnector>
         <noMoreValuesConnector>
-            <targetReference>FInd_Opportunity_by_product</targetReference>
+            <targetReference>Get_Final_Opportunities</targetReference>
         </noMoreValuesConnector>
     </loops>
     <loops>
@@ -680,7 +329,7 @@
             <targetReference>Assign_Opportunity_Ids_from_Contact_Roles</targetReference>
         </nextValueConnector>
         <noMoreValuesConnector>
-            <targetReference>Recepient_list_is_available</targetReference>
+            <targetReference>Get_User_based_on_Email_address</targetReference>
         </noMoreValuesConnector>
     </loops>
     <loops>
@@ -698,29 +347,18 @@
         </noMoreValuesConnector>
     </loops>
     <loops>
-        <name>Loop_get_contacts_to_populate_account</name>
-        <label>Loop get contacts to populate account</label>
+        <name>Loop_Opportunity_from_Team_members</name>
+        <label>Loop Opportunity from Team members</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
-        <collectionReference>Get_Contacts_based_Email_address</collectionReference>
+        <collectionReference>OpptyIds2</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
-            <targetReference>Exit_Loop_after_populating_account_ID</targetReference>
+            <targetReference>Oppty_as_both_contact_role_and_team_member</targetReference>
         </nextValueConnector>
         <noMoreValuesConnector>
-            <targetReference>Contacts_Assignment</targetReference>
+            <targetReference>Loop_Contact_role_Opportunities</targetReference>
         </noMoreValuesConnector>
-    </loops>
-    <loops>
-        <name>Loop_Opportunity_collection</name>
-        <label>Loop Opportunity collection</label>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-        <collectionReference>Get_Final_Opportunities</collectionReference>
-        <iterationOrder>Asc</iterationOrder>
-        <nextValueConnector>
-            <targetReference>Assign_Single_Opportunity</targetReference>
-        </nextValueConnector>
     </loops>
     <loops>
         <name>Loop_Oppty_team_member_collection</name>
@@ -733,7 +371,7 @@
             <targetReference>Opportunity_IDs</targetReference>
         </nextValueConnector>
         <noMoreValuesConnector>
-            <targetReference>Get_Final_Opportunities</targetReference>
+            <targetReference>Loop_Contact_role_Opportunities</targetReference>
         </noMoreValuesConnector>
     </loops>
     <processMetadataValues>
@@ -762,7 +400,7 @@
         <locationY>0</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Contact_Role_present_or_not</targetReference>
+            <targetReference>Loop_Get_contact_roles</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -787,14 +425,28 @@
         <locationY>0</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Get_Contacts_is_present_or_not</targetReference>
+            <targetReference>Contacts_Assignment</targetReference>
         </connector>
         <filterLogic>or</filterLogic>
         <filters>
             <field>Email</field>
             <operator>In</operator>
             <value>
-                <elementReference>ToAddressContact</elementReference>
+                <elementReference>CCEmails</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Email</field>
+            <operator>In</operator>
+            <value>
+                <elementReference>FromEmails</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Email</field>
+            <operator>In</operator>
+            <value>
+                <elementReference>ToAddress</elementReference>
             </value>
         </filters>
         <getFirstRecordOnly>false</getFirstRecordOnly>
@@ -808,14 +460,14 @@
         <locationY>0</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Get_count_of_Opportunity_list</targetReference>
+            <targetReference>Assign_Final_Opportunity_Collection</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
             <operator>In</operator>
             <value>
-                <elementReference>OpptyIds2</elementReference>
+                <elementReference>FinalOpptyCol</elementReference>
             </value>
         </filters>
         <filters>
@@ -827,11 +479,6 @@
         </filters>
         <getFirstRecordOnly>false</getFirstRecordOnly>
         <object>Opportunity</object>
-        <queriedFields>Id</queriedFields>
-        <queriedFields>Name</queriedFields>
-        <queriedFields>AccountId</queriedFields>
-        <sortField>LastModifiedDate</sortField>
-        <sortOrder>Desc</sortOrder>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordLookups>
@@ -842,7 +489,7 @@
         <locationY>0</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Check_opportunity_team_member_present_or_not</targetReference>
+            <targetReference>Opty_Team_Member_Assignment</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -852,14 +499,7 @@
                 <elementReference>UserIds</elementReference>
             </value>
         </filters>
-        <filters>
-            <field>OpportunityId</field>
-            <operator>In</operator>
-            <value>
-                <elementReference>opptyFromContactRole</elementReference>
-            </value>
-        </filters>
-        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
         <object>OpportunityTeamMember</object>
         <queriedFields>OpportunityId</queriedFields>
         <queriedFields>Id</queriedFields>
@@ -875,12 +515,26 @@
         <connector>
             <targetReference>User_Details_verification</targetReference>
         </connector>
-        <filterLogic>or</filterLogic>
+        <filterLogic>and</filterLogic>
         <filters>
             <field>Email</field>
             <operator>In</operator>
             <value>
-                <elementReference>ToAddressUser</elementReference>
+                <elementReference>CCEmails</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Email</field>
+            <operator>In</operator>
+            <value>
+                <elementReference>FromEmails</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Email</field>
+            <operator>In</operator>
+            <value>
+                <elementReference>ToAddress</elementReference>
             </value>
         </filters>
         <getFirstRecordOnly>false</getFirstRecordOnly>
@@ -894,16 +548,9 @@
             <targetReference>CC_Address_Null_Check</targetReference>
         </connector>
     </start>
-    <status>Draft</status>
+    <status>Active</status>
     <variables>
-        <name>CCEmailsContact</name>
-        <dataType>String</dataType>
-        <isCollection>true</isCollection>
-        <isInput>true</isInput>
-        <isOutput>true</isOutput>
-    </variables>
-    <variables>
-        <name>CCEmailsUser</name>
+        <name>CCEmails</name>
         <dataType>String</dataType>
         <isCollection>true</isCollection>
         <isInput>true</isInput>
@@ -915,44 +562,6 @@
         <isCollection>true</isCollection>
         <isInput>true</isInput>
         <isOutput>true</isOutput>
-    </variables>
-    <variables>
-        <name>currentItem_Collection_Filter_1</name>
-        <dataType>SObject</dataType>
-        <isCollection>false</isCollection>
-        <isInput>false</isInput>
-        <isOutput>false</isOutput>
-        <objectType>Opportunity</objectType>
-    </variables>
-    <variables>
-        <name>currentItem_Get_Account_from_Contact_role</name>
-        <dataType>SObject</dataType>
-        <isCollection>false</isCollection>
-        <isInput>false</isInput>
-        <isOutput>false</isOutput>
-        <objectType>OpportunityContactRole</objectType>
-    </variables>
-    <variables>
-        <name>currentItem_Loop_Contact_records</name>
-        <dataType>SObject</dataType>
-        <isCollection>false</isCollection>
-        <isInput>false</isInput>
-        <isOutput>false</isOutput>
-        <objectType>Contact</objectType>
-    </variables>
-    <variables>
-        <name>Email_Concat_Value</name>
-        <dataType>String</dataType>
-        <isCollection>false</isCollection>
-        <isInput>true</isInput>
-        <isOutput>true</isOutput>
-    </variables>
-    <variables>
-        <name>EmailIdsfromEmailMessage</name>
-        <dataType>String</dataType>
-        <isCollection>true</isCollection>
-        <isInput>true</isInput>
-        <isOutput>false</isOutput>
     </variables>
     <variables>
         <name>EmailMessageCollection</name>
@@ -971,14 +580,6 @@
         <objectType>EmailMessage</objectType>
     </variables>
     <variables>
-        <name>FinalAccount</name>
-        <dataType>SObject</dataType>
-        <isCollection>false</isCollection>
-        <isInput>true</isInput>
-        <isOutput>true</isOutput>
-        <objectType>Account</objectType>
-    </variables>
-    <variables>
         <name>FinalOpportunityCollection</name>
         <dataType>SObject</dataType>
         <isCollection>true</isCollection>
@@ -994,29 +595,7 @@
         <isOutput>true</isOutput>
     </variables>
     <variables>
-        <name>FinalOpptyId</name>
-        <dataType>SObject</dataType>
-        <isCollection>false</isCollection>
-        <isInput>true</isInput>
-        <isOutput>true</isOutput>
-        <objectType>Opportunity</objectType>
-    </variables>
-    <variables>
-        <name>ForProduct</name>
-        <dataType>String</dataType>
-        <isCollection>true</isCollection>
-        <isInput>true</isInput>
-        <isOutput>true</isOutput>
-    </variables>
-    <variables>
-        <name>FromEmailsContact</name>
-        <dataType>String</dataType>
-        <isCollection>true</isCollection>
-        <isInput>true</isInput>
-        <isOutput>true</isOutput>
-    </variables>
-    <variables>
-        <name>FromEmailsUser</name>
+        <name>FromEmails</name>
         <dataType>String</dataType>
         <isCollection>true</isCollection>
         <isInput>true</isInput>
@@ -1062,14 +641,6 @@
         <objectType>OpportunityTeamMember</objectType>
     </variables>
     <variables>
-        <name>OpptyCount</name>
-        <dataType>Number</dataType>
-        <isCollection>false</isCollection>
-        <isInput>false</isInput>
-        <isOutput>false</isOutput>
-        <scale>0</scale>
-    </variables>
-    <variables>
         <name>opptyFromContactRole</name>
         <dataType>String</dataType>
         <isCollection>true</isCollection>
@@ -1090,16 +661,6 @@
         <isInput>true</isInput>
         <isOutput>true</isOutput>
         <scale>0</scale>
-    </variables>
-    <variables>
-        <name>SkipLoop</name>
-        <dataType>Boolean</dataType>
-        <isCollection>false</isCollection>
-        <isInput>false</isInput>
-        <isOutput>false</isOutput>
-        <value>
-            <booleanValue>false</booleanValue>
-        </value>
     </variables>
     <variables>
         <name>Sub_ActivityDate</name>
@@ -1182,21 +743,7 @@
         <isOutput>true</isOutput>
     </variables>
     <variables>
-        <name>TextBodystart</name>
-        <dataType>String</dataType>
-        <isCollection>false</isCollection>
-        <isInput>true</isInput>
-        <isOutput>true</isOutput>
-    </variables>
-    <variables>
-        <name>ToAddressContact</name>
-        <dataType>String</dataType>
-        <isCollection>true</isCollection>
-        <isInput>true</isInput>
-        <isOutput>true</isOutput>
-    </variables>
-    <variables>
-        <name>ToAddressUser</name>
+        <name>ToAddress</name>
         <dataType>String</dataType>
         <isCollection>true</isCollection>
         <isInput>true</isInput>

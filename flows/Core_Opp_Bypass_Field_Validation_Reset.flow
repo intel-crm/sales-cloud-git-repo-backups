@@ -25,7 +25,7 @@ Workflow rule description: Resets Bypass Field Validation to FALSE after a succe
         <name>mainUpdate</name>
         <label>mainUpdate</label>
         <locationX>176</locationX>
-        <locationY>311</locationY>
+        <locationY>287</locationY>
         <inputAssignments>
             <field>Core_Bypass_Field_Validation__c</field>
             <value>
@@ -40,14 +40,7 @@ Workflow rule description: Resets Bypass Field Validation to FALSE after a succe
         <connector>
             <targetReference>mainUpdate</targetReference>
         </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>Core_Bypass_Field_Validation__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </filters>
+        <filterFormula>AND(AND(NOT(ISNULL({!$Record.RecordTypeId})),CONTAINS({!$Label.Core_Sales_CRM_Record_Types},{!$Record.RecordType.DeveloperName})),{!$Record.Core_Bypass_Field_Validation__c} == true)</filterFormula>
         <object>Opportunity</object>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordBeforeSave</triggerType>

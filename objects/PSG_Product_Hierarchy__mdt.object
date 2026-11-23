@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Maintaining the Release and Pre-release codes for PSG Products</description>
+    <fields>
+        <fullName>PSG_Pre_Release_Product_Id__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>PSG Pre Release Product Id</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PSG_Release_Product_Id__c</fullName>
+        <description>Store the Id of Pre release product in the Hierarchy</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>PSG Release Product Id</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>PSG Product Hierarchy</label>
+    <pluralLabel>PSG Product Hierarchy</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

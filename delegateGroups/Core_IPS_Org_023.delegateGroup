@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <DelegateGroup xmlns="http://soap.sforce.com/2006/04/metadata">
-    <groups>SAS-Wind River</groups>
-    <groups>IAGS - Project Amber</groups>
     <groups>CPDP-TCAR</groups>
     <groups>CPDP-Cluster-Tools</groups>
     <groups>CPDP-C++-Compiler</groups>
@@ -16,10 +14,9 @@
     <groups>CPDP-oneAPI-IoT-Toolkit</groups>
     <groups>CPDP-Cluster-Checker</groups>
     <groups>CPDP-oneAPI-Render-Toolkit</groups>
-    <groups>SATG-Solidigm-CoFluent</groups>
     <groups>IPS - Org Admin - IAGS</groups>
     <label>IPS - Org Admin - IAGS</label>
     <loginAccess>false</loginAccess>
     <roles>IPS Product OrgAdmin</roles>
-    <roles>EMP_11298293_Kenta_Ueda</roles>
+    <roles>IPS Agent</roles>
 </DelegateGroup>

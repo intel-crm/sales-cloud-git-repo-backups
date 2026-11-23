@@ -35,9 +35,11 @@
         Asset assetWithNoCategories = allAssets[1];
         
         
+        System.debug(' Core_RestAPI_CaseDetail_Test \n Account '+[Select Name FROM Account]+'\n Contact '+[Select Name FROM Contact]);
         
         commUser1 = [Select Name FROM User WHERE ContactId IN (Select Id FROM Contact) ];
         
+        System.debug(' Core_RestAPI_CasesV1_Test User \n Comm User obj : '+commUser1+' \n adminUser User obj : '+adminUser);
         //Insert 5 cases for admin User & 5 cases for Community User
         System.runAs(adminUser){
             List<Case> caseList = Core_RestAPI_TestUtilities.getListOfCases(10);
@@ -52,9 +54,11 @@
             insert caseList;
             //Insert environment variables for the case
             List<Core_IPS_Environment_Details__c> envDet = Core_RestAPI_TestUtilities.getEnvironmentDetailResponses(5);
+            System.debug(' envDet '+envDet);
             for(Integer i=0 ;i< envDet.size();i++){
                 Core_IPS_Environment_Details__c env = envDet[i];
                 env.Core_Case__c = caseList[i+5].id;
+                System.debug('+++++++ ENV Details '+env.Core_Case__c);
             }
             insert envDet;
         }
@@ -116,6 +120,8 @@
         
         
         Test.stopTest();
+        System.debug(Json.serialize([Select Id, CaseNumber, assetId FROM Case ]));
+        System.debug(Json.serialize([Select Id, Core_Case__c FROM Core_IPS_Environment_Details__c ]));
     }
     
     
@@ -127,6 +133,7 @@
         request.httpMethod = 'GET';
         if(v1_0.equals(version)){
             caseObj = [Select CaseNumber FROM Case where OwnerId =: commUser1.Id Limit 1];
+            System.debug(' Test class caseObj '+caseNbr);
             request.requestUri ='/v1.0/cases/'+caseNbr; 
             request.resourcePath ='/services/apexrest/v1.0/cases/'+caseNbr;
         }
@@ -136,9 +143,11 @@
     //Pass the version the method returns the request based on the version number 
     private static RestRequest doPatch_updateCase_VersionRequest(String version,  String caseNbr){
         RestRequest request = (RestRequest)System.jSON.deserialize(Core_RestAPI_TestUtilities.REQUEST_TEMPLATE, RestRequest.class);
+        System.debug(' Versoin '+version+' caseNbr '+caseNbr);
         request.httpMethod = 'PATCH';
         if(v1_0.equals(version)){
             //caseObj = [Select CaseNumber FROM Case where OwnerId =: commUser1.Id Limit 1];
+            System.debug(' Test class caseObj '+caseNbr);
             request.requestUri ='/v1.0/cases/'+caseNbr; 
             request.resourcePath ='/services/apexrest/v1.0/cases/'+caseNbr;
         }
@@ -153,10 +162,10 @@
         If(strVersion == v1_0) {  
             System.assertEquals('200', apiResponse.Code, ' RestAPIResponse Success code 200');
             System.assertNotEquals(null, apiResponse);
-            System.assertEquals(apiResponse.isSuccess != null, true);
+            System.assertEquals(true, apiResponse.isSuccess);
             System.assertNotEquals(null, apiResponse.successContent);
             //Assert all sharing cases are retrieved
-            System.assertEquals(apiResponse.successContent.size() != null, true);
+            System.assertEquals(1, apiResponse.successContent.size(), 'Case Found');
         }
         
         //Common Asserts for all versions
@@ -190,10 +199,12 @@
     //Test doGet method
     @isTest public static void test_doGet_getCaseDetail_v1_0_Positive(){
         commUser1  = [Select Name, ContactId FROM User WHERE Name = 'CommUser0 RestApiUnitTest0'];
+        System.debug(' \n\n Running test method test_doGet_getInterestedParties_v1_0 as  '+commUser1);  
         Case caseObj = [Select Id, CaseNumber FROM Case where ContactId =:commUser1.ContactId  Limit 1];
         RestContext.request = doGet_getCaseDetail_VersionRequest(v1_0, caseObj.CaseNumber);
         System.runAs(commUser1){
             Core_RestAPI_Response apiResponse = Core_RestAPI_CaseDetailV1.doGet();
+            System.debug(' test_doGet_getInterestedParties_v1_0 test_doGet >>>> '+apiResponse); 
             doGet_getDetail_Asserts(apiResponse, null, v1_0);
         } 
         
@@ -205,9 +216,11 @@
         commUser1  = [Select Name, ContactId FROM User WHERE Name = 'CommUser0 RestApiUnitTest0'];
         //Negative test case
         commUser1  = [Select Name, ContactId FROM User WHERE Name = 'CommUser0 RestApiUnitTest0'];
+        System.debug(' \n\n Running test method test_doGet_getInterestedParties_v1_0 as  '+commUser1);  
         RestContext.request = doGet_getCaseDetail_VersionRequest(v1_0, 'invalidCasenumber');
         System.runAs(commUser1){
             Core_RestAPI_Response apiResponse = Core_RestAPI_CaseDetailV1.doGet();
+            System.debug(' test_doGet_getInterestedParties_v1_0 test_doGet >>>> '+apiResponse); 
         } 
         
     }
@@ -215,12 +228,14 @@
     //Test doGet method
     @isTest public static void test_doPatch_updateCaseDetail_v1_0_Positive(){
         commUser1  = [Select Name, ContactId FROM User WHERE Name = 'CommUser0 RestApiUnitTest0'];
+        System.debug(' \n\n Running test method test_doGet_updateCaseDetail_v1_0_Positive as  '+commUser1);  
         List<Asset> allAssets = [Select Name, Account.Name, Core_Supported_Product__c, Core_Supported_Product__r.Name FROM Asset ORDER BY NAME ];
         List<Core_IPS_Product_Issue_Category__c> catgList = [SELECT Name, ID, Core_Issue_Category_Name__c, Core_Issue_Sub_Category_Name__c  FROM Core_IPS_Product_Issue_Category__c ];
         Core_IPS_Product_Issue_Category__c catgName = [SELECT Name, ID  FROM Core_IPS_Product_Issue_Category__c where Core_Type__c = 'Case Category' LIMIT 1];
         Core_IPS_Product_Issue_Category__c subCatgName = [SELECT Name, ID  FROM Core_IPS_Product_Issue_Category__c where Core_Type__c = 'Case Subcategory' LIMIT 1];
         
         Case caseObj = [Select Id, CaseNumber FROM Case where ContactId =:commUser1.ContactId  Limit 1];
+        System.debug(' test_doPatch_updateCaseDetail_v1_0_Positive Case Obj '+caseObj);
         RestContext.request = doPatch_updateCase_VersionRequest(v1_0, caseObj.CaseNumber);
         System.runAs(commUser1){
             Core_RestAPI_Case_UpdateV1_Wrapper caseDetail = new Core_RestAPI_Case_UpdateV1_Wrapper();
@@ -244,6 +259,7 @@
     
     @isTest public static void test_doPatch_updateCaseDetail_v1_0_Negative(){
         commUser1  = [Select Name, ContactId FROM User WHERE Name = 'CommUser0 RestApiUnitTest0'];
+        System.debug(' \n\n Running test method test_doGet_updateCaseDetail_v1_0_Positive as  '+commUser1);  
         List<Asset> allAssets = [Select Name, Account.Name, Core_Supported_Product__c, Core_Supported_Product__r.Name FROM Asset ORDER BY NAME ];
         List<Core_IPS_Product_Issue_Category__c> catgList = [SELECT Name, ID, Core_Issue_Category_Name__c, Core_Issue_Sub_Category_Name__c  FROM Core_IPS_Product_Issue_Category__c ];
         Core_IPS_Product_Issue_Category__c catgName = [SELECT Name, ID  FROM Core_IPS_Product_Issue_Category__c where Core_Type__c = 'Case Category' LIMIT 1];
@@ -264,6 +280,7 @@
             caseDetail.subCategoryId = subCatgName.Name;
             caseDetail.envDetails = null;
             Core_RestAPI_Response apiResponse = Core_RestAPI_CaseDetailV1.doPatch(caseDetail);
+            System.debug(' test_doGet_getInterestedParties_v1_0 test_doGet >>>> '+apiResponse); 
             test_doPatch_updateCaseDetail_v1_0_Asserts(apiResponse, null, v1_0);
         } 
         
@@ -281,6 +298,7 @@
             caseDetail.subCategoryId = subCatgName.Name;
             caseDetail.envDetails = null;
             Core_RestAPI_Response apiResponse = Core_RestAPI_CaseDetailV1.doPatch(caseDetail);
+            System.debug(' test_doGet_getInterestedParties_v1_0 test_doGet >>>> '+apiResponse); 
             test_doPatch_updateCaseDetail_v1_0_Asserts(apiResponse, null, v1_0);
         } 
         
@@ -290,12 +308,14 @@
 	//Test doGet method
     @isTest public static void test_doPatch_CaseCloseDetail_v1_0_Positive(){
         commUser1  = [Select Name, ContactId FROM User WHERE Name = 'CommUser0 RestApiUnitTest0'];
+        System.debug(' \n\n Running test method test_doGet_updateCaseDetail_v1_0_Positive as  '+commUser1);  
         List<Asset> allAssets = [Select Name, Account.Name, Core_Supported_Product__c, Core_Supported_Product__r.Name FROM Asset ORDER BY NAME ];
         List<Core_IPS_Product_Issue_Category__c> catgList = [SELECT Name, ID, Core_Issue_Category_Name__c, Core_Issue_Sub_Category_Name__c  FROM Core_IPS_Product_Issue_Category__c ];
         Core_IPS_Product_Issue_Category__c catgName = [SELECT Name, ID  FROM Core_IPS_Product_Issue_Category__c where Core_Type__c = 'Case Category' LIMIT 1];
         Core_IPS_Product_Issue_Category__c subCatgName = [SELECT Name, ID  FROM Core_IPS_Product_Issue_Category__c where Core_Type__c = 'Case Subcategory' LIMIT 1];
         
         Case caseObj = [Select Id, CaseNumber FROM Case where ContactId =:commUser1.ContactId  Limit 1];
+        System.debug(' test_doPatch_updateCaseDetail_v1_0_Positive Case Obj '+caseObj);
         RestContext.request = doPatch_updateCase_VersionRequest(v1_0, caseObj.CaseNumber);
         System.runAs(commUser1){
             Core_RestAPI_Case_UpdateV1_Wrapper caseDetail = new Core_RestAPI_Case_UpdateV1_Wrapper();
@@ -310,12 +330,14 @@
     //Test doGet method
     @isTest public static void test_doPatch_CaseCloseDetail_v1_0_Negative(){
         commUser1  = [Select Name, ContactId FROM User WHERE Name = 'CommUser0 RestApiUnitTest0'];
+        System.debug(' \n\n Running test method test_doGet_updateCaseDetail_v1_0_Positive as  '+commUser1);  
         List<Asset> allAssets = [Select Name, Account.Name, Core_Supported_Product__c, Core_Supported_Product__r.Name FROM Asset ORDER BY NAME ];
         List<Core_IPS_Product_Issue_Category__c> catgList = [SELECT Name, ID, Core_Issue_Category_Name__c, Core_Issue_Sub_Category_Name__c  FROM Core_IPS_Product_Issue_Category__c ];
         Core_IPS_Product_Issue_Category__c catgName = [SELECT Name, ID  FROM Core_IPS_Product_Issue_Category__c where Core_Type__c = 'Case Category' LIMIT 1];
         Core_IPS_Product_Issue_Category__c subCatgName = [SELECT Name, ID  FROM Core_IPS_Product_Issue_Category__c where Core_Type__c = 'Case Subcategory' LIMIT 1];
         
         Case caseObj = [Select Id, CaseNumber FROM Case where ContactId =:commUser1.ContactId  Limit 1];
+        System.debug(' test_doPatch_updateCaseDetail_v1_0_Positive Case Obj '+caseObj);
         RestContext.request = doPatch_updateCase_VersionRequest(v1_0, caseObj.CaseNumber);
         System.runAs(commUser1){
             Core_RestAPI_Case_UpdateV1_Wrapper caseDetail = new Core_RestAPI_Case_UpdateV1_Wrapper();

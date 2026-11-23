@@ -139,6 +139,10 @@
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Approved_Unit_Dup_Qty__c</field>
     </columns>
     <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Payable_Quantity__c</field>
+    </columns>
+    <columns>
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_pm_approval_comments_nm__c</field>
     </columns>
     <columns>
@@ -185,6 +189,9 @@
     </columns>
     <columns>
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Write_In_Paired_CPU_Nm__c</field>
+    </columns>
+    <columns>
+        <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Paired_CPU_Nm__c.Name</field>
     </columns>
     <columns>
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Single_System_Price_Amt__c</field>
@@ -382,6 +389,6 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>SBQQ__Quote__c$CreatedDate</dateColumn>
-        <interval>INTERVAL_LAST7</interval>
+        <interval>INTERVAL_CUSTOM</interval>
     </timeFrameFilter>
 </Report>

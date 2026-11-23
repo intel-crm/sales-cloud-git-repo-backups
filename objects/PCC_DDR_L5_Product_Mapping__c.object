@@ -153,7 +153,7 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <externalSharingModel>Private</externalSharingModel>
+    <externalSharingModel>Read</externalSharingModel>
     <fields>
         <fullName>PCC_Design_Registration_Product__c</fullName>
         <deleteConstraint>Restrict</deleteConstraint>
@@ -227,9 +227,11 @@
     <fields>
         <fullName>PCC_Opportunity_Product_Id__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
+        <description>This field is used to store the mapping of Design Registration Product Mapping to Opportunity Product</description>
         <label>Opportunity Product Id</label>
         <referenceTo>OpportunityLineItem</referenceTo>
-        <relationshipName>DDR_L5_Product_Mappings</relationshipName>
+        <relationshipLabel>Design-Deal Registration Product Mappings</relationshipLabel>
+        <relationshipName>Design_Registration_Product_Mappings</relationshipName>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -269,33 +271,32 @@
         <type>Lookup</type>
     </fields>
     <label>Design-Deal Registration Product Mapping</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
     <nameField>
         <displayFormat>DTP-{000000}</displayFormat>
         <label>DDR Transactional  Name</label>
         <trackHistory>false</trackHistory>
         <type>AutoNumber</type>
     </nameField>
-    <pluralLabel>Design-Deal Registration Product Mapping</pluralLabel>
-    <profileSearchLayouts>
-        <fields>NAME</fields>
-        <fields>PCC_MM_ID__c</fields>
-        <fields>PCC_Old_MM_Id__c</fields>
-        <fields>PCC_Ordering_Cd__c</fields>
-        <fields>PCC_L4_Product_Name__c</fields>
-        <fields>PCC_Design_Registration_Product__c</fields>
-        <fields>PCC_Design_Registration__c</fields>
-        <profileName>IT Admin</profileName>
-    </profileSearchLayouts>
-    <profileSearchLayouts>
-        <fields>NAME</fields>
-        <fields>PCC_MM_ID__c</fields>
-        <fields>PCC_Old_MM_Id__c</fields>
-        <fields>PCC_Ordering_Cd__c</fields>
-        <fields>PCC_Design_Registration_Product__c</fields>
-        <fields>PCC_Design_Registration__c</fields>
-        <profileName>Partner</profileName>
-    </profileSearchLayouts>
+    <pluralLabel>Design-Deal Registration Product Mappings</pluralLabel>
     <searchLayouts/>
-    <sharingModel>Private</sharingModel>
+    <sharingModel>Read</sharingModel>
+    <validationRules>
+        <fullName>DR_Product_QuoteSubmittedStatusLock</fullName>
+        <active>true</active>
+        <description>Opportunity Line Quote Submitted Status Lock check</description>
+        <errorConditionFormula>IF($Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c=TRUE,FALSE,
+AND(
+PCC_Opportunity__r.Core_Opportunity_Lock_Status__c  = true
+
+ 
+)
+)</errorConditionFormula>
+        <errorMessage>Quote associated to this Opportunity is Submitted for Review. No Edits allowed on Opportunity during the Review process.</errorMessage>
+    </validationRules>
     <visibility>Public</visibility>
 </CustomObject>

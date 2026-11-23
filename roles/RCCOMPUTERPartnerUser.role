@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>PT TEKUN JAYA UTAMA Partner User</description>
+    <description>RC COMPUTER Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>PT TEKUN JAYA UTAMA Partner User</name>
+    <name>RC COMPUTER Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>RCCOMPUTERPartnerManager</parentRole>
 </Role>

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>BM Assignment Config</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>BM Assignment Configs</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account Tier --></label>
+        <name>core_cpq_account_tier_nm__c</name>
+        <picklistValues>
+            <masterLabel>PSG-Tier 1</masterLabel>
+            <translation><!-- PSG-Tier 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSG-Tier 2</masterLabel>
+            <translation><!-- PSG-Tier 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSG-Tier 3</masterLabel>
+            <translation><!-- PSG-Tier 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSG-Tier 4</masterLabel>
+            <translation><!-- PSG-Tier 4 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- APJ PRC --></label>
+        <name>core_cpq_apj_prc_txt__c</name>
+        <relationshipLabel><!-- BM Assignment Configs (APJ PRC) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- ASMO --></label>
+        <name>core_cpq_asmo_txt__c</name>
+        <relationshipLabel><!-- BM Assignment Configs (ASMO) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Business Unit --></label>
+        <name>core_cpq_business_unit_nm__c</name>
+        <picklistValues>
+            <masterLabel>ASIC Proto</masterLabel>
+            <translation><!-- ASIC Proto --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Access</masterLabel>
+            <translation><!-- Access --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>All</masterLabel>
+            <translation><!-- All --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Application</masterLabel>
+            <translation><!-- Application --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Automotive</masterLabel>
+            <translation><!-- Automotive --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Broadcast</masterLabel>
+            <translation><!-- Broadcast --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CEAD</masterLabel>
+            <translation><!-- CEAD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Consumer</masterLabel>
+            <translation><!-- Consumer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Industrial</masterLabel>
+            <translation><!-- Industrial --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Infrastructure</masterLabel>
+            <translation><!-- Infrastructure --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Medical</masterLabel>
+            <translation><!-- Medical --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Military</masterLabel>
+            <translation><!-- Military --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Test</masterLabel>
+            <translation><!-- Test --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transportation</masterLabel>
+            <translation><!-- Transportation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unknown</masterLabel>
+            <translation><!-- Unknown --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wireless</masterLabel>
+            <translation><!-- Wireless --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wireline</masterLabel>
+            <translation><!-- Wireline --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- EMEA --></label>
+        <name>core_cpq_emea_txt__c</name>
+        <relationshipLabel><!-- BM Assignment Configs (EMEA) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- End Customer Parent (ECP) --></label>
+        <name>core_cpq_end_customer_parent__c</name>
+        <relationshipLabel><!-- BM Assignment Configs --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Japan --></label>
+        <name>core_cpq_japan_txt__c</name>
+        <relationshipLabel><!-- BM Assignment Configs (Japan) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- test1 --></label>
+        <name>test1__c</name>
+    </fields>
+    <recordTypes>
+        <label><!-- BM Assignment Config --></label>
+        <name>core_cpq_bm_assignment_config</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

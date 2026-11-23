@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>Imaginative Illusions Sdn Bhd Partner Executive</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>Imaginative Illusions Sdn Bhd Partner Executive</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>EMP_11905413_Ee_Khoon_Soon</parentRole>
+</Role>

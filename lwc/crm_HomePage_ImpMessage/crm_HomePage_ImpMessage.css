@@ -1,0 +1,12 @@
+.custom-container{
+	color : black;
+}
+.slds-text-title_bold{
+	font-size: 14.0pt;
+}
+.body{
+    font-family: 'Salesforce Sans','Arial', 'sans-serif';
+	margin: 12px 0;
+	padding: 0 16px;
+	padding-top: 0;
+}

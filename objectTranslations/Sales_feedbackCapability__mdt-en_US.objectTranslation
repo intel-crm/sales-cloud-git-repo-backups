@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Sales_feedbackCapability</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Sales_feedbackCapabilities</value>
+    </caseValues>
+    <fields>
+        <label><!-- Active --></label>
+        <name>Active__c</name>
+    </fields>
+    <fields>
+        <label><!-- Capability --></label>
+        <name>Capability__c</name>
+        <picklistValues>
+            <masterLabel>Generate License</masterLabel>
+            <translation><!-- Generate License --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>License Chatbot</masterLabel>
+            <translation><!-- License Chatbot --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Split Seats</masterLabel>
+            <translation><!-- Split Seats --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>add new admin</masterLabel>
+            <translation><!-- add new admin --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>all computers</masterLabel>
+            <translation><!-- all computers --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>contact customer service</masterLabel>
+            <translation><!-- contact customer service --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>employee-and-evaluation-licenses</masterLabel>
+            <translation><!-- employee-and-evaluation-licenses --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>feedback</masterLabel>
+            <translation><!-- feedback --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>my-active-delegate-admins</masterLabel>
+            <translation><!-- my-active-delegate-admins --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>sales host</masterLabel>
+            <translation><!-- sales host --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>sales license</masterLabel>
+            <translation><!-- sales license --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -10,9 +10,5 @@ Modification Log    :
 
 ****************************************************************************************************************************/
 trigger PRM_Specialty_Trigger on PRM_Specialty__c (before update) {
-    // bypass added by Dinesh as part of IPA2.0 Refresh change
-    if(!FeatureManagement.checkPermission('PCC_Bypass_Automation')){
-    	new PRM_Specialty_Handler().run();    
-    }
-	
+	new PRM_Specialty_Handler().run();
 }

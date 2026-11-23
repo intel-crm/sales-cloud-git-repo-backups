@@ -33,6 +33,10 @@
         <field>Core_Product_Ext_Attribute__c$Name</field>
     </columns>
     <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Core_Product_Ext_Attribute__c$PSG_Restricted_Product__c</field>
+    </columns>
+    <columns>
         <field>Core_Product_Ext_Attribute__c.Products__r.SBQQ__Options__r$SBQQ__ProductName__c</field>
     </columns>
     <columns>

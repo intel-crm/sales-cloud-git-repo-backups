@@ -1,0 +1,16 @@
+<apex:page standardController="Opportunity_Solution_Area__c" recordSetVar="oppSolution">
+    <apex:includeLightning />    
+    <div id="SAComponentid" />    
+    <script>
+    $Lightning.use("c:Core_AddSolLightningApp", function() {
+        $Lightning.createComponent("c:Core_AddSolutionArea",
+        {         
+            "recordId"  : "{!$CurrentPage.parameters.id}"
+        },
+        'SAComponentid',
+        function(cmp) {
+            console.log('component created {!$CurrentPage.parameters.id}');
+          });
+    });
+    </script>
+</apex:page>

@@ -1,47 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
     <available>true</available>
-    <encodingKey>UTF-8</encodingKey>
+    <encodingKey>ISO-8859-1</encodingKey>
     <name>SCRUACCTADD_Korean</name>
     <style>none</style>
-    <subject>인텔® 파트너 얼라이언스 등록을 완료하는 데 필요한 조치</subject>
-    <textOnly>인텔® 파트너 얼라이언스 등록을 완료하는 데 필요한 조치
+    <subject>인텔 파트너 프로그램 신청에 대한 최종 단계 필요</subject>
+    <textOnly>{!Contact.FirstName},
 
+귀사의 관리자 또는 인텔 담당자가 {!Contact.Core_Account_Name__c} 의 인텔 파트너 프로그램 계정에 귀하를 추가했습니다. 계정을 활성화하고 혜택을 활용하려면 정보를 검토하고 법적 요건 섹션을 완료하십시오.
 
+또한 향후 참조할 수 있도록 로그인 정보를 보관해 두십시오.
 
+사용자 이름 : {!Contact.Name}
+이메일 주소 : {!Contact.Email}
+회사 이름 : {!Contact.Core_Account_Name__c}
+암호는 기밀로 보호해야 합니다. 인텔 웹사이트에서 이 암호를 사용하는 데는 각 해당 사이트의 웹 페이지 하단에 링크된 인텔 이용 약관이 적용됩니다.
 
-{!Contact.FirstName},
-
-축하합니다, 회사 관리자나 인텔 관리자가 귀하를 인텔® 파트너 얼라이언스 계정에 추가했습니다! 몇 단계만 거치면 등록이 완료됩니다.
-
-아래 프로필 정보가 생성되었습니다.
-
-이메일 주소: {!Contact.Email}
-회사 이름: {{ACCOUNTNAME}}
-인텔® 파트너 얼라이언스 비즈니스 ID: {{ACCOUNTNUMBER}}
-
-
-아래 링크를 클릭하여 등록을 완료하십시오.
-
-
-{{ButtonText}}
-
-
-위 링크에 액세스할 수 없습니까?
-{{EVLINK}}
-문의 사항이 있는 경우 {{SUPPORTLINK}}에 문의하십시오.
-귀하가 프로그램에 참여하시기를 기대하고 있겠습니다!
-감사합니다.
-인텔® 파트너 얼라이언스 팀
-
-
-이 메시지는 현재 인텔® 파트너 얼라이언스 관계와 관련된 중요한 비즈니스 커뮤니케이션으로 발송되었습니다.
-© {!$Label.PRM_CurrentYear} Intel Corporation
-Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
-개인정보 취급방침 | 쿠키
-
-
-__PRESENT</textOnly>
+지금 완료하기
+질문이 있으십니까? 여기에서 지원팀에 문의할 수 있습니다.</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

@@ -130,17 +130,20 @@
         <actionName>View</actionName>
         <comment>Action override created by Lightning App Builder during activation.</comment>
         <content>CPT_Territory_Assignment_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override updated by Lightning App Builder during activation.</comment>
+        <content>CPT_Territory_Assignment_Record_Page</content>
         <formFactor>Large</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <type>Default</type>
-    </actionOverrides>
-    <actionOverrides>
-        <actionName>View</actionName>
-        <formFactor>Small</formFactor>
         <type>Default</type>
     </actionOverrides>
     <allowInChatterGroups>false</allowInChatterGroups>
@@ -190,7 +193,7 @@
         <defaultValue>0</defaultValue>
         <description>Target Amount copied (using flow) from the corresponding field on the Territory Target record. If selected, this will roll up into the Quota Amount (for a given Division in Billings Revenue) of the Employee.</description>
         <inlineHelpText>Value is in whole dollars.</inlineHelpText>
-        <label>BR - CCG Target</label>
+        <label>BR - CCPG Target</label>
         <precision>12</precision>
         <required>false</required>
         <scale>0</scale>
@@ -202,7 +205,26 @@
         <fullName>CPT_BR_CCG__c</fullName>
         <defaultValue>false</defaultValue>
         <description>If checked, the Employee is part of BR CCG Division and the corresponding Target Amount is rolled up to the Quota for that Division.</description>
-        <label>BR - CCG</label>
+        <label>BR - CCPG</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CPT_BR_CSV_AMS_Target__c</fullName>
+        <inlineHelpText>Value is in whole dollars.</inlineHelpText>
+        <label>BR - CSV AMS Target</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>CPT_BR_CSV_AMS__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>BR - CSV AMS</label>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
@@ -214,7 +236,7 @@
         <precision>12</precision>
         <required>false</required>
         <scale>0</scale>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Currency</type>
     </fields>
@@ -222,7 +244,7 @@
         <fullName>CPT_BR_DCAI_DAIS__c</fullName>
         <defaultValue>false</defaultValue>
         <label>BR - DCAI Accelerator</label>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
@@ -270,7 +292,6 @@
     </fields>
     <fields>
         <fullName>CPT_BR_NEX_Ethernet_Target__c</fullName>
-        <defaultValue>0</defaultValue>
         <inlineHelpText>Value is in whole dollars.</inlineHelpText>
         <label>BR - DCAI Ethernet Target</label>
         <precision>12</precision>
@@ -284,6 +305,70 @@
         <fullName>CPT_BR_NEX_Ethernet__c</fullName>
         <defaultValue>false</defaultValue>
         <label>BR - DCAI Ethernet</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CPT_BR_NEX_Target__c</fullName>
+        <description>Target Amount copied (using flow) from the corresponding field on the Territory Target record. If selected, this will roll up into the Quota Amount (for a given Division in Billings Revenue) of the Employee.</description>
+        <inlineHelpText>Value is in whole dollars.</inlineHelpText>
+        <label>BR - NEX Target</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>CPT_BR_NEX__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>If checked, the Employee is part of BR NEX Division and the corresponding Target Amount is rolled up to the Quota for that Division.</description>
+        <label>BR - NEX</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CPT_BR_SATG_Target__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>Target Amount copied (using flow) from the corresponding field on the Territory Target record. If selected, this will roll up into the Quota Amount (for a given Division in Billings Revenue) of the Employee.</description>
+        <inlineHelpText>Value is in whole dollars.</inlineHelpText>
+        <label>BR - SATG Federal Target</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>CPT_BR_SATG__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>BR - SATG Federal</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CPT_CR_CCG_Chan_Ptr_Target__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>Target Amount copied (using flow) from the corresponding field on the Territory Target record. If selected, this will roll up into the Quota Amount (for a given Division in Consumption Revenue) of the Employee.</description>
+        <inlineHelpText>Value is in whole dollars.</inlineHelpText>
+        <label>CR - CCG Chan Ptr Target</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>CPT_CR_CCG_Chan_Ptr__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>If checked, the Employee is part of CR - CCG Chan Ptr and the corresponding Target Amount is rolled up to the Quota for that Division.</description>
+        <label>CR - CCG Chan Ptr</label>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
@@ -343,6 +428,28 @@
         <type>Currency</type>
     </fields>
     <fields>
+        <fullName>CPT_CR_DCAI_Chan_Ptr_Target__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>Target Amount copied (using flow) from the corresponding field on the Territory Target record. If selected, this will roll up into the Quota Amount (for a given Division in Consumption Revenue) of the Employee.</description>
+        <inlineHelpText>Value is in whole dollars.</inlineHelpText>
+        <label>CR - DCAI Chan Ptr Target</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>CPT_CR_DCAI_Chan_Ptr__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>If checked, the Employee is part of CR - DCAI Chan Ptr and the corresponding Target Amount is rolled up to the Quota for that Division.</description>
+        <label>CR - DCAI Chan Ptr</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>CPT_CR_DCAI_Target_V2__c</fullName>
         <formula>0</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
@@ -353,6 +460,49 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>CPT_CR_DCAI_nwCSP_Target__c</fullName>
+        <description>Target Amount copied (using flow) from the corresponding field on the Territory Target record. If selected, this will roll up into the Quota Amount (for a given Division in Consumption Revenue) of the Employee.</description>
+        <inlineHelpText>Value is in whole dollars.</inlineHelpText>
+        <label>CR - DCAI nwCSP Target</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>CPT_CR_DCAI_nwCSP__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>If checked, the Employee is part of CR - DCAI nwCSP and the corresponding Target Amount is rolled up to the Quota for that Division.</description>
+        <label>CR - DCAI nwCSP</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CPT_CR_NEX_Comms_Target__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>Target Amount copied (using flow) from the corresponding field on the Territory Target record. If selected, this will roll up into the Quota Amount (for a given Division in Billings Revenue) of the Employee.</description>
+        <inlineHelpText>Value is in whole dollars.</inlineHelpText>
+        <label>CR - NEX Comms Target</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>CPT_CR_NEX_Comms__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>If checked, the Employee is part of CPT_CR_NEX_Comms and the corresponding Target Amount is rolled up to the Quota for that Division.</description>
+        <label>CR - NEX Comms</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>CPT_CR_NEX_Target_V2__c</fullName>
@@ -419,6 +569,58 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CPT_DR_AXG_Target__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>Target Amount entered by the Manager. This will roll up into the Quota Amount for AXG Division in Deal Win Revenue of the Employee.</description>
+        <inlineHelpText>Enter value in whole dollars.</inlineHelpText>
+        <label>DR - AXG Target</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>CPT_DR_CCG_Target__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>Target Amount entered by the Manager. This will roll up into the Quota Amount for CCG Division in Deal Win Revenue of the Employee.</description>
+        <inlineHelpText>Enter value in whole dollars.</inlineHelpText>
+        <label>DR - CCG Target</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>CPT_DR_DCAI_Target__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>Target Amount entered by the Manager. This will roll up into the Quota Amount for DCAI Division in Deal Win Revenue of the Employee.</description>
+        <inlineHelpText>Enter value in whole dollars.</inlineHelpText>
+        <label>DR - DCAI Target</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>CPT_DR_NEX_Target__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>Target Amount entered by the Manager. This will roll up into the Quota Amount for NEX Division in Deal Win Revenue of the Employee.</description>
+        <inlineHelpText>Enter value in whole dollars.</inlineHelpText>
+        <label>DR - NEX Target</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
     </fields>
     <fields>
         <fullName>CPT_Employee_Name__c</fullName>
@@ -606,6 +808,24 @@
         <type>Checkbox</type>
     </fields>
     <fields>
+        <fullName>CPT_Margin_Account_Target__c</fullName>
+        <label>MARGIN - Account Target</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>CPT_Margin_Account__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>MARGIN - Account</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>CPT_Quota_Period__c</fullName>
         <description>The Quota Period for reference.</description>
         <externalId>false</externalId>
@@ -671,24 +891,73 @@
         <type>Text</type>
         <unique>true</unique>
     </fields>
+    <fields>
+        <fullName>CPT_Vol_Next_Gen_Target__c</fullName>
+        <externalId>false</externalId>
+        <label>VOL - Next Gen Target</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CPT_Vol_Next_Gen__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>VOL - Next Gen</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CPT_Wins_Deal_Target__c</fullName>
+        <label>Wins -Deal Target</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>CPT_Wins_Deal__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Wins - Deal</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CPT_Wins_Design_Target__c</fullName>
+        <label>Wins -Design Target</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>CPT_Wins_Design__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Wins - Design</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
     <label>Territory Assignment</label>
     <listViews>
         <fullName>All_Records</fullName>
         <columns>NAME</columns>
         <columns>CPT_Territory_Name__c</columns>
         <columns>CPT_Quota_Setup__c</columns>
-        <columns>CPT_BR_All_Target__c</columns>
         <columns>CPT_BR_CCG_Target__c</columns>
         <columns>CPT_BR_DCAI_Target__c</columns>
         <columns>CPT_CR_OEM_Target__c</columns>
         <columns>CPT_CR_Retail_Target__c</columns>
         <columns>CPT_CR_Partner_Target__c</columns>
-        <columns>CPT_MarVol_Margin_CCG_Target__c</columns>
-        <columns>CPT_MarVol_Margin_DCG_Target__c</columns>
-        <columns>CPT_MarVol_Next_Gen_CCG_LNL_Target__c</columns>
-        <columns>CPT_MarVol_Next_Gen_CCG_PTL_Target__c</columns>
-        <columns>CPT_MarVol_Next_Gen_CCG_WCL_Target__c</columns>
-        <columns>CPT_MarVol_Next_Gen_DCG_GNR_Target__c</columns>
         <filterScope>Everything</filterScope>
         <label>All Records</label>
         <sharedTo>
@@ -702,14 +971,26 @@
         <columns>CPT_Territory_Name__c</columns>
         <columns>CPT_Quota_Setup__c</columns>
         <columns>CPT_Territory_Target__c</columns>
-        <columns>CPT_BR_All__c</columns>
-        <columns>CPT_BR_All_Target__c</columns>
         <columns>CPT_BR_CCG__c</columns>
         <columns>CPT_BR_CCG_Target__c</columns>
         <columns>CPT_BR_DCAI__c</columns>
         <columns>CPT_BR_DCAI_Target__c</columns>
         <filterScope>Everything</filterScope>
         <label>My Team&apos;s Assignments - BR</label>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>My_Team_s_Assignments_BR_SATG_Fed</fullName>
+        <columns>NAME</columns>
+        <columns>CPT_Employee_Name__c</columns>
+        <columns>CPT_Manager_Name__c</columns>
+        <columns>CPT_Territory_Name__c</columns>
+        <columns>CPT_BR_SATG__c</columns>
+        <columns>CPT_BR_SATG_Target__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>My Team&apos;s Assignments–BR (SATG Federal)</label>
         <sharedTo>
             <allInternalUsers></allInternalUsers>
         </sharedTo>
@@ -734,6 +1015,37 @@
         </sharedTo>
     </listViews>
     <listViews>
+        <fullName>My_Team_s_Assignments_CR_Partner</fullName>
+        <columns>NAME</columns>
+        <columns>CPT_Employee_Name__c</columns>
+        <columns>CPT_Territory_Name__c</columns>
+        <columns>CPT_CR_CCG_Chan_Ptr__c</columns>
+        <columns>CPT_CR_CCG_Chan_Ptr_Target__c</columns>
+        <columns>CPT_CR_DCAI_Chan_Ptr__c</columns>
+        <columns>CPT_CR_DCAI_Chan_Ptr_Target__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>My Team&apos;s Assignments - CR (Partner)</label>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>My_Team_s_Assignments_DR</fullName>
+        <columns>NAME</columns>
+        <columns>CPT_Employee_Name__c</columns>
+        <columns>CPT_Manager_Name__c</columns>
+        <columns>CPT_Territory_Name__c</columns>
+        <columns>CPT_DR_CCG_Target__c</columns>
+        <columns>CPT_DR_DCAI_Target__c</columns>
+        <columns>CPT_DR_NEX_Target__c</columns>
+        <columns>CPT_DR_AXG_Target__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>My Team&apos;s Assignments - DR</label>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
         <fullName>My_Team_s_Assignments_MARGINVOLUME</fullName>
         <columns>NAME</columns>
         <columns>CPT_Territory_Name__c</columns>
@@ -751,6 +1063,31 @@
         <columns>CPT_Locked_Status__c</columns>
         <filterScope>Everything</filterScope>
         <label>My Team&apos;s Assignments - MARGINVOLUME</label>
+    </listViews>
+    <listViews>
+        <fullName>Test_Data</fullName>
+        <columns>NAME</columns>
+        <columns>CPT_BR_All_Target__c</columns>
+        <columns>CPT_BR_Intel_AI_PC_Target__c</columns>
+        <columns>CPT_BR_DCAI_DAIS_Target__c</columns>
+        <columns>CPT_BR_NEX_Ethernet_Target__c</columns>
+        <columns>CPT_BR_CCG_Target__c</columns>
+        <columns>CPT_BR_CSV_AMS_Target__c</columns>
+        <columns>CPT_BR_DCAI_Target__c</columns>
+        <columns>CPT_BR_NEX_Target__c</columns>
+        <columns>CPT_BR_SATG_Target__c</columns>
+        <columns>CPT_CR_CCG_Consumer_Target__c</columns>
+        <columns>CPT_Employee_Name__c</columns>
+        <columns>CPT_Territory_Target__c</columns>
+        <columns>CPT_Quota_Setup__c</columns>
+        <columns>CPT_Inactive__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CPT_Employee_Name__c</field>
+            <operation>contains</operation>
+            <value>Sample</value>
+        </filters>
+        <label>Test Data</label>
     </listViews>
     <nameField>
         <displayFormat>TA-{000000}</displayFormat>
@@ -774,14 +1111,22 @@
     </searchLayouts>
     <sharingModel>ControlledByParent</sharingModel>
     <validationRules>
+        <fullName>CPT_Block_TA_Update_When_QS_Completed</fullName>
+        <active>true</active>
+        <errorConditionFormula>ISPICKVAL(
+    CPT_Quota_Setup__r.CPT_Stage__c,
+    &quot;Completed&quot;
+)</errorConditionFormula>
+        <errorMessage>This Territory Assignment cannot be updated because its Quota Setup is Completed.</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>CPT_Prevent_BR_Territory_BU_Update</fullName>
         <active>true</active>
         <description>Rule to make sure that the Employee cannot be a part of BU if the corresponding Target Amount is zero.</description>
         <errorConditionFormula>OR
 (
   AND(CPT_BR_CCG__c, OR(CPT_BR_CCG_Target__c = 0, ISNULL(CPT_BR_CCG_Target__c))),
-  AND(CPT_BR_DCAI__c, OR(CPT_BR_DCAI_Target__c= 0, ISNULL(CPT_BR_DCAI_Target__c))),
-  AND(CPT_BR_All__c, OR(CPT_BR_All_Target__c = 0, ISNULL(CPT_BR_All_Target__c)))
+  AND(CPT_BR_DCAI__c, OR(CPT_BR_DCAI_Target__c= 0, ISNULL(CPT_BR_DCAI_Target__c)))
 )</errorConditionFormula>
         <errorMessage>The Billings Revenue Target for the Business Unit (BU) must exceed $0 to assign the BU to the employee.</errorMessage>
     </validationRules>
@@ -798,12 +1143,60 @@ AND(CPT_CR_Retail__c, OR(CPT_CR_Retail_Target__c= 0, ISNULL(CPT_CR_Retail_Target
         <errorMessage>To assign a CR-KPI to an employee, the Consumption Revenue Target for the CR-KPI must be greater than $0.</errorMessage>
     </validationRules>
     <validationRules>
+        <fullName>CPT_Prevent_MARGIN_Territory_BU_Update</fullName>
+        <active>true</active>
+        <description>Rule to make sure that the Employee cannot be a part of BU if the corresponding Target Amount is zero.</description>
+        <errorConditionFormula>OR
+(
+AND(CPT_Margin_Account__c, OR(CPT_Margin_Account_Target__c = 0, ISNULL(CPT_Margin_Account_Target__c)))
+)</errorConditionFormula>
+        <errorMessage>The Margin Target for the Business Unit (BU) must exceed $0 to assign the BU to the employee.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CPT_Prevent_Multiple_TT_CR_120and122</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(
+    OR(
+        ISPICKVAL(CPT_Quota_Setup__r.CPT_Plan__c, &quot;120&quot;),
+        ISPICKVAL(CPT_Quota_Setup__r.CPT_Plan__c, &quot;122&quot;)
+    ),
+    (
+        IF(CPT_CR_OEM__c, 1, 0) +
+        IF(CPT_CR_Partner__c, 1, 0)
+    ) &gt; 1
+)</errorConditionFormula>
+        <errorMessage>For Plans 120 and 122, select either Consumption Revenue OEM or Partner, not both, on this Territory Assignment.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CPT_Prevent_Multiple_TT_CR_240</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(
+    ISPICKVAL(CPT_Quota_Setup__r.CPT_Plan__c, &quot;240&quot;),
+    (
+       
+        IF(CPT_CR_Retail__c, 1, 0) +
+        IF(CPT_CR_Partner__c, 1, 0)
+    ) &gt; 1
+)</errorConditionFormula>
+        <errorMessage>For Plan 240, select either Consumption Revenue Partner or Retail, not both, on this Territory Assignment.</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>CPT_Prevent_Territory_Target_Update</fullName>
         <active>true</active>
         <description>Prevent the users from changing the Target value.</description>
         <errorConditionFormula>ISCHANGED(CPT_Territory_Target__c)</errorConditionFormula>
         <errorDisplayField>CPT_Territory_Target__c</errorDisplayField>
         <errorMessage>You do not have permission to make updates to the Target field.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CPT_Prevent_VOL_Territory_BU_Update</fullName>
+        <active>true</active>
+        <description>Rule to make sure that the Employee cannot be a part of BU if the corresponding Target Amount is zero.</description>
+        <errorConditionFormula>OR
+(
+AND(CPT_Vol_Next_Gen__c, OR(CPT_Vol_Next_Gen_Target__c = 0, ISNULL(CPT_Vol_Next_Gen_Target__c)))
+)</errorConditionFormula>
+        <errorMessage>The Volume Target for the Business Unit (BU) must exceed $0 to assign the BU to the employee.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>CPT_Restrict_Update_OnLockedRecord</fullName>

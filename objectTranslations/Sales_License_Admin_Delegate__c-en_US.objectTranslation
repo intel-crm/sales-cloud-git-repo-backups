@@ -66,6 +66,10 @@
         <label><!-- Is Logged In User Primary Admin --></label>
         <name>Sales_LoggedInUserPrimaryAdmin__c</name>
     </fields>
+    <recordTypes>
+        <label><!-- License Admin Delegate Record Type --></label>
+        <name>Sales_License_All_Internal_Users</name>
+    </recordTypes>
     <startsWith>Consonant</startsWith>
     <validationRules>
         <errorMessage><!-- Delegate Admin Contact and Primary Admin Contact cannot be same. --></errorMessage>

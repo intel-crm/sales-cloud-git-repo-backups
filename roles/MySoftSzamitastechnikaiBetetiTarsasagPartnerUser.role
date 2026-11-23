@@ -6,5 +6,5 @@
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>MySoft Szamitastechnikai Beteti Tarsasag Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>MySoftSzamitastechnikaiBetetiTarsasagPartnerManager</parentRole>
 </Role>

@@ -172,9 +172,6 @@
             <sourceValues>
                 <sourceValue>PSG-PG-Software!</sourceValue>
             </sourceValues>
-            <sourceValues>
-                <sourceValue>PSG-SJ-Board-Design!</sourceValue>
-            </sourceValues>
             <value>Factory APPS</value>
         </values>
     </buckets>
@@ -272,6 +269,9 @@
         </values>
         <values>
             <sourceValues>
+                <sourceValue>PSG-SJ-CQE!</sourceValue>
+            </sourceValues>
+            <sourceValues>
                 <sourceValue>PSG-SJ-DLA!</sourceValue>
             </sourceValues>
             <sourceValues>
@@ -291,9 +291,6 @@
             </sourceValues>
             <sourceValues>
                 <sourceValue>PSG-SH-Board-Design</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>PSG-SJ-Board-Design!</sourceValue>
             </sourceValues>
             <value>SJ APPS</value>
         </values>
@@ -372,15 +369,12 @@
         <summaryAxisRange>Auto</summaryAxisRange>
         <textColor>#000000</textColor>
         <textSize>12</textSize>
-        <title>Obsolete-Average Age of Closed Cases</title>
+        <title>Average Age of Closed Cases</title>
         <titleColor>#000000</titleColor>
         <titleSize>18</titleSize>
     </chart>
     <columns>
         <field>CASE_NUMBER</field>
-    </columns>
-    <columns>
-        <field>Case.Core_Case_Resolution_Reason__c</field>
     </columns>
     <columns>
         <field>OWNER</field>
@@ -455,27 +449,6 @@
             <operator>equals</operator>
             <value>WWRAE</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>CREATED_DATE</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>greaterOrEqual</operator>
-            <value>1/1/2022 12:00 AM</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Case.Core_IPS_Assigned_Queue__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>-FACR</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>CONTACT.ACCOUNT</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>IPS Test Account</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
@@ -494,7 +467,7 @@
         <field>BucketField_34782821</field>
         <sortOrder>Desc</sortOrder>
     </groupingsDown>
-    <name>Obsolete-TAT28 GEO WWRAE</name>
+    <name>TAT28 GEO WWRAE</name>
     <params>
         <name>units</name>
         <value>d</value>
@@ -505,11 +478,12 @@
     </params>
     <reportType>CaseList</reportType>
     <scope>organization</scope>
-    <showDetails>false</showDetails>
+    <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSED_DATEONLY</dateColumn>
-        <interval>INTERVAL_CURY</interval>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2019-01-01</startDate>
     </timeFrameFilter>
 </Report>

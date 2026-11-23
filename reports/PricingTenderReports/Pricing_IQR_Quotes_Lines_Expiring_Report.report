@@ -7,9 +7,6 @@
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Quote_Line_Number__c</field>
     </columns>
     <columns>
-        <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Status_Nm__c</field>
-    </columns>
-    <columns>
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Program_Type_Nm__c</field>
     </columns>
     <columns>
@@ -140,10 +137,10 @@
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Rejection_Comments_nm__c</field>
     </columns>
     <columns>
-        <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Lost_Reason_Nm__c</field>
+        <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Won_Lost_Comments_Txt__c</field>
     </columns>
     <columns>
-        <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Won_Lost_Comments_Txt__c</field>
+        <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Lost_Reason_Nm__c</field>
     </columns>
     <columns>
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_End_Date_dt__c</field>
@@ -244,7 +241,7 @@
     <columns>
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$LastModifiedDate</field>
     </columns>
-    <description>Quote lines with an Approved Pricing End Date within 30 days in the past and 30 days in the future</description>
+    <description>This report will show the quote lines expired in last 30 days and going to expire in next 30 days.</description>
     <filter>
         <booleanFilter>1 AND 2 AND 3 AND (4 OR 5)</booleanFilter>
         <criteriaItems>

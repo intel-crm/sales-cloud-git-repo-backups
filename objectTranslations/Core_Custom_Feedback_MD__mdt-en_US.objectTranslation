@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Custom Feedback MD</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Custom Feedback MD</value>
+    </caseValues>
+    <fields>
+        <label><!-- Active? --></label>
+        <name>Core_Active__c</name>
+    </fields>
+    <fields>
+        <label><!-- Elapsed Days --></label>
+        <name>Core_Elapsed_Days__c</name>
+    </fields>
+    <fields>
+        <label><!-- Filtering Field --></label>
+        <name>Core_Filtering_Field__c</name>
+    </fields>
+    <fields>
+        <label><!-- Header Message Negative --></label>
+        <name>Core_Header_Message_Negative__c</name>
+    </fields>
+    <fields>
+        <label><!-- Header Message Positive --></label>
+        <name>Core_Header_Message_Positive__c</name>
+    </fields>
+    <fields>
+        <label><!-- Object Name --></label>
+        <name>Core_Object_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Process Name --></label>
+        <name>Core_Process_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Skipped Feedback Elapsed Days --></label>
+        <name>Core_Skipped_Feedback_Elapsed_Days__c</name>
+    </fields>
+    <fields>
+        <label><!-- Value --></label>
+        <name>Core_Value__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

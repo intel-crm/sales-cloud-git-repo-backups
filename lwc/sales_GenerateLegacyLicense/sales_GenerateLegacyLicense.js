@@ -1,5 +1,5 @@
 import { LightningElement,api } from 'lwc';
-/*import { ShowToastEvent } from 'lightning/platformShowToastEvent';
+import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import validateComputer from '@salesforce/apex/Sales_LicenseRecordPageComponentsUtility.validateComputerId';
 import generateLicenseFile from '@salesforce/apex/Sales_LicenseGenIntegration_Utility.returnHostIdDetail';
 import invalidPrimaryComputerId from '@salesforce/label/c.Sales_InvalidCompId_Msg';     
@@ -18,13 +18,13 @@ import Sales_Sorrymsg from '@salesforce/label/c.Sales_Sorrymsg';
 import Sales_ermsg from '@salesforce/label/c.Sales_ermsg';
 import Sales_Failuremsg from '@salesforce/label/c.Sales_Failuremsg';
 //import Sales_getlegacylic from '@salesforce/label/c.Sales_getlegacylic';
-*/
+
 
 
  
              
 export default class Sales_GenerateLegacyLicense extends LightningElement {
-/*@api computerInput ;
+@api computerInput ;
 @api hostId;
 //custom labels 
 label = {
@@ -119,5 +119,5 @@ reloadPage() {
     setTimeout(function () {
         location.reload(true);
     }, 2000);
-}*/
+}
 }

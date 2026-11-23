@@ -92,13 +92,27 @@
     <description>COVID-19: All Opps At Risk with Products At Risk
 (Detailed view - One line per Oppty Product)</description>
     <filter>
-        <booleanFilter>1</booleanFilter>
+        <booleanFilter>1 OR 2 OR 3</booleanFilter>
+        <criteriaItems>
+            <column>Opportunity.Core_Support_Requested__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>COVID-19</value>
+        </criteriaItems>
         <criteriaItems>
             <column>OpportunityLineItem.Core_Risk_Reason1__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value></value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OpportunityLineItem.Core_Risk_Reason2__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>COVID-19</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -132,6 +146,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
+        <endDate>2026-11-23</endDate>
         <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

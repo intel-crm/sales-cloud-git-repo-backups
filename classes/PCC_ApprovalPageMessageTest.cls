@@ -30,7 +30,6 @@ private class PCC_ApprovalPageMessageTest {
             System.assertEquals(true, hasPermission, 'The user should have the permission set assigned.');
         }
     }
-
     @isTest
     static void testHasPreapproverPermissionSet() {
         // Set up test data
@@ -139,9 +138,11 @@ private class PCC_ApprovalPageMessageTest {
             dealRec[0].Core_End_Customer_Account_Id__c=LstAcc[0].id;
             dealRec[0].PCC_Approval_Level__c='Level 1' ; 
             dealRec[0].L2_Approver__c = testUser.id;  
+            dealRec[0].Level2_approver_type__c='L2 Approver';
             dealRec[0].Core_Approver_Grp_Nm__c='AGS_Deal Reg- ASMO';            
             dealRec[0].recordTypeId =  dealRecordTypeIDLocked;
             insert dealRec;
+            dealRec[0].Level2_approver_type__c='L2 Approver';
             dealRec[0].Core_Approver_Grp_Nm__c='AGS_Deal Reg- ASMO';    
             update dealRec;
             System.debug('l222222222--->'+dealRec[0].L2_Approver__c);

@@ -153,7 +153,19 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <externalSharingModel>Private</externalSharingModel>
+    <externalSharingModel>ReadWrite</externalSharingModel>
+    <fields>
+        <fullName>CoreExceptionProjectInfo__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Display the most frequently occurring exceptions for every project (project info is captured as part of DP_EAT)</description>
+        <label>CoreExceptionProjectInfo</label>
+        <referenceTo>DP_EAT_Project_Info__c</referenceTo>
+        <relationshipLabel>Core Exceptions</relationshipLabel>
+        <relationshipName>Core_Exceptions</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
     <fields>
         <fullName>Core_Class_Name__c</fullName>
         <externalId>false</externalId>
@@ -240,31 +252,25 @@
         <type>Text</type>
         <unique>false</unique>
     </fields>
+    <fields>
+        <fullName>Core_Unhandled_Exception__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>This field will mark true or false if the exception is handled or not into Core Exception Object</description>
+        <label>Core Unhandled Exception</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
     <label>Core Exception</label>
     <listViews>
         <fullName>All_This_Week</fullName>
         <columns>NAME</columns>
         <columns>OWNER.FIRST_NAME</columns>
         <columns>OWNER.LAST_NAME</columns>
-        <columns>Core_Class_Name__c</columns>
-        <columns>Core_Method_Name__c</columns>
-        <columns>Core_IPS_Object_Name__c</columns>
-        <columns>Core_Record_Id__c</columns>
         <columns>CREATEDBY_USER</columns>
         <columns>CREATED_DATE</columns>
         <columns>UPDATEDBY_USER</columns>
         <columns>LAST_UPDATE</columns>
         <filterScope>Everything</filterScope>
-        <filters>
-            <field>CREATED_DATE</field>
-            <operation>equals</operation>
-            <value>THIS_WEEK</value>
-        </filters>
-        <filters>
-            <field>Core_IPS_Object_Name__c</field>
-            <operation>equals</operation>
-            <value>Lead</value>
-        </filters>
         <label>All- This Week</label>
         <language>en_US</language>
     </listViews>

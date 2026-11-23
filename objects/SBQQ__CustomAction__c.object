@@ -1831,6 +1831,21 @@
                     <label>Add PSG Products</label>
                 </value>
                 <value>
+                    <fullName>Get Predicted Price</fullName>
+                    <default>false</default>
+                    <label>Get Predicted Price</label>
+                </value>
+                <value>
+                    <fullName>Classify Price</fullName>
+                    <default>false</default>
+                    <label>Classify Price</label>
+                </value>
+                <value>
+                    <fullName>Alert: Selected Product is &quot;PSG Restricted Product&quot;</fullName>
+                    <default>false</default>
+                    <label>Alert: Selected Product is &quot;PSG Restricted Product&quot;</label>
+                </value>
+                <value>
                     <fullName>Add Software Products</fullName>
                     <default>false</default>
                     <label>Add Software Products</label>

@@ -20,7 +20,7 @@ global without sharing class UCD_BizOrgRequestModel {
 		public Boolean IsDuplicate{get;set;}
 		public List<AccountRequestReference> AccountRequestReferences {get;set;}
 		public String ParentBusinessPartyIdentifierReference {get;set;}
-		public String CustomerURL {get;set;}
+		public String CustomerUrl {set;get;}
 	}
     
     

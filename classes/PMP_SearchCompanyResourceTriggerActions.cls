@@ -8,10 +8,10 @@ Description : Trigger handler for PMP_SearchPartnerTierTrigger
 * ---------------------------------------------------------------------------- 
 * Prabuddh                  04/07/2019               Original Version
 *************************************************************************************/
-public WithOut Sharing class PMP_SearchCompanyResourceTriggerActions {
-        
+public class PMP_SearchCompanyResourceTriggerActions {
+		
     
-  /*  public static void updateCompanyResource(List<PMP_Company_Resource__c> newResourceList , Map<Id,PMP_Company_Resource__c> newMap,Map<Id,PMP_Company_Resource__c> oldMap, Boolean triggerContext){
+    public static void updateCompanyResource(List<PMP_Company_Resource__c> newResourceList , Map<Id,PMP_Company_Resource__c> newMap,Map<Id,PMP_Company_Resource__c> oldMap, Boolean triggerContext){
         List<ContentDistribution> cdtList = new List<ContentDistribution>();
         List<Id> delIds = new List<Id>();
         List<ContentDistribution> delList = new List<ContentDistribution>();
@@ -34,11 +34,11 @@ public WithOut Sharing class PMP_SearchCompanyResourceTriggerActions {
         for(PMP_Company_Resource__c compRes: partner_resources) {
             
             if(compRes.PMP_Company_Image__c != NULL) { 
-                conDocIds.add(compRes.PMP_Company_Image__c);
-            }   
+            	conDocIds.add(compRes.PMP_Company_Image__c);
+            }	
         }
         if(conDocIds.size() > 0) {
-                
+            	
             for(ContentVersion cv : [SELECT Id,ContentDocumentId FROM ContentVersion WHERE ContentDocumentId IN :conDocIds]) {
                 conDocIdAndConVerId.put(cv.ContentDocumentId, cv.Id);
             }
@@ -55,7 +55,13 @@ public WithOut Sharing class PMP_SearchCompanyResourceTriggerActions {
                     if(contDocId != NULL) {
                         resVerMap.put(res.Id, conDocIdAndConVerId.get(contDocId)); 
                     }
-                    
+                	/*
+                    if(conDocIds!=null){
+                          
+                        for(ContentVersion cv:[select id,ContentDocumentId from ContentVersion where ContentDocumentId=:contDocId]){
+                            resVerMap.put(res.Id,cv.Id);
+                        }
+                    }*/
                 }
             }
         
@@ -114,8 +120,8 @@ public WithOut Sharing class PMP_SearchCompanyResourceTriggerActions {
             delete delCds;
         }
         
-    } 
-*/
+    }
+
 /*    
     public static void insertCompanyResource(List<PMP_Company_Resource__c> newResourceList , Map<Id,PMP_Company_Resource__c> newMap, Boolean triggerContext){
         List<ContentDistribution> cdtList = new List<ContentDistribution>();
@@ -187,7 +193,7 @@ public WithOut Sharing class PMP_SearchCompanyResourceTriggerActions {
         
     }
 */    
-   /* public static void createContentDistribution(List<PMP_Company_Resource__c> partner_resources){
+    public static void createContentDistribution(List<PMP_Company_Resource__c> partner_resources){
         try{
             //Variable Declarations
             List<ContentDistribution> contentDistributions = new List<ContentDistribution>();
@@ -220,7 +226,7 @@ public WithOut Sharing class PMP_SearchCompanyResourceTriggerActions {
                        cdlList.add(cdl);
                     }
                 }
-            }
+        	}
             
             for(PMP_Company_Resource__c iResource: imageRelatedPartnerResources){
                 //Instantianting content Distribution record and adding it to a list
@@ -244,8 +250,8 @@ public WithOut Sharing class PMP_SearchCompanyResourceTriggerActions {
         catch(exception e){
             system.debug(e.getMessage());
         }
-    } */
-   /* public static contentDistribution getContentDistributionInstance(Id contVersionId, string contVersionName, Id partnerid){
+    }
+    public static contentDistribution getContentDistributionInstance(Id contVersionId, string contVersionName, Id partnerid){
         
         ContentDistribution cdi = new ContentDistribution();
         cdi.ContentVersionId = contVersionId; //Assigning Content Version Id
@@ -258,7 +264,7 @@ public WithOut Sharing class PMP_SearchCompanyResourceTriggerActions {
         cdi.RelatedRecordId=partnerid;  // Assigning related record id as partner Id to which partner resource is attached
         return cdi;    
         
-    } */
+    } 
     
     /**
     * @description Method to create content Asset for the Company resource
@@ -281,50 +287,41 @@ public WithOut Sharing class PMP_SearchCompanyResourceTriggerActions {
                 if(resource.PMP_Company_Resource_Type_Nm__c == PMP_StaticConstants_partner.IMAGE || resource.PMP_Company_Resource_Type_Nm__c == PMP_StaticConstants_partner.THUMBNAIL_IMAGE){
                     if(resource.PMP_Company_Image__c!=null && resource.PMP_Company_Image__c!=''){
                         contDocIds.add(Id.valueof(resource.PMP_Company_Image__c));
+                        
+                        system.debug('Content Asset Creation Start');
                         contentAsset ca = getContentAssetInstance(Id.valueof(resource.PMP_Company_Image__c),resource.Id,resource.PMP_Company_Id__c); //creation of new content asset
                         contentAssetList.add(ca); //Add the created asset to a list for insertion outside loop
+                        
+                        system.debug('Content Asset List inside loop'+contentAssetList);
                         contentAssetMap.put(Id.valueof(resource.PMP_Company_Image__c),ca.DeveloperName); //Populating content document id and content asset name to a map : This will be used later to populate content asset id on content document
                     }    
                 }
             }
             
             if(!contentAssetList.isEmpty()){
-               //insert contentAssetList;  //inserting content asset
-               Database.SaveResult[] caList = Database.insert(contentAssetList, false);
-			   PMP_Utility.logDmlErrors((Object[]) caList, 'PMP_SearchCompanyResourceTriggerActions-createContentAsset');
-
-
+               insert contentAssetList;  //inserting content asset
+               system.debug('Content Asset List inserted');
             }
             
             for(contentAsset ca: contentAssetList){
+            system.debug('Content Asset List qery');
                 contentAssetIdByName.put(ca.DeveloperName,ca.Id);  //populating content asset name and content asset id in a map : With the help of this map we will retrieve the data from contentAssetMap
+                system.debug('contentAssetIdByName'+contentAssetIdByName);  
             }
             
             for(contentDocument cd: [select Id,ContentAssetId from contentDocument where Id IN:contDocIds]){
                cd.ContentAssetId = contentAssetIdByName.get(contentAssetMap.get(cd.Id));  //Querying content document in order to update content asset on same
+               system.debug('cd.ContentAssetId'+cd.ContentAssetId);
                cdList.add(cd);
                
             }
            
             if(!cdList.isEmpty()){
-               //update cdList; //Updating content document
-                Database.SaveResult[] cList = Database.update(cdList, false);
-			    PMP_Utility.logDmlErrors((Object[]) cList, 'PMP_SearchCompanyResourceTriggerActions-createContentAsset');
-            }  
-            
-            getContentDocumentList(contDocIds,cdlList);
-         
-            if(!cdlList.isEmpty()){
-                //update cdlList;
-                Database.SaveResult[] cdlList1 = Database.update(cdlList, false);
-			    PMP_Utility.logDmlErrors((Object[]) cdlList1, 'PMP_SearchCompanyResourceTriggerActions-createContentAsset');
-
-            }
-               
+               update cdList; //Updating content document
+            }     
             
         }catch(exception e){
-           PMP_Utility.logError(e,'PMP_SearchCompanyResourceTriggerActions');
-
+            system.debug(e.getMessage());
         }
         
     }
@@ -343,50 +340,38 @@ public WithOut Sharing class PMP_SearchCompanyResourceTriggerActions {
         return ca;          
     }
     
-    public static void getContentDocumentList(Set<Id> contDocIds,List<contentDocumentLink> cdlList){
-          if(!contDocIds.isEmpty()){
-                for(ContentDocumentLink cdl:[select ContentDocumentId,Id,ShareType,Visibility from ContentDocumentLink where ContentDocumentId IN: contDocIds]){
-                    if(cdl.Visibility != 'AllUsers'){
-                       cdl.Visibility = 'AllUsers';
-                       cdl.ShareType = 'I';
-                       cdlList.add(cdl);
-                    }
-                }
-            } 
-    }
-    
     /**
     * @description Method to delete content Asset for the offering resource
     * @param List
     * @return void
     * * User story - US 524658 - Added by Manasa
     **/
-    // public static void deleteContentAsset(List<PMP_Company_Resource__c> partner_resources){
-    //     Set<Id> contDocIds = new Set<Id>();
-    //     Set<Id> contentAssetIds = new Set<Id>();
-    //     List<ContentAsset> contentAssetList = new List<ContentAsset>();
+    public static void deleteContentAsset(List<PMP_Company_Resource__c> partner_resources){
+        Set<Id> contDocIds = new Set<Id>();
+        Set<Id> contentAssetIds = new Set<Id>();
+        List<ContentAsset> contentAssetList = new List<ContentAsset>();
         
-    //     //system.debug('*******partner_resources***in delete method****'+partner_resources);
-    //     for(PMP_Company_Resource__c resource: partner_resources){
-    //         //Check if the resource type is an image/thumbnail image then add all the content document Ids to a set
-    //         if(resource.PMP_Company_Resource_Type_Nm__c == PMP_StaticConstants_partner.IMAGE || resource.PMP_Company_Resource_Type_Nm__c == PMP_StaticConstants_partner.THUMBNAIL_IMAGE){
-    //             if(resource.PMP_Company_Image__c!=null && resource.PMP_Company_Image__c!=''){
-    //                 contDocIds.add(Id.valueof(resource.PMP_Company_Image__c));  //storing content document ids in a set
-    //             }    
-    //         }
-    //     }
+        system.debug('*******partner_resources***in delete method****'+partner_resources);
+        for(PMP_Company_Resource__c resource: partner_resources){
+            //Check if the resource type is an image/thumbnail image then add all the content document Ids to a set
+            if(resource.PMP_Company_Resource_Type_Nm__c == PMP_StaticConstants_partner.IMAGE || resource.PMP_Company_Resource_Type_Nm__c == PMP_StaticConstants_partner.THUMBNAIL_IMAGE){
+                if(resource.PMP_Company_Image__c!=null && resource.PMP_Company_Image__c!=''){
+                    contDocIds.add(Id.valueof(resource.PMP_Company_Image__c));  //storing content document ids in a set
+                }    
+            }
+        }
         
-    //     for(contentDocument cd: [select Id,ContentAssetId from contentDocument where Id IN:contDocIds]){ //querying content documents in order to get corresponding content assets
-    //         contentAssetIds.add(cd.ContentAssetId);  //Querying content document in order to delete content asset     
-    //     }
+        for(contentDocument cd: [select Id,ContentAssetId from contentDocument where Id IN:contDocIds]){ //querying content documents in order to get corresponding content assets
+            contentAssetIds.add(cd.ContentAssetId);  //Querying content document in order to delete content asset     
+        }
         
-    //     for(contentAsset ca: [select Id from contentAsset where Id IN:contentAssetIds]){
-    //         contentAssetList.add(ca);  //Querying content Asser in order to delete     
-    //     }
-         
-    //     if(!contentAssetList.isEmpty()){
-    //        delete contentAssetList; //Deleting content Asset
-    //     }
+        for(contentAsset ca: [select Id from contentAsset where Id IN:contentAssetIds]){
+            contentAssetList.add(ca);  //Querying content Asser in order to delete     
+        }
         
-    // }
+        if(!contentAssetList.isEmpty()){
+           delete contentAssetList; //Deleting content Asset
+        }
+        
+    }
 }

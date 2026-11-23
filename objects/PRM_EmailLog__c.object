@@ -158,15 +158,6 @@
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
     <fields>
-        <fullName>Email_Reminder__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>This field will be used for sending the reminders on pending action PCR&apos;s</description>
-        <label>Email_Reminder</label>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
         <fullName>Email_Template_ID__c</fullName>
         <externalId>false</externalId>
         <label>Email Template ID</label>
@@ -198,31 +189,6 @@
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>PMP_Company__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <label>Marketing Profile Information</label>
-        <referenceTo>PMP_Company__c</referenceTo>
-        <relationshipLabel>EmailLogs</relationshipLabel>
-        <relationshipName>EmailLogs</relationshipName>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>PMP_Partner_Offering__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <description>This holds the offering for which the email is logged</description>
-        <label>Partner Offering</label>
-        <referenceTo>PMP_Partner_Offering__c</referenceTo>
-        <relationshipLabel>EmailLogs</relationshipLabel>
-        <relationshipName>EmailLogs</relationshipName>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Lookup</type>
     </fields>
     <fields>
         <fullName>PRM_Contact__c</fullName>
@@ -273,55 +239,6 @@
         <visibleLines>4</visibleLines>
     </fields>
     <fields>
-        <fullName>PRM_EnterpriseId__c</fullName>
-        <externalId>false</externalId>
-        <formula>PRM_Contact__r.Core_Enterprise_Id__c</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>EnterpriseId</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>PRM_IPA_Registration_Request__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <label>IPA Registration Request</label>
-        <referenceTo>PRM_Registration_Request__c</referenceTo>
-        <relationshipLabel>EmailLogs</relationshipLabel>
-        <relationshipName>EmailLogs</relationshipName>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>PRM_IsEmailPublished__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>Checked to true only when Publishing Emails to External System using Data Loading Tool</description>
-        <label>IsEmailPublished</label>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>PRM_Is_Deleted__c</fullName>
-        <defaultValue>false</defaultValue>
-        <label>Is Deleted</label>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>PRM_Read__c</fullName>
-        <defaultValue>false</defaultValue>
-        <label>Read</label>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
         <fullName>PRM_Subject__c</fullName>
         <externalId>false</externalId>
         <label>Subject</label>
@@ -351,7 +268,7 @@
     </fields>
     <fields>
         <fullName>PRM_ToEmailID__c</fullName>
-        <externalId>true</externalId>
+        <externalId>false</externalId>
         <label>ToEmailID</label>
         <length>255</length>
         <required>false</required>
@@ -379,18 +296,22 @@
         </valueSet>
     </fields>
     <fields>
-        <fullName>PRM_Updated_By_API__c</fullName>
-        <defaultValue>false</defaultValue>
-        <label>Updated By API</label>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
         <fullName>PRM_User__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <label>User</label>
         <referenceTo>User</referenceTo>
+        <relationshipName>EmailLogs</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Quote__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Quote</label>
+        <referenceTo>SBQQ__Quote__c</referenceTo>
+        <relationshipLabel>EmailLogs</relationshipLabel>
         <relationshipName>EmailLogs</relationshipName>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -406,40 +327,17 @@
         <columns>PRM_Email_API_Response__c</columns>
         <columns>PRM_Timestamp__c</columns>
         <filterScope>Everything</filterScope>
-        <filters>
-            <field>PRM_Subject__c</field>
-            <operation>contains</operation>
-            <value>expire</value>
-        </filters>
         <label>All</label>
-    </listViews>
-    <listViews>
-        <fullName>Lead_Email</fullName>
-        <columns>NAME</columns>
-        <columns>PRM_Subject__c</columns>
-        <columns>PRM_User__c</columns>
-        <columns>PRM_EmailDeliverabilityStatus__c</columns>
-        <columns>PRM_Email_API_Response__c</columns>
-        <columns>PRM_Timestamp__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>PRM_Subject__c</field>
-            <operation>contains</operation>
-            <value>lead</value>
-        </filters>
-        <label>Lead Email</label>
         <language>en_US</language>
     </listViews>
     <listViews>
-        <fullName>PCC_Deal_Reg_Email_Logs</fullName>
+        <fullName>PCC_Deal_Reg_EmailLogs</fullName>
         <booleanFilter>1 OR 2</booleanFilter>
         <columns>NAME</columns>
-        <columns>PRM_Subject__c</columns>
         <columns>PRM_Contact__c</columns>
-        <columns>PRM_ToEmailID__c</columns>
-        <columns>PRM_Email_API_Response__c</columns>
-        <columns>PRM_Timestamp__c</columns>
+        <columns>CREATED_DATE</columns>
         <columns>Email_Template_Name__c</columns>
+        <columns>OWNER.FIRST_NAME</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>Email_Template_Name__c</field>
@@ -451,7 +349,7 @@
             <operation>contains</operation>
             <value>Pricing_FI</value>
         </filters>
-        <label>Deal Reg Email Logs</label>
+        <label>Deal Reg EmailLogs</label>
         <sharedTo>
             <group>PCC_Deal_Internal_Users</group>
         </sharedTo>

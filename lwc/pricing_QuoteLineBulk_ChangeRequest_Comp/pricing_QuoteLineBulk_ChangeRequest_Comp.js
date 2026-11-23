@@ -21,12 +21,11 @@ import approvedQuantityError from '@salesforce/label/c.Pricing_Tender_CR_negativ
 import ecapPriceError from '@salesforce/label/c.Pricing_Tender_CR_negativeApprovedPricevalueError';
 import endDateBeforeStartDate from '@salesforce/label/c.Pricing_Tender_CR_approvedEndDtBeforeApprovedStartDtError';
 import billingQuarterError from '@salesforce/label/c.Pricing_Tender_QuoteLine_Billing_Quarter_Error';
-import allowedBillingDateBackDatingDays from '@salesforce/label/c.Pricing_AllowedBillingDateBackDating_days';
+import noOfDays from '@salesforce/label/c.Pricing_Days';
 import bulkFields from '@salesforce/label/c.Pricing_BulkCR_Fields';
 import toolTip from '@salesforce/label/c.Pricing_BulkUpdateDeal_helpText';
 import latinCharCheck from '@salesforce/label/c.Pricing_Latin_Characters_Regular_Expr_Label';
 import latinErrorMsg from '@salesforce/label/c.Pricing_Non_Latin_Char_Validation_Error';
-import DCGPUQuoteLine from '@salesforce/label/c.Pricing_Tender_DataCenter_GPU';
 import payableQtyEcxeedError from '@salesforce/label/c.Pricing_Tender_QuoteLine_Payable_Quantity_Error';
 import meetCompAndEfftiveDtaeError from '@salesforce/label/c.Pricing_Tender_CR_MeetCompPriceandEffectiveStartDatevalueError';
 import effectiveDateError from '@salesforce/label/c.Pricing_Tender_CR_effPricingStartDtOnChangeError';
@@ -98,6 +97,8 @@ export default class Pricing_QuoteLine_BulkCreateDeal extends LightningElement {
     @track softWarning_quoteLineIdList = [];
     showSoftWarningApprovedECAP = false;
     @track softWarningApprovedECAPLabel = SoftWarningApprovedECAPLabel;
+    @track searchResults = []; // Stores search suggestions
+    searchValue = '';
 
     openDataTable() {
         this.openModal = true;
@@ -147,6 +148,8 @@ export default class Pricing_QuoteLine_BulkCreateDeal extends LightningElement {
                         this.data[i]["searchKey"] = '';
                         this.data[i]["recordsList"] = '';
                         this.data[i]["message"] = '';
+                        this.data[i]["isExisting"] = true;
+                        console.log('1Pricing_Backdate_Reason_Txt__c => '+ JSON.stringify(this.data[i].Pricing_Backdate_Reason_Txt__c));
                     }
                 }
                 this.isSpinner = false;
@@ -160,6 +163,52 @@ export default class Pricing_QuoteLine_BulkCreateDeal extends LightningElement {
             });
     }
 
+    addNewRow() {
+        this.data = [...this.data, { 
+            id: Date.now(), 
+            Name: '', 
+            ProductName: '', 
+            Quantity: 0, 
+            UnitPrice: 0,
+            isExisting: false // Mark as a new row
+        }];
+    }
+
+    handleSearch(event) {
+        this.searchValue = event.target.value;
+        const rowId = event.target.dataset.rowid; // Get row ID
+
+        if (this.searchValue.length > 2) {
+            searchQuoteLines({ searchTerm: this.searchValue })
+                .then(result => {
+                    this.searchResults = result.map(item => ({
+                        Id: item.Id,
+                        Name: item.Name,
+                        ProductName: item.Product2.Name,
+                        Quantity: item.Quantity,
+                        UnitPrice: item.UnitPrice,
+                        rowId: rowId // Keep track of which row this is for
+                    }));
+                })
+                .catch(error => {
+                    console.error('Error fetching Quote Line data', error);
+                });
+        }
+    }
+
+    handleSelect(event) {
+        const selectedId = event.currentTarget.dataset.id;
+        const rowId = event.currentTarget.dataset.rowid;
+        const selectedRecord = this.searchResults.find(item => item.Id === selectedId);
+
+        if (selectedRecord) {
+            this.data = this.data.map(row => 
+                row.id == rowId ? { ...selectedRecord, id: row.id, isExisting: false } : row
+            );
+        }
+
+        this.searchResults = []; // Clear search results after selection
+    }
     getRestrictedAccount() {
         getRestrictedAccount({ recordId: this.accId, pricingRegion: this.quoteRegion })
             .then(result => {
@@ -257,6 +306,7 @@ export default class Pricing_QuoteLine_BulkCreateDeal extends LightningElement {
     handleBackDateReason(event) {
         let element = this.data.find(ele => ele.Id === event.target.dataset.id);
         element.Pricing_Backdate_Reason_Txt__c = event.target.value == '--None--' ? '' : event.target.value;
+        console.log('Pricing_Backdate_Reason_Txt__c => '+ JSON.stringify(element.Pricing_Backdate_Reason_Txt__c));
         this.data = [...this.data];
     }
 
@@ -483,10 +533,11 @@ export default class Pricing_QuoteLine_BulkCreateDeal extends LightningElement {
 
                     if (this.isUpdateDeal && this.data[i].Pricing_Billing_Start_Date_Dt__c != undefined && this.data[i].Pricing_Approved_Start_Date_Dt__c != undefined) {
                         var startDate = new Date(this.data[i].Pricing_Approved_Start_Date_Dt__c);
+                        console.log('Entered update deal');
                         var billingDate = new Date(this.data[i].Pricing_Billing_Start_Date_Dt__c);
                         let difference = startDate - billingDate;
                         let noOfDaysBetweenDates = Math.ceil(difference / (1000 * 3600 * 24))
-                        if (noOfDaysBetweenDates > allowedBillingDateBackDatingDays) {
+                        if (noOfDaysBetweenDates > noOfDays) {
                             validationMsg += billingQuarterError;
                         }
                     }
@@ -674,6 +725,7 @@ export default class Pricing_QuoteLine_BulkCreateDeal extends LightningElement {
         let element = this.data.find(ele => ele.Id === id);
         findRecords({ searchKey: element.searchKey })
             .then((result) => {
+                console.log('Enetered Find records method(CHange Request): '+result);
                 if (result.length == 0 || result == '') {
                     element.recordsList = [];
                     element.message = 'No Records Found';

@@ -6,39 +6,7 @@
         <criterion>
             <criteriaNumber>1</criteriaNumber>
             <criterionValue>
-                <profile>partner community user</profile>
-            </criterionValue>
-            <operator>Equal</operator>
-            <type>Profile</type>
-        </criterion>
-        <criterion>
-            <criteriaNumber>1</criteriaNumber>
-            <criterionValue>
-                <profile>customer community plus login user</profile>
-            </criterionValue>
-            <operator>Equal</operator>
-            <type>Profile</type>
-        </criterion>
-        <criterion>
-            <criteriaNumber>1</criteriaNumber>
-            <criterionValue>
-                <profile>customer community plus user</profile>
-            </criterionValue>
-            <operator>Equal</operator>
-            <type>Profile</type>
-        </criterion>
-        <criterion>
-            <criteriaNumber>1</criteriaNumber>
-            <criterionValue>
                 <profile>customer community login user</profile>
-            </criterionValue>
-            <operator>Equal</operator>
-            <type>Profile</type>
-        </criterion>
-        <criterion>
-            <criteriaNumber>1</criteriaNumber>
-            <criterionValue>
-                <profile>partner community login user</profile>
             </criterionValue>
             <operator>Equal</operator>
             <type>Profile</type>
@@ -54,7 +22,39 @@
         <criterion>
             <criteriaNumber>1</criteriaNumber>
             <criterionValue>
+                <profile>partner community login user</profile>
+            </criterionValue>
+            <operator>Equal</operator>
+            <type>Profile</type>
+        </criterion>
+        <criterion>
+            <criteriaNumber>1</criteriaNumber>
+            <criterionValue>
                 <profile>partner</profile>
+            </criterionValue>
+            <operator>Equal</operator>
+            <type>Profile</type>
+        </criterion>
+        <criterion>
+            <criteriaNumber>1</criteriaNumber>
+            <criterionValue>
+                <profile>customer community plus user</profile>
+            </criterionValue>
+            <operator>Equal</operator>
+            <type>Profile</type>
+        </criterion>
+        <criterion>
+            <criteriaNumber>1</criteriaNumber>
+            <criterionValue>
+                <profile>customer community plus login user</profile>
+            </criterionValue>
+            <operator>Equal</operator>
+            <type>Profile</type>
+        </criterion>
+        <criterion>
+            <criteriaNumber>1</criteriaNumber>
+            <criterionValue>
+                <profile>partner community user</profile>
             </criterionValue>
             <operator>Equal</operator>
             <type>Profile</type>
@@ -64,14 +64,26 @@
     <isDefaultAudience>false</isDefaultAudience>
     <targets>
         <target>
-            <groupName>e9d16df4-f97a-40e7-b493-5b01ec075c72$#$24b01f2a-3375-45fb-9a93-d3749608f345</groupName>
+            <groupName>e9d16df4-f97a-40e7-b493-5b01ec075c72$#$f8430b01-3b4d-48cc-955f-228beaa30bc5</groupName>
             <priority>1</priority>
             <targetType>ExperienceVariation</targetType>
-            <targetValue>Default_Navigation_Menu_2_Component_Properties</targetValue>
+            <targetValue>Default_Navigation_Menu_Component_Properties</targetValue>
+        </target>
+        <target>
+            <groupName>5ea04509-fd5f-4feb-b323-5b2c8b160caf</groupName>
+            <priority>1</priority>
+            <targetType>ExperienceVariation</targetType>
+            <targetValue>All_licenses_All_licenses_Page</targetValue>
+        </target>
+        <target>
+            <groupName>413d5e5c-877d-4805-a379-87aea23c34d6</groupName>
+            <priority>1</priority>
+            <targetType>ExperienceVariation</targetType>
+            <targetValue>All_computers_All_computers_Page</targetValue>
         </target>
         <target>
             <groupName>6113ccb5-d263-42b6-934a-406aaceb37c1</groupName>
-            <priority>1</priority>
+            <priority>2</priority>
             <targetType>ExperienceVariation</targetType>
             <targetValue>Home_Home_page_Page</targetValue>
         </target>

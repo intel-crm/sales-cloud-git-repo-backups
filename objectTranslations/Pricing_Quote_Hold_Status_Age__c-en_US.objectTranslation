@@ -38,6 +38,10 @@
         <name>Pricing_Quote_On_Hold_Comment__c</name>
     </fields>
     <sharingReasons>
+        <label><!-- Account Team Group --></label>
+        <name>Pricing_Account_Team_Group</name>
+    </sharingReasons>
+    <sharingReasons>
         <label><!-- On Hold Account Team Group --></label>
         <name>Pricing_On_Hold_Account_Team_Group</name>
     </sharingReasons>

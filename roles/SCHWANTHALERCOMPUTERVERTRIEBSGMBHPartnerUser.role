@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>SCHWANTHALER COMPUTER VERTRIEBS GMBH Partner User</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>SCHWANTHALER COMPUTER VERTRIEBS GMBH Partner User</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>SCHWANTHALERCOMPUTERVERTRIEBSGMBHPartnerManager</parentRole>
+</Role>

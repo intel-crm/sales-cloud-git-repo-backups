@@ -4,9 +4,9 @@
     <doesSendEmailToMembers>false</doesSendEmailToMembers>
     <name>Channel Ops Approver Group</name>
     <queueMembers>
-        <publicGroups>
-            <publicGroup>AGS_Channel_Ops_Approver_Group</publicGroup>
-        </publicGroups>
+        <users>
+            <user>ani@intel.com</user>
+        </users>
     </queueMembers>
     <queueSobject>
         <sobjectType>Core_Design_Registration__c</sobjectType>

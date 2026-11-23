@@ -17,10 +17,6 @@
         <startsWith>Consonant</startsWith>
     </fields>
     <fields>
-        <label><!-- Partner Tier Name --></label>
-        <name>PRM_Partner_Tier_Name__c</name>
-    </fields>
-    <fields>
         <label><!-- Inactive Indicator --></label>
         <name>PRM_inactind__c</name>
     </fields>

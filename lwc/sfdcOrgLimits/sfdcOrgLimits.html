@@ -1,0 +1,13 @@
+<template>
+    <c-custom-datatable-comp data={governorLimits.data} columns={columns}></c-custom-datatable-comp>
+    <lightning-card title="Salesforce Governor Limits" icon-name="custom:custom63">
+        <div class="slds-m-around_medium">
+                <lightning-datatable
+                    key-field="id"
+                    data={governorLimits.data}
+                    columns={columns}
+                    selectablerows ="false">
+                </lightning-datatable>
+        </div>
+</lightning-card>
+</template>

@@ -1,4 +1,3 @@
-@isTest
 /****************************************************************************************************************************************
 * Class Name        : PMP_Locale_Inbound_Msg
 * Created Date      : 08-03-2019
@@ -7,9 +6,8 @@
 * ---------------------------------------------------------------------------------------------------------------------------------------
 * Sridhar       08-03-2019          This class will get called from inbound message trigger to update the locale information.
 *****************************************************************************************************************************************/
-//Commented as part of IPA2.0 EOL'ing
+
 public with sharing class PMP_Locale_Inbound_Msg {
-    /*
     public static String targetLanguage{public get; public set;}
     public PMP_Locale_Inbound_Msg(){}
     
@@ -25,7 +23,7 @@ public with sharing class PMP_Locale_Inbound_Msg {
         List<PMP_Languages__mdt> languageList = new List<PMP_Languages__mdt>();
         if(inboundMap != null && inboundMap.size() > 0){
             for(Core_Integration_Inbound_Message__c ciim : inboundMap.values()){
-                // system.debug('ciim:'+ciim.Core_Payload__c);
+                system.debug('ciim:'+ciim.Core_Payload__c);
                 String payLoad = ciim.Core_Payload__c;
                 targetLanguage=ciim.Core_Payload1__c;
                 //Fetch the Target language Name
@@ -44,7 +42,7 @@ public with sharing class PMP_Locale_Inbound_Msg {
                 
                 try{
                     
-                    if (ciim.Core_Processing_Status__c=='Failed' || ciim.Core_Processing_Status__c=='Terminated')
+                    if (ciim.Core_Processing_Status__c=='Failed')
                     {
                         failedMessages.add(ciim);
                     }
@@ -53,11 +51,8 @@ public with sharing class PMP_Locale_Inbound_Msg {
                         parmain = PMP_Locale_JSONParser.parse(payLoad);
                         inboundMessages.add(ciim);
                     }
-                }catch(Exception e){                
-                //system.debug('Error occured in parsing the JSON PMP_Locale_Inbound_Msg updateLocaleDetails method due to '+ e.getMessage() + '-' + e.getLineNumber());
-                PMP_Utility.logError(e,'PMP_OfferingInBoundTranslation');
-                }
-                 
+                }catch(Exception e){system.debug('Error occured in parsing the JSON PMP_Locale_Inbound_Msg updateLocaleDetails method due to '+ e.getMessage() + '-' + e.getLineNumber());}
+                
             }
         }
         
@@ -65,9 +60,7 @@ public with sharing class PMP_Locale_Inbound_Msg {
         {
             if (failedMessages.size()>0)
             {
-                //rePublish(failedMessages);
-                PMP_SendTranslationExceptionEmail.sendFailureEmail(failedMessages);
-                
+                rePublish(failedMessages);
             }
             return;
             
@@ -211,8 +204,8 @@ public with sharing class PMP_Locale_Inbound_Msg {
             
             
         } catch (Exception e) {
-            //system.debug('Error occured in processing JSON PMP_Locale_Inbound_Msg updateLocaleDetails method due to '+ e.getMessage() + '- @LineNo' + e.getLineNumber()); 
-             PMP_Utility.logError(e,'PMP_OfferingInBoundTranslation');
+            system.debug('Error occured in processing JSON PMP_Locale_Inbound_Msg updateLocaleDetails method due to '+ e.getMessage() + '- @LineNo' + e.getLineNumber()); 
+            
         }
         
     }
@@ -230,7 +223,8 @@ public with sharing class PMP_Locale_Inbound_Msg {
             publishedofferingMap.put(publishedoffering.PMP_Working_Copy_Id__c, publishedoffering);
         }
         //
-        
+        system.debug('publishedofferingMap'+publishedofferingMap);
+        system.debug('OfferingIds'+OfferingIds);
         For (Id offeringId:OfferingIds)
         {
             if (publishedofferingMap.size()>0 && publishedofferingMap.containsKey(offeringId))
@@ -239,12 +233,11 @@ public with sharing class PMP_Locale_Inbound_Msg {
                 offeringIdMap.put(offeringId,publishedofferingMap.get(offeringId).Id);               
             }
         }
-        List<PMP_Partner_Offering_Translation__c> publishedTrans;
-        
-        if(Schema.sObjectType.PMP_Partner_Offering_Translation__c.isAccessible()){
-            publishedTrans =[SELECT Id,PMP_Partner_Offering_Id__c, PMP_Chinese_Txt__c, PMP_Japanese_Txt__c, PMP_English_Txt__c,PMP_Field_Nm__c 
+        system.debug('publishedOfferingIds'+publishedOfferingIds);
+        system.debug('offeringIdMap'+offeringIdMap);
+        List<PMP_Partner_Offering_Translation__c> publishedTrans =[SELECT Id,PMP_Partner_Offering_Id__c, PMP_Chinese_Txt__c, PMP_Japanese_Txt__c, PMP_English_Txt__c,PMP_Field_Nm__c 
                                                                    FROM PMP_Partner_Offering_Translation__c where PMP_Partner_Offering_Id__c IN:publishedOfferingIds];
-        }
+        
         List<PMP_Partner_Offering_Translation__c> clonedTranslations = New  List<PMP_Partner_Offering_Translation__c>();        
         
         //clone the working copy of offering Translations and create publish copy
@@ -255,14 +248,18 @@ public with sharing class PMP_Locale_Inbound_Msg {
             PMP_Partner_Offering_Translation__c clonedTrans = workingCopyTrans.clone();
             clonedTrans.PMP_Partner_Offering_Id__c=offeringIdMap.get(workingCopyTrans.PMP_Partner_Offering_Id__c);
             clonedTranslations.add(clonedTrans);
+            system.debug('cloned:'+clonedTrans.PMP_Partner_Offering_Id__c);
+            
         }
         if(publishedTrans.size()>0)
         {
             delete publishedTrans;
+            system.debug('published translations deleted');
         }
-        if (clonedTranslations.size()>0 && Schema.SObjectType.PMP_Partner_Offering_Translation__c.isCreateable())
-        { 
+        if (clonedTranslations.size()>0)
+        {
             insert clonedTranslations;  
+            system.debug('published Translations inserted');
             try{
                 if(publishedOfferingIds.size()>0){
                     
@@ -271,7 +268,7 @@ public with sharing class PMP_Locale_Inbound_Msg {
                     List<PMP_Languages__mdt> languageList= new List<PMP_Languages__mdt>();
                     
                     Map<String,PMP_Languages__mdt> languageMap = new Map<String,PMP_Languages__mdt>();                    
-                    for(PMP_Languages__mdt lang:[select PIM_Language_Code__c,PIM_Locale_Name__c, Locale_Nm__c from PMP_Languages__mdt where Locale_Nm__c != null]){
+                    for(PMP_Languages__mdt lang:[select PIM_Language_Code__c,PIM_Locale_Name__c, Locale_Nm__c from PMP_Languages__mdt]){
                         languageMap.put(lang.Locale_Nm__c,lang);
                     }
                     
@@ -287,8 +284,8 @@ public with sharing class PMP_Locale_Inbound_Msg {
                     //end:Gireesh:US542699
                 }
             }catch (Exception e) {
-                //system.debug('Error occured in Gireesh:US542699 due to '+ e.getMessage() + '- @LineNo' + e.getLineNumber()); 
-                 PMP_Utility.logError(e,'PMP_OfferingInBoundTranslation');
+                system.debug('Error occured in Gireesh:US542699 due to '+ e.getMessage() + '- @LineNo' + e.getLineNumber()); 
+                
             }
             
         }        
@@ -317,15 +314,10 @@ public with sharing class PMP_Locale_Inbound_Msg {
                 }
             }
             }
-            
-            
             insert outboundMessages;
-                
         } catch (Exception e) {
-            //system.debug('Error occured in processing JSON PMP_Locale_Inbound_Msg updateLocaleDetails method due to '+ e.getMessage() + '- @LineNo' + e.getLineNumber()); 
-            PMP_Utility.logError(e,'PMP_OfferingInBoundTranslation');
+            system.debug('Error occured in processing JSON PMP_Locale_Inbound_Msg updateLocaleDetails method due to '+ e.getMessage() + '- @LineNo' + e.getLineNumber()); 
             
         }
-    }    
-*/
+    }
 }

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Feed Attachment External</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Feed Attachments External</value>
+    </caseValues>
+    <fields>
+        <label><!-- Feed Attachment Type --></label>
+        <name>Core_Feed_Attachment_Type__c</name>
+        <picklistValues>
+            <masterLabel>ChatterExtension</masterLabel>
+            <translation><!-- ChatterExtension --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Content</masterLabel>
+            <translation><!-- Content --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FeedEntity</masterLabel>
+            <translation><!-- FeedEntity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>InlineImage</masterLabel>
+            <translation><!-- InlineImage --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Link</masterLabel>
+            <translation><!-- Link --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Record</masterLabel>
+            <translation><!-- Record --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Feed Entity ID --></label>
+        <name>Core_Feed_Entity_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Attachment Record ID --></label>
+        <name>Core_Record_ID__c</name>
+        <relationshipLabel><!-- Feed Attachments External --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Deleted --></label>
+        <name>IsDeleted__c</name>
+    </fields>
+    <fields>
+        <label><!-- Feed Attachment Title --></label>
+        <name>Title__c</name>
+    </fields>
+    <fields>
+        <label><!-- Feed Attachment Value --></label>
+        <name>Value__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

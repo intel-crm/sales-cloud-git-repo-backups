@@ -26,7 +26,7 @@ public class PMP_TaxonomyUploadQueueable_Test {
         	ID jobID = System.enqueueJob(taxonomyUploadQueueable);
         Test.stopTest();
 		
-        system.assertEquals(0,[Select Count() from PMP_Category__c limit 10]);
+        system.assertEquals(3,[Select Count() from PMP_Category__c]);
     }
     
     @isTest
@@ -43,7 +43,7 @@ public class PMP_TaxonomyUploadQueueable_Test {
         	PMP_TaxonomyUploadQueueable taxonomyUploadQueueable = new PMP_TaxonomyUploadQueueable(staticResourceNames);
         	ID jobID = System.enqueueJob(taxonomyUploadQueueable);
         Test.stopTest();
-        system.assertEquals(0,[Select Count() from PMP_Category__c limit 10]);
+        system.assertEquals(0,[Select Count() from PMP_Category__c]);
         
     }
     
@@ -83,7 +83,6 @@ public class PMP_TaxonomyUploadQueueable_Test {
         List<String> staticResourceNames = new List<String>();
         staticResourceNames.add('Hierarchy_English');
         
-        system.assertNotEquals(batchHeader,Null);
         Test.startTest();
         PMP_TaxonomyUploadQueueable taxonomyUploadQueueable = new PMP_TaxonomyUploadQueueable(staticResourceNames);
         taxonomyUploadQueueable.createBatchProcessingLineItem(upsertResults,batchProcessingLineItem,'Hierarchy_English');

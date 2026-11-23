@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>Mj comercio e serviço de informática LTDA Partner User</description>
+    <description>J.M.C Comercio e Servicos de Informatica e Telecomunicac Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>Mj comercio e serviço de informática LTDA Partner User</name>
+    <name>J.M.C Comercio e Servicos de Informatica e Telecomunicac Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>JMCComercioeServicosdeInformaticaeTelecomunicacPartnerManager</parentRole>
 </Role>

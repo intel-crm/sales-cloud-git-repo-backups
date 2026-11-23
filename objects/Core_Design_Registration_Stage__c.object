@@ -359,6 +359,24 @@ Core_Converted_Design_Or_Product_Nm__c, &apos;&apos;)</formula>
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Core_End_Customer_Country__c</fullName>
+        <label>End Customer Country</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>India</fullName>
+                    <default>false</default>
+                    <label>India</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
         <fullName>Core_End_Customer_Nm__c</fullName>
         <externalId>false</externalId>
         <label>End Customer Name</label>
@@ -402,7 +420,7 @@ Core_Converted_Design_Or_Product_Nm__c, &apos;&apos;)</formula>
         <fullName>Core_End_Customer_URL__c</fullName>
         <externalId>false</externalId>
         <label>End Customer URL</label>
-        <length>250</length>
+        <length>255</length>
         <required>false</required>
         <trackTrending>false</trackTrending>
         <type>Text</type>
@@ -667,7 +685,7 @@ Core_Converted_Design_Or_Product_Nm__c, &apos;&apos;)</formula>
         <fullName>DDR_Partner_FAE_Email__c</fullName>
         <externalId>false</externalId>
         <label>Partner FAE Email</label>
-        <length>250</length>
+        <length>255</length>
         <required>false</required>
         <trackTrending>false</trackTrending>
         <type>Text</type>
@@ -2012,7 +2030,6 @@ Core_Converted_Design_Or_Product_Nm__c, &apos;&apos;)</formula>
         <columns>Core_Batch_ID__c</columns>
         <columns>Core_Group_Id__c</columns>
         <columns>Core_Header_Or_Product_Ind__c</columns>
-        <columns>Core_Design_Registration_Nm__c</columns>
         <columns>Core_Processing_Status_Nm__c</columns>
         <columns>Core_Message_Txt__c</columns>
         <columns>Core_Converted_Design_Or_Product_URL_Txt__c</columns>
@@ -2024,7 +2041,6 @@ Core_Converted_Design_Or_Product_Nm__c, &apos;&apos;)</formula>
     <listViews>
         <fullName>Last_Month_Records</fullName>
         <columns>NAME</columns>
-        <columns>Core_Batch_ID__c</columns>
         <columns>Core_Group_Id__c</columns>
         <columns>Core_Header_Or_Product_Ind__c</columns>
         <columns>Core_Processing_Status_Nm__c</columns>
@@ -2043,10 +2059,8 @@ Core_Converted_Design_Or_Product_Nm__c, &apos;&apos;)</formula>
     <listViews>
         <fullName>Today_s_Record</fullName>
         <columns>NAME</columns>
-        <columns>Core_Batch_ID__c</columns>
         <columns>Core_Group_Id__c</columns>
         <columns>Core_Header_Or_Product_Ind__c</columns>
-        <columns>Core_Design_Registration_Nm__c</columns>
         <columns>Core_Processing_Status_Nm__c</columns>
         <columns>Core_Message_Txt__c</columns>
         <columns>Core_Converted_Design_Or_Product_URL_Txt__c</columns>
@@ -2059,6 +2073,12 @@ Core_Converted_Design_Or_Product_Nm__c, &apos;&apos;)</formula>
         </filters>
         <label>Today&apos;s Record</label>
         <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>all_dr</fullName>
+        <columns>NAME</columns>
+        <filterScope>Mine</filterScope>
+        <label>all</label>
     </listViews>
     <nameField>
         <displayFormat>DR-STAGE-{0000000}</displayFormat>

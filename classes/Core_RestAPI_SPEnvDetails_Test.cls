@@ -32,11 +32,13 @@ public class Core_RestAPI_SPEnvDetails_Test{
         Test.stopTest();
             productRecord =TestUtilities.getProduct();
             insert productRecord;
+            system.debug('insert product'+productRecord);
             
             Core_IPS_Product_Organization__c objSupportedproductOrg =new Core_IPS_Product_Organization__c();
             objSupportedproductOrg.Core_IPS_Support_Org_Name__c='Test Org';
             objSupportedproductOrg.Core_Organization_Description__c='Test Description';
             insert objSupportedproductOrg;
+            system.debug('insert objSupportedproduct'+objSupportedproductOrg);
             
             List<Asset> allAssets = [Select Name, Account.Name, Core_Supported_Product__c, Core_Supported_Product__r.Name FROM Asset ORDER BY NAME ];
             
@@ -47,13 +49,16 @@ public class Core_RestAPI_SPEnvDetails_Test{
             objEnvDetMaster.Core_Status__c = 'Active';
             objEnvDetMaster.Core_Product_Organization__c=objSupportedproductOrg.id;
             insert objEnvDetMaster;
+            System.debug('objEnvDetMaster'+objEnvDetMaster);
             
             
             Core_IPS_Assigned_Environment_Variables__c ObjEnvVar= new Core_IPS_Assigned_Environment_Variables__c ();
+            system.debug('OWNER ID'+  adminuser.id);
             ObjEnvVar.Core_Status__c = 'Active';
             ObjEnvVar.Core_Supported_Product__c=allAssets[0].Core_Supported_Product__c;
             ObjEnvVar.Core_Environment_Variable__c=objEnvDetMaster.id;
             insert ObjEnvVar;//inserting record for admin user
+            System.debug('ObjEnvVar'+ObjEnvVar);
             
         }
        
@@ -74,6 +79,7 @@ public class Core_RestAPI_SPEnvDetails_Test{
     private static void doGet_getEnvironmentDetails_Asserts(Core_RestAPI_Response apiResponse, RestResponse objResponse, String strVersion) {
         //Consolidate asserts so that each test method does not have to copy/paste the logic
         //expand if statement when multiple versions share the same asserts
+        System.debug('apiResponse-->'+apiResponse);
         If(strVersion == v1_0){  
             System.assertEquals('200',apiResponse.Code,'RestAPIResponse Success code 200');
             System.assertNotEquals(null, apiResponse);

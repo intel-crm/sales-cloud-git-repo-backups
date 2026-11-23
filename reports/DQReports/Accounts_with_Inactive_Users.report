@@ -46,4 +46,8 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>false</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Account$PRM_IPA_Badge_Tier_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
 </Report>

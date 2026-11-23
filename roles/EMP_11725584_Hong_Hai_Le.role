@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>Edit</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>EMP of Viet Thang Phung</description>
+    <description>EMP of Erica Tor</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>EMP_11725584_Hong_Hai_Le</name>
     <opportunityAccessLevel>Edit</opportunityAccessLevel>
-    <parentRole>EMP_10636269_Viet_Thang_Phung</parentRole>
+    <parentRole>EMP_11527857_Erica_Tor</parentRole>
 </Role>

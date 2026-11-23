@@ -26,7 +26,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Opportunity Owner,Team Member (100%),Team member (100% commitment over the lifetime of the opportunity),Technical Owner (100%),Technical Owner (100% commitment over the lifetime of the opportunity),Contributor (50%)</value>
+            <value>Opportunity Owner,Opportunity Owner (100%),Team Member (100%),Technical Owner (100%),Contributor (50%)</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -61,6 +61,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>LAST_STAGE_CHANGE_DATE</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

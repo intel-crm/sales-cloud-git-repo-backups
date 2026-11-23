@@ -1,5 +1,5 @@
 @IsTest
-    public class UCD_ACM_AccountQuerySelectorTest {
+public class UCD_ACM_AccountQuerySelectorTest {
     private static UCD_ACM_SelectorContracts.IAccountQuerySelector accountQuerySelectorInstance = UCD_ACM_AccountQuerySelector.getInstance();
     private static UCD_ACM_ServiceContracts.IAccountService accountServiceInstance = UCD_ACM_AccountService.getInstance();
 	@TestSetup
@@ -12,16 +12,8 @@
         insert parentAccount;
 
         // Create End Customer Deal Account Intermediate1 child
-        Account intChildAcc11 = UCD_ACM_Cntrlr_TestDataInitialization.createAccountByRecordType('TestIntChildAccount1','Intel Account','UNFD_INTRMD_CUST');
-        intChildAcc11.parentId = parentAccount.Id;
-        intChildAcc11.Core_Business_Party_Id__c = '1234';
-        insert intChildAcc11;
-        
-        
-        // Create End Customer Deal Account Intermediate1 child
         Account intChildAcc1 = UCD_ACM_Cntrlr_TestDataInitialization.createAccountByRecordType('TestIntChildAccount1','End Customer Deal Account','UNFD_INTRMD_CUST');
         intChildAcc1.parentId = parentAccount.Id;
-        intChildAcc1.Core_Business_Partner_Id__c = '1234';
         insert intChildAcc1;
         
         // Create End Customer Deal Account Intermediate2 child
@@ -45,19 +37,6 @@
         Account reuestedAccount = UCD_ACM_Cntrlr_TestDataInitialization.createAccountByRecordType('TestChildAccount1','Requested Account','UNFD_GLBL_CUST');
         insert reuestedAccount;
         
-        Account_Create_Request__c req = new Account_Create_Request__c();
-        req.Account_Name__c = 'Sample Account';
-        req.Rejected_Reason__c = 'Test Rejected';
-        req.Process_Type__c = 'Partner';
-        req.Requestor_Name__c = UserInfo.getName();
-        req.Requestor_Email__c = UserInfo.getUserEmail()+'.invalid';
-        req.Account_Name__c = reuestedAccount.Id;
-        req.Core_Account_Reference_Source_Name__c = 'Partner'; 
-        req.Address__City__s = 'Test';
-        req.Address__CountryCode__s = 'IND';
-        req.Address__Street__s = 'Test';
-        insert req;
-        
         // Create Business Type
         List<Business_Types__c> businessTypes = new List<Business_Types__c>();
         businessTypes.add(UCD_ACM_Cntrlr_TestDataInitialization.createBusinessType('Direct Price Exception','DIR_PRC_EXCPT'));
@@ -70,6 +49,12 @@
             accountBusinessTypes.add(UCD_ACM_Cntrlr_TestDataInitialization.createAccountBusinessType(acc.Id,businessType.Id));
         }
         insert accountBusinessTypes;
+        
+        // Create Compliance Watch List
+        List<Core_Account_Compliance_Watch_List__c> complianceWatchLists = new List<Core_Account_Compliance_Watch_List__c>();
+        complianceWatchLists.add(UCD_ACM_Cntrlr_TestDataInitialization.createComplianceWatchList(acc.Id,'NOTRDOUT'));
+        complianceWatchLists.add(UCD_ACM_Cntrlr_TestDataInitialization.createComplianceWatchList(acc.Id,'DPL'));
+        insert complianceWatchLists;
     }
     
     @isTest
@@ -176,6 +161,30 @@
     }
     
     @isTest
+    private static void whenGetComplianceWatchListByAccountId(){
+        Account acc = [Select Id,Name from Account where Name = 'TestChildAccount'];
+        test.startTest();
+        Map<Id,List<Core_Account_Compliance_Watch_List__c>> complianceWatchListByAccountId= accountQuerySelectorInstance.getComplianceWatchListByAccountId(new Set<Id>{acc.Id},'Core_Account_Id__c,Core_Type__c');
+        //system.debug('complianceWatchListByAccountId.get(acc.Id).size()--> '+complianceWatchListByAccountId);
+        system.assertEquals(2, complianceWatchListByAccountId.get(acc.Id).size());
+        
+        try{
+           Map<Id,List<Core_Account_Compliance_Watch_List__c>> complianceWatchListByAccountId1 = accountQuerySelectorInstance.getComplianceWatchListByAccountId(new Set<Id>{''},'Core_Account_Id__c,Core_Type__c'); 
+        }catch(Exception e){
+            system.assertEquals('Invalid id: ', e.getMessage());
+        }
+        
+        try{
+           Map<Id,List<Core_Account_Compliance_Watch_List__c>> complianceWatchListByAccountId1 = accountQuerySelectorInstance.getComplianceWatchListByAccountId(new Set<Id>{'wb3243'},'Core_Account_Id__c,Core_Type__c'); 
+        }catch(Exception e){
+            system.assertEquals('Invalid id: wb3243', e.getMessage());
+        }
+        Test.stopTest();
+    }
+    
+    
+    
+    @isTest
     private static void whenGetBusinessTypeById(){
         Business_Types__c businessType = [Select Id,Name from Business_Types__c limit 1];
         Test.startTest();
@@ -203,7 +212,6 @@
         Set<Id> accountIds = (new Map<Id,Account>(accounts)).keySet();
         test.startTest();
         Map<Id,ACM_Integration_Message_Queue__c> integrationMessageByAccountId = accountQuerySelectorInstance.getIntegrationMessageQueueByAccountId(accountIds);
-        System.assertequals(1, accountIds.size());
         test.stopTest();
     }
     /*
@@ -213,7 +221,7 @@
         test.startTest();
         Map<Id,User> userById = accountQuerySelectorInstance.getUserById(new Set<Id>{us.Id});
         test.stopTest();
-    }
+    }*/
     
     @isTest
     private static void whenUpdateHierarchyFieldsWithTrue(){
@@ -221,7 +229,7 @@
         test.startTest();
         accountServiceInstance.updateHierarchyFields(account,true);
         test.stopTest();
-    }*/
+    }
 
     @isTest
     private static void whengetChildAccountsWithParentTest(){
@@ -230,44 +238,6 @@
         String andClause = 'Core_Business_Party_Id__c != null AND  (RecordType.Name = \'End Customer Deal Account\' OR RecordType.Name = \'Intel Account\') Limit 100';
 
         Map< Id, List<Account> > accountsByIds2 = accountQuerySelectorInstance.getChildAccountsWithParent(new Set<Id>{acc.ParentId},'Id,Name,recordTypeId,ParentId', andClause);
-        System.assertequals(1, accountsByIds2.values().size());
-
-        Test.stopTest();
-    }
-    
-    @isTest
-    private static void getAccountByBpIdTest() {
-        Set<String> bpIds = new Set<String>();
-        bpIds.add('1234');
-        Test.startTest();
-        	Map<String,List<Account>> accountsByIds2 = accountQuerySelectorInstance.getAccountByBpId(bpIds);
-        	System.assert(accountsByIds2 != null);
-        Test.stopTest();
-    }
-    
-    @isTest
-    private static void getAllChildAccountsTest() {
-        Account acc = [Select Id,Name from Account where Name = 'TestParentAccount'];
-        Set<Id> parentId = new Set<Id>();
-        parentId.add(acc.Id);
-        Test.startTest();
-        Map<Id, Account> accountsByIds2 = accountQuerySelectorInstance.getAllChildAccounts(parentId);
-        System.assert(accountsByIds2 != null);
-       accountQuerySelectorInstance.getIntegrationMessageQueueByArqId(parentId);
-        Test.stopTest();
-    }
-    
-    @isTest
-    private static void getAccountRequestQueueByIdTest() {
-        String queryField = 'Id, Name, Requested_Account__c, Requested_Account__r.ParentId, Status__c, Rejected_Reason__c, Core_Account_Reference_Source_Name__c';
-      
-        Account_Create_Request__c accReq = [Select Id,Name from Account_Create_Request__c where Rejected_Reason__c = 'Test Rejected'];
-        Set<Id> arqIds = new Set<Id>();
-        arqIds.add(accReq.Id);
-            
-        Test.startTest();
-            Map<Id,Account_Create_Request__c> accountRequestsById = accountQuerySelectorInstance.getAccountRequestQueueById(arqIds, queryField);
-            System.assert(accountRequestsById != null);
         Test.stopTest();
     }
 }

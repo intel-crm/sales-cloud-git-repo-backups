@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>44.0</apiVersion>
+    <available>true</available>
+    <description>Email will be sent to partner if document is not uploaded before 15 days of closing date.</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Core_MDF_NotifyDocUploadBefore15Days</name>
+    <style>none</style>
+    <subject>Reminder: Documentation Needed for Claim #</subject>
+    <type>visualforce</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

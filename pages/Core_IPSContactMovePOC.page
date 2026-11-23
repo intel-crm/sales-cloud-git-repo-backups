@@ -1,0 +1,17 @@
+<apex:page standardController="Contact">
+    <apex:includeLightning />
+    <div id="lightning"   />
+	<script>
+    $Lightning.use("c:ChangeContactLWCPOC", function() {
+        	 $Lightning.createComponent("c:core_IPS_MoveContactPOC", {
+            	   recordId : '{!$CurrentPage.parameters.id}'
+                 },
+              "lightning",
+                function(cmp) {
+                
+              }
+          );
+        });
+   
+    </script>
+</apex:page>

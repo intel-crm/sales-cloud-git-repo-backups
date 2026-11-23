@@ -1,11 +1,12 @@
 ({
     loadPageContent: function(component, event, helper) {
-      var libraryCmp = component.find("ssoLibrary");
-		  var site = libraryCmp.whichSite();  
-      var sitearray = JSON.parse($A.get("$Label.c.PMP_SSO_Access_Denied_Message"));
-      var jsonErrorLines = sitearray[site];
-		  component.set("v.lstLines", jsonErrorLines);
-      component.set("v.blShowError", true);
+        var libraryCmp = component.find("signInRedirectLibrary");
+		var strSite = libraryCmp.whichSite();
+        
+        var sitearray = JSON.parse($A.get("$Label.c.PMP_SSO_Access_Denied_Message"));
+        var jsonErrorLines = sitearray[strSite];
+		component.set("v.lstLines", jsonErrorLines);
+        component.set("v.blShowError", true);
     },
 
     /* US519636 */
@@ -13,35 +14,43 @@
      * This is set in Head Markup of the site.  If forwarding is not needed,
      * such as for Leads community, do not implement the Head Markup code */
     redirectPage: function(component, event, helper) {
-      var libraryCmp = component.find("ssoLibrary");
-      
-      var site = libraryCmp.whichSite();
-      if (!site) {
-        return;
-      }
+        var libraryCmp = component.find("signInRedirectLibrary");
 
-      // Exit if no settings returned
-      var ssoSettings = libraryCmp.getSSOSettings(site);
-      if (!ssoSettings) {
-        return;
-      }
-
-      var loginFlag = ssoSettings.ighf.loginRedirect !== '0';
-
-		  //Do not run login when in Builder
-      if (window.location.href.indexOf('livepreview') === -1 && loginFlag) {
-        libraryCmp.setSSOAttemptCookie(site);
+		var strSite = libraryCmp.whichSite();
         
-        var redirectCookieName = libraryCmp.getCookieInfo('AddressCookie', site);
-        var redirectURL = libraryCmp.getCookieValue(redirectCookieName);
+		var enableLoginRedirect = '0';
         
-        if(redirectURL != "") {
-          var strADPage = libraryCmp.getCookieInfo('AccessDeniedPage', site);
-          if (redirectURL.indexOf(strADPage) === -1) {
-              component.set("v.blShowError", false);
-              window.location=redirectURL;
-          }
+        /* Feature toggle shared with MP Header */
+        if(strSite == 'Marketplace') {
+        	enableLoginRedirect = $A.get("$Label.c.PMP_SSO_MP_IGHF_Login_Redirect");
+        } else if (strSite == 'Leads') {
+            enableLoginRedirect = $A.get("$Label.c.PMP_SSO_Leads_IGHF_Login_Redirect");
+        } else {
+            return;
         }
-      }
+
+        var loginFlag = false;
+        if(enableLoginRedirect != '0') {
+            loginFlag = true;
+        }
+
+        console.log('window.location.href: ' + window.location.href);
+		//Do not run login when in Builder
+        if((window.location.href.indexOf('livepreview') == -1)) {
+            if(loginFlag == true) {
+                libraryCmp.setSSOAttemptCookie(strSite);
+                
+                var redirectCookieName = libraryCmp.getCookieSetupInfo(strSite, 'AddressCookie');
+                var redirectURL = libraryCmp.getRedirectCookie(redirectCookieName);
+                
+                if(redirectURL != "") {
+                    var strADPage = libraryCmp.getCookieSetupInfo(strSite, 'AccessDeniedPage');
+                    if(redirectURL.indexOf(strADPage) === -1) {
+                        component.set("v.blShowError", false);
+                        window.location=redirectURL;
+                    }
+                }
+            }
+        }
     },
 })

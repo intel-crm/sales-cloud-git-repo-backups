@@ -12,28 +12,24 @@
                 <field>Name</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Required</behavior>
-                <field>PRM_Title_Txt__c</field>
-            </layoutItems>
-            <layoutItems>
                 <behavior>Edit</behavior>
                 <field>PRM_Description_Txt__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Required</behavior>
-                <field>PRM_UI_Display_Area_Nm__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Required</behavior>
-                <field>PRM_Start_Date_Dt__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Required</behavior>
-                <field>PRM_End_Date_Dt__c</field>
+                <behavior>Edit</behavior>
+                <field>PRM_InActive_Ind__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>PRM_InActive_Ind__c</field>
+                <field>PRM_Title_Txt__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>PRM_UI_Display_Area_Nm__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>PRM_Message_Cd__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -82,17 +78,6 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
-        <fields>PRM_Language_Nm__c</fields>
-        <fields>PRM_Title_Txt__c</fields>
-        <relatedList>PRM_Message_Translation__c.PRM_Message_Id__c</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <fields>NAME</fields>
-        <fields>PRM_Contact_Group_Id__c</fields>
-        <relatedList>PRM_Message_Contact_Group_Association__c.PRM_Message_Id__c</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <fields>NAME</fields>
         <fields>PRM_Entitlement_Detail_Id__c</fields>
         <relatedList>PRM_Message_Entitlement_Association__c.PRM_Message_Id__c</relatedList>
     </relatedLists>
@@ -102,7 +87,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h2i000000Jmrb</masterLabel>
+        <masterLabel>00h8A000000T44y</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

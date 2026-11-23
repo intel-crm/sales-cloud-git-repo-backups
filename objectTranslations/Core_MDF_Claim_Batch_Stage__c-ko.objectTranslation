@@ -5,54 +5,16 @@
         <value>청구 배치 기록</value>
     </caseValues>
     <fields>
-        <label><!-- 3rd Party POP Documentation Required --></label>
-        <name>Core_MDF_3rd_Party_POP_Doc_Required_Ind__c</name>
-    </fields>
-    <fields>
-        <label><!-- Activity Category --></label>
-        <name>Core_MDF_ActivityCategory__c</name>
-    </fields>
-    <fields>
         <label>활동</label>
         <name>Core_MDF_Activity_Nbr__c</name>
     </fields>
     <fields>
-        <label>활동 하위 유형</label>
-        <name>Core_MDF_Activity_SubType_nm__c</name>
-    </fields>
-    <fields>
-        <label><!-- Activity Type --></label>
-        <name>Core_MDF_Activity_Type_Nm__c</name>
-    </fields>
-    <fields>
-        <label><!-- Activity Type --></label>
-        <name>Core_MDF_Activity_Type__c</name>
-    </fields>
-    <fields>
-        <label>실행 종료일</label>
+        <label>광고 게재 종료일</label>
         <name>Core_MDF_Ad_Run_End_Dt__c</name>
     </fields>
     <fields>
-        <label>실행 시작일</label>
+        <label>광고 게재 시작일</label>
         <name>Core_MDF_Ad_Run_Start_Dt__c</name>
-    </fields>
-    <fields>
-        <help>적용 가능한 VAT 퍼센트</help>
-        <label>적용 가능한 VAT 퍼센트</label>
-        <name>Core_MDF_Applicable_VAT_Percentage_nm__c</name>
-        <picklistValues>
-            <masterLabel>0%</masterLabel>
-            <translation><!-- 0% --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>10%</masterLabel>
-            <translation><!-- 10% --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
-        <help>은행 계좌 번호는 기밀 정보입니다. 은행 계좌 번호의 마지막 4자리 숫자만 입력하십시오. 전체 번호는 기업 공급자 데이터베이스에 저장되어 있습니다.</help>
-        <label>은행 계좌 번호(마지막 4자리)</label>
-        <name>Core_MDF_Bank_Account_Nbr__c</name>
     </fields>
     <fields>
         <label>은행 Id</label>
@@ -66,15 +28,7 @@
     <fields>
         <label>청구 배치 ID</label>
         <name>Core_MDF_Batch_ID__c</name>
-        <relationshipLabel>청구 배치 기록</relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Budget Type --></label>
-        <name>Core_MDF_Budget_Type_Nm__c</name>
-    </fields>
-    <fields>
-        <label><!-- Budget Type --></label>
-        <name>Core_MDF_Budget_Type__c</name>
+        <relationshipLabel><!-- Claim Batch Records --></relationshipLabel>
     </fields>
     <fields>
         <label>청구 의견</label>
@@ -89,52 +43,28 @@
         <name>Core_MDF_Claim_Reference_Nbr__c</name>
     </fields>
     <fields>
-        <label>국가/지역</label>
-        <name>Core_MDF_Country_Location_nm__c</name>
-    </fields>
-    <fields>
-        <label><!-- Country --></label>
-        <name>Core_MDF_Country_nm__c</name>
-    </fields>
-    <fields>
         <label>사본 생성</label>
         <name>Core_MDF_Create_Duplicate_ind__c</name>
-    </fields>
-    <fields>
-        <label>생성자</label>
-        <name>Core_MDF_CreatedBy_Nm__c</name>
-    </fields>
-    <fields>
-        <label><!-- Failure Reason --></label>
-        <name>Core_MDF_Failure_Reason_Txt__c</name>
     </fields>
     <fields>
         <label>노출 횟수</label>
         <name>Core_MDF_Impressions_Cnt__c</name>
     </fields>
     <fields>
-        <label>비용 증명 화폐</label>
+        <label>청구서/영수증 통화</label>
         <name>Core_MDF_Inv_Receipt_Cur_Cd__c</name>
     </fields>
     <fields>
-        <label>비용 증명일</label>
+        <label>청구서/영수증 날짜</label>
         <name>Core_MDF_Inv_Receipt_Dt__c</name>
     </fields>
     <fields>
-        <label>비용 증명 번호</label>
+        <label>청구서/영수증 번호</label>
         <name>Core_MDF_Inv_Receipt_Nbr__c</name>
     </fields>
     <fields>
         <label>중복</label>
         <name>Core_MDF_Is_Duplicate_ind__c</name>
-    </fields>
-    <fields>
-        <label>마지막으로 수정한 사람</label>
-        <name>Core_MDF_Last_ModifiedBy_Nm__c</name>
-    </fields>
-    <fields>
-        <label><!-- Log Info --></label>
-        <name>Core_MDF_Log_Info_txt__c</name>
     </fields>
     <fields>
         <label>미디어 비히클</label>
@@ -157,12 +87,7 @@
         <name>Core_MDF_NoOfTrialActivations_Nbr__c</name>
     </fields>
     <fields>
-        <label><!-- Node Account --></label>
-        <name>Core_MDF_Node_Account_Txt__c</name>
-        <relationshipLabel><!-- Claim Batch Records --></relationshipLabel>
-    </fields>
-    <fields>
-        <label>환급되지 않는 비용(현지)</label>
+        <label>환급되지 않는 기타 비용(현지)</label>
         <name>Core_MDF_Non_Reimbursable_Amt__c</name>
     </fields>
     <fields>
@@ -170,91 +95,30 @@
         <name>Core_MDF_Processing_Status_Nm__c</name>
         <picklistValues>
             <masterLabel>Failed</masterLabel>
-            <translation>고장남</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Pending Documents</masterLabel>
-            <translation>보류 중인 문서</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Submitted</masterLabel>
-            <translation>제출됨</translation>
+            <translation><!-- Failed --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Successful</masterLabel>
-            <translation>성공</translation>
+            <translation><!-- Successful --></translation>
         </picklistValues>
-    </fields>
-    <fields>
-        <label><!-- Program --></label>
-        <name>Core_MDF_Program_Txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Program --></label>
-        <name>Core_MDF_Program__c</name>
-    </fields>
-    <fields>
-        <label><!-- Reimbursement Rate (%) --></label>
-        <name>Core_MDF_Reimbursement_Percent_Nbr__c</name>
-    </fields>
-    <fields>
-        <label><!-- Reimbursement Rate (%) --></label>
-        <name>Core_MDF_Reimbursement_Percent__c</name>
     </fields>
     <fields>
         <label>요청 Id</label>
         <name>Core_MDF_Request_Id__c</name>
     </fields>
     <fields>
-        <label><!-- Retry Count --></label>
-        <name>Core_MDF_Retry_Count_Nbr__c</name>
-    </fields>
-    <fields>
-        <label><!-- Review Hold Rule --></label>
-        <name>Core_MDF_Review_Hold_Rule_Nm__c</name>
-    </fields>
-    <fields>
-        <label>세금(현지)</label>
+        <label>세금(현지 통화)</label>
         <name>Core_MDF_Taxes_Local_Amt__c</name>
     </fields>
     <fields>
-        <label>총 금액(현지)</label>
+        <label>총 청구서 금액(현지)</label>
         <name>Core_MDF_Total_Amt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Ultimate Account ID --></label>
-        <name>Core_MDF_Ultimate_Account_ID__c</name>
-    </fields>
-    <fields>
-        <label><!-- Ultimate Account --></label>
-        <name>Core_MDF_Ultimate_Account_Txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Upload POP Document --></label>
-        <name>Core_MDF_Upload_POP_Document__c</name>
-    </fields>
-    <fields>
-        <label>송장 유형</label>
-        <name>Core_MDF_VAT_Opt_In__c</name>
-        <picklistValues>
-            <masterLabel>Reimbursement Request for 3rd party payment (NET cost only)</masterLabel>
-            <translation>제3자 결제에 대한 환급 요청(순 비용만 해당)</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Service Invoice to Intel (VAT may apply)</masterLabel>
-            <translation>인텔에 발행한 서비스 청구서(VAT가 적용될 수 있음)</translation>
-        </picklistValues>
     </fields>
     <nameFieldLabel>청구 배치 기록 ID</nameFieldLabel>
     <recordTypes>
-        <description><!-- Record Type for Client and Datacenter Claims --></description>
-        <label><!-- Claim Client Datacenter Batch Record --></label>
+        <description><!-- Record Type for CCF and DCF Claims --></description>
+        <label><!-- Claim CCF DCF Batch Record --></label>
         <name>Core_MDF_Claim_CCF_DCF_Batch_Record</name>
-    </recordTypes>
-    <recordTypes>
-        <description><!-- claim batch records of RMF program --></description>
-        <label><!-- Claim RMF Batch Record --></label>
-        <name>Core_MDF_Claim_RMF_Batch_Record</name>
     </recordTypes>
     <recordTypes>
         <description><!-- Record Type for SPCF Claims --></description>

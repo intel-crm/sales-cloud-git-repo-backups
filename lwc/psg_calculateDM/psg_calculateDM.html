@@ -1,0 +1,28 @@
+<template>
+
+    <lightning-quick-action-panel header={title}>
+        <p>{message}</p>
+        <div slot="footer">
+            <lightning-button variant="brand"
+            name="Yes"
+            label="Yes"
+            title="Yes"
+            onclick={handleClick} ></lightning-button>
+            &nbsp;
+<lightning-button variant="neutral"
+            name="No"
+            label="No"
+            title="No"
+            onclick={handleClick} ></lightning-button>                 
+        </div>
+      </lightning-quick-action-panel>
+   
+    
+  <template if:true={isLoaded} >
+        <div class="slds-modal slds-fade-in-open slds-modal_full">
+       <lightning-spinner
+            variant="brand">
+       </lightning-spinner></div>
+   </template>
+
+</template>

@@ -1,0 +1,51 @@
+.sow-table {
+    overflow-x: auto;
+}
+.custom-container{
+	color : black;
+}
+.no-label-space {
+    margin: 0; /* Remove any margin */
+    padding: 0; /* Remove any padding */
+}
+.hover-container {
+    position: relative;
+    display: inline-block;
+}
+
+.hover-card {
+    position: absolute;
+    top: 100%; /* Adjust this value to position the card above the hover container */
+    left: 0;
+    z-index: 1000;
+    width: 400px; /* Adjust width as needed */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    background-color: white;
+    border-radius: 0.25rem;
+    display: none; /* Initially hide the card */
+}
+
+.hover-container:hover .hover-card {
+    display: block; /* Show the card on hover */
+}
+.avatar-name-container {
+    display: flex;
+    align-items: center; /* Align items vertically */
+}
+
+.avatar-name-container lightning-avatar {
+    margin-right: 8px; /* Adjust the space as needed */
+}
+.button-container {
+    display: flex;
+    justify-content: center;
+}
+
+.action-column {
+    width: 70px;
+}
+
+.fixed-width {
+    width: 230px;
+    padding: 5px;
+}

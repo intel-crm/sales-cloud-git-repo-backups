@@ -1,0 +1,6 @@
+<messaging:emailTemplate subject="Financial Incentive Approval Notification" recipientType="User" relatedToType="SBQQ__QuoteLine__c"
+renderUsingSystemContextWithoutSharing="True">
+    <messaging:htmlEmailBody >
+        <c:Pricing_FI_QL_Approve_Notification quoteLineRecordId="{!relatedTo.Id}"/>
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>

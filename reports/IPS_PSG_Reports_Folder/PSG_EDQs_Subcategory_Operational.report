@@ -13,25 +13,22 @@
         <field>Core_IPS_Supported_Product__c.Product_Issue_Categories__r.Product_Issue_Sub_Categories__r$Core_Issue_Sub_Category_Name__c</field>
     </columns>
     <columns>
+        <field>Core_IPS_Supported_Product__c.Product_Issue_Categories__r.Product_Issue_Sub_Categories__r.Environment_Detail_Operationals__r$Core_IPS_Question_Text__c</field>
+    </columns>
+    <columns>
         <field>Core_IPS_Supported_Product__c.Product_Issue_Categories__r.Product_Issue_Sub_Categories__r.Environment_Detail_Operationals__r$Core_IPS_Question__c</field>
     </columns>
     <columns>
-        <field>Core_IPS_Supported_Product__c.Product_Issue_Categories__r.Product_Issue_Sub_Categories__r.Environment_Detail_Operationals__r$Core_Agent_Only__c</field>
+        <field>Core_IPS_Supported_Product__c.Product_Issue_Categories__r.Product_Issue_Sub_Categories__r.Environment_Detail_Operationals__r$Core_Required__c</field>
     </columns>
     <columns>
-        <field>Core_IPS_Supported_Product__c.Product_Issue_Categories__r.Product_Issue_Sub_Categories__r.Environment_Detail_Operationals__r$Core_Required__c</field>
+        <field>Core_IPS_Supported_Product__c.Product_Issue_Categories__r.Product_Issue_Sub_Categories__r.Environment_Detail_Operationals__r$Core_Agent_Only__c</field>
     </columns>
     <columns>
         <field>Core_IPS_Supported_Product__c.Product_Issue_Categories__r.Product_Issue_Sub_Categories__r.Environment_Detail_Operationals__r$Core_Status__c</field>
     </columns>
     <columns>
         <field>Core_IPS_Supported_Product__c.Product_Issue_Categories__r.Product_Issue_Sub_Categories__r.Environment_Detail_Operationals__r$LastModifiedDate</field>
-    </columns>
-    <columns>
-        <field>Core_IPS_Supported_Product__c.Product_Issue_Categories__r.Product_Issue_Sub_Categories__r.Environment_Detail_Operationals__r$Core_IPS_Question_Text__c</field>
-    </columns>
-    <columns>
-        <field>Core_IPS_Supported_Product__c$Core_Flag_Status__c</field>
     </columns>
     <filter>
         <criteriaItems>

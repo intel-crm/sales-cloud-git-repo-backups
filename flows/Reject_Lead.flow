@@ -26,8 +26,8 @@
     <decisions>
         <name>IsValidLead</name>
         <label>IsValidLead</label>
-        <locationX>518</locationX>
-        <locationY>138</locationY>
+        <locationX>314</locationX>
+        <locationY>242</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>If_Yes</name>
@@ -69,6 +69,7 @@
         <picklistField>Core_Rejection__c</picklistField>
         <picklistObject>Lead</picklistObject>
     </dynamicChoiceSets>
+    <environments>Default</environments>
     <interviewLabel>Reject Lead {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Reject Lead</label>
     <processMetadataValues>
@@ -77,12 +78,18 @@
             <stringValue>LightningFlowBuilder</stringValue>
         </value>
     </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
     <processType>Flow</processType>
     <recordUpdates>
         <name>Update_rejection_reason</name>
         <label>Update rejection reason</label>
-        <locationX>691</locationX>
-        <locationY>266</locationY>
+        <locationX>50</locationX>
+        <locationY>350</locationY>
         <connector>
             <targetReference>Rejection_Successful</targetReference>
         </connector>
@@ -98,6 +105,12 @@
             <field>Core_Lead_State__c</field>
             <value>
                 <stringValue>Terminated</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Lead_Status__c</field>
+            <value>
+                <stringValue>Disqualified</stringValue>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -117,8 +130,8 @@
     <screens>
         <name>Reject_Lead_Validation</name>
         <label>Reject Lead Validation</label>
-        <locationX>698</locationX>
-        <locationY>45</locationY>
+        <locationX>314</locationX>
+        <locationY>350</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -141,8 +154,8 @@
     <screens>
         <name>Rejection_reasons_Popup_Screen</name>
         <label>Rejection reasons Popup Screen</label>
-        <locationX>343</locationX>
-        <locationY>136</locationY>
+        <locationX>314</locationX>
+        <locationY>134</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -168,6 +181,7 @@
             <dataType>String</dataType>
             <fieldText>Rejection reasons</fieldText>
             <fieldType>DropdownBox</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>true</isRequired>
             <styleProperties>
                 <verticalAlignment>
@@ -182,6 +196,7 @@
             <name>Rejection_Comments1</name>
             <fieldText>Rejection Comments</fieldText>
             <fieldType>LargeTextArea</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>true</isRequired>
             <styleProperties>
                 <verticalAlignment>
@@ -198,8 +213,8 @@
     <screens>
         <name>Rejection_Successful</name>
         <label>Rejection Successful</label>
-        <locationX>840</locationX>
-        <locationY>266</locationY>
+        <locationX>50</locationX>
+        <locationY>458</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -219,8 +234,14 @@
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
     </screens>
-    <startElementReference>Rejection_reasons_Popup_Screen</startElementReference>
-    <status>Active</status>
+    <start>
+        <locationX>188</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Rejection_reasons_Popup_Screen</targetReference>
+        </connector>
+    </start>
+    <status>Obsolete</status>
     <variables>
         <name>Currentuser</name>
         <dataType>String</dataType>

@@ -15,6 +15,9 @@
         <label>Assign Price Book</label>
         <locationX>314</locationX>
         <locationY>923</locationY>
+        <defaultConnector>
+            <targetReference>Competitive_Architecture</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Check_for_Channel_Opportunity_and_is_cloned_FALSE</name>
@@ -38,6 +41,49 @@
             </connector>
             <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
             <label>Check for Channel Opportunity and is cloned FALSE</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Competitive_Architecture</name>
+        <label>Competitive Architecture</label>
+        <locationX>314</locationX>
+        <locationY>1223</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Update_Competitive_Architecture</name>
+            <conditionLogic>(1 OR 2) AND (3 OR 4)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_Architecture_Conversion__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>New Project</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Architecture_Conversion__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Intel Architecture Refresh</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Architecture_Conversion__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>isOpptyNew</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_competitive_architecture</targetReference>
+            </connector>
+            <label>Update Competitve Architecture</label>
         </rules>
     </decisions>
     <decisions>
@@ -138,7 +184,14 @@
 1. &quot;  Core_Opportunity_AtRisk_Update &quot;                                   [ in 1st DECISION block ]
 2.  Update Loss Cancel From Opportunity                                 [ in 2nd DECISION block ]
 4. Assign Price Book                                                                 [ in 3 rd DECISION block ]
-5. UpdateApprovedProductApplicationOnProd                       [  in 4th DECISION block  ]</description>
+5. UpdateApprovedProductApplicationOnProd                       [  in 4th DECISION block  ]
+6. Update competitive architecture</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>isOpptyNew</name>
+        <dataType>Boolean</dataType>
+        <expression>ISNEW() = true</expression>
+    </formulas>
     <interviewLabel>Core_Opportunity_PBs {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Core_Opportunity_PB</label>
     <processMetadataValues>
@@ -165,6 +218,9 @@
         <label>Assign Standard Price Book</label>
         <locationX>182</locationX>
         <locationY>1031</locationY>
+        <connector>
+            <targetReference>Competitive_Architecture</targetReference>
+        </connector>
         <inputAssignments>
             <field>Pricebook2Id</field>
             <value>
@@ -203,6 +259,19 @@
             <field>Core_At_Risk__c</field>
             <value>
                 <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Set_competitive_architecture</name>
+        <label>Set Competitive Architecture</label>
+        <locationX>182</locationX>
+        <locationY>1331</locationY>
+        <inputAssignments>
+            <field>Core_Competitive_Architecture__c</field>
+            <value>
+                <stringValue>None</stringValue>
             </value>
         </inputAssignments>
         <inputReference>$Record</inputReference>

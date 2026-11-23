@@ -128,22 +128,16 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <comment>Action override created by Lightning App Builder during activation.</comment>
-        <content>Premier_Support_Project_Product_Record_Page</content>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
         <formFactor>Large</formFactor>
-        <skipRecordTypeSelect>false</skipRecordTypeSelect>
-        <type>Flexipage</type>
+        <type>Default</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <comment>Action override created by Lightning App Builder during activation.</comment>
-        <content>Premier_Support_Project_Product_Record_Page</content>
         <formFactor>Small</formFactor>
-        <skipRecordTypeSelect>false</skipRecordTypeSelect>
-        <type>Flexipage</type>
-    </actionOverrides>
-    <actionOverrides>
-        <actionName>View</actionName>
         <type>Default</type>
     </actionOverrides>
     <allowInChatterGroups>false</allowInChatterGroups>
@@ -188,7 +182,7 @@
         <label>Product Default Case Owner</label>
         <length>255</length>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -204,6 +198,33 @@
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Product_Case_Owner__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>This field determines the default case owner if a case has been created on the Supported Project Product .</description>
+        <inlineHelpText>Default case owner for Project Product.</inlineHelpText>
+        <label>Default Case Owner</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>User.IsActive</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </filterItems>
+            <filterItems>
+                <field>User.Profile.Name</field>
+                <operation>equals</operation>
+                <value>IPS Agent, IPS Agent Enhanced, IPS Agent-Partner, IPS Support Org Admin, Sales Rep-BB-Dual IPS</value>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Premier_Support_Project_Products</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
     </fields>
     <fields>
         <fullName>Core_IPS_Product_Name__c</fullName>
@@ -480,13 +501,6 @@
 	)
 )</errorConditionFormula>
         <errorMessage>Cannot Add Par Hidden Type Supported Product or EOIS type Supported Products</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>IPS_Altera_Go_Live_Project_Restriction</fullName>
-        <active>true</active>
-        <description>Restricting the user to add Altera Products on an existing Project during migration</description>
-        <errorConditionFormula>AND($Label.IPS_Altera_Go_Live= &apos;True&apos;,Core_Supported_Product__r.Core_Support_Org_Name__c = &apos;Programmable Solutions Group&apos;,  $User.Id  &lt;&gt;  $Label.Altera_Bypass_UserId )</errorConditionFormula>
-        <errorMessage>Not allowed to create or update record related to Org 025</errorMessage>
     </validationRules>
     <visibility>Public</visibility>
     <webLinks>

@@ -20,7 +20,7 @@ Issue Description - {!Core_MDF_Exception__c.Core_MDF_Issue_Description_dsc__c}
 
 
 Thank you,
-{!$Label.Core_MDF_Email_Signature}</textOnly>
+{!Core_MDF_Exception__c.Core_MDF_Program_nm__c} Program Team</textOnly>
     <type>html</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

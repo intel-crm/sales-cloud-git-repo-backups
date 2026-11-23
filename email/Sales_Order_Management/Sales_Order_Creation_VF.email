@@ -1,0 +1,149 @@
+<messaging:emailTemplate subject="Your order has been fulfilled" recipientType="User" relatedToType="Order" renderUsingSystemContextWithoutSharing="True">
+    <messaging:htmlEmailBody >
+        <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        </head>
+        <body>
+        <p></p>
+        <table class="body" style="background: #f3f3f3; margin: 0px; padding: 0px; width: 100%; height: 100%; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; border-collapse: collapse; border-spacing: 0;">
+        <tbody>
+        <tr style="padding: 0px; text-align: left; vertical-align: top;">
+        <td align="center" class="center" valign="top" style="margin: 0px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-word-wrap: break-word; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;"><center style="width: 100%; min-width: 670px;">
+        <div align="center" class="float-center"><center style="width: 100%; min-width: 670px;">
+        <table align="center" class="float-center" style="margin: 0px auto; padding: 0px; width: 100%; text-align: center; vertical-align: top; float: none; border-collapse: collapse; max-width: 670px !important; border-spacing: 0;" cellspacing="0" cellpadding="0">
+        <tbody>
+        <tr style="padding: 0px; text-align: left; vertical-align: top;">
+        <td style="margin: 0px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-word-wrap: break-word; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;">
+        <table align="center" class="container" style="background: #f3f3f3; margin: 0px auto; padding: 0px; width: 670px; text-align: inherit; vertical-align: top; border-collapse: collapse; border-spacing: 0;">
+        <tbody>
+        <tr style="padding: 0px; text-align: left; vertical-align: top;">
+        <td style="margin: 0px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-word-wrap: break-word; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;">
+        <table class="row collapse header" style="padding: 0px; width: 100%; text-align: left; vertical-align: top; display: table; border-collapse: collapse; position: relative; border-spacing: 0; background-color: #0071c5;">
+        <tbody>
+        <tr style="padding: 0px; text-align: left; vertical-align: top;">
+        <th class="small-12 large-12 columns first last" style="margin: 0px auto; padding: 0px; width: 680px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400;">
+        <table style="padding: 0px; width: 100%; text-align: left; vertical-align: top; border-collapse: collapse; border-spacing: 0;">
+        <tbody>
+        <tr style="padding: 0px; text-align: left; vertical-align: top;">
+        <th style="margin: 0px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400;">
+        <table class="row header-content" style="padding: 0px; width: 100%; text-align: left; vertical-align: top; display: table; border-collapse: collapse; position: relative; border-spacing: 0;">
+        <tbody>
+        <tr style="padding: 0px; text-align: left; vertical-align: top;">
+        <th class="mobile-padding small-12 large-12 columns first last" style="margin: 0px auto; padding: 0px 20px; width: 100%; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400;">
+        <table style="padding: 0px; width: 100%; text-align: left; vertical-align: top; border-collapse: collapse; border-spacing: 0;">
+        <tbody>
+        <tr style="padding: 0px; text-align: left; vertical-align: top;">
+        <th style="margin: 0px; padding: 0px 0px 10px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400;">
+        <h1 style="margin: 0px 0px 17.39px;padding-top: 25px;text-align: left;color: #000000;line-height: 1.3;font-family: Arial,Helvetica,sans-serif;font-size: 18px;font-weight: 400;border-collapse: collapse !important;-ms-word-break: keep-all;-ms-word-wrap: normal;-ms-hyphens: none;-moz-hyphens: none;-webkit-hyphens: none;hyphens: none;">Your order has been fulfilled</h1><br/>
+        </th>
+        <th class="callout-inner" style="padding:15px;"> 
+        <img src="https://intel--crmdevint3--c.documentforce.com/servlet/servlet.ImageServer?id=0152i0000000fuQ&oid=00D2i0000008d6j&lastMod=1601025427000" title="Intel" align="right" class="float-center" style="height:100%;width:auto"/>
+        </th>
+        <th class="expander" style="margin: 0px; padding: 0px !important; width: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; visibility: hidden;"></th>
+        </tr>
+        </tbody>
+        </table>
+        </th>
+        </tr>
+        </tbody>
+        </table>
+        </th>
+        </tr>
+        </tbody>
+        </table>
+        </th>
+        </tr>
+        </tbody>
+        </table>
+        <table class="spacer" style="padding: 0px; width: 100%; text-align: left; vertical-align: top; border-collapse: collapse; border-spacing: 0; background-color: #f3f3f3;">
+        <tbody>
+        <tr style="padding: 0px; text-align: left; vertical-align: top;">
+        <td height="10" style="margin: 0px; padding: 0px; text-align: left; color: #555554; line-height: 10px; font-family: Arial,Helvetica,sans-serif; font-size: 10px; font-weight: 400; vertical-align: top; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-word-wrap: break-word; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;"></td>
+        </tr>
+        </tbody>
+        </table>
+        <table class="row module full-width" style="padding: 0px; width: 100%; text-align: left; vertical-align: top; display: table; border-collapse: collapse; position: relative; border-spacing: 0; background-color: #fefefe;">
+        <tbody>
+        <tr style="padding: 0px; text-align: left; vertical-align: top;">
+        <th class="small-12 large-12 columns first last" style="margin: 0px auto; padding: 20px 20px 10px; width: 650px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; background-color: #fefefe;">
+        <table style="padding: 0px; width: 100%; text-align: left; vertical-align: top; border-collapse: collapse; border-spacing: 0;">
+        <tbody>
+        <tr style="padding: 0px; text-align: left; vertical-align: top;">
+        <th style="margin: 0px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400;">
+        <p class="h2" style="margin: 0px 0px 10px; padding: 0px; text-align: left; color: #0071c5; line-height: 19px; font-family: Arial,Helvetica,sans-serif; font-size: 18px; font-weight: 400; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;"><span class="eloquaemail"></span></p>
+        <p style="margin: 0px 0px 10px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 11px; font-weight: 400; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;">
+        This notice is to inform you that your order request for Intel® FPGA Software/IP licenses has been completed<br></br>
+        </p>     
+        <p style="margin: 0px 0px 10px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 11px; font-weight: 400; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;">
+        <b>Below are your Order details: </b><br></br>
+        <b>Order Number: {!relatedTo.OrderNumber} </b><br></br>
+        </p>
+          <c:Sales_OrderConfirmationEmail orderId="{!relatedTo.Id}"/>  
+        <p></p>
+        <br></br>
+        <p style="margin: 0px 0px 10px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 11px; font-weight: 400; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;">To get started with managing your licenses, please login to <apex:outputLink value="{!$Label.Sales_SSLC_URL}"> Intel® FPGA Self-service licensing center</apex:outputLink> using your myIntel account. 
+        <br></br>
+        <br></br>
+        Sincerely,<br></br>
+        Intel Corporation <br></br>
+        Programmable Solutions Group</p>             
+        </th>
+        <th class="expander" style="margin: 0px; padding: 0px !important; width: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; visibility: hidden;"></th>
+        </tr>
+        </tbody>
+        </table>
+        </th>
+        </tr>
+        </tbody>
+        </table>
+        <span class="remove-absolute" style="display: block;" elqid="8645" elqtype="DynamicContent"> </span>
+        <table class="spacer" style="padding: 0px; width: 100%; text-align: left; vertical-align: top; border-collapse: collapse; border-spacing: 0; background-color: #f3f3f3;">
+        <tbody>
+        <tr style="padding: 0px; text-align: left; vertical-align: top;">
+        <td height="10" style="margin: 0px; padding: 0px; text-align: left; color: #555554; line-height: 10px; font-family: Arial,Helvetica,sans-serif; font-size: 10px; font-weight: 400; vertical-align: top; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-word-wrap: break-word; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;"></td>
+        </tr>
+        </tbody>
+        </table>
+        <table class="body footer_elq" style="background: 0px 0px; margin: 0px; padding: 0px; width: 100%; height: 100%; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; border-collapse: collapse; border-spacing: 0;">
+        <tbody>
+        <tr style="background: 0px 0px; padding: 0px; border: 0px solid transparent; text-align: left; vertical-align: top; border-collapse: collapse;">
+        <td align="center" class="center" valign="top" style="background: 0px 0px; margin: 0px; padding: 0px; border: 0px solid transparent; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-word-wrap: break-word; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;">
+        <div>
+        <table align="center" style="background: 0px 0px; padding: 0px; border: 0px solid transparent; width: 100%; text-align: left; vertical-align: top; border-collapse: collapse; max-width: 600px !important; border-spacing: 0;" cellspacing="0" cellpadding="0">
+        <tbody>
+        <tr style="background: 0px 0px; padding: 0px; border: 0px solid transparent; text-align: left; vertical-align: top; border-collapse: collapse;">
+        <td style="background: 0px 0px; margin: 0px; padding: 0px; border: 0px solid transparent; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-word-wrap: break-word; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;">
+        <table class="row collapse mobile-padding" style="background: 0px 0px; padding: 0px; border: 0px solid transparent; width: 100%; text-align: left; vertical-align: top; display: table; border-collapse: collapse; position: relative; border-spacing: 0;">
+        <tbody>
+        <tr style="background: 0px 0px; padding: 0px; border: 0px solid transparent; text-align: left; vertical-align: top; border-collapse: collapse;">
+        <th class="small-12 large-12 columns first last" style="background: 0px 0px; margin: 0px auto; padding: 0px 0px 20px; border: 0px solid transparent; width: 680px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; border-collapse: collapse;">
+        <p style="color: #000000; font-family: tahoma, arial, helvetica, sans-serif; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: #ffffff; text-decoration-style: initial; text-decoration-color: initial;"><img width="352" height="1" src="./WelcomeEmailTemplateSample_files/spacer.gif" border="0" _rte_src="https://www-ssl.intel.com/Assets/en_US/Image/tab/spacer.gif"/></p>
+        </th>
+        </tr>
+        </tbody>
+        </table>
+        </td>
+        </tr>
+        </tbody>
+        </table>
+        </div>
+        </td>
+        </tr>
+        </tbody>
+        </table>
+        </td>
+        </tr>
+        </tbody>
+        </table>
+        </td>
+        </tr>
+        </tbody>
+        </table>
+        </center></div>
+        </center></td>
+        </tr>
+        </tbody>
+        </table>
+        <p></p>
+        </body></html>
+</messaging:htmlEmailBody>
+</messaging:emailTemplate>

@@ -6,5 +6,5 @@
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>CNRS/INSU OBSERVATOIRE DE BORDEAUX Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>CNRSINSUOBSERVATOIREDEBORDEAUXCustomerManager</parentRole>
 </Role>

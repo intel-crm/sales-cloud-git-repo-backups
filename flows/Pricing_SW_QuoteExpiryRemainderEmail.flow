@@ -216,8 +216,8 @@
         </connector>
         <schedule>
             <frequency>Daily</frequency>
-            <startDate>2024-09-23</startDate>
-            <startTime>23:45:00.000Z</startTime>
+            <startDate>2024-09-12</startDate>
+            <startTime>04:30:00.000Z</startTime>
         </schedule>
         <triggerType>Scheduled</triggerType>
     </start>

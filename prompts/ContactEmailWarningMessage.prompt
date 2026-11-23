@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Contact Email Warning Message</masterLabel>
+    <promptVersions>
+        <actionButtonLabel>Submit</actionButtonLabel>
+        <actionButtonLink>http://lightning/o/Contact/home</actionButtonLink>
+        <body>&lt;p&gt;&lt;strong&gt;Creating additional contacts for the same external user will impede their ability to set up MFA&lt;/strong&gt;&lt;/p&gt;</body>
+        <delayDays>1</delayDays>
+        <dismissButtonLabel>Dismiss</dismissButtonLabel>
+        <displayType>Targeted</displayType>
+        <elementRelativePosition>RightBottom</elementRelativePosition>
+        <endDate>2027-01-31</endDate>
+        <experience>Lightning</experience>
+        <isPublished>true</isPublished>
+        <masterLabel>Contact Email Warning Message</masterLabel>
+        <publishedDate>2024-01-08</publishedDate>
+        <referenceElementContext>{&quot;scope&quot;:{&quot;scope&quot;:{&quot;attributes&quot;:{&quot;id&quot;:&quot;sfdc:RecordField.Contact.Email&quot;}},&quot;attributes&quot;:{&quot;id&quot;:&quot;e749965136cc4d4d9fc02c6f9c4a08b7&quot;}},&quot;version&quot;:2}</referenceElementContext>
+        <shouldDisplayActionButton>true</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>true</shouldIgnoreGlobalDelay>
+        <startDate>2024-01-08</startDate>
+        <targetPageKey1>Contact</targetPageKey1>
+        <targetPageKey2>new</targetPageKey2>
+        <targetPageKey3>{&quot;navigationLocation&quot;:&quot;LIST_VIEW&quot;,&quot;nooverride&quot;:&quot;1&quot;,&quot;useRecordTypeCheck&quot;:&quot;1&quot;,&quot;onRecordTypeSelection&quot;:false}</targetPageKey3>
+        <targetPageType>standard__objectPage</targetPageType>
+        <targetRecordType>Contact.Core_Intel_Contact</targetRecordType>
+        <themeColor>Theme1</themeColor>
+        <themeSaturation>Light</themeSaturation>
+        <timesToDisplay>30</timesToDisplay>
+        <title>Warning</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+</Prompt>

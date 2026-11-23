@@ -20,26 +20,19 @@
       </lightning-layout>
       <!-- </template> -->
       <lightning-layout-item flexibility="grow" size="12" padding="around_xxx-small"></lightning-layout-item>
-      <div class="slds-grid wrap slds-p-left_medium">
-        <div class="subwrap">
-          <template for:each={KPIdata} for:item="keyValue">
-            <!-- <div class="slds-size_1-of-2" key={keyValue.key}> -->
-            <div class="slds-form-element slds-form-element_readonly slds-size_1-of-2 slds-p-right_medium child-wrap"
-              key={keyValue.key}>
-              <span class="slds-form-element__label slds-p-left_medium " key={keyValue.key}>
-                {keyValue.key}</span>
-                <!-- Added code to support Help Text -->
-                <template if:true={keyValue.helpText}>
-                  <lightning-helptext content={keyValue.helpText}>
-                  </lightning-helptext>
-                 </template>
-              <div class="slds-form-element__control slds-p-left_medium" key={keyValue.key}>
-                <div class="slds-form-element__static" key={keyValue.key}>{keyValue.value}</div>
-              </div>
+      <div class="slds-grid slds-gutters slds-wrap slds-p-left_medium">
+        <template for:each={KPIdata} for:item="keyValue">
+          <!-- <div class="slds-size_1-of-2" key={keyValue.key}> -->
+          <div class="slds-form-element slds-form-element_readonly slds-size_1-of-2 slds-p-right_medium"
+            key={keyValue.key}>
+            <span class="slds-form-element__label slds-p-left_medium " key={keyValue.key}>
+              {keyValue.key}</span>
+            <div class="slds-form-element__control slds-p-left_medium" key={keyValue.key}>
+              <div class="slds-form-element__static" key={keyValue.key}>{keyValue.value}</div>
             </div>
-            <!-- </div> -->
-          </template>
-        </div>
+          </div>
+          <!-- </div> -->
+        </template>
       </div>
       <!-- </div> -->
     </article>

@@ -8,6 +8,7 @@ import updateSalesPriceData from '@salesforce/apex/Core_OppApprovalCtrl.updateSa
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import customCSS from '@salesforce/resourceUrl/toastCSS';
 import { loadStyle } from 'lightning/platformResourceLoader';
+import CRM_ShowPCC_SubmitForApproval_6QPS from "@salesforce/label/c.CRM_ShowPCC_SubmitForApproval_6QPS";
 
 const dataTableColumns = [
     { label: 'Product Name', fieldName: 'productNames',initialWidth: 400,sortable: "true" },
@@ -58,6 +59,7 @@ export default class Core_OppApprovalLWC extends NavigationMixin(LightningElemen
     @track toastMessage;
     @track toastVariant;
     @track auraInvoke = false;
+    @track displayDataforPCC = true;
    
     
     get setDatatableHeight(){
@@ -67,6 +69,10 @@ export default class Core_OppApprovalLWC extends NavigationMixin(LightningElemen
         return 'height:25rem;';
     }
     }
+
+    label = {
+    CRM_ShowPCC_SubmitForApproval_6QPS,    
+    };
 
      get bDisableBackBtn(){
        console.log('inside disable back'+this.activeTab+'-'+this.showErrors );
@@ -148,7 +154,12 @@ export default class Core_OppApprovalLWC extends NavigationMixin(LightningElemen
     
     connectedCallback() {
         this.loaded = true;
+        this.displayDataforPCC = CRM_ShowPCC_SubmitForApproval_6QPS ;
 
+       
+
+        console.log('displayDataforPCC---'+this.displayDataforPCC);
+        console.log('CRM_ShowPCC_SubmitForApproval_6QPS---'+CRM_ShowPCC_SubmitForApproval_6QPS);
          loadStyle(this, customCSS).then(() => {
             //console.log('css loaded successfully');
         }).catch(error => {
@@ -238,7 +249,7 @@ export default class Core_OppApprovalLWC extends NavigationMixin(LightningElemen
     }
 
 
-    handleSubmitClick(event){
+   async handleSubmitClick(event){
        this.loaded = true;
        
        if( this.showEPACData == true){
@@ -252,7 +263,7 @@ export default class Core_OppApprovalLWC extends NavigationMixin(LightningElemen
      if(this.isSalesPriceUpdated && this.isDataImproper){
         
       //  console.log('inside submit');
-      submitApproval({ oppId: this.recordId, comments: this.comments})
+    await  submitApproval({ oppId: this.recordId, comments: this.comments})
         .then(result =>{
             
             eval("$A.get('e.force:refreshView').fire();");

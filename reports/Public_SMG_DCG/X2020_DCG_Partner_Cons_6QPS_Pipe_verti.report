@@ -103,6 +103,13 @@
             <value>DCG-Consulting</value>
         </criteriaItems>
         <criteriaItems>
+            <column>Opportunity.Core_Commissionable__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Yes</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>Opportunity.Core_Exclude_From_KPIs__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>

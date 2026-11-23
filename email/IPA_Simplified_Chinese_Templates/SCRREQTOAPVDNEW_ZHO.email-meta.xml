@@ -4,40 +4,18 @@
     <encodingKey>UTF-8</encodingKey>
     <name>SCRREQTOAPVDNEW_ZHO</name>
     <style>none</style>
-    <subject>需要采取行动：在 45 天内激活合作伙伴计划权益</subject>
-    <textOnly>恭喜，您的会员申请已批准并处理！
+    <subject>欢迎加入英特尔合作伙伴计划</subject>
+    <textOnly>You Have Been Approved!
 
 
-欢迎加入英特尔® 合作伙伴联盟计划！
+Welcome! {!Account.Name} is now a member of Intel’s Partner program. After 30 minutes, please log in here for marketing materials, sales tools and other information about your benefits. If you would like to make changes to your account, please visit your profile here.www.intel.com/content/www/us/en/secure/my-intel/profile.html
 
-我们很高兴您加入我们的统一生态系统，旨在使合作伙伴能够连接到英特尔生态系统，以加速创新解决方案，实现业务成果并释放增长潜力。
+Questions? Contact Support here
 
-为确保您能够不间断地访问帐户，请在收到本电子邮件后 45 天内登录。登录后您的资料可以保持活跃并与贵公司相关联。
-
-借助为您的业务量身定制的权益，您将能够：
-
-利用全新工具、培训和资源开拓新商机
-通过具备资格的购买和活动获取积分并进行兑换
-借助市场发展基金促进营销和销售成功
-在全新的英特尔® 软件上学习、设计原型和测试工作负载
-通过英特尔® 合作伙伴培训计划提供的世界级培训扩展知识面
-利用 NDA 内容、路线图和开发者工具打造创新产品
-利用英特尔® 营销工作室中的联合推广资料快速推出市场活动
-在英特尔® Partner Showcase 中，与合作伙伴店面互动，获取符合条件的潜在客户
-
-登录并开始使用
-
-如需英特尔登录方面的帮助，请点击此处。
-
-
-
-顺祝商祺！
-英特尔® 合作伙伴联盟团队
-
-本邮件是有关您与英﻿特﻿尔﻿® 合作伙伴联盟当前合作关系的重要业务邮件。
-© {!$Label.PRM_CurrentYear} 英特尔公司
-Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
-隐私条款 &amp;verbar; Cookie</textOnly>
+Copyright © 2016 Intel Corporation. All rights reserved. Intel, the Intel logo are trademarks of Intel Corporation in the U.S. and/or other countries.
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. Intel.com
+You may unsubscribe at any time by updating your profile settings at: {!$Label.PRM_MyIntelProfileURL}
+Privacy | Cookies | *Trademarks</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

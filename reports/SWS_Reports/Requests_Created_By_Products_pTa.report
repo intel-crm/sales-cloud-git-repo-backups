@@ -54,6 +54,8 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
+    <sortColumn>SWS_Cloud_Credit_Request__c$Name</sortColumn>
+    <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>SWS_Cloud_Credit_Request__c$SWS_Coupon_Created_On__c</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>

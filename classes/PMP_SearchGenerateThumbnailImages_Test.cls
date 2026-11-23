@@ -15,7 +15,7 @@ Private class PMP_SearchGenerateThumbnailImages_Test {
         insert cmp1;                                             
         Test.setCreatedDate(cmp1.Id, DateTime.valueOf('2019-08-25 12:32:53'));
         PMP_Company__c temp = [SELECT CreatedDate from PMP_Company__c where id =: cmp1.Id];
-        // system.debug('create date : ' + temp.CreatedDate);
+        system.debug('create date : ' + temp.CreatedDate);
         
 
         //create content document , so that we can assocaite to company resource
@@ -30,8 +30,8 @@ Private class PMP_SearchGenerateThumbnailImages_Test {
                 
         //set up company resources and insert 
         List<PMP_Company_Resource__c> comp_resources = new List<PMP_Company_Resource__c>();
-        comp_resources.add(createCompanyResourceInstance('Resource1','www.intel.com',cmp1.Id,'Image',insertedVersions[0].ContentDocumentId));
-        comp_resources.add(createCompanyResourceInstance('Resource2','www.intel.com',cmp1.Id,'Thumbnail Image',insertedVersions[1].ContentDocumentId));
+        comp_resources.add(createCompanyResourceInstance('Resource1','www.intel.com',cmp1.Id,PMP_StaticConstants_Partner.IMAGE,insertedVersions[0].ContentDocumentId));
+        comp_resources.add(createCompanyResourceInstance('Resource2','www.intel.com',cmp1.Id,PMP_StaticConstants_Partner.THUMBNAIL_IMAGE,insertedVersions[1].ContentDocumentId));
         insert comp_resources;
     }
 
@@ -40,8 +40,7 @@ Private class PMP_SearchGenerateThumbnailImages_Test {
         resource.Name				=	name;
         resource.PMP_Company_Id__c = compId;
         resource.PMP_Company_Resource_Type_Nm__c = resourceType;
-    //    if(resourceType == PMP_StaticConstants_Partner.IMAGE || resourceType == PMP_StaticConstants_Partner.THUMBNAIL_IMAGE)
-       if(resourceType == 'Image' || resourceType == 'Thumbnail Image')    
+        if(resourceType == PMP_StaticConstants_Partner.IMAGE || resourceType == PMP_StaticConstants_Partner.THUMBNAIL_IMAGE)
             resource.PMP_Company_Image__c = contentId;
         else
             resource.PMP_Company_Resource_URL_txt__c = url;
@@ -50,36 +49,30 @@ Private class PMP_SearchGenerateThumbnailImages_Test {
     }    
 
     static testMethod void generateThumbnailImageSuccessTest() {
-		List<PMP_Company__c> comp_list = [Select Id, CreatedDate,name, CreatedById from PMP_Company__c limit 10];
-       // PMP_Company__c comp = comp_list.isEmpty() ? null : comp_list[0];
-        	PMP_Company__c comp=new PMP_Company__c();
-        	comp.name='test1';
-        	insert comp;
-        List<PMP_Company_Resource__c> comp_resources = [Select Id, PMP_Company_Image__c from PMP_Company_Resource__c WHERE PMP_Company_Resource_Type_Nm__c ='Image'];
-        //system.debug('resource ==> ' + comp_resources);
+		List<PMP_Company__c> comp_list = [Select Id, CreatedDate from PMP_Company__c];
+        PMP_Company__c comp = comp_list.isEmpty() ? null : comp_list[0];
+        List<PMP_Company_Resource__c> comp_resources = [Select Id, PMP_Company_Image__c from PMP_Company_Resource__c WHERE PMP_Company_Resource_Type_Nm__c = :PMP_StaticConstants_Partner.IMAGE];
+        system.debug('resource ==> ' + comp_resources);
        
         //start the test execution
         Test.startTest();
         PMP_SearchGenerateThumbnailImages obj = new PMP_SearchGenerateThumbnailImages();
-        Database.executeBatch(obj);
-        obj.execute(null,comp_list);
-      //  Id batchprocessid = Database.executeBatch(obj,1);
-      //  system.debug('batchId ==> ' + batchprocessid);
+        Id batchprocessid = Database.executeBatch(obj,1);
+        system.debug('batchId ==> ' + batchprocessid);
         Test.stopTest();
         
         //One new thumbnail and one old thumbnail image will be available
-        List<PMP_Company_Resource__c> thumbnailCompResource = [Select Id from PMP_Company_Resource__c WHERE PMP_Company_Resource_Type_Nm__c = 'Thumbnail Image'];
-        system.assertEquals(1,thumbnailCompResource.size(),'No error'); 
+        List<PMP_Company_Resource__c> thumbnailCompResource = [Select Id from PMP_Company_Resource__c WHERE PMP_Company_Resource_Type_Nm__c = :PMP_StaticConstants_Partner.THUMBNAIL_IMAGE];
+        system.assertEquals(1,thumbnailCompResource.size()); 
     }
     
     static testMethod void generateThumbnailImageSuccessMock(){
-        List<PMP_Company__c> comp_list = [Select Id from PMP_Company__c limit 10];
+        List<PMP_Company__c> comp_list = [Select Id from PMP_Company__c];
         PMP_Company__c comp = comp_list.isEmpty() ? null : comp_list[0];
         Test.startTest();
         PMP_SearchGenerateThumbnailImages obj = new PMP_SearchGenerateThumbnailImages();
         Test.setMock(HttpCalloutMock.class, new PMP_ImageResizeServiceSuccessMock());
         obj.generateThumbnails(comp.Id);
-        system.assertNotEquals(Null, comp_list.size(), 'No Error');
         Test.stopTest();
     }
     
@@ -90,21 +83,19 @@ Private class PMP_SearchGenerateThumbnailImages_Test {
         PMP_SearchGenerateThumbnailImages obj = new PMP_SearchGenerateThumbnailImages();
         Test.setMock(HttpCalloutMock.class, new PMP_ImageResizeServiceFailureMock());
         obj.generateThumbnails(cmp1.Id);
-        system.assertNotEquals(Null, cmp1, 'No Error');
         Test.stopTest();
     }
     
     static testMethod void generateThumbnailImageFailureTest() {
-		List<PMP_Company__c> comp_list = [Select Id from PMP_Company__c limit 10];
+		List<PMP_Company__c> comp_list = [Select Id from PMP_Company__c];
         PMP_Company__c comp = comp_list.isEmpty() ? null : comp_list[0];
         List<PMP_Company_Resource__c> comp_resources = [Select Id, PMP_Company_Image__c from PMP_Company_Resource__c WHERE PMP_Company_Resource_Type_Nm__c = :PMP_StaticConstants_Partner.IMAGE];
         //start the test execution
         Test.startTest();
         	Test.setMock(HttpCalloutMock.class, new PMP_ImageResizeServiceFailureMock());
         	PMP_SearchGenerateThumbnailImages obj = new PMP_SearchGenerateThumbnailImages();
-        	obj.generateThumbnails(comp.Id);
+        	obj.generateThumbnails('a3q0n000000HFEfAAO');
         	//PMP_Image_Resizing.generateThumbnailImages('a3q0n000000HFEfAAO');
-        	system.assertNotEquals(Null, comp_list.size(), 'No Error');
         Test.stopTest();
         
        

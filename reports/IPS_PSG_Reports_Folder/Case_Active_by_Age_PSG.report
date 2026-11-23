@@ -376,7 +376,7 @@
         <summaryAxisRange>Auto</summaryAxisRange>
         <textColor>#000000</textColor>
         <textSize>12</textSize>
-        <title>Obsoleted-Active Cases by Owner Group</title>
+        <title>Active Cases by Owner Group</title>
         <titleColor>#000000</titleColor>
         <titleSize>18</titleSize>
     </chart>
@@ -446,13 +446,6 @@
             <operator>equals</operator>
             <value>,WWRAE,MAG,Factory APPS</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>ACCOUNT.NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>IPS Test Account</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
@@ -466,7 +459,7 @@
         <field>BucketField_9253579</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Obsoleted-Cases Active - by Age - PSG</name>
+    <name>Cases Active - by Age - PSG</name>
     <params>
         <name>units</name>
         <value>d</value>

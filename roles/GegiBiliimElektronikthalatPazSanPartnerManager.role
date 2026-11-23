@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>Gegi Bilişim Elektronik İthalat Paz. San Partner Manager</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>Gegi Bilişim Elektronik İthalat Paz. San Partner Manager</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>GegiBiliimElektronikthalatPazSanPartnerExecutive</parentRole>
+</Role>

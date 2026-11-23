@@ -9,13 +9,13 @@
         <value>Core Account Bypass Validation Rule</value>
     </caseValues>
     <fields>
-        <label><!-- ByPass --></label>
-        <name>ByPass__c</name>
-    </fields>
-    <fields>
         <help><!-- This field is used to bypass validation rules via flows --></help>
         <label><!-- Bypass Flow --></label>
         <name>Bypass_Flow__c</name>
+    </fields>
+    <fields>
+        <label><!-- Bypass --></label>
+        <name>Bypass__c</name>
     </fields>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

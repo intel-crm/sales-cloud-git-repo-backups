@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Send_Three_Days_Reminder</name>
+        <label>Send Three Days Reminder</label>
+        <locationX>176</locationX>
+        <locationY>360</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>relatedRecordId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recipientId</name>
+            <value>
+                <elementReference>$Record.Owner:User.Email</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>logEmailOnSend</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailTemplateId</name>
+            <value>
+                <stringValue>00XDf000003mKYyMAM</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <apiVersion>62.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Quote Expiry Notification Flow</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>SevenDaysUntilExpiry</name>
+        <dataType>Date</dataType>
+        <expression>TODAY()+7</expression>
+    </formulas>
+    <formulas>
+        <name>TenDaysUntilExpiry</name>
+        <dataType>Date</dataType>
+        <expression>TODAY()+10</expression>
+    </formulas>
+    <formulas>
+        <name>ThreeDaysUntilExpiry</name>
+        <dataType>Date</dataType>
+        <expression>TODAY() +3</expression>
+    </formulas>
+    <interviewLabel>Quote Expiry Notification Flow {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Quote Expiry Notification Flow</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Get all the records based on formula created to send 3 days, 7 days and 10 days reminder.</description>
+        <name>Records_To_Send_Reminder</name>
+        <label>Records To Send Reminder</label>
+        <locationX>176</locationX>
+        <locationY>252</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Send_Three_Days_Reminder</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Three_Days_Before_Expiry__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <numberValue>3.0</numberValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Pricing_Quote_Program_Nm__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Software &amp; Services</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>SBQQ__Quote__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Records_To_Send_Reminder</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Pricing_Quote_Program_Nm__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Software &amp; Services</stringValue>
+            </value>
+        </filters>
+        <object>SBQQ__Quote__c</object>
+        <schedule>
+            <frequency>Daily</frequency>
+            <startDate>2024-09-09</startDate>
+            <startTime>14:00:00.000Z</startTime>
+        </schedule>
+        <triggerType>Scheduled</triggerType>
+    </start>
+    <status>Draft</status>
+    <textTemplates>
+        <name>ThreeDaysExpiryBody</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;p&gt;Your quote is set to expire {!$Record.Name}!&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Account Name: {!$Record.SBQQ__Account__r.Name}&lt;/p&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <name>ThreeDaysExpirySubject</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;p&gt;Your Quote {!$Record.Name} is set to expire in 3 Days!&lt;/p&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <name>ThreeDaysSubject</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;p&gt;Your Quote {!$Record.Name} is set to expire in 3 days!&lt;/p&gt;</text>
+    </textTemplates>
+</Flow>

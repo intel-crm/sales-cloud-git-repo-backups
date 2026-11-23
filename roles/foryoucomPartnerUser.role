@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>ForyouComputer Partner User</description>
+    <description>foryoucom Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>ForyouComputer Partner User</name>
+    <name>foryoucom Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>foryoucomPartnerManager</parentRole>
 </Role>

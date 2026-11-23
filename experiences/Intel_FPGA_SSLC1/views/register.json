@@ -5,117 +5,6 @@
   "id" : "94c3d075-bb3d-4a79-a5f3-97450c64d1d5",
   "label" : "Register",
   "regions" : [ {
-    "components" : [ {
-      "componentAttributes" : { },
-      "componentName" : "salesforceIdentity:communityLogo2",
-      "id" : "442b5172-6639-48f9-969c-303ba14c1fba",
-      "renderPriority" : "NEUTRAL",
-      "renditionMap" : {
-        "zh_cn" : "1fe00d94-77f3-43b7-bc8d-7a4442f6ac3e"
-      },
-      "renditions" : [ {
-        "id" : "1fe00d94-77f3-43b7-bc8d-7a4442f6ac3e",
-        "renditionValue" : {
-          "componentAttributes" : { }
-        },
-        "type" : "renditionComponent"
-      } ],
-      "type" : "component"
-    }, {
-      "componentAttributes" : {
-        "richTextValue" : "<div style=\"text-align: center;\" class=\"inverseTextColor\">Join the community to receive personalized information and customer support.</div>"
-      },
-      "componentName" : "forceCommunity:richTextInline",
-      "id" : "061e350d-888f-4cbc-9408-33aee2d88cae",
-      "renderPriority" : "NEUTRAL",
-      "renditionMap" : {
-        "zh_cn" : "3e40a863-d706-4673-aa21-0795c6c8f2e5"
-      },
-      "renditions" : [ {
-        "id" : "3e40a863-d706-4673-aa21-0795c6c8f2e5",
-        "renditionValue" : {
-          "componentAttributes" : {
-            "richTextValue" : "<div style=\"text-align: center;\" class=\"inverseTextColor\">Join the community to receive personalized information and customer support.</div>"
-          }
-        },
-        "type" : "renditionComponent"
-      } ],
-      "type" : "component"
-    }, {
-      "componentAttributes" : {
-        "confirmPasswordLabel" : "Confirm Password",
-        "emailLabel" : "Email",
-        "extraFieldsFieldSet" : "",
-        "firstnameLabel" : "First Name",
-        "includePasswordField" : false,
-        "lastnameLabel" : "Last Name",
-        "passwordLabel" : "Create Password",
-        "regConfirmUrl" : "./CheckPasswordResetEmail",
-        "startUrl" : "",
-        "submitButtonLabel" : "Sign Up"
-      },
-      "componentName" : "salesforceIdentity:selfRegister2",
-      "id" : "e64c00ec-3774-4ee3-a922-bc5fb4ffb0c2",
-      "renderPriority" : "NEUTRAL",
-      "renditionMap" : {
-        "zh_cn" : "4cfa5d9e-4453-4173-868f-a06e3d04fbd9"
-      },
-      "renditions" : [ {
-        "id" : "4cfa5d9e-4453-4173-868f-a06e3d04fbd9",
-        "renditionValue" : {
-          "componentAttributes" : {
-            "confirmPasswordLabel" : "Confirm Password",
-            "emailLabel" : "Email",
-            "firstnameLabel" : "First Name",
-            "lastnameLabel" : "Last Name",
-            "passwordLabel" : "Create Password",
-            "submitButtonLabel" : "Sign Up"
-          }
-        },
-        "type" : "renditionComponent"
-      } ],
-      "type" : "component"
-    }, {
-      "componentAttributes" : {
-        "headerText" : "",
-        "showHeader" : false,
-        "useCommunityDomainSso" : false
-      },
-      "componentName" : "salesforceIdentity:socialLogin2",
-      "id" : "cc689d22-61d3-406a-b3c8-ecc50601e222",
-      "renderPriority" : "NEUTRAL",
-      "renditionMap" : {
-        "zh_cn" : "cdddb17c-1c84-4846-bcef-9a5bfdc228ac"
-      },
-      "renditions" : [ {
-        "id" : "cdddb17c-1c84-4846-bcef-9a5bfdc228ac",
-        "renditionValue" : {
-          "componentAttributes" : { }
-        },
-        "type" : "renditionComponent"
-      } ],
-      "type" : "component"
-    }, {
-      "componentAttributes" : {
-        "richTextValue" : "<div style=\"text-align: center;\"><a class=\"inverseTextColor\" href=\"./\">Already have an account?</a></div>"
-      },
-      "componentName" : "forceCommunity:richTextInline",
-      "id" : "e8bda641-69b7-4d58-872c-e82ceb2b7cb7",
-      "renderPriority" : "NEUTRAL",
-      "renditionMap" : {
-        "zh_cn" : "62af3c3c-79e0-468c-8f09-7ed6a0c9fde5"
-      },
-      "renditions" : [ {
-        "id" : "62af3c3c-79e0-468c-8f09-7ed6a0c9fde5",
-        "renditionValue" : {
-          "componentAttributes" : {
-            "richTextValue" : "<div style=\"text-align: center;\"><a class=\"inverseTextColor\" href=\"./\">Already have an account?</a></div>"
-          }
-        },
-        "type" : "renditionComponent"
-      } ],
-      "type" : "component"
-    } ],
     "id" : "d2d7ef08-e530-426a-8669-d148b17e0fa8",
     "regionName" : "content",
     "type" : "region"
@@ -135,6 +24,7 @@
         "id" : "57d1983a-3eac-44c9-bd06-948442d95d4f",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "市场推广基金",
             "description" : "市场推广基金",
             "title" : "Register"
           }

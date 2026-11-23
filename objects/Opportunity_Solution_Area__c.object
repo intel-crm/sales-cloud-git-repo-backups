@@ -132,7 +132,7 @@
         <actionName>View</actionName>
         <comment>Action override created by Lightning App Builder during activation.</comment>
         <content>Opportunity_Solution_Record_Page</content>
-        <formFactor>Small</formFactor>
+        <formFactor>Large</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
     </actionOverrides>
@@ -140,7 +140,7 @@
         <actionName>View</actionName>
         <comment>Action override created by Lightning App Builder during activation.</comment>
         <content>Opportunity_Solution_Record_Page</content>
-        <formFactor>Large</formFactor>
+        <formFactor>Small</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
     </actionOverrides>
@@ -304,12 +304,6 @@
         <columns>NAME</columns>
         <columns>CREATED_DATE</columns>
         <columns>LAST_UPDATE</columns>
-        <columns>Core_Application_Workload__c</columns>
-        <columns>Core_End_Customer_Solution__c</columns>
-        <columns>Core_Industry__c</columns>
-        <columns>Core_Industry_Use_Case_s__c</columns>
-        <columns>Core_Opp_Solution__c</columns>
-        <columns>Core_Technology_Enabled__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
@@ -333,5 +327,27 @@
     </recordTypes>
     <searchLayouts/>
     <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>Core_OPTY_Lock_Quote_SubmittedStatus</fullName>
+        <active>true</active>
+        <description>Opportunity Lock verification if the Quote is in Submitted Status</description>
+        <errorConditionFormula>IF($Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c=TRUE,FALSE,
+
+AND ( Core_Opportunity__r.Core_Opportunity_Lock_Status__c = true, ISPICKVAL( Core_Opportunity__r.Core_Coverage_Type_Nm__c, &apos;Deal Registration&apos;), ISPICKVAL(Core_Opportunity__r.Core_Opportunity_Coverage_Nm__c , &apos;Partner-Led Opportunity&apos;) )
+)</errorConditionFormula>
+        <errorMessage>Quote associated to this Opportunity is Submitted for Review. No Edits allowed on Opportunity during the Review process.</errorMessage>
+    </validationRules>
     <visibility>Public</visibility>
+    <webLinks>
+        <fullName>Add_Solution_Area</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <height>300</height>
+        <linkType>page</linkType>
+        <masterLabel>Add Solution Area</masterLabel>
+        <openType>sidebar</openType>
+        <page>Core_SolutionArea</page>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+    </webLinks>
 </CustomObject>

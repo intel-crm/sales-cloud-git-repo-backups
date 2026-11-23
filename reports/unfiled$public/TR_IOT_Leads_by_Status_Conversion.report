@@ -33,7 +33,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>IOT</value>
+            <value>ASMO_IOT</value>
         </criteriaItems>
         <criteriaItems>
             <column>Lead.Core_Lead_Conversion_Point__c</column>
@@ -43,18 +43,11 @@
             <value>mwc</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Lead.Core_Sub_Geo__c</column>
+            <column>Lead.Core_Lead_Conversion_Point__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>NAR</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>RECORDTYPE</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Lead.Sales_Lead,Lead.Lead</value>
+            <operator>contains</operator>
+            <value>CPL</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -81,13 +74,13 @@
     </params>
     <reportType>LeadList</reportType>
     <scope>org</scope>
-    <showDetails>false</showDetails>
+    <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
     <sortColumn>Lead.Core_Days_in_MAQL__c</sortColumn>
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CREATED_DATE</dateColumn>
-        <interval>INTERVAL_PREVQ</interval>
+        <interval>INTERVAL_PREVFY</interval>
     </timeFrameFilter>
 </Report>

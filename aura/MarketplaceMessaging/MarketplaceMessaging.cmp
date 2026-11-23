@@ -3,7 +3,6 @@
     <aura:set attribute="storeName" value="Settings" /> <!-- Merged on 09/11 - Prabuddh -->	
    <!-- <aura:attribute name="storeName" type="string" default="Settings" /> -->
 	
-   
     <aura:attribute name="isPartner" type="boolean" default="false" /> 
     <aura:attribute name="loading" type="boolean" default="true" />
     <aura:attribute name="heading" type="string" default="Messages about your Storefront" />
@@ -13,8 +12,7 @@
     <aura:attribute name="mobileToggleChat" type="boolean" default="false" />
     <aura:attribute name="mobileFirstToggle" type="boolean" default="true" />
     <aura:attribute name="author" type="String"/>
-	<aura:attribute name="channel" type="String" default=""/>
-    
+
     <aura:attribute name="recordId" type="string" default="12345" />
     <aura:attribute name="onSendClick" type="Object" default="" />
     <aura:attribute name="scrollUp" type="boolean" default="true" />
@@ -27,7 +25,7 @@
     
     <div class="slds-p-around_small">
         <aura:if isTrue="{! v.appState.Settings.currentScreenSize == 'desktop'}">
-            <h3 class="intel-clear heading-20">{! v.heading }</h3> 
+            <h3 class="intel-clear heading-20">{! v.heading }</h3>
             <aura:set attribute="else">
                 <h3 class="intel-clear accordionSectionHeader heading-20">
                     <a href="javascript:void(0);" onclick="{!c.handleToggleOpen}">
@@ -95,7 +93,7 @@
                         onkeyup="{! c.handleKeyDown}" />
                 </div>
                 <div class="col button">
-                    <c:IntelButton onclick="{!v.onSendClick}" disabled="{!v.messageEmpty}" class="whiteDisabled">{!$Label.c.PMP_Messaging_Send}
+                    <c:IntelButton onclick="{!v.onSendClick}" disabled="{!v.messageEmpty}" class="inline whiteDisabled">{!$Label.c.PMP_Messaging_Send}
                     </c:IntelButton>
                 </div>
             </div>

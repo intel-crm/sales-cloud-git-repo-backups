@@ -11,7 +11,6 @@
 *****************************************************************************************************************************************/
 public class PMP_CategoryTriggerHandler extends TriggerHandler
 {
-    public static boolean triggerSwitch = true;
     public override void afterInsert(){
         PMP_ParentCategoryUpdate.updateParentonInsert(trigger.new);
     }
@@ -26,7 +25,7 @@ public class PMP_CategoryTriggerHandler extends TriggerHandler
     }*/
     
     public override void afterUpdate(){ 
-        if(triggerSwitch)
+        if(PMP_CheckRecursive.runOnce())
         {
             PMP_ParentCategoryUpdate.updateParentonInsert(trigger.new); 
            // PMP_DeleteOfferingCategory.deleteOfferingCategory(trigger.new);

@@ -12,31 +12,37 @@
     <sections>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Account</displayNameOverride>
             <field>SBQQ__Account__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Proposal Due Date</displayNameOverride>
             <field>Pricing_Bid_Dt__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Created By</displayNameOverride>
             <field>CreatedBy</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Created Date</displayNameOverride>
             <field>CreatedDate</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Write In End Customer</displayNameOverride>
             <field>Pricing_Customer_Nm__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Deal Type</displayNameOverride>
             <field>Pricing_Deal_Type_Nm__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
@@ -47,61 +53,73 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Intel Account Executive</displayNameOverride>
             <field>Pricing_Account_Executive_Nm__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Primary Contact</displayNameOverride>
             <field>SBQQ__PrimaryContact__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Project Name</displayNameOverride>
             <field>Pricing_Project_Name_Nm__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
             <checkedByDefault>true</checkedByDefault>
+            <displayNameOverride>Quote Number</displayNameOverride>
             <field>Name</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>End Customer Sales Geography</displayNameOverride>
             <field>Pricing_Region_Nm__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Application</displayNameOverride>
             <field>Pricing_Server_Deal_Type_Nm__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Pricing End Date</displayNameOverride>
             <field>Pricing_ShipmentEndDate_Dt__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Pricing Start Date</displayNameOverride>
             <field>Pricing_ShipmentStDate_Dt__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>My Deals Folio ID</displayNameOverride>
             <field>Pricing_Folio_ID_Nm__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>End Customer Country/Region</displayNameOverride>
             <field>Pricing_End_Customer_Country_Nm__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Intel Sales Rep Email</displayNameOverride>
             <field>Pricing_Intel_Sales_Rep_Email_Txt__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Sales Rep</displayNameOverride>
             <field>SBQQ__SalesRep__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
@@ -113,41 +131,49 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Intel Account Executive Email</displayNameOverride>
             <field>Pricing_Intel_Account_Exec_Email_Txt__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Modified Date</displayNameOverride>
             <field>LastModifiedDate</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>End Customer Opportunity ID</displayNameOverride>
             <field>Pricing_End_Customer_Opportunity_Txt__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Reference Request ID</displayNameOverride>
             <field>Pricing_Customer_Reference_Id__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Modified By</displayNameOverride>
             <field>LastModifiedBy</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>End Customer Opportunity</displayNameOverride>
             <field>Pricing_End_Customer_Opportunity_Nm__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Secondary Contact</displayNameOverride>
             <field>Pricing_SecondaryContact_Nm__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>My Deals Folio Name</displayNameOverride>
             <field>Pricing_My_Deals_Folio_Name_Nm__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
@@ -165,36 +191,48 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Type</displayNameOverride>
             <field>Pricing_Program_Type_Nm__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_AI_Host_Node_cb__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Intel Response Requested By Date</displayNameOverride>
             <field>Pricing_Intel_Response_Requested_By_Date__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Record Type</displayNameOverride>
             <field>RecordType</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Is Unified Customer</displayNameOverride>
             <field>Pricing_IsUnifiedCustomer__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Additional Quote Letter Recipients</displayNameOverride>
             <field>Pricing_AdditionalRecipients__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Account Division</displayNameOverride>
             <field>Pricing_Account_Division_Nm__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote</displayNameOverride>
             <field>Pricing_QuoteField__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
@@ -206,43 +244,218 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Market Segment</displayNameOverride>
             <field>Pricing_Market_Segment_values_Nm__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Primary Contact Email</displayNameOverride>
             <field>Pricing_Primary_Contact_Email__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity Status</displayNameOverride>
             <field>Pricing_Opportunity_Status__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Total Requested Quantity</displayNameOverride>
             <field>Pricing_Overall_Quote_Quantity__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>On Hold</displayNameOverride>
             <field>Pricing_On_Hold_Cb__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Hold Comments</displayNameOverride>
             <field>Pricing_On_Hold_Comment__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Partner Type</displayNameOverride>
+            <field>Pricing_FI_Partner_Type__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Consumption Countries</displayNameOverride>
+            <field>Pricing_Consumption_Countries__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Current End Customer Product Provider</displayNameOverride>
+            <field>Pricing_Current_EndCustomer_Product_Prvd__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Account Name</displayNameOverride>
+            <field>Pricing_SW_Account_Name__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Description</displayNameOverride>
+            <field>Pricing_SW_Description__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Expiry Date</displayNameOverride>
+            <field>Pricing_SW_Expiry_Date__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Approval Comments</displayNameOverride>
+            <field>Pricing_SW_Approval_Comments__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Custom Product</displayNameOverride>
+            <field>Pricing_SW_Custom_Product__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Manager Approver</displayNameOverride>
+            <field>Pricing_SW_Manager_Approver__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Partner Name</displayNameOverride>
             <field>Pricing_Partner_Name_Nm__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Submitted Date</displayNameOverride>
+            <field>Pricing_SW_Submitted_Date__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Approved Date</displayNameOverride>
+            <field>Pricing_SW_Approved_Date__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Rejected Date</displayNameOverride>
+            <field>Pricing_SW_Rejected_Date__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Days in In Review</displayNameOverride>
+            <field>Pricing_SW_Days_in_In_Review__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Approved/Rejected Date</displayNameOverride>
+            <field>Pricing_SW_Approved_Rejected_Date__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Three Days Before Expiry</displayNameOverride>
+            <field>Three_Days_Before_Expiry__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Pricing_SW_3_Day_Email_Sent</displayNameOverride>
+            <field>Pricing_SW_3_Day_Email_Sent__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Pricing_SW_7_Day_Email_Sent</displayNameOverride>
+            <field>Pricing_SW_7_Day_Email_Sent__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Pricing_SW_10_Day_Email_Sent</displayNameOverride>
+            <field>Pricing_SW_10_Day_Email_Sent__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Custom Action</displayNameOverride>
+            <field>Pricing_SW_Custom_Action__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity_Submit_Or_Approved</displayNameOverride>
+            <field>Pricing_SW_Opportunity_Submit_Or_Approve__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Expiry Less Than 14 days</displayNameOverride>
+            <field>Pricing_SW_Expiry_Less_Than_14_days__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Default Sales Rep</displayNameOverride>
+            <field>DefaultSalesRepID__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opp Primary Quote Status Accepted</displayNameOverride>
+            <field>Pricing_SW_Opp_Primary_Quote_Accepted__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity Product Lost</displayNameOverride>
+            <field>Pricing_SW_Opportunity_Product_Lost__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Deleted Attachment</displayNameOverride>
+            <field>Pricing_Deleted_Attachment__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <displayNameOverride>End Customer URL</displayNameOverride>
             <field>Pricing_End_Customer_URL__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>is Dwin</displayNameOverride>
+            <field>core_cpq_is_Dwin_cb__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>is Budgetary</displayNameOverride>
+            <field>core_cpq_is_Budgetary_cb__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>is Transfer Pricing</displayNameOverride>
+            <field>core_cpq_is_Transfer_Pricing_cb__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
@@ -262,46 +475,124 @@
             <field>Pricing_Volume_Exception_Quota_Cb__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Quote_Id__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_SW_Quote_Product_Type__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_SW_CustomerAccPayableDeptPhEmail__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_SW_Customer_Contact_Phone_Number__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_SW_Customer_Purchase_Order_No__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_ReRouting_Reason_Nm__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Quote_Routing_Category_Nm__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Pricing_Manager_Group_Name_Txt__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Pricing_Manager_Group__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Pricing_Manager_Group_Label_Txt__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Route_Rule_Id_Txt__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Route_Rule_Name__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Test_End_Customer_Country__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Test_End_Customer_Sales_Geo__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
         <masterLabel>Quotes</masterLabel>
     </sections>
     <sections>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Answer</displayNameOverride>
             <field>Pricing_Answer__c</field>
             <table>SBQQ__Quote__c.Comments__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Question</displayNameOverride>
             <field>Pricing_Question__c</field>
             <table>SBQQ__Quote__c.Comments__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote</displayNameOverride>
             <field>Pricing_Quote__c</field>
             <table>SBQQ__Quote__c.Comments__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Record Type</displayNameOverride>
             <field>RecordType</field>
             <table>SBQQ__Quote__c.Comments__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Created Date</displayNameOverride>
             <field>CreatedDate</field>
             <table>SBQQ__Quote__c.Comments__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Created By</displayNameOverride>
             <field>CreatedBy</field>
             <table>SBQQ__Quote__c.Comments__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Modified By</displayNameOverride>
             <field>LastModifiedBy</field>
             <table>SBQQ__Quote__c.Comments__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Modified Date</displayNameOverride>
             <field>LastModifiedDate</field>
             <table>SBQQ__Quote__c.Comments__r</table>
         </columns>

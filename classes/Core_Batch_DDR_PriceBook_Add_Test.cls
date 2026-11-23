@@ -170,7 +170,7 @@ public class Core_Batch_DDR_PriceBook_Add_Test
         Test.StartTest();
         Core_Batch_DDR_PriceBook_Add objPartnerPB1 = new Core_Batch_DDR_PriceBook_Add();  
         Database.executeBatch(objPartnerPB1); 
-        
+        Database.executeBatch(objPartnerPB1); 
        // Core_Batch_DDR_PriceBook_Add_Scheduler.SchedulerMethod();  
         Test.StopTest();
     }     

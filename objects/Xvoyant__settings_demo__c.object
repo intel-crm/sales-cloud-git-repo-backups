@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>Hierarchy</customSettingsType>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Xvoyant__orgImportDate__c</fullName>
+        <deprecated>false</deprecated>
+        <label>orgImportDate</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Xvoyant__useOppHistory__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>useOppHistory</label>
+        <precision>1</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <label>settings_demo</label>
+    <visibility>Public</visibility>
+</CustomObject>

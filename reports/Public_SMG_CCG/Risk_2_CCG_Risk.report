@@ -2,6 +2,84 @@
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <buckets>
         <bucketType>picklist</bucketType>
+        <developerName>BucketField_66643767</developerName>
+        <masterLabel>Commercial Segment</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>INDUSTRY</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Education</sourceValue>
+            </sourceValues>
+            <value>Edu</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Government</sourceValue>
+            </sourceValues>
+            <value>Gov</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Accommodation and Food Services</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Agriculture</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Arts, Entertainment and Recreation</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Automotive (Non Manufacturing)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Construction</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Consulting</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Defense and Space</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Energy and Utilities</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Finance and Insurance</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Gaming</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Manufacturing</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Media</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Professional and Business Services</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Real Estate, Rental and Leasing</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Retail</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Software and Services</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Telecommunications</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Transportation, Travel and Warehousing</sourceValue>
+            </sourceValues>
+            <value>LE</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>picklist</bucketType>
         <developerName>BucketField_72264943</developerName>
         <masterLabel>Countries (Group)</masterLabel>
         <nullTreatment>n</nullTreatment>
@@ -41,27 +119,6 @@
     </buckets>
     <buckets>
         <bucketType>picklist</bucketType>
-        <developerName>BucketField_66643767</developerName>
-        <masterLabel>Segment</masterLabel>
-        <nullTreatment>n</nullTreatment>
-        <otherBucketLabel>Other</otherBucketLabel>
-        <sourceColumnName>INDUSTRY</sourceColumnName>
-        <useOther>true</useOther>
-        <values>
-            <sourceValues>
-                <sourceValue>Education</sourceValue>
-            </sourceValues>
-            <value>Edu</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>Government</sourceValue>
-            </sourceValues>
-            <value>Gov</value>
-        </values>
-    </buckets>
-    <buckets>
-        <bucketType>picklist</bucketType>
         <developerName>BucketField_12541241</developerName>
         <masterLabel>Status (Group)</masterLabel>
         <nullTreatment>n</nullTreatment>
@@ -94,6 +151,9 @@
     </columns>
     <columns>
         <field>Account.Core_Account_Country__c</field>
+    </columns>
+    <columns>
+        <field>BucketField_72264943</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Opportunity_ID__c</field>
@@ -148,6 +208,16 @@
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
+        <field>Opportunity.Core_Volume__c</field>
+    </columns>
+    <columns>
+        <field>PROBABILITY</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Architecture_Conversion__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
         <field>Opportunity.Core_Exclude_From_KPIs__c</field>
     </columns>
     <columns>
@@ -155,6 +225,22 @@
     </columns>
     <columns>
         <field>Opportunity.Core_Compliance_Status__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Opportunity.Core_Pipeline_Heath__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Opportunity.Core_Past_Due__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Opportunity.Core_Inactive__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Opportunity.Core_Low_Velocity__c</field>
     </columns>
     <columns>
         <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
@@ -182,10 +268,6 @@
         <field>OpportunityLineItem.Core_Approved_List_Price__c</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>OpportunityLineItem.Core_KPI_Quantity__c</field>
-    </columns>
-    <columns>
         <field>QUANTITY</field>
     </columns>
     <columns>
@@ -201,32 +283,81 @@
         <field>Opportunity.Core_Products_At_Risk_Count__c</field>
     </columns>
     <columns>
+        <field>Opportunity.Core_Support_Requested__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Risk_Reason__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_At_Risk_Created_Date__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Loss_Cancel_Reason__c</field>
+    </columns>
+    <columns>
+        <field>OpportunityLineItem.Core_Loss_Cancel_Reason__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Loss_Cancel_Details__c</field>
+    </columns>
+    <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>OpportunityLineItem.Core_At_Risk__c</field>
+    </columns>
+    <columns>
+        <field>OpportunityLineItem.Core_Risk_Category__c</field>
     </columns>
     <columns>
         <field>OpportunityLineItem.Core_Risk_Reason1__c</field>
     </columns>
     <columns>
+        <field>OpportunityLineItem.Core_Risk_Reason2__c</field>
+    </columns>
+    <columns>
         <field>OpportunityLineItem.Core_At_Risk_Status__c</field>
+    </columns>
+    <columns>
+        <field>CLOSE_DATE2</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Opportunity.Core_Days_from_Opportunity_Create_to_Su__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>OpportunityLineItem.Core_KPI_Days_DesignWin_to_ProductionWin__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>CDF1</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>Opportunity.Core_Opportunity_Count__c</field>
     </columns>
-    <columns>
-        <field>OpportunityLineItem.Core_Vendor__c</field>
-    </columns>
-    <columns>
-        <field>PARTNER_NAME</field>
-    </columns>
-    <columns>
-        <field>OpportunityLineItem.Core_Risk_Create_Date__c</field>
-    </columns>
-    <columns>
-        <field>OpportunityLineItem.Core_Risk_Detail__c</field>
-    </columns>
+    <customDetailFormulas>
+        <calculatedFormula>CASE(OpportunityLineItem.Core_Risk_Reason1__c,&quot;&quot;,case(OpportunityLineItem.Core_Risk_Reason2__c,&quot;&quot;,0,1),1)*OpportunityLineItem.Core_KPI_Total_Price__c</calculatedFormula>
+        <dataType>Double</dataType>
+        <developerName>CDF1</developerName>
+        <label>Risk $ (Jason)</label>
+        <scale>0</scale>
+    </customDetailFormulas>
     <filter>
+        <booleanFilter>(1 OR 2) AND 3 AND 4</booleanFilter>
+        <criteriaItems>
+            <column>OpportunityLineItem.Core_Risk_Reason1__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value></value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OpportunityLineItem.Core_Risk_Reason2__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value></value>
+        </criteriaItems>
         <criteriaItems>
             <column>STAGE_NAME</column>
             <columnToColumn>false</columnToColumn>
@@ -240,27 +371,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>CCG</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OpportunityLineItem.Core_Status__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>Lost,Cancelled,Deleted</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OpportunityLineItem.Core_At_Risk_Status__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>New,In-Progress</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OpportunityLineItem.Core_At_Risk__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>1</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -287,7 +397,7 @@
     </params>
     <params>
         <name>open</name>
-        <value>open</value>
+        <value>all</value>
     </params>
     <params>
         <name>probability</name>
@@ -302,8 +412,10 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
+    <sortColumn>BucketField_72264943</sortColumn>
+    <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <interval>INTERVAL_CURY</interval>
     </timeFrameFilter>
 </Report>

@@ -58,7 +58,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>SBQQ__Quote__c.Pricing_Tender_Quote_Create,SBQQ__Quote__c.Pricing_Tender_Quote_Edit,SBQQ__Quote__c.Pricing_Tender_Quote_ReadOnly,SBQQ__Quote__c.Pricing_Tender_Quote_Submitted</value>
+            <value>SBQQ__Quote__c.Pricing_Tender_Quote_Create,SBQQ__Quote__c.Pricing_Tender_Quote_Edit,SBQQ__Quote__c.Pricing_Tender_Quote_ReadOnly,SBQQ__Quote__c.Pricing_Tender_Quote_Submitted,SBQQ__Quote__c.Pricing_Small_Volume_Quote_Create</value>
         </criteriaItems>
         <criteriaItems>
             <column>SBQQ__Quote__c$SBQQ__Status__c</column>

@@ -14,7 +14,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Business owners</masterLabel>
-        <translation>기업 오너</translation>
+        <translation><!-- Business owners --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>C-Suite</masterLabel>
@@ -22,7 +22,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Channel Partner</masterLabel>
-        <translation>채널 파트너</translation>
+        <translation><!-- Channel Partner --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Commercial</masterLabel>
@@ -30,19 +30,11 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Consultant/Influencer</masterLabel>
-        <translation>컨설턴트/인플루언서</translation>
+        <translation><!-- Consultant/Influencer --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Consumer</masterLabel>
         <translation>소비자</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Consumer - Mainstream</masterLabel>
-        <translation>소비자 - 메인스트림</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Consumer - Premium</masterLabel>
-        <translation>소비자 - 프리미엄</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Creator</masterLabel>
@@ -58,27 +50,19 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Distributors</masterLabel>
-        <translation>디스트리뷰터</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Edge Customers (edge computing)</masterLabel>
-        <translation>에지 고객(에지 컴퓨팅)</translation>
+        <translation><!-- Distributors --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Education</masterLabel>
-        <translation>교육</translation>
+        <translation><!-- Education --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Education Professionals</masterLabel>
-        <translation>교육 전문가</translation>
+        <translation><!-- Education Professionals --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Employees</masterLabel>
-        <translation>직원</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Enterprise</masterLabel>
-        <translation>엔터프라이즈</translation>
+        <translation><!-- Employees --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Enthusiast Gaming</masterLabel>
@@ -86,11 +70,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Entry Gaming</masterLabel>
-        <translation>입문 게이밍</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Gamer</masterLabel>
-        <translation>게이머</translation>
+        <translation><!-- Entry Gaming --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Gaming</masterLabel>
@@ -102,15 +82,15 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Government agency heads</masterLabel>
-        <translation>정부 기관 책임자</translation>
+        <translation><!-- Government agency heads --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Government/Public Sector</masterLabel>
-        <translation>정부/공공 부문</translation>
+        <translation><!-- Government/Public Sector --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Healthcare</masterLabel>
-        <translation>의료</translation>
+        <translation><!-- Healthcare --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>IT Decision Maker</masterLabel>
@@ -134,31 +114,27 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Mainstream Consumer - Knowledge</masterLabel>
-        <translation>주류 소비자 - 지식</translation>
+        <translation><!-- Mainstream Consumer - Knowledge --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Mainstream Consumer - Overwhelmed</masterLabel>
-        <translation>주류 소비자 – 어려운 결정</translation>
+        <translation><!-- Mainstream Consumer - Overwhelmed --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Mainstream Consumer - Tech Knowledgeable</masterLabel>
-        <translation>주류 소비자 – 기술 지식 풍부</translation>
+        <translation><!-- Mainstream Consumer - Tech Knowledgeable --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Managed Business</masterLabel>
-        <translation>관리되는 기업</translation>
+        <translation><!-- Managed Business --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Manufacturer/OEM</masterLabel>
-        <translation>제조업체/OEM</translation>
+        <translation><!-- Manufacturer/OEM --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Mid Market</masterLabel>
         <translation>중간 규모 시장</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Mobile Go Getter</masterLabel>
-        <translation>열정적인 모바일 사용자</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Modern Consumer (Knowledgeable)</masterLabel>
@@ -166,23 +142,19 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Other</masterLabel>
-        <translation>기타</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Partner Sales Force</masterLabel>
-        <translation>파트너 영업 인력</translation>
+        <translation><!-- Other --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Partner </masterLabel>
-        <translation>파트너 </translation>
+        <translation><!-- Partner  --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Project / program managers</masterLabel>
-        <translation>프로젝트 / 프로그램 관리자</translation>
+        <translation><!-- Project / program managers --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Purchasing</masterLabel>
-        <translation>구매</translation>
+        <translation><!-- Purchasing --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Reseller</masterLabel>
@@ -190,23 +162,15 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Sales Leaders</masterLabel>
-        <translation>판매 선두 주자</translation>
+        <translation><!-- Sales Leaders --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Security managers</masterLabel>
-        <translation>보안 관리자</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Senior Business Decision Maker</masterLabel>
-        <translation>고위 비즈니스 의사결정자</translation>
+        <translation><!-- Security managers --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Small Business</masterLabel>
         <translation>소기업</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Small and Medium Business</masterLabel>
-        <translation>중소기업</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Solutions Architect</masterLabel>
@@ -214,18 +178,14 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Sr. Business Decision Maker</masterLabel>
-        <translation>임원 기업 의사결정자</translation>
+        <translation><!-- Sr. Business Decision Maker --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>System Integrators</masterLabel>
-        <translation>시스템 통합자</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Technical Influencer</masterLabel>
-        <translation>기술 인플루언서</translation>
+        <translation><!-- System Integrators --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Unmanaged Small Business</masterLabel>
-        <translation>관리되지 않는 소기업</translation>
+        <translation><!-- Unmanaged Small Business --></translation>
     </valueTranslation>
 </GlobalValueSetTranslation>

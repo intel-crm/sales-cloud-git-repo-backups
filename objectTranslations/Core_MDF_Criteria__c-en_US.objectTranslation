@@ -18,10 +18,6 @@
         <name>Core_MDF_Approval_Criteria_Description__c</name>
     </fields>
     <fields>
-        <label><!-- Approval Criteria Automation Refer Code --></label>
-        <name>Core_MDF_Approval_Criteria_Ref_Code_txt__c</name>
-    </fields>
-    <fields>
         <label><!-- Approval Process --></label>
         <name>Core_MDF_Approval_Process__c</name>
     </fields>

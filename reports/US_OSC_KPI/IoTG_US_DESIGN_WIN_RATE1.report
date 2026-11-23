@@ -109,13 +109,13 @@
         <aggregateTypes>Sum</aggregateTypes>
         <field>Opportunity.Core_Opportunity_Count__c</field>
     </columns>
-    <description>IOTG Design Dashboard</description>
+    <description>DB Optys with Products and WIN Rate</description>
     <filter>
         <criteriaItems>
             <column>Opportunity.Core_Sales_Groups__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
+            <operator>equals</operator>
             <value>US Sales Group</value>
         </criteriaItems>
         <criteriaItems>
@@ -136,15 +136,8 @@
             <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
+            <operator>equals</operator>
             <value>IoTG</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Product_Segment__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Embedded</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -163,7 +156,7 @@
         <field>FULL_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>US DESIGN IoTG WIN RATE</name>
+    <name>IoTG US DESIGN T1 WIN RATE</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -187,6 +180,6 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <interval>INTERVAL_PREVCURY</interval>
+        <interval>INTERVAL_CURY</interval>
     </timeFrameFilter>
 </Report>

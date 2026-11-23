@@ -12,11 +12,11 @@ public class Core_Asset_Dispatcher{
          
          if(trigger.isInsert){
              if(ipsNewRecordList <> null && ipsNewRecordList.size() > 0){
-                 //newListStr = JSON.serialize(ipsNewRecordList);   //commented by Aayushi DE40248
+                 //newListStr = JSON.serialize(ipsNewRecordList);    					//commented by Aayushi DE40248
                  Core_Asset_Handler.changeAssetOwner(ipsNewRecordList);
-                 //Core_Asset_Handler.updateProductInformationOnAsset(newListStr); //commented by Aayushi DE40248
+                 //Core_Asset_Handler.updateProductInformationOnAsset(newListStr); 		//commented by Aayushi DE40248
                  Core_Asset_Handler.updateProductInformationOnAsset(ipsNewRecordList); 
-				 Core_Asset_Handler.updateProjectInformationOnAsset(ipsNewRecordList); 	//added by Aayushi US113701
+				 Core_Asset_Handler.updateProjectInformationOnAsset(ipsNewRecordList); 		//added by Aayushi US113701
              }
          }
          if(trigger.isUpdate){                            
@@ -34,10 +34,13 @@ public class Core_Asset_Dispatcher{
          //[Below 2 lines are making sure to process only IPS records.]
          List<Asset> ipsNewRecordList = Core_IPS_Helper_Utility.getIPSRecords('Asset',newList);
          List<Asset> ipsOldRecordList = Core_IPS_Helper_Utility.getIPSRecords('Asset',oldList);         
+         System.debug('>>ipsNewRecordList>>'+ipsNewRecordList);
          if(trigger.isInsert){    
              if(ipsNewRecordList <> null && ipsNewRecordList.size() > 0){
                  newListStr = JSON.serialize(ipsNewRecordList);
+                 System.debug('>>newListStr>>'+newListStr);
                  Core_Asset_Handler.LItemUpdate(newListStr);
+                 System.debug('>>> Before calling '+UserInfo.getName());
                  Core_Asset_Handler.UpdateProjProduct(newListStr);     
                  Core_Asset_Handler.grantAssetAccesstoCustomers(newListStr); //Sharing asset to IPS External
                  Core_Asset_Handler.grantAssetAccesstoFAEs(newListStr); //Sharing asset to IPS Internal
@@ -49,9 +52,7 @@ public class Core_Asset_Dispatcher{
                 oldListStr = JSON.serialize(ipsOldRecordList);
                 Core_Asset_Handler.LItemUpdate(newListStr);
                 Core_Asset_Handler.grantAssetAccesstoCustomers(newListStr); //Sharing asset to IPS External
-		if(!System.isFuture() && !System.isBatch()){
-                	Core_Asset_Handler.grantAssetAccesstoFAEs(oldListStr,newListStr); //Sharing asset to IPS Internal
-		}
+                Core_Asset_Handler.grantAssetAccesstoFAEs(oldListStr,newListStr); //Sharing asset to IPS Internal
             }
             //Core_Asset_Handler.shareAssets(newList);            
          }

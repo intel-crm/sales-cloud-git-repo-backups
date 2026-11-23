@@ -6,10 +6,10 @@
     <aura:attribute name="formType" type="String" default="contact" description="Request a Quote/Contact" />
    
     <aura:attribute name="isOpen" type="boolean" default="false" description="Opens the edit storefront modal" />
-<!-- IPA2.0 + US TWC4497-1631 -->
-    <!-- <aura:attribute name="offeringDetails" type="Object" default="" />
+
+    <aura:attribute name="offeringDetails" type="Object" default="" />
     <aura:attribute name="offeringName" type="string" default="" />
-    <aura:attribute name="offeringLink" type="string" default="" /> -->
+    <aura:attribute name="offeringLink" type="string" default="" />
     <aura:attribute name="partnerName" type="String" default="" />
     <aura:attribute name="partnerLink" type="string" default="" />
     <aura:attribute name="partnerId" type="string" default="" description="Partner's Id" />
@@ -35,7 +35,7 @@
     <aura:attribute name="recordId" type="string"/>
     
     
-    <aura:attribute name="partnerProfession" type="Object[]" />
+    <aura:attribute name="jobFunctions" type="Object[]" />
 	<!-- Country & State related Attributes -->
     <aura:attribute name="countries" type="list" default="[]" />
     <aura:attribute name="states" type="list" default="[]" />
@@ -51,7 +51,7 @@
     <aura:method name="handlePageEvent" action="{!c.handlePageEvent}" />		
  
     <aura:handler event="c:MarketplacePageEvent" action="{!c.handlePageEvent}" />
-   
+
     <div>
         <aura:if isTrue="{!v.isOpen}">
             <c:MarketplaceModal aura:id="modal" heading="{!v.modalHeading}" isOpen="{!v.isOpen}" useSlimMobileHeader="true"
@@ -69,11 +69,7 @@
                                     <aura:if isTrue="{!v.formType == 'quote'}">
                                         <lightning:layoutItem size="12" class="slds-p-horizontal_small slds-p-bottom_x-small slds-p-top_large requestQuoteTop">
                                             {!$Label.c.PMP_LeadGen_ThankYouQuoteNote1}&nbsp;<c:IntelLink  label="{!v.partnerName }"  recordId="{!v.partnerRecId}" objectApiName="PMP_Company__c"/>
-                                            &nbsp;{!$Label.c.PMP_LeadGen_ThankYouQuoteNote2}&nbsp;
-                                          <!--  <c:IntelLink  label="{!v.offeringName }"  recordId="{!v.productRecId}" objectApiName="PMP_Partner_Offering__c"/> -->
-                                          <!-- IPA2.0 + US TWC4497-1631      -->
-                                          <!-- <c:IntelLink  label="{!v.offeringName }"  recordId="{!v.productRecId}" objectApiName="Partner_Offering_Detail__c"/> -->
-
+                                            &nbsp;{!$Label.c.PMP_LeadGen_ThankYouQuoteNote2}&nbsp;<c:IntelLink  label="{!v.offeringName }"  recordId="{!v.productRecId}" objectApiName="PMP_Partner_Offering__c"/>
                                             <p><i>{!v.languageLabel}</i></p>  <!--lang prefrence-US443556-->
                                         </lightning:layoutItem>
                                         <lightning:layoutItem size="12" class="slds-p-horizontal_small slds-p-vertical_x-small">
@@ -83,8 +79,7 @@
                                         <lightning:layoutItem size="12" mediumDeviceSize="6" class="slds-p-horizontal_small slds-p-vertical_x-small">
                                             
                                         <lightning:input aura:id="inputField" type="number" name="volume" value="{!v.localUserDetails.volume}" required="true" min="1"
-                                                label="{!$Label.c.PMP_LeadGen_Volume}" messageWhenValueMissing ="{!$Label.c.PMP_LeadGen_CompleteThisField}" maxlength="35" />
-                                        <p class="disclaimer-text slds-p slds-text-body_small">{!format($Label.c.PMP_Maximum_Character_Limit_Msg,35)}</p>
+                                                label="{!$Label.c.PMP_LeadGen_Volume}" />
                                         </lightning:layoutItem>
        
                                         <lightning:layoutItem size="12" mediumDeviceSize="6" class="slds-p-horizontal_small slds-p-vertical_x-small">
@@ -101,12 +96,9 @@
                                         </lightning:layoutItem>
                         
                                         <lightning:layoutItem size="12" class="slds-p-horizontal_small slds-p-vertical_x-small">
-                                            <lightning:textarea aura:id="leadgendesc" name="description" value="{!v.localUserDetails.description}" required="true" 
+                                            <lightning:textarea aura:id="inputField" name="description" value="{!v.localUserDetails.description}" required="true" 
                                                 label="{!$Label.c.PMP_LeadGen_Description}"
-                                                maxlength="500" onchange="{!c.leaddescValidity}" onblur="{!c.leaddescValidity}"/>
-                                             <aura:if isTrue="{!v.localUserDetails.description.length lt 501}">
-                                                   <p class="disclaimer-text slds-p slds-text-body_small"><b>{!format($Label.c.PMP_Description_Characters_Remaining,500-v.localUserDetails.description.length)}</b></p>
-                                             </aura:if>
+                                                maxlength="500" />
                                         </lightning:layoutItem>
                                     </aura:if>
                                     <aura:if isTrue="{!v.formType == 'contact'}">
@@ -115,18 +107,12 @@
                                                 class="color-red slds-m-right_xxx-small">*&nbsp;{!$Label.c.PMP_LeadGen_Required}</span>
                                         </lightning:layoutItem>
                                         <lightning:layoutItem size="12" class="slds-p-horizontal_small slds-p-top_small slds-p-bottom_xx-small">
-                                                {!$Label.c.PMP_LeadGen_YourAreContacting}&nbsp; 
-                                            <!--<c:IntelLink  label="{!v.partnerName }"  recordId="{!v.partnerRecId}" objectApiName="PMP_Company__c"/> -->
-                                                <c:IntelLink  label="{!v.partnerName }"  recordId="{!v.partnerRecId}" objectApiName="Company_Information_Detail__c"/>
-
+                                                {!$Label.c.PMP_LeadGen_YourAreContacting}&nbsp; <c:IntelLink  label="{!v.partnerName }"  recordId="{!v.partnerRecId}" objectApiName="PMP_Company__c"/>
            <!-- Language Pref markup-->                                 <p><i>{!v.languageLabel}</i></p>
                                         </lightning:layoutItem>
                                         <lightning:layoutItem size="12" class="slds-p-horizontal_small slds-p-bottom_small">
-                                            <lightning:textarea aura:id="leadnotce" name="description" value="{!v.localUserDetails.description}" required="true"
-                                                label="{!$Label.c.PMP_LeadGen_WhatWouldYouLikeToKnow}" maxlength="500" onchange="{!c.leadnotceValidity}" onblur="{!c.leadnotceValidity}"/>
-                                            <aura:if isTrue="{!v.localUserDetails.description.length lt 501}">
-                                                   <p class="disclaimer-text slds-p slds-text-body_small"><b>{!format($Label.c.PMP_Description_Characters_Remaining,500-v.localUserDetails.description.length)}</b></p>
-                                             </aura:if>
+                                            <lightning:textarea aura:id="inputField" name="description" value="{!v.localUserDetails.description}" required="true"
+                                                label="{!$Label.c.PMP_LeadGen_WhatWouldYouLikeToKnow}" maxlength="500" />
                                         </lightning:layoutItem>
                                     </aura:if>
 
@@ -138,31 +124,29 @@
                                     </lightning:layoutItem>
 
                                     <lightning:layoutItem size="12" mediumDeviceSize="6" class="slds-p-horizontal_small slds-p-vertical_x-small">
-                                        <lightning:input aura:id="fname" type="text" name="firstName" label="{!$Label.c.PMP_LeadGen_FirstName}" value="{!v.localUserDetails.firstName}"
-                                                         required="true" disabled="{!v.readOnly}" maxlength="100" onchange="{!c.firstNameValidity}" onblur="{!c.firstNameValidity}"/>
-                                        <p class="disclaimer-text slds-p slds-text-body_small">{!format($Label.c.PMP_Maximum_Character_Limit_Msg,100)}</p>
+                                        <lightning:input aura:id="inputField" type="text" name="firstName" label="{!$Label.c.PMP_LeadGen_FirstName}" value="{!v.localUserDetails.firstName}" required="true" disabled="{!v.readOnly}" maxlength="255"/>
+
                                     </lightning:layoutItem>
                                     <lightning:layoutItem size="12" mediumDeviceSize="6" class="slds-p-horizontal_small slds-p-vertical_x-small">
-                                        <lightning:input aura:id="lname" type="text" name="lastName" label="{!$Label.c.PMP_LeadGen_LastName}" value="{!v.localUserDetails.lastName}" 
-                                                         required="true" disabled="{!v.readOnly}" maxlength="100" onchange="{!c.lastNameValidity}" onblur="{!c.lastNameValidity}"/>
-                                        <p class="disclaimer-text slds-p slds-text-body_small">{!format($Label.c.PMP_Maximum_Character_Limit_Msg,100)}</p>
+                                        <lightning:input aura:id="inputField" type="text" name="lastName" label="{!$Label.c.PMP_LeadGen_LastName}" value="{!v.localUserDetails.lastName}" required="true"  disabled="{!v.readOnly}" maxlength="255"/>
+
                                     </lightning:layoutItem>
                                     <lightning:layoutItem size="12" mediumDeviceSize="6" class="slds-p-horizontal_small slds-p-vertical_x-small">
                                        <!-- <lightning:input aura:id="inputField" type="text" name="jobTitle" label="{!$Label.c.PMP_LeadGen_JobTitle}" value="{!v.localUserDetails.jobTitle}"  disabled="{!v.readOnly}" />-->
-                                        <lightning:select class="select" aura:id="inputField" name="profession" label="{!$Label.c.PMP_LeadGen_PartnerProfession}"  value="{!v.localUserDetails.profession}" >
+                                        <lightning:select aura:id="inputField" name="jobTitle" label="{!$Label.c.PMP_LeadGen_JobFunction}"  value="{!v.localUserDetails.jobTitle}" >
                                             <option value="">{!$Label.c.PMP_LeadGen_ChooseOne}</option>
-                                            <aura:iteration items="{!v.partnerProfession}" var="option">
-                                                <option text="{!option.label}" value="{!option.value}" selected="{!option.label == v.localUserDetails.profession}"  />
+                                            <aura:iteration items="{!v.jobFunctions}" var="option">
+                                                <option text="{!option.label}" value="{!option.value}" selected="{!option.label == v.localUserDetails.jobTitle}"  />
                                             </aura:iteration>
                                         </lightning:select>
                                     </lightning:layoutItem>
                                     <lightning:layoutItem size="12" mediumDeviceSize="6" class="slds-p-horizontal_small slds-p-vertical_x-small">
-                                        <lightning:input aura:id="cmpnyName" type="text" name="companyName" label="{!$Label.c.PMP_LeadGen_CompanyName}" value="{!v.localUserDetails.companyName}" maxlength="100"
-                                            required="true"  disabled="{!v.readOnly}" onchange="{!c.companyValidity}" onblur="{!c.companyValidity}"/>
-                                        <p class="disclaimer-text slds-p slds-text-body_small">{!format($Label.c.PMP_Maximum_Character_Limit_Msg,100)}</p>
+                                        <lightning:input aura:id="inputField" type="text" name="companyName" label="{!$Label.c.PMP_LeadGen_CompanyName}" value="{!v.localUserDetails.companyName}" maxlength="255"
+                                            required="true"  disabled="{!v.readOnly}" />
+
                                     </lightning:layoutItem>
                                     <lightning:layoutItem size="12" mediumDeviceSize="6" class="slds-p-horizontal_small slds-p-vertical_x-small">
-                                        <lightning:select aura:id="inputField" name="country" label="{!$Label.c.PMP_LeadGen_Country}" messageWhenValueMissing="{!$Label.c.PMP_LeadGen_CompleteThisField}" required="true"  onchange="{!c.onCountryChange}">
+                                        <lightning:select aura:id="inputField" name="country" label="{!$Label.c.PMP_LeadGen_Country}" required="true"  onchange="{!c.onCountryChange}">
                                             <option value="">{!$Label.c.PMP_LeadGen_ChooseOne}</option>
                                             <aura:iteration items="{!v.countries}" var="option">
                                                 <option text="{!option.label}" value="{!option.label}" selected="{!option.label == v.localUserDetails.country}" />
@@ -171,7 +155,7 @@
                                     </lightning:layoutItem>
                                     <lightning:layoutItem size="12" mediumDeviceSize="6" class="slds-p-horizontal_small slds-p-vertical_x-small">
                                         <aura:if isTrue="{!v.toggleStateError}">
-                                        	<lightning:select aura:id="inputField" name="state" label="{!$Label.c.PMP_LeadGen_State}" messageWhenValueMissing="{!$Label.c.PMP_LeadGen_CompleteThisField}" required="{!v.isStateRequired}"  disabled="{!v.isStateDisabled}" onchange="{!c.onStateChange}">
+                                        	<lightning:select aura:id="inputField" name="state" label="{!$Label.c.PMP_LeadGen_State}" required="{!v.isStateRequired}"  disabled="{!v.isStateDisabled}" onchange="{!c.onStateChange}">
                                             <option value="">{!$Label.c.PMP_LeadGen_ChooseOne}</option>
                                             <aura:iteration items="{!v.states}" var="option">
                                                 <option text="{!option.label}" value="{!option.label}" selected="{!option.label == v.localUserDetails.state}"/>
@@ -182,7 +166,7 @@
                                     <lightning:layoutItem size="12" mediumDeviceSize="6" class="slds-p-horizontal_small slds-p-vertical_x-small">
                                         <lightning:layout>
                                             <lightning:layoutItem size="6" class="slds-p-right_small">
-                                                <lightning:input aura:id="leadPhone" type="text" name="phone" label="{!$Label.c.PMP_LeadGen_Phone}" messageWhenValueMissing="{!$Label.c.PMP_LeadGen_CompleteThisField}" messageWhenPatternMismatch="{!$Label.c.PMP_Phone_NumberCheck}" required="true" value="{!v.localUserDetails.phone}" pattern="[0-9\(\)\+\- ]*" onchange="{!c.Phonevalidity}"/>
+                                                <lightning:input aura:id="leadPhone" type="text" name="phone" label="{!$Label.c.PMP_LeadGen_Phone}" required="true" value="{!v.localUserDetails.phone}" pattern="[0-9\(\)\+\- ]*"/>
                                              
                                                 <aura:if isTrue="{!v.phoneValidationError}">
                                                     <div role="alert" class="color-red slds-form-element__help">
@@ -203,7 +187,7 @@
                                         </div>	-->
                                     </lightning:layoutItem>
                                     <lightning:layoutItem size="12" mediumDeviceSize="6" class="slds-p-horizontal_small slds-p-vertical_x-small">
-                                        <lightning:input aura:id="leadEmail" type="text" name="email" label="{!$Label.c.PMP_LeadGen_Email}" messageWhenValueMissing ="{!$Label.c.PMP_LeadGen_CompleteThisField}" required="true" value="{!v.localUserDetails.email}"  disabled="{!v.readOnly}" onchange="{!c.emailUpdate}" maxlength="100"/>
+                                        <lightning:input aura:id="leadEmail" type="text" name="email" label="{!$Label.c.PMP_LeadGen_Email}" required="true" value="{!v.localUserDetails.email}"  disabled="{!v.readOnly}" onchange="{!c.emailUpdate}"/>
                                      <!--   <aura:if isTrue="{!v.emailEmptyValidationError}">
                                                     <div role="alert" class="color-red slds-form-element__help">
                                                         Complete this field.
@@ -241,14 +225,12 @@
                                         </div>
                                     </lightning:layoutItem>
                                     <lightning:layoutItem size="12" class="slds-p-around_small notice">
-                                        <p><lightning:formattedRichText value="{!$Label.c.PMP_LeadGen_PrivacyNotice}"/></p> <!-- New CTA PrivacyNotice Changes-->
-                                       <!-- <p>{!$Label.c.PMP_LeadGen_PrivacyNotice}</p>-->
-                                       <p>{!$Label.c.PMP_LeadGen_TermsNotice}</p>
-                                        
+                                        <p>{!$Label.c.PMP_LeadGen_PrivacyNotice}</p>
+                                        <p>{!$Label.c.PMP_LeadGen_TermsNotice}</p>
                                     </lightning:layoutItem>
                                    <!-- <lightning:layoutItem size="12" class="slds-p-horizontal_small slds-p-vertical_medium rightAlign">-->
                                     <lightning:layoutItem size="12" class="slds-p-around_small slds-m-bottom_medium rightAlign"><!--Merge Changes[10/30] ID-4317-->
-                                        <button class="slds-float_right blue" onclick="{!c.handleFormSubmitClick}">{!$Label.c.PMP_LeadGen_Submit}</button> <!--DE89587 Fix-->
+                                        <button class="blue" onclick="{!c.handleFormSubmitClick}">{!$Label.c.PMP_LeadGen_Submit}</button>
                                     </lightning:layoutItem>
                                     
                                 </lightning:layout>
@@ -273,7 +255,7 @@
                                     </lightning:layoutItem>
                                    <!-- <lightning:layoutItem size="12" class="slds-p-around_small rightAlign">-->
                                     <lightning:layoutItem size="12" class="slds-p-around_small slds-m-bottom_medium rightAlign"><!--Merge changes[10/30]-ID-4317-->
-                                        <button class="slds-float_right blue" onclick="{! c.handleCloseModal }">{!$Label.c.PMP_LeadGen_Close}</button><!--DE89587 Fix-->
+                                        <button class="blue" onclick="{! c.handleCloseModal }">{!$Label.c.PMP_LeadGen_Close}</button>
                                     </lightning:layoutItem>
                                 </lightning:layout>
                             </aura:set>

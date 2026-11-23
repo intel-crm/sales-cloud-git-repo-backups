@@ -16,8 +16,8 @@ public class Core_OpptySupportServiceHandlerTest {
     @testSetup
     static void setupTestData() { 
         Profile pro = [SELECT id, Name FROM Profile WHERE Name='CCP - Core Access'];
-        //User usr1 = [SELECT id, Name, isActive,Core_User_Geo__c FROM User WHERE ProfileId = :pro.Id AND isActive = true LIMIT 1];
-   		//PermissionSetAssignment psa = [SELECT Id, PermissionSet.Name,PermissionSetId, AssigneeId from PermissionSetAssignment  where PermissionSet.Name='SalesRepBB' LIMIT 1];
+       // User usr1 = [SELECT id, Name, isActive,Core_User_Geo__c FROM User WHERE ProfileId = :pro.Id AND isActive = true LIMIT 1];
+   		PermissionSetAssignment psa = [SELECT Id, PermissionSet.Name,PermissionSetId, AssigneeId from PermissionSetAssignment  where PermissionSet.Name='SalesRepBB' LIMIT 1];
 	//	User usr1 = [SELECT id, Name, isActive FROM User WHERE Id = :psa.AssigneeId AND isActive = true LIMIT 1];     
         List<Core_Trigger_Executions__c> triggercontroller = new List<Core_Trigger_Executions__c>();
         /* test data creation for Opportunity support team addtion*/
@@ -199,9 +199,9 @@ public class Core_OpptySupportServiceHandlerTest {
         us_ASMO3.LanguageLocaleKey = 'en_US';
         usercreation.add(us_ASMO3);
         
-        
-         
-        
+
+
+
         insert usercreation;
         
         List<Core_Opportunity_Support_Mapping__c> oppmappingLst = new List<Core_Opportunity_Support_Mapping__c>();
@@ -581,7 +581,7 @@ public class Core_OpptySupportServiceHandlerTest {
      
         opp_supp4.add(creatOpptSupportReq4);
         insert opp_supp4;   
-        //Core_OpportunitySupportServiceHandler.determineApprovers(opp_supp);       
+        //Core_OpportunitySupportServiceHandler.determineApprovers(opp_supp);
         Assert.areEqual(5, usr1.size(), 'Number of user created');
         test.stopTest();
     }

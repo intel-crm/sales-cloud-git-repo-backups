@@ -22,8 +22,8 @@
  		var marketplaceUrl = $A.get('$Label.c.PMP_Marketplace_Community_URL'); // Changed postion of variable to show manage storfront on lead portal - 27/01/2022
 		var ipaDashboardUrl = $A.get('$Label.c.PMP_IPA_Dashboard_Url');
         var links = {
-            // manageOfferingsApi: 'PMP_Partner_Offering__c',
-            // manageOfferingsUrl: '', // IPA2.0 + US TWC4497-1631
+            manageOfferingsApi: 'PMP_Partner_Offering__c',
+            manageOfferingsUrl: '',
             manageLeadsPage: '',
             manageLeadsUrl: $A.get('$Label.c.PMP_Partneradmin_Community_URL'),
             manageDashboardPage: 'dashboard',
@@ -43,8 +43,8 @@
             var solutionListpageName = $A.get('$Label.c.PSS_Redirecting_to_Manage_Solutions');
             
             links = {
-                // manageOfferingsApi: '', // IPA2.0 + US TWC4497-1631
-                // manageOfferingsUrl: marketplaceUrl + '/pmp-partner-offering/PMP_Partner_Offering__c',
+                manageOfferingsApi: '',
+                manageOfferingsUrl: marketplaceUrl + '/pmp-partner-offering/PMP_Partner_Offering__c',
                 manageLeadsPage: 'home',
                 manageLeadsUrl: '',
                 manageDashboardPage: '',
@@ -61,17 +61,15 @@
     },
     checkAccess : function(component) {	
         var urlStr = window.location.href;
-        // IPA2.0 + US TWC4497-1631
-        // if(urlStr.match('/pmp-partner-offering/')&& component.get('v.showManageOfferings') == false){
-        //    	this.navigateToErrorPage(component);
-        //     return false;
-        //    }
-        // else
-         if(urlStr.match('/pmp-marketplace-event/' ) && component.get('v.showManageEvents') == false){
+        
+        if(urlStr.match('/pmp-partner-offering/')&& component.get('v.showManageOfferings') == false){
+           	this.navigateToErrorPage(component);
+            return false;
+           }
+        else if(urlStr.match('/pmp-marketplace-event/' ) && component.get('v.showManageEvents') == false){
         	this.navigateToErrorPage(component);
             return false;
     	}
-       
  	/*	else if(urlStr.match('/partner/' ) && component.get('v.showManagedPartners') == false){
         	this.navigateToErrorPage(component);
             console.log('insideNav');

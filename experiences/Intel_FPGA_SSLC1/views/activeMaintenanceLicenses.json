@@ -1,25 +1,13 @@
 {
   "appPageId" : "6b36c665-0609-49d0-9746-033feed642b2",
-  "componentName" : "siteforce:sldsOneColLayout",
+  "componentName" : "c:PSGPatnerLayout",
   "dataProviders" : [ ],
-  "id" : "305884a2-3b0d-428e-9f86-8e719ff7006f",
+  "id" : "978d83f0-7f70-48f4-8098-9bc77beb68bf",
   "label" : "Active maintenance licenses",
   "regions" : [ {
     "components" : [ {
-      "componentAttributes" : { },
-      "componentName" : "c:sales_NonEventFeedback",
-      "id" : "d22eae5d-aa3d-4e1f-b268-e3c387826a3b",
-      "renderPriority" : "NEUTRAL",
-      "renditionMap" : { },
-      "type" : "component"
-    } ],
-    "id" : "b00a53dc-32a9-4037-a92b-4cadc7971a91",
-    "regionName" : "header",
-    "type" : "region"
-  }, {
-    "components" : [ {
       "componentAttributes" : {
-        "enableInlineEdit" : true,
+        "enableInlineEdit" : false,
         "filterName" : "Active_Maintenance_External",
         "layout" : "FULL",
         "pageSize" : 25,
@@ -31,21 +19,36 @@
         "showImageIcon" : true,
         "showManualRefreshButton" : true,
         "showObjectName" : true,
-        "showPinnedList" : true,
+        "showPinnedList" : false,
         "showSearchBar" : true
       },
       "componentName" : "forceCommunity:objectHome",
-      "id" : "a17e9330-2b58-4cd3-b250-8a0d68a53250",
+      "id" : "814160a7-ea34-4962-b083-0ebf4e19234a",
       "renderPriority" : "NEUTRAL",
-      "renditionMap" : { },
+      "renditionMap" : {
+        "zh_cn" : "fb49fc0e-8a6f-43da-b60d-2f7b8a8893a9"
+      },
+      "renditions" : [ {
+        "id" : "fb49fc0e-8a6f-43da-b60d-2f7b8a8893a9",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "layout" : "FULL"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
       "type" : "component"
     } ],
-    "id" : "c8a08e84-ff47-4e71-96f9-fdde6507eb51",
-    "regionName" : "content",
+    "id" : "18052e8b-ace4-451a-b987-3bac32d52842",
+    "regionName" : "Header",
     "type" : "region"
   }, {
-    "id" : "b06f2825-e14c-4d3e-94f6-f7cd6977b208",
-    "regionName" : "footer",
+    "id" : "114bcff8-989b-4d49-b8c5-471cf8864f8d",
+    "regionName" : "mainFullWidth",
+    "type" : "region"
+  }, {
+    "id" : "97109bb6-a02c-4755-9d55-aadc2de04e0f",
+    "regionName" : "main",
     "type" : "region"
   }, {
     "components" : [ {
@@ -55,11 +58,24 @@
         "title" : "Active maintenance licenses"
       },
       "componentName" : "forceCommunity:seoAssistant",
-      "id" : "0e98e6ec-48bf-452e-a4ff-2a804448c332",
-      "renditionMap" : { },
+      "id" : "6855e3db-0238-4ca1-92ff-bbb8d5268434",
+      "renditionMap" : {
+        "zh_cn" : "07a92891-2f2e-4779-9b57-1066a0bb5b9a"
+      },
+      "renditions" : [ {
+        "id" : "07a92891-2f2e-4779-9b57-1066a0bb5b9a",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "customHeadTags" : "市场推广基金",
+            "description" : "市场推广基金",
+            "title" : "我的账户"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
       "type" : "component"
     } ],
-    "id" : "961a189b-3147-4056-8da6-fa6b1cb60a28",
+    "id" : "9b3abccf-3d6f-4989-918a-7ecd4177abb6",
     "regionName" : "sfdcHiddenRegion",
     "type" : "region"
   } ],

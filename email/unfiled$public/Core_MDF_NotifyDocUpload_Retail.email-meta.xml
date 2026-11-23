@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>44.0</apiVersion>
+    <available>true</available>
+    <description>Email Reminders will be sent to partner to upload the documents before Document Submission Deadline on 5th, 8th, 10th and 11th day.</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Core_MDF_NotifyDocUpload_Retail</name>
+    <style>none</style>
+    <type>visualforce</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

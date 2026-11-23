@@ -9,113 +9,50 @@
     <allowStandardPortalPages>true</allowStandardPortalPages>
     <allowStandardSearch>false</allowStandardSearch>
     <authorizationRequiredPage>CommunitiesLogin</authorizationRequiredPage>
-    <bandwidthExceededPage>BandwidthExceeded</bandwidthExceededPage>
-    <browserXssProtection>true</browserXssProtection>
+    <bandwidthExceededPage>Core_IPS_Community_509_Error</bandwidthExceededPage>
+    <browserXssProtection>false</browserXssProtection>
     <cachePublicVisualforcePagesInProxyServers>true</cachePublicVisualforcePagesInProxyServers>
-    <clickjackProtectionLevel>SameOriginOnly</clickjackProtectionLevel>
-    <contentSniffingProtection>true</contentSniffingProtection>
+    <clickjackProtectionLevel>AllowAllFraming</clickjackProtectionLevel>
+    <contentSniffingProtection>false</contentSniffingProtection>
     <enableAuraRequests>true</enableAuraRequests>
-    <fileNotFoundPage>FileNotFound</fileNotFoundPage>
-    <genericErrorPage>Exception</genericErrorPage>
-    <inMaintenancePage>InMaintenance</inMaintenancePage>
+    <fileNotFoundPage>Core_IPS_Community_404_Error</fileNotFoundPage>
+    <genericErrorPage>Core_IPS_Community_Generic_Error</genericErrorPage>
+    <inMaintenancePage>core_ips_portal_downPage</inMaintenancePage>
+    <inactiveIndexPage>core_ips_portal_downPage</inactiveIndexPage>
     <indexPage>CommunitiesLanding</indexPage>
     <masterLabel>Intel® Partner Portal</masterLabel>
     <redirectToCustomDomain>false</redirectToCustomDomain>
-    <referrerPolicyOriginWhenCrossOrigin>true</referrerPolicyOriginWhenCrossOrigin>
+    <referrerPolicyOriginWhenCrossOrigin>false</referrerPolicyOriginWhenCrossOrigin>
     <selfRegPage>CommunitiesSelfReg</selfRegPage>
-    <serverIsDown>SNA_dh34H_sf_default_cdn_Intel_Partner_Portal1</serverIsDown>
-    <siteAdmin>11540272@intel.com.crm</siteAdmin>
-    <siteGuestRecordDefaultOwner>11710633@intel.com.crm</siteGuestRecordDefaultOwner>
+    <siteAdmin>premiercloudsupport@intel.com.crm</siteAdmin>
+    <siteGuestRecordDefaultOwner>premiercloudsupport@intel.com.crm</siteGuestRecordDefaultOwner>
     <siteRedirectMappings>
         <action>Permanent</action>
         <isActive>true</isActive>
         <isDynamic>false</isDynamic>
-        <source>/Core_ExternalUser_IPS_Project</source>
-        <target>/IPS/s/new-project</target>
+        <source>/</source>
+        <target>/IPS</target>
     </siteRedirectMappings>
     <siteRedirectMappings>
         <action>Permanent</action>
         <isActive>true</isActive>
         <isDynamic>false</isDynamic>
-        <source>/Core_ExternalUser_IPS_Project?retURL=%2FIPS%2Fa2B</source>
-        <target>/IPS/s/</target>
+        <source>/?cid=em-elq-8671&amp;utm_source=elq&amp;utm_medium=email&amp;utm_campaign=8671</source>
+        <target>/IPS</target>
+    </siteRedirectMappings>
+    <siteRedirectMappings>
+        <action>Permanent</action>
+        <isActive>false</isActive>
+        <isDynamic>false</isDynamic>
+        <source>/?cid=em-elq-8671&amp;utm_source=elq&amp;utm_medium=email&amp;utm_campaign=8671&amp;elq_cid=1530712&amp;elqTrackId=5d2310f266744b30bffd1b1a40c49a4a&amp;elq=34e0c48cd4744d8b8428cec5bc9ee018&amp;elqaid=8671&amp;elqat=1&amp;elqCampaignId=5716</source>
+        <target>/IPS</target>
     </siteRedirectMappings>
     <siteRedirectMappings>
         <action>Permanent</action>
         <isActive>true</isActive>
         <isDynamic>false</isDynamic>
-        <source>/Core_ExternalUser_IPS_Project?retURL=%2FIPS%2Fa3D%2Fe%3FretURL%3D%252FIPS%252F006%252Fo</source>
-        <target>/IPS/s/new-project</target>
-    </siteRedirectMappings>
-    <siteRedirectMappings>
-        <action>Permanent</action>
-        <isActive>true</isActive>
-        <isDynamic>false</isDynamic>
-        <source>/Core_IPS_Customer_Case_Creation?mode=create</source>
-        <target>/IPS/s/new-case?mode=create</target>
-    </siteRedirectMappings>
-    <siteRedirectMappings>
-        <action>Permanent</action>
-        <isActive>true</isActive>
-        <isDynamic>false</isDynamic>
-        <source>/Core_IPS_Customer_Case_Creation?mode=sslc</source>
-        <target>/IPS/s/new-case?mode=sslc</target>
-    </siteRedirectMappings>
-    <siteRedirectMappings>
-        <action>Permanent</action>
-        <isActive>true</isActive>
-        <isDynamic>false</isDynamic>
-        <source>/Core_IPS_Project_Edit_Page</source>
-        <target>/IPS/s/</target>
-    </siteRedirectMappings>
-    <siteRedirectMappings>
-        <action>Permanent</action>
-        <isActive>true</isActive>
-        <isDynamic>false</isDynamic>
-        <source>/apex/Core_DDR_Import</source>
-        <target>/IPS/s/</target>
-    </siteRedirectMappings>
-    <siteRedirectMappings>
-        <action>Permanent</action>
-        <isActive>true</isActive>
-        <isDynamic>false</isDynamic>
-        <source>/apex/Core_DDR_Import?sfdc.tabName=01r1J000000PgeN</source>
-        <target>/IPS/s/</target>
-    </siteRedirectMappings>
-    <siteRedirectMappings>
-        <action>Permanent</action>
-        <isActive>true</isActive>
-        <isDynamic>false</isDynamic>
-        <source>/apex/Core_IPS_CommEmailOptTab</source>
-        <target>/IPS/s/</target>
-    </siteRedirectMappings>
-    <siteRedirectMappings>
-        <action>Permanent</action>
-        <isActive>true</isActive>
-        <isDynamic>false</isDynamic>
-        <source>/apex/Core_IPS_CommEmailOptTab?sfdc.tabName=01r1J000000tHZI</source>
-        <target>/IPS/s/</target>
-    </siteRedirectMappings>
-    <siteRedirectMappings>
-        <action>Permanent</action>
-        <isActive>true</isActive>
-        <isDynamic>false</isDynamic>
-        <source>/apex/Core_IPS_GlobalCaseSearchPage</source>
-        <target>/IPS/s/</target>
-    </siteRedirectMappings>
-    <siteRedirectMappings>
-        <action>Permanent</action>
-        <isActive>true</isActive>
-        <isDynamic>false</isDynamic>
-        <source>/apex/Core_IPS_GlobalCaseSearchPage?sfdc.tabName=01r1J000000Pgea</source>
-        <target>/IPS/s/</target>
-    </siteRedirectMappings>
-    <siteRedirectMappings>
-        <action>Permanent</action>
-        <isActive>true</isActive>
-        <isDynamic>false</isDynamic>
-        <source>/home/home.jsp</source>
-        <target>/IPS/s/</target>
+        <source>/_ui/common/setup/PersonalSetup</source>
+        <target>/IPS/Core_IPS_CommEmailOpt?s=1</target>
     </siteRedirectMappings>
     <siteType>ChatterNetwork</siteType>
     <subdomain>intelcloudcrm</subdomain>

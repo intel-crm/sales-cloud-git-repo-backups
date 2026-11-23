@@ -34,15 +34,15 @@
         </approvalActions>
         <assignedApprover>
             <approver>
+                <name>Core_Approver_5__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <approver>
                 <name>Core_Approver_4__c</name>
                 <type>relatedUserField</type>
             </approver>
             <approver>
                 <name>Core_Approver_3__c</name>
-                <type>relatedUserField</type>
-            </approver>
-            <approver>
-                <name>Core_Approver_5__c</name>
                 <type>relatedUserField</type>
             </approver>
             <approver>
@@ -139,6 +139,10 @@
         </action>
         <action>
             <name>Core_Opp_Update_Date_Submitted_for_Appro</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>Update_Date_and_Time</name>
             <type>FieldUpdate</type>
         </action>
     </initialSubmissionActions>

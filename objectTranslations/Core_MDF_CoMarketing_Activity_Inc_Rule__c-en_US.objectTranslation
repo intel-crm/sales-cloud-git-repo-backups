@@ -46,10 +46,6 @@
         <name>Core_MDF_Product_Type_Txt__c</name>
     </fields>
     <fields>
-        <label><!-- Question Label --></label>
-        <name>Core_MDF_Question_Label__c</name>
-    </fields>
-    <fields>
         <label><!-- Technology --></label>
         <name>Core_MDF_Technology_Nm__c</name>
     </fields>

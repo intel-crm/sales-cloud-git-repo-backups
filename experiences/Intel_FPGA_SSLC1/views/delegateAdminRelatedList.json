@@ -1,0 +1,38 @@
+{
+  "appPageId" : "6b36c665-0609-49d0-9746-033feed642b2",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "03a0e9dd-8ec0-4101-999f-1e5c567cb779",
+  "label" : "Delegate Admin Related List",
+  "regions" : [ {
+    "id" : "67378400-248b-4f67-a3da-02ffa34024f0",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "id" : "f112163c-403f-45a4-b872-c025f03a1b72",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "c841362b-19d1-40c4-9bd0-46db9d708fc8",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Delegate Admin Related List"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "1b1be8b7-8eb2-4065-ac2e-ab7b8c9ee863",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "b7b5c23a-5441-4a25-bd21-010cccceb648",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-delegate-admin-related-list"
+}

@@ -120,9 +120,9 @@ private class Core_TaskHandler_Test {
         lstoldTaskInsertion.add(taskInstance);
         insert lstTaskInsertion;
         
-        /*Core_TaskHandler.updatetaskflag(lstTaskInsertion);
+        Core_TaskHandler.updatetaskflag(lstTaskInsertion);
         update lstoldTaskInsertion;
-         Core_TaskHandler.UpdateTaskflagOnUpdate(lstTaskInsertion,lstoldTaskInsertion);*/
+         Core_TaskHandler.UpdateTaskflagOnUpdate(lstTaskInsertion,lstoldTaskInsertion);
 
     }
 
@@ -173,9 +173,9 @@ private class Core_TaskHandler_Test {
         lstoldTaskInsertion.add(taskInstance);
         insert lstTaskInsertion;
         
-       /* Core_TaskHandler.updatetaskflag(lstTaskInsertion);
+        Core_TaskHandler.updatetaskflag(lstTaskInsertion);
         update lstoldTaskInsertion;
-         Core_TaskHandler.UpdateTaskflagOnUpdate(lstTaskInsertion,lstoldTaskInsertion);*/
+         Core_TaskHandler.UpdateTaskflagOnUpdate(lstTaskInsertion,lstoldTaskInsertion);
     }
 
 

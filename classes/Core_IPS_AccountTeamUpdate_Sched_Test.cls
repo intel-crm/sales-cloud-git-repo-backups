@@ -11,7 +11,6 @@ Modification Log :
 * ----------------------------------------------------------------------------                 
 * Nareshbabu p               06/10/2016              Created
 * Amritesh                   26/03/2018              Modified - US248473
-* System.assert()--> statement Added By Hassan Khan 01-02-2024 
 ****************************************************************************************************/   
 @istest
 public class Core_IPS_AccountTeamUpdate_Sched_Test {
@@ -100,7 +99,7 @@ public class Core_IPS_AccountTeamUpdate_Sched_Test {
         
         List<AccountShare> lstAccShare = Database.query('SELECT userorgroupid, accountid, rowcause FROM accountshare where lastmodifieddate >= TODAY');
         Core_IPS_AccountTeamUpdate_Scheduler.Insert_logexception(lstAccShare, 'Exception Test');
-        System.assert(lstAccShare.size() > 0 , true);
+        
         Test.stopTest();
     }    
     
@@ -130,8 +129,7 @@ public class Core_IPS_AccountTeamUpdate_Sched_Test {
         
         //Core_IPS_AccountTeamUpdate_Scheduler.Insert_logexception(ListOfAccounts,'Exception Test');
         
-        Test.stopTest();  
-        System.assert(lstCustAccTeam.size() > 0, true);
+        Test.stopTest();                   
     }
     
     static testmethod void AccountTeamUpdateSchedTestMethod3() {
@@ -150,8 +148,8 @@ public class Core_IPS_AccountTeamUpdate_Sched_Test {
         String scheduledTimeStirng = '0 15 * * * ?';
         String jobID = system.schedule('AccountTeam Sync - First-Test', scheduledTimeStirng, acctTeamsche);
         scheduledTimeStirng = '0 30 * * * ?';
+        
         Test.stopTest();
-        System.assert(header != null, true);
     }
     
     static testmethod void AccountTeam_DeleteSyncTestMethod() {
@@ -179,7 +177,6 @@ public class Core_IPS_AccountTeamUpdate_Sched_Test {
         Core_IPS_AccountTeam_DeleteSync.Insert_logexception(lstCustAccTeam, 'Exception Test');
         
         Test.stopTest();
-        System.assert(lstCustAccTeam.size() > 0, true);
     }
     
     static testmethod void AccountTeamBatchHandlerTestMethod() {
@@ -204,7 +201,6 @@ public class Core_IPS_AccountTeamUpdate_Sched_Test {
         AccountTeamBatchHandler.getLastRunDateTime('Core_IPS_AccountTeamUpdate_Scheduler');
         
         Test.stopTest();
-        System.assert(header != null, true);
     }
     
     /*

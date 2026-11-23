@@ -80,7 +80,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Sonja Pierer</value>
+            <value>Dieter Hoffend</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -95,7 +95,7 @@
         <field>OPPORTUNITY_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>#AI Pipeline 2020 SP</name>
+    <name>#AI Pipeline 2020 DH</name>
     <params>
         <name>terr</name>
         <value>all</value>

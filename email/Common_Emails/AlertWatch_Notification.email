@@ -1,0 +1,5 @@
+<messaging:emailTemplate subject="Alert Watch Notification" recipientType="User" renderUsingSystemContextWithoutSharing="True">
+    <messaging:htmlEmailBody >
+        <c:AlertWatchNotification />
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>

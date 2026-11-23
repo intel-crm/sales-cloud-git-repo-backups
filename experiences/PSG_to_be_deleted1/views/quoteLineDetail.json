@@ -1,0 +1,65 @@
+{
+  "appPageId" : "643f101e-1dcc-48e4-87fe-0d23f449e403",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "d95ee4e7-1152-44c5-8bdc-73a55a09f77e",
+  "label" : "Quote Line Detail",
+  "regions" : [ {
+    "id" : "01001136-a249-44b8-b497-c6c5c88a5fe2",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "recordId" : "{!recordId}"
+      },
+      "componentName" : "forceCommunity:recordHeadline",
+      "id" : "0f749de9-2275-49fb-ad93-be7a73add6ec",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "detailsTabLabel" : "Details",
+        "discussionsTabLabel" : "Feed",
+        "recordId" : "{!recordId}",
+        "relatedTabLabel" : "Related",
+        "tab1Type" : "details",
+        "tab2Type" : "related",
+        "tab3Type" : "chatter",
+        "tab4Type" : "none",
+        "timelineTabLabel" : "Activity"
+      },
+      "componentName" : "forceCommunity:recordHomeTabs",
+      "id" : "96508a66-2e1f-4357-aa33-d8b56830acda",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "5b4c8417-44f5-43e9-be63-e64805131aaa",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "910ee913-e6b8-47d2-b20d-ad5e1f88dc4d",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "{!Record._Object}: {!Record._Title}"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "4bd9a54d-9d5a-448d-8e5d-b85eca739255",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "d482d680-0beb-45f9-a65e-ba2b0e092396",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "detail-a9U"
+}

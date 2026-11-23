@@ -4,36 +4,43 @@
     <containerType>Network</containerType>
     <label>Default Navigation</label>
     <navigationMenuItem>
-        <label>Quote Lines</label>
+        <label>Quote</label>
         <position>1</position>
+        <publiclyAvailable>false</publiclyAvailable>
+        <target>SBQQ__Quote__c</target>
+        <type>SalesforceObject</type>
+    </navigationMenuItem>
+    <navigationMenuItem>
+        <label>Quote Lines</label>
+        <position>2</position>
         <publiclyAvailable>false</publiclyAvailable>
         <target>SBQQ__QuoteLine__c</target>
         <type>SalesforceObject</type>
     </navigationMenuItem>
     <navigationMenuItem>
         <label>Reports</label>
-        <position>2</position>
+        <position>3</position>
         <publiclyAvailable>false</publiclyAvailable>
         <target>Report</target>
         <type>SalesforceObject</type>
     </navigationMenuItem>
     <navigationMenuItem>
         <label>Get Help</label>
-        <position>3</position>
+        <position>4</position>
         <publiclyAvailable>false</publiclyAvailable>
         <target>/get-help</target>
         <type>InternalLink</type>
     </navigationMenuItem>
     <navigationMenuItem>
         <label>Training</label>
-        <position>4</position>
+        <position>5</position>
         <publiclyAvailable>false</publiclyAvailable>
         <target>https://www.intel.com/content/www/us/en/resources-documentation/support/quote-request/training/welcome.html</target>
         <type>ExternalLink</type>
     </navigationMenuItem>
     <navigationMenuItem>
         <label>User Preferences</label>
-        <position>5</position>
+        <position>6</position>
         <publiclyAvailable>false</publiclyAvailable>
         <target>/user-preferences</target>
         <type>InternalLink</type>

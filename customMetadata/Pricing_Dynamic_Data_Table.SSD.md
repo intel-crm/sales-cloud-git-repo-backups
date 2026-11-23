@@ -19,11 +19,15 @@
         <value xsi:type="xsd:string">Optane™ SSD</value>
     </values>
     <values>
+        <field>Pricing_Record_Type__c</field>
+        <value xsi:type="xsd:string">Optane™ SSD</value>
+    </values>
+    <values>
         <field>Pricing_SearchColumn_Field__c</field>
         <value xsi:type="xsd:string">AND Name Like &apos;{{searchString}}&apos;</value>
     </values>
     <values>
         <field>Pricing_Where_Clause__c</field>
-        <value xsi:type="xsd:string">where ((Name = &apos;Write In Product&apos;) OR (Core_Sales_Visible_Flag__c = false and IsActive =true AND Core_Product_Status__c &lt;&gt; &apos;RT&apos; AND Core_Profit_Center__c IN (&apos;0000003095&apos;,&apos;0000003097&apos;) AND Core_IQR_Visible__c = true))</value>
+        <value xsi:type="xsd:string">where ((Name = &apos;Write In Product&apos;) OR (Core_Sales_Visible_Flag__c = false and IsActive =true AND Core_Product_Status__c &lt;&gt; &apos;RT&apos; AND Core_BU_Operation_Code__c IN (&apos;UD&apos;,&apos;UC&apos;) AND Core_IQR_Visible__c = true))</value>
     </values>
 </CustomMetadata>

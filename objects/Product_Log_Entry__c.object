@@ -251,6 +251,13 @@
         <type>Text</type>
         <unique>false</unique>
     </fields>
+    <fields>
+        <fullName>When__c</fullName>
+        <label>When</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
     <label>Product Log Entry</label>
     <nameField>
         <label>Deactvation Log Entry Name</label>

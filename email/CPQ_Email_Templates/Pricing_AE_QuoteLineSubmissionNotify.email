@@ -1,0 +1,6 @@
+<messaging:emailTemplate subject="IQR {!if(relatedTo.Pricing_New_Change_Request_cb__c == true,'Change Request ', 'Quote Line ')} {!relatedTo.SBQQ__Quote__r.SBQQ__Account__r.Name}/{!relatedTo.Pricing_EndCustomer_Nm__c}/{!relatedTo.Pricing_Project_Nm__c}" recipientType="User" relatedToType="SBQQ__QuoteLine__c"
+renderUsingSystemContextWithoutSharing="True">
+    <messaging:htmlEmailBody >
+        <c:Pricing_AE_QuoteLineCRNotification quoteLineRecordId="{!relatedTo.Id}"/>
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>

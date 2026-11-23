@@ -1,4 +1,4 @@
-({ /*
+({
 	handleResize : function(component, helper) {
 		if (component.isValid()){
 			var innerWidth = component.find('adminReview').getElement().clientWidth;
@@ -30,12 +30,10 @@
 			component.set('v.styleTransform', styleTransform);
 			component.set('v.height', height );
 
-			
-		}
-	} */
-})
-
-/*window.setTimeout($A.getCallback(function() {
+			/*window.setTimeout($A.getCallback(function() {
 				component.find("outerContainer").getElement().style.height = height;
 				component.find("innerContent").getElement().style = styleTransform;
 			}));*/
+		}
+	}
+})

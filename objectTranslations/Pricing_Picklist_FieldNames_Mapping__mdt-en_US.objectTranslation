@@ -2,11 +2,11 @@
 <CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseValues>
         <plural>false</plural>
-        <value>Pricing_Picklist_FieldNames_Mapping</value>
+        <value>Pricing Picklist Field Names Mapping</value>
     </caseValues>
     <caseValues>
         <plural>true</plural>
-        <value>Pricing_Picklist_FieldNames_Mappings</value>
+        <value>Pricing Picklist Field Names Mappings</value>
     </caseValues>
     <fields>
         <label><!-- Picklist Field API Name --></label>
@@ -15,6 +15,10 @@
     <fields>
         <label><!-- Is Active --></label>
         <name>Pricing_IsActive_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Object API Name --></label>
+        <name>Pricing_ObjectAPI_Nm__c</name>
     </fields>
     <fields>
         <label><!-- Object API Name --></label>
@@ -31,6 +35,10 @@
             <masterLabel>SBQQ__Quote__c</masterLabel>
             <translation><!-- SBQQ__Quote__c --></translation>
         </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Record Type API Name --></label>
+        <name>Pricing_RecordTypeAPI_Nm__c</name>
     </fields>
     <fields>
         <label><!-- Record Type API Name --></label>

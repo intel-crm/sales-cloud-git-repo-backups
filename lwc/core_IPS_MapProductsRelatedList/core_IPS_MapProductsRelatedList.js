@@ -174,9 +174,8 @@ export default class Core_IPS_MapProductsRelatedList extends NavigationMixin(Lig
     supportOrgIdSubscribe(supOrgId) {
         this.supportOrgId = supOrgId;
         if(this.supportOrgId !== undefined && this.supportOrgId !== null ) {
-            /*Tushar -- 18/06/2026 --- Remove Core_Flag_Status__c = 'Par Hidden' as part of vulnerability fix. */
-            this.lookupQueryString = 'SELECT Id, Core_Product__r.Name, Core_Supported_Product_Alias__c, Core_Product_Organization__c, Core_Flag_Status__c, Core_Support_Org_Name__c FROM Core_IPS_Supported_Product__c WHERE (Core_Product__r.Name LIKE :key OR Core_Supported_Product_Alias__c LIKE :key) AND Core_Product_Organization__c = \'' +this.supportOrgId + '\' AND Core_EOIS__c = false  AND (Core_Flag_Status__c =\'Approval Required\' OR Core_Flag_Status__c =\'Auto Approve\' ) LIMIT :recordLimit';
-            this.lookupCountQueryString = 'SELECT count() FROM Core_IPS_Supported_Product__c WHERE (Core_Product__r.Name LIKE :key OR Core_Supported_Product_Alias__c LIKE :key) AND Core_Product_Organization__c = \'' +this.supportOrgId + '\' AND Core_EOIS__c = false  AND (Core_Flag_Status__c =\'Approval Required\' OR Core_Flag_Status__c =\'Auto Approve\' )';
+            this.lookupQueryString = 'SELECT Id, Core_Product__r.Name, Core_Supported_Product_Alias__c, Core_Product_Organization__c, Core_Flag_Status__c, Core_Support_Org_Name__c FROM Core_IPS_Supported_Product__c WHERE (Core_Product__r.Name LIKE :key OR Core_Supported_Product_Alias__c LIKE :key) AND Core_Product_Organization__c = \'' +this.supportOrgId + '\' AND Core_EOIS__c = false AND core_IPS_public_product__c = false AND (Core_Flag_Status__c =\'Par Hidden\' OR Core_Flag_Status__c =\'Approval Required\' OR Core_Flag_Status__c =\'Auto Approve\' ) LIMIT :recordLimit';
+            this.lookupCountQueryString = 'SELECT count() FROM Core_IPS_Supported_Product__c WHERE (Core_Product__r.Name LIKE :key OR Core_Supported_Product_Alias__c LIKE :key) AND Core_Product_Organization__c = \'' +this.supportOrgId + '\' AND Core_EOIS__c = false AND core_IPS_public_product__c = false AND (Core_Flag_Status__c =\'Par Hidden\' OR Core_Flag_Status__c =\'Approval Required\' OR Core_Flag_Status__c =\'Auto Approve\' )';
             this.isLookupQueryPresent = true;
         }
     }
@@ -385,6 +384,7 @@ export default class Core_IPS_MapProductsRelatedList extends NavigationMixin(Lig
                         
                     }
                     if(lineItemList === undefined || lineItemList === null || lineItemList.length === 0) {
+                        console.log('this.spinnerOn ', this.spinnerOn);
                         this.spinnerOn = false;
                         this.reloadCurrentPage();
                     }
@@ -478,7 +478,7 @@ export default class Core_IPS_MapProductsRelatedList extends NavigationMixin(Lig
                         message: error.message,
                         variant: 'error',
                     }),
-                ); 
+                );
                 this.spinnerOn = false;
                 console.error('Core_IPS_MapProductsRelatedList ::: Error in deleting record. Error : ', JSON.stringify(error));
             });

@@ -357,7 +357,7 @@
             <sourceValues>
                 <sourceValue>PSG-GAE-unassigned</sourceValue>
             </sourceValues>
-            <value>GAE</value>
+            <value>PGGAE</value>
         </values>
         <values>
             <sourceValues>
@@ -498,7 +498,7 @@
             <sourceValues>
                 <sourceValue>Melvin Swee Leng Teh</sourceValue>
             </sourceValues>
-            <value>GAE</value>
+            <value>PGGAE</value>
         </values>
         <values>
             <sourceValues>
@@ -621,9 +621,6 @@
             <sourceValues>
                 <sourceValue>Intel® Stratix® 10 DX FPGA</sourceValue>
             </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel® Stratix® 10 TX FPGA</sourceValue>
-            </sourceValues>
             <value>Stratix 10 TX DX</value>
         </values>
         <values>
@@ -743,33 +740,6 @@
             </sourceValues>
             <value>Cyclone 10</value>
         </values>
-        <values>
-            <sourceValues>
-                <sourceValue>Intel® Stratix® 10 NX FPGA</sourceValue>
-            </sourceValues>
-            <value>Stratix 10 NX</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>Intel® Agilex™ 5 FPGAs and SoC FPGAs E-Series</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel Agilex® 5 FPGAs and SoC FPGAs E-Series</sourceValue>
-            </sourceValues>
-            <value>Agilex 5 E</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>Intel® Agilex™ 7 FPGAs and SoC FPGAs F-Series</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel® Agilex™ F-Series FPGAs and SoC FPGAs</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel Agilex® 7 FPGAs and SoC FPGAs F-Series</sourceValue>
-            </sourceValues>
-            <value>Agilex 7 F</value>
-        </values>
     </buckets>
     <columns>
         <field>CASE_NUMBER</field>
@@ -880,11 +850,8 @@
     <columns>
         <field>PRIORITY</field>
     </columns>
-    <columns>
-        <field>Case.Core_IPS_HC_Help_Needed__c</field>
-    </columns>
     <filter>
-        <booleanFilter>((1 AND (2 OR 4) AND 3) AND 5) AND 6</booleanFilter>
+        <booleanFilter>(1 AND (2 or 4) AND 3) AND 5</booleanFilter>
         <criteriaItems>
             <column>Case.Core_Product_Organization__c</column>
             <columnToColumn>false</columnToColumn>
@@ -920,13 +887,6 @@
             <operator>notContain</operator>
             <value>Intel® ASIC,eASIC,ENPIRI</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>ACCOUNT.NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>IPS Test Account</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Tabular</format>
@@ -948,8 +908,8 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CREATED_DATEONLY</dateColumn>
-        <endDate>2024-12-31</endDate>
+        <endDate>2020-06-30</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2021-01-01</startDate>
+        <startDate>2019-01-01</startDate>
     </timeFrameFilter>
 </Report>

@@ -1,6 +1,13 @@
 ({
     callComponent : function(component,event,helper){
         var apprRecId = component.get("v.recordId");
-        component.set("v.renderCriteriaRuleComponent", true);        
+        var evt = $A.get("e.force:navigateToComponent");
+        evt.setParams({
+            componentDef: "c:Core_MDF_CriteriaRule",
+            componentAttributes :{recordId: apprRecId}
+            
+        });
+       
+    evt.fire();
     }
 })

@@ -1,0 +1,6 @@
+<messaging:emailTemplate subject="IQR Quote Letter for {!relatedTo.Name}/{!relatedTo.Pricing_End_Customer_Name__c}/{!relatedTo.Pricing_Project_Name_Nm__c}/{!relatedTo.Pricing_End_Customer_Country_Nm__c}{!IF(relatedTo.Pricing_Customer_Reference_Id__c != Null, '/', '')}{!relatedTo.Pricing_Customer_Reference_Id__c}" recipientType="User" relatedToType="SBQQ__Quote__c"
+renderUsingSystemContextWithoutSharing="True">
+    <messaging:htmlEmailBody >
+        <c:Pricing_RecallQuoteLetterNotification quoteRecordId="{!relatedTo.Id}"/>
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>

@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Approve_Change_Request</name>
+        <label>Approve Change Request</label>
+        <locationX>314</locationX>
+        <locationY>539</locationY>
+        <actionName>PCC_ChangeRequestApproval</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>Check_if_all_lines_are_approved</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Create_Log_Entry</targetReference>
+        </faultConnector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>changeRequestId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>PCC_ChangeRequestApproval</nameSegment>
+        <offset>0</offset>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <apiVersion>62.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>All_Rejected_Cancelled</name>
+        <label>All Rejected/Cancelled</label>
+        <locationX>622</locationX>
+        <locationY>323</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>All_Rejected</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.PCC_No_Of_Child_Records__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>$Record.PCC_Cancelled_or_Rejected_Count__c</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PCC_Approval_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Review in Progress</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Reject_Change_Request</targetReference>
+            </connector>
+            <label>All Rejected?</label>
+        </rules>
+        <rules>
+            <name>Approve_Change_RequestLines</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Approved_Line_Items__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>$Record.PCC_No_Of_Child_Records__c</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PCC_Approval_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Review in Progress</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_the_Approved_Quantity</targetReference>
+            </connector>
+            <label>Approve Change Request Lines</label>
+        </rules>
+        <rules>
+            <name>Update_Change_Request_Status_to_Approved</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.PCC_Approval_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Review in Progress</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PCC_Approved_Products_Count__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>$Record.PCC_No_Of_Child_Records__c</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Change_Request_as_Approved</targetReference>
+            </connector>
+            <label>Update Change Request Status to Approved</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_if_all_lines_are_approved</name>
+        <label>Check if all lines are approved?</label>
+        <locationX>578</locationX>
+        <locationY>971</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Check_if_non_change_request</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.PCC_Approved_Products_Count__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>$Record.PCC_No_Of_Child_Records__c</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PCC_Approval_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Review in Progress</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Change_Request_as_Approved</targetReference>
+            </connector>
+            <label>Check if non-change request</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_the_Approved_Quantity</name>
+        <label>Check the Approved Quantity</label>
+        <locationX>578</locationX>
+        <locationY>431</locationY>
+        <defaultConnector>
+            <targetReference>Check_if_all_lines_are_approved</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Check_Approved_Quanity</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Approved_Line_Items__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>$Record.PCC_No_Of_Child_Records__c</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Approved_Line_Items__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>$Record__Prior.Approved_Line_Items__c</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Approve_Change_Request</targetReference>
+            </connector>
+            <label>Check Approved Quanity</label>
+        </rules>
+    </decisions>
+    <description>Approve a record automatically when total count matches approved count</description>
+    <environments>Default</environments>
+    <interviewLabel>Change Request Approval {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Change Request Automation</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <name>Create_Log_Entry</name>
+        <label>Create Log Entry</label>
+        <locationX>578</locationX>
+        <locationY>647</locationY>
+        <inputAssignments>
+            <field>Core_Details__c</field>
+            <value>
+                <elementReference>$Flow.FaultMessage</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Message__c</field>
+            <value>
+                <stringValue>Change Request Auto Approval Failed </stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Origin__c</field>
+            <value>
+                <stringValue>Change Request Automation : Auto approval flow</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Severity__c</field>
+            <value>
+                <stringValue>high</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_When__c</field>
+            <value>
+                <elementReference>$System.OriginDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Core_Log_Entry__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <name>Create_Log_Entry2</name>
+        <label>Create Log Entry</label>
+        <locationX>1458</locationX>
+        <locationY>1463</locationY>
+        <inputAssignments>
+            <field>Core_Details__c</field>
+            <value>
+                <elementReference>$Flow.FaultMessage</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Message__c</field>
+            <value>
+                <stringValue>CR Status Update Failed</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Origin__c</field>
+            <value>
+                <stringValue>Flow : Change Request Automation - CR Status = Approved</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Severity__c</field>
+            <value>
+                <stringValue>High</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_When__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Core_Log_Entry__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordUpdates>
+        <name>Reject_Change_Request</name>
+        <label>Reject Change Request</label>
+        <locationX>50</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>PCC_Approval_Rejection_Comments__c</field>
+            <value>
+                <stringValue>All products rejected</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>PCC_Approval_Status__c</field>
+            <value>
+                <stringValue>Rejected</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Change_Request_as_Approved</name>
+        <label>Update Change Request as Approved</label>
+        <locationX>622</locationX>
+        <locationY>1355</locationY>
+        <faultConnector>
+            <targetReference>Create_Log_Entry2</targetReference>
+        </faultConnector>
+        <inputAssignments>
+            <field>PCC_Approval_Status__c</field>
+            <value>
+                <stringValue>Approved</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>496</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>All_Rejected_Cancelled</targetReference>
+        </connector>
+        <object>PCC_Deal_Change_Request__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

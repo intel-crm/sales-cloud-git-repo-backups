@@ -5,159 +5,77 @@ public class SWS_StringSplitUtility {
         description='Splits a semicolon-separated string into a list of values'
         category='String Utilities'
     )
-    public static List<SplitStringResult> splitSemicolonString(List<SplitStringRequest> requests ) {
-
-        List<SplitStringResult> results = new List<SplitStringResult>();
-        
-        if (requests == null || requests.isEmpty())  {
-            results.add(createEmptyResult());
-            return results;
-        }  
-         for (SplitStringRequest request : requests) {
-            results.add(processRequest(request));
-        }
-        return results;
-        
-    }
-    
-    /**
-     * Processes a single request
-     */
-    private static SplitStringResult processRequest(SplitStringRequest request) {
-
-        SplitStringResult result = new SplitStringResult();
-        
-        try {
-            if (String.isBlank(request.inputString)) {
-                return createEmptyResult();
-            }
-            List<String> splitValues = processInputString(request.inputString);
-            return createSuccessResult(splitValues);
-            
-        } catch (Exception e) {
-            return createErrorResult('Error splitting string: ' + e.getMessage());
-        }
-    }
-    
-    /**
-     * Processes the input string and validates emails
-     */
-   private static List<String> processInputString(String inputString) {
-    List<String> splitValues = new List<String>();
-    
-    String processedString = inputString.replaceAll(',(?=(?:[^"]*"[^"]*")*[^"]*$)(?![^<]*>)', ';');
-    String[] rawSplit = processedString.split(';');
-    
-    for (String value : rawSplit) {
-        String processedEmail = processEmailValue(value.trim());
-        if (String.isNotBlank(processedEmail)) {
-            splitValues.add(processedEmail);
-        }
-    }
-    
-    return splitValues;
-   }
-    
-    /**
-     * Processes a single email value
-     */
-    private static String processEmailValue(String trimmedValue) {
-        String validatedEmail = SWS_EACUtility.validateEmail(trimmedValue);
-        
-        if (String.isBlank(validatedEmail)) {
-            return null;
-        }
-        return extractEmailFromFormat(validatedEmail);
-    }
-    
-    /**
-     * Extracts email from RFC 2822 format or returns as-is for plain format
-     */
-    private static String extractEmailFromFormat(String email) {
-        if (isRFC2822Format(email)) {
-            return extractEmailFromBrackets(email);
-        }
-        return email;
-    }
-    
-    /**
-     * Checks if email is in RFC 2822 format
-     */
-    private static Boolean isRFC2822Format(String email) {
-        return email.indexOf('<') > 0 && email.indexOf('>') > 0;
-    }
-    
-    /**
-     * Extracts email from angle brackets
-     */
-    private static String extractEmailFromBrackets(String email) {
-        Integer startIndex = email.indexOf('<');
-        Integer endIndex = email.indexOf('>');
-        
-        if (startIndex != -1 && endIndex != -1 && startIndex < endIndex) {
-            return email.substring(startIndex + 1, endIndex);
-        }
-        
-        return null;
-    }
-    
-    /**
-     * Separates emails into Intel and non-Intel categories
-     */
-    private static Map<String, List<String>> categorizeEmails(List<String> emails) {
-        List<String> intelEmails = new List<String>();
-        List<String> nonIntelEmails = new List<String>();
-        
-        for (String email : emails) {
-            if (String.isNotBlank(email) && email.toLowerCase().endsWith('@intel.com')) {
-                intelEmails.add(email);
-            } else if (String.isNotBlank(email)) {
-                nonIntelEmails.add(email);
+    public static List<SplitStringResult> splitSemicolonString(List<SplitStringRequest> requests) {
+        List<SplitStringResult> results = new List<SplitStringResult>();   
+        SWS_Core_CRM_Labels__c swsLabel = SWS_Core_CRM_Labels__c.getValues('Excluded_Domains');
+        string labelValue = swsLabel != null ? swsLabel.SWS_Value__c : '';
+        system.debug('Input String ' +requests);
+        Set<String> excludedDomains = new Set<String>();
+      if (String.isNotBlank(labelValue)) {
+        List<String> stringList = labelValue.split(';');        
+        for (String str : stringList) {
+            if (String.isNotBlank(str)) {
+                excludedDomains.add(str.trim());
             }
         }
-        
-        Map<String, List<String>> categorizedEmails = new Map<String, List<String>>();
-        categorizedEmails.put('intel', intelEmails);
-        categorizedEmails.put('nonIntel', nonIntelEmails);
-        return categorizedEmails;
     }
-    
-    /**
-     * Creates an empty successful result
-     */
-    private static SplitStringResult createEmptyResult() {
-        SplitStringResult result = new SplitStringResult();
-        result.splitUserValues = new List<String>();
-        result.splitContactValues = new List<String>();
-        result.isSuccess = true;
-        result.errorMessage = null;
-        return result;
-    }
-    
-    /**
-     * Creates a successful result with values
-     */
-    private static SplitStringResult createSuccessResult(List<String> splitValues) {
-        SplitStringResult result = new SplitStringResult();
-        
-        Map<String, List<String>> categorizedEmails = categorizeEmails(splitValues);
-        result.splitUserValues = categorizedEmails.get('intel');
-        result.splitContactValues = categorizedEmails.get('nonIntel');
-        result.isSuccess = true;
-        result.errorMessage = null;
-        return result;
-    }
-    
-    /**
-     * Creates an error result
-     */
-    private static SplitStringResult createErrorResult(String errorMessage) {
-        SplitStringResult result = new SplitStringResult();
-        result.splitUserValues = new List<String>();
-        result.splitContactValues = new List<String>();
-        result.isSuccess = false;
-        result.errorMessage = errorMessage;
-        return result;
+        if (requests != null && !requests.isEmpty()) {
+        for (SplitStringRequest request : requests) {
+            SplitStringResult result = new SplitStringResult();            
+            try {
+                if (String.isNotBlank(request.inputString)) {
+                    // Split the string by semicolon and trim whitespace
+                    List<String> splitValues = new List<String>();
+                    String[] rawSplit = request.inputString.split(';');
+                    system.debug('Input Split ' +rawSplit);
+                    
+                    for (String value : rawSplit) {                       
+                        String trimmedValue = value.trim();
+                         String filteredEmail = SWS_EmailDomainFilter.filterEmailByDomain(trimmedValue, excludedDomains);
+                        if (String.isNotBlank(filteredEmail) && (filteredEmail.indexOf('<') >0) && (filteredEmail.indexOf('>') >0) ) { 
+                               // Find the position of '<' and '>'
+        						Integer startIndex = filteredEmail.indexOf('<');
+        						Integer endIndex = filteredEmail.indexOf('>');        
+        						// Check if both brackets exist and are in correct order
+        						if (startIndex != -1 && endIndex != -1 && startIndex < endIndex) {
+                					splitValues.add( filteredEmail.substring(startIndex + 1, endIndex));
+        						}                            
+                        }
+                       else if (String.isNotBlank(filteredEmail)) 
+                                {
+                                    splitValues.add( filteredEmail);
+                                }
+                        
+                    }                    
+                    result.splitValues = splitValues;
+                    result.isSuccess = true;
+                    result.errorMessage = null;
+                }
+                else
+                {
+                     result.splitValues = new List<String>();
+                    result.isSuccess = true;
+                    result.errorMessage = null;
+                    
+                }
+            } catch (Exception e) {
+                result.splitValues = new List<String>();
+                result.isSuccess = false;
+                result.errorMessage = 'Error splitting string: ' + e.getMessage();
+            }            
+            results.add(result);
+        }
+        }
+        else
+        {
+            SplitStringResult result = new SplitStringResult();
+            result.splitValues = new List<String>();
+            result.isSuccess = true;
+            result.errorMessage = null;
+            results.add(result);               
+        }       
+        system.debug('EMAIL Result ' +results);
+        return results;        
     }
     
     // Input wrapper class
@@ -173,16 +91,10 @@ public class SWS_StringSplitUtility {
     // Output wrapper class
     public class SplitStringResult {
         @InvocableVariable(
-            label='Intel User Values' 
-            description='List of Intel email addresses (@intel.com)'
+            label='Split Values' 
+            description='List of split string values'
         )
-        public List<String> splitUserValues;
-        
-        @InvocableVariable(
-            label='Contact Values' 
-            description='List of non-Intel email addresses'
-        )
-        public List<String> splitContactValues;
+        public List<String> splitValues;
         
         @InvocableVariable(
             label='Success' 

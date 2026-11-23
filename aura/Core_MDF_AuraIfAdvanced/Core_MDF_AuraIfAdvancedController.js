@@ -23,13 +23,11 @@
     },
     
     fireParentEvent: function (component, event, helper) {
-        //var changeEvent = $A.get('e.c:Core_MDF_checkboxChangeEvent');
-        var changeEvent = component.getEvent('checkboxChangeEvent');
+        var changeEvent = $A.get('e.c:Core_MDF_checkboxChangeEvent');
         component.set('v.checkboxvalue', event.getSource().get("v.checked"));
         changeEvent.setParams({
             "checkboxName": event.getSource().get("v.name")
         });
-        console.log("inside fireParentEvent", event.getSource().get("v.name"));
         changeEvent.fire();
     }
 })

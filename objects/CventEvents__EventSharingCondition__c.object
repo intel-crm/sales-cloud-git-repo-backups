@@ -240,16 +240,6 @@
                     <default>false</default>
                     <label>not in</label>
                 </value>
-                <value>
-                    <fullName>includes any</fullName>
-                    <default>false</default>
-                    <label>includes any</label>
-                </value>
-                <value>
-                    <fullName>includes all</fullName>
-                    <default>false</default>
-                    <label>includes all</label>
-                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -296,9 +286,9 @@
     <searchLayouts>
         <excludedStandardButtons>New</excludedStandardButtons>
         <excludedStandardButtons>OpenListInQuip</excludedStandardButtons>
-        <excludedStandardButtons>Accept</excludedStandardButtons>
-        <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
         <excludedStandardButtons>MassChangeOwner</excludedStandardButtons>
+        <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
+        <excludedStandardButtons>Accept</excludedStandardButtons>
         <searchResultsAdditionalFields>CventEvents__EventSharingRule__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>CventEvents__Field__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>CventEvents__Operator__c</searchResultsAdditionalFields>

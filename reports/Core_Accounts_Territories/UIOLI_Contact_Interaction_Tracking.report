@@ -28,11 +28,42 @@
         <field>Account.Contacts$Core_Login_Id__c</field>
     </columns>
     <columns>
+        <field>Account.Contacts.ActivityRelations$Status</field>
+    </columns>
+    <columns>
+        <field>Account.Contacts.ActivityRelations*Activity$Core_Task_Type__c</field>
+    </columns>
+    <columns>
+        <field>Account.Contacts.ActivityRelations$Subject</field>
+    </columns>
+    <columns>
+        <field>Account.Contacts.ActivityRelations$Description</field>
+    </columns>
+    <columns>
         <field>Account.Contacts$Core_Points_Benefit_Admin__c</field>
     </columns>
     <columns>
         <field>Account.Contacts$Core_Primary_Contact__c</field>
     </columns>
+    <columns>
+        <field>Account.Contacts.ActivityRelations*Activity$Core_Activity_Type__c</field>
+    </columns>
+    <columns>
+        <field>Account.Contacts.ActivityRelations$LastModifiedBy</field>
+    </columns>
+    <columns>
+        <field>Account.Contacts.ActivityRelations$LastModifiedDate</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Account.Contacts.ActivityRelations$Subject</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>startsWith</operator>
+            <value>WW UIOLI</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
     <format>Tabular</format>
     <name>UIOLI Contact Interaction Tracking</name>
     <params>

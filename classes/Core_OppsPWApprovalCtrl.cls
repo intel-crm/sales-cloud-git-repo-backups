@@ -8,8 +8,7 @@ Description    : This Class is used to validate the errors before submitting the
 * ----------------------------------------------------------------------------                 
 * Pratik Padwal           21 Feb, 2023               Initial Revision
 * Pratik Padwal           18 April, 2023             TWC3123-4111 - Added validation for PW Quantity and salesprice.
-* Areefa Banu		  26 May, 2023		     Removed CoE_Status__c from query
-* Areefa Banu		  02 Jan ,2025		     Added PW Approvel restriction 	
+* Areefa Banu			  26 May, 2023				 Removed CoE_Status__c from query
 */
 
 public without sharing class Core_OppsPWApprovalCtrl { //TWC3123-5759 Added without sharing keyword to fix code scan issue
@@ -23,7 +22,7 @@ public without sharing class Core_OppsPWApprovalCtrl { //TWC3123-5759 Added with
     public static checklistWrapper checklistForApproval(String oppId,String comments,Boolean isPWApproval){
         //Custom setting to check Sales group
         Opportunity__c accountConsition = Opportunity__c.getOrgDefaults();
-        List<String> errMessageList= new List<String>();
+        //List<String> errMessageList= new List<String>();
         Map<String, List<String>> errMsgMap = new Map<String, List<String>>();
         
         checklistWrapper wrpr = new checklistWrapper();
@@ -38,7 +37,6 @@ public without sharing class Core_OppsPWApprovalCtrl { //TWC3123-5759 Added with
              
             /*Opportunity hard Stops starts */
             Opportunity oppObject = [select id, Core_Opportunity_Coverage_Nm__c, Core_Coverage_Type_Nm__c,Core_Intel_Platform__c, Core_Restrict_Opp_Submission__c, Core_Product_Segment__c, Core_Consumption_Market__c, Core_Product_Application__c, Core_Contact_Roles_Count__c, StageName,  Core_At_Risk__c, Core_Solution_Type__c, Core_Decimal_Check__c, Core_Combined_Solution_Detail__c, Core_Manufacturing_Geo__c, Core_Production_End_Date__c, Description, Core_First_Customer_Ship_Date__c, Core_Commissionable__c, Core_Volume__c, Core_Exclude_From_KPIs__c, CloseDate, Core_Status_Update__c, Account.RecordType.Name, Core_Product_At_Risk_Not_Closed_Count__c,Core_Competitive_Architecture__c, Core_Pending_Product_Count__c, Core_Product_Count__c, Core_Primary_Customer_Contact__c, Core_Technical_Owner__c, OwnerId, CreatedById, RecordType.Name, RecordType.DeveloperName, Core_Write_In_Product_Count__c, Core_Opportunity_Type__c, Core_Compliance_Status__c,Core_Design_Registration_Id__c,Core_Approval_Status__c  from Opportunity where id =: oppId limit 1];//CoE_Status__c,
-            //List<OpportunityTeamMember> otmObj1 = [select id, UserId from OpportunityTeamMember where OpportunityId  =: oppId and Core_Production_Win_Member_Role__c='Sales Account Manager' and UserId =: UserInfo.getUserId()];
             for(OpportunityTeamMember otm: [select id, UserId from OpportunityTeamMember where OpportunityId  =: oppId and Core_Production_Win_Member_Role__c='Sales Account Manager' and UserId =: UserInfo.getUserId()]){
                 otmObj=otm; 
             }
@@ -55,8 +53,13 @@ public without sharing class Core_OppsPWApprovalCtrl { //TWC3123-5759 Added with
                 if(isPartnLedDesign && userCheckforPartDesSub && !userCheckSAM){
                     hardStop = true;
                     String err= Core_CRM_Utility.getCRMLabel('PCC_Design_If_not_Owner_not_SAM');                  
-                    if(errMsgMap.containsKey('hardStop')) {   List<String> errList = errMsgMap.get('hardStop'); errList.add(err); errMsgMap.put('hardStop', errList);
-                    } else { errMsgMap.put('hardStop', new List<String> { err });     } 
+                    if(errMsgMap.containsKey('hardStop')) {
+                        List<String> errList = errMsgMap.get('hardStop');
+                        errList.add(err);
+                        errMsgMap.put('hardStop', errList);
+                    } else {
+                        errMsgMap.put('hardStop', new List<String> { err });
+                    } 
                 }
                 else if(isIntelLedDesign && userCheckforSub && !userCheckSAM) {  
                     hardStop = true;
@@ -72,8 +75,13 @@ public without sharing class Core_OppsPWApprovalCtrl { //TWC3123-5759 Added with
                 else if(userCheckforSub && !(isPartnLedDesign || isIntelLedDesign)) { 
                     hardStop = true;
                     String err= System.Label.Core_Oppo_Approval_If_not_Owner;
-                    if(errMsgMap.containsKey('hardStop')) {  List<String> errList = errMsgMap.get('hardStop'); errList.add(err);  errMsgMap.put('hardStop', errList);   } 
-                    else {   errMsgMap.put('hardStop', new List<String> { err }); }
+                    if(errMsgMap.containsKey('hardStop')) {
+                        List<String> errList = errMsgMap.get('hardStop');
+                        errList.add(err);
+                        errMsgMap.put('hardStop', errList);
+                    } else {
+                        errMsgMap.put('hardStop', new List<String> { err });
+                    }
                 }
                 if(oppObject.StageName == 'Lost'|| oppObject.StageName == 'Production Lost' || oppObject.StageName == 'Production Cancelled' || oppObject.StageName == 'Cancelled'){
                    
@@ -113,24 +121,57 @@ public without sharing class Core_OppsPWApprovalCtrl { //TWC3123-5759 Added with
                     softStop = true;
                     String err = Core_CRM_Utility.getCRMLabel('Core_pw_viewer_role_alert');
                     
-                    if (errMsgMap.containsKey('softStop')) { List<String> errList = errMsgMap.get('softStop'); errList.add(err);  errMsgMap.put('softStop', errList);
-                    } else { errMsgMap.put('softStop', new List<String> { err }); }
+                    if (errMsgMap.containsKey('softStop')) {
+                        List<String> errList = errMsgMap.get('softStop');
+                        errList.add(err);
+                        errMsgMap.put('softStop', errList);
+                    } else {
+                        errMsgMap.put('softStop', new List<String> { err });
+                    }
                 }
                 // TWC3123-5182 - End
-                
-                //Areefa start : added below code as part of TWC4767-3387
-                String query = 'Select id , Core_Sales_Groups__c , '+String.escapeSingleQuotes(accountConsition.Core_Field_API_name__c) +' from Account where id = \''+String.escapeSingleQuotes(oppObject.AccountId)+'\' Limit 1';
+       			
+                //Areefa :start
+                System.debug('accountConsition.Core_Field_API_name__c-->'  +accountConsition.Core_Field_API_name__c);
+                String query = 'Select id , Core_Sales_Groups__c , '+String.escapeSingleQuotes(accountConsition.Core_Field_API_name__c) +' from Account where id = \''+String.escapeSingleQuotes(oppObject.AccountId)+'\' Limit 1';                
                 Account accountDetails = Database.query(query);
                     if (accountDetails.get(accountConsition.Core_Field_API_name__c) != null && accountDetails.get('Core_Sales_Groups__c') != accountDetails.get(accountConsition.Core_Field_API_name__c) && Date.today() >= accountConsition.Core_Start_Date__c && Date.today() <= accountConsition.Core_End_Date__c && oppObject.Core_Opportunity_Coverage_Nm__c == 'Intel-Led Opportunity' && oppObject.RecordType.DeveloperName == 'Core_Design_Opportunity' && Boolean.valueOf(Core_CRM_Utility.getCRMLabel('Core_PW_ApprovalSubmissionRestrict'))) {
                         hardStop = true;
-                        String err= Core_CRM_Utility.getCRMLabel('AccountSalesGroupError');
-                        if(errMsgMap.containsKey('hardStop')) { List<String> errList = errMsgMap.get('hardStop'); errList.add(err); errMsgMap.put('hardStop', errList);
-                        } else {errMsgMap.put('hardStop', new List<String> { err });    }
+                    String err= Core_CRM_Utility.getCRMLabel('AccountSalesGroupError');
+                    if(errMsgMap.containsKey('hardStop')) {
+                        List<String> errList = errMsgMap.get('hardStop'); 
+                        errList.add(err);
+                        errMsgMap.put('hardStop', errList);
+                    } else {errMsgMap.put('hardStop', new List<String> { err }); }
+                }
+                //End
+                
+                //Added By Hira for Opportunity Solutions validation before DW Submission(POC)
+                /**********************************Start************************************************************/
+                /*List<Core_Solution_Areas__c> solutionAreas=[select Id,Name from Core_Solution_Areas__c where Opportunity__c=:oppId AND Core_Status__c IN ('Pending','Resubmit')];
+                List<String> SolutionNames=new List<String>();
+                if(solutionAreas.size()>0){
+                    for(Core_Solution_Areas__c solArea:solutionAreas){
+                        SolutionNames.add(solArea.Name);
+                    } 
+                }
+                
+                if(SolutionNames.size()>0){
+                    hardstop=true;
+                    String err='This Opportunity has following Pending Solution Records'+' : '+ String.join(SolutionNames,', ') + '.';
+                    if(errMsgMap.containsKey('hardStop')) 
+                    {
+                        List<String> errList = errMsgMap.get('hardStop');
+                        errList.add(err);
+                        errMsgMap.put('hardStop', errList);
+                    } else 
+                    {
+                        errMsgMap.put('hardStop', new List<String> { err });
                     }
-                //Areefa End
-              
-       
-                /* //Commented by Hira as part of TWC3123-5419 	
+                }*/
+                /**********************************END**************************************************************/
+                 
+                /* //Commented by Hira as part of TWC3123-5419 
                 //TWC3123-4111- Start - Validation for PW Approval to check PW quantity and sales price should not be blank.
                 List<Opportunitylineitem> oppsProduct = [select id,Core_PW_Quantity__c,Core_PW_Sales_Price__c,Product2.name, ListPrice, Core_Status__c from Opportunitylineitem where opportunityid =:oppId AND Core_Status__c='Win Approved'];
                	System.debug('OppsLineItem- '+oppsProduct);
@@ -186,10 +227,7 @@ public without sharing class Core_OppsPWApprovalCtrl { //TWC3123-5759 Added with
                             
                     
                    /**********************************END**************************************************************/
-                   
-                
-                
-                
+               
                 
                 // Start- Added for TWC3123-3676 - Condition based file name check for POP
                 List<Attachment> attachsize = new List<Attachment>();
@@ -212,8 +250,8 @@ public without sharing class Core_OppsPWApprovalCtrl { //TWC3123-5759 Added with
                     contentdocSize=[SELECT ContentDocumentId,ContentDocument.Title FROM ContentDocumentLink WHERE LinkedEntityId=:oppObject.Id  AND ContentDocument.Title Like:POPFileNames limit 1];
                     taskList = [SELECT id, Subject, Core_Task_Type__c FROM Task WHERE Subject LIKE :POPFileNames AND WhatId = :oppObject.Id limit 1];
                 }
-//Commented for low touch oppty modify this to exclude POP Validation
-//Vijay 3/9/24 :  reverting back to soft error for Commissionable flag (TWC4767-2794)
+                //Commented for low touch oppty modify this to exclude POP Validation
+                //Vijay 3/9/24 :  reverting back to soft error for Commissionable flag (TWC4767-2794)
                 if( oppObject.Core_Commissionable__c == 'Yes' && attachsize.isEmpty() && Notesize.isEmpty() && contentdocSize.isEmpty() && taskList.isEmpty()){
                         softStop = true;
                         String err;
@@ -243,13 +281,14 @@ public without sharing class Core_OppsPWApprovalCtrl { //TWC3123-5759 Added with
                         errMsgMap.put('softStop', new List<String> { err });
                     }
                 }
+             
+                
+                
                   //TWC3123-4020 Production Win Team Member Role Change 
                  /*Fetching Opportunity Team Production Win Member Role */
-                 //List<AggregateResult> oct = [select count(id) from OpportunityTeamMember where OpportunityId =:oppId and Production_Win_Member_Role__c=null];
                  integer  ProdWinRoleNullCount= database.countQuery('select count() from OpportunityTeamMember where OpportunityId =:oppId and Core_Production_Win_Member_Role__c=null');
                  
                  boolean ProductionWinMemberRole = false;
-                // integer ProdWinRoleNullCount = (Integer) oct[0].get('expr0');
                  if(ProdWinRoleNullCount>0){                    
                     ProductionWinMemberRole=true;                    
                      
@@ -277,7 +316,7 @@ public without sharing class Core_OppsPWApprovalCtrl { //TWC3123-5759 Added with
         }
         
         catch(exception e){
-            String errorMsg= e.getMessage();            
+            String errorMsg= e.getMessage();
             throw new AuraHandledException(errorMsg);            
         }
         
@@ -297,16 +336,8 @@ public without sharing class Core_OppsPWApprovalCtrl { //TWC3123-5759 Added with
             Approval.ProcessSubmitRequest approvalRequest = new Approval.ProcessSubmitRequest();                
             approvalRequest.setObjectId(OppId);
             approvalRequest.setComments(comments);
-            //system.debug('approvalRequest'+approvalRequest);
-            //system.debug('comments'+comments);
             if(!Test.isRunningTest()){
                 Approval.ProcessResult approvalResult = Approval.process(approvalRequest);
-                if(approvalResult .isSuccess()){
-                    //system.debug('success-'+approvalResult .isSuccess());
-                }
-                else{
-                    //system.debug('failed-'+approvalResult .isSuccess());
-                }
             }
         }
         catch (Exception e) {

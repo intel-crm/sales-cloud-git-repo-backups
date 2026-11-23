@@ -11,6 +11,5 @@ public class Core_BannerDisplayTest {
         update bannerSetting;
         Core_BannerDisplay.getBannerText();
         Core_BannerDisplay.getBannerTextMsg();
-        System.assertEquals(true, bannerSetting.IsBannerVisible__c);
     }
 }

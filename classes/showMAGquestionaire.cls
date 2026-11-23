@@ -18,10 +18,7 @@ public with sharing class showMAGquestionaire {
   }
 
 public Pagereference disclaimerPage(){
-//Commented becaue Removing the vf page core_ips_customer_case_creation 
-// return new Pagereference('/apex/core_ips_customer_case_creation');
-    return null;
-
+return new Pagereference('/apex/core_ips_customer_case_creation');
 }
 
 }

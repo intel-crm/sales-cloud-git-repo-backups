@@ -2,7 +2,7 @@
  * @description       : 
  * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
  * @group             : 
- * @last modified on  : 03-10-2026
+ * @last modified on  : 09-26-2024
  * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 @isTest
@@ -10,12 +10,12 @@ public class Pricing_UCD_IQR_FormRequestTest {
     //Setting up Test Data
     @testSetup
     public static void setUpData() {
-        List < User > adminUserList = Pricing_Test_Utility.createAdminUserWithParam('ucdIQRFormReqAdmin');
+        List < User > adminUserList = Pricing_Test_Utility.createAdminUser();
         
         Pricing_Test_Utility.createPriceBook();
         System.runAs(adminUserList[0]) {
             Account acc = Pricing_Test_Utility.createAccount();
-            Contact con = Pricing_Test_Utility.createPrimaryContactWithParam(acc.Id,'UCD_IQR_Bulk_Auto_Rejection_Batch_Test');
+            Contact con = Pricing_Test_Utility.createPrimaryContact(acc.Id);
             
             List < User > accExeUserList = Pricing_Test_Utility.createAEUser();
             List < User > salesRepUserList = Pricing_Test_Utility.createSalesRepUser();
@@ -251,7 +251,7 @@ insert accBusinessType;
     
     static testmethod void testgenereatePublisher() {
         Test.startTest();
-        List < SBQQ__Quote__c > lstquote = new List < SBQQ__Quote__c > ([select id from SBQQ__Quote__c Limit 1]);
+        
         List < Account > lstacc = new List < Account > ([select id, Name from Account Limit 1]);
         
         UCD_ACM_BusinessOrganizationModel.Address ucdAddress = New UCD_ACM_BusinessOrganizationModel.Address();
@@ -317,7 +317,7 @@ insert accBusinessType;
         bussRes.Data = dataList;
         
         Pricing_UCD_IQR_FormRequest.genereatePublisherRequest(bussRes);
-        system.assertEquals(true ,lstquote.size() > 0);
+        
         Test.stopTest();
     }
     
@@ -331,7 +331,7 @@ insert accBusinessType;
         
         List < SBQQ__Quote__c > lstquote = new List < SBQQ__Quote__c > ([select id from SBQQ__Quote__c Limit 1]);
         
-        System.runAs(salesRep1[0]) {
+        //System.runAs(salesRep1[0]) {
             
             lstquote[0].SBQQ__Status__c = Label.Pricing_Tender_Quote_Status_Submitted;
             update lstquote[0];
@@ -364,7 +364,7 @@ insert accBusinessType;
             if (!performanceList.isEmpty()) {
                 insert performanceList;
             }
-        }
+       // }
         
         System.runAs(rpmUser[0]) {
             List<Id> lstIds = new List<Id>();
@@ -400,7 +400,7 @@ insert accBusinessType;
         List < SBQQ__Quote__c > lstquote = new List < SBQQ__Quote__c > ([select id from SBQQ__Quote__c Limit 1]);
         Pricing_Test_Utility.shareQuoteWithUser(lstquote[0].Id, aeUser2[0].Id);
         
-        System.runAs(salesRep1[0]) {
+        //System.runAs(salesRep1[0]) {
             
             lstquote[0].SBQQ__Status__c = Label.Pricing_Tender_Quote_Status_Submitted;
             update lstquote[0];
@@ -433,7 +433,7 @@ insert accBusinessType;
             if (!performanceList.isEmpty()) {
                 insert performanceList;
             }
-        }
+        //}
         
         System.runAs(adminUser[0]) {
             List<Id> userIDs = new List<Id>();
@@ -464,7 +464,7 @@ insert accBusinessType;
         List < SBQQ__Quote__c > lstquote = new List < SBQQ__Quote__c > ([select id from SBQQ__Quote__c Limit 1]);
         
         
-        System.runAs(salesRep1[0]) {
+        //System.runAs(salesRep1[0]) {
             
             lstquote[0].SBQQ__Status__c = Label.Pricing_Tender_Quote_Status_Submitted;
             update lstquote[0];
@@ -497,7 +497,7 @@ insert accBusinessType;
             if (!performanceList.isEmpty()) {
                 insert performanceList;
             }
-        }
+        //}
         
         System.runAs(adminUser[0]) {
             Pricing_Test_Utility.shareQuoteWithUser(lstquote[0].Id, salesRep2[0].Id);
@@ -528,7 +528,7 @@ insert accBusinessType;
         
         List < SBQQ__Quote__c > lstquote = new List < SBQQ__Quote__c > ([select id from SBQQ__Quote__c Limit 1]);
         
-        System.runAs(salesRep1[0]) {
+        //System.runAs(salesRep1[0]) {
             
             lstquote[0].SBQQ__Status__c = Label.Pricing_Tender_Quote_Status_Submitted;
             update lstquote[0];
@@ -561,7 +561,7 @@ insert accBusinessType;
             if (!performanceList.isEmpty()) {
                 insert performanceList;
             }
-        }
+        //}
         
         System.runAs(adminUser[0]) {
             List<Id> userIDs = new List<Id>();
@@ -584,10 +584,11 @@ insert accBusinessType;
     
     static testmethod void testResubmitUCDRequest() {
         Test.startTest();
-        List < User > adminUser = [select id from user where email = 'ucdIQRFormReqAdmin@intel.com'];
+        List < User > adminUser = [select id from user where email = 'firstName@intel.com'];
         List < SBQQ__Quote__c > lstquote = new List < SBQQ__Quote__c > ([select id from SBQQ__Quote__c Limit 1]);
         List<Id> quoteIds = new List<Id>();
         quoteIds.add(lstquote[0].Id);
+        test.stopTest();
         system.runAs(adminUser[0]){
             Pricing_Integration_Staging__c pis = new Pricing_Integration_Staging__c();
         	pis.Pricing_Message_Type__c = Label.Pricing_UCD_PIS_Message_Type;
@@ -596,6 +597,46 @@ insert accBusinessType;
             Pricing_UCD_IQR_FormRequest.resubmitUCDRequest(quoteIds);
             system.assertEquals('UnifiedEndCustomer',pis.Pricing_Message_Type__c);
         }
+    }
+    
+    static testmethod void testgetL1andL2AccDetails() {
+        Pricing_UnifiedEndCustomerAccountMapping__c l1Record = new Pricing_UnifiedEndCustomerAccountMapping__c(Name ='Test unified End Cutsomer',Pricing_Unified_EndCustomer_Id__c = '1000678928');
+   		insert l1Record;
+        Pricing_UnifiedEndCustomerCountryMapping__c l2record = new Pricing_UnifiedEndCustomerCountryMapping__c(Name ='Test unified Country Cutomer',Pricing_Unified_Country_EndCustomer_Id__c = '1000678929');
+        //l2record.Pricing_Unified_EndCustomer_Id__c = l1Record.Pricing_Unified_EndCustomer_Id__c;
+        insert l2Record;
+  
+        Account acc1 = new Account();
+        acc1.RecordTypeId = Pricing_Tender_Utility.getRecordTypeId('Account', Label.Pricing_Tender_Account_RecordType_IntelAccount);
+        acc1.Name = 'Test L2 Account';
+        acc1.Industry = 'Banking';
+        acc1.BillingCity = 'Pune';
+        acc1.BillingCountry = 'USA';
+        acc1.BillingStreet = 'G-210';
+        acc1.Core_Customer_Aggregation_Type__c = 'UNFD_CTRY_CUST';
+        acc1.Core_Business_Party_Id__c = '1000678929';
+        insert acc1;
+          Account acc2 = new Account();
+        acc2.RecordTypeId = Pricing_Tender_Utility.getRecordTypeId('Account',Label.Pricing_Tender_Account_RecordType_IntelAccount);
+        acc2.Name = 'Test L1 Account';
+        acc2.Industry = 'Banking';
+        acc2.BillingCity = 'Pune';
+        acc2.BillingCountry = 'USA';
+        acc2.BillingStreet = 'G-210';
+        acc2.Core_Business_Party_Id__c = '1000678928';
+        insert acc2;
+        Test.startTest();
+       List<Pricing_UCD_IQR_FormRequest.unifiedL1AndL2Wrapper> unifiedL1AndL2List = Pricing_UCD_IQR_FormRequest.getL1andL2AccDetails(l2Record.id);
+       List<Pricing_UCD_IQR_FormRequest.unifiedL1AndL2Wrapper> unifiedList = Pricing_UCD_IQR_FormRequest.getL1andL2AccDetails(l1Record.id);
+   	   system.assertEquals(1,unifiedList.size());
         test.stopTest();
+    }
+    
+      static testMethod void testgetDataTableColumns(){
+        Test.startTest();
+        List<Pricing_UCD_IQR_FormRequest.DataTableColumns> datacolumns = Pricing_UCD_IQR_FormRequest.getDataTableColumns();
+          Boolean isTrue = datacolumns.size()>0 ? true : false;
+          system.assertEquals(true,isTrue);
+        Test.stopTest();
     }
 }

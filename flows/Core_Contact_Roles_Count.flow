@@ -6,7 +6,7 @@
         <name>Count_Record</name>
         <label>Count Record</label>
         <locationX>176</locationX>
-        <locationY>455</locationY>
+        <locationY>539</locationY>
         <assignmentItems>
             <assignToReference>CountContactRoles</assignToReference>
             <operator>AssignCount</operator>
@@ -44,7 +44,7 @@
         <name>getContactRoles</name>
         <label>getContactRoles</label>
         <locationX>176</locationX>
-        <locationY>335</locationY>
+        <locationY>431</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Count_Record</targetReference>
@@ -62,10 +62,42 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordUpdates>
+        <name>Bypass_Validation_False</name>
+        <label>Bypass Validation False</label>
+        <locationX>176</locationX>
+        <locationY>755</locationY>
+        <inputAssignments>
+            <field>Bypass__c</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <object>Core_Validation_Bypass_for_Flow__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Bypass_Validation_True</name>
+        <label>Bypass Validation True</label>
+        <locationX>176</locationX>
+        <locationY>323</locationY>
+        <connector>
+            <targetReference>getContactRoles</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Bypass__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <object>Core_Validation_Bypass_for_Flow__c</object>
+    </recordUpdates>
+    <recordUpdates>
         <name>Update_Count_Field</name>
         <label>Update Count Field</label>
         <locationX>176</locationX>
-        <locationY>575</locationY>
+        <locationY>647</locationY>
+        <connector>
+            <targetReference>Bypass_Validation_False</targetReference>
+        </connector>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
@@ -86,7 +118,7 @@
         <locationX>50</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>getContactRoles</targetReference>
+            <targetReference>Bypass_Validation_True</targetReference>
         </connector>
         <object>OpportunityContactRole</object>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>

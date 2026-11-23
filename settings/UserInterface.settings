@@ -11,7 +11,7 @@
     <enableDeleteFieldHistory>false</enableDeleteFieldHistory>
     <enableExternalObjectAsyncRelatedLists>false</enableExternalObjectAsyncRelatedLists>
     <enableHoverDetails>true</enableHoverDetails>
-    <enableInlineEdit>true</enableInlineEdit>
+    <enableInlineEdit>false</enableInlineEdit>
     <enableLightningVerticalNav>false</enableLightningVerticalNav>
     <enableNewPageLayoutEditor>true</enableNewPageLayoutEditor>
     <enablePersonalCanvas>false</enablePersonalCanvas>

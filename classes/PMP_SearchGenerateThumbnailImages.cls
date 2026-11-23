@@ -1,114 +1,100 @@
-/*************************************************************************************************************************************************************************
-* Class Name  : PMP_SearchGenerateThumbnailImages 
-* Version     : 1.0 
-* Description : One time batch class for resizing and generating thumbnail image records for the images uploaded in the company resources.
-* Modification Log : 
-*
-* Developer         Modification Log        Date                    Description
-* ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-* Sooriya              M-01               12/23/2020         Modified the class with content asset changes
-
-Execute the below code in anonymous window once the image records are loaded in the company resources object.
-********************************************************************************************************
-PMP_SearchGenerateThumbnailImages companyThumbnailImageBatch = new PMP_SearchGenerateThumbnailImages(); 
-Id batchJobId = Database.executeBatch(companyThumbnailImageBatch,1); //batch size should be one
-**************************************************************************************************************************************************************************/
-
 global without sharing class PMP_SearchGenerateThumbnailImages implements Database.Batchable<sObject>, Database.AllowsCallouts {
     //start method
     global Database.QueryLocator start(Database.BatchableContext bc) {
         String query = 'SELECT Id, name, CreatedDate, CreatedById from PMP_Company__c '+
-                       ' Where CreatedById = \'' +System.Label.PMP_CreatedByIdFilter + '\''+
+                       ' Where CreatedById = \'' + System.Label.PMP_CreatedByIdFilter + '\''+
                        ' AND CreatedDate >= '+System.Label.PMP_CreatedDateFilter + 
                        ' AND CreatedDate <= '+System.Label.PMP_CreatedByDateEndFilter;
-        
-        // system.debug('query = '+query);
+        system.debug('query = '+query);
         return Database.getQueryLocator(query);
     }
     
-    global void execute(Database.BatchableContext bc, List<PMP_Company__c> partners) {
-        for(PMP_Company__c partner : partners){  
+    global void execute(Database.BatchableContext bc, List<PMP_Company__c> partners){
+        for(PMP_Company__c partner : partners){
             generateThumbnails(partner.Id);
         }        
     }
 
-    global void finish(Database.BatchableContext bc) {
-        //Id jobId = bc.getJobId();
-        // System.debug('JobId----->'+jobId);
+    global void finish(Database.BatchableContext bc){
+        Id jobId = bc.getJobId();
+        System.debug('JobId----->'+jobId);
     } 
 
-    public void generateThumbnails(Id partnerId) {
-    
-         try{            
-            List<PMP_Company_Resource__c> partnerResources = new List<PMP_Company_Resource__c>(); 
-
-            String contentAssetName = '';
-            String contentAssetURL = '';
-            String questionMark = '?'; 
-            blob thumbNailImage;
-            String partnerName='';
-            Id companyResourceId=null;
-            //query company resources for the company Image
-            partnerResources = [SELECT Id,
-                                   PMP_Company_Image__c,
-                                   PMP_Company_Id__c,PMP_Company_Resource_Sequence_Nbr__c ,PMP_Company_Id__r.Name
-                                   FROM PMP_Company_Resource__c WHERE
-                                   PMP_Company_Id__c = :partnerId
-                                   AND PMP_Company_Resource_Type_Nm__c = :PMP_StaticConstants_Offering.IMAGE];
-                        
-            if(string.isNotBlank(partnerResources[0].PMP_Company_Image__c)) {
-                 contentAssetName = string.valueOf(partnerResources[0].Id) +'_'+ string.valueOf(partnerResources[0].PMP_Company_Id__c);
-                partnerName=partnerResources[0].PMP_Company_Id__r.Name;
-                companyResourceId=partnerResources[0].Id;
+    public void generateThumbnails(Id sObjectId){
+        
+        try{
+            List<Id> contentDocumentIds = new List<Id>();	//variable to hold content document ids of current offering
+            List<ContentDistribution> ContentDistributionData = new List<ContentDistribution>();
+            Map<Id,ContentDistribution> ContentDistributionDataById = new Map<Id,ContentDistribution>();
+            Map<Id,Blob> thumbnailImageByContentId = new Map<Id,Blob>();
+            List<PMP_Company_Resource__c> existingThumbnailPartnerResources = new List<PMP_Company_Resource__c>();
+            HTTPResponse response;
+            string object_type = sObjectId.getsobjecttype().getDescribe().getName();
+            
+			for(PMP_Company_Resource__c resource : [SELECT Id,PMP_Company_Image__c FROM PMP_Company_Resource__c WHERE PMP_Company_Id__c = :sObjectId AND PMP_Company_Resource_Type_Nm__c = :PMP_StaticConstants_Partner.THUMBNAIL_IMAGE]) {
+                existingThumbnailPartnerResources.add(resource);
             }
             
-            HTTPResponse response;
-            
-             //fetch base community URL
-            String baseCommunityUrl = PMP_Utility.getBaseCommunityUrl();
-            
-            //remove '/s' from baseCommunityUrl community URL
-            if(baseCommunityUrl.endsWith('/s')){
-                baseCommunityUrl =baseCommunityUrl.removeEnd('/s');
+            system.debug('existingThumbnailPartnerResources:->'+existingThumbnailPartnerResources);
+			
+            //query partner resources for the current partner and populate content document id's list
+            for(PMP_Company_Resource__c resource : [SELECT Id,PMP_Company_Image__c FROM PMP_Company_Resource__c WHERE PMP_Company_Id__c = :sObjectId AND PMP_Company_Resource_Type_Nm__c = :PMP_StaticConstants_Partner.IMAGE]) {
+                if(string.isNotBlank(resource.PMP_Company_Image__c)) {
+                    contentDocumentIds.add(resource.PMP_Company_Image__c);
+                }
             }            
-            //fetch static text called "/file-asset" from metaData
-            String staticFileAsset = PMP_Utility.getValue('Community_File_Asset');       
-                         
-            if(string.isNotEmpty(contentAssetName)) {
-                contentAssetURL =  baseCommunityUrl+staticFileAsset+contentAssetName+questionMark;
-				//IPA2.0:US-4497-1631_OfferingEOL
-                //response = PMP_ImageResizeService.makeCalloutToPIM(contentAssetURL);// make a call out to PIM
-                response = PMP_CompanyImageResizeService.makeCalloutToPIM(contentAssetURL);// make a call out to PIM
 
-            }              
-                 
-             //if response status is 200 means it is a success call
-             if(response != null && response.getStatusCode() == 200){              
-                //get the response body as blob data
-                thumbNailImage = response.getBodyAsBlob();
-                 //Create a content version instance
-                 ContentVersion newVersion = PMP_Image_Resizing.CreateContentVersionInstance(contentAssetName,thumbNailImage);
-                 
-                 //insert offering resource record with resource type as thumbnail
-                 PMP_Image_Resizing.insertThumbnailCompanyResource(newVersion,partnerResources[0].PMP_Company_Id__c,Integer.valueOf(partnerResources[0].PMP_Company_Resource_Sequence_Nbr__c));                        
-             }
-             else if(response != null && response.getStatusCode() == 400) { 
-                 //create log entry record to track the failed callouts 
-                 PMP_Utility.creatFailedCalloutLogEntryRecord(companyResourceId,'PMP_CompanyImageResizeService','PMP','PMP_Company_Resource__c','Failed',
-                                                              response,partnerId,partnerName);
-             }
-             else if(response != null){
-                 //create log entry record to retry from batch 
-                 PMP_Utility.creatFailedCalloutLogEntryRecord(companyResourceId,'PMP_CompanyImageResizeService','PMP','PMP_Company_Resource__c','Investigating',
-                                                              response,partnerId,partnerName);
-             }
-
-           
+            system.debug('contentDocumentIds => '+contentDocumentIds);	
+            
+            //contentDocumentIds list is not empty then query content distribution data using an utility method
+            if(!contentDocumentIds.isEmpty()) {
+                ContentDistributionData =  PMP_Utility.getContentDownloadUrlData(contentDocumentIds);
+            }
+            system.debug('ContentDistributionData => '+ContentDistributionData);
+            
+            //iterate over content distribution data and make a call out to PIM to get auto resized url
+            for(ContentDistribution content : ContentDistributionData) {
+                //populating a map of content distribution by its ID
+                ContentDistributionDataById.put(content.Id,content);
+                
+                response = PMP_Image_Resizing.makeCalloutToPIM(content.ContentDownloadUrl,1);// make a call out to PIM
+                
+                if(response != null && response.getStatusCode() == 200){
+                    string responseValue = '';
+                    responseValue = response.getBody();
+                    //system.debug('Response Body for File: ' + responseValue);
+                    
+                    //get the response body as blob data
+                    blob thumbNailImage = response.getBodyAsBlob();
+                    thumbnailImageByContentId.put(content.Id,thumbNailImage);
+                }
+            }
+            system.debug('###ContentDistributionDataById:->'+ContentDistributionDataById);
+            system.debug('###thumbnailImageByContentId:->'+thumbnailImageByContentId);
+            
+            List<ContentVersion> thumbnailContentVersions = new List<ContentVersion>();
+            if(!thumbnailImageByContentId.keySet().isEmpty()) {
+                for(Id contentId : thumbnailImageByContentId.keySet()) {
+                    system.debug('###contentId:->'+contentId);
+                    if(ContentDistributionDataById != null && ContentDistributionDataById.containsKey(contentId)) {
+                        ContentDistribution content = ContentDistributionDataById.get(contentId);
+                        //Create a content version instance
+                        //ContentVersion newVersion = CreateContentVersionInstance(content,thumbnailImageByContentId.get(contentId));
+                        ContentVersion newVersion = PMP_Image_Resizing.CreateContentVersionInstance(content,thumbnailImageByContentId.get(contentId));
+                        system.debug('newVersion = '+newVersion);
+                        thumbnailContentVersions.add(newVersion);
+                        //insert company resource record with resource type as thumbnail
+                        PMP_Image_Resizing.insertThumbnailCompanyResource(newVersion, sObjectId, object_type);
+                    }
+                }
+            }
+            //Delete existing offering records related to thumbnail , as we are inserting again those records above
+            if(!existingThumbnailPartnerResources.isEmpty()){
+            	delete existingThumbnailPartnerResources;
+            }            
         }catch(Exception ex){
-            //system.debug('Exception while making PIM Resize callout:->'+ex);
-            PMP_Utility.logError(ex,'PMP_Company_Thumbnail_Batch');
+            system.debug('Exception while making PIM callout:->'+ex);
+            throw ex;
         }
-        
-    
     }    
 }

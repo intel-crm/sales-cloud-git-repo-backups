@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PathAssistant xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <entityName>CPT_Quota_Setup__c</entityName>
+    <fieldName>CPT_Stage__c</fieldName>
+    <masterLabel>Quota Setup</masterLabel>
+    <pathAssistantSteps>
+        <fieldNames>CPT_Effective_Month__c</fieldNames>
+        <fieldNames>CPT_Overlay__c</fieldNames>
+        <fieldNames>CPT_Notes__c</fieldNames>
+        <info>&lt;ul&gt;&lt;li&gt;Confirm sales plan assignment; Request a plan change through “Ask Sales Incentives”&lt;/li&gt;&lt;li&gt;Assign % for each applicable pay element and sales OKR&lt;/li&gt;&lt;li&gt;Assign applicable quota and/or sales OKR target number&lt;/li&gt;&lt;li&gt;Select &amp;quot;Mark Stage as Complete” when % weighting and quota/OKR target is final&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</info>
+        <picklistValueName>In-Progress</picklistValueName>
+    </pathAssistantSteps>
+    <recordTypeName>Quota_Setup_Default</recordTypeName>
+</PathAssistant>

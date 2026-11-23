@@ -8,7 +8,7 @@
             <axisBinding>y</axisBinding>
             <column>RowCount</column>
         </chartSummaries>
-        <chartType>Line</chartType>
+        <chartType>LineCumulative</chartType>
         <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>true</expandOthers>
         <groupingColumn>CREATED_DATE</groupingColumn>
@@ -57,7 +57,7 @@
         <field>CREATED_DATE</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Usage - Leads - prev two years</name>
+    <name>Usage - Leads since 2015</name>
     <params>
         <name>co</name>
         <value>1</value>
@@ -69,6 +69,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CREATED_DATE</dateColumn>
-        <interval>INTERVAL_PREVCUR2FY</interval>
+        <endDate>2020-06-30</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2015-01-01</startDate>
     </timeFrameFilter>
 </Report>

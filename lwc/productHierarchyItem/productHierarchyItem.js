@@ -4,7 +4,16 @@ export default class ProductHierarchyItem extends LightningElement {
     @track isExpanded;
     @api nameVisible;
     @api levelVisible;
-    @api item;
+    @api checked;
+    @track _item;
+
+    @api get item() {
+        return this._item;
+    }
+
+    set item(value) {
+        this._item = JSON.parse(JSON.stringify(value));
+    }
 
     get hasChildItems() {
         return this.item.items && this.item.items.length > 0;
@@ -52,6 +61,27 @@ get toggleIconClass(){
     get isRoot(){
         if(this.item.level==0){
             return true;
+        }
+    }
+    get foundornot(){
+        if(this.checked){
+            if(this.item.levelfound || this.item.downlevelfound){
+                return true;
+            }
+            else if(this.item.found){
+                this.setdownlevel(this.item);
+                return true;
+            }
+            return false;
+        }
+        return true;
+    }
+    setdownlevel(val){
+        if(val.items && val.items.length!=0) {
+            for (let itemVal of val.items) {
+                itemVal.downlevelfound=true;
+                this.setdownlevel(itemVal)
+            }
         }
     }
 }

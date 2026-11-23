@@ -136,7 +136,7 @@ public class Pricing_QuoteLineBusinessLogic_Test {
         System.assert(count > 0, true);
         
         Pricing_Test_Utility.shareQuoteWithUser(quoteList[0].Id, regionalManager[0].Id);
-        Product2 prod = new Product2(Name='Intel® Xeon® 6220',
+        Product2 prod = new Product2(Name='TestProduct',
                                      Core_Product_Org__c = 'Sales',
                                      Core_Product_Type__c = 'Processors',
                                      Core_Sales_Visible_Flag__c = true,

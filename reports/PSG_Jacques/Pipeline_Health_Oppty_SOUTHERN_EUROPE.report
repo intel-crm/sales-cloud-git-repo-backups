@@ -49,7 +49,7 @@
         <field>CREATED_DATE</field>
     </columns>
     <filter>
-        <booleanFilter>(1 AND 2 AND 3 AND 4 AND (5 AND 6) AND 7) AND 8</booleanFilter>
+        <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND ((6 AND 8) OR 7) AND 9</booleanFilter>
         <criteriaItems>
             <column>STAGE_NAME</column>
             <columnToColumn>false</columnToColumn>
@@ -76,14 +76,28 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>On Hold – Review in Progress</value>
+            <value>On Hold – Review in Progress,On Hold – Government Authorization Needed</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Core_Export_Compliance_Block__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>1</value>
         </criteriaItems>
         <criteriaItems>
             <column>FULL_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Bettina Smithson,Daggu Bhargavi,Charan Kumar,Ivan Alvarez</value>
+            <value>Bettina Smithson</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FULL_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Ivan Alvarez</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Technical_Owner__c</column>
@@ -98,13 +112,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>GMP France Sales Group,GMP EMEA Sales Territory</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>CLOSE_DATE</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>equals</operator>
-            <value>THIS_YEAR</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

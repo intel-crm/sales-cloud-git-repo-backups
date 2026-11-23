@@ -1,50 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
     <valueTranslation>
-        <masterLabel>Audio 2025-&gt;Other (Audio)</masterLabel>
-        <translation>Audio 2025-&gt;Autre (audio)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Audio 2025-&gt;Podcast</masterLabel>
-        <translation><!-- Audio 2025-&gt;Podcast --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Audio 2025-&gt;Radio</masterLabel>
-        <translation><!-- Audio 2025-&gt;Radio --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Audio-&gt;Other (Audio)</masterLabel>
-        <translation>Son-&gt;Autre (audio)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Audio-&gt;Podcast</masterLabel>
-        <translation>Son-&gt;Podcast</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Audio-&gt;Radio</masterLabel>
-        <translation>Son-&gt;Radio</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Broadcast (Pre-2025)-&gt;Other (Broadcast)</masterLabel>
-        <translation>Publicité radiophonique et télévisée (Avant 2025)-&gt;Autre (diffusion)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Broadcast (Pre-2025)-&gt;Podcast</masterLabel>
-        <translation>Publicité radiophonique et télévisée (Avant 2025)-&gt;Podcast</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Broadcast (Pre-2025)-&gt;Radio</masterLabel>
-        <translation>Publicité radiophonique et télévisée (Avant 2025)-&gt;Radio</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Broadcast (Pre-2025)-&gt;Streaming</masterLabel>
-        <translation>Publicité radiophonique et télévisée (Avant 2025)-&gt;Streaming</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Broadcast (Pre-2025)-&gt;Television</masterLabel>
-        <translation>Publicité radiophonique et télévisée (Avant 2025)-&gt;Télévision</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Broadcast-&gt;Other (Broadcast)</masterLabel>
         <translation><!-- Broadcast-&gt;Other (Broadcast) --></translation>
     </valueTranslation>
@@ -65,136 +21,12 @@
         <translation>Publicité Radio et TV-&gt;Télévision</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Buyer Incentive 2025-&gt;Offer - Bundle</masterLabel>
-        <translation>Incitatif pour les acheteurs 2025-&gt;Offre - Groupée</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Buyer Incentive 2025-&gt;Offer - Contest</masterLabel>
-        <translation>Incitatif pour les acheteurs 2025-&gt;Offre - Concours</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Buyer Incentive 2025-&gt;Offer - Other</masterLabel>
-        <translation>Incitatif pour les acheteurs 2025-&gt;Offre - Autre</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Buyer Incentive 2025-&gt;Offer - Rewards</masterLabel>
-        <translation>Incitatif pour les acheteurs 2025-&gt;Offre - Récompenses</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Buyer Incentive 2025-&gt;Offer - Sweepstakes</masterLabel>
-        <translation>Incitatif pour les acheteurs 2025-&gt;Offre - Tirage au sort</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Buyer Incentive 2025-&gt;Offer - Target</masterLabel>
-        <translation>Incitatif pour les acheteurs 2025-&gt;Offre - Target</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Buyer Incentive-&gt;Offer - Bundle</masterLabel>
-        <translation>Incitation à l&apos;achat-&gt;Offre - Groupée</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Buyer Incentive-&gt;Offer - Contest</masterLabel>
-        <translation>Incitation à l&apos;achat-&gt;Offre - Concours</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Buyer Incentive-&gt;Offer - Other</masterLabel>
-        <translation>Incitation à l&apos;achat-&gt;Offre - Autre</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Buyer Incentive-&gt;Offer - Rewards</masterLabel>
-        <translation>Incitation à l&apos;achat-&gt;Offre - Récompenses</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Buyer Incentive-&gt;Offer - Sweepstakes</masterLabel>
-        <translation>Incitation à l&apos;achat-&gt;Offre-Tirage au sort</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Buyer Incentive-&gt;Offer - Target</masterLabel>
-        <translation>Incitation à l&apos;achat-&gt;Offre - Target</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Digital 2025-&gt;Display/Video Ad</masterLabel>
-        <translation>Numérique 2025-&gt;Annonce display/vidéo</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Digital 2025-&gt;Email</masterLabel>
-        <translation>Numérique 2025-&gt;E-mail</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Digital 2025-&gt;Lead Generation</masterLabel>
-        <translation><!-- Digital 2025-&gt;Lead Generation --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Digital 2025-&gt;Other (Digital)</masterLabel>
-        <translation>Numérique 2025-&gt;Autre (numérique)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Digital 2025-&gt;Search (SEM) Ad</masterLabel>
-        <translation>Numérique 2025-&gt;Annonce de recherche (SEM)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Digital 2025-&gt;Social Ad</masterLabel>
-        <translation>Numérique 2025-&gt;Annonce sociale</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Digital 2025-&gt;Social Post</masterLabel>
-        <translation>Numérique 2025-&gt;Publication de réseau social</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Digital 2025-&gt;Web Content</masterLabel>
-        <translation>Numérique 2025-&gt;Contenu Web</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Digital Media (Pre-2025)-&gt;Channel Partner Website Online Ad</masterLabel>
-        <translation>Audiovisuel numérique (Avant 2025)-&gt;Publicité en ligne sur le site Web d&apos;un partenaire-revendeur</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Digital Media (Pre-2025)-&gt;Content Creation</masterLabel>
-        <translation>Audiovisuel numérique (Avant 2025)-&gt;Création de contenu</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Digital Media (Pre-2025)-&gt;EcosystemPartner.com</masterLabel>
-        <translation>Audiovisuel numérique (Avant 2025)-&gt;EcosystemPartner.com</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Digital Media (Pre-2025)-&gt;Email</masterLabel>
-        <translation>Audiovisuel numérique (Avant 2025)-&gt;E-mail</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Digital Media (Pre-2025)-&gt;Member Website Online Display</masterLabel>
-        <translation>Audiovisuel numérique (Avant 2025)-&gt;Affichage en ligne sur le site Web du membre</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Digital Media (Pre-2025)-&gt;Member.com</masterLabel>
-        <translation>Audiovisuel numérique (Avant 2025)-&gt;Member.com</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Digital Media (Pre-2025)-&gt;NonPartner.com</masterLabel>
-        <translation>Audiovisuel numérique (Avant 2025)-&gt;NonPartner.com</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Digital Media (Pre-2025)-&gt;Online Display</masterLabel>
-        <translation>Audiovisuel numérique (Avant 2025)-&gt;Affichage en ligne</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Digital Media (Pre-2025)-&gt;Online Video Spot</masterLabel>
-        <translation>Audiovisuel numérique (Avant 2025)-&gt;Spot vidéo en ligne</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Digital Media (Pre-2025)-&gt;Text Ad</masterLabel>
-        <translation>Audiovisuel numérique (Avant 2025)-&gt;Publicité textuelle</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Digital Media-&gt;Channel Partner Website Online Ad</masterLabel>
         <translation>Médias numériques-&gt;Pub -Site de part-rev</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Digital Media-&gt;Content Creation</masterLabel>
         <translation><!-- Digital Media-&gt;Content Creation --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Digital Media-&gt;EcosystemPartner.com</masterLabel>
-        <translation><!-- Digital Media-&gt;EcosystemPartner.com --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Digital Media-&gt;Email</masterLabel>
@@ -229,86 +61,6 @@
         <translation>Médias numériques -&gt; Publicité textuelle</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Digital-&gt;Display/Video Ad</masterLabel>
-        <translation>Numérique-&gt;Annonce display/vidéo</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Digital-&gt;Email</masterLabel>
-        <translation>Numérique-&gt;E-mail</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Digital-&gt;Lead Generation</masterLabel>
-        <translation>Numérique-&gt;Génération de prospects</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Digital-&gt;Other (Digital)</masterLabel>
-        <translation>Numérique-&gt;Autre (numérique)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Digital-&gt;Search (SEM) Ad</masterLabel>
-        <translation>Numérique-&gt;Annonce de recherche (SEM)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Digital-&gt;Social Ad</masterLabel>
-        <translation>Numérique-&gt;Annonce sociale</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Digital-&gt;Social Post</masterLabel>
-        <translation>Numérique-&gt;Publication de réseau social</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Digital-&gt;Web Content</masterLabel>
-        <translation>Numérique-&gt;Contenu Web</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Event (Pre-2025)-&gt;Channel Partner Owned Event</masterLabel>
-        <translation>Événement (Avant 2025)-&gt;Événement mené par un partenaire-revendeur</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Event (Pre-2025)-&gt;Channel Partner Participation in Third-Party Event</masterLabel>
-        <translation>Événement (Avant 2025)-&gt;Participation d&apos;un partenaire-revendeur à un événement de tiers</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Event (Pre-2025)-&gt;Joint Event</masterLabel>
-        <translation>Événement (Avant 2025)-&gt;Événement conjoint</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Event (Pre-2025)-&gt;Member Event</masterLabel>
-        <translation>Événement (Avant 2025)-&gt;Événement pour les membres</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Event (Pre-2025)-&gt;Member Owned Event</masterLabel>
-        <translation>Événement (Avant 2025)-&gt;Événement organisé par un membre</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Event (Pre-2025)-&gt;Member Participation in Third-Party Event</masterLabel>
-        <translation>Événement (Avant 2025)-&gt;Participation d&apos;un membre à un événement de tiers</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Event (Pre-2025)-&gt;Other (Event)</masterLabel>
-        <translation>Événement (Avant 2025)-&gt;Autres (événement)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Event (Pre-2025)-&gt;Promotion</masterLabel>
-        <translation>Événement (Avant 2025)-&gt;Promotion</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Event (Pre-2025)-&gt;Third Party Event</masterLabel>
-        <translation>Événement (Avant 2025)-&gt;Événement tiers</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Event 2025-&gt;Joint Event</masterLabel>
-        <translation>Événement 2025-&gt;Événement conjoint</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Event 2025-&gt;Other (Event)</masterLabel>
-        <translation>Événement 2025-&gt;Autre (événement)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Event 2025-&gt;Third Party Event</masterLabel>
-        <translation>Événement 2025-&gt;Événement tiers</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Event-&gt;Channel Partner Owned Event</masterLabel>
         <translation>Événement-&gt;Événement mené par (CP)</translation>
     </valueTranslation>
@@ -318,7 +70,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Event-&gt;Joint Event</masterLabel>
-        <translation>Événement-&gt;Événement conjoint</translation>
+        <translation><!-- Event-&gt;Joint Event --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Event-&gt;Member Event</masterLabel>
@@ -334,7 +86,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Event-&gt;Other (Event)</masterLabel>
-        <translation>Événement-&gt;Autres (événement)</translation>
+        <translation><!-- Event-&gt;Other (Event) --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Event-&gt;Promotion</masterLabel>
@@ -342,7 +94,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Event-&gt;Third Party Event</masterLabel>
-        <translation>Événement-&gt;Événement tiers</translation>
+        <translation><!-- Event-&gt;Third Party Event --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Events-&gt;Event with Product Sales Onsite</masterLabel>
@@ -389,18 +141,6 @@
         <translation><!-- Incentive-&gt;Seller - Target SPIF --></translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Innovation -&gt;Engineering</masterLabel>
-        <translation><!-- Innovation -&gt;Engineering --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Lead Management (Pre-2025)-&gt;Lead Generation</masterLabel>
-        <translation>Gestion des prospects (Avant 2025)-&gt;Génération de prospects</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Lead Management (Pre-2025)-&gt;Lead Nurturing</masterLabel>
-        <translation>Gestion des prospects (Avant 2025)-&gt;Entretien de prospects</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Lead Management-&gt;Lead Generation</masterLabel>
         <translation>Génération de prospects</translation>
     </valueTranslation>
@@ -433,54 +173,6 @@
         <translation><!-- Other-&gt;Other --></translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Out of Home (Pre-2025)-&gt;Billboard/Transit</masterLabel>
-        <translation>Hors de la maison (Avant 2025)-&gt;Panneaux/Transport</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Out of Home (Pre-2025)-&gt;Cinema</masterLabel>
-        <translation>Hors de la maison (Avant 2025)-&gt;Cinéma</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Out of Home (Pre-2025)-&gt;Other (OOH)</masterLabel>
-        <translation>Hors de la maison (Avant 2025)-&gt;Autres (extérieur)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Out of Home (Pre-2025)-&gt;Other (Out of Home)</masterLabel>
-        <translation>Hors de la maison (Avant 2025)-&gt;Autre (Hors de la maison)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Out of Home (Pre-2025)-&gt;Video Screen</masterLabel>
-        <translation>Hors de la maison (Avant 2025)-&gt;Écran vidéo</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Out of Home 2025-&gt;Billboard/Transit</masterLabel>
-        <translation>Hors de la maison 2025-&gt;Panneaux/Transport</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Out of Home 2025-&gt;Cinema</masterLabel>
-        <translation>Hors de la maison 2025-&gt;Cinéma</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Out of Home 2025-&gt;Other (Out Of Home)</masterLabel>
-        <translation>Hors de la maison 2025-&gt;Autre (Hors de la maison)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Out of Home 2025-&gt;Video Screen</masterLabel>
-        <translation>Hors de la maison 2025-&gt;Écran vidéo</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Out of Home Media (Pre-2025)-&gt;Billboard/Transit</masterLabel>
-        <translation>Médias hors de la maison (Avant 2025)-&gt;Panneaux/Transport</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Out of Home Media (Pre-2025)-&gt;Cinema</masterLabel>
-        <translation>Médias hors de la maison (Avant 2025)-&gt;Cinéma</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Out of Home Media (Pre-2025)-&gt;Digital Video Screen</masterLabel>
-        <translation>Médias hors de la maison (Avant 2025)-&gt;Écran vidéo numérique</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Out of Home Media-&gt;Billboard/Transit</masterLabel>
         <translation>Panneaux/Transport</translation>
     </valueTranslation>
@@ -494,11 +186,11 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Out of Home-&gt;Billboard/Transit</masterLabel>
-        <translation>Hors de la maison-&gt;Panneaux/Transport</translation>
+        <translation><!-- Out of Home-&gt;Billboard/Transit --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Out of Home-&gt;Cinema</masterLabel>
-        <translation>Hors de la maison-&gt;Cinéma</translation>
+        <translation><!-- Out of Home-&gt;Cinema --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Out of Home-&gt;Other (OOH)</masterLabel>
@@ -506,23 +198,11 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Out of Home-&gt;Other (Out Of Home)</masterLabel>
-        <translation>Hors de la maison-&gt;Autre (Hors de la maison)</translation>
+        <translation><!-- Out of Home-&gt;Other (Out Of Home) --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Out of Home-&gt;Video Screen</masterLabel>
-        <translation>Hors de la maison-&gt;Écran vidéo</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Outcome-Based-&gt;Outcome-Based</masterLabel>
-        <translation><!-- Outcome-Based-&gt;Outcome-Based --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Paid Social Media (Pre-2025)-&gt;Social Online Display</masterLabel>
-        <translation>Réseaux sociaux payés (Avant 2025)-&gt;Affichage en ligne de réseau social</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Paid Social Media (Pre-2025)-&gt;Social Post</masterLabel>
-        <translation>Réseaux sociaux payés (Avant 2025)-&gt;Publication de réseau social</translation>
+        <translation><!-- Out of Home-&gt;Video Screen --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Paid Social Media-&gt;Social Online Display</masterLabel>
@@ -531,50 +211,6 @@
     <valueTranslation>
         <masterLabel>Paid Social Media-&gt;Social Post</masterLabel>
         <translation>Publication de réseau social</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Print (Pre-2025)-&gt;Collateral</masterLabel>
-        <translation>Publicité imprimée (Avant 2025)-&gt;Imprimés promotionnels</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Print (Pre-2025)-&gt;Magazine/Newspaper</masterLabel>
-        <translation>Publicité imprimée (Avant 2025)-&gt;Magazine/Journal</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Print 2025-&gt;Collateral</masterLabel>
-        <translation>Version imprimée 2025-&gt;Imprimés promotionnels</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Print 2025-&gt;Magazine/Newspaper</masterLabel>
-        <translation>Version imprimée 2025-&gt;Magazine/Journal</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Print 2025-&gt;Other (Print)</masterLabel>
-        <translation>Version imprimée 2025-&gt;Autre (imprimé)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Print Media (Pre-2025)-&gt;Catalog/Brochure</masterLabel>
-        <translation>Publicités imprimées (Avant 2025)-&gt;Catalogue/Brochure</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Print Media (Pre-2025)-&gt;Collateral - Other</masterLabel>
-        <translation>Publicités imprimées (Avant 2025)-&gt;Imprimés promotionnels – Autre</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Print Media (Pre-2025)-&gt;Direct Mail</masterLabel>
-        <translation>Publicités imprimées (Avant 2025)-&gt;Publipostage</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Print Media (Pre-2025)-&gt;Insert/Outsert/Flyer</masterLabel>
-        <translation>Publicités imprimées (Avant 2025)-&gt;Encart/Excart/Prospectus</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Print Media (Pre-2025)-&gt;Magazine/Newspaper</masterLabel>
-        <translation>Publicités imprimées (Avant 2025)-&gt;Magazine/Journal</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Print Media (Pre-2025)-&gt;Poster/Sign/Banner</masterLabel>
-        <translation>Publicités imprimées (Avant 2025)-&gt;Affiche/Panneau/Bandeau</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Print Media-&gt;Catalog/Brochure</masterLabel>
@@ -602,47 +238,11 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Print-&gt;Collateral</masterLabel>
-        <translation>Publicité imprimée-&gt;Imprimés promotionnels</translation>
+        <translation><!-- Print-&gt;Collateral --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Print-&gt;Magazine/Newspaper</masterLabel>
-        <translation>Publicité imprimée-&gt;Magazine/Journal</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Print-&gt;Other (Print)</masterLabel>
-        <translation>Publicité imprimée-&gt;Autre (imprimé)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Production 2025-&gt;Content</masterLabel>
-        <translation>Production 2025-&gt;Contenu</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Production 2025-&gt;Other (Production)</masterLabel>
-        <translation>Production 2025-&gt;Autre (production)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Production-&gt;Content</masterLabel>
-        <translation>Production-&gt;Contenu</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Production-&gt;Other (Production)</masterLabel>
-        <translation>Production-&gt;Autre (production)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Purchase Incentive (Pre-2025)-&gt;Buyer - Bundle Offer</masterLabel>
-        <translation>Promotion d&apos;achat (Avant 2025)-&gt;Acheteur – Offre groupée</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Purchase Incentive (Pre-2025)-&gt;Buyer - Other</masterLabel>
-        <translation>Promotion d&apos;achat (Avant 2025)-&gt;Acheteur - Autres</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Purchase Incentive (Pre-2025)-&gt;Buyer - Reward/Frequency</masterLabel>
-        <translation>Promotion d&apos;achat (Avant 2025)-&gt;Acheteur - Récompense/Fréquence</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Purchase Incentive (Pre-2025)-&gt;Buyer - Sweepstakes</masterLabel>
-        <translation>Promotion d&apos;achat (Avant 2025)-&gt;Acheteur - Concours</translation>
+        <translation><!-- Print-&gt;Magazine/Newspaper --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Purchase Incentive-&gt;Buyer - Bundle Offer</masterLabel>
@@ -661,36 +261,12 @@
         <translation><!-- Purchase Incentive-&gt;Buyer - Sweepstakes --></translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Sales Incentive (Pre-2025)-&gt;Seller - Contest SPIF</masterLabel>
-        <translation>Promotion de vente (Avant 2025)-&gt;Vendeur - Concours SPIF</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Sales Incentive (Pre-2025)-&gt;Seller - Other</masterLabel>
-        <translation>Promotion de vente (Avant 2025)-&gt;Vendeur - Autres</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Sales Incentive (Pre-2025)-&gt;Seller - Per Instance SPIF</masterLabel>
-        <translation>Promotion de vente (Avant 2025)-&gt;Vendeur - Par instance SPIF</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Sales Incentive (Pre-2025)-&gt;Seller - Per Unit SPIF</masterLabel>
-        <translation>Promotion de vente (Avant 2025)-&gt;Vendeur - Par unité SPIF</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Sales Incentive (Pre-2025)-&gt;Seller - Target SPIF</masterLabel>
-        <translation>Promotion de vente (Avant 2025)-&gt;Vendeur - SPIF cible</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Sales Incentive-&gt;Seller - Contest SPIF</masterLabel>
         <translation><!-- Sales Incentive-&gt;Seller - Contest SPIF --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Sales Incentive-&gt;Seller - Other</masterLabel>
         <translation><!-- Sales Incentive-&gt;Seller - Other --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Sales Incentive-&gt;Seller - Per Instance SPIF</masterLabel>
-        <translation>Promotion de vente-&gt;Vendeur - Par instance SPIF</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Sales Incentive-&gt;Seller - Per Unit SPIF</masterLabel>
@@ -725,64 +301,8 @@
         <translation><!-- Sales Incentives-&gt;Sweepstakes --></translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Sales Readiness (Pre-2025)-&gt;Collateral</masterLabel>
-        <translation>Préparation aux ventes (Avant 2025)-&gt;Imprimés promotionnels</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Sales Readiness (Pre-2025)-&gt;In-Store Promotion</masterLabel>
-        <translation>Préparation aux ventes (Avant 2025)-&gt;Promotion en magasin</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Sales Readiness (Pre-2025)-&gt;Other (Sales Readiness)</masterLabel>
-        <translation>Préparation aux ventes (Avant 2025)-&gt;Autres (degré de préparation aux ventes)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Sales Readiness (Pre-2025)-&gt;Out-of-Store Promotion</masterLabel>
-        <translation>Préparation aux ventes (Avant 2025)-&gt;Promotion hors magasin</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Sales Readiness (Pre-2025)-&gt;Personnel</masterLabel>
-        <translation>Préparation aux ventes (Avant 2025)-&gt;Personnel</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Sales Readiness (Pre-2025)-&gt;Telemarketing</masterLabel>
-        <translation>Préparation aux ventes (Avant 2025)-&gt;Télémarketing</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Sales Readiness (Pre-2025)-&gt;Training/Meeting</masterLabel>
-        <translation>Préparation aux ventes (Avant 2025)-&gt;Formation/Réunion</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Sales Readiness 2025-&gt;Collateral</masterLabel>
-        <translation>Préparation à la vente 2025-&gt;Imprimés promotionnels</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Sales Readiness 2025-&gt;Other (Sales Readiness)</masterLabel>
-        <translation>Préparation à la vente 2025-&gt;Autres (degré de préparation aux ventes)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Sales Readiness 2025-&gt;Personnel</masterLabel>
-        <translation>Préparation à la vente 2025-&gt;Personnel</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Sales Readiness 2025-&gt;Promotion - Non-Retail</masterLabel>
-        <translation>Préparation à la vente 2025-&gt;Promotion – Non vente au détail</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Sales Readiness 2025-&gt;Promotion - Retail</masterLabel>
-        <translation>Préparation à la vente 2025-&gt;Promotion – Vente au détail</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Sales Readiness 2025-&gt;Training Incentive</masterLabel>
-        <translation>Préparation à la vente 2025-&gt;Incitatif à la formation</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Sales Readiness 2025-&gt;Training/Meeting</masterLabel>
-        <translation>Préparation à la vente 2025-&gt;Formation/Réunion</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Sales Readiness-&gt;Collateral</masterLabel>
-        <translation>Préparation aux ventes-&gt;Imprimés promotionnels</translation>
+        <translation><!-- Sales Readiness-&gt;Collateral --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Sales Readiness-&gt;Customer Demonstrations (External)</masterLabel>
@@ -806,7 +326,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Sales Readiness-&gt;Other (Sales Readiness)</masterLabel>
-        <translation>Préparation aux ventes-&gt;Autres (degré de préparation aux ventes)</translation>
+        <translation><!-- Sales Readiness-&gt;Other (Sales Readiness) --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Sales Readiness-&gt;Out-of-Store Promotion</masterLabel>
@@ -814,15 +334,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Sales Readiness-&gt;Personnel</masterLabel>
-        <translation>Préparation aux ventes-&gt;Personnel</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Sales Readiness-&gt;Promotion - Non-Retail</masterLabel>
-        <translation>Préparation aux ventes-&gt;Promotion – Non vente au détail</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Sales Readiness-&gt;Promotion - Retail</masterLabel>
-        <translation>Préparation aux ventes-&gt;Promotion – Vente au détail</translation>
+        <translation><!-- Sales Readiness-&gt;Personnel --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Sales Readiness-&gt;Proof-of-Concept</masterLabel>
@@ -845,24 +357,12 @@
         <translation><!-- Sales Readiness-&gt;Telemarketing --></translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Sales Readiness-&gt;Training Incentive</masterLabel>
-        <translation>Préparation aux ventes-&gt;Incitatif à la formation</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Sales Readiness-&gt;Training/Meeting</masterLabel>
-        <translation>Préparation aux ventes-&gt;Formation/Réunion</translation>
+        <translation><!-- Sales Readiness-&gt;Training/Meeting --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Sales Readiness-&gt;White Paper/Case Study/Benchmarking</masterLabel>
         <translation><!-- Sales Readiness-&gt;White Paper/Case Study/Benchmarking --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Search Engine Marketing (SEM) (Pre-2025)-&gt;Graphic Ad</masterLabel>
-        <translation>Marketing par moteurs de recherche (Avant 2025)-&gt;Publicité graphique</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Search Engine Marketing (SEM) (Pre-2025)-&gt;Text Ad</masterLabel>
-        <translation>Marketing par moteurs de recherche (Avant 2025)-&gt;Publicité textuelle</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Search Engine Marketing (SEM)-&gt;Graphic Ad</masterLabel>
@@ -873,96 +373,8 @@
         <translation>(SEM)-&gt;Publicité textuelle</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Seller Incentive 2025-&gt;SPIF - Contest</masterLabel>
-        <translation>Incitatif vendeur 2025-&gt;SPIF - Concours</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Seller Incentive 2025-&gt;SPIF - Other</masterLabel>
-        <translation>Incitatif vendeur 2025-&gt;SPIF - Autre</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Seller Incentive 2025-&gt;SPIF - Target</masterLabel>
-        <translation>Incitatif vendeur 2025-&gt;SPIF - Target</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Seller Incentive 2025-&gt;SPIF - Volume</masterLabel>
-        <translation>Incitatif vendeur 2025-&gt;SPIF - Volume</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Seller Incentive-&gt;SPIF - Contest</masterLabel>
-        <translation>Incitation à la vente-&gt;SPIF - Concours</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Seller Incentive-&gt;SPIF - Other</masterLabel>
-        <translation>Incitation à la vente-&gt;SPIF - Autre</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Seller Incentive-&gt;SPIF - Target</masterLabel>
-        <translation>Incitation à la vente-&gt;SPIF - Target</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Seller Incentive-&gt;SPIF - Volume</masterLabel>
-        <translation>Incitation à la vente-&gt;SPIF - Volume</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Tech Exploration (Pre-2025)-&gt;Benchmarks</masterLabel>
-        <translation>Exploration technologique (Avant 2025)-&gt;Bancs d&apos;essai</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Tech Exploration (Pre-2025)-&gt;Case Study</masterLabel>
-        <translation>Exploration technologique (Avant 2025)-&gt;Étude de cas</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Tech Exploration (Pre-2025)-&gt;Cloud/Platform Trial</masterLabel>
-        <translation>Exploration technologique (Avant 2025)-&gt;Essai Cloud/plateforme</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Tech Exploration (Pre-2025)-&gt;Deal Investment</masterLabel>
-        <translation>Exploration technologique (Avant 2025)-&gt;Investissement dans une affaire</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Tech Exploration (Pre-2025)-&gt;Demo Hardware</masterLabel>
-        <translation>Exploration technologique (Avant 2025)-&gt;Matériel de démonstration</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Tech Exploration (Pre-2025)-&gt;Demo Hardware/Cloud Instance</masterLabel>
-        <translation>Exploration technologique (Avant 2025)-&gt;Matériel de démonstration/Instance Cloud</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Tech Exploration (Pre-2025)-&gt;Joint Engineering/Optimization</masterLabel>
-        <translation>Exploration technologique (Avant 2025)-&gt;Ingénierie conjointe/optimisation</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Tech Exploration (Pre-2025)-&gt;Other (Tech Exploration)</masterLabel>
-        <translation>Exploration technologique (Avant 2025)-&gt;Autre (Exploration technologique)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Tech Exploration (Pre-2025)-&gt;Proof of Concept</masterLabel>
-        <translation>Exploration technologique (Avant 2025)-&gt;Étude de faisabilité</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Tech Exploration (Pre-2025)-&gt;Seed Unit</masterLabel>
-        <translation>Exploration technologique (Avant 2025)-&gt;Unité de semence</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Tech Exploration (Pre-2025)-&gt;Solution Development</masterLabel>
-        <translation>Exploration technologique (Avant 2025)-&gt;Développement de solutions</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Tech Exploration-&gt;Benchmarks</masterLabel>
-        <translation>Exploration technologique-&gt;Analyses comparatives</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Tech Exploration-&gt;Case Study</masterLabel>
         <translation><!-- Tech Exploration-&gt;Case Study --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Tech Exploration-&gt;Cloud/Platform Trial</masterLabel>
-        <translation>Exploration technologique-&gt;Essai Cloud/plateforme</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Tech Exploration-&gt;Deal Investment</masterLabel>
-        <translation>Exploration technologique-&gt;Investissement dans une affaire</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Tech Exploration-&gt;Demo Hardware</masterLabel>
@@ -970,15 +382,11 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Tech Exploration-&gt;Demo Hardware/Cloud Instance</masterLabel>
-        <translation>Exploration technologique-&gt;Matériel de démonstration / instance Cloud</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Tech Exploration-&gt;Joint Engineering/Optimization</masterLabel>
-        <translation>Exploration technologique-&gt;Ingénierie conjointe/optimisation</translation>
+        <translation><!-- Tech Exploration-&gt;Demo Hardware/Cloud Instance --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Tech Exploration-&gt;Other (Tech Exploration)</masterLabel>
-        <translation>Exploration technologique-&gt;Autre (Exploration technologique)</translation>
+        <translation><!-- Tech Exploration-&gt;Other (Tech Exploration) --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Tech Exploration-&gt;Proof of Concept</masterLabel>
@@ -987,113 +395,5 @@
     <valueTranslation>
         <masterLabel>Tech Exploration-&gt;Seed Unit</masterLabel>
         <translation><!-- Tech Exploration-&gt;Seed Unit --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Tech Exploration-&gt;Solution Development</masterLabel>
-        <translation>Exploration technologique-&gt;Développement de solutions</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Technical Sales 2025-&gt;Benchmarking</masterLabel>
-        <translation>Ventes techniques 2025-&gt;Bancs d&apos;essai</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Technical Sales 2025-&gt;Case Study</masterLabel>
-        <translation>Ventes techniques 2025-&gt;Étude de cas</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Technical Sales 2025-&gt;Migration</masterLabel>
-        <translation>Ventes techniques 2025-&gt;Migration</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Technical Sales 2025-&gt;Other (Technical Sales)</masterLabel>
-        <translation>Ventes techniques 2025-&gt;Autres (ventes techniques)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Technical Sales 2025-&gt;Proof of Concept</masterLabel>
-        <translation>Ventes techniques 2025-&gt;Étude de faisabilité</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Technical Sales 2025-&gt;Sales Event</masterLabel>
-        <translation>Ventes techniques 2025-&gt;Événement commercial</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Technical Sales 2025-&gt;Seed Unit</masterLabel>
-        <translation>Ventes techniques 2025-&gt;Unité de semence</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Technical Sales 2025-&gt;System Demo</masterLabel>
-        <translation>Ventes techniques 2025-&gt;Démo système</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Technical Sales 2025-&gt;Telemarketing</masterLabel>
-        <translation>Ventes techniques 2025-&gt;Télémarketing</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Technical Sales 2025-&gt;Trial Instance</masterLabel>
-        <translation>Ventes techniques 2025-&gt;Instance d’essai</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Technical Sales-&gt;Benchmarking</masterLabel>
-        <translation>Ventes techniques-&gt;Benchmarking</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Technical Sales-&gt;Case Study</masterLabel>
-        <translation>Ventes techniques-&gt;Étude de cas</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Technical Sales-&gt;Migration</masterLabel>
-        <translation>Ventes techniques-&gt;Migration</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Technical Sales-&gt;Other (Technical Sales)</masterLabel>
-        <translation>Ventes techniques-&gt;Autres (ventes techniques)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Technical Sales-&gt;Proof of Concept</masterLabel>
-        <translation>Ventes techniques-&gt;Étude de faisabilité</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Technical Sales-&gt;Sales Event</masterLabel>
-        <translation>Ventes techniques-&gt;Événement commercial</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Technical Sales-&gt;Seed Unit</masterLabel>
-        <translation>Ventes techniques-&gt;Unité de semence</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Technical Sales-&gt;System Demo</masterLabel>
-        <translation>Ventes techniques-&gt;Démo système</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Technical Sales-&gt;Telemarketing</masterLabel>
-        <translation>Ventes techniques-&gt;Télémarketing</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Technical Sales-&gt;Trial Instance</masterLabel>
-        <translation>Ventes techniques-&gt;Instance d&apos;essai</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Video 2025-&gt;Other (Video)</masterLabel>
-        <translation>Vidéo 2025-&gt;Autre (vidéo)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Video 2025-&gt;Streaming</masterLabel>
-        <translation>Vidéo 2025-&gt;Streaming</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Video 2025-&gt;Television</masterLabel>
-        <translation>Vidéo 2025-&gt;Télévision</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Video-&gt;Other (Video)</masterLabel>
-        <translation>Vidéo-&gt;Autre (vidéo)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Video-&gt;Streaming</masterLabel>
-        <translation>Vidéo-&gt;Streaming</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Video-&gt;Television</masterLabel>
-        <translation>Vidéo-&gt;Télévision</translation>
     </valueTranslation>
 </GlobalValueSetTranslation>

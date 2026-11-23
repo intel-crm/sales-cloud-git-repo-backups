@@ -9,7 +9,7 @@ Modification Log :
 * Dave Hood           Jun 24, 2015       Initial version
 * Dave Hood           Jan 25, 2016       Changes for Spring 16 and shortening of the questionnaire
 *************************************************************************************/
-public without sharing class Core_MAGQuestionnaireController {
+public class Core_MAGQuestionnaireController {
     
     private ApexPages.StandardController stdController;
     

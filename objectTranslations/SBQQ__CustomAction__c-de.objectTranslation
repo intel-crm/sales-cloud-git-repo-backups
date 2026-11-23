@@ -1012,6 +1012,10 @@
             <translation>Zu Favoriten hinzufügen</translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Alert: Selected Product is &quot;PSG Restricted Product&quot;</masterLabel>
+            <translation><!-- Alert: Selected Product is &quot;PSG Restricted Product&quot; --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Amend</masterLabel>
             <translation>Ändern</translation>
         </picklistValues>
@@ -1030,6 +1034,10 @@
         <picklistValues>
             <masterLabel>Cancel</masterLabel>
             <translation>Abbrechen</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Classify Price</masterLabel>
+            <translation><!-- Classify Price --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Clone Group</masterLabel>
@@ -1078,6 +1086,10 @@
         <picklistValues>
             <masterLabel>Generate Document</masterLabel>
             <translation>Dokument erstellen</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Get Predicted Price</masterLabel>
+            <translation><!-- Get Predicted Price --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Import Lines</masterLabel>

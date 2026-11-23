@@ -1,0 +1,8 @@
+<apex:page renderAs="pdf" showHeader="false" sidebar="false" applyBodyTag="false" contentType="application/pdf">
+    <style>
+        iframe {
+            border: none;
+        }
+    </style>
+    <apex:iframe src="/dashboard/01ZDf000000lTQ5MAM" width="100%" height="800px" />
+</apex:page>

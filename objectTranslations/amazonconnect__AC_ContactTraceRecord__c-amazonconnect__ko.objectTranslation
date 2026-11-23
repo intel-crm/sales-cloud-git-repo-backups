@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>연락처 추적 레코드</value>
+    </caseValues>
+    <fields>
+        <label> AWS 계정 ID </label>
+        <name>amazonconnect__AWSAccountId__c</name>
+    </fields>
+    <fields>
+        <label> 연락 후 작업 기간 </label>
+        <name>amazonconnect__AfterContactWorkDuration__c</name>
+    </fields>
+    <fields>
+        <label> 연락 후 작업 종료 타임스탬프 </label>
+        <name>amazonconnect__AfterContactWorkEndTimestamp__c</name>
+    </fields>
+    <fields>
+        <label> 연락 후 작업 시작 타임스탬프 </label>
+        <name>amazonconnect__AfterContactWorkStartTimestamp__c</name>
+    </fields>
+    <fields>
+        <label> 에이전트 ARN </label>
+        <name>amazonconnect__AgentARN__c</name>
+    </fields>
+    <fields>
+        <label> 에이전트 에이전트에 연결됨 타임스탬프 </label>
+        <name>amazonconnect__AgentConnectedToAgentTimestamp__c</name>
+    </fields>
+    <fields>
+        <label> 에이전트 연결 시도 </label>
+        <name>amazonconnect__AgentConnectionAttempts__c</name>
+    </fields>
+    <fields>
+        <label> 에이전트 고객 대기 기간 </label>
+        <name>amazonconnect__AgentCustomerHoldDuration__c</name>
+    </fields>
+    <fields>
+        <label> 에이전트 계층 구조 그룹 </label>
+        <name>amazonconnect__AgentHierarchyGroup__c</name>
+    </fields>
+    <fields>
+        <label> 에이전트 계층 구조 그룹 </label>
+        <name>amazonconnect__AgentHierarchyGroups__c</name>
+    </fields>
+    <fields>
+        <label> 에이전트 상호 작용 기간 </label>
+        <name>amazonconnect__AgentInteractionDuration__c</name>
+    </fields>
+    <fields>
+        <label> 에이전트 가장 긴 대기 기간 </label>
+        <name>amazonconnect__AgentLongestHoldDuration__c</name>
+    </fields>
+    <fields>
+        <label> 에이전트 대기 수 </label>
+        <name>amazonconnect__AgentNumberOfHolds__c</name>
+    </fields>
+    <fields>
+        <label> 에이전트 라우팅 프로필 ARN </label>
+        <name>amazonconnect__AgentRoutingProfileARN__c</name>
+    </fields>
+    <fields>
+        <label> 에이전트 라우팅 프로필 이름 </label>
+        <name>amazonconnect__AgentRoutingProfileName__c</name>
+    </fields>
+    <fields>
+        <label> 에이전트 사용자 이름 </label>
+        <name>amazonconnect__AgentUsername__c</name>
+    </fields>
+    <fields>
+        <label> 속성 </label>
+        <name>amazonconnect__Attributes__c</name>
+    </fields>
+    <fields>
+        <label> 채널 </label>
+        <name>amazonconnect__Channel__c</name>
+        <picklistValues>
+            <masterLabel>CHAT</masterLabel>
+            <translation><!-- CHAT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TASK</masterLabel>
+            <translation><!-- TASK --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VOICE</masterLabel>
+            <translation><!-- VOICE --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label> 시스템에 연결됨 타임스탬프 </label>
+        <name>amazonconnect__ConnectedToSystemTimestamp__c</name>
+    </fields>
+    <fields>
+        <label> ContactChannel </label>
+        <name>amazonconnect__ContactChannel__c</name>
+        <relationshipLabel><!-- AC Contact Trace Records --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Contact Details --></label>
+        <name>amazonconnect__ContactDetails__c</name>
+    </fields>
+    <fields>
+        <label> ContactId </label>
+        <name>amazonconnect__ContactId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Customer Endpoint Address --></label>
+        <name>amazonconnect__CustomerEndpointAddress__c</name>
+    </fields>
+    <fields>
+        <label><!-- Disconnect Reason --></label>
+        <name>amazonconnect__DisconnectReason__c</name>
+        <picklistValues>
+            <masterLabel>AGENT_DISCONNECT</masterLabel>
+            <translation><!-- AGENT_DISCONNECT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>API</masterLabel>
+            <translation><!-- API --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CONTACT_FLOW_DISCONNECT</masterLabel>
+            <translation><!-- CONTACT_FLOW_DISCONNECT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CUSTOMER_DISCONNECT</masterLabel>
+            <translation><!-- CUSTOMER_DISCONNECT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EXPIRED</masterLabel>
+            <translation><!-- EXPIRED --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OTHER</masterLabel>
+            <translation><!-- OTHER --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TELECOM_PROBLEM</masterLabel>
+            <translation><!-- TELECOM_PROBLEM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>THIRD_PARTY_DISCONNECT</masterLabel>
+            <translation><!-- THIRD_PARTY_DISCONNECT --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label> 연결 해제 타임스탬프 </label>
+        <name>amazonconnect__DisconnectTimestamp__c</name>
+    </fields>
+    <fields>
+        <label> 초기 ContactId </label>
+        <name>amazonconnect__InitialContactId__c</name>
+    </fields>
+    <fields>
+        <label> 시작 타임스탬프 </label>
+        <name>amazonconnect__InitiationTimestamp__c</name>
+    </fields>
+    <fields>
+        <label> 시작 방법 </label>
+        <name>amazonconnect__Initiation_Method__c</name>
+        <picklistValues>
+            <masterLabel>AGENT_REPLY</masterLabel>
+            <translation><!-- AGENT_REPLY --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>API</masterLabel>
+            <translation><!-- API --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CALLBACK</masterLabel>
+            <translation><!-- CALLBACK --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DISCONNECT</masterLabel>
+            <translation><!-- DISCONNECT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EXTERNAL_OUTBOUND</masterLabel>
+            <translation><!-- EXTERNAL_OUTBOUND --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FLOW</masterLabel>
+            <translation><!-- FLOW --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>INBOUND</masterLabel>
+            <translation><!-- INBOUND --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MONITOR</masterLabel>
+            <translation><!-- MONITOR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OUTBOUND</masterLabel>
+            <translation><!-- OUTBOUND --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>QUEUE_TRANSFER</masterLabel>
+            <translation><!-- QUEUE_TRANSFER --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TRANSFER</masterLabel>
+            <translation><!-- TRANSFER --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label> 인스턴스 ARN </label>
+        <name>amazonconnect__InstanceARN__c</name>
+    </fields>
+    <fields>
+        <label> 마지막 업데이트 타임스탬프 </label>
+        <name>amazonconnect__LastUpdateTimestamp__c</name>
+    </fields>
+    <fields>
+        <label> 다음 ContactId </label>
+        <name>amazonconnect__NextContactId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number Of Holds --></label>
+        <name>amazonconnect__NumberOfHolds__c</name>
+    </fields>
+    <fields>
+        <label><!-- PhoneCall --></label>
+        <name>amazonconnect__PhoneCall__c</name>
+        <relationshipLabel><!-- AC Contact Trace Records --></relationshipLabel>
+    </fields>
+    <fields>
+        <label> 이전 ContactId </label>
+        <name>amazonconnect__PreviousContactId__c</name>
+    </fields>
+    <fields>
+        <label> 대기열 ARN </label>
+        <name>amazonconnect__QueueARN__c</name>
+    </fields>
+    <fields>
+        <label> 대기열 대기열에서 제거 타임스탬프 </label>
+        <name>amazonconnect__QueueDequeueTimestamp__c</name>
+    </fields>
+    <fields>
+        <label> 대기열 기간 </label>
+        <name>amazonconnect__QueueDuration__c</name>
+    </fields>
+    <fields>
+        <label> 대기열 대기열에 추가 타임스탬프 </label>
+        <name>amazonconnect__QueueEnqueueTimestamp__c</name>
+    </fields>
+    <fields>
+        <label> 대기열 이름 </label>
+        <name>amazonconnect__QueueName__c</name>
+    </fields>
+    <fields>
+        <label> 레코딩 삭제 이유 </label>
+        <name>amazonconnect__RecordingDeletionReason__c</name>
+    </fields>
+    <fields>
+        <label> 레코딩 위치 </label>
+        <name>amazonconnect__RecordingLocation__c</name>
+    </fields>
+    <fields>
+        <label> 레코딩 상태 </label>
+        <name>amazonconnect__RecordingStatus__c</name>
+        <picklistValues>
+            <masterLabel>AVAILABLE</masterLabel>
+            <translation><!-- AVAILABLE --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- References --></label>
+        <name>amazonconnect__References__c</name>
+    </fields>
+    <fields>
+        <label><!-- Amazon Connect Instance Region --></label>
+        <name>amazonconnect__Region__c</name>
+    </fields>
+    <fields>
+        <label> 시스템 엔드포인트 주소 </label>
+        <name>amazonconnect__SystemEndpointAddress__c</name>
+    </fields>
+    <fields>
+        <label> 전송 완료 타임스탬프 </label>
+        <name>amazonconnect__TransferCompletedTimestamp__c</name>
+    </fields>
+    <fields>
+        <label> 엔드포인트로 전송됨 </label>
+        <name>amazonconnect__TransferredToEndpoint__c</name>
+    </fields>
+    <nameFieldLabel><!-- Contact Trace Record --></nameFieldLabel>
+</CustomObjectTranslation>

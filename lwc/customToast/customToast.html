@@ -1,6 +1,6 @@
 <!--------------------------------------------------------------------------------------------------------
 Description - Generic Custom Toast LWC (Sales CRM)
-Used in - Crm_VBS_SOAR_AddProducts
+Used in - Crm_VBS_SOAR_AddProducts,core_PCC_RebateClaim_ApproveReject
 ---------------------------------------------------------------------------------------------------------->
 <template>
     <template if:true={showToastBar}>
@@ -10,7 +10,7 @@ Used in - Crm_VBS_SOAR_AddProducts
           <span class={innerClass}>
                 <lightning-icon icon-name={iconName} size="small" variant="inverse" alternative-text={notificationType} title={notificationType}></lightning-icon>
           </span>
-          <div class="slds-notify__content" style="padding-left: 10px;">
+          <div class="slds-notify__content" style="padding-left: 10px;max-width:1200px !important; overflow-wrap: break-word;">
             <div class="toastTitle slds-text-heading--small">{headerMessage}</div>
             <template for:each={messageList} for:item="item" for:index="index" >
                 <li class="toastTitle slds-text-heading_x-small" key={item.keyIndex}>{item}</li>

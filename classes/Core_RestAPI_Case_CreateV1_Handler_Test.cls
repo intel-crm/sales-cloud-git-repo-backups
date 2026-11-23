@@ -47,7 +47,7 @@
             
             Core_IPS_Supported_Product__c sp= new Core_IPS_Supported_Product__c(
                 Core_Product_Organization__c = org.Id,
-                Core_EOIS__c = false,
+                Core_EOIS__c = true,
                 Core_Supported_Product_Name__c = 'Haswell EP',
                 Core_Product__c=prod.id
             );
@@ -226,6 +226,9 @@
                                                                            WHERE Core_Agent_Only__c = false AND Core_Status__c='Active' ];
             
             
+            system.debug('lstAssEnvVar  ==>> '+lstAssEnvVar);
+            system.debug('lstAssEnvVar  ==>> '+lstAssEnvVar[0].Core_IPS_Question__r.Core_IPS_Question__c);
+            system.debug('lstAssEnvVar  ==>> '+lstAssEnvVar[0].Core_IPS_Question__r.name);
             
             // json creation start 
             

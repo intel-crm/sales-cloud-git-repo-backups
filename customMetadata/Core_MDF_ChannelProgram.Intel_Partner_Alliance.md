@@ -12,31 +12,23 @@
     </values>
     <values>
         <field>Core_MDF_BankDocHold_Countries_Required__c</field>
-        <value xsi:type="xsd:string">RU;AM;AZ;BY;KZ;KG;MD;TJ;UZ;UA</value>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>Core_MDF_Bank_Program_Value__c</field>
-        <value xsi:type="xsd:string">Core_MDF_Intel_Partner_Alliance</value>
-    </values>
-    <values>
-        <field>Core_MDF_BudgetTypeBasedSharing_Ind__c</field>
-        <value xsi:type="xsd:boolean">true</value>
-    </values>
-    <values>
-        <field>Core_MDF_CampNotEditFieldsWhenPFRExists__c</field>
-        <value xsi:type="xsd:string">Core_MDF_Reimbursement_Rate__c</value>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>Core_MDF_Campaign_Picklist_Fields__c</field>
-        <value xsi:type="xsd:string">Core_MDF_Market__c,Core_MDF_Reimbursement_Rate__c,Core_MDF_Opal_Budget_Type_Txt__c,Core_MDF_Focus_Area_nm__c,Core_MDF_IPA_Priority_nm__c,Core_MDF_Initiative_nm__c,Core_MDF_Audience__c,Core_MDF_Technology__c,Core_MDF_Brand__c,Core_MDF_Industry_Nm__c,Core_MDF_Product_Type__c,Core_MDF_Ecosystem_Partner_Nm__c</value>
+        <value xsi:type="xsd:string">Core_MDF_Market__c,Core_MDF_Reimbursement_Rate__c,Core_MDF_Custom_Reimbursement_Rate_pct__c,Core_MDF_Opal_Budget_Type_Txt__c,Core_MDF_Focus_Area_nm__c</value>
     </values>
     <values>
         <field>Core_MDF_Campaign_Text_Fields__c</field>
-        <value xsi:type="xsd:string">Core_MDF_Custom_Reimbursement_Rate_pct__c</value>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>Core_MDF_ClaimSubEntitlementName_Txt__c</field>
-        <value xsi:type="xsd:string">IPA Claim Submitter (Proposal MDF);IPA Claim Submitter (Account Plan MDF)</value>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>Core_MDF_Cmpgn_CAP_Validation_Required__c</field>
@@ -64,7 +56,7 @@
     </values>
     <values>
         <field>Core_MDF_Program_ID__c</field>
-        <value xsi:type="xsd:string">0Pk3b000000Gn0v</value>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>Core_MDF_Program_Name__c</field>

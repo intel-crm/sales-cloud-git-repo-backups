@@ -57,7 +57,7 @@
     <fieldUpdates>
         <fullName>Core_BU_Product_Segment_Update</fullName>
         <field>Core_BU_Product_Segment_New__c</field>
-        <formula>Core_BU_ProductSegment__c</formula>
+        <formula>Core_BU_Product_Segment__c</formula>
         <name>BU Product Segment Update</name>
         <notifyAssignee>false</notifyAssignee>
         <operation>Formula</operation>
@@ -78,7 +78,7 @@
         <fullName>Core_DDR_Get_Technical_Owner_Email</fullName>
         <description>Gets the Technical Owner Email from Opportunity. This will be used to send the notification.</description>
         <field>Core_Technical_Owner_Email_Txt__c</field>
-        <formula>Opportunity.Core_Technical_Owner__r.Email</formula>
+        <formula>Opportunity.Owner.Email</formula>
         <name>Get Technical Owner Email</name>
         <notifyAssignee>false</notifyAssignee>
         <operation>Formula</operation>
@@ -350,10 +350,9 @@
         <fullName>Core_OppProd_Snapshot_List_Price</fullName>
         <description>Saves the regular field in the &quot;Approved&quot; snapshot field</description>
         <field>Core_Approved_List_Price__c</field>
-        <formula>ListPrice</formula>
         <name>Core_OppProd_Snapshot_List_Price</name>
         <notifyAssignee>false</notifyAssignee>
-        <operation>Formula</operation>
+        <operation>Null</operation>
         <protected>false</protected>
         <reevaluateOnChange>false</reevaluateOnChange>
     </fieldUpdates>
@@ -918,8 +917,37 @@
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
     <rules>
-        <fullName>KPI CPU Update</fullName>
+        <fullName>Core_Update_BU Information</fullName>
+        <actions>
+            <name>Core_BU_Product_Segment_Update</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Core_BU_Short_Name_Update</name>
+            <type>FieldUpdate</type>
+        </actions>
         <active>false</active>
+        <booleanFilter>1 OR 2 OR 3</booleanFilter>
+        <criteriaItems>
+            <field>OpportunityLineItem.Core_BU_ShortName__c</field>
+            <operation>notEqual</operation>
+            <value>null</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OpportunityLineItem.Core_BU_ProductSegment__c</field>
+            <operation>notEqual</operation>
+            <value>null</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Product2.Name</field>
+            <operation>contains</operation>
+            <value>Write In Product</value>
+        </criteriaItems>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>KPI CPU Update</fullName>
+        <active>true</active>
         <criteriaItems>
             <field>OpportunityLineItem.Core_Product_Type__c</field>
             <operation>equals</operation>

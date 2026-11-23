@@ -24,7 +24,7 @@
                 <field>PRM_Channel_Program_Level_Id__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>PRM_Partner_Type_Id__c</field>
             </layoutItems>
             <layoutItems>
@@ -42,10 +42,6 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>PRM_Partner_Role_Nm__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>PRM_Total_Quantity_Nbr__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>

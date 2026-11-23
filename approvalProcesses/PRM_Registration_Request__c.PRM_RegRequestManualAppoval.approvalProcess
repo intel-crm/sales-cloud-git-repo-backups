@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
-    <active>false</active>
+    <active>true</active>
     <allowRecall>false</allowRecall>
     <allowedSubmitters>
         <type>owner</type>
@@ -10,9 +10,9 @@
         <field>PRM_Email_ID__c</field>
         <field>PRM_Account_Name__c</field>
         <field>PRM_Job_Function__c</field>
-        <field>PRM_Profession__c</field>
-        <field>PRM_Partner_Type__c</field>
+        <field>PRM_Account_Partner_Type__c</field>
         <field>PRM_First_Name__c</field>
+        <field>PRM_Partner_Type__c</field>
         <field>PRM_Last_Name__c</field>
         <field>PRM_Account_URL__c</field>
         <field>PRM_Person_Phone_Number__c</field>
@@ -32,7 +32,6 @@
         <field>CreatedBy</field>
         <field>PRM_Zip_Postal_Code__c</field>
         <field>Owner</field>
-        <field>PRM_Wechat_Union_Id__c</field>
     </approvalPageFields>
     <approvalStep>
         <allowDelegate>false</allowDelegate>
@@ -47,7 +46,6 @@
         <name>PRM_Registration_Request_Steps</name>
     </approvalStep>
     <description>Based On Field Values regRequest Record  will be submitted For approval</description>
-    <emailTemplate>test/Registration_Request_Requested_Approval</emailTemplate>
     <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
     <finalApprovalActions>
         <action>
@@ -79,6 +77,6 @@
         <userHierarchyField>Manager</userHierarchyField>
     </nextAutomatedApprover>
     <processOrder>1</processOrder>
-    <recordEditability>AdminOrCurrentApprover</recordEditability>
+    <recordEditability>AdminOnly</recordEditability>
     <showApprovalHistory>true</showApprovalHistory>
 </ApprovalProcess>

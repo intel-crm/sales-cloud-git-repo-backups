@@ -20,15 +20,9 @@
     isRefreshed : function(component, event, helper) {
         helper.isRefreshed(component, event, helper);
     },
-
-    closeModel : function(component, event, helper) {
-        if(component.get("v.isCustomComp")){
-            let closeModalEvent = component.getEvent("closeModalEvent");
-            closeModalEvent.fire();
-        }
-        else{
-            $A.get("e.force:closeQuickAction").fire();
-        }
+    
+    closeModel: function(component, event, helper) {
+        $A.get("e.force:closeQuickAction").fire();
     },
     
 })

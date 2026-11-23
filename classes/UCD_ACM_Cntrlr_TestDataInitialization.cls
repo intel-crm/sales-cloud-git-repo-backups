@@ -26,6 +26,15 @@ public class UCD_ACM_Cntrlr_TestDataInitialization {
         return accountBusinessType;
     }
 
+    public static Core_Account_Compliance_Watch_List__c createComplianceWatchList(Id accountId,String typeCode){
+        Core_Account_Compliance_Watch_List__c complianceWatchList =  new Core_Account_Compliance_Watch_List__c();
+        complianceWatchList.Core_Account_Id__c = accountId;
+        complianceWatchList.Core_Type__c = typeCode;
+        complianceWatchList.Core_Effective_Start_Date__c = system.today()-5;
+        //complianceWatchList.Core_Effective_End_Date__c = system.today()+5;
+        return complianceWatchList;
+    }
+
     public static User createUser(String profileId){
         User u = new User();
         u.firstname = 'ABC';
@@ -58,14 +67,14 @@ public class UCD_ACM_Cntrlr_TestDataInitialization {
     public static Account_Create_Request__c createApproveAccountRequest( Account account){
         Account_Create_Request__c accountCreateRequest=new Account_Create_Request__c();
         accountCreateRequest.Account_Name__c = 'Test';
-      //  accountCreateRequest.Country__c = 'India';
+       // accountCreateRequest.Country__c = 'India';
         accountCreateRequest.Customer_Process_Engagement__c='DIR_PRC_EXCPT';
         accountCreateRequest.Rejected_Reason__c = 'Test Rejected';
         accountCreateRequest.Request_Flow_Status__c = 'Pending';
         accountCreateRequest.Process_Type__c = 'Opportunity Management';
         accountCreateRequest.Requestor_Name__c = UserInfo.getName();
         accountCreateRequest.Requestor_Email__c = UserInfo.getUserEmail()+'.invalid';
-     //   accountCreateRequest.State__c = 'New';
+        accountCreateRequest.State__c = 'New';
         accountCreateRequest.Requested_Account__c = account.Id;
         return accountCreateRequest;
     }
@@ -79,15 +88,17 @@ public class UCD_ACM_Cntrlr_TestDataInitialization {
         accountCreateRequest.Address__CountryCode__s= 'IND';
         accountCreateRequest.Address__Street__s = 'Demon Street';
         accountCreateRequest.Process_Type__c = 'Opportunity Management';
-        if(account != null){
-            accountCreateRequest.Requested_Account__c = account.Id;
-        }
+        accountCreateRequest.Requestor_Name__c = UserInfo.getName();
+        accountCreateRequest.Requestor_Email__c = UserInfo.getUserEmail()+'.invalid';
         if(Status == 'Approved'){
             accountCreateRequest.Requested_Account__c = account.Id;
             accountCreateRequest.Status__c = 'Approved';
-        }else{
-            accountCreateRequest.Status__c= Status;
+        }
+        else{
+            accountCreateRequest.Status__c='Rejected';
         }
         return accountCreateRequest;
     }
+
+
 }

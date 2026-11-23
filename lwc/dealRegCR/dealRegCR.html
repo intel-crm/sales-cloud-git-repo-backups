@@ -1,0 +1,40 @@
+<template>
+    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                      <lightning-combobox name="Opportunity Line"
+                                          label="Opportunity Product"
+                                          value={value}
+                                          placeholder="Select Product"
+                                          options={options}
+                                          onchange={handleChange}
+                                          onsubmit={submitDetails}
+                                          required ></lightning-combobox>
+                      <lightning-record-edit-form
+                          object-api-name="SBQQ__QuoteLine__c"
+                          record-id={quoteId}
+                          form-class="">
+                          <div class="slds-grid">
+                              <div class="slds-col slds-size_1-of-2">
+                                  <lightning-input-field class="QLStartDate" field-name="Pricing_Start_Date_dt__c"> </lightning-input-field>
+                                  <lightning-input-field class="QLQty" field-name="Pricing_New_Quantity_qty__c"> </lightning-input-field>
+                                  <lightning-input-field class="QLComments" field-name="core_cpq_internal_comments_txt__c"> </lightning-input-field>
+                                 
+                              </div>
+                              <div class="slds-col slds-size_1-of-2">
+                                  <lightning-input-field class="QLEndDate" field-name="Pricing_End_Date_dt__c"> </lightning-input-field>
+                              </div>
+                              <div>
+                                <lightning-button class="slds-m-top_small" variant="brand" type="submit" name="submit" label="Submit Change Request">
+                                </lightning-button>
+                              </div>
+                              
+                          </div> 
+                  </lightning-record-edit-form>
+                  <!--<footer class="slds-modal__footer">
+                    <button class="slds-button slds-button_neutral" onclick={closeModal} title="Cancel">Cancel</button>
+                    <button class="slds-button slds-button_brand" onclick={submitDetails} title="OK">Submit Change Request</button>
+                </footer>-->
+          </div>
+                  
+           
+     
+   </template>

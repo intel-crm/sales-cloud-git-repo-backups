@@ -17,7 +17,7 @@
             <name>PRM_Update_Status_Change_Date</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>This workflow is used to update the Status Change Date field whenever the status is changed</description>
         <formula>ISCHANGED( PRM_InActive_Ind__c)</formula>
         <triggerType>onAllChanges</triggerType>

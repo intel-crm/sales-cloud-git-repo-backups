@@ -2,10 +2,26 @@
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>61.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Set_isExpired_to_false</name>
+        <label>Set isExpired to false</label>
+        <locationX>270</locationX>
+        <locationY>890</locationY>
+        <assignmentItems>
+            <assignToReference>isExpired</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>check_all_status</targetReference>
+        </connector>
+    </assignments>
     <decisions>
         <name>Check_for_DR_Status</name>
         <label>Check for DR Status</label>
-        <locationX>182</locationX>
+        <locationX>336</locationX>
         <locationY>134</locationY>
         <defaultConnector>
             <targetReference>FailureMessage</targetReference>
@@ -41,6 +57,56 @@
             <label>IsApproved?</label>
         </rules>
     </decisions>
+    <decisions>
+        <name>check_isExpired</name>
+        <label>check isExpired</label>
+        <locationX>182</locationX>
+        <locationY>1166</locationY>
+        <defaultConnector>
+            <targetReference>update</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Update_to_expire</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>isExpired</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_DR_Status</targetReference>
+            </connector>
+            <label>Update DR to expire</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>If_status_is_not_expired</name>
+        <label>If status is not expired</label>
+        <locationX>402</locationX>
+        <locationY>782</locationY>
+        <defaultConnector>
+            <targetReference>check_all_status</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Set isExpired to true</defaultConnectorLabel>
+        <rules>
+            <name>Set_boolean_to_true</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>check_all_status.Core_Design_Product_Status_Nm__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Expired</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_isExpired_to_false</targetReference>
+            </connector>
+            <label>Set isExpired to false</label>
+        </rules>
+    </decisions>
     <environments>Default</environments>
     <formulas>
         <name>Comments2</name>
@@ -49,6 +115,20 @@
     </formulas>
     <interviewLabel>PCC Set As Expired {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Set As Expired DRP</label>
+    <loops>
+        <name>check_all_status</name>
+        <label>check all status</label>
+        <locationX>182</locationX>
+        <locationY>674</locationY>
+        <collectionReference>Get_all_DRP_status</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>If_status_is_not_expired</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>check_isExpired</targetReference>
+        </noMoreValuesConnector>
+    </loops>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
@@ -69,9 +149,30 @@
     </processMetadataValues>
     <processType>Flow</processType>
     <recordLookups>
+        <name>Get_all_DRP_status</name>
+        <label>Get all DRP status</label>
+        <locationX>182</locationX>
+        <locationY>566</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>check_all_status</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Core_Design_Registration_Id__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Current_Comments.Core_Design_Registration_Id__r.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Core_Design_Registration_Product__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
         <name>Get_Current_Comments</name>
         <label>Get Current Comments</label>
-        <locationX>50</locationX>
+        <locationX>182</locationX>
         <locationY>350</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -90,12 +191,60 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordUpdates>
-        <name>Update_DRP</name>
-        <label>Update DRP</label>
-        <locationX>50</locationX>
-        <locationY>458</locationY>
+        <name>update</name>
+        <label>update</label>
+        <locationX>182</locationX>
+        <locationY>1466</locationY>
         <connector>
             <targetReference>Success_Message1</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>a3DDf000000CSSPMA4</stringValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Core_Design_Registration_Status_Nm__c</field>
+            <value>
+                <stringValue>Expired</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Core_Design_Registration__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_DR_Status</name>
+        <label>Update DR Status</label>
+        <locationX>50</locationX>
+        <locationY>1274</locationY>
+        <connector>
+            <targetReference>update</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId.Core_Design_Registration_Id__c</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Core_Design_Registration_Status_Nm__c</field>
+            <value>
+                <stringValue>Expired</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Core_Design_Registration__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_DRP</name>
+        <label>Update DRP</label>
+        <locationX>182</locationX>
+        <locationY>458</locationY>
+        <connector>
+            <targetReference>Get_all_DRP_status</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -122,7 +271,7 @@
     <screens>
         <name>FailureMessage</name>
         <label>FailureMessage</label>
-        <locationX>314</locationX>
+        <locationX>490</locationX>
         <locationY>242</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
@@ -146,7 +295,7 @@
     <screens>
         <name>Popup_Screen</name>
         <label>Popup_Screen</label>
-        <locationX>50</locationX>
+        <locationX>182</locationX>
         <locationY>242</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
@@ -177,8 +326,8 @@
     <screens>
         <name>Success_Message1</name>
         <label>Success Message</label>
-        <locationX>50</locationX>
-        <locationY>566</locationY>
+        <locationX>182</locationX>
+        <locationY>1574</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -200,13 +349,13 @@
         <showHeader>false</showHeader>
     </screens>
     <start>
-        <locationX>56</locationX>
+        <locationX>210</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Check_for_DR_Status</targetReference>
         </connector>
     </start>
-    <status>Active</status>
+    <status>Draft</status>
     <variables>
         <name>Comments1</name>
         <dataType>String</dataType>
@@ -215,6 +364,16 @@
         <isOutput>false</isOutput>
         <value>
             <stringValue>Expired</stringValue>
+        </value>
+    </variables>
+    <variables>
+        <name>isExpired</name>
+        <dataType>Boolean</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <booleanValue>true</booleanValue>
         </value>
     </variables>
     <variables>

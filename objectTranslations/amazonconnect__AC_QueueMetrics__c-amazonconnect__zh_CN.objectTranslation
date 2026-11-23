@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>AC 实时指标</value>
+    </caseValues>
+    <fields>
+        <label>代理联系后续工作</label>
+        <name>amazonconnect__Agents_After_Contact_Work__c</name>
+    </fields>
+    <fields>
+        <label>代理可服务</label>
+        <name>amazonconnect__Agents_Available__c</name>
+    </fields>
+    <fields>
+        <label>代理错误</label>
+        <name>amazonconnect__Agents_Error__c</name>
+    </fields>
+    <fields>
+        <label>代理无成效</label>
+        <name>amazonconnect__Agents_Non_Productive__c</name>
+    </fields>
+    <fields>
+        <label>代理正在通话</label>
+        <name>amazonconnect__Agents_On_Call__c</name>
+    </fields>
+    <fields>
+        <label>代理在线</label>
+        <name>amazonconnect__Agents_Online__c</name>
+    </fields>
+    <fields>
+        <label>代理正在工作</label>
+        <name>amazonconnect__Agents_Staffed__c</name>
+    </fields>
+    <fields>
+        <label>联系在队列中</label>
+        <name>amazonconnect__Contacts_In_Queue__c</name>
+    </fields>
+    <fields>
+        <label>联系已计划</label>
+        <name>amazonconnect__Contacts_Scheduled__c</name>
+    </fields>
+    <fields>
+        <label>最早的联系时间</label>
+        <name>amazonconnect__Oldest_Contact_Age__c</name>
+    </fields>
+    <fields>
+        <label>队列 ARN</label>
+        <name>amazonconnect__Queue_ARN__c</name>
+    </fields>
+    <fields>
+        <label>队列 ID</label>
+        <name>amazonconnect__Queue_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Amazon Connect Instance Region --></label>
+        <name>amazonconnect__Region__c</name>
+    </fields>
+    <nameFieldLabel>队列指标</nameFieldLabel>
+</CustomObjectTranslation>

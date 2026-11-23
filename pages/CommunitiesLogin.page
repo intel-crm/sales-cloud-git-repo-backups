@@ -1,22 +1,2 @@
-<apex:page showHeader="false">
-<style>
-        .center {
-            text-align: center;
-            margin-top: 15vh; /* Adjust this value to position the content */
-            padding: 20px; /* Adjust padding as needed */
-            font-size: 20px; /* Adjust font size as needed */
-        }
- 
-        .center p {
-            margin: 0;
-        }
- 
-        .center a.link {
-            color: blue; /* Change URL color to blue */
-            font-size: 22px; /* Increase font size of the URL */
-        }
-</style>
-<div class="center">
-<p style="margin-bottom: 10px;">Design Registration has moved! To submit design registrations, authorized users can go to and bookmark <a href="https://partner-admin.intel.com/s/ddr" class="link">https://partner-admin.intel.com/s/ddr</a>.</p>
-</div>
+<apex:page id="loginPage" controller="CommunitiesLoginController" action="{!forwardToAuthPage}" title="{!$Label.site.site_login}">
 </apex:page>

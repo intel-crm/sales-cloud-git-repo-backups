@@ -8,10 +8,10 @@
     </values>
     <values>
         <field>Subject__c</field>
-        <value xsi:type="xsd:string">Companion/temp license issue</value>
+        <value xsi:type="xsd:string">Can&apos;t assign product to host</value>
     </values>
     <values>
         <field>Type_of_License_Issue__c</field>
-        <value xsi:type="xsd:string">I can&apos;t generate a companion or temporary license</value>
+        <value xsi:type="xsd:string">I can&apos;t assign product to a computer</value>
     </values>
 </CustomMetadata>

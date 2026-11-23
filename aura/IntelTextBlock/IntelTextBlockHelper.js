@@ -9,13 +9,8 @@
           }
         //Added code to expand the overview section for Basic profile
         else if(component.get('v.showMoreSection')==true)
-        {	
-            if(moreSection!=''){
-               displaySection =  moreSection; 
-            }else{
-               displaySection =  introSection; 
-            }
-               
+        {
+              var displaySection = introSection + moreSection;
               component.set('v.showMoreSectionforEnhanced',false);//to hide show more link
              
         }

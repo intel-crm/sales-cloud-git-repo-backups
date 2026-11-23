@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>NB DISTRIBUIDORA MAYORISTA SRL Partner User</description>
+    <description>OXXEN S.R.L. Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>NB DISTRIBUIDORA MAYORISTA SRL Partner User</name>
+    <name>OXXEN S.R.L. Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>OXXENSRLPartnerManager</parentRole>
 </Role>

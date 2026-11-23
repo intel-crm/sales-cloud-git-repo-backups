@@ -10,6 +10,9 @@
         <field>Opportunity.Core_Technical_Owner__c</field>
     </columns>
     <columns>
+        <field>OWNER_MANAGER</field>
+    </columns>
+    <columns>
         <field>DESCRIPTION</field>
     </columns>
     <columns>
@@ -38,10 +41,6 @@
     </columns>
     <columns>
         <field>Opportunity.Core_Last_Activity_Date__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Opportunity.Core_Opportunity_Count__c</field>
     </columns>
     <description>Opportunities with no description or status updates</description>
     <filter>
@@ -74,41 +73,15 @@
             <value>Opportunity.Core_New_Opportunity,Opportunity.Core_Opportunity</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Opportunity.Core_Sales_Groups__c</column>
+            <column>ROLLUP_DESCRIPTION</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>APJ Sales Territory</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Opportunity_Type__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Design: Secondary,Design: Software-enable,Deal: Partner Scale-enable,Deal: Sell-through,Deal: Sell-to</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OWNER_MANAGER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>Swee Hoon,Lai Teng,Paul,Sumner,Batra,Sng,Andrew</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>FULL_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>Naomi,Gina</value>
+            <value>Ram S</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>OWNER_MANAGER</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>FULL_NAME</field>
@@ -119,7 +92,7 @@
         <field>ACCOUNT_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>My Team&apos;s Pipe Health no Desc or Status</name>
+    <name>My Team&apos;s Pipe Health no Desc or S - Ram</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -137,7 +110,7 @@
         <value>1</value>
     </params>
     <reportType>Opportunity</reportType>
-    <scope>organization</scope>
+    <scope>team</scope>
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>

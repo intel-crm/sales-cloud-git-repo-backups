@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>哈尔滨船舶电子大世界晨拓佳业科技经销部 Partner User</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>哈尔滨船舶电子大世界晨拓佳业科技经销部 Partner User</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>PartnerManager1615</parentRole>
+</Role>

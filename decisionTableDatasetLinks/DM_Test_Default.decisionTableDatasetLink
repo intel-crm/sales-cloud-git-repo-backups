@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DecisionTableDatasetLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <decisionTableName>DM_Test</decisionTableName>
+    <isDefault>true</isDefault>
+    <setupName>Default Payload</setupName>
+    <sourceObject>core_cpq_distributor_margin__c</sourceObject>
+</DecisionTableDatasetLink>

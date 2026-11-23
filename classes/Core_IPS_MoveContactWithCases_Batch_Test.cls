@@ -13,7 +13,7 @@ Created Date    : 03 Oct 2019
 @isTest(seeAllData=false)
 public class Core_IPS_MoveContactWithCases_Batch_Test {
     static testMethod void testMoveContactCasesBatch1(){
-        Profile itAdminPrf = [select id, name from Profile where name = 'System Administrator' Limit 1];
+        Profile itAdminPrf = [select id, name from Profile where name = 'IT Admin' Limit 1];
         User itAdminUser = new User(Alias = 'itAdmx2', 
                                     Email='itAdminTestx2@intel.com', 
                                     EmailEncodingKey='UTF-8',
@@ -34,14 +34,13 @@ public class Core_IPS_MoveContactWithCases_Batch_Test {
             System.assert(true,testAccount.Core_CNDA_Number__c!= null);
             
             Contact testContact = new Contact(FirstName='testFirstName123',LastName='testLastName', Email='test123@testing.com.test',
-                                              Core_IPS_Intel_Support_Owner__c = itAdminUser.id, AccountId=testAccount.Id,MailingCountry='India');
+                                              Core_IPS_Intel_Support_Owner__c = itAdminUser.id, AccountId=testAccount.Id);
             insert testContact;
             system.assertequals(testContact.LastName,'testLastName'); 
             
             Contact testContact2 = new Contact(FirstName='testFirstName123', LastName='testLName', Email='test1234@testing.com.test',
-                                               Core_IPS_Intel_Support_Owner__c = null, AccountId=testAccount.Id,MailingCountry='India');
+                                               Core_IPS_Intel_Support_Owner__c = null, AccountId=testAccount.Id);
             insert testContact2;
-         
             system.assertequals(testContact2.LastName,'testLName');
             
             Core_ERPM_Engagement__c cee=new Core_ERPM_Engagement__c(Name  ='Partner File Transfer', Core_Engagement_Type__c='SEC',Core_IsActive__c=true,Core_Technical_Engagement_Code__c='PFT');
@@ -82,14 +81,14 @@ public class Core_IPS_MoveContactWithCases_Batch_Test {
             objProd.IsActive = true;
             insert objProd;            
             
-            List<Asset> listOfAssets= TestUtilities.getAssetList(3);
+            List<Asset> listOfAssets= TestUtilities.getAssetList(10);
             for(Asset AssetRec : listOfAssets){
                 AssetRec.accountid= testAccount.id;
                 AssetRec.Product2Id=objProd.id;
             }
             insert listOfAssets;
             
-            List<Case> ListOfCases = TestUtilities.getListOfCases(3);
+            List<Case> ListOfCases = TestUtilities.getListOfCases(10);
             integer count=0;
             for(Case CaseRec : ListOfCases){
                 if(count<5){

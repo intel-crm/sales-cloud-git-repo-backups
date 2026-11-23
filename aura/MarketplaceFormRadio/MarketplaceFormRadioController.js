@@ -1,20 +1,9 @@
 ({
 
   doInit : function(component, event, helper) {
-    component.set('v.handleChange', $A.getCallback(function(cmp,id) {
-        if(!cmp.get('v.isChildRequired') || cmp.get('v.isL3Selected')){
-            component.set('v.touched', true);
-      		component.set('v.forceShowError', false);
-        } 
-       
-        
-      console.log(cmp.get('v.radio.label')); 
-      // IPA2.0 + US TWC4497-1631
-        // if(component.get('v.apiName')=="offering"){  
-      	// 	component.set('v.errorMessage',$A.get("$Label.c.PMP_SubCategory_Level3_ErrorMessage").replace('{0}', cmp.get('v.radio.label')));  
-        // 	component.set('v.isL3Selected',cmp.get('v.isL3Selected'));
-        // }
-              
+    component.set('v.handleChange', $A.getCallback(function(id) {
+      component.set('v.touched', true);
+      component.set('v.forceShowError', false);
       helper.setValue(component, helper, id);
     }));
     helper.setInitialValue(component, helper);

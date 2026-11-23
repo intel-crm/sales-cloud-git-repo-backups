@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>Goodspeed Computer Company Limited Partner User</description>
+    <description>Good Speed Computer Limited Partnership Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>Goodspeed Computer Company Limited Partner User</name>
+    <name>Good Speed Computer Limited Partnership Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>GoodSpeedComputerLimitedPartnershipPartnerManager</parentRole>
 </Role>

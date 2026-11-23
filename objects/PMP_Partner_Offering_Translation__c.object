@@ -168,19 +168,10 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>PMP_Chinese_Traditional_Txt__c</fullName>
-        <description>This holds the Chinese (Traditional) translation for the respective field</description>
-        <label>Chinese (Traditional) Text</label>
-        <length>32768</length>
-        <trackTrending>false</trackTrending>
-        <type>Html</type>
-        <visibleLines>25</visibleLines>
-    </fields>
-    <fields>
         <fullName>PMP_Chinese_Txt__c</fullName>
-        <description>This field holds the Chinese (Simplified) translation for the respective field</description>
+        <description>This field holds the Chinese translation for the respective field</description>
         <inlineHelpText>Chinese Text</inlineHelpText>
-        <label>Chinese (Simplified) Text</label>
+        <label>Chinese Text</label>
         <length>131072</length>
         <trackTrending>false</trackTrending>
         <type>Html</type>
@@ -209,46 +200,10 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>PMP_French_Txt__c</fullName>
-        <description>This holds the French translation for the respective field</description>
-        <label>French Text</label>
-        <length>131072</length>
-        <trackTrending>false</trackTrending>
-        <type>Html</type>
-        <visibleLines>25</visibleLines>
-    </fields>
-    <fields>
-        <fullName>PMP_German_Txt__c</fullName>
-        <description>This holds the German translation for the respective field</description>
-        <label>German Text</label>
-        <length>131072</length>
-        <trackTrending>false</trackTrending>
-        <type>Html</type>
-        <visibleLines>25</visibleLines>
-    </fields>
-    <fields>
-        <fullName>PMP_Italian_Txt__c</fullName>
-        <description>This holds the Italian translation for the respective field</description>
-        <label>Italian Text</label>
-        <length>131072</length>
-        <trackTrending>false</trackTrending>
-        <type>Html</type>
-        <visibleLines>25</visibleLines>
-    </fields>
-    <fields>
         <fullName>PMP_Japanese_Txt__c</fullName>
         <description>This holds the Japanese translation for the respective field</description>
         <inlineHelpText>Japanese Text</inlineHelpText>
         <label>Japanese Text</label>
-        <length>131072</length>
-        <trackTrending>false</trackTrending>
-        <type>Html</type>
-        <visibleLines>25</visibleLines>
-    </fields>
-    <fields>
-        <fullName>PMP_Korean_Txt__c</fullName>
-        <description>This holds the Korean translation for the respective field</description>
-        <label>Korean Text</label>
         <length>131072</length>
         <trackTrending>false</trackTrending>
         <type>Html</type>
@@ -265,33 +220,6 @@
         <trackTrending>false</trackTrending>
         <type>MasterDetail</type>
         <writeRequiresMasterRead>false</writeRequiresMasterRead>
-    </fields>
-    <fields>
-        <fullName>PMP_Portuguese_Brazilian_Txt__c</fullName>
-        <description>This holds the Portuguese (Brazilian) translation for the respective field</description>
-        <label>Portuguese (Brazilian) Text</label>
-        <length>131072</length>
-        <trackTrending>false</trackTrending>
-        <type>Html</type>
-        <visibleLines>25</visibleLines>
-    </fields>
-    <fields>
-        <fullName>PMP_Russian_Txt__c</fullName>
-        <description>This holds the Russian translation for the respective field</description>
-        <label>Russian Text</label>
-        <length>131072</length>
-        <trackTrending>false</trackTrending>
-        <type>Html</type>
-        <visibleLines>25</visibleLines>
-    </fields>
-    <fields>
-        <fullName>PMP_Spanish_Mexican_Txt__c</fullName>
-        <description>This holds the Spanish (Mexican) translation for the respective field</description>
-        <label>Spanish (Mexican) Text</label>
-        <length>131072</length>
-        <trackTrending>false</trackTrending>
-        <type>Html</type>
-        <visibleLines>25</visibleLines>
     </fields>
     <label>Partner Offering Translation</label>
     <listViews>

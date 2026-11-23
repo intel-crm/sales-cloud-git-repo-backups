@@ -211,6 +211,11 @@
         <columns>core_cpq_bm_level_nm__c</columns>
         <columns>CREATED_DATE</columns>
         <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>core_cpq_bm_level__c.core_cpq_bm_level</value>
+        </filters>
         <label>All</label>
     </listViews>
     <nameField>

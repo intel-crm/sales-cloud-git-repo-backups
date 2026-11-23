@@ -7,8 +7,6 @@
     <groups>CHD - Comp-NAS</groups>
     <groups>CHD - Comp-ETH</groups>
     <groups>CHD - Reporting</groups>
-    <groups>PSG-GAE-Software</groups>
-    <groups>PSG-GAE-Embedded</groups>
     <groups>IPS - Org Admin - CHD</groups>
     <groups>CHD - Cable-GAR</groups>
     <groups>CHD - Cable-WW</groups>
@@ -28,5 +26,5 @@
     <label>IPS - Org Admin - CHD</label>
     <loginAccess>false</loginAccess>
     <roles>IPS Product OrgAdmin</roles>
-    <roles>EMP_11298293_Kenta_Ueda</roles>
+    <roles>IPS Agent</roles>
 </DelegateGroup>

@@ -150,7 +150,7 @@
     <enableHistory>true</enableHistory>
     <enableLicensing>false</enableLicensing>
     <enableReports>true</enableReports>
-    <enableSearch>false</enableSearch>
+    <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>ControlledByParent</externalSharingModel>
@@ -249,7 +249,7 @@
     </fields>
     <fields>
         <fullName>CPT_SalesOKR_QuarterID__c</fullName>
-        <defaultValue>(&quot;2026, QUARTER 1&quot;)</defaultValue>
+        <defaultValue>(&quot;2024, QUARTER 1&quot;)</defaultValue>
         <externalId>false</externalId>
         <label>SalesOKRQuarterID</label>
         <length>20</length>

@@ -60,16 +60,14 @@ public with sharing class Core_MDF_UpdateBankDetails{
                     updateStatusMap.put(msgId,errorCnt);
                 }
             }
-
+            
             try{
                 for(Core_MDF_Bank__c bankRecord : [SELECT Id, Name, Core_MDF_Bank_Beneficiary_Name__c,
                                                         Core_MDF_Swift_Code__c, Core_MDF_DUNS__c,
                                                         Core_MDF_Routing_Number__c, Core_MDF_ESD_Hold_Indicator__c,
                                                         Core_MDF_Intermediary_Indicator__c, Core_MDF_Supplier_Number__c,
                                                         Core_MDF_Supplier_Name__c,Core_MDF_Bank_Location__c, Core_MDF_ESD_Update__c,
-                                                        Core_MDF_Bank_Account_Number__c, Core_MDF_Currency_cd__c, Core_MDF_IIM_Name_txt__c, Core_MDF_Supplier_City_txt__c, 
-                                                        Core_MDF_Supplier_Region_txt__c, Core_MDF_Supplier_Postal_Code_cd__c, 
-                                                        Core_MDF_Supplier_Country_txt__c
+                                                        Core_MDF_Bank_Account_Number__c, Core_MDF_Currency_cd__c, Core_MDF_IIM_Name_txt__c
                                                    FROM Core_MDF_Bank__c
                                                    WHERE Core_MDF_Supplier_Number__c IN :supplierStrSet AND
                                                          Core_MDF_Currency_cd__c IN :currencyStrSet]){
@@ -86,7 +84,7 @@ public with sharing class Core_MDF_UpdateBankDetails{
                 if(bankSetToBeUpdated != NULL && bankSetToBeUpdated.size() > 0){
                     bankListToBeUpdated.addAll(bankSetToBeUpdated);
                 }
-
+                
                 if(bankListToBeUpdated != NULL && bankListToBeUpdated.size() > 0){
                     //Database.SaveResult[] srList = Database.update(supplierNumCurrencyBankMapToBeInserted.values(), false);
                     Database.SaveResult[] srList = Database.update(bankListToBeUpdated, false);
@@ -137,30 +135,25 @@ public with sharing class Core_MDF_UpdateBankDetails{
     /*****************************************************************************************************
     Method Name:        validateBankChange
     @return  :          Core_MDF_Bank__c
-    @parameters:        jsonBank -
-                        bankRecord -
-    Description:
+    @parameters:        jsonBank - 
+                        bankRecord - 
+    Description:        
     Added By:           Accenture - SB - 12/07/2020
     Modified By:        Date:       Changes:
     ******************************************************************************************************/
     public static Core_MDF_Bank__c validateBankChange(Core_MDF_Bank__c jsonBank, Core_MDF_Bank__c bankRecord){
         if(jsonBank != NULL &&
            (bankRecord.Name != jsonBank.Name ||
-          // bankRecord.Core_MDF_Bank_Beneficiary_Name__c != jsonBank.Core_MDF_Bank_Beneficiary_Name__c ||
+           bankRecord.Core_MDF_Bank_Beneficiary_Name__c != jsonBank.Core_MDF_Bank_Beneficiary_Name__c ||
            bankRecord.Core_MDF_Swift_Code__c != jsonBank.Core_MDF_Swift_Code__c ||
            bankRecord.Core_MDF_DUNS__c != jsonBank.Core_MDF_DUNS__c ||
            bankRecord.Core_MDF_Routing_Number__c != jsonBank.Core_MDF_Routing_Number__c ||
            bankRecord.Core_MDF_Intermediary_Indicator__c != jsonBank.Core_MDF_Intermediary_Indicator__c ||
            bankRecord.Core_MDF_ESD_Hold_Indicator__c != jsonBank.Core_MDF_ESD_Hold_Indicator__c ||
            bankRecord.Core_MDF_Bank_Location__c != jsonBank.Core_MDF_Bank_Location__c ||
-           bankRecord.Core_MDF_Supplier_Name__c != jsonBank.Core_MDF_Supplier_Name__c ||
-           bankRecord.Core_MDF_Currency_cd__c != jsonBank.Core_MDF_Currency_cd__c ||
-           bankRecord.Core_MDF_Supplier_City_txt__c != jsonBank.Core_MDF_Supplier_City_txt__c ||
-           bankRecord.Core_MDF_Supplier_Region_txt__c != jsonBank.Core_MDF_Supplier_Region_txt__c ||
-           bankRecord.Core_MDF_Supplier_Postal_Code_cd__c != jsonBank.Core_MDF_Supplier_Postal_Code_cd__c ||
-           bankRecord.Core_MDF_Supplier_Country_txt__c != jsonBank.Core_MDF_Supplier_Country_txt__c)){
-            bankRecord.Name = !String.isBlank(jsonBank.Name) ? jsonBank.Name : bankRecord.Name;
-            //bankRecord.Core_MDF_Bank_Beneficiary_Name__c = jsonBank.Core_MDF_Bank_Beneficiary_Name__c;
+           bankRecord.Core_MDF_Supplier_Name__c != jsonBank.Core_MDF_Supplier_Name__c)){
+            bankRecord.Name = jsonBank.Name;
+            bankRecord.Core_MDF_Bank_Beneficiary_Name__c = jsonBank.Core_MDF_Bank_Beneficiary_Name__c;
             bankRecord.Core_MDF_Swift_Code__c = jsonBank.Core_MDF_Swift_Code__c;
             bankRecord.Core_MDF_DUNS__c = jsonBank.Core_MDF_DUNS__c;
             bankRecord.Core_MDF_Routing_Number__c = jsonBank.Core_MDF_Routing_Number__c;
@@ -170,10 +163,6 @@ public with sharing class Core_MDF_UpdateBankDetails{
             bankRecord.Core_MDF_Supplier_Name__c = jsonBank.Core_MDF_Supplier_Name__c;
             bankRecord.Core_MDF_ESD_Update__c = true;
             bankRecord.Core_MDF_IIM_Name_txt__c = jsonBank.Core_MDF_IIM_Name_txt__c;
-            bankRecord.Core_MDF_Supplier_City_txt__c = jsonBank.Core_MDF_Supplier_City_txt__c;
-            bankRecord.Core_MDF_Supplier_Region_txt__c = jsonBank.Core_MDF_Supplier_Region_txt__c;
-            bankRecord.Core_MDF_Supplier_Postal_Code_cd__c = jsonBank.Core_MDF_Supplier_Postal_Code_cd__c;
-            bankRecord.Core_MDF_Supplier_Country_txt__c = jsonBank.Core_MDF_Supplier_Country_txt__c;
         }
         return bankRecord;
     }
@@ -217,7 +206,7 @@ public with sharing class Core_MDF_UpdateBankDetails{
     private static Core_MDF_Bank__c parseBank(Core_MDF_BankJSONParser jsonParsed, Id ciimId){
         Core_MDF_Bank__c bankRecord = new Core_MDF_Bank__c();
         if(jsonParsed.bnk_nm != NULL){bankRecord.Name = jsonParsed.bnk_nm.trim();}
-        /*if(jsonParsed.bnfcy_nm != NULL){bankRecord.Core_MDF_Bank_Beneficiary_Name__c = jsonParsed.bnfcy_nm.trim();}*/
+        if(jsonParsed.bnfcy_nm != NULL){bankRecord.Core_MDF_Bank_Beneficiary_Name__c = jsonParsed.bnfcy_nm.trim();}
         if(jsonParsed.swift_cd != NULL){bankRecord.Core_MDF_Swift_Code__c = jsonParsed.swift_cd.trim();}
         if(jsonParsed.DUNS_NBR != NULL){bankRecord.Core_MDF_DUNS__c = jsonParsed.DUNS_NBR.trim();}
         if(jsonParsed.bnk_nbr != NULL){bankRecord.Core_MDF_Routing_Number__c = jsonParsed.bnk_nbr.trim();}
@@ -235,12 +224,8 @@ public with sharing class Core_MDF_UpdateBankDetails{
         //Adding the IIM Id
         bankRecord.Core_MDF_IIM_Name_txt__c = ciimId;
         //Adding supplier name
-        if(jsonParsed.suppl_nm != NULL){bankRecord.Core_MDF_Supplier_Name__c = jsonParsed.suppl_nm.trim();}
-        if(jsonParsed.currency_cd != NULL){bankRecord.Core_MDF_Currency_cd__c = jsonParsed.currency_cd.trim();}
-        if(jsonParsed.suppliercity != NULL){bankRecord.Core_MDF_Supplier_City_txt__c = jsonParsed.suppliercity.trim();}
-        if(jsonParsed.supplierregion != NULL){bankRecord.Core_MDF_Supplier_Region_txt__c = jsonParsed.supplierregion.trim();}
-        if(jsonParsed.supplierpostal != NULL){bankRecord.Core_MDF_Supplier_Postal_Code_cd__c = jsonParsed.supplierpostal.trim();}
-        if(jsonParsed.suppliercountry != NULL){bankRecord.Core_MDF_Supplier_Country_txt__c = jsonParsed.suppliercountry.trim();}
+        if(jsonParsed.suppl_nm != NULL){bankRecord.Core_MDF_Supplier_Name__c = jsonParsed.suppl_nm.trim();}        
+        if(jsonParsed.currency_cd != NULL){bankRecord.Core_MDF_Currency_cd__c = jsonParsed.currency_cd.trim();}        
         return bankRecord;
     }
 }

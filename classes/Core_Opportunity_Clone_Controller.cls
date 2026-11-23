@@ -228,11 +228,11 @@ public without sharing class Core_Opportunity_Clone_Controller {   //TWC3123-531
         //US102793 : Added a Custom Label to store the error messages -- Ashwin
         List<String> errMsgList = System.label.Core_Opp_CloneCont_Msgs.split(';');
         String strFields = getAllFields('Opportunity');        
-        String oppQuery = 'SELECT Core_Technical_Owner__r.Profile.Name, ' + strFields + ' FROM Opportunity WHERE Id = \'' + currentOpportunity.Id + '\'';       
+        String oppQuery = 'SELECT Core_Technical_Owner__r.Profile.Name, ' + strFields + ' FROM Opportunity WHERE Id = \'' + String.escapeSingleQuotes(currentOpportunity.Id) + '\'';       
         
         //TWC3123-5376: codescan fix : Avoid Untrusted/Unescaped Variables in DML Query(possible soql injection)-added String.escapeSingleQuotes
         Opportunity oppRec = Database.query(String.escapeSingleQuotes(oppQuery).replaceAll('\\\\', '')); //(oppQuery);
-        
+        //oppRec.Opportunity_Focus__c = ''; // Areefa
         //US103708-Added logic for insert the Clone Opportunity added by-Rajesh.   
         oppRec=insertCloneOpportunity(oppRec,currentOpportunity);
         
@@ -398,15 +398,17 @@ public without sharing class Core_Opportunity_Clone_Controller {   //TWC3123-531
         OppRec.Core_IsClone__c = true; // added for TWC3123-2361
         oppRec.Opportunity_Focus__c = '';   
         oppRec.CRM_Opportunity_Revenue__c = 0;
-        oppRec.Core_Opportunity_Products__c = null;//added forr TWC4767-5208
         //TWC4767-4391------START------------
         oppRec.CRM_Audit_Close_Date__c = null;
         oppRec.CRM_Audit_Fail_Reason__c = null;
         oppRec.CRM_Audit_Start_Date__c = null;
         oppRec.CRM_Audit_Status__c=null;
-	oppRec.CRM_Auditor_Comments__c = null;
-	oppRec.CRM_Auditor_Name__c = null;
-	//TWC4767-4391-----------END------------        
+		oppRec.CRM_Auditor_Comments__c = null;
+		oppRec.CRM_Auditor_Name__c = null;
+		//TWC4767-4391-----------END------------ 
+		oppRec.Core_DesignWin_KPI_Txt__c = null;
+        oppRec.Core_ProductionWin_KPI_Txt__c = null;
+		oppRec.Core_Opportunity_Products__c  = null;       
            for (Schema.FieldSetMember fsm : SObjectType.Opportunity.FieldSets.OPTY_VBS_FieldSet.getFields()) {
                String fieldPath = fsm.getFieldPath();
                if (String.valueOf(fsm.getType())=='BOOLEAN')
@@ -816,7 +818,7 @@ public without sharing class Core_Opportunity_Clone_Controller {   //TWC3123-531
             'FROM OpportunityLineItem ' + 
             'WHERE Opportunity.Id = \'' + oldOppId + '\'' + 
             '  AND Product2.IsActive = true ' + 
-           '  AND Product2.isDeleted = false AND Core_Status__c !=\'' + Label.Core_LineItem_Status + '\''+'AND Core_Vendor_InActive__c!=true';  
+           '  AND Product2.isDeleted = false AND Core_Status__c !=\'' + Label.Core_LineItem_Status   + '\''+'AND Core_Vendor_InActive__c!=true';  
         //TWC3123-5376: codescan fix : Avoid Untrusted/Unescaped Variables in DML Query(possible soql injection)-added String.escapeSingleQuotes
         List<OpportunityLineItem> lstOppLineItem = Database.query(String.escapeSingleQuotes(itemQuery).replaceAll('\\\\', ''));
 
@@ -950,7 +952,7 @@ public without sharing class Core_Opportunity_Clone_Controller {   //TWC3123-531
         List<Opportunity_Solution_Area__c> lstOppSolution = Database.query(String.escapeSingleQuotes(itemQuery).replaceAll('\\\\', ''));
         
         List<Opportunity_Solution_Area__c> lstNewSolution = new List<Opportunity_Solution_Area__c>();
-        Opportunity_Solution_Area__c newOppSolution;
+        //Opportunity_Solution_Area__c newOppSolution;
         
         for (Opportunity_Solution_Area__c itemRec : lstOppSolution) {
    
@@ -1006,8 +1008,11 @@ public without sharing class Core_Opportunity_Clone_Controller {   //TWC3123-531
     }
     
     public String getAllFields(String sobjectname){
-        Map<String, Schema.SObjectField> fields = Schema.getGlobalDescribe().get(sobjectname).getDescribe().SObjectType.getDescribe().fields.getMap();
-        
+        //Map<String, Schema.SObjectField> fields = Schema.getGlobalDescribe().get(sobjectname).getDescribe().SObjectType.getDescribe().fields.getMap();
+         
+        SObjectType targetType = ((SObject) Type.forName(sobjectname).newInstance()).getSObjectType();
+        Map<String, Schema.SObjectField> fields = targetType.getDescribe().fields.getMap();
+
         List<String> accessiblefields = new List<String>();
         for(Schema.SObjectField field : fields.values()){
             if(field.getDescribe().isAccessible())

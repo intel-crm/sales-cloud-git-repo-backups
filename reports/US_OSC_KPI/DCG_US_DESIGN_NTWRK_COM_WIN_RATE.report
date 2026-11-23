@@ -109,13 +109,13 @@
         <aggregateTypes>Sum</aggregateTypes>
         <field>Opportunity.Core_Opportunity_Count__c</field>
     </columns>
-    <description>NEX Networking Design Dashboard</description>
+    <description>Optys with Products</description>
     <filter>
         <criteriaItems>
             <column>Opportunity.Core_Sales_Groups__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
+            <operator>equals</operator>
             <value>US Sales Group</value>
         </criteriaItems>
         <criteriaItems>
@@ -133,32 +133,18 @@
             <value>Design Win,Production Win,Lost,Cancelled,Production Lost,Production Cancelled</value>
         </criteriaItems>
         <criteriaItems>
+            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>DCG</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>Opportunity.Core_Product_Segment__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Comms Infra. / Networking</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Exclude_From_KPIs__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>0</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Commissionable__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Yes</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>CLOSE_DATE</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>equals</operator>
-            <value>LAST_YEAR</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -178,7 +164,7 @@
         <field>FULL_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>US DESIGN NEX Networking $ WIN RATE</name>
+    <name>DCG US DESIGN NTWRK COM $ WIN RATE</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -202,6 +188,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <interval>INTERVAL_CURY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

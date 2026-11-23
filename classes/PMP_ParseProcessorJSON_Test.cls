@@ -9,8 +9,8 @@
 *************************************************************************************************/
 @isTest
 public class PMP_ParseProcessorJSON_Test {
-    //IPA 2.0- US-TWC729-7980
-    /*@isTest
+    
+    @isTest
     public static void parseEnglishProcessorJSONTest(){
         Test.startTest();
         
@@ -130,8 +130,8 @@ public class PMP_ParseProcessorJSON_Test {
         
         insert spec_value_Proc_CoreX;
         system.assertNotEquals(spec_value_Proc_CoreX.Id,null);
-        PMP_ParseProcessorJSON.languageCode = 'en_US';
-        PMP_ParseProcessorJSON.parseProcessorJSON('Processors_Attribute_Test');
+        PMP_ParseProcessorJSON.strBaseKey = 'en_US';
+        PMP_ParseProcessorJSON.ParseProcessorJSON('Processors_Attribute_Test');
         Test.stopTest();          
     }
     
@@ -255,8 +255,8 @@ public class PMP_ParseProcessorJSON_Test {
         
         insert spec_value_Proc_CoreX;
         system.assertNotEquals(spec_value_Proc_CoreX.Id,null);
-        PMP_ParseProcessorJSON.languageCode = 'zh_CN';
-        PMP_ParseProcessorJSON.parseProcessorJSON('Processors_Attribute_Test');
+        PMP_ParseProcessorJSON.strBaseKey = 'zh_CN';
+        PMP_ParseProcessorJSON.ParseProcessorJSON('Processors_Attribute_Test');
         Test.stopTest();          
     }
     
@@ -380,8 +380,8 @@ public class PMP_ParseProcessorJSON_Test {
         
         insert spec_value_Proc_CoreX;
         system.assertNotEquals(spec_value_Proc_CoreX.Id,null);
-        PMP_ParseProcessorJSON.languageCode = 'ja_JP';
-        PMP_ParseProcessorJSON.parseProcessorJSON('Processors_Attribute_Test');
+        PMP_ParseProcessorJSON.strBaseKey = 'ja_JP';
+        PMP_ParseProcessorJSON.ParseProcessorJSON('Processors_Attribute_Test');
         Test.stopTest();          
-    }*/
+    }
 }

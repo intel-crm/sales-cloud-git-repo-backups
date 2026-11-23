@@ -33,6 +33,18 @@
         <name>Core_KPI_BU_Owner__c</name>
     </fields>
     <fields>
+        <label><!-- KPI Current Status --></label>
+        <name>Core_KPI_Current_Status__c</name>
+        <picklistValues>
+            <masterLabel>Is KPI Failed</masterLabel>
+            <translation><!-- Is KPI Failed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Is KPI Refresh</masterLabel>
+            <translation><!-- Is KPI Refresh --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
         <label><!-- KPI Description --></label>
         <name>Core_KPI_Description__c</name>
     </fields>
@@ -172,9 +184,21 @@
         <name>Core_isDeleted__c</name>
     </fields>
     <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Quote associated to this Opportunity is Submitted for Review. No Edits allowed on Opportunity during the Review process. --></errorMessage>
+        <name>Core_OPTY_KPI_QuoteSubmittedStatusLock</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Test Dummy Success --></errorMessage>
+        <name>test_Dummy_Validation_Rule</name>
+    </validationRules>
     <webLinks>
         <label><!-- Core_Opportunity_Credit --></label>
         <name>Core_Opportunity_Credit</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Refresh_KPI_LWC --></label>
+        <name>Refresh_KPI_LWC</name>
     </webLinks>
     <webLinks>
         <label><!-- Refresh_KPIs --></label>

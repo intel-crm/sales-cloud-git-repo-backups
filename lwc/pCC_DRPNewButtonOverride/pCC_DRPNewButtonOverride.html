@@ -1,0 +1,47 @@
+<template>
+    <template if:true={showModal}>
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open "> //custom-modal-width
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">New Design Registration Product - Partner</h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <lightning-card title="New Design Registration Product - Partner" ><!--icon-name="custom:custom14"-->
+                        <div class="slds-grid slds-gutters">
+                            <div class="slds-col slds-size_1-of-2">
+                                <div class="slds-m-around_medium">
+                                    <lightning-input label="Design Registration" required value={designRegistration} ></lightning-input>
+                                    <lightning-input label="Product" value={productO}></lightning-input>
+                                    <lightning-input label="Quantity (Full Production Year)" value={quantity}></lightning-input>
+                                    <lightning-input label="Target Resale Price" value={targetResalePrice}></lightning-input>
+                                    <lightning-textarea label="Target Resale Price Note" value={targetResalePriceNote}></lightning-textarea>
+                                </div>
+                            </div>
+                            <div class="slds-col slds-size_1-of-2">
+                                <div class="slds-m-around_medium">
+                                    <lightning-input label="Design Resigtration Line ID" value={productO} readonly></lightning-input>
+                                    <lightning-input label="OEM Name" value={oemName}></lightning-input>
+                                    <lightning-input label="Write In OEM Name" value={writeInOemName}></lightning-input>
+                                    <lightning-input label="Competitor Name" value={competitorName}></lightning-input>
+                                    <lightning-input label="Competitor OEM Name" value={competitorOemName}></lightning-input>
+                                    <lightning-input label="Competitor System Model" value={competitorSystemModel}></lightning-input>
+                                    <lightning-input label="Competitor Write In OEM Name" value={competitorWriteInOemName}></lightning-input>
+                                    <lightning-input label="Write In Competitor Product" value={writeInCompetitorProduct}></lightning-input>
+                                </div>
+                            </div>
+                        </div>
+                    </lightning-card>
+                </div>
+                <footer class="slds-modal__footer">
+                    <button class="slds-button slds-button_neutral" onclick={handleCancel}>Cancel</button>
+                    
+
+                    <button class="slds-button slds-button_neutral" onclick={handleCancel}>Save & New</button>
+
+                    <button class="slds-button slds-button_brand" onclick={handleSave}>Save</button>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+</template>

@@ -233,7 +233,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Lacomble,Nuyen,Todd Phillips,Segars,Tonya Cosby,Noe Garcia,Elizabeth McGee,Gregory Peterson,Tobon,Claire Shults,Brightwell,Gerry Gonzalez</value>
+            <value>Lacomble,Nuyen,Todd Phillips,Frieda,Tonya Cosby,Noe Garcia,Elizabeth McGee,Gregory Peterson,Tobon,Claire Shults,Brightwell,Gerry Gonzalez</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -263,6 +263,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

@@ -154,10 +154,20 @@
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
     <fields>
+        <fullName>Is_Intel_Covered_Account__c</fullName>
+        <formula>AND( Pricing_RequestID__r.Parent.Core_Account_Record_Type__c = &apos;Intel Account&apos;,
+ Pricing_RequestID__r.Parent.Core_Covered_Account__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Is Intel Covered Account</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>Pricing_Compliance_Watch_List__c</fullName>
         <label>Compliance Watch List</label>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>MultiselectPicklist</type>
         <valueSet>
@@ -207,36 +217,6 @@
                     <fullName>NOSNCTN</fullName>
                     <default>false</default>
                     <label>No Sanction or Embargo</label>
-                </value>
-                <value>
-                    <fullName>REL</fullName>
-                    <default>false</default>
-                    <label>Released</label>
-                </value>
-                <value>
-                    <fullName>EMBUN</fullName>
-                    <default>false</default>
-                    <label>Embargo</label>
-                </value>
-                <value>
-                    <fullName>SPLUS</fullName>
-                    <default>false</default>
-                    <label>Sanctioned Party List (United States)</label>
-                </value>
-                <value>
-                    <fullName>SPLCN</fullName>
-                    <default>false</default>
-                    <label>SPLCN – Sanctioned Party List (China)</label>
-                </value>
-                <value>
-                    <fullName>WIP</fullName>
-                    <default>false</default>
-                    <label>Review Pending</label>
-                </value>
-                <value>
-                    <fullName>BLK</fullName>
-                    <default>false</default>
-                    <label>Blocked</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -1404,9 +1384,9 @@
                     <label>Tunisia</label>
                 </value>
                 <value>
-                    <fullName>Turkey</fullName>
+                    <fullName>Turkiye</fullName>
                     <default>false</default>
-                    <label>Turkey</label>
+                    <label>Turkiye</label>
                 </value>
                 <value>
                     <fullName>Turkmenistan</fullName>
@@ -1568,26 +1548,6 @@
                     <default>false</default>
                     <label>Yugoslavia</label>
                 </value>
-                <value>
-                    <fullName>Czechia</fullName>
-                    <default>false</default>
-                    <label>Czechia</label>
-                </value>
-                <value>
-                    <fullName>North Macedonia</fullName>
-                    <default>false</default>
-                    <label>North Macedonia</label>
-                </value>
-                <value>
-                    <fullName>Eswatini</fullName>
-                    <default>false</default>
-                    <label>Eswatini</label>
-                </value>
-                <value>
-                    <fullName>Turkiye</fullName>
-                    <default>false</default>
-                    <label>Turkiye</label>
-                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -1595,13 +1555,12 @@
         <fullName>Pricing_Is_Sanctioned__c</fullName>
         <formula>IF(OR(
 INCLUDES(Pricing_Compliance_Watch_List__c ,&apos;EC&apos;),
-INCLUDES(Pricing_Compliance_Watch_List__c ,&apos;NOPAYOUT&apos;),
+INCLUDES(Pricing_Compliance_Watch_List__c ,&apos;NOPAYOUT&apos;), 
 INCLUDES(Pricing_Compliance_Watch_List__c ,&apos;NOPAYIN&apos;),
 INCLUDES(Pricing_Compliance_Watch_List__c ,&apos;PAYCOND&apos;),
 INCLUDES(Pricing_Compliance_Watch_List__c ,&apos;NOTRDOUT&apos;),
 INCLUDES(Pricing_Compliance_Watch_List__c ,&apos;TRDCOND&apos;),
-INCLUDES(Pricing_Compliance_Watch_List__c ,&apos;NOTRDIN&apos;),
-INCLUDES(Pricing_Compliance_Watch_List__c ,&apos;BLK&apos;)),true, false)</formula>
+INCLUDES(Pricing_Compliance_Watch_List__c ,&apos;NOTRDIN&apos;)),true, false)</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>On Restricted Party List</label>
         <trackHistory>false</trackHistory>
@@ -1620,9 +1579,20 @@ INCLUDES(Pricing_Compliance_Watch_List__c ,&apos;BLK&apos;)),true, false)</formu
         <type>Lookup</type>
     </fields>
     <fields>
+        <fullName>Pricing_Request_ID__c</fullName>
+        <externalId>false</externalId>
+        <label>Request ID Text Old</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Pricing_Unified_Country_EndCustomer_Id__c</fullName>
         <externalId>false</externalId>
-        <label>Unified Country End Customer Id</label>
+        <label>Unified Country End Customer ID</label>
         <length>255</length>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -1647,7 +1617,7 @@ INCLUDES(Pricing_Compliance_Watch_List__c ,&apos;BLK&apos;)),true, false)</formu
         <externalId>false</externalId>
         <formula>Pricing_Unified_EndCustomer_Act_Mapping__r.Pricing_Unified_EndCustomer_Id__c</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Unified End Customer Id</label>
+        <label>Unified End Customer ID</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -1655,6 +1625,11 @@ INCLUDES(Pricing_Compliance_Watch_List__c ,&apos;BLK&apos;)),true, false)</formu
         <unique>false</unique>
     </fields>
     <label>Unified End Customer Country Mapping</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
     <listViews>
         <fullName>Pricing_L1_L2_Owner_Queue_Pricing_UnifiedEndCustomerCountryMapping</fullName>
         <filterScope>Queue</filterScope>

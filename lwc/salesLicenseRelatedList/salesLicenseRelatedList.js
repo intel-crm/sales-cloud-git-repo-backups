@@ -1,5 +1,5 @@
 import { LightningElement, api, wire, track } from 'lwc';
-/*import { getRecord } from 'lightning/uiRecordApi';
+import { getRecord } from 'lightning/uiRecordApi';
 import getDelegateAdmin from "@salesforce/apex/Sales_LicenseGenerationGenericFunctions.getDelegateAdmin";
 import getContactId from "@salesforce/apex/Sales_LicenseGenerationGenericFunctions.getPrimaryCtId";
 import delegateredirect from '@salesforce/label/c.sales_delegateredirect';
@@ -13,9 +13,9 @@ const columns = [
 
 // get an License Record Field (Primary Admin Contact)
 const FIELDS = ['Sales_License__c.Sales_License_Primary_Admin_Contact__c'];
-*/
+
 export default class SalesLicenseRelatedList extends LightningElement {
-    /*@api licPrimAdmContactId;
+    @api licPrimAdmContactId;
     @track tableSize;
     @api licenseData = false;
     @api adminData;
@@ -90,7 +90,7 @@ export default class SalesLicenseRelatedList extends LightningElement {
                                         item.urlValue = null;
                                     }*/
 
-                                    /*if (item.Sales_License_DlgAdmin_Contact__r != null && item.Sales_License_DlgAdmin_Contact__r != undefined) {
+                                    if (item.Sales_License_DlgAdmin_Contact__r != null && item.Sales_License_DlgAdmin_Contact__r != undefined) {
                                         console.log('Parse -->' + JSON.stringify(item.Sales_License_DlgAdmin_Contact__r));
                                         item.adminName = item.Sales_License_DlgAdmin_Contact__r.Name;
                                     } else {
@@ -113,7 +113,7 @@ export default class SalesLicenseRelatedList extends LightningElement {
                         console.log('apex call err' + JSON.stringify(err));
                     });
             }
-
+      
             this.tablename = 'Delegate Admin (0)';
             console.log('no delegate records');
         })
@@ -122,5 +122,5 @@ export default class SalesLicenseRelatedList extends LightningElement {
         });
 
 
-    }*/
+    }
 }

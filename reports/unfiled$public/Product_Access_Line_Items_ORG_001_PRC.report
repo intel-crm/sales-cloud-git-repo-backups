@@ -28,7 +28,7 @@
         <field>Core_IPS_MAP_PAR__c.Core_Support_Org_Name__c</field>
     </columns>
     <columns>
-        <field>CHILD_CREATED_NAME</field>
+        <field>CUST_CREATED_NAME</field>
     </columns>
     <filter>
         <criteriaItems>

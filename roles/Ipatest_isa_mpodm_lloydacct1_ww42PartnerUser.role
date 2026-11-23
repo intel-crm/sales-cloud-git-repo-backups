@@ -6,5 +6,5 @@
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>Ipatest_isa_mpodm_lloydacct1_ww42 Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Inactive_Accounts_Role</parentRole>
+    <parentRole>Ipatest_isa_mpodm_lloydacct1_ww42PartnerManager</parentRole>
 </Role>

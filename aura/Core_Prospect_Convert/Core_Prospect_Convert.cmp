@@ -1,0 +1,61 @@
+<aura:component implements="force:lightningQuickActionWithoutHeader,force:hasRecordId" >
+    <aura:attribute name="newLeadCheckbox" type="Boolean" />
+    <aura:attribute name="newLeadCheckboxValue" type="Boolean"/>
+    <aura:attribute name="exsLeadCheckboxValue" type="Boolean" />
+    <aura:attribute name="Name" type="String" />
+    <aura:attribute name="Phone" type="String" />
+    <aura:attribute name="Title" type="String" />
+    <aura:attribute name="Email" type="String" />
+    <aura:attribute name="LeadName" type="SObject" />
+    <!-- Create attribute to store lookup value as a sObject-->
+    <aura:attribute name="selectedLookUpRecord" type="sObject" default="{}"/>
+    
+    
+    <center><h1 style="font-size:18px">Convert Prospect to Lead</h1></center> <br/>
+    
+    <p>
+        <div class="First_Half">
+            <ui:inputRadio  class="myCheckbox" aura:id="checkbox" label="Create new Lead" value="{!v.newLeadCheckboxValue}" change="{!c.onCheck}"/>
+        </div>
+        
+        
+        <div class="uiInput uiInputRadio uiInput--default uiInput--radio" style="text-align:right;margin-top:-17px">
+            <label class="uiLabel-right form-element__label uiLabel">
+                <ui:inputRadio aura:id="r0" name="others" label="" value="{!v.exsLeadCheckboxValue}" change="{!c.onCheck1}"/>
+                <span>Choose Existing Lead</span>
+            </label>
+        </div>
+        <!--
+        <div class="Second_Half" style="text-align:right;margin-top:-17px">
+            <ui:inputRadio  class="myCheckbox12" aura:id="checkbox" label="Choose Existing Lead" change="{!c.onCheck}"/>
+        </div>-->
+        
+    </p>
+    
+    <aura:if isTrue="{!v.newLeadCheckboxValue}">
+        <lightning:recordEditForm objectApiName="Lead" onsuccess="{!c.handleSuccess}">
+            <lightning:inputField fieldName="Name" value="{!v.Name}"/>
+            <lightning:inputField fieldName="Title" value="{!v.Title}" />
+            <lightning:inputField fieldName="Email" value="{!v.Email}"/>
+            <lightning:inputField fieldName="Phone" value="{!v.Phone}"/>
+            
+            <div class="slds-m-top_medium">
+                <lightning:button variant="brand" label="Create Lead" title="Brand action" onclick="{! c.handleLeadCreation }" />
+            </div>
+        </lightning:recordEditForm>
+    </aura:if> 
+    
+    <aura:if isTrue="{!v.exsLeadCheckboxValue}">
+        <c:customLookup objectAPIName="contact" IconName="standard:contact" selectedRecord="{!v.selectedLookUpRecord}" label="Contact Name"/>
+        <lightning:recordEditForm objectApiName="Core_Prospect__c" onsuccess="{!c.handleSuccess}">
+            <lightning:inputField fieldName="Lead__c" value="{!v.LeadName}"/>
+        </lightning:recordEditForm>
+        <div class="slds-m-top_medium">
+            <lightning:button variant="brand" label="Convert Prospect" title="Brand action" onclick="{! c.handleLeadCreation }" />
+        </div>
+        <!-- here c: is org. namespace prefix-->
+    </aura:if>
+    
+    
+    
+</aura:component>

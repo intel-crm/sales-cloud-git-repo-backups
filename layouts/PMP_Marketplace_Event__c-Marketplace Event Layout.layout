@@ -19,18 +19,6 @@
                 <behavior>Required</behavior>
                 <field>PMP_Marketplace_Desc__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>PMP_Event_Marquee_Desc_Txt__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>PMP_Event_Learn_More_Link_Txt__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>PMP_Event_Screen_Reader_Txt__c</field>
-            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -104,8 +92,7 @@
         <relatedList>PMP_Marketplace_Event_Partner__c.PMP_Event_Id__c</relatedList>
     </relatedLists>
     <relatedLists>
-        <fields>PMP_Partner_Offering__c.PMP_Offering_Nm_Hyperlink__c</fields>
-        <fields>PMP_Partner_Offering__c.PMP_Partner_Offering_Lifecycle_Status_Nm__c</fields>
+        <fields>PMP_Partner_Offering__c.NAME</fields>
         <relatedList>PMP_Marketplace_Event_Offering__c.PMP_Event_Id__c</relatedList>
     </relatedLists>
     <relatedLists>
@@ -123,7 +110,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h3b00000eyg1d</masterLabel>
+        <masterLabel>00h0n000000Rro1</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

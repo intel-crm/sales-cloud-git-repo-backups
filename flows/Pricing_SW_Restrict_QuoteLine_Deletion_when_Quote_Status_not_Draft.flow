@@ -6,7 +6,7 @@
         <name>Opp_Product_Status_Lost_Error_Message</name>
         <label>Opp Product Status Lost Error Message</label>
         <locationX>50</locationX>
-        <locationY>611</locationY>
+        <locationY>719</locationY>
         <customErrorMessages>
             <errorMessage>{!$Label.Pricing_SW_OppProductStatusLostRestrictQLDeletion}</errorMessage>
             <isFieldError>false</isFieldError>
@@ -16,7 +16,7 @@
         <name>Quote_Status_Not_Draft_Error_Message</name>
         <label>Quote Status Not Draft Error Message</label>
         <locationX>314</locationX>
-        <locationY>611</locationY>
+        <locationY>719</locationY>
         <customErrorMessages>
             <errorMessage>{!$Label.Pricing_SW_RestrictQuoteLineDeletion}</errorMessage>
             <isFieldError>false</isFieldError>
@@ -25,9 +25,21 @@
     <decisions>
         <name>Is_Quote_Status_not_Draft</name>
         <label>Is Quote Status not Draft?</label>
-        <locationX>314</locationX>
-        <locationY>503</locationY>
+        <locationX>182</locationX>
+        <locationY>611</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>ByPassing_Flow_for_Custom_Setting_User</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_User_Records.Pricing_SW_FlowByPass__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>ByPassing Flow for Custom Setting User</label>
+        </rules>
         <rules>
             <name>Opp_Product_Status_Lost_Restrict_QL_Deletion</name>
             <conditionLogic>and</conditionLogic>
@@ -93,11 +105,11 @@
     <recordLookups>
         <name>Get_Opportunity_Products_with_Lost_Status</name>
         <label>Get Opportunity Products with Lost Status</label>
-        <locationX>314</locationX>
+        <locationX>182</locationX>
         <locationY>395</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Is_Quote_Status_not_Draft</targetReference>
+            <targetReference>Get_User_Records</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -121,7 +133,7 @@
     <recordLookups>
         <name>Get_Software_Quote_Records</name>
         <label>Get Software Quote Records</label>
-        <locationX>314</locationX>
+        <locationX>182</locationX>
         <locationY>287</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -139,8 +151,36 @@
         <object>SBQQ__Quote__c</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
+    <recordLookups>
+        <name>Get_User_Records</name>
+        <label>Get User Records</label>
+        <locationX>182</locationX>
+        <locationY>503</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Is_Quote_Status_not_Draft</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Pricing_SW_FirstNameofUser__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$User.FirstName</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Pricing_SW_LastNameofUser__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$User.LastName</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Pricing_SW_ByPassQuoteDeletetionFlow__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
     <start>
-        <locationX>188</locationX>
+        <locationX>56</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Get_Software_Quote_Records</targetReference>

@@ -1,0 +1,5 @@
+<apex:page controller="ChartController" renderAs="pdf" showHeader="false">
+    <h1>Sales Report</h1>
+    <apex:image url="{!chartUrl}" width="600" height="400" />
+    <!-- Additional content -->
+</apex:page>

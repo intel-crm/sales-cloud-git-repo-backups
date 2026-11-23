@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExpressionSetObjectAlias xmlns="http://soap.sforce.com/2006/04/metadata">
+    <dataType>sObject</dataType>
+    <mappings>
+        <fieldAlias>SIPP</fieldAlias>
+        <sourceFieldName>Pricing_SIPP_Cb__c</sourceFieldName>
+    </mappings>
+    <mappings>
+        <fieldAlias>ProductName</fieldAlias>
+        <sourceFieldName>Pricing_Product_Name__c</sourceFieldName>
+    </mappings>
+    <objectApiName>SBQQ__QuoteLine__c</objectApiName>
+    <usageType>Bre</usageType>
+</ExpressionSetObjectAlias>

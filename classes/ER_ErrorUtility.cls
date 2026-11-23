@@ -32,6 +32,8 @@ public with Sharing class ER_ErrorUtility {
             {insert objCLE;}
             
         }catch(Exception e){
+            system.debug('Error Cause ==>Log Entry -->'+ e.getCause());
+            system.debug('Error Message==>Log Entry -->'+ e.getMessage());
         }
         
     }

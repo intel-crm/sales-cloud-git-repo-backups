@@ -29,7 +29,7 @@ Workflow rule description: Update At Risk Created Date if there is any change in
         <name>mainUpdate</name>
         <label>mainUpdate</label>
         <locationX>176</locationX>
-        <locationY>335</locationY>
+        <locationY>323</locationY>
         <inputAssignments>
             <field>Core_At_Risk_Created_Date__c</field>
             <value>

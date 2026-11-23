@@ -5,6 +5,14 @@
         <value>Core Bypass Validation Rule</value>
     </caseValues>
     <fields>
+        <label><!-- ByPassVal --></label>
+        <name>ByPassVal__c</name>
+    </fields>
+    <fields>
+        <label><!-- Bypass Account Flow --></label>
+        <name>Bypass_Account_Flow__c</name>
+    </fields>
+    <fields>
         <label><!-- Bypass SOAR DW Check --></label>
         <name>Bypass_SOAR_DW_Check__c</name>
     </fields>

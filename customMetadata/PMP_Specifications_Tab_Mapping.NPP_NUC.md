@@ -23,32 +23,8 @@
         <value xsi:type="xsd:boolean">true</value>
     </values>
     <values>
-        <field>LayoutItem_Size__c</field>
-        <value xsi:nil="true"/>
-    </values>
-    <values>
         <field>PMP_Field_Label__c</field>
         <value xsi:nil="true"/>
-    </values>
-    <values>
-        <field>PMP_Filter_Sequence__c</field>
-        <value xsi:type="xsd:double">32.0</value>
-    </values>
-    <values>
-        <field>PMP_Is_Create_Offering_Ind__c</field>
-        <value xsi:type="xsd:boolean">true</value>
-    </values>
-    <values>
-        <field>PMP_Is_Search_Ind__c</field>
-        <value xsi:type="xsd:boolean">true</value>
-    </values>
-    <values>
-        <field>PMP_Search_Filter_Group_Txt__c</field>
-        <value xsi:type="xsd:string">Technical Specifications</value>
-    </values>
-    <values>
-        <field>PMP_Search_Filter_Label_Txt__c</field>
-        <value xsi:type="xsd:string">NUC</value>
     </values>
     <values>
         <field>Show_Select_All__c</field>
@@ -57,9 +33,5 @@
     <values>
         <field>Tab__c</field>
         <value xsi:type="xsd:string">Tab2</value>
-    </values>
-    <values>
-        <field>is_Inline_Radio__c</field>
-        <value xsi:type="xsd:boolean">false</value>
     </values>
 </CustomMetadata>

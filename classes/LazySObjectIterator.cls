@@ -1,0 +1,22 @@
+global class LazySObjectIterator extends LazyIterator {
+
+    global LazySObjectIterator(Iterator<SObject> iterator) {
+        super(new SObjectIteratorToObjectIterator(iterator));
+    }
+
+    private class SObjectIteratorToObjectIterator implements Iterator<Object> {
+
+        private Iterator<SObject> iterator;
+
+        public SObjectIteratorToObjectIterator(Iterator<SObject> iterator) {
+            this.iterator = iterator;
+        }
+
+        public Boolean hasNext() {
+            return iterator.hasNext();
+        }
+        public Object next() {
+            return iterator.next();
+        }
+    }
+}

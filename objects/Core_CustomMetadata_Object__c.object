@@ -152,7 +152,7 @@
     <enableSearch>false</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <externalSharingModel>Read</externalSharingModel>
+    <externalSharingModel>Private</externalSharingModel>
     <fields>
         <fullName>Category__c</fullName>
         <externalId>false</externalId>
@@ -329,14 +329,6 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>PRM_IPA_Affiliation__c</fullName>
-        <description>This Field contains IPA Affiliations.</description>
-        <label>IPA Affiliation</label>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>TextArea</type>
-    </fields>
-    <fields>
         <fullName>Program__c</fullName>
         <label>Program</label>
         <required>false</required>
@@ -386,20 +378,9 @@
     </fields>
     <label>CustomMetadata Object</label>
     <listViews>
-        <fullName>Benefit_Priority_Order</fullName>
-        <columns>NAME</columns>
-        <columns>Header_row__c</columns>
-        <columns>MasterLabel__c</columns>
-        <columns>DeveloperName__c</columns>
-        <columns>Field_1__c</columns>
-        <columns>Field_2__c</columns>
+        <fullName>All</fullName>
         <filterScope>Everything</filterScope>
-        <filters>
-            <field>Metadata_Name__c</field>
-            <operation>equals</operation>
-            <value>PRM_Benefit_Priority_Order__mdt</value>
-        </filters>
-        <label>Benefit Priority Order</label>
+        <label>All</label>
     </listViews>
     <listViews>
         <fullName>DDR_Integration_Master_Data</fullName>
@@ -431,82 +412,6 @@
             <value>Core_Lex_AlertMessage__mdt</value>
         </filters>
         <label>Lex AlertMessages</label>
-    </listViews>
-    <listViews>
-        <fullName>PRM_Auto_Approval_Switch_mdt</fullName>
-        <columns>NAME</columns>
-        <columns>Header_row__c</columns>
-        <columns>MasterLabel__c</columns>
-        <columns>Metadata_Name__c</columns>
-        <columns>DeveloperName__c</columns>
-        <columns>Field_1__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Metadata_Name__c</field>
-            <operation>equals</operation>
-            <value>PRM_Auto_Approval_Switch__mdt</value>
-        </filters>
-        <label>PRM_Auto_Approval_Switch__mdt</label>
-    </listViews>
-    <listViews>
-        <fullName>PRM_CtaPriority_mdt</fullName>
-        <columns>NAME</columns>
-        <columns>MasterLabel__c</columns>
-        <columns>DeveloperName__c</columns>
-        <columns>Header_row__c</columns>
-        <columns>Field_1__c</columns>
-        <columns>Field_2__c</columns>
-        <columns>Field_3__c</columns>
-        <columns>Field_4__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Metadata_Name__c</field>
-            <operation>contains</operation>
-            <value>PRM</value>
-        </filters>
-        <label>PRM_CtaPriority__mdt</label>
-    </listViews>
-    <listViews>
-        <fullName>PRM_Tracker_Steps</fullName>
-        <columns>NAME</columns>
-        <columns>DeveloperName__c</columns>
-        <columns>Metadata_Name__c</columns>
-        <columns>Field_1__c</columns>
-        <columns>Field_2__c</columns>
-        <columns>Field_3__c</columns>
-        <columns>Field_4__c</columns>
-        <columns>Field_5__c</columns>
-        <columns>Field_6__c</columns>
-        <columns>Field_7__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Program__c</field>
-            <operation>equals</operation>
-            <value>IPA</value>
-        </filters>
-        <filters>
-            <field>Metadata_Name__c</field>
-            <operation>equals</operation>
-            <value>PRM_Tracker_steps__mdt</value>
-        </filters>
-        <label>PRM Tracker Steps</label>
-    </listViews>
-    <listViews>
-        <fullName>PRM_Warranty_Benefits_Configuration_mdt</fullName>
-        <columns>NAME</columns>
-        <columns>Metadata_Name__c</columns>
-        <columns>MasterLabel__c</columns>
-        <columns>DeveloperName__c</columns>
-        <columns>Field_1__c</columns>
-        <columns>Field_2__c</columns>
-        <columns>Field_3__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Metadata_Name__c</field>
-            <operation>equals</operation>
-            <value>PRM_Warranty_Benefits_Configuration__mdt</value>
-        </filters>
-        <label>PRM_Warranty_Benefits_Configuration__mdt</label>
     </listViews>
     <nameField>
         <displayFormat>CMO-{00000}</displayFormat>

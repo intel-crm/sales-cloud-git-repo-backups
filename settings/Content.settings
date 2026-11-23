@@ -6,12 +6,12 @@
     <enableContent>true</enableContent>
     <enableContentAutoAssign>true</enableContentAutoAssign>
     <enableContentDistForPortalUsers>false</enableContentDistForPortalUsers>
-    <enableContentDistPwOptionsBit1>true</enableContentDistPwOptionsBit1>
-    <enableContentDistPwOptionsBit2>true</enableContentDistPwOptionsBit2>
+    <enableContentDistPwOptionsBit1>false</enableContentDistPwOptionsBit1>
+    <enableContentDistPwOptionsBit2>false</enableContentDistPwOptionsBit2>
     <enableContentDistribution>true</enableContentDistribution>
     <enableContentSupportMultiLanguage>true</enableContentSupportMultiLanguage>
     <enableContentWorkspaceAccess>true</enableContentWorkspaceAccess>
-    <enableDeleteFileInContentPacks>false</enableDeleteFileInContentPacks>
+    <enableDeleteFileInContentPacks>true</enableDeleteFileInContentPacks>
     <enableFileIngestToDataCloud>true</enableFileIngestToDataCloud>
     <enableFileShareSetByRecord>false</enableFileShareSetByRecord>
     <enableFilesUsrShareNetRestricted>false</enableFilesUsrShareNetRestricted>
@@ -23,7 +23,7 @@
     <enableMaliciousFileNotifications>false</enableMaliciousFileNotifications>
     <enableSecureSalesforceFiles>true</enableSecureSalesforceFiles>
     <enableSiteGuestUserToUploadFiles>false</enableSiteGuestUserToUploadFiles>
-    <enableUploadFilesOnAttachments>false</enableUploadFilesOnAttachments>
+    <enableUploadFilesOnAttachments>true</enableUploadFilesOnAttachments>
     <setValidContentTypeForAtchDocDownload>false</setValidContentTypeForAtchDocDownload>
     <skipContentAssetTriggers>false</skipContentAssetTriggers>
 </ContentSettings>

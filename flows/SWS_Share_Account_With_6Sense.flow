@@ -4,7 +4,7 @@
         <name>Share_Related_Opportunity</name>
         <label>Share Related Opportunity</label>
         <locationX>182</locationX>
-        <locationY>731</locationY>
+        <locationY>839</locationY>
         <actionName>SWS_6SenseIntegrationBatch</actionName>
         <actionType>apex</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -20,19 +20,19 @@
     <apiVersion>62.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <decisions>
-        <name>Does_opportunity_exist</name>
-        <label>Does opportunity exist?</label>
+        <name>Does_Opportunity_Exist</name>
+        <label>Does Opportunity Exist?</label>
         <locationX>314</locationX>
-        <locationY>623</locationY>
+        <locationY>731</locationY>
         <defaultConnectorLabel>No</defaultConnectorLabel>
         <rules>
             <name>Yes</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>$Record.Core_Opportunity_Count__c</leftValueReference>
-                <operator>GreaterThan</operator>
+                <leftValueReference>Get_Opportunity</leftValueReference>
+                <operator>IsNull</operator>
                 <rightValue>
-                    <numberValue>0.0</numberValue>
+                    <booleanValue>false</booleanValue>
                 </rightValue>
             </conditions>
             <connector>
@@ -47,12 +47,12 @@
         <locationX>314</locationX>
         <locationY>323</locationY>
         <defaultConnector>
-            <targetReference>Does_opportunity_exist</targetReference>
+            <targetReference>Get_Opportunity</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Share_the_Record</name>
-            <conditionLogic>and</conditionLogic>
+            <conditionLogic>(1 AND 2 AND 3 AND 4) OR (1 AND 4 AND 5 )</conditionLogic>
             <conditions>
                 <leftValueReference>AccountPrimaryCoverage</leftValueReference>
                 <operator>Contains</operator>
@@ -79,6 +79,13 @@
                 <operator>EqualTo</operator>
                 <rightValue>
                     <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Is_6Sense_Integration_BypassEnabled__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
                 </rightValue>
             </conditions>
             <connector>
@@ -125,13 +132,38 @@
         </value>
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Opportunity</name>
+        <label>Get Opportunity</label>
+        <locationX>314</locationX>
+        <locationY>623</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Does_Opportunity_Exist</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>AccountId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <limit>
+            <numberValue>2.0</numberValue>
+        </limit>
+        <object>Opportunity</object>
+        <queriedFields>Id</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
     <recordUpdates>
         <name>Update_6Sense_As_Invalid</name>
         <label>Update 6Sense As Invalid</label>
         <locationX>314</locationX>
         <locationY>431</locationY>
         <connector>
-            <targetReference>Does_opportunity_exist</targetReference>
+            <targetReference>Get_Opportunity</targetReference>
         </connector>
         <inputAssignments>
             <field>Is_6Sense_Integration_Enabled__c</field>
@@ -147,7 +179,7 @@
         <locationX>50</locationX>
         <locationY>431</locationY>
         <connector>
-            <targetReference>Does_opportunity_exist</targetReference>
+            <targetReference>Get_Opportunity</targetReference>
         </connector>
         <inputAssignments>
             <field>Is_6Sense_Integration_Enabled__c</field>
@@ -177,7 +209,7 @@
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Active</status>
+    <status>Draft</status>
     <variables>
         <name>AccountID</name>
         <dataType>String</dataType>

@@ -16,5 +16,7 @@
      
     public static void setMetadata( String query, List<Core_Contact_Email_Notification_Disabler__mdt> records ) {
         ContactNotificationDisabler.customMetadataRecordsMap.put( query, records );
+        System.debug('ContactNotificationDisablerTest : customMetadataRecordsMap ='+
+                    ContactNotificationDisabler.customMetadataRecordsMap);
     }
 }

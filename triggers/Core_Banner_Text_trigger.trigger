@@ -1,14 +1,10 @@
 trigger Core_Banner_Text_trigger on Core_Banner_Text__c (before insert,before update) {
     String allowedUsersStr = System.Label.Core_Home_Page_Users_List;
     Set<String> allowedUsers = new Set<String>(allowedUsersStr.split(';'));
-    Set<String> existingRecords = new Set<String>();
-    
-    //Get Project list to check the user access
-    String allowedProjects = System.Label.Core_AllowedProjectsToRestrictUsingUsers;
-    Set<String> allowedProjectSet = new Set<String>(allowedProjects.split(';'));
+	Set<String> existingRecords = new Set<String>();
 
     for (Core_Banner_Text__c record : Trigger.new) {
-        if (allowedProjectSet.contains(record.Core_CRM_Project__c) && !allowedUsers.contains(UserInfo.getUserEmail())) {
+        if (!allowedUsers.contains(UserInfo.getUserEmail())) {
             record.addError('You do not have access to create/edit records in this object.');
         }
     }

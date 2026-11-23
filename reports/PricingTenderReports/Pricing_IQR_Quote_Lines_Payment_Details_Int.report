@@ -121,7 +121,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Client,Data Center Xeon® CPU,Ethernet,Optane™ PMem,Optane™ SSD,Small Volume Quotes - Data Center Xeon® CPU</value>
+            <value>Data Center Xeon® CPU,Small Volume Quotes - Data Center Xeon® CPU,Optane™ SSD,Optane™ PMem,Ethernet</value>
         </criteriaItems>
         <criteriaItems>
             <column>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Credit_Volume_qty__c</column>

@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <customValue>
+        <fullName>Retail Core Ultra Consumption Volume</fullName>
+        <default>false</default>
+        <label>Retail Core Ultra Consumption Volume</label>
+    </customValue>
+    <customValue>
         <fullName>Regional Priority</fullName>
         <default>false</default>
         <label>Regional Priority</label>
@@ -116,16 +121,58 @@
         <label>DCG Product Margin $</label>
     </customValue>
     <customValue>
-        <fullName>DCAI and Network Deal $</fullName>
+        <fullName>One Intel OEM Consumption $</fullName>
         <default>false</default>
         <isActive>false</isActive>
-        <label>DCAI and Network Deal $</label>
+        <label>One Intel OEM Consumption $</label>
     </customValue>
     <customValue>
         <fullName>Networking and Telco Design $$</fullName>
         <default>false</default>
         <isActive>false</isActive>
         <label>Networking and Telco Design $$</label>
+    </customValue>
+    <customValue>
+        <fullName>DCAI Strategic Design #</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>DCAI Strategic Design #</label>
+    </customValue>
+    <customValue>
+        <fullName>DCAI Gaudi Deal $$</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>DCAI Gaudi Deal $$</label>
+    </customValue>
+    <customValue>
+        <fullName>DCAI Ethernet Billings Revenue $</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>DCAI Ethernet Billings Revenue $</label>
+    </customValue>
+    <customValue>
+        <fullName>DCAI Birch Stream Billings Volume</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>DCAI Birch Stream Billings Volume</label>
+    </customValue>
+    <customValue>
+        <fullName>DCAI Billings Revenue $$</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>DCAI Billings Revenue $$</label>
+    </customValue>
+    <customValue>
+        <fullName>DCAI and Network Deal $</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>DCAI and Network Deal $</label>
+    </customValue>
+    <customValue>
+        <fullName>DCAI Accelerator Billings Revenue $$</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>DCAI Accelerator Billings Revenue $$</label>
     </customValue>
     <customValue>
         <fullName>Core Ultra/AI PC Billings Volume</fullName>
@@ -146,52 +193,22 @@
         <label>CCG Next Gen Design #</label>
     </customValue>
     <customValue>
-        <fullName>DCAI Accelerator Billings Revenue $$</fullName>
+        <fullName>CCG Billings Revenue $$</fullName>
         <default>false</default>
         <isActive>false</isActive>
-        <label>DCAI Accelerator Billings Revenue $$</label>
+        <label>CCG Billings Revenue $$</label>
     </customValue>
     <customValue>
-        <fullName>DCAI Strategic Design #</fullName>
+        <fullName>CCG/Edge vPro Platform + Solution Adoption Deal Volume</fullName>
         <default>false</default>
         <isActive>false</isActive>
-        <label>DCAI Strategic Design #</label>
+        <label>CCG/Edge vPro Platform + Solution Adoption Deal Volume</label>
     </customValue>
     <customValue>
-        <fullName>DCAI Billings Revenue $$</fullName>
+        <fullName>CCG/Edge Core Ultra Deal $</fullName>
         <default>false</default>
         <isActive>false</isActive>
-        <label>DCAI Billings Revenue $$</label>
-    </customValue>
-    <customValue>
-        <fullName>DCAI Birch Stream Billings Volume</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>DCAI Birch Stream Billings Volume</label>
-    </customValue>
-    <customValue>
-        <fullName>DCAI Ethernet Billings Revenue $</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>DCAI Ethernet Billings Revenue $</label>
-    </customValue>
-    <customValue>
-        <fullName>DCAI Gaudi Deal $$</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>DCAI Gaudi Deal $$</label>
-    </customValue>
-    <customValue>
-        <fullName>One Intel OEM Consumption $</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>One Intel OEM Consumption $</label>
-    </customValue>
-    <customValue>
-        <fullName>Retail Core Ultra Consumption Volume</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Retail Core Ultra Consumption Volume</label>
+        <label>CCG/Edge Core Ultra Deal $</label>
     </customValue>
     <description>Global picklist for KPI names linked to Sales OKR Objectives.</description>
     <masterLabel>Objective KPIs</masterLabel>

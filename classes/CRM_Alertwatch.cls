@@ -4,183 +4,123 @@ Version: 1.0
 Created Date: 11/11/2024
 Function: Alert Watch is used to send emails based on Audit Trail data
 Modification Log :
-* Developer                 Date                Description
+* Developer Date Description
 * ----------------------------------------------------------------------------
-* Shijas KM/Areefa          11/11/2024          Original Version developed
-******************************************************************************************************************************/
-
-global without sharing class CRM_Alertwatch {
-    
-     public static List<SetupAuditTrail> getAuditTrailReminderData() {
-          List<SetupAuditTrail> lst_aw_response =new  List<SetupAuditTrail>();
-        try {
-            // Retrieve custom metadata records
-            Map<String, String> metadataValues = retrieveMetadataValues();
+* Shijas KM 11/11/2024 Original Version developed
+*******************************************************************************************************************************************************************/
+public with sharing class CRM_Alertwatch {    
+    public static void GetAuditTrailData(){
+       
+        List<SetupAuditTrail> lst_aw_response= new List<SetupAuditTrail>();
+        Try{
+            String excludedUsersEmailLabel = getAlertwatchValues('AuditTrailExcludedUserEmails');
+            String sectionsLabel = getAlertwatchValues('AuditTrailSections'); 
+            // Split the excluded user names into a list
+            List<String> excludedUsersList = excludedUsersEmailLabel.split(';');
+            List<String> sectionsList = sectionsLabel.split(';');
+            // Construct the dynamic query
+            String query = 'SELECT ';
+             if (String.isNotBlank(getAlertwatchValues('AuditTrailSelectFields'))) {            
+                query = query  + getAlertwatchValues('AuditTrailSelectFields');
+            }
             
-            // Extract values from metadata
-            List<String> sections = metadataValues.containsKey('AuditTrailSections') ? metadataValues.get('AuditTrailSections').split(',') : new List<String>();
-			List<String> actions = metadataValues.containsKey('AuditTrailActions') ? metadataValues.get('AuditTrailActions').split(',') : new List<String>();
-            List<String> sectionsList = new List<String>();
-            for (String section : sections) {
-                sectionsList.add(section.trim());
+             if (String.isNotBlank(getAlertwatchValues('AuditTrailWhereCondition'))) {            
+                query = query +  ' FROM SetupAuditTrail WHERE ' + getAlertwatchValues('AuditTrailWhereCondition');
             }
-			List<String> actionsList = new List<String>();
-            for (String action : actions) {
-                actionsList.add(action.trim());
-            }
-            List<String> excludedUsersList = metadataValues.containsKey('AuditTrailExcludedUserNames') ? metadataValues.get('AuditTrailExcludedUserNames').split(';') : new List<String>();
-           
-            String whereCondition = metadataValues.get('AuditTrailWhereCondition');
-            String selectFields = metadataValues.get('AuditTrailSelectFields');           
+            // Add conditions for excluded user names
+            if (!excludedUsersList.isEmpty()) {
+                query += ' AND CreatedBy.Email NOT IN (\'' + String.join(excludedUsersList, '\',\'') + '\')';
+            } 
+            query += ' ORDER BY CreatedDate DESC';
             
-            // Get audit trail data
-            lst_aw_response = getAuditTrailData(selectFields, whereCondition, excludedUsersList, sectionsList, actionsList);
-        }  catch (Exception e) {PMP_Utility.logError(e, 'CRM Alert Watch');         
-        }
-         return lst_aw_response;
-    }
-    
-    @TestVisible
-     public static void sendAuditTrailMail(List<SetupAuditTrail> lstAuditTrail) {
-          
-        try {
-            Map<String, String> metadataValues = retrieveMetadataValues();
-            String mailSubject = metadataValues.get('EmailSubject');
-            String strReplyTo = metadataValues.get('AuditTrailsetReplyTo');
-            String auditTrailCSVHeader = metadataValues.get('AuditTrailCSVHeader');
-            String auditTrailCSVFileName = metadataValues.get('AuditTrailCSVFileName');
-            String auditTrailNoChanges = metadataValues.get('AuditTrail_NoChanges');
-            // Send email with audit trail data
-            sendEmail(lstAuditTrail, mailSubject, strReplyTo, auditTrailCSVHeader, auditTrailCSVFileName, auditTrailNoChanges);
-        }  catch (Exception e) {PMP_Utility.logError(e, 'CRM Alert Watch');         
-        }
-        
-    }
-    
-    @TestVisible
-    private static Map<String, String> retrieveMetadataValues() {
-        Map<String, String> metadataValues = new Map<String, String>();
-        
-        if (Schema.sObjectType.Core_MDF_CCP_Custom_Metadata_Utility__c.fields.Name.isAccessible() &&
-            Schema.sObjectType.Core_MDF_CCP_Custom_Metadata_Utility__c.fields.Core_MDF_Value__c.isAccessible()) {
-            List<Core_MDF_CCP_Custom_Metadata_Utility__c> metadataRecords = [SELECT Name, Core_MDF_Value__c FROM Core_MDF_CCP_Custom_Metadata_Utility__c WHERE Core_MDF_Program__c = 'Alert_Watch' limit 50];
-            for (Core_MDF_CCP_Custom_Metadata_Utility__c rec : metadataRecords) {
-                metadataValues.put(rec.Name, rec.Core_MDF_Value__c);
-            }
-        }
-        
-        return metadataValues;
-    }
-    
-    private static List<SetupAuditTrail> getAuditTrailData(String selectFields, String whereCondition, List<String> excludedUsersList, List<String> sectionsList, List<String> actionsList ) {
-        List<SetupAuditTrail> lst_aw_response = new List<SetupAuditTrail>();
-        String query = constructQuery(selectFields, whereCondition, excludedUsersList);
-        
-        // Execute the query using bind variables
-        List<SetupAuditTrail> lstAuditTrail = Database.query(String.escapeSingleQuotes(query));
-        for (SetupAuditTrail rec : lstAuditTrail) {
-            if ((sectionsList.contains(rec.Section)) && (!actionsList.contains(rec.Action))) {
-			
-                lst_aw_response.add(rec);                    
-            }
-        }
-        
-        return lst_aw_response;
-    }
-    
-    private static String constructQuery(String selectFields, String whereCondition, List<String> excludedUsersList) {
-        String query = 'SELECT ';
-        
-        // Construct the dynamic query
-        if (String.isNotBlank(selectFields)) {
-            query += selectFields;
-        }
-        if (String.isNotBlank(whereCondition)) {
-            query += ' FROM SetupAuditTrail WHERE ' + whereCondition;
-        }
-        if (!excludedUsersList.isEmpty()) {
-            query += ' AND CreatedBy.username NOT IN :excludedUsersList';
-        }
-        
-        query += ' ORDER BY CreatedDate DESC Limit 45000 ';
-        
-        return query;
-    }
-    
-    // Email Attachment CSV file creation
-    @TestVisible
-    private static Messaging.EmailFileAttachment generateCSVFile(List<SetupAuditTrail> lst_aw_response, String auditTrailCSVHeader, String auditTrailCSVFileName, String auditTrailNoChanges) {
-        String csvContent = auditTrailCSVHeader + '\n';
-        if (!lst_aw_response.isEmpty()) {
-            for (SetupAuditTrail awData : lst_aw_response) {
-                if (!String.isBlank(awData.Id) && !String.isEmpty(awData.Id)) {
-                    String strModifiedDetails = String.escapeSingleQuotes(awData.Display).replace(',', ' ').replace('"', ' ').replace('\n', ' ').replace('\r', ' ');
-                    csvContent += awData.Id + ',' + awData.Section + ',' + awData.CreatedBy.Name + ',' + awData.CreatedDate + ',' + strModifiedDetails + ',' + awData.Action + '\n';
+            List<SetupAuditTrail> lstAuditTrail = Database.query(query);
+            for (SetupAuditTrail rec : lstAuditTrail) {
+                if (sectionsList.contains(rec.Section)) {
+                    lst_aw_response.add(rec);                    
                 }
-            }
-        } else {
-            csvContent += auditTrailNoChanges;
+            }           
+            SendEmail(lst_aw_response);          
+            
+        }catch (Exception e) {
+          
+           // logEntries.add(new Core_Log_Entry__c(Core_Message__c = 'Message',Core_Details__c = e.getStackTraceString() , Core_Origin__c='AlertWatch', Core_Severity__c='Low', Core_When__c=System.Now(), Core_Project__c = 'Sales CRM'));    
         }
-        
+        finally { }
+    }
+    
+    //Email Attachment CSV file creation
+    private static Messaging.EmailFileAttachment generateCSVFile(List<SetupAuditTrail> lst_aw_response){
+        String csvContent = 'Id,Modified Component,Modified By,Modified Date, Modification Details,Action\n';
         Messaging.EmailFileAttachment attachment = new Messaging.EmailFileAttachment();
         attachment.setContentType('text/csv');
-        attachment.setFilename(auditTrailCSVFileName + '.csv');
+        attachment.setFilename('AuditTrail_Notification' +'.csv');
         attachment.setInline(true);
-        attachment.setBody(Blob.valueOf(csvContent));
-        return attachment;
-    }
-    
-    // Audit Trail email send with CSV as attachment
-    @TestVisible
-    private static void sendEmail(List<SetupAuditTrail> lst_aw_response, String emailSubject, String replyTo, String auditTrailCSVHeader, String auditTrailCSVFileName, String auditTrailNoChanges) {
-        if (hasOrgWideEmailAddressAccess()) {
-            List<OrgWideEmailAddress> orgWideEmailList = getOrgWideEmailAddresses();
-            String orgWideEmailId = (orgWideEmailList != null && !orgWideEmailList.isEmpty()) ? orgWideEmailList[0].Id : '';
-            List<Messaging.SingleEmailMessage> emails = new List<Messaging.SingleEmailMessage>();
-            
-            if (hasGroupMemberAndUserAccess()) {
-                List<User> lstUser = getAlertWatchMembers();
-                for (User mailuser : lstUser) {
-                    Messaging.SingleEmailMessage mail = createEmailMessage(mailuser, orgWideEmailId, replyTo, emailSubject, lst_aw_response, auditTrailCSVHeader, auditTrailCSVFileName, auditTrailNoChanges);
-                    emails.add(mail);
+        if(!lst_aw_response.isempty()){            
+            for (SetupAuditTrail awData : lst_aw_response)
+            {
+                if (!String.isBlank(awData.Id)  && !String.isEmpty(awData.Id))
+                {
+                    string strModifiedDetails = String.escapeSingleQuotes(awData.Display);
+                    strModifiedDetails  = strModifiedDetails.replace(',',' ');                
+                    strModifiedDetails  = strModifiedDetails.replace('"',' ');               
+                    strModifiedDetails  = strModifiedDetails.replace('\n',' ');
+                    strModifiedDetails  = strModifiedDetails.replace('\r',' ');
+                    csvContent = csvContent + ''+ awData.Id +','  + awData.Section + ',' +  awData.CreatedBy.Name + ',' + awData.CreatedDate + ','+ strModifiedDetails +  ','+ awData.Action + '\n';
                 }
-                Messaging.sendEmail(emails);
-            }
-        } 
+            } 
+        }
+        else
+        {
+            csvContent = csvContent + 'No Audit Trail Data Available';
+        }
+        if (String.isNotBlank(csvContent))
+        {
+            attachment.Body = (Blob.valueOf(csvContent));
+        }
+        return attachment;
+    }     
+    // Audit Trail email send with csv as attachment
+    @TestVisible
+    private static void SendEmail(List<SetupAuditTrail> lst_aw_response)
+    {  
+        List<OrgWideEmailAddress> orgWideEmailList = [select id, address from OrgWideEmailAddress where displayname = :'Intel Corporation-NoReply' limit 1];
+        String orgWideEmailId = (orgWideEmailList!=null && orgWideEmailList.size()>0) ? orgWideEmailList[0].id : '';
+        List<Messaging.SingleEmailMessage> emails = new List<Messaging.SingleEmailMessage>();
+        List<User> lstUser  = [SELECT Id,Name FROM User WHERE Id IN ( SELECT UserOrGroupId  FROM GroupMember WHERE Group.Name ='Core_AlertWatchMembers')];
+        for (User euser : lstUser)
+        {               
+            Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
+            mail.setTargetObjectId(euser.Id); // Set the recipient's ID
+            mail.setSaveAsActivity(false); // Must be false when sending to users
+            mail.setOrgWideEmailAddressId(orgWideEmailId); 
+             if (String.isNotBlank(getAlertwatchValues('AuditTrailsetReplyTo')))
+        {      
+            mail.setReplyTo(getAlertwatchValues('AuditTrailsetReplyTo'));  
+            }      
+            mail.setSubject('DEVSLS : Salesforce Audit Trail Notification'); 
+            mail.setFileAttachments(new Messaging.EmailFileAttachment[] {generateCSVFile(lst_aw_response)}); 
+            mail.setHtmlBody('Hi '+euser.Name + '<BR><BR>' +  'Please find the attached '+ '<B>'+ 'Audit Trail Details.' + '</B><BR><BR>' + 'Thanks' + '<BR>' + 'SF Team');          
+            emails.add(mail);
+        }
+        Messaging.sendEmail(emails);
+        
+        system.debug('---------------Core_AlertWatch--------execute complete------' );
     }
-    
-    private static Boolean hasOrgWideEmailAddressAccess() {
-        return Schema.sObjectType.OrgWideEmailAddress.isAccessible() &&
-               Schema.sObjectType.OrgWideEmailAddress.fields.Id.isAccessible() &&
-               Schema.sObjectType.OrgWideEmailAddress.fields.Address.isAccessible();
-    }
-    
-    private static List<OrgWideEmailAddress> getOrgWideEmailAddresses() {
-        return [SELECT Id, Address FROM OrgWideEmailAddress WHERE DisplayName = 'Intel Corporation-NoReply' LIMIT 1];
-    }
-    
-    private static Boolean hasGroupMemberAndUserAccess() {
-        return Schema.sObjectType.GroupMember.isAccessible() &&
-               Schema.sObjectType.GroupMember.fields.GroupId.isAccessible() &&
-               Schema.sObjectType.GroupMember.fields.UserOrGroupId.isAccessible() &&
-               Schema.sObjectType.User.isAccessible() &&
-               Schema.sObjectType.User.fields.Id.isAccessible() &&
-               Schema.sObjectType.User.fields.Name.isAccessible();
-    }
-    
-    private static List<User> getAlertWatchMembers() {
-        return [SELECT Id, Name FROM User WHERE Id IN (SELECT UserOrGroupId FROM GroupMember WHERE Group.Name = 'Core_AlertWatchMembers') limit 50];
-    }
-    
-    private static Messaging.SingleEmailMessage createEmailMessage(User mailuser, String orgWideEmailId, String replyTo, String emailSubject, List<SetupAuditTrail> lst_aw_response, String auditTrailCSVHeader, String auditTrailCSVFileName, String auditTrailNoChanges) {
-        Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
-        mail.setTargetObjectId(mailuser.Id);
-        mail.setSaveAsActivity(false);
-        mail.setOrgWideEmailAddressId(orgWideEmailId);
-        mail.setReplyTo(replyTo);
-        mail.setSubject(emailSubject);
-        mail.setFileAttachments(new Messaging.EmailFileAttachment[] { generateCSVFile(lst_aw_response, auditTrailCSVHeader, auditTrailCSVFileName, auditTrailNoChanges) });
-        mail.setHtmlBody('Hi ' + mailuser.Name + '<BR><BR>' + 'Please find the attached ' + '<B>' + 'Audit Trail Details.' + '</B><BR><BR>' + 'Thanks' + '<BR>' + 'SF Team');
-        return mail;
+    //Get alertwatchValue from Custom settings
+
+    public static String getAlertwatchValues(String name){
+// List<Core_MDF_CCP_Custom_Metadata_Utility__c> actDepMdtList = new List<Core_MDF_CCP_Custom_Metadata_Utility__c>();
+       // List<Core_MDF_CCP_Custom_Metadata_Utility__c> metadataRecords = [SELECT ID FROM Core_MDF_CCP_Custom_Metadata_Utility__c];
+      // List<Core_MDF_CCP_Custom_Metadata_Utility__c> mcs = Core_MDF_CCP_Custom_Metadata_Utility__c.getAll().values();
+		// List<Core_MDF_CCP_Custom_Metadata_Utility__c> metaDataValues = new List<Core_MDF_CCP_Custom_Metadata_Utility__c>();
+             //Core_MDF_Custom_Metadata_Utility.getCustomObjectRecords(whereClause);
+        
+        CRM_Alertwatch__c alertwatchValue = CRM_Alertwatch__c.getValues(name);
+        
+        if(alertwatchValue!=null){
+            return alertwatchValue.AuditTrail_Value__c;
+        }else{
+            return '';
+        }
     }
 }

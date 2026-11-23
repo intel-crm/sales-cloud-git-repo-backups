@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>AKADEMICKIE CENTRUM KOMPUTEROWE CYFRONET AGH Customer Executive</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>AKADEMICKIE CENTRUM KOMPUTEROWE CYFRONET AGH Customer Executive</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>EMP_10616057_Robert_Adamski</parentRole>
+</Role>

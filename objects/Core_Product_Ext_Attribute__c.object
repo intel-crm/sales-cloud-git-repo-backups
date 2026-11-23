@@ -155,6 +155,18 @@
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
     <fields>
+        <fullName>Core_Count__c</fullName>
+        <description>Core Count</description>
+        <externalId>false</externalId>
+        <label>Core Count</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Core_Foundation_Product_Id__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <description>Base Product</description>
@@ -423,6 +435,20 @@
         <type>Url</type>
     </fields>
     <fields>
+        <fullName>Core_SW_Lic_Maintenance_Duration_Nbr__c</fullName>
+        <description>Value stored as Number of months.
+Drives Renewal availability (Product is available for renewal if the Maintenance date is &gt;= Current Date - Renewal Grace Period</description>
+        <externalId>false</externalId>
+        <label>Maintenance Duration (In Months)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Core_SW_Lic_Rehostable_Ind__c</fullName>
         <defaultValue>false</defaultValue>
         <description>&quot;•To allow rehost of license (moving license from one host to other)&quot;</description>
@@ -631,6 +657,18 @@ If the product is unavailable to TOE it is not visible in Tools Order Entry&quot
         <visibleLines>3</visibleLines>
     </fields>
     <fields>
+        <fullName>Max_TDP__c</fullName>
+        <description>Max TDP</description>
+        <externalId>false</externalId>
+        <label>Max TDP</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>PSG_Restricted_Product__c</fullName>
         <defaultValue>false</defaultValue>
         <description>The indication describes the product as &apos;PSG Restricted Product&apos; that requires additional screening in PSG Quoting process.</description>
@@ -651,11 +689,6 @@ If the product is unavailable to TOE it is not visible in Tools Order Entry&quot
         <columns>Core_Prod_QTE_Slow_Moving_Inventory_Ind__c</columns>
         <columns>Core_Prod_QTE_Alt_LGSTS_NW_Enabled_Ind__c</columns>
         <filterScope>Everything</filterScope>
-        <filters>
-            <field>Core_Product_Id__c</field>
-            <operation>equals</operation>
-            <value>1SA28SAN1F50I1VG</value>
-        </filters>
         <label>All</label>
     </listViews>
     <nameField>
@@ -743,6 +776,12 @@ Core_Product_Id__r.Core_Item_Class_Nm__c=&apos;SV&apos;,Core_Product_Id__r.Core_
 )</errorConditionFormula>
         <errorMessage>Please enter the Mandatory Fields 
 ( Tool Type, Tool License Type, Enforcement Method, DES Parameter, Web Description)</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Restrict_PSG_Restricted_Field_Access</fullName>
+        <active>false</active>
+        <errorConditionFormula>IF(AND(ischanged( PSG_Restricted_Product__c), $Profile.Name ==&apos;Sales Ops&apos;, NOT($Permission.PSG_Product_Read_Write_Access ||  $Permission.PSG_Internal_PMS)), true, false)</errorConditionFormula>
+        <errorMessage>Don&apos;t have access to edit this field</errorMessage>
     </validationRules>
     <visibility>Public</visibility>
 </CustomObject>

@@ -31,6 +31,62 @@
                 <behavior>Edit</behavior>
                 <field>Core_Technical_Owner__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_Start_Date__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_End_Date__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Core_difference__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_BU_Short_Name_Count_Check__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Core_Decimal_Check__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_Is_Cloned__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_is_cloned_Opportunity__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Val_Test__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_Sales_Segments__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Core_Consumer_Sales_Category__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Decision_Date__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Core_opp_Converted_date_formula__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_Test_Validation_Check__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_Design_Type__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -105,6 +161,16 @@
     <platformActionList>
         <actionListContext>Record</actionListContext>
         <platformActionListItems>
+            <actionName>FeedItem.TextPost</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>0</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>Edit</actionName>
+            <actionType>StandardButton</actionType>
+            <sortOrder>1</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
             <actionName>FeedItem.ContentNote</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>2</sortOrder>
@@ -154,16 +220,6 @@
             <actionType>QuickAction</actionType>
             <sortOrder>11</sortOrder>
         </platformActionListItems>
-        <platformActionListItems>
-            <actionName>FeedItem.TextPost</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>0</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>Edit</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>1</sortOrder>
-        </platformActionListItems>
     </platformActionList>
     <relatedContent>
         <relatedContentItems>
@@ -182,15 +238,15 @@
     <relatedLists>
         <customButtons>Core_Product_Credit</customButtons>
         <fields>Product2</fields>
-        <fields>Core_Status__c</fields>
-        <fields>Core_Claim_Date__c</fields>
         <fields>Quantity</fields>
+        <fields>Core_Status__c</fields>
         <fields>UnitPrice</fields>
+        <fields>Core_Sales_Price_Note__c</fields>
         <fields>TotalPrice</fields>
-        <fields>Core_Write_In_Product_Name__c</fields>
-        <fields>Core_BU_Short_Name__c</fields>
-        <fields>Core_Vendor__c</fields>
-        <fields>Core_Vendor_InActive__c</fields>
+        <fields>Core_Loss_Cancel_Reason__c</fields>
+        <fields>Core_Competitor__c</fields>
+        <fields>Core_Competitor_Product__c</fields>
+        <fields>Core_Design_Registration_Product_Id__c</fields>
         <relatedList>RelatedLineItemList</relatedList>
     </relatedLists>
     <relatedLists>
@@ -289,6 +345,23 @@
         <fields>Core_Opp_Hist_Product__c</fields>
         <fields>Core_Opp_Hist_Approved_BU_Short_Name__c</fields>
         <relatedList>Core_Opportunity_Approval_History__c.Core_Opp_Hist_Core_Opportunity__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>PCC_MM_ID__c</fields>
+        <fields>PCC_Ordering_Cd__c</fields>
+        <fields>PCC_L5_Product_Name__c</fields>
+        <fields>PCC_Design_Registration__c</fields>
+        <relatedList>PCC_DDR_L5_Product_Mapping__c.PCC_Opportunity__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>Core_Status__c</fields>
+        <fields>Core_Reviewer_Email__c</fields>
+        <relatedList>Core_Solution_Areas__c.Opportunity__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>PCC_Rebate_Claim_Stage__c.PCC_Opportunity__c</relatedList>
     </relatedLists>
     <relatedObjects>AccountId</relatedObjects>
     <showEmailCheckbox>false</showEmailCheckbox>

@@ -16,7 +16,7 @@ public without sharing class core_S2S_ViewICSCases {
     *Method Name : getReportData
     *Created Date: 2024-07-19
     *Author      : Bishal Singh
-    *Description : Get list data based on Sales Cloud Account Id.
+    *Description : Get list data based on Sales Cloud Account Id
     ************************************************************************************************************/
     @AuraEnabled(cacheable=true)
     public static List<SObject> getListViewData(String accountId, String userEmail,Integer limitSize,Integer offset){
@@ -28,9 +28,9 @@ public without sharing class core_S2S_ViewICSCases {
         if (!String.isBlank(accountId)) {
             conditions.add('AccountId__r.Sales_Cloud_Id__c = :accountId');
             conditions.add('ICS_WR_Target_Contact_Center_c__c <> \'AAQ Contact Center\'');
+        
         } else if (!String.isBlank(userEmail)) {
-            conditions.add('ContactEmail__c = :userEmail');
-            conditions.add('ICS_WR_Target_Contact_Center_c__c = \'AAQ Contact Center\'');
+            conditions.add('ContactEmail__c = :userEmail and (ICS_WR_Target_Contact_Center_c__c = \'AAQ Contact Center\' OR Product__r.Name__c = \'IPA-Field\')');
         }
         query += String.join(conditions, ' AND ') + ' ORDER BY CreatedDate__c DESC LIMIT :limitSize OFFSET :offset';
         return Database.query(query);
@@ -38,9 +38,9 @@ public without sharing class core_S2S_ViewICSCases {
     
     @AuraEnabled(cacheable=false)
     public static Boolean hasAccess(String recordId,String userId){
-        Id memberId = [SELECT Id FROM AccountTeamMember where AccountId =:recordId and UserId =: userId]?.Id;
+        Id memberId = [SELECT Id FROM AccountTeamMember where AccountId =:recordId and UserId =: userId WITH SECURITY_ENFORCED]?.Id;
         if(memberId == null){
-            memberId = [SELECT Id FROM Account WHERE Id =:recordId and OwnerId=:userId]?.Id;
+            memberId = [SELECT Id FROM Account WHERE Id =:recordId and OwnerId=:userId WITH SECURITY_ENFORCED]?.Id;
         }
         return memberId == null ? false : true;
     }

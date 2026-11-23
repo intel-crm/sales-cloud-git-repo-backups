@@ -79,8 +79,6 @@ public class Pricing_SW_QuoteEmailAlertControllerTest {
         );
         insert doc;
 
-        System.debug('Label: ' + Label.Pricing_SW_Intel_Logo);
-
         // Create an instance of the controller
         Pricing_SW_QuoteEmailAlertController controller = new Pricing_SW_QuoteEmailAlertController();
 

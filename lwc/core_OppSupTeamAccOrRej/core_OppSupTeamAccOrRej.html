@@ -1,4 +1,4 @@
-<template>
+<template>    
     <template if:true={showAccOrdenied}>
         <lightning-card title="Opportunity Support request">    
             <div class="slds-scrollable_y " style="height:8rem;">
@@ -77,19 +77,19 @@
                         <template if:true={coeRecord}>
                             <div class="slds-size_2-of-4 ">
                                 <p class="slds-form-element__label">Center of Excellence </p> </br><p class="output">  {singleDataShow.Core_Opportunity_Support__r.Center_of_Excellence__c}</p>
-                        </div>
-                        <div class="slds-size_2-of-4 ">
+                            </div>
+                            <div class="slds-size_2-of-4 ">
                                 <p class="slds-form-element__label">CoE Request Detail </p> </br><p class="output">  &nbsp; {singleDataShow.Core_Opportunity_Support__r.Core_CoE_Request_Detail__c}</p>
                             </div>
                         </template>
                         <template if:true={csaTSSfields}>
                             <div class="slds-size_2-of-4 ">
                                 <p class="slds-form-element__label">Primary Blockers </p> </br><p class="output"> &nbsp;  {singleDataShow.Core_Opportunity_Support__r.Core_PrimaryBlockers__c}</p>
-                        </div>
-                        <div class="slds-size_2-of-4 ">
+                            </div>
+                            <div class="slds-size_2-of-4 ">
                                 <p class="slds-form-element__label">Additional Support Needed </p> </br><p class="output">  &nbsp; {singleDataShow.Core_Opportunity_Support__r.Core_Additional_Support_Needed__c}</p>
-                        </div>
-                        <div class="slds-size_2-of-4 ">
+                            </div>
+                            <div class="slds-size_2-of-4 ">
                                 <p class="slds-form-element__label">Background Information On current architecture </p> </br><p class="output"> &nbsp;  {singleDataShow.Core_Opportunity_Support__r.Core_background_info_on_architecture__c}</p>
                             </div>
                         </template>

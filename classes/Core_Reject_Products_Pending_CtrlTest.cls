@@ -291,7 +291,7 @@ public class Core_Reject_Products_Pending_CtrlTest {
             ddrRec2.Core_Opportunity_Decision_Dt__c = system.today()+20;
             ddrRec2.Core_First_Customer_Ship_Dt__c = system.today()+21;
             ddrRec2.Core_Production_End_Dt__c = system.today()+22;
-            ddrRec2.Core_Intel_Platform_Nm__c='Agilex';
+            //ddrRec2.Core_Intel_Platform_Nm__c='Agilex';
             ddrRec2.Core_Design_Registration_Nm__c='Test DR Name Arrow9';
             ddrRec2.Core_Design_Registration_Dsc__c='Test Des';
             ddrRec2.Core_External_Id__c='abczd001';

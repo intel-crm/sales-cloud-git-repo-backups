@@ -3,28 +3,32 @@
 * Version     : 1.0 
 * Created Date: 11/20/2019
 * Modification & Enhancement Log :
+  DE69367: Incorrect Bank Name [ "Intel System User"] is shown in the history section.
+  Fix: -> Added histIdToOldValueIdMap to store the history id of the next row with the old value id of instance type.
+       -> Pass the map to check for any user id is there in the above match.
+       -> In case the map has any user id, store it in set<Id> newhistIdToOldValAndUserIdMap and pass to maskUser method.
+       -> While masking for the old and new value, 
+          check the history id is there in the above set and then mask to be sure that we are masking only users.
+* Developer               Date                          Description
 * ---------------------------------------------------------------------------------------------------------------------------------------
-* Mayuri              21/05/2024                   This class hold the custom history component methods. Modified the code to resolve below existing issues 
-1) Number and ID issue - 15 digit number is considered as Id
-2) User Masking issue  - Not all the history records are masked by existing code. Code is masking records randomly
-3) If on the history record there are two users, one is internal and another is external then the existing code is not working properly. Either it will mask both users or none.
+* Ealisha              11/20/2019                    This class hold the custom history component methods.     
 *****************************************************************************************************************************************/
+
+
 
 public with sharing class Core_MDF_HistoryController {
     
     public static Map<String,String> userIdToUserNameMapping;
     public static Map<String,String> userIdToUrlMapping;
-    public static Map<String,String> uidToNameMap ;
-    public static String globalInternalUserName;
+    public static Map<String,Map<String,String> > newhistIdToOldValAndUserIdMap = new Map<String,Map<String,String> > {};
+        public static Map<String,Map<String,String> > newhistIdToNewValAndUserIdMap = new Map<String,Map<String,String> > {};
+            public static String globalInternalUserName;
     public static Map<String, SObjectField> fieldtofieldDetailsMap;
     public static Map<String, String> fieldtofieldLabel = new Map<String,String>();
-    public static Set<String> maskedFields = new Set<String>();
-    public static List<String> hisIdList = new List<String>();
-    public static List<String> userNames = new List<String>();
     
     //mask user name and url
-    public static void maskUserName(Map<Id,User> userIdToUserMapping,string internalUserName, Boolean isPFR){
-        uidToNameMap = new Map<String,String> {};
+    public static void maskUserName(Set<Id> finalHistIdListForUserId,Map<Id,User> userIdToUserMapping,Map<String,String> histIdToOldValMap,Map<String,String> histIdToNewValMap,string internalUserName){
+        Map<String,String> uidToNameMap = new Map<String,String> {};
             userIdToUserNameMapping = new Map<String,String> {};
                 userIdToUrlMapping = new Map<String,String> {};
                     globalInternalUserName = internalUserName;
@@ -32,12 +36,10 @@ public with sharing class Core_MDF_HistoryController {
         String userName = '';
         try{
             for(Id uId : userIdToUserMapping.keySet()) {
-                uidToNameMap.put(uId,userIdToUserMapping.get(uId).Name);
+                uidToNameMap.put(userIdToUserMapping.get(uId).Name,uId);
                 if(userIdToUserMapping.get(uId).UserType == 'PowerPartner') {
-                    if(UserInfo.getUserType() == 'PowerPartner') {
-                        userName = userIdToUserMapping.get(uId).Name;
-                        url=Label.Core_MDF_PFRCommunityLink + 's/profile/' + uId;
-                    }
+                    if(UserInfo.getUserType() == 'PowerPartner') {userName = userIdToUserMapping.get(uId).Name;url=Label.Core_MDF_PFRCommunityLink + 's/profile/' + uId;
+                                                                 }
                     else{
                         //get the internal url link
                         userName = userIdToUserMapping.get(uId).Name;
@@ -45,43 +47,61 @@ public with sharing class Core_MDF_HistoryController {
                     }
                 }
                 else{
-                    if(isPFR){
-                        //get the internal url link
-                        userName = userIdToUserMapping.get(uId).Name;
-                        url=Label.Core_MDF_Environment_URL + 'User/' + uId + '/view';
-                    }else{
-                        userName = internalUserName;
-                        url='';
-                    }
-                    
+                    userName = internalUserName;
+                    url='';
                 }
                 userIdToUrlMapping.put(String.valueOf(uId),url);
                 userIdToUserNameMapping.put(String.valueOf(uId),userName);
             }
+            system.debug('userIdToUserNameMapping:'+userIdToUserNameMapping);
+            system.debug('histIdToOldValMap:'+histIdToOldValMap);
+            system.debug('uidToNameMap:'+uidToNameMap);
+            for(String histId:histIdToOldValMap.keySet()) {
+                //DE69367 fix: While masking for the old value,check the history id is there in the above set and then mask to be sure that we are masking only users.
+                if(uidToNameMap.containsKey(histIdToOldValMap.get(histId)) && finalHistIdListForUserId.contains(histId)) {
+                    Map<String,String> internalMap = new Map<String,String> {};
+                        internalMap.put(uidToNameMap.get(histIdToOldValMap.get(histId)),userIdToUserNameMapping.get(uidToNameMap.get(histIdToOldValMap.get(histId))));
+                    newhistIdToOldValAndUserIdMap.put(histId,internalMap);
+                }
+                
+            }
+            system.debug('newhistIdToOldValAndUserIdMap:'+newhistIdToOldValAndUserIdMap);
+            for(String histId:histIdToNewValMap.keySet() ) {
+                //DE69367 fix: While masking for the new value,check the history id is there in the above set and then mask to be sure that we are masking only users.                
+                if(uidToNameMap.containsKey(histIdToNewValMap.get(histId)) && finalHistIdListForUserId.contains(histId)) {
+                    Map<String,String> internalMap = new Map<String,String> {};
+                        internalMap.put(uidToNameMap.get(histIdToNewValMap.get(histId)),userIdToUserNameMapping.get(uidToNameMap.get(histIdToNewValMap.get(histId))));
+                    newhistIdToNewValAndUserIdMap.put(histId,internalMap);
+                }
+                
+            }
+            system.debug('newhistIdToNewValAndUserIdMap:'+newhistIdToNewValAndUserIdMap);
         }
-        catch(Exception e) {
-          Core_MDF_CCP_UtilityClass.logError(e); 
-         throw new AuraHandledException(''+Label.Core_MDF_ApplicationErrorMessage);
-         }
+        catch(Exception e) {Core_MDF_CCP_UtilityClass.logError(e); throw new AuraHandledException(''+Label.Core_MDF_ApplicationErrorMessage);}
     }
+    
+    
     
     //Load the history data based on record Id and Object name
     @AuraEnabled(cacheable=true)
-    public static List<History> loadData(Id recordId,string objectInfo,string internalUserName, String fieldsToMask){
+    public static List<History> loadData(Id recordId,string objectInfo,string internalUserName){
         Core_MDF_HistoryUtility userValueList=new Core_MDF_HistoryUtility();
         String historyTestIds = Label.Core_MDF_History_Test_Ids;
         String[] testIds =  historyTestIds.split(',');
         List<String> valueList = new List<String> {};
-        String objectName = '';
+        //DE69367 fix: Added histIdToOldValueIdMap to store the history id of the next row with the old value id of instance type.
+        Map<Id,Id> histIdToOldValueIdMap = new Map<Id,Id> {};
+        //DE69367 fix
+        Set<Id> finalHistIdListForUserId = new Set<Id> {};
+            Map<String,String> histIdToOldValMap = new Map<String,String> {};
+                Map<String,String> histIdToNewValMap = new Map<String,String> {};
+                    String objectName = '';
         String idFieldName = '';
-        List<String> fieldsList = new List<String>();
+        List<History> h = new List<History>();
         Map<Id,User> userIdTouserTypeMap = new Map<Id,User> {};
-        List<History> newHistList = new List<History>();
+            List<History> newHistList = new List<History>();
         List<sObject> historyData = new List<SObject>();
         List<String> notAccessibleFieldList = new List<String>();
-        fieldsList = fieldsToMask.split(';');
-        maskedFields.addALL(fieldsList);
-
         try{      
             // check the accessibility of the fields in sObject  
             // get the details of the field in the object
@@ -90,14 +110,11 @@ public with sharing class Core_MDF_HistoryController {
             for (String fieldName: fieldtofieldDetailsMap.keySet()) {  
                 fieldLabelToFieldApiNameMap.put(fieldtofieldDetailsMap.get(fieldName).getDescribe().getLabel(),fieldName);
             }
-
             Set<String> historyDataFieldSet = new Set<String>();
             
             //check whether its standard or custom object
-            if(objectInfo.contains('__c')) {
-                  objectName= objectInfo.substringBefore('__c')+'__History';
-                  idFieldName = 'ParentId';
-             } 
+            if(objectInfo.contains('__c')) {objectName= objectInfo.substringBefore('__c')+'__History';idFieldName = 'ParentId';
+                                           } 
             else{
                 objectName= objectInfo+'History';
                 idFieldName = objectInfo+'Id';
@@ -106,23 +123,18 @@ public with sharing class Core_MDF_HistoryController {
             sObject sObj = Schema.getGlobalDescribe().get(objectName).newSObject();
             Schema.SObjectType t = Schema.getGlobalDescribe().get(objectName);
             SObject sObjectHistory = t.newSObject();
-            String objName = String.valueOf(t);
+            
             //get the history data by querying the history object
-            String query ='SELECT Id, CreatedById, format(CreatedDate), Field , toLabel(Field) localizedField, toLabel(OldValue), toLabel(NewValue),'
-                +String.escapeSingleQuotes(idFieldName)+' FROM '+String.escapeSingleQuotes(objName)+' where '+String.escapeSingleQuotes(idFieldName)+' =\''+String.escapeSingleQuotes(recordId)+'\' order by CreatedDate desc';
+            String query ='SELECT Id, CreatedById, format(CreatedDate), toLabel(Field), toLabel(OldValue), toLabel(NewValue),'
+                +String.escapeSingleQuotes(idFieldName)+' FROM '+t+' where '+String.escapeSingleQuotes(idFieldName)+' =\''+String.escapeSingleQuotes(recordId)+'\' order by CreatedDate desc';
             List<sObject> historyDatafromQuery = Database.query(query);
-            for(SObject hData : historyDatafromQuery){historyDataFieldSet.add(String.valueOf(hData.get('localizedField')));
+            for(SObject hData : historyDatafromQuery){historyDataFieldSet.add(String.valueOf(hData.get('field')));
                                                      }
             for(String f : historyDataFieldSet){
-                if(fieldLabelToFieldApiNameMap.containsKey(f)){
-                     Schema.DescribeFieldResult fieldDetails = fieldtofieldDetailsMap.get(fieldLabelToFieldApiNameMap.get(f)).getDescribe();
-                     if(!fieldDetails.isAccessible()){
-                                  notAccessibleFieldList.add(f);
-                     }
+                if(fieldLabelToFieldApiNameMap.containsKey(f)){Schema.DescribeFieldResult fieldDetails = fieldtofieldDetailsMap.get(fieldLabelToFieldApiNameMap.get(f)).getDescribe();if(!fieldDetails.isAccessible()){notAccessibleFieldList.add(f);}
                                                               }
             }
-            for(integer i =0; i<historyDatafromQuery.size(); i++){String fieldName = String.valueOf(historyDatafromQuery[i].get('localizedField'));
-                 if(!notAccessibleFieldList.contains(fieldName)){historyData.add(historyDatafromQuery[i]);}}
+            for(integer i =0; i<historyDatafromQuery.size(); i++){String fieldName = String.valueOf(historyDatafromQuery[i].get('field'));if(!notAccessibleFieldList.contains(fieldName)){historyData.add(historyDatafromQuery[i]);}}
             
             if(Test.isRunningTest()) {
                 if(objectInfo == 'Account') {
@@ -139,12 +151,15 @@ public with sharing class Core_MDF_HistoryController {
                     if (Schema.sObjectType.User.fields.userType.isAccessible()) {
                     User u = [SELECT Id,Name,userType FROM User where usertype='PowerPartner' limit 1];
                     valueList.add(u.id);
+                    histIdToOldValMap.put(Id.valueOf(testIds[0]),u.Name);
+                    histIdToNewValMap.put(Id.valueOf(testIds[0]),u.Name);
                     }
 
                 }
                 else if(objectInfo == 'PartnerFundClaim'){
                     if (Schema.sObjectType.PartnerFundCLaimHistory.fields.Id.isAccessible()) {
-                    historyData = [Select Id, CreatedById, format(CreatedDate), tolabel(Field), format(OldValue), format(NewValue) FROM PartnerFundCLaimHistory Where PartnerFundClaimId =:recordId limit 1000];//ATHR
+                    historyData = [Select Id, CreatedById, format(CreatedDate), tolabel(Field), format(OldValue), format(NewValue) FROM 
+                                   PartnerFundCLaimHistory];
                     historyData.add(new PartnerFundClaimHistory
                                     (
                                         PartnerFundClaimId=recordId,
@@ -154,223 +169,147 @@ public with sharing class Core_MDF_HistoryController {
                     if (Schema.sObjectType.User.fields.userType.isAccessible()) {
                         User u = [SELECT Id,Name,userType FROM User where usertype='Standard' limit 1];
                         valueList.add(u.id);
-                        }                  
+                        histIdToOldValMap.put(Id.valueOf(testIds[1]),u.Name);
+                        histIdToNewValMap.put(Id.valueOf(testIds[1]),u.Name);
+                        histIdToOldValueIdMap.put(u.id,Id.valueOf(testIds[1]));
+                        finalHistIdListForUserId.add(Id.valueOf(testIds[1]));
+                        }                
+                    
+                    
+                    
                 }
+                
             }
             
-            //loop through the list and capture all user id type values in a list valueList.
+            System.debug('historyData::'+historyData);
+            //loop through the list and capture all id type values in a list valueList.
+            //Also put the old value and new value in map <id,string>
             Integer i=0;
             for(SObject hobj:historyData) {
-                String newStr = String.valueOf(hobj.get('NewValue'));
-                String oldStr = String.valueOf(hobj.get('OldValue'));
-                String CreatedById = String.valueOf(hobj.get('CreatedById'));
-                String hisId = String.valueOf(historyData[i].get('Id'));
-                String nonLocField = String.valueOf(hobj.get('Field'));
-                String field = '';
-                if(!Test.isRunningTest()) {
-                     field = String.valueOf(hobj.get('localizedField'));
-                  }
-                
-                if((newStr != null && isId(newStr) && newStr.startsWith('005') && maskedFields.contains(nonLocField)) 
-                   || (oldStr != null && isId(oldStr) && oldStr.startsWith('005') && maskedFields.contains(nonLocField)))
-                {
-                    valueList.add(newStr);
-                    valueList.add(oldStr);
-                    hisIdList.add(hisId);
+                system.debug('hobj:'+hobj);
+                system.debug('historyData['+i+']:'+historyData[i]);
+                History hi = new History();
+                Boolean condition = !(hobj.get('OldValue') instanceOf Id) && !(hobj.get('NewValue') instanceOf Id);
+                System.debug('hobj.get OldValue:'+hobj.get('OldValue') +'::hobj.get NewValue:'+hobj.get('NewValue')+' :: cndition:'+condition);
+                if(!(hobj.get('OldValue') instanceOf Id) && !(hobj.get('NewValue') instanceOf Id)) {
+                    valueList.add(String.valueOf(hobj.get('OldValue')));
+                    valueList.add(String.valueOf(hobj.get('NewValue')));
+                    valueList.add(String.valueOf(hobj.get('CreatedById')));
+                    if(!Test.isRunningTest()) {histIdToOldValMap.put(String.valueOf(hobj.get('Id')),String.valueOf(hobj.get('OldValue')));histIdToNewValMap.put(String.valueOf(hobj.get('Id')),String.valueOf(hobj.get('NewValue')));
+                                              }
+                    h.add(hi);
                 }
-                valueList.add(CreatedById);
+                //DE69367 fix
+                else{
+                    histIdToOldValueIdMap.put(String.valueOf(historyData[i+1].get('Id')),String.valueOf(hobj.get('OldValue')));
+                }
                 i++;
+                system.debug('i='+i);
             }
-            
-            //Get User Details
-            userIdTouserTypeMap = userValueList.getUserDetails(valueList);
-            
+            System.debug('valueList:'+valueList);
+            System.debug('histIdToOldValueIdMap:'+histIdToOldValueIdMap);
+            //DE69367 fix: Pass the map to check for any user id is there in the above match.
+            userIdTouserTypeMap = userValueList.getUserDetails(valueList,histIdToOldValueIdMap);
+            system.debug('userIdTouserTypeMap:'+ userIdTouserTypeMap);
+            //DE69367 fix: In case the map has any user id, store it in set<Id> newhistIdToOldValAndUserIdMap and pass to maskUser method.
+            for(Id histid:histIdToOldValueIdMap.keySet()){
+                Id val = histIdToOldValueIdMap.get(histid);
+                if(userIdTouserTypeMap.containsKey(val)){
+                    finalHistIdListForUserId.add(histid);
+                }
+
+            }
+
+            system.debug('finalHistIdListForUserId:'+finalHistIdListForUserId);
+
             //call method to mask user name
-            //maskUserName(userIdTouserTypeMap,internalUserName,true);
+            //DE69367 fix
+            maskUserName(finalHistIdListForUserId,userIdTouserTypeMap,histIdToOldValMap,histIdToNewValMap,internalUserName);
             //form history data and return to UI.
-            if(objectInfo=='PartnerFundRequest'){
-                //call method to mask user name
-                maskUserName(userIdTouserTypeMap,internalUserName,true);
-                 Boolean isOutcomeBased = [Select id,Core_MDF_Is_Outcome_Based_Ind__c from PartnerFundRequest where Id=:recordId].Core_MDF_Is_Outcome_Based_Ind__c;
-                    if(isOutcomeBased){
-                        newHistList = formHistoryData(historyData,true);
-                    }else{
-                        newHistList = formHistoryData(historyData,false);
-                    }
-            }else{
-                //call method to mask user name
-                maskUserName(userIdTouserTypeMap,internalUserName,false);
-                newHistList = formHistoryData(historyData,false);
-            }
+            newHistList = formHistoryData(historyData);
         }
-        catch(Exception e) {newHistList = new List<History>();}
+        catch(Exception e) {Core_MDF_CCP_UtilityClass.logError(e); throw new AuraHandledException(''+Label.Core_MDF_ApplicationErrorMessage);}
         return newHistList;
     }
-    
-    //check whether passed string parameter is an Id or not
-    public static Boolean isId(String possibleId) { 
-        try { 
-            Id.valueOf(possibleId); 
-        } catch(Exception ex) { 
-            return false; 
-        } 
-        return true; 
-    }  
-    
-    public static String getValueForOtherDataTypes(String oldOrNewValueStr, object oldOrNewValue) 
-    {
-        
-        String  updatedOldOrNewValue ='';       
-        //if old value is of Date format    
-        if(oldOrNewValueStr != null && oldOrNewValue instanceOf Date) {
-            DateTime oldDate = DateTime.valueOf(oldOrNewValueStr);
-            DateTime myDate = DateTime.newInstance(oldDate.year(), oldDate.month(), oldDate.day());
-            updatedOldOrNewValue = myDate.format('yyyy-MM-dd');
-        }                                                                                                     
-        //if old value is of Datetime format    
-        else if(oldOrNewValueStr != null && oldOrNewValue instanceOf DateTime) {
-            DateTime oldDate = DateTime.valueOf(oldOrNewValueStr);
-            DateTime myDate = DateTime.newInstanceGmt(oldDate.year(),oldDate.month(),oldDate.day(),oldDate.hour(),oldDate.minute(),oldDate.second()); 
-            updatedOldOrNewValue = myDate.format('MM/dd/yyyy h:m a');
-        }                                                                                                           
-        //if old value is of currency format, set scale to 2 decimal places 
-        else if(oldOrNewValueStr != null && oldOrNewValue instanceOf String) {
-            if(oldOrNewValueStr.contains('.')){
-                String replacedStringwithoutPeriod = oldOrNewValueStr.substringBefore('.')+oldOrNewValueStr.substringAfter('.');
-                if(replacedStringwithoutPeriod.isNumeric()){
-                    updatedOldOrNewValue = String.valueOf(Decimal.valueOf(oldOrNewValueStr).setScale(2));
-                }else{updatedOldOrNewValue =oldOrNewValueStr;
-                     }}else{updatedOldOrNewValue =oldOrNewValueStr;
-                           }
-        }                                                                                                   
-        else{
-            updatedOldOrNewValue =oldOrNewValueStr;
-        }
-        return updatedOldOrNewValue;
-    }
-    
     
     //form history data
-    public static List<History> formHistoryData(List<sObject> historyData,Boolean isOutcomeBased){
+    public static List<History> formHistoryData(List<sObject> historyData){
         List<History> newHistList = new List<History>();
         try{
+            SYstem.debug('historyData:'+historyData);
             //Again loop through the history data and form all values required for UI.
             for(SObject his:historyData) {
-                History hisWrapper = new History();
-                String newStr = String.valueOf(his.get('NewValue'));
-                String oldStr = String.valueOf(his.get('OldValue'));
-                String hisId = String.valueOf(his.get('Id'));
-                String hisCreatedDate = String.valueOf(his.get('CreatedDate'));
-                String hisCreatedById = String.valueOf(his.get('CreatedById'));
-                String nonLocField = String.valueOf(his.get('Field'));
-                String hisField ='';
-                
-                if(!Test.isRunningTest()) {
-                     hisField = String.valueOf(his.get('localizedField'));  //activity status (tolabel)
-                  }
-                
-                
-                // Outcome-based PFR: relabel Activity Status -> Status in history UI
-                // Only when object is PartnerFundRequest and the changed field is Core_MDF_Fund_Request_Status__c
-                // We cannot derive parent object directly from history sObject row here, so we apply a safe rename by field label,
-                // which is what localizedField represents, while keeping scope to the specific API field via nonLocField.
-                if(isOutcomeBased) {
-                    if(nonLocField == 'Core_MDF_Fund_Request_Status__c') {
-                        // We only rename when header logic detected Outcome-based context.
-                        // Header logic already checks Core_MDF_Is_Outcome_Based_Ind__c and sets a special header.
-                        // Mirror that UX by renaming field label locally without extra SOQL or FLS impact.
-                        if(String.isNotBlank(hisField) && hisField.equalsIgnoreCase('Activity Status')) {
-                            hisField = Label.Core_MDF_Status;
+                History hh = new History();
+                if(!(his.get('OldValue') instanceOf Id) && !(his.get('NewValue') instanceOf Id)) {
+                    hh.id=String.valueOf(his.get('Id'));
+                    if(Test.isRunningTest()) {
+                        for(Id hisId:newhistIdToOldValAndUserIdMap.keySet()) {
+                            hh.id = hisId;
+                            break;
                         }
-                    }
-                    if(nonLocField == 'RequestedAmount') {
-                        // We only rename when header logic detected Outcome-based context.
-                        // Header logic already checks Core_MDF_Is_Outcome_Based_Ind__c and sets a special header.
-                        // Mirror that UX by renaming field label locally without extra SOQL or FLS impact.
-                        if(String.isNotBlank(hisField) && hisField.equalsIgnoreCase('Activity Spending Limit')) {
-                            hisField = Label.Core_MDF_Activity_Total_Investment;
-                        }
-                    }
-                    if(nonLocField == 'Title') {
-                        // We only rename when header logic detected Outcome-based context.
-                        // Header logic already checks Core_MDF_Is_Outcome_Based_Ind__c and sets a special header.
-                        // Mirror that UX by renaming field label locally without extra SOQL or FLS impact.
-                        if(String.isNotBlank(hisField) && hisField.equalsIgnoreCase('Activity Name')) {
-                            hisField = Label.Core_MDF_Activity_Name;
-                        }
-                    }
-                    if(nonLocField == 'Core_MDF_Activity_Description__c') {
-                        // We only rename when header logic detected Outcome-based context.
-                        // Header logic already checks Core_MDF_Is_Outcome_Based_Ind__c and sets a special header.
-                        // Mirror that UX by renaming field label locally without extra SOQL or FLS impact.
-                        if(String.isNotBlank(hisField) && hisField.equalsIgnoreCase('Activity Description')) {
-                            hisField = Label.Core_MDF_Outcome_Description;
-                        }
-                    }
-                    if(nonLocField == 'Core_MDF_Activity_Closure_Type__c') {
-                        // We only rename when header logic detected Outcome-based context.
-                        // Header logic already checks Core_MDF_Is_Outcome_Based_Ind__c and sets a special header.
-                        // Mirror that UX by renaming field label locally without extra SOQL or FLS impact.
-                        if(String.isNotBlank(hisField) && hisField.equalsIgnoreCase('Activity Closure Type')) {
-                            hisField = Label.Core_MDF_Closure_Type_OB;
-                        }
-                    }
-                }
-                
-
-                if(maskedFields.contains(nonLocField) && ((userNames.contains(oldStr) || userNames.contains(newStr))) )
-                {
-                    continue;
-                }
-                if(((!isId(newStr)) && (!isId(oldStr))) || (hisIdList.contains(hisId))){
-                    hisWrapper.id= hisId;
-                    hisWrapper.user=(userIdToUserNameMapping != null && userIdToUserNameMapping.get(hisCreatedById) != null) ? userIdToUserNameMapping.get(hisCreatedById) : globalInternalUserName;
-                    hisWrapper.field = hisField;				
-                    hisWrapper.createdDate = hisCreatedDate;
-                    hisWrapper.userUrl = userIdToUrlMapping.get(hisCreatedById);
-                    hisWrapper.isCheckbox=false;
-                    
+                    } 
+                    hh.user=(userIdToUserNameMapping != null && userIdToUserNameMapping.get(String.valueOf(his.get('CreatedById'))) != null) ? userIdToUserNameMapping.get(String.valueOf(his.get('CreatedById'))) : globalInternalUserName;
+                    string field = String.valueOf(his.get('Field'));
+                    hh.field = field;				
+                    hh.createdDate = String.valueOf(his.get('CreatedDate'));
+                    hh.userUrl = userIdToUrlMapping.get(String.valueOf(his.get('CreatedById')));
+                    hh.isCheckbox=false;
                     //if old value is a user name
-                    if(uidToNameMap.containsKey(oldStr) && hisIdList.contains(hisId)) {
-                        Id uId = Id.valueOf(oldStr);
-                        hisWrapper.oldValue = userIdToUserNameMapping.get(uId);
-                        hisWrapper.oldValueUrl = userIdToUrlMapping.get(uId);
+                    if(newhistIdToOldValAndUserIdMap.containsKey(hh.id)) {
+                        Map<String,String> nameToUrlMap = newhistIdToOldValAndUserIdMap.get(hh.id);
+                        Set<String> uIdList = nameToUrlMap.keySet();
+                        hh.oldValue = nameToUrlMap.values()[0];
+                        hh.oldValueUrl = userIdToUrlMapping.get(new List<String>(uIdList)[0]);
                     }
                     //if old value is of boolean type
-                    else if(oldStr != null && his.get('OldValue') instanceOf Boolean) {
-                        hisWrapper.isCheckbox=true;
-                        hisWrapper.oldValue = oldStr;
-                    }
-                    //Check for other data types                                                                  
-                    else {
-                        hisWrapper.oldValue = getValueForOtherDataTypes(oldStr,his.get('OldValue'));
+                    else if(String.valueOf(his.get('OldValue')) != null && his.get('OldValue') instanceOf Boolean) {hh.isCheckbox=true;hh.oldValue = string.valueOf(his.get('OldValue'));
+                                                                                                                   }
+                    //if old value is of Date format	
+                    else if(String.valueOf(his.get('OldValue')) != null && his.get('OldValue') instanceOf Date) {DateTime oldDate = DateTime.valueOf(String.valueOf(his.get('OldValue')));DateTime myDate = DateTime.newInstance(oldDate.year(), oldDate.month(), oldDate.day());hh.oldValue = myDate.format('yyyy-MM-dd');
+                                                                                                                }
+                    //if old value is of Datetime format	
+                    else if(String.valueOf(his.get('OldValue')) != null && his.get('OldValue') instanceOf DateTime) {DateTime oldDate = DateTime.valueOf(String.valueOf(his.get('OldValue')));DateTime myDate = DateTime.newInstanceGmt(oldDate.year(),oldDate.month(),oldDate.day(),oldDate.hour(),oldDate.minute(),oldDate.second());hh.oldValue = myDate.format('MM/dd/yyyy h:m a');
+                                                                                                                    }
+                    //if old value is of currency format, set scale to 2 decimal places	
+                    else if(String.valueOf(his.get('OldValue')) != null && his.get('OldValue') instanceOf String) {if(String.valueOf(his.get('OldValue')).contains('.')) {	String replacedStringwithoutPeriod = String.valueOf(his.get('OldValue')).substringBefore('.')+String.valueOf(his.get('OldValue')).substringAfter('.');if(replacedStringwithoutPeriod.isNumeric()){hh.oldValue = String.valueOf(Decimal.valueOf(String.valueOf(his.get('OldValue'))).setScale(2));system.debug('currency value:'+hh.oldValue); }else{hh.oldValue =String.valueOf(his.get('OldValue'));system.debug('string instance:');} }else{hh.oldValue =String.valueOf(his.get('OldValue'));system.debug('string instance:');}
+                                                                                                                  }
+                    else{
+                        hh.oldValue =String.valueOf(his.get('OldValue'));
                     }
                     //if new value is a user name
-                    
-                    if(uidToNameMap.containsKey(newStr) && hisIdList.contains(hisId)) {
-                        Id uId = Id.valueOf(newStr);
-                        hisWrapper.newValue = userIdToUserNameMapping.get(uId);
-                        hisWrapper.newValueUrl = userIdToUrlMapping.get(uId);
+                    if(newhistIdToNewValAndUserIdMap.containsKey(hh.id)) {
+                        Map<String,String> nameToUrlMap = newhistIdToNewValAndUserIdMap.get(hh.id);
+                        Set<String> uIdList = nameToUrlMap.keySet();
+                        List<String> uIdSet = new List<String>();
+                        uIdSet = nameToUrlMap.values();
+                        hh.newValue = uIdSet[0];
+                        hh.newValueUrl = userIdToUrlMapping.get(new List<String>(uIdList)[0]);
                     }
                     //if new value is of boolean type
-                    else if(newStr != null && his.get('NewValue') instanceOf Boolean) {hisWrapper.newValue = newStr;
-                                                                                      }
-                    //Check for other data types 
+                    else if(String.valueOf(his.get('NewValue')) != null && his.get('NewValue') instanceOf Boolean) {hh.newValue = string.valueOf(his.get('NewValue'));
+                                                                                                                   }
+                    //if new value is of Date type
+                    else if(String.valueOf(his.get('NewValue')) != null && his.get('NewValue') instanceOf Date) {DateTime newDate = DateTime.valueOf(String.valueOf(his.get('NewValue')));DateTime myDate = DateTime.newInstance(newDate.year(), newDate.month(), newDate.day());hh.newValue = myDate.format('yyyy-MM-dd');
+                                                                                                                }
+                    //if new value is of Datetime format
+                    else if(String.valueOf(his.get('NewValue')) != null && his.get('NewValue') instanceOf DateTime) {DateTime newDate = DateTime.valueOf(String.valueOf(his.get('NewValue')));DateTime myDate = DateTime.newInstanceGmt(newDate.year(),newDate.month(),newDate.day(),newDate.hour(),newDate.minute(),newDate.second());hh.newValue = myDate.format('MM/dd/yyyy h:m a');
+                                                                                                                    }
+                    //if new value is of currency format, set scale to 2 decimal places	
+                    else if(String.valueOf(his.get('NewValue')) != null && his.get('NewValue') instanceOf string) {if(String.valueOf(his.get('NewValue')).contains('.')){String replacedStringwithoutPeriod = String.valueOf(his.get('NewValue')).substringBefore('.')+String.valueOf(his.get('NewValue')).substringAfter('.');if(replacedStringwithoutPeriod.isNumeric()){hh.newValue = String.valueOf(Decimal.valueOf(String.valueOf(his.get('NewValue'))).setScale(2));}else{hh.newValue =String.valueOf(his.get('NewValue'));}}else{hh.newValue =String.valueOf(his.get('NewValue'));}
+                                                                                                                  }
                     else {
-                        hisWrapper.newValue = getValueForOtherDataTypes(newStr,his.get('NewValue'));
+                        hh.newValue =String.valueOf(his.get('NewValue'));
                     }
-                    newHistList.add(hisWrapper);
+                    newHistList.add(hh);
                 }
             }
         }
-        catch(Exception e) {Core_MDF_CCP_UtilityClass.logError(e); 
-        throw new AuraHandledException(''+Label.Core_MDF_ApplicationErrorMessage);}
+        catch(Exception e) {Core_MDF_CCP_UtilityClass.logError(e); throw new AuraHandledException(''+Label.Core_MDF_ApplicationErrorMessage);}
         return newHistList;
     }
     
-    
     @AuraEnabled(cacheable=true)
-    public static HistoryHeader getHistoryHeader(string objectInfo,Id recordId){
+    public static HistoryHeader getHistoryHeader(string objectInfo){
         HistoryHeader hh = new HistoryHeader();
         //setting default lang to English.
         String userLang = 'en_US';
@@ -385,59 +324,46 @@ public with sharing class Core_MDF_HistoryController {
             {objectName= objectInfo.substringBefore('__c')+'__History';} 
             else
             {objectName= objectInfo+'History';}
-                //Get the label value for the history object.
-                //ATHR Fix 
-                //List<Schema.DescribeSObjectResult> describeSobjectsResult = Schema.describeSObjects(new List<String>{objectName}); // this can accept list of strings, we describe only one object here
-            	//String objectLabel = describeSobjectsResult[0].getLabel();	
-            	Schema.SObjectType objType = Schema.getGlobalDescribe().get(objectName);   
-            	Schema.DescribeSObjectResult describeSobjectsResult = objType.getDescribe();
-            	String objectLabel = describeSobjectsResult.getLabel();
-            	
-                if(String.isNotBlank(objectLabel)){
-
-                
-                //Check if the label contains : then spilt and save otherwise save null.
-                String[] customHeader = objectLabel.contains(':') ? objectLabel.split(':') : null; 
-                //Set the history header to include history at end with the object name for custom object else just show the object label for the standard object.
-                hh.objectName= (customHeader != null) ? (customHeader[1]+' History').trim() : objectLabel.trim();                                  
-                //Get the user language
-                userLang = (UserInfo.getLanguage() != null) ? UserInfo.getLanguage() : 'en_US';
-                    String query = 'Select toLabel(Core_MDF_History_Header_Translation_nm__c) '+
-                        ' from Core_MDF_History_Header_Translation__mdt where Core_MDF_obj_nm__c=\''+
-                        String.escapeSingleQuotes(objectInfo)+'\''+' Limit 1';
-                    String v1 = query;
-                    langTrans=Database.query(v1);
-                    if(langTrans.size() > 0){
-                        
-                        if(objectInfo=='PartnerFundRequest'){
-                            Boolean isOutcomeBased = [Select id,Core_MDF_Is_Outcome_Based_Ind__c from PartnerFundRequest where Id=:recordId].Core_MDF_Is_Outcome_Based_Ind__c;
-                            if(isOutcomeBased){
-                                hh.objectName = Label.Core_MDF_OutcomeBased_Campaign_History_Header;
-                            }else{
-                                hh.objectName = String.valueOf(langTrans[0].Core_MDF_History_Header_Translation_nm__c);
-                            }
-                        }else{
-                            hh.objectName = String.valueOf(langTrans[0].Core_MDF_History_Header_Translation_nm__c);
-                        }
-                        
-                    }
-                }
-                hh.errorMessage = '';
-                       
-        } catch(Exception e) {
-            if(e.getMessage().contains('Invalid sobject provided')){
-                hh.objectName = Label.Core_MDF_History;
-                hh.errorMessage = Label.Core_MDF_Invalid_Sobject_Error;
-            } else{
-                hh.objectName = Label.Core_MDF_History;
-                hh.errorMessage = Label.Core_MDF_ApplicationErrorMessage;
+            system.debug('objectName:'+objectName);
+            if(Schema.getGlobalDescribe().containsKey(objectName)){
+            //Get the label value for the history object.
+            List<Schema.DescribeSObjectResult> describeSobjectsResult = Schema.describeSObjects(new List<String>{objectName}); // this can accept list of strings, we describe only one object here
+            String objectLabel = describeSobjectsResult[0].getLabel();
+            //Check if the label contains : then spilt and save otherwise save null.
+            String[] customHeader = objectLabel.contains(':') ? objectLabel.split(':') : null; 
+            system.debug('customHeader:'+customHeader);
+            //Set the history header to include history at end with the object name for custom object else just show the object label for the standard object.
+            hh.objectName= (customHeader != null) ? (customHeader[1]+' History').trim() : objectLabel.trim();                                  
+            //Get the user language.
+            userLang = (UserInfo.getLanguage() != null) ? UserInfo.getLanguage() : 'en_US';
+            //Form the translation col to be queried in the metadata.
+            String colToBeQueried = 'Core_MDF_'+userLang+'_cd__c';
+            //check if the field exists in the metadata
+            Set<String> objectFields = Schema.SObjectType.Core_MDF_History_Header_Translation__mdt.fields.getMap().keySet();
+            system.debug('objectFields:'+objectFields);
+            //in case the field exists, run the query to get the trslated value for the history header
+            if(objectFields.contains(colToBeQueried.toLowerCase())) {
+                String query = 'Select '+String.escapeSingleQuotes(colToBeQueried)+
+                ' from Core_MDF_History_Header_Translation__mdt where Core_MDF_obj_nm__c=\''+String.escapeSingleQuotes(objectInfo)+'\'';
+            system.debug('query:'+query);
+            String v1 = query;
+            langTrans=Database.query(v1);
+            system.debug('langTrans:'+langTrans);
+            if(langTrans.size() > 0){
+                hh.objectName= (String.valueOf(langTrans[0].get(colToBeQueried)) != null) ? String.valueOf(langTrans[0].get(colToBeQueried)).trim() : hh.objectName.trim();
+            }
+            }
+                system.debug('hh.objectName:'+hh.objectName);
             }
         }
+               
+        catch(Exception e) {Core_MDF_CCP_UtilityClass.logError(e); throw new AuraHandledException(''+Label.Core_MDF_ApplicationErrorMessage);}
+        
         return hh;
     }
     
-    
-    public class History {
+
+  public class History {
         @AuraEnabled public String id  { get; set; }
         @AuraEnabled public String createdDate  { get; set; }
         @AuraEnabled public String field { get; set; }
@@ -452,19 +378,18 @@ public with sharing class Core_MDF_HistoryController {
     
     public class HistoryHeader {
         @AuraEnabled public String objectName  { get; set; }
-        @AuraEnabled public String errorMessage {get; set; }
     }
     
     public without sharing class Core_MDF_HistoryUtility{
-        public Map<Id,User> getUserDetails(List<String> valueList){
+        public Map<Id,User> getUserDetails(List<String> valueList, Map<Id,Id> histIdToOldValueIdMap){
             Map<Id,User> userIdTouserTypeMap = new Map<Id,User>();
-            for(User u : [SELECT Id,name,UserType FROM User where ID IN:valueList])
+            //DE69367 fix
+            List<Id> userId = histIdToOldValueIdMap.values();
+            for(User u : [SELECT Id,name,UserType FROM User where (NAME IN:valueList OR ID IN:valueList OR ID IN:userId)])
             {
                 userIdTouserTypeMap.put(u.Id, u);
-                userNames.add(u.name);
             }
             return userIdTouserTypeMap;
         }
-        
-    }
+}
 }

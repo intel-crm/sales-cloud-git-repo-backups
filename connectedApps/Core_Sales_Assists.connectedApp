@@ -7,7 +7,7 @@
     <oauthConfig>
         <callbackUrl>https://assists.ai4sales.com/sfdcTokens
 https://preprod-assists.ai4sales.com/sfdcTokens</callbackUrl>
-        <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6tdLdH4pY25ZVZffOgPsO5ivcerfgQR8kd5ib9FJCUc76w.faZTtFRyV1X_k</consumerKey>
+        <consumerKey>3MVG9FxR3Tq3eZN_lTuT8KV4MsSvfq.DbkokrxkM.Z7RlMIfV54WzIbNbb.0Ur4A6Vat.laqVqB3lnqa14T0K</consumerKey>
         <isAdminApproved>true</isAdminApproved>
         <isClientCredentialEnabled>false</isClientCredentialEnabled>
         <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
@@ -37,14 +37,30 @@ https://preprod-assists.ai4sales.com/sfdcTokens</callbackUrl>
         <isTokenExchangeFlowEnabled>false</isTokenExchangeFlowEnabled>
         <refreshTokenPolicy>specific_lifetime:1:DAYS</refreshTokenPolicy>
     </oauthPolicy>
-    <profileName>Production Release and Checkout</profileName>
+    <permissionSetName>TEST Sales Rep BB</permissionSetName>
+    <permissionSetName>Sales Rep-BB</permissionSetName>
+    <permissionSetName>CRM SW Admin Access</permissionSetName>
+    <permissionSetName>CRM Sales Rep-BB</permissionSetName>
+    <permissionSetName>CRM Sales Ops</permissionSetName>
+    <permissionSetName>CRM Sales Rep-BB-Dual IPS</permissionSetName>
+    <permissionSetName>CRM Data Ops</permissionSetName>
+    <permissionSetName>CRM Reporting Admin</permissionSetName>
+    <permissionSetName>CRM Sales Manager</permissionSetName>
+    <profileName>Cloud CRM BSA-Pre Prod</profileName>
+    <profileName>MDA Test Profile</profileName>
+    <profileName>Sales CRM API</profileName>
+    <profileName>IPA System Profile</profileName>
+    <profileName>Replica of Sales Rep-BB</profileName>
+    <profileName>Sales Manager Test</profileName>
     <profileName>Data Ops</profileName>
     <profileName>IT Admin</profileName>
     <profileName>Production Support-Display</profileName>
+    <profileName>Program Core Team</profileName>
     <profileName>Reporting Admin</profileName>
     <profileName>Sales Manager</profileName>
     <profileName>Sales Ops</profileName>
     <profileName>Sales Rep-BB</profileName>
+    <profileName>Production Support</profileName>
     <profileName>Sales Rep-BB-Dual IPS</profileName>
     <profileName>System Administrator</profileName>
 </ConnectedApp>

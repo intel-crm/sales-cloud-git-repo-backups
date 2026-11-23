@@ -1173,17 +1173,18 @@
     </fields>
     <label>Attendee Temp Record</label>
     <listViews>
-        <fullName>CventEvents__All</fullName>
+        <fullName>All</fullName>
         <columns>NAME</columns>
+        <columns>CventEvents__pkg_EventStub__c</columns>
         <columns>CventEvents__pkg_FirstName__c</columns>
         <columns>CventEvents__pkg_LastName__c</columns>
-        <columns>CventEvents__pkg_Email__c</columns>
-        <columns>CventEvents__pkg_ProcessStatus__c</columns>
-        <columns>CventEvents__pkg_Message__c</columns>
-        <columns>CREATED_DATE</columns>
         <columns>LAST_UPDATE</columns>
+        <columns>CventEvents__pkg_AttendeeStatus__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>UPDATEDBY_USER</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
+        <language>en_US</language>
     </listViews>
     <listViews>
         <fullName>CventEvents__StatusFailed</fullName>
@@ -1251,9 +1252,9 @@
         <customTabListAdditionalFields>LAST_UPDATE</customTabListAdditionalFields>
         <excludedStandardButtons>New</excludedStandardButtons>
         <excludedStandardButtons>OpenListInQuip</excludedStandardButtons>
-        <excludedStandardButtons>Accept</excludedStandardButtons>
-        <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
         <excludedStandardButtons>MassChangeOwner</excludedStandardButtons>
+        <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
+        <excludedStandardButtons>Accept</excludedStandardButtons>
         <searchResultsAdditionalFields>CventEvents__pkg_FirstName__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>CventEvents__pkg_LastName__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>CventEvents__pkg_Email__c</searchResultsAdditionalFields>

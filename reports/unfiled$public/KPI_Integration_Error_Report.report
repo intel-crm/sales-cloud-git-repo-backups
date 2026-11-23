@@ -65,8 +65,8 @@
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>Core_KPI_Integration_Inbound__c.Core_IAH_KPI_Batch_Time__c</dateColumn>
-        <endDate>2021-02-26</endDate>
+        <endDate>2020-06-04</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2021-02-25</startDate>
+        <startDate>2020-05-12</startDate>
     </timeFrameFilter>
 </Report>

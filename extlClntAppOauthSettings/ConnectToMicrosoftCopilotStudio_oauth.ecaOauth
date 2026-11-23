@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExtlClntAppOauthSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+    <commaSeparatedOauthScopes>Full, RefreshToken, Lightning</commaSeparatedOauthScopes>
+    <externalClientApplication>ConnectToMicrosoftCopilotStudio</externalClientApplication>
+    <isFirstPartyAppEnabled>false</isFirstPartyAppEnabled>
+    <label>ConnectToMicrosoftCopilotStudio_oauth</label>
+    <oauthLink>00D2D000000E9ZK:888Df000000R9YX</oauthLink>
+</ExtlClntAppOauthSettings>

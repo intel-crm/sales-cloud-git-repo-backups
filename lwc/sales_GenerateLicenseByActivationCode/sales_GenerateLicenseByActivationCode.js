@@ -1,7 +1,7 @@
-import { LightningElement } from 'lwc';
-//import isCommunity from '@salesforce/apex/Sales_AddNewLicenseAdminController.isCommunity';
-//import { ShowToastEvent } from "lightning/platformShowToastEvent";
-import { NavigationMixin } from 'lightning/navigation';/*
+import { LightningElement, api, track } from 'lwc';
+import isCommunity from '@salesforce/apex/Sales_AddNewLicenseAdminController.isCommunity';
+import { ShowToastEvent } from "lightning/platformShowToastEvent";
+import { NavigationMixin } from 'lightning/navigation';
 import updateLicenses from '@salesforce/apex/Sales_GenLicByActivationCondeController.updateLiceseRecord';
 import validateActivationCode from '@salesforce/apex/Sales_GenLicByActivationCondeController.validateLicenses';
 import LICENSE_OBJECT from '@salesforce/schema/Sales_License__c';
@@ -34,10 +34,10 @@ const columns = [
   {label: 'Product Name', fieldName: 'productName', type: 'text', initialwidth:'20%'},
   {label: 'No of Seats', fieldName: 'noOfSeats', type: 'text', initialwidth:'20'},
   {label: 'Tool License Type', fieldName: 'licenseToolType', type: 'text', initialwidth:'20'}
-];*/
+];
 
 export default class Sales_GenerateLicenseByActivationCode extends NavigationMixin(LightningElement) {
-    /*@api fromlac=false;
+    @api fromlac=false;
     @api isInternal = false;
     @api licRecordIds;
     @track isLoaded;
@@ -83,7 +83,7 @@ export default class Sales_GenerateLicenseByActivationCode extends NavigationMix
     }
 
     connectedCallback() {
-      /*this.isLoaded = true;
+      this.isLoaded = true;
         console.log('in init');
         isCommunity()
           .then(result => {
@@ -98,8 +98,8 @@ export default class Sales_GenerateLicenseByActivationCode extends NavigationMix
           mode: 'sticky'
       });
         this.dispatchEvent(evt);
-      });*/   
-      /*}
+      });   
+      }
 
   
       get disableSearch(){
@@ -196,7 +196,7 @@ this.isDataFound = false;
         });
         this.dispatchEvent(evt);
         }*/
-      /*else{
+      else{
         console.log('inside else part');
 
         validateActivationCode({
@@ -240,7 +240,7 @@ this.isDataFound = false;
         this.isLoaded = true;   
       }
     })*/
-    /*validateActivationCode({
+    validateActivationCode({
       licRecord: licRecord
       })
       .then(result => {
@@ -263,8 +263,8 @@ this.isDataFound = false;
         }
       });
     }
-  })*/
-/*}
+  })
+}
 
 
     handleOnLoad() {
@@ -339,7 +339,7 @@ this.isDataFound = false;
           this.isLoaded = true;   
           });  
           
-        } 
+        } */
       
         if(this.licType=='Add Seat' || this.licType=='Renewal'){
           const evt = new ShowToastEvent({
@@ -434,6 +434,6 @@ this.isDataFound = false;
     if (event.keyCode === 13) {
       event.preventDefault();
     }
-  }*/
+  }
 
 }

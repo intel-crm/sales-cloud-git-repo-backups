@@ -5,28 +5,13 @@
         <name>CRM_SOAR_Committee</name>
     </customPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Business_Review__c.User_s_Manager__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>CRM_Linked_Opportunities__c.CRM_Link_Description__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>CRM_Linked_Opportunities__c.CRM_Link_Reason__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>CRM_Linked_Opportunities__c.CRM_Linked_Opportunity__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>CRM_Linked_Opportunities__c.CRM_Primary_Opportunity__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>CRM_Linked_Opportunities__c.CRM_UniqueLinkedOppty__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -164,6 +149,11 @@
         <field>CRM_VBS_SOAR__c.CRM_VBS_VBS_Explore_Re_Use__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>SPM_Account_Feedback__c.CRM_CST_Is_Active_Planning_Period__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>
     <label>SOAR Committee</label>
     <license>Salesforce</license>
@@ -185,7 +175,7 @@
         <modifyAllRecords>false</modifyAllRecords>
         <object>CRM_VBS_Product__c</object>
         <viewAllFields>false</viewAllFields>
-        <viewAllRecords>true</viewAllRecords>
+        <viewAllRecords>false</viewAllRecords>
     </objectPermissions>
     <objectPermissions>
         <allowCreate>true</allowCreate>
@@ -195,7 +185,7 @@
         <modifyAllRecords>false</modifyAllRecords>
         <object>CRM_VBS_SOAR_Team__c</object>
         <viewAllFields>false</viewAllFields>
-        <viewAllRecords>true</viewAllRecords>
+        <viewAllRecords>false</viewAllRecords>
     </objectPermissions>
     <objectPermissions>
         <allowCreate>false</allowCreate>
@@ -207,6 +197,10 @@
         <viewAllFields>false</viewAllFields>
         <viewAllRecords>false</viewAllRecords>
     </objectPermissions>
+    <tabSettings>
+        <tab>CRM_Linked_Opportunities__c</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
     <tabSettings>
         <tab>CRM_VBS_SOAR__c</tab>
         <visibility>Visible</visibility>

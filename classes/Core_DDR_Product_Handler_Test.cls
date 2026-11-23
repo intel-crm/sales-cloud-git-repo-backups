@@ -203,8 +203,8 @@
                 Core_Design_Registration_Product__c DRproducts = new Core_Design_Registration_Product__c();
                 // System.debug('here=='+TestDDRupdate_Rej[0].Core_Design_Registration_Status_Nm__c);
                 DRproducts.Core_Design_Registration_Id__c = TestDDRlst[1].id;
-                DRproducts.Core_Product_Id__c = products2[1].Id;
-                DRproducts.Core_Target_Resale_Amt__c = 25;
+                DRproducts.Core_Product_Id__c = products2[0].Id;
+                DRproducts.Core_Target_Resale_Amt__c = 20;
                 DRproducts.Core_Full_Year_Qty__c = 3;
                 DRproducts.Core_Design_Product_Status_Nm__c = 'Pending';
                 insert DRproducts;
@@ -257,38 +257,38 @@
                 ddrRec.Core_End_Customer_Country_Nm__c='India';
                 ddrRec.Core_End_Customer_City_Nm__c='Bangalore';
                 ddrRec.Core_End_Customer_Country_Subdivision_Nm__c='Karnataka';
-        ddrRec.PCC_End_Customer_Country__c='India';
+				ddrRec.PCC_End_Customer_Country__c='India';
                 ddrRec.Core_End_Customer_Postal_Cd__c='758854';
                 ddrRec.Core_End_Customer_Contact_Title_Txt__c='Mr.';
                 ddrRec.Core_End_Customer_Contact_Nm__c='Arrow Electronics Partner User 01';
                 ddrRec.Core_End_Customer_Contact_Email_Txt__c='arrowelec.partneruser01@marketstar.com';
                 ddrRec.Core_End_Customer_Contact_Phone_Txt__c='7826499722';
                 ddrRec.Core_Manufacturing_Region_Cd__c='ASMO';
-        
+				
                 ddrRec.Core_Opportunity_Decision_Dt__c = system.today().addDays(10);
                 ddrRec.Core_First_Customer_Ship_Dt__c = system.today().addDays(11);
                 ddrRec.Core_Production_End_Dt__c = system.today().addDays(20);
                 ddrRec.Core_Intel_Platform_Nm__c='Arria';
                 ddrRec.Core_Design_Registration_Dsc__c='Test Des';
                 ddrRec.Core_Design_Registration_Nm__c='Test DR Name Arrow';
-        ddrRec.PCC_Industry__c = 'Agriculture';
-      ddrRec.PCC_Sub_Industry__c = 'Forestry';
-      ddrRec.PCC_Digital_Identifier__c='Website/URL';
-      ddrRec.PCC_Digital_Identifier_Value__c='test';
+				ddrRec.PCC_Industry__c = 'Agriculture';
+			ddrRec.PCC_Sub_Industry__c = 'Forestry';
+			ddrRec.PCC_Digital_Identifier__c='Website/URL';
+			ddrRec.PCC_Digital_Identifier_Value__c='test';
            
 
                 insert ddrRec;
                 Product_MM_Attribute_Mapping__c pmam = new Product_MM_Attribute_Mapping__c();
                 pmam.Ordering_Code__c = 'WX80660E52630V4';
                 pmam.Name = '949344';
-                pmam.MMID__c = '949344';
+                //pmam.MMID__c = '949344';
                 pmam.L4_Product__c = pr.Id;
                 Assert.isNotNull(pmam);
                 insert pmam;
                 Product_MM_Attribute_Mapping__c pmam1 = new Product_MM_Attribute_Mapping__c();
                 pmam1.Ordering_Code__c = 'WX80550E52630V4';
                 pmam1.Name = '949348';
-                pmam1.MMID__c = '949348';
+                //pmam1.MMID__c = '949348';
                 pmam1.L5_Product__c = pr1.Id;
                 Assert.isNotNull(pmam1);
                 insert pmam1;
@@ -348,10 +348,10 @@
             ddrRec.Core_Production_End_Dt__c = system.today().addDays(20);
             ddrRec.Core_Design_Registration_Nm__c='Test DR Name Arrow';
             ddrRec.Core_Design_Registration_Dsc__c='Test Des';
-      ddrRec.PCC_Industry__c = 'Agriculture';
-      ddrRec.PCC_Sub_Industry__c = 'Forestry';
-      ddrRec.PCC_Digital_Identifier__c='Website/URL';
-      ddrRec.PCC_Digital_Identifier_Value__c='test';
+			ddrRec.PCC_Industry__c = 'Agriculture';
+			ddrRec.PCC_Sub_Industry__c = 'Forestry';
+			ddrRec.PCC_Digital_Identifier__c='Website/URL';
+			ddrRec.PCC_Digital_Identifier_Value__c='test';
             Assert.isNotNull(ddrRec);
             insert ddrRec;
             Core_Design_Registration_Product__c DRproducts = new Core_Design_Registration_Product__c();
@@ -367,13 +367,14 @@
             Product_MM_Attribute_Mapping__c pmam = new Product_MM_Attribute_Mapping__c();
             pmam.Ordering_Code__c = 'WX80660E52630V4';
             pmam.Name = '949344';
-            pmam.MMID__c = '949344';
+            //pmam.MMID__c = '949344';
             pmam.L4_Product__c = pr.Id;
             Assert.isNotNull(pmam);
             insert pmam;
             Product_MM_Attribute_Mapping__c pmam1 = new Product_MM_Attribute_Mapping__c();
             pmam1.Ordering_Code__c = 'WX80550E52630V4';
-            pmam1.Name = '949348';pmam.MMID__c = '949348';pmam1.L5_Product__c = pr1.Id;
+            pmam1.Name = '949348';//pmam.MMID__c = '949348';
+            pmam1.L5_Product__c = pr1.Id;
             insert pmam1;
             PCC_DDR_L5_Product_Mapping__c dlpm = new PCC_DDR_L5_Product_Mapping__c();
             dlpm.PCC_Design_Registration__c = ddrRec.id;
@@ -381,7 +382,7 @@
             dlpm.PCC_Product_MM_Attribute_Mapping__c = pmam1.id;
             dlpm.PCC_MM_ID__c = pmam1.Name;
             dlpm.PCC_Ordering_Cd__c = pmam1.Ordering_Code__c;
-            dlpm.PCC_Old_MM_Id__c = pmam1.MMID__c;
+            //dlpm.PCC_Old_MM_Id__c = pmam1.MMID__c;
             insert dlpm;
             RestRequest req = new RestRequest();
             RestResponse res = new RestResponse();
@@ -454,10 +455,10 @@
         ddrRec.Core_Design_Registration_Nm__c='Test DR Name Arrow';
         ddrRec.Core_Design_Registration_Dsc__c='Test Des';
         ddrRec.Core_End_Customer_URL__c = 'Test';
-    ddrRec.PCC_Industry__c = 'Agriculture';
-      ddrRec.PCC_Sub_Industry__c = 'Forestry';
-      ddrRec.PCC_Digital_Identifier__c='Website/URL';
-      ddrRec.PCC_Digital_Identifier_Value__c='test';
+		ddrRec.PCC_Industry__c = 'Agriculture';
+			ddrRec.PCC_Sub_Industry__c = 'Forestry';
+			ddrRec.PCC_Digital_Identifier__c='Website/URL';
+			ddrRec.PCC_Digital_Identifier_Value__c='test';
            
         Assert.isNotNull(ddrRec);
         insert ddrRec;
@@ -465,7 +466,7 @@
         Core_Design_Registration_Product__c DRproducts = new Core_Design_Registration_Product__c();
         // System.debug('here=='+TestDDRupdate_Rej[0].Core_Design_Registration_Status_Nm__c);
         DRproducts.Core_Design_Registration_Id__c = ddrRec.id;
-        DRproducts.MMID_or_Ordering_code__c = pmam.Id;
+        //DRproducts.MMID_or_Ordering_code__c = pmam.Id;
         DRproducts.Core_Target_Resale_Amt__c = 20;
         DRproducts.Core_Full_Year_Qty__c = 3;
         DRproducts.Core_Design_Product_Status_Nm__c = 'Cancelled';
@@ -475,7 +476,7 @@
         dlpm.PCC_Product_MM_Attribute_Mapping__c = pmam1.id;
         dlpm.PCC_MM_ID__c = pmam1.Name; dlpm.PCC_Ordering_Cd__c = pmam1.Ordering_Code__c;
         insert dlpm;
-        DRproducts.MMID_or_Ordering_code__c = pmam1.Id;
+        //DRproducts.MMID_or_Ordering_code__c = pmam1.Id;
         Assert.isNotNull(DRproducts);
         update DRproducts;
         Test.stopTest();

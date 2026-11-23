@@ -38,6 +38,7 @@ global class Core_IPS_insertInterestedPartyQueueable implements Queueable{
             try{
             insert interestedPartyListToInsert ;
             }catch(Exception ex){
+             system.debug('errors in interested party'+ex.getCause()+ex.getLineNumber()); 
              Core_IPS_ExceptionHandling.logEntryWithException(ex,'Core_IPS_insertInterestedPartyQueueable','Interested Party');
             }
         }

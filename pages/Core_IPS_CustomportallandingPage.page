@@ -2,10 +2,10 @@
 <script>
 console.log({!flag});
 //alert();
-//if({!flag}==false)
-//{
-//  parent.location.href ='/IPS/apex/Core_IPS_CustomerDisclaimer';
-//}
+if({!flag}==false)
+{
+  parent.location.href ='/IPS/apex/Core_IPS_CustomerDisclaimer';
+}
 
 </script>
 

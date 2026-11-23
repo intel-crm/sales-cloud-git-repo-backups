@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customButtons>Core_Request_Ownership</customButtons>
     <customButtons>Core_Deal_Support</customButtons>
     <excludeButtons>DataDotComAccountInsights</excludeButtons>
     <excludeButtons>DataDotComClean</excludeButtons>
     <excludeButtons>DataDotComCompanyHierarchy</excludeButtons>
-    <excludeButtons>OpenSlackRecordChannel</excludeButtons>
     <excludeButtons>Submit</excludeButtons>
     <headers>PersonalTagging</headers>
     <layoutSections>
@@ -35,11 +35,75 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Exception_Opid__c</field>
+                <field>Core_Prime_Account_Name__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Exception_Comments__c</field>
+                <field>Core_Business_Party_Id__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>User_Defined_BVD_ID__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_Account_Record_Type_Dup_Check__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_Account_Reference_Source_ID__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_Account_Reference_Source_Name__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_Requested_Parent_BP_ID__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_Alternate_Name_Language__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>OPID_Hierarchy__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>test_form__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>UCD_Primary_Account__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>DisplayFlag__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>test1__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>PRM_IPA_Badge_Tier_Date__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>PRM_Count_IPA_Terms_And_Conditions__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_Is_Opportunity_Account__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_MDM_Secondary_Country_Nm__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_MDM_Secondary_State_Cd__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -49,23 +113,35 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>UCD_Primary_Account__c</field>
+                <field>Core_IPA_Partner_Segment__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Core_IPA_Badge_Tier__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>PRM_IPA_Badge_Tier_Date__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>OPID_Hierarchy__c</field>
+                <behavior>Edit</behavior>
+                <field>Core_IPA_Partner_Speciality__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Core_Deactivated__c</field>
+                <field>Core_Notify_Owner__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_Prime_Id__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>MaritzCX__Active__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_MDF_Active_Ind__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_Is_Active__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
@@ -89,6 +165,14 @@
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>LastModifiedById</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_Deactivated__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_Deactivation_Reason__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
@@ -121,55 +205,53 @@
             <sortOrder>2</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>NewTask</actionName>
+            <actionName>NewContact</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>3</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
+            <actionName>NewTask</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>4</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
             <actionName>Edit</actionName>
             <actionType>StandardButton</actionType>
-            <sortOrder>4</sortOrder>
+            <sortOrder>5</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>Core_Request_Ownership</actionName>
+            <actionType>CustomButton</actionType>
+            <sortOrder>6</sortOrder>
         </platformActionListItems>
     </platformActionList>
     <relatedLists>
-        <excludeButtons>MassChangeOwner</excludeButtons>
-        <excludeButtons>New</excludeButtons>
         <fields>NAME</fields>
         <fields>Core_Intel_Account_Id__c</fields>
-        <fields>Primary_Account__c</fields>
-        <fields>UCD_Hierarchy__c</fields>
-        <fields>Core_Business_Party_Id__c</fields>
-        <fields>Core_Intel_Partner_Alliance_PartnerGroup__c</fields>
         <fields>Core_Inactive_Ind__c</fields>
         <relatedList>Core_Account_Group_Member__c.Core_Partner_Account_Id__c</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
-        <fields>PRM_Partner_Agreement_Id__c</fields>
-        <fields>PRM_Agreement_Sign_Dt__c</fields>
-        <fields>PRM_Signed_By_Name__c</fields>
-        <fields>PRM_Signed_By_Email__c</fields>
+        <fields>PMP_Account_Industry__c</fields>
+        <fields>PMP_Account_Website__c</fields>
+        <fields>CREATEDBY_USER</fields>
+        <relatedList>PMP_Company__c.PMP_Account_Id__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <excludeButtons>MassChangeOwner</excludeButtons>
+        <excludeButtons>New</excludeButtons>
+        <fields>NAME</fields>
+        <fields>PRM_Specialty_Id__c</fields>
+        <fields>CREATED_DATE</fields>
+        <fields>PRM_Status_Change_Dt__c</fields>
+        <fields>PRM_Specialty_Type__c</fields>
+        <fields>PRM_Partner_Role__c</fields>
         <fields>PRM_InActive_Ind__c</fields>
         <fields>PRM_Record_Link__c</fields>
-        <relatedList>PRM_AccountLegalAgreemntAssociation__c.PRM_Account_Id__c</relatedList>
+        <relatedList>PRM_Account_Specialty_Association__c.PRM_Account_Id__c</relatedList>
     </relatedLists>
     <relatedLists>
-        <excludeButtons>New</excludeButtons>
-        <fields>NAME</fields>
-        <fields>OP_CIMID__c</fields>
-        <fields>Status__c</fields>
-        <relatedList>OPID_Sync_Request__c.OPID_Account__c</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <excludeButtons>New</excludeButtons>
-        <fields>NAME</fields>
-        <fields>Is_Active__c</fields>
-        <fields>PMP_Storefront_Published_Copy__c</fields>
-        <fields>PMP_Storefront_Working_Copy__c</fields>
-        <relatedList>PMP_OPID_MPI_Rel__c.PMP_One_Partner_ID__c</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <excludeButtons>New</excludeButtons>
         <fields>NAME</fields>
         <fields>PRM_Channel_Program_Id__c</fields>
         <fields>PRM_Channel_Program_Level_Id__c</fields>
@@ -189,30 +271,87 @@
         <relatedList>PRM_AccountBenefitAssociation__c.PRM_Account_Id__c</relatedList>
     </relatedLists>
     <relatedLists>
-        <excludeButtons>MassChangeOwner</excludeButtons>
-        <excludeButtons>New</excludeButtons>
-        <fields>PRM_Builder_Strategy__c</fields>
-        <fields>PRM_Active__c</fields>
-        <fields>CREATEDBY_USER</fields>
-        <fields>CREATED_DATE</fields>
-        <fields>LAST_UPDATE</fields>
-        <fields>Record_Link__c</fields>
-        <relatedList>PRM_IPA_Affiliation__c.PRM_Account__c</relatedList>
-        <sortField>CREATED_DATE</sortField>
-        <sortOrder>Desc</sortOrder>
+        <fields>NAME</fields>
+        <fields>Core_Company_Txt__c</fields>
+        <fields>Core_Inquiry_Priority_Pkt__c</fields>
+        <fields>Core_Inquiry_Status_Pkt__c</fields>
+        <fields>Core_Inquiry_Date_Dte__c</fields>
+        <fields>Core_Reviewed_by_Rep_Chk__c</fields>
+        <relatedList>Core_Inquiry__c.Core_Sent_to_Partner__c</relatedList>
     </relatedLists>
     <relatedLists>
-        <excludeButtons>MassChangeOwner</excludeButtons>
-        <excludeButtons>New</excludeButtons>
         <fields>NAME</fields>
-        <fields>PRM_Points_Opt_in_Ind__c</fields>
-        <fields>PRM_Points_Opt_in_Dt__c</fields>
-        <fields>PRM_Points_Not_Eligible_Ind__c</fields>
-        <fields>PRM_Points_Not_Eligible_Dt__c</fields>
-        <fields>PRM_Point_Status_Txt__c</fields>
-        <fields>PRM_Point_Status_Dt__c</fields>
-        <fields>PRM_Record_Link__c</fields>
-        <relatedList>PRM_IPAMembership_Attributes__c.PRM_Account_Id__c</relatedList>
+        <relatedList>BvD_Custom__c.Account__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>Account_Create_Request__c.Requested_Account__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>FULL_NAME</fields>
+        <fields>LEAD.RECORDTYPE</fields>
+        <fields>LEAD.PHONE</fields>
+        <fields>LEAD.COMPANY</fields>
+        <fields>LEAD.COUNTRY_CODE</fields>
+        <fields>Core_Sales_Group__c</fields>
+        <fields>LEAD.STATUS</fields>
+        <fields>Core_Lead_State__c</fields>
+        <fields>LEAD.LEAD_SOURCE</fields>
+        <fields>LEAD.CREATED_DATE</fields>
+        <relatedList>Lead.Core_Sent_to_Partner_Account_Name__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>PRM_Partner_Consent_Distributor__c.PRM_Account_Id__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>PRM_Registration_Tracker__c.PRM_Account__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>FULL_NAME</fields>
+        <fields>LEAD.RECORDTYPE</fields>
+        <fields>LEAD.PHONE</fields>
+        <fields>LEAD.COMPANY</fields>
+        <fields>LEAD.COUNTRY_CODE</fields>
+        <fields>Core_Sales_Group__c</fields>
+        <fields>LEAD.STATUS</fields>
+        <fields>Core_Lead_State__c</fields>
+        <fields>LEAD.LEAD_SOURCE</fields>
+        <fields>LEAD.CREATED_DATE</fields>
+        <relatedList>Lead.PCC_End_Customer_Account_Name__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>FULL_NAME</fields>
+        <fields>ACCOUNT.NAME</fields>
+        <fields>CONTACT.EMAIL</fields>
+        <fields>CONTACT.PHONE1</fields>
+        <fields>CONTACT.PHONE3</fields>
+        <relatedList>Contact.Indirect_Account__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>PCC_EndCustomerAcc_Mapping__c.PCC_End_Customer_Account_Id__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>PCC_EndCustomerAcc_Mapping__c.PCC_Partner_Account_Id__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>Contact_Training_Interaction__c.Account_Id__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>Product_Account_Interaction__c.Account__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>PRM_PartnerRecommendations__c.PRM_Account__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>Account_Hot_Button__c.Account_Lookup__c</relatedList>
     </relatedLists>
     <relatedObjects>ParentId</relatedObjects>
     <runAssignmentRulesDefault>true</runAssignmentRulesDefault>

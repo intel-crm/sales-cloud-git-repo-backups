@@ -19,7 +19,6 @@
            
             <apex:outputPanel rendered="{!$User.UITheme =='Theme3'}">            
                 <apex:commandButton action="{!setIsNewOppClickedTotrue}" value="New Opportunity" id="newButton"/>
-                              <!--  onclick="window.top.location.href='{!newOppUrl}'"/> -->
             </apex:outputPanel>
             <!-- lightning -Theme4d—Modern “Lightning Experience” Salesforce theme-->
             <apex:outputPanel rendered="{!$User.UITheme !='Theme3'}">    

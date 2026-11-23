@@ -132,8 +132,9 @@ global with sharing class Core_RestAPI_OpportunitiesUtility {
             newOpp.CloseDate=Date.parse(opp.decisionDate);  
             newOpp.Core_Competitive_Architecture__c=opp.competitiveArchitecture;  
             newOpp.Core_Status_Update__c = opportunity[0].Core_Status_Update__c == null ? opp.statusUpdate : opp.statusUpdate + '\n' + opportunity[0].Core_Status_Update__c;
-            newOpp.Core_Architecture_Conversion__c= Boolean.valueOf(opp.architectureConversion);  
+            //newOpp.Core_Architecture_Conversion__c= Boolean.valueOf(opp.architectureConversion);  
             //newOpp.Core_Intel_Platform__c=opp.intelPlatform;       
+            newOpp.Core_Architecture_Conversion__c= opp.architectureConversion;
             newOpp.Core_Volume__c=opp.volume;  
             newOpp.Core_First_Customer_Ship_Date__c=Date.parse(opp.firstCustomerShipDate);  
             newOpp.Core_Production_End_Date__c=Date.parse(opp.productionEndDate);  
@@ -205,16 +206,18 @@ global with sharing class Core_RestAPI_OpportunitiesUtility {
             boolean isCompetitiveArchitectureValid = validatePicklistValues(sObjOppFieldMap,'Core_Competitive_Architecture__c',oppWrapper.competitiveArchitecture, true, oppMsgs.opportunityErrorMsgs, 'competitiveArchitecture');
             //boolean isIntelPlatformValid = validatePicklistValues(sObjOppFieldMap,'Core_Intel_Platform__c',oppWrapper.intelPlatform,oppWrapper.stage == 'Design' ? true :false, oppMsgs.opportunityErrorMsgs, 'intelPlatform');
             boolean isManufacturingRegionValid = validatePicklistValues(sObjOppFieldMap,'Core_Manufacturing_Geo__c',oppWrapper.manufacturingRegion, true, oppMsgs.opportunityErrorMsgs, 'manufacturingRegion');
-            if(!isCompetitiveArchitectureValid || !isManufacturingRegionValid){
+            boolean isArchitectureValid = validatePicklistValues(sObjOppFieldMap,'Core_Architecture_Conversion__c',oppWrapper.architectureConversion, true, oppMsgs.opportunityErrorMsgs, 'architecture');
+            if(!isCompetitiveArchitectureValid || !isManufacturingRegionValid || !isArchitectureValid){
                 isValid = false;
             }
             if(!validateOpportunityNumberFields(oppWrapper, fldValidMap, oppMsgs.opportunityErrorMsgs)){
                 isValid = false;
             }
+            /*
             if(!validBooleanValues.contains(oppWrapper.architectureConversion)){
                 addValidationError(oppMsgs.opportunityErrorMsgs, 'architectureConversion', Core_RestAPI_ResponseCodes.VALID_ERROR_CODE_1009, null);
                 isValid = false;
-            }
+            }*/
             oppMsgs.opportunityProductErrorMsgs = new List<OpportunityProductErrorMsg>();
             oppMsgs.opportunityPoPErrorMsgs = new List<OpportunityPoPErrorMsg>();
             validateOpportunityProducts(oppWrapper.opportunityProducts, oppMsgs, isUpdate );
@@ -227,7 +230,7 @@ global with sharing class Core_RestAPI_OpportunitiesUtility {
     public boolean validateOpportunityProducts(List<OpportunityProducts> oppProducts, OpportunityErrorMsg oppMsgs, boolean isUpdate){
         OpportunityProductErrorMsg oppProdErrorMsg = new OpportunityProductErrorMsg();        
         if(oppProducts.size() > 0){
-            putOppProductMap = new Map<Id,OpportunityLineItem>([SELECT id,Product2.Id,Core_Status__c,Quantity,UnitPrice,Core_Design_Registration_Product_Id__c,Opportunity.StageName from OpportunityLineItem 
+            putOppProductMap = new Map<Id,OpportunityLineItem>([SELECT id,Product2.Id,Core_Status__c,Quantity,UnitPrice,Core_Design_Registration_Product_Id__c from OpportunityLineItem 
                                                                 where OpportunityId = :opportunityId]);
             for(OpportunityProducts oppProd:oppProducts){
                 Boolean isKeyPresent = false;
@@ -255,7 +258,7 @@ global with sharing class Core_RestAPI_OpportunitiesUtility {
                         addValidationError(oppProdErrorMsg.opportunityProductErrors, 'opportunityProductId', Core_RestAPI_ResponseCodes.VALID_ERROR_CODE_1010, null);
                         isValid = false;
                     }
-                    if(q.Core_Status__c != 'Pending' && q.Opportunity.StageName != 'Design Win'){
+                    if(q.Core_Status__c != 'Pending'){
                         addValidationError(oppProdErrorMsg.opportunityProductErrors, 'status', Core_RestAPI_ResponseCodes.VALID_ERROR_CODE_1045, null);
                         isValid = false;
                     } 

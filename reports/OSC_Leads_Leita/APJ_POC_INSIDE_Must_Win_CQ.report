@@ -32,9 +32,6 @@
     <columns>
         <field>Opportunity.Core_Push_Counter__c</field>
     </columns>
-    <columns>
-        <field>Opportunity.Core_Opportunity_Coverage__c</field>
-    </columns>
     <description>RT: Opportunities  APJ Inside Sales Must Win Current Quarter</description>
     <filter>
         <booleanFilter>1 AND 2 AND 3</booleanFilter>
@@ -42,8 +39,8 @@
             <column>Opportunity.Core_Opportunity_Coverage__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>OSC,INSIDE</value>
+            <operator>equals</operator>
+            <value>OSC</value>
         </criteriaItems>
         <criteriaItems>
             <column>User.Core_User_Geo__c</column>
@@ -70,7 +67,7 @@
         <field>Opportunity.Core_Approval_Status__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>APJ INSIDE Must Win CQ</name>
+    <name>APJ POC INSIDE Must Win CQ</name>
     <params>
         <name>terr</name>
         <value>all</value>

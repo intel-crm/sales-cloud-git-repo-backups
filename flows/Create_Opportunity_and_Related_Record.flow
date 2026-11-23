@@ -1,0 +1,1947 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Approval_Email_for_Approver</name>
+        <label>Approval Email for Approver</label>
+        <locationX>1458</locationX>
+        <locationY>3299</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <connector>
+            <targetReference>Approver_Email_for_Partner</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <elementReference>Get_deal_details.Core_Intel_Technical_Owner_Id__r.Email</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderType</name>
+            <value>
+                <stringValue>OrgWideEmailAddress</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderAddress</name>
+            <value>
+                <stringValue>dealreg_partner@intel.com</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue>Deal Approved Converted to Opportunity</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>ApproverEmailBodyForApprover</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>sendRichBody</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <name>Approver_Email_for_Partner</name>
+        <label>Approver Email for Partner</label>
+        <locationX>1458</locationX>
+        <locationY>3407</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <connector>
+            <targetReference>Create_partner_email_log</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <elementReference>Get_deal_details.Owner:User.Email</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderType</name>
+            <value>
+                <stringValue>OrgWideEmailAddress</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderAddress</name>
+            <value>
+                <stringValue>dealreg_partner@intel.com</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue>Deal Approved Converted to Opportunity</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>PartnerApprovalEmailBody</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>sendRichBody</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <name>Process_Deal_Lines</name>
+        <label>Process Deal Lines</label>
+        <locationX>1502</locationX>
+        <locationY>1187</locationY>
+        <actionName>PCC_FlowApexActionCntroller</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>DRP_present</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>dealRecord</name>
+            <value>
+                <elementReference>$Record</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>PCC_FlowApexActionCntroller</nameSegment>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <apiVersion>60.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Add_column_to_email_table</name>
+        <label>Add column to email table</label>
+        <locationX>1458</locationX>
+        <locationY>2459</locationY>
+        <assignmentItems>
+            <assignToReference>table</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>EmailTableColumns</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>IterateOverDealDRP</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Add_Email_Table_row_to_table_markup</name>
+        <label>Add Email Table row to table markup</label>
+        <locationX>1546</locationX>
+        <locationY>2675</locationY>
+        <assignmentItems>
+            <assignToReference>table</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>EmailTableRowForApproval</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>IterateOverDealDRP</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Add_to_drplist</name>
+        <label>Add to drplist</label>
+        <locationX>1370</locationX>
+        <locationY>1943</locationY>
+        <assignmentItems>
+            <assignToReference>drpList</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>drpRec</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Created_OLIs</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_opportunity_id_on_deal</name>
+        <label>Assign opportunity id on deal</label>
+        <locationX>1282</locationX>
+        <locationY>1403</locationY>
+        <assignmentItems>
+            <assignToReference>Get_deal_details.Core_Opportunity_Id__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>OpportunityId</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_deal_with_opportunity_Id</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_OpportunityId</name>
+        <label>Assign OpportunityId</label>
+        <locationX>1502</locationX>
+        <locationY>971</locationY>
+        <assignmentItems>
+            <assignToReference>OpportunityId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Opportunity_if_it_s_created.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Get_all_DRPs</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_OpportunityId_1</name>
+        <label>Assign OpportunityId 1</label>
+        <locationX>1986</locationX>
+        <locationY>971</locationY>
+        <assignmentItems>
+            <assignToReference>OpportunityId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Opportunity_if_it_s_created.Id</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <name>Assign_OpportunityId_2</name>
+        <label>Assign OpportunityId 2</label>
+        <locationX>314</locationX>
+        <locationY>755</locationY>
+        <assignmentItems>
+            <assignToReference>OpportunityId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_deal_details.Core_Opportunity_Id__r</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Get_pricing_integration_staging_record</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_PIS_status_to_pending</name>
+        <label>Assign PIS status to pending</label>
+        <locationX>50</locationX>
+        <locationY>1079</locationY>
+        <assignmentItems>
+            <assignToReference>Get_pricing_integration_staging_record.Pricing_Status__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Pending</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_PIS_record</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Close_Email_Table_Row_for_markup</name>
+        <label>Close Email Table Row for markup</label>
+        <locationX>1458</locationX>
+        <locationY>2867</locationY>
+        <assignmentItems>
+            <assignToReference>table</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <stringValue>&lt;/table&gt;</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>get_intel_logo_link</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Populate_drprec</name>
+        <label>Populate drprec</label>
+        <locationX>1370</locationX>
+        <locationY>1835</locationY>
+        <assignmentItems>
+            <assignToReference>drpRec.Core_Opportunity_Product_Id__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Created_OLIs.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>drpRec.Core_Locked_Ind__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>drpRec.Id</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Created_OLIs.Core_Design_Registration_Product_Id__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>drpRec.RecordTypeId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Deal_Registration_Product_Locked_record_type_id.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Add_to_drplist</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>Check_if_PSAM_is_Opportunity_owner</name>
+        <label>Check if PSAM is Opportunity owner</label>
+        <locationX>2338</locationX>
+        <locationY>1295</locationY>
+        <defaultConnector>
+            <targetReference>Create_opportunity_team_member</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes3</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>OpptyOwnerId</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>Get_deal_details.Core_Partner_Account_Id__r.OwnerId</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_group_id_for_partner_s_role</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>DRP_present</name>
+        <label>DRP present</label>
+        <locationX>1502</locationX>
+        <locationY>1295</locationY>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes1</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_all_DRPs</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_opportunity_id_on_deal</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>If_Opportunity_is_stamped_on_deal</name>
+        <label>If Opportunity is stamped on deal</label>
+        <locationX>1117</locationX>
+        <locationY>647</locationY>
+        <defaultConnector>
+            <targetReference>Get_Opportunity_if_it_s_created</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes5</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_deal_details.Core_Opportunity_Id__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_OpportunityId_2</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Is_retry</name>
+        <label>Is retry?</label>
+        <locationX>1903</locationX>
+        <locationY>539</locationY>
+        <defaultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Get_deal_record_type_id</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes4</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_deal_details</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>If_Opportunity_is_stamped_on_deal</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Opportunity_created</name>
+        <label>Opportunity created?</label>
+        <locationX>1920</locationX>
+        <locationY>863</locationY>
+        <defaultConnector>
+            <targetReference>Get_deal_record_type_id</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Opportunity_Created_But_Not_OLIs</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Opportunity_if_it_s_created</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Opportunity_if_it_s_created.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Opportunity_if_it_s_created.Core_Product_Count__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_OpportunityId</targetReference>
+            </connector>
+            <label>Opportunity Created But Not OLIs</label>
+        </rules>
+        <rules>
+            <name>Opportunity_Created_and_OLIs</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Opportunity_if_it_s_created</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Opportunity_if_it_s_created.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Opportunity_if_it_s_created.Core_Product_Count__c</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_OpportunityId_1</targetReference>
+            </connector>
+            <label>Opportunity Created and OLIs</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>PDI_eligible_DRPs_exists</name>
+        <label>PDI eligible DRPs exists</label>
+        <locationX>578</locationX>
+        <locationY>1187</locationY>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes12</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_PDI_eligible_DRPs</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_PDI_eligible_DRPs.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Create_Pricing_Integration_Staging_record_for_quote_creation</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Pricing_integration_staging_record_exists</name>
+        <label>Pricing integration staging record exists</label>
+        <locationX>314</locationX>
+        <locationY>971</locationY>
+        <defaultConnector>
+            <targetReference>Get_PDI_eligible_DRPs</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes6</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_pricing_integration_staging_record</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_pricing_integration_staging_record.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_PIS_status_to_pending</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Send_Request_for_Quote_Creation</name>
+        <label>Send Request for Quote Creation</label>
+        <locationX>1282</locationX>
+        <locationY>2243</locationY>
+        <defaultConnector>
+            <targetReference>GetDealRegProductRecords</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Create_Pricing_Integration_Stage_Record</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>PDIEligibleProducts</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <isGoTo>true</isGoTo>
+                <targetReference>Create_Pricing_Integration_Staging_record_for_quote_creation</targetReference>
+            </connector>
+            <label>Create Pricing Integration Stage Record</label>
+        </rules>
+    </decisions>
+    <description>This is test flow</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>closeDateFormula</name>
+        <dataType>Date</dataType>
+        <expression>IF (OR(ISBLANK({!Get_deal_details.Core_Opportunity_Decision_Dt__c}) , {!Get_deal_details.Core_Opportunity_Decision_Dt__c} &lt; TODAY()),
+TODAY()
+,
+{!Get_deal_details.Core_Opportunity_Decision_Dt__c}
+)</expression>
+    </formulas>
+    <formulas>
+        <name>currentyear</name>
+        <dataType>String</dataType>
+        <expression>TEXT(YEAR(TODAY()))</expression>
+    </formulas>
+    <formulas>
+        <name>descFormula</name>
+        <dataType>String</dataType>
+        <expression>IF (ISBLANK({!Get_deal_details.Core_FPGA_Quote_Comments_Txt__c}),
+{!Get_deal_details.PCC_Deal_Description__c},
+&apos;Description:&apos;&amp; SUBSTITUTE({!LineBreak}, &apos;~&apos;, &apos;&apos;)&amp;
+&apos;---------------&apos;&amp; SUBSTITUTE({!LineBreak}, &apos;~&apos;, &apos;&apos;)
+&amp;{!Get_deal_details.PCC_Deal_Description__c}&amp;SUBSTITUTE({!LineBreak}, &quot;~&quot;, &quot;&quot;)&amp;SUBSTITUTE({!LineBreak}, &quot;~&quot;, &quot;&quot;)&amp;
+&apos;FPGA Quote Comments:&apos;&amp; SUBSTITUTE({!LineBreak}, &quot;~&quot;, &quot;&quot;)&amp;
+&apos;------------------------------&apos;&amp; SUBSTITUTE({!LineBreak}, &quot;~&quot;, &quot;&quot;) 
+&amp;{!Get_deal_details.Core_FPGA_Quote_Comments_Txt__c}
+)</expression>
+    </formulas>
+    <formulas>
+        <name>EmailTableRowForApproval</name>
+        <dataType>String</dataType>
+        <expression>&apos;&lt;tr&gt;&lt;td style =&quot;padding: 10px;&quot;&gt;&apos; + {!IterateOverDealDRP.Name}+
+&apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px;&quot;&gt;&apos; + {!IterateOverDealDRP.Core_Product_Id__r.Name}+ 
+&apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px;&quot;&gt;&apos; + TEXT({!IterateOverDealDRP.Core_Design_Product_Status_Nm__c})+ 
+&apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px;&quot;&gt;&apos; + {!IterateOverDealDRP.Core_Comment_Txt__c}+
+&apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px ; width:150px;&quot;&gt;&apos; + TEXT({!IterateOverDealDRP.CreatedDate})+ 
+&apos;&lt;/td&gt;&lt;/tr&gt;&apos;</expression>
+    </formulas>
+    <formulas>
+        <name>OpportunityName</name>
+        <dataType>String</dataType>
+        <expression>{!Get_deal_details.Core_Design_Registration_Nm__c} &amp; &apos;  &apos;&amp;SUBSTITUTE(SUBSTITUTE( SUBSTITUTE(SUBSTITUTE(TEXT(NOW()), &apos;-&apos;, &apos;&apos;), &apos;:&apos;, &apos;&apos;),&apos;Z&apos;,&apos;&apos; ),&apos; &apos;,&apos;&apos;)</expression>
+    </formulas>
+    <formulas>
+        <name>OpptyOwnerId</name>
+        <dataType>String</dataType>
+        <expression>IF(ISBLANK({!Get_deal_details.Core_Intel_Technical_Owner_Id__c}),
+{!$User.Id},
+{!Get_deal_details.Core_Intel_Technical_Owner_Id__c}
+)</expression>
+    </formulas>
+    <formulas>
+        <name>salesGroupFormula</name>
+        <dataType>String</dataType>
+        <expression>IF (ISPICKVAL({!Get_deal_details.Core_Product_Group_Nm__c} , &apos;FPGA/Power&apos;),
+&apos;PSG Sales&apos;,
+&apos;Regional Sales&apos;
+)</expression>
+    </formulas>
+    <formulas>
+        <name>statusUpdateFormula</name>
+        <dataType>String</dataType>
+        <expression>&apos;Converted from DDR -&apos;&amp;{!Get_deal_details.Name}</expression>
+    </formulas>
+    <interviewLabel>Create Opportunity and Related Record {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Create Opportunity and Related Record</label>
+    <loops>
+        <name>Created_OLIs</name>
+        <label>Created OLIs</label>
+        <locationX>1282</locationX>
+        <locationY>1727</locationY>
+        <collectionReference>OLIs</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Populate_drprec</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Update_DRPs</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <loops>
+        <name>IterateOverDealDRP</name>
+        <label>IterateOverDealDRP</label>
+        <locationX>1458</locationX>
+        <locationY>2567</locationY>
+        <collectionReference>GetDealRegProductRecords</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Add_Email_Table_row_to_table_markup</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Close_Email_Table_Row_for_markup</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <name>Create_Opportunity_Partner</name>
+        <label>Create Opportunity Partner</label>
+        <locationX>2338</locationX>
+        <locationY>1187</locationY>
+        <connector>
+            <targetReference>Check_if_PSAM_is_Opportunity_owner</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_Opportunity__c</field>
+            <value>
+                <elementReference>OpportunityId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Partner_Role__c</field>
+            <value>
+                <stringValue>Co-Design</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Partner_Type__c</field>
+            <value>
+                <stringValue>Distributor</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Partner__c</field>
+            <value>
+                <elementReference>$Record.Core_Partner_Account_Id__c</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Core_Opportunity_Partner__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <name>Create_opportunity_record</name>
+        <label>Create opportunity record</label>
+        <locationX>2338</locationX>
+        <locationY>1079</locationY>
+        <assignRecordIdToReference>OpportunityId</assignRecordIdToReference>
+        <connector>
+            <targetReference>Create_Opportunity_Partner</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>AccountId</field>
+            <value>
+                <elementReference>$Record.Core_End_Customer_Account_Id__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>CloseDate</field>
+            <value>
+                <elementReference>closeDateFormula</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Channel_Opportunity_Ind__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Commissionable__c</field>
+            <value>
+                <stringValue>No</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Compliance_Status__c</field>
+            <value>
+                <stringValue>N/A</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Compliance_Sub_Status__c</field>
+            <value>
+                <stringValue>Completed</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Consumption_Market__c</field>
+            <value>
+                <elementReference>$Record.Core_Vertical_Market_Nm__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Coverage_Type_Nm__c</field>
+            <value>
+                <stringValue>Deal Registration</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Design_Registration_Id__c</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Exclude_From_KPIs__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_External_ID__c</field>
+            <value>
+                <elementReference>$Record.PCC_Partner_Reference_ID__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Military_Aerospace_Govmt_End_Use__c</field>
+            <value>
+                <elementReference>$Record.Core_Military_Aerospace_Gvrnmt_Use_Ind__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Opportunity_Coverage_Nm__c</field>
+            <value>
+                <stringValue>Partner-Led Opportunity</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Opportunity_Type__c</field>
+            <value>
+                <stringValue>Deal: Sell-through</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Product_Application__c</field>
+            <value>
+                <elementReference>$Record.Core_Product_Application_Nm__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Product_Segment__c</field>
+            <value>
+                <elementReference>$Record.Core_Product_Segment_Nm__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Sales_Group__c</field>
+            <value>
+                <elementReference>salesGroupFormula</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Status_Update__c</field>
+            <value>
+                <elementReference>statusUpdateFormula</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Technical_Owner__c</field>
+            <value>
+                <elementReference>$Record.OwnerId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Description</field>
+            <value>
+                <elementReference>descFormula</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Name</field>
+            <value>
+                <elementReference>OpportunityName</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>OpptyOwnerId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Pricebook2Id</field>
+            <value>
+                <elementReference>Get_partner_price_book_id.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>RecordTypeId</field>
+            <value>
+                <elementReference>Get_deal_record_type_id.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>StageName</field>
+            <value>
+                <stringValue>Qualify</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Opportunity</object>
+    </recordCreates>
+    <recordCreates>
+        <name>Create_Opportunity_Share_record</name>
+        <label>Create Opportunity Share record</label>
+        <locationX>2338</locationX>
+        <locationY>1703</locationY>
+        <connector>
+            <targetReference>update_Rejected_DRP_Lock</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>OpportunityAccessLevel</field>
+            <value>
+                <stringValue>Edit</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>OpportunityId</field>
+            <value>
+                <elementReference>OpportunityId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>RowCause</field>
+            <value>
+                <stringValue>Manual</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>UserOrGroupId</field>
+            <value>
+                <elementReference>Get_group_id_for_partner_s_role.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <object>OpportunityShare</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <name>Create_opportunity_team_member</name>
+        <label>Create opportunity team member</label>
+        <locationX>2426</locationX>
+        <locationY>1403</locationY>
+        <connector>
+            <targetReference>Get_group_id_for_partner_s_role</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>OpportunityId</field>
+            <value>
+                <elementReference>OpportunityId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>TeamMemberRole</field>
+            <value>
+                <stringValue>Team Member (100%)</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>UserId</field>
+            <value>
+                <elementReference>Get_deal_details.Core_Partner_Account_Id__r.OwnerId</elementReference>
+            </value>
+        </inputAssignments>
+        <object>OpportunityTeamMember</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <name>Create_partner_email_log</name>
+        <label>Create partner email log</label>
+        <locationX>1458</locationX>
+        <locationY>3515</locationY>
+        <connector>
+            <targetReference>Opportunity_Creation_Success_Event</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Email_Template_Name__c</field>
+            <value>
+                <stringValue>Deal Approved Notification</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Language__c</field>
+            <value>
+                <stringValue>English</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>PRM_Contact__c</field>
+            <value>
+                <elementReference>Get_deal_details.Owner:User.ContactId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>PRM_EmailContent__c</field>
+            <value>
+                <elementReference>PartnerApprovalEmailBody</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>PRM_EmailDeliverabilityStatus__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>PRM_Email_API_Response__c</field>
+            <value>
+                <stringValue>Mail Sent Successfully !!</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>PRM_Subject__c</field>
+            <value>
+                <stringValue>Deal Approved Converted to Opportunity</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>PRM_Timestamp__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>PRM_ToEmailID__c</field>
+            <value>
+                <elementReference>Get_deal_details.Owner:User.Email</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>PRM_User__c</field>
+            <value>
+                <elementReference>Get_deal_details.Owner</elementReference>
+            </value>
+        </inputAssignments>
+        <object>PRM_EmailLog__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <name>Create_Pricing_Integration_Staging_record_for_quote_creation</name>
+        <label>Create Pricing Integration Staging record for quote creation</label>
+        <locationX>314</locationX>
+        <locationY>1295</locationY>
+        <faultConnector>
+            <targetReference>Publish_failure_event_to_deal_create_PIS_record</targetReference>
+        </faultConnector>
+        <inputAssignments>
+            <field>Pricing_Message_Type__c</field>
+            <value>
+                <stringValue>Financial Incentive</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Pricing_SObjectId__c</field>
+            <value>
+                <elementReference>OpportunityId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Pricing_SObject__c</field>
+            <value>
+                <stringValue>Opportunity</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Pricing_Status__c</field>
+            <value>
+                <stringValue>Pending</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Pricing_Integration_Staging__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <name>Opportunity_Creation_Success_Event</name>
+        <label>Opportunity Creation Success Event</label>
+        <locationX>1458</locationX>
+        <locationY>3623</locationY>
+        <inputAssignments>
+            <field>PCC_Object__c</field>
+            <value>
+                <stringValue>Opportunity</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>PCC_Record_ID__c</field>
+            <value>
+                <elementReference>$Record.null__NotFound</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>PCC_Type__c</field>
+            <value>
+                <stringValue>Success</stringValue>
+            </value>
+        </inputAssignments>
+        <object>PCC_Deal_Approval_Process_Communication__e</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <name>Publish_failure_event_to_deal_create_PIS_record</name>
+        <label>Publish failure event to deal create PIS record</label>
+        <locationX>578</locationX>
+        <locationY>1403</locationY>
+        <inputAssignments>
+            <field>PCC_Error_Message__c</field>
+            <value>
+                <elementReference>$Flow.FaultMessage</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>PCC_Object__c</field>
+            <value>
+                <stringValue>Opportunity</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>PCC_Record_ID__c</field>
+            <value>
+                <elementReference>$Record.null__NotFound</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>PCC_Type__c</field>
+            <value>
+                <stringValue>Failure</stringValue>
+            </value>
+        </inputAssignments>
+        <object>PCC_Deal_Approval_Process_Communication__e</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordLookups>
+        <name>Get_all_DRPs</name>
+        <label>Get all DRPs</label>
+        <locationX>1502</locationX>
+        <locationY>1079</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Process_Deal_Lines</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Core_Design_Registration_Id__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Core_Design_Product_Status_Nm__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Approved</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Core_Active_Status__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Core_Design_Registration_Product__c</object>
+        <sortField>Core_Product_Id__c</sortField>
+        <sortOrder>Asc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_deal_details</name>
+        <label>Get deal details</label>
+        <locationX>1903</locationX>
+        <locationY>431</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Is_retry</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Core_Design_Registration__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_deal_record_type_id</name>
+        <label>Get deal record type id</label>
+        <locationX>2338</locationX>
+        <locationY>971</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Create_opportunity_record</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Core_Deal_Opportunity</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>RecordType</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Deal_Registration_Product_Locked_record_type_id</name>
+        <label>Get Deal Registration Product - Locked	record type id</label>
+        <locationX>1282</locationX>
+        <locationY>1619</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Created_OLIs</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>PCC_Deal_Registration_Product_Locked</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>RecordType</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>get_external_record_link</name>
+        <label>get external record link</label>
+        <locationX>1458</locationX>
+        <locationY>3191</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Approval_Email_for_Approver</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>PCC_External_Link</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>LabelConfiguration__mdt</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_group_id_for_partner_s_role</name>
+        <label>Get group id for partner&apos;s role</label>
+        <locationX>2338</locationX>
+        <locationY>1595</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Create_Opportunity_Share_record</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>RelatedId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_deal_details.Owner:User.UserRoleId</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Type</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Role</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Group</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>get_intel_logo_link</name>
+        <label>get intel logo link</label>
+        <locationX>1458</locationX>
+        <locationY>2975</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>get_internal_record_link</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>PCC_Intel_Logo_Link</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>LabelConfiguration__mdt</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>get_internal_record_link</name>
+        <label>get internal record link</label>
+        <locationX>1458</locationX>
+        <locationY>3083</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>get_external_record_link</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>PCC_Internal_Record_Link</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>LabelConfiguration__mdt</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Opportunity_if_it_s_created</name>
+        <label>Get Opportunity if it&apos;s created</label>
+        <locationX>1920</locationX>
+        <locationY>755</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Opportunity_created</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Core_Design_Registration_Id__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Opportunity</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_partner_price_book_id</name>
+        <label>Get partner price book id</label>
+        <locationX>1903</locationX>
+        <locationY>323</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_deal_details</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Name</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Partner Price Book</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Pricebook2</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_PDI_eligible_DRPs</name>
+        <label>Get PDI eligible DRPs</label>
+        <locationX>578</locationX>
+        <locationY>1079</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>PDI_eligible_DRPs_exists</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Core_Design_Registration_Id__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.null__NotFound</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Core_Design_Product_Status_Nm__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Approved</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Core_Active_Status__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PCC_Programs_Eligible__c</field>
+            <operator>Contains</operator>
+            <value>
+                <stringValue>PDI</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Core_Design_Registration_Product__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_pricing_integration_staging_record</name>
+        <label>Get pricing integration staging record</label>
+        <locationX>314</locationX>
+        <locationY>863</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Pricing_integration_staging_record_exists</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Pricing_SObjectId__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_deal_details.Core_Opportunity_Id__r</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Pricing_Integration_Staging__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>GetDealRegProductRecords</name>
+        <label>GetDealRegProductRecords</label>
+        <locationX>1458</locationX>
+        <locationY>2351</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Add_column_to_email_table</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Core_Design_Registration_Id__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_deal_details.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Core_Design_Registration_Product__c</object>
+        <sortField>CreatedDate</sortField>
+        <sortOrder>Desc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_deal_with_opportunity_Id</name>
+        <label>Update deal with opportunity Id</label>
+        <locationX>1282</locationX>
+        <locationY>1511</locationY>
+        <connector>
+            <targetReference>Get_Deal_Registration_Product_Locked_record_type_id</targetReference>
+        </connector>
+        <inputReference>Get_deal_details</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_DRPs</name>
+        <label>Update DRPs</label>
+        <locationX>1282</locationX>
+        <locationY>2135</locationY>
+        <connector>
+            <targetReference>Send_Request_for_Quote_Creation</targetReference>
+        </connector>
+        <inputReference>drpList</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_PIS_record</name>
+        <label>Update PIS record</label>
+        <locationX>50</locationX>
+        <locationY>1187</locationY>
+        <inputReference>Get_pricing_integration_staging_record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>update rejected drp as lock</description>
+        <name>update_Rejected_DRP_Lock</name>
+        <label>update Rejected DRP Lock</label>
+        <locationX>2338</locationX>
+        <locationY>1811</locationY>
+        <connector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Get_all_DRPs</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Core_Design_Registration_Id__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Core_Design_Product_Status_Nm__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Rejected</stringValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Core_Locked_Ind__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <object>Core_Design_Registration_Product__c</object>
+    </recordUpdates>
+    <start>
+        <locationX>1777</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_partner_price_book_id</targetReference>
+        </connector>
+        <object>Core_Design_Registration__c</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>InvalidDraft</status>
+    <textTemplates>
+        <name>ApproverEmailBodyForApprover</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;table class=&quot;body&quot; role=&quot;none&quot; style=&quot;background: #f3f3f3; margin: 0px; padding: 0px; width: 99.8817%; height: 100%; text-align: left; color: #555554; line-height: 20px; font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; border-collapse: collapse; border-spacing: 0px;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot; role=&quot;none&quot; &gt;
+&lt;td align=&quot;center&quot; role=&quot;none&quot;  class=&quot;center&quot; valign=&quot;top&quot; style=&quot;margin: 0px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; hyphens: none; border-collapse: collapse !important; width: 100%;&quot;&gt;&lt;center style=&quot;width: 100%; min-width: 670px;&quot;&gt;
+&lt;div align=&quot;center&quot; class=&quot;float-center&quot;&gt;&lt;center style=&quot;width: 100%; min-width: 670px;&quot;&gt;
+&lt;table align=&quot;center&quot; class=&quot;float-center&quot; style=&quot;margin: 0px auto; padding: 0px; width: 100%; text-align: center; vertical-align: top; float: none; border-collapse: collapse; max-width: 670px !important; border-spacing: 0;&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt;
+&lt;td style=&quot;margin: 0px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-word-wrap: break-word; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;&quot;&gt;
+&lt;table align=&quot;center&quot; class=&quot;container&quot; style=&quot;background: #f3f3f3; margin: 0px auto; padding: 0px; width: 670px; text-align: inherit; vertical-align: top; border-collapse: collapse; border-spacing: 0;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt;
+&lt;td style=&quot;margin: 0px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-word-wrap: break-word; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;&quot;&gt;
+&lt;table class=&quot;row collapse header&quot; style=&quot;padding: 0px; width: 100%; text-align: left; vertical-align: top; display: table; border-collapse: collapse; position: relative; border-spacing: 0; background-color: #0071c5;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt;
+&lt;th class=&quot;small-12 large-12 columns first last&quot; style=&quot;margin: 0px auto; padding: 0px; width: 680px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400;&quot;&gt;
+&lt;table style=&quot;padding: 0px; width: 100%; text-align: left; vertical-align: top; border-collapse: collapse; border-spacing: 0;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt;
+&lt;th style=&quot;margin: 0px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400;&quot;&gt;
+&lt;table class=&quot;row header-content&quot; style=&quot;padding: 0px; width: 100%; text-align: left; vertical-align: top; display: table; border-collapse: collapse; position: relative; border-spacing: 0;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt;
+&lt;th class=&quot;mobile-padding small-12 large-12 columns first last&quot; style=&quot;margin: 0px auto; padding: 0px 20px; width: 100%; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400;&quot;&gt;
+&lt;table style=&quot;padding: 0px; width: 100%; text-align: left; vertical-align: top; border-collapse: collapse; border-spacing: 0;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt;
+&lt;th style=&quot;margin: 0px; padding: 0px 0px 10px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400;&quot;&gt;
+&lt;h1 style=&quot;margin: 0px 0px 17.39px;padding-top: 25px;text-align: left;color: #fefefe;line-height: 1.3;font-family: Arial,Helvetica,sans-serif;font-size: 18px;font-weight: 400;border-collapse: collapse !important;-ms-word-break: keep-all;-ms-word-wrap: normal;-ms-hyphens: none;-moz-hyphens: none;-webkit-hyphens: none;hyphens: none;&quot;&gt;Deal Registration Approved&lt;/h1&gt;
+&lt;/th&gt;
+&lt;th class=&quot;callout-inner&quot; style=&quot;padding:15px;&quot;&gt; 
+&lt;img src={!get_intel_logo_link.Value__c} alt=&quot;Intel&quot; title=&quot;Intel&quot; align=&quot;right&quot; class=&quot;float-center&quot; style=&quot;height:100%;width:auto&quot;&gt;
+&lt;/th&gt;
+&lt;th class=&quot;expander&quot; style=&quot;margin: 0px; padding: 0px !important; width: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; visibility: hidden;&quot;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class=&quot;spacer&quot; style=&quot;padding: 0px; width: 100%; text-align: left; vertical-align: top; border-collapse: collapse; border-spacing: 0; background-color: #f3f3f3;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt;
+&lt;td height=&quot;10&quot; style=&quot;margin: 0px; padding: 0px; text-align: left; color: #555554; line-height: 10px; font-family: Arial,Helvetica,sans-serif; font-size: 10px; font-weight: 400; vertical-align: top; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-word-wrap: break-word; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class=&quot;row module full-width&quot; style=&quot;padding: 0px; width: 100%; text-align: left; vertical-align: top; display: table; border-collapse: collapse; position: relative; border-spacing: 0; background-color: #fefefe;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt;
+&lt;th class=&quot;small-12 large-12 columns first last&quot; style=&quot;margin: 0px auto; padding: 20px 20px 10px; width: 650px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 11px; font-weight: 400; vertical-align: top; background-color: #fefefe;&quot;&gt;
+&lt;table style=&quot;padding: 0px; width: 100%; text-align: left; vertical-align: top; border-collapse: collapse; border-spacing: 0;&quot;&gt;
+&lt;tbody&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt;
+ Hello {!Get_deal_details.Core_Intel_Technical_Owner_Id__r.FirstName},
+&lt;br&gt;
+&lt;p style=&quot;margin: 0px 0px 10px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 14px; font-weight: 400; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;&quot;&gt;  
+The following Deal Registraion has been &lt;b&gt;Approved.&lt;/b&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;b&gt;Registration Number: &lt;/b&gt;{!Get_deal_details.Name} 
+&lt;br&gt;
+&lt;b&gt;Deal Registration Name: &lt;/b&gt;{!Get_deal_details.Core_Design_Registration_Nm__c}
+&lt;br&gt;
+&lt;b&gt;Partner Reference ID: &lt;/b&gt;{!Get_deal_details.PCC_Partner_Reference_ID__c}
+&lt;br&gt;
+&lt;b&gt;End Customer Account: &lt;/b&gt;{!Get_deal_details.Core_End_Customer_Account_Id__r.Name}  
+&lt;br&gt;
+&lt;b&gt;Opportunity: &lt;/b&gt; Click &lt;a href={!get_internal_record_link.Value__c}{!Get_deal_details.Core_Opportunity_Id__c}&gt;here&lt;/a&gt; to view
+&lt;br&gt;
+{!table}
+&lt;br&gt;
+If you have requested a financial incentive, you will receive a seperate notification regarding your request.
+&lt;br&gt;
+For more details, you can access the opportunity record &lt;a href={!get_internal_record_link.Value__c}{!Get_deal_details.Core_Opportunity_Id__c}&gt;here&lt;/a&gt;.
+&lt;br&gt;
+This email was sent from an unmonitored mailbox. For questions,please contact your Intel Partner Sales Account Manager or utilize the Chatter feature on the Opportunity.
+&lt;br&gt;
+&lt;br&gt;
+It is the Intel Partner&apos;s responsibility to understand the export, customs and sanction controls applicable to the Intel Partner&apos;s company, project, and product and take all actions necessary to ensure compliance.
+&lt;/p&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;span class=&quot;remove-absolute&quot; style=&quot;display: block;&quot; elqid=&quot;8645&quot; elqtype=&quot;DynamicContent&quot;&gt; &lt;/span&gt;
+
+&lt;table class=&quot;spacer&quot; style=&quot;padding: 0px; width: 100%; text-align: left; vertical-align: top; border-collapse: collapse; border-spacing: 0; background-color: #f3f3f3;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt;
+&lt;td height=&quot;10&quot; style=&quot;margin: 0px; padding: 0px; text-align: left; color: #555554; line-height: 10px; font-family: Arial,Helvetica,sans-serif; font-size: 10px; font-weight: 400; vertical-align: top; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-word-wrap: break-word; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table class=&quot;body footer_elq&quot; style=&quot;background: 0px 0px; margin: 0px; padding: 0px; width: 100%; height: 100%; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; border-collapse: collapse; border-spacing: 0;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;background: 0px 0px; padding: 0px; border: 0px solid transparent; text-align: left; vertical-align: top; border-collapse: collapse;&quot;&gt;
+&lt;td align=&quot;center&quot; class=&quot;center&quot; valign=&quot;top&quot; style=&quot;background: 0px 0px; margin: 0px; padding: 0px; border: 0px solid transparent; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-word-wrap: break-word; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;&quot;&gt;
+&lt;div&gt;
+&lt;table align=&quot;center&quot; style=&quot;background: 0px 0px; padding: 0px; border: 0px solid transparent; width: 100%; text-align: left; vertical-align: top; border-collapse: collapse; max-width: 600px !important; border-spacing: 0;&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;background: 0px 0px; padding: 0px; border: 0px solid transparent; text-align: left; vertical-align: top; border-collapse: collapse;&quot;&gt;
+&lt;td style=&quot;background: 0px 0px; margin: 0px; padding: 0px; border: 0px solid transparent; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-word-wrap: break-word; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;&quot;&gt;
+&lt;table class=&quot;row collapse mobile-padding&quot; style=&quot;background: 0px 0px; padding: 0px; border: 0px solid transparent; width: 100%; text-align: left; vertical-align: top; display: table; border-collapse: collapse; position: relative; border-spacing: 0;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;background: 0px 0px; padding: 0px; border: 0px solid transparent; text-align: left; vertical-align: top; border-collapse: collapse;&quot;&gt;
+&lt;th class=&quot;small-12 large-12 columns first last&quot; style=&quot;background: 0px 0px; margin: 0px auto; padding: 0px 0px 20px; border: 0px solid transparent; width: 680px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; border-collapse: collapse;&quot;&gt;
+&lt;table align=&quot;center&quot; class=&quot;cq-rte-forcedborder&quot; style=&quot;border: 1px dotted #d3d3d3; background-color: #003c71; border-collapse: collapse; margin: 0px auto; min-width: 670px; width: 670px;&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;font-size: 12px; border: #d3d3d3; padding-left: 10px; padding-right: 30px; padding-bottom: 20px; background-color: #0168B5&quot; &gt;
+&lt;table width=&quot;100%&quot; class=&quot;cq-rte-forcedborder&quot; style=&quot;border: #d3d3d3; border-collapse: collapse;&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td class=&quot;auto-style1&quot; valign=&quot;top&quot; style=&quot;font-size: 10px; color: #ffffff; font-family: Arial, Helvetica, sans-serif; line-height: 14px; padding-top: 10px; padding-bottom: 10px; text-align: center;&quot;&gt;This message was sent to you as an important business communication related to your current relationship with Intel® Partner Alliance.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td class=&quot;auto-style1&quot; valign=&quot;top&quot; style=&quot;font-size: 10px; border: #d3d3d3; color: #ffffff; font-family: Arial, Helvetica, sans-serif; line-height: 14px; padding-bottom: 10px; text-align: center;&quot;&gt;© {!currentyear} Intel Corporation&lt;span class=&quot;Apple-converted-space&quot;&gt; &lt;/span&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td class=&quot;auto-style1&quot; valign=&quot;top&quot; style=&quot;font-size: 10px; border: #d3d3d3; color: #ffffff; font-family: Arial, Helvetica, sans-serif; line-height: 14px; padding-bottom: 10px; text-align: center;&quot;&gt;Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.&lt;span class=&quot;Apple-converted-space&quot;&gt; &lt;/span&gt;&lt;a style=&quot;color: #ffffff; text-decoration: none;&quot; href=https://www.intel.com/content/www/us/en/homepage.html target=&quot;_blank&quot; _rte_href=https://www.intel.com/content/www/us/en/homepage.html&gt;www.Intel.com&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td class=&quot;auto-style1&quot; valign=&quot;top&quot; style=&quot;font-size: 10px; border: 1px #d3d3d3; color: #ffffff; font-family: Arial, Helvetica, sans-serif; line-height: 14px; text-align: center;&quot;&gt;&lt;a style=&quot;color: #ffffff; text-decoration: none;&quot; href=https://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html _rte_href=https://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html&gt;Privacy&lt;/a&gt;&lt;span class=&quot;Apple-converted-space&quot;&gt; &lt;/span&gt;|&lt;span class=&quot;Apple-converted-space&quot;&gt; &lt;/span&gt;&lt;a style=&quot;color: #ffffff; text-decoration: none;&quot; href=https://www.intel.com/content/www/us/en/privacy/intel-cookie-notice.html _rte_href=https://www.intel.com/content/www/us/en/privacy/intel-cookie-notice.html&gt;Cookies&lt;/a&gt;&lt;span class=&quot;Apple-converted-space&quot;&gt; &lt;/span&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/center&gt;&lt;/div&gt;
+&lt;/center&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <name>LineBreak</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>~
+~</text>
+    </textTemplates>
+    <textTemplates>
+        <name>PartnerApprovalEmailBody</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;table class=&quot;body&quot; role=&quot;none&quot; style=&quot;background: #f3f3f3; margin: 0px; padding: 0px; width: 99.8817%; height: 100%; text-align: left; color: #555554; line-height: 20px; font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; border-collapse: collapse; border-spacing: 0px;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot; role=&quot;none&quot; &gt;
+&lt;td align=&quot;center&quot; role=&quot;none&quot;  class=&quot;center&quot; valign=&quot;top&quot; style=&quot;margin: 0px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; hyphens: none; border-collapse: collapse !important; width: 100%;&quot;&gt;&lt;center style=&quot;width: 100%; min-width: 670px;&quot;&gt;
+&lt;div align=&quot;center&quot; class=&quot;float-center&quot;&gt;&lt;center style=&quot;width: 100%; min-width: 670px;&quot;&gt;
+&lt;table align=&quot;center&quot; class=&quot;float-center&quot; style=&quot;margin: 0px auto; padding: 0px; width: 100%; text-align: center; vertical-align: top; float: none; border-collapse: collapse; max-width: 670px !important; border-spacing: 0;&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt;
+&lt;td style=&quot;margin: 0px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-word-wrap: break-word; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;&quot;&gt;
+&lt;table align=&quot;center&quot; class=&quot;container&quot; style=&quot;background: #f3f3f3; margin: 0px auto; padding: 0px; width: 670px; text-align: inherit; vertical-align: top; border-collapse: collapse; border-spacing: 0;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt;
+&lt;td style=&quot;margin: 0px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-word-wrap: break-word; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;&quot;&gt;
+&lt;table class=&quot;row collapse header&quot; style=&quot;padding: 0px; width: 100%; text-align: left; vertical-align: top; display: table; border-collapse: collapse; position: relative; border-spacing: 0; background-color: #0071c5;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt;
+&lt;th class=&quot;small-12 large-12 columns first last&quot; style=&quot;margin: 0px auto; padding: 0px; width: 680px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400;&quot;&gt;
+&lt;table style=&quot;padding: 0px; width: 100%; text-align: left; vertical-align: top; border-collapse: collapse; border-spacing: 0;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt;
+&lt;th style=&quot;margin: 0px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400;&quot;&gt;
+&lt;table class=&quot;row header-content&quot; style=&quot;padding: 0px; width: 100%; text-align: left; vertical-align: top; display: table; border-collapse: collapse; position: relative; border-spacing: 0;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt;
+&lt;th class=&quot;mobile-padding small-12 large-12 columns first last&quot; style=&quot;margin: 0px auto; padding: 0px 20px; width: 100%; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400;&quot;&gt;
+&lt;table style=&quot;padding: 0px; width: 100%; text-align: left; vertical-align: top; border-collapse: collapse; border-spacing: 0;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt;
+&lt;th style=&quot;margin: 0px; padding: 0px 0px 10px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400;&quot;&gt;
+&lt;h1 style=&quot;margin: 0px 0px 17.39px;padding-top: 25px;text-align: left;color: #fefefe;line-height: 1.3;font-family: Arial,Helvetica,sans-serif;font-size: 18px;font-weight: 400;border-collapse: collapse !important;-ms-word-break: keep-all;-ms-word-wrap: normal;-ms-hyphens: none;-moz-hyphens: none;-webkit-hyphens: none;hyphens: none;&quot;&gt;Deal Registration Approved&lt;/h1&gt;
+&lt;/th&gt;
+&lt;th class=&quot;callout-inner&quot; style=&quot;padding:15px;&quot;&gt; 
+&lt;img src={!get_intel_logo_link.Value__c} alt=&quot;Intel&quot; title=&quot;Intel&quot; align=&quot;right&quot; class=&quot;float-center&quot; style=&quot;height:100%;width:auto&quot;&gt;
+&lt;/th&gt;
+&lt;th class=&quot;expander&quot; style=&quot;margin: 0px; padding: 0px !important; width: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; visibility: hidden;&quot;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class=&quot;spacer&quot; style=&quot;padding: 0px; width: 100%; text-align: left; vertical-align: top; border-collapse: collapse; border-spacing: 0; background-color: #f3f3f3;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt;
+&lt;td height=&quot;10&quot; style=&quot;margin: 0px; padding: 0px; text-align: left; color: #555554; line-height: 10px; font-family: Arial,Helvetica,sans-serif; font-size: 10px; font-weight: 400; vertical-align: top; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-word-wrap: break-word; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class=&quot;row module full-width&quot; style=&quot;padding: 0px; width: 100%; text-align: left; vertical-align: top; display: table; border-collapse: collapse; position: relative; border-spacing: 0; background-color: #fefefe;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt;
+&lt;th class=&quot;small-12 large-12 columns first last&quot; style=&quot;margin: 0px auto; padding: 20px 20px 10px; width: 650px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 11px; font-weight: 400; vertical-align: top; background-color: #fefefe;&quot;&gt;
+&lt;table style=&quot;padding: 0px; width: 100%; text-align: left; vertical-align: top; border-collapse: collapse; border-spacing: 0;&quot;&gt;
+&lt;tbody&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt;
+ Hello {!Get_deal_details.Owner:User.Name},
+&lt;br&gt;
+&lt;p style=&quot;margin: 0px 0px 10px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 14px; font-weight: 400; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;&quot;&gt;  
+The following Deal Registraion has been &lt;b&gt;Approved.&lt;/b&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;b&gt;Registration Number: &lt;/b&gt;{!Get_deal_details.Name} 
+&lt;br&gt;
+&lt;b&gt;Deal Registration Name: &lt;/b&gt;{!Get_deal_details.Core_Design_Registration_Nm__c}
+&lt;br&gt;
+&lt;b&gt;Partner Reference ID: &lt;/b&gt;{!Get_deal_details.PCC_Partner_Reference_ID__c}
+&lt;br&gt;
+&lt;b&gt;End Customer Account: &lt;/b&gt;{!Get_deal_details.Core_End_Customer_Account_Id__r.Name}  
+&lt;br&gt;
+&lt;b&gt;Opportunity: &lt;/b&gt; Click &lt;a href={!get_external_record_link.Value__c}{!Get_deal_details.Core_Opportunity_Id__c}&gt;here&lt;/a&gt; to view
+&lt;br&gt;
+{!table}
+&lt;br&gt;
+If you have requested a financial incentive, you will receive a seperate notification regarding your request.
+&lt;br&gt;
+For more details, you can access the opportunity record &lt;a href={!get_external_record_link.Value__c}{!Get_deal_details.Core_Opportunity_Id__c}&gt;here&lt;/a&gt;.
+&lt;br&gt;
+This email was sent from an unmonitored mailbox. For questions,please contact your Intel Partner Sales Account Manager or utilize the Chatter feature on the Opportunity.
+&lt;br&gt;
+&lt;br&gt;
+It is the Intel Partner&apos;s responsibility to understand the export, customs and sanction controls applicable to the Intel Partner&apos;s company, project, and product and take all actions necessary to ensure compliance.
+&lt;/p&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;span class=&quot;remove-absolute&quot; style=&quot;display: block;&quot; elqid=&quot;8645&quot; elqtype=&quot;DynamicContent&quot;&gt; &lt;/span&gt;
+
+&lt;table class=&quot;spacer&quot; style=&quot;padding: 0px; width: 100%; text-align: left; vertical-align: top; border-collapse: collapse; border-spacing: 0; background-color: #f3f3f3;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt;
+&lt;td height=&quot;10&quot; style=&quot;margin: 0px; padding: 0px; text-align: left; color: #555554; line-height: 10px; font-family: Arial,Helvetica,sans-serif; font-size: 10px; font-weight: 400; vertical-align: top; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-word-wrap: break-word; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table class=&quot;body footer_elq&quot; style=&quot;background: 0px 0px; margin: 0px; padding: 0px; width: 100%; height: 100%; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; border-collapse: collapse; border-spacing: 0;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;background: 0px 0px; padding: 0px; border: 0px solid transparent; text-align: left; vertical-align: top; border-collapse: collapse;&quot;&gt;
+&lt;td align=&quot;center&quot; class=&quot;center&quot; valign=&quot;top&quot; style=&quot;background: 0px 0px; margin: 0px; padding: 0px; border: 0px solid transparent; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-word-wrap: break-word; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;&quot;&gt;
+&lt;div&gt;
+&lt;table align=&quot;center&quot; style=&quot;background: 0px 0px; padding: 0px; border: 0px solid transparent; width: 100%; text-align: left; vertical-align: top; border-collapse: collapse; max-width: 600px !important; border-spacing: 0;&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;background: 0px 0px; padding: 0px; border: 0px solid transparent; text-align: left; vertical-align: top; border-collapse: collapse;&quot;&gt;
+&lt;td style=&quot;background: 0px 0px; margin: 0px; padding: 0px; border: 0px solid transparent; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-word-wrap: break-word; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;&quot;&gt;
+&lt;table class=&quot;row collapse mobile-padding&quot; style=&quot;background: 0px 0px; padding: 0px; border: 0px solid transparent; width: 100%; text-align: left; vertical-align: top; display: table; border-collapse: collapse; position: relative; border-spacing: 0;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;background: 0px 0px; padding: 0px; border: 0px solid transparent; text-align: left; vertical-align: top; border-collapse: collapse;&quot;&gt;
+&lt;th class=&quot;small-12 large-12 columns first last&quot; style=&quot;background: 0px 0px; margin: 0px auto; padding: 0px 0px 20px; border: 0px solid transparent; width: 680px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; border-collapse: collapse;&quot;&gt;
+&lt;table align=&quot;center&quot; class=&quot;cq-rte-forcedborder&quot; style=&quot;border: 1px dotted #d3d3d3; background-color: #003c71; border-collapse: collapse; margin: 0px auto; min-width: 670px; width: 670px;&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;font-size: 12px; border: #d3d3d3; padding-left: 10px; padding-right: 30px; padding-bottom: 20px; background-color: #0168B5&quot; &gt;
+&lt;table width=&quot;100%&quot; class=&quot;cq-rte-forcedborder&quot; style=&quot;border: #d3d3d3; border-collapse: collapse;&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td class=&quot;auto-style1&quot; valign=&quot;top&quot; style=&quot;font-size: 10px; color: #ffffff; font-family: Arial, Helvetica, sans-serif; line-height: 14px; padding-top: 10px; padding-bottom: 10px; text-align: center;&quot;&gt;This message was sent to you as an important business communication related to your current relationship with Intel® Partner Alliance.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td class=&quot;auto-style1&quot; valign=&quot;top&quot; style=&quot;font-size: 10px; border: #d3d3d3; color: #ffffff; font-family: Arial, Helvetica, sans-serif; line-height: 14px; padding-bottom: 10px; text-align: center;&quot;&gt;© {!currentyear} Intel Corporation&lt;span class=&quot;Apple-converted-space&quot;&gt; &lt;/span&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td class=&quot;auto-style1&quot; valign=&quot;top&quot; style=&quot;font-size: 10px; border: #d3d3d3; color: #ffffff; font-family: Arial, Helvetica, sans-serif; line-height: 14px; padding-bottom: 10px; text-align: center;&quot;&gt;Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.&lt;span class=&quot;Apple-converted-space&quot;&gt; &lt;/span&gt;&lt;a style=&quot;color: #ffffff; text-decoration: none;&quot; href=https://www.intel.com/content/www/us/en/homepage.html target=&quot;_blank&quot; _rte_href=https://www.intel.com/content/www/us/en/homepage.html&gt;www.Intel.com&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td class=&quot;auto-style1&quot; valign=&quot;top&quot; style=&quot;font-size: 10px; border: 1px #d3d3d3; color: #ffffff; font-family: Arial, Helvetica, sans-serif; line-height: 14px; text-align: center;&quot;&gt;&lt;a style=&quot;color: #ffffff; text-decoration: none;&quot; href=https://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html _rte_href=https://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html&gt;Privacy&lt;/a&gt;&lt;span class=&quot;Apple-converted-space&quot;&gt; &lt;/span&gt;|&lt;span class=&quot;Apple-converted-space&quot;&gt; &lt;/span&gt;&lt;a style=&quot;color: #ffffff; text-decoration: none;&quot; href=https://www.intel.com/content/www/us/en/privacy/intel-cookie-notice.html _rte_href=https://www.intel.com/content/www/us/en/privacy/intel-cookie-notice.html&gt;Cookies&lt;/a&gt;&lt;span class=&quot;Apple-converted-space&quot;&gt; &lt;/span&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/center&gt;&lt;/div&gt;
+&lt;/center&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</text>
+    </textTemplates>
+    <variables>
+        <name>DealProductLines</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <objectType>Core_Design_Registration_Product__c</objectType>
+    </variables>
+    <variables>
+        <name>drpList</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Core_Design_Registration_Product__c</objectType>
+    </variables>
+    <variables>
+        <name>drpRec</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Core_Design_Registration_Product__c</objectType>
+    </variables>
+    <variables>
+        <name>EmailTableColumns</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <stringValue>&lt;tr&gt;  &lt;th style=&quot;border: 1px solid black;&quot;&gt;Id&lt;/th&gt;  &lt;th style=&quot;border: 1px solid black;&quot;&gt;Product Name&lt;/th&gt;  &lt;th style=&quot;border: 1px solid black;&quot;&gt;Status&lt;/th&gt;  &lt;th style=&quot;border: 1px solid black;&quot;&gt;Comment&lt;/th&gt; &lt;th style=&quot;border: 1px solid black;&quot;&gt;Created Date&lt;/th&gt;  &lt;/tr&gt;</stringValue>
+        </value>
+    </variables>
+    <variables>
+        <name>OLI</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>OpportunityLineItem</objectType>
+    </variables>
+    <variables>
+        <name>OLIs</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>OpportunityLineItem</objectType>
+    </variables>
+    <variables>
+        <name>OpportunityId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <description>checks if products are Partner Deal Incentive</description>
+        <name>PDIEligibleProducts</name>
+        <dataType>Boolean</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <value>
+            <booleanValue>false</booleanValue>
+        </value>
+    </variables>
+    <variables>
+        <name>Product2Ids</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>table</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <stringValue>&lt;table border=&quot;1&quot; style=&quot;border-collapse: collapse; width:550px&quot;&gt;</stringValue>
+        </value>
+    </variables>
+</Flow>

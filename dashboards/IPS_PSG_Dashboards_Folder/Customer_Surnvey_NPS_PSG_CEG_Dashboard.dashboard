@@ -3,6 +3,71 @@
     <backgroundEndColor>#FFFFFF</backgroundEndColor>
     <backgroundFadeDirection>Diagonal</backgroundFadeDirection>
     <backgroundStartColor>#FFFFFF</backgroundStartColor>
+    <dashboardFilters>
+        <dashboardFilterOptions>
+            <operator>contains</operator>
+            <values>Arria® 10</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>contains</operator>
+            <values>Stratix® 10</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>contains</operator>
+            <values>Arria® 10,Stratix® 10</values>
+        </dashboardFilterOptions>
+        <name>Product Name</name>
+    </dashboardFilters>
+    <dashboardFilters>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Acceleration</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Design Tools</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Devices</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Embedded</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>startsWith</operator>
+            <values>IP</values>
+        </dashboardFilterOptions>
+        <name>Case Category</name>
+    </dashboardFilters>
+    <dashboardFilters>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Tier 1</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Tier 2</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Tier 3</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Tier 4</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>ROW</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Top Opps</values>
+        </dashboardFilterOptions>
+        <name>Support Level</name>
+    </dashboardFilters>
     <dashboardGridLayout>
         <dashboardGridComponents>
             <colSpan>3</colSpan>
@@ -11,6 +76,15 @@
                 <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
                 <chartAxisRange>Auto</chartAxisRange>
                 <componentType>Line</componentType>
+                <dashboardFilterColumns>
+                    <column>Case.Core_IPS_Product_name__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Case.Core_External_Issue_Category__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Case.Core_IPS_Support_Level__c</column>
+                </dashboardFilterColumns>
                 <displayUnits>Auto</displayUnits>
                 <drillEnabled>false</drillEnabled>
                 <drillToDetailEnabled>false</drillToDetailEnabled>
@@ -36,6 +110,15 @@
                 <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
                 <chartAxisRange>Auto</chartAxisRange>
                 <componentType>Line</componentType>
+                <dashboardFilterColumns>
+                    <column>Case.Core_IPS_Product_name__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Case.Core_External_Issue_Category__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Case.Core_IPS_Support_Level__c</column>
+                </dashboardFilterColumns>
                 <displayUnits>Auto</displayUnits>
                 <drillEnabled>false</drillEnabled>
                 <drillToDetailEnabled>false</drillToDetailEnabled>
@@ -64,6 +147,15 @@
                     <column>FORMULA1</column>
                 </chartSummary>
                 <componentType>Gauge</componentType>
+                <dashboardFilterColumns>
+                    <column>Case.Core_IPS_Product_name__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Case.Core_External_Issue_Category__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Case.Core_IPS_Support_Level__c</column>
+                </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
                 <gaugeMax>100.0</gaugeMax>
@@ -91,6 +183,15 @@
                 <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
                 <chartAxisRange>Auto</chartAxisRange>
                 <componentType>Line</componentType>
+                <dashboardFilterColumns>
+                    <column>Case.Core_IPS_Product_name__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Case.Core_External_Issue_Category__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Case.Core_IPS_Support_Level__c</column>
+                </dashboardFilterColumns>
                 <displayUnits>Auto</displayUnits>
                 <drillEnabled>false</drillEnabled>
                 <drillToDetailEnabled>false</drillToDetailEnabled>
@@ -116,6 +217,15 @@
                 <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
                 <chartAxisRange>Auto</chartAxisRange>
                 <componentType>Line</componentType>
+                <dashboardFilterColumns>
+                    <column>Case.Core_IPS_Product_name__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Case.Core_External_Issue_Category__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Case.Core_IPS_Support_Level__c</column>
+                </dashboardFilterColumns>
                 <displayUnits>Auto</displayUnits>
                 <drillEnabled>false</drillEnabled>
                 <drillToDetailEnabled>false</drillToDetailEnabled>
@@ -144,6 +254,15 @@
                     <column>FORMULA1</column>
                 </chartSummary>
                 <componentType>Gauge</componentType>
+                <dashboardFilterColumns>
+                    <column>Case.Core_IPS_Product_name__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Case.Core_External_Issue_Category__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Case.Core_IPS_Support_Level__c</column>
+                </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
                 <gaugeMax>100.0</gaugeMax>
@@ -171,6 +290,15 @@
                 <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
                 <chartAxisRange>Auto</chartAxisRange>
                 <componentType>Line</componentType>
+                <dashboardFilterColumns>
+                    <column>Case.Core_IPS_Product_name__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Case.Core_External_Issue_Category__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Case.Core_IPS_Support_Level__c</column>
+                </dashboardFilterColumns>
                 <displayUnits>Auto</displayUnits>
                 <drillEnabled>false</drillEnabled>
                 <drillToDetailEnabled>false</drillToDetailEnabled>
@@ -196,6 +324,15 @@
                 <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
                 <chartAxisRange>Auto</chartAxisRange>
                 <componentType>Line</componentType>
+                <dashboardFilterColumns>
+                    <column>Case.Core_IPS_Product_name__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Case.Core_External_Issue_Category__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Case.Core_IPS_Support_Level__c</column>
+                </dashboardFilterColumns>
                 <displayUnits>Auto</displayUnits>
                 <drillEnabled>false</drillEnabled>
                 <drillToDetailEnabled>false</drillToDetailEnabled>
@@ -224,6 +361,15 @@
                     <column>FORMULA1</column>
                 </chartSummary>
                 <componentType>Gauge</componentType>
+                <dashboardFilterColumns>
+                    <column>Case.Core_IPS_Product_name__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Case.Core_External_Issue_Category__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Case.Core_IPS_Support_Level__c</column>
+                </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
                 <gaugeMax>100.0</gaugeMax>
@@ -251,6 +397,15 @@
                 <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
                 <chartAxisRange>Auto</chartAxisRange>
                 <componentType>Line</componentType>
+                <dashboardFilterColumns>
+                    <column>Case.Core_IPS_Product_name__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Case.Core_External_Issue_Category__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Case.Core_IPS_Support_Level__c</column>
+                </dashboardFilterColumns>
                 <displayUnits>Auto</displayUnits>
                 <drillEnabled>false</drillEnabled>
                 <drillToDetailEnabled>false</drillToDetailEnabled>
@@ -276,6 +431,15 @@
                 <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
                 <chartAxisRange>Auto</chartAxisRange>
                 <componentType>Line</componentType>
+                <dashboardFilterColumns>
+                    <column>Case.Core_IPS_Product_name__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Case.Core_External_Issue_Category__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Case.Core_IPS_Support_Level__c</column>
+                </dashboardFilterColumns>
                 <displayUnits>Auto</displayUnits>
                 <drillEnabled>false</drillEnabled>
                 <drillToDetailEnabled>false</drillToDetailEnabled>
@@ -304,6 +468,15 @@
                     <column>FORMULA1</column>
                 </chartSummary>
                 <componentType>Gauge</componentType>
+                <dashboardFilterColumns>
+                    <column>Case.Core_IPS_Product_name__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Case.Core_External_Issue_Category__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Case.Core_IPS_Support_Level__c</column>
+                </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
                 <gaugeMax>100.0</gaugeMax>
@@ -331,6 +504,15 @@
                 <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
                 <chartAxisRange>Auto</chartAxisRange>
                 <componentType>Line</componentType>
+                <dashboardFilterColumns>
+                    <column>Case.Core_IPS_Product_name__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Case.Core_External_Issue_Category__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Case.Core_IPS_Support_Level__c</column>
+                </dashboardFilterColumns>
                 <displayUnits>Auto</displayUnits>
                 <drillEnabled>false</drillEnabled>
                 <drillToDetailEnabled>false</drillToDetailEnabled>
@@ -356,6 +538,15 @@
                 <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
                 <chartAxisRange>Auto</chartAxisRange>
                 <componentType>Line</componentType>
+                <dashboardFilterColumns>
+                    <column>Case.Core_IPS_Product_name__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Case.Core_External_Issue_Category__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Case.Core_IPS_Support_Level__c</column>
+                </dashboardFilterColumns>
                 <displayUnits>Auto</displayUnits>
                 <drillEnabled>false</drillEnabled>
                 <drillToDetailEnabled>false</drillToDetailEnabled>
@@ -384,6 +575,15 @@
                     <column>FORMULA1</column>
                 </chartSummary>
                 <componentType>Gauge</componentType>
+                <dashboardFilterColumns>
+                    <column>Case.Core_IPS_Product_name__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Case.Core_External_Issue_Category__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Case.Core_IPS_Support_Level__c</column>
+                </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
                 <gaugeMax>100.0</gaugeMax>
@@ -410,9 +610,9 @@
     <dashboardType>SpecifiedUser</dashboardType>
     <isGridLayout>true</isGridLayout>
     <owner>11645998@intel.com.crm</owner>
-    <runningUser>11646767@intel.com.crm</runningUser>
+    <runningUser>11645998@intel.com.crm</runningUser>
     <textColor>#000000</textColor>
-    <title>Obsolete - Customer Survey NPS - PSG</title>
+    <title>Customer Survey NPS - PSG CEG</title>
     <titleColor>#000000</titleColor>
     <titleSize>12</titleSize>
 </Dashboard>

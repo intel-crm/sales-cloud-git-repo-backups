@@ -2,7 +2,7 @@
 <CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseValues>
         <plural>false</plural>
-        <value>IPA Email Configuration</value>
+        <value>IPA Email Configurations</value>
     </caseValues>
     <caseValues>
         <plural>true</plural>
@@ -17,16 +17,8 @@
         <name>PRM_Entitlement_List__c</name>
     </fields>
     <fields>
-        <label><!-- Inactive Indicator --></label>
-        <name>PRM_Inactive_Indicator__c</name>
-    </fields>
-    <fields>
         <label><!-- Partner Role --></label>
         <name>PRM_PartnerRole__c</name>
-        <picklistValues>
-            <masterLabel>Builder</masterLabel>
-            <translation><!-- Builder --></translation>
-        </picklistValues>
         <picklistValues>
             <masterLabel>Cloud &amp; Comms Service Provider</masterLabel>
             <translation><!-- Cloud &amp; Comms Service Provider --></translation>
@@ -34,6 +26,10 @@
         <picklistValues>
             <masterLabel>Distributor</masterLabel>
             <translation><!-- Distributor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA Design Services</masterLabel>
+            <translation><!-- FPGA Design Services --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Guest</masterLabel>
@@ -44,8 +40,20 @@
             <translation><!-- Independent Software Vendor --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Solution Integrator</masterLabel>
-            <translation><!-- Solution Integrator --></translation>
+            <masterLabel>Manufacturer</masterLabel>
+            <translation><!-- Manufacturer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Original Equipment Manufacturer (OEM)</masterLabel>
+            <translation><!-- Original Equipment Manufacturer (OEM) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service Integrator</masterLabel>
+            <translation><!-- Service Integrator --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Solution Provider</masterLabel>
+            <translation><!-- Solution Provider --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -62,14 +70,6 @@
         <picklistValues>
             <masterLabel>Member</masterLabel>
             <translation><!-- Member --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Partner</masterLabel>
-            <translation><!-- Partner --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Prestige</masterLabel>
-            <translation><!-- Prestige --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Titanium</masterLabel>

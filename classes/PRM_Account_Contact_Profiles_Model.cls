@@ -3,8 +3,8 @@
 global class PRM_Account_Contact_Profiles_Model {
     /********************** Wrapper Classes **************************/
     global class Profiles {
-        //public RegRequestAccountProfile RegRequestAccountProfile {set;get;}
-        public RegistrationRequestProfileWrapper RegistrationRequestProfile {set;get;}
+      	//public RegRequestAccountProfile RegRequestAccountProfile {set;get;}
+      	public RegistrationRequestProfileWrapper RegistrationRequestProfile {set;get;}
         public AccountRequestWrapper AccountRequest {set;get;}
         //public List<AccountRequestWrapper> AccountRequests {set;get;}
         public AccountProfileWrapper AccountProfile {set;get;}    
@@ -16,53 +16,6 @@ global class PRM_Account_Contact_Profiles_Model {
         public ExceptionWrapper ExceptionDetails {set;get;}
         public Long ResponseTimeMS {set;get;}
         public ErrorMsg ErrorMsg {set;get;}
-        public boolean SystemAccount {set;get;}
-        public list<PRM_SBCSearchResults.SearchResults> SearchResults {set;get;}
-        public cmfWrapperNew ContactGroupResults {set;get;} 
-       // public List<cmfWrapper> CMFResults {set;get;} 
-        //public string cmfDetails {set;get;} 
-        
-    }
-    public class cmfWrapperNew{
-        public String AccountName{set;get;}
-        public String AccountID{set;get;}
-        public Boolean AccountStatus{set;get;}
-        public Boolean AccountIsdeleted{set;get;}
-        public string UCDID{set;get;}
-        public String FirstName{set;get;}
-        public String LastName{set;get;}
-        public String EnterpriseId{set;get;}
-        public String Email{set;get;}
-        public Boolean Deactivated {set;get;}
-        public Boolean IsDeleted {set;get;}
-        public Boolean IsODMAccount {set;get;}
-        public List<cmfWrapper> CMFGroups{set;get;}
-    }
-    public class cmfWrapper {
-        public String GroupName{set;get;}
-        public string Description{set;get;}
-        public Boolean Active{set;get;}
-        public String ActiveCMFCount{set;get;}
-        public String InActiveCMFCount{set;get;}
-        public String ActiveContactCount{set;get;}
-        public String InActiveContactCount{set;get;}
-        public List <cmfData> CMFs {set;get;}
-    }
-    public class cmfData{
-        public String CMFID {set;get;}
-        public string Name {set;get;}
-        public string SalesOrgCode {set;get;}
-        public string SalesOrgName {set;get;}
-        public string SalesDistiChannelCode {set;get;}
-        public string SalesDistiChannelName {set;get;}
-        public string Address {set;get;}
-        public string AccountGroup {set;get;}
-        public string DirectCustomerRoleName {set;get;}
-        public string DirectCustomerRoleCode {set;get;}
-        public Boolean CentralBlock {set;get;}
-        public String SalesAreaOrderBlockCd {set;get;}
-        
-        
     }
     public class AccountResultWrapper {
         public String Status {set;get;}
@@ -71,26 +24,25 @@ global class PRM_Account_Contact_Profiles_Model {
         public List<AccountResult> Results {set;get;}
     }
     public class AccountResult {
-        public String CIMId {set;get;}
-        public String UNIFIEDID {set;get;} // TWC729-6955 : CIM Prime EOL –  Get Profile API - CIM EOL Activities
+        public String CIMId	{set;get;}
         public String SalesforceId {set;get;}
         public String ERPMAccountNumber {set;get;}
         public String ERPMEngagementCode {set;get;} 
     }
     /*
-public class RegRequestAccountProfileWrapper {
-public RegRequestAccountProfile RegistrationRequest {set;get;}
-}
-
-public class RegRequestAccountProfile {       
-public AccountRequestWrapper AccountRequest {set;get;}
-public ContactAccountWrapper ContactAccount {set;get;}  
-}
-
-public class RegistrationRequestProfile {
-public RegistrationRequestProfileWrapper RegistrationRequest {set;get;}
-}
-*/
+    public class RegRequestAccountProfileWrapper {
+        public RegRequestAccountProfile RegistrationRequest {set;get;}
+    }
+	
+    public class RegRequestAccountProfile {       
+        public AccountRequestWrapper AccountRequest {set;get;}
+        public ContactAccountWrapper ContactAccount {set;get;}  
+    }
+    
+    public class RegistrationRequestProfile {
+        public RegistrationRequestProfileWrapper RegistrationRequest {set;get;}
+    }
+	*/
     public class RegistrationRequestProfileWrapper {
         public String RequestId {set;get;}
         public String Status {set;get;}
@@ -107,7 +59,7 @@ public RegistrationRequestProfileWrapper RegistrationRequest {set;get;}
     public class AccountRequest {
         public AccountRequestWrapper AccountRequest {set;get;}
     } 
-    
+	
     public class AccountRequestWrapper {
         public AccountRequestInformationWrapper AccountRequestInformation {set;get;}
         public List<AccountReqSubscription> Subscriptions {set;get;}
@@ -115,23 +67,23 @@ public RegistrationRequestProfileWrapper RegistrationRequest {set;get;}
         //public List<AccountReqCIMSearchResult> CIMSearchResults {set;get;}
     }
     /*
-public class AccountReqCIMSearchResult {
-public String AccountName {set;get;}
-public String AddressLine1 {set;get;}
-public String AddressLocation {set;get;}
-public String AddressType {set;get;}
-public String CIMId {set;get;}
-public String Name {set;get;}
-public Integer CIMSearchScore {set;get;}
-public String CityName {set;get;}
-public String CountryCode {set;get;}
-public String CountryName {set;get;}
-public String CountrySubdivisionCode {set;get;}
-public String CountrySubdivisionName {set;get;}    
-public String  PostalCode {set;get;}
-public String  SLSCLDRecord {set;get;}
-}
-*/
+    public class AccountReqCIMSearchResult {
+        public String AccountName {set;get;}
+        public String AddressLine1 {set;get;}
+        public String AddressLocation {set;get;}
+        public String AddressType {set;get;}
+        public String CIMId {set;get;}
+        public String Name {set;get;}
+        public Integer CIMSearchScore {set;get;}
+        public String CityName {set;get;}
+        public String CountryCode {set;get;}
+        public String CountryName {set;get;}
+        public String CountrySubdivisionCode {set;get;}
+        public String CountrySubdivisionName {set;get;}    
+        public String  PostalCode {set;get;}
+        public String  SLSCLDRecord {set;get;}
+    }
+	*/
     public class AccountReqTermsCondition {
         public String Name {set;get;}
         public DateTime SignedDate {set;get;}
@@ -147,10 +99,7 @@ public String  SLSCLDRecord {set;get;}
     public class AccountRequestInformationWrapper {
         public String AccountRequestId  {set;get;}
         public String AccountCIMID {set;get;}
-        public String AccountUNIFIEDID{set;get;} // TWC729-6955 : CIM Prime EOL –  Get Profile API - CIM EOL Activities
         public String AccountSalesforceID {set;get;}
-        public String AccountName {set;get;}
-        public String AccountWebsite {set;get;}
         public String AddressLine1 {set;get;}
         public String AddressLine2 {set;get;}
         public String BizOrgType {set;get;}
@@ -163,15 +112,12 @@ public String  SLSCLDRecord {set;get;}
         public boolean ContactEVflag {set;get;}
         public String ContactEVToken {set;get;}
         public String ContactFirstName {set;get;}
-        //public String ContactJobFunction {set;get;}
-        public String ContactProfession {set;get;}
+        public String ContactJobFunction {set;get;}
         public String ContactLastName {set;get;}
         public String ContactLoginID {set;get;}
         public String ContactPhoneNumber {set;get;}
         public String Country {set;get;}
         public String ContactCountry {set;get;}
-        public String CompanyNameEng {set;get;}
-        public String AltCompanyNameEng {set;get;}
         public String DuplicateAccountCheck {set;get;}
         public String DuplicateAccountStatus {set;get;}
         public String DuplicateContact {set;get;}
@@ -180,19 +126,15 @@ public String  SLSCLDRecord {set;get;}
         public String EmailLog {set;get;}
         public DateTime EmailVerifiedDateTime {set;get;}
         public String EVExpiredvsPending {set;get;}
-        public String EntitlementDetails {set;get;}
         public boolean isLocked {set;get;}
         public boolean isSubmitted {set;get;}
         public String LegalAgreementCheck {set;get;}
         public String LegalAgreements {set;get;}
         public String manualRecordCheck {set;get;}
         public String PartnerProgram {set;get;}
-        public String PartnerProgramCode {set;get;}
         public String PartnerRole {set;get;}
-        public String PartnerRoleLabel {set;get;}
         public String PartnerSegment {set;get;}
         public String PartnerTier {set;get;}
-        public String PartnerTierLabel {set;get;}
         public String PhysicalAddressLine2 {set;get;}
         public String PhysicalCity {set;get;}
         public String PhysicalCountry {set;get;}
@@ -209,26 +151,24 @@ public String  SLSCLDRecord {set;get;}
         public String UserdefinedPhonenumber {set;get;}
         public String UserdefinedWebsite {set;get;}
         public String ZipPostalCode {set;get;}
-        public String WeChatUnionId {set; get;}
-        public String JobTitle {set; get;}
-        public String TaxNumber {set;get;}
+        //public String WeChatUnionId {set; get;}
         //-----------------------------We chat-----------------------------
         /*
-public  String WechatOpenId {set; get;}
-public  String WechatUnionId {set; get;}
-public  String RegistrationSource {set; get;}
-*/
+        public  String WechatOpenId {set; get;}
+        public  String WechatUnionId {set; get;}
+        public  String RegistrationSource {set; get;}
+		*/
         //-----------------------------We chat-----------------------------
         
         
     }
     /*
-public class AccountProfile {
-public AccountProfileWrapper AccountProfile {set;get;}        
-}     
-*/
+    public class AccountProfile {
+        public AccountProfileWrapper AccountProfile {set;get;}        
+    }     
+	*/
     public class AccountProfileWrapper {
-        public AccountInformationWrapper AccountInformation {set;get;} 
+        public AccountInformationWrapper AccountInformation {set;get;}        
         //public List<AcctContact> Contacts {set;get;}
         public List<AccountContactRelationship> AccountContactRelationships {set;get;}
         public List<AccountERPMEngagement> AccountEngagements {set;get;}
@@ -237,32 +177,13 @@ public AccountProfileWrapper AccountProfile {set;get;}
         public List<AccountSpecialityAssociation> AccountSpecialityAssociations {set;get;}
         //public List<OnePartnerIDGroupMember> OnePartnerIDGroupMembers {set;get;}
         public List<AccountLegalAgreement> AccountLegalAgreements {set;get;}
-        public List<AccountBusinessType> AccountBusinessTypes {set;get;}    //Step 1 
-        //public List<ComplianceWatchList> ComplianceWatchLists{get;set;} //Commenting as part of TWC729-8872
     }
-  //step 2  
-     public class AccountBusinessType
-    {
-
-        public String BusinessTypeName {get; set;}
-        public String BusinessTypeCode {get; set;}
-        public String Status  {get; set;}     
-        public String AccountName {set;get;}
-        //start add for TWC722-186
-        public Date EffectiveEndDate {set;get;}
-        public Date EffectiveStartDate {set;get;}
-        public String StatusReason {set;get;}
-        //End add for TWC722-186
-        
-    }
-    
-    //
     public class AccountLegalAgreement{
         //(SELECT Name,PRM_Agreement_Sign_Dt__c,PRM_Contact__c,PRM_Partner_Agreement_Id__r.Name,PRM_Partner_Agreement_Id__r.PRM_InActive_Ind__c,PRM_Partner_Agreement_Id__r.PRM_Agreement_Category_Nm__c,PRM_Partner_Agreement_Id__r.PRM_Agreement_Cd__c,PRM_Partner_Agreement_Id__r.PRM_Channel_Program_Id__r.Name FROM AccountLegalAgreementAssociations__r)
         public String LeagalAgreementName {set;get;}
         public DateTime AgreementSignedDate {set;get;}
         public String AgreementSignedBy {set;get;}      
-        public boolean IsInActive {set;get;}
+        public boolean IsPartnerAgreementActive {set;get;}
         public String PartnerAgreementName {set;get;}
         public String PartnerAgreementCode {set;get;}
         public String PartnerProgramName {set;get;}
@@ -274,20 +195,15 @@ public AccountProfileWrapper AccountProfile {set;get;}
         public boolean IsInactive {set;get;}
         //public String Status {set;get;}
         public String SpecialityName {set;get;}
-        public String SpecialityType {set;get;}
         public String SpecialityRole {set;get;}
-        public String SpecialityRoleLabel {set;get;}
         public String SpecialityTier {set;get;}        
     }
     public class AccountChannelMembership {        
         public String PartnerProgramName {set;get;}
         public String PartnerProgramCode {set;get;}
         public String PartnerTier {set;get;}
-        public String PartnerTierLabel {set;get;}
         public String PartnerRole {set;get;}
-        public String PartnerRoleLabel {set;get;}
         public String Status {set;get;}
-        public datetime createdDate{get;set;}
     }   
     public class AccoutBenefitAssociation {
         public String BenefitName {set;get;}
@@ -298,67 +214,22 @@ public AccountProfileWrapper AccountProfile {set;get;}
         public String Status {set;get;}
     }
     /*
-public class ContactAccount {
-public ContactAccountWrapper ContactAccount {set;get;}        
-}
-*/
+    public class ContactAccount {
+        public ContactAccountWrapper ContactAccount {set;get;}        
+    }
+	*/
     public class ContactAccountWrapper {
         public  AccountInformationWrapper AccountInformation {set;get;}  
         //public  ContactBasicInformationWrapper ContactBasicInformation {set;get;}
         public ContactBasicProfileDetailsWrapper ContactBasicProfile {set;get;}
-        public RegistrationRequestDetails RegReqConsolidated {set;get;}//@NJ Req req payload consolidated wrapper 
-        //public List<ContactBusinessType> ContactBusinessType {set;get;} //step 1
-        //AccountBusinessTypesController();
     }
-
-    /*@NJ Req req payload consolidated wrapper start*/
-    public class RegistrationRequestDetails{
-        public String FirstName {set;get;}
-        public String LastName {set;get;}
-        public String Email {set;get;}
-        public String PartnerRole {set;get;}
-        public String EnterpriseId {set;get;}
-        public String AddressLine1 {set;get;}
-        public String City {set;get;}
-        public String Country {set;get;}
-        public String StateProvince {set;get;}
-        public String ZipPostalCode {set;get;}
-        public String AccountName {set;get;}
-        public String AccountUrl {set;get;}
-        public String PreferredLanguage {set;get;}
-        public String Profession {set;get;}
-        public String AccountPhone {set;get;}
-        public String ContactCountry {set;get;}
-        public String LoginStatus {set;get;}
-        public String SalesforceId {set;get;}
-    }
-    /*@NJ Req req payload consolidated wrapper end*/
-       
     public class AccountInformationWrapper{
         public String AccountId {set;get;}
-        public String Name {set;get;} 
-        Public String BadgeTier {set;get;}
-        Public String BadgeTierLabel {set;get;}
-        public String AlternateLanguageName {set;get;}
-        public String BizOrgType {set;get;}
-        public String PartnerRole {set;get;}
-        public String PartnerRoleLabel {set;get;}
-        public String ParentAccount {set;get;}
-        public String OwnerName {set;get;}      
-        public String OwnerEmail {set;get;}
-        
-        public  String EnglishOnlyName {set;get;}
-        public  boolean IsDeactivated {set;get;}
-        public  String DeactivationReason {set;get;}
-        public  boolean B2BEntitlement {set;get;}
-        public  String B2BERPMAccountNumber {set;get;}
-        public  String PartnerProgram {set;get;}
-        public  String PartnerSegment {set;get;}
-        public  String PartnerSpeciality {set;get;}
-        public  String PartnerSpecialityLabel {set;get;}
-        public  String RecordTypeName {set;get;}
-        
-        //public  String PartnerApplication {set;get;}
+        public  String Name {set;get;}       
+        public  String AlternateLanguageName {set;get;}
+        public  String BizOrgType {set;get;}
+        public  String PartnerRole {set;get;}
+        public  String ParentAccount {set;get;}
         public  String AccountLegalName {set;get;}
         public  String PrimeAccountName {set;get;}
         public  boolean CoveredAccount {set;get;}
@@ -369,7 +240,6 @@ public ContactAccountWrapper ContactAccount {set;get;}
         public  String Industry {set;get;}
         public String CompanySize {set; get;}
         public String CompanyWebsite {set; get;}
-        public String CompanyPhoneNumber {set;get;}
         /*
 public  String AltLanguageAddress1 {set;get;}
 public  String AltLanguageAddress2 {set;get;}
@@ -382,7 +252,6 @@ public  String AltLanguagePostalCode {set;get;}
         public boolean IPSActive {set;get;}
         public String BusinessId {set;get;}
         public String BusinessPartnerId {set;get;}
-        public String AccountNumber {set;get;}
         public boolean IsIPA {set;get;}
         public AccountAddress Address {set;get;}   
         public List<AccountContactRelationship> AccountContactRelationships {set;get;}
@@ -390,39 +259,16 @@ public  String AltLanguagePostalCode {set;get;}
         public List<AccoutBenefitAssociation> AccoutBenefitAssociations {set;get;}
         public List<AccountChannelMembership> AccountChannelMemberships {set;get;}
         public List<ProfileResponse> ProfileResponses {set;get;} 
-        public List<AccountSpecialityAssociation> AccountSpecialityAssociations {set;get;}
-        public List<AccountLegalAgreement> AccountLegalAgreements {set;get;}
-        public List<WhitelistedDomain> WhiteListedDomains {set;get;}
-        public List<PartnerAssist> PartnerAssist {set;get;}
-        
-        public List<AccountBusinessType> AccountBusinessTypes {set;get;}    //Step 3
-        //public List<ComplianceWatchList> ComplianceWatchLists{get;set;}  //Commenting as part of TWC729-8872
-        //UCD Changes
-        public string UnifiedId{get;set;}
-        public string SimplifiedAccountName{get;set;}
-        public string SimplifiedLocalLanguageName{get;set;}
-        public string CustomerAggregationType{get;set;}
-        public string UnifiedHierarchy{get;set;}
-        public string UnifiedCountryName{get;set;}
-        public string UnifiedCountryCode{get;set;}
     }    
     public class ProfileResponse {
         public String QuestionText {set;get;}
         public String QuestionCode {set;get;}
         //public List<ProfileAnswer> Answers {set;get;}
-        //public List<String> Responses {set;get;}  
-        public List<Response> Responses {set;get;}  
+        public List<String> Responses {set;get;}    
     }   
-    public class Response
-    {
-        public String ResponseText {set;get;}
-        public String ResponseCode {set;get;}         
-    }
-    
     public class AccountContactRelationship{
         public  string AccountName {set;get;}
         public  String PartnerRole {set;get;}
-        public  String PartnerRoleLabel {set;get;}
         public  String Relationship {set;get;}
         public  String Status {set;get;}
         public  boolean InactiveIndicator {set;get;}
@@ -434,11 +280,11 @@ public  String AltLanguagePostalCode {set;get;}
         public  String Tier {set;get;}
     }
     /*
-public class ContactBasicProfileWrapper{        
-public ContactBasicProfileDetailsWrapper ContactBasicProfile {set;get;}
-//List<AccountContactRelationship> AccountContactRelationships {set;get;}        
-}
-*/
+    public class ContactBasicProfileWrapper{        
+        public ContactBasicProfileDetailsWrapper ContactBasicProfile {set;get;}
+        //List<AccountContactRelationship> AccountContactRelationships {set;get;}        
+    }
+	*/
     public class AccountAddress {
         public Address PrimaryAddress {set;get;}
         public Address SecondaryAddress {set;get;}
@@ -459,24 +305,8 @@ public ContactBasicProfileDetailsWrapper ContactBasicProfile {set;get;}
         public ContactBasicInformationWrapper ContactBasicInformation {set;get;}
         public List<ContactSubscription> ContactSubscriptions {set;get;}
         public List<ContactEntitlement> ContactEntitlements {set;get;}
-        public List<ContactBusinessType> ContactBusinessTypes {set;get;} 
         //List<AccountContactRelationship> AccountContactRelationships {set;get;}        
     }
-    //start add for US1076202
-    public class ContactBusinessType
-    {
-
-        public String BusinessTypeName {get; set;}
-        public String BusinessTypeCode {get; set;}
-        public String Status  {get; set;}     
-        public String Email {set;get;}
-        //start add for TWC722-186
-        public string ContactName {set;get;}
-        public string StatusReason {set;get;}
-        //end add for TWC722-186
-    }       
-    //end add for US1076202
-
     public class ContactBasicInformationWrapper{
         public  Id ContactId {set;get;}
         public  Id AccountId {set;get;}
@@ -489,35 +319,26 @@ public ContactBasicProfileDetailsWrapper ContactBasicProfile {set;get;}
         public  String EnglishLastName {set;get;}
         public  String FirstName {set;get;}
         public  String LastName {set;get;}
-        public  DateTime EmailVerificationDate {set;get;}
-        //public  String JobFunction {set;get;}
-        //public  String JobFunctionCode {set;get;}
-        public  String Profession {set;get;}
-       // public  String JobFunctionCode {set;get;}
+        public 	DateTime EmailVerificationDate {set;get;}
+        public  String JobFunction {set;get;}
+        public  String JobFunctionCode {set;get;}
         public  String Phone {set;get;}
         public  String Mobile {set;get;}
         public  String Email {set;get;}
         public  String PreferredCommunication {set;get;}
         public  String PreferredLanguage {set;get;}
         public  String PartnerRole {set;get;}
-        public  String PartnerRoleLabel {set;get;}
         public  String Segment {set;get;}
         public  String LoginId {set;get;}
         public  String eRPMPersonId {set;get;}
         public  String EnterpriseId {set;get;} 
         public  String WeChatUnionId {set; get;}
-        public  String LoginStatus {set; get;}
-        public String Communities {set;get;}
-        public String BizOrgType {set;get;}
-        public String ExternalUserState {set;get;}
-        public String ExternalUserStateDtm {set;get;}
-		public Boolean BlockedContact{set;get;}
         //-----------------------------We chat-----------------------------
         /*
-public  String WechatOpenId {set; get;}
-public  String WechatUnionId {set; get;}
-public  String RegistrationSource {set; get;}
-*/
+        public  String WechatOpenId {set; get;}
+        public  String WechatUnionId {set; get;}
+        public  String RegistrationSource {set; get;}
+		*/
         //-----------------------------We chat-----------------------------
         
         public Address MailingAddress {set;get;}        
@@ -531,8 +352,6 @@ public  String RegistrationSource {set; get;}
         public  String CountryCode {set;get;}
         public  String CountryCodeShort {set;get;}
         public  String PostalCode {set;get;}
-        public  String Geo {set;get;}
-        public  String SubGeo {set;get;}
     }
     public class OnePartnerIDGroupMembersWrapper {
         public String AccountId {set;get;}
@@ -547,22 +366,7 @@ public  String RegistrationSource {set; get;}
         public String OnePartnerAccountName {set;get;}
         public boolean IsInactive {set;get;}
         public boolean MDAIndicator {set;get;}
-    }  
-    public class WhitelistedDomain {
-        public string DomainName {set;get;}
-        public string PartnerProgramName {set;get;}
-        public DateTime EndDate {set;get;}
-        public boolean IsInactive {set;get;}
-    }
-    public class PartnerAssist {
-        public String DistributorName {set;get;}
-        public String choice {set;get;}
-        public String ConsentProvidedBy {set;get;} 
-        public DateTime ConsentProvidedDate {set;get;}
-        public DateTime StartDate {set;get;}
-        public DateTime EndDate {set;get;}
-        public boolean ConsentProvidedIndicator {set;get;}
-    }
+    }    
     public class ExceptionWrapper {
         public String Status {set;get;}
         public Integer StatusCode {set;get;}
@@ -573,12 +377,6 @@ public  String RegistrationSource {set; get;}
         public boolean error {set;get;}
         public String msg {set;get;}
     }
-    //UCD Changes
-   /* public class ComplianceWatchList{
-        public string ComplianceType{get;set;}
-        public string ComplianceName{get;set;}
-         public DateTime EffectiveStartDate{get;set;}
-         public DateTime EffectiveEndDate{get;set;}
-    }*/ //Commenting as part of TWC729-8872
+    
     /********************** End of Wrapper Classes **************************/
 }

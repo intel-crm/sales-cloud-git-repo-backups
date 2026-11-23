@@ -6,7 +6,7 @@
     </fieldOverrides>
     <fieldOverrides>
         <field>GM_Feedback__c</field>
-        <formula>IF(  OR($Permission.CST_General_Manager, $Permission.CST_Regional_Admin) ,&apos;Approved&apos;,&apos;&apos;)</formula>
+        <formula>IF( OR($Permission.CST_General_Manager, $Permission.CST_Regional_Admin) ,&apos;Approved&apos;,&apos;&apos;)</formula>
     </fieldOverrides>
     <fieldOverrides>
         <field>VP_Feedback__c</field>

@@ -117,7 +117,7 @@ public without sharing class SWS_MultipleCouponGenerationBatch implements Databa
                 RecordWrapper wrap = recordWrapMap.get(SWS_RetryOperationUtility.results[i].getId());
                 if (!sr.isSuccess()) {
                     wrap.result = 'Failed to Update Record';
-                    wrap.message = SWS_Utility.getErrorAsString(sr.getErrors(),LOG_ENTRY_ORIGIN);
+                    wrap.message = getErrorAsString(sr.getErrors());
                 }else if(String.isBlank(wrap.result)){                  
                     wrap.result = 'Coupon Generated';
                     wrap.message = '';
@@ -148,5 +148,15 @@ public without sharing class SWS_MultipleCouponGenerationBatch implements Databa
         public String name;
         public String result;
         public String message;
+    }
+    
+    public static String getErrorAsString(Database.Error[] errors){
+        List<String> errorList=new List<String>();
+        for(Database.Error error:errors){
+            if(error.getMessage()!=null){
+                errorList.add(error.getMessage());
+            }
+        }
+        return String.join(errorList, ';');
     }
 }

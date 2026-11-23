@@ -9,7 +9,6 @@
     <customButtons>SBQQ__ImportLines</customButtons>
     <customButtons>SBQQ__ModifyQuoteTerms</customButtons>
     <customButtons>SBQQ__CalculateQuote</customButtons>
-    <excludeButtons>Submit</excludeButtons>
     <layoutSections>
         <customLabel>true</customLabel>
         <detailHeading>false</detailHeading>
@@ -22,6 +21,10 @@
                 <showLabel>false</showLabel>
                 <showScrollbars>false</showScrollbars>
                 <width>100%</width>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>core_cpq_comments_to_disty_txt__c</field>
             </layoutItems>
         </layoutColumns>
         <style>OneColumn</style>
@@ -50,6 +53,66 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>SBQQ__PrimaryContact__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>core_cpq_quote_type_nm__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>core_cpq_business_unit_nm__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>core_cpq_date_submitted_dt__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>core_cpq_price_eligibility_date_dt__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>core_cpq_assigned_on__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>core_cpq_quote_owner_disty_txt__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>core_cpq_quote_owner_name__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>source_system_nm__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>src_sys_id__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>siebel_rfq_id__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>core_cpq_life_time_annual_peak_sum__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Pricing_Program_Type_Nm__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>core_cpq_is_Dwin_cb__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>core_cpq_is_Budgetary_cb__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>core_cpq_is_Transfer_Pricing_cb__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -96,6 +159,10 @@
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>SBQQ__Ordered__c</field>
+            </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>SBQQ__PaymentTerms__c</field>
@@ -444,13 +511,38 @@
     <relatedLists>
         <relatedList>RelatedNoteList</relatedList>
     </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>SBQQ__QuoteLine__c.core_cpq_parent_quote__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>CreatedDate</fields>
+        <fields>StepStatus</fields>
+        <fields>OriginalActor</fields>
+        <fields>Actor</fields>
+        <fields>Comments</fields>
+        <relatedList>RelatedProcessHistoryList</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>core_cpq_prev_status__c</fields>
+        <fields>core_cpq_status__c</fields>
+        <fields>core_cpq_start_user__c</fields>
+        <fields>core_cpq_start_date__c</fields>
+        <fields>core_cpq_end_user__c</fields>
+        <fields>core_cpq_end_date__c</fields>
+        <fields>core_cpq_duration_minutes__c</fields>
+        <fields>core_cpq_approval_chain__c</fields>
+        <fields>core_cpq_bm_level__c</fields>
+        <relatedList>core_cpq_quote_history__c.core_cpq_quote__c</relatedList>
+    </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>
     <showInteractionLogPanel>false</showInteractionLogPanel>
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h36000003vEAG</masterLabel>
+        <masterLabel>00h2D000000kBV9</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

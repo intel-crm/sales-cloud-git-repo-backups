@@ -55,7 +55,7 @@
         <field>CREATED_DATE</field>
     </columns>
     <filter>
-        <booleanFilter>1 AND (3 OR 2) AND 4</booleanFilter>
+        <booleanFilter>1 AND (3 OR 2)</booleanFilter>
         <criteriaItems>
             <column>AMOUNT</column>
             <columnToColumn>false</columnToColumn>
@@ -75,14 +75,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>JAGUAR LAND ROVER,MEKRA LANG GMBH&amp;CO KG</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>ACCOUNT_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>Bosch Building Technology</value>
+            <value>JAGUAR LAND ROVER</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

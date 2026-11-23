@@ -6,10 +6,9 @@
     </aura:method>
     <aura:method name="getMessageDomain" action="{!c.getMessageDomain}">
     </aura:method>
-    <!-- IPA2.0 + US TWC4497-1631 -->
-    <!-- <aura:method name="getOfferingId" action="{!c.getOfferingId}">
+    <aura:method name="getOfferingId" action="{!c.getOfferingId}">
         <aura:attribute name="sourceComponent" type="Object" />
-    </aura:method> -->
+    </aura:method>
     <aura:method name="getPartnerId" action="{!c.getPartnerId}">
         <aura:attribute name="sourceComponent" type="Object" />
     </aura:method>

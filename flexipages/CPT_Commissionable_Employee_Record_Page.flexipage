@@ -385,7 +385,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>showActionBar</name>
-                    <value>true</value>
+                    <value>false</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>sortFieldAlias</name>
@@ -399,7 +399,7 @@
                 <identifier>lst_dynamicRelatedList</identifier>
             </componentInstance>
         </itemInstances>
-        <name>Facet-d503cdbf-5af9-4f03-86ad-5c72d5713f29</name>
+        <name>Facet-b1b7ee84-c6c3-40f1-a68b-2db9f70e207d</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -439,7 +439,7 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>body</name>
-                    <value>Facet-d503cdbf-5af9-4f03-86ad-5c72d5713f29</value>
+                    <value>Facet-b1b7ee84-c6c3-40f1-a68b-2db9f70e207d</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>title</name>

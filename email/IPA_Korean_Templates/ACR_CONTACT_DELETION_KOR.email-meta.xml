@@ -1,34 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
-    <available>false</available>
+    <available>true</available>
     <encodingKey>UTF-8</encodingKey>
     <name>ACR_CONTACT_DELETION_KOR</name>
     <style>none</style>
-    <subject>인텔® 파트너 얼라이언스 계정 업데이트</subject>
-    <textOnly>사용자 제거됨
+    <subject>인텔 파트너 프로그램 비즈니스 계정 업데이트</subject>
+    <textOnly>Intel Business Account Update
 
-{!UserName},
+This notice is to confirm that an individual has been removed from your Intel Partner program business account.
 
+Business Account Name: {!Account.Name}
+Contact Removed : Login ID {!ContactLoginId} with e-mail {!ContactEmail}
+Relationship (Role): {!AcrRoles}
 
-귀하의 인텔® 파트너 얼라이언스 계정이 변경되었습니다. {!ContactEmail}가 회사 계정에서 제거되었습니다.
+Visit your business account at any time here to see the personnel list details.
+If you have any other questions, please contact us here.
+ 
+Please DO NOT reply to this e-mail message. This is an automated response.
+To ensure that you continue receiving our e-mails, please add us to your address book.
+ 
+Link on here 
+https://ssl.intel.com/content/www/us/en/secure/my-intel/dashboard.html
 
-회사 이름: {!Account.Name}
-비즈니스 ID: {!Account.AccountNumber}
-제거된 연락처: 이메일 {!ContactEmail}
-관계(역할): {!AcrRoles}
-
-이 변경이 승인되지 않으면 로그인하여 계정을 업데이트하십시오.
-질문이 있는 경우, 지원팀에 문의하십시오.
-
-
-
-감사합니다.
-인텔® 파트너 얼라이언스 팀
-
-이 메시지는 현재 인텔® 파트너 얼라이언스 관계와 관련된 중요한 비즈니스 커뮤니케이션으로 발송되었습니다.
-© {!$Label.PRM_CurrentYear} Intel Corporation
-Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
-개인보호 정책 | 쿠키</textOnly>
+Support links:
+for CSP- https://www.intel.com/content/www/us/en/partner/cloud-insider/forms/support.html
+for FPGA: https://signin.intel.com/ContactUs?Culture=en-US</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

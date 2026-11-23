@@ -1,10 +1,10 @@
 <design:component label="Admin Review Wizard">
 
-  <!-- <design:attribute name="cancelButtonText" label="Cancel Button"/>
+  <design:attribute name="cancelButtonText" label="Cancel Button"/>
   <design:attribute name="saveButtonText" label="Save Button"/>
   <design:attribute name="changesSavedText" label="Changes saved message"/>
 
   <design:attribute name="recordListViewId" label="This is the ID for the layout of the record list. (Required to build the link to the record list community page.)" />
   <design:attribute name="debugMode" label="Turn on Console Debugging" />
-  <design:attribute name="recordId" label="Required Record Id {! recordId }" default="{! recordId }" /> -->
+  <design:attribute name="recordId" label="Required Record Id {! recordId }" default="{! recordId }" />
 </design:component>

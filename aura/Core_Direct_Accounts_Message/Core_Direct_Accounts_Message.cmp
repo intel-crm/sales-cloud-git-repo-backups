@@ -1,0 +1,4 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+
+<h1><b>Note:</b> Manually Selected Direct Primary Account,Legal Parent and Pricing Parent details will not show in Direct Accounts Tab</h1>
+</aura:component>

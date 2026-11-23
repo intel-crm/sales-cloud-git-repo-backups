@@ -21,6 +21,27 @@
         <name>Core_Processed_Time_DteTime__c</name>
     </fields>
     <fields>
+        <label><!-- Product --></label>
+        <name>Core_Product_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Status --></label>
+        <name>Core_Product_Status__c</name>
+        <picklistValues>
+            <masterLabel>Active</masterLabel>
+            <translation><!-- Active --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EOL</masterLabel>
+            <translation><!-- EOL --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Product --></label>
+        <name>Core_Product__c</name>
+        <relationshipLabel><!-- Sales Assist Staging --></relationshipLabel>
+    </fields>
+    <fields>
         <label><!-- Retry Counter --></label>
         <name>Core_Retry_Counter__c</name>
     </fields>
@@ -53,5 +74,17 @@
         <label><!-- Unified Id --></label>
         <name>Core_Unified_Id__c</name>
     </fields>
+    <recordTypes>
+        <label><!-- Sales Assist Account --></label>
+        <name>Core_Sales_Assist_Account</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Sales Assist Product --></label>
+        <name>Core_Sales_Assist_Product</name>
+    </recordTypes>
     <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Please populate the CIM ID --></errorMessage>
+        <name>Core_CIM_ID_IsMust</name>
+    </validationRules>
 </CustomObjectTranslation>

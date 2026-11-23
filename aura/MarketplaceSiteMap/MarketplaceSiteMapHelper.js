@@ -1,11 +1,9 @@
 ({
-	/*fetchCategories : function(component, helper) {
+	fetchCategories : function(component, helper) {
 		
         var userLangCode = $A.get("$Locale.langLocale");
         var action = component.get("c.getAllCategories");
-        action.setParams({
-                langCode: userLangCode
-                    });
+        
         action.setCallback(this, function(response){
             var status = response.getState();
             if (status === "SUCCESS") {
@@ -15,10 +13,9 @@
                 var childCats = [];
                 for(var key in returnValue){
                     
-                    
                     childCats.push(...returnValue[key]);
                 }
-                // alert('1')
+                
                 component.set('v.catChilds', childCats);
                 component.set('v.isDataReady', true);
             } else if (status === "INCOMPLETE") {
@@ -31,9 +28,9 @@
                     };
                 }
             } else {
-                this.reject('Unknown error.');
+                reject('Unknown error.');
             }
         });
         $A.enqueueAction(action);
-	}*/
+	}
 })

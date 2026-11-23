@@ -132,22 +132,16 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <comment>Action override created by Lightning App Builder during activation.</comment>
-        <content>Partner_Offering_Record_Page</content>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
         <formFactor>Large</formFactor>
-        <skipRecordTypeSelect>false</skipRecordTypeSelect>
-        <type>Flexipage</type>
+        <type>Default</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <comment>Action override created by Lightning App Builder during activation.</comment>
-        <content>Partner_Offering_Record_Page</content>
         <formFactor>Small</formFactor>
-        <skipRecordTypeSelect>false</skipRecordTypeSelect>
-        <type>Flexipage</type>
-    </actionOverrides>
-    <actionOverrides>
-        <actionName>View</actionName>
         <type>Default</type>
     </actionOverrides>
     <allowInChatterGroups>true</allowInChatterGroups>
@@ -192,7 +186,7 @@
         <label>Active Step</label>
         <length>255</length>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -203,7 +197,7 @@
         <externalId>false</externalId>
         <label>Admin Email</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Email</type>
         <unique>false</unique>
@@ -215,7 +209,7 @@
         <label>Admin Name</label>
         <length>40</length>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -226,26 +220,16 @@
         <description>Check box to see if a newly created Offering is with a particular Intel MP Admin or not</description>
         <inlineHelpText>Check box to see if a newly created Offering is with a particular Intel MP Admin or not</inlineHelpText>
         <label>Admin Reviewing New Offering</label>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>PMP_All_Categories_Txt__c</fullName>
-        <description>This field stores all the category levels selected and will be used for search purposes</description>
-        <label>All Categories</label>
-        <length>32768</length>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>LongTextArea</type>
-        <visibleLines>2</visibleLines>
     </fields>
     <fields>
         <fullName>PMP_Archival_Seven_Day_Reminder_Dt__c</fullName>
         <description>Archival date which is 7 days prior to the end date</description>
         <label>Archival 7 Days Reminder Date</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Date</type>
     </fields>
@@ -254,7 +238,7 @@
         <description>Date field for Archival 3 days reminder date</description>
         <label>Archival 3 Days Reminder Date</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Date</type>
     </fields>
@@ -264,7 +248,7 @@
         <inlineHelpText>Business Segments are auto derived values based on selected category (IoT/Client/Server)</inlineHelpText>
         <label>Partner Program Segment</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>MultiselectPicklist</type>
         <valueSet>
@@ -272,14 +256,9 @@
             <valueSetDefinition>
                 <sorted>false</sorted>
                 <value>
-                    <fullName>Field Programmable Gate Array</fullName>
+                    <fullName>IoT</fullName>
                     <default>false</default>
-                    <label>Field Programmable Gate Array</label>
-                </value>
-                <value>
-                    <fullName>Personal Computers</fullName>
-                    <default>false</default>
-                    <label>Client Computing</label>
+                    <label>Internet of Things and Embedded</label>
                 </value>
                 <value>
                     <fullName>Server</fullName>
@@ -287,9 +266,9 @@
                     <label>Data Center</label>
                 </value>
                 <value>
-                    <fullName>IoT</fullName>
+                    <fullName>Personal Computers</fullName>
                     <default>false</default>
-                    <label>Internet of Things and Embedded</label>
+                    <label>Client Computing</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -302,7 +281,7 @@
         <label>Category</label>
         <length>255</length>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -315,7 +294,7 @@
         <referenceTo>PMP_Company__c</referenceTo>
         <relationshipName>Offerings</relationshipName>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -326,7 +305,7 @@
         <label>Current Step</label>
         <length>255</length>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -341,44 +320,6 @@
         <type>Checkbox</type>
     </fields>
     <fields>
-        <fullName>PMP_Edit_Clone_Offering__c</fullName>
-        <description>This formula displays two hyperlinks for both edit and clone functionality on the list views in marketplace</description>
-        <externalId>false</externalId>
-        <formula>IF(
-OR(
-(ISPICKVAL(PMP_Partner_Offering_Lifecycle_Status_Nm__c, &quot;Retired&quot;)),
-((ISPICKVAL(PMP_Partner_Offering_Lifecycle_Status_Nm__c, &quot;Admin Review&quot;) &amp;&amp; $Profile.Name = &apos;Partner&apos; )),
-(($Permission.PMP_Internal_Intel_Admin) &amp;&amp; INCLUDES(PMP_Business_Segment_Nm__c, &apos;IoT&apos;) &amp;&amp; NOT(INCLUDES(PMP_Translated_Languages__c, &apos;English&apos;))),
-(NOT(($Permission.PMP_Internal_Intel_Admin)) &amp;&amp; (ISPICKVAL(PMP_Partner_Offering_Lifecycle_Status_Nm__c, &quot;Admin Review&quot;) || (PMP_Partner_Offering_Start_Dt__c &gt; TODAY())))
-),
-&apos;Edit&apos;,
-HYPERLINK(
-IF(
-CONTAINS($Api.Partner_Server_URL_260, &apos;marketplace&apos;),LEFT($Api.Partner_Server_URL_260, FIND( &quot;/services&quot;, $Api.Partner_Server_URL_260))+&apos;s/&apos;,
-IF(
-CONTAINS($Api.Partner_Server_URL_260, &apos;imp&apos;),
-LEFT($Api.Partner_Server_URL_260, FIND( &quot;/imp/s&quot;, $Api.Partner_Server_URL_260))
-+&apos;imp/s/&apos;,
-&quot;/&quot;
-)) + &quot;offering-edit?recordId=&quot;+IF(PMP_Working_Copy_Id__r.Id &lt;&gt; null, PMP_Working_Copy_Id__r.Id,Id)+ IF($Permission.PMP_Internal_Intel_Admin, &quot;&amp;Lang=&quot;+TEXT($User.LanguageLocaleKey)+&quot;&amp;action=edit&quot;, &apos;&apos;),
-&apos;Edit&apos;
-)) &amp;&apos; &apos;&amp;
-HYPERLINK(IF(
-CONTAINS($Api.Partner_Server_URL_260, &apos;marketplace&apos;),LEFT($Api.Partner_Server_URL_260, FIND( &quot;/services&quot;, $Api.Partner_Server_URL_260))+&apos;s/&apos;,
-IF(
-CONTAINS($Api.Partner_Server_URL_260, &apos;imp&apos;),
-LEFT($Api.Partner_Server_URL_260, FIND( &quot;/imp/s&quot;, $Api.Partner_Server_URL_260))
-+&apos;imp/s/&apos;,
-&quot;/&quot;
-)) + &quot;offering-edit?recordId=&quot;+IF(PMP_Working_Copy_Id__r.Id &lt;&gt; null, PMP_Working_Copy_Id__r.Id,Id)+&quot;&amp;lang=NA&quot;+&quot;&amp;action=clone&quot;,&apos;Clone&apos;)</formula>
-        <label>Edit/Clone Offering</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>PMP_Edit_Language_Cd__c</fullName>
         <description>This field holds the language code in which offering details are Edited</description>
         <externalId>false</externalId>
@@ -386,7 +327,7 @@ LEFT($Api.Partner_Server_URL_260, FIND( &quot;/imp/s&quot;, $Api.Partner_Server_
         <label>Edit Language</label>
         <length>255</length>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -424,7 +365,7 @@ LEFT($Api.Partner_Server_URL_260, FIND( &quot;/imp/s&quot;, $Api.Partner_Server_
         <defaultValue>false</defaultValue>
         <description>This field is to make the offering promoted or not</description>
         <label>Featured Offering</label>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
@@ -449,7 +390,7 @@ LEFT($Api.Partner_Server_URL_260, FIND( &quot;/imp/s&quot;, $Api.Partner_Server_
         <referenceTo>User</referenceTo>
         <relationshipName>Offerings2</relationshipName>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -492,29 +433,11 @@ LEFT($Api.Partner_Server_URL_260, FIND( &quot;/imp/s&quot;, $Api.Partner_Server_
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>PMP_Is_Converted_Ind__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>Indicator to identify the offerings converted from survey solutions.</description>
-        <label>Is Converted</label>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>PMP_Is_Not_Available_On_MP_Ind__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>This indicator is false when offering is visible to all in the marketplace</description>
-        <label>Is Not Available On MP</label>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
         <fullName>PMP_Is_Notified_Ind__c</fullName>
         <defaultValue>false</defaultValue>
         <description>Used to indicate that the user is notified to change the start date in  Pre release no scenario</description>
         <label>Is Notified</label>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
@@ -524,7 +447,7 @@ LEFT($Api.Partner_Server_URL_260, FIND( &quot;/imp/s&quot;, $Api.Partner_Server_
         <description>Indicates if this Offering has been created by an ODM (Original Device Manufacturer) Partner. This flag is set when the Offering is created.</description>
         <inlineHelpText>Indicates if this Offering has been created by an ODM (Original Device Manufacturer) Partner. This flag is set when the Offering is created.</inlineHelpText>
         <label>Is ODM</label>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
@@ -541,7 +464,7 @@ LEFT($Api.Partner_Server_URL_260, FIND( &quot;/imp/s&quot;, $Api.Partner_Server_
         <fullName>PMP_Offering_Create_Dt__c</fullName>
         <label>New Offering Date</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Date</type>
     </fields>
@@ -562,7 +485,7 @@ LEFT($Api.Partner_Server_URL_260, FIND( &quot;/imp/s&quot;, $Api.Partner_Server_
         <fullName>PMP_Offering_FAE_Status_Nm__c</fullName>
         <label>Offering FAE Status</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -643,7 +566,7 @@ LEFT($Api.Partner_Server_URL_260, FIND( &quot;/imp/s&quot;, $Api.Partner_Server_
         <fullName>PMP_Offering_Language_Nm__c</fullName>
         <label>Input Language</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -711,7 +634,17 @@ LEFT($Api.Partner_Server_URL_260, FIND( &quot;/imp/s&quot;, $Api.Partner_Server_
     <fields>
         <fullName>PMP_Offering_Nm_Hyperlink__c</fullName>
         <externalId>false</externalId>
-        <formula>PMP_Partner_Offering_Nm__c</formula>
+        <formula>HYPERLINK(
+IF(
+CONTAINS($Api.Partner_Server_URL_260, &apos;marketplace&apos;),LEFT($Api.Partner_Server_URL_260, FIND( &quot;/services&quot;, $Api.Partner_Server_URL_260))+&apos;/s/offering/&apos;,
+IF(
+CONTAINS($Api.Partner_Server_URL_260, &apos;imp&apos;),
+LEFT($Api.Partner_Server_URL_260, FIND( &quot;/imp/s&quot;, $Api.Partner_Server_URL_260))
++&apos;imp/s/offering/&apos;,
+&quot;/&quot;
+)) + Id +&quot;?Lang=NA&quot;,
+PMP_Partner_Offering_Nm__c
+)</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Offering Name</label>
         <required>false</required>
@@ -743,23 +676,11 @@ LEFT($Api.Partner_Server_URL_260, FIND( &quot;/imp/s&quot;, $Api.Partner_Server_
         <type>DateTime</type>
     </fields>
     <fields>
-        <fullName>PMP_Offering_Submitter_UserId__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <description>This field is used to store the offering submitter user id.</description>
-        <label>Offering Submitter UserId</label>
-        <referenceTo>User</referenceTo>
-        <relationshipName>Partner_Offerings</relationshipName>
-        <required>false</required>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Lookup</type>
-    </fields>
-    <fields>
         <fullName>PMP_Offering_Update_Required_Ind__c</fullName>
         <defaultValue>false</defaultValue>
         <description>This field is created to lock the record on update required</description>
         <label>Update Required</label>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
@@ -769,14 +690,14 @@ LEFT($Api.Partner_Server_URL_260, FIND( &quot;/imp/s&quot;, $Api.Partner_Server_
         <inlineHelpText>Description of the offering</inlineHelpText>
         <label>Partner Offering Description</label>
         <length>131072</length>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Html</type>
         <visibleLines>25</visibleLines>
     </fields>
     <fields>
         <fullName>PMP_Partner_Offering_End_Dt__c</fullName>
-        <defaultValue>(Today() + 730)</defaultValue>
+        <defaultValue>(Today() + 365)</defaultValue>
         <description>Used to stamp end date of the offering</description>
         <label>Partner Offering End Date</label>
         <required>false</required>
@@ -792,18 +713,7 @@ LEFT($Api.Partner_Server_URL_260, FIND( &quot;/imp/s&quot;, $Api.Partner_Server_
         <label>Partner Offering Identifier</label>
         <length>255</length>
         <required>false</required>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>PMP_Partner_Offering_LifecycleStatus_Txt__c</fullName>
-        <externalId>false</externalId>
-        <label>Partner Offering Lifecycle Status Txt</label>
-        <length>255</length>
-        <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -865,11 +775,6 @@ LEFT($Api.Partner_Server_URL_260, FIND( &quot;/imp/s&quot;, $Api.Partner_Server_
                     <default>false</default>
                     <label>Published</label>
                 </value>
-                <value>
-                    <fullName>Retired</fullName>
-                    <default>false</default>
-                    <label>Retired</label>
-                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -894,7 +799,7 @@ LEFT($Api.Partner_Server_URL_260, FIND( &quot;/imp/s&quot;, $Api.Partner_Server_
         <label>Offering Source Id</label>
         <length>32</length>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -943,7 +848,7 @@ LEFT($Api.Partner_Server_URL_260, FIND( &quot;/imp/s&quot;, $Api.Partner_Server_
         <label>Partner Offering Tag Line Text</label>
         <length>100</length>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -954,7 +859,7 @@ LEFT($Api.Partner_Server_URL_260, FIND( &quot;/imp/s&quot;, $Api.Partner_Server_
         <inlineHelpText>Deciding factor for the offerings to be visible to Partner or Intel Employees or to Everyone</inlineHelpText>
         <label>Partner Offering Visibility Name</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -964,18 +869,17 @@ LEFT($Api.Partner_Server_URL_260, FIND( &quot;/imp/s&quot;, $Api.Partner_Server_
                 <value>
                     <fullName>Public Content</fullName>
                     <default>false</default>
-                    <label>All Access - Available to the Public</label>
-                </value>
-                <value>
-                    <fullName>Intel Only Content</fullName>
-                    <default>false</default>
-                    <label>Restricted Access - Intel Pre-Release Product</label>
+                    <label>Public Content</label>
                 </value>
                 <value>
                     <fullName>Partner Content</fullName>
                     <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Limited Access - IPA Partners Only</label>
+                    <label>Partner Content</label>
+                </value>
+                <value>
+                    <fullName>Intel Only Content</fullName>
+                    <default>false</default>
+                    <label>Intel Only Content</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -986,7 +890,7 @@ LEFT($Api.Partner_Server_URL_260, FIND( &quot;/imp/s&quot;, $Api.Partner_Server_
         <inlineHelpText>Provide an explanation of the changes you are making. This will help other authors understand your motivations</inlineHelpText>
         <label>Revision Log Message</label>
         <length>131072</length>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>3</visibleLines>
@@ -996,7 +900,7 @@ LEFT($Api.Partner_Server_URL_260, FIND( &quot;/imp/s&quot;, $Api.Partner_Server_
         <description>Offering will be tied to the release of pre release item based on its selection</description>
         <label>Pre Release Check</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -1032,33 +936,12 @@ LEFT($Api.Partner_Server_URL_260, FIND( &quot;/imp/s&quot;, $Api.Partner_Server_
         <type>Summary</type>
     </fields>
     <fields>
-        <fullName>PMP_Published_Copy_Id_Txt__c</fullName>
-        <description>This is used to store published copy id on the offering</description>
-        <externalId>false</externalId>
-        <label>Published Copy Id</label>
-        <length>255</length>
-        <required>false</required>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>PMP_Reason_for_Retired_Txt__c</fullName>
-        <description>Reason for retired. This field will be populated when status is retired</description>
-        <label>Reason for Retired</label>
-        <required>false</required>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>TextArea</type>
-    </fields>
-    <fields>
         <fullName>PMP_Review_Comment_History_Txt__c</fullName>
         <description>This field contains all comments history</description>
         <inlineHelpText>This field contains all comments history</inlineHelpText>
         <label>Review Comment History</label>
         <length>32768</length>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>3</visibleLines>
@@ -1069,25 +952,14 @@ LEFT($Api.Partner_Server_URL_260, FIND( &quot;/imp/s&quot;, $Api.Partner_Server_
         <inlineHelpText>This field captures comments for approval</inlineHelpText>
         <label>Add Review Comments</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>TextArea</type>
     </fields>
     <fields>
         <fullName>PMP_Review_Offering__c</fullName>
-        <description>Admin Review navigation</description>
         <externalId>false</externalId>
-        <formula>HYPERLINK(
-IF(
-CONTAINS($Api.Partner_Server_URL_260, &apos;marketplace&apos;),LEFT($Api.Partner_Server_URL_260, FIND( &quot;/services&quot;, $Api.Partner_Server_URL_260))+&apos;s/&apos;,
-IF(
-CONTAINS($Api.Partner_Server_URL_260, &apos;imp&apos;),
-LEFT($Api.Partner_Server_URL_260, FIND( &quot;/imp/s&quot;, $Api.Partner_Server_URL_260))
-+&apos;imp/s/&apos;,
-&quot;/&quot;
-)) + &quot;offering-edit?recordId=&quot;+Id,
-PMP_Partner_Offering_Nm__c
-)</formula>
+        <formula>HYPERLINK(&quot;/s/offering-edit?recordId=&quot;+Id,   PMP_Partner_Offering_Nm__c )</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Offering Name</label>
         <required>false</required>
@@ -1103,30 +975,16 @@ PMP_Partner_Offering_Nm__c
         <label>Sub Category</label>
         <length>255</length>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>PMP_Topic_Count__c</fullName>
-        <defaultValue>0</defaultValue>
-        <description>Counts the number of topics tagged to an Offering</description>
-        <externalId>false</externalId>
-        <label>Topic Count</label>
-        <precision>18</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Number</type>
         <unique>false</unique>
     </fields>
     <fields>
         <fullName>PMP_Translated_Languages__c</fullName>
         <label>Language Status</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>MultiselectPicklist</type>
         <valueSet>
@@ -1207,12 +1065,12 @@ PMP_Partner_Offering_Nm__c
     <fields>
         <fullName>PMP_View_Offerings__c</fullName>
         <externalId>false</externalId>
-        <formula>IF( AND(($Profile.Name=&quot;Partner&quot;), NOT(ISPICKVAL(PMP_Partner_Offering_Lifecycle_Status_Nm__c, &quot;Approved&quot;)) ), &quot;ENG, CHN, JPN&quot;,
-(IF (AND(ISPICKVAL(PMP_Partner_Offering_Lifecycle_Status_Nm__c,&apos;Approved&apos;),PMP_Pre_Release_Item_Count_Num__c = 0, PMP_Partner_Offering_End_Dt__c &gt;= TODAY() ,INCLUDES(PMP_Translated_Languages__c , &quot;English&quot;)), HYPERLINK($Label.PMP_AEM_Offering_URL&amp;&apos;us/en&apos;&amp;$Label.PMP_AEM_Offering_URL_Part_2&amp;IF(PMP_Published_Copy_Id_Txt__c &lt;&gt; null, PMP_Published_Copy_Id_Txt__c,Id)&amp;&apos;/&apos;&amp;PMP_Partner_Offering_Nm__c&amp;&apos;.html&apos;,&apos;ENG&apos;) , &apos;ENG&apos;)
+        <formula>IF( AND(($Profile.Name=&quot;Partner&quot;), NOT(ISPICKVAL(PMP_Partner_Offering_Lifecycle_Status_Nm__c, &quot;Approved&quot;))  ), &quot;ENG, CHN, JPN&quot;,
+(IF (INCLUDES(PMP_Translated_Languages__c , &quot;English&quot;), HYPERLINK(&quot;/&quot;&amp; Id &amp;&quot;?Lang=en_US&quot;, &quot;ENG&quot;) , &quot;ENG&quot;)
 &amp; &quot;, &quot; &amp;
-IF (AND(ISPICKVAL(PMP_Partner_Offering_Lifecycle_Status_Nm__c,&apos;Approved&apos;),PMP_Pre_Release_Item_Count_Num__c = 0, PMP_Partner_Offering_End_Dt__c &gt;= TODAY() ,INCLUDES(PMP_Translated_Languages__c , &quot;Simplified Chinese&quot;)), HYPERLINK($Label.PMP_AEM_Offering_URL&amp;&apos;cn/zh&apos;&amp;$Label.PMP_AEM_Offering_URL_Part_2&amp;IF(PMP_Published_Copy_Id_Txt__c &lt;&gt; null, PMP_Published_Copy_Id_Txt__c,Id)&amp;&apos;/&apos;&amp;PMP_Partner_Offering_Nm__c&amp;&apos;.html&apos;,&apos;CHN&apos;) , &apos;CHN&apos;)
+IF (INCLUDES(PMP_Translated_Languages__c , &quot;Simplified Chinese&quot;), HYPERLINK(&quot;/&quot;&amp; Id &amp;&quot;?Lang=zh_CN&quot;, &quot;CHN&quot;) , &quot;CHN&quot;)
 &amp; &quot;, &quot; &amp;
-IF (AND(ISPICKVAL(PMP_Partner_Offering_Lifecycle_Status_Nm__c,&apos;Approved&apos;),PMP_Pre_Release_Item_Count_Num__c = 0, PMP_Partner_Offering_End_Dt__c &gt;= TODAY() ,INCLUDES(PMP_Translated_Languages__c , &quot;Japanese&quot;)), HYPERLINK($Label.PMP_AEM_Offering_URL&amp;&apos;jp/ja&apos;&amp;$Label.PMP_AEM_Offering_URL_Part_2&amp;IF(PMP_Published_Copy_Id_Txt__c &lt;&gt; null, PMP_Published_Copy_Id_Txt__c,Id)&amp;&apos;/&apos;&amp;PMP_Partner_Offering_Nm__c&amp;&apos;.html&apos;,&apos;JPN&apos;), &apos;JPN&apos;)))</formula>
+IF (INCLUDES(PMP_Translated_Languages__c , &quot;Japanese&quot;), HYPERLINK(&quot;/&quot;&amp; Id &amp;&quot;?Lang=ja_JP&quot;, &quot;JPN&quot;) , &quot;JPN&quot;)))</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>View Offerings</label>
         <required>false</required>
@@ -1264,27 +1122,25 @@ IF (AND(ISPICKVAL(PMP_Partner_Offering_Lifecycle_Status_Nm__c,&apos;Approved&apo
         <referenceTo>PMP_Partner_Offering__c</referenceTo>
         <relationshipName>Offerings</relationshipName>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
     <label>Partner Offering</label>
     <listViews>
         <fullName>Admin_Review_Queue</fullName>
-        <booleanFilter>1 AND ((2 AND 4) OR 3)</booleanFilter>
+        <booleanFilter>1 AND  ((2 AND 4) OR 3)</booleanFilter>
         <columns>PMP_Partner_Offering_Lifecycle_Status_Nm__c</columns>
-        <columns>PMP_Offering_Nm_Hyperlink__c</columns>
-        <columns>PMP_View_Offerings__c</columns>
-        <columns>PMP_Edit_Clone_Offering__c</columns>
+        <columns>PMP_Review_Offering__c</columns>
         <columns>PMP_Category_nm__c</columns>
         <columns>PMP_Sub_Category_nm__c</columns>
         <columns>PMP_Business_Segment_Nm__c</columns>
         <columns>PMP_Company_Id__c</columns>
         <columns>PMP_Translation_Lifecycle_Status_nm__c</columns>
         <columns>PMP_Translated_Languages__c</columns>
+        <columns>PMP_View_Offerings__c</columns>
         <columns>LAST_UPDATE</columns>
         <columns>UPDATEDBY_USER</columns>
-        <columns>PMP_Pre_Release_Check_Nm__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>PMP_Partner_Offering_Lifecycle_Status_Nm__c</field>
@@ -1313,12 +1169,9 @@ IF (AND(ISPICKVAL(PMP_Partner_Offering_Lifecycle_Status_Nm__c,&apos;Approved&apo
     </listViews>
     <listViews>
         <fullName>All_Offerings</fullName>
-        <booleanFilter>1 AND 2 AND 3</booleanFilter>
+        <booleanFilter>1 AND NOT(2 OR 3)</booleanFilter>
         <columns>PMP_Partner_Offering_Lifecycle_Status_Nm__c</columns>
         <columns>PMP_Offering_Nm_Hyperlink__c</columns>
-        <columns>PMP_View_Offerings__c</columns>
-        <columns>PMP_Edit_Clone_Offering__c</columns>
-        <columns>PMP_Company_Id__c</columns>
         <columns>PMP_Intel_Admin_Id__c</columns>
         <columns>PMP_Category_nm__c</columns>
         <columns>PMP_Sub_Category_nm__c</columns>
@@ -1326,20 +1179,23 @@ IF (AND(ISPICKVAL(PMP_Partner_Offering_Lifecycle_Status_Nm__c,&apos;Approved&apo
         <columns>LAST_UPDATE</columns>
         <columns>UPDATEDBY_USER</columns>
         <columns>PMP_Business_Segment_Nm__c</columns>
+        <columns>PMP_Offering_Messages_Link_Txt__c</columns>
         <columns>PMP_Translation_Lifecycle_Status_nm__c</columns>
+        <columns>PMP_Translated_Languages__c</columns>
+        <columns>PMP_View_Offerings__c</columns>
         <columns>CREATED_DATE</columns>
-        <columns>PMP_Partner_Offering_Visibility_Nm__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>PMP_Partner_Offering_Lifecycle_Status_Nm__c</field>
             <operation>notEqual</operation>
+            <value>Published</value>
+        </filters>
+        <filters>
+            <field>PMP_Partner_Offering_Lifecycle_Status_Nm__c</field>
+            <operation>equals</operation>
         </filters>
         <filters>
             <field>PMP_Partner_Offering_Nm__c</field>
-            <operation>notEqual</operation>
-        </filters>
-        <filters>
-            <field>PMP_Working_Copy_Id__c</field>
             <operation>equals</operation>
         </filters>
         <label>All Offerings</label>
@@ -1348,301 +1204,13 @@ IF (AND(ISPICKVAL(PMP_Partner_Offering_Lifecycle_Status_Nm__c,&apos;Approved&apo
             <allPartnerUsers></allPartnerUsers>
         </sharedTo>
     </listViews>
-    <listViews>
-        <fullName>Draft_Offerings_Before_6_Months</fullName>
-        <booleanFilter>1 AND 2 AND 3 AND 4</booleanFilter>
-        <columns>PMP_Partner_Offering_Lifecycle_Status_Nm__c</columns>
-        <columns>PMP_Partner_Offering_Nm__c</columns>
-        <columns>PMP_View_Offerings__c</columns>
-        <columns>PMP_Edit_Clone_Offering__c</columns>
-        <columns>PMP_Company_Id__c</columns>
-        <columns>PMP_Intel_Admin_Id__c</columns>
-        <columns>PMP_Category_nm__c</columns>
-        <columns>PMP_Sub_Category_nm__c</columns>
-        <columns>PMP_Is_Published_Ind__c</columns>
-        <columns>LAST_UPDATE</columns>
-        <columns>UPDATEDBY_USER</columns>
-        <columns>PMP_Business_Segment_Nm__c</columns>
-        <columns>PMP_Translation_Lifecycle_Status_nm__c</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>PMP_Partner_Offering_Visibility_Nm__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>LAST_UPDATE</field>
-            <operation>lessThan</operation>
-            <value>LAST_N_MONTHS:6</value>
-        </filters>
-        <filters>
-            <field>PMP_Partner_Offering_Lifecycle_Status_Nm__c</field>
-            <operation>equals</operation>
-            <value>Draft</value>
-        </filters>
-        <filters>
-            <field>PMP_Partner_Offering_Nm__c</field>
-            <operation>notEqual</operation>
-        </filters>
-        <filters>
-            <field>PMP_Working_Copy_Id__c</field>
-            <operation>equals</operation>
-        </filters>
-        <label>Draft Offerings Before 6 Months</label>
-        <sharedTo>
-            <group>PMP_All_Intel_Admin_Users</group>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>Draft_Offerings_for_Last_6_Months</fullName>
-        <booleanFilter>1 AND 2 AND 3 AND 4</booleanFilter>
-        <columns>PMP_Partner_Offering_Lifecycle_Status_Nm__c</columns>
-        <columns>PMP_Partner_Offering_Nm__c</columns>
-        <columns>PMP_View_Offerings__c</columns>
-        <columns>PMP_Edit_Clone_Offering__c</columns>
-        <columns>PMP_Company_Id__c</columns>
-        <columns>PMP_Intel_Admin_Id__c</columns>
-        <columns>PMP_Category_nm__c</columns>
-        <columns>PMP_Sub_Category_nm__c</columns>
-        <columns>PMP_Is_Published_Ind__c</columns>
-        <columns>LAST_UPDATE</columns>
-        <columns>UPDATEDBY_USER</columns>
-        <columns>PMP_Business_Segment_Nm__c</columns>
-        <columns>PMP_Translation_Lifecycle_Status_nm__c</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>PMP_Partner_Offering_Visibility_Nm__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>LAST_UPDATE</field>
-            <operation>greaterOrEqual</operation>
-            <value>LAST_N_MONTHS:6</value>
-        </filters>
-        <filters>
-            <field>PMP_Partner_Offering_Lifecycle_Status_Nm__c</field>
-            <operation>equals</operation>
-            <value>Draft</value>
-        </filters>
-        <filters>
-            <field>PMP_Partner_Offering_Nm__c</field>
-            <operation>notEqual</operation>
-        </filters>
-        <filters>
-            <field>PMP_Working_Copy_Id__c</field>
-            <operation>equals</operation>
-        </filters>
-        <label>Draft Offerings for Last 6 Months</label>
-        <sharedTo>
-            <group>PMP_All_Intel_Admin_Users</group>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>Expired_Offerings_for_MP_Admins</fullName>
-        <columns>PMP_Partner_Offering_Lifecycle_Status_Nm__c</columns>
-        <columns>PMP_Partner_Offering_Nm__c</columns>
-        <columns>PMP_View_Offerings__c</columns>
-        <columns>PMP_Edit_Clone_Offering__c</columns>
-        <columns>PMP_Company_Id__c</columns>
-        <columns>PMP_Intel_Admin_Id__c</columns>
-        <columns>PMP_Category_nm__c</columns>
-        <columns>PMP_Sub_Category_nm__c</columns>
-        <columns>PMP_Is_Published_Ind__c</columns>
-        <columns>LAST_UPDATE</columns>
-        <columns>UPDATEDBY_USER</columns>
-        <columns>PMP_Business_Segment_Nm__c</columns>
-        <columns>PMP_Translation_Lifecycle_Status_nm__c</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>PMP_Partner_Offering_Visibility_Nm__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>PMP_Partner_Offering_End_Dt__c</field>
-            <operation>lessOrEqual</operation>
-            <value>TODAY</value>
-        </filters>
-        <filters>
-            <field>PMP_Working_Copy_Id__c</field>
-            <operation>equals</operation>
-        </filters>
-        <filters>
-            <field>PMP_Partner_Offering_Nm__c</field>
-            <operation>notEqual</operation>
-        </filters>
-        <label>Expired Offerings for MP Admins</label>
-        <sharedTo>
-            <group>PMP_All_Intel_Admin_Users</group>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>Offering_Sub_Category_MRS</fullName>
-        <booleanFilter>1 AND 2 AND 3</booleanFilter>
-        <columns>PMP_Partner_Offering_Lifecycle_Status_Nm__c</columns>
-        <columns>PMP_Partner_Offering_Nm__c</columns>
-        <columns>PMP_View_Offerings__c</columns>
-        <columns>PMP_Edit_Clone_Offering__c</columns>
-        <columns>PMP_Company_Id__c</columns>
-        <columns>PMP_Intel_Admin_Id__c</columns>
-        <columns>PMP_Category_nm__c</columns>
-        <columns>PMP_Sub_Category_nm__c</columns>
-        <columns>PMP_Is_Published_Ind__c</columns>
-        <columns>LAST_UPDATE</columns>
-        <columns>UPDATEDBY_USER</columns>
-        <columns>PMP_Business_Segment_Nm__c</columns>
-        <columns>PMP_Translation_Lifecycle_Status_nm__c</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>PMP_Partner_Offering_Visibility_Nm__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>PMP_Partner_Offering_Nm__c</field>
-            <operation>notEqual</operation>
-        </filters>
-        <filters>
-            <field>PMP_Working_Copy_Id__c</field>
-            <operation>equals</operation>
-        </filters>
-        <filters>
-            <field>PMP_Sub_Category_nm__c</field>
-            <operation>contains</operation>
-            <value>Intel® IoT Market Ready Solutions</value>
-        </filters>
-        <label>Offering Sub Category - MRS</label>
-        <sharedTo>
-            <group>PMP_All_Intel_Admin_Users</group>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>Offering_Sub_Category_Partner_Solution</fullName>
-        <booleanFilter>1 AND 2 AND 3</booleanFilter>
-        <columns>PMP_Partner_Offering_Lifecycle_Status_Nm__c</columns>
-        <columns>PMP_Partner_Offering_Nm__c</columns>
-        <columns>PMP_View_Offerings__c</columns>
-        <columns>PMP_Edit_Clone_Offering__c</columns>
-        <columns>PMP_Company_Id__c</columns>
-        <columns>PMP_Intel_Admin_Id__c</columns>
-        <columns>PMP_Category_nm__c</columns>
-        <columns>PMP_Sub_Category_nm__c</columns>
-        <columns>PMP_Is_Published_Ind__c</columns>
-        <columns>LAST_UPDATE</columns>
-        <columns>UPDATEDBY_USER</columns>
-        <columns>PMP_Business_Segment_Nm__c</columns>
-        <columns>PMP_Translation_Lifecycle_Status_nm__c</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>PMP_Partner_Offering_Visibility_Nm__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>PMP_Partner_Offering_Nm__c</field>
-            <operation>notEqual</operation>
-        </filters>
-        <filters>
-            <field>PMP_Working_Copy_Id__c</field>
-            <operation>equals</operation>
-        </filters>
-        <filters>
-            <field>PMP_Sub_Category_nm__c</field>
-            <operation>contains</operation>
-            <value>Partner Solutions</value>
-        </filters>
-        <label>Offering Sub Category - Partner Solution</label>
-        <sharedTo>
-            <group>PMP_All_Intel_Admin_Users</group>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>Offering_Sub_Category_RRK</fullName>
-        <booleanFilter>1 AND 2 AND 3</booleanFilter>
-        <columns>PMP_Partner_Offering_Lifecycle_Status_Nm__c</columns>
-        <columns>PMP_Partner_Offering_Nm__c</columns>
-        <columns>PMP_View_Offerings__c</columns>
-        <columns>PMP_Edit_Clone_Offering__c</columns>
-        <columns>PMP_Company_Id__c</columns>
-        <columns>PMP_Intel_Admin_Id__c</columns>
-        <columns>PMP_Category_nm__c</columns>
-        <columns>PMP_Sub_Category_nm__c</columns>
-        <columns>PMP_Is_Published_Ind__c</columns>
-        <columns>LAST_UPDATE</columns>
-        <columns>UPDATEDBY_USER</columns>
-        <columns>PMP_Business_Segment_Nm__c</columns>
-        <columns>PMP_Translation_Lifecycle_Status_nm__c</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>PMP_Partner_Offering_Visibility_Nm__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>PMP_Partner_Offering_Nm__c</field>
-            <operation>notEqual</operation>
-        </filters>
-        <filters>
-            <field>PMP_Working_Copy_Id__c</field>
-            <operation>equals</operation>
-        </filters>
-        <filters>
-            <field>PMP_Sub_Category_nm__c</field>
-            <operation>contains</operation>
-            <value>Intel® IoT RFP Ready Kits</value>
-        </filters>
-        <label>Offering Sub Category - RRK</label>
-        <sharedTo>
-            <group>PMP_All_Intel_Admin_Users</group>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>Retired_Offerings</fullName>
-        <columns>PMP_Offering_Nm_Hyperlink__c</columns>
-        <columns>PMP_View_Offerings__c</columns>
-        <columns>PMP_Edit_Clone_Offering__c</columns>
-        <columns>PMP_Is_Published_Ind__c</columns>
-        <columns>PMP_Partner_Offering_Lifecycle_Status_Nm__c</columns>
-        <columns>PMP_Partner_Offering_Visibility_Nm__c</columns>
-        <columns>PMP_Company_Id__c</columns>
-        <filterScope>Mine</filterScope>
-        <filters>
-            <field>PMP_Partner_Offering_Lifecycle_Status_Nm__c</field>
-            <operation>equals</operation>
-            <value>Retired</value>
-        </filters>
-        <filters>
-            <field>PMP_Working_Copy_Id__c</field>
-            <operation>equals</operation>
-        </filters>
-        <label>Retired Offerings</label>
-        <sharedTo>
-            <allPartnerUsers></allPartnerUsers>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>Retired_Offerings_for_MP_Admins</fullName>
-        <booleanFilter>1 AND 2</booleanFilter>
-        <columns>PMP_Partner_Offering_Lifecycle_Status_Nm__c</columns>
-        <columns>PMP_Partner_Offering_Nm__c</columns>
-        <columns>PMP_View_Offerings__c</columns>
-        <columns>PMP_Edit_Clone_Offering__c</columns>
-        <columns>PMP_Company_Id__c</columns>
-        <columns>PMP_Intel_Admin_Id__c</columns>
-        <columns>PMP_Category_nm__c</columns>
-        <columns>PMP_Sub_Category_nm__c</columns>
-        <columns>PMP_Is_Published_Ind__c</columns>
-        <columns>LAST_UPDATE</columns>
-        <columns>UPDATEDBY_USER</columns>
-        <columns>PMP_Business_Segment_Nm__c</columns>
-        <columns>PMP_Translation_Lifecycle_Status_nm__c</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>PMP_Partner_Offering_Visibility_Nm__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>PMP_Partner_Offering_Lifecycle_Status_Nm__c</field>
-            <operation>equals</operation>
-            <value>Retired</value>
-        </filters>
-        <filters>
-            <field>PMP_Working_Copy_Id__c</field>
-            <operation>equals</operation>
-        </filters>
-        <label>Retired Offerings for MP Admins</label>
-        <sharedTo>
-            <group>PMP_All_Intel_Admin_Users</group>
-        </sharedTo>
-    </listViews>
     <nameField>
         <label>Title</label>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <type>Text</type>
     </nameField>
     <pluralLabel>Partner Offerings</pluralLabel>
-    <recordTypeTrackHistory>true</recordTypeTrackHistory>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
     <recordTypes>
         <fullName>Default_Record_Type</fullName>
         <active>true</active>
@@ -1753,6 +1321,10 @@ IF (AND(ISPICKVAL(PMP_Partner_Offering_Lifecycle_Status_Nm__c,&apos;Approved&apo
                 <default>false</default>
             </values>
             <values>
+                <fullName>Partner Content</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Public Content</fullName>
                 <default>false</default>
             </values>
@@ -1809,11 +1381,49 @@ IF (AND(ISPICKVAL(PMP_Partner_Offering_Lifecycle_Status_Nm__c,&apos;Approved&apo
         <excludedStandardButtons>MassChangeOwner</excludedStandardButtons>
         <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
         <excludedStandardButtons>Accept</excludedStandardButtons>
-        <lookupDialogsAdditionalFields>PMP_Partner_Offering_LifecycleStatus_Txt__c</lookupDialogsAdditionalFields>
-        <searchResultsAdditionalFields>PMP_Partner_Offering_LifecycleStatus_Txt__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>PMP_Offering_Nm_Hyperlink__c</searchResultsAdditionalFields>
     </searchLayouts>
     <sharingModel>Private</sharingModel>
+    <validationRules>
+        <fullName>PMP_Archive_Offering_Validation</fullName>
+        <active>false</active>
+        <description>Offering cannot be archived if the status is in Draft, Update required or Pending FSE/FAE approval</description>
+        <errorConditionFormula>AND(OR(ISPICKVAL(PRIORVALUE(PMP_Partner_Offering_Lifecycle_Status_Nm__c) , &quot;Draft&quot;),
+ISPICKVAL(PRIORVALUE(PMP_Partner_Offering_Lifecycle_Status_Nm__c),&quot;Update Required&quot;)),
+ISPICKVAL(PMP_Partner_Offering_Lifecycle_Status_Nm__c, &quot;Archived&quot;)
+)</errorConditionFormula>
+        <errorDisplayField>PMP_Partner_Offering_Lifecycle_Status_Nm__c</errorDisplayField>
+        <errorMessage>Offering cannot be archived if the status is in Draft, Update required or Pending FSE/FAE approval</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>PMP_Featured_Offering_Validation</fullName>
+        <active>false</active>
+        <description>Intel Only Offering Cannot Be Promoted</description>
+        <errorConditionFormula>AND( ISPICKVAL( PMP_Partner_Offering_Visibility_Nm__c ,&quot;Intel Only Content&quot;), ISCHANGED( PMP_Featured_Offering_Ind__c ) )</errorConditionFormula>
+        <errorMessage>Error – Intel only visible offering, cannot be publicly featured.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>PMP_Mandate_FAE_Comment_Validation</fullName>
+        <active>false</active>
+        <description>An FAE should add review comments before submitting the Offering to Admin after having reviewed.</description>
+        <errorConditionFormula>AND(ISPICKVAL(PMP_Partner_Offering_Lifecycle_Status_Nm__c,&quot;Admin Review&quot;),
+ISPICKVAL(PRIORVALUE(PMP_Offering_FAE_Status_Nm__c)
+ ,&quot;Pending FAE approval&quot;),
+ISBLANK(PMP_Review_Comment_Txt__c)) &amp;&amp; ISCHANGED(PMP_Offering_FAE_Status_Nm__c)</errorConditionFormula>
+        <errorDisplayField>PMP_Review_Comment_Txt__c</errorDisplayField>
+        <errorMessage>Kindly add review comments (Approved / Rejected / Update Required) in the comment box</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>PMP_Publish_Offering_Validation</fullName>
+        <active>false</active>
+        <description>Publish an offering only if the previous offering status value is &quot;Admin Review&quot;</description>
+        <errorConditionFormula>AND(OR(ISPICKVAL(PRIORVALUE(PMP_Partner_Offering_Lifecycle_Status_Nm__c) , &quot;Draft&quot;),
+ISPICKVAL(PRIORVALUE(PMP_Partner_Offering_Lifecycle_Status_Nm__c),&quot;Update Required&quot;)),
+ISPICKVAL(PMP_Partner_Offering_Lifecycle_Status_Nm__c, &quot;Published&quot;),
+NOT(ISPICKVAL(PRIORVALUE(PMP_Partner_Offering_Lifecycle_Status_Nm__c),&quot;Admin Review&quot;))
+)</errorConditionFormula>
+        <errorDisplayField>PMP_Partner_Offering_Lifecycle_Status_Nm__c</errorDisplayField>
+        <errorMessage>An offering can be published only if it is reviewed by Admin. Offering previous status should be &quot;Admin Review&quot;</errorMessage>
+    </validationRules>
     <validationRules>
         <fullName>PMP_Reject_Offering_Validation</fullName>
         <active>true</active>
@@ -1827,6 +1437,22 @@ NOT(ISPICKVAL(PRIORVALUE(PMP_Partner_Offering_Lifecycle_Status_Nm__c),&quot;Admi
         <errorMessage>An offering can be Rejected only if it is reviewed by Admin. Offering previous status should be &quot;Admin Review&quot;</errorMessage>
     </validationRules>
     <validationRules>
+        <fullName>PMP_Rejection_Comment_Validation</fullName>
+        <active>false</active>
+        <description>This validation prevents user from saving record on rejection without giving comments</description>
+        <errorConditionFormula>(ISPICKVAL(PMP_Partner_Offering_Lifecycle_Status_Nm__c,&apos;Rejected&apos;)) &amp;&amp; 
+ISBLANK(PMP_Review_Comment_Txt__c) &amp;&amp;  ISCHANGED(PMP_Partner_Offering_Lifecycle_Status_Nm__c)</errorConditionFormula>
+        <errorDisplayField>PMP_Review_Comment_Txt__c</errorDisplayField>
+        <errorMessage>Please enter comments before rejecting or archiving the offering</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>PMP_Update_Offering_Check</fullName>
+        <active>false</active>
+        <description>This validation occurs when ever user changes status to update required</description>
+        <errorConditionFormula>(ISPICKVAL(PRIORVALUE(PMP_Partner_Offering_Lifecycle_Status_Nm__c), &quot;Update Required&quot;) &amp;&amp; ISCHANGED(PMP_Partner_Offering_Lifecycle_Status_Nm__c) &amp;&amp;  RecordType.DeveloperName  = &apos;Core_PMP_IntelAdminView&apos; &amp;&amp;  PMP_Offering_Update_Required_Ind__c=true &amp;&amp; NOT(ISCHANGED(PMP_Offering_Update_Required_Ind__c))) || (ISPICKVAL(PRIORVALUE(PMP_Partner_Offering_Lifecycle_Status_Nm__c), &quot;Update Required&quot;) &amp;&amp; ISPICKVAL(PMP_Partner_Offering_Lifecycle_Status_Nm__c, &quot;Update Required&quot;) &amp;&amp; RecordType.DeveloperName  = &apos;Core_PMP_IntelAdminView&apos; &amp;&amp; PMP_Offering_Update_Required_Ind__c=true &amp;&amp; NOT(ISCHANGED(PMP_Offering_Update_Required_Ind__c)))</errorConditionFormula>
+        <errorMessage>Record cannot be modified until offering editor has made all the necessary changes</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>PMP_Update_Offering_Validation</fullName>
         <active>true</active>
         <description>Update an offering only if the previous offering status value is &quot;Admin Review&quot;</description>
@@ -1837,6 +1463,13 @@ NOT(ISPICKVAL(PRIORVALUE(PMP_Partner_Offering_Lifecycle_Status_Nm__c),&quot;Admi
 )</errorConditionFormula>
         <errorDisplayField>PMP_Partner_Offering_Lifecycle_Status_Nm__c</errorDisplayField>
         <errorMessage>An offering can be sent for Update only if it is reviewed by Admin. Offering previous status should be &quot;Admin Review&quot;</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>PMP_ValidityPeriodCheck</fullName>
+        <active>false</active>
+        <description>To check valid input of start and end date of the offering</description>
+        <errorConditionFormula>OR( PRIORVALUE(PMP_Partner_Offering_Start_Dt__c )  &gt;  PMP_Partner_Offering_Start_Dt__c   , PMP_Partner_Offering_Start_Dt__c  &gt;=  PMP_Partner_Offering_End_Dt__c , AND( ISNEW() ,PMP_Partner_Offering_Start_Dt__c &lt; TODAY() ) )</errorConditionFormula>
+        <errorMessage>The date entered is irrelevant.</errorMessage>
     </validationRules>
     <visibility>Public</visibility>
 </CustomObject>

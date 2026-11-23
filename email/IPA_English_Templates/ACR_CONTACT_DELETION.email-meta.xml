@@ -4,31 +4,27 @@
     <encodingKey>UTF-8</encodingKey>
     <name>ACR_CONTACT_DELETION</name>
     <style>none</style>
-    <subject>Intel® Partner Alliance account update</subject>
-    <textOnly>User Removed
+    <subject>Intel Partner Program Business Account Update</subject>
+    <textOnly>Intel Business Account Update
 
-{!UserName},
+This notice is to confirm that an individual has been removed from your Intel Partner program business account.
 
-
-A change has been made to your Intel® Partner Alliance account. {!ContactEmail} has been removed from your company&apos;s account.
-
-Company Name: {!Account.Name}
-Business ID:{!Account.AccountNumber}
-Contact Removed: E-mail {!ContactEmail}
+Business Account Name: {!Account.Name}
+Contact Removed : Username {!ContactLoginId} with e-mail {!ContactEmail}
 Relationship (Role): {!AcrRoles}
 
-If this change was not authorized, log in to update your account.
-If you have any questions, please contact us at https://signin.intel.com/ContactUs?Culture={!PRM_Language_Culture_Mapping__mdt.PRM_Culture__c}-{!PRM_Language_Culture_Mapping__mdt.PRM_Country_Cd__c}.
+Visit your business account at any time here to see the personnel list details.
+If you have any other questions, please contact us here.
+ 
+Please DO NOT reply to this e-mail message. This is an automated response.
+To ensure that you continue receiving our e-mails, please add us to your address book.
+ 
+Link on here 
+https://ssl.intel.com/content/www/us/en/secure/my-intel/dashboard.html
 
-
-
-Thank you,
-Your Intel® Partner Alliance team
-
-This message was sent to you as an important business communication related to your current relationship with Intel® Partner Alliance.
-© {{!Contact.Core_Current_Year__c} Intel Corporation
-Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. Intel.com
-Privacy | Cookies</textOnly>
+Support links:
+for CSP- https://www.intel.com/content/www/us/en/partner/cloud-insider/forms/support.html
+for FPGA: https://signin.intel.com/ContactUs?Culture=en-US</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

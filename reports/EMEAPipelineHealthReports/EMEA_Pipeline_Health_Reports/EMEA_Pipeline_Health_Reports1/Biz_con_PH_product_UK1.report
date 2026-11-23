@@ -58,7 +58,6 @@
         <field>Opportunity.Core_Opportunity_Count__c</field>
     </columns>
     <filter>
-        <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND (6 OR 7 OR 8)</booleanFilter>
         <criteriaItems>
             <column>RECORDTYPE</column>
             <columnToColumn>false</columnToColumn>
@@ -100,20 +99,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
             <value>Jas Bhogal</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>ROLLUP_DESCRIPTION</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Woolvett</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>ROLLUP_DESCRIPTION</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Beckingham</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

@@ -97,4 +97,14 @@
         <fullName>Role</fullName>
         <type>Picklist</type>
     </fields>
+    <validationRules>
+        <fullName>Core_OPTY_CR_QuoteSubmittedStatusLock</fullName>
+        <active>true</active>
+        <description>Opportunity Contact Role -  Quote Submitted Status Lock check</description>
+        <errorConditionFormula>IF($Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c=TRUE,FALSE,
+
+AND ( Opportunity.Core_Opportunity_Lock_Status__c = true, ISPICKVAL( Opportunity.Core_Coverage_Type_Nm__c, &apos;Deal Registration&apos;), ISPICKVAL(Opportunity.Core_Opportunity_Coverage_Nm__c , &apos;Partner-Led Opportunity&apos;) )
+)</errorConditionFormula>
+        <errorMessage>Quote associated to this Opportunity is Submitted for Review. No Edits allowed on Opportunity during the Review process.</errorMessage>
+    </validationRules>
 </CustomObject>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>56.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Migrated from the: Sales_License_Activation_Code workflow rule
+Workflow rule description: For every order there should be unique License Activation Code.&quot;</description>
+    <formulas>
+        <name>Sales_update_license_activation_codeFormula</name>
+        <dataType>String</dataType>
+        <expression>LEFT($Record.Id, 15)</expression>
+    </formulas>
+    <label>Sales_License_Activation_Code</label>
+    <migratedFromWorkflowRuleName>Sales_License_Activation_Code</migratedFromWorkflowRuleName>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <description>License Activation Code</description>
+        <name>mainUpdate</name>
+        <label>mainUpdate</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>Sales_License_Activation_Code__c</field>
+            <value>
+                <elementReference>Sales_update_license_activation_codeFormula</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>mainUpdate</targetReference>
+        </connector>
+        <filterFormula>NOT( ISBLANK(  {!$Record.Id}  ) )</filterFormula>
+        <object>Sales_License__c</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Draft</status>
+</Flow>

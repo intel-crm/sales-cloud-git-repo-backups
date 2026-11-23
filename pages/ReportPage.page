@@ -1,0 +1,4 @@
+<apex:page >
+    <h1>Embedded Dashboard</h1>
+     <analytics:reportChart reportId="00ODf000000YlmFMAS" size="small"></analytics:reportChart>
+</apex:page>

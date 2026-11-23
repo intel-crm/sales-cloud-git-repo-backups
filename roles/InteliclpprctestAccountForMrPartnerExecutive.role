@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>Intel-iclp-prc-test Account For Mr Partner Executive</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>Intel-iclp-prc-test Account For Mr Partner Executive</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>Admin</parentRole>
+</Role>

@@ -13,8 +13,36 @@
         <name>Case_Visible_c__c</name>
     </fields>
     <fields>
+        <label><!-- Received Connection ID --></label>
+        <name>ConnectionReceivedId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sent Connection ID --></label>
+        <name>ConnectionSentId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Created By ID --></label>
+        <name>CreatedById__c</name>
+    </fields>
+    <fields>
+        <label><!-- Created Date --></label>
+        <name>CreatedDate__c</name>
+    </fields>
+    <fields>
         <label><!-- Product Description --></label>
         <name>Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- EPM ID --></label>
+        <name>EPM_ID_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- EPM Term Type --></label>
+        <name>EPM_Term_Type_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- External Data Source ID --></label>
+        <name>ExternalDataSourceId__c</name>
     </fields>
     <fields>
         <label><!-- Product Family --></label>
@@ -65,12 +93,53 @@
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- IBS Supported --></label>
+        <name>IBS_Supported_c__c</name>
+    </fields>
+    <fields>
         <label><!-- Is Enabled For Subscriptions --></label>
         <name>ICS_Is_Enabled_For_Subscriptions_c__c</name>
     </fields>
     <fields>
+        <help><!-- Only applicable to VPH terms listed as EPM Term Type of &quot;PRODNAME&quot; --></help>
+        <label><!-- Returnable Over Web --></label>
+        <name>ICS_WR_Returnable_Over_Web_c__c</name>
+    </fields>
+    <fields>
         <label><!-- Active --></label>
         <name>IsActive__c</name>
+    </fields>
+    <fields>
+        <label><!-- Archived --></label>
+        <name>IsArchived__c</name>
+    </fields>
+    <fields>
+        <label><!-- Deleted --></label>
+        <name>IsDeleted__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Modified By ID --></label>
+        <name>LastModifiedById__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Modified Date --></label>
+        <name>LastModifiedDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Referenced Date --></label>
+        <name>LastReferencedDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Viewed Date --></label>
+        <name>LastViewedDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Market Code Name --></label>
+        <name>Market_Code_Name_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Marketing Status Code --></label>
+        <name>Marketing_Status_Code_c__c</name>
     </fields>
     <fields>
         <label><!-- Product Name --></label>
@@ -79,6 +148,66 @@
     <fields>
         <label><!-- Product Code --></label>
         <name>ProductCode__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product ID --></label>
+        <name>Product_ID_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Line --></label>
+        <name>Product_Line_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Organization --></label>
+        <name>Product_Organization_c__c</name>
+        <picklistValues>
+            <masterLabel>AAQ</masterLabel>
+            <translation><!-- AAQ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CPG</masterLabel>
+            <translation><!-- CPG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DPD</masterLabel>
+            <translation><!-- DPD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DRD</masterLabel>
+            <translation><!-- DRD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EPS</masterLabel>
+            <translation><!-- EPS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HPC</masterLabel>
+            <translation><!-- HPC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NAND</masterLabel>
+            <translation><!-- NAND --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSG</masterLabel>
+            <translation><!-- PSG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RCM</masterLabel>
+            <translation><!-- RCM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RRS</masterLabel>
+            <translation><!-- RRS --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Quantity Unit Of Measure --></label>
+        <name>QuantityUnitOfMeasure__c</name>
+        <picklistValues>
+            <masterLabel>Each</masterLabel>
+            <translation><!-- Each --></translation>
+        </picklistValues>
     </fields>
     <fields>
         <label><!-- Record Type ID --></label>
@@ -93,9 +222,58 @@
         <name>StockKeepingUnit__c</name>
     </fields>
     <fields>
+        <label><!-- Support Life Cycle Status --></label>
+        <name>Support_Life_Cycle_Status_c__c</name>
+        <picklistValues>
+            <masterLabel>Active</masterLabel>
+            <translation><!-- Active --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EOIS</masterLabel>
+            <translation><!-- EOIS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EOL</masterLabel>
+            <translation><!-- EOL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EOS</masterLabel>
+            <translation><!-- EOS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending</masterLabel>
+            <translation><!-- Pending --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Supported Over Web --></label>
+        <name>Supported_Over_Web_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Survey Flag --></label>
+        <name>SurveyFlag_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- System Modstamp --></label>
+        <name>SystemModstamp__c</name>
+    </fields>
+    <fields>
         <help><!-- Identifies if the product is part of the VPH Nav Hierarchy --></help>
         <label><!-- VPH Nav --></label>
         <name>VPH_Nav_c__c</name>
+    </fields>
+    <fields>
+        <help><!-- Identifies if the product is part of the VPH Hierarchy --></help>
+        <label><!-- VPH --></label>
+        <name>VPH_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- iPaaS Load ID --></label>
+        <name>iPaaS_Load_ID_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Secure Flag --></label>
+        <name>isvc_cm_secure_case_c__c</name>
     </fields>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

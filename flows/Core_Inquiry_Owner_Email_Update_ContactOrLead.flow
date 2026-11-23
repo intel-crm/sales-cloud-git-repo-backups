@@ -2,6 +2,7 @@
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>55.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <environments>Default</environments>
     <formulas>
         <name>Core_Lead_Contact_Owner_Email_UpdationFormula</name>
         <dataType>String</dataType>

@@ -3,12 +3,9 @@
     <aura:attribute name = "exceptionNotAvailableForCancellation" type = "Boolean" default="false"/>
     <aura:attribute name = "errorMsg" type = "String"/>
     <aura:attribute name = "wrapperClassVar"  type = "Core_MDF_CancelExceptionRecord"/> 
-    <aura:attribute name="showSpinner" type="Boolean" default="false" />
     
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
-          <aura:if isTrue = "{!v.showSpinner}" >
-        <lightning:spinner alternativeText="Loading" size="large" class = "slds-is-fixed"></lightning:spinner>
-        </aura:if>
+    
     <aura:if isTrue="{!v.isUserEligible}">
         <lightning:layout verticalAlign="center" class="x-large">
             <lightning:layoutItem flexibility="auto" padding="around-small" size ="12" class="slds-align_absolute-center">

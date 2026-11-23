@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <encodingKey>UTF-8</encodingKey>
+    <letterhead>Blank</letterhead>
+    <name>Core_Inquiry_Asked_For_Contact_Follow_Up-old</name>
+    <style>formalLetter</style>
+    <subject>New Inquiry: {!Core_Inquiry__c.Core_First_Name_Txt__c} {!Core_Inquiry__c.Core_Last_Name_Txt__c} at {!Core_Inquiry__c.Core_AcccountName__c} has requested Sales follow up</subject>
+    <textOnly>Hi {!Core_Inquiry__c.OwnerFirstName},&lt;/br&gt;&lt;br/&gt;
+
+You are receiving this alert because this person has expressed interest and requested Sales contact them as soon as possible. Please take a look at the details below and reach out within one business day.&lt;br/&gt;&lt;br/&gt;
+
+&lt;a class=&quot;primary&quot; href=&quot;{!$Label.Core_Inquiry_Lead_Link}/{!Core_Inquiry__c.Core_Contact_InquiriesId__c}&quot;&gt;Click here to see this person’s full profile in Salesforce CRM »&lt;/a&gt;  &lt;br/&gt;&lt;br/&gt;
+
+&lt;b&gt;Here are the person’s details:&lt;/b&gt;&lt;/br&gt;&lt;/br&gt;
+
+First Name: {!Core_Inquiry__c.Core_First_Name_Txt__c}&lt;/br&gt;
+Last Name: {!Core_Inquiry__c.Core_Last_Name_Txt__c}&lt;/br&gt;
+Company: {!Core_Inquiry__c.Core_AccountName__c}&lt;/br&gt;
+Job Title: {!Core_Inquiry__c.Core_Title_Txt__c}&lt;/br&gt;
+Phone Number: {!Core_Inquiry__c.Core_Phone_Txt__c}&lt;/br&gt;
+Email: {!Core_Inquiry__c.Core_Email_Txt__c}&lt;/br&gt;
+How they found us originally: {!Core_Inquiry__c.Core_Contact_Lead_Source__c}&lt;/br&gt;&lt;/br&gt;
+
+&lt;b&gt;Some details about their Inquiry:&lt;/b&gt;&lt;/br&gt;&lt;/br&gt;
+
+Area of Interest: {!Core_Inquiry__c.Core_Product_Interest_Txt__c}&lt;br&gt;
+Purchase Timeframe: {!Core_Inquiry__c.Core_Project_Timeframe__c}&lt;/br&gt;
+Project Details: {!Core_Inquiry__c.Core_Inquiry_Notes_Txt__c}&lt;/br&gt;&lt;/br&gt;
+
+Please remember to log any calls or emails you make when engaging with this person. If you have questions regarding how to manage any Lead/Inquiry assigned to you, please &lt;a href=&quot;https://salescrm.intel.com/training-and-help/lead-management/&quot;&gt;visit our Sales CRM training website&lt;/a&gt;&lt;/br&gt;&lt;/br&gt;
+
+Sincerely,&lt;/br&gt;
+Your Marketing Automation Team</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

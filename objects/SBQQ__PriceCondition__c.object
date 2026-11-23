@@ -205,7 +205,7 @@
                     <label>RecordTypeId</label>
                 </value>
                 <value>
-                    <fullName>core_cpq_Tool_Type__c</fullName>
+                    <fullName>Core_Prod_Tool_Type_Nm__c</fullName>
                     <default>false</default>
                     <label>Tool Type</label>
                 </value>
@@ -230,6 +230,11 @@
                     <label>SBQQ__OptionLevel__c</label>
                 </value>
                 <value>
+                    <fullName>SBQQ__OptionSelectionMethod__c</fullName>
+                    <default>false</default>
+                    <label>SBQQ__OptionSelectionMethod__c</label>
+                </value>
+                <value>
                     <fullName>Core_OPN__c</fullName>
                     <default>false</default>
                     <label>Core_OPN__c</label>
@@ -243,6 +248,21 @@
                     <fullName>SBQQ__SubscriptionTerm__c</fullName>
                     <default>false</default>
                     <label>SBQQ__SubscriptionTerm__c</label>
+                </value>
+                <value>
+                    <fullName>SBQQ__Source__c</fullName>
+                    <default>false</default>
+                    <label>SBQQ__Source__c</label>
+                </value>
+                <value>
+                    <fullName>SBQQ__ListPrice__c</fullName>
+                    <default>false</default>
+                    <label>SBQQ__ListPrice__c</label>
+                </value>
+                <value>
+                    <fullName>SBQQ__EffectiveStartDate__c</fullName>
+                    <default>false</default>
+                    <label>SBQQ__EffectiveStartDate__c</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -352,6 +372,11 @@
                     <fullName>Configuration Attribute</fullName>
                     <default>false</default>
                     <label>Configuration Attribute</label>
+                </value>
+                <value>
+                    <fullName>SBQQ__ProductFeature__c</fullName>
+                    <default>false</default>
+                    <label>SBQQ__ProductFeature__c</label>
                 </value>
                 <value>
                     <fullName>Product2</fullName>

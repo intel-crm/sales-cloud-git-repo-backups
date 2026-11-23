@@ -1,8 +1,6 @@
 <aura:documentation>
-	<!-- IPA2.0 + US TWC4497-1631 -->
-
 	<aura:description>Documentation</aura:description>
-	<!-- <aura:example name="ExampleName" ref="exampleComponentName" label="Label">
+	<aura:example name="ExampleName" ref="exampleComponentName" label="Label">
 		Example Description
-	</aura:example> -->
+	</aura:example>
 </aura:documentation>

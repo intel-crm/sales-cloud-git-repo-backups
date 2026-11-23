@@ -40,7 +40,7 @@
             <formula>ISPICKVAL(Core_MDF_Budget_Name_id__r.Core_MDF_Program__r.Core_MDF_Technical_Program_Name__c,&apos;Client CoMarketing Fund&apos;)</formula>
         </entryCriteria>
         <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
-        <label>Step For Client Budget Cap</label>
+        <label>Step For CCF Budget Cap</label>
         <name>Step_For_CCF_Budget_Cap</name>
     </approvalStep>
     <approvalStep>
@@ -56,7 +56,7 @@
             <formula>ISPICKVAL(Core_MDF_Budget_Name_id__r.Core_MDF_Program__r.Core_MDF_Technical_Program_Name__c,&apos;Data Center CoMarketing Fund&apos;)</formula>
         </entryCriteria>
         <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
-        <label>Step For Datacenter Budget Cap</label>
+        <label>Step For DCF Budget Cap</label>
         <name>Step_For_DCF_Budget_Cap</name>
         <rejectBehavior>
             <type>RejectRequest</type>

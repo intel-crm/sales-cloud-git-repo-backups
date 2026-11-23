@@ -1,7 +1,6 @@
 <aura:component controller = "Core_MDF_ApprovalCriteriaHelper" implements="lightning:actionOverride,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" >
     <aura:attribute name="approvalCriteria" type="Core_MDF_Criteria__c" default="{'sobjectType':'Core_MDF_Criteria__c'}"/>
     <aura:attribute name="recordId" type="Id"/>
-    <aura:attribute name="isDisabled" type="Boolean" default="false"/>
     <aura:attribute name="options" type="String[]"/>
     <aura:attribute name="allObjects" type="String[]"/>
     <aura:attribute name="operatorOptions" type="String[]"/>
@@ -49,12 +48,6 @@
                         <option text="Multiple" value="Multiple" selected="{!v.approvalCriteria.Core_MDF_Approval_Type__c=='Multiple'}"/>
                     </ui:inputSelect>
                 </td> 
-            </tr>
-            <tr>
-                <td style="width:50%;padding: 0 8px 8px 0;">    
-                    <lightning:helptext content="This is a optional field and used only for Approval Criteria Automation"/>
-                    <lightning:input label="Approval Criteria Automation Reference Code" value="{!v.approvalCriteria.Core_MDF_Approval_Criteria_Ref_Code_txt__c}" disabled="{!v.isDisabled}" />
-                </td>
             </tr>
             </table></center>
         
@@ -272,12 +265,6 @@
             </tr><br></br>
             
             </table></center>
-        
-        <!--Test-	<center><lightning:button class="slds-button slds-button_brand" type="submit" label="Manage Criteria Rule" onclick="{!c.callComponent}" /></center>-->
-        
- 	
-        
-        
         <center>
             <lightning:button class="slds-button slds-button_brand" type="submit" label="Cancel" onclick="{!c.cancel}" />
             <lightning:button class="slds-button slds-button_brand" type="submit" label="Save" onclick="{!c.create}" />

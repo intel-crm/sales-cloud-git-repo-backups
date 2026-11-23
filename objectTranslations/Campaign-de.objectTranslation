@@ -1,45 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fieldSets>
-        <label><!-- Core_MDF_CCF_Campaign_Fieldset --></label>
-        <name>Core_MDF_CCF_Campaign_Fieldset</name>
-    </fieldSets>
-    <fieldSets>
-        <label><!-- CoGTM Campaign Fields To Be Synced --></label>
-        <name>Core_MDF_CoGTM_CampaignFieldsToBeSynced</name>
-    </fieldSets>
-    <fieldSets>
-        <label><!-- Core_MDF_Co_GTM_Campaign_FieldSet --></label>
-        <name>Core_MDF_Co_GTM_Campaign_FieldSet</name>
-    </fieldSets>
-    <fieldSets>
-        <label><!-- Core_MDF_DCF_Campaign_Fieldset --></label>
-        <name>Core_MDF_DCF_Campaign_Fieldset</name>
-    </fieldSets>
-    <fieldSets>
-        <label><!-- Core_MDF_EEF_Campaign_Fieldset --></label>
-        <name>Core_MDF_EEF_Campaign_Fieldset</name>
-    </fieldSets>
-    <fieldSets>
-        <label><!-- CoGTM Campaign Status Change Fields --></label>
-        <name>Core_MDF_GTM_CampaignStatusChangeFields</name>
-    </fieldSets>
-    <fieldSets>
-        <label><!-- IPA Campaign Fields To Be Synced --></label>
-        <name>Core_MDF_IPA_CampaignFieldsToBeSynced</name>
-    </fieldSets>
-    <fieldSets>
-        <label><!-- IPA Campaign Status Change Fields --></label>
-        <name>Core_MDF_IPA_CampaignStatusChangeFields</name>
-    </fieldSets>
-    <fieldSets>
-        <label><!-- Core_MDF_IPA_Campaign_FieldSet --></label>
-        <name>Core_MDF_IPA_Campaign_FieldSet</name>
-    </fieldSets>
-    <fieldSets>
-        <label><!-- RMF Campaign Fieldset --></label>
-        <name>Core_MDF_RMF_Campaign_Fieldset</name>
-    </fieldSets>
     <fields>
         <help><!-- Activity Types that are part of the campaign.  When tasks are automatically generated, the targeted accounts will get a task for each Activity Type. --></help>
         <label><!-- Activity Types --></label>
@@ -218,30 +178,9 @@
         <name>Core_ICC_Campaign_ID__c</name>
     </fields>
     <fields>
-        <label>ATF-Flagge</label>
-        <name>Core_MDF_ATF_Flag_Nm__c</name>
-        <picklistValues>
-            <masterLabel>ATF Date</masterLabel>
-            <translation><!-- ATF Date --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
-        <label><!-- Account Based Indicator --></label>
-        <name>Core_MDF_Account_Based_Ind__c</name>
-    </fields>
-    <fields>
         <label>Konto</label>
         <name>Core_MDF_Account__c</name>
         <relationshipLabel><!-- Campaigns --></relationshipLabel>
-    </fields>
-    <fields>
-        <help><!-- If you check this box, an approval workflow (including any threshold logic) will be applied to OEM CMP activities in this Campaign. The MDF approval workflow is always applied to MDF/MDF+ activities. --></help>
-        <label><!-- Activity Approval Required --></label>
-        <name>Core_MDF_Activity_Approval_Required_Ind__c</name>
-    </fields>
-    <fields>
-        <label><!-- Activity Budget Amount --></label>
-        <name>Core_MDF_Activity_Budget_Amount_amt__c</name>
     </fields>
     <fields>
         <help><!-- category -  type desc --></help>
@@ -253,214 +192,36 @@
         <name>Core_MDF_Activity_Category__c</name>
     </fields>
     <fields>
-        <label><!-- Activity Sub Type --></label>
-        <name>Core_MDF_Activity_Sub_Type_nm__c</name>
-    </fields>
-    <fields>
         <label>Art der Marketingaktivität</label>
         <name>Core_MDF_Activity_Type__c</name>
-    </fields>
-    <fields>
-        <label><!-- Approval Alert --></label>
-        <name>Core_MDF_Approval_Campaign_Txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Approval Stage --></label>
-        <name>Core_MDF_Approval_Stage_nm__c</name>
-        <picklistValues>
-            <masterLabel>Business Approver</masterLabel>
-            <translation><!-- Business Approver --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Customer Acceptance</masterLabel>
-            <translation><!-- Customer Acceptance --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>L1 Approval</masterLabel>
-            <translation><!-- L1 Approval --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>L2 Approval</masterLabel>
-            <translation><!-- L2 Approval --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>L2 Regional Marketing</masterLabel>
-            <translation><!-- L2 Regional Marketing --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>L2 Regional Sales</masterLabel>
-            <translation><!-- L2 Regional Sales --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Legal Reviewer</masterLabel>
-            <translation><!-- Legal Reviewer --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Price Reviewer</masterLabel>
-            <translation><!-- Price Reviewer --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Program Office Reviewer</masterLabel>
-            <translation><!-- Program Office Reviewer --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
-        <label><!-- Approval Step Counter --></label>
-        <name>Core_MDF_Approval_Step_Counter_nbr__c</name>
-    </fields>
-    <fields>
-        <label><!-- Approver 10 --></label>
-        <name>Core_MDF_Approver_10_id__c</name>
-        <relationshipLabel><!-- Campaigns (Approver 10) --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Approver 1 --></label>
-        <name>Core_MDF_Approver_1_id__c</name>
-        <relationshipLabel><!-- Campaigns (Approver 1) --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Approver 2 --></label>
-        <name>Core_MDF_Approver_2_id__c</name>
-        <relationshipLabel><!-- Campaigns (Approver 2) --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Approver 3 --></label>
-        <name>Core_MDF_Approver_3_id__c</name>
-        <relationshipLabel><!-- Campaigns (Approver 3) --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Approver 4 --></label>
-        <name>Core_MDF_Approver_4_id__c</name>
-        <relationshipLabel><!-- Campaigns (Approver 4) --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Approver 5 --></label>
-        <name>Core_MDF_Approver_5_id__c</name>
-        <relationshipLabel><!-- Campaigns (Approver 5) --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Approver 6 --></label>
-        <name>Core_MDF_Approver_6_id__c</name>
-        <relationshipLabel><!-- Campaigns (Approver 6) --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Approver 7 --></label>
-        <name>Core_MDF_Approver_7_id__c</name>
-        <relationshipLabel><!-- Campaigns (Approver 7) --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Approver 8 --></label>
-        <name>Core_MDF_Approver_8_id__c</name>
-        <relationshipLabel><!-- Campaigns (Approver 8) --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Approver 9 --></label>
-        <name>Core_MDF_Approver_9_id__c</name>
-        <relationshipLabel><!-- Campaigns (Approver 9) --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Approver Date --></label>
-        <name>Core_MDF_Approver_Date__c</name>
     </fields>
     <fields>
         <label>Zielgruppe</label>
         <name>Core_MDF_Audience__c</name>
     </fields>
     <fields>
-        <label><!-- Available Budget Cap Amount --></label>
-        <name>Core_MDF_Available_BudgetCap_amt__c</name>
-    </fields>
-    <fields>
         <label>Markenbezeichnung</label>
         <name>Core_MDF_Brand__c</name>
     </fields>
     <fields>
-        <label>Budgetbetrag</label>
+        <label><!-- Budget Amount --></label>
         <name>Core_MDF_Budget_Amount_amt__c</name>
     </fields>
     <fields>
-        <label><!-- Budget Cap --></label>
-        <name>Core_MDF_Budget_Cap__c</name>
-        <relationshipLabel><!-- Campaigns --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Budget Type(Reporting Only) --></label>
-        <name>Core_MDF_Budget_Type_Reporting_Only_nm__c</name>
-    </fields>
-    <fields>
-        <label>Budgettyp</label>
+        <label><!-- Budget Type --></label>
         <name>Core_MDF_Budget_Type_txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Budget --></label>
-        <name>Core_MDF_Budget__c</name>
-        <relationshipLabel><!-- Campaigns --></relationshipLabel>
-    </fields>
-    <fields>
-        <help>Erwarteter Umsatz aus Intel-basierten Instanzen in USD</help>
-        <label>CSP Umsatz mit Intel Basis</label>
-        <name>Core_MDF_CSP_Intel_Based_Revenue_Amt__c</name>
-    </fields>
-    <fields>
-        <help>Falls ausgewählt, gilt der ergebnisorientierte Leitfaden. Wenn diese Option nicht ausgewählt ist, gilt der Standard-Verkaufs- und Marketingleitfaden. Die Aktivitäten im Rahmen dieser Werbekampagnen müssen entsprechend eingerichtet werden.</help>
-        <label>Ergebnisbasierte Kampagne</label>
-        <name>Core_MDF_CampOutcomeOpt_In_Ind__c</name>
-    </fields>
-    <fields>
-        <label><!-- Campaign Budgets --></label>
-        <name>Core_MDF_Campaign_Budgets_Id__c</name>
-    </fields>
-    <fields>
-        <label><!-- Cancel Alert --></label>
-        <name>Core_MDF_Campaign_Cancel_Txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Campaign IPA Path Status --></label>
-        <name>Core_MDF_Campaign_IPA_Path_Status__c</name>
         <picklistValues>
-            <masterLabel>Cancelled</masterLabel>
-            <translation><!-- Cancelled --></translation>
+            <masterLabel>RSA MD</masterLabel>
+            <translation><!-- RSA MD --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Completed</masterLabel>
-            <translation><!-- Completed --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Draft</masterLabel>
-            <translation><!-- Draft --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>In Progress</masterLabel>
-            <translation><!-- In Progress --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Pending Approval</masterLabel>
-            <translation><!-- Pending Approval --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Pending Review</masterLabel>
-            <translation><!-- Pending Review --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Planned</masterLabel>
-            <translation><!-- Planned --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Revision Required</masterLabel>
-            <translation><!-- Revision Required --></translation>
+            <masterLabel>Retail MDF</masterLabel>
+            <translation><!-- Retail MDF --></translation>
         </picklistValues>
     </fields>
     <fields>
         <label>Referenznummer der Kampagne</label>
         <name>Core_MDF_Campaign_Reference_Number__c</name>
-    </fields>
-    <fields>
-        <label><!-- Campaign Scoring --></label>
-        <name>Core_MDF_Campaign_Scoring_txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Campaign Source --></label>
-        <name>Core_MDF_Campaign_Source_nm__c</name>
     </fields>
     <fields>
         <label>Status der Kampagne</label>
@@ -480,54 +241,8 @@
         <name>Core_MDF_Claimed_Amount__c</name>
     </fields>
     <fields>
-        <label><!-- Claims Created --></label>
-        <name>Core_MDF_Claims_Created_Ind__c</name>
-    </fields>
-    <fields>
-        <label><!-- Comments (IPA Approver Only) --></label>
-        <name>Core_MDF_Comments_Appvr_Only_txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Comments (Internal Only) --></label>
-        <name>Core_MDF_Comments_Internal_Only__c</name>
-    </fields>
-    <fields>
-        <label>Kommentare (Extern)</label>
-        <name>Core_MDF_Comments__c</name>
-    </fields>
-    <fields>
-        <label><!-- Completed Approval Level Name --></label>
-        <name>Core_MDF_Completed_Approval_Level_Nm__c</name>
-    </fields>
-    <fields>
-        <label>Kontaktname und E-Mail-Adresse</label>
-        <name>Core_MDF_Contact_Name_And_Email_txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- ContractLineItem Update Indicator --></label>
-        <name>Core_MDF_ContractLineItem_Update_Ind__c</name>
-    </fields>
-    <fields>
-        <label>Vertrags-ID</label>
+        <label><!-- Contract ID --></label>
         <name>Core_MDF_Contract_ID_txt__c</name>
-    </fields>
-    <fields>
-        <label>Individueller Kostenerstattungsanteil</label>
-        <name>Core_MDF_Custom_Reimbursement_Rate_pct__c</name>
-    </fields>
-    <fields>
-        <help>Verwenden Sie den Marketingnamen und den Codenamen, wenn verfügbar.</help>
-        <label>Kundenprodukt</label>
-        <name>Core_MDF_Customer_Product_Codename_txt__c</name>
-    </fields>
-    <fields>
-        <help>Neukunden gewinnen</help>
-        <label>Anzahl der Installationen</label>
-        <name>Core_MDF_Deployment_Quantity_nbr__c</name>
-    </fields>
-    <fields>
-        <label>Partner aus dem Technologieumfeld</label>
-        <name>Core_MDF_Ecosystem_Partner_Nm__c</name>
     </fields>
     <fields>
         <label><!-- Member Visibility Date --></label>
@@ -547,52 +262,8 @@
         <name>Core_MDF_First_Year_Claims__c</name>
     </fields>
     <fields>
-        <help>Der primäre Schwerpunktbereich, der vermarktet wird</help>
-        <label>Fokusbereich</label>
-        <name>Core_MDF_Focus_Area_nm__c</name>
-    </fields>
-    <fields>
         <label>Hero-Produkt</label>
         <name>Core_MDF_Hero_Product__c</name>
-    </fields>
-    <fields>
-        <label>Host-Region</label>
-        <name>Core_MDF_Host_Region_cd__c</name>
-    </fields>
-    <fields>
-        <label><!-- IPA Approval Status --></label>
-        <name>Core_MDF_IPA_Approval_Status_nm__c</name>
-        <picklistValues>
-            <masterLabel>Pending Approval</masterLabel>
-            <translation><!-- Pending Approval --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
-        <help><!-- Select this if this is an IPA Account that has Co-Engineering --></help>
-        <label><!-- IPA Co-Engineering Campaign? --></label>
-        <name>Core_MDF_IPA_Co_Engineering_Campaign_ind__c</name>
-    </fields>
-    <fields>
-        <label><!-- Program Office Check --></label>
-        <name>Core_MDF_IPA_NonSPIF_Apprval_Ind__c</name>
-    </fields>
-    <fields>
-        <help>Die wichtigste Priorität, die vermarktet wird</help>
-        <label>Priorität</label>
-        <name>Core_MDF_IPA_Priority_nm__c</name>
-    </fields>
-    <fields>
-        <label><!-- IPASPIFApprovalReq --></label>
-        <name>Core_MDF_IPA_SPIF_Apprval_Ind__c</name>
-    </fields>
-    <fields>
-        <label>Branche</label>
-        <name>Core_MDF_Industry_Nm__c</name>
-    </fields>
-    <fields>
-        <help>Ein von Intel bewusst gesetzter Schwerpunkt, der mit einem Unternehmens- oder Geschäftsbereichsziel übereinstimmt. Eine einzelne Initiative kann für einen Schwerpunktbereich oder eine Priorität relevant sein, wohingegen eine andere Initiative für mehrere Schwerpunktbereiche oder Prioritäten Bedeutung haben kann. Eine Initiative sollte nur dann ausgewählt werden, wenn sie mit einem Kundenteam von Intel koordiniert oder entsprechend den veröffentlichten Leitfäden durchgeführt wird.</help>
-        <label><!-- Initiative --></label>
-        <name>Core_MDF_Initiative_nm__c</name>
     </fields>
     <fields>
         <label>Integrierte Kampagnendetails</label>
@@ -612,56 +283,8 @@
         </picklistValues>
     </fields>
     <fields>
-        <label>Verantwortlicher bei Intel</label>
-        <name>Core_MDF_Intel_Owner_id__c</name>
-        <relationshipLabel><!-- Campaigns (Intel Owner) --></relationshipLabel>
-    </fields>
-    <fields>
-        <label>Intel-Prüfer</label>
-        <name>Core_MDF_Intel_Verifier_id__c</name>
-        <relationshipLabel><!-- Campaigns (Intel Verifier) --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Is Opal --></label>
-        <name>Core_MDF_Is_Opal__c</name>
-        <picklistValues>
-            <masterLabel>No</masterLabel>
-            <translation><!-- No --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Yes CMP Only</masterLabel>
-            <translation><!-- Yes CMP Only --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Yes MDF or both CMP &amp; MDF</masterLabel>
-            <translation><!-- Yes MDF or both CMP &amp; MDF --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
-        <help>Wie die Effektivität der Kampagne gemessen wird. Zu den Standard-KPIs gehören Leads (neue Kontakte) und Bereitstellungen (neue Kundengewinne).</help>
-        <label>Marketing-Leistungsindikator</label>
-        <name>Core_MDF_Key_Marketing_Indicator_nm__c</name>
-    </fields>
-    <fields>
         <label>Leistungskennzahlen</label>
         <name>Core_MDF_Key_Performance_Indicator__c</name>
-    </fields>
-    <fields>
-        <label><!-- Last Rejected Level Name --></label>
-        <name>Core_MDF_Last_Rejected_Level_Nm__c</name>
-    </fields>
-    <fields>
-        <help>Neue Kontakte</help>
-        <label>Anzahl der Leads</label>
-        <name>Core_MDF_Lead_Quantity_nbr__c</name>
-    </fields>
-    <fields>
-        <label><!-- MMID # --></label>
-        <name>Core_MDF_MMID__c</name>
-    </fields>
-    <fields>
-        <label>Marktsegment</label>
-        <name>Core_MDF_Market_Segment_nm__c</name>
     </fields>
     <fields>
         <label>Land/Region</label>
@@ -670,15 +293,6 @@
     <fields>
         <label>Marketing-Ziel / Strategie</label>
         <name>Core_MDF_Marketing_Objective_Strategy__c</name>
-    </fields>
-    <fields>
-        <label>Messansatz</label>
-        <name>Core_MDF_Measurement_Approach_nm__c</name>
-    </fields>
-    <fields>
-        <label>Programmteilnehmer – Empfänger</label>
-        <name>Core_MDF_Member_Acceptor_id__c</name>
-        <relationshipLabel><!-- Campaigns (Member Acceptor) --></relationshipLabel>
     </fields>
     <fields>
         <label>Teilnehmerlösung</label>
@@ -693,148 +307,12 @@
         <name>Core_MDF_Metrics__c</name>
     </fields>
     <fields>
-        <help><!-- Indicate campaign have Multi Geo --></help>
-        <label><!-- IsMultiGeoApprovalReq --></label>
-        <name>Core_MDF_Multi_Geo_Approval_Ind__c</name>
-    </fields>
-    <fields>
-        <label>Meine Angebote #</label>
-        <name>Core_MDF_MyDeals_txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- No of Reapprovals --></label>
-        <name>Core_MDF_No_of_Reapprovals_nbr__c</name>
-    </fields>
-    <fields>
-        <label>Enddatum der OEM-Plattform</label>
-        <name>Core_MDF_OEM_Platform_End_Date_Dt__c</name>
-    </fields>
-    <fields>
-        <label>Startdatum der OEM-Plattform</label>
-        <name>Core_MDF_OEM_Platform_Start_Date_Dt__c</name>
-    </fields>
-    <fields>
-        <label><!-- OEM --></label>
-        <name>Core_MDF_OEM__c</name>
-        <picklistValues>
-            <masterLabel>Acer</masterLabel>
-            <translation><!-- Acer --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Asus</masterLabel>
-            <translation><!-- Asus --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Cisco</masterLabel>
-            <translation><!-- Cisco --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Dell</masterLabel>
-            <translation><!-- Dell --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Fujitsu</masterLabel>
-            <translation><!-- Fujitsu --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>HP</masterLabel>
-            <translation><!-- HP --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>IBM</masterLabel>
-            <translation><!-- IBM --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Lenovo</masterLabel>
-            <translation><!-- Lenovo --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Microsoft</masterLabel>
-            <translation><!-- Microsoft --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>N/A</masterLabel>
-            <translation>—</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Other</masterLabel>
-            <translation>Andere</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Panasonic</masterLabel>
-            <translation><!-- Panasonic --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Samsung</masterLabel>
-            <translation><!-- Samsung --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Toshiba</masterLabel>
-            <translation><!-- Toshiba --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
-        <label>Budgettyp</label>
+        <label><!-- Budget Type --></label>
         <name>Core_MDF_Opal_Budget_Type_Txt__c</name>
-    </fields>
-    <fields>
-        <label>Anderer Technikumfeld-Partner</label>
-        <name>Core_MDF_Other_Ecosystem_Partner_txt__c</name>
-    </fields>
-    <fields>
-        <label>Anderer Messansatz</label>
-        <name>Core_MDF_Other_Measurement_Approach_txt__c</name>
-    </fields>
-    <fields>
-        <label>Weitere Ergebniskriterien</label>
-        <name>Core_MDF_Other_Outcome_Criteria_txt__c</name>
-    </fields>
-    <fields>
-        <help>Wenn das primäre Bewertungskriterium/KPI für diese Werbekampagne nicht in der Liste gefunden wird, können Sie hier ein benutzerdefiniertes Bewertungskriterium eingeben. Wählen Sie etwas, das gezählt werden kann, wie Impressionen, Klicks, Interaktionen, Downloads usw.</help>
-        <label>Andere Ergebnismetrik</label>
-        <name>Core_MDF_Other_Outcome_txt__c</name>
-    </fields>
-    <fields>
-        <label>Anzahl Sonstiges</label>
-        <name>Core_MDF_Other_Quantity_nbr__c</name>
-    </fields>
-    <fields>
-        <label>Anderer Grund Name</label>
-        <name>Core_MDF_Other_Reason_Name_txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Outcome Detail Edited --></label>
-        <name>Core_MDF_Outcome_Detail_Edited_Ind__c</name>
-    </fields>
-    <fields>
-        <help>Wählen Sie ein Ergebnis aus. Wenn diese Werbekampagnen ergebnisbasiert ist, wird dieses Ergebnis zur Bewertung des Erfolgs der Werbekampagnen verwendet. Zahlungen sind nicht an die Effektivität der Werbekampagnen geknüpft.</help>
-        <label>Ergebnis-Metrik</label>
-        <name>Core_MDF_Outcomes_nm__c</name>
-    </fields>
-    <fields>
-        <label>PCT-Anmerkungen</label>
-        <name>Core_MDF_PCT_Notes_txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- PGM Internal Group Id --></label>
-        <name>Core_MDF_PGM_Internal_Group_Id_txt__c</name>
     </fields>
     <fields>
         <label><!-- Parent_Account_Id --></label>
         <name>Core_MDF_Parent_Account_Id__c</name>
-    </fields>
-    <fields>
-        <label>Partnerkontakt</label>
-        <name>Core_MDF_Partner_Contact_txt__c</name>
-    </fields>
-    <fields>
-        <help>Aktivierende Partner, die diese Kampagne unterstützen.</help>
-        <label>Partner-Mapping</label>
-        <name>Core_MDF_Partner_Mapping_Txt__c</name>
-    </fields>
-    <fields>
-        <label>Akzeptanz der Primärmitglieder</label>
-        <name>Core_MDF_Primary_Member_Acceptance_Ind__c</name>
     </fields>
     <fields>
         <label>Priorität Nr. 2</label>
@@ -845,18 +323,6 @@
         <name>Core_MDF_Priority_3_nm__c</name>
     </fields>
     <fields>
-        <label><!-- Priority 2 Weightage --></label>
-        <name>Core_MDF_Priority_Percentage_2__c</name>
-    </fields>
-    <fields>
-        <label><!-- Priority 3 Weightage --></label>
-        <name>Core_MDF_Priority_Percentage_3__c</name>
-    </fields>
-    <fields>
-        <label><!-- Priority Weightage --></label>
-        <name>Core_MDF_Priority_Percentage__c</name>
-    </fields>
-    <fields>
         <label>Priorität</label>
         <name>Core_MDF_Priority__c</name>
     </fields>
@@ -865,64 +331,23 @@
         <name>Core_MDF_Product_Type__c</name>
     </fields>
     <fields>
-        <label><!-- Profit Center --></label>
-        <name>Core_MDF_Profit_Center__c</name>
-    </fields>
-    <fields>
         <label>Programm</label>
         <name>Core_MDF_Program__c</name>
-    </fields>
-    <fields>
-        <label><!-- Proposal Based Indicator --></label>
-        <name>Core_MDF_Proposal_Based_Ind__c</name>
-    </fields>
-    <fields>
-        <label>Vorschlags-Score</label>
-        <name>Core_MDF_Proposal_Score_nbr__c</name>
     </fields>
     <fields>
         <label><!-- Core_MDF_RMF_Delta_Budget_Amt --></label>
         <name>Core_MDF_RMF_Delta_Budget_Amt__c</name>
     </fields>
     <fields>
-        <label>Grund für die Rückdatierung</label>
-        <name>Core_MDF_Reason_for_Back_Dating_Nm__c</name>
-    </fields>
-    <fields>
-        <label>Region</label>
+        <label><!-- Region --></label>
         <name>Core_MDF_Region_cd__c</name>
-    </fields>
-    <fields>
-        <label>Kostenerstattungsanteil</label>
-        <name>Core_MDF_ReimbursementRate_pct__c</name>
-    </fields>
-    <fields>
-        <help>Gesamtinvestition (Intel + Partner) x Erstattungssatz = Maximale Intel-Investition.</help>
-        <label>Maximale Intel-Investition</label>
-        <name>Core_MDF_Reimbursement_Amount_Amt__c</name>
-    </fields>
-    <fields>
-        <label>Maximale Intel-Investition</label>
-        <name>Core_MDF_Reimbursement_Amt__c</name>
     </fields>
     <fields>
         <label>Kostenerstattungsanteil</label>
         <name>Core_MDF_Reimbursement_Rate__c</name>
         <picklistValues>
-            <masterLabel>0%</masterLabel>
-            <translation><!-- 0% --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>100%</masterLabel>
             <translation><!-- 100% --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>25%</masterLabel>
-            <translation><!-- 25% --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>33%</masterLabel>
-            <translation><!-- 33% --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>50%</masterLabel>
@@ -988,11 +413,6 @@
         <name>Core_MDF_Spending_Cap_Amt__c</name>
     </fields>
     <fields>
-        <label><!-- Spending Targets --></label>
-        <name>Core_MDF_Spending_Targets_Id__c</name>
-        <relationshipLabel><!-- Campaigns --></relationshipLabel>
-    </fields>
-    <fields>
         <label>Startdatum und Enddatum</label>
         <name>Core_MDF_Start_Date_End_Date__c</name>
     </fields>
@@ -1001,7 +421,7 @@
         <name>Core_MDF_Story__c</name>
     </fields>
     <fields>
-        <label>Fonds für strategisches Marketing</label>
+        <label><!-- Strategic Marketing Fund --></label>
         <name>Core_MDF_Strategic_Marketing_Fund_Ind__c</name>
     </fields>
     <fields>
@@ -1009,12 +429,8 @@
         <name>Core_MDF_Sub_Region_cd__c</name>
     </fields>
     <fields>
-        <label>Unterstützt älteres Programm</label>
+        <label><!-- Supports legacy Program --></label>
         <name>Core_MDF_Supports_legacy_program__c</name>
-        <picklistValues>
-            <masterLabel>All MDF or both CMP &amp; MDF</masterLabel>
-            <translation><!-- All MDF or both CMP &amp; MDF --></translation>
-        </picklistValues>
         <picklistValues>
             <masterLabel>CMP only</masterLabel>
             <translation><!-- CMP only --></translation>
@@ -1022,14 +438,6 @@
         <picklistValues>
             <masterLabel>MDF or both CMP &amp; MDF</masterLabel>
             <translation><!-- MDF or both CMP &amp; MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>New CMP only</masterLabel>
-            <translation><!-- New CMP only --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>New MDF or both CMP &amp; MDF</masterLabel>
-            <translation><!-- New MDF or both CMP &amp; MDF --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Yes</masterLabel>
@@ -1041,26 +449,8 @@
         <name>Core_MDF_Technology__c</name>
     </fields>
     <fields>
-        <help><!-- Check this to completely reject a campaign --></help>
-        <label><!-- Terminal_Rejection --></label>
-        <name>Core_MDF_Terminal_Rejection_Ind__c</name>
-    </fields>
-    <fields>
-        <label>Gesamtinvestition (Intel + Partner)</label>
-        <name>Core_MDF_Total_Campaign_Cost_Amt__c</name>
-    </fields>
-    <fields>
         <label><!-- Account (Company) --></label>
         <name>Core_MDF_Ultimate_Account_txt__c</name>
-    </fields>
-    <fields>
-        <help>Bitte wählen Sie den Anwendungsfall, der am besten mit dem Lösungsangebot übereinstimmt, das diese Kampagne fördern wird. Wenn keine der aufgeführten Anwendungsfälle zutrifft, wählen Sie Allzweck.</help>
-        <label>Anwendungsfall</label>
-        <name>Core_MDF_Use_Case_Nm__c</name>
-    </fields>
-    <fields>
-        <label><!-- Volume --></label>
-        <name>Core_MDF_Volume_txt__c</name>
     </fields>
     <fields>
         <label><!-- Sector --></label>
@@ -1191,6 +581,70 @@
         <name>CventEvents__SessionStub__c</name>
     </fields>
     <fields>
+        <label><!-- DB Campaign Tactic --></label>
+        <name>DB_Campaign_Tactic__c</name>
+        <picklistValues>
+            <masterLabel>Direct Mail</masterLabel>
+            <translation><!-- Direct Mail --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Email</masterLabel>
+            <translation><!-- Email --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Employment Seminars</masterLabel>
+            <translation><!-- Employment Seminars --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Internal Website</masterLabel>
+            <translation><!-- Internal Website --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lunches</masterLabel>
+            <translation><!-- Lunches --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Online Banners/Ads</masterLabel>
+            <translation><!-- Online Banners/Ads --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partners</masterLabel>
+            <translation><!-- Partners --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Print Advertisement</masterLabel>
+            <translation><!-- Print Advertisement --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Public Relations</masterLabel>
+            <translation><!-- Public Relations --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Referral Program</masterLabel>
+            <translation><!-- Referral Program --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sales Call Down</masterLabel>
+            <translation><!-- Sales Call Down --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Webinars</masterLabel>
+            <translation><!-- Webinars --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Data Quality Description --></label>
+        <name>Data_Quality_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Data Quality Score --></label>
+        <name>Data_Quality_Score__c</name>
+    </fields>
+    <fields>
         <label><!-- Campaign Brief Details --></label>
         <name>MKT_Campaign_Brief_Details_Formula_Txt__c</name>
     </fields>
@@ -1223,11 +677,14 @@
         <name>MKT_Organization_nm__c</name>
     </fields>
     <fields>
-        <label><!-- Bulk Add/Invite Email Template --></label>
-        <name>PRM_Bulk_Add_Invite_Email_Template__c</name>
+        <label><!-- Rich text --></label>
+        <name>Rich_text__c</name>
+    </fields>
+    <fields>
+        <label><!-- IsMarketingRecord --></label>
+        <name>SWS_IsMarketingRecord__c</name>
     </fields>
     <recordTypes>
-        <description><!-- Record type for CCP Client Program --></description>
         <label>Kunden-Co-Marketing-Fonds</label>
         <name>Core_MDF_Client_CoMarketing_Fund</name>
     </recordTypes>
@@ -1236,28 +693,12 @@
         <name>Core_MDF_Client_CoMarketing_Fund_Boost</name>
     </recordTypes>
     <recordTypes>
-        <description><!-- Record type for CCP Co-GTM Program --></description>
-        <label><!-- CoGTM --></label>
-        <name>Core_MDF_Co_GTM</name>
-    </recordTypes>
-    <recordTypes>
-        <description><!-- Record Type for CCP Datacenter Program --></description>
         <label>Datacenter-CoMarketing-Fonds</label>
         <name>Core_MDF_Data_Center_CoMarketing_Fund</name>
     </recordTypes>
     <recordTypes>
-        <description><!-- Record Type for CCP EEF Program --></description>
-        <label><!-- Ecosystem Extension Fund --></label>
-        <name>Core_MDF_Ecosystem_Extension_Fund</name>
-    </recordTypes>
-    <recordTypes>
-        <description><!-- Record Type for IPA program --></description>
-        <label><!-- Intel Partner Alliance --></label>
-        <name>Core_MDF_Intel_Partner_Alliance</name>
-    </recordTypes>
-    <recordTypes>
         <description><!-- Record type created for Retail program --></description>
-        <label>Mittel für Einzelhandelsmarketing</label>
+        <label><!-- Retail Marketing Funds --></label>
         <name>Core_MDF_Retail_Marketing_Funds</name>
     </recordTypes>
     <recordTypes>
@@ -1279,22 +720,9 @@
         <label><!-- Sales Campaign - Admin --></label>
         <name>Core_Sales_Campaign_Admin</name>
     </recordTypes>
-    <recordTypes>
-        <description><!-- Campaign to track registrations for IPA program --></description>
-        <label><!-- IPA Marketing Campaign --></label>
-        <name>PRM_Marketing_Campaign</name>
-    </recordTypes>
     <validationRules>
         <errorMessage>Verkaufskampagnen müssen genehmigt werden, bevor der Status auf „Laufend“ gesetzt werden kann.</errorMessage>
         <name>Core_Campaign_Only_Approved_In_Progress</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage>Ein Konto ist erforderlich, um eine Kampagne zu erstellen. Bitte wählen Sie ein Konto aus und versuchen Sie es erneut.</errorMessage>
-        <name>Core_MDF_CampaignAccountValidation</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage>Vorschlag mit dem Status „Prüfung steht aus“ oder „Genehmigung steht aus“ kann nicht abgebrochen werden.</errorMessage>
-        <name>Core_MDF_CancellingIPACampaignInApproval</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Enter only positive numeric values up to 16 digits. --></errorMessage>
@@ -1305,38 +733,6 @@
         <name>Core_MDF_Check_For_Non_Negative_Amount</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Wenn die Kampagne erstellt wurde, kann das Konto nicht geändert werden.</errorMessage>
-        <name>Core_MDF_IPA_Account_Restriction</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Countries selected must be within the same Geography as defined by Intel --></errorMessage>
-        <name>Core_MDF_IPA_Multiple_Region</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage>Benutzer ist nicht berechtigt, Vorschlag zur Genehmigung einzureichen.</errorMessage>
-        <name>Core_MDF_IPA_Proposal_Submission</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- The proposal has been approved already. Please refresh your screen and check --></errorMessage>
-        <name>Core_MDF_IPA_RestrictStatusUpdate</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage>Wurde USA ausgewählt, kann kein anderes Land ausgewählt werden.</errorMessage>
-        <name>Core_MDF_IPA_Restrict_Country_to_US</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage>Benutzer kann Kampagnenname, Budgettyp und Kostenerstattungsrate nicht bearbeiten, wenn ein Vorschlag genehmigt wurde.</errorMessage>
-        <name>Core_MDF_IPA_Restrict_Edit_Approved_Camp</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage>Benutzer kann Kampagnennamen nicht bearbeiten.</errorMessage>
-        <name>Core_MDF_IPA_Restrict_Edit_Campaign_Name</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Budget Type cannot be changed when the Proposal is in approval --></errorMessage>
-        <name>Core_MDF_IPA_Restrict_Fields_In_Approval</name>
-    </validationRules>
-    <validationRules>
         <errorMessage>Geben Sie die integrierten Kampagnendetails ein oder wählen Sie „Nein“ für integrierte Kampagne</errorMessage>
         <name>Core_MDF_Integrated_Campaign_is_Yes</name>
     </validationRules>
@@ -1345,36 +741,12 @@
         <name>Core_MDF_Retail_Campaign_Start_End_Date</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Wählen Sie bitte nur einen Fokusbereich</errorMessage>
-        <name>Core_MDF_Single_Focus_Area_Selection_Val</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage>Bitte wählen Sie nur eine Ergebnis-Metrik aus.</errorMessage>
-        <name>Core_MDF_Single_Outcome_Selection_Val</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Strategic Marketing Fund cannot be edited when Campaign is in a Completed or Cancelled status. --></errorMessage>
-        <name>Core_MDF_Strategic_Marketing_Field_Edit</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage>Die Kampagne kann im Status &quot;Abgebrochen&quot; nicht bearbeitet oder abgebrochen werden.</errorMessage>
-        <name>Core_MDF_ValidateFieldEditInCancelled</name>
-    </validationRules>
-    <validationRules>
         <errorMessage>Die Kampagne ist nur für 1 Kalenderjahr geplant. Bitte entfernen Sie den budgetierten Betrag für das zweite Jahr.</errorMessage>
         <name>Core_MDF_Validate_Campaign_Planned_Year</name>
     </validationRules>
     <validationRules>
         <errorMessage>Das Start- und Enddatum dürfen sich nicht über zwei Kalenderjahre erstrecken.</errorMessage>
         <name>Core_MDF_Validate_EndDate</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Start date and end date may not span more than three calendar years. --></errorMessage>
-        <name>Core_MDF_Validate_EndDate_Upto_Three_Yrs</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Enter only positive numeric values up to 16 digits. --></errorMessage>
-        <name>Core_MDF_Validate_Negative_Spending_Cap</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Select a value not already selected for Priority or Priority #3 --></errorMessage>

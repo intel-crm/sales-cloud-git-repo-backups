@@ -1,0 +1,8 @@
+<script type='text/javascript'>
+	function bootstrapChat() {
+		embedded_svc.bootstrapEmbeddedService();
+	}
+</script>
+<button onclick="bootstrapChat()">
+	Click me to show the Embedded Chat experience.
+</button>

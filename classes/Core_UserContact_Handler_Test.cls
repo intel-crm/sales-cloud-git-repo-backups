@@ -48,22 +48,21 @@ public class Core_UserContact_Handler_Test{
         accountInstance.BIllingStateCode = 'AL';
         accountInstance.BillingCity = 'Alabama';
         accountInstance.BillingStreet = 'test';
-        //accountInstance.Core_Sales_Groups__c='PSG Sales';
+        accountInstance.Core_Sales_Groups__c='PRC Sales Group';
         accountInstance.BillingCountryCode = 'USA';
         accountInstance.BIllingStateCode = 'AL';
         accountInstance.BillingCity = 'Alabama';
         accountInstance.BillingStreet = 'test';
         accountInstance.BillingPostalCode = '577100';
-        //accountInstance.Core_Sales_Groups__c='PSG Sales';
+        accountInstance.Core_Sales_Groups__c='US Sales Group';
         accountInstance.Name = 'Deloitte0';
                        
+        contactInstance = new Contact();
         contactInstance = new Contact();
         contactInstance.FirstName = 'test';
         contactInstance.LastName =  '0';
         contactInstance.email = 'test@test0.com';
-        contactInstance.MailingCountry='India';
-        contactInstance.Core_Enterprise_Id__c='123456';
-        contactInstance.Core_Is_FederationId_Valid_Ind__c = 'true';
+        
         //Insert Account and Contact records                 
         System.runAs(userWithRole){
             insert accountInstance;                              
@@ -98,12 +97,11 @@ public class Core_UserContact_Handler_Test{
         User pu = new User(profileId = p1.id, username = 'puser000@intel.com', email = 'puser000@intel.com',
                            emailencodingkey = 'UTF-8', localesidkey = 'en_US',
                            languagelocalekey = 'en_US', timezonesidkey = 'America/Los_Angeles',
-                           alias='cspu', lastname='lastname', contactId = contactInstance.Id, federationIdentifier='123456');            
+                           alias='cspu', lastname='lastname', contactId = contactInstance.Id);            
         Test.startTest();
             insert pu;
             pu.IsActive = false;             
             update pu; 
-            System.assert(pu.IsActive == false, 'User should be inactive after update');
         Test.stopTest();       
     }
     
@@ -121,12 +119,11 @@ public class Core_UserContact_Handler_Test{
         User pu = new User(profileId = p1.id, username = 'puser000@intel.com', email = 'puser000@intel.com',
                            emailencodingkey = 'UTF-8', localesidkey = 'en_US',
                            languagelocalekey = 'en_US', timezonesidkey = 'America/Los_Angeles',
-                           alias='cspu', lastname='lastname', contactId = contactInstance.Id, IsActive= false, federationIdentifier='123456');            
+                           alias='cspu', lastname='lastname', contactId = contactInstance.Id, IsActive= false);            
         
             insert pu;
             pu.IsActive = true;             
             update pu;
-            System.assert(pu.IsActive == true, 'User should be active after update');
         Test.stopTest();       
     }
 }

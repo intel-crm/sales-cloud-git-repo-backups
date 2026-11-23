@@ -1,58 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <columns>
-        <field>ACCOUNT.NAME</field>
+        <field>ROLLUP_DESCRIPTION</field>
     </columns>
     <columns>
         <field>USERS.NAME</field>
     </columns>
     <columns>
-        <field>ROLLUP_DESCRIPTION</field>
+        <field>ACCOUNT.NAME</field>
     </columns>
     <columns>
         <field>Account.Core_Account_Country__c</field>
-    </columns>
-    <columns>
-        <field>INDUSTRY</field>
-    </columns>
-    <columns>
-        <field>Account.Core_Sub_Industry__c</field>
-    </columns>
-    <columns>
-        <field>Account.Core_Account_BU_Focus__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>EMPLOYEES</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Account.Core_Annual_Revenue__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Account.Core_Closed_Revenue_For_Account__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Account.Core_Open_Revenue_For_Account__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Account.Core_Opportunity_Revenue_for_Account__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Account.Core_Total_Approved_Revenue_Amount__c</field>
-    </columns>
-    <columns>
-        <field>ADDRESS1_CITY</field>
-    </columns>
-    <columns>
-        <field>Account.Core_Account_Coverage__c</field>
-    </columns>
-    <columns>
-        <field>LAST_UPDATE</field>
     </columns>
     <filter>
         <criteriaItems>
@@ -60,7 +18,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>EMEA Germany Sales Group,EMEA Named Account Sales Group</value>
+            <value>GMP Germany Sales Group</value>
         </criteriaItems>
         <criteriaItems>
             <column>USERS.NAME</column>
@@ -74,7 +32,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>EMP of Christian Anderka,EMP of Christian Roth,EMP of Sonja Pierer,EMP of Andreas Timm</value>
+            <value>EMP of Christian Anderka,EMP of Christian Roth,EMP of Dieter Hoffend,EMP of Andreas Timm</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

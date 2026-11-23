@@ -13,6 +13,7 @@
         <locationY>200</locationY>
         <actionName>Opportunity.Core_Notify_IOTG_Second_Level_Approvers_Alert_25M_2</actionName>
         <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>SObjectRowId</name>
             <value>
@@ -34,6 +35,7 @@
         <locationY>200</locationY>
         <actionName>Opportunity.Core_Notify_IOTG_Second_Level_Approvers_Alert_3M</actionName>
         <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>SObjectRowId</name>
             <value>
@@ -55,6 +57,7 @@
         <locationY>200</locationY>
         <actionName>Opportunity.Core_Notify_IOTG_Second_Level_Approvers_Alert_3M_2</actionName>
         <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>SObjectRowId</name>
             <value>
@@ -76,6 +79,7 @@
         <locationY>200</locationY>
         <actionName>Opportunity.Core_Notify_IOTG_Second_Level_Approvers_Alert_5M</actionName>
         <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>SObjectRowId</name>
             <value>
@@ -97,6 +101,7 @@
         <locationY>200</locationY>
         <actionName>Opportunity.Core_Notify_IOTG_Second_Level_Approvers_Alert_10M</actionName>
         <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>SObjectRowId</name>
             <value>
@@ -118,6 +123,7 @@
         <locationY>200</locationY>
         <actionName>Opportunity.Core_Notify_IOTG_Second_Level_Approvers_Alert_5M_2</actionName>
         <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>SObjectRowId</name>
             <value>
@@ -139,6 +145,7 @@
         <locationY>200</locationY>
         <actionName>Opportunity.Core_Notify_IOTG_Other_Second_Level_Approvers_Alert_10M_1</actionName>
         <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>SObjectRowId</name>
             <value>
@@ -160,6 +167,7 @@
         <locationY>200</locationY>
         <actionName>Opportunity.Core_Notify_IOTG_Other_Second_Level_Approvers_Alert_10M_2</actionName>
         <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>SObjectRowId</name>
             <value>
@@ -181,6 +189,7 @@
         <locationY>200</locationY>
         <actionName>Opportunity.Core_Notify_IOTG_Second_Level_Approvers_Alert_10M_2</actionName>
         <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>SObjectRowId</name>
             <value>
@@ -202,6 +211,7 @@
         <locationY>200</locationY>
         <actionName>Opportunity.Core_Notify_IOTG_Second_Level_Approvers_Alert_25M</actionName>
         <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>SObjectRowId</name>
             <value>
@@ -212,22 +222,6 @@
     </actionCalls>
     <apiVersion>49.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
-    <assignments>
-        <name>myVariable_waitStartTimeAssignment</name>
-        <label>myVariable_waitStartTimeAssignment</label>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-        <assignmentItems>
-            <assignToReference>myVariable_waitStartTimeVariable</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Flow.CurrentDateTime</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>isChangedDecision2_myRule_1_Core_Approval_Status_c</targetReference>
-        </connector>
-    </assignments>
     <decisions>
         <name>isChangedDecision11_myRule_10_Core_Approval_Status_c</name>
         <label>isChangedDecision11_myRule_10_Core_Approval_Status_c</label>
@@ -7575,7 +7569,7 @@
         </rules>
     </decisions>
     <description>Notify IOTG Second Level Approvers (Modified for 2018 PSPA values)</description>
-    <interviewLabel>Core_Notify_IOTG_Second_Level_Approvers-3_InterviewLabel</interviewLabel>
+    <interviewLabel>Core_Notify_IOTG_Second_Level_Approvers-4_InterviewLabel</interviewLabel>
     <label>Core Notify IOTG Second Level Approvers</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -7602,8 +7596,8 @@
         </value>
     </processMetadataValues>
     <processType>Workflow</processType>
-    <startElementReference>myVariable_waitStartTimeAssignment</startElementReference>
-    <status>Obsolete</status>
+    <startElementReference>isChangedDecision2_myRule_1_Core_Approval_Status_c</startElementReference>
+    <status>Draft</status>
     <variables>
         <name>myVariable_current</name>
         <dataType>SObject</dataType>
@@ -7619,15 +7613,5 @@
         <isInput>true</isInput>
         <isOutput>false</isOutput>
         <objectType>Opportunity</objectType>
-    </variables>
-    <variables>
-        <name>myVariable_waitStartTimeVariable</name>
-        <dataType>DateTime</dataType>
-        <isCollection>false</isCollection>
-        <isInput>false</isInput>
-        <isOutput>false</isOutput>
-        <value>
-            <elementReference>$Flow.CurrentDateTime</elementReference>
-        </value>
     </variables>
 </Flow>

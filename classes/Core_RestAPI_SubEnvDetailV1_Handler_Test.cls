@@ -83,6 +83,7 @@ public with sharing class Core_RestAPI_SubEnvDetailV1_Handler_Test{
             insert objAns;
 
             Core_IPS_Assigned_Environment_Variables__c ObjEnvVar= new Core_IPS_Assigned_Environment_Variables__c ();
+            system.debug('OWNER ID'+  adminuser.id);
             ObjEnvVar.Core_Status__c = 'Active';
             ObjEnvVar.Core_Required__c = true;
             ObjEnvVar.Core_Supported_Product__c=sp.id;
@@ -90,9 +91,11 @@ public with sharing class Core_RestAPI_SubEnvDetailV1_Handler_Test{
             ObjEnvVar.Core_IPS_Question__c=objQues.id;
             ObjEnvVar.Core_Product_Issue_Sub_Category__c= CategoriesandSubCategoriesList[0].id;
             insert ObjEnvVar;//inserting record for admin user
+            System.debug('ObjEnvVar'+ObjEnvVar);
             
             List<Core_IPS_Assigned_Environment_Variables__c> testlst=[
  Select Name,Core_Product_Issue_Sub_Category__r.Name ,Core_Product_Issue_Sub_Category__r.id ,Core_Environment_Variable__r.Name,Core_Required__c ,Core_Environment_Variable__r.Core_Datatype__c, Core_Environment_Variable__r.Core_Answers__c from Core_IPS_Assigned_Environment_Variables__c where Core_Agent_Only__c= false ];
+       system.debug('testlst==>> '+testlst);
         }
         Test.stopTest();
     }
@@ -113,8 +116,12 @@ public with sharing class Core_RestAPI_SubEnvDetailV1_Handler_Test{
         
          
          List<Core_IPS_Assigned_Environment_Variables__c> subCatId =[select Core_Product_Issue_Sub_Category__r.Name from Core_IPS_Assigned_Environment_Variables__c where Core_IPS_Question__r.Core_IPS_Question__c= 'Test Question New EDQ model'];
+         system.debug('subCatIdLLLLLLLLLLLLLLLL===>> '+subCatId);
+            system.debug('subCatId===>> '+subCatId);
         requestObj.resourcePath ='/services/apexrest/v1.0/sp/categories/'+subCatId[0].Core_Product_Issue_Sub_Category__r.Name+'/environmentdetails';   
+        system.debug(' requestObj.resourcePath888888888888888'+ requestObj.resourcePath);
         requestObj.requestUri ='/v1.0/sp/categories/'+subCatId[0].Core_Product_Issue_Sub_Category__r.Name+'/environmentdetails';      
+        system.debug('  requestObj.requestUri999999999999'+ requestObj.resourcePath);
         requestObj.httpMethod = 'GET';
         RestContext.request = requestObj;     
         Core_RestAPI_SubEnvDetailV1_Handler handler = new Core_RestAPI_SubEnvDetailV1_Handler(System.now(), 'Core_RestAPI_SubEnvDetailsV1'); 
@@ -190,8 +197,10 @@ public with sharing class Core_RestAPI_SubEnvDetailV1_Handler_Test{
             objEnvDetMaster.Core_Status__c = 'Active';
             objEnvDetMaster.Core_Product_Organization__c=org.id;
             insert objEnvDetMaster;
+            System.debug('objEnvDetMaster'+objEnvDetMaster);
 
             Core_IPS_Assigned_Environment_Variables__c ObjEnvVar= new Core_IPS_Assigned_Environment_Variables__c ();
+            system.debug('OWNER ID'+  adminuser.id);
             ObjEnvVar.Core_Status__c = 'Active';
             ObjEnvVar.Core_Required__c = true;
             ObjEnvVar.Core_Supported_Product__c=sp.id;
@@ -199,6 +208,7 @@ public with sharing class Core_RestAPI_SubEnvDetailV1_Handler_Test{
             ObjEnvVar.Core_Environment_Variable__c=objEnvDetMaster.id;
             ObjEnvVar.Core_Product_Issue_Sub_Category__c= CategoriesandSubCategoriesList[0].id;
             insert ObjEnvVar;//inserting record for admin user
+            System.debug('ObjEnvVar'+ObjEnvVar);
           
           
           
@@ -210,7 +220,9 @@ public with sharing class Core_RestAPI_SubEnvDetailV1_Handler_Test{
          List<Core_IPS_Assigned_Environment_Variables__c> subCatId =[select Core_Product_Issue_Sub_Category__r.Name from Core_IPS_Assigned_Environment_Variables__c where Core_Environment_Variable__r.name= 'Else Test Issue Resolution List' ];
          
         requestObj.resourcePath ='/services/apexrest/v1.0/sp/categories/'+subCatId[0].Core_Product_Issue_Sub_Category__r.Name+'/environmentdetails';   
+        system.debug(' requestObj.resourcePath888888888888888'+ requestObj.resourcePath);
         requestObj.requestUri ='/v1.0/sp/categories/'+subCatId[0].Core_Product_Issue_Sub_Category__r.Name+'/environmentdetails';      
+        system.debug('  requestObj.requestUri999999999999'+ requestObj.resourcePath);
         requestObj.httpMethod = 'GET';
         RestContext.request = requestObj;     
         Core_RestAPI_SubEnvDetailV1_Handler handler = new Core_RestAPI_SubEnvDetailV1_Handler(System.now(), 'Core_RestAPI_SubEnvDetailsV1'); 

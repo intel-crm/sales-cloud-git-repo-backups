@@ -1,16 +1,9 @@
 @isTest
 public class PMP_SearchEventDetailController_Test extends PMP_SearchWrapperStore {
-    @isTest
-    static void testIsWorking() {
-        Boolean result = PMP_SearchEventDetailController.isWorking();
-        System.assertEquals(true, result);
-    }
-
-    
-/*    @testSetup static void setup (){//IPA2.0:TWC729-8114 Topics Removal/Event Removal
+    @testSetup static void setup (){
         
         PMP_Company__c testPartner1 =  new PMP_Company__c();
-        testPartner1.PMP_Account_Specialty__c = 'None';       
+        testPartner1.PMP_Account_Specialty__c = 'Video Specialty';       
         testPartner1.PMP_Partner_Program_nm__c = 'ISA';
         testPartner1.PMP_Account_Dsc__c = 'test';
         testPartner1.PMP_Company_Information_Language_Nm__c = 'English';
@@ -78,8 +71,6 @@ public class PMP_SearchEventDetailController_Test extends PMP_SearchWrapperStore
         eve.PMP_Marketplace_Desc__c = 'desc';
         eve.PMP_Event_Banner_Language__c = 'English';
         eve.PMP_Event_Banner_Language_Mapping__c = JSON.serialize(langMap);
-        eve.PMP_Event_Learn_More_Link_Txt__c = 'www.google.com';
-        eve.PMP_Event_Marquee_Desc_Txt__c = 'marquee';
         insert eve;
         eveIds.add(eve.Id);
         
@@ -93,8 +84,6 @@ public class PMP_SearchEventDetailController_Test extends PMP_SearchWrapperStore
         eve1.PMP_Marketplace_Desc__c = 'desc';
         eve1.PMP_Event_Banner_Language__c = 'English';
         eve1.PMP_Event_Banner_Language_Mapping__c = JSON.serialize(langMap);
-      //  eve1.PMP_Event_Learn_More_Link_Txt__c = 'www.google.com';
-      //  eve1.PMP_Event_Marquee_Desc_Txt__c_ = 'marquee';
         insert eve1;
         eveIds.add(eve1.Id);
         
@@ -130,69 +119,67 @@ public class PMP_SearchEventDetailController_Test extends PMP_SearchWrapperStore
         trans.PMP_Japanese_Txt__c = 'desc';
         insert trans;
         
-        PMP_Static_Constants__c st = new PMP_Static_Constants__c();
-        st.Name = 'PMP_Supported_Languages';
-        st.PMP_Value__c = 'en_US;ja;zh-Hans-CN'; 
-        insert st;
         
     }
     
-    /*@isTest static void getPromotionLanguageOptionsTest(){
+    @isTest static void getPromotionLanguageOptions_Test(){
         Schema.DescribeFieldResult fieldResult = PMP_Marketplace_Event__c.PMP_Event_Banner_Language__c.getDescribe();      
-        //List<Schema.PicklistEntry> ple = fieldResult.getPicklistValues();
+        List<Schema.PicklistEntry> ple = fieldResult.getPicklistValues();
         
         Test.startTest();
-        system.assertNotEquals( NULL ,PMP_SearchEventDetailController.getPromotionLanguageOptions().size(),'Test Failed');
+        List<Object> langs= PMP_SearchEventDetailController.getPromotionLanguageOptions();
         Test.stopTest();
-    }*/
+        
+        system.assertEquals(ple.size(), langs.size());
+    }
     
-    /*@isTest static void getPromotionDataTest(){
+    @isTest static void getPromotionData_Test(){
         
         PMP_Marketplace_Event__c event = [SELECT id,PMP_Event_Banner_Language_Mapping__c, PMP_Event_Banner_Language__c from PMP_Marketplace_Event__c WHERE Name='Test Event' LIMIT 1];
         
         Test.startTest();
-        system.assertNotEquals( NULL ,PMP_SearchEventDetailController.getPromotionData('en_US').size(),'Test Data is wrong.');
+        List<Object> promos = PMP_SearchEventDetailController.getPromotionData('en_US');
         
         Map<String,String> langMap = new Map<String,String>{'en_US'=>'test'};
         event.PMP_Event_Banner_Language_Mapping__c = JSON.serialize(langMap);
         update event;
         
-        system.assertNotEquals( NULL ,PMP_SearchEventDetailController.getPromotionData('zh_CN').size(),'Test Failed');
+        promos = PMP_SearchEventDetailController.getPromotionData('zh_CN');
         
         langMap = new Map<String,String>{'zh_CN'=>'test'};
         event.PMP_Event_Banner_Language_Mapping__c = JSON.serialize(langMap);
         event.PMP_Event_Banner_Language__c = 'Simplified Chinese';
         update event;
         
-        system.assertNotEquals( NULL ,PMP_SearchEventDetailController.getPromotionData('ja').size(),'Test Failed');
+        promos = PMP_SearchEventDetailController.getPromotionData('ja');
         Test.stopTest();
-    }*/
+        
+        system.assert(promos!=null);
+    }
     
-    /*@isTest static void getEventsTest()
+    @isTest static void getEvents_Test()
     {
         Map<String, List<String>> selectedFilters = new Map<String, List<String>>();
         List<String> eventList=new List<String>();
-        Filter filters= New Filter();
         eventList.add('Marketplace_event');
         selectedFilters.put('Marketplace_event', eventList);
         List<String> offIds=new List<String>();
         List<Id> parIds=new List<Id>();
         Test.startTest();
-        filters = PMP_SearchEventDetailController.getEvents(selectedFilters,'',offIds,parIds);
+        PMP_SearchEventDetailController.getEvents(selectedFilters,'',offIds,parIds);
         Test.stopTest();
-        System.assert(filters!=null,'Test Failed');
         
-    }//
-    @isTest static void getEventOfferingsTest()
+    }
+    @isTest static void getEventOfferings_Test()
     {
-        List<PMP_Partner_Offering__c> off=[Select Id,Name from PMP_Partner_Offering__c LIMIT 10];
+        List<PMP_Partner_Offering__c> Off=[Select Id,Name from PMP_Partner_Offering__c];
         List<String> offIds=new List<String>();
         
-        for(PMP_Partner_Offering__c offLists:off)
+        for(PMP_Partner_Offering__c offLists:Off)
         {
             offIds.add(offLists.Id);
         }
-        List<PMP_Marketplace_Event__c> eve=[Select Id,Name from PMP_Marketplace_Event__c LIMIT 10];
+        List<PMP_Marketplace_Event__c> eve=[Select Id,Name from PMP_Marketplace_Event__c];
         List<Id> eveIds=new List<Id>();
         
         for(PMP_Marketplace_Event__c eveLists:eve)
@@ -203,19 +190,18 @@ public class PMP_SearchEventDetailController_Test extends PMP_SearchWrapperStore
         
         
         Test.startTest();
-        	//system.assertNotEquals( NULL ,PMP_SearchEventDetailController.getEventOfferings(eveIds,offIds).size(),'Test Failed');
+        PMP_SearchEventDetailController.getEventOfferings(eveIds,offIds);
         Test.stopTest();
-       
     }
-    /*@isTest static void getEventPartnersTest()
+    @isTest static void getEventPartners_Test()
     {
-        List<PMP_Company__c> par=[Select Id,Name from PMP_Company__c LIMIT 10]; 
+        List<PMP_Company__c> par=[Select Id,Name from PMP_Company__c];
         List<Id> parIds=new List<Id>();
         for( PMP_Company__c  parLists:par)
         {
             parIds.add(parLists.Id);
         }
-        List<PMP_Marketplace_Event__c> eve=[Select Id,Name from PMP_Marketplace_Event__c LIMIT 10];
+        List<PMP_Marketplace_Event__c> eve=[Select Id,Name from PMP_Marketplace_Event__c];
         List<Id> eveIds=new List<Id>();
         
         for(PMP_Marketplace_Event__c eveLists:eve)
@@ -224,12 +210,14 @@ public class PMP_SearchEventDetailController_Test extends PMP_SearchWrapperStore
         }
         
         Test.startTest();
-      		system.assertNotEquals( NULL ,PMP_SearchEventDetailController.getEventPartners(eveIds,parIds).size(),'Test Failed');        
+        PMP_SearchEventDetailController.getEventPartners(eveIds,parIds);
+        
+        
         Test.stopTest();
         
         
-    }//
-    @isTest static void getEventOffCountTest()
+    }
+    @isTest static void getEventOffCount_test()
     {
         Map<String,Tag> eventTag=new Map<String,Tag>();
         Tag tag = new Tag();
@@ -246,13 +234,13 @@ public class PMP_SearchEventDetailController_Test extends PMP_SearchWrapperStore
         {
             eveIds.add(eveoffLists.PMP_Event_Id__c);
         }
-        List<PMP_Company__c> par=[Select Id,Name from PMP_Company__c LIMIT 10];
+        List<PMP_Company__c> par=[Select Id,Name from PMP_Company__c];
         List<Id> parIds=new List<Id>();
         for( PMP_Company__c  parLists:par)
         {
             parIds.add(parLists.Id);
         }
-        List<PMP_Marketplace_Event__c> eve=[Select Id,Name from PMP_Marketplace_Event__c LIMIT 10];
+        List<PMP_Marketplace_Event__c> eve=[Select Id,Name from PMP_Marketplace_Event__c];
         
         
         for(PMP_Marketplace_Event__c eveLists:eve)
@@ -260,75 +248,25 @@ public class PMP_SearchEventDetailController_Test extends PMP_SearchWrapperStore
             eveIds.add(eveLists.Id);
         }
         
-        List<PMP_Partner_Offering__c> off=[Select Id,Name from PMP_Partner_Offering__c LIMIT 10];
+        List<PMP_Partner_Offering__c> Off=[Select Id,Name from PMP_Partner_Offering__c];
         List<String> offIds=new List<String>();
         
-        for(PMP_Partner_Offering__c offLists:off)
+        for(PMP_Partner_Offering__c offLists:Off)
         {
             offIds.add(offLists.Id);
         }
         
         
         Test.startTest();
-        //system.assertNotEquals( NULL ,PMP_SearchEventDetailController.getEventOffCount(eventTag,eveIds).size(),'Test Failed');
-        //system.assertNotEquals( NULL ,PMP_SearchEventDetailController.getEventCount('Partner',eventTag,parIds,offIds).size(),'Test Failed');
-        //system.assertNotEquals( NULL ,PMP_SearchEventDetailController.getEventCount('Product',eventTag,parIds,offIds).size(),'Test Failed');
-        //system.assertNotEquals( NULL ,PMP_SearchEventDetailController.getEventPartnerCount(eventTag,parIds).size(),'Test Failed');
+        PMP_SearchEventDetailController.getEventOffCount(eventTag,eveIds);
+        PMP_SearchEventDetailController.getEventCount('',eventTag,parIds,offIds);
+        PMP_SearchEventDetailController.getEventPartnerCount(eventTag,parIds);
         Test.stopTest();
         
     }
     
-     @isTest 
-     static void getEventOfferingsIdTest(){
-         PMP_Marketplace_Event__c eve=[Select Id,Name from PMP_Marketplace_Event__c Limit 1];
-         
-         Test.startTest();
-         	//system.assertNotEquals( NULL , PMP_SearchEventDetailController.getEventOfferingsId(eve.Id).size(),'Test Failed');
-         Test.stopTest();
-     }
     
-    /*@isTest 
-     static void getEventPartnerIdTest(){
-         PMP_Marketplace_Event__c eve=[Select Id,Name from PMP_Marketplace_Event__c Limit 1];
-         
-         Test.startTest();
-         	PMP_SearchEventDetailController.getEventPartnerId(eve.Id);
-            system.assertNotEquals( NULL , PMP_SearchEventDetailController.getEventPartnerId(eve.Id).size(),'Test Failed');
-         Test.stopTest();
-     }*/
     
-     /*@isTest 
-     static void getCampaignMarqueeDetailsTest(){
-         PMP_Marketplace_Event__c eve=[Select Id,Name from PMP_Marketplace_Event__c Limit 1];
-         CampaignEvents camp = new CampaignEvents();
-         Test.startTest();
-         	camp = PMP_SearchEventDetailController.getCampaignMarqueeDetails(eve.Id);
-         Test.stopTest();
-         system.assert(camp!=Null,'Test Failed');
-     }*/
-
-     /*@isTest 
-     static void getCampaignCardDetailsTest(){
-         PMP_Marketplace_Event__c eve=[Select Id,Name from PMP_Marketplace_Event__c Limit 1];
-         CampaignEvents camp = new CampaignEvents();
-         Test.startTest();
-         	camp = PMP_SearchEventDetailController.getCampaignCardDetails(eve.Id,'partner','en_US',1,8);
-         Test.stopTest();
-           system.assert(camp!=Null,'Test Failed');
-     } //
-    
-     @isTest 
-    static void getCampaignBannerDetailsTest(){
-         PMP_Company__c par=[Select Id,Name from PMP_Company__c Limit 1];
-         PMP_Partner_Offering__c off=[Select Id,Name from PMP_Partner_Offering__c Limit 1];
-         String lang = 'en_US';
-         Test.startTest();
-         	//system.assertNotEquals( NULL ,PMP_SearchEventDetailController.getCampaignBannerDetails(par.Id,true,lang).size(),'Test Failed');
-        	//system.assertNotEquals( NULL ,PMP_SearchEventDetailController.getCampaignBannerDetails(par.Id,true,NULL).size(),'Test Failed');
-            //system.assertNotEquals( NULL ,PMP_SearchEventDetailController.getCampaignBannerDetails(off.Id,false,NULL).size(),'Test Failed');
-        	//system.assertNotEquals( NULL ,PMP_SearchEventDetailController.getCampaignBannerDetails(off.Id,false,lang).size(),'Test Failed');
-         Test.stopTest();
-    }*/
     
     
 }

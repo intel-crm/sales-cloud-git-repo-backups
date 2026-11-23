@@ -5,6 +5,6 @@
     <hasSidebar>false</hasSidebar>
     <label>Sales Incentives</label>
     <motif>Custom94: Stethoscope</motif>
-    <url>https://intel.cloud.varicent.com/payeewebv2/sforce_composite_login?SessionId={!API.Session_ID}&amp;ServerURL={!API.Partner_Server_URL_540}&amp;Tenant=intelcorp&amp;Model=INTELPROD</url>
+    <url>https://inteldev.cloud.varicent.com/payeewebv2/sforce_composite_login?SessionId={!API.Session_ID}&amp;ServerURL={!API.Partner_Server_URL_540}&amp;Tenant=intelcorp&amp;Model=INTELDEV</url>
     <urlEncodingKey>UTF-8</urlEncodingKey>
 </CustomTab>

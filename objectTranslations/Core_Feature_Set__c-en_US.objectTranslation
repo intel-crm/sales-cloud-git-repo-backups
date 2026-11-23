@@ -21,6 +21,10 @@
         <name>Core_Feature_BU__c</name>
     </fields>
     <fields>
+        <label><!-- Feature Date Value --></label>
+        <name>Core_Feature_Date_Value__c</name>
+    </fields>
+    <fields>
         <label><!-- Feature Header --></label>
         <name>Core_Feature_Header__c</name>
         <relationshipLabel><!-- Feature Sets --></relationshipLabel>

@@ -1,81 +1,100 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <columns>
-        <field>Opportunity$Name</field>
+        <field>OPPORTUNITY_NAME</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>Opportunity.KPI_Opportunity__r$Core_KPI_Total_Price__c</field>
+        <field>Core_Opportunity_KPI__c.Core_Opp_KPI_Total_Price__c</field>
     </columns>
     <columns>
-        <field>Opportunity$StageName</field>
+        <field>STAGE_NAME</field>
     </columns>
     <columns>
-        <field>Opportunity$Owner.UserRole</field>
+        <field>ROLLUP_DESCRIPTION</field>
     </columns>
     <columns>
-        <field>Opportunity$Core_Opportunity_Owner__c</field>
+        <field>FULL_NAME</field>
     </columns>
     <columns>
-        <field>Opportunity$CreatedDate</field>
+        <field>ACCOUNT_NAME</field>
     </columns>
     <columns>
-        <field>Opportunity$Core_Sales_Groups__c</field>
+        <field>AGE</field>
     </columns>
-    <description>*UPDATED w/ NRTK Report Type*
-List of PENDING opportunities with the KPIs</description>
+    <columns>
+        <field>CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Sales_Groups__c</field>
+    </columns>
+    <description>List of PENDING opportunities with the KPIs</description>
     <filter>
         <criteriaItems>
-            <column>Opportunity$Core_Sales_Groups__c</column>
+            <column>Opportunity.Core_Sales_Groups__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
+            <operator>equals</operator>
             <value>US Sales Group</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Opportunity$StageName</column>
+            <column>OWNER_MANAGER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Palmeri,Calfin,Brian Landi,Gilad Gitlin,Dorin,Michelle Luo,Gloria Nogales,Radhika Kunte,Gina Moore</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>STAGE_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Qualify,Define,Develop,Design</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity$Owner.Core_Manager__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>palmeri,calfin,Brian Landi,Gilad Gitlin,Dorin,Michelle Luo,Corredor,Moore,Westall,Legette,yuen,russell</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
-        <field>Opportunity$CloseDate</field>
+        <dateGranularity>FiscalQuarter</dateGranularity>
+        <field>CLOSE_DATE</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>Opportunity$Owner.Core_Manager__c</field>
+        <field>OWNER_MANAGER</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>Opportunity.KPI_Opportunity__r$Name</field>
+        <field>CUST_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>US ACCTS Pipeline PENDING wKPI</name>
     <params>
+        <name>terr</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>open</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
         <name>co</name>
         <value>1</value>
     </params>
-    <reportType>Opportunities_with_New_Opportunity_KPIs__c</reportType>
-    <roleHierarchyFilter>SMG</roleHierarchyFilter>
+    <reportType>OpportunityCustomEntity$Core_Opportunity_KPI__c</reportType>
     <scope>organization</scope>
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
-        <dateColumn>Opportunity$CloseDate</dateColumn>
-        <interval>INTERVAL_CURNEXTY</interval>
+        <dateColumn>CLOSE_DATE</dateColumn>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

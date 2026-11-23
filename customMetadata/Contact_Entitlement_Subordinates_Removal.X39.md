@@ -4,7 +4,7 @@
     <protected>false</protected>
     <values>
         <field>Core_Condition__c</field>
-        <value xsi:type="xsd:string">a2W1J000001H4TB,a2W1J000001H4T9,a2W1J000001H4TC,a2W1J000001H4TA,a2W1J000001H4T8,a2W3b00000EW3fj</value>
+        <value xsi:type="xsd:string">a2W1J000001H4TB,a2W1J000001H4T9,a2W1J000001H4TC,a2W1J000001H4TA,a2W1J000001H4T8,a2W2i000000Cy9a</value>
     </values>
     <values>
         <field>Core_Entitlement_Id__c</field>

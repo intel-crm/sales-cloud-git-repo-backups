@@ -6,7 +6,9 @@
     <enableOaForCore>false</enableOaForCore>
     <enableOmniCleanMetadataPref>false</enableOmniCleanMetadataPref>
     <enableOmniGlobalAutoNumberPref>false</enableOmniGlobalAutoNumberPref>
+    <enableOmniReplaceFileBasedApex>false</enableOmniReplaceFileBasedApex>
     <enableOmniStudioContentTest>false</enableOmniStudioContentTest>
-    <enableOmniStudioMetadata>false</enableOmniStudioMetadata>
-    <enableStandardOmniStudioRuntime>false</enableStandardOmniStudioRuntime>
+    <enableOmniStudioDrVersion>false</enableOmniStudioDrVersion>
+    <enableOmniStudioMetadata>true</enableOmniStudioMetadata>
+    <enableStandardOmniStudioRuntime>true</enableStandardOmniStudioRuntime>
 </OmniStudioSettings>

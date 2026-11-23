@@ -3,11 +3,16 @@
         //component.set('v.messageNotification', '');
         let recordId = component.get('v.recordId');  // NOSONAR
         let action = component.get('c.PublishTenderQuote');  // NOSONAR
+        console.log('Entered publish quote');
         action.setParams({
             recId: recordId,
         });
         action.setCallback(this, function (response) {
+            console.log('response:'+response);   // NOSONAR
+                console.log('response11');
                 let state = response.getState();
+                //let returnValue = response.getReturnValue();   // NOSONAR
+                console.log('state:'+state);
                 if (state === 'SUCCESS') {
                     let returnValue = response.getReturnValue();   // NOSONAR
                     component.set('v.messageNotification', returnValue.messageNotification);
@@ -15,6 +20,7 @@
                     component.set('v.isSuccess', returnValue.isSuccess);
                 }else if (state === 'ERROR'){
                     let returnValue = response.getReturnValue(); 
+                    console.log("Response Data:", JSON.stringify(response.getReturnValue()));
                     component.set('v.messageNotification',returnValue != null ? returnValue.messageNotification : 'Error occured while processing the request Please Contact IQR Team');
                     component.find("mySpinner").set("v.class", "slds-hide");
                 }

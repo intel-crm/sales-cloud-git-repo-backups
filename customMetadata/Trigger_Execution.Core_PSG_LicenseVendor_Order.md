@@ -8,11 +8,11 @@
     </values>
     <values>
         <field>Class_Name__c</field>
-        <value xsi:type="xsd:string">Core_PSG_OrderTriggerHandler</value>
+        <value xsi:type="xsd:string">Sales_OrderTriggerHandler</value>
     </values>
     <values>
         <field>Description__c</field>
-        <value xsi:type="xsd:string">This switch will control trigger logic on Order for License Vendor Validation check</value>
+        <value xsi:type="xsd:string">This switch will control trigger on order for License Vendor valdiation check.</value>
     </values>
     <values>
         <field>Inactive_for_Profile__c</field>
@@ -20,7 +20,7 @@
     </values>
     <values>
         <field>Inactive_for_User__c</field>
-        <value xsi:type="xsd:string">0053b00000CIgL2AAL</value>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>Object__c</field>
@@ -28,6 +28,6 @@
     </values>
     <values>
         <field>Trigger_Events__c</field>
-        <value xsi:type="xsd:string">before insert,before update,after insert,after update</value>
+        <value xsi:type="xsd:string">After Update</value>
     </values>
 </CustomMetadata>

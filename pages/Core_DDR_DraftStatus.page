@@ -1,0 +1,12 @@
+<apex:page standardController="Core_Design_Registration__c" showHeader="false" sidebar="false" standardStylesheets="false">
+    <style>
+        .center {
+            text-align: center;
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+    <div class="center">
+        <p>Your Design Registration is in Draft Status.Please continue to add Products and Submit for Approval.</p>
+    </div>
+</apex:page>

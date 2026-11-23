@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ExpressionSetDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
+    <executionMode>Cloud</executionMode>
     <executionScale>Low</executionScale>
     <label>Pricing Route Rule Expression Set  ASMO CCG</label>
     <processType>Bre</processType>
@@ -11,7 +12,6 @@
         <expressionSetDefinition>Pricing_Route_Rule_Expression_Set_ASMO_CCG</expressionSetDefinition>
         <label>Pricing Route Rule Expression Set  ASMO CCG V1</label>
         <processType>Bre</processType>
-        <rank>2</rank>
         <shouldShowExplExternally>false</shouldShowExplExternally>
         <startDate>2026-05-29T10:22:14.000Z</startDate>
         <status>Active</status>
@@ -85,7 +85,7 @@
                 <criteria>
                     <operator>Equals</operator>
                     <sequenceNumber>3</sequenceNumber>
-                    <sourceFieldName>Pricing_RouteRule_Name</sourceFieldName>
+                    <sourceFieldName>Pricing_Routing_Output_Criteria_Nm</sourceFieldName>
                     <value>&apos;&apos;</value>
                     <valueType>Literal</valueType>
                 </criteria>
@@ -99,14 +99,14 @@
                 <criteria>
                     <operator>Equals</operator>
                     <sequenceNumber>5</sequenceNumber>
-                    <sourceFieldName>Pricing_Routing_Output_Criteria_Nm</sourceFieldName>
+                    <sourceFieldName>Pricing_RouteRule_Name</sourceFieldName>
                     <value>&apos;&apos;</value>
                     <valueType>Literal</valueType>
                 </criteria>
                 <resultParameter>condition_output__2</resultParameter>
             </advancedCondition>
             <hasNestedExplainability>false</hasNestedExplainability>
-            <label>Is Pricing Route Rules ASMO/EMEA CCG Retail has No Matching Rules ?</label>
+            <label>Is Pricing Route Rules ASMO/EMEA CCG Retail has No Matching Rules?</label>
             <name>IsPricingRouteRulesASMOEMEACCGRetailhasNoMatchingRules</name>
             <resultIncluded>false</resultIncluded>
             <sequenceNumber>2</sequenceNumber>
@@ -157,8 +157,8 @@
                 <type>DecisionTable</type>
             </decisionTable>
             <hasNestedExplainability>false</hasNestedExplainability>
-            <label>Pricing Route Rules ASMO CCG Quantity GTE</label>
-            <name>PricingRouteRulesASMOCCGQuantityGTE</name>
+            <label>Pricing Route Rules ASMO CCG Quantity GT</label>
+            <name>PricingRouteRulesASMOCCGQuantityGT</name>
             <parentStep>IsPricingRouteRulesASMOCCGQuantityLTEhasNoMatchingRules</parentStep>
             <resultIncluded>true</resultIncluded>
             <sequenceNumber>1</sequenceNumber>
@@ -284,7 +284,7 @@
             <collection>false</collection>
             <dataType>Text</dataType>
             <input>true</input>
-            <lookupName>Pricing_Route_Rules_ASMO_CCG_Quantity_LTE</lookupName>
+            <lookupName>Pricing_Route_Rules_ASMO_EMEA_CCG_Retail</lookupName>
             <lookupType>DecisionTable</lookupType>
             <name>Pricing_Market_Segment_Nm__c</name>
             <output>false</output>

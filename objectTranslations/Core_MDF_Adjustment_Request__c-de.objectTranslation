@@ -41,10 +41,6 @@
         <value><!-- Claim Adjustment Request --></value>
     </caseValues>
     <fields>
-        <label><!-- Account Node --></label>
-        <name>Core_MDF_Account_Node_nm__c</name>
-    </fields>
-    <fields>
         <help><!-- Unique identifier of Claim created based on the Adjustment Request --></help>
         <label>Berichtigungsantrag - Name</label>
         <name>Core_MDF_Adjustment_Claim_Nbr__c</name>
@@ -68,12 +64,7 @@
         <name>Core_MDF_Amount_Amt__c</name>
     </fields>
     <fields>
-        <help><!-- If Checked, this Adjustment Request Amount will bypass the Total Adjustment Request Amount Validation for this Reference Claim. Provide justification in the comments section. --></help>
-        <label><!-- Bypass Amount Validation --></label>
-        <name>Core_MDF_Bypass_Amt_Val_Ind__c</name>
-    </fields>
-    <fields>
-        <help><!-- Free text comments related to the Claim Adjustment Request. In case the amount validation is bypassed, need to provide justification for bypassing validation. --></help>
+        <help><!-- Free text comments related to the Claim Adjustment Request --></help>
         <label>Kommentar zur Berichtigungsanfrage</label>
         <name>Core_MDF_Comments_Txt__c</name>
     </fields>
@@ -99,8 +90,16 @@
         <label>Grund für Berichtigung</label>
         <name>Core_MDF_Reason_Cd__c</name>
         <picklistValues>
+            <masterLabel>Claim Review Results (Negative)</masterLabel>
+            <translation><!-- Claim Review Results (Negative) --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Duplicate Claim</masterLabel>
             <translation><!-- Duplicate Claim --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Escalation</masterLabel>
+            <translation><!-- Escalation --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Overpaid Claim</masterLabel>
@@ -116,11 +115,6 @@
         <label>Referenzantrag - Name</label>
         <name>Core_MDF_Reference_Claim_Nbr__c</name>
         <relationshipLabel><!-- Claim Adjustment Requests --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Sub Claim --></label>
-        <name>Core_MDF_Sub_Claim_Id__c</name>
-        <relationshipLabel><!-- Claim Adjustment Requests (Sub Claim) --></relationshipLabel>
     </fields>
     
     <nameFieldLabel><!-- Adjustment Request Number --></nameFieldLabel>
@@ -141,24 +135,8 @@
         <name>Core_MDF_Amount_Val</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Adjustment request can only be created for Non-VAT claims that are in Payment Due/Pending Available Funds/Hold/Queued for Payment status. --></errorMessage>
-        <name>Core_MDF_Block_Adjustment_Req_Creation</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Adjustment cannot be created in Cancelled status --></errorMessage>
-        <name>Core_MDF_Block_On_Cancelled_Status</name>
-    </validationRules>
-    <validationRules>
         <errorMessage><!-- Adjustment request cannot be edited. --></errorMessage>
         <name>Core_MDF_EditNotAllowedFor_Adjustment</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- The selected Adjustment Reason is not applicable for the Program/Status of the given Reference Claim --></errorMessage>
-        <name>Core_MDF_PreventPositiveReasonForNonVat</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Please mention the reason for bypassing the amount validation in the &quot;Adjustment Request Comments&quot; section. --></errorMessage>
-        <name>Core_MDF_ReasonForBypassingAmtValidation</name>
     </validationRules>
     <validationRules>
         <errorMessage>Bitte wählen Sie einen Wert für Referenzantrag - Name</errorMessage>

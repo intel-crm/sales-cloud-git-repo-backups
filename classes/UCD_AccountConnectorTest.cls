@@ -75,7 +75,7 @@ cimIdandScore.put(c.cimID,c.searchScore);
         String stateName = UCD_AccountConnector.getStateAndCountryName(stateCode);
         String stateCode2 = UCD_AccountConnector.getStateName(stateName);
     }
-    /*@isTest static  void testCreateAccountFromCIMData() {
+    @isTest static  void testCreateAccountFromCIMData() {
         UCD_CIMModel cimdata = new UCD_CIMModel();
         cimdata.cimID = '11172847';
         cimdata.accName='Adonios Inc';
@@ -95,10 +95,9 @@ cimIdandScore.put(c.cimID,c.searchScore);
         newAccount.BillingState =cimdata.CountrySubdivisionCd;
         insert newAccount;
         system.assertEquals(newAccount.Name, 'Adonios Inc');
-    }*/
+    }
     @isTest static  void findAccountsTest(){
         UCD_AccountConnector ufind = new UCD_AccountConnector();
-        insert new Core_ACM_Control_Execution__c(Name='SwitchAcmApp',IsActive__c = true);
        Account c = new Account();
         c.Core_CIM_ID__c = '12345';
         c.name = 'Sample Account';
@@ -109,6 +108,7 @@ cimIdandScore.put(c.cimID,c.searchScore);
         system.assertEquals('USA', c.BillingCountry);
         insert c;
         UCD_AccountConnector.findAccounts('Whitefield', '');
+        system.debug('!!!!!!!!!!!#########'+UCD_AccountConnector.findAccounts('Whitefield', ''));
     }
     @isTest static void getOwnerNameTest(){
         Profile p = [SELECT Id FROM Profile WHERE Name='Standard User']; 
@@ -123,7 +123,6 @@ cimIdandScore.put(c.cimID,c.searchScore);
         system.assertEquals(UCD_AccountConnector.getOwnerName(u.id), 'UCDTesting'); 
     }
     @isTest static  void getSalesCloudAccount() {
-        insert new Core_ACM_Control_Execution__c(Name='SwitchAcmApp',IsActive__c = true);
         Account c = new Account();
         c.Core_CIM_ID__c = '12345';
         c.name = 'Sample Account';

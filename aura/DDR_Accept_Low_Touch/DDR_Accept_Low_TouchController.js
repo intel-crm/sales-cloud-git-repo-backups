@@ -1,7 +1,6 @@
 ({
     doInit : function(component, event, helper){
       console.log('Record Id from parent -->', component.get("v.recordId"));
-        component.set("v.actionName", "AcceptHighTouch");
     },
     cancelPopup : function(component, event, helper) {
         $A.get("e.force:closeQuickAction").fire();

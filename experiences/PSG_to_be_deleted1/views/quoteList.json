@@ -1,0 +1,53 @@
+{
+  "appPageId" : "643f101e-1dcc-48e4-87fe-0d23f449e403",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "5f29cded-1409-4f32-ae68-d40f19238754",
+  "label" : "Quote List",
+  "regions" : [ {
+    "id" : "28d09e25-96bc-4479-b5a4-4538a5a229ea",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:psg_quoteRequestButton",
+      "id" : "30fec777-4497-46d1-901d-b8d7505fa42d",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "enableInlineEdit" : true,
+        "filterName" : "{!filterId}",
+        "layout" : "FULL",
+        "pageSize" : 25,
+        "scope" : "SBQQ__Quote__c",
+        "showActionBar" : true,
+        "showChartsPanel" : true,
+        "showDisplay" : "showall",
+        "showFilterPanel" : true,
+        "showImageIcon" : true,
+        "showManualRefreshButton" : true,
+        "showObjectName" : true,
+        "showPinnedList" : true,
+        "showSearchBar" : true
+      },
+      "componentName" : "forceCommunity:objectHome",
+      "id" : "1cd16b95-012e-469f-aeb5-07234e9f12f8",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "5dc21440-8fd2-4bbc-830f-8b703b7732be",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "ce14e486-559a-452d-8b3d-f89d812c5086",
+    "regionName" : "footer",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "list-a9Y"
+}

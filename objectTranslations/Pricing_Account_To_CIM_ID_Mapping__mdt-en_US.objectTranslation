@@ -32,9 +32,5 @@
             <translation><!-- Intermediate Level 2 --></translation>
         </picklistValues>
     </fields>
-    <fields>
-        <label><!-- Pricing Unified Customer Type --></label>
-        <name>Pricing_Unified_Customer_Type__c</name>
-    </fields>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

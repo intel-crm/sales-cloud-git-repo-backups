@@ -1,7 +1,7 @@
-<aura:component extends="c:MarketplaceBaseComponent" 
+<aura:component extends="c:MarketplaceBaseComponent" controller="MarketplaceCreateProductController"
     implements="forceCommunity:availableForAllPageTypes,force:hasRecordId">
-<!--controller="MarketplaceCreateProductController"-->
-    <!-- <aura:attribute name="data" type="Object" />
+
+    <aura:attribute name="data" type="Object" />
     <aura:attribute name="offeringId" type="Id" />
     <aura:attribute name="loggedInAdmin" type="String" />
     <aura:attribute name="admins" type="Object[]" />
@@ -9,16 +9,10 @@
     <aura:attribute name="selectedAdmin" type="Id" />
     <aura:attribute name="selectedOfferingStatus" type="String" />
     <aura:attribute name="isOpen" type="Boolean" default="false" />
-    <aura:attribute name="disable" type="Boolean" default="false" /> 
     <aura:attribute name="businessSegmentList" type="Object[]"  />
-    <aura:attribute name="showSpinner" type="boolean" default="false" />
-    <aura:attribute name="showRetiredComments" type="Boolean" default="false" />
-    <aura:attribute name="RetiredRequired" type="Boolean" default="false" />
-    <aura:attribute name="RetiredComments" type="String" default="" />
-    
-    <aura:handler name="init" value="{!this}" action="{!c.doInit}" /> -->
-    
-    <!-- <div class="slds-theme_default">
+    <aura:attribute name="showSpinner" type="boolean" default="false" /><!--Added for US535344-->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <div class="slds-theme_default">
         <lightning:layout>
             <lightning:layoutItem flexibility="auto">
                 <div>
@@ -29,9 +23,8 @@
                 </div>
             </lightning:layoutItem>
         </lightning:layout>
-        <div> -->
-
-            <!-- <lightning:layout already commented>
+        <div>
+            <!-- <lightning:layout >
             <lightning:layoutItem  flexibility="auto" padding="horizontal-large">
                 <p class="slds-text-heading_small admin-partner-font">{!$Label.c.PMP_Admin_Partners_Iteration}</p>
                 <hr/>
@@ -39,17 +32,18 @@
         </lightning:layout> -->
 
             <!--Added for US535344-->
-            <!-- <aura:if isTrue="{!v.showSpinner}">
+            <aura:if isTrue="{!v.showSpinner}">
                 <lightning:spinner class="mainSpinner" alternativeText="..." />
             </aura:if>
-           
+            <!--US535344 End-->
+            <!-- Ashish Changes -->
             <lightning:layout class="padding-mobile-vertical-medium padding-desktop-vertical-x-large">
                 <lightning:layoutItem size="12">
-                    <lightning:layout multipleRows="true"> -->
+                    <lightning:layout multipleRows="true">
                         <!-- Ashish Changes -->
                         <!-- <lightning:layoutItem size="8">
                        <lightning:layout  multipleRows="true" >-->
-                        <!-- <lightning:layoutItem class="slds-p-around_medium slds-size_12-of-12 slds-medium-size_6-of-12 ">
+                        <lightning:layoutItem class="slds-p-around_medium slds-size_12-of-12 slds-medium-size_6-of-12 ">
                            <aura:if isTrue="{!$Label.c.PMP_Assigned_to_Admin}">
                               <lightning:input aura:id="input"
                                                disabled="true"
@@ -83,16 +77,8 @@
                         </lightning:layoutItem>
                     </lightning:layout>
                      <lightning:layout  multipleRows="true">
-        	 <lightning:layoutItem class="slds-p-around_medium slds-size_12-of-12 slds-medium-size_6-of-12 "> -->
+        	 <lightning:layoutItem class="slds-p-around_medium slds-size_12-of-12 slds-medium-size_6-of-12 ">
                <!--  <div class="slds-grid slds-wrap slds-list_horizontal slds-p-left_medium">  -->
-                 <!-- <aura:if isTrue="{!v.showRetiredComments}">
-                     <div class="row">
-                    
-                    <lightning:input aura:id="comments" required="{!v.showRetiredComments}" name="input1" value="{!v.RetiredComments}" maxlength="255" label="Comments" />
-           
-                    </div>
-                 </aura:if>  
-                 
                  <div class="slds-grid slds-wrap">
                     <p class="slds-p-right_medium"><b>{!$Label.c.PMP_Business_Segments} : </b></p>
                         <div class="segment-font">
@@ -100,31 +86,27 @@
                                 <p> {!businessSegmentValue}</p> 
                             </aura:iteration>
                         </div>
-                     
-                     
                 </div>
-                    
               </lightning:layoutItem>
-              
              </lightning:layout>
                 </lightning:layoutItem>
             </lightning:layout>
 
             <lightning:layout>
                 <lightning:layoutItem>
-                    <aura:if isTrue="{!v.isOpen}"> -->
+                    <aura:if isTrue="{!v.isOpen}">
                         <!--<div style="height:500px">-->
-                        <!-- <div>
+                        <div>
                             <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open slds-modal_medium"
                                 aria-labelledby="modal-heading-01" aria-modal="true"
                                 aria-describedby="modal-content-id-1">
                                 <div class="slds-modal__container adminSelectBtn">
-                                    <header class="slds-modal__header adminPopUpBtn"> -->
+                                    <header class="slds-modal__header adminPopUpBtn">
                                         <!--<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">
                                 <lightning:icon iconName="utility:close" alternativeText="Close" />
                                 <span class="slds-assistive-text">Close</span>
                             </button>-->
-                                        <!-- <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">
+                                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">
                                             {!$Label.c.PMP_Select_Admin}</h2>
                                     </header>
                                     <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
@@ -152,12 +134,12 @@
                 </lightning:layoutItem>
             </lightning:layout>
         </div>
-    </div> -->
-          <!-- <div class="slds-p-top_x-large padding-mobile-horizontal-medium">
+    </div>
+          <div class="slds-p-top_x-large padding-mobile-horizontal-medium">
            <span class="mobileFloatRight desktopFloatRight" onclick="{!c.saveAdminChanges}">
-                            <c:IntelButton class="button inline largeMobile submit" disabled="{! v.disable}">
+                            <c:IntelButton class="button inline largeMobile">
                                 {!$Label.c.PMP_Edit_Storefront_Submit_Btn}
                             </c:IntelButton>
-            </span>
-          </div> -->
+                        </span>
+          </div>
 </aura:component>

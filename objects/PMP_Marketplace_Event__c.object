@@ -195,35 +195,6 @@
         </valueSet>
     </fields>
     <fields>
-        <fullName>PMP_Event_Learn_More_Link_Txt__c</fullName>
-        <description>Holds the URL value for learn more link</description>
-        <label>Event Learn More Link</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Url</type>
-    </fields>
-    <fields>
-        <fullName>PMP_Event_Marquee_Desc_Txt__c</fullName>
-        <description>Holding the value for event detail page sub marquee description</description>
-        <label>Event Marquee Description</label>
-        <length>32768</length>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>LongTextArea</type>
-        <visibleLines>3</visibleLines>
-    </fields>
-    <fields>
-        <fullName>PMP_Event_Screen_Reader_Txt__c</fullName>
-        <description>Holds the event CTA button screen reader values which will be used for assistance.</description>
-        <label>Event Screen Reader Text</label>
-        <length>2000</length>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>LongTextArea</type>
-        <visibleLines>10</visibleLines>
-    </fields>
-    <fields>
         <fullName>PMP_Marketplace_Desc__c</fullName>
         <description>Holds the information for Event Description.</description>
         <inlineHelpText>Holds the information for Event Description.</inlineHelpText>
@@ -285,8 +256,6 @@
         <columns>PMP_Marketplace_Event_Tagline__c</columns>
         <columns>PMP_Marketplace_Event_Start_Dt__c</columns>
         <columns>PMP_Marketplace_Event_End_Dt__c</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>CREATEDBY_USER</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
         <sharedTo>
@@ -301,14 +270,5 @@
     <pluralLabel>Marketplace Events</pluralLabel>
     <searchLayouts/>
     <sharingModel>Private</sharingModel>
-    <validationRules>
-        <fullName>End_Date_cannot_be_before_Start_Date</fullName>
-        <active>true</active>
-        <description>End Date cannot be before Start Date</description>
-        <errorConditionFormula>PMP_Marketplace_Event_End_Dt__c &lt;
-PMP_Marketplace_Event_Start_Dt__c</errorConditionFormula>
-        <errorDisplayField>PMP_Marketplace_Event_End_Dt__c</errorDisplayField>
-        <errorMessage>End Date cannot be before Start Date</errorMessage>
-    </validationRules>
     <visibility>Public</visibility>
 </CustomObject>

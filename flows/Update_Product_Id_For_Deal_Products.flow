@@ -2,6 +2,22 @@
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>60.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Set_status_to_approved</name>
+        <label>Set status to approved</label>
+        <locationX>50</locationX>
+        <locationY>395</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Core_Design_Product_Status_Nm__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Approved</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Check_PricingStartDate_PricingEndDate_Null</targetReference>
+        </connector>
+    </assignments>
     <constants>
         <name>FPGA</name>
         <dataType>String</dataType>
@@ -27,7 +43,7 @@
         <name>Check_PricingStartDate_PricingEndDate_Null</name>
         <label>PricingStartDate_PricingEndDate_Null?</label>
         <locationX>182</locationX>
-        <locationY>287</locationY>
+        <locationY>587</locationY>
         <defaultConnector>
             <targetReference>CheckProduct</targetReference>
         </defaultConnector>
@@ -94,7 +110,7 @@
         <name>CheckProduct</name>
         <label>Check Product</label>
         <locationX>182</locationX>
-        <locationY>587</locationY>
+        <locationY>887</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Populate_Product</name>
@@ -131,6 +147,59 @@
                 <targetReference>UpdateProdDetailonDRPlookup</targetReference>
             </connector>
             <label>Populate_Product</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Resubmission_scenario</name>
+        <label>Deal Resubmission scenario?</label>
+        <locationX>182</locationX>
+        <locationY>287</locationY>
+        <defaultConnector>
+            <targetReference>Check_PricingStartDate_PricingEndDate_Null</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes</name>
+            <conditionLogic>3 AND 2 AND (1 OR 4 OR 5)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_Design_Registration_Id__r.Core_Design_Registration_Status_Nm__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Approved</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Design_Registration_Id__r.RecordType.Name</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>Deal</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>IsCreate</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Design_Registration_Id__r.Core_Design_Registration_Status_Nm__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Rejected</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Design_Registration_Id__r.Core_Design_Registration_Status_Nm__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Re-Submitted</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_status_to_approved</targetReference>
+            </connector>
+            <label>Yes</label>
         </rules>
     </decisions>
     <environments>Default</environments>
@@ -174,7 +243,7 @@
         <name>Update_PSD_PED_On_DRP</name>
         <label>Update PSD_PED_On_DRP</label>
         <locationX>50</locationX>
-        <locationY>395</locationY>
+        <locationY>695</locationY>
         <connector>
             <targetReference>CheckProduct</targetReference>
         </connector>
@@ -211,7 +280,7 @@
         <name>UpdateProdDetailonDRPlookup</name>
         <label>Update Prod Detail on DRP lookup</label>
         <locationX>50</locationX>
-        <locationY>695</locationY>
+        <locationY>995</locationY>
         <inputAssignments>
             <field>Core_Product_Id__c</field>
             <value>
@@ -224,7 +293,7 @@
         <locationX>56</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>Check_PricingStartDate_PricingEndDate_Null</targetReference>
+            <targetReference>Resubmission_scenario</targetReference>
         </connector>
         <filterFormula>AND(NOT({!$Permission.PCC_Bypass_Automation}),
 NOT(ISBLANK({!$Record.PCC_Product_Additional_Attribute__c})))</filterFormula>

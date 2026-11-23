@@ -37,16 +37,18 @@
         <field>Pricing_Integration_Staging__c$Pricing_Message_Type__c</field>
     </columns>
     <columns>
+        <aggregateTypes>Sum</aggregateTypes>
         <field>Pricing_Integration_Staging__c$Pricing_QuoteID__c.Pricing_IsUnifiedCustomer__c</field>
     </columns>
     <columns>
         <field>Pricing_Integration_Staging__c$Pricing_QuoteID__c.Pricing_Unified_Global_End_Customer_Nm__c</field>
     </columns>
     <columns>
+        <aggregateTypes>Sum</aggregateTypes>
         <field>Pricing_Integration_Staging__c$Pricing_QuoteID__c.Pricing_Is_Sanctioned__c</field>
     </columns>
     <filter>
-        <booleanFilter>(1 OR 2) AND 3 AND 4 AND 5</booleanFilter>
+        <booleanFilter>(1 OR 2) AND 3</booleanFilter>
         <criteriaItems>
             <column>Pricing_Integration_Staging__c$Pricing_RequestID__c.RecordType</column>
             <columnToColumn>false</columnToColumn>
@@ -57,30 +59,16 @@
         <criteriaItems>
             <column>Pricing_Integration_Staging__c$Pricing_Is_Country_Mismatch_Request__c</column>
             <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
+            <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
             <value>1</value>
         </criteriaItems>
         <criteriaItems>
             <column>Pricing_Integration_Staging__c$Pricing_Message_Type__c</column>
             <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
+            <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
             <value>UnifiedEndCustomer</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Pricing_Integration_Staging__c$Pricing_RequestID__c.Core_Data_Country_Nm__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value></value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Pricing_Integration_Staging__c$Pricing_QuoteID__c.Pricing_IsUnifiedCustomer__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>0</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -88,13 +76,13 @@
     <name>IQR UCD Rejected Requests</name>
     <params>
         <name>co</name>
-        <value>1</value>
+        <value>0</value>
     </params>
     <reportType>Pricing_IQR_UCD_Requests__c</reportType>
     <scope>organization</scope>
     <showDetails>true</showDetails>
-    <showGrandTotal>true</showGrandTotal>
-    <showSubTotals>true</showSubTotals>
+    <showGrandTotal>false</showGrandTotal>
+    <showSubTotals>false</showSubTotals>
     <timeFrameFilter>
         <dateColumn>Pricing_Integration_Staging__c$CreatedDate</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>

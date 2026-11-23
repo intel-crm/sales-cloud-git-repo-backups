@@ -14,8 +14,7 @@
       // Initial State
       if (!state) state = {
           items: [],
-          // IPA2.0 + US TWC4497-1631
-          // multipleOfferingDetails:[],
+          multipleOfferingDetails:[],
         notificationMessage: ''
       };
 
@@ -29,9 +28,9 @@
 
         case 'showCompareTrayNotification':
           return Object.assign({}, state, { notificationMessage: action.msg });
-          // IPA2.0 + US TWC4497-1631 
-          // case 'fetchMultipleOfferingDetails':
-          //     return Object.assign({}, state, { multipleOfferingDetails: action.response });
+              
+          case 'fetchMultipleOfferingDetails':
+              return Object.assign({}, state, { multipleOfferingDetails: action.response });
 
         case 'toggleCompareTrayItem':
           var idx = state.items.findIndex(function(i) { return i.id == action.item.id; });

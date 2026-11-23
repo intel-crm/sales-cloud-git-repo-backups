@@ -103,12 +103,14 @@ Modified By:        Date:       Changes:
         Set<String> progOptSet = new Set<String>();
         List<String> programOptions = new List<String>(); 
         try{
-            for(Core_MDF_Smart_Picklist_Maintenance__mdt  obj : [select Core_MDF_Project_nm__c from Core_MDF_Smart_Picklist_Maintenance__mdt order by Core_MDF_Project_nm__c LIMIT 1000]){
+            for(Core_MDF_Smart_Picklist_Maintenance__mdt  obj : [select Core_MDF_Project_nm__c from Core_MDF_Smart_Picklist_Maintenance__mdt order by Core_MDF_Project_nm__c]){
             progOptSet.add(obj.Core_MDF_Project_nm__c);
             }
             programOptions.addAll(progOptSet);
+            system.debug('PROG OPTIONS:'+programOptions);
         }
         catch(Exception e){
+            system.debug('Exception is:'+e.getMessage());
             Core_MDF_CCP_UtilityClass.logError(e);
             throw new AuraHandledException(e.getMessage());
         }
@@ -304,7 +306,7 @@ public static Map<String,List<String>> getDependentPicklistValues(String objName
         Core_MDF_CCP_UtilityClass.logError(e);
         throw new AuraHandledException(e.getMessage());
     }
-    //System.debug('fieldValuesMap'+fdvaluesmap); //ATHR
+    System.debug('fieldValuesMap'+fdvaluesmap);
     return fdvaluesmap;
 }
 

@@ -1,0 +1,20 @@
+<messaging:emailTemplate subject="Sandbox: {!relatedTo.Subject}" recipientType="User" relatedToType="Task">
+<messaging:htmlEmailBody >
+<h2 style="color:#33a8ff">Task</h2>
+
+To: {!relatedTo.owner.Name}<br/><br/>
+
+{!relatedTo.LastModifiedBy.Name} User has assigned you the following task:<br/><br/>
+
+Subject: {!relatedTo.Subject}<br/>
+Lead: {!relatedTo.Who.Name}<br/>
+Due Date: {!relatedTo.ActivityDate}<br/>
+Priority: {!relatedTo.Priority}<br/>
+Comments: {!relatedTo.Description}<br/><br/>
+
+For more details, click the following link:<br/><br/>
+
+{!$Label.Core_IPS_Notification_Internal_URL}{!relatedTo}
+
+</messaging:htmlEmailBody>
+</messaging:emailTemplate>

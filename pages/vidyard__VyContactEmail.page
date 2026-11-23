@@ -1,0 +1,99 @@
+<apex:page showHeader="true" sidebar="true" standardStylesheets="false" StandardController="Contact" extensions="vidyard.SalesEmailControllerExtension" cache="false" lightningStylesheets="true">
+  <apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" />
+
+  <style type="text/css">
+    .sfdcBody {
+      padding: 0 !important;
+    }
+  </style>
+
+  <script type="text/javascript">
+    var j$ = jQuery.noConflict();
+    
+    function resizeCanvas() {
+      var height = j$(window).height();
+      if (j$('#globalHeaderBar').length) {
+        height -= j$('#globalHeaderBar').height();
+      }
+      if (j$('#AppBodyHeader').length) {
+        height -= (j$('#AppBodyHeader').height() + 5);
+      }
+      j$('#canvas').height(height);
+    }
+
+    j$(window).on('resize', function() {
+      resizeCanvas();
+    });
+    
+    j$(document).ready(function () {
+      resizeCanvas();
+
+      var acceptingMessages = true;
+      var eventMethod = window.addEventListener ? 'addEventListener' : 'attachEvent';
+      var eventer = window[eventMethod];
+      var messageEvent = window.addEventListener ? 'message' : 'onmessage';
+
+      eventer(messageEvent, function (e) {
+        if (e.origin.indexOf('vidyard.com') !== -1 && acceptingMessages) {
+          
+          if (e.data.loginReady) {
+            event.source.postMessage({ sdoInstalled: {! JSENCODE(sdoInstalled) }}, 'https://secure.vidyard.com');
+            return;
+          }
+            
+          var url = e.data.sharing_page + 'vysfid={! Contact.Id }';
+          var thumbnail = 'https:' + e.data.thumbnail;
+          var payload = { 'url': url, 'thumbnail': thumbnail };
+          
+          var hiddenEmbedElement = document.getElementById('{! $Component.embedForm.hiddenEmbedUrl }');
+          hiddenEmbedElement.value = url;
+          var hiddenThumbnailElement = document.getElementById('{! $Component.embedForm.hiddenThumbnailUrl }');
+          hiddenThumbnailElement.value = thumbnail;
+          updateEmbed();
+
+          j$('#canvas').hide();
+        }
+      });
+    });
+  </script>
+
+  <div id="canvas" height="500px"></div>
+  <apex:form id="embedForm">
+    <apex:inputHidden value="{! embedUrl }" id="hiddenEmbedUrl" />
+    <apex:inputHidden value="{! thumbnailUrl }" id="hiddenThumbnailUrl" />
+    <apex:actionFunction name="updateEmbed" action="{! setHiddenValue }" reRender="emailForm" />
+  </apex:form>
+      
+  <apex:form id="emailForm">
+    <apex:pageBlock title="Load Template" rendered="{! showEmailSend && showLoadTemplate }">
+      <apex:selectList value="{! selectedTemplate }">
+        <apex:selectOptions value="{! templateOptions }" />
+      </apex:selectList>
+      <apex:commandButton value="Select" action="{! selectTemplate }" reRender="emailForm" />
+    </apex:pageBlock>
+    <apex:pageBlock title="Send Video Email" rendered="{! showEmailSend }">
+      <apex:pageBlockSection >
+        <apex:inputField label="Contact Name" value="{! Contact.Name}" /><br />
+        <apex:inputField label="Contact Email" value="{! Contact.Email }" html-disabled="true" /><br />
+        <apex:inputText label="Subject" value="{! emailSubject }" /><br />
+        <apex:inputTextarea label="Body" value="{! emailBody }" cols="80" rows="15" /><br />
+      </apex:pageBlockSection>
+      <apex:pageBlockButtons >
+        <apex:commandButton value="Send Email" action="{! sendEmail }" />
+      </apex:pageBlockButtons>
+    </apex:pageBlock>
+  </apex:form>
+
+  <apex:canvasApp applicationName="Vidyard_prod"
+                  namespacePrefix="vidyard"
+                  containerId="canvas"
+                  width="100%"
+                  height="100%"
+                  parameters="{
+                    route: 'sales_email',
+                    sdoInstalled: {! sdoInstalled },
+                    features: {
+                      delayStart: true
+                    }
+                  }" />
+</apex:page>

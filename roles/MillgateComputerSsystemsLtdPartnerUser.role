@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>Millgate Computer Systems Ltd Partner User</description>
+    <description>Millgate Computer Ssystems Ltd Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>Millgate Computer Systems Ltd Partner User</name>
+    <name>Millgate Computer Ssystems Ltd Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>MillgateComputerSsystemsLtdPartnerManager</parentRole>
 </Role>

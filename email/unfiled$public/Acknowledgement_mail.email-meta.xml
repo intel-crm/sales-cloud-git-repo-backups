@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <letterhead>Blank</letterhead>
+    <name>Acknowledgement mail</name>
+    <style>formalLetter</style>
+    <subject>Account Request Acknowledgement Email</subject>
+    <textOnly>Dear Requestor,
+
+Your Account request has been submitted successfully
+
+Thank you</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

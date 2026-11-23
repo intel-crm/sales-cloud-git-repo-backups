@@ -113,13 +113,16 @@ public class Pricing_Application_Agent_AI_Integration {
                     quoteIdToQuoteLineIdsMap.put(String.valueOf(quoteId), quoteLineIdsForThisQuote);
                 }
             }
+            system.debug('INSIDE MAP MAKECDB:'+quoteIdToJsonMap);
             if(!quoteIdToJsonMap.isEmpty()){
                 // Serialize the quoteIdToQuoteLineIdsMap to JSON string for Future method
                 String serializedQuoteLineIdsMap = JSON.serialize(quoteIdToQuoteLineIdsMap);
 				if(System.isBatch()) {
+                    system.debug('INSIDE IF BATCH CALL');
 					makeCDBCallout(quoteIdToJsonMap, serializedQuoteLineIdsMap, recordIdToPrevRetryCountMap);
 				} 
 				else {//Trigger.isExecuting - future
+                    system.debug('INSIDE ELSE FUTURE CALL');
 					makeCDBCalloutWithFuture(quoteIdToJsonMap, serializedQuoteLineIdsMap, recordIdToPrevRetryCountMap);
 				}
             }
@@ -229,8 +232,9 @@ public class Pricing_Application_Agent_AI_Integration {
                     ql.Id = quoteLineId;
                     ql.Pricing_Application_Agent_Status__c = 'In Progress';
                     quoteLineList.add(ql);
-                    
                     // Calculate retry counter for this Quote
+                    
+                	system.debug('INSIDE RECIDPREVMAP:'+recordIdToPrevRetryCount);
                     Integer newRetryCounter = 0;
                     if (recordIdToPrevRetryCount != null && !recordIdToPrevRetryCount.isEmpty()) {
                         Integer prevRetryCounter = recordIdToPrevRetryCount.get(quoteLineId);
@@ -260,6 +264,7 @@ public class Pricing_Application_Agent_AI_Integration {
                     List<Core_CDB_Integration_Log__c> bulkCdbLogs = Pricing_QuoteAgentic_Utility.createBulkCDBLogs('Pricing Application Agent', quoteLineIds, res, isSuccess, quoteLineIdRetryMap);
                     if(!bulkCdbLogs.isEmpty()) {
                         cdbLogList.addAll(bulkCdbLogs);
+                        system.debug('BULK CDB LOGS CREATED: ' + bulkCdbLogs.size());
                     }
                 }
             }
@@ -268,9 +273,11 @@ public class Pricing_Application_Agent_AI_Integration {
             if(!quoteLineList.isEmpty()){
                 SBQQ.TriggerControl.disable();
                 Database.SaveResult[] quoteLineUpdateResults = Database.update(quoteLineList);
+                system.debug('INSIDE QUOTELINE UPDATE:' + quoteLineUpdateResults);
                 SBQQ.TriggerControl.enable();
             }
             
+            system.debug('INSIDE CDBLOGLIST:'+cdbLogList);
             // Insert log records if we have any
             if (!cdbLogList.isEmpty()) {
                 system.debug('INSIDE CDBLOGLIST SIZE:'+cdbLogList.size());
@@ -295,7 +302,7 @@ public class Pricing_Application_Agent_AI_Integration {
         
         try {
             // Get Quote data
-            List<SBQQ__Quote__c> listofQuote = [
+            quoteIdToQuoteMap = new Map<Id,SBQQ__Quote__c>([
                 SELECT Id,Pricing_Market_Segment_values_Nm__c,Pricing_Account_Name__c,SBQQ__PrimaryContact__r.Name,
                 Pricing_End_Customer__r.Name,Pricing_Customer_Nm__c,Pricing_Unified_Global_End_Customer_Nm__r.Name,Pricing_IsUnifiedCustomer__c,
                 Pricing_Project_Name_Nm__c,Pricing_Server_Deal_Type_Nm__c,Pricing_Intel_Response_Requested_By_Date__c,
@@ -307,12 +314,12 @@ public class Pricing_Application_Agent_AI_Integration {
                 Pricing_Auto_generate_Quote_Letter__c,Pricing_Is_Sanctioned__c,Pricing_AdditionalRecipients__c
                 FROM SBQQ__Quote__c 
                 WHERE Id IN :quoteIds
-            ];
+            ]);
             
             // Populate the map with Quote Id as key and Quote record as value
-            for(SBQQ__Quote__c quote : listofQuote) {
+            /*for(SBQQ__Quote__c quote : listofQuote) {
                 quoteIdToQuoteMap.put(quote.Id, quote);
-            }
+            }*/
              
         } catch (Exception exp) {       
             Core_Log_Entry__c logEntry = new Core_Log_Entry__c(Core_Message__c = 'Error',Core_Details__c = exp.getMessage(), Core_Origin__c='Pricing_Application_Agent_AI_Integration.fetchQuoteDetails', Core_Severity__c='Low', Core_When__c=System.Now(), Core_Project__c = 'IQR');          

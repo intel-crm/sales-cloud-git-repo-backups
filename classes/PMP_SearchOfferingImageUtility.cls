@@ -19,20 +19,20 @@ public without sharing class PMP_SearchOfferingImageUtility {
         return cvList;
     }*/
     
-    // @AuraEnabled(cacheable=true)
-    // public static List<ContentDistribution> getContentDistList(List<String> conDocIdList) {
-    //     List<ContentDistribution> cdList = new List<ContentDistribution>();
+    @AuraEnabled(cacheable=true)
+    public static List<ContentDistribution> getContentDistList( List<String> conDocIdList) {
+        List<ContentDistribution> cdList = new List<ContentDistribution>();
        
-	// 	//if(Schema.sObjectType.ContentDistribution.isAccessible()){
-	//         try{
-	//             cdList = [SELECT Id,ContentDocumentId, ContentDownloadUrl from ContentDistribution Where ContentDocumentId in: conDocIdList ];
-    //             system.debug('CDLIST :'+ cdList);
-	//         }catch(Exception e){
-	//             system.debug('Error in ContentDistribution '+ e.getMessage() );
-	//         }			
-	// 	//}
-    //     return cdList;
-    // }
+		//if(Schema.sObjectType.ContentDistribution.isAccessible()){
+	        try{
+	            cdList = [SELECT Id,ContentDocumentId, ContentDownloadUrl from ContentDistribution Where ContentDocumentId in: conDocIdList ];
+                system.debug('CDLIST :'+ cdList);
+	        }catch(Exception e){
+	            system.debug('Error in ContentDistribution '+ e.getMessage() );
+	        }			
+		//}
+        return cdList;
+    }
     
     /*** User story - US 524658 - Added by Manasa***/
    /* @AuraEnabled(cacheable=true)
@@ -73,7 +73,7 @@ public without sharing class PMP_SearchOfferingImageUtility {
                 }                               
             }            
         }catch(Exception e){
-            //system.debug('Error in ContentAsset '+ e.getMessage() );
+            system.debug('Error in ContentAsset '+ e.getMessage() );
         }
         return docIdAssetNameMap; 
     }

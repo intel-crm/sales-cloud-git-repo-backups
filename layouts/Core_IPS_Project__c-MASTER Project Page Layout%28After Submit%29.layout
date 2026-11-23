@@ -79,7 +79,7 @@
         <style>TwoColumnsLeftToRight</style>
     </layoutSections>
     <relatedLists>
-        <customButtons>Add_Accounts_LEX</customButtons>
+        <customButtons>Add_Accounts</customButtons>
         <excludeButtons>New</excludeButtons>
         <fields>NAME</fields>
         <fields>Core_Members__c</fields>
@@ -87,13 +87,13 @@
         <relatedList>Core_IPS_Account__c.Core_IPS_Project__c</relatedList>
     </relatedLists>
     <relatedLists>
-        <customButtons>Core_IPS_Add_Members</customButtons>
+        <customButtons>Add_Members</customButtons>
         <excludeButtons>New</excludeButtons>
         <fields>NAME</fields>
         <fields>Core_Selective_Member__c</fields>
         <fields>Core_IPS_Contact__c</fields>
         <fields>Core_IPS_Contact_Account__c</fields>
-        <fields>Core_IPS_Contact_Email__c</fields>
+        <fields>Core_User__c</fields>
         <fields>CREATEDBY_USER</fields>
         <fields>CREATED_DATE</fields>
         <fields>Core_Status__c</fields>
@@ -140,8 +140,6 @@
         <fields>CASES.PRIORITY</fields>
         <fields>CASES.CREATED_DATE</fields>
         <relatedList>Case.Core_IPS_Project_Case__c</relatedList>
-        <sortField>CASES.CREATED_DATE</sortField>
-        <sortOrder>Desc</sortOrder>
     </relatedLists>
     <relatedLists>
         <relatedList>RelatedEntityHistoryList</relatedList>

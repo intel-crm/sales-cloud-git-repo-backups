@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>46.0</apiVersion>
+    <available>true</available>
+    <description>Notification Template for Claim Adjustment Cancellation</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Core MDF Claim Adjustment Cancelled Int</name>
+    <style>none</style>
+    <subject>Claim Adjustment has been Cancelled</subject>
+    <type>visualforce</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

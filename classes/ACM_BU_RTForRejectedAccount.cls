@@ -15,12 +15,13 @@ public without sharing class ACM_BU_RTForRejectedAccount implements UCD_ACM_Serv
             try {
                 // get rejected accounts
                 setRejectedCollection(oldAccounts,newAccounts);
+                UCD_ACM_Logger.information('ACM_BU_RTForRejectedAccount','execute','New Accounts: '+newAccounts,null);
                 if (!rejectedAccounts.isEmpty()) {
                     // set record type of rejected accounts
                     setRejectedToApprovedAttributes();
                 }
             } catch (Exception ex) {
-                UCD_ACM_Logger.error('ACM_BU_RTForRejectedAccount','execute',ex.getMessage() +  '==>' + ex.getStackTraceString(),rejectedAccounts.keySet().toString());
+                UCD_ACM_Logger.error('ACM_BU_RTForRejectedAccount','execute',ex.getMessage() +  '==>' + ex.getStackTraceString(),null);
             } finally {
                 UCD_ACM_Logger.setLogDetails();
             }
@@ -94,11 +95,9 @@ public without sharing class ACM_BU_RTForRejectedAccount implements UCD_ACM_Serv
                 bpIds.add(account.Core_Business_Party_Id__c);
             }
         }
-        List<Account> dealSurvivorAccounts;
         if(!bpIds.isEmpty()) {
             // SOQL to get deal survivor account details based on BPID
-            if (Schema.sObjectType.Account.fields.Core_Business_Party_Id__c.isAccessible()){
-                dealSurvivorAccounts= [
+            List<Account> dealSurvivorAccounts = [
                 SELECT Id, Core_Business_Party_Id__c
                 FROM Account
                 WHERE
@@ -106,7 +105,7 @@ public without sharing class ACM_BU_RTForRejectedAccount implements UCD_ACM_Serv
                     AND RecordTypeId =: endCustomerRecordTypeId
                 ORDER BY CreatedDate
             ];
-            }
+
             // add survivor into the collection - survivorAccountIdByBPId
             if (!dealSurvivorAccounts.isEmpty()) {
                 for (Account account : dealSurvivorAccounts) {
@@ -116,6 +115,7 @@ public without sharing class ACM_BU_RTForRejectedAccount implements UCD_ACM_Serv
                 }
             }
         }
+        UCD_ACM_Logger.information('ACM_BU_RTForRejectedAccount','getSurvivorAccountIdById','survivorAccountIdByBPId: '+survivorAccountIdByBPId, null);
 
         return survivorAccountIdByBPId;
     }

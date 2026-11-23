@@ -4,6 +4,6 @@
     <design:attribute name="showSignIn" label="Show Sign In (Not Used)" />
     <design:attribute name="showBreadcrumbs" label="Show Breadcrumbs" />
     <design:attribute name="size" label="Desktop min height" datasource="x-short, short, medium, tall" default="short"/>
-    <design:attribute name="type" label="Page Type (Determines breadcrumb data, as well as heading display if on L2search)" datasource="l0, l1, l2search, generic, partner, product, dashboard, partners, offerings, createOffering, submitOffering, leads, leadDetail, compareofferings" default="generic"/>
+    <design:attribute name="type" label="Page Type (Determines breadcrumb data, as well as heading display if on L2search)" datasource="l0, l1, l2search, generic, partner, product, dashboard, partners, offerings, createOffering, submitOffering, leads, leadDetail" default="generic"/>
 	<design:attribute name="analyticsPageType" label="PageType for analytics" />
 </design:component>

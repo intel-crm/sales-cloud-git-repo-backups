@@ -283,13 +283,13 @@
     </nameField>
     <pluralLabel>Regional View</pluralLabel>
     <searchLayouts>
-        <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
         <excludedStandardButtons>OpenListInQuip</excludedStandardButtons>
         <excludedStandardButtons>NewFromDocument</excludedStandardButtons>
         <excludedStandardButtons>Accept</excludedStandardButtons>
-        <excludedStandardButtons>PrintableListView</excludedStandardButtons>
+        <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
         <excludedStandardButtons>Import</excludedStandardButtons>
         <excludedStandardButtons>MassChangeOwner</excludedStandardButtons>
+        <excludedStandardButtons>PrintableListView</excludedStandardButtons>
         <searchResultsAdditionalFields>Region_Formula__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Stage__c</searchResultsAdditionalFields>
     </searchLayouts>
@@ -298,6 +298,7 @@
         <fullName>Check_PS_for_moving_stage_forward</fullName>
         <active>true</active>
         <errorConditionFormula>IF( ISCHANGED(Stage__c ) &amp;&amp; NOT(OR($Permission.CST_Regional_Admin, $Permission.CST_Super_Admin )),TRUE,FALSE)</errorConditionFormula>
+        <errorDisplayField>OwnerId</errorDisplayField>
         <errorMessage>You are not allowed to move the stages. Please contact your regional admins.</errorMessage>
     </validationRules>
     <validationRules>

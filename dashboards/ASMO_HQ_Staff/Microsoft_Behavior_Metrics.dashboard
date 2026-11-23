@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Dashboard xmlns="http://soap.sforce.com/2006/04/metadata">
+    <backgroundEndColor>#FFFFFF</backgroundEndColor>
+    <backgroundFadeDirection>Diagonal</backgroundFadeDirection>
+    <backgroundStartColor>#FFFFFF</backgroundStartColor>
+    <dashboardFilters>
+        <dashboardFilterOptions>
+            <operator>contains</operator>
+            <values>Jones</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>contains</operator>
+            <values>Casselman</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>contains</operator>
+            <values>Steere</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>contains</operator>
+            <values>McDonagh</values>
+        </dashboardFilterOptions>
+        <name>User Login Snapshot: Owner Role</name>
+    </dashboardFilters>
+    <dashboardFilters>
+        <dashboardFilterOptions>
+            <operator>contains</operator>
+            <values>Jones</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>contains</operator>
+            <values>Casselman</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>contains</operator>
+            <values>Steere</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>contains</operator>
+            <values>McDonagh</values>
+        </dashboardFilterOptions>
+        <name>Opportunity Owner: Manager</name>
+    </dashboardFilters>
+    <dashboardType>SpecifiedUser</dashboardType>
+    <description>Dashboard components below are filtered to show &quot;All Opportunities.&quot;</description>
+    <isGridLayout>false</isGridLayout>
+    <leftSection>
+        <columnSize>Wide</columnSize>
+        <components>
+            <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
+            <chartAxisRange>Auto</chartAxisRange>
+            <componentType>BarStacked100</componentType>
+            <dashboardFilterColumns>
+                <column>CUST_OWNER_ROLE</column>
+            </dashboardFilterColumns>
+            <dashboardFilterColumns>
+                <column>CUST_CREATED_NAME</column>
+            </dashboardFilterColumns>
+            <displayUnits>Auto</displayUnits>
+            <drillEnabled>false</drillEnabled>
+            <drillToDetailEnabled>false</drillToDetailEnabled>
+            <enableHover>true</enableHover>
+            <expandOthers>false</expandOthers>
+            <footer>Snapshot for Sales Rep; &quot; - &quot; indicates users who have never logged in. Goals: Weekly (Q3 70%, &apos;15 75%), Monthly (Q3 90%, &apos;15 90%). Days measures from date of snapshot.</footer>
+            <groupingSortProperties/>
+            <header>SALES REP METRICS</header>
+            <legendPosition>Bottom</legendPosition>
+            <report>Archives/MSFT_Adoption_Sales_Rep</report>
+            <showPercentage>false</showPercentage>
+            <showValues>false</showValues>
+            <sortBy>RowLabelAscending</sortBy>
+            <sortLegendValues>false</sortLegendValues>
+            <title>Sales Rep by Last Login Date</title>
+            <useReportChart>false</useReportChart>
+        </components>
+        <components>
+            <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
+            <chartAxisRange>Auto</chartAxisRange>
+            <componentType>BarStacked100</componentType>
+            <dashboardFilterColumns>
+                <column>ROLLUP_DESCRIPTION</column>
+            </dashboardFilterColumns>
+            <dashboardFilterColumns>
+                <column>OWNER_MANAGER</column>
+            </dashboardFilterColumns>
+            <displayUnits>Auto</displayUnits>
+            <drillEnabled>false</drillEnabled>
+            <drillToDetailEnabled>false</drillToDetailEnabled>
+            <enableHover>true</enableHover>
+            <expandOthers>false</expandOthers>
+            <footer>Considers opportunities that have moved to Design Win within the last 30 days. Measures # days between opportunity creation to Design Win. Goals: &gt;85% EO Q3 and &gt;95% for ’15.</footer>
+            <groupingSortProperties/>
+            <header>BEHAVIOR METRICS</header>
+            <legendPosition>Bottom</legendPosition>
+            <report>ASMO_HQ_Staff/MSFT_Early_Entry</report>
+            <showPercentage>false</showPercentage>
+            <showValues>false</showValues>
+            <sortBy>RowLabelAscending</sortBy>
+            <sortLegendValues>false</sortLegendValues>
+            <title>% Early Entry</title>
+            <useReportChart>false</useReportChart>
+        </components>
+    </leftSection>
+    <middleSection>
+        <columnSize>Wide</columnSize>
+        <components>
+            <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
+            <chartAxisRange>Auto</chartAxisRange>
+            <componentType>BarStacked100</componentType>
+            <dashboardFilterColumns>
+                <column>CUST_OWNER_ROLE</column>
+            </dashboardFilterColumns>
+            <dashboardFilterColumns>
+                <column>CUST_CREATED_NAME</column>
+            </dashboardFilterColumns>
+            <displayUnits>Auto</displayUnits>
+            <drillEnabled>false</drillEnabled>
+            <drillToDetailEnabled>false</drillToDetailEnabled>
+            <enableHover>true</enableHover>
+            <expandOthers>false</expandOthers>
+            <footer>Snapshot for Sales Manager; &quot; - &quot; indicates users who have never logged in. Goals: Weekly (Q3 70%, &apos;15 75%), Monthly (Q3 95%, &apos;15 95%). Days measures from date of snapshot.</footer>
+            <groupingSortProperties/>
+            <header>SALES MANAGER METRICS</header>
+            <legendPosition>Bottom</legendPosition>
+            <report>Archives/MSFT_Adoption_Sales_Mgr</report>
+            <showPercentage>false</showPercentage>
+            <showValues>false</showValues>
+            <sortBy>RowLabelAscending</sortBy>
+            <sortLegendValues>false</sortLegendValues>
+            <title>Sales Manager by Last Login Date</title>
+            <useReportChart>false</useReportChart>
+        </components>
+        <components>
+            <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
+            <chartAxisRange>Auto</chartAxisRange>
+            <componentType>BarStacked100</componentType>
+            <dashboardFilterColumns>
+                <column>ROLLUP_DESCRIPTION</column>
+            </dashboardFilterColumns>
+            <dashboardFilterColumns>
+                <column>OWNER_MANAGER</column>
+            </dashboardFilterColumns>
+            <displayUnits>Auto</displayUnits>
+            <drillEnabled>false</drillEnabled>
+            <drillToDetailEnabled>false</drillToDetailEnabled>
+            <enableHover>true</enableHover>
+            <expandOthers>false</expandOthers>
+            <footer>Target 60% in Qualify and Define. This metric is a rolling 30-day summary based on the opportunity Created Date. Variation expected across business segments and customer types.</footer>
+            <groupingSortProperties/>
+            <header>BEHAVIOR METRICS</header>
+            <legendPosition>Bottom</legendPosition>
+            <report>ASMO_HQ_Staff/MSFT_Create_Early_Stage</report>
+            <showPercentage>false</showPercentage>
+            <showValues>false</showValues>
+            <sortBy>RowLabelAscending</sortBy>
+            <sortLegendValues>false</sortLegendValues>
+            <title>% Create Early Stage</title>
+            <useReportChart>false</useReportChart>
+        </components>
+    </middleSection>
+    <owner>10632517@intel.com.crm</owner>
+    <rightSection>
+        <columnSize>Wide</columnSize>
+        <components>
+            <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
+            <chartAxisRange>Auto</chartAxisRange>
+            <componentType>BarStacked100</componentType>
+            <dashboardFilterColumns>
+                <column>ROLLUP_DESCRIPTION</column>
+            </dashboardFilterColumns>
+            <dashboardFilterColumns>
+                <column>OWNER_MANAGER</column>
+            </dashboardFilterColumns>
+            <displayUnits>Auto</displayUnits>
+            <drillEnabled>false</drillEnabled>
+            <drillToDetailEnabled>false</drillToDetailEnabled>
+            <enableHover>true</enableHover>
+            <expandOthers>false</expandOthers>
+            <footer>Shows opportunities with future and past due decision dates. Excludes &quot;Win Submitted&quot; or &quot;Flag for Deletion&quot; status. Program goal of &gt;95% oppty with future decision dates from previous baseline of &lt;75% current.</footer>
+            <groupingSortProperties/>
+            <header>BEHAVIOR METRICS</header>
+            <legendPosition>Bottom</legendPosition>
+            <report>ASMO_HQ_Staff/MSFT_Pending_Oppty_Past_Due</report>
+            <showPercentage>false</showPercentage>
+            <showValues>false</showValues>
+            <sortBy>RowLabelAscending</sortBy>
+            <sortLegendValues>false</sortLegendValues>
+            <title>% Future Decision</title>
+            <useReportChart>false</useReportChart>
+        </components>
+        <components>
+            <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
+            <chartAxisRange>Auto</chartAxisRange>
+            <componentType>BarStacked100</componentType>
+            <dashboardFilterColumns>
+                <column>ROLLUP_DESCRIPTION</column>
+            </dashboardFilterColumns>
+            <dashboardFilterColumns>
+                <column>OWNER_MANAGER</column>
+            </dashboardFilterColumns>
+            <displayUnits>Auto</displayUnits>
+            <drillEnabled>false</drillEnabled>
+            <drillToDetailEnabled>false</drillToDetailEnabled>
+            <enableHover>true</enableHover>
+            <expandOthers>false</expandOthers>
+            <groupingSortProperties/>
+            <header>BEHAVIOR METRICS</header>
+            <legendPosition>Bottom</legendPosition>
+            <report>ASMO_HQ_Staff/MSFT_Active_Report</report>
+            <showPercentage>false</showPercentage>
+            <showValues>false</showValues>
+            <sortBy>RowLabelAscending</sortBy>
+            <sortLegendValues>false</sortLegendValues>
+            <title>% Active</title>
+            <useReportChart>false</useReportChart>
+        </components>
+    </rightSection>
+    <runningUser>10632517@intel.com.crm</runningUser>
+    <textColor>#000000</textColor>
+    <title>Microsoft CRM Adoption &amp; Behavior Metrics</title>
+    <titleColor>#000000</titleColor>
+    <titleSize>14</titleSize>
+</Dashboard>

@@ -1,7 +1,6 @@
 <aura:component extends="c:MarketplaceRedux" implements="forceCommunity:layout" description="Marquee w/ full body content area"
     access="global" controller="PMP_SearchMarketplaceController">
-    <!-- IPA2.0 + US TWC4497-1631 -->
-    <!-- <aura:attribute name="manageOfferingBar" type="Aura.Component[]" required="false"></aura:attribute>  -->
+    <aura:attribute name="manageOfferingBar" type="Aura.Component[]" required="false"></aura:attribute> 
     <aura:attribute name="marquee" type="Aura.Component[]" required="false"></aura:attribute>
     <aura:attribute name="mainFullWidth" type="Aura.Component[]" required="false"></aura:attribute>
     <aura:attribute name="main" type="Aura.Component[]" required="false"></aura:attribute>
@@ -26,16 +25,14 @@
     <aura:attribute name="showTabs" type="boolean" default="false"/>
     <!-- Created by Manjula as part of US528775/US602030-->
     <aura:attribute name="showPartnerKeyMetricsTab" type="boolean" default="true"/>
-    <!-- IPA2.0 + US TWC4497-1631 -->
-    <!-- <aura:attribute name="showOfferingTab" type="boolean" default="true"/> -->
+    <aura:attribute name="showOfferingTab" type="boolean" default="true"/>
     <aura:attribute name="showPartnerTab" type="boolean" default="false"/>
     <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
 
     <div>
-        <!-- IPA2.0 + US TWC4497-1631 -->
-        <!-- <div class="manageOfferingBar">
+        <div class="manageOfferingBar">
             {!v.manageOfferingBar}
-        </div>         -->
+        </div>        
         <div class="marquee">
             {!v.marquee}
         </div>
@@ -80,15 +77,14 @@
                    </c:MarketplaceTab>
                 </aura:if>
                   <!--Added by Manjula as part of US528775-->
-                  <!-- IPA2.0 + US TWC4497-1631 -->
-                <!-- <aura:if isTrue="{!v.showOfferingTab}">
+                <aura:if isTrue="{!v.showOfferingTab}">
                    <c:MarketplaceTab label="{!$Label.c.PMP_Marketplace_Offerings}" renderOnFirstOpen="true">
                     <div class="slds-p-vertical_small">{!v.tab3}</div>
                    </c:MarketplaceTab>
                 <c:MarketplaceTab label="{!$Label.c.PMP_Marketplace_Offerings_KeyMetrics}" renderOnFirstOpen="true">
                     <div class="slds-p-vertical_small">{!v.tab4}</div>
                 </c:MarketplaceTab>
-                </aura:if> -->
+                </aura:if>
                  <!--Added by Manjula as part of US602030-->
                  <aura:if isTrue="{!v.showPartnerTab}">
                 <c:MarketplaceTab label="{!$Label.c.PMP_Marketplace_Partners}" renderOnFirstOpen="true">

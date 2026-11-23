@@ -39,6 +39,10 @@
         </picklistValues>
     </fields>
     <recordTypes>
+        <label><!-- Pricing_IQR_Tender_QuoteTeam --></label>
+        <name>Pricing_IQR_Tender_QuoteTeam</name>
+    </recordTypes>
+    <recordTypes>
         <label><!-- Pricing_Tender_QuoteTeam --></label>
         <name>Pricing_Tender_QuoteTeam</name>
     </recordTypes>

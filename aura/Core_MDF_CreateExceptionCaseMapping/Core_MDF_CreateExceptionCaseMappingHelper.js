@@ -2,30 +2,6 @@
     //this method will be used to load all the matching exceptions. This is called from loadExceptionList method from the controller js
     onLoad: function(component, event) {
         //call apex class method
-        var action = component.get('c.fetchUserType');
-        action.setCallback(this, function(response) {
-            //store state of response
-            var state = response.getState();
-            if (state === "SUCCESS") {
-             component.set("v.isEnabled", response.getReturnValue());
-                console.log('enabled' + component.get("v.isEnabled"));
-                if(component.get("v.isEnabled") == false){
-                    var toastEvent = $A.get("e.force:showToast");
-                                       toastEvent.setParams({
-                                           mode: 'sticky',
-                                           message: 'You do not have access to map Exceptions to Case.',
-                                           type : 'error'
-                                       });
-
-                                       toastEvent.fire();
-                }
-              this.fetchExceptionRecords(component,event);
-            }
-        });
-        $A.enqueueAction(action);
-        
-    },
-    fetchExceptionRecords : function(component,event){
         var action = component.get('c.fetchExceptionRecords');
 		action.setParams({
             "caseRecordId": component.get("v.recordId")
@@ -48,7 +24,6 @@
             }
         });
         $A.enqueueAction(action);
-        
     },
     //this method will be used to save all the ECM records. This is called from saveECMRecords method from the controller js
     saveECMsHelper : function(component,event) {
@@ -91,7 +66,7 @@
                         var toastEventFail = $A.get("e.force:showToast");
                         toastEventFail.setParams({
                             title: 'Failed',
-                            type: 'error',
+                            type: 'failed',
                             message: $A.get("Exception Case Mapping(s) were not created.")
                         });
                         toastEventFail.fire();
@@ -103,7 +78,7 @@
                 var toastEvent = $A.get("e.force:showToast");
                 toastEvent.setParams({
                     title: 'Failed',
-                    type: 'error',
+                    type: 'failed',
                     message: $A.get("Exception Case Mapping(s) were not created.")
                 });
                 toastEvent.fire();

@@ -157,10 +157,19 @@ function closewindow(){
         </tr>
         <!-- End -> TWC3123-4822 -->  
         <tr class="spaceUnder">
-            <td width="16%"><b>Competitive/Architecture Conversion </b></td>
+            <td width="16%"><b>Competitive Architecture </b></td>
         <td> 
             <apex:image value="{!$Resource.Checklist_Yellow}" width="20" height="18"  rendered="{!Opportunity.Core_Competitive_Architecture__c== null || Opportunity.Core_Competitive_Architecture__c == '' }" style="margin-top:-2px; margin-left: 12px;"/>
             <apex:image value="{!$Resource.Checklist_Green}" width="20" height="18"  rendered="{!Opportunity.Core_Competitive_Architecture__c != null || Opportunity.Core_Competitive_Architecture__c != ''}" style="margin-top:-2px; margin-left: 12px;"/>     
+        </td>
+        <td width="660px" >  Please enter the competitor’s name and select the conversion box if your opportunity is competing against another supplier, and if it is converting from another architecture to IA.</td>
+        </tr>
+        
+        <tr class="spaceUnder">
+            <td width="16%"><b>Architecture </b></td>
+        <td> 
+            <apex:image value="{!$Resource.Checklist_Red}" width="20" height="18"  rendered="{!Opportunity.Core_Architecture_Conversion__c== null || Opportunity.Core_Architecture_Conversion__c == '' }" style="margin-top:-2px; margin-left: 12px;"/>
+            <apex:image value="{!$Resource.Checklist_Green}" width="20" height="18"  rendered="{!Opportunity.Core_Architecture_Conversion__c != null || Opportunity.Core_Architecture_Conversion__c != ''}" style="margin-top:-2px; margin-left: 12px;"/>     
         </td>
         <td width="660px" >  Please enter the competitor’s name and select the conversion box if your opportunity is competing against another supplier, and if it is converting from another architecture to IA.</td>
         </tr>
@@ -340,7 +349,7 @@ function closewindow(){
                 <td width="660px" > Please enter information into the Technical Need under Summary Information in the Details Tab. </td>
             </tr> 
 
-			 <tr class="spaceUnder" >
+            <tr class="spaceUnder" >
                 <td width="16%"><b>Manager Bonus Approval</b></td>
                 <td> 
                     <apex:image value="{!$Resource.Checklist_Green}" width="20" height="18"  rendered="{!isTaskCompleted2}" style="margin-top:-2px; margin-left: 12px;"/>
@@ -348,7 +357,7 @@ function closewindow(){
                 </td>
                 <td width="660px" >If the indicator is red, please have your manager complete the Manager Bonus Approval Task in the Activities Tab. </td>
             </tr>
-    
+            
             <tr class="spaceUnder">
                 <td colspan="3"><br/><br/><b><u>Design Win Bonus Qualified Criteria (for use if Opportunity appears as bonus potential in Bonus Dashboard)</u></b></td>
             </tr>
@@ -395,7 +404,7 @@ function closewindow(){
                 <td width="660px" >After Opportunity is won, please submit your opportunity for the Customer Reference Nomination program and complete the Complete Win Analysis task in the Activities Tab. </td>
             </tr> 
         </apex:outputPanel>
-		-->
+        -->
         
         <!--TWC3123-2055 end-->
         <!-- Added -->
@@ -552,13 +561,22 @@ function closewindow(){
         </tr>
         <!-- End -> TWC3123-4822 -->  
         
-        <tr class="spaceUnder">
-            <td width="16%"><b>Competitive/Architecture Conversion </b></td>
+         <tr class="spaceUnder">
+            <td width="16%"><b>Competitive Architecture </b></td>
         <td> 
-            <apex:image value="{!$Resource.Checklist_Yellow}" width="20" height="18"  rendered="{!Opportunity.Core_Competitive_Architecture__c== null}" style="margin-top:-2px; margin-left: 12px;"/>
-            <apex:image value="{!$Resource.Checklist_Green}" width="20" height="18"  rendered="{!Opportunity.Core_Competitive_Architecture__c != null}" style="margin-top:-2px; margin-left: 12px;"/>     
+            <apex:image value="{!$Resource.Checklist_Yellow}" width="20" height="18"  rendered="{!Opportunity.Core_Competitive_Architecture__c== null || Opportunity.Core_Competitive_Architecture__c == '' }" style="margin-top:-2px; margin-left: 12px;"/>
+            <apex:image value="{!$Resource.Checklist_Green}" width="20" height="18"  rendered="{!Opportunity.Core_Competitive_Architecture__c != null || Opportunity.Core_Competitive_Architecture__c != ''}" style="margin-top:-2px; margin-left: 12px;"/>     
         </td>
-        <td width="660px" > Please enter the competitor’s name and select the conversion box if your opportunity is competing against another supplier, and if it is converting from another architecture to IA. </td>
+        <td width="660px" >  Please enter the competitor’s name and select the conversion box if your opportunity is competing against another supplier, and if it is converting from another architecture to IA.</td>
+        </tr>
+        
+        <tr class="spaceUnder">
+            <td width="16%"><b>Architecture </b></td>
+        <td> 
+            <apex:image value="{!$Resource.Checklist_Red}" width="20" height="18"  rendered="{!Opportunity.Core_Architecture_Conversion__c== null || Opportunity.Core_Architecture_Conversion__c == '' }" style="margin-top:-2px; margin-left: 12px;"/>
+            <apex:image value="{!$Resource.Checklist_Green}" width="20" height="18"  rendered="{!Opportunity.Core_Architecture_Conversion__c != null || Opportunity.Core_Architecture_Conversion__c != ''}" style="margin-top:-2px; margin-left: 12px;"/>     
+        </td>
+        <td width="660px" >  Please enter the competitor’s name and select the conversion box if your opportunity is competing against another supplier, and if it is converting from another architecture to IA.</td>
         </tr>
 
         <tr class="spaceUnder">
@@ -705,7 +723,6 @@ function closewindow(){
                 <td width="660px" > Please enter information into the Technical Need under Summary Information in the Details Tab. </td>
             </tr> 
             
-            
             <tr class="spaceUnder" >
                 <td width="16%"><b>Manager Bonus Approval</b></td>
                 <td> 
@@ -713,8 +730,8 @@ function closewindow(){
                     <apex:image value="{!$Resource.Checklist_Red}" width="20" height="18"  rendered="{!NOT(isTaskCompleted2)}" style="margin-top:-2px; margin-left: 12px;"/>  
                 </td>
                 <td width="660px" >If the indicator is red, please have your manager complete the Manager Bonus Approval Task in the Activities Tab. </td>
-            </tr> 
-			
+            </tr>
+            
             <tr class="spaceUnder">
                 <td colspan="3"><br/><br/><b><u>Deal Win Bonus Qualified Criteria (for use if Opportunity appears as bonus potential in Bonus Dashboard)</u></b></td>
             </tr>

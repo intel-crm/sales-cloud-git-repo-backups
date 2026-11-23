@@ -79,13 +79,20 @@
         <field>TYPE</field>
     </columns>
     <filter>
-        <booleanFilter>1 AND 2 AND 3</booleanFilter>
+        <booleanFilter>1 AND 2 AND 3 AND 4</booleanFilter>
         <criteriaItems>
             <column>CUST_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>DCG Compute Deal $</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ROLLUP_DESCRIPTION</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>EMP of Andy Chen,EMP of Yiping Liu,EMP of Gary Ho</value>
         </criteriaItems>
         <criteriaItems>
             <column>STAGE_NAME</column>
@@ -99,7 +106,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Heaven Zeng,Huaqing Liu,Yunxi Li,Xu Zeng</value>
+            <value>Heaven Zeng,Huaqing Liu,Yunxi Li</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -133,6 +140,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_PREVY</interval>
+        <endDate>2020-12-31</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2019-12-31</startDate>
     </timeFrameFilter>
 </Report>

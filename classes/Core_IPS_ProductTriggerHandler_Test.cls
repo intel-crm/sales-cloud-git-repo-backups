@@ -47,10 +47,7 @@ Modification Log :
         ListOfUser.get(2).ProfileID =  profiles.get('IPS Agent');
         ListOfUser.get(3).ProfileID =  profiles.get('IPS Agent');
         //ListOfUser.get(3).ProfileID =  profiles.get('IPS Agent-Partner');
-        User validationBypassUser = [SELECT Id FROM User WHERE Profile.Name = :System.Label.Core_System_Admin_Profile_Name AND IsActive = true LIMIT 1];
-        System.runAs(validationBypassUser){
-            insert ListOfUser;
-        }
+        insert ListOfUser;
         System.assertEquals(ListOfUser.get(0).profileid, profiles.get('System Administrator'));
         Core_IPS_Labels__c inActiveErrorMsg= new Core_IPS_Labels__c(Name='Core_IPS_InActiveProdError',Value__c='When initially adding a new Product to a Project, the Product Status must be kept Active.');
         //Creating Custom Settings for search criteria of Accountteammembers
@@ -1053,8 +1050,6 @@ Modification Log :
         }
         System.assert(ListOfSupportedProduct[0].id != null,'Record not created');
         counter = 0;
-          Test.startTest();
-      
         // Create Ips Project
         List<Core_IPS_Project__c> listOfIpsProjects = TestUtilities.getListOfIpsProjects(1);
         ListOfIpsProjects.get(0).Core_Status__c = 'Draft';
@@ -1064,6 +1059,7 @@ Modification Log :
             ListOfIpsProjects.get(0).Core_Status__c = 'Active';
             update ListOfIpsProjects.get(0);
         }
+        
         
         //Create IPS Product
         List<Core_IPS_Product__c> listOfIpsProducts = TestUtilities.getListOfIpsProducts(4);
@@ -1080,8 +1076,7 @@ Modification Log :
         System.runAs(ListOfUser.get(0)){
             insert ListOfIpsProducts;
         }
-              Test.stopTest();
-  
+        Test.startTest();
         System.runAs(ListOfUser.get(1)){
             try{
                 delete ListOfIpsProducts;
@@ -1090,6 +1085,7 @@ Modification Log :
             }
         }
         //System.assert(ExceptionError.contains('Cannot delete this Project Product when status is either Submitted or Active'), 'Record deleted Error not fired');
+        Test.stopTest();
     }
     /***************************************************************************************************
 Method Name:  PreventDeleteProjSubmittedPending_test
@@ -1190,8 +1186,6 @@ Modification Log :
             update ListOfIpsProjects.get(0); 
         }
         //Create IPS Product
-           Test.startTest();
-     
         List<Core_IPS_Product__c> listOfIpsProducts = TestUtilities.getListOfIpsProducts(4);
         for(Core_IPS_Product__c ipsProduct:ListOfIpsProducts){
             ipsProduct.Core_IPS_Product_Status__c = 'Active';
@@ -1206,6 +1200,7 @@ Modification Log :
         System.runAs(ListOfUser.get(0)){
             insert ListOfIpsProducts;
         }
+        Test.startTest();
         System.runAs(ListOfUser.get(1)){
             try{
                 delete ListOfIpsProducts;
@@ -1227,15 +1222,14 @@ Modification Log :
         List<String> strProf = new List<String>();
         Account acc;
         Contact con;
-        strProf.add('System Administrator');
-        strProf.add(System.Label.Core_IPS_System_Admin_Profile_Name);
+        strProf.add('IPS Support Org Admin');
         List<Profile> profileList = [select id, name from Profile where name IN : strProf];
         for(Profile prf : ProfileList){
             profiles.put(prf.name, prf.id);
         }
         
         //Create Role
-        UserRole r = [SELECT Id, Name FROM UserRole WHERE DeveloperName = 'IPS_Admin' LIMIT 1];
+        UserRole r = [SELECT Id, Name FROM UserRole WHERE DeveloperName = 'IPS_Product_Org_Admin' LIMIT 1];
         
         User userRecord = new User(
             Alias = 'StdUser', 
@@ -1254,14 +1248,13 @@ Modification Log :
         List<User> listOfUser1;
         System.runAs(ListOfUser[0]){
         ListOfUser1 = new List<User>{userRecord}; //TestUtilities.getListOfUser(1);
-            ListOfUser1.get(0).ProfileID =  profiles.get(System.Label.Core_IPS_System_Admin_Profile_Name);
+            ListOfUser1.get(0).ProfileID =  profiles.get('IPS Support Org Admin');
             acc=TestUtilities.getListOfAccounts(1).get(0);
             insert acc;
             con = TestUtilities.getListOfContact(1).get(0);
             con.Accountid = acc.Id;
             con.Core_IPS_Intel_Support_Owner__c = ListOfUser1.get(0).id; 
             con.Core_IPS_Active__c = true;
-            con.MailingCountry = 'India';
             insert con;
         //ListOfUser1.get(1).ProfileID =  profiles.get('IPS Support Org Admin');
         
@@ -1289,12 +1282,6 @@ Modification Log :
             MappingQueueRecord.SobjectType = 'Core_IPS_Product_Organization__c';
             System.runAs(listofUser[0]){
             insert MappingQueueRecord;
-            }
-            QueuesObject mappingQueueRecord1 = TestUtilities.getMappingQueue();
-            mappingQueueRecord1.QueueID = QueueRecord.id;
-            mappingQueueRecord1.SobjectType = 'Core_IPS_MAP_PAR__c';
-            System.runAs(listofUser[0]){
-            insert mappingQueueRecord1;
             }
             System.Assert(MappingQueueRecord.Id != null, 'Record not created');
             GroupMember groupMemberObjectUser = new GroupMember(
@@ -1328,6 +1315,7 @@ Modification Log :
             insert TriggerExecution; 
             //insert IPSLabels;
             insert ListOfSupportOrg.get(0);
+            System.debug('>>>> Sup Org'+ListOfSupportOrg.get(0));
         }
         System.assert(ListOfSupportOrg != null, 'Record not created');
         
@@ -1371,6 +1359,7 @@ Modification Log :
         }
         System.runAs(ListOfUser1.get(0)){
             insert ListOfSupportedProduct;
+            System.debug('>>>> Sup Prod'+ListOfSupportedProduct.get(0));
         }
         System.assert(ListOfSupportedProduct[0].id != null,'Record not created');
         
@@ -1395,14 +1384,17 @@ Modification Log :
         System.runAs(ListOfUser[0]){
                 ListOfIpsProjects.get(0).Core_Status__c = 'Submitted Pending';
                 update ListOfIpsProjects;
+                System.debug('>>>> IPS Proj'+ListOfIpsProjects);
                 core_ips_account__c projAccount= TestUtilities.getCoreIpsAccount();
                 projAccount.Core_Account__c=acc.Id;
                 projAccount.Core_IPS_Project__c=ListOfIpsProjects.get(0).Id;
                 insert projAccount;
+                System.debug('>>>> projAccount'+projAccount+'Account '+acc.Id);
                 Core_IPS_Project_Member__c projectMember = TestUtilities.getProjectMember();
                 projectMember.core_ips_contact__c = con.id;
                 projectMember.Core_IPS_Project__c = ListOfIpsProjects.get(0).Id;
                 insert projectMember;
+            System.debug('>>>> projectMember'+projAccount+'Contact '+con.Id);
         }
         // Create IPS Product
         List<Core_IPS_Product__c> listOfIpsProductsOne = TestUtilities.getListOfIpsProducts(1);
@@ -1415,9 +1407,9 @@ Modification Log :
             
         } 
         System.runAs(ListOfUser1.get(0)){
+            System.debug('>>>User is'+Userinfo.getName()+':: Profile'+UserInfo.getProfileId());
             insert ListOfIpsProductsOne;
-            ListOfIpsProductsOne[0].Core_IPS_Product_Status__c = 'Inactive';
-            update ListOfIpsProductsOne;
+            System.debug('>>>ListOfIpsProductsOne'+ListOfIpsProductsOne);
         }
         System.assert(ListOfIpsProductsOne[0].Id != null, 'Record not created');
         
@@ -1559,6 +1551,7 @@ Modification Log :
         for(Profile prf : ProfileList){
             profiles.put(prf.name, prf.id);
         }
+        system.debug('profiles'+profiles);
         
         User thisUser = [select Id from User where Id = :UserInfo.getUserId()];
         User userRecord = new User();
@@ -1584,7 +1577,7 @@ Modification Log :
             testAccount1.ownerid = portalAccountOwner1.id;      
             insert testAccount1;             
             Contact testContact1 = new Contact(FirstName='testFirstName123', LastName='testLastName', Email='test1234643@testing.com.testsetup',
-                                 AccountId=testAccount1.id,Core_Personal_Email_Indicator__c = true,Core_Enterprise_Id__c='12345',Core_AGS_Integration_Status__c='Successful',MailingCountry = 'India');
+                                 AccountId=testAccount1.id,Core_Personal_Email_Indicator__c = true,Core_Enterprise_Id__c='12345',Core_AGS_Integration_Status__c='Successful');
             insert testContact1;
              
             UserRole ur = new UserRole(DeveloperName = 'MyCustomRole', Name = 'My Role');
@@ -1618,7 +1611,6 @@ Modification Log :
             for(Contact contactRec : ListOfContacts){                
                 ContactRec.Accountid = ListOfAccounts.get(0).Id;
                 ContactRec.Core_IPS_Active__c = true;
-                ContactRec.MailingCountry = 'India';
             }
             insert ListOfContacts;
             System.assert(ListOfContacts[0].Id != null, 'Record not created');

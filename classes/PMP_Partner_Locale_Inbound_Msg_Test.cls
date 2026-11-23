@@ -1,13 +1,6 @@
 @isTest
 private class PMP_Partner_Locale_Inbound_Msg_Test {
-//TranslationEOL
-    @isTest
-    static void testIsWorking() {
-        Boolean result = PMP_Partner_Locale_Inbound_Msg.isWorking();
-        System.assertEquals(true, result);
-    }
-   /* 
-
+    
     public class InboundPayload {
         public String SourceLanguage {get; set;}
         public List<PartnerData> Partners {get; set;}
@@ -235,7 +228,7 @@ private class PMP_Partner_Locale_Inbound_Msg_Test {
             
         }
          // List<PMP_Company__c> publishedPartners = [SELECT Id,PMP_Working_Copy_Id__c FROM PMP_Company__c];
-         	List<PMP_Company_Translation__c> updatedTransList1 = [Select Id,Name,PMP_Company_Information_Id__c from PMP_Company_Translation__c LIMIT 10];
+         	List<PMP_Company_Translation__c> updatedTransList1 = [Select Id,Name,PMP_Company_Information_Id__c from PMP_Company_Translation__c];
     		Core_Integration_Inbound_Message__c inboundMe=new Core_Integration_Inbound_Message__c();
             Map<Id,Core_Integration_Inbound_Message__c> inboundMap3=new Map<Id,Core_Integration_Inbound_Message__c>([SELECT Id,Name,Core_Payload__c,Core_Payload1__c,Core_Processing_Status__c FROM Core_Integration_Inbound_Message__c LIMIT 5]);
          //inboundMap3.put(inboundMe.Id,inboundMe);
@@ -250,8 +243,8 @@ private class PMP_Partner_Locale_Inbound_Msg_Test {
                                
            Map<String,String> workPubIdMap = new Map<String,String>();
         List<Id> approvedId=new List<Id>();
-        List<PMP_Company_Translation__c> updatedTransList = [Select Id,Name from PMP_Company_Translation__c LIMIT 10];
-         List<PMP_Company__c> publishedPartners = [SELECT Id,PMP_Working_Copy_Id__c FROM PMP_Company__c LIMIT 10];
+        List<PMP_Company_Translation__c> updatedTransList = [Select Id,Name from PMP_Company_Translation__c];
+         List<PMP_Company__c> publishedPartners = [SELECT Id,PMP_Working_Copy_Id__c FROM PMP_Company__c];
         for(PMP_Company__c comp: publishedPartners){
             workPubIdMap.put(comp.PMP_Working_Copy_Id__c, comp.Id);
             approvedId.add(comp.Id);
@@ -262,12 +255,12 @@ private class PMP_Partner_Locale_Inbound_Msg_Test {
         
         List<Id> CoredIds=new List<Id>();
          List<Id> CoredIds1=new List<Id>();
-        List<Core_Integration_Inbound_Message__c> failedMessages=[Select Id,Name,Core_Outbound_Message__c from Core_Integration_Inbound_Message__c LIMIT 10];
-        List<Core_Integration_Outbound_Message__c> outboundMsg=[Select Id,Core_MessageType__c,Core_Payload__c,Core_Tags__c From Core_Integration_Outbound_Message__c LIMIT 10];
+        List<Core_Integration_Inbound_Message__c> failedMessages=[Select Id,Name,Core_Outbound_Message__c from Core_Integration_Inbound_Message__c];
      
         for(Core_Integration_Inbound_Message__c cc:failedMessages)
         {
-             
+              List<Core_Integration_Outbound_Message__c> outboundMsg=[Select Id,Core_MessageType__c,Core_Payload__c,Core_Tags__c From Core_Integration_Outbound_Message__c];
+      
             if(cc.Core_Outbound_Message__c!=null)
             {
                  CoredIds1.add(outboundMsg[0].Id);
@@ -277,15 +270,14 @@ private class PMP_Partner_Locale_Inbound_Msg_Test {
             CoredIds.add(cc.Id);
         }
         
-       	PMP_Partner_Locale_Inbound_Msg.rePublish(failedMessages);
-        system.AssertNotEquals(Null,outboundMsg.size(),'failed');
-  //        PMP_Partner_Locale_Inbound_Msg.rePublish(NULL);
+       PMP_Partner_Locale_Inbound_Msg.rePublish(failedMessages);
+          PMP_Partner_Locale_Inbound_Msg.rePublish(NULL);
         
         
         Test.stopTest();
         
         
-    }  */ 
+    }   
    
     
 }

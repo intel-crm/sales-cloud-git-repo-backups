@@ -1,6 +1,6 @@
 //import { LightningElement,track } from 'lwc';
 import { LightningElement, track, api ,wire } from 'lwc';
-/*import checkIPSUser from '@salesforce/apex/Sales_NonIPSCaseCreation.checkIPSUser';
+import checkIPSUser from '@salesforce/apex/Sales_NonIPSCaseCreation.checkIPSUser';
 import checkExternal from '@salesforce/apex/Sales_NonIPSCaseCreation.checkExternal';
 import { getRecord, getFieldValue } from "lightning/uiRecordApi";
 //import IS_IPS from "@salesforce/schema/User.Contact.Core_IPS_Active__c";
@@ -50,10 +50,10 @@ import Sales_contactCustomerSupport from '@salesforce/label/c.Sales_contactCusto
 
 import Sales_Help_Eval_Free_Emp from '@salesforce/label/c.Sales_Help_Eval_Free_Emp';
 import Sales_FGPA_Installation from '@salesforce/label/c.Sales_FGPA_Installation';
-*/
+
 export default class Sales_ContactCustomerService_HomePage extends NavigationMixin(LightningElement) {
 
-        /*@track optionSelected;
+        @track optionSelected;
         @api NonIpsCaseCreation=false;
 
     getSelection(event) {
@@ -222,5 +222,5 @@ export default class Sales_ContactCustomerService_HomePage extends NavigationMix
             }
 
         })
-    }*/
+    }
 }

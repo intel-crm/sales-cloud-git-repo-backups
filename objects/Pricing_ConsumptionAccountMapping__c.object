@@ -206,11 +206,6 @@
     <label>Consumption Account Mapping</label>
     <listViews>
         <fullName>All</fullName>
-        <columns>NAME</columns>
-        <columns>Pricing_Account_Nm__c</columns>
-        <columns>Pricing_Consumption_Type_Nm__c</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>LAST_ACTIVITY</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
@@ -221,6 +216,6 @@
     </nameField>
     <pluralLabel>Consumption Account Mappings</pluralLabel>
     <searchLayouts/>
-    <sharingModel>Private</sharingModel>
+    <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>

@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <description>Send Email to Owner</description>
+        <name>Send_Email_to_Owner</name>
+        <label>Send Email to Owner</label>
+        <locationX>69</locationX>
+        <locationY>515</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>Core_Inquiry_CNDA_Lead_Request</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <elementReference>$Record.Core_Owner__c</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>sendRichBody</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderAddress</name>
+            <value>
+                <stringValue>wsm-postmaster@intel.com</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue>New Inquiry: {!$Record.Core_First_Name_Txt__c} {!$Record.Core_Last_Name_Txt__c} at {!$Record.Core_AcccountName__c} has requested {!$Record.Core_Inquiry_Type_Pkt__c}</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <description>Send Email to Owner</description>
+        <name>Send_Email_to_Owner_0</name>
+        <label>Send Email to Owner</label>
+        <locationX>855</locationX>
+        <locationY>538</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>Core_Inquiry_CNDA_Lead_Request</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <elementReference>$Record.Core_Owner__c</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>sendRichBody</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderAddress</name>
+            <value>
+                <elementReference>IntelCorporationNoReply</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue> New Inquiry: {!$Record.Core_First_Name_Txt__c} {!$Record.Core_Last_Name_Txt__c} at {!$Record.Core_Company_Txt__c} has requested {!$Record.Core_Inquiry_Type_Pkt__c}</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+    </actionCalls>
+    <apiVersion>55.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <constants>
+        <name>IntelCorporationNoReply</name>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>wsm-postmaster@intel.com</stringValue>
+        </value>
+    </constants>
+    <decisions>
+        <name>IF_Lead_OR_Contact_is_having_values</name>
+        <label>IF Lead OR Contact is having values</label>
+        <locationX>457</locationX>
+        <locationY>396</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>If_Core_Inquiry_Asked_For_Contact_Follow_Up</name>
+            <conditionLogic>1 AND (2 OR 3 OR 4)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_Contact_Inquiries__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Inquiry_Type_Pkt__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Asked for Follow-up</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Inquiry_Type_Pkt__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Requested Quote</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Inquiry_Type_Pkt__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Sales Approved</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Contact_Inquiry_Owner</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>If Core_Inquiry_Asked_For_Contact_Follow_Up</label>
+        </rules>
+        <rules>
+            <name>If_Core_Inquiry_CNDA_Request_Contact</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_Contact_Inquiries__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Inquiry_Type_Pkt__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>CNDA Request</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Contact_Inquiry_Owner</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>If Core_Inquiry_CNDA_Request_Contact</label>
+        </rules>
+        <rules>
+            <name>If_Core_Inquiry_Asked_For_Lead_Follow_Up</name>
+            <conditionLogic>1 AND (2 OR 3 OR 4)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_Lead_Inquiries__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Inquiry_Type_Pkt__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Asked for Follow-up</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Inquiry_Type_Pkt__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Requested Quote</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Inquiry_Type_Pkt__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Sales Approved</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Lead_Inquiry_Owner</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>If Core_Inquiry_Asked_For_Lead_Follow_Up</label>
+        </rules>
+        <rules>
+            <name>IfCore_Inquiry_CNDA_Request_Lead</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_Lead_Inquiries__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Inquiry_Type_Pkt__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>CNDA Request</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Lead_Inquiry_Owner</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>If Core_Inquiry_CNDA_Request_Lead</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <interviewLabel>Update Inquirey Filed and Send Email {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Update Inquirey Filed and Send Email</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_Contact_Inquiry_Owner</name>
+        <label>Update Contact Inquiry Owner</label>
+        <locationX>174</locationX>
+        <locationY>303</locationY>
+        <connector>
+            <targetReference>Send_Email_to_Owner</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_Lead_Contact_Owner_Email__c</field>
+            <value>
+                <elementReference>$Record.Core_Owner__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Owner_Name__c</field>
+            <value>
+                <stringValue>{!$Record.Core_Contact_Inquiries__r.Owner.FirstName} {!$Record.Core_Contact_Inquiries__r.Owner.LastName}</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Lead_Inquiry_Owner</name>
+        <label>Update Lead Inquiry Owner</label>
+        <locationX>814</locationX>
+        <locationY>311</locationY>
+        <connector>
+            <targetReference>Send_Email_to_Owner_0</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_Lead_Contact_Owner_Email__c</field>
+            <value>
+                <elementReference>$Record.Core_Owner__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Owner_Name__c</field>
+            <value>
+                <stringValue>{!$Record.Core_Lead_Inquiries__r.Owner:User.FirstName} {!$Record.Core_Lead_Inquiries__r.Owner:User.LastName}</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>329</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>IF_Lead_OR_Contact_is_having_values</targetReference>
+        </connector>
+        <filterLogic>(1 OR 2) AND (3 OR 4)</filterLogic>
+        <filters>
+            <field>Core_Lead_Inquiries__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Core_Contact_Inquiries__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Core_Inquiry_Type_Pkt__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Core_Inquiry_Type_Pkt__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <object>Core_Inquiry__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+    <textTemplates>
+        <name>CNDA_Lead_request</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;p&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;Hi {!$Record.Core_Owner_Name__c},&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 16px; font-family: sans-serif;&quot;&gt;You are receiving this alert because this person has requested access to the Resource and Design Center and needs CNDA verification/creation. Please take a look at the details below and reach out within three business days to enable access (if applicable).&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;Click here to see this person’s full profile in Salesforce CRM »&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;Here are the person’s details:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;First Name: {!$Record.Core_First_Name_Txt__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;Last Name: {!$Record.Core_Last_Name_Txt__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;Company:{!$Record.Core_AccountName__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;Job Title: {!$Record.Core_Title_Txt__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;Phone Number: {!$Record.Core_Phone_Txt__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;Email: {!$Record.Core_Email_Txt__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;How they found us originally: {!$Record.Core_Contact_Lead_Source__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;Some details about their Inquiry:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;Area of Interest: {!$Record.Core_Product_Interest_Txt__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;Purchase Timeframe: {!$Record.Core_Project_Timeframe__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;Project Details: {!$Record.Core_Inquiry_Notes_Txt__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;Please remember to log any calls or emails you make when engaging with this person. If you have questions regarding how to manage any Lead/Inquiry assigned to you, please visit our Sales CRM training website&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;Sincerely,&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;Your Marketing Automation Team&lt;/span&gt;&lt;/p&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <name>Core_Inquiry_CNDA_Lead_Request</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;p&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;Hi &lt;/span&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(68, 68, 68); font-size: 16px;&quot;&gt;{!$Record.Core_Owner_Name__c}&lt;/span&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;,&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;You are receiving this alert because this person has requested access to the Resource and Design Center and needs CNDA verification/creation. Please take a look at the details below and reach out within three business days to enable access (if applicable).&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://intel--crmqa3--c.cs37.content.force.com/email/%7B!$Label.Core_Inquiry_Lead_Link%7D/%7B!Core_Inquiry__c.Core_Lead_InquiriesId__c%7D&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-size: 16px; font-family: &amp;quot;Times New Roman&amp;quot;;&quot;&gt;Click here to see this person’s full profile in Salesforce CRM »&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;Here are the person’s details:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;First Name: {!$Record.Core_First_Name_Txt__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;Last Name: {!$Record.Core_Last_Name_Txt__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;Company: {!$Record.Core_Company_Txt__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;Job Title: {!$Record.Core_Title_Txt__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;Phone Number: {!$Record.Core_Phone_Txt__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;Email: {!$Record.Core_Email_Txt__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;How they found us originally: {!$Record.Core_Lead_Source__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;Some details about their Inquiry:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;Area of Interest: {!$Record.Core_Product_Interest_Txt__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;Purchase Timeframe: {!$Record.Core_Project_Timeframe__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;Project Details: {!$Record.Core_Inquiry_Notes_Txt__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;Please remember to log any calls or emails you make when engaging with this person. If you have questions regarding how to manage any Lead/Inquiry assigned to you, please visit our Sales CRM training website&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;Sincerely,&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;Your Marketing Automation Team&lt;/span&gt;&lt;/p&gt;</text>
+    </textTemplates>
+    <variables>
+        <name>v_LeadContactOwnerEmail</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+</Flow>

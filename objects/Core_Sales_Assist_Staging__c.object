@@ -183,6 +183,53 @@
         <type>DateTime</type>
     </fields>
     <fields>
+        <fullName>Core_Product_Id__c</fullName>
+        <externalId>false</externalId>
+        <label>Product</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Product_Status__c</fullName>
+        <label>Product Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>EOL</fullName>
+                    <default>false</default>
+                    <label>EOL</label>
+                </value>
+                <value>
+                    <fullName>Active</fullName>
+                    <default>false</default>
+                    <label>Active</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_Product__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Product</label>
+        <referenceTo>Product2</referenceTo>
+        <relationshipLabel>Sales Assist Staging</relationshipLabel>
+        <relationshipName>Sales_Assist_Staging</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
         <fullName>Core_Retry_Counter__c</fullName>
         <defaultValue>0</defaultValue>
         <externalId>false</externalId>
@@ -229,7 +276,7 @@
                 <sorted>false</sorted>
                 <value>
                     <fullName>New</fullName>
-                    <default>false</default>
+                    <default>true</default>
                     <label>New</label>
                 </value>
                 <value>
@@ -265,7 +312,76 @@
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Sales Assist Staging</pluralLabel>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>Core_Sales_Assist_Account</fullName>
+        <active>true</active>
+        <label>Sales Assist Account</label>
+        <picklistValues>
+            <picklist>Core_Product_Status__c</picklist>
+            <values>
+                <fullName>Active</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EOL</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_Status_Pkt__c</picklist>
+            <values>
+                <fullName>Failure</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Success</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Core_Sales_Assist_Product</fullName>
+        <active>true</active>
+        <label>Sales Assist Product</label>
+        <picklistValues>
+            <picklist>Core_Product_Status__c</picklist>
+            <values>
+                <fullName>Active</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EOL</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_Status_Pkt__c</picklist>
+            <values>
+                <fullName>Failure</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Success</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
     <searchLayouts/>
     <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>Core_CIM_ID_IsMust</fullName>
+        <active>false</active>
+        <errorConditionFormula>Core_CIM_Id__c == &apos;&apos;</errorConditionFormula>
+        <errorMessage>Please populate the CIM ID</errorMessage>
+    </validationRules>
     <visibility>Public</visibility>
 </CustomObject>

@@ -9,6 +9,10 @@
         <value>Account Create Process Mappings</value>
     </caseValues>
     <fields>
+        <label><!-- Active --></label>
+        <name>Active__c</name>
+    </fields>
+    <fields>
         <label><!-- Source Name --></label>
         <name>Core_Account_Reference_Source_Name__c</name>
         <picklistValues>
@@ -57,8 +61,24 @@
         <name>Customer_Process_Engagement_Name__c</name>
     </fields>
     <fields>
+        <label><!-- Description Text --></label>
+        <name>Description_Text__c</name>
+    </fields>
+    <fields>
         <label><!-- Duplicate Rejected --></label>
         <name>Duplicate_Rejected__c</name>
+    </fields>
+    <fields>
+        <label><!-- Label Name --></label>
+        <name>Label_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Order --></label>
+        <name>Order__c</name>
+    </fields>
+    <fields>
+        <label><!-- Permission Set --></label>
+        <name>Permission_Set__c</name>
     </fields>
     <fields>
         <label><!-- Process Type Code --></label>
@@ -67,6 +87,10 @@
     <fields>
         <label><!-- Process Type Name --></label>
         <name>Process_Type_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Profile Name --></label>
+        <name>Profile_Name__c</name>
     </fields>
     <fields>
         <label><!-- RecordType Developer Name --></label>

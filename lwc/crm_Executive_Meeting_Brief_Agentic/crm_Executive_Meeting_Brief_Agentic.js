@@ -70,6 +70,7 @@ export default class crm_Executive_Meeting_Brief_Agentic extends LightningElemen
             }
             
         } catch (error) {
+            console.error('Error:', error);
             this.dispatchEvent(
                 new ShowToastEvent({
                     title: 'Error',
@@ -116,6 +117,7 @@ export default class crm_Executive_Meeting_Brief_Agentic extends LightningElemen
             
             
         } catch (error) {
+            console.error('Error fetching brief details:', error);
             throw error;
         }
     }

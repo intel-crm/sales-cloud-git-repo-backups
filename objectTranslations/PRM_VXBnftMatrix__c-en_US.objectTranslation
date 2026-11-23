@@ -51,28 +51,40 @@
         <label><!-- Partner Role --></label>
         <name>PRM_Partner_Role_Nm__c</name>
         <picklistValues>
-            <masterLabel>Builder</masterLabel>
-            <translation><!-- Builder --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Cloud &amp; Comms Service Provider</masterLabel>
-            <translation><!-- Cloud &amp; Comms Service Provider --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Distributor</masterLabel>
             <translation><!-- Distributor --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Guest</masterLabel>
-            <translation><!-- Guest --></translation>
+            <masterLabel>FPGA Designer</masterLabel>
+            <translation><!-- FPGA Designer --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Independent Software Vendor</masterLabel>
             <translation><!-- Independent Software Vendor --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Manufacturer</masterLabel>
+            <translation><!-- Manufacturer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Applicable</masterLabel>
+            <translation><!-- Not Applicable --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Seller</masterLabel>
+            <translation><!-- Seller --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service Provider</masterLabel>
+            <translation><!-- Service Provider --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Solution Integrator</masterLabel>
             <translation><!-- Solution Integrator --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sponsor</masterLabel>
+            <translation><!-- Sponsor --></translation>
         </picklistValues>
     </fields>
     <fields>

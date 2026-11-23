@@ -119,6 +119,10 @@
                 <behavior>Edit</behavior>
                 <field>No_of_Indirect_Compt_Customers_Past_12M__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>CRM_CST_Is_Active_Planning_Period__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns/>
         <style>TwoColumnsTopToBottom</style>

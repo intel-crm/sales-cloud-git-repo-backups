@@ -25,10 +25,6 @@
         <label><!-- Operator --></label>
         <name>Core_MDF_Operator__c</name>
         <picklistValues>
-            <masterLabel>Any</masterLabel>
-            <translation><!-- Any --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Equal</masterLabel>
             <translation><!-- Equal --></translation>
         </picklistValues>

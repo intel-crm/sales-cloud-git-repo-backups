@@ -3,7 +3,7 @@
     <actionCalls>
         <name>PCC_Send_Email_Rejection_to_Approver</name>
         <label>Send Email Rejection to Approver</label>
-        <locationX>1282</locationX>
+        <locationX>930</locationX>
         <locationY>1595</locationY>
         <actionName>emailSimple</actionName>
         <actionType>emailSimple</actionType>
@@ -54,7 +54,7 @@
         <name>Send_Email</name>
         <label>Send Email</label>
         <locationX>50</locationX>
-        <locationY>1271</locationY>
+        <locationY>1163</locationY>
         <actionName>emailSimple</actionName>
         <actionType>emailSimple</actionType>
         <connector>
@@ -97,19 +97,13 @@
                 <booleanValue>true</booleanValue>
             </value>
         </inputParameters>
-        <inputParameters>
-            <name>ccRecipientAddressList</name>
-            <value>
-                <elementReference>$Record.Core_Accepted_By_Id__r.Email</elementReference>
-            </value>
-        </inputParameters>
         <nameSegment>emailSimple</nameSegment>
         <offset>0</offset>
     </actionCalls>
     <actionCalls>
         <name>Send_Email_Rejection_to_Approver_Account_Owner</name>
         <label>Send Email Rejection to Approver : Account Owner</label>
-        <locationX>1546</locationX>
+        <locationX>1194</locationX>
         <locationY>1595</locationY>
         <actionName>emailSimple</actionName>
         <actionType>emailSimple</actionType>
@@ -159,7 +153,7 @@
     <actionCalls>
         <name>Send_Partner_Rejection_Mail</name>
         <label>Send Partner Rejection Mail</label>
-        <locationX>1612</locationX>
+        <locationX>1260</locationX>
         <locationY>1979</locationY>
         <actionName>emailSimple</actionName>
         <actionType>emailSimple</actionType>
@@ -207,66 +201,10 @@
         <offset>0</offset>
     </actionCalls>
     <actionCalls>
-        <name>SendEmailOnExpiry</name>
-        <label>SendEmailOnExpiry</label>
-        <locationX>754</locationX>
-        <locationY>1271</locationY>
-        <actionName>emailSimple</actionName>
-        <actionType>emailSimple</actionType>
-        <connector>
-            <targetReference>Create_Log_Entry_Info</targetReference>
-        </connector>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
-        <inputParameters>
-            <name>emailAddresses</name>
-            <value>
-                <elementReference>$Record.Owner:User.Email</elementReference>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>senderType</name>
-            <value>
-                <stringValue>OrgWideEmailAddress</stringValue>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>senderAddress</name>
-            <value>
-                <stringValue>ddr.admin@intel.com</stringValue>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>emailSubject</name>
-            <value>
-                <stringValue>Design Registration {!$Record.Name} Expired</stringValue>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>emailBody</name>
-            <value>
-                <elementReference>EmailBodyforExpiry</elementReference>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>sendRichBody</name>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>ccRecipientAddressList</name>
-            <value>
-                <elementReference>$Record.Core_Intel_Technical_Owner_Id__r.Email</elementReference>
-            </value>
-        </inputParameters>
-        <nameSegment>emailSimple</nameSegment>
-        <offset>0</offset>
-    </actionCalls>
-    <actionCalls>
         <name>SendEmailOnRejection</name>
         <label>SendEmailOnRejection</label>
         <locationX>402</locationX>
-        <locationY>1271</locationY>
+        <locationY>1163</locationY>
         <actionName>emailSimple</actionName>
         <actionType>emailSimple</actionType>
         <connector>
@@ -309,12 +247,6 @@
                 <booleanValue>true</booleanValue>
             </value>
         </inputParameters>
-        <inputParameters>
-            <name>ccRecipientAddressList</name>
-            <value>
-                <elementReference>$Record.Core_Accepted_By_Id__r.Email</elementReference>
-            </value>
-        </inputParameters>
         <nameSegment>emailSimple</nameSegment>
         <offset>0</offset>
     </actionCalls>
@@ -334,22 +266,6 @@
         </assignmentItems>
         <connector>
             <targetReference>IterateOverDRP</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <name>Add_Columns_to_Table</name>
-        <label>Add Columns to Table</label>
-        <locationX>754</locationX>
-        <locationY>647</locationY>
-        <assignmentItems>
-            <assignToReference>table</assignToReference>
-            <operator>Add</operator>
-            <value>
-                <elementReference>tableColumns</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>IterateOverDRPS</targetReference>
         </connector>
     </assignments>
     <assignments>
@@ -385,22 +301,6 @@
         </connector>
     </assignments>
     <assignments>
-        <name>AddTableRowsToTableMarkup</name>
-        <label>AddTableRowsToTableMarkup</label>
-        <locationX>842</locationX>
-        <locationY>863</locationY>
-        <assignmentItems>
-            <assignToReference>table</assignToReference>
-            <operator>Add</operator>
-            <value>
-                <elementReference>TableRowforExpiry</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>IterateOverDRPS</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
         <name>AddTableRowToTableMarkup</name>
         <label>AddTableRowToTableMarkup</label>
         <locationX>490</locationX>
@@ -429,23 +329,7 @@
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>Get_external_link</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <name>Close_Table_Markup_For_Expiry</name>
-        <label>Close Table Markup For Expiry</label>
-        <locationX>754</locationX>
-        <locationY>1055</locationY>
-        <assignmentItems>
-            <assignToReference>table</assignToReference>
-            <operator>Add</operator>
-            <value>
-                <stringValue>&lt;/table&gt;</stringValue>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>get_link_external</targetReference>
+            <targetReference>Send_Email</targetReference>
         </connector>
     </assignments>
     <assignments>
@@ -461,13 +345,13 @@
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>get_external_link_record</targetReference>
+            <targetReference>SendEmailOnRejection</targetReference>
         </connector>
     </assignments>
     <assignments>
         <name>PCC_Add_column_to_email_table</name>
         <label>Add column to email table</label>
-        <locationX>1612</locationX>
+        <locationX>1260</locationX>
         <locationY>755</locationY>
         <assignmentItems>
             <assignToReference>tabledeal</assignToReference>
@@ -483,7 +367,7 @@
     <assignments>
         <name>PCC_Add_Email_Table_row_to_table_markup</name>
         <label>Add Email Table row to table markup</label>
-        <locationX>1700</locationX>
+        <locationX>1348</locationX>
         <locationY>971</locationY>
         <assignmentItems>
             <assignToReference>tabledeal</assignToReference>
@@ -499,7 +383,7 @@
     <assignments>
         <name>PCC_Close_Email_Table_Row_for_markup</name>
         <label>Close Email Table Row for markup</label>
-        <locationX>1612</locationX>
+        <locationX>1260</locationX>
         <locationY>1163</locationY>
         <assignmentItems>
             <assignToReference>tabledeal</assignToReference>
@@ -531,7 +415,7 @@
     <assignments>
         <name>Update_Message_Approved_Deal</name>
         <label>Update Message = Approved Deal</label>
-        <locationX>1018</locationX>
+        <locationX>666</locationX>
         <locationY>431</locationY>
         <assignmentItems>
             <assignToReference>Message</assignToReference>
@@ -547,7 +431,7 @@
     <assignments>
         <name>Update_Message_Deal_Rejected</name>
         <label>Update Message = Deal Rejected</label>
-        <locationX>1612</locationX>
+        <locationX>1260</locationX>
         <locationY>431</locationY>
         <assignmentItems>
             <assignToReference>Message</assignToReference>
@@ -563,7 +447,7 @@
     <assignments>
         <name>Update_Message_Deal_Resubmitted</name>
         <label>Update Message = Deal Resubmitted</label>
-        <locationX>1986</locationX>
+        <locationX>1634</locationX>
         <locationY>431</locationY>
         <assignmentItems>
             <assignToReference>Message</assignToReference>
@@ -574,22 +458,6 @@
         </assignmentItems>
         <connector>
             <targetReference>Publish_Platform_event_for_Opportunity_Update</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <name>Update_Message_Expired</name>
-        <label>Update Message = Expired</label>
-        <locationX>754</locationX>
-        <locationY>431</locationY>
-        <assignmentItems>
-            <assignToReference>Message</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <stringValue> Record : Design Registration and Status= Expired</stringValue>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>GetChildDRPS</targetReference>
         </connector>
     </assignments>
     <assignments>
@@ -611,7 +479,7 @@
     <decisions>
         <name>PCC_Is_Partner_Account_Covered</name>
         <label>Is Partner Account Covered</label>
-        <locationX>1612</locationX>
+        <locationX>1260</locationX>
         <locationY>1271</locationY>
         <defaultConnector>
             <targetReference>get_external_record_link</targetReference>
@@ -636,7 +504,7 @@
     <decisions>
         <name>Send_Email_Alert_for_Approve_Or_Reject</name>
         <label>Send Email Alert for Approve Or Reject</label>
-        <locationX>1282</locationX>
+        <locationX>1106</locationX>
         <locationY>323</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -710,35 +578,6 @@
                 <targetReference>Update_Message_Rejected</targetReference>
             </connector>
             <label>If Status is Rejected</label>
-        </rules>
-        <rules>
-            <name>If_Status_is_Expired</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>$Record.Core_Design_Registration_Status_Nm__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>Expired</stringValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>$Record.PCC_Registration_Type__c</leftValueReference>
-                <operator>Contains</operator>
-                <rightValue>
-                    <stringValue>Design</stringValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>$Record.Core_Design_Registration_Status_Nm__c</leftValueReference>
-                <operator>IsChanged</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Update_Message_Expired</targetReference>
-            </connector>
-            <label>If Status is Expired</label>
         </rules>
         <rules>
             <name>Deal_Status_is_approved</name>
@@ -845,7 +684,7 @@
     <decisions>
         <name>Send_Email_to_PSAM_or_Alternate_Approver</name>
         <label>Send Email to PSAM or Alternate Approver</label>
-        <locationX>1414</locationX>
+        <locationX>1062</locationX>
         <locationY>1487</locationY>
         <defaultConnector>
             <targetReference>Send_Email_Rejection_to_Approver_Account_Owner</targetReference>
@@ -882,11 +721,6 @@
         <expression>TEXT(YEAR(TODAY()))</expression>
     </formulas>
     <formulas>
-        <name>DRPComment</name>
-        <dataType>String</dataType>
-        <expression>IF(ISBLANK({!$Record.Core_Rejection_Comment_Txt__c}), {!IterateOverDRPS.Core_Comment_Txt__c}, {!$Record.Core_Rejection_Comment_Txt__c})</expression>
-    </formulas>
-    <formulas>
         <name>EmailTableRowForRejection</name>
         <dataType>String</dataType>
         <expression>&apos;&lt;tr&gt;&lt;td style =&quot;padding: 10px;&quot;&gt;&apos; + {!PCC_IterateOverDealDRP.Name}+
@@ -898,7 +732,7 @@
     <formulas>
         <name>EndCustomerName</name>
         <dataType>String</dataType>
-        <expression>IF(NOT(ISBLANK({!$Record.Core_End_Customer_Account_Id__c})), {!$Record.Core_End_Customer_Account_Id__r.Name},{!$Record.Core_End_Customer_Nm__c})</expression>
+        <expression>IF(NOT(ISBLANK({!$Record.Core_End_Customer_Account_Id__c})), {!$Record.Core_End_Customer_Account_Id__r.Name},{!$Record.Core_End_Customer_Account_Id__r.Name})</expression>
     </formulas>
     <formulas>
         <name>tableRow</name>
@@ -909,19 +743,7 @@
 &apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px;&quot;&gt;&apos; + TEXT({!Iterate_Over_DRP.Core_Design_Product_Status_Nm__c})+ 
 &apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px;&quot;&gt;&apos; + {!Iterate_Over_DRP.Core_Comment_Txt__c}+
 &apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px ; width:150px;&quot;&gt;&apos; + TEXT({!Iterate_Over_DRP.CreatedDate})+ 
-&apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px;&quot;&gt;&apos; +&apos;&lt;a href=&quot;https://partner-admin.intel.com/s/core-design-registration-product/&apos; + {!Iterate_Over_DRP.Id} + &apos;&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-family: Arial, sans-serif;&quot;&gt;link&lt;/a&gt;&apos; +
-&apos;&lt;/td&gt;&lt;/tr&gt;&apos;</expression>
-    </formulas>
-    <formulas>
-        <name>TableRowforExpiry</name>
-        <dataType>String</dataType>
-        <expression>&apos;&lt;tr&gt;&lt;td style =&quot;padding: 10px;&quot;&gt;&apos; + {!IterateOverDRPS.Name}+
-&apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px;&quot;&gt;&apos; + {!IterateOverDRPS.Core_Product_Id__r.Name}+ 
-&apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px; text-align: center;&quot;&gt;&apos; + {!IterateOverDRPS.Core_Partner_Tracking_Cd__c}+ 
-&apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px;&quot;&gt;&apos; + TEXT({!IterateOverDRPS.Core_Design_Product_Status_Nm__c})+ 
-&apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px;&quot;&gt;&apos; + {!IterateOverDRPS.Core_Comment_Txt__c}+
-&apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px ; width:150px;&quot;&gt;&apos; + TEXT({!IterateOverDRPS.CreatedDate})+ 
-&apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px;&quot;&gt;&apos; +&apos;&lt;a href=&quot;https://partner-admin.intel.com/s/core-design-registration-product/&apos; + {!IterateOverDRPS.Id} + &apos;&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-family: Arial, sans-serif;&quot;&gt;link&lt;/a&gt;&apos; +
+&apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px;&quot;&gt;&apos; +&apos;&lt;a href=&quot;https://intel--crmqa7.sandbox.my.site.com/partneradmin/s/core-design-registration-product/&apos; + {!Iterate_Over_DRP.Id} + &apos;&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-family: Arial, sans-serif;&quot;&gt;link&lt;/a&gt;&apos; +
 &apos;&lt;/td&gt;&lt;/tr&gt;&apos;</expression>
     </formulas>
     <formulas>
@@ -933,7 +755,7 @@
 &apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px;&quot;&gt;&apos; + TEXT({!IterateOverDRP.Core_Design_Product_Status_Nm__c})+ 
 &apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px;&quot;&gt;&apos; + {!IterateOverDRP.Core_Comment_Txt__c}+
 &apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px ; width:150px;&quot;&gt;&apos; + TEXT({!IterateOverDRP.CreatedDate})+ 
-&apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px;&quot;&gt;&apos; +&apos;&lt;a href=&quot;https://partner-admin.intel.com/s/core-design-registration-product/&apos; + {!IterateOverDRP.Id} + &apos;&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-family: Arial, sans-serif;&quot;&gt;link&lt;/a&gt;&apos; +
+&apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px;&quot;&gt;&apos; +&apos;&lt;a href=&quot;https://intel--crmqa7.sandbox.my.site.com/partneradmin/s/core-design-registration-product/&apos; + {!IterateOverDRP.Id} + &apos;&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-family: Arial, sans-serif;&quot;&gt;link&lt;/a&gt;&apos; +
 &apos;&lt;/td&gt;&lt;/tr&gt;&apos;</expression>
     </formulas>
     <formulas>
@@ -972,23 +794,9 @@
         </noMoreValuesConnector>
     </loops>
     <loops>
-        <name>IterateOverDRPS</name>
-        <label>IterateOverDRPS</label>
-        <locationX>754</locationX>
-        <locationY>755</locationY>
-        <collectionReference>GetChildDRPS</collectionReference>
-        <iterationOrder>Asc</iterationOrder>
-        <nextValueConnector>
-            <targetReference>AddTableRowsToTableMarkup</targetReference>
-        </nextValueConnector>
-        <noMoreValuesConnector>
-            <targetReference>Close_Table_Markup_For_Expiry</targetReference>
-        </noMoreValuesConnector>
-    </loops>
-    <loops>
         <name>PCC_IterateOverDealDRP</name>
         <label>IterateOverDealDRP</label>
-        <locationX>1612</locationX>
+        <locationX>1260</locationX>
         <locationY>863</locationY>
         <collectionReference>PCC_GetDealRegProductRecords</collectionReference>
         <iterationOrder>Asc</iterationOrder>
@@ -1021,7 +829,7 @@
     <recordCreates>
         <name>Create_Log_Entry_Error</name>
         <label>Create Log Entry : Error</label>
-        <locationX>2250</locationX>
+        <locationX>1898</locationX>
         <locationY>647</locationY>
         <inputAssignments>
             <field>Core_Details__c</field>
@@ -1071,7 +879,7 @@
     <recordCreates>
         <name>Create_Log_Entry_Info</name>
         <label>Create Log Entry : Info</label>
-        <locationX>1282</locationX>
+        <locationX>1106</locationX>
         <locationY>2279</locationY>
         <inputAssignments>
             <field>Core_Details__c</field>
@@ -1121,7 +929,7 @@
     <recordCreates>
         <name>PCC_Deal_Partner_Email_Log</name>
         <label>Deal Partner Email Log</label>
-        <locationX>1612</locationX>
+        <locationX>1260</locationX>
         <locationY>2087</locationY>
         <connector>
             <targetReference>Create_Log_Entry_Info</targetReference>
@@ -1192,7 +1000,7 @@
     <recordCreates>
         <name>Publish_platform_event_for_opportunity_creation</name>
         <label>Publish platform event for opportunity creation</label>
-        <locationX>1018</locationX>
+        <locationX>666</locationX>
         <locationY>539</locationY>
         <connector>
             <targetReference>Create_Log_Entry_Info</targetReference>
@@ -1222,7 +1030,7 @@
         <description>This will publish the platform event for Opportunity Update for Deal Resubmission - added by Dinesh</description>
         <name>Publish_Platform_event_for_Opportunity_Update</name>
         <label>Publish Platform event for Opportunity Update</label>
-        <locationX>1986</locationX>
+        <locationX>1634</locationX>
         <locationY>539</locationY>
         <connector>
             <targetReference>Create_Log_Entry_Info</targetReference>
@@ -1284,51 +1092,9 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordLookups>
-        <name>Get_external_link</name>
-        <label>Get external link</label>
-        <locationX>50</locationX>
-        <locationY>1163</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>Send_Email</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>DeveloperName</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>PCC_External_Link</stringValue>
-            </value>
-        </filters>
-        <getFirstRecordOnly>true</getFirstRecordOnly>
-        <object>LabelConfiguration__mdt</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordLookups>
-    <recordLookups>
-        <name>get_external_link_record</name>
-        <label>get external link record</label>
-        <locationX>402</locationX>
-        <locationY>1163</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>SendEmailOnRejection</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>DeveloperName</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>PCC_External_Link</stringValue>
-            </value>
-        </filters>
-        <getFirstRecordOnly>true</getFirstRecordOnly>
-        <object>LabelConfiguration__mdt</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordLookups>
-    <recordLookups>
         <name>get_external_record_link</name>
         <label>get external record link</label>
-        <locationX>1612</locationX>
+        <locationX>1260</locationX>
         <locationY>1871</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -1349,7 +1115,7 @@
     <recordLookups>
         <name>get_intel_logo_link</name>
         <label>get intel logo link</label>
-        <locationX>1612</locationX>
+        <locationX>1260</locationX>
         <locationY>647</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -1370,7 +1136,7 @@
     <recordLookups>
         <name>get_internal_record_link</name>
         <label>get internal record link</label>
-        <locationX>1414</locationX>
+        <locationX>1062</locationX>
         <locationY>1379</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -1382,27 +1148,6 @@
             <operator>EqualTo</operator>
             <value>
                 <stringValue>PCC_Internal_Record_Link</stringValue>
-            </value>
-        </filters>
-        <getFirstRecordOnly>true</getFirstRecordOnly>
-        <object>LabelConfiguration__mdt</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordLookups>
-    <recordLookups>
-        <name>get_link_external</name>
-        <label>get link external</label>
-        <locationX>754</locationX>
-        <locationY>1163</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>SendEmailOnExpiry</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>DeveloperName</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>PCC_External_Link</stringValue>
             </value>
         </filters>
         <getFirstRecordOnly>true</getFirstRecordOnly>
@@ -1433,32 +1178,9 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordLookups>
-        <name>GetChildDRPS</name>
-        <label>GetChildDRPS</label>
-        <locationX>754</locationX>
-        <locationY>539</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>Add_Columns_to_Table</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>Core_Design_Registration_Id__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>$Record.Id</elementReference>
-            </value>
-        </filters>
-        <getFirstRecordOnly>false</getFirstRecordOnly>
-        <object>Core_Design_Registration_Product__c</object>
-        <sortField>CreatedDate</sortField>
-        <sortOrder>Desc</sortOrder>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordLookups>
-    <recordLookups>
         <name>PCC_GetDealRegProductRecords</name>
         <label>GetDealRegProductRecords</label>
-        <locationX>1612</locationX>
+        <locationX>1260</locationX>
         <locationY>539</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -1479,7 +1201,7 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <start>
-        <locationX>1156</locationX>
+        <locationX>980</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Send_Email_Alert_for_Approve_Or_Reject</targetReference>
@@ -1493,17 +1215,12 @@
     <textTemplates>
         <name>emailBody</name>
         <isViewedAsPlainText>false</isViewedAsPlainText>
-        <text>&lt;p&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;Hello {!$Record.Owner:User.FirstName},&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;The following Design Registration has been&amp;nbsp;&lt;/span&gt;&lt;strong style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;Approved&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;Registration Number:&lt;/strong&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;&amp;nbsp;{!$Record.Name}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;Design Registration Name:&lt;/strong&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;&amp;nbsp;{!$Record.Core_Design_Registration_Nm__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;End Customer Name:&lt;/strong&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 16px; background-color: rgb(255, 255, 255);&quot;&gt;{!EndCustomerName}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-size: 12pt; color: rgb(0, 0, 0); font-family: arial;&quot;&gt;Opportunity:&lt;/strong&gt;&lt;span style=&quot;font-size: 12pt; color: rgb(0, 0, 0); font-family: arial;&quot;&gt;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;font-size: 16px; color: rgb(0, 0, 0); font-family: Arial, sans-serif;&quot;&gt;Click&amp;nbsp;&lt;/span&gt;&lt;a href=&quot;{!Get_external_link.Value__c}opportunity/{!$Record.Core_Opportunity_Id__c}&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;here&lt;/a&gt;&amp;nbsp;&lt;span style=&quot;color: rgb(0, 0, 0); font-size: 16px; font-family: Arial, sans-serif;&quot;&gt;to view&lt;/span&gt;.&amp;nbsp;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;{!table}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0);&quot;&gt;It is the Intel Partner&apos;s responsibility to understand the export, customs, and sanction controls applicable to Intel Partner&apos;s company, project, and product and take all actions necessary to ensure compliance.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0);&quot;&gt;For more details, you can access it by clicking on this&lt;/span&gt;&lt;span style=&quot;font-family: Arial, sans-serif;&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;a href=&quot;{!Get_external_link.Value__c}core-design-registration/{!$Record.Id}&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-family: Arial, sans-serif;&quot;&gt;link&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0);&quot;&gt;Thank you.&lt;/span&gt;&lt;/p&gt;</text>
-    </textTemplates>
-    <textTemplates>
-        <name>EmailBodyforExpiry</name>
-        <isViewedAsPlainText>false</isViewedAsPlainText>
-        <text>&lt;p&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;Hello {!$Record.Owner:User.FirstName},&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;The following Design Registration has been&amp;nbsp;&lt;/span&gt;&lt;strong style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;Expired&lt;/strong&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;Registration Number:&lt;/strong&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;&amp;nbsp;{!$Record.Name}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;Design Registration Name:&lt;/strong&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;&amp;nbsp;{!$Record.Core_Design_Registration_Nm__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;End Customer Name:&lt;/strong&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;&amp;nbsp;{!EndCustomerName}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;Rejection Reason:&lt;/strong&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt; {!$Record.Core_Rejection_Reason_Nm__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;Rejection Comments: &lt;/strong&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;{!$Record.Core_Rejection_Comment_Txt__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;{!table}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0);&quot;&gt;For more details, you can access it by clicking on this&lt;/span&gt;&lt;span style=&quot;font-family: Arial, sans-serif;&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;a href=&quot;{!get_link_external.Value__c}core-design-registration/{!$Record.Id}&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-family: Arial, sans-serif;&quot;&gt;link&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0);&quot;&gt;Thank you.&lt;/span&gt;&lt;/p&gt;</text>
+        <text>&lt;p&gt;&lt;span style=&quot;font-size: 12pt; color: rgb(0, 0, 0); font-family: Arial, sans-serif;&quot;&gt;Hello {!$Record.Owner:User.FirstName},&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 12pt; color: rgb(0, 0, 0); font-family: Arial, sans-serif;&quot;&gt;The following Design Registration has been&amp;nbsp;&lt;/span&gt;&lt;strong style=&quot;font-size: 12pt; color: rgb(0, 0, 0); font-family: Arial, sans-serif;&quot;&gt;Approved&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-size: 12pt; color: rgb(0, 0, 0); font-family: Arial, sans-serif;&quot;&gt;Registration Number:&lt;/strong&gt;&lt;span style=&quot;font-size: 12pt; color: rgb(0, 0, 0); font-family: Arial, sans-serif;&quot;&gt;&amp;nbsp;{!$Record.Name}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-size: 12pt; color: rgb(0, 0, 0); font-family: Arial, sans-serif;&quot;&gt;Design Registration Name:&lt;/strong&gt;&lt;span style=&quot;font-size: 12pt; color: rgb(0, 0, 0); font-family: Arial, sans-serif;&quot;&gt;&amp;nbsp;{!$Record.Core_Design_Registration_Nm__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-size: 12pt; color: rgb(0, 0, 0); font-family: Arial, sans-serif;&quot;&gt;End Customer Name:&lt;/strong&gt;&lt;span style=&quot;font-size: 12pt; color: rgb(0, 0, 0); font-family: Arial, sans-serif;&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;font-size: 16px; color: rgb(0, 0, 0); font-family: Arial, sans-serif; background-color: rgb(255, 255, 255);&quot;&gt;{!EndCustomerName}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-family: arial; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;Opportunity:&lt;/strong&gt;&lt;span style=&quot;font-family: arial; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 16px;&quot;&gt;Click&amp;nbsp;&lt;/span&gt;&lt;a href=&quot;https://intel--crmqa7.sandbox.my.site.com/partneradmin/s/opportunity/{!$Record.Core_Opportunity_Id__c}&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-size: 18px;&quot;&gt;&lt;strong&gt;here&lt;/strong&gt;&lt;/a&gt;&amp;nbsp;&lt;span style=&quot;font-family: Arial, sans-serif; font-size: 16px; color: rgb(0, 0, 0);&quot;&gt;to view&lt;/span&gt;.&amp;nbsp;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;{!table}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-family: Arial, sans-serif;&quot;&gt;It is the Intel Partner&apos;s responsibility to understand the export, customs, and sanction controls applicable to Intel Partner&apos;s company, project, and product and take all actions necessary to ensure compliance.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-family: Arial, sans-serif;&quot;&gt;For more details, you can access it by clicking on this&lt;/span&gt;&lt;span style=&quot;font-family: Arial, sans-serif;&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;a href=&quot;https://intel--crmdevint3.sandbox.my.site.com/partneradmin/s/core-design-registration/{!$Record.Id}&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-family: Arial, sans-serif;&quot;&gt;link&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-family: Arial, sans-serif;&quot;&gt;Thank you.&lt;/span&gt;&lt;/p&gt;</text>
     </textTemplates>
     <textTemplates>
         <name>EmailBodyForRejection</name>
         <isViewedAsPlainText>false</isViewedAsPlainText>
-        <text>&lt;p&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;Hello {!$Record.Owner:User.FirstName},&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;The following Design Registration has been&amp;nbsp;&lt;/span&gt;&lt;strong style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 16px; background-color: rgb(255, 255, 255);&quot;&gt;Rejected&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;Registration Number:&lt;/strong&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;&amp;nbsp;{!$Record.Name}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;Design Registration Name:&lt;/strong&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;&amp;nbsp;{!$Record.Core_Design_Registration_Nm__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;End Customer Name:&lt;/strong&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;&amp;nbsp;{!EndCustomerName}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;Rejection Reason:&lt;/strong&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt; {!$Record.Core_Rejection_Reason_Nm__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;Rejection Comments: &lt;/strong&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;{!$Record.Core_Rejection_Comment_Txt__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;{!table}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0);&quot;&gt;For more details, you can access it by clicking on this&lt;/span&gt;&lt;span style=&quot;font-family: Arial, sans-serif;&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;a href=&quot;{!get_external_link_record.Value__c}core-design-registration/{!$Record.Id}&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-family: Arial, sans-serif;&quot;&gt;link&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0);&quot;&gt;Thank you.&lt;/span&gt;&lt;/p&gt;</text>
+        <text>&lt;p&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;Hello {!$Record.Owner:User.FirstName},&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;The following Design Registration has been&amp;nbsp;&lt;/span&gt;&lt;strong style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 16px; background-color: rgb(255, 255, 255);&quot;&gt;Rejected&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;Registration Number:&lt;/strong&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;&amp;nbsp;{!$Record.Name}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;Design Registration Name:&lt;/strong&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;&amp;nbsp;{!$Record.Core_Design_Registration_Nm__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;End Customer Name:&lt;/strong&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;&amp;nbsp;{!EndCustomerName}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;Rejection Reason:&lt;/strong&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt; {!$Record.Core_Rejection_Reason_Nm__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;Rejection Comments: &lt;/strong&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;{!$Record.Core_Rejection_Comment_Txt__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;{!table}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0);&quot;&gt;For more details, you can access it by clicking on this&lt;/span&gt;&lt;span style=&quot;font-family: Arial, sans-serif;&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;a href=&quot;https://intel--crmqa7.sandbox.my.site.com/partneradmin/s/core-design-registration/{!$Record.Id}&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-family: Arial, sans-serif;&quot;&gt;link&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0);&quot;&gt;Thank you.&lt;/span&gt;&lt;/p&gt;</text>
     </textTemplates>
     <textTemplates>
         <name>PCC_EmailBodyforDealRejectionApprover</name>
@@ -1914,16 +1631,6 @@ This email was sent from an unmonitored mailbox. For questions,please contact yo
         <isOutput>false</isOutput>
         <value>
             <stringValue>&lt;tr&gt;  &lt;th style=&quot;border: 1px solid black;&quot;&gt;Id&lt;/th&gt;  &lt;th style=&quot;border: 1px solid black;&quot;&gt;Product Name&lt;/th&gt;  &lt;th style=&quot;border: 1px solid black;&quot;&gt;Status&lt;/th&gt;  &lt;th style=&quot;border: 1px solid black;&quot;&gt;Comment&lt;/th&gt;  &lt;/tr&gt;</stringValue>
-        </value>
-    </variables>
-    <variables>
-        <name>Expired</name>
-        <dataType>String</dataType>
-        <isCollection>false</isCollection>
-        <isInput>false</isInput>
-        <isOutput>false</isOutput>
-        <value>
-            <stringValue>Expired</stringValue>
         </value>
     </variables>
     <variables>

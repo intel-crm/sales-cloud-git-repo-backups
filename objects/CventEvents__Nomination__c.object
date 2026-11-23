@@ -371,57 +371,50 @@
             </valueSetDefinition>
         </valueSet>
     </fields>
+    <fields>
+        <fullName>Cvent_Job_Function__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(CventEvents__Contact__r.Core_Job_Function__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Job Function</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
     <label>Nomination</label>
     <listViews>
-        <fullName>All_Nominations</fullName>
+        <fullName>CventEvents__All</fullName>
         <columns>NAME</columns>
         <columns>CventEvents__AttendeeName__c</columns>
         <columns>CventEvents__EventTitle__c</columns>
         <columns>CventEvents__Status__c</columns>
         <columns>CventEvents__Requester__c</columns>
-        <columns>CventEvents__Comment__c</columns>
         <columns>CventEvents__CurrentApproverName__c</columns>
         <columns>CventEvents__ApproverComment__c</columns>
         <columns>CREATED_DATE</columns>
-        <columns>CREATEDBY_USER</columns>
         <columns>LAST_UPDATE</columns>
-        <columns>UPDATEDBY_USER</columns>
-        <columns>CventEvents__Contact__c</columns>
-        <columns>CventEvents__Lead__c</columns>
-        <columns>CventEvents__InvitationConfigurationName__c</columns>
+        <columns>OBJECT_ID</columns>
         <filterScope>Everything</filterScope>
-        <label>All Nominations</label>
-        <sharedTo>
-            <allInternalUsers></allInternalUsers>
-        </sharedTo>
+        <label>All</label>
     </listViews>
     <listViews>
-        <fullName>All_Pending_Nominations</fullName>
+        <fullName>CventEvents__Pending</fullName>
         <columns>NAME</columns>
         <columns>CventEvents__AttendeeName__c</columns>
         <columns>CventEvents__EventTitle__c</columns>
-        <columns>CventEvents__Status__c</columns>
         <columns>CventEvents__Requester__c</columns>
-        <columns>CventEvents__Comment__c</columns>
         <columns>CventEvents__CurrentApproverName__c</columns>
         <columns>CventEvents__ApproverComment__c</columns>
         <columns>CREATED_DATE</columns>
-        <columns>CREATEDBY_USER</columns>
         <columns>LAST_UPDATE</columns>
-        <columns>UPDATEDBY_USER</columns>
-        <columns>CventEvents__Contact__c</columns>
-        <columns>CventEvents__Lead__c</columns>
-        <columns>CventEvents__InvitationConfigurationName__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>CventEvents__Status__c</field>
             <operation>equals</operation>
             <value>Pending</value>
         </filters>
-        <label>All Pending Nominations</label>
-        <sharedTo>
-            <allInternalUsers></allInternalUsers>
-        </sharedTo>
+        <label>Pending</label>
     </listViews>
     <listViews>
         <fullName>My_Nominations</fullName>
@@ -430,16 +423,10 @@
         <columns>CventEvents__EventTitle__c</columns>
         <columns>CventEvents__Status__c</columns>
         <columns>CventEvents__Requester__c</columns>
-        <columns>CventEvents__Comment__c</columns>
         <columns>CventEvents__CurrentApproverName__c</columns>
         <columns>CventEvents__ApproverComment__c</columns>
         <columns>CREATED_DATE</columns>
-        <columns>CREATEDBY_USER</columns>
         <columns>LAST_UPDATE</columns>
-        <columns>UPDATEDBY_USER</columns>
-        <columns>CventEvents__Contact__c</columns>
-        <columns>CventEvents__Lead__c</columns>
-        <columns>CventEvents__InvitationConfigurationName__c</columns>
         <filterScope>Mine</filterScope>
         <label>My Nominations</label>
         <sharedTo>
@@ -447,32 +434,14 @@
         </sharedTo>
     </listViews>
     <listViews>
-        <fullName>My_Pending_Nominations</fullName>
+        <fullName>Test1</fullName>
         <columns>NAME</columns>
         <columns>CventEvents__AttendeeName__c</columns>
-        <columns>CventEvents__EventTitle__c</columns>
-        <columns>CventEvents__Status__c</columns>
-        <columns>CventEvents__Requester__c</columns>
-        <columns>CventEvents__Comment__c</columns>
-        <columns>CventEvents__CurrentApproverName__c</columns>
-        <columns>CventEvents__ApproverComment__c</columns>
-        <columns>CREATED_DATE</columns>
         <columns>CREATEDBY_USER</columns>
-        <columns>LAST_UPDATE</columns>
-        <columns>UPDATEDBY_USER</columns>
-        <columns>CventEvents__Contact__c</columns>
-        <columns>CventEvents__Lead__c</columns>
-        <columns>CventEvents__InvitationConfigurationName__c</columns>
-        <filterScope>Mine</filterScope>
-        <filters>
-            <field>CventEvents__Status__c</field>
-            <operation>equals</operation>
-            <value>Pending</value>
-        </filters>
-        <label>My Pending Nominations</label>
-        <sharedTo>
-            <allInternalUsers></allInternalUsers>
-        </sharedTo>
+        <columns>CventEvents__CurrentApproverName__c</columns>
+        <columns>Cvent_Job_Function__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>Test1</label>
     </listViews>
     <nameField>
         <displayFormat>N-{00000000}</displayFormat>

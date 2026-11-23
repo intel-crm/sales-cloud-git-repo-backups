@@ -889,6 +889,14 @@
         <name>Core_Prevent_Account_AMB</name>
     </validationRules>
     <webLinks>
+        <label><!-- Core_Account_Brief_PPT --></label>
+        <name>Core_Account_Brief_PPT</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Core_Account_Brief_Word --></label>
+        <name>Core_Account_Brief_Word</name>
+    </webLinks>
+    <webLinks>
         <label><!-- Core_Lex_AccMeetingBrief_Share --></label>
         <name>Core_Lex_AccMeetingBrief_Share</name>
     </webLinks>

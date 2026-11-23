@@ -36,7 +36,7 @@ public without sharing class Core_FC_ProductSchedule_Ctrl {
 * Parameter    : String oppId 
 **************************************************************************************************************/
     public static List<Core_Opp_FC_Prod_Schedule__c> getAllForecast(String oppId){
-        return [SELECT id, Core_Opp_FC_Claim_Date__c, Core_FC_Opportunity_Product__c, Core_Forecast_Old_Claim_Date__c, Core_Opp_FC_Opportunity__c, Core_Opp_Line_Item_RecordID__c, Core_Opp_FC_Product__c, Core_Opp_FC_Product__r.Name,Core_FC_Opportunity_Product__r.Quantity, Core_Opp_FC_Quarter_Date__c, Core_Opp_FC_Quarter__c, Core_Opp_FC_Quantity__c, Core_Opp_FC_isdeleted__c, lastModifiedDate, createdDate, Core_FC_4Q_Shed_Quantity__c, Core_FC_Last_Modified_Date__c, Core_FC_BU_Product_Segment__c, Core_FC_BU_Short_Name__c, Core_FC_Vendor__c, Core_FC_Vendor__r.Name, Core_Opp_FC_Approval_Status__c, Core_Opp_FC_Approved_Date__c, Core_Core_FC_Appvd_SalesPrice__c, Core_Opp_FC_Prod_Sales_Price__c, Core_Opp_FC_Sched_Revenue__c,Core_Is_Post_Win__c,Core_FC_Opportunity_Product__r.Core_IsPCCOpportunity_cb__c FROM Core_Opp_FC_Prod_Schedule__c WHERE Core_Opp_FC_Opportunity__c = :oppId AND Core_Opp_FC_isdeleted__c = false ORDER BY Core_FC_Opportunity_Product__c,Core_Opp_FC_Quarter_Date__c];
+        return [SELECT id, Core_Opp_FC_Claim_Date__c, Core_FC_Submitted_Claim_Quantity_nbr__c, Core_FC_Approved_Claim_Quantity_nbr__c, Core_FC_Remaining_Claim_Quantity_nbr__c, Core_FC_Opportunity_Product__c, Core_Forecast_Old_Claim_Date__c, Core_Opp_FC_Opportunity__c, Core_Opp_Line_Item_RecordID__c, Core_Opp_FC_Product__c, Core_Opp_FC_Product__r.Name,Core_FC_Opportunity_Product__r.Quantity, Core_Opp_FC_Quarter_Date__c, Core_Opp_FC_Quarter__c, Core_Opp_FC_Quantity__c, Core_Opp_FC_isdeleted__c, lastModifiedDate, createdDate, Core_FC_4Q_Shed_Quantity__c, Core_FC_Last_Modified_Date__c, Core_FC_BU_Product_Segment__c, Core_FC_BU_Short_Name__c, Core_FC_Vendor__c, Core_FC_Vendor__r.Name, Core_Opp_FC_Approval_Status__c, Core_Opp_FC_Approved_Date__c, Core_Core_FC_Appvd_SalesPrice__c, Core_Opp_FC_Prod_Sales_Price__c, Core_Opp_FC_Sched_Revenue__c,Core_Is_Post_Win__c,Core_FC_Opportunity_Product__r.Core_IsPCCOpportunity_cb__c FROM Core_Opp_FC_Prod_Schedule__c WHERE Core_Opp_FC_Opportunity__c = :oppId AND Core_Opp_FC_isdeleted__c = false ORDER BY Core_FC_Opportunity_Product__c,Core_Opp_FC_Quarter_Date__c];
     }
     public static User checkIfPartnerUser(){
         User us = [select Id, Name, Profile.Name, UserRoleId from User where Id=:UserInfo.getUserId()];
@@ -79,6 +79,7 @@ public without sharing class Core_FC_ProductSchedule_Ctrl {
             Boolean isOppLock = Core_CRM_Utility.lockOpportunity(oppRecList);
             fcWrap.isOppLocked = isOppLock; 
             //TWC3123-5771 End
+            fcWrap.negativeQuantityError = Core_CRM_Utility.getCRMLabel('Core_6QPS_Negative_Quantity_Error');
             //TWC3123-5772 Start
             String checkTotalQty = checkTotalQuantity(oppId);
             fcwrap.totalQuantityError = checkTotalQty;
@@ -92,7 +93,7 @@ public without sharing class Core_FC_ProductSchedule_Ctrl {
             if(opp.Core_Opportunity_Coverage_Nm__c == 'Partner-Led Opportunity' && opp.Core_Coverage_Type_Nm__c == 'Deal Registration')
             {
                 if(opp.Owner.DelegatedApproverId != null && String.valueOf(opp.Owner.DelegatedApproverId) != ''){
-                    fcWrap.delegatedApprover = [SELECT id, name, email, isActive FROM User WHERE id = :opp.Owner.DelegatedApproverId];//TWC3123-5903
+                    fcWrap.delegatedApprover = [SELECT id, name, email,isActive FROM User WHERE id = :opp.Owner.DelegatedApproverId];//TWC3123-5903
                 }
             }
             else
@@ -162,7 +163,7 @@ public without sharing class Core_FC_ProductSchedule_Ctrl {
         Integer count;
         String addQuarterName = null;
         //TWC4767-3570 Bypass 6QPS recall limit for approvers on Partner Deal Opportunities
-        String PCCDealSwitch = System.Label.CRM_ShowPCC_SubmitForApproval_6QPS;
+        String PCCDealSwitch = System.Label.CRM_ShowPCC_SubmitForApproval_6QPS;        
         for(String prodId : fcRecordMap.keySet()){
             fcDisplayWrap = new FCDisplayWrapper();
             dummyFcDisplayWrap = new FCDisplayWrapper();
@@ -197,6 +198,12 @@ public without sharing class Core_FC_ProductSchedule_Ctrl {
             dummyFcDisplayWrap.scheduledList = new List<ScheduledWrapper>();
             fcDisplayWrap.totalQuantity = dummyFcDisplayWrap.totalQuantity = 0;
             fcDisplayWrap.totalRevenue = 0;
+            fcDisplayWrap.totalSubmittedClaimQuantity = 0;
+            fcDisplayWrap.totalApprovedQuantity = 0;
+            fcDisplayWrap.totalRemainingQuantity = 0;
+            dummyFcDisplayWrap.totalSubmittedClaimQuantity = 0;
+            dummyFcDisplayWrap.totalApprovedQuantity = 0;
+            dummyFcDisplayWrap.totalRemainingQuantity = 0;
             count = 0;
             for(Core_Opp_FC_Prod_Schedule__c fc : fcRecordMap.get(prodId)){
                 
@@ -206,9 +213,9 @@ public without sharing class Core_FC_ProductSchedule_Ctrl {
                         dummyFcDisplayWrap.canDelete = false;
                     }
                 if(oppLineItemMap.containskey(prodId)){
-                    scheduledWrap = new ScheduledWrapper(fc.Core_Opp_FC_Quantity__c, fc.Core_Opp_FC_Sched_Revenue__c, fc.Core_Opp_FC_Quarter__c, fc, oppLineItemMap.get(prodId));
+                    scheduledWrap = new ScheduledWrapper(fc.Core_Opp_FC_Quantity__c, fc.Core_FC_Submitted_Claim_Quantity_nbr__c, fc.Core_FC_Approved_Claim_Quantity_nbr__c, fc.Core_FC_Remaining_Claim_Quantity_nbr__c, fc.Core_Opp_FC_Sched_Revenue__c, fc.Core_Opp_FC_Quarter__c, fc, oppLineItemMap.get(prodId));
                 }else{
-                    scheduledWrap = new ScheduledWrapper(fc.Core_Opp_FC_Quantity__c, fc.Core_Opp_FC_Sched_Revenue__c, fc.Core_Opp_FC_Quarter__c, fc, null);
+                    scheduledWrap = new ScheduledWrapper(fc.Core_Opp_FC_Quantity__c, fc.Core_FC_Submitted_Claim_Quantity_nbr__c, fc.Core_FC_Approved_Claim_Quantity_nbr__c, fc.Core_FC_Remaining_Claim_Quantity_nbr__c, fc.Core_Opp_FC_Sched_Revenue__c, fc.Core_Opp_FC_Quarter__c, fc, null);
                 }
                 fcDisplayWrap.scheduledList.add(scheduledWrap);
                 
@@ -218,6 +225,18 @@ public without sharing class Core_FC_ProductSchedule_Ctrl {
                 }
                 if(fc.Core_Opp_FC_Sched_Revenue__c <> null && fc.Core_Opp_FC_Sched_Revenue__c > 0){
                     fcDisplayWrap.totalRevenue = fcDisplayWrap.totalRevenue + fc.Core_Opp_FC_Sched_Revenue__c;
+                }
+                if(fc.Core_FC_Submitted_Claim_Quantity_nbr__c <> null){
+                    fcDisplayWrap.totalSubmittedClaimQuantity = fcDisplayWrap.totalSubmittedClaimQuantity + fc.Core_FC_Submitted_Claim_Quantity_nbr__c;
+                    dummyFcDisplayWrap.totalSubmittedClaimQuantity = dummyFcDisplayWrap.totalSubmittedClaimQuantity + fc.Core_FC_Submitted_Claim_Quantity_nbr__c;
+                }
+                if(fc.Core_FC_Approved_Claim_Quantity_nbr__c <> null){
+                    fcDisplayWrap.totalApprovedQuantity = fcDisplayWrap.totalApprovedQuantity + fc.Core_FC_Approved_Claim_Quantity_nbr__c;
+                    dummyFcDisplayWrap.totalApprovedQuantity = dummyFcDisplayWrap.totalApprovedQuantity + fc.Core_FC_Approved_Claim_Quantity_nbr__c;
+                }
+                if(fc.Core_FC_Remaining_Claim_Quantity_nbr__c <> null){
+                    fcDisplayWrap.totalRemainingQuantity = fcDisplayWrap.totalRemainingQuantity + fc.Core_FC_Remaining_Claim_Quantity_nbr__c;
+                    dummyFcDisplayWrap.totalRemainingQuantity = dummyFcDisplayWrap.totalRemainingQuantity + fc.Core_FC_Remaining_Claim_Quantity_nbr__c;
                 }
                 if(fc.Core_FC_Last_Modified_Date__c <> null){
                     fcDisplayWrap.lastModifiedDate = fc.Core_FC_Last_Modified_Date__c;
@@ -243,9 +262,9 @@ public without sharing class Core_FC_ProductSchedule_Ctrl {
             }
             dummyFcDisplayWrap.scheduledList = fcDisplayWrap.scheduledList.clone();
             if(oppLineItemMap.containskey(prodId)){
-                dummyFcDisplayWrap.scheduledList.add(new ScheduledWrapper(0, 0, addQuarterName, null, oppLineItemMap.get(prodId)));
+                dummyFcDisplayWrap.scheduledList.add(new ScheduledWrapper(0, 0, 0, 0, 0, addQuarterName, null, oppLineItemMap.get(prodId)));
             }else{
-                dummyFcDisplayWrap.scheduledList.add(new ScheduledWrapper(0, 0, addQuarterName, null, null));
+                dummyFcDisplayWrap.scheduledList.add(new ScheduledWrapper(0, 0, 0, 0, 0, addQuarterName, null, null));
             }
             dummyFcDisplayWrap.totalQuantity = fcDisplayWrap.totalQuantity;
             dummyFcDisplayWrap.lastModifiedDate = fcDisplayWrap.lastModifiedDate;
@@ -276,7 +295,7 @@ public without sharing class Core_FC_ProductSchedule_Ctrl {
             fcWrap.canSubmitQuarter = false;
         }
         if(qtStatusSet.contains('Approved') && !fcWrap.canRecallApproval){
-            if(fcWrap.fcCustomSetting.Core_IsAdmin__c && (fcWrap.oppRecord.Core_FC_Recall_Count__c == null || fcWrap.oppRecord.Core_FC_Recall_Count__c < 2)){
+            if(fcWrap.fcCustomSetting.Core_IsAdmin__c && (fcWrap.oppRecord.Core_FC_Recall_Count__c == null || fcWrap.oppRecord.Core_FC_Recall_Count__c < 2)){ 
                 fcWrap.canRecallApproval = true;
             }
             //TWC4767-3570 Bypass 6QPS recall limit for approvers on Partner Deal Opportunities
@@ -439,6 +458,8 @@ public without sharing class Core_FC_ProductSchedule_Ctrl {
     public static String submitQuarterForApproval(String fcDisplayWrapStr, String quarterStatusString, Opportunity opp, User delegatedApp){
         try{
             Boolean isZeroQuantity = true;
+            Boolean isDelAppBlank = delegatedApp <> null;
+            Boolean isPccdeal =(opp.Core_Opportunity_Coverage_Nm__c == 'Partner-Led Opportunity' && opp.Core_Coverage_Type_Nm__c == 'Deal Registration');
             Set<ID> userIdSet= new Set<ID>();
             String quarterName = '';
             boolean inactiveUsercheck=false;
@@ -455,10 +476,9 @@ public without sharing class Core_FC_ProductSchedule_Ctrl {
                 }
             }
             //TWC3123-5903 6QPS Quarter Submission: Check for inactive OO Manager and OO Manager Delegate for Non-PCC Deal Opp and throw error
-            
             if(delegatedApp != null ){                
                 if(!delegatedApp.isActive  && !(opp.Core_Opportunity_Coverage_Nm__c == 'Partner-Led Opportunity' && opp.Core_Coverage_Type_Nm__c == 'Deal Registration') ){
-                   inactiveUsercheck=true;   
+                    inactiveUsercheck=true;   
                 }  
             }
             if( (!opp.Owner.Manager.IsActive  ) && !(opp.Core_Opportunity_Coverage_Nm__c == 'Partner-Led Opportunity' && opp.Core_Coverage_Type_Nm__c == 'Deal Registration')){
@@ -597,18 +617,15 @@ public without sharing class Core_FC_ProductSchedule_Ctrl {
             for(Integer i=0; i<fcDisplayWrap.scheduledList.size(); i++){
                 if(quarterStatusMap.get(fcDisplayWrap.scheduledList[i].quarterName).equalsIgnoreCase(currentStatus)){
                     if(currentStatus.equalsIgnoreCase('noValue') && nextStatus.equalsIgnoreCase('Submitted')){
-                        if(Integer.valueOf(fcDisplayWrap.scheduledList[i].quarterName.split('-')[0]) > Integer.valueOf(prevQuarter.split('-')[0]) 
-                           || (Integer.valueOf(fcDisplayWrap.scheduledList[i].quarterName.split('-')[0]) == Integer.valueOf(prevQuarter.split('-')[0]) 
-                               && (Integer.valueOf(fcDisplayWrap.scheduledList[i].quarterName.split('-Q')[1]) == Integer.valueOf(prevQuarter.split('-Q')[1]) ||
-                                   Integer.valueOf(fcDisplayWrap.scheduledList[i].quarterName.split('-Q')[1]) > Integer.valueOf(prevQuarter.split('-Q')[1])))){
-                                       flag = true;
-                                   }else{
-                                       
-                                       fcRec = new Core_Opp_FC_Prod_Schedule__c();
-                                       fcRec.Id = fcDisplayWrap.scheduledList[i].fcRecord.Id;
-                                       fcRec.Core_Opp_FC_Approval_Status__c = 'Invalid';
-                                       fcList.add(fcRec);
-                                   }
+                        if(Integer.valueOf(fcDisplayWrap.scheduledList[i].quarterName.split('-')[0]) > Integer.valueOf(prevQuarter.split('-')[0]) || (Integer.valueOf(fcDisplayWrap.scheduledList[i].quarterName.split('-')[0]) == Integer.valueOf(prevQuarter.split('-')[0]) && (Integer.valueOf(fcDisplayWrap.scheduledList[i].quarterName.split('-Q')[1]) == Integer.valueOf(prevQuarter.split('-Q')[1]) ||Integer.valueOf(fcDisplayWrap.scheduledList[i].quarterName.split('-Q')[1]) > Integer.valueOf(prevQuarter.split('-Q')[1])))){
+                            flag = true;
+                        }else{
+                            
+                            fcRec = new Core_Opp_FC_Prod_Schedule__c();
+                            fcRec.Id = fcDisplayWrap.scheduledList[i].fcRecord.Id;
+                            fcRec.Core_Opp_FC_Approval_Status__c = 'Invalid';
+                            fcList.add(fcRec);
+                        }
                     }else{
                         flag = true;
                     }
@@ -749,7 +766,6 @@ public without sharing class Core_FC_ProductSchedule_Ctrl {
     
     @auraEnabled
     public static Boolean quarterAlignmentCheck(Id oppId){
-        
         return Core_InactiveAccountonOpp.get6QPSData(oppId);
     }
     /*************************************************************************************************************
@@ -905,10 +921,13 @@ return QuartersNotAligned;
         
         
         Map <Id, Core_Opp_FC_Prod_Schedule__c> allForecastMap = new Map <Id, Core_Opp_FC_Prod_Schedule__c> (getAllForecast(opp.Id));
+        
         List <OpportunityLineItem> oliList = new List <OpportunityLineItem>([select Id, SBQQ__QuoteLine__c, SBQQ__QuoteLine__r.Pricing_Approved_End_Date_Dt__c, SBQQ__QuoteLine__r.Pricing_Approved_Start_Date_Dt__c, SBQQ__QuoteLine__r.Pricing_Status_Nm__c, Core_IsPCCOpportunity_cb__c, Product2.Name, Core_QL_Start_Dt__c, Core_QL_End_Dt__c, Core_Vendor__r.Name, Core_Vendor__c, Core_Status__c, Quantity from OpportunityLineItem where SBQQ__QuoteLine__c <> null AND SBQQ__QuoteLine__r.Pricing_Approved_Start_Date_Dt__c <> null AND SBQQ__QuoteLine__r.Pricing_Approved_End_Date_Dt__c <> null AND SBQQ__QuoteLine__r.Pricing_Status_Nm__c NOT IN('Rejected', 'Lost', 'Cancelled') AND OpportunityId =: opp.Id]);
         Set<Id> oliIds = (new Map<Id,SObject>(oliList)).keySet();
         
         for (OpportunityLineItem oli: oliList) {
+            
+            
             QLStartDate = oli.SBQQ__QuoteLine__r.Pricing_Approved_Start_Date_Dt__c;
             QLEndDate = oli.SBQQ__QuoteLine__r.Pricing_Approved_End_Date_Dt__c;
             myStartDate = QLStartDate;
@@ -918,12 +937,16 @@ return QuartersNotAligned;
                 if (OLIQtrMap.containsKey(oli.Id)) {
                     OLIQtrMap.get(oli.id).add(Qtr);
                 } else {
-                    OLIQtrMap.put(oli.Id, new List <String> {Qtr});
+                    OLIQtrMap.put(oli.Id, new List <String> {
+                        Qtr
+                            });
                 }
+                
             }
         }
         
         for (FCDisplayWrapper fcDisplayWrap: finalWrapList) {
+            
             for (ScheduledWrapper schdWrap: fcDisplayWrap.scheduledList) {
                 List <String> QrtrList = OLIQtrMap.get(schdWrap.fcRecord.Core_Opp_Line_Item_RecordID__c);
                 if (schdWrap.fcRecord <> null && allForecastMap.containskey(schdWrap.fcRecord.Id)) 
@@ -953,6 +976,7 @@ return QuartersNotAligned;
                 
                 if (!(schdWrap.fcRecord <> null && allForecastMap.containskey(schdWrap.fcRecord.Id))) 
                 {
+                    
                     if(schdWrap.oppProduct <> null){
                         if(OLIQtrMap.containsKey(schdWrap.oppProduct.Id)){
                             List<String> QrtrList2 = OLIQtrMap.get(schdWrap.oppProduct.Id);
@@ -961,9 +985,11 @@ return QuartersNotAligned;
                                 {
                                     if(schdWrap.scheduledQuantity !=0 && comingFrom == 'Aura' && actionType=='addQuarter')
                                     {
+                                        
                                         if(!ProdNumberList.contains(i))
                                         {
                                             ProdNumberList.add(i);
+                                            
                                         }  
                                     }
                                 }
@@ -974,8 +1000,10 @@ return QuartersNotAligned;
             }
             
             i = i + 1;
+            
             displayError = false;
         }
+        
         return ProdNumberList;
     }
     
@@ -990,7 +1018,7 @@ return QuartersNotAligned;
         String strList = '';
         Integer count = 1;
         List<Core_Opp_FC_Prod_Schedule__c> tempList = new List<Core_Opp_FC_Prod_Schedule__c>();
-        Map<Id,OpportunityLineItem> oppLineItemMap = new Map<Id,OpportunityLineItem>([select Id,Quantity,Core_IsPCCOpportunity_cb__c from OpportunityLineItem where OpportunityId =: oppId order by Id]);        
+        Map<Id,OpportunityLineItem> oppLineItemMap = new Map<Id,OpportunityLineItem>([select Id,Quantity,Core_Status__c from OpportunityLineItem where OpportunityId =: oppId order by Id]);        
         Map<Id, List<Core_Opp_FC_Prod_Schedule__c>> allForecastSorted = getProdSortForecastMapMethod(oppId); 
         for(Id oliId : oppLineItemMap.keyset()){           
             Decimal total = 0;
@@ -1000,7 +1028,7 @@ return QuartersNotAligned;
                     total =total + fc.Core_Opp_FC_Quantity__c;
                 }
             }
-            if(total > oppLineItemMap.get(oliId).Quantity){
+            if(total != oppLineItemMap.get(oliId).Quantity && oppLineItemMap.get(oliId).Core_Status__c!='Cancelled' && oppLineItemMap.get(oliId).Core_Status__c!='Lost'){// TWC3123-6665 changed > to !=
                 if(strList ==''){
                     strList = 'Item#'+String.valueOf(count);                  
                 }
@@ -1014,15 +1042,56 @@ return QuartersNotAligned;
     }
     
     public static FCWrapper getFCWrapdata(String oppId){
-        FCWrapper fcWrap = new FCWrapper();
-        
+        FCWrapper fcWrap = new FCWrapper(); 
         Map<Id,OpportunityLineItem> oppLineItemMap = new Map<Id,OpportunityLineItem>([select Id, Product2.Name, Core_Vendor__r.Name, Core_Vendor__c, Core_Status__c,Quantity, SBQQ__QuoteLine__c, SBQQ__QuoteLine__r.Pricing_Status_Nm__c,Core_IsPCCOpportunity_cb__c from OpportunityLineItem where OpportunityId =: oppId]);
-        
         fcWrap = prepareFCDisplayWrapper(getProdSortForecastMapMethod(oppId), oppLineItemMap, fcWrap);
         
         return fcwrap ;
+        // total 3 queries used to fram fcWrap data - 1 for opportunity data , 1 for opportunitylineitem data and 1 for mapping forecast data
+    }/*************************************************************************************************************
+* Method name  : checkQuantityValidation
+* Description  : TWC3123-6665 -This method is used to check whether Total product qty should always be equal to sum of all quarters
+* Return Type  : List<Integer>
+* Parameter    : String fcDisplayWrapStr, String dummyFcDisplayWrapStr, Opportunity oppObject, String actionType
+**************************************************************************************************************/    
+    @AuraEnabled
+    public static List<Integer> checkQuantityValidation(String fcDisplayWrapStr, String dummyFcDisplayWrapStr, Opportunity oppObject, String actionType){    
+        List<Integer> finalList = new List<Integer>();
+        List<OpportunityLineItem> oppLineItemMap = new List<OpportunityLineItem>([select Id,Core_Status__c,Quantity from OpportunityLineItem where OpportunityId =: oppObject.Id order by Id ]);         
+        Integer count = 1;
+        List<FCDisplayWrapper> fcDisplayWrapList = (List<FCDisplayWrapper>)System.JSON.deserialize(fcDisplayWrapStr, List<FCDisplayWrapper>.class);
+        List<FCDisplayWrapper> dummyFcDisplayWrapList = (List<FCDisplayWrapper>)System.JSON.deserialize(dummyFcDisplayWrapStr, List<FCDisplayWrapper>.class);
+        List<FCDisplayWrapper> finalWrapList;
         
+        if(actionType.equalsIgnoreCase('addQuarter')){
+            finalWrapList = dummyFcDisplayWrapList;
+        }
+        else{
+            finalWrapList = fcDisplayWrapList;
+        }
+        Map<Id , Double> prodschdmap = new Map<Id , Double>();
+        for(FCDisplayWrapper fc : finalWrapList){
+            Double schdQtyCount=0.0;
+            for (ScheduledWrapper schdWrap: fc.scheduledList) {
+                if(prodschdmap.containsKey(fc.productId)){
+                    schdQtyCount = schdWrap.scheduledQuantity + prodschdmap.get(fc.productId);
+                    prodschdmap.put(fc.productId,schdQtyCount);
+                    
+                } 
+                else{
+                    prodschdmap.put(fc.productId,schdWrap.scheduledQuantity);
+                }
+            }
+        } 
+        for(OpportunityLineItem oliId : oppLineItemMap){
+            if((prodschdmap.get(oliId.id) != oliId.Quantity) && oliId.Core_Status__c!='Cancelled' && oliId.Core_Status__c!='Lost'){ 	
+                finalList.add(count);
+            }                            
+            count++;
+        }
+        return finalList;
     }
+    //TWC3123-6665 end
     
     public class FCWrapper{
         
@@ -1078,6 +1147,8 @@ return QuartersNotAligned;
         public Boolean isDelegateManagerPCC{get;set;}
         @auraEnabled
         public Boolean isOwnerPCC{get;set;}
+        @auraEnabled
+        public String negativeQuantityError{get;set;}
         
         public FCWrapper(){
             this.fcCustomSetting = null;
@@ -1105,6 +1176,7 @@ return QuartersNotAligned;
             this.isTechnicalOwner = false;
             this.isDelegateManagerPCC = false;
             this.isOwnerPCC = false;
+            this.negativeQuantityError = null;
         }
     }
     
@@ -1134,6 +1206,12 @@ return QuartersNotAligned;
         @auraEnabled
         public Double totalRevenue{get;set;}
         @auraEnabled
+        public Double totalSubmittedClaimQuantity{get;set;}
+        @auraEnabled
+        public Double totalApprovedQuantity{get;set;}
+        @auraEnabled
+        public Double totalRemainingQuantity{get;set;}
+        @auraEnabled
         public Date lastModifiedDate{get;set;}
     }
     
@@ -1152,6 +1230,12 @@ return QuartersNotAligned;
         @auraEnabled
         public Decimal scheduledQuantity{get;set;}
         @auraEnabled
+        public Decimal submittedClaimQuantity{get;set;}
+        @auraEnabled
+        public Decimal approvedClaimQuantity{get;set;}
+        @auraEnabled
+        public Decimal remainingClaimQuantity{get;set;}
+        @auraEnabled
         public Decimal scheduledRevenue{get;set;}
         @auraEnabled
         public String quarterName{get;set;}
@@ -1161,11 +1245,26 @@ return QuartersNotAligned;
         public Core_Opp_FC_Prod_Schedule__c fcRecord{get;set;}
         @auraEnabled
         public opportunityLineItem oppProduct{get;set;}
-        public ScheduledWrapper(Decimal scheduledQuantity, Decimal scheduledRevenue, String quarterName, Core_Opp_FC_Prod_Schedule__c fcRecord, opportunityLineItem oppProduct){
+        public ScheduledWrapper(Decimal scheduledQuantity, Decimal submittedClaimQuantity, Decimal approvedClaimQuantity, Decimal remainingClaimQuantity, Decimal scheduledRevenue, String quarterName, Core_Opp_FC_Prod_Schedule__c fcRecord, opportunityLineItem oppProduct){
             if(scheduledQuantity <> null){
                 this.scheduledQuantity = scheduledQuantity;
             }else{
                 this.scheduledQuantity = 0;
+            }
+            if(submittedClaimQuantity <> null){
+                this.submittedClaimQuantity = submittedClaimQuantity;
+            }else{
+                this.submittedClaimQuantity = 0;
+            }
+            if(approvedClaimQuantity <> null ){
+                this.approvedClaimQuantity = approvedClaimQuantity;
+            }else{
+                this.approvedClaimQuantity = 0;
+            }
+            if(remainingClaimQuantity <> null ){
+                this.remainingClaimQuantity = remainingClaimQuantity;
+            }else{
+                this.remainingClaimQuantity = 0;
             }
             if(scheduledRevenue <> null){
                 this.scheduledRevenue = scheduledRevenue;
@@ -1185,5 +1284,5 @@ return QuartersNotAligned;
                 }
             }
         }
-    }
+    }  
 }

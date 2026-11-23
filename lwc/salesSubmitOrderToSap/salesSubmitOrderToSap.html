@@ -1,0 +1,25 @@
+<template>
+    <template if:true={isvisiblemodal}>
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open" style="opacity: 1;">
+            <div class="slds-modal__container" style="width:100%">
+                <header class="slds-modal__header">
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">{label.Sales_Confirmation}</h2>
+                </header>
+                <lightning-card>
+                    <div class="slds-modal__content slds-p-around--medium"><!--css for proper footer-->
+                            <p style=" text-align: center;">{label.Sales_DialogMsg}</p>
+                            <br>
+                    </div>
+                    <footer class="slds-modal__footer">
+                    <lightning-button variant="neutral" label=No title={label.Sales_no}
+                                        onclick={handleNo} ></lightning-button>
+                                        &nbsp;&nbsp;
+                    <lightning-button variant="brand" label=Yes title={label.Sales_yes}
+                                        onclick={handleYes} disabled={buttonClicked}></lightning-button>
+                                        
+                </footer>
+                </lightning-card>
+            </div>
+        </section>
+        </template>
+        </template>

@@ -8,6 +8,6 @@
     </values>
     <values>
         <field>Error_Message__c</field>
-        <value xsi:type="xsd:string">Primary Contact is invalid. Please select a contact who belongs to the account and is authorized to use Intel Quote Request.</value>
+        <value xsi:type="xsd:string">Primary Contact is invalid. For the user to get access please click on the https://wcm-stg.intel.com/content/www/us/en/secure/forms/iqr/enrollment.html</value>
     </values>
 </CustomMetadata>

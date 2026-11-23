@@ -50,6 +50,18 @@
                 <behavior>Readonly</behavior>
                 <field>Pricing_Program_Type_Nm__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>core_cpq_is_Dwin_cb__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>core_cpq_is_Budgetary_cb__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>core_cpq_is_Transfer_Pricing_cb__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -107,6 +119,11 @@
     <platformActionList>
         <actionListContext>Record</actionListContext>
         <platformActionListItems>
+            <actionName>SBQQ__Quote__c.Clone</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>0</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
             <actionName>SBQQ__Quote__c.Pricing_ReadyForReview</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>1</sortOrder>
@@ -122,6 +139,11 @@
             <sortOrder>3</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
+            <actionName>SBQQ__Quote__c.Generate_Report</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>4</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
             <actionName>SBQQ__Quote__c.Pricing_Delete_IQRQuote</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>5</sortOrder>
@@ -135,16 +157,6 @@
             <actionName>SBQQ__Quote__c.Pricing_QuoteTeamSharing</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>7</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>SBQQ__Quote__c.Clone</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>0</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>SBQQ__Quote__c.Generate_Report</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>4</sortOrder>
         </platformActionListItems>
     </platformActionList>
     <relatedLists>
@@ -167,13 +179,26 @@
         <fields>CREATED_DATE</fields>
         <relatedList>Pricing_Comments__c.Pricing_Quote__c</relatedList>
     </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>core_cpq_prev_status__c</fields>
+        <fields>core_cpq_status__c</fields>
+        <fields>core_cpq_start_user__c</fields>
+        <fields>core_cpq_start_date__c</fields>
+        <fields>core_cpq_end_user__c</fields>
+        <fields>core_cpq_end_date__c</fields>
+        <fields>core_cpq_duration_minutes__c</fields>
+        <fields>core_cpq_approval_chain__c</fields>
+        <fields>core_cpq_bm_level__c</fields>
+        <relatedList>core_cpq_quote_history__c.core_cpq_quote__c</relatedList>
+    </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>
     <showInteractionLogPanel>false</showInteractionLogPanel>
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h2i000000S78H</masterLabel>
+        <masterLabel>00h2D000004A95K</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

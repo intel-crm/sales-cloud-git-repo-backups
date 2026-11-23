@@ -1,0 +1,12 @@
+.map-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.medium-map {
+    width: 600px; /* Adjust width as needed */
+    height: 400px; /* Adjust height as needed */
+    max-width: 100%;
+    max-height: 100%;
+}

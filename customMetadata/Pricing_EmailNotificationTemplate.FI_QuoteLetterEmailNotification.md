@@ -4,7 +4,7 @@
     <protected>false</protected>
     <values>
         <field>Permission_Set_Name__c</field>
-        <value xsi:type="xsd:string">Pricing_Financial_Incentive_Regional_Pricing_Manager,PSAM,Primary_Contact,Sales_Rep_Approver</value>
+        <value xsi:type="xsd:string">Pricing_Financial_Incentive_Regional_Pricing_Manager,PSAM,Primary_Contact</value>
     </values>
     <values>
         <field>Pricing_Type__c</field>

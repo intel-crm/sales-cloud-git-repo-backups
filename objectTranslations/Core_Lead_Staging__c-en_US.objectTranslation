@@ -64,10 +64,6 @@
             <translation><!-- Attended Webinar --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>CNDA Request</masterLabel>
-            <translation><!-- CNDA Request --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Downloaded Content</masterLabel>
             <translation><!-- Downloaded Content --></translation>
         </picklistValues>
@@ -127,14 +123,6 @@
     <fields>
         <label><!-- Profession --></label>
         <name>Core_Profession__c</name>
-    </fields>
-    <fields>
-        <label><!-- Project Size --></label>
-        <name>Core_Project_Size__c</name>
-    </fields>
-    <fields>
-        <label><!-- Project Timeframe --></label>
-        <name>Core_Project_Timeframe__c</name>
     </fields>
     <fields>
         <label><!-- Source Id --></label>

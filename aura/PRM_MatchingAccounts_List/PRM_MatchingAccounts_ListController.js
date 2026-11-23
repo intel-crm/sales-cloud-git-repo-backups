@@ -3,7 +3,7 @@
         
         var pageNumber = component.get("v.currentPageNumber");
         component.set("v.currentPageNumber", 1);
-            helper.fetchAccount(component,event,helper);            
+        helper.fetchAccount(component,event,helper);
     },
     
     onNext : function(component, event, helper) {        
@@ -81,15 +81,6 @@
     confirmButton : function(component,event,helper){
         var button = 'confirm';
         helper.click(component,event,helper,button);
-    },
-    
-    handleRefresh : function(component,event,helper){
-       helper.refresh(component,event,helper);
-        
-    },
-    
-    getRefreshData : function(component,event,helper){
-        helper.refreshData(component,event,helper);
     }
     
 })

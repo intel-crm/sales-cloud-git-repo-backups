@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Product Goal</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Product Goals</value>
+    </caseValues>
+    <fields>
+        <label><!-- Goal Value --></label>
+        <name>Xvoyant__GoalValue__c</name>
+    </fields>
+    <fields>
+        <label><!-- LinkKey --></label>
+        <name>Xvoyant__LinkKey__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales Goal --></label>
+        <name>Xvoyant__SalesGoal__c</name>
+        <relationshipLabel><!-- Product Goals --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

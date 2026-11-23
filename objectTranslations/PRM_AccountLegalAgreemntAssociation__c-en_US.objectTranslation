@@ -45,20 +45,8 @@
         <relationshipLabel><!-- Partner Legal Agreement Association --></relationshipLabel>
     </fields>
     <fields>
-        <label><!-- Partner Agreement Name --></label>
-        <name>PRM_Partner_Agreement_Name__c</name>
-    </fields>
-    <fields>
         <label><!-- Record Link --></label>
         <name>PRM_Record_Link__c</name>
-    </fields>
-    <fields>
-        <label><!-- Signed By Email --></label>
-        <name>PRM_Signed_By_Email__c</name>
-    </fields>
-    <fields>
-        <label><!-- Signed By Name --></label>
-        <name>PRM_Signed_By_Name__c</name>
     </fields>
     <recordTypes>
         <label><!-- Standard --></label>

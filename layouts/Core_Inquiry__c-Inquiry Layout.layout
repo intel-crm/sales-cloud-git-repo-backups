@@ -124,7 +124,7 @@
         <label>Inquiry Information</label>
         <layoutColumns>
             <layoutItems>
-                <behavior>Required</behavior>
+                <behavior>Edit</behavior>
                 <field>Core_Inquiry_Type_Pkt__c</field>
             </layoutItems>
             <layoutItems>

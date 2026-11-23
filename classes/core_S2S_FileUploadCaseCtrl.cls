@@ -9,7 +9,7 @@
 * ----------------------------------------------------------------------------                 
 * Bishal Singh  	 2024-06-14    		 Modified
 *****************************************************************************************************/
-public without sharing class core_S2S_FileUploadCaseCtrl {
+public class core_S2S_FileUploadCaseCtrl {
    
     /************************************************************************************************************
     * Method Name    	: uploadFiles
@@ -22,7 +22,7 @@ public without sharing class core_S2S_FileUploadCaseCtrl {
         try {
             if(String.isNotBlank(FileData)) {
                 List<FileDataWP> files = (List<FileDataWP>) JSON.deserialize(filedata, List<FileDataWP>.class);
-                String caseObjId = [select ExternalId FROM Case__x where id=:recordId limit 1]?.ExternalId;
+                String caseObjId = [select ExternalId FROM Case__x where id=:recordId WITH SECURITY_ENFORCED LIMIT 1]?.ExternalId;
                 List<ContentVersion__x> cvList = new List<ContentVersion__x>();
                 for(FileDataWP file : files) {
                     ContentVersion__x conVer = new ContentVersion__x();
@@ -38,7 +38,7 @@ public without sharing class core_S2S_FileUploadCaseCtrl {
                 }
                 
                 List<ContentDocumentLink__x> cdList = new List<ContentDocumentLink__x>();
-                for(ContentVersion__x cv : [SELECT Core_Content_Document__c FROM ContentVersion__x WHERE Id =:idSet]) {
+                for(ContentVersion__x cv : [SELECT Core_Content_Document__c FROM ContentVersion__x WHERE Id =:idSet WITH SECURITY_ENFORCED]) {
                     ContentDocumentLink__x conDocLink = new ContentDocumentLink__x();
                     conDocLink.LinkedEntityId__c = caseObjId;
                     conDocLink.Core_Content_Document__c = cv.Core_Content_Document__c;

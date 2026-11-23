@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <columns>
-        <field>STATUS</field>
+        <field>Lead.Core_Lead_Priority__c</field>
     </columns>
     <columns>
         <field>OWNER</field>
@@ -14,6 +14,9 @@
     </columns>
     <columns>
         <field>LAST_NAME</field>
+    </columns>
+    <columns>
+        <field>CREATED_DATE</field>
     </columns>
     <columns>
         <field>Lead.Core_Lead_State__c</field>
@@ -30,18 +33,25 @@
     <description>RT:LEADS</description>
     <filter>
         <criteriaItems>
+            <column>CREATED</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>user eloqua</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>RECORDTYPE</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>Lead.Sales_Lead,Lead.Partner_Lead</value>
+            <value>Lead.Partner_Lead</value>
         </criteriaItems>
         <criteriaItems>
             <column>Lead.Core_Lead_State__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Unclaimed,In Pursuit,Open,Engaged,On Hold,Accepted</value>
+            <value>Unclaimed,In Pursuit,Converted,Open,Engaged,On Hold,Accepted</value>
         </criteriaItems>
         <criteriaItems>
             <column>STATUS</column>
@@ -52,23 +62,18 @@
         </criteriaItems>
         <language>en_US</language>
     </filter>
-    <format>Summary</format>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>STATUS</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>Lead.Core_Lead_Conversion_Point__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <groupingsDown>
-        <dateGranularity>Week</dateGranularity>
-        <field>CREATED_DATE</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>Lead.Core_Lead_Priority__c</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
-    <name>Active Leads by LCP</name>
+    <name>Active Leads</name>
     <params>
         <name>co</name>
         <value>1</value>

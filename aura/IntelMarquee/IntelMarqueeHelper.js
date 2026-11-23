@@ -7,13 +7,13 @@
         // Get the company from the backend controller
 		var actionFetchCompany = component.get("c.getCompany");        						
         actionFetchCompany.setCallback(this, function(response) {
-            
             var state = response.getState();
             // Check if the call worked
             if (state === "SUCCESS") {
                 // Yes so get the company returned
                 var response = response.getReturnValue();
                 var breadcrumbData = component.get("v.breadcrumbData");
+                
                 // Check if the user is associated with a company
                 if(response != null){
                     // Yes so add the company breadcrumb

@@ -6,5 +6,5 @@
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>itsk-Henrich Sonnenschein Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>itskHenrichSonnenscheinPartnerManager</parentRole>
 </Role>

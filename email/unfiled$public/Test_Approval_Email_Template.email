@@ -1,0 +1,6 @@
+<messaging:emailTemplate subject="Test Approval Email Template" recipientType="User" relatedToType="sbaa__Approval__c">
+<messaging:plainTextEmailBody >
+Congratulations!
+    Test Approval Email Template.
+</messaging:plainTextEmailBody>
+</messaging:emailTemplate>

@@ -156,7 +156,7 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <externalSharingModel>Private</externalSharingModel>
+    <externalSharingModel>Read</externalSharingModel>
     <fields>
         <fullName>Core_MDF_Active__c</fullName>
         <defaultValue>false</defaultValue>
@@ -180,18 +180,6 @@ IF(ISBLANK(Core_MDF_Field_Name_9__c) ,&apos;&apos;, &apos;,&apos; &amp; BR() &am
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Approval_Criteria_Ref_Code_txt__c</fullName>
-        <caseSensitive>true</caseSensitive>
-        <description>Used to map the IUPGM with Approval Criteria record.</description>
-        <externalId>false</externalId>
-        <label>Approval Criteria Automation Refer Code</label>
-        <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>true</unique>
     </fields>
     <fields>
         <fullName>Core_MDF_Approval_Process__c</fullName>
@@ -1024,7 +1012,7 @@ IF(ISBLANK(Core_MDF_Field_Name_9__c) ,&apos;&apos;, &apos;,&apos; &amp; BR() &am
     </nameField>
     <pluralLabel>Approval Criteria</pluralLabel>
     <searchLayouts/>
-    <sharingModel>Private</sharingModel>
+    <sharingModel>Read</sharingModel>
     <validationRules>
         <fullName>Active_Approver_Required</fullName>
         <active>true</active>

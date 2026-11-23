@@ -83,9 +83,6 @@ global with sharing class Product_upsertProduct2Records  implements Database.Bat
                     productToUpsert.Core_IQR_Visible__c =  stgRec.Core_Is_IQR_Visible__c ;
                     productToUpsert.Core_External_Source_Name__c = Product_Staging_StaticConstants.SourceName;
                     productToUpsert.Core_Item_Standard_Cost_Amt__c = Product_Staging_StaticConstants.StandardCost;
-                    if (Product_Utility.isProductDeprecationDateEnabled() && stgRec.Level__c == '5'&& stgRec.Deactivation_Date__c != null) {
-                        productToUpsert.Deactivation_Date__c = stgRec.Deactivation_Date__c;
-                    }
                     productsToUpsertList.add(productToUpsert); 
                     
                 }
@@ -125,10 +122,6 @@ global with sharing class Product_upsertProduct2Records  implements Database.Bat
             }
         }
         
-    if (Product_Utility.isProductDeprecationDateEnabled() && stgRec.Level__c == '5' && stgRec.Deactivation_Date__c != null) {
-        productToUpsert.Deactivation_Date__c = stgRec.Deactivation_Date__c;
-    }
-    
         productToUpsert.Core_External_Source_Name__c = Product_Staging_StaticConstants.SourceName;
         productToUpsert.Core_Item_Standard_Cost_Amt__c = Product_Staging_StaticConstants.StandardCost;
         return productToUpsert;
@@ -140,7 +133,7 @@ global with sharing class Product_upsertProduct2Records  implements Database.Bat
             VPLCHCondition= true;
             
         }
-        return VPLCHCondition; 
+        return VPLCHCondition;
     }
     
     public void upsertProduct2FPHRecords(List<Product2> productsToUpsertList,List<Core_Flat_Product_Hierarchy__c> fphToUpsertList) {
@@ -193,7 +186,6 @@ global with sharing class Product_upsertProduct2Records  implements Database.Bat
                 body += '<b> Failed Records Count - ' + logEntryListSize + '</b>, <br>';  
                 body += 'For IpaasLoadId - ' + ipaasId+'.';                                       
                 mail.setHtmlBody(body);
-                mail.setOrgWideEmailAddressId(Label.Core_Ownership_Orgwide_Email_Id);
                 Messaging.sendEmail(new Messaging.SingleEmailMessage []{mail},false);
             }
         }

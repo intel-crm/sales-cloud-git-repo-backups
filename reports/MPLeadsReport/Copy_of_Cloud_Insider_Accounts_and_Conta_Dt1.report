@@ -16,7 +16,7 @@
         <field>Account.Core_Account_Tier__c</field>
     </columns>
     <columns>
-        <field>Contact.Core_IPA_PartnerRole__c</field>
+        <field>Contact.Core_IPA_Partner_Role__c</field>
     </columns>
     <columns>
         <field>Account.Core_IPA_Partner_Segment__c</field>
@@ -42,18 +42,18 @@
             <value></value>
         </criteriaItems>
         <criteriaItems>
+            <column>Contact.Core_IPA_Partner_Role__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>includes</operator>
+            <value>Service Provider</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>EMAIL</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
             <value>mailinator,33mail,mailosaur,gmail</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Contact.Core_IPA_PartnerRole__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Cloud &amp; Comms Service Provider</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

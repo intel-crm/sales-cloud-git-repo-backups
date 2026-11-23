@@ -1,0 +1,17 @@
+<aura:component implements="flexipage:availableForAllPageTypes" access="global">
+<lightning:input aura:id="accName" name="accName" label="Name" required="true" />
+<lightning:select aura:id="propStatus" name="propStatus" label="Status">
+        <option value="status">Complete</option>
+    	<option value="status">Inprogress</option>
+</lightning:select>
+<lightning:button variant="neutral" label="Cancel" />
+<lightning:button variant="brand" label="Submit" onclick="{!c.handlecreate}"/>
+    
+    
+<!--<lightning:recordEditForm aura:id="recordEditForm"
+                           objectApiName="Account">
+        <lightning:messages />
+        <lightning:inputField fieldName="Name" />
+        <lightning:button class="slds-m-top_small" type="submit" label="Create new" />
+    </lightning:recordEditForm>-->
+</aura:component>

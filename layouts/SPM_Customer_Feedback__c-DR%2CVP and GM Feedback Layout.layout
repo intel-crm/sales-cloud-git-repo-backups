@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <excludeButtons>OpenSlackRecordChannel</excludeButtons>
     <excludeButtons>Submit</excludeButtons>
     <layoutSections>
         <customLabel>true</customLabel>
@@ -18,6 +19,10 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Feedback_By__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>CRM_CST_Is_Active_Planning_Period__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -55,6 +60,10 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Team_Members__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>CST_New_Account_Level__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>

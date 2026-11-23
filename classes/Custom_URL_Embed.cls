@@ -37,8 +37,10 @@ public without sharing class Custom_URL_Embed {
         string url = '';
         
         try {
+            
             //Query to get the URL Configs
             loadMetadataRecord(configName);
+            system.debug('urlConfig.Embed_URL_Class__c' + urlConfig.Embed_URL_Class__c);
             if (urlConfig.Embed_URL_Class__c != null)
             {
                 List<Object> methodParams= new  List<Object>();
@@ -46,13 +48,14 @@ public without sharing class Custom_URL_Embed {
                 methodParams.add(urlConfig.URL__c);
                 methodParams.add(urlConfig.Core_Client_ID__c);
                 methodParams.add(urlConfig.Core_Client_Secret__c);
+                system.debug('URL EMBED METHOD PARAMS:'+methodParams);
                 // Call the respective service and get the URL Dynamically                 
-              	Object obj =  SWS_DynamicMethodCaller.callMethod(urlConfig.Embed_URL_Class__c, methodParams);  
+                Object obj =  SWS_DynamicMethodCaller.callMethod(urlConfig.Embed_URL_Class__c, methodParams);  
                 if (obj != null)
                 {
                 result.reportURL=  (String) obj;            
-             	result.hasAccess=true;
-             	result.autoSSOEnabled=false;
+                result.hasAccess=true;
+                result.autoSSOEnabled=false;
                 }       
             }
             else
@@ -112,8 +115,11 @@ public without sharing class Custom_URL_Embed {
                 result.reportURL=url;
             }
             }
+            system.debug('URL EMBED RESULT:'+result);
         }
-        catch(exception ex) {hasAccess = false;string error = 'Error :'+ ex.getMessage();result.hasAccess=hasAccess;result.autoSSOEnabled=false;result.reportURL=error;}
+        catch(exception ex) {
+             system.debug(ex);
+            hasAccess = false;string error = 'Error :'+ ex.getMessage();result.hasAccess=hasAccess;result.autoSSOEnabled=false;result.reportURL=error;}
         
         return result;  
     }
@@ -310,12 +316,14 @@ public without sharing class Custom_URL_Embed {
     
     @AuraEnabled(cacheable=true)
     public static PowerBiReportData getEmbeddingDataForReport(String configName, String WorkspaceId, String ReportId, String roles) {
+        system.debug('POWER BI DETAILS:'+WorkspaceId+':'+ReportId+':'+roles);
         // get access token for Authorization header
         String access_token = getPowerBiAccessToken(configName); 
         // Call to Power BI Service API to get report data for embedding        
         HttpRequest reqGetReport = new HttpRequest();
         reqGetReport.setMethod('GET');
         String urlGetReport = urlConfig.URL__c + WorkspaceId + '/reports/' + ReportId;
+        system.debug('POWER BI URL:'+urlGetReport);
         reqGetReport.setEndpoint(urlGetReport);
         reqGetReport.setHeader('Authorization', 'Bearer ' + access_token);
         
@@ -328,7 +336,7 @@ public without sharing class Custom_URL_Embed {
             getReportError.error = 'Get Report Error: ' + response.getStatus();
             return getReportError;            
         }            
-        
+        system.debug('POWER BI RESULT:'+response.getStatusCode()+' '+response.getBody());
         // extract Power BI report data from JSON response
         String responseJson = response.getBody();
         PowerBiReport powerBiReport = (PowerBiReport)JSON.deserialize(responseJson, PowerBiReport.class);

@@ -253,6 +253,7 @@ global without sharing class Pricing_RestAPI_GetAllQuotesV2 {
         qDetails.quoteType = quoteline.SBQQ__Quote__r.Pricing_Program_Type_Nm__c;
         qDetails.quoteStatus = quoteline.SBQQ__Quote__r.SBQQ__Status__c;
         qDetails.additionalQuoteLetterRecipients = quoteline.SBQQ__Quote__r.Pricing_AdditionalRecipients__c;
+       
         qDetails.quoteLineId = quoteline.id;
         qDetails.quoteLineNumber = quoteline.Pricing_Quote_Line_Number__c;
         qDetails.quoteLineStatus = quoteline.Pricing_Status_Nm__c;
@@ -880,6 +881,7 @@ global without sharing class Pricing_RestAPI_GetAllQuotesV2 {
         public String coreCount {get; set;}
         public String additionalComments {get;set;}
         public String tdp {get;set;}
+       
     }
     
     //wrapper class for SSD response details wrapper 

@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>NTT Data South Africa (Pty) Ltd Partner User</description>
+    <description>DIMENSION DATA (PTY) LTD Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>NTT Data South Africa (Pty) Ltd Partner User</name>
+    <name>DIMENSION DATA (PTY) LTD Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>DIMENSIONDATAPTYLTDPartnerManager</parentRole>
 </Role>

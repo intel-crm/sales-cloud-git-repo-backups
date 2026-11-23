@@ -1,34 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
-    <available>false</available>
+    <available>true</available>
     <encodingKey>UTF-8</encodingKey>
     <name>ACR_CONTACT_DELETION_ZHO</name>
     <style>none</style>
-    <subject>英特尔® 合作伙伴联盟帐户更新</subject>
-    <textOnly>用户已删除
+    <subject>英特尔合作伙伴计划企业帐户更新</subject>
+    <textOnly>Intel Business Account Update
 
-尊敬的{!UserName}：
+This notice is to confirm that an individual has been removed from your Intel Partner program business account.
 
+Business Account Name: {!Account.Name}
+Contact Removed : Login ID {!ContactLoginId} with e-mail {!ContactEmail}
+Relationship (Role): {!AcrRoles}
 
-已对您的英特尔® 合作伙伴联盟帐户进行了更改。{!ContactEmail}已从贵公司的帐户中移除。
+Visit your business account at any time here to see the personnel list details.
+If you have any other questions, please contact us here.
+ 
+Please DO NOT reply to this e-mail message. This is an automated response.
+To ensure that you continue receiving our e-mails, please add us to your address book.
+ 
+Link on here 
+https://ssl.intel.com/content/www/us/en/secure/my-intel/dashboard.html
 
-公司名称：{!Account.Name}
-公司 ID：{!Account.AccountNumber}
-移除的联系人：电子邮件 {!ContactEmail}
-关系（职位）：{!AcrRoles}
-
-如果此项更改未经授权，请 登录 以更新您的帐户。
-如有任何问题，请通过 支持人员 与我们联系。
-
-
-
-谢谢！
-英特尔® 合作伙伴联盟团队
-
-发送给您的这一封，是有关您与英特尔® 合作伙伴联盟当前合作关系的重要业务邮件。
-© {!$Label.PRM_CurrentYear} Intel Corporation
-Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.  www.intel.com
-隐私 | Cookies</textOnly>
+Support links:
+for CSP- https://www.intel.com/content/www/us/en/partner/cloud-insider/forms/support.html
+for FPGA: https://signin.intel.com/ContactUs?Culture=en-US</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

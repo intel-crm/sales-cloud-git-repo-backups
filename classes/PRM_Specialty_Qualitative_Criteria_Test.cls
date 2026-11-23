@@ -44,7 +44,7 @@ public class PRM_Specialty_Qualitative_Criteria_Test {
             System.assert(false);
         }
         catch(exception e){   
-            //System.debug(e.getMessage());
+            System.debug(e.getMessage());
         }
         test.stopTest();  
         
@@ -93,7 +93,7 @@ public class PRM_Specialty_Qualitative_Criteria_Test {
             update sqc1;
         }
         catch(exception e){
-            //System.debug(e.getMessage());
+            System.debug(e.getMessage());
         }
         test.stopTest();  
         List<PRM_Specialty_Qualitative_Criteria__c> sqcList = [select Id, PRM_Criteria_Id__c from PRM_Specialty_Qualitative_Criteria__c where Id=:sqc1.Id ];

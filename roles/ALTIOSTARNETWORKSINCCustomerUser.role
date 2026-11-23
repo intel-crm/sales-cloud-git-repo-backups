@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>Rakuten Symphony - US Customer User</description>
+    <description>ALTIOSTAR NETWORKS, INC. Customer User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>Rakuten Symphony - US Customer User</name>
+    <name>ALTIOSTAR NETWORKS, INC. Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>EMP_11298293_Kenta_Ueda</parentRole>
+    <parentRole>ALTIOSTARNETWORKSINCCustomerManager</parentRole>
 </Role>

@@ -4,7 +4,7 @@
         <processMetadataValues>
             <name>processSelection</name>
             <value>
-                <stringValue>PRM_RegRequestManualAppoval - PRM_RegRequestManualAppovalV1</stringValue>
+                <stringValue>PRM_RegRequestManualAppoval - PRM_RegRequestManualAppoval</stringValue>
             </value>
         </processMetadataValues>
         <processMetadataValues>
@@ -20,12 +20,11 @@
             </value>
         </processMetadataValues>
         <name>myRule_1_A1</name>
-        <label>AutoSubmissionV1</label>
+        <label>AutoSubmission</label>
         <locationX>100</locationX>
         <locationY>200</locationY>
         <actionName>submit</actionName>
         <actionType>submit</actionType>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>objectId</name>
             <value>
@@ -38,7 +37,7 @@
         <inputParameters>
             <name>processDefinitionNameOrId</name>
             <value>
-                <stringValue>PRM_RegRequestManualAppovalV1</stringValue>
+                <stringValue>PRM_RegRequestManualAppoval</stringValue>
             </value>
         </inputParameters>
         <inputParameters>
@@ -62,7 +61,6 @@
         <locationY>200</locationY>
         <actionName>PRM_CreateAccountAndRelatedRecords</actionName>
         <actionType>apex</actionType>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <processMetadataValues>
                 <name>dataType</name>
@@ -106,6 +104,63 @@
             </value>
         </inputParameters>
         <nameSegment>PRM_CreateAccountAndRelatedRecords</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <processMetadataValues>
+            <name>apexSelection</name>
+            <value>
+                <stringValue>PRM_Unlocking_RegRecords</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_5_A1</name>
+        <label>RegRequestRecordUnlock</label>
+        <locationX>500</locationX>
+        <locationY>200</locationY>
+        <actionName>PRM_Unlocking_RegRecords</actionName>
+        <actionType>apex</actionType>
+        <inputParameters>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>SObject</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>regReqList</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>maxOccurs</name>
+                <value>
+                    <numberValue>1.0</numberValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>objectType</name>
+                <value>
+                    <stringValue>PRM_Registration_Request__c</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>SObject</stringValue>
+                </value>
+            </processMetadataValues>
+            <name>regReqList</name>
+            <value>
+                <elementReference>myVariable_current</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>PRM_Unlocking_RegRecords</nameSegment>
     </actionCalls>
     <apiVersion>49.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
@@ -151,6 +206,9 @@
         <label>myDecision2</label>
         <locationX>50</locationX>
         <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myDecision4</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>default</defaultConnectorLabel>
         <rules>
             <name>myRule_3</name>
@@ -168,65 +226,69 @@
             <label>IsTriggerProcess?</label>
         </rules>
     </decisions>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>2.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision4</name>
+        <label>myDecision4</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_5</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <processMetadataValues>
+                    <name>inputDataType</name>
+                    <value>
+                        <stringValue>Boolean</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>leftHandSideType</name>
+                    <value>
+                        <stringValue>Boolean</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>operatorDataType</name>
+                    <value>
+                        <stringValue>Boolean</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>rightHandSideType</name>
+                    <value>
+                        <stringValue>Boolean</stringValue>
+                    </value>
+                </processMetadataValues>
+                <leftValueReference>myVariable_current.PRM_isLocked__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_5_A1</targetReference>
+            </connector>
+            <label>isLocked?</label>
+        </rules>
+    </decisions>
     <description>Used for the Manual Approval Process</description>
     <formulas>
         <processMetadataValues>
             <name>originalFormula</name>
             <value>
-                <stringValue>OR(
-	AND(
-		OR([PRM_Registration_Request__c].RecordType.DeveloperName =  &apos;Add_Membership_Request&apos;, 
-			[PRM_Registration_Request__c].RecordType.DeveloperName =&apos;Add_Contact_Request&apos;, 
-			[PRM_Registration_Request__c].RecordType.DeveloperName =&apos;Account_Create_Request&apos;
-		),
-		[PRM_Registration_Request__c].PRM_isSubmitted__c==False ,
-                ISPICKVAL([PRM_Registration_Request__c].PRM_Status__c, &apos;New&apos;),
-		[PRM_Registration_Request__c].PRM_Auto_Approve__c =False,
-		[PRM_Registration_Request__c].PRM_Channel_Program_Level_txt__c =  &apos;Intel Partner Alliance&apos;,
-		ISBLANK([PRM_Registration_Request__c].Entitlement_Details__c)
-	),
-	AND(
-		OR([PRM_Registration_Request__c].RecordType.DeveloperName =  &apos;Add_Membership_Request&apos;, 
-		[PRM_Registration_Request__c].RecordType.DeveloperName =&apos;Add_Contact_Request&apos;,
-		[PRM_Registration_Request__c].RecordType.DeveloperName =&apos;Account_Create_Request&apos;
-		),
-		[PRM_Registration_Request__c].PRM_isSubmitted__c==False , 
-		[PRM_Registration_Request__c].PRM_Auto_Approve__c =False,
-		ISCHANGED([PRM_Registration_Request__c].PRM_Status__c),
-		ISPICKVAL(PRIORVALUE([PRM_Registration_Request__c].PRM_Status__c), &apos;Rejected&apos;),
-		ISPICKVAL([PRM_Registration_Request__c].PRM_Status__c, &apos;New&apos;),
-		[PRM_Registration_Request__c].PRM_Channel_Program_Level_txt__c =  &apos;Intel Partner Alliance&apos;	
-	)
-)</stringValue>
+                <stringValue>AND(OR([PRM_Registration_Request__c].RecordType.DeveloperName =  &apos;Add_Membership_Request&apos;, [PRM_Registration_Request__c].RecordType.DeveloperName =&apos;Add_Contact_Request&apos;, [PRM_Registration_Request__c].RecordType.DeveloperName =&apos;Account_Create_Request&apos;),[PRM_Registration_Request__c].PRM_isSubmitted__c==False )</stringValue>
             </value>
         </processMetadataValues>
         <name>formula_myRule_1</name>
         <dataType>Boolean</dataType>
-        <expression>OR(
-	AND(
-		OR({!myVariable_current.RecordType.DeveloperName} =  &apos;Add_Membership_Request&apos;, 
-			{!myVariable_current.RecordType.DeveloperName} =&apos;Add_Contact_Request&apos;, 
-			{!myVariable_current.RecordType.DeveloperName} =&apos;Account_Create_Request&apos;
-		),
-		{!myVariable_current.PRM_isSubmitted__c}==False ,
-                ISPICKVAL({!myVariable_current.PRM_Status__c}, &apos;New&apos;),
-		{!myVariable_current.PRM_Auto_Approve__c} =False,
-		{!myVariable_current.PRM_Channel_Program_Level_txt__c} =  &apos;Intel Partner Alliance&apos;,
-		ISBLANK({!myVariable_current.Entitlement_Details__c})
-	),
-	AND(
-		OR({!myVariable_current.RecordType.DeveloperName} =  &apos;Add_Membership_Request&apos;, 
-		{!myVariable_current.RecordType.DeveloperName} =&apos;Add_Contact_Request&apos;,
-		{!myVariable_current.RecordType.DeveloperName} =&apos;Account_Create_Request&apos;
-		),
-		{!myVariable_current.PRM_isSubmitted__c}==False , 
-		{!myVariable_current.PRM_Auto_Approve__c} =False,
-		ISCHANGED({!myVariable_current.PRM_Status__c}),
-		ISPICKVAL(PRIORVALUE({!myVariable_current.PRM_Status__c}), &apos;Rejected&apos;),
-		ISPICKVAL({!myVariable_current.PRM_Status__c}, &apos;New&apos;),
-		{!myVariable_current.PRM_Channel_Program_Level_txt__c} =  &apos;Intel Partner Alliance&apos;	
-	)
-)</expression>
+        <expression>AND(OR({!myVariable_current.RecordType.DeveloperName} =  &apos;Add_Membership_Request&apos;, {!myVariable_current.RecordType.DeveloperName} =&apos;Add_Contact_Request&apos;, {!myVariable_current.RecordType.DeveloperName} =&apos;Account_Create_Request&apos;),{!myVariable_current.PRM_isSubmitted__c}==False )</expression>
     </formulas>
     <formulas>
         <processMetadataValues>
@@ -234,18 +296,17 @@
             <value>
                 <stringValue>AND(ISCHANGED([PRM_Registration_Request__c].PRM_Status__c ) ,ISPICKVAL([PRM_Registration_Request__c].PRM_Status__c , &quot;Approved&quot;), 
 ([PRM_Registration_Request__c].RecordType.DeveloperName  &lt;&gt; &quot;Admin_Registration&quot;),
-[PRM_Registration_Request__c].PRM_TriggerProcess__c = False,[PRM_Registration_Request__c].PRM_Auto_Approve__c =False,
-ISBLANK([PRM_Registration_Request__c].Entitlement_Details__c),[PRM_Registration_Request__c].PRM_Channel_Program_Level_txt__c &lt;&gt; &quot;PSG&quot;)</stringValue>
+[PRM_Registration_Request__c].PRM_TriggerProcess__c = False)
+</stringValue>
             </value>
         </processMetadataValues>
         <name>formula_myRule_3</name>
         <dataType>Boolean</dataType>
         <expression>AND(ISCHANGED({!myVariable_current.PRM_Status__c} ) ,ISPICKVAL({!myVariable_current.PRM_Status__c} , &quot;Approved&quot;), 
 ({!myVariable_current.RecordType.DeveloperName}  &lt;&gt; &quot;Admin_Registration&quot;),
-{!myVariable_current.PRM_TriggerProcess__c} = False,{!myVariable_current.PRM_Auto_Approve__c} =False,
-ISBLANK({!myVariable_current.Entitlement_Details__c}),{!myVariable_current.PRM_Channel_Program_Level_txt__c} &lt;&gt; &quot;PSG&quot;)</expression>
+{!myVariable_current.PRM_TriggerProcess__c} = False)</expression>
     </formulas>
-    <interviewLabel>PRM_Auto_Record_Submission-21_InterviewLabel</interviewLabel>
+    <interviewLabel>PRM_Auto_Record_Submission-5_InterviewLabel</interviewLabel>
     <label>PRM_Auto_Record_Submission</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -273,7 +334,7 @@ ISBLANK({!myVariable_current.Entitlement_Details__c}),{!myVariable_current.PRM_C
     </processMetadataValues>
     <processType>Workflow</processType>
     <startElementReference>myDecision</startElementReference>
-    <status>Obsolete</status>
+    <status>Active</status>
     <variables>
         <name>myVariable_current</name>
         <dataType>SObject</dataType>

@@ -63,7 +63,6 @@ public without sharing class Pricing_QuoteLine_WonPrediction {
             HttpResponse response = http.send(request);
             if(response.getStatusCode() == 201){
                 Map<String, Object> responseMap = (Map<String, Object>) JSON.deserializeUntyped(response.getBody());
-        
                 List<Object> predictionObjects = (List<Object>) responseMap.get('predictions');
                 List<Map<String, Object>> predictions = new List<Map<String, Object>>();
                 for (Object obj : predictionObjects) {

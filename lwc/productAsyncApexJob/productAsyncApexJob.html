@@ -1,0 +1,42 @@
+<template>        
+        <div class="lastrefreshsize slds-card slds-p-around_small slds-m-vertical_small"> 
+            <span>Products Last Refresh Date Time : </span> 
+            <lightning-formatted-date-time value={lastJobRun} year="numeric" month="short" day="2-digit" hour="2-digit" minute="2-digit" time-zone="PST"></lightning-formatted-date-time>      
+            <span> PST</span>
+        </div>
+
+        <div class="slds-grid slds-wrap">
+            <template for:each={asyncJobs} for:item="item">
+                <div  class="slds-col slds-size_1-of-4 borpad slds-p-around_x-small" key={item.Id}>
+                    <template if:true={item.completed}>
+                        <div class="circlesuccess slds-float_right"><p class="progressText">{item.Status}</p></div>
+                    </template>    
+                    <template if:true={item.processing}>
+                        <div class="circleprogress slds-float_right"><p class="progressText">{item.Status}</p></div>
+                    </template>  
+                    <template if:true={item.failed}>
+                        <div class="circlefailed slds-float_right"><p class="progressText">{item.Status}</p></div>
+                    </template> 
+                    
+                    <div class="slds-card__header slds-grid">
+                        <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                            <h2 class="slds-card__header-title">
+                                <a href="#" class="slds-card__header-link slds-truncate">
+                                    <span>Product Data Load</span>
+                                </a>
+                            </h2>                        
+                        </header>
+                    </div>
+                    <div class="slds-card__body slds-card__body_inner">
+                        <p class="headings">Execution Date &amp; Time:</p> 
+                        <p>{item.CreatedDate}</p>
+                        <p class="headings">Completion Date &amp; Time:</p>
+                        <p>{item.CompletedDate}</p>
+                        <!--<p>TotalJobItems: {item.TotalJobItems}</p>-->
+                        <p class="headings">Total Records Processed:</p>
+                        <p><lightning-formatted-number value={item.JobItemsProcessed}></lightning-formatted-number></p>
+                    </div>
+                </div>
+            </template>
+        </div>
+</template>

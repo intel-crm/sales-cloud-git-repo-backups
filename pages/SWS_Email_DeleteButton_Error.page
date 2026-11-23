@@ -1,0 +1,12 @@
+<apex:page standardController="EmailMessage">
+    <apex:includeLightning />    
+    <div id="lwcContainer" />
+    <script>
+        $Lightning.use("c:SWSEmailMessageDeleteButtonErrorApp", function() {
+            $Lightning.createComponent("c:sWS_EmailMessage_DeleteButton_Error",{},"lwcContainer", 
+            function(cmp) {
+                console.log('Calling the LWC Component');
+            });
+        });
+    </script>
+</apex:page>

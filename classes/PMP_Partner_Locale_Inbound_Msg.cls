@@ -8,11 +8,8 @@
 
 public with sharing class PMP_Partner_Locale_Inbound_Msg {
     
-    //TranslationEOL
-    public static Boolean isWorking() {
-        return true;
-    }
-   /* public class InboundPayload {
+    
+    public class InboundPayload {
         public String SourceLanguage {get; set;}
         public List<PartnerData> Partners {get; set;}
     }  
@@ -37,7 +34,7 @@ public with sharing class PMP_Partner_Locale_Inbound_Msg {
         String targetLanguageName='';
         List<Core_Integration_Inbound_Message__c> inboundMessages = new List<Core_Integration_Inbound_Message__c>();
         List<Core_Integration_Inbound_Message__c> failedMessages = new List<Core_Integration_Inbound_Message__c>();
-        //List<PMP_Partner_Languages__mdt> languageList = new List<PMP_Partner_Languages__mdt>();
+        List<PMP_Partner_Languages__mdt> languageList = new List<PMP_Partner_Languages__mdt>();
         
         List<PartnerData> partnersData = new List<PartnerData>();  
         
@@ -48,10 +45,9 @@ public with sharing class PMP_Partner_Locale_Inbound_Msg {
                 try{
                     inboundPayLoad = (InboundPayload)JSON.deserialize(ciim.Core_Payload__c, InboundPayload.class);
                 }catch(Exception e){
-                    //system.debug('Error while parsing JSON Core_Integration_Inbound_Message__c.Core_Payload__c : ' + e);
-                    PMP_Utility.logError(e,'PMP_CompanyInboundTranslation');
+                    system.debug('Error while parsing JSON Core_Integration_Inbound_Message__c.Core_Payload__c : ' + e);
                 } 
-              //String payLoad = ciim.Core_Payload__c;
+              String payLoad = ciim.Core_Payload__c;
               targetLanguage = ciim.Core_Payload1__c;  
               //  Fetch the Target language Name
                  switch on targetLanguage {
@@ -66,7 +62,7 @@ public with sharing class PMP_Partner_Locale_Inbound_Msg {
                     }
                 } 
                 
-                if (ciim.Core_Processing_Status__c=='Failed' || ciim.Core_Processing_Status__c=='Terminated'){
+                if (ciim.Core_Processing_Status__c=='Failed'){
                     failedMessages.add(ciim);
                 }
                 else{
@@ -79,22 +75,21 @@ public with sharing class PMP_Partner_Locale_Inbound_Msg {
         if (inboundMessages.size()<=0){
         
         if (failedMessages.size()>0){
-            //rePublish(failedMessages);
-            PMP_SendTranslationExceptionEmail.sendFailureEmail(failedMessages);
+            rePublish(failedMessages);
         }
         return;
         
         }
         List<PMP_Company_Translation__c> updatedTransList = new List<PMP_Company_Translation__c>(); 
-        Map<String,PMP_Company__c> partners = new Map<String,PMP_Company__c>();
-        //List<Id> partnerIds = new List<Id>();
-        Map<Id,List<PartnerData>> partnerMap = new Map<Id,List<PartnerData>>();
-        List<String> approvedPartnerIds = new List<String>();
+  	    Map<String,PMP_Company__c> partners = new Map<String,PMP_Company__c>();
+        List<Id> partnerIds = new List<Id>();
+  	    Map<Id,List<PartnerData>> partnerMap = new Map<Id,List<PartnerData>>();
+  	    List<String> approvedPartnerIds = new List<String>();
         
        
         
    //     try {
-              for(PartnerData partner : partnersData){
+     	      for(PartnerData partner : partnersData){
                 if (partnerMap.containsKey(partner.PartnerId)){       
                     partnerMap.get(partner.PartnerId).add(partner);
                 }
@@ -102,11 +97,10 @@ public with sharing class PMP_Partner_Locale_Inbound_Msg {
                     partnerMap.put(partner.PartnerId, new List<PartnerData> {partner});  
                 } 
             } 
-              // System.debug('partnerMap'+partnerMap);       
+              System.debug('partnerMap'+partnerMap);       
             //Build the partner translation list with translated values
-            String streamIdName = PMP_Utility.getValue('PMP_Uberflip_Stream_Id_Name');
             List<PMP_Company_Translation__c> transList = [SELECT Id,PMP_Company_Information_Id__c,PMP_Company_Information_Id__r.Name,PMP_Company_Information_Id__r.PMP_Translation_Lifecycle_Status_nm__c, PMP_Company_Information_Id__r.PMP_Translated_Languages_Txt__c, PMP_Company_Information_Id__r.PMP_Company_Lifecycle_Status_Nm__c,  PMP_Chinese_Txt__c, PMP_Japanese_Txt__c, PMP_English_Txt__c,PMP_Field_Nm__c 
-                                                         FROM PMP_Company_Translation__c where PMP_Company_Information_Id__c IN :partnerMap.KeySet() AND PMP_Field_Nm__c != :streamIdName];
+                                                         FROM PMP_Company_Translation__c where PMP_Company_Information_Id__c IN :partnerMap.KeySet()];
             
             for (PMP_Company_Translation__c trans : transList){
                 Boolean isTransAvbl = false;
@@ -159,7 +153,7 @@ public with sharing class PMP_Partner_Locale_Inbound_Msg {
                 } */
                 
                 //Modified by sooriya             
-        /*        if(!multiValue.contains(targetLanguageName)){
+                if(!multiValue.contains(targetLanguageName)){
                     multiValue += ';' +targetLanguageName;
                 }
                 
@@ -173,7 +167,7 @@ public with sharing class PMP_Partner_Locale_Inbound_Msg {
     //          Schema.DescribeFieldResult fieldResult = PMP_Company__c.PMP_Translation_Lifecycle_Status_nm__c.getDescribe(); 
                 Schema.DescribeFieldResult fieldResult = PMP_Company__c.PMP_Translated_Languages_Txt__c.getDescribe();      
                 List<Schema.PicklistEntry> ple = fieldResult.getPicklistValues();
-                                                  
+                                              	  
                  if (multiValueSet.size() == ple.size()){               
                     partner.PMP_Translation_Lifecycle_Status_nm__c = 'Complete';
                 }else{
@@ -216,14 +210,14 @@ public with sharing class PMP_Partner_Locale_Inbound_Msg {
         for(PMP_Company__c comp: publishedPartners){
             workPubIdMap.put(comp.PMP_Working_Copy_Id__c, comp.Id);
         }
-        String streamIdName = PMP_Utility.getValue('PMP_Uberflip_Stream_Id_Name');
-        List<PMP_Company_Translation__c> existingTrans = [SELECT id FROM PMP_Company_Translation__c WHERE PMP_Company_Information_Id__c IN :workPubIdMap.values() AND PMP_Field_Nm__c != :streamIdName];
+        
+        List<PMP_Company_Translation__c> existingTrans = [SELECT id FROM PMP_Company_Translation__c WHERE PMP_Company_Information_Id__c IN :workPubIdMap.values()];
         if(!existingTrans.isEmpty()){
             delete existingTrans;
         }
         
         List<PMP_Company_Translation__c> updatedTrans = [SELECT Id,Name,PMP_English_Txt__c,PMP_Chinese_Txt__c,PMP_Japanese_Txt__c,PMP_Field_Nm__c,PMP_Company_Information_Id__c 
-                                                         FROM PMP_Company_Translation__c WHERE PMP_Company_Information_Id__c IN :workPubIdMap.KeySet() AND PMP_Field_Nm__c != :streamIdName];
+                                                         FROM PMP_Company_Translation__c WHERE PMP_Company_Information_Id__c IN :workPubIdMap.KeySet()];
         
         for(PMP_Company_Translation__c trans: updatedTrans){
             PMP_Company_Translation__c clonedTrans = trans.clone();
@@ -237,35 +231,20 @@ public with sharing class PMP_Partner_Locale_Inbound_Msg {
     @TestVisible
     private static void rePublish(List<Core_Integration_Inbound_Message__c> failedMessages ){
         List<Core_Integration_Outbound_Message__c> outboundMessages = New List<Core_Integration_Outbound_Message__c>();
-        
-        //Sooriya: removing SOQL from loop
-        List<Id>  failedMessageIdList = new List<Id>();
-        for(Core_Integration_Inbound_Message__c faildMessage: failedMessages){
-            failedMessageIdList.add(faildMessage.Core_Outbound_Message__c);
-        }
-        
-        Map<Id, Core_Integration_Outbound_Message__c> outboundMsgMap = new Map<Id, Core_Integration_Outbound_Message__c>([Select Id,Core_MessageType__c,Core_Payload__c,Core_Tags__c From Core_Integration_Outbound_Message__c where Id IN :failedMessageIdList]);
-        //
-        
         try {
             for (Core_Integration_Inbound_Message__c inboundMsg : failedMessages)
             {
-                if (inboundMsg.Core_Outbound_Message__c!=null){
-                    if(outboundMsgMap.containsKey(inboundMsg.Core_Outbound_Message__c)){
-                        //Core_Integration_Outbound_Message__c outboundMsg=[Select Id,Core_MessageType__c,Core_Payload__c,Core_Tags__c From Core_Integration_Outbound_Message__c where Id=:inboundMsg.Core_Outbound_Message__c LIMIT 1];
-                        Core_Integration_Outbound_Message__c outboundMsg=outboundMsgMap.get(inboundMsg.Core_Outbound_Message__c);
+                If (inboundMsg.Core_Outbound_Message__c!=null){
+                    Core_Integration_Outbound_Message__c outboundMsg=[Select Id,Core_MessageType__c,Core_Payload__c,Core_Tags__c From Core_Integration_Outbound_Message__c where Id=:inboundMsg.Core_Outbound_Message__c LIMIT 1];
                     Core_Integration_Outbound_Message__c newOutboundMsg=outboundMsg.clone();
                     outboundMessages.add(newOutboundMsg);
                 }
             }
-            }
             insert outboundMessages;
         }catch (Exception e) {
-            //system.debug('Error occured in processing JSON PMP_Partner_Locale_JSONParser updateLocaleDetails method due to '+ e.getMessage() + '- @LineNo' + e.getLineNumber()); 
-            PMP_Utility.logError(e,'PMP_CompanyInboundTranslation');
+            system.debug('Error occured in processing JSON PMP_Partner_Locale_JSONParser updateLocaleDetails method due to '+ e.getMessage() + '- @LineNo' + e.getLineNumber()); 
             
         }
-    }  
-*/
+    }                 
     
 }

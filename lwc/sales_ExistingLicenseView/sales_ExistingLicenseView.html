@@ -1,0 +1,114 @@
+<!--
+@Class Name    : sales_ExistingLicenseView
+@Version       : 1.0
+@Created Date  : March 2021
+@Function      : This component will display the existing license record for different action puporse.
+
+@Modification Log :
+Developer                 Date                    Description
+* ---------------------------------------------------------------------------------------------------------
+* Srishty Sharma          21-March-2021            License View Component. 
+-->
+<template>
+	<lightning-card variant="Narrow" title="Licenses" icon-name="standard:case">
+		<template if:true={spin}>
+			<lightning-spinner class="spins" alternative-text="Loading" size="medium"></lightning-spinner>
+			</template>
+			<div class="slds-m-around_small">
+					<c-sales_license-custom-datatable-comp key-field="Id" data={data} columns={columnsList}
+																								 onrowaction={callRowAction} onfiredistribute={fireDistribute} onfireprocess={fireProcess}>
+					</c-sales_license-custom-datatable-comp>
+
+
+		<!--<lightning-datatable 
+		data={data} 
+		columns={columnsList} 
+		key-field="Id" 
+		onrowaction={callRowAction}>
+	 </lightning-datatable>-->
+		<template if:true={error}>
+			{error}
+		</template>
+
+		<template if:true={modalContainer}>
+			<section class="slds-modal slds-fade-in-open">
+				<div class="slds-modal__container">
+					<header class="slds-modal__header">
+						<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+							title="Close" onclick={closeModalAction}>
+							<lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse"
+								size="small"></lightning-icon>
+						</button>
+						<h2 class="slds-text-heading_medium slds-hyphenate">{label.salesDistributeActionReqErr}</h2>
+					</header>
+
+					<div class="slds-modal__content slds-p-around_medium">
+							<div class="slds-is-relative">
+							<div class="spinner">
+									<template if:true={isLoading}>
+											<lightning-spinner alternative-text="Loading" variant="brand" size="large">
+											</lightning-spinner>
+									</template>
+							</div>
+							</div>
+							<c-sales_-existing-foundation-license-view order-item-id={licenseRow.orderItemRecordId}
+																												 available-quantity-of-renewal={licenseRowAvailableQuantityAbs}
+																												 tool-license-type={licenseRow.toolLicenseType} license-row-from-parent={licenseRow}
+																												 is-corporate={isCorporate} 
+																												 onhidebutton={handleHideProcessBtn}
+																												 onshowcreatelicense={handleShowLicenseCreate}
+																												 onclosemodalevent={closeModalAndRefreshAction}
+																												 onloadedevent={openModal}>
+							</c-sales_-existing-foundation-license-view>
+					</div>
+					<footer class="slds-modal__footer">
+						<template if:false={hideProcessBtn}>
+							<template if:true={showLicenseCreateButton}>
+								<button class="slds-button slds-button_neutral"
+									onclick={generateAndProcessLicense}>{label.SalesCreatelicandProcess}</button>
+							</template>
+							<template if:false={showLicenseCreateButton}>
+								<button class="slds-button slds-button_neutral"
+									onclick={processLicense}>{label.SalesProcessErrHTML}</button>
+							</template>
+						</template>
+						<button class="slds-button slds-button_brand" onclick={closeModalAction}>{label.SalesOrderClose}</button>
+
+					</footer>
+				</div>
+			</section>
+			<div class="slds-backdrop slds-backdrop_open"></div>
+		</template>
+
+		<template if:true={isCreateLicense}>
+			<section class="slds-modal slds-fade-in-open">
+				<div class="slds-modal__container option_modal">
+					<header class="slds-modal__header">
+						<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+							title="Close" onclick={closeProcessModalAction}>
+							<lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse"
+								size="small"></lightning-icon>
+						</button>
+						<h2 class="slds-text-heading_medium slds-hyphenate">{label.SalesCreateoptnlicErr}</h2>
+					</header>
+
+					<div class="slds-modal__content slds-p-around_medium">
+						<c-sales_option-product-license-creation license-row-from-parent={licenseRow} onbuttonclickedevent={handleButtonClicked}
+							oncloseoptionmodalevent={closeOptionModalAndRefreshAction} oncreateoptionlicense={showProcessOptionLicense}>
+						</c-sales_option-product-license-creation>
+					</div>
+					<footer class="slds-modal__footer">
+						<template if:true={licenseRow.hasOptionProduct}>
+						<button disabled={buttonClicked} class="slds-button slds-button_neutral" onclick={generateOptionLicense}>{label.SalesCreateLicHTML}</button>
+						</template>
+						<button class="slds-button slds-button_brand"
+							onclick={closeProcessModalAction}>{label.SalesOrderClose}</button>
+					</footer>
+				</div>
+			</section>
+			<div class="slds-backdrop slds-backdrop_open"></div>
+		</template>
+
+	</div>
+</lightning-card>
+</template>

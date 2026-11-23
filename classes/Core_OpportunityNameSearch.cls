@@ -96,9 +96,9 @@ global without sharing class Core_OpportunityNameSearch {
                     if(String.isNotBlank(oppty.Account.Core_Business_Party_Id__c)) { //TWC4767-3983
                         opptyIdMap.put(oppty.Id, new List<String>{oppty.Name, oppty.Account.Name, oppty.Account.Core_Business_Party_Id__c});
                     }
-                    else{ //TWC4767-3983
-                        opptyIdMap.put(oppty.Id, new List<String>{oppty.Name, oppty.Account.Name, oppty.Account.Core_CIM_ID__c});
-                    }
+                    /*else{ //TWC4767-3983
+                        opptyIdMap.put(oppty.Id, new List<String>{oppty.Name, oppty.Account.Name/*, oppty.Account.Core_CIM_ID__c});
+                    }*/
                 }
                 
                 // Query the user's access to the set of opportunity IDs
@@ -126,9 +126,9 @@ global without sharing class Core_OpportunityNameSearch {
                     if(String.isNotBlank(oppty.Account.Core_Business_Party_Id__c)) {
                         opptyInfoToReturn.add(new OpportunityInfo(oppty.Id, '', oppty.Account.Name, oppty.Account.Core_Business_Party_Id__c));
                     }
-                    else { //TWC4767-3983
-                        opptyInfoToReturn.add(new OpportunityInfo(oppty.Id, '', oppty.Account.Name, oppty.Account.Core_CIM_ID__c));
-                    }
+                  /* else { //TWC4767-3983
+                        opptyInfoToReturn.add(new OpportunityInfo(oppty.Id, '', oppty.Account.Name,null, oppty.Account.Core_CIM_ID__c));
+                    }*/
                 }
                 res.statusCode = 200;
                 return opptyInfoToReturn;

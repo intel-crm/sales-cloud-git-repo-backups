@@ -10,19 +10,8 @@
 *****************************************************************************************************************************************/
 public class PMP_SpecificationTriggerHandler extends TriggerHandler
 {
-
-    private static boolean run = true;
-    public static boolean runOnce(){
-        if(run){
-        run=false;
-        return true;
-        }else{
-            return run;
-        }
-    }
-
     public override void afterInsert(){
-        //System.debug('I am here in Trigger Handler');
+        System.debug('I am here in Trigger Handler');
         PMP_ParentSpecificationUpdate.updateParentSpec(trigger.new);
     }
     
@@ -36,7 +25,7 @@ public class PMP_SpecificationTriggerHandler extends TriggerHandler
     }*/
     
     public override void afterUpdate(){ 
-        if(runOnce())
+        if(PMP_CheckRecursive.runOnce())
         {
             PMP_ParentSpecificationUpdate.updateParentSpec(trigger.new);
             //PMP_DeleteOfferingSpecification.deleteOfferingSpecification(trigger.new);            

@@ -22,7 +22,7 @@
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>Core_IPS_Asset_Share_R_for_IPS_Users</fullName>
-        <accessLevel>Edit</accessLevel>
+        <accessLevel>Read</accessLevel>
         <description>TME/ADMIN access for Assets</description>
         <label>IPS Asset Share R for IPS Users</label>
         <sharedTo>
@@ -75,7 +75,7 @@
         <description>This rule has been specially added to provide R Access to IPS Agent to Asset as IPS Agent Role is no longer a subordinate to IPS Product Org Admin Role</description>
         <label>IPS Asset Share R for IPS Agent</label>
         <sharedTo>
-            <role>EMP_11298293_Kenta_Ueda</role>
+            <role>IPS_Agent</role>
         </sharedTo>
         <criteriaItems>
             <field>RecordTypeId</field>

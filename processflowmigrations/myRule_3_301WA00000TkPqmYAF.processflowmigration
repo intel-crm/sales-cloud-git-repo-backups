@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessFlowMigration xmlns="http://soap.sforce.com/2006/04/metadata">
+    <destinationFlowDefinition>Core_ProcessFailedSalesAssist_1</destinationFlowDefinition>
+    <destinationFlowVersion>Core_ProcessFailedSalesAssist_1-1</destinationFlowVersion>
+    <developerName>myRule_3_301WA00000TkPqmYAF</developerName>
+    <masterLabel>Core_ProcessFailedSalesAssist_1</masterLabel>
+    <migratedCriteriaLabel>Reprocess Failed Records 2</migratedCriteriaLabel>
+    <migratedCriteriaName>myRule_3</migratedCriteriaName>
+    <processVersion>Core_ProcessFailedSalesAssist-2</processVersion>
+</ProcessFlowMigration>

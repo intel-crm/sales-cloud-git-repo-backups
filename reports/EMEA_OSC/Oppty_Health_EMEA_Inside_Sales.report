@@ -20,32 +20,6 @@
         <masterLabel>Pipeline health %</masterLabel>
         <scale>2</scale>
     </aggregates>
-    <chart>
-        <backgroundColor1>#FFFFFF</backgroundColor1>
-        <backgroundColor2>#FFFFFF</backgroundColor2>
-        <backgroundFadeDir>Diagonal</backgroundFadeDir>
-        <chartSummaries>
-            <aggregate>Sum</aggregate>
-            <axisBinding>y</axisBinding>
-            <column>Opportunity.Core_Pipeline_Heath__c</column>
-        </chartSummaries>
-        <chartType>Donut</chartType>
-        <enableHoverLabels>false</enableHoverLabels>
-        <expandOthers>true</expandOthers>
-        <groupingColumn>OWNER_MANAGER</groupingColumn>
-        <legendPosition>Bottom</legendPosition>
-        <location>CHART_BOTTOM</location>
-        <showAxisLabels>true</showAxisLabels>
-        <showPercentage>false</showPercentage>
-        <showTotal>true</showTotal>
-        <showValues>true</showValues>
-        <size>Medium</size>
-        <summaryAxisRange>Auto</summaryAxisRange>
-        <textColor>#000000</textColor>
-        <textSize>12</textSize>
-        <titleColor>#000000</titleColor>
-        <titleSize>18</titleSize>
-    </chart>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>Opportunity.Core_Past_Due__c</field>
@@ -63,23 +37,22 @@
         <field>Opportunity.Core_Pipeline_Heath__c</field>
     </columns>
     <columns>
-        <field>OPPORTUNITY_NAME</field>
+        <field>Opportunity.Core_Technical_Owner__c</field>
     </columns>
     <columns>
-        <field>STAGE_NAME</field>
+        <field>ACCOUNT_NAME</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY_NAME</field>
     </columns>
     <columns>
         <field>CLOSE_DATE</field>
     </columns>
     <columns>
+        <field>STAGE_NAME</field>
+    </columns>
+    <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>AMOUNT</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Technical_Owner__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Average</aggregateTypes>
         <field>STAGE_DURATION</field>
     </columns>
     <columns>
@@ -95,6 +68,12 @@
         <aggregateTypes>Sum</aggregateTypes>
         <field>Opportunity.Core_Push_Counter__c</field>
     </columns>
+    <columns>
+        <field>AMOUNT</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Opportunity_Coverage__c</field>
+    </columns>
     <description>RT: Opportunities</description>
     <filter>
         <criteriaItems>
@@ -104,30 +83,13 @@
             <operator>equals</operator>
             <value>1</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Commissionable__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Yes</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OWNER_MANAGER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>alex garea,jaroslaw tomala,korcan erguder,galin dimov,katarzyna bielak,gosia dzul,yulia smelkova,eran gal,mariusz jadwiszczok</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
-        <aggregateType>Sum</aggregateType>
         <dateGranularity>Day</dateGranularity>
-        <field>OWNER_MANAGER</field>
-        <sortByName>Opportunity.Core_Pipeline_Heath__c</sortByName>
-        <sortOrder>Desc</sortOrder>
-        <sortType>Aggregate</sortType>
+        <field>ROLLUP_DESCRIPTION</field>
+        <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
@@ -136,10 +98,10 @@
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>ACCOUNT_NAME</field>
-        <sortOrder>Desc</sortOrder>
+        <field>Opportunity.Core_Sales_Groups__c</field>
+        <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Pipeline Health - EMEA Inside Sales</name>
+    <name>Pipeline Oppty Health</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -157,7 +119,7 @@
         <value>1</value>
     </params>
     <reportType>Opportunity</reportType>
-    <scope>organization</scope>
+    <scope>team</scope>
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>false</showSubTotals>

@@ -46,24 +46,7 @@ export default class PricingMultiSelectPicklistLwc extends LightningElement {
         let valuesStr = this.selectedValues !== null && this.selectedValues !== undefined && this.selectedValues !== '' ? JSON.parse(JSON.stringify(this.selectedValues)) : [];
         let values = [];
         if(typeof valuesStr === "string"){
-            let remainingValues = valuesStr.replace(/,\s*/g, ',');
-            const optionValues = optionData
-                .map(option => ({ value: option.value.replace(/,\s*/g, ','), original: option.value }))
-                .sort((first, second) => second.value.length - first.value.length);
-            while (remainingValues) {
-                const match = optionValues.find(option =>
-                    remainingValues === option.value || remainingValues.startsWith(`${option.value},`)
-                );
-                if (!match) {
-                    const separatorIndex = remainingValues.indexOf(',');
-                    if (separatorIndex === -1) break;
-                    remainingValues = remainingValues.substring(separatorIndex + 1);
-                    continue;
-                }
-                values.push(match.original);
-                remainingValues = remainingValues.substring(match.value.length);
-                if (remainingValues.startsWith(',')) remainingValues = remainingValues.substring(1);
-            }
+            values = valuesStr.split(", ");
         }else{
             values = JSON.parse(JSON.stringify(valuesStr));
         }

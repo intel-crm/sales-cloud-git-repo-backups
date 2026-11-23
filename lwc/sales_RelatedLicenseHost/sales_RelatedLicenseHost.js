@@ -1,5 +1,5 @@
 import { LightningElement,track,api} from 'lwc';
-/*import fetchLicensesFromHost from "@salesforce/apex/Sales_HostTriggerUtility.fetchLicensesFromHost";
+import fetchLicensesFromHost from "@salesforce/apex/Sales_HostTriggerUtility.fetchLicensesFromHost";
 import licenseriedirect from '@salesforce/label/c.sales_licenseriedirect';
 const columns = [
     { label: 'License Name', fieldName: 'urlValue', type: 'url', typeAttributes: { label: { fieldName: 'Name' }, target: '_blank' } },
@@ -12,11 +12,10 @@ const columns = [
     { label: 'Maintenance Expiration Date', fieldName: 'Sales_License_Maintenance_Exp_Dt__c', type: 'text', initialwidth: '10' },
     { label: 'License Expiration Date', fieldName: 'Sales_License_Expiration_Date_Dt__c', type: 'text', initialwidth: '10' },
     { label: 'Available Rehosts', fieldName: 'Sales_License_Avbl_Rehost_Nbr__c', type: 'text', initialwidth: '10' },
-];*/
+];
 
 export default class Sales_RelatedLicenseHost extends LightningElement {
-	@api recordId;
-    /*@track tablename='Licenses';
+    @track tablename='Licenses';
     @api columns = columns;
     @api licenseData = false;
     @api licenses;
@@ -24,6 +23,7 @@ export default class Sales_RelatedLicenseHost extends LightningElement {
     @track licensename;
     @track productname;
     @track primaryadminname;
+    @api recordId;
     baseUrl;
 
     label={licenseriedirect};
@@ -98,7 +98,7 @@ export default class Sales_RelatedLicenseHost extends LightningElement {
                 this.tablename = 'Licenses (0)';
             }
         })
-}*/
+}
 
 
 }

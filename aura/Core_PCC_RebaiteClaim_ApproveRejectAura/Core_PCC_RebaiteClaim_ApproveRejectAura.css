@@ -1,0 +1,10 @@
+.THIS .slds-backdrop_open {
+    backdrop-filter: blur(5px);
+    z-index: 1040;
+}
+.THIS.slds-modal__container  {
+    width: 120% !important;
+	max-width: 100% !important;
+    height: 200% !important;
+    max-height: 200% !important;
+}

@@ -1,0 +1,186 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 02-11-2025
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+    <lightning-card style="width: 95%;max-width: 150rem;">
+        <header class="slds-modal__header" >
+            <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">
+                Screen To Edit Exception Quota
+                <span style="position: relative; bottom: 4px; left: 2px;">
+                    <lightning-helptext content='Systematic Tender Limitation'></lightning-helptext>
+                </span>
+            </h2>
+        </header>
+        <div class="slds-m-around_medium">
+            <table class="slds-border_left slds-border_right slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered"
+                style="width: 95%;max-width: 150rem;">
+                <thead>
+                    <tr>
+                        <template for:each={fieldstoDisplay} for:item="field">
+                            <th key={field} class="slds-is-resizable tableContentHide" scope="col" style="white-space: break-spaces;">
+                                <button class="slds-button slds-button_reset slds-text-link" 
+                                    data-field={field} 
+                                    onclick={handleSort}
+                                    style="display: flex; align-items: center; gap: 4px;">
+                                <span data-field={field} class="sortable-column" title={field}>{field}</span>
+                                <lightning-icon icon-name={getSortIcon} size="xx-small" alternative-text="Sort Icon"></lightning-icon>
+                            </button>
+                            </th>
+
+                        </template>
+                        <!--<th>Account</th>
+                        <th>Picklist Field</th>
+                        <th>Boolean Field</th>
+                        <th>Number Field</th>-->
+                    </tr>
+                </thead>
+                <tbody>
+                    <template for:each={records} for:item="record" for:index="index">
+                        <tr key={record.Id}>
+                            <!-- Account Lookup Field -->
+                            <td>
+                            <template if:true={record.isEditable}>
+                                <template if:true={account}>
+                                    <div data-key="pilldiv"
+                                        class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_left-right"
+                                        role="none">
+                                        <span class="slds-icon_container slds-icon-standard-account slds-combobox__input-entity-icon"
+                                            title="Account">
+                                            <div class="slds-icon slds-icon_small" aria-hidden="true">
+                                                <lightning-icon icon-name="standard:account" size="small"></lightning-icon>
+                                            </div>
+                                            <span class="slds-assistive-text">Account</span>
+                                        </span>
+                                        <input type="text"
+                                            class="slds-input slds-combobox__input slds-combobox__input-value"
+                                            data-id={account.Id}
+                                            data-recordkey={record.uniqueKey}
+                                            placeholder="Select an Account" 
+                                            value={record.searchKey} />
+                                        <button class="slds-button slds-button_icon slds-input__icon slds-input__icon_right"
+                                            onclick={removeRecordOnLookup}
+                                            data-id={account.Id}
+                                            title="Remove selected option">
+                                            <span class="slds-button__icon" aria-hidden="true">
+                                                <lightning-icon icon-name="utility:close"
+                                                    size="xx-Small"
+                                                    class="slds-icon slds-icon_x-small slds-icon-text-default"
+                                                    aria-hidden="true">
+                                                </lightning-icon>
+                                            </span>
+                                            <span class="slds-assistive-text">Remove selected account</span>
+                                        </button>
+                                    </div>
+                                </template>
+                                
+                                <template if:false={account}>
+                                    <div data-key="searchdiv"
+                                        class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
+                                        role="none">
+                                        <input type="text" 
+                                            value={record.searchKey} onkeyup={handleKeyChange}
+                                            
+                                            data-recordkey={record.uniqueKey}
+                                            class="slds-input slds-combobox__input slds-has-focus"
+                                            aria-autocomplete="list"
+                                            placeholder="Search Accounts..." />
+                                        <span class="slds-icon_container slds-icon-utility-search slds-input__icon slds-input__icon_right">
+                                            <lightning-icon icon-name="utility:search"
+                                                size="xx-Small"
+                                                class="slds-icon slds-icon_x-small slds-icon-text-default"
+                                                aria-hidden="true">
+                                            </lightning-icon>
+                                        </span>
+                                    </div>
+                                
+                                    <template if:true={record.recordsList.length}>
+                                        <div data-key="dropdownresult"
+                                            class="slds-show slds-dropdown slds-dropdown_length-with-icon-7 slds-dropdown_fluid dropDownClass"
+                                            role="listbox">
+                                            <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                                                <template if:true={message}>
+                                                    <center> {message} </center>
+                                                </template>
+                                                <template for:each={record.recordsList} for:item="rec">
+                                                    <li id={rec.Id} key={rec.Id} data-id={rec.Id} data-name={rec.Name} data-recordkey={record.uniqueKey}
+                                                        onclick={onRecordSelection} role="presentation"
+                                                        class="slds-listbox__item">
+                                                        <div data-key={rec.Id} data-name={rec.Name}
+                                                            class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
+                                                            role="option">
+                                                            <span class="slds-media__figure slds-listbox__option-icon">
+                                                                <span class="slds-icon_container">
+                                                                    <lightning-icon icon-name="standard:account" size="small"></lightning-icon>
+                                                                </span>
+                                                            </span>
+                                                            <span class="slds-media__body">
+                                                                <span data-key={rec.Id} data-name={rec.Name}
+                                                                    class="slds-listbox__option-text_entity">
+                                                                    {rec.Name}
+                                                                </span>
+                                                            </span>
+                                                        </div>
+                                                    </li>
+                                                </template>
+                                            </ul>
+                                        </div>
+                                    </template>
+                                </template>
+                            </template>
+                                
+                                
+                                    
+                            
+
+
+                                <lightning-formatted-text if:false={record.isEditable} title={record.accountName}
+                                    value={record.accountName}>
+                                </lightning-formatted-text>
+                            </td>
+
+                            <!-- Picklist Field -->
+                            <td>
+                                <lightning-combobox if:true={record.isEditable} options={picklistValues}
+                                    value={record.Pricing_Quote_Type__c} name="Pricing_Quote_Type__c"
+                                    data-id={record.Id} data-index={index} data-recordkey={record.uniqueKey} onchange={handleChange}
+                                    style="width: 150px;"></lightning-combobox>
+
+                                <lightning-formatted-text if:false={record.isEditable}
+                                    title={record.Pricing_Quote_Type__c} value={record.Pricing_Quote_Type__c}>
+                                </lightning-formatted-text>
+
+                            </td>
+
+                            <!-- Boolean Field -->
+                            <td>
+                                <lightning-input type="checkbox" checked={record.Pricing_Active_cb__c}
+                                    name="Pricing_Active_cb__c" data-id={record.Id} data-index={index} data-recordkey={record.uniqueKey}
+                                    onchange={handleChange} style="width: 150px;"></lightning-input>
+                            </td>
+
+                            <!-- Number Field -->
+                            <td>
+                                <lightning-input type="number" value={record.Pricing_Exception_Quota__c}
+                                    name="Pricing_Exception_Quota__c" data-id={record.Id} data-index={index} data-recordkey={record.uniqueKey}
+                                    onchange={handleChange} style="width: 150px;"></lightning-input>
+                            </td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+
+            <div class="button-container">
+                <lightning-button label="Add Row" onclick={addRow} variant="brand"
+                    class="slds-m-left_small"></lightning-button>
+                <lightning-button label="Save" onclick={handleSave} variant="success"
+                    class="slds-m-left_small"></lightning-button>
+                <lightning-button label="Cancel" onclick={handleCancel} disabled={isDisableCancel} 
+                class="slds-m-left_small"></lightning-button>
+            </div>
+        </div>
+    </lightning-card>
+</template>

@@ -1,3 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<FlowDefinition xmlns="http://soap.sforce.com/2006/04/metadata"/>
+<FlowDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>deactivated and migrated to Core_OpptyProd_Consolidation_Before,
 
+Migrated from the: Core_OppProd_Status_Pending workflow rule
+Workflow rule description: Sets the Opportunity Product Status to pending when an Opportunity Product is created with a status of anything besides pending. This prevents someone from cloning products in won/lost/cancelled/etc. status.&quot;</description>
+    <masterLabel>Core_OppProd_Status_Pending</masterLabel>
+</FlowDefinition>

@@ -52,6 +52,7 @@ private class Core_Log_Entry_Test {
         
         String strDMLStats = '**** Test Class: DML Stmt Buffer: ' + intDMLStmtBuffer + ', ' +
             'DML Stmts Remaining: ' + intDMLStmtsRemaining;
+        system.debug(strDMLStats);
         
         //How many records to create that overruns the limits
         integer intStmtAvailable = intDMLStmtsRemaining - intDMLStmtBuffer;
@@ -59,6 +60,7 @@ private class Core_Log_Entry_Test {
         
         strDMLStats = '**** Test Class: intStmtAvailable: ' + intStmtAvailable + ', ' +
                       'intStmtInsert: ' + intStmtInsert;
+        system.debug(strDMLStats);
 
         system.assert(intDMLRowsRemaining > intStmtInsert + intDMLRowsBuffer + 1, 'Not enough DML Rows limit remaining to run this test class. '+ 
                                             'Adjust Core_App_Logging_DML_Statements_Buffer and Core_App_Logging_DML_Rows_Buffer ' +

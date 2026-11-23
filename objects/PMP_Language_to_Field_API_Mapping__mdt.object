@@ -20,7 +20,7 @@
         <fieldManageability>DeveloperControlled</fieldManageability>
         <inlineHelpText>Enter Field Name here</inlineHelpText>
         <label>Field Name</label>
-        <length>40</length>
+        <length>80</length>
         <required>false</required>
         <type>Text</type>
         <unique>false</unique>
@@ -32,7 +32,7 @@
         <fieldManageability>DeveloperControlled</fieldManageability>
         <inlineHelpText>Enter Language code here</inlineHelpText>
         <label>Language Code</label>
-        <length>10</length>
+        <length>50</length>
         <required>false</required>
         <type>Text</type>
         <unique>false</unique>
@@ -44,7 +44,7 @@
         <fieldManageability>DeveloperControlled</fieldManageability>
         <inlineHelpText>Enter Object Name here</inlineHelpText>
         <label>Object Name</label>
-        <length>50</length>
+        <length>80</length>
         <required>false</required>
         <type>Text</type>
         <unique>false</unique>

@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>NEMIX COMPUTER SPAIN SL Partner User</description>
+    <description>SUPER MICRO COMPUTER SPAIN SL Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>NEMIX COMPUTER SPAIN SL Partner User</name>
+    <name>SUPER MICRO COMPUTER SPAIN SL Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>SUPERMICROCOMPUTERSPAINSLPartnerManager</parentRole>
 </Role>

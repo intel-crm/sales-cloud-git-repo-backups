@@ -43,7 +43,7 @@
     return new Promise(function(resolve, reject) {
       var action = component.get("c.getMessage");
       action.setParams({ recordId: component.get("v.recordId"),
-                        channel: component.get("v.channel")	});
+                        isPartner: component.get("v.isPartner")	});
       action.setCallback(this, function(response) {
         var status = response.getState();
         if (status === "SUCCESS") {
@@ -72,7 +72,7 @@
       var action = component.get("c.postMessage");
 			action.setParams({recordId: component.get("v.recordId"),
                               message: message,
-                              channel: component.get("v.channel")});
+                              isPartner: component.get("v.isPartner")});
       action.setCallback(this, function(response) {
         var status = response.getState();
         if (status === "SUCCESS") {

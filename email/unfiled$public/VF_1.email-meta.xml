@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>51.0</apiVersion>
+    <available>false</available>
+    <description>for testing of advanced approval notification</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>VF 1</name>
+    <packageVersions>
+        <majorNumber>230</majorNumber>
+        <minorNumber>6</minorNumber>
+        <namespace>SBQQ</namespace>
+    </packageVersions>
+    <style>none</style>
+    <subject>Submit for approval</subject>
+    <type>visualforce</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesIncludeBosses>true</doesIncludeBosses>
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <name>Psgbot</name>
+    <queueMembers>
+        <users>
+            <user>test_ranjitx.kumar@intel.com.crm</user>
+        </users>
+    </queueMembers>
+    <queueRoutingConfig>Psgbot</queueRoutingConfig>
+    <queueSobject>
+        <sobjectType>LiveChatTranscript</sobjectType>
+    </queueSobject>
+</Queue>

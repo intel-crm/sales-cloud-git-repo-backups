@@ -57,7 +57,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>AR/VR/MR - Commercial,Business Desktop,CE - other,Consumer Mobility,Server,Server - HPC,Storage</value>
+            <value>Business Desktop,CE - other,Consumer Mobility,Server,Server - HPC,Storage</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -96,6 +96,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>Opportunity.Core_Approved_Date__c</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

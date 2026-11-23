@@ -97,7 +97,7 @@
     </columns>
     <description>all opps starting 1.1.2019</description>
     <filter>
-        <booleanFilter>1 AND 2 AND (3 OR 4 OR 5 OR 7) AND 6</booleanFilter>
+        <booleanFilter>1 AND 2 AND (3 OR 4 OR 5 OR 6 OR (7 AND 8) OR 9 OR 10)</booleanFilter>
         <criteriaItems>
             <column>OpportunityLineItem.Core_Product_Type__c</column>
             <columnToColumn>false</columnToColumn>
@@ -111,6 +111,13 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>EMEA</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Core_Sales_Groups__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>GMP Germany Sales Group,GMP Russia Sales Group</value>
         </criteriaItems>
         <criteriaItems>
             <column>Account.Core_Sub_Geo__c</column>
@@ -127,18 +134,25 @@
             <value>Turkey</value>
         </criteriaItems>
         <criteriaItems>
+            <column>FULL_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Lola Claesson</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Technical_Owner__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Lola Claesson</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>Account.Core_Account_Country__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Austria,Switzerland,Germany,Russian Fed</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>ACCOUNT_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>CERN</value>
+            <value>Austria,Switzerland</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Technical_Owner_Manager__c</column>
@@ -146,6 +160,13 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Carlo Reinhart</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Core_Account_Country__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Germany,Russian Fed</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

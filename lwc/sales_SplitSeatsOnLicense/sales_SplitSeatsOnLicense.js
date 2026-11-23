@@ -1,16 +1,16 @@
 import { LightningElement, api, track, wire } from 'lwc';
 //import getLicenseRecord from '@salesforce/apex/Sales_SplitSeatsOnLicenseController.getLicenseRecord';
-/*import splitLicenses from '@salesforce/apex/Sales_SplitSeatsOnLicenseController.splitLicenses';
+import splitLicenses from '@salesforce/apex/Sales_SplitSeatsOnLicenseController.splitLicenses';
 import { ShowToastEvent } from "lightning/platformShowToastEvent";
 import { NavigationMixin } from 'lightning/navigation';
 import { CloseActionScreenEvent } from 'lightning/actions';
 import { getRecord } from 'lightning/uiRecordApi';
 import LICENSE_OBJECT from '@salesforce/schema/Sales_License__c';
-//import newLicenseDetails from '@salesforce/apex/Sales_SplitSeatsOnLicenseController.newLicenseDetails';
+import newLicenseDetails from '@salesforce/apex/Sales_SplitSeatsOnLicenseController.newLicenseDetails';
 import getTargetLicensesForMerging from '@salesforce/apex/Sales_SplitSeatsOnLicenseController.getTargetLicensesForMerging';
 import mergeLicenseRecords from '@salesforce/apex/Sales_SplitSeatsOnLicenseController.mergeLicenseRecords';
-//import getFeedRecord from '@salesforce/apex/Sales_FeedbackController.getFeedRecord';//added for feedback
-//import checkCapablity from '@salesforce/apex/Sales_FeedbackController.checkCapablity';//added for feedback
+import getFeedRecord from '@salesforce/apex/Sales_FeedbackController.getFeedRecord';//added for feedback
+import checkCapablity from '@salesforce/apex/Sales_FeedbackController.checkCapablity';//added for feedback
 //import checkOrderAndOrderProduct from '@salesforce/apex/Sales_SplitSeatsOnLicenseController.checkOrderAndOrderProduct';
 
 //custom label
@@ -100,13 +100,13 @@ const mergeSeatsCols = [
 const columns2 = [{ label: 'Id', fieldName: 'licenseId' },
 { label: 'Primary Contact', fieldName: 'primarycontact' },
 { label: 'License Tool Type', fieldName: 'licenseType' },
-{ label: 'Host Id', fieldName: 'hostIdValue' }];*/
+{ label: 'Host Id', fieldName: 'hostIdValue' }];
 
-export default class Sales_SplitSeatsOnLicense extends LightningElement {
+export default class Sales_SplitSeatsOnLicense extends NavigationMixin(LightningElement) {
     // added by Pooja jadhav -- Model Pop Up Attriutes
 
     //--
-    /*@track licenseActivationCode;
+    @track licenseActivationCode;
     @track lincenseWebDisplayFlag;
     @track licenseHostValue;
     //--
@@ -196,7 +196,7 @@ export default class Sales_SplitSeatsOnLicense extends LightningElement {
           .catch((error) => {
               
           });
-      }
+      }*/
     @wire(checkCapablity, { capablity: '$capablity' })
     checkCapablity({ error, data }) {
         if (data) {
@@ -206,9 +206,9 @@ export default class Sales_SplitSeatsOnLicense extends LightningElement {
         }
         if (error) {
         }
-    }*/
+    }
 
-    /*getFeedbackRecords() {
+    getFeedbackRecords() {
         getFeedRecord({ capablity: this.capablity })
             .then((result) => {
                 this.feedrec = result;
@@ -233,10 +233,10 @@ export default class Sales_SplitSeatsOnLicense extends LightningElement {
                     this.isFeedbackvisible = true;
                 }
             });
-    }*/
+    }
     //feedback end
 
-    /*@wire(getRecord, { recordId: '$recordId', fields: FIELDS })
+    @wire(getRecord, { recordId: '$recordId', fields: FIELDS })
     wireRecord(result) {
         this.isInvalidLicense = true;
         if (result.data) {
@@ -410,7 +410,7 @@ export default class Sales_SplitSeatsOnLicense extends LightningElement {
          }).catch(error => {
              console.log('Error -->' + JSON.stringify(error))
          })*/
-    /*}
+    }
     handleclick() {
         var el = this.template.querySelector('lightning-datatable');
         console.log(el);
@@ -741,7 +741,7 @@ export default class Sales_SplitSeatsOnLicense extends LightningElement {
                 var errorMsg;
                 this.errorMsg = 'Number of seats to merge cannot be greater than number of seats on source License';
             }
-            else*/ /*if (this.isMergeSeats == true) {
+            else*/ if (this.isMergeSeats == true) {
                 var errorMsg;
 
                 if (this.targetLicenseRecSelected == undefined) {
@@ -939,7 +939,7 @@ export default class Sales_SplitSeatsOnLicense extends LightningElement {
                           c__capablity: this.capablity
                       }
                   }); */
-            /*} else {
+            } else {
                 console.log('Inside else  handle cancel' + this.isPartnerPortal);
                 //this.dispatchEvent(new CloseActionScreenEvent());
                 if (this.isPartnerPortal) {
@@ -1051,6 +1051,6 @@ export default class Sales_SplitSeatsOnLicense extends LightningElement {
                     this.dispatchEvent(new CustomEvent('quickactionclose'));
                 }
             })
-    }*/
+    }
 
 }

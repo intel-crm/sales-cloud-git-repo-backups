@@ -61,13 +61,6 @@
             <operator>equals</operator>
             <value>1</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>Core_MDF_Criteria__c$Core_MDF_Object_Type__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>PartnerFundRequest</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>

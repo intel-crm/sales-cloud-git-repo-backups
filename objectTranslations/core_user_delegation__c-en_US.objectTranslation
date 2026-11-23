@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>User Delegation</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>User Delegations</value>
+    </caseValues>
+    <fields>
+        <label><!-- End Date --></label>
+        <name>End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Start Date --></label>
+        <name>Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- IsActive --></label>
+        <name>core_cpq_IsActive__c</name>
+    </fields>
+    <fields>
+        <label><!-- Delegated For --></label>
+        <name>core_cpq_delegated_For__c</name>
+        <relationshipLabel><!-- User Delegations (Delegated For) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Delegated To --></label>
+        <lookupFilter>
+            <errorMessage><!-- Search a valid User --></errorMessage>
+        </lookupFilter>
+        <name>core_cpq_delegated_to__c</name>
+        <relationshipLabel><!-- User Delegations (Delegated To) --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -13,13 +13,11 @@ public class Core_AMBRelatedObjs{
 
 public Account_Meeting_Brief__c amb{get;set;} 
 public string ambId{get;set;}
-public string strId{get;set;}
 private ApexPages.StandardSetController standardSetController;
 
     public Core_AMBRelatedObjs(ApexPages.StandardSetController standardSetController){
          this.standardSetController = standardSetController;
-        //escapeHtml4() added for security scan
-         ambId = ApexPages.CurrentPage().getparameters().get('id').escapeHtml4();
+         ambId = ApexPages.CurrentPage().getparameters().get('id');
          amb = [Select id,Name from Account_Meeting_Brief__c where id=: ambId];
     
     }

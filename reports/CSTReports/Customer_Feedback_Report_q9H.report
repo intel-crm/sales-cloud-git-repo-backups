@@ -32,20 +32,7 @@
     <columns>
         <field>SPM_Customer_Feedback__c$Id</field>
     </columns>
-    <columns>
-        <field>SPM_Customer_Feedback__c$Region__c</field>
-    </columns>
     <description>Summarized stats of all feedback by manager</description>
-    <filter>
-        <criteriaItems>
-            <column>SPM_Customer_Feedback__c$CRM_CST_Is_Active_Planning_Period__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>1</value>
-        </criteriaItems>
-        <language>en_US</language>
-    </filter>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
@@ -55,7 +42,7 @@
     <name>Customer Feedback Report</name>
     <params>
         <name>co</name>
-        <value>1</value>
+        <value>0</value>
     </params>
     <reportType>Customer_Feedback__c</reportType>
     <scope>organization</scope>
@@ -64,6 +51,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>SPM_Customer_Feedback__c$CreatedDate</dateColumn>
-        <interval>INTERVAL_CURRENT</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

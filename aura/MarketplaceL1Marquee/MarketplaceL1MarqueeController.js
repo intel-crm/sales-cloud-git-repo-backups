@@ -9,11 +9,9 @@
 			component.set('v.headingLabel', $A.get("$Label.c.PMP_L1_Partner"));
 			component.set('v.textLabel', $A.get("$Label.c.PMP_L1_Partner_Subheading"));
 
-		} 
-		// IPA2.0 + US TWC4497-1631
-		// else {
-		// 	component.set('v.headingLabel', $A.get("$Label.c.PMP_L1_Offering"));
-		// 	component.set('v.textLabel', $A.get("$Label.c.PMP_L1_Offering_Subheading"));
-		// }
+		} else {
+			component.set('v.headingLabel', $A.get("$Label.c.PMP_L1_Offering"));
+			component.set('v.textLabel', $A.get("$Label.c.PMP_L1_Offering_Subheading"));
+		}
 	}
 })

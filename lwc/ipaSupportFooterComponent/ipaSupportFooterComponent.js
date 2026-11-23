@@ -24,7 +24,7 @@ import resContact from '@salesforce/resourceUrl/PMP_Contact_us_Chat';
 import resRequestSupport from '@salesforce/resourceUrl/PMP_Contact_us_RequestSupport';
 
 import resPhone from '@salesforce/resourceUrl/PMP_Contact_us_Phone';
-
+import SystemModstamp from '@salesforce/schema/Account.SystemModstamp';
 
 export default class IpaSupportFooterComponent extends LightningElement {
 

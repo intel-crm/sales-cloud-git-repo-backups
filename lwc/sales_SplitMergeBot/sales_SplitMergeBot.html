@@ -1,0 +1,16 @@
+<template>
+    <template if:true={isMergeSeats}>
+        
+            <c-sales_-split-seats-on-license record-id={recordId} is-merge-seats={isMergeSeats}></c-sales_-split-seats-on-license>  
+        
+        
+
+    </template>
+    <template if:true={isSplit}>
+        
+            <c-sales_-split-seats-on-license record-id={recordId}></c-sales_-split-seats-on-license>  
+    
+
+    </template>
+    
+</template>

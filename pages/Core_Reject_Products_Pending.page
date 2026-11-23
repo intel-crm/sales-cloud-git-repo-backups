@@ -14,6 +14,7 @@ Description :This vf page is used  in classic and lightning for List Button on D
 <apex:page standardController="Core_Design_Registration_Product__c" recordSetVar="designRegProds" extensions="Core_Reject_Products_Pending_Ctrl">
     <apex:variable var="alertMessage" value="{!alertMessage}" />
     <apex:variable var="retUrl" value="{!retUrl}" />
+    {!retUrl}
     <apex:slds />
     <style>
         .slds-page-header {

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Upload File Mapping</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Upload File Mappings</value>
+    </caseValues>
+    <fields>
+        <label><!-- Child Object --></label>
+        <name>PSG_Child_Object__c</name>
+    </fields>
+    <fields>
+        <label><!-- Child Relationship Field Name --></label>
+        <name>PSG_Child_Relationship_Field_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Custom Type --></label>
+        <name>PSG_Custom_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field API Name --></label>
+        <name>PSG_Field_API_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field Name --></label>
+        <name>PSG_Field_Name__c</name>
+    </fields>
+    <fields>
+        <help><!-- Field on the Lookup object --></help>
+        <label><!-- Lookup Field Name --></label>
+        <name>PSG_Lookup_Field_Name_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Mapping Type --></label>
+        <name>PSG_Mapping_Type__c</name>
+        <picklistValues>
+            <masterLabel>Field Mapping</masterLabel>
+            <translation><!-- Field Mapping --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Relationship Mapping</masterLabel>
+            <translation><!-- Relationship Mapping --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Object API Name --></label>
+        <name>PSG_Object_API_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Object Name --></label>
+        <name>PSG_Object_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Order --></label>
+        <name>PSG_Order_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Parent Object --></label>
+        <name>PSG_Parent_Object__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reference Field Name --></label>
+        <name>PSG_Reference_Field_Name_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- TEMPLATE ENABLER --></label>
+        <name>PSG_Template_Enabler__c</name>
+    </fields>
+    <fields>
+        <label><!-- isActive --></label>
+        <name>PSG_isActive_cb__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

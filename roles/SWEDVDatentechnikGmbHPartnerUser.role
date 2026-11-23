@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>leConnect Schatz GmbH Partner User</description>
+    <description>S&amp;W EDV-Datentechnik GmbH Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>leConnect Schatz GmbH Partner User</name>
+    <name>S&amp;W EDV-Datentechnik GmbH Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>SWEDVDatentechnikGmbHPartnerManager</parentRole>
 </Role>

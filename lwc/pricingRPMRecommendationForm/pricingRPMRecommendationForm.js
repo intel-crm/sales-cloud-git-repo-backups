@@ -144,7 +144,7 @@ export default class PricingRPMRecommendationForm extends NavigationMixin(Lightn
 
         isActive({functionalityName : 'Pricing_AI'}).then(result => {
             this.pricingAIEnabled = result;
-        });
+        })
 
         if (this.isnotquotepage === 'true') {
             this.quoteLineId = this.recordid;
@@ -207,16 +207,16 @@ export default class PricingRPMRecommendationForm extends NavigationMixin(Lightn
                 if (!result.Pricing_Change_Request_cb__c) {
                     this.isBillingStartDate = true;
                 }
-                if (!result.Pricing_Change_Request_cb__c && result.Pricing_Program_Type_Nm__c == ccgQuoteLine && (result.Pricing_Tentative_ECAP_Price_Amt__c === '' || result.Pricing_Tentative_ECAP_Price_Amt__c === undefined)) {
+                if (!result.Pricing_Change_Request_cb__c && result.Pricing_Program_Type_Nm__c == ccgQuoteLine) {
                     this.isClient = true;
-                    this.runAI = true;
+                    if(result.Pricing_Tentative_ECAP_Price_Amt__c === '' || result.Pricing_Tentative_ECAP_Price_Amt__c === undefined){
+                        this.runAI = true;
+                    }
                 }
 
                 var today = new Date();
                 this.date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-
                 this.dateAfterYear = today.getFullYear() + 1 + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-                
                 var priorDate = new Date(new Date().setDate(today.getDate() - daysIfNoAccountPresentInMtd));
                 this.dateBeforeSixMonthFromToday = priorDate.getFullYear() + '-' + (priorDate.getMonth() + 1) + '-' + priorDate.getDate();
 
@@ -228,7 +228,7 @@ export default class PricingRPMRecommendationForm extends NavigationMixin(Lightn
                 this.getMetadataRecords();
             });
         this.getFieldSetFormDetails();
-
+        console.log('inside getquoteline JS method');
     }
 
     getMetadataRecords() {
@@ -249,6 +249,7 @@ export default class PricingRPMRecommendationForm extends NavigationMixin(Lightn
     getFieldSetFormDetails() {
         getFormDetails({ recordId: this.quoteLineId })
             .then(result => {
+                console.log('inside getfieldsetform JS method: '+JSON.stringify(result));
                 let formDetails = JSON.parse(JSON.stringify(result));
                 var fieldList = readOnlyFields;
                 let fieldArray = fieldList.split(',');
@@ -270,6 +271,12 @@ export default class PricingRPMRecommendationForm extends NavigationMixin(Lightn
                         if (formDetails[i].Fields[j]["APIName"] == 'Pricing_Discount_Pct__c') {
                             this.pricingDiscountAPIField = formDetails[i].Fields[j]["APIName"];
                         }
+                        if (formDetails[i].Fields[j]["APIName"] == 'Pricing_Recommendation_FeedBack_Nm__c') {
+                            this.pricingDiscountAPIField = formDetails[i].Fields[j]["APIName"];
+                        }
+                        if (formDetails[i].Fields[j]["APIName"] == 'Pricing_Reason_for_FeedBack_Txt__c') {
+                            this.pricingDiscountAPIField = formDetails[i].Fields[j]["APIName"];
+                        }                        
                         if (formDetails[i].Fields[j]["APIName"] == 'Pricing_Payable_Quantity__c') {
                             this.checkRestrictedAccount();
                         }
@@ -285,6 +292,7 @@ export default class PricingRPMRecommendationForm extends NavigationMixin(Lightn
                 }
             })
             .catch(error => {
+                console.log('Error Msg: '+error.body.message);
                 const evt = new ShowToastEvent({
                     title: 'Error',
                     message: error.body.message,
@@ -305,8 +313,8 @@ export default class PricingRPMRecommendationForm extends NavigationMixin(Lightn
                     for (var j = 0; j < this.formValues[i].Fields.length; j++) {
                         if (this.formValues[i].Fields[j]["APIName"] == 'Pricing_Payable_Quantity__c') {
                             if (this.wonChangeRequest == true) {
-                                if (this.isRestrictedAccount == true) {
-                                    this.formValues[i].Fields[j]["doubleFieldValue"] = this.quoteLineDataResult.Pricing_Payable_Quantity__c; 
+                                if (this.isRestrictedAccount == true) {                                    
+                                    this.formValues[i].Fields[j]["doubleFieldValue"] = 0;
                                 }
                                 else if (this.isRestrictedAccount == false) {
                                     this.formValues[i].Fields[j]["fieldDisabled"] = true;
@@ -326,7 +334,6 @@ export default class PricingRPMRecommendationForm extends NavigationMixin(Lightn
         getQuoteLineDetails({ quoteLineId: this.quoteLineId })
             .then(result => {
                 getRecordNotifyChange([{ recordId: this.quoteLineId }]);
-
                 if (result.Pricing_Status_Nm__c === 'Draft') {
                     this.isDraftQL = true;
                 } else if (result.Pricing_Status_Nm__c === 'Pending Further Intel Review' && (result.Pricing_Integration_Status_Nm__c !== 'Pending' && result.Pricing_Integration_Status_Nm__c !== 'InProcess' && result.Pricing_Deal_RFQ_Status_Nm__c != 'Submitted')) {
@@ -353,14 +360,14 @@ export default class PricingRPMRecommendationForm extends NavigationMixin(Lightn
                 if ((result.Pricing_Integration_Status_Nm__c === 'Error' && (result.Pricing_Deal_RFQ_Id__c === undefined && result.Pricing_Deal_RFQ_Status_Nm__c === undefined)) ||
                     (result.Pricing_Integration_Status_Nm__c === undefined && (result.Pricing_Reference_Quote_Line_Nbr__c === undefined || (result.Pricing_Reference_Quote_Line_Nbr__c !== undefined && result.Pricing_Reference_Quote_Line_Nbr__r.SBQQ__ProductName__c != result.SBQQ__ProductName__c)))) {
                     this.dealButtonLabel = createDealButton;//'Create Deal';
-                    this.continueButtonLabel = 'Continue';// and '+createDealButton;
+                    this.continueButtonLabel = 'Continue'// and '+createDealButton;
                     this.isCreateDeal = true;
                 }
                 else if ((result.Pricing_Integration_Status_Nm__c === 'Error' && (result.Pricing_Deal_RFQ_Status_Nm__c === undefined && result.Pricing_Reference_Quote_Line_Nbr__c !== '')) ||
                     (result.Pricing_Deal_RFQ_Status_Nm__c === 'Requested' && result.Pricing_Deal_RFQ_Id__c !== '') ||
                     (result.Pricing_Integration_Status_Nm__c === undefined && result.Pricing_Reference_Quote_Line_Nbr__c !== '')) {
                     this.dealButtonLabel = updateDealButton//'Update Deal';
-                    this.continueButtonLabel = 'Continue';// and '+updateDealButton;
+                    this.continueButtonLabel = 'Continue'// and '+updateDealButton;
                     this.isCreateDeal = false;
                 }
 
@@ -372,7 +379,7 @@ export default class PricingRPMRecommendationForm extends NavigationMixin(Lightn
                 for (var i = 0; i < this.formValues.length; i++) {
                     for (var j = 0; j < this.formValues[i].Fields.length; j++) {
                         if (this.formValues[i].Fields[j]["APIName"] == 'Pricing_Approved_Start_Date_Dt__c') {
-                            this.formValues[i].Fields[j]["fieldValue"] = this.isAutoAI && (result.Pricing_Approved_Start_Date_Dt__c === '' || result.Pricing_Approved_Start_Date_Dt__c === undefined) ? this.date: result.Pricing_Approved_Start_Date_Dt__c;
+                            this.formValues[i].Fields[j]["fieldValue"] = this.isAutoAI && (result.Pricing_Approved_Start_Date_Dt__c === '' || result.Pricing_Approved_Start_Date_Dt__c === undefined) ? this.date : result.Pricing_Approved_Start_Date_Dt__c;
                         }
                         if (this.formValues[i].Fields[j]["APIName"] == 'Pricing_Approved_End_Date_Dt__c') {
                             this.formValues[i].Fields[j]["fieldValue"] = this.isAutoAI && (result.Pricing_Approved_End_Date_Dt__c === '' || result.Pricing_Approved_End_Date_Dt__c === undefined) ? this.dateAfterYear : result.Pricing_Approved_End_Date_Dt__c;
@@ -403,10 +410,10 @@ export default class PricingRPMRecommendationForm extends NavigationMixin(Lightn
                                 approvedStartDatePast.setDate(approvedStartDate.getDate() - this.count);
                                 var dateBeforeApproveStartDate = approvedStartDatePast.getFullYear() + '-' + (approvedStartDatePast.getMonth() + 1) + '-' + approvedStartDatePast.getDate();
 
-                                this.formValues[i].Fields[j]["fieldValue"] = (this.count != undefined && this.isAutoAI && (result.Pricing_Billing_Start_Date_Dt__c === '' || result.Pricing_Billing_Start_Date_Dt__c === undefined)) ? this.dateWithoutTime : this.isClient ? dateBeforeApproveStartDate : result.Pricing_Billing_Start_Date_Dt__c;
+                                this.formValues[i].Fields[j]["fieldValue"] = (this.count != undefined && this.isAutoAI && (result.Pricing_Billing_Start_Date_Dt__c === '' || result.Pricing_Billing_Start_Date_Dt__c === undefined)) ? this.dateWithoutTime : this.isClient && (result.Pricing_Billing_Start_Date_Dt__c === '' || result.Pricing_Billing_Start_Date_Dt__c === undefined) ? dateBeforeApproveStartDate : result.Pricing_Billing_Start_Date_Dt__c;
                             } else {
 
-                                this.formValues[i].Fields[j]["fieldValue"] = (this.isAutoAI && (result.Pricing_Billing_Start_Date_Dt__c === '' || result.Pricing_Billing_Start_Date_Dt__c === undefined)) ? this.dateBeforeSixMonthFromToday : this.isClient ? this.dateBeforeSixMonth : result.Pricing_Billing_Start_Date_Dt__c;
+                                this.formValues[i].Fields[j]["fieldValue"] = (this.isAutoAI && (result.Pricing_Billing_Start_Date_Dt__c === '' || result.Pricing_Billing_Start_Date_Dt__c === undefined)) ? this.dateBeforeSixMonthFromToday : this.isClient && (result.Pricing_Billing_Start_Date_Dt__c === '' || result.Pricing_Billing_Start_Date_Dt__c === undefined) ? this.dateBeforeSixMonth : result.Pricing_Billing_Start_Date_Dt__c;
                             }
                         }
                         if (this.formValues[i].Fields[j]["APIName"] == 'Pricing_End_Date_dt__c') {
@@ -553,6 +560,7 @@ export default class PricingRPMRecommendationForm extends NavigationMixin(Lightn
     }
 
     handleSave() {
+        console.log('Inside save');
         this.isSave = true;
         this.isAI = false;
         this.isDealButtonClicked = false;
@@ -583,6 +591,7 @@ export default class PricingRPMRecommendationForm extends NavigationMixin(Lightn
         if (this.isDealButtonClicked === true) {
             if (this.isCreateDeal === true) {
                 this.action = 'Create';
+                console.log('Inside handlesuccess');
                 this.insertOutboundMessage();
             } else {
                 this.action = 'Update';
@@ -612,26 +621,12 @@ export default class PricingRPMRecommendationForm extends NavigationMixin(Lightn
         }
         if (this.isAI === true) {
 
-            /*if ((this.meetCompValue === '0' || this.meetCompValue === '' || this.meetCompValue === undefined) && (this.tentativeEcapPrice === '0' || this.tentativeEcapPrice === '' || this.tentativeEcapPrice === undefined)) {
-                this.errorMsg = aiMeetCompErrorMsg + ' ' + this.meetCompPriceLabel;// + ', ' + this.tentativeEcapPriceLabel;
-                this.isSubmitSpinner = false;
-                this.disableButton = false;
-                this.aIButtonLabel = runAIButton;
-            }*/
-
             if (this.meetCompValue === '0' || this.meetCompValue === '' || this.meetCompValue === undefined) {
                 this.errorMsg = aiMeetCompErrorMsg + ' ' + this.meetCompPriceLabel;
                 this.isSubmitSpinner = false;
                 this.disableButton = false;
                 this.aIButtonLabel = runAIButton;
             }
-
-            /*else if (this.tentativeEcapPrice === '0' || this.tentativeEcapPrice === '' || this.tentativeEcapPrice === undefined) {
-                this.errorMsg = aiMeetCompErrorMsg;// + ' ' + this.tentativeEcapPriceLabel;
-                this.isSubmitSpinner = false;
-                this.disableButton = false;
-                this.aIButtonLabel = runAIButton;
-            }*/
 
             if (this.productName !== '' && this.productName !== undefined/*'Write In Product'*/) {
                 const toastMessageErrorWPAI = new ShowToastEvent({
@@ -680,13 +675,13 @@ export default class PricingRPMRecommendationForm extends NavigationMixin(Lightn
     }
 
     handleSubmit(event) {
+        console.log('Inside save');
         event.preventDefault();
-        let isError = false;
         const field = event.detail.fields;
         if (field.Pricing_Approved_Unit_Qty__c != undefined && (field.Pricing_Payable_Quantity__c > field.Pricing_Approved_Unit_Qty__c)) {
             this.disableButton = true;
             this.isSubmitSpinner = true;
-            isError = this.payableQuantityAlert(payableQuantityErrorMessage, 'error');
+            this.payableQuantityAlert(payableQuantityErrorMessage, 'error');
         }
         if (this.isDealButtonClicked === true && (this.quoteLineDataResult.Pricing_Program_Type_Nm__c == ccgQuoteLine) && (Number(field.Pricing_ECAP_Price_Amt__c) < Number(field.Pricing_Meet_Comp_Price_Amt__c))) {
             this.isSoftWarningModalVisibleApprovedECAP = true;
@@ -700,7 +695,7 @@ export default class PricingRPMRecommendationForm extends NavigationMixin(Lightn
             this.isSoftWarningModalVisibleApprovedECAPAndSIPPError = true;
             this.submitEventData = field;
         }
-        else if(isError == false){
+        else {
             this.submitRecord(field);
         }
     }
@@ -725,7 +720,6 @@ export default class PricingRPMRecommendationForm extends NavigationMixin(Lightn
             this.isSubmitSpinner = false;
             this.disableButton = false;
         });
-        return true;
     }
 
     handleCancel() {
@@ -801,60 +795,52 @@ export default class PricingRPMRecommendationForm extends NavigationMixin(Lightn
     invokePricingAI() {
         makeCallout({ quoteLineId: this.quoteLineId })
             .then(result => {
-                if (result != null && result != undefined && result.length > 0) {
-                    let errRespData = JSON.parse(result[0]);
-                    if (errRespData.message != null || errRespData.message != undefined) {
-                        const toastMessageErrorAI = new ShowToastEvent({
-                            title: TITLE_TEXTAIERROR,
-                            message: errRespData.message,
-                            variant: VAR_TEXTAIERROR,
+                let errRespData = JSON.parse(result[0]);
+                if (errRespData.message != null || errRespData.message != undefined) {
+                    const toastMessageErrorAI = new ShowToastEvent({
+                        title: TITLE_TEXTAIERROR,
+                        message: errRespData.message,
+                        variant: VAR_TEXTAIERROR,
+                        mode: 'sticky'
+                    });
+                    this.dispatchEvent(toastMessageErrorAI);
+                    this.isSubmitSpinner = false;
+                    this.disableButton = false;
+                    this.aIButtonLabel = runAIButton;
+                    if (this.isAutoAI || this.isClient) {
+                        this.getAIMessage = false;
+                        this.getQuotelineData();
+                    }
+                }
+                else {
+                    let qlRecJSONData = JSON.parse(result[0]);
+                    this.recommendedPrice = qlRecJSONData.recommendedPrice;
+                    this.priceInterval = qlRecJSONData.priceInterval;
+                    this.pricingDiscount = qlRecJSONData.discount;
+                    const saveFields = this.template.querySelectorAll('lightning-input-field');
+                    if (saveFields) {
+                        saveFields.forEach(field => {
+                            if (field.fieldName === this.recommendedPriceAPIField) {
+                                field.value = Math.round(this.recommendedPrice);
+                            }
+                            if (field.fieldName === this.priceIntervalAPIField) {
+                                field.value = this.priceInterval;
+                            }
+                            if (field.fieldName === this.pricingDiscountAPIField) {
+                                field.value = this.pricingDiscount;
+                            }
+                        });
+                    }
+                    if (qlRecJSONData.warningMessage != '' && qlRecJSONData.warningMessage != undefined) {
+                        const warningMsgAI = new ShowToastEvent({
+                            title: 'Warning',
+                            message: qlRecJSONData.warningMessage,
+                            variant: 'warning',
                             mode: 'sticky'
                         });
-                        this.dispatchEvent(toastMessageErrorAI);
-                        this.isSubmitSpinner = false;
-                        this.disableButton = false;
-                        this.aIButtonLabel = runAIButton;
-                        if (this.isAutoAI || this.isClient) {
-                            this.getAIMessage = false;
-                            this.getQuotelineData();
-                        }
+                        this.dispatchEvent(warningMsgAI);
                     }
-                    else {
-                        let qlRecJSONData = JSON.parse(result[0]);
-                        this.recommendedPrice = qlRecJSONData.recommendedPrice;
-                        this.priceInterval = qlRecJSONData.priceInterval;
-                        this.pricingDiscount = qlRecJSONData.discount;
-                        const saveFields = this.template.querySelectorAll('lightning-input-field');
-                        if (saveFields) {
-                            saveFields.forEach(field => {
-                                if (field.fieldName === this.recommendedPriceAPIField) {
-                                    field.value = Math.round(this.recommendedPrice);
-                                }
-                                if (field.fieldName === this.priceIntervalAPIField) {
-                                    field.value = this.priceInterval;
-                                }
-                                if (field.fieldName === this.pricingDiscountAPIField) {
-                                    field.value = this.pricingDiscount;
-                                }
-                            });
-                        }
-                        if (qlRecJSONData.warningMessage != '' && qlRecJSONData.warningMessage != undefined) {
-                            const warningMsgAI = new ShowToastEvent({
-                                title: 'Warning',
-                                message: qlRecJSONData.warningMessage,
-                                variant: 'warning',
-                                mode: 'sticky'
-                            });
-                            this.dispatchEvent(warningMsgAI);
-                        }
-                        this.isSubmitSpinner = false;
-                        this.disableButton = false;
-                        this.aIButtonLabel = runAIButton;
-                        if (this.isAutoAI || this.isClient) {
-                            this.getQuotelineData();
-                        }
-                    }
-                } else {
+
                     this.isSubmitSpinner = false;
                     this.disableButton = false;
                     this.aIButtonLabel = runAIButton;
@@ -882,5 +868,4 @@ export default class PricingRPMRecommendationForm extends NavigationMixin(Lightn
                 }
             });
     }
-
 }

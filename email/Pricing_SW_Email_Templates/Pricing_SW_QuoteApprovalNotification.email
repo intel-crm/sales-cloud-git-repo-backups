@@ -2,5 +2,5 @@
    <messaging:htmlEmailBody >
        <c:Pricing_SW_QuoteApprovalNotification quoteRecordId="{!relatedTo.Quote__r.Id}" quoteApprovalRecordId="{!relatedTo.Id}"/>    
    </messaging:htmlEmailBody>
-   
+   <!--<messaging:emailHeader replyTo="{!$Label.Pricing_SW_ReplyToEmailAddress}" />-->
 </messaging:emailTemplate>

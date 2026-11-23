@@ -29,6 +29,50 @@
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- Account Category --></label>
+        <name>Core_Account_Category__c</name>
+        <picklistValues>
+            <masterLabel>Distributors</masterLabel>
+            <translation><!-- Distributors --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Region Branded Disti</masterLabel>
+            <translation><!-- Region Branded Disti --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Region Direct OxM Accts (non-T30)</masterLabel>
+            <translation><!-- Region Direct OxM Accts (non-T30) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Region Named B2B End User</masterLabel>
+            <translation><!-- Region Named B2B End User --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Region Named Billings Accts</masterLabel>
+            <translation><!-- Region Named Billings Accts --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Regional Co-Sell Partners</masterLabel>
+            <translation><!-- Regional Co-Sell Partners --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Regional GSI/ISV/MSP</masterLabel>
+            <translation><!-- Regional GSI/ISV/MSP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Regional Retailer</masterLabel>
+            <translation><!-- Regional Retailer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Strategic Acct/Country Opportunity</masterLabel>
+            <translation><!-- Strategic Acct/Country Opportunity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Top 30 Global Billings</masterLabel>
+            <translation><!-- Top 30 Global Billings --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
         <label><!-- Account --></label>
         <name>Core_Account__c</name>
         <relationshipLabel><!-- Account Teams --></relationshipLabel>

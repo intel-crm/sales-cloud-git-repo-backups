@@ -14,7 +14,7 @@ public class Pricing_ConsumptionAttr_ControllerTest {
         Pricing_Test_Utility.createPriceBook();
         System.runAs(adminUserList[0]) {
             Account acc = Pricing_Test_Utility.createAccount();
-            Contact con = Pricing_Test_Utility.createPrimaryContactWithParam(acc.Id,'Consumption_Attr_Controller_test');
+            Contact con = Pricing_Test_Utility.createPrimaryContact(acc.Id);
             List<User> accExeUserList = Pricing_Test_Utility.createAEUser();
             List<User> salesRepUserList = Pricing_Test_Utility.createSalesRepUser();
             Test.startTest();
@@ -76,7 +76,7 @@ public class Pricing_ConsumptionAttr_ControllerTest {
         System.assertEquals('true', result);
 
         // Query the quote line to verify the updates
-        SBQQ__QuoteLine__c updatedQuoteLine = [SELECT Id,Pricing_Consumption_Platform__c, Pricing_Consumption_Region__c, Pricing_Consumption_Country__c, Pricing_Consumption_Sale_Geo__c,Pricing_Consumption_Segment__c
+        SBQQ__QuoteLine__c updatedQuoteLine = [SELECT Pricing_Consumption_Platform__c, Pricing_Consumption_Region__c, Pricing_Consumption_Country__c, Pricing_Consumption_Sale_Geo__c,Pricing_Consumption_Segment__c
                                                 FROM SBQQ__QuoteLine__c
                                                 WHERE Id = :quoteLineId
                                                 LIMIT 1];

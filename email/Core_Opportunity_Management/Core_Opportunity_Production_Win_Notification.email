@@ -1,6 +1,6 @@
 <table border="0" cellpadding="5" width="550" cellspacing="5" height="400" >
 <tr valign="top" height="400" >
-<td tEditID="c1r1" style=" background-color:#FFFFFF; color:#000000; bEditID:r3st1; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="0" >
+<td tEditID="c1r1" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="0" >
 <![CDATA[<p style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt; margin: 0in 0in 0.0001pt;"><span style="font-family: &quot;Intel Clear&quot;, sans-serif;">Dear Opportunity Owner,<o:p></o:p></span></p>
 
 <p style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt; margin: 0in 0in 0.0001pt;"><span style="font-family: &quot;Intel Clear&quot;, sans-serif;">&nbsp;<o:p></o:p></span></p>
@@ -17,8 +17,8 @@
 
 <p style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt; margin: 0in 0in 0.0001pt;"><span style="font-family: &quot;Intel Clear&quot;, sans-serif;">&nbsp;<o:p></o:p></span></p>
 
-<p style="margin: 0in 0in 0.0001pt;"><b style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><u><span style="font-family:
-&quot;Intel Clear&quot;,sans-serif;color:#0070C0"><a href="{!Opportunity.Link}">Click Here</a></span></u></b><span style="color: rgb(0, 112, 192); font-family: &quot;Intel Clear&quot;, sans-serif; font-size: 12pt;">&nbsp;</span><span style="color: rgb(0, 0, 0); font-family: &quot;Intel Clear&quot;, sans-serif; font-size: 12pt;">to
+<p style="margin: 0in 0in 0.0001pt;"><a href="{!Opportunity.Link}"><b style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><u><span style="font-family:
+&quot;Intel Clear&quot;,sans-serif;color:#0070C0">Click Here</span></u></b></a><span style="color: rgb(0, 112, 192); font-family: &quot;Intel Clear&quot;, sans-serif; font-size: 12pt;">&nbsp;</span><span style="color: rgb(0, 0, 0); font-family: &quot;Intel Clear&quot;, sans-serif; font-size: 12pt;">to
 update the Stage to Production Win once production begins.&nbsp; If the production start has been postponed,
 please update the First Customer Ship Date to the current status.</span></p>
 

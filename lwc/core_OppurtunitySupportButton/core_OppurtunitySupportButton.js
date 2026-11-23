@@ -5,6 +5,7 @@ import LightningConfirm from 'lightning/confirm';
 import { createRecord,updateRecord } from 'lightning/uiRecordApi';
 import { refreshApex ,refreshRecord} from '@salesforce/apex';
 import { CloseActionScreenEvent } from 'lightning/actions';
+import { NavigationMixin } from 'lightning/navigation';//testpratik
 import { getObjectInfo,getPicklistValuesByRecordType, getPicklistValues} from 'lightning/uiObjectInfoApi';
 
 import OPPORTUNITYDESCRIPTION from '@salesforce/schema/Opportunity.Description';
@@ -21,10 +22,12 @@ import TSS_SUPPORT from '@salesforce/schema/Core_Opportunity_Support__c.Core_TSS
 import COE_SUPPORT from '@salesforce/schema/Core_Opportunity_Support__c.Center_of_Excellence__c';
 import STARTDATE from '@salesforce/schema/Core_Opportunity_Support__c.Core_Start_Date__c';
 import CORE_STATUS from '@salesforce/schema/Core_Opportunity_Support__c.Core_Status__c';
+//Testing Pratik
+import { CurrentPageReference } from 'lightning/navigation';
 
 
 
-export default class Core_OppurtunitySupportButton extends LightningElement {
+export default class Core_OppurtunitySupportButton extends NavigationMixin(LightningElement) {
     
     @api recordId;
     WarningMessage ='';
@@ -43,8 +46,8 @@ export default class Core_OppurtunitySupportButton extends LightningElement {
     oppName = '';
     techOwner = '';
     recordTypeOptions;
-    recordTypeId='';
-    recortypName = '';
+    @api recordTypeId='';
+    @api recortypName = '';
     showFormRecordType = false;
     //tss_Supp=[];
     checkRecordType= false;
@@ -53,7 +56,20 @@ export default class Core_OppurtunitySupportButton extends LightningElement {
     onSave = false;
     conditionToQr = '';
     checkForCoE = false;
+    //Just for testing -pratik
+    @wire(CurrentPageReference)
+    pageRef;
+    connectedCallback() {
+        if ( this.pageRef.state.c__recId !=null) {
+            //alert( 'recId Param value is ' + this.pageRef.state.c__recId );
+        this.recordId = this.pageRef.state.c__recId;
+        this.recordTypeId= this.pageRef.state.c__type;
+        this.recortypName=this.pageRef.state.c__typeName;
+        }
 
+    }
+
+    //End
     //Areefa Start
     picklistValues = []    
     @wire(getPicklistValues, {
@@ -113,11 +129,12 @@ export default class Core_OppurtunitySupportButton extends LightningElement {
         // Handle record type selection here
     }  
     handleNextClick(){
+        //alert('Oppsid:'+this.recordId);
         this.showFormRecordType = false;
         //this.showForm=true;
         if(this.recortypName == 'Center of Excellence Request')
             this.CSARecordType=true;
-        if(this.recortypName == 'Technical Sales Specialist Request') // TSS Request
+        if(this.recortypName == 'Industry Technical Sales Specialist Request') // TSS Request
             this.checkRecordType = true;
         if(this.recortypName == 'Center of Excellence Request')
             this.COERecordType = true;
@@ -149,9 +166,10 @@ export default class Core_OppurtunitySupportButton extends LightningElement {
                     if(this.checkForCoE){
                         this.checkForCoE = false;
                         let combobox;
-                        if(this.recortypName == 'Technical Sales Specialist Request'){
+                        if(this.recortypName == 'Industry Technical Sales Specialist Request'){
                             combobox = this.template.querySelector('[data-id="TSS_Support_Type"]');
-                            combobox.setCustomValidity('There is a Support Request created for this BU, Please select another BU.'); 
+                            combobox.setCustomValidity('There is already another Submitted Support Request created for this BU, Please select another BU.'); 
+                            //combobox.setCustomValidity('There is a Support Request created for this BU, Please select another BU.'); 
                         }
                         else{
                             combobox = this.template.querySelector('[data-id="Center_of_Excellence"]');
@@ -187,7 +205,7 @@ export default class Core_OppurtunitySupportButton extends LightningElement {
             this.back_acr = value;
         } else if (fieldName === 'TSS Support Type'){
             this.tss_Supp = value;
-            this.conditionToQr = ' and Core_TSS_Support_Type__c = '+ '\''+this.tss_Supp+'\'';
+            this.conditionToQr = ' and Core_Status__c=\'Submitted\' and Core_TSS_Support_Type__c = '+ '\''+this.tss_Supp+'\'';
             const combobox = this.template.querySelector('[data-id="TSS_Support_Type"]');
             combobox.setCustomValidity('');
             this.checkForCoE = true;
@@ -271,7 +289,7 @@ export default class Core_OppurtunitySupportButton extends LightningElement {
                          
                 })
                 .catch((error) => {
-                    console.log('error'+JSON.stringify(JSON.stringify(error)));                    
+                    console.log('error'+JSON.stringify(JSON.stringify(error))); 
                     this.displaymessage('Error creating record','There could be a possible error with Approval Process.please reach out to IT for more details','error');        
                 
                 });
@@ -292,6 +310,17 @@ export default class Core_OppurtunitySupportButton extends LightningElement {
 
     handleCancelNew(){
         this.dispatchEvent(new CloseActionScreenEvent());
+        //testigng Pratik
+        eval("$A.get('e.force:refreshView').fire();");
+        this[NavigationMixin.Navigate]({
+            type: 'standard__recordPage',
+            attributes: {
+                recordId: this.recordId,
+                objectApiName: 'Opportunity',
+                actionName: 'view'
+            },
+        });
+        //Testing Pratik
      
     } 
 

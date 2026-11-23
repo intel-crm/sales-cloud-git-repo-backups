@@ -27,7 +27,7 @@ public class Core_SAPDirAccntIntgrate_SF_Test {
         acc.Core_Account_Type__c = 'Distributor';
         acc.Phone='121212';
         acc.Industry = '';
-        acc.RecordTypeId = recTypeIntel[0].Id;
+        //acc.RecordTypeId = recTypeIntel[0].Id;
         insert acc;    
         Account acc1 = new Account();
         acc1.name='Test1asd98asdkjasdo9asdalskjkdasd91';

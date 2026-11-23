@@ -2,29 +2,12 @@
 <CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseValues>
         <plural>false</plural>
-        <value>Email preferences</value>
+        <value>IQR Email Preference</value>
     </caseValues>
     <caseValues>
         <plural>true</plural>
-        <value>Email Preferences</value>
+        <value>IQR Email Preferences</value>
     </caseValues>
-    <fields>
-        <label><!-- Active --></label>
-        <name>Core_MDF_Active_Ind__c</name>
-    </fields>
-    <fields>
-        <label><!-- External Id --></label>
-        <name>Core_MDF_External_Id__c</name>
-    </fields>
-    <fields>
-        <label><!-- Module --></label>
-        <name>Core_MDF_Module_Nm__c</name>
-    </fields>
-    <fields>
-        <label><!-- Subscription Notification Type --></label>
-        <name>Core_MDF_Subscription_Notification_Type__c</name>
-        <relationshipLabel><!-- Email Preferences --></relationshipLabel>
-    </fields>
     <fields>
         <label><!-- Notification Name --></label>
         <name>Pricing_Notification_Name_Nm__c</name>
@@ -40,7 +23,7 @@
     <fields>
         <label><!-- User --></label>
         <name>Pricing_User__c</name>
-        <relationshipLabel><!-- Email Preferences --></relationshipLabel>
+        <relationshipLabel><!-- IQR Email Preferences --></relationshipLabel>
     </fields>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

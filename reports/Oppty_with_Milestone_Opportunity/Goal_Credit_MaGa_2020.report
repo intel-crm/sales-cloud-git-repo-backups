@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <columns>
+        <field>Core_Goal__c$Id</field>
+    </columns>
+    <columns>
         <field>Core_Goal__c$Name</field>
     </columns>
     <columns>
         <field>Core_Goal__c.Commissionable_Transactions__r$Core_Employee_Name__c</field>
+    </columns>
+    <columns>
+        <field>Core_Goal__c$Core_Goal_Name__c</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
@@ -16,17 +22,13 @@
     <columns>
         <field>Core_Goal__c.Commissionable_Transactions__r$Core_Claim_Date__c</field>
     </columns>
+    <columns>
+        <field>Core_Goal__c.Commissionable_Transactions__r$Core_Last_Approved_Date__c</field>
+    </columns>
+    <columns>
+        <field>Core_Goal__c.Commissionable_Transactions__r$Core_Transaction_Timestamp__c</field>
+    </columns>
     <description>Report to show the Milestone Commissionable Transactions for a given Goal.</description>
-    <filter>
-        <criteriaItems>
-            <column>Core_Goal__c.Commissionable_Transactions__r$Core_Status__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Approved</value>
-        </criteriaItems>
-        <language>en_US</language>
-    </filter>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
@@ -47,6 +49,8 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>Core_Goal__c.Commissionable_Transactions__r$Core_Transaction_Timestamp__c</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

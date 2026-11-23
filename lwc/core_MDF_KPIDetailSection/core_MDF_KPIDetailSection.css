@@ -29,21 +29,3 @@ div.extraSpace {
   word-wrap: break-word;
   margin-left: 0.9rem;
 }
-
-.wrap {
-  margin-left: -5px;
-  margin-right: 10px;
-  flex-wrap: wrap;
-  margin-bottom: 10px;
-}
-
-.subwrap {
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-  justify-content: space-between;
-}
-
-.child-wrap {
-  width:46%;
-}

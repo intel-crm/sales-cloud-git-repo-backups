@@ -188,6 +188,6 @@
     </nameField>
     <pluralLabel>Seismic_PIMConfigs</pluralLabel>
     <searchLayouts/>
-    <sharingModel>Private</sharingModel>
+    <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>

@@ -52,17 +52,5 @@
         <label><!-- Show Settings on SBC Page --></label>
         <name>rtsync__Show_Settings_on_SBC_Page__c</name>
     </fields>
-    <fields>
-        <label><!-- Show search fields in 3 column layout --></label>
-        <name>rtsync__Show_search_fields_in_3_column_layout__c</name>
-    </fields>
-    <fields>
-        <label><!-- Use SOSL --></label>
-        <name>rtsync__Use_SOSL__c</name>
-    </fields>
-    <fields>
-        <label><!-- User Search Option --></label>
-        <name>rtsync__User_Search_Option__c</name>
-    </fields>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

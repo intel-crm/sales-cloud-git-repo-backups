@@ -47,6 +47,8 @@ const unregisterAll = () => {
  * @param {Boolean} showChart
  * @param {Boolean} showComp
  * @param {Boolean} closeModal
+ * @param {string} id
+ * @param {Boolean} status
  */
 const fire = (eventName, payload, showChart) => {
   if (callbacks[eventName]) {
@@ -72,6 +74,30 @@ const fireLinkEvent = (eventName, showComp, closeModal) => {
   }
 };
 
+const closeModalEvent = (eventName, id, status) => {
+  if (callbacks[eventName]) {
+    callbacks[eventName].forEach(callback => {
+      try {
+        callback(id,status);
+      } catch (error) {
+        // fail silently
+      }
+    });
+  }
+};
+
+const refresh = (eventName, status) => {
+  if (callbacks[eventName]) {
+    callbacks[eventName].forEach(callback => {
+      try {
+        callback(status);
+      } catch (error) {
+        // fail silently
+      }
+    });
+  }
+};
+
 /*
     Todo: Export all the functions so that these are accisible from the other JS Classes
 */
@@ -80,5 +106,7 @@ export default {
   unregister,
   fire,
   fireLinkEvent,
+  closeModalEvent,
+  refresh,
   unregisterAll
 };

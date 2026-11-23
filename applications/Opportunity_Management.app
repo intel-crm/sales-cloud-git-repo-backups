@@ -7,7 +7,6 @@
     <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
     <isOmniPinnedViewEnabled>false</isOmniPinnedViewEnabled>
     <label>Opportunity Management</label>
-    <logo>SharedDocuments/Intel_Logo_with_asterisk.png</logo>
     <tabs>Core_Opportunity_Review</tabs>
     <tabs>Core_Opportunity_Stages</tabs>
     <tabs>Core_Opportunity_Products</tabs>
@@ -17,6 +16,48 @@
     <tabs>Core_Opportunity_Search</tabs>
     <tabs>Core_BU_Mapping_Table__c</tabs>
     <tabs>Deal_Win_Goals_Grid</tabs>
-    <tabs>Core_Opportunity_Analysis</tabs>
-    <tabs>Manager_Dashboard</tabs>
+    <tabs>Core_CIM_Staging__c</tabs>
+    <tabs>Core_Oppty_KPI_New__c</tabs>
+    <tabs>Core_Opp_FC_Prod_Schedule__c</tabs>
+    <tabs>Sales_License_Generator__c</tabs>
+    <tabs>Sales_License_Group__c</tabs>
+    <tabs>Core_KPI_Staging__c</tabs>
+    <tabs>price_forward_cost__c</tabs>
+    <tabs>Sales_License__c</tabs>
+    <tabs>Sales_License_Order_Product__c</tabs>
+    <tabs>Address__c</tabs>
+    <tabs>Core_Opp_KPI_History__c</tabs>
+    <tabs>Core_Account_SoldTo_ShipTo_Rel__c</tabs>
+    <tabs>Sales_License_Generator_Switch__c</tabs>
+    <tabs>Sales_Feedback__c</tabs>
+    <tabs>DP_EAT_Project_Info__c</tabs>
+    <tabs>DP_EAT_Project_Test_Classes__c</tabs>
+    <tabs>DP_EAT_Project_Test_Run_Results__c</tabs>
+    <tabs>Core_Solution_Storage__c</tabs>
+    <tabs>Opportunity_Solution_Area__c</tabs>
+    <tabs>Core_BU_Owner_Table__c</tabs>
+    <tabs>Pricing_Price_Rules__c</tabs>
+    <tabs>Core_Delegate_Approver__c</tabs>
+    <tabs>SJ_Extend__c</tabs>
+    <tabs>Approver__c</tabs>
+    <tabs>Core_Products_Staging__c</tabs>
+    <tabs>Product_MM_Attribute_Mapping__c</tabs>
+    <tabs>PSG_Free_License_Request__c</tabs>
+    <tabs>Xvoyant__Report__c</tabs>
+    <tabs>Opportunity_Team_Member</tabs>
+    <tabs>Opportunity_with_Opp_Team_Member_Grid</tabs>
+    <tabs>Design_Registration_Stage__c</tabs>
+    <tabs>Design_Registration_Product_M2M_Stage__c</tabs>
+    <tabs>PCC_DDR_L5_Product_Mapping__c</tabs>
+    <tabs>SWS_Cloud_Credit_Request__c</tabs>
+    <tabs>PCC_Rebate_Claim__c</tabs>
+    <tabs>PCC_Rebate_Claim_Stage__c</tabs>
+    <tabs>PCC_Deal_Change_Request__c</tabs>
+    <tabs>PCC_Deal_Change_Request_Line_Item__c</tabs>
+    <tabs>CRM_Linked_Opportunities__c</tabs>
+    <tabs>PCC_EndCustomerAcc_Mapping__c</tabs>
+    <tabs>Account_Brief_Summary_Row_c__c</tabs>
+    <tabs>Deployment_Components__c</tabs>
+    <tabs>Deployment__c</tabs>
+    <tabs>Core_Banner_Text__c</tabs>
 </CustomApplication>

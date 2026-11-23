@@ -7,9 +7,6 @@
         <label>Check if Product is in Pending Status</label>
         <locationX>182</locationX>
         <locationY>134</locationY>
-        <defaultConnector>
-            <targetReference>Display_Message2</targetReference>
-        </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>isPending</name>
@@ -61,29 +58,6 @@
         <fields>
             <name>PendingProductMessage</name>
             <fieldText>&lt;p&gt;&lt;strong style=&quot;color: rgb(247, 9, 9);&quot;&gt;{!$Label.Cannot_edit_pending_Product}&lt;/strong&gt;&lt;/p&gt;</fieldText>
-            <fieldType>DisplayText</fieldType>
-            <styleProperties>
-                <verticalAlignment>
-                    <stringValue>top</stringValue>
-                </verticalAlignment>
-                <width>
-                    <stringValue>12</stringValue>
-                </width>
-            </styleProperties>
-        </fields>
-        <showFooter>false</showFooter>
-        <showHeader>false</showHeader>
-    </screens>
-    <screens>
-        <name>Display_Message2</name>
-        <label>Display Message2</label>
-        <locationX>314</locationX>
-        <locationY>242</locationY>
-        <allowBack>true</allowBack>
-        <allowFinish>true</allowFinish>
-        <allowPause>true</allowPause>
-        <fields>
-            <name>Copy_1_of_PendingProductMessage</name>
             <fieldType>DisplayText</fieldType>
             <styleProperties>
                 <verticalAlignment>

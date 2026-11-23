@@ -35,9 +35,6 @@
         <field>SBQQ__Quote__c$Pricing_IsUnifiedCustomer__c</field>
     </columns>
     <columns>
-        <field>SBQQ__Quote__c$Pricing_Market_Segment_values_Nm__c</field>
-    </columns>
-    <columns>
         <field>SBQQ__Quote__c$Pricing_Project_Name_Nm__c</field>
     </columns>
     <columns>
@@ -74,6 +71,7 @@
         <field>SBQQ__Quote__c$Pricing_Intel_Account_Exec_Email_Txt__c</field>
     </columns>
     <columns>
+        <aggregateTypes>Sum</aggregateTypes>
         <field>SBQQ__Quote__c$Pricing_On_Hold_Cb__c</field>
     </columns>
     <columns>
@@ -154,10 +152,10 @@
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Rejection_Comments_nm__c</field>
     </columns>
     <columns>
-        <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Lost_Reason_Nm__c</field>
+        <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Won_Lost_Comments_Txt__c</field>
     </columns>
     <columns>
-        <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Won_Lost_Comments_Txt__c</field>
+        <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Lost_Reason_Nm__c</field>
     </columns>
     <columns>
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_End_Date_dt__c</field>
@@ -185,9 +183,6 @@
     </columns>
     <columns>
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Req_Discounted_Unit_Price__c</field>
-    </columns>
-    <columns>
-        <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Form_Factor_Nm__c</field>
     </columns>
     <columns>
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Competitor_OEM_Nm__c</field>

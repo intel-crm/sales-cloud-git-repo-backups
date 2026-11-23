@@ -194,31 +194,6 @@
             <title>Escal level per acc geo of closed 3mth</title>
             <useReportChart>false</useReportChart>
         </components>
-        <components>
-            <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
-            <chartAxisRange>Auto</chartAxisRange>
-            <componentType>Pie</componentType>
-            <dashboardFilterColumns>
-                <column>Case.Core_IPS_Assigned_Queue__c</column>
-            </dashboardFilterColumns>
-            <dashboardFilterColumns>
-                <column>PRIORITY</column>
-            </dashboardFilterColumns>
-            <displayUnits>Auto</displayUnits>
-            <drillEnabled>false</drillEnabled>
-            <drillToDetailEnabled>false</drillToDetailEnabled>
-            <enableHover>false</enableHover>
-            <expandOthers>false</expandOthers>
-            <groupingSortProperties/>
-            <legendPosition>Bottom</legendPosition>
-            <report>IPS_CHD_Reports_Folder/CHD_PECS_Closed_Case_type_last_12_months</report>
-            <showPercentage>true</showPercentage>
-            <showValues>true</showValues>
-            <sortBy>RowLabelAscending</sortBy>
-            <sortLegendValues>false</sortLegendValues>
-            <title>Closed Case type last 12 months</title>
-            <useReportChart>false</useReportChart>
-        </components>
     </leftSection>
     <middleSection>
         <columnSize>Wide</columnSize>

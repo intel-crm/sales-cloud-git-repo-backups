@@ -8,427 +8,9 @@
 ********************************************************************************************************************************************************************************************************/
 
 public with sharing class PMP_SearchUtilityController extends PMP_SearchWrapperStore { 
-     
-  /*  @AuraEnabled(cacheable=true)
-    public static String newSearch(String requestJSON){
-        SearchRequest request = (SearchRequest)JSON.deserialize(requestJSON, SearchRequest.class);
-        
-        SearchResponse response = new SearchResponse();
-        response.results = new List<PMP_SearchPartnerController.Partner>();
-        response.resultCounts = new Map<String, Integer>();
-        response.totalResults = 0;
-        response.totalPages = 0;
-        
-        List<String> offerings = new List<String>();
-        List<String> partners = new List<String>();
-        
-        if(request.category!=null){ 
-            if(request.searchType == 'pmp-category'){               
-            	offerings = filterOfferingsBySection(request.category,offerings);
-                
-                if(!request.filters.isEmpty()){
-                    offerings = filterOfferingsBySelectedFilters(offerings, request.filters, request.searchType);
-                    //system.debug('offerings after con filters : ' + offerings.size());
-                }
-                
-                if(request.keyword != null){
-                    offerings = PMP_SearchProductController.getOfferingIds(request.keyword, offerings);
-                }
-                response.results = PMP_SearchProductController.getProducts(offerings,request.page, 12,request.sortType, 'en_US');
-            }else{
-                if(request.searchType == 'pmp-partner-program'){
-
-                   partners = filterPartnersByRole(request.category, null); 
-                }else if(request.searchType == 'pmp-partner-category'){
-                   partners = filterPartnersByIndustry(request.category, null); 
-                }else if(request.searchType == 'pmp-partner-specialty'){
-                   partners = filterPartnersBySpecialty(request.category, null); 
-                }else if(request.searchType == 'pmp-partner-segment'){
-                   partners = filterPartnersBySegment(request.category, null); 
-                }   
-                if(!request.filters.isEmpty()){
-                    partners = filterOfferingsBySelectedFilters(partners, request.filters, request.searchType);
-                    system.debug('...PARTNERS..'+partners);
-                }
-                
-                if(request.keyword != null){
-                    partners = PMP_SearchPartnerController.getPartnerList(request.keyword, partners);
-                }
-               // Boolean isDisti= [SELECT Id, PMP_Is_Distributor_Ind__c,PMP_Disti_Country_Coverage_Txt__c,PMP_Disti_Sys_Solutions_Nm__c,PMP_Disti_Components_Nm__c FROM PMP_Company__c WHERE Id IN:partnerIds]
-				response.results = PMP_SearchPartnerController.getPartners(partners, request.page, 12, request.sortType, 'en_US');   
-                System.debug('response.results'+response.results);
-            }
-            
-        }
-        
-        
-        
-        if(request.searchType == 'pmp-category'){
-            //response.resultCounts = PMP_SearchResponseResultCountStore.getResultCount(request.searchType, request.filters, offerings, request.isDisti);
-        }else{
-            //response.resultCounts = PMP_SearchResponseResultCountStore.getResultCount(request.searchType, request.filters, partners, request.isDisti);
-        }
-        
-        
-
-        
-        response.totalResults = response.results.size();
-        response.totalPages = response.totalResults/12;
-        
-        if(response.totalResults < 12){
-            response.resultsPerPage = response.totalResults;
-        }else{
-            response.resultsPerPage = 12;
-        }
-        system.debug('-----ResultCount----- ' + JSON.serialize(response.resultCounts));
-        system.debug('-----Response----- ' + response);
-        //Card limit per page set to 12 - Prabuddh
-        response.totalPages = (Integer)Math.ceil(Decimal.valueOf(response.totalResults).divide(/*Limit per page*///12, /* dec digits to round off*/ 1));
-
- //       return JSON.serialize(response);
-  //  }
-    
- /*   public static List<String> filterOfferingsBySelectedFilters(List<String> ids, Map<String, List<String>> selectedFilters, String searchType){
-        List<String> offIds = ids;
-        Set<String> filteredId = new Set<String>();
-        List<String> result = new List<String>();
-        filteredId.addAll(offIds);
-        if(searchType == 'pmp-category'){
-            offIds = PMP_SearchContextualFilterController.contfilterResults(selectedFilters, ids);
-            filteredId.retainAll(offIds);
-        }        
-        if(selectedFilters.containsKey('Offering Categories') && !selectedFilters.get('Offering Categories').isEmpty()){
-            offIds = PMP_SearchProductController.filterOfferings(selectedFilters.get('Offering Categories'), ids);
-            filteredId.retainAll(offIds);
-            system.debug('FilterId 1 : ' + filteredId.size());
-        }
-        if(selectedFilters.containsKey('Offering Industries') && !selectedFilters.get('Offering Industries').isEmpty()){
-            offIds = PMP_SearchProductController.filterOfferings(selectedFilters.get('Offering Industries'), ids);
-            filteredId.retainAll(offIds);
-            system.debug('FilterId 2 : ' + filteredId.size());
-        }   
-        if(selectedFilters.containsKey('Offering Applications') && !selectedFilters.get('Offering Applications').isEmpty()){
-            offIds = PMP_SearchProductController.filterOfferings(selectedFilters.get('Offering Applications'), ids);
-            filteredId.retainAll(offIds);
-            system.debug('FilterId 3 : ' + filteredId.size());
-        }        
-        if(selectedFilters.containsKey('Partner Specialties') && !selectedFilters.get('Partner Specialties').isEmpty()){
-            //Logic to filter offerings based on selected specialty
-            offIds = PMP_SearchContextualFilterController.getOfferingSpecialtyResults(selectedFilters.get('Partner Specialties'));                  
-            filteredId.retainAll(offIds);            
-            system.debug('FilterId 4 : ' + offIds.size());
-        }
-        if(selectedFilters.containsKey('Offering Segments') && !selectedFilters.get('Offering Segments').isEmpty()){
-            offIds = getOfferingSegmentResults(selectedFilters.get('Offering Segments'), offIds, searchType);
-            filteredId.retainAll(offIds);
-            system.debug('FilterId 5 : ' + filteredId.size());
-        }
-        if(selectedFilters.containsKey('Partner Directory') && !selectedFilters.get('Partner Directory').isEmpty()){
-            offIds = getPartnerRoleResults(selectedFilters.get('Partner Directory'), offIds, searchType);
-            filteredId.retainAll(offIds);
-            system.debug('FilterId 6 : ' + filteredId.size());
-        }
-        if(selectedFilters.containsKey('Partner Tier') && !selectedFilters.get('Partner Tier').isEmpty()){
-            offIds = getPartnerTierResults(selectedFilters.get('Partner Tier'), offIds, searchType);
-        }
-        if(selectedFilters.containsKey('Intel Partner Events') && !selectedFilters.get('Intel Partner Events').isEmpty()){
-            
-            offIds =  PMP_SearchEventDetailController.getEventOfferings(selectedFilters.get('Intel Partner Events'),offIds );                 
-            filteredId.retainAll(offIds);
-            system.debug('FilterId 7 : ' + filteredId.size());
-        }
-        if(selectedFilters.containsKey('Partner A-Z') && !selectedFilters.get('Partner A-Z').isEmpty()){
-           List<PMP_Partner_Offering__c> offList = [select id from PMP_Partner_Offering__c where id in :ids and PMP_Company_Id__c in :selectedFilters.get('Partner A-Z')];
-            List<String> offIdList = new List<String>();
-            for (PMP_Partner_Offering__c off: offList){
-                offIdList.add(off.Id);
-            }
-            offIds= offIdList;
-            filteredId.retainAll(offIds);
-            system.debug('FilterId 8 : ' + filteredId.size());
-        }
-          
-        result.addAll(filteredId);
-        system.debug('FilterId 9 : ' + result.size());
-        
-        return result;
-    }
-    
-    public static List<String> getPartnerTierResults(List<String> optionList, List<String> ids, String searchType){
-        Map<String, String> idTierMap = new Map<String, String>();
-        List<String> finalIds= new List<Id>();
-        Set<String> result = new Set<String>();
-        if(searchType == 'pmp-category'){
-            List<PMP_Partner_Offering__c> offeringList = [SELECT id,PMP_Company_Id__r.PMP_Account_Program_Membership__c
-                                                          from PMP_Partner_offering__c where Id IN: ids];
-            
-            
-            for( PMP_Partner_Offering__c offering : offeringList )
-            {
-                idTierMap.put(offering.Id, offering.PMP_Company_Id__r.PMP_Account_Program_Membership__c);
-            }
-        }else{
-            List<PMP_Company__c> partnerList = [SELECT id,PMP_Account_Program_Membership__c
-                                                          from PMP_Company__c where Id IN: ids];
-            
-            
-            for( PMP_Company__c offering : partnerList )
-            {
-                idTierMap.put(offering.Id, offering.PMP_Account_Program_Membership__c);
-            }
-        }
-        
-        for(String offId : idTierMap.keySet()){
-            for(String opt : optionList){
-                if(idTierMap.get(offId).contains(opt)){
-                    result.add(offId);                    
-                }
-            }
-            
-        }    
-        finalIds.addAll(result);
-        return finalIds;
-    }
-    
-    public static List<String> getOfferingSegmentResults(List<String> optionList, List<String> ids, String searchType){
-        List<String> finalIds=new List<String>();
-        
-        if(searchType == 'pmp-category'){
-            List<PMP_Partner_Offering__c> offList = new List<PMP_Partner_Offering__c>();
-            String query =  'SELECT id FROM PMP_Partner_Offering__c WHERE Id IN:ids AND PMP_Business_Segment_Nm__c  INCLUDES (';
-            
-            for(String option :optionList){
-                //Checking the indexof substring
-                if(optionList.indexOf(option) == optionList.size()-1){
-                    
-                    query += '\'' + String.escapeSingleQuotes(option) + '\'';
-                }else{
-                    query += '\'' + String.escapeSingleQuotes(option) + '\''+ ',';
-                }
-                
-            }
-            query+=')';
-            
-            offList = Database.query(query);
-            for(PMP_Partner_offering__c off : offList){
-                finalIds.add(off.Id);
-            }
-        }else{
-            List<PMP_Company__c> partnerList = new List<PMP_Company__c>();
-            String query = 'SELECT id FROM PMP_Company__c WHERE Id IN:ids AND PMP_Partner_Segment_Nm__c INCLUDES (';
-             
-            for(String option :optionList){
-                //Checking the indexof substring
-                if(optionList.indexOf(option) == optionList.size()-1){
-                    
-                    query += '\'' + String.escapeSingleQuotes(option) + '\'';
-                }else{
-                    query += '\'' + String.escapeSingleQuotes(option) + '\''+ ',';
-                }
-                
-            }
-            query+=')';
-            partnerList = Database.query(query);
-            for(PMP_Company__c partner : partnerList){
-                finalIds.add(partner.Id);
-            }
-        }
-        
-        
-        return finalIds;
-    }
-    
-    public static List<String> getPartnerRoleResults(List<String> optionList, List<String> offerings, String searchType){
-        List<Id> offeringIds= new List<Id>();
-        List<Id> result = null;
-        List<PMP_Partner_Offering__c> offeringList = new List<PMP_Partner_Offering__c>();
-        List<PMP_Company__c> partnerList = new List<PMP_Company__c>();
-        
-        if (!optionList.isEmpty()){
-            if(searchType == 'pmp-category'){
-                String query =  'SELECT id FROM PMP_Partner_Offering__c WHERE Id IN:offerings PMP_Company_Id__r.PMP_Partner_Program_nm__c  INCLUDES (';
-                
-                for(String option :optionList){
-                    //Checking the indexof substring
-                    if(optionList.indexOf(option) == optionList.size()-1){
-                        
-                        query += '\'' + String.escapeSingleQuotes(option) + '\'';
-                    }else{
-                        query += '\'' + String.escapeSingleQuotes(option) + '\''+ ',';
-                    }
-                }
-                
-                query+=')';
-                
-                offeringList = Database.query(query);
-                
-                for( PMP_Partner_Offering__c offering : offeringList )
-                {
-                    offeringIds.add(offering.Id);
-                }
-                result = offeringIds;
-            }else{
-                String query = 'SELECT id FROM PMP_Company__c WHERE Id IN:ids AND PMP_Partner_Program_nm__c INCLUDES (';
-                for(String option :optionList){
-                    //Checking the indexof substring
-                    if(optionList.indexOf(option) == optionList.size()-1){
-                        
-                        query += '\'' + String.escapeSingleQuotes(option) + '\'';
-                    }else{
-                        query += '\'' + String.escapeSingleQuotes(option) + '\''+ ',';
-                    }
-                }
-                query+=')';
-                partnerList = Database.query(query);
-                 for( PMP_Company__c offering : partnerList )
-                {
-                    offeringIds.add(offering.Id);
-                }
-                result = offeringIds;
-            }
-            
-        }
-        return result;
-    }
-    
-    public static List<String> filterOfferingsBySection(String categoryId, List<String> offerings){
-        List<PMP_Partner_Offering_Category__c> offList = new List<PMP_Partner_Offering_Category__c>();
-       	
-        offList = [select PMP_Offering_Id__c from PMP_Partner_Offering_Category__c where 
-                  PMP_Category_Id__c =:categoryId and PMP_Category_Id__r.PMP_Ancestor_Category_Cd__c!=null 
-                  and PMP_Category_Id__r.PMP_Partner_Product_Category_Cd__c!=null
-                  and PMP_Offering_Id__r.PMP_Partner_Offering_Lifecycle_Status_Nm__c = :PMP_StaticConstants_Partner.Published
-                  and PMP_Offering_Id__r.PMP_Partner_Offering_Start_Dt__c <= TODAY and PMP_Offering_Id__r.PMP_Partner_Offering_End_Dt__c >= TODAY
-                  and PMP_Offering_Id__r.PMP_Company_Id__r.PMP_Benefit_Update_Ind__c = False];
-       
-        Set<Id> offIds = new Set<Id>();
-        for(PMP_Partner_Offering_Category__c off : offList){
-            offIds.add(off.PMP_Offering_Id__c);
-        } 
-        List<Id> offIdsList=new List<Id>();
-        offIdsList.addAll(offIds);    
-        return offIdsList;
-    }
-    
-    public static List<String> filterPartnersByRole(String roleId, List<String> partners){
-        List<PMP_Company__c> partnerList = new List<PMP_Company__c>();
-        List<String> roleList = new List<String>();
-        List<String> result = new List<String>();
-        List<PMP_Partner_Program__c> seoRoleList = [SELECT id, PMP_Is_Active_Ind__c, PMP_Partner_Program_Value_Txt__c
-                                                  from PMP_Partner_Program__c
-                                                  where (id =:roleId OR PMP_Partner_Role_Parent_Id__c =:roleId) AND PMP_Is_Active_Ind__c=TRUE];
-        
-        for(PMP_Partner_Program__c role : seoRoleList){
-            roleList.add(role.PMP_Partner_Program_Value_Txt__c);
-        }
-        
-        if(!roleList.isEmpty()){
-            String query =  'SELECT id FROM PMP_Company__c WHERE PMP_Company_Lifecycle_Status_Nm__c =\'Published\' AND PMP_Benefit_Update_Ind__c=False AND PMP_Partner_Program_nm__c  INCLUDES (';
-            
-            for(String option :roleList){
-                //Checking the indexof substring
-                if(roleList.indexOf(option) == roleList.size()-1){
-              
-                    query += '\'' + String.escapeSingleQuotes(option) + '\'';
-                }else{
-                    query += '\'' + String.escapeSingleQuotes(option) + '\''+ ',';
-                }
-     
-            }
-            query+=')';
-            
-            partnerList = Database.query(query);
-            
-            for(PMP_Company__c com : partnerList){
-                result.add(com.Id);
-            }
-        }
-        
-        
-       
-        return result;
-    }
-    
-    public static List<String> filterPartnersBySpecialty(String specialtyId, List<String> partners){
-        List<PMP_Company__c> partnerList = new List<PMP_Company__c>();
-        List<String> specialtyList = new List<String>();
-        List<String> result = new List<String>();
-        
-        List<PMP_Partner_Specialty__c> seoSpecialtyList = [SELECT id, Name, PMP_Is_Active_Ind__c from PMP_Partner_Specialty__c where id =:specialtyId AND PMP_Is_Active_Ind__c = TRUE];
-        
-        for(PMP_Partner_Specialty__c spec : seoSpecialtyList){
-            specialtyList.add(spec.Name);
-        }
-        
-        if(!specialtyList.isEmpty()){
-            String query =  'SELECT id FROM PMP_Company__c WHERE PMP_Company_Lifecycle_Status_Nm__c =\'Published\' AND PMP_Benefit_Update_Ind__c=False AND PMP_Account_Specialty__c  INCLUDES (';
-            
-            for(String option :specialtyList){
-                //Checking the indexof substring
-                if(specialtyList.indexOf(option) == specialtyList.size()-1){
-              
-                    query += '\'' + String.escapeSingleQuotes(option) + '\'';
-                }else{
-                    query += '\'' + String.escapeSingleQuotes(option) + '\''+ ',';
-                }
-     
-            }
-            query+=')';
-            
-            partnerList = Database.query(query);
-            
-            for(PMP_Company__c com : partnerList){
-                result.add(com.Id);
-            }
-        }
-        
-        return result;
-    }
-    
-    public static List<String> filterPartnersByIndustry(String indShadowId, List<String> partners){
-        
-       String industryId = getMasterIdByShadowId(indShadowId);
-        List<PMP_Company__c> partnerList = new List<PMP_Company__c>();
-        List<String> result = new List<String>();
-        
-        List<PMP_Partner_Category__c> partnerCatList = [SELECT PMP_Partner_Id__c FROM PMP_Partner_Category__c WHERE PMP_Category_Id__c =:industryId 
-                                                        AND PMP_Category_Id__r.PMP_Active_Ind__c = true
-                                                        AND PMP_Partner_Id__r.PMP_Company_Lifecycle_Status_Nm__c =: PMP_StaticConstants_Partner.Published AND PMP_Partner_Id__r.PMP_Benefit_Update_Ind__c=False
-                                                        ];
-        
-        for(PMP_Partner_Category__c partCat: partnerCatList){
-                result.add(partCat.PMP_Partner_Id__c);
-            }
-        
-        return result;
-    }
-    
-    public static List<String> filterPartnersBySegment(String segmentId, List<String> partners){
-        List<PMP_Company__c> partnerList = new List<PMP_Company__c>();        
-        List<String> result = new List<String>();
-        
-        List<PMP_Partner_Segment__c> segmentList = [SELECT id,PMP_Partner_Segment_Value_Txt__c from PMP_Partner_Segment__c where id=: segmentId];
-        
-        partnerList = [Select id from PMP_Company__c where PMP_Company_Lifecycle_Status_Nm__c =: PMP_StaticConstants_Partner.Published AND PMP_Benefit_Update_Ind__c=False AND  PMP_Partner_Segment_Nm__c INCLUDES (:segmentList[0].PMP_Partner_Segment_Value_Txt__c)];
-        
-		for(PMP_Company__c com : partnerList){
-           result.add(com.Id);
-        }        
-        
-        return result;
-    }
-    
-   public static String getMasterIdByShadowId(String shadowId){
-        PMP_Category_Partner__c shad = new PMP_Category_Partner__c();
-        if(String.isNotEmpty(shadowId)){
-           shad = [select id, PMP_Category_Id__c from PMP_Category_Partner__c where id =:shadowId limit 1];
-        }
-       
-        return shad.PMP_Category_Id__c;
-    }*/
     
     //Method to get category tree and count based on search text//
- /*   @AuraEnabled(cacheable=true)
+    @AuraEnabled(cacheable=true)
     public static String categorySearch(String requestJSON) {
         String sortField='';
         List<String> offerings = new List<String>();
@@ -446,9 +28,9 @@ public with sharing class PMP_SearchUtilityController extends PMP_SearchWrapperS
         response.productCategories = new List<Category>();// This list will contain All Offerings Tree
         response.filters = new List<Filter>();
         
-        offerings = PMP_SearchProductController.getOfferingIds(request.keyword, offerings); //Give you the Offering based on keyowrd, If keyword is null it will give you all offerings 
+        offerings = PMP_SearchProductController.getOfferingIds(request.keyword); //Give you the Offering based on keyowrd, If keyword is null it will give you all offerings 
                
-        //partners = PMP_SearchPartnerController.getPartnerList(request.keyword);//Give you the Partner based on keyowrd, If keyword is null it will give you all partners
+        partners = PMP_SearchPartnerController.getPartnerList(request.keyword);//Give you the Partner based on keyowrd, If keyword is null it will give you all partners
         
       
           
@@ -638,7 +220,7 @@ public with sharing class PMP_SearchUtilityController extends PMP_SearchWrapperS
         
         /**************Partner Tree starts*******************/ 
          
- /*       List<PMP_SearchPartnerProgram_Config__mdt> ppList = new List<PMP_SearchPartnerProgram_Config__mdt>();
+        List<PMP_SearchPartnerProgram_Config__mdt> ppList = new List<PMP_SearchPartnerProgram_Config__mdt>();
         if(Schema.sObjectType.PMP_SearchPartnerProgram_Config__mdt.isAccessible()){
             ppList = [SELECT Label,PMP_Partner_Program_Name__c,Active__c,  PMP_Partner_Program_value__c,
                       PMP_Partner_Program_Name_Chinese__c, PMP_Partner_Program_Name_Japanese__c,
@@ -713,12 +295,12 @@ public with sharing class PMP_SearchUtilityController extends PMP_SearchWrapperS
         
          
        
- //       return JSON.serialize(response);
- //   }
+        return JSON.serialize(response);
+    }
     
     /***********************************************************************************************************/
     
- /*   @AuraEnabled(cacheable=true)
+    @AuraEnabled(cacheable=true)
     public static String search(String requestJSON) {
         
         SearchRequest request = (SearchRequest)JSON.deserialize(requestJSON, SearchRequest.class);
@@ -743,10 +325,10 @@ public with sharing class PMP_SearchUtilityController extends PMP_SearchWrapperS
        
         
         //getting offering Ids using keyword
-        List<String> offerings = null;//PMP_SearchProductController.getOfferingIds(request.keyword);
+        List<String> offerings = PMP_SearchProductController.getOfferingIds(request.keyword);
         
         //Getting partners using keyword
-        List<String> partners = null;//PMP_SearchPartnerController.getPartnerList(request.keyword);
+        List<String> partners = PMP_SearchPartnerController.getPartnerList(request.keyword);
         
         
         if (request.searchType == PMP_StaticConstants_Partner.product) { 
@@ -818,41 +400,8 @@ public with sharing class PMP_SearchUtilityController extends PMP_SearchWrapperS
                     //labelDescMap.get(psValueIdMap.get(psValueSeoIdMap.get(request.specialty)));
                 
                 //Filter partners based on selected specialty
-               // partners = PMP_SearchPartnerController.filterPartners(request.specialty, partners);     
-               
-              
-        
-            //Learn More URL Logic for Specialty Learnmore link
-             String learnMoreUrlAPI = PMP_SearchUtilityController.getFieldApiName('PMP_Learn_More_URL__mdt', 'URL', userLanguage);
-             if(String.isEmpty(learnMoreUrlAPI)){
-            learnMoreUrlAPI = 'PMP_Learn_More_English_Url__c';
-        }  
-                Map<String,String> learnMoreUrlMap = new Map<String,String>();
-         
-       // To get all Specialty names from Metadata
-       List<PMP_Learn_More_URL__mdt> learnMoreUrls=[select Label,isSpecialty__c,PMP_Learn_More_English_Url__c,PMP_Learn_More_Chinese_Url__c,PMP_Learn_More_Japanese_Url__c from PMP_Learn_More_URL__mdt where isSpecialty__c=True];
-       
-        
-        for (PMP_Learn_More_URL__mdt learnMoreUrl:learnMoreUrls){
-            learnMoreUrlMap.put(learnMoreUrl.Label, (String)learnMoreUrl.get(learnMoreUrlAPI));
-           
-        }
-             
-            if(!psList.isEmpty() && learnMoreUrlMap.containskey((String)psList[0].Name)) //checking the label
-              
-           
-            {
-            
-               
-               response.learMoreLink=learnMoreUrlMap.get((String)psList[0].Name);
-            
-                
-            }
-                                   
-            }
-
-           //logic end
-            
+               // partners = PMP_SearchPartnerController.filterPartners(request.specialty, partners);                
+            }   
 
             
             if(request.category!=null){
@@ -962,7 +511,7 @@ public with sharing class PMP_SearchUtilityController extends PMP_SearchWrapperS
     /**********************************************************************************************************/
     //Updated by Nikhil to show typeahead based on user locale
     //Updated by Subash for US601910
-/*    @AuraEnabled(cacheable=true)
+    @AuraEnabled(cacheable=true)
     public static String searchAutoComplete(String query,String searchType, String langCode) {
         
         String retResponse = '';
@@ -1007,7 +556,7 @@ public with sharing class PMP_SearchUtilityController extends PMP_SearchWrapperS
         else
         {
         
-            //PartnerIDSet = PMP_SearchPartnerController.getPartnerList(query);
+            PartnerIDSet = PMP_SearchPartnerController.getPartnerList(query);
         }
         if(PartnerIDSet != null && PartnerIDSet.size() > 0) {
             
@@ -1015,9 +564,7 @@ public with sharing class PMP_SearchUtilityController extends PMP_SearchWrapperS
                 
                 Integer recLimit = searchType == PMP_StaticConstants_Partner.all ? Integer.valueOf(Label.PMP_Search_Suggestion_Count) : 6;
                 
-                //Removing Basic Access Benefit associated Partners from type ahead suggestions as part of US629512
-                for(PMP_Company__c ptnr : [SELECT Name FROM PMP_Company__c WHERE Id IN : PartnerIDSet
-                                           AND PMP_Partner_Benefit_Type__c !=: PMP_StaticConstants_Partner.Solution_Marketplace_Basic_Access ORDER BY Name ASC LIMIT :recLimit]) {
+                for(PMP_Company__c ptnr : [SELECT Name FROM PMP_Company__c WHERE Id IN : PartnerIDSet ORDER BY Name ASC LIMIT :recLimit]) {
                     
                     AutoCompleteOption od = new AutoCompleteOption();
                     od.recordId = ptnr.id;
@@ -1042,8 +589,7 @@ public with sharing class PMP_SearchUtilityController extends PMP_SearchWrapperS
         if(String.isEmpty(offNameAPI)){
             offNameAPI = 'PMP_English_Txt__c';
         }
-        //List<String> offerings = null;
-        List<String> offerings =  PMP_SearchProductController.getOfferingIds(query,);
+        List<String> offerings = PMP_SearchProductController.getOfferingIds(query);
         
         List<PMP_Partner_Offering_Translation__c> offTransList = [SELECT PMP_Partner_Offering_Id__c, PMP_English_Txt__c, PMP_Chinese_Txt__c, PMP_Japanese_Txt__c FROM PMP_Partner_Offering_Translation__c 
                                                                   WHERE PMP_Field_Nm__c = :PMP_StaticConstants_Partner.OFFERING_NAME AND PMP_Partner_Offering_Id__c IN :offerings 
@@ -1076,7 +622,7 @@ public with sharing class PMP_SearchUtilityController extends PMP_SearchWrapperS
         }
         
         return response;
-    }*/
+    }
     
     /**********************************************************************************************************/
     
@@ -1087,96 +633,44 @@ public with sharing class PMP_SearchUtilityController extends PMP_SearchWrapperS
 * @return a Map<String, Boolean> 
 * Method Parameters - List of account Ids
 */
-     //OPTIMISATION WW44
-    public static user returnCurrentUser(){       
-        User currentUser = [Select id, AccountId,Core_IPA_One_Partner_Id__c from User where Id =: UserInfo.getUserId()]; //Fetching the AccountId related to current user       
-    return currentUser;
-    }
     @AuraEnabled(cacheable=true)
     public static Map<String, Boolean> isSamePartnerUser(List<String> accountIds){
         Map<String, Boolean> isSamePartnerMap = new Map<String, Boolean>();
-         //OPTIMISATION WW44
-		User currentUser = returnCurrentUser();
-        /*for(String accId : accountIds){
+        List<Core_Account_Group_Member__c> accountGroupMem = new List<Core_Account_Group_Member__c>();
+        Core_Account_Group_Member__c userAccountGroupMem;
+        
+        User currentUser = [Select id, AccountId from User where Id =: UserInfo.getUserId()]; //Fetching the AccountId related to current user
+        
+        for(String accId : accountIds){
             isSamePartnerMap.put(accId, false);
         }
         
         if(currentUser.AccountId != null){ // If the Account has AccountId field (filtering sys admins and guest users)
-
-            for(String accId : accountIds){
-                if(currentUser.Core_IPA_One_Partner_Id__c == accId){
-                    isSamePartnerMap.put(accId, true); // Mark True againt the param accountId
-                }else{
-                    isSamePartnerMap.put(accId, false); // mark False against the param accountId
-                }
-                
+            try{
+                accountGroupMem = [SELECT id, Core_Intel_Account_Id__c, Core_Partner_Account_Id__c from Core_Account_Group_Member__c
+                                  where Core_Intel_Account_Id__c in:accountIds limit 1]; // Getting the PAG records for the accountIds param
+                userAccountGroupMem = [SELECT id, Core_Intel_Account_Id__c, Core_Partner_Account_Id__c from Core_Account_Group_Member__c
+                                      where Core_Intel_Account_Id__c=:currentUser.AccountId limit 1]; // Getting the PAG record for the User's accountId
+            }catch(Exception e){
+                system.debug('Error in fetching PAG records : ' + e.getMessage());
             }
-        }*/for(String accId : accountIds){
-                if(currentUser.AccountId != null){            
-                isSamePartnerMap.put(accId,currentUser.Core_IPA_One_Partner_Id__c == accId);
-            }
-         else {
-             isSamePartnerMap.put(accId, false);
-            }
-        }       
-       return isSamePartnerMap; // Return the Map
-    }
-    
-     //OPTIMISATION WW44
-  /** 
-* @description : to check if the current user belongs to the same partner (new method) for detail pages
-* @developer : Yashasvi Aggarwal
-* @return a Boolean 
-* Method Parameters - List of account Ids
-*/
-   /* @AuraEnabled(cacheable=true)
-    public static Boolean isSamePartnerUserMethod(List<String> accountIds){
-        Boolean isSamePartner = false;
-
-        User currentUser = [Select id, AccountId,Core_IPA_One_Partner_Id__c from User where Id =: UserInfo.getUserId()]; //Fetching the AccountId related to current user
-        
-        if(currentUser.AccountId != null){ // If the Account has AccountId field (filtering sys admins and guest users)
-
-            for(String accId : accountIds){
-                if(currentUser.Core_IPA_One_Partner_Id__c == accId){
-                    isSamePartner=true; // true if same partner
+            
+            if(userAccountGroupMem!=null && !accountGroupMem.isEmpty()){ // If PAG records are fetched succesfully
+                for(Core_Account_Group_Member__c pag : accountGroupMem){ // Iterate over the PAG records found for the accountIds Param
+                    if(pag.Core_Partner_Account_Id__c == userAccountGroupMem.Core_Partner_Account_Id__c){ // if partnerAccountId for the param and user matches
+                        isSamePartnerMap.put(pag.Core_Intel_Account_Id__c, true); // Mark True againt the param accountId
+                    }else{
+                        isSamePartnerMap.put(pag.Core_Intel_Account_Id__c, false); // mark False against the param accountId
+                    }
                 }
             }
-        }      
-       return isSamePartner; // Return the boolean value
-    }*/
-    
-     @AuraEnabled(cacheable=true)
-    public static Boolean isSamePartnerUserMethod(List<String> accountIds){
-        User currentUser = returnCurrentUser();
-        //User currentUser = [Select id, AccountId,Core_IPA_One_Partner_Id__c from User where Id =: UserInfo.getUserId()]; //Fetching the AccountId related to current user       
-        if(currentUser.AccountId != null && currentUser.Core_IPA_One_Partner_Id__c!=null){
-    		return accountIds.contains(currentUser.Core_IPA_One_Partner_Id__c);
-	}
-        return false;    
-    }
-    
-     /** 
-* @description : to check if the current user belongs to the same partner (new method) for partner and offering cards only
-* @developer : Yashasvi Aggarwal
-* @return a Boolean 
-* Method Parameters - List of account Ids
-*/ //OPTIMISATION WW44
-     @AuraEnabled(cacheable=true)
-    public static Boolean isSamePartnerUserCardMethod(List<String> accountIds,String isAccountId,String loggedinUserAccountId){
-       /* Boolean isSamePartner = false;
-        if(isAccountId != null){ // If the Account has AccountId field (filtering sys admins and guest users)
-
-            for(String accId : accountIds){
-                if(loggedinUserAccountId == accId){
-                    isSamePartner=true; // true if same partner
-                }
-            }
+            
         }
         
-       return isSamePartner; */
-        return isAccountId != null && loggedinUserAccountId!=null && accountIds.contains(loggedinUserAccountId);
+       return isSamePartnerMap; // Return the Map
     }
+
+    
     
     /** 
 * @description : to check if the current user is a guest user 
@@ -1221,71 +715,28 @@ public with sharing class PMP_SearchUtilityController extends PMP_SearchWrapperS
 * Method Parameters - List of Company Information Objects
 * "Used for product/partner cards"
 */
-   /* @AuraEnabled(cacheable = true)
+    @AuraEnabled(cacheable = true)
     public static Map<String, Boolean> isContactPartnerVisible(List<PMP_Company__c> partners){
-        Map<String,List<String>> partnerAccMap= new Map<String,List<String>>();//map to store partner id with respective active opid accounts
-        Map<String,boolean> partnerSamePartnerBooleanMap= new Map<String,boolean>();//map to store partner id with same partner boolean value
         Map<String, Boolean> contactVisMap = new Map<String,Boolean>();
-        //Map<String, Boolean> isSamePartnerMap = new Map<String, Boolean>();
+        Map<String, Boolean> isSamePartnerMap = new Map<String, Boolean>();
         List<String> accountIds = new List<String>();
-        //Modified as a part of OPID Restructure
-        Set<Id> partnerId = new Set<Id>();
-        for(PMP_Company__c partner : partners){
-            partnerId.add(partner.Id);
-        }
-        //OPTIMISATION WW44
-       // User currentUser = [Select id, AccountId,Core_IPA_One_Partner_Id__c from User where Id =: UserInfo.getUserId()]; //Fetching the AccountId related to current user
-       User currentUser = returnCurrentUser();
-        List<PMP_OPID_MPI_Rel__c> junctionObjects = PMP_Utility.getJunctionAccountToMpiByCompanyId(partnerId);
-        Map<Id,Set<Id>> mapOfMpiToListAccountsActive = PMP_Utility.getMapMpiToListAccountActive(junctionObjects);  
-        for(PMP_Company__c partner : partners){
-            if(mapOfMpiToListAccountsActive.containsKey(partner.Id)){
-                for(Id acc : mapOfMpiToListAccountsActive.get(partner.Id)){
-                    accountIds.add(acc);
-                }
-                partnerAccMap.put(partner.Id,accountIds);
-                accountIds = new List<String>();
-            }
-        }
-        for(PMP_Company__c partner : partners){
-            if(partnerAccMap.containsKey(partner.Id)){
-                Boolean isSamePartner=false;
-                if(partnerAccMap.get(partner.Id)!=null)
-                {
-                   isSamePartner = PMP_SearchUtilityController.isSamePartnerUserCardMethod(partnerAccMap.get(partner.Id),currentUser.AccountId,currentUser.Core_IPA_One_Partner_Id__c);// Checking if the current user belongs to which partner as part new OPID Restructure
-                }
-                partnerSamePartnerBooleanMap.put(partner.id,isSamePartner);
-            }
-        }
-        //Existing Logic
-        /*for(PMP_Company__c partner : partners){
-            accountIds.add(partner.PMP_Account_Id__c);  // getting all accountIds related to the partners       
-        }*/
-       // isSamePartnerMap = PMP_SearchUtilityController.isSamePartnerUser(accountIds); // Checking if the current user belongs to which partner    
-      //  Boolean isCurrentUserEligible; 
         
-       /* if(Test.isRunningTest()){
-            isCurrentUserEligible = true;
+        for(PMP_Company__c partner : partners){
+            accountIds.add(partner.PMP_Account_Id__c);  // getting all accountIds related to the partners       
         }
-        else{
-           isCurrentUserEligible = PMP_Utility.showContactPartnerButton();
-        }
-        // Checking if the currentUser is eligible to view the button
+        
+        isSamePartnerMap = PMP_SearchUtilityController.isSamePartnerUser(accountIds); // Checking if the current user belongs to which partner              
+        
+        Boolean isCurrentUserEligible = PMP_Utility.showContactPartnerButton(); // Checking if the currentUser is eligible to view the button
+        
         for(PMP_Company__c partner : partners){ //iterating over the partners
+            
             if(isCurrentUserEligible){ // Check if current user is eligible to view button
                 //Condition to check if Enable Lead gen is true
                 if(partner.PMP_Is_Enabled_Lead_Gen_Nm__c == PMP_StaticConstants_Partner.TRUE_STRING || partner.PMP_Is_Enabled_Lead_Gen_Nm__c == null){
                     //Condition to check if Limit Lead Gen is False
-                    if(partner.PMP_Is_Lead_Gen_Limited_Nm__c == PMP_StaticConstants_Partner.FALSE_STRING || partner.PMP_Is_Lead_Gen_Limited_Nm__c == null){  
-                        if(partnerSamePartnerBooleanMap.containsKey(partner.id)){        
-                            //Checking if the current user is not of same partner
-                            if(!partnerSamePartnerBooleanMap.get(partner.id)){
-                                contactVisMap.put(partner.Id, true); // If all conditions match set visibility boolean as true
-                            }else{
-                                contactVisMap.put(partner.Id, false);// if a condition doesn't match set visibility boolean as false
-                            } 
-                        }
-                        /* Existing code
+                    if(partner.PMP_Is_Lead_Gen_Limited_Nm__c == PMP_StaticConstants_Partner.FALSE_STRING || partner.PMP_Is_Lead_Gen_Limited_Nm__c == null){
+                        //Conditional check if the Map contains the key
                         if(isSamePartnerMap.containsKey(partner.PMP_Account_Id__c)){
                             //Checking if the current user is not of same partner
                             if(!isSamePartnerMap.get(partner.PMP_Account_Id__c)){
@@ -1293,18 +744,10 @@ public with sharing class PMP_SearchUtilityController extends PMP_SearchWrapperS
                             }else{
                                 contactVisMap.put(partner.Id, false);// if a condition doesn't match set visibility boolean as false
                             }
-                        }*/
-                  /*  }else{ // If Limit Lead gen is True --- contact partner button will be limited to partner users only
-                        if(!PMP_SearchUtilityController.isGuest() && partnerSamePartnerBooleanMap.containsKey(partner.id)){ // checking if the current user is not a guest
-                            //if(partnerSamePartnerBooleanMap.containsKey(partner.id)){  
-                                if(!partnerSamePartnerBooleanMap.get(partner.id)){ 
-                                    contactVisMap.put(partner.Id, true); // If all conditions match set visibility boolean as true
-                                }else{
-                                    contactVisMap.put(partner.Id, false);// if a condition doesn't match set visibility boolean as false
-                                }  
-                            //}
                         }
-                        /*Existing code
+                    }else{ // If Limit Lead gen is True --- contact partner button will be limited to partner users only
+                        if(!PMP_SearchUtilityController.isGuest()){ // checking if the current user is not a guest
+                            //Conditional check if the Map contains the key
                             if(isSamePartnerMap.containsKey(partner.PMP_Account_Id__c)){
                                 //Checking if the current user is not of same partner
                                 if(!isSamePartnerMap.get(partner.PMP_Account_Id__c)){
@@ -1313,10 +756,6 @@ public with sharing class PMP_SearchUtilityController extends PMP_SearchWrapperS
                                     contactVisMap.put(partner.Id, false);// if a condition doesn't match set visibility boolean as false
                                 }
                             }
-                        */
-                    
-                      /*  else{
-                                   contactVisMap.put(partner.Id, false);// if a condition doesn't match set visibility boolean as false                            
                         }
                     }
                 }else{ // If Enable Lead Gen is false set visibility boolean as false
@@ -1326,89 +765,7 @@ public with sharing class PMP_SearchUtilityController extends PMP_SearchWrapperS
                 contactVisMap.put(partner.Id, false);
             }            
         } 
-       return  contactVisMap; // Return contact button visibility map
-    }*/
-
-      @AuraEnabled(cacheable = true)
-    public static Map<String, Boolean> isContactPartnerVisible(List<PMP_Company__c> partners){
-        Map<String,List<String>> partnerAccMap= new Map<String,List<String>>();//map to store partner id with respective active opid accounts
-        Map<String,boolean> partnerSamePartnerBooleanMap= new Map<String,boolean>();//map to store partner id with same partner boolean value
-        Map<String, Boolean> contactVisMap = new Map<String,Boolean>();
-        //Map<String, Boolean> isSamePartnerMap = new Map<String, Boolean>();
-        List<String> accountIds = new List<String>();
-        //Modified as a part of OPID Restructure
-        Set<Id> partnerId = new Set<Id>();
-        for(PMP_Company__c partner : partners){
-            partnerId.add(partner.Id);
-        }
-        //OPTIMISATION WW44
-       // User currentUser = [Select id, AccountId,Core_IPA_One_Partner_Id__c from User where Id =: UserInfo.getUserId()]; //Fetching the AccountId related to current user
-       User currentUser = returnCurrentUser();
-        List<PMP_OPID_MPI_Rel__c> junctionObjects = PMP_Utility.getJunctionAccountToMpiByCompanyId(partnerId);
-        Map<Id,Set<Id>> mapOfMpiToListAccountsActive = PMP_Utility.getMapMpiToListAccountActive(junctionObjects); 
-         Boolean isCurrentUserEligible; 
-        
-        if(Test.isRunningTest()){
-            isCurrentUserEligible = true;
-        }
-        else{
-           isCurrentUserEligible = PMP_Utility.showContactPartnerButton();
-        }
-        for(PMP_Company__c partner : partners){
-            if(mapOfMpiToListAccountsActive.containsKey(partner.Id)){
-                for(Id acc : mapOfMpiToListAccountsActive.get(partner.Id)){
-                    accountIds.add(acc);
-                }
-                partnerAccMap.put(partner.Id,accountIds);
-                accountIds = new List<String>();
-            }
-             //OPTIMISATION WW44
-       // }
-        //for(PMP_Company__c partner : partners){
-            if(partnerAccMap.containsKey(partner.Id)){
-                Boolean isSamePartner=false;
-                if(partnerAccMap.get(partner.Id)!=null)
-                {
-                   isSamePartner = PMP_SearchUtilityController.isSamePartnerUserCardMethod(partnerAccMap.get(partner.Id),currentUser.AccountId,currentUser.Core_IPA_One_Partner_Id__c);// Checking if the current user belongs to which partner as part new OPID Restructure
-                }
-                partnerSamePartnerBooleanMap.put(partner.id,isSamePartner);
-            }
-       // }
-        //OPTIMISATION WW44
-        // Checking if the currentUser is eligible to view the button
-       // for(PMP_Company__c partner : partners){ //iterating over the partners
-            if(isCurrentUserEligible){ // Check if current user is eligible to view button
-                //Condition to check if Enable Lead gen is true
-                if(partner.PMP_Is_Enabled_Lead_Gen_Nm__c == PMP_StaticConstants_Partner.TRUE_STRING || partner.PMP_Is_Enabled_Lead_Gen_Nm__c == null){
-                    //Condition to check if Limit Lead Gen is False
-                    if(partner.PMP_Is_Lead_Gen_Limited_Nm__c == PMP_StaticConstants_Partner.FALSE_STRING || partner.PMP_Is_Lead_Gen_Limited_Nm__c == null){  
-                        if(partnerSamePartnerBooleanMap.containsKey(partner.id)){        
-                            //Checking if the current user is not of same partner
-                            if(!partnerSamePartnerBooleanMap.get(partner.id)){
-                                contactVisMap.put(partner.Id, true); // If all conditions match set visibility boolean as true
-                            }else{
-                                contactVisMap.put(partner.Id, false);// if a condition doesn't match set visibility boolean as false
-                            } 
-                        }
-                    }else{ // If Limit Lead gen is True --- contact partner button will be limited to partner users only
-                        if(!PMP_SearchUtilityController.isGuest() && partnerSamePartnerBooleanMap.containsKey(partner.id)){ // checking if the current user is not a guest
-                                if(!partnerSamePartnerBooleanMap.get(partner.id)){ 
-                                    contactVisMap.put(partner.Id, true); // If all conditions match set visibility boolean as true
-                                }else{
-                                    contactVisMap.put(partner.Id, false);// if a condition doesn't match set visibility boolean as false
-                                } 
-                        }                     
-                        else{
-                                   contactVisMap.put(partner.Id, false);// if a condition doesn't match set visibility boolean as false                            
-                        }
-                    }
-                }else{ // If Enable Lead Gen is false set visibility boolean as false
-                    contactVisMap.put(partner.Id, false);
-                }
-            }else{ // If current user is not eligible set visibility boolean as false
-                contactVisMap.put(partner.Id, false);
-            }            
-        } 
+        system.debug('====>contactVisMap : '+ contactVisMap);
        return  contactVisMap; // Return contact button visibility map
     }
 
@@ -1426,17 +783,9 @@ public with sharing class PMP_SearchUtilityController extends PMP_SearchWrapperS
         Boolean result = false;
         Map<String, Boolean> isSamePartnerMap = new Map<String, Boolean>();
         List<String> accountIds = new List<String>();
-         Boolean isCurrentUserEligible;
-        if(Test.isRunningTest()){
-            
-          isCurrentUserEligible  =true;
-        }else{
-            isCurrentUserEligible = PMP_Utility.showContactPartnerButton();
-            
-        }
+        Boolean isCurrentUserEligible = PMP_Utility.showContactPartnerButton();
         
         Boolean isPartnerRecord = false;
-        Boolean isSamePartner = false;
         PMP_Company__c partner = new PMP_Company__c();
         PMP_Partner_Offering__c offering = new PMP_Partner_Offering__c();
         if(record.getSObjectType() == PMP_Company__c.sObjectType){
@@ -1447,85 +796,35 @@ public with sharing class PMP_SearchUtilityController extends PMP_SearchWrapperS
             offering = (PMP_Partner_Offering__c)record;
         }
         
-        //Added as a part of OPID Restructure
-        List<PMP_OPID_MPI_Rel__c> junctionObjects = new List<PMP_OPID_MPI_Rel__c>();
-        Map<Id,Set<Id>> mapOfMpiToListAccountActive = new Map<Id,Set<Id>>();
-        //
-
-        if(isPartnerRecord){                      
-            //Modified as a part of OPID Restructure
-            Set<Id> partnerId = new Set<Id>{partner.Id};
-            junctionObjects = PMP_Utility.getJunctionAccountToMpiByCompanyId(partnerId);
-            mapOfMpiToListAccountActive = PMP_Utility.getMapMpiToListAccountActive(junctionObjects);
-            if(mapOfMpiToListAccountActive.containsKey(partner.Id)){
-            for(Id acc : mapOfMpiToListAccountActive.get(partner.Id)){
-                accountIds.add(acc);
-            }
-            }
-        }else{   
-            //Modified as a part of OPID Restructure
-            Set<Id> partnerId = new Set<Id>{offering.PMP_Company_Id__r.Id};
-            junctionObjects = PMP_Utility.getJunctionAccountToMpiByCompanyId(partnerId);
-            mapOfMpiToListAccountActive = PMP_Utility.getMapMpiToListAccountActive(junctionObjects);
-            if(mapOfMpiToListAccountActive.containsKey(offering.PMP_Company_Id__r.Id)){
-            for(Id acc : mapOfMpiToListAccountActive.get(offering.PMP_Company_Id__r.Id)){
-                accountIds.add(acc);
-            }
-           }       
+        if(isPartnerRecord){
+                      
+            accountIds.add(partner.PMP_Account_Id__c);
+            isSamePartnerMap = PMP_SearchUtilityController.isSamePartnerUser(accountIds);
+        }else{           
+            accountIds.add(offering.PMP_Company_Id__r.PMP_Account_Id__c);
+            isSamePartnerMap = PMP_SearchUtilityController.isSamePartnerUser(accountIds);
         }
-        //OPTIMISATION WW44
-        User currentUser = returnCurrentUser();
-        // isSamePartnerMap = PMP_SearchUtilityController.isSamePartnerUser(accountIds);
-            //isSamePartner=PMP_SearchUtilityController.isSamePartnerUserMethod(accountIds);
-
-        for(String accId : accountIds){
-            isSamePartnerMap.put(accId,currentUser.Core_IPA_One_Partner_Id__c == accId);
-        }
-        
-        isSamePartner =accountIds.contains(currentUser.Core_IPA_One_Partner_Id__c);
         
         if(isCurrentUserEligible){
             if(isPartnerRecord){
                 if(partner.PMP_Is_Enabled_Lead_Gen_Nm__c == PMP_StaticConstants_Partner.TRUE_STRING || partner.PMP_Is_Enabled_Lead_Gen_Nm__c == null){
                     if(partner.PMP_Is_Lead_Gen_Limited_Nm__c == PMP_StaticConstants_Partner.FALSE_STRING || partner.PMP_Is_Lead_Gen_Limited_Nm__c == null){
-                        //Modified as a part of OPID Restructure
-                        if(mapOfMpiToListAccountActive.containsKey(partner.Id)){
-                        for(Id acc : mapOfMpiToListAccountActive.get(partner.Id)){
-                            if(isSamePartnerMap.containsKey(acc)){
-                                if(!isSamePartner){
-                                   result = true;
-                                }else{
-                                   result = false;
-                                }
-                            }
-                        }
-                        }
-                        /*if(isSamePartnerMap.containsKey(partner.PMP_Account_Id__c)){
+                        if(isSamePartnerMap.containsKey(partner.PMP_Account_Id__c)){
                             if(!isSamePartnerMap.get(partner.PMP_Account_Id__c)){
                                result = true;
                             }else{
                                result = false;
                             }
-                        }*/
-                    }else{
-                        if(!PMP_SearchUtilityController.isGuest() && mapOfMpiToListAccountActive.containsKey(partner.Id)){
-                        //Modified as a part of OPID Restructure
-                        for(Id acc : mapOfMpiToListAccountActive.get(partner.Id)){
-                            if(isSamePartnerMap.containsKey(acc)){
-                                if(!isSamePartner){
-                                   result = true;
-                                }else{
-                                   result = false;
-                                }
-                            }
                         }
-                            /*if(isSamePartnerMap.containsKey(partner.PMP_Account_Id__c)){
+                    }else{
+                        if(!PMP_SearchUtilityController.isGuest()){
+                            if(isSamePartnerMap.containsKey(partner.PMP_Account_Id__c)){
                                 if(!isSamePartnerMap.get(partner.PMP_Account_Id__c)){
                                    result = true;
                                 }else{
                                    result = false;
                                 }
-                            }*/
+                            }
                         }
                     }
                 }else{
@@ -1535,44 +834,22 @@ public with sharing class PMP_SearchUtilityController extends PMP_SearchWrapperS
                 //offering record
                 if(offering.PMP_Company_Id__r.PMP_Is_Enabled_Lead_Gen_Nm__c == PMP_StaticConstants_Partner.TRUE_STRING || offering.PMP_Company_Id__r.PMP_Is_Enabled_Lead_Gen_Nm__c == null){
                     if(offering.PMP_Company_Id__r.PMP_Is_Lead_Gen_Limited_Nm__c == PMP_StaticConstants_Partner.FALSE_STRING || offering.PMP_Company_Id__r.PMP_Is_Lead_Gen_Limited_Nm__c == null){
-                        //Modified as a part of OPID Restructure
-                        if(mapOfMpiToListAccountActive.containsKey(offering.PMP_Company_Id__r.Id)){
-                        for(Id acc : mapOfMpiToListAccountActive.get(offering.PMP_Company_Id__r.Id)){
-                            if(isSamePartnerMap.containsKey(acc)){
-                                if(!isSamePartner){
-                                   result = true;
-                                }else{
-                                   result = false;
-                                }
-                            }
-                        }
-                       }
-                        /*if(isSamePartnerMap.containsKey(offering.PMP_Company_Id__r.PMP_Account_Id__c)){
+                        if(isSamePartnerMap.containsKey(offering.PMP_Company_Id__r.PMP_Account_Id__c)){
                             if(!isSamePartnerMap.get(offering.PMP_Company_Id__r.PMP_Account_Id__c)){
                                result = true;
                             }else{
                                result = false;
                             }
-                        }*/
+                        }
                     }else{
-                        if(!PMP_SearchUtilityController.isGuest() && mapOfMpiToListAccountActive.containsKey(offering.PMP_Company_Id__r.Id)){
-                            //Modified as a part of OPID Restructure
-                            for(Id acc : mapOfMpiToListAccountActive.get(offering.PMP_Company_Id__r.Id)){
-                                if(isSamePartnerMap.containsKey(acc)){
-                                    if(!isSamePartner){
-                                       result = true;
-                                    }else{
-                                       result = false;
-                                    }
-                                }
-                            }
-                            /*if(isSamePartnerMap.containsKey(offering.PMP_Company_Id__r.PMP_Account_Id__c)){
+                        if(!PMP_SearchUtilityController.isGuest()){
+                            if(isSamePartnerMap.containsKey(offering.PMP_Company_Id__r.PMP_Account_Id__c)){
                                 if(!isSamePartnerMap.get(offering.PMP_Company_Id__r.PMP_Account_Id__c)){
                                    result = true;
                                 }else{
                                    result = false;
                                 }
-                            }*/
+                            }
                         }
                     }
                 }else{
@@ -1582,6 +859,7 @@ public with sharing class PMP_SearchUtilityController extends PMP_SearchWrapperS
         }else{
             result = false;
         }
+        
         return result;
     } 
     
@@ -1594,30 +872,9 @@ public with sharing class PMP_SearchUtilityController extends PMP_SearchWrapperS
     public static List<Option> getCategoryTree(String pimId, Boolean all, String langCode){
         String ansPimId = pimId + '%';
         List<Option> ret  = new List<Option>();
-       // Order by added in the query to sort categories based on sequence Number US705467/US705466.
-        List<PMP_Category__c> productCategories = new List<PMP_Category__c>();
-       if(Test.isRunningTest()){
-        if(Schema.sObjectType.PMP_Category__c.isAccessible()){
-
-           productCategories = [SELECT Id, Name,PMP_Partner_Product_Category_Cd__c,PMP_Partner_Product_Parent_Category_Cd__c,
-                                                   PMP_Category_Chinese_Nm__c,PMP_Category_Japanese_Nm__c, PMP_Parent_Category_Id__c,
-                                                   PMP_Category_Display_Sequence_Nbr__c
-                                                   FROM PMP_Category__c 
-                                                   WHERE PMP_Active_Ind__c = true];
-        }
-           
-       }
-        else{
-            if(Schema.sObjectType.PMP_Category__c.isAccessible()){
-            productCategories = [SELECT Id, Name,PMP_Partner_Product_Category_Cd__c,PMP_Partner_Product_Parent_Category_Cd__c,
-                                                   PMP_Category_Chinese_Nm__c,PMP_Category_Japanese_Nm__c, PMP_Parent_Category_Id__c,
-                                                   PMP_Category_Display_Sequence_Nbr__c
-                                                   FROM PMP_Category__c 
-                                                   WHERE PMP_Active_Ind__c = true and PMP_Ancestor_Category_Cd__c like :ansPimId
-                                                      Order By PMP_Category_Display_Sequence_Nbr__c ];
-        }
-        }
-        
+        List<PMP_Category__c> productCategories = [SELECT Id, Name,PMP_Partner_Product_Category_Cd__c,PMP_Partner_Product_Parent_Category_Cd__c,
+                                                   PMP_Category_Chinese_Nm__c,PMP_Category_Japanese_Nm__c, PMP_Parent_Category_Id__c FROM PMP_Category__c 
+                                                   WHERE PMP_Active_Ind__c = true and PMP_Ancestor_Category_Cd__c like :ansPimId ORDER BY PMP_Category_Display_Sequence_Nbr__c];
         Map<string,Option> catMap = new Map<String,Option>();
         for(PMP_Category__c cat : productCategories) {
             if(!catMap.containsKey(cat.Id) && cat.PMP_Partner_Product_Parent_Category_Cd__c == pimId){
@@ -1679,14 +936,8 @@ public with sharing class PMP_SearchUtilityController extends PMP_SearchWrapperS
     
     public static String getLocalisedName(sObject obj, String fieldName, String languageCode){
         String name = '';
-        //string truncateName = '';
-        String userLanguage = languageCode;
-        if(languageCode == 'en-US'){
-            userLanguage = 'en_US';
-        }else if(languageCode == 'zh-Hans-CN' || languageCode == 'zh-CN' || languageCode == 'zh_Hans_CN'){ // languageCode == 'zh_Hans_CN : Added as part of new L3 storefront page
-            userLanguage = 'zh_CN';
-        }
-        //UserInfo.getLanguage();
+        string truncateName = '';
+        String userLanguage = languageCode;//UserInfo.getLanguage();
         try{
             //Category Object
             if(obj.getSObjectType() == PMP_Category__c.sObjectType){
@@ -1754,7 +1005,6 @@ public with sharing class PMP_SearchUtilityController extends PMP_SearchWrapperS
                 if (userLanguage == PMP_StaticConstants_Partner.ZH_CN && spec.PMP_Specification_Chinese_Nm__c != null){
                     name = spec.PMP_Specification_Chinese_Nm__c;
                 }
-                
                 else if (userLanguage == PMP_StaticConstants_Partner.JA && spec.PMP_Specification_Japanese_Nm__c != null){
                     name = spec.PMP_Specification_Japanese_Nm__c;
                 }
@@ -1762,24 +1012,6 @@ public with sharing class PMP_SearchUtilityController extends PMP_SearchWrapperS
                     name = spec.Name;
                 }            
             }
-
-            //Specification value Object /*added by krishna ch as part of country changes for store front.
-            if(obj.getSObjectType() == PMP_Specification_Value__c.sObjectType){
-                
-                PMP_Specification_Value__c specVal = (PMP_Specification_Value__c)obj;
-                if (userLanguage == PMP_StaticConstants_Partner.ZH_CN && specVal.PMP_Name_Chinese__c != null){
-                    name = specVal.PMP_Name_Chinese__c;
-                }
-                else if (userLanguage == PMP_StaticConstants_Partner.JA && specVal.PMP_Name_Japanese__c != null){
-                    name = specVal.PMP_Name_Japanese__c;
-                }
-                else{
-                    name = specVal.Name;
-                }            
-            }
-            
-            //End
-
             //Offering Specification Object
             if(obj.getSObjectType() == PMP_Partner_Offering_Specification__c.sObjectType){
                 PMP_Partner_Offering_Specification__c offSpec = (PMP_Partner_Offering_Specification__c)obj;
@@ -1846,8 +1078,6 @@ public with sharing class PMP_SearchUtilityController extends PMP_SearchWrapperS
                 }            
             }
             //Partner Translation
-            //TranslationEOL
-            /*
             if(obj.getSObjectType() == PMP_Company_Translation__c.sObjectType){
                 PMP_Company_Translation__c trans = (PMP_Company_Translation__c)obj;
                 if (userLanguage == PMP_StaticConstants_Partner.ZH_CN && String.isNotEmpty(trans.PMP_Chinese_Txt__c)){
@@ -1859,84 +1089,9 @@ public with sharing class PMP_SearchUtilityController extends PMP_SearchWrapperS
                 else if(String.isNotEmpty(trans.PMP_English_Txt__c)){
                     name = trans.PMP_English_Txt__c.replaceAll('<[/a-zAZ0-9]*>', '');
                 }            
-            }*/
-            
-            //Partner Segment
-            if(obj.getSObjectType() == PMP_Partner_Segment__c.sObjectType){
-                if(fieldName == PMP_StaticConstants_Partner.CAT_NAME_FIELD){
-                	PMP_Partner_Segment__c segmentName = (PMP_Partner_Segment__c)obj;
-                	if (userLanguage == PMP_StaticConstants_Partner.ZH_CN && segmentName.PMP_Partner_Segment_Chinese_Name_Txt__c != null){
-                    	name = segmentName.PMP_Partner_Segment_Chinese_Name_Txt__c;
-                	}
-                	else if (userLanguage == PMP_StaticConstants_Partner.JA && segmentName.PMP_Partner_Segment_Japanese_Name_Txt__c != null){
-                    	name = segmentName.PMP_Partner_Segment_Japanese_Name_Txt__c;
-                	}
-                	else{
-                    	name = segmentName.PMP_Partner_Segment_Value_Txt__c;
-                	}            
-                }
-                else if(fieldName == PMP_StaticConstants_Partner.CAT_DESC_FIELD){
-                    PMP_Partner_Segment__c segmentDesc = (PMP_Partner_Segment__c)obj;
-                	if (userLanguage == PMP_StaticConstants_Partner.ZH_CN && segmentDesc.PMP_Partner_Segment_Chinese_Dsc_Txt__c != null){
-                    	name = segmentDesc.PMP_Partner_Segment_Chinese_Dsc_Txt__c;
-                	}
-                	else if (userLanguage == PMP_StaticConstants_Partner.JA && segmentDesc.PMP_Partner_Segment_Japanese_Dsc_Txt__c != null){
-                    	name = segmentDesc.PMP_Partner_Segment_Japanese_Dsc_Txt__c;
-                	}
-                	else{
-                    	name = segmentDesc.PMP_Partner_Segment_English_Dsc_Txt__c;
-                	}            
-                }
             }
-            
-            //Partner Role
-            if(obj.getSObjectType() == PMP_Partner_Program__c.sObjectType){
-                if(fieldName == PMP_StaticConstants_Partner.CAT_NAME_FIELD){
-                	PMP_Partner_Program__c roleName = (PMP_Partner_Program__c)obj;
-                	if (userLanguage == PMP_StaticConstants_Partner.ZH_CN && roleName.PMP_Partner_Program_Name_Chinese__c != null){
-                    	name = roleName.PMP_Partner_Program_Name_Chinese__c;
-                	}
-                	else if (userLanguage == PMP_StaticConstants_Partner.JA && roleName.PMP_Partner_Program_Name_Japanese__c != null){
-                    	name = roleName.PMP_Partner_Program_Name_Japanese__c;
-                	}
-                	else{
-                    	name = roleName.PMP_Partner_Program_Value_Txt__c;
-                	}            
-                }
-                else if(fieldName == PMP_StaticConstants_Partner.CAT_DESC_FIELD){
-                    PMP_Partner_Program__c roleDesc = (PMP_Partner_Program__c)obj;
-                	if (userLanguage == PMP_StaticConstants_Partner.ZH_CN && roleDesc.PMP_Partner_Program_Desc_Chinese__c != null){
-                    	name = roleDesc.PMP_Partner_Program_Desc_Chinese__c;
-                	}
-                	else if (userLanguage == PMP_StaticConstants_Partner.JA && roleDesc.PMP_Partner_Program_Desc_Japanese__c != null){
-                    	name = roleDesc.PMP_Partner_Program_Desc_Japanese__c;
-                	}
-                	else{
-                    	name = roleDesc.PMP_Partner_Program_Desc__c !=NULL? roleDesc.PMP_Partner_Program_Desc__c : '';
-                	}            
-                }
-            }
-            
-            //Biz org values
-            if(obj.getSObjectType() == PMP_Partner_Tier__c.sObjectType){
-                if(fieldName == PMP_StaticConstants_Partner.CAT_NAME_FIELD){
-                	PMP_Partner_Tier__c bizOrg = (PMP_Partner_Tier__c)obj;
-                	if (userLanguage == PMP_StaticConstants_Partner.ZH_CN && bizOrg.PMP_Partner_Tier_Chinese_Nm__c != null){
-                    	name = bizOrg.PMP_Partner_Tier_Chinese_Nm__c;
-                	}
-                	else if (userLanguage == PMP_StaticConstants_Partner.JA && bizOrg.PMP_Partner_Tier_Name_Japanese__c  != null){
-                    	name = bizOrg.PMP_Partner_Tier_Name_Japanese__c ;
-                	}
-                	else{
-                    	name =bizOrg.Name;
-                	}            
-                }
-            }
-            
-            
-            
         }catch(Exception e){
-            throw e;//error handling
+            System.debug(e.getMessage()+' '+ e.getCause()+' '+e.getLineNumber());
             
         }
        // return name;
@@ -1996,6 +1151,7 @@ public with sharing class PMP_SearchUtilityController extends PMP_SearchWrapperS
                 return true;
             }
         }catch(Exception e){
+            System.debug(e.getMessage()+' '+ e.getCause()+' '+e.getLineNumber());
             throw new AuraHandledException(e.getMessage());
         }
         return false;
@@ -2026,13 +1182,16 @@ public with sharing class PMP_SearchUtilityController extends PMP_SearchWrapperS
         String escapedText = String.escapeSingleQuotes( text ) ;
         
         
+        system.debug('0'+ escapedText);
         if(isSingle){
              escapedText = '\\' + escapedText;
+            system.debug('1'+ escapedText);
         }else{
             if(isSpecialOnly){
                 
                 // remove reserved logical operators
                 escapedText = escapedText.replaceAll( '(?i)( AND NOT | AND | OR )', ' ' );
+                system.debug('2'+ escapedText);       
                 // match special characters to escape
                 Pattern myPattern = Pattern.compile( '(\\?|\\/|\\&|\\||\\!|\\{|\\}|\\[|\\]|\\^|\\~|\\:|\\+|\\-|\\(|\\)|\\*|\\")' ); 
                 Matcher myMatcher = myPattern.matcher( escapedText );
@@ -2041,6 +1200,7 @@ public with sharing class PMP_SearchUtilityController extends PMP_SearchWrapperS
             }else{
                 // remove reserved logical operators
                 escapedText = escapedText.replaceAll( '(?i)( AND NOT | AND | OR )', ' ' );
+                system.debug('3'+ escapedText);       
                 // match special characters to escape
                 Pattern myPattern = Pattern.compile( '(\\?|\\/|\\&|\\||\\!|\\{|\\}|\\[|\\]|\\^|\\~|\\:|\\+|\\-|\\(|\\)|\\*|\\")' ); 
                 Matcher myMatcher = myPattern.matcher( escapedText );
@@ -2055,6 +1215,7 @@ public with sharing class PMP_SearchUtilityController extends PMP_SearchWrapperS
             
         }
         
+        system.debug('3'+ escapedText);
         
        
         return escapedText;
@@ -2072,33 +1233,21 @@ public with sharing class PMP_SearchUtilityController extends PMP_SearchWrapperS
         //Since the Intel Account is of the Marketing Profile info, it is already a MDA
        String mdaId = '';
         try{
-            //Commented as a part of US628755
             /*Core_Account_Group_Member__c pagMember = [SELECT id, Core_Intel_Account_Id__c, Core_Partner_Account_Id__c, Core_MDA_Ind__c from Core_Account_Group_Member__c where Core_Intel_Account_Id__c =: intelAccountId]; 
        
             if(pagMember.Core_MDA_Ind__c){
+                system.debug('###Entered getMdaId');
                 mdaId = pagMember.Core_Partner_Account_Id__c;
             } */
-            //Added as a part of OPID restructure
-            if(Schema.sObjectType.PMP_OPID_MPI_Rel__c.isAccessible()){
-                PMP_OPID_MPI_Rel__c junctionObjectRec = [select Id,PMP_One_Partner_ID__c,PMP_Marketing_Profile_Id__c,Is_Active__c from PMP_OPID_MPI_Rel__c where PMP_One_Partner_ID__c =:intelAccountId AND PMP_Marketing_Profile_Id__r.PMP_Company_Lifecycle_Status_Nm__c =: PMP_StaticConstants_Partner.Published LIMIT 1];
-                if(junctionObjectRec!=null){
-                    mdaId = junctionObjectRec.PMP_Marketing_Profile_Id__c;
-                }
-            }
-
-            //Existing Logic
-            /*PMP_Company__c partner= new PMP_Company__c();
-            if( PMP_Company__c.SObjectType.getDescribe().isAccessible()){
-
-                partner = [SELECT Id,PMP_Account_Id__c from PMP_Company__c
-                                    where PMP_Account_Id__c=: intelAccountId AND PMP_Company_Lifecycle_Status_Nm__c =: PMP_StaticConstants_Partner.Published limit 1];
-            }
+            
+            PMP_Company__c partner = [SELECT Id,PMP_Account_Id__c from PMP_Company__c
+                                      where PMP_Account_Id__c=: intelAccountId AND PMP_Company_Lifecycle_Status_Nm__c =: PMP_StaticConstants_Partner.Published limit 1];
             if(partner!=null){
                 mdaId = partner.Id;
-            }*/
+            }
             
         }catch(Exception e){
-            //system.debug('Error in fetching One Partner ID from Marketing Profile Info record : '+ e.getMessage());
+            system.debug('Error in fetching One Partner ID from Marketing Profile Info record : '+ e.getMessage());
         } 
        
         
@@ -2109,22 +1258,13 @@ public with sharing class PMP_SearchUtilityController extends PMP_SearchWrapperS
    //Do not call this method in for loop 
     public static String getFieldApiName(String objectName, String fieldName, String userLanguage){
         String fieldAPI ='';
-         String languageCode = userLanguage;
-        if(userLanguage == 'en-US'){
-            languageCode = 'en_US';
-        }else if(userLanguage == 'zh-Hans-CN' || userLanguage == 'zh-CN' || userLanguage == 'zh_Hans_CN'){ // languageCode == 'zh_Hans_CN : Added as part of new L3 storefront page
-            languageCode = 'zh_CN';
-        }
         try{
-            List<PMP_Language_to_Field_API_Mapping__mdt> metadataList= new List<PMP_Language_to_Field_API_Mapping__mdt>();
-            /*fieldAPI*/metadataList = [SELECT PMP_Field_APINm__c FROM PMP_Language_to_Field_API_Mapping__mdt 
-                        WHERE PMP_Field_Nm__c =:fieldName AND PMP_Language_Cd__c =: languageCode AND PMP_Object_Nm__c =: objectName LIMIT 1];//.PMP_Field_APINm__c;
-            if(metadataList.size()>0){ //error handling 
-                fieldAPI=metadataList[0].PMP_Field_APINm__c;
-            }
+            system.debug('---fieldName---'+fieldName+ '---userLanguage---'+userLanguage+'----objectName---'+objectName);
             
+            fieldAPI = [SELECT PMP_Field_APINm__c FROM PMP_Language_to_Field_API_Mapping__mdt 
+                        WHERE PMP_Field_Nm__c =:fieldName AND PMP_Language_Cd__c =: userLanguage AND PMP_Object_Nm__c =: objectName LIMIT 1].PMP_Field_APINm__c;
         }catch(Exception e){
-            throw e;//error handling
+            system.debug('Error while fething PMP_Language_to_Field_API_Mapping__mdt records');
         }
         return fieldAPI;
     }
@@ -2139,29 +1279,15 @@ public with sharing class PMP_SearchUtilityController extends PMP_SearchWrapperS
 
     public static string getCompanyInfoType(PMP_Company__c company){
         
-        List<String> benifitCode = new List<String>();
-        //Modified as a part of OPID Restructure
-        if(Schema.sObjectType.PMP_OPID_MPI_Rel__c.isAccessible()){
-            List<PMP_OPID_MPI_Rel__c> junctionObjectRec = [select Id,PMP_One_Partner_ID__c,PMP_Marketing_Profile_Id__c,Is_Active__c from PMP_OPID_MPI_Rel__c where PMP_Marketing_Profile_Id__c =:company.Id];
-            List<Id> accIds = new List<Id>();
-            for(PMP_OPID_MPI_Rel__c juncRec : junctionObjectRec){
-                accIds.add(juncRec.PMP_One_Partner_ID__c);
-            }
-            for(PRM_AccountBenefitAssociation__c accBen:[SELECT PRM_Partner_Benefit_Id__r.PRM_Benefit_Cd__c FROM PRM_AccountBenefitAssociation__c 
-                                                        WHERE PRM_Account_Id__c in: accIds])
-            {
-                benifitCode.add(accBen.PRM_Partner_Benefit_Id__r.PRM_Benefit_Cd__c);
-            }
-        }
-        //Existing Logic       
-        /*for (PRM_AccountBenefitAssociation__c accBen:[SELECT PRM_Partner_Benefit_Id__r.PRM_Benefit_Cd__c FROM PRM_AccountBenefitAssociation__c 
+         List<String> benifitCode = new List<String>();
+         for (PRM_AccountBenefitAssociation__c accBen:[SELECT PRM_Partner_Benefit_Id__r.PRM_Benefit_Cd__c FROM PRM_AccountBenefitAssociation__c 
                                                               WHERE     PRM_Account_Id__c =:company.PMP_Account_Id__c])
                 {
                     benifitCode.add(accBen.PRM_Partner_Benefit_Id__r.PRM_Benefit_Cd__c);
                     
                   
                 }
-        */       
+               
             if (benifitCode.contains(PMP_StaticConstants_Partner.BENEFIT_ENHANCED_CODE)){
                 return 'Storefront';
             }
@@ -2173,15 +1299,7 @@ public with sharing class PMP_SearchUtilityController extends PMP_SearchWrapperS
     
     
     /**********************************************************************************************************/    
-  /*  public class SearchResponse {
-        @AuraEnabled public List<Object> results {get; set;} //TBD to change type to cards
-        @AuraEnabled public Map<String, Integer> resultCounts {get; set;}
-        @AuraEnabled public Integer resultsPerPage {get; set;}
-        @AuraEnabled public Integer totalResults {get; set;}
-        @AuraEnabled public Integer totalPages {get; set;}
-        
-        //old design
-        
+    public class SearchResponse {
         @AuraEnabled public String keyword { get; set; }
         @AuraEnabled public String category { get; set; }
         @AuraEnabled public String searchType { get; set; }
@@ -2198,10 +1316,8 @@ public with sharing class PMP_SearchUtilityController extends PMP_SearchWrapperS
         @AuraEnabled public List<String> suggestions { get; set; }
         @AuraEnabled public String searchHeading { get; set; }
         @AuraEnabled public String categoryDescription { get; set; }
-        @AuraEnabled public String learMoreLink { get; set; }   //Added by Megha as part of Specialty learnMoreLink
-
         @AuraEnabled public Map<String, List<String>> selectedFilters { get; set; }
-    }*/
+    }
     
     
 }

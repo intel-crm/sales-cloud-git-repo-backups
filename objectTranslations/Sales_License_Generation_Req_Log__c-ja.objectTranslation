@@ -9,15 +9,11 @@
         <name>Evevt_Type__c</name>
     </fields>
     <fields>
-        <label><!-- LicenseId --></label>
-        <name>LicenseId__c</name>
-    </fields>
-    <fields>
         <label>ライセンス ID</label>
         <name>License_Id__c</name>
     </fields>
     <fields>
-        <label>連絡先メールアドレス</label>
+        <label><!-- Contact&apos;s Email Address --></label>
         <name>Sales_Contact_Email_Address__c</name>
     </fields>
     <fields>
@@ -41,18 +37,13 @@
         <name>Sales_File_size__c</name>
     </fields>
     <fields>
-        <label>コンピューター ID</label>
+        <label>プライマリー・コンピューター ID</label>
         <name>Sales_Host_Id__c</name>
         <relationshipLabel>ライセンス発行リクエスト</relationshipLabel>
     </fields>
     <fields>
         <label><!-- Legacy Attachment Name --></label>
         <name>Sales_Legacy_Attachment_Name__c</name>
-    </fields>
-    <fields>
-        <label><!-- Contact --></label>
-        <name>Sales_License_Contact__c</name>
-        <relationshipLabel>ライセンス発行リクエスト</relationshipLabel>
     </fields>
     <fields>
         <label>ライセンスファイル</label>

@@ -2,6 +2,7 @@
     doInit : function(component, event, helper) {
         component.set("v.hideButton",true);                  
         console.log("controller code");
+        
         helper.getResourceName(component);
     },
     

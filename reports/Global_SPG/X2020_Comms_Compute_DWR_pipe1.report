@@ -124,7 +124,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>SOC,SOC-ATOM,SysOnChp-ATOM,Walker Pass</value>
+            <value>SOC,SOC-ATOM,Walker Pass</value>
         </criteriaItems>
         <criteriaItems>
             <column>Product2.Core_Code_Name__c</column>

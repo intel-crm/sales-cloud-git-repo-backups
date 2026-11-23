@@ -64,7 +64,7 @@ public class Core_OpportunityHandler_2_Test {
         teList.add(oppCS19);
 
         insert teList;
-        
+       
         Profile p = [select Id from Profile where Name = 'IT Admin'];
         
         User OSOOwner = new User(Alias = 'OSOOwner', Email='OSOOwner@apttus.com',
@@ -79,8 +79,8 @@ public class Core_OpportunityHandler_2_Test {
                             TimeZoneSidKey='America/Los_Angeles', UserName='OSOTOwner@mail.com', Department='OSC');
         insert OSOTOwner;
         //Added partner user for Portal role sharing fix
-        //Profile profile1 = [select Id from Profile where Name = 'Partner'];
- 
+        Profile profile1 = [select Id from Profile where Name = 'Partner'];
+              
         Id newOppRecTypeId = [select Id from RecordType where DeveloperName = 'Core_Design_Opportunity' limit 1][0].Id;
         
         SObjectType r = ((SObject)Type.forName('Schema','Account').newInstance()).getSObjectType();
@@ -95,7 +95,7 @@ public class Core_OpportunityHandler_2_Test {
         acct.BillingStreet = 'test123';  
         acct.Core_Sales_Groups__c=Core_CRM_Utility.getSalesGroupAPI();
         acct.Industry='Health and Life Sciences'; 
-        acct.Core_Sub_Industry__c='Biotechnology';     
+        acct.Core_Sub_Industry__c='Biotechnology';
         acct.OwnerId =  OSOOwner.Id;
         System.runAs(Core_Test_Utility.systemAdminUser) {
             insert acct;
@@ -156,15 +156,13 @@ public class Core_OpportunityHandler_2_Test {
     }
     
     static testmethod void testOppoTO() { 
-        //List<OpportunityTeamMember> oppTMList = new List<OpportunityTeamMember>();
+        List<OpportunityTeamMember> oppTMList = new List<OpportunityTeamMember>();
         Opportunity oppo = [select id from Opportunity where Name = 'OppoHandler'  limit 1]; 
         User usr = [select id from User where Email='OSOTOwner@apttus.com' limit 1];
         
         Profile pro = [SELECT id, Name FROM Profile WHERE Name='Sales Rep-BB'];
         User usr1 = [SELECT id, Name, isActive FROM User WHERE ProfileId = :pro.Id AND isActive = true AND Core_User_Type__c !='External User' LIMIT 1];
- 
 
-        
         oppo.Core_Technical_Owner__c = usr1.id;
         update oppo;
         
@@ -241,10 +239,18 @@ public class Core_OpportunityHandler_2_Test {
         input.accId = acct.Id;
         lstInput.add(input);
         Core_OpportunityHandler_2.invokeAccount360OpportunitySharingforOnwerChange(lstInput);
+        
+        // Assertions to validate expected changes
+        List<Opportunity> insertedOpps = [SELECT Id, Name, OwnerId, AccountId FROM Opportunity WHERE AccountId = :acct.Id AND Name IN ('TestClass PCC Opportunity','Opportunity to Lose 03-24-2015')];
+        // Validate both opportunities were inserted
+        System.assertEquals(2, insertedOpps.size(), 'Two opportunities should be created for the account');
+        // Validate OwnerId was updated to the new account owner (usr)
+        for(Opportunity o : insertedOpps){
+            System.assertEquals(usr.Id, o.OwnerId, 'Opportunity owner should be updated to the new account owner');
+        }
         }
         Test.stopTest();
-        System.assertEquals(true,true);
  
     }
-
+    
 }

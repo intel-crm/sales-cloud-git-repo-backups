@@ -228,6 +228,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Xvoyant__FunctionalGroupID__c</field>
+            <table>User</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>GeocodeAccuracy</field>
             <table>User</table>
         </columns>
@@ -264,6 +269,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_IPS_IsActiveProxy__c</field>
+            <table>User</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Xvoyant__IsAtmUser__c</field>
             <table>User</table>
         </columns>
         <columns>
@@ -589,6 +599,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Profile.UserLicense.TotalLicenses</field>
+            <table>User</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CheckPreApprover__c</field>
             <table>User</table>
         </columns>
         <masterLabel>Users</masterLabel>

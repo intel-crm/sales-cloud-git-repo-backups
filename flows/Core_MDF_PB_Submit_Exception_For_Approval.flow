@@ -4,7 +4,7 @@
         <processMetadataValues>
             <name>processSelection</name>
             <value>
-                <stringValue>Core_MDF_Exception Approval Process_v2 - Core_MDF_Exception_Approval_Process_v2</stringValue>
+                <stringValue>Exception Approval Process - Core_MDF_Exception_Approval_Process</stringValue>
             </value>
         </processMetadataValues>
         <processMetadataValues>
@@ -20,12 +20,11 @@
             </value>
         </processMetadataValues>
         <name>myRule_1_A1</name>
-        <label>Submit Exception for Approval</label>
+        <label>Submit exception for approval</label>
         <locationX>100</locationX>
         <locationY>200</locationY>
         <actionName>submit</actionName>
         <actionType>submit</actionType>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>objectId</name>
             <value>
@@ -38,7 +37,7 @@
         <inputParameters>
             <name>processDefinitionNameOrId</name>
             <value>
-                <stringValue>Core_MDF_Exception_Approval_Process_v2</stringValue>
+                <stringValue>Core_MDF_Exception_Approval_Process</stringValue>
             </value>
         </inputParameters>
         <inputParameters>
@@ -59,7 +58,7 @@
         <processMetadataValues>
             <name>processSelection</name>
             <value>
-                <stringValue>Core_MDF_Exception Approval Process_v2 - Core_MDF_Exception_Approval_Process_v2</stringValue>
+                <stringValue>Exception Approval Process - Core_MDF_Exception_Approval_Process</stringValue>
             </value>
         </processMetadataValues>
         <processMetadataValues>
@@ -80,7 +79,6 @@
         <locationY>300</locationY>
         <actionName>submit</actionName>
         <actionType>submit</actionType>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>objectId</name>
             <value>
@@ -93,7 +91,7 @@
         <inputParameters>
             <name>processDefinitionNameOrId</name>
             <value>
-                <stringValue>Core_MDF_Exception_Approval_Process_v2</stringValue>
+                <stringValue>Core_MDF_Exception_Approval_Process</stringValue>
             </value>
         </inputParameters>
         <inputParameters>
@@ -109,64 +107,6 @@
             </value>
         </inputParameters>
         <nameSegment>submit</nameSegment>
-    </actionCalls>
-    <actionCalls>
-        <processMetadataValues>
-            <name>apexSelection</name>
-            <value>
-                <stringValue>Update Exception Approvers Comments</stringValue>
-            </value>
-        </processMetadataValues>
-        <name>myRule_5_A1</name>
-        <label>Update Approvers Comments</label>
-        <locationX>500</locationX>
-        <locationY>200</locationY>
-        <actionName>Core_MDF_Exception_TriggerServiceHandler</actionName>
-        <actionType>apex</actionType>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
-        <inputParameters>
-            <processMetadataValues>
-                <name>dataType</name>
-                <value>
-                    <stringValue>SObject</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>isRequired</name>
-                <value>
-                    <booleanValue>false</booleanValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideLabel</name>
-                <value>
-                    <stringValue>exceptionList</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>maxOccurs</name>
-                <value>
-                    <numberValue>1.0</numberValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>objectType</name>
-                <value>
-                    <stringValue>Core_MDF_Exception__c</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>rightHandSideType</name>
-                <value>
-                    <stringValue>SObject</stringValue>
-                </value>
-            </processMetadataValues>
-            <name>exceptionList</name>
-            <value>
-                <elementReference>myVariable_current</elementReference>
-            </value>
-        </inputParameters>
-        <nameSegment>Core_MDF_Exception_TriggerServiceHandler</nameSegment>
     </actionCalls>
     <apiVersion>49.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
@@ -212,9 +152,6 @@
         <label>myDecision2</label>
         <locationX>50</locationX>
         <locationY>0</locationY>
-        <defaultConnector>
-            <targetReference>myDecision4</targetReference>
-        </defaultConnector>
         <defaultConnectorLabel>default</defaultConnectorLabel>
         <rules>
             <name>myRule_3</name>
@@ -230,71 +167,6 @@
                 <targetReference>myRule_3_A1</targetReference>
             </connector>
             <label>If Exception is Cloned</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <processMetadataValues>
-            <name>index</name>
-            <value>
-                <numberValue>2.0</numberValue>
-            </value>
-        </processMetadataValues>
-        <name>myDecision4</name>
-        <label>myDecision4</label>
-        <locationX>50</locationX>
-        <locationY>0</locationY>
-        <defaultConnectorLabel>default</defaultConnectorLabel>
-        <rules>
-            <name>myRule_5</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>formula_myRule_5</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>myRule_5_pmetdec</targetReference>
-            </connector>
-            <label>If Exception Status is changes to Approved/Denied</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <name>myRule_5_pmetdec</name>
-        <label>Previously Met Decision</label>
-        <locationX>500</locationX>
-        <locationY>100</locationY>
-        <defaultConnector>
-            <targetReference>myRule_5_A1</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>Not Previously Met</defaultConnectorLabel>
-        <rules>
-            <name>myRule_5_pmetnullrule</name>
-            <conditionLogic>or</conditionLogic>
-            <conditions>
-                <leftValueReference>myVariable_old</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>myRule_5_A1</targetReference>
-            </connector>
-            <label>Previously Met - Null</label>
-        </rules>
-        <rules>
-            <name>myRule_5_pmetrule</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>formula_myRule_5_pmetrule</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <label>Previously Met - Prev</label>
         </rules>
     </decisions>
     <description>Submits the exception record for approval</description>
@@ -320,41 +192,7 @@
         <dataType>Boolean</dataType>
         <expression>AND(ISNEW() ,NOT(ISPICKVAL({!myVariable_current.Core_MDF_Exception_Status_nm__c} , &apos;Pending Review&apos;)))</expression>
     </formulas>
-    <formulas>
-        <processMetadataValues>
-            <name>originalFormula</name>
-            <value>
-                <stringValue>AND(
-NOT(ISNEW()),
-ISCHANGED([Core_MDF_Exception__c].Core_MDF_Exception_Status_nm__c ), 
-OR(ISPICKVAL([Core_MDF_Exception__c].Core_MDF_Exception_Status_nm__c , &apos;Approved&apos;),ISPICKVAL([Core_MDF_Exception__c].Core_MDF_Exception_Status_nm__c , &apos;Denied&apos;)))</stringValue>
-            </value>
-        </processMetadataValues>
-        <name>formula_myRule_5</name>
-        <dataType>Boolean</dataType>
-        <expression>AND(
-NOT(ISNEW()),
-ISCHANGED({!myVariable_current.Core_MDF_Exception_Status_nm__c} ), 
-OR(ISPICKVAL({!myVariable_current.Core_MDF_Exception_Status_nm__c} , &apos;Approved&apos;),ISPICKVAL({!myVariable_current.Core_MDF_Exception_Status_nm__c} , &apos;Denied&apos;)))</expression>
-    </formulas>
-    <formulas>
-        <processMetadataValues>
-            <name>originalFormula</name>
-            <value>
-                <stringValue>AND(
-NOT(ISNEW()),
-ISCHANGED([Core_MDF_Exception__c].Core_MDF_Exception_Status_nm__c ), 
-OR(ISPICKVAL([Core_MDF_Exception__c].Core_MDF_Exception_Status_nm__c , &apos;Approved&apos;),ISPICKVAL([Core_MDF_Exception__c].Core_MDF_Exception_Status_nm__c , &apos;Denied&apos;)))</stringValue>
-            </value>
-        </processMetadataValues>
-        <name>formula_myRule_5_pmetrule</name>
-        <dataType>Boolean</dataType>
-        <expression>AND(
-NOT(ISNEW()),
-ISCHANGED({!myVariable_old.Core_MDF_Exception_Status_nm__c} ), 
-OR(ISPICKVAL({!myVariable_old.Core_MDF_Exception_Status_nm__c} , &apos;Approved&apos;),ISPICKVAL({!myVariable_old.Core_MDF_Exception_Status_nm__c} , &apos;Denied&apos;)))</expression>
-    </formulas>
-    <interviewLabel>Core_MDF_PB_Submit_Exception_For_Approval-18_InterviewLabel</interviewLabel>
+    <interviewLabel>Core_MDF_PB_Submit_Exception_For_Approval-10_InterviewLabel</interviewLabel>
     <label>Submit Exception For Approval</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -466,7 +304,7 @@ OR(ISPICKVAL({!myVariable_old.Core_MDF_Exception_Status_nm__c} , &apos;Approved&
         <object>Core_MDF_Exception__c</object>
     </recordUpdates>
     <startElementReference>myDecision</startElementReference>
-    <status>Obsolete</status>
+    <status>Active</status>
     <variables>
         <name>myVariable_current</name>
         <dataType>SObject</dataType>

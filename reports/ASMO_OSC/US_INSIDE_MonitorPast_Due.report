@@ -40,6 +40,13 @@
     </columns>
     <filter>
         <criteriaItems>
+            <column>RECORDTYPE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Opportunity.Core_New_Opportunity,Opportunity.Core_Opportunity</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>STAGE_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
@@ -75,11 +82,11 @@
             <value>1</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OWNER_MANAGER</column>
+            <column>ROLLUP_DESCRIPTION</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Halversen,Wood,Oldfield,Covey,Merjanian,Stiles</value>
+            <value>halversen,wood,swyers,covey,oldfield,merjanian</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

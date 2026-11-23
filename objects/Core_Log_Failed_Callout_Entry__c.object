@@ -209,26 +209,6 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Core_Parent_Id__c</fullName>
-        <externalId>false</externalId>
-        <label>Parent Id</label>
-        <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_Parent_Name__c</fullName>
-        <externalId>false</externalId>
-        <label>Parent Name</label>
-        <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_Project__c</fullName>
         <description>From which project this record created</description>
         <externalId>false</externalId>
@@ -254,27 +234,6 @@
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>3</visibleLines>
-    </fields>
-    <fields>
-        <fullName>Core_Response_code__c</fullName>
-        <externalId>false</externalId>
-        <label>Response code</label>
-        <precision>18</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackTrending>false</trackTrending>
-        <type>Number</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_Response_status__c</fullName>
-        <externalId>false</externalId>
-        <label>Response status</label>
-        <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Core_Retry_Count__c</fullName>

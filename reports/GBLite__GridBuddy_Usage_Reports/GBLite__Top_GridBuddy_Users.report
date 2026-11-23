@@ -19,9 +19,7 @@
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>User$Name</field>
-        <sortByName>FORMULA1</sortByName>
-        <sortOrder>Desc</sortOrder>
-        <sortType>CustomSummaryFormula</sortType>
+        <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>Top GridBuddy Users</name>
     <params>
@@ -30,7 +28,7 @@
     </params>
     <reportType>GBLite__GridBuddy_Usage_Analytics_2__c</reportType>
     <scope>organization</scope>
-    <showDetails>false</showDetails>
+    <showDetails>true</showDetails>
     <showGrandTotal>false</showGrandTotal>
     <showSubTotals>false</showSubTotals>
     <sortColumn>User.GBLite__GridBuddy_Usage_Analytics__c$OwnerId$CreatedBy</sortColumn>

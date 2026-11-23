@@ -1511,7 +1511,6 @@ IF(INCLUDES( Core_Brief_Existing_Opportunity_1__r.Core_Risk_Reason__c , &quot;Su
 IF(INCLUDES( Core_Brief_Existing_Opportunity_1__r.Core_Risk_Reason__c , &quot;Supply with adjacency impact&quot;), &quot;Supply with adjacency impact&quot; + BR(), NULL)    + 
 
 IF(INCLUDES( Core_Brief_Existing_Opportunity_1__r.Core_Risk_Reason__c , &quot;Technical Expertise&quot;), &quot;Technical Expertise&quot; + BR(), NULL)</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <inlineHelpText>This is the Risk Reason for the Selected Opportunity</inlineHelpText>
         <label>Opportunity 1 Risk Reason</label>
         <required>false</required>
@@ -1747,6 +1746,32 @@ Account__r.RecordType.DeveloperName != &apos;Mastered_Account&apos;
         <errorMessage>Only Intel Account is permitted on this field. Please select Intel Account and retry again.</errorMessage>
     </validationRules>
     <visibility>Public</visibility>
+    <webLinks>
+        <fullName>Core_Account_Brief_PPT</fullName>
+        <availability>online</availability>
+        <description>Generates an account brief in PPT format</description>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Account Brief - PPT</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <url>/apex/SDOC__sdcreate3?doclist=a4E3b000000U0u9EAC&amp;id={!Account_Meeting_Brief__c.Id}&amp;Object=Account_Meeting_Brief__c</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Core_Account_Brief_Word</fullName>
+        <availability>online</availability>
+        <description>Generates a word document for the account brief</description>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Account Brief - Word</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <url>/apex/SDOC__sdcreate3?doclist=a4E3b000000U0uAEAS&amp;id={!Account_Meeting_Brief__c.Id}&amp;Object=Account_Meeting_Brief__c</url>
+    </webLinks>
     <webLinks>
         <fullName>Core_Lex_AccMeetingBrief_Share</fullName>
         <availability>online</availability>

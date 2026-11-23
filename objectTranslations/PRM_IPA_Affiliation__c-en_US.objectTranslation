@@ -19,27 +19,11 @@
     </fields>
     <fields>
         <label><!-- IPA Affiliation --></label>
-        <lookupFilter>
-            <errorMessage><!-- Association to account is not possible as Affiliation is Inactive --></errorMessage>
-        </lookupFilter>
         <name>PRM_Builder_Strategy__c</name>
         <relationshipLabel><!-- Account IPA Affiliations --></relationshipLabel>
     </fields>
     <fields>
-        <label><!-- Builder --></label>
-        <name>PRM_Builder__c</name>
-        <picklistValues>
-            <masterLabel>AI Builders</masterLabel>
-            <translation><!-- AI Builders --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Network Builders</masterLabel>
-            <translation><!-- Network Builders --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
-        <help><!-- On update of any field, Reason Text should also be updated --></help>
-        <label><!-- Reason Text --></label>
+        <label><!-- Notes --></label>
         <name>PRM_Notes__c</name>
     </fields>
     <fields>
@@ -50,17 +34,5 @@
         <label><!-- Unique Key --></label>
         <name>Unique_Key__c</name>
     </fields>
-    <recordTypes>
-        <label><!-- Intel Account Affiliation --></label>
-        <name>Intel_Account_Affiliation</name>
-    </recordTypes>
-    <recordTypes>
-        <label><!-- Partner Account Group Affiliation --></label>
-        <name>Partner_Account_Group_Affiliation</name>
-    </recordTypes>
     <startsWith>Consonant</startsWith>
-    <validationRules>
-        <errorMessage><!-- You cannot update Account and Strategy fields --></errorMessage>
-        <name>prevention_of_Duplicate_Comb_logic</name>
-    </validationRules>
 </CustomObjectTranslation>

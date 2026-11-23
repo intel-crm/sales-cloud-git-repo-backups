@@ -41,6 +41,29 @@
     <dashboardFilters>
         <dashboardFilterOptions>
             <operator>equals</operator>
+            <values>CCG</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>DCG</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>IOTG</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>NSG</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>PSG</values>
+        </dashboardFilterOptions>
+        <name>BU Short Name</name>
+    </dashboardFilters>
+    <dashboardFilters>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
             <values>Design: Original,Design: Secondary</values>
         </dashboardFilterOptions>
         <dashboardFilterOptions>
@@ -48,21 +71,6 @@
             <values>Deal: Scale-enable,Deal: Sell-through,Deal: Sell-to</values>
         </dashboardFilterOptions>
         <name>Opportunity Type</name>
-    </dashboardFilters>
-    <dashboardFilters>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>Education</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>Government</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>notEqual</operator>
-            <values>Education,Government</values>
-        </dashboardFilterOptions>
-        <name>Select Segment</name>
     </dashboardFilters>
     <dashboardGridLayout>
         <dashboardGridComponents>
@@ -79,10 +87,10 @@
                     <column>Account.Core_Sales_Groups__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
-                    <column>Opportunity.Core_Opportunity_Type__c</column>
+                    <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
-                    <column>INDUSTRY</column>
+                    <column>Opportunity.Core_Opportunity_Type__c</column>
                 </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
@@ -113,10 +121,10 @@
                     <column>Account.Core_Sales_Groups__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
-                    <column>Opportunity.Core_Opportunity_Type__c</column>
+                    <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
-                    <column>INDUSTRY</column>
+                    <column>Opportunity.Core_Opportunity_Type__c</column>
                 </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
@@ -134,7 +142,7 @@
             <rowSpan>5</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
-            <colSpan>3</colSpan>
+            <colSpan>2</colSpan>
             <columnIndex>4</columnIndex>
             <dashboardComponent>
                 <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
@@ -149,10 +157,10 @@
                     <column>Account.Core_Sales_Groups__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
-                    <column>Opportunity.Core_Opportunity_Type__c</column>
+                    <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
-                    <column>INDUSTRY</column>
+                    <column>Opportunity.Core_Opportunity_Type__c</column>
                 </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
@@ -181,8 +189,8 @@
             <rowSpan>10</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
-            <colSpan>3</colSpan>
-            <columnIndex>7</columnIndex>
+            <colSpan>2</colSpan>
+            <columnIndex>6</columnIndex>
             <dashboardComponent>
                 <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
                 <chartAxisRange>Auto</chartAxisRange>
@@ -196,10 +204,106 @@
                     <column>Account.Core_Sales_Groups__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
-                    <column>Opportunity.Core_Opportunity_Type__c</column>
+                    <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
-                    <column>INDUSTRY</column>
+                    <column>Opportunity.Core_Opportunity_Type__c</column>
+                </dashboardFilterColumns>
+                <decimalPrecision>-1</decimalPrecision>
+                <displayUnits>Auto</displayUnits>
+                <drillEnabled>false</drillEnabled>
+                <drillToDetailEnabled>false</drillToDetailEnabled>
+                <enableHover>false</enableHover>
+                <expandOthers>true</expandOthers>
+                <groupingColumn>BucketField_12541241</groupingColumn>
+                <groupingSortProperties>
+                    <groupingSorts>
+                        <groupingLevel>g1</groupingLevel>
+                        <sortOrder>a</sortOrder>
+                    </groupingSorts>
+                </groupingSortProperties>
+                <header>CCG $ Win vs Lost</header>
+                <legendPosition>Bottom</legendPosition>
+                <report>Public_SMG_CCG/Loss_3_CCG_Won_Loss</report>
+                <showPercentage>true</showPercentage>
+                <showTotal>true</showTotal>
+                <showValues>true</showValues>
+                <sortBy>RowLabelAscending</sortBy>
+                <sortLegendValues>false</sortLegendValues>
+                <title>Hover over data point to see #/%</title>
+                <useReportChart>false</useReportChart>
+            </dashboardComponent>
+            <rowIndex>0</rowIndex>
+            <rowSpan>10</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>2</colSpan>
+            <columnIndex>8</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <chartAxisRange>Auto</chartAxisRange>
+                <chartSummary>
+                    <aggregate>Sum</aggregate>
+                    <axisBinding>y</axisBinding>
+                    <column>CDF1</column>
+                </chartSummary>
+                <componentType>Donut</componentType>
+                <dashboardFilterColumns>
+                    <column>Account.Core_Sales_Groups__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Opportunity.Core_Opportunity_Type__c</column>
+                </dashboardFilterColumns>
+                <decimalPrecision>-1</decimalPrecision>
+                <displayUnits>Auto</displayUnits>
+                <drillEnabled>false</drillEnabled>
+                <drillToDetailEnabled>false</drillToDetailEnabled>
+                <enableHover>false</enableHover>
+                <expandOthers>true</expandOthers>
+                <footer>&quot;Other&quot; Segment =&quot;Not For Profit&quot; &amp; &quot;To Be Determined&quot; Industries</footer>
+                <groupingColumn>BucketField_1171009</groupingColumn>
+                <groupingSortProperties>
+                    <groupingSorts>
+                        <groupingLevel>g1</groupingLevel>
+                        <sortOrder>a</sortOrder>
+                    </groupingSorts>
+                </groupingSortProperties>
+                <header>CCG Loss split by Segment</header>
+                <legendPosition>Bottom</legendPosition>
+                <report>Public_SMG_CCG/Loss_1_CCG_Loss</report>
+                <showPercentage>true</showPercentage>
+                <showTotal>true</showTotal>
+                <showValues>true</showValues>
+                <sortBy>RowLabelAscending</sortBy>
+                <sortLegendValues>false</sortLegendValues>
+                <useReportChart>false</useReportChart>
+            </dashboardComponent>
+            <rowIndex>0</rowIndex>
+            <rowSpan>10</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>2</colSpan>
+            <columnIndex>10</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <chartAxisRange>Auto</chartAxisRange>
+                <chartSummary>
+                    <aggregate>Sum</aggregate>
+                    <axisBinding>y</axisBinding>
+                    <column>CDF1</column>
+                </chartSummary>
+                <componentType>Donut</componentType>
+                <dashboardFilterColumns>
+                    <column>Account.Core_Sales_Groups__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Opportunity.Core_Opportunity_Type__c</column>
                 </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
@@ -245,10 +349,10 @@
                     <column>Account.Core_Sales_Groups__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
-                    <column>Opportunity.Core_Opportunity_Type__c</column>
+                    <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
-                    <column>INDUSTRY</column>
+                    <column>Opportunity.Core_Opportunity_Type__c</column>
                 </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
@@ -256,7 +360,6 @@
                 <drillToDetailEnabled>false</drillToDetailEnabled>
                 <enableHover>false</enableHover>
                 <expandOthers>false</expandOthers>
-                <footer>&quot;Other&quot; = Large Enterprise</footer>
                 <groupingColumn>BucketField_1171009</groupingColumn>
                 <groupingSortProperties>
                     <groupingSorts>
@@ -279,151 +382,6 @@
             <rowSpan>8</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
-            <colSpan>3</colSpan>
-            <columnIndex>4</columnIndex>
-            <dashboardComponent>
-                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
-                <chartAxisRange>Auto</chartAxisRange>
-                <chartSummary>
-                    <aggregate>Sum</aggregate>
-                    <axisBinding>y</axisBinding>
-                    <column>CDF1</column>
-                </chartSummary>
-                <componentType>Donut</componentType>
-                <dashboardFilterColumns>
-                    <column>Account.Core_Sales_Groups__c</column>
-                </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>Opportunity.Core_Opportunity_Type__c</column>
-                </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>INDUSTRY</column>
-                </dashboardFilterColumns>
-                <decimalPrecision>-1</decimalPrecision>
-                <displayUnits>Auto</displayUnits>
-                <drillEnabled>false</drillEnabled>
-                <drillToDetailEnabled>false</drillToDetailEnabled>
-                <enableHover>false</enableHover>
-                <expandOthers>true</expandOthers>
-                <groupingColumn>BucketField_12541241</groupingColumn>
-                <groupingSortProperties>
-                    <groupingSorts>
-                        <groupingLevel>g1</groupingLevel>
-                        <sortOrder>a</sortOrder>
-                    </groupingSorts>
-                </groupingSortProperties>
-                <header>CCG $ Win vs Lost</header>
-                <legendPosition>Bottom</legendPosition>
-                <report>Public_SMG_CCG/Loss_3_CCG_Won_Loss</report>
-                <showPercentage>true</showPercentage>
-                <showTotal>true</showTotal>
-                <showValues>true</showValues>
-                <sortBy>RowLabelAscending</sortBy>
-                <sortLegendValues>false</sortLegendValues>
-                <title>Hover over data point to see #/%</title>
-                <useReportChart>false</useReportChart>
-            </dashboardComponent>
-            <rowIndex>10</rowIndex>
-            <rowSpan>10</rowSpan>
-        </dashboardGridComponents>
-        <dashboardGridComponents>
-            <colSpan>3</colSpan>
-            <columnIndex>7</columnIndex>
-            <dashboardComponent>
-                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
-                <chartAxisRange>Auto</chartAxisRange>
-                <chartSummary>
-                    <aggregate>Sum</aggregate>
-                    <axisBinding>y</axisBinding>
-                    <column>CDF1</column>
-                </chartSummary>
-                <componentType>Donut</componentType>
-                <dashboardFilterColumns>
-                    <column>Account.Core_Sales_Groups__c</column>
-                </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>Opportunity.Core_Opportunity_Type__c</column>
-                </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>INDUSTRY</column>
-                </dashboardFilterColumns>
-                <decimalPrecision>-1</decimalPrecision>
-                <displayUnits>Auto</displayUnits>
-                <drillEnabled>false</drillEnabled>
-                <drillToDetailEnabled>false</drillToDetailEnabled>
-                <enableHover>false</enableHover>
-                <expandOthers>true</expandOthers>
-                <footer>&quot;Other&quot; = Large Enterprise</footer>
-                <groupingColumn>BucketField_1171009</groupingColumn>
-                <groupingSortProperties>
-                    <groupingSorts>
-                        <groupingLevel>g1</groupingLevel>
-                        <sortOrder>a</sortOrder>
-                    </groupingSorts>
-                </groupingSortProperties>
-                <header>CCG Loss split by Segment</header>
-                <legendPosition>Bottom</legendPosition>
-                <report>Public_SMG_CCG/Loss_1_CCG_Loss</report>
-                <showPercentage>true</showPercentage>
-                <showTotal>true</showTotal>
-                <showValues>true</showValues>
-                <sortBy>RowLabelAscending</sortBy>
-                <sortLegendValues>false</sortLegendValues>
-                <useReportChart>false</useReportChart>
-            </dashboardComponent>
-            <rowIndex>10</rowIndex>
-            <rowSpan>10</rowSpan>
-        </dashboardGridComponents>
-        <dashboardGridComponents>
-            <colSpan>4</colSpan>
-            <columnIndex>0</columnIndex>
-            <dashboardComponent>
-                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
-                <chartAxisRange>Auto</chartAxisRange>
-                <chartSummary>
-                    <aggregate>Sum</aggregate>
-                    <axisBinding>y</axisBinding>
-                    <column>CDF1</column>
-                </chartSummary>
-                <componentType>Bar</componentType>
-                <dashboardFilterColumns>
-                    <column>Account.Core_Sales_Groups__c</column>
-                </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>Opportunity.Core_Opportunity_Type__c</column>
-                </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>INDUSTRY</column>
-                </dashboardFilterColumns>
-                <decimalPrecision>-1</decimalPrecision>
-                <displayUnits>Auto</displayUnits>
-                <drillEnabled>false</drillEnabled>
-                <drillToDetailEnabled>false</drillToDetailEnabled>
-                <enableHover>false</enableHover>
-                <expandOthers>false</expandOthers>
-                <groupingColumn>Opportunity.Core_Loss_Cancel_Reason__c</groupingColumn>
-                <groupingSortProperties>
-                    <groupingSorts>
-                        <groupingLevel>g1</groupingLevel>
-                        <sortColumn>s!CDF1</sortColumn>
-                        <sortOrder>d</sortOrder>
-                    </groupingSorts>
-                </groupingSortProperties>
-                <header>Top Loss Reason</header>
-                <legendPosition>Bottom</legendPosition>
-                <report>Public_SMG_CCG/Loss_4_CCG_Loss1</report>
-                <showPercentage>false</showPercentage>
-                <showPicturesOnCharts>false</showPicturesOnCharts>
-                <showValues>true</showValues>
-                <sortBy>RowLabelAscending</sortBy>
-                <sortLegendValues>false</sortLegendValues>
-                <title>Opportunity Level Lost Reason</title>
-                <useReportChart>false</useReportChart>
-            </dashboardComponent>
-            <rowIndex>13</rowIndex>
-            <rowSpan>10</rowSpan>
-        </dashboardGridComponents>
-        <dashboardGridComponents>
             <colSpan>4</colSpan>
             <columnIndex>4</columnIndex>
             <dashboardComponent>
@@ -439,10 +397,10 @@
                     <column>Account.Core_Sales_Groups__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
-                    <column>Opportunity.Core_Opportunity_Type__c</column>
+                    <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
-                    <column>INDUSTRY</column>
+                    <column>Opportunity.Core_Opportunity_Type__c</column>
                 </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
@@ -468,7 +426,7 @@
                 <sortLegendValues>false</sortLegendValues>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>20</rowIndex>
+            <rowIndex>10</rowIndex>
             <rowSpan>10</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
@@ -481,10 +439,10 @@
                     <column>Account.Core_Sales_Groups__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
-                    <column>Opportunity.Core_Opportunity_Type__c</column>
+                    <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
-                    <column>INDUSTRY</column>
+                    <column>Opportunity.Core_Opportunity_Type__c</column>
                 </dashboardFilterColumns>
                 <flexComponentProperties>
                     <decimalPrecision>-1</decimalPrecision>
@@ -529,7 +487,7 @@
                 <header>Lost $ by Account Name</header>
                 <report>Public_SMG_CCG/Loss_1_CCG_Loss</report>
             </dashboardComponent>
-            <rowIndex>20</rowIndex>
+            <rowIndex>10</rowIndex>
             <rowSpan>10</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
@@ -548,10 +506,10 @@
                     <column>Account.Core_Sales_Groups__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
-                    <column>Opportunity.Core_Opportunity_Type__c</column>
+                    <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
-                    <column>INDUSTRY</column>
+                    <column>Opportunity.Core_Opportunity_Type__c</column>
                 </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
@@ -559,7 +517,7 @@
                 <drillToDetailEnabled>false</drillToDetailEnabled>
                 <enableHover>false</enableHover>
                 <expandOthers>false</expandOthers>
-                <groupingColumn>INDUSTRY</groupingColumn>
+                <groupingColumn>Opportunity.Core_Loss_Cancel_Reason__c</groupingColumn>
                 <groupingSortProperties>
                     <groupingSorts>
                         <groupingLevel>g1</groupingLevel>
@@ -567,17 +525,18 @@
                         <sortOrder>d</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>Loss Industry Split</header>
+                <header>Top Loss Reason</header>
                 <legendPosition>Bottom</legendPosition>
-                <report>Public_SMG_CCG/Loss_1_CCG_Loss</report>
+                <report>Public_SMG_CCG/Loss_4_CCG_Loss1</report>
                 <showPercentage>false</showPercentage>
                 <showPicturesOnCharts>false</showPicturesOnCharts>
                 <showValues>true</showValues>
                 <sortBy>RowLabelAscending</sortBy>
                 <sortLegendValues>false</sortLegendValues>
+                <title>Opportunity Level Lost Reason</title>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>23</rowIndex>
+            <rowIndex>13</rowIndex>
             <rowSpan>10</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
@@ -596,10 +555,10 @@
                     <column>Account.Core_Sales_Groups__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
-                    <column>Opportunity.Core_Opportunity_Type__c</column>
+                    <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
-                    <column>INDUSTRY</column>
+                    <column>Opportunity.Core_Opportunity_Type__c</column>
                 </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
@@ -630,7 +589,7 @@
                 <title>Opportunity Level Lost Reason</title>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>30</rowIndex>
+            <rowIndex>20</rowIndex>
             <rowSpan>10</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
@@ -649,10 +608,10 @@
                     <column>Account.Core_Sales_Groups__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
-                    <column>Opportunity.Core_Opportunity_Type__c</column>
+                    <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
-                    <column>INDUSTRY</column>
+                    <column>Opportunity.Core_Opportunity_Type__c</column>
                 </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
@@ -679,7 +638,55 @@
                 <title>Opportunity Level Cancel Reason</title>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>30</rowIndex>
+            <rowIndex>20</rowIndex>
+            <rowSpan>10</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>4</colSpan>
+            <columnIndex>0</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <chartAxisRange>Auto</chartAxisRange>
+                <chartSummary>
+                    <aggregate>Sum</aggregate>
+                    <axisBinding>y</axisBinding>
+                    <column>CDF1</column>
+                </chartSummary>
+                <componentType>Bar</componentType>
+                <dashboardFilterColumns>
+                    <column>Account.Core_Sales_Groups__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Opportunity.Core_Opportunity_Type__c</column>
+                </dashboardFilterColumns>
+                <decimalPrecision>-1</decimalPrecision>
+                <displayUnits>Auto</displayUnits>
+                <drillEnabled>false</drillEnabled>
+                <drillToDetailEnabled>false</drillToDetailEnabled>
+                <enableHover>false</enableHover>
+                <expandOthers>false</expandOthers>
+                <groupingColumn>INDUSTRY</groupingColumn>
+                <groupingSortProperties>
+                    <groupingSorts>
+                        <groupingLevel>g1</groupingLevel>
+                        <sortColumn>s!CDF1</sortColumn>
+                        <sortOrder>d</sortOrder>
+                    </groupingSorts>
+                </groupingSortProperties>
+                <header>Loss Industry Split</header>
+                <legendPosition>Bottom</legendPosition>
+                <report>Public_SMG_CCG/Loss_1_CCG_Loss</report>
+                <showPercentage>false</showPercentage>
+                <showPicturesOnCharts>false</showPicturesOnCharts>
+                <showValues>true</showValues>
+                <sortBy>RowLabelAscending</sortBy>
+                <sortLegendValues>false</sortLegendValues>
+                <useReportChart>false</useReportChart>
+            </dashboardComponent>
+            <rowIndex>23</rowIndex>
             <rowSpan>10</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
@@ -692,10 +699,10 @@
                     <column>Account.Core_Sales_Groups__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
-                    <column>Opportunity.Core_Opportunity_Type__c</column>
+                    <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
-                    <column>INDUSTRY</column>
+                    <column>Opportunity.Core_Opportunity_Type__c</column>
                 </dashboardFilterColumns>
                 <flexComponentProperties>
                     <decimalPrecision>-1</decimalPrecision>
@@ -734,7 +741,7 @@
                 <header>Top Loss Opportunity</header>
                 <report>Public_SMG_CCG/Loss_1_CCG_Loss</report>
             </dashboardComponent>
-            <rowIndex>40</rowIndex>
+            <rowIndex>30</rowIndex>
             <rowSpan>5</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
@@ -747,10 +754,10 @@
                     <column>Account.Core_Sales_Groups__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
-                    <column>Opportunity.Core_Opportunity_Type__c</column>
+                    <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
-                    <column>INDUSTRY</column>
+                    <column>Opportunity.Core_Opportunity_Type__c</column>
                 </dashboardFilterColumns>
                 <flexComponentProperties>
                     <decimalPrecision>-1</decimalPrecision>
@@ -821,13 +828,12 @@
                     <hideChatterPhotos>true</hideChatterPhotos>
                     <useReportTableSetting>false</useReportTableSetting>
                 </flexComponentProperties>
-                <footer>&quot;Other&quot; Segment = Large Enterprise</footer>
                 <groupingSortProperties/>
                 <header>Top Oppoortunities Lost in 2020</header>
                 <report>Public_SMG_CCG/Loss_4_CCG_Loss1</report>
                 <title>Product Level Details</title>
             </dashboardComponent>
-            <rowIndex>45</rowIndex>
+            <rowIndex>35</rowIndex>
             <rowSpan>11</rowSpan>
         </dashboardGridComponents>
         <numberOfColumns>12</numberOfColumns>
@@ -835,8 +841,8 @@
     </dashboardGridLayout>
     <dashboardType>SpecifiedUser</dashboardType>
     <isGridLayout>true</isGridLayout>
-    <owner>10642423@intel.com.crm</owner>
-    <runningUser>10642423@intel.com.crm</runningUser>
+    <owner>10552739@intel.com.crm</owner>
+    <runningUser>10552739@intel.com.crm</runningUser>
     <textColor>#000000</textColor>
     <title>CCG Loss</title>
     <titleColor>#000000</titleColor>

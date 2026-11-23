@@ -9,7 +9,7 @@ Modification Log :
 *************************************************************************************/
 public without sharing class Core_Salesout_Search_Controller {
 
-    /*public  static final String  NONE_SELECTED             = '--None--';
+    public  static final String  NONE_SELECTED             = '--None--';
     public  static final String  ITP_MEMBERSHIP_TIER       = 'ITP Membership Tier';
     public  static final String  ITP_MEMBERSHIP_TIER_FIELD = 'Core_Current_Membership_Tier__c';
     public  static final String  TRAINING_CREDITS          = 'Training Credits';
@@ -248,7 +248,7 @@ public without sharing class Core_Salesout_Search_Controller {
 
      
 
-    }*/
+    }
 
 
     /*
@@ -257,7 +257,7 @@ public without sharing class Core_Salesout_Search_Controller {
      * Return Type  : VOID
      * Parameter    : String
      */
-    /*private String getWhereClause() {
+    private String getWhereClause() {
     
         String whereClause = salesoutPeriodCriteria();
 
@@ -557,7 +557,7 @@ public without sharing class Core_Salesout_Search_Controller {
         }
 
         return true;
-    }*/
+    }
 
 
     /*
@@ -566,7 +566,7 @@ public without sharing class Core_Salesout_Search_Controller {
      * Return Type  : None
      * Parameter    : PageReference
      */
-   /* public PageReference search() {
+    public PageReference search() {
         
 
         maxLimitExceeded  = false;      
@@ -826,5 +826,5 @@ public without sharing class Core_Salesout_Search_Controller {
         PageReference pageRef = Page.Core_Salesout_Search;
         pageRef.setRedirect(true);
         return pageRef;
-    }*/
+    }
 }

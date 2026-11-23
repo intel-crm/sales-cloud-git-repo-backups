@@ -32,13 +32,12 @@ public without sharing class UCD_ACM_AccountMutationSelector implements UCD_ACM_
         account.RecordTypeId = accountRecord.RecordTypeId;
         account.OwnerId = System.Label.Core_Uncovered_Account_ID;
 
-
         for( UCD_ACM_Models.AccountAddress  accountAddress : accountRecord.Addresses){
                 account.ShippingCountryCode	= accountAddress.CountryCode;
                 account.BillingCountryCode	= accountAddress.CountryCode;
            
         }
-        if( accountRecord.AccountRequestReferences != null ){
+        if(accountRecord.AccountRequestReferences != null){
             for( String Key : accountRecord.AccountRequestReferences.keySet()){
                 account.Core_Account_Reference_Source_ID__c	=  accountRecord.AccountRequestReferences.get(Key);
                 account.Core_Account_Reference_Source_Name__c	=  Key;
@@ -145,22 +144,10 @@ public without sharing class UCD_ACM_AccountMutationSelector implements UCD_ACM_
         }
 
         if(insertIntegrationMessages.size() > 0){
-            //System.debug('insertIntegrationMessages-->'+insertIntegrationMessages);
-            if(Schema.sObjectType.ACM_Integration_Message_Queue__c.fields.Content__c.isCreateable() &&
-            Schema.sObjectType.ACM_Integration_Message_Queue__c.fields.Custom_Filter__c.isCreateable()  &&
-            Schema.sObjectType.ACM_Integration_Message_Queue__c.fields.Content_Type__c.isCreateable() &&
-            Schema.sObjectType.ACM_Integration_Message_Queue__c.fields.Message_Status__c.isCreateable()  &&
-            Schema.sObjectType.ACM_Integration_Message_Queue__c.fields.Module_Name__c.isCreateable() &&
-            Schema.sObjectType.ACM_Integration_Message_Queue__c.fields.Queue_Type__c.isCreateable() &&
-            Schema.sObjectType.ACM_Integration_Message_Queue__c.fields.Retry_Count__c.isCreateable() &&
-            Schema.sObjectType.ACM_Integration_Message_Queue__c.fields.Source_System__c.isCreateable()){
-                insert insertIntegrationMessages;
-            }
+            insert insertIntegrationMessages;
         }
         if(updateIntegrationMessages.size() > 0){
-            if(Schema.sObjectType.ACM_Integration_Message_Queue__c.fields.Message_Status__c.isUpdateable()){
-                update updateIntegrationMessages;
-            }
+            update updateIntegrationMessages;
         }
 
         }catch(Exception ex){
@@ -191,45 +178,12 @@ public without sharing class UCD_ACM_AccountMutationSelector implements UCD_ACM_
             }
 
             if(integrationMsgsToUpdate.size() > 0){
-                if(Schema.sObjectType.ACM_Integration_Message_Queue__c.fields.Message_Status__c.isUpdateable() &&
-                Schema.sObjectType.ACM_Integration_Message_Queue__c.fields.Retry_Count__c.isUpdateable()){
-                    update integrationMsgsToUpdate;
-                }
+                update integrationMsgsToUpdate;
             }
         }catch(Exception ex){
             UCD_ACM_Logger.error('UCD_ACM_AccountMutationSelector','updateIntegrationMsgQueueStatus','Message: '+ex.getMessage()+'. StackTrace: '+ex.getStackTraceString(),'AccountIds: '+accountIds.toString());
         }
     }
 
-    /** 
-    * description : Update ACM_Integration_Message_Queue__c with Status Error
-    * params : Set<Id>, String
-    * return : void
-    * author and date : ajayx.gat@intel.com 09/01/2024.
-    */
-    public void updateIntegrationMsgQueueStatusForARQ(Set<Id> arqIds, String statusType) {
-        List<ACM_Integration_Message_Queue__c> integrationMsgsToUpdate = new List<ACM_Integration_Message_Queue__c>();
-        Map<Id, ACM_Integration_Message_Queue__c> integrationMessageQueueRecordsById = accountQuerySelectorInstance.getIntegrationMessageQueueByArqId(arqIds);
-        try{
-            if(integrationMessageQueueRecordsById != null) {
-                for(ACM_Integration_Message_Queue__c integrationMessage : integrationMessageQueueRecordsById.values()) {
-                    integrationMessage.Message_Status__c = statusType;
-                        if(statusType == 'Error') {
-                            integrationMessage.Retry_Count__c += 1;
-                        }
-                    integrationMsgsToUpdate.add(integrationMessage);
-                }
-            }
 
-            if(!integrationMsgsToUpdate.isEmpty()) {
-                if( Schema.sObjectType.ACM_Integration_Message_Queue__c.fields.Message_Status__c.isUpdateable() &&
-                    Schema.sObjectType.ACM_Integration_Message_Queue__c.fields.Retry_Count__c.isUpdateable()) {
-                    update integrationMsgsToUpdate;
-                }
-            }
-        } catch(Exception ex) {
-            UCD_ACM_Logger.error('UCD_ACM_AccountMutationSelector','updateIntegrationMsgQueueStatusForARQ','Message: '+ex.getMessage()+'. StackTrace: '+ex.getStackTraceString(),'arqIds: '+arqIds.toString());
-        }
-    }
-                
 }

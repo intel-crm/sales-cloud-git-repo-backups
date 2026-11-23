@@ -1,0 +1,613 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Solution Storage</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Solution Storage</value>
+    </caseValues>
+    <fields>
+        <label><!-- Aggregator --></label>
+        <name>Core_Aggregator__c</name>
+        <picklistValues>
+            <masterLabel>Act 1</masterLabel>
+            <translation><!-- Act 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Act 2</masterLabel>
+            <translation><!-- Act 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Application/ Workload --></label>
+        <name>Core_Application_Workload__c</name>
+        <picklistValues>
+            <masterLabel>5G</masterLabel>
+            <translation><!-- 5G --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Analytics</masterLabel>
+            <translation><!-- Analytics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>App Dev/PaaS/FaaS</masterLabel>
+            <translation><!-- App Dev/PaaS/FaaS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Computer Vision</masterLabel>
+            <translation><!-- Computer Vision --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Containers</masterLabel>
+            <translation><!-- Containers --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Management/Preparation</masterLabel>
+            <translation><!-- Data Management/Preparation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Deep Learning/Training/Inference</masterLabel>
+            <translation><!-- Deep Learning/Training/Inference --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digital Content Creation</masterLabel>
+            <translation><!-- Digital Content Creation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Energy / Oil and Gas</masterLabel>
+            <translation><!-- Energy / Oil and Gas --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Financial</masterLabel>
+            <translation><!-- Financial --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Genomics</masterLabel>
+            <translation><!-- Genomics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Health and Life Sciences</masterLabel>
+            <translation><!-- Health and Life Sciences --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In-Memory Computing</masterLabel>
+            <translation><!-- In-Memory Computing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IoT</masterLabel>
+            <translation><!-- IoT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Machine Learning/Inference</masterLabel>
+            <translation><!-- Machine Learning/Inference --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Manufacturing</masterLabel>
+            <translation><!-- Manufacturing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NFVi</masterLabel>
+            <translation><!-- NFVi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Online Transaction</masterLabel>
+            <translation><!-- Online Transaction --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Scientific</masterLabel>
+            <translation><!-- Scientific --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Simulation/Modeling</masterLabel>
+            <translation><!-- Simulation/Modeling --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Telecommunications/Comms Services</masterLabel>
+            <translation><!-- Telecommunications/Comms Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Video Streaming</masterLabel>
+            <translation><!-- Video Streaming --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Video Surveillance</masterLabel>
+            <translation><!-- Video Surveillance --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- CSP --></label>
+        <name>Core_CSP__c</name>
+        <picklistValues>
+            <masterLabel>Act 1</masterLabel>
+            <translation><!-- Act 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Act 2</masterLabel>
+            <translation><!-- Act 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Content  Label --></label>
+        <name>Core_Content_Label__c</name>
+    </fields>
+    <fields>
+        <label><!-- Content Link --></label>
+        <name>Core_Content_Link__c</name>
+    </fields>
+    <fields>
+        <label><!-- Distributor --></label>
+        <name>Core_Distributor__c</name>
+        <picklistValues>
+            <masterLabel>Act 1</masterLabel>
+            <translation><!-- Act 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Act 2</masterLabel>
+            <translation><!-- Act 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- End Customer Solution --></label>
+        <name>Core_End_Customer_Solution__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- ISV --></label>
+        <name>Core_ISV__c</name>
+        <picklistValues>
+            <masterLabel>Act 1</masterLabel>
+            <translation><!-- Act 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Act 2</masterLabel>
+            <translation><!-- Act 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Industry Use Case --></label>
+        <name>Core_Industry_Use_Case__c</name>
+        <picklistValues>
+            <masterLabel>AI/HPC Convergence</masterLabel>
+            <translation><!-- AI/HPC Convergence --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AR/VR</masterLabel>
+            <translation><!-- AR/VR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ad Serving</masterLabel>
+            <translation><!-- Ad Serving --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Anomaly Detection</masterLabel>
+            <translation><!-- Anomaly Detection --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Application Development</masterLabel>
+            <translation><!-- Application Development --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Audit</masterLabel>
+            <translation><!-- Audit --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Automotive</masterLabel>
+            <translation><!-- Automotive --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bioinformatics</masterLabel>
+            <translation><!-- Bioinformatics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Blockchain</masterLabel>
+            <translation><!-- Blockchain --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cloud Native/Cloudification</masterLabel>
+            <translation><!-- Cloud Native/Cloudification --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Collaboration Tools</masterLabel>
+            <translation><!-- Collaboration Tools --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Content Delivery Network</masterLabel>
+            <translation><!-- Content Delivery Network --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Conversational/Chat Bot</masterLabel>
+            <translation><!-- Conversational/Chat Bot --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Credit Scoring</masterLabel>
+            <translation><!-- Credit Scoring --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer Analytics</masterLabel>
+            <translation><!-- Customer Analytics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cyber Security</masterLabel>
+            <translation><!-- Cyber Security --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Warehouse</masterLabel>
+            <translation><!-- Data Warehouse --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Distributed Business / Distributed Transaction</masterLabel>
+            <translation><!-- Distributed Business / Distributed Transaction --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Drug Discovery</masterLabel>
+            <translation><!-- Drug Discovery --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>E-Commerce</masterLabel>
+            <translation><!-- E-Commerce --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Edge Computing</masterLabel>
+            <translation><!-- Edge Computing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Manufacturing</masterLabel>
+            <translation><!-- Manufacturing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transportation and Warehouse : Warehousing and Storage</masterLabel>
+            <translation><!-- Transportation and Warehouse : Warehousing and Storage --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- OEM --></label>
+        <name>Core_OEM__c</name>
+        <picklistValues>
+            <masterLabel>Act 1</masterLabel>
+            <translation><!-- Act 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Act 2</masterLabel>
+            <translation><!-- Act 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- OSV --></label>
+        <name>Core_OSV__c</name>
+        <picklistValues>
+            <masterLabel>Act 1</masterLabel>
+            <translation><!-- Act 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Act 2</masterLabel>
+            <translation><!-- Act 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Partner --></label>
+        <name>Core_Partner__c</name>
+        <relationshipLabel><!-- Solution Storage --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Platform --></label>
+        <name>Core_Platform__c</name>
+    </fields>
+    <fields>
+        <label><!-- Pricing --></label>
+        <name>Core_Pricing__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product --></label>
+        <name>Core_Product__c</name>
+    </fields>
+    <fields>
+        <label><!-- Region Deployed --></label>
+        <name>Core_Region_Deployed__c</name>
+        <picklistValues>
+            <masterLabel>APAC</masterLabel>
+            <translation><!-- APAC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEA</masterLabel>
+            <translation><!-- EMEA --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Region of availability --></label>
+        <name>Core_Region_of_availability__c</name>
+        <picklistValues>
+            <masterLabel>APAC</masterLabel>
+            <translation><!-- APAC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LAR</masterLabel>
+            <translation><!-- LAR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NAR</masterLabel>
+            <translation><!-- NAR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRC</masterLabel>
+            <translation><!-- PRC --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- SI --></label>
+        <name>Core_SI__c</name>
+        <picklistValues>
+            <masterLabel>Act 1</masterLabel>
+            <translation><!-- Act 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Act 2</masterLabel>
+            <translation><!-- Act 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Solution Area --></label>
+        <name>Core_Solution_Area__c</name>
+        <picklistValues>
+            <masterLabel>CCG Commercial Deal $</masterLabel>
+            <translation><!-- CCG Commercial Deal $ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CCG Partner Consumption $</masterLabel>
+            <translation><!-- CCG Partner Consumption $ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CCG Partner Enablement Deal #</masterLabel>
+            <translation><!-- CCG Partner Enablement Deal # --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DCAI Compute Deal $</masterLabel>
+            <translation><!-- DCAI Compute Deal $ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DCAI Partner Consumption $</masterLabel>
+            <translation><!-- DCAI Partner Consumption $ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NEX Deal (Sell-To) $ - IOTG</masterLabel>
+            <translation><!-- NEX Deal (Sell-To) $ - IOTG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NEX Deal (Sell-To) $ - Networking / Comms</masterLabel>
+            <translation><!-- NEX Deal (Sell-To) $ - Networking / Comms --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NEX Design</masterLabel>
+            <translation><!-- NEX Design --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NEX IOTG Partner Consumption $</masterLabel>
+            <translation><!-- NEX IOTG Partner Consumption $ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NEX Industry Transformational Engagement (ADDS Process)</masterLabel>
+            <translation><!-- NEX Industry Transformational Engagement (ADDS Process) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Applicable</masterLabel>
+            <translation><!-- Not Applicable --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>One Intel SW Enablement</masterLabel>
+            <translation><!-- One Intel SW Enablement --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Solution Description --></label>
+        <name>Core_Solution_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Solution Title --></label>
+        <name>Core_Solution_Title__c</name>
+    </fields>
+    <fields>
+        <label><!-- Solution Type --></label>
+        <name>Core_Solution_Type__c</name>
+        <picklistValues>
+            <masterLabel>AI Inference</masterLabel>
+            <translation><!-- AI Inference --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Analytics</masterLabel>
+            <translation><!-- Analytics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CCG Specialty Programs - Recruitment of new IPA partner to Managed Services and/or DaaS Specialty w/GTM plan</masterLabel>
+            <translation><!-- CCG Specialty Programs - Recruitment of new IPA partner to Managed Services and/or DaaS Specialty w/GTM plan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CCG non-vPro Platform</masterLabel>
+            <translation><!-- CCG non-vPro Platform --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CCG vPro Platform</masterLabel>
+            <translation><!-- CCG vPro Platform --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CCG vPro Solution Adoption</masterLabel>
+            <translation><!-- CCG vPro Solution Adoption --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSP-Optimized</masterLabel>
+            <translation><!-- CSP-Optimized --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cloud Infrastructure Other</masterLabel>
+            <translation><!-- Cloud Infrastructure Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Comms Infra. / Networking Solution</masterLabel>
+            <translation><!-- Comms Infra. / Networking Solution --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DSG Solution</masterLabel>
+            <translation><!-- DSG Solution --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Center / Cloud Solution</masterLabel>
+            <translation><!-- Data Center / Cloud Solution --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Centric Solutions Scale Program</masterLabel>
+            <translation><!-- Data Centric Solutions Scale Program --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Centric Solutions Scale Program, Select Solution</masterLabel>
+            <translation><!-- Data Centric Solutions Scale Program, Select Solution --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Education | Skills for Innovation - Scale GTM program: Standard offering | Pipeline | Sales out</masterLabel>
+            <translation><!-- Education | Skills for Innovation - Scale GTM program: Standard offering | Pipeline | Sales out --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Enterprise &amp; Government Other</masterLabel>
+            <translation><!-- Enterprise &amp; Government Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>High Perf Compute</masterLabel>
+            <translation><!-- High Perf Compute --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IT Infrastructure</masterLabel>
+            <translation><!-- IT Infrastructure --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Industrial Other</masterLabel>
+            <translation><!-- Industrial Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel Affinity CSP Deal #</masterLabel>
+            <translation><!-- Intel Affinity CSP Deal # --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel Affinity On-Prem Deal #</masterLabel>
+            <translation><!-- Intel Affinity On-Prem Deal # --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Network Infrastructure</masterLabel>
+            <translation><!-- Network Infrastructure --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Applicable</masterLabel>
+            <translation><!-- Not Applicable --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>One Edge Solution</masterLabel>
+            <translation><!-- One Edge Solution --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>One Intel AI Deal</masterLabel>
+            <translation><!-- One Intel AI Deal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSG Smart NIC</masterLabel>
+            <translation><!-- PSG Smart NIC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSG Storage</masterLabel>
+            <translation><!-- PSG Storage --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner Select Solution</masterLabel>
+            <translation><!-- Partner Select Solution --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner Select Solution, Data Centric Solutions Scale Program</masterLabel>
+            <translation><!-- Partner Select Solution, Data Centric Solutions Scale Program --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Reference architecture</masterLabel>
+            <translation><!-- Reference architecture --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Select Solution</masterLabel>
+            <translation><!-- Select Solution --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technology/ISV Solutions</masterLabel>
+            <translation><!-- Technology/ISV Solutions --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technology/ISV enablement</masterLabel>
+            <translation><!-- Technology/ISV enablement --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unite Software - Scale GTM Program: Standard service offering | Pipeline | Revenue Share | Software licensing</masterLabel>
+            <translation><!-- Unite Software - Scale GTM Program: Standard service offering | Pipeline | Revenue Share | Software licensing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Use Case: Asset &amp; Operations Optimization</masterLabel>
+            <translation><!-- Use Case: Asset &amp; Operations Optimization --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Use Case: Control Optimization &amp; Autonomy</masterLabel>
+            <translation><!-- Use Case: Control Optimization &amp; Autonomy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Use Case: Energy Monitoring &amp; Management</masterLabel>
+            <translation><!-- Use Case: Energy Monitoring &amp; Management --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Use Case: Environment Monitoring</masterLabel>
+            <translation><!-- Use Case: Environment Monitoring --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Use Case: Human Wellness Monitoring</masterLabel>
+            <translation><!-- Use Case: Human Wellness Monitoring --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Use Case: Interactive Media</masterLabel>
+            <translation><!-- Use Case: Interactive Media --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Use Case: Logistics &amp; Tracking</masterLabel>
+            <translation><!-- Use Case: Logistics &amp; Tracking --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Use Case: Machine Condition Monitoring</masterLabel>
+            <translation><!-- Use Case: Machine Condition Monitoring --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Use Case: Product Inspection</masterLabel>
+            <translation><!-- Use Case: Product Inspection --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Use Case: Situational Monitoring</masterLabel>
+            <translation><!-- Use Case: Situational Monitoring --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Use Case: Video Safety and Security</masterLabel>
+            <translation><!-- Use Case: Video Safety and Security --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Solution owner email --></label>
+        <name>Core_Solution_owner_email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Technology Enabled* --></label>
+        <name>Core_Technology_Enabled__c</name>
+        <picklistValues>
+            <masterLabel>SGX</masterLabel>
+            <translation><!-- SGX --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Vpro</masterLabel>
+            <translation><!-- Vpro --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

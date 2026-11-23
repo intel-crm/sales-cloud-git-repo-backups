@@ -17,7 +17,6 @@ public class PRM_TestUtility{
     public static PRM_Registration_Request__c getPRMRegistrationRequest(){
         PRM_Registration_Request__c regRequest = new PRM_Registration_Request__c();
         regRequest.Name = 'RR1';
-        regRequest.PRM_EmailVerifiedDateTime__c=System.Today();
         regRequest.PRM_First_Name__c = 'Test Request';
         regRequest.PRM_Last_Name__c = 'New';
         regRequest.PRM_Email_ID__c = 'testrequest@mailinator.com';
@@ -28,7 +27,7 @@ public class PRM_TestUtility{
         regRequest.PRM_Address_Line_2__c='Bengaluru,India'; 
         regRequest.PRM_City__c='Las Vegas';
         regRequest.PRM_State_Province__c='NY';
-        regRequest.PRM_Country__c='US';
+        regRequest.PRM_Country__c='USA';
         return regRequest;
     } 
     
@@ -51,10 +50,8 @@ public class PRM_TestUtility{
     public static PRM_PartnerAgreement__c getPartnerAgreement(){
         PRM_PartnerAgreement__c pa = new PRM_PartnerAgreement__c();
         pa.Name='New Partner Program Legal Agreement';
-      // pa.Name='Intel Partner Alliance Terms & Condition';
         pa.PRM_Language_Codes__c='ENG';
         pa.PRM_Agreement_Cd__c='CHL_TNC_APAC_ENG';
-      	//pa.PRM_Agreement_Cd__c='IPA_TANDC';
         return pa;
     } 
     
@@ -106,9 +103,6 @@ public class PRM_TestUtility{
         con.LastName='Smith';
         con.Email='testrequest@mailinator.com';
         con.Phone='9999779791';
-        con.Core_IPA_PartnerRole__c = 'Distributor';
-        con.MailingCountry = 'India';
-     //   con.Core_IPA_PartnerRole__c = null;
         return con;
     } 
     
@@ -143,31 +137,4 @@ public class PRM_TestUtility{
         pbenefit.PRM_Benefit_Cd__c='BFTMKTSTD';
         return pbenefit;
     } 
-    
-    public static List<User> createUser(){
-        String profileNameSet='System Administrator';
-            UserRole role = [SELECT Id FROM UserRole WHERE Name = 'Admin' LIMIT 1];
-        Set<Id> userProfileIdSet=new Set<Id>();
-        for(Profile proId : [SELECT id , Name  FROM Profile  WHERE Name = :profileNameSet]){
-            userProfileIdSet.add(proId.Id);
-        } 
-        
-        List<User> lstUser = new List<User>();
-        User u = [select id from user where id =: UserInfo.getUserId() limit 1];
-        System.runAs(u){
-            for(Id profileId : userProfileIdSet){
-                User u1 = new User(Alias = 'user13', Email= 'firstNameIPA9562@intel.com',
-                                   EmailEncodingKey='UTF-8', LastName='Testing', LanguageLocaleKey='en_US',
-                                   LocaleSidKey='en_US', ProfileId = profileId,IsActive = true,
-                                   TimeZoneSidKey='America/Los_Angeles',UserRoleId = role.Id, UserName = 'FirstNameIPA9565Q@exampleTC.com' + Math.floor(Math.random() * 1000));
-                
-                lstUser.add(u1);                
-            }
-            
-            insert lstUser;
-           
-        }  
-        return lstUser;
-    }
-    
 }

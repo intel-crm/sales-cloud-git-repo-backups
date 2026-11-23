@@ -8,7 +8,7 @@
         <br/><lightning-textarea name="comment" label="Please enter the cancel comments" style="text-align:left;" value={commentText} onchange={handleReasonChange} label-class="custom-label-class" ></lightning-textarea>
     <br/>
     <div class="slds-align_absolute-center">
-    <lightning-button class="slds-button slds-button_brand" label ="Save" variant="brand" onclick ={handleSaveButton} disabled={disableSave}></lightning-button> 
+    <lightning-button class="slds-button slds-button_brand" label ="Save" variant="brand" onclick ={handleSaveButton}></lightning-button> 
     <lightning-button class="slds-button slds-button_brand" label ="Cancel" variant="brand" onclick ={sendClosePopupToAura}></lightning-button> 
 </div></template>  
     
@@ -18,9 +18,6 @@
             
             <template if:true={cancelledProduct}>
                 <hr><p class="slds-align_absolute-center">Product is already cancelled.</p><br />
-            </template>
-            <template if:true={expiredProduct}>
-                <hr><p class="slds-align_absolute-center">Product is already expired.</p><br />
             </template>
             <template if:true={success}>
                 <hr><p class="slds-align_absolute-center">Product is Cancelled Successfully.</p><br />

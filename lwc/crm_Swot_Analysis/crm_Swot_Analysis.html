@@ -1,0 +1,53 @@
+<template>
+    <div class="slds-box slds-theme_default">
+      <section class="slds-section">
+        <div class="slds-section__title">
+          <button class="slds-button slds-section__title-action" onclick={toggleSection}>
+            <lightning-icon icon-name={iconName} alternative-text="Toggle" size="x-small"></lightning-icon>
+            <span class="slds-truncate" title=" SWOT Analysis">SWOT Analysis</span>
+          </button>
+        </div>
+  
+        <template if:false={isCollapsed}>
+
+        <div class="slds-grid slds-wrap">
+            <!-- Strengths -->
+            <div class="slds-col slds-size_1-of-2 slds-p-around_small">
+              <div class="swot-box strengths-box">
+                <label>Strengths</label>
+                <div>{cleanedStrengths}</div>
+                <lightning-icon icon-name="utility:edit" size="x-small" class="edit-icon"></lightning-icon>
+              </div>
+            </div>
+    
+            <!-- Opportunities -->
+            <div class="slds-col slds-size_1-of-2 slds-p-around_small">
+              <div class="swot-box opportunities-box">
+                <label>Opportunities</label>
+                <div>{cleanedOpportunities}</div>
+                <lightning-icon icon-name="utility:edit" size="x-small" class="edit-icon"></lightning-icon>
+              </div>
+            </div>
+    
+            <!-- Weaknesses -->
+            <div class="slds-col slds-size_1-of-2 slds-p-around_small">
+              <div class="swot-box weaknesses-box">
+                <label>Weaknesses</label>
+                <div>{cleanedWeaknesses}</div>
+                <lightning-icon icon-name="utility:edit" size="x-small" class="edit-icon"></lightning-icon>
+              </div>
+            </div>
+    
+            <!-- Threats -->
+            <div class="slds-col slds-size_1-of-2 slds-p-around_small">
+              <div class="swot-box threats-box">
+                <label>Threats</label>
+                <div>{cleanedThreats}</div>
+                <lightning-icon icon-name="utility:edit" size="x-small" class="edit-icon"></lightning-icon>
+              </div>
+            </div>
+          </div>
+        </template>
+      </section>
+    </div>
+  </template>

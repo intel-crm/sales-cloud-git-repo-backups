@@ -1,0 +1,29 @@
+<template>
+    <lightning-card title="data Table">
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+            <thead>
+                <tr class="slds-line-height_reset">
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title="Id">Id</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title="Name">Name</div>
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <template for:each={data} for:item="act">
+                    <tr key={act.Id}>
+                        <th scope="col">
+                            <div>{act.Id}</div>
+                        </th>
+                        <th scope="col">
+                            <div>{act.Name}</div>
+                        </th>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+    </lightning-card>
+</template>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <description>When the Opportunity Request is submitted notify the approvers</description>
+    <encodingKey>UTF-8</encodingKey>
+    <letterhead>Blank</letterhead>
+    <name>Core_Oppty_Support_Submit</name>
+    <style>freeForm</style>
+    <subject>New Opportunity Support Request (): -</subject>
+    <textOnly>{!Core_Opportunity_Support__c.Core_TSS_Support_Type__c}</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

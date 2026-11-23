@@ -18,8 +18,9 @@ global without sharing class Pricing_RestAPI_MyDeals{
     global static Pricing_RestAPI_Response doPostapi(){
         try{
             RestRequest req = RestContext.request;
-            if(validateRequestHeader(req.requestBody.toString())){
-                processRequest(req.requestBody.toString()); 
+            String requestBodyStr = req.requestBody.toString();
+            if(validateRequestHeader(requestBodyStr)){
+                processRequest(requestBodyStr); 
             }else{
                 //action is invalid
                 Pricing_RestAPI_Util.processException(null, Pricing_RestAPI_ResponseCodes.MALFORMED_INPUT_9011, response, RESTAPI_NAME, ENTRY_TIME);
@@ -75,7 +76,7 @@ global without sharing class Pricing_RestAPI_MyDeals{
             if(String.isBlank(response.code)){
                 response.code = Pricing_RestAPI_ResponseCodes.SUCCESS_CODE_200; 
             }
-            user currentUser = [Select Id,ContactId ,AccountId from User where Id = :UserInfo.getUserId()];
+            user currentUser = [Select Id, AccountId from User where Id = :UserInfo.getUserId()];
             Pricing_RestAPI_LoggingUtil.logTransaction(ENTRY_TIME, response, currentUser);        
         }  
     }

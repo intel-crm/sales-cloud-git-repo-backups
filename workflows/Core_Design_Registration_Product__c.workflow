@@ -23,6 +23,16 @@
         <protected>false</protected>
         <reevaluateOnChange>false</reevaluateOnChange>
     </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Test_PSD</fullName>
+        <field>PCC_Quote_Line_Pricing_Start_Date__c</field>
+        <formula>Core_Design_Registration_Id__r.PCC_Pricing_Start_Date__c</formula>
+        <name>Test_PSD</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
     <rules>
         <fullName>Core_DDR_Lock_Product</fullName>
         <actions>

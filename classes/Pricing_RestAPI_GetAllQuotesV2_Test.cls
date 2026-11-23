@@ -1,10 +1,3 @@
-/**
- * @description       : 
- * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
- * @group             : 
- * @last modified on  : 03-10-2026
- * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
-**/
 @isTest
 public class Pricing_RestAPI_GetAllQuotesV2_Test {
     @testSetup 
@@ -46,9 +39,9 @@ public class Pricing_RestAPI_GetAllQuotesV2_Test {
         { 
             Account acc = Pricing_Test_Utility.createAccount();
             //Contact con = Pricing_Test_Utility.createContact(acc.Id);
-            Contact con = Pricing_Test_Utility.createPrimaryContactWithParam(acc.Id,'Rest_API_Get_All_Quotes_V2_Test');
+            Contact con = Pricing_Test_Utility.createPrimaryContactWithParam(acc.Id,'Get_All_QuotesV2');
             
-            User usr = [SELECT id FROM User WHERE email='Rest_API_Get_All_Quotes_V2_Test@noemail.com'];
+            User usr = [SELECT id FROM User WHERE email='Get_All_QuotesV2@noemail.com'];
             Group grp = new Group();
             grp.name = 'PG: Partner';
             grp.Type = 'Regular'; 
@@ -262,7 +255,7 @@ public class Pricing_RestAPI_GetAllQuotesV2_Test {
     static testMethod void testgetAllQuotesV2withoutParam(){
         SBQQ__Quote__c quoteClient = [select Id from SBQQ__Quote__c 
                                       WHERE Pricing_Project_Name_Nm__c = 'Test Project123' Limit 1];
-        User usr = [SELECT id, AccountId FROM User WHERE email='Rest_API_Get_All_Quotes_V2_Test@noemail.com'];
+        User usr = [SELECT id, AccountId FROM User WHERE email='Get_All_QuotesV2@noemail.com'];
         product2 prodClient = new product2();
         prodClient.Core_product_Org__c = 'Sales';
         prodClient.Core_product_Type__c = 'Processors';
@@ -276,6 +269,17 @@ public class Pricing_RestAPI_GetAllQuotesV2_Test {
         insert prodClient;
         system.runAs(usr){
             test.startTest();
+            /*product2 prodClient = new product2();
+prodClient.Core_product_Org__c = 'Sales';
+prodClient.Core_product_Type__c = 'Processors';
+prodClient.Core_Sales_Visible_Flag__c  = True;
+prodClient.IsActive = True;
+prodClient.Core_VerticalSegment__c = 'Desktop';
+prodClient.Core_Processor_Number_Nm__c = 'P6500';
+prodClient.Core_Hierarchy_ID__c = '43';
+prodClient.Core_Group_Code_Short_Name__c = 'CCG';
+prodClient.Name = 'product Y';
+insert prodClient;*/
             Pricing_Competitor_Product__c cp1 = new Pricing_Competitor_Product__c(
                 Name = 'Product CCG',
                 Pricing_Competitor_Product_Provider_Nm__c = 'Pro-Z',
@@ -323,7 +327,7 @@ public class Pricing_RestAPI_GetAllQuotesV2_Test {
         }
     }
     static testMethod void testgetAllQuotesV2withParam(){
-        User usr = [SELECT id FROM User WHERE email='Rest_API_Get_All_Quotes_V2_Test@noemail.com'];
+        User usr = [SELECT id FROM User WHERE email='Get_All_QuotesV2@noemail.com'];
         system.runAs(usr){
             test.startTest(); 
             RestRequest req = (RestRequest)System.jSON.deserialize(Pricing_RestAPI_TestUtility.REQUEST_TEMPLATE, RestRequest.class);
@@ -343,7 +347,7 @@ public class Pricing_RestAPI_GetAllQuotesV2_Test {
     }
     
     static testMethod void testgetAllQuotesV2_OptanePMem(){
-        User usr = [SELECT id FROM User WHERE email='Rest_API_Get_All_Quotes_V2_Test@noemail.com'];
+        User usr = [SELECT id FROM User WHERE email='Get_All_QuotesV2@noemail.com'];
         system.runAs(usr){
             test.startTest(); 
             RestRequest req = (RestRequest)System.jSON.deserialize(Pricing_RestAPI_TestUtility.REQUEST_TEMPLATE, RestRequest.class);
@@ -364,7 +368,7 @@ public class Pricing_RestAPI_GetAllQuotesV2_Test {
     }
     
     static testMethod void testgetAllQuotesV2_Ethernet(){
-        User usr = [SELECT id FROM User WHERE email='Rest_API_Get_All_Quotes_V2_Test@noemail.com'];
+        User usr = [SELECT id FROM User WHERE email='Get_All_QuotesV2@noemail.com'];
         system.runAs(usr){
             test.startTest(); 
             RestRequest req = (RestRequest)System.jSON.deserialize(Pricing_RestAPI_TestUtility.REQUEST_TEMPLATE, RestRequest.class);
@@ -385,7 +389,7 @@ public class Pricing_RestAPI_GetAllQuotesV2_Test {
     }
     
     static testMethod void testgetAllQuotesV2_Client(){
-        User usr = [SELECT id FROM User WHERE email='Rest_API_Get_All_Quotes_V2_Test@noemail.com'];
+        User usr = [SELECT id FROM User WHERE email='Get_All_QuotesV2@noemail.com'];
         system.runAs(usr){
             test.startTest(); 
             RestRequest req = (RestRequest)System.jSON.deserialize(Pricing_RestAPI_TestUtility.REQUEST_TEMPLATE, RestRequest.class);
@@ -406,7 +410,7 @@ public class Pricing_RestAPI_GetAllQuotesV2_Test {
     }    
     
     static testMethod void testgetAllQuotesV2_Test(){
-        User usr = [SELECT id FROM User WHERE email='Rest_API_Get_All_Quotes_V2_Test@noemail.com'];
+        User usr = [SELECT id FROM User WHERE email='Get_All_QuotesV2@noemail.com'];
         system.runAs(usr){
             test.startTest(); 
             RestRequest req = (RestRequest)System.jSON.deserialize(Pricing_RestAPI_TestUtility.REQUEST_TEMPLATE, RestRequest.class);
@@ -429,7 +433,8 @@ public class Pricing_RestAPI_GetAllQuotesV2_Test {
     static testMethod void testgetAllQuotesV2_DataCenterGPU_Test(){
         SBQQ__Quote__c quote = [select id from SBQQ__Quote__c limit 1];
         test.startTest();
-        User usr = [SELECT id FROM User WHERE email='Rest_API_Get_All_Quotes_V2_Test@noemail.com'];
+        List<SBQQ__QuoteLine__c> ql = [select id from SBQQ__QuoteLine__c limit 1];
+        User usr = [SELECT id FROM User WHERE email='Get_All_QuotesV2@noemail.com'];
         system.runAs(usr){
             //test.startTest(); 
             RestRequest req = (RestRequest)System.jSON.deserialize(Pricing_RestAPI_TestUtility.REQUEST_TEMPLATE, RestRequest.class);

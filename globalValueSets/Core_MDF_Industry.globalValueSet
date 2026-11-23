@@ -16,11 +16,6 @@
         <label>Amusement and Gambling</label>
     </customValue>
     <customValue>
-        <fullName>Arts, Entertainment and Recreation</fullName>
-        <default>false</default>
-        <label>Arts, Entertainment and Recreation</label>
-    </customValue>
-    <customValue>
         <fullName>Arts and Entertainment</fullName>
         <default>false</default>
         <label>Arts and Entertainment</label>
@@ -31,29 +26,9 @@
         <label>Automotive</label>
     </customValue>
     <customValue>
-        <fullName>Automotive (Non Manufacturing)</fullName>
-        <default>false</default>
-        <label>Automotive (Non Manufacturing)</label>
-    </customValue>
-    <customValue>
-        <fullName>B2B general</fullName>
-        <default>false</default>
-        <label>B2B general</label>
-    </customValue>
-    <customValue>
-        <fullName>B2C, no industry</fullName>
-        <default>false</default>
-        <label>B2C, no industry</label>
-    </customValue>
-    <customValue>
         <fullName>Communications</fullName>
         <default>false</default>
         <label>Communications</label>
-    </customValue>
-    <customValue>
-        <fullName>Construction</fullName>
-        <default>false</default>
-        <label>Construction</label>
     </customValue>
     <customValue>
         <fullName>Defense and Space</fullName>
@@ -86,11 +61,6 @@
         <label>Government</label>
     </customValue>
     <customValue>
-        <fullName>Health &amp; Life Sciences</fullName>
-        <default>false</default>
-        <label>Health &amp; Life Sciences</label>
-    </customValue>
-    <customValue>
         <fullName>Healthcare</fullName>
         <default>false</default>
         <label>Healthcare</label>
@@ -101,29 +71,9 @@
         <label>Manufacturing</label>
     </customValue>
     <customValue>
-        <fullName>Media</fullName>
-        <default>false</default>
-        <label>Media</label>
-    </customValue>
-    <customValue>
-        <fullName>NA</fullName>
-        <default>false</default>
-        <label>NA</label>
-    </customValue>
-    <customValue>
         <fullName>Not For Profit</fullName>
         <default>false</default>
         <label>Not For Profit</label>
-    </customValue>
-    <customValue>
-        <fullName>Other</fullName>
-        <default>false</default>
-        <label>Other</label>
-    </customValue>
-    <customValue>
-        <fullName>Others</fullName>
-        <default>false</default>
-        <label>Others</label>
     </customValue>
     <customValue>
         <fullName>Professional and Business Services</fullName>
@@ -141,36 +91,27 @@
         <label>Retail</label>
     </customValue>
     <customValue>
-        <fullName>Robotics</fullName>
-        <default>false</default>
-        <label>Robotics</label>
-    </customValue>
-    <customValue>
         <fullName>Software</fullName>
         <default>false</default>
         <label>Software</label>
-    </customValue>
-    <customValue>
-        <fullName>Software and Services</fullName>
-        <default>false</default>
-        <label>Software and Services</label>
-    </customValue>
-    <customValue>
-        <fullName>Telecommunications</fullName>
-        <default>false</default>
-        <label>Telecommunications</label>
-    </customValue>
-    <customValue>
-        <fullName>Transportation, Travel and Warehousing</fullName>
-        <default>false</default>
-        <label>Transportation, Travel and Warehousing</label>
     </customValue>
     <customValue>
         <fullName>Transportation and Warehouse</fullName>
         <default>false</default>
         <label>Transportation and Warehouse</label>
     </customValue>
+    <customValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <label>Other</label>
+    </customValue>
+    <customValue>
+        <fullName>Others</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Others</label>
+    </customValue>
     <description>Store Industry value for IPA</description>
     <masterLabel>Industry</masterLabel>
-    <sorted>true</sorted>
+    <sorted>false</sorted>
 </GlobalValueSet>

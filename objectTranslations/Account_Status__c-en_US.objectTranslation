@@ -15,7 +15,7 @@
     <fields>
         <label><!-- Account --></label>
         <name>Account__c</name>
-        <relationshipLabel><!-- Account Status --></relationshipLabel>
+        <relationshipLabel><!-- Account_Status --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- CX Report URL --></label>

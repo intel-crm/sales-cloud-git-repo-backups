@@ -868,23 +868,6 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.SWS_Use_Case_Details__c</fieldItem>
-                <identifier>RecordSWS_Use_Case_Details_cField</identifier>
-                <visibilityRule>
-                    <criteria>
-                        <leftValue>{!Record.SWS_Request_Type__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>External_Customer</rightValue>
-                    </criteria>
-                </visibilityRule>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
                 <fieldItem>Record.SWS_Compute_Service_Requirements__c</fieldItem>
                 <identifier>RecordSWS_Compute_Service_Requirements_cField</identifier>
                 <visibilityRule>

@@ -45,15 +45,12 @@
         	helper.updatePromotionBannerMapping(component, event, helper)
         }
         //End
-        
-        helper.updateOwnerInfo(component, event, helper).then($A.getCallback(function() {
-            helper.getImages(component, event, helper).then($A.getCallback(function() {
-                if(!component.get("v.isEvent")){
-                    helper.handleUpload(component, event, helper);
-                    helper.isValid(component, helper);
-                    component.set('v.showInvalid', !component.get('v.valid')); 
-                }
-            }));
+        helper.getImages(component, event, helper).then($A.getCallback(function() {
+            if(!component.get("v.isEvent")){
+                helper.handleUpload(component, event, helper);//added by raj for US357476 to handle upload and perform validations.
+                helper.isValid(component, helper);
+                component.set('v.showInvalid', !component.get('v.valid')); 
+            }
         }));
         
         //Added by Nikhil 
@@ -70,7 +67,7 @@
     handleDeleteImage : function(component, event, helper) {
         component.set('v.showDeleteConfirm', true);
         component.set('v.imageToDelete', parseInt(event.currentTarget.dataset.idx));
-        component.set("v.touched", true);
+        
         /*component.set('v.logoCheck', false);
     var vx = component.get("v.method");
     $A.enqueueAction(vx);*/

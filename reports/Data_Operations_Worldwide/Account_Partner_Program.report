@@ -15,18 +15,6 @@
     <columns>
         <field>Account.Core_Geo__c</field>
     </columns>
-    <columns>
-        <field>Account.Core_Account_Type__c</field>
-    </columns>
-    <columns>
-        <field>Account.Core_Account_BU_Focus__c</field>
-    </columns>
-    <columns>
-        <field>Account.Core_Account_DCG_Tier__c</field>
-    </columns>
-    <columns>
-        <field>Account.Core_Account_CCG_Tier__c</field>
-    </columns>
     <filter>
         <criteriaItems>
             <column>Account.Core_Partner_Alliance_Program__c</column>

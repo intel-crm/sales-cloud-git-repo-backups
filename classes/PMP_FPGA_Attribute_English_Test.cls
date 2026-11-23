@@ -9,17 +9,14 @@
 * ****************************************************************************************************************************************/
 @isTest
 public class PMP_FPGA_Attribute_English_Test {
-   //IPA 2.0- US-TWC729-7980
-    /*@isTest
+    
+    @isTest
     public static void testProcAttrMet()
-        
     {
-        
         PMP_FPGA_Attribute_English procAttrEng = new PMP_FPGA_Attribute_English();
         PMP_FPGA_CreateJunctionData_Test.fpgaCreateJunctionDataTestMet();
-        PMP_ParseFPGAJSON.languageCode = 'en_US';
-        List<Database.UpsertResult> response = procAttrEng.processData('PMP_FPGA_Attribute_Test');
-        system.assertNotEquals(response,null);
-    }*/
+        PMP_ParseFPGAJSON.strBaseKey = 'en_US';
+        procAttrEng.processData('PMP_FPGA_Attribute_Test');
+    }
 
 }

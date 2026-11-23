@@ -321,15 +321,46 @@
         <fullName>WaitTime</fullName>
     </fields>
     <listViews>
+        <fullName>IQR_Sales_Chat_Queue_LiveChatTranscript</fullName>
+        <filterScope>Queue</filterScope>
+        <label>IQR_Sales_Chat_Queue</label>
+        <queue>IQR_Sales_Chat_Queue</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
         <fullName>PSG_Sales_Chat_Queue_LiveChatTranscript</fullName>
-        <columns>Name</columns>
-        <columns>LiveChatVisitor</columns>
-        <columns>StartTime</columns>
-        <columns>EndTime</columns>
-        <columns>Status</columns>
-        <filterScope>Everything</filterScope>
+        <filterScope>Queue</filterScope>
         <label>PSG_Sales_Chat_Queue</label>
-        <language>en_US</language>
+        <queue>PSG_Sales_Chat_Queue</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Psgbot_LiveChatTranscript</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Psgbot</label>
+        <queue>Psgbot</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Sales_ChatQueue_PSG_LiveChatTranscript</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Sales_ChatQueue_PSG</label>
+        <queue>Sales_ChatQueue_PSG</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>test_LiveChatTranscript</fullName>
+        <filterScope>Queue</filterScope>
+        <label>test</label>
+        <queue>test</queue>
         <sharedTo>
             <allInternalUsers></allInternalUsers>
         </sharedTo>

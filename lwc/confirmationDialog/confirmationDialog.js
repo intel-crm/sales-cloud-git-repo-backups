@@ -1,5 +1,5 @@
 import { LightningElement,api,track } from 'lwc';
-/*import hostReassignment from '@salesforce/apex/Sales_LicenseRecordPageComponentsUtility.hostReassignment';
+import hostReassignment from '@salesforce/apex/Sales_LicenseRecordPageComponentsUtility.hostReassignment';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent'
 import { NavigationMixin } from 'lightning/navigation';
 import licensefileGeneration from '@salesforce/apex/Sales_LicenseGenIntegration_Utility.returnHostIdDetail';
@@ -11,13 +11,13 @@ import Sales_yes from '@salesforce/label/c.Sales_yes';
 import Sales_no from '@salesforce/label/c.Sales_no';
 import Sales_Confirmation from '@salesforce/label/c.Sales_Confirmation';
 import Sales_SuccessHostReassignment from '@salesforce/label/c.Sales_SuccessHostReassignment';
-*/
 
 
 
 
-export default class ConfirmationDialog extends LightningElement{
-    /*@api activationcode; 
+
+export default class ConfirmationDialog extends NavigationMixin(LightningElement){
+    @api activationcode; 
     @api hostid; 
     @track isvisibleModal= true;
     @api licenserecordid;
@@ -96,6 +96,6 @@ export default class ConfirmationDialog extends LightningElement{
         setTimeout(function() {
                         location.reload(true);
         }, 2000);
-}*/
+}
 
 }

@@ -3,10 +3,6 @@
     <backgroundEndColor>#FFFFFF</backgroundEndColor>
     <backgroundFadeDirection>Diagonal</backgroundFadeDirection>
     <backgroundStartColor>#FFFFFF</backgroundStartColor>
-    <chartTheme>light</chartTheme>
-    <colorPalette>justice</colorPalette>
-    <dashboardChartTheme>light</dashboardChartTheme>
-    <dashboardColorPalette>justice</dashboardColorPalette>
     <dashboardGridLayout>
         <dashboardGridComponents>
             <colSpan>4</colSpan>
@@ -65,7 +61,7 @@
     <dashboardType>LoggedInUser</dashboardType>
     <isGridLayout>true</isGridLayout>
     <owner>10560180@intel.com.crm</owner>
-    <runningUser>12082064@intel.com.crm</runningUser>
+    <runningUser>shivini.sampath@intel.com.crm</runningUser>
     <textColor>#000000</textColor>
     <title>Design-Opportunity Dashboard</title>
     <titleColor>#000000</titleColor>

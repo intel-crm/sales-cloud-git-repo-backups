@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
     <fields>
-        <label><!-- Customer frght collect account --></label>
-        <name>PSG_Customer_frght_collect_account__c</name>
+        <label><!-- Maint Exp --></label>
+        <name>Core_PSG_Maint_Exp_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Expiration Duration (In Days) --></label>
+        <name>Product_Expiration_Duration__c</name>
     </fields>
     <fields>
         <help>Indica se o produto do pedido está ativado.</help>
@@ -300,10 +304,6 @@ gerado pela primeira vez.</help>
         <name>Sales_First_Name_Txt__c</name>
     </fields>
     <fields>
-        <label><!-- Integration Id --></label>
-        <name>Sales_Integration_Id_Txt__c</name>
-    </fields>
-    <fields>
         <label><!-- IsRecalculated --></label>
         <name>Sales_IsRecalculated__c</name>
     </fields>
@@ -314,6 +314,10 @@ gerado pela primeira vez.</help>
     <fields>
         <label><!-- Legacy Order Product Id --></label>
         <name>Sales_Legacy_Order_Product_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- License Vendor --></label>
+        <name>Sales_License_Vendor_Txt__c</name>
     </fields>
     <fields>
         <label><!-- Net Discount Percent --></label>
@@ -386,6 +390,10 @@ gerado pela primeira vez.</help>
     <validationRules>
         <errorMessage><!-- Contact is mandatory for corporate OPN. --></errorMessage>
         <name>Contact_mandatory_on_orderproduct</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Cannot add intel product, for ARM License Order Type --></errorMessage>
+        <name>Intel_product_for_ARM_license_Order</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Please use edit Order Product button to create Products from Quote --></errorMessage>

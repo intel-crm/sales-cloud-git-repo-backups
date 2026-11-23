@@ -1,7 +1,7 @@
 ({
     
     doInit : function(component, event, helper) { 
-      /*  console.log("searchResults");
+        console.log("searchResults");
         window.setTimeout($A.getCallback(function(){
             component.set('v.mapStateToAttributes', function(state) { //state will contain all the updated values and can be access in this function
            
@@ -42,23 +42,6 @@
         });
         
         console.log('search results doInit');
-      */  
-      /*  helper.dispatch(component,'changeUI', {
-           
-            marquee: {
-                
-                title: $A.get("$Label.c.IPA_AccessDen_Header"),
-                subtitle: '',
-                showCaret: false,
-                linkData: {
-                    label: $A.get("$Label.c.PMP_Breadcrumbs_Marketplace_Home"),
-                    communityPage: "Home"
-                }
-                
-                
-            }
-            
-        });*/
        
     },
     

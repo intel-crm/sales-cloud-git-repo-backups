@@ -5,6 +5,10 @@
         <value>Marketing Profile Information</value>
     </caseValues>
     <fields>
+        <label><!-- IsPartnerSegmentChanged --></label>
+        <name>IsPartnerSegmentChanged__c</name>
+    </fields>
+    <fields>
         <label><!-- Address --></label>
         <name>PMP_Account_Address_Txt__c</name>
     </fields>
@@ -233,8 +237,104 @@
         <label><!-- Specialty --></label>
         <name>PMP_Account_Specialty__c</name>
         <picklistValues>
-            <masterLabel>None</masterLabel>
-            <translation><!-- None --></translation>
+            <masterLabel>Artificial Intelligence Specialist</masterLabel>
+            <translation>人工智能专家</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Artificial Intelligence Specialty</masterLabel>
+            <translation>人工智能特色</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cloud Data Center Specialist</masterLabel>
+            <translation>云数据中心专家</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cloud Data Center Specialty</masterLabel>
+            <translation>云数据中心特色</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Device as a Service Specialist</masterLabel>
+            <translation>设备即服务专家</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Enthusiast PC Specialist</masterLabel>
+            <translation>发烧友级电脑专家</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Enthusiast PC Specialty</masterLabel>
+            <translation>发烧友级电脑特色</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>High Performance Computing Data Center Specialty</masterLabel>
+            <translation>高性能计算数据中心特色</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>High Performance Computing Specialist</masterLabel>
+            <translation>高性能计算专家</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Industrial Solutions Builder Specialist</masterLabel>
+            <translation>行业解决方案生成器专家</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Industrial Solutions Builder Specialty</masterLabel>
+            <translation>行业解决方案生成器特色</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Optane™ Client Specialist</masterLabel>
+            <translation>英特尔® 傲腾™ 客户专家</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Optane™ Client Speciality</masterLabel>
+            <translation><!-- Intel® Optane™ Client Speciality --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Optane™ Data Center Specialist</masterLabel>
+            <translation>英特尔® 傲腾™ 数据中心专家</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Optane™ Data Center Specialty</masterLabel>
+            <translation><!-- Intel® Optane™ Data Center Specialty --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Optane™ Technology Specialist</masterLabel>
+            <translation><!-- Intel® Optane™ Technology Specialist --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Optane™ Technology Specialty</masterLabel>
+            <translation>英特尔傲腾技术特性</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LOEM-ODM Partner Program</masterLabel>
+            <translation><!-- LOEM-ODM Partner Program --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Managed Services Specialist</masterLabel>
+            <translation>托管服务专家</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Specialty Benefits</masterLabel>
+            <translation>专属权益</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Specialty Partner</masterLabel>
+            <translation>特色合作伙伴</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Video Specialist</masterLabel>
+            <translation>视频专家</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Video Specialty</masterLabel>
+            <translation>视频特色</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Visual Display Solutions Specialist</masterLabel>
+            <translation>视觉显示解决方案专家</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Visual Display Solutions Specialty</masterLabel>
+            <translation>视觉显示解决方案专家</translation>
         </picklistValues>
     </fields>
     <fields>
@@ -323,22 +423,6 @@
         <name>PMP_Active_OPID_Cnt__c</name>
     </fields>
     <fields>
-        <label><!-- Autofill Status --></label>
-        <name>PMP_Autofill_Txt__c</name>
-        <picklistValues>
-            <masterLabel>LLM_Knowledge</masterLabel>
-            <translation><!-- LLM_Knowledge --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Mixed</masterLabel>
-            <translation><!-- Mixed --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Scraped</masterLabel>
-            <translation><!-- Scraped --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
         <label><!-- IPA Badge Tier Ordering Sequence --></label>
         <name>PMP_Badge_Tier_Sequence_Nbr__c</name>
     </fields>
@@ -359,15 +443,15 @@
         <name>PMP_Company_Information_Language_Nm__c</name>
         <picklistValues>
             <masterLabel>English</masterLabel>
-            <translation>英语</translation>
+            <translation><!-- English --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Japanese</masterLabel>
-            <translation>日语</translation>
+            <translation><!-- Japanese --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Simplified Chinese</masterLabel>
-            <translation>简体中文</translation>
+            <translation><!-- Simplified Chinese --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -448,27 +532,35 @@
         <name>PMP_Data_Load_Identifier_Txt__c</name>
     </fields>
     <fields>
+        <label><!-- PMP Data Load Identifier --></label>
+        <name>PMP_Data_Load_Identifier__c</name>
+    </fields>
+    <fields>
         <label><!-- Distributor  Components --></label>
         <name>PMP_Disti_Components_Nm__c</name>
         <picklistValues>
-            <masterLabel>Client Computing</masterLabel>
-            <translation>客户端计算</translation>
+            <masterLabel>Client CPUs and NUC</masterLabel>
+            <translation><!-- Client CPUs and NUC --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Data Center</masterLabel>
-            <translation>数据中心</translation>
+            <translation><!-- Data Center --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Field Programmable Gate Array</masterLabel>
-            <translation>现场可编程门阵列</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Graphics</masterLabel>
-            <translation><!-- Graphics --></translation>
+            <translation><!-- Field Programmable Gate Array --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Internet of Things and Embedded</masterLabel>
-            <translation>物联网和嵌入式产品</translation>
+            <translation><!-- Internet of Things and Embedded --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NAND Storage and Memory</masterLabel>
+            <translation><!-- NAND Storage and Memory --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Optane Storage and Memory</masterLabel>
+            <translation><!-- Optane Storage and Memory --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -479,29 +571,29 @@
         <label><!-- Distributor  System and Solutions --></label>
         <name>PMP_Disti_Sys_Solutions_Nm__c</name>
         <picklistValues>
-            <masterLabel>Client Computing</masterLabel>
-            <translation>客户端计算</translation>
+            <masterLabel>Client CPUs and NUC</masterLabel>
+            <translation><!-- Client CPUs and NUC --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Cloud Data Center</masterLabel>
             <translation><!-- Cloud Data Center --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Cloud Services</masterLabel>
-            <translation><!-- Cloud Services --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Data Center</masterLabel>
-            <translation>数据中心</translation>
+            <translation><!-- Data Center --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Discrete Graphic Cards</masterLabel>
-            <translation>独立显卡</translation>
+            <translation><!-- Discrete Graphic Cards --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Internet of Things</masterLabel>
-            <translation><!-- Internet of Things --></translation>
+            <masterLabel>Internet of Things and Embedded</masterLabel>
+            <translation><!-- Internet of Things and Embedded --></translation>
         </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Do Not Contact Enabled ? --></label>
+        <name>PMP_Do_Not_Contact_Enabled__c</name>
     </fields>
     <fields>
         <label><!-- Enhanced Login Users --></label>
@@ -646,10 +738,6 @@
             <translation><!-- CSPx2 --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Distributor</masterLabel>
-            <translation><!-- Distributor --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>ISA</masterLabel>
             <translation><!-- ISA --></translation>
         </picklistValues>
@@ -669,6 +757,10 @@
             <masterLabel>Resource &amp; Design Center</masterLabel>
             <translation><!-- Resource &amp; Design Center --></translation>
         </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Partner Role --></label>
+        <name>PMP_Partner_Role__c</name>
     </fields>
     <fields>
         <label><!-- Secondary Street --></label>
@@ -717,24 +809,8 @@
         <relationshipLabel><!-- Marketing Profile Information (Published Copy Id) --></relationshipLabel>
     </fields>
     <fields>
-        <label><!-- Scrap Status Comment --></label>
-        <name>PMP_ScrapStatusComment_Txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Storefront EditAccess Ind --></label>
-        <name>PMP_Storefront_EditAccess_Ind__c</name>
-    </fields>
-    <fields>
-        <label><!-- Storefront SiteUrl --></label>
-        <name>PMP_Storefront_SiteUrl__c</name>
-    </fields>
-    <fields>
         <label><!-- Suppress Email --></label>
         <name>PMP_Suppress_Email_Ind__c</name>
-    </fields>
-    <fields>
-        <label><!-- Topic Count --></label>
-        <name>PMP_Topic_Count__c</name>
     </fields>
     <fields>
         <label><!-- Language Status --></label>

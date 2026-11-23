@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>VCLog</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>VCLogs</value>
+    </caseValues>
+    <fields>
+        <label><!-- Call Id --></label>
+        <name>voice_connector__VCCallId__c</name>
+        <relationshipLabel><!-- VCLogs --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Date/Time --></label>
+        <name>voice_connector__VCDateTime__c</name>
+    </fields>
+    <fields>
+        <label><!-- Error Message --></label>
+        <name>voice_connector__VCErrorMessage__c</name>
+    </fields>
+    <fields>
+        <label><!-- Processed By --></label>
+        <name>voice_connector__VCProcessedBy__c</name>
+        <picklistValues>
+            <masterLabel>Job</masterLabel>
+            <translation><!-- Job --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Recrawl</masterLabel>
+            <translation><!-- Recrawl --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Trigger</masterLabel>
+            <translation><!-- Trigger --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Webhook</masterLabel>
+            <translation><!-- Webhook --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>voice_connector__VCStatus__c</name>
+        <picklistValues>
+            <masterLabel>Error</masterLabel>
+            <translation><!-- Error --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Success</masterLabel>
+            <translation><!-- Success --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

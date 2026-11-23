@@ -4,28 +4,23 @@
     <encodingKey>UTF-8</encodingKey>
     <name>SCRRENGENRLREV_RUS</name>
     <style>none</style>
-    <subject>Подтвердите адрес электронной почты</subject>
-    <textOnly>Подтвердите адрес электронной почты
+    <subject>Ваша заявка на участие в партнерской программе Intel</subject>
+    <textOnly>Verify your Email to Activate your Account
 
-{!PRM_Registration_Request__c.PRM_First_Name__c},
+Dear {!PRM_Registration_Request__c.PRM_First_Name__c},
 
-Благодарим за отправку заявки на регистрацию в Intel® Partner Alliance.
-До обработки заявки нам необходимо убедиться в том, что этот адрес электронной почты принадлежит вам. Если вы не подтвердите адрес электронной почты в течение 30 дней, заявка будет удалена из нашей системы и вам придется повторно подать заявку на рассмотрение.
+Thanks for joining Intel’s Partner program. Please click below to activate your account.
 
+Activate Your Account
 
-Подтвердить сейчас
-
-Не удается получить доступ к приведенной выше ссылке?
-https://signindev.intel.com/PasswordUpdate?var={!PRM_Registration_Request__c.PRM_EV_Token__c}&amp;culture=ru&amp;target=https://ciqa.intel.com/content/www/ru/ru/secure/partner/forms/ipa-account-search.html
+Can&apos;t access the link above?
+https://www.intel...
 
 
-С уважением,
-Команда Intel® Partner Alliance
-
-Это сообщение было отправлено в качестве важной деловой коммуникации и связано с вашими текущими отношениями с Intel® Partner Alliance.
-© Корпорация Intel, {!$Label.PRM_CurrentYear} г.
-Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
-Конфиденциальность | Файлы cookie</textOnly>
+Copyright © 2016 Intel Corporation. All rights reserved. Intel, the Intel logo are trademarks of Intel Corporation in the U.S. and/or other countries.
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. Intel.com
+You may unsubscribe at any time by updating your profile settings at: {!$Label.PRM_MyIntelProfileURL}
+Privacy | Cookies | *Trademarks</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

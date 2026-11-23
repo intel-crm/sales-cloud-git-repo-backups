@@ -19,8 +19,12 @@
         <value xsi:type="xsd:string">Quoteline Rejection Notification</value>
     </values>
     <values>
+        <field>Pricing_Notification_Name_Pkl__c</field>
+        <value xsi:type="xsd:string">Quoteline Rejection Notification</value>
+    </values>
+    <values>
         <field>Pricing_Optin_Ind__c</field>
-        <value xsi:type="xsd:boolean">true</value>
+        <value xsi:type="xsd:boolean">false</value>
     </values>
     <values>
         <field>Pricing_Region__c</field>
@@ -28,6 +32,10 @@
     </values>
     <values>
         <field>Pricing_Template_API_Name_Nm__c</field>
+        <value xsi:type="xsd:string">Pricing_QuoteLineRejectedNotification</value>
+    </values>
+    <values>
+        <field>Pricing_Template_API_Name_Pkl__c</field>
         <value xsi:type="xsd:string">Pricing_QuoteLineRejectedNotification</value>
     </values>
     <values>

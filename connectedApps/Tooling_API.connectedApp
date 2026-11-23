@@ -3,8 +3,8 @@
     <contactEmail>dinesh.maruti.mengade@intel.com</contactEmail>
     <label>Tooling API</label>
     <oauthConfig>
-        <callbackUrl>https://intel.my.salesforce.com/services/authcallback/Tooling_API</callbackUrl>
-        <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6ogKH2yiI_u7ITtdF4wgZK1XzdHDrmCzkEqssHQl4r_HG6D7bTCLtUlTysQ3</consumerKey>
+        <callbackUrl>https://intel--crmdevsls3.sandbox.my.salesforce.com/services/authcallback/Tooling_API</callbackUrl>
+        <consumerKey>3MVG9FxR3Tq3eZN88sLG9b4Pw8Fyzmt2p6nmi9zUfXtXuUeQA8VVEXuwAW29And920XvCx9NGlvq0_ZqTPK5G</consumerKey>
         <isAdminApproved>false</isAdminApproved>
         <isClientCredentialEnabled>false</isClientCredentialEnabled>
         <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
@@ -46,7 +46,7 @@
         <scopes>ForgotPassword</scopes>
     </oauthConfig>
     <oauthPolicy>
-        <ipRelaxation>BYPASS</ipRelaxation>
+        <ipRelaxation>ENFORCE</ipRelaxation>
         <isTokenExchangeFlowEnabled>false</isTokenExchangeFlowEnabled>
         <refreshTokenPolicy>infinite</refreshTokenPolicy>
     </oauthPolicy>

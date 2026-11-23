@@ -10,31 +10,19 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Declined</masterLabel>
-        <translation>已拒絕</translation>
+        <translation><!-- Declined --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Draft</masterLabel>
-        <translation>草稿</translation>
+        <translation><!-- Draft --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>In-Progress</masterLabel>
         <translation>進行中</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>In-Progress Pending Approval</masterLabel>
-        <translation>進行中，等待批准</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>In-Progress Pending Review</masterLabel>
-        <translation>進行中，等待審查</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>In-Progress Revision Required</masterLabel>
-        <translation>進行中，需要修訂</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Pending Approval</masterLabel>
-        <translation>待核准</translation>
+        <translation><!-- Pending Approval --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Pending Review</masterLabel>

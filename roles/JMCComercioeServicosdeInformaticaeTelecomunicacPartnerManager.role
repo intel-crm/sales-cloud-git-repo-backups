@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>J.M.C Comercio e Servicos de Informatica e Telecomunicac Partner Manager</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>J.M.C Comercio e Servicos de Informatica e Telecomunicac Partner Manager</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>JMCComercioeServicosdeInformaticaeTelecomunicacPartnerExecutive</parentRole>
+</Role>

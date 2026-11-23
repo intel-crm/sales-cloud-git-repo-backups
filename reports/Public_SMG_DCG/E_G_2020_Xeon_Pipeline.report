@@ -196,7 +196,7 @@
         <field>Opportunity.Core_Sales_Groups__c</field>
     </columns>
     <filter>
-        <booleanFilter>(((((1 AND 2 AND 3 AND 4 AND 5 and 7 and (6 or 11 or (8 and 9))) and 10))) AND 12) AND 13</booleanFilter>
+        <booleanFilter>((((1 AND 2 AND 3 AND 4 AND 5 and 7 and (6 or 11 or (8 and 9))) and 10))) AND 12</booleanFilter>
         <criteriaItems>
             <column>OpportunityLineItem.Core_Status__c</column>
             <columnToColumn>false</columnToColumn>
@@ -280,13 +280,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
             <value>production cancel,production win</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Account.Core_Account_BU_Focus__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>includes</operator>
-            <value>DCG-E&amp;G</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

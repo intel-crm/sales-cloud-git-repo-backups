@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>ICUBES TECH LTD Partner User</description>
+    <description>UC SOLUTIONS LTD Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>ICUBES TECH LTD Partner User</name>
+    <name>UC SOLUTIONS LTD Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>A_E_Users_do_not_nest_users</parentRole>
+    <parentRole>UCSOLUTIONSLTDPartnerManager</parentRole>
 </Role>

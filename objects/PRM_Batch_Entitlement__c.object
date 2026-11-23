@@ -154,44 +154,6 @@
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
     <fields>
-        <fullName>Account_Name__c</fullName>
-        <externalId>false</externalId>
-        <label>Account Name</label>
-        <length>255</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Contact_Email__c</fullName>
-        <externalId>false</externalId>
-        <label>Contact Email</label>
-        <length>255</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Date_of_creation_invitation__c</fullName>
-        <label>Date of creation/invitation</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>DateTime</type>
-    </fields>
-    <fields>
-        <fullName>Date_of_purging__c</fullName>
-        <label>Date of purging</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Date</type>
-    </fields>
-    <fields>
         <fullName>PRM_Account_Id__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <label>AccountId</label>
@@ -252,17 +214,6 @@
         <type>Lookup</type>
     </fields>
     <fields>
-        <fullName>PRM_EV_Token__c</fullName>
-        <externalId>false</externalId>
-        <label>PRM_EV Token</label>
-        <length>255</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>PRM_EntitlementMatrix_Id__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <label>Entitlement Matrix</label>
@@ -291,17 +242,6 @@
         <externalId>false</externalId>
         <label>Entitlement RecordType </label>
         <length>120</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>PRM_IdentityAttribute__c</fullName>
-        <externalId>false</externalId>
-        <label>PRM_IdentityAttribute</label>
-        <length>255</length>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -340,6 +280,11 @@
             <valueSetDefinition>
                 <sorted>false</sorted>
                 <value>
+                    <fullName>Not Applicable</fullName>
+                    <default>false</default>
+                    <label>Not Applicable</label>
+                </value>
+                <value>
                     <fullName>Distributor</fullName>
                     <default>false</default>
                     <label>Distributor</label>
@@ -347,7 +292,7 @@
                 <value>
                     <fullName>FPGA Designer</fullName>
                     <default>false</default>
-                    <label>FPGA Design Services</label>
+                    <label>FPGA Designer</label>
                 </value>
                 <value>
                     <fullName>Independent Software Vendor</fullName>
@@ -362,44 +307,22 @@
                 <value>
                     <fullName>Seller</fullName>
                     <default>false</default>
-                    <label>Solution Provider</label>
+                    <label>Seller</label>
                 </value>
                 <value>
                     <fullName>Service Provider</fullName>
                     <default>false</default>
-                    <label>Cloud &amp; Comms Service Provider</label>
+                    <label>Service Provider</label>
                 </value>
                 <value>
                     <fullName>Solution Integrator</fullName>
                     <default>false</default>
-                    <label>Service Integrator</label>
+                    <label>Solution Integrator</label>
                 </value>
                 <value>
                     <fullName>Sponsor</fullName>
                     <default>false</default>
                     <label>Sponsor</label>
-                </value>
-                <value>
-                    <fullName>Original Equipment Manufacturer (OEM)</fullName>
-                    <default>false</default>
-                    <label>Original Equipment Manufacturer (OEM)</label>
-                </value>
-                <value>
-                    <fullName>Guest</fullName>
-                    <default>false</default>
-                    <label>Guest</label>
-                </value>
-                <value>
-                    <fullName>Not Applicable</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Not Applicable</label>
-                </value>
-                <value>
-                    <fullName>OEM</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>OEM</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -431,21 +354,6 @@
                     <default>false</default>
                     <label>Failed</label>
                 </value>
-                <value>
-                    <fullName>Discarded</fullName>
-                    <default>false</default>
-                    <label>Discarded</label>
-                </value>
-                <value>
-                    <fullName>In Progress</fullName>
-                    <default>false</default>
-                    <label>In Progress</label>
-                </value>
-                <value>
-                    <fullName>Hold</fullName>
-                    <default>false</default>
-                    <label>Hold</label>
-                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -470,55 +378,6 @@
         <type>Text</type>
         <unique>false</unique>
     </fields>
-    <fields>
-        <fullName>Request_Created_By__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <label>Request Created By</label>
-        <referenceTo>User</referenceTo>
-        <relationshipName>Batch_Entitlements</relationshipName>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>Source__c</fullName>
-        <label>Source</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Picklist</type>
-        <valueSet>
-            <valueSetDefinition>
-                <sorted>false</sorted>
-                <value>
-                    <fullName>Self Registration</fullName>
-                    <default>false</default>
-                    <label>Self Registration</label>
-                </value>
-                <value>
-                    <fullName>Admin Invite</fullName>
-                    <default>false</default>
-                    <label>Admin Invite</label>
-                </value>
-                <value>
-                    <fullName>Partner Invite</fullName>
-                    <default>false</default>
-                    <label>Partner Invite</label>
-                </value>
-                <value>
-                    <fullName>Admin Invite Email</fullName>
-                    <default>false</default>
-                    <label>Admin Invite Email</label>
-                </value>
-                <value>
-                    <fullName>Bulk Invite Email</fullName>
-                    <default>false</default>
-                    <label>Bulk Invite Email</label>
-                </value>
-            </valueSetDefinition>
-        </valueSet>
-    </fields>
     <label>Batch Entitlement</label>
     <listViews>
         <fullName>All</fullName>
@@ -531,98 +390,6 @@
         <type>Text</type>
     </nameField>
     <pluralLabel>Batch Entitlements</pluralLabel>
-    <recordTypeTrackHistory>false</recordTypeTrackHistory>
-    <recordTypes>
-        <fullName>Archive_Data</fullName>
-        <active>true</active>
-        <description>The Archived data will be displayed in this record Type</description>
-        <label>ArchiveData</label>
-        <picklistValues>
-            <picklist>PRM_Partner_Role_Nm__c</picklist>
-            <values>
-                <fullName>Distributor</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>FPGA Designer</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Guest</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Independent Software Vendor</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Manufacturer</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Original Equipment Manufacturer %28OEM%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Seller</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Service Provider</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Solution Integrator</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Sponsor</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>PRM_Status_Nm__c</picklist>
-            <values>
-                <fullName>Discarded</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Failed</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Hold</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>In Progress</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>New</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Success</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Source__c</picklist>
-            <values>
-                <fullName>Admin Invite</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Partner Invite</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Self Registration</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-    </recordTypes>
     <searchLayouts/>
     <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>

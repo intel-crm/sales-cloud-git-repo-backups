@@ -131,11 +131,6 @@
         <label>BRAZIL</label>
     </customValue>
     <customValue>
-        <fullName>BRITISH VIRGIN ISLANDS</fullName>
-        <default>false</default>
-        <label>BRITISH VIRGIN ISLANDS</label>
-    </customValue>
-    <customValue>
         <fullName>BRUNEI DARUSSALAM</fullName>
         <default>false</default>
         <label>BRUNEI DARUSSALAM</label>
@@ -891,9 +886,9 @@
         <label>TUNISIA</label>
     </customValue>
     <customValue>
-        <fullName>TURKEY</fullName>
+        <fullName>TURKIYE</fullName>
         <default>false</default>
-        <label>TURKEY</label>
+        <label>TURKIYE</label>
     </customValue>
     <customValue>
         <fullName>TURKMENISTAN</fullName>
@@ -971,10 +966,10 @@
         <label>ZIMBABWE</label>
     </customValue>
     <customValue>
-        <fullName>NETHERLANDS ANTILLES</fullName>
+        <fullName>SWAZILAND</fullName>
         <default>false</default>
         <isActive>false</isActive>
-        <label>NETHERLANDS ANTILLES</label>
+        <label>SWAZILAND</label>
     </customValue>
     <customValue>
         <fullName>MAINLAND CHINA</fullName>
@@ -983,11 +978,11 @@
         <label>MAINLAND CHINA</label>
     </customValue>
     <customValue>
-        <fullName>SWAZILAND</fullName>
+        <fullName>NETHERLANDS ANTILLES</fullName>
         <default>false</default>
         <isActive>false</isActive>
-        <label>SWAZILAND</label>
+        <label>NETHERLANDS ANTILLES</label>
     </customValue>
     <masterLabel>Country</masterLabel>
-    <sorted>true</sorted>
+    <sorted>false</sorted>
 </GlobalValueSet>

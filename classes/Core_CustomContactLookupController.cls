@@ -33,19 +33,15 @@ public with sharing class Core_CustomContactLookupController {
     // run the search and return the records found. 
     private List<Contact> performSearch(string searchString) {
         //String.valueOf() method added to conAccountId for Security Scan
-        string strId = String.valueOf(conAccountId);
-        string escId;
-        if(strId <> null){
-            escId = String.escapeSingleQuotes(strId);
-        }else{
-            escId = null;
-        }
-        String soql = 'select id, name from contact where AccountId =:  escId';
+        string strId=   String.valueOf(conAccountId);
+        string escId = String.escapeSingleQuotes(strId);
+            String soql = 'select id, name from contact where AccountId =:  escId';
         //if(searchString != '' && searchString != null )
         if(String.isNotBlank(searchString))
             soql = soql +  ' And name LIKE \'%' + String.escapeSingleQuotes(searchString)  +'%\'';
         
         soql = soql + SOQLResultLimit;
+        System.debug(' Core_CustomContactLookupController.performSearch SOQL '+ soql);
         //return database.query(soql); 
         return database.query(soql);  
     }

@@ -299,6 +299,12 @@
         <columns>HierarchyID__c</columns>
         <columns>Hierarchy_Name__c</columns>
         <columns>Seismic_Name__c</columns>
+        <columns>L0__c</columns>
+        <columns>L1__c</columns>
+        <columns>L2__c</columns>
+        <columns>L3__c</columns>
+        <columns>L4__c</columns>
+        <columns>L5__c</columns>
         <columns>L1_ID__c</columns>
         <columns>L2_ID__c</columns>
         <columns>L3_ID__c</columns>
@@ -308,17 +314,12 @@
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
-    <listViews>
-        <fullName>All1</fullName>
-        <filterScope>Everything</filterScope>
-        <label>All</label>
-    </listViews>
     <nameField>
         <label>Seismic_PIMContentHierarchy Name</label>
         <type>Text</type>
     </nameField>
     <pluralLabel>Seismic_PIMActiveHierarchies</pluralLabel>
     <searchLayouts/>
-    <sharingModel>Private</sharingModel>
+    <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>

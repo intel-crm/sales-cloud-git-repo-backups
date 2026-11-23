@@ -1,0 +1,190 @@
+<template>
+  <!--lightning-record-edit-form object-api-name="Sales_License__c" record-id={recordId} onload={handleOnLoad}-->
+    <div>
+      <div class="slds-p-top_medium slds-p-bottom_medium">
+        <div class="slds-region_medium" style="width:1000px;margin-left: 8%">
+          <div class="slds-path">
+            <div class="slds-grid slds-path__track">
+              <div class="slds-grid slds-path__scroller-container">
+                <div class="slds-path__scroller">
+                  <div class="slds-path__scroller_inner">
+                    <ul class="slds-path__nav" role="listbox" aria-orientation="horizontal" aria-labelledby="slds-path__stage-name">
+                  
+                      <li class="slds-path__item slds-is-complete" role="presentation">
+                        <a aria-selected="false" class="slds-path__link" href="#" id="path-50" role="option" tabindex="-1">
+                          <span class="slds-path__stage">
+                            <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                              <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
+                            </svg>
+                            <span class="slds-assistive-text">Stage Complete</span>
+                          </span>
+                          <span class="slds-path__title"></span>
+                        </a>
+                      </li>
+                      <li class="slds-path__item slds-is-current slds-is-active" role="presentation">
+                        <a aria-selected="false" class="slds-path__link" href="#" id="path-51" role="option" tabindex="-1">
+                          <span class="slds-path__stage">
+                            <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                              <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
+                            </svg>
+                            <span class="slds-assistive-text">Current Stage:</span>
+                          </span>
+                          <span class="slds-path__title">Add Host &#38; Generate License</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slds-region_medium" style="width:1000px;margin-left: 10%">
+        <table> <tr>
+                  <td>
+                  <abbr class="slds-required" title="required">*</abbr></td>
+                <td>
+                  <div class="slds-text-heading_medium" style="margin-top: 1%;"> Generate License (Create a New Computer Or Assign an Existing Computer)</div>
+                </td>
+                </tr>
+        </table>
+        <table>
+          <tr> 
+              <td>
+                  <p class="slds-text-heading_small" style="margin-left:4%"></p>
+                  <div class="slds-p-around_medium lgc-bc" style="font-size: 16.5px;"> 
+                    Create a new computer 
+                    <lightning-helptext content="You'll receive weekly updates"></lightning-helptext>
+                </div>
+              </td>
+              <td>  
+                  <div class="slds-p-left_x-large"></div>
+                  <!--lightning-button label={label.Sales_addnewcomp} title="Add computer" onclick={createNewComputer} class="slds-m-left_x-small"></lightning-button-->
+                  <template if:true={createComputer}>
+                    <c-sslc-Create-New-Computer-Button onclose={closeEvent} onsuccess={handleHostSuccess} oncancel={cancelEvent} toollicensetype ={licenseType} primaryadmincontact={primarycontact}></c-sslc-Create-New-Computer-Button>
+                    <!--c-sslc-Create-New-Computer-Button onclose={closeEvent} oncancel={cancelEvent} licneserecordid ={licneserecordid} toollicensetype ={licenseType} primaryadmincontact={primarycontact}></c-sslc-Create-New-Computer-Button-->
+                    <div class="slds-backdrop slds-backdrop_open" style="opacity: .23;"></div>
+                </template>
+                  <button class="slds-button slds-button_neutral" style="margin-left: -80%;" onclick={createNewComputer}>Add a Computer</button>
+                
+                </td>
+              </tr> 
+        </table> 
+          <table>
+                  <tr>
+                    <td>
+                      <p class="slds-text-heading_small"></p>
+                      <div class="slds-p-around_medium lgc-bg" style="font-size: 16.5px;">
+                        Assigning an existing computer
+                        <lightning-helptext content="You'll receive weekly updates"></lightning-helptext>
+                      </div>
+                       <div class="slds-p-left_x-large"></div></td>
+                      <td>
+                  <div class="table-wrapper">
+                  <table class="slds-table slds-table_cell-buffer slds-table_header-hidden slds-table_bordered" role="grid" style="margin: bottom= 4%; border:rgb(8, 8, 10); border-width:1px; border-style:solid;">
+                    <tbody>
+                      
+                      <template if:true={hostExist}>
+                        <template for:each={hostDetails} for:item="host">                   
+                          <tr key={host.Id}> 
+                            <th class="slds-text-align_left slds-cell_action-mode square" scope="col" style="width:1rem">
+                            <!--th scope="col"-->                            
+                              <input type="radio" name="hostName" id={uniqueId} checked={host.selected} value={host.Name} onchange={handleChange} data-hostid={host.Id}/>
+                            </th> 
+                            <th class="slds-text-align_left slds-cell_action-mode" scope="col" style="width:1rem">
+                              {host.Name}
+                              </th>
+                          </tr>
+                        
+                        </template>
+
+                      </template>
+                      <template if:true={error}>
+                        {error}
+                     
+                      </template>
+                    </tbody>           
+                  </table>
+                </div>  
+              </td>
+              </tr>   
+          </table>  
+                      
+                      <!--th scope="col">        
+                                <div class="container">
+                                        <label for={uniqueId}  class="square" onclick={handleClick}>
+                                          
+                                            <input type="radio" id={uniqueId} checked={isChecked} onchange={handleHostChange} value={host.Id}/>
+                                          
+                                            <div class="circle"></div>
+                                        </label>
+                                    </div>
+                                </th>
+                                <th >
+                        <div>{host.Id}</div>
+                            </th> 
+                    </tr-->
+                        
+                        
+              <!--lightning-input-field field-name='Sales_License_Host_Node_Id__c' onchange={handleHostChange}  variant="label-hidden" value={getHostValue}></lightning-input-field-->
+               
+        
+                        
+                        <!--/label>
+                      </div-->
+
+                      <div style="margin-top:4%;" class="lkm-pg">
+                      <table> 
+                        <tr>
+                        <td>
+                
+                          <abbr class="slds-required req-cck" title="required">*</abbr></td>
+                          <td>
+                            <template if:true={termandcondition}>
+                              <p>
+                                <lightning-input type="checkbox"
+                                      label={TermsConditionTxt} onchange={handleTandC}>
+                                </lightning-input>
+                              </p>
+                              <!--<strong><p>{termsCondition}</p></strong>-->
+                              <lightning-formatted-rich-text
+                                  value={termsCondition}
+                              ></lightning-formatted-rich-text>
+                              <p>
+                                <lightning-input type="checkbox"
+                                      label={TermsCondition_Optin}
+                                      onchange={handleOptin}>
+                                </lightning-input>
+                              </p>  
+                             <!--  <p>{TermsCondition_Optin}</p>--> 
+                              </template>
+                            <!--lightning-input type="checkbox" label="I have read and agree to the terms of use of this license as listed below 
+                            MAX PLUS II BASELINE Please refer to this Product Discontinuation Notice." name="input2"></lightning-input-->
+                          </td>
+                          
+                        </tr>
+                      </table>
+                      
+                            <!--lightning-input type="checkbox" label="Check this box if you don't want Intel to contact you for feedback. 
+                            Your feedback helps us improve the product." name="input3"></lightning-input-->
+                          
+                          </div>
+  
+            </div>
+        
+         
+      </div>
+      
+      <div  class="slds-m-top_small slds-m-bottom_medium">
+      <div class="slds-p-top_medium lgb-bttn">
+       
+        <lightning-button label="Back" title="Back" onclick={handleBacktButtonClick}  variant="brand"></lightning-button>
+        &nbsp;&nbsp;&nbsp;
+        <lightning-button label="Generate" title="Fill the mandatory details" onclick={handleNextButtonClick} disabled={isGenerateButtonDisabled}  variant="brand"></lightning-button>
+      
+      </div> 
+  </div>
+  
+<!--/lightning-record-edit-form-->
+  </template>

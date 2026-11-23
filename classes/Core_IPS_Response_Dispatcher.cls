@@ -16,7 +16,7 @@ public class Core_IPS_Response_Dispatcher {
          if(trigger.isInsert){
              Core_IPS_Response_Handler.updateEnvironmentDetailsOnCase(newList); 
              Core_IPS_Response_Handler.updateEDQfilteringFieldOnCase(newList);				//added by Aayushi US95468 06/04/2018
-			 //Core_IPS_Response_Handler.updateSurveySubmitFieldOnCase(newList);  //added by amritesh - US104141 - 02/25/2018 //Commented as part of Code Refactor TWC745-6459
+			 Core_IPS_Response_Handler.updateSurveySubmitFieldOnCase(newList);  //added by amritesh - US104141 - 02/25/2018
          }
          if(trigger.isUpdate){ 
             Core_IPS_Response_Handler.updateEDQfilteringFieldOnCase(newList);				//added by Aayushi US95468 06/04/2018

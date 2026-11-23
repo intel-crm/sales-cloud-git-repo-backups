@@ -125,6 +125,10 @@
             <translation><!-- Product_Code__c --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>SBQQ__ProductName__c</masterLabel>
+            <translation><!-- SBQQ__ProductName__c --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>SBQQ__Quantity__c</masterLabel>
             <translation><!-- SBQQ__Quantity__c --></translation>
         </picklistValues>

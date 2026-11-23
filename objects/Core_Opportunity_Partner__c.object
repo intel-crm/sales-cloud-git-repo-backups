@@ -486,34 +486,14 @@
             <valueSetDefinition>
                 <sorted>false</sorted>
                 <value>
-                    <fullName>Academia &amp; research institutions</fullName>
+                    <fullName>Cloud Service Provider</fullName>
                     <default>false</default>
-                    <label>Academia &amp; research institutions</label>
+                    <label>Cloud Service Provider</label>
                 </value>
                 <value>
-                    <fullName>Branded Value Added Reseller (bVAR)</fullName>
+                    <fullName>Design House</fullName>
                     <default>false</default>
-                    <label>Branded Value Added Reseller (bVAR)</label>
-                </value>
-                <value>
-                    <fullName>Cloud Service Provider (CSP)</fullName>
-                    <default>false</default>
-                    <label>Cloud Service Provider (CSP)</label>
-                </value>
-                <value>
-                    <fullName>Comm Service Provider (CoSP)</fullName>
-                    <default>false</default>
-                    <label>Comm Service Provider (CoSP)</label>
-                </value>
-                <value>
-                    <fullName>Contract Manufacturer (CM)</fullName>
-                    <default>false</default>
-                    <label>Contract Manufacturer (CM)</label>
-                </value>
-                <value>
-                    <fullName>Digital Services (Social Media, Streaming, eWallet)</fullName>
-                    <default>false</default>
-                    <label>Digital Services (Social Media, Streaming, eWallet)</label>
+                    <label>Design House</label>
                 </value>
                 <value>
                     <fullName>Distributor</fullName>
@@ -521,19 +501,19 @@
                     <label>Distributor</label>
                 </value>
                 <value>
-                    <fullName>Domain Expert Integrator</fullName>
+                    <fullName>DMR</fullName>
                     <default>false</default>
-                    <label>Domain Expert Integrator</label>
+                    <label>DMR</label>
                 </value>
                 <value>
-                    <fullName>Electronic Manufacturing Services (EMS)</fullName>
+                    <fullName>Embedded Board Manufacturer</fullName>
                     <default>false</default>
-                    <label>Electronic Manufacturing Services (EMS)</label>
+                    <label>Embedded Board Manufacturer</label>
                 </value>
                 <value>
-                    <fullName>Embedded Board Manufacturer (EBM)</fullName>
+                    <fullName>EMS</fullName>
                     <default>false</default>
-                    <label>Embedded Board Manufacturer (EBM)</label>
+                    <label>EMS</label>
                 </value>
                 <value>
                     <fullName>End Customer</fullName>
@@ -541,74 +521,29 @@
                     <label>End Customer</label>
                 </value>
                 <value>
-                    <fullName>Enterprise Influencer</fullName>
+                    <fullName>ESF Firm</fullName>
                     <default>false</default>
-                    <label>Enterprise Influencer</label>
+                    <label>ESF Firm</label>
                 </value>
                 <value>
-                    <fullName>FPGA Design Services</fullName>
+                    <fullName>ISV/OSV</fullName>
                     <default>false</default>
-                    <label>FPGA Design Services</label>
+                    <label>ISV/OSV</label>
                 </value>
                 <value>
-                    <fullName>Global System Integrator (GSI)</fullName>
+                    <fullName>LOEM</fullName>
                     <default>false</default>
-                    <label>Global System Integrator (GSI)</label>
+                    <label>LOEM</label>
                 </value>
                 <value>
-                    <fullName>Hardware System Integrator (HSI)</fullName>
+                    <fullName>ODM</fullName>
                     <default>false</default>
-                    <label>Hardware System Integrator (HSI)</label>
+                    <label>ODM</label>
                 </value>
                 <value>
-                    <fullName>Independent Design House</fullName>
+                    <fullName>OEM</fullName>
                     <default>false</default>
-                    <label>Independent Design House</label>
-                </value>
-                <value>
-                    <fullName>Independent Software Vendor (ISV)</fullName>
-                    <default>false</default>
-                    <label>Independent Software Vendor (ISV)</label>
-                </value>
-                <value>
-                    <fullName>Intel Approved Component Supplier (IACS)</fullName>
-                    <default>false</default>
-                    <label>Intel Approved Component Supplier (IACS)</label>
-                </value>
-                <value>
-                    <fullName>Intel Authorized Distributor (IAD)</fullName>
-                    <default>false</default>
-                    <label>Intel Authorized Distributor (IAD)</label>
-                </value>
-                <value>
-                    <fullName>Local Original Design Manufacturer (LODM)</fullName>
-                    <default>false</default>
-                    <label>Local Original Design Manufacturer (LODM)</label>
-                </value>
-                <value>
-                    <fullName>Local Original Equipment Manufacturer (LOEM)</fullName>
-                    <default>false</default>
-                    <label>Local Original Equipment Manufacturer (LOEM)</label>
-                </value>
-                <value>
-                    <fullName>Managed Service Provider (MSP)</fullName>
-                    <default>false</default>
-                    <label>Managed Service Provider (MSP)</label>
-                </value>
-                <value>
-                    <fullName>National Solution Integrator (NSI)</fullName>
-                    <default>false</default>
-                    <label>National Solution Integrator (NSI)</label>
-                </value>
-                <value>
-                    <fullName>National Solution Provider (NSP)</fullName>
-                    <default>false</default>
-                    <label>National Solution Provider (NSP)</label>
-                </value>
-                <value>
-                    <fullName>Intel Approved Device Supplier (IADS)</fullName>
-                    <default>false</default>
-                    <label>Intel Approved Device Supplier (IADS)</label>
+                    <label>OEM</label>
                 </value>
                 <value>
                     <fullName>Operational Technology System Integrator (OTSI)</fullName>
@@ -616,24 +551,9 @@
                     <label>Operational Technology System Integrator (OTSI)</label>
                 </value>
                 <value>
-                    <fullName>Original Design Manufacturer (ODM)</fullName>
+                    <fullName>Publisher</fullName>
                     <default>false</default>
-                    <label>Original Design Manufacturer (ODM)</label>
-                </value>
-                <value>
-                    <fullName>Original Equipment Manufacturer (OEM)</fullName>
-                    <default>false</default>
-                    <label>Original Equipment Manufacturer (OEM)</label>
-                </value>
-                <value>
-                    <fullName>Other</fullName>
-                    <default>false</default>
-                    <label>Other</label>
-                </value>
-                <value>
-                    <fullName>PSG Team</fullName>
-                    <default>false</default>
-                    <label>PSG Team</label>
+                    <label>Publisher</label>
                 </value>
                 <value>
                     <fullName>Reseller</fullName>
@@ -646,14 +566,19 @@
                     <label>Retailer</label>
                 </value>
                 <value>
-                    <fullName>Telco Equipment Manufacturer (TEM)</fullName>
+                    <fullName>Service Provider</fullName>
                     <default>false</default>
-                    <label>Telco Equipment Manufacturer (TEM)</label>
+                    <label>Service Provider</label>
                 </value>
                 <value>
-                    <fullName>Value Added Reseller (VAR)</fullName>
+                    <fullName>Solution Integration (SI/ITO/bVAR)</fullName>
                     <default>false</default>
-                    <label>Value Added Reseller (VAR)</label>
+                    <label>Solution Integration (SI/ITO/bVAR)</label>
+                </value>
+                <value>
+                    <fullName>TEM</fullName>
+                    <default>false</default>
+                    <label>TEM</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -672,7 +597,7 @@
                 <value>Partner Account Group, Intel Account</value>
             </filterItems>
             <infoMessage>Intel ultimate and Inactive accounts have been excluded from the below-listed accounts as they should not be selected. Please DO NOT OVERRIDE the filter criteria by clicking on &quot;Search All&quot; link below and only select an account from the ones listed below.</infoMessage>
-            <isOptional>false</isOptional>
+            <isOptional>true</isOptional>
         </lookupFilter>
         <referenceTo>Account</referenceTo>
         <relationshipLabel>Partner Opportunities</relationshipLabel>
@@ -801,6 +726,7 @@
         <fullName>Core_UCD_Partner_Account_Name__c</fullName>
         <externalId>false</externalId>
         <formula>Core_Partner__r.Core_Data_Simplified_Account_Nm__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Unified Partner Account Name</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -889,8 +815,21 @@ Core_Partner__r.RecordType.DeveloperName != &apos;Mastered_Account&apos;,
 Core_Partner__r.RecordType.DeveloperName != &apos;Core_Partner_Account_Group&apos;
 )
 )</errorConditionFormula>
-        <errorDisplayField>Core_3rd_Party__c</errorDisplayField>
         <errorMessage>The account you are attempting to relate this Opportunity Partner to is not an Intel or Partner Account. Please choose an Intel or Partner Account</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_OptyPartner_SubmittedStatusLock</fullName>
+        <active>true</active>
+        <description>Opportunity Partner Quote Submitted Status Lock check</description>
+        <errorConditionFormula>IF($Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c=TRUE,FALSE,
+AND(
+
+ Core_Opportunity__r.Core_Opportunity_Lock_Status__c = true,
+ISPICKVAL( Core_Opportunity__r.Core_Coverage_Type_Nm__c, &apos;Deal Registration&apos;), ISPICKVAL(Core_Opportunity__r.Core_Opportunity_Coverage_Nm__c , &apos;Partner-Led Opportunity&apos;)
+ 
+)
+)</errorConditionFormula>
+        <errorMessage>Quote associated to this Opportunity is Submitted for Review. No Edits allowed on Opportunity during the Review process.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Core_Partner_Led_External_Opp_Check</fullName>

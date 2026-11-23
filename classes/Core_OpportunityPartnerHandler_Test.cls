@@ -250,7 +250,7 @@ public class Core_OpportunityPartnerHandler_Test {
         // Account & partner account test data
 		Account acct = new Account(Name = 'Test Account1', Industry = 'Agriculture', Core_Sub_Industry__c = 'Forestry', RecordTypeId = newAccountRecTypeId,
                                    BillingStreet = '123 Fake St',BillingCity = 'Springfield', BillingState = 'IL', BillingCountry = 'USA',
-                                   BillingPostalCode = '12345', Core_Sales_Groups__c='PRC Sales Group');
+                                   BillingPostalCode = '12345', Core_Sales_Groups__c='Americas US Sales Group');
             insert acct;
         
         List<Account> existingPartnerAccts = new List<Account>();

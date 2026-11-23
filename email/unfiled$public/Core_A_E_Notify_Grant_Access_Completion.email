@@ -1,0 +1,36 @@
+<messaging:emailTemplate subject="A&E grant access status for contact {!relatedTo.Name} ({!relatedTo.Core_AGS_Integration_Status__c})" recipientType="user" relatedToType="contact" replyTo="donotreply@test.com">
+<messaging:htmlEmailBody >
+Dear  {!recipient.Name}, 
+<br/>
+
+<apex:outputPanel rendered="{!relatedTo.Core_AGS_Integration_Status__c == 'Pending'}">
+Your request for A&#38;E grant access on contact {!relatedTo.Name} on Account {!relatedTo.Account.Name} is Pending.<br/>
+</apex:outputPanel>
+
+<br/><apex:outputPanel rendered="{!relatedTo.Core_AGS_Integration_Status__c == 'Successful'}">
+Your request for A&#38;E grant access on contact {!relatedTo.Name} on Account {!relatedTo.Account.Name} is Successful.
+</apex:outputPanel>
+
+<apex:outputPanel rendered="{!relatedTo.Core_AGS_Integration_Status__c == 'Failed'}">
+Your request for A&#38;E grant access on contact {!relatedTo.Name} on Account {!relatedTo.Account.Name} is in Failed status.
+</apex:outputPanel><br/>
+
+<br/>
+<c:Core_A_E_Entitlement_Data_For_Email contactId="{!relatedTo.Id}" reqId="{!recipient.Id}"/>
+<br/>
+
+<apex:outputPanel rendered="{!relatedTo.Core_AGS_Integration_Status__c == 'Pending'}">
+Please create a case via <a href = "https://intel.lightning.force.com/lightning/n/Ask_a_Question" target = "_blank"> Ask a question on Salesforce </a> (Access &#38; Entitlements).
+</apex:outputPanel>
+
+<apex:outputPanel rendered="{!relatedTo.Core_AGS_Integration_Status__c == 'Failed'}">
+Note : Please create a case via <a href = "https://intel.lightning.force.com/lightning/n/Ask_a_Question" target = "_blank"> Ask a question on Salesforce </a> (Access &#38; Entitlements).
+</apex:outputPanel> 
+
+<apex:outputPanel rendered="{!relatedTo.Core_AGS_Integration_Status__c == 'Successful'}">
+Note: Above entitlement list is indicative. Please refer the contact record for more details.
+</apex:outputPanel><br/>
+<br></br>
+Thank you!
+</messaging:htmlEmailBody>
+</messaging:emailTemplate>

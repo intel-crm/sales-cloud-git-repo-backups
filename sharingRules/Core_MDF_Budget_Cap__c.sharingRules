@@ -12,11 +12,6 @@
             <operation>notEqual</operation>
             <value>Null</value>
         </criteriaItems>
-        <criteriaItems>
-            <field>RecordTypeId</field>
-            <operation>notEqual</operation>
-            <value>IPA Budget Type Cap</value>
-        </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
@@ -60,11 +55,6 @@
             <field>Name</field>
             <operation>notEqual</operation>
             <value>Null</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>RecordTypeId</field>
-            <operation>notEqual</operation>
-            <value>IPA Budget Type Cap</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <FlowDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
-    <activeVersionNumber>5</activeVersionNumber>
+    <activeVersionNumber>12</activeVersionNumber>
     <description>TWC3123-5661 Campaign Member Status needs to populate all the Campaign Member Status picklists when a Marketing Campaign is created
 V4- created version ; deleted some status values</description>
     <masterLabel>Core Create Campaign Member Statuses</masterLabel>

@@ -6,7 +6,7 @@
         <externalId>false</externalId>
         <fieldManageability>DeveloperControlled</fieldManageability>
         <label>NumberOfDays</label>
-        <precision>3</precision>
+        <precision>18</precision>
         <required>false</required>
         <scale>0</scale>
         <type>Number</type>
@@ -17,7 +17,7 @@
         <description>Allowed permission sets are comma separated and stored here</description>
         <fieldManageability>DeveloperControlled</fieldManageability>
         <label>PMP_Allowed_Permission_Set</label>
-        <length>300</length>
+        <length>1000</length>
         <type>LongTextArea</type>
         <visibleLines>3</visibleLines>
     </fields>
@@ -33,7 +33,7 @@
         <externalId>false</externalId>
         <fieldManageability>DeveloperControlled</fieldManageability>
         <label>PMP Object Subtype</label>
-        <length>30</length>
+        <length>255</length>
         <required>false</required>
         <type>Text</type>
         <unique>false</unique>

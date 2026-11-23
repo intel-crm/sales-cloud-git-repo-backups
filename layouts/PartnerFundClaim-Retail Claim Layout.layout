@@ -22,10 +22,6 @@
                 <field>Title</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_MDF_Budget_Type_Options_Nm__c</field>
-            </layoutItems>
-            <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>BudgetId</field>
             </layoutItems>
@@ -35,11 +31,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Core_MDF_Recommend_For_ClaimReview__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_MDF_Document_Submission_DueDate_dtm__c</field>
+                <field>Core_MDF_To_Be_Audited_Ind__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -56,20 +48,12 @@
                 <field>Core_MDF_Status__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_MDF_Escalation_Id__c</field>
-            </layoutItems>
-            <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>Core_MDF_VAT_Opt_In_txt__c</field>
+                <field>Core_MDF_Budget_Type_Nm__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Core_MDF_Applicable_VAT_Percentage_nm__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_MDF_Due_Date_nbr__c</field>
+                <field>Core_MDF_Escalation_Id__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
@@ -90,26 +74,6 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Required</behavior>
-                <field>Core_MDF_OtherCostsnotReimbursable_Local__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_MDF_Reimbursable_TransactionAmt_Loc__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_MDF_Reimbursable_Transaction_Amount__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_MDF_Total_Claim_Recovery_Amount__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_MDF_Total_Claim_Offsets__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Required</behavior>
                 <field>Amount</field>
             </layoutItems>
         </layoutColumns>
@@ -124,23 +88,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Core_MDF_Exchange_rate__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_MDF_Audit_Adjustment_Amount__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_MDF_Excess_Requested_Amount__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
                 <field>Core_MDF_Claim_Comments__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_MDF_Processing_Preference_nm__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
@@ -167,10 +115,6 @@
                 <behavior>Readonly</behavior>
                 <field>Core_MDF_Activity_End_Date__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_MDF_Target_Audience__c</field>
-            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -179,15 +123,15 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>Core_MDF_Brand_nm__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_MDF_Activity_SubType_nm__c</field>
+                <field>Core_MDF_Brand__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Core_MDF_Country_Location_nm__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Core_MDF_Target_Audience__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
@@ -214,14 +158,6 @@
                 <behavior>Edit</behavior>
                 <field>Core_MDF_Criteria_Hold_Ind__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_MDF_Recovery_Hold_Ind__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_MDF_VAT_Hold_Ind__c</field>
-            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -239,10 +175,6 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Core_MDF_Criteria_Hold_No_Id__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_MDF_Bank_Doc_Hold_Ind__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
@@ -264,8 +196,8 @@
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_MDF_EFT_Number_txt__c</field>
+                <behavior>Readonly</behavior>
+                <field>Core_MDF_EFT_Nbr__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -310,29 +242,14 @@
     <platformActionList>
         <actionListContext>Record</actionListContext>
         <platformActionListItems>
-            <actionName>PartnerFundClaim.Core_MDF_Hold_Claim</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>5</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>PartnerFundClaim.Core_MDF_Submit_For_PIC</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>3</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>PartnerFundClaim.Core_MDF_Manual_Audit</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>7</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
             <actionName>ChangeOwnerOne</actionName>
             <actionType>StandardButton</actionType>
-            <sortOrder>8</sortOrder>
+            <sortOrder>6</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
             <actionName>PartnerFundClaim.Core_MDF_PFC_Close_Claim</actionName>
             <actionType>QuickAction</actionType>
-            <sortOrder>9</sortOrder>
+            <sortOrder>7</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
             <actionName>Edit</actionName>
@@ -345,19 +262,24 @@
             <sortOrder>1</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>PartnerFundClaim.Core_MDF_Complete_PIC_Review</actionName>
+            <actionName>PartnerFundClaim.Core_MDF_Cancel_Claim</actionName>
             <actionType>QuickAction</actionType>
-            <sortOrder>4</sortOrder>
+            <sortOrder>2</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>PartnerFundClaim.Core_MDF_Hold_Claim</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>3</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
             <actionName>PartnerFundClaim.Core_MDF_Release_Hold</actionName>
             <actionType>QuickAction</actionType>
-            <sortOrder>6</sortOrder>
+            <sortOrder>4</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>PartnerFundClaim.Core_MDF_Cancel_Claim</actionName>
+            <actionName>PartnerFundClaim.Core_MDF_Manual_Audit</actionName>
             <actionType>QuickAction</actionType>
-            <sortOrder>2</sortOrder>
+            <sortOrder>5</sortOrder>
         </platformActionListItems>
     </platformActionList>
     <quickActionList>
@@ -391,59 +313,6 @@
         <fields>Core_MDF_Selected_Document_Types_txt__c</fields>
         <fields>CREATED_DATE</fields>
         <relatedList>Core_MDF_Audit_Document__c.Core_MDF_Claim__c</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <excludeButtons>MassChangeOwner</excludeButtons>
-        <excludeButtons>New</excludeButtons>
-        <fields>NAME</fields>
-        <fields>Core_MDF_Amount_Amt__c</fields>
-        <fields>Core_MDF_PartnershipGradeMaintenance_Nbr__c</fields>
-        <fields>Core_MDF_Sure_Pay_Ind__c</fields>
-        <fields>CREATED_DATE</fields>
-        <relatedList>Core_MDF_Recovery__c.Core_MDF_Claim_Id__c</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <excludeButtons>MassChangeOwner</excludeButtons>
-        <excludeButtons>New</excludeButtons>
-        <fields>NAME</fields>
-        <fields>Core_MDF_VAT_Amt__c</fields>
-        <fields>Core_MDF_Status_Txt__c</fields>
-        <relatedList>Core_MDF_Claim_VAT_Info__c.Core_MDF_Claim_Id__c</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <fields>Core_MDF_Adjustment_Claim_Nbr__c</fields>
-        <fields>Core_MDF_Offset_Amount_Amt__c</fields>
-        <fields>CREATED_DATE</fields>
-        <relatedList>Core_MDF_Claim_Offset__c.Core_MDF_Offset_Claim_Nbr__c</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <fields>Core_MDF_Offset_Claim_Nbr__c</fields>
-        <fields>Core_MDF_Offset_Amount_Amt__c</fields>
-        <fields>CREATED_DATE</fields>
-        <relatedList>Core_MDF_Claim_Offset__c.Core_MDF_Adjustment_Claim_Nbr__c</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <fields>Core_MDF_Adjustment_Claim_Nbr__c</fields>
-        <fields>Core_MDF_Amount_Amt__c</fields>
-        <fields>Core_MDF_Reason_Cd__c</fields>
-        <fields>Core_MDF_Adjustment_Status_nm__c</fields>
-        <fields>CREATED_DATE</fields>
-        <relatedList>Core_MDF_Adjustment_Request__c.Core_MDF_Reference_Claim_Nbr__c</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <fields>Core_MDF_Reference_Claim_Nbr__c</fields>
-        <fields>Core_MDF_Amount_Amt__c</fields>
-        <fields>Core_MDF_Reason_Cd__c</fields>
-        <fields>Core_MDF_Adjustment_Status_nm__c</fields>
-        <fields>CREATED_DATE</fields>
-        <relatedList>Core_MDF_Adjustment_Request__c.Core_MDF_Adjustment_Claim_Nbr__c</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <excludeButtons>MassChangeOwner</excludeButtons>
-        <fields>NAME</fields>
-        <fields>Core_MDF_Title_txt__c</fields>
-        <fields>Core_MDF_Comments_txt__c</fields>
-        <relatedList>Core_MDF_Notes__c.Core_MDF_Claim_id__c</relatedList>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>

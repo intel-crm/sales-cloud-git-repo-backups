@@ -21,6 +21,7 @@ public class Core_ProductAccess_Product_Dispatcher{
          }
          if(trigger.isUpdate){
              //use Core_ProductAccess_Product_Handler class for your business logic for IPS specific code, others can use their own handler
+            system.debug('update Trigger..');
             }
          if(trigger.isDelete){
              Core_ProductAccess_Product_Handler.deleteLineItems(oldList);

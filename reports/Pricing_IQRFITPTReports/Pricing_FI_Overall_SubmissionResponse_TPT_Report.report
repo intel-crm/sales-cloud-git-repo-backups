@@ -66,7 +66,7 @@
         <label>Avg Response Time (Days)</label>
         <scale>1</scale>
     </customDetailFormulas>
-    <description>For Partner-led Deal Registration quote lines, time elapsed between when quote line was created until Intel responded, calculated as Approved/Rejected Date minus Created Date. Aggregated by Month.</description>
+    <description>Time elapsed between when OEM first submitted quote line until Intel responded, calculated as Approved/Rejected Date minus First Submitted Date. Includes time quote line was in Draft status while OEM made updates for Customer Revision.</description>
     <filter>
         <criteriaItems>
             <column>Pricing_Quote_Line_Status_Age__c$Pricing_TPT_Quote_Line_Number__c.Pricing_Status_Nm__c</column>
@@ -151,7 +151,7 @@
         <field>Pricing_Quote_Line_Status_Age__c$Pricing_ApprovedRejectedQuarter__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>IQR Deal Reg - Response TPT by Month</name>
+    <name>FI - Overall Submission-Response TPT</name>
     <params>
         <name>co</name>
         <value>1</value>

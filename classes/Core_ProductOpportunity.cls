@@ -120,14 +120,31 @@ public class Core_ProductOpportunity {
      * Parameter    : List<Product2> , Map<Id,Product2>
      */
     public static void isProductNameChanged(List<Product2> newProductList, Map<Id,Product2> oldProductMap){
-        //Updates the check box Core_IsName_Changed__c if the Product name changes which will be picked up by the batch class
-        for (Product2 prod : newProductList){
-            if(prod.Name != oldProductMap.get(prod.Id).Name){
+     //Updates the check box Core_IsName_Changed__c if the Product name changes and product is used in Opptylineitem which will be picked up by the batch class
+        set<Id> productidset = new set<Id>();
+        //Start------------------------------------TWC3123-4785
+        map<Id,Integer> ProductCountMap = new Map<Id,Integer>();
+        for (Product2 pid : newProductList)
+        {
+            if(pid.Name != oldProductMap.get(pid.Id).Name)
+                productidset.add(pid.id);
+        }
+        List<AggregateResult> OLI = [select Product2Id, count(id) cnt from OpportunityLineItem where Product2Id in :productidset group by Product2Id limit 2000];
+        for(AggregateResult ar : OLI)
+        {
+            ProductCountMap.put((Id)ar.get('Product2Id'), (Integer)ar.get('cnt')); 
+        }
+        system.debug('###count'+ProductCountMap);
+        //End-------------------------------------------------
+        for (Product2 prod : newProductList)
+        {
+            if(ProductCountMap.get(prod.id)>0)
+            {
                 prod.Core_Is_Name_Changed_Chk__c = true;
                 prod.Core_Old_Product_Name_Txt__c = oldProductMap.get(prod.Id).Name;
                 prod.Core_ProductName_Changed_Time_Dte__c = System.NOW();
             }
-        }     
+        }
     }
     
     /*

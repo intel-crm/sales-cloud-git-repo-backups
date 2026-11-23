@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>61.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Check_For_Conditions</name>
+        <label>Check For Conditions</label>
+        <locationX>182</locationX>
+        <locationY>134</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Conditions_True</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Permission.PCC_Bypass_Automation</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Design_Records</targetReference>
+            </connector>
+            <label>Conditions True</label>
+        </rules>
+    </decisions>
+    <dynamicChoiceSets>
+        <name>recordId</name>
+        <dataType>String</dataType>
+        <displayField>Core_Design_Registration_Status_Nm__c</displayField>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Core_Design_Registration_Status_Nm__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Design accepted</stringValue>
+            </value>
+        </filters>
+        <limit>1</limit>
+        <object>Core_Design_Registration__c</object>
+    </dynamicChoiceSets>
+    <environments>Default</environments>
+    <interviewLabel>Pending with Partner {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Pending with Partner test</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <recordUpdates>
+        <name>Update_Design_Records</name>
+        <label>Update Design Records</label>
+        <locationX>50</locationX>
+        <locationY>242</locationY>
+        <inputAssignments>
+            <field>Core_Design_Registration_Status_Nm__c</field>
+            <value>
+                <stringValue>Pending with Partner</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Core_Design_Registration__c</object>
+    </recordUpdates>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Check_For_Conditions</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+</Flow>

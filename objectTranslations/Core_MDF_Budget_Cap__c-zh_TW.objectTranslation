@@ -26,27 +26,11 @@
         <name>Core_MDF_Budget_Status_txt__c</name>
     </fields>
     <fields>
-        <label>預算類型</label>
-        <name>Core_MDF_Budget_Type_nm__c</name>
-    </fields>
-    <fields>
-        <label><!-- Campaigns Linking failed? --></label>
-        <name>Core_MDF_Campaigns_Link_failed_Ind__c</name>
-    </fields>
-    <fields>
         <label>上限狀態</label>
         <name>Core_MDF_Cap_Status_nm__c</name>
         <picklistValues>
-            <masterLabel>Active</masterLabel>
-            <translation><!-- Active --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Approved</masterLabel>
             <translation>已核定</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Inactive</masterLabel>
-            <translation><!-- Inactive --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Pending Review</masterLabel>
@@ -65,14 +49,6 @@
             <translation>通路主導的活動</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Channel MDF Budget Type Cap</masterLabel>
-            <translation><!-- Channel MDF Budget Type Cap --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>IPA Budget Type Cap</masterLabel>
-            <translation><!-- IPA Budget Type Cap --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Variable Reimbursement Incentive Applied</masterLabel>
             <translation><!-- Variable Reimbursement Incentive Applied --></translation>
         </picklistValues>
@@ -82,40 +58,8 @@
         <name>Core_MDF_Claimed_Cap_amt__c</name>
     </fields>
     <fields>
-        <label><!-- Effective End Date --></label>
-        <name>Core_MDF_Effective_End_Date_Dt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Effective Start Date --></label>
-        <name>Core_MDF_Effective_Start_Date_Dt__c</name>
-    </fields>
-    <fields>
         <label><!-- Program --></label>
         <name>Core_MDF_Program_txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Geo --></label>
-        <name>Core_MDF_Region_nm__c</name>
-        <picklistValues>
-            <masterLabel>APJ</masterLabel>
-            <translation><!-- APJ --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>ASMO</masterLabel>
-            <translation><!-- ASMO --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>EMEA</masterLabel>
-            <translation><!-- EMEA --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>PRC</masterLabel>
-            <translation><!-- PRC --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>WW</masterLabel>
-            <translation><!-- WW --></translation>
-        </picklistValues>
     </fields>
     <fields>
         <label>剩餘的上限金額</label>
@@ -130,68 +74,12 @@
         <name>Core_MDF_Total_Allocated_Budget_amt__c</name>
     </fields>
     <nameFieldLabel>預算上限名稱</nameFieldLabel>
-    <recordTypes>
-        <label><!-- CCP Budget Cap --></label>
-        <name>Core_MDF_CCP_Budget_Cap</name>
-    </recordTypes>
-    <recordTypes>
-        <label><!-- IPA Budget Type Cap --></label>
-        <name>Core_MDF_IPA_Budget_Type_Cap</name>
-    </recordTypes>
     <validationRules>
         <errorMessage><!-- Budget cap can’t be created on Rejected budget --></errorMessage>
         <name>Core_MDF_CheckBudgetStatusEqualsRejected</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- IPA Budget Caps can&apos;t be Inactive during creation --></errorMessage>
-        <name>Core_MDF_IPABudgetCaps_ActiveValidation</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Budget Type cannot be changed. --></errorMessage>
-        <name>Core_MDF_IPA_BudgetType_cannotbeEdited</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Geo cannot be changed. --></errorMessage>
-        <name>Core_MDF_IPA_Geo_cannotbeEdited</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Effective Start Date is mandatory --></errorMessage>
-        <name>Core_MDF_IPA_MandatoryEffectiveStartDate</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Budget Type is mandatory --></errorMessage>
-        <name>Core_MDF_IPA_Mandatory_BudgetType</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Effective End Date is mandatory --></errorMessage>
-        <name>Core_MDF_IPA_Mandatory_EffectiveEndDate</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Geo is mandatory --></errorMessage>
-        <name>Core_MDF_IPA_Mandatory_Geo</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Requested Cap Amount is mandatory --></errorMessage>
-        <name>Core_MDF_IPA_Mandatory_ReqCapAmt</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- The revised Requested Cap Amount cannot be lesser than Claimed Cap Amount. --></errorMessage>
-        <name>Core_MDF_Validate_ReqCapAmt_OnAmtChange</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- The Requested Cap Amount cannot be lesser than Claimed Cap Amount for the given time period. --></errorMessage>
-        <name>Core_MDF_Validate_ReqCapAmt_OnCreation</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- The Requested Cap Amount cannot be lesser than Claimed Cap Amount (due to change in the time period). --></errorMessage>
-        <name>Core_MDF_Validate_ReqCapAmt_OnDateChange</name>
-    </validationRules>
-    <validationRules>
         <errorMessage><!-- Requested Cap Amount should be lesser than or equal to Budget Amount. --></errorMessage>
         <name>Core_MDF_Validate_ReqCapAmt_With_BdgtAmt</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Effective End Date should be greater than Effective Start Date --></errorMessage>
-        <name>Core_MDF_Validate_StartDate_EndDate</name>
     </validationRules>
 </CustomObjectTranslation>

@@ -11,30 +11,8 @@ public class CRM_EMB_TimezoneValuesBatch_Test {
      */
     @TestSetup
     static void setupTestData() {
-    
-          UserRole adminRole = [SELECT Id,Name FROM UserRole where Name = 'Admin' LIMIT 1];
-        
-        User u = Core_MDF_CCP_TestDataUtility.createUser(false);
-        u.LastName = 'User Test';
-        u.Email = 'testsysAdmin@example.com';
-        u.UserRoleId = adminRole.Id;
-        insert u;
-        
-        PermissionSet ps = [
-            SELECT Id
-            FROM PermissionSet
-            WHERE Name = 'CRM_Executive_Meeting_Brief_PS'
-            LIMIT 1
-        ];
-        
-        insert new PermissionSetAssignment(
-            AssigneeId = u.Id,
-            PermissionSetId = ps.Id
-        );
-        
         // Insert test timezone records
         List<CRM_Timezone_values__c> testRecords = new List<CRM_Timezone_values__c>();
-        System.runAs(u){
         
         testRecords.add(new CRM_Timezone_values__c(
             CRM_Country_txt__c = 'United States',
@@ -53,8 +31,28 @@ public class CRM_EMB_TimezoneValuesBatch_Test {
         ));
         
         insert testRecords;
-        }
     }
+    
+    /**
+     * @description Test batch execution with country and state data
+     */
+    /*@isTest
+    static void testBatchExecution() {
+        Test.startTest();
+        
+        // Delete existing records
+        delete [SELECT Id FROM CRM_Timezone_values__c];
+        
+        // Execute batch
+        CRM_EMB_TimezoneValuesBatch batch = new CRM_EMB_TimezoneValuesBatch();
+        Database.executeBatch(batch, 200);
+        
+        Test.stopTest();
+        
+        // Verify records were created
+        List<CRM_Timezone_values__c> records = [SELECT Id, CRM_Country_Code_txt__c FROM CRM_Timezone_values__c];
+        System.assert(records.size() > 0, 'Batch should create timezone records');
+    }*/
     
     /**
      * @description Test batch start method
@@ -76,6 +74,8 @@ public class CRM_EMB_TimezoneValuesBatch_Test {
         
         Test.stopTest();
         
+        // Verify wrappers contain both countries and states
+        System.assert(wrappers.size() > 0, 'Start method should return wrappers');
         
         // Check for country records (no state)
         Integer countryOnlyCount = 0;
@@ -84,6 +84,7 @@ public class CRM_EMB_TimezoneValuesBatch_Test {
                 countryOnlyCount++;
             }
         }
+        System.assert(countryOnlyCount > 0, 'Should have country-only records');
     }
     
     /**
@@ -120,11 +121,12 @@ public class CRM_EMB_TimezoneValuesBatch_Test {
         Test.stopTest();
         
         // Verify records were inserted
-        List<CRM_Timezone_values__c> records = new List<CRM_Timezone_values__c>();
-        User sysuser = [Select id from User where Email='testsysAdmin@example.com' limit 1];
-        system.runAs(sysuser){
-             records = [SELECT Id, CRM_Country_Code_txt__c, CRM_State_Code_txt__c FROM CRM_Timezone_values__c];
-        }
+        List<CRM_Timezone_values__c> records = [SELECT Id, CRM_Country_Code_txt__c, CRM_State_Code_txt__c FROM CRM_Timezone_values__c];
+        System.assert(records.size() >= 3, 'Execute method should insert records');
+        
+        // Verify specific records
+        System.assert([SELECT COUNT() FROM CRM_Timezone_values__c WHERE CRM_Country_Code_txt__c = 'USA' AND CRM_State_Code_txt__c = 'NY'] > 0);
+        System.assert([SELECT COUNT() FROM CRM_Timezone_values__c WHERE CRM_Country_Code_txt__c = 'CAN' AND CRM_State_Code_txt__c = 'BC'] > 0);
     }
     
     /**
@@ -138,6 +140,9 @@ public class CRM_EMB_TimezoneValuesBatch_Test {
         batch.finish(null);
         
         Test.stopTest();
+        
+        // Finish method should complete without errors
+        System.assert(true, 'Finish method executed successfully');
     }
     
     /**
@@ -156,6 +161,11 @@ public class CRM_EMB_TimezoneValuesBatch_Test {
             );
         
         Test.stopTest();
+        
+        System.assertEquals('United States', wrapper.countryLabel);
+        System.assertEquals('USA', wrapper.countryCode);
+        System.assertEquals('California', wrapper.stateLabel);
+        System.assertEquals('CA', wrapper.stateCode);
     }
     
     /**
@@ -174,6 +184,12 @@ public class CRM_EMB_TimezoneValuesBatch_Test {
         wrapper.validFor = 'AQ==';
         
         Test.stopTest();
+        
+        System.assertEquals('true', wrapper.active);
+        System.assertEquals('false', wrapper.defaultValue);
+        System.assertEquals('Test Label', wrapper.label);
+        System.assertEquals('TEST_VALUE', wrapper.value);
+        System.assertEquals('AQ==', wrapper.validFor);
     }
     
     /**
@@ -186,6 +202,8 @@ public class CRM_EMB_TimezoneValuesBatch_Test {
         String timezone = CRM_EMB_TimezoneHelper.getTimezone('USA', 'CA');
         
         Test.stopTest();
+        
+        System.assertEquals('America/Los_Angeles', timezone, 'Should return California timezone');
     }
     
     /**
@@ -198,6 +216,8 @@ public class CRM_EMB_TimezoneValuesBatch_Test {
         String timezone = CRM_EMB_TimezoneHelper.getTimezone('CAN', 'ON');
         
         Test.stopTest();
+        
+        System.assertEquals('America/Toronto', timezone, 'Should return Ontario timezone');
     }
     
     /**
@@ -210,6 +230,8 @@ public class CRM_EMB_TimezoneValuesBatch_Test {
         String timezone = CRM_EMB_TimezoneHelper.getTimezone('AUS', 'NSW');
         
         Test.stopTest();
+        
+        System.assertEquals('Australia/Sydney', timezone, 'Should return NSW timezone');
     }
     
     /**
@@ -223,6 +245,7 @@ public class CRM_EMB_TimezoneValuesBatch_Test {
         
         Test.stopTest();
         
+        System.assertEquals('America/Sao_Paulo', timezone, 'Should return Sao Paulo timezone');
     }
     
     /**
@@ -235,6 +258,8 @@ public class CRM_EMB_TimezoneValuesBatch_Test {
         String timezone = CRM_EMB_TimezoneHelper.getTimezone('MEX', 'CMX');
         
         Test.stopTest();
+        
+        System.assertEquals('America/Mexico_City', timezone, 'Should return Mexico City timezone');
     }
     
     /**
@@ -247,6 +272,8 @@ public class CRM_EMB_TimezoneValuesBatch_Test {
         String timezone = CRM_EMB_TimezoneHelper.getTimezone('RUS', 'MOW');
         
         Test.stopTest();
+        
+        System.assertEquals('Europe/Moscow', timezone, 'Should return Moscow timezone');
     }
     
     /**
@@ -259,6 +286,8 @@ public class CRM_EMB_TimezoneValuesBatch_Test {
         String timezone = CRM_EMB_TimezoneHelper.getTimezone('IDN', 'JK');
         
         Test.stopTest();
+        
+        System.assertEquals('Asia/Jakarta', timezone, 'Should return Jakarta timezone');
     }
     
     /**
@@ -271,6 +300,8 @@ public class CRM_EMB_TimezoneValuesBatch_Test {
         String timezone = CRM_EMB_TimezoneHelper.getTimezone('USA', null);
         
         Test.stopTest();
+        
+        System.assertEquals('America/New_York', timezone, 'Should return default USA timezone');
     }
     
     /**
@@ -283,6 +314,8 @@ public class CRM_EMB_TimezoneValuesBatch_Test {
         String timezone = CRM_EMB_TimezoneHelper.getTimezone('INVALID', 'XX');
         
         Test.stopTest();
+        
+        System.assertEquals('UTC', timezone, 'Should return UTC for invalid country');
     }
     
     /**
@@ -295,6 +328,8 @@ public class CRM_EMB_TimezoneValuesBatch_Test {
         String timezone = CRM_EMB_TimezoneHelper.getTimezone('USA', 'XX');
         
         Test.stopTest();
+        
+        System.assertEquals('America/New_York', timezone, 'Should return country default for invalid state');
     }
     
     /**
@@ -307,6 +342,8 @@ public class CRM_EMB_TimezoneValuesBatch_Test {
         String timezone = CRM_EMB_TimezoneHelper.getCountryDefaultTimezone('USA');
         
         Test.stopTest();
+        
+        System.assertEquals('America/New_York', timezone, 'Should return default USA timezone');
     }
     
     /**
@@ -319,6 +356,8 @@ public class CRM_EMB_TimezoneValuesBatch_Test {
         String timezone = CRM_EMB_TimezoneHelper.getCountryDefaultTimezone('INVALID');
         
         Test.stopTest();
+        
+        System.assertEquals('UTC', timezone, 'Should return UTC for invalid country');
     }
     
     /**
@@ -342,6 +381,7 @@ public class CRM_EMB_TimezoneValuesBatch_Test {
         for (String countryCode : testData.keySet()) {
             String expectedTz = testData.get(countryCode);
             String actualTz = CRM_EMB_TimezoneHelper.getCountryDefaultTimezone(countryCode);
+            System.assertEquals(expectedTz, actualTz, 'Timezone mismatch for ' + countryCode);
         }
         
         Test.stopTest();
@@ -360,6 +400,8 @@ public class CRM_EMB_TimezoneValuesBatch_Test {
         
         for (String state : stateTests) {
             String timezone = CRM_EMB_TimezoneHelper.getTimezone('USA', state);
+            System.assert(String.isNotBlank(timezone), 'Should return timezone for state: ' + state);
+            System.assertNotEquals('UTC', timezone, 'Should not return UTC for known state: ' + state);
         }
         
         Test.stopTest();
@@ -378,6 +420,8 @@ public class CRM_EMB_TimezoneValuesBatch_Test {
         
         for (String province : provinceTests) {
             String timezone = CRM_EMB_TimezoneHelper.getTimezone('CAN', province);
+            System.assert(String.isNotBlank(timezone), 'Should return timezone for province: ' + province);
+            System.assertNotEquals('UTC', timezone, 'Should not return UTC for known province: ' + province);
         }
         
         Test.stopTest();
@@ -396,6 +440,8 @@ public class CRM_EMB_TimezoneValuesBatch_Test {
         
         for (String state : stateTests) {
             String timezone = CRM_EMB_TimezoneHelper.getTimezone('AUS', state);
+            System.assert(String.isNotBlank(timezone), 'Should return timezone for state: ' + state);
+            System.assertNotEquals('UTC', timezone, 'Should not return UTC for known state: ' + state);
         }
         
         Test.stopTest();
@@ -415,6 +461,9 @@ public class CRM_EMB_TimezoneValuesBatch_Test {
         batch.execute(null, emptyScope);
         
         Test.stopTest();
+        
+        // Should complete without errors
+        System.assert(true, 'Batch should handle empty scope');
     }
     
     /**
@@ -438,6 +487,7 @@ public class CRM_EMB_TimezoneValuesBatch_Test {
         
         Test.stopTest();
         
+        System.assert([SELECT COUNT() FROM CRM_Timezone_values__c] > 0);
     }
     
     /**
@@ -460,12 +510,10 @@ public class CRM_EMB_TimezoneValuesBatch_Test {
         batch.execute(null, scope);
         
         Test.stopTest();
-        // Verify records were inserted
-        List<CRM_Timezone_values__c> records = new List<CRM_Timezone_values__c>();
-        User sysuser = [Select id from User where Email='testsysAdmin@example.com' limit 1];
-        system.runAs(sysuser){
-             records = [SELECT CRM_State_Code_txt__c FROM CRM_Timezone_values__c WHERE CRM_Country_Code_txt__c = 'GBR'];
-        }
+        
+        List<CRM_Timezone_values__c> records = [SELECT CRM_State_Code_txt__c FROM CRM_Timezone_values__c WHERE CRM_Country_Code_txt__c = 'GBR'];
+        System.assert(records.size() > 0);
+        System.assertEquals(null, records[0].CRM_State_Code_txt__c);
     }
     
     /**
@@ -481,6 +529,8 @@ public class CRM_EMB_TimezoneValuesBatch_Test {
         
         for (String country : majorCountries) {
             String timezone = CRM_EMB_TimezoneHelper.getCountryDefaultTimezone(country);
+            System.assert(String.isNotBlank(timezone), 'Major country should have timezone: ' + country);
+            System.assertNotEquals('UTC', timezone, 'Should have specific timezone for major country: ' + country);
         }
         
         Test.stopTest();

@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>Majool Inc Partner User</description>
+    <description>Entercomputer.com Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>Majool Inc Partner User</name>
+    <name>Entercomputer.com Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>EntercomputercomPartnerManager</parentRole>
 </Role>

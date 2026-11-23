@@ -1,0 +1,5 @@
+<messaging:emailTemplate subject="Intel Marketplace Admin has been Re-assigned to review the offering" recipientType="User" relatedToType="PMP_Partner_Offering__c">
+    <messaging:htmlEmailBody >
+        <c:PMP_OfferingReAssignedToAllAdmin offeringRecordId="{!relatedTo.Id}"/>
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>

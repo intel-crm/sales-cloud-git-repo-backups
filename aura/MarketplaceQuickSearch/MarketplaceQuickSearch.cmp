@@ -96,9 +96,7 @@
             <div class="buttonContainer slds-m-vertical_small slds-show_medium" > <!-- <lightning:layoutItem class="buttonContainer slds-m-vertical_small slds-show_medium">	-->
                 <div onclick="{!c.handleSearch}">
                     <c:IntelButton buttonClass="searchButton"
-                                   label="{$Label.c.PMP_Quick_Search_Button_partners}"/>
-                    <!-- IPA2.0 + US TWC4497-1631 -->
-                    <!-- label="{!v.searchType == 'product' ? $Label.c.PMP_Quick_Search_Button_Offerings : $Label.c.PMP_Quick_Search_Button_partners}"/> -->
+                                   label="{!v.searchType == 'product' ? $Label.c.PMP_Quick_Search_Button_Offerings : $Label.c.PMP_Quick_Search_Button_partners}"/>
                 </div>
             </div> <!--</lightning:layoutItem> -->
         </div> <!--  </lightning:layout> -->

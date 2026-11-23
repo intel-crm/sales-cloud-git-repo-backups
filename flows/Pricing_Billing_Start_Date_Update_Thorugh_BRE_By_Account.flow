@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Billing_Start_Day_change_BRE</name>
+        <label>Billing Start Day change BRE</label>
+        <locationX>50</locationX>
+        <locationY>431</locationY>
+        <actionName>Pricing_BillingStartDateByAccount</actionName>
+        <actionType>runDecisionMatrix</actionType>
+        <connector>
+            <targetReference>Update_Billing_Start_Date_After_BRE</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>Account</name>
+            <value>
+                <elementReference>$Record.SBQQ__Quote__r.SBQQ__Account__r.Name</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Pricing_BillingStartDateByAccount</nameSegment>
+        <outputParameters>
+            <assignToReference>No_O_Days_for_BRE</assignToReference>
+            <name>BillingStartDate</name>
+        </outputParameters>
+    </actionCalls>
+    <apiVersion>58.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Check_for_Status_Field_Update</name>
+        <label>Check for Status Field Update</label>
+        <locationX>182</locationX>
+        <locationY>323</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>On_Status_change_BRE</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record__Prior.Pricing_Status_Nm__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Pending Intel Field Review</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Pricing_Status_Nm__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Pending Further Intel Review</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Billing_Start_Day_change_BRE</targetReference>
+            </connector>
+            <label>On Status change BRE</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <formulas>
+        <name>BillingStartDate_After_BRE</name>
+        <dataType>Date</dataType>
+        <expression>DATE(YEAR({!$Record.Pricing_Approved_Start_Date_Dup_Dt__c}), MONTH({!$Record.Pricing_Approved_Start_Date_Dup_Dt__c}), DAY({!$Record.Pricing_Approved_Start_Date_Dup_Dt__c}) - {!No_O_Days_for_BRE})</expression>
+    </formulas>
+    <interviewLabel>Billing Start Date Update Thorugh BRE By Account {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Billing Start Date Update Thorugh BRE By Account</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_Billing_Start_Date_After_BRE</name>
+        <label>Update Billing Start Date After BRE</label>
+        <locationX>50</locationX>
+        <locationY>539</locationY>
+        <inputAssignments>
+            <field>Pricing_Billing_Start_Date_Dt__c</field>
+            <value>
+                <elementReference>BillingStartDate_After_BRE</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Check_for_Status_Field_Update</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Pricing_Quote_Program_Nm__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Tender</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Pricing_Status_Nm__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <object>SBQQ__QuoteLine__c</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+    <variables>
+        <name>No_O_Days_for_BRE</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+        <scale>0</scale>
+    </variables>
+</Flow>

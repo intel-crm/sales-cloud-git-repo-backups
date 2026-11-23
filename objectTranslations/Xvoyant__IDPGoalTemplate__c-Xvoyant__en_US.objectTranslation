@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>IDPGoalTemplate</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>IDPGoalTemplates</value>
+    </caseValues>
+    <fields>
+        <label><!-- Activity --></label>
+        <name>Xvoyant__Activity__c</name>
+    </fields>
+    <fields>
+        <label><!-- Comment --></label>
+        <name>Xvoyant__Comment__c</name>
+    </fields>
+    <fields>
+        <label><!-- Driver --></label>
+        <name>Xvoyant__Driver__c</name>
+        <relationshipLabel><!-- IDPs --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- FunctionalGroupId --></label>
+        <name>Xvoyant__FunctionalGroupId__c</name>
+    </fields>
+    <fields>
+        <label><!-- IDPName --></label>
+        <name>Xvoyant__IDPName__c</name>
+    </fields>
+    <fields>
+        <label><!-- IDPNum --></label>
+        <name>Xvoyant__IDPNum__c</name>
+    </fields>
+    <fields>
+        <label><!-- OpportunityStage --></label>
+        <name>Xvoyant__OpportunityStage__c</name>
+    </fields>
+    <fields>
+        <label><!-- RasrComponent --></label>
+        <name>Xvoyant__RasrComponent__c</name>
+        <relationshipLabel><!-- IDPs --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Skill --></label>
+        <name>Xvoyant__Skill__c</name>
+    </fields>
+    <fields>
+        <label><!-- coachId --></label>
+        <name>Xvoyant__coachId__c</name>
+    </fields>
+    <fields>
+        <label><!-- goalId --></label>
+        <name>Xvoyant__goalId__c</name>
+    </fields>
+    <fields>
+        <label><!-- goalName --></label>
+        <name>Xvoyant__goalName__c</name>
+    </fields>
+    <fields>
+        <label><!-- goalNum --></label>
+        <name>Xvoyant__goalNum__c</name>
+    </fields>
+    <fields>
+        <label><!-- goal_value --></label>
+        <name>Xvoyant__goal_value__c</name>
+    </fields>
+    <fields>
+        <label><!-- idpIsComplete --></label>
+        <name>Xvoyant__idpIsComplete__c</name>
+    </fields>
+    <fields>
+        <label><!-- isTemplate --></label>
+        <name>Xvoyant__isTemplate__c</name>
+    </fields>
+    <fields>
+        <label><!-- repId --></label>
+        <name>Xvoyant__repId__c</name>
+    </fields>
+    <fields>
+        <label><!-- resource --></label>
+        <name>Xvoyant__resource__c</name>
+    </fields>
+    <fields>
+        <label><!-- stageDriver --></label>
+        <name>Xvoyant__stageDriver__c</name>
+    </fields>
+    <fields>
+        <label><!-- trackName --></label>
+        <name>Xvoyant__trackName__c</name>
+    </fields>
+    <fields>
+        <label><!-- trackNum --></label>
+        <name>Xvoyant__trackNum__c</name>
+    </fields>
+    <fields>
+        <label><!-- useSequentially --></label>
+        <name>Xvoyant__useSequentially__c</name>
+    </fields>
+    <startsWith>Vowel</startsWith>
+</CustomObjectTranslation>

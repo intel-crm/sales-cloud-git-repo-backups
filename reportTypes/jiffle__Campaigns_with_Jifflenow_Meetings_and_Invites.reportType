@@ -219,6 +219,16 @@
             <field>HierarchyNumberOfWonOpportunities</field>
             <table>Campaign</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>SWS_IsMarketingRecord__c</field>
+            <table>Campaign</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>MKT_Custom_Links__c</field>
+            <table>Campaign</table>
+        </columns>
         <masterLabel>Campaigns</masterLabel>
     </sections>
     <sections>

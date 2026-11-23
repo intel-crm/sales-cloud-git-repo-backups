@@ -176,7 +176,7 @@ TEXT($Record.Owner:User.Core_User_Coverage__c))),$Record.Core_Locked_TQL_Coverag
         <connector>
             <targetReference>Update_SQL_Coverage</targetReference>
         </connector>
-        <filterFormula>AND( OR( ISNEW(), ISCHANGED({!$Record.Status}), ISCHANGED({!$Record.IsConverted}) ), LEFT({!$Record.OwnerId}, 3) = &apos;005&apos;, OR( TEXT(PRIORVALUE({!$Record.Status}))=&quot;Unqualified&quot;, TEXT(PRIORVALUE({!$Record.Status}))=&quot;Sales Accepted Lead&quot;, TEXT(PRIORVALUE({!$Record.Status}))=&quot;Marketing Qualified Lead&quot;, ISPICKVAL({!$Record.Status},&quot;Sales Qualified Lead&quot;)) )</filterFormula>
+        <filterFormula>AND( OR( ISNEW(), ISCHANGED({!$Record.Status}), ISCHANGED({!$Record.IsConverted}) ), LEFT({!$Record.OwnerId}, 3) = &apos;005&apos;, OR( TEXT(PRIORVALUE({!$Record.Status}))=&quot;Marketing Engaged Lead&quot;, TEXT(PRIORVALUE({!$Record.Status}))=&quot;Sales Accepted Lead&quot;, TEXT(PRIORVALUE({!$Record.Status}))=&quot;Marketing Qualified Lead&quot;, ISPICKVAL({!$Record.Status},&quot;Sales Qualified Lead&quot;)) )</filterFormula>
         <object>Lead</object>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordBeforeSave</triggerType>

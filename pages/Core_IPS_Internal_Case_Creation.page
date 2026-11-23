@@ -80,7 +80,7 @@
                 
                 this.input = $( "<input>" )
                 .appendTo( this.wrapper )
-                .val( {!JSENCODE('value')} )   //Added by Nagendra for client potential xss 14/11/22
+                .val( value )
                 .attr( "title", "" )
                 .attr( "placeholder", "--Select--" )
                 .addClass( "custom-combobox-input ui-widget ui-widget-content ui-state-default ui-corner-left" )
@@ -195,7 +195,6 @@
                     
                     // Found a match, nothing to do
                     if ( valid ) {
-                        $(this.element).trigger( "change" );
                         return;
                     }
                     if(value!='' && value!=null){
@@ -237,6 +236,7 @@
     
     function register_MultiSelect() {
         //multiselect dropdown
+        console.log('---Inside register_MultiSelect--');            
         $(".custom-multiselect select option[value='']").remove();
         //$('.multiselect-dropdown').css({'display':'none'});
         $('.custom-multiselect').dropdown({                
@@ -246,7 +246,9 @@
             input: '<input type="text" maxLength="20" placeholder="Search and Select Multiple...">'
             
         });
-          
+        
+        console.log('---End register_MultiSelect--');           
+        
     }
     </script>
     <!-- Added JqueryDropdown by Karthick for User Story US80350 Iteration 7 End--> 
@@ -315,9 +317,9 @@
     
     <script>
     var newWin=null;
-    var strProductId = "{!JSENCODE(selectedProductId)}"; 
-    var strContactId = "{!JSENCODE(selectedContactId)}"; 
-    var strSAProductId = "{!JSENCODE(selectedSAProductId)}";
+    var strProductId = "{!selectedProductId}"; 
+    var strContactId = "{!selectedContactId}"; 
+    var strSAProductId = "{!selectedSAProductId}";
     // enterPress function prevents the Default loading whenever user press Enter Key when lookup Text field is on-focused
     function enterPress(event, name, id, relatedId, object,relatedId2){
         if(event.keyCode==13){
@@ -336,6 +338,7 @@
     function onKeyPress(name, id, relatedId, object,relatedId2){
         
         if(event.keyCode == 13){
+            alert(event.keyCode);
             var url;
             if(relatedId!=null && relatedId2!=null)
                 url="/apex/Core_IPS_Custom_Lookup?namefield=" + name + "&idfield=" + id + "&relatedId=" + document.getElementById(relatedId).value+ "&object=" +object+"&relatedId2="+document.getElementById(relatedId2).value+"&queryParam="+document.getElementById(name).value;
@@ -348,6 +351,7 @@
             {
                 //window.opener.blur();
                 newWin.focus();
+                //alert(newWin.focus);
             }
             
             return false;
@@ -358,7 +362,8 @@
     
     function openLookupPopup(name, id, relatedId, object,relatedId2)
     {
-        var mode='{!JSENCODE(mode)}';         //added mode for US217499
+        var mode='{!mode}';         //added mode for US217499
+        console.log('name:'+name+'id:'+id+ 'relatedId:'+relatedId+'object:'+object+'relatedId2:'+relatedId2+'mode:'+mode);
         var url;
         //added mode in all URL for US217499
         if(relatedId!=null && relatedId2!=null)
@@ -368,6 +373,7 @@
         /*Ashutosh 0- US106566 - Adding condition for NAC where project is not null */
         else if(relatedId2!=null && relatedId == null){
             url="/apex/Core_IPS_Custom_Lookup?namefield=" + name + "&idfield=" + id + "&relatedId2=" + document.getElementById(relatedId2).value+ "&object=" +object+'&queryParam='+document.getElementById(name).value+ "&mode="+mode;  
+            console.log('>>> NAC url'+url);
         }
         /*NAC project condition ends here*/
             else
@@ -376,6 +382,7 @@
         if (window.focus) 
         {
             newWin.focus();
+            //alert(newWin.focus);
         }    
         return false;
     }
@@ -394,6 +401,8 @@
         }
     }
     function updProjListBasedOnSelectedProd(id){  
+        console.log('>>>>>>>>>>>>>>>> updProjListBasedOnSelectedProd' + id);
+        
         if(id.substring(0,3)=='02i')
         {
             
@@ -412,16 +421,22 @@
     }
     
     function callParentPage(name){
+        
+        console.log('name' + name);
+        
         if(name=='Product')
         {         
+            console.log('strProductId' + strProductId);
             panelrender(name,strProductId);                  
         }
         else if(name=='Contact')
         {
+            console.log(strContactId);
             panelrender(name,strContactId); 
         }
             else 
             {
+                console.log(strSAProductId);
                 panelrender(name,strSAProductId); 
             }
     }
@@ -487,13 +502,6 @@
         //clearObjectName(obj);
         
     }
-    
-    function checkNetwork(){ 
-		var ifConnected = window.navigator.onLine; 
-		if (!ifConnected) { 
-			location.reload();
-		}
-	}
     
     
     function fnConfirmBox()
@@ -572,15 +580,15 @@
     
     <apex:form id="fm" rendered="{!if(OR(AND(mode ='edit',isEditable),mode!='edit'),true,false)}">   
         
-        <apex:inputHidden value="{!selectedContactId}" id="targetId" html-object="contact" rendered="{!$ObjectType.Contact.fields.Id.Accessible}"/><!-- US1021251-- 06/07/2021 -- Niyazuddin -- FLS check for appsec security vulnerability -->
-        <apex:inputHidden value="{!selectedProjId}" id="targetProjId" html-object="project" rendered="{!$ObjectType.Case.fields.Core_IPS_Project_Case__c.Accessible}"/><!-- US1021251-- 06/07/2021 -- Niyazuddin -- FLS check for appsec security vulnerability -->
-        <apex:inputHidden value="{!selectedProductId}" id="targetProdId" html-object="product" rendered="{!$ObjectType.Case.fields.assetId.Accessible}"/><!-- US1021251-- 06/07/2021 -- Niyazuddin -- FLS check for appsec security vulnerability -->
+        <apex:inputHidden value="{!selectedContactId}" id="targetId" html-object="contact"/>
+        <apex:inputHidden value="{!selectedProjId}" id="targetProjId" html-object="project"/>
+        <apex:inputHidden value="{!selectedProductId}" id="targetProdId" html-object="product"/>
         <!-- addded by sugandha for US85567 -->
-        <apex:inputHidden value="{!selectedPSOId}" id="targetPSOId" html-object="User" rendered="{!$ObjectType.Case.fields.Core_IPS_Partner_Sup_Owner__c.Accessible}"/><!-- US1021251-- 06/07/2021 -- Niyazuddin -- FLS check for appsec security vulnerability -->
+        <apex:inputHidden value="{!selectedPSOId}" id="targetPSOId" html-object="User"/>
         <apex:actionstatus id="status1">
             <apex:facet name="start">
                 <div class="waitingSearchDiv" id="el_loading" style="background-color: #fbfbfb;
-                                                                     height: 200%;opacity:0.65;width:100%;">
+                                                                     height: 100%;opacity:0.65;width:100%;">
                     <div class="waitingHolder" style="top: 74.2px; width: 91px;">
                         <img class="waitingImage" src="/img/loading.gif" title="Please Wait..." />
                         <span class="waitingDescription">Please Wait...</span>
@@ -676,13 +684,13 @@
                     <!-- Customer Visible ends --> 
                     
                     <!-- Contact starts -->
-                    <apex:pageBlockSectionItem rendered="{!$ObjectType.Contact.fields.Name.Accessible}">
+                    <apex:pageBlockSectionItem >
                         <apex:outputLabel value="Contact Name"/>
                         <!--<apex:panelGrid columns="1">-->
                         <apex:outputPanel styleClass="requiredInput" layout="block">
                             <apex:outputPanel styleClass="requiredBlock" layout="block"/>
                             <!-- Added disabled="{!isClosed} by Sugandha for User Story US83594 Iteration 6 -->
-                            <apex:inputText value="{!selectedContact}" id="targetName" required="" styleClass="InputContact" onchange="clearHiddenfields('Contact');" disabled="{!isClosed}" onKeyPress="enterPress(event, '{!$Component.targetName}', '{!$Component.targetId}','{!$Component.targetProjId}','Contact','{!$Component.targetProdId}');" rendered="{!$ObjectType.Contact.fields.Name.Accessible}"><!-- US1021251-- 06/07/2021 -- Niyazuddin -- FLS check for appsec security vulnerability -->
+                            <apex:inputText value="{!selectedContact}" id="targetName" required="" styleClass="InputContact" onchange="clearHiddenfields('Contact');" disabled="{!isClosed}" onKeyPress="enterPress(event, '{!$Component.targetName}', '{!$Component.targetId}','{!$Component.targetProjId}','Contact','{!$Component.targetProdId}');">
                                 <!-- <apex:actionSupport event="onchange" action="{!showGECFieldsToIntUsrsForMAGAcc}" reRender="gecid"/> -->
                             </apex:inputText>
                             <!-- Added rendered="{!!isClosed} by Sugandha for User Story US83594 Iteration 6 -->
@@ -697,13 +705,13 @@
                     <!-- Contact ends -->
                     
                     <!-- Project starts -->   
-                    <apex:pageBlockSectionItem rendered="{!$ObjectType.Core_IPS_Project__c.fields.Name.Accessible}">
+                    <apex:pageBlockSectionItem >
                         <apex:outputLabel value="Project "/>
                         <!--<apex:panelGrid columns="4">-->
                         <apex:outputPanel layout="block">
                             <!-- Added disabled="{!isClosed} by Sugandha for User Story US83594 Iteration 6 -->
                             <!--Modified disable condition for US217499-->
-                            <apex:inputText value="{!projSelected}" title="{!projSelected}" id="targetProj"  styleClass="InputProject projectclass" onchange="clearHiddenfields('Project');" disabled="{!IF(mode=='edit',false,caseInformationReadOnly) || isClosed || IF((mode=='edit'|| mode=='copy') && isPrivateProjectCase ,true,false) }" onKeyPress="enterPress(event, '{!$Component.targetProj}', '{!$Component.targetProjId}','{!$Component.targetId}','Project','{!$Component.targetProdId}');" >  <!-- US1021251-- 06/07/2021 -- Niyazuddin -- FLS check for appsec security vulnerability -->                      
+                            <apex:inputText value="{!projSelected}" title="{!projSelected}" id="targetProj"  styleClass="InputProject projectclass" onchange="clearHiddenfields('Project');" disabled="{!IF(mode=='edit',false,caseInformationReadOnly) || isClosed || IF((mode=='edit'|| mode=='copy') && isPrivateProjectCase ,true,false) }" onKeyPress="enterPress(event, '{!$Component.targetProj}', '{!$Component.targetProjId}','{!$Component.targetId}','Project','{!$Component.targetProdId}');">                        
                             </apex:inputText>
                             <!-- Added rendered="{!!isClosed}" by Sugandha for User Story US83594 Iteration 6 -->
                             <!--Modified render condition for US217499-->
@@ -726,7 +734,7 @@
                             <!-- End of user story- changes made for user story-US80347--Adding Product Variant-->
                             <!-- Start of user story- changes made for user story-US61129- width has been increased and hover functionality has been impnlemented---->
                             <!-- Added disabled="{!isClosed} by Sugandha for User Story US83594 Iteration 6 -->
-                            <apex:inputText value="{!selectedProduct}" title="{!selectedProduct}" id="targetProd"  styleClass="InputProduct myMultiClass productclass" onchange="clearHiddenfields('Product');" disabled="{!IF(mode=='edit',false,caseInformationReadOnly) || isClosed }" onKeyPress="enterPress(event, '{!$Component.targetProd}', '{!$Component.targetProdId}','{!$Component.targetId}','Product','{!$Component.targetProjId}');" rendered="{!$ObjectType.asset.fields.Name.Accessible}"> <!-- US1021251-- 06/07/2021 -- Niyazuddin -- FLS check for appsec security vulnerability -->
+                            <apex:inputText value="{!selectedProduct}" title="{!selectedProduct}" id="targetProd"  styleClass="InputProduct myMultiClass productclass" onchange="clearHiddenfields('Product');" disabled="{!IF(mode=='edit',false,caseInformationReadOnly) || isClosed }" onKeyPress="enterPress(event, '{!$Component.targetProd}', '{!$Component.targetProdId}','{!$Component.targetId}','Product','{!$Component.targetProjId}');">
                                 <!-- End of user story- changes made for user story-US61129 width has been increased and hover functionality has been impnlemented---->
                                 <!-- Added rendered="{!!isClosed} by Sugandha for User Story US83594 Iteration 6 -->
                             </apex:inputText>
@@ -816,12 +824,12 @@
                                         
                     <!--Ashutosh - US106566- added project lookup on NAC case screen-->
                     <!-- Project starts -->   
-                    <apex:pageBlockSectionItem rendered="{!$ObjectType.Core_IPS_Project__c.fields.Name.Accessible}">
+                    <apex:pageBlockSectionItem >
                         <apex:outputLabel value="Project "/>
                         
                         <apex:outputPanel layout="block">
                             <!--Modified disable condition for US217499-->
-                            <apex:inputText value="{!projSelected}" title="{!projSelected}" id="targetProj"  styleClass="InputProject projectclass" onchange="clearHiddenfields('Project');" disabled="{!IF(mode=='edit',false,caseInformationReadOnly) || isClosed || IF((mode=='edit'|| mode=='copy') && isPrivateProjectCase ,true,false) }" onKeyPress="enterPress(event, '{!$Component.targetProj}', '{!$Component.targetProjId}','{!$Component.targetId}','Project','{!$Component.targetSAProdId}');" >   <!-- US1021251-- 06/07/2021 -- Niyazuddin -- FLS check for appsec security vulnerability -->                     
+                            <apex:inputText value="{!projSelected}" title="{!projSelected}" id="targetProj"  styleClass="InputProject projectclass" onchange="clearHiddenfields('Project');" disabled="{!IF(mode=='edit',false,caseInformationReadOnly) || isClosed || IF((mode=='edit'|| mode=='copy') && isPrivateProjectCase ,true,false) }" onKeyPress="enterPress(event, '{!$Component.targetProj}', '{!$Component.targetProjId}','{!$Component.targetId}','Project','{!$Component.targetSAProdId}');">                        
                             </apex:inputText>
                             <!--Modified render condition for US217499-->
                             <apex:commandLink onclick="openLookupPopup('{!$Component.targetProj}', '{!$Component.targetProjId}',null,'Project','{!$Component.targetSAProdId}'); return false" rendered="{!(!isClosed && !isPrivateProjectCase)}"><apex:image url="{!$Label.IPS_Search_Image_URI}" width="15" height="15" rendered="{!IF(mode=='edit',true,NOT(caseInformationReadOnly))}"/></apex:commandLink>
@@ -831,7 +839,7 @@
                     <!-- Project ends -->
                     <!--Ashutosh - US106566- added project lookup on NAC case screen ends-->
                 
-                    <apex:pageBlockSectionItem rendered="{!$ObjectType.Core_IPS_Project__c.fields.Name.Accessible}">
+                    <apex:pageBlockSectionItem >
                         <apex:outputLabel value="Product"/>
                         <!--<apex:panelGrid columns="2">-->
                         <apex:outputPanel styleClass="requiredInput" layout="block">
@@ -845,7 +853,7 @@
                             
                             <!-- Added disabled="{!isClosed} by Sugandha for User Story US83594 Iteration 6 --> 
                             <!--Ashutosh - US106566 - Added projectid as last parameter for js function as previously no project concept on NAC case was there-->           
-                            <apex:inputText value="{!selectedSAProduct}" title="{!selectedSAProduct}" id="targetSAProd" disabled="{!isClosed}" styleClass="InputSAProduct productclass" onchange="clearHiddenfields('SAProduct');" onKeyPress="enterPress(event, '{!$Component.targetSAProd}', '{!$Component.targetSAProdId}',null,'','{!$Component.targetProjId}');" rendered="{!$ObjectType.Core_IPS_Project__c.fields.Name.Accessible}"/> <!-- US1021251-- 06/07/2021 -- Niyazuddin -- FLS check for appsec security vulnerability -->
+                            <apex:inputText value="{!selectedSAProduct}" title="{!selectedSAProduct}" id="targetSAProd" disabled="{!isClosed}" styleClass="InputSAProduct productclass" onchange="clearHiddenfields('SAProduct');" onKeyPress="enterPress(event, '{!$Component.targetSAProd}', '{!$Component.targetSAProdId}',null,'','{!$Component.targetProjId}');"/>
                             <!-- Added rendered="{!!isClosed} by Sugandha for User Story US83594 Iteration 6 --> 
                             <!--Ashutosh - US106566 - Added projectid as last parameter for js function as previously no project concept on NAC case was there-->               
                             <apex:commandLink onclick="openLookupPopup('{!$Component.targetSAProd}', '{!$Component.targetSAProdId}',null,'','{!$Component.targetProjId}'); return false" rendered="{!!isClosed}"><apex:image url="{!$Label.IPS_Search_Image_URI}" width="15" height="15"/></apex:commandLink>
@@ -907,7 +915,7 @@
                     <!-- Case Source ends -->
                     
                     <!-- Case Type starts -->   
-                    <apex:pageBlockSectionItem helpText=" {!$ObjectType.Case.fields.Core_CaseType__c.InlineHelpText}" id="pbitem" rendered="{!$ObjectType.Case.fields.Core_IPS_Supported_Product__c.Accessible}">
+                    <apex:pageBlockSectionItem helpText=" {!$ObjectType.Case.fields.Core_CaseType__c.InlineHelpText}" id="pbitem">
                         <apex:outputLabel value="{!$ObjectType.case.fields.Core_CaseType__c.Label}"/>
                         <apex:outputPanel > 
                             <div Class="requiredInput">
@@ -922,14 +930,14 @@
                     </apex:pageBlockSectionItem> 
                     <!-- Case Type ends -->
                    
-                    <apex:inputHidden value="{!selectedSAProductId}" id="targetSAProdId" html-object="SAProduct" rendered="{!$ObjectType.Case.fields.Core_IPS_Supported_Product__c.Accessible}"/>    <!-- US1021251-- 06/07/2021 -- Niyazuddin -- FLS check for appsec security vulnerability -->
+                    <apex:inputHidden value="{!selectedSAProductId}" id="targetSAProdId" html-object="SAProduct"/>    
                 </apex:pageBlockSection> 
                 <!-- Case Information NAC Cases ends -->   
                 
                 <!-- Added by Amritesh - US79768 -->
                 <apex:outputPanel rendered="{!showProductRelInfoDialog}">
                     <script>
-                    selectedProjId_Old = '{!IF(ISBLANK(JSENCODE(selectedProjId_Old)),'',JSENCODE(selectedProjId_Old))}';
+                    selectedProjId_Old = '{!IF(ISBLANK(selectedProjId_Old),'',selectedProjId_Old)}';
                     fnConfirmProductChange();
                     </script>
                 </apex:outputPanel>
@@ -1016,7 +1024,7 @@
                         <apex:actionFunction name="isShowPSA" action="{!displayPSAPSO}" rerender="psaid">
                             <apex:param name="psoId" value="{!selectedPSOId}"/>
                         </apex:actionFunction>
-                        <apex:inputtext value="{!selectedPSO}" id="targetPSO" styleClass="InputPSO" disabled="{!IF(mode=='edit',false,caseInformationReadOnly) || isClosed}" onchange="clearHiddenfields('User');" onKeyPress="enterPress(event, '{!$Component.targetPSO}', '{!$Component.targetPSOId}','{!$Component.targetId}','User','{!$Component.targetProjId}');" rendered="{!$ObjectType.User.fields.Name.Accessible}"> <!-- US1021251-- 06/07/2021 -- Niyazuddin -- FLS check for appsec security vulnerability -->
+                        <apex:inputtext value="{!selectedPSO}" id="targetPSO" styleClass="InputPSO" disabled="{!IF(mode=='edit',false,caseInformationReadOnly) || isClosed}" onchange="clearHiddenfields('User');" onKeyPress="enterPress(event, '{!$Component.targetPSO}', '{!$Component.targetPSOId}','{!$Component.targetId}','User','{!$Component.targetProjId}');">
                             <apex:actionSupport event="onchange" rerender="psaid" action="{!displayPSAPSO}" status="status1"/>
                         </apex:inputtext>
                         <apex:commandLink onclick="openLookupPopup('{!$Component.targetPSO}', '{!$Component.targetPSOId}','{!$Component.targetId}','User','{!$Component.targetProjId}'); return false" rendered="{!!isClosed}">
@@ -1048,7 +1056,7 @@
                                 <!-- Added JqueryDropdown class names by Karthick for User Story US80350 Iteration 7 -->                
                                 <apex:selectList value="{!categorySelected}" size="1" id="category" disabled="{!isClosed}"  styleClass="{!IF(!isClosed,'cust-combobox custom-combobox', '')}">
                                     <apex:selectOptions value="{!categoryOptions}"/> 
-                                    <apex:actionSupport event="onchange" action="{!getEnvDetails}" reRender="none"  status="status1" oncomplete="BindEvent();checkNetwork();"/> 
+                                    <apex:actionSupport event="onchange" action="{!getEnvDetails}" reRender="none"  status="status1" oncomplete="BindEvent();"/> 
                                 </apex:selectList>
                             </apex:outputPanel> 
                                     

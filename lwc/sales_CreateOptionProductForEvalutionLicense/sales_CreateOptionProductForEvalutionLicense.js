@@ -1,10 +1,11 @@
 /* eslint-disable no-console */
-import { LightningElement,api } from 'lwc';
-/*import getOptionProducts from '@salesforce/apex/Sales_ExistingLicenseViewCtrl.getOptionProducts';
+import { LightningElement,api,wire,track} from 'lwc';
+import getOptionProducts from '@salesforce/apex/Sales_ExistingLicenseViewCtrl.getOptionProducts';
 import createOptnLic from '@salesforce/apex/Sales_CreateLicenseProvider.createOptnLic';
  import { ShowToastEvent } from 'lightning/platformShowToastEvent';
  import Sales_nextmsg from '@salesforce/label/c.Sales_nextmsg';
  import Sales_Optional from '@salesforce/label/c.Sales_Optional';
+ import SalesProductSelection from '@salesforce/label/c.Sales_Product_Selection';
  import Sales_Lic_Created_Success from '@salesforce/label/c.Sales_Lic_Created_Success';
  import SalesOptionalConfigurationHtml from '@salesforce/label/c.Sales_OptionalConfiguration_Html';
  import { NavigationMixin } from 'lightning/navigation';
@@ -24,13 +25,13 @@ const columns = [
 			},
 			sortable: true
 	}
-];*/
+];
 
-export default class Sales_CreateOptionProductForEvalutionLicense extends LightningElement {
+export default class Sales_CreateOptionProductForEvalutionLicense extends NavigationMixin(LightningElement) {
 		@api parentLicprodId;
         @api orderItemId='';
 		@api parentLicId;
-		/*@api parentActivationCode;
+		@api parentActivationCode;
 		@api primarycontact;
 		@api licensetypevalue;
 		@api optnCreated;
@@ -67,7 +68,7 @@ export default class Sales_CreateOptionProductForEvalutionLicense extends Lightn
 			 
 			}
 		}
-		label={Sales_nextmsg,Sales_Optional,Sales_Lic_Created_Success,SalesOptionalConfigurationHtml,Sales_OrderClose,Sales_createLic_HTML};
+		label={Sales_nextmsg,SalesProductSelection,Sales_Optional,Sales_Lic_Created_Success,SalesOptionalConfigurationHtml,Sales_OrderClose,Sales_createLic_HTML};
 		
         @wire (getOptionProducts,{prodId:'$parentLicprodId',orderItemId:'$orderItemId',licenseId:'$parentLicId'})
         
@@ -120,6 +121,11 @@ export default class Sales_CreateOptionProductForEvalutionLicense extends Lightn
 			let prodList=[];
 				const selectedRows = this.template.querySelector('lightning-datatable').getSelectedRows();
 				console.log('selectedRows>>'+JSON.stringify(selectedRows));
+				if(selectedRows.length==0 && this.Sfdc==true){
+					this.buttonClicked=false;
+					this.showNotification('Error',this.label.SalesProductSelection,'error');
+					return;
+			}
 				selectedRows.forEach(row => {
 						prodList.push(row.SBQQ__OptionalSKU__c);
 				});
@@ -175,6 +181,6 @@ export default class Sales_CreateOptionProductForEvalutionLicense extends Lightn
 			setTimeout(function() {
 			location.reload(true);
 			}, 2000);    
-		}*/
+		}
     	
 }

@@ -153,10 +153,170 @@
     <enableHistory>true</enableHistory>
     <enableLicensing>false</enableLicensing>
     <enableReports>true</enableReports>
-    <enableSearch>false</enableSearch>
+    <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>ControlledByParent</externalSharingModel>
+    <fieldSets>
+        <fullName>CPQ_lookup</fullName>
+        <description>CPQ_lookup</description>
+        <displayedFields>
+            <field>Name</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>SBQQ__Product__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>SBQQ__EffectiveDate__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>SBQQ__ExpirationDate__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>SBQQ__Price__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>CPQ_lookup</label>
+    </fieldSets>
+    <fields>
+        <fullName>PSG_CPS_Cb__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>CPS</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>PSG_CPS_Ref__c</fullName>
+        <externalId>false</externalId>
+        <label>CPS Ref</label>
+        <length>15</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PSG_Comments_Nm__c</fullName>
+        <label>Comments</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>PSG_Inactive_Cb__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Inactive</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>PSG_Lower_Qty_Nbr__c</fullName>
+        <externalId>false</externalId>
+        <label>Lower Qty</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PSG_Price_End_Date_Dt__c</fullName>
+        <label>Price End Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>PSG_Price_Start_Date_Dt__c</fullName>
+        <label>Price Start Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>PSG_Quantity_EAU_Nbr__c</fullName>
+        <externalId>false</externalId>
+        <label>Quantity(EAU)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PSG_SAP_ECP_Code__c</fullName>
+        <externalId>true</externalId>
+        <label>SAP ECP Code</label>
+        <length>15</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PSG_SAP_ECP_Txt__c</fullName>
+        <description>This field represent the SAP ECP during integration.</description>
+        <externalId>false</externalId>
+        <label>SAP ECP</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PSG_Type_Txt__c</fullName>
+        <label>Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Non-Step</fullName>
+                    <default>false</default>
+                    <label>Non-Step</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>PSG_Upper_Qty_Nbr__c</fullName>
+        <externalId>false</externalId>
+        <label>Upper Qty</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
     <fields>
         <fullName>SBQQ__Account__c</fullName>
         <deprecated>false</deprecated>
@@ -405,6 +565,52 @@
         <type>Lookup</type>
     </fields>
     <label>Contracted Price</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>PSG_Comments_Nm__c</columns>
+        <columns>PSG_CPS_Cb__c</columns>
+        <columns>PSG_Inactive_Cb__c</columns>
+        <columns>PSG_Lower_Qty_Nbr__c</columns>
+        <columns>PSG_Price_End_Date_Dt__c</columns>
+        <columns>PSG_Price_Start_Date_Dt__c</columns>
+        <columns>PSG_Quantity_EAU_Nbr__c</columns>
+        <columns>PSG_Type_Txt__c</columns>
+        <columns>PSG_Upper_Qty_Nbr__c</columns>
+        <columns>SBQQ__Price__c</columns>
+        <columns>SBQQ__Account__c</columns>
+        <columns>SBQQ__Product__c</columns>
+        <columns>SBQQ__EffectiveDate__c</columns>
+        <columns>SBQQ__ExpirationDate__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>PSG_ContractedPrice</fullName>
+        <columns>NAME</columns>
+        <columns>PSG_Type_Txt__c</columns>
+        <columns>PSG_SAP_ECP_Code__c</columns>
+        <columns>PSG_SAP_ECP_Txt__c</columns>
+        <columns>SBQQ__Product__c</columns>
+        <columns>PSG_Quantity_EAU_Nbr__c</columns>
+        <columns>PSG_Lower_Qty_Nbr__c</columns>
+        <columns>PSG_Upper_Qty_Nbr__c</columns>
+        <columns>SBQQ__Price__c</columns>
+        <columns>PSG_Inactive_Cb__c</columns>
+        <columns>PSG_CPS_Cb__c</columns>
+        <columns>SBQQ__EffectiveDate__c</columns>
+        <columns>SBQQ__ExpirationDate__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>SBQQ__ContractedPrice__c.PSG_Contracted_Price</value>
+        </filters>
+        <label>PSG Contracted Price</label>
+        <sharedTo>
+            <group>ags_internal_users</group>
+        </sharedTo>
+    </listViews>
     <nameField>
         <displayFormat>CP-{00000}</displayFormat>
         <label>Contracted Price Number</label>
@@ -412,6 +618,69 @@
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Contracted Prices</pluralLabel>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>PSG_Contracted_Price</fullName>
+        <active>true</active>
+        <label>PSG Contracted Price</label>
+        <picklistValues>
+            <picklist>PSG_Type_Txt__c</picklist>
+            <values>
+                <fullName>Non-Step</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>SBQQ__FilterField__c</picklist>
+            <values>
+                <fullName>Product</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Product Code</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Product Family</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>SBQQ__Operator__c</picklist>
+            <values>
+                <fullName>contains</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ends with</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>equals</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>greater or equals</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>greater than</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>less or equals</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>less than</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>not equals</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
     <searchLayouts/>
     <sharingModel>ControlledByParent</sharingModel>
     <validationRules>
@@ -441,6 +710,13 @@
         <description>Requires that product or filter be specified.</description>
         <errorConditionFormula>AND(ISBLANK(SBQQ__Product__c),ISPICKVAL(SBQQ__FilterField__c,&apos;&apos;))</errorConditionFormula>
         <errorMessage>You must specify either product or filter field</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Validation_rule_for_LowerUpperQuantity</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND( RecordType.DeveloperName = &apos;PSG_Contracted_Price&apos;, 
+PSG_Lower_Qty_Nbr__c &gt;(PSG_Upper_Qty_Nbr__c))</errorConditionFormula>
+        <errorMessage>Lower Bound Quantity should be lesser than Upper Bound Quantity.</errorMessage>
     </validationRules>
     <visibility>Public</visibility>
 </CustomObject>

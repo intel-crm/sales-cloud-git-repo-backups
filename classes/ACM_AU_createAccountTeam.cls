@@ -1,59 +1,63 @@
 public without sharing class ACM_AU_createAccountTeam implements UCD_ACM_ServiceContracts.IAfterUpdateAccountTrigger {
     static boolean runOnce = true;
     Id intelRecordTypeId = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
+    Map<String, Account> dealAccountByBpIds = new Map<String, Account>();
+    List<String> validRecordTypeDeveloperName = new List<String>{'Mastered_Account'};
 
     /**
-     * Method to create/update account team record
+     * Method to set parent to Deal child accounts when BpId is updated
      */
     public void execute(UCD_ACM_UnitOfWork unitOfWork, Map<Id, Account> oldAccounts, Map<Id, Account> newAccounts) {
         try {
-            // Run the logic only once and after all validations are completed
-            if (runOnce ) {
-                createAccountTeams(unitOfWork, oldAccounts, newAccounts);
-            }
-            runOnce = false;
+            System.debug('ACM_AU_createAccountTeam==>');
+        // Run the logic only once and after all validations are completed
+        if (runOnce ) {
+ 
+            createAccountTeams(unitOfWork, oldAccounts, newAccounts);
+        }
+        runOnce = false;
         } catch (Exception ex) {
-            UCD_ACM_Logger.error('ACM_AU_createAccountTeam','execute',ex.getMessage() +  '==>' + ex.getStackTraceString(),null);
+            System.debug('Issue in class - ACM_AU_createAccountTeam. Error '+ ex.getMessage() + ex.getStackTraceString());
         }
     }
 
-
-    
     private void createAccountTeams(UCD_ACM_UnitOfWork unitOfWork, Map<Id, Account> oldAccounts, Map<Id, Account> newAccounts){
 
-        Map<Id, Account> mapOfIdwithAccountTeams = new Map<Id, Account>([select id,OwnerId, (Select id, TeamMemberRole, UserId, Core_Account_Category__c	from AccountTeamMembers where TeamMemberRole = 'Account Owner') from Account where ID IN :newAccounts.keySet()]);
-
-        Map<Id, List<AccountTeamMember>> mapAccountIdByAccountTeamMember = new Map<Id, List<AccountTeamMember>>();
         List<String> accountIdsForAccountTeam = new List<String>();
         for(Account newAccount : newAccounts.values()){
 
             Account oldAccount = oldAccounts.get(newAccount.Id);
 
-            if(newAccount.recordtypeID == intelRecordTypeId && (newAccount.OwnerId != oldAccount.OwnerId || oldAccount.recordtypeID != intelRecordTypeId) && (newAccount.OwnerId != System.Label.Core_Uncovered_Account_ID)){
-                createAccountTeamRec(unitOfWork, newAccount, mapOfIdwithAccountTeams);
-                //accountIdsForAccountTeam.add(newAccount.Id);
+            if(newAccount.recordtypeID == intelRecordTypeId &&  newAccount.Core_Business_Party_Id__c != null && newAccount.Core_Customer_Aggregation_Type__c != null && newAccount.OwnerId != oldAccount.OwnerId){
+
+                AccountTeamMember accountTeamMember = new AccountTeamMember();
+                accountTeamMember.AccountId = newAccount.Id;
+                accountTeamMember.UserId = newAccount.OwnerId ;
+                accountTeamMember.TeamMemberRole = 'Account Owner';
+                    if(newAccount.Core_Account_Category__c != null && newAccount.Core_Account_Category__c.contains(';')){
+                        accountTeamMember.Core_Account_Category__c = '';
+                    }else{
+                        accountTeamMember.Core_Account_Category__c = newAccount.Core_Account_Category__c ;
+                    }
+                unitOfWork.registerNew(accountTeamMember);
             }
 
-            if(newAccount.recordtypeID == intelRecordTypeId && (newAccount.Core_Account_Category__c != oldAccount.Core_Account_Category__c  ) && (newAccount.OwnerId != System.Label.Core_Uncovered_Account_ID) ){
+            if(newAccount.recordtypeID == intelRecordTypeId &&  newAccount.Core_Business_Party_Id__c != null && newAccount.Core_Customer_Aggregation_Type__c != null && newAccount.Core_Account_Category__c != oldAccount.Core_Account_Category__c){
                 accountIdsForAccountTeam.add(newAccount.Id);
-                createAccountTeamRec(unitOfWork, newAccount, mapOfIdwithAccountTeams);
-
             }
-
-
-
-            
-            
 
         }
+
+        Map<Id, List<AccountTeamMember>> mapAccountIdByAccountTeamMember = new Map<Id, List<AccountTeamMember>>();
 
         if(!accountIdsForAccountTeam.isEmpty()){
             List<AccountTeamMember> lstAccountTeamMember = new List<AccountTeamMember>();
 
-                    lstAccountTeamMember = [Select id, AccountId, UserId,Core_Account_Category__c,TeamMemberRole from AccountTeamMember where AccountId IN : accountIdsForAccountTeam  Order By CreatedDate ];
-            
+            lstAccountTeamMember = [Select id, AccountId, UserId, Core_Account_Category__c from AccountTeamMember where AccountId IN : accountIdsForAccountTeam AND TeamMemberRole = 'Account Owner' Order By CreatedDate ];
+            System.debug('lstAccountTeamMember==>'+lstAccountTeamMember);
 
             for(AccountTeamMember accountTeamRec: lstAccountTeamMember){
+
                 if(mapAccountIdByAccountTeamMember.get(accountTeamRec.AccountId) != null){
                     mapAccountIdByAccountTeamMember.get(accountTeamRec.AccountId).add(accountTeamRec);
                 }else{
@@ -62,23 +66,23 @@ public without sharing class ACM_AU_createAccountTeam implements UCD_ACM_Service
 
                     mapAccountIdByAccountTeamMember.put(accountTeamRec.AccountId, lstAccountTeamMemberRec);
                 }
+
             }
 
         }
 
+        System.debug('mapAccountIdByAccountTeamMember==>'+mapAccountIdByAccountTeamMember);
         if(!mapAccountIdByAccountTeamMember.isEmpty()){
 
             for(Account newAccount : newAccounts.values()){
                 Account oldAccount = oldAccounts.get(newAccount.Id);
-                if(newAccount.recordtypeID == intelRecordTypeId && newAccount.Core_Account_Category__c != oldAccount.Core_Account_Category__c){
+                if(newAccount.recordtypeID == intelRecordTypeId &&  newAccount.Core_Business_Party_Id__c != null && newAccount.Core_Customer_Aggregation_Type__c != null && newAccount.Core_Account_Category__c != oldAccount.Core_Account_Category__c){
+
                     List<String> lstAccountCategory = new List<String>();
                     Map<Integer,List<String>> lstAccountTeamCategory = new Map<Integer,List<String>>();
 
-                    if(newAccount.OwnerId != System.Label.Core_Uncovered_Account_ID){
-                        //createAccountTeamRecForUpdation(unitOfWork, newAccount, mapAccountIdByAccountTeamMember);
-                        createAccountTeamRec(unitOfWork, newAccount, mapOfIdwithAccountTeams);
-                    }
-                    
+
+
                     if(mapAccountIdByAccountTeamMember.get(newAccount.Id) != null){
                         List<AccountTeamMember> accountTeamMemberToUpdate = mapAccountIdByAccountTeamMember.get(newAccount.Id);
 
@@ -108,13 +112,37 @@ public without sharing class ACM_AU_createAccountTeam implements UCD_ACM_Service
                         }
         
         
+                        System.debug('lstAccountTeamCategory===>'+lstAccountTeamCategory);
                         for(List<String>  lstaccTeamCat : lstAccountTeamCategory.values()){
 
                             for(String  accTeamCatRec : lstaccTeamCat){
-                                 if( ! accountCategory.contains(accTeamCatRec)){
-                                    newAccount.addError(System.Label.UCD_AccountTeam_AccountMessage);
+                                 if(accountCategory.contains(accTeamCatRec)){
+        
+                                }else{
+                                    newAccount.addError('Account Category can not be updated with active Category Owner, please review Account Teams');
                                 }
-                            } 
+                            }
+                           
+                        } 
+
+                        if(newAccount.Core_Account_Category__c!= null && newAccount.Core_Account_Category__c.contains(';')){
+                            for(AccountTeamMember  accTeamMember : accountTeamMemberToUpdate){
+                                if(accTeamMember.TeamMemberRole == 'Account Owner'){
+                                    accTeamMember.Core_Account_Category__c = '';
+                                    unitOfWork.registerModified(accTeamMember);
+                                    System.debug('accTeamMember11==>'+accTeamMember);
+                                }
+                            }
+                        }else{
+                            for(AccountTeamMember  accTeamMember : accountTeamMemberToUpdate){
+                                if(accTeamMember.TeamMemberRole == 'Account Owner'){
+                                    accTeamMember.Core_Account_Category__c = newAccount.Core_Account_Category__c;
+                                    unitOfWork.registerModified(accTeamMember);
+                                    System.debug('accTeamMember22==>'+accTeamMember);
+
+                                }
+
+                            }
                         }
                     }
                 }
@@ -123,68 +151,6 @@ public without sharing class ACM_AU_createAccountTeam implements UCD_ACM_Service
         }
 
 
-    }
-
-
-    private void createAccountTeamRec(UCD_ACM_UnitOfWork unitOfWork, Account account, Map<Id, Account> mapOfIdwithAccountTeams){
-        
-        AccountTeamMember accountTeamMember = new AccountTeamMember();
-        accountTeamMember.AccountId = account.Id;
-        accountTeamMember.UserId = account.OwnerId ;
-        accountTeamMember.TeamMemberRole = 'Account Owner';
-        if(account.Core_Account_Category__c != null && account.Core_Account_Category__c.contains(';')){
-            accountTeamMember.Core_Account_Category__c = '';
-        }else{
-            accountTeamMember.Core_Account_Category__c = account.Core_Account_Category__c ;
-        }
-        Core_AccountTeamMemberHandler.bypassValidationonAccountTeam = true;
-        unitOfWork.registerNew(accountTeamMember);
-
-        if(!mapOfIdwithAccountTeams.isEmpty() && account != null && mapOfIdwithAccountTeams.get(account.Id) != null){
-
-            for(AccountTeamMember  accTeamMemberData : mapOfIdwithAccountTeams.get(account.Id).AccountTeamMembers){
-
-                //     abhi != 
-                //accTeamMemberData.Core_Account_Category__c != 'Account Owner'
-                if(account.OwnerId != accTeamMemberData.UserId ){
-                    accTeamMemberData.TeamMemberRole = 'Team Member (100%)';
-                    accTeamMemberData.Core_Account_Category__c = '';
-                    unitOfWork.registerModified(accTeamMemberData);
-                }
-            }
-        }
-
-
 
     }
-
-    /*
-    private void createAccountTeamRecForUpdation(UCD_ACM_UnitOfWork unitOfWork, Account account, Map<Id, List<AccountTeamMember>> mapAccountIdByAccountTeamMember){
-
-        String teamRole = 'Account Owner';
-        if(mapAccountIdByAccountTeamMember.get(account.Id) != null){
-            List<AccountTeamMember> accountTeamMemberToUpdate = mapAccountIdByAccountTeamMember.get(account.Id);
-            for(AccountTeamMember accTeamMem : accountTeamMemberToUpdate){
-                if(accTeamMem.UserId == Account.OwnerId){
-                    teamRole = accTeamMem.TeamMemberRole ;
-                }
-            }
-        }
-        AccountTeamMember accountTeamMember = new AccountTeamMember();
-        accountTeamMember.AccountId = account.Id;
-        accountTeamMember.UserId = account.OwnerId ;
-        accountTeamMember.TeamMemberRole = teamRole;
-        if(account.Core_Account_Category__c != null && account.Core_Account_Category__c.contains(';')){
-            accountTeamMember.Core_Account_Category__c = '';
-        }else{
-            accountTeamMember.Core_Account_Category__c = account.Core_Account_Category__c ;
-        }
-        Core_AccountTeamMemberHandler.bypassValidationonAccountTeam = true;
-        unitOfWork.registerNew(accountTeamMember);
-
-    }
-    */
-
-
-
 }

@@ -63,7 +63,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
-            <value>,Automotive Controls,Automotive - Other,Business Gateway,Connected Services Gateway,Embedded  - Other,Energy - Command &amp; Controls,Energy - Home Energy Management,Energy - Other,Energy - Smart Appliances,Energy - Smart Meters,Energy - Turbine Controls &amp; Comms,Home Gateway,Industrial - Automation,Industrial - HMI,Industrial - Other,Industrial - PC-Base Design,Industrial - PLC &amp; PAC,Industrial - Robotics,Industrial - Ruggedized/Indu PC,Interactive Whiteboard,In-vehicle Infotainment,Medical &amp; Health - Fitness,Medical &amp; Health - Medical Diagnostics/Therapeutics,Medical &amp; Health - Medical Healthcare IT,Medical &amp; Health - Medical High End Imaging,Medical &amp; Health - Medical Ultrasound</value>
+            <value>,Automotive Controls,Business Gateway,Connected Services Gateway,Embedded  - Other,Energy - Command &amp; Controls,Energy - Home Energy Management,Energy - Smart Appliances,Energy - Smart Meters,Energy - Turbine Controls &amp; Comms,Home Gateway,Industrial - Automation,Industrial - HMI,Industrial - Other,Industrial - PC-Base Design,Industrial - PLC &amp; PAC,Industrial - Robotics,Industrial - Ruggedized/Indu PC,Interactive Whiteboard,In-vehicle Infotainment,Medical &amp; Health - Fitness,Medical &amp; Health - Medical Diagnostics/Therapeutics,Medical &amp; Health - Medical Healthcare IT,Medical &amp; Health - Medical High End Imaging,Medical &amp; Health - Medical Ultrasound</value>
         </criteriaItems>
         <criteriaItems>
             <column>User.Core_User_Sub_Geo__c</column>
@@ -109,6 +109,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

@@ -146,13 +146,13 @@
         <actionName>View</actionName>
         <type>Default</type>
     </actionOverrides>
-    <allowInChatterGroups>false</allowInChatterGroups>
+    <allowInChatterGroups>true</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <customHelpPage>sbaa__ApprovalHelp</customHelpPage>
     <deploymentStatus>Deployed</deploymentStatus>
     <deprecated>false</deprecated>
     <description>Approval by individual for specific record.</description>
-    <enableActivities>false</enableActivities>
+    <enableActivities>true</enableActivities>
     <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>
     <enableHistory>true</enableHistory>
@@ -161,7 +161,7 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <externalSharingModel>Private</externalSharingModel>
+    <externalSharingModel>ReadWrite</externalSharingModel>
     <fieldSets>
         <fullName>sbaa__RequestFields</fullName>
         <description>Fields displayed in approval request email.</description>
@@ -267,7 +267,7 @@
         <referenceTo>User</referenceTo>
         <relationshipName>ApprovedApprovals</relationshipName>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -303,7 +303,7 @@
         <relationshipLabel>Approvals</relationshipLabel>
         <relationshipName>Approvals</relationshipName>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -365,7 +365,7 @@
         <inlineHelpText>Approver&apos;s Comments</inlineHelpText>
         <label>Comments</label>
         <length>4000</length>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>5</visibleLines>
@@ -503,7 +503,7 @@
         <inlineHelpText>Status of this approval.</inlineHelpText>
         <label>Status</label>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -549,6 +549,30 @@
         <type>Checkbox</type>
     </fields>
     <label>Approval</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>Quotes_For_Approval</fullName>
+        <columns>NAME</columns>
+        <columns>Quote__c</columns>
+        <columns>sbaa__ApprovalStep__c</columns>
+        <columns>sbaa__AssignedTo__c</columns>
+        <columns>sbaa__AssignedToMe__c</columns>
+        <columns>sbaa__Status__c</columns>
+        <columns>sbaa__Actions__c</columns>
+        <columns>sbaa__Approver__c</columns>
+        <columns>sbaa__AssignedGroupId__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>sbaa__Status__c</field>
+            <operation>equals</operation>
+            <value>Requested</value>
+        </filters>
+        <label>Quotes For Approval</label>
+    </listViews>
     <nameField>
         <displayFormat>A-{00000}</displayFormat>
         <label>Approval #</label>
@@ -566,10 +590,41 @@
         <errorMessage>Please click Edit Lines and check Ready for Submission  in-order to submit the Quote for Approval</errorMessage>
     </validationRules>
     <validationRules>
+        <fullName>Pricing_SW_CustomProduct_0_ListUnitPrice</fullName>
+        <active>false</active>
+        <errorConditionFormula>AND(ISCHANGED(sbaa__Status__c),NOT(ISNEW()),ISPICKVAL(Quote__r.Pricing_Quote_Program_Nm__c, &apos;Software &amp; Services&apos;), ISPICKVAL(sbaa__Status__c, &apos;Approved&apos;), (Quote__r.Pricing_SW_Custom_Product__c = True))</errorConditionFormula>
+        <errorDisplayField>sbaa__ApprovalChain__c</errorDisplayField>
+        <errorMessage>Please update ListUnit Price of &quot;Intel® Trust Authority for confidential compute attestation – Enterprise custom TRUSTAUTHCSTM&quot; Product before Approve Quote.</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>Pricing_SW_Rejection_Approval_Comments</fullName>
         <active>true</active>
         <errorConditionFormula>AND(ISCHANGED(sbaa__Status__c),NOT(ISNEW()),ISPICKVAL(Quote__r.Pricing_Quote_Program_Nm__c, &apos;Software &amp; Services&apos;),ISPICKVAL(sbaa__Status__c, &apos;Rejected&apos;), ISBlank(sbaa__CommentsLong__c ))</errorConditionFormula>
         <errorMessage>Please provide Comments before Rejection</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Pricing_SW_RestrictEditonApprovalFields</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(
+ ISPICKVAL(Quote__r.Pricing_Quote_Program_Nm__c, &apos;Software &amp; Services&apos;),
+ OR(
+    ISCHANGED(sbaa__RecordField__c),
+    ISCHANGED(sbaa__ApprovalStep__c)
+    )
+)</errorConditionFormula>
+        <errorMessage>Fields cannot be edited on Approval record.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>test</fullName>
+        <active>false</active>
+        <errorConditionFormula>AND(
+
+$Permission.PSG_Internal_Biz_Ops,
+ISCHANGED(  sbaa__Status__c ),
+Quote__r.core_cpq_negative_margin_quote_Value__c  &gt;0
+
+)</errorConditionFormula>
+        <errorMessage>BUSOPS is not entitled to approve Quote with negative margin</errorMessage>
     </validationRules>
     <visibility>Public</visibility>
     <webLinks>

@@ -14,7 +14,7 @@ public without sharing class UCD_GenericAcctSearch_SBR {
     private static UCD_ACM_ServiceContracts.IMDMService reltioServiceInstance = UCD_ACM_ReltioService.getInstance();
     private static UCD_ACM_ServiceContracts.IAccountService accountServiceInstance = UCD_ACM_AccountService.getInstance();
 
-    private static String cols = ' id,Name,Core_Business_Party_Id__c,Core_Unified_Global_Customer_Name__c,BillingCountryCode,BillingStateCode,BillingCountry,BillingCity,BillingPostalCode,BillingStreet,Owner.Name,Core_MDM_Website__c,RecordType.Name,Core_Customer_Aggregation_Type__c,Core_Sales_Groups__c, Unified_Hierarchy_View__c,ParentId, BillingState, Core_Requested_Name__c, Parent.Core_Customer_Aggregation_Type__c,Core_User_Defined_Website__c,Core_Data_Simplified_Account_Nm__c,Core_Data_Simplified_Local_Language_Nm__c,Core_Unified_Intermediate_Customer_BP_Id__c,Core_Unified_Intermediate_Customer_Name__c,Core_Unified_Intermdt_Customer_2_BP_Id__c , Core_Unified_Intermdt_Customer_2_Name__c,Core_Alternate_Language_Name__c  ';
+    private static String cols = ' id,Name,Core_Business_Party_Id__c,BillingCountryCode,BillingStateCode,BillingCountry,BillingCity,BillingPostalCode,BillingStreet,Owner.Name,Core_MDM_Website__c,RecordType.Name,Core_Customer_Aggregation_Type__c,Core_Unified_Global_Customer__c,Core_Sales_Groups__c,Core_Unified_Global_Customer__r.Name, Core_Unified_Intermediate_Customer__c, Unified_Hierarchy_View__c,ParentId, BillingState, Core_Requested_Name__c, Parent.Core_Customer_Aggregation_Type__c,Core_User_Defined_Website__c,Core_Unified_Intermediate_Customer_2__c  ';
     private static Map<Id,List<Business_Types__c>> businessTypeByAccountId  = new Map<Id,List<Business_Types__c>>();
     private static Map<String,String> countryNameByCountryCode = new Map<String,String>();
     private static Map<String, Map<String,String>> stateNameBycodes = new Map<String, Map<String,String>>();
@@ -291,12 +291,6 @@ public without sharing class UCD_GenericAcctSearch_SBR {
         public String requestedName{get;set;}
         @AuraEnabled
         public List<AccountSearchDataModel> childAccounts{get;set;}
-        @AuraEnabled
-        public String simplifiedName{get;set;}
-        @AuraEnabled
-        public String simplifiedLocLangName{get;set;}
-        @AuraEnabled
-        public String alternateLangName{get;set;}        
 
     }
 
@@ -312,31 +306,6 @@ public without sharing class UCD_GenericAcctSearch_SBR {
     }
 
     @AuraEnabled
-    public static List<Account_Create_Request__c> getAccountRequestQueue(List<fieldsetwrapper> fDetails) {
-        List<Account_Create_Request__c> ARQList = new List<Account_Create_Request__c>();
-        String searchName;
-        try{
-        for(fieldsetwrapper fs:fDetails){
-            if(String.isNotBlank(fs.fieldValue)) {   
-                switch on fs.fieldAPIName {
-                    when 'Name' {
-                      searchName  = fs.fieldValue;
-                    }
-                }
-            } 
-        }    
-        if(Schema.SObjectType.Account_Create_Request__c.isAccessible()){
-        ARQList= [SELECT Id,Name,Account_Name__c, Status__c FROM Account_Create_Request__c where Status__c in ('Pending Approval','In Process') and Account_Name__c LIKE :('%' + searchName + '%')];
-        }
-        }
-        catch(Exception ex){
-        UCD_ACM_Logger.error('UCD_GenericAcctSearch_SBR','getAccountRequestQueue','Message: '+ex.getMessage()+'. StackTrace: '+ex.getStackTraceString(),NULL);
-        }
-        return ARQList;
-    }
-
-
-    @AuraEnabled
     public static AccountSearchDataModelWithError getAcctResults(List<fieldsetwrapper> fDetails, String requestReason) {
         List<AccountSearchDataModel> mergedResults = new List<AccountSearchDataModel>();
         AccountSearchDataModelWithError mergedResultsWithError = new AccountSearchDataModelWithError();
@@ -347,28 +316,9 @@ public without sharing class UCD_GenericAcctSearch_SBR {
             String requestReasonAPIName = '';        
             Long time1 = System.now().getTime();
 
-        // get Aggegation code values
-        aggregationLabelByCode = getAggregationCode();
-        // get Salesgroup values
-        salesGroupByCode = getSalesGroup();
-        // get country Name
-        countryNameByCountryCode = UCD_ACM_Utils.getCountryName();
-        // get state Name
-        //stateNameByStateCode =  UCD_ACM_Utils.getStateName();
-        // get stateName and codes
-        stateNameBycodes = UCD_ACM_Utils.getGlobalPickList();
-        // sorting of All Accounts
-       // acctList.sort();
-
-            if(getCustomLabelValue() == 'true'){
             // call Reltio API
-           /*List<UCD_ACM_Models.ReltioResponse> reltioAccounts = reltioSearch(fDetails);
-             System.debug('reltioAccounts@@%%'+reltioAccounts);*/
-            List<UCD_ACM_Models.ReltioResponse> reltioAccounts = new List<UCD_ACM_Models.ReltioResponse> ();
-            
-
-                reltioAccounts = reltioSearch(fDetails);
-
+            List<UCD_ACM_Models.ReltioResponse> reltioAccounts = reltioSearch(fDetails);
+            System.debug('reltioAccounts@@%%'+reltioAccounts);
 
             Long time2 = System.now().getTime();
             Long milliseconds1 = time2 - time1;
@@ -382,7 +332,6 @@ public without sharing class UCD_GenericAcctSearch_SBR {
                         reltioBpId.add(reltioAccount.BusinessPartyId);
                 }
             }
-               }
         
             if(String.isNotBlank(requestReason)) {
                 Map<String, Account_Create_Process_Mapping__mdt> accCreateProMapByDevName = Account_Create_Process_Mapping__mdt.getAll();
@@ -395,24 +344,25 @@ public without sharing class UCD_GenericAcctSearch_SBR {
 
             accResults = reltioSearchAccount(fDetails,'Account',requestReasonAPIName,reltioBpId);
 
+
             if(accResults != null && accResults.size() > 0) {
-                 for(Account acct : accResults){
-                    mergedResults.add(buildSearchModel(acct));
-                }
-              }
-            if(getCustomLabelValue() == 'true'){
+
+                Map<String, Account>  mapAccountSort = customSortingMethod(accResults);
+                 mergedResults = acctWrapContructor(mapAccountSort,requestReasonAPIName);    
+            }
+
             //Performance Logging
             Long time3 = System.now().getTime();
 
             Long milliseconds2 = time3 - time1;
             Long seconds2 = milliseconds2 / 1000;
             UCD_ACM_Logger.information('UCD_GenericAcctSearch_SBR', 'getAcctResults', 'Time For Reltio API for whole searching- '+ seconds2, 'SBR');
-            }
+
         }catch(Exception ex){
             setErrorMessage(String.valueOf(ex.getMessage()));
+            System.debug('Exception1==>'+ex.getMessage());
 
-
-
+            System.debug('Exception1==>'+ex.getStackTraceString());
             UCD_ACM_Logger.error('UCD_GenericAcctSearch_SBR','getAcctResults','Message: '+ex.getMessage()+'. StackTrace: '+ex.getStackTraceString(),NULL);
         }finally{
             UCD_ACM_Logger.setLogDetails();
@@ -427,31 +377,11 @@ public without sharing class UCD_GenericAcctSearch_SBR {
             mergedResultsWithError.isError = false;
             mergedResultsWithError.errorMessage = '';
         }
-
+        System.debug('mergedResultsWithError===>'+mergedResultsWithError);
 
         return mergedResultsWithError;
 
     } 
-
-     // Get Aggregation Codes
-     private static Map<String,String> getAggregationCode(){
-        List<Schema.PicklistEntry> aggregationCodes = Account.Core_Customer_Aggregation_Type__c.getDescribe().getPicklistValues();
-
-        For(Schema.PicklistEntry aggregationCode : aggregationCodes){
-            aggregationLabelByCode.put(aggregationCode.getValue(), aggregationCode.getLabel());
-        }
-        return aggregationLabelByCode;
-    }
-
-    // get Sales groupes
-    private static Map<String,String> getSalesGroup(){
-        List<Schema.PicklistEntry> salesGroupCodes = Account.Core_Sales_Groups__c.getDescribe().getPicklistValues();
-
-        For(Schema.PicklistEntry salesGroupCode : salesGroupCodes){
-            salesGroupByCode.put(salesGroupCode.getValue(), salesGroupCode.getLabel());
-        }
-        return salesGroupByCode;
-    }
 
     public static Map<String, Account>  customSortingMethod(List<Account> lstAccount){
         Map<Id,Account> allstrartingAccount = new Map<Id,Account>(lstAccount);
@@ -509,7 +439,7 @@ public without sharing class UCD_GenericAcctSearch_SBR {
         
         //call Reltio API
         reltioResponse = reltioServiceInstance.searchAccountReltio(searchReqBody);
-
+        System.debug('reltioResponse@@%%'+reltioResponse);
         //For Test Class
         if(Test.isRunningTest()){
             UCD_ACM_Models.ReltioResponse relResponse = new UCD_ACM_Models.ReltioResponse();
@@ -519,7 +449,7 @@ public without sharing class UCD_GenericAcctSearch_SBR {
         return reltioResponse;
     }
 
-    /**********Heirarchy Building Method
+    /**********Heirarchy Building Method****************/
     public static List<AccountSearchDataModel> acctWrapContructor(Map<String, Account> acctList, String requestReasonAPIName){
 
         Map< String, AccountSearchDataModel> mapOfModelByString = new Map< String, AccountSearchDataModel>();
@@ -963,7 +893,7 @@ public without sharing class UCD_GenericAcctSearch_SBR {
                     finalResultAfterSorting.put('Country', new List<AccountSearchDataModel>{resultForUI.get(accRecord)});
                 }
             }
-        }
+        }*/
         return finalResultAfterSorting;
     }
 
@@ -986,7 +916,7 @@ public without sharing class UCD_GenericAcctSearch_SBR {
             salesGroupByCode.put(salesGroupCode.getValue(), salesGroupCode.getLabel());
         }
         return salesGroupByCode;
-    }*/
+    }
 
     // Create Data model for Accounts
     private static AccountSearchDataModel buildSearchModel(Account accountRecord){
@@ -1015,13 +945,9 @@ public without sharing class UCD_GenericAcctSearch_SBR {
         accountSearchModel.unifiedHierarchy = accountRecord.Unified_Hierarchy_View__c;
         accountSearchModel.Website = accountRecord.Core_MDM_Website__c;
         accountSearchModel.recordType = accountRecord.RecordType.Name;
-        accountSearchModel.unifiedGlobalCustomer = accountRecord.Core_Unified_Global_Customer_Name__c;
+        accountSearchModel.unifiedGlobalCustomer = accountRecord.Core_Unified_Global_Customer__r.Name;
         accountSearchModel.recordUrl = '/'+accountRecord.Id;
         accountSearchModel.requestedName = accountRecord.Core_Requested_Name__c;
-        accountSearchModel.simplifiedName = accountRecord.Core_Data_Simplified_Account_Nm__c;        
-        accountSearchModel.simplifiedLocLangName = accountRecord.Core_Data_Simplified_Local_Language_Nm__c;
-        accountSearchModel.alternateLangName = accountRecord.Core_Alternate_Language_Name__c;
-
 
         if(businessTypeByAccountId != null && businessTypeByAccountId.containsKey(accountRecord.Id)){
             for(Business_Types__c businessType : businessTypeByAccountId.get(accountRecord.Id)){
@@ -1040,148 +966,58 @@ public without sharing class UCD_GenericAcctSearch_SBR {
     private static List<Account> localSearch(List<fieldsetwrapper> fDetails,String recordType,List<String> reltioBpId){
         String condition = '';
         String searchName = '';
-        String decoupledName = '';
-        List<String>nameParts= new List<String>();
-        List<String>websiteParts= new List<String>();
-        boolean name=false;
-        String countryName;
-        String stateName;
-        String streetName;
-        String cleanedWebsite;
-        String searchStreetName;
-        String searchWebsite;
-
-        
+        String countryCode;
+        String stateCode;
+        Map<Id,Account> localAccountById = new Map<Id,Account>();
 
         //Ankit
         for(fieldsetwrapper fs:fDetails) {
             if(String.isNotBlank(fs.fieldValue)) {    
                 switch on fs.fieldAPIName {
                     when 'Name'{
+                       // searchName = '*' + fs.fieldValue.trim() + '*';
                         searchName = fs.fieldValue.trim() ;
-                        name=true;
-                        for(String word : searchName.split(' '))
-                        {
-                            if(!String.isEmpty(word))
-                            {nameParts.add(word);}
-                        }
-                        for (Integer i = 0; i < nameParts.size(); i++) {
-                             condition += fs.fieldAPIName + ' LIKE \'%' + String.escapeSingleQuotes(nameParts[i]) + '%\'';
-                             decoupledName +='*'+nameParts[i];
-                             if (i < nameParts.size() - 1) {
-                                condition += ' OR ';
-                                decoupledName += '* OR ';
-                            }
-                        }
-                        if(nameParts.size()>1)
-                        {
-                            decoupledName += '* OR *'+ searchName+'*';
-                            condition =  fs.fieldAPIName + ' LIKE \'%' + String.escapeSingleQuotes(fs.fieldValue.trim()) + '%\''+ ' OR ' + condition;
-                        }
-                        else{
-                            decoupledName += '*';
-                        }                                           
-                        condition = '( ( ' + condition ;
-                        }
-                    when 'BillingStreet' {
-                        searchStreetName = String.escapeSingleQuotes(fs.fieldValue.trim());
-                        streetName = '%' + searchStreetName + '%';
-                        condition += String.isNotBlank(condition) ? (' AND ' + fs.fieldAPIName+' LIKE ' +'\''+ streetName + '\'') : (fs.fieldAPIName+' LIKE '+ '\''+ streetName + '\'' );   
+
+                        String SName = '%' + String.escapeSingleQuotes(fs.fieldValue.trim()) + '%';
+                        condition =  ' ( ' + (fs.fieldAPIName+' LIKE '+ '\''+ SName + '\'' ); 
                     }
-
-                    when 'Core_Data_Simplified_Account_Nm__c' {
-
-                        condition += String.isNotBlank(condition) ? ' ) OR ( ' : ' ' ;   
-                        for (Integer i = 0; i < nameParts.size(); i++) {
-                             condition += fs.fieldAPIName + ' LIKE \'%' + String.escapeSingleQuotes(nameParts[i]) + '%\'';
-                            
-                             if (i < nameParts.size() - 1) {
-                                condition += ' OR ';
-                            }
-                        }
-                        if(nameParts.size()>1)
-                        {
-                            condition +=' OR ' + fs.fieldAPIName + ' LIKE \'%' + String.escapeSingleQuotes(fs.fieldValue.trim()) + '%\'';
-                        }                                            
-                    }
-
-                    when 'Core_Data_Simplified_Local_Language_Nm__c' {
-                        condition += String.isNotBlank(condition) ? ' ) OR (  ' : ' ' ;   
-                        for (Integer i = 0; i < nameParts.size(); i++) {
-                             condition += fs.fieldAPIName + ' LIKE \'%' + String.escapeSingleQuotes(nameParts[i]) + '%\'';
-                            
-                             if (i < nameParts.size() - 1) {
-                                condition += ' OR ';
-                            }
-                        }
-                        if(nameParts.size()>1)
-                        {
-                            condition +=' OR ' + fs.fieldAPIName + ' LIKE \'%' + String.escapeSingleQuotes(fs.fieldValue.trim()) + '%\'';
-                        }                                           
-                    }
-
-                    when 'Core_Alternate_Language_Name__c' {
-                        condition += String.isNotBlank(condition) ? ' ) OR (  ' : ' ' ;   
-                        for (Integer i = 0; i < nameParts.size(); i++) {
-                             condition += fs.fieldAPIName + ' LIKE \'%' + String.escapeSingleQuotes(nameParts[i]) + '%\'';
-                            
-                             if (i < nameParts.size() - 1) {
-                                condition += ' OR ';
-                            }
-                        }
-                        if(nameParts.size()>1)
-                        {
-                            condition +=' OR ' + fs.fieldAPIName + ' LIKE \'%' + String.escapeSingleQuotes(fs.fieldValue.trim()) + '%\'';
-                        }                                      
-                    }
-
                     when 'Core_Requested_Name__c' {
-                        condition += String.isNotBlank(condition) ? ' ) OR (  ' : ' ' ;   
-                        for (Integer i = 0; i < nameParts.size(); i++) {
-                             condition += fs.fieldAPIName + ' LIKE \'%' + String.escapeSingleQuotes(nameParts[i]) + '%\'';
-                            
-                             if (i < nameParts.size() - 1) {
-                                condition += ' OR ';
-                            }
-                        }
-                        if(nameParts.size()>1)
-                        {
-                            condition +=' OR ' +fs.fieldAPIName + ' LIKE \'%' + String.escapeSingleQuotes(fs.fieldValue.trim()) + '%\'';
-                        }                                            
-                        condition = condition + ') )' ;
+                        String requestedName = '%' + String.escapeSingleQuotes(fs.fieldValue.trim()) + '%';
+                        condition += String.isNotBlank(condition) ? (' OR ' + fs.fieldAPIName+' LIKE ' +'\''+ requestedName + '\'') + ' ) ' : (fs.fieldAPIName+' LIKE '+ '\''+ requestedName + '\'' );   
                     }
 
                     when 'Website' {
-                        searchWebsite = String.escapeSingleQuotes(fs.fieldValue.trim());
-                        cleanedWebsite = '%' + searchWebsite + '%';
-                        condition += String.isNotBlank(condition) ? (' AND ( ' + fs.fieldAPIName+' LIKE ' +'\''+ cleanedWebsite + '\'') : ' ( ' + (fs.fieldAPIName+' LIKE '+ '\''+ cleanedWebsite + '\'' );   
+                        String cleanedWebsite = '%' + String.escapeSingleQuotes(fs.fieldValue.trim()) + '%';
+                        condition += String.isNotBlank(condition) ? (' AND ( ' + fs.fieldAPIName+' LIKE ' +'\''+ cleanedWebsite + '\'') : (fs.fieldAPIName+' LIKE '+ '\''+ cleanedWebsite + '\'' );   
                     }
 
+
                     when 'Core_MDM_Website__c' {
-                            //String cleanedWebsite = '%' + String.escapeSingleQuotes(fs.fieldValue.trim()) + '%';
+                        String cleanedWebsite = '%' + String.escapeSingleQuotes(fs.fieldValue.trim()) + '%';
                         condition += String.isNotBlank(condition) ? (' OR ' + fs.fieldAPIName+' LIKE ' +'\''+ cleanedWebsite + '\'') : (fs.fieldAPIName+' LIKE '+ '\''+ cleanedWebsite + '\'' );   
                     }
 
+                   
+
                     when 'Core_User_Defined_Website__c' {
-                            //String cleanedWebsite = '%' + String.escapeSingleQuotes(fs.fieldValue.trim()) + '%';
+                        String cleanedWebsite = '%' + String.escapeSingleQuotes(fs.fieldValue.trim()) + '%';
                         condition += String.isNotBlank(condition) ? (' OR ' + fs.fieldAPIName+' LIKE ' +'\''+ cleanedWebsite + '\'') + ' ) ' : (fs.fieldAPIName+' LIKE '+ '\''+ cleanedWebsite + '\'' );   
                     }
                     when 'BillingCountry'{
-                        countryName = UCD_AccountConnector.getCountryCode(fs.fieldValue);
-                        if(String.isNotBlank(countryName)){
-                            condition += String.isNotBlank(condition) ? (' AND ' + fs.fieldAPIName+' = '+ '\''+countryName+'\'') : (fs.fieldAPIName+' = '+ '\''+countryName+'\'');
+                        countryCode = UCD_AccountConnector.getCountryCode(fs.fieldValue);
+                        if(String.isNotBlank(countryCode)){
+                            condition += String.isNotBlank(condition) ? (' AND ' + fs.fieldAPIName+' = '+ '\''+countryCode+'\'') : (fs.fieldAPIName+' = '+ '\''+countryCode+'\'');
                         }
                     }
-                    
                     when 'BillingState'{
                         //stateName = UCD_AccountConnector.getStateAndCountryName(fs.fieldValue);
                         //Map<String, String> statePicklistValues = UCD_ACM_Utils.getStateValuesForCountryCode(countryName);
                         //stateName = statePicklistValues.get(fs.fieldValue);
-                        stateName = UCD_ACM_Utils.getStateCodeForStateName(fs.fieldValue, countryName);
-
-
-                        if(String.isNotBlank(stateName)){
-                            condition += String.isNotBlank(condition) ? (' AND ' + fs.fieldAPIName+' = '+ '\''+stateName+'\'') : (fs.fieldAPIName+' = '+ '\''+stateName+'\'');
+                        stateCode = UCD_ACM_Utils.getStateCodeForStateName(fs.fieldValue, countryCode);
+                        System.debug('SBR Country code is - '+countryCode);
+                        System.debug('SBR State code is - '+stateCode);
+                        if(String.isNotBlank(stateCode)){
+                            condition += String.isNotBlank(condition) ? (' AND ' + fs.fieldAPIName+' = '+ '\''+stateCode+'\'') : (fs.fieldAPIName+' = '+ '\''+stateCode+'\'');
                         }
                     }
                 }              
@@ -1198,70 +1034,26 @@ public without sharing class UCD_GenericAcctSearch_SBR {
         }
        
         List<Account> localAccountResults = new List<Account>();
-        List<Account> localAccountResults2 = new List<Account>();
         List<Account> accountsAfterSorting = new List<Account>();
-        if(stateName != null){
-            stateName = '\''+stateName+'\'';
-        }
-       if(Schema.SObjectType.Account.isAccessible()){  
-        String localSearchQuery;
-        if(!name){
-            if(String.isNotBlank(countryName)){
-                decoupledName += countryName + ' OR ';
-            }
-            if(String.isNotBlank(stateName)){
-                decoupledName += stateName + ' OR ';
-            }
-            if(String.isNotBlank(searchWebsite)){
-                decoupledName += searchWebsite + ' OR ';
-            }         
-            if(String.isNotBlank(searchStreetName)){
-                decoupledName += searchStreetName;
-            }
-        }else{
-            if(String.isNotBlank(countryName)){
-                decoupledName +=' OR '+ countryName;
-            }
-            if(String.isNotBlank(stateName)){
-                decoupledName +=' OR '+ stateName ;
-            }
-            if(String.isNotBlank(searchWebsite)){
-                decoupledName += ' OR '+ searchWebsite ;
 
-            }         
-            if(String.isNotBlank(searchStreetName)){
-                decoupledName +=' OR '+  searchStreetName;
-            }}
-            localSearchQuery = 'FIND :decoupledName IN ALL Fields  RETURNING Account ('+ cols + ' WHERE '+ condition + ' AND Core_Business_Party_Id__c != null Order by Name ) ';
+       if(Account.SObjectType.getDescribe().isAccessible()){  
+            String localSearchQuery = 'FIND :searchName IN ALL Fields  RETURNING Account ('+ cols + ' WHERE '+ condition + ' ORDER BY Name) LIMIT 50 ';
             UCD_ACM_Logger.information('UCD_GenericAcctSearch_SBR', 'localSearch', 'searchName-'+ searchName + ',' + '  Local Search Query -'+localSearchQuery, 'SBR');
             List<List<sObject>> localSoslAccountResults = new List<List<sObject>>();
+
+                System.debug('localSearchQuery==>'+localSearchQuery);
                localSoslAccountResults = Search.query(localSearchQuery);
             if(localSoslAccountResults.size()>0){
                 localAccountResults = localSoslAccountResults[0] ;
             }
-            if(localAccountResults != null && localAccountResults.size() > 0 && name){
-                accountsAfterSorting = sortingAccount(searchName,nameParts[0],localAccountResults);
-                localAccountResults=accountsAfterSorting;
-
-            }
-            localSearchQuery = 'FIND :decoupledName IN ALL Fields  RETURNING Account ('+ cols + ' WHERE '+ condition + ' AND Core_Business_Party_Id__c = null Order by Name ) ';
-            localSoslAccountResults = Search.query(localSearchQuery);
-            if(localSoslAccountResults.size()>0){
-                localAccountResults2  = localSoslAccountResults[0] ;
-            }
-            if(localAccountResults2 != null && localAccountResults2.size() > 0 && name){
-                accountsAfterSorting = sortingAccount(searchName,nameParts[0],localAccountResults2);
-                localAccountResults2=accountsAfterSorting;
-
-            }
-            if(localAccountResults2.size()>0)
-            {localAccountResults.addAll(localAccountResults2);}
-            
 
             UCD_ACM_Logger.information('UCD_GenericAcctSearch_SBR', 'localSearch', 'reult from local Search' + localAccountResults.size(), 'SBR');
 
+            if(localAccountResults != null && localAccountResults.size() > 0){
+                accountsAfterSorting = sortingAccount(searchName.substring(1, searchName.length()-1 ),localAccountResults);
+            }
         } 
-        return localAccountResults;
+        return accountsAfterSorting;
 
     }
 
@@ -1272,26 +1064,25 @@ public without sharing class UCD_GenericAcctSearch_SBR {
         String reltioSearchCondition = '';
         String recordType;
         Map<Id,Account> accountById = new Map<Id,Account>();
-        Long time12 = System.now().getTime();
-        String countryName;
-         if(getCustomLabelValue() == 'true'){
+        String countryCode;
+
         //Ankit
         for(fieldsetwrapper fs:fDetails) {
             if(String.isNotBlank(fs.fieldValue)) {                
                 switch on fs.fieldAPIName {
-                    
                     when 'BillingCountry' {
-                        countryName = UCD_AccountConnector.getCountryCode(fs.fieldValue);
-                        if(String.isNotBlank(countryName)){
-                            reltioSearchCondition  += ' AND ' +  (fs.fieldAPIName+' = '+ '\''+countryName+'\'');
+                        countryCode = UCD_AccountConnector.getCountryCode(fs.fieldValue);
+                        if(String.isNotBlank(countryCode)){
+                            reltioSearchCondition  += ' AND ' +  (fs.fieldAPIName+' = '+ '\''+countryCode+'\'');
                         }
                     }
                     when 'BillingState' {
                         //String stateName = UCD_AccountConnector.getStateAndCountryName(fs.fieldValue);
-                        String stateName = UCD_ACM_Utils.getStateCodeForStateName(fs.fieldValue, countryName);
-
-                        if(String.isNotBlank(stateName)){
-                            reltioSearchCondition += + (' AND ' + fs.fieldAPIName+' = '+ '\''+stateName+'\'') ;
+                        String stateCode = UCD_ACM_Utils.getStateCodeForStateName(fs.fieldValue, countryCode);
+                        System.debug('SBR Country code is - '+countryCode);
+                        System.debug('SBR State code is - '+stateCode);
+                        if(String.isNotBlank(stateCode)){
+                            reltioSearchCondition += + (' AND ' + fs.fieldAPIName+' = '+ '\''+stateCode+'\'') ;
                         }
                     }
                     when 'Core_MDM_Website__c' {
@@ -1300,7 +1091,7 @@ public without sharing class UCD_GenericAcctSearch_SBR {
                     }
                 }              
             }
-        }}
+        }
 
         if(String.isNotBlank(requestReasonAPIName)){
             recordType = Schema.SObjectType.Account.getRecordTypeInfosByName().get(Account_Create_Process_Mapping__mdt.getInstance(requestReasonAPIName).RecordType_Name__c).getRecordTypeId();
@@ -1309,14 +1100,13 @@ public without sharing class UCD_GenericAcctSearch_SBR {
 
         List<Account> localSearchAccountforReltio = new List<Account>();
         List<Account> accountsByBpId = new  List<Account>();
-        Integer reltioAccountsSize = 0;
 
-        if(getCustomLabelValue() == 'true'){
+        
         if(reltioBpId.size() > 0){            
             String reltioCondition =  'Core_Business_Party_Id__c IN : reltioBpId' + (String.isNotBlank(recordType)?' AND RecordTypeId = \''+ recordType+'\'':'');            
             String reltioSearchQuery = 'select '+cols+' from Account where '+reltioCondition+'  '+reltioSearchCondition+'   ORDER BY Name limit 20';
 
-            if(Schema.SObjectType.Account.isAccessible()){  
+            if(Account.SObjectType.getDescribe().isAccessible()){  
                 UCD_ACM_Logger.information('UCD_GenericAcctSearch_SBR', 'reltioSearchAccount', 'Local Unified Data Query -'+reltioSearchQuery, 'SBR');
                 accountsByBpId = Database.query(reltioSearchQuery); 
 
@@ -1332,7 +1122,7 @@ public without sharing class UCD_GenericAcctSearch_SBR {
 
         }
 
-        
+        Long time12 = System.now().getTime();
 
         Long milliseconds11 = time12 - time11;
         Long seconds11 = milliseconds11 / 1000;
@@ -1341,17 +1131,29 @@ public without sharing class UCD_GenericAcctSearch_SBR {
         UCD_ACM_Logger.information('UCD_GenericAcctSearch_SBR', 'reltioSearchAccount', 'Timing for Reltio Search (In SF) -'+ seconds11, 'SBR');
 
 
-        
+        Integer reltioAccountsSize = 0;
         if(accountById.size() > 0) {
             localSearchAccountforReltio = accountById.values();
             reltioAccountsSize = localSearchAccountforReltio.size();
         }
         
         List<Account> finalAccount = new List<Account>();
-        finalAccount.addAll(accountById.values());}
+        finalAccount.addAll(accountById.values());
+
+        if(reltioAccountsSize < 20) {
 
                 List<Account>  localSearchAccount = localSearch(fDetails,recordType,filteredReltioBpId);
+
+                Integer RestAccountSize = 20 - reltioAccountsSize ;
+
+                if(RestAccountSize < localSearchAccount.size()){
+                    for(Integer i = 0; i < RestAccountSize  ; i++){
+                        localSearchAccountforReltio.add(localSearchAccount[i]);
+                    }
+                }else{
                     localSearchAccountforReltio.addAll(localSearchAccount);
+                }
+        }
 
         Long time13 = System.now().getTime();
 
@@ -1365,47 +1167,41 @@ public without sharing class UCD_GenericAcctSearch_SBR {
 
 
 
-      public static List<Account> sortingAccount(String searchName ,String firstWord,List<Account> localSearchAccounts){
+    public static List<Account> sortingAccount(String searchName ,List<Account> localSearchAccounts){
 
         List<Account> startWithSearchNameAccounts = new List<Account>();
-        List<Account> startWithFirstWordAccounts = new List<Account>();
         List<Account> startWithoutSearchNameAccounts = new List<Account>();
-        searchname = searchname.toLowerCase();
-        firstWord = firstWord.toLowerCase();
+
         if(localSearchAccounts != null){
             for(Account localSearchAccount : localSearchAccounts){
-                    if(localSearchAccount.Name != null && localSearchAccount.Name.toLowerCase().startsWithIgnoreCase(searchname)){
+                if(localSearchAccount.Name.toLowercase().indexOf(searchName.toLowercase()) != -1 || ( localSearchAccount.Core_Requested_Name__c != null && localSearchAccount.Core_Requested_Name__c.toLowercase().indexOf(searchName.toLowercase()) != -1) ){
+                    if(localSearchAccount.Name.startsWithIgnoreCase(searchName)){
                         startWithSearchNameAccounts.add(localSearchAccount);
-                    }else if(localSearchAccount.Name != null && localSearchAccount.Name.toLowerCase().startsWithIgnoreCase(firstWord)){
-                        startWithFirstWordAccounts.add(localSearchAccount);
-                    }
-                    else{
+                    }else{
                         startWithoutSearchNameAccounts.add(localSearchAccount);
                     }
                 }
             }
-            if(startWithFirstWordAccounts.size()>0){
-                startWithSearchNameAccounts.addAll(startWithFirstWordAccounts);
-                }
             if(startWithoutSearchNameAccounts.size()>0){
                 startWithSearchNameAccounts.addAll(startWithoutSearchNameAccounts);
             }
+        }
 
         return startWithSearchNameAccounts;
     }
 
-    @AuraEnabled
+    @AuraEnabled(cacheable = true)
     public static List<DuplicateRecordWrapper> checkForDuplicates(String customername, String alternateLangName, String primaryCountry, String primaryStreet, String primaryCity, String primaryState){
         Id intelAccountRTId = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
-        customername=customername?.trim().replaceAll('\\s{2,}', ' ');
-        primaryStreet = primaryStreet?.trim().replaceAll('\\s{2,}', ' '); //Ganesh Changes
-        alternateLangName=alternateLangName?.trim().replaceAll('\\s{2,}', ' ');
-        primaryCity=primaryCity?.trim().replaceAll('\\s{2,}', ' ');
+        customername=customername.trim().replaceAll('\\s{2,}', ' ');
+        primaryStreet=primaryStreet.trim().replaceAll('\\s{2,}', ' ');
+        alternateLangName=alternateLangName.trim().replaceAll('\\s{2,}', ' ');
+        primaryCity=primaryCity.trim().replaceAll('\\s{2,}', ' ');
         List<DuplicateRecordWrapper> duplicateRecords=new List<DuplicateRecordWrapper>();
         try{
-			String queryAccount='Select Id, Name, Core_Alternate_Language_Name__c,BillingCountry, Core_Business_Party_Id__c,Owner.Name,BillingStreet, BillingCity, BillingState, BillingPostalCode,Core_Unified_Global_Customer_Name__c FROM Account Where (Name=:customername OR (Core_Alternate_Language_Name__c!=null AND Core_Alternate_Language_Name__c=:alternateLangName)) AND (BillingCountry=:primaryCountry AND BillingStreet=:primaryStreet AND BillingCity=:primaryCity AND BillingState=:primaryState AND RecordTypeId=:intelAccountRTId)';
+            String queryAccount='Select Id, Name, Core_Alternate_Language_Name__c,BillingCountry, Core_Business_Party_Id__c,Owner.Name,BillingStreet, BillingCity, BillingState, BillingPostalCode,Core_Unified_Global_Customer_Name__c FROM Account Where (Name=:customername OR (Core_Alternate_Language_Name__c!=null AND Core_Alternate_Language_Name__c=:alternateLangName)) AND (BillingCountry=:primaryCountry AND BillingStreet=:primaryStreet AND BillingCity=:primaryCity AND BillingState=:primaryState AND RecordTypeId=:intelAccountRTId)';
             String queryAccountReqQueue='Select Id, Account_Name__c, Core_Alternate_Language_Name__c, Status__c, Address__CountryCode__s, Address__Street__s, Address__City__s,Address__StateCode__s,Address__PostalCode__s,CreatedDate,Requestor_Name__c,Process_Type__c From Account_Create_Request__c Where (Account_Name__c=:customername OR (Core_Alternate_Language_Name__c!=null AND Core_Alternate_Language_Name__c=:alternateLangName)) AND (Address__CountryCode__s=:primaryCountry AND Address__Street__s=:primaryStreet AND Address__City__s=:primaryCity AND Address__StateCode__s=:primaryState) AND (Status__c=\'In Process\' OR Status__c=\'Pending Approval\')';
-         	List<Account> duplicateAccounts=Database.query(queryAccount);
+            List<Account> duplicateAccounts=Database.query(queryAccount);
             List<DuplicateRecordWrapper> acctwrapperList=new List<DuplicateRecordWrapper>();
             List<DuplicateRecordWrapper> acctReqwrapperList=new List<DuplicateRecordWrapper>();
             for(Account acctRecord: duplicateAccounts){
@@ -1448,7 +1244,7 @@ public without sharing class UCD_GenericAcctSearch_SBR {
     }
 
     public class DuplicateRecordWrapper {
-      @AuraEnabled
+	    @AuraEnabled
         public String acctRequestId {get;set;}
 
         @AuraEnabled
@@ -1508,61 +1304,5 @@ public without sharing class UCD_GenericAcctSearch_SBR {
             this.unifiedGlobalCustomerName=unifiedGlobalCustomerName;
             this.objectName=objectName;
         }
-    }
-
-    public static String getCustomLabelValue()
-    {   if(Test.isRunningTest())
-        {return 'true';}
-        else{
-        return System.Label.UCD_DoReltioSearch; }
-    }
-
-    /*****************************************************************************************************
-     Method Name:        getResults
-     @return  :          List<SObjectResult>
-     @parameters:        String searchObjectName, String searchFieldName, String value
-     Description:        To Fetch User values on type ahead lookup
-     Added By:           Abhishek - 05/02/2025
-     ******************************************************************************************************/
-    @AuraEnabled
-    public static List<SObjectResult> getResults(String searchObjectName, String searchFieldName, String value) {
-        String sanitizedSearchObjectName = String.escapeSingleQuotes(searchObjectName);
-        String sanitizedSearchFieldName = String.escapeSingleQuotes(searchFieldName);
-        String sanitizedValue = String.escapeSingleQuotes(value);
-        string userType = UserInfo.getUserType();
-        String partnerUser = System.Label.Core_MDF_Partner_User_Type;
-        List<SObjectResult> sObjectResultList = new List<SObjectResult>();
-        String query='';
-        query = 'Select Id,'+sanitizedSearchFieldName+' FROM '+sanitizedSearchObjectName+' WHERE '+sanitizedSearchFieldName+' LIKE \'%' + sanitizedValue + '%\' AND IsActive = true LIMIT 100';
-        if(String.isNotEmpty(sanitizedValue) && String.isNotEmpty(query)) {
-            for(sObject record : Database.Query(query)) {
-                String fieldvalue = (String)record.get(sanitizedSearchFieldName);
-                sObjectResultList.add(new SObjectResult(fieldvalue, record.Id));
-            }
-        }
-
-        return sObjectResultList;
-    }
-    public class SObjectResult {
-        @AuraEnabled
-        public String recName;
-        @AuraEnabled
-        public Id recId;
-
-        public SObjectResult(String recNameTemp, Id recIdTemp) {
-            recName = recNameTemp;
-            recId = recIdTemp;
-        }
-    }
-@AuraEnabled
-    public static Map<String, String> userFields(String recordID){
-        Map<String, String> returns = new map<String, String>();
-        for(User s : [Select id,Name,Email,Core_WWID__c from USER where id = :recordID LIMIT 1]){
-            returns.put('name',s.name);
-            returns.put('email',s.email);
-            returns.put('wwid', s.Core_WWID__c);
-            returns.put('id', s.id);
-        }
-        return returns;
     }
 }

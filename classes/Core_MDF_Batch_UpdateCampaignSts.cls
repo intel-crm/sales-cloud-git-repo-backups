@@ -1,15 +1,26 @@
-//global class Core_MDF_Batch_UpdateCampaignSts implements Database.Batchable<sObject>, Database.Stateful{
-//US949837 - Added without sharing keyword to fix checkmarx issue
-global without sharing class Core_MDF_Batch_UpdateCampaignSts implements Database.Batchable<sObject>, Database.Stateful{
+/**************************************************************************************
+Apex Class Name:  Core_MDF_Batch_UpdateCampaignSts 
+Version     : 1.0 
+Created Date: 25 07 2018
+Function    : Batch to change campaigns status to Completed based on the program's claim window.
+Author      : Ealisha Chatterjee
+Modification Log :
+* Change#           Author                   Date                   Description
+* ----------------------------------------------------------------------------                 
+* Core MDF Rel1   Ealisha Chatterjee          25/04/2016            Original Version
+* Line #40	      Narayani Perachi			  28/01/2019            Added End date check after allowing campaigns to be created for older dates
+* Line #52		  Narayani Perachi			  30/01/2019            Allowing Partial updates
+*************************************************************************************/
+
+global class Core_MDF_Batch_UpdateCampaignSts implements Database.Batchable<sObject>, Database.Stateful{
 
 global Datetime dtTime=System.now();
 global date todaydt= date.newinstance(dtTime.year(), dtTime.month(), (dtTime.day()));            
-global final String changeToCompletedStatus = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Campaign_Completed_Sts');
-global final String changeToInProgressStatus = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Campaign_InProgress_Sts');
-global final String changeToCancelledStatus = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Campaign_Cancelled_Sts');
+global final String changeToCompletedStatus = Label.Core_MDF_Campaign_Completed_Sts;
+global final String changeToInProgressStatus = Label.Core_MDF_Campaign_InProgress_Sts;
 global List<String> checkStatus = new List<String>{'Planned','In Progress'};
     
-    global String ccpProgramAPIName = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_CCP_RecordType_API_Name');
+    global String ccpProgramAPIName = Label.Core_MDF_CCP_RecordType_API_Name;
     global String[] ccpProgram =  CCPProgramAPIName.split(',');
 
     
@@ -23,32 +34,6 @@ global String errorMessage = '';
     
 global Database.QueryLocator start(Database.BatchableContext batchableContext)
     {   
-        
-        String extractedClaimWindow;
-        string query ='select Id,Core_mdf_program__c,Core_MDF_Campaign_Reference_Number__c,Name,Status,EndDate,StartDate,Core_MDF_Proposal_Based_Ind__c from Campaign where';  
-        query += ' (recordtype.developername in:ccpProgram) AND ((status=\'Planned\' AND StartDate <=:todaydt AND EndDate >=:todaydt) OR (status in:checkStatus AND (';
-        //commented as a part of Core_MDF_CCP_Claim_Window__mdt optimization
-        //List<Core_MDF_CCP_Claim_Window__mdt> d = [SELECT Core_MDF_Program__c,Core_MDF_Claim_Window__c FROM Core_MDF_CCP_Claim_Window__mdt] ;          
-        Datetime dtTime=System.now();
-        date dt= date.newinstance(dtTime.year(), dtTime.month(), (dtTime.day()-1));
-        //date todaydt= date.newinstance(dtTime.year(), dtTime.month(), (dtTime.day()));
-        query += '(enddate <= :dt) OR';
-        //commented as a part of Core_MDF_CCP_Claim_Window__mdt optimization
-        // for(Core_MDF_CCP_Claim_Window__mdt record:d)
-        //     { 
-        //         integer claimWindow=record.Core_MDF_Claim_Window__c.intValue();
-        //         string program=record.Core_MDF_Program__c;
-        //         Date claimWindowAdded= dt.addMonths(-claimWindow);
-        //         string claimMonth =(string.valueOf(claimWindowAdded.month()).length()<2)?0+string.valueOf(claimWindowAdded.month()):string.valueOf(claimWindowAdded.month());    
-        //         string claimDay =(string.valueOf(claimWindowAdded.day()).length()<2)?0+string.valueOf(claimWindowAdded.day()):string.valueOf(claimWindowAdded.day());                   
-        //         extractedClaimWindow = claimWindowAdded.year() + '-' + claimMonth + '-' + claimDay;
-        //         query += ' (Core_mdf_program__c =\''+program+'\' and enddate<='+extractedClaimWindow+') OR';
-        //     }
-        
-        query = query.left(query.length()-2) + ')) OR (status = \'Draft\' AND Core_MDF_Campaign_Source_nm__c = \'Target Setting\'))';
-		//query += ' (status=\'Planned\' AND StartDate <=:todaydt AND EndDate >=:todaydt))';        
-        queryActive = query;
-        //query += ' StartDate<=:todaydt OR'
     	return Database.getQueryLocator(queryActive);
     } 
 
@@ -57,6 +42,7 @@ global void execute(Database.BatchableContext batchableContext, List<Campaign> c
        
         try
         {
+            system.debug('campaigns:'+campaigns);
                 if(!campaigns.isEmpty())
                     {
                         List<Campaign> finalCampaignsToUpdate = new List<Campaign>();
@@ -66,20 +52,14 @@ global void execute(Database.BatchableContext batchableContext, List<Campaign> c
                             {
                                
                                 //Added check for Enddate
-                                if(completeCampaign.status != 'Draft'){
-                                    /*if(completeCampaign.StartDate <= todaydt && completeCampaign.endDate > todaydt)
+                                if(completeCampaign.StartDate <= todaydt && completeCampaign.endDate > todaydt)
                                     {
                                         completeCampaign.Status = changeToInProgressStatus;
                                     }
                                 else
                                     {
                                         completeCampaign.Status = changeToCompletedStatus;
-                                    }*/   
-                                    completeCampaign.Status = (completeCampaign.StartDate <= todaydt && completeCampaign.endDate > todaydt) ? changeToInProgressStatus : changeToCompletedStatus; //ATHR - Deeply Nested if 16209
-                                }
-                                else if(completeCampaign.status == 'Draft' && completeCampaign.endDate < todaydt){
-                                    completeCampaign.Status = changeToCancelledStatus;
-                                }
+                                    }                
                                 finalCampaignsToUpdate.add(completeCampaign);
                                 updatedCampaignIds.add(completeCampaign.Id);
                             }
@@ -90,9 +70,12 @@ global void execute(Database.BatchableContext batchableContext, List<Campaign> c
                                 if ( !results.get(i).isSuccess() || Test.isRunningTest()) 
                                     {                
                                     errorMessage +='<tr><td>'+finalCampaignsToUpdate.get(i).Core_mdf_program__c+'</td><td>'+finalCampaignsToUpdate.get(i).Core_MDF_Campaign_Reference_Number__c+'</td><td>'+finalCampaignsToUpdate.get(i).Id+'</td><td>'+finalCampaignsToUpdate.get(i).Name+'</td> <td>';
+                                        
+                                     //   errorMessage += finalCampaignsToUpdate.get(i).Name + '\n' + finalCampaignsToUpdate.get(i).Id + 'Errors:\n';
                                     for ( Database.Error theError : results.get(i).getErrors() ) 
                                         {
                                             errorMessage += theError.getMessage()+'</td></tr>';
+                                            //errorMessage += theError.getStatusCode()+ '\n' + theError.getMessage();
                                         }
                                     }
                                 else{
@@ -105,18 +88,21 @@ global void execute(Database.BatchableContext batchableContext, List<Campaign> c
                         if(!campaignsIdUpdated.isEmpty())
                             {
                                    campaignsUpdated = [Select Id,Core_mdf_program__c,Core_MDF_Campaign_Reference_Number__c,Name,Status,StartDate,EndDate from Campaign where Id in:campaignsIdUpdated];
+                                   System.debug('*** Campaigns updated : '+campaignsUpdated);
                             }
                     }  
             }
         	
         	catch(Exception ex)
                 {
-            		Core_MDF_CCP_UtilityClass.logError(ex);
+                	System.debug('***Exception occurred while ReProcessing' + ex.getmessage()); 
                 }   
     }     
 
 global void finish (Database.BatchableContext batchableContext)
     {
+        System.debug('*** Campaigns updated : '+campaignsUpdated);
+        
         AsyncApexJob a = [SELECT Id, Status, NumberOfErrors, JobItemsProcessed, TotalJobItems, CreatedBy.Email FROM AsyncApexJob WHERE Id = :batchableContext.getJobId()];
         String message = 'The batch Apex job with JObId: '+ a.Id +' processed. <br><br>';
        
@@ -142,8 +128,7 @@ global void finish (Database.BatchableContext batchableContext)
                 Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
                 String[] toAddresses = new String[] {sendEmailAddress};
                 mail.setToAddresses(toAddresses);
-                mail.setOrgWideEmailAddressId(Label.Core_MDF_OrgWideId);//17001
-                mail.setSubject(Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_SFDC_Environment') + ': Salesforce BatchUpdateCampaignField ' + a.Status);
+                mail.setSubject(Label.Core_MDF_SFDC_Environment + ': Salesforce BatchUpdateCampaignField ' + a.Status);
                 String messageBody = '';
                 if(!campaignsUpdated.isEmpty() || Test.isRunningTest()){
                 messageBody += '\nCampaigns Processed:\n\n';

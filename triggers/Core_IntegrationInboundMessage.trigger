@@ -11,12 +11,15 @@ Modification Log :
 * Dave Hood                 12/02/2016              Updated to also fire on UPDATE, so we can re-process messages
 * Dave Hood                 01/26/2017              Added "after" method since we had to move A&E code to fire after
 *****************************************************************************************************************************************/
-trigger Core_IntegrationInboundMessage on Core_Integration_Inbound_Message__c (before insert, before update,
-                                                                               after insert, after update) {
-
-    if (Trigger.isBefore)
+trigger Core_IntegrationInboundMessage on Core_Integration_Inbound_Message__c (before insert, before update, after insert, after update) {
+    
+    if (Trigger.isBefore){
         Core_IntegrationInboundMessageHandler.beforeMethod(Trigger.old, Trigger.new, Trigger.oldMap, Trigger.newMap);
-
-    if (Trigger.isAfter)
+    }
+    
+    
+    if (Trigger.isAfter){
         Core_IntegrationInboundMessageHandler.afterMethod(Trigger.old, Trigger.new, Trigger.oldMap, Trigger.newMap);
+    }
+    
 }

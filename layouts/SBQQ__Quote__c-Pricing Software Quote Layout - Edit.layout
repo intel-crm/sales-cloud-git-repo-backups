@@ -9,7 +9,6 @@
     <customButtons>SBQQ__ImportLines</customButtons>
     <customButtons>SBQQ__ModifyQuoteTerms</customButtons>
     <customButtons>SBQQ__CalculateQuote</customButtons>
-    <excludeButtons>OpenSlackRecordChannel</excludeButtons>
     <layoutSections>
         <customLabel>true</customLabel>
         <detailHeading>false</detailHeading>
@@ -106,11 +105,23 @@
                 <behavior>Required</behavior>
                 <field>SBQQ__PaymentTerms__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Pricing_SW_Customer_Contact_Phone_Number__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Pricing_SW_Customer_Purchase_Order_No__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>SBQQ__BillingFrequency__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Pricing_SW_CustomerAccPayableDeptPhEmail__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
@@ -250,6 +261,10 @@
                 <behavior>Readonly</behavior>
                 <field>SBQQ__DaysQuoteOpen__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Pricing_SW_Quote_Product_Type__c</field>
+            </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
     </layoutSections>
@@ -387,23 +402,7 @@
         <relatedList>RelatedHistoryList</relatedList>
     </relatedLists>
     <relatedLists>
-        <fields>NAME</fields>
-        <fields>SBQQ__DocumentName__c</fields>
-        <fields>SBQQ__QuoteTemplate__c</fields>
-        <fields>SBQQ__DisplayOrder__c</fields>
-        <fields>SBQQ__Required__c</fields>
-        <relatedList>SBQQ__RelatedContent__c.SBQQ__Quote__c</relatedList>
-    </relatedLists>
-    <relatedLists>
         <relatedList>RelatedNoteList</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <fields>CreatedDate</fields>
-        <fields>StepStatus</fields>
-        <fields>OriginalActor</fields>
-        <fields>Actor</fields>
-        <fields>Comments</fields>
-        <relatedList>RelatedProcessHistoryList</relatedList>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>
@@ -411,7 +410,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00hD4000001a12x</masterLabel>
+        <masterLabel>00hDf000005Nws0</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

@@ -1,6 +1,8 @@
 import { LightningElement, wire, track, api } from 'lwc';
 import { getListUi } from 'lightning/uiListApi';
 export default class Pricing_ListViewTableCom extends LightningElement {
+
+
     @track isLoadingTable = true;
     @track url = window.location.origin;
     @track dataList = [];
@@ -13,7 +15,7 @@ export default class Pricing_ListViewTableCom extends LightningElement {
     @api objectAPIName;
     @api selectedListView;
 
-    @track str='';
+    @track str = '';
 
     @wire(getListUi, {
         listViewId: '$selectedListView',
@@ -61,10 +63,22 @@ export default class Pricing_ListViewTableCom extends LightningElement {
                     } else if (this.col[i].type == 'url' && element.fields[this.col[i].fieldName].value != null) {
                         any[this.col[i].fieldName + 'Name'] = element.fields[this.col[i].fieldName].hasOwnProperty('displayValue') ? element.fields[this.col[i].fieldName].displayValue : '';
                         any[this.col[i].fieldName] = element.fields[this.col[i].fieldName].value.hasOwnProperty('fields') ? this.url + '/' + element.fields[this.col[i].fieldName].value.fields.Id.value : '';
+
                     }
                     else {
                         this.str = JSON.stringify(element.fields[this.col[i].fieldName]?.value);
+                        //
+                        if(this.str.includes('mydeals'))
+                        {
+                            any[this.col[i].fieldName] = this.str.split('href=\'')[0].split('"')[2];
+                            any[this.col[i].fieldName + 'Name'] = this.str.split('>')[1].split('<')[0];
+                            urlColSetup.push(i);
+                            this.col[i].typeAttributes = { 'label': { 'fieldName': this.col[i].fieldName + 'Name' }, 'target': '_blank' };        
+                            console.log('any '+ JSON.stringify(any) );
+                        }else     
+                        //                  
                         if (this.str.includes('target=')) {
+
                             any[this.col[i].fieldName] = this.url + '/' + this.str.slice(12, 27);
                             any[this.col[i].fieldName + 'Name'] = this.str.slice(47, -5);
                             urlColSetup.push(i);
@@ -78,7 +92,7 @@ export default class Pricing_ListViewTableCom extends LightningElement {
                 dataTable.push(any);
             });
 
-            urlColSetup.forEach(ele =>{
+            urlColSetup.forEach(ele => {
                 this.col[ele].type = 'url';
             });
 

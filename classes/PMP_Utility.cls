@@ -22,13 +22,12 @@ public without sharing class PMP_Utility {
         List<PMP_Static_Data__mdt> staticData = new List<PMP_Static_Data__mdt>();
         
         staticData =[Select Id,DeveloperName,Value__c From PMP_Static_Data__mdt WHERE DeveloperName =: key LIMIT 1];
-        //Added as part of Medium Severity Fix TWC729-5510
-        String staticDataValue = staticData[0].Value__c;
+        
         
         if (staticData.isEmpty()) {
             return s;
         } else {
-            return staticDataValue;
+            return staticData[0].Value__c;
         }
     }
     
@@ -74,52 +73,48 @@ return ContentDistributionData;
 */
     //Added by shahrukh
     
-  /*  @AuraEnabled(cacheable=true)
+    @AuraEnabled(cacheable=true)
     public static Boolean isLoggedInUserAdmin(){
-        // Default value for isAdmin
-        boolean isAdmin = false;      
-        // Fetching the admin group name from a custom setting
-        String adminGroupName = getValue('PMP_Admin_GroupName');        
-        // If admin group name is not null
-        if (adminGroupName != null) {
-            // Fetching the group where all admins are declared
-            Group adminGroup = [SELECT Id FROM Group WHERE DeveloperName = :adminGroupName LIMIT 1];       
-            // If admin group is found
+        
+        boolean isAdmin = false; //Declaring a boolean with default value false
+        
+        
+        string adminGroup = getValue('PMP_Admin_GroupName');
+        
         if(adminGroup!=null){
-                // Fetching all group members from the admin group
-                List<GroupMember> groupMembers = [SELECT UserOrGroupId FROM GroupMember WHERE GroupId = :adminGroup.Id];           
-                // Iterating over all group members to check if the logged in user is an admin
-                for (GroupMember groupMember : groupMembers) {
-                    if (groupMember.UserOrGroupId == UserInfo.getUserId()) {
-                        isAdmin = true;
+            Group grp;
+            
+            grp=[SELECT Id FROM Group where DeveloperName=:adminGroup LIMIT 1]; //Querying the group where all admins are declared
+            
+            
+            if (grp!=Null){
+                List<GroupMember> groupMembers;
+                
+                groupMembers=[SELECT UserOrGroupId FROM GroupMember where GroupId=:grp.Id]; //Querying all the group members from above group 
+                
+                
+                
+                if(groupMembers!=Null){
+                    for (GroupMember groupMember: groupMembers){ // Iterating over all the group members to check if logged in user is admin
+                        if(groupMember.UserOrGroupId == userinfo.getUserId()){
+                            isAdmin = true;  //if logged in user is admin setting the above declared boolean to true and breaking out of the loop
                             break;
                         }
                     }
                 }
-        }
-                   
-        return isAdmin;
-            }*/
-    //OPTIMISATION WW44
-    @AuraEnabled(cacheable=true)
-   public static Boolean isLoggedInUserAdmin(){
-       String adminGroupName = getValue('PMP_Admin_GroupName');
-       if(String.isBlank(adminGroupName)){
-        return false;
-       }
-       Integer countRecords = [SELECT Count() FROM GroupMember WHERE Group.DeveloperName = :adminGroupName AND UserOrGroupId = :UserInfo.getUserId()];
-           return countRecords > 0;
-}
-    
+                
+            }
+        }      
+        return isAdmin; // Returing the boolean parameter
+    }
     /** 
 * @description Returns true if logged in user is anonymous
 * @param Boolean
 * Method Parameters - NA 
 */
     //Added by shahrukh
-    //OPTIMISATION WW44
-    //Method used in PMP_OfferingDetailsController, which is commented
-   /* public static Boolean isLoggedInUserAnonymous(){
+    //
+    public static Boolean isLoggedInUserAnonymous(){
         
         boolean isUserAnonymous = false; //Declaring a boolean with default value false
         
@@ -139,7 +134,7 @@ return ContentDistributionData;
         } 
         
         return isUserAnonymous; // Returing the boolean parameter
-    }*/
+    }
     /**
 * method added by raj to get locale fields for taxonomy data
 * @description-fetch locale fields(Name,Description etc) for the requested object
@@ -292,10 +287,10 @@ return ContentVersion;
                                                             logEntry.Core_Retry_Count__c=1;
                                                             logEntry.Core_Entry_Time__c = System.Now();
                                                             logEntry.Core_Status__c = status;
-                                                            logEntry.Core_Response_code__c=response.getStatusCode();
-                                                            logEntry.Core_Response_status__c=response.getStatus();
-                                                            logEntry.Core_Parent_Name__c= parentName;
-                                                            logEntry.Core_Parent_Id__c= parentId;
+                                                           //logEntry.Core_Response_code__c=response.getStatusCode();
+                                                           //logEntry.Core_Response_status__c=response.getStatus();
+                                                           //logEntry.Core_Parent_Name__c= parentName;
+                                                           //logEntry.Core_Parent_Id__c= parentId;
                                                             insert logEntry;
                                                         }
     
@@ -304,9 +299,7 @@ return ContentVersion;
 * @description returns List of translation records for the offering
 * @Param offeringId 
 */
-     //OPTIMISATION - WW44
-    //Method used in offerings code which is commented down, so commenting below method.
-   /* public static List<PMP_Partner_Offering_Translation__c> getOfferingTranslationRecords(id offeringId){
+    public static List<PMP_Partner_Offering_Translation__c> getOfferingTranslationRecords(id offeringId){
         List<PMP_Partner_Offering_Translation__c> offTranslationList = new List<PMP_Partner_Offering_Translation__c>();
         if (Schema.sObjectType.PMP_Partner_Offering_Translation__c.isAccessible()) {
             offTranslationList = [Select id, Name, PMP_Chinese_Txt__c, PMP_English_Txt__c, PMP_Japanese_Txt__c,PMP_Field_Nm__c
@@ -314,40 +307,40 @@ return ContentVersion;
                                   Where PMP_Partner_Offering_Id__c =: offeringId];
         }    
         return offTranslationList;
-    }*/
+    }
     /** 
 * @description Returns true if logged in user is an Intel employee
 * @param Boolean
 * Method Parameters - NA 
 */
     //Added by shahrukh
-  //OPTIMISATION WW44
-   /* @AuraEnabled(cacheable=true)
-    public static Boolean isIntelEmployee(){        
-        boolean isIntelEmployee = false;        
-        List<PermissionSetAssignment> lstcurrentUserPerSet;   
+    //
+    @AuraEnabled(cacheable=true)
+    public static Boolean isIntelEmployee(){
+        
+        boolean isIntelEmployee = false;
+        
+        List<PermissionSetAssignment> lstcurrentUserPerSet;
+        
+        
         lstcurrentUserPerSet  =    [   SELECT Id, PermissionSet.Name,AssigneeId
                                     FROM PermissionSetAssignment
-                                    WHERE AssigneeId = :Userinfo.getUserId() ];        
+                                    WHERE AssigneeId = :Userinfo.getUserId() ];
+        
+        
         if(!lstcurrentUserPerSet.isEmpty()){
             for (PermissionSetAssignment psa: lstcurrentUserPerSet)
             {
                 if(psa.PermissionSet.Name.equals('PMP_Internal_Intel_Read_Only') || psa.PermissionSet.Name.equals('PMP_Internal_Intel_Admin') || psa.PermissionSet.Name.equals('PMP_Internal_Intel_FAE')){
                     isIntelEmployee = true;
-                }                 
+                }    
+                
             }        
             
         }        
         return isIntelEmployee; // Returing the boolean parameter
-    }*/
-    @AuraEnabled(cacheable=true)
-public static Boolean isIntelEmployee(){
-
-    Integer recCount = [SELECT Count() FROM PermissionSetAssignment WHERE AssigneeId = :UserInfo.getUserId()
-        AND PermissionSet.Name IN ('PMP_Internal_Intel_Read_Only','PMP_Internal_Intel_Admin','PMP_Internal_Intel_FAE')];
-
-    return recCount > 0;
-}
+    }
+    
     /**
 * Added by raj to check whether the user belongs to same partner as offering
 * @description Returns true if the offering and user belongs to same partner
@@ -355,18 +348,15 @@ public static Boolean isIntelEmployee(){
 * @method parameter - PMP_Partner_Offering__c
 * @return Boolean
 */
-    //OPTIMISATION WW44
-    //commenting below method since its used in offerings-commented code
-    /*
     public static Boolean isUserUnderSamePartner(PMP_Partner_Offering__c offering){
         
         Boolean isSamePartner = false;
-        //system.debug('offering ' + offering);
+        system.debug('offering ' + offering);
         List<User> user = getLoggedInUser();
         //Modified as a part of OPID Resrtucture
         Set<Id> accIds = new Set<Id>();
         List<PMP_OPID_MPI_Rel__c> allJunctionRecs =  getJunctionAccToMpiByCompanyId(offering.PMP_Company_Id__c);
-        //system.debug('allJunctionRecs' + allJunctionRecs);
+        system.debug('allJunctionRecs' + allJunctionRecs);
         for(PMP_OPID_MPI_Rel__c singleJuncRec : allJunctionRecs){
             accIds.add(singleJuncRec.PMP_One_Partner_ID__c);
         }
@@ -385,33 +375,28 @@ if(!String.isEmpty(user[0].Core_IPA_One_Partner_Id__c) && !String.isEmpty(compan
 if(user[0].Core_IPA_One_Partner_Id__c  == company[0].PMP_One_Partner_ID__c){
 isSamePartner = true;
 }
-}
+}*/
         
         return isSamePartner;
-    }*/
+    }
     
     /**
 * Added by raj to get the logged in user's languge
 * @description Returns logged in user's language
 * @return String
-*/ 
-    //OPTIMISATION WW44
-    //commenting below method since its used in offerings-commented code
-    /*
+*/
     public static String getLoggedInUsersLanguage(){
         String language = userInfo.getLanguage();
         
         return language;
-    }*/
+    }
     
     /**
 * Added by Abhishek - This method checks if the offering requires translation based on 
 * business segment picklist values.      
 * @return boolean
 */
-//OPTIMISATION WW44
-    //commenting below method since its not found to be used anywhere
-    /*    public static boolean isTranslationRequired(PMP_Partner_Offering__c offering){
+    public static boolean isTranslationRequired(PMP_Partner_Offering__c offering){
         
         List<PMP_Business_Segments__mdt> bizValuesFromMetaData = new List<PMP_Business_Segments__mdt>();
         
@@ -423,8 +408,8 @@ isSamePartner = true;
             finalBizSegmentValues = offering.PMP_Business_Segment_Nm__c.split(';');
         }
         
-        if(offering.PMP_Business_Segment_Nm__c != null && !bizValuesFromMetaData.isEmpty()){
-            //if(!bizValuesFromMetaData.isEmpty() ){ 
+        if(offering.PMP_Business_Segment_Nm__c != null){
+            if(!bizValuesFromMetaData.isEmpty() ){ 
                 for(PMP_Business_Segments__mdt bizValueRec :bizValuesFromMetaData){
                     
                     if(finalBizSegmentValues.contains(bizValueRec.DeveloperName ) ){
@@ -433,10 +418,10 @@ isSamePartner = true;
                         break;
                     }
                 }
-            //}
+            }
         }
         return translationRequired;
-    }*/
+    }
     /** 
 * @description Returns true if ContactPartner Button should be displayed to the current user.
 * Depends on permission set assigned to user
@@ -466,7 +451,7 @@ isSamePartner = true;
         if(!lstcurrentUserPerSet.isEmpty()){
             for (PermissionSetAssignment psa: lstcurrentUserPerSet)
             {
-                //system.debug(psa.PermissionSet.Name);
+                system.debug(psa.PermissionSet.Name);
                 // if(psa.PermissionSet.Name.equals('PMP_Internal_Intel_Read_Only') || psa.PermissionSet.Name.equals('PMP_Internal_Intel_Admin') || psa.PermissionSet.Name.equals('PMP_Internal_Intel_FAE')){
                 if(permissionSetList.contains(psa.PermissionSet.Name)){
                     showContactPartner = false ;
@@ -512,7 +497,7 @@ isSamePartner = true;
 * @return-ContentDocumentLink
 * MethodParameters-Id, Id
 **/
-  /*  public static ContentDocumentLink getContentDocumentLinkInstance(Id docId, Id LinkId){
+    public static ContentDocumentLink getContentDocumentLinkInstance(Id docId, Id LinkId){
         
         ContentDocumentLink cdl = new ContentDocumentLink();
         cdl.ContentDocumentId = docId;
@@ -521,7 +506,7 @@ isSamePartner = true;
         cdl.Visibility = 'AllUsers';
         
         return cdl; 
-    }*/
+    }
     
     /**
 * Added by raj to get sequence number for specification
@@ -549,7 +534,7 @@ isSamePartner = true;
 */
     public static string queryAllFields(String sObjectName,Boolean isFinalSelectClause){
         String objectName = sObjectName ;
-        //System.debug('objectName:'+objectName);
+        System.debug('objectName:'+objectName);
         String query = 'SELECT';
         Map<String, Schema.SObjectField> objectFields = Schema.getGlobalDescribe().get(objectName).getDescribe().fields.getMap();
         
@@ -575,62 +560,49 @@ isSamePartner = true;
 * @param List<string> allowedPermissionSets 
 * @return set<id> 
 **/
-    //OPTIMISATION WW44
-    //Method not found to be used anywhere
-    /*public static Set<Id> fetchUsersFromPagMember(Set<Id> accIdSet, List<String> allowedPermissionSets) {
-        Set<Id> userIds = new Set<Id>();
+    public static set<id> fetchUsersFromPagMember(Set<id> accIdSet, List<string> allowedPermissionSets ){ 
+        
+        
+        List<Core_Account_Group_Member__c > pagMemberList = New List<Core_Account_Group_Member__c >();
+        Set<id> intelAccountIds = New set<id>();
+        Set<id> userIds = New set<id>();
         
         if(!accIdSet.isEmpty()){
-            Set<Id> partnerAccIdSet = getPartnerAccountIds(accIdSet);
+            // to get the core partner account of the intel account record
+            // [Core_Account_Group_Member__c is a junction object b/w partner account and Intel account]
+            List<Core_Account_Group_Member__c > pagMember = [SELECT id, Core_Intel_Account_Id__c, Core_Partner_Account_Id__c from 
+                                                             Core_Account_Group_Member__c where Core_Intel_Account_Id__c IN :accIdSet and Core_Inactive_Ind__c=false];  
             
-            if(!partnerAccIdSet.isEmpty() || Test.isRunningTest()){
-                Set<Id> intelAccountIds = getIntelAccountIds(partnerAccIdSet);
-                userIds = getUserIds(intelAccountIds, allowedPermissionSets);
-                }
-        }
-        
-        return userIds;
-    }
-    
-    private static Set<Id> getPartnerAccountIds(Set<Id> accIdSet) {
-        Set<Id> partnerAccIdSet = new Set<Id>();
-        
-        for (Core_Account_Group_Member__c member : [SELECT Core_Partner_Account_Id__c 
-                                                    FROM Core_Account_Group_Member__c 
-                                                    WHERE Core_Intel_Account_Id__c IN :accIdSet 
-                                                    AND Core_Inactive_Ind__c = false]) {
-            partnerAccIdSet.add(member.Core_Partner_Account_Id__c);
-        }
-        
-        return partnerAccIdSet;
-    }
-
-    private static Set<Id> getIntelAccountIds(Set<Id> partnerAccIdSet) {
-        Set<Id> intelAccountIds = new Set<Id>();
-        
-        for (Core_Account_Group_Member__c mem : [SELECT Core_Intel_Account_Id__c 
-                                                FROM Core_Account_Group_Member__c 
-                                                WHERE Core_Partner_Account_Id__c IN :partnerAccIdSet]) {
-            intelAccountIds.add(mem.Core_Intel_Account_Id__c);
-        }
-        
-        return intelAccountIds;
-    }
-
-    private static Set<Id> getUserIds(Set<Id> intelAccountIds, List<String> allowedPermissionSets) {
-        Set<Id> userIds = new Set<Id>();
-        
-        if (!allowedPermissionSets.isEmpty()) {
-            for (PermissionSetAssignment pa : [SELECT AssigneeId 
-                                                FROM PermissionSetAssignment 
-                                                WHERE Assignee.AccountId IN :intelAccountIds 
-                                                AND PermissionSet.Name IN :allowedPermissionSets]) {
-                userIds.add(pa.AssigneeId);
+            Set<id> partnerAccIdSet = New Set<id>();
+            for(Core_Account_Group_Member__c member : pagMember){
+                partnerAccIdSet.add(member.Core_Partner_Account_Id__c);
             }
+            if(!partnerAccIdSet.isEmpty() || Test.isRunningTest()){
+                //one core account can have multiple accounts under it, get the list of all such junction records  
+                pagMemberList = [SELECT id, Core_Intel_Account_Id__c, Core_Partner_Account_Id__c from Core_Account_Group_Member__c where 
+                                 Core_Partner_Account_Id__c IN : partnerAccIdSet];
+                //get all the accounts under the Core Intel Account
+                for(Core_Account_Group_Member__c mem : pagMemberList){
+                    intelAccountIds.add(mem.Core_Intel_Account_Id__c);
+                }
+                List<PermissionSetAssignment> permissionAssignmentList = New List<PermissionSetAssignment>();
+                if(!allowedPermissionSets.isEmpty()){
+                    permissionAssignmentList = [SELECT Assignee.email, Id,AssigneeId FROM PermissionSetAssignment WHERE Assignee.AccountId  in:intelAccountIds
+                                                AND PermissionSet.Name =:allowedPermissionSets ];
+                    for(PermissionSetAssignment pa : permissionAssignmentList){
+                        userIds.add(pa.AssigneeId);
+                    }                   
+                    
+                }
+                
+            }
+            
         }
         
         return userIds;
-    }*/
+        
+        
+    }
     
     /**
 * @description 
@@ -639,53 +611,66 @@ isSamePartner = true;
 * @param List<string> allowedPermissionSets 
 * @return map<id, id> 
 **/
-    public static Map<Id, Id> fetchUsersMapFromPagMember(List<PMP_Company__c> compInfoList, List<String> allowedPermissionSets) {
-        Map<Id, Id> userCompanyMap = new Map<Id, Id>();
-        
-        // Step 1: Initialize necessary collections
-        Set<Id> intelAccountIds = new Set<Id>();
-        Set<Id> userIds = new Set<Id>();
-        Map<Id, Id> accIdCompInfoMap = new Map<Id, Id>();
-        Map<Id, Id> intelAccCompInfoMap = new Map<Id, Id>();
-        
-        // Step 2: Populate accIdCompInfoMap with Account to Company Mapping
+    public static map<id,id> fetchUsersMapFromPagMember(List<PMP_Company__c> compInfoList, List<string> allowedPermissionSets ){ 
+        List<Core_Account_Group_Member__c > pagMemberList = New List<Core_Account_Group_Member__c >();
+        Set<id> intelAccountIds = New set<id>();
+        Set<id> userIds = New set<id>();
+        Map<id,id> accIdCompInfoMap = new Map<id,id>();
+        // map<id,id> partnerAccIntelAccMap = New Map<id,id>();
+        map<id,id> intelAccCompInfoMap = New Map<id,id>();
+        map<id,id> userCompanyMap = New Map<id,id>();
         if(!compInfoList.isEmpty()){
-            Set<Id> companyIds = new Set<Id>();
+            // Added as part of OPID Restructure - get the MPI Id using account Using junction Object 
+            set<Id> companyIds = new Set<Id>();
             for(PMP_Company__c compInfo : compInfoList){
                 companyIds.add(compInfo.Id);                
             }
             accIdCompInfoMap = PMP_Utility.getMapAccountToMpiByAllCompanyId(companyIds);
-        }
             
-        // Step 3: Process Core Account Group Members
-        if (!accIdCompInfoMap.isEmpty()) {
-            Set<Id> partnerAccIds = new Set<Id>(accIdCompInfoMap.keySet());
-            List<Core_Account_Group_Member__c> pagMemberList = [SELECT Core_Intel_Account_Id__c, Core_Partner_Account_Id__c 
-                                                                FROM Core_Account_Group_Member__c 
-                                                                WHERE Core_Partner_Account_Id__c IN :partnerAccIds 
-                                                                AND Core_Inactive_Ind__c = false];
+            // Changes - ended here
+            
+            if(!accIdCompInfoMap.keySet().isEmpty()){
+                //A Partner account can have multiple accounts under it, get the list of all such junction records  
+                pagMemberList = [SELECT id, Core_Intel_Account_Id__c, Core_Partner_Account_Id__c from Core_Account_Group_Member__c where 
+                                 Core_Partner_Account_Id__c IN :accIdCompInfoMap.keySet() and Core_Inactive_Ind__c = false];
                 
                 for(Core_Account_Group_Member__c mem : pagMemberList){
+                    //add the intel account ids to a set. Intel accounts will have contact under them to whom the email needs to be sent.
                     intelAccountIds.add(mem.Core_Intel_Account_Id__c);
+                    system.debug('insideFetchuser--' + 'accId='+ mem.Core_Intel_Account_Id__c  );
+                    /*A partner account related to the Company Info record can have multiple intel accounts, some contacts will have user associted with them,
+(so that tey can login to community)
+*/
+                    // intelAccCompInfoMap: Key: Intel account Id, Value: PMP_Company__c.id 
                     intelAccCompInfoMap.put(mem.Core_Intel_Account_Id__c, accIdCompInfoMap.get(mem.Core_Partner_Account_Id__c));
+                    
                 }
-            
-            // Step 4: Process PermissionSetAssignments
+                List<PermissionSetAssignment> permissionAssignmentList = New List<PermissionSetAssignment>();
                 if(!allowedPermissionSets.isEmpty()){
-                List<PermissionSetAssignment> permissionAssignmentList = [SELECT AssigneeId, Assignee.AccountId 
-                                                                        FROM PermissionSetAssignment 
-                                                                        WHERE Assignee.AccountId IN :intelAccountIds 
-                                                                        AND PermissionSet.Name IN :allowedPermissionSets];
+                    
+                    permissionAssignmentList = [SELECT Assignee.email, Id,AssigneeId,Assignee.AccountId FROM PermissionSetAssignment WHERE Assignee.AccountId  in:intelAccountIds
+                                                AND PermissionSet.Name =:allowedPermissionSets ];
                     for(PermissionSetAssignment pa : permissionAssignmentList){
+                        /*get the company info record id is required to set whatId while sending email.
+first get the account which is parent of the company info record, and from the compInfoAccIdMap get the
+company info id related */
+                        
                         userCompanyMap.put(pa.AssigneeId, intelAccCompInfoMap.get(pa.Assignee.AccountId) );
                         userIds.add(pa.AssigneeId);
+                        system.debug('userIds'+userIds);
                     }
+                    
+                    
                 }
+                
+            }
+            
         }
         
         return userCompanyMap;
+        
+        
     }
-    
     
     /** 
 * @Author           - Prakash
@@ -694,8 +679,8 @@ isSamePartner = true;
 * Method Parameters - String
 * @return String
 */
-   //IPA 2.0-US-TWC729-7981 
-    /*public static PMP_Alert_To_Email_Setting__mdt getAlertToEmailSettingData(String eventName) {
+    
+    public static PMP_Alert_To_Email_Setting__mdt getAlertToEmailSettingData(String eventName) {
         PMP_Alert_To_Email_Setting__mdt settingData = new PMP_Alert_To_Email_Setting__mdt();
         //querying metadata to get the email template name and permission sets required for External user to send email
         
@@ -709,7 +694,7 @@ isSamePartner = true;
                        WHERE DeveloperName =: eventName limit 1];
         
         return settingData;
-    }*/
+    }
     
     /** 
 * @Author           - Prakash
@@ -766,78 +751,6 @@ isSamePartner = true;
         createLogEntry(exceptionMap);
     }
     
-/**
-* Method Name : logSaveResultErrors
-* Return Type : Void
-* Description : Logs DML errors by extracting class and method from projectName like "Class-Method"
-**/
-
-public static void logDmlErrors(Object[] results, String projectName) {
-    String className = projectName.contains('-') ? projectName.substringBefore('-') : 'UnknownClass';
-    String methodName = projectName.contains('-') ? projectName.substringAfter('-') : 'UnknownMethod';
-
-    List<Core_Log_Entry__c> logsToInsert = new List<Core_Log_Entry__c>();
-
-    for (Integer i = 0; i < results.size(); i++) {
-        Object res = results[i];
-        Boolean success = true;
-        Database.Error[] errorArray;
-
-        // Determine type and extract errors
-        if (res instanceof Database.SaveResult) {
-            Database.SaveResult sr = (Database.SaveResult) res;
-            success = sr.isSuccess();
-            errorArray = sr.getErrors();
-        } else if (res instanceof Database.DeleteResult) {
-            Database.DeleteResult dr = (Database.DeleteResult) res;
-            success = dr.isSuccess();
-            errorArray = dr.getErrors();
-        } else if (res instanceof Database.UpsertResult) {
-            Database.UpsertResult ur = (Database.UpsertResult) res;
-            success = ur.isSuccess();
-            errorArray = ur.getErrors();
-        } else if (res instanceof Database.UndeleteResult) {
-            Database.UndeleteResult udr = (Database.UndeleteResult) res;
-            success = udr.isSuccess();
-            errorArray = udr.getErrors();
-        } else {
-            continue; // Skip unknown types
-        }
-
-        // Log only the first error if any
-        if (!success && errorArray != null && errorArray.size() > 0) {
-            Database.Error err = errorArray[0]; // First error only
-
-            String details = 'Class & Method Name = ' + className + '.' + methodName + ';\n' +
-                             'Exception Message = ' + err.getMessage() + ';\n' +
-                             'Status Code = ' + err.getStatusCode() + ';\n' +
-                             'Fields = ' + String.valueOf(err.getFields());
-
-            String subject = 'A database exception occurred in: ' + className + '.' + methodName;
-
-            logsToInsert.add(new Core_Log_Entry__c(
-                Core_Details__c   = details.left(32000),
-                Core_Message__c   = subject.left(255),
-                Core_Origin__c    = className.left(255),
-                Core_Project__c   = 'PMP',
-                Core_Scope__c     = projectName.left(255),
-                Core_Severity__c  = 'High',
-                Core_When__c      = System.now()
-            ));
-        }
-    }
-
-    // Insert all logs at once
-    if (!logsToInsert.isEmpty()) {
-        try {
-            insert logsToInsert;
-        } catch (Exception e) {
-            System.debug('Failed to insert log entries: ' + e.getMessage());
-        }
-    }
-}
-
-
     /**
 *  @description      : Create Log Object by passing the logObject field names and values in the Map
 *  @name             : createLogEntry
@@ -864,7 +777,7 @@ public static void logDmlErrors(Object[] results, String projectName) {
                 cle.put('Core_When__c',dtWhen);
                 database.insert(cle);    
             }
-        }                              
+        }                      
         
         
     }
@@ -874,70 +787,52 @@ public static void logDmlErrors(Object[] results, String projectName) {
 *  @param            : String
 *  @throws exception : NONE
 **/
-    //OPTIMISATION - WW44
-    //commenting below method, already same return type method present-getEmailTemplate and this method not found to be used anywhere
-   /* public static EmailTemplate fetchEmailTemplate(string TemplateName){
+    public static EmailTemplate fetchEmailTemplate(string TemplateName){
         
         EmailTemplate template;
         
         template = [SELECT Id,Subject, Body FROM EmailTemplate WHERE DeveloperName =:  TemplateName ];
         
         return template;
-    }*/
+    }
     
     
-    public static void insertEmailLogRecords(List<PRM_EmailLog__c> logList, List<Messaging.SendEmailResult> resultList) {
-        Map<String, PRM_EmailLog__c> targetIdLog = populateTargetIdLog(logList, resultList);
-        processSendEmailResults(resultList, targetIdLog);
-        upsertEmailLogs(logList);
+    public static void insertEmailLogrecords(List<PRM_EmailLog__c> logList, List<Messaging.SendEmailResult> resultList){
+        //create a Map for targetId and log
+        Map<String,PRM_EmailLog__c> targetIdLog = new Map<String,PRM_EmailLog__c>();
+        for(PRM_EmailLog__c l : logList)
+        {
+            if(resultList != null){
+                l.PRM_Email_API_Response__c = 'Mail sent successfully !!' ; 
             }
+            if(l.PRM_Contact__c != null) {targetIdLog.put(l.PRM_Contact__c,l); }
+            else if(l.PRM_User__c !=  null) {targetIdLog.put(l.PRM_User__c,l);}
+        }
+        if( resultList != null){
             
-    private static Map<String, PRM_EmailLog__c> populateTargetIdLog(List<PRM_EmailLog__c> logList, List<Messaging.SendEmailResult> resultList) {
-        Map<String, PRM_EmailLog__c> targetIdLog = new Map<String, PRM_EmailLog__c>();
-        
-        for (PRM_EmailLog__c log : logList) {
-            if (resultList != null) {
-                log.PRM_Email_API_Response__c = 'Mail sent successfully !!';
-            }
-            if (log.PRM_Contact__c != null) {
-                targetIdLog.put(log.PRM_Contact__c, log);
-            } else if (log.PRM_User__c != null) {
-                targetIdLog.put(log.PRM_User__c, log);
-            }
-        }
-        
-        return targetIdLog;
-    }
-    
-    private static void processSendEmailResults(List<Messaging.SendEmailResult> resultList, Map<String, PRM_EmailLog__c> targetIdLog) {
-        if (resultList != null) {
-            for (Messaging.SendEmailResult result : resultList) {
-                if (!result.isSuccess()) {
-                    updateEmailLogs(result, targetIdLog);
-                }
-            }
-        }
-    }
-    
-    private static void updateEmailLogs(Messaging.SendEmailResult result, Map<String, PRM_EmailLog__c> targetIdLog) {
+            for(Messaging.SendEmailResult result : resultList)
+            {
+                if(! result.isSuccess()) 
+                {
                     for( Messaging.SendEmailError error : result.getErrors()) {
+                        //in case of targetObjectId received  
                         String targetId= error.getTargetObjectId();
                         String errorMsg= error.getMessage();
-            if (targetId != null && targetIdLog.containsKey(targetId)) {
+                        if(targetId !=  null && targetIdLog.get(targetId) != null)
+                        {
                             PRM_EmailLog__c log = targetIdLog.get(targetId);
                             log.PRM_EmailDeliverabilityStatus__c = false;
                             log.PRM_Email_API_Response__c = errorMsg ;
                         }
                     } 
                 }
-    
-    private static void upsertEmailLogs(List<PRM_EmailLog__c> logList) {
-        if (logList != null && !logList.isEmpty()) {
+            }
+        }
+        if(logList != null && logList.size()>0) { 
             upsert logList; 
         }
+        
     }
-    
-    
     
     
     /**
@@ -955,7 +850,7 @@ public static void logDmlErrors(Object[] results, String projectName) {
         // intialize  PRM_EmailLog__c obj for email log with input params
         PRM_EmailLog__c log = new PRM_EmailLog__c();
         String successMsg ='Pending';
-        //String toEmailId;
+        String toEmailId;
         log.PRM_EmailDeliverabilityStatus__c = true ;
         log.PRM_Timestamp__c = DateTime.now();
         log.Language__c = lang ;
@@ -976,9 +871,7 @@ public static void logDmlErrors(Object[] results, String projectName) {
         // checking for mail getTargetObjectId() not null and then Assigning PRM_User__c with the Respective getTargetObjectId.
         if(mail.getTargetObjectId() != null)
         {
-            //system.debug('@@Inside IF');
             String objType = String.valueof(mail.getTargetObjectId().getSObjectType());
-            //system.debug('@@After Sobject type');
             if (objType == 'User') {
                 log.PRM_User__c = mail.getTargetObjectId();
             }
@@ -990,17 +883,16 @@ public static void logDmlErrors(Object[] results, String projectName) {
         Id whatId= mail.getWhatId();
         if(mail.getWhatId() != null){
             String objType = String.valueof(whatId.getSObjectType());
-            if(objType == 'PMP_Partner_Offering__c'){
+           /* if(objType == 'PMP_Partner_Offering__c'){
                 log.PMP_Partner_Offering__c= mail.getWhatId();             
             }
             else if(objType == 'PMP_Company__c'){
                 log.PMP_Company__c= mail.getWhatId();              
             }
-         /*IPA2.0: US-TWC729-7976*/
-            /*else if(objType == 'ArdiraSurvey__Survey_Result__c'){
+            else if(objType == 'ArdiraSurvey__Survey_Result__c'){
                 log.PSS_Partner_Solution__c= mail.getWhatId();
-            }*/
-            
+            }
+            */
         }
         
         
@@ -1015,14 +907,12 @@ public static void logDmlErrors(Object[] results, String projectName) {
 * @return Map<Id, Id> 
 **/
     public static Map<Id, Id> removeInactiveUsers(Map<Id,Id> userWhatIDMap){
-        List<User> inactiveUsers= [Select id, name from User where id IN :userWhatIDMap.keySet() and IsActive = false];
-        //OPTIMISATION - WW44
-        //Unnecessary looping ,already this filter present in above soql.
-       // for(ID userId :userWhatIDMap.keySet()){//removeall
+        List<User> inactiveUsers= [Select id, name from User where id =:userWhatIDMap.keySet() and IsActive = false];
+        for(ID userId :userWhatIDMap.keySet()){
             for(User u :inactiveUsers){
                 userWhatIDMap.remove(u.id);
             }
-        //}
+        }
         return userWhatIDMap;
         
     }    
@@ -1035,70 +925,53 @@ public static void logDmlErrors(Object[] results, String projectName) {
 * @return List<Messaging.SingleEmailMessage>
 **/
     public static List<Messaging.SingleEmailMessage> createEmailInstances(String emailTemplateID,Map<Id,Id> userIdWhatIdMap) {
-        OrgWideEmailAddress owa = getOrgWideEmailAddress();
-        List<Messaging.SingleEmailMessage> emailMessages = new List<Messaging.SingleEmailMessage>();
-        //Map<Id, ArdiraSurvey__Survey_Result__c> solMap = getSolutionMap(userIdWhatIdMap);//IPA2.0: US-TWC729-7976 
+        
+        OrgWideEmailAddress owa = New OrgWideEmailAddress ();    
+        owa =  [select id, Address, DisplayName from OrgWideEmailAddress Where Address = :System.Label.PMP_Intel_partner_Alliance_Address limit 1]; 
+        orgWideAddress=owa.Id;
+        List<Messaging.SingleEmailMessage> tmpltmails =  new List<Messaging.SingleEmailMessage>();
         String subject = 'Subject for Test Class';
         String htmlBody = 'Email Body content for TestClass';
-
-        for (Id userId : userIdWhatIdMap.keySet()) {
-            Messaging.SingleEmailMessage emailMessage = createSingleEmailMessage(emailTemplateID, userIdWhatIdMap.get(userId), userId, owa, subject, htmlBody);
-            addCcAddressesIfRequired(emailMessage, userId/*, solMap*/);
-            emailMessages.add(emailMessage);
+        // creating email instances for the userIdWhatIdMap
+        String sobjectType = '';
+        if(userIdWhatIdMap.values()[0]!=null){// Defect Fix : TWC1824-4698
+            sobjectType = String.valueof(userIdWhatIdMap.values()[0].getSObjectType());
         }
-
-        return emailMessages;
-    }
-
-    private static OrgWideEmailAddress getOrgWideEmailAddress() {
-        return [SELECT Id, Address, DisplayName FROM OrgWideEmailAddress WHERE Address = :System.Label.PMP_Intel_partner_Alliance_Address LIMIT 1];
-    }
-  /*IPA2.0: US-TWC729-7976*/
-    //private static Map<Id, ArdiraSurvey__Survey_Result__c> getSolutionMap(Map<Id, Id> userIdWhatIdMap) {
-        //Map<Id,ArdiraSurvey__Survey_Result__c> solMap = new Map<Id,ArdiraSurvey__Survey_Result__c>();                          
-
-       /* 
-       if (!userIdWhatIdMap.isEmpty() && userIdWhatIdMap.values()[0] != null) {
-            String sobjectType = String.valueOf(userIdWhatIdMap.values()[0].getSObjectType());
-            if (sobjectType == 'ArdiraSurvey__Survey_Result__c' && !PSS_SendEmailAlertsForSolutions.solListForMRS_RRK.isEmpty()) {
+        /*Map<Id,ArdiraSurvey__Survey_Result__c> solMap = new Map<Id,ArdiraSurvey__Survey_Result__c>();                          
+        if(sobjectType == 'ArdiraSurvey__Survey_Result__c' && PSS_SendEmailAlertsForSolutions.solListForMRS_RRK.size()>0){
             solMap.putAll(PSS_SendEmailAlertsForSolutions.solListForMRS_RRK);
             PSS_SendEmailAlertsForSolutions.solListForMRS_RRK.clear();
-        }
-        }
-        */
+        } Divya Commented*/
         
-        //return solMap;
-    //}
-
-    private static Messaging.SingleEmailMessage createSingleEmailMessage(String emailTemplateID, Id whatId, Id userId, OrgWideEmailAddress owa, String subject, String htmlBody) {
-        Messaging.SingleEmailMessage emailMessage = new Messaging.SingleEmailMessage();
-        emailMessage.setWhatId(whatId);
-        emailMessage.setTargetObjectId(userId);
-        emailMessage.setTemplateId(emailTemplateID);
-        emailMessage.setSaveAsActivity(false);
-
-        if (owa != null) {
-            emailMessage.setOrgWideEmailAddressId(owa.Id);
+        for(Id u : userIdWhatIdMap.keySet()){
+            Messaging.SingleEmailMessage templmail = new Messaging.SingleEmailMessage(); 
+            templmail.setWhatId(userIdWhatIdMap.get(u));
+            templmail.setTargetObjectId(u);
+            templmail.setTemplateId(emailTemplateID);
+            templmail.setSaveAsActivity(false);
+            if(owa!=Null){
+                templmail.setOrgWideEmailAddressId(owa.Id);
             }
             
             if(Test.isRunningTest()){
-            emailMessage.setSubject(subject);
-            emailMessage.setHtmlBody(htmlBody);
+                templmail.setSubject(subject);
+                templmail.setHtmlBody(htmlBody);
             }
             
-        return emailMessage;
+            /*if(solMap.size()>0 && solMap.containsKey(userIdWhatIdMap.get(u))){
+                ArdiraSurvey__Survey_Result__c sol=solMap.get(userIdWhatIdMap.get(u));
+                if(sol.PSS_Solution_Submitter_UserId_Id__r.ContactId == u || sol.PSS_Solution_Submitter_UserId_Id__c == u){
+                    templmail.setCcAddresses(System.Label.PSS_Iot_MarketReady_Email.split('\\;'));
+                    
+                }
+            } Divya Commented*/
+            
+            tmpltmails.add(templmail);            
+        }
+        return tmpltmails;
+        
+        
     }
-    //IPA2.0: US-TWC729-7976       
-    private static void addCcAddressesIfRequired(Messaging.SingleEmailMessage emailMessage, Id userId/*, Map<Id, ArdiraSurvey__Survey_Result__c> solMap*/) {
-        /*if (!solMap.isEmpty() && solMap.containsKey(emailMessage.getWhatId()))*/ 
-            //ArdiraSurvey__Survey_Result__c solution = solMap.get(emailMessage.getWhatId());
-            /*if (solution.PSS_Solution_Submitter_UserId_Id__r.ContactId == userId || 
-                solution.PSS_Solution_Submitter_UserId_Id__c == userId) {*/
-                emailMessage.setCcAddresses(System.Label.PSS_Iot_MarketReady_Email.split(';'));
-            }
-                
-            
-            
     
     
     /**
@@ -1108,57 +981,63 @@ public static void logDmlErrors(Object[] results, String projectName) {
 * @param Map<id id> userWhatIDMap 
 * @return void 
 **/
-    public static void sendEmailAndLogData(String emailtempName, Map<Id, Id> userWhatIDMap) {
+    public Static void sendEmailAndLogData(String emailtempName, Map<id,id> userWhatIDMap){
         try{
             EmailTemplate  template = PMP_Utility.getEmailTemplate(emailtempName);
-            Map<Id, Id> whatIdMap = buildWhatIdMap(userWhatIDMap);
-                
-            if (!whatIdMap.isEmpty()) {
-                List<Messaging.SingleEmailMessage> emailsToBeSent = createEmailInstances(template.Id, whatIdMap);
-                List<PRM_EmailLog__c> emailLogList = createEmailLogInstances(emailsToBeSent, template, whatIdMap);
-                
-                Messaging.SendEmailResult[] results = Messaging.sendEmail(emailsToBeSent,false);
-                insertEmailLogRecords(emailLogList, results);
+            //whatIdMap Map contains userid/ContactId has the key and same Value as that of userWhatIDMap.
+            map<id,id> whatIdMap=new map<id,id>();
+            //Email log records are needs to be tagged to the Contact/UserId.  
+            List<user> userContactList=[select id,Name,ContactId,contact.Core_Do_Not_Contact__c,contact.Core_isEmailBounced_Ind__c from User where id in : userWhatIDMap.keySet()];
+            if(userContactList.size() > 0){
+                for(user us : userContactList){
+                    if(us.contactId != null && us.contact.Core_Do_Not_Contact__c == false && us.contact.Core_isEmailBounced_Ind__c == false){
+                        whatIdMap.put(us.contactId,userWhatIDMap.get(us.id));
+                    }
+                    else if(us.contactId == null){
+                        whatIdMap.put(us.Id,userWhatIDMap.get(us.id));
+                    }
+                }
             }
-        } catch (Exception e) {
+            if(whatIdMap.keySet().size()>0){
+                
+                // Creating List of email to be sent using createEmailInstances method 
+                List<Messaging.SingleEmailMessage> emailsToBeSent =  PMP_Utility.createEmailInstances(template.Id, whatIdMap);
+                
+                //Map<Id, Id> InactiveUsersList = PMP_Utility.removeInactiveUsers(userWhatIDMap);
+                //List<Messaging.SingleEmailMessage> renderedMailList = new  List<Messaging.SingleEmailMessage>();        
+                List<ID> userWhatIDKeyList = new List<Id>(whatIdMap.keySet());
+                // renderStored email template with first user from the userWhatIDKeyList
+                Messaging.SingleEmailMessage renderedMailWorkingCopy = Messaging.renderStoredEmailTemplate(template.Id, userWhatIDKeyList[0], whatIdMap.get(userWhatIDKeyList[0]));
+                // renderStored email template for the remaining emailsToBeSent 
+                Messaging.SingleEmailMessage renderedMailSample = Messaging.renderStoredEmailTemplate(template.Id, null, null);
+                
+                //List<Messaging.SingleEmailMessage> sendlistEmail = new  List<Messaging.SingleEmailMessage>();
+                List<PRM_EmailLog__c> emailLogList = new List<PRM_EmailLog__c>();
+                // Creating email log instance and adding them to emailLogList.
+                for (Messaging.SingleEmailMessage singleEmail : emailsToBeSent){
+                    // passing the renderedMailWorkingCopy only for emailsToBeSent that matches with the first User in userWhatIDKeyList
+                    if(singleEmail.getTargetObjectId()== userWhatIDKeyList[0]){
+                        PRM_EmailLog__c logRecord = PMP_Utility.createEmailLogInstance(renderedMailWorkingCopy,singleEmail,'English', template.name,null);
+                        emailLogList.add(logRecord);
+                    }
+                    // for other emailToBeSent, passsing the non working copy--renderedMailSample
+                    else{
+                        PRM_EmailLog__c logRecord = PMP_Utility.createEmailLogInstance(renderedMailSample,singleEmail,'English', template.name,renderedMailWorkingCopy);
+                        emailLogList.add(logRecord);
+                    }             
+                }
+                // firing the emailsToBeSent        
+                Messaging.SendEmailResult[] results = Messaging.sendEmail(emailsToBeSent,false);
+                // inserting the email log records for success mails with created email log instance as it is and failed email with error message from the result.
+                PMP_Utility.insertEmailLogrecords(emailLogList,results);
+            }
+        }
+        catch(Exception e){
             PMP_Utility.logError(e,'PMP_Utility-SendEmailAndLogData');
         }
+        
     }
-
-    private static Map<Id, Id> buildWhatIdMap(Map<Id, Id> userWhatIDMap) {
-        Map<Id, Id> whatIdMap = new Map<Id, Id>();
-        List<User> userContactList = [SELECT Id, ContactId, Contact.Core_Do_Not_Contact__c, Contact.Core_isEmailBounced_Ind__c 
-                                    FROM User WHERE Id IN :userWhatIDMap.keySet()];
-        
-        for (User user : userContactList) {
-            if (user.ContactId != null && !user.Contact.Core_Do_Not_Contact__c && !user.Contact.Core_isEmailBounced_Ind__c) {
-                whatIdMap.put(user.ContactId, userWhatIDMap.get(user.Id));
-            } else if (user.ContactId == null) {
-                whatIdMap.put(user.Id, userWhatIDMap.get(user.Id));
-            }
-        }
-        
-        return whatIdMap;
-    }
-
-    private static List<PRM_EmailLog__c> createEmailLogInstances(List<Messaging.SingleEmailMessage> emailsToBeSent, EmailTemplate template, Map<Id, Id> whatIdMap) {
-        List<PRM_EmailLog__c> emailLogList = new List<PRM_EmailLog__c>();
-        List<Id> userWhatIDKeyList = new List<Id>(whatIdMap.keySet());
-        Messaging.SingleEmailMessage renderedMailWorkingCopy = Messaging.renderStoredEmailTemplate(template.Id, userWhatIDKeyList[0], whatIdMap.get(userWhatIDKeyList[0]));
-        Messaging.SingleEmailMessage renderedMailSample = Messaging.renderStoredEmailTemplate(template.Id, null, null);
-        
-        for (Messaging.SingleEmailMessage singleEmail : emailsToBeSent) {
-            if (singleEmail.getTargetObjectId() == userWhatIDKeyList[0]) {
-                emailLogList.add(PMP_Utility.createEmailLogInstance(renderedMailWorkingCopy, singleEmail, 'English', template.Name, null));
-            } else {
-                emailLogList.add(PMP_Utility.createEmailLogInstance(renderedMailSample, singleEmail, 'English', template.Name, renderedMailWorkingCopy));
-            }
-        }
-        
-        return emailLogList;
-    }
-
-    Public static Core_Apex_EmailNotification__c getApexEmailRecord(string recordName){
+    /*Public static Core_Apex_EmailNotification__c getApexEmailRecord(string recordName){
         Core_Apex_EmailNotification__c emailNotification;
         
         
@@ -1176,7 +1055,10 @@ public static void logDmlErrors(Object[] results, String projectName) {
         Return emailNotification;
         
         
-    }
+    } Divya Commented*/
+    
+    
+    
     
     /**
 * @description method to return company information for the opid
@@ -1187,13 +1069,13 @@ public static void logDmlErrors(Object[] results, String projectName) {
 * @used at: PMP_CreateOfferingTab1Service, Core_UtilityController
 **/   
     public static List<PMP_Company__c> getCompanyInfoForOpid(Id opid){
-        //System.debug('opid:'+opid);
+        System.debug('opid:'+opid);
         
         List<PMP_Company__c> companylist = new List<PMP_Company__c>();
         
         //Modified as a part of OPID Restucture
         List<PMP_OPID_MPI_Rel__c> allJunctionRecs= new List<PMP_OPID_MPI_Rel__c>();
-        //List<Id> companyIds = new List<Id>();
+        List<Id> companyIds = new List<Id>();
         if(Schema.sObjectType.PMP_OPID_MPI_Rel__c.isAccessible()){
             allJunctionRecs = [ select Id,PMP_One_Partner_ID__c,PMP_Marketing_Profile_Id__c,PMP_Marketing_Profile_Id__r.PMP_Working_Copy_Id__c,Is_Active__c
                                from PMP_OPID_MPI_Rel__c where PMP_One_Partner_ID__c =: opid and Is_Active__c = true limit 1];
@@ -1279,9 +1161,8 @@ return sortedPartners;
 * @param String dynamicValue
 * @return String labelValue 
 **/
-    //OPTIMISATION - WW44
-    //Commenting the below method since its used in PMP_TaxonomyStore, which is commented
-  /*  public static String getReplacedWithDynamicValue(String labelValue, String dynamicValue){
+    
+    public static String getReplacedWithDynamicValue(String labelValue, String dynamicValue){
         String regex = '\\{.*?\\}';
         Pattern regexPattern = Pattern.compile(regex);
         Matcher regexMatcher = regexPattern.matcher(labelvalue);
@@ -1290,10 +1171,10 @@ return sortedPartners;
             labelvalue = labelvalue.replaceAll(regex, dynamicValue);
         }
         else{
-            //system.debug('not matched');
+            system.debug('not matched');
         }
         return labelvalue;
-    }*/
+    }
     
     
     /*******************************************************************************************************************************************************************************************************
@@ -1305,62 +1186,78 @@ return sortedPartners;
 * Modification Log :
 * Created By  : Priyanka (Infosys)
 ********************************************************************************************************************************************************************************************************/
-   //OPTIMISATION - WW44
-   //Method not found to be used anywhere 
-    /*public static void sendEmailAndLogDataWithBulkification(String emailtempName, Map<Id, List<Id>> userWhatIDMap) {
+    
+    public Static void sendEmailAndLogDataWithBulkification(String emailtempName, Map<id,List<id>> userWhatIDMap){
         try{
             EmailTemplate  template = PMP_Utility.getEmailTemplate(emailtempName);
-            Map<Id, List<Id>> whatIdMap = buildWhatIdMap(userWhatIDMap);
-            
-            if (!whatIdMap.isEmpty()) {
-                List<Messaging.SingleEmailMessage> emailsToBeSent = createEmailInstancesWithBulkification(template.Id, whatIdMap);
-                List<PRM_EmailLog__c> emailLogList = createEmailLogInstances(emailsToBeSent, template, whatIdMap, emailtempName);
-                insertEmailLogRecords(emailLogList, null);
-                
-                Messaging.SendEmailResult[] results = Messaging.sendEmail(emailsToBeSent,false);
-                insertEmailLogRecords(emailLogList, results);
+            //whatIdMap Map contains userid/ContactId has the key and same Value as that of userWhatIDMap.
+            map<id,List<id>> whatIdMap=new map<id,List<id>>();
+            //Email log records are needs to be tagged to the Contact/UserId.  
+            List<user> userContactList=[select id,Name,ContactId, contact.Core_Do_Not_Contact__c,contact.Core_isEmailBounced_Ind__c from User where id in : userWhatIDMap.keySet()];
+            if(userContactList.size() > 0){
+                for(user us : userContactList){
+                    if(us.contactId != null && us.contact.Core_Do_Not_Contact__c == false && us.contact.Core_isEmailBounced_Ind__c == false){
+                        whatIdMap.put(us.contactId,userWhatIDMap.get(us.id));
+                    }
+                    else if(us.contactId == null){
+                        whatIdMap.put(us.Id,userWhatIDMap.get(us.id));
+                    }
+                }
             }
-        } catch (Exception e) {
+            
+            if(whatIdMap.keySet().size()>0){
+                // Creating List of email to be sent using createEmailInstancesWithBulkification method 
+                List<Messaging.SingleEmailMessage> emailsToBeSent = createEmailInstancesWithBulkification(template.Id, whatIdMap);
+                System.debug('PMP_SendEmailAlertsForOfferings-->emailsToBeSent'+emailsToBeSent.size()+'..'+emailsToBeSent);
+                
+                //Map<Id, Id> InactiveUsersList = PMP_Utility.removeInactiveUsers(userWhatIDMap);
+                //List<Messaging.SingleEmailMessage> renderedMailList = new  List<Messaging.SingleEmailMessage>();        
+                List<ID> userWhatIDKeyList = new List<Id>(whatIdMap.keySet());
+                System.debug('##userWhatIDKeyList'+userWhatIDKeyList);
+                System.debug('##whatIdMap'+whatIdMap);
+                System.debug('##whatIdMap get'+whatIdMap.get(userWhatIDKeyList[0])[0]);
+                // renderStored email template with first user from the userWhatIDKeyList
+                Messaging.SingleEmailMessage renderedMailWorkingCopy = Messaging.renderStoredEmailTemplate(template.Id, userWhatIDKeyList[0], whatIdMap.get(userWhatIDKeyList[0])[0]);
+                // renderStored email template for the remaining emailsToBeSent 
+                Messaging.SingleEmailMessage renderedMailSample = Messaging.renderStoredEmailTemplate(template.Id, null, null);
+                
+                //List<Messaging.SingleEmailMessage> sendlistEmail = new  List<Messaging.SingleEmailMessage>();
+                List<PRM_EmailLog__c> emailLogList = new List<PRM_EmailLog__c>();
+                // Creating email log instance and adding them to emailLogList.
+                Boolean isFirstRecord=true;
+                for (Messaging.SingleEmailMessage singleEmail : emailsToBeSent){
+                    // passing the renderedMailWorkingCopy only for emailsToBeSent that matches with the first User in userWhatIDKeyList
+                    // TWC1824-2917 Added template names to fix Subject of the email
+                    if(isFirstRecord || emailtempName.contains('PMP_OfferingExpiryFinalReminder') || emailtempName.contains('PMP_OfferingExpiryFirstReminder') || emailtempName.contains('PMP_OfferingExpirySecondReminder')){
+                        PRM_EmailLog__c logRecord = PMP_Utility.createEmailLogInstance(renderedMailWorkingCopy,singleEmail,'English', template.name,null);
+                        emailLogList.add(logRecord);
+                        isFirstRecord=false;
+                    }
+                    // for other emailToBeSent, passsing the non working copy--renderedMailSample
+                    else{
+                        PRM_EmailLog__c logRecord = PMP_Utility.createEmailLogInstance(renderedMailSample,singleEmail,'English', template.name,renderedMailWorkingCopy);
+                        emailLogList.add(logRecord);
+                    }             
+                }
+                
+                // inserting the email log records for success mails with created email log instance as it is and failed email with error message from the result.
+                System.debug('PMP_SendEmailAlertsForOfferings-->emailLogList'+emailLogList);
+                PMP_Utility.insertEmailLogrecords(emailLogList,null);
+                
+                // firing the emailsToBeSent        
+                Messaging.SendEmailResult[] results = Messaging.sendEmail(emailsToBeSent,false);
+                System.debug('PMP_SendEmailAlertsForOfferings-->email results'+results);
+                
+                // inserting the email log records for success mails with created email log instance as it is and failed email with error message from the result.
+                System.debug('PMP_SendEmailAlertsForOfferings-->emailLogList'+emailLogList);
+                PMP_Utility.insertEmailLogrecords(emailLogList,results);
+            }
+        }
+        catch(Exception e){
             PMP_Utility.logError(e,'PMP_Utility-SendEmailAndLogDataWithBulkification');
         }
-    }*/
-    
-   /* private static Map<Id, List<Id>> buildWhatIdMap(Map<Id, List<Id>> userWhatIDMap) {
-        Map<Id, List<Id>> whatIdMap = new Map<Id, List<Id>>();
-        List<User> userContactList = [SELECT Id, ContactId, Contact.Core_Do_Not_Contact__c, Contact.Core_isEmailBounced_Ind__c 
-                                    FROM User WHERE Id IN :userWhatIDMap.keySet()];
         
-        for (User user : userContactList) {
-            if (user.ContactId != null && !user.Contact.Core_Do_Not_Contact__c && !user.Contact.Core_isEmailBounced_Ind__c) {
-                whatIdMap.put(user.ContactId, userWhatIDMap.get(user.Id));
-            } else if (user.ContactId == null) {
-                whatIdMap.put(user.Id, userWhatIDMap.get(user.Id));
-            }
-        }
-        
-        return whatIdMap;
     }
-*/
-   /* private static List<PRM_EmailLog__c> createEmailLogInstances(List<Messaging.SingleEmailMessage> emailsToBeSent, EmailTemplate template, Map<Id, List<Id>> whatIdMap, String emailtempName) {
-        List<PRM_EmailLog__c> emailLogList = new List<PRM_EmailLog__c>();
-        List<Id> userWhatIDKeyList = new List<Id>(whatIdMap.keySet());
-        Messaging.SingleEmailMessage renderedMailWorkingCopy = Messaging.renderStoredEmailTemplate(template.Id, userWhatIDKeyList[0], whatIdMap.get(userWhatIDKeyList[0])[0]);
-        Messaging.SingleEmailMessage renderedMailSample = Messaging.renderStoredEmailTemplate(template.Id, null, null);
-        Boolean isFirstRecord = true;
-        
-        for (Messaging.SingleEmailMessage singleEmail : emailsToBeSent) {
-             //ipa 2.0 email templates eol
-  /*if (isFirstRecord || emailtempName.contains('PMP_OfferingExpiryFinalReminder') || emailtempName.contains('PMP_OfferingExpiryFirstReminder') || emailtempName.contains('PMP_OfferingExpirySecondReminder')) {
-                emailLogList.add(PMP_Utility.createEmailLogInstance(renderedMailWorkingCopy, singleEmail, 'English', template.Name, null));
-                isFirstRecord = false;
-            } else {*/
-              /*  emailLogList.add(PMP_Utility.createEmailLogInstance(renderedMailSample, singleEmail, 'English', template.Name, renderedMailWorkingCopy));
-           // }
-        }
-        
-        return emailLogList;
-    }*/
-
     
     
     /*******************************************************************************************************************************************************************************************************
@@ -1373,9 +1270,8 @@ return sortedPartners;
 * Created By  : Priyanka (Infosys)
 ********************************************************************************************************************************************************************************************************/
     
-    //OPTIMISATION WW44
-    //Below method used in same class, but that method is commented now since it was not found to be used anywhere
-   /* public static List<Messaging.SingleEmailMessage> createEmailInstancesWithBulkification(String emailTemplateID,Map<Id,List<Id>> userIdWhatIdMap) {
+    
+    public static List<Messaging.SingleEmailMessage> createEmailInstancesWithBulkification(String emailTemplateID,Map<Id,List<Id>> userIdWhatIdMap) {
         
         OrgWideEmailAddress owa = New OrgWideEmailAddress ();    
         
@@ -1407,9 +1303,9 @@ return sortedPartners;
         }
         return tmpltmails;
         
-    }*/
+    }
     
-/*******************************************************************************************************************************************************************************************************
+    /*******************************************************************************************************************************************************************************************************
 * Method Name : getActiveUsers
 * Description : This method returns the active users
 * Params      : List<Id> userIds, 
@@ -1420,7 +1316,7 @@ return sortedPartners;
 ********************************************************************************************************************************************************************************************************/
     
     public static List<Id> getActiveUsers(Set<Id> userIds) {
-        List<Id> activeUsers = new List<Id>(new Map<Id, User>([select id from User where (isActive=true or (IsActive=false and Partner_License_Reclaimed__c=true)) and Id in :userIds]).keySet());
+        List<Id> activeUsers = new List<Id>(new Map<Id, User>([select id from User where isActive=true and Id in :userIds]).keySet());
         return activeUsers;  
     }  
     public static List<PermissionSetAssignment> getActiveUserOfPermissionSet(Set<Id> intelAccountIds,List<String> allowedPermissionSets){
@@ -1477,9 +1373,8 @@ return sortedPartners;
 * Modification Log :
 * Created By  : Onyx Team [Sooriya - DE112070 Using especialy in PMP_SearchEventDetailController to handle special characters replacement]
 ********************************************************************************************************************************************************************************************************/  
-    //OPTIMISATION WW44
-    //below method used in PMP_SearchEventDetailController, and code is commented
-    /*public static String replaceLabelWithDynamicValue(String labelValue, String dynamicValue){
+    
+    public static String replaceLabelWithDynamicValue(String labelValue, String dynamicValue){
         String regex = '\\{.*?\\}';
         Pattern regexPattern = Pattern.compile(regex);
         Matcher regexMatcher = regexPattern.matcher(labelvalue);
@@ -1488,11 +1383,11 @@ return sortedPartners;
             labelvalue = labelvalue.replaceAll(regex, Matcher.quoteReplacement(dynamicValue));
         }
         else{
-            //system.debug('not matched');
+            system.debug('not matched');
         }
         return labelvalue;
     }
-    */
+    
     
     
     /*******************************************************************************************************************************************************************************************************
@@ -1545,9 +1440,7 @@ intelAccountIds.add(compInfo.PMP_Account_Id__c);
 * @return String - modified string value (eg.2KB, 300MB)
 * This method is used in PMP_OfferingResourceHelper apex class
 */
-    //OPTIMISATION - WW44
-    //Method used in offerings code and that is commented, so commenting below method.
-    /*public static String FileSizeToString(Long sizeValue){
+    public static String FileSizeToString(Long sizeValue){
         String resizedValue = '';
         try{
             //Bytes
@@ -1579,7 +1472,7 @@ intelAccountIds.add(compInfo.PMP_Account_Id__c);
             PMP_Utility.logError(ex,'PMP_UtilityFileSizeToString');   
         }
         return resizedValue;
-    }*/
+    }
     
     /*******
 * Method Name : getAccountRelatedMPIRecord
@@ -1587,9 +1480,7 @@ intelAccountIds.add(compInfo.PMP_Account_Id__c);
 * created by  : Onyx Team, Tilak Mallesh, on 30/09/2021, for OPID Restructure Design & Implementation.
 * Description : Below method is to get PMP_Company__c information associated to passed account Id's Via the junction object. Part of OPID restructure
 **************** Starts Here **********/
-    //OPTIMISATION - WW44
-    //Method not used, so commenting below method.
-  /*  public Map<Id,PMP_Company__c> getAccountRelatedMPIRecord(Set<Id> accountIds)
+    public Map<Id,PMP_Company__c> getAccountRelatedMPIRecord(Set<Id> accountIds)
     {
         Map<Id,PMP_OPID_MPI_Rel__c> junctionObjectRelatedToChangedAccounts = new Map <Id,PMP_OPID_MPI_Rel__c>([Select Id,Is_Active__c,PMP_Marketing_Profile_Id__c,PMP_One_Partner_ID__c  from PMP_OPID_MPI_Rel__c where PMP_One_Partner_ID__c IN : accountIds AND Is_Active__c= true]);
         Map<Id,Id> OPIDToMPID = new Map<Id,Id>();
@@ -1609,7 +1500,7 @@ intelAccountIds.add(compInfo.PMP_Account_Id__c);
             accountToMPI.put(singleAccount,singleMPIrecord);
         }
         return accountToMPI;
-    } */  
+    }   
     /******* Ends Here *************/
     
     /*******
@@ -1657,9 +1548,7 @@ intelAccountIds.add(compInfo.PMP_Account_Id__c);
 * created by  : Onyx Team, Tilak Mallesh, on 30/09/2021, for OPID Restructure Design & Implementation.
 * Description : Below method is to get List of account information associated to passed MPI records Via the junction object. Part of OPID restructure
 **************** Starts Here **********/
-     //OPTIMISATION - WW44
-    //Method not used, so commenting below method.
-  /*  public Map<Id,List<Account>> getAllAccountRelatedToMPIActive (List<PMP_Company__c> CompanyRecords)
+    public Map<Id,List<Account>> getAllAccountRelatedToMPIActive (List<PMP_Company__c> CompanyRecords)
     {
         Map<Id,List<Account>> CompanyIdToListOfAccount = new  Map<Id,List<Account>>();
         Set<Id> allMPIIds = new Set<Id>();
@@ -1693,7 +1582,7 @@ intelAccountIds.add(compInfo.PMP_Account_Id__c);
             }
         }
         return CompanyIdToListOfAccount;
-    }*/
+    }
     /******* Ends Here *************/
     
     
@@ -1703,10 +1592,7 @@ intelAccountIds.add(compInfo.PMP_Account_Id__c);
 * created by  : Onyx Team, Tilak Mallesh, on 30/09/2021, for OPID Restructure Design & Implementation.
 * Description : Below method is to get Set of account Id's associated to passed MPI records Via the junction object. Part of OPID restructure
 **************** Starts Here **********/
-    //OPTIMISATION WW44
-    //Commenting below method , since other method with diff input type param and return type is used in code from 
-    //this same class, but this return type method not found to be used
-    /*public Map<Id,Set<Id>> getAllAccountRelatedToMPI (List<Id> allMPIIds)
+    public Map<Id,Set<Id>> getAllAccountRelatedToMPI (List<Id> allMPIIds)
     {
         Map<Id,Set<Id>> CompanyIdToListOfAccount = new  Map<Id,Set<Id>>();
         List<PMP_OPID_MPI_Rel__c> allJunctionRecords = [SELECT Id,Is_Active__c,PMP_Marketing_Profile_Id__c,PMP_One_Partner_ID__c FROM PMP_OPID_MPI_Rel__c WHERE PMP_Marketing_Profile_Id__c IN : allMPIIds];
@@ -1730,7 +1616,7 @@ intelAccountIds.add(compInfo.PMP_Account_Id__c);
             }
         }
         return CompanyIdToListOfAccount;
-    }*/
+    }
     /******* Ends Here *************/ 
     
     
@@ -1740,9 +1626,7 @@ intelAccountIds.add(compInfo.PMP_Account_Id__c);
 * created by  : Onyx Team, Tilak Mallesh, on 30/09/2021, for OPID Restructure Design & Implementation.
 * Description : Below method is to get Set of account Id's associated to passed MPI records Via the junction object. Part of OPID restructure
 **************** Starts Here **********/
-     //OPTIMISATION - WW44
-    //Method not used, so commenting below method.
-   /* public Map<Id,Set<Id>> getAllAccountRelatedToMPIActive (List<Id> allMPIIds)
+    public Map<Id,Set<Id>> getAllAccountRelatedToMPIActive (List<Id> allMPIIds)
     {
         Map<Id,Set<Id>> CompanyIdToListOfAccount = new  Map<Id,Set<Id>>();
         List<PMP_OPID_MPI_Rel__c> allJunctionRecords = [SELECT Id,Is_Active__c,PMP_Marketing_Profile_Id__c,PMP_One_Partner_ID__c FROM PMP_OPID_MPI_Rel__c WHERE Is_Active__c=True AND PMP_Is_PagAccount_Ind__c=True AND PMP_Marketing_Profile_Id__c IN : allMPIIds];
@@ -1766,7 +1650,7 @@ intelAccountIds.add(compInfo.PMP_Account_Id__c);
             }
         }
         return CompanyIdToListOfAccount;
-    }*/
+    }
     /******* Ends Here *************/ 
     
     
@@ -1776,9 +1660,7 @@ intelAccountIds.add(compInfo.PMP_Account_Id__c);
 * created by  : Onyx Team, Tilak Mallesh, on 30/09/2021, for OPID Restructure Design & Implementation.
 * Description : Below method is to get Set of account Id's associated to passed MPI records Via the junction object. Part of OPID restructure
 **************** Starts Here **********/
-        //OPTIMISATION - WW44
-    //Method not used, so commenting below method.
-  /*  public Map<Id,Set<Id>> getAllAccountRelatedToMPIActiveList (List<Id> allMPIIds)
+    public Map<Id,Set<Id>> getAllAccountRelatedToMPIActiveList (List<Id> allMPIIds)
     {
         Map<Id,Set<Id>> CompanyIdToListOfAccount = new  Map<Id,Set<Id>>();
         List<PMP_OPID_MPI_Rel__c> allJunctionRecords = [SELECT Id,Is_Active__c,PMP_Marketing_Profile_Id__c,PMP_One_Partner_ID__c FROM PMP_OPID_MPI_Rel__c WHERE Is_Active__c=True AND PMP_Marketing_Profile_Id__c IN : allMPIIds];
@@ -1802,7 +1684,7 @@ intelAccountIds.add(compInfo.PMP_Account_Id__c);
             }
         }
         return CompanyIdToListOfAccount;
-    }*/
+    }
     /******* Ends Here *************/ 
     
     /*******
@@ -1811,13 +1693,11 @@ intelAccountIds.add(compInfo.PMP_Account_Id__c);
 * created by  : Onyx Team, Tilak Mallesh, on 30/09/2021, for OPID Restructure Design & Implementation.
 * Description : Below method is to get Set of account Id's associated to passed MPI records Via the junction object. Part of OPID restructure
 **************** Starts Here **********/
-    //OPTIMISATION - WW44
-    //Method usage commented , so commenting below method.
-   /* public Map<Id,Set<Id>> getAllAccountRelatedToMPINotActive (List<Id> allMPIIds)
+    public Map<Id,Set<Id>> getAllAccountRelatedToMPINotActive (List<Id> allMPIIds)
     {
         Map<Id,Set<Id>> CompanyIdToListOfAccount = new  Map<Id,Set<Id>>();
         List<PMP_OPID_MPI_Rel__c> allJunctionRecords = [SELECT Id,Is_Active__c,PMP_Marketing_Profile_Id__c,PMP_One_Partner_ID__c FROM PMP_OPID_MPI_Rel__c WHERE Is_Active__c = False AND PMP_Marketing_Profile_Id__c IN : allMPIIds];
-        //system.debug('Values of allJunctionRecords : '+allJunctionRecords);
+        system.debug('Values of allJunctionRecords : '+allJunctionRecords);
         Map<Id,Id> AccountIdsToMPIMapping = new Map<Id,Id>();
         for(PMP_OPID_MPI_Rel__c singleJunctionRecord : allJunctionRecords)
         {
@@ -1837,10 +1717,12 @@ intelAccountIds.add(compInfo.PMP_Account_Id__c);
                 CompanyIdToListOfAccount.put(MPID, new Set<Id> {singleOPIDs});
             }
         }
-        //system.debug('Values of CompanyIdToListOfAccount '+CompanyIdToListOfAccount);
+        system.debug('Values of CompanyIdToListOfAccount '+CompanyIdToListOfAccount);
         return CompanyIdToListOfAccount;
     }
     /******* Ends Here *************/ 
+    
+    
     /*******
 * Method Name : getJunctionAccountToMpiByAccountId
 * return type : List<PMP_OPID_MPI_Rel__c>
@@ -1851,7 +1733,7 @@ intelAccountIds.add(compInfo.PMP_Account_Id__c);
         List<PMP_OPID_MPI_Rel__c> junctionObjects = new List<PMP_OPID_MPI_Rel__c>();
         if(Schema.sObjectType.PMP_OPID_MPI_Rel__c.isAccessible() && accountIds!=null && !accountIds.isEmpty()){
             junctionObjects = [ select Id,PMP_One_Partner_ID__c,
-                               PMP_Marketing_Profile_Id__c,PMP_Marketing_Profile_Id__r.PMP_Working_Copy_Id__c,Is_Active__c,PMP_RelLastDeactivated__c
+                               PMP_Marketing_Profile_Id__c,PMP_Marketing_Profile_Id__r.PMP_Working_Copy_Id__c,Is_Active__c
                                from PMP_OPID_MPI_Rel__c where PMP_One_Partner_ID__c in :accountIds and Is_Active__c = true];
         }
         return junctionObjects;             
@@ -2018,15 +1900,15 @@ return mapAccountToMpiIds;*/
         for(Id singleMPIRecordsId: mapComponayProfile.keySet())
         {
             PMP_Company__c singleMPIRecords = mapComponayProfile.get(singleMPIRecordsId);
-            //system.debug('Values of singleMPIRecords : '+singleMPIRecords);
+            system.debug('Values of singleMPIRecords : '+singleMPIRecords);
             if(singleMPIRecords.PMP_Working_Copy_Id__r.Id != null)
             {
                 sObject sobjectRecordForWorkingCopy = singleMPIRecords.PMP_Working_Copy_Id__r.Id.getSObjectType().newSObject(singleMPIRecords.PMP_Working_Copy_Id__r.Id);
                 MPiIdToAllMPIs.put(singleMPIRecordsId, new List<PMP_Company__c>{singleMPIRecords});
-                //System.debug('after adding Production copy record '+JSON.serializePretty(MPiIdToAllMPIs));
+                System.debug('after adding Production copy record '+JSON.serializePretty(MPiIdToAllMPIs));
                 PMP_Company__c workingCopyRecord = (PMP_Company__c) sobjectRecordForWorkingCopy;
                 workingCopyRecord.PMP_Is_Working_Copy_Ind__c = singleMPIRecords.PMP_Working_Copy_Id__r.PMP_Is_Working_Copy_Ind__c;
-                //System.debug('Value of workingCopyRecord ::'+workingCopyRecord);
+                System.debug('Value of workingCopyRecord ::'+workingCopyRecord);
                 //MPiIdToAllMPIs.put(singleMPIRecordsId,workingCopyRecord.Id);
                 if(MPiIdToAllMPIs.containsKey(singleMPIRecordsId))
                 {
@@ -2039,13 +1921,13 @@ return mapAccountToMpiIds;*/
             {
                 MPiIdToAllMPIs.put(singleMPIRecordsId, new List<PMP_Company__c>{singleMPIRecords});
             }
-            //System.debug('after adding working copy record '+JSON.serializePretty(MPiIdToAllMPIs));
+            System.debug('after adding working copy record '+JSON.serializePretty(MPiIdToAllMPIs));
         }
         for(PMP_OPID_MPI_Rel__c singleJunctionObject : JunctionRecords) 
         {
             CompanyIdToListOfAccount.put(singleJunctionObject.PMP_One_Partner_ID__c,MPiIdToAllMPIs.get(singleJunctionObject.PMP_Marketing_Profile_Id__c));
         }
-        //System.debug('Value of CompanyIdToListOfAccount ::'+JSON.serializePretty(CompanyIdToListOfAccount));
+        System.debug('Value of CompanyIdToListOfAccount ::'+JSON.serializePretty(CompanyIdToListOfAccount));
         return CompanyIdToListOfAccount;
     }
     /******* Ends Here *************/ 
@@ -2058,7 +1940,7 @@ return mapAccountToMpiIds;*/
 ********/  
     public static List<PMP_OPID_MPI_Rel__c> getJunctionAccToMpiByCompanyId(Id companyId){
         List<PMP_OPID_MPI_Rel__c> junctionObjects = new List<PMP_OPID_MPI_Rel__c>();
-        if(Schema.sObjectType.PMP_OPID_MPI_Rel__c.isAccessible() && companyId !=null){
+        if(Schema.sObjectType.PMP_OPID_MPI_Rel__c.isAccessible()){
             junctionObjects = [ select Id,PMP_One_Partner_ID__c,PMP_Marketing_Profile_Id__c,Is_Active__c
                                from PMP_OPID_MPI_Rel__c where PMP_Marketing_Profile_Id__c =:companyId and Is_Active__c = true];
         }
@@ -2073,9 +1955,8 @@ return mapAccountToMpiIds;*/
 for solution approval email scenario. If the requirement is extended for offerings and storefront emails also , 
 this method can be reused.
 ********************************************************************************************************************************/  
-    //OPTIMISATION - WW44
-    //Method used in commented code for solutions, so commenting below method.
-  /*  public static void sendEmailToIOTReady(String emailtempName,List<Id> objectIds){
+    
+    public static void sendEmailToIOTReady(String emailtempName,List<Id> objectIds){
         try{
             EmailTemplate  template = PMP_Utility.getEmailTemplate(emailtempName);
             OrgWideEmailAddress owa = New OrgWideEmailAddress ();    
@@ -2116,7 +1997,7 @@ this method can be reused.
         catch(Exception e){
             PMP_Utility.logError(e,'PMP_Utility-sendEmailToIOTReady');
         }
-    }*/
+    }
     
     /*******
 * Method Name : isIntelAdmin
@@ -2124,9 +2005,7 @@ this method can be reused.
 * created by  : Onyx Team, Krishna ch , on 28/03/2022, for auto published emails are.
 * Description : this method will return the list of admin users.
 ********/  
-    //OPTIMISATION - WW44
-    //Method not used anymore so commenting
-   /* public static List<Id> intelAdminGrpMembers(){
+    public static List<Id> intelAdminGrpMembers(){
         
         List<Id> grpUserId= new List<Id>();
         
@@ -2156,135 +2035,7 @@ this method can be reused.
         }      
         
         return grpUserId;
-    }*/
-    
-    /*******
-* Method Name : sendWelcomeEmailForMP
-* return type : Void
-* created by  : MP Team
-* Description : this method will send welcome email for New Storefront after Entilement is approved.
-********/  
-    public static void sendWelcomeEmailForMP(Set<Id> setContacIdForIPAWelcomeEmail) {
-        Set<String> setOpidsForMPEmail = new Set<String>();
-        Map<Id, Id> intelAccCompInfoMap = new Map<Id, Id>();
-        List<PRM_EmailLog__c> existingEmailLogs = new List<PRM_EmailLog__c>();
-        list<id> setallcontactsunderopid = new list<id>();
-        List<id> intelAccountIds = new list<id>();
-        set<id> finalcontactswithoutemail = new set<id>();
-        Map<Id, Id> accIdCompInfoMap = new Map<Id, Id>();
-        Map<Id, Id> userCompanyMap = new Map<Id, Id>();
-        
-            List<id> contactsWithEmail = new list<id>();
-        
-        
-        if (setContacIdForIPAWelcomeEmail != null && !setContacIdForIPAWelcomeEmail.isEmpty()) {
-            for (Contact con : [SELECT Core_IPA_One_Partner_Id__c, Id, Core_AGS_Integration_Status__c FROM Contact WHERE Id IN :setContacIdForIPAWelcomeEmail]) {
-                setOpidsForMPEmail.add(con.Core_IPA_One_Partner_Id__c);
-            }
-            
-            if (setOpidsForMPEmail != null && !setOpidsForMPEmail.isEmpty()) {
-                System.debug('setOpidsForMPEmail: ' + setOpidsForMPEmail);
-                List<String> lstCompaniesForWelcomeEmail = new List<String>();
-                Set<String> setCompaniesForWelcomeEmail = new Set<String>();
-                //fetch pags and then query active contacts where accts in intelaccs
-                
-                
-                for (PMP_Company__c comp : [
-                    SELECT Id, Name, PMP_Published_Copy_Id__c, PMP_Is_Working_Copy_Ind__c,PMP_Opid_Sfid_Txt__c,
-                    PMP_Working_Copy_Id__c, PMP_Company_Lifecycle_Status_Nm__c
-                    FROM PMP_Company__c
-                    WHERE PMP_Opid_Sfid_Ref_Txt__c IN :setOpidsForMPEmail
-                    AND PMP_Benefit_Update_Ind__c =false
-                ]) {
-                    if (comp.PMP_Company_Lifecycle_Status_Nm__c == 'Draft' && comp.PMP_Is_Working_Copy_Ind__c == true) {
-                        String key = comp.PMP_Published_Copy_Id__c + '|' + 'New_CompanyInfo_CreationEmail';
-                        lstCompaniesForWelcomeEmail.add(key);
-                        
-                        if (comp.PMP_Published_Copy_Id__c != null)
-                            setCompaniesForWelcomeEmail.add(comp.PMP_Published_Copy_Id__c);
-                        if (comp.PMP_Working_Copy_Id__c != null)
-                            setCompaniesForWelcomeEmail.add(comp.PMP_Working_Copy_Id__c);
-                        
-                        System.debug(comp.PMP_Published_Copy_Id__c + ' comp.PMP_Published_Copy_Id__c');
-                    }
-                    
-                    if(comp.PMP_Opid_Sfid_Txt__c!=null){
-                        List<String> listAccounts = comp.PMP_Opid_Sfid_Txt__c.split(';');
-                        for(String acc : listAccounts){
-                             if (comp.PMP_Published_Copy_Id__c != null)
-                            accIdCompInfoMap.put(acc,comp.PMP_Published_Copy_Id__c);
-                        }
-                    }    
-                    
-                }
-                // Fetch Contacts and collect OPIDs
-                List<Core_Account_Group_Member__c> pagMemberList = [SELECT Core_Intel_Account_Id__c, Core_Partner_Account_Id__c 
-                                                                    FROM Core_Account_Group_Member__c 
-                                                                    WHERE Core_Partner_Account_Id__c IN :setOpidsForMPEmail 
-                                                                    AND Core_Inactive_Ind__c = false];
-                system.debug('pagMemberList--'+pagMemberList);
-                for(Core_Account_Group_Member__c mem : pagMemberList){
-                    intelAccountIds.add(mem.Core_Intel_Account_Id__c);
-                    // accIdCompInfoMap.put(acc,comp.id);//accid,compid
-                    intelAccCompInfoMap.put(mem.Core_Intel_Account_Id__c, accIdCompInfoMap.get(mem.Core_Partner_Account_Id__c));
-                }
-                for(PRM_Account_Contact_Relationship__c acr: [select PRM_Contact_Id__c from PRM_Account_Contact_Relationship__c where PRM_Account_Id__c in: intelAccountIds and PRM_InActive_Ind__c=false and PRM_Status_Nm__c='Complete']){
-                    setallcontactsunderopid.add(acr.PRM_Contact_Id__c);
-                }				
-                // Fetch Companies
-                
-                if (!setCompaniesForWelcomeEmail.isEmpty()) {
-                    System.debug('setCompaniesForWelcomeEmail: ' + setCompaniesForWelcomeEmail);
-                    
-                    // Fetch existing email logs
-                    for (PRM_EmailLog__c eLog : [
-                        SELECT Id, PRM_Subject__c, PRM_Contact__c, PRM_User__c,
-                        PRM_EmailDeliverabilityStatus__c, PRM_ToEmailID__c,
-                        Email_Template_Name__c, PRM_Contact__r.Core_Preferred_Language__c
-                        FROM PRM_EmailLog__c
-                        WHERE PMP_Company__c IN :setCompaniesForWelcomeEmail
-                        AND PRM_Contact__c IN : setallcontactsunderopid
-                        //and contact in : setContacIdForIPAWelcomeEmail
-                        AND Email_Template_Name__c ='PMP_CompanyInfoDraftEmail_Profile'
-                        ORDER BY CreatedDate
-                    ]) {
-                       // if(!setallcontactsunderopid.contains(elog.PRM_Contact__c)){
-                          //  finalcontactswithoutemail.add(elog.PRM_Contact__c);
-                       // }	
-                       contactsWithEmail.add(eLog.PRM_Contact__c);				
-                        existingEmailLogs.add(eLog);
-                        //contactswithemails.add(log.con)
-                    }
-                   // Set<Id> finalcontactswithoutemail = new Set<Id>();
-finalcontactswithoutemail.addAll(setallcontactsunderopid);
-finalcontactswithoutemail.removeAll(contactsWithEmail);
-                }
-            }
-        }
-        if(finalcontactswithoutemail!=null){
-            
-            List<User> userContactList = [SELECT Id, ContactId,AccountId, Contact.Core_Do_Not_Contact__c, Contact.Core_isEmailBounced_Ind__c,IsActive
-                                          FROM User WHERE ContactId IN :finalcontactswithoutemail and IsActive = True];
-            system.debug('userContactList++'+userContactList);
-            for (user u:userContactList){               
-                userCompanyMap.put(u.id, intelAccCompInfoMap.get(u.AccountId) );//u.contactid.accountid
-            }
-            
-            /* if(!allowedPermissionSets.isEmpty()){
-List<PermissionSetAssignment> permissionAssignmentList = [SELECT AssigneeId, Assignee.AccountId 
-FROM PermissionSetAssignment 
-WHERE Assignee.AccountId IN :intelAccountIds 
-AND PermissionSet.Name IN :allowedPermissionSets];
-for(PermissionSetAssignment pa : permissionAssignmentList){
-userIds.add(pa.AssigneeId);
-}
-}*/
-            //this might be having working copy id - so on the top when filtering with published copy id , existing email logs not coming
-            if(!userCompanyMap.isempty())
-            PMP_Utility.sendEmailAndLogData('PMP_CompanyInfoDraftEmail_Profile', userCompanyMap);  
-            /* if (!lstCompaniesForWelcomeEmail.isEmpty() && existingEmailLogs.isEmpty()) {
-PMP_SendEmailAlertsForCompanyInfo.PMP_SendEmailAlertsForCompanyInfo(lstCompaniesForWelcomeEmail);
-}*/
-        }
     }
+    
+    
 }

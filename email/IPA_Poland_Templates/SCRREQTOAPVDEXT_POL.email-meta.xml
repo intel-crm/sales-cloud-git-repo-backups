@@ -4,29 +4,24 @@
     <encodingKey>UTF-8</encodingKey>
     <name>SCRREQTOAPVDEXT_POL</name>
     <style>none</style>
-    <subject>Witamy w®programie Intel&amp;reg; Partner Alliance</subject>
-    <textOnly>Twoja firma jest już zarejestrowana
+    <subject>Gratulujemy i witamy w programie partnerskim firmy Intel</subject>
+    <textOnly>Duplicate Partner Program Registration
+
+{!PRM_Registration_Request__c.PRM_First_Name__c}
+
+Your company matches an existing Intel Partner program account, so you have been added to the following company profile:
+
+Company Name: {!Account.Name}
+
+Log in to view your profile details.
+
+Questions? Contact Support here 
 
 
-{!PRM_Registration_Request__c.PRM_First_Name__c},
-
-Gratulujemy uzyskania statusu partnera w programie Intel® Partner Alliance! Dane Twojej firmy pasują do istniejącego konta i dlatego dodaliśmy Cię do profilu następującej firmy w programie Intel® Partner Alliance:
-Nazwa firmy: {!Account.Name}
-Identyfikator firmy: {!Account.AccountNumber}
-
-Zaloguj się, aby wyświetlić szczegóły dotyczące Twojego profilu w programie Intel® Partner Alliance.
-
-Historia partnerów firmy Intel w zakresie innowacji jest długa. Za pomocą programu Intel® Partner Alliance pomożemy Ci przyspieszyć opracowywanie rozwiązań dla gospodarki opartej na danych. Razem możemy stwarzać nowe, niezwykłe możliwości dzięki połączeniu sił, wprowadzaniu innowacji i wspólnemu rozwojowi.
-
-Odwiedź stronę https://www.intel.com/content/www/pl/pl/partner-alliance/help/overview.html, by uzyskać dalszą pomoc dotyczącą rozpoczęcia korzystania z programu.
-
-Dziękujemy.
-Twój zespół Intel® Partner Alliance
-
-Ta wiadomość jest częścią istotnej komunikacji biznesowej dotyczącej Twoich bieżących relacji z programem Intel® Partner Alliance.
-© {!$Label.PRM_CurrentYear} Intel Corporation
-Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
-Ochrona danych | Pliki cookie</textOnly>
+Copyright © 2016 Intel Corporation. All rights reserved. Intel, the Intel logo are trademarks of Intel Corporation in the U.S. and/or other countries.
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. Intel.com
+You may unsubscribe at any time by updating your profile settings at: {!$Label.PRM_MyIntelProfileURL}
+Privacy | Cookies | *Trademarks</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

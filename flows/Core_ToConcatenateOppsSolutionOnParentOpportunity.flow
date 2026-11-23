@@ -1,35 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
-    <actionCalls>
-        <name>RemoveDuplicateValues</name>
-        <label>RemoveDuplicateValues</label>
-        <locationX>276</locationX>
-        <locationY>652</locationY>
-        <actionName>Core_UpdateOppsConcateFields</actionName>
-        <actionType>apex</actionType>
-        <connector>
-            <targetReference>Core_Update_Parent_Opportunity</targetReference>
-        </connector>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
-        <inputParameters>
-            <name>oppsRecords</name>
-            <value>
-                <elementReference>StoreParentOpps</elementReference>
-            </value>
-        </inputParameters>
-        <nameSegment>Core_UpdateOppsConcateFields</nameSegment>
-        <outputParameters>
-            <assignToReference>StoreResultedOpps</assignToReference>
-            <name>output</name>
-        </outputParameters>
-    </actionCalls>
     <apiVersion>57.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <assignments>
         <name>Add_SemiColon</name>
         <label>Add SemiColon</label>
-        <locationX>1909</locationX>
-        <locationY>158</locationY>
+        <locationX>1265</locationX>
+        <locationY>41</locationY>
         <assignmentItems>
             <assignToReference>IndustryUseCase</assignToReference>
             <operator>Add</operator>
@@ -44,8 +21,8 @@
     <assignments>
         <name>Add_Semicolon_Technology_Enabled</name>
         <label>Add Semicolon Technology Enabled</label>
-        <locationX>1917</locationX>
-        <locationY>387</locationY>
+        <locationX>1628</locationX>
+        <locationY>230</locationY>
         <assignmentItems>
             <assignToReference>TechnologyEnabled</assignToReference>
             <operator>Add</operator>
@@ -60,8 +37,8 @@
     <assignments>
         <name>Save_Application_Workload</name>
         <label>Save Application/Workload</label>
-        <locationX>1690</locationX>
-        <locationY>809</locationY>
+        <locationX>1919</locationX>
+        <locationY>833</locationY>
         <assignmentItems>
             <assignToReference>Application_Workload</assignToReference>
             <operator>Add</operator>
@@ -76,13 +53,13 @@
     <assignments>
         <name>Save_Industry_use_case</name>
         <label>Save Industry use case</label>
-        <locationX>1681</locationX>
-        <locationY>286</locationY>
+        <locationX>1338</locationX>
+        <locationY>133</locationY>
         <assignmentItems>
             <assignToReference>IndustryUseCase</assignToReference>
             <operator>Add</operator>
             <value>
-                <elementReference>For_each_opportunity_solution.Core_Industry_Use_Case_s__c</elementReference>
+                <stringValue>{!For_each_opportunity_solution.Core_Industry_Use_Case_s__c.getLabel()}</stringValue>
             </value>
         </assignmentItems>
         <connector>
@@ -92,8 +69,8 @@
     <assignments>
         <name>Save_Technology_Enabled</name>
         <label>Save Technology Enabled</label>
-        <locationX>1692</locationX>
-        <locationY>504</locationY>
+        <locationX>1790</locationX>
+        <locationY>381</locationY>
         <assignmentItems>
             <assignToReference>TechnologyEnabled</assignToReference>
             <operator>Add</operator>
@@ -108,8 +85,8 @@
     <assignments>
         <name>SemiColon_Applucation_Workload</name>
         <label>SemiColon Applucation Workload</label>
-        <locationX>1953</locationX>
-        <locationY>689</locationY>
+        <locationX>1968</locationX>
+        <locationY>618</locationY>
         <assignmentItems>
             <assignToReference>Application_Workload</assignToReference>
             <operator>Add</operator>
@@ -121,67 +98,15 @@
             <targetReference>Save_Application_Workload</targetReference>
         </connector>
     </assignments>
-    <assignments>
-        <name>SetConcatenatedValues</name>
-        <label>SetConcatenatedValues</label>
-        <locationX>480</locationX>
-        <locationY>652</locationY>
-        <assignmentItems>
-            <assignToReference>StoreParentOpps.Core_Concatenated_Application_workload__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>Application_Workload</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>StoreParentOpps.Core_Concatenated_Industry_use_case__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>IndustryUseCase</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>StoreParentOpps.Core_Concatenated_Technology_Enabled__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>TechnologyEnabled</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>RemoveDuplicateValues</targetReference>
-        </connector>
-    </assignments>
     <decisions>
         <name>Check_Application_Workload</name>
         <label>Check Application Workload</label>
-        <locationX>1418</locationX>
-        <locationY>685</locationY>
+        <locationX>1582</locationX>
+        <locationY>622</locationY>
         <defaultConnector>
             <targetReference>SemiColon_Applucation_Workload</targetReference>
         </defaultConnector>
-        <defaultConnectorLabel>Add Next Application Workload</defaultConnectorLabel>
-        <rules>
-            <name>Is_Blank_Application_Workload</name>
-            <conditionLogic>or</conditionLogic>
-            <conditions>
-                <leftValueReference>For_each_opportunity_solution.Core_Application_Workload__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue></stringValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>For_each_opportunity_solution.Core_Application_Workload__c</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>For_each_opportunity_solution</targetReference>
-            </connector>
-            <label>Is Blank Application Workload</label>
-        </rules>
+        <defaultConnectorLabel>Unique Application Workload</defaultConnectorLabel>
         <rules>
             <name>Check_if_Null_Application_Workload</name>
             <conditionLogic>and</conditionLogic>
@@ -197,38 +122,31 @@
             </connector>
             <label>Check if Null Application Workload</label>
         </rules>
+        <rules>
+            <name>If_Duplicate_Application_Workload</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Application_Workload</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <elementReference>For_each_opportunity_solution.Core_Application_Workload__c</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>For_each_opportunity_solution</targetReference>
+            </connector>
+            <label>If Duplicate Application Workload</label>
+        </rules>
     </decisions>
     <decisions>
         <name>Check_Industry_Use_Case</name>
         <label>Check Industry Use Case</label>
-        <locationX>1415</locationX>
-        <locationY>163</locationY>
+        <locationX>1053</locationX>
+        <locationY>171</locationY>
         <defaultConnector>
             <targetReference>Add_SemiColon</targetReference>
         </defaultConnector>
-        <defaultConnectorLabel>Add Next Industry Use Case</defaultConnectorLabel>
-        <rules>
-            <name>is_Blank_industry_use_case</name>
-            <conditionLogic>or</conditionLogic>
-            <conditions>
-                <leftValueReference>For_each_opportunity_solution.Core_Industry_Use_Case_s__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue></stringValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>For_each_opportunity_solution.Core_Industry_Use_Case_s__c</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Check_Technology_Enabled</targetReference>
-            </connector>
-            <label>is Blank industry use case</label>
-        </rules>
+        <defaultConnectorLabel>Unique Industry Use Case</defaultConnectorLabel>
         <rules>
             <name>Check_If_Null</name>
             <conditionLogic>and</conditionLogic>
@@ -244,6 +162,21 @@
             </connector>
             <label>Check If Null</label>
         </rules>
+        <rules>
+            <name>If_Duplicate_Industry_Use_Case</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>IndustryUseCase</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <elementReference>For_each_opportunity_solution.Core_Industry_Use_Case_s__c</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_Technology_Enabled</targetReference>
+            </connector>
+            <label>If Duplicate Industry Use Case</label>
+        </rules>
     </decisions>
     <decisions>
         <name>Check_Technology_Enabled</name>
@@ -253,29 +186,7 @@
         <defaultConnector>
             <targetReference>Add_Semicolon_Technology_Enabled</targetReference>
         </defaultConnector>
-        <defaultConnectorLabel>Add Next Technology Enabled</defaultConnectorLabel>
-        <rules>
-            <name>Is_Blank_Technology_Enabled</name>
-            <conditionLogic>or</conditionLogic>
-            <conditions>
-                <leftValueReference>For_each_opportunity_solution.Core_Technology_Enabled__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue></stringValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>For_each_opportunity_solution.Core_Technology_Enabled__c</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Check_Application_Workload</targetReference>
-            </connector>
-            <label>Is Blank Technology Enabled</label>
-        </rules>
+        <defaultConnectorLabel>Unique Technology Enabled</defaultConnectorLabel>
         <rules>
             <name>Check_If_Null_Technology_Enabled</name>
             <conditionLogic>and</conditionLogic>
@@ -290,6 +201,21 @@
                 <targetReference>Save_Technology_Enabled</targetReference>
             </connector>
             <label>Check If Null Technology Enabled</label>
+        </rules>
+        <rules>
+            <name>If_Duplicate_Technology_Enabled</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>TechnologyEnabled</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <elementReference>For_each_opportunity_solution.Core_Technology_Enabled__c</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_Application_Workload</targetReference>
+            </connector>
+            <label>If Duplicate Technology Enabled</label>
         </rules>
     </decisions>
     <description>This flow Is used for to concatenate Industry Use Case, Application/Workload and Technology Enabled details from all child Opportunity Solution on Parent Opportunity Record.</description>
@@ -307,7 +233,7 @@
             <targetReference>Check_Industry_Use_Case</targetReference>
         </nextValueConnector>
         <noMoreValuesConnector>
-            <targetReference>GetParentOpps</targetReference>
+            <targetReference>Core_Update_Parent_Opportunity</targetReference>
         </noMoreValuesConnector>
     </loops>
     <processMetadataValues>
@@ -357,36 +283,38 @@
         <sortOrder>Asc</sortOrder>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
-    <recordLookups>
-        <name>GetParentOpps</name>
-        <label>GetParentOpps</label>
-        <locationX>669</locationX>
-        <locationY>652</locationY>
-        <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>SetConcatenatedValues</targetReference>
-        </connector>
+    <recordUpdates>
+        <name>Core_Update_Parent_Opportunity</name>
+        <label>Update Parent Opportunity</label>
+        <locationX>427</locationX>
+        <locationY>729</locationY>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
             <operator>EqualTo</operator>
             <value>
-                <elementReference>$Record.Core_Opportunity__r.Id</elementReference>
+                <elementReference>$Record.Core_Opportunity__r.Core_Opportunity_ID__c</elementReference>
             </value>
         </filters>
+        <inputAssignments>
+            <field>Core_Concatenated_Application_workload__c</field>
+            <value>
+                <stringValue>{!Application_Workload.getLabel()}</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Concatenated_Industry_use_case__c</field>
+            <value>
+                <stringValue>{!IndustryUseCase.getLabel()}</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Concatenated_Technology_Enabled__c</field>
+            <value>
+                <stringValue>{!TechnologyEnabled.getLabel()}</stringValue>
+            </value>
+        </inputAssignments>
         <object>Opportunity</object>
-        <outputReference>StoreParentOpps</outputReference>
-        <queriedFields>Id</queriedFields>
-        <queriedFields>Core_Concatenated_Application_workload__c</queriedFields>
-        <queriedFields>Core_Concatenated_Industry_use_case__c</queriedFields>
-        <queriedFields>Core_Concatenated_Technology_Enabled__c</queriedFields>
-    </recordLookups>
-    <recordUpdates>
-        <name>Core_Update_Parent_Opportunity</name>
-        <label>Update Parent Opportunity</label>
-        <locationX>276</locationX>
-        <locationY>838</locationY>
-        <inputReference>StoreResultedOpps</inputReference>
     </recordUpdates>
     <start>
         <locationX>144</locationX>
@@ -395,7 +323,7 @@
             <targetReference>Get_All_Opportunity_Solutions</targetReference>
         </connector>
         <object>Opportunity_Solution_Area__c</object>
-        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <recordTriggerType>Create</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
     <status>Active</status>
@@ -412,22 +340,6 @@
         <isCollection>false</isCollection>
         <isInput>false</isInput>
         <isOutput>false</isOutput>
-    </variables>
-    <variables>
-        <name>StoreParentOpps</name>
-        <dataType>SObject</dataType>
-        <isCollection>false</isCollection>
-        <isInput>true</isInput>
-        <isOutput>true</isOutput>
-        <objectType>Opportunity</objectType>
-    </variables>
-    <variables>
-        <name>StoreResultedOpps</name>
-        <dataType>SObject</dataType>
-        <isCollection>false</isCollection>
-        <isInput>true</isInput>
-        <isOutput>true</isOutput>
-        <objectType>Opportunity</objectType>
     </variables>
     <variables>
         <name>TechnologyEnabled</name>

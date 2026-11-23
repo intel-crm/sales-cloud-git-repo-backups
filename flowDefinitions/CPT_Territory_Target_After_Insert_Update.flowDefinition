@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <FlowDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
-    <activeVersionNumber>17</activeVersionNumber>
+    <activeVersionNumber>20</activeVersionNumber>
+    <description>[02/Nov/25] Flow to Copy the target values from the account/territory/country into the assignment object. update 2 Nov 2025</description>
+    <masterLabel>CPT Territory Target - After Insert/Update</masterLabel>
 </FlowDefinition>

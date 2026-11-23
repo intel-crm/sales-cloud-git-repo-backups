@@ -12,13 +12,3 @@
 .THIS .slds-form-element__control .slds-radio {
     display: inline-block;
 }
-
-.THIS .searchauracss{
-    padding-left: 15px;
-    border: 1px #055fa3 solid;
-    border-radius: 0px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    margin-left: 10px;
-    margin-right: 25px;
-}

@@ -3,19 +3,29 @@
     <fields>
         <fullName>Pricing_FieldAPI_Nm__c</fullName>
         <externalId>false</externalId>
-        <fieldManageability>DeveloperControlled</fieldManageability>
+        <fieldManageability>SubscriberControlled</fieldManageability>
         <label>Picklist Field API Name</label>
         <length>50</length>
-        <required>false</required>
+        <required>true</required>
         <type>Text</type>
         <unique>false</unique>
     </fields>
     <fields>
         <fullName>Pricing_IsActive_Ind__c</fullName>
-        <defaultValue>false</defaultValue>
+        <defaultValue>true</defaultValue>
         <fieldManageability>DeveloperControlled</fieldManageability>
         <label>Is Active</label>
         <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Pricing_ObjectAPI_Nm__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>Object API Name</label>
+        <length>50</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Pricing_ObjectAPI_Pkl__c</fullName>
@@ -46,6 +56,16 @@
         </valueSet>
     </fields>
     <fields>
+        <fullName>Pricing_RecordTypeAPI_Nm__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>Record Type API Name</label>
+        <length>80</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Pricing_RecordTypeAPI_Pkl__c</fullName>
         <fieldManageability>DeveloperControlled</fieldManageability>
         <label>Record Type API Name</label>
@@ -63,7 +83,7 @@
             </valueSetDefinition>
         </valueSet>
     </fields>
-    <label>Pricing_Picklist_FieldNames_Mapping</label>
-    <pluralLabel>Pricing_Picklist_FieldNames_Mappings</pluralLabel>
+    <label>Pricing Picklist Field Names Mapping</label>
+    <pluralLabel>Pricing Picklist Field Names Mappings</pluralLabel>
     <visibility>Public</visibility>
 </CustomObject>

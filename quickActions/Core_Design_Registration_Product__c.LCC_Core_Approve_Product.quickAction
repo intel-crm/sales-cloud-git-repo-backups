@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Approves the Product after data validation.Created from Lightning Experience Configuration Converter.</description>
+    <height>250</height>
+    <label>Approve Product</label>
+    <lightningComponent>LCC_Core_Approve_Product_Core_Design_Registration_Product_c</lightningComponent>
+    <optionsCreateFeedItem>false</optionsCreateFeedItem>
+    <type>LightningComponent</type>
+    <width>-100</width>
+</QuickAction>

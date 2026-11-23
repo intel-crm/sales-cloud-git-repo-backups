@@ -1279,15 +1279,4 @@ Added logic when account feedback getting created manually on account -&gt; Assi
             <numberValue>0.0</numberValue>
         </value>
     </variables>
-    <variables>
-        <name>TAVPCounter</name>
-        <dataType>Number</dataType>
-        <isCollection>false</isCollection>
-        <isInput>false</isInput>
-        <isOutput>false</isOutput>
-        <scale>0</scale>
-        <value>
-            <numberValue>0.0</numberValue>
-        </value>
-    </variables>
 </Flow>

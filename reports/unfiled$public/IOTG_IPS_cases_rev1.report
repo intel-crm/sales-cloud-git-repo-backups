@@ -37,9 +37,6 @@
         <field>CLOSED_DATEONLY</field>
     </columns>
     <columns>
-        <field>Case.Core_IPS_Date_Time_Close_Pending__c</field>
-    </columns>
-    <columns>
         <field>Case.Core_Product_Type__c</field>
     </columns>
     <columns>
@@ -57,8 +54,9 @@
     <columns>
         <field>Case.Core_Severity__c</field>
     </columns>
-    <description>IOTG IPS cases full details under all VBUs including HEC, VST, FIS</description>
+    <description>IOTG IPS cases full details under all VBUs including RBHE, VMC, ISD, ADG, TSD</description>
     <filter>
+        <booleanFilter>1 OR 2 OR 3</booleanFilter>
         <criteriaItems>
             <column>Case.Core_Product_Organization__c</column>
             <columnToColumn>false</columnToColumn>
@@ -67,16 +65,23 @@
             <value>Embedded Products</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Case.Core_External_Issue_Category__c</column>
+            <column>Case.Core_Product_Organization__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>software/Driver/OS</value>
+            <value>Automated Driving Group</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_Product_Organization__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Transportation Solutions Division</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Tabular</format>
-    <name>IOTG IPS cases under Embedded</name>
+    <name>IOTG IPS cases under Embedded, ADG, TSD</name>
     <params>
         <name>units</name>
         <value>d</value>
@@ -90,10 +95,10 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>Case.Core_External_Issue_Subcategory__c</sortColumn>
+    <sortColumn>AGE</sortColumn>
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CREATED_DATEONLY</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <interval>INTERVAL_CUSTOM</interval>
     </timeFrameFilter>
 </Report>

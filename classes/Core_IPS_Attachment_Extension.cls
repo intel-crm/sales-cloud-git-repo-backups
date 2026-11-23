@@ -88,7 +88,7 @@ Modification Log :
             User userObj = [SELECT id,Profile.Name FROM User WHERE Id=:UserInfo.getUserId()];
             total = 0;
           
-           String strQuery = 'SELECT NAME,CreatedByID,Createdby.name,CreatedDate,Core_File_Hyperlink__c,Core_Upload_Status__c,core_case__c,Core_File_Size__c,Core_Category__c,Core_File_Description__c,Core_File_Name__c,Core_FileUploadedBy__c,Core_FileUploadedBy__r.name,Core_Upload_UserId__c,Core_IPS_Attachment_Visibility__c,Core_Upload_idsid__c FROM Core_IPS_Case_Attachments__c WHERE core_case__c=:caseid'; // Query Modified added Createdby.name and Core_FileUploadedBy__r.name in the below Query too By Prem
+           String strQuery = 'SELECT NAME,CreatedByID,Createdby.name,CreatedDate,Core_File_Hyperlink__c,Core_Upload_Status__c,core_case__c,Core_File_Size__c,Core_Category__c,Core_File_Description__c,Core_File_Name__c,Core_FileUploadedBy__c,Core_FileUploadedBy__r.name,Core_Upload_UserId__c,Core_IPS_Attachment_Visibility__c FROM Core_IPS_Case_Attachments__c WHERE core_case__c=:caseid'; // Query Modified added Createdby.name and Core_FileUploadedBy__r.name in the below Query too By Prem
 
            if((System.Label.Core_IPS_External_Customer_Profile.contains(String.valueOf(userObj.Profile.Name)) )) // modified code by Prem for Exact Profile Check removed "System.Label.Core_IPS_Internal_Profiles_for_Attachments.contains".
            {
@@ -202,7 +202,7 @@ Modification Log :
 ********************************************************************************/
 
     public PageReference URL2(){
-        PageReference pageRef=new  PageReference('/'+String.valueOf(ApexPages.currentPage().getParameters().get('id')));
+        PageReference pageRef=new  PageReference('/'+ApexPages.currentPage().getParameters().get('id'));
         return new  PageReference('/apex/Core_IPS_File_AttachToCase?id='+caseid);
       
     }
@@ -239,19 +239,12 @@ Modification Log :
 ********************************************************************************/
     public Pagereference deleteAttachments()
     { 
-        Core_IPS_Case_Attachments__c a;
     //Added by Aparna to include exception handling and null check on 2/1/2018
         try{
             String attachmentId= ApexPages.currentPage().getParameters().get('attachmentId');
-            //FLS Check added - Madhuri
-            if(Core_IPS_Case_Attachments__c.SObjectType.getDescribe().isAccessible()){
-                a = [Select name from Core_IPS_Case_Attachments__c where id =:attachmentId limit 1];
-            }
+            Core_IPS_Case_Attachments__c a = [Select name from Core_IPS_Case_Attachments__c where id =:attachmentId limit 1];
             if(a!=null && a.id !=null && attachmentId !=null){
-                /*US1038641 - 06/23/2021 - Yamini - CRUD Delete Check for security vulnerability --*/
-                if (Core_IPS_Case_Attachments__c.sObjectType.getDescribe().isDeletable()) {
-                delete a;
-                }
+            delete a;
               }
        }catch(Exception Ex){
        } //end by Aparna on 2/1/2018

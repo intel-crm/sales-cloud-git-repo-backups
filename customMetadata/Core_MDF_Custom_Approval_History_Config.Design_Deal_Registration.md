@@ -12,7 +12,7 @@
     </values>
     <values>
         <field>Core_MDF_ActualApprover_Masked_Label__c</field>
-        <value xsi:type="xsd:string">Intel User</value>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>Core_MDF_ActualApprover_Masked__c</field>
@@ -32,7 +32,7 @@
     </values>
     <values>
         <field>Core_MDF_AssignedTo_Masked_Label__c</field>
-        <value xsi:type="xsd:string">Intel User</value>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>Core_MDF_AssignedTo_Masked__c</field>
@@ -52,7 +52,7 @@
     </values>
     <values>
         <field>Core_MDF_Comments_Masked_Label__c</field>
-        <value xsi:type="xsd:string">Generic</value>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>Core_MDF_Comments_Masked__c</field>

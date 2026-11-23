@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Ask Commissions-Notification to Owner on case Re-assignment</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Ask Commissions-Notification to Owner on case Re-assignment</name>
+    <style>none</style>
+    <subject>Case ID: {!Case.CaseNumber} - An Ask Commissions case has been assigned to you or your group</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

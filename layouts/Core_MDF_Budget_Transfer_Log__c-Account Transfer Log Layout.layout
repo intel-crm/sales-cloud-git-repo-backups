@@ -47,10 +47,6 @@
                 <behavior>Edit</behavior>
                 <field>Core_MDF_Partner_Marketing_Budget__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_MDF_Budget_Type_Txt__c</field>
-            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

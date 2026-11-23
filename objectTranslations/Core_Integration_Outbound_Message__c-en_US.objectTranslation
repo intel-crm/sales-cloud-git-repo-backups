@@ -21,40 +21,8 @@
         <name>Core_Payload__c</name>
     </fields>
     <fields>
-        <label><!-- Retry Number --></label>
-        <name>Core_Retry_Number__c</name>
-    </fields>
-    <fields>
-        <label><!-- Status Message --></label>
-        <name>Core_Status_Message__c</name>
-    </fields>
-    <fields>
-        <label><!-- Status --></label>
-        <name>Core_Status__c</name>
-        <picklistValues>
-            <masterLabel>Discard</masterLabel>
-            <translation><!-- Discard --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Failed</masterLabel>
-            <translation><!-- Failed --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Pending</masterLabel>
-            <translation><!-- Pending --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Successful</masterLabel>
-            <translation><!-- Successful --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
         <label><!-- Tags --></label>
         <name>Core_Tags__c</name>
-    </fields>
-    <fields>
-        <label><!-- Account ID --></label>
-        <name>PRM_Account_ID__c</name>
     </fields>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

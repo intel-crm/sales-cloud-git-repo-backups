@@ -11,9 +11,6 @@
 **************************************************************************************************************************************************************************/
 // FILE UPLOADER - https://developer.salesforce.com/docs/component-library/bundle/lightning:fileUpload
 public class Intel_Uploader extends Intel_Input {
-    public static Boolean isWorking() {
-        return true;
-    }
-      // { type = 'uploader'; }
-      // public String recordIdForUpload { get; set; }
+      { type = 'uploader'; }
+      public String recordIdForUpload { get; set; }
     }

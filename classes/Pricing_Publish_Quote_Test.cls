@@ -2,8 +2,8 @@
  * @description       : 
  * @author            : Sandeep Chamate
  * @group             : 
- * @last modified on  : 04-06-2026
- * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+ * @last modified on  : 08-25-2023
+ * @last modified by  : Sandeep Chamate
 **/
 @isTest
 public class Pricing_Publish_Quote_Test {
@@ -104,6 +104,7 @@ public class Pricing_Publish_Quote_Test {
             glbVariable = Pricing_Publish_Quote.PublishTenderQuote(lstquote[0].id); 
             Set<String> errorMessage = new Set<String>();
             errorMessage.add(Label.Pricing_Tender_Quote_Comment_Submit_Error_Message);
+            //errorMessage.add(Label.Pricing_Tender_Intel_Response_Date_Blank_Error_Submission);
             System.assertEquals(glbVariable.messageNotification,errorMessage);
             System.assertEquals(glbVariable.isSuccess,false);
         }
@@ -112,7 +113,7 @@ public class Pricing_Publish_Quote_Test {
     @isTest
     public static void testPublishTenderQuote_success(){
         Test.startTest();
-        product2 prod = Pricing_Test_Utility.createWINProduct();
+        
         List<User> lstUsers = [select id from user where email = 'partner@noemail.com'];
         List<SBQQ__Quote__c> lstquote = new List<SBQQ__Quote__c>([select id from SBQQ__Quote__c Limit 1]);
         lstquote[0].SBQQ__Status__c = Label.Pricing_Tender_Quote_Status_Submitted;
@@ -149,9 +150,9 @@ public class Pricing_Publish_Quote_Test {
         Pricing_Publish_Quote.globalVariables glbVariable;
         system.runAs(lstUsers[0]){
             glbVariable = Pricing_Publish_Quote.PublishTenderQuote(lstquoteLines[0].id);
+            System.assertEquals(glbVariable.isSuccess,true);
             Pricing_Publish_Quote.submitForReview(lstquoteLines[0].id); 
             glbVariable = Pricing_Publish_Quote.PublishTenderQuote(lstquote[0].id);
-            System.assertEquals(lstquote.size()>0,true);
         }
     }
     
@@ -171,6 +172,7 @@ public class Pricing_Publish_Quote_Test {
         List<Pricing_Comments__c> lstComment = [SELECT Id,Pricing_Answer__c,Pricing_Required_Ind__c,Pricing_Quote__c
                                                 FROM Pricing_Comments__c 
                                                 WHERE Pricing_Quote__c =: lstquote[0].id and recordtypeid=:commentRecordTypeId];
+        Pricing_Publish_Quote p = new Pricing_Publish_Quote();
         Pricing_Publish_Quote.globalVariables glbVariable;
         system.runAs(lstUsers[0]){ 
             glbVariable = Pricing_Publish_Quote.PublishTenderQuote(lstquote[0].id);
@@ -191,11 +193,13 @@ public class Pricing_Publish_Quote_Test {
         List<SBQQ__Quote__c> lstquote = new List<SBQQ__Quote__c>([select id,Pricing_Intel_Sales_Rep_Email_Txt__c,Pricing_Intel_Account_Exec_Email_Txt__c,SBQQ__Account__c ,SBQQ__PrimaryContact__c from SBQQ__Quote__c Limit 1]);
         List<SBQQ__Quote__c> quotes = Pricing_Test_Utility.createQuoteWithParam(lstquote[0].SBQQ__Account__c, lstquote[0].SBQQ__PrimaryContact__c, 1,lstquote[0].Pricing_Intel_Sales_Rep_Email_Txt__c,lstquote[0].Pricing_Intel_Account_Exec_Email_Txt__c);
         test.stopTest();
+        Pricing_Publish_Quote p = new Pricing_Publish_Quote();
         Pricing_Publish_Quote.globalVariables glbVariable;
         system.runAs(lstUsers[0]){
             glbVariable = Pricing_Publish_Quote.PublishTenderQuote(quotes[0].id);
             Set<String> errorMessage = new Set<String>();
             errorMessage.add(Label.Pricing_Tender_QuoteLine_Mandatory_Submit_Error_Message);
+            //errorMessage.add(Label.Pricing_Tender_Intel_Response_Date_Blank_Error_Submission);
             errorMessage.add(Label.Pricing_Tender_Quote_Comment_Submit_Error_Message);
             System.assertEquals(glbVariable.messageNotification,errorMessage);
             System.assertEquals(glbVariable.isSuccess,false);
@@ -205,7 +209,7 @@ public class Pricing_Publish_Quote_Test {
     @isTest
     public static void testPublishTenderQuote_priceCheck(){
         Test.startTest();
-        product2 prod = Pricing_Test_Utility.createWINProduct();
+        
         List<User> lstUsers = [select id from user where email = 'partner@noemail.com'];
         List<SBQQ__Quote__c> lstquote = new List<SBQQ__Quote__c>([select id from SBQQ__Quote__c Limit 1]);
         lstquote[0].SBQQ__Status__c = Label.Pricing_Tender_Quote_Status_Submitted;
@@ -242,9 +246,9 @@ public class Pricing_Publish_Quote_Test {
         Pricing_Publish_Quote.globalVariables glbVariable;
         system.runAs(lstUsers[0]){
             glbVariable = Pricing_Publish_Quote.PublishTenderQuote(lstquoteLines[0].id);
+            System.assertEquals(glbVariable.isSuccess,true);
             Pricing_Publish_Quote.submitForReview(lstquoteLines[0].id); 
             glbVariable = Pricing_Publish_Quote.PublishTenderQuote(lstquote[0].id);
-            System.assertEquals(lstquote.size()>0,true);
         }
     }
 
@@ -262,6 +266,7 @@ public class Pricing_Publish_Quote_Test {
         lstquoteLines[0].Pricing_CPUs_per_system_qty__c = 1;
         update lstquoteLines[0];
         test.stopTest();
+        Pricing_Publish_Quote p = new Pricing_Publish_Quote();
         Pricing_Publish_Quote.globalVariables glbVariable;
         system.runAs(lstUsers[0]){
             glbVariable = Pricing_Publish_Quote.PublishTenderQuote(lstquoteLines[0].id+';');
@@ -284,7 +289,7 @@ public class Pricing_Publish_Quote_Test {
         Contact con = [Select id from Contact where AccountId =: acc.Id Limit 1 ];
         User fseUser = [Select Id,Email from User where Email = 'testnewfseemail@intel.com' Limit 1];
         User aeUser = [Select id,Email from User where Email= 'firstNameAE@intel.com' Limit 1];
-        Pricing_Competitor_Product__c cp = [Select Id from Pricing_Competitor_Product__c where Name = 'Write In Product'];
+        Pricing_Competitor_Product__c cp = [Select Id from Pricing_Competitor_Product__c where Name = 'Write In Product']; //CH
         Product2 prod = [Select Id from Product2 where Name = :'Product X'];
         List<User> lstAdminUser = [select id from user where email = 'publishQuoteAdmin@intel.com'];
         
@@ -343,6 +348,7 @@ public class Pricing_Publish_Quote_Test {
             //UPDATE lstQLI[0]; // fail
         }
         Test.stopTest();
+        Pricing_Publish_Quote p = new Pricing_Publish_Quote();
         Pricing_Publish_Quote.globalVariables glbVariable;
         SBQQ__QuoteLine__c qli = [select id,Pricing_Quote_Line_Number__c from SBQQ__QuoteLine__c where id=:lstQLI[0].id limit 1];
         system.runAs(lstUsers[0]){
@@ -383,6 +389,7 @@ public class Pricing_Publish_Quote_Test {
         if(!performanceList.isEmpty()){
             insert performanceList;
         }
+        Pricing_Publish_Quote p = new Pricing_Publish_Quote();
         Pricing_Publish_Quote.globalVariables glbVariable;
         system.runAs(lstUsers4[0]){
             Set<String> errorMessage = new Set<String>();
@@ -407,6 +414,7 @@ public class Pricing_Publish_Quote_Test {
         delete psa;
         List<SBQQ__QuoteLine__c> lstquoteLines = new List<SBQQ__QuoteLine__c>([select id,Pricing_Quote_Line_Number__c from SBQQ__QuoteLine__c limit 5]);
         test.stopTest();
+        Pricing_Publish_Quote p = new Pricing_Publish_Quote();
         Pricing_Publish_Quote.globalVariables glbVariable;
         system.runAs(lstUsers[0]){
             Set<String> errorMessage = new Set<String>();
@@ -425,6 +433,7 @@ public class Pricing_Publish_Quote_Test {
         List<User> lstUsers = [select id from user where email = 'partner@noemail.com'];
         List<SBQQ__QuoteLine__c> qli = [select id from SBQQ__QuoteLine__c Limit 1];
         Set<Id> qliSet = new Set<Id>{qli[0].id,null};
+            Pricing_Publish_Quote p = new Pricing_Publish_Quote();
         Pricing_Publish_Quote.globalVariables glbVariable;
         test.startTest();
         system.runAs(lstUsers[0]){
@@ -439,11 +448,10 @@ public class Pricing_Publish_Quote_Test {
     public static void testPublishTenderQuotePartnerSubmitted(){
         
         List<User> lstUsers = [select id from user where email = 'partner@noemail.com'];
-        product2 prod = Pricing_Test_Utility.createWINProduct();
         List<SBQQ__Quote__c> lstquote = new List<SBQQ__Quote__c>([select id from SBQQ__Quote__c ORDER BY Name Desc Limit 1]);
         id quoteId = lstquote[0].Id;
         if(lstquote.size() > 0){
-            List<SBQQ__QuoteLine__c> lstquoteLines = new List<SBQQ__QuoteLine__c>([select id,Pricing_Quote_Line_Number__c from SBQQ__QuoteLine__c where SBQQ__Quote__c =:quoteId  limit 2]);
+            List<SBQQ__QuoteLine__c> lstquoteLines = new List<SBQQ__QuoteLine__c>([select id,Pricing_Quote_Line_Number__c from SBQQ__QuoteLine__c where SBQQ__Quote__c =:quoteId  limit 1]);
             id quoteLineId = lstquoteLines[0].Id;
             Id commentRecordTypeId = Pricing_Tender_Utility.getRecordTypeId('Pricing_Comments__c',Label.Pricing_Tender_Comment_RecordType_QuoteComment);
             List<Pricing_Comments__c> lstComment = [SELECT Id,Pricing_Answer__c,Pricing_Required_Ind__c,Pricing_Quote__c
@@ -481,12 +489,13 @@ public class Pricing_Publish_Quote_Test {
                 insert performanceList;
             }
             Test.stopTest();
+            Pricing_Publish_Quote p = new Pricing_Publish_Quote();
             Pricing_Publish_Quote.globalVariables glbVariable;
             if(!lstUsers.isEmpty()){                
                 system.runAs(lstUsers[0]){                    
                     if(lstquote.size() > 0){                  
                         glbVariable = Pricing_Publish_Quote.PublishTenderQuote(quoteId);
-                        System.assertEquals(lstquote.size()>0,true);
+                        System.assertEquals(glbVariable.isSuccess,true);
                     }
                     
                 }
@@ -501,7 +510,24 @@ public class Pricing_Publish_Quote_Test {
         List<User> lstFSEUsers = [Select Id,Email from User Where Email='testnewfseemail@intel.com' Limit 1];
         List<SBQQ__QuoteLine__c> lstquoteLines = new List<SBQQ__QuoteLine__c>([select Id,Pricing_Quote_Line_Number__c,SBQQ__Quote__c from SBQQ__QuoteLine__c limit 1]);
         Id quoteId = lstquoteLines[0].SBQQ__Quote__c;
+        //List<SBQQ__QuoteLine__c> quoteLines = Pricing_Test_Utility.createQuoteLines(quoteId, 1);
         Id quoteLineId = lstquoteLines[0].Id;
+        /*Id commentRecordTypeId = Pricing_Tender_Utility.getRecordTypeId('Pricing_Comments__c',Label.Pricing_Tender_Comment_RecordType_QuoteComment);
+            List<Pricing_Comments__c> lstComment = [SELECT Id,Pricing_Answer__c,Pricing_Required_Ind__c,Pricing_Quote__c
+            FROM Pricing_Comments__c 
+            WHERE Pricing_Quote__c =: quoteId and recordtypeid=:commentRecordTypeId];
+            for(Pricing_Comments__c pc: lstComment){
+            if(quoteId == pc.Pricing_Quote__c){
+            pc.Pricing_Answer__c = '######testing######';
+            pc.Pricing_Required_Ind__c = true;
+            }
+            else{
+            pc.Pricing_Answer__c = '######testing######';
+            pc.Pricing_Required_Ind__c = false;
+            }
+            }
+
+            update lstComment;*/
         for(SBQQ__QuoteLine__c quoteLine : lstquoteLines)
         {
             quoteLine.Pricing_OEM_Standard_Unit_Price_Amt__c = 102;
@@ -522,12 +548,17 @@ public class Pricing_Publish_Quote_Test {
         {
             insert performanceList;
         }
+        Pricing_Publish_Quote p = new Pricing_Publish_Quote();
         Pricing_Publish_Quote.globalVariables glbVariable;
         Pricing_Test_Utility.shareQuoteWithUser(quoteId, lstFSEUsers[0].Id);
         Test.startTest();
         if(!lstFSEUsers.isEmpty()){                
             system.runAs(lstFSEUsers[0]){                                        
+                //glbVariable = Pricing_Publish_Quote.PublishTenderQuote(lstquoteLines[0].SBQQ__Quote__c);
                 glbVariable = Pricing_Publish_Quote.PublishTenderQuote(lstquoteLines[0].Id);
+                System.debug('glbVariable'+glbVariable);
+                //System.assertEquals(glbVariable.messageNotification,new Set<String>{'Successfully submitted!'});
+                //System.assertEquals(glbVariable.messageNotification,new Set<String>{'All the FSEs in the Quote Team are invalid. Please add minimum one valid FSE.'});
                 System.assertEquals(glbVariable.isSuccess,true);
                 System.assertEquals(glbVariable.isOnLoad,true);
                 System.assertEquals(glbVariable.hasPermission,true);                    
@@ -540,7 +571,7 @@ public class Pricing_Publish_Quote_Test {
 
     @isTest
     public static void testFSERecordApproval(){
-        
+        Test.startTest();
         List<SBQQ__Quote__c> quoteList = [SELECT Id,SBQQ__PrimaryContact__c from SBQQ__Quote__c LIMIT 1];
         SBQQ__QuoteLine__C quoteLine = [SELECT Id, Pricing_Sales_Rep__c, Pricing_Status_Nm__c, Pricing_FSE_Recommended_Price_Nm__c from SBQQ__QuoteLine__c where SBQQ__Quote__c=:quoteList[0].Id LIMIT 1];
         
@@ -552,7 +583,7 @@ public class Pricing_Publish_Quote_Test {
             quoteLine.Pricing_Status_Nm__c = 'Pending Further Intel Review';
             update quoteLine;
         }
-        Test.startTest();
+        
         System.runAs(adminUser){
             quoteLine.Pricing_Status_Nm__c = 'Pending Intel Field Review';
             quoteLine.Pricing_Sales_Rep_Approver__c = adminUser.Id;

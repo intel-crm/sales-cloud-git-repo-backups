@@ -4,12 +4,6 @@
         <field>CREATED</field>
     </columns>
     <columns>
-        <field>CREATED_ALIAS</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Opportunity_Created_Coverage_New__c</field>
-    </columns>
-    <columns>
         <field>OPPORTUNITY_ID</field>
     </columns>
     <columns>
@@ -23,6 +17,9 @@
     </columns>
     <columns>
         <field>Opportunity.Core_Opportunity_Owner_Geo__c</field>
+    </columns>
+    <columns>
+        <field>CREATED_ALIAS</field>
     </columns>
     <columns>
         <field>FULL_NAME</field>
@@ -88,7 +85,7 @@
         <field>STAGE_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>SDR Kai Ops</name>
+    <name>SDR Kai Manual Ops</name>
     <params>
         <name>terr</name>
         <value>all</value>

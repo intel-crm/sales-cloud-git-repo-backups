@@ -32,6 +32,10 @@
         <relationshipLabel><!-- Design Registration Batches --></relationshipLabel>
     </fields>
     <fields>
+        <label><!-- Partner Prime  Account Name --></label>
+        <name>Core_Partner_Prime_Account_Name__c</name>
+    </fields>
+    <fields>
         <label><!-- Design Count (Pass) --></label>
         <name>Core_Pass_Design_Cnt__c</name>
     </fields>

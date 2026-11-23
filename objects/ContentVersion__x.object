@@ -121,6 +121,34 @@
     <externalDataSource>Service_Cloud_ISVC_Org</externalDataSource>
     <externalName>ContentVersion</externalName>
     <fields>
+        <fullName>Checksum__c</fullName>
+        <externalDeveloperName>Checksum</externalDeveloperName>
+        <externalId>false</externalId>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>Checksum</label>
+        <length>50</length>
+        <readOnlyProxy>true</readOnlyProxy>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ContentBodyId__c</fullName>
+        <externalDeveloperName>ContentBodyId</externalDeveloperName>
+        <externalId>false</externalId>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>Content Body ID</label>
+        <length>18</length>
+        <readOnlyProxy>true</readOnlyProxy>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>ContentDocumentId__c</fullName>
         <isFilteringDisabled>false</isFilteringDisabled>
         <isNameField>false</isNameField>
@@ -134,6 +162,87 @@
         <type>ExternalLookup</type>
     </fields>
     <fields>
+        <fullName>ContentLocation__c</fullName>
+        <externalDeveloperName>ContentLocation</externalDeveloperName>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>Content Location</label>
+        <readOnlyProxy>true</readOnlyProxy>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>S</fullName>
+                    <default>false</default>
+                    <label>Salesforce</label>
+                </value>
+                <value>
+                    <fullName>E</fullName>
+                    <default>false</default>
+                    <label>External</label>
+                </value>
+                <value>
+                    <fullName>L</fullName>
+                    <default>false</default>
+                    <label>Social Customer Service</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>ContentModifiedById__c</fullName>
+        <externalDeveloperName>ContentModifiedById</externalDeveloperName>
+        <externalId>false</externalId>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>User ID</label>
+        <length>18</length>
+        <readOnlyProxy>true</readOnlyProxy>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ContentModifiedDate__c</fullName>
+        <externalDeveloperName>ContentModifiedDate</externalDeveloperName>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>Content Modified Date</label>
+        <readOnlyProxy>true</readOnlyProxy>
+        <required>false</required>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>ContentSize__c</fullName>
+        <externalDeveloperName>ContentSize</externalDeveloperName>
+        <externalId>false</externalId>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>Size</label>
+        <precision>9</precision>
+        <readOnlyProxy>true</readOnlyProxy>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ContentUrl__c</fullName>
+        <externalDeveloperName>ContentUrl</externalDeveloperName>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>Content URL</label>
+        <required>false</required>
+        <type>Url</type>
+    </fields>
+    <fields>
         <fullName>Core_Content_Document__c</fullName>
         <externalDeveloperName>ContentDocumentId</externalDeveloperName>
         <isFilteringDisabled>false</isFilteringDisabled>
@@ -144,6 +253,19 @@
         <referenceTo>ContentDocument__x</referenceTo>
         <relationshipLabel>Content Versions</relationshipLabel>
         <relationshipName>Content_Versions1</relationshipName>
+        <type>ExternalLookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_First_Publish_Location_ID__c</fullName>
+        <externalDeveloperName>FirstPublishLocationId</externalDeveloperName>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>First Publish Location ID</label>
+        <length>255</length>
+        <referenceTo>Case__x</referenceTo>
+        <relationshipLabel>Content Versions</relationshipLabel>
+        <relationshipName>Content_Versions</relationshipName>
         <type>ExternalLookup</type>
     </fields>
     <fields>
@@ -194,6 +316,67 @@
         <visibleLines>10</visibleLines>
     </fields>
     <fields>
+        <fullName>ExternalDataSourceId__c</fullName>
+        <externalDeveloperName>ExternalDataSourceId</externalDeveloperName>
+        <externalId>false</externalId>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>External Data Source ID</label>
+        <length>18</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ExternalDocumentInfo1__c</fullName>
+        <externalDeveloperName>ExternalDocumentInfo1</externalDeveloperName>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>External Document Info1</label>
+        <length>1000</length>
+        <type>LongTextArea</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>ExternalDocumentInfo2__c</fullName>
+        <externalDeveloperName>ExternalDocumentInfo2</externalDeveloperName>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>External Document Info2</label>
+        <length>1000</length>
+        <type>LongTextArea</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>FeaturedContentBoost__c</fullName>
+        <externalDeveloperName>FeaturedContentBoost</externalDeveloperName>
+        <externalId>false</externalId>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>Featured Content Boost</label>
+        <precision>9</precision>
+        <readOnlyProxy>true</readOnlyProxy>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FeaturedContentDate__c</fullName>
+        <externalDeveloperName>FeaturedContentDate</externalDeveloperName>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>Featured Content Date</label>
+        <readOnlyProxy>true</readOnlyProxy>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
         <fullName>FileExtension__c</fullName>
         <externalDeveloperName>FileExtension</externalDeveloperName>
         <externalId>false</externalId>
@@ -216,6 +399,117 @@
         <isSortingDisabled>false</isSortingDisabled>
         <label>File Type</label>
         <length>20</length>
+        <readOnlyProxy>true</readOnlyProxy>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FirstPublishLocationId__c</fullName>
+        <externalDeveloperName>FirstPublishLocationId</externalDeveloperName>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>First Publish Location ID</label>
+        <length>18</length>
+        <readOnlyProxy>true</readOnlyProxy>
+        <referenceTo>Account_External__x</referenceTo>
+        <relationshipName>Content_Versions</relationshipName>
+        <type>ExternalLookup</type>
+    </fields>
+    <fields>
+        <fullName>IsAssetEnabled__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalDeveloperName>IsAssetEnabled</externalDeveloperName>
+        <isFilteringDisabled>true</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>true</isSortingDisabled>
+        <label>Asset File Enabled</label>
+        <readOnlyProxy>true</readOnlyProxy>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>IsDeleted__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalDeveloperName>IsDeleted</externalDeveloperName>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>Is Deleted</label>
+        <readOnlyProxy>true</readOnlyProxy>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>IsLatest__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalDeveloperName>IsLatest</externalDeveloperName>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>Is Latest</label>
+        <readOnlyProxy>true</readOnlyProxy>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>IsMajorVersion__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalDeveloperName>IsMajorVersion</externalDeveloperName>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>Major Version</label>
+        <readOnlyProxy>true</readOnlyProxy>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>LastModifiedById__c</fullName>
+        <externalDeveloperName>LastModifiedById</externalDeveloperName>
+        <externalId>false</externalId>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>Last Modified By ID</label>
+        <length>18</length>
+        <readOnlyProxy>true</readOnlyProxy>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>LastModifiedDate__c</fullName>
+        <externalDeveloperName>LastModifiedDate</externalDeveloperName>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>Last Modified Date</label>
+        <readOnlyProxy>true</readOnlyProxy>
+        <required>false</required>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>NegativeRatingCount__c</fullName>
+        <externalDeveloperName>NegativeRatingCount</externalDeveloperName>
+        <externalId>false</externalId>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>Negative Rating Count</label>
+        <precision>9</precision>
+        <readOnlyProxy>true</readOnlyProxy>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>NetworkId__c</fullName>
+        <externalDeveloperName>NetworkId</externalDeveloperName>
+        <externalId>false</externalId>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>Network ID</label>
+        <length>18</length>
         <readOnlyProxy>true</readOnlyProxy>
         <required>false</required>
         <type>Text</type>
@@ -261,6 +555,164 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>PositiveRatingCount__c</fullName>
+        <externalDeveloperName>PositiveRatingCount</externalDeveloperName>
+        <externalId>false</externalId>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>Positive Rating Count</label>
+        <precision>9</precision>
+        <readOnlyProxy>true</readOnlyProxy>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PublishStatus__c</fullName>
+        <externalDeveloperName>PublishStatus</externalDeveloperName>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>Publish Status</label>
+        <readOnlyProxy>true</readOnlyProxy>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>U</fullName>
+                    <default>false</default>
+                    <label>Upload Interrupted</label>
+                </value>
+                <value>
+                    <fullName>P</fullName>
+                    <default>false</default>
+                    <label>Public</label>
+                </value>
+                <value>
+                    <fullName>R</fullName>
+                    <default>false</default>
+                    <label>Private Library</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>RatingCount__c</fullName>
+        <externalDeveloperName>RatingCount</externalDeveloperName>
+        <externalId>false</externalId>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>Rating Count</label>
+        <precision>9</precision>
+        <readOnlyProxy>true</readOnlyProxy>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ReasonForChange__c</fullName>
+        <externalDeveloperName>ReasonForChange</externalDeveloperName>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>Reason For Change</label>
+        <length>1000</length>
+        <type>LongTextArea</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>SharingOption__c</fullName>
+        <externalDeveloperName>SharingOption</externalDeveloperName>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>Prevent others from sharing and unsharin</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>A</fullName>
+                    <default>false</default>
+                    <label>Freeze Sharing Off</label>
+                </value>
+                <value>
+                    <fullName>R</fullName>
+                    <default>false</default>
+                    <label>Freeze Sharing On</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>SharingPrivacy__c</fullName>
+        <externalDeveloperName>SharingPrivacy</externalDeveloperName>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>File Privacy on Records</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>N</fullName>
+                    <default>false</default>
+                    <label>Visible to Anyone With Record Access</label>
+                </value>
+                <value>
+                    <fullName>P</fullName>
+                    <default>false</default>
+                    <label>Private on Records</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>SystemModstamp__c</fullName>
+        <externalDeveloperName>SystemModstamp</externalDeveloperName>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>System Modstamp</label>
+        <readOnlyProxy>true</readOnlyProxy>
+        <required>false</required>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>TagCsv__c</fullName>
+        <externalDeveloperName>TagCsv</externalDeveloperName>
+        <isFilteringDisabled>true</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>true</isSortingDisabled>
+        <label>Tags</label>
+        <length>2000</length>
+        <type>LongTextArea</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>TextPreview__c</fullName>
+        <externalDeveloperName>TextPreview</externalDeveloperName>
+        <externalId>false</externalId>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>Text Preview</label>
+        <length>255</length>
+        <readOnlyProxy>true</readOnlyProxy>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Title__c</fullName>
         <externalDeveloperName>Title</externalDeveloperName>
         <externalId>false</externalId>
@@ -282,6 +734,20 @@
         <label>Version Data</label>
         <required>false</required>
         <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>VersionNumber__c</fullName>
+        <externalDeveloperName>VersionNumber</externalDeveloperName>
+        <externalId>false</externalId>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>Version Number</label>
+        <length>20</length>
+        <readOnlyProxy>true</readOnlyProxy>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <label>Content Version</label>
     <pluralLabel>Content Versions</pluralLabel>

@@ -1,0 +1,8 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes" access="global" >
+    <aura:handler name="compEvt" event="c:compEvt" action="{!c.handleComponentEvent}"/>
+    
+    <aura:attribute name="messageFromEvent" type="String"/>
+    <p>C2:{!v.messageFromEvent}</p>
+    <c:c3/>
+	
+</aura:component>

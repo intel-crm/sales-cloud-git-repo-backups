@@ -9,10 +9,6 @@
         <value>PMP_Specialty_Images</value>
     </caseValues>
     <fields>
-        <label><!-- Grey Image URL --></label>
-        <name>Grey_Image_URL__c</name>
-    </fields>
-    <fields>
         <label><!-- PMP Account Specialty Name --></label>
         <name>PMP_Account_Specialty_Name__c</name>
     </fields>

@@ -3,215 +3,141 @@
     <apiVersion>60.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <assignments>
-        <name>count_total_Amount</name>
-        <label>count total Amount</label>
-        <locationX>619</locationX>
-        <locationY>1186</locationY>
-        <assignmentItems>
-            <assignToReference>totalAmount</assignToReference>
-            <operator>Add</operator>
-            <value>
-                <elementReference>loop_all_Product_for_Total_Amount.TotalPrice</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>loop_all_Product_for_Total_Amount</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <name>count_total_Amount_0</name>
-        <label>count total Amount</label>
-        <locationX>870</locationX>
-        <locationY>1186</locationY>
-        <assignmentItems>
-            <assignToReference>totalAmount</assignToReference>
-            <operator>Add</operator>
-            <value>
-                <elementReference>loop_all_Product_for_Total_Amount.Core_Lost_Total_Price__c</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>loop_all_Product_for_Total_Amount</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <name>Opportunity_is_Lost</name>
-        <label>Opportunity is Lost</label>
-        <locationX>837</locationX>
-        <locationY>524</locationY>
-        <assignmentItems>
-            <assignToReference>IsOpportunityLost</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>get_all_product_for_closed_Opp</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <name>productList_to_loop</name>
-        <label>productList to loop</label>
-        <locationX>615</locationX>
-        <locationY>697</locationY>
+        <name>Store_all_Closed_Opportunity_Products</name>
+        <label>Store all Closed Opportunity Products</label>
+        <locationX>402</locationX>
+        <locationY>539</locationY>
         <assignmentItems>
             <assignToReference>productList</assignToReference>
             <operator>Add</operator>
             <value>
-                <elementReference>get_all_product_for_Open_Opp</elementReference>
+                <elementReference>Get_All_Closed_Opportunity_Product</elementReference>
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>loop_all_Product_for_Total_Amount</targetReference>
+            <targetReference>Loop_to_sum_the_Lost_amount</targetReference>
         </connector>
     </assignments>
     <assignments>
-        <name>productList_to_loop_0</name>
-        <label>productList to loop</label>
-        <locationX>838</locationX>
-        <locationY>737</locationY>
+        <name>Store_all_Open_Opportunity_Products</name>
+        <label>Store all Open Opportunity Products</label>
+        <locationX>50</locationX>
+        <locationY>539</locationY>
         <assignmentItems>
             <assignToReference>productList</assignToReference>
             <operator>Add</operator>
             <value>
-                <elementReference>get_all_product_for_closed_Opp</elementReference>
+                <elementReference>Get_All_Open_Opportunity_Product</elementReference>
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>loop_all_Product_for_Total_Amount</targetReference>
+            <targetReference>Loop_to_sum_the_Total_amount</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Sum_and_assign</name>
+        <label>Sum and assign</label>
+        <locationX>138</locationX>
+        <locationY>755</locationY>
+        <assignmentItems>
+            <assignToReference>totalAmount</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Loop_to_sum_the_Total_amount.Core_Total_Amount__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_to_sum_the_Total_amount</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Sum_and_assign_2</name>
+        <label>Sum and assign 2</label>
+        <locationX>490</locationX>
+        <locationY>755</locationY>
+        <assignmentItems>
+            <assignToReference>totalAmount</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Loop_to_sum_the_Lost_amount.Core_Total_Amount__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_to_sum_the_Lost_amount</targetReference>
         </connector>
     </assignments>
     <decisions>
-        <name>check_Is_closed_Opp</name>
-        <label>check Is closed Opp</label>
-        <locationX>733</locationX>
-        <locationY>1111</locationY>
+        <name>Check_for_Open_Stage</name>
+        <label>Check for Open Stage</label>
+        <locationX>226</locationX>
+        <locationY>323</locationY>
         <defaultConnector>
-            <targetReference>count_total_Amount</targetReference>
+            <targetReference>Get_All_Closed_Opportunity_Product</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
-            <name>if_closed_Opportunity</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>IsOpportunityLost</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>count_total_Amount_0</targetReference>
-            </connector>
-            <label>if closed Opportunity</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <name>check_Opp_status</name>
-        <label>check Opp status</label>
-        <locationX>609</locationX>
-        <locationY>414</locationY>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>if_Open_Opp</name>
-            <conditionLogic>or</conditionLogic>
+            <name>If_Open_Stage</name>
+            <conditionLogic>1 OR 2 OR 3 OR 4</conditionLogic>
             <conditions>
                 <leftValueReference>$Record.Opportunity.StageName</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>Qualify</stringValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>$Record.Opportunity.StageName</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>Define</stringValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>$Record.Opportunity.StageName</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>Develop</stringValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>$Record.Opportunity.StageName</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>Design</stringValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>$Record.Opportunity.StageName</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>Design Win</stringValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>$Record.Opportunity.StageName</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>Production Win</stringValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>get_all_product_for_Open_Opp</targetReference>
-            </connector>
-            <label>if Open Opp</label>
-        </rules>
-        <rules>
-            <name>if_closed_Opp_status</name>
-            <conditionLogic>or</conditionLogic>
-            <conditions>
-                <leftValueReference>$Record.Opportunity.StageName</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>Production Lost</stringValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>$Record.Opportunity.StageName</leftValueReference>
-                <operator>EqualTo</operator>
+                <operator>NotEqualTo</operator>
                 <rightValue>
                     <stringValue>Production Cancelled</stringValue>
                 </rightValue>
             </conditions>
             <conditions>
                 <leftValueReference>$Record.Opportunity.StageName</leftValueReference>
-                <operator>EqualTo</operator>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Production Lost</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Opportunity.StageName</leftValueReference>
+                <operator>NotEqualTo</operator>
                 <rightValue>
                     <stringValue>Lost</stringValue>
                 </rightValue>
             </conditions>
             <conditions>
                 <leftValueReference>$Record.Opportunity.StageName</leftValueReference>
-                <operator>EqualTo</operator>
+                <operator>NotEqualTo</operator>
                 <rightValue>
                     <stringValue>Cancelled</stringValue>
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Opportunity_is_Lost</targetReference>
+                <targetReference>Get_All_Open_Opportunity_Product</targetReference>
             </connector>
-            <label>if closed Opp status</label>
+            <label>If Open Stage</label>
         </rules>
     </decisions>
     <environments>Default</environments>
     <interviewLabel>CRM_TotalAmountCalcuation {!$Flow.CurrentDateTime}</interviewLabel>
     <label>CRM_TotalAmountCalcuation</label>
     <loops>
-        <name>loop_all_Product_for_Total_Amount</name>
-        <label>loop all Product for Total Amount</label>
-        <locationX>736</locationX>
-        <locationY>884</locationY>
+        <name>Loop_to_sum_the_Lost_amount</name>
+        <label>Loop to sum the Lost amount</label>
+        <locationX>402</locationX>
+        <locationY>647</locationY>
         <collectionReference>productList</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
-            <targetReference>check_Is_closed_Opp</targetReference>
+            <targetReference>Sum_and_assign_2</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>update_Amount_in_Opp</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <loops>
+        <name>Loop_to_sum_the_Total_amount</name>
+        <label>Loop to sum the Total amount</label>
+        <locationX>50</locationX>
+        <locationY>647</locationY>
+        <collectionReference>productList</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Sum_and_assign</targetReference>
         </nextValueConnector>
         <noMoreValuesConnector>
             <targetReference>update_Amount_in_Opp</targetReference>
@@ -226,7 +152,7 @@
     <processMetadataValues>
         <name>CanvasMode</name>
         <value>
-            <stringValue>FREE_FORM_CANVAS</stringValue>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
         </value>
     </processMetadataValues>
     <processMetadataValues>
@@ -237,27 +163,20 @@
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <recordLookups>
-        <name>get_all_product_for_closed_Opp</name>
-        <label>get all  product for closed Opp</label>
-        <locationX>833</locationX>
-        <locationY>616</locationY>
+        <name>Get_All_Closed_Opportunity_Product</name>
+        <label>Get All Closed Opportunity Product</label>
+        <locationX>402</locationX>
+        <locationY>431</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>productList_to_loop_0</targetReference>
+            <targetReference>Store_all_Closed_Opportunity_Products</targetReference>
         </connector>
-        <filterLogic>(1 OR 2 OR 3 OR 4 ) AND 5</filterLogic>
+        <filterLogic>1 AND ( 2 OR 3 OR 4 OR 5 OR 6 )</filterLogic>
         <filters>
-            <field>Core_Status__c</field>
+            <field>OpportunityId</field>
             <operator>EqualTo</operator>
             <value>
-                <stringValue>Lost</stringValue>
-            </value>
-        </filters>
-        <filters>
-            <field>Core_Status__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>Cancelled</stringValue>
+                <elementReference>$Record.Opportunity.Id</elementReference>
             </value>
         </filters>
         <filters>
@@ -275,10 +194,24 @@
             </value>
         </filters>
         <filters>
-            <field>OpportunityId</field>
+            <field>Core_Status__c</field>
             <operator>EqualTo</operator>
             <value>
-                <elementReference>$Record.Opportunity.Id</elementReference>
+                <stringValue>Lost</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Core_Status__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Cancelled</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Core_Status__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Delete In Progress (&lt;15 min)</stringValue>
             </value>
         </filters>
         <getFirstRecordOnly>false</getFirstRecordOnly>
@@ -286,36 +219,15 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordLookups>
-        <name>get_all_product_for_Open_Opp</name>
-        <label>get all  product for Open Opp</label>
-        <locationX>617</locationX>
-        <locationY>542</locationY>
+        <name>Get_All_Open_Opportunity_Product</name>
+        <label>Get All Open Opportunity Product</label>
+        <locationX>50</locationX>
+        <locationY>431</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>productList_to_loop</targetReference>
+            <targetReference>Store_all_Open_Opportunity_Products</targetReference>
         </connector>
-        <filterLogic>(1 OR 2 OR 3 OR 5 OR 6 ) AND 4</filterLogic>
-        <filters>
-            <field>Core_Status__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>Pending</stringValue>
-            </value>
-        </filters>
-        <filters>
-            <field>Core_Status__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>Post-Win</stringValue>
-            </value>
-        </filters>
-        <filters>
-            <field>Core_Status__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>Win Submitted</stringValue>
-            </value>
-        </filters>
+        <filterLogic>1 AND ( 2 OR 3 OR 4 OR 5 )</filterLogic>
         <filters>
             <field>OpportunityId</field>
             <operator>EqualTo</operator>
@@ -325,16 +237,30 @@
         </filters>
         <filters>
             <field>Core_Status__c</field>
-            <operator>EqualTo</operator>
+            <operator>NotEqualTo</operator>
             <value>
-                <stringValue>Win Approved</stringValue>
+                <stringValue>Production Lost</stringValue>
             </value>
         </filters>
         <filters>
             <field>Core_Status__c</field>
-            <operator>EqualTo</operator>
+            <operator>NotEqualTo</operator>
             <value>
-                <stringValue>On Hold</stringValue>
+                <stringValue>Production Cancelled</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Core_Status__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Lost</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Core_Status__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Delete In Progress (&lt;15 min)</stringValue>
             </value>
         </filters>
         <getFirstRecordOnly>false</getFirstRecordOnly>
@@ -344,8 +270,8 @@
     <recordUpdates>
         <name>update_Amount_in_Opp</name>
         <label>update Amount in Opp</label>
-        <locationX>937</locationX>
-        <locationY>889</locationY>
+        <locationX>226</locationX>
+        <locationY>1031</locationY>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
@@ -363,17 +289,17 @@
         <object>Opportunity</object>
     </recordUpdates>
     <start>
-        <locationX>491</locationX>
-        <locationY>52</locationY>
+        <locationX>100</locationX>
+        <locationY>0</locationY>
         <connector>
-            <targetReference>check_Opp_status</targetReference>
+            <targetReference>Check_for_Open_Stage</targetReference>
         </connector>
-        <filterFormula>ISCHANGED({!$Record.Core_Status__c}) || ISNEW()</filterFormula>
+        <filterFormula>ISCHANGED({!$Record.Core_Total_Amount__c})</filterFormula>
         <object>OpportunityLineItem</object>
-        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <recordTriggerType>Update</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Obsolete</status>
+    <status>InvalidDraft</status>
     <variables>
         <name>IsOpportunityLost</name>
         <dataType>Boolean</dataType>

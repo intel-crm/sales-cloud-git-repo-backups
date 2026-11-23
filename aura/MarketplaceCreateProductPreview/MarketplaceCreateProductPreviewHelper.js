@@ -1,6 +1,5 @@
 ({
-	//  IPA2.0 + US TWC4497-1631
-	/* handleResize : function(component, helper) {
+	handleResize : function(component, helper) {
 		if (component.isValid()){
 			var innerWidth = component.find('offferingDetail').getElement().clientWidth;
 			var outerWidth = window.innerWidth;
@@ -36,5 +35,5 @@
 				component.find("innerContent").getElement().style = styleTransform;
 			}));
 		}
-	}*/
+	}
 })

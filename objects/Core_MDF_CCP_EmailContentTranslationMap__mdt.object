@@ -7,7 +7,7 @@
         <externalId>false</externalId>
         <fieldManageability>DeveloperControlled</fieldManageability>
         <label>LocaleKey</label>
-        <length>10</length>
+        <length>255</length>
         <required>true</required>
         <type>Text</type>
         <unique>false</unique>
@@ -18,7 +18,7 @@
         <externalId>false</externalId>
         <fieldManageability>DeveloperControlled</fieldManageability>
         <label>MailBody1</label>
-        <length>50</length>
+        <length>255</length>
         <required>true</required>
         <type>Text</type>
         <unique>false</unique>
@@ -29,7 +29,7 @@
         <externalId>false</externalId>
         <fieldManageability>DeveloperControlled</fieldManageability>
         <label>MailBody2</label>
-        <length>75</length>
+        <length>255</length>
         <required>true</required>
         <type>Text</type>
         <unique>false</unique>
@@ -40,7 +40,7 @@
         <externalId>false</externalId>
         <fieldManageability>DeveloperControlled</fieldManageability>
         <label>MailBody3</label>
-        <length>50</length>
+        <length>255</length>
         <required>true</required>
         <type>Text</type>
         <unique>false</unique>
@@ -51,7 +51,7 @@
         <externalId>false</externalId>
         <fieldManageability>DeveloperControlled</fieldManageability>
         <label>MailBody4</label>
-        <length>30</length>
+        <length>255</length>
         <required>false</required>
         <type>Text</type>
         <unique>false</unique>
@@ -62,7 +62,7 @@
         <externalId>false</externalId>
         <fieldManageability>DeveloperControlled</fieldManageability>
         <label>MailBody5</label>
-        <length>10</length>
+        <length>255</length>
         <required>true</required>
         <type>Text</type>
         <unique>false</unique>
@@ -73,7 +73,7 @@
         <externalId>false</externalId>
         <fieldManageability>DeveloperControlled</fieldManageability>
         <label>MailBody6</label>
-        <length>75</length>
+        <length>255</length>
         <required>true</required>
         <type>Text</type>
         <unique>false</unique>
@@ -84,7 +84,7 @@
         <externalId>false</externalId>
         <fieldManageability>DeveloperControlled</fieldManageability>
         <label>MailBody7</label>
-        <length>50</length>
+        <length>255</length>
         <required>true</required>
         <type>Text</type>
         <unique>false</unique>
@@ -94,7 +94,7 @@
         <externalId>false</externalId>
         <fieldManageability>DeveloperControlled</fieldManageability>
         <label>MailBody8_1</label>
-        <length>30</length>
+        <length>255</length>
         <required>false</required>
         <type>Text</type>
         <unique>false</unique>
@@ -105,7 +105,7 @@
         <externalId>false</externalId>
         <fieldManageability>DeveloperControlled</fieldManageability>
         <label>MailBody8</label>
-        <length>50</length>
+        <length>255</length>
         <required>false</required>
         <type>Text</type>
         <unique>false</unique>
@@ -115,7 +115,7 @@
         <externalId>false</externalId>
         <fieldManageability>DeveloperControlled</fieldManageability>
         <label>MailBody9</label>
-        <length>50</length>
+        <length>255</length>
         <required>true</required>
         <type>Text</type>
         <unique>false</unique>
@@ -126,7 +126,7 @@
         <externalId>false</externalId>
         <fieldManageability>DeveloperControlled</fieldManageability>
         <label>MailFooter1</label>
-        <length>150</length>
+        <length>255</length>
         <required>true</required>
         <type>Text</type>
         <unique>false</unique>
@@ -137,7 +137,7 @@
         <externalId>false</externalId>
         <fieldManageability>DeveloperControlled</fieldManageability>
         <label>MailFooter2</label>
-        <length>30</length>
+        <length>255</length>
         <required>true</required>
         <type>Text</type>
         <unique>false</unique>
@@ -148,7 +148,7 @@
         <externalId>false</externalId>
         <fieldManageability>DeveloperControlled</fieldManageability>
         <label>MailFooter3</label>
-        <length>30</length>
+        <length>255</length>
         <required>true</required>
         <type>Text</type>
         <unique>false</unique>
@@ -159,7 +159,7 @@
         <externalId>false</externalId>
         <fieldManageability>DeveloperControlled</fieldManageability>
         <label>MailFooter4</label>
-        <length>50</length>
+        <length>255</length>
         <required>true</required>
         <type>Text</type>
         <unique>false</unique>
@@ -170,7 +170,7 @@
         <externalId>false</externalId>
         <fieldManageability>DeveloperControlled</fieldManageability>
         <label>MailFooter5</label>
-        <length>30</length>
+        <length>255</length>
         <required>true</required>
         <type>Text</type>
         <unique>false</unique>
@@ -181,7 +181,7 @@
         <externalId>false</externalId>
         <fieldManageability>DeveloperControlled</fieldManageability>
         <label>MailSubject</label>
-        <length>30</length>
+        <length>255</length>
         <required>true</required>
         <type>Text</type>
         <unique>false</unique>
@@ -192,7 +192,7 @@
         <externalId>false</externalId>
         <fieldManageability>DeveloperControlled</fieldManageability>
         <label>Program</label>
-        <length>50</length>
+        <length>255</length>
         <required>true</required>
         <type>Text</type>
         <unique>false</unique>
@@ -203,7 +203,7 @@
         <externalId>false</externalId>
         <fieldManageability>DeveloperControlled</fieldManageability>
         <label>Translated Program</label>
-        <length>100</length>
+        <length>255</length>
         <required>true</required>
         <type>Text</type>
         <unique>false</unique>

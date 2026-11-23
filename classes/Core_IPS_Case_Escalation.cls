@@ -14,7 +14,7 @@
     * ----------------------------------------------------------------------------                 
     * Abhishek Arya            11/12/2015                 Created
     ****************************************************************************************************/
-public with sharing class Core_IPS_Case_Escalation{
+public class Core_IPS_Case_Escalation{
   private ApexPages.StandardController controller;    
   public Case csRecord{get;set;}
   //public Boolean showCustomMessage{get;set;}
@@ -22,9 +22,8 @@ public with sharing class Core_IPS_Case_Escalation{
     this.controller = controller;
     String csId;
     csId = ApexPages.currentPage().getParameters().get('id');
-    if(Case.SObjectType.getDescribe().isAccessible()){
-        csRecord = [select Id, Status, Core_IPS_Case_Escalated_Date__c, RecordTypeId,OwnerId, Core_IPS_Supported_Product__r.Core_Product_Organization__c from Case where Id =:csId];
-    }
+    csRecord = [select Id, Status, Core_IPS_Case_Escalated_Date__c, RecordTypeId,OwnerId, Core_IPS_Supported_Product__r.Core_Product_Organization__c from Case where Id =:csId];
+    
   }
   
   /***************************************************************************************************
@@ -47,7 +46,7 @@ public with sharing class Core_IPS_Case_Escalation{
       User u = [select Id, username,userType,profile.name from User where Id = :UserInfo.getUserId()];
       List<Id> orgAdminList;
       List<Id> orgIdList;
-       List<Core_IPS_Product_Organization_Admin__c> cpoAdminList = new List<Core_IPS_Product_Organization_Admin__c>();
+      system.debug('@@@@@check@@@@@@'+u.profile.name+csRecord.Status+csRecord.OwnerId+String.valueOf(csRecord.OwnerId).startsWith('005')+csRecord.RecordTypeId+Schema.getGlobalDescribe().get('Case').getDescribe().getRecordTypeInfosByName().get('IPS Case Create').getRecordTypeId()+csRecord.RecordTypeId+Schema.getGlobalDescribe().get('Case').getDescribe().getRecordTypeInfosByName().get('IPS No Assigned Contact Case').getRecordTypeId()+csRecord.Core_IPS_Supported_Product__r.Core_Product_Organization__c);
       Boolean isProfileAllowed = false;
       //showCustomMessage = false;
       for(String profileName:System.Label.Core_IPS_Escalate_Profile_List.split(';')){
@@ -57,9 +56,7 @@ public with sharing class Core_IPS_Case_Escalation{
       }
       if(isProfileAllowed == true && csRecord <> null && csRecord.Core_IPS_Case_Escalated_Date__c == null && csRecord.Status == 'New' && !(String.valueOf(csRecord.OwnerId).startsWith('005')) && (csRecord.RecordTypeId == Schema.getGlobalDescribe().get('Case').getDescribe().getRecordTypeInfosByName().get('IPS Case Create').getRecordTypeId() || csRecord.RecordTypeId == Schema.getGlobalDescribe().get('Case').getDescribe().getRecordTypeInfosByName().get('IPS No Assigned Contact Case').getRecordTypeId()) && csRecord.Core_IPS_Supported_Product__r <> null && csRecord.Core_IPS_Supported_Product__r.Core_Product_Organization__c <> null){
           orgAdminList = new List<Id>();
-            if(Core_IPS_Product_Organization_Admin__c.SObjectType.getDescribe().isAccessible()){
-                cpoAdminList = [select Core_Admin__c,Core_Primary_Admin__c,Core_Product_Organization__c from Core_IPS_Product_Organization_Admin__c where Core_Product_Organization__c =:csRecord.Core_IPS_Supported_Product__r.Core_Product_Organization__c];
-            }
+          List<Core_IPS_Product_Organization_Admin__c> cpoAdminList = [select Core_Admin__c,Core_Primary_Admin__c,Core_Product_Organization__c from Core_IPS_Product_Organization_Admin__c where Core_Product_Organization__c =:csRecord.Core_IPS_Supported_Product__r.Core_Product_Organization__c];
           Map<Boolean,Id> primaryAdminMap = new Map<Boolean,Id>();
           for(Core_IPS_Product_Organization_Admin__c cpoAdminObj : cpoAdminList){
               if(cpoAdminObj.Core_Admin__c == csRecord.OwnerId){

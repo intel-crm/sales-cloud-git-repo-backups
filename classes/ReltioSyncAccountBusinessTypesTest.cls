@@ -30,13 +30,15 @@
     @IsTest static void testBehavior() { 
             //String accName='TestReltioAccount';
             Account account = [SELECT Id,Name FROM Account WHERE Name='TestReltioAccount' LIMIT 1];
+        system.debug('Account ID is: '+account.Id);
             //String busTypeCode='DIR_PRC_EXCPT';
             Business_Types__c busType = [SELECT Id,Name FROM Business_Types__c WHERE Business_Type_Code__c='DIR_PRC_EXCPT' LIMIT 1];
+        system.debug('Account Bus Type ID is: '+busType.Id);
             //Test.startTest();
-            //insert new Account_Business_Types__c( 
-               // Account__c = account.Id,
-               // Business_Types__c = busType.Id
-                //); 
+            insert new Account_Business_Types__c( 
+                Account__c = account.Id,
+                Business_Types__c = busType.Id
+                ); 
             //Test.stopTest();
     } 
     

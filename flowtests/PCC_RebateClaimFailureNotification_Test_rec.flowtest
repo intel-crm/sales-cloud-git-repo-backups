@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowTest xmlns="http://soap.sforce.com/2006/04/metadata">
+    <flowApiName>PCC_RebateClaimFailureNotification</flowApiName>
+    <label>Test rec</label>
+    <testPoints>
+        <elementApiName>Start</elementApiName>
+        <isUseMockOutput>false</isUseMockOutput>
+        <parameters>
+            <leftValueReference>$Record</leftValueReference>
+            <type>InputTriggeringRecordInitial</type>
+            <value>
+                <sobjectValue>{&quot;attributes&quot;:{&quot;type&quot;:&quot;PCC_Rebate_Claim_Stage__c&quot;},&quot;OwnerId&quot;:&quot;005Df000008ye9kIAA&quot;,&quot;RecordTypeId&quot;:&quot;012Df000003sc4nIAA&quot;,&quot;PCC_Status__c&quot;:&quot;Pending&quot;,&quot;value&quot;:{&quot;OwnerId&quot;:&quot;005Df000008ye9kIAA&quot;,&quot;RecordTypeId&quot;:&quot;012Df000003sc4nIAA&quot;,&quot;PCC_Status__c&quot;:&quot;Pending&quot;}}</sobjectValue>
+            </value>
+        </parameters>
+        <parameters>
+            <leftValueReference>$Record</leftValueReference>
+            <type>InputTriggeringRecordUpdated</type>
+            <value>
+                <sobjectValue>{&quot;attributes&quot;:{&quot;type&quot;:&quot;PCC_Rebate_Claim_Stage__c&quot;},&quot;OwnerId&quot;:&quot;005Df000008ye9kIAA&quot;,&quot;RecordTypeId&quot;:&quot;012Df000003sc4nIAA&quot;,&quot;PCC_Status__c&quot;:&quot;Failed&quot;}</sobjectValue>
+            </value>
+        </parameters>
+    </testPoints>
+    <testPoints>
+        <assertions>
+            <conditions>
+                <leftValueReference>SendFailureNotification</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <errorMessage>Error Occured - SD</errorMessage>
+        </assertions>
+        <elementApiName>Finish</elementApiName>
+        <isUseMockOutput>false</isUseMockOutput>
+    </testPoints>
+    <testType>WithAssertion</testType>
+</FlowTest>

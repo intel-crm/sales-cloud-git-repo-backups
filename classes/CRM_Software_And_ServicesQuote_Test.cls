@@ -8,7 +8,7 @@ public class CRM_Software_And_ServicesQuote_Test {
         Profile pro = [SELECT id, Name FROM Profile WHERE Name='IT Admin'];
         User usr1 = [SELECT id, Name, isActive,Core_User_Geo__c FROM User WHERE ProfileId = :pro.Id AND isActive = true LIMIT 1];
         
-    	accountList = Core_Test_Utility.createAccount(1);
+    	accountList = Core_Test_Utility.createAccountIntel(1);
         accountList[0].Name = 'SWAcct';
         accountList[0].Core_Sales_Groups__c = Core_CRM_Utility.getSalesGroupAPI();
         accountList[0].Industry = 'Agriculture';
@@ -17,7 +17,7 @@ public class CRM_Software_And_ServicesQuote_Test {
         insert accountList;
         
         
-        List<account> LstAcc = Core_Test_Utility.createAccount(2);
+        List<account> LstAcc = Core_Test_Utility.createAccountIntel(2);
         LstAcc[0].Core_Sales_Groups__c = Core_CRM_Utility.getSalesGroupAPI();
         lstAcc[1].Core_Sales_Groups__c = Core_CRM_Utility.getSalesGroupAPI();
         Id accountRecordTypeIntel = Schema.sObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();      
@@ -92,21 +92,14 @@ public class CRM_Software_And_ServicesQuote_Test {
             DDRLst.Core_Opportunity_Id__c = opp.id;
             update DDRLst;
         }
-         /*Account accountInstance = [select id,name, BillingCountryCode, BIllingStateCode, BillingCity, BillingStreet,            Core_Sales_Groups__c, Industry, Core_Sub_Industry__c 
-                                    from Account where name like '%SWAcct%' limit 1];*/
-        
-         Id accDealID = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
-        // Create a new account        
-        Account acct = new Account(Name = 'New Test Account1', BillingStreet = '123 Fake St',Industry ='Gaming', Core_Sub_Industry__c   ='eSports',
-                                   BillingCity = 'Springfield', BillingState = 'IL', BillingCountry = 'USA',
-                                   BillingPostalCode = '12345', Core_Sales_Groups__c=Core_CRM_Utility.getSalesGroupAPI(), RecordTypeId = accDealID);//Core_CIM_ID__c = '8675309'
-        insert acct;
+         Account accountInstance = [select id,name, BillingCountryCode, BIllingStateCode, BillingCity, BillingStreet,            Core_Sales_Groups__c, Industry, Core_Sub_Industry__c 
+                                    from Account where name like '%SWAcct%' limit 1];
         
         Contact contactInstance = new Contact();
         contactInstance.FirstName = 'test';
         contactInstance.LastName = 'Contact xyz';
         contactInstance.email = 'test@test1.com';
-        contactInstance.AccountId = acct.id;
+        contactInstance.AccountId = accountInstance.id;
         contactInstance.MailingCountry = 'India';
         
         insert contactInstance;

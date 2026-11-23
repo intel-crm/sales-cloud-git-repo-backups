@@ -1,6 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
     <alerts>
+        <fullName>Email_to_send_on_the_same_day_when_the_quote_is_created_updated</fullName>
+        <description>Email to send on the same day when the quote is created/updated</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>PSG_Email_Templates/PSG_CP_Quote_Expiry</template>
+    </alerts>
+    <alerts>
+        <fullName>PSG_CP_Quote_Expiry_Email_Template</fullName>
+        <description>PSG CP Quote Expiry Email Template</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>PSG_Email_Templates/PSG_CP_Quote_Expiry</template>
+    </alerts>
+    <alerts>
+        <fullName>PSG_CP_Quote_Retire</fullName>
+        <description>Email to be sent when CP quote is retired.</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>PSG_Email_Templates/PSG_CP_Quote_Retire</template>
+    </alerts>
+    <alerts>
+        <fullName>PSG_activation_inactivation_of_quote</fullName>
+        <description>PSG activation/inactivation of quote</description>
+        <protected>false</protected>
+        <recipients>
+            <field>core_cpq_quote_owner_name__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <recipients>
+            <field>core_cpq_requestor_nm__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>PSG_Email_Templates/PSG_Quote_active_notify</template>
+    </alerts>
+    <alerts>
         <fullName>Pricing_SW_14DaysRemainder</fullName>
         <description>Pricing_SW_14DaysRemainder</description>
         <protected>false</protected>
@@ -37,6 +86,42 @@
         <template>Pricing_SW_Email_Templates/Pricing_SW_ExpiryIn7days</template>
     </alerts>
     <alerts>
+        <fullName>Pricing_SW_QuoteExpiryReminder_3Days</fullName>
+        <description>Pricing_SW_QuoteExpiryReminder_3Days</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Pricing_sw_Quote_Owner__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Pricing_SW_Email_Templates/Pricing_SW_QuoteExpiryReminder_3Days</template>
+    </alerts>
+    <alerts>
+        <fullName>Pricing_SW_SevenDaysRemainder</fullName>
+        <description>Pricing_SW_SevenDaysRemainder</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Pricing_sw_Quote_Owner__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Pricing_SW_Email_Templates/Pricing_SW_SevenDaysRemNotification</template>
+    </alerts>
+    <alerts>
+        <fullName>Pricing_SW_TenDaysRemainder</fullName>
+        <description>Pricing_SW_TenDaysRemainder</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Pricing_sw_Quote_Owner__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Pricing_SW_Email_Templates/Pricing_SW_TenDaysRemNotification</template>
+    </alerts>
+    <alerts>
         <fullName>Pricing_SW_quote_denied_notifications</fullName>
         <description>Pricing SW quote denied notification</description>
         <protected>false</protected>
@@ -48,6 +133,94 @@
         <senderType>OrgWideEmailAddress</senderType>
         <template>Pricing_SW_Email_Templates/Pricing_SW_QuoteExpiredNotification</template>
     </alerts>
+    <alerts>
+        <fullName>Send_email_to_SOS</fullName>
+        <description>Send email to SOS</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>PSG_Email_Templates/PSG_DistyQuoteRequestEmailTemplate</template>
+    </alerts>
+    <alerts>
+        <fullName>pricing_SW_quote_denied_notification</fullName>
+        <description>pricing SW quote denied notification</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Pricing_sw_Quote_Owner__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Pricing_SW_Email_Templates/Pricing_SW_QuoteExpiredNotification</template>
+    </alerts>
+    <fieldUpdates>
+        <fullName>BlankOpp_Renewal1</fullName>
+        <field>Blank_Opp_Renewal__c</field>
+        <literalValue>1</literalValue>
+        <name>BlankOpp_Renewal1</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>CalculateDate</fullName>
+        <field>BlankRenewalOppAfter__c</field>
+        <formula>LastModifiedDate + (0.1/1440)</formula>
+        <name>CalculateDate</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Status_update</fullName>
+        <description>PSG CP - For updating the approval status</description>
+        <field>core_cpq_status_txt__c</field>
+        <literalValue>In Progress</literalValue>
+        <name>Status update</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>UpdateRecordType_PSGSubmitted</fullName>
+        <field>RecordTypeId</field>
+        <lookupValue>PSG_Quote_Submitted</lookupValue>
+        <lookupValueType>RecordType</lookupValueType>
+        <name>UpdateRecordType_PSGSubmitted</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <rules>
+        <fullName>BlankOpp_Renewal</fullName>
+        <actions>
+            <name>CalculateDate</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <formula>AND(
+ NOT(ISBLANK(SBQQ__Opportunity2__c)),
+ NOT(ISBLANK(SBQQ__RenewalTerm__c))
+
+)</formula>
+        <triggerType>onCreateOnly</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>BlankOpp_Renewal1</name>
+                <type>FieldUpdate</type>
+            </actions>
+            <offsetFromField>SBQQ__Quote__c.BlankRenewalOppAfter__c</offsetFromField>
+            <timeLength>0</timeLength>
+            <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
     <rules>
         <fullName>Notify CP Quote Owner prior to expiry date</fullName>
         <active>false</active>
@@ -69,18 +242,53 @@
         <description>Send email to quote owner whenever contract pricing quote is nearing to expiry date</description>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
         <workflowTimeTriggers>
-            <offsetFromField>SBQQ__Quote__c.core_cpq_pricing_end_date_dt__c</offsetFromField>
-            <timeLength>-10</timeLength>
-            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
-        </workflowTimeTriggers>
-        <workflowTimeTriggers>
+            <actions>
+                <name>PSG_CP_Quote_Expiry_Email_Template</name>
+                <type>Alert</type>
+            </actions>
             <offsetFromField>SBQQ__Quote__c.core_cpq_pricing_end_date_dt__c</offsetFromField>
             <timeLength>-40</timeLength>
             <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
         </workflowTimeTriggers>
+        <workflowTimeTriggers>
+            <actions>
+                <name>PSG_CP_Quote_Expiry_Email_Template</name>
+                <type>Alert</type>
+            </actions>
+            <offsetFromField>SBQQ__Quote__c.core_cpq_pricing_end_date_dt__c</offsetFromField>
+            <timeLength>-10</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
+    <rules>
+        <fullName>PSG - Alert For Lifetime Quote Value</fullName>
+        <active>false</active>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.price_lifetime_quote_value_amt__c</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Sales_AmendmentQuote</fullName>
+        <actions>
+            <name>UpdateRecordType_PSGSubmitted</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <formula>AND(
+ISPICKVAL(Pricing_Quote_Program_Nm__c, &apos;PSG&apos;),
+ISPICKVAL(SBQQ__Type__c ,&apos;Amendment&apos;)
+)</formula>
+        <triggerType>onCreateOnly</triggerType>
     </rules>
     <rules>
         <fullName>Send email to sos when quote is created by disty</fullName>
+        <actions>
+            <name>Send_email_to_SOS</name>
+            <type>Alert</type>
+        </actions>
         <active>false</active>
         <criteriaItems>
             <field>SBQQ__Quote__c.SBQQ__Status__c</field>

@@ -9,6 +9,10 @@
         <value>Route Rules Utilities</value>
     </caseValues>
     <fields>
+        <label><!-- Account Executive --></label>
+        <name>Pricing_Account_Executive_Txt__c</name>
+    </fields>
+    <fields>
         <label><!-- Pricing Category --></label>
         <name>Pricing_Category_Nm__c</name>
         <picklistValues>
@@ -29,12 +33,60 @@
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- End Customer Alternate Name 1 --></label>
+        <name>Pricing_End_Customer_Alt_Name_1_Txt_del__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Customer Alternate Name 2 --></label>
+        <name>Pricing_End_Customer_Alt_Name_2_Txt_del__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Customer Alternate Name 3 --></label>
+        <name>Pricing_End_Customer_Alt_Name_3_Txt_del__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Customer Alternate Name 4 --></label>
+        <name>Pricing_End_Customer_Alt_Name_4_Txt_del__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Customer Alternate Name 5 --></label>
+        <name>Pricing_End_Customer_Alt_Name_5_Txt_del__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Customer Alternate Names --></label>
+        <name>Pricing_End_Customer_Alternate_Names_del__c</name>
+    </fields>
+    <fields>
         <label><!-- End Customer Country --></label>
         <name>Pricing_End_Customer_Country_Nm__c</name>
     </fields>
     <fields>
         <label><!-- End Customer Name --></label>
         <name>Pricing_End_Customer_Name_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Pricing Manager Email --></label>
+        <name>Pricing_Pricing_Manager_Email_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Pricing Manager Name --></label>
+        <name>Pricing_Pricing_Manager_Name_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quote Segmentation --></label>
+        <name>Pricing_Quote_Routing_Category_Nm__c</name>
+        <picklistValues>
+            <masterLabel>High Touch</masterLabel>
+            <translation><!-- High Touch --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Low Touch</masterLabel>
+            <translation><!-- Low Touch --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No Touch</masterLabel>
+            <translation><!-- No Touch --></translation>
+        </picklistValues>
     </fields>
     <fields>
         <label><!-- End Customer Region --></label>

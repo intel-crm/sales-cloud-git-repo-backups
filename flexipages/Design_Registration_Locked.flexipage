@@ -55,7 +55,7 @@
                         <valueListItems>
                             <value>Core_Design_Registration__c.Core_Reject_Design_Lex</value>
                             <visibilityRule>
-                                <booleanFilter>1 OR 2  OR (3 AND 4 AND 5 AND 6)</booleanFilter>
+                                <booleanFilter>1 OR 2  OR (3 AND 4)</booleanFilter>
                                 <criteria>
                                     <leftValue>{!$User.Profile.Name}</leftValue>
                                     <operator>EQUAL</operator>
@@ -76,16 +76,6 @@
                                     <operator>EQUAL</operator>
                                     <rightValue>Pre-Approved</rightValue>
                                 </criteria>
-                                <criteria>
-                                    <leftValue>{!Record.Core_Design_Registration_Status_Nm__c}</leftValue>
-                                    <operator>NE</operator>
-                                    <rightValue>Rejected</rightValue>
-                                </criteria>
-                                <criteria>
-                                    <leftValue>{!Record.Core_Design_Registration_Status_Nm__c}</leftValue>
-                                    <operator>NE</operator>
-                                    <rightValue>Re-Submitted</rightValue>
-                                </criteria>
                             </visibilityRule>
                         </valueListItems>
                         <valueListItems>
@@ -100,13 +90,6 @@
                         </valueListItems>
                         <valueListItems>
                             <value>Core_Design_Registration__c.PCC_Approve_Low_Touch_Design</value>
-                            <visibilityRule>
-                                <criteria>
-                                    <leftValue>{!Record.Core_Approve_Low_Touch_Button_Visible__c}</leftValue>
-                                    <operator>EQUAL</operator>
-                                    <rightValue>true</rightValue>
-                                </criteria>
-                            </visibilityRule>
                         </valueListItems>
                         <valueListItems>
                             <value>Core_Design_Registration__c.PCC_Set_as_Expired</value>
@@ -141,6 +124,10 @@
                 <componentInstanceProperties>
                     <name>hideChatterActions</name>
                     <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>hideSlackAction</name>
+                    <value>false</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>numVisibleActions</name>
@@ -238,7 +225,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>relatedListLabel</name>
-                    <value>Design Registration Products</value>
+                    <value>Design-Deal Registration Products</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>showActionBar</name>
@@ -341,7 +328,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>relatedListLabel</name>
-                    <value>Design Registration Products</value>
+                    <value>Design-Deal Registration Products</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>showActionBar</name>
@@ -433,7 +420,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>relatedListLabel</name>
-                    <value>Design Registration Products</value>
+                    <value>Design-Deal Registration Products</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>showActionBar</name>
@@ -512,7 +499,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>relatedListLabel</name>
-                    <value>Design Registration Product Mappings</value>
+                    <value>Design-Deal Registration Product Mappings</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>showActionBar</name>
@@ -589,7 +576,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>relatedListLabel</name>
-                    <value>Design Registration Product Mappings</value>
+                    <value>Design-Deal Registration Product Mappings</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>showActionBar</name>
@@ -660,7 +647,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>relatedListLabel</name>
-                    <value>Design Registration Product Mappings</value>
+                    <value>Design-Deal Registration Product Mappings</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>showActionBar</name>
@@ -725,32 +712,6 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>relatedListApiName</name>
-                    <value>ProcessSteps</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>relatedListComponentOverride</name>
-                    <value>NONE</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>rowsToDisplay</name>
-                    <value>10</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>showActionBar</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentName>force:relatedListSingleContainer</componentName>
-                <identifier>force_relatedListSingleContainer3</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>parentFieldApiName</name>
-                    <value>Core_Design_Registration__c.Id</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>relatedListApiName</name>
                     <value>Opportunities__r</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
@@ -796,7 +757,7 @@
                     <value>true</value>
                 </componentInstanceProperties>
                 <componentName>force:relatedListSingleContainer</componentName>
-                <identifier>force_relatedListSingleContainer4</identifier>
+                <identifier>force_relatedListSingleContainer3</identifier>
             </componentInstance>
         </itemInstances>
         <name>Facet-2dc24dae-d141-4305-a13f-40f594a6824a</name>
@@ -866,6 +827,18 @@
                 </componentInstanceProperties>
                 <componentName>runtime_sales_pathassistant:pathAssistant</componentName>
                 <identifier>runtime_sales_pathassistant_pathAssistant</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentName>showDuplicateDeals</componentName>
+                <identifier>c_showDuplicateDeals</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentName>Core_DR_Zero_qunatity_Msg</componentName>
+                <identifier>Core_DR_Zero_qunatity_Msg</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -957,6 +930,12 @@
                 </componentInstanceProperties>
                 <componentName>flexipage:tabset</componentName>
                 <identifier>flexipage_tabset2</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentName>coreEndCustomerAccountSearch</componentName>
+                <identifier>c_coreEndCustomerAccountSearch</identifier>
             </componentInstance>
         </itemInstances>
         <mode>Replace</mode>

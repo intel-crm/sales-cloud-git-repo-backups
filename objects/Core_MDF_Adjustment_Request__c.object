@@ -86,22 +86,16 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>New</actionName>
-        <comment>Using Custom Record Type Selector Component</comment>
-        <content>Core_MDF_PFR_RecordTypeSelectorComp</content>
-        <formFactor>Small</formFactor>
-        <skipRecordTypeSelect>false</skipRecordTypeSelect>
-        <type>LightningComponent</type>
+        <type>Default</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>New</actionName>
-        <comment>Using Custom Record Type Selector Component</comment>
-        <content>Core_MDF_PFR_RecordTypeSelectorComp</content>
         <formFactor>Large</formFactor>
-        <skipRecordTypeSelect>false</skipRecordTypeSelect>
-        <type>LightningComponent</type>
+        <type>Default</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>New</actionName>
+        <formFactor>Small</formFactor>
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
@@ -170,21 +164,6 @@
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
     <fields>
-        <fullName>Core_MDF_Account_Node_nm__c</fullName>
-        <externalId>false</externalId>
-        <formula>IF(
-    NOT(ISBLANK(Core_MDF_Sub_Claim_Id__c)),
-    Core_MDF_Sub_Claim_Id__r.Core_MDF_Account_Name_nm__c,
-    Core_MDF_Reference_Claim_Nbr__r.Core_MDF_Account_Name_nm__c
-)</formula>
-        <label>Account Node</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_MDF_Adjustment_Claim_Nbr__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <description>Unique identifier of Claim created based on the Adjustment Request</description>
@@ -239,24 +218,13 @@
         <type>Currency</type>
     </fields>
     <fields>
-        <fullName>Core_MDF_Bypass_Amt_Val_Ind__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>If the field value is true, then the system is going to by-pass the amount validation</description>
-        <inlineHelpText>If Checked, this Adjustment Request Amount will bypass the Total Adjustment Request Amount Validation for this Reference Claim. Provide justification in the comments section.</inlineHelpText>
-        <label>Bypass Amount Validation</label>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
         <fullName>Core_MDF_Comments_Txt__c</fullName>
-        <description>Free text comments related to the Claim Adjustment Request. This is visible only to internal users and not to external.</description>
-        <inlineHelpText>Free text comments related to the Claim Adjustment Request. In case the amount validation is bypassed, need to provide justification for bypassing validation.</inlineHelpText>
+        <description>Free text comments related to the Claim Adjustment Request</description>
+        <inlineHelpText>Free text comments related to the Claim Adjustment Request</inlineHelpText>
         <label>Adjustment Request Comments</label>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>TextArea</type>
     </fields>
@@ -337,7 +305,17 @@ $Label.Core_MDF_Intel_System_User
         <type>Picklist</type>
         <valueSet>
             <valueSetDefinition>
-                <sorted>true</sorted>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Escalation</fullName>
+                    <default>false</default>
+                    <label>Escalation</label>
+                </value>
+                <value>
+                    <fullName>Claim Review Results (Negative)</fullName>
+                    <default>false</default>
+                    <label>Claim Review Results (Negative)</label>
+                </value>
                 <value>
                     <fullName>Duplicate Claim</fullName>
                     <default>false</default>
@@ -365,29 +343,16 @@ $Label.Core_MDF_Intel_System_User
     </fields>
     <fields>
         <fullName>Core_MDF_Reference_Claim_Nbr__c</fullName>
-        <deleteConstraint>Restrict</deleteConstraint>
+        <deleteConstraint>SetNull</deleteConstraint>
         <description>Source Claim from where the Adjustment originated</description>
         <inlineHelpText>Source Claim from where the Adjustment originated</inlineHelpText>
         <label>Reference Claim Name</label>
         <referenceTo>PartnerFundClaim</referenceTo>
         <relationshipLabel>Claim Adjustment Requests</relationshipLabel>
         <relationshipName>Claim_Adjustment_Requests</relationshipName>
-        <required>true</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Sub_Claim_Id__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <label>Sub Claim</label>
-        <referenceTo>PartnerFundClaim</referenceTo>
-        <relationshipLabel>Claim Adjustment Requests (Sub Claim)</relationshipLabel>
-        <relationshipName>Claim_Adjustment_Requests2</relationshipName>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -438,7 +403,7 @@ $Label.Core_MDF_Intel_System_User
         <fullName>Core_MDF_Adjustment_Claim_Number</fullName>
         <active>true</active>
         <description>Adjustment claim number cannot be null</description>
-        <errorConditionFormula>ISBLANK( Core_MDF_Adjustment_Claim_Nbr__c)</errorConditionFormula>
+        <errorConditionFormula>NOT(ISPICKVAL( Core_MDF_Reason_Cd__c , &apos;Claim Review Results (Positive)&apos;))&amp;&amp; ISBLANK( Core_MDF_Adjustment_Claim_Nbr__c)</errorConditionFormula>
         <errorMessage>Please enter a value for Adjustment Claim Name</errorMessage>
     </validationRules>
     <validationRules>
@@ -449,35 +414,6 @@ $Label.Core_MDF_Intel_System_User
         <errorMessage>Please enter a value greater than 0 for Adjustment Amount (USD)</errorMessage>
     </validationRules>
     <validationRules>
-        <fullName>Core_MDF_Block_Adjustment_Req_Creation</fullName>
-        <active>true</active>
-        <description>Receive error when claim adjustment is created for any status other than  Payment Due, PAF or Hold and VAT eligible claims.</description>
-        <errorConditionFormula>AND(
-ISNEW(),
-OR(
-NOT(
-OR(
-ISPICKVAL(Core_MDF_Reference_Claim_Nbr__r.Core_MDF_Status__c, &quot;Payment Due&quot;),
-ISPICKVAL(Core_MDF_Reference_Claim_Nbr__r.Core_MDF_Status__c, &quot;Pending Available Fund&quot;),
-ISPICKVAL(Core_MDF_Reference_Claim_Nbr__r.Core_MDF_Status__c, &quot;Hold&quot;),
-ISPICKVAL(Core_MDF_Reference_Claim_Nbr__r.Core_MDF_Status__c, &quot;Queued for Payment&quot;)
-)
-),
-ISPICKVAL(Core_MDF_Reference_Claim_Nbr__r.Core_MDF_VAT_Opt_In__c, &quot;Service Invoice to Intel (VAT may apply)&quot;)
-)
-)</errorConditionFormula>
-        <errorMessage>Adjustment request can only be created for Non-VAT claims that are in Payment Due/Pending Available Funds/Hold/Queued for Payment status.</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>Core_MDF_Block_On_Cancelled_Status</fullName>
-        <active>true</active>
-        <errorConditionFormula>AND(
-ISNEW(),
-ISPICKVAL(Core_MDF_Adjustment_Status_nm__c, &quot;Cancelled&quot;)
-)</errorConditionFormula>
-        <errorMessage>Adjustment cannot be created in Cancelled status</errorMessage>
-    </validationRules>
-    <validationRules>
         <fullName>Core_MDF_EditNotAllowedFor_Adjustment</fullName>
         <active>true</active>
         <description>Edit is not allowed for Adjustment</description>
@@ -485,28 +421,9 @@ ISPICKVAL(Core_MDF_Adjustment_Status_nm__c, &quot;Cancelled&quot;)
 ISCHANGED( Core_MDF_Reference_Claim_Nbr__c ) ,
 ISCHANGED( Core_MDF_Amount_Amt__c) ,
 ISCHANGED( Core_MDF_Reason_Cd__c ),
-ISCHANGED(Core_MDF_Bypass_Amt_Val_Ind__c),
 (AND(TEXT(PRIORVALUE(Core_MDF_Adjustment_Status_nm__c)) == $Label.Core_MDF_Status_Cancelled ,TEXT(Core_MDF_Adjustment_Status_nm__c) == $Label.Core_MDF_Status_Approved))
 )</errorConditionFormula>
         <errorMessage>Adjustment request cannot be edited.</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>Core_MDF_PreventPositiveReasonForNonVat</fullName>
-        <active>true</active>
-        <description>To Prevent users from selection Claim Review Results (Positive) reason for Non Vat claims</description>
-        <errorConditionFormula>AND(ISPICKVAL(Core_MDF_Reason_Cd__c , &quot;Claim Review Results (Positive)&quot;),
-OR(Core_MDF_Reference_Claim_Nbr__r.Core_MDF_VAT_Eligibility_Ind__c = false, 
-AND(Core_MDF_Reference_Claim_Nbr__r.Core_MDF_VAT_Eligibility_Ind__c = true, NOT(ISPICKVAL( Core_MDF_Reference_Claim_Nbr__r.Core_MDF_Status__c , &quot;Paid&quot;))))
-)</errorConditionFormula>
-        <errorMessage>The selected Adjustment Reason is not applicable for the Program/Status of the given Reference Claim</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>Core_MDF_ReasonForBypassingAmtValidation</fullName>
-        <active>true</active>
-        <errorConditionFormula>AND( Core_MDF_Bypass_Amt_Val_Ind__c,  
-LEN(TRIM(Core_MDF_Comments_Txt__c)) == 0 ,   
-TEXT(Core_MDF_Reason_Cd__c) != $Label.Core_MDF_AdjReq_EscalationType)</errorConditionFormula>
-        <errorMessage>Please mention the reason for bypassing the amount validation in the &quot;Adjustment Request Comments&quot; section.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Core_MDF_Referance_Claim_Number</fullName>

@@ -28,10 +28,6 @@
             <translation><!-- Application --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Automotive</masterLabel>
-            <translation><!-- Automotive --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Broadcast</masterLabel>
             <translation><!-- Broadcast --></translation>
         </picklistValues>
@@ -54,6 +50,14 @@
         <picklistValues>
             <masterLabel>Military</masterLabel>
             <translation><!-- Military --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TEST</masterLabel>
+            <translation><!-- TEST --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transportation</masterLabel>
+            <translation><!-- Transportation --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Wireless</masterLabel>
@@ -100,12 +104,12 @@
             <translation><!-- Automotive - Other --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Automotive_1</masterLabel>
-            <translation><!-- Automotive_1 --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Autonomous Driving - Other</masterLabel>
             <translation><!-- Autonomous Driving - Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Broadcast/Studio</masterLabel>
+            <translation><!-- Broadcast/Studio --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Business Desktop</masterLabel>
@@ -132,6 +136,10 @@
             <translation><!-- Consumer Mobility --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Diagnostic, Test &amp; Measurement Equipment</masterLabel>
+            <translation><!-- Diagnostic, Test &amp; Measurement Equipment --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Drives, Motor Control, Encoders</masterLabel>
             <translation><!-- Drives, Motor Control, Encoders --></translation>
         </picklistValues>
@@ -148,16 +156,24 @@
             <translation><!-- Gaming &amp; Lottery Machines --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Gateway_1</masterLabel>
-            <translation><!-- Gateway_1 --></translation>
+            <masterLabel>Gateway</masterLabel>
+            <translation><!-- Gateway --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Health: Diagnostic/Therapeutic/Remote/Clinical Equipment</masterLabel>
             <translation><!-- Health: Diagnostic/Therapeutic/Remote/Clinical Equipment --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>IOTG Other</masterLabel>
+            <translation><!-- IOTG Other --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Imaging / EOIR</masterLabel>
             <translation><!-- Imaging / EOIR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Imaging Devices (not IP Camera based)</masterLabel>
+            <translation><!-- Imaging Devices (not IP Camera based) --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Industrial - Test &amp; Measuring Equipment</masterLabel>
@@ -180,6 +196,10 @@
             <translation><!-- Infrastructure (e.g., Roadside, Rail, etc.) --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Interactive Displays &amp; Kiosks</masterLabel>
+            <translation><!-- Interactive Displays &amp; Kiosks --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Interactive Flatpanel Displays / Whiteboards</masterLabel>
             <translation><!-- Interactive Flatpanel Displays / Whiteboards --></translation>
         </picklistValues>
@@ -192,16 +212,8 @@
             <translation><!-- MEC/Edge Cloud --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Military/Defense</masterLabel>
-            <translation><!-- Military/Defense --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Motion Control and CNC</masterLabel>
             <translation><!-- Motion Control and CNC --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Motion Controllers &amp; CNC&apos;s</masterLabel>
-            <translation><!-- Motion Controllers &amp; CNC&apos;s --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>NFVi / OssBss / Mano</masterLabel>
@@ -260,6 +272,14 @@
             <translation><!-- Robotics --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Robotics: Mobile (AGV, AMR)</masterLabel>
+            <translation><!-- Robotics: Mobile (AGV, AMR) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Robotics: Stationary</masterLabel>
+            <translation><!-- Robotics: Stationary --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Routers</masterLabel>
             <translation><!-- Routers --></translation>
         </picklistValues>
@@ -270,6 +290,10 @@
         <picklistValues>
             <masterLabel>Ruggedized/Industrial/Vertical Grade PCs</masterLabel>
             <translation><!-- Ruggedized/Industrial/Vertical Grade PCs --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ruggedized/Industrial/Vertical Grade Servers</masterLabel>
+            <translation><!-- Ruggedized/Industrial/Vertical Grade Servers --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Sensor Platform</masterLabel>
@@ -314,6 +338,10 @@
         <picklistValues>
             <masterLabel>Vehicles - Non-Automotive (e.g. Trains, Ships, etc.)</masterLabel>
             <translation><!-- Vehicles - Non-Automotive (e.g. Trains, Ships, etc.) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Video (incl. Camera, NVR, AI Box, Video Server)</masterLabel>
+            <translation><!-- Video (incl. Camera, NVR, AI Box, Video Server) --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Video NVR / Recorder / Gateway / Server</masterLabel>
@@ -368,10 +396,6 @@
             <translation><!-- Wireline &amp; Broadband Access --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Wireline &amp; Cable Access</masterLabel>
-            <translation><!-- Wireline &amp; Cable Access --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Workstation</masterLabel>
             <translation><!-- Workstation --></translation>
         </picklistValues>
@@ -384,10 +408,6 @@
         <label><!-- Product Segment --></label>
         <name>core_cpq_product_segment_nm__c</name>
         <picklistValues>
-            <masterLabel>Automotive / Transportation</masterLabel>
-            <translation><!-- Automotive / Transportation --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Client Computing</masterLabel>
             <translation><!-- Client Computing --></translation>
         </picklistValues>
@@ -396,8 +416,20 @@
             <translation><!-- Comms Infra. / Networking --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Connected Home</masterLabel>
+            <translation><!-- Connected Home --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Data Center Computing</masterLabel>
             <translation><!-- Data Center Computing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded - Gaming &amp; Entertainment</masterLabel>
+            <translation><!-- Embedded - Gaming &amp; Entertainment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded - Industrial</masterLabel>
+            <translation><!-- Embedded - Industrial --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Embedded / IOT</masterLabel>
@@ -422,6 +454,10 @@
         <picklistValues>
             <masterLabel>ATE &amp; Semiconductor Tester</masterLabel>
             <translation><!-- ATE &amp; Semiconductor Tester --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AUTOMOTIVE</masterLabel>
+            <translation><!-- AUTOMOTIVE --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Application Acceleration</masterLabel>
@@ -592,12 +628,20 @@
             <translation><!-- Mobile Devices --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Mobile Robotics</masterLabel>
+            <translation><!-- Mobile Robotics --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>NFV</masterLabel>
             <translation><!-- NFV --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Networking</masterLabel>
             <translation><!-- Networking --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Non-Automotive Transportation</masterLabel>
+            <translation><!-- Non-Automotive Transportation --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Other Access</masterLabel>
@@ -638,6 +682,10 @@
         <picklistValues>
             <masterLabel>Platform Mgmt</masterLabel>
             <translation><!-- Platform Mgmt --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pro AV</masterLabel>
+            <translation><!-- Pro AV --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>ProAV</masterLabel>
@@ -684,6 +732,10 @@
             <translation><!-- Transportation Data Center --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Transportation Infrastructure</masterLabel>
+            <translation><!-- Transportation Infrastructure --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Transportation as a Service</masterLabel>
             <translation><!-- Transportation as a Service --></translation>
         </picklistValues>
@@ -704,10 +756,6 @@
             <translation><!-- Agriculture --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Automotive</masterLabel>
-            <translation><!-- Automotive --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Cloud Service Providers</masterLabel>
             <translation><!-- Cloud Service Providers --></translation>
         </picklistValues>
@@ -724,20 +772,16 @@
             <translation><!-- Education --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Energy and Utilities</masterLabel>
-            <translation><!-- Energy and Utilities --></translation>
+            <masterLabel>Energy (Utilities, Oil &amp; Gas, Solar &amp; Wind)</masterLabel>
+            <translation><!-- Energy (Utilities, Oil &amp; Gas, Solar &amp; Wind) --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Enterprise</masterLabel>
             <translation><!-- Enterprise --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Federal and Aerospace</masterLabel>
-            <translation><!-- Federal and Aerospace --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Financial Services Industry</masterLabel>
-            <translation><!-- Financial Services Industry --></translation>
+            <masterLabel>Financial Services / Banking</masterLabel>
+            <translation><!-- Financial Services / Banking --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Government</masterLabel>
@@ -764,16 +808,16 @@
             <translation><!-- Small Medium Business --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Smart Cities</masterLabel>
-            <translation><!-- Smart Cities --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Sports</masterLabel>
             <translation><!-- Sports --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Transportation</masterLabel>
             <translation><!-- Transportation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Undefined</masterLabel>
+            <translation><!-- Undefined --></translation>
         </picklistValues>
     </fields>
     <startsWith>Consonant</startsWith>

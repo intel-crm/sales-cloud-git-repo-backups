@@ -113,7 +113,6 @@
     <columns>
         <field>Pricing_Quote_Line_Status_Age__c$Pricing_TPT_Quote_Line_Number__c.Pricing_Region_Nm__c</field>
     </columns>
-    <description>My TPT for Partner-led Deal Registration quotes</description>
     <filter>
         <criteriaItems>
             <column>Pricing_Quote_Line_Status_Age__c$Pricing_TPT_Age__c</column>
@@ -163,7 +162,7 @@
         <field>Pricing_Quote_Line_Status_Age__c$Pricing_TPT_Current_QL_Approver__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>IQR Deal Reg - My TPT Last 30 Days</name>
+    <name>FI - My TPT Last 30 Days</name>
     <params>
         <name>co</name>
         <value>1</value>

@@ -96,7 +96,6 @@
         <field>Opportunity.Core_Opportunity_ID__c</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
         <field>Opportunity.Core_Architecture_Conversion__c</field>
     </columns>
     <columns>
@@ -116,12 +115,6 @@
     </columns>
     <columns>
         <field>PROBABILITY</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Intel_Platform__c</field>
-    </columns>
-    <columns>
-        <field>Product2.Core_Platform_Name__c</field>
     </columns>
     <filter>
         <criteriaItems>

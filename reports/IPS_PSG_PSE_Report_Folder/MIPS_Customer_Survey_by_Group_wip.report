@@ -278,7 +278,7 @@
         <field>CLOSED_DATE</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>MIPS Customer Survey WWRAE MAG APPS - Ob</name>
+    <name>MIPS Customer Survey WWRAE MAG APPS</name>
     <params>
         <name>units</name>
         <value>d</value>
@@ -294,6 +294,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSED_DATEONLY</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

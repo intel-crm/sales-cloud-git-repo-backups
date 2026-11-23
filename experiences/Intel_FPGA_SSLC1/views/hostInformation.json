@@ -1,0 +1,85 @@
+{
+  "appPageId" : "6b36c665-0609-49d0-9746-033feed642b2",
+  "componentName" : "c:PSGPatnerLayout",
+  "dataProviders" : [ ],
+  "id" : "ba5f9a4e-4753-4c31-821a-9bb55610f3e7",
+  "label" : "Host Information",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "enableInlineEdit" : true,
+        "filterName" : "All",
+        "layout" : "FULL",
+        "pageSize" : 25,
+        "scope" : "Sales_Host__c",
+        "showActionBar" : true,
+        "showChartsPanel" : true,
+        "showDisplay" : "showall",
+        "showFilterPanel" : true,
+        "showImageIcon" : true,
+        "showManualRefreshButton" : true,
+        "showObjectName" : true,
+        "showPinnedList" : true,
+        "showSearchBar" : true
+      },
+      "componentName" : "forceCommunity:objectHome",
+      "id" : "ebeea884-cbf8-4528-9bce-ab256d637e06",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "zh_cn" : "a1641133-f9a8-440c-a41a-8fba1d744e2c"
+      },
+      "renditions" : [ {
+        "id" : "a1641133-f9a8-440c-a41a-8fba1d744e2c",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "layout" : "FULL"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "7060880b-278b-40f6-9475-872f30f86a6e",
+    "regionName" : "Header",
+    "type" : "region"
+  }, {
+    "id" : "4c2ee932-abc6-48b7-ade2-199f459242f5",
+    "regionName" : "mainFullWidth",
+    "type" : "region"
+  }, {
+    "id" : "abb8f028-5110-4507-adc3-05678c3364f1",
+    "regionName" : "main",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Host Information"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "e2240538-fa7a-4fdb-947b-55f712dbd2b9",
+      "renditionMap" : {
+        "zh_cn" : "a51510e9-13c1-455a-acc0-80df0509ba0a"
+      },
+      "renditions" : [ {
+        "id" : "a51510e9-13c1-455a-acc0-80df0509ba0a",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "customHeadTags" : "市场推广基金",
+            "description" : "市场推广基金",
+            "title" : "Host Information"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "9cde89ba-0002-4730-b394-5ec57020fae7",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-host-information"
+}

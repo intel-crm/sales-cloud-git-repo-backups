@@ -74,7 +74,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>includes</operator>
-            <value>PSG-Tier 4</value>
+            <value>PSG-Tier 4,DCAI PSG-Tier 4</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Opportunity_Type__c</column>

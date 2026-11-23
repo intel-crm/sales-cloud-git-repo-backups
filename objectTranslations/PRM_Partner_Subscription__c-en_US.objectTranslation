@@ -13,22 +13,6 @@
         <name>PRM_Active_Ind__c</name>
     </fields>
     <fields>
-        <label><!-- Community --></label>
-        <name>PRM_Community__c</name>
-        <picklistValues>
-            <masterLabel>Intel® Cloud Insider Partner</masterLabel>
-            <translation><!-- Intel® Cloud Insider Partner --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Intel® FPGA Partner</masterLabel>
-            <translation><!-- Intel® FPGA Partner --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Intel® IOT Solution Partner</masterLabel>
-            <translation><!-- Intel® IOT Solution Partner --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
         <label><!-- Inactive Indicator --></label>
         <name>PRM_InActive_Ind__c</name>
     </fields>

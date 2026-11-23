@@ -1,0 +1,39 @@
+.lgc-bg {
+    background-color: rgb(242 242 242);
+}
+.bgcolor{
+    background-color: white!important;
+}
+.textC{
+    font-size: 1.125rem!important;
+}
+.divcen{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+} 
+.divsize{
+  height: 75vh!important;
+}
+.colorwhite{
+  background-color:white!important;
+}
+.colorred{
+  color:red;
+}
+.onerow{
+  display: flex;
+  align-items: center;
+}
+.btn2{
+  position: absolute;
+}
+.toggle-icon-inactive{
+  border-left: 5px solid maroon;
+}
+.toggle-icon-active{
+  border-left: 5px solid green;
+}
+.relativePos{
+  position: relative;
+}

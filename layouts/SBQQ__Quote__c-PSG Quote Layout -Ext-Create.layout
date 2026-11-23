@@ -62,6 +62,22 @@
                 <behavior>Readonly</behavior>
                 <field>core_cpq_change_revision_requested__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>core_cpq_dup_designwin_opns__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>core_cpq_is_Dwin_cb__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>core_cpq_is_Budgetary_cb__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>core_cpq_is_Transfer_Pricing_cb__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -269,17 +285,36 @@
     </quickActionList>
     <relatedLists>
         <fields>NAME</fields>
-        <fields>core_cpq_product_nm__c</fields>
+        <fields>SBQQ__Product__c</fields>
         <fields>core_cpq_quote_line_type_txt__c</fields>
+        <fields>SBQQ__Quantity__c</fields>
         <fields>price_suggested_resale_amt__c</fields>
+        <fields>core_cpq_PRID__c</fields>
         <fields>price_brokencost_amt__c</fields>
-        <fields>core_cpq_intel_margin_pct__c</fields>
         <fields>core_cpq_distributor_margin_pct__c</fields>
+        <fields>core_cpq_intel_margin_pct__c</fields>
         <fields>price_msvp_l2_amt__c</fields>
         <relatedList>SBQQ__QuoteLine__c.SBQQ__Quote__c</relatedList>
     </relatedLists>
     <relatedLists>
         <relatedList>RelatedNoteList</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>Competitor_Info__c.core_cpq_quote__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>core_cpq_prev_status__c</fields>
+        <fields>core_cpq_status__c</fields>
+        <fields>core_cpq_start_user__c</fields>
+        <fields>core_cpq_start_date__c</fields>
+        <fields>core_cpq_end_user__c</fields>
+        <fields>core_cpq_end_date__c</fields>
+        <fields>core_cpq_duration_minutes__c</fields>
+        <fields>core_cpq_approval_chain__c</fields>
+        <fields>core_cpq_bm_level__c</fields>
+        <relatedList>core_cpq_quote_history__c.core_cpq_quote__c</relatedList>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>
@@ -287,7 +322,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h2i000000KQOA</masterLabel>
+        <masterLabel>00h2D0000023crZ</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

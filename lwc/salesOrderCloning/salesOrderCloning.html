@@ -1,221 +1,221 @@
 <template>
-<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_medium">
-<div class="slds-modal__container" style= "padding:var(--lwc-squareIconLargeBoundary,3rem) 0 !important;">
-    <!-- modal header start -->
-    <header class="slds-modal__header">
-        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={navigateToObjectHome}>
-            <lightning-icon icon-name="utility:close"
-            alternative-text="close"
-            variant="inverse"
-            size="small" ></lightning-icon>
-            <span class="slds-assistive-text">Close</span>
-        </button>
-        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">{label.SalesNewOrderHTML}</h2>
-    </header>
-       <!-- modal body start -->
-    <template if:true={order.data}>
-    <div class="slds-modal__content slds-p-around_medium">
-        <lightning-record-edit-form object-api-name="Order" onsuccess={handleSuccess} onsubmit={handleSubmit} onerror={handleError}>
-            <div data-id="focusOnErrorBannerId">
-                <lightning-messages></lightning-messages>
-              </div>
-            <div class="slds-grid slds-wrap">
-                <div class="slds-size_1-of-2 slds-p-around_medium">                            
-                    <template if:true={showAccountField} >
-                        <lightning-input-field field-name='AccountId' onchange={handleAccountIdChangeforNonComm} required="true"></lightning-input-field>
-                    </template>
-                    <lightning-input-field field-name='Status'  value='Draft' disabled="true"></lightning-input-field>
-                    <lightning-input-field field-name='Sales_Req_Ship_Date_Dt__c'  value={order.data.fields.Sales_Req_Ship_Date_Dt__c.value}></lightning-input-field>
-                    <lightning-input-field field-name='Sales_PO_Number_Txt__c'  value={order.data.fields.Sales_PO_Number_Txt__c.value} ></lightning-input-field>
-                    <lightning-input-field field-name='SBQQ__Quote__c'  value={getQuoteDetails}></lightning-input-field>
-                    <lightning-input-field field-name='Sales_Cost_Center__c'  value={order.data.fields.Sales_Cost_Center__c.value}></lightning-input-field>
-                </div>
-
-                <div class="slds-size_1-of-2 slds-p-around_medium">
-                    <lightning-input-field field-name='Type' value={order.data.fields.Type.value} onchange={handleChange} required="true"></lightning-input-field>
-                    <lightning-input-field field-name='Sales_Order_Sub_Type__c' value={subOrderTypeValue} onchange={handleSubTypeChange} required={subTypeRequired} disabled={isnotNonCommercial}></lightning-input-field>
-                    <lightning-input-field field-name='Sales_Order_Reason__c'  value={order.data.fields.Sales_Order_Reason__c.value} onchange={handleOrderReasonChange} required="true"></lightning-input-field>
-                    <lightning-input-field field-name='Sales_End_Cust_PO_Txt__c'  value={order.data.fields.Sales_End_Cust_PO_Txt__c.value}></lightning-input-field>
-
-                    <lightning-input-field field-name='Sales_Header_Special_Instructions_Dsc__c'  value={order.data.fields.Sales_Header_Special_Instructions_Dsc__c.value}></lightning-input-field>
-                </div>
-            </div>
-                
-    <!--Sold to Details Section-->
-    <h3 class="slds-section__title slds-theme_shade">
-        <span class="slds-truncate slds-p-horizontal_small" title="Section Title">{label.SalesSoldToAccInfoHTML}</span>
-    </h3>
+    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_medium">
+    <div class="slds-modal__container" style= "padding:var(--lwc-squareIconLargeBoundary,3rem) 0 !important;">
+        <!-- modal header start -->
+        <header class="slds-modal__header">
+            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={navigateToObjectHome}>
+                <lightning-icon icon-name="utility:close"
+                alternative-text="close"
+                variant="inverse"
+                size="small" ></lightning-icon>
+                <span class="slds-assistive-text">Close</span>
+            </button>
+            <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">{label.SalesNewOrderHTML}</h2>
+        </header>
+           <!-- modal body start -->
+        <template if:true={order.data}>
+        <div class="slds-modal__content slds-p-around_medium">
+            <lightning-record-edit-form object-api-name="Order" onsuccess={handleSuccess} onsubmit={handleSubmit} onerror={handleError}>
+                <div data-id="focusOnErrorBannerId">
+                    <lightning-messages></lightning-messages>
+                  </div>
+                <div class="slds-grid slds-wrap">
+                    <div class="slds-size_1-of-2 slds-p-around_medium">                            
+                        <template if:true={showAccountField} >
+                            <lightning-input-field field-name='AccountId' onchange={handleAccountIdChangeforNonComm} required="true"></lightning-input-field>
+                        </template>
+                        <lightning-input-field field-name='Status'  value='Draft' disabled="true"></lightning-input-field>
+                        <lightning-input-field field-name='Sales_Req_Ship_Date_Dt__c'  value={order.data.fields.Sales_Req_Ship_Date_Dt__c.value}></lightning-input-field>
+                        <lightning-input-field field-name='Sales_PO_Number_Txt__c'  value={order.data.fields.Sales_PO_Number_Txt__c.value} ></lightning-input-field>
+                        <lightning-input-field field-name='SBQQ__Quote__c'  value={getQuoteDetails}></lightning-input-field>
+                        <lightning-input-field field-name='Sales_Cost_Center__c'  value={order.data.fields.Sales_Cost_Center__c.value}></lightning-input-field>
+                    </div>
     
-    <div class="slds-grid slds-wrap">
-        <div class="slds-size_1-of-2 slds-p-around_medium">
-            <lightning-input-field field-name='Sales_Sold_To_Account__c' value={soldToId} onchange={handleSoldTochange} required ={makeSoldTorequired}></lightning-input-field>
-                <template if:false={isSoldtoChanged}>
-                    <lightning-input-field field-name='Sales_SoldTo_Account_2_Txt__c'  value={order.data.fields.Sales_SoldTo_Account_2_Txt__c.value} data-id="soldto"  disabled = "true"></lightning-input-field>
-                    <lightning-input-field field-name='Sales_SoldTo_Street_Dsc__c'  value={order.data.fields.Sales_SoldTo_Street_Dsc__c.value} data-id="soldto"  disabled = "true"></lightning-input-field>
-                    <lightning-input-field field-name='Sales_SoldTo_City_Txt__c'  value={order.data.fields.Sales_SoldTo_City_Txt__c.value} data-id="soldto"  disabled = "true"></lightning-input-field>
-                    <lightning-input-field field-name='Sales_SoldTo_Province_Txt__c'  value={order.data.fields.Sales_SoldTo_Province_Txt__c.value} data-id="soldto" disabled = "true"></lightning-input-field>
-                    <lightning-input-field field-name='Sales_SoldTo_Country_Txt__c'  value={order.data.fields.Sales_SoldTo_Country_Txt__c.value} data-id="soldto"  disabled = "true"></lightning-input-field>
-                    <lightning-input-field field-name='Sales_Disty_Channel_Txt__c'  value={order.data.fields.Sales_Disty_Channel_Txt__c.value} data-id="soldto"  disabled = "true"></lightning-input-field>
-                </template>
+                    <div class="slds-size_1-of-2 slds-p-around_medium">
+                        <lightning-input-field field-name='Type' value={order.data.fields.Type.value} onchange={handleChange} required="true"></lightning-input-field>
+                        <lightning-input-field field-name='Sales_Order_Sub_Type__c' value={subOrderTypeValue} onchange={handleSubTypeChange} required={subTypeRequired} disabled={isnotNonCommercial}></lightning-input-field>
+                        <lightning-input-field field-name='Sales_Order_Reason__c'  value={order.data.fields.Sales_Order_Reason__c.value} onchange={handleOrderReasonChange} required="true"></lightning-input-field>
+                        <lightning-input-field field-name='Sales_End_Cust_PO_Txt__c'  value={order.data.fields.Sales_End_Cust_PO_Txt__c.value}></lightning-input-field>
+    
+                        <lightning-input-field field-name='Sales_Header_Special_Instructions_Dsc__c'  value={order.data.fields.Sales_Header_Special_Instructions_Dsc__c.value}></lightning-input-field>
+                    </div>
+                </div>
+                    
+        <!--Sold to Details Section-->
+        <h3 class="slds-section__title slds-theme_shade">
+            <span class="slds-truncate slds-p-horizontal_small" title="Section Title">{label.SalesSoldToAccInfoHTML}</span>
+        </h3>
+        
+        <div class="slds-grid slds-wrap">
+            <div class="slds-size_1-of-2 slds-p-around_medium">
+                <lightning-input-field field-name='Sales_Sold_To_Account__c' value={soldToId} onchange={handleSoldTochange} required ={makeSoldTorequired}></lightning-input-field>
+                    <template if:false={isSoldtoChanged}>
+                        <lightning-input-field field-name='Sales_SoldTo_Account_2_Txt__c'  value={order.data.fields.Sales_SoldTo_Account_2_Txt__c.value} data-id="soldto"  disabled = "true"></lightning-input-field>
+                        <lightning-input-field field-name='Sales_SoldTo_Street_Dsc__c'  value={order.data.fields.Sales_SoldTo_Street_Dsc__c.value} data-id="soldto"  disabled = "true"></lightning-input-field>
+                        <lightning-input-field field-name='Sales_SoldTo_City_Txt__c'  value={order.data.fields.Sales_SoldTo_City_Txt__c.value} data-id="soldto"  disabled = "true"></lightning-input-field>
+                        <lightning-input-field field-name='Sales_SoldTo_Province_Txt__c'  value={order.data.fields.Sales_SoldTo_Province_Txt__c.value} data-id="soldto" disabled = "true"></lightning-input-field>
+                        <lightning-input-field field-name='Sales_SoldTo_Country_Txt__c'  value={order.data.fields.Sales_SoldTo_Country_Txt__c.value} data-id="soldto"  disabled = "true"></lightning-input-field>
+                        <lightning-input-field field-name='Sales_Disty_Channel_Txt__c'  value={order.data.fields.Sales_Disty_Channel_Txt__c.value} data-id="soldto"  disabled = "true"></lightning-input-field>
+                    </template>
+                
+                    <template if:true={isSoldtoChanged}>
+                        <template for:each={soldToAccList} for:item="soltolst">
+                            <div key={soltolst.Id}><lightning-input-field field-name='Sales_SoldTo_Account_2_Txt__c' data-id="soldto" disabled = "true" value={soltolst.Name} ></lightning-input-field></div><!--value={rec.Name}-->
+                            <div key={soltolst.Id}><lightning-input-field field-name='Sales_SoldTo_Street_Dsc__c' data-id="soldto" disabled = "true" value ={soltolst.BillingStreet}></lightning-input-field></div>
+                            <div key={soltolst.Id}><lightning-input-field field-name='Sales_SoldTo_City_Txt__c' data-id="soldto" disabled = "true" value={soltolst.BillingCity}></lightning-input-field></div>
+                            <div key={soltolst.Id}><lightning-input-field field-name='Sales_SoldTo_Province_Txt__c' data-id="soldto" disabled = "true" value={soltolst.BillingState}></lightning-input-field></div>
+                            <div key={soltolst.Id}><lightning-input-field field-name='Sales_SoldTo_Country_Txt__c' data-id="soldto" disabled = "true" value={soltolst.BillingCountryCode}></lightning-input-field></div>
+                            <div key={soltolst.Id}><lightning-input-field field-name='Sales_Disty_Channel_Txt__c' data-id="soldto" disabled = "true" value={soltolst.Core_Direct_Distributor_Channel_Nm__c}></lightning-input-field></div>
+                        </template>
+                    </template>
+                </div> 
+                    
+                    <div class="slds-size_1-of-2 slds-p-around_medium">
+                        <template if:false={isSoldtoChanged}>
+                            <lightning-input-field field-name='Sales_Sold_To_Acct_Id__c'  value={order.data.fields.Sales_Sold_To_Acct_Id__c.value} data-id="soldto" disabled = "true"></lightning-input-field>
+                            <lightning-input-field field-name='Sales_SoldTo_Street2_Dsc__c'  value={order.data.fields.Sales_SoldTo_Street2_Dsc__c.value} data-id="soldto"  disabled = "true"></lightning-input-field>
+                            <lightning-input-field field-name='Sales_SoldTo_State_Txt__c'  value={order.data.fields.Sales_SoldTo_State_Txt__c.value}  data-id="soldto"  disabled = "true"></lightning-input-field>
+                            <lightning-input-field field-name='Sales_SoldTo_Zip_Txt__c'  value={order.data.fields.Sales_SoldTo_Zip_Txt__c.value} data-id="soldto"  disabled = "true"></lightning-input-field>
+                            <lightning-input-field field-name='Sales_Sales_Org_Txt__c'  value={order.data.fields.Sales_Sales_Org_Txt__c.value}  data-id="soldto"  disabled = "true"></lightning-input-field>
+                            <lightning-input-field field-name='Sales_Payment_Terms__c'  value={order.data.fields.Sales_Payment_Terms__c.value}  data-id="soldto"  disabled = "true"></lightning-input-field>
+                        </template>
+                        
+                        <template if:true={isSoldtoChanged}>
+                            <template for:each={soldToAccList} for:item="soltolst">
+                                <div key={soltolst.Id}><lightning-input-field field-name='Sales_Sold_To_Acct_Id__c' data-id="soldto" disabled = "true" value={soltolst.Core_Direct_Account_Id__c}></lightning-input-field></div>
+                                <div key={soltolst.Id}><lightning-input-field field-name='Sales_SoldTo_Street2_Dsc__c' data-id="soldto" disabled = "true"></lightning-input-field></div>
+                                <div key={soltolst.Id}><lightning-input-field field-name='Sales_SoldTo_State_Txt__c' data-id="soldto" disabled = "true" value={soltolst.BillingStateCode}></lightning-input-field></div>
+                                <div key={soltolst.Id}><lightning-input-field field-name='Sales_SoldTo_Zip_Txt__c' data-id="soldto" disabled = "true" value={soltolst.BillingPostalCode}></lightning-input-field></div>
+                                <div key={soltolst.Id}><lightning-input-field field-name='Sales_Sales_Org_Txt__c' data-id="soldto" disabled = "true" value={soltolst.Core_Direct_Sales_Organization_Nm__c}></lightning-input-field></div>
+                                <div key={soltolst.Id}><lightning-input-field field-name='Sales_Payment_Terms__c' data-id="soldto" disabled = "true" value={soltolst.Core_Direct_Payment_Term_Nm__c}></lightning-input-field></div>
+                            </template>
+                        </template>
+                    </div>
+                </div>
+        <!--Sold to Details Section End-->
             
-                <template if:true={isSoldtoChanged}>
-                    <template for:each={soldToAccList} for:item="soltolst">
-                        <div key={soltolst.Id}><lightning-input-field field-name='Sales_SoldTo_Account_2_Txt__c' data-id="soldto" disabled = "true" value={soltolst.Name} ></lightning-input-field></div><!--value={rec.Name}-->
-                        <div key={soltolst.Id}><lightning-input-field field-name='Sales_SoldTo_Street_Dsc__c' data-id="soldto" disabled = "true" value ={soltolst.BillingStreet}></lightning-input-field></div>
-                        <div key={soltolst.Id}><lightning-input-field field-name='Sales_SoldTo_City_Txt__c' data-id="soldto" disabled = "true" value={soltolst.BillingCity}></lightning-input-field></div>
-                        <div key={soltolst.Id}><lightning-input-field field-name='Sales_SoldTo_Province_Txt__c' data-id="soldto" disabled = "true" value={soltolst.BillingState}></lightning-input-field></div>
-                        <div key={soltolst.Id}><lightning-input-field field-name='Sales_SoldTo_Country_Txt__c' data-id="soldto" disabled = "true" value={soltolst.BillingCountryCode}></lightning-input-field></div>
-                        <div key={soltolst.Id}><lightning-input-field field-name='Sales_Disty_Channel_Txt__c' data-id="soldto" disabled = "true" value={soltolst.Core_Direct_Distributor_Channel_Nm__c}></lightning-input-field></div>
+            <!--Ship to Details Section-->
+            <h3 class="slds-section__title slds-theme_shade">
+                <span class="slds-truncate slds-p-horizontal_small" title="Section Title">{label.SalesShipToAccInfoHTML}</span>
+            </h3>
+            
+            <div class="slds-grid slds-wrap">
+                <div class="slds-size_1-of-2 slds-p-around_medium">
+                    <lightning-input-field field-name='Sales_Ship_To_Account__c'  value={shipToId} onchange={handleShipTochange}></lightning-input-field>
+    
+                <template if:false={isShiptoChanged}>
+                        <lightning-input-field field-name='Sales_ShipTo_Account_2_Txt__c'  value={order.data.fields.Sales_ShipTo_Account_2_Txt__c.value} data-id="shipto" disabled = "true"></lightning-input-field>  
+                        <lightning-input-field field-name='Sales_ShipTo_Street_Dsc__c'  value={order.data.fields.Sales_ShipTo_Street_Dsc__c.value} data-id="shipto" disabled = "true"></lightning-input-field>
+                        <lightning-input-field field-name='Sales_ShipTo_City_Txt__c'  value={order.data.fields.Sales_ShipTo_City_Txt__c.value} data-id="shipto"  disabled = "true"></lightning-input-field>
+                        <lightning-input-field field-name='Sales_ShipTo_Province_Txt__c'  value={order.data.fields.Sales_ShipTo_Province_Txt__c.value} data-id="shipto"  disabled = "true"></lightning-input-field>
+                        <lightning-input-field field-name='Sales_ShipTo_Country_Txt__c'  value={order.data.fields.Sales_ShipTo_Country_Txt__c.value} data-id="shipto"  disabled = "true"></lightning-input-field>
+                        <lightning-input-field field-name='Sales_Shipping_Condition_Txt__c'  value={order.data.fields.Sales_Shipping_Condition_Txt__c.value} data-id="shipto"  disabled = "true"></lightning-input-field>  
+                    </template>
+            
+                <template if:true={isShiptoChanged}>
+                    <template for:each={shipToAccList} for:item="shiptolst">
+                        <div key={shiptolst.Id}><lightning-input-field field-name='Sales_ShipTo_Account_2_Txt__c' data-id="shipto" disabled = "true" value ={shiptolst.Name}></lightning-input-field></div>
+                        <div key={shiptolst.Id}><lightning-input-field field-name='Sales_ShipTo_Street_Dsc__c' data-id="shipto" disabled = "true" value ={shiptolst.BillingStreet}></lightning-input-field></div>
+                        <div key={shiptolst.Id}><lightning-input-field field-name='Sales_ShipTo_City_Txt__c'  data-id="shipto" disabled = "true" value={shiptolst.BillingCity}></lightning-input-field></div>
+                        <div key={shiptolst.Id}><lightning-input-field field-name='Sales_ShipTo_Province_Txt__c' data-id="shipto" disabled = "true" value={shiptolst.BillingState}></lightning-input-field></div>
+                        <div key={shiptolst.Id}><lightning-input-field field-name='Sales_ShipTo_Country_Txt__c'  data-id="shipto" disabled = "true" value={shiptolst.BillingCountryCode}></lightning-input-field></div>
+                        <div key={shiptolst.Id}><lightning-input-field field-name='Sales_Shipping_Condition_Txt__c' data-id="shipto" disabled = "true" value={shiptolst.Core_Direct_Shipping_Condition_Nm__c}></lightning-input-field></div>
                     </template>
                 </template>
             </div> 
                 
                 <div class="slds-size_1-of-2 slds-p-around_medium">
-                    <template if:false={isSoldtoChanged}>
-                        <lightning-input-field field-name='Sales_Sold_To_Acct_Id__c'  value={order.data.fields.Sales_Sold_To_Acct_Id__c.value} data-id="soldto" disabled = "true"></lightning-input-field>
-                        <lightning-input-field field-name='Sales_SoldTo_Street2_Dsc__c'  value={order.data.fields.Sales_SoldTo_Street2_Dsc__c.value} data-id="soldto"  disabled = "true"></lightning-input-field>
-                        <lightning-input-field field-name='Sales_SoldTo_State_Txt__c'  value={order.data.fields.Sales_SoldTo_State_Txt__c.value}  data-id="soldto"  disabled = "true"></lightning-input-field>
-                        <lightning-input-field field-name='Sales_SoldTo_Zip_Txt__c'  value={order.data.fields.Sales_SoldTo_Zip_Txt__c.value} data-id="soldto"  disabled = "true"></lightning-input-field>
-                        <lightning-input-field field-name='Sales_Sales_Org_Txt__c'  value={order.data.fields.Sales_Sales_Org_Txt__c.value}  data-id="soldto"  disabled = "true"></lightning-input-field>
-                        <lightning-input-field field-name='Sales_Payment_Terms__c'  value={order.data.fields.Sales_Payment_Terms__c.value}  data-id="soldto"  disabled = "true"></lightning-input-field>
+                    <template if:false={isShiptoChanged}>
+                        <lightning-input-field field-name='Sales_Ship_To_Acct_Id__c'  value={order.data.fields.Sales_Ship_To_Acct_Id__c.value}  data-id="shipto" disabled = "true"></lightning-input-field>
+                        <lightning-input-field field-name='Sales_ShipTo_Street2_Dsc__c'  value={order.data.fields.Sales_ShipTo_Street2_Dsc__c.value} data-id="shipto"  disabled = "true"></lightning-input-field>
+                        <lightning-input-field field-name='Sales_ShipTo_State_Txt__c'  value={order.data.fields.Sales_ShipTo_State_Txt__c.value} data-id="shipto"  disabled = "true"></lightning-input-field>
+                        <lightning-input-field field-name='Sales_ShipTo_Zip_Txt__c'  value={order.data.fields.Sales_ShipTo_Zip_Txt__c.value}  data-id="shipto"  disabled = "true"></lightning-input-field>
+                        <lightning-input-field field-name='Sales_Incoterms_Txt__c'  value={order.data.fields.Sales_Incoterms_Txt__c.value} data-id="shipto"  disabled = "true"></lightning-input-field>
+                        <lightning-input-field field-name='Sales_Shipping_Instructions_Dsc__c'  value={order.data.fields.Sales_Shipping_Instructions_Dsc__c.value} data-id="shipto"  disabled = "true"></lightning-input-field>
                     </template>
                     
-                    <template if:true={isSoldtoChanged}>
-                        <template for:each={soldToAccList} for:item="soltolst">
-                            <div key={soltolst.Id}><lightning-input-field field-name='Sales_Sold_To_Acct_Id__c' data-id="soldto" disabled = "true" value={soltolst.Core_Direct_Account_Id__c}></lightning-input-field></div>
-                            <div key={soltolst.Id}><lightning-input-field field-name='Sales_SoldTo_Street2_Dsc__c' data-id="soldto" disabled = "true"></lightning-input-field></div>
-                            <div key={soltolst.Id}><lightning-input-field field-name='Sales_SoldTo_State_Txt__c' data-id="soldto" disabled = "true" value={soltolst.BillingStateCode}></lightning-input-field></div>
-                            <div key={soltolst.Id}><lightning-input-field field-name='Sales_SoldTo_Zip_Txt__c' data-id="soldto" disabled = "true" value={soltolst.BillingPostalCode}></lightning-input-field></div>
-                            <div key={soltolst.Id}><lightning-input-field field-name='Sales_Sales_Org_Txt__c' data-id="soldto" disabled = "true" value={soltolst.Core_Direct_Sales_Organization_Nm__c}></lightning-input-field></div>
-                            <div key={soltolst.Id}><lightning-input-field field-name='Sales_Payment_Terms__c' data-id="soldto" disabled = "true" value={soltolst.Core_Direct_Payment_Term_Nm__c}></lightning-input-field></div>
+                    <template if:true={isShiptoChanged}>
+                        <template for:each={shipToAccList} for:item="shiptolst">
+                        <div key={shiptolst.Id}><lightning-input-field field-name='Sales_Ship_To_Acct_Id__c' data-id="shipto" disabled = "true" value={shiptolst.Core_Direct_Account_Id__c}></lightning-input-field></div>
+                        <div key={shiptolst.Id}><lightning-input-field field-name='Sales_ShipTo_Street2_Dsc__c' disabled = "true"></lightning-input-field></div>
+                        <div key={shiptolst.Id}><lightning-input-field field-name='Sales_ShipTo_State_Txt__c' data-id="shipto" disabled = "true" value={shiptolst.BillingStateCode} ></lightning-input-field></div>
+                        <div key={shiptolst.Id}><lightning-input-field field-name='Sales_ShipTo_Zip_Txt__c' data-id="shipto" disabled = "true" value={shiptolst.BillingPostalCode}></lightning-input-field></div>
+                        <div key={shiptolst.Id}><lightning-input-field field-name='Sales_Incoterms_Txt__c' data-id="shipto" disabled = "true" value={shiptolst.Core_Direct_Incoterm_Dsc__c}></lightning-input-field></div>
+                        <div key={shiptolst.Id}><lightning-input-field field-name='Sales_Shipping_Instructions_Dsc__c' data-id="shipto" disabled={checkorderType} value={shiptolst.Core_Direct_Shipping_Instruction_Txt__c}></lightning-input-field></div>
                         </template>
                     </template>
                 </div>
-            </div>
-    <!--Sold to Details Section End-->
-        
-        <!--Ship to Details Section-->
-        <h3 class="slds-section__title slds-theme_shade">
-            <span class="slds-truncate slds-p-horizontal_small" title="Section Title">{label.SalesShipToAccInfoHTML}</span>
-        </h3>
-        
-        <div class="slds-grid slds-wrap">
-            <div class="slds-size_1-of-2 slds-p-around_medium">
-                <lightning-input-field field-name='Sales_Ship_To_Account__c'  value={shipToId} onchange={handleShipTochange}></lightning-input-field>
-
-            <template if:false={isShiptoChanged}>
-                    <lightning-input-field field-name='Sales_ShipTo_Account_2_Txt__c'  value={order.data.fields.Sales_ShipTo_Account_2_Txt__c.value} data-id="shipto" disabled = "true"></lightning-input-field>  
-                    <lightning-input-field field-name='Sales_ShipTo_Street_Dsc__c'  value={order.data.fields.Sales_ShipTo_Street_Dsc__c.value} data-id="shipto" disabled = "true"></lightning-input-field>
-                    <lightning-input-field field-name='Sales_ShipTo_City_Txt__c'  value={order.data.fields.Sales_ShipTo_City_Txt__c.value} data-id="shipto"  disabled = "true"></lightning-input-field>
-                    <lightning-input-field field-name='Sales_ShipTo_Province_Txt__c'  value={order.data.fields.Sales_ShipTo_Province_Txt__c.value} data-id="shipto"  disabled = "true"></lightning-input-field>
-                    <lightning-input-field field-name='Sales_ShipTo_Country_Txt__c'  value={order.data.fields.Sales_ShipTo_Country_Txt__c.value} data-id="shipto"  disabled = "true"></lightning-input-field>
-                    <lightning-input-field field-name='Sales_Shipping_Condition_Txt__c'  value={order.data.fields.Sales_Shipping_Condition_Txt__c.value} data-id="shipto"  disabled = "true"></lightning-input-field>  
-                </template>
-	    
-            <template if:true={isShiptoChanged}>
-                <template for:each={shipToAccList} for:item="shiptolst">
-                    <div key={shiptolst.Id}><lightning-input-field field-name='Sales_ShipTo_Account_2_Txt__c' data-id="shipto" disabled = "true" value ={shiptolst.Name}></lightning-input-field></div>
-                    <div key={shiptolst.Id}><lightning-input-field field-name='Sales_ShipTo_Street_Dsc__c' data-id="shipto" disabled = "true" value ={shiptolst.BillingStreet}></lightning-input-field></div>
-                    <div key={shiptolst.Id}><lightning-input-field field-name='Sales_ShipTo_City_Txt__c'  data-id="shipto" disabled = "true" value={shiptolst.BillingCity}></lightning-input-field></div>
-                    <div key={shiptolst.Id}><lightning-input-field field-name='Sales_ShipTo_Province_Txt__c' data-id="shipto" disabled = "true" value={shiptolst.BillingState}></lightning-input-field></div>
-                    <div key={shiptolst.Id}><lightning-input-field field-name='Sales_ShipTo_Country_Txt__c'  data-id="shipto" disabled = "true" value={shiptolst.BillingCountryCode}></lightning-input-field></div>
-                    <div key={shiptolst.Id}><lightning-input-field field-name='Sales_Shipping_Condition_Txt__c' data-id="shipto" disabled = "true" value={shiptolst.Core_Direct_Shipping_Condition_Nm__c}></lightning-input-field></div>
-		        </template>
-            </template>
-        </div> 
             
-            <div class="slds-size_1-of-2 slds-p-around_medium">
-                <template if:false={isShiptoChanged}>
-                    <lightning-input-field field-name='Sales_Ship_To_Acct_Id__c'  value={order.data.fields.Sales_Ship_To_Acct_Id__c.value}  data-id="shipto" disabled = "true"></lightning-input-field>
-                    <lightning-input-field field-name='Sales_ShipTo_Street2_Dsc__c'  value={order.data.fields.Sales_ShipTo_Street2_Dsc__c.value} data-id="shipto"  disabled = "true"></lightning-input-field>
-                    <lightning-input-field field-name='Sales_ShipTo_State_Txt__c'  value={order.data.fields.Sales_ShipTo_State_Txt__c.value} data-id="shipto"  disabled = "true"></lightning-input-field>
-                    <lightning-input-field field-name='Sales_ShipTo_Zip_Txt__c'  value={order.data.fields.Sales_ShipTo_Zip_Txt__c.value}  data-id="shipto"  disabled = "true"></lightning-input-field>
-                    <lightning-input-field field-name='Sales_Incoterms_Txt__c'  value={order.data.fields.Sales_Incoterms_Txt__c.value} data-id="shipto"  disabled = "true"></lightning-input-field>
-                    <lightning-input-field field-name='Sales_Shipping_Instructions_Dsc__c'  value={order.data.fields.Sales_Shipping_Instructions_Dsc__c.value} data-id="shipto"  disabled = "true"></lightning-input-field>
-                </template>
-                
-                <template if:true={isShiptoChanged}>
-                    <template for:each={shipToAccList} for:item="shiptolst">
-                    <div key={shiptolst.Id}><lightning-input-field field-name='Sales_Ship_To_Acct_Id__c' data-id="shipto" disabled = "true" value={shiptolst.Core_Direct_Account_Id__c}></lightning-input-field></div>
-                    <div key={shiptolst.Id}><lightning-input-field field-name='Sales_ShipTo_Street2_Dsc__c' disabled = "true"></lightning-input-field></div>
-                    <div key={shiptolst.Id}><lightning-input-field field-name='Sales_ShipTo_State_Txt__c' data-id="shipto" disabled = "true" value={shiptolst.BillingStateCode} ></lightning-input-field></div>
-                    <div key={shiptolst.Id}><lightning-input-field field-name='Sales_ShipTo_Zip_Txt__c' data-id="shipto" disabled = "true" value={shiptolst.BillingPostalCode}></lightning-input-field></div>
-                    <div key={shiptolst.Id}><lightning-input-field field-name='Sales_Incoterms_Txt__c' data-id="shipto" disabled = "true" value={shiptolst.Core_Direct_Incoterm_Dsc__c}></lightning-input-field></div>
-                    <div key={shiptolst.Id}><lightning-input-field field-name='Sales_Shipping_Instructions_Dsc__c' data-id="shipto" disabled={checkorderType} value={shiptolst.Core_Direct_Shipping_Instruction_Txt__c}></lightning-input-field></div>
-                    </template>
-                </template>
             </div>
-        
-        </div>
-        <!--Ship to Details Section End-->
-        
-        <!--End Cust Details Section-->
-        <h3 class="slds-section__title slds-theme_shade">
-            <span class="slds-truncate slds-p-horizontal_small" title="Section Title">{label.SalesEndCustInfoHTML}</span>
-        </h3>
-        
-        <div class="slds-grid slds-wrap">
-            <div class="slds-size_1-of-2 slds-p-around_medium">
-                <lightning-input-field field-name='Sales_End_Customer_Account__c'  value={endCustomerId} required={endCustrequired} onchange={handleEndCustomerOnChange}></lightning-input-field>
-                
-                <template if:false={isEndCustomerChanged}>
-                    <lightning-input-field field-name='Sales_End_Customer_Account_2_Txt__c'  value={order.data.fields.Sales_End_Customer_Account_2_Txt__c.value} data-id="endCust"  disabled = "true"></lightning-input-field>
-                    <lightning-input-field field-name='Sales_End_Customer_Street_Dsc__c'  value={order.data.fields.Sales_End_Customer_Street_Dsc__c.value} data-id="endCust" disabled = "true"></lightning-input-field>
-                    <lightning-input-field field-name='Sales_End_Customer_City_Txt__c'  value={order.data.fields.Sales_End_Customer_City_Txt__c.value} data-id="endCust"  disabled = "true"></lightning-input-field>
-                    <lightning-input-field field-name='Sales_End_Customer_Province_Txt__c'  value={order.data.fields.Sales_End_Customer_Province_Txt__c.value} data-id="endCust"  disabled = "true"></lightning-input-field>
-                    <lightning-input-field field-name='Sales_End_Customer_Country_Txt__c'  value={order.data.fields.Sales_End_Customer_Country_Txt__c.value} data-id="endCust" disabled = "true"></lightning-input-field>
-                </template>                
-
-                <template if:true={isEndCustomerChanged}>
-                <template for:each={endCustomerAccList} for:item="end">
-                    <div key={end.Id}><lightning-input-field field-name='Sales_End_Customer_Account_2_Txt__c' data-id="endCust" disabled = "true" value ={end.Name}></lightning-input-field></div>
-                    <div key={end.Id}><lightning-input-field field-name='Sales_End_Customer_Street_Dsc__c' data-id="endCust" disabled = "true" value ={end.BillingStreet}></lightning-input-field></div>
-                    <div key={end.Id}><lightning-input-field field-name='Sales_End_Customer_City_Txt__c' data-id="endCust" disabled = "true" value ={end.BillingCity}></lightning-input-field></div>
-                    <div key={end.Id}><lightning-input-field field-name='Sales_End_Customer_Province_Txt__c' data-id="endCust" disabled = "true" value ={end.BillingState}></lightning-input-field></div>
-                    <div key={end.Id}><lightning-input-field field-name='Sales_End_Customer_Country_Txt__c' data-id="endCust" disabled = "true" value ={end.BillingCountryCode}></lightning-input-field></div>
-                </template>
-                </template>
-                </div> 
+            <!--Ship to Details Section End-->
             
-            <div class="slds-size_1-of-2 slds-p-around_medium">
-                <template if:false={isEndCustomerChanged}>
-                    <lightning-input-field field-name='Sales_End_Cust_Acct_Id__c'  value={order.data.fields.Sales_End_Cust_Acct_Id__c.value} data-id="endCust"  disabled = "true"></lightning-input-field>
-                    <br>
-                    <br>
-                    <lightning-input-field field-name='Sales_End_Customer_Street2_Dsc__c'  value={order.data.fields.Sales_End_Customer_Street2_Dsc__c.value}  data-id="endCust" disabled = "true"></lightning-input-field>
-                    <lightning-input-field field-name='Sales_End_Customer_State_Txt__c'  value={order.data.fields.Sales_End_Customer_State_Txt__c.value} data-id="endCust"  disabled = "true"></lightning-input-field>
-                    <lightning-input-field field-name='Sales_End_Customer_Zip_Txt__c'  value={order.data.fields.Sales_End_Customer_Zip_Txt__c.value} data-id="endCust" disabled = "true"></lightning-input-field>
-                </template>
-
-                <template if:true={isEndCustomerChanged}>
-                <template for:each={endCustomerAccList} for:item="end">
-                    <div key={end.Id}><lightning-input-field field-name='Sales_End_Cust_Acct_Id__c'  value={end.Core_Direct_Account_Id__c} data-id="endCust" disabled = "true"></lightning-input-field></div>
-                    <div key={end.Id}><lightning-input-field field-name='Sales_End_Customer_Street2_Dsc__c' disabled = "true" data-id="endCust"></lightning-input-field></div>
-                    <div key={end.Id}><lightning-input-field field-name='Sales_End_Customer_State_Txt__c' data-id="endCust" disabled = "true" value={end.BillingStateCode}></lightning-input-field></div>
-                    <div key={end.Id}><lightning-input-field field-name='Sales_End_Customer_Zip_Txt__c' data-id="endCust" disabled = "true" value={end.BillingPostalCode}></lightning-input-field></div>
-                  </template>
-                </template>
-            </div>
+            <!--End Cust Details Section-->
+            <h3 class="slds-section__title slds-theme_shade">
+                <span class="slds-truncate slds-p-horizontal_small" title="Section Title">{label.SalesEndCustInfoHTML}</span>
+            </h3>
             
-        </div>
-    <!--End Cust Details Section end -->           
-        
-    <template if:true={loading}>
-        <div class= "spinner" >
-            <lightning-spinner alternative-text="Loading" variant="brand">
-            </lightning-spinner>
-        </div>
-       </template>
-
-        <footer class="slds-docked-form-footer">
-            <button class="slds-button slds-button_neutral"  onclick={handleCancel}>Cancel</button>
-            <button class="slds-button slds-button_brand">Save</button><!--type="submit"-->
-        </footer>
+            <div class="slds-grid slds-wrap">
+                <div class="slds-size_1-of-2 slds-p-around_medium">
+                    <lightning-input-field field-name='Sales_End_Customer_Account__c'  value={endCustomerId} required={endCustrequired} onchange={handleEndCustomerOnChange}></lightning-input-field>
+                    
+                    <template if:false={isEndCustomerChanged}>
+                        <lightning-input-field field-name='Sales_End_Customer_Account_2_Txt__c'  value={order.data.fields.Sales_End_Customer_Account_2_Txt__c.value} data-id="endCust"  disabled = "true"></lightning-input-field>
+                        <lightning-input-field field-name='Sales_End_Customer_Street_Dsc__c'  value={order.data.fields.Sales_End_Customer_Street_Dsc__c.value} data-id="endCust" disabled = "true"></lightning-input-field>
+                        <lightning-input-field field-name='Sales_End_Customer_City_Txt__c'  value={order.data.fields.Sales_End_Customer_City_Txt__c.value} data-id="endCust"  disabled = "true"></lightning-input-field>
+                        <lightning-input-field field-name='Sales_End_Customer_Province_Txt__c'  value={order.data.fields.Sales_End_Customer_Province_Txt__c.value} data-id="endCust"  disabled = "true"></lightning-input-field>
+                        <lightning-input-field field-name='Sales_End_Customer_Country_Txt__c'  value={order.data.fields.Sales_End_Customer_Country_Txt__c.value} data-id="endCust" disabled = "true"></lightning-input-field>
+                    </template>                
     
-            </lightning-record-edit-form>
+                    <template if:true={isEndCustomerChanged}>
+                    <template for:each={endCustomerAccList} for:item="end">
+                        <div key={end.Id}><lightning-input-field field-name='Sales_End_Customer_Account_2_Txt__c' data-id="endCust" disabled = "true" value ={end.Name}></lightning-input-field></div>
+                        <div key={end.Id}><lightning-input-field field-name='Sales_End_Customer_Street_Dsc__c' data-id="endCust" disabled = "true" value ={end.BillingStreet}></lightning-input-field></div>
+                        <div key={end.Id}><lightning-input-field field-name='Sales_End_Customer_City_Txt__c' data-id="endCust" disabled = "true" value ={end.BillingCity}></lightning-input-field></div>
+                        <div key={end.Id}><lightning-input-field field-name='Sales_End_Customer_Province_Txt__c' data-id="endCust" disabled = "true" value ={end.BillingState}></lightning-input-field></div>
+                        <div key={end.Id}><lightning-input-field field-name='Sales_End_Customer_Country_Txt__c' data-id="endCust" disabled = "true" value ={end.BillingCountryCode}></lightning-input-field></div>
+                    </template>
+                    </template>
+                    </div> 
+                
+                <div class="slds-size_1-of-2 slds-p-around_medium">
+                    <template if:false={isEndCustomerChanged}>
+                        <lightning-input-field field-name='Sales_End_Cust_Acct_Id__c'  value={order.data.fields.Sales_End_Cust_Acct_Id__c.value} data-id="endCust"  disabled = "true"></lightning-input-field>
+                        <br>
+                        <br>
+                        <lightning-input-field field-name='Sales_End_Customer_Street2_Dsc__c'  value={order.data.fields.Sales_End_Customer_Street2_Dsc__c.value}  data-id="endCust" disabled = "true"></lightning-input-field>
+                        <lightning-input-field field-name='Sales_End_Customer_State_Txt__c'  value={order.data.fields.Sales_End_Customer_State_Txt__c.value} data-id="endCust"  disabled = "true"></lightning-input-field>
+                        <lightning-input-field field-name='Sales_End_Customer_Zip_Txt__c'  value={order.data.fields.Sales_End_Customer_Zip_Txt__c.value} data-id="endCust" disabled = "true"></lightning-input-field>
+                    </template>
+    
+                    <template if:true={isEndCustomerChanged}>
+                    <template for:each={endCustomerAccList} for:item="end">
+                        <div key={end.Id}><lightning-input-field field-name='Sales_End_Cust_Acct_Id__c'  value={end.Core_Direct_Account_Id__c} data-id="endCust" disabled = "true"></lightning-input-field></div>
+                        <div key={end.Id}><lightning-input-field field-name='Sales_End_Customer_Street2_Dsc__c' disabled = "true" data-id="endCust"></lightning-input-field></div>
+                        <div key={end.Id}><lightning-input-field field-name='Sales_End_Customer_State_Txt__c' data-id="endCust" disabled = "true" value={end.BillingStateCode}></lightning-input-field></div>
+                        <div key={end.Id}><lightning-input-field field-name='Sales_End_Customer_Zip_Txt__c' data-id="endCust" disabled = "true" value={end.BillingPostalCode}></lightning-input-field></div>
+                      </template>
+                    </template>
+                </div>
+                
+            </div>
+        <!--End Cust Details Section end -->           
+            
+        <template if:true={loading}>
+            <div class= "spinner" >
+                <lightning-spinner alternative-text="Loading" variant="brand">
+                </lightning-spinner>
+            </div>
+           </template>
+    
+            <footer class="slds-docked-form-footer">
+                <button class="slds-button slds-button_neutral"  onclick={handleCancel}>Cancel</button>
+                <button class="slds-button slds-button_brand">Save</button><!--type="submit"-->
+            </footer>
+        
+                </lightning-record-edit-form>
+            </div>
+        </template>
         </div>
-    </template>
-    </div>
-    </section>
-    <div class="slds-backdrop slds-backdrop_open"></div>
-    </template>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+        </template>

@@ -2,11 +2,11 @@
 <CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseValues>
         <plural>false</plural>
-        <value>Specialty/Select Benefit</value>
+        <value>Specialty</value>
     </caseValues>
     <caseValues>
         <plural>true</plural>
-        <value>Specialities/Select Benefits</value>
+        <value>Specialities</value>
     </caseValues>
     <fields>
         <label><!-- Access Level --></label>
@@ -128,20 +128,12 @@
         <label><!-- Role --></label>
         <name>PRM_Role_Nm__c</name>
         <picklistValues>
-            <masterLabel>Cloud &amp; Comms Service Provider</masterLabel>
-            <translation><!-- Cloud &amp; Comms Service Provider --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Distributor</masterLabel>
             <translation><!-- Distributor --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>FPGA Design Services</masterLabel>
-            <translation><!-- FPGA Design Services --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Guest</masterLabel>
-            <translation><!-- Guest --></translation>
+            <masterLabel>FPGA Designer</masterLabel>
+            <translation><!-- FPGA Designer --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Independent Software Vendor</masterLabel>
@@ -152,16 +144,24 @@
             <translation><!-- Manufacturer --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Original Equipment Manufacturer (OEM)</masterLabel>
-            <translation><!-- Original Equipment Manufacturer (OEM) --></translation>
+            <masterLabel>Not Applicable</masterLabel>
+            <translation><!-- Not Applicable --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Service Integrator</masterLabel>
-            <translation><!-- Service Integrator --></translation>
+            <masterLabel>Seller</masterLabel>
+            <translation><!-- Seller --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Solution Provider</masterLabel>
-            <translation><!-- Solution Provider --></translation>
+            <masterLabel>Service Provider</masterLabel>
+            <translation><!-- Service Provider --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Solution Integrator</masterLabel>
+            <translation><!-- Solution Integrator --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sponsor</masterLabel>
+            <translation><!-- Sponsor --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -204,5 +204,9 @@
     <validationRules>
         <errorMessage><!-- End Date cannot be less than Today&apos;s Date --></errorMessage>
         <name>PRM_Restrict_Past_End_Date</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Start Date cannot be less than Today&apos;s Date --></errorMessage>
+        <name>PRM_Restrict_Past_Start_Date</name>
     </validationRules>
 </CustomObjectTranslation>

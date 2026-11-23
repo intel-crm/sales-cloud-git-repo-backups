@@ -2,7 +2,7 @@
 <CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseValues>
         <plural>false</plural>
-        <value>License Admin Delegate</value>
+        <value><!-- License Admin Delegate --></value>
     </caseValues>
     <fields>
         <label><!-- Legacy Delegate Contact Id --></label>
@@ -43,26 +43,30 @@
         <relationshipLabel><!-- License Primary Admin --></relationshipLabel>
     </fields>
     <fields>
-        <label>主管理员电子邮件地址</label>
+        <label><!-- Primary Admin Email Address --></label>
         <name>Sales_License_PrimaryAdmin_Email_Txt__c</name>
     </fields>
     <fields>
-        <label>主管理员名字</label>
+        <label><!-- Primary Admin First Name --></label>
         <name>Sales_License_PrimaryAdmin_FirstName_Txt__c</name>
     </fields>
     <fields>
-        <label>主管理员姓氏</label>
+        <label><!-- Primary Admin Last Name --></label>
         <name>Sales_License_PrimaryAdmin_LastName_Txt__c</name>
     </fields>
     <fields>
-        <label>主动</label>
+        <label>活跃</label>
         <name>Sales_License_isActive__c</name>
     </fields>
     <fields>
         <label><!-- Is Logged In User Primary Admin --></label>
         <name>Sales_LoggedInUserPrimaryAdmin__c</name>
     </fields>
-    <nameFieldLabel>委派管理员编号</nameFieldLabel>
+    <nameFieldLabel><!-- Delegate Admin Number --></nameFieldLabel>
+    <recordTypes>
+        <label><!-- License Admin Delegate Record Type --></label>
+        <name>Sales_License_All_Internal_Users</name>
+    </recordTypes>
     <validationRules>
         <errorMessage><!-- Delegate Admin Contact and Primary Admin Contact cannot be same. --></errorMessage>
         <name>Sales_Same_Primary_Delegate_NotAllowed</name>

@@ -88,7 +88,8 @@ private class Core_OpportunitySearchController_Test {
                                                  Owner.Name, Name, Account.Name 
                                           FROM OPPORTUNITY 
                                           WHERE  Core_Intel_Platform__c = 'Broadwell'];
-          
+            
+                
 
 
 
@@ -289,6 +290,7 @@ private class Core_OpportunitySearchController_Test {
             			 insert logEntry;
  
                     }
+                    
 
                     List<SelectOption> chosentoRemoveMultiselect = new List<SelectOption>();
                     chosentoRemoveMultiselect.add(new SelectOption(SOL_FOCUS_SELECT_2, SOL_FOCUS_SELECT_2));
@@ -307,7 +309,7 @@ private class Core_OpportunitySearchController_Test {
 
             pageController.autoPartnerSearch();
 
-            
+          
 
             pageController.next();
             pageController.first();

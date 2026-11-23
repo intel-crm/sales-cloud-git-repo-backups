@@ -78,31 +78,6 @@ public without sharing class Core_OpportunityHandler_2{
             insert ExcepLog;
         } 
     }
-    //This method will call the PRM_PartnerDealOpportunitySharingService class for partner deal opportunity sharing to OO
-    public static void sharePRMDealOpptyToOpptyOwner(List<Opportunity> newOppList, Map<Id, Opportunity> oldOppMap){
-        
-        List<Core_Log_Entry__c> captureLogsErr= new List<Core_Log_Entry__c>();
-        Set<Id> opportunityIds = new Set<Id>();
-        try{
-            for (Opportunity opty : newOppList) {
-                if (opty.Core_Opportunity_Owner__c != oldOppMap.get(opty.Id).Core_Opportunity_Owner__c) {
-                    opportunityIds.add(opty.Id);
-                }
-                if (!opportunityIds.isEmpty()) {
-                    PRM_PartnerDealOpportunitySharingService.updateOpportunityOwnerSharing(opportunityIds);
-                }
-            }
-        }
-        catch(exception e){
-            captureLogsErr.add(new Core_Log_Entry__c(Core_Details__c = e.getMessage(), Core_Message__c = 'Core_OpportunityHandler_2.sharePRMDealOpptyToOpptyOwner', Core_Severity__c = 'Low', Core_Origin__c = 'core_OpportunityLineItemHandler', Core_When__c = System.now()));
-        }
-        finally{
-            if(!captureLogsErr.isEmpty()){
-                insert captureLogsErr;
-            }
-        }
-        
-    }
     
     public class InputData{
         @InvocableVariable

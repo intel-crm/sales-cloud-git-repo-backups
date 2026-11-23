@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>MP_WW22_CIP2_account_2 Partner User</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>MP_WW22_CIP2_account_2 Partner User</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>MP_WW22_CIP2_account_2PartnerManager</parentRole>
+</Role>

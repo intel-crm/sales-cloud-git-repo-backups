@@ -5,8 +5,8 @@
     <decisions>
         <name>Lock_or_Unlock</name>
         <label>Lock or Unlock</label>
-        <locationX>448</locationX>
-        <locationY>337</locationY>
+        <locationX>584</locationX>
+        <locationY>335</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>If_User_s_Profile_name_contains_Partner</name>
@@ -113,8 +113,8 @@
     <recordUpdates>
         <name>Update_Record_Type_to_Design_Registration_Intel</name>
         <label>Update Record Type to Design Registration - Intel</label>
-        <locationX>729</locationX>
-        <locationY>335</locationY>
+        <locationX>584</locationX>
+        <locationY>443</locationY>
         <inputAssignments>
             <field>RecordTypeId</field>
             <value>
@@ -126,8 +126,8 @@
     <recordUpdates>
         <name>Update_RecordType_to_Design_Registration_Partner</name>
         <label>Update RecordType to Design Registration - Partner</label>
-        <locationX>190</locationX>
-        <locationY>335</locationY>
+        <locationX>320</locationX>
+        <locationY>443</locationY>
         <inputAssignments>
             <field>RecordTypeId</field>
             <value>
@@ -137,12 +137,12 @@
         <inputReference>$Record</inputReference>
     </recordUpdates>
     <start>
-        <locationX>330</locationX>
-        <locationY>46</locationY>
+        <locationX>458</locationX>
+        <locationY>48</locationY>
         <connector>
             <targetReference>Lock_or_Unlock</targetReference>
         </connector>
-        <filterFormula> AND ( NOT({!$Record.RecordTypeId} = {!$Label.Core_DDR_Design_Locked_Record_Type_ID}) , {!$Permission.PCC_Bypass_Automation} = False )</filterFormula>
+        <filterFormula> AND ( NOT({!$Record.RecordTypeId} = {!$Label.Core_DDR_Design_Locked_Record_Type_ID}) , {!$Permission.PCC_Bypass_Automation} = False,{!$Record.RecordType.DeveloperName} &lt;&gt; &apos;PCC_Deal_Registration_Partner&apos; )</filterFormula>
         <object>Core_Design_Registration__c</object>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordBeforeSave</triggerType>

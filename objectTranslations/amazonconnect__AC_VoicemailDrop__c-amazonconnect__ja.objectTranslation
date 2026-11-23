@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>AC ボイスメールドロップ</value>
+    </caseValues>
+    <fields>
+        <label> アクティブ </label>
+        <name>amazonconnect__Active__c</name>
+    </fields>
+    <fields>
+        <label> コンタクト ID </label>
+        <name>amazonconnect__ContactId__c</name>
+    </fields>
+    <fields>
+        <label> 言語 </label>
+        <name>amazonconnect__Language__c</name>
+    </fields>
+    <fields>
+        <label> メッセージ </label>
+        <name>amazonconnect__Message__c</name>
+    </fields>
+    <fields>
+        <label><!-- Selected --></label>
+        <name>amazonconnect__Selected__c</name>
+    </fields>
+    <fields>
+        <label> 音声 </label>
+        <name>amazonconnect__Voice__c</name>
+    </fields>
+    <nameFieldLabel><!-- AC Voicemail Drop Name --></nameFieldLabel>
+</CustomObjectTranslation>

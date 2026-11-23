@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <FlowDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
-    <activeVersionNumber>6</activeVersionNumber>
+    <activeVersionNumber>8</activeVersionNumber>
+    <description>[06/Nov/25] Added the KPI Name
+[22/Jan/25] Copy the Sales OKR Objectives from &apos;Quota Setup&apos; Object into &apos;Sales OKR&apos; Object in Transposed format so that the report data can be loaded directly into Varicent.</description>
+    <masterLabel>CPT_SalesOKR_2.0_Generate_Report</masterLabel>
 </FlowDefinition>

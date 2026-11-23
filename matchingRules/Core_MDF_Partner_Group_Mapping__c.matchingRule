@@ -15,26 +15,4 @@
         </matchingRuleItems>
         <ruleStatus>Inactive</ruleStatus>
     </matchingRules>
-    <matchingRules>
-        <fullName>Core_MDF_Unique_AccountprogramId_on_PGM</fullName>
-        <description>To check for unique accountid, program id or AccountIdGroupName</description>
-        <label>Unique AccountprogramId on PGM</label>
-        <matchingRuleItems>
-            <blankValueBehavior>NullNotAllowed</blankValueBehavior>
-            <fieldName>Core_MDF_AccountProgramId_Txt__c</fieldName>
-            <matchingMethod>Exact</matchingMethod>
-        </matchingRuleItems>
-        <ruleStatus>Inactive</ruleStatus>
-    </matchingRules>
-    <matchingRules>
-        <fullName>Core_MDF_Unique_AccprogIdInactive_on_PGM</fullName>
-        <description>To check for unique accountid, program id and inactive ind or AccountProgramInactiveInd</description>
-        <label>Unique AccountprogramIdInactiveInd on PGM</label>
-        <matchingRuleItems>
-            <blankValueBehavior>NullNotAllowed</blankValueBehavior>
-            <fieldName>Core_MDF_AccProgInactiveInd_Txt__c</fieldName>
-            <matchingMethod>Exact</matchingMethod>
-        </matchingRuleItems>
-        <ruleStatus>Active</ruleStatus>
-    </matchingRules>
 </MatchingRules>

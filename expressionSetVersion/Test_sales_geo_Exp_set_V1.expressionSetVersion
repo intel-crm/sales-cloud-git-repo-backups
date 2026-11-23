@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExpressionSetDefinitionVersion xmlns="http://soap.sforce.com/2006/04/metadata">
+    <decimalScale>2</decimalScale>
+    <expressionSetDefinition>Test_sales_geo_Exp_set</expressionSetDefinition>
+    <label>Test sales geo Exp set V1</label>
+    <processType>Bre</processType>
+    <shouldShowExplExternally>false</shouldShowExplExternally>
+    <startDate>2025-06-19T06:57:21.000Z</startDate>
+    <status>Inactive</status>
+    <steps>
+        <actionType>GetOutputsFromDecisionTable</actionType>
+        <decisionTable>
+            <decisionTableName>Test_Sales_geo</decisionTableName>
+            <type>DecisionTable</type>
+        </decisionTable>
+        <hasNestedExplainability>false</hasNestedExplainability>
+        <label>Test Sales geo</label>
+        <name>TestSalesgeo</name>
+        <resultIncluded>true</resultIncluded>
+        <sequenceNumber>1</sequenceNumber>
+        <shouldExposExecPathMsgOnly>true</shouldExposExecPathMsgOnly>
+        <shouldExposeConditionDetails>false</shouldExposeConditionDetails>
+        <shouldShowExplExternally>false</shouldShowExplExternally>
+        <stepType>BusinessKnowledgeModel</stepType>
+    </steps>
+    <variables>
+        <collection>false</collection>
+        <dataType>Text</dataType>
+        <input>true</input>
+        <lookupName>Test_Sales_geo</lookupName>
+        <lookupType>DecisionTable</lookupType>
+        <name>Pricing_Region_Nm__c</name>
+        <output>false</output>
+        <type>Variable</type>
+    </variables>
+    <variables>
+        <collection>false</collection>
+        <dataType>Text</dataType>
+        <input>false</input>
+        <lookupName>Test_Sales_geo</lookupName>
+        <lookupType>DecisionTable</lookupType>
+        <name>Test_Sales_geo__Pricing_PriceRule_Id__c</name>
+        <output>true</output>
+        <type>Variable</type>
+    </variables>
+    <versionNumber>1</versionNumber>
+</ExpressionSetDefinitionVersion>

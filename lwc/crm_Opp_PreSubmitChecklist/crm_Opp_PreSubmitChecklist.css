@@ -1,0 +1,13 @@
+.custom-container{
+	color : black;
+}
+.slds-text-title_bold{
+	font-size: 16px;
+}
+.blackColor{
+    color: black !important; 
+	font-weight: bold;
+}
+.slds-box{
+	height: 108px;
+}

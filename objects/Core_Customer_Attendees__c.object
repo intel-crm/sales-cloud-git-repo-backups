@@ -187,6 +187,11 @@
         <unique>false</unique>
     </fields>
     <label>Customer/Other Attendees</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
     <nameField>
         <displayFormat>CA-{00000}</displayFormat>
         <label>Customer Attendees Name</label>

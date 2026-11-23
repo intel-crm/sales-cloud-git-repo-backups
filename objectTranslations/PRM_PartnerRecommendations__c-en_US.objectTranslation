@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>PRM_PartnerRecommendations</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>PRM_PartnerRecommendations</value>
+    </caseValues>
+    <fields>
+        <label><!-- PRM_Account --></label>
+        <name>PRM_Account__c</name>
+        <relationshipLabel><!-- PRM_PartnerRecommendations --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- TBD_PRM_ContactId --></label>
+        <name>PRM_ContactId__c</name>
+    </fields>
+    <fields>
+        <label><!-- PRM_Contact --></label>
+        <name>PRM_Contact__c</name>
+        <relationshipLabel><!-- PRM_PartnerRecommendations --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- PRM_IsEmailSent_Ind --></label>
+        <name>PRM_IsEmailSent_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- PRM_Product --></label>
+        <name>PRM_Product__c</name>
+        <relationshipLabel><!-- PRM_PartnerRecommendations --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- PRM_RecommendationId --></label>
+        <name>PRM_RecommendationId__c</name>
+    </fields>
+    <fields>
+        <label><!-- PRM_Recommendation Type --></label>
+        <name>PRM_Recommendation_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- PRM_Training_Desc --></label>
+        <name>PRM_Training_Desc__c</name>
+    </fields>
+    <fields>
+        <label><!-- PRM_Training_Links --></label>
+        <name>PRM_Training_Links__c</name>
+    </fields>
+    <fields>
+        <label><!-- PRM_Training_Nm --></label>
+        <name>PRM_Training_Nm__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

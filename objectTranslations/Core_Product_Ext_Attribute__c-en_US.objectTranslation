@@ -9,6 +9,10 @@
         <value>Product Extended Attributes</value>
     </caseValues>
     <fields>
+        <label><!-- Core Count --></label>
+        <name>Core_Count__c</name>
+    </fields>
+    <fields>
         <label><!-- Foundation Product --></label>
         <name>Core_Foundation_Product_Id__c</name>
         <relationshipLabel><!-- Core_Product_Ext_Attributes (Foundation Product) --></relationshipLabel>
@@ -150,6 +154,10 @@
         <name>Core_SW_Lic_Linux_Download_URL_Txt__c</name>
     </fields>
     <fields>
+        <label><!-- Maintenance Duration (In Months) --></label>
+        <name>Core_SW_Lic_Maintenance_Duration_Nbr__c</name>
+    </fields>
+    <fields>
         <label><!-- Rehostable --></label>
         <name>Core_SW_Lic_Rehostable_Ind__c</name>
     </fields>
@@ -248,6 +256,10 @@
         <name>Core_SW_Prod_Web_Dsc__c</name>
     </fields>
     <fields>
+        <label><!-- Max TDP --></label>
+        <name>Max_TDP__c</name>
+    </fields>
+    <fields>
         <help><!-- The indication describes the product as &apos;PSG Restricted Product&apos; that requires additional screening in PSG Quoting process. --></help>
         <label><!-- PSG Restricted Product --></label>
         <name>PSG_Restricted_Product__c</name>
@@ -269,5 +281,9 @@
         <errorMessage><!-- Please enter the Mandatory Fields 
 ( Tool Type, Tool License Type, Enforcement Method, DES Parameter, Web Description) --></errorMessage>
         <name>PSG_Validate_Tool_ExtendedAttributes</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Don&apos;t have access to edit this field --></errorMessage>
+        <name>Restrict_PSG_Restricted_Field_Access</name>
     </validationRules>
 </CustomObjectTranslation>

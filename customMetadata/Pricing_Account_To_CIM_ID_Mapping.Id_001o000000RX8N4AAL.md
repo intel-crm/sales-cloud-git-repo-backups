@@ -8,14 +8,10 @@
     </values>
     <values>
         <field>Pricing_Number_of_Days__c</field>
-        <value xsi:type="xsd:double">180.0</value>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>Pricing_Unified_Customer_Aggregatio_Type__c</field>
-        <value xsi:type="xsd:string">Intermediate</value>
-    </values>
-    <values>
-        <field>Pricing_Unified_Customer_Type__c</field>
-        <value xsi:type="xsd:string">Intermediate</value>
+        <value xsi:nil="true"/>
     </values>
 </CustomMetadata>

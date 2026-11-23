@@ -50,7 +50,7 @@
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Design_Deal_Status_not_in_Draft</name>
-            <conditionLogic>1 OR (2 AND 3)</conditionLogic>
+            <conditionLogic>(1 AND 4 ) OR (2 AND 3 AND 4)</conditionLogic>
             <conditions>
                 <leftValueReference>$Record.Core_Design_Registration_Id__r.Core_Design_Registration_Status_Nm__c</leftValueReference>
                 <operator>NotEqualTo</operator>
@@ -70,6 +70,13 @@
                 <operator>IsNull</operator>
                 <rightValue>
                     <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PCC_Change_Requested__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
                 </rightValue>
             </conditions>
             <connector>
@@ -111,7 +118,7 @@
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Owner_of_DRP_is_correct</name>
-            <conditionLogic>((1 OR 2) OR (3 AND 4))</conditionLogic>
+            <conditionLogic>and</conditionLogic>
             <conditions>
                 <leftValueReference>$Record.Core_Design_Registration_Id__r.CreatedById</leftValueReference>
                 <operator>StartsWith</operator>
@@ -124,20 +131,6 @@
                 <operator>StartsWith</operator>
                 <rightValue>
                     <elementReference>$User.Id</elementReference>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>$Record.Core_Design_Registration_Id__r.OwnerId</leftValueReference>
-                <operator>StartsWith</operator>
-                <rightValue>
-                    <elementReference>$User.Id</elementReference>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>$Record.Core_Design_Registration_Owner_Nm__c</leftValueReference>
-                <operator>StartsWith</operator>
-                <rightValue>
-                    <elementReference>$User.FirstName</elementReference>
                 </rightValue>
             </conditions>
             <connector>
@@ -233,7 +226,8 @@
             <label>If Deal Registration</label>
         </rules>
     </decisions>
-    <description>This flow is triggered on click of delete button on the DRP.</description>
+    <description>This flow is triggered on click of delete button on the DRP. 
+Added condition to allow delete change requested product</description>
     <environments>Default</environments>
     <interviewLabel>PCC_Delete_DraftDRP {!$Flow.CurrentDateTime}</interviewLabel>
     <label>PCC_Delete_DraftDRP</label>

@@ -3,7 +3,6 @@
     <description>The metadata stores Class names of Account Trigger functionalities</description>
     <fields>
         <fullName>Apex_Class_Name__c</fullName>
-        <caseSensitive>false</caseSensitive>
         <description>Field to capture the Apex class name holding Trigger functionality logic</description>
         <externalId>false</externalId>
         <fieldManageability>DeveloperControlled</fieldManageability>
@@ -11,7 +10,7 @@
         <length>100</length>
         <required>true</required>
         <type>Text</type>
-        <unique>true</unique>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Execution_Order__c</fullName>
@@ -46,12 +45,24 @@
     </fields>
     <label>Core_AccountTriggerExecution</label>
     <listViews>
-        <fullName>IAfterInsertAccountTrigger</fullName>
+        <fullName>All_Account_Trigger_Executions</fullName>
         <columns>MasterLabel</columns>
         <columns>DeveloperName</columns>
         <columns>NamespacePrefix</columns>
         <columns>Apex_Class_Name__c</columns>
+        <columns>Interface_Name__c</columns>
+        <columns>IsActive__c</columns>
         <columns>Execution_Order__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All Account Trigger Executions</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>IAfterInsertAccountTrigger</fullName>
+        <columns>Execution_Order__c</columns>
+        <columns>MasterLabel</columns>
+        <columns>DeveloperName</columns>
+        <columns>Apex_Class_Name__c</columns>
         <columns>Interface_Name__c</columns>
         <columns>IsActive__c</columns>
         <filterScope>Everything</filterScope>
@@ -60,16 +71,20 @@
             <operation>equals</operation>
             <value>IAfterInsertAccountTrigger</value>
         </filters>
+        <filters>
+            <field>Apex_Class_Name__c</field>
+            <operation>notContain</operation>
+            <value>Test</value>
+        </filters>
         <label>IAfterInsertAccountTrigger</label>
         <language>en_US</language>
     </listViews>
     <listViews>
         <fullName>IAfterUpdateAccountTrigger</fullName>
+        <columns>Execution_Order__c</columns>
         <columns>MasterLabel</columns>
         <columns>DeveloperName</columns>
-        <columns>NamespacePrefix</columns>
         <columns>Apex_Class_Name__c</columns>
-        <columns>Execution_Order__c</columns>
         <columns>Interface_Name__c</columns>
         <columns>IsActive__c</columns>
         <filterScope>Everything</filterScope>
@@ -78,16 +93,20 @@
             <operation>equals</operation>
             <value>IAfterUpdateAccountTrigger</value>
         </filters>
+        <filters>
+            <field>Apex_Class_Name__c</field>
+            <operation>notContain</operation>
+            <value>Test1</value>
+        </filters>
         <label>IAfterUpdateAccountTrigger</label>
         <language>en_US</language>
     </listViews>
     <listViews>
         <fullName>IBeforeInsertAccountTrigger</fullName>
+        <columns>Execution_Order__c</columns>
         <columns>MasterLabel</columns>
         <columns>DeveloperName</columns>
-        <columns>NamespacePrefix</columns>
         <columns>Apex_Class_Name__c</columns>
-        <columns>Execution_Order__c</columns>
         <columns>Interface_Name__c</columns>
         <columns>IsActive__c</columns>
         <filterScope>Everything</filterScope>
@@ -96,16 +115,20 @@
             <operation>equals</operation>
             <value>IBeforeInsertAccountTrigger</value>
         </filters>
+        <filters>
+            <field>Apex_Class_Name__c</field>
+            <operation>notContain</operation>
+            <value>Test</value>
+        </filters>
         <label>IBeforeInsertAccountTrigger</label>
         <language>en_US</language>
     </listViews>
     <listViews>
         <fullName>IBeforeUpdateAccountTrigger</fullName>
+        <columns>Execution_Order__c</columns>
         <columns>MasterLabel</columns>
         <columns>DeveloperName</columns>
-        <columns>NamespacePrefix</columns>
         <columns>Apex_Class_Name__c</columns>
-        <columns>Execution_Order__c</columns>
         <columns>Interface_Name__c</columns>
         <columns>IsActive__c</columns>
         <filterScope>Everything</filterScope>
@@ -113,6 +136,11 @@
             <field>Interface_Name__c</field>
             <operation>equals</operation>
             <value>IBeforeUpdateAccountTrigger</value>
+        </filters>
+        <filters>
+            <field>Apex_Class_Name__c</field>
+            <operation>notContain</operation>
+            <value>Test1</value>
         </filters>
         <label>IBeforeUpdateAccountTrigger</label>
         <language>en_US</language>

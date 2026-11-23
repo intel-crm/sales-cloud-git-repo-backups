@@ -1,0 +1,65 @@
+<template>
+    <div class="slds-box slds-p-top_small" style="background-color: white; position: relative;">
+        <template if:true={showSpinner} >
+            <lightning-spinner alternative-text="Loading" size="medium" class="spinnerClass"></lightning-spinner>
+        </template>
+        <div class="slds-text-heading_medium">Attachments - File Upload</div> <br/>
+        <lightning-input type="file"
+                         label="Attachment"
+                         onchange={handleFileUploaded}
+                         multiple = "true"
+                         accept={acceptedFormats}>
+        </lightning-input>
+        <template if:true={filesData}>
+            <template for:each={filesData} for:item="imgName" for:index="index">
+                {imgName.fileName}
+                &nbsp;<span key={imgName.fileName} data-id={index} onclick={removeReceiptImage} class='red-background-icon'>
+                <lightning-icon
+                    icon-name="action:close"
+                    size="xx-small"
+                    alternative-text="Deletes the Image"
+                    class="deleteImg">
+                </lightning-icon></span> &nbsp; 
+            </template>
+        </template>
+        <br/>
+        <lightning-button variant="brand" label="Upload Files" onclick={uploadFiles} class="slds-m-top_medium" disabled={btnDisable}> </lightning-button><br/><br/>
+
+        <!-- ==================================Files Download & Preview============================================ -->
+        <!--<lightning-card title="File Preview and Download">-->
+    <template lwc:if={filesList}>
+        <template for:each={filesList} for:item="file">
+            <div key={file.value} class="slds-box slds-box_x-small">
+                <div class="slds-grid slds-wrap">
+                    <div class="slds-col slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-size_12-of-12">
+                        <p><strong>{file.label}</strong></p>
+                    </div>
+                    <div class="slds-col slds-large-size_3-of-12 slds-medium-size_3-of-12 slds-size_12-of-12">
+                       <a href={file.url} download>Download</a>
+                    </div>
+                    <div class="slds-col slds-large-size_3-of-12 slds-medium-size_3-of-12 slds-size_12-of-12">
+                        <lightning-button label="Preview" 
+                           variant="brand"
+                          data-id={file.value}
+                          data-msg={file.contentVersionId}
+                          onclick={previewHandler}>
+                        </lightning-button>
+                    </div>
+                    <div class="slds-col slds-large-size_2-of-12 slds-medium-size_2-of-12 slds-size_12-of-12 red-background-icon">
+                        <template if:false={btnDisable}>
+                        <span data-id={file.value} onclick={deleteSelectedRecords}>
+                        <lightning-icon icon-name="action:delete" alternative-text="Delete" title="Delete" size="xx-small"></lightning-icon>
+                        <!--<lightning-button-icon icon-name="utility:delete"    variant="bare" alternative-text="Delete"   class="slds-m-left_xx-small" 
+                                               title="Delete" value={file.value} click={deleteSelectedRecords}></lightning-button-icon>-->
+                        </span>
+                    </template>
+                    </div>
+                </div>
+            </div>
+        </template>
+    </template>
+    <!--</lightning-card> -->
+    
+</div>
+
+</template>

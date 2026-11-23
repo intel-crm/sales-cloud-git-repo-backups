@@ -56,6 +56,7 @@ public class Core_ProductAccess_Product_Test{
                  i++;                     
             // SuppProductList.add(SupportedProductRecord);
         }
+        system.debug('test ### '+SuppProductList);
         insert SuppProductList;
         System.assert(SuppProductList <> null, 'Record not created');
     }

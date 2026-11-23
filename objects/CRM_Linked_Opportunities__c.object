@@ -208,6 +208,18 @@
         </valueSet>
     </fields>
     <fields>
+        <fullName>CRM_Linked_Opp_Key__c</fullName>
+        <externalId>false</externalId>
+        <formula>text( CRM_Link_Reason__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Linked_Opp_Key</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>CRM_Linked_Opportunity__c</fullName>
         <deleteConstraint>Restrict</deleteConstraint>
         <inlineHelpText>Displayed list of opportunities are linked TO current opportunity</inlineHelpText>
@@ -249,9 +261,9 @@
     <listViews>
         <fullName>All</fullName>
         <columns>NAME</columns>
-        <columns>CRM_Link_Reason__c</columns>
         <columns>CRM_Primary_Opportunity__c</columns>
         <columns>CRM_Linked_Opportunity__c</columns>
+        <columns>CRM_Link_Reason__c</columns>
         <columns>CRM_Link_Description__c</columns>
         <columns>CREATEDBY_USER</columns>
         <filterScope>Everything</filterScope>
@@ -273,6 +285,12 @@
     </searchLayouts>
     <sharingModel>ReadWrite</sharingModel>
     <validationRules>
+        <fullName>CRM_Restrict_Creation_For_Save_And_New</fullName>
+        <active>false</active>
+        <errorConditionFormula>AND( ISNEW() , ISBlank( CRM_Primary_Opportunity__c ))</errorConditionFormula>
+        <errorMessage>Opportunity From Cannot be blank on click of save and new button</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>CRM_Restrict_Deletion_for_Renewed_Opp</fullName>
         <active>true</active>
         <description>Restrict deletion of linked records for opportunities that are created through Renewal button</description>
@@ -280,6 +298,20 @@
 IF(OR(ISPICKVAL(CRM_Link_Reason__c,&apos;VBS Original -&gt;VBS Renewal&apos;),ISPICKVAL(CRM_Link_Reason__c,&apos;SW &amp; Services Original -&gt;SW &amp; Services Renewal&apos;), ISPICKVAL(PRIORVALUE(CRM_Link_Reason__c),&apos;VBS Original -&gt;VBS Renewal&apos;), ISPICKVAL(PRIORVALUE(CRM_Link_Reason__c),&apos;SW &amp; Services Original -&gt;SW &amp; Services Renewal&apos;)) &amp;&amp; !ISNEW() &amp;&amp; !ISCHANGED( CRM_Link_Description__c), TRUE,FALSE)
 )</errorConditionFormula>
         <errorMessage>You cannot modify this record since it is created through Renewal.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>isAllowedToCreateLinkedOppt</fullName>
+        <active>false</active>
+        <errorConditionFormula>IF($Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c = TRUE,FALSE,
+AND(
+ NOT( $User.Id  =  CRM_Linked_Opportunity__r.Account.OwnerId ),
+	 $Profile.Name  &lt;&gt; &apos;Sales Ops&apos;,
+		$Profile.Name  &lt;&gt; &apos;Data Ops&apos;,	
+  NOT($Permission.CRM_SOAR_Committee),
+		$Profile.Name&lt;&gt;$Label.Core_System_Admin_Profile_Name,
+  $Profile.Name &lt;&gt; $Label.Core_IT_Admin_Profile_Name
+))</errorConditionFormula>
+        <errorMessage>Your are not allowed to create Linked Opportunity.</errorMessage>
     </validationRules>
     <visibility>Public</visibility>
 </CustomObject>

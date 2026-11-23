@@ -65,11 +65,11 @@
             <value>#Gmp_Ger_I40</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_Status__c</column>
+            <column>STAGE_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Production Win,Production Lost,Production Cancelled,Win Approved,Pending,On Hold,Win Submitted</value>
+            <operator>notEqual</operator>
+            <value>Lost,Cancelled,Production Lost,Production Cancelled,Group Cancelled,Group Closed</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

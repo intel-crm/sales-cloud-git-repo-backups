@@ -1,0 +1,194 @@
+<template>
+    <div class="spinner">
+        <template if:true={showSpinner}>
+            <lightning-spinner alternative-text="Loading" variant="brand" size="medium"></lightning-spinner>
+        </template>
+    </div>
+   <template if:true={quoteLineList}>
+   <lightning-card footer="Only 10 QuoteLines records are loaded"> 
+    <template if:true={isOpen}>
+        <!--###### MODAL BOX Start From Here ######--> 
+           <div role="dialog" tabindex="-1" aria-labelledby="header99" class="slds-modal slds-fade-in-open ">
+             <div class="slds-modal__container">
+               <!-- ###### MODAL BOX HEADER Part Start From Here ######-->
+               <div class="slds-modal__header">
+                 <button class="slds-button slds-modal__close slds-button--icon-inverse" title="Close" onclick={closeModel}>
+                 <span class="slds-assistive-text">Close</span>
+                 </button>
+                 <h2 id="header99" class="slds-text-heading--medium">Manage Table Columns</h2>
+               </div>
+               <!--###### MODAL BOX BODY Part Start From Here ######-->
+               <div class="slds-modal__content slds-p-around--medium">
+                   <div class="slds-p-around_medium">
+                    <lightning-dual-listbox id="selectOptions"
+                        name="Select Fields"
+                        label="Select Fields"
+                        source-label="Available Fields"
+                        selected-label="Selected Fields"
+                        options={listDualPickListOptions}
+                        value={defaultOptions}
+                        required-options={requiredOptions}
+                        onchange={handleDualPickListChange}>
+                    </lightning-dual-listbox>
+                    <lightning-button
+                        class="slds-m-top_small"
+                        type="submit"
+                        label="Apply"
+                        onclick = {applyColumnSelection}>
+                    </lightning-button>
+                   </div>  
+                </div>
+             </div>
+           </div>
+           <div class="slds-backdrop slds-backdrop--open"></div>
+           <!--###### MODAL BOX Part END Here ######-->
+    </template>
+    <!-- modal 2 -->
+    <template if:true={isModal2Open}>
+        <!--###### MODAL BOX Start From Here ######--> 
+           <div role="dialog" tabindex="-1" aria-labelledby="header99" class="slds-modal slds-fade-in-open ">
+             <div class="slds-modal__container">
+               <!-- ###### MODAL BOX HEADER Part Start From Here ######-->
+               <div class="slds-modal__header">
+                 <button class="slds-button slds-modal__close slds-button--icon-inverse" title="Close" onclick={closeModel2}>
+                   X
+                 <span class="slds-assistive-text">Close</span>
+                 </button>
+                 <h2 id="header98" class="slds-text-heading--medium">Create Quote Line</h2>
+               </div>
+               <!--###### MODAL BOX BODY Part Start From Here ######-->
+               <div class="slds-modal__content slds-p-around--medium">
+                   <div class="slds-p-around_medium">
+                        <lightning-record-edit-form object-api-name="SBQQ__QuoteLine__c" onsuccess={handleSuccess} onsubmit ={handleSubmit} layout-type="Full">
+                            <lightning-messages>
+                            </lightning-messages>
+                            <div class="slds-grid slds-wrap">  
+                                <div class="slds-col slds-size_1-of-2">  
+                                    <lightning-input-field field-name='core_cpq_opn__c'></lightning-input-field>
+
+                                </div> 
+                                <div class="slds-col slds-size_1-of-2">  
+                                    <lightning-input-field field-name='core_cpq_lower_bound_qty_qty__c'></lightning-input-field>
+
+                                </div>  
+                                <div class="slds-col slds-size_1-of-2">                              
+                                    <lightning-input-field field-name='core_cpq_upper_bound_qty_nbr__c'></lightning-input-field>
+
+                                </div>  
+                                <div class="slds-col slds-size_1-of-2">  
+                                    <lightning-input-field field-name='price_requested_resale_amt__c'></lightning-input-field>
+
+                                </div>  
+                                <div class="slds-col slds-size_1-of-2">  
+                                    <lightning-input-field field-name='core_cpq_production_dt__c'></lightning-input-field>
+
+                                </div> 
+                                <div class="slds-col slds-size_1-of-2">  
+                                    <lightning-input-field field-name='SBQQ__Quote__c' value={recordId}></lightning-input-field>
+
+                                </div> 
+                            </div>
+                            <lightning-button variant="brand" type="submit" name="save" label="Create Quote Line"></lightning-button>
+                            </lightning-record-edit-form>
+                      <!--  <lightning-button variant="brand" type="button" name="Save" label="Save" onclick={handleSubmit}></lightning-button> -->
+                   </div>  
+                </div>
+             </div>
+           </div>
+           <div class="slds-backdrop slds-backdrop--open"></div>
+           <!--###### MODAL BOX Part END Here ######-->
+    </template>
+
+        <lightning-layout>
+        <template if:true={isEditable}>
+            <template if:false={pendingvisblity}>
+                <lightning-layout-item size = "3" padding = "around-medium" class = "slds-p-bottom_x-small">
+                    <div style="margin-top: 22px;">
+                        <lightning-button label="Add Lines" title="Add" onclick={addNewQuoteLine} disabled={disableAddLines}></lightning-button> 
+                    </div>
+                </lightning-layout-item>
+            </template>
+                <lightning-layout-item size = "3" alignment-bump="left" padding = "around-medium" class = "slds-p-bottom_x-small">
+                    <lightning-input  type="text" label="Search" onchange={onchangeHandle} placeholder="Enter some value..." disabled={disableSearch}></lightning-input>
+                </lightning-layout-item>
+        
+    </template>
+        <template if:false={isEditable}>
+            <template if:true={inProgressQuote}>
+                 <template if:false={pendingvisblity}>
+                    <lightning-layout-item size = "3" padding = "horizontal-medium" class = "slds-p-bottom_x-small">
+                        <div style="margin-top: 22px;">
+                            <lightning-button label="Add Lines" title="Add" onclick={addNewQuoteLine} disabled={disableAddLines}></lightning-button> 
+                        </div>
+                    </lightning-layout-item>
+                </template>
+                    <lightning-layout-item size = "3" alignment-bump="left" padding = "horizontal-medium" class = "slds-p-bottom_x-small">
+                        <lightning-input  type="text" label="Search" onchange={onchangeHandle} placeholder="Enter some value..." disabled={disableSearch}></lightning-input>
+                    </lightning-layout-item>
+                
+            </template>
+           <template if:false={inProgressQuote}>
+                    <lightning-layout-item size = "3" alignment-bump="left" padding = "horizontal-medium" class = "slds-p-bottom_x-small">
+                        <lightning-input  type="text" label="Search" onchange={onchangeHandle} placeholder="Enter some value..." disabled={disableSearch}></lightning-input>
+                    </lightning-layout-item>
+            </template>
+        </template>       
+        </lightning-layout> 
+    <lightning-layout>
+        <lightning-layout-item size = "12" padding = "horizontal-medium"> 
+            <template if:true={inProgressQuote}>
+                <div class="slds-text-body--regular slds-text-color_error slds-text-title_bold">
+                    Please Choose a Category
+                </div><br/>
+            </template>
+              <div class="slds-scrollable_x" style="width:3000px">  
+                        <c-psg_customized-data-table 
+                                key-field="Id" 
+                                data-id="datarow"
+                                data = {quoteLineList} 
+                                columns = {columns} 
+                                selected-rows={selection}
+                                onrowselection={rowSelection}
+                                onpicklistchanged = {picklistChanged} 
+                                onvalueselect = {handleSelection}
+                                draft-values = {draftValues} 
+                                oncellchange = {handleCellChange}
+                                onsave = {handleSave}
+                                oncancel = {handleCancel}               
+                                show-row-number-column = "true"
+                                default-sort-direction = {defaultSortDirection}
+                                sorted-direction = {sortDirection}
+                                sorted-by = {sortedBy}
+                                onsort = {onHandleSort}
+                                min-column-width = "110"
+                                onrowaction = {handleRowAction}
+                                suppress-bottom-bar = {suppressBottomBar}
+                                onsendupdaterequest = {sendUpdateRequest}
+                                errors={errors}
+                                hide-checkbox-column = {ishideCheckbox}
+                                class="slds-table_header-fixed_container slds-scrollable_x slds-border_top slds-border_bottom slds-table_bordered slds-table_col-bordered"
+                                >
+                        </c-psg_customized-data-table>
+                </div> 
+                    <!--Pagnination-->
+                    </br>
+                    <lightning-layout horizontal-align="center">
+                        <lightning-layout-item padding="horizontal-small">
+                            <lightning-button label="Previous" icon-name="utility:chevronleft" onclick={previousHandler}>
+                            </lightning-button>
+                        </lightning-layout-item>
+                        <lightning-layout-item padding="horizontal-small">
+                            <div class="slds-p-top_x-small">
+                                Page {page} of {totalPage}
+                            </div>
+                        </lightning-layout-item>
+                        <lightning-layout-item padding="horizontal-small">
+                            <lightning-button label="Next" icon-name="utility:chevronright" icon-position="right"
+                                onclick={nextHandler}></lightning-button>
+                        </lightning-layout-item>
+                    </lightning-layout>
+        </lightning-layout-item>
+    </lightning-layout>
+    </lightning-card> 
+    </template>
+</template>

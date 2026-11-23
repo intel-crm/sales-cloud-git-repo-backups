@@ -1,0 +1,98 @@
+<template>
+   
+        
+    <lightning-card title="IPA Accounts:" >
+        <div class="slds-grid slds-gutters">
+            <div class="slds-col slds-size_1-of-3">
+                <c-screen_chart_-parent chart-configurations={ipachartConfiguration}
+                account-type-name="IPA" total-count={ipasize}></c-screen_chart_-parent>
+               
+            </div>
+            <div class="slds-col slds-size_2-of-3">
+                <template if:true={showreports}>
+                <c-screenreport combined-reports={ipaReport} show-score=true>
+                </c-screenreport>
+                </template>
+            </div>
+        </div>
+        <div class="slds-grid slds-gutters">
+            <div class="slds-col slds-size_1-of-3">
+                <c-screen_chart_-parent chart-configurations={ipachartConfigurationcore}
+                account-type-name="IPA Core" total-count={ipaCoreSize}></c-screen_chart_-parent>
+                
+            </div>
+            <div class="slds-col slds-size_2-of-3">
+                <template if:true={showreports}>
+                <c-screenreport combined-reports={ipaReportcore} show-miss-score=true>
+                </c-screenreport>
+                </template>
+            </div>
+        </div>
+    </lightning-card>
+
+   <lightning-card title="AE Accounts" >
+        <div class="slds-grid slds-gutters">
+            <div class="slds-col slds-size_1-of-3">
+                <c-screen_chart_-parent chart-configurations={aechartConfiguration}
+            account-type-name="A&E" total-count={aesize}></c-screen_chart_-parent>
+            </div>
+            <div class="slds-col slds-size_2-of-3">
+                <template if:true={showreportsae}>
+                <c-screenreport combined-reports={aeReport} show-score=true>
+                </c-screenreport>
+                </template>
+            </div>
+        </div>
+        <div class="slds-grid slds-gutters">
+            <div class="slds-col slds-size_1-of-3">
+                <c-screen_chart_-parent chart-configurations={aechartConfigurationcore}
+                account-type-name="A&E Core" total-count={aeCoreSize}></c-screen_chart_-parent>
+            </div>
+            <div class="slds-col slds-size_2-of-3">
+                <template if:true={showreportsae}>
+                <c-screenreport combined-reports={aeReportcore} show-miss-score=true>
+                </c-screenreport>
+                </template>
+            </div>
+        </div>
+    </lightning-card>
+
+
+    <lightning-card title="PSG Accounts" >
+        <div class="slds-grid slds-gutters">
+            <div class="slds-col slds-size_1-of-3">
+                <c-screen_chart_-parent chart-configurations={psgchartConfiguration}
+            account-type-name="PSG" total-count={psgsize}></c-screen_chart_-parent>
+            </div>
+            <div class="slds-col slds-size_2-of-3">
+                <template if:true={showreportspsg}>
+                <c-screenreport combined-reports={psgReport} show-score=true>
+                </c-screenreport>
+                </template>
+            </div>
+        </div>
+        <div class="slds-grid slds-gutters">
+            <div class="slds-col slds-size_1-of-3">
+                <c-screen_chart_-parent chart-configurations={psgchartConfigurationcore}
+                account-type-name="PSG Core" total-count={psgCoreSize}></c-screen_chart_-parent>
+            </div>
+            <div class="slds-col slds-size_2-of-3">
+                <template if:true={showreportspsg}>
+                <c-screenreport combined-reports={psgReportcore} show-miss-score=true>
+                </c-screenreport>
+                </template>
+            </div>
+        </div>
+    </lightning-card>
+    <br/>
+<template if:true={loaded}>
+        <lightning-spinner alternative-text="Loading"></lightning-spinner>
+    </template>
+    <template  if:true={showreports}>
+        
+</template>
+
+
+
+    
+</template>

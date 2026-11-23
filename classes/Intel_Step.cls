@@ -10,10 +10,7 @@
 * 
 **************************************************************************************************************************************************************************/
 public class Intel_Step {
-    public static Boolean isWorking() {
-        return true;
-    }
-      // public String name { get; set; }
-      // public List<Intel_Section> sections { get; set; } { sections = new List<Intel_Section>(); }
-      // public Intel_Step(String n) { name = n; }
+      public String name { get; set; }
+      public List<Intel_Section> sections { get; set; } { sections = new List<Intel_Section>(); }
+      public Intel_Step(String n) { name = n; }
     }

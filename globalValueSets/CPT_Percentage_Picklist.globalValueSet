@@ -101,6 +101,26 @@
         <label>100%</label>
     </customValue>
     <customValue>
+        <fullName>33.333%</fullName>
+        <default>false</default>
+        <label>33.333%</label>
+    </customValue>
+    <customValue>
+        <fullName>33.334%</fullName>
+        <default>false</default>
+        <label>33.334%</label>
+    </customValue>
+    <customValue>
+        <fullName>26.666%</fullName>
+        <default>false</default>
+        <label>26.666%</label>
+    </customValue>
+    <customValue>
+        <fullName>26.668%</fullName>
+        <default>false</default>
+        <label>26.668%</label>
+    </customValue>
+    <customValue>
         <fullName>5%</fullName>
         <default>false</default>
         <isActive>false</isActive>

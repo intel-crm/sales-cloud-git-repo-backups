@@ -1,10 +1,10 @@
 import { api, LightningElement,track,wire } from 'lwc';
-/*import getFeedRecordchatbot from '@salesforce/apex/Sales_FeedbackController.getFeedRecordchatbot';//added for feedback
+import getFeedRecordchatbot from '@salesforce/apex/Sales_FeedbackController.getFeedRecordchatbot';//added for feedback
 import checkCapablity from '@salesforce/apex/Sales_FeedbackController.checkCapablity';//added for feedback
-*/
+
 export default class Sales_FeedbackOnChatbot extends LightningElement {
 
-    /*@api isFeedbackvisible=false;
+    @api isFeedbackvisible=false;
     @track noofdays;
     @track iscapablity=false;
     ischatbot='chatbot';//added for chatbot feedback
@@ -60,7 +60,7 @@ export default class Sales_FeedbackOnChatbot extends LightningElement {
 closeFeedback() {
     console.log('cancel feedback');
     this.isFeedbackvisible=false;
-}*/
+}
 
 
 }

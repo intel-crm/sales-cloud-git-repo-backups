@@ -51,18 +51,18 @@
     </columns>
     <filter>
         <criteriaItems>
+            <column>Opportunity.Core_Opportunity_Coverage__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>OSC</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>Opportunity.Core_Sales_Groups__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
-            <operator>contains</operator>
-            <value>mexico</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OWNER_MANAGER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Vitores</value>
+            <operator>equals</operator>
+            <value>GMP Mexico Sales Group</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

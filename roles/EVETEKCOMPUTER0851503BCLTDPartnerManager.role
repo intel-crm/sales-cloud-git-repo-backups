@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>EVETEK COMPUTER/0851503 B.C. LTD. Partner Manager</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>EVETEK COMPUTER/0851503 B.C. LTD. Partner Manager</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>EVETEKCOMPUTER0851503BCLTDPartnerExecutive</parentRole>
+</Role>

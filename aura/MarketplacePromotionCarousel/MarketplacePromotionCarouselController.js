@@ -2,13 +2,13 @@
     
     doInit : function(component, event, helper) { 
         
-        
+        console.log('doInit')
         helper.getPromotionData(component,event,helper).then($A.getCallback(function(){
             var promoData = component.get('v.promotionData')
             
             //component.set("v.promotionData",promoData);
             //var promoData = component.get('v.promotionData');
-            
+            //console.log('promoData',promoData)
             
             component.set('v.currentPage', 1);
             component.set('v.touchSettings', {
@@ -29,7 +29,7 @@
         
     },
     handleDataChange: function(component, event, helper) {
-        
+        console.log('handleDataChange')
         window.setTimeout($A.getCallback(function() {
             component.set('v.loading', false);
             // make sure the height is the same for all cards

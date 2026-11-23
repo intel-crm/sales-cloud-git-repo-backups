@@ -10,31 +10,19 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Declined</masterLabel>
-        <translation>Отклонено</translation>
+        <translation><!-- Declined --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Draft</masterLabel>
-        <translation>Черновик</translation>
+        <translation><!-- Draft --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>In-Progress</masterLabel>
         <translation>Выполняется</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>In-Progress Pending Approval</masterLabel>
-        <translation>В процессе ожидания утверждения</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>In-Progress Pending Review</masterLabel>
-        <translation>В процессе ожидания проверки</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>In-Progress Revision Required</masterLabel>
-        <translation>В процессе выполнения требуется редакция</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Pending Approval</masterLabel>
-        <translation>Ожидает утверждения</translation>
+        <translation><!-- Pending Approval --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Pending Review</masterLabel>

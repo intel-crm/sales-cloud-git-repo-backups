@@ -10,19 +10,7 @@
         <field>Account$Core_CIM_ID__c</field>
     </columns>
     <columns>
-        <field>Account$Core_Direct_Legal_Parent_Id__c</field>
-    </columns>
-    <columns>
-        <field>Account$Core_Direct_Legal_Parent_Id__c.Core_Direct_Account_Id__c</field>
-    </columns>
-    <columns>
-        <field>Account$Core_Direct_Pricing_Parent_Id__c</field>
-    </columns>
-    <columns>
-        <field>Account$Core_Direct_Pricing_Parent_Id__c.Core_Direct_Account_Id__c</field>
-    </columns>
-    <columns>
-        <field>Account$Core_Direct_Pricing_Parent_Id__c.Core_Direct_Parent_Account_Tier_Nm__c</field>
+        <field>Account$Core_Account_Tier__c</field>
     </columns>
     <columns>
         <field>Account$BillingStreet</field>
@@ -43,16 +31,28 @@
         <field>Account$Core_Geo__c</field>
     </columns>
     <columns>
-        <field>Account$Core_Account_Tier__c</field>
+        <field>Account$Core_Direct_Legal_Parent_Id__c</field>
     </columns>
     <columns>
-        <field>Account$LastModifiedDate</field>
+        <field>Account$Core_Direct_Legal_Parent_Id__c.Core_Direct_Account_Id__c</field>
     </columns>
     <columns>
         <field>Account$Core_Direct_Legal_Parent_Id__c.Core_Nielsen_ID__c</field>
     </columns>
     <columns>
+        <field>Account$Core_Direct_Pricing_Parent_Id__c</field>
+    </columns>
+    <columns>
+        <field>Account$Core_Direct_Pricing_Parent_Id__c.Core_Direct_Account_Id__c</field>
+    </columns>
+    <columns>
+        <field>Account$Core_Direct_Pricing_Parent_Id__c.Core_Direct_Parent_Account_Tier_Nm__c</field>
+    </columns>
+    <columns>
         <field>Account$Core_Direct_Pricing_Parent_Id__c.Core_Nielsen_ID__c</field>
+    </columns>
+    <columns>
+        <field>Account$LastModifiedDate</field>
     </columns>
     <columns>
         <field>Account$CreatedDate</field>

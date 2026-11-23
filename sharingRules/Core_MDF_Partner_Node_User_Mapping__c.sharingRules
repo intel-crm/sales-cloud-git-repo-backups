@@ -15,20 +15,6 @@
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>Core_MDF_Account_users_sharing_for_L2</fullName>
-        <accessLevel>Edit</accessLevel>
-        <label>Account users sharing for L2</label>
-        <sharedTo>
-            <group>Core_MDF_Grant_Access_Group</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>Name</field>
-            <operation>notEqual</operation>
-            <value>[empty]</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
     <sharingOwnerRules>
         <fullName>Core_MDF_Account_User_Share_for_All_Users_CCP_Int_1</fullName>
         <accessLevel>Read</accessLevel>

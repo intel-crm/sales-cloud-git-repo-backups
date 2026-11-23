@@ -89,6 +89,20 @@
     </decisionTableSourceCriterias>
     <decisionTableSourceCriterias>
         <operator>Equals</operator>
+        <sequenceNumber>3</sequenceNumber>
+        <sourceFieldName>Pricing_Market_Segment_Nm__c</sourceFieldName>
+        <value>Consumer Retail Pull</value>
+        <valueType>Literal</valueType>
+    </decisionTableSourceCriterias>
+    <decisionTableSourceCriterias>
+        <operator>Equals</operator>
+        <sequenceNumber>4</sequenceNumber>
+        <sourceFieldName>Pricing_Region_Nm__c</sourceFieldName>
+        <value>EMEA</value>
+        <valueType>Literal</valueType>
+    </decisionTableSourceCriterias>
+    <decisionTableSourceCriterias>
+        <operator>Equals</operator>
         <sequenceNumber>5</sequenceNumber>
         <sourceFieldName>Pricing_Region_Nm__c</sourceFieldName>
         <value>ASMO</value>
@@ -97,22 +111,8 @@
     <decisionTableSourceCriterias>
         <operator>Equals</operator>
         <sequenceNumber>6</sequenceNumber>
-        <sourceFieldName>Pricing_Region_Nm__c</sourceFieldName>
-        <value>EMEA</value>
-        <valueType>Literal</valueType>
-    </decisionTableSourceCriterias>
-    <decisionTableSourceCriterias>
-        <operator>Equals</operator>
-        <sequenceNumber>4</sequenceNumber>
         <sourceFieldName>Pricing_Is_Routing_Rule_Active_Ind__c</sourceFieldName>
         <value>true</value>
-        <valueType>Literal</valueType>
-    </decisionTableSourceCriterias>
-    <decisionTableSourceCriterias>
-        <operator>Equals</operator>
-        <sequenceNumber>3</sequenceNumber>
-        <sourceFieldName>Pricing_Market_Segment_Nm__c</sourceFieldName>
-        <value>Consumer Retail Pull</value>
         <valueType>Literal</valueType>
     </decisionTableSourceCriterias>
     <doesConsiderNullValue>false</doesConsiderNullValue>
@@ -123,7 +123,7 @@
     <isIncrementalSyncEnabled>false</isIncrementalSyncEnabled>
     <isVersioned>false</isVersioned>
     <setupName>Pricing Route Rules ASMO/EMEA CCG Retail</setupName>
-    <sourceConditionLogic>1 AND 2 AND 3 AND 4 AND (5 OR 6)</sourceConditionLogic>
+    <sourceConditionLogic>1 AND 2 AND 3 AND (4 OR 5) AND 6</sourceConditionLogic>
     <sourceObject>Pricing_Routing_Rules__c</sourceObject>
     <status>Active</status>
     <usageType>Bre</usageType>

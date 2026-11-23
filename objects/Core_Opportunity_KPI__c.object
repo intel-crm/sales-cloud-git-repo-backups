@@ -210,6 +210,7 @@
     </fields>
     <fields>
         <fullName>Core_Opp_KPI_Description__c</fullName>
+        <defaultValue>&quot;Please refer to criteria on https://saleskpi.intel.com/&quot;</defaultValue>
         <inlineHelpText>Detailed description of the KPI and KPI criteria</inlineHelpText>
         <label>KPI Description</label>
         <length>131072</length>
@@ -242,7 +243,6 @@
         <fullName>Core_Opp_KPI_Opportunity__c</fullName>
         <label>Opportunity</label>
         <referenceTo>Opportunity</referenceTo>
-        <relationshipLabel>Opportunity KPIs</relationshipLabel>
         <relationshipName>Opportunity_KPIs</relationshipName>
         <relationshipOrder>0</relationshipOrder>
         <reparentableMasterDetail>true</reparentableMasterDetail>
@@ -406,18 +406,8 @@
     <label>Opportunity KPI</label>
     <listViews>
         <fullName>All</fullName>
-        <columns>NAME</columns>
-        <columns>Core_Opp_KPI_Achieved__c</columns>
-        <columns>Core_Opp_KPI_Add_Date__c</columns>
-        <columns>Core_Opp_KPI_BatchTime__c</columns>
-        <columns>Core_Opp_KPI_BU_Owner__c</columns>
-        <columns>Core_Opp_KPI_Quantity__c</columns>
-        <columns>Core_Opp_KPI_Total_Price__c</columns>
-        <columns>Core_Opp_KPI_Type__c</columns>
-        <columns>CREATED_DATE</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
-        <language>en_US</language>
     </listViews>
     <nameField>
         <label>KPI Name</label>

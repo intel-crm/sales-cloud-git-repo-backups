@@ -9,12 +9,125 @@
         <value>Content Documents</value>
     </caseValues>
     <fields>
+        <label><!-- User ID --></label>
+        <name>ArchivedById__c</name>
+    </fields>
+    <fields>
+        <label><!-- Archived Date --></label>
+        <name>ArchivedDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Asset File ID --></label>
+        <name>ContentAssetId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Content Modified Date --></label>
+        <name>ContentModifiedDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Size --></label>
+        <name>ContentSize__c</name>
+    </fields>
+    <fields>
+        <label><!-- Created By ID --></label>
+        <name>CreatedById__c</name>
+    </fields>
+    <fields>
+        <label><!-- Created --></label>
+        <name>CreatedDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Description --></label>
+        <name>Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- File Extension --></label>
+        <name>FileExtension__c</name>
+    </fields>
+    <fields>
         <label><!-- File Type --></label>
         <name>FileType__c</name>
     </fields>
     <fields>
+        <label><!-- Is Archived --></label>
+        <name>IsArchived__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Deleted --></label>
+        <name>IsDeleted__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Modified By ID --></label>
+        <name>LastModifiedById__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Modified Date --></label>
+        <name>LastModifiedDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Referenced Date --></label>
+        <name>LastReferencedDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Viewed Date --></label>
+        <name>LastViewedDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Latest Published Version ID --></label>
+        <name>LatestPublishedVersionId__c</name>
+        <relationshipLabel><!-- Content Documents --></relationshipLabel>
+    </fields>
+    <fields>
         <label><!-- Owner ID --></label>
         <name>OwnerId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Parent ID --></label>
+        <name>ParentId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Publish Status --></label>
+        <name>PublishStatus__c</name>
+        <picklistValues>
+            <masterLabel>Private Library</masterLabel>
+            <translation><!-- Private Library --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Public</masterLabel>
+            <translation><!-- Public --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Upload Interrupted</masterLabel>
+            <translation><!-- Upload Interrupted --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Prevent others from sharing and unsharin --></label>
+        <name>SharingOption__c</name>
+        <picklistValues>
+            <masterLabel>Freeze Sharing Off</masterLabel>
+            <translation><!-- Freeze Sharing Off --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Freeze Sharing On</masterLabel>
+            <translation><!-- Freeze Sharing On --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- File Privacy on Records --></label>
+        <name>SharingPrivacy__c</name>
+        <picklistValues>
+            <masterLabel>Private on Records</masterLabel>
+            <translation><!-- Private on Records --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Visible to Anyone With Record Access</masterLabel>
+            <translation><!-- Visible to Anyone With Record Access --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- System Modstamp --></label>
+        <name>SystemModstamp__c</name>
     </fields>
     <fields>
         <label><!-- Title --></label>

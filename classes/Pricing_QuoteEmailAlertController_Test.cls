@@ -2,8 +2,8 @@
  * @description       : 
  * @author            : Sandeep Chamate
  * @group             : 
- * @last modified on  : 03-27-2026
- * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+ * @last modified on  : 01-25-2024
+ * @last modified by  : Sandeep Chamate
 **/
 @isTest
 public class Pricing_QuoteEmailAlertController_Test {
@@ -84,7 +84,13 @@ public class Pricing_QuoteEmailAlertController_Test {
             qtm2.Pricing_Role_Nm__c = 'ITS';
             quoteTeamMemberList.add(qtm2);
             insert quoteTeamMemberList;
-
+            
+            Pricing_Quote_Team_Role_AccessMapping__c qtmRoleAccessMdt = new Pricing_Quote_Team_Role_AccessMapping__c();
+            qtmRoleAccessMdt.Pricing_Role_Nm__c = 'Account Executive';
+            qtmRoleAccessMdt.Pricing_Access_Level_Nm__c = '';
+            qtmRoleAccessMdt.Permission_Set_API_Nm__c = '';
+            qtmRoleAccessMdt.Pricing_IsActive_Ind__c =true;
+            insert qtmRoleAccessMdt;
 			Test.stopTest();
         }
     }
@@ -100,6 +106,7 @@ public class Pricing_QuoteEmailAlertController_Test {
                                                   SBQQ__Quote__r.SBQQ__SalesRep__r.Name,Pricing_pm_approval_comments_nm__c, Pricing_Rejection_Comments_nm__c
                                                   FROM SBQQ__QuoteLine__c LIMIT 1];      
         //Test.StartTest();
+        List<User> lstUsers = Pricing_Test_Utility.createUser();
         Pricing_QuoteEmailAlertController p1 = new Pricing_QuoteEmailAlertController();
         p1.quoteId = lstquote[0].Id;
         p1.quoteLineId = lstquoteLines[0].Id;
@@ -144,7 +151,8 @@ public class Pricing_QuoteEmailAlertController_Test {
                                             Pricing_Quote_Id__c,Pricing_Quote_Id__r.Name,Pricing_Quote_Id__r.Pricing_Customer_Nm__c,
                                             Pricing_Quote_Id__r.Pricing_Project_Name_Nm__c,Pricing_Quote_Id__r.Pricing_Bid_Dt__c,Pricing_Grant_Access_Ind__c 
                                          	FROM Pricing_Quote_Team__c WHERE Pricing_Quote_Id__c= :lstquote[0].Id LIMIT 2];
-
+        
+        List<Pricing_Quote_Team_Role_AccessMapping__c> roleMap = [SELECT AGS_Role_Filter_Txt__c FROM Pricing_Quote_Team_Role_AccessMapping__c WHERE Pricing_IsActive_Ind__c=True LIMIT 1];
        //Test.startTest();
         Pricing_QuoteEmailAlertController p1 = new Pricing_QuoteEmailAlertController();
         p1.qtmId=quoteTeamMemberList[0].Id;

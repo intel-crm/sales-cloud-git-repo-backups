@@ -6,5 +6,5 @@
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>Cty Cong Nghe Tan Thanh Danh Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>CtyCongNgheTanThanhDanhPartnerManager</parentRole>
 </Role>

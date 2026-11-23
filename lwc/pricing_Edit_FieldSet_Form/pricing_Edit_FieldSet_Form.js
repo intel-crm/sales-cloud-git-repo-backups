@@ -33,6 +33,7 @@ export default class Pricing_Edit_FieldSet_Form extends LightningElement {
     getFieldSetFormDetails() {
         getFormDetails({ recordId: this.recordId })
             .then(result => {
+                console.log('Raw result- pricing_edit_Fieldset_Form.js :'+JSON.stringify(result));
                 let formDetails = JSON.parse(JSON.stringify(result));
                 var fieldList = readOnlyFields + ',' + readOnlyDateFields;
                 let fieldArray = fieldList.split(',');
@@ -114,18 +115,18 @@ export default class Pricing_Edit_FieldSet_Form extends LightningElement {
         childComp.iconName = (childComp.iconName === 'utility:chevronright') ? 'utility:chevrondown' : 'utility:chevronright';
     }
 
-    handleLoad(event) {
+    handleLoad() {
         this.loadSpinner = false;
     }
 
-    handleSave(event) {
+    handleSave() {
         /*this.saveSpinner = true;
         this.disableButton = true;*/
         this.isSave = true;
 
     }
 
-    handleSuccess(event) {
+    handleSuccess() {
         this.saveSpinner = false;
         this.disableButton = false;
         this.isModalOpen = false;
@@ -148,7 +149,7 @@ export default class Pricing_Edit_FieldSet_Form extends LightningElement {
         this.dispatchEvent(closeModalEvent);
     }
 
-    handleError(event) {
+    handleError() {
         this.saveSpinner = false;
         this.disableButton = false;
         const scroll = this.template.querySelector('lightning-messages');
@@ -163,7 +164,7 @@ export default class Pricing_Edit_FieldSet_Form extends LightningElement {
         this.template.querySelector('lightning-record-edit-form').submit(field);
     }
 
-    handleCancel(event) {
+    handleCancel() {
         this.isModalOpen = false;
         const closeModalEvent = new CustomEvent("modalOpenEvent", { detail: { VALUE } },);
         this.dispatchEvent(closeModalEvent);

@@ -1,0 +1,49 @@
+<template>
+    <lightning-card icon-name="standard:product"> 
+        <h1 slot="title">Product Exhibit list</h1>
+        <lightning-layout>
+            <lightning-layout-item size = "7" alignment-bump="center" padding = "around-small" class = "slds-p-bottom_x-small">
+              
+              <lightning-input id="searchTxt" type="text" label="Processor No: Starts with" onchange={onchangeHandle} placeholder="Enter some value..." variant="label-inline" disabled={disableSearch}></lightning-input>
+              <lightning-input  type="text" label="Processor No: Ends with" onchange={onchangeEndsWithHandle} placeholder="Enter some value..." variant="label-inline" disabled={disableSearch}></lightning-input>
+            </lightning-layout-item>
+        </lightning-layout>
+      <lightning-layout>
+        <lightning-layout-item size = "12" padding = "horizontal-medium"> 
+          <template if:true={dataPresent}>
+              <div class="myTable" style="height:300px;" >
+                <lightning-datatable class="slds-table_header-fixed_container slds-scrollable_x slds-border_top" 
+                column-widths-mode='auto'
+                key-field="Id"
+                data-id="datarow"
+                data={tableData}
+                columns={columns}
+                selected-rows={selection}
+                onrowselection={rowSelection}
+                >
+                </lightning-datatable>
+              </div>
+          </template>
+          <template if:false={dataPresent}>
+            <template if:true={spinnerOn}>
+              <lightning-spinner variant="brand"></lightning-spinner>
+            </template>
+            <template if:false={spinnerOn}>
+              <div class="slds-align_absolute-center">Please select atleast one IVR product for the RSA product from Exhibit List</div>
+            </template>
+          </template>
+        </lightning-layout-item>
+      </lightning-layout> 
+      <div class="slds-clearfix">
+        <div class="slds-float_right" style="padding: 10px;">
+      
+      <lightning-button-group>
+        <lightning-button class='footer-btn'  variant = "brand" icon-name="utility:save" label="Save" disabled={disableSave} onclick={saveData}></lightning-button>
+        &nbsp;&nbsp;
+        &nbsp;&nbsp;<lightning-button class='footer-btn'  variant = "brand" icon-name="utility:cancel_file_request" label="Cancel" onclick={closeModal}></lightning-button>
+        <!--&nbsp;&nbsp;<lightning-button class='footer-btn'  variant = "brand" icon-name="utility:cancel_file_request" label="refresh" onclick={refresh}></lightning-button>-->
+      </lightning-button-group>
+      </div>
+      </div>
+    </lightning-card>     
+</template>

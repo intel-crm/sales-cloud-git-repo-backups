@@ -18,10 +18,6 @@
         <relationshipLabel><!-- Program Tier --></relationshipLabel>
     </fields>
     <fields>
-        <label><!-- Account RT --></label>
-        <name>PRM_Account_RT__c</name>
-    </fields>
-    <fields>
         <label><!-- Partner Program --></label>
         <name>PRM_Channel_Program_Id__c</name>
         <relationshipLabel><!-- Partner Program Membership --></relationshipLabel>
@@ -32,43 +28,47 @@
         <relationshipLabel><!-- Partner Program Membership --></relationshipLabel>
     </fields>
     <fields>
-        <label><!-- Notes --></label>
-        <name>PRM_Comments__c</name>
-    </fields>
-    <fields>
         <label><!-- IsUpdated --></label>
         <name>PRM_IsUpdated__c</name>
-    </fields>
-    <fields>
-        <label><!-- Onepartner Id --></label>
-        <name>PRM_Onepartner_Id__c</name>
     </fields>
     <fields>
         <label><!-- Partner Role --></label>
         <name>PRM_Partner_Role__c</name>
         <picklistValues>
-            <masterLabel>Builder</masterLabel>
-            <translation><!-- Builder --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Cloud &amp; Comms Service Provider</masterLabel>
-            <translation><!-- Cloud &amp; Comms Service Provider --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Distributor</masterLabel>
             <translation><!-- Distributor --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Guest</masterLabel>
-            <translation><!-- Guest --></translation>
+            <masterLabel>FPGA Designer</masterLabel>
+            <translation><!-- FPGA Designer --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Independent Software Vendor</masterLabel>
             <translation><!-- Independent Software Vendor --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Manufacturer</masterLabel>
+            <translation><!-- Manufacturer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Applicable</masterLabel>
+            <translation><!-- Not Applicable --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Seller</masterLabel>
+            <translation><!-- Seller --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service Provider</masterLabel>
+            <translation><!-- Service Provider --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Solution Integrator</masterLabel>
             <translation><!-- Solution Integrator --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sponsor</masterLabel>
+            <translation><!-- Sponsor --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -96,7 +96,6 @@
         </picklistValues>
     </fields>
     <fields>
-        <help><!-- On update of any field, Status Reason should also be updated --></help>
         <label><!-- Status Reason --></label>
         <name>PRM_Status_Reason_Txt__c</name>
     </fields>
@@ -113,8 +112,4 @@
         <name>Standard</name>
     </recordTypes>
     <startsWith>Consonant</startsWith>
-    <validationRules>
-        <errorMessage><!-- Please select either Partner/Prestige tier --></errorMessage>
-        <name>PRM_Validate_Tier</name>
-    </validationRules>
 </CustomObjectTranslation>

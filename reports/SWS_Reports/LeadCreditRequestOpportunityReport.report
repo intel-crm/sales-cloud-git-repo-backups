@@ -1,24 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
-    <aggregates>
-        <acrossGroupingContext>SWS_Cloud_Credit_Request__c$SWS_Conversion_Status__c</acrossGroupingContext>
-        <calculatedFormula>IF(
-    ISNULL(PREVGROUPVAL(RowCount, SWS_Cloud_Credit_Request__c.SWS_Conversion_Status__c)),
-    RowCount,
-    IF(
-        ISNULL(PREVGROUPVAL(RowCount, SWS_Cloud_Credit_Request__c.SWS_Conversion_Status__c, 2)),
-        PREVGROUPVAL(RowCount, SWS_Cloud_Credit_Request__c.SWS_Conversion_Status__c)+ RowCount,
-        PREVGROUPVAL(RowCount, SWS_Cloud_Credit_Request__c.SWS_Conversion_Status__c, 2)+ PREVGROUPVAL(RowCount, SWS_Cloud_Credit_Request__c.SWS_Conversion_Status__c) + RowCount
-    )
-)</calculatedFormula>
-        <datatype>number</datatype>
-        <developerName>FORMULA1</developerName>
-        <downGroupingContext>ROW_GRAND_SUMMARY</downGroupingContext>
-        <isActive>true</isActive>
-        <isCrossBlock>false</isCrossBlock>
-        <masterLabel>Count</masterLabel>
-        <scale>2</scale>
-    </aggregates>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_66226505</developerName>
+        <masterLabel>Conversion Status</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>SWS_Cloud_Credit_Request__c$SWS_Conversion_Status__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <value>Other</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Converted to Lead</sourceValue>
+            </sourceValues>
+            <value>Converted to Lead</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Coupon Generated</sourceValue>
+            </sourceValues>
+            <value>Coupon Generated</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Other Opportunity</sourceValue>
+            </sourceValues>
+            <value>Other Opportunity</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Design Win Opportunity</sourceValue>
+            </sourceValues>
+            <value>Design Win Opportunity</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Production Win Opportunity</sourceValue>
+            </sourceValues>
+            <value>Production Win Opportunity</value>
+        </values>
+    </buckets>
     <chart>
         <backgroundColor1>#FFFFFF</backgroundColor1>
         <backgroundColor2>#FFFFFF</backgroundColor2>
@@ -29,14 +51,14 @@
         </chartSummaries>
         <chartType>Funnel</chartType>
         <enableHoverLabels>false</enableHoverLabels>
-        <expandOthers>true</expandOthers>
+        <expandOthers>false</expandOthers>
         <groupingColumn>SWS_Cloud_Credit_Request__c$SWS_Conversion_Status__c</groupingColumn>
         <legendPosition>Right</legendPosition>
         <location>CHART_BOTTOM</location>
         <showAxisLabels>true</showAxisLabels>
         <showPercentage>true</showPercentage>
         <showTotal>false</showTotal>
-        <showValues>false</showValues>
+        <showValues>true</showValues>
         <size>Medium</size>
         <summaryAxisRange>Auto</summaryAxisRange>
         <textColor>#000000</textColor>
@@ -46,6 +68,9 @@
     </chart>
     <columns>
         <field>SWS_Cloud_Credit_Request__c$Name</field>
+    </columns>
+    <columns>
+        <field>SWS_Cloud_Credit_Request__c$SWS_Request_Status_fm__c</field>
     </columns>
     <columns>
         <field>SWS_Cloud_Credit_Request__c$SWS_Request_Status__c</field>
@@ -83,19 +108,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
-            <value>Coupon_Generated</value>
+            <value>Coupon_Generated,Coupon Generated</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
-    <format>Matrix</format>
-    <groupingsAcross>
-        <dateGranularity>Day</dateGranularity>
-        <field>SWS_Cloud_Credit_Request__c$SWS_Conversion_Status__c</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsAcross>
+    <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>SWS_Cloud_Credit_Request__c$SWS_Request_Status_fm__c</field>
+        <field>SWS_Cloud_Credit_Request__c$SWS_Conversion_Status__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>Credit Request-Lead-Opportunity</name>

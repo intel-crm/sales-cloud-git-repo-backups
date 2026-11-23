@@ -69,6 +69,7 @@ export default class pricing_CommentsComponent extends NavigationMixin(Lightning
     wiredPMComments;
     commentsList = [];
     comments = [];
+    timeoutId;
     isFIRPM = false;
     nonFIQuote = true;
 
@@ -140,6 +141,16 @@ export default class pricing_CommentsComponent extends NavigationMixin(Lightning
             this.isRPM = true;
         }
     }
+
+    /*isrendered = false;
+     renderedCallback(){
+         if(!this.isrendered){
+             this.isrendered = true;
+             const styleTag = document.createElement('style');
+             styleTag.innerText = 'textarea { min-height: 150px; }';
+             this.template.querySelectorAll('.commentTextArea').appendChild(styleTag);
+         } 
+     }*/
 
     get disblePMComment() {
         let disable = true;
@@ -252,10 +263,11 @@ export default class pricing_CommentsComponent extends NavigationMixin(Lightning
             this.comments.length === 0
                 ? JSON.parse(JSON.stringify(this.tenderComments.data))
                 : this.comments;
-
+ //console.log('this.comments:'+JSON.stringify(this.comments));
         for (let i in this.comments) {  // NOSONAR
             if (this.comments[i].Id === id) {
                 this.comments[i].Pricing_Answer__c = event.target.value;
+                console.log('this.comments:'+JSON.stringify(this.comments));
                 break;
             }
         }
@@ -267,6 +279,7 @@ export default class pricing_CommentsComponent extends NavigationMixin(Lightning
 
     handleSave() {
         const updatedRecrds = this.comments;
+        console.log('updatedRecrds:'+JSON.stringify(updatedRecrds));
         const recordInput = { tenderComments: updatedRecrds };
 
         const allValid = [
@@ -295,7 +308,7 @@ export default class pricing_CommentsComponent extends NavigationMixin(Lightning
                         variant: 'success',
                     })
                 );
-
+                console.log('updatedRecrds:'+updatedRecrds);
                 // Display fresh data in the datatable
                 return refreshApex(this.tenderComments);
             })

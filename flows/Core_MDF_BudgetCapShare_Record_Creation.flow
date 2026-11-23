@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
-    <apiVersion>55.0</apiVersion>
+    <apiVersion>49.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <assignments>
         <name>Core_MDF_Add_BudgetCapShare_record_to_the_BudgetCapShareCollection</name>
@@ -21,8 +21,8 @@
     <assignments>
         <name>Core_MDF_Assign_the_values_to_the_so_BudgetCapShare_record</name>
         <label>Assign the values to the so_BudgetCapShare record</label>
-        <locationX>1048</locationX>
-        <locationY>199</locationY>
+        <locationX>1049</locationX>
+        <locationY>193</locationY>
         <assignmentItems>
             <assignToReference>so_BudgetCapShare.ParentId</assignToReference>
             <operator>Assign</operator>
@@ -123,10 +123,35 @@
         </rules>
     </decisions>
     <decisions>
+        <name>Core_MDF_IsGroupIdNull</name>
+        <label>IsGroupIdNull</label>
+        <locationX>597</locationX>
+        <locationY>349</locationY>
+        <defaultConnector>
+            <targetReference>Core_MDF_Loop_through_the_Partner_Group_Mapping_Collection</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Core_MDF_ValidGroupId</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>so_PGMRecord.Core_MDF_Group_Id__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>IsInternalGroup</targetReference>
+            </connector>
+            <label>ValidGroupId</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>IsExternalGroup</name>
         <label>IsExternalGroup</label>
-        <locationX>783</locationX>
-        <locationY>202</locationY>
+        <locationX>893</locationX>
+        <locationY>331</locationY>
         <defaultConnector>
             <targetReference>Core_MDF_Loop_through_the_Partner_Group_Mapping_Collection</targetReference>
         </defaultConnector>
@@ -154,8 +179,32 @@
             <label>CheckExternal</label>
         </rules>
     </decisions>
+    <decisions>
+        <name>IsInternalGroup</name>
+        <label>IsInternalGroup</label>
+        <locationX>735</locationX>
+        <locationY>192</locationY>
+        <defaultConnector>
+            <targetReference>IsExternalGroup</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>CheckInternalUser</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>so_PGMRecord.Core_MDF_Type_of_Access__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Internal</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Core_MDF_Assign_the_values_to_the_so_BudgetCapShare_record</targetReference>
+            </connector>
+            <label>CheckInternalUser</label>
+        </rules>
+    </decisions>
     <description>This flow is used to create BudgetCapShare records when a BudgetCap record is created.</description>
-    <environments>Default</environments>
     <interviewLabel>Core_MDF_BudgetCapSharingFlow {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Core_MDF_BudgetCapSharingFlow</label>
     <loops>
@@ -167,7 +216,7 @@
         <collectionReference>soColl_PGMRecords</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
-            <targetReference>IsExternalGroup</targetReference>
+            <targetReference>Core_MDF_IsGroupIdNull</targetReference>
         </nextValueConnector>
         <noMoreValuesConnector>
             <targetReference>Core_MDF_Check_if_BudgetCapShare_Collection_has_records</targetReference>
@@ -177,12 +226,6 @@
         <name>BuilderType</name>
         <value>
             <stringValue>LightningFlowBuilder</stringValue>
-        </value>
-    </processMetadataValues>
-    <processMetadataValues>
-        <name>CanvasMode</name>
-        <value>
-            <stringValue>FREE_FORM_CANVAS</stringValue>
         </value>
     </processMetadataValues>
     <processMetadataValues>
@@ -223,27 +266,6 @@
                 <elementReference>vChannelProgram</elementReference>
             </value>
         </filters>
-        <filters>
-            <field>Core_MDF_Type_of_Access__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>External</stringValue>
-            </value>
-        </filters>
-        <filters>
-            <field>Core_MDF_Group_Id__c</field>
-            <operator>IsNull</operator>
-            <value>
-                <booleanValue>false</booleanValue>
-            </value>
-        </filters>
-        <filters>
-            <field>Core_MDF_Inactive_Ind__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <booleanValue>false</booleanValue>
-            </value>
-        </filters>
         <object>Core_MDF_Partner_Group_Mapping__c</object>
         <outputReference>soColl_PGMRecords</outputReference>
         <queriedFields>Id</queriedFields>
@@ -254,13 +276,7 @@
         <sortField>Core_MDF_Type_of_Access__c</sortField>
         <sortOrder>Asc</sortOrder>
     </recordLookups>
-    <start>
-        <locationX>50</locationX>
-        <locationY>50</locationY>
-        <connector>
-            <targetReference>Core_MDF_Fetch_all_the_Partner_Group_Mapping_Records</targetReference>
-        </connector>
-    </start>
+    <startElementReference>Core_MDF_Fetch_all_the_Partner_Group_Mapping_Records</startElementReference>
     <status>Active</status>
     <variables>
         <name>so_BudgetCapRecord</name>

@@ -1,103 +1,67 @@
 @isTest
 public class UCD_ACM_AccountReqQueueHandlerTest {
     
-        @TestSetup
-    private static void setCommonData(){
-        // Create a reltio user
-        User us = new User(
-            ProfileId = [SELECT Id FROM Profile WHERE Name = 'Integration'].Id,
-            FirstName = 'Reltio',
-            LastName = 'SFDC Connector',
-            Email = 'Test@example.com',
-            Username = 'ucd_reltio_connector_user@test.com' + System.currentTimeMillis(),
-            CompanyName = 'TEST',
-            Title = 'Test Title',
-            Alias = 'alias',
-            TimeZoneSidKey = 'America/Los_Angeles',
-            EmailEncodingKey = 'UTF-8',
-            LanguageLocaleKey = 'en_US',
-            LocaleSidKey = 'en_US'
-        );
-        insert us;
+    @TestSetup
+    Private static void setCommonData(){
         
-        // Create Requested Account
-        Account reuestedAccount = UCD_ACM_Cntrlr_TestDataInitialization.createAccountByRecordType('TestChildAccount1','Requested Account','UNFD_GLBL_CUST');
-        insert reuestedAccount;
+        
+      Account parentAccount = UCD_ACM_Cntrlr_TestDataInitialization.createAccountByRecordType('ParentAccount','Intel Account','UNFD_CTRY_CUST');
+	  Insert parentAccount;
+        
+      Account intelAccount = UCD_ACM_Cntrlr_TestDataInitialization.createAccountByRecordType('Account6','Intel Account','UNFD_CTRY_CUST');
+	  IntelAccount.ParentId = parentAccount.Id;
+        Insert intelAccount;
+       
+      Account_Create_Request__c AccountReq = UCD_ACM_Cntrlr_TestDataInitialization.createAccountRequest('Accountnew', 'Approved',intelAccount);
+      Insert AccountReq;  
+              
+      Account_Create_Request__c AccountReq1 = UCD_ACM_Cntrlr_TestDataInitialization.createAccountRequest('Account1','Approved',intelAccount);
+      AccountReq1.Status__c = 'Rejected';
+      Insert AccountReq1;
+        
+      Account_Create_Request__c AccountReq2 = UCD_ACM_Cntrlr_TestDataInitialization.createAccountRequest('Account2','Rejected',null);
+      Insert AccountReq2;
+      
+      Account_Create_Request__c AccountReq3 = UCD_ACM_Cntrlr_TestDataInitialization.createAccountRequest('Account3','Rejected',null);
+      AccountReq3.Status__c = 'Approved';
+      Insert AccountReq3;
+        System.debug('AccountReq3'+AccountReq3);
+        
+       
     }
+    @isTest
+    private static void checkForRejectedStatus(){
+        List<Account_Create_Request__c> AccountreqRejected = [Select Id,Name,Account_Name__c,Status__c,Rejected_Reason__c,Requested_Account__c from Account_Create_Request__c where (Account_Name__c = 'Account2' )];       
+        
+        List<Account_Create_Request__c> accountsBeforeUpdate = [Select Id,Name,Account_Name__c,Status__c,Rejected_Reason__c,Requested_Account__c from Account_Create_Request__c where (Account_Name__c = 'Account3' )];       
+        
+        List<Account_Create_Request__c> accountsAfterUpdate = [Select Id,Name,Account_Name__c,Status__c,Rejected_Reason__c,Requested_Account__c from Account_Create_Request__c where (Account_Name__c =  'Account3')];
+        accountsAfterUpdate[0].Status__c = 'Rejected';
+        
+        Test.startTest();
+        	UCD_ACM_AccountReqQueueTriggerHandler.triggerPlatformEventOnUpdate(new List<Account_Create_Request__c>(accountsAfterUpdate), new Map<Id,Account_Create_Request__c>(accountsBeforeUpdate));
+        Test.stopTest();
+        
+        System.assertEquals(AccountreqRejected[0].Status__c, accountsAfterUpdate[0].Status__c, 'Status Assignment is not correct.');	        
+    }  
     
     @isTest
-    private static void publishAccountRequestPlatformEventTest(){
+    private static void checkForApprovedStatus(){
+        List<Account_Create_Request__c> AccountreqRejected = [Select Id,Name,Account_Name__c,Status__c,Rejected_Reason__c,Requested_Account__c,Requested_Account__r.ParentId from Account_Create_Request__c where (Account_Name__c = 'Accountnew' )];       
         
-        Account account = [Select Id,Name,ParentId,RecordtypeId,LastModifiedById from Account Where Name = 'TestChildAccount1' LIMIT 1];
-
-        Account_Create_Request__c req = new Account_Create_Request__c();
-        req.Account_Name__c = 'Sample Account';
-        req.Process_Type__c = 'Partner';
-        req.Requestor_Name__c = UserInfo.getName();
-        req.Requestor_Email__c = UserInfo.getUserEmail()+'.invalid';
-        req.Status__c = 'Pending Approval';
-        req.Core_Account_Reference_Source_Name__c = 'Partner'; 
-        req.Address__City__s = 'Test';
-        req.Address__CountryCode__s = 'IND';
-        req.Address__Street__s = 'Test';
-        insert req;
+        List<Account_Create_Request__c> accountsBeforeUpdate = [Select Id,Name,Account_Name__c,Status__c,Rejected_Reason__c,Requested_Account__c,Requested_Account__r.ParentId from Account_Create_Request__c where (Account_Name__c = 'Account1' )];       
         
-        User userRec = [Select Id FROM User Where Username Like '%ucd_reltio_connector_user@test.com%' LIMIT 1];
+        List<Account_Create_Request__c> accountsAfterUpdate = [Select Id,Name,Account_Name__c,Status__c,Rejected_Reason__c,Requested_Account__c,Requested_Account__r.ParentId from Account_Create_Request__c where (Account_Name__c =  'Account1')];
+        accountsAfterUpdate[0].Status__c = 'Approved';
         
-        test.startTest();
-        	System.runAs(userRec) {
-                Account_Create_Request__c req1 = [Select Id, Status__c, Requested_Account__c FROM Account_Create_Request__c LIMIT 1];
-                	req1.Status__c = 'Approved';
-                	req1.Requested_Account__c = account.Id;
-                update req1;
-                UCD_ACM_AccountPlatformEvent_Batch batchJob = new UCD_ACM_AccountPlatformEvent_Batch();
-                Id batchJobId = Database.executeBatch(batchJob, 200);
-            }
-        test.stopTest();
+        Test.startTest();
+        	UCD_ACM_AccountReqQueueTriggerHandler.triggerPlatformEventOnUpdate(new List<Account_Create_Request__c>(accountsAfterUpdate), new Map<Id,Account_Create_Request__c>(accountsBeforeUpdate));
+        Test.stopTest();
         
-        ACM_Integration_Message_Queue__c integrationMessage = [SELECT Id,Content__c, Content_Type__c, Message_Status__c, Module_Name__c, Queue_Type__c, Source_System__c, Custom_Filter__c FROM ACM_Integration_Message_Queue__c WHERE Content_Type__c = 'ARQId' AND Module_Name__c = 'SBR' AND Queue_Type__c = 'Outbound' AND Source_System__c = 'SBR' LIMIT 1];
-        Assert.isTrue(integrationMessage.Message_Status__c == 'Success', 'Request process failed');
-    }
+        System.assertEquals(AccountreqRejected[0].Status__c, accountsAfterUpdate[0].Status__c, 'Status Assignment is not correct.');	        
+    }  
     
-    @isTest
-    private static void publishAccountRequestPlatformEventExistingTest(){
-        
-        Account account = [Select Id,Name,ParentId,RecordtypeId,LastModifiedById from Account Where Name = 'TestChildAccount1' LIMIT 1];
+    
+    
 
-        Account_Create_Request__c req = new Account_Create_Request__c();
-        req.Account_Name__c = 'Sample Account';
-        req.Process_Type__c = 'Partner';
-        req.Requestor_Name__c = UserInfo.getName();
-        req.Requestor_Email__c = UserInfo.getUserEmail()+'.invalid';
-        req.Status__c = 'Pending Approval';
-        req.Core_Account_Reference_Source_Name__c = 'Partner'; 
-        req.Address__City__s = 'Test';
-        req.Address__CountryCode__s = 'IND';
-        req.Address__Street__s = 'Test';
-        insert req;
-        
-        ACM_Integration_Message_Queue__c im = new ACM_Integration_Message_Queue__c();
-        im.Custom_Filter__c = String.valueOf(req.Id);
-        im.Content__c = String.valueOf(req.Id);
-        im.Content_Type__c = 'ARQId';
-        im.Module_Name__c = 'SBR';
-        im.Source_System__c = 'SBR';
-        im.Queue_Type__c = 'Outbound';
-        im.Message_Status__c = 'Success';
-        insert im;
-            
-        User userRec = [Select Id FROM User Where Username Like '%ucd_reltio_connector_user@test.com%' LIMIT 1];
-        
-        test.startTest();
-        	System.runAs(userRec) {
-                Account_Create_Request__c req1 = [Select Id, Status__c, Requested_Account__c FROM Account_Create_Request__c LIMIT 1];
-                	req1.Status__c = 'Approved';
-                	req1.Requested_Account__c = account.Id;
-                update req1;
-            }
-        test.stopTest();
-        
-        ACM_Integration_Message_Queue__c integrationMessage = [SELECT Id,Content__c, Content_Type__c, Message_Status__c, Module_Name__c, Queue_Type__c, Source_System__c, Custom_Filter__c FROM ACM_Integration_Message_Queue__c WHERE Content_Type__c = 'ARQId' AND Module_Name__c = 'SBR' AND Queue_Type__c = 'Outbound' AND Source_System__c = 'SBR' LIMIT 1];
-        Assert.areEqual('New',integrationMessage.Message_Status__c, 'Request process failed');
-    }
 }

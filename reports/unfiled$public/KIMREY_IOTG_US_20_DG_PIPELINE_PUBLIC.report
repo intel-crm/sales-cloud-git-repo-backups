@@ -148,7 +148,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Weinstein,Catalano,Garrigues,Kimberly Carlton,Darrah,Miron,Quoyeser,David Allen,Kimrey,Bossin</value>
+            <value>Weinstein,Catalano,Garrigues,Carlton,Darrah,Miron,Quoyeser,Allen,KImrey,Bossin</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -179,7 +179,7 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <endDate>2021-12-31</endDate>
+        <endDate>2020-12-26</endDate>
         <interval>INTERVAL_CUSTOM</interval>
         <startDate>2019-12-29</startDate>
     </timeFrameFilter>

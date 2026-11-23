@@ -130,7 +130,7 @@
         <actionName>View</actionName>
         <comment>Action override created by Lightning App Builder during activation.</comment>
         <content>Product_Record_Page1</content>
-        <formFactor>Large</formFactor>
+        <formFactor>Small</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
     </actionOverrides>
@@ -138,7 +138,7 @@
         <actionName>View</actionName>
         <comment>Action override created by Lightning App Builder during activation.</comment>
         <content>Product_Record_Page1</content>
-        <formFactor>Small</formFactor>
+        <formFactor>Large</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
     </actionOverrides>
@@ -259,6 +259,11 @@
             <isFieldManaged>false</isFieldManaged>
             <isRequired>false</isRequired>
         </displayedFields>
+        <displayedFields>
+            <field>Core_OPN__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
         <label>Search Filters</label>
     </fieldSets>
     <fieldSets>
@@ -335,12 +340,12 @@
             <isRequired>false</isRequired>
         </displayedFields>
         <displayedFields>
-            <field>Core_OPN__c</field>
+            <field>Name</field>
             <isFieldManaged>false</isFieldManaged>
             <isRequired>false</isRequired>
         </displayedFields>
         <displayedFields>
-            <field>Name</field>
+            <field>Core_OPN__c</field>
             <isFieldManaged>false</isFieldManaged>
             <isRequired>false</isRequired>
         </displayedFields>
@@ -526,14 +531,6 @@
         <required>false</required>
         <trackHistory>true</trackHistory>
         <type>Date</type>
-    </fields>
-    <fields>
-        <fullName>Core_End_of_Intel_Service_Flag__c</fullName>
-        <formula>NOT(OR( ISNULL(Core_End_of_Intel_Service_Date__c) ,
-(  Core_End_of_Intel_Service_Date__c &gt; TODAY() ) ))</formula>
-        <label>End of Intel Service Flag</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>Core_Expiration_Date__c</fullName>
@@ -734,7 +731,7 @@ for DEV KIT expect class value as &quot;BD&quot;</description>
         <label>Product Class</label>
         <length>255</length>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <type>Text</type>
         <unique>false</unique>
     </fields>
@@ -758,6 +755,19 @@ for DEV KIT expect class value as &quot;BD&quot;</description>
         <label>Orderable</label>
         <trackHistory>true</trackHistory>
         <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_Item_Package_Txt__c</fullName>
+        <description>Business currently use this field to determine some Business Process.
+Material Id is not present in Siebel, instead they go to SAP and search the Material Master for equivalent product.
+Material Master is 1-1 mapping with product(Unique).</description>
+        <externalId>false</externalId>
+        <label>Package</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Core_Item_Price_Authorization_Ind__c</fullName>
@@ -820,24 +830,6 @@ for DEV KIT expect class value as &quot;BD&quot;</description>
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Core_Line_Of_Business_Description__c</fullName>
-        <label>Line Of Business Description</label>
-        <length>32768</length>
-        <trackHistory>false</trackHistory>
-        <type>LongTextArea</type>
-        <visibleLines>3</visibleLines>
-    </fields>
-    <fields>
-        <fullName>Core_Line_of_Business__c</fullName>
-        <externalId>false</externalId>
-        <label>Line of Business</label>
-        <length>255</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_Max_TDP__c</fullName>
         <description>Max_TDP</description>
         <externalId>false</externalId>
@@ -888,7 +880,7 @@ for DEV KIT expect class value as &quot;BD&quot;</description>
         <description>Flag to indicate if this product is visible to partner user</description>
         <inlineHelpText>Determines whether this Product is available to external partner users for selection on Opportunities. This product is added to the Partner Price Book.</inlineHelpText>
         <label>Partner Visible</label>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <type>Checkbox</type>
     </fields>
     <fields>
@@ -928,6 +920,17 @@ for DEV KIT expect class value as &quot;BD&quot;</description>
         <length>128</length>
         <required>false</required>
         <trackHistory>true</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Platform_Eligibility__c</fullName>
+        <description>Platform Eligibility ---  DON&apos;T USE THIS FIELD</description>
+        <externalId>false</externalId>
+        <label>Platform Eligibility_EOL</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
         <type>Text</type>
         <unique>false</unique>
     </fields>
@@ -986,7 +989,7 @@ for DEV KIT expect class value as &quot;BD&quot;</description>
         <label>Product Density Value</label>
         <length>255</length>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <type>Text</type>
         <unique>false</unique>
     </fields>
@@ -1160,25 +1163,6 @@ VPH lvl 1</description>
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Core_Profit_Center_Description__c</fullName>
-        <label>Profit Center Description</label>
-        <length>32768</length>
-        <trackHistory>false</trackHistory>
-        <type>LongTextArea</type>
-        <visibleLines>3</visibleLines>
-    </fields>
-    <fields>
-        <fullName>Core_Profit_Center__c</fullName>
-        <description>Represents Profit center</description>
-        <externalId>false</externalId>
-        <label>Profit Center</label>
-        <length>255</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_SA_Is_EOL__c</fullName>
         <defaultValue>false</defaultValue>
         <label>Sales Assist Is EOL</label>
@@ -1218,6 +1202,17 @@ VPH lvl 1</description>
         <type>Checkbox</type>
     </fields>
     <fields>
+        <fullName>Core_Solution_Area__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Solution Area</label>
+        <referenceTo>Core_Solution_Storage__c</referenceTo>
+        <relationshipLabel>Products</relationshipLabel>
+        <relationshipName>Products</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
         <fullName>Core_StableImagePlatformProgVer_Ind__c</fullName>
         <defaultValue>false</defaultValue>
         <label>Stable Image Platform Program Version</label>
@@ -1253,16 +1248,9 @@ VPH lvl 1</description>
         <label>iPaaS Load ID</label>
         <length>20</length>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <type>Text</type>
         <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Deactivation_Date__c</fullName>
-        <label>Deactivation Date</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Date</type>
     </fields>
     <fields>
         <fullName>Description</fullName>
@@ -2333,7 +2321,7 @@ VPH lvl 1</description>
         <precision>5</precision>
         <required>false</required>
         <scale>0</scale>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -2505,6 +2493,17 @@ VPH lvl 1</description>
         <type>Lookup</type>
     </fields>
     <fields>
+        <fullName>Sales_Serial_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>Serial_Number</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
         <fullName>SpecificationType</fullName>
     </fields>
     <fields>
@@ -2613,43 +2612,40 @@ VPH lvl 1</description>
         <language>en_US</language>
     </listViews>
     <listViews>
-        <fullName>AllProducts</fullName>
-        <columns>Core_Product_Org__c</columns>
+        <fullName>Active_Products</fullName>
         <columns>PRODUCT2.NAME</columns>
-        <columns>Core_Code_Name__c</columns>
-        <columns>PRODUCT2.ACTIVE</columns>
-        <columns>Core_IPS_Visible_Flag__c</columns>
-        <columns>Core_Sales_Visible_Flag__c</columns>
-        <columns>Core_Product_Name_EPM_ID__c</columns>
-        <columns>Core_Unique_ID__c</columns>
         <columns>Core_OPN__c</columns>
-        <columns>CREATEDBY_USER.ALIAS</columns>
-        <columns>UPDATEDBY_USER.ALIAS</columns>
-        <columns>PRODUCT2.LAST_UPDATE</columns>
+        <columns>PRODUCT2.CUSTOMER_PRODUCT_ID</columns>
+        <columns>PRODUCT2.DESCRIPTION</columns>
+        <columns>PRODUCT2.FAMILY</columns>
         <filterScope>Everything</filterScope>
         <filters>
-            <field>Core_Sales_Visible_Flag__c</field>
+            <field>PRODUCT2.ACTIVE</field>
             <operation>equals</operation>
             <value>1</value>
         </filters>
-        <label>All Products</label>
+        <filters>
+            <field>Core_OPN__c</field>
+            <operation>notEqual</operation>
+        </filters>
+        <label>Active Products</label>
     </listViews>
     <listViews>
         <fullName>All_Active_PSG_Products</fullName>
-        <booleanFilter>1 AND (2 OR 3)</booleanFilter>
         <columns>PRODUCT2.NAME</columns>
         <columns>PRODUCT2.ACTIVE</columns>
         <columns>Core_OPN__c</columns>
+        <columns>PRODUCT2.CREATED_DATE</columns>
+        <columns>Core_Item_Orderable_Ind__c</columns>
+        <columns>Core_Item_Quotable_Ind__c</columns>
+        <columns>Core_Item_Shippable_Ind__c</columns>
         <columns>Core_Hierarchy_ID__c</columns>
         <columns>Core_Hierarchy_Name__c</columns>
         <columns>Core_Item_Id__c</columns>
-        <columns>Core_Item_Orderable_Ind__c</columns>
         <columns>Core_Item_Price_Authorization_Ind__c</columns>
         <columns>Core_Item_Class_Nm__c</columns>
         <columns>Core_Product_Status__c</columns>
-        <columns>Core_Item_Quotable_Ind__c</columns>
         <columns>Core_Sales_Visible_Flag__c</columns>
-        <columns>Core_Item_Shippable_Ind__c</columns>
         <columns>Core_Item_Signal_Cd__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
@@ -2658,14 +2654,13 @@ VPH lvl 1</description>
             <value>1</value>
         </filters>
         <filters>
-            <field>Core_Product_Type_Nm__c</field>
-            <operation>equals</operation>
-            <value>Tool</value>
+            <field>Core_OPN__c</field>
+            <operation>notEqual</operation>
         </filters>
         <filters>
-            <field>Core_Product_Type_Nm__c</field>
+            <field>Core_Item_Orderable_Ind__c</field>
             <operation>equals</operation>
-            <value>Component</value>
+            <value>1</value>
         </filters>
         <label>All Active PSG Products</label>
     </listViews>
@@ -2686,6 +2681,30 @@ VPH lvl 1</description>
         <filterScope>Everything</filterScope>
         <filters>
             <field>Core_Product_Type_Nm__c</field>
+            <operation>equals</operation>
+            <value>Component</value>
+        </filters>
+        <filters>
+            <field>PRODUCT2.ACTIVE</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <filters>
+            <field>Core_Product_Org__c</field>
+            <operation>equals</operation>
+            <value>Sales</value>
+        </filters>
+        <label>All Component Products</label>
+    </listViews>
+    <listViews>
+        <fullName>All_Component_Products1</fullName>
+        <columns>PRODUCT2.NAME</columns>
+        <columns>PRODUCT2.CUSTOMER_PRODUCT_ID</columns>
+        <columns>PRODUCT2.DESCRIPTION</columns>
+        <columns>PRODUCT2.FAMILY</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_Product_Type__c</field>
             <operation>equals</operation>
             <value>Component</value>
         </filters>
@@ -2710,7 +2729,6 @@ VPH lvl 1</description>
             <value>1</value>
         </filters>
         <label>All IPS Products</label>
-        <language>en_US</language>
     </listViews>
     <listViews>
         <fullName>All_Inactive_Products</fullName>
@@ -2728,7 +2746,6 @@ VPH lvl 1</description>
     </listViews>
     <listViews>
         <fullName>All_PSG_Products</fullName>
-        <booleanFilter>(1 OR 2) and 3</booleanFilter>
         <columns>PRODUCT2.NAME</columns>
         <columns>Core_OPN__c</columns>
         <columns>Core_Item_Id__c</columns>
@@ -2746,43 +2763,20 @@ VPH lvl 1</description>
         <columns>Core_Item_Signal_Cd__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
-            <field>Core_Product_Type_Nm__c</field>
+            <field>PRODUCT2.ACTIVE</field>
             <operation>equals</operation>
-            <value>Tool</value>
+            <value>1</value>
         </filters>
         <filters>
-            <field>Core_Product_Type_Nm__c</field>
+            <field>Core_Item_Orderable_Ind__c</field>
             <operation>equals</operation>
-            <value>Component</value>
+            <value>1</value>
         </filters>
-        <filters>
-            <field>PRODUCT2.NAME</field>
-            <operation>equals</operation>
-            <value>Questa*-Intel® FPGA Edition SW-QUESTA-VWR</value>
-        </filters>
-        <label>All PSG Products</label>
-    </listViews>
-    <listViews>
-        <fullName>All_Products_Filter</fullName>
-        <columns>Core_Product_Org__c</columns>
-        <columns>PRODUCT2.NAME</columns>
-        <columns>Core_Code_Name__c</columns>
-        <columns>PRODUCT2.ACTIVE</columns>
-        <columns>Core_IPS_Visible_Flag__c</columns>
-        <columns>Core_Sales_Visible_Flag__c</columns>
-        <columns>Core_Product_Name_EPM_ID__c</columns>
-        <columns>Core_Unique_ID__c</columns>
-        <columns>Core_Hierarchy_Name__c</columns>
-        <columns>Core_OPN__c</columns>
-        <columns>UPDATEDBY_USER.ALIAS</columns>
-        <columns>PRODUCT2.LAST_UPDATE</columns>
-        <filterScope>Everything</filterScope>
         <filters>
             <field>Core_OPN__c</field>
-            <operation>equals</operation>
-            <value>SW-CORPORATE</value>
+            <operation>notEqual</operation>
         </filters>
-        <label>All Products Filter</label>
+        <label>All PSG Products</label>
     </listViews>
     <listViews>
         <fullName>All_Tools_Products</fullName>
@@ -2803,6 +2797,25 @@ VPH lvl 1</description>
             <field>Core_Product_Type_Nm__c</field>
             <operation>equals</operation>
             <value>Tool</value>
+        </filters>
+        <filters>
+            <field>Core_Item_Class_Nm__c</field>
+            <operation>equals</operation>
+            <value>SV</value>
+        </filters>
+        <filters>
+            <field>Core_BU_Operation_Code__c</field>
+            <operation>equals</operation>
+            <value>HJ</value>
+        </filters>
+        <filters>
+            <field>PRODUCT2.ACTIVE</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <filters>
+            <field>Core_OPN__c</field>
+            <operation>notEqual</operation>
         </filters>
         <label>All Tools Products</label>
     </listViews>
@@ -2879,6 +2892,123 @@ VPH lvl 1</description>
         <label>IPS Visible All Products</label>
     </listViews>
     <listViews>
+        <fullName>Design_Registration_Eligible_Products</fullName>
+        <columns>PRODUCT2.NAME</columns>
+        <columns>PRODUCT2.CUSTOMER_PRODUCT_ID</columns>
+        <columns>PRODUCT2.DESCRIPTION</columns>
+        <columns>PRODUCT2.FAMILY</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_Design_Registration_Eligible_Ind__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>Design Registration Eligible Products</label>
+    </listViews>
+    <listViews>
+        <fullName>IPS_Active_Products</fullName>
+        <columns>PRODUCT2.NAME</columns>
+        <columns>PRODUCT2.CUSTOMER_PRODUCT_ID</columns>
+        <columns>PRODUCT2.DESCRIPTION</columns>
+        <columns>PRODUCT2.FAMILY</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_IPS_Visible_Flag__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <filters>
+            <field>PRODUCT2.ACTIVE</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>IPS Active Products</label>
+    </listViews>
+    <listViews>
+        <fullName>IQR_Products</fullName>
+        <columns>PRODUCT2.NAME</columns>
+        <columns>PRODUCT2.CUSTOMER_PRODUCT_ID</columns>
+        <columns>PRODUCT2.DESCRIPTION</columns>
+        <columns>PRODUCT2.FAMILY</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_IQR_Visible__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>IQR Products</label>
+    </listViews>
+    <listViews>
+        <fullName>New_Products</fullName>
+        <columns>PRODUCT2.NAME</columns>
+        <columns>PRODUCT2.CUSTOMER_PRODUCT_ID</columns>
+        <columns>PRODUCT2.DESCRIPTION</columns>
+        <columns>PRODUCT2.FAMILY</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>PRODUCT2.CREATED_DATE</field>
+            <operation>equals</operation>
+            <value>YESTERDAY</value>
+        </filters>
+        <label>New Products</label>
+    </listViews>
+    <listViews>
+        <fullName>Products_With_Available_for_New_Designs</fullName>
+        <columns>PRODUCT2.NAME</columns>
+        <columns>PRODUCT2.CUSTOMER_PRODUCT_ID</columns>
+        <columns>PRODUCT2.DESCRIPTION</columns>
+        <columns>PRODUCT2.FAMILY</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_Avail_for_New_Designs__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>Products With Available for New Designs</label>
+    </listViews>
+    <listViews>
+        <fullName>Products_With_DDR_Eligible</fullName>
+        <columns>PRODUCT2.NAME</columns>
+        <columns>PRODUCT2.CUSTOMER_PRODUCT_ID</columns>
+        <columns>PRODUCT2.DESCRIPTION</columns>
+        <columns>PRODUCT2.FAMILY</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_Design_Registration_Eligible_Ind__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>Products With DDR Eligible</label>
+    </listViews>
+    <listViews>
+        <fullName>Products_With_IPS_Visible_Flag</fullName>
+        <columns>PRODUCT2.NAME</columns>
+        <columns>PRODUCT2.CUSTOMER_PRODUCT_ID</columns>
+        <columns>PRODUCT2.DESCRIPTION</columns>
+        <columns>PRODUCT2.FAMILY</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_IPS_Visible_Flag__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>Products With IPS Visible Flag</label>
+    </listViews>
+    <listViews>
+        <fullName>Products_With_IQR_Visible_Flag</fullName>
+        <columns>PRODUCT2.NAME</columns>
+        <columns>PRODUCT2.CUSTOMER_PRODUCT_ID</columns>
+        <columns>PRODUCT2.DESCRIPTION</columns>
+        <columns>PRODUCT2.FAMILY</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_IQR_Visible__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>Products With IQR Visible Flag</label>
+    </listViews>
+    <listViews>
         <fullName>Products_for_Copilot</fullName>
         <columns>PRODUCT2.NAME</columns>
         <columns>PRODUCT2.DESCRIPTION</columns>
@@ -2895,6 +3025,392 @@ VPH lvl 1</description>
             <allInternalUsers></allInternalUsers>
         </sharedTo>
     </listViews>
+    <listViews>
+        <fullName>Sales_Active_Products</fullName>
+        <columns>PRODUCT2.NAME</columns>
+        <columns>PRODUCT2.CUSTOMER_PRODUCT_ID</columns>
+        <columns>PRODUCT2.DESCRIPTION</columns>
+        <columns>PRODUCT2.FAMILY</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>PRODUCT2.ACTIVE</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <filters>
+            <field>Core_Product_Org__c</field>
+            <operation>equals</operation>
+            <value>Sales</value>
+        </filters>
+        <label>Sales Active Products</label>
+    </listViews>
+    <listViews>
+        <fullName>Sales_Products</fullName>
+        <columns>PRODUCT2.NAME</columns>
+        <columns>PRODUCT2.CUSTOMER_PRODUCT_ID</columns>
+        <columns>PRODUCT2.DESCRIPTION</columns>
+        <columns>PRODUCT2.FAMILY</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_Sales_Visible_Flag__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>Sales Products</label>
+    </listViews>
+    <listViews>
+        <fullName>VPH_Product_Types</fullName>
+        <columns>PRODUCT2.NAME</columns>
+        <columns>PRODUCT2.CUSTOMER_PRODUCT_ID</columns>
+        <columns>PRODUCT2.DESCRIPTION</columns>
+        <columns>PRODUCT2.FAMILY</columns>
+        <filterScope>Everything</filterScope>
+        <label>VPH Product Types</label>
+    </listViews>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>Tools_Product</fullName>
+        <active>true</active>
+        <label>Tools Product</label>
+        <picklistValues>
+            <picklist>Core_Cross_Selling_Product_Type_Nm__c</picklist>
+            <values>
+                <fullName>Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Data Center</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_IPS_Visible_Flag_Internal__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_Product_Org__c</picklist>
+            <values>
+                <fullName>IPS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sales</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Family</picklist>
+            <values>
+                <fullName>None</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>QuantityUnitOfMeasure</picklist>
+            <values>
+                <fullName>Each</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>SBQQ__AssetAmendmentBehavior__c</picklist>
+            <values>
+                <fullName>Allow Refund</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Default</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>SBQQ__AssetConversion__c</picklist>
+            <values>
+                <fullName>One per quote line</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>One per unit</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>SBQQ__BillingFrequency__c</picklist>
+            <values>
+                <fullName>Annual</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Invoice Plan</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Monthly</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Quarterly</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Semiannual</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>SBQQ__BillingType__c</picklist>
+            <values>
+                <fullName>Advance</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Arrears</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>SBQQ__BlockPricingField__c</picklist>
+            <values>
+                <fullName>Quantity</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>SBQQ__ChargeType__c</picklist>
+            <values>
+                <fullName>One-Time</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Recurring</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Usage</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>SBQQ__ConfigurationEvent__c</picklist>
+            <values>
+                <fullName>Add</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Always</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Edit</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>SBQQ__ConfigurationFieldSet__c</picklist>
+            <values>
+                <fullName>OptionConfiguration</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pricing_SW_OptionConfiguration</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>SBQQ__ConfigurationType__c</picklist>
+            <values>
+                <fullName>Allowed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Disabled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Required</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>SBQQ__CustomerCommunityAvailability__c</picklist>
+            <values>
+                <fullName>Always</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Never</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Only when already owned</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>SBQQ__DefaultPricingTable__c</picklist>
+            <values>
+                <fullName>Segmented</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Standard</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>SBQQ__DynamicPricingConstraint__c</picklist>
+            <values>
+                <fullName>List price is maximum</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>List price is minimum</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>SBQQ__GenerateContractedPrice__c</picklist>
+            <values>
+                <fullName>Discount Schedule</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Do Not Generate</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Price</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>SBQQ__OptionLayout__c</picklist>
+            <values>
+                <fullName>Sections</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tabs</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Wizard</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>SBQQ__OptionSelectionMethod__c</picklist>
+            <values>
+                <fullName>Add</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Click</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>SBQQ__PricingMethod__c</picklist>
+            <values>
+                <fullName>Block</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cost</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>List</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Percent Of Total</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>SBQQ__SubscriptionBase__c</picklist>
+            <values>
+                <fullName>Customer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>List</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Net</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Regular</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>SBQQ__SubscriptionCategory__c</picklist>
+            <values>
+                <fullName>Hardware</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Software</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>SBQQ__SubscriptionPricing__c</picklist>
+            <values>
+                <fullName>Fixed Price</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Percent Of Total</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>SBQQ__SubscriptionType__c</picklist>
+            <values>
+                <fullName>Evergreen</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>One-time</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Renewable</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Renewable%2FEvergreen</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>SBQQ__TermDiscountLevel__c</picklist>
+            <values>
+                <fullName>Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Line</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Quote</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
     <searchLayouts>
         <customTabListAdditionalFields>PRODUCT2.NAME</customTabListAdditionalFields>
         <customTabListAdditionalFields>Core_Code_Name__c</customTabListAdditionalFields>
@@ -2963,8 +3479,38 @@ IF ( Core_IPS_Visible_Flag__c, TRUE, FALSE), FALSE
         <errorMessage>Cannot Edit Name field</errorMessage>
     </validationRules>
     <validationRules>
-        <fullName>Core_Prevent_PSGU_Non_PSG_Product_Fields</fullName>
+        <fullName>Core_Prevent_Non_PSG_Usr_Product_Fields</fullName>
         <active>false</active>
+        <description>Prevent Non PSG users from modifying PSG data</description>
+        <errorConditionFormula>IF(($Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c=TRUE || $Profile.Name ==&apos;System Administrator&apos; || $Profile.Name ==&apos;IT Admin&apos;)
+,FALSE,
+(
+NOT(($Permission.PSG_Master_Data_Read_Access || $Permission.PSG_Master_Data_Read_Write_Access ||
+$Permission.PSG_Account_Contact_Read_Write_Access || $Permission.PSG_Account_Contact_Super_Admin || $Permission.PSG_Product_Super_Admin || $Permission.PSG_Product_Read_Write_Access)) &amp;&amp;
+(   
+	ischanged(Core_Item_Price_Authorization_Ind__c) || 
+	ischanged(Core_Item_Quotable_Ind__c) || 
+	ischanged(Core_Item_Orderable_Ind__c) || 
+	ischanged(Core_Item_Shippable_Ind__c) || 
+	ischanged(Core_Item_Standard_Cost_Amt__c) || 
+	ischanged(Core_Item_Class_Nm__c) || 
+	ischanged(Core_Item_Sub_Component_Category_Nm__c) || 
+	ischanged(Core_Item_Signal_Cd__c) || 
+	ischanged(Core_Item_Id__c) || 
+	ischanged(Core_Item_Package_Txt__c) || 
+	ischanged(Core_Product_Ext_Attribute_Id__c) || 
+	ischanged(Core_Product_Type_Nm__c) || 
+	ischanged(Core_SW_Prod_Avail_To_TL_ORD_ENBLMT_Ind__c) || 
+	ischanged(Core_Prod_Tool_Type_Nm__c) || 
+	ischanged(Core_Class_and_Component_Sub_Category_Nm__c)
+)
+)
+)</errorConditionFormula>
+        <errorMessage>You cannot edit PSG data</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_Prevent_PSGU_Non_PSG_Product_Fields</fullName>
+        <active>true</active>
         <description>Prevent PSG Users from editing Non-PSG data</description>
         <errorConditionFormula>IF(($Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c=TRUE || $Profile.Name ==&apos;System Administrator&apos; || $Profile.Name ==&apos;IT Admin&apos;)
 ,FALSE,

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>AC リアルタイムメトリクス</value>
+    </caseValues>
+    <fields>
+        <label> アフターコンタクトワーク中のエージェント </label>
+        <name>amazonconnect__Agents_After_Contact_Work__c</name>
+    </fields>
+    <fields>
+        <label> 使用可能なエージェント </label>
+        <name>amazonconnect__Agents_Available__c</name>
+    </fields>
+    <fields>
+        <label> エージェントエラー </label>
+        <name>amazonconnect__Agents_Error__c</name>
+    </fields>
+    <fields>
+        <label> 稼動していないエージェント </label>
+        <name>amazonconnect__Agents_Non_Productive__c</name>
+    </fields>
+    <fields>
+        <label> オンコールエージェント </label>
+        <name>amazonconnect__Agents_On_Call__c</name>
+    </fields>
+    <fields>
+        <label> オンラインのエージェント </label>
+        <name>amazonconnect__Agents_Online__c</name>
+    </fields>
+    <fields>
+        <label> 配置されたエージェント </label>
+        <name>amazonconnect__Agents_Staffed__c</name>
+    </fields>
+    <fields>
+        <label> キューに保存されたコンタクト </label>
+        <name>amazonconnect__Contacts_In_Queue__c</name>
+    </fields>
+    <fields>
+        <label> スケジュールされたコンタクト </label>
+        <name>amazonconnect__Contacts_Scheduled__c</name>
+    </fields>
+    <fields>
+        <label> 最も古いコンタクト期間 </label>
+        <name>amazonconnect__Oldest_Contact_Age__c</name>
+    </fields>
+    <fields>
+        <label> キュー ARN </label>
+        <name>amazonconnect__Queue_ARN__c</name>
+    </fields>
+    <fields>
+        <label> キュー ID </label>
+        <name>amazonconnect__Queue_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Amazon Connect Instance Region --></label>
+        <name>amazonconnect__Region__c</name>
+    </fields>
+    <nameFieldLabel><!-- Queue Name --></nameFieldLabel>
+</CustomObjectTranslation>

@@ -107,6 +107,31 @@
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Approved_Unit_Dup_Qty__c</field>
     </columns>
     <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Payable_Quantity__c</field>
+    </columns>
+    <columns>
+        <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_No_of_GPUs_per_system_nbr__c</field>
+    </columns>
+    <columns>
+        <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_No_of_GPUs__c</field>
+    </columns>
+    <columns>
+        <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_CPU_Txt__c</field>
+    </columns>
+    <columns>
+        <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Write_In_Paired_CPU_Nm__c</field>
+    </columns>
+    <columns>
+        <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Comp_No_of_GPUs_per_Sys__c</field>
+    </columns>
+    <columns>
+        <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Competitor_No_of_GPUs__c</field>
+    </columns>
+    <columns>
+        <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Competitor_Paired_CPU_Nm__c</field>
+    </columns>
+    <columns>
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Deal_RFQ_Id__c</field>
     </columns>
     <columns>
@@ -141,12 +166,6 @@
     </columns>
     <columns>
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Last_Submitted_Date_dt__c</field>
-    </columns>
-    <columns>
-        <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Rejection_Reason__c</field>
-    </columns>
-    <columns>
-        <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Rejection_Comments_nm__c</field>
     </columns>
     <columns>
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Last_Approved_Date_dt__c</field>

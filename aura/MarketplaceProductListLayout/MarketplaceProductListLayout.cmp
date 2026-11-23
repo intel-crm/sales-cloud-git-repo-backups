@@ -1,10 +1,8 @@
 <aura:component implements="forceCommunity:layout" access="global" description="Offering List Layout">
-	<!-- IPA2.0 + US TWC4497-1631 -->
-	<!-- <aura:attribute name="manageOfferingBar" type="Aura.Component[]" required="false"></aura:attribute> -->
+	<aura:attribute name="manageOfferingBar" type="Aura.Component[]" required="false"></aura:attribute>
 	<aura:attribute name="marquee" type="Aura.Component[]" />
 	<aura:attribute name="recordList" type="Aura.Component[]" required="false" />
-	<!-- IPA2.0 + US TWC4497-1631 -->
-	<!-- <aura:attribute name="createOfferingButton" type="Aura.Component[]" required="false" /> -->
+	<aura:attribute name="createOfferingButton" type="Aura.Component[]" required="false" />
 	<aura:attribute name="blade1" type="Aura.Component[]" required="false"></aura:attribute>
     <aura:attribute name="blade2" type="Aura.Component[]" required="false"></aura:attribute>
     <aura:attribute name="blade3" type="Aura.Component[]" required="false"></aura:attribute>
@@ -12,15 +10,14 @@
 
 
 	<div>
-		<!-- IPA2.0 + US TWC4497-1631 -->
-		<!-- <div class="manageOfferingBar">
+		<div class="manageOfferingBar">
 				{!v.manageOfferingBar}
-		</div> -->
+		</div>
 		<div class="marquee">{!v.marquee}</div>
-<!-- IPA2.0 + US TWC4497-1631 -->
-		<!-- <div class="padding-button slds-text-align_center"> 
+
+		<div class="padding-button slds-text-align_center"> 
 			{!v.createOfferingButton}
-		</div> -->
+		</div>
 
 		<div class="slds-p-horizontal_large">
 			{!v.recordList}

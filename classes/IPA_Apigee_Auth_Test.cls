@@ -16,6 +16,7 @@ public class IPA_Apigee_Auth_Test {
     private static final String ACCESS_TOKEN_URL ='http://www.dummyhost.com/accessTokenUri';
     private static final String CUSTOM_METADATA_TYPE_NAME = 'API_M_Auth_Provider__mdt';
     private static final String AUTH_PROVIDER_CLASS_NAME = 'IPA_Apigee_Auth_Provider';
+    private static final String SWS_SOFTWARE_SALES = 'false';
     private static final String redirectUrl ='https://' + System.Url.getOrgDomainUrl().getHost() + '/services/authcallback/' + AUTH_PROVIDER_CLASS_NAME+',UTF-8';
     //global string name= IPA_Apigee_Auth_Provider.getCustomMetadataType();
     
@@ -27,6 +28,7 @@ public class IPA_Apigee_Auth_Test {
         authProviderConfiguration.put('Access_Token_URL__c', ACCESS_TOKEN_URL);    
         authProviderConfiguration.put('Redirect_Url__c', redirectUrl);
         authProviderConfiguration.put('State_c', STATE);
+        authProviderConfiguration.put('No_Refresh_Token__c', SWS_SOFTWARE_SALES);
         return authProviderConfiguration;
     }
     

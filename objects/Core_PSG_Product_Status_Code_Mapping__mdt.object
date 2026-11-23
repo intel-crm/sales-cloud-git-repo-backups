@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Attributes for Quotable/Shippable/Orderable/Price Auth will be derived based on Signal Code and Product Status  coming from PIR/EPM Integration and EDW respectively.</description>
+    <fields>
+        <fullName>Orderable__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Orderable</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Price_Auth__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Price Auth</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Quotable__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Quotable</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Shippable__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Shippable</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Status_Code__c</fullName>
+        <description>List of all Signal Codes and Product Status for Component Products and Tools Products respectively</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Status Code</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>PSG Product Status Code Mapping</label>
+    <pluralLabel>PSG Product Status Code Mapping</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

@@ -118,9 +118,6 @@
         <field>Opportunity.Core_Technical_Owner__c</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Product_Segment__c</field>
-    </columns>
-    <columns>
         <field>Product2.Core_Product_Family__c</field>
     </columns>
     <columns>
@@ -139,21 +136,38 @@
     <columns>
         <field>Opportunity.Core_Business_Unit_Territory__c</field>
     </columns>
+    <columns>
+        <field>CREATED_DATE</field>
+    </columns>
     <filter>
-        <booleanFilter>(1 AND 2 AND (3 OR 4)) AND 5</booleanFilter>
+        <booleanFilter>((1 AND 2 AND 3 AND 4 AND (5 OR 6)) AND 7) AND 8</booleanFilter>
+        <criteriaItems>
+            <column>OpportunityLineItem.Core_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>lost,cancelled,deleted</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PRODUCT_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>FPGA,Enpirion,DK-ACB,BD-,rush creek,DCP-,eASIC</value>
+        </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Business_Unit_Territory__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>PSG-NA-SE,PSG-NA-MID,PSG-NA-CHI,PSG-NA-ABOS,PSG-NA-RM</value>
+            <value>PSG-NA-SE,PSG-NA-MID,PSG-NA-CHI</value>
         </criteriaItems>
         <criteriaItems>
             <column>STAGE_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>cancel</value>
+            <value>lost,cancel,delete,qualify</value>
         </criteriaItems>
         <criteriaItems>
             <column>OWNER_MANAGER</column>
@@ -170,18 +184,24 @@
             <value>Ferment,Foster</value>
         </criteriaItems>
         <criteriaItems>
-            <column>CREATED_DATE</column>
+            <column>Opportunity.Core_Opportunity_Type__c</column>
             <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>greaterThan</operator>
-            <value>1/1/2019 12:00 AM</value>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Design: Original,Design: Secondary</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OPPORTUNITY_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>Nokia MN ABIL - FDD</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
-        <dateGranularity>Quarter</dateGranularity>
-        <field>CREATED_DATE</field>
+        <field>CLOSE_MONTH</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
@@ -189,7 +209,7 @@
         <field>Product2.Core_Product_Series__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>PSG SE Opps with Products - Building Up</name>
+    <name>PSG SE Opps with Products</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -200,7 +220,7 @@
     </params>
     <params>
         <name>probability</name>
-        <value>&gt;0</value>
+        <value>gt40</value>
     </params>
     <params>
         <name>co</name>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Self Help Request</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Self Help Requests</value>
+    </caseValues>
+    <fields>
+        <help><!-- Who is this issue assigned to? --></help>
+        <label><!-- Assigned To --></label>
+        <name>Assigned_To__c</name>
+        <relationshipLabel><!-- Self Help Requests --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Steps for admin to reproduce --></help>
+        <label><!-- Description --></label>
+        <name>Description__c</name>
+    </fields>
+    <fields>
+        <help><!-- What was the outcome that you expected? Or expect if a feature request? --></help>
+        <label><!-- Expected Result --></label>
+        <name>Expected_Result__c</name>
+    </fields>
+    <fields>
+        <help><!-- What is the priority for this request ? This will help admin respond appropriately. --></help>
+        <label><!-- Priority --></label>
+        <name>Priority__c</name>
+        <picklistValues>
+            <masterLabel>Critical</masterLabel>
+            <translation><!-- Critical --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>High</masterLabel>
+            <translation><!-- High --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Low</masterLabel>
+            <translation><!-- Low --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Medium</masterLabel>
+            <translation><!-- Medium --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Which object is this request related to? --></help>
+        <label><!-- Reported Object --></label>
+        <name>Reported_Object__c</name>
+    </fields>
+    <fields>
+        <help><!-- What record is this request related to? --></help>
+        <label><!-- Reported Record --></label>
+        <name>Reported_Record__c</name>
+    </fields>
+    <fields>
+        <help><!-- What is the actual result that caused this request? --></help>
+        <label><!-- Actual Result --></label>
+        <name>SHR_Actual_Result__c</name>
+    </fields>
+    <fields>
+        <help><!-- What is the status of this request ? --></help>
+        <label><!-- Status --></label>
+        <name>Status__c</name>
+        <picklistValues>
+            <masterLabel>Closed</masterLabel>
+            <translation><!-- Closed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New</masterLabel>
+            <translation><!-- New --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Work in Progress</masterLabel>
+            <translation><!-- Work in Progress --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Add summary details for the Request. For example: Copy/paste error, or feature request etc --></help>
+        <label><!-- Title --></label>
+        <name>Title__c</name>
+    </fields>
+    <fields>
+        <help><!-- What is the type of this request ? --></help>
+        <label><!-- Type --></label>
+        <name>Type__c</name>
+        <picklistValues>
+            <masterLabel>Enhancement Request</masterLabel>
+            <translation><!-- Enhancement Request --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Feedback</masterLabel>
+            <translation><!-- Feedback --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Raise an Issue</masterLabel>
+            <translation><!-- Raise an Issue --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- URL Display --></label>
+        <name>URL_Display__c</name>
+    </fields>
+    <fields>
+        <help><!-- Page URL from where Request has been raised --></help>
+        <label><!-- URL --></label>
+        <name>URL__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

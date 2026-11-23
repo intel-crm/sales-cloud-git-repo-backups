@@ -103,7 +103,7 @@ public class Core_OnClickReview_Ctrl_Test {
         String res= 'abc';
         Core_OnClickReview_Ctrl.methodToCoverClass();
         Core_Claim_Inquiry.methodToCoverClass();
-        Core_InquiryTrigger_Handler.placeholderMethod();
+        Core_InquiryTrigger_Handler.methodToCoverClass();
     }
 
 }

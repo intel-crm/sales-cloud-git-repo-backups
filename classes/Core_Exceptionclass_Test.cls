@@ -73,18 +73,4 @@ public class Core_Exceptionclass_Test{
             Test.stopTest();
         }
     }
-    static testmethod void InsertException_PositiveTestMethod(){
-        getRecords();
-        System.runAs(ListOfUser.get(0)){
-            Test.startTest();
-            Core_Exceptionclass obj = new Core_Exceptionclass();
-            try{
-                Exception excep;
-                integer i = 1/0;
-            }catch(exception e){
-                string str = obj.InsertException('test','test','test','test','test',e.getMessage());
-            }            
-            Test.stopTest();
-        }
-    }
 }

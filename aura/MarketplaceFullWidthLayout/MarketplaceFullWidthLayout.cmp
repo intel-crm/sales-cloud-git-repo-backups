@@ -53,16 +53,15 @@
             {!v.blade4}
         </div>
       </div>
+      <div>
+          {!v.ctabar}
+      </div>
       <!--  Container class is to avoid full width content (OPTIONAL) -->
       <div class="bg-white">
         <div class="container">
           {!v.faqWhite}
         </div>
-      </div>  
-      <div>
-          {!v.ctabar}
       </div>
-      
       <div class="container">
           {!v.faq}
       </div>

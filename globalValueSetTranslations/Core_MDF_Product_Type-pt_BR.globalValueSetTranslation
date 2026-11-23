@@ -10,7 +10,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>AIO</masterLabel>
-        <translation>Computador All-in-One</translation>
+        <translation><!-- AIO --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>All-in-One Desktop</masterLabel>
@@ -26,7 +26,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Appliance</masterLabel>
-        <translation>equipamento</translation>
+        <translation><!-- Appliance --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Athena</masterLabel>
@@ -37,28 +37,12 @@
         <translation><!-- Chromebook --></translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Client</masterLabel>
-        <translation>Cliente</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Cloud</masterLabel>
         <translation>Nuvem</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Cloud Instance Consumption</masterLabel>
-        <translation>Consumo de instância de nuvem</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Communications</masterLabel>
         <translation>Comunicações</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Component</masterLabel>
-        <translation>Componentes</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Data Center DGPU</masterLabel>
-        <translation><!-- Data Center DGPU --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Desktop</masterLabel>
@@ -66,23 +50,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Edge Gateway</masterLabel>
-        <translation>Gateway de borda</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Edge/IOT</masterLabel>
-        <translation><!-- Edge/IOT --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>FPGA Programmable Solution</masterLabel>
-        <translation>Solução programável de FPGA</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>HPC</masterLabel>
-        <translation><!-- HPC --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Handheld</masterLabel>
-        <translation>Portátil</translation>
+        <translation><!-- Edge Gateway --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Hyper Converged Solutions</masterLabel>
@@ -95,10 +63,6 @@
     <valueTranslation>
         <masterLabel>Intel vPro®</masterLabel>
         <translation><!-- Intel vPro® --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intelligent Edge/IoT</masterLabel>
-        <translation>Borda Inteligente/IoT</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Core™ i3</masterLabel>
@@ -154,11 +118,11 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Mini PC w/NUC</masterLabel>
-        <translation>Mini PC c/NUC</translation>
+        <translation><!-- Mini PC w/NUC --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Mini PC/NUC</masterLabel>
-        <translation>Mini PC/NUC</translation>
+        <translation><!-- Mini PC/NUC --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Modern Notebook (2-in-1/T+L)</masterLabel>
@@ -166,19 +130,11 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Motherboard</masterLabel>
-        <translation>Placa-mãe</translation>
+        <translation><!-- Motherboard --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>NUC</masterLabel>
         <translation><!-- NUC --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Networking &amp; Telecommunications</masterLabel>
-        <translation>Redes e Telecomunicações</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Networking/Ethernet</masterLabel>
-        <translation>Rede/Ethernet</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Notebook</masterLabel>
@@ -190,59 +146,19 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Other</masterLabel>
-        <translation>Outro</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Programmable Solution</masterLabel>
-        <translation>Solução Programável</translation>
+        <translation><!-- Other --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Server</masterLabel>
         <translation>Servidor</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Server (AI/GPU)</masterLabel>
-        <translation>Servidor (IA/GPU)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Server (Cloud)</masterLabel>
-        <translation>Servidor (nuvem)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Server (ESMB)</masterLabel>
-        <translation>Servidor (ESMB)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Server (HPC)</masterLabel>
-        <translation>Servidor (HPC)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Server (non-HPC)</masterLabel>
-        <translation>Servidor (não HPC)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Service</masterLabel>
-        <translation>Serviço</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Software</masterLabel>
-        <translation><!-- Software --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Solution</masterLabel>
-        <translation>Solução</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Storage</masterLabel>
         <translation>Armazenamento</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Telco</masterLabel>
-        <translation><!-- Telco --></translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Thin &amp; Light</masterLabel>
-        <translation>Fino e leve</translation>
+        <translation><!-- Thin &amp; Light --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Traditional Desktop</masterLabel>
@@ -250,15 +166,11 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Traditional Notebook</masterLabel>
-        <translation>Notebook tradicional</translation>
+        <translation><!-- Traditional Notebook --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Workstation</masterLabel>
         <translation><!-- Workstation --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Workstation - Desktop</masterLabel>
-        <translation><!-- Workstation - Desktop --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Workstation - Fixed</masterLabel>
@@ -267,9 +179,5 @@
     <valueTranslation>
         <masterLabel>Workstation - Mobile</masterLabel>
         <translation>Estação de trabalho - móvel</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Xeon</masterLabel>
-        <translation><!-- Xeon --></translation>
     </valueTranslation>
 </GlobalValueSetTranslation>

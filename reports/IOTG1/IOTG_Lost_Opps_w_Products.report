@@ -55,7 +55,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>,Cancelled - Authority,Cancelled - Budget,Cancelled - Duplicate,Cancelled - Timing,Lost - Another IA Solution,Lost - Business Relationship,Lost - Intel Discontinued Product,Lost - Intel No Longer Covering Account,Lost - Intel Not Considered,Lost - Intel Technical Support Not Provided,Lost - Internal Build,Lost - Lack of OEM Support,Lost - Product Features,Lost - Product Performance,Lost - Schedule</value>
+            <value>,Cancelled - Authority,Cancelled - Budget,Cancelled - Duplicate,Cancelled - Timing,Lost - Business Relationship,Lost - Intel No Longer Covering Account,Lost - Intel Not Considered,Lost - Intel Technical Support Not Provided,Lost - Internal Build,Lost - Lack of OEM Support,Lost - Product Features</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Support_Requested__c</column>
@@ -101,6 +101,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

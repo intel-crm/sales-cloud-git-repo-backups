@@ -38,7 +38,7 @@
 			<div aura:id="navigation" class="linkList">
 				<div aura:id="inner-carousel" class="innerLinkList">
 						<aura:iteration items="{!v.allTabLabels}" var="label" indexVar="i">
-								<a aura:id="navItem" data-index="{!i}" onclick="{!c.handleChangeTab}" onfocus="{!c.handleFocusTabMethod}"
+								<a aura:id="navItem" data-index="{!i}" onclick="{!c.handleChangeTab}"
 									class="linkItem pointer slds-tabs_default__link slds-p-horizontal_small ">
 									<span>{!label}</span>
 								</a>

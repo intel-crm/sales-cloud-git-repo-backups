@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>false</active>
+    <allowRecall>false</allowRecall>
+    <allowedSubmitters>
+        <type>owner</type>
+    </allowedSubmitters>
+    <approvalPageFields>
+        <field>Name</field>
+        <field>Owner</field>
+        <field>Core_Design_Registration_Status_Nm__c</field>
+    </approvalPageFields>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>Designaccepted</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>Core_Accepted_By_Id__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>This step will call when first level of approval is done and PSAM is covered.</description>
+        <entryCriteria>
+            <criteriaItems>
+                <field>Core_Design_Registration__c.RecordType</field>
+                <operation>equals</operation>
+                <value>Deal Registration - Partner</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Core_Design_Registration__c.Core_Design_Registration_Status_Nm__c</field>
+                <operation>equals</operation>
+                <value>Pre-Approved</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>RejectRecord</ifCriteriaNotMet>
+        <label>SecondLevelApproval</label>
+        <name>SecondLevelApproval</name>
+    </approvalStep>
+    <description>This step will call when first level of approval is done and PSAM is covered.</description>
+    <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
+    <entryCriteria>
+        <criteriaItems>
+            <field>Core_Design_Registration__c.RecordType</field>
+            <operation>equals</operation>
+            <value>Deal Registration - Partner</value>
+        </criteriaItems>
+    </entryCriteria>
+    <finalApprovalRecordLock>true</finalApprovalRecordLock>
+    <finalRejectionRecordLock>false</finalRejectionRecordLock>
+    <label>DealSecondLevelApproval</label>
+    <processOrder>1</processOrder>
+    <recordEditability>AdminOrCurrentApprover</recordEditability>
+    <showApprovalHistory>true</showApprovalHistory>
+</ApprovalProcess>

@@ -30,7 +30,8 @@ public with sharing class Core_RestAPI_OpportunityDetailsWrapper {
         public String opportunityOwner {set;get;}
         public String competitiveArchitecture {set;get;}
         public String statusUpdate {set;get;}        
-        public Boolean architectureConversion {set;get;}
+        //public Boolean architectureConversion {set;get;}
+        public String architectureConversion {set;get;}
         public String LossCancelRegion {set;get;}
         public String LossCancelDetails {set;get;}
         public String description {set;get;}

@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>Advice IT Infinite Public Company Limited Partner User</description>
+    <description>ADVICE HOLDINGS GROUP COMPANY LIMITED Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>Advice IT Infinite Public Company Limited Partner User</name>
+    <name>ADVICE HOLDINGS GROUP COMPANY LIMITED Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>EMP_11801878_Apinun_Chaivisansakkul</parentRole>
+    <parentRole>ADVICEHOLDINGSGROUPCOMPANYLIMITEDPartnerManager</parentRole>
 </Role>

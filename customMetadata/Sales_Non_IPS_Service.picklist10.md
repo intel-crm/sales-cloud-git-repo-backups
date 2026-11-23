@@ -8,10 +8,10 @@
     </values>
     <values>
         <field>Subject__c</field>
-        <value xsi:type="xsd:string">Can&apos;t update License User/delegate admin</value>
+        <value xsi:type="xsd:string">Questa Beta Issue</value>
     </values>
     <values>
         <field>Type_of_License_Issue__c</field>
-        <value xsi:type="xsd:string">I can&apos;t update License User/delegate admin</value>
+        <value xsi:type="xsd:string">Having issue when generating license for Questa Beta version</value>
     </values>
 </CustomMetadata>

@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>AI Model</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>AI Model</value>
+    </caseValues>
+    <fields>
+        <label><!-- AI Score Explanation --></label>
+        <name>AI_Score_Explanation__c</name>
+    </fields>
+    <fields>
+        <label><!-- BU --></label>
+        <name>BU__c</name>
+        <picklistValues>
+            <masterLabel>AXG</masterLabel>
+            <translation><!-- AXG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>All</masterLabel>
+            <translation><!-- All --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NEX</masterLabel>
+            <translation><!-- NEX --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Category --></label>
+        <name>Category__c</name>
+    </fields>
+    <fields>
+        <label><!-- Co-Sell Revenue --></label>
+        <name>Co_Sell_Revenue__c</name>
+    </fields>
+    <fields>
+        <label><!-- ASP --></label>
+        <name>Core_ASP__c</name>
+    </fields>
+    <fields>
+        <label><!-- Amount of End Customers (Past Year)? --></label>
+        <name>Core_Amount_of_End_Customers_Past_Year__c</name>
+    </fields>
+    <fields>
+        <label><!-- Amount of IPA End Customers (Past Year)? --></label>
+        <name>Core_Amt_of_IPA_End_Customers_Past_Year__c</name>
+    </fields>
+    <fields>
+        <label><!-- Billings Revenue Past QTR --></label>
+        <name>Core_Billings_Revenue_Past_QTR__c</name>
+    </fields>
+    <fields>
+        <label><!-- Billings Revenue Past Year --></label>
+        <name>Core_Billings_Revenue_Past_Year__c</name>
+    </fields>
+    <fields>
+        <label><!-- Billings YoY Growth --></label>
+        <name>Core_Billings_YoY_Growth__c</name>
+    </fields>
+    <fields>
+        <label><!-- Branded Revenue (Past Year)​ --></label>
+        <name>Core_Branded_Revenue_Past_Year__c</name>
+    </fields>
+    <fields>
+        <label><!-- Company Revenue​ --></label>
+        <name>Core_Company_Revenue__c</name>
+    </fields>
+    <fields>
+        <label><!-- Deal win opps past year --></label>
+        <name>Core_Deal_win_opps_past_year__c</name>
+    </fields>
+    <fields>
+        <label><!-- Design Wins Revenue Past Year --></label>
+        <name>Core_Design_Wins_Revenue_Past_Year__c</name>
+    </fields>
+    <fields>
+        <label><!-- Design win opps past year --></label>
+        <name>Core_Design_win_opps_past_year__c</name>
+    </fields>
+    <fields>
+        <label><!-- Disti Sales out revenue (past year) --></label>
+        <name>Core_Disti_Sales_out_revenue_past_year__c</name>
+    </fields>
+    <fields>
+        <label><!-- Disti sales out revenue (YoY) --></label>
+        <name>Core_Disti_sales_out_revenue_YoY__c</name>
+    </fields>
+    <fields>
+        <label><!-- Explanation --></label>
+        <name>Core_Explanation__c</name>
+    </fields>
+    <fields>
+        <label><!-- Forbes 2000 Rank --></label>
+        <name>Core_Forbes_2000_Rank__c</name>
+    </fields>
+    <fields>
+        <label><!-- Fortune 500 Rank --></label>
+        <name>Core_Fortune_500_Rank__c</name>
+    </fields>
+    <fields>
+        <label><!-- Gaming Units --></label>
+        <name>Core_Gaming_Units__c</name>
+    </fields>
+    <fields>
+        <label><!-- MSS Excluding apple --></label>
+        <name>Core_MSS_Excluding_apple__c</name>
+    </fields>
+    <fields>
+        <label><!-- MSS YoY Points Change --></label>
+        <name>Core_MSS_YoY_Points_Change__c</name>
+    </fields>
+    <fields>
+        <label><!-- MSS --></label>
+        <name>Core_MSS__c</name>
+    </fields>
+    <fields>
+        <label><!-- Nationals Revenue (Past Year)​ --></label>
+        <name>Core_Nationals_Revenue_Past_Year__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number of employees​ --></label>
+        <name>Core_Number_of_employees__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number of units --></label>
+        <name>Core_Number_of_units__c</name>
+    </fields>
+    <fields>
+        <label><!-- QPS Revenue Summary (Past Year) --></label>
+        <name>Core_QPS_Revenue_Summary_Past_Year__c</name>
+    </fields>
+    <fields>
+        <label><!-- SO Core i7/i9 units --></label>
+        <name>Core_SO_Core_i7_i9_units__c</name>
+    </fields>
+    <fields>
+        <label><!-- SO PC Units IA --></label>
+        <name>Core_SO_PC_Units_IA__c</name>
+    </fields>
+    <fields>
+        <label><!-- SO PC Units TAM YoY --></label>
+        <name>Core_SO_PC_Units_TAM_YoY__c</name>
+    </fields>
+    <fields>
+        <label><!-- SO PC Units TAM --></label>
+        <name>Core_SO_PC_Units_TAM__c</name>
+    </fields>
+    <fields>
+        <label><!-- SO PC core units --></label>
+        <name>Core_SO_PC_core_units__c</name>
+    </fields>
+    <fields>
+        <label><!-- SO component units --></label>
+        <name>Core_SO_component_units__c</name>
+    </fields>
+    <fields>
+        <label><!-- SO core i3/i5 units --></label>
+        <name>Core_SO_core_i3_i5_units__c</name>
+    </fields>
+    <fields>
+        <label><!-- SO evo units --></label>
+        <name>Core_SO_evo_units__c</name>
+    </fields>
+    <fields>
+        <label><!-- SO gross platform revenue YoY --></label>
+        <name>Core_SO_gross_platform_revenue_YoY__c</name>
+    </fields>
+    <fields>
+        <label><!-- SO gross platform revenue --></label>
+        <name>Core_SO_gross_platform_revenue__c</name>
+    </fields>
+    <fields>
+        <label><!-- Top companies in vertical --></label>
+        <name>Core_Top_companies_in_vertical__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Direct Revenue (Past Year) --></label>
+        <name>Core_Total_Direct_Revenue_Past_Year__c</name>
+    </fields>
+    <fields>
+        <label><!-- Yearly Contract Revenue​ --></label>
+        <name>Core_Yearly_Contract_Revenue__c</name>
+    </fields>
+    <fields>
+        <label><!-- Yearly Revenue (5 Years AVG) --></label>
+        <name>Core_Yearly_Revenue_5_Years_AVG__c</name>
+    </fields>
+    <fields>
+        <label><!-- Yearly Revenue (Weighted AVG 3 Years) --></label>
+        <name>Core_Yearly_Revenue_Weighted_AVG_3_Years__c</name>
+    </fields>
+    <fields>
+        <label><!-- bVAR Revenue​ (Past Year) --></label>
+        <name>Core_bVAR_Revenue_Past_Year__c</name>
+    </fields>
+    <fields>
+        <label><!-- % of revenue out of region revenue --></label>
+        <name>Core_of_revenue_out_of_region_revenue__c</name>
+    </fields>
+    <fields>
+        <label><!-- Customer ID --></label>
+        <name>Customer_ID__c</name>
+        <relationshipLabel><!-- AI Model --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Design Win Revenue --></label>
+        <name>Design_Win_Revenue__c</name>
+    </fields>
+    <fields>
+        <label><!-- EC1 Revenue --></label>
+        <name>EC1_Revenue__c</name>
+    </fields>
+    <fields>
+        <label><!-- EC2 Revenue --></label>
+        <name>EC2_Revenue__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lost opportunities --></label>
+        <name>Lost_opportunities__c</name>
+    </fields>
+    <fields>
+        <label><!-- Open Opportunities Revenue --></label>
+        <name>Open_Opportunities_Revenue__c</name>
+    </fields>
+    <fields>
+        <label><!-- Recommendation --></label>
+        <name>Recommendation__c</name>
+        <picklistValues>
+            <masterLabel>Add</masterLabel>
+            <translation><!-- Add --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Move to Partner</masterLabel>
+            <translation><!-- Move to Partner --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- AI Score --></label>
+        <name>SPM_AI_Score__c</name>
+    </fields>
+    <fields>
+        <label><!-- Revenue --></label>
+        <name>SPM_Revenue__c</name>
+    </fields>
+    <fields>
+        <label><!-- Silicon Spend --></label>
+        <name>Silicon_Spend__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Revenue --></label>
+        <name>Total_Revenue__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total for Quarter --></label>
+        <name>Total_for_Quarter__c</name>
+    </fields>
+    <fields>
+        <label><!-- UC silicon spend --></label>
+        <name>UC_silicon_spend__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

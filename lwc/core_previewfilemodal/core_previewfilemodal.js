@@ -16,7 +16,6 @@ export default class Core_previewfilemodal extends LightningElement {
         if (this.extension === 'PNG' || this.extension === 'JPG') {
             this.showImage = true;
             this.showFrame = false;
-            console.log('url:: ' + this.url)
         } else {
             this.showFrame = true;
             this.showImage = false;

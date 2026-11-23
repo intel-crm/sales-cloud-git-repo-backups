@@ -36,8 +36,8 @@ public with sharing  class PMP_SearchCompanyArticles extends PMP_SearchWrapperSt
             articleData.viewAllLabel=langUrlMap.get(langCode) + urlPartnerName;
             
             List<Dom.XMLNode> rssList = getRssFeed(rssURL);
-            //system.debug('ARTICLES :');
-            //system.debug(rssList);
+            system.debug('ARTICLES :');
+            system.debug(rssList);
             List<Article> companyArticles = new List<Article>();
             List<Article> resultList = new List<Article>();
             
@@ -91,13 +91,13 @@ public with sharing  class PMP_SearchCompanyArticles extends PMP_SearchWrapperSt
             doc = res.getBodyDocument();
             
             Dom.XMLNode rss = doc.getRootElement();
-            //System.debug('@@' + rss.getName());
+            System.debug('@@' + rss.getName());
             
             
             for(Dom.XMLNode child : rss.getChildren()) {
-                //System.debug('@@@' + child.getName());
+                System.debug('@@@' + child.getName());
                 for(Dom.XMLNode channel : child.getChildren()) {
-                    //System.debug('@@@@' + channel.getName());
+                    System.debug('@@@@' + channel.getName());
                     
                     if(channel.getName() == 'item') {
                         rssList.add(channel);

@@ -90,7 +90,13 @@
         <field>OWNER_EMAIL</field>
     </columns>
     <columns>
+        <field>ROLLUP_DESCRIPTION</field>
+    </columns>
+    <columns>
         <field>Opportunity.Core_Technical_Owner__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Technical_Owner_Email_Txt__c</field>
     </columns>
     <columns>
         <field>OpportunityLineItem.Core_Opp_OpportunityType__c</field>
@@ -130,7 +136,6 @@
         <field>PROBABILITY</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
         <field>Opportunity.Core_Architecture_Conversion__c</field>
     </columns>
     <columns>
@@ -200,6 +205,9 @@
         <field>Opportunity.Core_Support_Requested__c</field>
     </columns>
     <columns>
+        <field>Opportunity.Core_Risk_Reason__c</field>
+    </columns>
+    <columns>
         <field>Opportunity.Core_At_Risk_Created_Date__c</field>
     </columns>
     <columns>
@@ -216,10 +224,16 @@
         <field>OpportunityLineItem.Core_At_Risk__c</field>
     </columns>
     <columns>
+        <field>OpportunityLineItem.Core_Risk_Category__c</field>
+    </columns>
+    <columns>
         <field>OpportunityLineItem.Core_Risk_Priority__c</field>
     </columns>
     <columns>
         <field>OpportunityLineItem.Core_Risk_Reason1__c</field>
+    </columns>
+    <columns>
+        <field>OpportunityLineItem.Core_Risk_Reason2__c</field>
     </columns>
     <columns>
         <field>OpportunityLineItem.Core_At_Risk_Status__c</field>
@@ -235,13 +249,24 @@
         <aggregateTypes>Sum</aggregateTypes>
         <field>OpportunityLineItem.Core_KPI_Days_DesignWin_to_ProductionWin__c</field>
     </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>CDF1</field>
+    </columns>
+    <customDetailFormulas>
+        <calculatedFormula>CASE(OpportunityLineItem.Core_Risk_Reason1__c,&quot;&quot;,case(OpportunityLineItem.Core_Risk_Reason2__c,&quot;&quot;,0,1),1)*OpportunityLineItem.Core_KPI_Total_Price__c</calculatedFormula>
+        <dataType>Double</dataType>
+        <developerName>CDF1</developerName>
+        <label>Risk $ (Jason)</label>
+        <scale>2</scale>
+    </customDetailFormulas>
     <filter>
         <criteriaItems>
             <column>Account.Core_Sales_Groups__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>APJ India Sales Group,APJ Japan Sales Group,APJ Korea Sales Group,APJ Named Account Sales Group,APJ Sales Territory,APJ Taiwan Sales Group</value>
+            <value>GMP APJ Sales Territory,GMP India Sales Group,GMP Japan Sales Group,GMP Korea Sales Group,GMP Taiwan Sales Group</value>
         </criteriaItems>
         <criteriaItems>
             <column>STAGE_NAME</column>
@@ -261,18 +286,13 @@
     </filter>
     <format>Summary</format>
     <groupingsDown>
-        <dateGranularity>Quarter</dateGranularity>
+        <dateGranularity>FiscalQuarter</dateGranularity>
         <field>OpportunityLineItem.Core_KPI_Date__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>STAGE_NAME</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>ROLLUP_DESCRIPTION</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>APJ Design Linearity</name>

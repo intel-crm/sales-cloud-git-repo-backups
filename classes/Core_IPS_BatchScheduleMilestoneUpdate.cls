@@ -1,4 +1,4 @@
-global with sharing class Core_IPS_BatchScheduleMilestoneUpdate implements Schedulable
+global class Core_IPS_BatchScheduleMilestoneUpdate implements Schedulable
 {
     global void execute(SchedulableContext sc)
     {

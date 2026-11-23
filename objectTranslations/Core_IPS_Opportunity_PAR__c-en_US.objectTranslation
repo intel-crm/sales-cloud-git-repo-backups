@@ -9,10 +9,6 @@
         <value>Core IPS Opportunity PAR</value>
     </caseValues>
     <fields>
-        <label><!-- Account --></label>
-        <name>Account__c</name>
-    </fields>
-    <fields>
         <label><!-- Approved By --></label>
         <name>Approved_By__c</name>
         <relationshipLabel><!-- Core IPS Opportunity PAR --></relationshipLabel>

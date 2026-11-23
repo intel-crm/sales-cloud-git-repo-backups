@@ -9,8 +9,7 @@
 *************************************************************************************************/
 @isTest
 public class PMP_IntelTech_CreateJunctionData_Test {
-    //IPA 2.0- US-TWC729-7980 
-    /*@isTest
+     @isTest
     public static void PMP_IntelTech_CreateJunctionData_Test_Met(){
         
         
@@ -178,21 +177,13 @@ public class PMP_IntelTech_CreateJunctionData_Test {
         test_Proc_CSA.PMP_Category_Specification_External_Key__c = 'npp_01_type|npp_inteltechnologies';
         insert test_Proc_CSA;
         
-        PMP_Category_Specification_Association__c intelTechCatAssoc = new PMP_Category_Specification_Association__c();
-        intelTechCatAssoc.Name = 'System:Intel® NUC Elements';
-        intelTechCatAssoc.PMP_Active_Ind__c = true;
-        intelTechCatAssoc.PMP_Category_Id__c = test_category_Categories.id;
-        intelTechCatAssoc.PMP_Specification_Id__c = spec_Core.id;
-        intelTechCatAssoc.PMP_Category_Specification_External_Key__c = 'npp_01_type|197864';
-        insert intelTechCatAssoc;
-        
         PMP_Specification_Value_Association__c Obj1 = new PMP_Specification_Value_Association__c();
         Obj1.PMP_Category_Spec_Value_External_Key__c  = 'Technology1';
         Obj1.PMP_Specification_Id__c = spec_Core_P.id;
         Obj1.PMP_Specification_Value_Id__c = spec_value_Proc_CoreX_Test.id;
         insert Obj1;
         
-        PMP_IntelTech_CreateJunctionData.createAssociationRecords();
+        PMP_IntelTech_CreateJunctionData.PMP_Inteltech_CreateJunctionDataMet();
         List<PMP_Specification_Value_Association__c> uploadSpecSpecValJO = new List<PMP_Specification_Value_Association__c>();
         PMP_Specification_Value_Association__c Obj = new PMP_Specification_Value_Association__c();
         Obj.PMP_Category_Spec_Value_External_Key__c  = 'Technology';
@@ -202,10 +193,10 @@ public class PMP_IntelTech_CreateJunctionData_Test {
         uploadSpecSpecValJO.add(Obj);
         String uploadRecJSON = JSON.serialize(uploadSpecSpecValJO);
         Test.startTest();
-        PMP_IntelTech_CreateJunctionData.uploadExcessSpecSpecValueAssRec(uploadRecJSON);
+        PMP_IntelTech_CreateJunctionData.Core_PMP_UploadExcessSpecSpecValueAssRec(uploadRecJSON);
         Test.stopTest();
-        integer jnObjCount = [Select count() from PMP_Specification_Value_Association__c LIMIT 3];
+        integer jnObjCount = [Select count() from PMP_Specification_Value_Association__c];
         system.assertEquals(3,jnObjCount);
-    }*/ 
+    } 
 
 }

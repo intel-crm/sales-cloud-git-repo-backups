@@ -12,7 +12,6 @@ Modification Log :
 public class Core_InquiryTrigger_Handler{
 
     //Method created to fullfill the code coverage to migrate the commented code.
-
     public static void placeholderMethod() {
         System.debug('Placeholder method executed.');
     }

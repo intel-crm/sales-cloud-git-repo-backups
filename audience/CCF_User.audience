@@ -4,9 +4,17 @@
     <container>Partnercenter Unified Community</container>
     <criteria>
         <criterion>
-            <criteriaNumber>1</criteriaNumber>
             <criterionValue>
-                <profile>partner</profile>
+                <entityField>Contact.$Contact.Core_Audience__c</entityField>
+                <entityType>User</entityType>
+                <fieldValue>CCF User</fieldValue>
+            </criterionValue>
+            <operator>Contains</operator>
+            <type>FieldBased</type>
+        </criterion>
+        <criterion>
+            <criterionValue>
+                <profile>admin</profile>
             </criterionValue>
             <operator>Equal</operator>
             <type>Profile</type>
@@ -14,18 +22,4 @@
     </criteria>
     <formulaFilterType>AnyCriterionMatches</formulaFilterType>
     <isDefaultAudience>false</isDefaultAudience>
-    <targets>
-        <target>
-            <groupName>33377e4b-1257-47dc-b86f-398bbcddd619$#$ff2340f2-3a5f-4a39-b160-93ea4e0742aa</groupName>
-            <priority>1</priority>
-            <targetType>ExperienceVariation</targetType>
-            <targetValue>Resources_core_MDF_dynamicURLsOnCommunity_2_Component</targetValue>
-        </target>
-        <target>
-            <groupName>33377e4b-1257-47dc-b86f-398bbcddd619$#$adae0ec6-1095-419b-b7b6-f7dfbaeefe55</groupName>
-            <priority>1</priority>
-            <targetType>ExperienceVariation</targetType>
-            <targetValue>Resources_core_MDF_dynamicURLsOnCommunity_8_Component</targetValue>
-        </target>
-    </targets>
 </Audience>

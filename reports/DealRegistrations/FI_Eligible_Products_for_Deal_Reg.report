@@ -41,17 +41,10 @@
             <operator>equals</operator>
             <value>1</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>Product_Additional_Attribute__c.Eligible_for_Deal_Reg__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>equals</operator>
-            <value>1</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Tabular</format>
-    <name>Eligible Products for Deal Registration</name>
+    <name>FI Eligible Products for Deal Reg</name>
     <params>
         <name>co</name>
         <value>1</value>

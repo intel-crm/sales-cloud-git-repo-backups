@@ -25,9 +25,6 @@ export default class LwcCustomLookupUser extends LightningElement {
   //on selection of record, to make it read only
   @api inputReadOnly = false;
 
-  //Get Program from Parent
-  @api program;
-
   // Expose the labels to use in the template.
   label = {
     searchUserLabel
@@ -45,7 +42,7 @@ export default class LwcCustomLookupUser extends LightningElement {
       searchObjectName: this.objectName,
       searchFieldName: this.fieldName,
       value: currentText,
-      programName: this.program
+      programName: null
     })
       .then(result => {
         this.searchRecords = result;

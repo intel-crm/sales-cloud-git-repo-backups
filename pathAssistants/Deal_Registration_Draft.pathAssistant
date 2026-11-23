@@ -4,5 +4,17 @@
     <entityName>Core_Design_Registration__c</entityName>
     <fieldName>Workflow_Status__c</fieldName>
     <masterLabel>Deal Registration - Draft</masterLabel>
+    <pathAssistantSteps>
+        <picklistValueName>Completed</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <picklistValueName>Draft</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <picklistValueName>Pre-Approved</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <picklistValueName>Submitted</picklistValueName>
+    </pathAssistantSteps>
     <recordTypeName>Deal_Registration_Draft</recordTypeName>
 </PathAssistant>

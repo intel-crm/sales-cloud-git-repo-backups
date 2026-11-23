@@ -4,6 +4,14 @@
     <description>Opportunity kpi history should not be created on full refresh kpi.</description>
     <enableFeeds>false</enableFeeds>
     <fields>
+        <fullName>Core_IsSyncRefresh__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>It will be set to true when sync refresh is running</description>
+        <label>IsSyncRefresh</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>IsFullRefresh__c</fullName>
         <defaultValue>false</defaultValue>
         <label>IsFullRefresh</label>

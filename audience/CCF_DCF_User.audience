@@ -4,60 +4,31 @@
     <container>Partnercenter Unified Community</container>
     <criteria>
         <criterion>
-            <criteriaNumber>1</criteriaNumber>
+            <criterionValue>
+                <entityField>Contact.$Contact.Core_Audience__c</entityField>
+                <entityType>User</entityType>
+                <fieldValue>CCF User</fieldValue>
+            </criterionValue>
+            <operator>Contains</operator>
+            <type>FieldBased</type>
+        </criterion>
+        <criterion>
+            <criterionValue>
+                <entityField>Contact.$Contact.Core_Audience__c</entityField>
+                <entityType>User</entityType>
+                <fieldValue>DCF User</fieldValue>
+            </criterionValue>
+            <operator>Contains</operator>
+            <type>FieldBased</type>
+        </criterion>
+        <criterion>
             <criterionValue>
                 <profile>admin</profile>
             </criterionValue>
             <operator>Equal</operator>
             <type>Profile</type>
         </criterion>
-        <criterion>
-            <criteriaNumber>2</criteriaNumber>
-            <criterionValue>
-                <isEnabled>true</isEnabled>
-                <permissionName>Core_MDF_CCF_USER</permissionName>
-                <permissionType>Custom</permissionType>
-            </criterionValue>
-            <operator>Equal</operator>
-            <type>Permission</type>
-        </criterion>
-        <criterion>
-            <criteriaNumber>3</criteriaNumber>
-            <criterionValue>
-                <isEnabled>true</isEnabled>
-                <permissionName>Core_MDF_DCF_USER</permissionName>
-                <permissionType>Custom</permissionType>
-            </criterionValue>
-            <operator>Equal</operator>
-            <type>Permission</type>
-        </criterion>
     </criteria>
     <formulaFilterType>AnyCriterionMatches</formulaFilterType>
     <isDefaultAudience>false</isDefaultAudience>
-    <targets>
-        <target>
-            <groupName>9c79fbf8-f999-4f12-96ba-72f6920eb245$#$929006da-8633-4a4a-b3a9-4a6ba5a03b71</groupName>
-            <priority>1</priority>
-            <targetType>ExperienceVariation</targetType>
-            <targetValue>Home_core_MDF_dynamicURLsOnCommunity_2_Component</targetValue>
-        </target>
-        <target>
-            <groupName>7c70a4fa-1952-40e3-97cd-80ea6d489785$#$7ef06bf6-f492-4296-8e47-b453f05a8b75</groupName>
-            <priority>1</priority>
-            <targetType>ExperienceVariation</targetType>
-            <targetValue>CoMarketing_Activity_Custom_Detail_core_MDF_ecosystemPartnerAllocation_Component</targetValue>
-        </target>
-        <target>
-            <groupName>33377e4b-1257-47dc-b86f-398bbcddd619$#$8100d782-6985-40ba-998d-317be9605ab2</groupName>
-            <priority>1</priority>
-            <targetType>ExperienceVariation</targetType>
-            <targetValue>Resources_core_MDF_dynamicURLsOnCommunity_1_Component</targetValue>
-        </target>
-        <target>
-            <groupName>e7358f37-eb7a-4354-9fd6-5f12415cd445$#$fe90c618-15a3-4667-83d8-b3bdb5b927dc</groupName>
-            <priority>1</priority>
-            <targetType>ExperienceVariation</targetType>
-            <targetValue>Bran_Your_Products_HTML_Editor_Component</targetValue>
-        </target>
-    </targets>
 </Audience>

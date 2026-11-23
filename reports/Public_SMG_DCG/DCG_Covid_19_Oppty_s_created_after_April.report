@@ -1,31 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
-    <buckets>
-        <bucketType>picklist</bucketType>
-        <developerName>BucketField_36694933</developerName>
-        <masterLabel>Oppty Type</masterLabel>
-        <nullTreatment>n</nullTreatment>
-        <sourceColumnName>Opportunity.Core_Opportunity_Type__c</sourceColumnName>
-        <useOther>false</useOther>
-        <values>
-            <sourceValues>
-                <sourceValue>Design: Original</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Design: Secondary</sourceValue>
-            </sourceValues>
-            <value>Design</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>Deal: Sell-through</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Deal: Sell-to</sourceValue>
-            </sourceValues>
-            <value>Deal</value>
-        </values>
-    </buckets>
     <chart>
         <backgroundColor1>#FFFFFF</backgroundColor1>
         <backgroundColor2>#FFFFFF</backgroundColor2>
@@ -208,11 +182,6 @@
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>BucketField_36694933</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>DCG Covid-19 Oppty&apos;s created after April</name>

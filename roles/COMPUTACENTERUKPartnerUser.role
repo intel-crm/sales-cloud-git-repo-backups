@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>Computacenter PLC Partner User</description>
+    <description>COMPUTACENTER - UK Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>Computacenter PLC Partner User</name>
+    <name>COMPUTACENTER - UK Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>EMP_10515865_Bradley_Jenkins</parentRole>
+    <parentRole>COMPUTACENTERUKPartnerManager</parentRole>
 </Role>

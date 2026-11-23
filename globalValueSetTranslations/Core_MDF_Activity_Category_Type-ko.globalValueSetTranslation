@@ -1,50 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
     <valueTranslation>
-        <masterLabel>Audio 2025-&gt;Other (Audio)</masterLabel>
-        <translation>오디오 2025-&gt;기타(오디오)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Audio 2025-&gt;Podcast</masterLabel>
-        <translation>오디오 2025-&gt;팟캐스트</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Audio 2025-&gt;Radio</masterLabel>
-        <translation>오디오 2025-&gt;라디오</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Audio-&gt;Other (Audio)</masterLabel>
-        <translation>오디오-&gt;기타(오디오)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Audio-&gt;Podcast</masterLabel>
-        <translation>오디오-&gt;팟캐스트</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Audio-&gt;Radio</masterLabel>
-        <translation>오디오-&gt;라디오</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Broadcast (Pre-2025)-&gt;Other (Broadcast)</masterLabel>
-        <translation>방송(2025년 이전)-&gt;기타(방송)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Broadcast (Pre-2025)-&gt;Podcast</masterLabel>
-        <translation>방송(2025년 이전)-&gt;팟캐스트</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Broadcast (Pre-2025)-&gt;Radio</masterLabel>
-        <translation>방송(2025년 이전)-&gt;라디오</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Broadcast (Pre-2025)-&gt;Streaming</masterLabel>
-        <translation>방송(2025년 이전)-&gt;스트리밍</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Broadcast (Pre-2025)-&gt;Television</masterLabel>
-        <translation>방송(2025년 이전)-&gt;TV</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Broadcast-&gt;Other (Broadcast)</masterLabel>
         <translation><!-- Broadcast-&gt;Other (Broadcast) --></translation>
     </valueTranslation>
@@ -65,136 +21,12 @@
         <translation>방송-&gt;텔레비전</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Buyer Incentive 2025-&gt;Offer - Bundle</masterLabel>
-        <translation>구매자 인센티브 2025-&gt;오퍼 - 번들</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Buyer Incentive 2025-&gt;Offer - Contest</masterLabel>
-        <translation>구매자 인센티브 2025-&gt;오퍼 - 콘테스트</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Buyer Incentive 2025-&gt;Offer - Other</masterLabel>
-        <translation>구매자 인센티브 2025-&gt;오퍼 - 기타</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Buyer Incentive 2025-&gt;Offer - Rewards</masterLabel>
-        <translation>구매자 인센티브 2025-&gt;오퍼 - 보상</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Buyer Incentive 2025-&gt;Offer - Sweepstakes</masterLabel>
-        <translation>구매자 인센티브 2025-&gt;오퍼 - 경품 행사</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Buyer Incentive 2025-&gt;Offer - Target</masterLabel>
-        <translation>구매자 인센티브 2025-&gt;오퍼 - 타겟</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Buyer Incentive-&gt;Offer - Bundle</masterLabel>
-        <translation>구매자 인센티브-&gt;오퍼 - 번들</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Buyer Incentive-&gt;Offer - Contest</masterLabel>
-        <translation>구매자 인센티브-&gt;오퍼 - 콘테스트</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Buyer Incentive-&gt;Offer - Other</masterLabel>
-        <translation>구매자 인센티브-&gt;오퍼 - 기타</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Buyer Incentive-&gt;Offer - Rewards</masterLabel>
-        <translation>구매자 인센티브-&gt;혜택 - 보상</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Buyer Incentive-&gt;Offer - Sweepstakes</masterLabel>
-        <translation>구매자 인센티브-&gt;오퍼 - 경품 행사</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Buyer Incentive-&gt;Offer - Target</masterLabel>
-        <translation>구매자 인센티브-&gt;오퍼 - 타겟</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Digital 2025-&gt;Display/Video Ad</masterLabel>
-        <translation>디지털 2025-&gt;디스플레이/동영상 광고</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Digital 2025-&gt;Email</masterLabel>
-        <translation>디지털 2025-&gt;이메일</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Digital 2025-&gt;Lead Generation</masterLabel>
-        <translation><!-- Digital 2025-&gt;Lead Generation --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Digital 2025-&gt;Other (Digital)</masterLabel>
-        <translation>디지털 2025-&gt;기타(디지털)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Digital 2025-&gt;Search (SEM) Ad</masterLabel>
-        <translation>디지털 2025-&gt;검색(SEM) 광고</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Digital 2025-&gt;Social Ad</masterLabel>
-        <translation>디지털 2025-&gt;소셜 광고</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Digital 2025-&gt;Social Post</masterLabel>
-        <translation>디지털 2025-&gt;소셜 포스트</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Digital 2025-&gt;Web Content</masterLabel>
-        <translation>디지털 2025-&gt;웹 콘텐츠</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Digital Media (Pre-2025)-&gt;Channel Partner Website Online Ad</masterLabel>
-        <translation>디지털 미디어(2025년 이전)-&gt;채널 파트너 웹사이트 온라인 광고</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Digital Media (Pre-2025)-&gt;Content Creation</masterLabel>
-        <translation>디지털 미디어(2025년 이전)-&gt;콘텐츠 제작</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Digital Media (Pre-2025)-&gt;EcosystemPartner.com</masterLabel>
-        <translation>디지털 미디어(2025년 이전)-&gt;EcosystemPartner.com</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Digital Media (Pre-2025)-&gt;Email</masterLabel>
-        <translation>디지털 미디어(2025년 이전)-&gt;이메일</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Digital Media (Pre-2025)-&gt;Member Website Online Display</masterLabel>
-        <translation>디지털 미디어(2025년 이전)-&gt;회원사 웹사이트 온라인 디스플레이</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Digital Media (Pre-2025)-&gt;Member.com</masterLabel>
-        <translation>디지털 미디어(2025년 이전)-&gt;Member.com</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Digital Media (Pre-2025)-&gt;NonPartner.com</masterLabel>
-        <translation>디지털 미디어(2025년 이전)-&gt;NonPartner.com</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Digital Media (Pre-2025)-&gt;Online Display</masterLabel>
-        <translation>디지털 미디어(2025년 이전)-&gt;온라인 디스플레이</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Digital Media (Pre-2025)-&gt;Online Video Spot</masterLabel>
-        <translation>디지털 미디어(2025년 이전)-&gt;온라인 비디오 스팟</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Digital Media (Pre-2025)-&gt;Text Ad</masterLabel>
-        <translation>디지털 미디어(2025년 이전)-&gt;텍스트 광고</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Digital Media-&gt;Channel Partner Website Online Ad</masterLabel>
         <translation>디지털 미디어-&gt;채널 파트너 웹사이트 광고</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Digital Media-&gt;Content Creation</masterLabel>
         <translation><!-- Digital Media-&gt;Content Creation --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Digital Media-&gt;EcosystemPartner.com</masterLabel>
-        <translation><!-- Digital Media-&gt;EcosystemPartner.com --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Digital Media-&gt;Email</masterLabel>
@@ -229,86 +61,6 @@
         <translation>디지털 미디어-&gt;텍스트 광고</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Digital-&gt;Display/Video Ad</masterLabel>
-        <translation>디지털-&gt;디스플레이/동영상 광고</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Digital-&gt;Email</masterLabel>
-        <translation>디지털-&gt;이메일</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Digital-&gt;Lead Generation</masterLabel>
-        <translation>디지털-&gt;리드 생성</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Digital-&gt;Other (Digital)</masterLabel>
-        <translation>디지털-&gt;기타(디지털)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Digital-&gt;Search (SEM) Ad</masterLabel>
-        <translation>디지털-&gt;검색(SEM) 광고</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Digital-&gt;Social Ad</masterLabel>
-        <translation>디지털-&gt;소셜 광고</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Digital-&gt;Social Post</masterLabel>
-        <translation>디지털-&gt;소셜 포스트</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Digital-&gt;Web Content</masterLabel>
-        <translation>디지털-&gt;웹 콘텐츠</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Event (Pre-2025)-&gt;Channel Partner Owned Event</masterLabel>
-        <translation>이벤트(2025년 이전)-&gt;채널 파트너 주관 이벤트</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Event (Pre-2025)-&gt;Channel Partner Participation in Third-Party Event</masterLabel>
-        <translation>이벤트(2025년 이전)-&gt;제3자 주관 이벤트에 채널 파트너 참여</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Event (Pre-2025)-&gt;Joint Event</masterLabel>
-        <translation>이벤트(2025년 이전)-&gt;공동 이벤트</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Event (Pre-2025)-&gt;Member Event</masterLabel>
-        <translation>이벤트(2025년 이전)-&gt;회원 이벤트</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Event (Pre-2025)-&gt;Member Owned Event</masterLabel>
-        <translation>이벤트(2025년 이전)-&gt;회원사 주관 이벤트</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Event (Pre-2025)-&gt;Member Participation in Third-Party Event</masterLabel>
-        <translation>이벤트(2025년 이전)-&gt;제3자 주관 이벤트에 회원 참여</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Event (Pre-2025)-&gt;Other (Event)</masterLabel>
-        <translation>이벤트(2025년 이전)-&gt;기타(행사)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Event (Pre-2025)-&gt;Promotion</masterLabel>
-        <translation>이벤트(2025년 이전)-&gt;프로모션</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Event (Pre-2025)-&gt;Third Party Event</masterLabel>
-        <translation>이벤트(2025년 이전)-&gt;타사 행사</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Event 2025-&gt;Joint Event</masterLabel>
-        <translation>이벤트 2025-&gt;공동 이벤트</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Event 2025-&gt;Other (Event)</masterLabel>
-        <translation>이벤트 2025-&gt;기타(이벤트)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Event 2025-&gt;Third Party Event</masterLabel>
-        <translation>이벤트 2025-&gt;제3자 이벤트</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Event-&gt;Channel Partner Owned Event</masterLabel>
         <translation>이벤트-&gt;채널 파트너 주관 이벤트</translation>
     </valueTranslation>
@@ -318,7 +70,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Event-&gt;Joint Event</masterLabel>
-        <translation>이벤트-&gt;공동 이벤트</translation>
+        <translation><!-- Event-&gt;Joint Event --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Event-&gt;Member Event</masterLabel>
@@ -334,7 +86,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Event-&gt;Other (Event)</masterLabel>
-        <translation>이벤트-&gt;기타(행사)</translation>
+        <translation><!-- Event-&gt;Other (Event) --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Event-&gt;Promotion</masterLabel>
@@ -342,7 +94,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Event-&gt;Third Party Event</masterLabel>
-        <translation>이벤트-&gt;타사 행사</translation>
+        <translation><!-- Event-&gt;Third Party Event --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Events-&gt;Event with Product Sales Onsite</masterLabel>
@@ -389,18 +141,6 @@
         <translation><!-- Incentive-&gt;Seller - Target SPIF --></translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Innovation -&gt;Engineering</masterLabel>
-        <translation><!-- Innovation -&gt;Engineering --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Lead Management (Pre-2025)-&gt;Lead Generation</masterLabel>
-        <translation>리드 관리(2025년 이전)-&gt;리드 생성</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Lead Management (Pre-2025)-&gt;Lead Nurturing</masterLabel>
-        <translation>리드 관리(2025년 이전)-&gt;리드 육성</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Lead Management-&gt;Lead Generation</masterLabel>
         <translation>리드 관리-&gt;리드 창출</translation>
     </valueTranslation>
@@ -433,54 +173,6 @@
         <translation><!-- Other-&gt;Other --></translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Out of Home (Pre-2025)-&gt;Billboard/Transit</masterLabel>
-        <translation>옥외(2025년 이전)-&gt;빌보드/교통매체</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Out of Home (Pre-2025)-&gt;Cinema</masterLabel>
-        <translation>옥외(2025년 이전)-&gt;극장</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Out of Home (Pre-2025)-&gt;Other (OOH)</masterLabel>
-        <translation>옥외(2025년 이전)-&gt;기타(OOH)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Out of Home (Pre-2025)-&gt;Other (Out of Home)</masterLabel>
-        <translation>옥외(2025년 이전)-&gt;기타(옥외)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Out of Home (Pre-2025)-&gt;Video Screen</masterLabel>
-        <translation>옥외(2025년 이전)-&gt;비디오 화면</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Out of Home 2025-&gt;Billboard/Transit</masterLabel>
-        <translation>옥외 2025-&gt;빌보드/교통매체</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Out of Home 2025-&gt;Cinema</masterLabel>
-        <translation>옥외 2025-&gt;극장</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Out of Home 2025-&gt;Other (Out Of Home)</masterLabel>
-        <translation>옥외 2025-&gt;기타(옥외)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Out of Home 2025-&gt;Video Screen</masterLabel>
-        <translation>옥외 2025-&gt;비디오 화면</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Out of Home Media (Pre-2025)-&gt;Billboard/Transit</masterLabel>
-        <translation>옥외 미디어(2025년 이전)-&gt;빌보드/교통매체</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Out of Home Media (Pre-2025)-&gt;Cinema</masterLabel>
-        <translation>옥외 미디어(2025년 이전)-&gt;극장</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Out of Home Media (Pre-2025)-&gt;Digital Video Screen</masterLabel>
-        <translation>옥외 미디어(2025년 이전)-&gt;디지털 비디오 스크린</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Out of Home Media-&gt;Billboard/Transit</masterLabel>
         <translation>옥외 미디어-&gt;빌보드/교통매체</translation>
     </valueTranslation>
@@ -494,11 +186,11 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Out of Home-&gt;Billboard/Transit</masterLabel>
-        <translation>옥외-&gt;빌보드/교통매체</translation>
+        <translation><!-- Out of Home-&gt;Billboard/Transit --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Out of Home-&gt;Cinema</masterLabel>
-        <translation>옥외-&gt;극장</translation>
+        <translation><!-- Out of Home-&gt;Cinema --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Out of Home-&gt;Other (OOH)</masterLabel>
@@ -506,23 +198,11 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Out of Home-&gt;Other (Out Of Home)</masterLabel>
-        <translation>옥외-&gt;기타(옥외)</translation>
+        <translation><!-- Out of Home-&gt;Other (Out Of Home) --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Out of Home-&gt;Video Screen</masterLabel>
-        <translation>옥외-&gt;비디오 화면</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Outcome-Based-&gt;Outcome-Based</masterLabel>
-        <translation><!-- Outcome-Based-&gt;Outcome-Based --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Paid Social Media (Pre-2025)-&gt;Social Online Display</masterLabel>
-        <translation>유료 소셜미디어(2025년 이전)-&gt;소셜 온라인 디스플레이</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Paid Social Media (Pre-2025)-&gt;Social Post</masterLabel>
-        <translation>유료 소셜미디어(2025년 이전)-&gt;소셜 포스트</translation>
+        <translation><!-- Out of Home-&gt;Video Screen --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Paid Social Media-&gt;Social Online Display</masterLabel>
@@ -531,50 +211,6 @@
     <valueTranslation>
         <masterLabel>Paid Social Media-&gt;Social Post</masterLabel>
         <translation>유료 소셜 미디어-&gt;소셜 게시물</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Print (Pre-2025)-&gt;Collateral</masterLabel>
-        <translation>인쇄(2025년 이전)-&gt;참고 자료</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Print (Pre-2025)-&gt;Magazine/Newspaper</masterLabel>
-        <translation>인쇄(2025년 이전)-&gt;잡지/신문</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Print 2025-&gt;Collateral</masterLabel>
-        <translation>인쇄 2025-&gt;참고 자료</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Print 2025-&gt;Magazine/Newspaper</masterLabel>
-        <translation>인쇄 2025-&gt;잡지/신문</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Print 2025-&gt;Other (Print)</masterLabel>
-        <translation>인쇄 2025-&gt;기타(인쇄)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Print Media (Pre-2025)-&gt;Catalog/Brochure</masterLabel>
-        <translation>인쇄 미디어(2025년 이전)-&gt;카탈로그/브로셔</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Print Media (Pre-2025)-&gt;Collateral - Other</masterLabel>
-        <translation>인쇄 미디어(2025년 이전)-&gt;부수 자료 - 기타</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Print Media (Pre-2025)-&gt;Direct Mail</masterLabel>
-        <translation>인쇄 미디어(2025년 이전)-&gt;다이렉트 메일</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Print Media (Pre-2025)-&gt;Insert/Outsert/Flyer</masterLabel>
-        <translation>인쇄 미디어(2025년 이전)-&gt;인서트/아웃서트/전단지</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Print Media (Pre-2025)-&gt;Magazine/Newspaper</masterLabel>
-        <translation>인쇄 미디어(2025년 이전)-&gt;잡지/신문</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Print Media (Pre-2025)-&gt;Poster/Sign/Banner</masterLabel>
-        <translation>인쇄 미디어(2025년 이전)-&gt;포스터/사이니지/배너</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Print Media-&gt;Catalog/Brochure</masterLabel>
@@ -602,47 +238,11 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Print-&gt;Collateral</masterLabel>
-        <translation>인쇄-&gt;참고 자료</translation>
+        <translation><!-- Print-&gt;Collateral --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Print-&gt;Magazine/Newspaper</masterLabel>
-        <translation>인쇄-&gt;잡지/신문</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Print-&gt;Other (Print)</masterLabel>
-        <translation>인쇄-&gt;기타(인쇄)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Production 2025-&gt;Content</masterLabel>
-        <translation>생산 2025-&gt;내용</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Production 2025-&gt;Other (Production)</masterLabel>
-        <translation>생산 2025-&gt;기타(생산)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Production-&gt;Content</masterLabel>
-        <translation>프로덕션-&gt;내용</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Production-&gt;Other (Production)</masterLabel>
-        <translation>프로덕션-&gt;기타(Production)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Purchase Incentive (Pre-2025)-&gt;Buyer - Bundle Offer</masterLabel>
-        <translation>인센티브 구매(2025년 이전)-&gt;구매자 - 번들 제공</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Purchase Incentive (Pre-2025)-&gt;Buyer - Other</masterLabel>
-        <translation>인센티브 구매(2025년 이전)-&gt;구매자 - 기타</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Purchase Incentive (Pre-2025)-&gt;Buyer - Reward/Frequency</masterLabel>
-        <translation>인센티브 구매(2025년 이전)-&gt;구매자 - 보상/빈도</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Purchase Incentive (Pre-2025)-&gt;Buyer - Sweepstakes</masterLabel>
-        <translation>인센티브 구매(2025년 이전)-&gt;구매자 - 추첨 행사</translation>
+        <translation><!-- Print-&gt;Magazine/Newspaper --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Purchase Incentive-&gt;Buyer - Bundle Offer</masterLabel>
@@ -661,36 +261,12 @@
         <translation><!-- Purchase Incentive-&gt;Buyer - Sweepstakes --></translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Sales Incentive (Pre-2025)-&gt;Seller - Contest SPIF</masterLabel>
-        <translation>판매 인센티브(2025년 이전)-&gt;판매자 - 대회 SPIF</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Sales Incentive (Pre-2025)-&gt;Seller - Other</masterLabel>
-        <translation>판매 인센티브(2025년 이전)-&gt;판매자 - 기타</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Sales Incentive (Pre-2025)-&gt;Seller - Per Instance SPIF</masterLabel>
-        <translation>판매 인센티브(2025년 이전)-&gt;판매자 - 인스턴스당 SPIF</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Sales Incentive (Pre-2025)-&gt;Seller - Per Unit SPIF</masterLabel>
-        <translation>판매 인센티브(2025년 이전)-&gt;판매자 - 개당 SPIF</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Sales Incentive (Pre-2025)-&gt;Seller - Target SPIF</masterLabel>
-        <translation>판매 인센티브(2025년 이전)-&gt;판매자 - 대상 SPIF</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Sales Incentive-&gt;Seller - Contest SPIF</masterLabel>
         <translation><!-- Sales Incentive-&gt;Seller - Contest SPIF --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Sales Incentive-&gt;Seller - Other</masterLabel>
         <translation><!-- Sales Incentive-&gt;Seller - Other --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Sales Incentive-&gt;Seller - Per Instance SPIF</masterLabel>
-        <translation>판매 인센티브-&gt;판매자 - 인스턴스당 SPIF</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Sales Incentive-&gt;Seller - Per Unit SPIF</masterLabel>
@@ -725,64 +301,8 @@
         <translation><!-- Sales Incentives-&gt;Sweepstakes --></translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Sales Readiness (Pre-2025)-&gt;Collateral</masterLabel>
-        <translation>판매 준비도(2025년 이전)-&gt;참고 자료</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Sales Readiness (Pre-2025)-&gt;In-Store Promotion</masterLabel>
-        <translation>판매 준비도(2025년 이전)-&gt;매장내 프로모션</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Sales Readiness (Pre-2025)-&gt;Other (Sales Readiness)</masterLabel>
-        <translation>판매 준비도(2025년 이전)-&gt;기타(판매 준비도)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Sales Readiness (Pre-2025)-&gt;Out-of-Store Promotion</masterLabel>
-        <translation>판매 준비도(2025년 이전)-&gt;매장 밖 프로모션</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Sales Readiness (Pre-2025)-&gt;Personnel</masterLabel>
-        <translation>판매 준비도(2025년 이전)-&gt;직원</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Sales Readiness (Pre-2025)-&gt;Telemarketing</masterLabel>
-        <translation>판매 준비도(2025년 이전)-&gt;텔레마케팅</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Sales Readiness (Pre-2025)-&gt;Training/Meeting</masterLabel>
-        <translation>판매 준비도(2025년 이전)-&gt;교육/회의</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Sales Readiness 2025-&gt;Collateral</masterLabel>
-        <translation>영업 준비 2025-&gt;참고 자료</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Sales Readiness 2025-&gt;Other (Sales Readiness)</masterLabel>
-        <translation>영업 준비 2025-&gt;기타(판매 준비도)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Sales Readiness 2025-&gt;Personnel</masterLabel>
-        <translation>영업 준비 2025-&gt;직원</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Sales Readiness 2025-&gt;Promotion - Non-Retail</masterLabel>
-        <translation>영업 준비 2025-&gt;프로모션 – 비소매</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Sales Readiness 2025-&gt;Promotion - Retail</masterLabel>
-        <translation>영업 준비 2025-&gt;프로모션 – 리테일</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Sales Readiness 2025-&gt;Training Incentive</masterLabel>
-        <translation>영업 준비 2025-&gt;교육 인센티브</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Sales Readiness 2025-&gt;Training/Meeting</masterLabel>
-        <translation>영업 준비 2025-&gt;교육/회의</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Sales Readiness-&gt;Collateral</masterLabel>
-        <translation>판매 준비도-&gt;참고 자료</translation>
+        <translation><!-- Sales Readiness-&gt;Collateral --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Sales Readiness-&gt;Customer Demonstrations (External)</masterLabel>
@@ -806,7 +326,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Sales Readiness-&gt;Other (Sales Readiness)</masterLabel>
-        <translation>판매 준비도-&gt;기타(판매 준비도)</translation>
+        <translation><!-- Sales Readiness-&gt;Other (Sales Readiness) --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Sales Readiness-&gt;Out-of-Store Promotion</masterLabel>
@@ -814,15 +334,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Sales Readiness-&gt;Personnel</masterLabel>
-        <translation>판매 준비도-&gt;직원</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Sales Readiness-&gt;Promotion - Non-Retail</masterLabel>
-        <translation>판매 준비도-&gt;프로모션 - 비소매</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Sales Readiness-&gt;Promotion - Retail</masterLabel>
-        <translation>판매 준비도-&gt;프로모션 - 리테일</translation>
+        <translation><!-- Sales Readiness-&gt;Personnel --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Sales Readiness-&gt;Proof-of-Concept</masterLabel>
@@ -845,24 +357,12 @@
         <translation><!-- Sales Readiness-&gt;Telemarketing --></translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Sales Readiness-&gt;Training Incentive</masterLabel>
-        <translation>판매 준비도-&gt;교육 인센티브</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Sales Readiness-&gt;Training/Meeting</masterLabel>
-        <translation>판매 준비도-&gt;교육/회의</translation>
+        <translation><!-- Sales Readiness-&gt;Training/Meeting --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Sales Readiness-&gt;White Paper/Case Study/Benchmarking</masterLabel>
         <translation><!-- Sales Readiness-&gt;White Paper/Case Study/Benchmarking --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Search Engine Marketing (SEM) (Pre-2025)-&gt;Graphic Ad</masterLabel>
-        <translation>검색 엔진 마케팅(SEM)(2025년 이전)-&gt;그래픽 광고</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Search Engine Marketing (SEM) (Pre-2025)-&gt;Text Ad</masterLabel>
-        <translation>검색 엔진 마케팅(SEM)(2025년 이전)-&gt;텍스트 광고</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Search Engine Marketing (SEM)-&gt;Graphic Ad</masterLabel>
@@ -873,96 +373,8 @@
         <translation>검색 엔진 마케팅(SEM)-&gt;텍스트 광고</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Seller Incentive 2025-&gt;SPIF - Contest</masterLabel>
-        <translation>판매자 인센티브 2025-&gt;SPIF - 콘테스트</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Seller Incentive 2025-&gt;SPIF - Other</masterLabel>
-        <translation>판매자 인센티브 2025-&gt;SPIF - 기타</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Seller Incentive 2025-&gt;SPIF - Target</masterLabel>
-        <translation>판매자 인센티브 2025-&gt;SPIF - 대상</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Seller Incentive 2025-&gt;SPIF - Volume</masterLabel>
-        <translation>판매자 인센티브 2025-&gt;SPIF - 볼륨</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Seller Incentive-&gt;SPIF - Contest</masterLabel>
-        <translation>판매자 인센티브-&gt;SPIF - 콘테스트</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Seller Incentive-&gt;SPIF - Other</masterLabel>
-        <translation>판매자 인센티브-&gt;SPIF - 기타</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Seller Incentive-&gt;SPIF - Target</masterLabel>
-        <translation>판매자 인센티브-&gt;SPIF - 대상</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Seller Incentive-&gt;SPIF - Volume</masterLabel>
-        <translation>판매자 인센티브-&gt;SPIF - 볼륨</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Tech Exploration (Pre-2025)-&gt;Benchmarks</masterLabel>
-        <translation>기술 탐색(2025년 이전)-&gt;벤치마크</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Tech Exploration (Pre-2025)-&gt;Case Study</masterLabel>
-        <translation>기술 탐색(2025년 이전)-&gt;사례 연구</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Tech Exploration (Pre-2025)-&gt;Cloud/Platform Trial</masterLabel>
-        <translation>기술 탐색(2025년 이전)-&gt;클라우드/플랫폼 평가판</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Tech Exploration (Pre-2025)-&gt;Deal Investment</masterLabel>
-        <translation>기술 탐색(2025년 이전)-&gt;딜 투자</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Tech Exploration (Pre-2025)-&gt;Demo Hardware</masterLabel>
-        <translation>기술 탐색(2025년 이전)-&gt;데모 하드웨어</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Tech Exploration (Pre-2025)-&gt;Demo Hardware/Cloud Instance</masterLabel>
-        <translation>기술 탐색(2025년 이전)-&gt;데모 하드웨어/클라우드 인스턴스</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Tech Exploration (Pre-2025)-&gt;Joint Engineering/Optimization</masterLabel>
-        <translation>기술 탐색(2025년 이전)-&gt;공동 엔지니어링/최적화</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Tech Exploration (Pre-2025)-&gt;Other (Tech Exploration)</masterLabel>
-        <translation>기술 탐색(2025년 이전)-&gt;기타(기술 탐색)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Tech Exploration (Pre-2025)-&gt;Proof of Concept</masterLabel>
-        <translation>기술 탐색(2025년 이전)-&gt;개념 증명</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Tech Exploration (Pre-2025)-&gt;Seed Unit</masterLabel>
-        <translation>기술 탐색(2025년 이전)-&gt;시드 단위</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Tech Exploration (Pre-2025)-&gt;Solution Development</masterLabel>
-        <translation>기술 탐색(2025년 이전)-&gt;솔루션 개발</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Tech Exploration-&gt;Benchmarks</masterLabel>
-        <translation>기술 탐색-&gt;벤치마크</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Tech Exploration-&gt;Case Study</masterLabel>
         <translation><!-- Tech Exploration-&gt;Case Study --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Tech Exploration-&gt;Cloud/Platform Trial</masterLabel>
-        <translation>기술 탐색-&gt;클라우드/플랫폼 평가판</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Tech Exploration-&gt;Deal Investment</masterLabel>
-        <translation>기술 탐색-&gt;딜 투자</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Tech Exploration-&gt;Demo Hardware</masterLabel>
@@ -970,15 +382,11 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Tech Exploration-&gt;Demo Hardware/Cloud Instance</masterLabel>
-        <translation>기술 탐색-&gt;데모 하드웨어/클라우드 인스턴스</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Tech Exploration-&gt;Joint Engineering/Optimization</masterLabel>
-        <translation>기술 탐색-&gt;공동 엔지니어링/최적화</translation>
+        <translation><!-- Tech Exploration-&gt;Demo Hardware/Cloud Instance --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Tech Exploration-&gt;Other (Tech Exploration)</masterLabel>
-        <translation>기술 탐색-&gt;기타 (기술 탐색)</translation>
+        <translation><!-- Tech Exploration-&gt;Other (Tech Exploration) --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Tech Exploration-&gt;Proof of Concept</masterLabel>
@@ -987,113 +395,5 @@
     <valueTranslation>
         <masterLabel>Tech Exploration-&gt;Seed Unit</masterLabel>
         <translation><!-- Tech Exploration-&gt;Seed Unit --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Tech Exploration-&gt;Solution Development</masterLabel>
-        <translation>기술 탐색-&gt;솔루션 개발</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Technical Sales 2025-&gt;Benchmarking</masterLabel>
-        <translation>기술 매출 2025-&gt;벤치마킹</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Technical Sales 2025-&gt;Case Study</masterLabel>
-        <translation>기술 매출 2025-&gt;사례 연구</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Technical Sales 2025-&gt;Migration</masterLabel>
-        <translation>기술 매출 2025-&gt;마이그레이션</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Technical Sales 2025-&gt;Other (Technical Sales)</masterLabel>
-        <translation>기술 매출 2025-&gt;기타(기술 매출)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Technical Sales 2025-&gt;Proof of Concept</masterLabel>
-        <translation>기술 매출 2025-&gt;개념 증명</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Technical Sales 2025-&gt;Sales Event</masterLabel>
-        <translation>기술 매출 2025-&gt;판매 이벤트</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Technical Sales 2025-&gt;Seed Unit</masterLabel>
-        <translation>기술 매출 2025-&gt;시드 단위</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Technical Sales 2025-&gt;System Demo</masterLabel>
-        <translation>기술 매출 2025-&gt;시스템 데모</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Technical Sales 2025-&gt;Telemarketing</masterLabel>
-        <translation>기술 매출 2025-&gt;텔레마케팅</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Technical Sales 2025-&gt;Trial Instance</masterLabel>
-        <translation>기술 매출 2025-&gt;평가판 인스턴스</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Technical Sales-&gt;Benchmarking</masterLabel>
-        <translation>기술 영업-&gt;벤치마킹</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Technical Sales-&gt;Case Study</masterLabel>
-        <translation>기술 영업-&gt;사례 연구</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Technical Sales-&gt;Migration</masterLabel>
-        <translation>기술 영업-&gt;마이그레이션</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Technical Sales-&gt;Other (Technical Sales)</masterLabel>
-        <translation>기술 영업-&gt;기타(기술 매출)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Technical Sales-&gt;Proof of Concept</masterLabel>
-        <translation>기술 영업-&gt;개념 증명</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Technical Sales-&gt;Sales Event</masterLabel>
-        <translation>기술 영업-&gt;판매 이벤트</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Technical Sales-&gt;Seed Unit</masterLabel>
-        <translation>기술 영업-&gt;시드 단위</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Technical Sales-&gt;System Demo</masterLabel>
-        <translation>기술 영업-&gt;시스템 데모</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Technical Sales-&gt;Telemarketing</masterLabel>
-        <translation>기술 영업-&gt;텔레마케팅</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Technical Sales-&gt;Trial Instance</masterLabel>
-        <translation>기술 영업-&gt;평가판 인스턴스</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Video 2025-&gt;Other (Video)</masterLabel>
-        <translation>비디오 2025-&gt;기타(비디오)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Video 2025-&gt;Streaming</masterLabel>
-        <translation>비디오 2025-&gt;스트리밍</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Video 2025-&gt;Television</masterLabel>
-        <translation>비디오 2025-&gt;TV</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Video-&gt;Other (Video)</masterLabel>
-        <translation>비디오-&gt;기타(비디오)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Video-&gt;Streaming</masterLabel>
-        <translation>비디오-&gt;스트리밍</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Video-&gt;Television</masterLabel>
-        <translation>비디오-&gt;TV</translation>
     </valueTranslation>
 </GlobalValueSetTranslation>

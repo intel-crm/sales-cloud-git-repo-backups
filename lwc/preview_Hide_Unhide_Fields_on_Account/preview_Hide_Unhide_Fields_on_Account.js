@@ -8,8 +8,6 @@ import Core_Sales_Group_Preview__c from '@salesforce/schema/Account.Core_Sales_G
 import Core_Account_Owner_Preview__c from '@salesforce/schema/Account.Core_Account_Owner_Preview__c';
 import Core_Account_Category_Preview__c from '@salesforce/schema/Account.Core_Account_Category_Preview__c';
 import Core_Account_Primary_Coverage_Preview__c from '@salesforce/schema/Account.Core_Account_Primary_Coverage_Preview__c';
-import PreviewVisibilityHelptext from '@salesforce/label/c.Core_ACM_PreviewFieldsSectiontext';
-// Example :- import greeting from '@salesforce/label/c.greeting';
 const fields = [Core_Sales_Group_Preview__c, Core_Account_Owner_Preview__c, Core_Account_Category_Preview__c,Core_Account_Primary_Coverage_Preview__c];
 export default class preview_Hide_Unhide_Fields_on_Account extends LightningElement {
 @api
@@ -21,11 +19,7 @@ recordId;
 @track accountOwnerPreviewBool=false;
 @track accountCategoryPreviewBool=false;
 @track accountPrimaryCoverageBool=false;
-@track accountCommentPreviewBool=false;
-@track accountLevelPreviewBool=false;
 @track isUpdateable;
-
-previewFieldSectionText = PreviewVisibilityHelptext;
 
 isLoading = false;
 @wire(getRecord, {
@@ -69,14 +63,7 @@ handleMapValues() {
         {
           this.accountPrimaryCoverageBool=true;
         }
-        if(fieldName  === 'Core_Account_Level_Preview__c'.toLowerCase() && this.isUpdateable)
-        {
-          this.accountLevelPreviewBool=true;
-        }
-        if(fieldName  === 'Core_Comment_Preview__c'.toLowerCase() && this.isUpdateable)
-        {
-          this.accountCommentPreviewBool=true;
-        }
+        
 
     }
      

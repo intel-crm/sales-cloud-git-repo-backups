@@ -4,12 +4,6 @@
         <field>CASE_NUMBER</field>
     </columns>
     <columns>
-        <field>Case.Core_Promote_Status__c</field>
-    </columns>
-    <columns>
-        <field>Case.Core_IPS_Backend_ID_URL__c</field>
-    </columns>
-    <columns>
         <field>CUST_NAME</field>
     </columns>
     <columns>
@@ -76,8 +70,6 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>Core_IPS_Case_Attachments__c.Core_Upload_Status__c</sortColumn>
-    <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CREATED_DATEONLY</dateColumn>
         <interval>INTERVAL_LAST7</interval>

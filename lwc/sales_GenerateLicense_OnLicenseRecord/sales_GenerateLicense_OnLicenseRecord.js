@@ -1,14 +1,13 @@
-import { LightningElement } from 'lwc';
-import { NavigationMixin } from 'lightning/navigation';
-//import fetchComputerDetails from '@salesforce/apex/Sales_LicenseRecordPageComponentsUtility.retriveComputerDetails';
-/*import { getRecord } from 'lightning/uiRecordApi';
+import { LightningElement,track,wire,api } from 'lwc';
+import fetchComputerDetails from '@salesforce/apex/Sales_LicenseRecordPageComponentsUtility.retriveComputerDetails';
+import { getRecord } from 'lightning/uiRecordApi';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent'
 import licensefileGeneration from '@salesforce/apex/Sales_LicenseGenIntegration_Utility.returnHostIdDetail';
 import hostReassignment from '@salesforce/apex/Sales_LicenseRecordPageComponentsUtility.hostReassignment';
-//import isCommunity from '@salesforce/apex/Sales_AddNewLicenseAdminController.isCommunity';
+import isCommunity from '@salesforce/apex/Sales_AddNewLicenseAdminController.isCommunity';
 import checkisexistingLicense from '@salesforce/apex/Sales_LicenseRecordPageComponentsUtility.askForReassignment';
 import validateLicenseType from '@salesforce/apex/Sales_LicenseRecordPageComponentsUtility.LicenseTypeCheck';
-
+import { NavigationMixin } from 'lightning/navigation';
 import { CloseActionScreenEvent } from 'lightning/actions';
 import getFeedRecord from '@salesforce/apex/Sales_FeedbackController.getFeedRecord';//added for feedback
 import checkCapablity from '@salesforce/apex/Sales_FeedbackController.checkCapablity';//added for feedback
@@ -26,20 +25,20 @@ import Sales_genlic from '@salesforce/label/c.Sales_genlic';
 import Sales_creatnewcomp from '@salesforce/label/c.Sales_creatnewcomp';
 import Sales_AccessCheckMsg from '@salesforce/label/c.Sales_AccessCheckMsg';
 
-//import Sales_addnewcomp from '@salesforce/label/c.Sales_addnewcomp';
-//import Sales_Assignexisting from '@salesforce/label/c.Sales_Assignexisting';
-//import Sales_compname from '@salesforce/label/c.Sales_compname';
-//import Sales_Generate from '@salesforce/label/c.Sales_Generate';
-//import Sales_ConfirmationTitle from '@salesforce/label/c.Sales_ConfirmationTitle';
-//import Sales_Cancel from '@salesforce/label/c.Sales_Cancel';
-//import Sales_Err from '@salesforce/label/c.Sales_Err';
-//import userId from '@salesforce/user/Id';
-//import validateUserAccess from '@salesforce/apex/Sales_ValidateUserEditAccess.validateUserAccess';
-//import BypassRehostForCustomOps from '@salesforce/apex/Sales_ValidateUserEditAccess.BypassRehostForCustomOps';
-*/
-//const FIELDS = [ 'Sales_License__c.Id', 'Sales_License__c.Sales_License_Web_Display_Flag__c','Sales_License__c.Sales_Tool_License_Type__c','Sales_License__c.Sales_License_Activation_Code__c','Sales_License__c.Sales_License_Host_Node_Id__c','Sales_License__c.Sales_License_Primary_Admin_Contact__c','Sales_License__c.Sales_License_Lic_User_Contact_ID__c','Sales_License__c.Sales_License_Type__c','Sales_License__c.Sales_License_Product__r.Core_Product_Ext_Attribute_Id__r.Core_Prod_Tool_Type_Nm__c','Sales_License__c.Sales_License_Status__c'];
+import Sales_addnewcomp from '@salesforce/label/c.Sales_addnewcomp';
+import Sales_Assignexisting from '@salesforce/label/c.Sales_Assignexisting';
+import Sales_compname from '@salesforce/label/c.Sales_compname';
+import Sales_Generate from '@salesforce/label/c.Sales_Generate';
+import Sales_ConfirmationTitle from '@salesforce/label/c.Sales_ConfirmationTitle';
+import Sales_Cancel from '@salesforce/label/c.Sales_Cancel';
+import Sales_Err from '@salesforce/label/c.Sales_Err';
+import userId from '@salesforce/user/Id';
+import validateUserAccess from '@salesforce/apex/Sales_ValidateUserEditAccess.validateUserAccess';
+import BypassRehostForCustomOps from '@salesforce/apex/Sales_ValidateUserEditAccess.BypassRehostForCustomOps';
+
+const FIELDS = [ 'Sales_License__c.Id', 'Sales_License__c.Sales_License_Web_Display_Flag__c','Sales_License__c.Sales_Tool_License_Type__c','Sales_License__c.Sales_License_Activation_Code__c','Sales_License__c.Sales_License_Host_Node_Id__c','Sales_License__c.Sales_License_Primary_Admin_Contact__c','Sales_License__c.Sales_License_Lic_User_Contact_ID__c','Sales_License__c.Sales_License_Type__c','Sales_License__c.Sales_License_Product__r.Core_Product_Ext_Attribute_Id__r.Core_Prod_Tool_Type_Nm__c','Sales_License__c.Sales_License_Status__c'];
 export default class Sales_GenerateLicense_OnLicenseRecord extends NavigationMixin(LightningElement){
-    /*@api fromlac;
+    @api fromlac;
     @track userId=userId;
     @track hostlist;
     @api licenserecordid;
@@ -157,7 +156,7 @@ Sales_AccessCheckMsg
     }
 
     connectedCallback() {
-        /*BypassRehostForCustomOps()
+        BypassRehostForCustomOps()
             .then(result => {
                 this.bypassRehostStatus = result;
                 console.log('Output Of Bypass logic outer: '+result);
@@ -185,8 +184,8 @@ Sales_AccessCheckMsg
           mode: 'dismissable'
       });
       this.dispatchEvent(evt);
-      });*/   
-      /*}
+      });   
+      }
 
     handleOnLoad(){
      this.isLoaded = true;
@@ -295,7 +294,7 @@ licensefileGenerationQueue(){
                         }
                     });*/
                     
-                /*}else{
+                }else{
                     this.buttonClicked=false;
                     const evt = new ShowToastEvent({
                         variant:'error',
@@ -313,7 +312,7 @@ licensefileGenerationQueue(){
 //host ID  : this.selectedhostId
 }*/
 
-/*handleHostChange(event){
+handleHostChange(event){
     this.selectedhostId = event.target.value;
     this.buttonClicked=false;
 }
@@ -431,7 +430,7 @@ handleSubmit(event){
             this.dispatchEvent(evt);
         });
     }
-}*//*
+}*/
 }
 }
 
@@ -612,7 +611,7 @@ hostReassignmentLogic(){
             }
         });
         }*/
-       /*else{
+       else{
         // navigate to order record page
         this[NavigationMixin.Navigate]({
            type: 'standard__recordPage',
@@ -633,9 +632,9 @@ hostReassignmentLogic(){
     }
 
     createNewComputer(event){
-				if(this.fromlac == true){
-        this.licensestatus = this.licstatus;
-    }
+        if(this.fromlac == true){
+            this.licensestatus = this.licstatus;
+        }
         if(this.license.data !=null){
             console.log('licene'+JSON.stringify(this.license));
             if((this.license.data.fields.Sales_License_Type__c.value =='Add Seat') || (this.license.data.fields.Sales_License_Type__c.value =='Renewal')|| (this.license.data.fields.Sales_License_Product__r.value.fields.Core_Product_Ext_Attribute_Id__r.value.fields.Core_Prod_Tool_Type_Nm__c.value=='ADD SEAT')||(this.license.data.fields.Sales_License_Product__r.value.fields.Core_Product_Ext_Attribute_Id__r.value.fields.Core_Prod_Tool_Type_Nm__c.value =='RENEWAL'))
@@ -728,7 +727,7 @@ hostReassignmentLogic(){
             }
         }*/
 
-    /*}
+    }
 
 createcomputerlogic(){
     
@@ -746,7 +745,7 @@ createcomputerlogic(){
     else if (this.licenseType == 'NEUTRAL'){
         this.licenseType = null;//'FIXED or FLOAT';    
     }
-    console.log('error message');
+    console.log('error message ' + this.licensestatus + ' ' + this.fromlac + ' ' +this.licstatus);
     if(this.licensestatus=='Renewals Applied' || this.licensestatus=='Cancelled') 
     {  this.buttonClicked=false; 
         const evt = new ShowToastEvent({
@@ -848,7 +847,7 @@ createcomputerlogic(){
         }*/
 
 
-/*validateUserAccessLogic(){
+validateUserAccessLogic(){
     console.log('824');
     validateUserAccess({userID: this.userId, recordId : this.recordId})
                 .then((result) =>{
@@ -868,6 +867,6 @@ createcomputerlogic(){
                            this.dispatchEvent(new CustomEvent('close'));
 					}
 				})
-}*/
+}
 
 }

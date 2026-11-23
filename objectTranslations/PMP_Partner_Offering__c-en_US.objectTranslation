@@ -30,10 +30,6 @@
         <name>PMP_Admin_New_Offering_Review_Ind__c</name>
     </fields>
     <fields>
-        <label><!-- All Categories --></label>
-        <name>PMP_All_Categories_Txt__c</name>
-    </fields>
-    <fields>
         <label><!-- Archival 7 Days Reminder Date --></label>
         <name>PMP_Archival_Seven_Day_Reminder_Dt__c</name>
     </fields>
@@ -52,10 +48,6 @@
         <picklistValues>
             <masterLabel>Data Center</masterLabel>
             <translation><!-- Data Center --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Field Programmable Gate Array</masterLabel>
-            <translation><!-- Field Programmable Gate Array --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Internet of Things and Embedded</masterLabel>
@@ -78,10 +70,6 @@
     <fields>
         <label><!-- Logged in user --></label>
         <name>PMP_Current_User_Offering_Ind__c</name>
-    </fields>
-    <fields>
-        <label><!-- Edit/Clone Offering --></label>
-        <name>PMP_Edit_Clone_Offering__c</name>
     </fields>
     <fields>
         <help><!-- This field holds the language code in which offering details are Edited --></help>
@@ -123,14 +111,6 @@
         <help><!-- Full Name of the Intel Market Place Admin --></help>
         <label><!-- Intel MP Admin Name --></label>
         <name>PMP_Intel_Admin_Nm__c</name>
-    </fields>
-    <fields>
-        <label><!-- Is Converted --></label>
-        <name>PMP_Is_Converted_Ind__c</name>
-    </fields>
-    <fields>
-        <label><!-- Is Not Available On MP --></label>
-        <name>PMP_Is_Not_Available_On_MP_Ind__c</name>
     </fields>
     <fields>
         <label><!-- Is Notified --></label>
@@ -222,11 +202,6 @@
         <name>PMP_Offering_Status_Update_Dt__c</name>
     </fields>
     <fields>
-        <label><!-- Offering Submitter UserId --></label>
-        <name>PMP_Offering_Submitter_UserId__c</name>
-        <relationshipLabel><!-- Partner Offerings (Offering Submitter UserId) --></relationshipLabel>
-    </fields>
-    <fields>
         <label><!-- Update Required --></label>
         <name>PMP_Offering_Update_Required_Ind__c</name>
     </fields>
@@ -243,10 +218,6 @@
         <help><!-- PIM Product/Offering Id --></help>
         <label><!-- Partner Offering Identifier --></label>
         <name>PMP_Partner_Offering_Id__c</name>
-    </fields>
-    <fields>
-        <label><!-- Partner Offering Lifecycle Status Txt --></label>
-        <name>PMP_Partner_Offering_LifecycleStatus_Txt__c</name>
     </fields>
     <fields>
         <help><!-- Status of the offering before being available on portal --></help>
@@ -283,10 +254,6 @@
         <picklistValues>
             <masterLabel>Rejected</masterLabel>
             <translation><!-- Rejected --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Retired</masterLabel>
-            <translation><!-- Retired --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Update Required</masterLabel>
@@ -330,12 +297,16 @@
         <label><!-- Partner Offering Visibility Name --></label>
         <name>PMP_Partner_Offering_Visibility_Nm__c</name>
         <picklistValues>
-            <masterLabel>All Access - Available to the Public</masterLabel>
-            <translation><!-- All Access - Available to the Public --></translation>
+            <masterLabel>Intel Only Content</masterLabel>
+            <translation><!-- Intel Only Content --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Restricted Access - Intel Pre-Release Product</masterLabel>
-            <translation><!-- Restricted Access - Intel Pre-Release Product --></translation>
+            <masterLabel>Partner Content</masterLabel>
+            <translation><!-- Partner Content --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Public Content</masterLabel>
+            <translation><!-- Public Content --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -360,14 +331,6 @@
         <name>PMP_Pre_Release_Item_Count_Num__c</name>
     </fields>
     <fields>
-        <label><!-- Published Copy Id --></label>
-        <name>PMP_Published_Copy_Id_Txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Reason for Retired --></label>
-        <name>PMP_Reason_for_Retired_Txt__c</name>
-    </fields>
-    <fields>
         <help><!-- This field contains all comments history --></help>
         <label><!-- Review Comment History --></label>
         <name>PMP_Review_Comment_History_Txt__c</name>
@@ -384,10 +347,6 @@
     <fields>
         <label><!-- Sub Category --></label>
         <name>PMP_Sub_Category_nm__c</name>
-    </fields>
-    <fields>
-        <label><!-- Topic Count --></label>
-        <name>PMP_Topic_Count__c</name>
     </fields>
     <fields>
         <label><!-- Language Status --></label>
@@ -454,11 +413,39 @@
     </recordTypes>
     <startsWith>Consonant</startsWith>
     <validationRules>
+        <errorMessage><!-- Offering cannot be archived if the status is in Draft, Update required or Pending FSE/FAE approval --></errorMessage>
+        <name>PMP_Archive_Offering_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Error – Intel only visible offering, cannot be publicly featured. --></errorMessage>
+        <name>PMP_Featured_Offering_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Kindly add review comments (Approved / Rejected / Update Required) in the comment box --></errorMessage>
+        <name>PMP_Mandate_FAE_Comment_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- An offering can be published only if it is reviewed by Admin. Offering previous status should be &quot;Admin Review&quot; --></errorMessage>
+        <name>PMP_Publish_Offering_Validation</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- An offering can be Rejected only if it is reviewed by Admin. Offering previous status should be &quot;Admin Review&quot; --></errorMessage>
         <name>PMP_Reject_Offering_Validation</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- Please enter comments before rejecting or archiving the offering --></errorMessage>
+        <name>PMP_Rejection_Comment_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Record cannot be modified until offering editor has made all the necessary changes --></errorMessage>
+        <name>PMP_Update_Offering_Check</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- An offering can be sent for Update only if it is reviewed by Admin. Offering previous status should be &quot;Admin Review&quot; --></errorMessage>
         <name>PMP_Update_Offering_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The date entered is irrelevant. --></errorMessage>
+        <name>PMP_ValidityPeriodCheck</name>
     </validationRules>
 </CustomObjectTranslation>

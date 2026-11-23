@@ -118,7 +118,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Decision_3</targetReference>
+                <targetReference>If_the_Product_is_present_on_the_SOAR</targetReference>
             </connector>
             <label>Status equals to Pending , On hold and Post win</label>
         </rules>
@@ -153,7 +153,7 @@
         </rules>
     </decisions>
     <decisions>
-        <name>Decision_3</name>
+        <name>If_the_Product_is_present_on_the_SOAR</name>
         <label>If the Product is present on the SOAR</label>
         <locationX>182</locationX>
         <locationY>708</locationY>
@@ -172,12 +172,11 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Update_Records_2</targetReference>
+                <targetReference>Update_SOAR_Product</targetReference>
             </connector>
             <label>Yes</label>
         </rules>
     </decisions>
-    <description>Version 9 : Created by Jahnavi as a part of VBS Changes</description>
     <environments>Default</environments>
     <formulas>
         <name>CheckIsNewProduct</name>
@@ -327,8 +326,8 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordUpdates>
-        <name>Update_Records_2</name>
-        <label>Update SOAR Records</label>
+        <name>Update_SOAR_Product</name>
+        <label>Update SOAR Product</label>
         <locationX>50</locationX>
         <locationY>816</locationY>
         <filterLogic>and</filterLogic>

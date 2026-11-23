@@ -296,6 +296,30 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Rebate_Claim_Upload__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Rebate Claim Upload</label>
+        <referenceTo>PCC_Rebate_Claim_Stage__c</referenceTo>
+        <relationshipLabel>TPT Trackers</relationshipLabel>
+        <relationshipName>TPT_Trackers</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Rebate_Claim__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Rebate Claim</label>
+        <referenceTo>PCC_Rebate_Claim__c</referenceTo>
+        <relationshipLabel>TPT Trackers</relationshipLabel>
+        <relationshipName>TPT_Trackers</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
         <fullName>Registration_Type__c</fullName>
         <externalId>false</externalId>
         <formula>DealRegistration__r.PCC_Registration_Type__c</formula>
@@ -348,6 +372,27 @@
         <unique>false</unique>
     </fields>
     <label>TPT Tracker</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Accepted_by__c</columns>
+        <columns>Approver_group__c</columns>
+        <columns>DealRegistration__c</columns>
+        <columns>DealRegistrationProduct__c</columns>
+        <columns>DR_Name__c</columns>
+        <columns>InnovationTracker__c</columns>
+        <columns>Opportunity__c</columns>
+        <columns>Opportunity_name__c</columns>
+        <columns>Opportunity_Owner__c</columns>
+        <columns>Partner_Account_Name__c</columns>
+        <columns>Partner_Account_Region__c</columns>
+        <columns>Product_group__c</columns>
+        <columns>Registration_Type__c</columns>
+        <columns>Status__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <language>en_US</language>
+    </listViews>
     <nameField>
         <displayFormat>TPT-{YYYY}{MM}{DD}-{0000000}</displayFormat>
         <label>TPT Tracker Name</label>

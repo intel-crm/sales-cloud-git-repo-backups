@@ -6,7 +6,7 @@
     </caseValues>
     <caseValues>
         <plural>true</plural>
-        <value>Leads To Convert</value>
+        <value>Lead To Convert</value>
     </caseValues>
     <fields>
         <label><!-- Account Id --></label>
@@ -23,10 +23,6 @@
     <fields>
         <label><!-- Contact Owner Id --></label>
         <name>Contact_Owner_Id__c</name>
-    </fields>
-    <fields>
-        <label><!-- Conversion Error --></label>
-        <name>Conversion_Error__c</name>
     </fields>
     <fields>
         <label><!-- IsConverted --></label>
@@ -51,6 +47,15 @@
     <fields>
         <label><!-- Lead Status --></label>
         <name>Lead_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Name --></label>
+        <name>Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Owner --></label>
+        <name>Owner__c</name>
+        <relationshipLabel><!-- Lead To Convert --></relationshipLabel>
     </fields>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

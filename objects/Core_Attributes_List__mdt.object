@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Core_Attribute_List__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Attribute List</label>
+        <length>131072</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <label>Attributes List</label>
+    <pluralLabel>Attributes List</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

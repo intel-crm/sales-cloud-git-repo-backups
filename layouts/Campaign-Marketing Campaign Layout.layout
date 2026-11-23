@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
     <excludeButtons>ManageMembers</excludeButtons>
+    <excludeButtons>OpenSlackRecordChannel</excludeButtons>
     <excludeButtons>Submit</excludeButtons>
     <headers>PersonalTagging</headers>
     <layoutSections>
@@ -36,6 +37,14 @@
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>MKT_Campaign_Brief_Details_Formula_Txt__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_MDF_Spending_Cap_Amt__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_MDF_RMF_Delta_Budget_Amt__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -79,7 +88,12 @@
         <detailHeading>false</detailHeading>
         <editHeading>false</editHeading>
         <label>Description Information</label>
-        <layoutColumns/>
+        <layoutColumns>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_MDF_Opal_Budget_Type_Txt__c</field>
+            </layoutItems>
+        </layoutColumns>
         <style>OneColumn</style>
     </layoutSections>
     <layoutSections>
@@ -131,6 +145,19 @@
             </layoutItem>
         </relatedContentItems>
     </relatedContent>
+    <relatedLists>
+        <excludeButtons>MassChangeOwner</excludeButtons>
+        <excludeButtons>New</excludeButtons>
+        <fields>NAME</fields>
+        <fields>jiffle__Account__c</fields>
+        <fields>jiffle__Event__c</fields>
+        <fields>jiffle__Meeting__c</fields>
+        <fields>jiffle__Meeting_ID__c</fields>
+        <fields>jiffle__Meeting_Location__c</fields>
+        <fields>jiffle__Opportunity__c</fields>
+        <fields>jiffle__Request_Status__c</fields>
+        <relatedList>jiffle__Meeting_Relations__c.jiffle__Campaign__c</relatedList>
+    </relatedLists>
     <relatedLists>
         <fields>LABEL</fields>
         <fields>ISDEFAULT</fields>

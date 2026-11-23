@@ -31,5 +31,18 @@
         <type>TextArea</type>
     </fields>
     <label>Pricing AccountId Comments Mapping</label>
+    <listViews>
+        <fullName>test</fullName>
+        <columns>NAME</columns>
+        <columns>OBJECT_ID</columns>
+        <columns>AccountId__c</columns>
+        <columns>Comments_Part_1__c</columns>
+        <columns>Comments_Part_2__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>LAST_UPDATE</columns>
+        <filterScope>Everything</filterScope>
+        <label>test</label>
+        <language>en_US</language>
+    </listViews>
     <visibility>Public</visibility>
 </CustomObject>

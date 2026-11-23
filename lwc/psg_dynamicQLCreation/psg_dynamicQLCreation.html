@@ -1,0 +1,70 @@
+<template>
+    <lightning-card class="c-container">
+        <h3 slot="title">
+            <lightning-icon icon-name="standard:timesheet" alternative-text="Event" size="small"></lightning-icon>
+            &nbsp;Bulk QuoteLine Creation
+        </h3>
+        <template for:each={itemList} for:item="item" for:index="index">
+            <lightning-record-edit-form key={item.id} object-api-name="SBQQ__QuoteLine__c" onsuccess={handleSuces}>
+                <lightning-messages> </lightning-messages>
+                <lightning-layout multiple-rows  class="c-container">
+                    <lightning-layout-item
+                        padding="around-small">
+                        <lightning-input-field field-name="SBQQ__Product__c" variant="label-stacked" required>
+                        </lightning-input-field>
+                    </lightning-layout-item>
+                    <lightning-layout-item  
+                        padding="around-small">
+                        <lightning-input-field field-name="PSG_Upper_Bound_Qty_qty__c" variant="label-stacked">
+                        </lightning-input-field>
+                    </lightning-layout-item>
+                    <lightning-layout-item
+                        padding="around-small">
+                        <lightning-input-field field-name="PSG_Lower_Bound_Qty_qty__c" variant="label-stacked">
+                        </lightning-input-field>
+                    </lightning-layout-item>
+                    <lightning-layout-item
+                        padding="around-small">
+                        <lightning-input-field field-name="PSG_Requested_Resale_Amt__c" variant="label-stacked">
+                        </lightning-input-field>
+                    </lightning-layout-item>
+
+                    <lightning-layout-item 
+                        padding="around-small">
+                        <lightning-input-field field-name="PSG_Production_Dt__c" variant="label-stacked">
+                        </lightning-input-field>
+                    </lightning-layout-item>                    
+                    <lightning-layout-item                   padding="around-small">
+                        <lightning-input-field field-name="SBQQ__Quote__c" variant="label-stacked" required>
+                        </lightning-input-field>
+                    </lightning-layout-item>
+                    <!-- <template if:true={requiredRecordTypeId}> -->
+                        <lightning-layout-item padding="around-small">
+                            <lightning-input-field field-name="RecordTypeId" value={recordtypeId}
+                                variant="label-stacked">
+                            </lightning-input-field>
+                        </lightning-layout-item>
+                    <!-- </template> -->
+                    <lightning-layout-item padding="around-small">
+                        <div class="slds-p-top_medium">
+                            <lightning-icon icon-name="action:new" access-key={item.id} id={index}
+                                alternative-text="Add Row" size="small" title="Add Row" onclick={addRow}>
+                            </lightning-icon>
+                            <lightning-icon icon-name="action:delete" access-key={item.id} id={index}
+                                alternative-text="Delete Row" size="small" title="Delete Row" onclick={removeRow}>
+                            </lightning-icon>
+                        </div>
+                    </lightning-layout-item>
+                </lightning-layout>
+
+            </lightning-record-edit-form>
+        </template>
+        </br>
+        <lightning-layout>
+            <div class="slds-align_absolute-center">
+                <lightning-button variant="brand" onclick={handleSubmit} name="submit" label="Submit">
+                </lightning-button>
+            </div>
+        </lightning-layout>
+    </lightning-card>
+</template>

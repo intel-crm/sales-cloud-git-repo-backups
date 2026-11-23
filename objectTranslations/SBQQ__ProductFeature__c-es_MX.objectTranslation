@@ -13,6 +13,10 @@
         <name>SBQQ__Configurator</name>
     </fieldSets>
     <fields>
+        <label><!-- External Id --></label>
+        <name>Core_Access_External_Id__c</name>
+    </fields>
+    <fields>
         <help>Asigne esta función a una categoría de modo que se agrupen juntas múltiples funciones con opciones relacionadas.</help>
         <label><!-- Category --></label>
         <name>SBQQ__Category__c</name>

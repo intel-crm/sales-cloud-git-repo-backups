@@ -1,0 +1,27 @@
+<template>
+    <lightning-card title="Locate the usage of the label" icon-name="utility:labels">
+        <div class="slds-box slds-m-around_small">
+            <lightning-layout size="12" multiple-rows="true">
+
+                <lightning-layout-item flexibility="auto" class="slds-p-around_small">
+                    <lightning-input type="search" variant="label-hidden" value={labelDeveloperName}
+                        onchange={handleInputChange}></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item flexibility="auto" class="slds-p-around_small">
+                    <lightning-button icon-name="utility:record_lookup" label="check"
+                        onclick={handleSearch}></lightning-button>
+                </lightning-layout-item>
+
+                <lightning-layout-item  size="12" flexibility="auto" class="slds-p-around_small">
+                    <p> Total Occurances Observed : {getTotal}</p>
+                </lightning-layout-item>
+                <lightning-layout-item flexibility="auto" class="slds-p-around_small">
+                    <lightning-datatable key-field="Id" data={data} columns={columns} hide-checkbox-column="true"
+                        show-row-number-column="true">
+
+                    </lightning-datatable>
+                </lightning-layout-item>
+            </lightning-layout>
+        </div>
+    </lightning-card>
+</template>

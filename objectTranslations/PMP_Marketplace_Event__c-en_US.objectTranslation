@@ -29,18 +29,6 @@
         </picklistValues>
     </fields>
     <fields>
-        <label><!-- Event Learn More Link --></label>
-        <name>PMP_Event_Learn_More_Link_Txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Event Marquee Description --></label>
-        <name>PMP_Event_Marquee_Desc_Txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Event Screen Reader Text --></label>
-        <name>PMP_Event_Screen_Reader_Txt__c</name>
-    </fields>
-    <fields>
         <help><!-- Holds the information for Event Description. --></help>
         <label><!-- Marketplace Event Description --></label>
         <name>PMP_Marketplace_Desc__c</name>
@@ -65,8 +53,4 @@
         <name>PMP_Marketplace_Event_Tagline__c</name>
     </fields>
     <startsWith>Consonant</startsWith>
-    <validationRules>
-        <errorMessage><!-- End Date cannot be before Start Date --></errorMessage>
-        <name>End_Date_cannot_be_before_Start_Date</name>
-    </validationRules>
 </CustomObjectTranslation>

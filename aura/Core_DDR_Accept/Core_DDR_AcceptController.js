@@ -5,12 +5,12 @@
         var highOrLow;
 		let action = component.get("c.ApproveDesign");
          component.set("v.LexSpinner", true);
-        if(component.get("v.lowTouchORHighTouch") == "AcceptHighTouch"){
+        if(component.get("v.lowTouchORHighTouch") == "AcceptHightTouch"){
             highOrLow = $A.get("$Label.c.DDR_Intel_Support_Status_High");
         }else{
             highOrLow = $A.get("$Label.c.DDR_Intel_Support_Status_Low");
         }
-       
+        
         action.setParams({
             "DDRrecordId" : component.get("v.recordId"),
             "highTouchOrLowTouch":highOrLow

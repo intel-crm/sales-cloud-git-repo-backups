@@ -461,6 +461,10 @@
         <name>CRM_VBS_Check_Perm_For_Contract_Fields</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- Please enter the following mandatory contract information: Annual Recurring Revenue, Contract Lifetime, Contract Start Date, Total Contract Value. --></errorMessage>
+        <name>CRM_VBS_Contract_Field_Change</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- Please select SOAR VBS Decision as either &quot;Contract Signed&quot; or &quot;Contract Not Signed&quot;. --></errorMessage>
         <name>CRM_VBS_Contract_Fields_Check</name>
     </validationRules>
@@ -512,4 +516,8 @@
         <errorMessage><!-- Please enter a numeric value. --></errorMessage>
         <name>CRM_VBS_Valid_Contract_Lifetime</name>
     </validationRules>
+    <webLinks>
+        <label><!-- CRM_VBS_Refresh --></label>
+        <name>CRM_VBS_Refresh</name>
+    </webLinks>
 </CustomObjectTranslation>

@@ -48,6 +48,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>core_cpq_ccf_flag_cb__c</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>core_cpq_comments_for_customer_txt__c</field>
             <table>SBQQ__QuoteLine__c</table>
         </columns>
@@ -153,12 +158,12 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>price_goal_price_amt__c</field>
+            <field>core_cpq_gp_msvpl2_nm__c</field>
             <table>SBQQ__QuoteLine__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>core_cpq_gp_msvpl2_nm__c</field>
+            <field>price_goal_price_amt__c</field>
             <table>SBQQ__QuoteLine__c</table>
         </columns>
         <columns>
@@ -353,11 +358,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Pricing_Quote_Program_Nm__c</field>
-            <table>SBQQ__QuoteLine__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>core_cpq_previous_lower_bound_qty_nbr__c</field>
             <table>SBQQ__QuoteLine__c</table>
         </columns>
@@ -409,6 +409,16 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>core_cpq_sap_ecp_nm__c</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>core_cpq_PRID__c</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>core_cpq_prid_active_cb__c</field>
             <table>SBQQ__QuoteLine__c</table>
         </columns>
         <columns>
@@ -503,6 +513,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Quote_Program_Nm__c</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>core_cpq_quote_type__c</field>
             <table>SBQQ__QuoteLine__c</table>
         </columns>
@@ -588,6 +603,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>core_cpq_update_dist_percent__c</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>core_cpq_upper_bound_qty_nbr__c</field>
             <table>SBQQ__QuoteLine__c</table>
         </columns>
@@ -613,12 +633,182 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>core_cpq_PRID__c.core_cpq_quote_line_type__c</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>SBQQ__Quote__c.core_cpq_navigate_to_iqr__c</field>
             <table>SBQQ__QuoteLine__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>core_cpq_PRID__c.Id</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>core_cpq_PRID__c.price_amt__c</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>core_cpq_PRID__c.Name</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>core_cpq_PRID__c.core_cpq_prid_reviewer__c.Name</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>core_cpq_PRID__c.core_cpq_cps_cb__c</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>core_cpq_PRID__c.core_cpq_type__c</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>core_cpq_parent_quote__c.core_cpq_active_cb__c</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Additional_RPM_Notify_Recipients__c</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Lost_Reason_Nm__c</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>core_cpq_master_ddr__c</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Quote_Total_Requested_Quantity__c</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>core_cpq_product_nm__c.Core_Product_Ext_Attribute_Id__c.PSG_Restricted_Product__c</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_FI_Write_In_OEM_Name_Txt__c</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Product_VerticalSegment__c</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_OEM_Name_FI__c</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Total_Product_Rebate__c</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Paired_CPU_Nm__c</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_SW_Additional_Disc__c</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_SW_Description_hyperlink__c</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_SW_Monthly_Price__c</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Payable_Quantity__c</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Product_Series__c</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Product_Series_Check__c</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Product_Series_Name__c</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_QuoteLine_Id__c</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_SW_PLI_Approval_Discount__c</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Item_Id__c</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Change_Request_Type__c</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Change_RequestType__c</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Application_Agent_Status__c</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Rationale_for_Pricing__c</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Change_Request_Ind__c</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_HPC_Eligible_Pricing_Envelope__c</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_NonHPC_Eligible_Pricing_Envelope__c</field>
             <table>SBQQ__QuoteLine__c</table>
         </columns>
         <masterLabel>Quote Lines</masterLabel>

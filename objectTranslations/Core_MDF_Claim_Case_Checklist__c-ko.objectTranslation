@@ -5,26 +5,6 @@
         <value><!-- Claim Case Checklist --></value>
     </caseValues>
     <fields>
-        <label><!-- AI Checklist Status --></label>
-        <name>Core_MDF_AI_Checklist_Status_Nm__c</name>
-        <picklistValues>
-            <masterLabel>Compliant</masterLabel>
-            <translation><!-- Compliant --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>NA</masterLabel>
-            <translation><!-- NA --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Non-Compliant</masterLabel>
-            <translation><!-- Non-Compliant --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
-        <label><!-- AI Generated Comments --></label>
-        <name>Core_MDF_AI_Generated_Comments_Txt__c</name>
-    </fields>
-    <fields>
         <label><!-- Case_ID --></label>
         <name>Core_MDF_Case_ID__c</name>
         <relationshipLabel><!-- Claim Case Checklists --></relationshipLabel>
@@ -37,28 +17,12 @@
         <label><!-- Checklist Category --></label>
         <name>Core_MDF_Checklist_Category__c</name>
         <picklistValues>
-            <masterLabel>Attribution</masterLabel>
-            <translation><!-- Attribution --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Branding</masterLabel>
             <translation><!-- Branding --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Documentation</masterLabel>
             <translation><!-- Documentation --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Engagement</masterLabel>
-            <translation><!-- Engagement --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Others</masterLabel>
-            <translation><!-- Others --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>POP</masterLabel>
-            <translation><!-- POP --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Submission</masterLabel>
@@ -98,11 +62,11 @@
         <name>Core_MDF_Claim_Case_Review_Findings__c</name>
         <picklistValues>
             <masterLabel>Activity date mismatch</masterLabel>
-            <translation>활동 날짜 불일치</translation>
+            <translation><!-- Activity date mismatch --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Activity not completely delivered/partially delivered</masterLabel>
-            <translation>완전히 전달되지 않거나 부분적으로 전달된 활동</translation>
+            <translation><!-- Activity not completely delivered/partially delivered --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Anti-corruption policy not met</masterLabel>
@@ -129,64 +93,32 @@
             <translation>청구가 6개월 청구 기간을 벗어남</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Claims outside of claiming window</masterLabel>
-            <translation>청구가 청구 창을 벗어남</translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Competitive element violation</masterLabel>
             <translation>경쟁 요소 위반</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Consistency Issue</masterLabel>
-            <translation>일관성 문제</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Cost documents altered</masterLabel>
             <translation>비용 문서가 변경됨</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Cost documents altered/not valid</masterLabel>
-            <translation>비용 문서가 변경됨/유효하지 않음</translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Duplicate claims</masterLabel>
             <translation>중복 청구</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Eligible Product/Solution Not Prominent/Missing</masterLabel>
-            <translation>적격 제품/솔루션을 찾을 수 없음/누락됨</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Eligible ad space error</masterLabel>
             <translation>적격 광고 공간 오류</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Embargo countries</masterLabel>
-            <translation>통상 금지 국가</translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Event prior approval violation</masterLabel>
             <translation>이벤트 사전 승인 위반</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Event prior approval violation. Pre-review documentation violation</masterLabel>
-            <translation>이벤트 사전 승인 위반. 검토 전 문서 위반</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Exceeds Gift &amp; Entertainment guide</masterLabel>
             <translation>기프트 또는 엔터테인먼트 가이드 초과</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Execution date mismatch</masterLabel>
-            <translation>실행 날짜 불일치</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Incorrect Intel Mention</masterLabel>
-            <translation>잘못된 인텔 언급</translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Incorrect Intel Processor Brands</masterLabel>
-            <translation>올바르지 않은 인텔 프로세서 브랜드</translation>
+            <translation><!-- Incorrect Intel Processor Brands --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Incorrect Intel logo/sig ID</masterLabel>
@@ -198,7 +130,7 @@
         </picklistValues>
         <picklistValues>
             <masterLabel>Incorrect Product Executed</masterLabel>
-            <translation>올바르지 않은 제품 실행</translation>
+            <translation><!-- Incorrect Product Executed --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Incorrect Program Selected</masterLabel>
@@ -210,15 +142,11 @@
         </picklistValues>
         <picklistValues>
             <masterLabel>Incorrect country submission</masterLabel>
-            <translation>올바르지 않은 국가 제출</translation>
+            <translation><!-- Incorrect country submission --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Incorrect country submission/ Multiple countries submission</masterLabel>
             <translation>올바르지 않은 국가 제출/여러 국가 제출</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Incorrect/missing Additional Attribution</masterLabel>
-            <translation>추가 속성이 잘못됨/누락됨</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Incorrect/missing Intel mention</masterLabel>
@@ -226,7 +154,7 @@
         </picklistValues>
         <picklistValues>
             <masterLabel>Intel Artwork Violation</masterLabel>
-            <translation>인텔 아트워크 위반</translation>
+            <translation><!-- Intel Artwork Violation --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Intel code name violation</masterLabel>
@@ -250,7 +178,7 @@
         </picklistValues>
         <picklistValues>
             <masterLabel>Lack of Intel Presence</masterLabel>
-            <translation>인텔 존재감 부족</translation>
+            <translation><!-- Lack of Intel Presence --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Landing Page Branding violation</masterLabel>
@@ -277,10 +205,6 @@
             <translation>비적격 인텔 제품 브랜드</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Non-eligible product/solution</masterLabel>
-            <translation>비적격 제품/솔루션</translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Non-reimbursable costs</masterLabel>
             <translation>환급 불가능 비용</translation>
         </picklistValues>
@@ -290,7 +214,7 @@
         </picklistValues>
         <picklistValues>
             <masterLabel>Others</masterLabel>
-            <translation>기타</translation>
+            <translation><!-- Others --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>POC date mismatch</masterLabel>
@@ -301,14 +225,6 @@
             <translation>POC 세부 정보 제출 오류</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>POE documents altered</masterLabel>
-            <translation>POE 문서가 변경됨</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>POP contain redaction</masterLabel>
-            <translation>POP에 변경 사항이 있음</translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>POP not in acceptable format</masterLabel>
             <translation>POP가 허용되지 않는 형식임</translation>
         </picklistValues>
@@ -317,20 +233,8 @@
             <translation>구매 경로 전제 조건이 충족되지 않음</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Promoting Non-Intel Product</masterLabel>
-            <translation>비 인텔 제품 홍보</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Proof of Execution altered</masterLabel>
-            <translation>실행 증명 변경됨</translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Qualified Processor Brands violation</masterLabel>
             <translation>적격 프로세서 브랜드 위반</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SPIF underperformed</masterLabel>
-            <translation>SPIF가 미흡함</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Third-party logos violation</masterLabel>
@@ -342,7 +246,7 @@
         </picklistValues>
         <picklistValues>
             <masterLabel>Underperformed metrics/Not Meeting FMV</masterLabel>
-            <translation>평가 기준 미흡/FMV 불충족</translation>
+            <translation><!-- Underperformed metrics/Not Meeting FMV --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Unsupported domains</masterLabel>
@@ -367,7 +271,11 @@
     </fields>
     <nameFieldLabel><!-- Claim Case Checklist Name --></nameFieldLabel>
     <validationRules>
-        <errorMessage><!-- Enter Impact Amount (local) greater than or equal to 0 --></errorMessage>
+        <errorMessage><!-- Enter Impact Amounts greater than 0 --></errorMessage>
+        <name>Core_MDF_Validate_Impact_Amount</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Enter missing Impact Amounts for items checked Non-compliant --></errorMessage>
         <name>Core_MDF_Validate_NonCompliant_Responses</name>
     </validationRules>
 </CustomObjectTranslation>

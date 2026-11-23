@@ -6,5 +6,5 @@
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>SGOEDV-UNDSYSTEMBERATUNG1 Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>SGOEDVUNDSYSTEMBERATUNG1PartnerManager</parentRole>
 </Role>

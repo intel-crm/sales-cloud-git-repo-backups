@@ -171,7 +171,6 @@
     <columns>
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Program_Type_Nm__c</field>
     </columns>
-    <description>Partner-led Deal Registration quotes and quote Lines</description>
     <filter>
         <criteriaItems>
             <column>SBQQ__Quote__c.SBQQ__LineItems__r$SBQQ__Quote__c</column>
@@ -197,7 +196,7 @@
         <language>en_US</language>
     </filter>
     <format>Tabular</format>
-    <name>IQR Deal Reg - Quote and Quote Lines</name>
+    <name>IQR - Quote and Quote Lines</name>
     <params>
         <name>co</name>
         <value>1</value>

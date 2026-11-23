@@ -1,0 +1,7 @@
+<Apex:Page >
+<img id="liveagent_button_online_5732D0000008Ses" style="display: none; border: 0px none; cursor: pointer" onclick="liveagent.startChat('5732D0000008Ses')" src="https://intel--crmdevsls3.sandbox.my.site.com/tenders/resource/1684211333000/Chatbuttonimage" /><div id="liveagent_button_offline_5732D0000008Ses" style="display: none;"><!-- Offline Chat Content --></div><script type="text/javascript">
+if (!window._laq) { window._laq = []; }
+window._laq.push(function(){liveagent.showWhenOnline('5732D0000008Ses', document.getElementById('liveagent_button_online_5732D0000008Ses'));
+liveagent.showWhenOffline('5732D0000008Ses', document.getElementById('liveagent_button_offline_5732D0000008Ses'));
+});</script>
+</Apex:Page>

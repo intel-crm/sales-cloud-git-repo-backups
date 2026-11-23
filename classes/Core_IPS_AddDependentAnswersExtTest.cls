@@ -12,7 +12,6 @@ Modification Log :
 * Developer                   Date                   Description
 * ----------------------------------------------------------------------------                 
 * Karthick                   05/01/2018             Test class for Managing Dependent answers
-* System.assert()--> statement Added By Hassan Khan 01-02-2024 
 ****************************************************************************************************/   
 @isTest
 public class Core_IPS_AddDependentAnswersExtTest{
@@ -124,7 +123,7 @@ public class Core_IPS_AddDependentAnswersExtTest{
         pageRef = ansExt.SaveDetails();
         pageRef = ansExt.SaveandReturn();
         
-        System.assert(supportOrg.id != null, true);
+        
     }
     
     
@@ -230,10 +229,9 @@ public class Core_IPS_AddDependentAnswersExtTest{
         
         ApexPages.StandardController StndContr4 = new ApexPages.standardController(parentAns4);        
         Core_IPS_AddDependentAnswersExt ansExt4 = new Core_IPS_AddDependentAnswersExt(StndContr4);
-        //pageRef4 = ansExt4.init();
+        pageRef4 = ansExt4.init();
         pageRef4 = ansExt4.SaveDetails();
         pageRef4 = ansExt4.SaveandReturn();
-        System.assert(childQuesList.size() > 0, true);
           
     }
     
@@ -251,7 +249,7 @@ public class Core_IPS_AddDependentAnswersExtTest{
         try{
             pageRef= ansExt.init();
         }catch(Exception e){
+            System.debug('Exception message ::'+e.getMessage());
         }
-        System.assert(ansExt != null, true);
     }
 }

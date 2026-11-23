@@ -119,7 +119,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>JP-MAG,PSG-IR,Admin,CQE,Enpirion,CSTOOLS,Deflected,ZBB,PRISM,CAT2,eASIC,APJ-MAG</value>
+            <value>PSG-IR,Admin,CQE,Enpirion,CSTOOLS,Deflected,ZBB,PRISM,CAT2</value>
         </criteriaItems>
         <criteriaItems>
             <column>Case.Core_IPS_Support_Level__c</column>
@@ -133,7 +133,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>uniquest,altima,arrow,macnica,digi-key,GALAXY FAR EAST CORPORATION,intel</value>
+            <value>uniquest,altima,arrow,macnica,digi-key,GALAXY FAR EAST CORPORATION</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -143,7 +143,7 @@
         <field>CLOSED_DATE</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Obsolete - Customer Survey NPS - PSG MAG</name>
+    <name>Customer Survey NPS - PSG MAG</name>
     <params>
         <name>units</name>
         <value>d</value>

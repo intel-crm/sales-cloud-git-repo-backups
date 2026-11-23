@@ -158,25 +158,9 @@
         <label>Account</label>
         <lookupFilter>
             <active>true</active>
-            <booleanFilter>((1 AND 2) OR 3) OR 4</booleanFilter>
             <errorMessage>Please select only IPA Accounts</errorMessage>
             <filterItems>
-                <field>Account.RecordType.Name</field>
-                <operation>equals</operation>
-                <value>Intel Account</value>
-            </filterItems>
-            <filterItems>
                 <field>Account.Core_Intel_Partner_Alliance_PartnerGroup__c</field>
-                <operation>equals</operation>
-                <value>True</value>
-            </filterItems>
-            <filterItems>
-                <field>Account.RecordType.Name</field>
-                <operation>equals</operation>
-                <value>Partner Account Group</value>
-            </filterItems>
-            <filterItems>
-                <field>$Source.PRM_InActive_Ind__c</field>
                 <operation>equals</operation>
                 <value>True</value>
             </filterItems>
@@ -191,18 +175,6 @@
         <trackTrending>false</trackTrending>
         <type>MasterDetail</type>
         <writeRequiresMasterRead>false</writeRequiresMasterRead>
-    </fields>
-    <fields>
-        <fullName>PRM_Account_Type__c</fullName>
-        <externalId>false</externalId>
-        <formula>IF(PRM_Account_Id__r.RecordType.DeveloperName = &quot;Mastered_Account&quot;,&quot;Intel Account&quot;,&quot;OPID Account&quot;)</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Account Type</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
     </fields>
     <fields>
         <fullName>PRM_End_Date_Dt__c</fullName>
@@ -314,14 +286,6 @@
         <type>Text</type>
         <unique>false</unique>
     </fields>
-    <fields>
-        <fullName>PRM_Suppress_Email__c</fullName>
-        <defaultValue>false</defaultValue>
-        <label>Suppress Email</label>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
     <label>Account Specialty Association</label>
     <nameField>
         <displayFormat>ASA-{0000}</displayFormat>
@@ -337,7 +301,7 @@
         <active>true</active>
         <description>An error message if the user tries to remove the specific specialty benefit association.
 Message to be displayed- &quot;Specialty association cannot be deleted, use the inactive indicator to remove the specialty&quot;</description>
-        <errorConditionFormula>NOT($Permission.PCC_Bypass_Automation) &amp;&amp; ISCHANGED( PRM_Specialty_Id__c )</errorConditionFormula>
+        <errorConditionFormula>ISCHANGED( PRM_Specialty_Id__c )</errorConditionFormula>
         <errorMessage>Specialty association cannot be removed, use the inactive indicator to remove the specialty</errorMessage>
     </validationRules>
     <visibility>Public</visibility>

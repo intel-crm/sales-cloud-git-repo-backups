@@ -49,16 +49,6 @@
             </valueSetDefinition>
         </valueSet>
     </fields>
-    <fields>
-        <fullName>Pricing_Unified_Customer_Type__c</fullName>
-        <externalId>false</externalId>
-        <fieldManageability>DeveloperControlled</fieldManageability>
-        <label>Pricing Unified Customer Type</label>
-        <length>255</length>
-        <required>false</required>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
     <label>Pricing Account To CIM ID Mapping</label>
     <pluralLabel>Pricing Account To CIM ID Mapping</pluralLabel>
     <visibility>Public</visibility>

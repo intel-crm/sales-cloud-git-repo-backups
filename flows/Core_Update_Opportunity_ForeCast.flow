@@ -1,85 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>ForeCastList</name>
+        <label>ForeCastList</label>
+        <locationX>803</locationX>
+        <locationY>188</locationY>
+        <actionName>01p2D00000KkuP0NotFound</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>oppForecastList</name>
+            <value>
+                <elementReference>$Record</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
     <apiVersion>56.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
-    <assignments>
-        <name>Readonly_Forecasts</name>
-        <label>Readonly Forecasts</label>
-        <locationX>623</locationX>
-        <locationY>410</locationY>
-        <assignmentItems>
-            <assignToReference>allForecastRecords</assignToReference>
-            <operator>Add</operator>
-            <value>
-                <elementReference>Update_Forecasts</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Update_Forecasts</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <name>Update_Forecast_and_Readonly</name>
-        <label>Update Forecast and Readonly</label>
-        <locationX>430</locationX>
-        <locationY>248</locationY>
-        <assignmentItems>
-            <assignToReference>Update_Forecasts.Core_Forecast__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <stringValue>Commit</stringValue>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>Update_Forecasts.Core_Read_Only__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Readonly_Forecasts</targetReference>
-        </connector>
-    </assignments>
-    <decisions>
-        <name>if_Record_is_not_null</name>
-        <label>if Record is not null</label>
-        <locationX>775</locationX>
-        <locationY>68</locationY>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>if_not_Null</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>get_Opportunity_Forecastes</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Update_Forecasts</targetReference>
-            </connector>
-            <label>if not Null</label>
-        </rules>
-    </decisions>
     <environments>Default</environments>
     <interviewLabel>Core_Update_Opportunity_ForeCast {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Core_Update_Opportunity_ForeCast</label>
-    <loops>
-        <name>Update_Forecasts</name>
-        <label>Update Forecasts</label>
-        <locationX>770</locationX>
-        <locationY>266</locationY>
-        <collectionReference>get_Opportunity_Forecastes</collectionReference>
-        <iterationOrder>Asc</iterationOrder>
-        <nextValueConnector>
-            <targetReference>Update_Forecast_and_Readonly</targetReference>
-        </nextValueConnector>
-        <noMoreValuesConnector>
-            <targetReference>update_All_records</targetReference>
-        </noMoreValuesConnector>
-    </loops>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
@@ -100,22 +40,15 @@
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <recordLookups>
-        <name>get_Opportunity_Forecastes</name>
-        <label>get Opportunity Forecastes</label>
-        <locationX>619</locationX>
-        <locationY>52</locationY>
+        <name>get_all_records</name>
+        <label>get all records</label>
+        <locationX>559</locationX>
+        <locationY>257</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>if_Record_is_not_null</targetReference>
+            <targetReference>ForeCastList</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
-        <filters>
-            <field>Core_Days_Remains__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <numberValue>0.0</numberValue>
-            </value>
-        </filters>
         <filters>
             <field>Core_Read_Only__c</field>
             <operator>EqualTo</operator>
@@ -123,26 +56,25 @@
                 <booleanValue>false</booleanValue>
             </value>
         </filters>
-        <getFirstRecordOnly>false</getFirstRecordOnly>
         <object>Core_Opportunity_Forecast__c</object>
+        <outputReference>allForecastList</outputReference>
         <queriedFields>Id</queriedFields>
-        <queriedFields>Core_Forecast__c</queriedFields>
-        <queriedFields>Core_Read_Only__c</queriedFields>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
-    <recordUpdates>
-        <name>update_All_records</name>
-        <label>update All records</label>
-        <locationX>970</locationX>
-        <locationY>312</locationY>
-        <inputReference>allForecastRecords</inputReference>
-    </recordUpdates>
     <start>
         <locationX>201</locationX>
         <locationY>15</locationY>
         <connector>
-            <targetReference>get_Opportunity_Forecastes</targetReference>
+            <targetReference>get_all_records</targetReference>
         </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Core_Read_Only__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <object>Core_Opportunity_Forecast__c</object>
         <schedule>
             <frequency>Daily</frequency>
             <startDate>2022-12-09</startDate>
@@ -150,7 +82,15 @@
         </schedule>
         <triggerType>Scheduled</triggerType>
     </start>
-    <status>Active</status>
+    <status>Draft</status>
+    <variables>
+        <name>allForecastList</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Core_Opportunity_Forecast__c</objectType>
+    </variables>
     <variables>
         <name>allForecastRecords</name>
         <dataType>SObject</dataType>

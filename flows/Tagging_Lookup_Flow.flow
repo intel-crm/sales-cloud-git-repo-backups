@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>62.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <environments>Default</environments>
+    <interviewLabel>Add Lookup to Tagging {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Tagging Lookup Flow</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Call_Add_Lookup_to_Tagging_Flow</targetReference>
+        </connector>
+        <object>UniTag__Tagging__c</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <subflows>
+        <name>Call_Add_Lookup_to_Tagging_Flow</name>
+        <label>Call Add Lookup to Tagging Flow</label>
+        <locationX>176</locationX>
+        <locationY>323</locationY>
+        <flowName>UniTag__Add_Lookup_to_Tagging</flowName>
+        <inputAssignments>
+            <name>sObjectType</name>
+            <value>
+                <elementReference>$Record.UniTag__sObject_Type__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>TaggingId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </subflows>
+</Flow>

@@ -407,7 +407,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>kaibara,takashi,yoshiaki,minagawa,kawai,akasaka,ushio,komatsu,yamamot</value>
+            <value>kaibara,takashi,yoshiaki,minagawa,kawai,akasaka,ushio,komatsu</value>
         </criteriaItems>
         <criteriaItems>
             <column>Case.Core_Sub_Status__c</column>

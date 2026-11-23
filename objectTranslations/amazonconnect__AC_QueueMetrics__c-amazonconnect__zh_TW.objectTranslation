@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>AC 即時指標</value>
+    </caseValues>
+    <fields>
+        <label> 進行聯絡工作後的客服人員 </label>
+        <name>amazonconnect__Agents_After_Contact_Work__c</name>
+    </fields>
+    <fields>
+        <label> 可提供協助的客服人員 </label>
+        <name>amazonconnect__Agents_Available__c</name>
+    </fields>
+    <fields>
+        <label> 錯誤的客服人員 </label>
+        <name>amazonconnect__Agents_Error__c</name>
+    </fields>
+    <fields>
+        <label> 效率不彰的客服人員 </label>
+        <name>amazonconnect__Agents_Non_Productive__c</name>
+    </fields>
+    <fields>
+        <label> 忙線中的客服人員 </label>
+        <name>amazonconnect__Agents_On_Call__c</name>
+    </fields>
+    <fields>
+        <label> 線上的客服人員 </label>
+        <name>amazonconnect__Agents_Online__c</name>
+    </fields>
+    <fields>
+        <label> 駐守的客服人員 </label>
+        <name>amazonconnect__Agents_Staffed__c</name>
+    </fields>
+    <fields>
+        <label> 佇列中的聯絡案例 </label>
+        <name>amazonconnect__Contacts_In_Queue__c</name>
+    </fields>
+    <fields>
+        <label> 已排程的聯絡案例 </label>
+        <name>amazonconnect__Contacts_Scheduled__c</name>
+    </fields>
+    <fields>
+        <label> 最大的聯絡案例年齡 </label>
+        <name>amazonconnect__Oldest_Contact_Age__c</name>
+    </fields>
+    <fields>
+        <label> 佇列 ARN </label>
+        <name>amazonconnect__Queue_ARN__c</name>
+    </fields>
+    <fields>
+        <label> 佇列 ID </label>
+        <name>amazonconnect__Queue_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Amazon Connect Instance Region --></label>
+        <name>amazonconnect__Region__c</name>
+    </fields>
+    <nameFieldLabel><!-- Queue Name --></nameFieldLabel>
+</CustomObjectTranslation>

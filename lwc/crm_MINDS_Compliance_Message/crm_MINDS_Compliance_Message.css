@@ -1,0 +1,23 @@
+.custom-container{
+	color : black;
+}
+.slds-text-title_bold{
+	font-size: 16px;
+}
+.blackColor{
+    color: black !important; 
+	font-weight: bold;
+}
+.link{
+	font-weight:bold;
+	color:orange;
+	font-size: 11.26px;
+	font-family: 'Helvetica';
+	text-decoration: underline;
+}
+.text{
+	color:orange;
+	font-weight:bold;
+	font-size: 11.26px;
+	font-family: 'Helvetica';
+}

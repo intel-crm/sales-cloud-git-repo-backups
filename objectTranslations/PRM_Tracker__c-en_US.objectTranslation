@@ -91,13 +91,5 @@
             <translation><!-- OPID Updates 1PID --></translation>
         </picklistValues>
     </fields>
-    <fields>
-        <label><!-- entitlementIds --></label>
-        <name>prm_entitlement_id__c</name>
-    </fields>
-    <fields>
-        <label><!-- skip tracker --></label>
-        <name>prm_skip_tracker__c</name>
-    </fields>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

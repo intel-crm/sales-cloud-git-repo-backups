@@ -36,128 +36,24 @@
         <label><!-- UI Display Area --></label>
         <name>PRM_UI_Display_Area_Nm__c</name>
         <picklistValues>
-            <masterLabel>Artificial Intelligence Specialty</masterLabel>
-            <translation><!-- Artificial Intelligence Specialty --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Cloud Data Center Specialty</masterLabel>
-            <translation><!-- Cloud Data Center Specialty --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Design Enablement Services,DIT</masterLabel>
-            <translation><!-- Design Enablement Services,DIT --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Design Enablement Services,IDDS</masterLabel>
-            <translation><!-- Design Enablement Services,IDDS --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Device as a Service Specialty</masterLabel>
-            <translation><!-- Device as a Service Specialty --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Enthusiast PC Specialty</masterLabel>
-            <translation><!-- Enthusiast PC Specialty --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>FPGA Tools and Resources</masterLabel>
-            <translation><!-- FPGA Tools and Resources --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>High Performance Computing Data Center Specialty</masterLabel>
-            <translation><!-- High Performance Computing Data Center Specialty --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Industrial Solutions Builder Specialty</masterLabel>
-            <translation><!-- Industrial Solutions Builder Specialty --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Intel® Developer Zone - Premier</masterLabel>
-            <translation><!-- Intel® Developer Zone - Premier --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Intel® Developer Zone - Standard</masterLabel>
-            <translation><!-- Intel® Developer Zone - Standard --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Leads</masterLabel>
             <translation><!-- Leads --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>MDF</masterLabel>
-            <translation><!-- MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Managed Services Specialty</masterLabel>
-            <translation><!-- Managed Services Specialty --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Marketing Studio</masterLabel>
-            <translation><!-- Marketing Studio --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Marketplace</masterLabel>
             <translation><!-- Marketplace --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Networking Specialty</masterLabel>
-            <translation><!-- Networking Specialty --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Notification Area</masterLabel>
             <translation><!-- Notification Area --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Optane Client Specialty</masterLabel>
-            <translation><!-- Optane Client Specialty --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Optane Data Center Specialty</masterLabel>
-            <translation><!-- Optane Data Center Specialty --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Partner Help</masterLabel>
-            <translation><!-- Partner Help --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Partner Lookup Tool</masterLabel>
-            <translation><!-- Partner Lookup Tool --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Points</masterLabel>
             <translation><!-- Points --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Pricing, Points and Promotions</masterLabel>
-            <translation><!-- Pricing, Points and Promotions --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Products &amp; Roadmaps</masterLabel>
-            <translation><!-- Products &amp; Roadmaps --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Resource &amp; Documentation Center - Premier Access</masterLabel>
-            <translation><!-- Resource &amp; Documentation Center - Premier Access --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Resource &amp; Documentation Center - Public</masterLabel>
-            <translation><!-- Resource &amp; Documentation Center - Public --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Select Benefit</masterLabel>
-            <translation><!-- Select Benefit --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Training</masterLabel>
             <translation><!-- Training --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Video Specialty</masterLabel>
-            <translation><!-- Video Specialty --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Visual Display Solutions Specialty</masterLabel>
-            <translation><!-- Visual Display Solutions Specialty --></translation>
         </picklistValues>
     </fields>
     <recordTypes>
@@ -169,12 +65,4 @@
         <name>PRM_Event</name>
     </recordTypes>
     <startsWith>Consonant</startsWith>
-    <validationRules>
-        <errorMessage><!-- End Date has to be in future. Please select a future date. --></errorMessage>
-        <name>PRM_EndDate_Validation</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- You have exceeded the Title Character Limit, only 78 characters allowed. --></errorMessage>
-        <name>PRM_LimitTitleCharacters</name>
-    </validationRules>
 </CustomObjectTranslation>

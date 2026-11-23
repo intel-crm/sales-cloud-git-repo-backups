@@ -1,0 +1,66 @@
+<template>
+    <div class="slds-box slds-theme_default">
+        <section class="slds-section">
+          <div class="slds-section__title">
+            <button class="slds-button slds-section__title-action" onclick={toggleSection}>
+              <lightning-icon icon-name={iconName} alternative-text="Toggle" size="x-small"></lightning-icon>
+              <span class="slds-truncate" title=" Transformational Opportunity">Transformational Opportunity</span>
+            </button>
+          </div>
+    
+          <template if:false={isCollapsed}>
+            <lightning-card>
+                <template if:true={opportunities}>
+                <div class="slds-grid slds-grid_align-end slds-m-bottom_small">
+                    <lightning-input
+                    type="search"
+                    label="Search Opportunities"
+                    placeholder="Search..."
+                    onchange={handleSearchChange}
+                    class="slds-size_small">
+                    </lightning-input>
+                </div>
+                
+                <div
+                class="scroll-container"
+                onscroll={handleScroll}
+                 >
+                 <lightning-datatable
+                        key-field="Id"
+                        data={opportunities}
+                        columns={columns}
+                        onrowselection={handleRowSelection}>
+                    </lightning-datatable>
+             </div>
+            </template>
+        
+            <!---
+                <template if:true={selectedOpportunities.length}>
+                    <template for:each={selectedOpportunities} for:item="opp">
+                        <div key={opp.Id} class="slds-m-top_medium">
+                            <p><strong>{opp.Name}</strong></p>
+                            <lightning-input-rich-text
+                            label="Comment"
+                            value={opp.comment}
+                            data-id={opp.Id}
+                            onchange={handleCommentChange}>
+                        </lightning-input-rich-text>
+                        </div>
+                    </template>
+                </template> 
+            -->
+                <div>
+                    <lightning-input-rich-text
+                    label="Comment for selected opportunities"
+                    value={sharedComment}
+                    onchange={handleCommentChange}>
+                </lightning-input-rich-text>
+                </div>
+                
+            </lightning-card>
+        </template>
+    </section>
+  </div>
+
+    
+</template>

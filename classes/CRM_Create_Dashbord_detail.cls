@@ -3,7 +3,7 @@ public without sharing class CRM_Create_Dashbord_detail {
     public static List<Map<String, Object>> Create_Dasboard_Data( Id FromUser,Id ToUser){
         Set<Id> DashId = new Set<Id>();
         List<Map<String, Object>> res = new List<Map<String, Object>>();
-      
+       // List<sendDetails> srList = new List<sendDetails>();
         Map<Id,String> DashName = new Map<Id,String>();
         Map<Id,String> RuningUserName = new Map<Id,String>();
         Map<Id,Boolean> RunUsrIsActive = new Map<Id,Boolean>();
@@ -93,12 +93,10 @@ public without sharing class CRM_Create_Dashbord_detail {
             }
             if(!repotIdtoChk.isEmpty()){
                 for(Id DashIdr : DashIdToChk){
-                    if(MapDashRepotId.get(DashIdr) != null){
-                        for(Id customRepId : MapDashRepotId.get(DashIdr)){
-                            if(repotIdtoChk.contains(customRepId)){
-                                DashIdToShow.add(DashIdr);
-                                break;
-                            }
+                    for(Id customRepId : MapDashRepotId.get(DashIdr)){
+                        if(repotId.contains(customRepId)){
+                            DashIdToShow.add(DashIdr);
+                            break;
                         }
                     }
                 }
@@ -107,19 +105,39 @@ public without sharing class CRM_Create_Dashbord_detail {
             
         }
         
-        
+        /*for(Id dash : DashIdToShow){
+           sendDetails sr = new sendDetails();
+            sr.DashaboardId = dash;
+            sr.DashaboardName = DashName.get(dash);
+            sr.RunningUsrName = RuningUserName.get(dash);
+            sr.RunningUsrisActive = RunUsrIsActive.get(dash);
+            sr.ReportName = MapDashRepotNameStr.get(dash);
+            srList.add(sr);
+        }*/
         for(Id dash : DashIdToShow){
            Map<String, Object> recordmap = new Map<String, Object>();
-            recordmap.put('Id',dash);
+            recordmap.put('DashaboardId',dash);
             recordmap.put('DashaboardName',DashName.get(dash));
             recordmap.put('RunningUsrName',RuningUserName.get(dash));
             recordmap.put('RunningUsrisActive',RunUsrIsActive.get(dash));
             recordmap.put('ReportName',MapDashRepotNameStr.get(dash));
             res.add(recordmap);
         }
-       
+        //return srList;
         return res;
     }
     
-   
+    /*public class sendDetails {
+        @AuraEnabled 
+        public Id DashaboardId;
+        @AuraEnabled 
+        public String DashaboardName;
+        @AuraEnabled 
+        public String RunningUsrName;
+        @AuraEnabled 
+        public Boolean RunningUsrisActive;
+        @AuraEnabled 
+        public String ReportName;
+        
+    }*/
 }

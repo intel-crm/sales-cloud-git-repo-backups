@@ -1,0 +1,19 @@
+<template>
+    <lightning-card title="Select Users for Reviewed by">
+        <div class="slds-m-around_medium">
+            <lightning-dual-listbox
+                name="userList"
+                label="Select Users"
+                source-label="Available"
+                selected-label="Selected"
+                field-level-help="Select multiple users to review"
+                options={userOptions}
+                value={selectedUsers}
+                onchange={handleUserChange}>
+            </lightning-dual-listbox>
+        </div>
+        <div class="slds-m-around_medium">
+            <lightning-button variant="brand" label="Save" onclick={handleSave}></lightning-button>
+        </div>
+    </lightning-card>
+</template>

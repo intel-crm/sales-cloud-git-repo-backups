@@ -25,6 +25,30 @@
         <name>Pricing_Notification_Name_Nm__c</name>
     </fields>
     <fields>
+        <label><!-- Notification Name --></label>
+        <name>Pricing_Notification_Name_Pkl__c</name>
+        <picklistValues>
+            <masterLabel>Quote_Letter_Notification</masterLabel>
+            <translation><!-- Quote_Letter_Notification --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Quote_Line_Cancellation_Notification</masterLabel>
+            <translation><!-- Quote_Line_Cancellation_Notification --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Quote_Team_Notification</masterLabel>
+            <translation><!-- Quote_Team_Notification --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Quoteline Rejection Notification</masterLabel>
+            <translation><!-- Quoteline Rejection Notification --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Quoteline_Rejection_Notification</masterLabel>
+            <translation><!-- Quoteline_Rejection_Notification --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
         <label><!-- Opt-in --></label>
         <name>Pricing_Optin_Ind__c</name>
     </fields>
@@ -51,6 +75,26 @@
     <fields>
         <label><!-- Template API Name --></label>
         <name>Pricing_Template_API_Name_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Template API Name --></label>
+        <name>Pricing_Template_API_Name_Pkl__c</name>
+        <picklistValues>
+            <masterLabel>Pricing_QuoteLetterEmailNotification</masterLabel>
+            <translation><!-- Pricing_QuoteLetterEmailNotification --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pricing_QuoteLineCancelEmailNotification</masterLabel>
+            <translation><!-- Pricing_QuoteLineCancelEmailNotification --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pricing_QuoteLineRejectedNotification</masterLabel>
+            <translation><!-- Pricing_QuoteLineRejectedNotification --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pricing_QuoteTeam_EmailNotification</masterLabel>
+            <translation><!-- Pricing_QuoteTeam_EmailNotification --></translation>
+        </picklistValues>
     </fields>
     <fields>
         <label><!-- Visible to Permission Set --></label>

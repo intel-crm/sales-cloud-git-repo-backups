@@ -156,7 +156,7 @@
     <fields>
         <fullName>PCC_DesignUser__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
-        <description>This field is created for using in screen flow to get the user details from Internal Users to fetch the new Approver and stamp the user on Design Registration Object. This field is not used in DR End Customer Account Mapping Object.This field has been created on this object because the DDR Internal Users PS , has the create Permission for this object , and to enable a user lookup in screen flow, the create permission on Source Object is requied, which  cannot be provided on DR Object. So this field acts as just a transactional field for showing user lookup field on screen.</description>
+        <description>This field is created for using in screen flow to get the user details from Internal Users to fetch the new Approver and stamp the user on Design Registration Object. This field is not used in DR End Customer Account Mapping Object.This field has been created on this object because the DDR Internal Users PS , has the create Permission for this object , and to enable a user lookup in screen flow, the create permission on Source Object is requied, which cannot be provided on DR Object. So this field acts as just a transactional field for showing user lookup field on screen.</description>
         <label>PCC_DesignUser</label>
         <lookupFilter>
             <active>true</active>
@@ -261,7 +261,60 @@
         <type>Text</type>
         <unique>false</unique>
     </fields>
+    <fields>
+        <fullName>TBD_PCC_End_Customer_City_Nm__c</fullName>
+        <externalId>false</externalId>
+        <label>City</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>TBD_PCC_End_Customer_Country_Nm__c</fullName>
+        <externalId>false</externalId>
+        <label>Country</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>TBD_PCC_End_Customer_State_Nm__c</fullName>
+        <externalId>false</externalId>
+        <label>State</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
     <label>DR End Customer Account Mapping</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>PCC_End_Customer_Account_Id__c</columns>
+        <columns>PCC_Partner_Account_Id__c</columns>
+        <columns>PCC_Registration_Type_Nm__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>Design_Registration</fullName>
+        <columns>NAME</columns>
+        <columns>PCC_End_Customer_Account_Id__c</columns>
+        <columns>PCC_Partner_Account_Id__c</columns>
+        <columns>PCC_Registration_Type_Nm__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>PCC_Registration_Type_Nm__c</field>
+            <operation>equals</operation>
+            <value>Design Registration</value>
+        </filters>
+        <label>Design Registration</label>
+    </listViews>
     <nameField>
         <label>End Customer Name</label>
         <type>Text</type>

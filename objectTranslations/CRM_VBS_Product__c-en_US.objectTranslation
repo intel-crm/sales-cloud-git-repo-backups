@@ -114,6 +114,10 @@
         <name>CRM_VBS_SOAR_Product_Update_Other</name>
     </validationRules>
     <webLinks>
+        <label><!-- Add_New_Product --></label>
+        <name>Add_New_Product</name>
+    </webLinks>
+    <webLinks>
         <label><!-- Add_Products --></label>
         <name>Add_Products</name>
     </webLinks>

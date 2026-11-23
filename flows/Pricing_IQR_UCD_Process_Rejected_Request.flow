@@ -11,7 +11,7 @@
         <inputParameters>
             <name>survivorAccIdList</name>
             <value>
-                <elementReference>$Record.Pricing_RequestID__c</elementReference>
+                <elementReference>$Record.Pricing_Request_ID__c</elementReference>
             </value>
         </inputParameters>
         <nameSegment>Pricing_UCD_IQR_Response_Handler</nameSegment>
@@ -53,8 +53,8 @@
     <decisions>
         <name>MyDeals_Failed_Requests</name>
         <label>MyDeals Failed Requests</label>
-        <locationX>233</locationX>
-        <locationY>1025</locationY>
+        <locationX>235</locationX>
+        <locationY>1027</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>MyDeals_Failed_Requests_schedule</name>
@@ -97,7 +97,7 @@
         <name>MyDeals_UCD_Outcome</name>
         <label>MyDeals UCD Outcome</label>
         <locationX>120</locationX>
-        <locationY>494</locationY>
+        <locationY>495</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>MyDeals_Outcome</name>
@@ -140,8 +140,8 @@
     <decisions>
         <name>Process_Outbound</name>
         <label>Process Outbound</label>
-        <locationX>122</locationX>
-        <locationY>826</locationY>
+        <locationX>123</locationX>
+        <locationY>827</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Send_First_Payload</name>
@@ -174,7 +174,6 @@
             <label>Send First Payload</label>
         </rules>
     </decisions>
-    <environments>Default</environments>
     <interviewLabel>Pricing IQR UCD Process Rejected Request {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Pricing IQR UCD Process Rejected Request</label>
     <processMetadataValues>
@@ -197,54 +196,11 @@
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <start>
-        <locationX>50</locationX>
-        <locationY>50</locationY>
+        <locationX>51</locationX>
+        <locationY>51</locationY>
         <connector>
             <targetReference>MyDeals_UCD_Outcome</targetReference>
         </connector>
-        <filterLogic>(1 AND (2 OR 3)) OR (4 AND 5 AND 6)</filterLogic>
-        <filters>
-            <field>Pricing_Message_Type__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>Tender</stringValue>
-            </value>
-        </filters>
-        <filters>
-            <field>Pricing_Status__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>Pending</stringValue>
-            </value>
-        </filters>
-        <filters>
-            <field>Pricing_Status__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>Failed</stringValue>
-            </value>
-        </filters>
-        <filters>
-            <field>Pricing_Message_Type__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>UnifiedEndCustomer</stringValue>
-            </value>
-        </filters>
-        <filters>
-            <field>Pricing_UCD_Response_Type__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>Survivor Account</stringValue>
-            </value>
-        </filters>
-        <filters>
-            <field>Pricing_Status__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>Successful</stringValue>
-            </value>
-        </filters>
         <object>Pricing_Integration_Staging__c</object>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <scheduledPaths>

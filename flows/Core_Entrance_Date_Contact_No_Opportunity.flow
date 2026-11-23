@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>56.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Migrated from the: Core_Entrance Date – Contact – No Opportunity workflow rule
+Workflow rule description: Set when the lead Stage is set to &quot;Contact – No Opportunity&quot; and Lead Status is Disqualified&quot;</description>
+    <formulas>
+        <name>Core_EntranceDate_Contact_No_OpportunityFormula</name>
+        <dataType>DateTime</dataType>
+        <expression>Now()</expression>
+    </formulas>
+    <formulas>
+        <name>Core_Exit_Dateee_SALFormula</name>
+        <dataType>DateTime</dataType>
+        <expression>Now()</expression>
+    </formulas>
+    <label>Core_Entrance Date – Contact – No Opportunity</label>
+    <migratedFromWorkflowRuleName>Core_Entrance Date – Contact – No Opportunity</migratedFromWorkflowRuleName>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>mainUpdate</name>
+        <label>mainUpdate</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>Core_EntranceDate_Contact_No_Opportunity__c</field>
+            <value>
+                <elementReference>Core_EntranceDate_Contact_No_OpportunityFormula</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Exit_Date_SAL__c</field>
+            <value>
+                <elementReference>Core_Exit_Dateee_SALFormula</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>mainUpdate</targetReference>
+        </connector>
+        <filterFormula>AND(  {!$Record.RecordType.Name} &lt;&gt; &apos;Partner Lead&apos;,  ISPICKVAL({!$Record.Status}, &quot;Contact - No Opportunity&quot;),  ISPICKVAL ({!$Record.Core_Lead_Status__c}, &quot;Disqualified&quot;) )</filterFormula>
+        <object>Lead</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Draft</status>
+</Flow>

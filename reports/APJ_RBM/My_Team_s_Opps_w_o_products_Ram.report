@@ -39,10 +39,6 @@
     <columns>
         <field>ROLLUP_DESCRIPTION</field>
     </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Opportunity.Core_Opportunity_Count__c</field>
-    </columns>
     <crossFilters>
         <operation>without</operation>
         <primaryTableColumn>OPPORTUNITY_ID</primaryTableColumn>
@@ -51,25 +47,18 @@
     </crossFilters>
     <filter>
         <criteriaItems>
-            <column>Account.Core_Sales_Groups__c</column>
+            <column>STAGE_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>APJ Sales Territory</value>
+            <operator>notEqual</operator>
+            <value>Qualify,Define,Lost,Cancelled,Group,Group Open,Group Cancelled,Group Closed</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OWNER_MANAGER</column>
+            <column>ROLLUP_DESCRIPTION</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>Swee Hoon,Lai Teng,Paul,Sumner,Batra,Sng,Andrew</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>FULL_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>Naomi,Gina</value>
+            <operator>contains</operator>
+            <value>Ram S</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -84,12 +73,7 @@
         <field>ACCOUNT_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>OWNER_MANAGER</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
-    <name>My Team&apos;s Opps w/o products</name>
+    <name>My Team&apos;s Opps w/o products - Ram</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -115,6 +99,8 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

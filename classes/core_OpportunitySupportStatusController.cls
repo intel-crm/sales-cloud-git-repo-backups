@@ -37,7 +37,7 @@ public without sharing class core_OpportunitySupportStatusController { //TWC3123
         SeedSampleWrapData.bSamplesErrorMessage='';
         
         //SeedSampleWrapData.ucdSwitch=Core_CRM_Utility.isUCDSwitchOn(); //TWC4767-3431 - implementation of UCD and CIM logic switch
-        Opportunity OppData = [select id, Account.Core_CIM_ID__c, Account.Core_Business_Party_Id__c from Opportunity where Id = :sOppId]; //TWC4767-3983
+        Opportunity OppData = [select id/*, Account.Core_CIM_ID__c*/, Account.Core_Business_Party_Id__c from Opportunity where Id = :sOppId]; //TWC4767-3983
         SeedSampleWrapData.ucdSwitch = (String.isBlank(OppData.Account.Core_Business_Party_Id__c)) ? false : true; //TWC4767-3983
             
         //SeedSampleWrapData.kcrGlobalAccNameTemp = [select id, Account.KCR_Global_Account_Name_Temp__c from Opportunity where Id = :sOppId].Account.KCR_Global_Account_Name_Temp__c; //TWC4767-3983
@@ -103,14 +103,14 @@ public without sharing class core_OpportunitySupportStatusController { //TWC3123
                  }
                  //As part of TWC3123-6731 checking Account id & cim id both
 				if (!lstAcctID.isEmpty()) {
-                        for(Account sObjAcct : [select Id,Core_CIM_ID__c, Name from Account where Id in :lstAcctID or(Core_CIM_ID__c in :lstAcctID and Core_CIM_ID__c != null)]){
+                        for(Account sObjAcct : [select Id/*,Core_CIM_ID__c*/, Name from Account where Id in :lstAcctID /*or(Core_CIM_ID__c in :lstAcctID and Core_CIM_ID__c != null)*/]){
                             if(sObjAcct.Id != null){
                             mapAcctNametoID.put(sObjAcct.Id, sObjAcct.Name);    
-                            }if(sObjAcct.Core_CIM_ID__c != null){
+                            }/*if(sObjAcct.Core_CIM_ID__c != null){
    							mapAcctNametoID.put(sObjAcct.Core_CIM_ID__c, sObjAcct.Name);
                             }else if (sObjAcct.Core_CIM_ID__c != null) {
             				mapAcctNametoID.put(sObjAcct.Core_CIM_ID__c, sObjAcct.Name);
-       						}
+       						}*/
                         }
                     }   
              }
@@ -200,7 +200,7 @@ public without sharing class core_OpportunitySupportStatusController { //TWC3123
                 SeedSampleWrapData.bSamplesErrorMessage = System.Label.Core_Exception;
             }
             
-           
+           system.debug('AA ++'+httpResp2.getbody());
             
             // Use the parser to get the response as JSONParser type
             system.JSONParser parser = JSON.createParser(httpResp2.getbody());
@@ -283,16 +283,16 @@ public without sharing class core_OpportunitySupportStatusController { //TWC3123
                         }
                     }*/
                     //TWC4767-3983
-                    List<Account> accounts = [select Id, Core_CIM_ID__c,Core_Business_Party_Id__c, Name, Core_Covered_Account__c,KCR_Global_Account_Name_Temp__c from Account
-                                              where Core_CIM_ID__c in :setAcctCIMID or Core_Business_Party_Id__c in :setAcctCIMID 
+                    List<Account> accounts = [select Id/*, Core_CIM_ID__c*/,Core_Business_Party_Id__c, Name, Core_Covered_Account__c,KCR_Global_Account_Name_Temp__c from Account
+                                              where /*Core_CIM_ID__c in :setAcctCIMID or */ Core_Business_Party_Id__c in :setAcctCIMID 
                                               order by Core_Covered_Account__c, Core_CIM_ID__c];
                     
                     for (Account a : accounts) {
-                        if(setAcctCIMID.contains(a.Core_CIM_ID__c)) {
+                        /*if(setAcctCIMID.contains(a.Core_CIM_ID__c)) {
                             mapAcctCIMIDtoID.put(a.Core_CIM_ID__c, a.Id);
                             mapAcctCIMIDtoName.put(a.Core_CIM_ID__c, a.Name);
-                        }
-                        else if(setAcctCIMID.contains(a.Core_Business_Party_Id__c)) {
+                        }*/
+                        if(setAcctCIMID.contains(a.Core_Business_Party_Id__c)) {
                             mapAcctCIMIDtoID.put(a.Core_Business_Party_Id__c, a.Id);
                             mapAcctCIMIDtoName.put(a.Core_Business_Party_Id__c, a.Name);
                         }
@@ -344,7 +344,7 @@ public without sharing class core_OpportunitySupportStatusController { //TWC3123
                     if (sample.Opportunity.size() >= 1) {
                         sample.DetailViewCIMIDs = '';
                         sample.DetailViewOppIDs = '';
-                        for (SampleOpportunityAssociation oppAssoc : sample.Opportunity) {
+                        for (SampleOpportunityAssociation oppAssoc : sample.Opportunity) { system.debug('AA DetailViewCIMIDs--'+oppAssoc.AccountCIMID);
                             if (String.isNotBlank(oppAssoc.AccountCIMID)) sample.DetailViewCIMIDs += oppAssoc.AccountCIMID + ', ';
                             if (String.isNotBlank(oppAssoc.OpportunityId)) sample.DetailViewOppIDs += oppAssoc.OpportunityId + ', ';
                         }

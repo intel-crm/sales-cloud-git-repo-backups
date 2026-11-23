@@ -1,0 +1,31 @@
+h1 {
+  color: rgb(0, 112, 210);
+}
+p {
+  font-family: 'Salesforce Sans', Arial, sans-serif;
+  color: rgb(62, 62, 60);
+}
+
+table>thead> .slds-cell-fixed.slds-has-button-menu {
+  border-bottom-style: solid;
+  border-top-style: solid;
+}
+th {
+  border-top: 1px solid #dddddd;
+  border-bottom: 1px solid #dddddd;
+  border-right: 1px solid #dddddd;
+}
+td{
+  border-top: 1px solid #dddddd;
+}
+th:first-child {
+  border-left: 1px solid #dddddd;
+  border-top: 1px solid #dddddd;
+}
+.applyredcolor{
+  color:#000;
+  background-color:#e01e00;
+}
+.toastMessage.forceActionsText{
+  white-space : pre-line !important;
+}

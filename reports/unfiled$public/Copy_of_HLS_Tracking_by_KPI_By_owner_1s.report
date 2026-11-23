@@ -63,7 +63,7 @@
         <field>ACCOUNT_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>2020 HLS Tracking by AE&gt;KPI&gt;Act</name>
+    <name>Copy of HLS Tracking by KPI, By owner 1s</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -87,6 +87,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>Opportunity.Core_Approved_Date__c</dateColumn>
-        <interval>INTERVAL_PREVFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

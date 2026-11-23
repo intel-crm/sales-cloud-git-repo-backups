@@ -1,5 +1,5 @@
 ({
-	/* doInit : function(component, event, helper) {
+	doInit : function(component, event, helper) {
 		window.addEventListener('resize', $A.getCallback(function() {
 			helper.handleResize(component);
 		}));
@@ -46,7 +46,5 @@
 		window.setTimeout(function(){
 				helper.handleResize(component, helper);
 		});
-	}*/
+	}
 })
-
-// All admin-related logic for offerings is now commented out in this controller file.

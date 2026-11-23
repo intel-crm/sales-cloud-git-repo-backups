@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>UCD Business Organization API</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>UCD Business Organization</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account Attributes --></label>
+        <name>Account_Attributes__c</name>
+    </fields>
+    <fields>
+        <label><!-- Custom Metadata Record Name --></label>
+        <name>DeveloperName__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field API Name --></label>
+        <name>Field_API_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Protected Component --></label>
+        <name>IsProtected__c</name>
+    </fields>
+    <fields>
+        <label><!-- Label --></label>
+        <name>MasterLabel__c</name>
+    </fields>
+    <fields>
+        <label><!-- Namespace Prefix --></label>
+        <name>NamespacePrefix__c</name>
+    </fields>
+    <fields>
+        <label><!-- Object Name --></label>
+        <name>Object_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Response Name --></label>
+        <name>Response_Name__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -16,7 +16,7 @@ global without sharing class UCD_BizOrgRequestRestModel {
 		public String RequesterName {get;set;}
 		public String RequesterWWID {get;set;}
 		public String RequesterEmail {get;set;}
-		public String CustomerURL {get;set;}
+        public String CustomerURL {get;set;}
 		public List<AccountRestAddresses> Addresses {set;get;}
 		public Boolean IsDuplicate{get;set;}
 		public List<AccountRestRequestReference> AccountRequestReferences {get;set;}

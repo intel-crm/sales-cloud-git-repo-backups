@@ -11,4 +11,144 @@
         <senderType>OrgWideEmailAddress</senderType>
         <template>Sales_Order_Management/Sales_Order_Creation_Failed</template>
     </alerts>
+    <fieldUpdates>
+        <fullName>Calculate_5_mins</fullName>
+        <field>time__c</field>
+        <formula>ActivatedDate + (0.5/1440)</formula>
+        <name>Calculate_5_mins</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Contract</fullName>
+        <field>SBQQ__Contracted__c</field>
+        <literalValue>1</literalValue>
+        <name>Contract</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Contractcheckboxtrue</fullName>
+        <field>SBQQ__Contracted__c</field>
+        <literalValue>1</literalValue>
+        <name>Contractcheckboxtrue</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Contracted</fullName>
+        <field>SBQQ__Contracted__c</field>
+        <literalValue>1</literalValue>
+        <name>Contracted</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Status</fullName>
+        <field>Sales_status__c</field>
+        <literalValue>Order Activated</literalValue>
+        <name>Status</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Reason</fullName>
+        <field>Sales_Order_Reason__c</field>
+        <literalValue>Non Stocking Order</literalValue>
+        <name>Update Reason</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <rules>
+        <fullName>Aaaaaaa</fullName>
+        <active>false</active>
+        <formula>IF( ISPICKVAL(  Account.Type  , &apos;Distributor&apos;)  &amp;&amp;  NOT(ISBLANK( SBQQ__Quote__c  ) )   , true, false)</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Contracted_true</fullName>
+        <actions>
+            <name>Contractcheckboxtrue</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>Order.Status</field>
+            <operation>equals</operation>
+            <value>Activated</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Order.TF__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Core_PSG_Field update</fullName>
+        <actions>
+            <name>Status</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>Order.Status</field>
+            <operation>equals</operation>
+            <value>Activated</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Core_PSG_Pricelist_Details_on_Order</fullName>
+        <active>false</active>
+        <formula>SBQQ__Quote__c  &lt;&gt; null</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Default order Reason</fullName>
+        <actions>
+            <name>Update_Reason</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <formula>ISPICKVAL(Type,&apos;Licensed Tool Order&apos;) &amp;&amp; ISPICKVAL(Sales_Order_Sub_Type__c,&apos;Corporate Order&apos;)</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Demo</fullName>
+        <active>false</active>
+        <formula>True</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Time Dependent workflow</fullName>
+        <actions>
+            <name>Calculate_5_mins</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <formula>ISPICKVAL( Status , &apos;Activated&apos;)</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Contracted</name>
+                <type>FieldUpdate</type>
+            </actions>
+            <offsetFromField>Order.Trigger_Time_05__c</offsetFromField>
+            <timeLength>1</timeLength>
+            <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
 </Workflow>

@@ -1,0 +1,74 @@
+.chat-container {
+    min-height: 500px;
+}
+
+.message-content {
+    max-width: 90%;
+}
+
+.ai-message .message-content {
+    margin-left: 0;
+    margin-right: auto;
+}
+
+.user-message .message-content {
+    margin-left: auto;
+    margin-right: 0;
+    background-color: rgb(21, 137, 238) !important;
+    color: white;
+}
+
+.recommendation-card {
+    transition: all 0.2s ease;
+}
+
+.recommendation-card:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.connection-status {
+    border: 1px solid #d8dde6;
+    border-radius: 4px;
+    padding: 8px;
+    background-color: #f3f3f3;
+}
+
+/* Chart Styles */
+.chart-container {
+    background-color: white;
+    padding: 12px;
+    border: 1px solid #dddbda;
+    border-radius: 6px;
+    margin-bottom: 12px;
+}
+
+.simple-chart {
+    margin-top: 8px;
+}
+
+.chart-item {
+    margin-bottom: 8px;
+}
+
+.chart-label {
+    font-size: 11px;
+    font-weight: 500;
+    margin-bottom: 2px;
+    color: #3e3e3c;
+}
+
+.chart-bar {
+    width: 100%;
+    height: 20px;
+    background-color: #f3f3f3;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.chart-fill {
+    height: 100%;
+    transition: width 0.5s ease;
+    border-radius: 4px;
+}

@@ -4,11 +4,11 @@
     <protected>false</protected>
     <values>
         <field>Pricing_Account_Id__c</field>
-        <value xsi:type="xsd:string">0013b00001r4fKMAAY</value>
+        <value xsi:type="xsd:string">0012D00000OmHaeQAF</value>
     </values>
     <values>
         <field>Pricing_IsActive_Ind__c</field>
-        <value xsi:type="xsd:boolean">true</value>
+        <value xsi:type="xsd:boolean">false</value>
     </values>
     <values>
         <field>Pricing_Region_Nm__c</field>

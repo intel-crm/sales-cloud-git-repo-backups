@@ -248,7 +248,7 @@ public class Core_AddSolutionArea_Test {
             
         }
         catch (Exception e) {
-            PMP_Utility.logError(e, 'Core_AddSolutionArea_Test.testOppoSolution1');
+			PMP_Utility.logError(e, 'Core_AddSolutionArea_Test.testOppoSolution1');
             system.assert(Application_Workload == null, 'Failed');
         }
         

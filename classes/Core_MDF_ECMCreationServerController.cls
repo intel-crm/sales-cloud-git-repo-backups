@@ -46,13 +46,6 @@ public without sharing class Core_MDF_ECMCreationServerController {
     Modified By:        Date:      Changes:
     *******************************************************************************************************/
     @AuraEnabled
-    public static Boolean fetchUserType() {
-        Boolean isEnabled = false;
-        isEnabled = FeatureManagement.checkPermission('Core_MDF_CCP_PIC_Reviewer')? false:true;
-        return isEnabled;
-    }
-    
-    @AuraEnabled
     public static List<ExceptionWrapper> fetchExceptionRecords(String caseRecordId) {
         List<ExceptionWrapper> exceptionWrapperList = new List<ExceptionWrapper>();
         Map<Id,Core_MDF_Exception__c> exceptionMap;
@@ -110,7 +103,12 @@ public without sharing class Core_MDF_ECMCreationServerController {
     public static Boolean saveECMRecordsCtrl(String caseRecordId, String listToSaveString) {
         //List of Exception Case Mapping to be inserted
         List<Core_MDF_Exception_Case_Mapping__c> ecmList = new List<Core_MDF_Exception_Case_Mapping__c>();
+        List<Core_MDF_Exception_Case_Mapping__c> ecmListToBeDeleted = new List<Core_MDF_Exception_Case_Mapping__c>();
+        List<Core_MDF_Exception_Case_Mapping__Share> ecmShareList = new List<Core_MDF_Exception_Case_Mapping__Share>();
         try{
+            Case caseRecord = [SELECT Id, Core_MDF_Claim_ID__c, Account.Core_MDF_CoMarketing_Ultimate_Account__c, Account.Core_MDF_Channel_Program__r.Name
+                               FROM Case
+                               WHERE Id = :caseRecordId LIMIT 1];
             for(ExceptionWrapper ew : (List<ExceptionWrapper>)JSON.deserialize(listToSaveString, List<ExceptionWrapper>.class)){
                 if(ew.isECMAlreadyCreated && !String.isNotBlank(ew.ecmRecordId)){
                     //Creation of Exception Case Mapping Record
@@ -130,6 +128,9 @@ public without sharing class Core_MDF_ECMCreationServerController {
             }
 
             List<ExceptionWrapper> ewList = (List<ExceptionWrapper>)JSON.deserialize(listToSaveString, List<ExceptionWrapper>.class);
+            String accountId = ewList[0].corpAccountId;
+            String cpId = ewList[0].channelProgramId;
+
             //Insert Exception Case Mapping Record List
             if(ecmList.size() > 0){
                 insert ecmList;
@@ -163,42 +164,69 @@ public without sharing class Core_MDF_ECMCreationServerController {
     @parameters:        caseRecordId - Record Id of the Case,
     Description:        This method will fetch the Exception records by tallying the Account, Program, Category Type of the Case
     Added By:           SB Accenture - 18/06/2019
-    Modified By:        RP    Date:     Changes:
+    Modified By:        Date:      Changes:
     *******************************************************************************************************/
-    public static Map<Id, Core_MDF_Exception__c> fetchExceptions(String caseRecordId) {
-        Map<Id, Core_MDF_Exception__c> exceptionMap = new Map<Id, Core_MDF_Exception__c>();
+    public static Map<Id,Core_MDF_Exception__c> fetchExceptions(String caseRecordId){
+        //Map of all the Channel Program and Bank Program from the "Bank Program Entitlement Mapping" metadata
+        Map<String,String> channelProgramBankProgramMap = new Map<String,String>();
+        String programName = '';
+        Map<Id,Core_MDF_Exception__c> exceptionMap = new Map<Id,Core_MDF_Exception__c>();
+        //Fetch Case Fields
+        if(caseRecordId != NULL){
+            Case caseRecord = [SELECT Id, Core_MDF_Activity_Start_Date__c, Core_MDF_Activity_End_Date__c, Core_MDF_Activity_Category__c,
+                                      Core_MDF_Activity_Type__c, AccountId, Account.Core_MDF_CoMarketing_Ultimate_Account__c,
+                                      Account.Core_MDF_Channel_Program__c, Account.Core_MDF_Channel_Program__r.Name, Core_MDF_Claim_ID__c
+                               FROM Case
+                               WHERE Id = :caseRecordId LIMIT 1];
+            System.debug('caseRecord: ' + caseRecord);
+            if(caseRecord != NULL && String.isNotBlank(caseRecord.Core_MDF_Claim_ID__c)){
+                PartnerFundClaim pfc = [SELECT Id, Core_MDF_Ad_Run_Start_Date__c, Core_MDF_Ad_Run_End_Date__c
+                                        FROM PartnerFundClaim
+                                        WHERE Id = :caseRecord.Core_MDF_Claim_ID__c
+                                        LIMIT 1];
+                if(pfc != NULL){
+                    //Populate the Claim
+                    if(caseRecord.Core_MDF_Claim_ID__c != NULL){
+                        claimRecordId = caseRecord.Core_MDF_Claim_ID__c;
+                    }
+                    //Populate the Channel Program Id
+                    if(caseRecord.Account.Core_MDF_Channel_Program__c != NULL){
+                        channelProgramRecordId = caseRecord.Account.Core_MDF_Channel_Program__c;
+                    }
+                    if(caseRecord.Account.Core_MDF_CoMarketing_Ultimate_Account__c != NULL){
+                        corpAccountRecordId = caseRecord.Account.Core_MDF_CoMarketing_Ultimate_Account__c;
+                    }
+                    //Fetch Metadata to map the Programs
+                    Core_MDF_BankProgram_Entitlement_Mapping__mdt bpem = [SELECT Core_MDF_Bank_Program_Name__c, Core_MDF_Channel_Program__c
+                                                                        FROM Core_MDF_BankProgram_Entitlement_Mapping__mdt
+                                                                        WHERE Core_MDF_Channel_Program__c = :caseRecord.Account.Core_MDF_Channel_Program__r.Name LIMIT 1];
+                    System.debug('Line#196: ');
+                    if(bpem.Core_MDF_Channel_Program__c != NULL){
+                        programName = bpem.Core_MDF_Bank_Program_Name__c;
 
-        if (caseRecordId != NULL) {
-            Case caseRecord = fetchCaseRecord(caseRecordId);
-            //Avoid Deeply Nested IF Statements
-            if (caseRecord != NULL && String.isNotBlank(caseRecord.Core_MDF_Claim_ID__c)) {
-                Id channelProgramRecordId;
-                Id corpAccountRecordId = null;
+                        String activityCategoryType = caseRecord.Core_MDF_Activity_Category__c + '->' + caseRecord.Core_MDF_Activity_Type__c;
+                        //Fetch Exception
+                        if(String.isNotBlank(activityCategoryType) && caseRecord.Core_MDF_Activity_Start_Date__c != NULL && caseRecord.Core_MDF_Activity_End_Date__c != NULL){
+                            for(Core_MDF_Exception__c exceptionRecord : [SELECT Id, Name, Core_MDF_Exception_Start_Date_dt__c, Core_MDF_Exception_End_Date_dt__c,
+                                                                                Core_MDF_Program_nm__c, Core_MDF_Activity_Cate_and_Type_nm__c,
+                                                                                Core_MDF_Account_id__c, Core_MDF_Select_All_Accounts_ind__c, Core_MDF_Name_of_Exception_nm__c,
+                                                                                Core_MDF_Exception_Reason_nm__c
+                                                                        FROM Core_MDF_Exception__c
+                                                                        WHERE Core_MDF_Exception_Status_nm__c = :Label.Core_MDF_Exception_Approved_Status AND
+                                                                            Core_MDF_Exception_Start_Date_dt__c <= :pfc.Core_MDF_Ad_Run_Start_Date__c AND
+                                                                            Core_MDF_Exception_End_Date_dt__c >= :pfc.Core_MDF_Ad_Run_End_Date__c AND
+                                                                            Core_MDF_Program_nm__c = :programName AND
+                                                                            (Core_MDF_Account_id__c = :corpAccountRecordId OR Core_MDF_Select_All_Accounts_ind__c = true)
+                                                                        ORDER BY Core_MDF_Name_of_Exception_nm__c]){
+                                if(exceptionRecord.Core_MDF_Activity_Cate_and_Type_nm__c.containsIgnoreCase(activityCategoryType)){
+                                    exceptionMap.put(exceptionRecord.Id,exceptionRecord);
+                                }
+                            }
+                        }
+                    }
+                }
             }
-            if(caseRecord.Core_MDF_Claim_ID__c != NULL){
-                claimRecordId = caseRecord.Core_MDF_Claim_ID__c;
-            }
-            if (caseRecord.Account.Core_MDF_Channel_Program__c != NULL) {
-                channelProgramRecordId = caseRecord.Account.Core_MDF_Channel_Program__c;
-            }
-            if (caseRecord.Account.Core_MDF_CoMarketing_Ultimate_Account__c != NULL || caseRecord.Account.Core_Account_ID__c != NULL) {
-                corpAccountRecordId = (caseRecord.Account.Core_MDF_Channel_Program__r.Name == 'Retail Marketing Funds') ? 
-                    caseRecord.Account.Core_Account_ID__c : caseRecord.Account.Core_MDF_CoMarketing_Ultimate_Account__c;
-            }
-            exceptionMap = Core_MDF_PICReviewScreen_Controller.fetchExceptionsByClaimId(caseRecord.Core_MDF_Claim_ID__c, corpAccountRecordId);
         }
         return exceptionMap;
-    }
-
-    private static Case fetchCaseRecord(Id caseRecordId) {
-        return [
-            SELECT Id, Core_MDF_Activity_Start_Date__c, Core_MDF_Activity_End_Date__c, Core_MDF_Activity_Category__c,
-                   Core_MDF_Budget_Type_nm__c, Core_MDF_Activity_Type__c, AccountId, Account.Core_MDF_CoMarketing_Ultimate_Account__c,
-                   Account.Core_Account_ID__c, Account.Core_MDF_Channel_Program__c, Account.Core_MDF_Channel_Program__r.Name,
-                   Core_MDF_Claim_ID__c
-            FROM Case
-            WHERE Id = :caseRecordId
-            LIMIT 1
-        ];
     }
 }

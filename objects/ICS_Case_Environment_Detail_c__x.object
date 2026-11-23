@@ -307,6 +307,11 @@
         <type>DateTime</type>
     </fields>
     <label>ICS Case Environment Detail</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
     <pluralLabel>ICS Case Environment Details</pluralLabel>
     <searchLayouts/>
 </CustomObject>

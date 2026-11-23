@@ -1,0 +1,10 @@
+.THIS .slds-th__action{ justify-content: center !important; }
+.THIS .slds-grid_align-end { justify-content: center !important; }
+.exampleHolder{
+    position: relative;
+    display: inline-block;
+    margin-left: 15px;
+    width: 100%;
+    vertical-align: middle;
+    white-space: nowrap;
+}

@@ -24,6 +24,10 @@
                 <behavior>Required</behavior>
                 <field>Core_BU__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>CRM_MS_RecordType__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

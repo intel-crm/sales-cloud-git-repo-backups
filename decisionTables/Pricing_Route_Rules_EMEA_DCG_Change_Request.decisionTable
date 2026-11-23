@@ -78,13 +78,6 @@
     </decisionTableSourceCriterias>
     <decisionTableSourceCriterias>
         <operator>Equals</operator>
-        <sequenceNumber>7</sequenceNumber>
-        <sourceFieldName>Pricing_Change_Request_Ind__c</sourceFieldName>
-        <value>true</value>
-        <valueType>Literal</valueType>
-    </decisionTableSourceCriterias>
-    <decisionTableSourceCriterias>
-        <operator>Equals</operator>
         <sequenceNumber>1</sequenceNumber>
         <sourceFieldName>Pricing_Region_Nm__c</sourceFieldName>
         <value>EMEA</value>
@@ -99,14 +92,14 @@
     </decisionTableSourceCriterias>
     <decisionTableSourceCriterias>
         <operator>Equals</operator>
-        <sequenceNumber>6</sequenceNumber>
+        <sequenceNumber>5</sequenceNumber>
         <sourceFieldName>Pricing_Is_Routing_Rule_Active_Ind__c</sourceFieldName>
         <value>true</value>
         <valueType>Literal</valueType>
     </decisionTableSourceCriterias>
     <decisionTableSourceCriterias>
         <operator>IsNull</operator>
-        <sequenceNumber>5</sequenceNumber>
+        <sequenceNumber>6</sequenceNumber>
         <sourceFieldName>Pricing_End_Customer_Country_Nm__c</sourceFieldName>
         <valueType>Literal</valueType>
     </decisionTableSourceCriterias>
@@ -118,7 +111,7 @@
     <isIncrementalSyncEnabled>false</isIncrementalSyncEnabled>
     <isVersioned>false</isVersioned>
     <setupName>Pricing Route Rules EMEA DCG Change Request</setupName>
-    <sourceConditionLogic>1 AND 2 AND 3 AND 4 AND 5 AND 6 AND 7</sourceConditionLogic>
+    <sourceConditionLogic>1 AND 2 AND 3 AND 4 AND 5 AND 6</sourceConditionLogic>
     <sourceObject>Pricing_Routing_Rules__c</sourceObject>
     <status>Active</status>
     <usageType>Bre</usageType>

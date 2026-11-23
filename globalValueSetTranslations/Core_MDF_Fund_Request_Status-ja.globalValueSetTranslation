@@ -10,35 +10,23 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Declined</masterLabel>
-        <translation>却下</translation>
+        <translation><!-- Declined --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Draft</masterLabel>
-        <translation>草案</translation>
+        <translation><!-- Draft --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>In-Progress</masterLabel>
         <translation>進行中</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>In-Progress Pending Approval</masterLabel>
-        <translation>進行中、承認待ち</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>In-Progress Pending Review</masterLabel>
-        <translation>進行中、レビュー待ち</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>In-Progress Revision Required</masterLabel>
-        <translation>進行中、要修正</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Pending Approval</masterLabel>
-        <translation>承認待ち</translation>
+        <translation><!-- Pending Approval --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Pending Review</masterLabel>
-        <translation>レビュー待ち</translation>
+        <translation>保留中のレビュー</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Planned</masterLabel>

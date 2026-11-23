@@ -19,15 +19,9 @@
     <aura:attribute name="claimErrorMsg" type="String" />
     <aura:attribute name="accessErrorMsg" type="String" default=""/>    
     <aura:attribute name="fadeTimeout" type="Integer" default="5000"/>
-    <aura:attribute name="errorMsg" type="String" access="public"/>
-    <!--Added by VB-->
-    <aura:attribute name="isCustomComp" type="boolean" default="false" description="Indicates whether this component is rendered from standard quick action or from custom compact layout"/>
-
+    <aura:attribute name="errorMsg" type="String" access="public"/>      
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
     <aura:handler event="force:refreshView" action="{!c.isRefreshed}" />
-    <!--This is to fire a component event to close a modal popup-->
-    <aura:registerEvent name="closeModalEvent" type="c:Core_MDF_closeModalEvent"/>
-
     
     
     <div class="slds-is-relative" style="height: -WEBKIT-FILL-AVAILABLE;">
@@ -36,12 +30,6 @@
                 <lightning:spinner alternativeText="Loading" size="medium" variant="brand"/>
             </div>
         </aura:if>
-        <aura:if isTrue="{!v.isCustomComp}"> 
-            <div class="slds-modal__header custom-header">
-                <h2 class="slds-text-heading_medium">Hold Claim</h2>
-            </div>
-        </aura:if>    
-
         <lightning:icon iconName="utility:warning" alternativeText="Warning!" variant="warning"/>                    
         <aura:if isTrue="{!v.manuallyHoldClaim}"> 
             
@@ -76,14 +64,7 @@
                     </div>
                 </div>
                 
-            </div>   
-            <!-- Footer -->
-            <aura:if isTrue="{!v.isCustomComp}"> 
-                <footer class="slds-modal__footer">
-                    <lightning:button variant="brand" label="{!$Label.c.Core_MDF_Cancel_Button}" title="{!$Label.c.Core_MDF_Cancel_Button}" onclick="{!c.closeModel}" class="slds-m-left_x-small"/>
-                </footer>
-            </aura:if>
-
+            </div>           
             
             <!--    </lightning:layout> -->
             <aura:set attribute="else">
@@ -92,13 +73,6 @@
                         {!v.accessErrorMsg}
                     </lightning:card>
                 </div>
-                <aura:if isTrue="{!v.isCustomComp}"> 
-                    <footer class="slds-modal__footer">
-                        <div class="slds-grid slds-grid_align-end">
-                            <lightning:button variant="brand" label="{!$Label.c.Core_MDF_Cancel_Button}" title="{!$Label.c.Core_MDF_Cancel_Button}" onclick="{!c.closeModel}" class="slds-m-left_x-small"/>
-                        </div>
-                    </footer>
-                </aura:if>
             </aura:set> 
         </aura:if>
     </div>
@@ -119,7 +93,7 @@
                     <div class="slds-notify__content">
                         <h2 class="slds-text-heading_small ">{!$Label.c.Core_MDF_ManualHoldSuccessMsg}</h2>
                     </div>
-                    <button class="slds-button slds-button_icon slds-notify__close" title="{!$Label.c.Core_MDF_Close}" 
+                    <button class="slds-button slds-button_icon slds-notify__close slds-button_icon-inverse" title="{!$Label.c.Core_MDF_Close}" 
                             onclick="{!c.CloseToast}">
                         <c:svg class="slds-button__icon slds-button__icon_large" aria-hidden="true"
                                xlinkHref="{!$Resource.	Core_MDF_SLDS262 + '/icons/utility-sprite/svg/symbols.svg#close'}" /> 
@@ -144,7 +118,7 @@
                     <div class="slds-notify__content">
                         <h2 class="slds-text-heading_small ">{!v.errorMsg}</h2>
                     </div>
-                    <button class="slds-button slds-button_icon slds-notify__close" title="{!$Label.c.Core_MDF_Close}"
+                    <button class="slds-button slds-button_icon slds-notify__close slds-button_icon-inverse" title="{!$Label.c.Core_MDF_Close}"
                             onclick="{!c.CloseErrorToast}"
                             >
                         <c:svg class="slds-button__icon slds-button__icon_large" aria-hidden="true"

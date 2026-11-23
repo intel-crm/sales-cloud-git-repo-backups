@@ -4,22 +4,129 @@
     <containerType>Network</containerType>
     <label>Intel FPGA Self-service Licensing Center for Internal User</label>
     <navigationMenuItem>
-        <label>Sign up for Evaluation or No-Cost Licenses</label>
+        <label>Licenses</label>
         <position>1</position>
-        <publiclyAvailable>true</publiclyAvailable>
-        <target>/sales-signup-evaluationlicenses</target>
+        <publiclyAvailable>false</publiclyAvailable>
+        <subMenu>
+            <navigationMenuItem>
+                <label>Find and Generate License by Activation Code</label>
+                <position>0</position>
+                <publiclyAvailable>false</publiclyAvailable>
+                <target>/generate-license-by-activation-code</target>
+                <type>InternalLink</type>
+            </navigationMenuItem>
+            <navigationMenuItem>
+                <defaultListViewId>Sales_Unlicensed_Products_Ext</defaultListViewId>
+                <label>New Licenses</label>
+                <position>1</position>
+                <publiclyAvailable>true</publiclyAvailable>
+                <target>/license-menu-internal</target>
+                <type>InternalLink</type>
+            </navigationMenuItem>
+            <navigationMenuItem>
+                <defaultListViewId>Active_Maintenance_External</defaultListViewId>
+                <label>Licenses With Active Maintenance</label>
+                <position>2</position>
+                <publiclyAvailable>true</publiclyAvailable>
+                <target>/active-maintenance-licenses-internal</target>
+                <type>InternalLink</type>
+            </navigationMenuItem>
+            <navigationMenuItem>
+                <defaultListViewId>All_Licenses_Ext</defaultListViewId>
+                <label>All Licenses</label>
+                <position>3</position>
+                <publiclyAvailable>true</publiclyAvailable>
+                <target>/all-license-internal</target>
+                <type>InternalLink</type>
+            </navigationMenuItem>
+            <navigationMenuItem>
+                <label>Legacy Licenses</label>
+                <position>4</position>
+                <publiclyAvailable>true</publiclyAvailable>
+                <target>http://www.intel.com</target>
+                <type>ExternalLink</type>
+            </navigationMenuItem>
+            <navigationMenuItem>
+                <label>Employee and Evaluation Licenses</label>
+                <position>5</position>
+                <publiclyAvailable>true</publiclyAvailable>
+                <target>/employee-and-evaluation-license-internal</target>
+                <type>InternalLink</type>
+            </navigationMenuItem>
+        </subMenu>
+        <type>MenuLabel</type>
+    </navigationMenuItem>
+    <navigationMenuItem>
+        <label>Computers and License Files</label>
+        <position>2</position>
+        <publiclyAvailable>false</publiclyAvailable>
+        <subMenu>
+            <navigationMenuItem>
+                <label>Active Computers</label>
+                <position>0</position>
+                <publiclyAvailable>false</publiclyAvailable>
+                <target>/active-computers-internal</target>
+                <type>InternalLink</type>
+            </navigationMenuItem>
+            <navigationMenuItem>
+                <label>All Computers</label>
+                <position>1</position>
+                <publiclyAvailable>false</publiclyAvailable>
+                <target>/all-computers-internal</target>
+                <type>InternalLink</type>
+            </navigationMenuItem>
+        </subMenu>
+        <type>MenuLabel</type>
+    </navigationMenuItem>
+    <navigationMenuItem>
+        <label>Admins</label>
+        <position>3</position>
+        <publiclyAvailable>false</publiclyAvailable>
+        <subMenu>
+            <navigationMenuItem>
+                <label>Add New Admin</label>
+                <position>0</position>
+                <publiclyAvailable>true</publiclyAvailable>
+                <target>/add-new-admin</target>
+                <type>InternalLink</type>
+            </navigationMenuItem>
+            <navigationMenuItem>
+                <defaultListViewId>My_Delegate_Admins</defaultListViewId>
+                <label>View &amp; Manage Admins</label>
+                <position>1</position>
+                <publiclyAvailable>true</publiclyAvailable>
+                <target>/view-and-manage-admin</target>
+                <type>InternalLink</type>
+            </navigationMenuItem>
+        </subMenu>
+        <type>MenuLabel</type>
+    </navigationMenuItem>
+    <navigationMenuItem>
+        <defaultListViewId>All_Licenses_Ext</defaultListViewId>
+        <label>Sign up for Evaluation or No-Cost Licenses</label>
+        <position>4</position>
+        <publiclyAvailable>false</publiclyAvailable>
+        <target>/sales-signup-evalutionlicense</target>
         <type>InternalLink</type>
     </navigationMenuItem>
     <navigationMenuItem>
         <label>Sign up for Employee Licenses</label>
-        <position>2</position>
+        <position>5</position>
         <publiclyAvailable>true</publiclyAvailable>
-        <target>/sales-sign-up-employeefreelicences</target>
+        <target>/signup-EmployeeLicense</target>
         <type>InternalLink</type>
     </navigationMenuItem>
     <navigationMenuItem>
+        <defaultListViewId>AllReports</defaultListViewId>
+        <label>Reports</label>
+        <position>6</position>
+        <publiclyAvailable>true</publiclyAvailable>
+        <target>Report</target>
+        <type>SalesforceObject</type>
+    </navigationMenuItem>
+    <navigationMenuItem>
         <label>Help</label>
-        <position>3</position>
+        <position>7</position>
         <publiclyAvailable>true</publiclyAvailable>
         <subMenu>
             <navigationMenuItem>
@@ -58,10 +165,10 @@
                 <type>ExternalLink</type>
             </navigationMenuItem>
             <navigationMenuItem>
-                <label>Give Feedback</label>
+                <label>Need Help? Contact Customer Service</label>
                 <position>5</position>
                 <publiclyAvailable>true</publiclyAvailable>
-                <target>/feedback</target>
+                <target>/contact-customer-service</target>
                 <type>InternalLink</type>
             </navigationMenuItem>
         </subMenu>

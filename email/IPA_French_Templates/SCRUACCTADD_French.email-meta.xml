@@ -4,44 +4,20 @@
     <encodingKey>UTF-8</encodingKey>
     <name>SCRUACCTADD_French</name>
     <style>none</style>
-    <subject>Action nécessaire pour terminer l&apos;inscription à l&apos;Alliance partenaire Intel®</subject>
-    <textOnly>Action nécessaire pour terminer l&apos;inscription à l&apos;Alliance partenaire Intel®
+    <subject>Dernière étape requise concernant votre demande d&apos;adhésion au programme de partenariat Intel</subject>
+    <textOnly>{!Contact.FirstName},
 
+L&apos;administrateur de votre entreprise ou un représentant Intel vous a ajouté au programme de partenariat Intel pour le compte {!Contact.Core_Account_Name__c}. Pour activer votre compte et commencer à profiter des avantages du programme, vérifiez les informations vous concernant et remplissez la section concernant les conditions légales.
 
+Veuillez également enregistrer vos identifiants de connexion pour référence ultérieure :
 
-
-{!Contact.FirstName},
-
-Félicitations, l&apos;administrateur de votre entreprise ou un représentant Intel vous a ajouté à un compte Alliance partenaire Intel® ! Il ne vous reste plus que quelques étapes pour terminer votre inscription.
-
-Les informations de profil ci-dessous ont été créées pour vous :
-
+Nom d&apos;utilisateur : {!Contact.Name}
 Adresse e-mail : {!Contact.Email}
-Nom de la société : {{ACCOUNTNAME}}
-ID d&apos;entreprise de l&apos;Alliance partenaire Intel® : {{ACCOUNTNUMBER}}
+Nom de l&apos;entreprise : {!Contact.Core_Account_Name__c}
+Votre mot de passe doit rester confidentiel. L&apos;utilisation de ce mot de passe sur les sites Web d&apos;Intel est régie par les Conditions d&apos;utilisation d&apos;Intel, qui comprennent un lien en bas de chaque page Web du site.
 
-
-Veuillez cliquer sur le lien ci-dessous pour terminer votre inscription
-
-
-{{ButtonText}}
-
-
-Vous ne parvenez pas à accéder au lien ci-dessus ?
-{{EVLINK}}
-Si vous avez des questions, veuillez nous contacter via {{SUPPORTLINK}}.
-Nous avons hâte de vous accueillir au sein du programme !
-Cordialement,
-Votre équipe Alliance partenaire Intel®
-
-
-Ce message vous a été envoyé dans le cadre d&apos;une communication commerciale importante liée à votre relation actuelle avec le programme Alliance partenaire Intel®.
-© {!$Label.PRM_CurrentYear} Intel Corporation
-Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054, États-Unis. www.intel.com
-Confidentialité | Cookies
-
-
-__PRESENT</textOnly>
+FINALISER MAINTENANT
+Des questions ? Contactez l&apos;assistance ici</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

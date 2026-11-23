@@ -36,7 +36,7 @@ Updated the new design and deal record types for APJ section</description>
     <processMetadataValues>
         <name>CanvasMode</name>
         <value>
-            <stringValue>FREE_FORM_CANVAS</stringValue>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
         </value>
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
@@ -44,8 +44,8 @@ Updated the new design and deal record types for APJ section</description>
         <description>Update the Opportunity Region (EMEA ASMO APJ PRC ) Geo Checkbox field to be TRUE</description>
         <name>Region_CheckBox_Update</name>
         <label>Region CheckBox Update</label>
-        <locationX>593</locationX>
-        <locationY>457</locationY>
+        <locationX>176</locationX>
+        <locationY>323</locationY>
         <inputAssignments>
             <field>Core_Opportunity_Geo_APJ__c</field>
             <value>
@@ -73,8 +73,8 @@ Updated the new design and deal record types for APJ section</description>
         <inputReference>$Record</inputReference>
     </recordUpdates>
     <start>
-        <locationX>458</locationX>
-        <locationY>64</locationY>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
         <connector>
             <targetReference>Region_CheckBox_Update</targetReference>
         </connector>

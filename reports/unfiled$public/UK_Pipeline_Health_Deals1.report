@@ -67,7 +67,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>EMEA UK Sales Group</value>
+            <value>GMP UK Sales Group</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Past_Due__c</column>

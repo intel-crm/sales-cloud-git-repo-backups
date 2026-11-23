@@ -157,7 +157,7 @@ export default class Pricing_BulkInsertUpdateProductFloorPrice extends Lightning
                                     this.dispatchEvent(
                                         new ShowToastEvent({
                                             title: 'Success!!',
-                                            message: 'Bulk Product Floor Price file has uploaded successfully. Please see the email notification to review the results of the upload.',
+                                            message: 'Validation Started, Soon you will get email notification with the result',
                                             variant: 'success',
                                             mode: 'sticky',
                                         }),

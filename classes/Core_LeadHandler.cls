@@ -356,6 +356,9 @@ public without sharing class Core_LeadHandler{
     
     private static void processLeadDeduplication(SWS_LeadWrappers.ConversionContext ctx, Map<Id, Lead> mapNewIdLeads) {
         for (Lead leadInstance : ctx.lstConvertedLeads) {
+              if (leadInstance.ConvertedOpportunityId != null && leadInstance.ConvertedAccountId != null) {
+                ctx.mapConvertedOpportunityIdAccountId.put(leadInstance.ConvertedOpportunityId, leadInstance.ConvertedAccountId);
+            }
             if (!ctx.mapAccountIdAccount.containsKey(leadInstance.ConvertedAccountId)) continue;
             Account accountInstance = ctx.mapAccountIdAccount.get(leadInstance.ConvertedAccountId);
             

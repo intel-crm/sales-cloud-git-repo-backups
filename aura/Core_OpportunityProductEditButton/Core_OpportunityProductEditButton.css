@@ -1,0 +1,26 @@
+.THIS.details > summary {
+    padding: 2px;
+    background-color:whitesmoke;
+    outline: none;
+    font-size: 15px;
+    height: 35px;
+    border-radius: 0.25rem;
+}
+
+
+.THIS.style {
+    background-color: white;
+    border-radius: 0.30rem;
+}
+
+
+.THIS.slds-wrap {
+    flex-wrap: wrap;
+    align-items: flex-end;
+    background-color: white
+}
+
+.THIS.right-side{
+    float:right;
+    padding-top: 1px;
+}

@@ -1,13 +1,13 @@
 /*************************************************************************************************************************************
-Apex Class Name     : PCC_CreateBulkDRRecordsTest 
-Created Date        : May 2023
-Function            : Test class for PCC_CreateBulkDRRecords
-************************************************************************************************************************************************/
+Apex Class Name     : PCC_CreateBulkDRRecordsTest
+    Created Date        : May 2023
+    Function            : Test class for PCC_CreateBulkDRRecords
+     ************************************************************************************************************************************************/
 @isTest
 public class PCC_CreateBulkDRRecordsTest {
     public static String[] csvFileLines;
     public static Blob csvFileBody;
-
+    
     @isTest
     static void testCSVFileProcessor() {
         string csvname= 'BulkDRUpload';
@@ -19,7 +19,6 @@ public class PCC_CreateBulkDRRecordsTest {
         Test.startTest();
         csvFileBody = Blob.valueOf(str);
         String csvAsString = csvFileBody.toString();
-        system.debug('csvAsString--'+csvAsString);
         csvFileLines = csvAsString.split('\n');
         PCC_CreateBulkDRRecords.saveFile(JSON.serialize(csvAsString),csvname);
         

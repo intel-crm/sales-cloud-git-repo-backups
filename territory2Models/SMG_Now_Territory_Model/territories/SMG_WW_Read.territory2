@@ -13,9 +13,5 @@
     </customFields>
     <name>SMG WW Read</name>
     <opportunityAccessLevel>Read</opportunityAccessLevel>
-    <ruleAssociations>
-        <inherited>false</inherited>
-        <ruleName>Undefined</ruleName>
-    </ruleAssociations>
     <territory2Type>Level_1</territory2Type>
 </Territory2>

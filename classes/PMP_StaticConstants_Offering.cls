@@ -18,13 +18,11 @@ public class PMP_StaticConstants_Offering{
     public static final String Core_PMP_CreateOfferings = 'Core_PMP_CreateOfferings';
     public static final String High = 'High';
     public static final String DRAFT = 'Draft';
-    public static final String URL = 'URL';
     public static final String ADMIN_REVIEW = 'Admin Review';
-    public static final String Update_Required = 'Update Required';    
     //public static final String Product_Web_Page = 'Product Web Page';
     //public static final String Data_Sheet = 'Data Sheet';
     //public static final String Additional_Resources = 'Additional Resources';
-    public static final String Others = 'Additional Resources';
+    public static final String Others = 'Others';
     //public static final String Image = 'Image';
     public static final String uploadedFiles = 'uploadedFiles';
     public static final String contentVersions = 'contentVersions';
@@ -36,7 +34,6 @@ public class PMP_StaticConstants_Offering{
     public static final String selectedSpecificationsMap = 'selectedSpecificationsMap';
     public static final String includedIntelTechList = 'includedIntelTechList';
     public static final String partnerDetail = 'partnerDetail';
-    public static final String offeringResources = 'offeringResources';
     
     public static final String English = 'English';
     public static final String Chinese = 'Simplified Chinese';
@@ -64,10 +61,8 @@ public class PMP_StaticConstants_Offering{
     //Added by Deepanshu as a part of US567690
     public static final string NUC='NPP_NUC';
     public static final string CHIPSET='NPP_Chipsets';
-    public static final string OS = 'NPP_OperationSystems';
     public static final string GEOREGION='NPP_GeographicCoverage'; //Added by Manasa
     public static final string INTELTECH='NPP_IntelTechnologies'; //Added by Manasa
-    public static final string GRAPHICS='NPP_Graphics'; //Added by Yashasvi Aggarwal
     public static final string ENDCUSTOMERTYPE='NPP_EndCustomerType'; //Added by Manasa
     public static final string noOFProcessors='NPP_Processors_NoOfProcessors'; //Added by Manasa - US460366
     public static final string processorsSocketed='NPP_Processors_ProcessorSocketed'; //Added by Manasa - US460366
@@ -105,7 +100,7 @@ public class PMP_StaticConstants_Offering{
     public static final string APPLICAION_ID = 'NPP_01_APP';
 
     public static final string FPGA = 'NPP_FPGA';
-    public static final string PRODUCT_WEB_PAGE = 'Web Page';
+    public static final string PRODUCT_WEB_PAGE = 'Product Web Page';
     public static final string DATA_SHEET = 'Data Sheet';
     public static final string PRODUCT_BRIEF = 'Product Brief';
     public static final string ADDITIONAL_RESOURCES = 'Additional Resources';
@@ -166,7 +161,7 @@ public class PMP_StaticConstants_Offering{
     /*Added by raj for fetching Categories, Industries and Applications*/
     public static final String categoryType = 'Category';
     public static final String industry = 'Industry';
-    public static final String application = 'Use Cases'; // value change from Application to Use Cases
+    public static final String application = 'Application';
     /*--------------------------End-----------------------*/
     
     /*Added by Sandhya for display of COmpany Resources*/
@@ -175,31 +170,6 @@ public class PMP_StaticConstants_Offering{
     
     /*Added by Sandhya for Guest Profile*/
      public static final String[] guestProfiles = new String[]{'Intel® Solutions Marketplace Profile'};
-     
-     //Breadcrumb
-     public static final String findAnOffering = 'FIND AN OFFERING';
-     public static final String IntelSolutionsMarketplace = 'Intel Solutions Marketplace';
     
-     public static final String PDF = 'PDF';
-     public static final String solutionCategory = 'Solution';
-     public static final String partnerSolutionsCategory = 'Partner Solutions';
-
-     //Added by Yashasvi Aggarwal for Video Integration
-     public static final String Authorization = 'Authorization';
-     public static final String Bearer = 'Bearer ';
-
-     //Added by Pranjal for Video
-     public static final String VIDEO = 'Video';
-     public static final String BRIGHTCOVE = 'brightcove';
-
-     //Added by Sandhya for BookMark Url redirection based on Status
-     public static final String RETIRED = 'Retired';
-
-     //Added by Deepanjana
-     public static final String companyLink = '/s/partner-edit/,/s/offering-edit?recordId=,&Lang=en_US&action=edit,&lang=NAS&action=clone,/s/profile/,/s/solution-detail-page?recordId=,/s/offering/';
-     @auraEnabled
-     public static string returnCompany(){
-        return companyLink;
-     }
-     
+    
 }

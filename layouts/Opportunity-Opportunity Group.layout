@@ -3,6 +3,7 @@
     <customButtons>Core_Opportunity_Clone_Button</customButtons>
     <customButtons>Core_Deal_Support</customButtons>
     <excludeButtons>Clone</excludeButtons>
+    <excludeButtons>OpenSlackRecordChannel</excludeButtons>
     <excludeButtons>Submit</excludeButtons>
     <headers>PersonalTagging</headers>
     <layoutSections>
@@ -26,6 +27,58 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Core_Technical_Owner__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_Start_Date__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_End_Date__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Core_difference__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_BU_Short_Name_Count_Check__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Core_Decimal_Check__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_Is_Cloned__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_is_cloned_Opportunity__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Val_Test__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Core_Consumer_Sales_Category__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Decision_Date__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Core_opp_Converted_date_formula__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_Test_Validation_Check__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_Design_Type__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -222,6 +275,15 @@
         <relatedList>RelatedActivityList</relatedList>
     </relatedLists>
     <relatedLists>
+        <fields>OPPORTUNITY.NAME</fields>
+        <fields>ACCOUNT.NAME</fields>
+        <fields>Core_Opp_Prime_Account_Name__c</fields>
+        <fields>OPPORTUNITY.STAGE_NAME</fields>
+        <fields>CORE.USERS.FULL_NAME</fields>
+        <fields>Core_Technical_Owner__c</fields>
+        <relatedList>Opportunity.Core_Solution_Group__c</relatedList>
+    </relatedLists>
+    <relatedLists>
         <fields>TASK.SUBJECT</fields>
         <fields>TASK.WHO_NAME</fields>
         <fields>ACTIVITY.TASK</fields>
@@ -245,6 +307,23 @@
         <fields>Core_Opp_Hist_Product__c</fields>
         <fields>Core_Opp_Hist_Approved_BU_Short_Name__c</fields>
         <relatedList>Core_Opportunity_Approval_History__c.Core_Opp_Hist_Core_Opportunity__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>PCC_MM_ID__c</fields>
+        <fields>PCC_Ordering_Cd__c</fields>
+        <fields>PCC_L5_Product_Name__c</fields>
+        <fields>PCC_Design_Registration__c</fields>
+        <relatedList>PCC_DDR_L5_Product_Mapping__c.PCC_Opportunity__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>Core_Status__c</fields>
+        <fields>Core_Reviewer_Email__c</fields>
+        <relatedList>Core_Solution_Areas__c.Opportunity__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>PCC_Rebate_Claim_Stage__c.PCC_Opportunity__c</relatedList>
     </relatedLists>
     <relatedObjects>AccountId</relatedObjects>
     <showEmailCheckbox>false</showEmailCheckbox>

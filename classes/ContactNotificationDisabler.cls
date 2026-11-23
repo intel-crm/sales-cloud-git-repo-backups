@@ -7,6 +7,8 @@ public class ContactNotificationDisabler {
         if ( !customMetadataRecordsMap.containsKey(soqlQuery) ) {
             customMetadataRecordsMap.put( soqlQuery, Database.query(soqlQuery) );
         }
+        System.debug('ContactNotificationDisabler : customMetadataRecordsMap ='+
+                    ContactNotificationDisabler.customMetadataRecordsMap);
         return customMetadataRecordsMap.get(soqlQuery);
     }
 

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>PCC_Rebate_Claim_Line_Item__c.PCC_Product__c</field>
+    </columns>
+    <columns>
+        <field>PCC_Rebate_Claim_Line_Item__c.PCC_Opportunity__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>PCC_Rebate_Claim_Line_Item__c.PCC_Claimed_Rebate_Amount__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>PCC_Rebate_Claim_Line_Item__c.PCC_Approved_Rebate_Amount__c</field>
+    </columns>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>FK_$SBQQ__QuoteLine__c.Pricing_Quote_Line_Number__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>PCC_Rebate_Claim_Line_Item__c.PCC_Status__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Rebate Claim History with QL</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntityCustomEntity$PCC_Rebate_Claim__c$PCC_Rebate_Claim_Line_Item__c@PCC_Rebate_Claim_Line_Item__c.PCC_Quote_Line_Number__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>PCC_Rebate_Claim__c.PCC_Approval_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

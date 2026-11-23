@@ -31,6 +31,13 @@ public class QuoteTriggerHandler extends TriggerHandler {
     public List<SBQQ__Quote__c> psgCpTriggerOldList = new List<SBQQ__Quote__c>();
     public Map<Id,SBQQ__Quote__c> psgCpTriggerOldMap = new Map<Id,SBQQ__Quote__c>();
     public Map<Id,SBQQ__Quote__c> psgCpTriggerNewMap = new Map<Id,SBQQ__Quote__c>();
+    
+  //Retails Context Variables//added by Retail team
+   /* public List<SBQQ__Quote__c> retailTriggerNewList = new List<SBQQ__Quote__c>();
+    public List<SBQQ__Quote__c> retailTriggerOldList = new List<SBQQ__Quote__c>();
+    public Map<Id,SBQQ__Quote__c> retailTriggerOldMap = new Map<Id,SBQQ__Quote__c>();
+    public Map<Id,SBQQ__Quote__c> retailTriggerNewMap = new Map<Id,SBQQ__Quote__c>();*/
+  
     //SW Context Variables
     public List<SBQQ__Quote__c> swTriggerNewList = new List<SBQQ__Quote__c>();
     public List<SBQQ__Quote__c> swTriggerOldList = new List<SBQQ__Quote__c>();
@@ -42,6 +49,7 @@ public class QuoteTriggerHandler extends TriggerHandler {
     public QuoteTriggerHandler(){
         if(Trigger.new != null){
             for(SBQQ__Quote__c quote : (List<SBQQ__Quote__c>)Trigger.new){
+                system.debug('quotprogram:'+quote.Pricing_Quote_Program_Nm__c);
                 if(quote.Pricing_Quote_Program_Nm__c == Label.Pricing_Program_Code_Tender ){
                     iqrTriggerNewList.add(quote);
                 }else if(quote.Pricing_Quote_Program_Nm__c == Label.Pricing_Program_Code_PSG && quote.RecordTypeId != CPRecordTypeId && quote.core_cpq_quote_type_nm__c != 'Contract Pricing'){
@@ -53,6 +61,9 @@ public class QuoteTriggerHandler extends TriggerHandler {
                 else if(quote.Pricing_Quote_Program_Nm__c == Label.Pricing_Tender_FinancialIncentive_Quote){
                     FITriggerNewList.add(quote);
                 }
+                /*else if(quote.Pricing_Quote_Program_Nm__c == Label.Pricing_Program_Code_Retail){//added by Retail team
+                    retailTriggerNewList.add(quote);
+                }*/
                 else if(quote.Pricing_Quote_Program_Nm__c == Label.Pricing_Program_Code_Software){
                     swTriggerNewList.add(quote);
                 }
@@ -69,6 +80,9 @@ public class QuoteTriggerHandler extends TriggerHandler {
                     else if(quote.Pricing_Quote_Program_Nm__c == Label.Pricing_Tender_FinancialIncentive_Quote){
                         FITriggerNewMap.put(quote.Id,quote);
                     }
+                    /*else if(quote.Pricing_Quote_Program_Nm__c ==  Label.Pricing_Program_Code_Retail){//added by Retail team
+                        retailTriggerNewMap.put(quote.Id,quote);
+                    }*/
                     else if(quote.Pricing_Quote_Program_Nm__c == Label.Pricing_Program_Code_Software){
                         swTriggerNewMap.put(quote.ID,quote);
                     }
@@ -76,7 +90,7 @@ public class QuoteTriggerHandler extends TriggerHandler {
             }
         }
         if(Trigger.old != null){
-            /*for(SBQQ__Quote__c quote : (List<SBQQ__Quote__c>)Trigger.old){
+            for(SBQQ__Quote__c quote : (List<SBQQ__Quote__c>)Trigger.old){
                 if(quote.Pricing_Quote_Program_Nm__c == Label.Pricing_Program_Code_Tender ){
                   iqrTriggerOldList.add(quote);
                 }else if(quote.Pricing_Quote_Program_Nm__c == Label.Pricing_Program_Code_PSG ){
@@ -89,7 +103,7 @@ public class QuoteTriggerHandler extends TriggerHandler {
                       psgTriggerOldMap.put(quote.Id,quote);
                     }
                 }
-            }*/
+            }
             
             for(SBQQ__Quote__c quote : (List<SBQQ__Quote__c>)Trigger.new){
                 SBQQ__Quote__c oldQuote = (SBQQ__Quote__c) trigger.oldMap.get(quote.Id);
@@ -108,6 +122,10 @@ public class QuoteTriggerHandler extends TriggerHandler {
                     FITriggerOldList.add(oldQuote);
                     FITriggerOldMap.put(quote.Id,oldQuote);
                 }
+        /*else if(quote.Pricing_Quote_Program_Nm__c == Label.Pricing_Program_Code_Retail ){//added by Retail team
+                    retailTriggerOldList.add(oldQuote);
+                    retailTriggerOldMap.put(quote.Id,oldQuote);
+                }*/
                 else if(quote.Pricing_Quote_Program_Nm__c == Label.Pricing_Program_Code_Software){
                     swTriggerOldList.add(oldQuote);
                     swTriggerOldMap.put(quote.Id,oldQuote);
@@ -135,15 +153,20 @@ public class QuoteTriggerHandler extends TriggerHandler {
             //Share Quote and Comment Records using Batch Execution
             QuoteBusinessLogic.publishIQR(iqrTriggerNewMap.keySet(),Label.Pricing_IQR_Event_Action_Quote_Share);
         }
-        /*if(isActive('PSG_Quote_After_Insert') && psgTriggerNewList.size() > 0 && !Sales_ContractTriggerUtility.byPassQuoteTriggersOnContractRenewal){ 
-            //PSG_QuoteBusinessLogic.afterInsertUpdateOperations(psgTriggerNewList,psgTriggerOldMap,Trigger.isInsert);
+        if(isActive('PSG_Quote_After_Insert') && psgTriggerNewList.size() > 0 && !Sales_ContractTriggerUtility.byPassQuoteTriggersOnContractRenewal){ 
+            PSG_QuoteBusinessLogic.afterInsertUpdateOperations(psgTriggerNewList,psgTriggerOldMap,Trigger.isInsert);
         }
         if(isActive('PSG_CPQuote_After_Insert') && psgCpTriggerNewList.size() > 0 && !Sales_ContractTriggerUtility.byPassQuoteTriggersOnContractRenewal){ 
-            //PSG_CPQuoteBusinessLogic.afterInsertUpdateOperations(psgCpTriggerNewList,psgCpTriggerOldMap,Trigger.isInsert);
+            PSG_CPQuoteBusinessLogic.afterInsertUpdateOperations(psgCpTriggerNewList,psgCpTriggerOldMap,Trigger.isInsert);
+        }
+        /*if(retailTriggerNewList.size() > 0){ //added by retails team
+            Retail_CPQ_QuoteBusinessLogic.afterInsertUpdateOperations(retailTriggerNewList,retailTriggerOldMap,Trigger.isInsert);
         }*/
-	        if(isActive('Pricing_SW_QuoteAfterInsert') && swTriggerNewList.size() > 0){            
-			Pricing_SW_QuoteBusinessLogic.updateCRMSWOnOpportunity(swTriggerNewList);
-		}
+        if(isActive('Pricing_SW_QuoteAfterInsert') && swTriggerNewList.size() > 0){
+            //Pricing_SW_QuoteBusinessLogic.updateCRMSWFlagOnOpportunity(swTriggerNewList);            
+            Pricing_SW_QuoteBusinessLogic.updateCRMSWOnOpportunity(swTriggerNewList);
+        }
+        
     }
     public override void beforeInsert(){
         if(isActive('Update_Quote_Details') && iqrTriggerNewList.size() > 0){
@@ -153,12 +176,15 @@ public class QuoteTriggerHandler extends TriggerHandler {
             QuoteBusinessLogic.updateQuoteDetails(FITriggerNewList,Trigger.isInsert,FITriggerOldMap);
         }
         if(isActive('PSG_Quote_Before_Insert') && psgTriggerNewList.size() > 0){          
-            //PSG_QuoteBusinessLogic.beforeInsertUpdateOperations(psgTriggerNewList,psgTriggerOldMap,Trigger.isInsert);
+            PSG_QuoteBusinessLogic.beforeInsertUpdateOperations(psgTriggerNewList,psgTriggerOldMap,Trigger.isInsert);
         }
         if(isActive('PSG_CPQuote_Before_Insert') && psgCpTriggerNewList.size() > 0){        
-            //PSG_CPQuoteBusinessLogic.beforeInsertUpdateOperations(psgCpTriggerNewList,psgCpTriggerOldMap,Trigger.isInsert);
-        }   
-	        if(isActive('Pricing_SW_QuoteBeforeInsert') && swTriggerNewList.size() > 0){
+            PSG_CPQuoteBusinessLogic.beforeInsertUpdateOperations(psgCpTriggerNewList,psgCpTriggerOldMap,Trigger.isInsert);
+        }
+    /*if(retailTriggerNewList.size() > 0){     //added by retails team   
+            Retail_CPQ_QuoteBusinessLogic.beforeInsertUpdateOperations(retailTriggerNewList,retailTriggerOldMap,Trigger.isInsert);
+        }*/
+        if(isActive('Pricing_SW_QuoteBeforeInsert') && swTriggerNewList.size() > 0){
             Pricing_SW_QuoteBusinessLogic.updateRecordtypebyStatusandApprovalStatus(swTriggerNewList,swTriggerOldMap,Trigger.isInsert);    
         }  
          
@@ -168,17 +194,21 @@ public class QuoteTriggerHandler extends TriggerHandler {
             //check if Primary Contact Changes and update the owner with the new OEM user               
             QuoteBusinessLogic.checkChangeInPrimaryContact(iqrTriggerNewList,Trigger.isInsert,iqrTriggerOldMap);
         }
-        if(isActive('PSG_Quote_After_Update') && psgTriggerNewList.size() > 0){
-            //PSG_QuoteBusinessLogic.afterInsertUpdateOperations(psgTriggerNewList,psgTriggerOldMap,Trigger.isInsert);
+        if(isActive('PSG_Quote_After_Update') && psgTriggerNewList.size() > 0 && !Sales_ContractTriggerUtility.byPassQuoteTriggersOnContractRenewal){
+            PSG_QuoteBusinessLogic.afterInsertUpdateOperations(psgTriggerNewList,psgTriggerOldMap,Trigger.isInsert);
             if(psgTriggerNewList.size()>0){
-                //Sales_QuoteUtility.afterUpdateQuoteOperation(psgTriggerNewList);
+                Sales_QuoteUtility.afterUpdateQuoteOperation(psgTriggerNewList);
             } 
         }
-        /*if(isActive('PSG_CPQuote_After_Update') && psgCpTriggerNewList.size() > 0 && !Sales_ContractTriggerUtility.byPassQuoteTriggersOnContractRenewal){
-            //PSG_CPQuoteBusinessLogic.afterInsertUpdateOperations(psgCpTriggerNewList,psgCpTriggerOldMap,Trigger.isInsert);
+        if(isActive('PSG_CPQuote_After_Update') && psgCpTriggerNewList.size() > 0 && !Sales_ContractTriggerUtility.byPassQuoteTriggersOnContractRenewal){
+            PSG_CPQuoteBusinessLogic.afterInsertUpdateOperations(psgCpTriggerNewList,psgCpTriggerOldMap,Trigger.isInsert);
+        }
+    /*if(retailTriggerNewList.size() > 0){
+      Retail_CPQ_QuoteBusinessLogic.afterInsertUpdateOperations(retailTriggerNewList,retailTriggerOldMap,Trigger.isInsert);//added by Retail team
         }*/
     }
     public override void beforeUpdate() {
+       
         if(isActive('Update_CPQ_Opportunity_before_Update') && iqrTriggerNewList.size() > 0 ){
             QuoteBusinessLogic.updateCPQOpportunityField(iqrTriggerNewList,iqrTriggerOldMap);
         }
@@ -188,17 +218,24 @@ public class QuoteTriggerHandler extends TriggerHandler {
         if (isActive('Update_FI_Quote_Details_Before_Update') && FITriggerNewList.size() > 0) {
             QuoteBusinessLogic.updateQuoteDetails(FITriggerNewList,Trigger.isInsert,FITriggerOldMap);
         }
-        if(isActive('PSG_Quote_Before_Update') && psgTriggerNewList.size() > 0) { 
-            //PSG_QuoteBusinessLogic.beforeInsertUpdateOperations(psgTriggerNewList,psgTriggerOldMap,Trigger.isInsert); 
+        if(isActive('PSG_Quote_Before_Update') && psgTriggerNewList.size() > 0 && !Sales_ContractTriggerUtility.byPassQuoteTriggersOnContractRenewal) { 
+            PSG_QuoteBusinessLogic.beforeInsertUpdateOperations(psgTriggerNewList,psgTriggerOldMap,Trigger.isInsert); 
         }
         
-        if(isActive('PSG_CPQuote_Before_Update') && psgCpTriggerNewList.size() > 0) { 
-            //PSG_CPQuoteBusinessLogic.beforeInsertUpdateOperations(psgCpTriggerNewList,psgCpTriggerOldMap,Trigger.isInsert); 
+        if(isActive('PSG_CPQuote_Before_Update') && psgCpTriggerNewList.size() > 0 && !Sales_ContractTriggerUtility.byPassQuoteTriggersOnContractRenewal) { 
+            PSG_CPQuoteBusinessLogic.beforeInsertUpdateOperations(psgCpTriggerNewList,psgCpTriggerOldMap,Trigger.isInsert); 
         }
-	         if(isActive('Pricing_SW_QuoteBeforeUpdate') && swTriggerNewList.size() > 0){
+        /*if(isActive('Update_CPQ_Opportunity_before_Update') && iqrTriggerNewList.size() > 0 ){
+            QuoteBusinessLogic.updateCPQOpportunityField(iqrTriggerNewList,iqrTriggerOldMap);
+        }*/
+        /*if(retailTriggerNewList.size() > 0) { //added by Retail team
+            Retail_CPQ_QuoteBusinessLogic.beforeInsertUpdateOperations(retailTriggerNewList,retailTriggerOldMap,Trigger.isInsert); 
+        }*/
+         if(isActive('Pricing_SW_QuoteBeforeUpdate') && swTriggerNewList.size() > 0){
             Pricing_SW_QuoteBusinessLogic.updateRecordtypebyStatusandApprovalStatus(swTriggerNewList,swTriggerOldMap,Trigger.isInsert);
              
         } 
+        
         
     }    
 }

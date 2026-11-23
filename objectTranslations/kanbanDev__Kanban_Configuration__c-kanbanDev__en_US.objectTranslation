@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Kanban Configuration</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Kanban Configurations</value>
+    </caseValues>
+    <fields>
+        <label><!-- Child Object --></label>
+        <name>kanbanDev__Child_Object__c</name>
+    </fields>
+    <fields>
+        <label><!-- Exclude From Group By --></label>
+        <name>kanbanDev__Exclude_From_Group_By__c</name>
+    </fields>
+    <fields>
+        <label><!-- Fields To Show --></label>
+        <name>kanbanDev__Fields_To_Show__c</name>
+    </fields>
+    <fields>
+        <label><!-- For Object --></label>
+        <name>kanbanDev__For_Object__c</name>
+    </fields>
+    <fields>
+        <label><!-- Group By --></label>
+        <name>kanbanDev__Group_By__c</name>
+    </fields>
+    <fields>
+        <label><!-- Kanban For --></label>
+        <name>kanbanDev__Kanban_For__c</name>
+        <picklistValues>
+            <masterLabel>Child</masterLabel>
+            <translation><!-- Child --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Home</masterLabel>
+            <translation><!-- Home --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Name Field(Do Not Edit) --></label>
+        <name>kanbanDev__Name_Field__c</name>
+    </fields>
+    <fields>
+        <label><!-- Relation Field --></label>
+        <name>kanbanDev__Relation_Field__c</name>
+    </fields>
+    <fields>
+        <label><!-- Summarize By --></label>
+        <name>kanbanDev__Summarize_By__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

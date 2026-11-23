@@ -27,37 +27,14 @@
     <columns>
         <field>Account.Core_Geo__c</field>
     </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Account.Core_Intel_Partner_Alliance_PartnerGroup__c</field>
-    </columns>
-    <columns>
-        <field>Account.Core_IPA_Badge_Tier__c</field>
-    </columns>
-    <columns>
-        <field>User.Core_Manager__c</field>
-    </columns>
-    <columns>
-        <field>INDUSTRY</field>
-    </columns>
-    <columns>
-        <field>Account.Core_Sub_Industry__c</field>
-    </columns>
-    <columns>
-        <field>ADDRESS1_LINE1</field>
-    </columns>
-    <columns>
-        <field>Account.Core_IPA_Partner_Role__c</field>
-    </columns>
     <description>For Coverage Report</description>
     <filter>
-        <booleanFilter>1</booleanFilter>
         <criteriaItems>
-            <column>Account.Core_Account_Owner_Manager__c</column>
+            <column>ROLLUP_DESCRIPTION</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Tim Wood,Stiles,Oldfield,Merjanian,Covey,thomson</value>
+            <value>Halversen,Wood,Swyers,Oldfield,Merjanian,Covey</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

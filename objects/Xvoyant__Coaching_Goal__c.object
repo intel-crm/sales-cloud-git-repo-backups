@@ -1,0 +1,1128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>true</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <description>Coaching Goal Object</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>Xvoyant__Accepted__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <label>Accepted</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Xvoyant__Activity__c</fullName>
+        <deprecated>false</deprecated>
+        <label>Activity</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>Xvoyant__Stage_Driver__c</controllingField>
+            <restricted>true</restricted>
+            <valueSetName>Xvoyant__Activities</valueSetName>
+            <valueSettings>
+                <controllingFieldValue># Opportunities</controllingFieldValue>
+                <controllingFieldValue>Opportunity Size $</controllingFieldValue>
+                <controllingFieldValue>Win Rate</controllingFieldValue>
+                <controllingFieldValue>Velocity</controllingFieldValue>
+                <controllingFieldValue>Qualify</controllingFieldValue>
+                <controllingFieldValue>Define</controllingFieldValue>
+                <controllingFieldValue>Develop</controllingFieldValue>
+                <controllingFieldValue>Design</controllingFieldValue>
+                <valueName>Activity</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue># Opportunities</controllingFieldValue>
+                <valueName>Account Plans</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue># Opportunities</controllingFieldValue>
+                <controllingFieldValue>Opportunity Size $</controllingFieldValue>
+                <valueName>Account Visit</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue># Opportunities</controllingFieldValue>
+                <controllingFieldValue>Opportunity Size $</controllingFieldValue>
+                <valueName>Customer QBR</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue># Opportunities</controllingFieldValue>
+                <valueName>Follow Up On AI Sales Feed</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue># Opportunities</controllingFieldValue>
+                <controllingFieldValue>Opportunity Size $</controllingFieldValue>
+                <valueName>New Product Introduction</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue># Opportunities</controllingFieldValue>
+                <controllingFieldValue>Opportunity Size $</controllingFieldValue>
+                <valueName>Ops Review</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue># Opportunities</controllingFieldValue>
+                <valueName>Outbound Calls</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue># Opportunities</controllingFieldValue>
+                <valueName>Outbound Emails</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue># Opportunities</controllingFieldValue>
+                <controllingFieldValue>Opportunity Size $</controllingFieldValue>
+                <controllingFieldValue>Define</controllingFieldValue>
+                <valueName>Partner Fulfillment</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue># Opportunities</controllingFieldValue>
+                <valueName>Proactive Refresh Research</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue># Opportunities</controllingFieldValue>
+                <controllingFieldValue>Opportunity Size $</controllingFieldValue>
+                <valueName>Roadmap Review</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue># Opportunities</controllingFieldValue>
+                <valueName>Social Selling</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Opportunity Size $</controllingFieldValue>
+                <valueName>Adjacency Selling</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Opportunity Size $</controllingFieldValue>
+                <controllingFieldValue>Win Rate</controllingFieldValue>
+                <controllingFieldValue>Velocity</controllingFieldValue>
+                <valueName>Deal Plan</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Win Rate</controllingFieldValue>
+                <controllingFieldValue>Velocity</controllingFieldValue>
+                <valueName>Business Motivation</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Win Rate</controllingFieldValue>
+                <valueName>Effectively Structure The Deal</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Win Rate</controllingFieldValue>
+                <controllingFieldValue>Velocity</controllingFieldValue>
+                <valueName>Identify Decision Criteria</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Win Rate</controllingFieldValue>
+                <controllingFieldValue>Velocity</controllingFieldValue>
+                <valueName>Identify Decision Maker</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Win Rate</controllingFieldValue>
+                <valueName>Identify Walk Conditions</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Velocity</controllingFieldValue>
+                <valueName>Ask/Manage Customer Commitment</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Velocity</controllingFieldValue>
+                <valueName>Make And Meet Commitments</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Velocity</controllingFieldValue>
+                <valueName>Manage Internal Stakeholders</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Qualify</controllingFieldValue>
+                <valueName>Compelling Reason To Act</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Qualify</controllingFieldValue>
+                <valueName>Confirm &amp; Approved NDA</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Qualify</controllingFieldValue>
+                <valueName>ID Decision Maker</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Define</controllingFieldValue>
+                <valueName>ID Competitor &amp; Positioning</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Define</controllingFieldValue>
+                <valueName>Provide Roadmaps And Case Studies</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Define</controllingFieldValue>
+                <valueName>Samples If Needed</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Develop</controllingFieldValue>
+                <valueName>Demonstrates Technical Feasibility</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Develop</controllingFieldValue>
+                <valueName>ID And Alleviate Risk</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Develop</controllingFieldValue>
+                <valueName>Meet Comp If Needed</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Develop</controllingFieldValue>
+                <valueName>Reconfirming  BANT</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Develop</controllingFieldValue>
+                <valueName>Requires Executive Sponsor</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Develop</controllingFieldValue>
+                <valueName>SME Engaged</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Design</controllingFieldValue>
+                <valueName>POP Documented</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Design</controllingFieldValue>
+                <valueName>Verify Opportunity Details</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Design</controllingFieldValue>
+                <valueName>Deployment schedule confirmed</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Design</controllingFieldValue>
+                <valueName>Ecosystem technical alignment</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Xvoyant__Actual_Value__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Actual Value</label>
+        <precision>10</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Xvoyant__AssessmentCount__c</fullName>
+        <deprecated>false</deprecated>
+        <label>Assessment Count</label>
+        <summaryForeignKey>Xvoyant__Assessment__c.Xvoyant__CoachingGoal__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Xvoyant__Coaching_Category__c</fullName>
+        <deprecated>false</deprecated>
+        <label>Coaching Category (Deprecated)</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Calls</fullName>
+                    <default>false</default>
+                    <label>Calls</label>
+                </value>
+                <value>
+                    <fullName>Opportunity Starts</fullName>
+                    <default>false</default>
+                    <label>Opportunity Starts</label>
+                </value>
+                <value>
+                    <fullName>New Opportunities</fullName>
+                    <default>false</default>
+                    <label>New Opportunities</label>
+                </value>
+                <value>
+                    <fullName>Goals</fullName>
+                    <default>false</default>
+                    <label>Goals</label>
+                </value>
+                <value>
+                    <fullName>Preparation</fullName>
+                    <default>false</default>
+                    <label>Preparation</label>
+                </value>
+                <value>
+                    <fullName>Training</fullName>
+                    <default>false</default>
+                    <label>Training</label>
+                </value>
+                <value>
+                    <fullName>Referrals</fullName>
+                    <default>false</default>
+                    <label>Referrals</label>
+                </value>
+                <value>
+                    <fullName>Pipeline Velocity</fullName>
+                    <default>false</default>
+                    <label>Pipeline Velocity</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Xvoyant__Coaching_Focus_Other__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Coaching Focus Other (Deprecated)</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Xvoyant__Coaching_Focus__c</fullName>
+        <deprecated>false</deprecated>
+        <label>Coaching Focus (Deprecated)</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Prospect Calls</fullName>
+                    <default>false</default>
+                    <label>Prospect Calls</label>
+                </value>
+                <value>
+                    <fullName>Number of Calls</fullName>
+                    <default>false</default>
+                    <label>Number of Calls</label>
+                </value>
+                <value>
+                    <fullName>Number of Opp Starts</fullName>
+                    <default>false</default>
+                    <label>Number of Opp Starts</label>
+                </value>
+                <value>
+                    <fullName>Avg Size of Opp Starts</fullName>
+                    <default>false</default>
+                    <label>Avg Size of Opp Starts</label>
+                </value>
+                <value>
+                    <fullName>Total Dollars Opp Starts</fullName>
+                    <default>false</default>
+                    <label>Total Dollars Opp Starts</label>
+                </value>
+                <value>
+                    <fullName>Overall Production</fullName>
+                    <default>false</default>
+                    <label>Overall Production</label>
+                </value>
+                <value>
+                    <fullName>Behavior</fullName>
+                    <default>false</default>
+                    <label>Behavior</label>
+                </value>
+                <value>
+                    <fullName>Quality</fullName>
+                    <default>false</default>
+                    <label>Quality</label>
+                </value>
+                <value>
+                    <fullName>Training Course</fullName>
+                    <default>false</default>
+                    <label>Training Course</label>
+                </value>
+                <value>
+                    <fullName>Number F2F Calls</fullName>
+                    <default>false</default>
+                    <label>Number F2F Calls</label>
+                </value>
+                <value>
+                    <fullName>Number Other Calls</fullName>
+                    <default>false</default>
+                    <label>Number Other Calls</label>
+                </value>
+                <value>
+                    <fullName>Number Prospect Calls</fullName>
+                    <default>false</default>
+                    <label>Number Prospect Calls</label>
+                </value>
+                <value>
+                    <fullName>Number Joint Calls</fullName>
+                    <default>false</default>
+                    <label>Number Joint Calls</label>
+                </value>
+                <value>
+                    <fullName>Number of New Opps</fullName>
+                    <default>false</default>
+                    <label>Number of New Opps</label>
+                </value>
+                <value>
+                    <fullName>Number of Opps Per Call</fullName>
+                    <default>false</default>
+                    <label>Number of Opps Per Call</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Xvoyant__Comment__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Comment</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Xvoyant__Comment_rich__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Rich text field for coaching goal comments.  Only plaintext is currently supported in the Xvoyant app.</description>
+        <label>Comment_rich</label>
+        <length>10000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Xvoyant__Completion_Date__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The date when the isAchieved field was set to indicate the goal was achieved or not. (Value 1, 0).</description>
+        <label>Completion_Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Xvoyant__Draft__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <label>Draft Status</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Xvoyant__Driver__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Optional: associated driver.</description>
+        <label>Driver</label>
+        <referenceTo>Xvoyant__Driver__c</referenceTo>
+        <relationshipLabel>Coaching Goals</relationshipLabel>
+        <relationshipName>Coaching_Goals</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Xvoyant__Event_Count__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Event Count</label>
+        <precision>10</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Xvoyant__ExcludedIds__c</fullName>
+        <deprecated>false</deprecated>
+        <label>ExcludedIds</label>
+        <length>131072</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Xvoyant__Follow_Up_DateTime__c</fullName>
+        <deprecated>false</deprecated>
+        <label>Follow Up Date/Time</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Xvoyant__Follow_Up_Date_Deprecated__c</fullName>
+        <deprecated>false</deprecated>
+        <label>Follow Up Date (Deprecated)</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Xvoyant__Follow_Up_Date__c</fullName>
+        <deprecated>false</deprecated>
+        <label>Follow Up Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Xvoyant__GoalAcceptedDate__c</fullName>
+        <deprecated>false</deprecated>
+        <label>Goal Accepted Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Xvoyant__GoalCreator__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Who made this an active goal.</description>
+        <label>Goal Creator</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>CoachingGoals</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Xvoyant__GoalDueDate__c</fullName>
+        <deprecated>false</deprecated>
+        <label>Goal Due Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Xvoyant__GoalStartDate__c</fullName>
+        <deprecated>false</deprecated>
+        <label>Goal Start Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Xvoyant__Goal_Month__c</fullName>
+        <defaultValue>0</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Goal Month</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Xvoyant__Goal_Status__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <formula>IF ( AND( Xvoyant__Actual_Value__c = 0,  Xvoyant__Goal_Value__c !=0), &quot;Actual Value Not Set&quot;,
+IF ( Xvoyant__Actual_Value__c - Xvoyant__Goal_Value__c &gt;=0, &quot;Goal Met&quot;,
+&quot;Goal Not Met&quot;
+)
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Goal Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Xvoyant__Goal_Value__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Goal Value</label>
+        <precision>10</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Xvoyant__IncludedIds__c</fullName>
+        <deprecated>false</deprecated>
+        <label>IncludedIds</label>
+        <length>131072</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Xvoyant__IsAchieved__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Goal Achieved</label>
+        <precision>10</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Xvoyant__ManualCloseOut__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <label>Manually closed out</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Xvoyant__OpportunityStage__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Optional: the stage associated with this goal</description>
+        <externalId>false</externalId>
+        <label>OpportunityStage</label>
+        <length>18</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Xvoyant__Opportunity__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>The opportunity associated with this coaching goal.</description>
+        <label>Opportunity</label>
+        <referenceTo>Opportunity</referenceTo>
+        <relationshipLabel>Coaching Goals</relationshipLabel>
+        <relationshipName>Coaching_Goals</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Xvoyant__RasrComponent__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>The activity or skill associated with this goal.</description>
+        <label>RasrComponent</label>
+        <referenceTo>Xvoyant__RasrComponent__c</referenceTo>
+        <relationshipLabel>Coaching Goals</relationshipLabel>
+        <relationshipName>Coaching_Goals</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Xvoyant__Resource__c</fullName>
+        <deprecated>false</deprecated>
+        <label>Resource</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Resource</fullName>
+                    <default>false</default>
+                    <label>Resource</label>
+                </value>
+                <value>
+                    <fullName>r1</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>r1</label>
+                </value>
+                <value>
+                    <fullName>r2</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>r2</label>
+                </value>
+                <value>
+                    <fullName>r3</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>r3</label>
+                </value>
+                <value>
+                    <fullName>r4</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>r4</label>
+                </value>
+                <value>
+                    <fullName>r5</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>r5</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Xvoyant__Skill__c</fullName>
+        <deprecated>false</deprecated>
+        <label>Skill</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>Xvoyant__Stage_Driver__c</controllingField>
+            <restricted>true</restricted>
+            <valueSetName>Xvoyant__Skills</valueSetName>
+            <valueSettings>
+                <controllingFieldValue># Opportunities</controllingFieldValue>
+                <controllingFieldValue>Opportunity Size $</controllingFieldValue>
+                <controllingFieldValue>Win Rate</controllingFieldValue>
+                <controllingFieldValue>Velocity</controllingFieldValue>
+                <valueName>Skill</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue># Opportunities</controllingFieldValue>
+                <controllingFieldValue>Opportunity Size $</controllingFieldValue>
+                <controllingFieldValue>Win Rate</controllingFieldValue>
+                <controllingFieldValue>Velocity</controllingFieldValue>
+                <valueName>Business Acumen</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue># Opportunities</controllingFieldValue>
+                <controllingFieldValue>Opportunity Size $</controllingFieldValue>
+                <controllingFieldValue>Win Rate</controllingFieldValue>
+                <controllingFieldValue>Velocity</controllingFieldValue>
+                <valueName>Communications Excellence</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue># Opportunities</controllingFieldValue>
+                <valueName>Executive Presence</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue># Opportunities</controllingFieldValue>
+                <controllingFieldValue>Opportunity Size $</controllingFieldValue>
+                <controllingFieldValue>Win Rate</controllingFieldValue>
+                <controllingFieldValue>Velocity</controllingFieldValue>
+                <controllingFieldValue>Qualify</controllingFieldValue>
+                <controllingFieldValue>Define</controllingFieldValue>
+                <valueName>Listening Skills</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue># Opportunities</controllingFieldValue>
+                <valueName>Networking</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue># Opportunities</controllingFieldValue>
+                <controllingFieldValue>Opportunity Size $</controllingFieldValue>
+                <controllingFieldValue>Win Rate</controllingFieldValue>
+                <valueName>Presentation Skills</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue># Opportunities</controllingFieldValue>
+                <controllingFieldValue>Opportunity Size $</controllingFieldValue>
+                <controllingFieldValue>Win Rate</controllingFieldValue>
+                <controllingFieldValue>Velocity</controllingFieldValue>
+                <controllingFieldValue>Define</controllingFieldValue>
+                <valueName>Product Knowledge</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue># Opportunities</controllingFieldValue>
+                <controllingFieldValue>Opportunity Size $</controllingFieldValue>
+                <controllingFieldValue>Win Rate</controllingFieldValue>
+                <controllingFieldValue>Velocity</controllingFieldValue>
+                <controllingFieldValue>Qualify</controllingFieldValue>
+                <controllingFieldValue>Define</controllingFieldValue>
+                <controllingFieldValue>Develop</controllingFieldValue>
+                <controllingFieldValue>Design</controllingFieldValue>
+                <valueName>Salesforce Hygiene</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue># Opportunities</controllingFieldValue>
+                <controllingFieldValue>Opportunity Size $</controllingFieldValue>
+                <controllingFieldValue>Win Rate</controllingFieldValue>
+                <controllingFieldValue>Velocity</controllingFieldValue>
+                <valueName>Technical Acumen</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue># Opportunities</controllingFieldValue>
+                <controllingFieldValue>Opportunity Size $</controllingFieldValue>
+                <controllingFieldValue>Win Rate</controllingFieldValue>
+                <controllingFieldValue>Velocity</controllingFieldValue>
+                <valueName>Time Management</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue># Opportunities</controllingFieldValue>
+                <valueName>Tool Proficiency</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Opportunity Size $</controllingFieldValue>
+                <controllingFieldValue>Win Rate</controllingFieldValue>
+                <controllingFieldValue>Velocity</controllingFieldValue>
+                <valueName>Anticipate/Mitigate Objections</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Win Rate</controllingFieldValue>
+                <controllingFieldValue>Velocity</controllingFieldValue>
+                <valueName>Ask For The Business</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Win Rate</controllingFieldValue>
+                <controllingFieldValue>Velocity</controllingFieldValue>
+                <controllingFieldValue>Develop</controllingFieldValue>
+                <controllingFieldValue>Design</controllingFieldValue>
+                <valueName>Creative Problem Solving</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Velocity</controllingFieldValue>
+                <valueName>Understanding Ecosystem Options</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Qualify</controllingFieldValue>
+                <controllingFieldValue>Develop</controllingFieldValue>
+                <valueName>Articulate The Value Proposition</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Qualify</controllingFieldValue>
+                <valueName>Ask The Right Questions</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Qualify</controllingFieldValue>
+                <controllingFieldValue>Define</controllingFieldValue>
+                <valueName>Overcome Objections</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Define</controllingFieldValue>
+                <valueName>Building Trust</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Define</controllingFieldValue>
+                <valueName>Identify Needs</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Define</controllingFieldValue>
+                <valueName>Risk Mitigation</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Develop</controllingFieldValue>
+                <controllingFieldValue>Design</controllingFieldValue>
+                <valueName>Disciplined Follow Up Process</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Develop</controllingFieldValue>
+                <controllingFieldValue>Design</controllingFieldValue>
+                <valueName>Manage Customer Expectations/Timing</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Develop</controllingFieldValue>
+                <valueName>Market Knowledge</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Develop</controllingFieldValue>
+                <controllingFieldValue>Design</controllingFieldValue>
+                <valueName>Negotiation Skills</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Develop</controllingFieldValue>
+                <valueName>Planning &amp; Preparation</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Develop</controllingFieldValue>
+                <controllingFieldValue>Design</controllingFieldValue>
+                <valueName>Program Management</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Develop</controllingFieldValue>
+                <controllingFieldValue>Design</controllingFieldValue>
+                <valueName>Working With Business Partners</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Xvoyant__Stage_Driver__c</fullName>
+        <deprecated>false</deprecated>
+        <label>Stage/Driver</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Xvoyant__StageDriver</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Xvoyant__Willingness_To_Change__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <formula>0</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Willingness To Change</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Xvoyant__acceptedBy__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>acceptedBy</label>
+        <length>18</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Coaching Goal</label>
+    <listViews>
+        <fullName>Xvoyant__All</fullName>
+        <columns>NAME</columns>
+        <columns>OWNER.ALIAS</columns>
+        <columns>Xvoyant__Goal_Value__c</columns>
+        <columns>Xvoyant__Actual_Value__c</columns>
+        <columns>Xvoyant__Willingness_To_Change__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>Xvoyant__All1</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <label>Coaching Goal Name</label>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Coaching Goals</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>Xvoyant__Goal_Value__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Xvoyant__Actual_Value__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Xvoyant__Willingness_To_Change__c</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>Xvoyant__Goal_Value__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Xvoyant__Actual_Value__c</lookupDialogsAdditionalFields>
+        <searchResultsAdditionalFields>Xvoyant__Goal_Value__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Xvoyant__Actual_Value__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>Private</sharingModel>
+    <validationRules>
+        <fullName>Xvoyant__Coaching_Focus_Other</fullName>
+        <active>true</active>
+        <description>Makes the Coaching Focus Other field required when &quot;Other&quot; is selected as Coaching Focus</description>
+        <errorConditionFormula>And(
+ISBLANK( Xvoyant__Coaching_Focus_Other__c ),
+ISPICKVAL( Xvoyant__Coaching_Focus__c, &quot;Other&quot;)
+)</errorConditionFormula>
+        <errorDisplayField>Xvoyant__Coaching_Focus_Other__c</errorDisplayField>
+        <errorMessage>This is a required field</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Xvoyant__Follow_Up_Date_in_Future</fullName>
+        <active>true</active>
+        <description>Requires the Follow Up Date to be in the future</description>
+        <errorConditionFormula>AND( ISNEW(),
+ Xvoyant__Follow_Up_DateTime__c &lt;= now()
+)</errorConditionFormula>
+        <errorDisplayField>Xvoyant__Follow_Up_DateTime__c</errorDisplayField>
+        <errorMessage>A future date needs to be selected</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Xvoyant__Valid_Goal_Month</fullName>
+        <active>true</active>
+        <errorConditionFormula>Xvoyant__Goal_Month__c &lt; 0 || Xvoyant__Goal_Month__c &gt; 11</errorConditionFormula>
+        <errorMessage>Month must be between 0 and 11.</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+</CustomObject>

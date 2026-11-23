@@ -4,41 +4,21 @@
     <encodingKey>UTF-8</encodingKey>
     <name>SCRUACCTADD_English</name>
     <style>none</style>
-    <subject>Action Required to Complete Your Intel® Partner Alliance Registration</subject>
-    <textOnly>Get Started Today
+    <subject>Final step required for your application to Intel’s Partner program</subject>
+    <textOnly>{!Contact.FirstName},
 
-Click to join¹→
+Your company administrator or an Intel representative has added you to the Intel Partner program account for {!Contact.Core_Account_Name__c}. To activate your account and start enjoying your benefits, please review your information and complete the legal requirements section.
 
-¹Enter your email address and then &apos;Continue&apos;, do not choose &apos;Create an Account&apos;
+Please also save your log-in information for future reference:
 
-Dear: {!Contact.FirstName}  {!Contact.LastName} ({!Contact.Email}):
-Note: Your email address is your username
+User Name: {!Contact.Name}
+Email Address: {!Contact.Email}
+Company Name: {!Contact.Core_Account_Name__c}
+Business ID: {!Contact.Core_Account_Number__c}
+Your password should be protected as confidential. The use of this password on Intel&apos;s websites is governed by Intel&apos;s Terms and Conditions of Use linked from the bottom of each respective site&apos;s web pages.
 
-When you join Intel® Partner Alliance, you will receive access to advanced training, developer resources, marketing and sales tools and support by providing instant access to:
-
-Thought leadership from Intel® and industry experts transforming businesses with technology, strategies, and best practices
-Sales and technology training for all levels to showcase expertise
-Regular webinars with technology leaders and Tech Talks with Intel® Solution Architects
-Forums to participate in discussions centered on innovation, business and technology opportunities
-Access to a robust network of ecosystem partners and cloud system architects
-
-Become a part of our growing partner ecosystem.
-
-Take a few moments to complete your registration and get started today.
-
-Click to join¹→
-
-¹Enter your email address and then &apos;Continue&apos;, do not choose &apos;Create an Account&apos;
-
-Please click here to read about Intel&apos;s new login process.
-
-Need help signing up to be a partner?
-Contact support
-
-© {!$Label.PRM_CurrentYear} Intel Corporation
-Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
-
-Privacy | Cookies | *Trademarks | Unsubscribe</textOnly>
+Complete Now
+Questions? Contact Support here</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

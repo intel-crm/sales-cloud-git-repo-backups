@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>UCD Account DQ Specific Field</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>UCD Account DQ Specific Fields</value>
+    </caseValues>
+    <fields>
+        <label><!-- accountType --></label>
+        <name>accountType__c</name>
+        <picklistValues>
+            <masterLabel>a&amp;e</masterLabel>
+            <translation><!-- a&amp;e --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ipa</masterLabel>
+            <translation><!-- ipa --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>psg</masterLabel>
+            <translation><!-- psg --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- fieldAPIName --></label>
+        <name>fieldAPIName__c</name>
+    </fields>
+    <fields>
+        <label><!-- fieldType --></label>
+        <name>fieldType__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

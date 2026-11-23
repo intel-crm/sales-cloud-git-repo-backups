@@ -13,7 +13,7 @@
             <operation>notEqual</operation>
             <value>NULL</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>CPT_Quota_Period_User</fullName>
@@ -23,17 +23,16 @@
         <sharedTo>
             <group>CPT_PG_Commission_User</group>
         </sharedTo>
-        <booleanFilter>1 AND 2</booleanFilter>
         <criteriaItems>
             <field>CreatedById</field>
             <operation>notEqual</operation>
             <value>NULL</value>
         </criteriaItems>
         <criteriaItems>
-            <field>CPT_Quota_Period__c</field>
-            <operation>notEqual</operation>
-            <value>Archived</value>
+            <field>CPT_Inactive__c</field>
+            <operation>equals</operation>
+            <value>False</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
 </SharingRules>

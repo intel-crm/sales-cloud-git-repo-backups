@@ -1,6 +1,6 @@
 import { LightningElement,track,api,wire } from 'lwc';
 export default class Sales_FreeLicenseParent extends LightningElement {
-    /*@api comp1;
+    @api comp1;
     @api comp2;
     comp3;
     @api productId;
@@ -59,5 +59,5 @@ export default class Sales_FreeLicenseParent extends LightningElement {
       this.comp2 = false;
       this.comp3 = true;
       console.log('handleLicense ' +this.licenseFullURL);
-    }*/
+    }
 }

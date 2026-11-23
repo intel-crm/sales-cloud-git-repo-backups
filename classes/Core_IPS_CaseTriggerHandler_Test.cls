@@ -14,9 +14,8 @@ Modification Log :
 * Syed Moosa Nazir TN       11/06/2015                 Created
 * Deepak Jetty              25/01/2016                 Modified
 * Ganapati                  29/07/2019                 Modified for - US404375 - Technical: Test Classes are failing in Production 
-* //System.assert()--> statement Added By Hassan Khan 02-02-2024
 ****************************************************************************************************/   
-@isTest
+@isTest(seealldata=false)
 public class Core_IPS_CaseTriggerHandler_Test{
     //Instance variables that are commonly used in multiple test methods
     static List<User> listOfUser = new List<User> ();
@@ -24,15 +23,6 @@ public class Core_IPS_CaseTriggerHandler_Test{
     static Core_IPS_Product_Issue_Category__c caseCat = new Core_IPS_Product_Issue_Category__c();
     static  Core_IPS_Product_Issue_Category__c subCategory = new Core_IPS_Product_Issue_Category__c();
     public static Id slaprocessId = [Select Id, Name, NameNorm, IsActive, VersionNumber from SlaProcess Where Name = 'IPS Standard SLA Entitlement' and IsActive=true].Id;
-
-    private static void insertUsersWithValidationBypass(List<User> users) {
-        User validationBypassUser = [SELECT Id FROM User WHERE Profile.Name = :System.Label.Core_System_Admin_Profile_Name AND IsActive = true LIMIT 1];
-        System.runAs(validationBypassUser) {
-            insert users;
-        }
-    }
-    
-    
     /***************************************************************************************************
 Method Name:  getRecords()
 Method Type: void
@@ -57,7 +47,7 @@ Modification Log :
         for(User usr : listOfUser){
             usr.ProfileID =  profiles.get('System Administrator');
         }
-        insertUsersWithValidationBypass(listOfUser);
+        insert listOfUser;
         System.assertEquals(listOfUser.get(0).profileid, profiles.get('System Administrator'), 'System Admin');
         System.runAs(listOfUser.get(0)){
             //Create Group
@@ -86,25 +76,15 @@ Modification Log :
             labels1.name= 'IPS_Case_Status_Investigating';
             labels1.value__c='Investigating';
             lablesList.add(labels1);
-            string gecRTypeId = [SELECT id from RecordType where Name ='IPS GEC ReadOnly'].Id;
+           string gecRTypeId = [SELECT id from RecordType where Name ='IPS GEC ReadOnly'].Id;
             Core_IPS_Labels__c labels2 = new Core_IPS_Labels__c();
             labels2.name= 'GEC Record Type Id';
             labels2.value__c=gecRTypeId;
             lablesList.add(labels2);
             Core_IPS_Labels__c labels3 = new Core_IPS_Labels__c(Name = 'GEC_Status_Approved_WithG',Value__c = 'Approved with Guardrails');
             lablesList.add(labels3);
-            // Avoid Hardcoding Id Fix - Start - Shipra
-            Core_ERPM_Engagement__c cee=new Core_ERPM_Engagement__c(Name  ='Partner File Transfer', Core_Engagement_Type__c='SEC',Core_IsActive__c=true,Core_Technical_Engagement_Code__c='PFT',Core_Technical_DeDup_Number__c='B2B');
-            insert cee;
-            Core_Entitlement__c entitle=new Core_Entitlement__c (name ='Advanced Shipment and Invoice Notification', Core_Category__c='Order Management',Core_Sub_Category__c='Web Reporting',Core_Help_Text__c='Help text',Core_ERPM_Engagement_Id__c=cee.id,Core_Display_Name__c='test dup',Core_IsActive__c=true);
-            insert entitle;
-            Core_IPS_Labels__c labels4 = new Core_IPS_Labels__c(Name = 'SelfAssignedCaseEntitlementId',Value__c = entitle.Id);
-             // Core_IPS_Labels__c labels4 = new Core_IPS_Labels__c(Name = 'SelfAssignedCaseEntitlementId',Value__c = '550o0000000B51vAAC');
+            Core_IPS_Labels__c labels4 = new Core_IPS_Labels__c(Name = 'SelfAssignedCaseEntitlementId',Value__c = '550o0000000B51vAAC');
             lablesList.add(labels4);
-          // Avoid Hardcoding Id Fix - End - Shipra
-            // change added by chiru - code refactor - embargo country label
-            Core_IPS_Labels__c labelVal = new Core_IPS_Labels__c(Name = 'Core_IPS_EmbargoedCountryList',Value__c = 'USA,INDIA');
-            lablesList.add(labelVal);
             insert lablesList;
             
             Core_IPS_Labels__c slaprocessLabel = [SELECT Id, Name, value__c FROM Core_IPS_Labels__c WHERE Name = 'IPS Standard Entitlement Process ID' LIMIT 1];
@@ -139,7 +119,6 @@ Modification Log :
             insert listOftriggerExecutions;
             System.assert(listOftriggerExecutions[0].Id != null, 'Records not created');
             
-            
         }
     }
     
@@ -159,21 +138,20 @@ Modification Log :
         final String GROUP_NAME_TEXT = 'ORG_1';
         
         Map<String,Group> mapGroupByName = new Map<String,Group>();
-        List<Group> groupNames = [Select Id, Name, DeveloperName  from Group limit 1];
-        Core_IPS_CaseTriggerHandler.loadGroupByName(groupNames, mapGroupByName);
+        
+        Core_IPS_CaseTriggerHandler.loadGroupByName(NULL, mapGroupByName);
         
         mapGroupByName.put(GROUP_NAME_TEXT, new Group());    
-        //  Core_IPS_CaseTriggerHandler.loadGroupByName(NULL, NULL);
-        // Core_IPS_CaseTriggerHandler.loadGroupByName(NULL, mapGroupByName);
-        //Changes Made By Chiru - Code Refactor
-        Core_IPS_CaseTriggerHandler.loadGroupByName(groupNames, mapGroupByName);        
+        Core_IPS_CaseTriggerHandler.loadGroupByName(NULL, NULL);
+        Core_IPS_CaseTriggerHandler.loadGroupByName(NULL, mapGroupByName);
+        Core_IPS_CaseTriggerHandler.loadGroupByName(GROUP_NAME_TEXT, mapGroupByName);        
         
         Group simpleGroup = new Group(Name=GROUP_NAME_TEXT, DeveloperName=GROUP_NAME_TEXT);
         insert simpleGroup;
         System.assertEquals(simpleGroup!=null, true, 'Group Inserted');
         
         mapGroupByName.clear();
-        Core_IPS_CaseTriggerHandler.loadGroupByName(groupNames, mapGroupByName);        
+        Core_IPS_CaseTriggerHandler.loadGroupByName(GROUP_NAME_TEXT, mapGroupByName);        
         
     }
     
@@ -204,7 +182,6 @@ Modification Log :
             for(Contact contactRec : listOfContacts){
                 contactRec.Core_IPS_Intel_Support_Owner__c = intelSupportOwner;
                 contactRec.Accountid = listOfAccounts.get(0).Id;
-                contactRec.MailingCountry = 'India';
             }
             insert listOfContacts;
             System.assert(listOfContacts[0].Id != null, 'Record not created');
@@ -215,8 +192,6 @@ Modification Log :
                 asst.Contactid = listOfContacts.get(0).id;
             }
             insert assetList;
-            Core_IPS_CaseCreateHelper cls = new Core_IPS_CaseCreateHelper();
-            cls.getProductVariant(assetList[0].product2Id);
             System.assert(assetList[0].Id != null, 'Record not created');
             // Create Entitlement
             List<Entitlement> listOfEntitlement = TestUtilities.getListOfEntitlement(1);
@@ -251,6 +226,7 @@ queueXBizHours.Queue_ID__c = grp.Id;
 queueXBizHours.Queue_Name__c = grp.Name;
 //insert Queue Business Hours
 insert queueXBizHours;
+
 insert listOfCases;
 System.assert(listOfCases[0].Id != null, 'Record not created');
 update listOfCases;
@@ -279,71 +255,71 @@ Modification Log :
 * Syed Moosa Nazir TN       11/06/2015                Created
 * Deepak Jetty              25/01/2016                Modified
 ****************************************************************************************************/
-    /* static testmethod void assignEntitlementToCaseWithoutEntConTest(){
-getRecords();
-// Get intelSupportOwner Id (User Id)
-Id intelSupportOwner = listOfUser.get(0).id;
-System.runAs(listOfUser.get(1)){
-// Create Accounts
-List<Account> listOfAccounts = TestUtilities.getListOfAccounts(1);
-insert listOfAccounts;
-System.assert(listOfAccounts[0].Id != null, 'Record not created');
-// Create Contact
-List<Contact> listOfContacts = TestUtilities.getListOfContact(1);
-for(Contact contactRec : listOfContacts){
-contactRec.Core_IPS_Intel_Support_Owner__c = intelSupportOwner;
-contactRec.Accountid = listOfAccounts.get(0).Id;
-}
-insert listOfContacts;
-System.assert(listOfContacts[0].Id != null, 'Record not created');
-// Create Asset
-list<Asset> assetList = TestUtilities.getAssetList(1);
-for(Asset asst : assetList){
-asst.accountId = listOfAccounts.get(0).Id;
-asst.Contactid = listOfContacts.get(0).id;
-}
-insert assetList;
-System.assert(assetList[0].Id != null, 'Record not created');
-// Create Entitlement
-List<Entitlement> listOfEntitlement = TestUtilities.getListOfEntitlement(1);
-for(Entitlement entitlementRec : listOfEntitlement){
-entitlementRec.AccountId = listOfAccounts.get(0).Id;
-entitlementRec.AssetId = assetList.get(0).id;
-}
-insert listOfEntitlement;
-System.assert(listOfEntitlement[0].Id != null, 'Record not created');
-// Create Case
-List<Case> listOfCases = TestUtilities.getListOfCases(10);
-for(Case caseRec : listOfCases){
-caseRec.ContactId = listOfContacts.get(0).id;
-caseRec.accountId = listOfAccounts.get(0).Id;
-}
-//get Business Hours
-List<BusinessHours> bhs=[select id from BusinessHours where IsDefault=true];
-//Create Queue Business Hours
-Core_IPS_Q_Biz_hours_mapping__c queueXBizHours = TestUtilities.getQueueXBizHours();
-queueXBizHours.Business_Hours_ID__c = bhs.get(0).id;
-queueXBizHours.Business_Hours_Name__c = 'Ashok_Test';
-queueXBizHours.Queue_ID__c = grp.Id;
-queueXBizHours.Queue_Name__c = grp.Name;
-//insert Queue Business Hours
-insert queueXBizHours;
-Test.startTest();
-insert listOfCases;
-System.assert(listOfCases[0].Id != null, 'Record not created');
-update listOfCases;
-List<Case> listOfCase = [select id from case where id IN: listOfCases];
-System.assert(listOfCase[0].id != null, 'Record not updated');
-delete                                                       ;
-List<Case> listOfCaseDelete = [select id from case where id IN: listOfCase];
-System.assert(listOfCaseDelete.isEmpty(), 'Record not deleted');
-//Sneha
-//undelete listOfCase;
-//List<Case> listOfCaseUnDelete = [select id from case where id IN: listOfCase];
-//System.assert(listOfCase[0].id != null, 'Record not Undeleted');
-Test.stopTest();
-}
-}*/
+   /* static testmethod void assignEntitlementToCaseWithoutEntConTest(){
+        getRecords();
+        // Get intelSupportOwner Id (User Id)
+        Id intelSupportOwner = listOfUser.get(0).id;
+        System.runAs(listOfUser.get(1)){
+            // Create Accounts
+            List<Account> listOfAccounts = TestUtilities.getListOfAccounts(1);
+            insert listOfAccounts;
+            System.assert(listOfAccounts[0].Id != null, 'Record not created');
+            // Create Contact
+            List<Contact> listOfContacts = TestUtilities.getListOfContact(1);
+            for(Contact contactRec : listOfContacts){
+                contactRec.Core_IPS_Intel_Support_Owner__c = intelSupportOwner;
+                contactRec.Accountid = listOfAccounts.get(0).Id;
+            }
+            insert listOfContacts;
+            System.assert(listOfContacts[0].Id != null, 'Record not created');
+            // Create Asset
+            list<Asset> assetList = TestUtilities.getAssetList(1);
+            for(Asset asst : assetList){
+                asst.accountId = listOfAccounts.get(0).Id;
+                asst.Contactid = listOfContacts.get(0).id;
+            }
+            insert assetList;
+            System.assert(assetList[0].Id != null, 'Record not created');
+            // Create Entitlement
+            List<Entitlement> listOfEntitlement = TestUtilities.getListOfEntitlement(1);
+            for(Entitlement entitlementRec : listOfEntitlement){
+                entitlementRec.AccountId = listOfAccounts.get(0).Id;
+                entitlementRec.AssetId = assetList.get(0).id;
+            }
+            insert listOfEntitlement;
+            System.assert(listOfEntitlement[0].Id != null, 'Record not created');
+            // Create Case
+            List<Case> listOfCases = TestUtilities.getListOfCases(10);
+            for(Case caseRec : listOfCases){
+                caseRec.ContactId = listOfContacts.get(0).id;
+                caseRec.accountId = listOfAccounts.get(0).Id;
+            }
+            //get Business Hours
+            List<BusinessHours> bhs=[select id from BusinessHours where IsDefault=true];
+            //Create Queue Business Hours
+            Core_IPS_Q_Biz_hours_mapping__c queueXBizHours = TestUtilities.getQueueXBizHours();
+            queueXBizHours.Business_Hours_ID__c = bhs.get(0).id;
+            queueXBizHours.Business_Hours_Name__c = 'Ashok_Test';
+            queueXBizHours.Queue_ID__c = grp.Id;
+            queueXBizHours.Queue_Name__c = grp.Name;
+            //insert Queue Business Hours
+            insert queueXBizHours;
+            Test.startTest();
+            insert listOfCases;
+            System.assert(listOfCases[0].Id != null, 'Record not created');
+            update listOfCases;
+            List<Case> listOfCase = [select id from case where id IN: listOfCases];
+            System.assert(listOfCase[0].id != null, 'Record not updated');
+            delete                                                       ;
+            List<Case> listOfCaseDelete = [select id from case where id IN: listOfCase];
+            System.assert(listOfCaseDelete.isEmpty(), 'Record not deleted');
+            //Sneha
+            //undelete listOfCase;
+            //List<Case> listOfCaseUnDelete = [select id from case where id IN: listOfCase];
+            //System.assert(listOfCase[0].id != null, 'Record not Undeleted');
+            Test.stopTest();
+        }
+    }*/
     
     /***************************************************************************************************
 Method Name:  assignEntitlementToCase_NegativeTest
@@ -371,7 +347,6 @@ Modification Log :
             for(Contact contactRec : listOfContacts){
                 contactRec.Core_IPS_Intel_Support_Owner__c = intelSupportOwner;
                 contactRec.Accountid = listOfAccounts.get(0).Id;
-                contactRec.MailingCountry = 'India';
             }
             insert listOfContacts;
             System.assert(listOfContacts[0].Id != null, 'Record not created');
@@ -414,6 +389,7 @@ for(Case caseRec : listOfCases){
 caseRec.ContactId = listOfContacts.get(0).id;
 caseRec.accountId = listOfAccounts.get(0).Id;
 }
+
 insert listOfCases;
 System.assert(listOfCases[0].Id != null, 'Record not created');
 update listOfCases;
@@ -422,6 +398,7 @@ System.assert(listOfCase[0].id != null, 'Record not updated');
 delete listOfCase;
 List<Case> listOfCaseDelete = [select id from case where id IN: listOfCase];
 System.assert(listOfCaseDelete.isEmpty(), 'Record not deleted');
+
 //undelete listOfCase;
 //List<Case> listOfCaseUnDelete = [select id from case where id IN: listOfCase];
 //System.assert(listOfCase[0].id != null, 'Record not Undeleted'); */
@@ -429,6 +406,271 @@ System.assert(listOfCaseDelete.isEmpty(), 'Record not deleted');
         }
     } 
     
+    /***************************************************************************************************
+Method Name:  assignCaseInformation_Test
+Method Type: Test Method
+Version     : 1.0 
+Created Date: 06 Nov 2015
+Description:  Testing "assignCaseInformation" method. "assignCaseInformation" method invokes "getCaseInformationByAssetOrSuppProd" method. And hence "getCaseInformationByAssetOrSuppProd" method is also covered in this test class.
+Scenario Type:  Positive
+Modification Log :
+* Developer                   Date                   Description
+* ----------------------------------------------------------------------------                 
+* Syed Moosa Nazir TN       11/06/2015                Created
+* Deepak Jetty              25/01/2016                Modified
+***************************************************************************************************/
+    static testmethod void assignCaseInformationTest(){
+        
+        getRecords();
+        // Get intelSupportOwner Id (User Id)
+        Id intelSupportOwner = listOfUser.get(0).id;
+        System.runAs(listOfUser.get(1)){ 
+            // Create Accounts
+            List<Account> listOfAccounts = TestUtilities.getListOfAccounts(2);
+            for(Account acc: listOfAccounts){
+                acc.Core_CNDA_Number__c='123';
+            }
+            insert listOfAccounts;
+            System.assert(listOfAccounts[0].Id != null, 'Record not created');
+            // Create Contact
+            List<Contact> listOfContacts = TestUtilities.getListOfContact(1);
+            for(Contact contactRec : listOfContacts){
+                contactRec.Core_IPS_Intel_Support_Owner__c = intelSupportOwner;
+                contactRec.core_ips_Active__c=true;
+                contactRec.Accountid = listOfAccounts.get(0).Id;
+            }
+            insert listOfContacts;
+            System.assert(listOfContacts[0].Id != null, 'Record not created');
+            
+            //Insert Custom Setting
+            Core_IPS_Labels__c setting = new Core_IPS_Labels__c();
+            List<RecordType> settingID = [SELECT Id, Name, DeveloperName, Description, SobjectType FROM RecordType where SobjectType  ='Case' AND Name = 'IPS GEC ReadOnly' Limit 1];
+            setting.Name = 'GEC Record Type Id';
+            setting.Value__c = settingID[0].id;
+            insert setting;
+            
+            // Create Support Org
+            List<Core_IPS_Product_Organization__c> listOfSupportOrg  = TestUtilities.getListOfSupportOrg(2);
+            insert listOfSupportOrg;
+            System.assert(listOfSupportOrg != null, 'Record not created');
+            integer counter = 0;
+            // Create Product
+            List<Product2> listOfProducts = TestUtilities.getListOfProduct(2);
+            for(Product2 product : listOfProducts){
+                if(counter==0){
+                    product.Core_Hierarchy_ID__c = '43';
+                    product.Core_Hierarchy_Name__c = 'ProdHierarchyName';
+                    product.Core_Unique_ID__c = 'product12345';
+                    product.Core_Code_Name__c = 'ProductCoreCodeName';
+                }else{
+                    product.Core_Hierarchy_ID__c = '59';
+                    product.Core_Hierarchy_Name__c = 'ProdHierarchyName59';
+                    product.Core_Unique_ID__c = 'Product59';
+                    product.Core_Code_Name__c = 'ProductCoreCodeName59';
+                    
+                }
+                counter++;
+            }
+            insert listOfProducts;
+            
+            System.assert(listOfProducts[0].id != null,'Record not created');
+            counter = 0;
+            // Create Supported product
+            List<Core_IPS_Supported_Product__c> listOfSupportedProduct = TestUtilities.getListOfSupportedProduct(2);
+            for(Core_IPS_Supported_Product__c supportedProduct : listOfSupportedProduct){
+                if(counter==0){
+                    supportedProduct.Core_Product__c = listOfProducts.get(0).id;
+                    supportedProduct.Core_Product_Organization__c = listOfSupportOrg.get(0).id;
+                }else{
+                    supportedProduct.Core_Product__c = listOfProducts.get(1).id;
+                    supportedProduct.Core_Product_Organization__c = listOfSupportOrg.get(1).id;
+                }
+                counter++;
+            }
+            
+            insert listOfSupportedProduct;
+            System.assert(listOfSupportedProduct[0].id != null,'Record not created');
+            counter = 0;
+            // Create Flat Product Hierarchy
+            List<Core_Flat_Product_Hierarchy__c> listOfFlatProductHierarchy = TestUtilities.getListOfFlatProductHierarchy(10);
+            for(Core_Flat_Product_Hierarchy__c flatProductHierarchy : listOfFlatProductHierarchy){
+                if(counter < 5){
+                    flatProductHierarchy.Core_EPM_Hierarchy_ID__c = listOfProducts.get(0).Core_Hierarchy_ID__c;
+                    flatProductHierarchy.Core_EPM_Hierarchy_Name__c = listOfProducts.get(0).Core_Hierarchy_Name__c;
+                    flatProductHierarchy.Core_L5_EPM_ID__c = listOfProducts.get(0).Core_Unique_ID__c;
+                }
+                else{
+                    flatProductHierarchy.Core_EPM_Hierarchy_ID__c = listOfProducts.get(1).Core_Hierarchy_ID__c;
+                    flatProductHierarchy.Core_EPM_Hierarchy_Name__c = listOfProducts.get(1).Core_Hierarchy_Name__c;
+                    flatProductHierarchy.Core_L4_EPM_ID__c = listOfProducts.get(1).Core_Unique_ID__c;
+                }
+                counter++;
+            }
+            
+            insert listOfFlatProductHierarchy;
+            System.assert(listOfFlatProductHierarchy[0].id != null,'Record not created');
+            counter = 0;
+            // Create Asset
+            list<Asset> assetList = TestUtilities.getAssetList(2);
+            for(Asset asst : assetList){
+                asst.accountId = listOfAccounts.get(0).Id;
+                asst.Contactid = listOfContacts.get(0).id;
+                if(counter==0){
+                    asst.core_product_organization__c = listOfSupportOrg.get(0).id;
+                    asst.core_supported_product__c = listOfSupportedProduct.get(0).id;
+                    asst.product2Id = listOfProducts.get(0).id;
+                }else{
+                    asst.core_product_organization__c = listOfSupportOrg.get(1).id;
+                    asst.core_supported_product__c = listOfSupportedProduct.get(1).id;
+                    asst.product2Id = listOfProducts.get(1).id;
+                }
+                counter++;
+            }
+            insert assetList;
+            System.assert(assetList[0].Id != null, 'Record not created');
+            counter = 0;
+            // Create Ips Project
+            List<Core_IPS_Project__c> listOfIpsProjects = TestUtilities.getListOfIpsProjects(2);
+            
+            insert listOfIpsProjects;
+            System.assert(listOfIpsProjects[0].Id != null, 'Record not created');
+            // Create Ips Account
+            Counter=0;
+            List<Core_IPS_Account__c> listOfIpsAccounts = TestUtilities.getListOfIpsAccounts(2);
+            for(Core_IPS_Account__c ipsAcc : listOfIpsAccounts){
+                if(counter<1){
+                    ipsAcc.Core_Account__c = listOfAccounts.get(0).Id;
+                    ipsAcc.Core_IPS_Project__c = listOfIpsProjects.get(0).Id;
+                } else {
+                    ipsAcc.Core_Account__c = listOfAccounts.get(0).Id;
+                    ipsAcc.Core_IPS_Project__c = listOfIpsProjects.get(1).Id;
+                }
+                counter++;
+            }
+            counter = 0;
+            
+            insert listOfIpsAccounts;
+            System.assert(listOfIpsAccounts[0].Id != null, 'Record not created');
+            // Create Project Member
+            List<Core_IPS_Project_Member__c> listOfProjectMembers = TestUtilities.getListOfProjectMembers(5);
+            for(Core_IPS_Project_Member__c projMem : listOfProjectMembers){
+                If(counter<3){
+                    projMem.Core_IPS_Contact__c = listOfContacts.get(0).Id;
+                    projMem.Core_IPS_Project__c = listOfIpsProjects.get(0).Id;
+                    projMem.Core_User__c = intelSupportOwner;
+                }else{
+                    projMem.Core_IPS_Contact__c = listOfContacts.get(0).Id;
+                    projMem.Core_IPS_Project__c = listOfIpsProjects.get(1).Id;
+                    projMem.Core_User__c = intelSupportOwner;
+                }
+                
+            }
+            insert listOfProjectMembers;
+            
+            System.assert(listOfProjectMembers[0].Id != null, 'Record not created');
+            // Create Case
+            counter=0;
+            //Id ipsRecordTypeId = Schema.SObjectType.Case.getRecordTypeInfosByName().get('IPS Case Create').getRecordTypeId();
+            
+            List<Case> listOfCases = TestUtilities.getListOfCases(5);
+            
+            for(Case caseRec : listOfCases){
+                //caseRec.recordtypeid =ipsRecordTypeId;
+                caseRec.ContactId = listOfContacts.get(0).id;
+                caseRec.accountId = listOfAccounts.get(0).Id;
+                caseRec.Core_Issue_Description__c ='testing cases ';
+                caseRec.Description='testing cases';
+                caseRec.status='closed';
+                caseRec.Core_IPS_Is_Notification_Active__c =true;
+                caseRec.Core_IPS_GEC_Flag__c = true;
+                //caseRec.Core_Request_Case_Close__c ='Close Case';
+                
+                if(counter < 2){
+                    caseRec.assetId = assetList.get(0).Id;
+                    // caseRec.Core_IPS_Project_Case__c = listOfIpsProjects.get(0).id;
+                    caseRec.Core_IPS_Supported_Product__c = listOfSupportedProduct.get(0).id; 
+                }
+                else if(counter>=2 && counter <5){
+                    caseRec.assetId = assetList.get(1).Id;
+                    caseRec.Core_IPS_Project_Case__c = listOfIpsProjects.get(0).id;
+                }
+                else{
+                    caseRec.assetId = assetList.get(1).Id;
+                    caseRec.Core_IPS_Project_Case__c = listOfIpsProjects.get(0).id;
+                    caseRec.Core_IPS_Supported_Product__c = listOfSupportedProduct.get(1).id; 
+                }
+                
+                counter++;
+            }
+            
+            //get Business Hours
+            List<BusinessHours> bhs=[select id from BusinessHours where IsDefault=true];
+            //Create Queue Business Hours
+            Core_IPS_Q_Biz_hours_mapping__c queueXBizHours = TestUtilities.getQueueXBizHours();
+            queueXBizHours.Business_Hours_ID__c = bhs.get(0).id;
+            queueXBizHours.Business_Hours_Name__c = 'Ashok_Test';
+            queueXBizHours.Queue_ID__c = grp.Id;
+            queueXBizHours.Queue_Name__c = grp.Name;
+            Test.startTest();
+            //insert Queue Business Hours
+            insert queueXBizHours;
+            
+            insert listOfCases;
+            
+           // Test.startTest();
+            System.assert(listOfCases[0].Id != null, 'Record not created');
+            counter = 0;
+            
+            for(Case caseRec1 : listOfCases){
+                caseRec1.status='Open';
+                caseRec1.Core_Issue_Description__c ='testing cases update ';
+                caseRec1.Description='testing cases update';
+                if(counter < 2){
+                    caseRec1.Core_IPS_GEC_Case__c=true;
+                    //caseRec1.Core_IPS_GEC_Status__c = 'Approved';
+                    //caseRec1.Core_IPS_Project_Case__c = listOfIpsProjects.get(1).id;
+                }                         
+                else if(counter>=2 && counter <5){
+                    caseRec1.assetId = assetList.get(1).Id;
+                    caseRec1.Core_IPS_Project_Case__c = null;
+                }
+                else{
+                    // caseRec.Core_IPS_Project_Case__c = listOfIpsProjects.get(1).id;
+                    caseRec1.AccountId = listOfAccounts.get(1).id;
+                }
+                //if( counter == 9)
+                //    caseRec1.Core_IPS_GEC_Flag__c = true;
+                
+                counter++;
+            }
+            
+            for(Case caseRec2 : listOfCases){
+                caseRec2.status='Open';             
+                caseRec2.Core_Sub_Status__c='Close-Pending';
+                if(counter < 2){
+                    caseRec2.Core_IPS_Date_Time_Close_Pending__c =Date.valueOf('2017-06-05 00:00:00');
+                }
+                counter++;
+            }
+            
+            counter = 0;
+            //Core_CaseTrigger_Dispatcher.recursivetrigger=true;
+            Core_CaseTrigger_Dispatcher.recursivetrigger1=true;            
+            //update listOfCases;
+            
+            //System.debug('The value is1: ' + caseRec.Core_Sub_Status__c);
+            List<Case> listOfCase = [select id from case where id IN: listOfCases];
+            System.assert(listOfCase[0].id != null, 'Record not updated');
+            delete listOfCase;
+            List<Case> listOfCaseDelete = [select id from case where id IN: listOfCase];
+            System.assert(listOfCaseDelete.isEmpty(), 'Record not deleted');
+            undelete listOfCase;
+            
+            //List<Case> listOfCaseUnDelete = [select id from case where id IN: listOfCase];
+            //System.assert(listOfCase[0].id != null, 'Record not Undelete');
+            Test.stopTest();
+        }
+    } 
     
     /***************************************************************************************************
 Method Name:  caseSLAManagement_Test
@@ -458,7 +700,6 @@ Modification Log :
             for(Contact contactRec : listOfContacts){
                 contactRec.Core_IPS_Intel_Support_Owner__c = intelSupportOwner;
                 contactRec.Accountid = listOfAccounts.get(0).Id;
-                contactRec.MailingCountry = 'India';
             }
             insert listOfContacts;
             System.assert(listOfContacts[0].Id != null, 'Record not created');
@@ -542,6 +783,7 @@ System.assertEquals(ListOfCas[0].RecordTypeId,  recType.id);
 delete ListOfCas;
 List<Case> listOfCaseDelete = [select id from case where id IN: listOfCase];
 System.assert(listOfCaseDelete.isEmpty(), 'Record not deleted');
+
 //undelete ListOfCas;
 //List<Case> listOfCaseUnDelete = [select id from case where id IN: listOfCase];
 //System.assert(ListOfCas[0].id != null, 'Record not Undelete');*/
@@ -577,7 +819,6 @@ Modification Log :
             for(Contact contactRec : listOfContacts){
                 contactRec.Core_IPS_Intel_Support_Owner__c = intelSupportOwner;
                 contactRec.Accountid = listOfAccounts.get(0).Id;
-                contactRec.MailingCountry = 'India';
             }
             insert listOfContacts;
             System.assert(listOfContacts[0].Id != null, 'Record not created');
@@ -636,12 +877,12 @@ Modification Log :
             update listOfCase;
             List<Case> listOfCas = [select Core_Sub_Status__c, RecordTypeId from case where id IN: listOfCase];
             System.assertEquals(listOfCas[0].Core_Sub_Status__c,  'Investigating', 'Investigating');
-            // delete listOfCas;
+            delete listOfCas;
             List<Case> listOfCaseDelete = [select id from case where id IN: listOfCase];
-            // System.assert(listOfCaseDelete.isEmpty(), true);
-            //undelete listOfCas;
+            System.assert(listOfCaseDelete.isEmpty(), 'Record not deleted');
+            undelete listOfCas;
             List<Case> listOfCaseUnDelete = [select id from case where id IN: listOfCase];
-            System.assert(listOfCas[0].id != null, true);
+            System.assert(listOfCas[0].id != null, 'Record not Undelete');
             Test.stopTest();
         }
     }
@@ -667,7 +908,7 @@ Modification Log :
         List<user> ipsuserList = new List<user>();
         ipsuserList = TestUtilities.getListOfUser(1);
         ipsuserList[0].profileId=prof1.id;
-        insertUsersWithValidationBypass(ipsuserList);
+        insert ipsuserList[0];  
         Id intelSupportOwner = listOfUser.get(0).id;
         System.runAs(listOfUser.get(1)){
             // Create Accounts
@@ -680,7 +921,6 @@ Modification Log :
             for(Contact contactRec : listOfContacts){
                 contactRec.Core_IPS_Intel_Support_Owner__c = intelSupportOwner;
                 contactRec.Accountid = listOfAccounts.get(0).Id;
-                contactRec.MailingCountry = 'India';
             }
             insert listOfContacts;
             System.assert(listOfContacts[0].Id != null, 'Record not created');
@@ -710,6 +950,8 @@ Modification Log :
             // Create Product
             List<Product2> listOfProducts = TestUtilities.getListOfProduct(2);
             insert listOfProducts;
+            //system.debug('JD*********--->'+ listOfProducts.get(0).id);
+            //system.debug('JD*********--->'+ listOfProducts.get(1).id);
             //System.assert(listOfProducts[0].id != null,'Record not created');
             List<Core_IPS_Product_Organization__c> listOfSupportOrg  = TestUtilities.getListOfSupportOrg(1);
             insert listOfSupportOrg;
@@ -809,18 +1051,16 @@ Modification Log :
                 counter++;
             }
             counter = 0;
-            update listOfCases;
+            //update listOfCases;
             List<Case> listOfCase = [select ProductId,ContactId from case where id IN: listOfCases];
             System.assert(listOfCase[0].ProductId != null, 'Record not updated with product id');
-            // delete listOfCase;
+            delete listOfCase;
             List<Case> listOfCaseDelete = [select id from case where id IN: listOfCase];
-            // System.assert(listOfCaseDelete.isEmpty(), true);
-            Test.stopTest();
-            
-            // undelete listOfCase;
-            
+            System.assert(listOfCaseDelete.isEmpty(), 'Record not deleted');
+            undelete listOfCase;
             List<Case> listOfCaseUnDelete = [select id from case where id IN: listOfCase];
             System.assert(listOfCase[0].id != null, 'Record not Undelete');
+            Test.stopTest();
         }
     }
     
@@ -834,7 +1074,7 @@ Scenario Type:  Positive
 Modification Log :
 * Developer                   Date                   Description
 * ----------------------------------------------------------------------------                 
-* Syed Moosa Nazir TN       11/06/2015               Created
+* Syed Moosa Nazir TN       11/06/2015                Created
 ****************************************************************************************************/
     static testmethod void provideCaseAccessTest(){
         getRecords();
@@ -853,7 +1093,6 @@ Modification Log :
             for(Contact contactRec : listOfContacts){
                 contactRec.Core_IPS_Intel_Support_Owner__c = intelSupportOwner;
                 contactRec.Accountid = listOfAccounts.get(0).Id;
-                contactRec.MailingCountry = 'India';
             }
             insert listOfContacts;
             System.assert(listOfContacts[0].Id != null, 'Record not created');
@@ -897,6 +1136,7 @@ queueXBizHours.Queue_ID__c = grp.Id;
 queueXBizHours.Queue_Name__c = grp.Name;
 //insert Queue Business Hours
 insert queueXBizHours;
+
 insert listOfCases;
 Core_CaseTrigger_Dispatcher.triggerAssignmentRule = true;
 System.assert(listOfCases[0].Id != null, 'Record not created');
@@ -916,6 +1156,7 @@ System.assert(listOfCase[0].id != null, 'Record not updated');
 delete listOfCase;
 List<Case> listOfCaseDelete = [select id from case where id IN: listOfCase];
 System.assert(listOfCaseDelete.isEmpty(), 'Record not deleted');
+
 //undelete listOfCase;
 //List<Case> listOfCaseUnDelete = [select id from case where id IN: listOfCase];
 //System.assert(listOfCase[0].id != null, 'Record not Undeleted');*/
@@ -935,7 +1176,7 @@ Modification Log :
 * ----------------------------------------------------------------------------                 
 * Deepak Jetty              25/01/2016                Created
 ****************************************************************************************************/
-   /* static testmethod void assignMigratedCaseInformationTest(){
+    static testmethod void assignMigratedCaseInformationTest(){
         // Query Profiles
         Map<String,ID> profiles = new Map<String,ID>();
         List<String> strProf = new List<String>();
@@ -945,22 +1186,11 @@ Modification Log :
         for(Profile prf : profileList){
             profiles.put(prf.name, prf.id);
         }
-        Core_Trigger_Executions__c  triggerExecution = new Core_Trigger_Executions__c();
-        
-        
-        Core_Trigger_Executions__c  triggerExecution1 = new Core_Trigger_Executions__c();
-        triggerExecution1.Name = 'assignCaseInformation';
-        triggerExecution1.Core_Active__c = true;
-        triggerExecution1.Core_Class_Name__c ='Core_IPS_CaseTriggerHandler';
-        triggerExecution1.Core_Description__c = 'To update Case fields.';
-        triggerExecution1.Core_Object__c = 'Case';
-        triggerExecution1.Core_Trigger_Events__c = 'before insert';
-        insert new List<Core_Trigger_Executions__c>{triggerExecution1};
-            // Create Users
-            listOfUser = TestUtilities.getListOfUser(2);
+        // Create Users
+        listOfUser = TestUtilities.getListOfUser(2);
         listOfUser.get(0).ProfileID =  profiles.get('System Administrator');
         listOfUser.get(1).ProfileID =  profiles.get('IPS Data Migration');
-        insertUsersWithValidationBypass(listOfUser);
+        insert listOfUser;
         System.assertEquals(listOfUser.get(0).profileid, profiles.get('System Administrator'), 'System Admin');
         System.assertEquals(listOfUser.get(1).profileid, profiles.get('IPS Data Migration'), 'IPS Data Migration');
         System.runAs(listOfUser.get(0)){
@@ -1025,7 +1255,6 @@ Modification Log :
             for(Contact contactRec : listOfContacts){
                 contactRec.Core_IPS_Intel_Support_Owner__c = intelSupportOwner;
                 contactRec.Accountid = listOfAccounts.get(0).Id;
-                contactRec.MailingCountry = 'India';
             }
             insert listOfContacts;
             // Create Ips Project
@@ -1142,23 +1371,20 @@ Modification Log :
             insert queueXBizHours;
             Core_CaseTrigger_Dispatcher.triggerAssignmentRule = true;
             Test.startTest();
-            // change added by chiru - code refactor - embargo country label
-            Core_IPS_Labels__c labelVal = new Core_IPS_Labels__c(Name = 'Core_IPS_EmbargoedCountryList',Value__c = 'USA,INDIA');
-            insert labelval;
             insert listOfCases;
-            //  System.assert(listOfCases[0].Id != null, 'Record not created');          
+            System.assert(listOfCases[0].Id != null, 'Record not created');          
             update listOfCases;
             List<Case> listOfCase = [select id from case where id IN: listOfCases];
-            System.assert(listOfCase[0].id != null, true);
-            // delete listOfCase;
+            System.assert(listOfCase[0].id != null, 'Record not updated');
+            delete listOfCase;
             List<Case> listOfCaseDelete = [select id from case where id IN: listOfCase];
-            //System.assert(listOfCaseDelete.isEmpty(), 'Record not deleted');
-            //undelete listOfCase;
+            System.assert(listOfCaseDelete.isEmpty(), 'Record not deleted');
+            undelete listOfCase;
             List<Case> listOfCaseUnDelete = [select id from case where id IN: listOfCase];
-            // System.assert(listOfCase[0].id != null, 'Record not Undelete');
+            System.assert(listOfCase[0].id != null, 'Record not Undelete');
             Test.stopTest();
         }
-    } */
+    }
     
     /***************************************************************************************************
 Method Name:  assignMigratedCaseInformationwithoutAccandProj_Test
@@ -1177,20 +1403,18 @@ Modification Log :
         Map<String,ID> profiles = new Map<String,ID>();
         List<String> strProf = new List<String>();
         strProf.add('System Administrator');
-        strProf.add('System Administrator');
+        strProf.add('IPS Data Migration');
         List<Profile> profileList = [select id, name from Profile where name IN : strProf];
         for(Profile prf : profileList){
             profiles.put(prf.name, prf.id);
         }
-        Core_Trigger_Executions__c  triggerExecution = new Core_Trigger_Executions__c();
-        
         // Create Users
         listOfUser = TestUtilities.getListOfUser(2);
         listOfUser.get(0).ProfileID =  profiles.get('System Administrator');
-        listOfUser.get(1).ProfileID =  profiles.get('System Administrator');
-        insertUsersWithValidationBypass(listOfUser);
+        listOfUser.get(1).ProfileID =  profiles.get('IPS Data Migration');
+        insert listOfUser;
         System.assertEquals(listOfUser.get(0).profileid, profiles.get('System Administrator'), 'System Admin');
-        System.assertEquals(listOfUser.get(1).profileid, profiles.get('System Administrator'), 'System Admin');
+        System.assertEquals(listOfUser.get(1).profileid, profiles.get('IPS Data Migration'), 'IPS Data Migration');
         System.runAs(listOfUser.get(0)){
             // Create Ips Labels added by Aayushi US79852    
             List<Core_IPS_Labels__c> ipsLabels = TestUtilities.getIPSLabel();    
@@ -1252,7 +1476,6 @@ Modification Log :
             for(Contact contactRec : listOfContacts){
                 contactRec.Core_IPS_Intel_Support_Owner__c = intelSupportOwner;
                 contactRec.Accountid = listOfAccounts.get(0).Id;
-                contactRec.MailingCountry = 'India';
             }
             insert listOfContacts;
             // Create Ips Project
@@ -1367,16 +1590,16 @@ Modification Log :
             Core_CaseTrigger_Dispatcher.triggerAssignmentRule = true;
             Test.startTest();
             insert listOfCases;
-            // System.assert(listOfCases[0].Id != null, 'Record not created');          
+            System.assert(listOfCases[0].Id != null, 'Record not created');          
             update listOfCases;
             List<Case> listOfCase = [select id from case where id IN: listOfCases];
-            System.assert(listOfCase[0].id != null, true);
-            // delete listOfCase;
+            System.assert(listOfCase[0].id != null, 'Record not updated');
+            delete listOfCase;
             List<Case> listOfCaseDelete = [select id from case where id IN: listOfCase];
-            //  System.assert(listOfCaseDelete.isEmpty(), 'Record not deleted');
-            // undelete listOfCase;
+            System.assert(listOfCaseDelete.isEmpty(), 'Record not deleted');
+            undelete listOfCase;
             List<Case> listOfCaseUnDelete = [select id from case where id IN: listOfCase];
-            //  System.assert(listOfCase[0].id != null, 'Record not Undelete');
+            System.assert(listOfCase[0].id != null, 'Record not Undelete');
             Test.stopTest();
         }
     }
@@ -1398,20 +1621,18 @@ Modification Log :
         Map<String,ID> profiles = new Map<String,ID>();
         List<String> strProf = new List<String>();
         strProf.add('System Administrator');
-        strProf.add('System Administrator');
+        strProf.add('IPS Data Migration');
         List<Profile> profileList = [select id, name from Profile where name IN : strProf];
         for(Profile prf : profileList){
             profiles.put(prf.name, prf.id);
         }
-        Core_Trigger_Executions__c  triggerExecution5 = new Core_Trigger_Executions__c();
-        
         // Create Users
         listOfUser = TestUtilities.getListOfUser(2);
         listOfUser.get(0).ProfileID =  profiles.get('System Administrator');
-        listOfUser.get(1).ProfileID =  profiles.get('System Administrator');
-        insertUsersWithValidationBypass(listOfUser);
+        listOfUser.get(1).ProfileID =  profiles.get('IPS Data Migration');
+        insert listOfUser;
         System.assertEquals(listOfUser.get(0).profileid, profiles.get('System Administrator'), 'System Admin');
-        System.assertEquals(listOfUser.get(1).profileid, profiles.get('System Administrator'), 'System Admin');
+        System.assertEquals(listOfUser.get(1).profileid, profiles.get('IPS Data Migration'), 'IPS Data Migration');
         System.runAs(listOfUser.get(0)){
             // Create Ips Labels added by Aayushi US79852  
             List<Core_IPS_Labels__c> ipsLabels = TestUtilities.getIPSLabel();    
@@ -1488,7 +1709,6 @@ Modification Log :
                 contactRec.Core_IPS_Alternate_Support_Owner__c =intelSupportOwner;
                 contactRec.Core_IPS_Alternate_Support_Org__c = listOfSupportOrg[0].id;
                 contactRec.Accountid = listOfAccounts.get(0).Id;
-                contactRec.MailingCountry = 'India';
             }
             insert listOfContacts;
             // Create Ips Project
@@ -1598,20 +1818,17 @@ Modification Log :
             insert queueXBizHours;
             Core_CaseTrigger_Dispatcher.triggerAssignmentRule = true;
             Test.startTest();
-            // change added by chiru - code refactor - embargo country label
-            Core_IPS_Labels__c labelVal = new Core_IPS_Labels__c(Name = 'Core_IPS_EmbargoedCountryList',Value__c = 'USA,INDIA');
-            insert labelval;
             insert listOfCases;
-            System.assert(listOfCases[0].Id != null, true);          
+            System.assert(listOfCases[0].Id != null, 'Record not created');          
             update listOfCases;
             List<Case> listOfCase = [select id from case where id IN: listOfCases];
-            // System.assert(listOfCase[0].id != null, 'Record not updated');
-            //  delete listOfCase;
+            System.assert(listOfCase[0].id != null, 'Record not updated');
+            delete listOfCase;
             List<Case> listOfCaseDelete = [select id from case where id IN: listOfCase];
-            // System.assert(listOfCaseDelete.isEmpty(), true);
-            // undelete listOfCase;
+            System.assert(listOfCaseDelete.isEmpty(), 'Record not deleted');
+            undelete listOfCase;
             List<Case> listOfCaseUnDelete = [select id from case where id IN: listOfCase];
-            System.assert(listOfCase[0].id != null, true);
+            System.assert(listOfCase[0].id != null, 'Record not Undelete');
             
             Test.stopTest();
         }
@@ -1652,7 +1869,6 @@ Modification Log :
             for(Contact contactRec : listOfContacts){
                 contactRec.Core_IPS_Intel_Support_Owner__c = intelSupportOwner;
                 contactRec.Accountid = account.Id;
-                contactRec.MailingCountry = 'India';
             }
             List<Core_IPS_Product_Organization__c> listOfSupportOrg  = TestUtilities.getListOfSupportOrg(1);
             insert listOfSupportOrg;
@@ -1701,7 +1917,7 @@ Modification Log :
                 cs.Core_First_Response_Completed__c =false;
                 cs.Core_Case_Issue_Category__c = caseCat.id;
                 cs.Core_case_issue_sub_category__c = subCategory.id;
-                
+               
                 cs.ContactId = listOfContacts.get(0).id;
                 cs.Priority = 'Low';
                 cs.Core_Sub_Status__c = 'Reproduced';
@@ -1741,12 +1957,10 @@ Modification Log :
         // contactRecord.Core_IPS_Intel_Support_Owner__c = intelSupportOwner;
         contactRecord.core_ips_Active__c=false;
         contactRecord.Email = 'ContactDellTest@gmail.com';
-        contactRecord.MailingCountry = 'India';
         insert contactRecord; 
         
         
         //Custom Setting - Trigger Executions
-        List<Core_Trigger_Executions__c> triggerExecutionList= new List<Core_Trigger_Executions__c>();
         Core_Trigger_Executions__c  triggerExecution = new Core_Trigger_Executions__c();
         triggerExecution.Name = 'IPSCaseFieldsInit';
         triggerExecution.Core_Active__c = true;
@@ -1792,7 +2006,7 @@ Modification Log :
         List<User> listOfUser = new List<User>();
         listOfUser = TestUtilities.getListOfUser(1); 
         listOfUser.get(0).ProfileId =  profiles.get('System Administrator');
-        insertUsersWithValidationBypass(listOfUser);
+        insert listOfUser.get(0);
         
         //Custom Setting - Trigger Executions
         Core_Trigger_Executions__c  triggerExecution = new Core_Trigger_Executions__c();
@@ -1871,7 +2085,6 @@ Modification Log :
                 contactRec.Core_IPS_Intel_Support_Owner__c = intelSupportOwner;
                 contactRec.core_ips_Active__c=true;
                 contactRec.Accountid = listOfAccounts.get(0).Id;
-                contactRec.MailingCountry = 'India';
             }
             insert listOfContacts;
             System.assert(listOfContacts[0].Id != null, 'Record not created');
@@ -1973,7 +2186,7 @@ Modification Log :
             supLevel.Core_IPS_Support_Org__c = listOfSupportOrg.get(0).Id;
             supLevel.Core_IPS_Support_Level__c = options.get(0).getValue();
             insert supLevel;
-            Test.stopTest();
+            
             // Create Case
             counter=0;
             List<Case> listOfCases = TestUtilities.getListOfCases(10);
@@ -1999,7 +2212,6 @@ Modification Log :
                 counter++;
             }
             insert listOfCases;
-            
             System.assert(listOfCases[0].Id != null, 'Record not created');
             
             String noAssignedContactCaseRecordType = Core_IPS_Helper_Utility.getIPSLabel('Case_RT_Name_IPS_NoAssignedContact');
@@ -2029,7 +2241,7 @@ Modification Log :
             update c2; 
             //end
         }   
-        
+        Test.stopTest();
     }
     
     /***************************************************************************************************
@@ -2060,18 +2272,17 @@ Modification Log :
         List<User> listOfUser = new List<User>();
         listOfUser = TestUtilities.getListOfUser(1); 
         listOfUser.get(0).ProfileId =  profiles.get('System Administrator');
-        insertUsersWithValidationBypass(listOfUser);
+        insert listOfUser.get(0);
         
         //Custom Setting - Trigger Executions
-        //List<Core_Trigger_Executions__c> triggerExecutionList= new List<Core_Trigger_Executions__c>();
         Core_Trigger_Executions__c  triggerExecution = new Core_Trigger_Executions__c();
-        triggerExecution.Name = 'IPSCaseFieldsInit';
+        triggerExecution.Name = 'ProvideCaseAccess';
         triggerExecution.Core_Active__c = true;
         triggerExecution.Core_Class_Name__c ='Core_IPS_CaseTriggerHandler';
-        triggerExecution.Core_Description__c = 'To update Case fields.';
+        triggerExecution.Core_Description__c = 'To Provide Access On Case.';
         triggerExecution.Core_Object__c = 'Case';
-        triggerExecution.Core_Trigger_Events__c = 'before insert';
-        insert triggerExecution;
+        triggerExecution.Core_Trigger_Events__c = 'after Update';
+        insert triggerExecution; 
         System.assert(triggerExecution.id != null, 'triggerExecution inserted');
         
         // Create Ips Labels added by Aayushi US78952
@@ -2145,7 +2356,6 @@ Modification Log :
                 contactRec.Core_IPS_Intel_Support_Owner__c = intelSupportOwner;
                 contactRec.core_ips_Active__c=true;
                 contactRec.Accountid = listOfAccounts.get(0).Id;
-                contactRec.MailingCountry = 'India';
             }
             insert listOfContacts;
             System.assert(listOfContacts[0].Id != null, 'Record not created');
@@ -2250,7 +2460,7 @@ Modification Log :
             
             //Create Case For Customer Visible Checkbox
             List<Case> lstCase = TestUtilities.getListOfCases(5);
-            Core_IPS_CaseTriggerHandler.assignMigratedCaseInformation(lstCase); //added by chiru
+            
             lstCase.get(0).accountId = listOfAccounts.get(0).Id;
             lstCase.get(0).ContactId = listOfContacts.get(0).id;
             lstCase.get(0).Core_IPS_Customer_Visible__c = false;
@@ -2335,15 +2545,14 @@ Modification Log :
         List<User> listOfUser = new List<User>();
         listOfUser = TestUtilities.getListOfUser(1); 
         listOfUser.get(0).ProfileId =  profiles.get('System Administrator');
-        insertUsersWithValidationBypass(listOfUser);
+        insert listOfUser.get(0);
         
         //Custom Setting - Trigger Executions
-        List<Core_Trigger_Executions__c> triggerExecutionList= new List<Core_Trigger_Executions__c>();
         Core_Trigger_Executions__c  triggerExecution = new Core_Trigger_Executions__c();
-        triggerExecution.Name = 'IPSCaseFieldsInit';
+        triggerExecution.Name = 'updateSupportLevelOnCase';
         triggerExecution.Core_Active__c = true;
         triggerExecution.Core_Class_Name__c ='Core_IPS_CaseTriggerHandler';
-        triggerExecution.Core_Description__c = 'To update Case fields.';
+        triggerExecution.Core_Description__c = 'To update Support Level On Case.';
         triggerExecution.Core_Object__c = 'Case';
         triggerExecution.Core_Trigger_Events__c = 'before insert';
         insert triggerExecution; 
@@ -2422,7 +2631,6 @@ Modification Log :
                 contactRec.Core_IPS_Intel_Support_Owner__c = intelSupportOwner;
                 contactRec.core_ips_Active__c=true;
                 contactRec.Accountid = listOfAccounts.get(0).Id;
-                contactrec.MailingCountry = 'India';
             }
             insert listOfContacts;
             System.assert(listOfContacts[0].Id != null, 'Record not created');
@@ -2642,38 +2850,29 @@ Modification Log :
         List<User> listOfUser = new List<User>();
         listOfUser = TestUtilities.getListOfUser(1); 
         listOfUser.get(0).ProfileId =  profiles.get('System Administrator');
-        insertUsersWithValidationBypass(listOfUser);
+        insert listOfUser.get(0);
         
         //Custom Setting - Trigger Executions
-        List<Core_Trigger_Executions__c> triggerExecutionList= new List<Core_Trigger_Executions__c>();
         Core_Trigger_Executions__c  triggerExecution = new Core_Trigger_Executions__c();
-        triggerExecution.Name = 'IPSCaseFieldsInit';
+        triggerExecution.Name = 'updateSupportLevelOnCase';
         triggerExecution.Core_Active__c = true;
         triggerExecution.Core_Class_Name__c ='Core_IPS_CaseTriggerHandler';
-        triggerExecution.Core_Description__c = 'To update Case fields.';
+        triggerExecution.Core_Description__c = 'To update Support Level On Case.';
         triggerExecution.Core_Object__c = 'Case';
         triggerExecution.Core_Trigger_Events__c = 'before insert';
+        insert triggerExecution; 
+        System.assert(triggerExecution.id != null, 'triggerExecution inserted');
+        
+        //Custom Setting - Trigger Executions Sandeeep US84539: I2
         Core_Trigger_Executions__c  triggerExecution1 = new Core_Trigger_Executions__c();
         triggerExecution1.Name = 'checkCaseClosureParams';
         triggerExecution1.Core_Active__c = true;
         triggerExecution1.Core_Class_Name__c ='Core_IPS_CaseTriggerHandler';
         triggerExecution1.Core_Description__c = 'Check If Org number is same and Case closure is equal to custom setting closure and bugfix id is not empty.';
         triggerExecution1.Core_Object__c = 'Case';
-        triggerExecution1.Core_Trigger_Events__c = 'before insert';
-        triggerExecutionList.add(triggerExecution1); 
-        insert triggerExecutionList;
-        System.assert(triggerExecutionList[0].id != null, 'triggerExecution inserted');
-        
-        //Custom Setting - Trigger Executions Sandeeep US84539: I2
-        /*Core_Trigger_Executions__c  triggerExecution2 = new Core_Trigger_Executions__c();
-triggerExecution2.Name = 'checkCaseClosureParams';
-triggerExecution2.Core_Active__c = true;
-triggerExecution2.Core_Class_Name__c ='Core_IPS_CaseTriggerHandler';
-triggerExecution2.Core_Description__c = 'Check If Org number is same and Case closure is equal to custom setting closure and bugfix id is not empty.';
-triggerExecution2.Core_Object__c = 'Case';
-triggerExecution2.Core_Trigger_Events__c = 'before update';
-insert triggerExecution2; 
-System.assert(triggerExecution1.id != null, 'triggerExecution inserted');*/
+        triggerExecution1.Core_Trigger_Events__c = 'before update';
+        insert triggerExecution1; 
+        System.assert(triggerExecution1.id != null, 'triggerExecution inserted');
         
         //Custom Setting Record inserted by Sandeep US84539: I2
         Core_IPS_Support_Org_Specification__c supportOrgCustomSetting = new Core_IPS_Support_Org_Specification__c();
@@ -2684,14 +2883,14 @@ System.assert(triggerExecution1.id != null, 'triggerExecution inserted');*/
         supportOrgCustomSetting.Name = 'PSG';
         insert supportOrgCustomSetting;
         //start added by Aayushi US89551
-        /* Core_Trigger_Executions__c  triggerExecutionRec = new Core_Trigger_Executions__c();
-triggerExecutionRec.Name = 'provideProjCaseAccessToFAE';
-triggerExecutionRec.Core_Active__c = true;
-triggerExecutionRec.Core_Class_Name__c ='Core_IPS_Account_Handler';
-triggerExecutionRec.Core_Description__c = 'Activate Or Deactivate Project Members';
-triggerExecutionRec.Core_Object__c = 'Core_IPS_Account__c';
-triggerExecutionRec.Core_Trigger_Events__c = 'after update';
-insert triggerExecutionRec;*/
+        Core_Trigger_Executions__c  triggerExecutionRec = new Core_Trigger_Executions__c();
+        triggerExecutionRec.Name = 'provideProjCaseAccessToFAE';
+        triggerExecutionRec.Core_Active__c = true;
+        triggerExecutionRec.Core_Class_Name__c ='Core_IPS_Account_Handler';
+        triggerExecutionRec.Core_Description__c = 'Activate Or Deactivate Project Members';
+        triggerExecutionRec.Core_Object__c = 'Core_IPS_Account__c';
+        triggerExecutionRec.Core_Trigger_Events__c = 'after update';
+        insert triggerExecutionRec;
         //end
         System.assert(supportOrgCustomSetting.id != NULL,'Custom setting is not Null');
         
@@ -2715,23 +2914,7 @@ insert triggerExecutionRec;*/
         listofIpsLables.addAll(ipsLabelsForGlobalAsset);  
         
         insert listofIpsLables;
-        //added by rajeswari on junly 18 for increase code coverage
-        Core_CaseTrigger_Dispatcher.triggerAssignmentRule = true;
         
-        Core_IPS_Backend_System2__c backendSystem = new Core_IPS_Backend_System2__c();
-        backendSystem.Name = 'HSDES-PSG01';
-        
-        backendSystem.Core_IPS_Target_System__c = 'hsdes:fpga:bug';
-        insert backendSystem;
-        
-        Core_IPS_Backend_Routing__c backendRoutingRule = new Core_IPS_Backend_Routing__c();
-        backendRoutingRule.Core_IPS_Backend_Routing_Order__c = 1;
-        backendRoutingRule.Core_IPS_Queue__c = 'IPS - Unassigned Cases';
-        backendRoutingRule.Core_IPS_Auto_Promote__c = true;
-        backendRoutingRule.Core_IPS_New_Backend_System__c = backendSystem.Id;
-        insert backendRoutingRule;
-        
-        //end by rajeswari 
         //Get intelSupportOwner Id (User Id)
         Id intelSupportOwner = listOfUser.get(0).id;
         System.runAs(listOfUser.get(0)){
@@ -2753,7 +2936,6 @@ insert triggerExecutionRec;*/
                 contactRec.Core_IPS_Intel_Support_Owner__c = intelSupportOwner;
                 contactRec.core_ips_Active__c=true;
                 contactRec.Accountid = listOfAccounts.get(0).Id;
-                contactRec.MailingCountry = 'India';
             }
             insert listOfContacts;
             System.assert(listOfContacts[0].Id != null, 'Record not created');
@@ -2949,136 +3131,133 @@ Modification Log :
 * Amritesh                  1/2/2019                  DE28924
 ****************************************************************************************************/
     static testmethod void projectInterestedPartiesTest(){
-        try{
-            getRecords();
-            // Get intelSupportOwner Id (User Id)
-            Id intelSupportOwner = listOfUser.get(0).id;
-            System.runAs(listOfUser.get(1)){
-                // Create Accounts
-                List<Account> listOfAccounts = TestUtilities.getListOfAccounts(1);
-                for(Account acc: listOfAccounts){
-                    acc.Core_CNDA_Number__c='123';
+        getRecords();
+        // Get intelSupportOwner Id (User Id)
+        Id intelSupportOwner = listOfUser.get(0).id;
+        System.runAs(listOfUser.get(1)){
+            // Create Accounts
+            List<Account> listOfAccounts = TestUtilities.getListOfAccounts(1);
+            for(Account acc: listOfAccounts){
+                acc.Core_CNDA_Number__c='123';
+            }
+            insert listOfAccounts;
+            System.assert(listOfAccounts[0].Id != null, 'Record not created');
+            // Create Contact
+            List<Contact> listOfContacts = TestUtilities.getListOfContact(1);
+            for(Contact contactRec : listOfContacts){
+                contactRec.Core_IPS_Intel_Support_Owner__c = intelSupportOwner;
+                contactRec.Accountid = listOfAccounts.get(0).Id;
+                contactRec.Core_IPS_Active__c = true;
+            }
+            insert listOfContacts;
+            System.assert(listOfContacts[0].Id != null, 'Record not created');
+            // Create Ips Project
+            List<Core_IPS_Project__c> listOfIpsProjects = TestUtilities.getListOfIpsProjects(2);
+            insert listOfIpsProjects;
+            System.assert(listOfIpsProjects[0].Id != null, 'Record not created');
+            // Create Ips Account
+            List<Core_IPS_Account__c> listOfIpsAccounts = TestUtilities.getListOfIpsAccounts(1);
+            for(Core_IPS_Account__c ipsAcc : listOfIpsAccounts){
+                ipsAcc.Core_Account__c = listOfAccounts.get(0).Id;
+                ipsAcc.Core_IPS_Project__c = listOfIpsProjects.get(0).Id;
+            }
+            insert listOfIpsAccounts;
+            System.assert(listOfIpsAccounts[0].Id != null, 'Record not created');
+            // Create Project Member
+            List<Core_IPS_Project_Member__c> listOfProjectMembers = TestUtilities.getListOfProjectMembers(2);
+            Integer i=1;
+            for(Core_IPS_Project_Member__c projMem : listOfProjectMembers){
+                projMem.Core_IPS_Contact__c = listOfContacts.get(0).Id;
+                if(i==1){
+                    projMem.Core_IPS_Project__c = listOfIpsProjects.get(0).Id;
+                } else {
+                    projMem.Core_IPS_Project__c = listOfIpsProjects.get(1).Id;    
                 }
-                insert listOfAccounts;
-                System.assert(listOfAccounts[0].Id != null, 'Record not created');
-                // Create Contact
-                List<Contact> listOfContacts = TestUtilities.getListOfContact(1);
-                for(Contact contactRec : listOfContacts){
-                    contactRec.Core_IPS_Intel_Support_Owner__c = intelSupportOwner;
-                    contactRec.Accountid = listOfAccounts.get(0).Id;
-                    contactRec.Core_IPS_Active__c = true;
-                    contactRec.MailingCountry = 'India';
-                }
-                insert listOfContacts;
-                System.assert(listOfContacts[0].Id != null, 'Record not created');
-                // Create Ips Project
-                List<Core_IPS_Project__c> listOfIpsProjects = TestUtilities.getListOfIpsProjects(2);
-                insert listOfIpsProjects;
-                System.assert(listOfIpsProjects[0].Id != null, 'Record not created');
-                // Create Ips Account
-                List<Core_IPS_Account__c> listOfIpsAccounts = TestUtilities.getListOfIpsAccounts(1);
-                for(Core_IPS_Account__c ipsAcc : listOfIpsAccounts){
-                    ipsAcc.Core_Account__c = listOfAccounts.get(0).Id;
-                    ipsAcc.Core_IPS_Project__c = listOfIpsProjects.get(0).Id;
-                }
-                insert listOfIpsAccounts;
-                System.assert(listOfIpsAccounts[0].Id != null, 'Record not created');
-                // Create Project Member
-                List<Core_IPS_Project_Member__c> listOfProjectMembers = TestUtilities.getListOfProjectMembers(2);
-                Integer i=1;
-                for(Core_IPS_Project_Member__c projMem : listOfProjectMembers){
-                    projMem.Core_IPS_Contact__c = listOfContacts.get(0).Id;
-                    if(i==1){
-                        projMem.Core_IPS_Project__c = listOfIpsProjects.get(0).Id;
-                    } else {
-                        projMem.Core_IPS_Project__c = listOfIpsProjects.get(1).Id;    
-                    }
                     
-                    projMem.Core_User__c = intelSupportOwner;
-                    projMem.Add_as_Case_Interested_Party__c = true;
-                    i++;
-                }
-                insert listOfProjectMembers;
-                // Create IST Member
-                List<Core_IPS_Intel_Support_Team__c> lstIST = new List<Core_IPS_Intel_Support_Team__c>();
-                Core_IPS_Intel_Support_Team__c ist = new Core_IPS_Intel_Support_Team__c();
-                ist.Core_IPS_Project__c = listOfIpsProjects[0].Id;
-                ist.Core_IPS_User__c = intelSupportOwner;
-                ist.Status__c='Active';
-                ist.Add_as_Case_Interested_Party__c = true;
-                lstIST.add(ist);
-                
-                ist = new Core_IPS_Intel_Support_Team__c();
-                ist.Core_IPS_Project__c = listOfIpsProjects[1].Id;
-                ist.Core_IPS_User__c = intelSupportOwner;
-                ist.Status__c='Active';
-                ist.Add_as_Case_Interested_Party__c = true;
-                lstIST.add(ist);
-                insert lstIST;
-                System.assert(lstIST[0].Id != null, 'Record not created');
-                
-                // Create Case
-                List<Case> listOfCases = TestUtilities.getListOfCases(4);
-                for(Case caseRec : listOfCases){
-                    caseRec.ContactId = listOfContacts.get(0).id;
-                    caseRec.accountId = listOfAccounts.get(0).Id;
-                    caseRec.Core_IPS_Project_Case__c = listOfIpsProjects[0].Id;
-                }
-                
-                for(Core_IPS_Project__c objproj : listOfIpsProjects) {
-                    objproj.Core_IPS_Enable_ISTasInterested_Parties__c = true;
-                    objproj.Core_IPS_EnableMemberasInterestedParties__c = true;
-                }
-                update listOfIpsProjects;
-                
-                List<Core_Trigger_Executions__c> lsttriggerExecution = new List<Core_Trigger_Executions__c>();
-                Core_Trigger_Executions__c  triggerExecution = new Core_Trigger_Executions__c();
-                triggerExecution.Name = 'create_InsterestedParties_UsingCase';
-                triggerExecution.Core_Active__c = true;
-                triggerExecution.Core_Class_Name__c ='Core_IPS_CaseTriggerHandler';
-                triggerExecution.Core_Description__c = 'create_InsterestedParties_UsingCase';
-                triggerExecution.Core_Object__c = 'Case';
-                triggerExecution.Core_Trigger_Events__c = 'After Update';
-                lsttriggerExecution.add(triggerExecution);
-                
-                triggerExecution = new Core_Trigger_Executions__c();
-                triggerExecution.Name = 'create_IntrestedParties_ProjectMembers';
-                triggerExecution.Core_Active__c = true;
-                triggerExecution.Core_Class_Name__c ='Core_IPS_CaseTriggerHandler';
-                triggerExecution.Core_Description__c = 'create_IntrestedParties_ProjectMembers';
-                triggerExecution.Core_Object__c = 'Case';
-                triggerExecution.Core_Trigger_Events__c = 'After Update';
-                lsttriggerExecution.add(triggerExecution);
-                
-                triggerExecution = new Core_Trigger_Executions__c();
-                triggerExecution.Name = 'case_Edit_projectDetails';
-                triggerExecution.Core_Active__c = true;
-                triggerExecution.Core_Class_Name__c ='Core_IPS_CaseTriggerHandler';
-                triggerExecution.Core_Description__c = 'case_Edit_projectDetails';
-                triggerExecution.Core_Object__c = 'Case';
-                triggerExecution.Core_Trigger_Events__c = 'After Update';
-                lsttriggerExecution.add(triggerExecution);
-                insert lsttriggerExecution;
-                
-                Test.startTest();
-                insert listOfCases;
-                System.assert(listOfCases[0].Id != null, 'Record not created');
-                for(Case caseRec : listOfCases){
-                    caseRec.Core_IPS_Project_Case__c = listOfIpsProjects.get(1).id;
-                }
-                Core_CaseTrigger_Dispatcher.triggerAssignmentRule=true;
-                update listOfCases;
-                //commented for DE28924   
-                /*for(Case caseRec : listOfCases){
+                projMem.Core_User__c = intelSupportOwner;
+                projMem.Add_as_Case_Interested_Party__c = true;
+                i++;
+            }
+            insert listOfProjectMembers;
+            // Create IST Member
+            List<Core_IPS_Intel_Support_Team__c> lstIST = new List<Core_IPS_Intel_Support_Team__c>();
+            Core_IPS_Intel_Support_Team__c ist = new Core_IPS_Intel_Support_Team__c();
+            ist.Core_IPS_Project__c = listOfIpsProjects[0].Id;
+            ist.Core_IPS_User__c = intelSupportOwner;
+            ist.Status__c='Active';
+            ist.Add_as_Case_Interested_Party__c = true;
+            lstIST.add(ist);
+            
+            ist = new Core_IPS_Intel_Support_Team__c();
+            ist.Core_IPS_Project__c = listOfIpsProjects[1].Id;
+            ist.Core_IPS_User__c = intelSupportOwner;
+            ist.Status__c='Active';
+            ist.Add_as_Case_Interested_Party__c = true;
+            lstIST.add(ist);
+            insert lstIST;
+            System.assert(lstIST[0].Id != null, 'Record not created');
+            
+            // Create Case
+            List<Case> listOfCases = TestUtilities.getListOfCases(4);
+            for(Case caseRec : listOfCases){
+                caseRec.ContactId = listOfContacts.get(0).id;
+                caseRec.accountId = listOfAccounts.get(0).Id;
+                caseRec.Core_IPS_Project_Case__c = listOfIpsProjects[0].Id;
+            }
+            
+            for(Core_IPS_Project__c objproj : listOfIpsProjects) {
+                objproj.Core_IPS_Enable_ISTasInterested_Parties__c = true;
+                objproj.Core_IPS_EnableMemberasInterestedParties__c = true;
+            }
+            update listOfIpsProjects;
+            
+            List<Core_Trigger_Executions__c> lsttriggerExecution = new List<Core_Trigger_Executions__c>();
+            Core_Trigger_Executions__c  triggerExecution = new Core_Trigger_Executions__c();
+            triggerExecution.Name = 'create_InsterestedParties_UsingCase';
+            triggerExecution.Core_Active__c = true;
+            triggerExecution.Core_Class_Name__c ='Core_IPS_CaseTriggerHandler';
+            triggerExecution.Core_Description__c = 'create_InsterestedParties_UsingCase';
+            triggerExecution.Core_Object__c = 'Case';
+            triggerExecution.Core_Trigger_Events__c = 'After Update';
+            lsttriggerExecution.add(triggerExecution);
+            
+            triggerExecution = new Core_Trigger_Executions__c();
+            triggerExecution.Name = 'create_IntrestedParties_ProjectMembers';
+            triggerExecution.Core_Active__c = true;
+            triggerExecution.Core_Class_Name__c ='Core_IPS_CaseTriggerHandler';
+            triggerExecution.Core_Description__c = 'create_IntrestedParties_ProjectMembers';
+            triggerExecution.Core_Object__c = 'Case';
+            triggerExecution.Core_Trigger_Events__c = 'After Update';
+            lsttriggerExecution.add(triggerExecution);
+            
+            triggerExecution = new Core_Trigger_Executions__c();
+            triggerExecution.Name = 'case_Edit_projectDetails';
+            triggerExecution.Core_Active__c = true;
+            triggerExecution.Core_Class_Name__c ='Core_IPS_CaseTriggerHandler';
+            triggerExecution.Core_Description__c = 'case_Edit_projectDetails';
+            triggerExecution.Core_Object__c = 'Case';
+            triggerExecution.Core_Trigger_Events__c = 'After Update';
+            lsttriggerExecution.add(triggerExecution);
+            insert lsttriggerExecution;
+            
+            Test.startTest();
+            insert listOfCases;
+            System.assert(listOfCases[0].Id != null, 'Record not created');
+            for(Case caseRec : listOfCases){
+                caseRec.Core_IPS_Project_Case__c = listOfIpsProjects.get(1).id;
+            }
+            Core_CaseTrigger_Dispatcher.triggerAssignmentRule=true;
+            update listOfCases;
+            //commented for DE28924   
+            /*for(Case caseRec : listOfCases){
 caseRec.Core_IPS_Project_Case__c = listOfIpsProjects.get(0).id;
 }
 Core_CaseTrigger_Dispatcher.recursiveError = 0;
 Core_CaseTrigger_Dispatcher.triggerAssignmentRule=true;
 update listOfCases;
 Core_CaseTrigger_Dispatcher.triggerAssignmentRule=false;*/
-                Test.stopTest();
-            }
-        }catch(Exception ex){}
+            Test.stopTest();
+        }
     }
     
     /***************************************************************************************************
@@ -3125,7 +3304,7 @@ Modification Log :
             testAccount1.ownerid = portalAccountOwner1.id;      
             insert testAccount1;             
             Contact testContact1 = new Contact(FirstName='testFirstName123', LastName='testLastName', Email='test1234643@testing.com.testsetup',
-                                               AccountId=testAccount1.id,Core_Personal_Email_Indicator__c = true,Core_Enterprise_Id__c='12345',Core_AGS_Integration_Status__c='Successful',MailingCountry = 'India');
+                                               AccountId=testAccount1.id,Core_Personal_Email_Indicator__c = true,Core_Enterprise_Id__c='12345',Core_AGS_Integration_Status__c='Successful');
             insert testContact1;
             
             UserRole ur = new UserRole(DeveloperName = 'MyCustomRole', Name = 'My Role');
@@ -3160,7 +3339,6 @@ Modification Log :
                 contactRec.Core_IPS_Intel_Support_Owner__c = intelSupportOwner;
                 contactRec.Accountid = listOfAccounts.get(0).Id;
                 contactRec.Core_IPS_Active__c = true;
-                contactRec.MailingCountry = 'India';
             }
             insert listOfContacts;
             System.assert(listOfContacts[0].Id != null, 'Record not created');
@@ -3187,7 +3365,7 @@ Modification Log :
             insert listOfProjectMembers;
             
             Core_Trigger_Executions__c triggerExecution = new Core_Trigger_Executions__c();
-            triggerExecution.Name = 'Core_IPS_Execute_CaseOwnerValidation1';
+            triggerExecution.Name = 'Core_IPS_Execute_CaseOwnerValidation';
             triggerExecution.Core_Active__c = true;
             triggerExecution.Core_Class_Name__c ='Core_IPS_CaseTriggerHandler';
             triggerExecution.Core_Description__c = 'case_Edit_projectDetails';
@@ -3198,7 +3376,6 @@ Modification Log :
             
             // Create Case
             List<Case> listOfCases = TestUtilities.getListOfCases(4);
-            Map<Id,Boolean> backendCaseMapTest =new Map<Id,Boolean>();
             for(Case caseRec : listOfCases){
                 caseRec.ContactId = listOfContacts.get(0).id;
                 caseRec.accountId = listOfAccounts.get(0).Id;
@@ -3207,20 +3384,11 @@ Modification Log :
             }
             
             Test.startTest();
-            try{
-                insert listOfCases;
-            }catch(Exception ex){}
-            for(Case CaseIdList:listOfCases){
-                backendCaseMapTest.put(CaseIdList.Id,false);  
-            }
-            try{
-                //  Core_IPS_CaseTriggerHandler.makeCreatePlatformEventInFuture(CaseIds,backendCaseMapTest);
-            }catch(Exception ex){}
-            //Core_IPS_CaseTriggerHandler.makeCreatePlatformEventInFuture(listOfCases[0].id,backendCaseMapTest);
+            insert listOfCases;
             for(Case caseRec : listOfCases){
                 caseRec.ownerId = userRecord.id;
             }
-            update listOfCases;
+            //update listOfCases;
             
             Test.stopTest();
             
@@ -3264,7 +3432,6 @@ Modification Log :
             for(Contact contactRec : listOfContacts){
                 contactRec.Core_IPS_Intel_Support_Owner__c = intelSupportOwner;
                 contactRec.Accountid = listOfAccounts.get(0).Id;
-                contactRec.MailingCountry = 'India';
             }
             insert listOfContacts;
             System.assert(listOfContacts[0].Id != null, 'Record not created');
@@ -3299,7 +3466,7 @@ Modification Log :
                 caseRec.ContactId = listOfContacts.get(0).id;
                 caseRec.accountId = listOfAccounts.get(0).Id;
                 caseRec.Core_IPS_Project_Case__c=listOfIpsProjects.get(0).Id;
-                caseRec.Core_Issue_Description__c = 'Description as part of Code Refactor 26/09 to cover description not null block';
+                
             }
             insert listOfCases;
             Test.stopTest();
@@ -3310,6 +3477,7 @@ Modification Log :
             try{
                 update listOfCases[0];
             }catch(Exception exp){
+                System.debug(exp);
             }
         }
     }
@@ -3358,7 +3526,7 @@ Modification Log :
             testAccount1.ownerid = sysadmin.id;      
             insert testAccount1;             
             Contact testContact1 = new Contact(FirstName='testFirstName123', LastName='testLastName', Email='test1234643@testing.com.testsetup',
-                                               AccountId=testAccount1.id,Core_Personal_Email_Indicator__c = true,Core_Enterprise_Id__c='12345',Core_AGS_Integration_Status__c='Successful',mailingcountry = 'India');
+                                               AccountId=testAccount1.id,Core_Personal_Email_Indicator__c = true,Core_Enterprise_Id__c='12345',Core_AGS_Integration_Status__c='Successful');
             insert testContact1;
             
             //UserRole ur = new UserRole(DeveloperName = 'MyCustomRole', Name = 'My Role');
@@ -3392,7 +3560,6 @@ Modification Log :
                 contactRec.Core_IPS_Intel_Support_Owner__c = intelSupportOwner;
                 contactRec.Accountid = listOfAccounts.get(0).Id;
                 contactRec.Core_IPS_Active__c = true;
-                contactRec.MailingCountry = 'India';
             }
             insert listOfContacts;
             System.assert(listOfContacts[0].Id != null, 'Record not created');
@@ -3428,14 +3595,12 @@ Modification Log :
     }
     
     static testmethod void caseOwnerGrpTest(){
-        getRecords(); 
+        getRecords();
         Id intelSupportOwner = listOfUser.get(0).id;
         Map<String,ID> profiles = new Map<String,ID>();
         List<Profile> profileList = [select id, name from Profile where name='IPS Agent' ];
         for(Profile prf : profileList){
             profiles.put(prf.name, prf.id);
-        }
-        for(Core_Trigger_Executions__c triggerExcecution: [SELECT ID,Name FROM Core_Trigger_Executions__c]){
         }
         
         //User thisUser = [select Id from User where Id = :UserInfo.getUserId()];
@@ -3462,7 +3627,7 @@ Modification Log :
             testAccount1.ownerid = sysadmin.id;      
             insert testAccount1;             
             Contact testContact1 = new Contact(FirstName='testFirstName123', LastName='testLastName', Email='test1234643@testing.com.testsetup',
-                                               AccountId=testAccount1.id,Core_Personal_Email_Indicator__c = true,Core_Enterprise_Id__c='12345',Core_AGS_Integration_Status__c='Successful',MailingCountry='India');
+                                               AccountId=testAccount1.id,Core_Personal_Email_Indicator__c = true,Core_Enterprise_Id__c='12345',Core_AGS_Integration_Status__c='Successful');
             insert testContact1;
             
             //UserRole ur = new UserRole(DeveloperName = 'MyCustomRole', Name = 'My Role');
@@ -3496,7 +3661,6 @@ Modification Log :
                 contactRec.Core_IPS_Intel_Support_Owner__c = intelSupportOwner;
                 contactRec.Accountid = listOfAccounts.get(0).Id;
                 contactRec.Core_IPS_Active__c = true;
-                contactRec.MailingCountry = 'India';
             }
             insert listOfContacts;
             System.assert(listOfContacts[0].Id != null, 'Record not created');
@@ -3538,7 +3702,7 @@ Modification Log :
                 caseRec.accountId = listOfAccounts.get(0).Id;                
                 caseRec.ownerId = sysadmin.id;
                 caseRec.Core_IPS_Supported_Product__c = sp.Id; 
-                caseRec.Core_IPS_Product_Org1__c = prodOrg.Id;
+                //caseRec.Core_IPS_Product_Org1__c = prodOrg.Id;
             }
             
             Test.startTest();
@@ -3557,7 +3721,7 @@ Modification Log :
         // Query Profiles
         Map<String,ID> profiles = new Map<String,ID>();
         List<String> strProf = new List<String>();
-        strProf.add('System Administrator');
+        strProf.add('IPS Support Org Admin');
         List<Profile> profileList = [select id, name from Profile where name IN : strProf];
         for(Profile prf : profileList){
             profiles.put(prf.name, prf.id);
@@ -3583,10 +3747,10 @@ Modification Log :
         
         
         List<User> listOfUser1 = new List<User>{userRecord}; //TestUtilities.getListOfUser(1);
-            listOfUser1.get(0).ProfileID =  profiles.get('System Administrator');
+            listOfUser1.get(0).ProfileID =  profiles.get('IPS Support Org Admin');
         //listOfUser1.get(1).ProfileID =  profiles.get('IPS Support Org Admin');
         
-        insertUsersWithValidationBypass(listOfUser1);
+        insert listOfUser1; 
         
         List<Core_IPS_Labels__c> listofIpsLables = TestUtilities.getIPSLabel();
         System.runAs(listOfUser.get(0)){
@@ -3609,17 +3773,18 @@ insert listOftriggerExecutions;
             insert acctRecord; 
         } 
         //insert acctRecord;
+        //   System.debug('acctRecord>>'+acctRecord.Owner.UserRole.Name+' listOfUser.get(1) '+listOfUser.get(1));
         Contact contactRecord;
         contactRecord = TestUtilities.getContact();
         contactRecord.Accountid = acctRecord.id;
         // contactRecord.Core_IPS_Intel_Support_Owner__c = intelSupportOwner;
         contactRecord.core_ips_Active__c=false;
-        contactrecord.MailingCountry = 'India';
         contactRecord.Email = 'ContactDellTest@gmail.com';
         System.runAs(listOfUser.get(0)){
             insert contactRecord; 
         } 
         //insert contactRecord;
+        // System.debug('contactRecord '+contactRecord);
         
         Core_IPS_Product_Organization__c prodOrg = TestUtilities.getSupportOrg();
         System.runAs(listOfUser.get(0)){
@@ -3648,6 +3813,8 @@ insert listOftriggerExecutions;
                 insert listOfIpsProjects; 
             } 
         
+        
+        // System.debug('>>SP>>'+sp);
         core_ips_account__c projAccount= TestUtilities.getCoreIpsAccount();
         Core_IPS_Project_Member__c projectMember = TestUtilities.getProjectMember();
         Core_IPS_Product__c projProduct=TestUtilities.getIpsProduct();
@@ -3656,7 +3823,7 @@ insert listOftriggerExecutions;
             
             projAccount.Core_Account__c=acctRecord.Id;
             projAccount.Core_IPS_Project__c=proj.Id;
-            
+           
             // insert projAccount;
             
             
@@ -3668,8 +3835,9 @@ insert listOftriggerExecutions;
             
             projProduct.Core_IPS_Project__c=proj.Id;
             projProduct.Core_Supported_Product__c=sp.Id;
-            
+             
             // insert projProduct;
+            // System.debug('>>projProduct>>'+projProduct+'>>spId>>'+sp.Id);
             
         }
         System.runAs(listOfUser1.get(0)){
@@ -3712,7 +3880,7 @@ insert listOftriggerExecutions;
             c2.Core_IPS_Is_Notification_Active__c = true;
             c2.Core_Latest_Comment_Time_Stamp__c = System.now()+1;
             c2.SlaStartDate = System.now() - 1;
-            //System.runAs(listOfUser1.get(0)){
+        //System.runAs(listOfUser1.get(0)){
             insert  c2; 
             System.assertEquals(c2!=null,true, 'Case Inserted');
         }
@@ -3732,8 +3900,8 @@ insert listOftriggerExecutions;
         // Query Profiles
         Map<String,ID> profiles = new Map<String,ID>();
         List<String> strProf = new List<String>();
-        strProf.add('System Administrator');//System Administrator
-        strProf.add('Sales Rep-BB-Dual IPS');
+        strProf.add('IPS Support Org Admin');
+        
         List<Profile> profileList = [select id, name from Profile where name IN : strProf];
         for(Profile prf : profileList){
             profiles.put(prf.name, prf.id);
@@ -3756,28 +3924,13 @@ insert listOftriggerExecutions;
             UserRoleId = r.Id
             
         );
-        User userRecord1 = new User(
-            Alias = 'StdUser', 
-            Email = 'newuser21sdsdsdw1@intel.com', 
-            EmailEncodingKey ='UTF-8',
-            LastName = 'Testing',
-            FirstName = 'FName',
-            LanguageLocaleKey = 'en_US',
-            LocaleSidKey = 'en_US',
-            TimeZoneSidKey = 'America/Los_Angeles', 
-            UserName = 'nnnnewuser123ssdsd000@intel.com',
-            isActive = true,
-            UserRoleId = r.Id
-            
-        );
         
         
-        List<User> listOfUser1 = new List<User>{userRecord, userRecord1}; //TestUtilities.getListOfUser(1);
-            listOfUser1.get(0).ProfileID =  profiles.get('System Administrator');
-        listOfUser1.get(1).ProfileID =  profiles.get('Sales Rep-BB-Dual IPS');
+        List<User> listOfUser1 = new List<User>{userRecord}; //TestUtilities.getListOfUser(1);
+            listOfUser1.get(0).ProfileID =  profiles.get('IPS Support Org Admin');
         //listOfUser1.get(1).ProfileID =  profiles.get('IPS Support Org Admin');
         
-        insertUsersWithValidationBypass(listOfUser1);
+        insert listOfUser1; 
         
         /* List<Core_IPS_Labels__c> listofIpsLables = TestUtilities.getIPSLabel();
 System.runAs(listOfUser.get(0)){
@@ -3801,17 +3954,18 @@ insert listofIpsLables;
             insert acctRecord; 
         } 
         //insert acctRecord;
+        //   System.debug('acctRecord>>'+acctRecord.Owner.UserRole.Name+' listOfUser.get(1) '+listOfUser.get(1));
         Contact contactRecord;
         contactRecord = TestUtilities.getContact();
         contactRecord.Accountid = acctRecord.id;
         // contactRecord.Core_IPS_Intel_Support_Owner__c = intelSupportOwner;
         contactRecord.core_ips_Active__c=false;
         contactRecord.Email = 'ContactDellTest@gmail.com';
-        contactRecord.MailingCountry = 'India';
         System.runAs(listOfUser.get(0)){
             insert contactRecord; 
         } 
         //insert contactRecord;
+        //  System.debug('contactRecord '+contactRecord);
         List<Core_IPS_Product_Organization__c> suppOrgList = new List<Core_IPS_Product_Organization__c>();
         Core_IPS_Product_Organization__c prodOrg = TestUtilities.getSupportOrg();
         Core_IPS_Product_Organization__c prodOrg2 = TestUtilities.getSupportOrg();
@@ -3853,12 +4007,12 @@ insert listofIpsLables;
                 insert listOfIpsProjects; 
             } 
         list<Asset> assetList = TestUtilities.getAssetList(2);
-        for(Asset asst : assetList){
-            asst.accountId = acctRecord.Id;
-            asst.Contactid = contactRecord.id;
-            asst.Core_IPS_Project__c = listOfIpsProjects.get(0).id;
-            asst.Core_Supported_Product__c = spList.get(0).id;
-        }
+            for(Asset asst : assetList){
+                asst.accountId = acctRecord.Id;
+                asst.Contactid = contactRecord.id;
+                asst.Core_IPS_Project__c = listOfIpsProjects.get(0).id;
+                asst.Core_Supported_Product__c = spList.get(0).id;
+            }
         System.runAs(listOfUser.get(0)){
             insert assetList;
         }
@@ -3876,7 +4030,7 @@ insert listofIpsLables;
             
             projectMember.core_ips_contact__c = contactRecord.id;
             projectMember.Core_IPS_Project__c = proj.id;
-            
+             
             // insert projProduct
             
             Core_IPS_Product__c projProduct1=TestUtilities.getIpsProduct();
@@ -3904,7 +4058,7 @@ insert listofIpsLables;
         //List<Core_IPS_Project__c> listOfIpsProjects = new List<Core_IPS_Project__c>{ipsProjectRecord};
         System.runAs(listOfUser1.get(0)){
             listOfIpsProjects.get(0).Core_Status__c = 'Active';
-            //update listOfIpsProjects;
+            update listOfIpsProjects;
         } 
         
         
@@ -3931,17 +4085,19 @@ insert listofIpsLables;
         c2.Core_IPS_Supported_Product__c = projAssetList.get(0).Core_Supported_Product__c;  
         c2.EntitlementId=listOfEntitlement.get(0).id;
         c2.Core_IPS_Private_Project__c = true;
-        System.runAs(listOfUser1.get(0)){
+        System.runAs(listOfUser.get(0)){
             insert  c2; 
         }
         final Map<Id,Case> mCase = new Map<Id,Case>();
         mCase.put(c2.Id,c2);
+        // System.debug('------------mCase1'+mCase); 
         /* System.runAs(listOfUser.get(0)){
 c2.Subject='test Grv Prvt Proj Owner';
 c2.Core_IPS_Supported_Product__c = projAssetList.get(1).Core_Supported_Product__c;  
 c2.assetid = projAssetList.get(1).Id;
 update  c2; 
 } */
+        // System.debug('-----------------case c2:'+c2.AssetId+'-'+c2.Core_IPS_Supported_Product__c+'-'+c2.Core_IPS_Private_Project__c);
         
         List<Case> caseList = new List<Case>{c2};
             Case c3 = new Case();
@@ -3955,15 +4111,14 @@ update  c2;
         
     }
     
-    
     static testmethod void caseProjProdOwnerUpdate1Test(){
         
         getrecords();
         // Query Profiles
         Map<String,ID> profiles = new Map<String,ID>();
         List<String> strProf = new List<String>();
-        strProf.add('System Administrator');
-        strProf.add('Sales Rep-BB-Dual IPS');
+        strProf.add('IPS Support Org Admin');
+        
         List<Profile> profileList = [select id, name from Profile where name IN : strProf];
         for(Profile prf : profileList){
             profiles.put(prf.name, prf.id);
@@ -3982,33 +4137,17 @@ update  c2;
             LocaleSidKey = 'en_US',
             TimeZoneSidKey = 'America/Los_Angeles', 
             UserName = 'nnnnewuser12300000@intel.com',
-            isActive = true
-            
-            
-        );//UserRoleId = r.Id
-        
-        User userRecord1 = new User(
-            Alias = 'StdUser', 
-            Email = 'newuser2ssssds11@intel.com', 
-            EmailEncodingKey ='UTF-8',
-            LastName = 'Testing',
-            FirstName = 'FName',
-            LanguageLocaleKey = 'en_US',
-            LocaleSidKey = 'en_US',
-            TimeZoneSidKey = 'America/Los_Angeles', 
-            UserName = 'nnnnewusedsdsdeeer12300@intel.com',
-            isActive = true
-            
+            isActive = true,
+            UserRoleId = r.Id
             
         );
         
         
-        List<User> listOfUser1 = new List<User>{userRecord,userRecord1}; //TestUtilities.getListOfUser(1);
-            listOfUser1.get(0).ProfileID =  profiles.get('System Administrator');
-        listOfUser1.get(1).ProfileID =  profiles.get('Sales Rep-BB-Dual IPS');
+        List<User> listOfUser1 = new List<User>{userRecord}; //TestUtilities.getListOfUser(1);
+            listOfUser1.get(0).ProfileID =  profiles.get('IPS Support Org Admin');
         //listOfUser1.get(1).ProfileID =  profiles.get('IPS Support Org Admin');
         
-        insertUsersWithValidationBypass(listOfUser1);
+        insert listOfUser1; 
         
         /* List<Core_IPS_Labels__c> listofIpsLables = TestUtilities.getIPSLabel();
 System.runAs(listOfUser.get(0)){
@@ -4032,17 +4171,18 @@ insert listofIpsLables;
             insert acctRecord; 
         } 
         //insert acctRecord;
+        //   System.debug('acctRecord>>'+acctRecord.Owner.UserRole.Name+' listOfUser.get(1) '+listOfUser.get(1));
         Contact contactRecord;
         contactRecord = TestUtilities.getContact();
         contactRecord.Accountid = acctRecord.id;
         // contactRecord.Core_IPS_Intel_Support_Owner__c = intelSupportOwner;
         contactRecord.core_ips_Active__c=false;
         contactRecord.Email = 'ContactDellTest@gmail.com';
-        contactRecord.MailingCountry = 'India';
         System.runAs(listOfUser.get(0)){
             insert contactRecord; 
         } 
         //insert contactRecord;
+        //  System.debug('contactRecord '+contactRecord);
         List<Core_IPS_Product_Organization__c> suppOrgList = new List<Core_IPS_Product_Organization__c>();
         Core_IPS_Product_Organization__c prodOrg = TestUtilities.getSupportOrg();
         Core_IPS_Product_Organization__c prodOrg2 = TestUtilities.getSupportOrg();
@@ -4084,12 +4224,12 @@ insert listofIpsLables;
                 insert listOfIpsProjects; 
             } 
         list<Asset> assetList = TestUtilities.getAssetList(1);
-        for(Asset asst : assetList){
-            asst.accountId = acctRecord.Id;
-            asst.Contactid = contactRecord.id;
-            asst.Core_IPS_Project__c = listOfIpsProjects.get(0).id;
-            asst.Core_Supported_Product__c = spList.get(0).id;
-        }
+            for(Asset asst : assetList){
+                asst.accountId = acctRecord.Id;
+                asst.Contactid = contactRecord.id;
+                asst.Core_IPS_Project__c = listOfIpsProjects.get(0).id;
+                asst.Core_Supported_Product__c = spList.get(0).id;
+            }
         System.runAs(listOfUser1.get(0)){
             insert assetList;
         }
@@ -4101,13 +4241,13 @@ insert listofIpsLables;
             
             projAccount.Core_Account__c=acctRecord.Id;
             projAccount.Core_IPS_Project__c=proj.Id;
-            
+           
             
             //insert projectMember;    
             
             projectMember.core_ips_contact__c = contactRecord.id;
             projectMember.Core_IPS_Project__c = proj.id;
-            
+           
             // insert projProduct
             
             Core_IPS_Product__c projProduct1=TestUtilities.getIpsProduct();
@@ -4136,7 +4276,7 @@ insert listofIpsLables;
         //List<Core_IPS_Project__c> listOfIpsProjects = new List<Core_IPS_Project__c>{ipsProjectRecord};
         System.runAs(listOfUser1.get(0)){
             listOfIpsProjects.get(0).Core_Status__c = 'Active';
-            //update listOfIpsProjects;
+            update listOfIpsProjects;
         } 
         
         
@@ -4162,7 +4302,7 @@ insert listofIpsLables;
         c2.Core_IPS_Supported_Product__c = projAssetList.get(0).Core_Supported_Product__c;  
         c2.EntitlementId=listOfEntitlement.get(0).id;
         c2.Core_IPS_Private_Project__c = true;
-        System.runAs(listOfUser1.get(0)){
+        System.runAs(listOfUser.get(0)){
             insert  c2; 
             System.assertEquals(c2!=null, true, 'Case inserted');
         }
@@ -4196,57 +4336,36 @@ Modification Log :
         contactRecord.Accountid = acct.id;
         contactRecord.core_ips_Active__c=false;
         contactRecord.Email = 'runTestClass@test.com';
-        contactRecord.MailingCountry = 'India';
         conList.add(contactRecord);
         
         Contact contactRecord1 = TestUtilities.getContact();
         contactRecord1.Accountid = acct.id;
         contactRecord1.core_ips_Active__c=false;
         contactRecord1.Email = 'run123TestClass@test.com';
-        contactRecord1.MailingCountry = 'India';
         conList.add(contactRecord1);
         
         insert conList;
         
         //Custom Setting - Trigger Executions
-        List<Core_Trigger_Executions__c> triggerExecutionList= new List<Core_Trigger_Executions__c>();
         Core_Trigger_Executions__c  triggerExecution = new Core_Trigger_Executions__c();
-        triggerExecution.Name = 'IPSCaseFieldsInit';
+        triggerExecution.Name = 'insertCommentUSAMinds';
         triggerExecution.Core_Active__c = true;
         triggerExecution.Core_Class_Name__c ='Core_IPS_CaseTriggerHandler';
-        triggerExecution.Core_Description__c = 'To update Case fields.';
+        triggerExecution.Core_Description__c = 'Used for adding Private to Intel comment for USA-Minds cases';
         triggerExecution.Core_Object__c = 'Case';
-        triggerExecution.Core_Trigger_Events__c = 'before insert';
+        triggerExecution.Core_Trigger_Events__c = 'after insert';
+        insert triggerExecution;   
         
-        Core_Trigger_Executions__c  triggerExecution3 = new Core_Trigger_Executions__c();
-        triggerExecution3.Name = 'assignCaseInformationfromProject';
-        triggerExecution3.Core_Active__c = true;
-        triggerExecution3.Core_Class_Name__c ='Core_IPS_CaseTriggerHandler';
-        triggerExecution3.Core_Description__c = 'To update Case fields.';
-        triggerExecution3.Core_Object__c = 'Case';
-        triggerExecution3.Core_Trigger_Events__c = 'before insert';
-        triggerExecutionList.add(triggerExecution3 ); 
-        insert triggerExecutionList;
         
         //Custom Setting - Trigger Executions
-        Core_Trigger_Executions__c  triggerExecution2 = new Core_Trigger_Executions__c();
-        triggerExecution2.Name = 'UpdateCommentUSAMinds';
-        triggerExecution2.Core_Active__c = true;
-        triggerExecution2.Core_Class_Name__c ='Core_IPS_CaseTriggerHandler';
-        triggerExecution2.Core_Description__c = 'Used for adding Private to Intel comment for USA-Minds cases when Updated';
-        triggerExecution2.Core_Object__c = 'Case';
-        triggerExecution2.Core_Trigger_Events__c = 'after update';
-        insert triggerExecution2;   
-        
-        Core_Trigger_Executions__c  triggerExecution4 = new Core_Trigger_Executions__c();
-        triggerExecution4.Name = 'insertCommentUSAMinds';
-        triggerExecution4.Core_Active__c = true;
-        triggerExecution4.Core_Class_Name__c ='Core_IPS_CaseTriggerHandler';
-        triggerExecution4.Core_Description__c = 'Used for adding Private to Intel comment for USA-Minds cases when Updated';
-        triggerExecution4.Core_Object__c = 'Case';
-        triggerExecution4.Core_Trigger_Events__c = 'after insert';
-        insert triggerExecution4;   
-        
+        Core_Trigger_Executions__c  triggerExecution1 = new Core_Trigger_Executions__c();
+        triggerExecution1.Name = 'UpdateCommentUSAMinds';
+        triggerExecution1.Core_Active__c = true;
+        triggerExecution1.Core_Class_Name__c ='Core_IPS_CaseTriggerHandler';
+        triggerExecution1.Core_Description__c = 'Used for adding Private to Intel comment for USA-Minds cases when Updated';
+        triggerExecution1.Core_Object__c = 'Case';
+        triggerExecution1.Core_Trigger_Events__c = 'after update';
+        insert triggerExecution1;   
         
         List<Core_IPS_Labels__c> listofIpsLables = new List<Core_IPS_Labels__c>();
         Core_IPS_Labels__c ipsLables0 = new Core_IPS_Labels__c(Name = 'PRIVATE_TO_INTEL',Value__c = 'Private to Intel');
@@ -4309,7 +4428,7 @@ Modification Log :
         triggerExecution1.Core_Object__c = 'Case';
         triggerExecution1.Core_Trigger_Events__c = 'after insert';
         insert triggerExecution1;   
-        List<Profile> profileList = [select id, name from Profile where name = 'System Administrator' limit 1];
+        List<Profile> profileList = [select id, name from Profile where name = 'Sales Rep-CW' limit 1];
         User userRecord = new User();
         userRecord.Alias = 'StdUser';
         //userRecord.contactId =listOfContacts[0].id;
@@ -4323,7 +4442,7 @@ Modification Log :
         userRecord.UserName = 'newuser22' + String.valueOf(DateTime.Now().getTime()) + '@intel.com.' + UserInfo.getOrganizationId();
         userRecord.isActive = true;
         userRecord.ProfileID =  profileList[0].Id;  
-        insertUsersWithValidationBypass(new List<User>{userRecord});
+        insert userRecord;
         
         Map<String, Id> caseRecordtype = new Map<String, Id>();
         
@@ -4345,14 +4464,12 @@ Modification Log :
             contactRecord.Accountid = acct.id;
             contactRecord.core_ips_Active__c=false;
             contactRecord.Email = 'runTestClass@test.com';
-            contactRecord.MailingCountry = 'India';
             conList.add(contactRecord);
             
             Contact contactRecord1 = TestUtilities.getContact();
             contactRecord1.Accountid = acct.id;
             contactRecord1.core_ips_Active__c=false;
             contactRecord1.Email = 'run123TestClass@test.com';
-            contactRecord1.MailingCountry = 'India';
             conList.add(contactRecord1);
             
             insert conList;
@@ -4394,15 +4511,14 @@ listOfCase.add(c);
     } 
     //created by ranjini for US404759
     static testmethod void createNACCaseTest(){
-        List<Core_Trigger_Executions__c> triggerExecutionList= new List<Core_Trigger_Executions__c>();
-        Core_Trigger_Executions__c  triggerExecution = new Core_Trigger_Executions__c();
-        triggerExecution.Name = 'IPSCaseFieldsInit';
-        triggerExecution.Core_Active__c = true;
-        triggerExecution.Core_Class_Name__c ='Core_IPS_CaseTriggerHandler';
-        triggerExecution.Core_Description__c = 'To update Case fields.';
-        triggerExecution.Core_Object__c = 'Case';
-        triggerExecution.Core_Trigger_Events__c = 'before insert';
-        
+        Core_Trigger_Executions__c  triggerExecution1 = new Core_Trigger_Executions__c();
+        triggerExecution1.Name = 'IPSCaseFieldsInit';
+        triggerExecution1.Core_Active__c = true;
+        triggerExecution1.Core_Class_Name__c ='Core_IPS_CaseTriggerHandler';
+        triggerExecution1.Core_Description__c = 'Check If Org number is same and Case closure is equal to custom setting closure and bugfix id is not empty.';
+        triggerExecution1.Core_Object__c = 'Case';
+        triggerExecution1.Core_Trigger_Events__c = 'before insert';
+        insert triggerExecution1; 
         
         Core_IPS_Helper_Utility.isHandlerMethodExecutionEnabled('IPSCaseFieldsInit');
         Id recordTypeIPSNAC = Schema.SObjectType.Case.getRecordTypeInfosByName().get('IPS No Assigned Contact Case').getRecordTypeId();
@@ -4420,8 +4536,8 @@ listOfCase.add(c);
         Test.stopTest();
     }
     
-   /* static testmethod void createCaseShareTest(){
-        List<Profile> profileList = [select id, name from Profile where name = 'Sales Rep-CW' limit 1];
+    static testmethod void createCaseShareTest(){
+         List<Profile> profileList = [select id, name from Profile where name = 'Sales Rep-CW' limit 1];
         User userRecord = new User();
         userRecord.Alias = 'StdUser';
         //userRecord.contactId =listOfContacts[0].id;
@@ -4436,33 +4552,33 @@ listOfCase.add(c);
         userRecord.isActive = true;
         userRecord.ProfileID =  profileList[0].Id;  
         insert userRecord;
-        System.AssertEquals(userRecord.Id != null, true);
+       
         
-        Account acct =  new Account();
+         Account acct =  new Account();
         Contact con =  new Contact();
         Entitlement ent = new Entitlement();
         acct = TestUtilities.getAccountRecord();
         acct.Core_CNDA_Number__c ='1691';
         insert acct;
-        Map<String, Id> caseRecordtype = new Map<String, Id>();
+         Map<String, Id> caseRecordtype = new Map<String, Id>();
         
         for(Recordtype recType:[Select ID,Name from Recordtype where sobjectType = 'Case']) {  
             caseRecordtype.put(recType.Name,recType.ID);
         } 
-        List<Contact> conList = new List<Contact>();
-        Contact contactRecord = TestUtilities.getContact();
-        contactRecord.Accountid = acct.id;
-        contactRecord.core_ips_Active__c=false;
-        contactRecord.Email = 'runTestClass@test.com';
-        conList.add(contactRecord);
+         List<Contact> conList = new List<Contact>();
+            Contact contactRecord = TestUtilities.getContact();
+            contactRecord.Accountid = acct.id;
+            contactRecord.core_ips_Active__c=false;
+            contactRecord.Email = 'runTestClass@test.com';
+            conList.add(contactRecord);
         
-        List<Core_IPS_Project__c> listOfIpsProjects = TestUtilities.getListOfIpsProjects(2);  
-        insert listOfIpsProjects;
+         List<Core_IPS_Project__c> listOfIpsProjects = TestUtilities.getListOfIpsProjects(2);  
+         insert listOfIpsProjects;
         
-        Case caseRecord1= new case(recordtypeId=caseRecordtype.get('IPS Case Create'),contactId=conList[0].Id,subject='testing case1',Core_IPS_Project_Case__c = listOfIpsProjects[0].Id,  Type='Test case', Origin='Web', Reason='Testing',Status='New',Priority='High',Core_Severity__c='High');
-        Case caseRecord2= new case(recordtypeId=caseRecordtype.get('IPS Case Create'),contactId=conList[0].Id,subject='testing case2',Core_IPS_Project_Case__c = listOfIpsProjects[0].Id,  Type='Test case', Origin='Web', Reason='Testing',Status='New',Priority='High',Core_Severity__c='High');
-        Case caseRecord3= new case(recordtypeId=caseRecordtype.get('IPS GEC ReadOnly'),contactId=conList[0].Id,subject='testing case2',Core_IPS_Project_Case__c = listOfIpsProjects[0].Id,  Type='Test case', Origin='Web', Reason='Testing',Status='New',Priority='High',Core_Severity__c='High');
-        caseRecord3.Core_IPS_GEC_Case__c = true; 
+         Case caseRecord1= new case(recordtypeId=caseRecordtype.get('IPS Case Create'),contactId=conList[0].Id,subject='testing case1',Core_IPS_Project_Case__c = listOfIpsProjects[0].Id,  Type='Test case', Origin='Web', Reason='Testing',Status='New',Priority='High',Core_Severity__c='High');
+         Case caseRecord2= new case(recordtypeId=caseRecordtype.get('IPS Case Create'),contactId=conList[0].Id,subject='testing case2',Core_IPS_Project_Case__c = listOfIpsProjects[0].Id,  Type='Test case', Origin='Web', Reason='Testing',Status='New',Priority='High',Core_Severity__c='High');
+         Case caseRecord3= new case(recordtypeId=caseRecordtype.get('IPS GEC ReadOnly'),contactId=conList[0].Id,subject='testing case2',Core_IPS_Project_Case__c = listOfIpsProjects[0].Id,  Type='Test case', Origin='Web', Reason='Testing',Status='New',Priority='High',Core_Severity__c='High');
+         caseRecord3.Core_IPS_GEC_Case__c = true; 
         List<case>listOfCase = new List<case>();
         listOfCase.add(caseRecord1);
         listOfCase.add(caseRecord2);
@@ -4475,211 +4591,16 @@ listOfCase.add(c);
         lstCaseShare.add(csShareRec2);
         
         insert lstCaseShare;
+        
         Map<Id,Set<Id>> caseContactUserCustomerVisibleFalseMap = new Map<Id,Set<Id>>();
         Map<Id,Set<Id>> caseContactUserCustomerVisibleTrueMap = new Map<Id,Set<Id>>();
         set<Id> testset = new Set<Id>();
         caseContactUserCustomerVisibleFalseMap.put(caseRecord1.id, testset);
         caseContactUserCustomerVisibleTrueMap.put(caseRecord2.id,testset);
         Test.startTest();
-        Core_IPS_CaseTriggerHandler.createCaseShare(lstCaseShare, caseContactUserCustomerVisibleFalseMap, caseContactUserCustomerVisibleTrueMap );
-        Test.stopTest();
-        System.assert(profileList[0].id != null, true);
-    } */
-    
-    static testmethod void createNACCaseTest1(){
-        List<Core_Trigger_Executions__c> triggerExecutionList= new List<Core_Trigger_Executions__c>();
-        Core_Trigger_Executions__c  triggerExecution = new Core_Trigger_Executions__c();
-        triggerExecution.Name = 'IPSCaseFieldsInit';
-        triggerExecution.Core_Active__c = true;
-        triggerExecution.Core_Class_Name__c ='Core_IPS_CaseTriggerHandler';
-        triggerExecution.Core_Description__c = 'To update Case fields.';
-        triggerExecution.Core_Object__c = 'Case';
-        triggerExecution.Core_Trigger_Events__c = 'before insert';
-        
-        
-        Core_IPS_Helper_Utility.isHandlerMethodExecutionEnabled('IPSCaseFieldsInit');
-        Id recordTypeIPSNAC = Schema.SObjectType.Case.getRecordTypeInfosByName().get('IPS No Assigned Contact Case').getRecordTypeId();
-        Case caseRecord = new Case(
-            
-            Subject = 'TestSubject 1',
-            Description = 'TestDescription',
-            Core_Severity__c = 'low',
-            Type = 'Question',
-            RecordTypeId = recordTypeIPSNAC
-        );
-        
-        
-        List<Core_IPS_Labels__c> lablesList = new List<Core_IPS_Labels__c>();
-        Core_IPS_Labels__c labels = new Core_IPS_Labels__c();
-        labels.name= 'PRIVATE_TO_INTEL';
-        labels.value__c='Private to Intel';
-        lablesList.add(labels);
-        
-        Core_IPS_Labels__c labels1 = new Core_IPS_Labels__c();
-        labels1.name= 'PUBLIC_TO_CUSTOMERS';
-        labels1.value__c='Public to Customers';
-        lablesList.add(labels1);
-        
-        Core_IPS_Labels__c labels2 = new Core_IPS_Labels__c();
-        labels2.name= 'PRIVATE_TO_AGENTS';
-        labels2.value__c='Private to Agents';
-        lablesList.add(labels2);
-        
-        Core_IPS_Labels__c labels3 = new Core_IPS_Labels__c();
-        labels3.name= 'Customer';
-        labels3.value__c='Customer';
-        lablesList.add(labels3);
-        
-        Core_IPS_Labels__c labels4 = new Core_IPS_Labels__c();
-        labels4.name= 'Agent';
-        labels4.value__c='Agent';
-        lablesList.add(labels4);
-        
-        Core_IPS_Labels__c labels5 = new Core_IPS_Labels__c();
-        labels5.name= 'FAE';
-        labels5.value__c='FAE';
-        lablesList.add(labels5);
-        
-        Core_IPS_Labels__c labels6 = new Core_IPS_Labels__c();
-        labels6.name= 'Partner';
-        labels6.value__c='Partner';
-        lablesList.add(labels6);
-        
-        Core_IPS_Labels__c labels7 = new Core_IPS_Labels__c();
-        labels7.name= 'PRIVATE_TO_PARTNERS';
-        labels7.value__c='Private to Partner';
-        lablesList.add(labels7);
-        
-        Core_IPS_Labels__c labels8 = new Core_IPS_Labels__c();
-        labels8.name= 'Partner - DFAE';
-        labels8.value__c= 'Partner - DFAE';
-        lablesList.add(labels8);
-        
-        Core_IPS_Labels__c labels9 = new Core_IPS_Labels__c();
-        labels9.name= 'Backend Integration';
-        labels9.value__c='Backend Integration';
-        lablesList.add(labels9);
-        
-        Core_IPS_Labels__c labels10 = new Core_IPS_Labels__c();
-        labels10.name= 'Comment Source - B2B API';
-        labels10.value__c='B2B API';
-        lablesList.add(labels10);
-        
-        Core_IPS_Labels__c labels11 = new Core_IPS_Labels__c();
-        labels11.name= 'Comment Source - Backend System';
-        labels11.value__c='Backend System';
-        lablesList.add(labels11);
-        
-        Core_IPS_Labels__c labels12 = new Core_IPS_Labels__c();
-        labels12.name= 'Comment Source - Customer';
-        labels12.value__c='Customer Portal';
-        lablesList.add(labels12);
-        
-        Core_IPS_Labels__c labels13 = new Core_IPS_Labels__c();
-        labels13.name= 'Comment Source - Data Migration';
-        labels13.value__c='Data Migration';
-        lablesList.add(labels13);
-        
-        Core_IPS_Labels__c labels14 = new Core_IPS_Labels__c();
-        labels14.name= 'Comment Source - Email';
-        labels14.value__c='Email';
-        lablesList.add(labels14); 
-        
-        Core_IPS_Labels__c labels15 = new Core_IPS_Labels__c();
-        labels15.name= 'Comment Source - Internal';
-        labels15.value__c='Internal Portal  ';
-        lablesList.add(labels15);
-        
-        Core_IPS_Labels__c labels16 = new Core_IPS_Labels__c();
-        labels16.name= 'Comment Source - N/A';
-        labels16.value__c='N/A';
-        lablesList.add(labels16);
-        
-        Core_IPS_Labels__c labels17 = new Core_IPS_Labels__c();
-        labels17.name= 'Data Migration';
-        labels17.value__c='Data Migration';
-        lablesList.add(labels17);
-        // Avoid Hardcoding Id Fix  - Shipra
-        Case caseRecord1=  TestUtilities.getCase(); 
-        insert caseRecord1;
-        Core_IPS_Labels__c labels21 = new Core_IPS_Labels__c();
-        labels21.name= 'Core_IPS_USAMindsComment_Author';
-        labels21.value__c=caseRecord1.Id;
-        //labels21.value__c='5003F000000ffZFQAY';
-        lablesList.add(labels21);
-        
-        Core_IPS_Labels__c labels22 = new Core_IPS_Labels__c();
-        labels22.name= 'System';
-        labels22.value__c='System';
-        lablesList.add(labels22);
-        
-        Core_IPS_Labels__c labels18 = new Core_IPS_Labels__c();
-        labels18.name= 'Partner - Agent';
-        labels18.value__c='Partner - Agent';
-        lablesList.add(labels18);      
-        insert lablesList;
-        
-        Test.startTest();
-        insert caseRecord;
-        List<id> idlist = new List<id>();
-        idlist.add(caseRecord.id);
-        Core_IPS_CaseTriggerHandler.promoteMissedItems(idlist);
-        Map<Id,String> testmap = new Map<Id,String>();
-        // Avoid Hardcoding Id Fix  - Shipra
-        Case caseRecord2=  TestUtilities.getCase(); 
-        insert caseRecord2;
-        Id testid = caseRecord2.Id;
-        //        Id testid = '5003F000000ffZFQAY';
-        //testmap.put(testid,'{"id":"Env Dtl Resp","Env Dtl Resp":"Env Dtl Resp"}');
-        List<Object> edqData = new List<Object>();  
-        Map<String, Object> Answermap = new Map<String, Object>();
-        Answermap.put('Ansr',5);
-        edqData.add(Answermap);
-        Map<String, List<Object>> testmap1 = new Map<String, List<Object>>();
-        testmap1.put('Env Dtl Resp',edqData);
-        String dataString = System.JSON.serialize(testmap1);
-        testmap.put(testid,dataString);
-        
-        List<String> testList = new List<String>();
-        testList.add('question');
-        Core_IPS_CaseTriggerHandler.getEdqs(testmap, testList);        
-        List<Id> caseIds = new List<id> ();
-        caseIds.add(caseRecord.Id);
-        Core_IPS_CaseTriggerHandler.prepareComment(caseIds);
-        Core_IPS_CaseTriggerHandler.createCaseComment(caseRecord.Id);
-        
-        System.assertEquals(caseRecord!=null, true, 'Case Inserted');
-        Test.stopTest();
-    }
-    
-    //Added by Vishal As part Of STOWD implementation -TWC777-2514 - 08/08/2024
-    @isTest
-    public static void handleBeforeUpdateSTOWDTest() {
-       // List<STOWD_Tracking_Field__mdt> trackingFields = [SELECT MasterLabel, IsActive__c, FieldType__c FROM STOWD_Tracking_Field__mdt];
-        
-        Case testCase = new Case(
-            Status = 'New',
-            OwnerId = UserInfo.getUserId(),
-            Core_IPS_Escalated_Level__c = 'Low',
-            Core_Sub_Status__c = 'Pending',
-            Core_IPS_Assigned_Queue__c = 'Queue 1'
-        );
-        insert testCase;
-        // Added By Chiru
-        System.AssertEquals(testCase.Id != null,true);
-        List<Case> cases = [SELECT Id, Status, OwnerId, Core_IPS_Escalated_Level__c, Core_Sub_Status__c, Core_IPS_Assigned_Queue__c FROM Case];
-        
-        Map<Id, Case> oldCaseMap = new Map<Id, Case>(cases);
-        
-        for (Case caseRec : cases) {
-            caseRec.Status = 'In Progress'; 
-        }
-        
-        Test.startTest();
-        //Core_IPS_CaseTriggerHandler.handleBeforeUpdate(cases, oldCaseMap);
-        Test.stopTest();
-        
-        
+            Core_IPS_CaseTriggerHandler.createCaseShare(lstCaseShare, caseContactUserCustomerVisibleFalseMap, caseContactUserCustomerVisibleTrueMap );
+                    
+            Test.stopTest();
     }
     
 }

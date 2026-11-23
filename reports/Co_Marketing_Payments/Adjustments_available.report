@@ -16,21 +16,15 @@
         <field>PartnerFundClaim$Core_MDF_Program__c</field>
     </columns>
     <columns>
-        <field>PartnerFundClaim$Core_MDF_Budget_Type_Options_Nm__c</field>
-    </columns>
-    <columns>
         <field>PartnerFundClaim$Core_MDF_Country_Location_nm__c</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>PartnerFundClaim$Amount</field>
     </columns>
-    <columns>
-        <field>PartnerFundClaim$Request.Core_MDF_BU_Percent_txt__c</field>
-    </columns>
     <description>Adjustments available</description>
     <filter>
-        <booleanFilter>1 AND 2 AND 3 AND 4</booleanFilter>
+        <booleanFilter>1 AND 2</booleanFilter>
         <criteriaItems>
             <column>PartnerFundClaim$Core_MDF_Type_Txt__c</column>
             <columnToColumn>false</columnToColumn>
@@ -44,20 +38,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Pending Available Fund</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>PartnerFundClaim$Request.ChannelPartner.Core_MDF_Channel_Program__c.Core_MDF_Technical_Program_Name__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>,Client CoMarketing Fund,Client CoMarketing Fund Boost,Data Center CoMarketing Fund,Intel Partner Alliance,Retail Marketing Funds,Service Provider CoMarketing Fund</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>PartnerFundClaim$Core_MDF_Budget_Type_Options_Nm__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>,Business Client Acceleration - MDF,CCF 1.0,Client Market Accelerate,Client Specialties MDF,Data Center Market Accelerate,Data Centric Acceleration - MDF,DCF 1.0,Intel Rise Technology Initiative,IoT Premier - MDF,IoT Targeted - MDF,ODM Growth Plan - Client MDF,MDF,MDF+,OEM CMP,Retail MDF,RSA MD,Service Provider CMP,SOEM Client MDF,SOEM Data Center MDF,Account Plan,Proposal I MDF,Proposal II MDF</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

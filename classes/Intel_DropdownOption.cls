@@ -10,15 +10,11 @@
 * 
 **************************************************************************************************************************************************************************/
 public class Intel_DropdownOption {
-    public static Boolean isWorking() {
-        return true;
-    }
-      // public String label { get; set; }
-      // public String value { get; set; }
-      // public String businessSegments {get;set;} //added by Abhishek US523547
-      // //public String defaultValue { get; set; }// check who added this field as it is not given by DRACO
-      // public Boolean disabled { get; set; }
-      // public Boolean selected { get; set; }
-      // public Boolean required { get; set; }
-      // public Intel_DropdownOption(String lab, String val) { label = lab; value = val; }
+	  public String label { get; set; }
+      public String value { get; set; }
+      public String businessSegments {get;set;} //added by Abhishek US523547
+      //public String defaultValue { get; set; }// check who added this field as it is not given by DRACO
+      public Boolean disabled { get; set; }
+      public Boolean required { get; set; }
+      public Intel_DropdownOption(String lab, String val) { label = lab; value = val; }
 }

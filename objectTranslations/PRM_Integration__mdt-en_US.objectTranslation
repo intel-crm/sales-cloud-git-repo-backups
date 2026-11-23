@@ -21,10 +21,6 @@
         <name>Password__c</name>
     </fields>
     <fields>
-        <label><!-- Scope --></label>
-        <name>Scope__c</name>
-    </fields>
-    <fields>
         <label><!-- Username --></label>
         <name>Username__c</name>
     </fields>

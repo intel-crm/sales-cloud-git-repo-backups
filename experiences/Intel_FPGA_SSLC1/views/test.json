@@ -1,0 +1,38 @@
+{
+  "appPageId" : "6b36c665-0609-49d0-9746-033feed642b2",
+  "componentName" : "c:IntelBlankPageLayout",
+  "dataProviders" : [ ],
+  "id" : "3a70a1c2-cc74-4781-979d-df418a78240b",
+  "label" : "test",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:sales_NonEventFeedback",
+      "id" : "716bfd2c-cef2-4440-a0c0-c846cc83a670",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "00a261c2-bc83-4622-8cfb-d7a9ba35736b",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "test"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "5cff43be-ee25-4996-bd58-d4c36c853f55",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "a0c17382-e643-42c5-b987-aaca2c649fcb",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-test"
+}

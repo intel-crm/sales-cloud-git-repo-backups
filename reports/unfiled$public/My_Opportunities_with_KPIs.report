@@ -13,13 +13,10 @@
         <field>STAGE_NAME</field>
     </columns>
     <columns>
-        <field>CLOSE_DATE</field>
-    </columns>
-    <columns>
         <field>FULL_NAME</field>
     </columns>
     <columns>
-        <field>AGE</field>
+        <field>ROLLUP_DESCRIPTION</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Technical_Owner__c</field>
@@ -31,6 +28,18 @@
         <field>EXP_AMOUNT</field>
     </columns>
     <columns>
+        <field>PROBABILITY</field>
+    </columns>
+    <columns>
+        <field>AGE</field>
+    </columns>
+    <columns>
+        <field>CLOSE_DATE</field>
+    </columns>
+    <columns>
+        <field>TYPE</field>
+    </columns>
+    <columns>
         <field>CUST_NAME</field>
     </columns>
     <columns>
@@ -40,16 +49,16 @@
     <description>Report listing all KPIs for a given manager.</description>
     <filter>
         <criteriaItems>
-            <column>Opportunity.Core_Technical_Owner__c</column>
+            <column>ROLLUP_DESCRIPTION</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Nick Ong</value>
+            <value>EMP of Chuck Palmeri</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Tabular</format>
-    <name>2021 Opportunities with KPIs</name>
+    <name>2020 Opportunities with KPIs</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -73,8 +82,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2026-11-22</endDate>
+        <endDate>2026-11-23</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2026-11-22</startDate>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

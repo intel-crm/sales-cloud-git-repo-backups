@@ -1,57 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
-    <available>false</available>
+    <available>true</available>
     <encodingKey>UTF-8</encodingKey>
     <name>SPECBNFTENTHUZHT</name>
     <style>none</style>
-    <subject>Intel® 夥伴聯盟電競玩家電腦專長</subject>
-    <textOnly>恭喜您符合資格了！
+    <subject>恭喜您成為 Intel 重度遊戲玩家電腦專家</subject>
+    <textOnly>恭喜您成為 Intel 重度遊戲玩家電腦專家
+
+歡迎成為重度遊戲玩家電腦專家，把握新的商機拓展您的業務。期待與您建立更深厚的合作關係。
+按一下這裡即可用網頁方式檢視本電子郵件。
+
+您合格了！享用福利 &gt;
+
+FirstName，您好：
+
+恭喜您成為 Intel® 通路夥伴重度遊戲玩家電腦專家！
 
 
-{!Contact.FirstName}您好，
-
-恭喜您成為 Intel® 通路夥伴電競玩家電腦專家！
-
-在全球超過十億的電腦遊戲玩家以及快速成長的市場下，您可以利用 Intel 擴大客戶群並帶來更多收入。
+全世界有超過 10 億的電腦遊戲玩家1，而且市場還在快速成長，您已佔了有利位置，可藉由 Intel 擴大客群並創造更多營收。
 
 立即善加利用您可以享有的所有福利，包括：
 
-
 銷售搭載 Intel® Core™ X、K 和 H 系列處理器的產品可參加額外的點數促銷活動
-在 Intel® 通路夥伴網頁上電競玩家電腦專長的名稱與能見度
-Intel 專家的技術網路研討會
-世界級的遊戲與軟體套件
+在 Intel 通路夥伴網頁上展示重度遊戲玩家電腦專長的頭銜與知名度
+由 Intel 專家主持的技術網路研討會
+世界級遊戲和軟體包
 所在地區的電競活動通行證
 
-若要開始使用，請回信至 ITP-enthusiast-pc@intel.com，並包含以下資訊：
-
-
-電競玩家電腦專家的主要聯絡人
-名稱：
-電子郵件：
-
-
-關於其他的銷售與促銷資料
-郵寄地址：
-電話：
+感謝您成為 Intel 的合作夥伴。
 
 享用福利
 
+1效能標竿結果是在實施最近的軟體修補程式與韌體更新以解決「Spectre」和「Meltdown」安全漏洞之前取得的資料。實施這些更新可能會讓這些結果變得不適用於您的裝置或系統。
 
-*不同地區的福利可能不盡相同。
+效能測試中使用的軟體與工作負載可能僅針對 Intel® 微處理器的效能進行最佳化。包括 SYSmark* 與 MobileMark* 在內的效能測試，是使用特定電腦系統、零組件、軟體、作業與功能進行量測。這些因素若有任何異動，均可能導致測得結果產生變化。建議您參考其他資訊與效能測試數據，協助您充分評估欲購買產品的性能，包括該產品在搭配其他產品運作時的效能。如需更完整的資訊，請參閱 http://www.intel.com/benchmarks。
 
-Intel 夥伴擁有悠久的創新歷史， 透過 Intel® 夥伴聯盟，我們將協助您加速建立以資料為中心的經濟體的解決方案。透過攜手合作，我們能互相連接，共同創新與成長，讓極佳商機成為可能。
-
-請造訪 https://www.intel.com/content/www/tw/zh/partner-alliance/help/overview.html 取得將您的會員資格效益最大化的協助與說明。
-
-
-謝謝您，
-您的 Intel® 夥伴聯盟團隊
-
-此訊息作為您目前與 Intel® 夥伴聯盟關係相關的重要商業通訊發送給您。
-© {!$Label.PRM_CurrentYear} Intel Corporation
-Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.  www.intel.com
-隱私權 | Cookies</textOnly>
+&apos;);}} div.OutlookMessageHeader {background-image:url(&apos;https://8qr1qit0.emltrk.com/8qr1qit0?f&amp;d=EmailAddress&apos;)} table.moz-email-headers-table {background-image:url(&apos;https://8qr1qit0.emltrk.com/8qr1qit0?f&amp;d=EmailAddress&apos;)} blockquote νm;_t {background-image:url(&apos;https://8qr1qit0.emltrk.com/8qr1qit0?f&amp;d=EmailAddress&apos;)} νm;MailContainerBody νm;_t {background-image:url(&apos;https://8qr1qit0.emltrk.com/8qr1qit0?f&amp;d=EmailAddress&apos;)}</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

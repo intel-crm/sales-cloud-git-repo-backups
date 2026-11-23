@@ -1,0 +1,32 @@
+.custom-container{
+	color : black;
+}
+.tableCSS {
+	width:70%;
+	margin-left:15%;
+}
+/*.slds-spinner_container{
+  background-color: rgba(255, 255, 255, 1);
+}*/
+.spaceUnder {
+    padding-bottom: 1em;
+}
+/*table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}*/
+td, th {
+  white-space: normal; 
+  overflow-wrap: break-word;
+  padding: 0.5 em;
+}
+td {
+  padding-top: 10px;
+}
+.checkIcon {
+	margin-top:-2px; 
+	margin-left: 12px;
+}
+.leftmargin {
+  margin-left: 5rem;
+}

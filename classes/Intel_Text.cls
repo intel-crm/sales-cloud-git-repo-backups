@@ -11,17 +11,14 @@
 **************************************************************************************************************************************************************************/
 // TEXT - https://developer.salesforce.com/docs/component-library/bundle/lightning:input
 public class Intel_Text extends Intel_Input {
-    public static Boolean isWorking() {
-        return true;
-    }
-    //   { type = 'text'; }
-    //   public String subType { get; set; }
-    //   public String label { get; set; }
-    // public String valueType { get; set; }	//default or complex
-    // public Map<String, String> additionalValues{ get; set; }	//holds additional values if it's complex valueType
-    // public String textValue{ get; set; }
-    // public Intel_Text() { subType = 'text'; valueType='default';}
-    // public Intel_Text(String s) { subType = s; valueType='default';} 
+      { type = 'text'; }
+      public String subType { get; set; }
+      public String label { get; set; }
+    public String valueType { get; set; }	//default or complex
+    public Map<String, String> additionalValues{ get; set; }	//holds additional values if it's complex valueType
+    public String textValue{ get; set; }
+    public Intel_Text() { subType = 'text'; valueType='default';}
+    public Intel_Text(String s) { subType = s; valueType='default';} 
     
     /* { type = 'text'; }
       public String subType { get; set; }

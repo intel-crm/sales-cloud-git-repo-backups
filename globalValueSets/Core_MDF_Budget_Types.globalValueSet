@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <customValue>
-        <fullName>Account Plan</fullName>
-        <default>false</default>
-        <label>Account Plan</label>
-    </customValue>
-    <customValue>
         <fullName>Business Client Acceleration - MDF</fullName>
         <default>false</default>
         <label>Business Client Acceleration - MDF</label>
@@ -26,19 +21,14 @@
         <label>Client Specialties MDF</label>
     </customValue>
     <customValue>
-        <fullName>Cloud</fullName>
-        <default>false</default>
-        <label>Cloud</label>
-    </customValue>
-    <customValue>
-        <fullName>Co-Engineering</fullName>
-        <default>false</default>
-        <label>Co-Engineering</label>
-    </customValue>
-    <customValue>
         <fullName>Data Center Market Accelerate</fullName>
         <default>false</default>
         <label>Data Center Market Accelerate</label>
+    </customValue>
+    <customValue>
+        <fullName>Data Center Specialties MDF</fullName>
+        <default>false</default>
+        <label>Data Center Specialties MDF</label>
     </customValue>
     <customValue>
         <fullName>Data Centric Acceleration - MDF</fullName>
@@ -49,6 +39,51 @@
         <fullName>DCF 1.0</fullName>
         <default>false</default>
         <label>DCF 1.0</label>
+    </customValue>
+    <customValue>
+        <fullName>Global Ericsson Acceleration - MDF</fullName>
+        <default>false</default>
+        <label>Global Ericsson Acceleration - MDF</label>
+    </customValue>
+    <customValue>
+        <fullName>Global IBM Acceleration - MDF</fullName>
+        <default>false</default>
+        <label>Global IBM Acceleration - MDF</label>
+    </customValue>
+    <customValue>
+        <fullName>Global Microsoft Acceleration - MDF</fullName>
+        <default>false</default>
+        <label>Global Microsoft Acceleration - MDF</label>
+    </customValue>
+    <customValue>
+        <fullName>Global Nokia Acceleration - MDF</fullName>
+        <default>false</default>
+        <label>Global Nokia Acceleration - MDF</label>
+    </customValue>
+    <customValue>
+        <fullName>Global Red Hat Acceleration - MDF</fullName>
+        <default>false</default>
+        <label>Global Red Hat Acceleration - MDF</label>
+    </customValue>
+    <customValue>
+        <fullName>Global SAP Acceleration - MDF</fullName>
+        <default>false</default>
+        <label>Global SAP Acceleration - MDF</label>
+    </customValue>
+    <customValue>
+        <fullName>Global SAS Acceleration - MDF</fullName>
+        <default>false</default>
+        <label>Global SAS Acceleration - MDF</label>
+    </customValue>
+    <customValue>
+        <fullName>Global Suse Acceleration - MDF</fullName>
+        <default>false</default>
+        <label>Global Suse Acceleration - MDF</label>
+    </customValue>
+    <customValue>
+        <fullName>Global VMware Acceleration - MDF</fullName>
+        <default>false</default>
+        <label>Global VMware Acceleration - MDF</label>
     </customValue>
     <customValue>
         <fullName>Intel MDF Account Based2</fullName>
@@ -71,6 +106,16 @@
         <label>IoT Targeted - MDF</label>
     </customValue>
     <customValue>
+        <fullName>ODM Growth Plan - Client MDF</fullName>
+        <default>false</default>
+        <label>ODM Growth Plan - Client MDF</label>
+    </customValue>
+    <customValue>
+        <fullName>ISV Scale Acceleration - MDF</fullName>
+        <default>false</default>
+        <label>ISV Scale Acceleration - MDF</label>
+    </customValue>
+    <customValue>
         <fullName>MDF</fullName>
         <default>false</default>
         <label>MDF</label>
@@ -81,24 +126,19 @@
         <label>MDF+</label>
     </customValue>
     <customValue>
-        <fullName>ODM Growth Plan - Client MDF</fullName>
-        <default>false</default>
-        <label>ODM Growth Plan - Client MDF</label>
-    </customValue>
-    <customValue>
         <fullName>OEM CMP</fullName>
         <default>false</default>
         <label>OEM CMP</label>
     </customValue>
     <customValue>
-        <fullName>Proposal II MDF</fullName>
+        <fullName>Optane Specialties MDF</fullName>
         <default>false</default>
-        <label>Proposal II MDF</label>
+        <label>Optane Specialties MDF</label>
     </customValue>
     <customValue>
-        <fullName>Proposal I MDF</fullName>
+        <fullName>Red Hat &quot;Amplify&quot; - MDF</fullName>
         <default>false</default>
-        <label>Proposal I MDF</label>
+        <label>Red Hat &quot;Amplify&quot; - MDF</label>
     </customValue>
     <customValue>
         <fullName>Retail MDF</fullName>
@@ -109,6 +149,11 @@
         <fullName>RSA MD</fullName>
         <default>false</default>
         <label>RSA MD</label>
+    </customValue>
+    <customValue>
+        <fullName>Scale Acceleration - MDF</fullName>
+        <default>false</default>
+        <label>Scale Acceleration - MDF</label>
     </customValue>
     <customValue>
         <fullName>Service Provider CMP</fullName>
@@ -126,45 +171,9 @@
         <label>SOEM Data Center MDF</label>
     </customValue>
     <customValue>
-        <fullName>Core Solutions</fullName>
+        <fullName>VMWare Amplify - MDF</fullName>
         <default>false</default>
-        <label>Core Solutions</label>
-    </customValue>
-    <customValue>
-        <fullName>Value Exchange</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Value Exchange</label>
-    </customValue>
-    <customValue>
-        <fullName>DCG MAF</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>DCG MAF</label>
-    </customValue>
-    <customValue>
-        <fullName>Datacenter Market Accelerate</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Datacenter Market Accelerate</label>
-    </customValue>
-    <customValue>
-        <fullName>Acc 1</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Acc 1</label>
-    </customValue>
-    <customValue>
-        <fullName>Prop 1</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Prop 1</label>
-    </customValue>
-    <customValue>
-        <fullName>Scale Acceleration - MDF</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Scale Acceleration - MDF</label>
+        <label>VMWare Amplify - MDF</label>
     </customValue>
     <customValue>
         <fullName>Intel MDF Account Based3</fullName>
@@ -173,10 +182,10 @@
         <label>Intel MDF Account Based3</label>
     </customValue>
     <customValue>
-        <fullName>Data Center Specialties MDF</fullName>
+        <fullName>Intel MDF Account Based4</fullName>
         <default>false</default>
         <isActive>false</isActive>
-        <label>Data Center Specialties MDF</label>
+        <label>Intel MDF Account Based4</label>
     </customValue>
     <customValue>
         <fullName>ODM Growth Plan- MDF</fullName>
@@ -191,64 +200,16 @@
         <label>Business</label>
     </customValue>
     <customValue>
-        <fullName>Intel MDF Account Based1</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Intel MDF Account Based1</label>
-    </customValue>
-    <customValue>
-        <fullName>CCG Market Accelerate</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>CCG Market Accelerate</label>
-    </customValue>
-    <customValue>
-        <fullName>IPA Account Based 1</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>IPA Account Based 1</label>
-    </customValue>
-    <customValue>
-        <fullName>IPA Account Based1</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>IPA Account Based1</label>
-    </customValue>
-    <customValue>
-        <fullName>Testing Budget type</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Testing Budget type</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel MDF Account Based4</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Intel MDF Account Based4</label>
-    </customValue>
-    <customValue>
-        <fullName>Optane Specialties MDF</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Optane Specialties MDF</label>
-    </customValue>
-    <customValue>
-        <fullName>CMP</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>CMP</label>
-    </customValue>
-    <customValue>
         <fullName>Business Client Acceleration Managed - MDF</fullName>
         <default>false</default>
         <isActive>false</isActive>
         <label>Business Client Acceleration Managed - MDF</label>
     </customValue>
     <customValue>
-        <fullName>Business Client Acceleration Automated - MDF</fullName>
+        <fullName>Intel MDF Account Based1</fullName>
         <default>false</default>
         <isActive>false</isActive>
-        <label>Business Client Acceleration Automated - MDF</label>
+        <label>Intel MDF Account Based1</label>
     </customValue>
     <customValue>
         <fullName>Data Centric Acceleration Managed - MDF</fullName>
@@ -263,82 +224,10 @@
         <label>Data Centric Acceleration Automated - MDF</label>
     </customValue>
     <customValue>
-        <fullName>Global SAP Acceleration - MDF</fullName>
+        <fullName>CMP</fullName>
         <default>false</default>
         <isActive>false</isActive>
-        <label>Global SAP Acceleration - MDF</label>
-    </customValue>
-    <customValue>
-        <fullName>Global VMware Acceleration - MDF</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Global VMware Acceleration - MDF</label>
-    </customValue>
-    <customValue>
-        <fullName>VMWare Amplify - MDF</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>VMWare Amplify - MDF</label>
-    </customValue>
-    <customValue>
-        <fullName>Global Red Hat Acceleration - MDF</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Global Red Hat Acceleration - MDF</label>
-    </customValue>
-    <customValue>
-        <fullName>Red Hat &quot;Amplify&quot; - MDF</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Red Hat &quot;Amplify&quot; - MDF</label>
-    </customValue>
-    <customValue>
-        <fullName>Global IBM Acceleration - MDF</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Global IBM Acceleration - MDF</label>
-    </customValue>
-    <customValue>
-        <fullName>Global Suse Acceleration - MDF</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Global Suse Acceleration - MDF</label>
-    </customValue>
-    <customValue>
-        <fullName>Global SAS Acceleration - MDF</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Global SAS Acceleration - MDF</label>
-    </customValue>
-    <customValue>
-        <fullName>Global Ericsson Acceleration - MDF</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Global Ericsson Acceleration - MDF</label>
-    </customValue>
-    <customValue>
-        <fullName>Global Nokia Acceleration - MDF</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Global Nokia Acceleration - MDF</label>
-    </customValue>
-    <customValue>
-        <fullName>Global Microsoft Acceleration - MDF</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Global Microsoft Acceleration - MDF</label>
-    </customValue>
-    <customValue>
-        <fullName>ISV Scale Acceleration - MDF</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>ISV Scale Acceleration - MDF</label>
-    </customValue>
-    <customValue>
-        <fullName>CCF</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>CCF</label>
+        <label>CMP</label>
     </customValue>
     <customValue>
         <fullName>DCF</fullName>
@@ -347,35 +236,47 @@
         <label>DCF</label>
     </customValue>
     <customValue>
-        <fullName>SP Industry SB MDF</fullName>
+        <fullName>CCF</fullName>
         <default>false</default>
         <isActive>false</isActive>
-        <label>SP Industry SB MDF</label>
+        <label>CCF</label>
     </customValue>
     <customValue>
-        <fullName>SP Optane Client MDF</fullName>
+        <fullName>Business Client Acceleration Automated - MDF</fullName>
         <default>false</default>
         <isActive>false</isActive>
-        <label>SP Optane Client MDF</label>
+        <label>Business Client Acceleration Automated - MDF</label>
     </customValue>
     <customValue>
-        <fullName>SP Optane DC MDF</fullName>
+        <fullName>DCG MAF</fullName>
         <default>false</default>
         <isActive>false</isActive>
-        <label>SP Optane DC MDF</label>
+        <label>DCG MAF</label>
     </customValue>
     <customValue>
-        <fullName>SP Video MDF</fullName>
+        <fullName>CCG Market Accelerate</fullName>
         <default>false</default>
         <isActive>false</isActive>
-        <label>SP Video MDF</label>
+        <label>CCG Market Accelerate</label>
     </customValue>
     <customValue>
-        <fullName>SP Visual Retail MDF</fullName>
+        <fullName>Prop 1</fullName>
         <default>false</default>
         <isActive>false</isActive>
-        <label>SP Visual Retail MDF</label>
+        <label>Prop 1</label>
+    </customValue>
+    <customValue>
+        <fullName>Acc 1</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Acc 1</label>
+    </customValue>
+    <customValue>
+        <fullName>Datacenter Market Accelerate</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Datacenter Market Accelerate</label>
     </customValue>
     <masterLabel>Budget Types</masterLabel>
-    <sorted>true</sorted>
+    <sorted>false</sorted>
 </GlobalValueSet>

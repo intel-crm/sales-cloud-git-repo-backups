@@ -31,10 +31,6 @@
     <template if:true={isLoaded}>
         <span class="performance-template">
           <br/>
-          <div class="'slds-col">
-            <span class="performace-alert-text">{alert_Message}</span>
-          </div>
-          <br/>
           <div class="slds-col">
             <span class="performance-header-text">{totalPointsBalance}</span>
             <lightning-helptext class="performance-help" content={IPAHelpTextPointsCurrentBalance}></lightning-helptext>:
@@ -50,14 +46,14 @@
           <div class="slds-col">
             <span class="performance-header-text">{totalSalesData}</span>
             <lightning-helptext class="performance-help" content={IPAHelptextvaluelabel}></lightning-helptext>:
-            <lightning-formatted-number class="performance-value" value={total_SalesDatanbr.value} format-style="currency" currency-code="USD" currency-display-as="symbol" maximum-fraction-digits={total_SalesDatanbr.decimals} minimum-fraction-digits={total_SalesDatanbr.decimals}></lightning-formatted-number>
+            <lightning-formatted-number class="performance-value" value={total_SalesDatanbr.value} format-style="currency" currency-code="USD" currency-display-as="symbol" maximum-fraction-digits={total_SalesDatanbr.decimals} minimum-fraction-digits="0"></lightning-formatted-number>
             <span class="performance-value-text">{total_SalesDatanbr.text}</span>
           </div>
 
           <div class="slds-col">
             <span class="performance-header-text">{totalSalesDataPrev}</span>
             <lightning-helptext class="performance-help" content={IPAHelptextvaluePrevPeriod}></lightning-helptext>:
-            <lightning-formatted-number class="performance-value" value={total_SalesDatanbrPrev.value} format-style="currency" currency-code="USD" currency-display-as="symbol" maximum-fraction-digits={total_SalesDatanbrPrev.decimals} minimum-fraction-digits={total_SalesDatanbrPrev.decimals}></lightning-formatted-number>
+            <lightning-formatted-number class="performance-value" value={total_SalesDatanbrPrev.value} format-style="currency" currency-code="USD" currency-display-as="symbol" maximum-fraction-digits={total_SalesDatanbrPrev.decimals} minimum-fraction-digits="0"></lightning-formatted-number>
             <span class="performance-value-text">{total_SalesDatanbrPrev.text}</span>
           </div>
 
@@ -86,37 +82,28 @@
             <lightning-formatted-number class="performance-value" value={total_AWR_remainingnbr.value} format-style="decimal" maximum-fraction-digits={total_AWR_remainingnbr.decimals} minimum-fraction-digits="0"></lightning-formatted-number>
             <span class="performance-value-text">{total_AWR_remainingnbr.text}</span>
           </div>
-          <!-- <div class="slds-col">
+          <div class="slds-col">
             <span class="performance-header-text">{TotalApprovedOffering}</span> :
-           <lightning-helptext class="performance-help" content={IPAHelptextvaluelabel}></lightning-helptext>:
+           <!-- <lightning-helptext class="performance-help" content={IPAHelptextvaluelabel}></lightning-helptext>:-->
             <lightning-formatted-number class="performance-value" value={totalApprovedOffering.value} format-style="decimal" maximum-fraction-digits={totalApprovedOffering.decimals} minimum-fraction-digits="0"></lightning-formatted-number>
             <span class="performance-value-text">{totalApprovedOffering.text}</span>
-          </div> -->
-          <!-- IPA2.0 TWC727-3228-->
+          </div>
           <div class="slds-col">
             <span class="performance-header-text">{NumberOfEmployees}</span>
-            <lightning-helptext class="performance-help" content={IPAHelptextvaluePrevPeriod}></lightning-helptext>:
+            <lightning-helptext class="performance-help" content={IPAHelptextvaluelabel}></lightning-helptext>:
             <lightning-formatted-number class="performance-value" value={totalTrainedResourcesnbr.value} format-style="decimal" maximum-fraction-digits={totalTrainedResourcesnbr.decimals} minimum-fraction-digits="0"></lightning-formatted-number>
             <span class="performance-value-text">{totalTrainedResourcesnbr.text}</span>
           </div>
-          <!-- <div class="slds-col">
+          <div class="slds-col">
             <span class="performance-header-text">{publishedStorefrontText}</span> :
-           <lightning-formatted-text class="performance-value" value={isPublishedText}></lightning-formatted-text>  
+           <!-- <lightning-formatted-text class="performance-value" value={isPublishedText}></lightning-formatted-text>  --> 
            <template if:true={isPublishedStorefront}>                    
             <span class="performance-value">{label.ispublished}</span>                 
             </template>
             <template if:false={isPublishedStorefront}>                    
             <span class="performance-value">{label.isNotpublished}</span>                   
             </template>                  
-          </div> -->
-          <!-- //IPA2.0 TWC727-3228-->
-          <!-- <div class="slds-col">
-            <span class="performance-header-text">{TotalApprovedSolutions}</span> :
-           <lightning-helptext class="performance-help" content={IPAHelptextvaluelabel}></lightning-helptext>:
-            <lightning-formatted-number class="performance-value" value={totalApprovedSolutions.value} format-style="decimal" maximum-fraction-digits={totalApprovedSolutions.decimals} minimum-fraction-digits="0"></lightning-formatted-number>
-            <span class="performance-value-text">{totalApprovedSolutions.text}</span>
-          </div> -->
-          <!-- IPA2.0 TWC727-3228 -->
+          </div>
         </span>
     </template>
     <div if:false={isLoaded}>

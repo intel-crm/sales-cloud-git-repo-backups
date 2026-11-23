@@ -4,35 +4,23 @@
     <encodingKey>UTF-8</encodingKey>
     <name>SCRRENGENRLREV_ZHT</name>
     <style>none</style>
-    <subject>驗證您的電子郵件地址</subject>
-    <textOnly>驗證您的電子郵件並設定密碼
+    <subject>您的 Intel 夥伴計畫申請</subject>
+    <textOnly>Verify your Email to Activate your Account
+
+Dear {!PRM_Registration_Request__c.PRM_First_Name__c},
+
+Thanks for joining Intel’s Partner program. Please click below to activate your account.
+
+Activate Your Account
+
+Can&apos;t access the link above?
+https://www.intel...
 
 
-
-{!PRM_Registration_Request__c.PRM_First_Name__c}，
-
-感謝您開始註冊 Intel® 夥伴聯盟！
-請按一下下方連結繼續
-
-
-驗證您的電子郵件並設定密碼
-
-
-請注意此連結將在 24 小時後失效請使用下列的使用者名稱，完成下一步並設定密碼
-使用者名稱：{!PRM_Registration_Request__c.PRM_Email_ID__c}
-
-無法存取上方的連結？
-https://signinpp.intel.com/PasswordUpdate?var={!PRM_Registration_Request__c.PRM_EV_Token__c}&amp;culture=zh&amp;target=https://wcm-ciqa.intel.com/content/www/tw/zh/secure/partner/forms/ipa-account-search.html
-
-
-我們期待您加入此計畫！
-敬祝商祺
-您的 Intel® 夥伴聯盟團隊
-
-此訊息作為您目前與 Intel® 夥伴聯盟關係相關的重要商業通訊發送給您。
-© {!$Label.PRM_CurrentYear} Intel 公司
-Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA。www.intel.com
-隱私權&amp;verbar;Cookie</textOnly>
+Copyright © 2016 Intel Corporation. All rights reserved. Intel, the Intel logo are trademarks of Intel Corporation in the U.S. and/or other countries.
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. Intel.com
+You may unsubscribe at any time by updating your profile settings at: {!$Label.PRM_MyIntelProfileURL}
+Privacy | Cookies | *Trademarks</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

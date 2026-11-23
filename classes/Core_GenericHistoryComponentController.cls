@@ -3,13 +3,13 @@ public class Core_GenericHistoryComponentController {
     // External variables
     public SObject myObject { get; set; }
     public Integer recordLimit { get; set; }
-    public static String objectLabel { get; set; }
+    public static String objectLabel { get; }
     
     // Internal variables
     public objectHistoryLine[] objectHistory;
     
     public static final Map<String, Schema.SObjectType> mySObjectTypeMap = Schema.getGlobalDescribe();
-    public static Map<String, Schema.SObjectField> myObjectFieldMap; 
+    public static Map<String, Schema.SObjectField> myObjectFieldMap;
     public static List<Schema.PicklistEntry> historyFieldPicklistValues;
     
     public List<objectHistoryLine> getObjectHistory() {
@@ -49,27 +49,11 @@ public class Core_GenericHistoryComponentController {
         
         if (recordLimit == null) recordLimit = 100;
         
-        /* 
         list<sObject> historyList = Database.query('SELECT CreatedDate, CreatedById, Field, NewValue, OldValue ' +
                                                    'FROM ' + objectHistoryTableName + ' ' +
                                                    'WHERE ' + ObjectIdName + ' = \'' + myObjectId +'\' ' +
                                                    'ORDER BY CreatedDate DESC ' +
-                                                   'LIMIT ' + String.valueOf(recordLimit));*/
-        //US664677-Security code Scan fix-startes
-       
-        
-        list<sObject> historyList = Database.query('SELECT CreatedDate, CreatedById, Field, NewValue, OldValue ' +
-                                                   'FROM ' + String.escapeSingleQuotes(objectHistoryTableName) + ' ' +
-                                                   'WHERE ' + String.escapeSingleQuotes(ObjectIdName) + ' = \'' + String.escapeSingleQuotes(myObjectId) +'\' ' +
-                                                   'ORDER BY CreatedDate DESC ' +
                                                    'LIMIT ' + String.valueOf(recordLimit));
-        system.debug('########historyList'+historyList);
-         //US664677-Security code Scan fix-Ends
-         
-        if(test.isRunningTest()){
-            historyList=Test.loadData(AccountHistory.SObjectType, 'History');
-            system.debug('########historyList1'+historyList);
-        }      
         
         for (Integer i = 0; i < historyList.size(); i++) {
             

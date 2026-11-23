@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>SBQQ__Quote__c$SBQQ__Opportunity2__c</field>
+    </columns>
+    <columns>
+        <field>SBQQ__Quote__c$Pricing_Quote_Program_Nm__c</field>
+    </columns>
+    <columns>
+        <field>SBQQ__Quote__c$SBQQ__Opportunity2__c.Name</field>
+    </columns>
+    <columns>
+        <field>SBQQ__Quote__c$core_cpq_opprtunity_id__c</field>
+    </columns>
+    <columns>
+        <field>SBQQ__Quote__c$SBQQ__Opportunity2__c.Id</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>SBQQ__Quote__c$Pricing_Quote_Program_Nm__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Financial Incentive</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>SBQQ__Quote__c$Name</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Test FI Report</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Pricing_IQRFinancialIncentive_Quote_DQ__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>SBQQ__Quote__c$Pricing_Bid_Dt__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

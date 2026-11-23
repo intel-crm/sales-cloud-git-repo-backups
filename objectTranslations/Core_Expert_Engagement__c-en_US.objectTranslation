@@ -166,6 +166,10 @@
         <errorMessage><!-- Expert Engagement Region field is required for Engagement Type &quot;CQ&amp;R&quot; --></errorMessage>
         <name>Core_ExpertEngagmentType_CQR</name>
     </validationRules>
+    <validationRules>
+        <errorMessage><!-- Quote associated to this Opportunity is Submitted for Review. No Edits allowed on Opportunity during the Review process. --></errorMessage>
+        <name>Core_OptyExEngmn_QuoteSubmittedStatusChk</name>
+    </validationRules>
     <webLinks>
         <label><!-- Core_New_IT_Intel_Engagement --></label>
         <name>Core_New_IT_Intel_Engagement</name>

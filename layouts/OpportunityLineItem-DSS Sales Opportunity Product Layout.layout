@@ -56,7 +56,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>Core_Prime_Account_Name__c</field>
+                <field>Core_UCD_Global_Account_Name__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
@@ -73,6 +73,18 @@
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>Core_Intel_vPro_Platform_Eligibility__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Core_Vendor_InActive__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Core_Opportunity_Type_RecordId__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Core_Total_Amount__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -104,7 +116,12 @@
         <detailHeading>false</detailHeading>
         <editHeading>false</editHeading>
         <label>Description Information</label>
-        <layoutColumns/>
+        <layoutColumns>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_Sales_Price_Note__c</field>
+            </layoutItems>
+        </layoutColumns>
         <style>OneColumn</style>
     </layoutSections>
     <layoutSections>
@@ -183,7 +200,7 @@
                 <field>Core_Approved_Total_Price__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
+                <behavior>Edit</behavior>
                 <field>Core_Production_Claim_Date__c</field>
             </layoutItems>
             <layoutItems>
@@ -191,7 +208,7 @@
                 <field>Core_Approved_Commissionable__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
+                <behavior>Edit</behavior>
                 <field>Core_Opp_Approved_Oppty_Coverage__c</field>
             </layoutItems>
             <layoutItems>
@@ -234,16 +251,34 @@
         <layoutColumns/>
         <style>CustomLinks</style>
     </layoutSections>
+    <multilineLayoutFields>OpportunityId</multilineLayoutFields>
     <multilineLayoutFields>Product2Id</multilineLayoutFields>
-    <multilineLayoutFields>Quantity</multilineLayoutFields>
-    <multilineLayoutFields>Core_Status__c</multilineLayoutFields>
-    <multilineLayoutFields>Core_Write_In_Product_Name__c</multilineLayoutFields>
     <multilineLayoutFields>UnitPrice</multilineLayoutFields>
+    <multilineLayoutFields>Core_Status__c</multilineLayoutFields>
+    <multilineLayoutFields>Quantity</multilineLayoutFields>
+    <multilineLayoutFields>Core_Write_In_Product_Name__c</multilineLayoutFields>
+    <multilineLayoutFields>Core_Vendor__c</multilineLayoutFields>
     <multilineLayoutFields>Core_Loss_Cancel_Reason__c</multilineLayoutFields>
     <multilineLayoutFields>Core_Competitor__c</multilineLayoutFields>
-    <multilineLayoutFields>Core_Vendor__c</multilineLayoutFields>
     <multilineLayoutFields>Core_Competitor_Product__c</multilineLayoutFields>
-    <multilineLayoutFields>OpportunityId</multilineLayoutFields>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>Core_Goal_Owner__c</fields>
+        <fields>Core_Goal_Status__c</fields>
+        <fields>Core_Goal_Category__c</fields>
+        <fields>Core_Goal_BU_Focus_Area__c</fields>
+        <fields>Core_Goal_Criteria__c</fields>
+        <fields>Core_Goal_Opportunity_Identified__c</fields>
+        <fields>CREATED_DATE</fields>
+        <fields>Core_Goal_Accept_Date__c</fields>
+        <relatedList>Core_Goal__c.Core_Opportunity_Product__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>Core_Feature_Type__c</fields>
+        <fields>Core_Feature_Name__c</fields>
+        <fields>Core_Platform_BU__c</fields>
+        <relatedList>Core_Opportunity_Features__c.Opportunity_Product__c</relatedList>
+    </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>

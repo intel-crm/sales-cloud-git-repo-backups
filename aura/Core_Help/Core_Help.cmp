@@ -1,0 +1,109 @@
+<aura:component controller = "Core_FeedbackController" implements="lightning:isUrlAddressable,force:appHostable,flexipage:availableForAllPageTypes,force:hasRecordId" access="global">
+	<aura:attribute name="isQueryOpen" type="boolean" default="false"/>
+    <aura:attribute name="isFeedbackOpen" type="boolean" default="false"/>
+    <aura:attribute name="mainDiv" type="boolean" default="true"/>
+    <aura:attribute name="rating" type="string"/>
+    <aura:attribute name="feedbackArea" type="string"/>
+    <aura:attribute name="userComments" type="string"/>
+    <aura:attribute name="tooltipMessage" type="string"/>
+    <aura:attribute name="recordId" type="string"/>
+    <aura:attribute name="data" type="object"/>
+    <aura:attribute name="queryList" type="object"/>
+    <aura:attribute name="objList" type="object"/>
+    <aura:attribute name="tooltip" type="boolean" default="false" />
+    <aura:attribute name="notooltip" type="boolean" default="false" />
+    <aura:attribute name="isSuccess" type="boolean" default="false" />
+    <aura:attribute name="isSpinner" type="boolean" default="false" />
+    <aura:attribute name="isError" type="boolean" default="false" />
+    
+	<aura:handler name="init" value="{!this}" action="{!c.doInit}"/>  
+    
+    <aura:if isTrue="{!v.mainDiv}">
+        <br></br>
+        <div class="slds-p-horizontal_medium slds-text-align_center">
+            <lightning:card title="How may we help you!" class="slds-p-horizontal_medium">
+        
+    <div class="slds-p-horizontal_x-small">
+        <div onclick="{!c.openQuery}" class="slds-align_absolute-center cwidth">
+    		<lightning:button class="slds-m-top_small cwidth" variant="brand-outline" type="submit" label="Ask A Question" /> 
+        </div>
+        <div onclick="{!c.openFeedback}" style="color:blue" class="slds-align_absolute-center ">
+            <lightning:button class="slds-m-top_small cwidth" variant="brand-outline" type="submit" label="Provide Feedback" />
+        </div>        
+    </div>
+            </lightning:card>
+        </div>
+    </aura:if>
+    
+    <aura:if isTrue="{!v.isQueryOpen}">
+        <br></br>
+        <div class="slds-p-horizontal_medium slds-text-align_center">
+        <lightning:card title="Please select a topic" class="slds-p-horizontal_medium">
+        <aura:iteration items="{!v.queryList}" var="a">
+            <!--<div class="c-container" onmouseover="{!c.showToolTip}" onmouseout="{!c.hideToolTip}" name="{!a.Core_Description__c}">-->
+            <div class="c-container">
+                <lightning:button class="slds-m-top_small cwidth" title="{!a.Core_Description__c}" variant="brand-outline" label="{!a.Name}" value="{!a.Core_Profile_Url__c}" onclick="{!c.handleURLClick}" name="{!a.Core_Description__c}"/>
+            	
+                <!--<aura:if isTrue="{!v.tooltip}" >
+                	<div class="slds-popover" role="tooltip" id="help" style="position:absolute;left:35px;top:-30px;background-color:rgba(215, 218, 233, 1)">
+                        <div class="slds-popover__body">
+                            <b>Tool-Tip: </b> {!v.tooltipMessage}
+                        </div>
+                    </div>
+                </aura:if>-->
+            </div>
+            <!--<aura:if isTrue="{!v.tooltip}" >
+                <div class="slds-popover slds-popover_tooltip slds-nubbin_bottom-left slds-rise-from-ground" role="tooltip" id="help" style="position:absolute;top:-4px;left:35px">
+					<div class="slds-popover__body">{!a.Core_Description__c}</div>
+                </div>
+        	</aura:if>
+            <aura:if isTrue="{!v.notooltip}" >
+                <div class="slds-popover slds-popover_tooltip slds-nubbin_bottom-left slds-fall-into-ground" role="tooltip" id="help" style="position:absolute;top:-4px;left:35px">
+                    <div class="slds-popover__body">{!a.Core_Description__c}</div></div>
+            </aura:if>-->
+        </aura:iteration>
+        <br></br>
+        
+        <lightning:button variant="destructive-text" label="Main Menu" onclick = "{!c.handleMainMenu}" class="cwidth"/>
+        </lightning:card>
+        </div>
+    </aura:if>
+        
+    <aura:if isTrue="{!v.isFeedbackOpen}">
+        <br></br>
+		<div class="slds-p-horizontal_medium">
+            <lightning:card title="Please provide your valuable feedback!" class="slds-p-horizontal_medium">
+                <lightning:select label="Area of Feedback" required="true" value="{!v.feedbackArea}">
+                    <aura:iteration items="{!v.objList}" var="val">
+                        <option value="{!val}"> {!val}</option>
+                    </aura:iteration>
+                </lightning:select> 
+                <br></br>
+                <p>Rating</p>
+                <c:Core_FiveStarRating value="{!v.rating}" readonly="false" />
+                <aura:if isTrue="{!v.isError}">
+                    <div>Please enter the valid rating!</div>
+                </aura:if>
+                <br></br>
+                <lightning:textarea name="userComments" label="Comments(Optional)" value="{!v.userComments}"/>
+                <lightning:button class="slds-m-top_small cwidth" variant="brand-outline" onclick="{!c.handleSave}" label="Submit Feedback" /> 
+           		<br></br>
+                <lightning:button  variant="destructive-text" label="Main Menu" onclick = "{!c.handleMainMenu}" class="cwidth"/>
+            </lightning:card>
+    	</div>
+    </aura:if>
+    <aura:if isTrue="{!v.isSuccess}">
+        <center><div class="slds-p-horizontal_medium slds-p-top_xx-large">
+            <b><p>Your Feedback has been submitted Successfully!</p></b>
+            <br></br>
+            <br></br>
+            <br></br>
+            <lightning:button  label="Main Menu" onclick = "{!c.handleMainMenu}" class="cwidth"/>
+        </div></center>
+    </aura:if>
+    <aura:if isTrue="{!v.isSpinner}">
+    <div class="spinnerCl">
+        <lightning:spinner alternativeText="Loading" size="small" />
+    </div>
+    </aura:if>
+</aura:component>

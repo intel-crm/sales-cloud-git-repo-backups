@@ -9,13 +9,8 @@
 * ****************************************************************************************************************************************/
 @isTest
 public class PMP_Chipsets_Attribute_Chinese_Test {
+    
     @isTest
-    static void testIsWorking() {
-        Boolean result = PMP_Chipsets_Attribute_Chinese.isWorking();
-        System.assertEquals(true, result);
-    }
-    //IPA 2.0- US-TWC729-7980
-    /*@isTest
     public static void testProcAttrMet()
     {
 
@@ -28,11 +23,11 @@ public class PMP_Chipsets_Attribute_Chinese_Test {
         
         
         test.startTest();
-        PMP_ParseChipSet_JSON.languageCode = 'zh_CN';
+        PMP_ParseChipSet_JSON.strBaseKey = 'zh_CN';
         resultData = chipAttrChn.processData('PMP_Chipsets_Attribute_Test');
         system.assertNotEquals(resultData,null);
         test.stopTest();
        
-    }*/
+    }
 
 }

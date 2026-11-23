@@ -4,30 +4,24 @@
     <encodingKey>UTF-8</encodingKey>
     <name>SCRREQTOAPVDEXT_JPN</name>
     <style>none</style>
-    <subject>インテル® パートナー・アライアンスへようこそ</subject>
-    <textOnly>御社はすでに登録されています
+    <subject>おめでとうございます。インテルのパートナープログラムへようこそ</subject>
+    <textOnly>Duplicate Partner Program Registration
+
+{!PRM_Registration_Request__c.PRM_First_Name__c}
+
+Your company matches an existing Intel Partner program account, so you have been added to the following company profile:
+
+Company Name: {!Account.Name}
+
+Log in to view your profile details.
+
+Questions? Contact Support here 
 
 
-{!PRM_Registration_Request__c.PRM_First_Name__c} 様、
-
-インテル® パートナー・アライアンスへご参加いただきありがとうございます。既存のアカウントと一致しているため、
-次のインテル® パートナー・アライアンスの企業プロファイルに追加されました。
-会社名: {!Account.Name}
-ビジネス ID: {!Account.AccountNumber}
-
-ログインして、インテル® パートナー・アライアンスのプロフィール詳細を確認してください。
-
-インテルのパートナーはイノベーションの長い歴史を持ち、インテル® パートナー・アライアンスにより、データ中心の経済におけるソリューション構築の促進を支援します。パートナー企業の力を結集し、私達がつながり、革新し、成長することで、類い稀な機会を実現することができます。
-
-ヘルプが必要な場合には https://www.intel.com/content/www/jp/ja/partner-alliance/help/overview.html を参照してください 。
-
-よろしくお願いいたします。
-インテル® パートナー・アライアンス
-
-このメッセージは、インテル® パートナー・アライアンス関係者の皆様に、重要なビジネス・コミュニケーションとして送信されました。
-© {!$Label.PRM_CurrentYear} Intel Corporation
-Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.  www.intel.com
-プライバシー  |  Cookies</textOnly>
+Copyright © 2016 Intel Corporation. All rights reserved. Intel, the Intel logo are trademarks of Intel Corporation in the U.S. and/or other countries.
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. Intel.com
+You may unsubscribe at any time by updating your profile settings at: {!$Label.PRM_MyIntelProfileURL}
+Privacy | Cookies | *Trademarks</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

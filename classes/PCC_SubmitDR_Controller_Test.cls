@@ -28,7 +28,6 @@ public class PCC_SubmitDR_Controller_Test {
         c1.RecordTypeId = contactRecordType;
         c1.Core_IPA_Partner_Role__c = 'Service Provider';
         c1.Email = 'test.diqhwqi@test.com';
-	c1.MailingCountry= 'USA';
         insert c1;
         
         Core_ERPM_Engagement__c ee = new Core_ERPM_Engagement__c();//ERPM Engagement
@@ -162,7 +161,7 @@ public class PCC_SubmitDR_Controller_Test {
         Product_MM_Attribute_Mapping__c pmam = new Product_MM_Attribute_Mapping__c();
         pmam.Ordering_Code__c = 'WX80660E52630V4';
         pmam.Name = '949344';
-        pmam.MMID__c = '949344';
+        //pmam.MMID__c = '949344';
         pmam.L4_Product__c = pr.Id;
         insert pmam;
         

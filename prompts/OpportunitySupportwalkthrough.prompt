@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Opportunity Support walkthrough</masterLabel>
+    <promptVersions>
+        <body>&lt;p&gt;Before Adding member approve the Support Request&lt;/p&gt;</body>
+        <customApplication>Opportunity_Management_Lightning</customApplication>
+        <delayDays>1</delayDays>
+        <dismissButtonLabel>Dismiss</dismissButtonLabel>
+        <displayPosition>BottomCenter</displayPosition>
+        <displayType>FloatingPanel</displayType>
+        <endDate>2023-07-26</endDate>
+        <isPublished>true</isPublished>
+        <masterLabel>Opportunity Support walkthrough Step 1</masterLabel>
+        <publishedDate>2023-07-17</publishedDate>
+        <shouldDisplayActionButton>false</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>true</shouldIgnoreGlobalDelay>
+        <startDate>2023-07-14</startDate>
+        <stepNumber>1</stepNumber>
+        <targetPageKey1>Opportunity</targetPageKey1>
+        <targetPageKey2>list</targetPageKey2>
+        <targetPageType>standard__objectPage</targetPageType>
+        <timesToDisplay>25</timesToDisplay>
+        <title>Close status when approved</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+    <promptVersions>
+        <actionButtonLabel>/lightning/o/Opportunity/</actionButtonLabel>
+        <actionButtonLink>/lightning/o/Opportunity/list?filterName=Recent</actionButtonLink>
+        <body>&lt;p&gt;Close support Provided or not provided for COE record type&lt;/p&gt;</body>
+        <customApplication>Opportunity_Management_Lightning</customApplication>
+        <dismissButtonLabel>I know</dismissButtonLabel>
+        <displayPosition>BottomCenter</displayPosition>
+        <displayType>FloatingPanel</displayType>
+        <image>Screenshot_20230714_1058211</image>
+        <imageAltText>for status change</imageAltText>
+        <imageLocation>Bottom</imageLocation>
+        <isPublished>false</isPublished>
+        <masterLabel>Opportunity Support walkthrough Step 2</masterLabel>
+        <shouldDisplayActionButton>true</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>false</shouldIgnoreGlobalDelay>
+        <stepNumber>2</stepNumber>
+        <targetPageKey1>Opportunity</targetPageKey1>
+        <targetPageKey2>list</targetPageKey2>
+        <targetPageType>standard__objectPage</targetPageType>
+        <title>Closed Support</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+</Prompt>

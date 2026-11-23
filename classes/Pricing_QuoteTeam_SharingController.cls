@@ -2,7 +2,7 @@
  * @description       : 
  * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
  * @group             : 
- * @last modified on  : 11-16-2026
+ * @last modified on  : 11-18-2024
  * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 public without sharing class Pricing_QuoteTeam_SharingController {
@@ -32,21 +32,21 @@ public without sharing class Pricing_QuoteTeam_SharingController {
         try{
             List<Pricing_Quote_Team__c> pricingQuote = new List<Pricing_Quote_Team__c>();
             List<User> userList=[Select id,Profile.Name from User where Email=:teamMemberEmail and IsActive = true and Profile.Name != :'Partner' and ContactId = null limit 1];   
-            if(userList.size()>0){
+           // if(userList.size()>0){
                 pricingQuote = [Select Pricing_Quote_Team_Member_Id__c,Pricing_Quote_Id__c,Pricing_Grant_Access_Ind__c from Pricing_Quote_Team__c where Pricing_Quote_Team_Member_Id__c=:userList[0].Id and Pricing_Quote_Id__c =:quoteId ];
-            }
+           // }
             //check if that user already present in the quote team member record 
             if(pricingQuote.size() == 0){ 
                 Pricing_Quote_Team__c qtm = new Pricing_Quote_Team__c();
                 if(role == Label.Pricing_Quote_Team_Role_FSE){
                     Boolean isvalidFSE = validateFSE(teamMemberEmail, quoteId);
                     if(isvalidFSE == false){
-                        return null;
+                        Pricing_Quote_Team__c qtmInvalid = new Pricing_Quote_Team__c();
+                        qtmInvalid.Pricing_Quote_Id__c = null;
+                        return qtmInvalid; 
                     }
                 }
-                if(String.isBlank(teamMemberEmail) && (role == Label.Pricing_Quote_Team_Role_ITS || role == Label.Pricing_Quote_Team_Role_Account_Executive)){
-                    return null;
-                }
+                //Pricing_Quote_Team__c qtm = new Pricing_Quote_Team__c();
                 qtm.Pricing_Quote_Id__c= quoteId;
                 qtm.Pricing_Role_Nm__c = role;
                 qtm.Pricing_Quote_Team_Member_Id__c=userList[0].Id;
@@ -58,6 +58,7 @@ public without sharing class Pricing_QuoteTeam_SharingController {
                     String quoteIdWithFse = quoteId + ';' + teamMemberEmail;
                     publishIQR(quoteIdWithFse);
                 }
+                
                 return qtm;
             }else{
                 return null;
@@ -100,6 +101,7 @@ public without sharing class Pricing_QuoteTeam_SharingController {
                 msgOutput.message = Label.Pricing_Quote_Team_Member_Removal_Error;
             }
         }catch(Exception ex){
+            Pricing_Tender_Utility.logError(ex);
             //return 'false';
             msgOutput.isSuccess = false;
             msgOutput.message = Label.Pricing_Quote_Team_Member_Removal_Error;
@@ -134,7 +136,7 @@ public without sharing class Pricing_QuoteTeam_SharingController {
         }
         return true;
     }
-    
+
     @AuraEnabled(cacheable=true)  
     public static boolean isDPMLegalFinanceUser() { 
         //This method is called by LWC to check weather the logged in user is DPM/Legal/Finance User
@@ -143,8 +145,8 @@ public without sharing class Pricing_QuoteTeam_SharingController {
             Label.Pricing_Tender_PermissionSets_TenderReadOnly,
             Label.Pricing_Tender_PermissionSets_TenderRebateAnalyst
         };
-        List<PermissionSetAssignment> pset = [SELECT Id FROM PermissionSetAssignment WHERE AssigneeId= :UserInfo.getUserId() AND 
-                                              PermissionSet.Name IN : permissionSetNames];
+        List<PermissionSetAssignment> pset = [SELECT Id, PermissionSet.Name, PermissionSet.Label FROM PermissionSetAssignment WHERE AssigneeId= :UserInfo.getUserId() AND 
+                                             PermissionSet.Name IN : permissionSetNames];
         if(pset.size()>0){
             return true;
         }

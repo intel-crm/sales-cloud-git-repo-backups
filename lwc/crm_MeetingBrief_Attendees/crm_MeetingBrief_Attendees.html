@@ -1,0 +1,142 @@
+<template>
+    <div class="sow-table">
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+            <thead>
+                <tr>
+                    <th>Intel Attendees</th>
+                    <th>External Attendees</th>
+                    <th class="action-column">
+                        <div class="action-column">
+                            Actions
+                        </div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <template for:each={attendees} for:item="attendee">
+                    <tr key={attendee.id}>
+                        <td  class="fixed-width" style="position: relative;"> <!-- Ensure the parent element is relatively positioned -->
+                            <template if:true={attendee.isEditing}>
+                                <lightning-input type="search" placeholder="Search People..." data-type="CRM_Intel_Attendees__c"
+                                    onchange={handleSearch} value={attendee.intelAttendee} data-id={attendee.id} class="no-label-space" variant="label-hidden">
+                                </lightning-input>
+                            </template>
+                            <template if:false={attendee.isEditing}>
+                                <div class="hover-container" data-id={attendee.intelAttendeeId} onmouseover={handleMouseOver} onmouseout={handleMouseOut} data-type="internal">
+                                    <div class="avatar-name-container">
+                                        <template if:true={attendee.intelAttendee}>
+                                            <lightning-avatar size="x-small" alternative-text="User Avatar" src={avatarImg}></lightning-avatar>
+                                        </template>
+                                        <a href="javascript:void(0);" onclick={navigateToUserRecord} data-id={attendee.intelAttendeeId}>
+                                            {attendee.intelAttendee}
+                                        </a>
+                                    </div>
+                                    <template if:true={attendee.showHoverCard}>
+                                        <div class="hover-card">
+                                            <lightning-card title="User Details">
+                                                <div class="slds-p-around_medium">
+                                                    <p><strong>Name:</strong> {attendee.userDetails.Name}</p>
+                                                    <p><strong>Email:</strong> {attendee.userDetails.Email}</p>
+                                                    <p><strong>Phone:</strong> {attendee.userDetails.Phone}</p>
+                                                </div>
+                                            </lightning-card>
+                                        </div>
+                                    </template>
+                                </div>
+                            </template>
+                            <!-- Dropdown for Intel Attendees -->
+                            <div if:true={attendee.showIntelDropdown}
+                                class="slds-dropdown_length-5 slds-dropdown_fluid" role="listbox">
+                                <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                                    <template for:each={intelUserOptions} for:item="option">
+                                        <li key={option.value} role="presentation" class="slds-listbox__item">
+                                            <div role="option"
+                                                class="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_center"
+                                                onclick={handleAttendeeSelect} data-id={attendee.id} data-name={option.label} data-intel-attendeeid={option.value}
+                                                data-field="intelAttendee">
+                                                <span class="slds-media__figure">
+                                                    <lightning-icon icon-name="standard:user" size="small" alternative-text="User"></lightning-icon>
+                                                </span>
+                                                <span class="slds-media__body">
+                                                    <span class="slds-listbox__option-text slds-listbox__option-text_entity">{option.label}</span>
+                                                    <span class="slds-listbox__option-meta slds-listbox__option-meta_entity">({option.Email})</span>
+                                                </span>
+                                            </div>
+                                        </li>
+                                    </template>
+                                </ul>
+                            </div>
+                        </td>
+                        <td class="fixed-width" style="position: relative;"> <!-- Ensure the parent element is relatively positioned -->
+                            <template if:true={attendee.isEditing}>
+                                <lightning-input type="search" placeholder="Search People..." data-type="CRM_External_Attendees__c"
+                                    onchange={handleSearch} value={attendee.externalAttendee} data-id={attendee.id} class="no-label-space" variant="label-hidden">
+                                </lightning-input>
+                            </template>
+                            <template if:false={attendee.isEditing}>
+                                <div class="hover-container" data-id={attendee.externalAttendeeId} onmouseover={handleMouseOver} onmouseout={handleMouseOut} data-type="external">
+                                    <div class="avatar-name-container">
+                                        <template if:true={attendee.externalAttendee}>
+                                            <lightning-avatar size="x-small" alternative-text="User Avatar" src={avatarImg}></lightning-avatar>
+                                        </template>
+                                        <a href="javascript:void(0);" onclick={navigateToUserRecord} data-id={attendee.externalAttendeeId}>
+                                            {attendee.externalAttendee}
+                                        </a>
+                                    </div>
+                                    <template if:true={attendee.showHoverCard}>
+                                        <div class="hover-card">
+                                            <lightning-card title="User Details">
+                                                <div class="slds-p-around_medium">
+                                                    <p><strong>Name:</strong> {attendee.userDetails.Name}</p>
+                                                    <p><strong>Email:</strong> {attendee.userDetails.Email}</p>
+                                                    <p><strong>Phone:</strong> {attendee.userDetails.Phone}</p>
+                                                </div>
+                                            </lightning-card>
+                                        </div>
+                                    </template>
+                                </div>
+                            </template>
+                            <!-- Dropdown for External Attendees -->
+                            <div if:true={attendee.showExternalDropdown}
+                                class="slds-dropdown_length-5 slds-dropdown_fluid" role="listbox">
+                                <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                                    <template for:each={externalUserOptions} for:item="option">
+                                        <li key={option.value} role="presentation" class="slds-listbox__item">
+                                            <div role="option"
+                                                class="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_center"
+                                                onclick={handleAttendeeSelect} data-id={attendee.id} data-external-attendeeid={option.value} data-name={option.label}
+                                                data-field="externalAttendee">
+                                                <span class="slds-media__figure">
+                                                    <lightning-icon icon-name="standard:user" size="small" alternative-text="User"></lightning-icon>
+                                                </span>
+                                                <span class="slds-media__body">
+                                                    <span class="slds-listbox__option-text slds-listbox__option-text_entity">{option.label}</span>
+                                                    <span class="slds-listbox__option-meta slds-listbox__option-meta_entity">({option.Email})</span>
+                                                </span>
+                                            </div>
+                                        </li>
+                                    </template>
+                                </ul>
+                            </div>
+                        </td>
+                        <td class="action-column">
+                            <div class="action-column btns">
+                                <lightning-button-icon icon-name="utility:edit" alternative-text="Edit"
+                                    onclick={handleEditRow} data-id={attendee.id}></lightning-button-icon>
+                                <lightning-button-icon icon-name="utility:delete" alternative-text="Remove"
+                                    onclick={handleRemoveRow} data-id={attendee.id}></lightning-button-icon>
+                                
+                            </div>
+                        </td>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+    </div>
+    <div class="slds-p-around_medium button-container">
+        <lightning-button label="Cancel" onclick={handleCancel}></lightning-button>
+        <lightning-button class="slds-m-left_small" label="Save" variant="brand" onclick={handleSave}></lightning-button>
+        <lightning-button class="slds-m-left_small" label="Add New" onclick={handleAddRow}></lightning-button>
+
+    </div>
+</template>

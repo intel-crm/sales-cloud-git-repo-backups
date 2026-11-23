@@ -6,13 +6,13 @@
             action.setParams({
                 userLanguage : $A.get("$Locale.langLocale")
             });
-            
+            console.log('language',$A.get("$Locale.langLocale"))
             action.setCallback(this, function(response) {
                 var status = response.getState();
-                
+                console.log('promotion status',status)
                 if (status === "SUCCESS") {
                     var returnValue = response.getReturnValue();
-                    
+                    console.log('promo',returnValue);
                     component.set('v.promotionData', returnValue);
                     resolve();
                 } else if (status === "INCOMPLETE") {

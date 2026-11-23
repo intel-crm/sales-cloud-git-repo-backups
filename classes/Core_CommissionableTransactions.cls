@@ -1,6 +1,15 @@
 public without sharing class Core_CommissionableTransactions {
     public static Boolean alreadyAddedCommissionableTransactions = false;
 
+    // Commission processing was paused in 2025; only approvals/transactions on or after this cutoff are processed.
+    public static DateTime getCommissionCutoff() {
+        return DateTime.newInstance(Date.valueOf(System.Label.Core_Commission_Start_Date), Time.newInstance(0, 0, 0, 0));
+    }
+
+    private static Boolean isEligibleForCommission(Opportunity opp, DateTime cutoff) {
+        return opp.Core_Approved_Date__c != null && opp.Core_Approved_Date__c >= cutoff;
+    }
+
     public static List < Database.SaveResult > addCommissionableTransactionsFromKPI(Map < Id, CORE_OPPTY_KPI_NEW__C > oldOPKPIMap,
         List < CORE_OPPTY_KPI_NEW__C > newOPKPIList, Boolean isInsert, Boolean isUpdate) {
         List < Database.SaveResult > srList = new List < Database.SaveResult > ();
@@ -12,6 +21,7 @@ public without sharing class Core_CommissionableTransactions {
                 List < Core_Log_Entry__c > logEntries = new List < Core_Log_Entry__c > ();
                 //KPI Mapping from Custom Setting      
                 Date startvalue = Date.valueOf(System.Label.Core_Commission_Start_Date);
+                DateTime commissionCutoff = getCommissionCutoff();
                 DateTime transactionTimeStamp = System.now();
                 DateTime transactionTimeStampWithDelay = System.now().addSeconds(Integer.ValueOf(System.Label.Core_Commission_Delay_Time));
                 List < Core_Commission_KPI_Mappings__c > listFunctionalityNameKPIMappings = Core_Commission_KPI_Mappings__c.getAll().values();
@@ -53,9 +63,16 @@ public without sharing class Core_CommissionableTransactions {
                     oppIdSet.add(opKPI.CORE_KPI_OPPORTUNITY__c);
                 }
 
-                List<Opportunity> allOpps = [select Id,Name,Core_Commissionable__c,core_approval_status__c,StageName,Core_Date_Submitted_for_Approval__c,Core_ProductionWin_KPI_Txt__c,Core_DesignWin_KPI_Txt__c,
-                                             AccountId,Core_Opportunity_Type__c,Core_Approved_Date__c,Account.Name
+                List<Opportunity> queriedOpps = [select Id,Name,Core_Commissionable__c,core_approval_status__c,StageName,Core_Date_Submitted_for_Approval__c,Core_ProductionWin_KPI_Txt__c,Core_DesignWin_KPI_Txt__c,
+                                             AccountId,Core_Opportunity_Type__c,Core_Approved_Date__c,Account.Name,CRM_Audit_Status__c,CRM_Audit_Close_Date__c,Core_Sales_Groups__c
                                              from Opportunity where Id IN: oppIdSet];
+                // Pre-cutoff opportunities are excluded from all processing and updates; their KPIs are still flagged processed below.
+                List<Opportunity> allOpps = new List<Opportunity>();
+                for (Opportunity op : queriedOpps) {
+                    if (isEligibleForCommission(op, commissionCutoff)) {
+                        allOpps.add(op);
+                    }
+                }
                 for (Core_Opportunity_KPI_Batch_Detail__c allOppKPIBatch: [SELECT ID,Core_Opportunity_ID_Txt__c,Core_Opportunity_Stage_Txt__c,Core_Opportunity_KPI_Batch_ID_Txt__c FROM Core_Opportunity_KPI_Batch_Detail__c WHERE Core_Opportunity_ID_Txt__c IN :oppIdSet
                                                                            ORDER BY Core_Opportunity_ID_Txt__c
                                                                           ]) {
@@ -159,12 +176,12 @@ public without sharing class Core_CommissionableTransactions {
                 if (!rejectedOPKPIs.isEmpty()) {
                     for (Core_Commissionable_Transaction__c txnList: [
                             SELECT Id, Core_Account_ID__c, Core_Account_Name__c, Core_Approved_Total_Price__c, Core_Claim_Date__c,
-                            Core_Employee_ID__c, Core_Employee_Name__c, Core_Last_Approved_Date__c, Core_Milestone_Area__c, Core_Opportunity_Name__c,
+                            Core_Employee_ID__c, Core_Employee_Name__c, CRM_Last_Approved_DateTime__c, Core_Milestone_Area__c, Core_Opportunity_Name__c,
                             Core_Opportunity_Team_Member_Role__c, Core_Opportunity_Type__c, Core_Opportunity__c, Core_Percent_Contribution__c,
                             Core_Source_ID__c, Core_Status__c, Core_Transaction_Timestamp__c, Core_Transaction_Type__c, Core_WWID__c,  Core_KPI_Id__c,
-                        	Core_Opportunity__r.Core_DesignWin_KPI_Txt__c, Core_Opportunity__r.Core_ProductionWin_KPI_Txt__c
+                            Core_Opportunity__r.Core_DesignWin_KPI_Txt__c, Core_Opportunity__r.Core_ProductionWin_KPI_Txt__c,Core_Approved_Sales_Group__c,CRM_Team_Member_Addition_Date__c
                             FROM Core_Commissionable_Transaction__c
-                            WHERE Core_Source_ID__c in: rejectedOPPs.keySet() AND Core_Milestone_Area__c in: rejectedOPKPIs AND CreatedDate > 2023-01-28T00:00:00.000+0000
+                            WHERE Core_Source_ID__c in: rejectedOPPs.keySet() AND Core_Milestone_Area__c in: rejectedOPKPIs AND CreatedDate >= :commissionCutoff
                             order by Core_Opportunity__c desc, createdDate desc, Core_Milestone_Area__c desc, Core_Employee_ID__c desc, Core_Status__c asc
                         ]) {
 						String KPIType = mapActiveFunctionalityNameKPIMappings.get(txnList.Core_Milestone_Area__c).Core_KPI_Type__c;
@@ -239,12 +256,13 @@ public without sharing class Core_CommissionableTransactions {
 
                     //Existing Commission records
                     for (Core_Commissionable_Transaction__c commTxn: [SELECT Id, Core_Account_ID__c, Core_Account_Name__c, Core_Approved_Total_Price__c, Core_Claim_Date__c,
-                            Core_Employee_ID__c, Core_Employee_Name__c, Core_Last_Approved_Date__c, Core_Milestone_Area__c, Core_Opportunity_Name__c,
+                            Core_Employee_ID__c, Core_Employee_Name__c, CRM_Last_Approved_DateTime__c, Core_Milestone_Area__c, Core_Opportunity_Name__c,
                             Core_Opportunity_Team_Member_Role__c, Core_Opportunity_Type__c, Core_Opportunity__c, Core_Percent_Contribution__c,
                             Core_Source_ID__c, Core_Status__c, Core_Transaction_Timestamp__c,
-                            Core_Transaction_Type__c, Core_WWID__c, Core_KPI_Id__c
+                            Core_Transaction_Type__c, Core_WWID__c, Core_KPI_Id__c,Core_Approved_Sales_Group__c,CRM_Team_Member_Addition_Date__c
                             FROM Core_Commissionable_Transaction__c WHERE Core_Opportunity__c in: approvedOPPs AND(Core_Opportunity__r.Core_Date_Submitted_for_Approval__c >=: startvalue OR(Core_Opportunity__r.Core_Date_Submitted_for_Approval__c <=: startvalue AND Core_Opportunity__r.StageName = 'Production Win'))
                             AND Core_Milestone_Area__c in: mapActiveFunctionalityNameKPIMappings.keySet()
+                            AND CreatedDate >= :commissionCutoff
                             ORDER BY Core_Opportunity__c desc, createdDate desc, Core_Milestone_Area__c desc, Core_Employee_ID__c desc, Core_Status__c asc
                         ]) {
                             Boolean KPIExists = true;
@@ -435,7 +453,7 @@ public without sharing class Core_CommissionableTransactions {
                                                                    txn1.Id = null;
                                                                    newTxns.add(txn1);
                                                                    
-                                                                   if (value > 0 && otm.User.IsActive && validOTMByDate) {
+                                                                   if (value > 0 && validOTMByDate) {
                                                                        Core_Commissionable_Transaction__c txn2 = new Core_Commissionable_Transaction__c();
                                                                        txn2 = existingTxnsMap.get(extKPI).clone(false, true, false, false);
                                                                        txn2.Core_Transaction_Timestamp__c = transactionTimeStampWithDelay;
@@ -446,16 +464,16 @@ public without sharing class Core_CommissionableTransactions {
                                                                        newTxns.add(txn2);
                                                                    }
                                                                }
-                                                           } else if (!partialProductChange && value > 0 && !latestTransComm && otm.User.IsActive && !kpiExist && isBlankKPI && validOTMByDate) {
+                                                           } else if (!partialProductChange && value > 0 && !latestTransComm && !kpiExist && isBlankKPI && validOTMByDate) {
                                                                txn.Core_Employee_ID__c = otm.UserId;
                                                                txn.Core_Employee_Name__c = otm.User.Name;
                                                                txn.Core_WWID__c = otm.User.Core_WWID__c;
                                                                if(isProdKPI){
-                                                                   txn.Core_Opportunity_Team_Member_Role__c = otm.Core_Production_Win_Member_Role__c;
+                                                                   txn.Core_Opportunity_Team_Member_Role__c = Core_Commissions_Percent_Contribution__c.getInstance(otm.Core_Production_Win_Member_Role__c).API_Value__c;
                                                                    txn.Core_Percent_Contribution__c = Core_Commissions_Percent_Contribution__c.getInstance(otm.Core_Production_Win_Member_Role__c).Core_Percent_Contribution__c;
                                                                }
                                                                else{
-                                                                   txn.Core_Opportunity_Team_Member_Role__c = otm.TeamMemberRole;
+                                                                   txn.Core_Opportunity_Team_Member_Role__c = Core_Commissions_Percent_Contribution__c.getInstance(otm.TeamMemberRole).API_Value__c;
                                                                    txn.Core_Percent_Contribution__c = Core_Commissions_Percent_Contribution__c.getInstance(otm.TeamMemberRole).Core_Percent_Contribution__c;
                                                                }
                                                                
@@ -467,10 +485,10 @@ public without sharing class Core_CommissionableTransactions {
                                                                txn.Core_Claim_Date__c = isProdKPI ? MapTempKPIClaimDate.get(k).date() : MapTempDWKPIClaimDate.get(k).date();
                                                                if (opportunities.get(approvedOP).Core_Approved_Date__c == null) {
                                                                    //in production, we always expect this code to run -- when a product is newly approved, the approved date usually gets populated after this
-                                                                   txn.Core_Last_Approved_Date__c = transactionTimeStamp.date();
+                                                                   txn.CRM_Last_Approved_DateTime__c = transactionTimeStamp;
                                                                } else {
                                                                    //in case of manual data updates, this code may need to run instead
-                                                                   txn.Core_Last_Approved_Date__c = date.newinstance(opportunities.get(approvedOP).Core_Approved_Date__c.year(), opportunities.get(approvedOP).Core_Approved_Date__c.month(), opportunities.get(approvedOP).Core_Approved_Date__c.day());
+                                                                   txn.CRM_Last_Approved_DateTime__c = opportunities.get(approvedOP).Core_Approved_Date__c;
                                                                }
                                                                txn.Core_Status__c = Label.Core_Commissionable_Transaction_Approved_Status;
                                                                txn.Core_Opportunity__c = approvedOP;
@@ -483,6 +501,10 @@ public without sharing class Core_CommissionableTransactions {
                                                                txn.Core_KPI_Id__c = mapActiveFunctionalityNameKPIMappings.get(k).Core_KPI_Id__c;
                                                                txn.Core_Approved_Total_Price__c = value;
                                                                txn.Core_Transaction_Type__c = mapActiveFunctionalityNameKPIMappings.get(k).Core_Event_Type__c;
+                                                               txn.CRM_Audit_Status_Txt__c = opportunities.get(approvedOP).CRM_Audit_Status__c;
+                                                               txn.CRM_Audit_Close_Date__c = opportunities.get(approvedOP).CRM_Audit_Close_Date__c;
+                                                               txn.Core_Approved_Sales_Group__c = opportunities.get(approvedOP).Core_Sales_Groups__c;
+                                                               txn.CRM_Team_Member_Addition_Date__c = otm.CreatedDate;
                                                                newTxns.add(txn);
                                                                if (isProdKPI && !allProdKPIForOpp.contains(KPIName)) {
                                                                    allProdKPIForOpp.add(KPIName);
@@ -590,6 +612,8 @@ public without sharing class Core_CommissionableTransactions {
                 }
             }
 
+            // Approved date is blanked on reversal, so gate on transaction CreatedDate instead.
+            DateTime commissionCutoff = getCommissionCutoff();
             if (!OppIdList.isEmpty()) {
                 for (Core_Opportunity_KPI_Batch_Detail__c allOppKPIBatch: [SELECT ID,Core_Opportunity_ID_Txt__c,Core_Opportunity_Stage_Txt__c,Core_Opportunity_KPI_Batch_ID_Txt__c FROM Core_Opportunity_KPI_Batch_Detail__c WHERE Core_Opportunity_ID_Txt__c IN :OppIdList
                                                                            ORDER BY Core_Opportunity_ID_Txt__c
@@ -606,12 +630,12 @@ public without sharing class Core_CommissionableTransactions {
                                                                           }
                 for (Core_Commissionable_Transaction__c txnList: [
                         SELECT Id, Core_Account_ID__c, Core_Account_Name__c, Core_Approved_Total_Price__c, Core_Claim_Date__c,
-                        Core_Employee_ID__c, Core_Employee_Name__c, Core_Last_Approved_Date__c, Core_Milestone_Area__c, Core_Opportunity_Name__c,
+                        Core_Employee_ID__c, Core_Employee_Name__c, CRM_Last_Approved_DateTime__c, Core_Milestone_Area__c, Core_Opportunity_Name__c,
                         Core_Opportunity_Team_Member_Role__c, Core_Opportunity_Type__c, Core_Opportunity__c, Core_Percent_Contribution__c,
                         Core_Source_ID__c, Core_Status__c, Core_Transaction_Timestamp__c, Core_Transaction_Type__c, Core_WWID__c, Core_KPI_Id__c,
-                    	Core_Opportunity__r.Core_DesignWin_KPI_Txt__c, Core_Opportunity__r.Core_ProductionWin_KPI_Txt__c
+                        Core_Opportunity__r.Core_DesignWin_KPI_Txt__c, Core_Opportunity__r.Core_ProductionWin_KPI_Txt__c,Core_Approved_Sales_Group__c,CRM_Team_Member_Addition_Date__c
                         FROM Core_Commissionable_Transaction__c
-                        WHERE Core_Source_ID__c in: OppIdList AND Core_Milestone_Area__c in: mapActiveFunctionalityNameKPIMappings.keySet() AND CreatedDate > 2023-01-28T00:00:00.000+0000
+                        WHERE Core_Source_ID__c in: OppIdList AND Core_Milestone_Area__c in: mapActiveFunctionalityNameKPIMappings.keySet() AND CreatedDate >= :commissionCutoff
                         order by Core_Opportunity__c desc, createdDate desc, Core_Milestone_Area__c desc, Core_Employee_ID__c desc, Core_Status__c asc
                     ]) {
                         String KPIType = mapActiveFunctionalityNameKPIMappings.get(txnList.Core_Milestone_Area__c).Core_KPI_Type__c;
@@ -682,6 +706,120 @@ public without sharing class Core_CommissionableTransactions {
         if (OppIdList.size() > 0) {
             Set < Id > oppSet = new Set < Id > (OppIdList);
             processOpportunityWithNoKPI(oppSet);
+        }
+    }
+    
+    private static Set<Id> auditStatusProcessedOppIds = new Set<Id>();
+
+    //Clones the latest Approved set per Opportunity x Milestone with refreshed audit fields; duplicates of existing Approved rows are intended.
+    public static void generateApprovedCommissionOnAuditStatusChange(Set<Id> oppIds) {
+        if (oppIds == null || oppIds.isEmpty()) {
+            return;
+        }
+        Set<Id> pendingOppIds = oppIds.clone();
+        pendingOppIds.removeAll(auditStatusProcessedOppIds);
+        if (pendingOppIds.isEmpty()) {
+            return;
+        }
+        auditStatusProcessedOppIds.addAll(pendingOppIds);
+    
+        List<Core_Commissionable_Transaction__c> newTxns = new List<Core_Commissionable_Transaction__c>();
+        List<Core_Log_Entry__c> logEntries = new List<Core_Log_Entry__c>();
+    
+        try {
+            DateTime transactionTimeStamp = System.now();
+            DateTime commissionCutoff = getCommissionCutoff();
+    
+            Set<String> activeMilestones = new Set<String>();
+            for (Core_Commission_KPI_Mappings__c kpiMap : Core_Commission_KPI_Mappings__c.getAll().values()) {
+                if (kpiMap.Core_IsActive__c) {
+                    activeMilestones.add(kpiMap.Core_KPI_Name_Nm__c);
+                }
+            }
+            if (activeMilestones.isEmpty()) {
+                return;
+            }
+    
+            Map<Id, Opportunity> opportunities = new Map<Id, Opportunity>([
+                SELECT Id, CRM_Audit_Status__c, CRM_Audit_Close_Date__c
+                FROM Opportunity
+                WHERE Id IN :pendingOppIds AND Core_Commissionable__c = 'Yes' AND Core_Approved_Date__c >= :commissionCutoff
+            ]);
+            if (opportunities.isEmpty()) {
+                return;
+            }
+    
+            //Transactions carry no batch id; rows written by one call share one Core_Transaction_Timestamp__c.
+            Map<String, DateTime> latestTs = new Map<String, DateTime>();
+            Set<String> skipSetKeys = new Set<String>();
+            List<Core_Commissionable_Transaction__c> latestSetRows = new List<Core_Commissionable_Transaction__c>();
+            for (Core_Commissionable_Transaction__c src : [
+                    SELECT Id, Core_Account_ID__c, Core_Account_Name__c, Core_Approved_Total_Price__c, Core_Claim_Date__c,
+                           Core_Employee_ID__c, Core_Employee_Name__c, CRM_Last_Approved_DateTime__c, Core_Milestone_Area__c, Core_Opportunity_Name__c,
+                           Core_Opportunity_Team_Member_Role__c, Core_Opportunity_Type__c, Core_Opportunity__c, Core_Percent_Contribution__c,
+                           Core_Source_ID__c, Core_Status__c, Core_Transaction_Timestamp__c, Core_Transaction_Type__c, Core_WWID__c, Core_KPI_Id__c,
+                           Core_Approved_Sales_Group__c, CRM_Team_Member_Addition_Date__c, CRM_Audit_Status_Txt__c, CRM_Audit_Close_Date__c
+                    FROM Core_Commissionable_Transaction__c
+                    WHERE Core_Opportunity__c IN :opportunities.keySet()
+                      AND Core_Milestone_Area__c IN :activeMilestones
+                      AND CreatedDate >= :commissionCutoff
+                    ORDER BY Core_Opportunity__c, Core_Milestone_Area__c, Core_Transaction_Timestamp__c DESC, CreatedDate DESC
+                ]) {
+                String setKey = src.Core_Opportunity__c + '~' + src.Core_Milestone_Area__c;
+                if (!latestTs.containsKey(setKey)) {
+                    latestTs.put(setKey, src.Core_Transaction_Timestamp__c);
+                    if (src.Core_Status__c != 'Approved') {
+                        skipSetKeys.add(setKey);
+                    }
+                }
+                if (!skipSetKeys.contains(setKey) && src.Core_Status__c == 'Approved'
+                    && src.Core_Transaction_Timestamp__c == latestTs.get(setKey)) {
+                    latestSetRows.add(src);
+                }
+            }
+    
+            Set<String> clonedKeys = new Set<String>();
+            for (Core_Commissionable_Transaction__c src : latestSetRows) {
+                String setKey = src.Core_Opportunity__c + '~' + src.Core_Milestone_Area__c;
+                if (!clonedKeys.add(setKey + '~' + src.Core_Employee_ID__c)) {
+                    continue;
+                }
+                Opportunity opp = opportunities.get(src.Core_Opportunity__c);
+                Core_Commissionable_Transaction__c txn = src.clone(false, true, false, false);
+                txn.Core_Status__c = Label.Core_Commissionable_Transaction_Approved_Status;
+                txn.Core_Transaction_Timestamp__c = transactionTimeStamp;
+                txn.CRM_Audit_Status_Txt__c = opp.CRM_Audit_Status__c;
+                txn.CRM_Audit_Close_Date__c = opp.CRM_Audit_Close_Date__c;
+                newTxns.add(txn);
+            }
+    
+            if (!newTxns.isEmpty()) {
+                List<Database.SaveResult> srList = Database.insert(newTxns, false);
+                for (Integer i = 0; i < srList.size(); i++) {
+                    if (!srList[i].isSuccess()) {
+                        for (Database.Error err : srList[i].getErrors()) {
+                            logEntries.add(new Core_Log_Entry__c(
+                                Core_Message__c = err.getMessage(),
+                                Core_Origin__c = 'CommissionCreationAuditStatusChange',
+                                Core_Severity__c = 'Info',
+                                Core_When__c = System.now(),
+                                Core_Project__c = 'Sales',
+                                Core_sObjectId__c = String.valueOf(newTxns[i].Core_Opportunity__c)));
+                        }
+                    }
+                }
+                if (!logEntries.isEmpty()) {
+                    insert logEntries;
+                }
+            }
+        } catch (Exception ex) {
+            insert new Core_Log_Entry__c(
+                Core_Message__c = ex.getMessage(),
+                Core_Origin__c = 'CommissionCreationAuditStatusChange',
+                Core_Severity__c = 'Info',
+                Core_When__c = System.now(),
+                Core_Project__c = 'Sales',
+                Core_Details__c = 'Line number:' + ex.getLineNumber() + ', Stack trace: ' + ex.getStackTraceString());
         }
     }
 }

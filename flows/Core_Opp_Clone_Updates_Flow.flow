@@ -28,7 +28,7 @@
         <name>Clone_field_Updates</name>
         <label>Clone field Updates</label>
         <locationX>176</locationX>
-        <locationY>335</locationY>
+        <locationY>323</locationY>
         <inputAssignments>
             <field>Core_Approval_Status__c</field>
             <value>
@@ -49,35 +49,7 @@
         <connector>
             <targetReference>Clone_field_Updates</targetReference>
         </connector>
-        <filterLogic>or</filterLogic>
-        <filters>
-            <field>StageName</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>Design Win</stringValue>
-            </value>
-        </filters>
-        <filters>
-            <field>StageName</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>Production Win</stringValue>
-            </value>
-        </filters>
-        <filters>
-            <field>StageName</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>Production Lost</stringValue>
-            </value>
-        </filters>
-        <filters>
-            <field>StageName</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>Production Cancelled</stringValue>
-            </value>
-        </filters>
+        <filterFormula>AND(AND(NOT(ISNULL({!$Record.RecordTypeId})),CONTAINS({!$Label.Core_Sales_CRM_Record_Types},{!$Record.RecordType.DeveloperName})),OR(ISPICKVAL({!$Record.StageName}, &apos;Design Win&apos;),ISPICKVAL({!$Record.StageName}, &apos;Production Win&apos;),ISPICKVAL({!$Record.StageName}, &apos;Production Lost&apos;),ISPICKVAL({!$Record.StageName}, &apos;Production Cancelled&apos;)))</filterFormula>
         <object>Opportunity</object>
         <recordTriggerType>Create</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>

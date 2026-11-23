@@ -4,10 +4,11 @@
     getPageReference : function(component) {
         
         if (component.get('v.pageReference')){
+            console.log('if pageRefernce');
             return component.get('v.pageReference');
             
         } else if (component.get('v.page')) {
-            
+            console.log('if page');
             return {
                 type: 'comm__namedPage',
                 attributes: {
@@ -15,25 +16,17 @@
                 }
             };
         } else if (component.get('v.recordId')) {
-            
-            //Event Page Behavioural Analytics[US749107]            
-            
-            var evt=component.get('v.eventPage');
-            let nav = {
+            console.log('if recordID');
+            return {
                 type: "standard__recordPage",
                 attributes: {
                     recordId: component.get('v.recordId'),
                     objectApiName: component.get('v.objectApiName'),
                     actionName: "view"
                 }
-            }
-            if(evt==true){
-                nav.state = { icid:component.get('v.eventName') };
-            } 
-            return nav;    
-            
+            };
         } else if (component.get('v.objectApiName')) {
-             
+            console.log('if objectApName');
             return {
                 type: "standard__objectPage",
                 attributes: {
@@ -44,7 +37,6 @@
                     filterName: "Recent"
                 }
             }
-            
         }
         
    
@@ -52,14 +44,12 @@
     },
     // Note we truncate only the labels and not body types
     truncate: function(component, helper) {
-         
         var truncate = component.get('v.truncate'),
             resetTruncated = component.get('v.truncatedString'),
             label = component.get('v.label');
-        	
+        
         if (truncate > 3 && label && label.length > truncate-3) {
             component.set('v.truncatedString', label.substring(0,truncate-3).trim());
-            
             resetTruncated = false;
         }
         
@@ -68,7 +58,6 @@
         }
     },
     resetUrl : function(component, helper) {
-       
         var defaultUrl = component.get('v.url') || "#",
             params = '',
             pageReference = helper.getPageReference(component);
@@ -83,6 +72,7 @@
             } else if (component.get('v.searchParams')) {
                 params = '?search=' +
                     encodeURIComponent(JSON.stringify(component.get('v.searchParams')));
+                
             }
             
             // ADDING TIMEOUT RESOLVES SALESFORCE BUG w/ NAVIGATION URL
@@ -106,41 +96,56 @@
             //   defaultUrl = 'http://' + defaultUrl;
             // }
             component.set('v._href', defaultUrl);
-            
+            console.log(defaultUrl);
         }
     },
     
-
     /**
-   	* Calls the analytics library with link data. This will cause the listener
-    * in the community HEAD to call the salesforceHit method for logging the data to
+   	* Posts a message to the window message listener in the HEAD script. This will
+    * cause the listener to call the salesforceHit method for logging the data to
     * the analytics engine.
    	* @param {Object} component  The Lightning web component.
+  	* @param {Object} event  The event associated with the call.
+  	* @param {Object} helper  The component's Helper object.
   	*/
     makeAnalyticsCall: function (component){
-      var analyticsLibrary = component.find("analyticsLibrary");
-      
-      // Create the parameters for the analytics post
-      var messageData = {
-          analyticsType: 'click',
-          element : component.get("v.LabelHeader") || '',
-          pageTitle : component.get("v.title") || '',
-          pageType: component.get("v.pageType") || '', 
-          targetURL : component.get('v.url') || component.get('v._href') || ''
-      };
+        var analyticsLibrary = component.find("analyticsLibrary");
         
-      //Promotion Blade Web Analytics code Starts 
-        if(component.get('v.eventPage')){
-            var str = component.get('v.eventName');
-      		var n = str.length;
-      		var res = str.substring(16, n-1);//the slicing the eventName from "PromotionBlade:eventName"
-             messageData.element ='learn-more';
-          	 messageData.details = res || '';
-        }
-        //Promotion Blade Web Analytics code Ends 
-
-      // Call the helper library to log the analytics data
-      analyticsLibrary.makeIpaAnalyticsCall(messageData, component);
-  },
+        // Default pageType and title
+        var pageType = component.get("v.pageType") || '';
+        var title = component.get("v.title") || '';       
+        
+        // Get the Offering and Partner IDs
+        var offeringId = analyticsLibrary.getOfferingId(component);
+        var partnerId = analyticsLibrary.getPartnerId(component) || component.get("v.partnerMDAId"); //Added the 'Or' condition so that PartnerMDA Id is fetched up from OfferingDetailPage.
+        
+        // Get the object representing the meta tags. The window.focus method is overwritten in the
+        // HEAD script to return an object with meta tag values. This is done since the Locker service
+        // stops this component from accessing the meta tags. If window.focus is called without the "true"
+        // parameter, the standard window.focus method is called.
+        var metaData = window.focus(true);
+        if (metaData) {            
+            // Update pageType and title based on meta tags
+            if (!pageType) {
+                pageType = metaData.pageType || '';
+            }
+            //Not required , since the title is passed from respectvie component
+            //title = metaData.title || '';
+        }         
+        // Create the parameters for the analytics post
+        var messageData = {
+            analyticsType: 'click',
+            element : component.get("v.LabelHeader") || '',
+            offeringId : offeringId,
+            pageTitle : title,
+            pageType: pageType, 
+            partnerMDAId : partnerId,
+            targetURL : component.get('v.url') || component.get('v._href') || ''
+        };
+        
+        // Call the helper library to log the analytics data
+        analyticsLibrary.makeAnalyticsCall(messageData);
+    },
    
+    
 })

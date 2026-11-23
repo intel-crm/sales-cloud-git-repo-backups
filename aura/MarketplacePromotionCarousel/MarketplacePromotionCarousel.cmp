@@ -12,6 +12,7 @@
     <aura:attribute name="class" type="string" default=""/>
     <aura:attribute name="promotionData" type="object[]"  description="data array that contains the images entries. please see documentation tab for data structure" />
     
+    
     <!-- Handlers -->
     <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
     <aura:handler name="change" value="{!v.promotionData}" action="{!c.handleDataChange}" />
@@ -42,14 +43,9 @@
                                                     <h3 class="heading-28 color-blue slds-m-bottom_x-small">{! promo.title }</h3>
                                                     <p class="slds-m-bottom_medium"><lightning:formattedRichText value="{! promo.body }"></lightning:formattedRichText></p>
                                                     <!--<c:IntelLink url="{! promo.ctaLink }" openInBlank="true">{!promo.ctaLabel}</c:IntelLink>-->
-                                              <!--   <c:IntelLink page="search" searchParams="{!promo.searchParams}">
+                                                    <c:IntelLink page="search" searchParams="{!promo.searchParams}">
                                                         <c:IntelButton openInNewTab="true" >{! promo.ctaLabel }</c:IntelButton>
-                                                    </c:IntelLink>  -->
-                                                  
-                                                  <c:IntelLink  recordId="{! promo.ctaLink }" objectApiName="PMP_Marketplace_Event__c" eventPage="true" eventName="{! promo.promotionName }"> 
-                                                      <c:IntelButton screenReader="{! promo.eventScreenReader}" >{! promo.ctaLabel }</c:IntelButton> 
-                                                  </c:IntelLink> 
-                                                  
+                                                    </c:IntelLink>
                                                     <!-- <aura:if isTrue="{!v.appState.Settings.currentScreenSize == 'desktop' }">
                 <a href="{! promo.ctaLink }" target="_blank">{! promo.ctaLabel }</a>
 
@@ -71,13 +67,9 @@
                                                     <lightning:layoutItem size="12" class="textContainer">
                                                         <h3 class="heading-28 color-blue slds-m-bottom_x-small">{! promo.title }</h3>
                                                         <p class="slds-m-bottom_medium"><lightning:formattedRichText value="{! promo.body }"></lightning:formattedRichText></p>
-                                                     <!--  <c:IntelLink page="search" searchParams="{!promo.searchParams}">
+                                                        <c:IntelLink page="search" searchParams="{!promo.searchParams}">
                                                             <c:IntelButton openInNewTab="true" >{! promo.ctaLabel }</c:IntelButton>
-                                                        </c:IntelLink>  -->
-                                                       <c:IntelLink recordId="{! promo.ctaLink }" objectApiName="PMP_Marketplace_Event__c" eventPage="true" eventName="{! promo.promotionName }" >
-                                                           <c:IntelButton screenReader="{! promo.eventScreenReader}">{! promo.ctaLabel }</c:IntelButton>
-                                                    	</c:IntelLink> 
-    
+                                                        </c:IntelLink>
                                                         <!-- <aura:if isTrue="{!v.appState.Settings.currentScreenSize == 'desktop' }">
                  <a href="{! promo.ctaLink }" target="_blank">{! promo.ctaLabel }</a>
 

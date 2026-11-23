@@ -1,0 +1,103 @@
+<template>
+    <lightning-card>
+        <!-- Header 
+        <header class="slds-is-relative slds-modal__header slds-p-horizontal_medium" style="padding-top: 0rem;padding-bottom: 0.75rem;">
+            <h3 slot="title" class="slds-text-heading_medium slds-hyphenate">Bulk Assign CSAR/Payment Ref Id</h3>
+        </header>-->
+
+        <!-- Content -->
+        <div class="slds-is-relative slds-p-around_medium">
+            <div class="slds-is-relative slds-grid slds-grid_vertical">
+                <div class="slds-col slds-grid slds-wrap slds-size_8-of-8">
+                    <div class="slds-col slds-size_3-of-12">
+                        <lightning-record-picker
+                           label="Partner Account "
+                            placeholder="Search Accounts..."
+                            object-api-name="Account"
+                            required
+                            onchange={handlepartnername}>
+                       </lightning-record-picker>
+                       <span style="color: red;"></span>
+                    </div>
+                    <div class="slds-col slds-size_3-of-12">
+                        <div class="slds-form-element">
+                            <div class="slds-form-element__control">
+                                <lightning-input label="From Date" type="date" id="fromDate" value={fromDate} required onchange={handleFromDateChange}></lightning-input>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slds-col slds-size_3-of-12">
+                        <div class="slds-form-element">
+                            <div class="slds-form-element__control">
+                                <lightning-input label="To Date" type="date" id="toDate" value={toDate} required onchange={handleToDateChange}></lightning-input>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slds-col slds-size_3-of-12" style="padding-right: 0rem;">
+                        <div class="slds-form-element">
+                            <div class="slds-form-element__control slds-m-top_large slds-text-align_right">
+                                <lightning-button label="Search" onclick={handleSearch} variant="brand" style="width: 100px"></lightning-button>
+                            </div>
+                        </div>
+                    </div>       
+                </div>       
+             <template if:true={displayfields}>
+              <div if:true ={displayfields}>
+                <div class="slds-col slds-grid slds-wrap">
+                    <div class="slds-col slds-size_3-of-12">
+                        <div class="slds-form-element">
+                            <!--<label class="slds-form-element__label">CSAR ID</label>-->
+                            <div class="slds-form-element__control">
+                                <lightning-input label="CSAR ID" type="text" id="csarId" value={csarId} onchange={handleCsarIdChange} disabled={isCsarIdDisabled}></lightning-input>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slds-col slds-size_3-of-12">
+                        <div class="slds-form-element">
+                            <!--<label class="slds-form-element__label">Payment Ref Id</label>-->
+                            <div class="slds-form-element__control">
+                                <lightning-input label="Payment Ref Id" type="text" id="paymentRefId" value={paymentRefId} onchange={handlePaymentRefIdChange} disabled={isPaymentRefIdDisabled}></lightning-input>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slds-col slds-size_6-of-12" style="padding-right: 0rem;">
+                        <div class="slds-form-element">
+                            <div class="slds-form-element slds-m-top_large slds-text-align_right">
+                                <lightning-button label="Apply CSAR/Payment Ref Id" onclick={handleapplyCsarPaymentRef} disabled={isApplyDisabled}></lightning-button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-scrollable_x slds-scrollable_y" style="padding-right: 16px; height : 350px " >
+                  <lightning-datatable
+                      data={claimRecords}
+                     columns={columns}
+                        key-field="Id"
+                     selected-rows={selectedClaimIds}
+                     onrowselection={handleRowSelection}
+                     >
+                  </lightning-datatable>
+            </div >
+            <br>
+             <div>
+             <lightning-button-group class="slds-float_left slds-p-bottom_small">
+              <!-- Previous Button -->
+                <lightning-button  icon-name="utility:chevronleft" icon-position="left" onclick={handlePrevious} disabled = {ispreviousDisable}></lightning-button>
+
+                      <!-- Next Button -->
+                 <lightning-button  icon-name="utility:chevronright" icon-position="right" onclick={handleNext} disabled= {isnextDisable}></lightning-button>
+                 </lightning-button-group>
+               <div class="slds-p-left_small slds-p-top_xx-small slds-float_left">Showing ({endRecord} of {totalRecordCount}) | Page ({currentPage} of {totalPages})</div>
+              </div>
+             </template>
+        </div>
+       </div>
+        <!-- Footer -->
+        <hr style="margin: 0.5rem 0rem 0rem">
+        <div class="slds-grid myfooter slds-grid_align-end slds-m-top_small slds-p-horizontal_medium" style="padding-right: 32px;">
+            <lightning-button class="slds-p-left_xx-small slds-p-bottom_x-small" variant="brand" label=" Save " onclick={handlesave} disabled={isSaveDisable}></lightning-button>
+            <lightning-button class="slds-p-left_xx-small slds-p-bottom_x-small" variant="neutral" label="Reset" onclick={handleReset}></lightning-button>
+        </div>
+    </lightning-card>
+</template>

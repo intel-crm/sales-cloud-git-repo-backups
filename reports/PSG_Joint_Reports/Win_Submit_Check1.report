@@ -31,10 +31,16 @@
         <field>ACCOUNT_NAME</field>
     </columns>
     <columns>
+        <field>OPPORTUNITY_NAME</field>
+    </columns>
+    <columns>
         <field>OPPORTUNITY_ID</field>
     </columns>
     <columns>
         <field>Product2.Core_OPN__c</field>
+    </columns>
+    <columns>
+        <field>STAGE_NAME</field>
     </columns>
     <columns>
         <field>OpportunityLineItem.Core_Status__c</field>
@@ -46,30 +52,27 @@
         <aggregateTypes>Sum</aggregateTypes>
         <field>TOTAL_PRICE</field>
     </columns>
-    <columns>
-        <field>Opportunity.Core_Distributor__c</field>
-    </columns>
     <filter>
-        <booleanFilter>(1 OR 2 OR 3 OR 5) AND (4 OR 8) AND 6 AND 7</booleanFilter>
+        <booleanFilter>(1 OR 2 OR 3) AND 4 AND 5 AND 6</booleanFilter>
         <criteriaItems>
             <column>Opportunity.Core_Technical_Owner__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>aijun wang</value>
+            <operator>equals</operator>
+            <value>zhi gong</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Technical_Owner__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>chen wang</value>
+            <operator>equals</operator>
+            <value>wei da liu</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Technical_Owner__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
+            <operator>equals</operator>
             <value>gang wang</value>
         </criteriaItems>
         <criteriaItems>
@@ -80,32 +83,18 @@
             <value>win submitted</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Opportunity.Core_Technical_Owner__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Yingqiu Feng</value>
-        </criteriaItems>
-        <criteriaItems>
             <column>Opportunity.Core_Distributor__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>arrow asia</value>
+            <value>Arrow Asia Pacific (HK)</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_Claim_Date__c</column>
+            <column>Opportunity.Core_Date_Submitted_for_Approval__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>greaterOrEqual</operator>
-            <value>11/1/2022 12:00 AM</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OpportunityLineItem.Core_Status__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>win approved</value>
+            <operator>greaterThan</operator>
+            <value>5/1/2020</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -142,7 +131,7 @@
     </params>
     <reportType>OpportunityProduct</reportType>
     <scope>organization</scope>
-    <showDetails>true</showDetails>
+    <showDetails>false</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
     <sortColumn>OPPORTUNITY_ID</sortColumn>

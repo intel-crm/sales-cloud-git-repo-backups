@@ -533,6 +533,11 @@
                     <default>false</default>
                     <label>Product Option</label>
                 </value>
+                <value>
+                    <fullName>Account</fullName>
+                    <default>false</default>
+                    <label>Account</label>
+                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>

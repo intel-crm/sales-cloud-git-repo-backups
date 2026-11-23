@@ -36,7 +36,6 @@ public class PCC_DDRL5ProductMapping_TH_Test {
         c1.RecordTypeId = contactRecordType;
         c1.Core_IPA_Partner_Role__c = 'Service Provider';
         c1.Email = 'test.diqhwqi@test.com';
-        c1.MailingCountry='India';
         insert c1;
         
         Contact c2 = PRM_TestUtility.getContact();
@@ -46,7 +45,6 @@ public class PCC_DDRL5ProductMapping_TH_Test {
         c2.Core_eRPM_Language_Code__c = 'ENG';
         c2.RecordTypeId = contactRecordType;
         c2.Core_IPA_Partner_Role__c = 'Service Provider';
-        c2.MailingCountry='India';
         c2.Email = 'test.diqhwqi11@test.com';
         insert c2;
         
@@ -91,7 +89,6 @@ public class PCC_DDRL5ProductMapping_TH_Test {
         
         insert partnerUser1; 
         
-        
         Profile sysAdminProfile = [SELECT Id FROM Profile WHERE Name='System Administrator' LIMIT 1]; 
         User user = new User(Alias = 'sysAdm', 
                              Email='sysAdmTest@intel.com', 
@@ -113,7 +110,7 @@ public class PCC_DDRL5ProductMapping_TH_Test {
                              ProfileId = sysAdminProfile.Id, 
                              TimeZoneSidKey='America/Los_Angeles',
                              UserName='adminTestoozzTestDDR111@intel.com',Core_User_Geo__c='APJ');
-         insert user1; 
+         insert user1;
         
         
         Product2 pr1 = new Product2();
@@ -204,9 +201,6 @@ public class PCC_DDRL5ProductMapping_TH_Test {
         ddrRec.OwnerId = user.Id;
         ddrRec.Core_Partner_Account_Region_Cd__c = 'ASMO';
         update ddrRec;
-        list<id> userList = new list<id>();
-        userList.add(user1.id);
-        PCC_DDRL5ProductMapping_TriggerHandler.checkDDRPS(userList);
         
         list<id> userids=new list<id>();
         userids.add(user1.id);

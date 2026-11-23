@@ -1,0 +1,30 @@
+.recordNameLink {
+  text-decoration: underline;
+  color: #2e87d5;
+  cursor: pointer;
+}
+
+.header {
+  width: 100%;
+  border: 0 1px 0 1px;
+  border-top: groove;
+  border-bottom: groove;
+  padding: 0.4rem 0px 0.4rem 0px;
+  border-color: #f6f6f6;
+  border-width: 1px;
+  background: #fafaf9;
+  font-weight: bold;
+  color: #575553;
+}
+
+.body {
+  width: 100%;
+  border-bottom: groove;
+  padding: 0.4rem 0px 0.4rem 0px;
+  border-color: #f6f6f6;
+  border-width: 1px;
+}
+
+.divTrunc {
+  max-width: 90%;
+}

@@ -17,10 +17,6 @@
         <name>Contact_ID__c</name>
     </fields>
     <fields>
-        <label><!-- Contact Details --></label>
-        <name>Contacts_Fields_Merged__c</name>
-    </fields>
-    <fields>
         <label><!-- AGS Duration --></label>
         <name>Core_AGS_Duration__c</name>
     </fields>
@@ -29,7 +25,6 @@
         <name>Core_AGS_Inactive__c</name>
     </fields>
     <fields>
-        <help><!-- For next steps on error, refer to Entitlement Integration Status Details --></help>
         <label><!-- AGS Integration Message --></label>
         <name>Core_AGS_Integration_Message__c</name>
     </fields>
@@ -52,15 +47,6 @@
     <fields>
         <label><!-- AGS Pending Time --></label>
         <name>Core_AGS_Pending_Time__c</name>
-    </fields>
-    <fields>
-        <label><!-- AGS Re-publish Ind --></label>
-        <name>Core_AGS_Republish_Ind__c</name>
-    </fields>
-    <fields>
-        <help><!-- Number of retry attempts made upon failure on AGS Integration. --></help>
-        <label><!-- AGS Retry Count --></label>
-        <name>Core_AGS_Retry_Count__c</name>
     </fields>
     <fields>
         <label><!-- AGS Status Change Date/Time --></label>
@@ -216,10 +202,6 @@
             <translation><!-- DCF User Administrator --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>IPA User</masterLabel>
-            <translation><!-- IPA User --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Partner Portal - IPS</masterLabel>
             <translation><!-- Partner Portal - IPS --></translation>
         </picklistValues>
@@ -238,10 +220,6 @@
         <picklistValues>
             <masterLabel>RMF External User Administrator</masterLabel>
             <translation><!-- RMF External User Administrator --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>RMF External View Only</masterLabel>
-            <translation><!-- RMF External View Only --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>RMF User</masterLabel>
@@ -308,6 +286,10 @@
         <help><!-- Marketing Status Indicator --></help>
         <label><!-- Marketing Status --></label>
         <name>Core_Contact_Marketing_Status__c</name>
+        <picklistValues>
+            <masterLabel>No Sign Up Collected</masterLabel>
+            <translation><!-- No Sign Up Collected --></translation>
+        </picklistValues>
         <picklistValues>
             <masterLabel>Not Signed Up</masterLabel>
             <translation><!-- Not Signed Up --></translation>
@@ -1246,8 +1228,8 @@
             <translation><!-- Tunisia --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Turkiye</masterLabel>
-            <translation><!-- Turkiye --></translation>
+            <masterLabel>Turkey</masterLabel>
+            <translation><!-- Turkey --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Turkmenistan</masterLabel>
@@ -1356,8 +1338,8 @@
             <translation><!-- Duplicate Contact --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Left Company</masterLabel>
-            <translation><!-- Left Company --></translation>
+            <masterLabel>Moved to new company</masterLabel>
+            <translation><!-- Moved to new company --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -1386,10 +1368,6 @@
         <picklistValues>
             <masterLabel>Malicious User</masterLabel>
             <translation><!-- Malicious User --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>None</masterLabel>
-            <translation><!-- None --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Orphaned Account</masterLabel>
@@ -1434,7 +1412,6 @@
         <name>Core_ERPM_Duration__c</name>
     </fields>
     <fields>
-        <help><!-- For next steps on error, refer to Entitlement Integration Status Details. --></help>
         <label><!-- ERPM Integration Message --></label>
         <name>Core_ERPM_Integration_Message__c</name>
     </fields>
@@ -1523,10 +1500,6 @@
         </picklistValues>
     </fields>
     <fields>
-        <label><!-- Entitlement Status Change Date/Time --></label>
-        <name>Core_Entitlement_Status_Change_Date_Time__c</name>
-    </fields>
-    <fields>
         <label><!-- Contact Segment --></label>
         <name>Core_IPA_Contact_Segment__c</name>
         <picklistValues>
@@ -1565,66 +1538,6 @@
     <fields>
         <label><!-- Partner Role --></label>
         <name>Core_IPA_PartnerRole__c</name>
-        <picklistValues>
-            <masterLabel>Builder</masterLabel>
-            <translation><!-- Builder --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Cloud &amp; Comms Service Provider</masterLabel>
-            <translation><!-- Cloud &amp; Comms Service Provider --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Distributor</masterLabel>
-            <translation><!-- Distributor --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Guest</masterLabel>
-            <translation><!-- Guest --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Independent Software Vendor</masterLabel>
-            <translation><!-- Independent Software Vendor --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Solution Integrator</masterLabel>
-            <translation><!-- Solution Integrator --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
-        <label><!-- IPA Communities --></label>
-        <name>Core_IPA_Partner_Community__c</name>
-        <picklistValues>
-            <masterLabel>Funded Head</masterLabel>
-            <translation><!-- Funded Head --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Intel® Cloud Insider Partner</masterLabel>
-            <translation><!-- Intel® Cloud Insider Partner --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Intel® FPGA Partner</masterLabel>
-            <translation><!-- Intel® FPGA Partner --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Intel® IOT Solution Partner</masterLabel>
-            <translation><!-- Intel® IOT Solution Partner --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Intel® Network Builders Partner</masterLabel>
-            <translation><!-- Intel® Network Builders Partner --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>NA</masterLabel>
-            <translation><!-- NA --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Tech Ambassador</masterLabel>
-            <translation><!-- Tech Ambassador --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
-        <label><!-- Partner Role Old --></label>
-        <name>Core_IPA_Partner_Role__c</name>
         <picklistValues>
             <masterLabel>Cloud &amp; Comms Service Provider</masterLabel>
             <translation><!-- Cloud &amp; Comms Service Provider --></translation>
@@ -1675,6 +1588,86 @@
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- IPA Communities --></label>
+        <name>Core_IPA_Partner_Community__c</name>
+        <picklistValues>
+            <masterLabel>Funded Head</masterLabel>
+            <translation><!-- Funded Head --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Cloud Insider Partner</masterLabel>
+            <translation><!-- Intel® Cloud Insider Partner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® FPGA Partner</masterLabel>
+            <translation><!-- Intel® FPGA Partner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® IOT Solution Partner</masterLabel>
+            <translation><!-- Intel® IOT Solution Partner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NA</masterLabel>
+            <translation><!-- NA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tech Ambassador</masterLabel>
+            <translation><!-- Tech Ambassador --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Partner Role_Old --></label>
+        <name>Core_IPA_Partner_Role__c</name>
+        <picklistValues>
+            <masterLabel>Cloud &amp; Comms Service Provider</masterLabel>
+            <translation><!-- Cloud &amp; Comms Service Provider --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Distributor</masterLabel>
+            <translation><!-- Distributor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA Design Services</masterLabel>
+            <translation><!-- FPGA Design Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Guest</masterLabel>
+            <translation><!-- Guest --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Independent Software Vendor</masterLabel>
+            <translation><!-- Independent Software Vendor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Manufacturer</masterLabel>
+            <translation><!-- Manufacturer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Applicable</masterLabel>
+            <translation><!-- Not Applicable --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Original Equipment Manufacturer (OEM)</masterLabel>
+            <translation><!-- Original Equipment Manufacturer (OEM) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service  Integrator</masterLabel>
+            <translation><!-- Service  Integrator --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Solution Provider</masterLabel>
+            <translation><!-- Solution Provider --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sponsor</masterLabel>
+            <translation><!-- Sponsor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TBD</masterLabel>
+            <translation><!-- TBD --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
         <help><!-- Provides access for external customer contacts to submit questions, problems and technical support issues to Intel® Premier Support, as well as monitor previously submitted issues. --></help>
         <label><!-- IPS Active --></label>
         <name>Core_IPS_Active__c</name>
@@ -1703,10 +1696,6 @@
         <name>Core_IPS_Email_Opt_Out__c</name>
     </fields>
     <fields>
-        <label><!-- Core IPS Embargoed State --></label>
-        <name>Core_IPS_Embargoed_State__c</name>
-    </fields>
-    <fields>
         <label><!-- Employee Customer? --></label>
         <name>Core_IPS_Employee_Customer__c</name>
     </fields>
@@ -1731,118 +1720,6 @@
         <help><!-- This field is copied from Employee Customer User. --></help>
         <label><!-- Region --></label>
         <name>Core_IPS_Region__c</name>
-    </fields>
-    <fields>
-        <label><!-- Core IPS State --></label>
-        <name>Core_IPS_State__c</name>
-        <picklistValues>
-            <masterLabel>Cherkasy</masterLabel>
-            <translation><!-- Cherkasy --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Chernihiv</masterLabel>
-            <translation><!-- Chernihiv --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Chernivtsi</masterLabel>
-            <translation><!-- Chernivtsi --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Crimea</masterLabel>
-            <translation><!-- Crimea --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Dinpropetrovsk</masterLabel>
-            <translation><!-- Dinpropetrovsk --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Donetsk</masterLabel>
-            <translation><!-- Donetsk --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Kharkivs&apos;ka Oblast</masterLabel>
-            <translation><!-- Kharkivs&apos;ka Oblast --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Khersons&apos;ka Oblast</masterLabel>
-            <translation><!-- Khersons&apos;ka Oblast --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Khmel&apos;nyts&apos;ka</masterLabel>
-            <translation><!-- Khmel&apos;nyts&apos;ka --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Kirovohrads&apos;ka</masterLabel>
-            <translation><!-- Kirovohrads&apos;ka --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Kyiv</masterLabel>
-            <translation><!-- Kyiv --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Kyivs&apos;ka Oblast</masterLabel>
-            <translation><!-- Kyivs&apos;ka Oblast --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>L&apos;vivs&apos;ka Oblast</masterLabel>
-            <translation><!-- L&apos;vivs&apos;ka Oblast --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Luhans&apos;ka Oblast</masterLabel>
-            <translation><!-- Luhans&apos;ka Oblast --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Mykolaivs&apos;ka</masterLabel>
-            <translation><!-- Mykolaivs&apos;ka --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Odeska Oblast</masterLabel>
-            <translation><!-- Odeska Oblast --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Poltavs&apos;ka Oblast</masterLabel>
-            <translation><!-- Poltavs&apos;ka Oblast --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Rivnens&apos;ka Oblast</masterLabel>
-            <translation><!-- Rivnens&apos;ka Oblast --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Sevastopol</masterLabel>
-            <translation><!-- Sevastopol --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Sums&apos;ka Oblast</masterLabel>
-            <translation><!-- Sums&apos;ka Oblast --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Ternopil&apos;s&apos;ka Oblast</masterLabel>
-            <translation><!-- Ternopil&apos;s&apos;ka Oblast --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Vinnyts&apos;ka Oblast</masterLabel>
-            <translation><!-- Vinnyts&apos;ka Oblast --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Volyns&apos;ka Oblast</masterLabel>
-            <translation><!-- Volyns&apos;ka Oblast --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Zakarpats&apos;ka Oblast</masterLabel>
-            <translation><!-- Zakarpats&apos;ka Oblast --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Zaporiz&apos;ka Oblast</masterLabel>
-            <translation><!-- Zaporiz&apos;ka Oblast --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Zhtomyrs&apos;ka Oblast</masterLabel>
-            <translation><!-- Zhtomyrs&apos;ka Oblast --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>lvano-frankivs&apos;ka</masterLabel>
-            <translation><!-- lvano-frankivs&apos;ka --></translation>
-        </picklistValues>
     </fields>
     <fields>
         <help><!-- This field is copied from Employee Customer User. --></help>
@@ -1875,6 +1752,7 @@
         <name>Core_Job_Function_Code__c</name>
     </fields>
     <fields>
+        <help><!-- This field is inactive. Please use Profession field. Contact AAQ for questions. --></help>
         <label><!-- Job Function --></label>
         <name>Core_Job_Function__c</name>
         <picklistValues>
@@ -2266,10 +2144,10 @@
             <masterLabel>D4</masterLabel>
             <translation><!-- D4 --></translation>
         </picklistValues>
-        <picklistValues>
-            <masterLabel>None</masterLabel>
-            <translation><!-- None --></translation>
-        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Marketing Score --></label>
+        <name>Core_Marketing_Score__c</name>
     </fields>
     <fields>
         <label><!-- Old Email --></label>
@@ -2405,131 +2283,123 @@
         <name>Core_Profession__c</name>
         <picklistValues>
             <masterLabel>CIO (Chief Information Officer)</masterLabel>
-            <translation>CIO（首席信息官）</translation>
+            <translation><!-- CIO (Chief Information Officer) --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>CISO (Chief Information Security Officer)</masterLabel>
-            <translation>CISO（首席信息安全官）</translation>
+            <translation><!-- CISO (Chief Information Security Officer) --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>COO (Chief Operating Officer)</masterLabel>
-            <translation>COO（首席运营官）</translation>
+            <translation><!-- COO (Chief Operating Officer) --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>CTO (Chief Technology Officer)</masterLabel>
-            <translation>CTO（首席技术官）</translation>
+            <translation><!-- CTO (Chief Technology Officer) --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Consultant</masterLabel>
-            <translation>顾问</translation>
+            <translation><!-- Consultant --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Data Sciences</masterLabel>
-            <translation>数据科学</translation>
+            <translation><!-- Data Sciences --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Educator</masterLabel>
-            <translation>教育工作者</translation>
+            <translation><!-- Educator --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>FPGA Engineering</masterLabel>
-            <translation>FPGA 工程</translation>
+            <translation><!-- FPGA Engineering --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Facilities/Audio Video</masterLabel>
-            <translation>设施/视听</translation>
+            <translation><!-- Facilities/Audio Video --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Finance/Procurement</masterLabel>
-            <translation>财务/采购</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Government</masterLabel>
-            <translation><!-- Government --></translation>
+            <translation><!-- Finance/Procurement --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Hardware Development/Engineering</masterLabel>
-            <translation>硬件开发/工程</translation>
+            <translation><!-- Hardware Development/Engineering --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Hobbyist/Maker</masterLabel>
-            <translation>爱好者/创客</translation>
+            <translation><!-- Hobbyist/Maker --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>IT Generalist/Other IT</masterLabel>
-            <translation>IT 通才/其它 IT</translation>
+            <translation><!-- IT Generalist/Other IT --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>IT Information Security</masterLabel>
-            <translation>IT 信息安全</translation>
+            <translation><!-- IT Information Security --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>IT Management</masterLabel>
-            <translation>IT 管理</translation>
+            <translation><!-- IT Management --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>IT Storage</masterLabel>
-            <translation>IT 存储</translation>
+            <translation><!-- IT Storage --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>IT User Devices - PCs tablets etc</masterLabel>
-            <translation>IT 用户设备 - PC、平板电脑等</translation>
+            <translation><!-- IT User Devices - PCs tablets etc --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Infrastructure/Datacenter Architecture</masterLabel>
-            <translation>基础设施/数据中心架构</translation>
+            <translation><!-- Infrastructure/Datacenter Architecture --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Line of Business or Service Head</masterLabel>
-            <translation>业务线或服务主管</translation>
+            <translation><!-- Line of Business or Service Head --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Marketing</masterLabel>
-            <translation>市场推广</translation>
+            <translation><!-- Marketing --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Network Architecture/Engineering</masterLabel>
-            <translation>网络架构/工程</translation>
+            <translation><!-- Network Architecture/Engineering --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Operations Engineer</masterLabel>
-            <translation>运营工程师</translation>
+            <translation><!-- Operations Engineer --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Other</masterLabel>
-            <translation>其它</translation>
+            <translation><!-- Other --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Owner/Executive Management</masterLabel>
-            <translation>负责人/行政管理</translation>
+            <translation><!-- Owner/Executive Management --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Press Analyst</masterLabel>
-            <translation>媒体分析师</translation>
+            <translation><!-- Press Analyst --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Sales</masterLabel>
-            <translation>销售</translation>
+            <translation><!-- Sales --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Scientist/Researcher</masterLabel>
-            <translation>科学家/研究人员</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Software Operations</masterLabel>
-            <translation><!-- Software Operations --></translation>
+            <translation><!-- Scientist/Researcher --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Software/Application Development/Engineering</masterLabel>
-            <translation>软件/应用程序开发/工程</translation>
+            <translation><!-- Software/Application Development/Engineering --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Solution/System Architecture</masterLabel>
-            <translation>解决方案/系统架构</translation>
+            <translation><!-- Solution/System Architecture --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Student</masterLabel>
-            <translation>学生</translation>
+            <translation><!-- Student --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -2582,6 +2452,10 @@
         <name>Core_Republish_OBM_s__c</name>
     </fields>
     <fields>
+        <label><!-- Click here to submit new account request --></label>
+        <name>Core_SBR_URL__c</name>
+    </fields>
+    <fields>
         <help><!-- No Sales communication or methods can be used to contact this person. --></help>
         <label><!-- Sales - Do Not Contact --></label>
         <name>Core_Sales_Do_Not_Contact_Ind__c</name>
@@ -2597,10 +2471,6 @@
     <fields>
         <label><!-- Status --></label>
         <name>Core_Status__c</name>
-    </fields>
-    <fields>
-        <label><!-- Suppress IPA  Email --></label>
-        <name>Core_Suppress_IPA_Email__c</name>
     </fields>
     <fields>
         <label><!-- Tokenized --></label>
@@ -2640,6 +2510,27 @@
         <name>CventEvents__ContactStub__c</name>
     </fields>
     <fields>
+        <label><!-- Data Quality Description --></label>
+        <name>Data_Quality_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Data Quality Score --></label>
+        <name>Data_Quality_Score__c</name>
+    </fields>
+    <fields>
+        <label><!-- Direct_checkbox --></label>
+        <name>Direct_Checkbox__c</name>
+    </fields>
+    <fields>
+        <label><!-- Direct Contact --></label>
+        <name>Direct_Contact__c</name>
+        <relationshipLabel><!-- Contacts --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- External User State Change Date/Time --></label>
+        <name>External_User_State_Change_Date_Time__c</name>
+    </fields>
+    <fields>
         <label><!-- External User State Change Date/Time --></label>
         <name>External_User_State_Change_Date_Times__c</name>
     </fields>
@@ -2656,8 +2547,54 @@
         </picklistValues>
     </fields>
     <fields>
-        <label><!-- Mailing Country/Region --></label>
-        <name>Mailing_Country_Region__c</name>
+        <label><!-- Indirect Account --></label>
+        <name>Indirect_Account__c</name>
+        <relationshipLabel><!-- Contacts (Indirect Account) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Languages --></label>
+        <name>LID__Languages__c</name>
+    </fields>
+    <fields>
+        <label><!-- Level --></label>
+        <name>LID__Level__c</name>
+        <picklistValues>
+            <masterLabel>Primary</masterLabel>
+            <translation><!-- Primary --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Secondary</masterLabel>
+            <translation><!-- Secondary --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tertiary</masterLabel>
+            <translation><!-- Tertiary --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- LinkedIn Company Id --></label>
+        <name>LID__LinkedIn_Company_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- LinkedIn Member Token --></label>
+        <name>LID__LinkedIn_Member_Token__c</name>
+    </fields>
+    <fields>
+        <help><!-- Field automatically updated by LinkedIn Sales Navigator Data Validation. “Not at Company” means Contact is not with associated Account based on LinkedIn profile. No value indicates LinkedIn has no feedback to share. --></help>
+        <label><!-- Not at Company Flag --></label>
+        <name>LID__No_longer_at_Company__c</name>
+        <picklistValues>
+            <masterLabel>Ignore</masterLabel>
+            <translation><!-- Ignore --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not at Company</masterLabel>
+            <translation><!-- Not at Company --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Session Id --></label>
+        <name>LID__Session_Id__c</name>
     </fields>
     <fields>
         <label><!-- Languages --></label>
@@ -2685,14 +2622,6 @@
         <name>PIPL_Consent_Date__c</name>
     </fields>
     <fields>
-        <label><!-- Community Change Agent --></label>
-        <name>PRM_Community_Change_Agent__c</name>
-    </fields>
-    <fields>
-        <label><!-- Community History --></label>
-        <name>PRM_Community_History__c</name>
-    </fields>
-    <fields>
         <label><!-- IPA Integration Status --></label>
         <name>PRM_IPA_Integration_Status__c</name>
         <picklistValues>
@@ -2707,10 +2636,6 @@
             <masterLabel>Successful</masterLabel>
             <translation><!-- Successful --></translation>
         </picklistValues>
-    </fields>
-    <fields>
-        <label><!-- Impartner Deal Sync --></label>
-        <name>PRM_Impartner_Deal_Sync__c</name>
     </fields>
     <fields>
         <label><!-- Wechat Union Id --></label>
@@ -2729,8 +2654,20 @@
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- Priority --></label>
+        <name>Priority__c</name>
+    </fields>
+    <fields>
+        <label><!-- Relative Urgency --></label>
+        <name>SWS_Relative_Urgency__c</name>
+    </fields>
+    <fields>
         <label><!-- Username --></label>
         <name>Username__c</name>
+    </fields>
+    <fields>
+        <label><!-- Warning --></label>
+        <name>Warning__c</name>
     </fields>
     <fields>
         <label><!-- Add to Marketo Campaign --></label>
@@ -2833,6 +2770,10 @@
         <name>Standard</name>
     </recordTypes>
     <validationRules>
+        <errorMessage><!-- Cannot associate contact to this record type --></errorMessage>
+        <name>Cannot_Link_Contact_to_UCD_Acct_Type</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- Use  &quot;Change Account&quot; button to Update Account --></errorMessage>
         <name>Core_Account_Name_Cannot_Update</name>
     </validationRules>
@@ -2859,6 +2800,11 @@
     <validationRules>
         <errorMessage><!-- You don&apos;t have permission to edit the fields on Don&apos;t contact. --></errorMessage>
         <name>Core_Do_Not_Contact_to_restrict_Users</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This registration was denied because the registrant identified their location as an embargoed country. For more information please visit
+https://goto.intel.com/gec-sanctioned-country-info --></errorMessage>
+        <name>Core_Embargoed_Country</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Not allowed to change Account for Employee Customer. --></errorMessage>
@@ -2918,24 +2864,45 @@ Please ensure that all of these fields are filled in. --></errorMessage>
         <name>Core_Prevent_Deactivation_Request_Unchec</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Email ID length exceeds 64 characters --></errorMessage>
-        <name>Email_ID_Character_Restriction</name>
+        <errorMessage><!-- Please Provide Country --></errorMessage>
+        <name>Country_validation_for_new_Contacts</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- This registration was denied because the registrant identified their location as an embargoed country or their IP address is from an embargoed country. For more information please visit https://goto.intel.com/gec-sanctioned-country-info --></errorMessage>
+        <errorMessage><!-- This registration was denied because the registrant identified their location as an embargoed country. For more information please visit 
+https://goto.intel.com/gec-sanctioned-country-info --></errorMessage>
         <name>Embargoed_Country</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Mailing Country/Region signifies where the Contact currently resides and is mandatory --></errorMessage>
-        <name>Mailing_Country_cannot_be_blank</name>
+        <errorMessage><!-- CompanyId should be a numeric value --></errorMessage>
+        <name>LID__Check_CompanyId_Value</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- CompanyId should be a numeric value --></errorMessage>
+        <name>LID__Check_Company_Id_Value</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Number Length should be more than 6 and less than 33 --></errorMessage>
+        <name>Phone_Number</name>
     </validationRules>
     <webLinks>
         <label><!-- Change_Account --></label>
         <name>Change_Account</name>
     </webLinks>
     <webLinks>
+        <label><!-- Change_Account_Ankit --></label>
+        <name>Change_Account_Ankit</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Change_Account_POC --></label>
+        <name>Change_Account_POC</name>
+    </webLinks>
+    <webLinks>
         <label><!-- ContactActivityOverview --></label>
         <name>ContactActivityOverview</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Contact_LWC_POC_Shiva --></label>
+        <name>Contact_LWC_POC_Shiva</name>
     </webLinks>
     <webLinks>
         <label><!-- Core_Contact_Activity --></label>
@@ -2952,10 +2919,6 @@ Please ensure that all of these fields are filled in. --></errorMessage>
     <webLinks>
         <label><!-- Core_Grant_Access_Lex --></label>
         <name>Core_Grant_Access_Lex</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- Create_new_Contact --></label>
-        <name>Create_new_Contact</name>
     </webLinks>
     <webLinks>
         <label><!-- InviteContactToEvent --></label>
@@ -2982,8 +2945,20 @@ Please ensure that all of these fields are filled in. --></errorMessage>
         <name>GoogleSearch</name>
     </webLinks>
     <webLinks>
-        <label><!-- Remove_PSOs --></label>
-        <name>Remove_PSOs</name>
+        <label><!-- Add_to_Mass_Merge_List --></label>
+        <name>SDOC__Add_to_Mass_Merge_List</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Email_Docs --></label>
+        <name>SDOC__Email_Docs</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- S_Docs --></label>
+        <name>SDOC__S_Docs</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- View_Mass_Merge_List --></label>
+        <name>SDOC__View_Mass_Merge_List</name>
     </webLinks>
     <webLinks>
         <label><!-- SendGmail --></label>
@@ -3028,5 +3003,9 @@ Please ensure that all of these fields are filled in. --></errorMessage>
     <webLinks>
         <label><!-- Send_Sales_Email --></label>
         <name>mkto_si__Send_Sales_Email</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- vy_Send_Contact_Email --></label>
+        <name>vidyard__vy_Send_Contact_Email</name>
     </webLinks>
 </CustomObjectTranslation>

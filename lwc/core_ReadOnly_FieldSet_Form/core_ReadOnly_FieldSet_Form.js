@@ -13,7 +13,7 @@ import PWSalesPriceJS from '@salesforce/schema/OpportunityLineItem.Core_PW_Sales
 import LosCancelReasonJS from '@salesforce/schema/OpportunityLineItem.Core_Loss_Cancel_Reason__c';
 import LosCancelDetailsJS from '@salesforce/schema/OpportunityLineItem.Core_Loss_Cancel_Details__c';
 import VendorJS from '@salesforce/schema/OpportunityLineItem.Core_Vendor__c';
-/*import AdvTechJS from '@salesforce/schema/OpportunityLineItem.Core_Advanced_Technology__c';*/  // Commenting as part of TWC4767-4412
+/*import AdvTechJS from '@salesforce/schema/OpportunityLineItem.Core_Advanced_Technology__c';*/
 import CompetitorJS from '@salesforce/schema/OpportunityLineItem.Core_Competitor__c';
 import CompProdJS from '@salesforce/schema/OpportunityLineItem.Core_Competitor_Product__c';
 import CompProdTextJS from '@salesforce/schema/OpportunityLineItem.Core_OtherCompetitor_Product_Txt__c';
@@ -46,11 +46,11 @@ export default class core_ReadOnly_FieldSet_Form extends NavigationMixin(Lightni
     @track userChangedNull=false;
     @track userChangedNullPW=false;
 
-    
+    //storing Static text in a custom Label (External String)
     qtyStaticTextBody = qtyStaticText.split(" ; ")[0];
     qtyStaticTextHyperLinkText = qtyStaticText.split(" ; ")[1];
     qtyStaticTextHyperLink = qtyStaticText.split(" ; ")[2];
-    
+    //end
 
     activeSections =  [];
     OpportunityTypeVal;
@@ -184,6 +184,9 @@ export default class core_ReadOnly_FieldSet_Form extends NavigationMixin(Lightni
         this.show6QPSWarning = true;
         }
         this.warningMsg6QPS = 'Warning : Scheduled Quantity and Revenue Values for your 6QPS will be recalculated based on Updated Design Win Qty';
+
+
+
     }
  
     handlePWQty(event) 
@@ -236,8 +239,8 @@ export default class core_ReadOnly_FieldSet_Form extends NavigationMixin(Lightni
         this.LossCancelReasonValue = event.target.value;
         this.LossCancelReasonJS = this.LossCancelReasonValue;
 
-        if((this.LossCancelReasonValue=='Customer Discontinued Project' ||this.LossCancelReasonValue=='Entered in Error' || this.LossCancelReasonValue=='POP Unobtainable' || this.LossCancelReasonValue=='Design Reg. Product Swap' || this.LossCancelReasonValue=='Failed Audit') 
-        && (this.StatusValue == 'Lost' || this.StatusValue == 'Cancelled') && 
+       if((this.LossCancelReasonValue=='Customer Discontinued Project' ||this.LossCancelReasonValue=='Entered in Error' || this.LossCancelReasonValue=='POP Unobtainable' || 
+        this.LossCancelReasonValue=='Design Reg. Product Swap' || this.LossCancelReasonValue=='Failed Audit') && (this.StatusValue == 'Lost' || this.StatusValue == 'Cancelled') && 
          this.OpportunityCoverage=='Intel-Led Opportunity' ){//TWC3123-6699 modified value for api change
 
         this.template.querySelector('lightning-input-field.competitorTag').value = 'None';
@@ -273,7 +276,6 @@ export default class core_ReadOnly_FieldSet_Form extends NavigationMixin(Lightni
         this.VendorJS = this.VendorValue;
     }
  
-    // Commenting as part of TWC4767-4412
     /*handleAdvTech(event) 
     {
         this.AdvTechValue = event.target.value;
@@ -337,7 +339,7 @@ export default class core_ReadOnly_FieldSet_Form extends NavigationMixin(Lightni
                 losscancelreason: this.LossCancelReasonJS,
                 losscanceldetails: this.LossCancelDetailsJS,
                 vendor: this.VendorJS,
-                /*advtech: this.AdvTechJS,*/ // Commenting as part of TWC4767-4412
+                /*advtech: this.AdvTechJS,*/
                 competitor: this.CompetitorJS,
                 compprodval: this.CompProdJS,
                 othercompprod: this.CompProdTextJS,
@@ -349,7 +351,7 @@ export default class core_ReadOnly_FieldSet_Form extends NavigationMixin(Lightni
                 this.isLoading = false;
                 this.OpportunityLineItems = result;
                 this.error = undefined;
- 
+
                 const evnt = new ShowToastEvent({
                     title : 'Success',
                     message : 'Record is saved successfully',
@@ -432,6 +434,7 @@ export default class core_ReadOnly_FieldSet_Form extends NavigationMixin(Lightni
                 this.dispatchEvent(evnt);
                 }); 
             this.show6QPSWarning = false;
+        
     }
           
 

@@ -143,7 +143,6 @@
     <allowInChatterGroups>true</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
-    <deprecated>false</deprecated>
     <enableActivities>true</enableActivities>
     <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>
@@ -156,7 +155,6 @@
     <externalSharingModel>ControlledByParent</externalSharingModel>
     <fields>
         <fullName>DP_EAT_Apex_test_class__c</fullName>
-        <deprecated>false</deprecated>
         <externalId>false</externalId>
         <label>Apex test class</label>
         <length>255</length>
@@ -168,7 +166,6 @@
     </fields>
     <fields>
         <fullName>DP_EAT_Apex_test_method__c</fullName>
-        <deprecated>false</deprecated>
         <externalId>false</externalId>
         <label>Apex test method</label>
         <length>255</length>
@@ -180,7 +177,6 @@
     </fields>
     <fields>
         <fullName>DP_EAT_Error_Message__c</fullName>
-        <deprecated>false</deprecated>
         <label>Error Message</label>
         <length>131072</length>
         <trackHistory>false</trackHistory>
@@ -190,7 +186,6 @@
     </fields>
     <fields>
         <fullName>DP_EAT_Job_Id__c</fullName>
-        <deprecated>false</deprecated>
         <externalId>false</externalId>
         <label>Job Id</label>
         <length>255</length>
@@ -202,7 +197,6 @@
     </fields>
     <fields>
         <fullName>DP_EAT_Project_Name__c</fullName>
-        <deprecated>false</deprecated>
         <label>Project Name</label>
         <referenceTo>DP_EAT_Project_Info__c</referenceTo>
         <relationshipLabel>Project Test Run Results</relationshipLabel>
@@ -216,7 +210,6 @@
     </fields>
     <fields>
         <fullName>DP_EAT_Status__c</fullName>
-        <deprecated>false</deprecated>
         <externalId>false</externalId>
         <label>Status</label>
         <length>255</length>

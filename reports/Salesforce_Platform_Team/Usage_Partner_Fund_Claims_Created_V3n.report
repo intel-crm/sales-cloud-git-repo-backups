@@ -8,7 +8,7 @@
             <axisBinding>y</axisBinding>
             <column>RowCount</column>
         </chartSummaries>
-        <chartType>Line</chartType>
+        <chartType>LineCumulative</chartType>
         <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>true</expandOthers>
         <groupingColumn>PartnerFundClaim$CreatedDate</groupingColumn>
@@ -32,7 +32,7 @@
     </columns>
     <format>Summary</format>
     <groupingsDown>
-        <dateGranularity>Quarter</dateGranularity>
+        <dateGranularity>Month</dateGranularity>
         <field>PartnerFundClaim$CreatedDate</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>

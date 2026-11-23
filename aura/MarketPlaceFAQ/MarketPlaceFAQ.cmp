@@ -25,7 +25,7 @@
   <aura:if isTrue="{!!empty(v.data)}">
     <div class="{! 'slds-p-vertical_medium' + (v.paddingHorizontal ? ' slds-p-horizontal_medium' : '') + (v.inverse ? ' whiteBg' : '')}">
       <div class="{!(v.inverse ? 'container' : '')}">
-        <h2 class="h4 slds-p-vertical_large">{!v.headingLabel}<a name="faq" aria-label="{!$Label.c.PMP_FAQ_Section}"></a></h2>
+        <h4 class="h4 slds-p-vertical_large">{!v.headingLabel}<a name="faq" aria-label="{!$Label.c.PMP_FAQ_Section}"></a></h4>
 
         <c:MarketPlaceAccordion allowMultipleSectionsOpen="true" theme="{!v.theme}" class="boldHeading">
           <aura:iteration items="{!v.data}" var="faqset" indexVar="idx">
@@ -50,11 +50,11 @@
             {!v.helpLabel} <span class="fa-angle-right"></span>
           </c:IntelLink>   
         
-          <!-- <aura:if isTrue="{!v.showSiteMap}">
+          <aura:if isTrue="{!v.showSiteMap}">
             <c:IntelLink url="{!v.siteMapUrl}" class="slds-float_right siteMap">
               {!$Label.c.PMP_SiteMap_Link} <span class="fa-angle-right"></span>
             </c:IntelLink>
-          </aura:if> -->
+          </aura:if>
         </div>
 
       </div>

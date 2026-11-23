@@ -1,0 +1,4 @@
+<aura:event type="COMPONENT">
+    <aura:attribute name="changerequest" type="Boolean"/>
+    <aura:attribute name="quotelineid" type="String"/>
+</aura:event>

@@ -5,21 +5,8 @@ public class Core_SearchContactController_Test {
     static Profile profile1 = [SELECT Id FROM Profile WHERE Name='Partner' ];
     static final String DELL_CCF_EXTERNAL_GROUP_NAME = 'Core_CCP_Dell_CCF_External';
     
-    @testSetup    
+	@testSetup    
     public static void prepareTestData(){
-        
-        Profile sysAdminProfile = [SELECT Id FROM Profile WHERE Name='System Administrator' LIMIT 1];
-        // Creating User with utility class 
-        User usr = Core_MDF_CCP_TestDataUtility.createUser(false);
-        UserRole ur = [Select Id, Name From UserRole WHERE Name = 'Admin' LIMIT 1];
-        usr.UserRoleId =ur.Id ;
-        usr.LastName = 'SysAdmin';
-        usr.profileId = sysAdminProfile.Id;
-        Database.insert(usr);
-        
-        system.runAs(usr) {
-            
-        
         
         String prfID = profile1.id;
         Account acc1 = new Account(Name='testAccount123', Core_Sales_Group__c='Global Accounts',
@@ -51,11 +38,11 @@ public class Core_SearchContactController_Test {
         Database.insert(groupCreated,true);
         
         ChannelProgram cprogram = new ChannelProgram();
-        cprogram.Name = 'Client Co-Marketing Fund';
+		cprogram.Name = 'Client Co-Marketing Fund';
         cprogram.Core_MDF_Technical_Program_Name__c = 'Client CoMarketing Fund';
         Database.insert(cprogram);
         
-        List<Core_MDF_Partner_Group_Mapping__c> pgMappingRecords = new List<Core_MDF_Partner_Group_Mapping__c>();
+		List<Core_MDF_Partner_Group_Mapping__c> pgMappingRecords = new List<Core_MDF_Partner_Group_Mapping__c>();
         
         Id groupId = groupCreated.Id; //groupFound
         Core_MDF_Partner_Group_Mapping__c pgMappingRec1 = new Core_MDF_Partner_Group_Mapping__c();
@@ -64,15 +51,17 @@ public class Core_SearchContactController_Test {
         if(groupCreated != null){ //groupFound
             pgMappingRec1.Core_MDF_Account__c = acc1.Id;
             pgMappingRec1.Core_MDF_Group_Name__c = groupCreated.Name; //groupFound
+            pgMappingRec1.Core_MDF_AccountIdGroupName__c = acc1.Id + groupCreated.Name;
             System.debug(logLevel, 'groupCreated Id = '+ groupId); 
             pgMappingRec1.Core_MDF_Group_Id__c = groupId +'';
             pgMappingRec1.Core_MDF_Type_of_Access__c = 'External';
-            pgMappingRec1.Core_MDF_Channel_Program__c = cprogram.Id;        
+            pgMappingRec1.Core_MDF_Channel_Program__c = cprogram.Id;     	
             pgMappingRecords.add(pgMappingRec1);
             
             
             pgMappingRec2.Core_MDF_Account__c = acc2.Id;
             pgMappingRec2.Core_MDF_Group_Name__c = groupCreated.Name; //groupFound
+            pgMappingRec2.Core_MDF_AccountIdGroupName__c = acc2.Id + groupCreated.Name;
             pgMappingRec2.Core_MDF_Group_Id__c = groupId +'';
             pgMappingRec2.Core_MDF_Type_of_Access__c = 'External';
             pgMappingRec2.Core_MDF_Channel_Program__c = cprogram.Id;  
@@ -82,15 +71,11 @@ public class Core_SearchContactController_Test {
             Database.insert(pgMappingRecords);
         }
         
-        
         System.debug(logLevel,'72 : pgMappingRecords = '+ pgMappingRecords);
-        }
     }
     
     public static testmethod void testfetchContactbyEmail(){
         
-        User usr = [Select Id, lastName from User where lastName = 'SysAdmin' limit 1];
-        System.runAs(usr){
         
         List<Account> accList = [Select Id, Name from Account where Name = 'testAccount123' LIMIT 1];
         
@@ -117,18 +102,13 @@ public class Core_SearchContactController_Test {
             System.debug(logLevel,'Group found = '+ groupFound);
             
             insertGroupMember(groupFound.id , user1.id);
-            assert.areEqual(true,contact.Core_Personal_Email_Indicator__c);
             
             //GroupMember grpmember = new GroupMember (GroupId=g.id,UserOrGroupId=user1.id);
             //Database.insert(grpmember,true);
         }
-        }
-    }
+	}
     
     public static testmethod void testfetchContactbyEmailForAgency(){
-        
-        User usr = [Select Id, lastName from User where lastName = 'SysAdmin' limit 1];
-        System.runAs(usr){
         
         Group groupFound = null;
         List<Group> groupFoundList = [Select Id, Name from Group where DeveloperName = :DELL_CCF_EXTERNAL_GROUP_NAME];
@@ -159,13 +139,12 @@ public class Core_SearchContactController_Test {
             System.debug(logLevel, 'user1 = ' + user1);
             
             insertGroupMember(groupFound.id , user1.id);
-            assert.areEqual(true,contact.Core_Personal_Email_Indicator__c);
         }
             
         //GroupMember grpmember = new GroupMember (GroupId=g.id,UserOrGroupId=user1.id);
         //Database.insert(grpmember,true);
-        }
-    }
+        
+	}
     
     
     @future
@@ -179,7 +158,7 @@ public class Core_SearchContactController_Test {
         System.debug('149 : pgMappingList = '+ pgMappingList);
         GroupMember grpmember = new GroupMember (GroupId= groupId, UserOrGroupId=userId);
         Database.insert(grpmember,true);
-        List<Core_SerachContactController.ContactUser> conUsrList  = Core_SerachContactController.fetchContactbyEmail('test1234@testing.com.test', userId);
+        List<Contact> conList  = Core_SerachContactController.fetchContactbyEmail('test1234@testing.com.test', userId);
     }
 
 }

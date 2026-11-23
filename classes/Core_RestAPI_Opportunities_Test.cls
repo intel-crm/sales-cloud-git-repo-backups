@@ -10,10 +10,11 @@
 @isTest
 public class Core_RestAPI_Opportunities_Test {
     public static final String REQUEST_TEMPLATE = '{"resourcePath":"/services/apexrest/v1.0/unitTest","requestURI":"/v1.0/unitTest","requestBody":"","remoteAddress":"170.178.140.170","params":{},"httpMethod":"GET","headers":{"X-Salesforce-SIP":"170.178.140.170","Accept-Language":"en-US,en;q=0.9","Accept-Encoding":"gzip, deflate, br","Postman-Token":"09c84838-c53c-e33a-34ed-1717086d6c9e","Host":"intel--crmdevcase.cs92.my.salesforce.com","User-Agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.75 Safari/537.36","Connection":"keep-alive","CipherSuite":"ECDHE-RSA-AES256-GCM-SHA384 TLSv1.2 256-bits","Accept":"*/*","Cache-Control":"no-cache"}}';
-	@testSetup 
+	static Id recTypeId;
+    @testSetup 
     private static void createData(){
         Profile prf = [SELECT id, Name FROM Profile WHERE Name='Sales Rep-BB'];
-      //  User usr = [SELECT id, Name, isActive FROM User WHERE ProfileId = :prf.Id AND isActive = true AND Core_Employee_Type_Code__c='EMP' LIMIT 1];
+        //User usr = [SELECT id, Name, isActive FROM User WHERE ProfileId = :prf.Id AND isActive = true AND Core_Employee_Type_Code__c='EMP' LIMIT 1];
 	//	PermissionSetAssignment psa = [SELECT Id, PermissionSet.Name,PermissionSetId, AssigneeId from PermissionSetAssignment  where PermissionSet.Name='SalesRepBB' LIMIT 1];
 	//	User usr = [SELECT id, Name, isActive FROM User WHERE Id = :psa.AssigneeId AND isActive = true AND Core_Employee_Type_Code__c='EMP' LIMIT 1];        
         Id newOppRecTypeId = [select Id from RecordType where DeveloperName = 'Core_Design_Opportunity' limit 1][0].Id;
@@ -27,9 +28,14 @@ public class Core_RestAPI_Opportunities_Test {
             insert pbe;
         }
         
-		//SObjectType r = ((SObject)Type.forName('Schema','Account').newInstance()).getSObjectType();
-        Id recTypeId = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
-        
+		Schema.SObjectType r = Account.SObjectType;
+        Map<String, Schema.RecordTypeInfo> recordTypeInfoMap = r.getDescribe().getRecordTypeInfosByDeveloperName();
+        if(recordTypeInfoMap != NULL && recordTypeInfoMap.containsKey(Label.Pricing_Tender_Account_RecordType_IntelAccount)){
+          recTypeId = recordTypeInfoMap.get(Label.Pricing_Tender_Account_RecordType_IntelAccount).getRecordTypeId();  
+        }
+        else{
+            system.debug('Record Type not found');
+        }
         // Create an account
         Account acct = new Account();
         acct.name = 'TestAccountKPI';
@@ -44,13 +50,13 @@ public class Core_RestAPI_Opportunities_Test {
         System.runAs(Core_Test_Utility.systemAdminUser) {
             insert acct;
         }
-        
-        Opportunity opp = new Opportunity(Name = 'OpportunityGetAPITest', RecordTypeId = newOppRecTypeId,core_approval_status__c = 'Approved',
+       
+              Opportunity opp = new Opportunity(Name = 'OpportunityGetAPITest', RecordTypeId = newOppRecTypeId,core_approval_status__c = 'Approved',Opportunity_Focus__c= 'Core',Core_Opportunity_Type__c ='Design: Original',
                                                  AccountId = acct.Id,Core_Commissionable__c = 'Yes',Core_Technical_Owner__c=usr,Core_Date_Submitted_for_Approval__c = System.Date.today()+1,
                                                  StageName = 'Qualify', CloseDate = System.Date.today()+1);
        // System.runAs(Core_Test_Utility.systemAdminUser) {
             insert opp;
-       // }
+        //}
      
         OpportunityTeamMember otm = new OpportunityTeamMember (OpportunityId = opp.Id,UserId = usr,TeamMemberRole = 'Team Member');
 		insert otm;
@@ -162,8 +168,9 @@ public class Core_RestAPI_Opportunities_Test {
             RestContext.response= res;
             Core_SalesCRM_RestAPI_Response restResponse = Core_RestAPI_Opportunities.doPut();
             system.assert(restResponse!=null);
-            
             test.stopTest();
         }    
     }
+    
+   
 }

@@ -45,48 +45,6 @@
         <default>false</default>
         <label>Activity was discussed with Intel but not recorded in tool on time. </label>
     </customValue>
-    <customValue>
-        <fullName>Other</fullName>
-        <default>false</default>
-        <label>Other</label>
-    </customValue>
-    <customValue>
-        <fullName>Project was left as draft but never submitted</fullName>
-        <default>false</default>
-        <label>Project was left as draft but never submitted</label>
-    </customValue>
-    <customValue>
-        <fullName>Original activity was cancelled by mistake</fullName>
-        <default>false</default>
-        <label>Original activity was cancelled by mistake</label>
-    </customValue>
-    <customValue>
-        <fullName>Activity was discussed with Intel but not recorded in tool on time</fullName>
-        <default>false</default>
-        <label>Activity was discussed with Intel but not recorded in tool on time</label>
-    </customValue>
-    <customValue>
-        <fullName>Original project was cancelled by mistake</fullName>
-        <default>false</default>
-        <label>Original project was cancelled by mistake</label>
-    </customValue>
-    <customValue>
-        <fullName>Project was discussed with Intel but not recorded in tool on time</fullName>
-        <default>false</default>
-        <label>Project was discussed with Intel but not recorded in tool on time</label>
-    </customValue>
-    <customValue>
-        <fullName>Project was discussed with Intel but not recorded in tool on time.</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Project was discussed with Intel but not recorded in tool on time.</label>
-    </customValue>
-    <customValue>
-        <fullName>Original project was cancelled by mistake.</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Original project was cancelled by mistake.</label>
-    </customValue>
     <description>When Internal users creates a past dated activity for MDF or MDF+ Budget type, they should fill the potential reason</description>
     <masterLabel>Reason for Past Dated Activity</masterLabel>
     <sorted>false</sorted>

@@ -1,15 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
-    <available>false</available>
+    <available>true</available>
     <description>This template is used to send notification to PSAM and Partner Account Owner</description>
     <encodingKey>UTF-8</encodingKey>
     <name>End Customer Notification</name>
     <style>none</style>
     <subject>Notification</subject>
-    <textOnly>This is to notify that a deal is currently being reviewed between the accounts listed below 
+    <textOnly>New Deal Submitted for Review
 
-Partner account name : PartnerAccountName
-End customer account name : EndCustomerAccountName</textOnly>
+Hello,
+
+The following Deal Registraion has been Assigned to you.
+
+Registration Number: {!Core_Design_Registration__c.Name}
+Deal Registration Name: {!Core_Design_Registration__c.Core_Design_Registration_Nm__c}
+Partner Account: {!Core_Design_Registration__c.Core_Partner_Account_Id__c}
+End Customer Account: {!Core_Design_Registration__c.Core_End_Customer_Account_Id__c}
+
+For more details, you can access the deal registration record here.
+
+
+This message was sent to you as an important business communication related to your current relationship with Intel® Partner Alliance.
+© {!YEAR(TODAY())} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.Intel.com
+Privacy | Cookies</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

@@ -1,0 +1,34 @@
+<aura:component controller="Core_DWG_Recall_Cntrl" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickActionWithoutHeader" access="global" >
+    <aura:attribute name="alertMessage" type="String"/>
+     <aura:attribute name="IsPopUpOpen" type="String" default="false"/>
+    <aura:attribute name="DWGObject" type="Core_Goal__c"/>
+    <aura:attribute name="status" type="String" default ="Recalled"/> 
+    <aura:attribute name="RecallReason" type="String" default =""/> 
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <div class= "slds-spinner_container slds-is-relative">
+    <aura:if isTrue="{!(v.alertMessage != null)}">
+        <div class="slds-text-heading_small" style="height: 120px;margin:25px;">{!v.alertMessage}</div>  
+        <div style="float: right;margin-bottom: -246px;">
+                    <lightning:button label="Ok" variant="brand" onclick="{!c.cancelPopup}"/>
+                </div>
+       
+        <aura:set attribute="else">
+            
+            <aura:if isTrue="{!and(v.alertMessage == null,v.IsPopUpOpen)}">
+                <lightning:recordEditForm recordId="{!v.recordId}"  objectApiName="Core_Goal__c">
+                    <lightning:inputfield label="Status" fieldName="Core_Goal_Status__c" value="Recalled" disabled = "true"/>
+                    <lightning:inputfield label="Recall Reason" fieldName="Core_Recall_Reason__c" value="{!v.RecallReason}"/>  
+                    
+                    <br/>
+                    <div style="float: right;">
+                        <lightning:button label="Save" variant="brand" onclick="{!c.handleSave}" />
+                    </div>
+                    
+                </lightning:recordEditForm>
+           </aura:if>
+       </aura:set>
+    
+        </aura:if>
+    </div>
+</aura:component>

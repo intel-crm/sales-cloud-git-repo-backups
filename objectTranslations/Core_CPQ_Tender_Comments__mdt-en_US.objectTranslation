@@ -21,6 +21,10 @@
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- Business Unit --></label>
+        <name>Pricing_Business_Unit__c</name>
+    </fields>
+    <fields>
         <label><!-- Comment Ref Id --></label>
         <name>Pricing_Comment_Ref_Id__c</name>
     </fields>

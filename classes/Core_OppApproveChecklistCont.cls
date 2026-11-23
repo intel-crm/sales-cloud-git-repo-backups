@@ -71,7 +71,7 @@ public with sharing class Core_OppApproveChecklistCont {
         oppty= (Opportunity)stdController.getRecord();
         OppId=ApexPages.currentPage().getParameters().get('id');
         try{
-        if(String.isNotBlank(oppty.Id)){
+            if(String.isNotBlank(oppty.Id)){
             // added field TWC3123-1204
             //TWC3123-6061
             list<Opportunity> opplist = [select id,Core_Decimal_Check__c,Core_Quantity_count__c,Opportunity_Focus__c,Account.RecordType.name, Core_Opportunity_Type__c,Core_Product_At_Risk__c,Core_Military_Aerospace_Govmt_End_Use__c,Core_Compliance_Status__c,Core_Production_End_Date__c,Core_First_Customer_Ship_Date__c,StageName,Core_Oppty_Check_BU_Short_Name__c,Core_Write_In_Product_Count__c,Core_Competitive_Architecture__c,Description, Core_MAG_Account__c, Core_Status_Update__c,Core_Manufacturing_Geo__c,Core_Volume__c,Core_Solution_Type__c,Core_Solution_Detail__c,Core_Combined_Solution_Detail__c,Core_Exclude_From_KPIs__c,CloseDate,Core_Solution_Area_Count__c,Core_Opportunity_Coverage_Nm__c,Desired_End_State__c,Technology_and_Readiness_Gaps__c,Business_Need__c,Technical_Need__c,FAD_Start_Date__c,FAD_End_Date__c,Competitor_Threat_Mitigation__c,RecordType.DeveloperName  from Opportunity where id =: oppty.Id]; //, CoE_Status__c
@@ -79,7 +79,7 @@ public with sharing class Core_OppApproveChecklistCont {
             List<OpportunityLineItem> opptyLineItemsList= [SELECT id, Name, Core_Vendor__r.RecordType.name, Core_Status__c, Core_BU_Short_Name__c, Core_Write_In_Product_Flag__c, Core_Vendor__c FROM OpportunityLineItem WHERE OpportunityId = :oppty.Id];
                 if(!opplist.isEmpty()){
                     
-            
+                
             //added query TWC3123-1204
             //List<Core_Opportunity_Partner__c> opptyPartnerList= [SELECT id, Name, Core_Partner__r.RecordType.name from Core_Opportunity_Partner__c where Core_Opportunity__c = :oppty.Id];
             // TWC3123-1204 end
@@ -134,13 +134,13 @@ public with sharing class Core_OppApproveChecklistCont {
             // START-US176261 - OPPTY: Update Logic for Approval Checklist to check for POP or Proof of Performance
             String POP = '%'+Label.Core_Performance_indicator+'%';
             String POP1 = '%'+Label.Core_Performance_indicator1+'%';
-            List<Attachment> attachsize=[select id,Name from Attachment where parentId=:oppty.Id AND (Name LIKE :POP OR Name LIKE :POP1)];
-            List<Note> Notesize=[select id,Title from Note where parentId=: oppty.Id AND (Title Like:POP OR Title Like:POP1)];
+            List<Attachment> attachsize=[select id from Attachment where parentId=:oppty.Id AND (Name LIKE :POP OR Name LIKE :POP1)];
+            List<Note> Notesize=[select id from Note where parentId=: oppty.Id AND (Title Like:POP OR Title Like:POP1)];
             List<ContentDocumentLink > contentdocSize=[SELECT ContentDocumentId,ContentDocument.Title FROM ContentDocumentLink WHERE LinkedEntityId=:oppty.Id  AND (ContentDocument.Title Like:POP OR ContentDocument.Title Like:POP1)];
             // END-US176261 - OPPTY: Update Logic for Approval Checklist to check for POP or Proof of Performance
             //START-US185496 - Oppty: Update Proof of Performance Logic to Consider Activities 
             String POP2 = '%'+Label.Core_Performance_indicator2+'%';
-            List<Task> taskList = [SELECT id, Subject, Core_Task_Type__c FROM Task WHERE (Subject LIKE :POP OR Subject LIKE:POP1 OR Core_Task_Type__c LIKE:POP2) AND WhatId = :oppty.Id];
+            List<Task> taskList = [SELECT id FROM Task WHERE (Subject LIKE :POP OR Subject LIKE:POP1 OR Core_Task_Type__c LIKE:POP2) AND WhatId = :oppty.Id];
             //END-US185496-Oppty: Update Proof of Performance Logic to Consider Activities 
             // END-US151865-Update Logic for Proof of Performance on Approval Checklist
             
@@ -163,10 +163,10 @@ public with sharing class Core_OppApproveChecklistCont {
             }
             //End - TWC3123-3904
             //TWC3123-3904 changed like filter variable in query.
-            List<Attachment> attachsize1=[select id,Name from Attachment where parentId=:oppty.Id AND Name LIKE :POPFileNames];
-            List<Note> Notesize1=[select id,Title from Note where parentId=: oppty.Id AND Title Like:POPFileNames];
+            List<Attachment> attachsize1=[select id from Attachment where parentId=:oppty.Id AND Name LIKE :POPFileNames];
+            List<Note> Notesize1=[select id from Note where parentId=: oppty.Id AND Title Like:POPFileNames];
             List<ContentDocumentLink > contentdocSize1=[SELECT ContentDocumentId,ContentDocument.Title FROM ContentDocumentLink WHERE LinkedEntityId=:oppty.Id  AND ContentDocument.Title Like:POPFileNames];
-            List<Task> taskList1 = [SELECT id, Subject, Core_Task_Type__c FROM Task WHERE (Subject LIKE:POPFileNames OR Core_Task_Type__c LIKE:POPFileNames) AND WhatId = :oppty.Id];
+            List<Task> taskList1 = [SELECT id FROM Task WHERE (Subject LIKE:POPFileNames OR Core_Task_Type__c LIKE:POPFileNames) AND WhatId = :oppty.Id];
             
             if((attachsize1 != null && !attachsize1.isEmpty()) || (Notesize1 != null && !Notesize1.isEmpty()) || (contentdocSize1 != null && !contentdocSize1.isEmpty()) || (taskList1 != null && !taskList1.isEmpty())){         
                 PW_Note_Attachmentsize=true;
@@ -417,7 +417,7 @@ public with sharing class Core_OppApproveChecklistCont {
                 }
             }
         }
-    }
+        }
         }
         catch(Exception e){
             PMP_Utility.logError(e, 'Core_OppApproveChecklistCont.const');

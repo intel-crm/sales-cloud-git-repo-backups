@@ -13,8 +13,8 @@ private class Core_PrimeAccountName_BatchTest {
        batchClassName='Core_PrimeAccountName_BatchClass';         
         lstAccount = Core_Test_Utility.createAccount(1);
          lstAccount[0].Core_Prime_Account_Name__c='PrimeAccountName1';
-         lstAccount[0].Core_Sales_Groups__c = 'Global Solutions & Services Sales Group'; 
-         lstAccount[0].RecordTypeId = intelAcc;
+         lstAccount[0].Core_Sales_Groups__c = 'Global Accounts Sales Group'; 
+      	 lstAccount[0].RecordTypeId = intelAcc;
         insert lstAccount;
         lstOpp = Core_Test_Utility.createOpportunity(1);
         lstOpp[0].AccountId=lstAccount[0].Id;

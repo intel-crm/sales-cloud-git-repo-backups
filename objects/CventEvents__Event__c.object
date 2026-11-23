@@ -808,11 +808,6 @@
         <columns>CventEvents__pkg_StartTime__c</columns>
         <columns>CventEvents__pkg_TimeZone__c</columns>
         <filterScope>Everything</filterScope>
-        <filters>
-            <field>CREATED_DATE</field>
-            <operation>greaterThan</operation>
-            <value>1/1/2022 12:00 AM</value>
-        </filters>
         <label>All</label>
     </listViews>
     <listViews>
@@ -849,9 +844,9 @@
         <customTabListAdditionalFields>CventEvents__pkg_TimeZone__c</customTabListAdditionalFields>
         <excludedStandardButtons>New</excludedStandardButtons>
         <excludedStandardButtons>OpenListInQuip</excludedStandardButtons>
-        <excludedStandardButtons>Accept</excludedStandardButtons>
-        <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
         <excludedStandardButtons>MassChangeOwner</excludedStandardButtons>
+        <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
+        <excludedStandardButtons>Accept</excludedStandardButtons>
         <lookupDialogsAdditionalFields>CventEvents__pkg_StartDate__c</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>CventEvents__pkg_StartTime__c</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>CventEvents__pkg_TimeZone__c</lookupDialogsAdditionalFields>

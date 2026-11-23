@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>settings_coachingReportEmail</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>settings_coachingReportEmail</value>
+    </caseValues>
+    <fields>
+        <label><!-- Average Coachability --></label>
+        <name>Xvoyant__avgCoachability__c</name>
+    </fields>
+    <fields>
+        <label><!-- 1:1s --></label>
+        <name>Xvoyant__inc11s__c</name>
+    </fields>
+    <fields>
+        <label><!-- Coachability --></label>
+        <name>Xvoyant__incCoachability__c</name>
+    </fields>
+    <fields>
+        <label><!-- Coaching Goals --></label>
+        <name>Xvoyant__incCoachingGoals__c</name>
+    </fields>
+    <fields>
+        <label><!-- Progress To Goal --></label>
+        <name>Xvoyant__incP2G__c</name>
+    </fields>
+    <fields>
+        <label><!-- Revenue Per Rep --></label>
+        <name>Xvoyant__incRPR__c</name>
+    </fields>
+    <fields>
+        <label><!-- Team By Coachability --></label>
+        <name>Xvoyant__incTeamByCoachability__c</name>
+    </fields>
+    <fields>
+        <label><!-- Top Activities --></label>
+        <name>Xvoyant__incTopActivities__c</name>
+    </fields>
+    <fields>
+        <label><!-- Top Skills --></label>
+        <name>Xvoyant__incTopSkills__c</name>
+    </fields>
+    <fields>
+        <label><!-- Individual Needing Coaching --></label>
+        <name>Xvoyant__incUsersNeedingCoaching__c</name>
+    </fields>
+    <fields>
+        <label><!-- Percent Who Had 1:1s --></label>
+        <name>Xvoyant__pctWith11s__c</name>
+    </fields>
+    <fields>
+        <label><!-- Percent Who Had Coaching Goals --></label>
+        <name>Xvoyant__pctWithCG__c</name>
+    </fields>
+    <fields>
+        <label><!-- Send To Xvoyant --></label>
+        <name>Xvoyant__sendToXV__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

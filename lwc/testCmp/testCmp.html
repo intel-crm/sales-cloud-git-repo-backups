@@ -1,0 +1,32 @@
+<template>
+    
+    <lightning-tabset variant="scoped">        
+        <lightning-tab label="Products Job Status" icon-name="standard:today" if:true={tabVisible}>
+            <c-product-async-apex-job></c-product-async-apex-job>
+        </lightning-tab>
+        <lightning-tab label="Products Data Dashboard" icon-name="standard:dashboard" if:true={tabVisible}>     
+            <div class="lastrefreshsize slds-card slds-p-around_small slds-m-vertical_small"> 
+                <span>Products Last Refresh Date Time : </span> 
+                <lightning-formatted-date-time value={lastRefreshDate} year="numeric" month="short" day="2-digit" hour="2-digit" minute="2-digit" time-zone="PST"></lightning-formatted-date-time>      
+                <span> PST</span>
+            </div>
+            <div class="slds-grid slds-wrap">                
+                <template for:each={prodData} for:item="prod">                    
+                    <div class="slds-col slds-size_1-of-4 borpad" key={prod.key}>      
+                        <span class="insideText">                   
+                            <p class = "header">{prod.key}</p>                            
+                            <p class ="value"><lightning-formatted-number value={prod.value}></lightning-formatted-number></p>  
+                            <u><a class="linkVal" onclick={setListViewFilter} data-id={prod.key}>Click to View Data</a></u><lightning-helptext content="Please click on the link to view the products"></lightning-helptext>                                         
+                        </span>    
+                    </div>            
+                </template> 
+            </div>
+        </lightning-tab>                                       
+        <lightning-tab label="Product Hierarchy" icon-name="standard:budget_allocation" if:true={tabVisible}>
+            <c-product-hierarchy></c-product-hierarchy>
+        </lightning-tab>   
+        <lightning-tab if:false={tabVisible} icon-name="utility:block_visitor" >
+            <p>You have insufficient priviliges to view data. Please contact your administrator.</p>
+        </lightning-tab>     
+    </lightning-tabset>        
+</template>

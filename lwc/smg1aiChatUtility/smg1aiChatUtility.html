@@ -1,0 +1,17 @@
+<template>
+    <!-- Popup container that opens automatically -->
+    <template if:true={isChatOpen}>
+        <section class="chat-popup">
+            <div class="popup-header">
+                <span>If not happy with response <a href="#" onclick={handleCreateCaseClick}>click here</a> to create case</span>
+            </div>
+            <div class="popup-content">
+                <!-- Iframe to load the external chat UI -->
+                <iframe src={chatUrl} width="100%" height="100%" frameborder="0" class="chat-iframe"></iframe>
+            </div>
+        </section>
+    </template>
+    <template if:true={isModel}>
+		<c-core_aaqcase modalheader={modalHeader} ismodal={isModel} onclosemodal={handleModalClose}></c-core_aaqcase>
+	</template>
+</template>

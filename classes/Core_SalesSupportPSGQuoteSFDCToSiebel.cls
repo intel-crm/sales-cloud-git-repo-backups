@@ -102,12 +102,18 @@ public without sharing class  Core_SalesSupportPSGQuoteSFDCToSiebel {
             writeErrorMessage(System.Label.Core_PSG_Validate_Quote_Account);
             return false; 
         }
+        
+         if(!accObj.Core_Account_Type__c.contains('End Customer') ){
+             writeErrorMessage('The Account should be of End Customer Type');
+            return false;
+         }
 
         // Check if First Customer Ship Date and Volume have values
         
         if (oppObj.Core_First_Customer_Ship_Date__c == null || oppObj.Core_Volume__c == null ) {
           writeErrorMessage(System.Label.Core_PSG_Opportunity_Fields_Required);
-          
+             ApexPages.Message myMsg = new ApexPages.Message(ApexPages.Severity.Error,'First Customer Ship Date and Volume should not be NULL');
+          	ApexPages.addMessage(myMsg);
             return false;
         }
          
@@ -124,7 +130,18 @@ public without sharing class  Core_SalesSupportPSGQuoteSFDCToSiebel {
         // No validation errors
         return true;
      }*/
-
+    
+    public static void validateOpportunty() {
+         String soppId = ApexPages.currentPage().getParameters().get(System.Label.Core_OpportunityID);
+        string errorMsg=System.Label.Core_PSG_Opportunity_Fields_Required;
+        Opportunity oppObj = [SELECT Id, Core_PSG_Quote_Last_Processed_Status__c, AccountId, Core_First_Customer_Ship_Date__c, Core_Volume__c FROM Opportunity WHERE Id = :soppId];
+    	if (oppObj.Core_First_Customer_Ship_Date__c == null || oppObj.Core_Volume__c == null ) {
+            //writeErrorMessage(System.Label.Core_PSG_Opportunity_Fields_Required);
+             ApexPages.Message myMsg = new ApexPages.Message(ApexPages.Severity.Error,System.Label.Core_PSG_Opportunity_Fields_Required);
+          	ApexPages.addMessage(myMsg);
+            //return errorMsg;
+        }
+    }
     //Shivini
     /*@AuraEnabled
     public static Map<String, Object> validateOpportunityBeforeQuoteCreationNew(Id opportunityId) {

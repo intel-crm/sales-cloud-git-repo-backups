@@ -251,25 +251,6 @@
         <type>DateTime</type>
     </fields>
     <label>Partner Assist + Consent</label>
-    <listViews>
-        <fullName>All</fullName>
-        <columns>NAME</columns>
-        <columns>PRM_Account_Id__c</columns>
-        <columns>PRM_Choice_Nm__c</columns>
-        <columns>PRM_Consent_Provided_Ind__c</columns>
-        <columns>PRM_Consent_Provided_By_Id__c</columns>
-        <columns>PRM_Consent_Provided_Date_Dt__c</columns>
-        <columns>PRM_Distributor_Id__c</columns>
-        <columns>PRM_Start_Date_Dt__c</columns>
-        <columns>PRM_End_Date_Dt__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>PRM_Account_Id__c</field>
-            <operation>contains</operation>
-            <value>test</value>
-        </filters>
-        <label>All</label>
-    </listViews>
     <nameField>
         <displayFormat>PAC-{00000}</displayFormat>
         <label>Partner Assist Consent Name</label>

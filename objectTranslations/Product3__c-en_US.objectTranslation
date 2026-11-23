@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Product3</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Products3</value>
+    </caseValues>
+    <fieldSets>
+        <label><!-- Map Prod FieldSet --></label>
+        <name>Map_Prod_FieldSet</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- ProductFieldSet --></label>
+        <name>ProductFieldSet</name>
+    </fieldSets>
+    <fields>
+        <label><!-- Available for New Designs --></label>
+        <name>Core_Avail_for_New_Designs__c</name>
+    </fields>
+    <fields>
+        <label><!-- BU Operation Code --></label>
+        <name>Core_BU_Operation_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Business Organization Name --></label>
+        <name>Core_Business_Org_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Class and Comp Sub Category --></label>
+        <name>Core_Class_and_Component_Sub_Category_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Code Name EPM ID --></label>
+        <name>Core_Code_Name_EPM_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Code Name --></label>
+        <name>Core_Code_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Controlled Technology --></label>
+        <name>Core_Controlled_Technology__c</name>
+    </fields>
+    <fields>
+        <label><!-- Core Count --></label>
+        <name>Core_CoreCount__c</name>
+    </fields>
+    <fields>
+        <help><!-- Determines whether this Product is available for selection on Design Registrations. --></help>
+        <label><!-- Design Registration Eligible --></label>
+        <name>Core_Design_Registration_Eligible_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Division Code Short Name --></label>
+        <name>Core_Division_Code_Short_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Division Code --></label>
+        <name>Core_Division_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- EPM Term Type --></label>
+        <name>Core_EPM_Term_Type_Cd__c</name>
+    </fields>
+    <fields>
+        <label><!-- End of Intel Service Date --></label>
+        <name>Core_End_of_Intel_Service_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- External Source Name --></label>
+        <name>Core_External_Source_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Family Name --></label>
+        <name>Core_Family_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Forecast Product Name --></label>
+        <name>Core_Forecast_Product_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Group Code Short Name --></label>
+        <name>Core_Group_Code_Short_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Group Code --></label>
+        <name>Core_Group_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Hierarchy ID --></label>
+        <name>Core_Hierarchy_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Hierarchy Name --></label>
+        <name>Core_Hierarchy_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- KPI - Product Class --></label>
+        <name>Core_INF_KPI_ProdClass__c</name>
+    </fields>
+    <fields>
+        <label><!-- IPS Visible Flag - External --></label>
+        <name>Core_IPS_Visible_Flag_External__c</name>
+    </fields>
+    <fields>
+        <help><!-- Set within SFDC by a local IT/Sys Admin, Data Ops/Steward or KTBR. At the time of initial data setup, this is set to BLANK or NULL. If set manually, the value of this field overrides the visibility setting obtained from integration/externally. --></help>
+        <label><!-- IPS Visible Flag - Internal --></label>
+        <name>Core_IPS_Visible_Flag_Internal__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- IPS Visible Flag --></label>
+        <name>Core_IPS_Visible_Flag__c</name>
+    </fields>
+    <fields>
+        <label><!-- IQR Visible --></label>
+        <name>Core_IQR_Visible__c</name>
+    </fields>
+    <fields>
+        <label><!-- KPI - Product Family --></label>
+        <name>Core_Inf_KPI_ProdFamily__c</name>
+    </fields>
+    <fields>
+        <label><!-- KPI - Product Group --></label>
+        <name>Core_Inf_KPI_ProdGroup__c</name>
+    </fields>
+    <fields>
+        <label><!-- Intel vPro Platform Eligibility --></label>
+        <name>Core_Intel_vPro_Platform_Eligibility__c</name>
+    </fields>
+    <fields>
+        <label><!-- IsLatest --></label>
+        <name>Core_IsLatest__c</name>
+    </fields>
+    <fields>
+        <label><!-- Custom Indicator --></label>
+        <name>Core_Is_Custom_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Name Changed --></label>
+        <name>Core_Is_Name_Changed_Chk__c</name>
+    </fields>
+    <fields>
+        <help><!-- Indicates how product is being classified. --></help>
+        <label><!-- Product Class --></label>
+        <name>Core_Item_Class_Nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- Enterprise level unique identifier for the product. Source from MMID in SAP/EDW. --></help>
+        <label><!-- Material Id --></label>
+        <name>Core_Item_Id__c</name>
+    </fields>
+    <fields>
+        <help><!-- Determines if product is available for booking. It is checked when Signal Code = I3 --></help>
+        <label><!-- Orderable --></label>
+        <name>Core_Item_Orderable_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Package --></label>
+        <name>Core_Item_Package_Txt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Determines if product is available for DPA/ALN --></help>
+        <label><!-- Price Auth --></label>
+        <name>Core_Item_Price_Authorization_Ind__c</name>
+    </fields>
+    <fields>
+        <help><!-- Determines if product is available for Quote Transaction. It is checked when Signal Code = I2 --></help>
+        <label><!-- Quotable --></label>
+        <name>Core_Item_Quotable_Ind__c</name>
+    </fields>
+    <fields>
+        <help><!-- Determines if shipment is allowed for a product. It is checked when Signal Code = AC --></help>
+        <label><!-- Shippable --></label>
+        <name>Core_Item_Shippable_Ind__c</name>
+    </fields>
+    <fields>
+        <help><!-- Source from Sales Status in PIR. --></help>
+        <label><!-- Signal Code --></label>
+        <name>Core_Item_Signal_Cd__c</name>
+    </fields>
+    <fields>
+        <label><!-- Standard Cost --></label>
+        <name>Core_Item_Standard_Cost_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sub Component Category --></label>
+        <name>Core_Item_Sub_Component_Category_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Max TDP --></label>
+        <name>Core_Max_TDP__c</name>
+    </fields>
+    <fields>
+        <label><!-- Memory Capacity --></label>
+        <name>Core_Mem_Amt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Ordering Part Number(OPN) of a product --></help>
+        <label><!-- OPN --></label>
+        <name>Core_OPN__c</name>
+    </fields>
+    <fields>
+        <label><!-- Old Product Name --></label>
+        <name>Core_Old_Product_Name_Txt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Determines whether this Product is available to external partner users for selection on Opportunities. This product is added to the Partner Price Book. --></help>
+        <label><!-- Partner Visible --></label>
+        <name>Core_Partner_Visible_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Pipeline Launch Date --></label>
+        <name>Core_Pipeline_Launch_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Platform Config EPM ID --></label>
+        <name>Core_Platform_Config_EPM_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Platform Config --></label>
+        <name>Core_Platform_Config__c</name>
+    </fields>
+    <fields>
+        <label><!-- Platform EPM ID --></label>
+        <name>Core_Platform_EPM_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Platform Eligibility_EOL --></label>
+        <name>Core_Platform_Eligibility__c</name>
+    </fields>
+    <fields>
+        <label><!-- Platform Name --></label>
+        <name>Core_Platform_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Processor Number --></label>
+        <name>Core_Processor_Number_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Processor Number --></label>
+        <name>Core_Processor_Number_Ta_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Tool Type --></label>
+        <name>Core_Prod_Tool_Type_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Name Changed Time --></label>
+        <name>Core_ProductName_Changed_Time_Dte__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Density Value --></label>
+        <name>Core_Product_Density_Value__c</name>
+    </fields>
+    <fields>
+        <help><!-- To access the extended/Licensing atrributes for PSG Products --></help>
+        <label><!-- Product Extended Attributes --></label>
+        <name>Core_Product_Ext_Attribute_Id__c</name>
+        <relationshipLabel><!-- Products3 --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Product Family EPM ID --></label>
+        <name>Core_Product_Family_EPM_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Family --></label>
+        <name>Core_Product_Family__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Group EPM ID --></label>
+        <name>Core_Product_Group_EPM_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Group --></label>
+        <name>Core_Product_Group__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product ID --></label>
+        <name>Core_Product_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Name EPM ID --></label>
+        <name>Core_Product_Name_EPM_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product_Org --></label>
+        <name>Core_Product_Org__c</name>
+        <picklistValues>
+            <masterLabel>IPS</masterLabel>
+            <translation><!-- IPS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sales</masterLabel>
+            <translation><!-- Sales --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Product Series EPM ID --></label>
+        <name>Core_Product_Series_EPM_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Series --></label>
+        <name>Core_Product_Series__c</name>
+    </fields>
+    <fields>
+        <help><!-- Indicates sales status of a product. Source from Sales Status in SAP/EDW. --></help>
+        <label><!-- Product Status --></label>
+        <name>Core_Product_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Type EPM ID --></label>
+        <name>Core_Product_Type_EPM_ID__c</name>
+    </fields>
+    <fields>
+        <help><!-- Indicates if a product belongs to Component or Tool --></help>
+        <label><!-- FPGA Product Type --></label>
+        <name>Core_Product_Type_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Type --></label>
+        <name>Core_Product_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales Assist Is EOL --></label>
+        <name>Core_SA_Is_EOL__c</name>
+    </fields>
+    <fields>
+        <label><!-- Available to TOE --></label>
+        <name>Core_SW_Prod_Avail_To_TL_ORD_ENBLMT_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Non-Commercial Purpose --></label>
+        <name>Core_SW_Prod_Non_Commercial_Purpose_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales Visible Flag User Edit --></label>
+        <name>Core_Sales_Visible_Flag_User_Edit__c</name>
+    </fields>
+    <fields>
+        <help><!-- Check this box to make a Product visible for use in Sales processes. Checking this flag makes the Product available for the Standard Price Book. --></help>
+        <label><!-- Sales Visible Flag --></label>
+        <name>Core_Sales_Visible_Flag__c</name>
+    </fields>
+    <fields>
+        <label><!-- Solution Area --></label>
+        <name>Core_Solution_Area__c</name>
+        <relationshipLabel><!-- Products3 --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Unique ID --></label>
+        <name>Core_Unique_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Vertical Segment --></label>
+        <name>Core_Vertical_Segment__c</name>
+    </fields>
+    <fields>
+        <label><!-- iPaaS Load ID --></label>
+        <name>Core_iPaaS_Load_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Description --></label>
+        <name>Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Display URL --></label>
+        <name>DisplayUrl__c</name>
+    </fields>
+    <fields>
+        <label><!-- External ID --></label>
+        <name>ExternalId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Family --></label>
+        <name>Family__c</name>
+        <picklistValues>
+            <masterLabel>None</masterLabel>
+            <translation><!-- None --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- INTUCASE_CodeName --></label>
+        <name>INTUCASE_CodeName__c</name>
+    </fields>
+    <fields>
+        <help><!-- Indicates if a product is available for transaction in SFDC, the flag is managed via integration. Flag is unchecked when product is either retired regardless of product hierarchy or new equal product created in VPH. --></help>
+        <label><!-- Active --></label>
+        <name>IsActive__c</name>
+    </fields>
+    <fields>
+        <label><!-- Level --></label>
+        <name>Level__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>5</masterLabel>
+            <translation><!-- 5 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Product Code --></label>
+        <name>ProductCode__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Name --></label>
+        <name>Product_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quantity Unit Of Measure --></label>
+        <name>QuantityUnitOfMeasure__c</name>
+        <picklistValues>
+            <masterLabel>Each</masterLabel>
+            <translation><!-- Each --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Serial_Number --></label>
+        <name>Sales_Serial_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product SKU --></label>
+        <name>StockKeepingUnit__c</name>
+    </fields>
+    <fields>
+        <help><!-- Type of pricing to use for this subscription. &quot;None&quot; means this product is not a subscription. --></help>
+        <label><!-- Subscription Pricing --></label>
+        <name>SubscriptionPricing__c</name>
+        <picklistValues>
+            <masterLabel>Fixed Price</masterLabel>
+            <translation><!-- Fixed Price --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Percent Of Total</masterLabel>
+            <translation><!-- Percent Of Total --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- UCASE_CodeName --></label>
+        <name>UCASE_CodeName__c</name>
+    </fields>
+    <recordTypes>
+        <label><!-- Tools Product --></label>
+        <name>Tools_Product</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Once set to Yes, IPS Visible Flag (Internal) cannot be reverted. Press Cancel to Exit. --></errorMessage>
+        <name>Core_IPS_Cannot_Revert_IPS_Visible</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Not an IPS product. Cannot be made IPS Visible. Click Cancel to exit. --></errorMessage>
+        <name>Core_No_Sales_Product_for_IPS</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Cannot Edit Name field --></errorMessage>
+        <name>Core_Prevent_IPS_OrgAdm_Name_Edit</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You cannot edit PSG data --></errorMessage>
+        <name>Core_Prevent_Non_PSG_Usr_Product_Fields</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You cannot edit non-PSG records, Please contact the support team for any access related help --></errorMessage>
+        <name>Core_Prevent_PSGU_Non_PSG_Product_Fields</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- As Product Marketing User, You do not have sufficient Privileges to edit this field. --></errorMessage>
+        <name>PSG_Restrict_edit_on_Product_Active_Name</name>
+    </validationRules>
+</CustomObjectTranslation>

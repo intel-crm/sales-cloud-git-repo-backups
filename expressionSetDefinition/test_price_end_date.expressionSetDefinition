@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExpressionSetDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
+    <executionScale>Low</executionScale>
+    <label>test price end date</label>
+    <processType>Bre</processType>
+    <template>false</template>
+    <versions>
+        <fullName>test_price_end_date_V1</fullName>
+        <decimalScale>2</decimalScale>
+        <expressionSetDefinition>test_price_end_date</expressionSetDefinition>
+        <label>test price end date V1</label>
+        <processType>Bre</processType>
+        <shouldShowExplExternally>false</shouldShowExplExternally>
+        <startDate>2025-05-07T10:48:27.000Z</startDate>
+        <status>Inactive</status>
+        <steps>
+            <actionType>GetOutputsFromDecisionTable</actionType>
+            <decisionTable>
+                <decisionTableName>test_price_test</decisionTableName>
+                <type>DecisionTable</type>
+            </decisionTable>
+            <hasNestedExplainability>false</hasNestedExplainability>
+            <label>test_price_test</label>
+            <name>test_price_test</name>
+            <resultIncluded>true</resultIncluded>
+            <sequenceNumber>1</sequenceNumber>
+            <shouldExposExecPathMsgOnly>true</shouldExposExecPathMsgOnly>
+            <shouldExposeConditionDetails>false</shouldExposeConditionDetails>
+            <shouldShowExplExternally>false</shouldShowExplExternally>
+            <stepType>BusinessKnowledgeModel</stepType>
+        </steps>
+        <variables>
+            <collection>false</collection>
+            <dataType>Date</dataType>
+            <input>true</input>
+            <lookupName>test_price_test</lookupName>
+            <lookupType>DecisionTable</lookupType>
+            <name>Pricing_End_Date__c</name>
+            <output>false</output>
+            <type>Variable</type>
+        </variables>
+        <variables>
+            <collection>false</collection>
+            <dataType>Currency</dataType>
+            <decimalPlaces>2</decimalPlaces>
+            <input>false</input>
+            <lookupName>test_price_test</lookupName>
+            <lookupType>DecisionTable</lookupType>
+            <name>test_price_test__Pricing_Meet_Comp_Price_Amt__c</name>
+            <output>true</output>
+            <type>Variable</type>
+        </variables>
+        <versionNumber>1</versionNumber>
+    </versions>
+</ExpressionSetDefinition>

@@ -37,7 +37,7 @@ public class Pricing_DecisionTable_RefreshQueSch_Test {
             utilityRec1.Pricing_Region_Nm__c = 'ASMO';
             utilityRec1.Pricing_Category_Nm__c = 'CSP';
             utilityRec1.Pricing_End_Customer_Name_Txt__c = 'Dell';
-            //utilityRec1.Pricing_Pricing_Manager_Email_Txt__c = adminUserList[0].Email;
+            utilityRec1.Pricing_Pricing_Manager_Email_Txt__c = adminUserList[0].Email;
             utilityRecList.add(utilityRec1);
             insert utilityRecList;
             

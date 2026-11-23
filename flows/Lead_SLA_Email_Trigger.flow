@@ -717,7 +717,7 @@ NULL)</expression>
         </filters>
         <getFirstRecordOnly>false</getFirstRecordOnly>
         <limit>
-            <numberValue>500.0</numberValue>
+            <numberValue>1000.0</numberValue>
         </limit>
         <object>Lead</object>
         <sortField>CreatedDate</sortField>

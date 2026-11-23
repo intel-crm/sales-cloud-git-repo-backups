@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>IPATestWW50.4_CIP_NewUser_Eng Partner Manager</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>IPATestWW50.4_CIP_NewUser_Eng Partner Manager</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>IPATestWW504_CIP_NewUser_EngPartnerExecutive</parentRole>
+</Role>

@@ -1,0 +1,266 @@
+<template>
+  <lightning-record-view-form record-id={recordId} object-api-name="Contact">
+       <template if:true={gecFoundAcc} >
+  <div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
+    <span class="slds-assistive-text">error</span>
+      <span class="slds-icon_container slds-icon-utility-error slds-m-right_x-small" title="Description of icon when needed">
+        <lightning-icon icon-name="utility:error" size="x-small" style="--lwc-colorTextIconDefault: white;" alternative-text="Error!" title="Error"></lightning-icon>
+      </span>
+      <h2>{CurrentAccountName} : Account is on  GEC Hold.
+      </h2>
+  </div>
+ </template> 
+    <template if:true={gecFound} > 
+      <div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
+        <span class="slds-assistive-text">error</span>
+          <span class="slds-icon_container slds-icon-utility-error slds-m-right_x-small" title="Description of icon when needed">
+            <lightning-icon icon-name="utility:error" size="x-small" style="--lwc-colorTextIconDefault: white;" alternative-text="Error!" title="Error"></lightning-icon>
+          </span>
+          <h2>GEC Cases Found, moving contact and Entitlements is not allowed.
+          </h2>
+      </div>
+    </template> 
+      <div class="slds-page-header">
+          <div class="slds-page-header__row">
+            <div class="slds-page-header__col-title">
+              <div class="slds-media">
+                <div class="slds-media__figure">
+                  <span class="slds-icon_container slds-icon-standard-contact">
+                      <lightning-icon icon-name="standard:account" alternative-text="Account" title="Account"></lightning-icon>
+                  </span>
+                </div>
+                <div class="slds-media__body">
+                  <div class="slds-page-header__name">
+                    <div class="slds-page-header__name-title">
+                      <h1>
+                        <span>Account : {CurrentAccountName}</span>
+                        <span class="slds-page-header__title slds-truncate" title={CurrentContactName}>{CurrentContactName}</span>
+                      </h1>
+                    </div>
+                   
+                </div>
+              </div>
+            </div>
+            </div>
+         
+        </div>
+          </div>           
+      <br/>
+
+      
+<div style="margin-left:482px; width:30%;">
+
+<div class="slds-form-element" onmouseleave={toggleResult}  data-source="lookupContainer">      
+<div class="slds-combobox_container slds-has-selection">
+  <label class="slds-form-element__label" for="combobox-id-1" style="margin-left: -290px;margin-bottom: -20px;">{label}</label>
+  <div class="lookupInputContainer slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click" aria-expanded="false" aria-haspopup="listbox" role="combobox"> 
+   <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_left-right" role="none">
+      <div class="searchBoxWrapper slds-show">
+        <!--Lookup Input Field-->
+        <lightning-input                   
+           type="search"
+           data-source="searchInputField"
+           onclick={toggleResult}
+           onchange={handleKeyChange}
+           is-loading={isSearchLoading}
+           value={searchKey}
+           variant="label-hidden"
+           placeholder={placeholder}
+       ></lightning-input>  
+      </div>
+      
+    <!--Lookup Selected record pill container start-->  
+    <!--<div class="pillDiv slds-hide">        
+      <span class="slds-icon_container slds-combobox__input-entity-icon">
+        <lightning-icon icon-name={iconName} size="x-small" alternative-text="icon"></lightning-icon>  
+      </span>
+      <template if:false={isLoaded} >
+      <input type="text"
+             id="combobox-id-1"
+             value={selectedRecord.Name}       
+             class="slds-input slds-combobox__input slds-combobox__input-value"
+             readonly
+             />
+            </template>
+            
+      <button class="slds-button slds-button_icon slds-input__icon slds-input__icon_right" title="Remove selected option">
+      <lightning-icon icon-name="utility:close" size="x-small" alternative-text="close icon" onclick={handleRemove}></lightning-icon> 
+     </button>
+    </div>  -->
+    </div>
+
+    <!-- lookup search result part start-->
+    <!--<div style="margin-top:0px" id="listbox-id-5" class="slds-dropdown slds-dropdown_length-with-icon-7 slds-dropdown_fluid" role="listbox">
+      <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+        <template for:each={lstResult} for:item="obj">
+        <li key={obj.Id} role="presentation" class="slds-listbox__item">
+          <div data-recid={obj.Id} onclick={handelSelectedRecord} class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta" role="option">
+            <span style="pointer-events: none;" class="slds-media__figure slds-listbox__option-icon" >
+              <span class="slds-icon_container" >
+                  <lightning-icon icon-name={iconName} size="small" alternative-text="icon" ></lightning-icon>  
+              </span>
+            </span>
+            <span style="pointer-events: none;" class="slds-media__body" >
+              <span  class="slds-listbox__option-text slds-listbox__option-text_entity">{obj.Name}</span>
+            </span>
+          </div>
+        </li>
+        </template>
+        
+        <template if:false={hasRecords}>
+          <li class="slds-listbox__item" style="text-align: center; font-weight: bold;">No Records Found....</li>
+        </template>
+      </ul>
+     
+    </div>-->
+  </div>
+</div>
+</div>     
+</div>
+<!-- <div class="slds-form-element slds-form-element_horizontal">
+<label class="slds-form-element__label" for="horizontal-input-id-02" style=" margin-left: 271px;">Keep Entitlements intact with transfer:</label>
+<div class="slds-form-element__control" style="padding-top:4px;">
+  <lightning-input  type="checkbox" id="horizontal-input-id-02" onchange={handleKeepEntitlement}></lightning-input>
+</div>  
+</div>
+
+<div class="slds-form-element slds-form-element_horizontal">
+<label class="slds-form-element__label" for="horizontal-input-id-02" style="margin-left: 122px;">Please enter a Reason for moving the contact to another Account:</label>
+<lightning-input onchange={handleInputReason} style="padding-left: 107px;"></lightning-input><br/>
+</div>
+<div class="slds-form-element slds-form-element_horizontal">
+<label class="slds-form-element__label" for="horizontal-input-id-03" style="margin-left: 313px;margin-top: -35px;">Checked with Account owner:</label>
+<div class="slds-form-element__control">
+  <div style="margin-left: 66px;margin-top: -31px;">
+  <lightning-input  type="checkbox" id="horizontal-input-id-03" onchange={handleCheckAccOwner}></lightning-input>
+</div></div>  
+</div>
+<div class="slds-form-element slds-form-element_horizontal">
+<label class="slds-form-element__label" for="horizontal-input-id-03" style="margin-left: 107px;margin-top: -28px;">Select to transfer Cases to another Contact (on the original Account):</label>
+<div class="slds-form-element__control">
+  <div style="margin-left: 28px;margin-top: -25px;">
+  <lightning-input  type="checkbox" id="horizontal-input-id-04" onchange={KeepCases}></lightning-input>
+</div></div>  
+</div> -->
+
+<div style="width:1200px; margin-left:86px;">
+<div class="slds-form-element slds-form-element_horizontal">
+<label class="slds-form-element__label" for="horizontal-input-id-02" style="margin-left: 183px;">Keep Entitlements intact with transfer:</label>
+<div class="slds-form-element__control"> 
+  <lightning-input  type="checkbox" id="horizontal-input-id-02" onchange={handleKeepEntitlement} disabled={isContactEntitlement}></lightning-input>
+</div>  
+</div> 
+<div class="slds-form-element slds-form-element_horizontal">
+<label class="slds-form-element__label" for="horizontal-input-id-02" style="margin-left: 37px;">Please enter a Reason for moving the contact to another Account:</label>
+<div class="slds-form-element__control" style="width: 64%;">
+    <lightning-input onchange={handleInputReason}></lightning-input><br/>
+</div>
+</div>
+<div class="slds-form-element slds-form-element_horizontal">
+<label class="slds-form-element__label" for="horizontal-input-id-03" style="margin-top: -35px; margin-left: 229px;">Checked with Account owner:</label>
+<div class="slds-form-element__control">
+  <div style="margin-top: -31px;">
+  <lightning-input  type="checkbox" id="horizontal-input-id-03" onchange={handleCheckAccOwner}></lightning-input>
+</div></div>  
+</div>
+<div class="slds-form-element slds-form-element_horizontal">
+<label class="slds-form-element__label" for="horizontal-input-id-03" style="margin-top: -28px; margin-left: 25px;">Select to transfer Cases to another Contact (on the original Account):</label>
+<div class="slds-form-element__control">
+  <div style="margin-top: -25px;">
+  <lightning-input  type="checkbox" id="horizontal-input-id-04" onchange={KeepCases}></lightning-input>
+</div></div>  
+</div>
+</div>
+
+
+<div style="margin-left:482px; width:30%;">
+
+<div class="slds-form-element" onmouseleave={contoggleResult}  data-source="conlookupContainer">      
+<div class="slds-combobox_container slds-has-selection">
+  <label class="slds-form-element__label" for="combobox-id-2" style="margin-left: -242px;margin-bottom: -20px;">{conlabel}</label>
+  <div class="conlookupInputContainer slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click" aria-expanded="false" aria-haspopup="listbox" role="combobox"> 
+   <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_left-right" role="none">
+      <div class="consearchBoxWrapper slds-show">
+        <!--Lookup Input Field-->
+        <lightning-input                   
+           type="search"
+           data-source="consearchInputField"
+           onclick={contoggleResult}
+           onchange={handleKeyChangeContact}
+           is-loading={conisSearchLoading}
+           value={consearchKey}
+           variant="label-hidden"
+           placeholder={placeholder}
+       ></lightning-input>  
+      </div>
+      
+    <!--Lookup Selected record pill container start-->  
+    <div class="conpillDiv slds-hide">        
+      <span class="slds-icon_container slds-combobox__input-entity-icon">
+        <lightning-icon icon-name={coniconName} size="x-small" alternative-text="icon"></lightning-icon>  
+      </span>
+      <input type="text"
+             id="combobox-id-2"
+             value={conselectedRecord.Name}       
+             class="slds-input slds-combobox__input slds-combobox__input-value"
+             readonly
+             />
+      <button class="slds-button slds-button_icon slds-input__icon slds-input__icon_right" title="Remove selected option">
+      <lightning-icon icon-name="utility:close" size="x-small" alternative-text="close icon" onclick={handleRemoveCon}></lightning-icon> 
+     </button>
+    </div>  
+    </div>
+
+    <!-- lookup search result part start-->
+    <div style="margin-top:0px" id="listbox-id-6" class="slds-dropdown slds-dropdown_length-with-icon-7 slds-dropdown_fluid" role="listbox">
+      <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+        <template for:each={conlstResult} for:item="contactobj">
+        <li key={contactobj.Id} role="presentation" class="slds-listbox__item">
+          <div data-recid={contactobj.Id} onclick={handelSelectedConRecord} class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta" role="option">
+            <span style="pointer-events: none;" class="slds-media__figure slds-listbox__option-icon" >
+              <span class="slds-icon_container" >
+                  <lightning-icon icon-name={coniconName} size="small" alternative-text="icon" ></lightning-icon>  
+              </span>
+            </span>
+            <span style="pointer-events: none;" class="slds-media__body" >
+              <span  class="slds-listbox__option-text slds-listbox__option-text_entity">{contactobj.Name}</span>
+            </span>
+          </div>
+        </li>
+        </template>
+        <!--ERROR msg, if there is no records..-->
+        <template if:false={conhasRecords}>
+          <li class="slds-listbox__item" style="text-align: center; font-weight: bold;">No Records Found....</li>
+        </template>
+      </ul>
+     
+    </div>
+  </div>
+</div>
+</div>     
+</div>
+
+
+  <div class="slds-col slds-size_6-of-12 slds-m-top--medium" style="margin-left: 326px; text-align:center;">
+  <lightning-button-group>
+      <lightning-button label="Save" variant="brand" type="submit" onclick={handleSave} disabled={gecFoundAcc}></lightning-button> &nbsp;&nbsp;
+      <lightning-button label="Cancel" variant="neutral" onclick={handleCancel}></lightning-button>
+  </lightning-button-group>
+  </div>
+  <template if:true={displayTable}>
+  <h2 class="slds-m-bottom--x-small" style="color:darkslateblue; font-weight:bold;">Displaying Accounts Records based on Account Name</h2>
+  
+  <div style="height: 300px;">
+    <lightning-datatable
+            key-field="id"
+            data={accdata}
+            columns={columns}
+            hide-checkbox-column="true"
+            onrowaction={handleRowSelection}>
+    </lightning-datatable>
+</div>   
+</template>
+  <br/>
+  </lightning-record-view-form>
+  
+  </template>

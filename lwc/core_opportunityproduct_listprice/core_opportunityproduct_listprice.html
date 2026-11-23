@@ -1,0 +1,18 @@
+<template>
+    <lightning-accordion allow-multiple-sections-open active-section-name="Price Change">
+        <lightning-accordion-section name="Price Change" label="Price Change"> 
+     <lightning-card  variant="Narrow">
+         <div style="height: 200px;">
+        <lightning-datatable
+                key-field="id"
+                hide-checkbox-column="true"
+                data={oppprod}
+                columns={columns}>
+        </lightning-datatable>
+    </div>
+         
+     </lightning-card>        
+</lightning-accordion-section>
+    </lightning-accordion>
+ 
+</template>

@@ -19,7 +19,6 @@
         <locationY>200</locationY>
         <actionName>Core_MDF_BudgetCapShare_Record_Creation</actionName>
         <actionType>flow</actionType>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <processMetadataValues>
                 <name>dataType</name>
@@ -192,6 +191,22 @@
     </actionCalls>
     <apiVersion>49.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>myVariable_waitStartTimeAssignment</name>
+        <label>myVariable_waitStartTimeAssignment</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>myVariable_waitStartTimeVariable</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>myDecision</targetReference>
+        </connector>
+    </assignments>
     <decisions>
         <processMetadataValues>
             <name>index</name>
@@ -211,34 +226,10 @@
             <name>myRule_1</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <processMetadataValues>
-                    <name>inputDataType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>leftHandSideType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>operatorDataType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>rightHandSideType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <leftValueReference>myVariable_current.RecordType.DeveloperName</leftValueReference>
-                <operator>NotEqualTo</operator>
+                <leftValueReference>formula_myRule_1</leftValueReference>
+                <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>Core_MDF_IPA_Budget_Type_Cap</stringValue>
+                    <booleanValue>true</booleanValue>
                 </rightValue>
             </conditions>
             <connector>
@@ -277,23 +268,28 @@
     </decisions>
     <description>This Process Builder is used to create Budget Cap share records</description>
     <formulas>
+        <name>formula_myRule_1</name>
+        <dataType>Boolean</dataType>
+        <expression>true</expression>
+    </formulas>
+    <formulas>
         <processMetadataValues>
             <name>originalFormula</name>
             <value>
-                <stringValue>AND([Core_MDF_Budget_Cap__c].RecordType.DeveloperName &lt;&gt; &apos;Core_MDF_IPA_Budget_Type_Cap&apos;,OR(
+                <stringValue>OR(
 	ISNEW(),
 	ISCHANGED([Core_MDF_Budget_Cap__c].OwnerId)	
-))</stringValue>
+)</stringValue>
             </value>
         </processMetadataValues>
         <name>formula_myRule_3</name>
         <dataType>Boolean</dataType>
-        <expression>AND({!myVariable_current.RecordType.DeveloperName} &lt;&gt; &apos;Core_MDF_IPA_Budget_Type_Cap&apos;,OR(
+        <expression>OR(
 	ISNEW(),
 	ISCHANGED({!myVariable_current.OwnerId})	
-))</expression>
+)</expression>
     </formulas>
-    <interviewLabel>Core_MDF_BudgetCapSharing_Process-6_InterviewLabel</interviewLabel>
+    <interviewLabel>Core_MDF_BudgetCapSharing_Process-5_InterviewLabel</interviewLabel>
     <label>Core_MDF_BudgetCapSharing_Process</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -357,19 +353,6 @@
             <processMetadataValues>
                 <name>implicit</name>
                 <value>
-                    <booleanValue>true</booleanValue>
-                </value>
-            </processMetadataValues>
-            <field>Id</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>myVariable_current.Id</elementReference>
-            </value>
-        </filters>
-        <filters>
-            <processMetadataValues>
-                <name>implicit</name>
-                <value>
                     <booleanValue>false</booleanValue>
                 </value>
             </processMetadataValues>
@@ -415,6 +398,19 @@
                 <booleanValue>true</booleanValue>
             </value>
         </filters>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </processMetadataValues>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </filters>
         <inputAssignments>
             <processMetadataValues>
                 <name>dataType</name>
@@ -453,8 +449,8 @@
         </inputAssignments>
         <object>Core_MDF_Budget_Cap__c</object>
     </recordUpdates>
-    <startElementReference>myDecision</startElementReference>
-    <status>Obsolete</status>
+    <startElementReference>myVariable_waitStartTimeAssignment</startElementReference>
+    <status>Active</status>
     <variables>
         <name>myVariable_current</name>
         <dataType>SObject</dataType>
@@ -470,5 +466,15 @@
         <isInput>true</isInput>
         <isOutput>false</isOutput>
         <objectType>Core_MDF_Budget_Cap__c</objectType>
+    </variables>
+    <variables>
+        <name>myVariable_waitStartTimeVariable</name>
+        <dataType>DateTime</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <elementReference>$Flow.CurrentDateTime</elementReference>
+        </value>
     </variables>
 </Flow>

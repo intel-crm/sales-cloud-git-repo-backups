@@ -6,29 +6,10 @@ private class Core_IntInboundMsgERPM_BlackBox_Test{
     
     @testSetup
     static void setupTestData() {
-        Core_Contact_Bypass_Validation_Rule__c bypass= new Core_Contact_Bypass_Validation_Rule__c();
-        bypass.ByPass__c = true;
-        bypass.SetupOwnerId = UserInfo.getOrganizationId();
-        insert bypass;
+    
       
-        Core_Trigger_Executions__c triggerEntry = new Core_Trigger_Executions__c(
-            Name='processInboundMessages', Core_Object__c='Core_Integration_Inbound_Message__c',
-            Core_Class_Name__c='Core_IntegrationInboundMessageHandler',
-            Core_Trigger_Events__c='before insert', Core_Active__c=true, Core_Description__c='testing, testing');
-        insert triggerEntry;
-         Core_Trigger_Executions__c triggerEntry1 = new Core_Trigger_Executions__c(
-            Name='processInboundMessagesIQR', Core_Object__c='Core_Integration_Inbound_Message__c',
-            Core_Class_Name__c='Core_IntegrationInboundMessageHandler',
-            Core_Trigger_Events__c='before insert', Core_Active__c=true, Core_Description__c='testing, testing');
-        insert triggerEntry1;
-
         Core_IntegrationTestUtility.setupAcctContactEntitlementTestData(false);
         
-        A_E_Error_Mapping__c errEntry = new A_E_Error_Mapping__c(
-        A_E_Error_Code_Txt__c='Invalid Individual/Account Engagement Code.');
-        insert errEntry;
-        
-   
     }
     
     // Helper methods to make it easy to create our messages
@@ -60,12 +41,12 @@ private class Core_IntInboundMsgERPM_BlackBox_Test{
     // 11.1 Success message, with Contact match on ERPM Person ID.
     static testMethod void testERPMBlackboxMessage_11_1_SuccessPersonId() {
         
-        //System.debug('***** Test 11.1');
+        System.debug('***** Test 11.1');
         
         Contact testContact = [select Core_ERPM_Integration_Status__c, Core_ERPM_Integration_Message__c
                                from Contact where Core_ERPM_Person_Id__c = '3000000' limit 1];
         
-        System.assertEquals('Test','Test');
+        System.assertEquals('In-Progress', testContact.Core_ERPM_Integration_Status__c);
         System.assertEquals('Testing', testContact.Core_ERPM_Integration_Message__c);
         
         String msg = TEST_ERPM_BLACKBOX_SUCCESS_JSON;
@@ -81,23 +62,20 @@ private class Core_IntInboundMsgERPM_BlackBox_Test{
         
         testContact = [select Core_ERPM_Integration_Status__c, Core_ERPM_Integration_Message__c
                        from Contact where Core_ERPM_Person_Id__c = '3000000' limit 1];
-     //----DRACO-start---//
-      A_E_Integration_Status_Detail__c stsDetailEntry = new A_E_Integration_Status_Detail__c(A_E_Contact_Id__c=testContact.id);
-        insert stsDetailEntry;
-    //----DRACO-End---//
-       // System.assertEquals('Successful', testContact.Core_ERPM_Integration_Status__c);
+        
+        System.assertEquals('Successful', testContact.Core_ERPM_Integration_Status__c);
         System.assertNotEquals(null, testContact.Core_ERPM_Integration_Message__c);
     }
     
     // 11.2 Success message, with Contact match on Email.
     static testMethod void testERPMBlackboxMessage_11_2_SuccessEmail() {
         
-        //System.debug('***** Test 11.2');
+        System.debug('***** Test 11.2');
         
         Contact testContact = [select Core_ERPM_Integration_Status__c, Core_ERPM_Integration_Message__c
                                from Contact where Email = 'testcontact0@acct0.com' limit 1];
         
-        System.assertEquals('Test','Test');
+        System.assertEquals('In-Progress', testContact.Core_ERPM_Integration_Status__c);
         System.assertEquals('Testing', testContact.Core_ERPM_Integration_Message__c);
         
         String msg = TEST_ERPM_BLACKBOX_SUCCESS_JSON;
@@ -114,18 +92,18 @@ private class Core_IntInboundMsgERPM_BlackBox_Test{
         testContact = [select Core_ERPM_Integration_Status__c, Core_ERPM_Integration_Message__c
                        from Contact where Email = 'testcontact0@acct0.com' limit 1];
         
-     //   System.assertEquals('Successful', testContact.Core_ERPM_Integration_Status__c);
+        System.assertEquals('Successful', testContact.Core_ERPM_Integration_Status__c);
         System.assertNotEquals(null, testContact.Core_ERPM_Integration_Message__c);
     }
     
      static testMethod void testERPMBlackboxMessage_11_2_CamelCaseEmailCheck() {
         
-        //System.debug('***** CamelCaseEmailCheck');
+        System.debug('***** CamelCaseEmailCheck');
         
         Contact testContact = [select Core_ERPM_Integration_Status__c, Core_ERPM_Integration_Message__c
                                from Contact where Email = 'testcontact0@acct0.com' limit 1];
         
-        System.assertEquals('Test','Test');
+        System.assertEquals('In-Progress', testContact.Core_ERPM_Integration_Status__c);
         System.assertEquals('Testing', testContact.Core_ERPM_Integration_Message__c);
         
         String msg = TEST_ERPM_BLACKBOX_SUCCESS_JSON;
@@ -142,18 +120,18 @@ private class Core_IntInboundMsgERPM_BlackBox_Test{
         testContact = [select Core_ERPM_Integration_Status__c, Core_ERPM_Integration_Message__c
                        from Contact where Email = 'testcontact0@acct0.com' limit 1];
         
-       // System.assertEquals('Successful', testContact.Core_ERPM_Integration_Status__c);
+        System.assertEquals('Successful', testContact.Core_ERPM_Integration_Status__c);
         System.assertNotEquals(null, testContact.Core_ERPM_Integration_Message__c);
     }
      static testMethod void testERPMBlackboxMessage_11_2_CamelCaseEmailCheckWithSpecialChars() {
         
-        //System.debug('***** CamelCaseEmailCheck');
+        System.debug('***** CamelCaseEmailCheck');
         
         Contact testContact = [select Core_ERPM_Integration_Status__c, Core_ERPM_Integration_Message__c
                                from Contact where Email = 'blackbox_integ_user@mailnator.com' limit 1];
          testContact.Core_ERPM_Integration_Status__c='In-Progress';
         
-        System.assertEquals('Test','Test');
+        System.assertEquals('In-Progress', testContact.Core_ERPM_Integration_Status__c);
         System.assertEquals('Testing', testContact.Core_ERPM_Integration_Message__c);
         
         String msg = TEST_ERPM_BLACKBOX_SUCCESS_JSON;
@@ -170,7 +148,7 @@ private class Core_IntInboundMsgERPM_BlackBox_Test{
         testContact = [select Core_ERPM_Integration_Status__c, Core_ERPM_Integration_Message__c
                        from Contact where Email = 'blackbox_integ_user@mailnator.com' limit 1];
         
-       // System.assertEquals('Successful', testContact.Core_ERPM_Integration_Status__c);
+        System.assertEquals('Successful', testContact.Core_ERPM_Integration_Status__c);
      
     }
     
@@ -179,12 +157,12 @@ private class Core_IntInboundMsgERPM_BlackBox_Test{
     // 11.3 Success message, but no Contact match.
     static testMethod void testERPMBlackboxMessage_11_3_SuccessNoMatch() {
         
-        //System.debug('***** Test 11.3');
+        System.debug('***** Test 11.3');
         
         Contact testContact = [select Core_ERPM_Integration_Status__c, Core_ERPM_Integration_Message__c
                                from Contact where Core_ERPM_Person_Id__c = '3000000' limit 1];
         
-        System.assertEquals('Test','Test');
+        System.assertEquals('In-Progress', testContact.Core_ERPM_Integration_Status__c);
         System.assertEquals('Testing', testContact.Core_ERPM_Integration_Message__c);
         
         String msg = TEST_ERPM_BLACKBOX_SUCCESS_JSON;
@@ -201,19 +179,19 @@ private class Core_IntInboundMsgERPM_BlackBox_Test{
         testContact = [select Core_ERPM_Integration_Status__c, Core_ERPM_Integration_Message__c
                        from Contact where Core_ERPM_Person_Id__c = '3000000' limit 1];
         
-        System.assertEquals('Test','Test');
+        System.assertEquals('In-Progress', testContact.Core_ERPM_Integration_Status__c);
         System.assertEquals('Testing', testContact.Core_ERPM_Integration_Message__c);
     }
     
     // 12.1 Failure message, with Contact match on ERPM Person ID.
     static testMethod void testERPMBlackboxMessage_12_1_FailurePersonId() {
         
-        //System.debug('***** Test 12.1');
+        System.debug('***** Test 12.1');
         
         Contact testContact = [select Core_ERPM_Integration_Status__c, Core_ERPM_Integration_Message__c
                                from Contact where Core_ERPM_Person_Id__c = '3000000' limit 1];
         
-        System.assertEquals('Test','Test');
+        System.assertEquals('In-Progress', testContact.Core_ERPM_Integration_Status__c);
         System.assertEquals('Testing', testContact.Core_ERPM_Integration_Message__c);
         
         String msg = TEST_ERPM_BLACKBOX_FAILURE_JSON;
@@ -232,7 +210,7 @@ private class Core_IntInboundMsgERPM_BlackBox_Test{
         testContact = [select Core_ERPM_Integration_Status__c, Core_ERPM_Integration_Message__c
                        from Contact where Core_ERPM_Person_Id__c = '3000000' limit 1];
         
-      //  System.assertEquals('Failed', testContact.Core_ERPM_Integration_Status__c);
+        System.assertEquals('Failed', testContact.Core_ERPM_Integration_Status__c);
         System.assertNotEquals(null, testContact.Core_ERPM_Integration_Message__c);
         //System.assertEquals('Error Code: ERRCODE, Error Text: ERRTEXT, Error Details: ERRDETAILS',
         //    testContact.Core_ERPM_Integration_Message__c);
@@ -241,12 +219,12 @@ private class Core_IntInboundMsgERPM_BlackBox_Test{
     // 12.2 Failure message, but no Contact match on ERPM Person ID.
     static testMethod void testERPMBlackboxMessage_12_2_FailureNoMatch() {
         
-        //System.debug('***** Test 12.2');
+        System.debug('***** Test 12.2');
         
         Contact testContact = [select Core_ERPM_Integration_Status__c, Core_ERPM_Integration_Message__c
                                from Contact where Core_ERPM_Person_Id__c = '3000000' limit 1];
         
-        System.assertEquals('Test','Test');
+        System.assertEquals('In-Progress', testContact.Core_ERPM_Integration_Status__c);
         System.assertEquals('Testing', testContact.Core_ERPM_Integration_Message__c);
         
         String msg = TEST_ERPM_BLACKBOX_FAILURE_JSON;
@@ -265,19 +243,19 @@ private class Core_IntInboundMsgERPM_BlackBox_Test{
         testContact = [select Core_ERPM_Integration_Status__c, Core_ERPM_Integration_Message__c
                        from Contact where Core_ERPM_Person_Id__c = '3000000' limit 1];
         
-        System.assertEquals('Test','Test');
+        System.assertEquals('In-Progress', testContact.Core_ERPM_Integration_Status__c);
         System.assertEquals('Testing', testContact.Core_ERPM_Integration_Message__c);
     }
     
     // 13.1 Bogus message. Should generate an exception.
     static testMethod void testERPMBlackboxMessage_13_1_BogusMessage() {
         
-        //System.debug('***** Test 13.1');
+        System.debug('***** Test 13.1');
         
         // Try to insert a message that isn't a proper Blackbox response message
         String msg = '{"""Staaaaatus": "Failure", "ErrorrrCode": "OOPS", "ErrrrrorText": "We screwed up!"}';
         
-        //System.debug('##### msg = ' + msg);
+        System.debug('##### msg = ' + msg);
         
         Test.startTest();
         insert newERPMBlackboxMessage(msg);
@@ -287,17 +265,16 @@ private class Core_IntInboundMsgERPM_BlackBox_Test{
             [select Core_Processing_Status__c from Core_Integration_Inbound_Message__c];
         
         System.assertEquals(1, msgs.size());
-       // System.assertEquals('Failed', msgs[0].Core_Processing_Status__c);
+        System.assertEquals('Failed', msgs[0].Core_Processing_Status__c);
     }
     
     //14.1 Concatenate all Payload Fields to one String 
     static testMethod void testnewERPMPerson_14_1_MessageSplit() {           
-        //System.debug('***** Test 14.1');
+        System.debug('***** Test 14.1');
         Test.startTest();
         Core_Integration_Inbound_Message__c ib = newERPMPersonMessageSplit();
-        ib.Core_Message_Type__c='ERPM_MSG_BLACKBOX';
         insert ib;
-        //System.debug('String Split'+ib);            
+        System.debug('String Split'+ib);            
         Test.stopTest();  
         
         System.assertnotEquals(null,ib.id);
@@ -305,7 +282,7 @@ private class Core_IntInboundMsgERPM_BlackBox_Test{
         Core_Integration_Inbound_Message__c inboundMsg = [
             select Core_Processing_Status__c from Core_Integration_Inbound_Message__c where id = :ib.id limit 1];
         
-        //System.assertEquals('Successful',inboundMsg.Core_Processing_Status__c);  //Commented by Draco team  as this part was failing
+        System.assertEquals('Successful',inboundMsg.Core_Processing_Status__c);
     }
   
     private static final String TEST_ERPM_PERSON_XML1 = '<?xml version="1.0" encoding="UTF-8"?>' +

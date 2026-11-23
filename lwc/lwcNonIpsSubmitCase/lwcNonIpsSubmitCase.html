@@ -1,0 +1,17 @@
+<template>
+  <lightning-card variant="Narrow" title="Contact Customer Service test" >
+      <lightning-layout>
+          <lightning-layout-item padding="around-medium" size = "12">
+              <lightning-combobox name="TypeLicenses" label="Type of License Issue:" value={value} placeholder="" options={pickListValues} onchange={handleChange} required variant = "label-inline"></lightning-combobox> 
+              <!-- <lightning-combobox name="TypeLicense" label="Type of License Issue:" value="" placeholder="" options={pickListValues} onchange={handleChanges} required></lightning-combobox>  -->
+              Additional information to help us to locate your product:
+              <lightning-input type="text" name="po" label="PO:" onchange={onChangepo} variant = "label-inline"></lightning-input>
+              <lightning-input type="text" name="serialnumber" label="License Activation Code/Serial Number:" onchange={onChangeserialnumber} variant = "label-inline"></lightning-input>
+              <lightning-input type="text" name="hostid" label="NIC/Host Id/Guard Id:" onchange={onChangehostid} variant = "label-inline"></lightning-input>
+              <lightning-input type="text" name="productname" label="Product Name:" onchange={onChangeproductname} variant = "label-inline"></lightning-input>
+              <lightning-textarea name="description" required value=""  label="Description" maxlength="140" message-when-too-long="A maximum of 140 characters are allowed in a description" message-when-value-missing="An empty description can be submitted" variant = "label-inline"></lightning-textarea>
+              <lightning-button type="submit" name="submit" label="Submit Issue" onclick={handleOnSubmitBtnClick} icon-position = "right"> </lightning-button>
+          </lightning-layout-item>
+      </lightning-layout>
+  </lightning-card>
+</template>

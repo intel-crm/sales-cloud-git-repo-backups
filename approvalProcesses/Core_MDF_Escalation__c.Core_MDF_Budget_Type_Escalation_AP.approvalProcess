@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
-    <active>false</active>
+    <active>true</active>
     <allowRecall>true</allowRecall>
     <allowedSubmitters>
         <type>creator</type>
@@ -37,7 +37,7 @@
             <formula>ISPICKVAL(Core_MDF_Channel_Program_id__r.Core_MDF_Technical_Program_Name__c, &apos;Client CoMarketing Fund&apos;)</formula>
         </entryCriteria>
         <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
-        <label>Client Budget Escalation approve/reject by Client FM Queue L1</label>
+        <label>CCF Budget Escalation approve/reject by CCF FM Queue L1</label>
         <name>CCF_Budget_Escalation_approve_reject_by_CCF_FM_Queue_L1</name>
     </approvalStep>
     <approvalStep>
@@ -63,7 +63,7 @@
             <formula>ISPICKVAL(Core_MDF_Channel_Program_id__r.Core_MDF_Technical_Program_Name__c, &apos;Client CoMarketing Fund&apos;)</formula>
         </entryCriteria>
         <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
-        <label>Client Budget Escalation approve/reject by Client FM Queue L2</label>
+        <label>CCF Budget Escalation approve/reject by CCF FM Queue L2</label>
         <name>CCF_Budget_Escalation_approve_reject_by_CCF_FM_Queue_L2</name>
         <rejectBehavior>
             <type>RejectRequest</type>
@@ -88,7 +88,7 @@
             <formula>ISPICKVAL(Core_MDF_Channel_Program_id__r.Core_MDF_Technical_Program_Name__c, &apos;Data Center CoMarketing Fund&apos;)</formula>
         </entryCriteria>
         <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
-        <label>Datacenter Budget Escalation approve/reject by Datacenter FM Queue L1</label>
+        <label>DCF Budget Escalation approve/reject by DCF FM Queue L1</label>
         <name>DCF_Budget_Escalation_approve_reject_by_DCF_FM_Queue_L1</name>
         <rejectBehavior>
             <type>RejectRequest</type>
@@ -117,7 +117,7 @@
             <formula>ISPICKVAL(Core_MDF_Channel_Program_id__r.Core_MDF_Technical_Program_Name__c, &apos;Data Center CoMarketing Fund&apos;)</formula>
         </entryCriteria>
         <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
-        <label>Datacenter Budget Escalation approve/reject by Datacenter FM Queue L2</label>
+        <label>DCF Budget Escalation approve/reject by DCF FM Queue L2</label>
         <name>DCF_Budget_Escalation_approve_reject_by_DCF_FM_Queue_L2</name>
         <rejectBehavior>
             <type>RejectRequest</type>
@@ -501,7 +501,7 @@
         </rejectBehavior>
     </approvalStep>
     <description>Escalation Approval flow for Budget Record Type</description>
-    <emailTemplate>Testt/Core_MDF_Escalation_Email_Template_for_Approvers_Queue</emailTemplate>
+    <emailTemplate>unfiled$public/Core_MDF_Escalation_Email_Template_for_Approvers_Queue</emailTemplate>
     <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
     <entryCriteria>
         <criteriaItems>
@@ -517,12 +517,20 @@
     </entryCriteria>
     <finalApprovalActions>
         <action>
+            <name>Core_MDF_Notify_the_Escalation_Submitter_when_Approved</name>
+            <type>Alert</type>
+        </action>
+        <action>
             <name>Core_MDF_Status_to_Approved</name>
             <type>FieldUpdate</type>
         </action>
     </finalApprovalActions>
     <finalApprovalRecordLock>false</finalApprovalRecordLock>
     <finalRejectionActions>
+        <action>
+            <name>Core_MDF_Notify_the_Escalation_Submitter_when_Denied</name>
+            <type>Alert</type>
+        </action>
         <action>
             <name>Core_MDF_Status_to_Denied</name>
             <type>FieldUpdate</type>

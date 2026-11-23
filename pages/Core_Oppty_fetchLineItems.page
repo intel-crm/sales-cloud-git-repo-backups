@@ -1,0 +1,7 @@
+<apex:page standardController="opportunity" recordSetVar="opportunitylineItems" extensions="Core_OpptyController">
+    <apex:pageBlock >
+        <apex:pageBlockTable value="{!LineItems}" var="Item">
+            <apex:column value="{!Item.product2.name}"/>
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+</apex:page>

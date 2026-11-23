@@ -1,27 +1,36 @@
 <!--
-	@author            : Vrushabh Uprikar
-	@last modified on  : 01-29-2025
-	@last modified by  : Vrushabh Uprikar
+  @author            : Vrushabh Uprikar
+  @last modified on  : 01-07-2025
+  @last modified by  : Vrushabh Uprikar
 -->
 <aura:component
-	implements="flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickActionWithoutHeader,forceCommunity:availableForAllPageTypes"
-	access="global" controller="Pricing_QuoteCloneController">
-	<aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+  implements="flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickActionWithoutHeader,forceCommunity:availableForAllPageTypes"
+  access="global"
+  controller="Pricing_QuoteCloneController"
+>
+  <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
 
-	<aura:attribute name="recordId" type="String" />
-	<aura:attribute name="errorMsg" type="String" />
-	<aura:attribute name="isSVDActive" type="Boolean" default="false" />
-	<aura:attribute name="isLoad" type="Boolean" default="false" />
+  <aura:attribute name="recordId" type="String" />
+  <aura:attribute name="errorMsg" type="String" />
+  <aura:attribute name="isSVDActive" type="Boolean" default="false" />
+  <aura:attribute name="isLoad" type="Boolean" default="false" />
 
-	<aura:if isTrue="{!v.isLoad}">
-		<aura:if isTrue="{!v.isSVDActive}">
-			<div style="color: red; padding-left: 20px">{!v.errorMsg}</div>
-			<aura:set attribute="else">
-				<div class="slds-align_absolute-center">
-					<lightning:spinner alternative-text="Loading..." variant="brand" class="loadSpinner" />
-					<c:pricing_Quote_OEMRollback_Component onCloseRollback="{!c.closeWindow}" recordId="{!v.recordId}" />
-				</div>
-			</aura:set>
-		</aura:if>
+  <aura:if isTrue="{!v.isLoad}">
+	<aura:if isTrue="{!v.isSVDActive}">
+	  <div style="color: red; padding-left: 20px">{!v.errorMsg}</div>
+	  <aura:set attribute="else">
+		<div class="slds-align_absolute-center">
+		  <lightning:spinner
+			alternative-text="Loading..."
+			variant="brand"
+			class="loadSpinner"
+		  />
+		  <c:pricing_Quote_OEMRollback_Component
+			onCloseRollback="{!c.closeWindow}"
+			recordId="{!v.recordId}"
+		  />
+		</div>
+	  </aura:set>
 	</aura:if>
+  </aura:if>
 </aura:component>

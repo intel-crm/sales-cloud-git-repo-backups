@@ -1,45 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fieldSets>
-        <label><!-- Core_MDF_CCF_Campaign_Fieldset --></label>
-        <name>Core_MDF_CCF_Campaign_Fieldset</name>
-    </fieldSets>
-    <fieldSets>
-        <label><!-- CoGTM Campaign Fields To Be Synced --></label>
-        <name>Core_MDF_CoGTM_CampaignFieldsToBeSynced</name>
-    </fieldSets>
-    <fieldSets>
-        <label><!-- Core_MDF_Co_GTM_Campaign_FieldSet --></label>
-        <name>Core_MDF_Co_GTM_Campaign_FieldSet</name>
-    </fieldSets>
-    <fieldSets>
-        <label><!-- Core_MDF_DCF_Campaign_Fieldset --></label>
-        <name>Core_MDF_DCF_Campaign_Fieldset</name>
-    </fieldSets>
-    <fieldSets>
-        <label><!-- Core_MDF_EEF_Campaign_Fieldset --></label>
-        <name>Core_MDF_EEF_Campaign_Fieldset</name>
-    </fieldSets>
-    <fieldSets>
-        <label><!-- CoGTM Campaign Status Change Fields --></label>
-        <name>Core_MDF_GTM_CampaignStatusChangeFields</name>
-    </fieldSets>
-    <fieldSets>
-        <label><!-- IPA Campaign Fields To Be Synced --></label>
-        <name>Core_MDF_IPA_CampaignFieldsToBeSynced</name>
-    </fieldSets>
-    <fieldSets>
-        <label><!-- IPA Campaign Status Change Fields --></label>
-        <name>Core_MDF_IPA_CampaignStatusChangeFields</name>
-    </fieldSets>
-    <fieldSets>
-        <label><!-- Core_MDF_IPA_Campaign_FieldSet --></label>
-        <name>Core_MDF_IPA_Campaign_FieldSet</name>
-    </fieldSets>
-    <fieldSets>
-        <label><!-- RMF Campaign Fieldset --></label>
-        <name>Core_MDF_RMF_Campaign_Fieldset</name>
-    </fieldSets>
     <fields>
         <help><!-- Activity Types that are part of the campaign.  When tasks are automatically generated, the targeted accounts will get a task for each Activity Type. --></help>
         <label><!-- Activity Types --></label>
@@ -218,30 +178,9 @@
         <name>Core_ICC_Campaign_ID__c</name>
     </fields>
     <fields>
-        <label>ATF 標幟</label>
-        <name>Core_MDF_ATF_Flag_Nm__c</name>
-        <picklistValues>
-            <masterLabel>ATF Date</masterLabel>
-            <translation><!-- ATF Date --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
-        <label><!-- Account Based Indicator --></label>
-        <name>Core_MDF_Account_Based_Ind__c</name>
-    </fields>
-    <fields>
         <label>帳戶</label>
         <name>Core_MDF_Account__c</name>
         <relationshipLabel><!-- Campaigns --></relationshipLabel>
-    </fields>
-    <fields>
-        <help><!-- If you check this box, an approval workflow (including any threshold logic) will be applied to OEM CMP activities in this Campaign. The MDF approval workflow is always applied to MDF/MDF+ activities. --></help>
-        <label><!-- Activity Approval Required --></label>
-        <name>Core_MDF_Activity_Approval_Required_Ind__c</name>
-    </fields>
-    <fields>
-        <label><!-- Activity Budget Amount --></label>
-        <name>Core_MDF_Activity_Budget_Amount_amt__c</name>
     </fields>
     <fields>
         <help><!-- category -  type desc --></help>
@@ -253,214 +192,36 @@
         <name>Core_MDF_Activity_Category__c</name>
     </fields>
     <fields>
-        <label><!-- Activity Sub Type --></label>
-        <name>Core_MDF_Activity_Sub_Type_nm__c</name>
-    </fields>
-    <fields>
         <label>活動類型</label>
         <name>Core_MDF_Activity_Type__c</name>
-    </fields>
-    <fields>
-        <label><!-- Approval Alert --></label>
-        <name>Core_MDF_Approval_Campaign_Txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Approval Stage --></label>
-        <name>Core_MDF_Approval_Stage_nm__c</name>
-        <picklistValues>
-            <masterLabel>Business Approver</masterLabel>
-            <translation><!-- Business Approver --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Customer Acceptance</masterLabel>
-            <translation><!-- Customer Acceptance --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>L1 Approval</masterLabel>
-            <translation><!-- L1 Approval --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>L2 Approval</masterLabel>
-            <translation><!-- L2 Approval --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>L2 Regional Marketing</masterLabel>
-            <translation><!-- L2 Regional Marketing --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>L2 Regional Sales</masterLabel>
-            <translation><!-- L2 Regional Sales --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Legal Reviewer</masterLabel>
-            <translation><!-- Legal Reviewer --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Price Reviewer</masterLabel>
-            <translation><!-- Price Reviewer --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Program Office Reviewer</masterLabel>
-            <translation><!-- Program Office Reviewer --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
-        <label><!-- Approval Step Counter --></label>
-        <name>Core_MDF_Approval_Step_Counter_nbr__c</name>
-    </fields>
-    <fields>
-        <label><!-- Approver 10 --></label>
-        <name>Core_MDF_Approver_10_id__c</name>
-        <relationshipLabel><!-- Campaigns (Approver 10) --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Approver 1 --></label>
-        <name>Core_MDF_Approver_1_id__c</name>
-        <relationshipLabel><!-- Campaigns (Approver 1) --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Approver 2 --></label>
-        <name>Core_MDF_Approver_2_id__c</name>
-        <relationshipLabel><!-- Campaigns (Approver 2) --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Approver 3 --></label>
-        <name>Core_MDF_Approver_3_id__c</name>
-        <relationshipLabel><!-- Campaigns (Approver 3) --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Approver 4 --></label>
-        <name>Core_MDF_Approver_4_id__c</name>
-        <relationshipLabel><!-- Campaigns (Approver 4) --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Approver 5 --></label>
-        <name>Core_MDF_Approver_5_id__c</name>
-        <relationshipLabel><!-- Campaigns (Approver 5) --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Approver 6 --></label>
-        <name>Core_MDF_Approver_6_id__c</name>
-        <relationshipLabel><!-- Campaigns (Approver 6) --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Approver 7 --></label>
-        <name>Core_MDF_Approver_7_id__c</name>
-        <relationshipLabel><!-- Campaigns (Approver 7) --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Approver 8 --></label>
-        <name>Core_MDF_Approver_8_id__c</name>
-        <relationshipLabel><!-- Campaigns (Approver 8) --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Approver 9 --></label>
-        <name>Core_MDF_Approver_9_id__c</name>
-        <relationshipLabel><!-- Campaigns (Approver 9) --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Approver Date --></label>
-        <name>Core_MDF_Approver_Date__c</name>
     </fields>
     <fields>
         <label>目標族群</label>
         <name>Core_MDF_Audience__c</name>
     </fields>
     <fields>
-        <label><!-- Available Budget Cap Amount --></label>
-        <name>Core_MDF_Available_BudgetCap_amt__c</name>
-    </fields>
-    <fields>
         <label>品牌</label>
         <name>Core_MDF_Brand__c</name>
     </fields>
     <fields>
-        <label>預算金額</label>
+        <label><!-- Budget Amount --></label>
         <name>Core_MDF_Budget_Amount_amt__c</name>
     </fields>
     <fields>
-        <label><!-- Budget Cap --></label>
-        <name>Core_MDF_Budget_Cap__c</name>
-        <relationshipLabel><!-- Campaigns --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Budget Type(Reporting Only) --></label>
-        <name>Core_MDF_Budget_Type_Reporting_Only_nm__c</name>
-    </fields>
-    <fields>
-        <label>預算類型</label>
+        <label><!-- Budget Type --></label>
         <name>Core_MDF_Budget_Type_txt__c</name>
-    </fields>
-    <fields>
-        <label>預算</label>
-        <name>Core_MDF_Budget__c</name>
-        <relationshipLabel><!-- Campaigns --></relationshipLabel>
-    </fields>
-    <fields>
-        <help>來自基於 Intel 實例的預期收入（美元）</help>
-        <label>基於 Intel 的 CSP 收入</label>
-        <name>Core_MDF_CSP_Intel_Based_Revenue_Amt__c</name>
-    </fields>
-    <fields>
-        <help>如果選擇此選項，則應用基於成果的指南。如果未選中，則應用標準銷售與行銷指南。此企劃案下的活動必須相應設置。</help>
-        <label>使此企劃案基於結果</label>
-        <name>Core_MDF_CampOutcomeOpt_In_Ind__c</name>
-    </fields>
-    <fields>
-        <label><!-- Campaign Budgets --></label>
-        <name>Core_MDF_Campaign_Budgets_Id__c</name>
-    </fields>
-    <fields>
-        <label><!-- Cancel Alert --></label>
-        <name>Core_MDF_Campaign_Cancel_Txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Campaign IPA Path Status --></label>
-        <name>Core_MDF_Campaign_IPA_Path_Status__c</name>
         <picklistValues>
-            <masterLabel>Cancelled</masterLabel>
-            <translation><!-- Cancelled --></translation>
+            <masterLabel>RSA MD</masterLabel>
+            <translation><!-- RSA MD --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Completed</masterLabel>
-            <translation><!-- Completed --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Draft</masterLabel>
-            <translation><!-- Draft --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>In Progress</masterLabel>
-            <translation><!-- In Progress --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Pending Approval</masterLabel>
-            <translation><!-- Pending Approval --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Pending Review</masterLabel>
-            <translation><!-- Pending Review --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Planned</masterLabel>
-            <translation><!-- Planned --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Revision Required</masterLabel>
-            <translation><!-- Revision Required --></translation>
+            <masterLabel>Retail MDF</masterLabel>
+            <translation><!-- Retail MDF --></translation>
         </picklistValues>
     </fields>
     <fields>
-        <label>行銷活動參考編號</label>
+        <label>企劃案參考編號</label>
         <name>Core_MDF_Campaign_Reference_Number__c</name>
-    </fields>
-    <fields>
-        <label><!-- Campaign Scoring --></label>
-        <name>Core_MDF_Campaign_Scoring_txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Campaign Source --></label>
-        <name>Core_MDF_Campaign_Source_nm__c</name>
     </fields>
     <fields>
         <label>企劃案狀態</label>
@@ -480,54 +241,8 @@
         <name>Core_MDF_Claimed_Amount__c</name>
     </fields>
     <fields>
-        <label><!-- Claims Created --></label>
-        <name>Core_MDF_Claims_Created_Ind__c</name>
-    </fields>
-    <fields>
-        <label><!-- Comments (IPA Approver Only) --></label>
-        <name>Core_MDF_Comments_Appvr_Only_txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Comments (Internal Only) --></label>
-        <name>Core_MDF_Comments_Internal_Only__c</name>
-    </fields>
-    <fields>
-        <label>意見（外部）</label>
-        <name>Core_MDF_Comments__c</name>
-    </fields>
-    <fields>
-        <label><!-- Completed Approval Level Name --></label>
-        <name>Core_MDF_Completed_Approval_Level_Nm__c</name>
-    </fields>
-    <fields>
-        <label>聯絡人姓名與電子郵件</label>
-        <name>Core_MDF_Contact_Name_And_Email_txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- ContractLineItem Update Indicator --></label>
-        <name>Core_MDF_ContractLineItem_Update_Ind__c</name>
-    </fields>
-    <fields>
-        <label>合約 ID</label>
+        <label><!-- Contract ID --></label>
         <name>Core_MDF_Contract_ID_txt__c</name>
-    </fields>
-    <fields>
-        <label>自訂報銷率</label>
-        <name>Core_MDF_Custom_Reimbursement_Rate_pct__c</name>
-    </fields>
-    <fields>
-        <help>使用可用的行銷名稱和代號。</help>
-        <label>客戶產品</label>
-        <name>Core_MDF_Customer_Product_Codename_txt__c</name>
-    </fields>
-    <fields>
-        <help>贏得新客戶</help>
-        <label>部署數量</label>
-        <name>Core_MDF_Deployment_Quantity_nbr__c</name>
-    </fields>
-    <fields>
-        <label>生態系統夥伴</label>
-        <name>Core_MDF_Ecosystem_Partner_Nm__c</name>
     </fields>
     <fields>
         <label>成員可看到的日期</label>
@@ -547,52 +262,8 @@
         <name>Core_MDF_First_Year_Claims__c</name>
     </fields>
     <fields>
-        <help>正在行銷的主要重點區域</help>
-        <label>重點領域</label>
-        <name>Core_MDF_Focus_Area_nm__c</name>
-    </fields>
-    <fields>
         <label>明星產品</label>
         <name>Core_MDF_Hero_Product__c</name>
-    </fields>
-    <fields>
-        <label>主辦區域</label>
-        <name>Core_MDF_Host_Region_cd__c</name>
-    </fields>
-    <fields>
-        <label><!-- IPA Approval Status --></label>
-        <name>Core_MDF_IPA_Approval_Status_nm__c</name>
-        <picklistValues>
-            <masterLabel>Pending Approval</masterLabel>
-            <translation><!-- Pending Approval --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
-        <help><!-- Select this if this is an IPA Account that has Co-Engineering --></help>
-        <label><!-- IPA Co-Engineering Campaign? --></label>
-        <name>Core_MDF_IPA_Co_Engineering_Campaign_ind__c</name>
-    </fields>
-    <fields>
-        <label><!-- Program Office Check --></label>
-        <name>Core_MDF_IPA_NonSPIF_Apprval_Ind__c</name>
-    </fields>
-    <fields>
-        <help>正在銷售的主要優先順序</help>
-        <label>優先順序</label>
-        <name>Core_MDF_IPA_Priority_nm__c</name>
-    </fields>
-    <fields>
-        <label><!-- IPASPIFApprovalReq --></label>
-        <name>Core_MDF_IPA_SPIF_Apprval_Ind__c</name>
-    </fields>
-    <fields>
-        <label>產業</label>
-        <name>Core_MDF_Industry_Nm__c</name>
-    </fields>
-    <fields>
-        <help>刻意強調 Intel 確定與公司或業務單位的目標一致。  一項方案可能與一個重點領域或優先事項相關，而另一項專案可能與多個重點領域或優先事項相關。只有在與 Intel 帳戶團隊協作或由已發布指南指導的情況下，才可以選取倡議。</help>
-        <label>倡議</label>
-        <name>Core_MDF_Initiative_nm__c</name>
     </fields>
     <fields>
         <label>整合式企劃案詳細資料</label>
@@ -612,56 +283,8 @@
         </picklistValues>
     </fields>
     <fields>
-        <label>Intel 負責人</label>
-        <name>Core_MDF_Intel_Owner_id__c</name>
-        <relationshipLabel><!-- Campaigns (Intel Owner) --></relationshipLabel>
-    </fields>
-    <fields>
-        <label>Intel 驗證員</label>
-        <name>Core_MDF_Intel_Verifier_id__c</name>
-        <relationshipLabel><!-- Campaigns (Intel Verifier) --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Is Opal --></label>
-        <name>Core_MDF_Is_Opal__c</name>
-        <picklistValues>
-            <masterLabel>No</masterLabel>
-            <translation><!-- No --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Yes CMP Only</masterLabel>
-            <translation><!-- Yes CMP Only --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Yes MDF or both CMP &amp; MDF</masterLabel>
-            <translation><!-- Yes MDF or both CMP &amp; MDF --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
-        <help>如何衡量行銷活動效果。標準 KPI 包括潛在客戶（新聯絡人）和部署（贏得新客戶）。</help>
-        <label>行銷關鍵效能指標</label>
-        <name>Core_MDF_Key_Marketing_Indicator_nm__c</name>
-    </fields>
-    <fields>
         <label>關鍵績效指標</label>
         <name>Core_MDF_Key_Performance_Indicator__c</name>
-    </fields>
-    <fields>
-        <label><!-- Last Rejected Level Name --></label>
-        <name>Core_MDF_Last_Rejected_Level_Nm__c</name>
-    </fields>
-    <fields>
-        <help>新的聯絡人</help>
-        <label>潛在客戶數量</label>
-        <name>Core_MDF_Lead_Quantity_nbr__c</name>
-    </fields>
-    <fields>
-        <label><!-- MMID # --></label>
-        <name>Core_MDF_MMID__c</name>
-    </fields>
-    <fields>
-        <label>市場區隔</label>
-        <name>Core_MDF_Market_Segment_nm__c</name>
     </fields>
     <fields>
         <label>國家/地區</label>
@@ -670,15 +293,6 @@
     <fields>
         <label>行銷目標/策略</label>
         <name>Core_MDF_Marketing_Objective_Strategy__c</name>
-    </fields>
-    <fields>
-        <label>測量方法</label>
-        <name>Core_MDF_Measurement_Approach_nm__c</name>
-    </fields>
-    <fields>
-        <label>會員接受者</label>
-        <name>Core_MDF_Member_Acceptor_id__c</name>
-        <relationshipLabel><!-- Campaigns (Member Acceptor) --></relationshipLabel>
     </fields>
     <fields>
         <label>成員解決方案</label>
@@ -693,148 +307,12 @@
         <name>Core_MDF_Metrics__c</name>
     </fields>
     <fields>
-        <help><!-- Indicate campaign have Multi Geo --></help>
-        <label><!-- IsMultiGeoApprovalReq --></label>
-        <name>Core_MDF_Multi_Geo_Approval_Ind__c</name>
-    </fields>
-    <fields>
-        <label>我的優惠 #</label>
-        <name>Core_MDF_MyDeals_txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- No of Reapprovals --></label>
-        <name>Core_MDF_No_of_Reapprovals_nbr__c</name>
-    </fields>
-    <fields>
-        <label>OEM 平台結束日期</label>
-        <name>Core_MDF_OEM_Platform_End_Date_Dt__c</name>
-    </fields>
-    <fields>
-        <label>OEM 平台開始日期</label>
-        <name>Core_MDF_OEM_Platform_Start_Date_Dt__c</name>
-    </fields>
-    <fields>
-        <label><!-- OEM --></label>
-        <name>Core_MDF_OEM__c</name>
-        <picklistValues>
-            <masterLabel>Acer</masterLabel>
-            <translation><!-- Acer --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Asus</masterLabel>
-            <translation>華碩</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Cisco</masterLabel>
-            <translation>思科</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Dell</masterLabel>
-            <translation>戴爾電腦</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Fujitsu</masterLabel>
-            <translation><!-- Fujitsu --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>HP</masterLabel>
-            <translation><!-- HP --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>IBM</masterLabel>
-            <translation><!-- IBM --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Lenovo</masterLabel>
-            <translation><!-- Lenovo --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Microsoft</masterLabel>
-            <translation>微軟</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>N/A</masterLabel>
-            <translation>不適用</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Other</masterLabel>
-            <translation>其他</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Panasonic</masterLabel>
-            <translation><!-- Panasonic --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Samsung</masterLabel>
-            <translation>三星</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Toshiba</masterLabel>
-            <translation><!-- Toshiba --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
-        <label>預算類型</label>
+        <label><!-- Budget Type --></label>
         <name>Core_MDF_Opal_Budget_Type_Txt__c</name>
-    </fields>
-    <fields>
-        <label>其他生態系統夥伴</label>
-        <name>Core_MDF_Other_Ecosystem_Partner_txt__c</name>
-    </fields>
-    <fields>
-        <label>其他測量方法</label>
-        <name>Core_MDF_Other_Measurement_Approach_txt__c</name>
-    </fields>
-    <fields>
-        <label>其他結果標準</label>
-        <name>Core_MDF_Other_Outcome_Criteria_txt__c</name>
-    </fields>
-    <fields>
-        <help>如果在清單中找不到此企劃案的主要成功指標/KPI，您可以在此處輸入自定義指標。選擇可以計算的內容，例如展示次數、點擊次數、互動次數、下載次數等。</help>
-        <label>其他結果指標</label>
-        <name>Core_MDF_Other_Outcome_txt__c</name>
-    </fields>
-    <fields>
-        <label>其他數量</label>
-        <name>Core_MDF_Other_Quantity_nbr__c</name>
-    </fields>
-    <fields>
-        <label>其他原因名稱</label>
-        <name>Core_MDF_Other_Reason_Name_txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Outcome Detail Edited --></label>
-        <name>Core_MDF_Outcome_Detail_Edited_Ind__c</name>
-    </fields>
-    <fields>
-        <help>選擇一個結果。如果此企劃案是基於結果的，則此成果將用於評估企劃案的成功。付款不以企劃案效果為條件。</help>
-        <label>成果指標</label>
-        <name>Core_MDF_Outcomes_nm__c</name>
-    </fields>
-    <fields>
-        <label>PCT 註釋</label>
-        <name>Core_MDF_PCT_Notes_txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- PGM Internal Group Id --></label>
-        <name>Core_MDF_PGM_Internal_Group_Id_txt__c</name>
     </fields>
     <fields>
         <label><!-- Parent_Account_Id --></label>
         <name>Core_MDF_Parent_Account_Id__c</name>
-    </fields>
-    <fields>
-        <label>夥伴聯絡</label>
-        <name>Core_MDF_Partner_Contact_txt__c</name>
-    </fields>
-    <fields>
-        <help>啟動支援此行銷活動的夥伴。</help>
-        <label>夥伴映射</label>
-        <name>Core_MDF_Partner_Mapping_Txt__c</name>
-    </fields>
-    <fields>
-        <label>主要會員接受</label>
-        <name>Core_MDF_Primary_Member_Acceptance_Ind__c</name>
     </fields>
     <fields>
         <label>優先順序 2</label>
@@ -845,18 +323,6 @@
         <name>Core_MDF_Priority_3_nm__c</name>
     </fields>
     <fields>
-        <label><!-- Priority 2 Weightage --></label>
-        <name>Core_MDF_Priority_Percentage_2__c</name>
-    </fields>
-    <fields>
-        <label><!-- Priority 3 Weightage --></label>
-        <name>Core_MDF_Priority_Percentage_3__c</name>
-    </fields>
-    <fields>
-        <label><!-- Priority Weightage --></label>
-        <name>Core_MDF_Priority_Percentage__c</name>
-    </fields>
-    <fields>
         <label>優先順序</label>
         <name>Core_MDF_Priority__c</name>
     </fields>
@@ -865,64 +331,23 @@
         <name>Core_MDF_Product_Type__c</name>
     </fields>
     <fields>
-        <label><!-- Profit Center --></label>
-        <name>Core_MDF_Profit_Center__c</name>
-    </fields>
-    <fields>
         <label>計畫</label>
         <name>Core_MDF_Program__c</name>
-    </fields>
-    <fields>
-        <label><!-- Proposal Based Indicator --></label>
-        <name>Core_MDF_Proposal_Based_Ind__c</name>
-    </fields>
-    <fields>
-        <label>提案分數</label>
-        <name>Core_MDF_Proposal_Score_nbr__c</name>
     </fields>
     <fields>
         <label><!-- Core_MDF_RMF_Delta_Budget_Amt --></label>
         <name>Core_MDF_RMF_Delta_Budget_Amt__c</name>
     </fields>
     <fields>
-        <label>回溯日期的原因</label>
-        <name>Core_MDF_Reason_for_Back_Dating_Nm__c</name>
-    </fields>
-    <fields>
-        <label>地區</label>
+        <label><!-- Region --></label>
         <name>Core_MDF_Region_cd__c</name>
-    </fields>
-    <fields>
-        <label>報銷比例</label>
-        <name>Core_MDF_ReimbursementRate_pct__c</name>
-    </fields>
-    <fields>
-        <help>總投資（Intel + 夥伴）x 報銷率 = 最大 Intel 投資額。</help>
-        <label>最大英特爾投資</label>
-        <name>Core_MDF_Reimbursement_Amount_Amt__c</name>
-    </fields>
-    <fields>
-        <label>最大英特爾投資</label>
-        <name>Core_MDF_Reimbursement_Amt__c</name>
     </fields>
     <fields>
         <label>報銷比例</label>
         <name>Core_MDF_Reimbursement_Rate__c</name>
         <picklistValues>
-            <masterLabel>0%</masterLabel>
-            <translation><!-- 0% --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>100%</masterLabel>
             <translation><!-- 100% --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>25%</masterLabel>
-            <translation><!-- 25% --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>33%</masterLabel>
-            <translation><!-- 33% --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>50%</masterLabel>
@@ -988,11 +413,6 @@
         <name>Core_MDF_Spending_Cap_Amt__c</name>
     </fields>
     <fields>
-        <label><!-- Spending Targets --></label>
-        <name>Core_MDF_Spending_Targets_Id__c</name>
-        <relationshipLabel><!-- Campaigns --></relationshipLabel>
-    </fields>
-    <fields>
         <label>開始日期和結束日期</label>
         <name>Core_MDF_Start_Date_End_Date__c</name>
     </fields>
@@ -1001,7 +421,7 @@
         <name>Core_MDF_Story__c</name>
     </fields>
     <fields>
-        <label>策略行銷基金</label>
+        <label><!-- Strategic Marketing Fund --></label>
         <name>Core_MDF_Strategic_Marketing_Fund_Ind__c</name>
     </fields>
     <fields>
@@ -1009,12 +429,8 @@
         <name>Core_MDF_Sub_Region_cd__c</name>
     </fields>
     <fields>
-        <label>支援舊版計畫</label>
+        <label><!-- Supports legacy Program --></label>
         <name>Core_MDF_Supports_legacy_program__c</name>
-        <picklistValues>
-            <masterLabel>All MDF or both CMP &amp; MDF</masterLabel>
-            <translation><!-- All MDF or both CMP &amp; MDF --></translation>
-        </picklistValues>
         <picklistValues>
             <masterLabel>CMP only</masterLabel>
             <translation><!-- CMP only --></translation>
@@ -1022,14 +438,6 @@
         <picklistValues>
             <masterLabel>MDF or both CMP &amp; MDF</masterLabel>
             <translation><!-- MDF or both CMP &amp; MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>New CMP only</masterLabel>
-            <translation><!-- New CMP only --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>New MDF or both CMP &amp; MDF</masterLabel>
-            <translation><!-- New MDF or both CMP &amp; MDF --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Yes</masterLabel>
@@ -1041,26 +449,8 @@
         <name>Core_MDF_Technology__c</name>
     </fields>
     <fields>
-        <help><!-- Check this to completely reject a campaign --></help>
-        <label><!-- Terminal_Rejection --></label>
-        <name>Core_MDF_Terminal_Rejection_Ind__c</name>
-    </fields>
-    <fields>
-        <label>總投資（Intel + 夥伴）</label>
-        <name>Core_MDF_Total_Campaign_Cost_Amt__c</name>
-    </fields>
-    <fields>
         <label><!-- Account (Company) --></label>
         <name>Core_MDF_Ultimate_Account_txt__c</name>
-    </fields>
-    <fields>
-        <help>請選擇與此行銷活動所推廣的解決方案最一致的使用案例。如果列舉的使用案例均不適用，請選取「一般用途」。</help>
-        <label>使用案例</label>
-        <name>Core_MDF_Use_Case_Nm__c</name>
-    </fields>
-    <fields>
-        <label>數量</label>
-        <name>Core_MDF_Volume_txt__c</name>
     </fields>
     <fields>
         <label><!-- Sector --></label>
@@ -1191,6 +581,70 @@
         <name>CventEvents__SessionStub__c</name>
     </fields>
     <fields>
+        <label><!-- DB Campaign Tactic --></label>
+        <name>DB_Campaign_Tactic__c</name>
+        <picklistValues>
+            <masterLabel>Direct Mail</masterLabel>
+            <translation><!-- Direct Mail --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Email</masterLabel>
+            <translation><!-- Email --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Employment Seminars</masterLabel>
+            <translation><!-- Employment Seminars --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Internal Website</masterLabel>
+            <translation><!-- Internal Website --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lunches</masterLabel>
+            <translation><!-- Lunches --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Online Banners/Ads</masterLabel>
+            <translation><!-- Online Banners/Ads --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partners</masterLabel>
+            <translation><!-- Partners --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Print Advertisement</masterLabel>
+            <translation><!-- Print Advertisement --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Public Relations</masterLabel>
+            <translation><!-- Public Relations --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Referral Program</masterLabel>
+            <translation><!-- Referral Program --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sales Call Down</masterLabel>
+            <translation><!-- Sales Call Down --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Webinars</masterLabel>
+            <translation><!-- Webinars --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Data Quality Description --></label>
+        <name>Data_Quality_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Data Quality Score --></label>
+        <name>Data_Quality_Score__c</name>
+    </fields>
+    <fields>
         <label><!-- Campaign Brief Details --></label>
         <name>MKT_Campaign_Brief_Details_Formula_Txt__c</name>
     </fields>
@@ -1223,11 +677,14 @@
         <name>MKT_Organization_nm__c</name>
     </fields>
     <fields>
-        <label><!-- Bulk Add/Invite Email Template --></label>
-        <name>PRM_Bulk_Add_Invite_Email_Template__c</name>
+        <label><!-- Rich text --></label>
+        <name>Rich_text__c</name>
+    </fields>
+    <fields>
+        <label><!-- IsMarketingRecord --></label>
+        <name>SWS_IsMarketingRecord__c</name>
     </fields>
     <recordTypes>
-        <description><!-- Record type for CCP Client Program --></description>
         <label>用戶端共同行銷基金</label>
         <name>Core_MDF_Client_CoMarketing_Fund</name>
     </recordTypes>
@@ -1236,28 +693,12 @@
         <name>Core_MDF_Client_CoMarketing_Fund_Boost</name>
     </recordTypes>
     <recordTypes>
-        <description><!-- Record type for CCP Co-GTM Program --></description>
-        <label><!-- CoGTM --></label>
-        <name>Core_MDF_Co_GTM</name>
-    </recordTypes>
-    <recordTypes>
-        <description><!-- Record Type for CCP Datacenter Program --></description>
         <label>資料中心共同行銷基金</label>
         <name>Core_MDF_Data_Center_CoMarketing_Fund</name>
     </recordTypes>
     <recordTypes>
-        <description><!-- Record Type for CCP EEF Program --></description>
-        <label><!-- Ecosystem Extension Fund --></label>
-        <name>Core_MDF_Ecosystem_Extension_Fund</name>
-    </recordTypes>
-    <recordTypes>
-        <description><!-- Record Type for IPA program --></description>
-        <label>Intel 夥伴聯盟</label>
-        <name>Core_MDF_Intel_Partner_Alliance</name>
-    </recordTypes>
-    <recordTypes>
         <description><!-- Record type created for Retail program --></description>
-        <label>零售行銷基金</label>
+        <label><!-- Retail Marketing Funds --></label>
         <name>Core_MDF_Retail_Marketing_Funds</name>
     </recordTypes>
     <recordTypes>
@@ -1279,22 +720,9 @@
         <label><!-- Sales Campaign - Admin --></label>
         <name>Core_Sales_Campaign_Admin</name>
     </recordTypes>
-    <recordTypes>
-        <description><!-- Campaign to track registrations for IPA program --></description>
-        <label><!-- IPA Marketing Campaign --></label>
-        <name>PRM_Marketing_Campaign</name>
-    </recordTypes>
     <validationRules>
         <errorMessage>必須先批准銷售企劃案，然後才能將其設定為「正在進行」。</errorMessage>
         <name>Core_Campaign_Only_Approved_In_Progress</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage>建立活動需要一個帳號。請選擇一個帳號並重新嘗試。</errorMessage>
-        <name>Core_MDF_CampaignAccountValidation</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage>提案在待審查或待核准狀態時不可取消</errorMessage>
-        <name>Core_MDF_CancellingIPACampaignInApproval</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Enter only positive numeric values up to 16 digits. --></errorMessage>
@@ -1305,38 +733,6 @@
         <name>Core_MDF_Check_For_Non_Negative_Amount</name>
     </validationRules>
     <validationRules>
-        <errorMessage>行銷活動一旦建立，帳號即不可變更。</errorMessage>
-        <name>Core_MDF_IPA_Account_Restriction</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Countries selected must be within the same Geography as defined by Intel --></errorMessage>
-        <name>Core_MDF_IPA_Multiple_Region</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage>使用者不得提交提案以供核准。</errorMessage>
-        <name>Core_MDF_IPA_Proposal_Submission</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- The proposal has been approved already. Please refresh your screen and check --></errorMessage>
-        <name>Core_MDF_IPA_RestrictStatusUpdate</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage>如果選定美國，就無法選擇其他國家。</errorMessage>
-        <name>Core_MDF_IPA_Restrict_Country_to_US</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage>使用者在提案經核准時無法編輯行銷活動名稱、預算類型與補助費率。</errorMessage>
-        <name>Core_MDF_IPA_Restrict_Edit_Approved_Camp</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage>使用者無法編輯行銷活動名稱。</errorMessage>
-        <name>Core_MDF_IPA_Restrict_Edit_Campaign_Name</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Budget Type cannot be changed when the Proposal is in approval --></errorMessage>
-        <name>Core_MDF_IPA_Restrict_Fields_In_Approval</name>
-    </validationRules>
-    <validationRules>
         <errorMessage>請輸入「整合式企劃案詳細資料」，如果是「整合式企劃案」，請選「否」</errorMessage>
         <name>Core_MDF_Integrated_Campaign_is_Yes</name>
     </validationRules>
@@ -1345,36 +741,12 @@
         <name>Core_MDF_Retail_Campaign_Start_End_Date</name>
     </validationRules>
     <validationRules>
-        <errorMessage>請僅選取一個重點領域</errorMessage>
-        <name>Core_MDF_Single_Focus_Area_Selection_Val</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage>請只選擇一個結果指標。</errorMessage>
-        <name>Core_MDF_Single_Outcome_Selection_Val</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Strategic Marketing Fund cannot be edited when Campaign is in a Completed or Cancelled status. --></errorMessage>
-        <name>Core_MDF_Strategic_Marketing_Field_Edit</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage>行銷活動無法在「已取消」狀態下進行編輯或取消。</errorMessage>
-        <name>Core_MDF_ValidateFieldEditInCancelled</name>
-    </validationRules>
-    <validationRules>
         <errorMessage>企劃案僅計畫 1 個日曆年。請刪除第二年的預算金額。</errorMessage>
         <name>Core_MDF_Validate_Campaign_Planned_Year</name>
     </validationRules>
     <validationRules>
         <errorMessage>開始日期和結束日期不得超過兩個日曆年。</errorMessage>
         <name>Core_MDF_Validate_EndDate</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Start date and end date may not span more than three calendar years. --></errorMessage>
-        <name>Core_MDF_Validate_EndDate_Upto_Three_Yrs</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Enter only positive numeric values up to 16 digits. --></errorMessage>
-        <name>Core_MDF_Validate_Negative_Spending_Cap</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Select a value not already selected for Priority or Priority #3 --></errorMessage>

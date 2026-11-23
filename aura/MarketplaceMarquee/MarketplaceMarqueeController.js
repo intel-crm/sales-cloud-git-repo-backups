@@ -3,17 +3,15 @@
 		var breadcrumbData = [
 			{ label: 'Marketplace Home', url: '/home' }
 		];
-		//IPA2.0 + US TWC4497-1631
-	// 	if (component.get('v.type') === 'myoffering') {
-	// 		breadcrumbData = [
-	// 		 { label: 'Marketplace Home', url: '/home' }
-	// 		 ,{ label: 'All Marketplace', url: '#' }
-	// 		 ,{ label: 'Partner Directory', url: '#' }
-	// 		 ,{ label: 'Store Front', url: '#' }
+		if (component.get('v.type') === 'myoffering') {
+			breadcrumbData = [
+			 { label: 'Marketplace Home', url: '/home' }
+			 ,{ label: 'All Marketplace', url: '#' }
+			 ,{ label: 'Partner Directory', url: '#' }
+			 ,{ label: 'Store Front', url: '#' }
 
-	// 	 ];
-	//   } else 
-	  if (component.get('v.type') === 'editlead') {
+		 ];
+	  } else if (component.get('v.type') === 'editlead') {
 			breadcrumbData = [
 			 { label: 'Edit Lead', url: '/home' }
 		 ];

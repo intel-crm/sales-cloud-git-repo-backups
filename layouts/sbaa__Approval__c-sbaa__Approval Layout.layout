@@ -116,9 +116,9 @@
     <platformActionList>
         <actionListContext>Record</actionListContext>
         <platformActionListItems>
-            <actionName>sbaa__Approval__c.sbaa__ResendRequestMobile</actionName>
+            <actionName>sbaa__Approval__c.sbaa__ApproveMobile</actionName>
             <actionType>QuickAction</actionType>
-            <sortOrder>3</sortOrder>
+            <sortOrder>0</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
             <actionName>sbaa__Approval__c.sbaa__RejectMobile</actionName>
@@ -131,11 +131,20 @@
             <sortOrder>2</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>sbaa__Approval__c.sbaa__ApproveMobile</actionName>
+            <actionName>sbaa__Approval__c.sbaa__ResendRequestMobile</actionName>
             <actionType>QuickAction</actionType>
-            <sortOrder>0</sortOrder>
+            <sortOrder>3</sortOrder>
         </platformActionListItems>
     </platformActionList>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>sbaa__ApprovalCondition__c</fields>
+        <fields>sbaa__ApprovedValueDate__c</fields>
+        <fields>sbaa__ApprovedValueNumeric__c</fields>
+        <fields>sbaa__ApprovedValueText__c</fields>
+        <fields>sbaa__ApprovedValueLongText__c</fields>
+        <relatedList>sbaa__ApprovalSnapshot__c.sbaa__Approval__c</relatedList>
+    </relatedLists>
     <relatedLists>
         <relatedList>RelatedEntityHistoryList</relatedList>
     </relatedLists>
@@ -145,7 +154,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h2i000000Jdbx</masterLabel>
+        <masterLabel>00h2D000000lhW7</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

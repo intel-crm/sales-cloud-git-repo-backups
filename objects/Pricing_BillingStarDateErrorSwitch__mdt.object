@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Block_Morethan180DaysValidation__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Block_Morethan180DaysValidation</label>
+        <type>Checkbox</type>
+    </fields>
+    <label>Pricing_BillingStarDateErrorSwitch</label>
+    <pluralLabel>Pricing_BillingStarDateErrorSwitch</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

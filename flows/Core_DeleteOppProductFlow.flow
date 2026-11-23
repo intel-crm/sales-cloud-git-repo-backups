@@ -52,7 +52,7 @@
             </connector>
             <label>deleteProduct</label>
             <maxBatchSize>10</maxBatchSize>
-            <offsetNumber>15</offsetNumber>
+            <offsetNumber>5</offsetNumber>
             <offsetUnit>Minutes</offsetUnit>
             <recordField>LastModifiedDate</recordField>
             <timeSource>RecordField</timeSource>

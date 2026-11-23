@@ -293,6 +293,16 @@
                     <default>false</default>
                     <label>Pricing_Quote_Program_Nm__c</label>
                 </value>
+                <value>
+                    <fullName>core_cpq_product_family_txt__c</fullName>
+                    <default>false</default>
+                    <label>core_cpq_product_family_txt__c</label>
+                </value>
+                <value>
+                    <fullName>SBQQ__QuoteTemplate__c</fullName>
+                    <default>false</default>
+                    <label>SBQQ__QuoteTemplate__c</label>
+                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>

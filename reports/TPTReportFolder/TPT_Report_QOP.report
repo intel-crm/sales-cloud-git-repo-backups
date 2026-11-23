@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>TPT_Tracker__c$Name</field>
+    </columns>
+    <columns>
+        <field>TPT_Tracker__c$DealRegistration__c</field>
+    </columns>
+    <columns>
+        <field>TPT_Tracker__c$Status__c</field>
+    </columns>
+    <columns>
+        <field>TPT_Tracker__c$Status_Change_Date_Time__c</field>
+    </columns>
+    <columns>
+        <field>TPT_Tracker__c$Time_Taken_To_Submit__c</field>
+    </columns>
+    <format>Tabular</format>
+    <name>TPT Report</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>TPT_Tracker__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>TPT_Tracker__c$Status__c</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>TPT_Tracker__c$CreatedDate</dateColumn>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
+    </timeFrameFilter>
+</Report>

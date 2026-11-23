@@ -30,6 +30,14 @@
                 <behavior>Edit</behavior>
                 <field>core_cpq_object_name_nm__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>core_cpq_quoteId_Id__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>core_cpq_quote_number__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

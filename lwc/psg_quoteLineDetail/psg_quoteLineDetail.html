@@ -1,0 +1,75 @@
+<!-- **********************************************************************************************
+* LWC Name - psg_quoteLineDetail
+* Created By - Avani
+* Description - Quote Line section on the Disty Quote Request and View Form for Community Portal
+************************************************************************************************ -->
+<template>
+     <div class="spinner">
+        <template if:true={showSpinner}>
+            <lightning-spinner alternative-text="Loading" variant="brand" size="medium"></lightning-spinner>
+        </template>
+    </div>
+    <template if:true={lockRecord}>
+        <template if:false={inProgressQuote}> 
+            <c-psg_quoteline-lightning-datatable 
+            show-new-search-options = {showNewSearchOptions} 
+            onsavequote= {savequote} 
+            onaddnewquoteline={addnewquoteline} 
+            record-id= {recordId} 
+            hide-search-features = {temptrue} 
+            is-disti-portal = {temptrue} 
+            in-progress-quote = {tempfalse} 
+            is-draft = {isDraft} 
+            is-cp-quote={isCpQuote}
+            request-d-p-a-flag ={requestDPAFlag}
+            request-a-l-n-flag ={requestALNFlag}
+            pendingvisblity= {pendingvisblity}
+            is-new-status= {isNewStatus} 
+            suppress-bottom-bar= {temptrue} 
+            oncloseupdaterequest = {handleCloseUpdateRequest}
+            closedparequest= {handleCloseDpaRequest}   
+            ></c-psg_quoteline-lightning-datatable>
+        </template> 
+
+        <template if:true={inProgressQuote}>
+            <c-psg_quoteline-lightning-datatable 
+            show-new-search-options ={showNewSearchOptions} 
+            onsavequote={savequote} 
+            onaddnewquoteline={addnewquoteline} 
+            record-id= {recordId} 
+            hide-search-features = {temptrue} 
+            is-disti-portal = {temptrue} 
+            in-progress-quote = {temptrue} 
+            is-draft = {isDraft}
+            is-cp-quote={isCpQuote} 
+            pendingvisblity= {pendingvisblity}
+            request-d-p-a-flag ={requestDPAFlag}
+            request-a-l-n-flag ={requestALNFlag}
+            is-new-status={isNewStatus} 
+            suppress-bottom-bar= {temptrue} 
+            oncloseupdaterequest = {handleCloseUpdateRequest}
+            closedparequest= {handleCloseDpaRequest}
+            ></c-psg_quoteline-lightning-datatable>                                               
+        </template>  
+    </template>  
+    <!-- *******************Editable Quote Line List****************************** -->
+    <template if:false={lockRecord}>
+            <c-psg_quoteline-lightning-datatable 
+            show-new-search-options ={showNewSearchOptions} 
+            onsavequote={savequote} 
+            onaddnewquoteline={addnewquoteline} 
+            record-id= {recordId}
+            is-cp-quote={isCpQuote} 
+            pendingvisblity= {pendingvisblity}
+            hide-search-features = {temptrue} 
+            is-disti-portal = {temptrue} 
+            in-progress-quote = {tempfalse} 
+            is-draft = {isDraft} 
+            request-d-p-a-flag ={requestDPAFlag}
+            request-a-l-n-flag ={requestALNFlag}
+            is-new-status={isNewStatus} 
+            suppress-bottom-bar= {temptrue} 
+            oncloseupdaterequest = {handleCloseUpdateRequest}
+            ></c-psg_quoteline-lightning-datatable> 
+    </template>
+</template>

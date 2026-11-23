@@ -1,0 +1,40 @@
+<messaging:emailTemplate relatedToType="Account"    subject="ACCOUNT OWNER AR:   Audit Starts Today.   Completion due {!$Label.Core_Account_Team_Adudit_Due_date} !">
+    <messaging:htmlEmailBody > 
+        <html>  
+            <body>  
+                 <p>Dear {!relatedTo.Owner.Name},</p>
+                
+                     <p>As the Owner of one or more Accounts, Internal Audit requires that you review Account Team Members
+                        and their access levels on Accounts, Opportunities and Cases. This provides assurance that access has
+                        been limited to the Team Members who are working on an Account.  It is important that you remove
+                        Team Members who are no longer working on your accounts.   Please reference the <a href="https://salescrm.intel.com/account-review-audit-2019/" target="_blank">audit
+                        communication sent {!$Label.Core_Account_Team_Audit_Communication_date} </a> for more details and guidance </p>
+                        <p>
+                        <apex:outputlink value="{!LEFT($Api.Partner_Server_URL_140,FIND('.com',$Api.Partner_Server_URL_140)+4)+'lightning/n/core_account_team_review'}">
+                            Visit this page to review your Accounts' Team Members by {!$Label.Core_Account_Team_Adudit_Due_date}, {!YEAR( TODAY() )} 
+                         </apex:outputlink>
+                         </p>
+                      <p>For Team Members who belong on the Account Team, you should set the Account, Opportunity and
+                         Case access level (Private, Read, or Read/Write) to the appropriate "need to know" level. Note that
+                         Account Read/Write access grants Team Members the ability to edit Contact information and to
+                         emulate customers who are IPS Active Contacts. In addition, it provides edit access to non-core Account
+                         fields   
+                      </p>
+                      <p>
+                         Please visit the linked page containing all the Accounts and Team Members that currently require your
+                         review. For each account, when your review and updates are complete, mark the Review Completed
+                         box, and make sure to save your change.    
+                      </p>
+                      <p><b>This review must be completed by {!$Label.Core_Account_Team_Adudit_Due_date}, {!YEAR( TODAY() )}.</b>For questions or further information, please log an 
+                          <apex:outputlink value="{!LEFT($Api.Partner_Server_URL_140,FIND('.com',$Api.Partner_Server_URL_140)+4)+'lightning/n/ask_a_question'}">
+                            Ask a Question (AAQ). 
+                         </apex:outputlink>
+                      </p>
+                  <p>Thank you!</p> 
+
+            </body>    
+
+        </html>  
+        </messaging:htmlEmailBody>
+                  
+</messaging:emailTemplate>

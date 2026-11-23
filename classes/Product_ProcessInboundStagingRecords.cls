@@ -38,10 +38,7 @@ public with sharing class Product_ProcessInboundStagingRecords {
                 // Process VPLCH categories.
                 processVplchRecords();
                
-                       
-                
                 Integer l2Count = 0;
-                
                 for(Integer f :inputWrapperMap.keySet()){
                     if (inputWrapperMap.get(f).vplchInd) {
                         l2Count += inputWrapperMap.get(f).level1VplchEPMIds.size();
@@ -73,7 +70,6 @@ public with sharing class Product_ProcessInboundStagingRecords {
                         emailBody += 'Job Id - '+job.Id+':Status- '+job.Status+':Error- '+job.ExtendedStatus;
                     }
                     message.setHtmlBody(emailBody);
-                    message.setOrgWideEmailAddressId(Label.Core_Ownership_Orgwide_Email_Id);
                     Messaging.SingleEmailMessage[] messages =   new List<Messaging.SingleEmailMessage> {message};
                     Messaging.SendEmailResult[] results = Messaging.sendEmail(messages,false);
                 }    
@@ -217,15 +213,15 @@ public with sharing class Product_ProcessInboundStagingRecords {
                         body += '<br/>Ipaas load id- '+ipaasId;
                         body += '<br/>Previous Ipaas load id- '+productStagings[0].iPaaS_Load_ID__c;
                         message.setHtmlBody(body);
-                        message.setOrgWideEmailAddressId(Label.Core_Ownership_Orgwide_Email_Id);
                         Messaging.SingleEmailMessage[] messages =   new List<Messaging.SingleEmailMessage> {message};
                         Messaging.SendEmailResult[] results = Messaging.sendEmail(messages,false);
                             
-                        skipJob = true;
+                        //skipJob = true;
                     }
                 }
 			}				
         }
+
         return skipJob;
     }
     

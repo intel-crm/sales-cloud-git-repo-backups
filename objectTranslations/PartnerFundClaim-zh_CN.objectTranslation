@@ -4,10 +4,6 @@
         <plural>false</plural>
         <value>报销申请</value>
     </caseValues>
-    <fieldSets>
-        <label><!-- Claim Fields for AI PIC --></label>
-        <name>Core_MDF_Claim_Fields_For_AI_PIC</name>
-    </fieldSets>
     <fields>
         <caseValues>
             <plural>false</plural>
@@ -23,37 +19,17 @@
         <name>partnerfundclaim_channelpartner</name>
     </fields>
     <fields>
-        <caseValues>
-            <plural>false</plural>
-            <value>申请名称</value>
-        </caseValues>
-        <name>partnerfundclaim_name</name>
-    </fields>
-    <fields>
-        <help>如选择该值，则需要第三方文档</help>
-        <label>需要第三方 POP 文档</label>
-        <name>Core_MDF_3rd_Party_POP_Doc_Required_Ind__c</name>
-    </fields>
-    <fields>
-        <label>ASP （平均销售价格）增长（美元）</label>
-        <name>Core_MDF_ASP_Growth_amt__c</name>
-    </fields>
-    <fields>
-        <help>与此申请相关的公司</help>
+        <help>与该申请有关的公司</help>
         <label>帐户（公司）</label>
         <name>Core_MDF_AccountCompany__c</name>
     </fields>
     <fields>
-        <label><!-- Account Name --></label>
-        <name>Core_MDF_Account_Name_nm__c</name>
-    </fields>
-    <fields>
-        <help>此联合推广活动的类别</help>
+        <help>此市场推广活动的类别</help>
         <label>活动类别</label>
         <name>Core_MDF_Activity_Category__c</name>
     </fields>
     <fields>
-        <help>联合推广活动的结束日期</help>
+        <help>活动结束日期</help>
         <label>活动结束日期</label>
         <name>Core_MDF_Activity_End_Date__c</name>
     </fields>
@@ -66,82 +42,24 @@
         <name>Core_MDF_Activity_Prior_to_Occuring_Nbr__c</name>
     </fields>
     <fields>
-        <help>联合推广活动的开始日期</help>
+        <help>活动开始日期</help>
         <label>活动开始日期</label>
         <name>Core_MDF_Activity_Start_Date__c</name>
     </fields>
     <fields>
-        <label><!-- Activity Status --></label>
-        <name>Core_MDF_Activity_Status_nm__c</name>
-    </fields>
-    <fields>
-        <help>与此联合推广活动相关的子类型</help>
-        <label>活动子类型</label>
-        <name>Core_MDF_Activity_SubType_nm__c</name>
-    </fields>
-    <fields>
-        <help>与此联合推广活动相关的类型</help>
+        <help>活动与之相关的类型</help>
         <label>活动类型</label>
         <name>Core_MDF_Activity_Types__c</name>
     </fields>
     <fields>
-        <help>执行结束日期</help>
-        <label>执行结束日期</label>
+        <help>广告结束日期</help>
+        <label>广告投放结束日期</label>
         <name>Core_MDF_Ad_Run_End_Date__c</name>
     </fields>
     <fields>
-        <help>执行开始日期</help>
-        <label>执行开始日期</label>
+        <help>广告开始日期</help>
+        <label>广告投放开始日期</label>
         <name>Core_MDF_Ad_Run_Start_Date__c</name>
-    </fields>
-    <fields>
-        <label><!-- Amount Percentage --></label>
-        <name>Core_MDF_Amount_Percentage__c</name>
-    </fields>
-    <fields>
-        <help>适用的增值税百分比</help>
-        <label>适用的增值税百分比</label>
-        <name>Core_MDF_Applicable_VAT_Percentage_nm__c</name>
-        <picklistValues>
-            <masterLabel>0%</masterLabel>
-            <translation><!-- 0% --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>10%</masterLabel>
-            <translation><!-- 10% --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>20%</masterLabel>
-            <translation><!-- 20% --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>21%</masterLabel>
-            <translation><!-- 21% --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>8%</masterLabel>
-            <translation><!-- 8% --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
-        <label><!-- Approval Stage --></label>
-        <name>Core_MDF_Approval_Stage_nm__c</name>
-        <picklistValues>
-            <masterLabel>Account Manager</masterLabel>
-            <translation><!-- Account Manager --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Technical Approver</masterLabel>
-            <translation><!-- Technical Approver --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
-        <label><!-- Approval Step Counter --></label>
-        <name>Core_MDF_Approval_Step_Counter_nbr__c</name>
-    </fields>
-    <fields>
-        <label><!-- Audit check completed --></label>
-        <name>Core_MDF_Aud_chk_completed_Ind__c</name>
     </fields>
     <fields>
         <label><!-- Review Check InProgress --></label>
@@ -153,7 +71,6 @@
         <name>Core_MDF_Audit_Adjustment_Amount__c</name>
     </fields>
     <fields>
-        <help>选中申请用于审核时勾选</help>
         <label>审批冻结</label>
         <name>Core_MDF_Audit_Hold__c</name>
     </fields>
@@ -163,37 +80,7 @@
         <name>Core_MDF_Audit_Type__c</name>
     </fields>
     <fields>
-        <label>平均浏览时间（秒）</label>
-        <name>Core_MDF_Average_View_Time_nbr__c</name>
-    </fields>
-    <fields>
-        <label>页面的平均时间（秒）</label>
-        <name>Core_MDF_Average_time_on_Page_nbr__c</name>
-    </fields>
-    <fields>
-        <label><!-- Backend Review Selection Completed --></label>
-        <name>Core_MDF_BackendReviewSelection_Ind__c</name>
-    </fields>
-    <fields>
-        <label>银行设置信息</label>
-        <name>Core_MDF_BankSetUpInformation_txt__c</name>
-    </fields>
-    <fields>
-        <help>确定申请是否符合银行单据冻结要求。</help>
-        <label><!-- Bank Document Hold Eligibility --></label>
-        <name>Core_MDF_Bank_Doc_Hold_Eligibility_Ind__c</name>
-    </fields>
-    <fields>
-        <help>当所选银行的国家/地区是 RCIS 国家/地区之一并且申请正在等待银行单据生成以进行付款处理时勾选</help>
-        <label>银行单据冻结</label>
-        <name>Core_MDF_Bank_Doc_Hold_Ind__c</name>
-    </fields>
-    <fields>
-        <label><!-- Bank Legal Entity Code --></label>
-        <name>Core_MDF_Bank_Legal_Entity_Code_cd__c</name>
-    </fields>
-    <fields>
-        <help>与申请的付款相关的银行别名</help>
+        <help>申请的付款应导向的银行别名</help>
         <label>银行</label>
         <name>Core_MDF_Bank__c</name>
         <relationshipLabel><!-- Partner Fund Claims --></relationshipLabel>
@@ -203,41 +90,19 @@
         <name>Core_MDF_Batch_Nbr__c</name>
     </fields>
     <fields>
-        <help>正在进行促销的英特尔品牌</help>
+        <help>正在推广哪些英特尔品牌</help>
         <label>品牌</label>
         <name>Core_MDF_Brand__c</name>
     </fields>
     <fields>
-        <label>品牌</label>
-        <name>Core_MDF_Brand_nm__c</name>
-    </fields>
-    <fields>
-        <help>预算类型</help>
-        <label>预算类型</label>
+        <help><!-- Please Select Budget type Field On Activity --></help>
+        <label><!-- Budget Type --></label>
         <name>Core_MDF_Budget_Type_Nm__c</name>
     </fields>
     <fields>
-        <help>联合推广活动的预算类型</help>
-        <label>预算类型</label>
-        <name>Core_MDF_Budget_Type_Options_Nm__c</name>
-    </fields>
-    <fields>
-        <label><!-- Claim Review Result Positive Indicator --></label>
-        <name>Core_MDF_CRR_Positive_Ind__c</name>
-    </fields>
-    <fields>
-        <label><!-- CSP Intel-Based Revenue --></label>
-        <name>Core_MDF_CSP_Intel_Based_Revenue_Amt__c</name>
-    </fields>
-    <fields>
-        <label><!-- C Type Indicator --></label>
-        <name>Core_MDF_C_Type_Ind__c</name>
-    </fields>
-    <fields>
-        <help>指示与此申请相关的市场活动。</help>
-        <label>项目</label>
+        <label><!-- Campaign --></label>
         <name>Core_MDF_Campaign_Id__c</name>
-        <relationshipLabel><!-- Claims --></relationshipLabel>
+        <relationshipLabel><!-- Partner Fund Claims --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- Cap Type --></label>
@@ -252,39 +117,14 @@
         </picklistValues>
     </fields>
     <fields>
-        <label><!-- Claim Approval Date --></label>
-        <name>Core_MDF_Claim_Approval_Dt__c</name>
-    </fields>
-    <fields>
         <label><!-- Claim Batch Stage --></label>
         <name>Core_MDF_Claim_Batch_Stage__c</name>
         <relationshipLabel><!-- Claims --></relationshipLabel>
     </fields>
     <fields>
-        <help>与此申请相关的自由文本说明</help>
+        <help>与申请有关的免费文字说明</help>
         <label>申请评论</label>
         <name>Core_MDF_Claim_Comments__c</name>
-    </fields>
-    <fields>
-        <label><!-- Claim Creation Duration (Mins) --></label>
-        <name>Core_MDF_Claim_Creation_Dur_Min_nbr__c</name>
-    </fields>
-    <fields>
-        <label><!-- Claim Creation Duration --></label>
-        <name>Core_MDF_Claim_Creation_Duration_txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Claim evaluation in progress --></label>
-        <name>Core_MDF_Claim_EvalInProgress_Ind__c</name>
-    </fields>
-    <fields>
-        <label>申请冻结类型</label>
-        <name>Core_MDF_Claim_Hold_Type_txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Super Claim --></label>
-        <name>Core_MDF_Claim_Id__c</name>
-        <relationshipLabel><!-- Claims --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- Claim Previous Status --></label>
@@ -306,76 +146,24 @@
             <translation><!-- Denied --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Draft</masterLabel>
-            <translation><!-- Draft --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Hold</masterLabel>
             <translation><!-- Hold --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>PIC Pending</masterLabel>
-            <translation><!-- PIC Pending --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Paid</masterLabel>
             <translation><!-- Paid --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Paid and PIC Pending</masterLabel>
-            <translation><!-- Paid and PIC Pending --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Paid and Pending Documents</masterLabel>
-            <translation><!-- Paid and Pending Documents --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Paid and Resubmission Required</masterLabel>
-            <translation><!-- Paid and Resubmission Required --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Payment Clearance Processing</masterLabel>
-            <translation><!-- Payment Clearance Processing --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Payment Due</masterLabel>
             <translation><!-- Payment Due --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Pending Account Manager Clarification</masterLabel>
-            <translation><!-- Pending Account Manager Clarification --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Pending Available Funds</masterLabel>
             <translation>等待可用的基金</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Pending Clarification</masterLabel>
-            <translation><!-- Pending Clarification --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Pending Documents</masterLabel>
-            <translation><!-- Pending Documents --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Pending Payment</masterLabel>
             <translation><!-- Pending Payment --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Pending Review</masterLabel>
-            <translation><!-- Pending Review --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Queued for Payment</masterLabel>
-            <translation><!-- Queued for Payment --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Resubmission Required</masterLabel>
-            <translation><!-- Resubmission Required --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Resubmission Window Closed</masterLabel>
-            <translation><!-- Resubmission Window Closed --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Submitted</masterLabel>
@@ -383,7 +171,7 @@
         </picklistValues>
     </fields>
     <fields>
-        <help>申请的唯一标识符，供会员参考</help>
+        <help>申请的唯一标识符，供成员引用</help>
         <label>申请 ID</label>
         <name>Core_MDF_Claim_Ref_Number__c</name>
     </fields>
@@ -393,25 +181,12 @@
         <relationshipLabel><!-- Partner Fund Claims --></relationshipLabel>
     </fields>
     <fields>
-        <label><!-- Claim Submitter --></label>
-        <name>Core_MDF_Claim_Submitter_Id__c</name>
-        <relationshipLabel><!-- Claims (Claim Submitter) --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Comments (Approver only) --></label>
-        <name>Core_MDF_Comments_Appvr_Only_txt__c</name>
-    </fields>
-    <fields>
-        <label>每销售线索成本 (美元)</label>
-        <name>Core_MDF_Cost_Per_Lead_amt__c</name>
-    </fields>
-    <fields>
-        <help>开展联合推广活动的国家/地区</help>
+        <help>广告投放的国家/地区</help>
         <label>国家/地区：</label>
         <name>Core_MDF_Country_Location__c</name>
     </fields>
     <fields>
-        <help>开展联合推广活动的国家/地区</help>
+        <help><!-- The Country in which the ad took place --></help>
         <label>国家/地区：</label>
         <name>Core_MDF_Country_Location_nm__c</name>
     </fields>
@@ -420,7 +195,6 @@
         <name>Core_MDF_CreatedBy_Nm__c</name>
     </fields>
     <fields>
-        <help>当申请符合标准保留要求时勾选</help>
         <label>英特尔冻结</label>
         <name>Core_MDF_Criteria_Hold_Ind__c</name>
     </fields>
@@ -434,57 +208,9 @@
         <name>Core_MDF_Criteria_Hold_Ref_No_Txt__c</name>
     </fields>
     <fields>
-        <help>申请可报销金额的 POC 文档上的货币</help>
-        <label>开支证明货币</label>
+        <help>事务/发票的币种</help>
+        <label>发票/收据币种</label>
         <name>Core_MDF_Currency__c</name>
-    </fields>
-    <fields>
-        <label>部署数量</label>
-        <name>Core_MDF_Deployment_Quantity_nbr__c</name>
-    </fields>
-    <fields>
-        <label>分发</label>
-        <name>Core_MDF_Distribution_txt__c</name>
-        <picklistValues>
-            <masterLabel>In-store</masterLabel>
-            <translation><!-- In-store --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Newspaper insert</masterLabel>
-            <translation><!-- Newspaper insert --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
-        <help><!-- Last Date for Document Submission --></help>
-        <label><!-- Doc Sub Due Date --></label>
-        <name>Core_MDF_Doc_Hold_Doc_Sub_Due_Date_Dtm__c</name>
-    </fields>
-    <fields>
-        <label><!-- Doc Hold to Review Hold --></label>
-        <name>Core_MDF_Doc_Hold_to_Review_Hold_Ind__c</name>
-    </fields>
-    <fields>
-        <label><!-- Document Hold Eligibility --></label>
-        <name>Core_MDF_Document_Hold_Eligibility_Ind__c</name>
-    </fields>
-    <fields>
-        <help>当索赔已被选中用于 POP 文件提交，并等待客户上传文件时勾选</help>
-        <label>文件冻结</label>
-        <name>Core_MDF_Document_Hold_Ind__c</name>
-    </fields>
-    <fields>
-        <help>如果不能在此日期以前收到并确认这些文档，此申请将不会处理并支付。</help>
-        <label>文档提交截止日期</label>
-        <name>Core_MDF_Document_Submission_DueDate_dtm__c</name>
-    </fields>
-    <fields>
-        <label><!-- Document Submission Missed --></label>
-        <name>Core_MDF_Document_Submission_Missed_Ind__c</name>
-    </fields>
-    <fields>
-        <help>申请窗口关闭前的剩余天数。</help>
-        <label>申请窗口关闭倒计时天数</label>
-        <name>Core_MDF_Due_Date_nbr__c</name>
     </fields>
     <fields>
         <label>重复的申请</label>
@@ -492,38 +218,20 @@
     </fields>
     <fields>
         <label>电子资金转账号</label>
-        <name>Core_MDF_EFT_Number_txt__c</name>
+        <name>Core_MDF_EFT_Nbr__c</name>
     </fields>
     <fields>
-        <help>当银行的 ESD 冻结指示显示为真时勾选</help>
         <label>银行/ESD 冻结</label>
         <name>Core_MDF_ESD_Hold__c</name>
     </fields>
     <fields>
-        <label><!-- Eligible for PIC --></label>
-        <name>Core_MDF_Eligible_for_PIC__c</name>
-    </fields>
-    <fields>
-        <label><!-- End Time --></label>
-        <name>Core_MDF_EndTime_dtm__c</name>
-    </fields>
-    <fields>
-        <help>查找与此申请相关的调增 ID（如适用）</help>
-        <label>调增 ID</label>
+        <help><!-- Lookup the Escalation ID related to this Claim if applicable --></help>
+        <label><!-- Escalation ID --></label>
         <name>Core_MDF_Escalation_Id__c</name>
         <relationshipLabel><!-- Partner Fund Claims --></relationshipLabel>
     </fields>
     <fields>
-        <label>估计的广告大小</label>
-        <name>Core_MDF_Estimated_Ad_Size_nbr__c</name>
-    </fields>
-    <fields>
-        <help>超过活动支出限制时从申请金额中扣除的金额。这会影响报销金额（美元）。</help>
-        <label>超额申请金额（美元）</label>
-        <name>Core_MDF_Excess_Requested_Amount__c</name>
-    </fields>
-    <fields>
-        <help>根据申请提交日期应用于申请的兑换率</help>
+        <help>根据报销申请提交日期应用于报销申请的兑换率</help>
         <label>汇率</label>
         <name>Core_MDF_Exchange_rate__c</name>
     </fields>
@@ -532,46 +240,21 @@
         <name>Core_MDF_FlaggedForAudit__c</name>
     </fields>
     <fields>
-        <label><!-- Flagged For Bank Document Hold --></label>
-        <name>Core_MDF_FlaggedForBankDocHold_Ind__c</name>
-    </fields>
-    <fields>
-        <label>频率</label>
-        <name>Core_MDF_Frequency_txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Has Sub Claims --></label>
-        <name>Core_MDF_Has_Sub_Claims_Ind__c</name>
-    </fields>
-    <fields>
-        <label>屏幕数量</label>
-        <name>Core_MDF_How_many_screens_nbr__c</name>
-    </fields>
-    <fields>
         <label>英特尔手动冻结注释</label>
         <name>Core_MDF_Intel_Manual_Hold_Comments_Txt__c</name>
     </fields>
     <fields>
-        <help>当内部用户暂停申请时勾选</help>
         <label>英特尔人工冻结</label>
         <name>Core_MDF_Intel_Manual_Hold_Ind__c</name>
     </fields>
     <fields>
-        <label>英特尔演讲/会议次数</label>
-        <name>Core_MDF_Intel_Speakerships_Sessions_nbr__c</name>
-    </fields>
-    <fields>
-        <label><!-- Intel Verifier --></label>
-        <name>Core_MDF_Intel_Verifier_Id__c</name>
-    </fields>
-    <fields>
         <help>申请可报销金额的 POC 文档上的日期</help>
-        <label>开支证明日期</label>
+        <label>发票/收据日期</label>
         <name>Core_MDF_Invoice_Date__c</name>
     </fields>
     <fields>
-        <help>申请可报销金额的 POC 文档上的编号</help>
-        <label>开支证明编号</label>
+        <help>与申请有关的事务/发票号码</help>
+        <label>发票/收据号码</label>
         <name>Core_MDF_Invoice_Number__c</name>
     </fields>
     <fields>
@@ -583,60 +266,7 @@
         <name>Core_MDF_Last_ModifiedBy_Nm__c</name>
     </fields>
     <fields>
-        <label>最后追偿日期</label>
-        <name>Core_MDF_Last_Recovery_Dt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Last Reviewed By --></label>
-        <name>Core_MDF_Last_Reviewed_By_id__c</name>
-        <relationshipLabel><!-- Claims (Last Reviewed By) --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Latest Review Cycle Number --></label>
-        <name>Core_MDF_Latest_Review_Cycle_Number_nbr__c</name>
-    </fields>
-    <fields>
-        <label>潜在客户数量</label>
-        <name>Core_MDF_Lead_Quantity_nbr__c</name>
-    </fields>
-    <fields>
-        <label><!-- Legacy Claim --></label>
-        <name>Core_MDF_Legacy_Claim_Ind__c</name>
-    </fields>
-    <fields>
-        <label><!-- Legacy Reminder --></label>
-        <name>Core_MDF_Legacy_Reminder_txt__c</name>
-        <picklistValues>
-            <masterLabel>Maximum Attempts Reached</masterLabel>
-            <translation><!-- Maximum Attempts Reached --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Reminder 1</masterLabel>
-            <translation><!-- Reminder 1 --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Reminder 2</masterLabel>
-            <translation><!-- Reminder 2 --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Reminder 3</masterLabel>
-            <translation><!-- Reminder 3 --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
-        <label><!-- Log Info --></label>
-        <name>Core_MDF_Log_Info_txt__c</name>
-    </fields>
-    <fields>
-        <label>杂志/报纸</label>
-        <name>Core_MDF_Magazine_Newspaper_txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Manual Audit Staging --></label>
-        <name>Core_MDF_Manaul_Audit_Staging_Ind__c</name>
-    </fields>
-    <fields>
-        <help>用于联合推广活动的媒体载体</help>
+        <help>广告投放的媒体载体，例如《时代杂志》</help>
         <label>媒体载体</label>
         <name>Core_MDF_Media_Vehicle__c</name>
     </fields>
@@ -645,283 +275,47 @@
         <name>Core_MDF_Member_Manual_Hold_Comments_Txt__c</name>
     </fields>
     <fields>
-        <help>当会员暂停申请时勾选</help>
         <label>成员冻结</label>
         <name>Core_MDF_Member_Manual_Hold_Ind__c</name>
     </fields>
     <fields>
-        <label>指标</label>
+        <label><!-- Metrics --></label>
         <name>Core_MDF_Metrics_txt__c</name>
     </fields>
     <fields>
-        <help>输入与此申请相关的参与次数。</help>
+        <help><!-- Enter the number of Engagements related to the claim. --></help>
         <label>联系的次数</label>
         <name>Core_MDF_NoOfEngagements_Nbr__c</name>
     </fields>
     <fields>
-        <help>输入与此申请相关的展示次数。例如，对广播和电视广告而言，展示次数应该反映广告播出的次数。</help>
+        <help><!-- Enter the number of impressions related to the claim. For example, Broadcast - Television the # of impressions should reflect the number of times the ad aired. --></help>
         <label>印象数</label>
         <name>Core_MDF_NoOfImpressions_Nbr__c</name>
     </fields>
     <fields>
-        <help>输入与申请相关的销售线索数。</help>
+        <help><!-- Enter the Number of leads related to claim. --></help>
         <label>引导的数量</label>
         <name>Core_MDF_NoOfLeads_Nbr__c</name>
     </fields>
     <fields>
-        <help>输入与此申请相关的试用版激活次数。</help>
+        <help><!-- Enter Number of Trial Activations related to the claim. --></help>
         <label>试用激活的数量</label>
         <name>Core_MDF_NoOfTrialActivations_Nbr__c</name>
     </fields>
     <fields>
-        <label>专用资源数量</label>
-        <name>Core_MDF_No_Dedicated_Resources_nbr__c</name>
-    </fields>
-    <fields>
-        <label>激活实例数</label>
-        <name>Core_MDF_No_of_ActivatedInstance_nbr__c</name>
-    </fields>
-    <fields>
-        <label>调用次数</label>
-        <name>Core_MDF_No_of_Calls_nbr__c</name>
-    </fields>
-    <fields>
-        <label>达到的联系人数量</label>
-        <name>Core_MDF_No_of_Contacts_Reached_nbr__c</name>
-    </fields>
-    <fields>
-        <label>转换次数</label>
-        <name>Core_MDF_No_of_Conversions_nbr__c</name>
-    </fields>
-    <fields>
-        <label>天数</label>
-        <name>Core_MDF_No_of_Days_nbr__c</name>
-    </fields>
-    <fields>
-        <label>注册的交易数量</label>
-        <name>Core_MDF_No_of_Deals_Registered_nbr__c</name>
-    </fields>
-    <fields>
-        <label>专职人员数量</label>
-        <name>Core_MDF_No_of_Dedicated_Personnel_nbr__c</name>
-    </fields>
-    <fields>
-        <label>部署数量</label>
-        <name>Core_MDF_No_of_Deployments_nbr__c</name>
-    </fields>
-    <fields>
-        <label>设计获奖次数</label>
-        <name>Core_MDF_No_of_Design_Wins_nbr__c</name>
-    </fields>
-    <fields>
-        <label>下载次数</label>
-        <name>Core_MDF_No_of_Downloads_nbr__c</name>
-    </fields>
-    <fields>
-        <label><!-- # of Emails Opened --></label>
-        <name>Core_MDF_No_of_Emails_Opened_nbr__c</name>
-    </fields>
-    <fields>
-        <label><!-- # of End caps --></label>
-        <name>Core_MDF_No_of_End_caps_Nbr__c</name>
-    </fields>
-    <fields>
-        <label>预期参与人数</label>
-        <name>Core_MDF_No_of_Expected_Participants_nbr__c</name>
-    </fields>
-    <fields>
-        <label>训练的人数</label>
-        <name>Core_MDF_No_of_Individuals_Trained_nbr__c</name>
-    </fields>
-    <fields>
-        <label>实例数</label>
-        <name>Core_MDF_No_of_Instance_nbr__c</name>
-    </fields>
-    <fields>
-        <help><!-- Enter the number of Leads related to the Claim. --></help>
-        <label>引导的数量</label>
-        <name>Core_MDF_No_of_Leads_nbr__c</name>
-    </fields>
-    <fields>
-        <label>页面浏览数</label>
-        <name>Core_MDF_No_of_Page_Views_nbr__c</name>
-    </fields>
-    <fields>
-        <label>投放数量</label>
-        <name>Core_MDF_No_of_Placements_nbr__c</name>
-    </fields>
-    <fields>
-        <label>接收者数量</label>
-        <name>Core_MDF_No_of_Recipients_nbr__c</name>
-    </fields>
-    <fields>
-        <label><!-- # of Risers --></label>
-        <name>Core_MDF_No_of_Risers_Nbr__c</name>
-    </fields>
-    <fields>
-        <label><!-- # of Signages --></label>
-        <name>Core_MDF_No_of_Signages_Nbr__c</name>
-    </fields>
-    <fields>
-        <label>学员人数</label>
-        <name>Core_MDF_No_of_Trainees_nbr__c</name>
-    </fields>
-    <fields>
-        <label>已完成训练次数</label>
-        <name>Core_MDF_No_of_Trainings_Completed_nbr__c</name>
-    </fields>
-    <fields>
-        <label>独特收听者数量</label>
-        <name>Core_MDF_No_of_Unique_Listeners_nbr__c</name>
-    </fields>
-    <fields>
-        <label>独特访客数量</label>
-        <name>Core_MDF_No_of_Unique_Visitors_nbr__c</name>
-    </fields>
-    <fields>
-        <label>出售的单位数量</label>
-        <name>Core_MDF_No_of_Units_Sold_nbr__c</name>
-    </fields>
-    <fields>
-        <label>浏览数量</label>
-        <name>Core_MDF_No_of_Views_nbr__c</name>
-    </fields>
-    <fields>
-        <label><!-- # of Visits --></label>
-        <name>Core_MDF_No_of_Visits_Nbr__c</name>
-    </fields>
-    <fields>
-        <label><!-- # of Zones --></label>
-        <name>Core_MDF_No_of_Zones_Nbr__c</name>
-    </fields>
-    <fields>
-        <label><!-- # of placemats --></label>
-        <name>Core_MDF_No_of_placemats_Nbr__c</name>
-    </fields>
-    <fields>
-        <label><!-- # of screens with IPOS --></label>
-        <name>Core_MDF_No_of_screens_with_IPOS_Nbr__c</name>
-    </fields>
-    <fields>
-        <label><!-- # of screens with connected IPOS --></label>
-        <name>Core_MDF_No_of_screens_with_con_IPOS_Nbr__c</name>
-    </fields>
-    <fields>
-        <label><!-- # of stores with video --></label>
-        <name>Core_MDF_No_of_stores_with_video_Nbr__c</name>
-    </fields>
-    <fields>
-        <label><!-- # of video impressions --></label>
-        <name>Core_MDF_No_of_video_impressions_Nbr__c</name>
-    </fields>
-    <fields>
-        <label>获奖人数</label>
-        <name>Core_MDF_Num_of_Potential_Winners_nbr__c</name>
-    </fields>
-    <fields>
-        <label><!-- Number of Recoveries --></label>
-        <name>Core_MDF_Number_Of_Recoveries_Nbr__c</name>
-    </fields>
-    <fields>
-        <label>销售数</label>
-        <name>Core_MDF_Number_Sold_Nbr__c</name>
-    </fields>
-    <fields>
-        <label>参加人数</label>
-        <name>Core_MDF_Number_of_Attendees_Nbr__c</name>
-    </fields>
-    <fields>
-        <label>发行数量</label>
-        <name>Core_MDF_Number_of_Circulation_nbr__c</name>
-    </fields>
-    <fields>
-        <label>点击量</label>
-        <name>Core_MDF_Number_of_Clicks_nbr__c</name>
-    </fields>
-    <fields>
-        <label>交付数量</label>
-        <name>Core_MDF_Number_of_Delivered_nbr__c</name>
-    </fields>
-    <fields>
-        <label><!-- # of Distributed --></label>
-        <name>Core_MDF_Number_of_Distributed_Nbr__c</name>
-    </fields>
-    <fields>
-        <label><!-- # of Locations --></label>
-        <name>Core_MDF_Number_of_Locations_Nbr__c</name>
-    </fields>
-    <fields>
-        <label><!-- # of Promoter days --></label>
-        <name>Core_MDF_Number_of_Promoter_days_Nbr__c</name>
-    </fields>
-    <fields>
-        <label>RSP 数量</label>
-        <name>Core_MDF_Number_of_RSPs_nbr__c</name>
-    </fields>
-    <fields>
-        <label>接收人数量</label>
-        <name>Core_MDF_Number_of_Recipient_nbr__c</name>
-    </fields>
-    <fields>
-        <label><!-- # of Reviews/Ratings --></label>
-        <name>Core_MDF_Number_of_Reviews_nbr__c</name>
-    </fields>
-    <fields>
-        <label>商店地点数量</label>
-        <name>Core_MDF_Number_of_Stores_nbr__c</name>
-    </fields>
-    <fields>
-        <label>开放率</label>
-        <name>Core_MDF_Open_Rate_txt__c</name>
-    </fields>
-    <fields>
-        <help>此交易/发票的不可报销开支金额（以交易币种计）</help>
+        <help><!-- Amount of non-reimbursable costs of this transaction/invoice in transaction currency --></help>
         <label>不予报销的开支（本位币）</label>
         <name>Core_MDF_OtherCostsnotReimbursable_Local__c</name>
-    </fields>
-    <fields>
-        <label>其他数量</label>
-        <name>Core_MDF_Other_Quantity_nbr__c</name>
-    </fields>
-    <fields>
-        <help>必须输入一个数值作为可测量的指标</help>
-        <label>其他</label>
-        <name>Core_MDF_Others_txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Outcome Based Camp Ind --></label>
-        <name>Core_MDF_OutcomeBased_Ind__c</name>
     </fields>
     <fields>
         <label><!-- Language Locale Key --></label>
         <name>Core_MDF_Owner_LanguageLocaleKey_Cd__c</name>
     </fields>
     <fields>
-        <label><!-- Owner Language Locale Key --></label>
-        <name>Core_MDF_Owner_Language_Locale_Key_txt__c</name>
-    </fields>
-    <fields>
         <label>所有者</label>
         <name>Core_MDF_Owner_Nm__c</name>
     </fields>
     <fields>
-        <label><!-- Owner UserType --></label>
-        <name>Core_MDF_Owner_UserType_Txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- PIC Review Completed --></label>
-        <name>Core_MDF_PIC_Review_Completed__c</name>
-    </fields>
-    <fields>
-        <label><!-- Paid By Payment Type --></label>
-        <name>Core_MDF_Paid_By_Payment_Type_nm__c</name>
-    </fields>
-    <fields>
-        <label><!-- Payment Admin Reminder Date --></label>
-        <name>Core_MDF_Payment_Admin_Reminder_Date_Dtm__c</name>
-    </fields>
-    <fields>
-        <help>当银行处于暂停状态时勾选</help>
         <label>付款冻结</label>
         <name>Core_MDF_Payment_Hold_ind__c</name>
     </fields>
@@ -933,78 +327,6 @@
     <fields>
         <label>付款完成日期</label>
         <name>Core_MDF_Payment_Made_Dt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Payment Rollback Reason --></label>
-        <name>Core_MDF_Payment_Rollback_Reason_nm__c</name>
-        <picklistValues>
-            <masterLabel>Business Request</masterLabel>
-            <translation><!-- Business Request --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Payment File Generation Issue</masterLabel>
-            <translation><!-- Payment File Generation Issue --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Payment Run Issue</masterLabel>
-            <translation><!-- Payment Run Issue --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
-        <label><!-- Payment Type --></label>
-        <name>Core_MDF_Payment_Type_nm__c</name>
-    </fields>
-    <fields>
-        <label>英特尔设备百分比</label>
-        <name>Core_MDF_Percentage_of_Intel_Devices_pct__c</name>
-        <picklistValues>
-            <masterLabel>100</masterLabel>
-            <translation><!-- 100 --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>50</masterLabel>
-            <translation><!-- 50 --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>55</masterLabel>
-            <translation><!-- 55 --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>60</masterLabel>
-            <translation><!-- 60 --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>65</masterLabel>
-            <translation><!-- 65 --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>70</masterLabel>
-            <translation><!-- 70 --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>75</masterLabel>
-            <translation><!-- 75 --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>80</masterLabel>
-            <translation><!-- 80 --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>85</masterLabel>
-            <translation><!-- 85 --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>90</masterLabel>
-            <translation><!-- 90 --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>95</masterLabel>
-            <translation><!-- 95 --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
-        <label>标签位置</label>
-        <name>Core_MDF_Placement_txt__c</name>
     </fields>
     <fields>
         <label><!-- IdealModelResult --></label>
@@ -1047,53 +369,20 @@
         <name>Core_MDF_Predictive_Audit_Retries__c</name>
     </fields>
     <fields>
-        <help>如果申请被选择为进行后端审核，则适用处理优先项。
-先支付，然后结算 – 最适合加速现金流；相对于金钱优先考滤时间，并为未来可能的追偿留下机会。
-先结算，然后支付 – 最适合最大限度地减少付款后追偿；相对于付款优先考虑最终解决，降低未来追偿的风险。</help>
-        <label>处理优先项</label>
-        <name>Core_MDF_Processing_Preference_nm__c</name>
-        <picklistValues>
-            <masterLabel>Get paid, then settle</masterLabel>
-            <translation>先支付，然后结算</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Settle, then get paid</masterLabel>
-            <translation>先结算，然后支付</translation>
-        </picklistValues>
-    </fields>
-    <fields>
-        <help>与此申请相关的计划。</help>
+        <help>该申请有关的计划 (CCF/DCF)</help>
         <label>计划</label>
         <name>Core_MDF_Program__c</name>
-    </fields>
-    <fields>
-        <label><!-- Proposal Based Ind --></label>
-        <name>Core_MDF_Proposal_Based_Ind__c</name>
     </fields>
     <fields>
         <label><!-- Quantity of (Impressions, instances) --></label>
         <name>Core_MDF_Quantity_of_Impression__c</name>
     </fields>
     <fields>
-        <help>输入从项目开始到现在的数量，即使该数量为 0 或自最近一次报告以来未发生变化。</help>
-        <label>迄今为止的数量</label>
-        <name>Core_MDF_Quantity_to_Date_Nbr__c</name>
-    </fields>
-    <fields>
-        <label><!-- Quarter Number and Year --></label>
-        <name>Core_MDF_Quarter_Year_Txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Queued Hold Email Sent --></label>
-        <name>Core_MDF_Queued_Email_Sent_Ind__c</name>
-    </fields>
-    <fields>
         <label><!-- Claim Approval Date --></label>
         <name>Core_MDF_RMF_Claim_Approval_Dt__c</name>
     </fields>
     <fields>
-        <help>当申请处于英特尔人工冻结或英特尔冻结状态时勾选</help>
-        <label>英特尔冻结</label>
+        <label><!-- Intel Hold --></label>
         <name>Core_MDF_RMF_Intel_Hold_Ind__c</name>
     </fields>
     <fields>
@@ -1101,20 +390,8 @@
         <name>Core_MDF_RMF_Last_POP_Submission_Dt__c</name>
     </fields>
     <fields>
-        <label><!-- Internal Comments --></label>
-        <name>Core_MDF_RecentInternalComments_txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Recommend for Claim Review? --></label>
-        <name>Core_MDF_Recommend_For_ClaimReview__c</name>
-    </fields>
-    <fields>
-        <label>保持追偿</label>
-        <name>Core_MDF_Recovery_Hold_Ind__c</name>
-    </fields>
-    <fields>
-        <help>国家/地区名称</help>
-        <label>地区</label>
+        <help><!-- Region Name --></help>
+        <label><!-- Region --></label>
         <name>Core_MDF_Region_Cd__c</name>
     </fields>
     <fields>
@@ -1128,38 +405,14 @@
         <name>Core_MDF_Reimbursable_Transaction_Amount__c</name>
     </fields>
     <fields>
-        <help>适用于此申请的报销百分比</help>
+        <help>适用于此申请的报销 %</help>
         <label>报销率 %</label>
         <name>Core_MDF_Reimbursement_Percent__c</name>
-    </fields>
-    <fields>
-        <label><!-- Reprocess Claim --></label>
-        <name>Core_MDF_Reprocess_Claim__c</name>
     </fields>
     <fields>
         <help>应用适用的报销率后应报销的请求金额</help>
         <label>申请报销的金额（美元）</label>
         <name>Core_MDF_Requested_Reimbursement_Amt__c</name>
-    </fields>
-    <fields>
-        <label>销售单位营收（美元）</label>
-        <name>Core_MDF_Revenue_of_Units_Sold_amt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Review Hold Rule --></label>
-        <name>Core_MDF_Review_Hold_Rule_Nm__c</name>
-    </fields>
-    <fields>
-        <label>每小时运行次数</label>
-        <name>Core_MDF_Runs_per_hour_nbr__c</name>
-    </fields>
-    <fields>
-        <label>社交媒体点赞/分享数量</label>
-        <name>Core_MDF_Social_Media_Engagements_nbr__c</name>
-    </fields>
-    <fields>
-        <label><!-- Start Time --></label>
-        <name>Core_MDF_StartTime_dtm__c</name>
     </fields>
     <fields>
         <help>申请的状态</help>
@@ -1182,84 +435,28 @@
             <translation>已拒绝</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Draft</masterLabel>
-            <translation>草稿</translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Hold</masterLabel>
             <translation>冻结付款</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>PIC Pending</masterLabel>
-            <translation>等待 PIC</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Paid</masterLabel>
             <translation>已付清</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Paid and PIC Pending</masterLabel>
-            <translation>已支付和等待 PIC</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Paid and Pending Documents</masterLabel>
-            <translation>已支付和待处理文档</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Paid and Resubmission Required</masterLabel>
-            <translation>已支付和需要重新提交</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Payment Clearance Processing</masterLabel>
-            <translation>付款清算处理</translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Payment Due</masterLabel>
             <translation>应付金额</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Pending Account Manager Clarification</masterLabel>
-            <translation>待客户经理澄清</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Pending Available Funds</masterLabel>
             <translation>等待可用的基金</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Pending Clarification</masterLabel>
-            <translation>等待澄清</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Pending Documents</masterLabel>
-            <translation>有待文档</translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Pending Payment</masterLabel>
             <translation>有待付款</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Pending Review</masterLabel>
-            <translation>有待审核</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Queued for Payment</masterLabel>
-            <translation><!-- Queued for Payment --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Resubmission Required</masterLabel>
-            <translation>需要重新提交</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Resubmission Window Closed</masterLabel>
-            <translation>重新提交窗口已关闭</translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Submitted</masterLabel>
             <translation>已提交</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Void</masterLabel>
-            <translation><!-- Void --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -1268,23 +465,7 @@
         <name>Core_MDF_Sub_Region_Cd__c</name>
     </fields>
     <fields>
-        <label><!-- Approval Alert --></label>
-        <name>Core_MDF_Submit_For_Approval_Alert_txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Super Claim Status --></label>
-        <name>Core_MDF_Super_Claim_Status_nm__c</name>
-    </fields>
-    <fields>
-        <label><!-- SurePay Processed Ind --></label>
-        <name>Core_MDF_SurePay_Processed_Ind__c</name>
-    </fields>
-    <fields>
-        <label>电视频道</label>
-        <name>Core_MDF_TV_Channel_s_txt__c</name>
-    </fields>
-    <fields>
-        <help>联合推广活动的目标受众</help>
+        <help>市场推广活动针对的目标受众</help>
         <label>目标受众</label>
         <name>Core_MDF_Target_Audience__c</name>
     </fields>
@@ -1294,37 +475,19 @@
         <name>Core_MDF_Taxes_Local__c</name>
     </fields>
     <fields>
-        <label>视频持续时间</label>
-        <name>Core_MDF_Time_video_to_last_txt__c</name>
-    </fields>
-    <fields>
         <help><!-- Check the box for claim to go straight to pay. Uncheck the box to determine if the claim should be audited. --></help>
         <label><!-- Straight to Pay --></label>
         <name>Core_MDF_To_Be_Audited_Ind__c</name>
     </fields>
     <fields>
-        <help>由于调整抵消而减去“申请金额（美元）”的金额（美元）</help>
+        <help>由于调整抵消，减少“可偿还金额（USD）”的金额（USD）</help>
         <label>总抵消金额（美元）</label>
         <name>Core_MDF_Total_Claim_Offsets__c</name>
     </fields>
     <fields>
-        <help>由于回收，应从“可报销额（美元）”中扣减的金额。</help>
-        <label>申请回收总金额（美元）</label>
-        <name>Core_MDF_Total_Claim_Recovery_Amount__c</name>
-    </fields>
-    <fields>
-        <help>交易/发票的总金额（以交易币种计）</help>
+        <help><!-- Total amount of the transaction/invoice in the transaction currency --></help>
         <label>总金额（本位币）</label>
         <name>Core_MDF_Total_Invoice_Amount_Local__c</name>
-    </fields>
-    <fields>
-        <label><!-- Total Review Duration(Minutes) --></label>
-        <name>Core_MDF_Total_Review_Duration_Mins_nbr__c</name>
-    </fields>
-    <fields>
-        <help><!-- Amount (USD) reducing ‘Requested Amount (USD)’ due to Adjustment Offsets --></help>
-        <label><!-- Total Offset Amount (USD) --></label>
-        <name>Core_MDF_Total_SubClaim_Offset_Amt__c</name>
     </fields>
     <fields>
         <label>申请类型</label>
@@ -1338,129 +501,9 @@
             <translation>申请</translation>
         </picklistValues>
     </fields>
-    <fields>
-        <label>页面类型</label>
-        <name>Core_MDF_Type_of_Page_txt__c</name>
-        <picklistValues>
-            <masterLabel>Colour double page spread</masterLabel>
-            <translation><!-- Colour double page spread --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Colour half page</masterLabel>
-            <translation><!-- Colour half page --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Colour page</masterLabel>
-            <translation><!-- Colour page --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Mono double page spread</masterLabel>
-            <translation><!-- Mono double page spread --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Mono half page</masterLabel>
-            <translation><!-- Mono half page --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Mono page</masterLabel>
-            <translation><!-- Mono page --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
-        <label>资源类型</label>
-        <name>Core_MDF_Type_of_Resource_txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- URL --></label>
-        <name>Core_MDF_URL_txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Ultimate Account ID --></label>
-        <name>Core_MDF_Ultimate_Account_ID__c</name>
-    </fields>
-    <fields>
-        <label><!-- Unified Global ID --></label>
-        <name>Core_MDF_Unified_Global_ID__c</name>
-    </fields>
-    <fields>
-        <label><!-- Unified Global Name --></label>
-        <name>Core_MDF_Unified_Global_Name_nm__c</name>
-    </fields>
-    <fields>
-        <label><!-- VAT Amount --></label>
-        <name>Core_MDF_VAT_Amt__c</name>
-    </fields>
-    <fields>
-        <help>确定申请是否符合 VAT 的要求</help>
-        <label><!-- VAT Eligibility --></label>
-        <name>Core_MDF_VAT_Eligibility_Ind__c</name>
-    </fields>
-    <fields>
-        <help>当为付款单据处理选择了申请时勾选</help>
-        <label>付款单据审核暂停</label>
-        <name>Core_MDF_VAT_Hold_Ind__c</name>
-    </fields>
-    <fields>
-        <help>选择“是”即表示您选择加入增值税流程，如果要退出，请选择“否”。</help>
-        <label>发票类型</label>
-        <name>Core_MDF_VAT_Opt_In__c</name>
-        <picklistValues>
-            <masterLabel>No</masterLabel>
-            <translation>否</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Reimbursement Request for 3rd party payment (NET cost only)</masterLabel>
-            <translation>第三方付款的报销请求（仅限净成本）</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Service Invoice to Intel (VAT may apply)</masterLabel>
-            <translation>向英特尔开具的服务发票（可能缴付增值税）</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Yes</masterLabel>
-            <translation>是</translation>
-        </picklistValues>
-    </fields>
-    <fields>
-        <label>发票类型</label>
-        <name>Core_MDF_VAT_Opt_In_txt__c</name>
-    </fields>
-    <fields>
-        <label>举办地点</label>
-        <name>Core_MDF_Where_to_take_place_txt__c</name>
-        <picklistValues>
-            <masterLabel>In-store</masterLabel>
-            <translation>店内</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Inside</masterLabel>
-            <translation><!-- Inside --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Online</masterLabel>
-            <translation>在线</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Out of store</masterLabel>
-            <translation>店外</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Outside</masterLabel>
-            <translation><!-- Outside --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
-        <label><!-- Owner swapped with submitter --></label>
-        <name>Core_MDF_owner_swapped_withsubmitter_ind__c</name>
-    </fields>
-    <recordTypes>
-        <description><!-- Channel MDF Program Record Type --></description>
-        <label>基于渠道 MDF 客户</label>
-        <name>Core_MDF_Channel_MDF_Account_Based</name>
-    </recordTypes>
     <recordTypes>
         <description><!-- CCF Program Record Type --></description>
-        <label>客户端</label>
+        <label>个人电脑联合市场推广基金 </label>
         <name>Core_MDF_Client_Co_Marketing_Fund</name>
     </recordTypes>
     <recordTypes>
@@ -1469,29 +512,9 @@
         <name>Core_MDF_Client_Co_Marketing_Fund_Boost</name>
     </recordTypes>
     <recordTypes>
-        <description><!-- Record type for Co-GTM Program --></description>
-        <label><!-- Co-GTM --></label>
-        <name>Core_MDF_Co_GTM</name>
-    </recordTypes>
-    <recordTypes>
         <description><!-- DCF Program Record Type --></description>
-        <label>数据中心</label>
+        <label>数据中心联合市场推广基金</label>
         <name>Core_MDF_Data_Center_Co_Marketing_Fund</name>
-    </recordTypes>
-    <recordTypes>
-        <description><!-- Record Type for CCP EEF Program --></description>
-        <label><!-- Ecosystem Extension Fund --></label>
-        <name>Core_MDF_Ecosystem_Extension_Fund</name>
-    </recordTypes>
-    <recordTypes>
-        <description><!-- IPA Account Based Record Type --></description>
-        <label><!-- Intel Partner Alliance Account Based --></label>
-        <name>Core_MDF_IPA_Account_Based</name>
-    </recordTypes>
-    <recordTypes>
-        <description><!-- IPA Program Type --></description>
-        <label><!-- Intel Partner Alliance Proposal Based --></label>
-        <name>Core_MDF_Intel_Partner_Alliance</name>
     </recordTypes>
     <recordTypes>
         <description><!-- It will be used for Retail Co-Marketing purposes --></description>
@@ -1504,27 +527,20 @@
         <name>Core_MDF_Service_Provider_Co_Marketing_Fund</name>
     </recordTypes>
     <validationRules>
-        <errorMessage><!-- This claim cannot be reprocessed --></errorMessage>
-        <name>Claim_cannot_be_reprocessed</name>
-    </validationRules>
-    <validationRules>
         <errorMessage>请输入大于零的总金额</errorMessage>
         <name>Core_MDF_Amount_Validation</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- An application error occurred. Please try again. If error still persists, please contact Support Services. --></errorMessage>
-        <name>Core_MDF_BlockPendingReviewToDraft</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage>报销的开始和结束日期只能涵盖 3 个月的期限。</errorMessage>
+        <errorMessage><!-- The start and end date on a claim can cover only a 3 month period. --></errorMessage>
         <name>Core_MDF_ClaimEndDateBetween3Months</name>
     </validationRules>
     <validationRules>
-        <errorMessage>请输入以下必填字段：执行开始日期，执行结束日期，处理优先项，开支证明货币，开支证明日期，开支证明编号，不予报销的开支（本位币），税款（本位币），总金额（本位币），国家/地区</errorMessage>
+        <errorMessage><!-- Please enter following Mandatory fields.
+Ad Run Start Date, Ad Run End Date, Invoice/Receipt Currency, Invoice/Receipt Date, Invoice/Receipt Number, Media Vehicle, Costs not Reimbursable (Local), Taxes (Local), Total Amount (Local), Country/Region --></errorMessage>
         <name>Core_MDF_Claim_Required_Fields</name>
     </validationRules>
     <validationRules>
-        <errorMessage>无法创建/ 更新该报销申请，因为已超出申请期限。申请必须在执行结束日期后的六个月内提交。</errorMessage>
+        <errorMessage>无法创建/ 更新该报销申请，因为已超出申请期限。报销申请必须在广告活动结束日期后的六个月内提交。</errorMessage>
         <name>Core_MDF_Claim_Window</name>
     </validationRules>
     <validationRules>
@@ -1532,40 +548,24 @@
         <name>Core_MDF_Close_Adjustment</name>
     </validationRules>
     <validationRules>
-        <errorMessage>请输入大于或等于零的不可报销的费用数额</errorMessage>
-        <name>Core_MDF_CostNotReimbursable</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage>执行结束日期不能是未来的日期</errorMessage>
+        <errorMessage>广告运作结束日期不能是未来的日期</errorMessage>
         <name>Core_MDF_EndDateFutureValidation</name>
     </validationRules>
     <validationRules>
-        <errorMessage>请输入活动估计期限范围内的执行结束日期。</errorMessage>
+        <errorMessage>请输入一个处于预计活动日期范围内的结束日期。</errorMessage>
         <name>Core_MDF_EndDateValidation</name>
     </validationRules>
     <validationRules>
-        <errorMessage>请输入基于结果的项目估计期限范围内的执行结束日期。</errorMessage>
-        <name>Core_MDF_EndDateValidation_OutcomeBased</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage>您不能使用此基于结果的项目，因为该项目的关联帐户处于非活动状态</errorMessage>
-        <name>Core_MDF_InactiveAccountValidation_Outco</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- You cannot use this Activity as the account over the Activity is inactive --></errorMessage>
+        <errorMessage><!-- You cannot use this activity as the account over the activity is inactive --></errorMessage>
         <name>Core_MDF_Inactive_Account_Validation</name>
     </validationRules>
     <validationRules>
-        <errorMessage>开支证明日期不能是未来日期</errorMessage>
+        <errorMessage>发票/收据日期不能是未来的日期</errorMessage>
         <name>Core_MDF_Invoice_Date</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- The Amount of a Negative Claim cannot be greater than 0 --></errorMessage>
         <name>Core_MDF_NegativeClaimAmountVal</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Payment Id is mandatory for Pending Payment Claims --></errorMessage>
-        <name>Core_MDF_PaymentId_Check</name>
     </validationRules>
     <validationRules>
         <errorMessage>请输入大于零的可报销金额</errorMessage>
@@ -1576,43 +576,11 @@
         <name>Core_MDF_RequestedReimbursementAmt</name>
     </validationRules>
     <validationRules>
-        <errorMessage>由于与申请相关的 MDF 英特尔® 合作伙伴联盟活动被拒绝，因此无法创建索赔。</errorMessage>
-        <name>Core_MDF_RestrictClaimCreationOnDeclined</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage>不能对处于&quot;关闭&quot;或&quot;取消&quot;状态的基于结果的项目创建申请</errorMessage>
-        <name>Core_MDF_RestrictClaimforClosed_Outcome</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage>此升级已创建索赔。如果必须提交其他索赔，请提出新的升级。</errorMessage>
-        <name>Core_MDF_RestrictCreationOfMultipleClaim</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage>此用户没有执行此项操作的权限。</errorMessage>
-        <name>Core_MDF_Restrict_Change_Owner</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Claim creation is blocked due to the ‘In-Progress’ Activity needing approval. --></errorMessage>
-        <name>Core_MDF_Restrict_Claim_Creation</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage>由于“进行中”基于结果的项目需要批准，因此索赔创建被阻止。</errorMessage>
-        <name>Core_MDF_Restrict_Claim_Creation_Outcome</name>
-    </validationRules>
-    <validationRules>
         <errorMessage>不能对处于“关闭”或“取消”状态对活动创建申请</errorMessage>
         <name>Core_MDF_Restrict_ClaimforClosedActivity</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Super Claims having sub claims can be set to only Draft, Submitted or Rejected status. --></errorMessage>
-        <name>Core_MDF_Restrict_Status_For_Super_Claim</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Claim Status cannot be updated in its current status --></errorMessage>
-        <name>Core_MDF_Restrict_Status_Update</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage>报销额不能超过调增时批准的金额</errorMessage>
+        <errorMessage><!-- Claim amount cannot exceed the amount that was approved on the escalation. --></errorMessage>
         <name>Core_MDF_RetailAmtLessThanEscalationAmt</name>
     </validationRules>
     <validationRules>
@@ -1620,28 +588,16 @@
         <name>Core_MDF_SPCF_Negative_Number_Val</name>
     </validationRules>
     <validationRules>
-        <errorMessage>执行开始日期不能是未来的日期</errorMessage>
+        <errorMessage>广告运作开始日期不能是未来的日期</errorMessage>
         <name>Core_MDF_StartDateFutureValidation</name>
     </validationRules>
     <validationRules>
-        <errorMessage>请输入活动估计期限范围内的执行开始日期。</errorMessage>
+        <errorMessage>请输入一个处于预计活动日期范围内的开始日期。</errorMessage>
         <name>Core_MDF_StartDateValidation</name>
     </validationRules>
     <validationRules>
-        <errorMessage>请输入基于结果的项目估计期限范围内的执行开始日期。</errorMessage>
-        <name>Core_MDF_StartDateValidation_Outcome</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage>执行开始日期不能晚于执行结束日期</errorMessage>
+        <errorMessage>广告运作开始日期不能晚于广告运作结束日期</errorMessage>
         <name>Core_MDF_StartDate_EndDate_Validation</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage>请输入大于或等于零的税额</errorMessage>
-        <name>Core_MDF_TaxesLocal</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Bank is not applicable for this Claim due to the Budget Type provided. --></errorMessage>
-        <name>Core_MDF_ValidateBank</name>
     </validationRules>
     <webLinks>
         <label><!-- Core_MDF_Export_List_View --></label>

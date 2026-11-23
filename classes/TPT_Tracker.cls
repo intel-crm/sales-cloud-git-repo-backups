@@ -20,7 +20,7 @@ public with sharing Class TPT_Tracker
     private static final String PCC_Product_group_FIELD = 'Core_Product_Group_Nm__c';
     private static final String PCC_Status_Approved = 'PCC_StatusChange__c';
     private static final String PCC_Regection_Comment_FIELD = 'Core_Rejection_Comment_Txt__c';
-    //private static final String PCC_Regected = 'IsRejected__c';
+    private static final String PCC_Regected = 'IsRejected__c';
     public static boolean recursiveCheck = false;
     public static boolean isRejected = false;
     
@@ -35,13 +35,18 @@ public with sharing Class TPT_Tracker
             for(sObject trackerRec:newList){
                 TPT_Tracker__c tracker = new TPT_Tracker__c();
                 Schema.SObjectType objType = trackerRec.getSObjectType();
-                  if (objType == InnovationTracker__c.SObjectType) {
+                    if (objType == InnovationTracker__c.SObjectType) {
                         tracker.InnovationTracker__c = (Id) trackerRec.get('Id');
                         tracker.Status__c = (String) trackerRec.get('Status__c');
-                  }
-                  else if(objType == Core_Design_Registration__c.SObjectType){
+                    }
+                    else if(objType == Core_Design_Registration__c.SObjectType){
                         tracker.DealRegistration__c = (Id) trackerRec.get('Id');
-                  }
+                    }
+                    else if(objType == PCC_Rebate_Claim_Stage__c.SObjectType){
+                        tracker.Rebate_Claim_Upload__c = (Id) trackerRec.get('Id');
+                        tracker.Status__c = 'Staging Record: '+ (String) trackerRec.get('PCC_Status__c');
+                        tracker.Status_Change_Date_Time__c = String.valueOf(System.now().format('yyyy-MM-dd HH:mm:ss', 'GMT'));
+                    }
                     trackerList.add(tracker);                  
             }
             if(trackerList!=null && !trackerList.isEmpty()){
@@ -71,6 +76,7 @@ public with sharing Class TPT_Tracker
             
             for(sObject trackerRec : newList) {
                 Schema.SObjectType objType = trackerRec.getSObjectType();
+
                 // TPT Report logic for innovation.
                 if (objType == InnovationTracker__c.SObjectType) {
                     InnovationTracker__c oldTracker = (InnovationTracker__c) oldMap.get(trackerRec.Id);
@@ -79,95 +85,76 @@ public with sharing Class TPT_Tracker
                         if (tptTracker != null) {tptTrackersToUpdate.add(tptTracker);
                         }
                     }
-                } 
-                else if (objType == Core_Design_Registration__c.SObjectType) { // TPT Report logic for Deal/Design registration.
+                }
+                 // TPT Report logic for Deal/Design registration.
+                else if (objType == Core_Design_Registration__c.SObjectType) {
                     Core_Design_Registration__c oldtrackerRec = (Core_Design_Registration__c) oldMap.get(trackerRec.Id);
                     regId = oldtrackerRec.Id;
                     
-                    system.debug('oldtrackerRec.get(CORE_DESIGN_REG_STATUS_FIELD)-->'+oldtrackerRec.get(CORE_DESIGN_REG_STATUS_FIELD));
-                    system.debug('trackerRec.get(CORE_DESIGN_REG_STATUS_FIELD)-->'+trackerRec.get(CORE_DESIGN_REG_STATUS_FIELD));
-                    //system.debug('trackerRec.get(PCC_Regected)-->'+trackerRec.get(PCC_Regected));
-                    system.debug('trackerRec.get(PCC_REGISTRATION_TYPE_FIELD)-->'+trackerRec.get(PCC_REGISTRATION_TYPE_FIELD));
-                    system.debug('oldtrackerRec.get(PCC_REGISTRATION_TYPE_FIELD)-->'+oldtrackerRec.get(PCC_REGISTRATION_TYPE_FIELD));
-                    system.debug('trackerRec.get(PCC_Status_Approved)-->'+trackerRec.get(PCC_Status_Approved));
-                    system.debug('TPT_Tracker.isRejected-->'+TPT_Tracker.isRejected);
-                    /*if (oldtrackerRec != null && trackerRec.get(CORE_DESIGN_REG_STATUS_FIELD) == oldtrackerRec.get(CORE_DESIGN_REG_STATUS_FIELD) && trackerRec.get(PCC_REGISTRATION_TYPE_FIELD) == 'Design Registration' && trackerRec.get(CORE_DESIGN_REG_STATUS_FIELD) == 'Re-Submitted' && oldtrackerRec.get(CORE_DESIGN_REG_STATUS_FIELD) == 'Re-Submitted') {
-                        tptTracker = retrieveAndUpdateTPTTracker(trackerRec.Id, CORE_DESIGN_REG_STATUS_FIELD,'Rejected', (String) oldtrackerRec.get(CORE_DESIGN_REG_STATUS_FIELD), now, null, (String) trackerRec.get(PCC_REGISTRATION_TYPE_FIELD), (String) trackerRec.get(PCC_Product_group_FIELD));
-                        if (tptTracker != null) {
-                            tptTrackersToUpdate.add(tptTracker);
-                        }
-                        
-                    }*/
-                    
-                    if (test.Isrunningtest() || (oldtrackerRec != null && trackerRec.get(CORE_DESIGN_REG_STATUS_FIELD) != oldtrackerRec.get(CORE_DESIGN_REG_STATUS_FIELD) && (trackerRec.get(PCC_REGISTRATION_TYPE_FIELD) == 'Design Registration' || oldtrackerRec.get(PCC_REGISTRATION_TYPE_FIELD) == 'Design Registration'))) {
+                    if (oldtrackerRec != null && trackerRec.get(CORE_DESIGN_REG_STATUS_FIELD) != oldtrackerRec.get(CORE_DESIGN_REG_STATUS_FIELD) && (trackerRec.get(PCC_REGISTRATION_TYPE_FIELD) == 'Design Registration' || oldtrackerRec.get(PCC_REGISTRATION_TYPE_FIELD) == 'Design Registration' || test.Isrunningtest())) {
                         
                         system.debug('(String) trackerRec.get(CORE_DESIGN_REG_STATUS_FIELD)-->'+(String) trackerRec.get(CORE_DESIGN_REG_STATUS_FIELD));
                         system.debug('(String) trackerRec.get(PCC_Product_group_FIELD)-->'+(String) trackerRec.get(PCC_Product_group_FIELD));
                         
-                        /*if((trackerRec.get(PCC_Product_group_FIELD) == 'Embedded/IOT')){
-                            system.debug('(String) trackerRec.get(CORE_DESIGN_REG_STATUS_FIELD) 3-->'+(String) trackerRec.get(CORE_DESIGN_REG_STATUS_FIELD));     
-                            tptTracker = retrieveAndUpdateTPTTracker(trackerRec.Id, CORE_DESIGN_REG_STATUS_FIELD, (String) trackerRec.get(CORE_DESIGN_REG_STATUS_FIELD),(String) oldtrackerRec.get(CORE_DESIGN_REG_STATUS_FIELD), now, null, (String) trackerRec.get(PCC_REGISTRATION_TYPE_FIELD), (String) trackerRec.get(PCC_Product_group_FIELD));
-                        }
-                        else if(!designStatus.contains((String) trackerRec.get(CORE_DESIGN_REG_STATUS_FIELD))){
-                            system.debug('(String) trackerRec.get(CORE_DESIGN_REG_STATUS_FIELD) 4-->'+(String) trackerRec.get(CORE_DESIGN_REG_STATUS_FIELD));
-                            if((String) trackerRec.get(CORE_DESIGN_REG_STATUS_FIELD) == 'Submitted'){
-                             tptTracker = retrieveAndUpdateTPTTracker(trackerRec.Id, CORE_DESIGN_REG_STATUS_FIELD,'Pre-Approved',(String) oldtrackerRec.get(CORE_DESIGN_REG_STATUS_FIELD), now, null, (String) trackerRec.get(PCC_REGISTRATION_TYPE_FIELD), (String) trackerRec.get(PCC_Product_group_FIELD));
-                            }
-                            else{
-                                system.debug('(String) trackerRec.get(CORE_DESIGN_REG_STATUS_FIELD) 5-->'+(String) trackerRec.get(CORE_DESIGN_REG_STATUS_FIELD));
-                                tptTracker = retrieveAndUpdateTPTTracker(trackerRec.Id, CORE_DESIGN_REG_STATUS_FIELD, (String) trackerRec.get(CORE_DESIGN_REG_STATUS_FIELD),(String) oldtrackerRec.get(CORE_DESIGN_REG_STATUS_FIELD), now, null, (String) trackerRec.get(PCC_REGISTRATION_TYPE_FIELD), (String) trackerRec.get(PCC_Product_group_FIELD));
-                            }
-                        }*/
                         String registrationType = trackerRec.get(PCC_REGISTRATION_TYPE_FIELD) == null ? (String) oldtrackerRec.get(PCC_REGISTRATION_TYPE_FIELD) : (String) trackerRec.get(PCC_REGISTRATION_TYPE_FIELD);
                         tptTracker = retrieveAndUpdateTPTTracker(trackerRec.Id, CORE_DESIGN_REG_STATUS_FIELD, (String) trackerRec.get(CORE_DESIGN_REG_STATUS_FIELD), (String) oldtrackerRec.get(CORE_DESIGN_REG_STATUS_FIELD), now, null, (String) registrationType, (String) trackerRec.get(PCC_Product_group_FIELD));
-                        if (tptTracker != null) {tptTrackersToUpdate.add(tptTracker);
+                        if (tptTracker != null) {
+                            tptTrackersToUpdate.add(tptTracker);
                         }
                         
                     }
                     if (oldtrackerRec != null && trackerRec.get(CORE_DESIGN_REG_STATUS_FIELD) != oldtrackerRec.get(CORE_DESIGN_REG_STATUS_FIELD) && (trackerRec.get(PCC_REGISTRATION_TYPE_FIELD) == 'Deal Registration' || oldtrackerRec.get(PCC_REGISTRATION_TYPE_FIELD) == 'Deal Registration') && trackerRec.get(PCC_Covered_Account_FIELD) == true) {
                         
-                        system.debug('(String) trackerRec.get(CORE_DESIGN_REG_STATUS_FIELD) 2-->'+(String) trackerRec.get(CORE_DESIGN_REG_STATUS_FIELD));
-                        
                         String dealRegistrationType = trackerRec.get(PCC_REGISTRATION_TYPE_FIELD) == null ? (String) oldtrackerRec.get(PCC_REGISTRATION_TYPE_FIELD) : (String) trackerRec.get(PCC_REGISTRATION_TYPE_FIELD);
-                        
                         tptTracker = retrieveAndUpdateTPTTracker(trackerRec.Id, CORE_DESIGN_REG_STATUS_FIELD, (String) trackerRec.get(CORE_DESIGN_REG_STATUS_FIELD),(String) oldtrackerRec.get(CORE_DESIGN_REG_STATUS_FIELD), now,true, (String) dealRegistrationType, null);
-                        if(tptTracker != null){tptTrackersToUpdate.add(tptTracker);
+                        if(tptTracker != null){
+                            tptTrackersToUpdate.add(tptTracker);
                         }
-                        
                     }
                     if (oldtrackerRec != null && trackerRec.get(CORE_DESIGN_REG_STATUS_FIELD) != oldtrackerRec.get(CORE_DESIGN_REG_STATUS_FIELD) && (trackerRec.get(PCC_REGISTRATION_TYPE_FIELD) == 'Deal Registration' || oldtrackerRec.get(PCC_REGISTRATION_TYPE_FIELD) == 'Deal Registration') && trackerRec.get(PCC_Covered_Account_FIELD) == false) {
-                        system.debug('(String) trackerRec.get(CORE_DESIGN_REG_STATUS_FIELD) 1-->'+(String) trackerRec.get(CORE_DESIGN_REG_STATUS_FIELD));
-                        
                         String dealRegistrationType2 = trackerRec.get(PCC_REGISTRATION_TYPE_FIELD) == null ? (String) oldtrackerRec.get(PCC_REGISTRATION_TYPE_FIELD) : (String) trackerRec.get(PCC_REGISTRATION_TYPE_FIELD);
-                        
                         tptTracker = retrieveAndUpdateTPTTracker(trackerRec.Id, CORE_DESIGN_REG_STATUS_FIELD, (String) trackerRec.get(CORE_DESIGN_REG_STATUS_FIELD),(String) oldtrackerRec.get(CORE_DESIGN_REG_STATUS_FIELD), now, false, (String) dealRegistrationType2, null);
-            
-                        if(tptTracker != null){tptTrackersToUpdate.add(tptTracker);
+                        if(tptTracker != null){
+                            tptTrackersToUpdate.add(tptTracker);
                         }
                     }
                     if((trackerRec.get(PCC_REGISTRATION_TYPE_FIELD) == 'Deal Registration' || oldtrackerRec.get(PCC_REGISTRATION_TYPE_FIELD) == 'Deal Registration') && oldtrackerRec != null && trackerRec.get(CORE_DESIGN_REG_STATUS_FIELD) == oldtrackerRec.get(CORE_DESIGN_REG_STATUS_FIELD) && trackerRec.get(CORE_DESIGN_REG_STATUS_FIELD) == 'Deal accepted'){
-                        system.debug('(String) trackerRec.get(CORE_DESIGN_REG_STATUS_FIELD)-->'+(String) trackerRec.get(CORE_DESIGN_REG_STATUS_FIELD));
-                        system.debug('trackerRec.get(PCC_Status_Approved)-->'+trackerRec.get(PCC_Status_Approved));
                         tptTracker = retrieveAndUpdateTPTTracker(trackerRec.Id, CORE_DESIGN_REG_STATUS_FIELD,'Approved',(String) oldtrackerRec.get(CORE_DESIGN_REG_STATUS_FIELD), now, false, (String) trackerRec.get(PCC_REGISTRATION_TYPE_FIELD), null);
                         if(tptTracker != null){tptTrackersToUpdate.add(tptTracker);
                         }
                     }
-                    
-                    system.debug('trackerRec.get(PCC_Covered_Account_FIELD)-->'+trackerRec.get(PCC_Covered_Account_FIELD));
                     if (oldtrackerRec != null && trackerRec.get(CORE_DESIGN_REG_STATUS_FIELD) != oldtrackerRec.get(CORE_DESIGN_REG_STATUS_FIELD) && (trackerRec.get(PCC_REGISTRATION_TYPE_FIELD) == 'Deal Registration' || oldtrackerRec.get(PCC_REGISTRATION_TYPE_FIELD) == 'Deal Registration') && trackerRec.get(PCC_Covered_Account_FIELD) == null) {
-                        system.debug('(String) trackerRec.get(CORE_DESIGN_REG_STATUS_FIELD) 1-->'+(String) trackerRec.get(CORE_DESIGN_REG_STATUS_FIELD));
-                        
                         String dealRegistrationType2 = trackerRec.get(PCC_REGISTRATION_TYPE_FIELD) == null ? (String) oldtrackerRec.get(PCC_REGISTRATION_TYPE_FIELD) : (String) trackerRec.get(PCC_REGISTRATION_TYPE_FIELD);
-                        
                         tptTracker = retrieveAndUpdateTPTTracker(trackerRec.Id, CORE_DESIGN_REG_STATUS_FIELD, (String) trackerRec.get(CORE_DESIGN_REG_STATUS_FIELD),(String) oldtrackerRec.get(CORE_DESIGN_REG_STATUS_FIELD), now, false, (String) dealRegistrationType2, null);
-            
-                        if(tptTracker != null){tptTrackersToUpdate.add(tptTracker);
+                        if(tptTracker != null){
+                            tptTrackersToUpdate.add(tptTracker);
+                        }
+                    }
+                }
+                else if(objType == PCC_Rebate_Claim_Stage__c.SObjectType){
+                    PCC_Rebate_Claim_Stage__c oldtrackerRec = (PCC_Rebate_Claim_Stage__c) oldMap.get(trackerRec.Id);
+                    if (trackerRec.get('PCC_Status__c') != oldtrackerRec.get('PCC_Status__c')  || trackerRec.get('PCC_Rebate_Claim__c') != oldtrackerRec.get('PCC_Rebate_Claim__c')) {
+                        tptTracker = retrieveAndUpdateTPTTracker(trackerRec.Id, 'PCC_Status__c', 'Staging Record: '+(String) trackerRec.get('PCC_Status__c'),(String) oldtrackerRec.get('PCC_Status__c'), now, null, null, null);
+                        if (trackerRec.get('PCC_Status__c') =='Success' ) {
+                            tptTracker.put('Rebate_Claim__c', trackerRec.get('PCC_Rebate_Claim__c'));
+                        }
+                        if(tptTracker != null){
+                            tptTrackersToUpdate.add(tptTracker);
+                        }
+                    }
+                }
+                else if(objType == PCC_Rebate_Claim__c.SObjectType){
+                    PCC_Rebate_Claim__c oldtrackerRec = (PCC_Rebate_Claim__c) oldMap.get(trackerRec.Id);
+                    if (trackerRec.get('PCC_Claim_Status__c') != oldtrackerRec.get('PCC_Claim_Status__c')) {
+                        tptTracker = retrieveAndUpdateTPTTracker(trackerRec.Id, 'PCC_Claim_Status__c', 'Rebate Claim Record: '+(String) trackerRec.get('PCC_Claim_Status__c'),(String) oldtrackerRec.get('PCC_Claim_Status__c'), now, null, null, null);
+                       if(tptTracker != null){
+                            tptTrackersToUpdate.add(tptTracker);
                         }
                     }
                 }
             }
-            
-            if (!tptTrackersToUpdate.isEmpty()) {Database.upsert(tptTrackersToUpdate, false); // Perform upsert operation
+            if (!tptTrackersToUpdate.isEmpty()) {
+                Database.upsert(tptTrackersToUpdate, false); // Perform upsert operation
             }
         } 
         catch(Exception e) {
@@ -186,74 +173,83 @@ public with sharing Class TPT_Tracker
         TPT_Tracker__c tptTracker;
         try {
             // Construct SOQL query based on field API name
-            system.debug('newValue-->'+newValue);
-            system.debug('oldValue-->'+oldValue);
-            system.debug('productGroup-->'+productGroup);
-            system.debug('now-->'+now);
+            
             String query = 'SELECT Id, Status__c, Status_Change_Date_Time__c, Time_Taken_To_Submit__c FROM TPT_Tracker__c WHERE ';
             if (fieldApiName == STATUS_FIELD) {
                 query += 'InnovationTracker__c = :recordId LIMIT 1';
-            } else if (fieldApiName == CORE_DESIGN_REG_STATUS_FIELD) {query += 'DealRegistration__c = :recordId LIMIT 1';
+            } 
+            else if (fieldApiName == CORE_DESIGN_REG_STATUS_FIELD) {
+                query += 'DealRegistration__c = :recordId LIMIT 1';
+            }
+            else if(fieldApiName == 'PCC_Status__c'){
+                query += 'Rebate_Claim_Upload__c = :recordId LIMIT 1';
+
+            }
+            else if(fieldApiName == 'PCC_Claim_Status__c'){
+                query += 'Rebate_Claim__c = :recordId LIMIT 1';
+
             }
             
             // Execute query
+
             tptTracker = Database.query(query);
-            system.debug('tptTracker.Status__c-->'+tptTracker.Status__c);
-            if (tptTracker != null) {if(tptTracker.Status__c == null){if(registrationType == 'Design Registration' && (productGroup == 'FPGA/Power' || productGroup == 'Embedded/IOT Boards & Systems') && newValue == 'Submitted'){
-                            tptTracker.Status__c = newValue + ' ; ' + '<br/>' + 'Pre-Approved';
-                            tptTracker.Status_Change_Date_Time__c = String.valueOf(now.format('yyyy-MM-dd HH:mm:ss', 'GMT')) + ' ; ' + '<br/>' + String.valueOf(now.format('yyyy-MM-dd HH:mm:ss', 'GMT'));
-                            system.debug('tptTracker.Status__c design-->'+tptTracker.Status__c);
-                        }
-                        else{tptTracker.Status__c = newValue;
-                            tptTracker.Status_Change_Date_Time__c = String.valueOf(now.format('yyyy-MM-dd HH:mm:ss', 'GMT'));
-                        }
+            if (tptTracker != null) {
+                if(tptTracker.Status__c == null){
+                    if(registrationType == 'Design Registration' && (productGroup == 'FPGA/Power' || productGroup == 'Embedded/IOT Boards & Systems') && newValue == 'Submitted'){
+                        tptTracker.Status__c = newValue + ' ; ' + '<br/>' + 'Pre-Approved';
+                        tptTracker.Status_Change_Date_Time__c = String.valueOf(now.format('yyyy-MM-dd HH:mm:ss', 'GMT')) + ' ; ' + '<br/>' + String.valueOf(now.format('yyyy-MM-dd HH:mm:ss', 'GMT'));
+                    }
+                    else{tptTracker.Status__c = newValue;
+                        tptTracker.Status_Change_Date_Time__c = String.valueOf(now.format('yyyy-MM-dd HH:mm:ss', 'GMT'));
+                    }
                         
                 }
-                else{String tptStatusWithoutBr = tptTracker.Status__c.replaceAll('<br>', '');
+                else{
+                    String tptStatusWithoutBr = tptTracker.Status__c.replaceAll('<br>', '');
                     list<String> statusList = tptStatusWithoutBr.split(';');
                     List<string> statusListWithoutSpace = new List<String>();
-                    for(String status :statusList){String statusValueWithoutSpace = status.trim();statusListWithoutSpace.add(statusValueWithoutSpace);
+                    for(String status :statusList){
+                        String statusValueWithoutSpace = status.trim();statusListWithoutSpace.add(statusValueWithoutSpace);
                     }
-                    
-                    System.debug('statusList-->'+statusList);
-                    System.debug('statusListWithoutSpace-->'+statusListWithoutSpace);
-                    if(registrationType == 'Deal Registration'){if(newValue == 'Pre-Approved' && coveredAccount == true && !statusListWithoutSpace.contains(newValue)){tptTracker.Status__c = (tptTracker.Status__c != null ? tptTracker.Status__c + '; ' : '') + '<br/>' + newValue + ' ; ' + '<br/>' + 'Deal accepted';
+                    if(registrationType == 'Deal Registration'){
+                        if(newValue == 'Pre-Approved' && coveredAccount == true && !statusListWithoutSpace.contains(newValue)){
+                            tptTracker.Status__c = (tptTracker.Status__c != null ? tptTracker.Status__c + '; ' : '') + '<br/>' + newValue + ' ; ' + '<br/>' + 'Deal accepted';
                             tptTracker.Status_Change_Date_Time__c = (tptTracker.Status_Change_Date_Time__c != null ? tptTracker.Status_Change_Date_Time__c + ' ; ' : '') + '<br/>' + String.valueOf(now.format('yyyy-MM-dd HH:mm:ss', 'GMT')) + ' ; ' + '<br/>' + String.valueOf(now.format('yyyy-MM-dd HH:mm:ss', 'GMT'));
-                            system.debug('tptTracker.Status__c-->'+tptTracker.Status__c);
                         }
-                        else if(!statusListWithoutSpace.contains(newValue) || statusListWithoutSpace.contains('Re-Submitted')) {tptTracker.Status__c = (tptTracker.Status__c != null ? tptTracker.Status__c + '; ' : '') + '<br/>' + newValue;
-                            tptTracker.Status_Change_Date_Time__c = (tptTracker.Status_Change_Date_Time__c != null ? tptTracker.Status_Change_Date_Time__c + ' ; ' : '') + '<br/>' + String.valueOf(now.format('yyyy-MM-dd HH:mm:ss', 'GMT'));
-                            system.debug('tptTracker.Status__c 2-->'+tptTracker.Status__c);
-                        }
-                        else if(oldValue == 'Draft'){tptTracker.Status__c = (tptTracker.Status__c != null ? tptTracker.Status__c + '; ' : '') + '<br/>' + newValue;
-                            tptTracker.Status_Change_Date_Time__c = (tptTracker.Status_Change_Date_Time__c != null ? tptTracker.Status_Change_Date_Time__c + ' ; ' : '') + '<br/>' + String.valueOf(now.format('yyyy-MM-dd HH:mm:ss', 'GMT'));
-                            system.debug('tptTracker.Status__c 2-->'+tptTracker.Status__c);
-                        }
-                    }
-                    else if(registrationType == 'Design Registration'){if(!statusListWithoutSpace.contains(newValue) || statusListWithoutSpace.contains('Re-Submitted')) {
+                        else if(!statusListWithoutSpace.contains(newValue) || statusListWithoutSpace.contains('Re-Submitted')) {
                             tptTracker.Status__c = (tptTracker.Status__c != null ? tptTracker.Status__c + '; ' : '') + '<br/>' + newValue;
                             tptTracker.Status_Change_Date_Time__c = (tptTracker.Status_Change_Date_Time__c != null ? tptTracker.Status_Change_Date_Time__c + ' ; ' : '') + '<br/>' + String.valueOf(now.format('yyyy-MM-dd HH:mm:ss', 'GMT'));
-                            system.debug('tptTracker.Status__c design 1-->'+tptTracker.Status__c);
                         }
-                        else{if(!statusListWithoutSpace.contains(newValue)){tptTracker.Status__c = (tptTracker.Status__c != null ? tptTracker.Status__c + '; ' : '') + '<br/>' + newValue;
-                                tptTracker.Status_Change_Date_Time__c = (tptTracker.Status_Change_Date_Time__c != null ? tptTracker.Status_Change_Date_Time__c + ' ; ' : '') + '<br/>' + String.valueOf(now.format('yyyy-MM-dd HH:mm:ss', 'GMT'));
-                                system.debug('tptTracker.Status__c design 2-->'+tptTracker.Status__c);
-                            }
-                        
+                        else if(oldValue == 'Draft'){
+                            tptTracker.Status__c = (tptTracker.Status__c != null ? tptTracker.Status__c + '; ' : '') + '<br/>' + newValue;
+                            tptTracker.Status_Change_Date_Time__c = (tptTracker.Status_Change_Date_Time__c != null ? tptTracker.Status_Change_Date_Time__c + ' ; ' : '') + '<br/>' + String.valueOf(now.format('yyyy-MM-dd HH:mm:ss', 'GMT'));
                         }
                     }
-                    
+                    else if(registrationType == 'Design Registration'){
+                        if(!statusListWithoutSpace.contains(newValue) || statusListWithoutSpace.contains('Re-Submitted')) {
+                            tptTracker.Status__c = (tptTracker.Status__c != null ? tptTracker.Status__c + '; ' : '') + '<br/>' + newValue;
+                            tptTracker.Status_Change_Date_Time__c = (tptTracker.Status_Change_Date_Time__c != null ? tptTracker.Status_Change_Date_Time__c + ' ; ' : '') + '<br/>' + String.valueOf(now.format('yyyy-MM-dd HH:mm:ss', 'GMT'));
+                        }
+                        else{
+                            if(!statusListWithoutSpace.contains(newValue)){
+                                tptTracker.Status__c = (tptTracker.Status__c != null ? tptTracker.Status__c + '; ' : '') + '<br/>' + newValue;
+                                tptTracker.Status_Change_Date_Time__c = (tptTracker.Status_Change_Date_Time__c != null ? tptTracker.Status_Change_Date_Time__c + ' ; ' : '') + '<br/>' + String.valueOf(now.format('yyyy-MM-dd HH:mm:ss', 'GMT'));
+                            }
+                        }
+                    }
+                    else{
+                        if(!statusListWithoutSpace.contains(newValue)) {
+                            tptTracker.Status__c = (tptTracker.Status__c != null ? tptTracker.Status__c + '; ' : '') + '<br/>' + newValue;
+                            tptTracker.Status_Change_Date_Time__c = (tptTracker.Status_Change_Date_Time__c != null ? tptTracker.Status_Change_Date_Time__c + ' ; ' : '') + '<br/>' + String.valueOf(now.format('yyyy-MM-dd HH:mm:ss', 'GMT'));
+                        }
+                    }
                 }
                                 
                 // Calculate time taken to submit
-                //String statusRemoveBr = tptTracker.Status_Change_Date_Time__c.replaceAll('<br>', '');
                 String statusWithoutBr = tptTracker.Status_Change_Date_Time__c.replaceAll('<br/>', '');
-                //String statusWithoutBr = statusRemoveBr.replaceAll('<br/>', '');
                 list<String> statusTimestamps = statusWithoutBr.split(';');
                 Integer statusTimestampsSize = statusTimestamps.size();
                 DateTime recentTime = DateTime.valueOf(statusTimestamps[statusTimestampsSize-1].trim());
-                //DateTime recentTime = DateTime.valueOf(statusTimestamps[statusTimestampsSize-1]);
-                
                 DateTime lastDraftTime = DateTime.valueOf(statusTimestamps[0].trim());
                 Long timeDifferenceInMillis = recentTime.getTime() - lastDraftTime.getTime();
                 Integer diffSeconds = (Integer) timeDifferenceInMillis / 1000;

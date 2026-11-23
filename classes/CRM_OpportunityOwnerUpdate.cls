@@ -307,11 +307,7 @@ global without sharing class CRM_OpportunityOwnerUpdate implements Database.Batc
                  
                 Database.SaveResult[] srListUpdates = Database.update(otmUpdates, false);
             } 
-            
-            
-            
-            
-            
+                       
             //START - Populating the recurssive check map with all processed oppty ids and adding try catch block             
             for(Id opptyIds : mapNewsObject.keySet()){
                 uniqueOpptyIdsSet.add(opptyIds);

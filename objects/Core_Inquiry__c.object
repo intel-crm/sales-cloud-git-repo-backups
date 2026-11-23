@@ -130,7 +130,7 @@
         <actionName>View</actionName>
         <comment>Action override created by Lightning App Builder during activation.</comment>
         <content>Inquiry_Record_Page</content>
-        <formFactor>Large</formFactor>
+        <formFactor>Small</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
     </actionOverrides>
@@ -138,7 +138,7 @@
         <actionName>View</actionName>
         <comment>Action override created by Lightning App Builder during activation.</comment>
         <content>Inquiry_Record_Page</content>
-        <formFactor>Small</formFactor>
+        <formFactor>Large</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
     </actionOverrides>
@@ -197,6 +197,7 @@
         <description>This field is used to populate the company field in email template.</description>
         <externalId>false</externalId>
         <formula>IF( Core_Lead_Inquiries__c &lt;&gt; NULL, IF(Core_Company_Txt__c &lt;&gt; NULL,Core_Company_Txt__c, null),IF(Core_Contact_Inquiries__c &lt;&gt; NULL, IF(Core_Contact_Inquiries__r.Account.Name &lt;&gt; NULL, Core_Contact_Inquiries__r.Account.Name ,null),null))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>AccountName</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -591,7 +592,7 @@ TEXT(Core_Contact_Inquiries__r.Core_Country_Region__c))</formula>
         <fullName>Core_Inquiry_Notes_Txt__c</fullName>
         <label>Inquiry Notes</label>
         <length>32768</length>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>3</visibleLines>
@@ -740,12 +741,6 @@ TEXT(Core_Contact_Inquiries__r.Core_Country_Region__c))</formula>
                     <fullName>SMG</fullName>
                     <default>false</default>
                     <label>SMG</label>
-                </value>
-                <value>
-                    <fullName>SSG&quot;</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>SSG&quot;</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -1179,8 +1174,8 @@ TEXT(Core_Contact_Inquiries__r.Core_Country_Region__c))</formula>
     <fields>
         <fullName>Core_Inquiry_Type_Pkt__c</fullName>
         <label>Inquiry Type</label>
-        <required>true</required>
-        <trackHistory>false</trackHistory>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -1216,18 +1211,6 @@ TEXT(Core_Contact_Inquiries__r.Core_Country_Region__c))</formula>
                     <fullName>Sales Approved</fullName>
                     <default>false</default>
                     <label>Sales Approved</label>
-                </value>
-                <value>
-                    <fullName>Asked for Follow up  </fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Asked for Follow up  </label>
-                </value>
-                <value>
-                    <fullName>High Value Engagement   </fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>High Value Engagement   </label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -1326,11 +1309,21 @@ TEXT(Core_Contact_Inquiries__r.Core_Country_Region__c))</formula>
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Core_Owner_First_Name__c</fullName>
+        <fullName>Core_Owner_Name__c</fullName>
         <externalId>false</externalId>
-        <formula>Owner:User.FirstName</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Owner First Name</label>
+        <label>Owner Name</label>
+        <length>75</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Owner__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( Core_Lead_Inquiries__c &lt;&gt; NULL, IF(Core_Lead_Inquiries__r.Owner:User.Email&lt;&gt; NULL, Core_Lead_Inquiries__r.Owner:User.Email,null),IF(Core_Contact_Inquiries__c &lt;&gt; NULL, IF(Core_Contact_Inquiries__r.Owner.Email&lt;&gt; NULL, Core_Contact_Inquiries__r.Owner.Email, null),null))</formula>
+        <label>Core_Owner</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -1550,18 +1543,6 @@ TEXT(Core_Contact_Inquiries__r.Core_Country_Region__c))</formula>
         <type>Checkbox</type>
     </fields>
     <fields>
-        <fullName>Core_Salutation_Txt__c</fullName>
-        <externalId>false</externalId>
-        <formula>IF( Core_Lead_Inquiries__c &lt;&gt; NULL, IF(TEXT(Core_Lead_Inquiries__r.Salutation) &lt;&gt; NULL, TEXT(Core_Lead_Inquiries__r.Salutation) , null),IF(Core_Contact_Inquiries__c &lt;&gt; NULL, IF(TEXT(Core_Contact_Inquiries__r.Salutation) &lt;&gt; NULL, TEXT(Core_Contact_Inquiries__r.Salutation) ,null),null))</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Salutation</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_Sent_to_Partner__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <label>Sent to Partner</label>
@@ -1606,6 +1587,84 @@ TEXT(Core_Contact_Inquiries__r.Core_Country_Region__c))</formula>
         <unique>false</unique>
     </fields>
     <label>Inquiry</label>
+    <listViews>
+        <fullName>All_Inquiries</fullName>
+        <columns>Core_Inquiry_Date_Dte__c</columns>
+        <columns>Core_Reviewed_by_Rep_Chk__c</columns>
+        <columns>NAME</columns>
+        <columns>Core_Contact_Inquiries__c</columns>
+        <columns>Core_AcccountName__c</columns>
+        <columns>Core_Lead_Inquiries__c</columns>
+        <columns>Core_Company_Txt__c</columns>
+        <columns>Core_Inquiry_Priority_Pkt__c</columns>
+        <columns>Core_Inquiry_Status_Pkt__c</columns>
+        <columns>Core_Inquiry_Source_Txt__c</columns>
+        <columns>OWNER.FIRST_NAME</columns>
+        <columns>OWNER.LAST_NAME</columns>
+        <filterScope>Everything</filterScope>
+        <label>All Inquiries</label>
+        <language>en_US</language>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>EMEA_CPL_Core_Inquiry</fullName>
+        <filterScope>Queue</filterScope>
+        <label>EMEA CPL</label>
+        <queue>EMEA_CPL</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>My_Active_to_be_Reviewed</fullName>
+        <columns>Core_Inquiry_Date_Dte__c</columns>
+        <columns>Core_Reviewed_by_Rep_Chk__c</columns>
+        <columns>NAME</columns>
+        <columns>Core_Contact_Inquiries__c</columns>
+        <columns>Core_AcccountName__c</columns>
+        <columns>Core_Inquiry_Priority_Pkt__c</columns>
+        <columns>Core_Inquiry_Status_Pkt__c</columns>
+        <columns>Core_Inquiry_Source_Txt__c</columns>
+        <filterScope>Mine</filterScope>
+        <filters>
+            <field>Core_Reviewed_by_Rep_Chk__c</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filters>
+        <label>My Active to be Reviewed</label>
+        <language>en_US</language>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>My_Contacts_to_be_Reviewed</fullName>
+        <columns>Core_Inquiry_Date_Dte__c</columns>
+        <columns>Core_Reviewed_by_Rep_Chk__c</columns>
+        <columns>NAME</columns>
+        <columns>Core_Contact_Inquiries__c</columns>
+        <columns>Core_AcccountName__c</columns>
+        <columns>Core_Inquiry_Priority_Pkt__c</columns>
+        <columns>Core_Inquiry_Status_Pkt__c</columns>
+        <columns>Core_Inquiry_Source_Txt__c</columns>
+        <filterScope>Mine</filterScope>
+        <filters>
+            <field>Core_Reviewed_by_Rep_Chk__c</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filters>
+        <filters>
+            <field>Core_Contact_Inquiries__c</field>
+            <operation>notEqual</operation>
+        </filters>
+        <label>My Contacts to be Reviewed</label>
+        <language>en_US</language>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
     <nameField>
         <label>Inquiry Name</label>
         <trackHistory>false</trackHistory>
@@ -1818,6 +1877,10 @@ TEXT(Core_Contact_Inquiries__r.Core_Country_Region__c))</formula>
         <picklistValues>
             <picklist>Core_Inquiry_State__c</picklist>
             <values>
+                <fullName>Acknowledged</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Converted</fullName>
                 <default>false</default>
             </values>
@@ -1831,6 +1894,10 @@ TEXT(Core_Contact_Inquiries__r.Core_Country_Region__c))</formula>
             </values>
             <values>
                 <fullName>Unclaimed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Unread</fullName>
                 <default>false</default>
             </values>
         </picklistValues>

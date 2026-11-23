@@ -160,7 +160,6 @@
         <field>PROBABILITY</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
         <field>Opportunity.Core_Architecture_Conversion__c</field>
     </columns>
     <columns>
@@ -282,9 +281,6 @@
         <aggregateTypes>Sum</aggregateTypes>
         <field>Opportunity.Core_Opportunity_Count__c</field>
     </columns>
-    <columns>
-        <field>OpportunityLineItem.Core_Competitor_Product__c</field>
-    </columns>
     <customDetailFormulas>
         <calculatedFormula>CASE(OpportunityLineItem.Core_Risk_Reason1__c,&quot;&quot;,case(OpportunityLineItem.Core_Risk_Reason2__c,&quot;&quot;,0,1),1)*OpportunityLineItem.Core_KPI_Total_Price__c</calculatedFormula>
         <dataType>Double</dataType>
@@ -313,7 +309,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Design: Original,Design: Secondary,Deal: Scale-enable,Deal: Sell-through,Deal: Sell-to</value>
+            <value>Design: Original,Design: Secondary,Deal: Sell-through,Deal: Sell-to</value>
         </criteriaItems>
         <criteriaItems>
             <column>OpportunityLineItem.Core_At_Risk__c</column>
@@ -361,6 +357,6 @@
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURNEXTY</interval>
+        <interval>INTERVAL_CURY</interval>
     </timeFrameFilter>
 </Report>

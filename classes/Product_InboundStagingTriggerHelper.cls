@@ -76,8 +76,7 @@ public with sharing class Product_InboundStagingTriggerHelper {
             removeDuplicateEntries(inbStngRecord, mmidAttributeMetadata);
         }
     }
-    
-    //update WR Fields
+     //update WR Fields
     public static Product_Inbound_Staging__c updateWRFields(Product_Inbound_Staging__c inboundStaging, Product_Inbound_Staging__c inboundStagingTmp, Product_fields_mapping__mdt salesConfig, List<Product_fields_mapping__mdt> mmidAttributeMetadata,String mmId) {
         if (Integer.valueOf(inboundStagingTmp.Restriction_Code__c) <= Integer.valueOf(salesConfig.Restriction_Code__c)) {
             if(inboundStaging.L5_mmid_WR__c == null || !inboundStaging.L5_mmid_WR__c.containsIgnoreCase(mmId)){
@@ -101,8 +100,6 @@ public with sharing class Product_InboundStagingTriggerHelper {
         }
         return inboundStaging;
     } 
-    
-    
     
     // Code to remove duplicate from rolled-up value
     public static void removeDuplicateEntries(Product_Inbound_Staging__c inboundStaging, List<Product_fields_mapping__mdt> mmidAttributeMetadata) {

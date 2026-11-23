@@ -30,12 +30,6 @@
     <columns>
         <field>Account.Company_Informations__r$CreatedDate</field>
     </columns>
-    <columns>
-        <field>Account.Company_Informations__r$PMP_Last_Updated_Date_Dt__c</field>
-    </columns>
-    <columns>
-        <field>Account.Company_Informations__r$PMP_Benefit_Update_Ind__c</field>
-    </columns>
     <description>To list all Partner Details to MP Admin</description>
     <format>Summary</format>
     <groupingsDown>

@@ -1,29 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
-    <chart>
-        <backgroundColor1>#FFFFFF</backgroundColor1>
-        <backgroundColor2>#FFFFFF</backgroundColor2>
-        <backgroundFadeDir>Diagonal</backgroundFadeDir>
-        <chartSummaries>
-            <axisBinding>y</axisBinding>
-            <column>RowCount</column>
-        </chartSummaries>
-        <chartType>VerticalColumn</chartType>
-        <enableHoverLabels>false</enableHoverLabels>
-        <expandOthers>true</expandOthers>
-        <groupingColumn>CREATED_DATE</groupingColumn>
-        <location>CHART_BOTTOM</location>
-        <showAxisLabels>true</showAxisLabels>
-        <showPercentage>false</showPercentage>
-        <showTotal>false</showTotal>
-        <showValues>false</showValues>
-        <size>Medium</size>
-        <summaryAxisRange>Auto</summaryAxisRange>
-        <textColor>#000000</textColor>
-        <textSize>12</textSize>
-        <titleColor>#000000</titleColor>
-        <titleSize>18</titleSize>
-    </chart>
     <columns>
         <field>DUE_DATE</field>
     </columns>
@@ -49,46 +25,25 @@
         <aggregateTypes>Sum</aggregateTypes>
         <field>Account.Core_B2B_Entitlement__c</field>
     </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Account.Core_MDF_Active_Ind__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Account.Core_Is_Active__c</field>
-    </columns>
-    <columns>
-        <field>RECORDTYPE</field>
-    </columns>
-    <columns>
-        <field>Account.Core_CNDA_Number__c</field>
-    </columns>
-    <columns>
-        <field>ACCOUNT_ID</field>
-    </columns>
     <filter>
         <criteriaItems>
-            <column>RECORDTYPE</column>
+            <column>Account.Core_B2B_Entitlement__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>Account.Inactive_Account</value>
+            <operator>equals</operator>
+            <value>1</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Account.Core_Account_ID__c</column>
+            <column>USERS.NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>001o000000OShztAAD,001o0000011lxnDAAQ,001o0000011loNGAAY,001o000000OSyIMAA1,0011J00001I1RtBQAV,001o0000011loNBAAY,001o000000Q3T8EAAV,001o000000fMpZTAA0,001o000000OS94vAAD,001o000000O66DbAAJ,001o000000OSy5PAAT,0011J00001Eu37CQAR,001o0000011ldCCAAY,001o000000RX1eaAAD,001o000000jT9qeAAC,001o000000YddhfAAB,001o000000TErw8AAD,001o000000ZWhRAAA1,0011J00001G3wumQAB,001o000000OSaaJAAT,001o000000OT4wlAAD,001o000000hBwJuAAK,001o000000O66QfAAJ,001o00000160YAMAA2,001o000000OSndcAAD,001o000000OTF52AAH,001o000000PIqexAAD,001o000000jKCQBAA4,001o000000ORRkMAAX,001o000000OSa5oAAD,001o000000OSoZGAA1,001o000000uJhoBAAS,001o000000f3ZDEAA2,001o000000OT2aJAAT,001o000000nhKQoAAM,0011J00001CYeytQAD,001o000000O64yNAAR,0011J0000185MrQQAU,001o000000bV7SAAA0,001o000000hBw1zAAC,001o000000OT6D5AAL,0011J00001G3RlkQAF,001o000000wxEzgAAE,001o000000OSeXnAAL,001o000000O66a8AAB,001o000000OTL0oAAH,001o000000O650BAAR,001o000000mTX2zAAG,001o000000OSnpzAAD,001o000000p0abbAAA,001o000000ORVzaAAH,001o000000OStYQAA1,001o000000OSmcWAAT,001o000000OSmH5AAL,001o000000OSOf0AAH,001o000000OSfdUAAT,001o000000O66W5AAJ,001o000000OTMAsAAP,001o000000OSjOoAAL,001o000000ORZuEAAX</value>
+            <operator>equals</operator>
+            <value>A&amp;E Account Owner</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
-    <format>Summary</format>
-    <groupingsDown>
-        <field>CREATED_DATE</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
-    <name>Uncovered Accounts (all, CNDA/No CNDA)</name>
+    <format>Tabular</format>
+    <name>A&amp;E owned accounts</name>
     <params>
         <name>co</name>
         <value>1</value>

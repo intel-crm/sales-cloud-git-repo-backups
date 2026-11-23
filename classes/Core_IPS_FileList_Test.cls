@@ -31,8 +31,7 @@
     private static testMethod void AllFilesListRestTest(){ 
         Core_IPS_FileList_Test FileListTest = new Core_IPS_FileList_Test();
         FileListTest.SetUpRestTestData(10, true, 'Complete', true);
-        FileListTest.AllFilesListTest();   
-        system.assert(true,FileListTest!= null); //added assert-15/12/2023
+        FileListTest.AllFilesListTest();       
     }
 /***************************************************************************************************
 * Method Name:  FAEFilesListRestTest
@@ -51,7 +50,6 @@
         Core_IPS_FileList_Test FileListTest = new Core_IPS_FileList_Test();
         FileListTest.SetUpRestTestData(10, true, 'Complete', true);
         FileListTest.FAEFilesListTest();
-        system.assert(true,FileListTest!= null); //added assert-15/12/2023
     }
 /***************************************************************************************************
 * Method Name:  CCPFilesListRestTest
@@ -69,8 +67,7 @@
     private static testMethod void CCPFilesListRestTest(){
         Core_IPS_FileList_Test FileListTest = new Core_IPS_FileList_Test();
         FileListTest.SetUpRestTestData(10, true, 'Complete', true);
-        FileListTest.CCPFilesListTest(); 
-        system.assert(true,FileListTest!= null); //added assert-15/12/2023
+        FileListTest.CCPFilesListTest();    
     }
 /***************************************************************************************************
 * Method Name:  CCPNoFilesListRestTest
@@ -89,7 +86,6 @@
         Core_IPS_FileList_Test FileListTest = new Core_IPS_FileList_Test();
         FileListTest.SetUpRestTestData(10, false, 'Complete', true);
         FileListTest.CCPNoFilesListTest();
-        system.assert(true,FileListTest!= null); //added assert-15/12/2023
     }
 /***************************************************************************************************
 * Method Name:  CCPExpFilesListRestTest
@@ -108,7 +104,6 @@
         Core_IPS_FileList_Test FileListTest = new Core_IPS_FileList_Test();
         FileListTest.SetUpRestTestData(10, false, 'Complete', false);
         FileListTest.CCPNoFilesListTest();
-        system.assert(true,FileListTest!= null); //added assert-15/12/2023
     }
 /***************************************************************************************************
 * Method Name:  UserIdErrorFilesListRestTest
@@ -127,7 +122,6 @@
         Core_IPS_FileList_Test FileListTest = new Core_IPS_FileList_Test();
         FileListTest.SetUpRestTestData(10, true, 'Complete', true);
         FileListTest.UserIdErrorFilesListTest();
-        system.assert(true,FileListTest!= null); //added assert-15/12/2023
     }
 /***************************************************************************************************
 * Method Name:  ExceptionFilesListRestTest
@@ -146,7 +140,6 @@
         Core_IPS_FileList_Test FileListTest = new Core_IPS_FileList_Test();
         FileListTest.SetUpRestTestData(10, true, 'Complete', true);
         FileListTest.ExceptionsFilesListTest();
-        system.assert(true,FileListTest!= null); //added assert-15/12/2023
     }
 /***************************************************************************************************
 * Method Name:  ExceptionUtilFilesListRestTest
@@ -165,7 +158,6 @@
         Core_IPS_FileList_Test FileListTest = new Core_IPS_FileList_Test();
         FileListTest.SetUpRestTestData(10, true, 'Complete', true);
         FileListTest.ExceptionsUtilFilesListTest();
-        system.assert(true,FileListTest!= null); //added assert-15/12/2023
     }      
     private void AllFilesListTest() {
         Core_IPS_FileList.FileTypeResp results;

@@ -5,7 +5,7 @@
     <oauthConfig>
         <callbackUrl>http://localhost:8081/callback
 https://www.getpostman.com/oauth2/callback</callbackUrl>
-        <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6ucbpeXLkC6KspPRVb8e2UnpN_cyKYmm.rhCU7RHXyXKQYAIpFf.eSQpbZeT</consumerKey>
+        <consumerKey>3MVG9FxR3Tq3eZN_lTuT8KV4MsSvfq.DbkokrnsKd6fPWpLAtU6vdLzexps4e_Gh1X2ypGYeXmJU1qChGK3zZ</consumerKey>
         <isAdminApproved>true</isAdminApproved>
         <isClientCredentialEnabled>false</isClientCredentialEnabled>
         <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
@@ -24,15 +24,16 @@ https://www.getpostman.com/oauth2/callback</callbackUrl>
         <isSecretRequiredForTokenExchange>false</isSecretRequiredForTokenExchange>
         <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
         <scopes>Api</scopes>
-        <scopes>Web</scopes>
         <scopes>Full</scopes>
-        <scopes>RefreshToken</scopes>
-        <scopes>OpenID</scopes>
     </oauthConfig>
     <oauthPolicy>
         <ipRelaxation>ENFORCE</ipRelaxation>
         <isTokenExchangeFlowEnabled>false</isTokenExchangeFlowEnabled>
         <refreshTokenPolicy>zero</refreshTokenPolicy>
     </oauthPolicy>
+    <profileName>MDA Test Profile</profileName>
+    <profileName>Core_Integration_Minimal</profileName>
     <profileName>Integration</profileName>
+    <profileName>IT Admin</profileName>
+    <profileName>System Administrator</profileName>
 </ConnectedApp>

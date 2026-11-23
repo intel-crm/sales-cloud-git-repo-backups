@@ -128,11 +128,14 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <type>Default</type>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Feedback_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <formFactor>Large</formFactor>
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
@@ -153,7 +156,7 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <externalSharingModel>Private</externalSharingModel>
+    <externalSharingModel>ReadWrite</externalSharingModel>
     <fields>
         <fullName>Application__c</fullName>
         <label>Application</label>
@@ -190,19 +193,9 @@
             <valueSetDefinition>
                 <sorted>false</sorted>
                 <value>
-                    <fullName>New License Request</fullName>
-                    <default>false</default>
-                    <label>New License Request</label>
-                </value>
-                <value>
                     <fullName>Generate License</fullName>
                     <default>false</default>
                     <label>Generate License</label>
-                </value>
-                <value>
-                    <fullName>Apply Renewal</fullName>
-                    <default>false</default>
-                    <label>Apply Renewal</label>
                 </value>
                 <value>
                     <fullName>Split Seats</fullName>
@@ -210,9 +203,14 @@
                     <label>Split Seats</label>
                 </value>
                 <value>
-                    <fullName>Merge Seats</fullName>
+                    <fullName>New License Request</fullName>
                     <default>false</default>
-                    <label>Merge Seats</label>
+                    <label>New License Request</label>
+                </value>
+                <value>
+                    <fullName>Apply Renewal</fullName>
+                    <default>false</default>
+                    <label>Apply Renewal</label>
                 </value>
                 <value>
                     <fullName>Re-host</fullName>
@@ -220,14 +218,19 @@
                     <label>Re-host</label>
                 </value>
                 <value>
+                    <fullName>Merge Seats</fullName>
+                    <default>false</default>
+                    <label>Merge Seats</label>
+                </value>
+                <value>
                     <fullName>Evaluation License/Employee License</fullName>
                     <default>false</default>
                     <label>Evaluation License/Employee License</label>
                 </value>
                 <value>
-                    <fullName>Other</fullName>
+                    <fullName>Others</fullName>
                     <default>false</default>
-                    <label>Other</label>
+                    <label>Others</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -276,42 +279,6 @@
         <type>Date</type>
     </fields>
     <fields>
-        <fullName>Feedback_Month__c</fullName>
-        <externalId>false</externalId>
-        <formula>LEFT(TEXT(DATEVALUE(CreatedDate)), LEN(TEXT(DATEVALUE(CreatedDate)))-3)</formula>
-        <label>Feedback Month</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Feedback_Quarter__c</fullName>
-        <externalId>false</externalId>
-        <formula>TEXT(YEAR(DATEVALUE(CreatedDate)))+&quot;&apos; &quot;+
-CASE(MONTH(DATEVALUE(CreatedDate)),
-1,&quot;Q1&quot;,
-2,&quot;Q1&quot;,
-3,&quot;Q1&quot;,
-4,&quot;Q2&quot;,
-5,&quot;Q2&quot;,
-6,&quot;Q2&quot;,
-7,&quot;Q3&quot;,
-8,&quot;Q3&quot;,
-9,&quot;Q3&quot;,
-10,&quot;Q4&quot;,
-11,&quot;Q4&quot;,
-12,&quot;Q4&quot;,
-&quot;&quot;)</formula>
-        <label>Feedback Quarter</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Feedback_Text__c</fullName>
         <label>Feedback Text</label>
         <length>500</length>
@@ -319,6 +286,15 @@ CASE(MONTH(DATEVALUE(CreatedDate)),
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Intel_Meeting_Brief__c</fullName>
+        <label>Intel Meeting Brief</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
     </fields>
     <fields>
         <fullName>Last_Feedback_Captured__c</fullName>
@@ -335,6 +311,15 @@ CASE(MONTH(DATEVALUE(CreatedDate)),
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Other_Party_Meeting__c</fullName>
+        <label>Other Party Meeting</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
         <fullName>Rating__c</fullName>
         <description>To store Rating from the End User</description>
         <label>Rating</label>
@@ -347,9 +332,9 @@ CASE(MONTH(DATEVALUE(CreatedDate)),
             <valueSetDefinition>
                 <sorted>false</sorted>
                 <value>
-                    <fullName>Extremely Unsatisfied</fullName>
+                    <fullName>Extremely Dissatisfied</fullName>
                     <default>false</default>
-                    <label>Extremely Unsatisfied</label>
+                    <label>Extremely Dissatisfied</label>
                 </value>
                 <value>
                     <fullName>Dissatisfied</fullName>
@@ -391,11 +376,21 @@ CASE(MONTH(DATEVALUE(CreatedDate)),
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Rich_text__c</fullName>
+        <description>Analysis of Rich Text field [Do not migrate]</description>
+        <label>Rich text</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
         <fullName>Sales_Contact__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <label>Contact</label>
         <referenceTo>Contact</referenceTo>
-        <relationshipLabel>Feedbacks</relationshipLabel>
+        <relationshipLabel>Feedback</relationshipLabel>
         <relationshipName>Feedbacks</relationshipName>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -468,8 +463,34 @@ CASE(MONTH(DATEVALUE(CreatedDate)),
     <listViews>
         <fullName>All</fullName>
         <columns>NAME</columns>
+        <columns>OBJECT_ID</columns>
+        <columns>Capability__c</columns>
+        <columns>Chatbot_Feedback__c</columns>
+        <columns>Sales_Contact__c</columns>
+        <columns>CREATEDBY_USER</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>PSG_Quoting_Feedback</fullName>
+        <columns>NAME</columns>
+        <columns>Application__c</columns>
+        <columns>Type__c</columns>
+        <columns>Rating__c</columns>
+        <columns>Scale__c</columns>
+        <columns>CREATEDBY_USER</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Application__c</field>
+            <operation>equals</operation>
+            <value>PSG Quoting</value>
+        </filters>
+        <filters>
+            <field>CREATEDBY_USER</field>
+            <operation>contains</operation>
+            <value>test</value>
+        </filters>
+        <label>PSG Quoting Feedback</label>
     </listViews>
     <nameField>
         <displayFormat>F-{0000000000}</displayFormat>
@@ -481,4 +502,23 @@ CASE(MONTH(DATEVALUE(CreatedDate)),
     <searchLayouts/>
     <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>
+    <webLinks>
+        <fullName>Download_PDF</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>Download PDF</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>/apex/Download_PDF?id={!Sales_Feedback__c.Id}</url>
+    </webLinks>
 </CustomObject>

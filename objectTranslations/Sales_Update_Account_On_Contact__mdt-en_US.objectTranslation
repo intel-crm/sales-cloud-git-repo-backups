@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Sales Update Account On Contact</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Sales Update Accounts On Contacts</value>
+    </caseValues>
+    <fields>
+        <label><!-- Sales Created Since Days --></label>
+        <name>Sales_Created_Since_Days__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales Is Mdt Rec Active --></label>
+        <name>Sales_Is_Mdt_Rec_Active__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales Run Account Update --></label>
+        <name>Sales_Run_Account_Update__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales Source Account ID --></label>
+        <name>Sales_Source_Account_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales Target Account ID --></label>
+        <name>Sales_Target_Account_ID__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

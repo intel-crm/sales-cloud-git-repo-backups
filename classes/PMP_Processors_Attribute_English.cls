@@ -1,4 +1,3 @@
-@isTest
 /****************************************************************************************************************************************
 * Class Name  : PMP_Processors_Attribute_English_Process 
 * Version     : 1.0 
@@ -9,17 +8,17 @@
 * PMP Team                      05/10/2019                    Class for Processing Processors_Attribute_English Static Resource
 * ****************************************************************************************************************************************/
 
-public class PMP_Processors_Attribute_English  {//implements PMP_ProcessTaxonomyJSON
-    //IPA 2.0- US-TWC729-7980
-    /*public List<Database.UpsertResult> processData(String fileName)
+public class PMP_Processors_Attribute_English implements PMP_ProcessTaxonomyJSON {
+    
+    public List<Database.UpsertResult> processData(String fileName)
     {
         List<Database.UpsertResult> totalRecords = new List<Database.UpsertResult>();
         List<Database.UpsertResult> totalRecordsJunc = new List<Database.UpsertResult>();
         List<Database.UpsertResult> totalResults = new List<Database.UpsertResult>();
         
-        totalRecords = PMP_ParseProcessorJSON.parseProcessorJSON(fileName);
-        totalRecordsJunc = PMP_Processor_CreateJunctionData.createAssociationRecords();
-        PMP_CreateProcessorValueAssoc.processLeafNodes();
+        totalRecords = PMP_ParseProcessorJSON.ParseProcessorJSON(fileName);
+        totalRecordsJunc = PMP_Processor_CreateJunctionData.PMP_Processor_CreateJunctionDataMet();
+        
         if(totalRecords.size()>0)
         {
             for(Database.UpsertResult res : totalRecords)
@@ -38,6 +37,6 @@ public class PMP_Processors_Attribute_English  {//implements PMP_ProcessTaxonomy
         
         
         return totalResults;
-    } */
+    } 
     
 }

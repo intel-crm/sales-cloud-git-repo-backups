@@ -1,260 +1,522 @@
-/******************************************************************************************************************************************************************************************************
-* Class Name  : PMP_ParseChipSet_JSON
+/*********************************************************************************************************
+* Class Name  :   PMP_ParseChipSet_JSON
+* Version     : 1.0 
 * Created Date: 2nd Jan,2019
 * Modification Log :
-* Developer       					Version                    			Date                    			Description
-* -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-* Infosys - Manasa                   1.0    							02/01/2019           				Created for Parsing the Chipset JSON and creating Specification
-* Infosys - Raj Yadav				 2.0								11/06/2020							Refactored class for easy maintainance 
-******************************************************************************************************************************************************************************************************/
-public with sharing class PMP_ParseChipSet_JSON {
-    public static Boolean isWorking() {
-        return true;
-    }
-    //IPA 2.0- US-TWC729-7980
-    /*public static String languageCode; 
-    public static final String ultimateParentPIMId = 'NPP_Chipsets';
-        public static final String ultimateParentEnglishName = 'Chipsets';
-        public static final String ultimateParentChineseName = '芯片组';
-        public static final String ultimateParentJapaneseName = 'チップセット';
-        public static final String specificationType = 'Chipset';
-        public static final String staticResourceTestFileName = 'PMP_Chipsets_Attribute_Test';//test static resource for Chipset
-    
-    public static List<Database.UpsertResult> parseChipSetJSON(String staticResourceName){
+* Developer                               Date                    Description
+* ---------------------------------------------------------------------------------------------------------
+* Infosys - Manasa                      02/01/2019           Created for Parsing the Chipset 
+*                                                            JSON and creating Specification 
+*                                                            and Specification Value junction records.
+* Infosys - Sangeetha Ganta             02/28/2019           User Story - US290905. Activation of Spec
+*                                                            value based on JSON input
+* Infosys - Sangeetha Ganta             03/26/2019           User Story - US301406. Specifications localization 
+*                                                            from PIM in Japanese & Simplified Chinese
+***********************************************************************************************************/
+
+public class PMP_ParseChipSet_JSON
+{ 
+  	public static String strBaseKey; 
+    public static List<Database.UpsertResult> parseChipSetJSON(String staticResourceName)
+    {
+        //To fetch the PIM Spec Id for specification called Chipsets
         
-        String jsonStr;//to store JSON file as string
-        //String fileLanguage;//to store languge code of the file which is being processed
-        Integer leafLevel;//to store the leaf level of the file which is being processed
-        List<PMP_Locale_To_FieldAPINm_Mapping__mdt> localeFields = new List<PMP_Locale_To_FieldAPINm_Mapping__mdt>();//to store PMP_Locale_To_FieldAPINm_Mapping__mdt metadata records
-        Map<String, Object> specsByLanguageCode = new Map<String, Object>();//map containing all specs with language code as key (Map<'en_US', [Specifications]>)
-        Map<String, PMP_Specification__c> existingSpecsByExternalKey = new Map<String,PMP_Specification__c>();//map to store existing specs by it's externalkey
-        Map<String, PMP_Specification_Value__c> existingSpecValuesByExternalKey = new Map<String,PMP_Specification_Value__c>();//map to store exsting specValues by it's externalkey
-        Map<String, String> fieldAPINameByObjectName = new Map<String, String>();//map to store field api names by object name
-        Map<String,PMP_Specification__c> uploadableSpecsByExternalKey= new Map<String,PMP_Specification__c>();//map to store specs by external key which is to be uploaded
-        Map<String,PMP_Specification_Value__c> uploadableSpecValuesByExternalKey= new Map<String,PMP_Specification_Value__c>();//map to store specValues by external key which is to be uploaded
-        List<PMP_Specification__c> uploadableSpecifications = new List<PMP_Specification__c>();//list of specifications to be uploaded
-        List<PMP_Specification_Value__c> uploadableSpecificationValues = new List<PMP_Specification_Value__c>();//list of specificationValues to be uploaded
-        List<Database.UpsertResult> specUpsertResultData = new List<Database.UpsertResult>();//list containing upsert results for specifications
-        List<Database.UpsertResult> specValueUpsertResultData = new List<Database.UpsertResult>();//list containing upsert results for specificationValues
-        List<Database.UpsertResult> upsertResultData = new List<Database.UpsertResult>();//list containing upsert result
+         PMP_Specification__c chipsetsSpecification = [Select Id,PMP_Partner_Product_Specification_Id__c from PMP_Specification__c where PMP_Partner_Product_Specification_Id__c =: PMP_StaticConstants_MasterData.Chipsets_PIMId];
+        String chipsetsSpecificationPIMId;
         
-        //fetch the Chipset JSON file stored in Static Resource and processing it as string
-        if(Test.isRunningTest()){
-            StaticResource staticResourceFile = [select id,body from StaticResource Where Name =: staticResourceTestFileName];
-            jsonStr = staticResourceFile.body.toString();
-        }
-        else{
-            StaticResource staticResourceFile = [select id,body from StaticResource Where Name =: staticResourceName];
-            jsonStr = staticResourceFile.body.toString(); 
-        }
+        if(chipsetsSpecification != null) 
+        {
+            chipsetsSpecificationPIMId = chipsetsSpecification.PMP_Partner_Product_Specification_Id__c;
+        }        
         
-        specsByLanguageCode = (Map<String, Object>)JSON.deserializeUntyped(jsonStr);//deserializing string and storing it in a Map<String, Object>
-        leafLevel = PMP_Utility.getLeafNode(specsByLanguageCode);//fetch the leaf level of the current list of specifications.
-        */
-        /** fetch existing Chipset specs and specValues and populate two maps to handle :
-		* fallback scenario for languages other than english
-		* activation and deactivation of specs and specValues*/
-        //iterate over existing specs and populate existingSpecsByExternalKey map
-        /*for(PMP_Specification__c spec : [SELECT id, Name, PMP_Specification_Name__c, PMP_Partner_Product_Specification_Key__c, PMP_Partner_Product_Specification_Id__c,
-                                         PMP_Product_Parent_Specification_Id__c, PMP_Specification_Chinese_Nm__c, PMP_Specification_Japanese_Nm__c, PMP_Active_Ind__c 
-                                         FROM PMP_Specification__c WHERE PMP_Specification_Type_Nm__c =: specificationType AND PMP_Active_Ind__c = true]){
-                                             existingSpecsByExternalKey.put(spec.PMP_Partner_Product_Specification_Key__c, spec);
-                                         }
-        //iterate over existing specValues and populate existingSpecValuesByExternalKey map
-        for(PMP_Specification_Value__c specValue : [SELECT id, Name, PMP_Specification_Value_Nm__c, PMP_Product_Specification_Value_Key__c, PMP_Specification_Value_Chinese_Cd__c,
-                                                    PMP_Specification_Value_Japanese_Cd__c, PMP_Active_Ind__c 
-                                                    FROM PMP_Specification_Value__c WHERE PMP_Spec_Value_Type_Nm__c =: specificationType AND PMP_Active_Ind__c = true]){
-                                                        existingSpecValuesByExternalKey.put(specValue.PMP_Product_Specification_Value_Key__c, specValue);
-                                                    }
-        if(!Test.isRunningTest()){
-            languageCode = new list<String>(specsByLanguageCode.keySet())[0];
-        }
-        //fetch all the name fields for different different languages
-            localeFields = [SELECT PMP_Locale_Nm__c, PMP_Field_Nm__c, PMP_Object_Nm__c, PMP_Field_APINm__c 
-                        FROM PMP_Locale_To_FieldAPINm_Mapping__mdt WHERE PMP_Locale_Nm__c =: languageCode AND PMP_Field_Nm__c ='Name'];
+        //Variable Declaration
+        final String Chipset_Spec = 'Chipset';
+        Map<String,PMP_Specification__c> specUploadMap = new Map<String,PMP_Specification__c>();
+        Map<String,PMP_Specification_Value__c> specValueUploadMap = new Map<String,PMP_Specification_Value__c>();
+        List<PMP_Specification__c> uploadSpec = new List<PMP_Specification__c>();
+        List<PMP_Specification_Value__c> uploadSpecValues = new List<PMP_Specification_Value__c>();
+        //US301406
+        Map<String,PMP_Specification__c> getexistingSpecs = new Map<String,PMP_Specification__c>();
+        Map<String,PMP_Specification_Value__c> getexistingSpecValues = new Map<String,PMP_Specification_Value__c>();
+        Map<String,PMP_Specification__c> transSpecUploadMap = new Map<String,PMP_Specification__c>();
+        Map<String,PMP_Specification_Value__c> transSpecValUploadMap = new Map<String,PMP_Specification_Value__c>();
+        List<PMP_Specification__c> uploadTransSpec = new List<PMP_Specification__c>();
+        List<PMP_Specification_Value__c> uploadTransSpecValues = new List<PMP_Specification_Value__c>();
+        //End
+        Map<String,PMP_Specification_Value__c> existingEngSpecValuesMap = new Map<String,PMP_Specification_Value__c>();
+        Map<String,PMP_Specification_Value__c> specValuesDeactiveMap = new Map<String,PMP_Specification_Value__c>();
+        Map<String,PMP_Specification__c> existingEngSpecsMap = new Map<String,PMP_Specification__c>();
+        Map<String,PMP_Specification__c> specsDeactiveMap = new Map<String,PMP_Specification__c>();
         
+        List<Database.UpsertResult> upsertResultDataSpec = new List<Database.UpsertResult>();//final upsert records (success and failure)
+        List<Database.UpsertResult> upsertResultDataSpecTrans = new List<Database.UpsertResult>();
+        List<Database.UpsertResult> upsertResultDataSpecValue = new List<Database.UpsertResult>();
+        List<Database.UpsertResult> upsertResultDataSpecValueTrans = new List<Database.UpsertResult>();
+        List<Database.UpsertResult> upsertResultData= new List<Database.UpsertResult>();
         
-        if(!localeFields.isEmpty()){
-            for(PMP_Locale_To_FieldAPINm_Mapping__mdt localField : localeFields){//iterate over metadata records and populate fieldAPINameByObjectName map
-                fieldAPINameByObjectName.put(localField.PMP_Object_Nm__c, localField.PMP_Field_APINm__c);
-            }
-        }
+        //Parse the JSON stored as a static resource
+        String jsonStr ='';
         
-        if(!specsByLanguageCode.isEmpty()){
-            List<Object> specNodes = (List<Object>)specsByLanguageCode.get(languageCode);//get the list of specifications associated with the current language code
+        //string strBaseKey;
+        
+        //Store the Chipsets JSON file in Static Resource and access it as a String
+        
+        if(Test.isRunningTest())
+        {
             
-            for(Integer specNodesIndex = 0; specNodesIndex < specNodes.size(); specNodesIndex++){//iterate over all specNodes in the list and create spec and specValue records
-                Map<String, Object> specNodeByAttribute = (Map<String, Object>)specNodes[specNodesIndex];//fetch specNodes and use diiferent attributes to create spec and specValue records
-                
-                if(!specNodeByAttribute.isEmpty() && specNodeByAttribute.containsKey(PMP_StaticConstants_MasterData.ChildCategories)){//if spec node is not empty and it has child specs
-                    List<Object> childSpecifications = (List<Object>)specNodeByAttribute.get(PMP_StaticConstants_MasterData.ChildCategories);//get all the child specs
-                    
-                    for(Integer specIndex = 0; specIndex < childSpecifications.size(); specIndex++){//iterate over child specs and create spec or specValue records
-                        Map<String, Object> childSpecsByAttribute = (Map<String, Object>)childSpecifications[specIndex];//store child specs in a map
+             StaticResource srObject = [select id,body from StaticResource Where Name = :PMP_StaticConstants_MasterData.Chipsets_Attribute_Test];
+            
+            jsonStr = srObject.body.toString();  
+        }
+        else
+        {
+            
+             StaticResource srObject = [select id,body from StaticResource Where Name = :staticResourceName];
+            
+            jsonStr = srObject.body.toString();
+        }
+        
+        
+        Map<String, Object> mapSpec = (Map<String, Object>)JSON.deserializeUntyped(jsonStr);
+        /*Added by Manasa to get the leaf node level for the uploaded file - Start*/
+        Integer leafLevel = PMP_Utility.getLeafNode(mapSpec);
+        /*----------------------------END-----------------------------------------*/
+        
+        //for (string theKey:mapSpec.keySet()){[Removed for loop as part code scan fix]
+            if(!Test.isRunningTest()){
+                strBaseKey = new list<String>(mapSpec.keySet())[0];
+            }
+        	System.debug('^^^TheKey--->'+strBaseKey);//###toberemoved
+            //US301406
+            if(strBaseKey!=PMP_StaticConstants_MasterData.English_JSON)
+            {
+                //Added by Manasa - US439814
+                List<PMP_Specification__c> existingSpecs = [Select id,Name,PMP_Specification_Name__c,PMP_Partner_Product_Specification_Key__c,PMP_Partner_Product_Specification_Id__c,PMP_Product_Parent_Specification_Id__c,PMP_Specification_Chinese_Nm__c,PMP_Specification_Japanese_Nm__c from PMP_Specification__c];
+                List<PMP_Specification_Value__c> existingSpecValues = [Select id,Name,PMP_Specification_Value_Nm__c,PMP_Product_Specification_Value_Key__c,PMP_Specification_Value_Chinese_Cd__c,PMP_Specification_Value_Japanese_Cd__c from PMP_Specification_Value__c];              
+                if(existingSpecs.size()>0)
+                {
+                    for(PMP_Specification__c existingSpec : existingSpecs)
+                    {
+                        getexistingSpecs.put(existingSpec.PMP_Partner_Product_Specification_Key__c,existingSpec);
                         
-                        //if childspecAttribute map has level attribute and level is not equals to leaf level then create specification records, else create specValue records 
-                        if(specNodeByAttribute.containsKey(PMP_StaticConstants_MasterData.Level) && specNodeByAttribute.get(PMP_StaticConstants_MasterData.Level) != leafLevel){
-                            PMP_Specification__c specification = new PMP_Specification__c();//create an instance of specification object
-                            specification.PMP_Display_Type_Nm__c = PMP_StaticConstants_MasterData.Checkbox;//set display type as checkbox
-                            specification.PMP_Specification_Type_Nm__c = specificationType;//set specification Type as Chipset
-                            specification.PMP_Active_Ind__c = true;//set specification active indicator as true by default
-                            if(languageCode == PMP_StaticConstants_MasterData.English_JSON){
-                                //if current spec contains imageURL attribute, store it in image URL field of spec record
-                                specification.PMP_Image_url__c = childSpecsByAttribute.containsKey(PMP_StaticConstants_MasterData.Image_URL)?
-                                                                    String.valueOf(childSpecsByAttribute.get(PMP_StaticConstants_MasterData.Image_URL)):null;
-                                //if current spec contains productCatalogURL attribute, store it in product URL field of spec record
-                                specification.PMP_Product_url__c = childSpecsByAttribute.containsKey(PMP_StaticConstants_MasterData.Product_Catalog_URL)?
-                                                                    String.valueOf(childSpecsByAttribute.get(PMP_StaticConstants_MasterData.Product_Catalog_URL)):null;
-                            }
-                            //Check if the current spec is the top node(i.e direct child of ultimate parent)for all three files,if yes set parent PIMId as NPP_Chipset
-                            if((specNodeByAttribute.get(PMP_StaticConstants_MasterData.ParentName) == ultimateParentEnglishName) || 
-                               (specNodeByAttribute.get(PMP_StaticConstants_MasterData.ParentName) == ultimateParentChineseName) || 
-                               (specNodeByAttribute.get(PMP_StaticConstants_MasterData.ParentName) == ultimateParentJapaneseName)){   
-                                   specification.PMP_Product_Parent_Specification_Id__c = ultimateParentPIMId;
-                               }
-                            else{//else get the parent PIMId from the files received 
-                                specification.PMP_Product_Parent_Specification_Id__c = String.valueOf(specNodeByAttribute.get(PMP_StaticConstants_MasterData.ParentIdentifier));  
-                            }
-                            //if specNodeByAttribute map contains sequence and childSpecsByAttribute contains SpecValueSequence use them to create sequence number of specification 
-                            if(specNodeByAttribute.containsKey(PMP_StaticConstants_MasterData.Sequence) && childSpecsByAttribute.containsKey(PMP_StaticConstants_MasterData.SpecValueSequence)){
-                                //fetch sequence number of the spec from utility method 
-                                specification.PMP_Partner_Product_Display_Sequence_Nbr__c = PMP_Utility.getSpecificationSequenceNumber(specNodeByAttribute, childSpecsByAttribute);
-                            }
-                            //if the current spec is having specRaw value and display value,populate external key, PIM Id, and name fields 
-                            if(childSpecsByAttribute.containsKey(PMP_StaticConstants_MasterData.SpecRawValue) && childSpecsByAttribute.containsKey(PMP_StaticConstants_MasterData.SpecDisplayValue)){
-                                specification.PMP_Partner_Product_Specification_Key__c = (String.valueOf(childSpecsByAttribute.get(PMP_StaticConstants_MasterData.SpecRawValue)).deleteWhiteSpace()).toLowerCase(); 
-                                specification.PMP_Partner_Product_Specification_Id__c = String.valueOf(childSpecsByAttribute.get(PMP_StaticConstants_MasterData.SpecRawValue));
-                                String specificationName = String.valueOf(childSpecsByAttribute.get(PMP_StaticConstants_MasterData.SpecDisplayValue));
-                                if(languageCode != PMP_StaticConstants_MasterData.English_JSON){
-                                    PMP_Specification__c spec = existingSpecsByExternalKey.get(specification.PMP_Partner_Product_Specification_Key__c);//get the existing(if exists) record for current spec
-                                    String localField = String.valueOf(fieldAPINameByObjectName.get('Specification'));//get the current language field of specification object
-                                    if(String.isNotBlank(specificationName)){//if the displayValue is not null in the file, populate local field with that value
-                                        specification.put(localField, specificationName);
-                                    }
-                                    //if the name in the file is blank, populate local field with english data.
-                                    else if(String.isBlank(specificationName) && spec != null && String.isNotBlank(spec.PMP_Specification_Name__c)){
-                                        specification.put(localField, spec.PMP_Specification_Name__c);
-                                    }
-                                }
-                                else{//if the current file is english file, store the english name in standard as well as custom name field.
-                                    specification.Name = specificationName.length() > 80 ? specificationName.substring(0, 80) : specificationName;//if the name is more than 80 chars, only 80 chars will get save in standard field
-                                    specification.PMP_Specification_Name__c = specificationName;//storing the full name in custom name field
-                                }
-                            }
-                            //if externalKey of the current spec is not blank, store the spec in uploadableSpecsByExternalKey map 
-                            if(String.isNotBlank(specification.PMP_Partner_Product_Specification_Key__c)){
-                                uploadableSpecsByExternalKey.put(specification.PMP_Partner_Product_Specification_Key__c, specification);
-                            }
-                        }
-                        else{//processing items which are at leaf level, and creating specValue records 
-                            PMP_Specification_Value__c specificationValue = new PMP_Specification_Value__c();//create an instance if specifcation Value object
-                            specificationValue.PMP_Display_Type_Nm__c= PMP_StaticConstants_MasterData.Checkbox;//set display type as checkbox
-                            specificationValue.PMP_Spec_Value_Type_Nm__c = specificationType;//set specificationValue Type as Chipset
-                            //if current spec contains status attribute, store it in product status field of secValue
-                            specificationValue.PMP_Product_Status__c = (childSpecsByAttribute.containsKey(PMP_StaticConstants_MasterData.Status))? 
-                                String.valueOf(childSpecsByAttribute.get(PMP_StaticConstants_MasterData.Status)):null;
-                             //if current spec contains restriction Level attribute, store it in the restriction level field
-                            specificationValue.PMP_Product_Restriction_Lvl__c = (childSpecsByAttribute.containsKey(PMP_StaticConstants_MasterData.Restriction_Level))? 
-                                String.valueOf(childSpecsByAttribute.get(PMP_StaticConstants_MasterData.Restriction_Level)): '0';
-                            if(childSpecsByAttribute.containsKey(PMP_StaticConstants_MasterData.NPP_Is_Active) && languageCode == PMP_StaticConstants_MasterData.English_JSON){//if node contains isActive indicator, store it in isActive field of specValue record
-                                specificationValue.PMP_Active_Ind__c = (String.valueOf(childSpecsByAttribute.get(PMP_StaticConstants_MasterData.NPP_Is_Active)) == PMP_StaticConstants_MasterData.Yes)?
-                                    true : false;
-                            }
-                            if(languageCode == PMP_StaticConstants_MasterData.English_JSON){
-                                //if current spec contains imageURL attribute, store it in image URL field of specValue record
-                                specificationValue.PMP_Image_URL__c = childSpecsByAttribute.containsKey(PMP_StaticConstants_MasterData.Image_URL)?
-                                    String.valueOf(childSpecsByAttribute.get(PMP_StaticConstants_MasterData.Image_URL)):null;
-                                //if current spec contains productCatalogURL attribute, store it in product URL field of specValue record
-                                specificationValue.PMP_Product_URL__c = childSpecsByAttribute.containsKey(PMP_StaticConstants_MasterData.Product_Catalog_URL)?
-                                    String.valueOf(childSpecsByAttribute.get(PMP_StaticConstants_MasterData.Product_Catalog_URL)):null;
-                            }
-                            if(childSpecsByAttribute.containsKey(PMP_StaticConstants_MasterData.Off_Roadmap) && languageCode == PMP_StaticConstants_MasterData.English_JSON){//if node contains Off_Roadmap indicator, store it in Off_Roadmap field of specValue record
-                                specificationValue.PMP_Partner_Off_Roadmap_Ind__c = (String.valueOf(childSpecsByAttribute.get(PMP_StaticConstants_MasterData.Off_Roadmap)) == PMP_StaticConstants_MasterData.Yes)?
-                                    																																			true : false;
-                            }
-                            specificationValue.PMP_Specification_Product_Cd__c = String.valueOf(specNodeByAttribute.get(PMP_StaticConstants_MasterData.ParentIdentifier));
-                            //if the current spec is having specRaw value and display value,populate external key, PIM Id, and name fields 
-                            if(childSpecsByAttribute.containsKey(PMP_StaticConstants_MasterData.SpecRawValue) && childSpecsByAttribute.containsKey(PMP_StaticConstants_MasterData.SpecDisplayValue)){
-                                specificationValue.PMP_Product_Specification_Value_Cd__c = String.valueOf(childSpecsByAttribute.get(PMP_StaticConstants_MasterData.SpecRawValue));
-                                specificationValue.PMP_Product_Specification_Value_Key__c = (String.valueOf(childSpecsByAttribute.get(PMP_StaticConstants_MasterData.SpecRawValue)).deleteWhiteSpace()).toLowerCase();
-                                //display sequence will be constructed as [parentSpec Level + parentSpec Sequence + spec Sequence]
-                                specificationValue.PMP_Specification_Value_Sequence_Nbr__c = Integer.valueOf(String.valueOf(childSpecsByAttribute.get(PMP_StaticConstants_MasterData.SpecValueSequence)).remove(','));
-                                String specValueName = String.valueOf(childSpecsByAttribute.get(PMP_StaticConstants_MasterData.SpecDisplayValue));
-                                if(languageCode != PMP_StaticConstants_MasterData.English_JSON){
-                                    PMP_Specification_Value__c specValue = existingSpecValuesByExternalKey.get(specificationValue.PMP_Product_Specification_Value_Key__c);//get the existing(if exists) record for current spec
-                                    String localField = String.valueOf(fieldAPINameByObjectName.get('Specification Value'));//get the current language field of specificationValue object
-                                    if(String.isNotBlank(specValueName)){//if the displayValue is not null in the file, populate local field with that value
-                                        specificationValue.put(localField, specValueName);
-                                    }
-                                    //if the name in the file is blank, populate local field with english data.
-                                    else if(String.isBlank(specValueName) && specValue != null && String.isNotBlank(specValue.PMP_Specification_Value_Nm__c)){
-                                        specificationValue.put(localField, specValue.PMP_Specification_Value_Nm__c);
-                                    }
-                                }
-                                else{//if the current file is english file, store the english name in standard as well as custom name field.
-                                    
-                                    specificationValue.Name = specValueName.length() > 80 ? specValueName.substring(0, 80) : specValueName;//if the name is more than 80 chars, only 80 chars will get save in standard field
-                                    specificationValue.PMP_Specification_Value_Nm__c = specValueName;//storing the full name in custom name field
-                                }
-                            }
-                            //if externalKey of the current specValue is not blank, store the specValue in uploadableSpecValuesByExternalKey map 
-                            if(String.isNotBlank(specificationValue.PMP_Product_Specification_Value_Key__c)){
-                                uploadableSpecValuesByExternalKey.put(specificationValue.PMP_Product_Specification_Value_Key__c, specificationValue);
-                            }
-                        }
                     }
+                    
                 }
-            } 
-        }
-        
-        if(!uploadableSpecsByExternalKey.isEmpty()){//if existingSpecs and uploadable specs map is not empty,handle deactivation of specs
-            for(String externalId : existingSpecsByExternalKey.keySet()){//iterate over existing Chipset specs and check if new file doesn't contain that spec,deactivate it
-                if(!uploadableSpecsByExternalKey.keySet().contains(externalId)){
-                    PMP_Specification__c spec = existingSpecsByExternalKey.get(externalId);
+                if(existingSpecValues.size()>0)
+                {
+                    for(PMP_Specification_Value__c existingSpecValue : existingSpecValues)
+                    {
+                        getexistingSpecValues.put(existingSpecValue.PMP_Product_Specification_Value_Key__c,existingSpecValue);
+                    }
+                }  
+            }
+            //End
+            if(strBaseKey == PMP_StaticConstants_MasterData.English_JSON)
+            {
+                //to handle activation or inactivation of Specifications (Chipset)
+                
+                 List<PMP_Specification__c> existingEngSpecs =  [Select id,PMP_Active_Ind__c,PMP_Partner_Product_Specification_Key__c from PMP_Specification__c where PMP_Specification_Type_Nm__c = :Chipset_Spec];
+                
+                if(existingEngSpecs.size()>0)
+                {
+                    for(PMP_Specification__c spec : existingEngSpecs)
+                    {
+                        existingEngSpecsMap.put(spec.PMP_Partner_Product_Specification_Key__c,spec); 
+                    }
+                    
+                }            
+                
+                //to handle activation or inactivation of Spec Values (Chipset)
+                
+                List<PMP_Specification_Value__c> existingEngSpecValues = [Select id,PMP_Active_Ind__c,PMP_Product_Specification_Value_Key__c from PMP_Specification_Value__c where PMP_Spec_Value_Type_Nm__c = :PMP_StaticConstants_MasterData.Chipset_Spec_Value];
+                
+                if(existingEngSpecValues.size()>0)
+                {
+                    for(PMP_Specification_Value__c specVal : existingEngSpecValues )
+                    {
+                        existingEngSpecValuesMap.put(specVal.PMP_Product_Specification_Value_Key__c,specVal); 
+                    }
+                    
+                }
+            }
+            
+            if(mapSpec.size() > 0)        
+            {
+                List<Object> lstSpec = (List<Object>)mapSpec.get(strBaseKey); //get the List of objects associated with key en_US
+                for(integer catIndex=0;catIndex<lstSpec.size();catIndex++)
+                {
+                    Map<String, Object> specMap = (Map<String, Object>)lstSpec[catIndex];
+                    if(specMap != null && !specMap.isEmpty())
+                    {
+                        if(specMap.containsKey(PMP_StaticConstants_MasterData.ChildCategories))
+                        {
+                            List<Object> lstChildCategories = (List<Object>)specMap.get(PMP_StaticConstants_MasterData.ChildCategories);
+                            
+                            for(integer specIndex=0;specIndex<lstChildCategories.size();specIndex++)
+                            {
+                                Map<String, Object> specOrSpecValMap = (Map<String, Object>)lstChildCategories[specIndex];
+                                if(specMap.containsKey(PMP_StaticConstants_MasterData.Level) && specMap.get(PMP_StaticConstants_MasterData.Level) != leafLevel)
+                                {
+                                    
+                                    // If level value is not 'specValueLevel3/leaf' then create specification record
+                                    PMP_Specification__c specification = new PMP_Specification__c();
+                                    specification.PMP_Display_Type_Nm__c = PMP_StaticConstants_MasterData.Checkbox;
+                                    specification.PMP_Specification_Type_Nm__c = Chipset_Spec;
+                                    specification.PMP_Active_Ind__c = true;//set specification active indicator as true by default
+                                    //US301406
+                                    if((specMap.get(PMP_StaticConstants_MasterData.ParentName) == PMP_StaticConstants_MasterData.Chipsets) || (specMap.get(PMP_StaticConstants_MasterData.ParentName) == PMP_StaticConstants_MasterData.Chinese_Chipsets) || (specMap.get(PMP_StaticConstants_MasterData.ParentName) == PMP_StaticConstants_MasterData.Japanese_Chipsets))
+                                    {   
+                                        specification.PMP_Product_Parent_Specification_Id__c = chipsetsSpecificationPIMId;
+                                    }
+                                    else
+                                    {
+                                        specification.PMP_Product_Parent_Specification_Id__c = String.valueOf(specMap.get(PMP_StaticConstants_MasterData.ParentIdentifier));  
+                                    }                                   
+                                    if(specOrSpecValMap.containsKey(PMP_StaticConstants_MasterData.SpecRawValue) && specOrSpecValMap.containsKey(PMP_StaticConstants_MasterData.SpecDisplayValue))
+                                    {
+                                        specification.PMP_Partner_Product_Specification_Key__c = (String.valueOf(specOrSpecValMap.get(PMP_StaticConstants_MasterData.SpecRawValue)).deleteWhiteSpace()).toLowerCase();
+                                        specification.PMP_Partner_Product_Specification_Id__c = String.valueOf(specOrSpecValMap.get(PMP_StaticConstants_MasterData.SpecRawValue));
+                                        //fetch sequence number of the spec from utility method 
+                                    	specification.PMP_Partner_Product_Display_Sequence_Nbr__c = PMP_Utility.getSpecificationSequenceNumber(specMap, specOrSpecValMap);
+                                        // US301406
+                                        String specificationName = String.valueOf(specOrSpecValMap.get(PMP_StaticConstants_MasterData.SpecDisplayValue)); 
+                                        if(strBaseKey == PMP_StaticConstants_MasterData.English_JSON)
+                                        {
+                                            specification.Name = specificationName;
+                                            //Added by Manasa - US439814
+                                            specification.PMP_Specification_Name__c = specificationName;
+                                            System.debug('**CustomName**'+specification.PMP_Specification_Name__c);
+                                        }
+                                        if(strBaseKey == PMP_StaticConstants_MasterData.Chinese_JSON)
+                                        {
+                                            //Added by Manasa - US439814 - Used custom Name field instead of Standard Name field
+                                            PMP_Specification__c spec = getexistingSpecs.get((String.valueOf(specOrSpecValMap.get(PMP_StaticConstants_MasterData.SpecRawValue)).deleteWhiteSpace()).toLowerCase());
+                                            if((specificationName==null||String.isBlank(specificationName)) && spec!= null && spec.Name!=null)
+                                            {
+                                                spec.PMP_Specification_Chinese_Nm__c = spec.PMP_Specification_Name__c;
+                                                transSpecUploadMap.put((String.valueOf(specOrSpecValMap.get(PMP_StaticConstants_MasterData.SpecRawValue)).deleteWhiteSpace()).toLowerCase(),spec);
+                                            }
+                                            else if(specificationName!=null && String.isNotBlank(specificationName) && spec!= null)
+                                            {
+                                                spec.PMP_Specification_Chinese_Nm__c = String.valueOf(specOrSpecValMap.get(PMP_StaticConstants_MasterData.SpecDisplayValue));
+                                                transSpecUploadMap.put((String.valueOf(specOrSpecValMap.get(PMP_StaticConstants_MasterData.SpecRawValue)).deleteWhiteSpace()).toLowerCase(),spec);
+                                            }
+                                            
+                                            
+                                        }
+                                        
+                                        if(strBaseKey == PMP_StaticConstants_MasterData.Japanese_JSON)
+                                        {
+                                            //Added by Manasa - US439814 - Used custom Name field instead of Standard Name field
+                                            PMP_Specification__c spec = getexistingSpecs.get((String.valueOf(specOrSpecValMap.get(PMP_StaticConstants_MasterData.SpecRawValue)).deleteWhiteSpace()).toLowerCase());
+                                            if((specificationName==null||String.isBlank(specificationName)) && spec!= null && spec.Name!=null)
+                                            {
+                                                spec.PMP_Specification_Japanese_Nm__c = spec.PMP_Specification_Name__c;
+                                                transSpecUploadMap.put((String.valueOf(specOrSpecValMap.get(PMP_StaticConstants_MasterData.SpecRawValue)).deleteWhiteSpace()).toLowerCase(),spec);
+                                            }
+                                            else if(specificationName!=null && String.isNotBlank(specificationName) && spec!= null)
+                                            {
+                                                spec.PMP_Specification_Japanese_Nm__c = String.valueOf(specOrSpecValMap.get(PMP_StaticConstants_MasterData.SpecDisplayValue));
+                                                transSpecUploadMap.put((String.valueOf(specOrSpecValMap.get(PMP_StaticConstants_MasterData.SpecRawValue)).deleteWhiteSpace()).toLowerCase(),spec);
+                                            }
+                                        }
+                                        
+                                    }
+                                    
+                                    //Add the specification to Map to avoid duplicacy of specification records
+                                    if(specification.PMP_Partner_Product_Specification_Key__c !=null){
+                                        specUploadMap.put(specification.PMP_Partner_Product_Specification_Key__c,specification); 
+                                    }
+                                    
+                                }
+                                else
+                                {
+                                    // If level value is 'specValueLevel3/leaf' then create specification value record
+                                    if(specMap.containsKey(PMP_StaticConstants_MasterData.Level) && specMap.get(PMP_StaticConstants_MasterData.Level) == leafLevel)
+                                    {
+                                        PMP_Specification_Value__c specificationValue = new PMP_Specification_Value__c();
+                                        specificationValue.PMP_Display_Type_Nm__c = PMP_StaticConstants_MasterData.Checkbox;
+                                        specificationValue.PMP_Spec_Value_Type_Nm__c = PMP_StaticConstants_MasterData.Chipset_Spec_Value;
+                                        //US440994
+                                        specificationValue.PMP_Product_Status__c = specOrSpecValMap.containsKey(PMP_StaticConstants_MasterData.Status)? 
+                                                                                    string.valueOf(specOrSpecValMap.get(PMP_StaticConstants_MasterData.Status)):null;
+                                        //US290905
+                                        if(specOrSpecValMap.containsKey(PMP_StaticConstants_MasterData.NPP_Is_Active))
+                                        {
+                                            if(String.valueOf(specOrSpecValMap.get(PMP_StaticConstants_MasterData.NPP_Is_Active)) == PMP_StaticConstants_MasterData.Yes)
+                                            {
+                                                specificationValue.PMP_Active_Ind__c = true;
+                                            }
+                                            else
+                                            {
+                                                specificationValue.PMP_Active_Ind__c = false;
+                                            }
+                                            
+                                        }
+                                        //Image URL - Added by Raj US359430 - start
+                                        
+                                         if(specOrSpecValMap.containsKey(PMP_StaticConstants_MasterData.Image_URL))
+                                        {
+                                                specificationValue.PMP_Image_URL__c = String.valueOf(specOrSpecValMap.get(PMP_StaticConstants_MasterData.Image_URL));
+                                                System.debug('Image URL 232-->'+specificationValue.PMP_Image_URL__c);
+                                        }
+                                        //Image URL - Added by Raj US359430 - end
+                                        
+                                        //Product catalog URL - Added by Raj US359430 - start
+                                        
+                                         if(specOrSpecValMap.containsKey(PMP_StaticConstants_MasterData.Product_Catalog_URL))
+                                        {
+                                                specificationValue.PMP_Product_URL__c = String.valueOf(specOrSpecValMap.get(PMP_StaticConstants_MasterData.Product_Catalog_URL));
+                                                System.debug('product URL 241-->'+specificationValue.PMP_Product_URL__c);
+                                        }
+                                        //Product catalog URL - Added by Raj US359430 - end 
+                                        if(specOrSpecValMap.containsKey(PMP_StaticConstants_MasterData.Off_Roadmap) && specOrSpecValMap.get(PMP_StaticConstants_MasterData.Off_Roadmap) == PMP_StaticConstants_MasterData.Yes)
+                                        {
+                                            specificationValue.PMP_Partner_Off_Roadmap_Ind__c = true;
+                                        }
+                                        else
+                                        {                                       
+                                            specificationValue.PMP_Partner_Off_Roadmap_Ind__c = false;
+                                        }
+                                        if(specOrSpecValMap.containsKey(PMP_StaticConstants_MasterData.SpecRawValue) && specOrSpecValMap.containsKey(PMP_StaticConstants_MasterData.SpecDisplayValue))
+                                        {
+                                            specificationValue.PMP_Product_Specification_Value_Cd__c = String.valueOf(specOrSpecValMap.get(PMP_StaticConstants_MasterData.SpecRawValue));
+                                            if(specOrSpecValMap.containsKey(PMP_StaticConstants_MasterData.SpecValueSequence))
+                                            {                                           
+                                                String sequence = String.valueOf(specOrSpecValMap.get(PMP_StaticConstants_MasterData.SpecValueSequence));
+                                                if(sequence.contains(PMP_StaticConstants_MasterData.Comma_Symbol))
+                                                {
+                                                    sequence = sequence.remove(PMP_StaticConstants_MasterData.Comma_Symbol);
+                                                    specificationValue.PMP_Specification_Value_Sequence_Nbr__c = Integer.valueof(sequence);
+                                                }
+                                                else
+                                                {
+                                                    System.debug('heyyyy'+sequence);
+                                                    specificationValue.PMP_Specification_Value_Sequence_Nbr__c = Integer.valueof(sequence);
+                                                }    
+                                            }
+                                            
+                                            //specificationValue.PMP_Specification_Value_Sequence_Nbr__c = Integer.valueOf(String.valueOf(specOrSpecValMap.get(PMP_StaticConstants_MasterData.SpecValueSequence)));
+                                            specificationValue.PMP_Specification_Value_Sequence_Nbr__c = Integer.valueOf(Math.roundToLong(Decimal.valueOf(String.valueOf(specOrSpecValMap.get(PMP_StaticConstants_MasterData.SpecValueSequence)).replaceAll(',', ''))));
+                                            specificationValue.PMP_Product_Specification_Value_Key__c = (String.valueOf(specOrSpecValMap.get(PMP_StaticConstants_MasterData.SpecRawValue)).deleteWhiteSpace()).toLowerCase();
+                                            //US301406
+                                            String specValueName = String.valueOf(specOrSpecValMap.get(PMP_StaticConstants_MasterData.SpecDisplayValue));
+                                            if(strBaseKey == PMP_StaticConstants_MasterData.English_JSON)
+                                            {
+                                                specificationValue.PMP_Specification_Value_Nm__c = String.valueOf(specOrSpecValMap.get(PMP_StaticConstants_MasterData.SpecDisplayValue));
+                                                specificationValue.Name = String.valueOf(specOrSpecValMap.get(PMP_StaticConstants_MasterData.SpecDisplayValue)); 
+                                            }
+                                            if(strBaseKey == PMP_StaticConstants_MasterData.Chinese_JSON)
+                                            {
+                                                PMP_Specification_Value__c specValue = getexistingSpecValues.get((String.valueOf(specOrSpecValMap.get(PMP_StaticConstants_MasterData.SpecRawValue)).deleteWhiteSpace()).toLowerCase());
+                                                if((specValueName==null||String.isBlank(specValueName)) && specValue!= null && specValue.Name!=null)
+                                                {
+                                                    specValue.PMP_Specification_Value_Chinese_Cd__c = specValue.PMP_Specification_Value_Nm__c;
+                                                    transSpecValUploadMap.put((String.valueOf(specOrSpecValMap.get(PMP_StaticConstants_MasterData.SpecRawValue)).deleteWhiteSpace()).toLowerCase(),specValue);
+                                                }
+                                                else if(specValueName!=null && String.isNotBlank(specValueName) && specValue!= null)
+                                                {
+                                                    specValue.PMP_Specification_Value_Chinese_Cd__c = String.valueOf(specOrSpecValMap.get(PMP_StaticConstants_MasterData.SpecDisplayValue));
+                                                    transSpecValUploadMap.put((String.valueOf(specOrSpecValMap.get(PMP_StaticConstants_MasterData.SpecRawValue)).deleteWhiteSpace()).toLowerCase(),specValue);
+                                                }
+                                                
+                                            }
+                                            if(strBaseKey == PMP_StaticConstants_MasterData.Japanese_JSON)
+                                            {
+                                                PMP_Specification_Value__c specValue = getexistingSpecValues.get((String.valueOf(specOrSpecValMap.get(PMP_StaticConstants_MasterData.SpecRawValue)).deleteWhiteSpace()).toLowerCase());
+                                                if((specValueName==null||String.isBlank(specValueName)) && specValue!= null && specValue.Name!=null)
+                                                {
+                                                    specValue.PMP_Specification_Value_Japanese_Cd__c = specValue.PMP_Specification_Value_Nm__c;
+                                                    transSpecValUploadMap.put((String.valueOf(specOrSpecValMap.get(PMP_StaticConstants_MasterData.SpecRawValue)).deleteWhiteSpace()).toLowerCase(),specValue);
+                                                }
+                                                else if(specValueName!=null && String.isNotBlank(specValueName) && specValue!= null)
+                                                {
+                                                    specValue.PMP_Specification_Value_Japanese_Cd__c = String.valueOf(specOrSpecValMap.get(PMP_StaticConstants_MasterData.SpecDisplayValue));
+                                                    transSpecValUploadMap.put((String.valueOf(specOrSpecValMap.get(PMP_StaticConstants_MasterData.SpecRawValue)).deleteWhiteSpace()).toLowerCase(),specValue);
+                                                }
+                                            }
+                                            //End
+                                        } 
+                                        if(specificationValue.PMP_Product_Specification_Value_Key__c !=null && (specificationValue.PMP_Specification_Value_Nm__c != null || String.isNotBlank(specificationValue.PMP_Specification_Value_Nm__c))){
+                                            specValueUploadMap.put(specificationValue.PMP_Product_Specification_Value_Key__c,specificationValue);  
+                                        }
+                                        
+                                    } 
+                                    
+                                }                                   
+                            }   
+                            
+                            
+                        }                           
+                        
+                    }   
+                    
+                }
+                
+            }   
+        //}[Removed for loop as part code scan fix]
+        //to handle deactivation of Specifications
+        if ((existingEngSpecsMap != null || !existingEngSpecsMap.isEmpty()) && (specUploadMap != null || !specUploadMap.isEmpty()))
+        {
+            for(String keyId: existingEngSpecsMap.Keyset())
+            {
+                //if 2nd map does not have that key
+                if(!specUploadMap.keyset().contains(keyId))
+                {
+                    PMP_Specification__c spec = existingEngSpecsMap.get(keyId);
                     spec.PMP_Active_Ind__c = false;
-                    uploadableSpecsByExternalKey.put(externalId,spec);//push it into uploadable spec map
+                    specsDeactiveMap.put(keyId,spec);
                 }
+                
             }
-            uploadableSpecifications.addAll(uploadableSpecsByExternalKey.values());//add all uploadable specifications to the list
+            if(specsDeactiveMap != null || !specsDeactiveMap.isEmpty())
+            {
+                for(String key : specsDeactiveMap.keySet())
+                {
+                    uploadSpec.add(specsDeactiveMap.get(key));
+                    
+                } 
+            }
         }
         
-        if(!uploadableSpecValuesByExternalKey.isEmpty()){//if existingSpecValues and uploadable specValues map is not empty,handle deactivation of specValues
-            for(String externalId : existingSpecValuesByExternalKey.keySet()){//iterate over existing Chipset specValues and check if new file doesn't contain that specValue,deactivate it
-                if(!uploadableSpecValuesByExternalKey.keySet().contains(externalId)){
-                    PMP_Specification_Value__c specValue = existingSpecValuesByExternalKey.get(externalId);
+        //to handle deactivation of Spec Values
+        if ((existingEngSpecValuesMap != null || !existingEngSpecValuesMap.isEmpty()) && (specValueUploadMap != null || !specValueUploadMap.isEmpty()))
+        {
+            for(String keyId: existingEngSpecValuesMap.Keyset())
+            {
+                //if 2nd map does not have that key
+                if(!specValueUploadMap.keyset().contains(keyId))
+                {
+                    PMP_Specification_Value__c specValue = existingEngSpecValuesMap.get(keyId);
                     specValue.PMP_Active_Ind__c = false;
-                    uploadableSpecValuesByExternalKey.put(externalId,specValue);//push it into uploadable speValuec map
+                    specValuesDeactiveMap.put(keyId,specValue);
                 }
+                
             }
-            uploadableSpecificationValues.addAll(uploadableSpecValuesByExternalKey.values());//add all uploadable specificationValues to the list
+            if(specValuesDeactiveMap != null || !specValuesDeactiveMap.isEmpty())
+            {
+                for(String key : specValuesDeactiveMap.keySet())
+                {
+                    uploadSpecValues.add(specValuesDeactiveMap.get(key));
+                    
+                } 
+            }
         }
-        if(!uploadableSpecifications.isEmpty()){//if there are specifications to be uploaded
-            try{
-                Schema.SObjectField upsertSpecKey = PMP_Specification__c.Fields.PMP_Partner_Product_Specification_Key__c;//fetch the spec ExternalKey
-                specUpsertResultData = Database.upsert(uploadableSpecifications,upsertSpecKey,false);//upsert the specifications
+        for(String key : specUploadMap.keySet())
+        {
+            uploadSpec.add(specUploadMap.get(key));
+        }
+        
+        for(String key : specValueUploadMap.keySet())
+        {
+            uploadSpecValues.add(specValueUploadMap.get(key));
+        }
+        if(uploadSpec.size()>0)
+        {
+            try
+            {
+                //upsert uploadSpec PMP_Partner_Product_Specification_Key__c;
+                Schema.SObjectField upsertSpecKey = PMP_Specification__c.Fields.PMP_Partner_Product_Specification_Key__c;
+                //Comment the below line for testing
+                upsertResultDataSpec = Database.upsert(uploadSpec,upsertSpecKey,false);
             }
-            catch(Exception exp1){
+            catch(Exception exp1)
+            {
+                //System.debug('Error occured from class PMP_ParseChipSet_JSON due to '+exp1.getMessage());
                 throw exp1;
             }
         }
-        if(!uploadableSpecificationValues.isEmpty()){//if there are specifiationValues to be uploaded
-            try{
-                Schema.SObjectField upsertSpecValKey = PMP_Specification_Value__c.Fields.PMP_Product_Specification_Value_Key__c;//fetch the specValue ExternalKey
-                specValueUpsertResultData = Database.upsert(uploadableSpecificationValues,upsertSpecValKey,false);//upsert the specification values
+        
+        if(uploadSpecValues.size()>0)
+        {
+            try
+            {
+                //upsert uploadSpecValues PMP_Product_Specification_Value_Key__c;
+                Schema.SObjectField upsertSpecValKey = PMP_Specification_Value__c.Fields.PMP_Product_Specification_Value_Key__c;
+                //Comment the below line for testing
+                upsertResultDataSpecValue = Database.upsert(uploadSpecValues,upsertSpecValKey,false);
             }
-            catch(Exception exp2){
+            catch(Exception exp2)
+            {
+                //System.debug('Error occured from class PMP_ParseChipSet_JSON due to '+exp2.getMessage());
                 throw exp2;
             }
         }
         
-        if(!specUpsertResultData.isEmpty()){//if spec upsert result is not empty, add the results to main result list
-            upsertResultData.addAll(specUpsertResultData);
+        //US301406
+        for(String key : transSpecUploadMap.keySet())
+        {
+            uploadTransSpec.add(transSpecUploadMap.get(key));
         }
         
-        if(!specValueUpsertResultData.isEmpty()){
-            upsertResultData.addAll(specValueUpsertResultData);//if specValue upsert result is not empty, add the results to main list
+        for(String key : transSpecValUploadMap.keySet())
+        {
+            uploadTransSpecValues.add(transSpecValUploadMap.get(key));
+            
         }
+        
+        if(uploadTransSpec.size()>0)
+        {
+            try
+            {
+                //update uploadTransSpec;
+                Schema.SObjectField upsertSpecTransKey = PMP_Specification__c.Fields.PMP_Partner_Product_Specification_Key__c;
+                //Comment the below line for testing
+                upsertResultDataSpecTrans = Database.upsert(uploadTransSpec,upsertSpecTransKey,false);
+            }
+            catch(Exception exp1)
+            {
+                //System.debug(PMP_StaticConstants_MasterData.Core_PMP_ParseSpecificationJSON_Exception_Message+exp1.getMessage());
+                throw exp1;
+            }
+        }
+        
+        if(uploadTransSpecValues.size()>0)
+        {
+            try
+            {
+                //update uploadTransSpecValues;
+                Schema.SObjectField upsertSpecValTransKey = PMP_Specification_Value__c.Fields.PMP_Product_Specification_Value_Key__c;
+                //Comment the below line for testing
+                upsertResultDataSpecValueTrans = Database.upsert(uploadTransSpecValues,upsertSpecValTransKey,false);
+            }
+            catch(Exception exp2)
+            {
+                //System.debug(PMP_StaticConstants_MasterData.Core_PMP_ParseSpecificationJSON_Exception_Message+exp2.getMessage());
+                throw exp2;
+            }
+        }
+        
+        //Comment the below lines for testing
+        if(upsertResultDataSpecValueTrans.size()>0)
+        {
+            for(Database.UpsertResult res :upsertResultDataSpecValueTrans)
+            {
+                upsertResultData.add(res);
+            }
+        }
+        if(upsertResultDataSpecTrans.size()>0)
+        {
+            for(Database.UpsertResult res :upsertResultDataSpecTrans)
+            {
+                upsertResultData.add(res);
+            }
+        }
+       if(upsertResultDataSpec.size()>0)
+        {
+            for(Database.UpsertResult res :upsertResultDataSpec)
+            {
+                upsertResultData.add(res);
+            }
+        }
+        if(upsertResultDataSpecValue.size()>0)
+        {
+            for(Database.UpsertResult res :upsertResultDataSpecValue)
+            {
+                upsertResultData.add(res);
+            }
+        }
+        
         return upsertResultData;
-        
-    }*/
+    }
 }

@@ -7,7 +7,7 @@
 * ---------------------------------------------------------------------------------------------------------------------------------------
 * Team: PopcornApps            10/5/2017                     Main Controller to create Premier Support Projects As IPS External Customer 
 *****************************************************************************************************************************************/
-public with sharing class Core_ExternalUser_IPS_Project_Controller{
+public  class Core_ExternalUser_IPS_Project_Controller{
     public Core_IPS_Project__c ipsProject{get;set;}
     //Constants to Uniquiely identify the step
     public static final String IPS_PROJ           = 'Premier Support Project';
@@ -72,6 +72,7 @@ public with sharing class Core_ExternalUser_IPS_Project_Controller{
         
         
         iipsProjectrojId = (ipsProject.Id == null ? '' : ipsProject.Id);
+        System.debug('  \n initialize METHOD  IipsProjectroject object : '+ipsProject);
         Core_CustomSetController cont = null;
         
         Map<String, Core_CustomSetController>  mTable_SetCntrlr = null;
@@ -85,6 +86,8 @@ public with sharing class Core_ExternalUser_IPS_Project_Controller{
             
             query = 'Select Core_IPS_Contact__c,Core_Status__c,Core_IPS_Contact__r.FirstName,Core_IPS_Contact_Account__c, Core_IPS_Contact__r.LastName, Core_IPS_Contact__r.Email, Core_IPS_Contact__r.Account.Name '+
             ' FROM Core_IPS_Project_Member__c WHERE  Core_Status__c = \'ACTIVE\' AND  Core_IPS_Contact__r.AccountId  =\''+loggedInUserAcctId+'\'  AND Core_IPS_Project__c = \''+(ipsProject.Id == null ? '' :ipsProject.Id)+'\'';
+        
+        System.debug(IPS_PROJ_MEM+' Existing >>>- initialize ->>> Query  '+query);
         cont = new Core_CustomSetController(query, colNames, true, false, 'Core_IPS_Contact__r.Name');
         
         mTable_SetCntrlr = new Map<String, Core_CustomSetController>();
@@ -106,11 +109,14 @@ public with sharing class Core_ExternalUser_IPS_Project_Controller{
         colNames = new List<String>{ 'Core_Supported_Product_Name__c', 'Core_IPS_Product_Status__c' , 'Product_Application__c' };
             query = 'Select Name, Core_Supported_Product_Name__c,Core_IPS_Product_Status__c, Core_Intel_Product__c,Product_Application__c, Core_Supported_Product__c  '+
             'FROM Core_IPS_Product__c where Core_IPS_Product_Status__c = \'ACTIVE\' AND  Core_IPS_Project__c = \''+iipsProjectrojId+'\'';
+        
+        System.debug(IPS_PROJ_PROD+' Existing >>> Initialize >>> Query  '+query);
         cont = new Core_CustomSetController(query, colNames, true, false, 'Name,Core_Supported_Product_Name__c,Product_Application__c');
         
         mTable_SetCntrlr = new Map<String, Core_CustomSetController>();
         mTable_SetCntrlr.put(EXISTING_RECORDS, cont);
         mStep_SetCntlr.put(IPS_PROJ_PROD, mTable_SetCntrlr);
+        System.debug('query----'+query);
         
         //****************  set controller to Show Available IPS Products************/     
         //Create set controller for Adding Products
@@ -120,11 +126,15 @@ public with sharing class Core_ExternalUser_IPS_Project_Controller{
             'From Asset '+
             'Where (AccountId = \''+loggedInUserAcctId+'\' or RecordType.Name = \'Public Products\' or Core_IPS_Project__c = Null ) AND status = \'Active\' AND Core_IPS_Supported_Product_EOIS__c = false AND '+
             'Core_Supported_Product__C NOT IN ( Select Core_Supported_Product__c FROM Core_IPS_Product__c WHERE Core_IPS_Product_Status__c = \'ACTIVE\' AND Core_IPS_Project__c = \''+iipsProjectrojId+'\')';    
+        
+        System.debug('query----'+query);
         cont = new Core_CustomSetController(query, colNames, true, false, 'Name,core_Product_Application__c');
         
         mTable_SetCntrlr.put(AVAILABLE_RECORDS, cont);
         mStep_SetCntlr.put(IPS_PROJ_PROD, mTable_SetCntrlr);
-        //To get the URL parameters to hide/show pageblocks in Remove(Inactivate) Products/Members scenario      
+        
+        System.debug('  \n\n  initialize METHOD  mStep_SetCntlr    '+mStep_SetCntlr);
+        //To get the URL parameters to hide/show pageblocks in Remove(Inactivate) Products/Members scenario	     
         modeStr  = ApexPages.currentPage().getParameters().get('modeStr');
         editProj = ApexPages.currentPage().getParameters().get('editProj');
     }
@@ -149,6 +159,7 @@ public with sharing class Core_ExternalUser_IPS_Project_Controller{
         fieldDisplay=false;
     }
     // END US158228 --22 Nov 2018- add by Orion vamsi
+        System.debug(' Logged In User '+loggedInUser);
         ipsProject = (Core_IPS_Project__c) stdCntrlr.getRecord();
         if(ipsProject != null && String.isNotBlank(ipsProject.Id)){
             try{ 
@@ -158,10 +169,13 @@ public with sharing class Core_ExternalUser_IPS_Project_Controller{
                 
             }catch(Exception e){
                 ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,e.getMessage()));
+                System.debug(' Exception Occured in controller  '+e);
             }
         }else{
             ipsProject = new Core_IPS_Project__c();
         }
+        
+        System.debug('  \n Constructor StdController Record  '+ipsProject+' >> \n Logged in User Object '+loggedInUser);
         stepIndex = 0;
         steps = new list<String> { IPS_PROJ , IPS_PROJ_MEM , IPS_PROJ_PROD };
             
@@ -176,8 +190,11 @@ public with sharing class Core_ExternalUser_IPS_Project_Controller{
             //Read Values from URL Paramters
             String ind = ApexPages.currentPage().getParameters().get('stepIndex');
             String iipsProjectrojectId = ApexPages.currentPage().getParameters().get('Core_IPS_Project__c'); 
-            stepIndex = String.isNotBlank(ind) ? Integer.valueOf(ind) : 0;       
+            stepIndex = String.isNotBlank(ind) ? Integer.valueOf(ind) : 0;
+            System.debug('  Constructor IPS Project  ELSE condition '+iipsProjectrojectId+' . '+String.isNotBlank(iipsProjectrojectId));
+            
         }
+        System.debug(ipsProject +'\n ------- Constructor END  ------ ');
     }
     
     //Method Call when Previous Step Button is Clicked 
@@ -191,15 +208,13 @@ public with sharing class Core_ExternalUser_IPS_Project_Controller{
     // Method Call when Next/Save&Continue Button is Clicked
     public void nextStep(){ 
         modeStr = 'add';
+        System.debug(' \n ----------- nextStep Invoked Current step : ------------- '+steps[stepIndex]);
         stepIndex +=1;
     }
     
     //Inserting IPS Project
     private void createIPSProject(){
-        /*US1021248 - 05/28/2021 - Vishal - FLS Check for security vulnerability --*/
-        if (Schema.sObjectType.Core_IPS_Project__c.fields.Core_Status__c.isCreateable() || Schema.sObjectType.Core_IPS_Project__c.fields.Core_Status__c.isUpdateable()) {
-            ipsProject.Core_Status__c = 'New';
-        }
+        ipsProject.Core_Status__c = 'New';
        //if(String.isBlank(ipsProject.Core_MPNDA__c))
         //ipsProject.Core_MPNDA__c = '';
         upsert ipsProject;
@@ -220,14 +235,9 @@ public with sharing class Core_ExternalUser_IPS_Project_Controller{
             else{
                 //Create Project 
                 createIPSProject();
-                /*US1021248 - 05/28/2021 - Vishal - FLS Check for security vulnerability --*/
-                if (Schema.sObjectType.Core_IPS_Project__c.fields.Core_Status__c.isCreateable() || Schema.sObjectType.Core_IPS_Project__c.fields.Core_Status__c.isUpdateable()) {
-                    ipsProject.Core_Status__c = 'Active';
-                }
-                //  US158228 --22 Nov 2018- add by Orion vamsi to show selected user as PSO
-                if (Schema.sObjectType.Core_IPS_Project__c.fields.Core_IPS_Partner_Support_Owner__c.isCreateable() || Schema.sObjectType.Core_IPS_Project__c.fields.Core_IPS_Partner_Support_Owner__c.isUpdateable()) {
-                    ipsProject.Core_IPS_Partner_Support_Owner__c=selectedUser;
-                }
+                ipsProject.Core_Status__c = 'Active';
+	//  US158228 --22 Nov 2018- add by Orion vamsi to show selected user as PSO
+                 ipsProject.Core_IPS_Partner_Support_Owner__c=selectedUser;
                 upsert ipsProject;
                 //Add members to Project
                 Stepindex = 1;
@@ -241,9 +251,11 @@ public with sharing class Core_ExternalUser_IPS_Project_Controller{
         }
         
         catch(System.DMLException e){
+            System.debug(' Exception Occured '+e);
             Stepindex = 0;
             pr =  null;
         }
+        System.debug(' Returning  page '+pr);
         return pr;
     }
     
@@ -262,34 +274,47 @@ public with sharing class Core_ExternalUser_IPS_Project_Controller{
             upsertProjectMembers();
             pr = new PageReference('/'+ipsProject.Id);//RK added this for US104706 to redirect users to list view page after Project creation to provide system sufficient time to load Project Assets.
         }        
+        System.debug(' Returning to view page '+pr);
         return pr;
     }
     
     /** Pagination buttons for the table that shows available items for selection  **/
-    public void firstPage(){        
+    public void firstPage(){
+        System.debug(' ++++++++ First Button invoked'+btnActionSource);
+        
         mStep_SetCntlr.get(steps[stepIndex]).get(btnActionSource).sobjectRecords = null;
         mStep_SetCntlr.get(steps[stepIndex]).get(btnActionSource).setCntrlr.first();  
     }
-    public void previousPage(){        
+    public void previousPage(){
+        System.debug(' ++++++++ Previous Button invoked'+btnActionSource);
+        
         mStep_SetCntlr.get(steps[stepIndex]).get(btnActionSource).sobjectRecords = null;
         mStep_SetCntlr.get(steps[stepIndex]).get(btnActionSource).setCntrlr.previous();  
     }
     public void nextPage(){
+        System.debug(' ++++++++ Next Button invoked'+btnActionSource);
         mStep_SetCntlr.get(steps[stepIndex]).get(btnActionSource).sobjectRecords = null;
         mStep_SetCntlr.get(steps[stepIndex]).get(btnActionSource).setCntrlr.next(); 
     }
     public void lastPage(){
+        System.debug(' ++++++++ Last Button invoked'+btnActionSource);
         mStep_SetCntlr.get(steps[stepIndex]).get(btnActionSource).sobjectRecords = null;
         mStep_SetCntlr.get(steps[stepIndex]).get(btnActionSource).setCntrlr.last();     
     }
     
     public void reset(){
+        System.debug('\n\n ++++++++ Reset Invoked  >>>  '+btnActionSource);
+        System.debug('\n Reset Method Invoked '+mStep_SetCntlr.get(steps[stepIndex]).get(btnActionSource).setCntrlr);
         mStep_SetCntlr.get(steps[stepIndex]).get(btnActionSource).setCntrlr = null;
     }
     
     //This Method Updates records in the Selected table when records are selected/Unselected from Available records table
     public void updateSelectedRecords(){
-        modeStr  = ApexPages.currentPage().getParameters().get('modeStr');          
+        modeStr  = ApexPages.currentPage().getParameters().get('modeStr');	
+        
+        System.debug('\n\n Update Existing Method invoked '+steps[stepIndex]);
+        system.debug('mStep_SetCntlr=====>'+mStep_SetCntlr);
+        
         Core_CustomSetController Con = (modeStr =='remove') ? mStep_SetCntlr.get(steps[stepIndex]).get(EXISTING_RECORDS) 
             : mStep_SetCntlr.get(steps[stepIndex]).get(AVAILABLE_RECORDS) ;
         
@@ -300,11 +325,13 @@ public with sharing class Core_ExternalUser_IPS_Project_Controller{
                 con.selectedRecords.remove(w.sobj.Id);
             }
         }
+        System.debug(' +++++++ SELECTED RECORDS '+mStep_SetCntlr.get(steps[stepIndex]).get(AVAILABLE_RECORDS).selectedRecords);
     }
     
     
     //Insert Project Members,Activate Members
     public void upsertProjectMembers(){
+        System.debug(mStep_SetCntlr.get(steps[stepIndex]).get(AVAILABLE_RECORDS)+'==\n upsertProjectMembers Invoked >>'+mStep_SetCntlr);
         List<Core_IPS_Project_Member__c> lProjMembers = new List<Core_IPS_Project_Member__c>();
         Set<Id> sContIds = new Set<ID>();
         Core_CustomSetController sc = mStep_SetCntlr.get(steps[stepIndex]).get(AVAILABLE_RECORDS);
@@ -317,28 +344,18 @@ public with sharing class Core_ExternalUser_IPS_Project_Controller{
         Map<Id, Id> mContIdUserId = Core_ExternalUser_IPS_Project_Helper.getContactUserRecordIds(sContIds);
         
         for(Core_CustomSetController.Wrapper w: sc.getAllSelectedRecords()){
+            System.debug(' >>>>>>>>>>> Selected Contact '+w);
             Core_IPS_Project_Member__c pm = new Core_IPS_Project_Member__c();
-            /*US1021248 - 05/28/2021 - Vishal - FLS Check for security vulnerability --*/
-            if (Schema.sObjectType.Core_IPS_Project_Member__c.fields.Core_IPS_Contact__c.isCreateable() || Schema.sObjectType.Core_IPS_Project_Member__c.fields.Core_IPS_Contact__c.isUpdateable()) {
-                pm.Core_IPS_Contact__c = w.sobj.Id;
-            }
-            if (Schema.sObjectType.Core_IPS_Project_Member__c.fields.Core_Selective_Member__c.isCreateable() || Schema.sObjectType.Core_IPS_Project_Member__c.fields.Core_Selective_Member__c.isUpdateable()) {
-                pm.Core_Selective_Member__c = true;
-            }
-            if (Schema.sObjectType.Core_IPS_Project_Member__c.fields.Core_Status__c.isCreateable() || Schema.sObjectType.Core_IPS_Project_Member__c.fields.Core_Status__c.isUpdateable()) {
-                pm.Core_Status__c = 'Active';
-            }
-            if (Schema.sObjectType.Core_IPS_Project_Member__c.fields.Core_User__c.isCreateable() || Schema.sObjectType.Core_IPS_Project_Member__c.fields.Core_User__c.isUpdateable()) {
-                pm.Core_User__c = mContIdUserId.get(w.sobj.id);
-            }
-            if (Schema.sObjectType.Core_IPS_Project_Member__c.fields.Core_IPS_Project__c.isCreateable() || Schema.sObjectType.Core_IPS_Project_Member__c.fields.Core_IPS_Project__c.isUpdateable()) {
-                pm.Core_IPS_Project__c = ipsProject.Id;
-            }
-            if (Schema.sObjectType.Core_IPS_Project_Member__c.fields.Id.isCreateable() || Schema.sObjectType.Core_IPS_Project_Member__c.fields.Id.isUpdateable()) {
-                pm.Id = mContIdips_ProjectId.get(w.sobj.Id);
-            }
+            pm.Core_IPS_Contact__c = w.sobj.Id;
+            pm.Core_Selective_Member__c = true;
+            pm.Core_Status__c = 'Active';
+            pm.Core_User__c = mContIdUserId.get(w.sobj.id);
+            pm.Core_IPS_Project__c = ipsProject.Id;
+            pm.Id = mContIdips_ProjectId.get(w.sobj.Id);
             lProjMembers.add(pm);
         }
+        
+        System.debug(' Selected Project Members Adding>> '+lProjMembers);
         upsert lProjMembers;
     }
     
@@ -354,90 +371,57 @@ public with sharing class Core_ExternalUser_IPS_Project_Controller{
             prod = mSuppProd_ipsProd.get(assetObj.Core_Supported_Product__c);
             if(prod == null){
                 prod = new Core_IPS_Product__c();
-                /*US1021248 - 05/28/2021 - Vishal - FLS Check for security vulnerability --*/
-                if (Schema.sObjectType.Core_IPS_Product__c.fields.Core_IPS_Project__c.isCreateable() || Schema.sObjectType.Core_IPS_Product__c.fields.Core_IPS_Project__c.isUpdateable()) {
-                    prod.Core_IPS_Project__c = ipsProject.Id;
-                }  
-
+                prod.Core_IPS_Project__c = ipsProject.Id;
             }
-            /*US1021248 - 05/28/2021 - Vishal - FLS Check for security vulnerability --*/
-            if (Schema.sObjectType.Core_IPS_Product__c.fields.Core_Supported_Product__c.isCreateable() || Schema.sObjectType.Core_IPS_Product__c.fields.Core_Supported_Product__c.isUpdateable()) {
-                prod.Core_Supported_Product__c = assetObj.Core_Supported_Product__c;
-            }
-            if (Schema.sObjectType.Core_IPS_Product__c.fields.Core_IPS_Product_Status__c.isCreateable() || Schema.sObjectType.Core_IPS_Product__c.fields.Core_IPS_Product_Status__c.isUpdateable()) {
-                prod.Core_IPS_Product_Status__c ='Active';
-            }
-            if (Schema.sObjectType.Core_IPS_Product__c.fields.Status__c.isCreateable() || Schema.sObjectType.Core_IPS_Product__c.fields.Status__c.isUpdateable()) {
-                prod.Status__c = 'Approved';
-            }
-            if (Schema.sObjectType.Core_IPS_Product__c.fields.Core_IPS_IsAutoApprove__c.isCreateable() || Schema.sObjectType.Core_IPS_Product__c.fields.Core_IPS_IsAutoApprove__c.isUpdateable()) {
-                prod.Core_IPS_IsAutoApprove__c = true;
-            }
-            if (Schema.sObjectType.Core_IPS_Product__c.fields.Core_Intel_Product__c.isCreateable() || Schema.sObjectType.Core_IPS_Product__c.fields.Core_Intel_Product__c.isUpdateable()) {
-                prod.Core_Intel_Product__c  = assetObj.Id;
-            }
-            if (Schema.sObjectType.Core_IPS_Product__c.fields.Core_IsSubmitted_Header__c.isCreateable() || Schema.sObjectType.Core_IPS_Product__c.fields.Core_IsSubmitted_Header__c.isUpdateable()) {
-                prod.Core_IsSubmitted_Header__c = true;
-            }
-            if(String.isNotBlank(IPSProductBasicRecordType)){
-                if (Schema.sObjectType.Core_IPS_Product__c.fields.RecordTypeId.isCreateable() || Schema.sObjectType.Core_IPS_Product__c.fields.RecordTypeId.isUpdateable()) {
-                    prod.RecordTypeId  = IPSProductBasicRecordType;
-               }
-            }
-                
+            prod.Core_Supported_Product__c = assetObj.Core_Supported_Product__c;
+            prod.Core_IPS_Product_Status__c ='Active';
+            prod.Status__c = 'Approved';
+            prod.Core_IPS_IsAutoApprove__c = true;
+            prod.Core_Intel_Product__c  = assetObj.Id;
+            prod.Core_IsSubmitted_Header__c = true;
+            if(String.isNotBlank(IPSProductBasicRecordType))
+                prod.RecordTypeId  = IPSProductBasicRecordType;
             lIPSProducts.add(prod);
         }
         upsert lIPSProducts;
         if(lIPSProducts.size()!=null){
             updateAssertsStatus(lIPSProducts);
         }        
+        System.debug(' >>> '+lIPSProducts);
     }
     
     //Inactivate all the selected assets
     public void upsertAsserts(){
         Core_CustomSetController sc = mStep_SetCntlr.get(steps[stepIndex]).get(EXISTING_RECORDS);
         List<SOBject> assetsToInactivate = new List<SOBject>();
+        System.debug(' +++sc  >>'+sc);
         for(Core_CustomSetController.Wrapper w : sc.sobjectRecords){
             if(w.selected == true){
                 w.sobj.put('Core_IPS_Product_Status__c', 'InActive');
                 assetsToInactivate.add(w.sobj);
             }
         }
+        System.debug('\n Inactive existing products List  >>'+assetsToInactivate);
         update assetsToInactivate;
     } 
     
     //Updating the Intel Product Status when Upserting IPS Products
-        public void updateAssertsStatus(List<Core_IPS_Product__c> lIPSProducts){
-        Map<Id, Core_IPS_Product__c> ipsProdMap;
-        List <Asset> lAssetsToActivate = new List<Asset>();  
-        Set<Id> ipsSupProdIdSet = new Set<Id>();
-        if(lIPSProducts!=null) {
-            Map<Id,Core_IPS_Product__c> ipsProdMapNew =  new Map<Id,Core_IPS_Product__c>();
-            ipsProdMapNew.putAll(lIPSProducts); 
-           if(Core_IPS_Product__c.SObjectType.getDescribe().isAccessible()){
-            ipsProdMap = new Map<Id, Core_IPS_Product__c>([SELECT Name,Id,Core_Supported_Product__R.Id,Core_Intel_Product__C FROM Core_IPS_Product__c WHERE Id IN :ipsProdMapNew.keySet()]);
-            }
-            for(Id ipsProdId : ipsProdMap.keySet()) {
-                ipsSupProdIdSet.add(ipsProdMap.get(ipsProdId).Core_Supported_Product__R.Id);
-            }
-            Map<Id, Asset> assetMap = new Map<Id, Asset>([SELECT Id, Status, UsageEndDate, Core_Supported_Product__R.Id FROM Asset WHERE Core_Supported_Product__R.Id IN:ipsSupProdIdSet AND Core_IPS_Project__R.Id =:ipsProject.Id]);
-            Map<Id, Asset> supProdAssetMap = new Map<Id, Asset>();
-            for(Id assetId : assetMap.keySet()) {
-                supProdAssetMap.put(assetMap.get(assetId).Core_Supported_Product__R.Id, assetMap.get(assetId) );
-            }
-            for(Id ipsProdId : ipsProdMap.keySet()) {
-                Asset assetActivate = supProdAssetMap.get(ipsProdMap.get(ipsProdId).Core_Supported_Product__R.Id);
-                /*--- Start US1038641 06/24/2021 - Farhaad - FLS Check for security vulnerability--*/
-                if (Schema.sObjectType.Asset.fields.Status.isCreateable() || Schema.sObjectType.Asset.fields.Status.isUpdateable()) {
-                    assetActivate.Status = 'Active';
-                }
-                /*--- End US1038641 06/24/2021 - Farhaad - FLS Check for security vulnerability--*/
-                lAssetsToActivate.add(assetActivate);
-            }
+    public void updateAssertsStatus(List<Core_IPS_Product__c> lIPSProducts){
+        List <Asset> lAssetsToActivate = new List<Asset>();   
+        
+        for(Integer a = 0; a <lIPSProducts.size(); a++){
+            //Query Supported Product from IPS Product 
+            Core_IPS_Product__c ipsProd = [Select Name,Id,Core_Supported_Product__R.Id,Core_Intel_Product__C
+                                           from Core_IPS_Product__c where id =:lIPSProducts.get(a).Id limit 1];
+            //Query Asset 
+            Asset assetActivate = [Select id,Status,UsageEndDate from Asset where Core_Supported_Product__R.id =:ipsProd.Core_Supported_Product__R.Id 
+                                   and Core_IPS_Project__R.id =:ipsProject.Id limit 1];
+            System.debug('ZAPP'+assetActivate);
+            assetActivate.Status = 'Active';
+            lAssetsToActivate.add(assetActivate);
         }
-        if(lAssetsToActivate != null && !lAssetsToActivate.isEmpty()){
-            upsert lAssetsToActivate;
-        }
+        system.debug('Final list of Assets to activate '+ lAssetsToActivate);
+        upsert lAssetsToActivate;
     }
     
     //Method to remove Members from an Existing Project
@@ -459,10 +443,13 @@ public with sharing class Core_ExternalUser_IPS_Project_Controller{
             if(w.selected == true)
                 sContIds.add(w.sobj.Id);
         }
+        
+        System.debug(' Selected Project Members Deleting>> '+sContIds);
         List<Core_IPS_Project_Member__c> lstInactivate = [Select Id,Core_IPS_Project__R.Id,Core_IPS_Project__R.OwnerId,Core_User__R.Id,Core_Status__c,Core_User__R.Name FROM Core_IPS_Project_Member__c where ID IN : sContIds ];
+        System.debug(' Selected Project Members Objects >> '+lstInactivate);
         
         for(Core_IPS_Project_Member__c p : lstInactivate){
-            if(p.Core_IPS_Project__R.OwnerId == p.Core_User__c){        
+            if(p.Core_IPS_Project__R.OwnerId == p.Core_User__c){		
                 projOwnerName =p.Core_User__R.Name ;
             }else{
                 p.Core_Status__c = 'InActive';
@@ -473,7 +460,7 @@ public with sharing class Core_ExternalUser_IPS_Project_Controller{
             editProj =  'true';
             pr = null;
             
-            ApexPages.addmessage(new ApexPages.message(ApexPages.severity.INFO,'You cannot remove the owner of a project: '+projOwnerName+' .<br/> If you would like to remove this user from this project, please contact your Intel Representative to change the owner to a different user.'));       
+            ApexPages.addmessage(new ApexPages.message(ApexPages.severity.INFO,'You cannot remove the owner of a project: '+projOwnerName+' .<br/> If you would like to remove this user from this project, please contact your Intel Representative to change the owner to a different user.'));		
             
         }
         else{
@@ -485,6 +472,7 @@ public with sharing class Core_ExternalUser_IPS_Project_Controller{
     //Start --US240404--26-Dec-18 for Disabling InterestedParty checkbox by Popcornapps
      Public void getContactData(){
         lstCon=[SELECT Id,FirstName,LastName,Email,Core_IPS_Email_Opt_Out__c FROM Contact WHERE (ID In (SELECT ContactID FROM User WHERE id=:userinfo.getuserid()))];
+        system.debug('lstCon==>'+lstCon);
         if(lstCon != null && !lstCon.isEmpty())
         {
             if(lstCon[0].Core_IPS_Email_Opt_Out__c == True)

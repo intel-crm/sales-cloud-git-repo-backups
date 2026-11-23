@@ -1,12 +1,5 @@
 @isTest
 public class Core_Product_Access_Line_Item_Test {
-
-    private static void insertUsersWithValidationBypass(List<User> users) {
-        User validationBypassUser = [SELECT Id FROM User WHERE Profile.Name = :System.Label.Core_System_Admin_Profile_Name AND IsActive = true LIMIT 1];
-        System.runAs(validationBypassUser) {
-            insert users;
-        }
-    }
     
     
     
@@ -54,6 +47,7 @@ public class Core_Product_Access_Line_Item_Test {
         //Retrieving the Line Item
         List<Core_IPS_Map_Par_Line_Item__c > newLItem = [Select id,Core_Status__c from Core_IPS_Map_Par_Line_Item__c where id =:lItem.id];
         //update newLItem ;
+        System.debug('Line Item Status'+lItem.Core_Status__c);
         //Testing that the trigger set the status to Active
         System.AssertEquals(newLItem[0].Core_Status__c,'ACTIVE', 'Status is active');
         Test.stopTest();
@@ -104,6 +98,7 @@ public class Core_Product_Access_Line_Item_Test {
         //Retrieving the Line Item
         List<Core_IPS_Map_Par_Line_Item__c > newLItem = [Select id,Core_Status__c from Core_IPS_Map_Par_Line_Item__c where id =:lItem.id];
         //update newLItem ;
+        System.debug('Line Item Status'+lItem.Core_Status__c);
         //Testing that the trigger set the status to Active
         System.AssertEquals(newLItem[0].Core_Status__c,'ACTIVE', 'Status is Active');
         Test.stopTest();
@@ -146,7 +141,7 @@ public class Core_Product_Access_Line_Item_Test {
         lItem.Core_Supported_Product__c = supProd.id;
         lItem.Core_Status__c = 'PENDING';
         litem.Core_Approval_Type__c = 'Approval Required';
-        litem.Recordtypeid  =  schema.sobjecttype.Core_IPS_Map_Par_Line_Item__c.getrecordtypeinfosbyname().get('PAR').getRecordTypeId(); //'012210000004IHZ';
+        litem.Recordtypeid  =  schema.sobjecttype.Core_IPS_Map_Par_Line_Item__c.getrecordtypeinfosbyname().get('PAR').getRecordTypeId(); //'012210000004IHY';
         Test.startTest();
         
         //Inserting Line Item for after Insert
@@ -154,6 +149,7 @@ public class Core_Product_Access_Line_Item_Test {
         //Updating Line Item for afer Update
         //Retrieving the Line Item
         List<Core_IPS_Map_Par_Line_Item__c > newLItem = [Select id,Core_Status__c from Core_IPS_Map_Par_Line_Item__c where id =:lItem.id];
+        System.debug('Line Item Status'+lItem.Core_Status__c);
         //Testing that the trigger set the status to Active
         System.AssertEquals(newLItem[0].Core_Status__c,'PENDING', 'Status is PENDING');
         Test.stopTest();
@@ -188,6 +184,7 @@ public class Core_Product_Access_Line_Item_Test {
                 supportedProductRecord.Core_Product_Organization__c = prodOrgList.get(i).id;
                  i++;                     
         }
+        system.debug('test ### '+suppProductList);
         insert suppProductList;
         System.assert(suppProductList <> null, 'Record not created');
         
@@ -287,6 +284,7 @@ public class Core_Product_Access_Line_Item_Test {
                 supportedProductRecord.Core_Product_Organization__c = prodOrgList.get(i).id;
                  i++;                     
         }
+        system.debug('test ### '+suppProductList);
         insert suppProductList;
         System.assert(suppProductList <> null, 'Record not created');
         
@@ -356,21 +354,17 @@ Modification Log :
         // Query Profiles
         Map<String,ID> profiles = new Map<String,ID>();
         List<String> strProf = new List<String>();
-        List<Profile> profileList = [SELECT Id FROM Profile WHERE Name = 'System Administrator' LIMIT 1];
-        
-        if(profileList.isEmpty()){
-        System.debug('Profile not found');
-        return;
+        strProf.add('IPS Data Migration');
+        List<Profile> profileList = [select id, name from Profile where name IN : strProf];
+        for(Profile prf : profileList){
+            profiles.put(prf.name, prf.id);
         }
-        
-        ID profileId = profileList[0].Id;
-        
         // Create Users
-        List<User> listOfUser = new List<User>();
+        List<User> listOfUser = new List<User> ();
         listOfUser = TestUtilities.getListOfUser(1);
-        listOfUser.get(0).ProfileID = profileId;
-        insertUsersWithValidationBypass(listOfUser);
-        //System.assertEquals(listOfUser.get(0).profileid, profiles.get('IPS Data Migration'), 'Profile is IPS Data Migration');
+        listOfUser.get(0).ProfileID =  profiles.get('IPS Data Migration');
+        insert listOfUser;
+        System.assertEquals(listOfUser.get(0).profileid, profiles.get('IPS Data Migration'), 'Profile is IPS Data Migration');
         System.runAs(listOfUser.get(0)){
             // inserting Accounts
             List<Account> accountList =  new List<Account>();
@@ -395,6 +389,7 @@ Modification Log :
                 supportedProductRecord.Core_Product_Organization__c = prodOrgList.get(i).id;
                 i++;                     
             }
+            system.debug('test ### '+suppProductList);
             insert suppProductList;
             System.assert(suppProductList <> null, 'Record not created');
             // // inserting asset 1
@@ -418,9 +413,8 @@ Modification Log :
             insert parRec;
             System.assert(parRec <> null, 'Record not created');
             // inserting Prodcut Acces Line Item- MAP
-            /*Core_IPS_Map_Par_Line_Item__c lItem = new Core_IPS_Map_Par_Line_Item__c();
+            Core_IPS_Map_Par_Line_Item__c lItem = new Core_IPS_Map_Par_Line_Item__c();
             lItem.Core_MAP_PAR__c = mapRec.id;
-            lItem.Name = 'Test';
             lItem.Core_Account__c = accountList[0].id;
             // lItem.Core_isPARRequest__c=true;
             lItem.Core_Supported_Product__c = suppProductList[0].id;
@@ -445,7 +439,7 @@ Modification Log :
             lItemPARAA.Core_isPARRequest__c= true;
             lItemPARAA.Core_Supported_Product__c = suppProductList[0].id;
             lItemPARAA.Core_Approval_Type__c = 'Auto Approve';
-            insert lItemPARAA;*/
+            insert lItemPARAA;
         }   
     }
 /***************************************************************************************************
@@ -464,21 +458,17 @@ Modification Log :
         // Query Profiles
         Map<String,ID> profiles = new Map<String,ID>();
         List<String> strProf = new List<String>();
-        List<Profile> profileList = [SELECT Id FROM Profile WHERE Name = 'System Administrator' LIMIT 1];
-        
-        if(profileList.isEmpty()){
-        System.debug('Profile not found');
-        return;
+        strProf.add('IPS Data Migration');
+        List<Profile> profileList = [select id, name from Profile where name IN : strProf];
+        for(Profile prf : profileList){
+            profiles.put(prf.name, prf.id);
         }
-        
-        ID profileId = profileList[0].Id;
-        
         // Create Users
-        List<User> listOfUser = new List<User>();
+        List<User> listOfUser = new List<User> ();
         listOfUser = TestUtilities.getListOfUser(1);
-        listOfUser.get(0).ProfileID = profileId;
-        insertUsersWithValidationBypass(listOfUser);
-        //System.assertEquals(listOfUser.get(0).profileid, profiles.get('IPS Data Migration'), 'Profile is IPS Data Migration');
+        listOfUser.get(0).ProfileID =  profiles.get('IPS Data Migration');
+        insert listOfUser;
+        System.assertEquals(listOfUser.get(0).profileid, profiles.get('IPS Data Migration'), 'Profile is IPS Data Migration');
         System.runAs(listOfUser.get(0)){
             // inserting Accounts
             List<Account> accountList =  new List<Account>();
@@ -501,11 +491,10 @@ Modification Log :
             for(Core_IPS_Supported_Product__c supportedProductRecord: suppProductList){                
                 supportedProductRecord.Core_Product__c = productList.get(i).id;
                 supportedProductRecord.Core_Product_Organization__c = prodOrgList.get(i).id;
-                //give false by rajeswari on July 13 for increase code coverage: FIELD_FILTER_VALIDATION_EXCEPTION at Core_MAP_Supported_Product__c    
-                supportedProductRecord.Core_EOIS__c = false;
-              
+                supportedProductRecord.Core_EOIS__c = true;
                 i++;                     
             }
+            system.debug('test ### '+suppProductList);
             insert suppProductList;
             System.assert(suppProductList <> null, 'Record not created');
             // // inserting asset 1
@@ -536,9 +525,8 @@ Modification Log :
             insert parRec;
             System.assert(parRec <> null, 'Record not created');
             // inserting Prodcut Acces Line Item- MAP
-           /* Core_IPS_Map_Par_Line_Item__c lItem = new Core_IPS_Map_Par_Line_Item__c();
+            Core_IPS_Map_Par_Line_Item__c lItem = new Core_IPS_Map_Par_Line_Item__c();
             lItem.Core_MAP_PAR__c = mapRec.id;
-            lItem.Name = 'Test';
             lItem.Core_Account__c = accountList[0].id;
             // lItem.Core_isPARRequest__c=true;
             lItem.Core_Supported_Product__c = suppProductList[0].id;
@@ -563,7 +551,7 @@ Modification Log :
             lItemPARAA.Core_isPARRequest__c= true;
             lItemPARAA.Core_Supported_Product__c = suppProductList[0].id;
             lItemPARAA.Core_Approval_Type__c = 'Auto Approve';
-            insert lItemPARAA;*/
+            insert lItemPARAA;
         }   
     }
 /***************************************************************************************************
@@ -627,6 +615,7 @@ Modification Log :
         //Updating Line Item for afer Update
         //Retrieving the Line Item
         List<Core_IPS_Map_Par_Line_Item__c > newLItem = [Select id,Core_Status__c from Core_IPS_Map_Par_Line_Item__c where id =:lItem.id];
+        System.debug('Line Item Status'+lItem.Core_Status__c);
         //Testing that the trigger set the status to Active
         System.AssertEquals(newLItem[0].Core_Status__c,'PENDING', 'Status is PENDING');
         Test.stopTest();
@@ -672,6 +661,7 @@ Modification Log :
                 supportedProductRecord.Core_Product_Organization__c = prodOrgList.get(i).id;
                  i++;                     
         }
+        system.debug('test ### '+suppProductList);
         insert suppProductList;
         System.assert(suppProductList <> null, 'Record not created');
         // inserting asset 2

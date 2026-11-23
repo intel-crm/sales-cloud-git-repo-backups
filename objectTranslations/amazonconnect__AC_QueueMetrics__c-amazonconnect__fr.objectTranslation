@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Métriques en temps réel d&apos;AC</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value><!-- Métriques en temps réel d&apos;AC --></value>
+    </caseValues>
+    <fields>
+        <label> Travail après contact des agents </label>
+        <name>amazonconnect__Agents_After_Contact_Work__c</name>
+    </fields>
+    <fields>
+        <label> Agents disponibles </label>
+        <name>amazonconnect__Agents_Available__c</name>
+    </fields>
+    <fields>
+        <label> Erreur d’agent </label>
+        <name>amazonconnect__Agents_Error__c</name>
+    </fields>
+    <fields>
+        <label> Agents non productifs </label>
+        <name>amazonconnect__Agents_Non_Productive__c</name>
+    </fields>
+    <fields>
+        <label> Agents de permanence </label>
+        <name>amazonconnect__Agents_On_Call__c</name>
+    </fields>
+    <fields>
+        <label> Agents en ligne </label>
+        <name>amazonconnect__Agents_Online__c</name>
+    </fields>
+    <fields>
+        <label> Agents en service </label>
+        <name>amazonconnect__Agents_Staffed__c</name>
+    </fields>
+    <fields>
+        <label> Contacts dans la file d’attente </label>
+        <name>amazonconnect__Contacts_In_Queue__c</name>
+    </fields>
+    <fields>
+        <label> Contacts planifiés </label>
+        <name>amazonconnect__Contacts_Scheduled__c</name>
+    </fields>
+    <fields>
+        <label> Âge du contact le plus ancien </label>
+        <name>amazonconnect__Oldest_Contact_Age__c</name>
+    </fields>
+    <fields>
+        <label> ARN de la file d’attente </label>
+        <name>amazonconnect__Queue_ARN__c</name>
+    </fields>
+    <fields>
+        <label> ID de file d’attente </label>
+        <name>amazonconnect__Queue_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Amazon Connect Instance Region --></label>
+        <name>amazonconnect__Region__c</name>
+    </fields>
+    <gender>Feminine</gender>
+    <nameFieldLabel><!-- Queue Name --></nameFieldLabel>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

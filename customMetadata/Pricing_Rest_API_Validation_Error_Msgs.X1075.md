@@ -8,6 +8,6 @@
     </values>
     <values>
         <field>Error_Message__c</field>
-        <value xsi:type="xsd:string">No quota is defined for the Account.</value>
+        <value xsi:type="xsd:string">No quota is defined for the Account</value>
     </values>
 </CustomMetadata>

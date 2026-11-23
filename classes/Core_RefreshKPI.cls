@@ -30,6 +30,36 @@ public without sharing class Core_RefreshKPI {
        return new PageReference('/' + ApexPages.currentPage().getParameters().get('id'));
     }
     
+    //LWC Conversion code for autoRun()
+    @AuraEnabled
+    public static wrShowPage autoKPIRun(Id oppId) {
+        wrShowPage wr = new wrShowPage();
+        List<opportunity> opplist = new List<opportunity>();
+        Opportunity opp = new opportunity();
+        opp.id = oppId;
+        opplist.add(opp);
+        List<core_kpi_staging__c> KsList= [select id from core_kpi_staging__c where Core_Opportunity_ID_Txt__c=: oppId and (Core_Batch_ID__c = '0' or Core_Status__c = 'New') and createddate = today order by createddate desc limit 1];
+        if(KsList.isEmpty()){
+            Core_OpportunityHandler.createOppJSONInsert(opplist);
+            core_kpi_staging__c obj = new core_kpi_staging__c();
+            obj.Core_Opportunity_ID_Txt__c = oppId;
+            obj.Core_Batch_ID__c = '0';
+            wr.showpageStartMsg =true;
+            insert obj;
+        }
+        else {
+            wr.showpageProgressMsg =true;
+        } 
+        return wr;
+    }
+    
+    public class wrShowPage{
+        @AuraEnabled
+        public boolean showpageStartMsg= false;      
+        @AuraEnabled
+        public boolean showpageProgressMsg= false;      
+    }
+    
     /***************************************************************************************************** 
     Method Name: displayMessage
     @return  :  Void

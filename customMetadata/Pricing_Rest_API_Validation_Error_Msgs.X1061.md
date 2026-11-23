@@ -8,6 +8,6 @@
     </values>
     <values>
         <field>Error_Message__c</field>
-        <value xsi:type="xsd:string">Quote Line Pricing End Date or New Quantity or {{newRequestedType}} or Quote Line Pricing Start Date or Consumption Platform or  Consumption Sales Geo or  Consumption Region or  Consumption Country or Consumption Segment must be different from Approved Pricing End Date or Approved Quantity or Approved ECAP Price or Approved Pricing Start Date or Consumption Platform or  Consumption Sales Geo or  Consumption Region or  Consumption Country or Consumption Segment for a Change Request.</value>
+        <value xsi:type="xsd:string">Quote Line Pricing End Date or New Quantity or New Requested Price or Quote Line Pricing Start Date or Consumption Platform or  Consumption Sales Geo or  Consumption Region or  Consumption Country or Consumption Segment   must be different from Approved Pricing End Date or Approved Quantity or Approved ECAP Price or Approved Pricing Start Date or Consumption Platform or  Consumption Sales Geo or  Consumption Region or  Consumption Country or Consumption Segment for a Change Request.</value>
     </values>
 </CustomMetadata>

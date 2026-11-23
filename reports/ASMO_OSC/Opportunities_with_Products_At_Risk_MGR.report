@@ -17,22 +17,13 @@
         <field>CLOSE_DATE</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_Risk_Create_Date__c</field>
-    </columns>
-    <columns>
-        <field>OpportunityLineItem.Core_At_Risk_Status__c</field>
+        <field>STAGE_NAME</field>
     </columns>
     <columns>
         <field>PRODUCT_NAME</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_Product_Risk_Owner__c</field>
-    </columns>
-    <columns>
-        <field>STAGE_NAME</field>
-    </columns>
-    <columns>
-        <field>OpportunityLineItem.Core_Risk_Detail__c</field>
+        <field>OpportunityLineItem.Core_Risk_Reason2__c</field>
     </columns>
     <description>For Weekly Dashboard - Shows Oppty products with at-risk reason and category</description>
     <filter>
@@ -40,7 +31,7 @@
             <column>Opportunity.Core_Sales_Groups__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
+            <operator>equals</operator>
             <value>US Sales Group</value>
         </criteriaItems>
         <criteriaItems>
@@ -48,7 +39,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Halversen,Wood,Oldfield,Covey,Merjanian,Stiles,Thomson</value>
+            <value>Halversen,Wood,Swyers,Oldfield,Covey,Merjanian</value>
         </criteriaItems>
         <criteriaItems>
             <column>OpportunityLineItem.Core_At_Risk__c</column>
@@ -57,20 +48,13 @@
             <operator>equals</operator>
             <value>1</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>OpportunityLineItem.Core_At_Risk_Status__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>New,In-Progress</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>OpportunityLineItem.Core_Risk_Priority__c</field>
-        <sortOrder>Asc</sortOrder>
+        <field>OpportunityLineItem.Core_Risk_Category__c</field>
+        <sortOrder>Desc</sortOrder>
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>

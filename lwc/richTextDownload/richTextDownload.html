@@ -1,0 +1,14 @@
+<template>
+    <lightning-card title="Download Rich Text Content as PDF">
+        <lightning-input 
+            type="text" 
+            label="File Name" 
+            value={fileName} 
+            onchange={handleFileNameChange}>
+        </lightning-input>
+        <lightning-button 
+            label="Download as PDF" 
+            onclick={downloadPDF}>
+        </lightning-button>
+    </lightning-card>
+</template>

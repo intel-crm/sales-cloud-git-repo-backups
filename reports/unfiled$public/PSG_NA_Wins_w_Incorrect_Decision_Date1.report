@@ -83,13 +83,6 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>THIS_FISCAL_QUARTER</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>CLOSE_DATE</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
             <value>LAST_FISCAL_QUARTER</value>
         </criteriaItems>
         <criteriaItems>
@@ -112,13 +105,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Design: Original,Design: Secondary</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OpportunityLineItem.Core_Approved_Date__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>THIS_FISCAL_QUARTER</value>
         </criteriaItems>
         <criteriaItems>
             <column>OpportunityLineItem.Core_Approved_Date__c</column>

@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
     <fieldSets>
+        <label><!-- Deal-Approval-Internal --></label>
+        <name>Deal_Approval_Internal</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Default-Deal-Internal --></label>
+        <name>Default_Deal_Internal</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Default-Design-Internal --></label>
+        <name>Default_Design_Internal</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Default-System-Internal --></label>
+        <name>Default_System_Internal</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Design-Approval-Internal --></label>
+        <name>Design_Approval_Internal</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- RelatedListQLI --></label>
+        <name>RelatedListQLI</name>
+    </fieldSets>
+    <fieldSets>
         <label><!-- Deal Desk --></label>
         <name>sbaa__DealDesk</name>
     </fieldSets>
@@ -127,6 +151,10 @@
         <name>Core_Available_for_New_Designs__c</name>
     </fields>
     <fields>
+        <label><!-- BU Mapping Key --></label>
+        <name>Core_BU_Mapping_Key__c</name>
+    </fields>
+    <fields>
         <label><!-- BU Mapping record --></label>
         <name>Core_BU_Mapping_record__c</name>
         <relationshipLabel><!-- Opportunity Product --></relationshipLabel>
@@ -164,6 +192,10 @@
     <fields>
         <label><!-- BU Shortname_New --></label>
         <name>Core_BU_Shortname_New__c</name>
+    </fields>
+    <fields>
+        <label><!-- Bybass-OpentoLostValidation --></label>
+        <name>Core_Bybass_OpentoLostValidation__c</name>
     </fields>
     <fields>
         <label><!-- BypassFlow --></label>
@@ -316,6 +348,10 @@
         <picklistValues>
             <masterLabel>AMD Ryzen Mobile (Rave Ridge)</masterLabel>
             <translation><!-- AMD Ryzen Mobile (Rave Ridge) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AMD Ryzen Mobile (Rave Ridge) </masterLabel>
+            <translation><!-- AMD Ryzen Mobile (Rave Ridge)  --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>AMD Ryzen Pro (DT)</masterLabel>
@@ -2547,6 +2583,10 @@
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- Converted from DR --></label>
+        <name>Core_Converted_from_DR__c</name>
+    </fields>
+    <fields>
         <label><!-- Created from CPQ --></label>
         <name>Core_Created_from_CPQ__c</name>
     </fields>
@@ -3034,6 +3074,10 @@
         <name>Core_Is_Product_EOL__c</name>
     </fields>
     <fields>
+        <label><!-- Is Renewal/Amend PSG Quote --></label>
+        <name>Core_Is_Renewal_Amend_PSG_Quote__c</name>
+    </fields>
+    <fields>
         <label><!-- KPI - Business Industry Function --></label>
         <name>Core_KPI_Business_Industry_Function__c</name>
     </fields>
@@ -3093,52 +3137,52 @@
         <label><!-- Loss/Cancel Reason --></label>
         <name>Core_Loss_Cancel_Reason__c</name>
         <picklistValues>
-            <masterLabel>Another IA Bid Selected </masterLabel>
-            <translation><!-- Another IA Bid Selected  --></translation>
+            <masterLabel>Another IA Bid Selected</masterLabel>
+            <translation><!-- Another IA Bid Selected --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Customer Discontinued Project </masterLabel>
-            <translation><!-- Customer Discontinued Project  --></translation>
+            <masterLabel>Customer Discontinued Project</masterLabel>
+            <translation><!-- Customer Discontinued Project --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Design Reg. Product Swap </masterLabel>
-            <translation><!-- Design Reg. Product Swap  --></translation>
+            <masterLabel>Design Reg. Product Swap</masterLabel>
+            <translation><!-- Design Reg. Product Swap --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Entered in Error </masterLabel>
-            <translation><!-- Entered in Error  --></translation>
+            <masterLabel>Entered in Error</masterLabel>
+            <translation><!-- Entered in Error --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Failed Audit </masterLabel>
-            <translation><!-- Failed Audit  --></translation>
+            <masterLabel>Failed Audit</masterLabel>
+            <translation><!-- Failed Audit --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Feature/Performance </masterLabel>
-            <translation><!-- Feature/Performance  --></translation>
+            <masterLabel>Feature/Performance</masterLabel>
+            <translation><!-- Feature/Performance --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Intel No Longer Pursuing </masterLabel>
-            <translation><!-- Intel No Longer Pursuing  --></translation>
+            <masterLabel>Intel No Longer Pursuing</masterLabel>
+            <translation><!-- Intel No Longer Pursuing --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Other (refer to Loss Details) </masterLabel>
-            <translation><!-- Other (refer to Loss Details)  --></translation>
+            <masterLabel>Other (refer to Loss Details)</masterLabel>
+            <translation><!-- Other (refer to Loss Details) --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>POP Unobtainable </masterLabel>
-            <translation><!-- POP Unobtainable  --></translation>
+            <masterLabel>POP Unobtainable</masterLabel>
+            <translation><!-- POP Unobtainable --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Price </masterLabel>
-            <translation><!-- Price  --></translation>
+            <masterLabel>Price</masterLabel>
+            <translation><!-- Price --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Product Schedule </masterLabel>
-            <translation><!-- Product Schedule  --></translation>
+            <masterLabel>Product Schedule</masterLabel>
+            <translation><!-- Product Schedule --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Supply </masterLabel>
-            <translation><!-- Supply  --></translation>
+            <masterLabel>Supply</masterLabel>
+            <translation><!-- Supply --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -3665,6 +3709,10 @@
         <name>Core_Opportunity_Product_Vendor_Prime__c</name>
     </fields>
     <fields>
+        <label><!-- Opportunity Type RecordId --></label>
+        <name>Core_Opportunity_Type_RecordId__c</name>
+    </fields>
+    <fields>
         <help><!-- Use this field to provide details If you have selected ‘Other’ for either Competitor or Product.   The information you provide will be used to inform future additions to the lists. --></help>
         <label><!-- Other Competitor/Product --></label>
         <name>Core_OtherCompetitor_Product_Txt__c</name>
@@ -3777,6 +3825,10 @@
         <help><!-- This price is used to calculate PW Total Price from PW Quantity and sale price. --></help>
         <label><!-- Production Total Price --></label>
         <name>Core_Production_Win_Total_Price__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quote Line Additional Comments --></label>
+        <name>Core_QL_Additional_Comments_Txt__c</name>
     </fields>
     <fields>
         <label><!-- Quote Line End Date --></label>
@@ -3963,12 +4015,29 @@
         <name>Core_SPG_Planning_Segment_Legacy__c</name>
     </fields>
     <fields>
+        <label><!-- S Area --></label>
+        <name>Core_S_Area__c</name>
+        <picklistValues>
+            <masterLabel>None</masterLabel>
+            <translation><!-- None --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
         <label><!-- Sales Price Note --></label>
         <name>Core_Sales_Price_Note__c</name>
     </fields>
     <fields>
         <label><!-- Software Stack --></label>
         <name>Core_Software_Stack__c</name>
+    </fields>
+    <fields>
+        <help><!-- Field update only after product add --></help>
+        <label><!-- Solution Area Product Id --></label>
+        <name>Core_Solution_Area_Product_Id__c</name>
+        <picklistValues>
+            <masterLabel>None</masterLabel>
+            <translation><!-- None --></translation>
+        </picklistValues>
     </fields>
     <fields>
         <label><!-- Status --></label>
@@ -4082,6 +4151,39 @@
         <name>Failed_DDR_RecordID__c</name>
     </fields>
     <fields>
+        <label><!-- Is_Reversal --></label>
+        <name>Is_Reversal__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Account name --></label>
+        <name>Opportunity_Account_name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity prediction 3 --></label>
+        <name>Opportunity_prediction_3__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Id2 --></label>
+        <name>Product_Id2__c</name>
+        <relationshipLabel><!-- Opportunity Product --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Product Id3 --></label>
+        <name>Product_Id3__c</name>
+        <picklistValues>
+            <masterLabel>None</masterLabel>
+            <translation><!-- None --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Solution Area Title --></label>
+        <name>SA_title__c</name>
+        <picklistValues>
+            <masterLabel>None</masterLabel>
+            <translation><!-- None --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
         <help>ID do produto da oportunidade que veio desse pacote de produtos.</help>
         <label><!-- Parent ID --></label>
         <name>SBQQ__ParentID__c</name>
@@ -4095,6 +4197,11 @@
         <help>Indica o tipo de assinatura para determinar a precificação do contrato.</help>
         <label><!-- Subscription Type --></label>
         <name>SBQQ__SubscriptionType__c</name>
+    </fields>
+    <fields>
+        <label><!-- Solution Area Product --></label>
+        <name>Solution_Area_Product__c</name>
+        <relationshipLabel><!-- Opportunity Product --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- Approval Status --></label>
@@ -4121,12 +4228,20 @@
         <name>CRM_Restrict_OppAuditorsEdit_OLI</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- Quantity must be nonzero --></errorMessage>
+        <name>CRM_Restrict_Quantity_Update_to_Zero</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- Opportunity Product cannot be updated when there is a SOAR Process Pending/Qualified. --></errorMessage>
         <name>CRM_VBS_Status_Change_Restriction</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Product status cannot be updated as specified as the product is flagged at risk. Please navigate to the At Risk tab to either uncheck the At Risk checkbox or disposition the Risk Status to a “Closed” state. --></errorMessage>
         <name>Core_AtRisk_NewOrInProgress</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Risk Details, Risk Reason, Risk Priority is required. --></errorMessage>
+        <name>Core_At_Risk_Checks</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- This product is locked and not available for edit due to POP Audit Failure.  Please contact smg.pop.audit.team@intel.com with any questions. --></errorMessage>
@@ -4273,6 +4388,10 @@ Please add a new product. --></errorMessage>
         <name>Core_PCCDealOppty_Prevent_Qty_Edit</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- Cannot fill-in Loss/Cancel fields when Status is not Lost/Cancelled. --></errorMessage>
+        <name>Core_PCCDealOppty_Restrict_Loss_Cancel</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- Opportunity product status cannot be reversed to open stages from Lost/Cancelled --></errorMessage>
         <name>Core_PCC_Restrict_Status_Update</name>
     </validationRules>
@@ -4295,6 +4414,10 @@ Please add a new product. --></errorMessage>
     <validationRules>
         <errorMessage><!-- After approval,ONLY “Production Win”, “Production Lost” or “Production Cancelled” status is allowed.For any other change, please use the Reverse button on the Opportunity header. --></errorMessage>
         <name>Core_Restrict_Manual_Reversal</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You cannot update Production Quantity or Production Sales Price for Non Design type of Opportunities --></errorMessage>
+        <name>Core_Restrict_PW_On_Deal</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Please input a value greater than $0 for the Sales Price. --></errorMessage>
@@ -4325,12 +4448,28 @@ Please add a new product. --></errorMessage>
         <name>PW_Sales_Price_not_editable</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- Stage cannot be set to Lost/Cancelled when quote is in Review. --></errorMessage>
+        <name>PreventStatusUpdateQLIisinReview</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- Quantity field only supports natural numbers.  Edit Quantity field(s) by removing the decimal/negative/zero value to enable saving. --></errorMessage>
         <name>Quantity_only_supports_whole_numbers</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Cannot edit the fields after Design Win --></errorMessage>
         <name>Restrict_Partner_and_ISR_field_edit_PW</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Opportunity can be submitted only when all the Products associated are marked &quot;Pending&quot;,&quot;Lost&quot; or &quot;Cancelled&quot; --></errorMessage>
+        <name>Restrict_Resubmission</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Sales Manager cannot move an Opportunity Product from Production Win to Pending/Lost/Cancelled/On Hold. --></errorMessage>
+        <name>Restrict_Status_Change_from_PW_Approved</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Cannot change Owning BU Short Name --></errorMessage>
+        <name>Test_ToBeDeleted_2</name>
     </validationRules>
     <webLinks>
         <label><!-- Core_Edit_Product_Attributes --></label>

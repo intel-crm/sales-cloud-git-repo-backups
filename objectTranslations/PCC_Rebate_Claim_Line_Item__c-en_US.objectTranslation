@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Rebate Claim Line Item</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Rebate Claim Line Items</value>
+    </caseValues>
+    <fieldSets>
+        <label><!-- PCC_RebateLineItemFieldSet --></label>
+        <name>PCC_RebateLineItemFieldSet</name>
+    </fieldSets>
+    <fields>
+        <label><!-- Approved Pricing End Date --></label>
+        <name>PCC_Approved_Pricing_End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approved Pricing Start Date --></label>
+        <name>PCC_Approved_Pricing_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approved Quote Line Quantity --></label>
+        <name>PCC_Approved_Quote_Line_Quantity__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approved Claim Rebate Amount --></label>
+        <name>PCC_Approved_Rebate_Amount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Submitted Claim Rebate Amount --></label>
+        <name>PCC_Claimed_Rebate_Amount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Consumption Countries --></label>
+        <name>PCC_Country__c</name>
+    </fields>
+    <fields>
+        <label><!-- Invoice Date --></label>
+        <name>PCC_Invoice_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Invoice Number --></label>
+        <name>PCC_Invoice__c</name>
+    </fields>
+    <fields>
+        <label><!-- OEM Name --></label>
+        <name>PCC_OEM_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity --></label>
+        <name>PCC_Opportunity__c</name>
+        <relationshipLabel><!-- Rebate Claim Line Items --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Partner Reference Id --></label>
+        <name>PCC_Partner_Reference_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product --></label>
+        <name>PCC_Product__c</name>
+        <relationshipLabel><!-- Rebate Claim Line Items --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Quantity --></label>
+        <name>PCC_Quantity__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quote Line Number --></label>
+        <name>PCC_Quote_Line_Number_Lnk__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quote Line Number --></label>
+        <name>PCC_Quote_Line_Number__c</name>
+        <relationshipLabel><!-- Rebate Claim Line Items --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Rebate Claim --></label>
+        <name>PCC_Rebate_Claim__c</name>
+        <relationshipLabel><!-- Rebate Claim Line Items --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Rejection Code --></label>
+        <name>PCC_Rejection_Code__c</name>
+        <picklistValues>
+            <masterLabel>Invoice Dates outside approved dates</masterLabel>
+            <translation><!-- Invoice Dates outside approved dates --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not a valid Intel product</masterLabel>
+            <translation><!-- Not a valid Intel product --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not enough Remaining Approved Rebate amount</masterLabel>
+            <translation><!-- Not enough Remaining Approved Rebate amount --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not valid OEM</masterLabel>
+            <translation><!-- Not valid OEM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Rejection Comments --></label>
+        <name>PCC_Rejection_Comments__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>PCC_Status__c</name>
+        <picklistValues>
+            <masterLabel>Approved</masterLabel>
+            <translation><!-- Approved --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rejected</masterLabel>
+            <translation><!-- Rejected --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Submitted</masterLabel>
+            <translation><!-- Submitted --></translation>
+        </picklistValues>
+    </fields>
+    <recordTypes>
+        <label><!-- Rebate Claim Line Item --></label>
+        <name>Rebate_Claim_Line_Item</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

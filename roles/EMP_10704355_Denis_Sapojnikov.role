@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>Edit</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>EMP of  David Guzzi</description>
+    <description>EMP of Matt Hains</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>EMP_10704355_(Dot)_Denis_Sapojnikov</name>
     <opportunityAccessLevel>Edit</opportunityAccessLevel>
-    <parentRole>EMP_12062073_David_Guzzi</parentRole>
+    <parentRole>EMP_10505705_Iain_Beckingham</parentRole>
 </Role>

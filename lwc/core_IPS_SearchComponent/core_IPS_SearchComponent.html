@@ -6,8 +6,7 @@
                 value={searchKey} 
                 type="search"
                 onchange={handleChange} 
-                placeholder={placeholder}
-                disabled={isDisabledField}>
+                placeholder={placeholder}>
             </lightning-input>
         </template>
         <template if:false={label}>
@@ -17,8 +16,7 @@
                 value={searchKey} 
                 type="search"
                 onchange={handleChange} 
-                placeholder={placeholder}
-                disabled={isDisabledField}>
+                placeholder={placeholder}>
             </lightning-input>
         </template>
         <template if:true={searchKeyLenMsg}>
@@ -33,8 +31,7 @@
             onchange={handleChange} 
             placeholder={placeholder}
             required
-            onfocusout={handleFocusOut}
-            disabled={isDisabledField}>
+            onfocusout={handleFocusOut}>
         </lightning-input>
         <template if:true={searchKeyLenMsg}>
            <div style="font-size: smaller;">{searchKeyCharlenErrMsg}</div> 

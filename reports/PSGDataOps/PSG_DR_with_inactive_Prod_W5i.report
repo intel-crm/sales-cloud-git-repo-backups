@@ -61,20 +61,6 @@
             <operator>equals</operator>
             <value>0</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>Core_Design_Registration__c.Core_Product_Group_Nm__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>FPGA/Power</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Core_Design_Registration_Product__c.Core_Design_Product_Status_Nm__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Approved</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>

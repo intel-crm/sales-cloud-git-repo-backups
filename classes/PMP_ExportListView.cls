@@ -1,76 +1,44 @@
-/**
-* @File Name          : PMP_ExportListView.cls
-* @Description        : 
-* @Author             : Balaji M
-* @Group              : 
-* @Last Modified By   : Balaji M
-* @Last Modified On   : 09-09-2020
-* @Modification Log   : 
-* Ver       Date            Author      		    Modification
-* 1.0    5/22/2020         Balaji M            Initial Version 
-**/
 public with sharing class PMP_ExportListView {
-    public static List<SingleColumn> lstColumn { get; set; }
+public static List<SingleColumn> lstColumn { get; set; }
     public static String strQuery;
-    public  static List<sObject> recs = new List<sObject>();
+     public  static List<sObject> recs = new List<sObject>();
     @TestVisible private static integer maxExportRows= 100000;
     
-    
+       
     @AuraEnabled 
     public static list<objWrapper> sObjectNames(){
-        list<objWrapper> objWrapperList = new list<objWrapper>();
-        
-        //Set<String> sObjectSet = new Set<String>();
-        /*  for (PMP_ListViewMapping__mdt mdt :  [SELECT MasterLabel,Hyperlink_Field_Names__c, PMP_List_View_Name__c,DeveloperName, PMP_Is_Active__c,PMP_sObjectName__c 
-FROM PMP_ListViewMapping__mdt WHERE PMP_Is_Active__c = TRUE]){
-objWrapper objW = new objWrapper();
-//if(!sObjectSet.contains(mdt.PMP_sObjectName__c)){
-//sObjectSet.add(mdt.PMP_sObjectName__c);
-objW.sobjectName = mdt.PMP_sObjectName__c;
-objW.hypersinkFields = mdt.Hyperlink_Field_Names__c;
-objWrapperList.add(objW);
-// }
-
-}*/
-        
-        for(Map<String,Object> ListViewMappingMdt : new Core_CustomMetadataObjectController('PMP_ListViewMapping__mdt').getAll().values()){
-            System.debug('ListViewMappingMdt>>>'+ListViewMappingMdt);
-            if(boolean.valueof(ListViewMappingMdt.get('PMP_Is_Active__c'))){
-                objWrapper objW = new objWrapper();
-                objW.sobjectName = String.valueOf(ListViewMappingMdt.get('PMP_sObjectName__c'));
-                objW.hypersinkFields = String.valueOf(ListViewMappingMdt.get('Hyperlink_Field_Names__c'));
-                objWrapperList.add(objW);
-            }
-            
-            //return new list<string>(sObjectSet);
-            
-        }
+         list<objWrapper> objWrapperList = new list<objWrapper>();
+       
+        Set<String> sObjectSet = new Set<String>();
+       for (PMP_ListViewMapping__mdt mdt :  [SELECT MasterLabel,Hyperlink_Field_Names__c, PMP_List_View_Name__c,DeveloperName, PMP_Is_Active__c,PMP_sObjectName__c 
+                                             FROM PMP_ListViewMapping__mdt WHERE PMP_Is_Active__c = TRUE]){
+                                                  objWrapper objW = new objWrapper();
+                                         //if(!sObjectSet.contains(mdt.PMP_sObjectName__c)){
+                                                     //sObjectSet.add(mdt.PMP_sObjectName__c);
+                                             objW.sobjectName = mdt.PMP_sObjectName__c;
+                                             objW.hypersinkFields = mdt.Hyperlink_Field_Names__c;
+                                             objWrapperList.add(objW);
+                                                // }
+                                                 
+                          }
         return objWrapperList;
+        //return new list<string>(sObjectSet);
+        
     }
+    
     @AuraEnabled (cacheable=true)
     public static list<listViewWrapper> listValues(String sObjectName){             
         Set<String> listViewSet = new Set<String>();
         list<listViewWrapper> oListViewWrapper = new list<listViewWrapper>();
         Id loggedUserId = UserInfo.getUserId();    
-        
-        try{  
-            /*for(PMP_ListViewMapping__mdt mdt : [SELECT MasterLabel, Hyperlink_Field_Names__c,PMP_List_View_Name__c,DeveloperName, PMP_Is_Active__c,PMP_sObjectName__c 
-FROM PMP_ListViewMapping__mdt WHERE PMP_sObjectName__c =:sObjectName AND PMP_Is_Active__c = TRUE]){
-
-listViewSet.add(mdt.PMP_List_View_Name__c);
-}*/       
-            for(Map<String,Object> ListViewMappingMdt : new Core_CustomMetadataObjectController('PMP_ListViewMapping__mdt').getAll().values()){
-                System.debug('ListViewMappingMdt>>>'+ListViewMappingMdt);
                 
-                if(boolean.valueof(ListViewMappingMdt.get('PMP_Is_Active__c')) 
-                   && (String.valueOf(ListViewMappingMdt.get('PMP_sObjectName__c'))==sObjectName)){
-                       
-                       listViewSet.add( String.valueOf(ListViewMappingMdt.get('PMP_List_View_Name__c')));
-                   }
-            }
-            system.debug('listViewSet>>>'+listViewSet);
-            
-            
+        try{  
+            for(PMP_ListViewMapping__mdt mdt : [SELECT MasterLabel, Hyperlink_Field_Names__c,PMP_List_View_Name__c,DeveloperName, PMP_Is_Active__c,PMP_sObjectName__c 
+                                                       FROM PMP_ListViewMapping__mdt WHERE PMP_sObjectName__c =:sObjectName AND PMP_Is_Active__c = TRUE]){
+                                                           
+                                                           listViewSet.add(mdt.PMP_List_View_Name__c);
+                                                       }
+          
             for(ListView lv : [SELECT Id, Name, DeveloperName,CreatedById FROM ListView
                                WHERE sObjectType = : sObjectName ORDER By Name ASC]){
                                    
@@ -83,103 +51,127 @@ listViewSet.add(mdt.PMP_List_View_Name__c);
                                    }
                                }
             
-            
+          
         }
         catch(Exception e){
-            //system.debug('Error on fetching listviews '+e.getMessage());
+            system.debug('Error on fetching listviews '+e.getMessage());
         }        
-        // system.debug('ListViewsReturned:'+oListViewWrapper);
+        system.debug('ListViewsReturned:'+oListViewWrapper);
         return oListViewWrapper; 
     }
     
     /*method: Apex method to call describe api for selected list view.
-*input: Object name and list view filter id
-*output: void */
+	*input: Object name and list view filter id
+	*output: void */
     @AuraEnabled
     public static void listViewFilter(Id filterId, String sObjectName) {
+        HttpRequest req = new HttpRequest();
+         try{
+        req.setHeader('Authorization', 'Bearer ' + UserInfo.getSessionID());
+        req.setHeader('Content-Type', 'application/json');      
+        //req.setClientCertificateName(Label.PMP_Self_Signed_Cert);  
         
-        try {
-            HttpRequest req = new HttpRequest();
-            req.setHeader(PMP_StaticConstants_Offering.Authorization, PMP_StaticConstants_Offering.Bearer + UserInfo.getSessionID());
-            req.setHeader('Content-Type', 'application/json');
-            
-            String endpointUrl = PMP_Utility.getBaseCommunityUrl().substringBeforeLast('/') + '/services/data/v45.0/sobjects/' + sObjectName + '/listviews/' + filterId + '/describe';
-            req.setEndpoint(endpointUrl);
-            req.setMethod('GET');
-            
-            Http h = new Http();
-            HttpResponse res = h.send(req);
-            //System.debug('res body:' + res.getBody());
-            
-            Map<String, Object> root = (Map<String, Object>) JSON.deserializeUntyped(res.getBody());
-            strQuery = (String) root.get('query') + ' LIMIT ' + (maxExportRows + 1);
-            //System.debug('#10 strQuery: ' + strQuery);
-            
-            lstColumn = new List<SingleColumn>();
-            parseJsonResponse(res.getBody());
-            
-        } 
-        catch (Exception e) {
-            //System.debug('Error on API callout ' + e.getMessage());
-        }
+        String communityURL = PMP_Utility.getBaseCommunityUrl();
+        communityURL = communityURL.substringBeforeLast('/') ;             
+        String endpointUrl =  communityURL + '/services/data/v45.0/sobjects/' +sObjectName + '/listviews/' + filterId + '/describe';
+        system.debug('endpoint:'+endpointUrl);
+        req.setEndpoint(endpointUrl);
+        req.setMethod('GET');      
+        Http h = new Http();
+        HttpResponse res = h.send(req);
+        system.debug('res body:'+res.getBody());
+        Map<String, Object> root = (Map<String, Object>)JSON.deserializeUntyped(res.getBody());     
+        //get the query string from the response
+        strQuery = (String)root.get('query') + ' LIMIT ' + (maxExportRows+ 1);        
+        System.debug('#10 strQuery: ' + strQuery);
+        lstColumn = new List<SingleColumn>();
         
-    }
-    private static void parseJsonResponse(String responseBody) {
-        JSONParser parser = JSON.createParser(responseBody);
-        
-        while (parser.nextToken() != null) {
-            if (parser.getCurrentToken() == JSONToken.START_ARRAY) {
+        //Parsing JSON string to get the column details    
+        JSONParser parser = JSON.createParser(res.getBody());
+        while (parser.nextToken() != null){ 
+            if(parser.getCurrentToken() == JSONToken.START_ARRAY) {       
                 while (parser.nextToken() != null) {
-                    if (parser.getCurrentToken() == JSONToken.START_OBJECT) { 
-                        SingleColumn col = (SingleColumn) parser.readValueAs(SingleColumn.class);
-                        processColumn(col);
+                    if (parser.getCurrentToken() == JSONToken.START_OBJECT) {
+                        
+                        SingleColumn col = (SingleColumn)parser.readValueAs(SingleColumn.class);
+                        if(col.hidden == false && col.fieldNameOrPath != NULL && !col.fieldNameOrPath.contains('Clone')) {            
+                            
+                            col.label = col.label.replace(',', '');                            
+                            lstColumn.add(col); 
+                            system.debug('lstColumn'+lstColumn);
+                        }    
                     }
                 }
             }
         }
+         }
+        catch(Exception e){
+            system.debug('Error on API callout '+e.getMessage());
+        }  
+        
     }
+    /*
     
-    private static void processColumn(SingleColumn col) {
-        if (col.hidden == false && col.fieldNameOrPath != null && !col.fieldNameOrPath.contains('Clone')) {
-            col.label = col.label.replace(',', '');
-            lstColumn.add(col);
-            // System.debug('lstColumn' + lstColumn);
+    @AuraEnabled
+    public static ID executebach(Id filterId, String sObjectName){
+        Id batchjobid;
+     System.debug('strQuery before fetch: ' + strQuery+sObjectName);
+        if(strQuery == null){
+            listViewFilter(filterId,sObjectName);
+            System.debug('strQuery after fetch from inside if: ' + strQuery);
         }
+         try{
+             
+             
+            batchjobid = Database.executeBatch(new PMP_ExportListViewBatch(strQuery), 200);
+            
+         // lstRec = recs;
+        }
+        catch(Exception e){
+            system.debug('Error on fetching records '+e.getMessage());
+        } 
+        return batchjobid;
     }
     
-    
+    @AuraEnabled
+    public static AsyncApexJob getBatchJobStatus(Id jobID){
+        AsyncApexJob jobInfo = [SELECT Status, NumberOfErrors,JobItemsProcessed,TotalJobItems FROM AsyncApexJob WHERE Id = :jobID];
+        return jobInfo;
+    }
+  */
     
     /*method: Apex method to fetch records for a selected list view.
-*input: Object name and list view filter id
-*output: List<sObject> */
+	*input: Object name and list view filter id
+	*output: List<sObject> */
     @AuraEnabled
     public static List<sObject> fetchRecords(Id filterId, String sObjectName){
         //fetching records based on the query.
-        // System.debug('strQuery before fetch: ' + strQuery+sObjectName);
+        System.debug('strQuery before fetch: ' + strQuery+sObjectName);
         if(strQuery == null){
             listViewFilter(filterId,sObjectName);
-            // System.debug('strQuery after fetch from inside if: ' + strQuery);
+            System.debug('strQuery after fetch from inside if: ' + strQuery);
         }
         List<sObject> lstRec = new List<sObject>();
-        try{string query =  strQuery;
-            for(sObject sobj : Database.query(query) ){
+        try{
+            for(sObject sobj : Database.query(strQuery) ){
                 lstRec.add(sobj);
             }
-            
-            
-            
-           } catch(Exception e){
-               //system.debug('Error on fetching records '+e.getMessage());
-           } 
-        return lstRec;
-        
+           
+             
+         
+        }
+        catch(Exception e){
+            system.debug('Error on fetching records '+e.getMessage());
+        } 
+       return lstRec;
+
         
     }
     
-    
+
     /*method: Apex method to fetch columns for a selected list view.
-*input: Object name and list view filter id
-*output: Map<String,String> */
+	*input: Object name and list view filter id
+	*output: Map<String,String> */
     @AuraEnabled
     public static Map<String,String> fetchKeys(Id filterId, String sObjectName){
         Map<String,String> keysToLabelMap = new Map<String,String>{};
@@ -190,10 +182,10 @@ listViewSet.add(mdt.PMP_List_View_Name__c);
                     
                 }
                 
-                //system.debug('keys:'+keysToLabelMap);
+                system.debug('keys:'+keysToLabelMap);
             }
         catch(Exception e){
-            //system.debug('Error on fetching keys '+e.getMessage());
+            system.debug('Error on fetching keys '+e.getMessage());
         } 
         return keysToLabelMap;
     }

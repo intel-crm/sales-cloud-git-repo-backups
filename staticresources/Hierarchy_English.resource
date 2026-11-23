@@ -1,2228 +1,8 @@
 {
 "en_US" : [
 {
-"Parent Identifier" : "TPS_900221",
-"Parent Name" : "FPGA Intellectual Property Cores",
-"Child Identifier" : "TPS_900236",
-"Child Name" : "Basic Functions",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "0",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3, level 4 and level 5",
-"Child_Mandatory_Flag" : "Yes",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900214",
-"Parent Name" : "FPGA Boards",
-"Child Identifier" : "TPS_900215",
-"Child Name" : "PAC - Programmable Acceleration Cards",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "1",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3 and level 4",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900236",
-"Parent Name" : "Basic Functions",
-"Child Identifier" : "TPS_900239",
-"Child Name" : "Arithmetic",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "1",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3, level 4 and level 5",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900221",
-"Parent Name" : "FPGA Intellectual Property Cores",
-"Child Identifier" : "TPS_900222",
-"Child Name" : "DSP",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "1",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3, level 4 and level 5",
-"Child_Mandatory_Flag" : "Yes",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900222",
-"Parent Name" : "DSP",
-"Child Identifier" : "TPS_900248",
-"Child Name" : "Error Detection and Correction",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "1",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3, level 4 and level 5",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900223",
-"Parent Name" : "Interface Protocols",
-"Child Identifier" : "TPS_900254",
-"Child Name" : "Communications",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "1",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3, level 4 and level 5",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900237",
-"Parent Name" : "Memory Interfaces and  Controllers",
-"Child Identifier" : "TPS_900273",
-"Child Name" : "Memory Interfaces for ALTMEMPHY",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "1",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3, level 4 and level 5",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900238",
-"Parent Name" : "Processors and Peripherals",
-"Child Identifier" : "TPS_900278",
-"Child Name" : "Embedded Processors",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "1",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3, level 4 and level 5",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900224",
-"Parent Name" : "FPGA Accelerator Functions",
-"Child Identifier" : "TPS_900225",
-"Child Name" : "High Performance Computing",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "1",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3 and level 4",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900214",
-"Parent Name" : "FPGA Boards",
-"Child Identifier" : "TPS_900216",
-"Child Name" : "COTS - Commercial Off-the-Shelf Solutions",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "2",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3 and level 4",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900236",
-"Parent Name" : "Basic Functions",
-"Child Identifier" : "TPS_900240",
-"Child Name" : "Bridges and Adaptors",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "2",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3, level 4 and level 5",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900222",
-"Parent Name" : "DSP",
-"Child Identifier" : "TPS_900249",
-"Child Name" : "Filters",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "2",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3, level 4 and level 5",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900221",
-"Parent Name" : "FPGA Intellectual Property Cores",
-"Child Identifier" : "TPS_900223",
-"Child Name" : "Interface Protocols",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "2",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3, level 4 and level 5",
-"Child_Mandatory_Flag" : "Yes",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900223",
-"Parent Name" : "Interface Protocols",
-"Child Identifier" : "TPS_900255",
-"Child Name" : "CPRI",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "2",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3, level 4 and level 5",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900237",
-"Parent Name" : "Memory Interfaces and  Controllers",
-"Child Identifier" : "TPS_900274",
-"Child Name" : "Flash",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "2",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3, level 4 and level 5",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900238",
-"Parent Name" : "Processors and Peripherals",
-"Child Identifier" : "TPS_900279",
-"Child Name" : "Intra-Process Communication",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "2",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3, level 4 and level 5",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900224",
-"Parent Name" : "FPGA Accelerator Functions",
-"Child Identifier" : "TPS_900226",
-"Child Name" : "Networking and Security",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "2",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3 and level 4",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900214",
-"Parent Name" : "FPGA Boards",
-"Child Identifier" : "TPS_900217",
-"Child Name" : "SOMs - System on Modules",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "3",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3 and level 4",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900236",
-"Parent Name" : "Basic Functions",
-"Child Identifier" : "TPS_900241",
-"Child Name" : "Clocks, PLLs and Resets",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "3",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3, level 4 and level 5",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900222",
-"Parent Name" : "DSP",
-"Child Identifier" : "TPS_900250",
-"Child Name" : "Floating Point",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "3",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3, level 4 and level 5",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900223",
-"Parent Name" : "Interface Protocols",
-"Child Identifier" : "TPS_900256",
-"Child Name" : "DisplayPort",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "3",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3, level 4 and level 5",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900221",
-"Parent Name" : "FPGA Intellectual Property Cores",
-"Child Identifier" : "TPS_900237",
-"Child Name" : "Memory Interfaces and  Controllers",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "3",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3, level 4 and level 5",
-"Child_Mandatory_Flag" : "Yes",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900237",
-"Parent Name" : "Memory Interfaces and  Controllers",
-"Child Identifier" : "TPS_900275",
-"Child Name" : "Memory Models",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "3",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3, level 4 and level 5",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900238",
-"Parent Name" : "Processors and Peripherals",
-"Child Identifier" : "TPS_900280",
-"Child Name" : "Peripherals",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "3",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3, level 4 and level 5",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900224",
-"Parent Name" : "FPGA Accelerator Functions",
-"Child Identifier" : "TPS_900227",
-"Child Name" : "Genomics",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "3",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3 and level 4",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900214",
-"Parent Name" : "FPGA Boards",
-"Child Identifier" : "TPS_900218",
-"Child Name" : "Development Kits",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "4",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3 and level 4",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900236",
-"Parent Name" : "Basic Functions",
-"Child Identifier" : "TPS_900242",
-"Child Name" : "Configuration and Programming",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "4",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3, level 4 and level 5",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900222",
-"Parent Name" : "DSP",
-"Child Identifier" : "TPS_900251",
-"Child Name" : "Modulation and Demodulation",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "4",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3, level 4 and level 5",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900223",
-"Parent Name" : "Interface Protocols",
-"Child Identifier" : "TPS_900257",
-"Child Name" : "Ethernet",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "4",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3, level 4 and level 5",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900237",
-"Parent Name" : "Memory Interfaces and  Controllers",
-"Child Identifier" : "TPS_900276",
-"Child Name" : "SDRAM",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "4",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3, level 4 and level 5",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900221",
-"Parent Name" : "FPGA Intellectual Property Cores",
-"Child Identifier" : "TPS_900238",
-"Child Name" : "Processors and Peripherals",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "4",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3, level 4 and level 5",
-"Child_Mandatory_Flag" : "Yes",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900224",
-"Parent Name" : "FPGA Accelerator Functions",
-"Child Identifier" : "TPS_900228",
-"Child Name" : "Financial Computing",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "4",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3 and level 4",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900214",
-"Parent Name" : "FPGA Boards",
-"Child Identifier" : "TPS_900219",
-"Child Name" : "Daughter Cards",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "5",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3 and level 4",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900236",
-"Parent Name" : "Basic Functions",
-"Child Identifier" : "TPS_900243",
-"Child Name" : "DMA",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "5",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3, level 4 and level 5",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900222",
-"Parent Name" : "DSP",
-"Child Identifier" : "TPS_900252",
-"Child Name" : "Transforms",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "5",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3, level 4 and level 5",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900237",
-"Parent Name" : "Memory Interfaces and  Controllers",
-"Child Identifier" : "TPS_900277",
-"Child Name" : "Memory Interfaces for UniPHY",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "5",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3, level 4 and level 5",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900224",
-"Parent Name" : "FPGA Accelerator Functions",
-"Child Identifier" : "TPS_900229",
-"Child Name" : "Artificial Intelligence",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "5",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3 and level 4",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900236",
-"Parent Name" : "Basic Functions",
-"Child Identifier" : "TPS_900244",
-"Child Name" : "I O",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "6",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3, level 4 and level 5",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900222",
-"Parent Name" : "DSP",
-"Child Identifier" : "TPS_900253",
-"Child Name" : "Video and Image Processing",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "6",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3, level 4 and level 5",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900224",
-"Parent Name" : "FPGA Accelerator Functions",
-"Child Identifier" : "TPS_900230",
-"Child Name" : "Video and Image Processing",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "6",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3 and level 4",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900236",
-"Parent Name" : "Basic Functions",
-"Child Identifier" : "TPS_900245",
-"Child Name" : "Miscellaneous",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "7",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3, level 4 and level 5",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900224",
-"Parent Name" : "FPGA Accelerator Functions",
-"Child Identifier" : "TPS_900231",
-"Child Name" : "Data Analytics",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "7",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3 and level 4",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900236",
-"Parent Name" : "Basic Functions",
-"Child Identifier" : "TPS_900246",
-"Child Name" : "On-Chip Memory",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "8",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3, level 4 and level 5",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900224",
-"Parent Name" : "FPGA Accelerator Functions",
-"Child Identifier" : "TPS_900232",
-"Child Name" : "Storage and Compression",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "8",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3 and level 4",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900236",
-"Parent Name" : "Basic Functions",
-"Child Identifier" : "TPS_900247",
-"Child Name" : "Simulation, Debug and Verification",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "9",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3, level 4 and level 5",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900224",
-"Parent Name" : "FPGA Accelerator Functions",
-"Child Identifier" : "TPS_900233",
-"Child Name" : "Cybersecurity",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "9",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3 and level 4",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900223",
-"Parent Name" : "Interface Protocols",
-"Child Identifier" : "TPS_900264",
-"Child Name" : "TSE",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "11",
-"Is_Active" : "False",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3, level 4 and level 5",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900223",
-"Parent Name" : "Interface Protocols",
-"Child Identifier" : "TPS_900265",
-"Child Name" : "HDMI",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "12",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3, level 4 and level 5",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900223",
-"Parent Name" : "Interface Protocols",
-"Child Identifier" : "TPS_900266",
-"Child Name" : "Interlaken",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "13",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3, level 4 and level 5",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900223",
-"Parent Name" : "Interface Protocols",
-"Child Identifier" : "TPS_900267",
-"Child Name" : "OTN",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "14",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3, level 4 and level 5",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900223",
-"Parent Name" : "Interface Protocols",
-"Child Identifier" : "TPS_900268",
-"Child Name" : "PCI",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "15",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3, level 4 and level 5",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900223",
-"Parent Name" : "Interface Protocols",
-"Child Identifier" : "TPS_900269",
-"Child Name" : "PCI Express",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "16",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3, level 4 and level 5",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900223",
-"Parent Name" : "Interface Protocols",
-"Child Identifier" : "TPS_900270",
-"Child Name" : "RapidIO",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "17",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3, level 4 and level 5",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900223",
-"Parent Name" : "Interface Protocols",
-"Child Identifier" : "TPS_900271",
-"Child Name" : "Serial",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "18",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3, level 4 and level 5",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900223",
-"Parent Name" : "Interface Protocols",
-"Child Identifier" : "TPS_900272",
-"Child Name" : "SerialLite",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "19",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3, level 4 and level 5",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900223",
-"Parent Name" : "Interface Protocols",
-"Child Identifier" : "TPS_900282",
-"Child Name" : "Audio and Video",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "20",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3, level 4 and level 5",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900223",
-"Parent Name" : "Interface Protocols",
-"Child Identifier" : "TPS_900283",
-"Child Name" : "JESD",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "21",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3, level 4 and level 5",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900223",
-"Parent Name" : "Interface Protocols",
-"Child Identifier" : "TPS_900284",
-"Child Name" : "Transceiver PHY",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "22",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3, level 4 and level 5",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900223",
-"Parent Name" : "Interface Protocols",
-"Child Identifier" : "TPS_900285",
-"Child Name" : "Transceiver PLL",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "23",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3, level 4 and level 5",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900223",
-"Parent Name" : "Interface Protocols",
-"Child Identifier" : "TPS_900286",
-"Child Name" : "UPI",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "24",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3, level 4 and level 5",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
 "Parent Identifier" : "TPS_31",
-"Parent Name" : "2 in 1s",
+"Parent Name" : "2-in-1",
 "Child Identifier" : "TPS_21002",
 "Child Name" : "Convertible",
 "Child Description" : "",
@@ -2235,11 +15,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "Yes"
@@ -2259,7 +34,7 @@
 },
 {
 "Parent Identifier" : "TPS_31",
-"Parent Name" : "2 in 1s",
+"Parent Name" : "2-in-1",
 "Child Identifier" : "TPS_21012",
 "Child Name" : "Detachable",
 "Child Description" : "",
@@ -2271,11 +46,6 @@
 "Child_Mandatory_Flag" : "",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -2298,7 +68,7 @@
 "Parent Identifier" : "IPA_TYPE_Sys_DtSFF",
 "Parent Name" : "Desktop & Small Form Factors",
 "Child Identifier" : "TPS_224",
-"Child Name" : "All In Ones",
+"Child Name" : "All-in-One",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "150",
@@ -2308,11 +78,6 @@
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -2346,88 +111,9 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "IPA_TYPE_Sys",
-"Parent Name" : "System",
-"Child Identifier" : "IPA_TYPE_Sys_AIBox",
-"Child Name" : "AI BOX",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "230",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1 and level 2 (if applicable) with level 3 and 4 optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "IPA_TYPE_Sys",
-"Parent Name" : "System",
-"Child Identifier" : "TPS_900220",
-"Child Name" : "ASIC Prototyping Systems",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "249",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1 and level 2 (if applicable) with level 3 and 4 optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
 				},
 				{
 				"Spec Identifier" : "Intel_Segments_Data_Center", 		
@@ -2447,7 +133,7 @@
 "Parent Name" : "System",
 "Child Identifier" : "TPS_27",
 "Child Name" : "Laptop",
-"Child Description" : "Portable personal computer with a clamshell, detachable or convertible form factor, a thin screen mounted on the inside of the upper lid of the clamshell and an alphanumeric keyboard on the inside of the lower lid",
+"Child Description" : "Portable personal computer with a clamshell, detachable or convertible form factor, a thin screen mounted on the inside of the upper lid of the \"clamshell\" and an alphanumeric keyboard on the inside of the lower lid",
 "Child Image URL" : "",
 "Sequence" : "250",
 "Is_Active" : "True",
@@ -2456,11 +142,6 @@
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -2481,7 +162,7 @@
 },
 {
 "Parent Identifier" : "TPS_900008",
-"Parent Name" : "Safety and Security",
+"Parent Name" : "Digital Security & Surveillance",
 "Child Identifier" : "TPS_900043",
 "Child Name" : "Camera",
 "Child Description" : "",
@@ -2494,11 +175,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "No"
@@ -2518,7 +194,7 @@
 },
 {
 "Parent Identifier" : "TPS_900008",
-"Parent Name" : "Safety and Security",
+"Parent Name" : "Digital Security & Surveillance",
 "Child Identifier" : "TPS_900044",
 "Child Name" : "DVR & NVR",
 "Child Description" : "",
@@ -2531,11 +207,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "No"
@@ -2555,7 +226,7 @@
 },
 {
 "Parent Identifier" : "TPS_900008",
-"Parent Name" : "Safety and Security",
+"Parent Name" : "Digital Security & Surveillance",
 "Child Identifier" : "TPS_900045",
 "Child Name" : "Other Digital Security & surveillance components",
 "Child Description" : "",
@@ -2567,11 +238,6 @@
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -2605,11 +271,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "No"
@@ -2641,11 +302,6 @@
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -2679,11 +335,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "No"
@@ -2716,11 +367,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "No"
@@ -2742,7 +388,7 @@
 "Parent Identifier" : "IPA_TYPE_Sys",
 "Parent Name" : "System",
 "Child Identifier" : "TPS_900008",
-"Child Name" : "Safety and Security",
+"Child Name" : "Digital Security & Surveillance",
 "Child Description" : "A system of image capture and video recording devices that may be combined with recognition and AI software to monitor physical locations.",
 "Child Image URL" : "",
 "Sequence" : "330",
@@ -2752,11 +398,6 @@
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -2790,48 +431,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "IPA_TYPE_Sys",
-"Parent Name" : "System",
-"Child Identifier" : "IPA_TYPE_Sys_EmbeddedComputer",
-"Child Name" : "Embedded Computer",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "345",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1 and level 2 (if applicable) with level 3 and 4 optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "No"
@@ -2864,11 +463,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "No"
@@ -2890,7 +484,7 @@
 "Parent Identifier" : "IPA_TYPE_Sys",
 "Parent Name" : "System",
 "Child Identifier" : "TPS_900011",
-"Child Name" : "IoT Gateways",
+"Child Name" : "IoT Gateway",
 "Child Description" : "A device that provides connectivity between edge devices such as factory machinery and a network",
 "Child Image URL" : "",
 "Sequence" : "360",
@@ -2900,11 +494,6 @@
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -2938,11 +527,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "No"
@@ -2974,11 +558,6 @@
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -3012,11 +591,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "No"
@@ -3048,11 +622,6 @@
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -3086,11 +655,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "No"
@@ -3122,11 +686,6 @@
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -3160,11 +719,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "No"
@@ -3196,11 +750,6 @@
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -3234,11 +783,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "No"
@@ -3270,11 +814,6 @@
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -3308,11 +847,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "No"
@@ -3344,11 +878,6 @@
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -3382,11 +911,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "No"
@@ -3418,11 +942,6 @@
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -3456,11 +975,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "No"
@@ -3469,43 +983,6 @@
 				"Spec Identifier" : "Intel_Segments_Data_Center", 		
 				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
 				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "IPA_TYPE_Sys",
-"Parent Name" : "System",
-"Child Identifier" : "IPA_TYPE_Sys_Robot",
-"Child Name" : "Robot",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "510",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1 and level 2 (if applicable) with level 3 and 4 optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
 				},
 				{
 				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
@@ -3529,11 +1006,6 @@
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -3567,11 +1039,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "No"
@@ -3603,11 +1070,6 @@
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -3641,11 +1103,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "No"
@@ -3677,11 +1134,6 @@
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -3715,11 +1167,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "No"
@@ -3752,11 +1199,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "Yes"
@@ -3778,7 +1220,7 @@
 "Parent Identifier" : "TPS_900018",
 "Parent Name" : "Virtual Reality",
 "Child Identifier" : "TPS_900063",
-"Child Name" : "Goggles - Tethered",
+"Child Name" : "Goggles – Tethered",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "580",
@@ -3788,11 +1230,6 @@
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -3826,85 +1263,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900290",
-"Parent Name" : "Workstation",
-"Child Identifier" : "TPS_900300",
-"Child Name" : "Desktop",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "594",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1 and level 2 (if applicable) with level 3 and 4 optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900290",
-"Parent Name" : "Workstation",
-"Child Identifier" : "TPS_900305",
-"Child Name" : "Mobile",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "596",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1 and level 2 (if applicable) with level 3 and 4 optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "Yes"
@@ -3936,11 +1294,6 @@
 "Child_Mandatory_Flag" : "Yes",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -3974,11 +1327,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "Yes"
@@ -4010,11 +1358,6 @@
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -4048,11 +1391,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "Yes"
@@ -4084,11 +1422,6 @@
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -4122,11 +1455,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "Yes"
@@ -4158,11 +1486,6 @@
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -4196,11 +1519,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "Yes"
@@ -4232,11 +1550,6 @@
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -4270,11 +1583,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "Yes"
@@ -4306,11 +1614,6 @@
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -4344,11 +1647,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "Yes"
@@ -4381,11 +1679,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "Yes"
@@ -4398,265 +1691,6 @@
 				{
 				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
 				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900019",
-"Parent Name" : "Board",
-"Child Identifier" : "TPS_900114",
-"Child Name" : "COM-HPC",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "692",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1 and level 2 (if applicable) with level 3 and 4 optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900019",
-"Parent Name" : "Board",
-"Child Identifier" : "TPS_900115",
-"Child Name" : "SMARC",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "694",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1 and level 2 (if applicable) with level 3 and 4 optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900214",
-"Parent Name" : "FPGA Boards",
-"Child Identifier" : "TPS_900116",
-"Child Name" : "COM-HPC",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "695",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3 and level 4",
-"Child_Mandatory_Flag" : "",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Programmable_Logic", 		
-				"Spec Display Name" : "Partner_Program_Segments_Programmable_Logic", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900214",
-"Parent Name" : "FPGA Boards",
-"Child Identifier" : "TPS_900117",
-"Child Name" : "SMARC",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "696",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3 and level 4",
-"Child_Mandatory_Flag" : "",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Programmable_Logic", 		
-				"Spec Display Name" : "Partner_Program_Segments_Programmable_Logic", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900223",
-"Parent Name" : "Interface Protocols",
-"Child Identifier" : "TPS_900118",
-"Child Name" : "Compute Express Link (CXL)",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "697",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3, level 4 and level 5",
-"Child_Mandatory_Flag" : "",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Programmable_Logic", 		
-				"Spec Display Name" : "Partner_Program_Segments_Programmable_Logic", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900223",
-"Parent Name" : "Interface Protocols",
-"Child Identifier" : "TPS_900119",
-"Child Name" : "FEC and Fronthaul",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "698",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3, level 4 and level 5",
-"Child_Mandatory_Flag" : "",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Programmable_Logic", 		
-				"Spec Display Name" : "Partner_Program_Segments_Programmable_Logic", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900223",
-"Parent Name" : "Interface Protocols",
-"Child Identifier" : "TPS_900121",
-"Child Name" : "Network and Application Security",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "699",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3, level 4 and level 5",
-"Child_Mandatory_Flag" : "",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Programmable_Logic", 		
-				"Spec Display Name" : "Partner_Program_Segments_Programmable_Logic", 
 				"Spec Value"		: "Yes"
 				},
 				{ }
@@ -4676,11 +1710,6 @@
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -4714,11 +1743,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "Yes"
@@ -4750,11 +1774,6 @@
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -4788,11 +1807,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "Yes"
@@ -4824,11 +1838,6 @@
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -4862,11 +1871,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "Yes"
@@ -4898,11 +1902,6 @@
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -4936,11 +1935,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "Yes"
@@ -4972,11 +1966,6 @@
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -5010,11 +1999,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "Yes"
@@ -5046,11 +2030,6 @@
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -5084,11 +2063,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "Yes"
@@ -5120,11 +2094,6 @@
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -5158,11 +2127,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "Yes"
@@ -5194,11 +2158,6 @@
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -5232,11 +2191,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "Yes"
@@ -5269,11 +2223,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "Yes"
@@ -5295,7 +2244,7 @@
 "Parent Identifier" : "TPS_900002",
 "Parent Name" : "Component",
 "Child Identifier" : "TPS_900020",
-"Child Name" : "Backplanes and Chassis",
+"Child Name" : "Backplanes and Chassis ",
 "Child Description" : "Structure for housing electronic boards and other system components including the physical connectors (backplane) between boards.",
 "Child Image URL" : "",
 "Sequence" : "870",
@@ -5305,11 +2254,6 @@
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -5330,7 +2274,7 @@
 },
 {
 "Parent Identifier" : "TPS_900020",
-"Parent Name" : "Backplanes and Chassis",
+"Parent Name" : "Backplanes and Chassis ",
 "Child Identifier" : "TPS_900090",
 "Child Name" : "ATCA",
 "Child Description" : "",
@@ -5343,11 +2287,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "Yes"
@@ -5367,7 +2306,7 @@
 },
 {
 "Parent Identifier" : "TPS_900020",
-"Parent Name" : "Backplanes and Chassis",
+"Parent Name" : "Backplanes and Chassis ",
 "Child Identifier" : "TPS_900091",
 "Child Name" : "cPCI",
 "Child Description" : "",
@@ -5380,11 +2319,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "Yes"
@@ -5404,7 +2338,7 @@
 },
 {
 "Parent Identifier" : "TPS_900020",
-"Parent Name" : "Backplanes and Chassis",
+"Parent Name" : "Backplanes and Chassis ",
 "Child Identifier" : "TPS_900092",
 "Child Name" : "VME",
 "Child Description" : "",
@@ -5417,11 +2351,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "Yes"
@@ -5441,7 +2370,7 @@
 },
 {
 "Parent Identifier" : "TPS_900020",
-"Parent Name" : "Backplanes and Chassis",
+"Parent Name" : "Backplanes and Chassis ",
 "Child Identifier" : "TPS_900093",
 "Child Name" : "VPX",
 "Child Description" : "",
@@ -5454,11 +2383,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "Yes"
@@ -5478,7 +2402,7 @@
 },
 {
 "Parent Identifier" : "TPS_900020",
-"Parent Name" : "Backplanes and Chassis",
+"Parent Name" : "Backplanes and Chassis ",
 "Child Identifier" : "TPS_900094",
 "Child Name" : "uTCA",
 "Child Description" : "",
@@ -5491,11 +2415,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "Yes"
@@ -5515,7 +2434,7 @@
 },
 {
 "Parent Identifier" : "TPS_900020",
-"Parent Name" : "Backplanes and Chassis",
+"Parent Name" : "Backplanes and Chassis ",
 "Child Identifier" : "TPS_900095",
 "Child Name" : "Other",
 "Child Description" : "",
@@ -5527,11 +2446,6 @@
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -5554,7 +2468,7 @@
 "Parent Identifier" : "TPS_900002",
 "Parent Name" : "Component",
 "Child Identifier" : "TPS_900021",
-"Child Name" : "Complementary Silicon",
+"Child Name" : "Complementary Silicon ",
 "Child Description" : "Non-Intel branded silicon components such as semiconductors or microchips that complement Intel® architecture.",
 "Child Image URL" : "",
 "Sequence" : "940",
@@ -5565,11 +2479,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "Yes"
@@ -5582,80 +2491,6 @@
 				{
 				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
 				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900002",
-"Parent Name" : "Component",
-"Child Identifier" : "TPS_900214",
-"Child Name" : "FPGA Boards",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "945",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3 and level 4",
-"Child_Mandatory_Flag" : "Yes",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900002",
-"Parent Name" : "Component",
-"Child Identifier" : "TPS_900122",
-"Child Name" : "Graphics Card",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "946",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1 and level 2 (if applicable) with level 3 and 4 optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Programmable_Logic", 		
-				"Spec Display Name" : "Partner_Program_Segments_Programmable_Logic", 
 				"Spec Value"		: "Yes"
 				},
 				{ }
@@ -5675,11 +2510,6 @@
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -5713,11 +2543,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "Yes"
@@ -5749,11 +2574,6 @@
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -5787,11 +2607,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "Yes"
@@ -5823,11 +2638,6 @@
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -5861,11 +2671,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "Yes"
@@ -5898,11 +2703,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "Yes"
@@ -5922,7 +2722,7 @@
 },
 {
 "Parent Identifier" : "TPS_900003",
-"Parent Name" : "Software and IP Cores",
+"Parent Name" : "Software",
 "Child Identifier" : "TPS_900024",
 "Child Name" : "Application",
 "Child Description" : "Computer software designed to perform a group of coordinated functions, tasks, or activities for the benefit of the user. Examples include a word processor, a spreadsheet, a web browser, a media player, a flight simulator, a console game or a photo editor.",
@@ -5935,11 +2735,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "Yes"
@@ -5959,10 +2754,10 @@
 },
 {
 "Parent Identifier" : "TPS_900003",
-"Parent Name" : "Software and IP Cores",
+"Parent Name" : "Software",
 "Child Identifier" : "TPS_900025",
 "Child Name" : "Middleware",
-"Child Description" : "Computer software that provides services to software applications beyond those available from the operating system. It can be described as software glue.",
+"Child Description" : "Computer software that provides services to software applications beyond those available from the operating system. It can be described as \"software glue\".",
 "Child Image URL" : "",
 "Sequence" : "1,020",
 "Is_Active" : "True",
@@ -5971,11 +2766,6 @@
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -6009,11 +2799,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "Yes"
@@ -6046,11 +2831,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "Yes"
@@ -6072,8 +2852,8 @@
 "Parent Identifier" : "NPP_01_TYPE",
 "Parent Name" : "Categories",
 "Child Identifier" : "TPS_900003",
-"Child Name" : "Software and IP Cores",
-"Child Description" : "Software is information processed by computer systems, programs and data and includes, firmware, OS, middleware, database and libraries. An IP core is a reusable unit of logic, cell, or integrated circuit layout design that is the IP of one party and can be used within FPGA logic designs.",
+"Child Name" : "Software",
+"Child Description" : "A collection of data or computer instructions that tell the computer how to work. Software is information processed by computer systems, programs and data and includes, firmware, operating system, middleware, database and libraries",
 "Child Image URL" : "https://www.intel.com/content/dam/pim/ipa/Icon_Software.png",
 "Sequence" : "1,050",
 "Is_Active" : "True",
@@ -6082,11 +2862,6 @@
 "Child_Mandatory_Flag" : "Yes",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -6120,11 +2895,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "Yes"
@@ -6144,7 +2914,7 @@
 },
 {
 "Parent Identifier" : "TPS_900003",
-"Parent Name" : "Software and IP Cores",
+"Parent Name" : "Software",
 "Child Identifier" : "TPS_900026",
 "Child Name" : "Firmware",
 "Child Description" : "Computer software that controls the basic settings and operation of a device’s hardware such as the hard drive, video cards, USB drive, and other components.",
@@ -6157,11 +2927,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "Yes"
@@ -6181,118 +2946,7 @@
 },
 {
 "Parent Identifier" : "TPS_900003",
-"Parent Name" : "Software and IP Cores",
-"Child Identifier" : "TPS_900221",
-"Child Name" : "FPGA Intellectual Property Cores",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "1,061",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3, level 4 and level 5",
-"Child_Mandatory_Flag" : "Yes",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900003",
-"Parent Name" : "Software and IP Cores",
-"Child Identifier" : "TPS_900224",
-"Child Name" : "FPGA Accelerator Functions",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "1,062",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3 and level 4",
-"Child_Mandatory_Flag" : "Yes",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900003",
-"Parent Name" : "Software and IP Cores",
-"Child Identifier" : "TPS_900234",
-"Child Name" : "FPGA Design and Simulation Tools",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "1,063",
-"Is_Active" : "False",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2 and level 3",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900003",
-"Parent Name" : "Software and IP Cores",
+"Parent Name" : "Software",
 "Child Identifier" : "TPS_900027",
 "Child Name" : "Operating System",
 "Child Description" : "Software that manages the basic functions of computer and device systems and the framework for software and computer programs such as Windows*, Linux*, Ubuntu*, iOS*, and Android*.",
@@ -6304,11 +2958,6 @@
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -6342,11 +2991,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "Yes"
@@ -6378,11 +3022,6 @@
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -6416,11 +3055,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "Yes"
@@ -6453,11 +3087,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "Yes"
@@ -6478,22 +3107,17 @@
 {
 "Parent Identifier" : "IPA_TYPE_Ser",
 "Parent Name" : "Service",
-"Child Identifier" : "IPA_TYPE_Ser_AIA",
-"Child Name" : "AI Appliance",
-"Child Description" : "",
+"Child Identifier" : "TPS_900028",
+"Child Name" : "Cloud",
+"Child Description" : "Internet-based system for providing computing capabilities via the Internet using a service provider instead of on-site, company-owned servers.",
 "Child Image URL" : "",
 "Sequence" : "1,120",
 "Is_Active" : "True",
 "Selection Type" : "Radio button (Single select)",
 "Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1 and level 2 (if applicable) with level 3 and 4 optional.",
-"Child_Mandatory_Flag" : "No",
+"Child_Mandatory_Flag" : "Yes",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -6527,85 +3151,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "IPA_TYPE_Ser",
-"Parent Name" : "Service",
-"Child Identifier" : "IPA_TYPE_Ser_AIS",
-"Child Name" : "AI Software As A Service (SaaS)",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "1,126",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1 and level 2 (if applicable) with level 3 and 4 optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "IPA_TYPE_Ser",
-"Parent Name" : "Service",
-"Child Identifier" : "TPS_900028",
-"Child Name" : "Cloud",
-"Child Description" : "Internet-based system for providing computing capabilities via the Internet using a service provider instead of on-site, company-owned servers.",
-"Child Image URL" : "",
-"Sequence" : "1,127",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1 and level 2 (if applicable) with level 3 and 4 optional.",
-"Child_Mandatory_Flag" : "Yes",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "No"
@@ -6637,11 +3182,6 @@
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -6675,11 +3215,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "Yes"
@@ -6693,228 +3228,6 @@
 				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
 				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
 				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "IPA_TYPE_Ser",
-"Parent Name" : "Service",
-"Child Identifier" : "TPS_900209",
-"Child Name" : "Device as a Service (DaaS)",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "1,140",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2 and level 3",
-"Child_Mandatory_Flag" : "Yes",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900209",
-"Parent Name" : "Device as a Service (DaaS)",
-"Child Identifier" : "TPS_900213",
-"Child Name" : "DaaS Value-added Services",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "1,141",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2 and level 3",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900209",
-"Parent Name" : "Device as a Service (DaaS)",
-"Child Identifier" : "TPS_900212",
-"Child Name" : "Software subscriptions",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "1,142",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2 and level 3",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900209",
-"Parent Name" : "Device as a Service (DaaS)",
-"Child Identifier" : "TPS_900210",
-"Child Name" : "System Asset Disposition",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "1,143",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2 and level 3",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900209",
-"Parent Name" : "Device as a Service (DaaS)",
-"Child Identifier" : "TPS_900211",
-"Child Name" : "Third Party Financing",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "1,144",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2 and level 3",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "IPA_TYPE_Ser",
-"Parent Name" : "Service",
-"Child Identifier" : "TPS_900235",
-"Child Name" : "FPGA Design Services",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "1,145",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1 and level 2 and level 3",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
 				},
 				{ }
     	]
@@ -6933,11 +3246,6 @@
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -6971,11 +3279,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "Yes"
@@ -7007,11 +3310,6 @@
 "Child_Mandatory_Flag" : "",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -7045,11 +3343,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "Yes"
@@ -7081,11 +3374,6 @@
 "Child_Mandatory_Flag" : "",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -7119,11 +3407,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "Yes"
@@ -7155,11 +3438,6 @@
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -7193,11 +3471,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "No"
@@ -7229,11 +3502,6 @@
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -7267,11 +3535,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "Yes"
@@ -7303,11 +3566,6 @@
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -7341,11 +3599,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "Yes"
@@ -7378,11 +3631,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "Yes"
@@ -7404,7 +3652,7 @@
 "Parent Identifier" : "IPA_TYPE_Sol",
 "Parent Name" : "Solution",
 "Child Identifier" : "TPS_900036",
-"Child Name" : "Intel® Market Ready Solutions",
+"Child Name" : "Intel® IoT Market Ready Solutions",
 "Child Description" : "End to end IoT solutions, reviewed by Intel and ready for market deployment",
 "Child Image URL" : "",
 "Sequence" : "1,280",
@@ -7414,11 +3662,6 @@
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -7441,7 +3684,7 @@
 "Parent Identifier" : "IPA_TYPE_Sol",
 "Parent Name" : "Solution",
 "Child Identifier" : "TPS_900037",
-"Child Name" : "Intel® RFP Ready Kits",
+"Child Name" : "Intel® IoT RFP Ready Kits",
 "Child Description" : "A bundled hardware, software and support offering, enables accelerated development and time to market.  Field tested and deployed, scalable and designed to grow with customer requirements.",
 "Child Image URL" : "",
 "Sequence" : "1,290",
@@ -7451,11 +3694,6 @@
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -7482,91 +3720,12 @@
 "Child Description" : "Targeted workloads optimized through rigorous solution engineering and benchmark testing.  Intel Select Solutions are verified by Intel, certified by the ISV and validated by the OEM provider.",
 "Child Image URL" : "",
 "Sequence" : "1,300",
-"Is_Active" : "False",
+"Is_Active" : "True",
 "Selection Type" : "Radio button (Single select)",
 "Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1 and level 2 (if applicable) with level 3 and 4 optional.",
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "IPA_TYPE_Sol",
-"Parent Name" : "Solution",
-"Child Identifier" : "TPS_900120",
-"Child Name" : "Intel® Data Center-Centric Solutions",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "1,305",
-"Is_Active" : "False",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1 and level 2 (if applicable) with level 3 and 4 optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "IPA_TYPE_Sol",
-"Parent Name" : "Solution",
-"Child Identifier" : "TPS_900040",
-"Child Name" : "Intel® AI: In Production",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "1,308",
-"Is_Active" : "False",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1 and level 2 (if applicable) with level 3 and 4 optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -7599,11 +3758,6 @@
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -7657,8 +3811,8 @@
 {
 "Parent Identifier" : "TPS_900028",
 "Parent Name" : "Cloud",
-"Child Identifier" : "IPA_TYPE_Ser_Cld_AS",
-"Child Name" : "Analytics as a Service",
+"Child Identifier" : "IPA_TYPE_Ser_Cld_MPC",
+"Child Name" : "Managed Private Cloud/Bare Metal as a Service",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "1,350",
@@ -7668,159 +3822,6 @@
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900028",
-"Parent Name" : "Cloud",
-"Child Identifier" : "IPA_TYPE_Ser_Cld_BDS",
-"Child Name" : "Big Data Services",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "1,360",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1 and level 2 (if applicable) with level 3 and 4 optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900028",
-"Parent Name" : "Cloud",
-"Child Identifier" : "IPA_TYPE_Ser_Cld_CSSS",
-"Child Name" : "Cloud Security Software as a Service",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "1,370",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1 and level 2 (if applicable) with level 3 and 4 optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900028",
-"Parent Name" : "Cloud",
-"Child Identifier" : "IPA_TYPE_Ser_Cld_CDMS",
-"Child Name" : "Content Delivery Media Services",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "1,380",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1 and level 2 (if applicable) with level 3 and 4 optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900028",
-"Parent Name" : "Cloud",
-"Child Identifier" : "IPA_TYPE_Ser_Cld_FSC",
-"Child Name" : "Function as a Service/Serverless Compute",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "1,390",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1 and level 2 (if applicable) with level 3 and 4 optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -7846,166 +3847,13 @@
 "Child Name" : "General Infrastructure as a Service",
 "Child Description" : "",
 "Child Image URL" : "",
-"Sequence" : "1,400",
+"Sequence" : "1,360",
 "Is_Active" : "True",
 "Selection Type" : "Radio button (Single select)",
 "Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1 and level 2 (if applicable) with level 3 and 4 optional.",
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900028",
-"Parent Name" : "Cloud",
-"Child Identifier" : "IPA_TYPE_Ser_Cld_HDS",
-"Child Name" : "HANA Database Services",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "1,410",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1 and level 2 (if applicable) with level 3 and 4 optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900028",
-"Parent Name" : "Cloud",
-"Child Identifier" : "IPA_TYPE_Ser_Cld_HAAW",
-"Child Name" : "Hardware Accelerated AI Workloads",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "1,420",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1 and level 2 (if applicable) with level 3 and 4 optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900028",
-"Parent Name" : "Cloud",
-"Child Identifier" : "IPA_TYPE_Ser_Cld_MPC",
-"Child Name" : "Managed Private Cloud/Bare Metal as a Service",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "1,430",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1 and level 2 (if applicable) with level 3 and 4 optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900028",
-"Parent Name" : "Cloud",
-"Child Identifier" : "IPA_TYPE_Ser_Cld_OSDS",
-"Child Name" : "Open Source Database Services",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "1,440",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1 and level 2 (if applicable) with level 3 and 4 optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -8031,7 +3879,7 @@
 "Child Name" : "Storage as a Service",
 "Child Description" : "",
 "Child Image URL" : "",
-"Sequence" : "1,450",
+"Sequence" : "1,370",
 "Is_Active" : "True",
 "Selection Type" : "Radio button (Single select)",
 "Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1 and level 2 (if applicable) with level 3 and 4 optional.",
@@ -8039,10 +3887,229 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
+				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
+				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "No"
 				},
+				{
+				"Spec Identifier" : "Intel_Segments_Data_Center", 		
+				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
+				"Spec Value"		: "Yes"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
+				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
+				"Spec Value"		: "No"
+				},
+				{ }
+    	]
+},
+{
+"Parent Identifier" : "TPS_900028",
+"Parent Name" : "Cloud",
+"Child Identifier" : "IPA_TYPE_Ser_Cld_FSC",
+"Child Name" : "Function as a Service/Serverless Compute",
+"Child Description" : "",
+"Child Image URL" : "",
+"Sequence" : "1,380",
+"Is_Active" : "True",
+"Selection Type" : "Radio button (Single select)",
+"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1 and level 2 (if applicable) with level 3 and 4 optional.",
+"Child_Mandatory_Flag" : "No",
+	"Intel Segment" :
+		[
+				{
+				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
+				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Data_Center", 		
+				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
+				"Spec Value"		: "Yes"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
+				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
+				"Spec Value"		: "No"
+				},
+				{ }
+    	]
+},
+{
+"Parent Identifier" : "TPS_900028",
+"Parent Name" : "Cloud",
+"Child Identifier" : "IPA_TYPE_Ser_Cld_CSSS",
+"Child Name" : "Cloud Security Software as a Service",
+"Child Description" : "",
+"Child Image URL" : "",
+"Sequence" : "1,390",
+"Is_Active" : "True",
+"Selection Type" : "Radio button (Single select)",
+"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1 and level 2 (if applicable) with level 3 and 4 optional.",
+"Child_Mandatory_Flag" : "No",
+	"Intel Segment" :
+		[
+				{
+				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
+				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Data_Center", 		
+				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
+				"Spec Value"		: "Yes"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
+				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
+				"Spec Value"		: "No"
+				},
+				{ }
+    	]
+},
+{
+"Parent Identifier" : "TPS_900028",
+"Parent Name" : "Cloud",
+"Child Identifier" : "IPA_TYPE_Ser_Cld_HDS",
+"Child Name" : "HANA Database Services",
+"Child Description" : "",
+"Child Image URL" : "",
+"Sequence" : "1,400",
+"Is_Active" : "True",
+"Selection Type" : "Radio button (Single select)",
+"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1 and level 2 (if applicable) with level 3 and 4 optional.",
+"Child_Mandatory_Flag" : "No",
+	"Intel Segment" :
+		[
+				{
+				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
+				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Data_Center", 		
+				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
+				"Spec Value"		: "Yes"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
+				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
+				"Spec Value"		: "No"
+				},
+				{ }
+    	]
+},
+{
+"Parent Identifier" : "TPS_900028",
+"Parent Name" : "Cloud",
+"Child Identifier" : "IPA_TYPE_Ser_Cld_BDS",
+"Child Name" : "Big Data Services",
+"Child Description" : "",
+"Child Image URL" : "",
+"Sequence" : "1,410",
+"Is_Active" : "True",
+"Selection Type" : "Radio button (Single select)",
+"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1 and level 2 (if applicable) with level 3 and 4 optional.",
+"Child_Mandatory_Flag" : "No",
+	"Intel Segment" :
+		[
+				{
+				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
+				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Data_Center", 		
+				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
+				"Spec Value"		: "Yes"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
+				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
+				"Spec Value"		: "No"
+				},
+				{ }
+    	]
+},
+{
+"Parent Identifier" : "TPS_900028",
+"Parent Name" : "Cloud",
+"Child Identifier" : "IPA_TYPE_Ser_Cld_OSDS",
+"Child Name" : "Open Source Database Services",
+"Child Description" : "",
+"Child Image URL" : "",
+"Sequence" : "1,420",
+"Is_Active" : "True",
+"Selection Type" : "Radio button (Single select)",
+"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1 and level 2 (if applicable) with level 3 and 4 optional.",
+"Child_Mandatory_Flag" : "No",
+	"Intel Segment" :
+		[
+				{
+				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
+				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Data_Center", 		
+				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
+				"Spec Value"		: "Yes"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
+				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
+				"Spec Value"		: "No"
+				},
+				{ }
+    	]
+},
+{
+"Parent Identifier" : "TPS_900028",
+"Parent Name" : "Cloud",
+"Child Identifier" : "IPA_TYPE_Ser_Cld_AS",
+"Child Name" : "Analytics as a Service",
+"Child Description" : "",
+"Child Image URL" : "",
+"Sequence" : "1,430",
+"Is_Active" : "True",
+"Selection Type" : "Radio button (Single select)",
+"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1 and level 2 (if applicable) with level 3 and 4 optional.",
+"Child_Mandatory_Flag" : "No",
+	"Intel Segment" :
+		[
+				{
+				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
+				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Data_Center", 		
+				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
+				"Spec Value"		: "Yes"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
+				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
+				"Spec Value"		: "No"
+				},
+				{ }
+    	]
+},
+{
+"Parent Identifier" : "TPS_900028",
+"Parent Name" : "Cloud",
+"Child Identifier" : "IPA_TYPE_Ser_Cld_HAAW",
+"Child Name" : "Hardware Accelerated AI Workloads",
+"Child Description" : "",
+"Child Image URL" : "",
+"Sequence" : "1,440",
+"Is_Active" : "True",
+"Selection Type" : "Radio button (Single select)",
+"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1 and level 2 (if applicable) with level 3 and 4 optional.",
+"Child_Mandatory_Flag" : "No",
+	"Intel Segment" :
+		[
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -8068,7 +4135,7 @@
 "Child Name" : "Transcoding as a Service",
 "Child Description" : "",
 "Child Image URL" : "",
-"Sequence" : "1,460",
+"Sequence" : "1,450",
 "Is_Active" : "True",
 "Selection Type" : "Radio button (Single select)",
 "Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1 and level 2 (if applicable) with level 3 and 4 optional.",
@@ -8076,10 +4143,37 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
+				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
+				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "No"
 				},
+				{
+				"Spec Identifier" : "Intel_Segments_Data_Center", 		
+				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
+				"Spec Value"		: "Yes"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
+				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
+				"Spec Value"		: "No"
+				},
+				{ }
+    	]
+},
+{
+"Parent Identifier" : "TPS_900028",
+"Parent Name" : "Cloud",
+"Child Identifier" : "IPA_TYPE_Ser_Cld_CDMS",
+"Child Name" : "Content Delivery Media Services",
+"Child Description" : "",
+"Child Image URL" : "",
+"Sequence" : "1,460",
+"Is_Active" : "True",
+"Selection Type" : "Radio button (Single select)",
+"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1 and level 2 (if applicable) with level 3 and 4 optional.",
+"Child_Mandatory_Flag" : "No",
+	"Intel Segment" :
+		[
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -8113,11 +4207,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "No"
@@ -8136,6 +4225,70 @@
     	]
 },
 {
+"Parent Identifier" : "NPP_01_APP",
+"Parent Name" : "Application",
+"Child Identifier" : "IPA_APP_AdvancedAnalytics",
+"Child Name" : "Advanced Analytics",
+"Child Description" : "",
+"Child Image URL" : "",
+"Sequence" : "1,504",
+"Is_Active" : "True",
+"Selection Type" : "Checkbox",
+"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
+"Child_Mandatory_Flag" : "No",
+	"Intel Segment" :
+		[
+				{
+				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
+				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Data_Center", 		
+				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
+				"Spec Value"		: "Yes"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
+				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
+				"Spec Value"		: "Yes"
+				},
+				{ }
+    	]
+},
+{
+"Parent Identifier" : "NPP_01_APP",
+"Parent Name" : "Application",
+"Child Identifier" : "IPA_APP_ConnectedWorker",
+"Child Name" : "Connected Worker",
+"Child Description" : "",
+"Child Image URL" : "",
+"Sequence" : "1,505",
+"Is_Active" : "True",
+"Selection Type" : "Checkbox",
+"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
+"Child_Mandatory_Flag" : "No",
+	"Intel Segment" :
+		[
+				{
+				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
+				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Data_Center", 		
+				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
+				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
+				"Spec Value"		: "Yes"
+				},
+				{ }
+    	]
+},
+{
 "Parent Identifier" : "IPA_TYPE_Sys",
 "Parent Name" : "System",
 "Child Identifier" : "TPS_900016",
@@ -8149,11 +4302,6 @@
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -8187,11 +4335,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "Yes"
@@ -8223,11 +4366,6 @@
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -8261,48 +4399,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "IPA_TYPE_Sys",
-"Parent Name" : "System",
-"Child Identifier" : "TPS_900290",
-"Child Name" : "Workstation",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "1,700",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1 and level 2 (if applicable) with level 3 and 4 optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "Yes"
@@ -8324,7 +4420,7 @@
 "Parent Identifier" : "TPS_27",
 "Parent Name" : "Laptop",
 "Child Identifier" : "TPS_31",
-"Child Name" : "2 in 1s",
+"Child Name" : "2-in-1",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "1,729",
@@ -8334,11 +4430,6 @@
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -8372,11 +4463,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "Yes"
@@ -8408,11 +4494,6 @@
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -8446,11 +4527,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "No"
@@ -8483,11 +4559,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "Yes"
@@ -8509,7 +4580,7 @@
 "Parent Identifier" : "IPA_TYPE_Sys_DtSFF",
 "Parent Name" : "Desktop & Small Form Factors",
 "Child Identifier" : "TPS_34",
-"Child Name" : "Mini PCs",
+"Child Name" : "Mini-PC",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "1,860",
@@ -8519,11 +4590,6 @@
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -8557,11 +4623,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "Yes"
@@ -8586,18 +4647,13 @@
 "Child Name" : "Agriculture",
 "Child Description" : "",
 "Child Image URL" : "",
-"Sequence" : "2,020",
+"Sequence" : "2,010",
 "Is_Active" : "True",
 "Selection Type" : "Checkbox",
 "Remarks" : "User must select at least one industry in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -8623,18 +4679,13 @@
 "Child Name" : "Arts and Entertainment",
 "Child Description" : "",
 "Child Image URL" : "",
-"Sequence" : "2,030",
+"Sequence" : "2,013",
 "Is_Active" : "True",
 "Selection Type" : "Checkbox",
 "Remarks" : "User must select at least one industry in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -8660,18 +4711,13 @@
 "Child Name" : "Automotive",
 "Child Description" : "",
 "Child Image URL" : "",
-"Sequence" : "2,040",
+"Sequence" : "2,020",
 "Is_Active" : "True",
 "Selection Type" : "Checkbox",
 "Remarks" : "User must select at least one industry in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -8693,15 +4739,15 @@
 {
 "Parent Identifier" : "NPP_01_Industry",
 "Parent Name" : "Industry",
-"Child Identifier" : "IPA_Ind_CommAviation",
-"Child Name" : "Commercial Aviation",
+"Child Identifier" : "IPA_Ind_Trans",
+"Child Name" : "Transportation and Warehouse",
 "Child Description" : "",
 "Child Image URL" : "",
-"Sequence" : "2,050",
-"Is_Active" : "False",
+"Sequence" : "2,025",
+"Is_Active" : "True",
 "Selection Type" : "Checkbox",
 "Remarks" : "User must select at least one industry in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "",
+"Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
 				{
@@ -8729,18 +4775,13 @@
 "Child Name" : "Communications",
 "Child Description" : "",
 "Child Image URL" : "",
-"Sequence" : "2,060",
+"Sequence" : "2,030",
 "Is_Active" : "True",
 "Selection Type" : "Checkbox",
 "Remarks" : "User must select at least one industry in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -8750,43 +4791,6 @@
 				"Spec Identifier" : "Intel_Segments_Data_Center", 		
 				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
 				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "NPP_01_Industry",
-"Parent Name" : "Industry",
-"Child Identifier" : "IPA_Ind_AeroDef",
-"Child Name" : "Defense and Space",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "2,070",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one industry in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
 				},
 				{
 				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
@@ -8803,18 +4807,13 @@
 "Child Name" : "Education",
 "Child Description" : "",
 "Child Image URL" : "",
-"Sequence" : "2,080",
+"Sequence" : "2,040",
 "Is_Active" : "True",
 "Selection Type" : "Checkbox",
 "Remarks" : "User must select at least one industry in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -8829,43 +4828,6 @@
 				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
 				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
 				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "NPP_01_Industry",
-"Parent Name" : "Industry",
-"Child Identifier" : "IPA_Ind_EnergyUtil",
-"Child Name" : "Energy and Utilities",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "2,090",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one industry in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
 				},
 				{ }
     	]
@@ -8877,7 +4839,7 @@
 "Child Name" : "Finance and Insurance",
 "Child Description" : "",
 "Child Image URL" : "",
-"Sequence" : "2,100",
+"Sequence" : "2,045",
 "Is_Active" : "True",
 "Selection Type" : "Checkbox",
 "Remarks" : "User must select at least one industry in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
@@ -8885,14 +4847,521 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
+				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
+				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "No"
 				},
+				{
+				"Spec Identifier" : "Intel_Segments_Data_Center", 		
+				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
+				"Spec Value"		: "Yes"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
+				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
+				"Spec Value"		: "Yes"
+				},
+				{ }
+    	]
+},
+{
+"Parent Identifier" : "NPP_01_Industry",
+"Parent Name" : "Industry",
+"Child Identifier" : "IPA_Ind_Gaming",
+"Child Name" : "Gaming",
+"Child Description" : "",
+"Child Image URL" : "",
+"Sequence" : "2,050",
+"Is_Active" : "True",
+"Selection Type" : "Checkbox",
+"Remarks" : "User must select at least one industry in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
+"Child_Mandatory_Flag" : "No",
+	"Intel Segment" :
+		[
+				{
+				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
+				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
+				"Spec Value"		: "Yes"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Data_Center", 		
+				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
+				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
+				"Spec Value"		: "No"
+				},
+				{ }
+    	]
+},
+{
+"Parent Identifier" : "NPP_01_Industry",
+"Parent Name" : "Industry",
+"Child Identifier" : "IPA_Ind_AccomFoodServ",
+"Child Name" : "Accommodation and Food Services",
+"Child Description" : "",
+"Child Image URL" : "",
+"Sequence" : "2,055",
+"Is_Active" : "True",
+"Selection Type" : "Checkbox",
+"Remarks" : "User must select at least one industry in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
+"Child_Mandatory_Flag" : "No",
+	"Intel Segment" :
+		[
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Data_Center", 		
+				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
+				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
+				"Spec Value"		: "Yes"
+				},
+				{ }
+    	]
+},
+{
+"Parent Identifier" : "NPP_01_Industry",
+"Parent Name" : "Industry",
+"Child Identifier" : "IPA_Ind_Hospitality",
+"Child Name" : "Hospitality",
+"Child Description" : "",
+"Child Image URL" : "",
+"Sequence" : "2,055",
+"Is_Active" : "False",
+"Selection Type" : "Checkbox",
+"Remarks" : "User must select at least one industry in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
+"Child_Mandatory_Flag" : "",
+	"Intel Segment" :
+		[
+				{
+				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
+				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Data_Center", 		
+				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
+				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
+				"Spec Value"		: "Yes"
+				},
+				{ }
+    	]
+},
+{
+"Parent Identifier" : "NPP_01_Industry",
+"Parent Name" : "Industry",
+"Child Identifier" : "IPA_Ind_HealthCare",
+"Child Name" : "Healthcare",
+"Child Description" : "",
+"Child Image URL" : "",
+"Sequence" : "2,060",
+"Is_Active" : "True",
+"Selection Type" : "Checkbox",
+"Remarks" : "User must select at least one industry in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
+"Child_Mandatory_Flag" : "No",
+	"Intel Segment" :
+		[
+				{
+				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
+				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Data_Center", 		
+				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
+				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
+				"Spec Value"		: "Yes"
+				},
+				{ }
+    	]
+},
+{
+"Parent Identifier" : "NPP_01_Industry",
+"Parent Name" : "Industry",
+"Child Identifier" : "IPA_Ind_IndAuto",
+"Child Name" : "Industrial Automation",
+"Child Description" : "",
+"Child Image URL" : "",
+"Sequence" : "2,065",
+"Is_Active" : "False",
+"Selection Type" : "Checkbox",
+"Remarks" : "User must select at least one industry in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
+"Child_Mandatory_Flag" : "",
+	"Intel Segment" :
+		[
+				{
+				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
+				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Data_Center", 		
+				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
+				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
+				"Spec Value"		: "Yes"
+				},
+				{ }
+    	]
+},
+{
+"Parent Identifier" : "NPP_01_Industry",
+"Parent Name" : "Industry",
+"Child Identifier" : "IPA_Ind_Manufacturing",
+"Child Name" : "Manufacturing",
+"Child Description" : "",
+"Child Image URL" : "",
+"Sequence" : "2,065",
+"Is_Active" : "True",
+"Selection Type" : "Checkbox",
+"Remarks" : "User must select at least one industry in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
+"Child_Mandatory_Flag" : "No",
+	"Intel Segment" :
+		[
+				{
+				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
+				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Data_Center", 		
+				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
+				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
+				"Spec Value"		: "Yes"
+				},
+				{ }
+    	]
+},
+{
+"Parent Identifier" : "NPP_01_Industry",
+"Parent Name" : "Industry",
+"Child Identifier" : "IPA_Ind_NotForProfit",
+"Child Name" : "Not For Profit",
+"Child Description" : "",
+"Child Image URL" : "",
+"Sequence" : "2,070",
+"Is_Active" : "True",
+"Selection Type" : "Checkbox",
+"Remarks" : "User must select at least one industry in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
+"Child_Mandatory_Flag" : "No",
+	"Intel Segment" :
+		[
+				{
+				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
+				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
+				"Spec Value"		: "Yes"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Data_Center", 		
+				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
+				"Spec Value"		: "Yes"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
+				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
+				"Spec Value"		: "Yes"
+				},
+				{ }
+    	]
+},
+{
+"Parent Identifier" : "NPP_01_Industry",
+"Parent Name" : "Industry",
+"Child Identifier" : "IPA_Ind_EnergyUtil",
+"Child Name" : "Energy and Utilities",
+"Child Description" : "",
+"Child Image URL" : "",
+"Sequence" : "2,074",
+"Is_Active" : "True",
+"Selection Type" : "Checkbox",
+"Remarks" : "User must select at least one industry in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
+"Child_Mandatory_Flag" : "No",
+	"Intel Segment" :
+		[
+				{
+				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
+				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Data_Center", 		
+				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
+				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
+				"Spec Value"		: "Yes"
+				},
+				{ }
+    	]
+},
+{
+"Parent Identifier" : "NPP_01_Industry",
+"Parent Name" : "Industry",
+"Child Identifier" : "IPA_Ind_Gov",
+"Child Name" : "Government",
+"Child Description" : "",
+"Child Image URL" : "",
+"Sequence" : "2,078",
+"Is_Active" : "True",
+"Selection Type" : "Checkbox",
+"Remarks" : "User must select at least one industry in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
+"Child_Mandatory_Flag" : "No",
+	"Intel Segment" :
+		[
+				{
+				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
+				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Data_Center", 		
+				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
+				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
+				"Spec Value"		: "Yes"
+				},
+				{ }
+    	]
+},
+{
+"Parent Identifier" : "NPP_01_Industry",
+"Parent Name" : "Industry",
+"Child Identifier" : "IPA_Ind_CommAviation",
+"Child Name" : "Commercial Aviation",
+"Child Description" : "",
+"Child Image URL" : "",
+"Sequence" : "2,082",
+"Is_Active" : "False",
+"Selection Type" : "Checkbox",
+"Remarks" : "User must select at least one industry in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
+"Child_Mandatory_Flag" : "",
+	"Intel Segment" :
+		[
+				{
+				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
+				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Data_Center", 		
+				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
+				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
+				"Spec Value"		: "Yes"
+				},
+				{ }
+    	]
+},
+{
+"Parent Identifier" : "NPP_01_Industry",
+"Parent Name" : "Industry",
+"Child Identifier" : "IPA_Ind_AeroDef",
+"Child Name" : "Defense and Space",
+"Child Description" : "",
+"Child Image URL" : "",
+"Sequence" : "2,086",
+"Is_Active" : "True",
+"Selection Type" : "Checkbox",
+"Remarks" : "User must select at least one industry in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
+"Child_Mandatory_Flag" : "No",
+	"Intel Segment" :
+		[
+				{
+				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
+				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Data_Center", 		
+				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
+				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
+				"Spec Value"		: "Yes"
+				},
+				{ }
+    	]
+},
+{
+"Parent Identifier" : "NPP_01_Industry",
+"Parent Name" : "Industry",
+"Child Identifier" : "IPA_Ind_Professional&BusinessServices",
+"Child Name" : "Professional and Business Services",
+"Child Description" : "",
+"Child Image URL" : "",
+"Sequence" : "2,087",
+"Is_Active" : "True",
+"Selection Type" : "Checkbox",
+"Remarks" : "User must select at least one industry in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
+"Child_Mandatory_Flag" : "No",
+	"Intel Segment" :
+		[
+				{
+				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
+				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Data_Center", 		
+				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
+				"Spec Value"		: "Yes"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
+				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
+				"Spec Value"		: "Yes"
+				},
+				{ }
+    	]
+},
+{
+"Parent Identifier" : "NPP_01_Industry",
+"Parent Name" : "Industry",
+"Child Identifier" : "IPA_Ind_RealEstateRentLeas",
+"Child Name" : "Real Estate, Rental and Leasing",
+"Child Description" : "",
+"Child Image URL" : "",
+"Sequence" : "2,089",
+"Is_Active" : "True",
+"Selection Type" : "Checkbox",
+"Remarks" : "User must select at least one industry in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
+"Child_Mandatory_Flag" : "No",
+	"Intel Segment" :
+		[
+				{
+				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
+				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Data_Center", 		
+				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
+				"Spec Value"		: "Yes"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
+				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
+				"Spec Value"		: "Yes"
+				},
+				{ }
+    	]
+},
+{
+"Parent Identifier" : "NPP_01_Industry",
+"Parent Name" : "Industry",
+"Child Identifier" : "IPA_Ind_Retail",
+"Child Name" : "Retail",
+"Child Description" : "",
+"Child Image URL" : "",
+"Sequence" : "2,090",
+"Is_Active" : "True",
+"Selection Type" : "Checkbox",
+"Remarks" : "User must select at least one industry in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
+"Child_Mandatory_Flag" : "No",
+	"Intel Segment" :
+		[
+				{
+				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
+				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Data_Center", 		
+				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
+				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
+				"Spec Value"		: "Yes"
+				},
+				{ }
+    	]
+},
+{
+"Parent Identifier" : "NPP_01_Industry",
+"Parent Name" : "Industry",
+"Child Identifier" : "IPA_Ind_Software",
+"Child Name" : "Software",
+"Child Description" : "",
+"Child Image URL" : "",
+"Sequence" : "2,091",
+"Is_Active" : "True",
+"Selection Type" : "Checkbox",
+"Remarks" : "User must select at least one industry in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
+"Child_Mandatory_Flag" : "No",
+	"Intel Segment" :
+		[
+				{
+				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
+				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Data_Center", 		
+				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
+				"Spec Value"		: "Yes"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
+				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
+				"Spec Value"		: "Yes"
+				},
+				{ }
+    	]
+},
+{
+"Parent Identifier" : "NPP_01_Industry",
+"Parent Name" : "Industry",
+"Child Identifier" : "IPA_Ind_Others",
+"Child Name" : "Others",
+"Child Description" : "",
+"Child Image URL" : "",
+"Sequence" : "2,092",
+"Is_Active" : "True",
+"Selection Type" : "Checkbox",
+"Remarks" : "User must select at least one industry in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
+"Child_Mandatory_Flag" : "No",
+	"Intel Segment" :
+		[
+				{
+				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
+				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
+				"Spec Value"		: "Yes"
 				},
 				{
 				"Spec Identifier" : "Intel_Segments_Data_Center", 		
@@ -8922,11 +5391,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "No"
@@ -8940,43 +5404,6 @@
 				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
 				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
 				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "NPP_01_Industry",
-"Parent Name" : "Industry",
-"Child Identifier" : "IPA_Ind_Gaming",
-"Child Name" : "Gaming",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "2,110",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one industry in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
 				},
 				{ }
     	]
@@ -8995,11 +5422,6 @@
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -9022,7 +5444,7 @@
 "Parent Identifier" : "IPA_Ind_Auto",
 "Parent Name" : "Automotive",
 "Child Identifier" : "IPA_Ind_AU_InVehicleExp",
-"Child Name" : "In Vehicle Infotainment",
+"Child Name" : "In-Vehicle Infotainment",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "2,120",
@@ -9032,48 +5454,6 @@
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "NPP_01_Industry",
-"Parent Name" : "Industry",
-"Child Identifier" : "IPA_Ind_Gov",
-"Child Name" : "Government",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "2,120",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one industry in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -9107,48 +5487,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "NPP_01_Industry",
-"Parent Name" : "Industry",
-"Child Identifier" : "IPA_Ind_HealthCare",
-"Child Name" : "Health and Life Sciences",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "2,130",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one industry in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "No"
@@ -9178,80 +5516,6 @@
 "Selection Type" : "Checkbox",
 "Remarks" : "User must select at least one industry in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
 "Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "NPP_01_Industry",
-"Parent Name" : "Industry",
-"Child Identifier" : "IPA_Ind_AccomFoodServ",
-"Child Name" : "Hospitality and Restaurants",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "2,135",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one industry in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "NPP_01_Industry",
-"Parent Name" : "Industry",
-"Child Identifier" : "IPA_Ind_Hospitality",
-"Child Name" : "Hospitality",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "2,140",
-"Is_Active" : "False",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one industry in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "",
 	"Intel Segment" :
 		[
 				{
@@ -9287,11 +5551,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "No"
@@ -9321,43 +5580,6 @@
 "Selection Type" : "Checkbox",
 "Remarks" : "User must select at least one industry in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
 "Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "NPP_01_Industry",
-"Parent Name" : "Industry",
-"Child Identifier" : "IPA_Ind_IndAuto",
-"Child Name" : "Industrial Automation",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "2,150",
-"Is_Active" : "False",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one industry in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "",
 	"Intel Segment" :
 		[
 				{
@@ -9413,8 +5635,8 @@
 {
 "Parent Identifier" : "IPA_Ind_Gaming",
 "Parent Name" : "Gaming",
-"Child Identifier" : "IPA_Ind_Game_Esport",
-"Child Name" : "eSports",
+"Child Identifier" : "IPA_Ind_Game_PC",
+"Child Name" : "PC Gaming",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "2,151",
@@ -9424,11 +5646,6 @@
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -9450,8 +5667,8 @@
 {
 "Parent Identifier" : "IPA_Ind_Gaming",
 "Parent Name" : "Gaming",
-"Child Identifier" : "IPA_Ind_Game_PC",
-"Child Name" : "PC Gaming",
+"Child Identifier" : "IPA_Ind_Game_Esport",
+"Child Name" : "eSports",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "2,152",
@@ -9462,11 +5679,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "Yes"
@@ -9480,43 +5692,6 @@
 				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
 				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
 				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "NPP_01_Industry",
-"Parent Name" : "Industry",
-"Child Identifier" : "IPA_Ind_Manufacturing",
-"Child Name" : "Manufacturing",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "2,160",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one industry in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
 				},
 				{ }
     	]
@@ -9544,43 +5719,6 @@
 				"Spec Identifier" : "Intel_Segments_Data_Center", 		
 				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
 				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "IPA_Ind_CommNw",
-"Parent Name" : "Communications",
-"Child Identifier" : "IPA_Ind_Com_DataHostRelate",
-"Child Name" : "Data Processing, Hosting and Related Services",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "2,170",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one industry in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
 				},
 				{
 				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
@@ -9623,10 +5761,10 @@
     	]
 },
 {
-"Parent Identifier" : "NPP_01_Industry",
-"Parent Name" : "Industry",
-"Child Identifier" : "IPA_Ind_NotForProfit",
-"Child Name" : "Not For Profit",
+"Parent Identifier" : "IPA_Ind_CommNw",
+"Parent Name" : "Communications",
+"Child Identifier" : "IPA_Ind_Com_Publish",
+"Child Name" : "Publishing (except Internet)",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "2,170",
@@ -9637,14 +5775,9 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "Yes"
+				"Spec Value"		: "No"
 				},
 				{
 				"Spec Identifier" : "Intel_Segments_Data_Center", 		
@@ -9662,8 +5795,8 @@
 {
 "Parent Identifier" : "IPA_Ind_CommNw",
 "Parent Name" : "Communications",
-"Child Identifier" : "IPA_Ind_Com_Publish",
-"Child Name" : "Publishing (except Internet)",
+"Child Identifier" : "IPA_Ind_Com_DataHostRelate",
+"Child Name" : "Data Processing, Hosting and Related Services",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "2,180",
@@ -9673,11 +5806,6 @@
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -9729,43 +5857,6 @@
     	]
 },
 {
-"Parent Identifier" : "NPP_01_Industry",
-"Parent Name" : "Industry",
-"Child Identifier" : "IPA_Ind_Others",
-"Child Name" : "Others",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "2,180",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one industry in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
 "Parent Identifier" : "IPA_Ind_CommNw",
 "Parent Name" : "Communications",
 "Child Identifier" : "IPA_Ind_Com_Tele",
@@ -9779,11 +5870,6 @@
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -9835,43 +5921,6 @@
     	]
 },
 {
-"Parent Identifier" : "NPP_01_Industry",
-"Parent Name" : "Industry",
-"Child Identifier" : "IPA_Ind_Professional&BusinessServices",
-"Child Name" : "Professional and Business Services",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "2,190",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one industry in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
 "Parent Identifier" : "IPA_Ind_CommNw",
 "Parent Name" : "Communications",
 "Child Identifier" : "IPA_Ind_CNW_WirelessAccess",
@@ -9885,43 +5934,6 @@
 "Child_Mandatory_Flag" : "",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "NPP_01_Industry",
-"Parent Name" : "Industry",
-"Child Identifier" : "IPA_Ind_RealEstateRentLeas",
-"Child Name" : "Real Estate, Rental and Leasing",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "2,200",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one industry in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -9973,62 +5985,8 @@
     	]
 },
 {
-"Parent Identifier" : "NPP_01_Industry",
-"Parent Name" : "Industry",
-"Child Identifier" : "IPA_Ind_Retail",
-"Child Name" : "Retail",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "2,210",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one industry in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "IPA_Ind_HealthCare",
-"Parent Name" : "Health and Life Sciences",
-"Child Identifier" : "IPA_Ind_HL_ClinicalSys",
-"Child Name" : "Clinical Systems",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "2,220",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one industry in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{ }
-    	]
-},
-{
 "Parent Identifier" : "IPA_Ind_AccomFoodServ",
-"Parent Name" : "Hospitality and Restaurants",
+"Parent Name" : "Accommodation and Food Services",
 "Child Identifier" : "IPA_Ind_AFS_Accommodation",
 "Child Name" : "Accommodation",
 "Child Description" : "",
@@ -10040,11 +5998,6 @@
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -10096,82 +6049,8 @@
     	]
 },
 {
-"Parent Identifier" : "NPP_01_Industry",
-"Parent Name" : "Industry",
-"Child Identifier" : "IPA_Ind_Software",
-"Child Name" : "Software",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "2,220",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one industry in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "IPA_Ind_HealthCare",
-"Parent Name" : "Health and Life Sciences",
-"Child Identifier" : "IPA_Ind_HC_Fitness",
-"Child Name" : "Fitness and Wellness",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "2,230",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one industry in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
 "Parent Identifier" : "IPA_Ind_AccomFoodServ",
-"Parent Name" : "Hospitality and Restaurants",
+"Parent Name" : "Accommodation and Food Services",
 "Child Identifier" : "IPA_Ind_AFS_FoodDrinkServ",
 "Child Name" : "Food and Drink Services",
 "Child Description" : "",
@@ -10183,11 +6062,6 @@
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -10239,24 +6113,19 @@
     	]
 },
 {
-"Parent Identifier" : "NPP_01_Industry",
-"Parent Name" : "Industry",
-"Child Identifier" : "IPA_Ind_Trans",
-"Child Name" : "Transportation and Warehouse",
+"Parent Identifier" : "IPA_Ind_HealthCare",
+"Parent Name" : "Healthcare",
+"Child Identifier" : "IPA_Ind_HC_DiagTherap",
+"Child Name" : "Medical Devices",
 "Child Description" : "",
 "Child Image URL" : "",
-"Sequence" : "2,230",
+"Sequence" : "2,240",
 "Is_Active" : "True",
 "Selection Type" : "Checkbox",
 "Remarks" : "User must select at least one industry in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -10277,26 +6146,9 @@
 },
 {
 "Parent Identifier" : "IPA_Ind_HealthCare",
-"Parent Name" : "Health and Life Sciences",
-"Child Identifier" : "IPA_Ind_HL_LabLifeSci",
-"Child Name" : "Life Sciences Tools and Services",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "2,240",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one industry in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "IPA_Ind_HealthCare",
-"Parent Name" : "Health and Life Sciences",
-"Child Identifier" : "IPA_Ind_HC_DiagTherap",
-"Child Name" : "Medical Devices",
+"Parent Name" : "Healthcare",
+"Child Identifier" : "IPA_Ind_HC_Fitness",
+"Child Name" : "Fitness and Wellness",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "2,250",
@@ -10307,11 +6159,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "No"
@@ -10331,7 +6178,7 @@
 },
 {
 "Parent Identifier" : "IPA_Ind_HealthCare",
-"Parent Name" : "Health and Life Sciences",
+"Parent Name" : "Healthcare",
 "Child Identifier" : "IPA_Ind_HC_MedImg",
 "Child Name" : "Medical Imaging",
 "Child Description" : "",
@@ -10344,11 +6191,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "No"
@@ -10368,7 +6210,7 @@
 },
 {
 "Parent Identifier" : "IPA_Ind_HealthCare",
-"Parent Name" : "Health and Life Sciences",
+"Parent Name" : "Healthcare",
 "Child Identifier" : "IPA_Ind_HC_PatinentINfo",
 "Child Name" : "Patient Infotainment",
 "Child Description" : "",
@@ -10380,11 +6222,6 @@
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -10438,8 +6275,8 @@
 {
 "Parent Identifier" : "IPA_Ind_Manufacturing",
 "Parent Name" : "Manufacturing",
-"Child Identifier" : "IPA_Ind_Manuf_Automation",
-"Child Name" : "Automotive",
+"Child Identifier" : "IPA_Ind_Manuf_IndAuto",
+"Child Name" : "Industrial Automation",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "2,300",
@@ -10449,11 +6286,6 @@
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -10507,8 +6339,8 @@
 {
 "Parent Identifier" : "IPA_Ind_Manufacturing",
 "Parent Name" : "Manufacturing",
-"Child Identifier" : "IPA_Ind_Manuf_IndAuto",
-"Child Name" : "Industrial Automation",
+"Child Identifier" : "IPA_Ind_Manuf_Automation",
+"Child Name" : "Automotive",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "2,310",
@@ -10518,11 +6350,6 @@
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -10588,10 +6415,37 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
+				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
+				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "No"
 				},
+				{
+				"Spec Identifier" : "Intel_Segments_Data_Center", 		
+				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
+				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
+				"Spec Value"		: "Yes"
+				},
+				{ }
+    	]
+},
+{
+"Parent Identifier" : "IPA_Ind_EnergyUtil",
+"Parent Name" : "Energy and Utilities",
+"Child Identifier" : "IPA_Ind_EnergyUtil_Gasoline",
+"Child Name" : "Oil and Gas",
+"Child Description" : "",
+"Child Image URL" : "",
+"Sequence" : "2,325",
+"Is_Active" : "True",
+"Selection Type" : "Checkbox",
+"Remarks" : "User must select at least one industry in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
+"Child_Mandatory_Flag" : "No",
+	"Intel Segment" :
+		[
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -10617,43 +6471,6 @@
 "Child Name" : "Electric Power",
 "Child Description" : "",
 "Child Image URL" : "",
-"Sequence" : "2,325",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one industry in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "IPA_Ind_EnergyUtil",
-"Parent Name" : "Energy and Utilities",
-"Child Identifier" : "IPA_Ind_EnergyUtil_Gasoline",
-"Child Name" : "Oil and Gas",
-"Child Description" : "",
-"Child Image URL" : "",
 "Sequence" : "2,335",
 "Is_Active" : "True",
 "Selection Type" : "Checkbox",
@@ -10661,11 +6478,6 @@
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -10688,7 +6500,7 @@
 "Parent Identifier" : "Solution_Marketplace_Hierarchy",
 "Parent Name" : "",
 "Child Identifier" : "NPP_01_APP",
-"Child Name" : "Use Cases",
+"Child Name" : "Application",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,000",
@@ -10698,11 +6510,6 @@
 "Child_Mandatory_Flag" : "Yes",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -10723,9 +6530,9 @@
 },
 {
 "Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "Use Cases",
-"Child Identifier" : "IPA_APP_AdvancedAnalytics",
-"Child Name" : "Advanced Analytics",
+"Parent Name" : "Application",
+"Child Identifier" : "IPA_APP_CloudComp",
+"Child Name" : "Cloud Computing",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,000",
@@ -10735,11 +6542,6 @@
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -10753,7 +6555,7 @@
 				{
 				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
 				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
+				"Spec Value"		: "No"
 				},
 				{ }
     	]
@@ -10772,11 +6574,6 @@
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -10810,11 +6607,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "No"
@@ -10846,11 +6638,6 @@
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -10884,11 +6671,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "No"
@@ -10908,16 +6690,16 @@
 },
 {
 "Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "Use Cases",
-"Child Identifier" : "IPA_APP_AlgoTradInvAdvCrypto",
-"Child Name" : "Algorithmic Trading, Investment Advisory, Crypto",
+"Parent Name" : "Application",
+"Child Identifier" : "IPA_APP_DigSecSurv",
+"Child Name" : "Digital Security Surveillance",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,010",
-"Is_Active" : "False",
+"Is_Active" : "True",
 "Selection Type" : "Checkbox",
 "Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "",
+"Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
 				{
@@ -10928,7 +6710,7 @@
 				{
 				"Spec Identifier" : "Intel_Segments_Data_Center", 		
 				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
+				"Spec Value"		: "No"
 				},
 				{
 				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
@@ -10940,9 +6722,9 @@
 },
 {
 "Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "Use Cases",
-"Child Identifier" : "IPA_APP_ArtificalIntel",
-"Child Name" : "Artificial Intelligence",
+"Parent Name" : "Application",
+"Child Identifier" : "IPA_APP_DigSignage",
+"Child Name" : "Digital Signage",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,020",
@@ -10953,11 +6735,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "No"
@@ -10965,7 +6742,7 @@
 				{
 				"Spec Identifier" : "Intel_Segments_Data_Center", 		
 				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
+				"Spec Value"		: "No"
 				},
 				{
 				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
@@ -10977,9 +6754,41 @@
 },
 {
 "Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "Use Cases",
-"Child Identifier" : "IPA_APP_AssetOperationsOpt",
-"Child Name" : "Asset & Operations Optimization",
+"Parent Name" : "Application",
+"Child Identifier" : "IPA_APP_EnergyMonitor",
+"Child Name" : "Energy Monitoring",
+"Child Description" : "",
+"Child Image URL" : "",
+"Sequence" : "3,022",
+"Is_Active" : "True",
+"Selection Type" : "Checkbox",
+"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
+"Child_Mandatory_Flag" : "No",
+	"Intel Segment" :
+		[
+				{
+				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
+				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Data_Center", 		
+				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
+				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
+				"Spec Value"		: "Yes"
+				},
+				{ }
+    	]
+},
+{
+"Parent Identifier" : "NPP_01_APP",
+"Parent Name" : "Application",
+"Child Identifier" : "IPA_APP_EnvMonitor",
+"Child Name" : "Environmental Monitoring",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,025",
@@ -10990,11 +6799,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "No"
@@ -11002,7 +6806,7 @@
 				{
 				"Spec Identifier" : "Intel_Segments_Data_Center", 		
 				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
+				"Spec Value"		: "No"
 				},
 				{
 				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
@@ -11014,24 +6818,19 @@
 },
 {
 "Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "Use Cases",
-"Child Identifier" : "IPA_APP_AMR",
-"Child Name" : "Autonomous Mobile Robot (AMR)",
+"Parent Name" : "Application",
+"Child Identifier" : "IPA_APP_FactoryAutomation",
+"Child Name" : "Factory Automation",
 "Child Description" : "",
 "Child Image URL" : "",
-"Sequence" : "3,025",
-"Is_Active" : "False",
+"Sequence" : "3,026",
+"Is_Active" : "True",
 "Selection Type" : "Checkbox",
 "Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "No"
@@ -11039,7 +6838,7 @@
 				{
 				"Spec Identifier" : "Intel_Segments_Data_Center", 		
 				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
+				"Spec Value"		: "No"
 				},
 				{
 				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
@@ -11051,16 +6850,16 @@
 },
 {
 "Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "Use Cases",
-"Child Identifier" : "IPA_APP_AssistedDiagnosisPres",
-"Child Name" : "Assisted or automated diagnosis and prescription",
+"Parent Name" : "Application",
+"Child Identifier" : "IPA_APP_HighPerfComputing",
+"Child Name" : "High Performance Computing",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,030",
-"Is_Active" : "False",
+"Is_Active" : "True",
 "Selection Type" : "Checkbox",
 "Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "",
+"Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
 				{
@@ -11076,16 +6875,16 @@
 				{
 				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
 				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
+				"Spec Value"		: "No"
 				},
 				{ }
     	]
 },
 {
 "Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "Use Cases",
-"Child Identifier" : "IPA_APP_AugmentedSearch",
-"Child Name" : "Augmented Search",
+"Parent Name" : "Application",
+"Child Identifier" : "IPA_APP_IOT",
+"Child Name" : "Internet of Things",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,040",
@@ -11103,7 +6902,7 @@
 				{
 				"Spec Identifier" : "Intel_Segments_Data_Center", 		
 				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
+				"Spec Value"		: "No"
 				},
 				{
 				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
@@ -11115,9 +6914,9 @@
 },
 {
 "Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "Use Cases",
-"Child Identifier" : "IPA_APP_CloudComp",
-"Child Name" : "Cloud Computing",
+"Parent Name" : "Application",
+"Child Identifier" : "IPA_APP_InterWhiteBoard",
+"Child Name" : "Interactive Whiteboard",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,050",
@@ -11128,40 +6927,67 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
+				"Spec Value"		: "Yes"
 				},
 				{
 				"Spec Identifier" : "Intel_Segments_Data_Center", 		
 				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
+				"Spec Value"		: "No"
 				},
 				{
 				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
 				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
+				"Spec Value"		: "Yes"
 				},
 				{ }
     	]
 },
 {
 "Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "Use Cases",
-"Child Identifier" : "IPA_APP_CognitiveReasoning",
-"Child Name" : "Cognitive Reasoning",
+"Parent Name" : "Application",
+"Child Identifier" : "IPA_APP_Collaboration",
+"Child Name" : "Collaboration",
 "Child Description" : "",
 "Child Image URL" : "",
-"Sequence" : "3,060",
-"Is_Active" : "False",
+"Sequence" : "3,051",
+"Is_Active" : "True",
 "Selection Type" : "Checkbox",
 "Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "",
+"Child_Mandatory_Flag" : "No",
+	"Intel Segment" :
+		[
+				{
+				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
+				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
+				"Spec Value"		: "Yes"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Data_Center", 		
+				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
+				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
+				"Spec Value"		: "Yes"
+				},
+				{ }
+    	]
+},
+{
+"Parent Identifier" : "NPP_01_APP",
+"Parent Name" : "Application",
+"Child Identifier" : "IPA_APP_InventoryMgmt",
+"Child Name" : "Inventory Management",
+"Child Description" : "",
+"Child Image URL" : "",
+"Sequence" : "3,055",
+"Is_Active" : "True",
+"Selection Type" : "Checkbox",
+"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
+"Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
 				{
@@ -11172,6 +6998,70 @@
 				{
 				"Spec Identifier" : "Intel_Segments_Data_Center", 		
 				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
+				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
+				"Spec Value"		: "Yes"
+				},
+				{ }
+    	]
+},
+{
+"Parent Identifier" : "NPP_01_APP",
+"Parent Name" : "Application",
+"Child Identifier" : "IPA_APP_Intelgnt_vend",
+"Child Name" : "Intelligent Vending",
+"Child Description" : "",
+"Child Image URL" : "",
+"Sequence" : "3,057",
+"Is_Active" : "True",
+"Selection Type" : "Checkbox",
+"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
+"Child_Mandatory_Flag" : "No",
+	"Intel Segment" :
+		[
+				{
+				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
+				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Data_Center", 		
+				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
+				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
+				"Spec Value"		: "Yes"
+				},
+				{ }
+    	]
+},
+{
+"Parent Identifier" : "NPP_01_APP",
+"Parent Name" : "Application",
+"Child Identifier" : "IPA_APP_Others",
+"Child Name" : "Others",
+"Child Description" : "",
+"Child Image URL" : "",
+"Sequence" : "3,059",
+"Is_Active" : "True",
+"Selection Type" : "Checkbox",
+"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
+"Child_Mandatory_Flag" : "No",
+	"Intel Segment" :
+		[
+				{
+				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
+				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
+				"Spec Value"		: "Yes"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Data_Center", 		
+				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
 				"Spec Value"		: "Yes"
 				},
 				{
@@ -11184,9 +7074,73 @@
 },
 {
 "Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "Use Cases",
-"Child Identifier" : "IPA_APP_Collaboration",
-"Child Name" : "Collaboration",
+"Parent Name" : "Application",
+"Child Identifier" : "IPA_APP_PrintImgnOffAuto",
+"Child Name" : "Print Imaging and Office Automation",
+"Child Description" : "",
+"Child Image URL" : "",
+"Sequence" : "3,060",
+"Is_Active" : "True",
+"Selection Type" : "Checkbox",
+"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
+"Child_Mandatory_Flag" : "No",
+	"Intel Segment" :
+		[
+				{
+				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
+				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Data_Center", 		
+				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
+				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
+				"Spec Value"		: "Yes"
+				},
+				{ }
+    	]
+},
+{
+"Parent Identifier" : "NPP_01_APP",
+"Parent Name" : "Application",
+"Child Identifier" : "IPA_APP_SmartBuilding",
+"Child Name" : "Smart Building",
+"Child Description" : "",
+"Child Image URL" : "",
+"Sequence" : "3,065",
+"Is_Active" : "True",
+"Selection Type" : "Checkbox",
+"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
+"Child_Mandatory_Flag" : "No",
+	"Intel Segment" :
+		[
+				{
+				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
+				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Data_Center", 		
+				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
+				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
+				"Spec Value"		: "Yes"
+				},
+				{ }
+    	]
+},
+{
+"Parent Identifier" : "NPP_01_APP",
+"Parent Name" : "Application",
+"Child Identifier" : "IPA_APP_SmartCity",
+"Child Name" : "Smart City",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,070",
@@ -11197,14 +7151,9 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "Yes"
+				"Spec Value"		: "No"
 				},
 				{
 				"Spec Identifier" : "Intel_Segments_Data_Center", 		
@@ -11221,9 +7170,9 @@
 },
 {
 "Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "Use Cases",
-"Child Identifier" : "IPA_APP_ConnectedWorker",
-"Child Name" : "Connected Worker",
+"Parent Name" : "Application",
+"Child Identifier" : "IPA_APP_SmartHome",
+"Child Name" : "Smart Home",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,080",
@@ -11234,14 +7183,9 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
+				"Spec Value"		: "Yes"
 				},
 				{
 				"Spec Identifier" : "Intel_Segments_Data_Center", 		
@@ -11251,19 +7195,19 @@
 				{
 				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
 				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
+				"Spec Value"		: "No"
 				},
 				{ }
     	]
 },
 {
 "Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "Use Cases",
-"Child Identifier" : "IPA_APP_CntrlOptmizatioAutonomy",
-"Child Name" : "Control Optimization & Autonomy",
+"Parent Name" : "Application",
+"Child Identifier" : "IPA_APP_Storage",
+"Child Name" : "Storage",
 "Child Description" : "",
 "Child Image URL" : "",
-"Sequence" : "3,085",
+"Sequence" : "3,090",
 "Is_Active" : "True",
 "Selection Type" : "Checkbox",
 "Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
@@ -11271,11 +7215,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "No"
@@ -11295,16 +7234,16 @@
 },
 {
 "Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "Use Cases",
-"Child Identifier" : "IPA_APP_ConverBotsCSA",
-"Child Name" : "Conversational Bots, Customer Service Assistants",
+"Parent Name" : "Application",
+"Child Identifier" : "IPA_APP_Telematics",
+"Child Name" : "Telematics",
 "Child Description" : "",
 "Child Image URL" : "",
-"Sequence" : "3,090",
-"Is_Active" : "False",
+"Sequence" : "3,095",
+"Is_Active" : "True",
 "Selection Type" : "Checkbox",
 "Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "",
+"Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
 				{
@@ -11315,7 +7254,7 @@
 				{
 				"Spec Identifier" : "Intel_Segments_Data_Center", 		
 				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
+				"Spec Value"		: "No"
 				},
 				{
 				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
@@ -11327,16 +7266,80 @@
 },
 {
 "Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "Use Cases",
-"Child Identifier" : "IPA_APP_DataLabeling",
-"Child Name" : "Data Labeling",
+"Parent Name" : "Application",
+"Child Identifier" : "IPA_APP_VideoMgmt",
+"Child Name" : "Video Management",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,100",
-"Is_Active" : "False",
+"Is_Active" : "True",
 "Selection Type" : "Checkbox",
 "Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "",
+"Child_Mandatory_Flag" : "No",
+	"Intel Segment" :
+		[
+				{
+				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
+				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Data_Center", 		
+				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
+				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
+				"Spec Value"		: "Yes"
+				},
+				{ }
+    	]
+},
+{
+"Parent Identifier" : "IPA_APP_DigSecSurv",
+"Parent Name" : "Digital Security Surveillance",
+"Child Identifier" : "IPA_APP_DSS_EntryLvlSol",
+"Child Name" : "Entry Level Solutions (1 to 20 cameras)",
+"Child Description" : "",
+"Child Image URL" : "",
+"Sequence" : "3,110",
+"Is_Active" : "True",
+"Selection Type" : "Checkbox",
+"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
+"Child_Mandatory_Flag" : "No",
+	"Intel Segment" :
+		[
+				{
+				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
+				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Data_Center", 		
+				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
+				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
+				"Spec Value"		: "Yes"
+				},
+				{ }
+    	]
+},
+{
+"Parent Identifier" : "NPP_01_APP",
+"Parent Name" : "Application",
+"Child Identifier" : "IPA_APP_ArtificalIntel",
+"Child Name" : "Artificial Intelligence",
+"Child Description" : "",
+"Child Image URL" : "",
+"Sequence" : "3,110",
+"Is_Active" : "True",
+"Selection Type" : "Checkbox",
+"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
+"Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
 				{
@@ -11358,17 +7361,113 @@
     	]
 },
 {
-"Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "Use Cases",
-"Child Identifier" : "IPA_APP_DataManagMonitor",
-"Child Name" : "Data management and monitoring",
+"Parent Identifier" : "IPA_APP_DigSecSurv",
+"Parent Name" : "Digital Security Surveillance",
+"Child Identifier" : "IPA_APP_DSS_MidLvlSol",
+"Child Name" : "Mid Level Solutions with Intelligence (21 to 100 cameras)",
 "Child Description" : "",
 "Child Image URL" : "",
-"Sequence" : "3,110",
-"Is_Active" : "False",
+"Sequence" : "3,120",
+"Is_Active" : "True",
 "Selection Type" : "Checkbox",
 "Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "",
+"Child_Mandatory_Flag" : "No",
+	"Intel Segment" :
+		[
+				{
+				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
+				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Data_Center", 		
+				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
+				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
+				"Spec Value"		: "Yes"
+				},
+				{ }
+    	]
+},
+{
+"Parent Identifier" : "NPP_01_APP",
+"Parent Name" : "Application",
+"Child Identifier" : "IPA_APP_MachineLearning",
+"Child Name" : "Machine Learning",
+"Child Description" : "",
+"Child Image URL" : "",
+"Sequence" : "3,120",
+"Is_Active" : "True",
+"Selection Type" : "Checkbox",
+"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
+"Child_Mandatory_Flag" : "No",
+	"Intel Segment" :
+		[
+				{
+				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
+				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Data_Center", 		
+				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
+				"Spec Value"		: "Yes"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
+				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
+				"Spec Value"		: "Yes"
+				},
+				{ }
+    	]
+},
+{
+"Parent Identifier" : "IPA_APP_DigSecSurv",
+"Parent Name" : "Digital Security Surveillance",
+"Child Identifier" : "IPA_APP_DSS_HighLvlSol",
+"Child Name" : "High End Solutions with Intelligence (101 to 1000 cameras)",
+"Child Description" : "",
+"Child Image URL" : "",
+"Sequence" : "3,130",
+"Is_Active" : "True",
+"Selection Type" : "Checkbox",
+"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
+"Child_Mandatory_Flag" : "No",
+	"Intel Segment" :
+		[
+				{
+				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
+				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Data_Center", 		
+				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
+				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
+				"Spec Value"		: "Yes"
+				},
+				{ }
+    	]
+},
+{
+"Parent Identifier" : "NPP_01_APP",
+"Parent Name" : "Application",
+"Child Identifier" : "IPA_APP_DeepLearning",
+"Child Name" : "Deep Learning",
+"Child Description" : "",
+"Child Image URL" : "",
+"Sequence" : "3,130",
+"Is_Active" : "True",
+"Selection Type" : "Checkbox",
+"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
+"Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
 				{
@@ -11396,124 +7495,13 @@
 "Child Name" : "Enterprise DSS Solutions with Intelligence (1000+ cameras)",
 "Child Description" : "",
 "Child Image URL" : "",
-"Sequence" : "3,110",
+"Sequence" : "3,140",
 "Is_Active" : "True",
 "Selection Type" : "Checkbox",
 "Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "IPA_APP_ArtificalIntel",
-"Parent Name" : "Artificial Intelligence",
-"Child Identifier" : "IPA_APP_AnomalyDetection",
-"Child Name" : "Anomaly Detection",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "3,120",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "Use Cases",
-"Child Identifier" : "IPA_APP_DataPreparation",
-"Child Name" : "Data Preparation",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "3,120",
-"Is_Active" : "False",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "IPA_APP_DigSecSurv",
-"Parent Name" : "Digital Security Surveillance",
-"Child Identifier" : "IPA_APP_DSS_EntryLvlSol",
-"Child Name" : "Entry Level Solutions (1 to 20 cameras)",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "3,120",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -11534,60 +7522,18 @@
 },
 {
 "Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "Use Cases",
-"Child Identifier" : "IPA_APP_DataScience",
-"Child Name" : "Data Science",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "3,125",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "IPA_APP_ArtificalIntel",
-"Parent Name" : "Artificial Intelligence",
+"Parent Name" : "Application",
 "Child Identifier" : "IPA_APP_ContentGeneration",
 "Child Name" : "Content generation",
 "Child Description" : "",
 "Child Image URL" : "",
-"Sequence" : "3,130",
+"Sequence" : "3,140",
 "Is_Active" : "True",
 "Selection Type" : "Checkbox",
 "Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -11608,231 +7554,9 @@
 },
 {
 "Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "Use Cases",
-"Child Identifier" : "IPA_APP_DigSecSurv",
-"Child Name" : "Digital Security Surveillance",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "3,130",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "IPA_APP_DigSecSurv",
-"Parent Name" : "Digital Security Surveillance",
-"Child Identifier" : "IPA_APP_DSS_HighLvlSol",
-"Child Name" : "High End Solutions with Intelligence (101 to 1000 cameras)",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "3,130",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "IPA_APP_ArtificalIntel",
-"Parent Name" : "Artificial Intelligence",
-"Child Identifier" : "IPA_APP_conv_bots_and_agnt",
-"Child Name" : "Conversational Bots and Voice Agents",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "3,140",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "IPA_APP_DigSecSurv",
-"Parent Name" : "Digital Security Surveillance",
-"Child Identifier" : "IPA_APP_DSS_MidLvlSol",
-"Child Name" : "Mid Level Solutions with Intelligence (21 to 100 cameras)",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "3,140",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "Use Cases",
-"Child Identifier" : "IPA_APP_DigSignage",
-"Child Name" : "Digital Signage",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "3,140",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "IPA_APP_ArtificalIntel",
-"Parent Name" : "Artificial Intelligence",
-"Child Identifier" : "IPA_APP_Data_prep_and_Mangmt",
-"Child Name" : "Data preparation and management",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "3,150",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "Use Cases",
-"Child Identifier" : "IPA_APP_DigitalTwin",
-"Child Name" : "Digital twin",
+"Parent Name" : "Application",
+"Child Identifier" : "IPA_APP_ImageRecog",
+"Child Name" : "Image recognition",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,150",
@@ -11861,24 +7585,19 @@
     	]
 },
 {
-"Parent Identifier" : "IPA_APP_ArtificalIntel",
-"Parent Name" : "Artificial Intelligence",
-"Child Identifier" : "IPA_APP_DeepLearning",
-"Child Name" : "Deep Learning",
+"Parent Identifier" : "NPP_01_APP",
+"Parent Name" : "Application",
+"Child Identifier" : "IPA_APP_conv_bots_and_agnt",
+"Child Name" : "Conversational Bots and Voice Agents",
 "Child Description" : "",
 "Child Image URL" : "",
-"Sequence" : "3,160",
+"Sequence" : "3,150",
 "Is_Active" : "True",
 "Selection Type" : "Checkbox",
 "Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -11899,23 +7618,18 @@
 },
 {
 "Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "Use Cases",
-"Child Identifier" : "IPA_APP_EnergyMonitor",
-"Child Name" : "Energy Monitoring",
+"Parent Name" : "Application",
+"Child Identifier" : "IPA_APP_NLP",
+"Child Name" : "Natural language processing",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,160",
-"Is_Active" : "True",
+"Is_Active" : "False",
 "Selection Type" : "Checkbox",
 "Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
+"Child_Mandatory_Flag" : "",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -11924,7 +7638,7 @@
 				{
 				"Spec Identifier" : "Intel_Segments_Data_Center", 		
 				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
+				"Spec Value"		: "Yes"
 				},
 				{
 				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
@@ -11935,8 +7649,40 @@
     	]
 },
 {
-"Parent Identifier" : "IPA_APP_ArtificalIntel",
-"Parent Name" : "Artificial Intelligence",
+"Parent Identifier" : "NPP_01_APP",
+"Parent Name" : "Application",
+"Child Identifier" : "IPA_APP_Data_prep_and_Mangmt",
+"Child Name" : "Data preparation and management",
+"Child Description" : "",
+"Child Image URL" : "",
+"Sequence" : "3,160",
+"Is_Active" : "True",
+"Selection Type" : "Checkbox",
+"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
+"Child_Mandatory_Flag" : "No",
+	"Intel Segment" :
+		[
+				{
+				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
+				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Data_Center", 		
+				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
+				"Spec Value"		: "Yes"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
+				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
+				"Spec Value"		: "Yes"
+				},
+				{ }
+    	]
+},
+{
+"Parent Identifier" : "NPP_01_APP",
+"Parent Name" : "Application",
 "Child Identifier" : "IPA_APP_DrugDiscovery",
 "Child Name" : "Drug Discovery",
 "Child Description" : "",
@@ -11949,10 +7695,37 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
+				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
+				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "No"
 				},
+				{
+				"Spec Identifier" : "Intel_Segments_Data_Center", 		
+				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
+				"Spec Value"		: "Yes"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
+				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
+				"Spec Value"		: "Yes"
+				},
+				{ }
+    	]
+},
+{
+"Parent Identifier" : "NPP_01_APP",
+"Parent Name" : "Application",
+"Child Identifier" : "IPA_APP_AlgoTradInvAdvCrypto",
+"Child Name" : "Algorithmic Trading, Investment Advisory, Crypto",
+"Child Description" : "",
+"Child Image URL" : "",
+"Sequence" : "3,170",
+"Is_Active" : "False",
+"Selection Type" : "Checkbox",
+"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
+"Child_Mandatory_Flag" : "",
+	"Intel Segment" :
+		[
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -11973,44 +7746,7 @@
 },
 {
 "Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "Use Cases",
-"Child Identifier" : "IPA_APP_EnvMonitor",
-"Child Name" : "Environmental Monitoring",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "3,170",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "IPA_APP_ArtificalIntel",
-"Parent Name" : "Artificial Intelligence",
+"Parent Name" : "Application",
 "Child Identifier" : "IPA_APP_Facialdete_recong_classificn",
 "Child Name" : "Facial Detection/Recognition/Classification",
 "Child Description" : "",
@@ -12023,11 +7759,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "No"
@@ -12047,12 +7778,12 @@
 },
 {
 "Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "Use Cases",
-"Child Identifier" : "IPA_APP_ERP",
-"Child Name" : "ERP",
+"Parent Name" : "Application",
+"Child Identifier" : "IPA_APP_AssistedDiagnosisPres",
+"Child Name" : "Assisted or automated diagnosis and prescription",
 "Child Description" : "",
 "Child Image URL" : "",
-"Sequence" : "3,180",
+"Sequence" : "3,190",
 "Is_Active" : "False",
 "Selection Type" : "Checkbox",
 "Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
@@ -12078,24 +7809,83 @@
     	]
 },
 {
-"Parent Identifier" : "IPA_APP_ArtificalIntel",
-"Parent Name" : "Artificial Intelligence",
+"Parent Identifier" : "NPP_01_APP",
+"Parent Name" : "Application",
+"Child Identifier" : "IPA_APP_AnomalyDetection",
+"Child Name" : "Anomaly Detection",
+"Child Description" : "",
+"Child Image URL" : "",
+"Sequence" : "3,190",
+"Is_Active" : "True",
+"Selection Type" : "Checkbox",
+"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
+"Child_Mandatory_Flag" : "No",
+	"Intel Segment" :
+		[
+				{
+				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
+				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Data_Center", 		
+				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
+				"Spec Value"		: "Yes"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
+				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
+				"Spec Value"		: "Yes"
+				},
+				{ }
+    	]
+},
+{
+"Parent Identifier" : "NPP_01_APP",
+"Parent Name" : "Application",
+"Child Identifier" : "IPA_APP_AugmentedSearch",
+"Child Name" : "Augmented Search",
+"Child Description" : "",
+"Child Image URL" : "",
+"Sequence" : "3,200",
+"Is_Active" : "False",
+"Selection Type" : "Checkbox",
+"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
+"Child_Mandatory_Flag" : "",
+	"Intel Segment" :
+		[
+				{
+				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
+				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Data_Center", 		
+				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
+				"Spec Value"		: "Yes"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
+				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
+				"Spec Value"		: "Yes"
+				},
+				{ }
+    	]
+},
+{
+"Parent Identifier" : "NPP_01_APP",
+"Parent Name" : "Application",
 "Child Identifier" : "IPA_APP_img_objetdetect_recog_classificn",
 "Child Name" : "Image/Object Detection/ Recognition/Classification",
 "Child Description" : "",
 "Child Image URL" : "",
-"Sequence" : "3,190",
+"Sequence" : "3,200",
 "Is_Active" : "True",
 "Selection Type" : "Checkbox",
 "Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -12116,113 +7906,7 @@
 },
 {
 "Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "Use Cases",
-"Child Identifier" : "IPA_APP_FacialRecogDetectClass",
-"Child Name" : "Facial Recognition/Detection/Classification",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "3,190",
-"Is_Active" : "False",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "IPA_APP_ArtificalIntel",
-"Parent Name" : "Artificial Intelligence",
-"Child Identifier" : "IPA_APP_MachineLearning",
-"Child Name" : "Machine Learning",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "3,200",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "Use Cases",
-"Child Identifier" : "IPA_APP_FactoryAutomation",
-"Child Name" : "Factory Automation",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "3,200",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "IPA_APP_ArtificalIntel",
-"Parent Name" : "Artificial Intelligence",
+"Parent Name" : "Application",
 "Child Identifier" : "IPA_APP_Medicalimag_analysis_and_diagn",
 "Child Name" : "Medical imaging, Analysis and Diagnostics",
 "Child Description" : "",
@@ -12235,11 +7919,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "No"
@@ -12259,9 +7938,9 @@
 },
 {
 "Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "Use Cases",
-"Child Identifier" : "IPA_APP_FinancialAnalyticsPlatform",
-"Child Name" : "Financial Analytics Platform",
+"Parent Name" : "Application",
+"Child Identifier" : "IPA_APP_CognitiveReasoning",
+"Child Name" : "Cognitive Reasoning",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,210",
@@ -12290,8 +7969,8 @@
     	]
 },
 {
-"Parent Identifier" : "IPA_APP_ArtificalIntel",
-"Parent Name" : "Artificial Intelligence",
+"Parent Identifier" : "NPP_01_APP",
+"Parent Name" : "Application",
 "Child Identifier" : "IPA_APP_predictiveMaintence_and_Analytics",
 "Child Name" : "Predictive Maintenance and Analytics",
 "Child Description" : "",
@@ -12304,11 +7983,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "No"
@@ -12328,76 +8002,7 @@
 },
 {
 "Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "Use Cases",
-"Child Identifier" : "IPA_APP_FraudThreatDetect",
-"Child Name" : "Fraud and Threat Detection",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "3,220",
-"Is_Active" : "False",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "Use Cases",
-"Child Identifier" : "IPA_APP_HealthLifeSciences",
-"Child Name" : "Health & Life Sciences",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "3,225",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "IPA_APP_ArtificalIntel",
-"Parent Name" : "Artificial Intelligence",
+"Parent Name" : "Application",
 "Child Identifier" : "IPA_APP_RoboticProcessAuto",
 "Child Name" : "Robotic Process Automation",
 "Child Description" : "",
@@ -12410,11 +8015,6 @@
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
 				"Spec Value"		: "No"
@@ -12434,60 +8034,18 @@
 },
 {
 "Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "Use Cases",
-"Child Identifier" : "IPA_APP_HighPerfComputing",
-"Child Name" : "High Performance Computing",
+"Parent Name" : "Application",
+"Child Identifier" : "IPA_APP_ConverBotsCSA",
+"Child Name" : "Conversational Bots, Customer Service Assistants",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,230",
-"Is_Active" : "True",
+"Is_Active" : "False",
 "Selection Type" : "Checkbox",
 "Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
+"Child_Mandatory_Flag" : "",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "IPA_APP_ArtificalIntel",
-"Parent Name" : "Artificial Intelligence",
-"Child Identifier" : "IPA_APP_VideoSurveilAnalytics",
-"Child Name" : "Video Surveillance and Analytics",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "3,240",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -12508,9 +8066,9 @@
 },
 {
 "Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "Use Cases",
-"Child Identifier" : "IPA_APP_HumanEmotionAnalysis",
-"Child Name" : "Human Emotion Analysis",
+"Parent Name" : "Application",
+"Child Identifier" : "IPA_APP_DataLabeling",
+"Child Name" : "Data Labeling",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,240",
@@ -12540,23 +8098,18 @@
 },
 {
 "Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "Use Cases",
-"Child Identifier" : "IPA_APP_HumanWellnessMonitoring",
-"Child Name" : "Human Wellness Monitoring",
+"Parent Name" : "Application",
+"Child Identifier" : "IPA_APP_VideoSurveilAnalytics",
+"Child Name" : "Video Surveillance and Analytics",
 "Child Description" : "",
 "Child Image URL" : "",
-"Sequence" : "3,245",
+"Sequence" : "3,240",
 "Is_Active" : "True",
 "Selection Type" : "Checkbox",
 "Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -12577,9 +8130,9 @@
 },
 {
 "Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "Use Cases",
-"Child Identifier" : "IPA_APP_ImageRecog",
-"Child Name" : "Image recognition",
+"Parent Name" : "Application",
+"Child Identifier" : "IPA_APP_DataManagMonitor",
+"Child Name" : "Data management and monitoring",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,250",
@@ -12609,9 +8162,9 @@
 },
 {
 "Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "Use Cases",
-"Child Identifier" : "IPA_APP_ImageRecogDetectClass",
-"Child Name" : "Image Recognition/Detection/ Classification",
+"Parent Name" : "Application",
+"Child Identifier" : "IPA_APP_DataPreparation",
+"Child Name" : "Data Preparation",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,260",
@@ -12641,23 +8194,18 @@
 },
 {
 "Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "Use Cases",
-"Child Identifier" : "IPA_APP_Intelgnt_vend",
-"Child Name" : "Intelligent Vending",
+"Parent Name" : "Application",
+"Child Identifier" : "IPA_APP_DigitalTwin",
+"Child Name" : "Digital twin",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,270",
-"Is_Active" : "True",
+"Is_Active" : "False",
 "Selection Type" : "Checkbox",
 "Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
+"Child_Mandatory_Flag" : "",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -12666,7 +8214,7 @@
 				{
 				"Spec Identifier" : "Intel_Segments_Data_Center", 		
 				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
+				"Spec Value"		: "Yes"
 				},
 				{
 				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
@@ -12678,46 +8226,9 @@
 },
 {
 "Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "Use Cases",
-"Child Identifier" : "IPA_APP_InterWhiteBoard",
-"Child Name" : "Interactive Whiteboard",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "3,280",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "Use Cases",
-"Child Identifier" : "IPA_APP_IOT",
-"Child Name" : "Internet of Things",
+"Parent Name" : "Application",
+"Child Identifier" : "IPA_APP_ERP",
+"Child Name" : "ERP",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,290",
@@ -12735,7 +8246,7 @@
 				{
 				"Spec Identifier" : "Intel_Segments_Data_Center", 		
 				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
+				"Spec Value"		: "Yes"
 				},
 				{
 				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
@@ -12747,9 +8258,9 @@
 },
 {
 "Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "Use Cases",
-"Child Identifier" : "IPA_APP_InventorySupplyChain",
-"Child Name" : "Inventory and Supply Chain automation",
+"Parent Name" : "Application",
+"Child Identifier" : "IPA_APP_FacialRecogDetectClass",
+"Child Name" : "Facial Recognition/Detection/Classification",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,300",
@@ -12779,60 +8290,18 @@
 },
 {
 "Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "Use Cases",
-"Child Identifier" : "IPA_APP_InventoryMgmt",
-"Child Name" : "Inventory Management",
+"Parent Name" : "Application",
+"Child Identifier" : "IPA_APP_FinancialAnalyticsPlatform",
+"Child Name" : "Financial Analytics Platform",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,310",
-"Is_Active" : "True",
+"Is_Active" : "False",
 "Selection Type" : "Checkbox",
 "Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
+"Child_Mandatory_Flag" : "",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "Use Cases",
-"Child Identifier" : "IPA_APP_LogisticsTracking",
-"Child Name" : "Logistics & Tracking",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "3,312",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -12853,83 +8322,9 @@
 },
 {
 "Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "Use Cases",
-"Child Identifier" : "IPA_APP_MachineConditionmontior",
-"Child Name" : "Machine Condition Monitoring",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "3,314",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "Use Cases",
-"Child Identifier" : "IPA_APP_MediaEntertainment",
-"Child Name" : "Media & Entertainment",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "3,316",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "Use Cases",
-"Child Identifier" : "IPA_APP_MedicalImagAnalysis",
-"Child Name" : "Medical imaging and Analysis",
+"Parent Name" : "Application",
+"Child Identifier" : "IPA_APP_FraudThreatDetect",
+"Child Name" : "Fraud and Threat Detection",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,320",
@@ -12959,9 +8354,9 @@
 },
 {
 "Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "Use Cases",
-"Child Identifier" : "IPA_APP_ModelManageTraining",
-"Child Name" : "Model management and training",
+"Parent Name" : "Application",
+"Child Identifier" : "IPA_APP_HumanEmotionAnalysis",
+"Child Name" : "Human Emotion Analysis",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,330",
@@ -12991,9 +8386,9 @@
 },
 {
 "Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "Use Cases",
-"Child Identifier" : "IPA_APP_NLP",
-"Child Name" : "Natural language processing",
+"Parent Name" : "Application",
+"Child Identifier" : "IPA_APP_ImageRecogDetectClass",
+"Child Name" : "Image Recognition/Detection/ Classification",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,340",
@@ -13023,9 +8418,9 @@
 },
 {
 "Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "Use Cases",
-"Child Identifier" : "IPA_APP_ObjectRecogDetectClass",
-"Child Name" : "Object Recognition/Detection/Classification",
+"Parent Name" : "Application",
+"Child Identifier" : "IPA_APP_InventorySupplyChain",
+"Child Name" : "Inventory and Supply Chain automation",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,350",
@@ -13055,9 +8450,9 @@
 },
 {
 "Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "Use Cases",
-"Child Identifier" : "IPA_APP_Other",
-"Child Name" : "Other (pls specify)",
+"Parent Name" : "Application",
+"Child Identifier" : "IPA_APP_MedicalImagAnalysis",
+"Child Name" : "Medical imaging and Analysis",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,360",
@@ -13087,27 +8482,22 @@
 },
 {
 "Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "Use Cases",
-"Child Identifier" : "IPA_APP_Others",
-"Child Name" : "Others",
+"Parent Name" : "Application",
+"Child Identifier" : "IPA_APP_ModelManageTraining",
+"Child Name" : "Model management and training",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,370",
-"Is_Active" : "True",
+"Is_Active" : "False",
 "Selection Type" : "Checkbox",
 "Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
+"Child_Mandatory_Flag" : "",
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "Yes"
+				"Spec Value"		: "No"
 				},
 				{
 				"Spec Identifier" : "Intel_Segments_Data_Center", 		
@@ -13124,9 +8514,9 @@
 },
 {
 "Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "Use Cases",
-"Child Identifier" : "IPA_APP_PatientDataAnalytics",
-"Child Name" : "Patient Data Analytics",
+"Parent Name" : "Application",
+"Child Identifier" : "IPA_APP_ObjectRecogDetectClass",
+"Child Name" : "Object Recognition/Detection/Classification",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,380",
@@ -13156,9 +8546,9 @@
 },
 {
 "Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "Use Cases",
-"Child Identifier" : "IPA_APP_PersonalMedicCare",
-"Child Name" : "Personalized medication and care",
+"Parent Name" : "Application",
+"Child Identifier" : "IPA_APP_Other",
+"Child Name" : "Other (pls specify)",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,390",
@@ -13188,9 +8578,9 @@
 },
 {
 "Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "Use Cases",
-"Child Identifier" : "IPA_APP_PredictiveDiagnosis",
-"Child Name" : "Predictive diagnosis",
+"Parent Name" : "Application",
+"Child Identifier" : "IPA_APP_PatientDataAnalytics",
+"Child Name" : "Patient Data Analytics",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,400",
@@ -13220,9 +8610,9 @@
 },
 {
 "Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "Use Cases",
-"Child Identifier" : "IPA_APP_PredictiveMainten",
-"Child Name" : "Predictive Maintenance",
+"Parent Name" : "Application",
+"Child Identifier" : "IPA_APP_PersonalMedicCare",
+"Child Name" : "Personalized medication and care",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,410",
@@ -13252,60 +8642,18 @@
 },
 {
 "Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "Use Cases",
-"Child Identifier" : "IPA_APP_PrintImgnOffAuto",
-"Child Name" : "Print Imaging and Office Automation",
+"Parent Name" : "Application",
+"Child Identifier" : "IPA_APP_PredictiveDiagnosis",
+"Child Name" : "Predictive diagnosis",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,420",
-"Is_Active" : "True",
+"Is_Active" : "False",
 "Selection Type" : "Checkbox",
 "Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
+"Child_Mandatory_Flag" : "",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "Use Cases",
-"Child Identifier" : "IPA_APP_ProductInspection",
-"Child Name" : "Product Inspection",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "3,425",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -13326,9 +8674,9 @@
 },
 {
 "Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "Use Cases",
-"Child Identifier" : "IPA_APP_QualityAssessment",
-"Child Name" : "Quality Assessment",
+"Parent Name" : "Application",
+"Child Identifier" : "IPA_APP_PredictiveMainten",
+"Child Name" : "Predictive Maintenance",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,430",
@@ -13358,9 +8706,9 @@
 },
 {
 "Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "Use Cases",
-"Child Identifier" : "IPA_APP_RecoSystems",
-"Child Name" : "Recommender Systems",
+"Parent Name" : "Application",
+"Child Identifier" : "IPA_APP_QualityAssessment",
+"Child Name" : "Quality Assessment",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,440",
@@ -13390,9 +8738,9 @@
 },
 {
 "Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "Use Cases",
-"Child Identifier" : "IPA_APP_RetailBanking",
-"Child Name" : "Retail Banking",
+"Parent Name" : "Application",
+"Child Identifier" : "IPA_APP_RecoSystems",
+"Child Name" : "Recommender Systems",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,450",
@@ -13422,9 +8770,9 @@
 },
 {
 "Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "Use Cases",
-"Child Identifier" : "IPA_APP_RiskManageDetect",
-"Child Name" : "Risk Management and Detection",
+"Parent Name" : "Application",
+"Child Identifier" : "IPA_APP_RetailBanking",
+"Child Name" : "Retail Banking",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,460",
@@ -13454,46 +8802,9 @@
 },
 {
 "Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "Use Cases",
-"Child Identifier" : "IPA_APP_Robot",
-"Child Name" : "Robot",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "3,465",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "Use Cases",
-"Child Identifier" : "IPA_APP_SentimentAnalysis",
-"Child Name" : "Sentiment Analysis",
+"Parent Name" : "Application",
+"Child Identifier" : "IPA_APP_RiskManageDetect",
+"Child Name" : "Risk Management and Detection",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,470",
@@ -13523,97 +8834,18 @@
 },
 {
 "Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "Use Cases",
-"Child Identifier" : "IPA_APP_SituationalMonitoring",
-"Child Name" : "Situational Monitoring",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "3,475",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "Use Cases",
-"Child Identifier" : "IPA_APP_SmartBuilding",
-"Child Name" : "Smart Building",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "3,480",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "Use Cases",
-"Child Identifier" : "IPA_APP_SmartCity",
-"Child Name" : "Smart City",
+"Parent Name" : "Application",
+"Child Identifier" : "IPA_APP_SentimentAnalysis",
+"Child Name" : "Sentiment Analysis",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,490",
-"Is_Active" : "True",
+"Is_Active" : "False",
 "Selection Type" : "Checkbox",
 "Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
+"Child_Mandatory_Flag" : "",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -13622,7 +8854,7 @@
 				{
 				"Spec Identifier" : "Intel_Segments_Data_Center", 		
 				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
+				"Spec Value"		: "Yes"
 				},
 				{
 				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
@@ -13634,7 +8866,7 @@
 },
 {
 "Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "Use Cases",
+"Parent Name" : "Application",
 "Child Identifier" : "IPA_APP_SmCtPbSfCrAt",
 "Child Name" : "Smart City/Public Safety/Crowd Analytics",
 "Child Description" : "",
@@ -13666,46 +8898,41 @@
 },
 {
 "Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "Use Cases",
-"Child Identifier" : "IPA_APP_SmartHome",
-"Child Name" : "Smart Home",
+"Parent Name" : "Application",
+"Child Identifier" : "IPA_APP_SmartLogistics",
+"Child Name" : "Smart logistics",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,510",
-"Is_Active" : "True",
+"Is_Active" : "False",
 "Selection Type" : "Checkbox",
 "Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
+"Child_Mandatory_Flag" : "",
 	"Intel Segment" :
 		[
 				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "Yes"
+				"Spec Value"		: "No"
 				},
 				{
 				"Spec Identifier" : "Intel_Segments_Data_Center", 		
 				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
+				"Spec Value"		: "Yes"
 				},
 				{
 				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
 				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "No"
+				"Spec Value"		: "Yes"
 				},
 				{ }
     	]
 },
 {
 "Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "Use Cases",
-"Child Identifier" : "IPA_APP_SmartLogistics",
-"Child Name" : "Smart logistics",
+"Parent Name" : "Application",
+"Child Identifier" : "IPA_APP_SocialMediaAnalytics",
+"Child Name" : "Social Media Analytics",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,520",
@@ -13735,531 +8962,18 @@
 },
 {
 "Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "Use Cases",
-"Child Identifier" : "IPA_APP_SocialMediaAnalytics",
-"Child Name" : "Social Media Analytics",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "3,530",
-"Is_Active" : "False",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "Use Cases",
-"Child Identifier" : "IPA_APP_Storage",
-"Child Name" : "Storage",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "3,540",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "Use Cases",
-"Child Identifier" : "IPA_APP_Telematics",
-"Child Name" : "Telematics",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "3,550",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "Use Cases",
-"Child Identifier" : "IPA_APP_VideoMgmt",
-"Child Name" : "Video Management",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "3,560",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "Use Cases",
+"Parent Name" : "Application",
 "Child Identifier" : "IPA_APP_VoiceRecog",
 "Child Name" : "Voice Recognition",
 "Child Description" : "",
 "Child Image URL" : "",
-"Sequence" : "3,570",
+"Sequence" : "3,540",
 "Is_Active" : "False",
 "Selection Type" : "Checkbox",
 "Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
 "Child_Mandatory_Flag" : "",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "IPA_APP_MediaEntertainment",
-"Parent Name" : "Media & Entertainment",
-"Child Identifier" : "IPA_APP_Animatedfilms",
-"Child Name" : "Animated films",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "3,600",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "IPA_APP_MediaEntertainment",
-"Parent Name" : "Media & Entertainment",
-"Child Identifier" : "IPA_APP_GameDev",
-"Child Name" : "Game Development",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "3,610",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "IPA_APP_MediaEntertainment",
-"Parent Name" : "Media & Entertainment",
-"Child Identifier" : "IPA_APP_GraphicsDesign",
-"Child Name" : "Graphics Design",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "3,620",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "IPA_APP_MediaEntertainment",
-"Parent Name" : "Media & Entertainment",
-"Child Identifier" : "IPA_APP_VideoEditingVisualEffctsMoviesTele",
-"Child Name" : "Video Editing & Visual Effects / Movies / Television",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "3,630",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "IPA_APP_Robot",
-"Parent Name" : "Robot",
-"Child Identifier" : "IPA_APP_Robot_ArtR",
-"Child Name" : "Articulated Robots",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "3,700",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "IPA_APP_Robot",
-"Parent Name" : "Robot",
-"Child Identifier" : "IPA_APP_Robot_AGV",
-"Child Name" : "Automated Guided Vehicles",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "3,710",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "IPA_APP_Robot",
-"Parent Name" : "Robot",
-"Child Identifier" : "IPA_APP_Robot_AMR",
-"Child Name" : "Autonomous Mobile Robot (AMR)",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "3,720",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "IPA_APP_Robot",
-"Parent Name" : "Robot",
-"Child Identifier" : "IPA_APP_Robot_Cobts",
-"Child Name" : "Cobots",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "3,730",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "IPA_APP_Robot",
-"Parent Name" : "Robot",
-"Child Identifier" : "IPA_APP_Robot_Hum",
-"Child Name" : "Humanoids",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "3,740",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "IPA_APP_Robot",
-"Parent Name" : "Robot",
-"Child Identifier" : "IPA_APP_Robot_Hybrid",
-"Child Name" : "Hybrids",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "3,750",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
@@ -14288,380 +9002,10 @@
 "Sequence" : "4,000",
 "Is_Active" : "True",
 "Selection Type" : "Auto-fill in",
-"Remarks" : "User does NOT select Partner Program Segments. It is automatically assigned by the Marketplace system based on the mapping from other category selections.",
+"Remarks" : "User does NOT select Business Segments. It is automatically assigned by the Marketplace system based on the mapping from other category selections.",
 "Child_Mandatory_Flag" : "",
 	"Intel Segment" :
 		[
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "IPA_APP_HealthLifeSciences",
-"Parent Name" : "Health & Life Sciences",
-"Child Identifier" : "IPA_APP_CT",
-"Child Name" : "CT - Computerized Tomography",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "4,001",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "IPA_APP_HealthLifeSciences",
-"Parent Name" : "Health & Life Sciences",
-"Child Identifier" : "IPA_APP_HealthIT",
-"Child Name" : "Health IT",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "4,002",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "IPA_APP_HealthLifeSciences",
-"Parent Name" : "Health & Life Sciences",
-"Child Identifier" : "IPA_APP_LabInstrumentationPharma",
-"Child Name" : "Laboratory Instrumentation / Pharma",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "4,003",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "IPA_APP_HealthLifeSciences",
-"Parent Name" : "Health & Life Sciences",
-"Child Identifier" : "IPA_APP_LIMSBox",
-"Child Name" : "LIMS Box (Laboratory Instrumentation Management System Box )",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "4,004",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "IPA_APP_HealthLifeSciences",
-"Parent Name" : "Health & Life Sciences",
-"Child Identifier" : "IPA_APP_MedicalRobots",
-"Child Name" : "Medical Robots",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "4,005",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "IPA_APP_HealthLifeSciences",
-"Parent Name" : "Health & Life Sciences",
-"Child Identifier" : "IPA_APP_MRI",
-"Child Name" : "MRI - Magnetic Ressonance Imaging",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "4,006",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "IPA_APP_HealthLifeSciences",
-"Parent Name" : "Health & Life Sciences",
-"Child Identifier" : "IPA_APP_Omics",
-"Child Name" : "Omics",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "4,007",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "IPA_APP_HealthLifeSciences",
-"Parent Name" : "Health & Life Sciences",
-"Child Identifier" : "IPA_APP_PACS",
-"Child Name" : "PACS - Picture Archiving and Communication System/VNA-Vendor Neutral Archiving",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "4,008",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "IPA_APP_HealthLifeSciences",
-"Parent Name" : "Health & Life Sciences",
-"Child Identifier" : "IPA_APP_PatientMonitoring",
-"Child Name" : "Patient Monitoring",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "4,009",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "IPA_APP_HealthLifeSciences",
-"Parent Name" : "Health & Life Sciences",
-"Child Identifier" : "IPA_APP_PET",
-"Child Name" : "PET - Positron Emission Tomography",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "4,010",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
 				{ }
     	]
 },
@@ -14675,121 +9019,10 @@
 "Sequence" : "4,010",
 "Is_Active" : "True",
 "Selection Type" : "Auto-fill in",
-"Remarks" : "User does NOT select Partner Program Segments. It is automatically assigned by the Marketplace system based on the mapping from other category selections.",
+"Remarks" : "User does NOT select Business Segments. It is automatically assigned by the Marketplace system based on the mapping from other category selections.",
 "Child_Mandatory_Flag" : "",
 	"Intel Segment" :
 		[
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "IPA_APP_HealthLifeSciences",
-"Parent Name" : "Health & Life Sciences",
-"Child Identifier" : "IPA_APP_Telemedicine",
-"Child Name" : "Telemedicine",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "4,011",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "IPA_APP_HealthLifeSciences",
-"Parent Name" : "Health & Life Sciences",
-"Child Identifier" : "IPA_APP_Ultrasound",
-"Child Name" : "Ultrasound",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "4,012",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "IPA_APP_HealthLifeSciences",
-"Parent Name" : "Health & Life Sciences",
-"Child Identifier" : "IPA_APP_X-Ray",
-"Child Name" : "X-Ray",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "4,013",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "Partner Program_Segments_Field_Programmable_Gate_Array", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "Partner_Program_Segments_Client_Computing", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "Partner_Program_Segments_Data_Center", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "Partner_Program_Segments_Embedded_IoT", 
-				"Spec Value"		: "Yes"
-				},
 				{ }
     	]
 },
@@ -14803,7 +9036,7 @@
 "Sequence" : "4,020",
 "Is_Active" : "True",
 "Selection Type" : "Auto-fill in",
-"Remarks" : "User does NOT select Partner Program Segments. It is automatically assigned by the Marketplace system based on the mapping from other category selections.",
+"Remarks" : "User does NOT select Business Segments. It is automatically assigned by the Marketplace system based on the mapping from other category selections.",
 "Child_Mandatory_Flag" : "",
 	"Intel Segment" :
 		[
@@ -14820,41 +9053,7 @@
 "Sequence" : "4,030",
 "Is_Active" : "True",
 "Selection Type" : "Auto-fill in",
-"Remarks" : "User does NOT select Partner Program Segments. It is automatically assigned by the Marketplace system based on the mapping from other category selections.",
-"Child_Mandatory_Flag" : "",
-	"Intel Segment" :
-		[
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "Intel_Segments_NPP_01_Busines_ Segments",
-"Parent Name" : "Partner Program Segments",
-"Child Identifier" : "Intel_Segments_Field_Programmable_Gate_Array",
-"Child Name" : "Field Programmable Gate Array",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "4,040",
-"Is_Active" : "True",
-"Selection Type" : "Auto-fill in",
-"Remarks" : "User does NOT select Partner Program Segments. It is automatically assigned by the Marketplace system based on the mapping from other category selections.",
-"Child_Mandatory_Flag" : "",
-	"Intel Segment" :
-		[
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "Solution_Marketplace_Hierarchy",
-"Parent Name" : "",
-"Child Identifier" : "Intel_Segments_NPP_01_Busines_",
-"Child Name" : "",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "2,147,483,647",
-"Is_Active" : "False",
-"Selection Type" : "",
-"Remarks" : "",
+"Remarks" : "User does NOT select Business Segments. It is automatically assigned by the Marketplace system based on the mapping from other category selections.",
 "Child_Mandatory_Flag" : "",
 	"Intel Segment" :
 		[

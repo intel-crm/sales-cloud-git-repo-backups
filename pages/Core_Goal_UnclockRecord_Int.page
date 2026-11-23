@@ -1,0 +1,36 @@
+<apex:page standardController="Core_Goal__c" extensions="Core_Goal_UnlockRecExtController" lightningStylesheets="true">
+    
+    <apex:outputPanel rendered="true">
+        <script type="text/javascript">
+        new function() { checkCondition(); };
+        function checkCondition()
+        {    
+            var x;
+            if (confirm("Are you Sure?") == true) {
+                x = "Ok";
+            } else {
+                x = "Cancel";
+            }      
+            
+            if(typeof sforce !== "undefined" && sforce !== null) {
+                
+                if(x == 'Cancel'){ 
+                    sforce.one.navigateToURL('/{!Core_Goal__c.Id}')
+                } else{
+                    sforce.one.navigateToURL('/apex/Core_Goal_UnlockRecord?id={!Core_Goal__c.Id}');
+                }
+                
+            }
+            else{
+                if(x == 'Cancel'){ 
+                    window.location.replace('/{!Core_Goal__c.Id}')
+                    
+                } else{
+                    window.location.replace('/apex/Core_Goal_UnlockRecord?id={!Core_Goal__c.Id}')
+                }
+            }
+            
+        }
+        </script>
+    </apex:outputPanel>
+</apex:page>

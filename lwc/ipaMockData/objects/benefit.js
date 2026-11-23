@@ -129,11 +129,24 @@ const benefitsSample = () => {
             metrics: mockMetrics([11,12,0]),
             links: mockLinks([9,10]),
             contacts: []
+        },
+        {
+            id: helpers.id(),
+            title: "Lorem Test Same Empty Metric Test ",
+            faIcon: "fa-box-dollar-o",
+            description: "Curabitur blandit tempus porttitor. Vestibulum id ligula porta felis euismod semper.",
+            alerts: [],
+            metrics: mockMetrics([13,13,13,13,13]),
+            links: mockLinks([9,10]),
+            contacts: []
         }
     ];
 }
 
 
 export const mockBenefits = () => {
-    return benefitsSample();
+    return {
+      benefitInfo: benefitsSample(),
+      summaryDescription: 'Summary Description'
+    }
 }

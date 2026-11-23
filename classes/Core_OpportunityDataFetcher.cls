@@ -71,7 +71,16 @@ public without sharing class Core_OpportunityDataFetcher {
     public static List<OpportunityWrapper> getOpportunityData(id accountID) {
         List<String> Core_Opportunity_Type = new List<String>();
         Core_Opportunity_Type.add('Deal: Sell-to');
-        List<Opportunity> opportunities = [
+        String pulse_Query = 'SELECT Id,CRM_Opportunity_URL__c, CloseDate, Name, Description, StageName, Type, Amount, '
+            + 'Decision_Date__c,Core_Product_Segment__c,NextStep, Core_Status_Update__c, Account.Name,'
+            + '(SELECT Quantity, UnitPrice, TotalPrice,Core_BU_Short_Name__c , Product2.Name, Product2.Id ,Core_BU_Mapping_record__c,Core_BU_Mapping_record__r.Core_BU_Segment__c'
+            + ' FROM OpportunityLineItems '
+            + ' WHERE  Core_Status__c NOT IN (\'Delete In Progress (<15 min)\',\'Cancelled\',\'Lost\')),'
+            + '(SELECT Id, Core_UCD_Partner_Account_Name__c, Core_Partner_Role__c, Core_Partner_Type__c '
+            + ' FROM Opportunity_Partners__r)'
+            + 'FROM Opportunity WHERE AccountId =: accountID ' + 'AND  ((CloseDate >= LAST_YEAR AND CloseDate <= THIS_YEAR) OR (stagename IN (\'Qualify\', \'Define\', \'Develop\', \'Design\'))) AND Core_Opportunity_Coverage_Nm__c = \'Intel-Led Opportunity\' order by CreatedDate DESC LIMIT 30';
+        List<Opportunity> opportunities = Database.query(pulse_Query);
+        /*List<Opportunity> opportunities = [
             SELECT Id,CRM_Opportunity_URL__c, CloseDate, Name, Description, StageName, Type, Amount, 
             Decision_Date__c,Core_Product_Segment__c,NextStep, Core_Status_Update__c, Account.Name,
             (SELECT Quantity, UnitPrice, TotalPrice,Core_BU_Short_Name__c , Product2.Name, Product2.Id ,Core_BU_Mapping_record__c,Core_BU_Mapping_record__r.Core_BU_Segment__c
@@ -81,7 +90,7 @@ public without sharing class Core_OpportunityDataFetcher {
              FROM Opportunity_Partners__r)
             FROM Opportunity WHERE AccountId =: accountID and 
             Decision_Date__c = LAST_FISCAL_YEAR  limit 30
-        ];//and ID NOT IN : OppId limit 5
+        ];//and ID NOT IN : OppId limit 5*/
         integer TotSpareCount = 0;
         List<OpportunityWrapper> wrappedOpportunities = new List<OpportunityWrapper>();
         for (Opportunity opp : opportunities) {

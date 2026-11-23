@@ -19,8 +19,7 @@ public class Pricing_QuoteBusinessLogic_Test {
 
             List<User> aeUser = Pricing_Test_Utility.createAEUserWithParam('FirstNameAEChange1@intel.com');           
             Account acc = Pricing_Test_Utility.createAccount();
-            Contact con = Pricing_Test_Utility.createPrimaryContact(acc.Id);
-            Contact con1 = Pricing_Test_Utility.createPrimaryContactWithParam(acc.Id,'Quote_Business_logic_Test');
+            Contact con = Pricing_Test_Utility.createPrimaryContactWithParam(acc.Id,'Quote_business_Logic_Test');
             
             List<User> accExecUserList = Pricing_Test_Utility.createAEUser();
             List<User> salesRepUserList = Pricing_Test_Utility.createSalesRepUser();
@@ -117,10 +116,6 @@ public class Pricing_QuoteBusinessLogic_Test {
         System.runAs(salesRepOnQuote) {
             if(!aeUser.isEmpty()) {
                 quoteRec.Pricing_Intel_Account_Exec_Email_Txt__c = '';//aeUser[0].Email;
-                quoteRec.Pricing_Route_Rule_Name_Txt__c ='Test Rule';
-                quoteRec.Pricing_Pricing_Manager__c = UserInfo.getUserId();
-                quoteRec.Pricing_Program_Type_Nm__c='Data Center';
-                 quoteRec.Pricing_ReRouting_Reason_Nm__c='RPM Coverage';
                 update quoteRec;
             }
         } 
@@ -181,7 +176,11 @@ public class Pricing_QuoteBusinessLogic_Test {
         List<SBQQ__Quote__c> quoteList = new List<SBQQ__Quote__c>();
         System.runAs(aeUser) {
         	quoteList = Pricing_Test_Utility.createQuoteWithParam(acc.Id, con.Id,1,fseUser.Email,'');   
-        }
+        }       
+       
+        quoteList[0].Pricing_AI_Host_Node_cb__c =true;
+        quoteList[0].Pricing_Program_Type_Nm__c = 'Data Center';
+       update quoteList;
         Map<Id,Id> aeoldQuoteIdMap = new Map<Id,Id>();
         aeoldQuoteIdMap.put(quoteList[0].Id,aeUser.Id);
         QuoteBusinessLogic.deleteShareQuoteFuture(aeoldQuoteIdMap);
@@ -200,9 +199,7 @@ public class Pricing_QuoteBusinessLogic_Test {
         insert accTeam;
         AccountTeamMember accTeam1 = new AccountTeamMember(AccountId =quoteRec.SBQQ__Account__c,TeamMemberRole = 'Technical Sales',UserId = fseUser.Id);
         insert accTeam1;
-       
         User salesRepOnQuote = [Select id from User where id=:quoteRec.SBQQ__SalesRep__c];
-        
         //User primaryContact = [Select id from User where ContactId =:quoteRec.SBQQ__PrimaryContact__c limit 1 ];
         //Test.startTest();
         //List<SBQQ__QuoteLine__c> quoteLineList = [Select id from SBQQ__QuoteLine__c where SBQQ__Quote__c=:lstquote[0].Id];
@@ -215,13 +212,13 @@ public class Pricing_QuoteBusinessLogic_Test {
        // }
        // Test.startTest();
         QuoteBusinessLogic.isQTMChanged = true;
-List<User> pricingManagerList = Pricing_Test_Utility.createPricingMangerUser();
+
         //Test.stopTest();  
         System.runAs(salesRepOnQuote) {
             quoteRec.Pricing_Intel_Sales_Rep_Email_Txt__c = fseUser.Email;
             update quoteRec;
         }
-      
+
         System.assert(!lstquote.isEmpty(),'lstquote should not be empty');
         Test.stopTest(); 
     }
@@ -295,7 +292,7 @@ List<User> pricingManagerList = Pricing_Test_Utility.createPricingMangerUser();
     
     
     static testmethod void testupdateUnifiedEndCustomerQuote(){
-         Test.startTest();
+        Test.startTest();
         Account newAcc = new Account();
         newAcc.RecordTypeId=Pricing_Tender_Utility.getRecordTypeId('Account',Label.Pricing_Tender_Account_RecordType_IntelAccount);      
         newAcc.Name = 'Test Account123';
@@ -312,7 +309,7 @@ List<User> pricingManagerList = Pricing_Test_Utility.createPricingMangerUser();
         acc.ParentId=newAcc.id;
         update acc;
         Account acc2 = [select id,Core_Parent_Business_Party_Id__c,ParentId from Account where Core_Parent_Business_Party_Id__c!=null and Parent.RecordType.name='Intel Account' limit 1];
-         Assert.isNotNull(acc2.Core_Parent_Business_Party_Id__c, 'acc2>> The record should have been created/queried.');
+         Assert.isNotNull(acc2, 'acc2>> The record should have been created/queried.');
         List<SBQQ__Quote__c> lstQuote = [SELECT Id,SBQQ__Account__c,Pricing_End_Customer__c,Pricing_End_Customer_Country_Nm__c,Pricing_Account_Executive_Nm__c,Pricing_Unified_Global_End_Customer_Nm__c FROM SBQQ__Quote__c LIMIT 1];
         Pricing_UnifiedEndCustomerAccountMapping__c endCustomer = Pricing_Test_Utility.createUnifiedEndCustomer(acc.Id);
          Pricing_UnifiedEndCustomerCountryMapping__c unifiedCountryObj;
@@ -323,7 +320,7 @@ List<User> pricingManagerList = Pricing_Test_Utility.createPricingMangerUser();
            unifiedCountryObj.Pricing_RequestID__c=acc2.id;
             
             insert unifiedCountryObj;
-       
+        
         lstQuote[0].SBQQ__Account__c = newAcc.Id;
         lstQuote[0].Pricing_End_Customer__c = endCustomer.Id;
         lstQuote[0].Pricing_End_Customer_Country_Nm__c = 'Afghanistan';

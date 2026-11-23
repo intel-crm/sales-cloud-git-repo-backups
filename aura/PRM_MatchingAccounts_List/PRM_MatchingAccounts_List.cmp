@@ -6,8 +6,6 @@
     <aura:attribute name="accountColumns" type="List" />
     <aura:attribute name="accountShow" type="boolean" default ="false"/>
     <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
-    <aura:handler event="force:refreshView" action="{!c.getRefreshData}" />
-    
     <aura:attribute name="currentPageNumber" type="Integer" default="1"/>
     <aura:attribute name="pageSize" type="Integer" default="4"/>
     <aura:attribute name="totalPages" type="Integer" default="0"/>
@@ -17,13 +15,11 @@
     <aura:attribute name="setAccountId" type="String"/>
     <aura:attribute name="selectedList" type="List"/>
     <aura:attribute name="showReuse" type="Boolean" default="false"/>
-    <aura:attribute name="hideReuse" type="Boolean" default="false"/>
     <aura:attribute name="selectedRowsList" type="List"/>
     <aura:attribute name="SelectedAccount" type="Map" default="{}"/>
     <aura:attribute name="startPage" type="Integer" />
     <aura:attribute name="endPage" type="Integer"/>
     <aura:attribute name="hideApprove" type="Boolean" default="false"/>
-    <aura:attribute name="hideReject" type="Boolean" default="false"/>
     <aura:attribute name="hideRadioButtons" type="Boolean" default="false"/>
     <aura:attribute name="showToastMessage" type="Boolean" default="false"/>
     <aura:attribute name="regAccName" type="String"/>
@@ -41,10 +37,9 @@
     <aura:attribute name="accountTableColumns" type="List"/>
     <aura:attribute name="accountTableData" type="List"/>
     <aura:attribute name="searchAccountNoDupForExistingContact" type="Boolean" default="true"/>
-    <aura:attribute name="contPartnerRole" type="String"/>
     
     <aura:html tag="style">
-        .slds-button.slds-button--neutral:nth-child(3){
+        .slds-button.slds-button--neutral.slds-truncate:nth-child(3){
         pointer-events:none;
         opacity : 0.6;
         }
@@ -60,25 +55,7 @@
     
     <aura:if isTrue="{!v.hideApprove}">
         <aura:html tag="style">
-            .slds-button.slds-button--neutral:first-child{
-            pointer-events:none;
-            opacity : 0.6;
-            }
-        </aura:html>
-    </aura:if>
-    
-    <aura:if isTrue="{!v.hideReject}">
-        <aura:html tag="style">
-            .slds-button.slds-button--neutral:nth-child(2){
-            pointer-events:none;
-            opacity : 0.6;
-            }
-        </aura:html>
-    </aura:if>
-    
-    <aura:if isTrue="{!v.hideReject}">
-        <aura:html tag="style">
-            .slds-button.slds-button--neutral.slds-truncate:nth-child(2){
+            .slds-button.slds-button--neutral.slds-truncate:first-child{
             pointer-events:none;
             opacity : 0.6;
             }
@@ -86,22 +63,12 @@
     </aura:if>
     
     <aura:if isTrue="{!v.displayDuplicateAccounts}">
-        
         <lightning:card iconName="standard:account" title='{!$Label.c.PRM_CIM}'>
-            
-            
-            
             <aura:set attribute="actions">
-                
-                <lightning:button label="Refresh" onclick="{!c.handleRefresh}" disabled="false"/>
-                
                 <aura:if isTrue="{!v.showReuse}">
-                    <aura:if isTrue="{!not(v.hideReuse)}">
-                        <lightning:button label="Reuse Account" name="button1" onclick="{! c.handleClick }" disabled="false"/>
-                    </aura:if>
+                    <lightning:button label="Reuse Account" name="button1" onclick="{! c.handleClick }" disabled="false"/>
                 </aura:if>
             </aura:set>
-            <aura:if isTrue="{!not(v.hideReuse)}">
             <aura:if isTrue="{!v.accountShow}">
                 
                 <aura:if isTrue="{!(v.totalPages > 0)}">
@@ -110,22 +77,20 @@
                     </div> 
                     
                     <div id ="acc" class="table-align">
-                        <lightning:datatable aura:id="accountTable" data="{! v.AccountList }" columns="{! v.accountColumns }" keyField="Id" hideCheckboxColumn="{!v.hideRadioButtons}" maxRowSelection="{!v.maxRowSelection}" onrowselection="{! c.updateSelectedText }"  selectedRows = "{!v.selectedList}" minColumnWidth="150" maxColumnWidth="500" hideTableHeader="false"/>
+                        <lightning:datatable aura:id="accountTable" data="{! v.AccountList }" columns="{! v.accountColumns }" keyField="Names" hideCheckboxColumn="{!v.hideRadioButtons}" maxRowSelection="{!v.maxRowSelection}" onrowselection="{! c.updateSelectedText }"  selectedRows = "{!v.selectedList}" minColumnWidth="150" maxColumnWidth="500" hideTableHeader="false"/>  
                     </div>
-                    <aura:if isTrue="{!not(v.hideReuse)}">
-                        <aura:if isTrue="{!v.searchAccount}">
-                            <lightning:layout>
-                                <lightning:layoutItem padding="around-small" size="3">
-                                    <div aura:id="inputs" class="slds-p-left_x-large">
-                                        <lightning:input aura:id="accountInput" placeholder="Key in the Account Id" variant="label-hidden" onchange="{!c.changeAccountInput}"/>
-                                        <p style="color:red">{!v.ErrorMessage}</p>
-                                    </div>
-                                </lightning:layoutItem>
-                                <lightning:layoutItem padding="around-small">
-                                    <lightning:button aura:id="submit" label="Reuse" onclick="{!c.submitAccount}" disabled="true"/>
-                                </lightning:layoutItem>
-                            </lightning:layout>
-                        </aura:if>
+                    <aura:if isTrue="{!v.searchAccount}">
+                        <lightning:layout>
+                            <lightning:layoutItem padding="around-small" size="3">
+                                <div aura:id="inputs" class="slds-p-left_x-large">
+                                    <lightning:input aura:id="accountInput" placeholder="Key in the Account Id" variant="label-hidden" onchange="{!c.changeAccountInput}"/>
+                                    <p style="color:red">{!v.ErrorMessage}</p>
+                                </div>
+                            </lightning:layoutItem>
+                            <lightning:layoutItem padding="around-small">
+                                <lightning:button aura:id="submit" label="Reuse" onclick="{!c.submitAccount}" disabled="true"/>
+                            </lightning:layoutItem>
+                        </lightning:layout>
                     </aura:if>
                     
                     <lightning:layout multipleRows="true" horizontalAlign="center">
@@ -170,26 +135,24 @@
                         <div class="allign-text">
                             <p>{!$Label.c.PRM_NoAccountsFound}</p>
                         </div>
-                        <aura:if isTrue="{!not(v.hideReuse)}">
-                            <aura:if isTrue="{!v.searchAccountNoDupForExistingContact}">	
-                                <lightning:layout>
-                                    <lightning:layoutItem padding="around-small" size="3">
-                                        <div aura:id="inputs" class="slds-p-left_medium">
-                                            <lightning:input aura:id="accountInput" placeholder="Key in the Account Id" variant="label-hidden" onchange="{!c.changeAccountInput}"/>
-                                            <p style="color:red">{!v.ErrorMessage}</p>
-                                        </div>
-                                    </lightning:layoutItem>
-                                    <lightning:layoutItem padding="around-small">
-                                        <lightning:button aura:id="submit" label="Reuse" onclick="{!c.submitAccount}" disabled="true"/>
-                                    </lightning:layoutItem>
-                                </lightning:layout>
-                            </aura:if>
+                        
+                                            <aura:if isTrue="{!v.searchAccountNoDupForExistingContact}">	
+                        <lightning:layout>
+                            <lightning:layoutItem padding="around-small" size="3">
+                                <div aura:id="inputs" class="slds-p-left_medium">
+                                    <lightning:input aura:id="accountInput" placeholder="Key in the Account Id" variant="label-hidden" onchange="{!c.changeAccountInput}"/>
+                                    <p style="color:red">{!v.ErrorMessage}</p>
+                                </div>
+                            </lightning:layoutItem>
+                            <lightning:layoutItem padding="around-small">
+                                <lightning:button aura:id="submit" label="Reuse" onclick="{!c.submitAccount}" disabled="true"/>
+                            </lightning:layoutItem>
+                        </lightning:layout>
                         </aura:if>
                         
                     </aura:set>
                 </aura:if>
             </aura:if> 
-            </aura:if>
         </lightning:card>
     </aura:if>
     

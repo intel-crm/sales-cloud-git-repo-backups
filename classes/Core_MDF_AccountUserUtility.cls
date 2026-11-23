@@ -7,7 +7,7 @@
  * ---------------------------------------------------------------------------------------------------------------------------------------
  * Accenture - Krishna  12/11/2019      Account User Utility
  *****************************************************************************************************************************************/
-public without sharing class Core_MDF_AccountUserUtility {
+public class Core_MDF_AccountUserUtility {
     /*****************************************************************************************************
      Method Name:        createObjectShareRecords
      @return  :          void
@@ -23,36 +23,42 @@ public without sharing class Core_MDF_AccountUserUtility {
  
                     Id batchInstanceId = Database.executeBatch(new Core_MDF_CreateBatchShareRecords('PartnerFundAllocation', accountIdUserIdListMapCreateBatch, Createquery, newPNUMappingMap), 25);
             
+                    system.debug('PartnerFundAllocation - batchInstanceId::'+batchInstanceId);
                 }
                 when 'PartnerFundRequestShare' {
                     String Createquery = 'SELECT Id, ChannelPartnerId FROM PartnerFundRequest WHERE ChannelPartnerId IN ';
 
                     Id batchInstanceId = Database.executeBatch(new Core_MDF_CreateBatchShareRecords('PartnerFundRequest', accountIdUserIdListMapCreateBatch, Createquery, newPNUMappingMap), 25);
             
+                    system.debug('PartnerFundRequest - batchInstanceId::'+batchInstanceId);
                 }
                 when 'Core_MDF_Bank__Share' {
                     String Createquery = 'SELECT Core_MDF_Bank__c,Core_MDF_Account__c, Id FROM Core_MDF_Account_Bank_Mapping__c WHERE Core_MDF_Account__c IN ';
 
                     Id batchInstanceId = Database.executeBatch(new Core_MDF_CreateBatchShareRecords('Core_MDF_Account_Bank_Mapping__c', accountIdUserIdListMapCreateBatch, Createquery, newPNUMappingMap), 25);
             
+                    system.debug('Core_MDF_Account_Bank_Mapping__c - batchInstanceId::'+batchInstanceId);
                 }
                 when 'PartnerFundClaimShare' {
                     String Createquery = 'SELECT Id, ChannelPartnerId, Core_MDF_Payment_Id__c FROM PartnerFundClaim WHERE ChannelPartnerId IN ';
 
                     Id batchInstanceId = Database.executeBatch(new Core_MDF_CreateBatchShareRecords('PartnerFundClaim', accountIdUserIdListMapCreateBatch, Createquery, newPNUMappingMap), 25);
             
+                    system.debug('PartnerFundClaim - batchInstanceId::'+batchInstanceId);
                 }
                 when 'CaseShare' {
                     String Createquery = 'SELECT Id,AccountId FROM Case WHERE AccountId IN ';
 
                     Id batchInstanceId = Database.executeBatch(new Core_MDF_CreateBatchShareRecords('Case', accountIdUserIdListMapCreateBatch, Createquery, newPNUMappingMap), 25);
             
+                    system.debug('Case - batchInstanceId::'+batchInstanceId);
                 }
                 when 'Core_MDF_Adjustment_Request__Share' {
                     String Createquery = 'SELECT Id, Core_MDF_Adjustment_Claim_Nbr__r.ChannelPartnerId FROM Core_MDF_Adjustment_Request__c WHERE Core_MDF_Adjustment_Claim_Nbr__r.ChannelPartnerId IN ';
 
                     Id batchInstanceId = Database.executeBatch(new Core_MDF_CreateBatchShareRecords('Core_MDF_Adjustment_Request__c', accountIdUserIdListMapCreateBatch, Createquery, newPNUMappingMap), 25);
             
+                    system.debug('Core_MDF_Adjustment_Request__c - batchInstanceId::'+batchInstanceId);
                 }
                 when 'Core_MDF_Escalation__Share'{
                     String query = 'SELECT Id, Core_MDF_Escalation_Type_nm__c, Core_MDF_Channel_Program_id__r.Core_MDF_Technical_Program_Name__c,'
@@ -64,16 +70,16 @@ public without sharing class Core_MDF_AccountUserUtility {
                     
                     Id batchInstanceId = Database.executeBatch(new Core_MDF_CreateBatchShareRecords('Core_MDF_Escalation__c', accountIdUserIdListMapCreateBatch, query, newPNUMappingMap), 50);
                     
+                    system.debug('Core_MDF_Escalation__Share - batchInstanceId::'+batchInstanceId);
                 }
                 when 'CampaignShare'{
-                    /*String query = 'SELECT Id, Core_MDF_Program__c, Core_MDF_Account__c, Core_MDF_Account__r.Core_MDF_Parent_Fund_Account__c,'
+                    String query = 'SELECT Id, Core_MDF_Program__c, Core_MDF_Account__c, Core_MDF_Account__r.Core_MDF_Parent_Fund_Account__c,'
                         +' Core_MDF_Account__r.Core_MDF_Parent_Fund_Account__r.Core_MDF_Parent_Fund_Account__c, Core_MDF_Account__r.Core_MDF_CoMarketing_Ultimate_Account__c '
-                        +' FROM Campaign WHERE (Core_MDF_Program__c = '+ '\'' +Label.Core_MDF_Retail_Channel_Program_Name+ '\' '
-                        +' OR Core_MDF_Program__c = '+ '\'' +Label.Core_MDF_IPA_Program_Name+ '\' )'
+                        +' FROM Campaign WHERE Core_MDF_Program__c = '+ '\'' +Label.Core_MDF_Retail_Channel_Program_Name+ '\' '
                         +' AND (Core_MDF_Account__c IN : setOfAccounts OR Core_MDF_Account__r.Core_MDF_Parent_Fund_Account__c IN : setOfAccounts'
                         +' OR Core_MDF_Account__r.Core_MDF_Parent_Fund_Account__r.Core_MDF_Parent_Fund_Account__c IN ';
                     
-                    Id batchInstanceId = Database.executeBatch(new Core_MDF_CreateBatchShareRecords('Campaign', accountIdUserIdListMapCreateBatch, query, newPNUMappingMap), Integer.valueOf(Label.Core_MDF_PNUMBatchSizeForCampaign));*///Commented as part of WW14 unused code
+                    Id batchInstanceId = Database.executeBatch(new Core_MDF_CreateBatchShareRecords('Campaign', accountIdUserIdListMapCreateBatch, query, newPNUMappingMap), Integer.valueOf(Label.Core_MDF_PNUMBatchSizeForCampaign));
                 }
                 when else {}
             }       

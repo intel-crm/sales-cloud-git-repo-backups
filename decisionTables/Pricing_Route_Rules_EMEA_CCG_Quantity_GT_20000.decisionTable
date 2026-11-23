@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <DecisionTable xmlns="http://soap.sforce.com/2006/04/metadata">
     <collectOperator>None</collectOperator>
-    <conditionCriteria>1 AND 2</conditionCriteria>
+    <conditionCriteria>1 AND ( 2 OR 3)</conditionCriteria>
     <conditionType>Custom</conditionType>
     <dataSourceType>SingleSobject</dataSourceType>
     <decisionTableParameters>
@@ -50,6 +50,16 @@
     </decisionTableParameters>
     <decisionTableParameters>
         <dataType>String</dataType>
+        <fieldName>Pricing_Market_Segment_Nm__c</fieldName>
+        <fieldPath>Pricing_Market_Segment_Nm__c</fieldPath>
+        <isGroupByField>false</isGroupByField>
+        <isRequired>true</isRequired>
+        <operator>NotEquals</operator>
+        <sequence>3</sequence>
+        <usage>INPUT</usage>
+    </decisionTableParameters>
+    <decisionTableParameters>
+        <dataType>String</dataType>
         <fieldName>Pricing_RPM_Group_Name_Txt__c</fieldName>
         <fieldPath>Pricing_RPM_Group_Name_Txt__c</fieldPath>
         <isGroupByField>false</isGroupByField>
@@ -65,22 +75,28 @@
         <usage>OUTPUT</usage>
     </decisionTableParameters>
     <decisionTableSourceCriterias>
-        <operator>GreaterThan</operator>
+        <operator>Equals</operator>
         <sequenceNumber>1</sequenceNumber>
+        <sourceFieldName>Pricing_Region_Nm__c</sourceFieldName>
+        <value>EMEA</value>
+        <valueType>Literal</valueType>
+    </decisionTableSourceCriterias>
+    <decisionTableSourceCriterias>
+        <operator>IsNotNull</operator>
+        <sequenceNumber>2</sequenceNumber>
+        <sourceFieldName>Pricing_End_Customer_Country_Nm__c</sourceFieldName>
+        <valueType>Literal</valueType>
+    </decisionTableSourceCriterias>
+    <decisionTableSourceCriterias>
+        <operator>GreaterThan</operator>
+        <sequenceNumber>3</sequenceNumber>
         <sourceFieldName>Pricing_Overall_Quote_Quantity_Nbr__c</sourceFieldName>
         <value>10000</value>
         <valueType>Literal</valueType>
     </decisionTableSourceCriterias>
     <decisionTableSourceCriterias>
         <operator>Equals</operator>
-        <sequenceNumber>2</sequenceNumber>
-        <sourceFieldName>Pricing_Region_Nm__c</sourceFieldName>
-        <value>EMEA</value>
-        <valueType>Literal</valueType>
-    </decisionTableSourceCriterias>
-    <decisionTableSourceCriterias>
-        <operator>Equals</operator>
-        <sequenceNumber>3</sequenceNumber>
+        <sequenceNumber>4</sequenceNumber>
         <sourceFieldName>Pricing_Program_Type_Nm__c</sourceFieldName>
         <value>Client</value>
         <valueType>Literal</valueType>
@@ -90,12 +106,6 @@
         <sequenceNumber>5</sequenceNumber>
         <sourceFieldName>Pricing_Is_Routing_Rule_Active_Ind__c</sourceFieldName>
         <value>true</value>
-        <valueType>Literal</valueType>
-    </decisionTableSourceCriterias>
-    <decisionTableSourceCriterias>
-        <operator>IsNotNull</operator>
-        <sequenceNumber>4</sequenceNumber>
-        <sourceFieldName>Pricing_End_Customer_Country_Nm__c</sourceFieldName>
         <valueType>Literal</valueType>
     </decisionTableSourceCriterias>
     <doesConsiderNullValue>false</doesConsiderNullValue>

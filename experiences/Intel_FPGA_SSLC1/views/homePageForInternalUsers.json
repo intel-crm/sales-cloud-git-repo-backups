@@ -2,38 +2,48 @@
   "appPageId" : "6b36c665-0609-49d0-9746-033feed642b2",
   "componentName" : "siteforce:sldsTwoCol66Layout",
   "dataProviders" : [ ],
-  "id" : "d57903f6-9ff2-4b85-bf23-e890b76e4051",
+  "id" : "bcc79ff7-378b-4fce-9695-bc9af3bbd658",
   "label" : "Home page for Internal Users",
   "regions" : [ {
-    "id" : "600bc5b0-53ed-42d8-b0f6-f3d2a49c853e",
+    "components" : [ {
+      "componentAttributes" : {
+        "richTextValue" : "<p><b style=\"color: red; font-size: 14px;\">License Generators are currently undergoing an outage, please refrain from generating license during downtime.</b></p><p><br></p><p><b style=\"color: red; font-size: 14px;\">Start: Friday, May 6th 2022&nbsp;6:00 PM PT </b></p><p><b style=\"color: red; font-size: 14px;\">End: Saturday, May 7th 2022&nbsp;6:00 PM PT</b></p>"
+      },
+      "componentName" : "forceCommunity:richTextInline",
+      "id" : "ebac6f20-3b16-4aaa-93b5-fb029e0db56a",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "db5b4976-ea57-44f0-bd03-9c199fc5f3ce",
     "regionName" : "header",
     "type" : "region"
   }, {
     "components" : [ {
       "componentAttributes" : { },
       "componentName" : "c:sales_SSLCHomePageHeading",
-      "id" : "44b746af-2a0e-4bac-b193-baa2826d68a5",
+      "id" : "105429d1-e82c-4755-8514-53c1b4b54b08",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "462f7a16-972d-4320-8e50-10a96e6f7171",
+    "id" : "e465dad1-4dde-4c6e-9224-09e0c5bb85ad",
     "regionName" : "content",
     "type" : "region"
   }, {
     "components" : [ {
       "componentAttributes" : { },
       "componentName" : "c:sales_SSLCHomePageGIF",
-      "id" : "869192c7-96e5-422b-a91e-00e892a94cde",
+      "id" : "c4a7f7a4-1fe8-4d60-a972-af5bbc74668d",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "6a4d698c-2bea-4b2c-8ed2-301e7642f77c",
+    "id" : "214f9c0f-6753-4032-94a1-585bbbc42497",
     "regionName" : "sidebar",
     "type" : "region"
   }, {
-    "id" : "26c0d7ab-0e0a-4247-a33a-3b4078933a08",
+    "id" : "e5bfe6d2-36bc-407b-bdf5-b3a633fdb0d5",
     "regionName" : "footer",
     "type" : "region"
   }, {
@@ -44,14 +54,15 @@
         "title" : "Home"
       },
       "componentName" : "forceCommunity:seoAssistant",
-      "id" : "b935e997-bec2-49fb-a482-26c25934eee1",
+      "id" : "1ba98513-2499-4968-99c0-99b32b90552c",
       "renditionMap" : {
-        "zh_cn" : "c117814d-0a57-42b9-8089-ef9c04c1656e"
+        "zh_cn" : "4c413745-2170-4c42-a9ea-a506babdbd03"
       },
       "renditions" : [ {
-        "id" : "c117814d-0a57-42b9-8089-ef9c04c1656e",
+        "id" : "4c413745-2170-4c42-a9ea-a506babdbd03",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "市场推广基金",
             "description" : "市场推广基金",
             "title" : "Home"
           }
@@ -60,7 +71,7 @@
       } ],
       "type" : "component"
     } ],
-    "id" : "3f32eff7-9c07-4917-94fd-184201f19903",
+    "id" : "82b772b9-8b3f-4d7a-88eb-e26f593c21cc",
     "regionName" : "sfdcHiddenRegion",
     "type" : "region"
   } ],

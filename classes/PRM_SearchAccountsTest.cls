@@ -15,11 +15,10 @@ public class PRM_SearchAccountsTest {
 
     @isTest
     public static void testAccountSortBasedOnScore(){
-        id accRecordTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Intel_Account).getRecordTypeId();
         List<PRM_SearchAccounts> listOfAccount = new List<PRM_SearchAccounts>();
         Account acc = new Account();
         acc.name='Test';
-        acc.RecordTypeId = accRecordTypeId;
+        acc.RecordTypeId = '012o0000000GlzTAAS';
         acc.Core_CIM_ID__c = '22213672';
         acc.BillingCountry='USA';
         acc.BillingStreet='700 Chestnut Ridge Rd New';
@@ -34,7 +33,7 @@ public class PRM_SearchAccountsTest {
         
         Account acc1 = new Account();
         acc1.name='Test123';
-        acc1.RecordTypeId = accRecordTypeId;
+        acc1.RecordTypeId = '012o0000000GlzTAAS';
         acc1.Core_CIM_ID__c = '22213672';
         acc1.BillingCountry='USA';
         acc1.BillingStreet='700 Chestnut Ridge Rd New';
@@ -49,7 +48,7 @@ public class PRM_SearchAccountsTest {
         
         Account acc2 = new Account();
         acc2.name='Test456';
-        acc2.RecordTypeId = accRecordTypeId;
+        acc2.RecordTypeId = '012o0000000GlzTAAS';
         acc2.Core_CIM_ID__c = '22213672';
         acc2.BillingCountry='USA';
         acc2.BillingStreet='700 Chestnut Ridge Rd New';

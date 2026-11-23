@@ -16,16 +16,22 @@
         <field>Opportunity.Core_Technical_Owner__c</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Commissionable__c</field>
+        <field>Opportunity.Core_vPro__c</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Athena_Candidate__c</field>
-    </columns>
-    <columns>
-        <field>STAGE_NAME</field>
+        <field>Opportunity.Core_Thunderbolt__c</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Wireless_LAN__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Wireless_WAN__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_WiFi__c</field>
+    </columns>
+    <columns>
+        <field>STAGE_NAME</field>
     </columns>
     <columns>
         <field>AMOUNT</field>
@@ -137,11 +143,9 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>CLOSE_DATE</sortColumn>
-    <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2021-03-31</endDate>
+        <endDate>2020-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
         <startDate>2019-07-31</startDate>
     </timeFrameFilter>

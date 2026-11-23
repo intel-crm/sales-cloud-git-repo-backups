@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>河南月轩网吧连锁有限公司商丘梁园区二店 Partner Manager</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>河南月轩网吧连锁有限公司商丘梁园区二店 Partner Manager</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>PartnerExecutive972</parentRole>
+</Role>

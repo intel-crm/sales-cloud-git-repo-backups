@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>63.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <description>Update the Sales Visible User Edit flag</description>
+        <name>Assign_Sales_Visible_User_Edit_flag</name>
+        <label>Assign Sales Visible User Edit flag</label>
+        <locationX>176</locationX>
+        <locationY>287</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Core_Sales_Visible_Flag_User_Edit__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <description>Allow PSG Marketing Super User to edit Sales Visible flag under Product Object
+Migrated from the: PSG Edit Access on Product_Sales Visible Flag workflow rule
+Workflow rule description: Allow PSG Marketing Super User to edit Sales Visible flag under Product Object&quot;</description>
+    <environments>Default</environments>
+    <interviewLabel>PSG Edit Access on Product_Sales Visible Flag {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>PSG Edit Access on Product_Sales Visible Flag</label>
+    <migratedFromWorkflowRuleName>PSG Edit Access on Product_Sales Visible Flag</migratedFromWorkflowRuleName>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Assign_Sales_Visible_User_Edit_flag</targetReference>
+        </connector>
+        <filterFormula>AND( {!$Profile.Name} &lt;&gt; &apos;Core Integration&apos;,{!$Profile.Name} &lt;&gt; &apos;Integration&apos; , ISCHANGED( {!$Record.Core_Sales_Visible_Flag__c}),  OR(  {!$Record.Core_Item_Class_Nm__c}==&apos;SV&apos;,{!$Record.Core_Item_Class_Nm__c}==&apos;BD&apos;,{!$Record.Core_Item_Class_Nm__c}==&apos;IC&apos;)  )</filterFormula>
+        <object>Product2</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

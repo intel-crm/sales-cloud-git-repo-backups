@@ -8,6 +8,10 @@
         <plural>true</plural>
         <value>Opportunity Supports</value>
     </caseValues>
+    <fieldSets>
+        <label><!-- Opportunity Support Status --></label>
+        <name>Opportunity_Support_Status</name>
+    </fieldSets>
     <fields>
         <help><!-- Summarize the customer&apos;s challenges in two to three sentences. Outline business objectives, pain points, competitive threats, and digital transformation or sustainability goals. --></help>
         <label><!-- Customer’s Business Challenge --></label>
@@ -149,6 +153,10 @@
         <relationshipLabel><!-- Opportunity Supports (Approver 9) --></relationshipLabel>
     </fields>
     <fields>
+        <label><!-- Auto Appoval --></label>
+        <name>Core_Auto_Appoval__c</name>
+    </fields>
+    <fields>
         <help><!-- CoE Request Detail --></help>
         <label><!-- CoE Request Detail --></label>
         <name>Core_CoE_Request_Detail__c</name>
@@ -160,6 +168,10 @@
     <fields>
         <label><!-- End Date --></label>
         <name>Core_End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Login User Id --></label>
+        <name>Core_Login_User_Id__c</name>
     </fields>
     <fields>
         <label><!-- Opportunity Description --></label>
@@ -182,7 +194,7 @@
         <name>Core_Opportunity_Support_Team_Member__c</name>
     </fields>
     <fields>
-        <help><!-- Please provide any primary blockers for this opportunity or concerns for the planned initiative. --></help>
+        <help><!-- Please provide any primary blockers for this opportunity or concerns for the planned initiative --></help>
         <label><!-- Primary Blockers --></label>
         <name>Core_PrimaryBlockers__c</name>
     </fields>
@@ -284,6 +296,10 @@
         <name>Core_background_info_on_architecture__c</name>
     </fields>
     <fields>
+        <label><!-- Is reassigned --></label>
+        <name>Is_reassigned__c</name>
+    </fields>
+    <fields>
         <label><!-- Opportunity --></label>
         <name>Opportunity__c</name>
         <relationshipLabel><!-- Opportunity Supports --></relationshipLabel>
@@ -329,5 +345,13 @@
     <validationRules>
         <errorMessage><!-- Cannot Edit the CSA Support Request once approved --></errorMessage>
         <name>Core_Prevent_Edit_on_ApprovedOpptSupp</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You are not allowed to change Status --></errorMessage>
+        <name>Core_marketing_support_Status_change</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Support of more than 1 team member is not allowed. Please reassign the team member for support --></errorMessage>
+        <name>only_1_team_member_allowed</name>
     </validationRules>
 </CustomObjectTranslation>

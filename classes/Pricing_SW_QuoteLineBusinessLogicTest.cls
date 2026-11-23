@@ -2,6 +2,11 @@
 public class Pricing_SW_QuoteLineBusinessLogicTest {
     @TestSetup
     static void setupTestData() {
+        Account acc = Pricing_SW_UtilityTest.createAccount('Test Account');
+        Opportunity opp = Pricing_SW_UtilityTest.createOpportunity(acc, 'Prospecting', Date.today().addMonths(1));
+        SBQQ__Quote__c quote = Pricing_SW_UtilityTest.createQuote(opp, 'Draft', acc.Id);
+        
+        
         // Create a test product for the test with the name "Intel Trust Authority - Custom"
         Product2 p = new Product2();
         p.Name = Label.Pricing_SW_ProductIntelTrustAuthorityCustom;
@@ -12,35 +17,81 @@ public class Pricing_SW_QuoteLineBusinessLogicTest {
         p.Core_Group_Code_Short_Name__c = 'DCG~DCAI';
         p.IsActive = true;
         insert p;
+        RecordType quoteLineRecordType = [SELECT Id FROM RecordType WHERE SObjectType = 'SBQQ__QuoteLine__c' AND DeveloperName = 'Software_Services_Quote_Line'];
+        SBQQ__QuoteLine__c quoteLine = Pricing_SW_UtilityTest.createQuoteLines(quote);
+        quoteLine.RecordTypeId=quoteLineRecordType.id;
+        update quoteLine;
 
         SBQQ__QuoteTemplate__c quoteTemplate = new SBQQ__QuoteTemplate__c(Name = 'IQR Software Quote Template');
         insert quoteTemplate;
+        
+        PricebookEntry testPBE = new PricebookEntry();
+        testPBE.UnitPrice = 1;
+        testPBE.isActive  = TRUE;
+        testPBE.Pricebook2Id = Test.getStandardPricebookId();
+        testPBE.Product2Id = p.Id;      
+        testPBE.UseStandardPrice = false;
+        insert testPBE;
+        OpportunityLineItem testOppLineItem = new OpportunityLineItem(OpportunityId=opp.Id, PricebookEntryId=testPBE.Id,
+                                                                      Description='Test 11', UnitPrice=11, Quantity=11,
+                                                                      Core_Loss_Cancel_Reason__c='test', Core_Status__c='Pending');
+        insert testOppLineItem;
     }
 
     @IsTest
     static void testBeforeInsertUpdateOperation() {
         // Retrieve the custom product created in test setup
-            Product2 customProduct = [SELECT Id FROM Product2 WHERE Name = :Label.Pricing_SW_ProductIntelTrustAuthorityCustom LIMIT 1];
-
+            List<Product2> customProduct = [SELECT Id FROM Product2 WHERE Name = :Label.Pricing_SW_ProductIntelTrustAuthorityCustom];
+            RecordType quoteLineRecordType = [SELECT Id FROM RecordType WHERE SObjectType = 'SBQQ__QuoteLine__c' AND DeveloperName = 'Software_Services_Quote_Line'];
         // Create a Quote object for the test
-            Account acc = Pricing_SW_UtilityTest.createAccount('Test Account');
-            Opportunity opp = Pricing_SW_UtilityTest.createOpportunity(acc, 'Prospecting', Date.today().addMonths(1));
-            SBQQ__Quote__c quote = Pricing_SW_UtilityTest.createQuote(opp, 'Draft', acc.Id);
-            RecordType quoteLineRecordType = [SELECT Id FROM RecordType WHERE SObjectType = 'SBQQ__QuoteLine__c' AND DeveloperName = 'Software_Services_Quote_Line' LIMIT 1];
-            SBQQ__QuoteLine__c quoteLine = new SBQQ__QuoteLine__c(
-            RecordTypeId = quoteLineRecordType.Id,
-            SBQQ__Quote__c = quote.Id,
-            SBQQ__Product__c = customProduct.Id,
-            
-            SBQQ__ListPrice__c = 0 ,
-            Pricing_Quote_Program_Nm__c='Software & Services'
-        );
-        insert quoteLine;
+            Account acc = [Select id,name from Account where name ='Test Account'];
+            Opportunity opp = [Select id,name from Opportunity where accountid=:acc.id];
+            SBQQ__Quote__c quote = [Select id,ApprovalStatus__c from SBQQ__Quote__c where SBQQ__Account__c=:acc.id];            
+            SBQQ__QuoteLine__c quoteLine = [Select id,SBQQ__ListPrice__c,SBQQ__Quote__c,SBQQ__Product__c,RecordTypeId from SBQQ__QuoteLine__c where SBQQ__Quote__c=:quote.id];
+            quoteLine.SBQQ__Product__c=customProduct[0].id;
+            quoteLine.RecordTypeId=quoteLineRecordType.id;
+            quoteLine.SBQQ__Quantity__c = 1;
+            update quoteLine;
         Test.starttest();
         SBQQ__QuoteLine__c quoteLineclone=quoteLine.clone();
         insert quoteLineclone;
         System.assertEquals(quoteLineclone.SBQQ__ListPrice__c, 0, 'The List Price should be 0');
         Test.stoptest();        
-       
+        
     }
+    
+    @IsTest
+    static void testBeforeInsertUpdateOperationLostoppty() {
+        // Retrieve the custom product created in test setup
+            List<Product2> customProduct = [SELECT Id FROM Product2 WHERE Name = :Label.Pricing_SW_ProductIntelTrustAuthorityCustom];
+            RecordType quoteLineRecordType = [SELECT Id FROM RecordType WHERE SObjectType = 'SBQQ__QuoteLine__c' AND DeveloperName = 'Software_Services_Quote_Line'];
+        // Create a Quote object for the test
+            Account acc = [Select id,name from Account where name ='Test Account'];
+            Opportunity opp = [Select id,name from Opportunity where accountid=:acc.id];
+            SBQQ__Quote__c quote = [Select id,ApprovalStatus__c from SBQQ__Quote__c where SBQQ__Account__c=:acc.id];            
+            SBQQ__QuoteLine__c quoteLine = [Select id,SBQQ__ListPrice__c,SBQQ__Quote__c,SBQQ__Product__c,RecordTypeId from SBQQ__QuoteLine__c where SBQQ__Quote__c=:quote.id];
+            quoteLine.SBQQ__Product__c=customProduct[0].id;
+            quoteLine.RecordTypeId=quoteLineRecordType.id;
+            quoteLine.SBQQ__Quantity__c = 1;
+            update quoteLine;
+            
+        Test.starttest();
+        SBQQ__QuoteLine__c quoteLineclone=quoteLine.clone();
+        insert quoteLineclone;
+        PricebookEntry pbe=[select id from PricebookEntry];
+        List<OpportunityLineItem> testOppLineItem = [Select id,Core_Status__c from OpportunityLineItem where OpportunityId=:opp.id];
+        testOppLineItem[0].Core_Status__c='Lost';
+        Update testOppLineItem;
+        System.assertEquals(quoteLineclone.SBQQ__ListPrice__c, 0, 'The List Price should be 0');
+        Test.stoptest();   
+        Set<Id> opportunityIds = new Set<Id>{opp.id};
+        Pricing_SW_QuoteLineBusinessLogic.getOpportunityLostStatusMap(opportunityIds);
+        Map<Id, Boolean> opportunityLostStatusMap= Pricing_SW_QuoteLineBusinessLogic.getOpportunityLostStatusMap(opportunityIds);
+        Pricing_SW_QuoteLineBusinessLogic.validateQuoteLineRestrictions(quoteLine, null, opportunityLostStatusMap, true);
+        Pricing_SW_QuoteLineBusinessLogic.validateQuoteLineRestrictions(quoteLine, null, opportunityLostStatusMap, false);
+        
+    }
+    
+    
+    
 }

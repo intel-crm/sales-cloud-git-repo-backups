@@ -13,6 +13,14 @@
     "regionName" : "mainFullWidth",
     "type" : "region"
   }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:sales_DasboadDisplay",
+      "id" : "14722ba5-6931-4b58-a85c-1cdcad3ba966",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
     "id" : "c94faab1-b589-45b7-a3f4-eb801578c584",
     "regionName" : "main",
     "type" : "region"
@@ -32,6 +40,7 @@
         "id" : "0b6a782b-58b0-4e3e-90a6-4130159ffbac",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "市场推广基金",
             "description" : "市场推广基金",
             "title" : "helptext"
           }

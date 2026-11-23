@@ -9,6 +9,21 @@
         <value>Solutions</value>
     </caseValues>
     <fields>
+        <label><!-- Approver 1 --></label>
+        <name>Approver_1__c</name>
+        <relationshipLabel><!-- Solutions (Approver 1) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Approver 2 --></label>
+        <name>Approver_2__c</name>
+        <relationshipLabel><!-- Solutions (Approver 2) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Approver 3 --></label>
+        <name>Approver_3__c</name>
+        <relationshipLabel><!-- Solutions (Approver 3) --></relationshipLabel>
+    </fields>
+    <fields>
         <label><!-- Application/Workload --></label>
         <name>Core_Application_Workload__c</name>
         <picklistValues>
@@ -30,6 +45,10 @@
         <picklistValues>
             <masterLabel>ASIL D</masterLabel>
             <translation><!-- ASIL D --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Agentic AI</masterLabel>
+            <translation><!-- Agentic AI --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Analytics &amp; Data Science</masterLabel>
@@ -218,6 +237,10 @@
         <picklistValues>
             <masterLabel>Provisioning and Orchestration</masterLabel>
             <translation><!-- Provisioning and Orchestration --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Robotics Control + AI</masterLabel>
+            <translation><!-- Robotics Control + AI --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Security: Endpoint</masterLabel>
@@ -925,9 +948,17 @@
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- Reviewer Email --></label>
+        <name>Core_Reviewer_Email__c</name>
+    </fields>
+    <fields>
         <label><!-- Solutions --></label>
         <name>Core_Solution_Areas__c</name>
         <relationshipLabel><!-- Solutions --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Solution Combine Fields --></label>
+        <name>Core_Solution_Combine_Fields__c</name>
     </fields>
     <fields>
         <label><!-- Solution Description --></label>
@@ -938,27 +969,15 @@
         <name>Core_Solution_Long__c</name>
     </fields>
     <fields>
-        <label><!-- Solution Outcome --></label>
-        <name>Core_Solution_Outcome__c</name>
+        <label><!-- Sol Owner Email --></label>
+        <name>Core_Solution_OwnerEmail__c</name>
+    </fields>
+    <fields>
+        <label><!-- Solution Partner Type --></label>
+        <name>Core_Solution_Partner_Type__c</name>
         <picklistValues>
-            <masterLabel>Test 1</masterLabel>
-            <translation><!-- Test 1 --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Test 2</masterLabel>
-            <translation><!-- Test 2 --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Test 3</masterLabel>
-            <translation><!-- Test 3 --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Test 4</masterLabel>
-            <translation><!-- Test 4 --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Test 5</masterLabel>
-            <translation><!-- Test 5 --></translation>
+            <masterLabel>Independent Software Vendor (ISV)</masterLabel>
+            <translation><!-- Independent Software Vendor (ISV) --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -1007,6 +1026,18 @@
         <picklistValues>
             <masterLabel>EOL</masterLabel>
             <translation><!-- EOL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending</masterLabel>
+            <translation><!-- Pending --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rejected</masterLabel>
+            <translation><!-- Rejected --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Resubmit</masterLabel>
+            <translation><!-- Resubmit --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -1326,12 +1357,45 @@
         <name>Core_Version__c</name>
     </fields>
     <fields>
+        <label><!-- Opportunity ID --></label>
+        <name>Opportunity_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity --></label>
+        <name>Opportunity__c</name>
+        <relationshipLabel><!-- Solutions --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Product Segment --></label>
+        <name>Product_Segment__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reviewer Email Text --></label>
+        <name>Reviewer_Email_Text__c</name>
+    </fields>
+    <fields>
         <label><!-- Mark for Delete --></label>
         <name>isDeleted__c</name>
     </fields>
+    <recordTypes>
+        <label><!-- Approved Solutions --></label>
+        <name>Core_Approved_Solutions</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Requested Solutions --></label>
+        <name>Core_Requested_Solutions</name>
+    </recordTypes>
     <startsWith>Consonant</startsWith>
     <validationRules>
         <errorMessage><!-- Solution is already EOL’d. Cannot make further changes. --></errorMessage>
         <name>EOL_Solutions_EDIT</name>
     </validationRules>
+    <validationRules>
+        <errorMessage><!-- Quote associated to this Opportunity is Submitted for Review. No Edits allowed on Opportunity during the Review process. --></errorMessage>
+        <name>Solution_QuoteSubmittedStatusLock</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Add_Solution_Area --></label>
+        <name>Add_Solution_Area</name>
+    </webLinks>
 </CustomObjectTranslation>

@@ -55,9 +55,6 @@
         <field>OWNER</field>
     </columns>
     <columns>
-        <field>Case.Core_IPS_Owner_Manager__c</field>
-    </columns>
-    <columns>
         <field>Case.Core_IPS_Assigned_Queue__c</field>
     </columns>
     <columns>
@@ -139,7 +136,7 @@
         <field>CLOSED_DATE</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Obsolete - Customer Survey NPS - PSG NAR</name>
+    <name>Customer Survey NPS - PSG NARAE</name>
     <params>
         <name>units</name>
         <value>d</value>
@@ -157,6 +154,6 @@
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSED_DATEONLY</dateColumn>
-        <interval>INTERVAL_CURY</interval>
+        <interval>INTERVAL_PREVCURY</interval>
     </timeFrameFilter>
 </Report>

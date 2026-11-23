@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>HG Firmographic</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>HG Firmographics</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account --></label>
+        <name>HG_Insights__Account__c</name>
+        <relationshipLabel><!-- HG Firmographics --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- City --></label>
+        <name>HG_Insights__City__c</name>
+    </fields>
+    <fields>
+        <label><!-- Company --></label>
+        <name>HG_Insights__Company__c</name>
+    </fields>
+    <fields>
+        <label><!-- Country (ISO) --></label>
+        <name>HG_Insights__Country_ISO__c</name>
+    </fields>
+    <fields>
+        <label><!-- Country --></label>
+        <name>HG_Insights__Country__c</name>
+    </fields>
+    <fields>
+        <label><!-- Employees Range --></label>
+        <name>HG_Insights__EmployeesRange__c</name>
+    </fields>
+    <fields>
+        <label><!-- HG Force Id --></label>
+        <name>HG_Insights__HGForceId__c</name>
+    </fields>
+    <fields>
+        <label><!-- HGId --></label>
+        <name>HG_Insights__HGId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lead --></label>
+        <name>HG_Insights__Lead__c</name>
+        <relationshipLabel><!-- HG Firmographics --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Revenue Range --></label>
+        <name>HG_Insights__RevenueRange__c</name>
+    </fields>
+    <fields>
+        <label><!-- Headquarters State --></label>
+        <name>HG_Insights__State__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sub-Industry --></label>
+        <name>HG_Insights__SubLevelIndustry__c</name>
+    </fields>
+    <fields>
+        <label><!-- URL --></label>
+        <name>HG_Insights__URL__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

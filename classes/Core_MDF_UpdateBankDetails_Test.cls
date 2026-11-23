@@ -31,9 +31,9 @@ public class Core_MDF_UpdateBankDetails_Test {
         Insert newBank;
 
         Core_Integration_Inbound_Message__c payLoad1 = new Core_Integration_Inbound_Message__c();
-        payLoad1.Core_Payload__c = '[{"SUPPL_HLD_PMT_IND":"N","bnfcy_nm":"TEST BENEFICIARY NAME","intrmd_bank_ind":"N","bnk_nm":"TEST BANK","bnk_nbr":"123456","ap_vndr_nbr":1234567891,"DUNS_NBR":"578299333 ","ctry_cd":"GB ","suppl_nm":"Test","swift_cd":"BOFSGB21124 ", "currency_cd": "USD","suppliercity": "SAO PAULO","supplierregion": "Sao Paulo","supplierpostal": "01327-905", "suppliercountry": "Brazil"}]';
+        payLoad1.Core_Payload__c = '[{"SUPPL_HLD_PMT_IND":"N","bnfcy_nm":"TEST BENEFICIARY NAME","intrmd_bank_ind":"N","bnk_nm":"TEST BANK","bnk_nbr":"123456","ap_vndr_nbr":1234567891,"DUNS_NBR":"578299333 ","ctry_cd":"GB ","suppl_nm":"Test","swift_cd":"BOFSGB21124 ", "currency_cd": "USD"}]';
         payLoad1.Core_Message_Type__c = 'Bank';
-        payLoad1.Core_Source_System__c   = 'ECA';
+        payLoad1.Core_Source_System__c   = 'EDW';
         insert payLoad1;
 
         Core_MDF_Bank__c updatedBank = [SELECT  Name,Core_MDF_Bank_Status__c,Core_MDF_ESD_Hold_Indicator__c,
@@ -60,9 +60,9 @@ public class Core_MDF_UpdateBankDetails_Test {
         update acc;
 
         Core_Integration_Inbound_Message__c payLoad2 = new Core_Integration_Inbound_Message__c();
-        payLoad2.Core_Payload__c = '[{"SUPPL_HLD_PMT_IND":"Y","bnfcy_nm":"TEST BENEFICIARY NAME","intrmd_bank_ind":"N","bnk_nm":"TEST BANK","bnk_nbr":"123456","ap_vndr_nbr":1234567891,"DUNS_NBR":"578299333 ","ctry_cd":"GB ","suppl_nm":"Test","swift_cd":"BOFSGB22124", "currency_cd": "USD","suppliercity": "SAO PAULO","supplierregion": "Sao Paulo","supplierpostal": "01327-905", "suppliercountry": "Brazil"}]';
+        payLoad2.Core_Payload__c = '[{"SUPPL_HLD_PMT_IND":"Y","bnfcy_nm":"TEST BENEFICIARY NAME","intrmd_bank_ind":"N","bnk_nm":"TEST BANK","bnk_nbr":"123456","ap_vndr_nbr":1234567891,"DUNS_NBR":"578299333 ","ctry_cd":"GB ","suppl_nm":"Test","swift_cd":"BOFSGB22124", "currency_cd": "USD"}]';
         payLoad2.Core_Message_Type__c = 'Bank';
-        payLoad2.Core_Source_System__c = 'ECA';
+        payLoad2.Core_Source_System__c = 'EDW';
         insert payLoad2;
     }
 
@@ -79,9 +79,9 @@ public class Core_MDF_UpdateBankDetails_Test {
         Insert newBank;
 
         Core_Integration_Inbound_Message__c payLoad = new Core_Integration_Inbound_Message__c();
-        payLoad.Core_Payload__c = '[{"SUPPL_HLD_PMT_IND":"Y","bnfcy_nm":,"intrmd_bank_ind":"N","bnk_nm":"TEST BANK","bnk_nbr":"123456 ","ap_vndr_nbr":1234567891,"DUNS_NBR":"578299331 ","ctry_cd":"GB ","swift_cd":"BOFSGB21124 ", "currency_cd": "USD","suppliercity": "SAO PAULO","supplierregion": "Sao Paulo","supplierpostal": "01327-905", "suppliercountry": "Brazil"}]';
+        payLoad.Core_Payload__c = '[{"SUPPL_HLD_PMT_IND":"Y","bnfcy_nm":,"intrmd_bank_ind":"N","bnk_nm":"TEST BANK","bnk_nbr":"123456 ","ap_vndr_nbr":1234567891,"DUNS_NBR":"578299331 ","ctry_cd":"GB ","swift_cd":"BOFSGB21124 ", "currency_cd": "USD"}]';
         payLoad.Core_Message_Type__c = 'Bank';
-        payLoad.Core_Source_System__c   = 'ECA';
+        payLoad.Core_Source_System__c   = 'EDW';
         insert payLoad;
 
         Core_MDF_Bank__c updatedBank = [SELECT  Name,Core_MDF_Bank_Status__c,Core_MDF_ESD_Hold_Indicator__c,
@@ -170,7 +170,6 @@ public class Core_MDF_UpdateBankDetails_Test {
 
         Core_Integration_Inbound_Message__c quotePayLoad = new Core_Integration_Inbound_Message__c();
         quotePayLoad.Core_Message_Type__c = 'Quote';
-        quotePayLoad.Core_Source_System__c = 'AGS';
         insert quotePayLoad;
         System.assert(quotePayLoad.Core_Message_Type__c == 'Quote');
     }
@@ -183,7 +182,6 @@ public class Core_MDF_UpdateBankDetails_Test {
             Database.insert(acc1);
             system.assert(acc1.id!=Null);
 
-            acc1.Core_Sales_Groups__c = 'Automotive Sales Group Testjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjhhhhhhhhhhhhhhhhhhhhhhhhhhhhooooooooooooooobbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb';
             acctList.add(acc1);
             Account acc2 = Core_MDF_CCP_TestDataUtility.createIntelAccount ('Test Account 2', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, false);
             Database.insert(acc2);
@@ -193,6 +191,5 @@ public class Core_MDF_UpdateBankDetails_Test {
             Core_MDF_CCP_UtilityClass.logErrorinLogObject(errortext, 'Test');
             system.assert(acc2.id!=Null);
             Core_MDF_UpdateBankDetails.logErrorinLogObjectWithReason(errortext,'parsing exception');
-
       }
 }

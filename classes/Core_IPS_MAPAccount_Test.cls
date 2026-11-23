@@ -37,22 +37,17 @@ public class Core_IPS_MAPAccount_Test{
         System.assert(prodOrg <> null, 'Record not created');
         // inserting Supported Product 
         SuppProductList = TestUtilities.getListOfSupportedProduct(3);
-        SuppProductList.get(0).Core_Supported_Product_Name__c = 'Haswell EP Test';
-        SuppProductList.get(0).Core_Product__c = ProductList.get(0).id;
-        SuppProductList.get(0).Core_Product_Organization__c = prodOrg.id;
-                
+        
         Integer i = 0;
         for(Core_IPS_Supported_Product__c SupportedProductRecord: SuppProductList){                
                 SupportedProductRecord.Core_Product__c = ProductList.get(i).id;
                 SupportedProductRecord.Core_Product_Organization__c = prodOrg.id;
-                SupportedProductRecord.Core_Supported_Product_Name__c = 'Haswell EP '+i;
                  i++;                     
-                //SuppProductList.add(SupportedProductRecord);
+            // SuppProductList.add(SupportedProductRecord);
         }
+        system.debug('test ### '+SuppProductList);
         insert SuppProductList;
         System.assert(SuppProductList <> null, 'Record not created');
-         
-           
     }
         
     /***************************************************************************************************
@@ -188,7 +183,7 @@ public class Core_IPS_MAPAccount_Test{
     * ----------------------------------------------------------------------------                 
     * JRK                        11/04/2015                Created
     ****************************************************************************************************/
-    /* public static TestMethod void accJuncCreateLineItems(){
+     public static TestMethod void accJuncCreateLineItems(){
         // Always make sure the accounts for line item and junc object assignments are not the same
         getRecords();
         
@@ -296,7 +291,7 @@ public class Core_IPS_MAPAccount_Test{
             insert accJuncPARList;
             System.assert(accJuncPARList <> null, 'Record not created');
         Test.stopTest();
-    }*/
+    }
     
     /***************************************************************************************************
     Method Name:  getRecords
@@ -310,7 +305,7 @@ public class Core_IPS_MAPAccount_Test{
     * ----------------------------------------------------------------------------                 
     * JRK                        11/04/2015                Created
     ****************************************************************************************************/
-    /*public static TestMethod void accJuncDeleteLineItems(){
+    public static TestMethod void accJuncDeleteLineItems(){
         getRecords();
         
         // inserting Product Access Header
@@ -377,7 +372,7 @@ public class Core_IPS_MAPAccount_Test{
             delete accJuncPARList;
             System.assert(accJuncPARList <> null, 'Record not deleted');
         Test.stopTest();
-    }*/
+    }
     
     /***************************************************************************************************
     Method Name:  getRecords
@@ -482,6 +477,7 @@ public class Core_IPS_MAPAccount_Test{
             Usr.ProfileID = SalesRepBbProfile.id;
         }
         insert ListOfUsr;
+        System.debug('user test'+ListOfUsr);
         System.Assert(ListOfUsr[0].Id != null, 'Record not created');
         
     // Custom Setting - Ips Lables        
@@ -502,21 +498,14 @@ public class Core_IPS_MAPAccount_Test{
         }
         System.runAs(Listofuser[0]){
         update ListOfAccounts;
-        AccountShare newShare = new AccountShare();
-        newShare.AccountId = ListOfAccounts[0].Id;
-        newShare.UserOrGroupId = Listofuser[0].Id;
-        newShare.CaseAccessLevel = 'Edit'; // or 'Edit'
-        newShare.RowCause = 'Manual';
-        newShare.AccountAccessLevel = 'Edit';
-        newShare.OpportunityAccessLevel = 'Edit';
-        insert newShare;
         }
         System.assertEquals(ListOfAccounts[0].Ownerid, ListOfUsr.get(0).id);
         
-
     // Create accountshare records
-        List<AccountShare> ListOfAccountShare = [select UserOrGroupId,CaseAccessLevel,AccountId from AccountShare where AccountId =:ListOfAccounts AND RowCause = 'Manual'];
+        List<AccountShare> ListOfAccountShare = [select UserOrGroupId,rowcause,CaseAccessLevel,AccountId from AccountShare where AccountId =:ListOfAccounts ];
+        System.debug('set 4'+ListOfAccountShare);
         User ProflName = [select id, profile.name from user where id =: ListOfAccountShare[0].userOrGroupId];
+        system.debug('prfl0'+ProflName);
         for(AccountShare Share : ListOfAccountShare){
             Share.CaseAccessLevel = 'Edit';
         }       
@@ -587,37 +576,11 @@ public class Core_IPS_MAPAccount_Test{
         Map<Id,Set<Id>> faesByAccount = Core_IPS_Helper_Utility.getFAEsByAccount(AccountSet);
             
         Test.startTest();
-            Map<Id,Set<Id>> FAEsbyMAP = new Map<Id,Set<Id>>{ListOfAccounts[0].id => new Set<Id>()};
-            try{
-                Map<Id,Set<Id>> FAEsbyMAP1 = Core_IPS_MAPAccount_Handler.getFAEsbyMAP(AccountsByMap,faesByAccount);
-            }catch(Exception e){
-            
-            }
-            
+            Map<Id,Set<Id>> FAEsbyMAP = Core_IPS_MAPAccount_Handler.getFAEsbyMAP(AccountsByMap,faesByAccount);
             System.assert(!(FAEsbyMAP.isempty()), 'FAEsbyMAP method does not return the records');
         Test.stopTest();
         
         }
     
     }
-    
-    public static TestMethod void accJuncDeleteLineItems(){
-        getRecords();        
-        Core_IPS_MAP_PAR__c mapRec = TestUtilities.getMapPar();
-        mapRec.Core_Product_Organization__c = prodOrg.id;
-        mapRec.RecordTypeId  = schema.sobjecttype.Core_IPS_MAP_PAR__c.getrecordtypeinfosbyname().get('MAP').getRecordTypeId(); //'012210000004IHY';
-        insert mapRec;
-        List<Core_IPS_MAP_Account__c> accJuncList = new List<Core_IPS_MAP_Account__c>();
-        for(Integer i=0;i<2;i++){
-            Core_IPS_MAP_Account__c accJunc = new Core_IPS_MAP_Account__c();
-            accJunc.Core_Account__c=AccountList[i].id;
-            accJunc.Core_MAP_PAR__c=mapRec.id;
-            accJuncList.add(accJunc);
-        }
-        System.assert(accJuncList.size() != 0, 'accJuncList should not be empty');
-
-        insert accJuncList;
-        Core_IPS_MAPAccount_Handler.DeleteLineItems(accJuncList); 
-    }
-    
 }

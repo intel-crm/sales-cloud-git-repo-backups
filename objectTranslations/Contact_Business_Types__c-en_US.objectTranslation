@@ -38,23 +38,31 @@
             <translation><!-- Approved --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Removal - Pending</masterLabel>
-            <translation><!-- Removal - Pending --></translation>
+            <masterLabel>Inactive</masterLabel>
+            <translation><!-- Inactive --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Removed</masterLabel>
-            <translation><!-- Removed --></translation>
+            <masterLabel>Pending</masterLabel>
+            <translation><!-- Pending --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rejected</masterLabel>
+            <translation><!-- Rejected --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rejection - Pending</masterLabel>
+            <translation><!-- Rejection - Pending --></translation>
         </picklistValues>
     </fields>
     <startsWith>Consonant</startsWith>
     <validationRules>
         <errorMessage><!-- CBT cannot be approved due one or more validations errors.
 • Contact&apos;s &apos;English Only First Name&apos; is Blank
-• Contact&apos;s &apos;English Only Last Name&apos; is Blank --></errorMessage>
+• Contact&apos;s &apos;English Only Last Name&apos; is Blank. --></errorMessage>
         <name>CBT_Validations</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- DZP Registration Request for the given email ID is in Open/Pending/Rejected status. --></errorMessage>
+        <errorMessage><!-- Registration record is still Pending --></errorMessage>
         <name>Registration_Record_is_still_Pending</name>
     </validationRules>
 </CustomObjectTranslation>

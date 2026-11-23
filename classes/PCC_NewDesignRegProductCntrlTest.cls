@@ -36,7 +36,7 @@ private class PCC_NewDesignRegProductCntrlTest {
         conRec.Core_eRPM_Language_Code__c = 'ENG';
         conRec.Core_IPA_Partner_Role__c = 'Service Provider';
         conRec.Email = 'testUsercoreMPM1245@intel.com';
-        conRec.MailingCountry='India';
+        conRec.MailingCountry= 'USA';
         insert conRec;
 
         Profile profileRec = [SELECT Id FROM Profile WHERE name = 'Partner'];
@@ -130,7 +130,7 @@ private class PCC_NewDesignRegProductCntrlTest {
         mmAttributes.Level_3_EPM_ID__c = '130103';
         mmAttributes.Level_4_EPM_ID__c = '147261';
         mmAttributes.Level_5_EPM_ID__c = '130211';
-        mmAttributes.MMID__c = '768221';
+        //mmAttributes.MMID__c = '768221';
         mmAttributes.Unique_ID__c = '768221;130211;147261;130103;130101;98836';
         mmAttributes.iPaaS_Load_ID__c = '654890';
         mmAttributes.Name = '89292';

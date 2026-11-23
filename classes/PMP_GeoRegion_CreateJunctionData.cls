@@ -1,244 +1,394 @@
-/******************************************************************************************************************************************************************************************************
-* Class Name  : PMP_GeoRegion_CreateJunctionData
+/****************************************************************************************************************
+* Class Name  :   
+* Version     : 1.0 
 * Created Date: 22nd May,2019
 * Modification Log :
-* Developer                         Version             Date                    Description
-* -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-* Infosys - Sangeetha Ganta          1.0                22/05/2019              Class to create association records for GeoRegions
-* Infosys - Raj Yadav                2.0                11/06/2020              Refactored class for easy maintainance 
-******************************************************************************************************************************************************************************************************/
-public with sharing class PMP_GeoRegion_CreateJunctionData {
-
-    public static String testCheck;
-        public static final String ultimateParentPIMId = 'NPP_GeographicCoverage';//UltimateParentId
-        public static final String specificationType = 'Geography';
-        public static final String staticResourceFileName = 'Geo_Attribute_English';//static resource for GeoRegions
-        public static final String staticResourceTestFileName = 'Geo_Attribute_English_Test';//test static resource for GeoRegions
+* Developer                                      Date                    Description
+* --------------------------------------------------------------------------------------------------------------
+* Manasa                               22/05/2019               Created for Parsing the Specification 
+*                                                                        JSON 
+*****************************************************************************************************************/
+public without sharing class PMP_GeoRegion_CreateJunctionData {
     
-    public static List<Database.UpsertResult> createAssociationRecords(){
+    public static List<Database.UpsertResult> PMP_GeoRegion_CreateJunctionDataMet()
+    {
         
-        String jsonStr;//to store JSON file as string
-        Integer leafLevel;//to store the leaf level of the file which is being processed
-        Map<String, Object> specsByLanguageCode = new Map<String, Object>();//map containing all specs with language code as key (Map<'en_US', [Specifications]>)
-        Set<Id> associatedCategories = new Set<Id>();//set consisting category Ids related to GeoRegions spec
-        Map<String,PMP_Category_Specification_Association__c> uploadableCatSpecAssocByExternalkey = new Map<String,PMP_Category_Specification_Association__c>();//map containing uploadable cat-spec association records
-        Map<String,PMP_Specification_Value_Association__c> uploadableSpecValuesAssocByExternalkey = new Map<String,PMP_Specification_Value_Association__c>();//map containing uploadable spec-specValues association records
-        List<PMP_Category_Specification_Association__c> uploadableCatSpecAssoc = new List<PMP_Category_Specification_Association__c>();//list of cat-specifications assoc to be uploaded
-        List<PMP_Specification_Value_Association__c> uploadableSpecValueAssoc = new List<PMP_Specification_Value_Association__c>();//list of spec-specificationValues assoc to be uploaded
-        Map<String, PMP_Specification__c> existingSpecsByExternalKey = new Map<String,PMP_Specification__c>();//map to store existing specs by it's externalkey
-        Map<String, PMP_Specification_Value__c> existingSpecValuesByExternalKey = new Map<String,PMP_Specification_Value__c>();//map to store existing specValues by it's externalkey
-        List<Database.UpsertResult> upsertResultData = new List<Database.UpsertResult>();//list containing upsert results of cat-spec assoc records
-        PMP_Specification__c ultimateParentRecord = new PMP_Specification__c();//specification instance to store ultimateParentRecord
-        if(Schema.sObjectType.PMP_Specification__c.isAccessible()){//fetching the ultimate parent record for GeoRegions
-            ultimateParentRecord = [SELECT Id,Name,PMP_Partner_Product_Specification_Id__c FROM PMP_Specification__c 
-                                                             WHERE PMP_Partner_Product_Specification_Id__c =: ultimateParentPIMId AND PMP_Active_Ind__c = true LIMIT 1];
-        }
-        /*Added by raj on 02/28, to handle activation and deactivation of association records*/
+        //Variable Declaration
+        final String GeoRegion_Attribute_English = 'Geo_Attribute_English';//static resource name
+        Map<String,Id> catMap = new Map<String,Id>();
+        Map<String,Id> speciPIMMap = new Map<String,Id>();
+        Map<String,Id> speciValMap = new Map<String,Id>();
+        Map<Id,String> catNameMap = new Map<Id,String>();
+        Map<Id,String> catPIMMap = new Map<Id,String>();
+        Set<Id> category_assoc_Geography = new Set<Id>();
+        Map<String,Boolean> SpecValActiveMap = new Map<String,Boolean>();
+        Map<String,Boolean> SpecActiveMap = new Map<String,Boolean>();
+        Map<String,Boolean> CatActiveMap = new Map<String,Boolean>();
+        Map<String,PMP_Category_Specification_Association__c> uploadCatSpecMap = new Map<String,PMP_Category_Specification_Association__c>();
+        Map<String,PMP_Specification_Value_Association__c> uploadSpecSpecVMap = new Map<String,PMP_Specification_Value_Association__c>();
+        Map<String,PMP_Specification_Value_Association__c> uploadSpecSpecVMap1 = new Map<String,PMP_Specification_Value_Association__c>();
+        List<PMP_Category_Specification_Association__c> uploadCatSpecJO = new List<PMP_Category_Specification_Association__c>();
+        List<PMP_Specification_Value_Association__c> uploadSpecSpecValJO = new List<PMP_Specification_Value_Association__c>();
+        
+        Set<String> uploadSpecSpecValKeys = new Set<String>();
+        
+        List<Database.UpsertResult> upsertResultData_SpecJO = new List<Database.UpsertResult>();//final upsert records (success and failure)
+            
+        //To fetch the PIM Spec Id for specification called NPP_GeographicCoverage
+       PMP_Specification__c GeoRegion_Specification = [Select Id,PMP_Partner_Product_Specification_Id__c from PMP_Specification__c where PMP_Partner_Product_Specification_Id__c = :PMP_StaticConstants_MasterData.GeoRegion_PIMId];
+       String GeoRegion_Specification_PIMId;
+  		/*Added by raj on 02/28*/
         Map<String, PMP_Category_Specification_Association__c> existingCatSpecAssocByExternalKey = new Map<String, PMP_Category_Specification_Association__c>();
         Map<String, PMP_Specification_Value_Association__c> existingSpecSpecValueAssocByExternalKey = new Map<String, PMP_Specification_Value_Association__c>();
-        for(PMP_Category_Specification_Association__c catSpecAssoc : [SELECT Id,Name,PMP_Active_Ind__c, PMP_Category_Specification_External_Key__c FROM PMP_Category_Specification_Association__c 
-                                                                      WHERE PMP_Specification_Id__r.PMP_Specification_Type_Nm__c =: specificationType FOR UPDATE]){
+        for(PMP_Category_Specification_Association__c catSpecAssoc : [SELECT Id,Name,PMP_Active_Ind__c, PMP_Category_Specification_External_Key__c FROM PMP_Category_Specification_Association__c WHERE PMP_Specification_Id__r.PMP_Specification_Type_Nm__c = 'Geography']){
             existingCatSpecAssocByExternalKey.put(catSpecAssoc.PMP_Category_Specification_External_Key__c, catSpecAssoc); 
         }
         /*End*/
-        
-        for(PMP_Specification_Value_Association__c specSpecValueAssoc : [SELECT id, PMP_Active_Ind__c, PMP_Category_Spec_Value_External_Key__c FROM PMP_Specification_Value_Association__c 
-                                                                         WHERE PMP_Specification_Value_Id__r.PMP_Spec_Value_Type_Nm__c =: specificationType AND PMP_Active_Ind__c = true]){
+        /*******Commented as we are not loading countries yet*****/
+        /*for(PMP_Specification_Value_Association__c specSpecValueAssoc : [select id, PMP_Active_Ind__c, PMP_Category_Spec_Value_External_Key__c from PMP_Specification_Value_Association__c where PMP_Specification_Value_Id__r.PMP_Spec_Value_Type_Nm__c = 'Geography']){
             existingSpecSpecValueAssocByExternalKey.put(specSpecValueAssoc.PMP_Category_Spec_Value_External_Key__c, specSpecValueAssoc);
-        }
-        if(ultimateParentRecord != null && Schema.sObjectType.PMP_Category_Specification_Association__c.isAccessible()){//if parent record is there fetch the category-spec Association record for GeoRegions, using ultimate parent's record Id 
-            List<PMP_Category_Specification_Association__c> associatedCategoriesRecords = [SELECT Id,Name,PMP_Active_Ind__c,PMP_Category_Id__c FROM PMP_Category_Specification_Association__c 
-                                                                                           WHERE PMP_Specification_Id__c =: ultimateParentRecord.Id AND PMP_Active_Ind__c = true];
-               for(PMP_Category_Specification_Association__c csa : associatedCategoriesRecords ){//iterate over the association records and populate associatedCategories set
-                associatedCategories.add(csa.PMP_Category_Id__c);
+        }*/
+        /*******Commented as we are not loading countries yet*****/
+       System.debug('GeoRegion_Specification ='+GeoRegion_Specification);
+       //If the spec object is not null
+       if(GeoRegion_Specification != null)
+        {
+              GeoRegion_Specification_PIMId = GeoRegion_Specification.PMP_Partner_Product_Specification_Id__c;
+            //Query - Get the list of category specification association object 
+            List<PMP_Category_Specification_Association__c> category_associated = [SELECT PMP_Category_Id__c FROM PMP_Category_Specification_Association__c WHERE PMP_Specification_Id__c = :GeoRegion_Specification.Id AND PMP_Active_Ind__c = true];
+            System.debug('category_associated ='+category_associated);
+            //Iterate on list of category specification association object 
+               for(PMP_Category_Specification_Association__c csa : category_associated )
+            {
+                //Add into the Set category_assoc_Geography with the category ID
+                category_assoc_Geography.add(csa.PMP_Category_Id__c);
+              
             }
-        }
-        //map containing category records by recordId
-        Map<Id,PMP_Category__c> categoriesById= new Map<Id,PMP_Category__c>([SELECT Id,PMP_Active_Ind__c,PMP_Partner_Product_Category_Cd__c,PMP_Partner_Product_Category_Key__c,Name 
-                                                                             FROM PMP_Category__c WHERE Id in :associatedCategories and PMP_Active_Ind__c = true]);
         
-        for(PMP_Specification__c spec : [SELECT Id,Name,PMP_Specification_Name__c,PMP_Active_Ind__c,PMP_Partner_Product_Specification_Id__c,
-                                         PMP_Product_Parent_Specification_Id__c,PMP_Partner_Product_Specification_Key__c 
-                                         FROM PMP_Specification__c WHERE (PMP_Specification_Type_Nm__c =: specificationType 
-                                         OR PMP_Partner_Product_Specification_Id__c =: ultimateParentPIMId) AND PMP_Active_Ind__c = true]){//populate existingSpecsByExternalKey map
-            existingSpecsByExternalKey.put(spec.PMP_Partner_Product_Specification_Key__c,spec);
         }
-        
-        for(PMP_Specification_Value__c specValue : [SELECT Id,Name,PMP_Active_Ind__c,PMP_Product_Specification_Value_Key__c,PMP_Product_Specification_Value_Cd__c 
-                                                    FROM PMP_Specification_Value__c WHERE PMP_Spec_Value_Type_Nm__c =: specificationType AND PMP_Active_Ind__c = true]){//populate existingSpecValuesByExternalKey map
-           existingSpecValuesByExternalKey.put(specValue.PMP_Product_Specification_Value_Key__c,specValue);
+        //Fetch the Category ids into a map for reference 
+        for(PMP_Category__c cat:[Select Id,PMP_Active_Ind__c,PMP_Partner_Product_Category_Cd__c,PMP_Partner_Product_Category_Key__c,Name from PMP_Category__c where id in :category_assoc_Geography])
+        {
+            //Adding category Key and Cat ID in CatMap
+            catMap.put(cat.PMP_Partner_Product_Category_Key__c,cat.Id);
+            //Adding Cat id , Cat name in catNameMap
+            catNameMap.put(cat.Id,cat.Name);
+            //Adding cat id, product cat id in catPIMMap
+            catPIMMap.put(cat.Id,cat.PMP_Partner_Product_Category_Cd__c);
+            //Adding cat id , active indicator in CatActiveMap
+            CatActiveMap.put(cat.Id,cat.PMP_Active_Ind__c);
         }
         
-        //fetch the GeoRegions JSON file stored in Static Resource and processing it as string
-        if(Test.isRunningTest()){
-            StaticResource staticResourceFile = [select id,body from StaticResource Where Name =: staticResourceTestFileName];
-            jsonStr = staticResourceFile.body.toString();
+        //Fetch the Specification ids into a map for reference, where parent / ancestorr ID contains "NPP_GeographicCoverage"
+		//Added by Manasa - US439814
+        for(PMP_Specification__c spec:[Select Name,PMP_Specification_Name__c,PMP_Active_Ind__c,Id,PMP_Partner_Product_Specification_Id__c,PMP_Product_Parent_Specification_Id__c,PMP_Partner_Product_Specification_Key__c from PMP_Specification__c where PMP_Ancestor_Specification_Cd__c like '%NPP_GeographicCoverage%' OR PMP_Partner_Product_Specification_Id__c = :PMP_StaticConstants_MasterData.GeoRegion_PIMId])
+        {
+            //Adding spec key, spec id in speciPIMMap
+            speciPIMMap.put(spec.PMP_Partner_Product_Specification_Key__c,spec.Id);
+            system.debug('speciPIMMap----->'+speciPIMMap);
+            //Adding spec key, active indiactor in SpecActiveMap
+            SpecActiveMap.put(spec.PMP_Partner_Product_Specification_Key__c,spec.PMP_Active_Ind__c);
+            if(spec.PMP_Partner_Product_Specification_Key__c == 'etm-c99a4960c6df4d68bb1b0aaeb73f9a4f'){ 
+              System.debug('78 line'+SpecActiveMap);  
+            }
+            
         }
-        else{
-            StaticResource staticResourceFile = [select id,body from StaticResource Where Name =: staticResourceFileName];
-            jsonStr = staticResourceFile.body.toString(); 
+
+        //Fetch the Spec values into a map for reference
+        for(PMP_Specification_Value__c specv:[Select Id,Name,PMP_Active_Ind__c,PMP_Product_Specification_Value_Key__c,PMP_Product_Specification_Value_Cd__c from PMP_Specification_Value__c])
+        {
+            //Adding  spec value key, spec value id into speciValMap
+           speciValMap.put(specv.PMP_Product_Specification_Value_Key__c,specv.id);
+            //Adding spec value key, active indicator into SpecValActiveMap
+           SpecValActiveMap.put(specv.PMP_Product_Specification_Value_Key__c,specv.PMP_Active_Ind__c);
+            //System.debug('speciValMap'+speciValMap);
+        }       
+        
+        //Parse the JSON stored as a static resource
+        String jsonStr ='';
+        string strBaseKey;
+        
+        //Store the Geo-Regions JSON file in Static Resource and access it as a String
+        if(Test.isRunningTest())
+        {
+            //This static resource file is used for test class
+           StaticResource srObject = [select id,body from StaticResource Where Name = :PMP_StaticConstants_MasterData.Geo_Attribute_English_Test];
+          //Convert the file body into string
+            jsonStr = srObject.body.toString(); 
         }
-        
-        specsByLanguageCode = (Map<String, Object>)JSON.deserializeUntyped(jsonStr);//deserializing string and storing it in a Map<String, Object>
-        leafLevel = PMP_Utility.getLeafNode(specsByLanguageCode);//fetch the leaf level of the current list of specifications.
-        
-        for(String languageCode : specsByLanguageCode.keySet()){
-            List<Object> specNodes = (List<Object>)specsByLanguageCode.get(languageCode);//get the list of specifications associated with the current language code
-            for(Integer specNodesIndex = 0; specNodesIndex < specNodes.size(); specNodesIndex++){//iterate over all specNodes in the list and create spec and specValue records
-                Map<String, Object> specNodeByAttribute = (Map<String, Object>)specNodes[specNodesIndex];//fetch specNodes and use diiferent attributes to create spec and specValue records
-                
-                if(!specNodeByAttribute.isEmpty() && specNodeByAttribute.containsKey(PMP_StaticConstants_MasterData.ChildCategories)){//if spec node is not empty and it has child specs
-                    List<Object> childSpecifications = (List<Object>)specNodeByAttribute.get(PMP_StaticConstants_MasterData.ChildCategories);//get all the child specs
-                    for(Integer specIndex = 0; specIndex < childSpecifications.size(); specIndex++){//iterate over child specs and create spec or specValue records
-                        Map<String, Object> childSpecsByAttribute = (Map<String, Object>)childSpecifications[specIndex];//store child specs in a map
+        else
+        {
+           //This is the static resource file, which we get form Custom metadata object record
+          StaticResource srObject = [select id,body from StaticResource Where Name = :GeoRegion_Attribute_English];
+           //Convert the file body into string
+            jsonStr = srObject.body.toString(); 
+        }
+        //Storing the desearialization of static resource into a MAP
+        Map<String, Object> mapSpec = (Map<String, Object>)JSON.deserializeUntyped(jsonStr);
+        /*Added by Manasa to get the leaf node level for the uploaded file - Start*/
+            Integer leafLevel = PMP_Utility.getLeafNode(mapSpec);
+        /*----------------------------END-----------------------------------------*/
+        for (string theKey:mapSpec.keySet())
+        {
+            //Storing the language key in strBaseKey variable to getting diffrent language based files
+            strBaseKey = theKey;
+            if(mapSpec.size() > 0)        
+            {
+                //get the List of objects associated with language key
+                List<Object> lstSpec = (List<Object>)mapSpec.get(strBaseKey); 
+                //Iterate on the length of the List of objects associated with language key
+                for(integer catIndex=0;catIndex<lstSpec.size();catIndex++)
+                {
+                    //Assigning the List of object based on index to the map specMap
+                    Map<String, Object> specMap = (Map<String, Object>)lstSpec[catIndex];
+                    //Iterate on specMap
+                    if(specMap != null && !specMap.isEmpty())
+                    {
+                        //If the specMap contains key as Child categories, then proceed into the IF
+                        if(specMap.containsKey(PMP_StaticConstants_MasterData.ChildCategories))
+                        {
+                            //Get the list of objects associated with the child categories
+                            List<Object> lstChildCategories = (List<Object>)specMap.get(PMP_StaticConstants_MasterData.ChildCategories);
+                           
+                            //Iterate on lstChildCategories based on the length
+                            for(integer specIndex=0;specIndex<lstChildCategories.size();specIndex++)
+                            {
+                                //Assign the list of object based on Index to the map specOrSpecValMap
+                                Map<String, Object> specOrSpecValMap = (Map<String, Object>)lstChildCategories[specIndex];
+                               
+                                //If the map contains Level and the Level not equal to Level '2'/ 'leaf' node
+                                if(specMap.containsKey(PMP_StaticConstants_MasterData.Level) && specMap.get(PMP_StaticConstants_MasterData.Level) != leafLevel)
+                                {
+                                    
+                                    // If level value is not 'leaf' then create category specification association record
+                                    for(Id categoryId : category_assoc_Geography)
+                                    {
+                                       PMP_Category_Specification_Association__c csa = new PMP_Category_Specification_Association__c();
+                                        //if category id not null
+                                       if(catPIMMap.get(categoryId) != null)
+                                       {
+                                           //Assign spec external key with catid , specraw value
+                                          csa.PMP_Category_Specification_External_Key__c = String.valueOf(catPIMMap.get(categoryId) + PMP_StaticConstants_MasterData.Pipe_Symbol + specOrSpecValMap.get(PMP_StaticConstants_MasterData.SpecRawValue)).toLowerCase(); 
+                                       }
+                                       
+                                        //Assign cat id of category spec association with cat id
+                                       csa.PMP_Category_Id__c = categoryId;
+                                        //Assign cat name of category spec association with cat id, spec display value
+                                       csa.Name = catNameMap.get(categoryId) + PMP_StaticConstants_MasterData.Colon_Symbol + specOrSpecValMap.get(PMP_StaticConstants_MasterData.SpecDisplayValue);
+                 
+                                        //If spec raw value not equals null
+                                        if(specOrSpecValMap.get(PMP_StaticConstants_MasterData.SpecRawValue) != null && speciPIMMap.get(String.valueOf(specOrSpecValMap.get(PMP_StaticConstants_MasterData.SpecRawValue)).deleteWhiteSpace().toLowerCase()) != null)
+                                        {
+                                            System.debug('inside 133 line');
+                                            //Assign spec id with spec raw value
+                                          csa.PMP_Specification_Id__c = speciPIMMap.get(String.valueOf(specOrSpecValMap.get(PMP_StaticConstants_MasterData.SpecRawValue)).deleteWhiteSpace().toLowerCase());  
+                                           //if the category spec assosicated is active or is "YES"
+                                           
+                                            if(Boolean.valueOf(CatActiveMap.get(categoryId)) == true && Boolean.valueOf(SpecActiveMap.get(String.valueOf(specOrSpecValMap.get(PMP_StaticConstants_MasterData.SpecRawValue)).deleteWhiteSpace().toLowerCase())) == true){
+                                               //assign active indicator as TRUE
+                                                csa.PMP_Active_Ind__c = true;
+                                            }
+                                            else
+                                            {
+                                                //assign active indicator as FALSE
+                                                csa.PMP_Active_Ind__c = false; 
+                                            }
+                                        }                                  
+                                        //if spec external key, spec id, cat id not equals null
+                                        if(!uploadCatSpecMap.containsKey(csa.PMP_Category_Specification_External_Key__c) && csa.PMP_Category_Specification_External_Key__c != null && csa.PMP_Category_Id__c!= null && csa.PMP_Specification_Id__c != null)
+                                        {
+                                            uploadCatSpecMap.put(csa.PMP_Category_Specification_External_Key__c,csa);
+                                        }
+                                    }                                           
+                                    
+                                }
+                                /********************************Commented as we are not loading countries yet**********************START******************************/
+                                //If the map contains Level and the Level equal to Level '2'/ 'leaf' node
+                              /*else
+                                {
+                                    
+                                    if(specMap.containsKey(PMP_StaticConstants_MasterData.Level) && specMap.get(PMP_StaticConstants_MasterData.Level) == leafLevel)
+                                    {
+                                        // If level value is 'leaf' then create Spec and specification value association record
+                                       for(Id categoryId : category_assoc_Geography)
+                                        {
+                                            //Create new spec value association
+                                           PMP_Specification_Value_Association__c ssa = new PMP_Specification_Value_Association__c();
+                                           
+                                            //ParentIdentifier not quals null
+                                            if(speciPIMMap.get(String.valueOf(specMap.get(PMP_StaticConstants_MasterData.ParentIdentifier)).deleteWhiteSpace().toLowerCase()) != null)
+                                            {
+                                                //assign spec id with ParentIdentifier
+                                              ssa.PMP_Specification_Id__c = speciPIMMap.get(String.valueOf(specMap.get(PMP_StaticConstants_MasterData.ParentIdentifier)).deleteWhiteSpace().toLowerCase()); 
+                                               
+                                            }
+                                           //Assign pec value association cat id with cat id
+                                           ssa.PMP_Category_Id__c = categoryId;
+                                           //If spec raw value not equal null
+                                           if(specOrSpecValMap.get(PMP_StaticConstants_MasterData.SpecRawValue) != null && speciValMap.get(String.valueOf(specOrSpecValMap.get(PMP_StaticConstants_MasterData.SpecRawValue)).deleteWhiteSpace().toLowerCase()) != null)
+                                           {
+                                               //Assign spec value id with spec raw value
+                                              ssa.PMP_Specification_Value_Id__c = speciValMap.get(String.valueOf(specOrSpecValMap.get(PMP_StaticConstants_MasterData.SpecRawValue)).deleteWhiteSpace().toLowerCase());
+              
+                                           }
+                                            //If cat id not equal null
+                                            if(catPIMMap.get(categoryId) != null)
+                                           {
+                                               //assign spec value external key with cat id, parentidentifier, raw value
+                                               ssa.PMP_Category_Spec_Value_External_Key__c = String.valueOf(catPIMMap.get(categoryId) + PMP_StaticConstants_MasterData.Pipe_Symbol + specOrSpecValMap.get(PMP_StaticConstants_MasterData.ParentIdentifier) + '|' + specOrSpecValMap.get(PMP_StaticConstants_MasterData.SpecRawValue)).toLowerCase(); 
+                                           }
+                                            //declare name string and assign with spec display value
+                                           String Name = String.valueOf(specOrSpecValMap.get(PMP_StaticConstants_MasterData.SpecDisplayValue));
+                                            //If name string is not null, length greater than "80"
+                                            if(Name != null && Name.length()>80)
+                                            {
+                                               Name =  Name.substring(0,80);
+                                                //Assign spec spec value association with substring name 
+                                               ssa.Name = Name;
+                                            }
+                                            //If name string is null, length less than "80"
+                                            else
+                                            {
+                                                //Assign spec spec value association with spec display value
+                                               ssa.Name = String.valueOf(specOrSpecValMap.get(PMP_StaticConstants_MasterData.SpecDisplayValue)); 
+                                            }
+                                             //If parentIdentifier , spec value not null
+                                            if(Boolean.valueOf(catActiveMap.get(categoryId)) == true && SpecActiveMap.get(String.valueOf(specMap.get(PMP_StaticConstants_MasterData.ParentIdentifier)).deleteWhiteSpace().toLowerCase()) != null && specOrSpecValMap.get(PMP_StaticConstants_MasterData.SpecRawValue) != null && SpecValActiveMap.get(String.valueOf(specOrSpecValMap.get(PMP_StaticConstants_MasterData.SpecRawValue)).deleteWhiteSpace().toLowerCase()) != null && Boolean.valueOf(SpecActiveMap.get(String.valueOf(specMap.get(PMP_StaticConstants_MasterData.ParentIdentifier)).deleteWhiteSpace().toLowerCase())) == true && Boolean.valueOf(SpecValActiveMap.get(String.valueOf(specOrSpecValMap.get(PMP_StaticConstants_MasterData.SpecRawValue)).deleteWhiteSpace().toLowerCase())) == true)
+                                            {
+                                                //Assign active indicator TRUE
+                                                ssa.PMP_Active_Ind__c = true;
+                                            }
+                                           //If parentIdentifier , spec value null
+                                            else
+                                            {
+                                                //Assign active indicator FALSE
+                                                ssa.PMP_Active_Ind__c = false;
+                                            }
+                                            
+                                            //If spec value external key , spec id , spec value id not null
+                                            if(!uploadSpecSpecVMap.containsKey(ssa.PMP_Category_Spec_Value_External_Key__c) && ssa.PMP_Category_Spec_Value_External_Key__c!= null && ssa.PMP_Specification_Id__c!= null && ssa.PMP_Specification_Value_Id__c != null)
+                                            {
+                                                
+                                                //Put spec ecternal key, spec spec value association object into a MAP
+                                                  uploadSpecSpecVMap.put(ssa.PMP_Category_Spec_Value_External_Key__c,ssa);   
+                                                   
+                                            }
+                                        }
+                                    } 
+                                                                            
+                                }*/  
+                                /********************************Commented as we are not loading countries yet**********************END******************************/
+                            }   
+                                
+                                
+                        }                           
                         
-                        if(Test.isRunningTest() && testCheck =='Test'){
-                            specNodeByAttribute.put(PMP_StaticConstants_MasterData.Level,leafLevel);
-                        }
-                        //if childspecAttribute map has level attribute and level is not equals to leaf level then create category-spec association records 
-                        if( specNodeByAttribute.containsKey(PMP_StaticConstants_MasterData.Level) && specNodeByAttribute.get(PMP_StaticConstants_MasterData.Level) != leafLevel){
-                            for(Id categoryId : associatedCategories){
-                                PMP_Category_Specification_Association__c categorySpecAssoc = new PMP_Category_Specification_Association__c();
-                                PMP_Category__c categoryRecord = categoriesById.get(categoryId);//get the category record
-                                categorySpecAssoc.PMP_Category_Id__c = categoryId;//associate the related category record Id
-                                if(childSpecsByAttribute.containsKey(PMP_StaticConstants_MasterData.SpecDisplayValue) && childSpecsByAttribute.get(PMP_StaticConstants_MasterData.SpecDisplayValue) != null){
-                                    String catSpecAssocName = categoryRecord.Name + 
-                                                              PMP_StaticConstants_MasterData.Colon_Symbol +
-                                                              childSpecsByAttribute.get(PMP_StaticConstants_MasterData.SpecDisplayValue);
-                                    //populate assoc record's name as realated categoryName:specificationName
-                                    categorySpecAssoc.Name = catSpecAssocName.length() > 80 ? catSpecAssocName.substring(0, 80) : catSpecAssocName;
-                                }
-                                //associate specification from existing specification records 
-                                if(childSpecsByAttribute.get(PMP_StaticConstants_MasterData.SpecRawValue) != null){
-                                    //fetch the specification record
-                                    PMP_Specification__c specificationRecord = existingSpecsByExternalKey.get(String.valueOf(childSpecsByAttribute.get(PMP_StaticConstants_MasterData.SpecRawValue)).deleteWhiteSpace().toLowerCase());
-                                    //populate assoc rescords external key as PIMCategoryId|specificationExternalkey
-                                    categorySpecAssoc.PMP_Category_Specification_External_Key__c = categoryRecord != null ?
-                                                                                                    String.valueOf(categoryRecord.PMP_Partner_Product_Category_Cd__c + 
-                                                                                                    PMP_StaticConstants_MasterData.Pipe_Symbol + 
-                                                                                                    childSpecsByAttribute.get(PMP_StaticConstants_MasterData.SpecRawValue)).deleteWhiteSpace().toLowerCase(): null;
-                                    categorySpecAssoc.PMP_Specification_Id__c = specificationRecord != null ? specificationRecord.Id : null;
-                                    //if both category and specification record is active, make association record active
-                                    if(categoryRecord != null && categoryRecord.PMP_Active_Ind__c && specificationRecord != null && specificationRecord.PMP_Active_Ind__c){
-                                        categorySpecAssoc.PMP_Active_Ind__c = true;
-                                    }
-                                    else{
-                                        categorySpecAssoc.PMP_Active_Ind__c = false;
-                                    }
-                                }
-                                //if the association record is proper, push it into uploadableMap
-                                if(!uploadableCatSpecAssocByExternalkey.containsKey(categorySpecAssoc.PMP_Category_Specification_External_Key__c) && 
-                                   categorySpecAssoc.PMP_Category_Specification_External_Key__c != null && categorySpecAssoc.PMP_Category_Id__c != null &&
-                                   categorySpecAssoc.PMP_Specification_Id__c != null){
-                                    uploadableCatSpecAssocByExternalkey.put(categorySpecAssoc.PMP_Category_Specification_External_Key__c, categorySpecAssoc);
-                                }
-                            }
-                        }
-                        
-                        else{
-                            PMP_Specification_Value__c specificationValueRecord;
-                            PMP_Specification__c specificationRecord ;
-                            for(Id categoryId : associatedCategories){//iterate over all the associated categories
-                                PMP_Category__c categoryRecord = categoriesById.get(categoryId);//get the category record
-                                PMP_Specification_Value_Association__c specSpecValueAssoc = new PMP_Specification_Value_Association__c();
-                                specSpecValueAssoc.PMP_Category_Id__c = categoryId;
-                                if(childSpecsByAttribute.containsKey(PMP_StaticConstants_MasterData.SpecRawValue) && childSpecsByAttribute.get(PMP_StaticConstants_MasterData.SpecRawValue) != null){
-                                    specificationValueRecord = existingSpecValuesByExternalKey.get(String.valueOf(childSpecsByAttribute.get(PMP_StaticConstants_MasterData.SpecRawValue)).deleteWhiteSpace().toLowerCase());
-                                    specificationRecord = existingSpecsByExternalKey.get(String.valueOf(specNodeByAttribute.get(PMP_StaticConstants_MasterData.ParentIdentifier)).deleteWhiteSpace().toLowerCase());
-                                    specSpecValueAssoc.PMP_Specification_Value_Id__c = specificationValueRecord != null ? specificationValueRecord.Id : null;
-                                    specSpecValueAssoc.PMP_Specification_Id__c = specificationRecord != null ? specificationRecord.Id : null;
-                                    if(categoryRecord != null){//if category record is available
-                                        specSpecValueAssoc.PMP_Category_Spec_Value_External_Key__c = String.valueOf(categoryRecord.PMP_Partner_Product_Category_Cd__c + PMP_StaticConstants_MasterData.Pipe_Symbol +
-                                                                                                                    specNodeByAttribute.get(PMP_StaticConstants_MasterData.ParentIdentifier) + PMP_StaticConstants_MasterData.Pipe_Symbol + 
-                                                                                                                    childSpecsByAttribute.get(PMP_StaticConstants_MasterData.SpecRawValue)).toLowerCase();
-                                    }
-                                }
-                                if(childSpecsByAttribute.containsKey(PMP_StaticConstants_MasterData.SpecDisplayValue) && childSpecsByAttribute.get(PMP_StaticConstants_MasterData.SpecDisplayValue) != null){
-                                    String specSpecValueAssocName = String.valueOf(childSpecsByAttribute.get(PMP_StaticConstants_MasterData.SpecDisplayValue));
-                                    specSpecValueAssoc.Name = specSpecValueAssocName.length() > 80 ? specSpecValueAssocName.substring(0, 80) : specSpecValueAssocName;
-                                }
-                                //if both spec and specValue is active, make assoc record also as Active else false
-                                if(categoryRecord !=null && categoryRecord.PMP_Active_Ind__c == true && specificationRecord != null && specificationValueRecord != null && specificationRecord.PMP_Active_Ind__c == true && specificationValueRecord.PMP_Active_Ind__c == true){
-                                   specSpecValueAssoc.PMP_Active_Ind__c = true; 
-                                }
-                                else{
-                                   specSpecValueAssoc.PMP_Active_Ind__c = false;
-                                }
-                                //if the spec-specValue assoc record is proper, push it into uploadable 
-                                if(!uploadableSpecValuesAssocByExternalkey.containsKey(specSpecValueAssoc.PMP_Category_Spec_Value_External_Key__c) && specSpecValueAssoc.PMP_Category_Spec_Value_External_Key__c != null && 
-                                   specSpecValueAssoc.PMP_Specification_Id__c != null && specSpecValueAssoc.PMP_Specification_Value_Id__c != null){
-                                    uploadableSpecValuesAssocByExternalkey.put(specSpecValueAssoc.PMP_Category_Spec_Value_External_Key__c,specSpecValueAssoc); 
-                                }
-                            }
-                        }
-                    }
+                    }   
+                    
                 }
-            }
+            
+            }   
         }
-        /*Added by raj on 02/28, to handle activation-deactication of association records*/
-        if(!existingCatSpecAssocByExternalKey.isEmpty() && !uploadableCatSpecAssocByExternalkey.isEmpty()){
+        /*Added by raj on 02/28*/
+        if(!existingCatSpecAssocByExternalKey.isEmpty() && !uploadCatSpecMap.isEmpty()){
             for(String keyId : existingCatSpecAssocByExternalKey.keySet()){
-                if(!uploadableCatSpecAssocByExternalkey.keySet().contains(keyId)){
+                if(!uploadCatSpecMap.keySet().contains(keyId)){
                     PMP_Category_Specification_Association__c csa = existingCatSpecAssocByExternalKey.get(keyId);
                     csa.PMP_Active_Ind__c = false;
-                    uploadableCatSpecAssocByExternalkey.put(csa.PMP_Category_Specification_External_Key__c, csa);
+                    uploadCatSpecMap.put(csa.PMP_Category_Specification_External_Key__c, csa);
                 }
             }
         }
-       
-        if(!existingSpecSpecValueAssocByExternalKey.isEmpty() && !uploadableSpecValuesAssocByExternalkey.isEmpty()){
+        /*End*/
+        /********************************Commented as we are not loading countries yet****************************************************/
+        /*if(!existingSpecSpecValueAssocByExternalKey.isEmpty() && !uploadSpecSpecVMap.isEmpty()){
             for(String keyId : existingSpecSpecValueAssocByExternalKey.keySet()){
-                if(!uploadableSpecValuesAssocByExternalkey.keySet().contains(keyId)){
+                if(!uploadSpecSpecVMap.keySet().contains(keyId)){
                     PMP_Specification_Value_Association__c specSpecValueAssoc = existingSpecSpecValueAssocByExternalKey.get(keyId);
                     specSpecValueAssoc.PMP_Active_Ind__c = false;
-                    uploadableSpecValuesAssocByExternalkey.put(specSpecValueAssoc.PMP_Category_Spec_Value_External_Key__c, specSpecValueAssoc);
+                    uploadSpecSpecVMap.put(specSpecValueAssoc.PMP_Category_Spec_Value_External_Key__c, specSpecValueAssoc);
                 }    
             }    
+        }*/
+        /********************************Commented as we are not loading countries yet****************************************************/
+        System.debug('**uploadCatSpecMap**'+uploadCatSpecMap);
+        //Iterate on Categories spec assocoation map's Key
+        for(String key1 : uploadCatSpecMap.keySet())
+        {
+            //Add all the key's in Category and spec Juntion Object list
+            uploadCatSpecJO.add(uploadCatSpecMap.get(key1));
         }
-        
-        uploadableCatSpecAssoc.addAll(uploadableCatSpecAssocByExternalkey.values());//adding all the cat-spec records to a list
-        
-        for(String externalId : uploadableSpecValuesAssocByExternalkey.keySet()){
-            if(uploadableSpecValueAssoc.size() < 9000){//if uploadable specs are less than 9000, add it to a list 
-                uploadableSpecValueAssoc.add(uploadableSpecValuesAssocByExternalkey.get(externalId));
+        /********************************Commented as we are not loading countries yet****************************************************/
+        //Iterate on Spec spec value assocoation map's Key
+      /*for(String key2 : uploadSpecSpecVMap.keySet())
+        {
+            //if Spe and spec value Juntion Object list size is less than "9000"
+            if(uploadSpecSpecValJO.size()<9000)
+            {
+                //Add all the key's in Spe and spec value Juntion Object list
+               uploadSpecSpecValJO.add(uploadSpecSpecVMap.get(key2)); 
             }
-            else{//if more than 9000, call the future method to upload the records
-                String uploadRecJSON = JSON.serialize(uploadableSpecValueAssoc);
-                PMP_GeoRegion_CreateJunctionData.uploadExcessSpecSpecValueAssRec(uploadRecJSON);
-                uploadableSpecValueAssoc.clear();//clear off the list
+            //if Spe and spec value Juntion Object list size is greater than "9000"
+            else
+            {
+                //Serialize Spec Spec value Juntion object and storing in a string variable
+                String uploadRecJSON = JSON.serialize(uploadSpecSpecValJO);
+                //Call Core_PMP_UploadExcessSpecSpecValueAssRec method - passing the string variable as parameter 
+                PMP_GeoRegion_CreateJunctionData.Core_PMP_UploadExcessSpecSpecValueAssRec(uploadRecJSON);
+                //Clear all the Spec Spec value list values
+                uploadSpecSpecValJO.clear();
+                
             }
+            
         }
-        
-        if(uploadableSpecValueAssoc.size() > 0){//process the remaining values
-               String uploadRecJSON = JSON.serialize(uploadableSpecValueAssoc);
-               PMP_GeoRegion_CreateJunctionData.uploadExcessSpecSpecValueAssRec(uploadRecJSON);//again call the future method for the remianing specValues 
-        }
-        if(uploadableCatSpecAssoc.size() > 0){
-            try{
-                Schema.SObjectField upsertSpecKey = PMP_Category_Specification_Association__c.Fields.PMP_Category_Specification_External_Key__c;//fetch the cat-spec externalkey
-                upsertResultData = Database.upsert(uploadableCatSpecAssoc,upsertSpecKey,false);//upsert the records
-                PMP_Utility.logDmlErrors((Object[]) upsertResultData, 'PMP_GeoRegion_CreateJunctionData-createAssociationRecords');
-            }
-            catch(Exception exp1){
+        //Spec Spec Value Juntion object not null/empty
+        if(uploadSpecSpecValJO.size()>0)
+        {
+            //Serialize Spec Spec value Juntion object and storing in a string variable
+            String uploadRecJSON = JSON.serialize(uploadSpecSpecValJO);
+            //Call Core_PMP_UploadExcessSpecSpecValueAssRec method - passing the string variable as parameter 
+            PMP_GeoRegion_CreateJunctionData.Core_PMP_UploadExcessSpecSpecValueAssRec(uploadRecJSON);
+        }*/
+        //Cat Spec Value Juntion object not null/empty
+        if(uploadCatSpecJO.size()>0)
+        {
+           try
+           {
+               //upsert uploadCatSpecJO PMP_Category_Specification_External_Key__c;
+                Schema.SObjectField upsertSpecJOKey = PMP_Category_Specification_Association__c.Fields.PMP_Category_Specification_External_Key__c;
+               //DML - upsert Cat spec JO 
+                upsertResultData_SpecJO = Database.upsert(uploadCatSpecJO,upsertSpecJOKey,false);
+           }
+            catch(Exception exp1)
+            {
+                
                 throw exp1;
             }
         }
-        return upsertResultData;
-    }
-    
-    // future Method to handle Governor Limits for DML on more than 10K recordsO
-    
-    @future
-    public static void uploadExcessSpecSpecValueAssRec(String uploadRecsJSON){
-        List<PMP_Specification_Value_Association__c> uploadableSpecValueAssoc = new List<PMP_Specification_Value_Association__c>();
-        uploadableSpecValueAssoc = (List<PMP_Specification_Value_Association__c>)JSON.deserialize(uploadRecsJSON, List<PMP_Specification_Value_Association__c>.class);
-        if(uploadableSpecValueAssoc.size()>0){
-           try{
-               upsert uploadableSpecValueAssoc PMP_Category_Spec_Value_External_Key__c;//upsert the spec-specValue assoc records
+      //Return Cat Spec JO  
+     return  upsertResultData_SpecJO;  
+}
+    /********************************Commented as we are not loading countries yet****************************************************/
+    // Future Method written to handle Governor Limits for DML on more than 10K records
+  /*@future
+    public static void Core_PMP_UploadExcessSpecSpecValueAssRec(String uploadRecsJSON)
+    {
+        List<PMP_Specification_Value_Association__c> uploadSpecSpecValJO = new List<PMP_Specification_Value_Association__c>();
+        uploadSpecSpecValJO = (List<PMP_Specification_Value_Association__c>)JSON.deserialize(uploadRecsJSON, List<PMP_Specification_Value_Association__c>.class);
+        
+        if(uploadSpecSpecValJO.size()>0)
+        {
+           try
+           {
+               upsert uploadSpecSpecValJO PMP_Category_Spec_Value_External_Key__c;
+                
            }
-           catch(Exception exp3){
+            catch(Exception exp3)
+            {
+                
                 throw exp3;
-           }
+            }
         }
-    }
+       
+    }*/
 }

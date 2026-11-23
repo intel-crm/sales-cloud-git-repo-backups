@@ -4,7 +4,7 @@ public class PMP_StaticConstants_Offering_Test {
         Test.StartTest();
         PMP_StaticConstants_Offering testClass = new PMP_StaticConstants_Offering();
         System.AssertEquals('Grabage Symbols',PMP_StaticConstants_Offering.garbage_Symbols);
-        PMP_StaticConstants_Offering.returnCompany();
+        
         Test.StopTest();
     }
     

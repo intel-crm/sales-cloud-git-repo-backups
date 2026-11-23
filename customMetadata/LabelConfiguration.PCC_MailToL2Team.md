@@ -8,6 +8,6 @@
     </values>
     <values>
         <field>Value__c</field>
-        <value xsi:type="xsd:string">cloud.crm.l2.support.team@intel.com</value>
+        <value xsi:type="xsd:string">manasax.chennamoni@intel.com</value>
     </values>
 </CustomMetadata>

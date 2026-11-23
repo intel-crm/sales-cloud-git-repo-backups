@@ -67,7 +67,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Halversen,Wood,stiles,Oldfield,Covey,Merjanian</value>
+            <value>Halversen,Wood,Swyers,Oldfield,Covey,Merjanian</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -100,6 +100,6 @@
     <timeFrameFilter>
         <dateColumn>Account.Core_Account_Team_Audit_Due_Date__c</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2021-04-01</startDate>
+        <startDate>2020-04-14</startDate>
     </timeFrameFilter>
 </Report>

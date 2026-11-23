@@ -8,13 +8,16 @@
         action.setCallback(this, function(response){
             if(response.getState() === "SUCCESS"){
                 var resp = response.getReturnValue();
-                debugger;
+                //debugger;
                 component.set("v.isOppInactive",resp.isOppInactive);
                 component.set("v.isVendor",resp.isVendorInactive);                
                 if(resp.isOppInactive || resp.isVendorInactive){
                     var title = $A.get("$Label.c.Core_Toast_Title_Inactive_Account");
                     var msg = $A.get("$Label.c.Core_Toast_Message_Inactive_Account");
                     helper.toastMessage(component, "error", title, msg);
+                }
+                if(resp.showApproverWarning && resp.approverWarningMessage){
+                    helper.toastMessage(component, "warning", "Warning", resp.approverWarningMessage, "sticky");
                 }
             }
             else{

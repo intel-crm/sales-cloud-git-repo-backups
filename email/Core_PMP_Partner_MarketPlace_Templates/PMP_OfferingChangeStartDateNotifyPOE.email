@@ -1,0 +1,7 @@
+<messaging:emailTemplate subject="Edit Publish Date:  Edit the publish date of your Marketplace Offering" recipientType="User" relatedToType="PMP_Partner_Offering__c">
+<messaging:htmlEmailBody >
+    
+        <c:PMP_OfferingChangeStartDate offeringRecordId="{!relatedTo.Id}"/>
+    
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Notify_PSAM_about_Rebate_Claim_Line_Item_Rejection</name>
+        <label>Notify PSAM about Rebate Claim Line Item Rejection</label>
+        <locationX>176</locationX>
+        <locationY>323</locationY>
+        <actionName>chatterPost</actionName>
+        <actionType>chatterPost</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>text</name>
+            <value>
+                <elementReference>RejectionMessage</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>subjectNameOrId</name>
+            <value>
+                <elementReference>$Record.PCC_Opportunity__c</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>chatterPost</nameSegment>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <apiVersion>61.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Sending automated Chatter Notification to PSAM on Rebate Claim Line Item rejection on opportunity .</description>
+    <environments>Default</environments>
+    <interviewLabel>PCC_N {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>PCC_ChatterNotification_ClaimLineItemRejection_onOppty</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Notify_PSAM_about_Rebate_Claim_Line_Item_Rejection</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>PCC_Status__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PCC_Status__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Rejected</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PCC_Opportunity__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <object>PCC_Rebate_Claim_Line_Item__c</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+    <textTemplates>
+        <name>RejectionMessage</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>Hi @[{!$Record.PCC_Opportunity__r.Owner.Id}] ,
+{!$Record.Name} of {!$Record.PCC_Rebate_Claim__r.Name} is rejected by Rebate Analyst, Claim Details are as follows.
+
+Rebate Claim             :  {!$Record.PCC_Rebate_Claim__r.Name}
+Invoice Date              :  {!$Record.PCC_Invoice_Date__c}
+Invoice Number        :  {!$Record.PCC_Invoice__c}
+Rejection Comment  :  {!$Record.PCC_Rejection_Comments__c}
+Rejection Code          :  {!$Record.PCC_Rejection_Code__c}</text>
+    </textTemplates>
+</Flow>

@@ -71,4 +71,12 @@
         <name>Opportunity_Solution</name>
     </recordTypes>
     <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Quote associated to this Opportunity is Submitted for Review. No Edits allowed on Opportunity during the Review process. --></errorMessage>
+        <name>Core_OPTY_Lock_Quote_SubmittedStatus</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Add_Solution_Area --></label>
+        <name>Add_Solution_Area</name>
+    </webLinks>
 </CustomObjectTranslation>

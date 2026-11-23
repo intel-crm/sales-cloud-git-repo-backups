@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>Arihant Computers. Partner User</description>
+    <description>ARIHANT COMPUTER SHOPEE Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>Arihant Computers. Partner User</name>
+    <name>ARIHANT COMPUTER SHOPEE Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>EMP_11265455_Pankaj_Garg</parentRole>
+    <parentRole>ARIHANTCOMPUTERSHOPEEPartnerManager</parentRole>
 </Role>

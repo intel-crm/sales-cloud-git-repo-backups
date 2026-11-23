@@ -1,0 +1,28 @@
+<apex:page standardController="Lead" recordSetVar="leadRecords" extensions="Core_PartnerLead_ClaimReject_Ctrl" >
+    <apex:slds />
+    <apex:includeLightning />
+    
+    <script>
+    $Lightning.use("c:Core_Accept_Partner_Lead_App", function() {
+        $Lightning.createComponent("c:Core_Mass_ClaimReject",
+                                   { 
+                                       selectedLeads : '{!selectedLeads}',
+                                       alertMessage : '{!errMsg}',
+                                       listViewUrl : '{!listViewUrl}',
+                                       actionType : 'Reject'
+                                   },
+                                   "lightning",
+                                   function(cmp) {
+                                       document.getElementById('loading').style.display = 'none';
+                                   });
+    });
+    </script>
+    <div id="loading">
+        <div role="status" class="slds-spinner slds-spinner_large slds-spinner_brand">
+            <span class="slds-assistive-text">Loading...</span>
+            <div class="slds-spinner__dot-a"></div>
+            <div class="slds-spinner__dot-b"></div>
+        </div>
+    </div>
+    <div id="lightning" />
+</apex:page>

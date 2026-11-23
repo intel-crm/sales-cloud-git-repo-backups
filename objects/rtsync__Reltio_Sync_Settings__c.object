@@ -12,17 +12,6 @@
         <type>Url</type>
     </fields>
     <fields>
-        <fullName>rtsync__Authentication_Method__c</fullName>
-        <deprecated>false</deprecated>
-        <externalId>false</externalId>
-        <label>Authentication Method</label>
-        <length>40</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>rtsync__Connector_Environment__c</fullName>
         <defaultValue>&quot;gus-ssrv&quot;</defaultValue>
         <deprecated>false</deprecated>
@@ -145,16 +134,6 @@
         <defaultValue>true</defaultValue>
         <deprecated>false</deprecated>
         <label>Triggers Are Enabled</label>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>rtsync__Use_Certificate_Authorization__c</fullName>
-        <defaultValue>false</defaultValue>
-        <deprecated>false</deprecated>
-        <description>Use Reltio Certificate for Authorization</description>
-        <inlineHelpText>Use Reltio Certificate for Authorization</inlineHelpText>
-        <label>Use Certificate Authorization</label>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>

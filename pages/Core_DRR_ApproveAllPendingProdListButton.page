@@ -22,6 +22,7 @@ Description :This vf page is used  in classic and lightning for List Button on D
                                    "lightning",
                                    function(cmp) {
                                        document.getElementById('loading').style.display = 'none';
+                                       console.log(showMessage);
                                    });
                        });
     </script>

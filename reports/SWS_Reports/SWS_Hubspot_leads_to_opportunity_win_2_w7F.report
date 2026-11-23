@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <axisBinding>y</axisBinding>
+            <column>RowCount</column>
+        </chartSummaries>
+        <chartType>Funnel</chartType>
+        <enableHoverLabels>false</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>CDF1</groupingColumn>
+        <legendPosition>Right</legendPosition>
+        <location>CHART_BOTTOM</location>
+        <showAxisLabels>false</showAxisLabels>
+        <showPercentage>true</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>true</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
+    <columns>
+        <field>STAGE_NAME</field>
+    </columns>
+    <columns>
+        <field>LEAD_SOURCE</field>
+    </columns>
+    <columns>
+        <field>FIRST_NAME</field>
+    </columns>
+    <columns>
+        <field>LAST_NAME</field>
+    </columns>
+    <columns>
+        <field>STATUS</field>
+    </columns>
+    <columns>
+        <field>OPP_NAME</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>CONVERTED</field>
+    </columns>
+    <columns>
+        <field>CONVERTED_DATE</field>
+    </columns>
+    <customDetailFormulas>
+        <calculatedFormula>IF(
+    ISBLANK(CONVERTED_DATE),
+    &quot;Not Converted to Opportunity&quot;,
+    IF(
+        ISPICKVAL(STAGE_NAME, &quot;Design Win&quot;),
+        &quot;Design Win&quot;,
+        IF(
+            ISPICKVAL(STAGE_NAME, &quot;Production Win&quot;),
+            &quot;Production Win&quot;,
+            IF(
+                ISPICKVAL(STAGE_NAME, &quot;Qualify&quot;),
+                &quot;Qualify&quot;,
+                IF(
+                    ISPICKVAL(STAGE_NAME, &quot;Define&quot;),
+                    &quot;Define&quot;,
+                    IF(
+                        ISPICKVAL(STAGE_NAME, &quot;Develop&quot;),
+                        &quot;Develop&quot;,
+                        IF(
+                            ISPICKVAL(STAGE_NAME, &quot;Design&quot;),
+                            &quot;Design&quot;,
+                            IF(
+                                ISPICKVAL(STAGE_NAME, &quot;Lost&quot;),
+                                &quot;Lost&quot;,
+                                IF(
+                                    ISPICKVAL(STAGE_NAME, &quot;Cancelled&quot;),
+                                    &quot;Cancelled&quot;,
+                                    IF(
+                                        ISPICKVAL(STAGE_NAME, &quot;Group&quot;),
+                                        &quot;Group&quot;,
+                                        IF(
+                                            ISPICKVAL(STAGE_NAME, &quot;Production Lost&quot;),
+                                            &quot;Production Lost&quot;,
+                                            IF(
+                                                ISPICKVAL(STAGE_NAME, &quot;Production Cancelled&quot;),
+                                                &quot;Production Cancelled&quot;,
+                                                IF(
+                                                    ISPICKVAL(STAGE_NAME, &quot;Group Open&quot;),
+                                                    &quot;Group Open&quot;,
+                                                    IF(
+                                                        ISPICKVAL(STAGE_NAME, &quot;Group Cancelled&quot;),
+                                                        &quot;Group Cancelled&quot;,
+                                                        IF(
+                                                            ISPICKVAL(STAGE_NAME, &quot;Group Closed&quot;),
+                                                            &quot;Group Closed&quot;,
+                                                            &quot;Other Opportunity Stages&quot;
+                                                        )
+                                                    )
+                                                )
+                                            )
+                                        )
+                                    )
+                                )
+                            )
+                        )
+                    )
+                )
+            )
+        )
+    )
+)</calculatedFormula>
+        <dataType>Text</dataType>
+        <developerName>CDF1</developerName>
+        <label>Opportunity WIn Conversion - Hubspot</label>
+        <scale>2</scale>
+    </customDetailFormulas>
+    <filter>
+        <criteriaItems>
+            <column>Lead.SWS_Lead_Source_System__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>HubSpot,HubSpot1,HubSpot2</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>CDF1</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Month</dateGranularity>
+        <field>CREATED_DATE</field>
+        <sortOrder>Desc</sortOrder>
+    </groupingsDown>
+    <name>Hubspot leads to opportunity win 2</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>OpportunityLead</reportType>
+    <scope>org</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

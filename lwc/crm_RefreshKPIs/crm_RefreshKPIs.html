@@ -1,0 +1,12 @@
+<template>
+    <div class="slds-card" style="height:12345px; padding:12px 12px 0">
+        <div class="slds-box">
+            <div class="innerbox">
+                <lightning-formatted-rich-text if:true={showpageProgressMsg} class='text' value={label.Core_KPI_Refresh_On}></lightning-formatted-rich-text>
+                <lightning-formatted-rich-text if:true={showpageStartMsg} class='text' value={label.Core_KPI_Refresh_Started}></lightning-formatted-rich-text>
+                <br>
+                <lightning-button class="slds-align_absolute-center" variant="neutral" label="Ok" title="Ok" onclick={navigateToRecord}></lightning-button>
+            </div>
+        </div>
+    </div>
+</template>

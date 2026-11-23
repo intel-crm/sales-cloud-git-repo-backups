@@ -242,16 +242,6 @@
                     <default>false</default>
                     <label>Public Group</label>
                 </value>
-                <value>
-                    <fullName>Account Owner</fullName>
-                    <default>false</default>
-                    <label>Account Owner</label>
-                </value>
-                <value>
-                    <fullName>Record Owner</fullName>
-                    <default>false</default>
-                    <label>Record Owner</label>
-                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -289,9 +279,9 @@
     <searchLayouts>
         <excludedStandardButtons>New</excludedStandardButtons>
         <excludedStandardButtons>OpenListInQuip</excludedStandardButtons>
-        <excludedStandardButtons>Accept</excludedStandardButtons>
-        <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
         <excludedStandardButtons>MassChangeOwner</excludedStandardButtons>
+        <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
+        <excludedStandardButtons>Accept</excludedStandardButtons>
         <searchResultsAdditionalFields>CventEvents__Level__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>CventEvents__SortOrder__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>CventEvents__Type__c</searchResultsAdditionalFields>

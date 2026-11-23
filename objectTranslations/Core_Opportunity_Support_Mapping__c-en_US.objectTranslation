@@ -9,6 +9,10 @@
         <value>Opportunity Support Mappings</value>
     </caseValues>
     <fields>
+        <label><!-- MS RecordType --></label>
+        <name>CRM_MS_RecordType__c</name>
+    </fields>
+    <fields>
         <label><!-- BU --></label>
         <name>Core_BU__c</name>
         <picklistValues>
@@ -60,48 +64,8 @@
             <translation><!-- Artificial Intelligence (AI) --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Automotive</masterLabel>
-            <translation><!-- Automotive --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Comms Service Providers</masterLabel>
-            <translation><!-- Comms Service Providers --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Education</masterLabel>
-            <translation><!-- Education --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Energy</masterLabel>
-            <translation><!-- Energy --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Financial Services Industry</masterLabel>
-            <translation><!-- Financial Services Industry --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Government</masterLabel>
             <translation><!-- Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Health and Life Sciences</masterLabel>
-            <translation><!-- Health and Life Sciences --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Manufacturing</masterLabel>
-            <translation><!-- Manufacturing --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Retail</masterLabel>
-            <translation><!-- Retail --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Security</masterLabel>
-            <translation><!-- Security --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Sustainability</masterLabel>
-            <translation><!-- Sustainability --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -109,7 +73,7 @@
         <name>Core_Opportunity_Support_Is_Active__c</name>
     </fields>
     <fields>
-        <label><!-- Record Type --></label>
+        <label><!-- Record Type DNU --></label>
         <name>Core_Record_Type__c</name>
     </fields>
     <fields>
@@ -138,4 +102,8 @@
         <relationshipLabel><!-- Opportunity Support Mappings --></relationshipLabel>
     </fields>
     <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Users not allowed to edit the Object --></errorMessage>
+        <name>Users_Not_allowed_to_Edit</name>
+    </validationRules>
 </CustomObjectTranslation>

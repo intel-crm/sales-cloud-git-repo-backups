@@ -372,22 +372,7 @@
             <sourceValues>
                 <sourceValue>Intel® Agilex™ M-Series</sourceValue>
             </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel Agilex® 7 FPGAs and SoC FPGAs F-Series</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel Agilex® 7 FPGAs and SoC FPGAs I-Series</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel Agilex® 7 FPGAs and SoC FPGAs M-Series</sourceValue>
-            </sourceValues>
-            <value>Agilex 7</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>Intel Agilex® 5 FPGAs and SoC FPGAs E-Series</sourceValue>
-            </sourceValues>
-            <value>Agilex 5</value>
+            <value>Agilex</value>
         </values>
     </buckets>
     <chart>
@@ -479,18 +464,18 @@
             <value>Invalid</value>
         </criteriaItems>
         <criteriaItems>
+            <column>BucketField_40617595</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Agilex</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>STATUS</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Closed</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>ACCOUNT.NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>IPS Test Account</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

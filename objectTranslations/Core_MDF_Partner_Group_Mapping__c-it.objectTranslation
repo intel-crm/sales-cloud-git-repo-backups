@@ -846,20 +846,8 @@
         </picklistValues>
     </fields>
     <fields>
-        <label><!-- AccountProgramInactiveInd --></label>
-        <name>Core_MDF_AccProgInactiveInd_Txt__c</name>
-    </fields>
-    <fields>
         <label><!-- AccountIdGroupName --></label>
         <name>Core_MDF_AccountIdGroupName__c</name>
-    </fields>
-    <fields>
-        <label><!-- AccountProgramId --></label>
-        <name>Core_MDF_AccountProgramId_Txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Account Prime/Unified ID --></label>
-        <name>Core_MDF_Account_Prime_ID__c</name>
     </fields>
     <fields>
         <label><!-- Account --></label>
@@ -867,16 +855,153 @@
         <relationshipLabel><!-- Partner Group Mapping --></relationshipLabel>
     </fields>
     <fields>
-        <label><!-- All Access Group Id --></label>
-        <name>Core_MDF_All_Access_Group_Id__c</name>
-    </fields>
-    <fields>
-        <label><!-- All Access Group Name --></label>
-        <name>Core_MDF_All_Access_Group_Nm__c</name>
-    </fields>
-    <fields>
         <label><!-- Budget Type --></label>
         <name>Core_MDF_BudgetType_nm__c</name>
+        <picklistValues>
+            <masterLabel>Business Client Acceleration - MDF</masterLabel>
+            <translation><!-- Business Client Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CCF 1.0</masterLabel>
+            <translation><!-- CCF 1.0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client Market Accelerate</masterLabel>
+            <translation><!-- Client Market Accelerate --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client Specialties MDF</masterLabel>
+            <translation><!-- Client Specialties MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DCF 1.0</masterLabel>
+            <translation><!-- DCF 1.0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Center Market Accelerate</masterLabel>
+            <translation><!-- Data Center Market Accelerate --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Center Specialties MDF</masterLabel>
+            <translation><!-- Data Center Specialties MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Centric Acceleration - MDF</masterLabel>
+            <translation><!-- Data Centric Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Ericsson Acceleration - MDF</masterLabel>
+            <translation><!-- Global Ericsson Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global IBM Acceleration - MDF</masterLabel>
+            <translation><!-- Global IBM Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Microsoft Acceleration - MDF</masterLabel>
+            <translation><!-- Global Microsoft Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Nokia Acceleration - MDF</masterLabel>
+            <translation><!-- Global Nokia Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Red Hat Acceleration - MDF</masterLabel>
+            <translation><!-- Global Red Hat Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global SAP Acceleration - MDF</masterLabel>
+            <translation><!-- Global SAP Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global SAS Acceleration - MDF</masterLabel>
+            <translation><!-- Global SAS Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Suse Acceleration - MDF</masterLabel>
+            <translation><!-- Global Suse Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global VMware Acceleration - MDF</masterLabel>
+            <translation><!-- Global VMware Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ISV Scale Acceleration - MDF</masterLabel>
+            <translation><!-- ISV Scale Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel MDF Account Based2</masterLabel>
+            <translation><!-- Intel MDF Account Based2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel Rise Technology Initiative</masterLabel>
+            <translation><!-- Intel Rise Technology Initiative --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IoT Premier - MDF</masterLabel>
+            <translation><!-- IoT Premier - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IoT Targeted - MDF</masterLabel>
+            <translation><!-- IoT Targeted - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MDF</masterLabel>
+            <translation><!-- MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MDF+</masterLabel>
+            <translation><!-- MDF+ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ODM Growth Plan - Client MDF</masterLabel>
+            <translation><!-- ODM Growth Plan - Client MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OEM CMP</masterLabel>
+            <translation><!-- OEM CMP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Optane Specialties MDF</masterLabel>
+            <translation><!-- Optane Specialties MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RSA MD</masterLabel>
+            <translation><!-- RSA MD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Red Hat &quot;Amplify&quot; - MDF</masterLabel>
+            <translation><!-- Red Hat &quot;Amplify&quot; - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retail MDF</masterLabel>
+            <translation><!-- Retail MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SOEM Client MDF</masterLabel>
+            <translation><!-- SOEM Client MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SOEM Data Center MDF</masterLabel>
+            <translation><!-- SOEM Data Center MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Scale Acceleration - MDF</masterLabel>
+            <translation><!-- Scale Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service Provider CMP</masterLabel>
+            <translation><!-- Service Provider CMP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VMWare Amplify - MDF</masterLabel>
+            <translation><!-- VMWare Amplify - MDF --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Campaign --></label>
+        <name>Core_MDF_Campaign_Id__c</name>
+        <relationshipLabel><!-- Partner Group Mapping --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- Channel Program Name --></label>
@@ -888,52 +1013,12 @@
         <relationshipLabel><!-- Partner Group Mapping --></relationshipLabel>
     </fields>
     <fields>
-        <label><!-- Co-Marketing Active Account Id --></label>
-        <name>Core_MDF_CoMarketingActiveAccount_Id__c</name>
-    </fields>
-    <fields>
-        <label><!-- Co-Marketing Active Account Name --></label>
-        <name>Core_MDF_CoMarketingActiveAccount_Nm__c</name>
-    </fields>
-    <fields>
-        <label><!-- Co-Marketing Active --></label>
-        <name>Core_MDF_CoMarketingActive_Ind__c</name>
-    </fields>
-    <fields>
         <label>ID gruppo</label>
         <name>Core_MDF_Group_Id__c</name>
     </fields>
     <fields>
         <label>Nome Gruppo</label>
         <name>Core_MDF_Group_Name__c</name>
-    </fields>
-    <fields>
-        <label><!-- Inactive Indicator --></label>
-        <name>Core_MDF_Inactive_Ind__c</name>
-    </fields>
-    <fields>
-        <label><!-- Payment Type --></label>
-        <name>Core_MDF_Payment_Type_nm__c</name>
-        <picklistValues>
-            <masterLabel>Customer</masterLabel>
-            <translation><!-- Customer --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Customer (Pass Through)</masterLabel>
-            <translation><!-- Customer (Pass Through) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Distributor (Cash)</masterLabel>
-            <translation><!-- Distributor (Cash) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Distributor (Credit Memo)</masterLabel>
-            <translation><!-- Distributor (Credit Memo) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Non-Customer</masterLabel>
-            <translation><!-- Non-Customer --></translation>
-        </picklistValues>
     </fields>
     <fields>
         <label><!-- Region --></label>
@@ -971,10 +1056,6 @@
             <translation><!-- Others --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>ProcessEntitlement</masterLabel>
-            <translation><!-- ProcessEntitlement --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Test</masterLabel>
             <translation><!-- Test --></translation>
         </picklistValues>
@@ -994,11 +1075,6 @@
             <masterLabel>Internal</masterLabel>
             <translation>Interna</translation>
         </picklistValues>
-    </fields>
-    <fields>
-        <label><!-- Virtual Corp Name --></label>
-        <name>Core_MDF_Virtual_Corp_nm__c</name>
-        <relationshipLabel><!-- Partner Group Mapping (Virtual Corp Name) --></relationshipLabel>
     </fields>
     <fields>
         <label>Lavora per</label>
@@ -1023,23 +1099,7 @@
     </fields>
     <gender>Masculine</gender>
     <nameFieldLabel><!-- Partner Group Mapping Name --></nameFieldLabel>
-    <recordTypes>
-        <label><!-- Co-marketing --></label>
-        <name>Core_MDF_Co_marketing</name>
-    </recordTypes>
     <startsWith>Consonant</startsWith>
-    <validationRules>
-        <errorMessage><!-- Selected Payment Type is only applicable for Intel Partner Alliance Program. --></errorMessage>
-        <name>Core_MDF_IPA_PaymentTypeValidation</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Payment Type is not applicable for the Selected Program. --></errorMessage>
-        <name>Core_MDF_PayTypeVal_ForOtherPrograms</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Payment Type is not applicable for the Agency Account. --></errorMessage>
-        <name>Core_MDF_PaymentTypeValidation</name>
-    </validationRules>
     <validationRules>
         <errorMessage><!-- AccountIdGroupName cannot be blank --></errorMessage>
         <name>Core_MDF_RequiredAccountIdGroupName</name>

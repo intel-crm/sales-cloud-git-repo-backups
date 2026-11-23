@@ -20,6 +20,13 @@
     </columns>
     <filter>
         <criteriaItems>
+            <column>Account.Core_Account_Type__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>includes</operator>
+            <value>Cloud Service Provider (CSP)</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>Account.Core_Intel_Partner_Alliance_PartnerGroup__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>

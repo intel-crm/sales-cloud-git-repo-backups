@@ -1,105 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
-    <actionCalls>
-        <name>Flow_Error_Email</name>
-        <label>Flow Error Email</label>
-        <locationX>1316</locationX>
-        <locationY>701</locationY>
-        <actionName>emailSimple</actionName>
-        <actionType>emailSimple</actionType>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
-        <inputParameters>
-            <name>emailAddresses</name>
-            <value>
-                <stringValue>chethan.s.kunder@intel.com,saranyax.ramaiah@intel.com,akshayx.bhimrao@intel.com,amal.thomas@intel.com,anjalix.haryani@intel.com,areefa.banu@intel.com,bharathx.indla@intel.com,biswaranjan.pradhan@intel.com,david.a.hood@intel.com,devashishx.r.shah@intel.com,ealisha.chatterjee@intel.com,harikax.punnam@intel.com,harshitha.b.m@intel.com,intelsfdc_apexlog@intel.com,lakshman.k.bachu@intel.com,mahesh.biradar@intel.com,miteshx.dedhia@intel.com,narayani.perachi@intel.com,natesh.bn@intel.com,navneet.kaur@intel.com,parthx.soomanyu@intel.com,pooja.padiyar@intel.com,pradipkumar.singh@intel.com,rekhax.nandimandalam@intel.com,shijas.km@intel.com,silambarasan.munusamy@intel.com,sridhar.swaminathan@intel.com,sushma.hamom@intel.com,utkarsh1@intel.com,vijaykumar.s@intel.com,vivek.krishnamurthy@intel.com</stringValue>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>senderType</name>
-            <value>
-                <inputConfiguratorMode>Custom</inputConfiguratorMode>
-                <stringValue>OrgWideEmailAddress</stringValue>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>senderAddress</name>
-            <value>
-                <inputConfiguratorMode>Custom</inputConfiguratorMode>
-                <stringValue>wsm-postmaster@intel.com</stringValue>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>emailSubject</name>
-            <value>
-                <elementReference>ErrorSubject</elementReference>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>emailBody</name>
-            <value>
-                <elementReference>Flow_Error_Email_Body</elementReference>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>sendRichBody</name>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </inputParameters>
-        <nameSegment>emailSimple</nameSegment>
-    </actionCalls>
-    <apiVersion>58.0</apiVersion>
+    <apiVersion>59.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
-    <assignments>
-        <name>Assign_Update_Type_as_Remove_Legal_Parent</name>
-        <label>Assign Update Type as RemoveLegal Parent</label>
-        <locationX>1005</locationX>
-        <locationY>701</locationY>
-        <assignmentItems>
-            <assignToReference>UpdateType</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <stringValue>Remove Legal Parent</stringValue>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Flow_Error_Email</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <name>Assign_Update_Type_as_Remove_LegalandPricing_Parent</name>
-        <label>Assign Update Type as Remove Legal and Pricing Parent</label>
-        <locationX>1012</locationX>
-        <locationY>840</locationY>
-        <assignmentItems>
-            <assignToReference>UpdateType</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <stringValue>Remove Legal and Pricing Parent</stringValue>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Flow_Error_Email</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <name>Assign_Update_Type_as_Remove_Pricing_Parent</name>
-        <label>Assign Update Type as Remove Pricing Parent</label>
-        <locationX>1007</locationX>
-        <locationY>569</locationY>
-        <assignmentItems>
-            <assignToReference>UpdateType</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <stringValue>Remove Pricing Parent</stringValue>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Flow_Error_Email</targetReference>
-        </connector>
-    </assignments>
     <environments>Default</environments>
-    <interviewLabel>Core_RemoveAccountLegalandPricingParent {!$Flow.CurrentDateTime}</interviewLabel>
+    <interviewLabel>Core_RemoveAccountLegalAndPricingParent {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Core_RemoveAccountLegalandPricingParent</label>
     <processMetadataValues>
         <name>BuilderType</name>
@@ -110,7 +14,7 @@
     <processMetadataValues>
         <name>CanvasMode</name>
         <value>
-            <stringValue>FREE_FORM_CANVAS</stringValue>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
         </value>
     </processMetadataValues>
     <processMetadataValues>
@@ -123,59 +27,56 @@
     <recordUpdates>
         <name>Disable_Bypass</name>
         <label>Disable Bypass</label>
-        <locationX>614</locationX>
-        <locationY>1027</locationY>
+        <locationX>176</locationX>
+        <locationY>755</locationY>
         <filterLogic>and</filterLogic>
         <filters>
-            <field>Bypass_Flow__c</field>
+            <field>Bypass_Account_Flow__c</field>
             <operator>EqualTo</operator>
             <value>
                 <booleanValue>true</booleanValue>
             </value>
         </filters>
         <inputAssignments>
-            <field>Bypass_Flow__c</field>
+            <field>Bypass_Account_Flow__c</field>
             <value>
                 <booleanValue>false</booleanValue>
             </value>
         </inputAssignments>
-        <object>Core_Account_Bypass_Validation_Rule__c</object>
+        <object>Core_Opp_Bypass_Validation_Rule__c</object>
     </recordUpdates>
     <recordUpdates>
         <name>Enable_Bypass</name>
         <label>Enable Bypass</label>
-        <locationX>617</locationX>
-        <locationY>407</locationY>
+        <locationX>176</locationX>
+        <locationY>323</locationY>
         <connector>
-            <targetReference>Remove_Pricing_Parent</targetReference>
+            <targetReference>Remove_Legal_Parent</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
-            <field>Bypass_Flow__c</field>
+            <field>Bypass_Account_Flow__c</field>
             <operator>EqualTo</operator>
-            <value>
-                <booleanValue>false</booleanValue>
-            </value>
-        </filters>
-        <inputAssignments>
-            <field>Bypass_Flow__c</field>
             <value>
                 <booleanValue>true</booleanValue>
             </value>
+        </filters>
+        <inputAssignments>
+            <field>Bypass_Account_Flow__c</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
         </inputAssignments>
-        <object>Core_Account_Bypass_Validation_Rule__c</object>
+        <object>Core_Opp_Bypass_Validation_Rule__c</object>
     </recordUpdates>
     <recordUpdates>
-        <name>Remove_Legal_and_Pricing_Parent</name>
-        <label>Remove Legal and Pricing Parent</label>
-        <locationX>614</locationX>
-        <locationY>845</locationY>
+        <name>Remove_Legal_And_Pricing_Parent</name>
+        <label>Remove Legal And Pricing Parent</label>
+        <locationX>176</locationX>
+        <locationY>647</locationY>
         <connector>
             <targetReference>Disable_Bypass</targetReference>
         </connector>
-        <faultConnector>
-            <targetReference>Assign_Update_Type_as_Remove_LegalandPricing_Parent</targetReference>
-        </faultConnector>
         <filterLogic>1 AND 2 AND (3 OR 4)</filterLogic>
         <filters>
             <field>Core_Direct_Legal_Parent_Id__c</field>
@@ -192,14 +93,14 @@
             </value>
         </filters>
         <filters>
-            <field>Core_Account_Record_Type__c</field>
+            <field>Account_Record_Type__c</field>
             <operator>EqualTo</operator>
             <value>
                 <stringValue>Intel Account</stringValue>
             </value>
         </filters>
         <filters>
-            <field>Core_Account_Record_Type__c</field>
+            <field>Account_Record_Type__c</field>
             <operator>EqualTo</operator>
             <value>
                 <stringValue>Inactive Account</stringValue>
@@ -222,14 +123,11 @@
     <recordUpdates>
         <name>Remove_Legal_Parent</name>
         <label>Remove Legal Parent</label>
-        <locationX>615</locationX>
-        <locationY>708</locationY>
+        <locationX>176</locationX>
+        <locationY>431</locationY>
         <connector>
-            <targetReference>Remove_Legal_and_Pricing_Parent</targetReference>
+            <targetReference>Remove_Pricing_Parent</targetReference>
         </connector>
-        <faultConnector>
-            <targetReference>Assign_Update_Type_as_Remove_Legal_Parent</targetReference>
-        </faultConnector>
         <filterLogic>1 AND 2 AND (3 OR 4)</filterLogic>
         <filters>
             <field>Core_Direct_Legal_Parent_Id__c</field>
@@ -246,14 +144,14 @@
             </value>
         </filters>
         <filters>
-            <field>Core_Account_Record_Type__c</field>
+            <field>Account_Record_Type__c</field>
             <operator>EqualTo</operator>
             <value>
                 <stringValue>Intel Account</stringValue>
             </value>
         </filters>
         <filters>
-            <field>Core_Account_Record_Type__c</field>
+            <field>Account_Record_Type__c</field>
             <operator>EqualTo</operator>
             <value>
                 <stringValue>Inactive Account</stringValue>
@@ -270,14 +168,11 @@
     <recordUpdates>
         <name>Remove_Pricing_Parent</name>
         <label>Remove Pricing Parent</label>
-        <locationX>615</locationX>
-        <locationY>561</locationY>
+        <locationX>176</locationX>
+        <locationY>539</locationY>
         <connector>
-            <targetReference>Remove_Legal_Parent</targetReference>
+            <targetReference>Remove_Legal_And_Pricing_Parent</targetReference>
         </connector>
-        <faultConnector>
-            <targetReference>Assign_Update_Type_as_Remove_Pricing_Parent</targetReference>
-        </faultConnector>
         <filterLogic>1 AND 2 AND (3 OR 4)</filterLogic>
         <filters>
             <field>Core_Direct_Pricing_Parent_Id__c</field>
@@ -294,14 +189,14 @@
             </value>
         </filters>
         <filters>
-            <field>Core_Account_Record_Type__c</field>
+            <field>Account_Record_Type__c</field>
             <operator>EqualTo</operator>
             <value>
                 <stringValue>Intel Account</stringValue>
             </value>
         </filters>
         <filters>
-            <field>Core_Account_Record_Type__c</field>
+            <field>Account_Record_Type__c</field>
             <operator>EqualTo</operator>
             <value>
                 <stringValue>Inactive Account</stringValue>
@@ -316,14 +211,17 @@
         <object>Account</object>
     </recordUpdates>
     <start>
-        <locationX>490</locationX>
-        <locationY>48</locationY>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Enable_Bypass</targetReference>
+        </connector>
         <filterLogic>and</filterLogic>
         <filters>
-            <field>Core_Account_Record_Type__c</field>
+            <field>Account_Record_Type__c</field>
             <operator>EqualTo</operator>
             <value>
-                <stringValue>Direct Account</stringValue>
+                <stringValue>Direct Acocunt</stringValue>
             </value>
         </filters>
         <filters>
@@ -342,54 +240,7 @@
         </filters>
         <object>Account</object>
         <recordTriggerType>Update</recordTriggerType>
-        <scheduledPaths>
-            <connector>
-                <targetReference>Enable_Bypass</targetReference>
-            </connector>
-            <pathType>AsyncAfterCommit</pathType>
-        </scheduledPaths>
         <triggerType>RecordAfterSave</triggerType>
     </start>
     <status>Active</status>
-    <textTemplates>
-        <name>ErrorSubject</name>
-        <isViewedAsPlainText>false</isViewedAsPlainText>
-        <text>&lt;p&gt;Flow Error: Core_RemoveAccountLegalandPricingParent&lt;/p&gt;</text>
-    </textTemplates>
-    <textTemplates>
-        <name>Flow_Error_Email_Body</name>
-        <isViewedAsPlainText>false</isViewedAsPlainText>
-        <text>&lt;p&gt;&lt;u&gt;Details&lt;/u&gt;&lt;/p&gt;&lt;p&gt;User Name: {!$User.FirstName} {!$User.LastName}&lt;/p&gt;&lt;p&gt;User Email: {!$User.Email}&lt;/p&gt;&lt;p&gt;User Id: {!$User.Id}&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;u&gt;Troubleshooting&lt;/u&gt;&lt;/p&gt;&lt;p&gt;Error Element: {!UpdateType}&lt;/p&gt;&lt;p&gt;Error Timestamp: {!$System.OriginDateTime}&lt;/p&gt;&lt;p&gt;Fault Message: {!$Flow.FaultMessage}&lt;/p&gt;&lt;p&gt;Interview Guid: {!$Flow.InterviewGuid}&lt;/p&gt;&lt;p&gt;Interview Start Time: {!$Flow.InterviewStartTime}&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;u&gt;Record Details&lt;/u&gt;&lt;/p&gt;&lt;p&gt;Current Record Id: {!$Record.Id}&lt;/p&gt;</text>
-    </textTemplates>
-    <variables>
-        <name>AccountsToUpdate</name>
-        <dataType>SObject</dataType>
-        <isCollection>true</isCollection>
-        <isInput>false</isInput>
-        <isOutput>false</isOutput>
-        <objectType>Account</objectType>
-    </variables>
-    <variables>
-        <name>currentItemFromSourceCollection</name>
-        <dataType>SObject</dataType>
-        <isCollection>false</isCollection>
-        <isInput>false</isInput>
-        <isOutput>false</isOutput>
-        <objectType>Account</objectType>
-    </variables>
-    <variables>
-        <name>StoreChildRecords</name>
-        <dataType>SObject</dataType>
-        <isCollection>true</isCollection>
-        <isInput>false</isInput>
-        <isOutput>false</isOutput>
-        <objectType>Account</objectType>
-    </variables>
-    <variables>
-        <name>UpdateType</name>
-        <dataType>String</dataType>
-        <isCollection>false</isCollection>
-        <isInput>false</isInput>
-        <isOutput>false</isOutput>
-    </variables>
 </Flow>

@@ -9,36 +9,6 @@
         <masterLabel>Weighted $</masterLabel>
         <scale>0</scale>
     </aggregates>
-    <buckets>
-        <bucketType>picklist</bucketType>
-        <developerName>BucketField_70194091</developerName>
-        <masterLabel>Prod App Groups</masterLabel>
-        <nullTreatment>n</nullTreatment>
-        <otherBucketLabel>Other</otherBucketLabel>
-        <sourceColumnName>Opportunity.Core_Product_Application__c</sourceColumnName>
-        <useOther>true</useOther>
-        <values>
-            <value>Energy</value>
-        </values>
-        <values>
-            <value>Transportation</value>
-        </values>
-        <values>
-            <value>Industrial</value>
-        </values>
-        <values>
-            <value>Medical</value>
-        </values>
-        <values>
-            <value>Smart Home</value>
-        </values>
-        <values>
-            <value>Retail</value>
-        </values>
-        <values>
-            <value>Emb Other</value>
-        </values>
-    </buckets>
     <chart>
         <backgroundColor1>#FFFFFF</backgroundColor1>
         <backgroundColor2>#FFFFFF</backgroundColor2>
@@ -166,6 +136,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

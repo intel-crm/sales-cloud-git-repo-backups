@@ -1,54 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
-    <available>false</available>
+    <available>true</available>
     <encodingKey>ISO-8859-1</encodingKey>
     <name>SPECBNFTHPCENG</name>
     <style>none</style>
-    <subject>Intel® Partner Alliance HPC Data Center Specialty</subject>
-    <textOnly>Congratulations on Qualifying!
+    <subject>Congratulations on qualifying for specialty benefits</subject>
+    <textOnly>Congratulations on qualifying for Specialty Benefits!
 
+Click here to view this email as a web page.
 
-{!Contact.FirstName},
+Hello [FirstName],
 
-Welcome to Intel® Partner Alliance High Performance Computing (HPC) Data Center Specialty! As a qualified HPC Data Center Specialist, you are eligible for specialty benefits* that are designed to help deliver and implement your HPC solutions, including:
+Welcome to Intel® Technology Provider HPC Data Center Specialty Benefits!  As a HPC Data Center Specialist you can take advantage of Specialty Benefits specifically designed to help you create winning HPC solutions and give you a competitive edge in the marketplace when deploying Intel®-based solutions.
+
+As a qualified HPC Data Center Specialist, you are eligible for Specialty Benefits* that are designed to help you grow your HPC business including:
 
 HPC Data Center Specialist designation
-Intel promotion of your company as an HPC Specialist
+Intel Promotion of your Company as an HPC Specialist
 Pre-sales technical support
-Additional point offers for HPC Data Center Specialists
+Special access to HPC resources
+HPC co-marketing opportunities
+Additional points offers for HPC Data Center Specialists
+Enhanced benefits for Intel® Server Products for HPC Compute Blocks
 Priority invitations to industry events and training sessions
 Opportunities for early product samples
-Access to Intel® Platform Testing Services
+Access to remote benchmarking lab
 
-To get started, please reply to ITP-HPC@intel.com with the following information:
+Thank you again for being an active Intel Technology Provider.
 
-
-Primary contact for HPC Specialist communications
-Name:
-Email:
-
-
-For additional sales and promotion materials
-Physical Mailing Address:
-Phone:
-
-Access benefits
-
+Access Benefits &gt;
 
 *Benefits may vary by geography.
 
-Intel partners have a long history of innovation, and with Intel Partner Alliance, we’ll help you accelerate building solutions for the data centric economy. Together, we can connect, innovate, and grow, making extraordinary opportunities possible.
+Copyright © 2016 Intel Corporation. All rights reserved. Intel and the Intel logo are trademarks of Intel Corporation in the U.S. and/or other countries.
 
-Visit intel.com/partnerhelp for help and guidance on optimizing your membership.
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. Intel.com
 
-
-Thank you,
-Your Intel® Partner Alliance team
-
-This message was sent to you as an important business communication related to your current relationship with Intel® Partner Alliance.
-© {!$Label.PRM_CurrentYear} Intel Corporation
-Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
-Privacy | Cookies</textOnly>
+You may unsubscribe at any time by clicking the Unsubscribe link below.
+Privacy | Cookies |  Unsubscribe | *Trademarks</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

@@ -1,5 +1,5 @@
 /********************************************************************************************************************
-Apex Class Name:  Core_OpportunityLineItemHandler
+Apex Class Name:  Core_OpportunityLineItemHandlerCore_FC_ProductSchedule_Ctrl
 Version      : 1.0 
 Created Date : 11/21/14
 Function     : Utility methods to handle OpportunityLineItem functions
@@ -47,8 +47,8 @@ public without sharing class Core_OpportunityLineItemHandler { //TWC3123-5359 Ad
     public static Boolean updateEOLonUpdateRecCheck = false;//added by Monisha for recursive check
     public static Boolean updateRevenue = false;//added for recursive check
     public static Integer nextChk=0000;
-    public static Integer tempxtChk = 0000;     
-	public static Boolean oliDeleteRecCheck=false;//TWC3123-6134    
+    public static Integer tempxtChk = 0000; 
+    public static Boolean oliDeleteRecCheck=false;//TWC3123-6134    
     //Added few more static variables for Forecast checks - Ashwin
     public static final Set<String> Core_Status = new Set<String>{'Lost','Cancelled','Deleted','On Hold','Production Lost','Production Cancelled'};
         public static boolean checkOLIExists = false;   
@@ -82,8 +82,7 @@ public without sharing class Core_OpportunityLineItemHandler { //TWC3123-5359 Ad
         else {
             alreadyTrackedHistory = true;
             
-            if ((Label.Core_Opportunity_Product_Fields_To_Track == null) || (Label.Core_Opportunity_Product_Fields_To_Track.length() == 0))
-                return;
+            if ((Label.Core_Opportunity_Product_Fields_To_Track == null) || (Label.Core_Opportunity_Product_Fields_To_Track.length() == 0))return;
             
             List<String> customSettingFields = Label.Core_Opportunity_Product_Fields_To_Track.split(',');
             List<String> fieldsBeingTracked = new List<String>();
@@ -105,8 +104,7 @@ public without sharing class Core_OpportunityLineItemHandler { //TWC3123-5359 Ad
                             if (lineItem.get(fieldBeingTracked) != null) {
                                 
                                 String oldValue = String.valueOf(lineItem.get(fieldBeingTracked));
-                                if (oldValue.length() > 255)
-                                    oldValue = oldValue.left(255);
+                                if (oldValue.length() > 255)  oldValue = oldValue.left(255);
                                 
                                 historyToInsert.add(
                                     new Core_Opportunity_Product_History__c(
@@ -225,6 +223,7 @@ public without sharing class Core_OpportunityLineItemHandler { //TWC3123-5359 Ad
             
         }
     }
+    
     public static void opportunityLineItemErrorHandler(List<OpportunityLineItem> newList, Map<Id,OpportunityLineItem> newMap,
                                                        List<OpportunityLineItem> oldList, Map<Id,OpportunityLineItem> oldMap,
                                                        Boolean isInsert, Boolean isUpdate, Boolean isDelete){
@@ -240,60 +239,63 @@ public without sharing class Core_OpportunityLineItemHandler { //TWC3123-5359 Ad
     public static void opportunityLineItemErrorUpdateDelete(List<OpportunityLineItem> OppList, 
                                                             Map<Id,OpportunityLineItem> newMap, Map<Id,OpportunityLineItem> oldMap,
                                                             Boolean isInsert, Boolean isUpdate, Boolean isDelete){
-                                                               Set<String> prodStatusCheck = new Set<String>{'Lost'};
-                                                               set<Id> oppId = new set<Id>();
-                                                               map<id,SBQQ__QuoteLine__c> quoteLineMap = new map<id,SBQQ__QuoteLine__c>();
-                                                               map<id,Boolean> swFlagPrimCheck = new map<id,Boolean>();
-                                                               for(OpportunityLineItem oli : OppList){
-                                                                           oppId.add(oli.OpportunityId);
-                                                                       }
+                                                                
+                                                                set<Id> oppId = new set<Id>();
+                                                                Set<String> statusCheck = new Set<String>{'Accepted', 'Rejected', 'Denied', 'Approved'};
+                                                                    Set<String> prodStatusCheck = new Set<String>{'Lost'} /*, 'Cancelled','Production Lost','Production Cancelled'}*/;
+                                                                        map<id,SBQQ__QuoteLine__c> quoteLineMap = new map<id,SBQQ__QuoteLine__c>();
+                                                                map<id,Boolean> swFlagPrimCheck = new map<id,Boolean>();
+                                                                for(OpportunityLineItem oli : OppList){
+                                                                    oppId.add(oli.OpportunityId);
+                                                                }
                                                                 If(!oppId.isEmpty())
                                                                 {
                                                                     for(SBQQ__QuoteLine__c quoteLine : [ SELECT Id,SBQQ__Product__c,SBQQ__Quantity__c,SBQQ__NetPrice__c,SBQQ__ListPrice__c,SBQQ__Quote__r.SBQQ__Status__c,SBQQ__Quote__r.SBQQ__Opportunity2__r.CRM_SW_Flag_Ind__c,SBQQ__Quote__r.SBQQ__Primary__c
-                                                                                                                                                                              FROM SBQQ__QuoteLine__c where SBQQ__Quote__r.SBQQ__Opportunity2__c IN: oppId 
-                                                                                                                                                                                                            and SBQQ__Quote__r.SBQQ__Primary__c = true 
-                                                                                                                                                                                                            and SBQQ__Quote__r.Pricing_Quote_Program_Nm__c = 'Software & Services'
-                                                                                                                                                                                                            and SBQQ__Quote__r.SBQQ__Opportunity2__r.CRM_SW_Flag_Ind__c=true])
+                                                                                                        FROM SBQQ__QuoteLine__c where SBQQ__Quote__r.SBQQ__Opportunity2__c IN: oppId 
+                                                                                                        and SBQQ__Quote__r.SBQQ__Primary__c = true 
+                                                                                                        and SBQQ__Quote__r.Pricing_Quote_Program_Nm__c = 'Software & Services'
+                                                                                                        and SBQQ__Quote__r.SBQQ__Opportunity2__r.CRM_SW_Flag_Ind__c=true])
                                                                     {
-                                                                       quoteLineMap.put(quoteLine.Id,quoteLine) ;
-                                                                  
+                                                                        quoteLineMap.put(quoteLine.Id,quoteLine) ;
+                                                                        
                                                                     }
                                                                     for(SBQQ__Quote__c quote : [select Id,SBQQ__Opportunity2__c,SBQQ__Primary__c from SBQQ__Quote__c where SBQQ__Opportunity2__c IN: oppId and SBQQ__Opportunity2__r.CRM_SW_Flag_Ind__c =true and SBQQ__Primary__c = true and Pricing_Quote_Program_Nm__c = 'Software & Services'  ]){
-                                                                            swFlagPrimCheck.put(quote.SBQQ__Opportunity2__c,quote.SBQQ__Primary__c);
+                                                                        swFlagPrimCheck.put(quote.SBQQ__Opportunity2__c,quote.SBQQ__Primary__c);
+                                                                        
                                                                     }
-                                                                     
+                                                                    
                                                                 }
-                                                              
-                                                               for(OpportunityLineItem oli : OppList){
-                                                                           if(isInsert && swFlagPrimCheck.containsKey(oli.OpportunityId) 
-                                                                              && swFlagPrimCheck.get(oli.OpportunityId) == true && oli.SBQQ__QuoteLine__c==null ){
-                                                                                      oli.addError(Core_CRM_Utility.getCRMLabel('CRM_SW_Error_Product_Update'));
-                                                                                  }
-                                                                   
-                                                                           if(quoteLineMap.containsKey(oli.SBQQ__QuoteLine__c)){
-                                          
-                                                                                      if(isUpdate && oldMap.containsKey(oli.id) && newMap.containsKey(oli.id) && oli.SBQQ__QuoteLine__c == quoteLineMap.get(oli.SBQQ__QuoteLine__c).Id
-                                                                                         && !prodStatusCheck.contains(newMap.get(oli.id).Core_Status__c) 
-                                                                                         &&(newMap.get(oli.id).Product2Id != quoteLineMap.get(oli.SBQQ__QuoteLine__c).SBQQ__Product__c
-                                                                                              || newMap.get(oli.id).UnitPrice != quoteLineMap.get(oli.SBQQ__QuoteLine__c).SBQQ__NetPrice__c
-                                                                                              || newMap.get(oli.id).Quantity != quoteLineMap.get(oli.SBQQ__QuoteLine__c).SBQQ__Quantity__c
-                                                                                              ||((newMap.get(oli.id).Core_Status__c != oldMap.get(oli.id).Core_Status__c) && newMap.get(oli.id).Core_Status__c == Label.Core_LineItem_Status)))
-                                                                                      {
-                                                                                          
-                                                                                          oli.addError(Core_CRM_Utility.getCRMLabel('CRM_SW_Error_Product_Update'));
-                                                                                      }
-                                                                                 
-                                                                                 
-                                                                                
-                                                                              }
+                                                                for(OpportunityLineItem oli : OppList){
+                                                                    if(isInsert && swFlagPrimCheck.containsKey(oli.OpportunityId) 
+                                                                       && swFlagPrimCheck.get(oli.OpportunityId) == true && oli.SBQQ__QuoteLine__c==null ){
+                                                                           oli.addError(Core_CRM_Utility.getCRMLabel('CRM_SW_Error_Product_Update'));
+                                                                       }
+                                                                    if(quoteLineMap.containsKey(oli.SBQQ__QuoteLine__c)){
+                                                                        
+                                                                        if(isUpdate && oldMap.containsKey(oli.id) && newMap.containsKey(oli.id) && oli.SBQQ__QuoteLine__c == quoteLineMap.get(oli.SBQQ__QuoteLine__c).Id
+                                                                           && !prodStatusCheck.contains(newMap.get(oli.id).Core_Status__c) 
+                                                                           && (newMap.get(oli.id).Product2Id != quoteLineMap.get(oli.SBQQ__QuoteLine__c).SBQQ__Product__c
+                                                                               || newMap.get(oli.id).UnitPrice != quoteLineMap.get(oli.SBQQ__QuoteLine__c).SBQQ__NetPrice__c
+                                                                               || newMap.get(oli.id).Quantity != quoteLineMap.get(oli.SBQQ__QuoteLine__c).SBQQ__Quantity__c//)
+                                                                               || ((newMap.get(oli.id).Core_Status__c != oldMap.get(oli.id).Core_Status__c) && newMap.get(oli.id).Core_Status__c == Label.Core_LineItem_Status)))
+                                                                        {
+                                                                            System.debug('Inside newmap'+ quoteLineMap.get(oli.SBQQ__QuoteLine__c).SBQQ__NetPrice__c);
+                                                                            system.debug(newMap.get(oli.id).UnitPrice);
+                                                                            system.debug(oldMap.get(oli.id).UnitPrice);
+                                                                            oli.addError(Core_CRM_Utility.getCRMLabel('CRM_SW_Error_Product_Update'));
+                                                                        }
+                                                                        
+                                                                        
                                                                     }
-                                      }
+                                                                }
+                                                                
+                                                            }
     public static void opportunityLineItemAfterHandler(List<OpportunityLineItem> newList, Map<Id,OpportunityLineItem> newMap,
                                                        List<OpportunityLineItem> oldList, Map<Id,OpportunityLineItem> oldMap,
                                                        Boolean isInsert, Boolean isUpdate, Boolean isDelete) {
                                                            
-                                                           if (isInsert || isUpdate || isDelete)
-                                                               opportunityProductConcatenation(newList, oldList, isDelete);
+                                                           Map<String,Core_Trigger_Executions__c> mapFunctionalityNameTriggerExecution = Core_Trigger_Executions__c.getAll(); 
+                                                           
                                                        }
     
     //START - US89448, US88961 - Remove "Approved Sales Group" and "Approved Opportunity Coverage" field on Opportunity Product on Approval on rejection or recall.  -- Ashwin  
@@ -301,8 +303,8 @@ public without sharing class Core_OpportunityLineItemHandler { //TWC3123-5359 Ad
                                                                 List<OpportunityLineItem> newList, Map<Id,OpportunityLineItem> newMap,
                                                                 Boolean isUpdate){         
                                                                     //START - Added condition to update the Approval Status in Opportunity back to Recalled when Approved Opportunity is recalled by Manager
-                                                                    //Set<Id> opptyIdUpdateSet = new Set<Id>();
-                                                                    //Set<Id> opptyIdSet =new Set<Id>();
+                                                                    Set<Id> opptyIdUpdateSet = new Set<Id>();
+                                                                    Set<Id> opptyIdSet =new Set<Id>();
                                                                     if(isUpdate){                                                                          
                                                                         for(OpportunityLineItem oli : newList){
                                                                             if(oldMap.get(oli.Id).Core_Status__c != CORE_PENDING && oli.Core_Status__c == CORE_PENDING){
@@ -320,17 +322,17 @@ public without sharing class Core_OpportunityLineItemHandler { //TWC3123-5359 Ad
                                                                                 oli.Core_Opp_Approved_Sales_Group__c = '';
                                                                                 oli.Core_Opp_Approved_Oppty_Coverage__c = '';
                                                                                 oli.Core_Approved_KPI_Product_Group__c = '';
-                                                                                oli.Core_Approved_Prime_Account_Name__c = '';  
+                                                                                oli.Core_Approved_Prime_Account_Name__c= '';   
                                                                                 oli.CRM_DW_App_UCD_Customer_Name__c = '';
                                                                                 //END - US102130: CMSSN: Send Account Prime and KPI Product Group to Commissions   
                                                                                 //US176771:SMG 2019: CMSSN- Stamp Opportunity Product Segment at Approval & Send to Commissions
                                                                                 oli.Core_Approved_Opp_Product_Segment__c= '';
                                                                                 oli.Core_Approved_Opportunity_Product_App__c = '';
                                                                             }
-                                                                          
+                                                                            
                                                                         }
                                                                         
-                                                                      
+                                                                        
                                                                         //END - Added condition to update the Approval Status in Opportunity back to Recalled when Approved Opportunity is recalled by Manager
                                                                     }
                                                                 }
@@ -346,7 +348,7 @@ public without sharing class Core_OpportunityLineItemHandler { //TWC3123-5359 Ad
                                                                
                                                                try
                                                                {
-                                                                   //String debugPrefix = 'II: opportunityLineItemAfterHandler - ';            
+                                                                   String debugPrefix = 'II: opportunityLineItemAfterHandler - ';            
                                                                    
                                                                    
                                                                    // Create UNIQUE list of Opportunities to be updated
@@ -407,14 +409,14 @@ public without sharing class Core_OpportunityLineItemHandler { //TWC3123-5359 Ad
                                                                        
                                                                    }        
                                                                    
-                                                                   update oppList;                        
+                                                                   update oppList;   
                                                                    
                                                                    
                                                                    
-                                                               
+                                                                   
                                                                }                                                               
                                                                catch(Exception e){   PMP_Utility.logError(e, 'Core_OpportunityLineItemHandler.opportunityProductConcatenation');
-                                                               }
+                                                                                 }
                                                                opportunityProductConcatenationRecCheck = true;
                                                            }
                                                            
@@ -580,6 +582,647 @@ public without sharing class Core_OpportunityLineItemHandler { //TWC3123-5359 Ad
     }
     
     /*
+* Method name  : addCommissionableTransactions
+* Description  : Adds new Commissionable Transaction entries for each Opportunity Team Member associated with
+*                an newly approved, qualifying OpportunityLineItem.  For OpportunityLineItems that go from  
+*                approved to not approved, inserts new Commissionable Transaction entries corresponding to the 
+*                previous approved entries, whose status is marked as not approved.
+* Return Type  : VOID
+* Parameters   : Trigger.Old, Trigger.oldMap, Trigger.New, Trigger.newMap, Trigger.isInsert, Trigger.isUpdate
+*/
+    
+    /*public static void addCommissionableTransactions(List<OpportunityLineItem> oldOPList, Map<Id,OpportunityLineItem> oldOPMap,
+List<OpportunityLineItem> newOPList, Map<Id,OpportunityLineItem> newOPMap,
+Boolean isInsert, Boolean isUpdate)
+{
+
+if(!alreadyAddedCommissionableTransactions) {
+alreadyAddedCommissionableTransactions = true;
+// START: US176770 SMG 2019: CMSSN- Only Send Data for Certain Combinations Dt:2/18/2019
+Map<String,Core_Trigger_Executions__c> mapFunctionalityNameTriggerExecution = Core_Trigger_Executions__c.getAll();
+List<Core_Commissionable_Transaction__c> newTxns = new List<Core_Commissionable_Transaction__c>();
+
+//Set of all new approved opportunity products that are changing to "approved"
+Set<OpportunityLineItem> approvedOPs = new Set<OpportunityLineItem>();
+// Map of all rejected opportunity productts
+Map<ID,OpportunityLineItem> rejectedOPs = new Map<ID,OpportunityLineItem>();
+
+String approvedBUShortName;
+String approvedSalesGroup;
+String approvedPrimeAccountNm;
+String approvedOppProdSeg;
+String approvedBUProdSeg ; 
+List<Core_Commission_Account_BU_SG_Setting__c> commCustSList;
+commCustSList = Core_Commission_Account_BU_SG_Setting__c.getall().values();
+Map<String, Core_Commission_Account_BU_SG_Setting__c> CustSettingsMap = new Map<String, Core_Commission_Account_BU_SG_Setting__c>();
+
+for(Core_Commission_Account_BU_SG_Setting__c cs : commCustSList)
+{
+if(cs.Core_IsActive__c){
+
+if(cs.Core_Approved_BU_Short_Name__c == null || cs.Core_Approved_BU_Short_Name__c == 'null' || cs.Core_Approved_BU_Short_Name__c == 'Null' || cs.Core_Approved_BU_Short_Name__c == 'NULL' || (cs.Core_Approved_BU_Short_Name__c).equalsIgnoreCase ('any') ){
+approvedBUShortName = '<any>';
+}else{
+approvedBUShortName = (cs.Core_Approved_BU_Short_Name__c).toLowerCase();
+}
+
+if(cs.Core_Approved_Sales_Group__c ==null || cs.Core_Approved_Sales_Group__c== 'null' || cs.Core_Approved_Sales_Group__c=='Null' || cs.Core_Approved_Sales_Group__c=='Null' || (cs.Core_Approved_Sales_Group__c).equalsIgnoreCase ('any')){
+approvedSalesGroup = '<any>';
+}else{
+approvedSalesGroup = (cs.Core_Approved_Sales_Group__c).toLowerCase() ; 
+}
+
+if(cs.Core_Approved_Prime_Account_Name__c ==null || cs.Core_Approved_Prime_Account_Name__c== 'null' || cs.Core_Approved_Prime_Account_Name__c=='Null' || cs.Core_Approved_Prime_Account_Name__c=='NULL' || (cs.Core_Approved_Prime_Account_Name__c).equalsIgnoreCase('any')){
+approvedPrimeAccountNm = '<any>';
+}else{
+approvedPrimeAccountNm = (cs.Core_Approved_Prime_Account_Name__c).toLowerCase() ; 
+}
+if(cs.Core_Approved_Opp_Product_Segment__c ==null || cs.Core_Approved_Opp_Product_Segment__c== 'null' || cs.Core_Approved_Opp_Product_Segment__c=='Null' || cs.Core_Approved_Opp_Product_Segment__c=='NULL' || (cs.Core_Approved_Opp_Product_Segment__c).equalsIgnoreCase('any') ){
+approvedOppProdSeg = '<any>';
+}else{
+approvedOppProdSeg = (cs.Core_Approved_Opp_Product_Segment__c).toLowerCase() ; 
+}
+if(cs.Core_Approved_BU_Product_Segment__c ==null || cs.Core_Approved_BU_Product_Segment__c== 'null' || cs.Core_Approved_BU_Product_Segment__c=='Null' || cs.Core_Approved_BU_Product_Segment__c=='NULL' || (cs.Core_Approved_BU_Product_Segment__c).equalsIgnoreCase('any') ){
+approvedBUProdSeg = '<any>';
+}else{
+approvedBUProdSeg = (cs.Core_Approved_BU_Product_Segment__c).toLowerCase() ; 
+}
+
+CustSettingsMap.put(approvedBUShortName.trim()+'_'+approvedSalesGroup.trim()+'_'+approvedPrimeAccountNm.trim()+'_'+approvedOppProdSeg.trim()+'_'+approvedBUProdSeg.trim(), cs); 
+
+}
+}
+// END : US176770SMG 2019: CMSSN- Only Send Data for Certain Combinations Dt:2/18/2019
+
+for (OpportunityLineItem op : newOPList) {                
+// If (this is an update trigger, new status is approved and prior status was not approved)
+//DE30417 - Adding null pointer checks on the if condition -- Ashwin
+if((isInsert && op.Core_System_Commissionable__c == null || op.Core_Status__c == null) || (isUpdate && op.Core_Status__c == null && oldOPMap.get(op.Id).Core_Status__c == null)){
+continue;
+}
+//START - US102130: CMSSN: Send Account Prime and KPI Product Group to Commissions and Only Design Opportunities are to be sent for commissions.
+//DE39467 - Added Null pointer check for Core_Opp_OpportunityType__c -- Ashwin
+
+if (
+(isInsert && (op.Core_System_Commissionable__c).equalsIgnoreCase('Yes') && (op.Core_Status__c).equalsIgnoreCase(Label.Core_Commissionable_Transaction_OP_Approved_Status) && op.Core_Opp_OpportunityType__c != null && op.Core_Opp_OpportunityType__c.contains('Design')) ||
+((isUpdate && (op.Core_System_Commissionable__c).equalsIgnoreCase('Yes') && (op.Core_Status__c).equalsIgnoreCase(Label.Core_Commissionable_Transaction_OP_Approved_Status) && op.Core_Opp_OpportunityType__c != null && op.Core_Opp_OpportunityType__c.contains('Design')) 
+&& !((oldOPMap.get(op.Id).Core_Status__c).equalsIgnoreCase(Label.Core_Commissionable_Transaction_OP_Approved_Status)))) {
+
+//Add this opportunity product to set of all newly approved, commissionable opportunity products
+// START: US176770 SMG 2019: CMSSN- Only Send Data for Certain Combinations Dt:2/18/2019
+if(mapFunctionalityNameTriggerExecution.containsKey('oppLineCommissionTxnNewLogic') && 
+mapFunctionalityNameTriggerExecution.get('oppLineCommissionTxnNewLogic').Core_Active__c){
+if(oppLineCommissionTxnNewLogic (CustSettingsMap,op)){
+
+// add line items newly approved as per new commission logic.
+approvedOPs.add(op);     
+}
+}else{
+// add line items newly approved as per old commission logic.
+approvedOPs.add(op);
+}
+// END: US176770 SMG 2019: CMSSN- Only Send Data for Certain Combinations Dt:2/18/2019                     
+}
+
+//Else if this is an update trigger, new status is not approved, and prior status was approved
+else if (isUpdate 
+&& (!((op.Core_Status__c).equalsIgnoreCase(Label.Core_Commissionable_Transaction_OP_Approved_Status) || 
+(op.Core_Status__c).equalsIgnoreCase(Label.Core_Commissionable_Transaction_Opportunity_Product_Production_Win_Status) ||
+(op.Core_Status__c).equalsIgnoreCase(Label.Core_Commissionable_Transaction_Opportunity_Product_Production_Lost_Status) ||
+(op.Core_Status__c).equalsIgnoreCase(Label.Core_Commissionable_Transaction_Opportunity_Product_Production_Cancelled_Status)) 
+&& ((oldOPMap.get(op.Id).Core_Status__c).equalsIgnoreCase(Label.Core_Commissionable_Transaction_OP_Approved_Status)) 
+&& ((op.Core_System_Commissionable__c).equalsIgnoreCase('Yes') && op.Core_Opp_OpportunityType__c != null && op.Core_Opp_OpportunityType__c.contains('Design')))
+||((op.Core_Status__c).equalsIgnoreCase(Label.Core_Commissionable_Transaction_OP_Pending_Status)||
+(op.Core_Status__c).equalsIgnoreCase(Label.Core_Commissionable_Transaction_OP_Lost_Status)||
+(op.Core_Status__c).equalsIgnoreCase(Label.Core_Commissionable_Transaction_OP_Cancelled_Status)||
+(op.Core_Status__c).equalsIgnoreCase(Label.Core_Commissionable_Transaction_OP_OnHold_Status)||
+(op.Core_Status__c).equalsIgnoreCase(Label.Core_Commissionable_Transaction_OP_Deleted_Status))
+&& ((oldOPMap.get(op.Id).Core_Status__c).equalsIgnoreCase(Label.Core_Commissionable_Transaction_Opportunity_Product_Production_Win_Status)
+||(oldOPMap.get(op.Id).Core_Status__c).equalsIgnoreCase(Label.Core_Commissionable_Transaction_Opportunity_Product_Production_Lost_Status)
+||(oldOPMap.get(op.Id).Core_Status__c).equalsIgnoreCase(Label.Core_Commissionable_Transaction_Opportunity_Product_Production_Cancelled_Status))
+&& ((op.Core_System_Commissionable__c).equalsIgnoreCase('Yes') && op.Core_Opp_OpportunityType__c != null && op.Core_Opp_OpportunityType__c.contains('Design'))
+) //DE39467 - Added Null pointer check for Core_Opp_OpportunityType__c -- Ashwin
+{
+//Add this opportunity product to map of rejected opportunity products
+rejectedOPs.put(op.ID, op);                             
+}    
+//END - US102130: CMSSN: Send Account Prime and KPI Product Group to Commissions and Only Design Opportunities are to be sent for commissions.              
+}
+
+//Handle rejections ---------------------------------------------
+//Get a list of commissionableTxns associated with every rejected opportunity product
+//START - US106358: CMSSN: Send Product Segment to Commissions, added the field product segment commission transaction query
+//US106973: CMSSN: Send Additional Fields to Commissions Added - Core_Approved_BU_Product_Segment__c & Core_Approved_Sales_Group__c
+List<Core_Commissionable_Transaction__c> txnList = [
+SELECT Core_Account_ID__c,Core_Account_Name__c,Core_Approved_Total_Price__c,Core_Claim_Date__c,
+Core_Employee_ID__c,Core_Employee_Name__c,Core_Last_Approved_Date__c,
+Core_Milestone_Area__c,Core_Milestone_Focus__c,Core_Milestone_ID__c,Core_Milestone__c,Core_Opportunity_Name__c,
+Core_Opportunity_Team_Member_Role__c,Core_Opportunity_Type__c,Core_Opportunity__c,Core_Percent_Contribution__c,
+Core_Product2_ID__c,Core_Product_Type__c,Core_Source_ID__c,Core_Status__c,Core_Transaction_Timestamp__c,
+Core_Transaction_Type__c,Core_WWID__c,Core_Approved_BU_Short_Name__c,Core_Approved_KPI_Prod_Grp__c ,Core_Product_Segment__c, Core_Approved_BU_Product_Segment__c, Core_Approved_Sales_Group__c
+FROM Core_Commissionable_Transaction__c
+WHERE Core_Source_ID__c in :rejectedOPs.keySet()
+];//US102130: CMSSN: Send Account Prime and KPI Product Group to Commissions and Only Design Opportunities are to be sent for commissions Modified the query to inclide the Prime Account and KPI product group -- Ashwin.
+//END - US106358: CMSSN: Send Product Segment to Commissions, added the field product segment commission transaction query
+Map<ID,DateTime> rejectedOPMostRecentTimestamp = new Map<ID,DateTime>();
+List<Core_Commissionable_Transaction__c> rejectedTransactions = new List<Core_Commissionable_Transaction__c>();
+
+for (ID rejectedOP : rejectedOPs.keySet()) {
+//Find the most recent timestamp in the list of transactions for this OP
+DateTime mostRecentTimestamp = DateTime.newInstanceGMT(2000, 1, 1, 12, 0, 0);
+for (Core_Commissionable_Transaction__c ct : txnList) {
+if (ct.Core_Source_ID__c == rejectedOP && ct.Core_Transaction_Timestamp__c > mostRecentTimestamp)
+mostRecentTimestamp = ct.Core_Transaction_Timestamp__c;
+}                
+//Iterate again through the list of transactions to get all transactions matching this OP and timestamp, 
+// and add to list of rejected transactions
+for (Core_Commissionable_Transaction__c ct : txnList) {
+if (ct.Core_Source_ID__c == rejectedOP && ct.Core_Transaction_Timestamp__c == mostRecentTimestamp && ct.Core_Status__c == 'Approved')
+rejectedTransactions.add(ct);
+}
+}
+
+//Iterate through the set, replacing the Transaction Timestamp with current time, and set status to current status.
+//(If no match was found, do nothing)
+for (Core_Commissionable_Transaction__c rejectedTransaction : rejectedTransactions) {
+rejectedTransaction.Core_Transaction_Timestamp__c = System.now();
+rejectedTransaction.Core_Status__c = rejectedOPs.get(rejectedTransaction.Core_Source_ID__c).Core_Status__c;
+rejectedTransaction.Id = null;
+//Add the modified transaction to newTxn
+newTxns.add(rejectedTransaction);
+}
+//Handle approvals ---------------------------------------------
+//Iterate through set of OPs changing to "approved", generate a set of Opportunity IDs
+Set<ID> opportunityIDs = new Set<ID>();
+Set<ID> productIDs = new Set<ID>();
+for (OpportunityLineItem approvedOP : approvedOPs) {
+opportunityIDs.add(approvedOP.OpportunityId);
+
+}
+
+//Generate an Opportunity map based on the set, keyed by Opportunity ID (Name, Type)
+//Also generate a set of account IDs
+Map<ID, Opportunity> opportunities = new Map<ID, Opportunity>();    
+Set<ID> accountIDs = new Set<ID>();
+for (Opportunity o : [SELECT o.ID, o.Name, o.Core_Opportunity_Type__c, o.AccountId FROM Opportunity o WHERE o.ID in :opportunityIDs]) {
+opportunities.put(o.ID, o);
+accountIDs.add(o.AccountId);
+}       
+
+//Generate an Account map (CIM ID, Name)
+Map<ID, Account> accounts = new Map<ID, Account>();
+for (Account account: [SELECT a.ID, a.Name FROM Account a WHERE a.ID in :accountIDs] )
+accounts.put(account.ID, account);    
+
+//Generate an Opportunity Team Member map based on keys of the Opportunity map  (Team Role) 
+Map<ID, OpportunityTeamMember> opportunityTeamMembers = new Map<ID, OpportunityTeamMember>();
+Set<ID> userIDs = new Set<ID>();
+for (OpportunityTeamMember otm : [SELECT o.ID, o.TeamMemberRole, o.UserId, o.OpportunityId FROM OpportunityTeamMember o WHERE o.OpportunityId in :opportunities.keySet()]) {
+opportunityTeamMembers.put(otm.ID, otm);
+userIDs.add(otm.UserId);
+}
+
+//Generate a User map (Name, WWID)
+Map<ID, User> users = new Map<ID, User>();
+for (User user: [SELECT u.ID, u.Name, u.Core_WWID__c, u.Core_Employee_Type_Code__c FROM User u WHERE u.ID in :userIDs] )
+users.put(user.ID, user);
+
+Core_Commissionable_Transaction__c txn;
+Core_Commissionable_Transaction__c opTxn;
+
+//Iterate through the approvedOP set
+for (OpportunityLineItem approvedOP : approvedOPs) {        
+opTxn = new Core_Commissionable_Transaction__c();
+
+//Use maps to collate transaction attributes above the user level        
+opTxn.Core_Source_ID__c = approvedOP.Id;
+opTxn.Core_Transaction_Timestamp__c = System.now();
+opTxn.Core_Account_ID__c = opportunities.get(approvedOP.OpportunityId).AccountId;
+opTxn.Core_Account_Name__c = accounts.get(opportunities.get(approvedOP.OpportunityId).AccountId).Name;
+//  opTxn.Core_CIM_ID__c = accounts.get(opportunities.get(approvedOP.OpportunityId).AccountId).Core_CIM_ID__c;
+if(approvedOP.Core_Claim_Date__c != null)
+opTxn.Core_Claim_Date__c = approvedOP.Core_Claim_Date__c.date();
+//opTxn.Core_Last_Approved_Date__c = System.now().date();
+if(approvedOP.Core_Approved_Date__c == null)
+{
+//in production, we always expect this code to run -- when a product is newly approved, the approved date usually gets populated after this
+opTxn.Core_Last_Approved_Date__c = System.now().date();
+}
+else
+{
+//in case of manual data updates, this code may need to run instead
+opTxn.Core_Last_Approved_Date__c = date.newinstance(approvedOP.Core_Approved_Date__c.year(), approvedOP.Core_Approved_Date__c.month(), approvedOP.Core_Approved_Date__c.day());
+}
+//START - US102130: CMSSN: Send Account Prime and KPI Product Group to Commissions
+if(approvedOP.Core_Approved_KPI_Product_Group__c != null){
+opTxn.Core_Approved_KPI_Prod_Grp__c = approvedOP.Core_Approved_KPI_Product_Group__c;
+}
+if(approvedOP.Core_Approved_Prime_Account_Name__c != null){
+opTxn.Core_Approved_Prime_AccountName__c = approvedOP.Core_Approved_Prime_Account_Name__c;
+} 
+//END - US102130: CMSSN: Send Account Prime and KPI Product Group to Commissions
+//Approved_Total_Price gets updated post-approval after this trigger runs, so we need to rely on total price
+//START - US106358: CMSSN: Send Product Segment to Commissions
+if(approvedOP.Core_Product_Segment__c != null){
+opTxn.Core_Product_Segment__c = approvedOP.Core_Product_Segment__c;
+}
+//END - US106358: CMSSN: Send Product Segment to Commissions
+//START - US106973: CMSSN: Send Additional Fields to Commissions Added - Core_Approved_BU_Product_Segment__c & Core_Approved_Sales_Group__c
+if(approvedOP.Core_BU_Product_Segment__c != null){
+opTxn.Core_Approved_BU_Product_Segment__c = approvedOP.Core_BU_Product_Segment__c;
+}
+if(approvedOP.Core_Opp_Approved_Sales_Group__c != null){
+opTxn.Core_Approved_Sales_Group__c = approvedOP.Core_Opp_Approved_Sales_Group__c;
+}
+//END - US106973: CMSSN: Send Additional Fields to Commissions Added - Core_Approved_BU_Product_Segment__c & Core_Approved_Sales_Group__c
+opTxn.Core_Approved_Total_Price__c = approvedOP.TotalPrice;
+
+opTxn.Core_Product2_ID__c = approvedOP.Product2Id;
+opTxn.Core_Product_Type__c = approvedOP.Core_Product_Type__c;
+
+
+//This will always be approved
+opTxn.Core_Status__c = Label.Core_Commissionable_Transaction_Approved_Status;
+opTxn.Core_Opportunity__c = approvedOP.OpportunityId;
+opTxn.Core_Opportunity_Name__c = opportunities.get(approvedOP.OpportunityId).Name;
+opTxn.Core_Opportunity_Type__c = opportunities.get(approvedOP.OpportunityId).Core_Opportunity_Type__c;
+
+//Get Transaction Type via custom setting
+opTxn.Core_Transaction_Type__c = Core_Commissionable_Transaction_Type__c.getInstance('Any Opportunity Product').Core_Commissionable_Transaction_Type__c;
+
+//Get BU Short Name 
+opTxn.Core_Approved_BU_Short_Name__c = approvedOP.Core_BU_Short_Name__c;
+
+//Map team-member level attributes for each team member matching this opportunity
+for (ID otmID : opportunityTeamMembers.keySet()) {  
+OpportunityTeamMember otm = opportunityTeamMembers.get(otmId);
+
+// Add to commissions only if the team member is Employee AND if the team member role is valid (listed in Core_Commissions_Percent_Contribution__c)
+if (otm.OpportunityId == approvedOP.OpportunityId &&
+users.get(otm.UserId).Core_Employee_Type_Code__c == 'EMP' && Core_Commissions_Percent_Contribution__c.getInstance(otm.TeamMemberRole) != null) {
+txn = new Core_Commissionable_Transaction__c();
+txn.Core_Employee_ID__c = otm.UserId;
+txn.Core_Employee_Name__c = users.get(otm.UserId).Name;
+txn.Core_WWID__c = users.get(otm.UserId).Core_WWID__c;
+txn.Core_Opportunity_Team_Member_Role__c = otm.TeamMemberRole;
+txn.Core_Percent_Contribution__c = Core_Commissions_Percent_Contribution__c.getInstance(otm.TeamMemberRole).Core_Percent_Contribution__c;
+
+
+//Gather transaction attributes above the user level, add to newTxn        
+txn.Core_Source_ID__c = opTxn.Core_Source_ID__c;
+txn.Core_Transaction_Timestamp__c = opTxn.Core_Transaction_Timestamp__c;
+txn.Core_Account_ID__c = opTxn.Core_Account_ID__c;
+txn.Core_Account_Name__c = opTxn.Core_Account_Name__c;
+// txn.Core_CIM_ID__c = opTxn.Core_CIM_ID__c;
+txn.Core_Claim_Date__c = opTxn.Core_Claim_Date__c;
+txn.Core_Last_Approved_Date__c = opTxn.Core_Last_Approved_Date__c;
+txn.Core_Approved_Total_Price__c = opTxn.Core_Approved_Total_Price__c;
+
+txn.Core_Product2_ID__c = opTxn.Core_Product2_ID__c;
+txn.Core_Product_Type__c = opTxn.Core_Product_Type__c;
+
+txn.Core_Status__c = opTxn.Core_Status__c;
+txn.Core_Opportunity__c = opTxn.Core_Opportunity__c;
+txn.Core_Opportunity_Name__c = opTxn.Core_Opportunity_Name__c;
+txn.Core_Opportunity_Type__c = opTxn.Core_Opportunity_Type__c;
+txn.Core_Transaction_Type__c = opTxn.Core_Transaction_Type__c;
+txn.Core_Approved_BU_Short_Name__c = opTxn.Core_Approved_BU_Short_Name__c;
+//START - US102130: CMSSN: Send Account Prime and KPI Product Group to Commissions
+txn.Core_Approved_KPI_Prod_Grp__c = opTxn.Core_Approved_KPI_Prod_Grp__c;
+//   txn.Core_Approved_Prime_AccountName__c = opTxn.Core_Approved_Prime_AccountName__c;
+//END - US102130: CMSSN: Send Account Prime and KPI Product Group to Commissions
+//START - US106358: CMSSN: Send Product Segment to Commissions
+txn.Core_Product_Segment__c = opTxn.Core_Product_Segment__c;
+//END - US106358: CMSSN: Send Product Segment to Commissions
+
+//START - US106973: CMSSN: Send Additional Fields to Commissions Added - Core_Approved_BU_Product_Segment__c & Core_Approved_Sales_Group__c
+txn.Core_Approved_Sales_Group__c = opTxn.Core_Approved_Sales_Group__c; 
+txn.Core_Approved_BU_Product_Segment__c = opTxn.Core_Approved_BU_Product_Segment__c;
+//END - US106973: CMSSN: Send Additional Fields to Commissions Added - Core_Approved_BU_Product_Segment__c & Core_Approved_Sales_Group__c
+newTxns.add(txn);
+}
+
+}
+}
+
+insert newTxns;
+}
+}*/
+    
+    /*
+* Method name  : oppLineCommissionTxnNewLogic()
+* Description  : Check the combinition of 'BU short Name, Sales group, Prime account name , Opp product segment and BU product segment.
+*                US176770 - SMG 2019: CMSSN- Only Send Data for Certain Combinations
+* Return Type  : Boolean
+* Parameter    : List of Opportunity Line items
+*/ 
+    /* public static Boolean oppLineCommissionTxnNewLogic ( Map<String, Core_Commission_Account_BU_SG_Setting__c> CustSettingsMap, OpportunityLineItem op) {
+
+// START: US176770SMG 2019: CMSSN- Only Send Data for Certain Combinations Dt:2/18/2019
+Boolean isCommissionTxn = false;
+String approvedBUShortName;
+String approvedSalesGroup;
+String approvedPrimeAccountNm;
+String approvedOppProdSeg;
+String approvedBUProdSeg;
+
+
+String finalCommissionKey, commisionKey1, commisionKey2, commisionKey3,commisionKey4,commisionKey5,commisionKey6,commisionKey7,commisionKey8,commisionKey9,commisionKey10;
+String commisionKey11, commisionKey12, commisionKey13,commisionKey14,commisionKey15,commisionKey16,commisionKey17 ;
+
+
+if(op.Core_BU_Short_Name__c ==null || op.Core_BU_Short_Name__c== 'null' || op.Core_BU_Short_Name__c=='Null' || op.Core_BU_Short_Name__c=='NULL'  ){
+approvedBUShortName = '<any>';
+}else{
+approvedBUShortName = (op.Core_BU_Short_Name__c).toLowerCase() ; 
+}
+
+if(op.Core_Opp_Approved_Sales_Group__c ==null || op.Core_Opp_Approved_Sales_Group__c== 'null' || op.Core_Opp_Approved_Sales_Group__c=='Null' || op.Core_Opp_Approved_Sales_Group__c=='NULL'  ){
+approvedSalesGroup = '<any>';
+}else{
+approvedSalesGroup = (op.Core_Opp_Approved_Sales_Group__c).toLowerCase() ; 
+}
+if(op.Core_Approved_Prime_Account_Name__c ==null || op.Core_Approved_Prime_Account_Name__c== 'null' || op.Core_Approved_Prime_Account_Name__c=='Null' || op.Core_Approved_Prime_Account_Name__c=='NULL'  ){
+approvedPrimeAccountNm = '<any>';
+}else{
+approvedPrimeAccountNm = (op.Core_Approved_Prime_Account_Name__c).toLowerCase() ; 
+}
+if(op.Core_Approved_Opp_Product_Segment__c ==null || op.Core_Approved_Opp_Product_Segment__c== 'null' || op.Core_Approved_Opp_Product_Segment__c=='Null' || op.Core_Approved_Opp_Product_Segment__c=='NULL'  ){
+approvedOppProdSeg = '<any>';
+}else{
+approvedOppProdSeg = (op.Core_Approved_Opp_Product_Segment__c).toLowerCase() ; 
+}
+if(op.Core_BU_Product_Segment__c ==null || op.Core_BU_Product_Segment__c== 'null' || op.Core_BU_Product_Segment__c=='Null' || op.Core_BU_Product_Segment__c=='NULL'  ){
+approvedBUProdSeg = '<any>';
+}else{
+approvedBUProdSeg = (op.Core_BU_Product_Segment__c).toLowerCase() ; 
+}
+
+
+
+commisionKey1  ='<any>'+'_'+'<any>'+'_'+'<any>'+'_'+'<any>'; // all product will be allowed for commision 
+commisionKey2  =approvedBUShortName.trim()+'_'+'<any>'+'_'+'<any>'+'_'+'<any>'+'_'+'<any>'; // if BU short name PSG , 
+commisionKey3  =approvedBUShortName.trim()+'_'+approvedSalesGroup.trim()+'_'+'<Any>'+'_'+'<any>'+'_'+'<any>'; 
+commisionKey4  =approvedBUShortName.trim()+'_'+approvedSalesGroup.trim()+'_'+approvedPrimeAccountNm.trim()+'_'+'<any>'+'_'+'<any>'; 
+commisionKey5  =approvedBUShortName.trim()+'_'+approvedSalesGroup.trim()+'_'+approvedPrimeAccountNm.trim()+'_'+approvedOppProdSeg.trim()+'_'+'<any>';
+commisionKey6  =approvedBUShortName.trim()+'_'+approvedSalesGroup.trim()+'_'+approvedPrimeAccountNm.trim()+'_'+'<any>'+'_'+approvedBUProdSeg.trim();
+commisionKey7  =approvedBUShortName.trim()+'_'+approvedSalesGroup.trim()+'_'+approvedPrimeAccountNm.trim()+'_'+approvedOppProdSeg.trim() +'_'+approvedBUProdSeg.trim();
+commisionKey8  =approvedBUShortName.trim()+'_'+approvedSalesGroup.trim()+'_'+'<any>'+'_'+approvedOppProdSeg.trim()+'_'+approvedBUProdSeg.trim();
+commisionKey9  =approvedBUShortName.trim()+'_'+approvedSalesGroup.trim()+'_'+'<any>'+'_'+approvedOppProdSeg.trim()+'_'+'<any>';
+commisionKey10 =approvedBUShortName.trim()+'_'+approvedSalesGroup.trim()+'_'+'<any>'+'_'+'<any>'+'_'+approvedBUProdSeg.trim();
+commisionKey11 =approvedBUShortName.trim()+'_'+'<any>'+'_'+'<any>'+'_'+approvedOppProdSeg.trim()+'_'+approvedBUProdSeg.trim();
+commisionKey12 =approvedBUShortName.trim()+'_'+'<any>'+'_'+'<any>'+'_'+approvedOppProdSeg.trim()+'_'+'<any>';
+commisionKey13 =approvedBUShortName.trim()+'_'+'<any>'+'_'+'<any>'+'_'+'<any>'+'_'+approvedBUProdSeg.trim();
+commisionKey14 =approvedBUShortName.trim()+'_'+'<any>'+'_'+approvedPrimeAccountNm.trim()+'_'+approvedOppProdSeg.trim()+'_'+approvedBUProdSeg.trim();
+commisionKey15 =approvedBUShortName.trim()+'_'+'<any>'+'_'+approvedPrimeAccountNm.trim()+'_'+'<any>'+'_'+'<any>';
+commisionKey16 =approvedBUShortName.trim()+'_'+'<any>'+'_'+approvedPrimeAccountNm.trim()+'_'+approvedOppProdSeg.trim()+'_'+'<any>';
+commisionKey17 =approvedBUShortName.trim()+'_'+'<any>'+'_'+approvedPrimeAccountNm.trim()+'_'+'<any>'+'_'+approvedBUProdSeg.trim();
+
+finalCommissionKey = '';        
+if(CustSettingsMap.containsKey(commisionKey1)){
+finalCommissionKey = commisionKey1;
+}else if(CustSettingsMap.containsKey(commisionKey2)){
+finalCommissionKey = commisionKey2;
+}else if(CustSettingsMap.containsKey(commisionKey3)){
+finalCommissionKey = commisionKey3;
+}else if(CustSettingsMap.containsKey(commisionKey4)){
+finalCommissionKey = commisionKey4;
+}else if(CustSettingsMap.containsKey(commisionKey5)){
+finalCommissionKey = commisionKey5;
+}else if(CustSettingsMap.containsKey(commisionKey6)){
+finalCommissionKey = commisionKey6;
+}else if(CustSettingsMap.containsKey(commisionKey7)){
+finalCommissionKey = commisionKey7;
+}else if(CustSettingsMap.containsKey(commisionKey8)){
+finalCommissionKey = commisionKey8;
+}else if(CustSettingsMap.containsKey(commisionKey9)){
+finalCommissionKey = commisionKey9;
+}else if(CustSettingsMap.containsKey(commisionKey10)){
+finalCommissionKey = commisionKey10;
+}else if(CustSettingsMap.containsKey(commisionKey11)){
+finalCommissionKey = commisionKey11;
+}else if(CustSettingsMap.containsKey(commisionKey12)){
+finalCommissionKey = commisionKey12;
+}else if(CustSettingsMap.containsKey(commisionKey13)){
+finalCommissionKey = commisionKey13;
+}else if(CustSettingsMap.containsKey(commisionKey14)){
+finalCommissionKey = commisionKey14;
+}else if(CustSettingsMap.containsKey(commisionKey15)){
+finalCommissionKey = commisionKey15;
+}else if(CustSettingsMap.containsKey(commisionKey16)){
+finalCommissionKey = commisionKey16;
+}else if(CustSettingsMap.containsKey(commisionKey17)){
+finalCommissionKey = commisionKey17;
+}
+
+if(finalCommissionKey <> '' && op.Core_Claim_Date__c >= CustSettingsMap.get(finalCommissionKey).Core_Claim_Date_From__c && op.Core_Claim_Date__c <= CustSettingsMap.get(finalCommissionKey).Core_Claim_Date_To__c){
+isCommissionTxn = true;
+}
+return isCommissionTxn;
+// END : US176770SMG 2019: CMSSN- Only Send Data for Certain Combinations Dt:2/18/2019
+}*/
+    /*
+* Method name  : setBUShortName()
+* Description  : Query and Process the records to update BU Shortname on Opty line items
+* Return Type  : VOID
+* Parameter    : List of Opportunity Line items
+*/ 
+    /*public static void setBUShortName(List<OpportunityLineItem> newItems){
+Map<OpportunityLineItem,List<Core_BU_Mapping_Table__c>> lineItemBUTableMap= new Map<OpportunityLineItem,List<Core_BU_Mapping_Table__c>>();        
+List<Core_BU_Mapping_Table__c> listOfBUShortName = new List<Core_BU_Mapping_Table__c>();
+Map<String,Id> mapOfBUShrotNames = new Map<String,Id>();       
+List<OpportunityLineItem> failedList = new List<OpportunityLineItem>();        
+listOfBUShortName = [SELECT Core_BU_Segment__c,Core_BU_Shortname__c,Core_Division_Shortname__c,Core_Product_Application__c,Core_Product_Segment__c,Core_Weightage__c,isDeleted,Name,Core_Product_Type__c FROM Core_BU_Mapping_Table__c where isDeleted=false];    
+
+//DE30417 - Adding null pointer check for listOfBUShortName on the if condition -- Ashwin
+if(newItems != null && listOfBUShortName != null && newItems.size()>0 && listOfBUShortName.size()>0){
+for(OpportunityLineItem lineItemObj: newItems){                                                        
+//   if(!lineItemObj.Core_product2_division__c.EqualsIgnoreCase('Write In Product')){ //US102413-Removed if block condition 'Write In Product--Rajesh                                         
+for(Core_BU_Mapping_Table__c mappingTableObj:listOfBUShortName){                        
+//0001
+if(mappingTableObj.Core_Product_Type__c==null && 
+(mappingTableObj.Core_Division_Shortname__c==null) &&
+mappingTableObj.Core_Product_Segment__c==null && 
+lineItemObj.Core_Product_Application__c!=null && 
+mappingTableObj.Core_Product_Application__c==lineItemObj.Core_Product_Application__c){
+nextChk=0001;
+lineItemBUTableMap =  alignMapValues(mappingTableObj,lineItemObj,lineItemBUTableMap);
+
+}
+//0011
+else if(mappingTableObj.Core_Product_Type__c==null && 
+(mappingTableObj.Core_Division_Shortname__c==null ) &&
+lineItemObj.Core_Product_Segment__c!=null && 
+mappingTableObj.Core_Product_Segment__c==lineItemObj.Core_Product_Segment__c &&
+mappingTableObj.Core_Product_Application__c==lineItemObj.Core_Product_Application__c && 
+lineItemObj.Core_Product_Application__c!=null){
+nextChk=0011;
+lineItemBUTableMap = alignMapValues(mappingTableObj,lineItemObj,lineItemBUTableMap);
+
+}
+//0010
+else if(mappingTableObj.Core_Product_Type__c==null && 
+(mappingTableObj.Core_Division_Shortname__c==null ) &&
+mappingTableObj.Core_Product_Segment__c==lineItemObj.Core_Product_Segment__c && 
+lineItemObj.Core_Product_Segment__c!=null && 
+mappingTableObj.Core_Product_Application__c== null){
+nextChk=0010;
+lineItemBUTableMap = alignMapValues(mappingTableObj,lineItemObj,lineItemBUTableMap);
+
+}
+//0100
+else if(mappingTableObj.Core_Product_Type__c==null && 
+(mappingTableObj.Core_Division_Shortname__c==lineItemObj.Core_Division__c  ||((lineItemObj.Core_Division__c==null || lineItemObj.Core_Division__c.isNumeric()) && mappingTableObj.Core_Division_Shortname__c!=null &&
+lineItemObj.Core_product2_division__c.containsIgnoreCase(mappingTableObj.Core_Division_Shortname__c)) || ((lineItemObj.Core_Division__c==null || lineItemObj.Core_Division__c.isNumeric()) && lineItemObj.Core_product2_division__c.containsIgnoreCase(mappingTableObj.Core_BU_Shortname__c))) &&                            
+mappingTableObj.Core_Product_Segment__c==null && 
+mappingTableObj.Core_Product_Application__c== null){
+nextChk=0100;
+lineItemBUTableMap = alignMapValues(mappingTableObj,lineItemObj,lineItemBUTableMap);
+
+}
+//0101
+else if(mappingTableObj.Core_Product_Type__c==null && 
+(mappingTableObj.Core_Division_Shortname__c==lineItemObj.Core_Division__c  ||((lineItemObj.Core_Division__c==null || lineItemObj.Core_Division__c.isNumeric()) && mappingTableObj.Core_Division_Shortname__c!=null &&
+lineItemObj.Core_product2_division__c.containsIgnoreCase(mappingTableObj.Core_Division_Shortname__c)) || (lineItemObj.Core_product2_division__c.containsIgnoreCase(mappingTableObj.Core_BU_Shortname__c) && (lineItemObj.Core_Division__c==null || lineItemObj.Core_Division__c.isNumeric()))) &&                            
+mappingTableObj.Core_Product_Segment__c==null && 
+mappingTableObj.Core_Product_Application__c==lineItemObj.Core_Product_Application__c && 
+lineItemObj.Core_Product_Application__c!=null){
+nextChk=0101;
+lineItemBUTableMap = alignMapValues(mappingTableObj,lineItemObj,lineItemBUTableMap);
+
+
+}
+//0111
+else if(mappingTableObj.Core_Product_Type__c==null && 
+mappingTableObj.Core_Division_Shortname__c!=null &&
+(mappingTableObj.Core_Division_Shortname__c==lineItemObj.Core_Division__c  ||(lineItemObj.Core_product2_division__c.containsIgnoreCase(mappingTableObj.Core_Division_Shortname__c) && (lineItemObj.Core_Division__c==null || lineItemObj.Core_Division__c.isNumeric())) || (lineItemObj.Core_product2_division__c.containsIgnoreCase(mappingTableObj.Core_BU_Shortname__c) && (lineItemObj.Core_Division__c==null || lineItemObj.Core_Division__c.isNumeric()))) &&                     
+mappingTableObj.Core_Product_Segment__c==lineItemObj.Core_Product_Segment__c && 
+mappingTableObj.Core_Product_Application__c==lineItemObj.Core_Product_Application__c && 
+lineItemObj.Core_Product_Application__c!=null){
+nextChk=0111;
+lineItemBUTableMap = alignMapValues(mappingTableObj,lineItemObj,lineItemBUTableMap);
+
+}
+//0110
+else if(mappingTableObj.Core_Product_Type__c==null && 
+(mappingTableObj.Core_Division_Shortname__c==lineItemObj.Core_Division__c  ||((lineItemObj.Core_Division__c==null || lineItemObj.Core_Division__c.isNumeric()) && mappingTableObj.Core_Division_Shortname__c!=null && lineItemObj.Core_product2_division__c.containsIgnoreCase(mappingTableObj.Core_Division_Shortname__c))|| (lineItemObj.Core_product2_division__c.containsIgnoreCase(mappingTableObj.Core_BU_Shortname__c)  && (lineItemObj.Core_Division__c==null || lineItemObj.Core_Division__c.isNumeric()))) &&                            
+mappingTableObj.Core_Product_Segment__c==lineItemObj.Core_Product_Segment__c && 
+lineItemObj.Core_Product_Segment__c !=null &&
+mappingTableObj.Core_Product_Application__c== null){
+nextChk=0110;
+lineItemBUTableMap = alignMapValues(mappingTableObj,lineItemObj,lineItemBUTableMap);
+
+}
+//1000
+else if(mappingTableObj.Core_Product_Type__c==lineItemObj.Core_Product_Type__c && 
+lineItemObj.Core_Product_Type__c!=null && 
+(mappingTableObj.Core_Division_Shortname__c==null ) &&
+mappingTableObj.Core_Product_Segment__c==null && 
+mappingTableObj.Core_Product_Application__c== null){
+nextChk=1000;
+lineItemBUTableMap = alignMapValues(mappingTableObj,lineItemObj,lineItemBUTableMap);
+
+}
+//1010
+else if(mappingTableObj.Core_Product_Type__c==lineItemObj.Core_Product_Type__c && 
+lineItemObj.Core_Product_Type__c !=null && 
+(mappingTableObj.Core_Division_Shortname__c==null ) &&
+mappingTableObj.Core_Product_Segment__c==lineItemObj.Core_Product_Segment__c && 
+lineItemObj.Core_Product_Segment__c!=null && 
+mappingTableObj.Core_Product_Application__c== null){
+nextChk=1010;
+lineItemBUTableMap = alignMapValues(mappingTableObj,lineItemObj,lineItemBUTableMap);
+
+}
+//1001
+else if(mappingTableObj.Core_Product_Type__c==lineItemObj.Core_Product_Type__c && 
+lineItemObj.Core_Product_Type__c!=null &&                             
+mappingTableObj.Core_Division_Shortname__c==null  &&
+mappingTableObj.Core_Product_Segment__c==null && 
+mappingTableObj.Core_Product_Application__c==lineItemObj.Core_Product_Application__c && 
+lineItemObj.Core_Product_Application__c!=null){
+nextChk=1001;
+lineItemBUTableMap = alignMapValues(mappingTableObj,lineItemObj,lineItemBUTableMap);
+
+}
+//1011
+else if(mappingTableObj.Core_Product_Type__c==lineItemObj.Core_Product_Type__c && 
+lineItemObj.Core_Product_Type__c !=null && 
+(mappingTableObj.Core_Division_Shortname__c==null ) &&               
+mappingTableObj.Core_Product_Segment__c==lineItemObj.Core_Product_Segment__c && 
+lineItemObj.Core_Product_Segment__c!=null && 
+mappingTableObj.Core_Product_Application__c==lineItemObj.Core_Product_Application__c && 
+lineItemObj.Core_Product_Application__c!=null){
+nextChk=1011;
+lineItemBUTableMap =  alignMapValues(mappingTableObj,lineItemObj,lineItemBUTableMap);
+
+}
+
+//1100
+else if(mappingTableObj.Core_Product_Type__c==lineItemObj.Core_Product_Type__c && 
+lineItemObj.Core_Product_Type__c !=null && 
+(mappingTableObj.Core_Division_Shortname__c==lineItemObj.Core_Division__c  ||((lineItemObj.Core_Division__c==null || lineItemObj.Core_Division__c.isNumeric()) && mappingTableObj.Core_Division_Shortname__c!=null && lineItemObj.Core_product2_division__c.containsIgnoreCase(mappingTableObj.Core_Division_Shortname__c)) || (lineItemObj.Core_product2_division__c.containsIgnoreCase(mappingTableObj.Core_BU_Shortname__c)  && (lineItemObj.Core_Division__c==null || lineItemObj.Core_Division__c.isNumeric()))) &&                                        
+mappingTableObj.Core_Product_Segment__c== null && 
+mappingTableObj.Core_Product_Application__c== null){
+nextChk=1100;
+lineItemBUTableMap =  alignMapValues(mappingTableObj,lineItemObj,lineItemBUTableMap);
+
+}
+//1101
+else if(mappingTableObj.Core_Product_Type__c==lineItemObj.Core_Product_Type__c && 
+lineItemObj.Core_Product_Type__c!=null && 
+(mappingTableObj.Core_Division_Shortname__c==lineItemObj.Core_Division__c  ||((lineItemObj.Core_Division__c==null || lineItemObj.Core_Division__c.isNumeric()) && mappingTableObj.Core_Division_Shortname__c!=null && lineItemObj.Core_product2_division__c.containsIgnoreCase(mappingTableObj.Core_Division_Shortname__c)) || (lineItemObj.Core_product2_division__c.containsIgnoreCase(mappingTableObj.Core_BU_Shortname__c) && (lineItemObj.Core_Division__c==null || lineItemObj.Core_Division__c.isNumeric()))) &&                            
+mappingTableObj.Core_Product_Segment__c== null && 
+mappingTableObj.Core_Product_Application__c==lineItemObj.Core_Product_Application__c && 
+lineItemObj.Core_Product_Application__c!=null){
+nextChk=1101;
+lineItemBUTableMap = alignMapValues(mappingTableObj,lineItemObj,lineItemBUTableMap);
+
+}
+//1110
+else if(mappingTableObj.Core_Product_Type__c==lineItemObj.Core_Product_Type__c && 
+lineItemObj.Core_Product_Type__c !=null && 
+(mappingTableObj.Core_Division_Shortname__c==lineItemObj.Core_Division__c  ||((lineItemObj.Core_Division__c==null || lineItemObj.Core_Division__c.isNumeric()) && mappingTableObj.Core_Division_Shortname__c!=null && lineItemObj.Core_product2_division__c.containsIgnoreCase(mappingTableObj.Core_Division_Shortname__c)) || (lineItemObj.Core_product2_division__c.containsIgnoreCase(mappingTableObj.Core_BU_Shortname__c)  && (lineItemObj.Core_Division__c==null || lineItemObj.Core_Division__c.isNumeric()))) &&                            
+mappingTableObj.Core_Product_Segment__c==lineItemObj.Core_Product_Segment__c && 
+lineItemObj.Core_Product_Segment__c!=null &&
+mappingTableObj.Core_Product_Application__c== null){
+nextChk=1110;
+lineItemBUTableMap =  alignMapValues(mappingTableObj,lineItemObj,lineItemBUTableMap);
+
+}
+//1111
+else if(mappingTableObj.Core_Product_Type__c==lineItemObj.Core_Product_Type__c && 
+lineItemObj.Core_Product_Type__c!=null && 
+(mappingTableObj.Core_Division_Shortname__c==lineItemObj.Core_Division__c  ||((lineItemObj.Core_Division__c==null || lineItemObj.Core_Division__c.isNumeric()) && mappingTableObj.Core_Division_Shortname__c!=null && lineItemObj.Core_product2_division__c.containsIgnoreCase(mappingTableObj.Core_Division_Shortname__c)) || (lineItemObj.Core_product2_division__c.contains(mappingTableObj.Core_BU_Shortname__c)  && (lineItemObj.Core_Division__c==null || lineItemObj.Core_Division__c.isNumeric()))) &&                            
+mappingTableObj.Core_Product_Segment__c==lineItemObj.Core_Product_Segment__c && 
+lineItemObj.Core_Product_Segment__c !=null && 
+mappingTableObj.Core_Product_Application__c==lineItemObj.Core_Product_Application__c && 
+lineItemObj.Core_Product_Application__c!=null){
+nextChk=1111;
+lineItemBUTableMap = alignMapValues(mappingTableObj,lineItemObj,lineItemBUTableMap);
+
+}
+}
+// } // US102413-End of block condition 'Write In Product--Rajesh  
+if(lineItemBUTableMap.get(lineItemObj)!=null && lineItemBUTableMap.get(lineItemObj).size()==1){                 
+lineItemObj.Core_BU_Mapping_record__c = lineItemBUTableMap.get(lineItemObj)[0].Id;                      
+
+}else if(lineItemBUTableMap.get(lineItemObj)==null || lineItemBUTableMap.get(lineItemObj).size()>1 || lineItemBUTableMap.get(lineItemObj).size()==0){
+
+failedList.add(lineItemObj);                    
+}                                                
+} //end of for loop//
+if(failedList.size()>0){
+Insert_logexception(failedList,label.Core_BU_ExceptionMsg);
+}
+
+} 
+
+}*/
+    
+    
+    
+    /*
 * Method name  : alignMapValues()
 * Description  : Creates a Map of maultiple matching records and removes existing if it doesnt match with OLI record while checking fornother fields.
 * Return Type  : Map<OpportunityLineItem,list<Core_BU_Mapping_Table__c>>
@@ -623,6 +1266,7 @@ public without sharing class Core_OpportunityLineItemHandler { //TWC3123-5359 Ad
 * Return Type  : Map<OpportunityLineItem,list<Core_BU_Mapping_Table__c>>
 * Parameter    : (OpportunityLineItem opplineitem,ExceptionMsg).
 */ 
+    
     Public static void Insert_logexception(list<OpportunityLineItem> opplineitem,String ExceptionMsg){
         if(ExceptionMsg != null){
             list<Core_Exceptions__c> exceplist=new list<Core_Exceptions__c>();
@@ -633,15 +1277,16 @@ public without sharing class Core_OpportunityLineItemHandler { //TWC3123-5359 Ad
                     excep.Core_Method_Name__c='setBUShortName';
                     excep.Core_Record_Id__c=opp.OpportunityId; 
                 }
-                /*if(system.isBatch()){
-                    excep.Core_Class_Name__c='Core_OpportunityLineItem_BatchClass';
-                    excep.Core_Method_Name__c=' Execute method ';
-                    excep.Core_Record_Id__c=opp.Id;
-                    excep.Core_Status__c='Failed';
-                    excep.Core_Retry_Counter__c=1;
-                    excep.Core_Next_Scheduled_Run__c=System.now();
-                    
-                }*/
+                /* Commenting this method as part of TWC4767-3196_WW05_2025_Destructive changes.
+if(system.isBatch()){
+excep.Core_Class_Name__c='Core_OpportunityLineItem_BatchClass';
+excep.Core_Method_Name__c=' Execute method ';
+excep.Core_Record_Id__c=opp.Id;
+excep.Core_Status__c='Failed';
+excep.Core_Retry_Counter__c=1;
+excep.Core_Next_Scheduled_Run__c=System.now();
+
+}*/
                 excep.Core_Exception__c=ExceptionMsg;
                 excep.Core_IPS_Object_Name__c='OpportunityLineItem';                                                   
                 excep.Core_Login_User_Id__c=userInfo.getUserId();
@@ -653,6 +1298,7 @@ public without sharing class Core_OpportunityLineItemHandler { //TWC3123-5359 Ad
         }
     }
     
+    
     //US83104 - Added beforeInsertForecastRecords updateForecastRecords and deleteForecastRecords methods for Forecasting -- Ashwin    
     /*
 * Method name  : beforeInsertForecastRecords
@@ -662,11 +1308,11 @@ public without sharing class Core_OpportunityLineItemHandler { //TWC3123-5359 Ad
 */ 
     
     public static void beforeInsertForecastRecords(list<OpportunityLineItem> newopplineitem){
-        //boolean oliPresentFlag = false;
-        //Map<Id, Boolean> opptyContainsFCMap = new Map<Id, Boolean>();
+        boolean oliPresentFlag = false;
+        Map<Id, Boolean> opptyContainsFCMap = new Map<Id, Boolean>();
         Map<Id, List<Core_Opp_FC_Prod_Schedule__c>> opptyLineItemVsFCMap = new Map<Id, List<Core_Opp_FC_Prod_Schedule__c>>();
         Set<Id> opptyIdSet = new Set<Id>();
-        //List<OpportunityLineItem> tempList;
+        List<OpportunityLineItem> tempList;
         
         for(OpportunityLineItem oli : newopplineitem){
             opptyIdSet.add(oli.OpportunityId);
@@ -724,9 +1370,9 @@ public without sharing class Core_OpportunityLineItemHandler { //TWC3123-5359 Ad
         List<Core_Opp_FC_Prod_Schedule__c> forecastRecList = new List<Core_Opp_FC_Prod_Schedule__c>();
         List<String> divisionLogic = (Label.Core_FC_ForecastDivision).split(';');
         Integer numOfForecast = Integer.valueOf(Label.Core_FC_NumberOfQuarter); // Change to custom settings US852627:6QPS : Pending Items fixes-Sanket
-        //boolean oliPresentFlag = false;
-       //Map<Id, Boolean> opptyContainsFCMap = new Map<Id, Boolean>();
-        //Map<Id, List<Core_Opp_FC_Prod_Schedule__c>> opptyLineItemVsFCMap = new Map<Id, List<Core_Opp_FC_Prod_Schedule__c>>();
+        boolean oliPresentFlag = false;
+        Map<Id, Boolean> opptyContainsFCMap = new Map<Id, Boolean>();
+        Map<Id, List<Core_Opp_FC_Prod_Schedule__c>> opptyLineItemVsFCMap = new Map<Id, List<Core_Opp_FC_Prod_Schedule__c>>();
         Set<Id> opptyIdSet = new Set<Id>();
         Set<Id> oliIdSet = new Set<Id>();
         String approvalStatus = '';
@@ -843,7 +1489,7 @@ public without sharing class Core_OpportunityLineItemHandler { //TWC3123-5359 Ad
                                         }
                                         
                                     }  
-                                  
+                                    
                                 }
                                 
                                 //US617507 --6QPS : Oppty : Restrict the logic implemented in US605877 to only Deal Oppty--Ends  
@@ -890,13 +1536,13 @@ public without sharing class Core_OpportunityLineItemHandler { //TWC3123-5359 Ad
                 for (Database.SaveResult sr : srList){
                     if(!sr.isSuccess()){
                         for(Database.Error error : sr.getErrors()) {
-                         
+                            
                             
                             listFailedProdLineItems.add(new Core_Log_Entry__c(Core_Message__c ='Error',Core_Details__c = error.getMessage(),Core_Origin__c='insertForcasts', Core_Severity__c='High', Core_When__c=System.Now(), Core_Project__c = 'Sales Evolve'));
                             
                         }
-                       
-                       
+                        
+                        
                     }else 
                         fcIdSet.add(sr.getId());
                 }
@@ -978,7 +1624,7 @@ public without sharing class Core_OpportunityLineItemHandler { //TWC3123-5359 Ad
                 PMP_Utility.logError(e, 'Core_OpportunityLineItemHandler.deleteForecastRecords');
             }
         }
-       
+        
     }
     
     /*
@@ -993,7 +1639,7 @@ public without sharing class Core_OpportunityLineItemHandler { //TWC3123-5359 Ad
             Set<Id> oliSet = oldOliMap.keySet();
             boolean counter = false;
             Integer count1 = 0;
-            //Integer numOfForecast = Integer.valueOf(Label.Core_FC_NumberOfQuarter);
+            Integer numOfForecast = Integer.valueOf(Label.Core_FC_NumberOfQuarter);
             Set<Id> oliApprovedSet = new Set<Id>();
             Set<Id> fcApprovedSet = new Set<Id>();
             Map<Id, OpportunityLineItem> oliDeleteMap = new Map<Id, OpportunityLineItem>();
@@ -1050,12 +1696,14 @@ public without sharing class Core_OpportunityLineItemHandler { //TWC3123-5359 Ad
                         for(Core_Opp_FC_Prod_Schedule__c fc : prodSortForecastMap.get(oli.Id)){
                             
                             Integer count = 0;  
-
+                            
                             if(oli.Core_Vendor__c != oldOliMap.get(oli.Id).Core_Vendor__c){
                                 fc.Core_FC_Vendor__c = oli.Core_Vendor__c;  count++;
                             }
-                            if(Core_Status.contains(oli.Core_Status__c) && !Core_Status.contains(oldOliMap.get(oli.Id).Core_Status__c)){
+                            if(Core_Status.contains(oli.Core_Status__c)){
+                                System.debug('1702 '+oli.Core_Status__c);
                                 if(fc.Core_Opp_FC_Approval_Status__c != 'Submitted' && fc.Core_Opp_FC_Approval_Status__c != 'Approved'){
+                                    System.debug('1704 line');
                                     fc.Core_Opp_FC_Quantity__c = 0;
                                     fc.Core_FC_Last_Modified_Date__c = System.today();
                                     count++;
@@ -1067,7 +1715,7 @@ public without sharing class Core_OpportunityLineItemHandler { //TWC3123-5359 Ad
                                    //Re-calculation to be done and LMD will be removed when quantity changes and when status changes to pending/winApproved/Submitted from lost/cancelled etc.
                                    if(fc.Core_Opp_FC_Approval_Status__c == 'Submitted' || fc.Core_Opp_FC_Approval_Status__c == 'Approved'){
                                        oliApprovedSet.add(oli.Id);
-                                     
+                                       
                                    }else{
                                        oliDeleteMap.put(oli.Id, oli);
                                        oldFCRecs.add(fc);
@@ -1082,7 +1730,7 @@ public without sharing class Core_OpportunityLineItemHandler { //TWC3123-5359 Ad
                             
                             //--> Start --Added By Hira as part of TWC3123-5561
                             if(oli.Core_PW_Sales_Price__c != oldOliMap.get(oli.Id).Core_PW_Sales_Price__c && isLockedMap.get(fc.Id)==false && !(oli.UnitPrice==oli.Core_PW_Sales_Price__c && oldOliMap.get(oli.Id).Core_PW_Sales_Price__c==null) && oli.Core_PW_Sales_Price__c!=null){//TWC3123-5267 replaced !Approval.isLocked(fc) with  isLockedMap.get(fc.Id)==false to avoid isLocked() inside for loop
-                                fc.Core_Opp_FC_Prod_Sales_Price__c = oli.Core_PW_Sales_Price__c;
+                                fc.Core_Opp_FC_Prod_Sales_Price__c = oli.Core_PW_Sales_Price__c;                                
                                 count++;
                             }
                             
@@ -1091,10 +1739,10 @@ public without sharing class Core_OpportunityLineItemHandler { //TWC3123-5359 Ad
                             if(oli.Core_PW_Quantity__c != oldOliMap.get(oli.Id).Core_PW_Quantity__c && /*oli.Core_PW_Quantity__c!=null &&*/ !(oli.Quantity==oli.Core_PW_Quantity__c && oldOliMap.get(oli.Id).Core_PW_Quantity__c==null) &&//null==12 false && true
                                (newOppMap.get(oli.OpportunityId).StageName=='Design Win' || newOppMap.get(oli.OpportunityId).StageName=='Production Win')
                                && newOppMap.get(oli.OpportunityId).Core_Opportunity_Type__c.containsIgnoreCase('Design')){//TWC3123-5267 replaced !Approval.isLocked(fc) with  isLockedMap.get(fc.Id)==false to avoid isLocked() inside for loop
-                                  
+                                   
                                    if(fc.Core_Opp_FC_Approval_Status__c == 'Submitted' || fc.Core_Opp_FC_Approval_Status__c == 'Approved'){
                                        oliApprovedSet.add(oli.Id);
-                                  
+                                       
                                    }else{
                                        oliDeleteMap.put(oli.Id, oli);
                                        oldFCRecs.add(fc);
@@ -1131,7 +1779,7 @@ public without sharing class Core_OpportunityLineItemHandler { //TWC3123-5359 Ad
                     deleteForecastRecords(oliDeleteMap);
                     insertForecastRecords(oliDeleteMap.values(),oldFCRecs,true);
                 }   
-                          
+                
                 if(!updateFCList.isEmpty() && !counter){                
                     
                     try{
@@ -1145,28 +1793,33 @@ public without sharing class Core_OpportunityLineItemHandler { //TWC3123-5359 Ad
                         for(Integer i=0; i<prodSortForecastMap.get(oli.Id).size(); i++){
                             if(oliApprovedSet.contains(prodSortForecastMap.get(oli.Id)[i].Core_Opp_Line_Item_RecordID__c) && newOppMap.get(oli.OpportunityId).Core_Opportunity_Type__c.containsIgnoreCase('Design')){
                                 if(prodSortForecastMap.get(oli.Id)[i].Core_Opp_FC_Approval_Status__c != 'Approved' && prodSortForecastMap.get(oli.Id)[i].Core_Opp_FC_Approval_Status__c != 'Submitted'){
-                                    
-                                    
-                                    //-->Added if else logic as part of TWC3123-5561 for PW Qty & PW SalesPrice 
-                                    if(!(newOppMap.get(oli.OpportunityId).StageName=='Design Win' || newOppMap.get(oli.OpportunityId).StageName == 'Production Win') && newOppMap.get(oli.OpportunityId).Core_Opportunity_Type__c.containsIgnoreCase('Design')){
-                                        prodSortForecastMap.get(oli.Id)[i].Core_Opp_FC_Quantity__c = ((oli.Quantity)/(Integer.valueOf(divisionLogic[i]))).round(System.RoundingMode.HALF_UP);
-                                    }else{
-                                        
-                                        if(!(oli.Quantity==oli.Core_PW_Quantity__c && oldOliMap.get(oli.Id).Core_PW_Quantity__c==null)){
-                                            
-                                            if(oli.Core_PW_Quantity__c!=null){
-                                                prodSortForecastMap.get(oli.Id)[i].Core_Opp_FC_Quantity__c = ((oli.Core_PW_Quantity__c)/(Integer.valueOf(divisionLogic[i]))).round(System.RoundingMode.HALF_UP);
-                                            }else{
-                                                prodSortForecastMap.get(oli.Id)[i].Core_Opp_FC_Quantity__c = ((oli.Quantity)/(Integer.valueOf(divisionLogic[i]))).round(System.RoundingMode.HALF_UP);
+                                    if(!(Core_Status.contains(oli.Core_Status__c))){
+                                        if(!(newOppMap.get(oli.OpportunityId).StageName=='Design Win' || newOppMap.get(oli.OpportunityId).StageName == 'Production Win') && newOppMap.get(oli.OpportunityId).Core_Opportunity_Type__c.containsIgnoreCase('Design')){
+                                            System.debug('entered 1796 if');
+                                            prodSortForecastMap.get(oli.Id)[i].Core_Opp_FC_Quantity__c = ((oli.Quantity)/(Integer.valueOf(divisionLogic[i]))).round(System.RoundingMode.HALF_UP);
+                                        }else{
+                                            System.debug('entered 1799 else');
+                                            if(!(oli.Quantity==oli.Core_PW_Quantity__c && oldOliMap.get(oli.Id).Core_PW_Quantity__c==null)){
+                                                System.debug('entered 1801 if');
+                                                
+                                                if(oli.Core_PW_Quantity__c!=null){
+                                                    System.debug('entered 1804 if');
+                                                    prodSortForecastMap.get(oli.Id)[i].Core_Opp_FC_Quantity__c = ((oli.Core_PW_Quantity__c)/(Integer.valueOf(divisionLogic[i]))).round(System.RoundingMode.HALF_UP);
+                                                }else{
+                                                    System.debug('entered 1807 else');
+                                                    prodSortForecastMap.get(oli.Id)[i].Core_Opp_FC_Quantity__c = ((oli.Quantity)/(Integer.valueOf(divisionLogic[i]))).round(System.RoundingMode.HALF_UP);
+                                                }
                                             }
                                         }
-                                    }
+                                        
+                                    }                                
+                                    //-->Added if else logic as part of TWC3123-5561 for PW Qty & PW SalesPrice 
                                     updateFCList1.add(prodSortForecastMap.get(oli.Id)[i]);
                                 }
                             }
                         }
                     }
-                       
+                    
                     try{
                         update updateFCList1;
                     }catch(Exception e){
@@ -1271,72 +1924,72 @@ public without sharing class Core_OpportunityLineItemHandler { //TWC3123-5359 Ad
 * Return Type  : void
 * Parameter    : (Map<Id, OpportunityLineItem> oldProdMap).
 */ 
-     //Areefa: 15 Nov 2024, commented this method as part of TWC4767-3203
+    //Areefa: 15 Nov 2024, commented this method as part of TWC4767-3203
     /*public static void deleteKPI(Map<Id, OpportunityLineItem> oldProdMap){
-        List<Core_Log_Entry__c> captureQueryErr = new List<Core_Log_Entry__c>();
-        Map<Id, Core_Opp_KPI_Product__c> kpiProductMap = 
-            new Map<Id, Core_Opp_KPI_Product__c>([SELECT id,Core_Opp_KPI__c,
-                                                  Core_Opp_KPI_Product__c,Core_Opp_KPI_Oppty_Product_Id__c 
-                                                  FROM Core_Opp_KPI_Product__c WHERE Core_Opp_KPI_Oppty_Product_Id__c IN : oldProdMap.keySet()]);
-        Set<Id> kpiIdSet = new Set<Id>();
-        for(Core_Opp_KPI_Product__c kpiProd : kpiProductMap.values()){
-            kpiIdSet.add(kpiProd.Core_Opp_KPI__c);
-        }
-        Map<Id, Set<Id>> kpiVsKPIProdMap = new Map<Id, Set<Id>>();
-        Set<Id> deleteKPISet = new Set<Id>();
-        Set<Id> deleteKPIProdSet = new Set<Id>();
-        if(!kpiProductMap.isEmpty()){
-            for(Core_Opportunity_KPI__c kpi : [SELECT id, (SELECT id, core_Opp_KPI__c, Core_Opp_KPI_Oppty_Product_Id__c FROM Opportunity_KPI_Products__r) FROM Core_Opportunity_KPI__c WHERE id IN : kpiIdSet]){
-                List<Core_Opp_KPI_Product__c> kpiProdList = new List<Core_Opp_KPI_Product__c>();
-                Set<Id> kpiProdSet = new Set<Id>();
-                kpiProdList = kpi.Opportunity_KPI_Products__r;  
-                for(Core_Opp_KPI_Product__c prod : kpiProdList){
-                    kpiProdSet.add(prod.Id);
-                }
-                if(!kpiProdSet.isEmpty()){
-                    kpiVsKPIProdMap.put(kpi.Id, kpiProdSet);
-                }                
-            }
-            ///TO DO
-            for(Id kpiProd : kpiProductMap.keySet()){
-                if(kpiVsKPIProdMap.get(kpiProductMap.get(kpiProd).Core_Opp_KPI__c).size() == 1 
-                   && kpiVsKPIProdMap.get(kpiProductMap.get(kpiProd).Core_Opp_KPI__c).contains(kpiProd)){
-                       deleteKPISet.add(kpiProductMap.get(kpiProd).Core_Opp_KPI__c);
-                   }else if(kpiVsKPIProdMap.get(kpiProductMap.get(kpiProd).Core_Opp_KPI__c).size() > 1 
-                            && kpiVsKPIProdMap.get(kpiProductMap.get(kpiProd).Core_Opp_KPI__c).contains(kpiProd)){
-                                deleteKPIProdSet.add(kpiProd);
-                            }
-            }
-            if(!deleteKPISet.isEmpty()){
-                List<Id> deleteKPIList = new List<Id>();
-                deleteKPIList.addAll(deleteKPISet);
-                Database.DeleteResult[] drList = Database.delete(deleteKPIList, false);
-                for(Database.DeleteResult dr : drList) {
-                    if(!dr.isSuccess() || Test.isRunningTest()){
-                        String errorMsg = '';
-                        for(Database.Error err : dr.getErrors()) {
-                            errorMsg = errorMsg + err.getMessage();
-                        }
-                        captureQueryErr.add(new Core_Log_Entry__c(Core_Details__c = errorMsg, Core_Message__c = 'KPI_Delete_Error', Core_Severity__c = 'High', Core_Origin__c='Core_Opp_KPIProcessing_Full_Batch', Core_When__c = System.now()));
-                    }
-                }
-            }
-            if(!deleteKPIProdSet.isEmpty()){
-                List<Id> deleteKPIProdList = new List<Id>();
-                deleteKPIProdList.addAll(deleteKPIProdSet);
-                Database.DeleteResult[] drList = Database.delete(deleteKPIProdList, false);
-                for(Database.DeleteResult dr : drList) {
-                    if(!dr.isSuccess() || Test.isRunningTest()){
-                        String errorMsg = '';
-                        for(Database.Error err : dr.getErrors()) {
-                            errorMsg = errorMsg + err.getMessage();
-                        }
-                        captureQueryErr.add(new Core_Log_Entry__c(Core_Details__c = errorMsg, Core_Message__c = 'KPI_Delete_Error', Core_Severity__c = 'High', Core_Origin__c='Core_Opp_KPIProcessing_Full_Batch', Core_When__c = System.now()));
-                    }
-                }
-            }
-        }
-    }
+List<Core_Log_Entry__c> captureQueryErr = new List<Core_Log_Entry__c>();
+Map<Id, Core_Opp_KPI_Product__c> kpiProductMap = 
+new Map<Id, Core_Opp_KPI_Product__c>([SELECT id,Core_Opp_KPI__c,
+Core_Opp_KPI_Product__c,Core_Opp_KPI_Oppty_Product_Id__c 
+FROM Core_Opp_KPI_Product__c WHERE Core_Opp_KPI_Oppty_Product_Id__c IN : oldProdMap.keySet()]);
+Set<Id> kpiIdSet = new Set<Id>();
+for(Core_Opp_KPI_Product__c kpiProd : kpiProductMap.values()){
+kpiIdSet.add(kpiProd.Core_Opp_KPI__c);
+}
+Map<Id, Set<Id>> kpiVsKPIProdMap = new Map<Id, Set<Id>>();
+Set<Id> deleteKPISet = new Set<Id>();
+Set<Id> deleteKPIProdSet = new Set<Id>();
+if(!kpiProductMap.isEmpty()){
+for(Core_Opportunity_KPI__c kpi : [SELECT id, (SELECT id, core_Opp_KPI__c, Core_Opp_KPI_Oppty_Product_Id__c FROM Opportunity_KPI_Products__r) FROM Core_Opportunity_KPI__c WHERE id IN : kpiIdSet]){
+List<Core_Opp_KPI_Product__c> kpiProdList = new List<Core_Opp_KPI_Product__c>();
+Set<Id> kpiProdSet = new Set<Id>();
+kpiProdList = kpi.Opportunity_KPI_Products__r;  
+for(Core_Opp_KPI_Product__c prod : kpiProdList){
+kpiProdSet.add(prod.Id);
+}
+if(!kpiProdSet.isEmpty()){
+kpiVsKPIProdMap.put(kpi.Id, kpiProdSet);
+}                
+}
+///TO DO
+for(Id kpiProd : kpiProductMap.keySet()){
+if(kpiVsKPIProdMap.get(kpiProductMap.get(kpiProd).Core_Opp_KPI__c).size() == 1 
+&& kpiVsKPIProdMap.get(kpiProductMap.get(kpiProd).Core_Opp_KPI__c).contains(kpiProd)){
+deleteKPISet.add(kpiProductMap.get(kpiProd).Core_Opp_KPI__c);
+}else if(kpiVsKPIProdMap.get(kpiProductMap.get(kpiProd).Core_Opp_KPI__c).size() > 1 
+&& kpiVsKPIProdMap.get(kpiProductMap.get(kpiProd).Core_Opp_KPI__c).contains(kpiProd)){
+deleteKPIProdSet.add(kpiProd);
+}
+}
+if(!deleteKPISet.isEmpty()){
+List<Id> deleteKPIList = new List<Id>();
+deleteKPIList.addAll(deleteKPISet);
+Database.DeleteResult[] drList = Database.delete(deleteKPIList, false);
+for(Database.DeleteResult dr : drList) {
+if(!dr.isSuccess() || Test.isRunningTest()){
+String errorMsg = '';
+for(Database.Error err : dr.getErrors()) {
+errorMsg = errorMsg + err.getMessage();
+}
+captureQueryErr.add(new Core_Log_Entry__c(Core_Details__c = errorMsg, Core_Message__c = 'KPI_Delete_Error', Core_Severity__c = 'High', Core_Origin__c='Core_Opp_KPIProcessing_Full_Batch', Core_When__c = System.now()));
+}
+}
+}
+if(!deleteKPIProdSet.isEmpty()){
+List<Id> deleteKPIProdList = new List<Id>();
+deleteKPIProdList.addAll(deleteKPIProdSet);
+Database.DeleteResult[] drList = Database.delete(deleteKPIProdList, false);
+for(Database.DeleteResult dr : drList) {
+if(!dr.isSuccess() || Test.isRunningTest()){
+String errorMsg = '';
+for(Database.Error err : dr.getErrors()) {
+errorMsg = errorMsg + err.getMessage();
+}
+captureQueryErr.add(new Core_Log_Entry__c(Core_Details__c = errorMsg, Core_Message__c = 'KPI_Delete_Error', Core_Severity__c = 'High', Core_Origin__c='Core_Opp_KPIProcessing_Full_Batch', Core_When__c = System.now()));
+}
+}
+}
+}
+}
 */
     //END - US282592: SMG 2019: Data Flow fix between IAH to SFDC  -- Ashwin
     
@@ -1366,6 +2019,7 @@ delete newKpiList;
             
             captureQueryErr.add(new Core_Log_Entry__c(Core_Details__c = e.getMessage(), Core_Message__c = 'deleteNewKPI', Core_Severity__c = 'High', Core_Origin__c='core_OpportunityLineItemHandler', Core_When__c = System.now()));
             insert captureQueryErr;
+            system.debug('Delete Handler 2093');
         }
     }
     
@@ -1407,11 +2061,14 @@ delete newKpiList;
 * Parameter    : List<OpportunityLineItem> oppProductList.
 */
     public static void restrictClosedAtRiskProductToBeDeleted(List<OpportunityLineItem> oppProductList){
-        for(OpportunityLineItem oppProd : oppProductList){
+        system.debug('JC oppProductList' + oppProductList);
+        for(OpportunityLineItem oppProd : oppProductList)
+        {
             if(oppProd.Core_At_Risk__c && oppProd.Core_At_Risk_Status__c.containsIgnoreCase('Closed')){
                 oppProd.addError(System.Label.Core_ClosedAtRisk_DeleteMsg);
                 
             }
+            system.debug('JC Class');
         }
     }
     
@@ -1441,14 +2098,14 @@ delete newKpiList;
         set<id> oppregion =new set<id>();          //opp id  opp geo region
         Map<id,String> oppreg = new Map<id,String>();        
         for(opportunitylineitem opl : NewOppLineItem){
-           
+            
             oppregion.add(opl.OpportunityId);
         }     
         List<Opportunity> opp=[Select Id,Name,Core_Opportunity_Owner_Geo__c from Opportunity where Id IN:oppregion];  // opp list        
         for(Opportunity oppl : opp){
-          
+            
             shortnameSet.add(oppl.Core_Opportunity_Owner_Geo__c); 
-            if(!oppreg.containsKey(oppl.id) && (oppl.Core_Opportunity_Owner_Geo__c == 'AMR') || (oppl.Core_Opportunity_Owner_Geo__c == 'APJ') || (oppl.Core_Opportunity_Owner_Geo__c == 'EMEA') || (oppl.Core_Opportunity_Owner_Geo__c == 'PRC') || (oppl.Core_Opportunity_Owner_Geo__c == 'ASMO') /*|| (oppl.Core_Opportunity_Owner_Geo__c =='INDIA')*/ ){                        //key in side the map   opp id for opp reg in map      
+            if(!oppreg.containsKey(oppl.id) && (oppl.Core_Opportunity_Owner_Geo__c == 'AMR') || (oppl.Core_Opportunity_Owner_Geo__c == 'APJ') || (oppl.Core_Opportunity_Owner_Geo__c == 'EMEA') || (oppl.Core_Opportunity_Owner_Geo__c == 'PRC') || (oppl.Core_Opportunity_Owner_Geo__c == 'ASMO') || (oppl.Core_Opportunity_Owner_Geo__c =='INDIA') ){                        //key in side the map   opp id for opp reg in map      
                 oppreg.put(oppl.id,oppl.Core_Opportunity_Owner_Geo__c);
             }            
         }        
@@ -1475,7 +2132,7 @@ delete newKpiList;
                 OppIds.add(OppProd.OpportunityId);
                 OppLstModIds.add(OppProd.LastModifiedById);
                 /* BU OwnerId Changes */
-               
+                
                 if(oppreg.containsKey(OppProd.OpportunityId)){   //opp map
                     Shortname=oppreg.get(OppProd.OpportunityId);
                 }
@@ -1496,6 +2153,7 @@ delete newKpiList;
             
             //Adding BUOwnerId as a parameter to the below Method
             SendRiskEmailNotification(OppsAtRisk,OppLstModIds,BUOwnerIds,changeToRiskSupply);
+            
         }       
         
     }
@@ -1519,16 +2177,11 @@ delete newKpiList;
                 
             }
                                    else{
-                                       
-                                      /* for(String BUOwnerId:BUOwnerIds)
-                                       {
-                                           user userinfo = [select id,email from user where id =:BUOwnerId]; 
-                                           emaillist.add(userinfo.email);
-                                       }*/ //commented to fix ATHR issue and added below code
-                                       
-                                       List<User> userInfoList = [select id,email from user where id IN:BUOwnerIds]; 
-                                       for( User userinfo : userInfoList){
-                                           emaillist.add(userinfo.email);
+                                       //As part of TWC4767-4991 - Removed and placed soql query outside for loop to fix Soql queries inside loops 
+                                       List<User> userinfo = [select id,email from user where Id IN :BUOwnerIds];
+                                       for(user u : userinfo)
+                                       {  
+                                           emaillist.add(u.email);
                                        }
                                    }
                                    
@@ -1548,7 +2201,7 @@ delete newKpiList;
                     }
                 }
                 
-                                 
+                
                 Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
                 mail.setToAddresses(emaillist);
                 mail.setTemplateId(EmailTemplate);
@@ -1566,7 +2219,7 @@ delete newKpiList;
         }
     }
     
-/* Method name  : updateOppoRiskReasonOnOppLineItemUpdate
+    /* Method name  : updateOppoRiskReasonOnOppLineItemUpdate
 * Description  : This Method used to update opportunity risk reason when the product risk reason changes.
 * Return Type  : void
 * Parameter    : Map<Id, OpportunityLineItem> newMap , Map<Id, OpportunityLineItem> oldMap
@@ -1781,6 +2434,7 @@ delete newKpiList;
                 if (oppLineItem.Core_Product_Application__c <> null || oppLineItem.Core_Product_Segment__c <> null)
                 {
                     finalBuMap = Core_OppLineItem_Batch_Helper.buShortNmUpdateLogic(oppLineItem, wrap);
+                    system.debug('INSIDE SETBUINSERT:'+finalBuMap);
                     if(finalBuMap == null){
                         failedList.add(oppLineItem);
                     }else{
@@ -1830,7 +2484,7 @@ delete newKpiList;
 * Parameter    : List<OpportunityLineItem> newOppLineList
 */
     public static void updateEOLonUpdate(List<OpportunityLineItem> newOppLineList,Map<Id,OpportunityLineItem> newMap,Map<Id,OpportunityLineItem> oldMap){
-        if(/*!updateEOLonUpdateRecCheck*/ updateEOLonUpdateRecCheck != true){
+        if(!updateEOLonUpdateRecCheck){
             Map<id,List<OpportunityLineItem>> mapOppLineItem = new Map<id,List<OpportunityLineItem>>();
             
             List<OpportunityLineItem> OppFinalList = new List<OpportunityLineItem>();
@@ -1869,25 +2523,24 @@ delete newKpiList;
 * Parameter    : List<OpportunityLineItem> newOppLineList
 */
     public static void validateQtyDecimal(List<OpportunityLineItem> newOppLineList){
-        Set<id> oliSet = new Set<id>();
+        Set<Id> oliSet = new Set<Id>();
         for(OpportunityLineItem ol : newOppLineList){
-            oliSet.add(ol.id);
+            oliSet.add(ol.Id);
         }
-        List<OpportunityLineItem> oliList = [select id,quantity,Core_Design_Registration_Product_Id__c,createddate, opportunityid,core_status__c,opportunity.createddate, opportunity.Core_Design_Registration_Id__c from OpportunityLineItem where id in:oliSet];
-        map<id,opportunitylineitem> olimap= new map<id,opportunitylineitem>();
-        for(OpportunityLineItem ol: oliList){
-            olimap.put(ol.id,ol);
-        }
-        if(!olimap.isEmpty()){
-            for(opportunitylineitem oli: newOppLineList){
+        
+        // Efficiently build the map directly from the SOQL query using the SObject Map constructor
+        Map<Id, OpportunityLineItem> oliMap = new Map<Id, OpportunityLineItem>([SELECT Id, Quantity, Core_Design_Registration_Product_Id__c, CreatedDate, OpportunityId, Core_Status__c,Opportunity.CreatedDate, Opportunity.Core_Design_Registration_Id__c FROM OpportunityLineItem WHERE Id IN :oliSet]);
+
+        if(!oliMap.isEmpty()){
+            for(OpportunityLineItem oli : newOppLineList){
+                OpportunityLineItem mappedOli = oliMap.get(oli.Id);
                 
-                if(string.valueof(olimap.get(oli.id).quantity).contains('.') && !string.valueof(olimap.get(oli.id).quantity).contains('.00') && olimap.get(oli.id).core_status__c <> 'Win Submitted'){
-                    String drId = olimap.get(oli.id).opportunity.Core_Design_Registration_Id__c;
+                if(String.valueOf(mappedOli.Quantity).contains('.') && !String.valueOf(mappedOli.Quantity).contains('.00') && mappedOli.Core_Status__c != 'Win Submitted'){
                     
-                    if(drId != null && olimap.get(oli.id).Core_Design_Registration_Product_Id__c == null){
-                        
+                    String drId = mappedOli.Opportunity.Core_Design_Registration_Id__c;
+                    
+                    if(drId != null && mappedOli.Core_Design_Registration_Product_Id__c == null){
                         oli.addError(Label.Core_Decimal_Validation);
-                        
                     }
                 }
             }
@@ -1904,15 +2557,13 @@ delete newKpiList;
                 
             }
         }
-        if(!postWinProducts.isEmpty()){
-            delete postWinProducts;
-        }
+        if(!postWinProducts.isEmpty()){    delete postWinProducts;      }
         
         
     }
-   
     
-// PCC Deal -Sync opportunity and Opportunity line item status with Quote and Quote line.
+    
+    // PCC Deal -Sync opportunity and Opportunity line item status with Quote and Quote line.
     public static void syncStatus_OppProduct_QuoteLine(List<OpportunityLineItem> newOppLineList,Map<Id,OpportunityLineItem> oldMap) {
         List<Core_Log_Entry__c> captureQueryErr = new List<Core_Log_Entry__c>();
         try {
@@ -1925,7 +2576,7 @@ delete newKpiList;
             if (!OppLineIds.IsEmpty() && OppLineIds.size() > 0) {
                 List<OpportunityLineItem> OppLineUpdate = new List<OpportunityLineItem>([
                     select id ,SBQQ__QuoteLine__c, Core_Status__c,Core_Loss_Cancel_Reason__c, Core_Loss_Cancel_Details__c  from OpportunityLineItem  where Id IN: OppLineIds and SBQQ__QuoteLine__c != null]);
-
+                
                 if (!OppLineUpdate.IsEmpty() && OppLineUpdate.size() > 0) {
                     Pricing_FinancialIncentive_BusinessLogic.updateQuoteLineStatus(OppLineUpdate);
                 }
@@ -1935,13 +2586,13 @@ delete newKpiList;
             insert captureQueryErr;
         }
     }
-
+    
     
     //TWC4767-1596 :  Do not allow deletion of Oppty product if OPTY is PCC Deal Reg
     public static void deleteValidation_PCCDealReg(List<OpportunityLineItem> oldOppLineList){ 
         for(OpportunityLineItem oppLineRec : oldOppLineList){
             if(oppLineRec.Core_IsPCCOpportunity_cb__c){                 
-                oppLineRec.addError(System.Label.Core_PCC_PreventProductDeletion);
+                oppLineRec.addError(System.Label.Core_PCC_PreventProductDeletion); 
             }
         }
     }
@@ -1980,68 +2631,72 @@ delete newKpiList;
         Set<String> QLIDs = new Set<String>();
         List<String> Olifield = new List<String>();
         Boolean olifieldbypass = false;
+        
+        String OlifieldString = System.Label.Core_PCC_OpptyLineItemLock;
+        Schema.DescribeSObjectResult oppDescribe = OpportunityLineItem.SObjectType.getDescribe();
+        Map<String, Schema.SObjectField> fieldMap = oppDescribe.fields.getMap();
         Core_Opp_Bypass_Validation_Rule__c mapBypassValidation = Core_Opp_Bypass_Validation_Rule__c.getInstance();
-        try{
-            String OlifieldString = System.Label.Core_PCC_OpptyLineItemLock;
-            Schema.DescribeSObjectResult oppDescribe = OpportunityLineItem.SObjectType.getDescribe();
-            Map<String, Schema.SObjectField> fieldMap = oppDescribe.fields.getMap();
-            for(OpportunityLineItem oli:newOpptyLineItems)
+        for(OpportunityLineItem oli:newOpptyLineItems)
+        {
+            if(oli.Core_IsPCCOpportunity_cb__c)
             {
-                if(oli.Core_IsPCCOpportunity_cb__c)
-                {
-                    for(String fieldName : fieldMap.keySet()) {
-                        
-                        if (oli.get(fieldName) != oldMap.get(oli.Id).get(fieldName) && !OlifieldString.containsIgnoreCase(fieldName)) {
-                            olifieldbypass = true;
-                            break;
-                        }
-                    }
+                for(String fieldName : fieldMap.keySet()) {
                     
-                    if(mapBypassValidation.Bypass__c == false && olifieldbypass == true) 
+                    if (oli.get(fieldName) != oldMap.get(oli.Id).get(fieldName) && !OlifieldString.containsIgnoreCase(fieldName)) {
+                        olifieldbypass = true;
+                        break;
+                    }
+                }
+                
+                if(mapBypassValidation.Bypass__c == false && olifieldbypass == true) 
+                {
+                    oppIds.add(oli.OpportunityId);
+                    if(oli.SBQQ__QuoteLine__c !=null)
                     {
-                        oppIds.add(oli.OpportunityId);
-                        if(oli.SBQQ__QuoteLine__c !=null)
-                        {
-                            QLIDs.add(oli.SBQQ__QuoteLine__c);
-                        }
+                        QLIDs.add(oli.SBQQ__QuoteLine__c);
                     }
                 }
             }
-            if(QLIDs.size() > 0){
-                List<SBQQ__QuoteLine__c> QLList = [Select id,name, Pricing_Status_Nm__c, Pricing_Change_Request_cb__c from SBQQ__QuoteLine__c where Id IN:QLIDs];
-                for(OpportunityLineItem oli:newOpptyLineItems){
-                    for(SBQQ__QuoteLine__c QL:QLList){
-                        if(QL.Pricing_Status_Nm__c =='Pending Further Intel Review' && QL.Pricing_Change_Request_cb__c == true){
-                            oli.adderror(System.Label.Core_LockPCCOppty);
-                        }
-                    }
-                }            
-            }          
-            if(oppIds.size() > 0){
-                List<Opportunity> OpptyList = [SELECT Id,SBQQ__PrimaryQuote__c, name, Core_Coverage_Type_Nm__c, Core_Opportunity_Coverage_Nm__c FROM Opportunity WHERE Id IN:oppIds]; 
-                Boolean lock = Core_CRM_Utility.lockOpportunity(OpptyList);
-                if(lock){
-                    for(OpportunityLineItem oli:newOpptyLineItems){
+        }
+        if(QLIDs.size() > 0){
+            List<SBQQ__QuoteLine__c> QLList = [Select id,name, Pricing_Status_Nm__c, Pricing_Change_Request_cb__c from SBQQ__QuoteLine__c where Id IN:QLIDs];
+            for(OpportunityLineItem oli:newOpptyLineItems){
+                for(SBQQ__QuoteLine__c QL:QLList){
+                    if(QL.Pricing_Status_Nm__c =='Pending Further Intel Review' && QL.Pricing_Change_Request_cb__c == true){
                         oli.adderror(System.Label.Core_LockPCCOppty);
                     }
                 }
+            }            
+        }          
+        if(oppIds.size() > 0){
+            List<Opportunity> OpptyList = [SELECT Id,SBQQ__PrimaryQuote__c, name, Core_Coverage_Type_Nm__c, Core_Opportunity_Coverage_Nm__c FROM Opportunity WHERE Id IN:oppIds]; 
+            Boolean lock = Core_CRM_Utility.lockOpportunity(OpptyList);
+            if(lock){
+                for(OpportunityLineItem oli:newOpptyLineItems){
+                    oli.adderror(System.Label.Core_LockPCCOppty);
+                }
             }
-        }catch(Exception e){
-            PMP_Utility.logError(e, 'CheckLockOnPCCOppty');            
         }
+        /*
+        if(mapBypassValidation.Bypass__c == true){
+            mapBypassValidation.Bypass__c = false;
+            upsert mapBypassValidation; 
+        }*/
         if (mapBypassValidation.Bypass__c == true && !system.label.get('','Core_CRM_L3_Bypass_Users').contains(UserInfo.getUserEmail())) { 
                 mapBypassValidation.Bypass__c = false;
-                upsert mapBypassValidation; 
+                //upsert mapBypassValidation; 
         }
-    }
+
+    }    
     
-// Opportunity Revenue Calculation
+    
+    // Opportunity Revenue Calculation
     public static void opportunityRevenueCalculation (List<OpportunityLineItem> opportunityItemList, Map<Id, OpportunityLineItem> oldOppMap, String operation){
         Set<Id> opportuntiyIds = null ;
         
         if(operation == 'Update'){            
             opportuntiyIds = new Set<Id>();
-            for(OpportunityLineItem oppLine :opportunityItemList){                   
+            for(OpportunityLineItem oppLine :opportunityItemList){                
                 if(oppLine.Core_Status__c != oldOppMap.get(oppLine.Id).Core_Status__c || 
                    oppLine.Quantity != oldOppMap.get(oppLine.Id).Quantity || 
                    oppLine.Core_PW_Quantity__c != oldOppMap.get(oppLine.Id).Core_PW_Quantity__c ||
@@ -2056,12 +2711,12 @@ delete newKpiList;
             }
         }
         else if (operation == 'Delete' ){ // when delete trigger we get data from old map
-
             opportuntiyIds = new Set<Id>();
             for(OpportunityLineItem oli :oldOppMap.Values()){
-                opportuntiyIds.add(oli.OpportunityId);
-            }
 
+                opportuntiyIds.add(oli.OpportunityId);
+
+            }
         } else if(operation == 'Insert'){
             
             opportuntiyIds = new Set<Id>();
@@ -2110,7 +2765,6 @@ delete newKpiList;
                     
                 }
                 
-
                 opportunityForUpdate = new Map<Id,Opportunity>([Select id,CRM_Opportunity_Revenue__c from Opportunity where id in: opportuntiyIds]);
                 
                 for(ID opptyId : opportunityWithLines.KeySet()){
@@ -2124,7 +2778,6 @@ delete newKpiList;
             }
             //WW17.4 Adding Opportunities with 0 Line items to the final update list
             if(!opportunitiesWithZeroLines.isEmpty()) { finalUpdateList.addAll(opportunitiesWithZeroLines); }
-
             
             //WW17.4 Added a null check on finalUpdateList 
             Database.SaveResult[] myResult = null;    
@@ -2144,17 +2797,16 @@ delete newKpiList;
             }else{
                 updateRevenue = true; // set to true after the method is processed
             }
-          }
             
         }
         
-        
+        }
         
     }
-/*
+    /*
 * Method name  : updatefcRecordOLIdelete
 * Description  : TWC3123-6134 This Method is used to delete product schedule records when oppLineItem is deleted
-			     Invoke Core_Batch_Update_FC_Product_Schedule batch class.
+Invoke Core_Batch_Update_FC_Product_Schedule batch class.
 * Return Type  : void
 * Parameter    : List<OpportunityLineItem> oldList
 */ 
@@ -2164,18 +2816,19 @@ delete newKpiList;
             for(OpportunityLineItem oppProduct: oldList){
                 oppProdIdList.add(oppProduct.Id);
             }
-           list<Core_Opp_FC_Prod_Schedule__c> FcProdList = [select id ,name,Core_Opp_Line_Item_RecordID__c,Core_FC_Opportunity_Product__c from Core_Opp_FC_Prod_Schedule__c where Core_FC_Opportunity_Product__c = null and Core_Opp_Line_Item_RecordID__c IN:oppProdIdList and Core_Opp_Line_Item_RecordID__c != null  and Core_Is_Post_Win__c = false  ];
-               if(!FcProdList.isempty()){
-                   Core_Batch_Update_FC_Product_Schedule batchJob = new Core_Batch_Update_FC_Product_Schedule(oppProdIdList);
-                   Id batchJobId = Database.executeBatch(batchJob);
-               }
+            list<Core_Opp_FC_Prod_Schedule__c> FcProdList = [select id ,name,Core_Opp_Line_Item_RecordID__c,Core_FC_Opportunity_Product__c from Core_Opp_FC_Prod_Schedule__c where Core_FC_Opportunity_Product__c = null and Core_Opp_Line_Item_RecordID__c IN:oppProdIdList and Core_Opp_Line_Item_RecordID__c != null  and Core_Is_Post_Win__c = false  ];
+            if(!FcProdList.isempty()){
+                Core_Batch_Update_FC_Product_Schedule batchJob = new Core_Batch_Update_FC_Product_Schedule(oppProdIdList);
+                Id batchJobId = Database.executeBatch(batchJob);
+            }
             oliDeleteRecCheck=true;
         }
-             
+        
     }
     //TWC4767-4569 KIIT: Disable Salesreps from instant deletion of products
     public static Void stopInstantDeletion(List<OpportunityLineItem> oldList){
         List<OpportunityLineItem> OppList = new List<OpportunityLineItem>();
+        
         List<ID> oppId = new List<ID>();
         map<ID,Boolean> swMap = new map<ID,Boolean>();
         for(OpportunityLineItem oppProduct: oldList){
@@ -2190,6 +2843,4 @@ delete newKpiList;
             }
         }
     }
-    
-
 }

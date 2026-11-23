@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldUpdates>
+        <fullName>Sales_UpdateEmail_Host</fullName>
+        <field>Sales_Primary_Admin_Email__c</field>
+        <formula>Sales_Contact__r.Email</formula>
+        <name>Sales_UpdateEmail_Host</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Sales_UpdateEmail_HostInfo</fullName>
+        <field>Sales_Primary_Admin_Email__c</field>
+        <formula>Sales_Contact__r.Email</formula>
+        <name>Sales_UpdateEmail_HostInfo</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Sales_UpdateName_Host</fullName>
+        <field>Sales_Primary_Admin_Name__c</field>
+        <formula>Sales_Contact__r.FirstName &amp; &apos; &apos; &amp;  Sales_Contact__r.LastName</formula>
+        <name>Sales_UpdateName_Host</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <rules>
+        <fullName>Sales_Update_Host</fullName>
+        <actions>
+            <name>Sales_UpdateEmail_Host</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Sales_UpdateName_Host</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>NOT(ISNULL(Sales_Contact__c))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+</Workflow>

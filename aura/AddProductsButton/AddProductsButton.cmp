@@ -1,0 +1,17 @@
+<aura:component implements="force:lightningQuickAction,flexipage:availableForRecordHome,force:hasRecordId" >
+<aura:attribute name="recordId" type="String" />
+    
+    <!-- Use force:recordData to retrieve OpportunityLineItem fields -->
+    <force:recordData
+        aura:id="recordLoader"
+        recordId="{!v.recordId}"
+        fields="OpportunityId"
+        targetFields="{!v.opportunityLineItemFields}"
+        mode="VIEW"
+        recordUpdated="{!c.handleRecordUpdated}"
+    />
+
+    <!-- Button to trigger the "Add Products" action -->
+    <lightning:button label="Add Products" onclick="{!c.callAddProductsAction}" />
+ 
+</aura:component>

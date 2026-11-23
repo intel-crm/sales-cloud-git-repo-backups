@@ -19,9 +19,6 @@
     </fields>
     <fields>
         <label><!-- Partner Subscription --></label>
-        <lookupFilter>
-            <errorMessage><!-- Inactive Subscriptions cannot be assigned to contact. --></errorMessage>
-        </lookupFilter>
         <name>PRM_Partner_Subscription_Id__c</name>
         <relationshipLabel><!-- Contact Subscription Associations --></relationshipLabel>
     </fields>
@@ -42,7 +39,6 @@
         </picklistValues>
     </fields>
     <fields>
-        <help><!-- On update of any field, Status Reason should also be updated --></help>
         <label><!-- Status Reason --></label>
         <name>PRM_Status_Reason_Txt__c</name>
     </fields>
@@ -51,8 +47,4 @@
         <name>Standard</name>
     </recordTypes>
     <startsWith>Consonant</startsWith>
-    <validationRules>
-        <errorMessage><!-- This record cannot be activated as the partner subscription is inactive. --></errorMessage>
-        <name>PRM_TrainingWebinarActivationRuleCheck</name>
-    </validationRules>
 </CustomObjectTranslation>

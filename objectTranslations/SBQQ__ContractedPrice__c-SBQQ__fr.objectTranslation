@@ -8,6 +8,62 @@
         <plural>true</plural>
         <value>Prix contractés</value>
     </caseValues>
+    <fieldSets>
+        <label><!-- CPQ_lookup --></label>
+        <name>CPQ_lookup</name>
+    </fieldSets>
+    <fields>
+        <label><!-- CPS --></label>
+        <name>PSG_CPS_Cb__c</name>
+    </fields>
+    <fields>
+        <label><!-- CPS Ref --></label>
+        <name>PSG_CPS_Ref__c</name>
+    </fields>
+    <fields>
+        <label><!-- Comments --></label>
+        <name>PSG_Comments_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Inactive --></label>
+        <name>PSG_Inactive_Cb__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lower Qty --></label>
+        <name>PSG_Lower_Qty_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Price End Date --></label>
+        <name>PSG_Price_End_Date_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Price Start Date --></label>
+        <name>PSG_Price_Start_Date_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quantity(EAU) --></label>
+        <name>PSG_Quantity_EAU_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- SAP ECP Code --></label>
+        <name>PSG_SAP_ECP_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- SAP ECP --></label>
+        <name>PSG_SAP_ECP_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Type --></label>
+        <name>PSG_Type_Txt__c</name>
+        <picklistValues>
+            <masterLabel>Non-Step</masterLabel>
+            <translation><!-- Non-Step --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Upper Qty --></label>
+        <name>PSG_Upper_Qty_Nbr__c</name>
+    </fields>
     <fields>
         <help><!-- Account for which this price was negotiated. --></help>
         <label>Compte</label>
@@ -129,6 +185,10 @@
     </fields>
     <gender>Masculine</gender>
     <nameFieldLabel>Numéro du prix contracté</nameFieldLabel>
+    <recordTypes>
+        <label><!-- PSG Contracted Price --></label>
+        <name>PSG_Contracted_Price</name>
+    </recordTypes>
     <startsWith>Consonant</startsWith>
     <validationRules>
         <errorMessage>Vous devez renseigner Remise, Prix ou Barème de remise.</errorMessage>
@@ -145,5 +205,9 @@
     <validationRules>
         <errorMessage>Vous devez spécifier un champ de produit ou de filtre</errorMessage>
         <name>SBQQ__Product_or_filter_required</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Lower Bound Quantity should be lesser than Upper Bound Quantity. --></errorMessage>
+        <name>Validation_rule_for_LowerUpperQuantity</name>
     </validationRules>
 </CustomObjectTranslation>

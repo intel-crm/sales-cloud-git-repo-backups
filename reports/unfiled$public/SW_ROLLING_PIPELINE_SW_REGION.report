@@ -227,7 +227,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>includes</operator>
-            <value>PSG-Tier 1,PSG-Tier 2,PSG-Tier 3,PSG-Tier 4</value>
+            <value>PSG-Tier 1,PSG-Tier 2,DCAI PSG-Tier 2,PSG-Tier 3,DCAI PSG-Tier 3,PSG-Tier 4,DCAI PSG-Tier 4</value>
         </criteriaItems>
         <criteriaItems>
             <column>CLOSE_DATE</column>

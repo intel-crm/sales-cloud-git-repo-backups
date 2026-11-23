@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>丰宁满族自治县鑫仪商贸有限责任公司 Partner User</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>丰宁满族自治县鑫仪商贸有限责任公司 Partner User</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>PartnerManager1580</parentRole>
+</Role>

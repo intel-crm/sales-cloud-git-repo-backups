@@ -8,7 +8,7 @@
     "components" : [ {
       "componentAttributes" : { },
       "componentName" : "c:sales_NonEventFeedback",
-      "id" : "ed6e4d67-805a-4ecd-bbf5-723f06c85423",
+      "id" : "3918d693-5130-4e53-8a9e-a83746a28545",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
@@ -62,6 +62,14 @@
   }, {
     "id" : "39ae1997-c1b7-44d7-9d2b-d3603dbf36ef",
     "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "id" : "d3b230d2-0dc6-48b4-820a-c35d7ed904ec",
+    "regionName" : "sidebar",
+    "type" : "region"
+  }, {
+    "id" : "ceb0b47d-04a0-4cc3-aa6a-e64bc057a4ad",
+    "regionName" : "sidebarAlt",
     "type" : "region"
   } ],
   "themeLayoutType" : "Inner",

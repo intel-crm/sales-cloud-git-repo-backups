@@ -154,7 +154,7 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <externalSharingModel>Read</externalSharingModel>
+    <externalSharingModel>Private</externalSharingModel>
     <fields>
         <fullName>Core_PMP_Locale__c</fullName>
         <description>Helps segregate the Categories and display based on user locale</description>
@@ -280,11 +280,6 @@ IF(NOT(ISBLANK(PMP_Parent_Category_Id__r.Name)),PMP_Parent_Category_Id__r.Name,
                     <fullName>Personal Computers</fullName>
                     <default>false</default>
                     <label>Client Computing</label>
-                </value>
-                <value>
-                    <fullName>Field Programmable Gate Array</fullName>
-                    <default>false</default>
-                    <label>Field Programmable Gate Array</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -486,8 +481,8 @@ IF(NOT(ISBLANK(PMP_Parent_Category_Id__r.Name)),PMP_Parent_Category_Id__r.Name,
         <externalId>false</externalId>
         <formula>IF(CONTAINS(PMP_Ancestor_Category_Cd__c, &quot;NPP_01_Industry&quot;) , &apos;Industry&apos;, 
    IF(CONTAINS(PMP_Partner_Product_Category_Cd__c, &quot;NPP_01_Industry&quot;) , &apos;Industry&apos;, 
-      IF(CONTAINS(PMP_Ancestor_Category_Cd__c, &quot;NPP_01_APP&quot;) , &apos;Use Cases&apos;, 
-         IF(CONTAINS(PMP_Partner_Product_Category_Cd__c, &quot;NPP_01_APP&quot;) , &apos;Use Cases&apos;, 
+      IF(CONTAINS(PMP_Ancestor_Category_Cd__c, &quot;NPP_01_APP&quot;) , &apos;Application&apos;, 
+         IF(CONTAINS(PMP_Partner_Product_Category_Cd__c, &quot;NPP_01_APP&quot;) , &apos;Application&apos;, 
            IF(CONTAINS(PMP_Ancestor_Category_Cd__c, &quot;NPP_01_TYPE&quot;) , &apos;Category&apos;, 
               IF(CONTAINS(PMP_Partner_Product_Category_Cd__c, &quot;NPP_01_TYPE&quot;) , &apos;Category&apos;, &apos;&apos;))))))</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
@@ -524,6 +519,6 @@ IF(NOT(ISBLANK(PMP_Parent_Category_Id__r.Name)),PMP_Parent_Category_Id__r.Name,
     </nameField>
     <pluralLabel>Categories</pluralLabel>
     <searchLayouts/>
-    <sharingModel>Read</sharingModel>
+    <sharingModel>Private</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>

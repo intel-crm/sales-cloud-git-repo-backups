@@ -59,11 +59,16 @@
                         <valueListItems>
                             <value>Core_Design_Registration__c.Pre_Check_Complete</value>
                             <visibilityRule>
-                                <booleanFilter>(1 AND 4 AND 5) OR 2 OR 3</booleanFilter>
+                                <booleanFilter>(1 AND 2 AND 5 AND 6 ) OR 3 OR 4</booleanFilter>
                                 <criteria>
                                     <leftValue>{!$Permission.CustomPermission.DDR_PreApprover_Permission}</leftValue>
                                     <operator>EQUAL</operator>
                                     <rightValue>true</rightValue>
+                                </criteria>
+                                <criteria>
+                                    <leftValue>{!Record.Core_Product_Group_Nm__c}</leftValue>
+                                    <operator>NE</operator>
+                                    <rightValue>FPGA/Power</rightValue>
                                 </criteria>
                                 <criteria>
                                     <leftValue>{!$User.Profile.Name}</leftValue>
@@ -89,7 +94,7 @@
                         <valueListItems>
                             <value>Core_Design_Registration__c.Core_Accept_Design_Lex</value>
                             <visibilityRule>
-                                <booleanFilter>(1 AND (4 )  )OR 2 OR 3</booleanFilter>
+                                <booleanFilter>(1 AND (4 ) )OR 2 OR 3</booleanFilter>
                                 <criteria>
                                     <leftValue>{!$Permission.CustomPermission.DDR_Internal_Users}</leftValue>
                                     <operator>EQUAL</operator>
@@ -115,7 +120,7 @@
                         <valueListItems>
                             <value>Core_Design_Registration__c.Core_Reject_Design_Lex</value>
                             <visibilityRule>
-                                <booleanFilter>(((1 AND 2 AND 8 ) OR (5 AND 6 AND 7))) OR 3 OR 4</booleanFilter>
+                                <booleanFilter>(((1 AND 2 ) OR (5 AND 6 AND 7)) AND 8) OR 3 OR 4</booleanFilter>
                                 <criteria>
                                     <leftValue>{!$Permission.CustomPermission.DDR_Internal_Users}</leftValue>
                                     <operator>EQUAL</operator>
@@ -251,6 +256,22 @@
                             </visibilityRule>
                         </valueListItems>
                         <valueListItems>
+                            <value>Core_Design_Registration__c.PCC_Set_as_Expired</value>
+                            <visibilityRule>
+                                <booleanFilter>1 AND 2</booleanFilter>
+                                <criteria>
+                                    <leftValue>{!$Permission.CustomPermission.DDR_Internal_Users}</leftValue>
+                                    <operator>EQUAL</operator>
+                                    <rightValue>true</rightValue>
+                                </criteria>
+                                <criteria>
+                                    <leftValue>{!Record.Core_Design_Registration_Status_Nm__c}</leftValue>
+                                    <operator>EQUAL</operator>
+                                    <rightValue>Approved</rightValue>
+                                </criteria>
+                            </visibilityRule>
+                        </valueListItems>
+                        <valueListItems>
                             <value>Core_Design_Registration__c.PCC_Design_in_Review</value>
                             <visibilityRule>
                                 <booleanFilter>1 AND (( 2  AND 5) OR 4 OR 3)</booleanFilter>
@@ -363,6 +384,11 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>actionNames</name>
+                    <valueList>
+                        <valueListItems>
+                            <value>CustomButton.Core_Design_Registration_Product__c.DRP_CR</value>
+                        </valueListItems>
+                    </valueList>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>adminFilters</name>
@@ -420,7 +446,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>relatedListLabel</name>
-                    <value>Design Registration Products</value>
+                    <value>Design-Deal Registration Products</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>showActionBar</name>
@@ -514,7 +540,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>relatedListLabel</name>
-                    <value>Design Registration Products</value>
+                    <value>Design-Deal Registration Products</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>showActionBar</name>
@@ -558,6 +584,9 @@
                         </valueListItems>
                         <valueListItems>
                             <value>CustomButton.Core_Design_Registration_Product__c.Core_Reject_Products_Pending_Lex</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>CustomButton.Core_Design_Registration_Product__c.Set_as_Expired_Bulk_Button</value>
                         </valueListItems>
                     </valueList>
                 </componentInstanceProperties>
@@ -617,7 +646,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>relatedListLabel</name>
-                    <value>Design Registration Products</value>
+                    <value>Design-Deal Registration Products</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>showActionBar</name>
@@ -702,7 +731,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>relatedListLabel</name>
-                    <value>Design Registration Product Mappings</value>
+                    <value>Design-Deal Registration Product Mappings</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>showActionBar</name>
@@ -779,7 +808,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>relatedListLabel</name>
-                    <value>Design Registration Product Mappings</value>
+                    <value>Design-Deal Registration Product Mappings</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>showActionBar</name>
@@ -850,7 +879,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>relatedListLabel</name>
-                    <value>Design Registration Product Mappings</value>
+                    <value>Design-Deal Registration Product Mappings</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>showActionBar</name>
@@ -930,33 +959,7 @@
                     <value>true</value>
                 </componentInstanceProperties>
                 <componentName>force:relatedListSingleContainer</componentName>
-                <identifier>force_relatedListSingleContainer</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>parentFieldApiName</name>
-                    <value>Core_Design_Registration__c.Id</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>relatedListApiName</name>
-                    <value>ProcessSteps</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>relatedListComponentOverride</name>
-                    <value>NONE</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>rowsToDisplay</name>
-                    <value>10</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>showActionBar</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentName>force:relatedListSingleContainer</componentName>
-                <identifier>force_relatedListSingleContainer2</identifier>
+                <identifier>force_relatedListSingleContainer4</identifier>
             </componentInstance>
         </itemInstances>
         <name>Facet-1a7f6a48-49eb-4504-b8f7-3651bdb1a7d8</name>
@@ -986,7 +989,7 @@
                     <value>true</value>
                 </componentInstanceProperties>
                 <componentName>force:relatedListSingleContainer</componentName>
-                <identifier>force_relatedListSingleContainer4</identifier>
+                <identifier>force_relatedListSingleContainer</identifier>
             </componentInstance>
         </itemInstances>
         <name>Facet-130584b6-e9c3-4253-a332-c998c07401b5</name>
@@ -1056,26 +1059,8 @@
         </itemInstances>
         <itemInstances>
             <componentInstance>
-                <componentName>showDuplicateDeals</componentName>
-                <identifier>c_showDuplicateDeals</identifier>
-                <visibilityRule>
-                    <booleanFilter>1 OR 2 OR 3</booleanFilter>
-                    <criteria>
-                        <leftValue>{!Record.Core_Design_Registration_Status_Nm__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Pre-Approved</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_Design_Registration_Status_Nm__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Precheck Pending</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_Design_Registration_Status_Nm__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Design accepted</rightValue>
-                    </criteria>
-                </visibilityRule>
+                <componentName>Core_DR_Zero_qunatity_Msg</componentName>
+                <identifier>Core_DR_Zero_qunatity_Msg</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -1128,18 +1113,55 @@
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
-                    <name>hideHeader</name>
+                    <name>dashboardId</name>
+                    <value>Duplicate_Deals1</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>enableNotifications</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>enableSubscriptions</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>filter</name>
+                    <value>{&quot;datasets&quot;:{&quot;DealandQuoteDataset&quot;:[{&quot;fields&quot;:[&quot;Id&quot;],&quot;filter&quot;:{&quot;operator&quot;:&quot;in&quot;,&quot;values&quot;:[&quot;$Core_Design_Registration_Nm__c&quot;]},&quot;locked&quot;:true,&quot;hidden&quot;:true}]}}</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>height</name>
+                    <value>300</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>hideOnError</name>
                     <value>false</value>
                 </componentInstanceProperties>
-                <componentName>force:relatedListQuickLinksContainer</componentName>
-                <identifier>force_relatedListQuickLinksContainer</identifier>
-                <visibilityRule>
-                    <criteria>
-                        <leftValue>{!$Permission.CustomPermission.DDR_Read_Only}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>false</rightValue>
-                    </criteria>
-                </visibilityRule>
+                <componentInstanceProperties>
+                    <name>openLinksInNewWindow</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>openLocation</name>
+                    <value>OPEN_IN_STUDIO</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showHeader</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showPostToSlack</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showSharing</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showTitle</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentName>wave:waveDashboard</componentName>
+                <identifier>wave_waveDashboard</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>

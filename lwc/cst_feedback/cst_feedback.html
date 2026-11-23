@@ -9,7 +9,7 @@
         <div class="slds-p-around--medium" style="margin-top:-20px;">
         <lightning-combobox name="AcctFeedbackOption" label="Feedback" value={selectedAcctFeedback} options={acctFeedbackOptions} onchange={handleAcctFeedbackChange}> </lightning-combobox> 
 
-        <template if:true={showChangeToPartnerFields}>
+        <template if:true={showChangeToIndirectCoveredFields}>
             <div>
                 <lightning-input type="text" label="Reason for change" class="validate" value={reasonForChange} onchange={handleAFReason} required></lightning-input>
             </div>  
@@ -24,9 +24,9 @@
              </div> 
              
               <div>
-                <legend class="slds-form-element__legend slds-form-element__label">Semi-Annual Account Category</legend>
+                <legend class="slds-form-element__legend slds-form-element__label">Account Category</legend>
                 <lightning-dual-listbox
-                    name="Semi-Annual Account Category"
+                    name="Account Category"
                     source-label="Available Options"
                     selected-label="Selected Options"
                     options={accountCategoryOptions}
@@ -34,9 +34,14 @@
                     onchange={handleAccountCategoryChange}>
                 </lightning-dual-listbox>  
             </div>
+            <!--TWC3123-5896 start-->
+             <div>
+                <lightning-combobox name="AcctAccTierOptions" class="validate" label="New Account Level" value={newAccountTier} options={acctAccTierOptions} onchange={handleCstAccountTier}> </lightning-combobox> 
+            </div>
+            <!--TWC3123-5896 end-->
         </template>
 
-        <template if:true={showChangeToUncoveredFields}>
+        <template if:true={showChangeToNotCoveredFields}>
             <div>
                 <lightning-input type="text" label="Reason for change" class="validate" value={reasonForChange} onchange={handleAFReason} required></lightning-input>
             </div>  
@@ -51,9 +56,9 @@
             </div> 
             
               <div>
-                <legend class="slds-form-element__legend slds-form-element__label">Semi-Annual Account Category</legend>
+                <legend class="slds-form-element__legend slds-form-element__label">Account Category</legend>
                 <lightning-dual-listbox
-                    name="Semi-Annual Account Category"
+                    name="Account Category"
                     source-label="Available Options"
                     selected-label="Selected Options"
                     options={accountCategoryOptions}
@@ -61,6 +66,11 @@
                     onchange={handleAccountCategoryChange}>
                 </lightning-dual-listbox>  
             </div>
+            <!--TWC3123-5896 start-->
+             <div>
+                <lightning-combobox name="AcctAccTierOptions" class="validate" label="New Account Level" value={newAccountTier} options={acctAccTierOptions} onchange={handleCstAccountTier}> </lightning-combobox> 
+            </div>
+            <!--TWC3123-5896 end-->
         </template>
 
         <template if:true={showChangeOwnershipFields}>
@@ -78,9 +88,9 @@
             </div>
             
               <div>
-                <legend class="slds-form-element__legend slds-form-element__label">Semi-Annual Account Category</legend>
+                <legend class="slds-form-element__legend slds-form-element__label">Account Category</legend>
                 <lightning-dual-listbox
-                    name="Semi-Annual Account Category"
+                    name="Account Category"
                     source-label="Available Options"
                     selected-label="Selected Options"
                     options={accountCategoryOptions}
@@ -89,9 +99,14 @@
                     class="labletext">
                 </lightning-dual-listbox>  
             </div>
+            <!--TWC3123-5896 start-->
+             <div>
+                <lightning-combobox name="AcctAccTierOptions" class="validate" label="New Account Level" value={newAccountTier} options={acctAccTierOptions} onchange={handleCstAccountTier}> </lightning-combobox> 
+            </div>
+            <!--TWC3123-5896 end-->
         </template>
 
-        <template if:true={showAddToIntelLedFields}>
+        <template if:true={showAddToIntelCoveredFields}>
             <div>
                 <lightning-input type="text" label="Reason for change" class="validate" value={reasonForChange} onchange={handleAFReason} required></lightning-input>
             </div>  
@@ -104,11 +119,10 @@
              <div>
                 <lightning-combobox name="AcctSGOption" class="validate" label="New Sales Group" value={newSalesGroup} options={acctSalesGrpOptions} onchange={handleAFSG} required> </lightning-combobox> 
             </div>
-            
               <div>
-                <legend class="slds-form-element__legend slds-form-element__label">Semi-Annual Account Category</legend>
+                <legend class="slds-form-element__legend slds-form-element__label">Account Category</legend>
                 <lightning-dual-listbox
-                    name="Semi-Annual Account Category"
+                    name="Account Category"
                     source-label="Available Options"
                     selected-label="Selected Options"
                     options={accountCategoryOptions}
@@ -116,9 +130,13 @@
                     onchange={handleAccountCategoryChange}>
                 </lightning-dual-listbox>  
             </div>
+            <!--TWC3123-5896 start-->
+             <div>
+                <lightning-combobox name="AcctAccTierOptions" class="validate" label="New Account Levl" value={newAccountTier} options={acctAccTierOptions} onchange={handleCstAccountTier}> </lightning-combobox> 
+            </div>
+            <!--TWC3123-5896 end-->
         </template>
-         <!--newly added-->
-        <template if:true={showChangeToOtherLedFields}>
+        <!--<template if:true={showChangeToOtherLedFields}>
             <div>
                 <lightning-input type="text" label="Reason for change" class="validate" value={reasonForChange} onchange={handleAFReason} required></lightning-input>
             </div>  
@@ -133,9 +151,9 @@
              </div> 
              
               <div>
-                <legend class="slds-form-element__legend slds-form-element__label">Semi-Annual Account Category</legend>
+                <legend class="slds-form-element__legend slds-form-element__label">Account Category</legend>
                 <lightning-dual-listbox
-                    name="Semi-Annual Account Category"
+                    name="Account Category"
                     source-label="Available Options"
                     selected-label="Selected Options"
                     options={accountCategoryOptions}
@@ -143,10 +161,19 @@
                     onchange={handleAccountCategoryChange}>
                 </lightning-dual-listbox>  
             </div>
+           <!- -TWC3123-5896 start- ->
+             <div>
+                <lightning-combobox name="AcctAccTierOptions" class="validate" label="New Account Level" value={newAccountTier} options={acctAccTierOptions} onchange={handleCstAccountTier}> </lightning-combobox> 
+            </div>
+            <!- -TWC3123-5896 end- ->
+        </template>-->
+        <!--TWC3123-5896 start-->
+        <template if:true={showChangeAccountLevelFields}>
+            <div>
+                <lightning-combobox name="AcctAccTierOptions" class="validate" label="New Account Level" value={newAccountTier} options={acctAccTierOptions} onchange={handleCstAccountTier}> </lightning-combobox> 
+            </div>
         </template>
-        <!--newly added-->
-        
-        
+     <!--TWC3123-5896 end-->
         </div>
         <lightning-layout-item size="9" flexibility="auto" padding="horizontal-medium" class="slds-text-align_right">
         
@@ -171,7 +198,7 @@
                  <lightning-input style="margin-top: -20px;" name="feedbackBy" varient="label-hidden" type="text" value={feedbackBy} onchange={handleCstFeedbackBy}></lightning-input>         
             </template>
             
-            <template if:true={showChangeToPartnerFields}>
+            <template if:true={showChangeToIndirectCoveredFields}>
                 <div>
                     <lightning-input type="text" label="Reason for change" class="validate" value={reasonForChange} onchange={handleCstReason} required></lightning-input>
                 </div>  
@@ -183,11 +210,15 @@
                 </div>  
                  <div>
                     <lightning-combobox name="CstSGOption" class="validate" label="New Sales Group" value={newSalesGroup} options={cstSalesGrpOptions} onchange={handleCstSG} required> </lightning-combobox> 
+                </div>      
+                 <!--TWC3123-5896 start-->
+                <div>
+                    <lightning-combobox name="CstAccTierOption" class="validate" label="New Account Level" value={newAccountTier} options={accountTierOptions} onchange={handleCstAccountTier}> </lightning-combobox> 
                 </div>
-                
+                <!--TWC3123-5896 end-->          
             </template>
 
-            <template if:true={showChangeToUncoveredFields}>
+            <template if:true={showChangeToNotCoveredFields}>
                 <div>
                     <lightning-input type="text" label="Reason for change" class="validate" value={reasonForChange} onchange={handleCstReason} required></lightning-input>
                 </div>  
@@ -200,7 +231,11 @@
                  <div>
                     <lightning-combobox name="CstSGOption" label="New Sales Group" class="validate" value={newSalesGroup} options={cstSalesGrpOptions} onchange={handleCstSG} required> </lightning-combobox> 
                 </div> 
-                
+                 <!--TWC3123-5896 start-->
+                <div>
+                    <lightning-combobox name="CstAccTierOption" class="validate" label="New Account Level" value={newAccountTier} options={accountTierOptions} onchange={handleCstAccountTier}> </lightning-combobox> 
+                </div>
+                <!--TWC3123-5896 end-->
             </template>
 
             <template if:true={showChangeOwnershipFields}>
@@ -216,10 +251,14 @@
                  <div>
                     <lightning-combobox name="CstSGOption" label="New Sales Group" value={newSalesGroup} options={cstSalesGrpOptions} onchange={handleCstSG}> </lightning-combobox> 
                 </div> 
-               
+                 <!--TWC3123-5896 start-->
+                <div>
+                    <lightning-combobox name="CstAccTierOption" class="validate" label="New Account Level" value={newAccountTier} options={accountTierOptions} onchange={handleCstAccountTier}> </lightning-combobox> 
+                </div>
+                <!--TWC3123-5896 end-->
             </template>
 
-            <template if:true={showAddToIntelLedFields}>
+            <template if:true={showAddToIntelCoveredFields}>
                 <div>
                     <lightning-input type="text" label="Reason for change" class="validate" value={reasonForChange} onchange={handleCstReason} required></lightning-input>
                 </div>  
@@ -232,7 +271,11 @@
                  <div>
                     <lightning-combobox name="CstSGOption" label="New Sales Group" value={newSalesGroup} options={cstSalesGrpOptions} onchange={handleCstSG}> </lightning-combobox> 
                 </div> 
-                
+                 <!--TWC3123-5896 start-->
+                <div>
+                    <lightning-combobox name="CstAccTierOption" class="validate" label="New Account Level" value={newAccountTier} options={accountTierOptions} onchange={handleCstAccountTier}> </lightning-combobox> 
+                </div>
+                <!--TWC3123-5896 end-->
             </template>
                 
             <template if:true={showPartialFields}>
@@ -248,10 +291,13 @@
                  <div>
                     <lightning-combobox name="CstSGOption" label="New Sales Group" value={newSalesGroup} options={cstSalesGrpOptions} onchange={handleCstSG}> </lightning-combobox> 
                 </div>
-                
+                <!--TWC3123-5896 start-->
+                <div>
+                    <lightning-combobox name="CstAccTierOption" class="validate" label="New Account Level" value={newAccountTier} options={accountTierOptions} onchange={handleCstAccountTier}> </lightning-combobox> 
+                </div>
+                <!--TWC3123-5896 end-->
             </template>
-            <!---newly added-->
-            <template if:true={showChangeToOtherLedFields}>
+            <!--<template if:true={showChangeToOtherLedFields}>
                 <div>
                     <lightning-input type="text" label="Reason for change" class="validate" value={reasonForChange} onchange={handleCstReason} required></lightning-input>
                 </div>  
@@ -264,8 +310,17 @@
                  <div>
                     <lightning-combobox name="CstSGOption" class="validate" label="New Sales Group" value={newSalesGroup} options={cstSalesGrpOptions} onchange={handleCstSG} required> </lightning-combobox> 
                 </div>
+                <div>
+                    <lightning-combobox name="CstAccTierOption" class="validate" label="New Account Level" value={newAccountTier} options={accountTierOptions} onchange={handleCstAccountTier}> </lightning-combobox> 
+                </div>
+            </template>-->
+            <!--TWC3123-5896 start-->
+            <template if:true={showChangeAccountLevelFields}>
+            <div>
+                <lightning-combobox name="CstAccTierOption" class="validate" label="New Account Level" value={newAccountTier} options={accountTierOptions} onchange={handleCstAccountTier}> </lightning-combobox> 
+            </div>
             </template>
-           <!---newly added-->
+            <!--TWC3123-5896 end-->
         </div>
         
         <lightning-layout-item size="9" flexibility="auto" padding="horizontal-medium" class="slds-text-align_right">

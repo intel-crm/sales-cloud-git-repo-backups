@@ -12,7 +12,7 @@
     </fields>
     <fields>
         <fullName>SplitNote</fullName>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
     </fields>
     <fields>
         <fullName>SplitOwnerId</fullName>
@@ -20,7 +20,7 @@
     </fields>
     <fields>
         <fullName>SplitPercentage</fullName>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
     </fields>
     <fields>
         <fullName>SplitTypeId</fullName>

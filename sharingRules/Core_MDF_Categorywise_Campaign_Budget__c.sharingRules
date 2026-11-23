@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Categorywise_Campaign_Budget_All_Users_CCP_Internal_Read_Write</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Categorywise Campaign Budget All Users - CCP Internal Read Write</label>
+        <sharedTo>
+            <group>Core_All_Users_CCP_Internal</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Campaign__c</field>
+            <operation>notEqual</operation>
+            <value>{empty}</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Categorywise_Campaign_Budget_CCP_Claim_Case_Reviewer_Internal</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Categorywise Campaign Budget - CCP Claim Case Reviewer Internal</description>
+        <label>Categorywise Campaign Budget - CCP Claim Case Reviewer Internal</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_Claim_Case_Reviewer_Q_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Campaign__c</field>
+            <operation>notEqual</operation>
+            <value>{empty}</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingOwnerRules>
+        <fullName>Core_MDF_CCP_Acer_CCF_INTERNAL_Categorywise_Campaign_Budget_Share</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Categorywise Campaign Budget Share CCP ACER CCF INTERNAL</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_ACER_CCF_INTERNAL</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_MDF_CCP_ACER_CCF_INTERNAL</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Core_MDF_CCP_Asus_CCF_INTERNAL_Categorywise_Campaign_Budget_Share</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Categorywise Campaign Budget Share CCP ASUS CCF INTERNAL</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_ASUS_CCF_INTERNAL</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_MDF_CCP_ASUS_CCF_INTERNAL</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Core_MDF_CCP_Cisco_DCF_INTERNAL_Categorywise_Campaign_Budget_Share</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Categorywise Campaign Budget Share CCP CISCO DCF INTERNAL</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_CISCO_DCF_INTERNAL</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_MDF_CCP_CISCO_DCF_INTERNAL</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Core_MDF_CCP_Cray_DCF_INTERNAL_Categorywise_Campaign_Budget_Share</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Categorywise Campaign Budget Share CCP CRAY DCF INTERNAL</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_CRAY_DCF_INTERNAL</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_MDF_CCP_CRAY_DCF_INTERNAL</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Core_MDF_CCP_Dell_CCF_INTERNAL_Categorywise_Campaign_Budget_Share</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Categorywise Campaign Budget Share CCP DELL CCF INTERNAL</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_DELL_CCF_INTERNAL</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_MDF_CCP_DELL_CCF_INTERNAL</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Core_MDF_CCP_Dell_DCF_INTERNAL_Categorywise_Campaign_Budget_Share</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Categorywise Campaign Budget Share CCP DELL DCF INTERNAL</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_DELL_DCF_INTERNAL</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_MDF_CCP_DELL_DCF_INTERNAL</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Core_MDF_CCP_Fujitsu_CCF_INTERNAL_Categorywise_Campaign_Budget_Share</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Categorywise Campaign Budget Share CCP FUJITSU CCF INTERNAL</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_FUJITSU_CCF_INTERNAL</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_MDF_CCP_FUJITSU_CCF_INTERNAL</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Core_MDF_CCP_Fujitsu_DCF_INTERNAL_Categorywise_Campaign_Budget_Share</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Categorywise Campaign Budget Share CCP FUJITSU DCF INTERNAL</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_FUJITSU_DCF_INTERNAL</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_MDF_CCP_FUJITSU_DCF_INTERNAL</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Core_MDF_CCP_HPE_SGI_DCF_INTERNAL_Categorywise_Campaign_Budget_Share</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Categorywise Campaign Budget Share CCP HPE SGI DCF INTERNAL</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_HPE_SGI_DCF_INTERNAL</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_MDF_CCP_HPE_SGI_DCF_INTERNAL</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Core_MDF_CCP_HP_INC_CCF_INTERNAL_Categorywise_Campaign_Budget_Share</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Categorywise Campaign Budget Share CCP HP INC CCF INTERNAL</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_HP_INC_CCF_INTERNAL</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_MDF_CCP_HP_INC_CCF_INTERNAL</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Core_MDF_CCP_HP_INC_DCF_INTERNAL_Categorywise_Campaign_Budget_Share</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Categorywise Campaign Budget Share CCP HP INC DCF INTERNAL</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_HP_INC_DCF_INTERNAL</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_MDF_CCP_HP_INC_DCF_INTERNAL</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Core_MDF_CCP_Haier_CCF_INTERNAL_Categorywise_Campaign_Budget_Share</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Categorywise Campaign Budget Share CCP HAIER CCF INTERNAL</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_HAIER_CCF_INTERNAL</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_MDF_CCP_HAIER_CCF_INTERNAL</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Core_MDF_CCP_Hasee_CCF_INTERNAL_Categorywise_Campaign_Budget_Share</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Categorywise Campaign Budget Share CCP HASEE CCF INTERNAL</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_HASEE_CCF_INTERNAL</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_MDF_CCP_HASEE_CCF_INTERNAL</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Core_MDF_CCP_Hitachi_DCF_INTERNAL_Categorywise_Campaign_Budget_Share</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Categorywise Campaign Budget Share CCP HITACHI DCF INTERNAL</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_HITACHI_DCF_INTERNAL</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_MDF_CCP_HITACHI_DCF_INTERNAL</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Core_MDF_CCP_Huawei_CCF_INTERNAL_Categorywise_Campaign_Budget_Share</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Categorywise Campaign Budget Share CCP HUAWEI CCF INTERNAL</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_HUAWEI_CCF_INTERNAL</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_MDF_CCP_HUAWEI_CCF_INTERNAL</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Core_MDF_CCP_Huawei_DCF_INTERNAL_Categorywise_Campaign_Budget_Share</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Categorywise Campaign Budget Share CCP HUAWEI DCF INTERNAL</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_HUAWEI_DCF_INTERNAL</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_MDF_CCP_HUAWEI_DCF_INTERNAL</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Core_MDF_CCP_Inspur_DCF_INTERNAL_Categorywise_Campaign_Budget_Share</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Categorywise Campaign Budget Share CCP INSPUR DCF INTERNAL</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_INSPUR_DCF_INTERNAL</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_MDF_CCP_INSPUR_DCF_INTERNAL</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Core_MDF_CCP_JP_Sa_Couto_CCF_INTERNAL_Categorywise_Campaign_Budget_Share</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Categorywise Campaign Budget Share CCP JP SA COUTO CCF INTERNAL</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_JP_SA_COUTO_CCF_INTERNAL</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_MDF_CCP_JP_SA_COUTO_CCF_INTERNAL</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Core_MDF_CCP_LG_CCF_INTERNAL_Categorywise_Campaign_Budget_Share</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Categorywise Campaign Budget Share CCP LG CCF INTERNAL</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_LG_CCF_INTERNAL</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_MDF_CCP_LG_CCF_INTERNAL</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Core_MDF_CCP_Lenovo_CCF_INTERNAL_Categorywise_Campaign_Budget_Share</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Categorywise Campaign Budget Share CCP LENOVO CCF INTERNAL</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_LENOVO_CCF_INTERNAL</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_MDF_CCP_LENOVO_CCF_INTERNAL</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Core_MDF_CCP_Lenovo_DCF_INTERNAL_Categorywise_Campaign_Budget_Share</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Categorywise Campaign Budget Share CCP LENOVO DCF INTERNAL</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_LENOVO_DCF_INTERNAL</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_MDF_CCP_LENOVO_DCF_INTERNAL</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Core_MDF_CCP_MSI_CCF_INTERNAL_Categorywise_Campaign_Budget_Share</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Categorywise Campaign Budget Share CCP MSI CCF INTERNAL</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_MSI_CCF_INTERNAL</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_MDF_CCP_MSI_CCF_INTERNAL</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Core_MDF_CCP_NEC_PC_CCF_INTERNAL</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>CCP NEC PC CCF INTERNAL</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_NEC_PC_CCF_INTERNAL</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_MDF_CCP_NEC_PC_CCF_INTERNAL</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Core_MDF_CCP_Oracle_DCF_INTERNAL_Categorywise_Campaign_Budget_Share</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Categorywise Campaign Budget Share CCP ORACLE DCF INTERNAL</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_ORACLE_DCF_INTERNAL</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_MDF_CCP_ORACLE_DCF_INTERNAL</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Core_MDF_CCP_Panasonic_CCF_INTERNAL_Categorywise_Campaign_Budget_Share</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Categorywise Campaign Budget Share CCP PANASONIC CCF INTERNAL</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_PANASONIC_CCF_INTERNAL</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_MDF_CCP_PANASONIC_CCF_INTERNAL</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Core_MDF_CCP_Positivo_CCF_INTERNAL_Categorywise_Campaign_Budget_Share</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Categorywise Campaign Budget Share CCP POSITIVO CCF INTERNAL</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_POSITIVO_CCF_INTERNAL</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_MDF_CCP_POSITIVO_CCF_INTERNAL</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Core_MDF_CCP_PowerLeader_Science_DCF_INTERNAL_Categorywise_Campaign_Budget_Share</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Categorywise Campaign Budget Share CCP POWERLEADER SCIENCE DCF INTERNAL</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_POWERLEADER_SCIENCE_DCF_INT</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_MDF_CCP_POWERLEADER_SCIENCE_DCF_INT</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Core_MDF_CCP_Quanta_DCF_INTERNAL_Categorywise_Campaign_Budget_Share</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Categorywise Campaign Budget Share CCP QUANTA DCF INTERNAL</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_QUANTA_DCF_INTERNAL</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_MDF_CCP_QUANTA_DCF_INTERNAL</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Core_MDF_CCP_Samsung_CCF_INTERNAL_Categorywise_Campaign_Budget_Share</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Categorywise Campaign Budget Share CCP SAMSUNG CCF INTERNAL</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_SAMSUNG_CCF_INTERNAL</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_MDF_CCP_SAMSUNG_CCF_INTERNAL</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Core_MDF_CCP_Sugon_DCF_INTERNAL_Categorywise_Campaign_Budget_Share</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Categorywise Campaign Budget Share CCP SUGON DCF INTERNAL</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_SUGON_DCF_INTERNAL</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_MDF_CCP_SUGON_DCF_INTERNAL</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Core_MDF_CCP_Super_Micro_DCF_INTERNAL_Categorywise_Campaign_Budget_Share</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Categorywise Campaign Budget Share CCP SUPER MICRO DCF INTERNAL</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_SUPER_MICRO_DCF_INTERNAL</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_MDF_CCP_SUPER_MICRO_DCF_INTERNAL</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Core_MDF_CCP_TongFang_CCF_INTERNAL_Categorywise_Campaign_Budget_Share</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Categorywise Campaign Budget Share CCP TONGFANG CCF INTERNAL</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_TONGFANG_CCF_INTERNAL</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_MDF_CCP_TONGFANG_CCF_INTERNAL</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Core_MDF_CCP_Toshiba_CCF_INTERNAL_Categorywise_Campaign_Budget_Share</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Categorywise Campaign Budget Share CCP TOSHIBA CCF INTERNAL</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_TOSHIBA_CCF_INTERNAL</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_MDF_CCP_TOSHIBA_CCF_INTERNAL</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Core_MDF_CCP_Xiaomi_CCF_INTERNAL_Categorywise_Campaign_Budget_Share</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Categorywise Campaign Budget Share CCP XIAOMI CCF INTERNAL</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_XIAOMI_CCF_INTERNAL</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_MDF_CCP_XIAOMI_CCF_INTERNAL</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+</SharingRules>

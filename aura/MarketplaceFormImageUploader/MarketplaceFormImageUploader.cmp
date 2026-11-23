@@ -11,7 +11,6 @@
     <aura:attribute name="disclaimer1" type="String" default="{!$Label.c.PMP_Form_Image_Uploader_Disclaimer1}" />
     <aura:attribute name="disclaimer2" type="String" default="{!$Label.c.PMP_Form_Image_Uploader_Disclaimer2}" />
     <aura:attribute name="disclaimer3" type="String" default="{!$Label.c.PMP_Form_Image_Uploader_Disclaimer3}" />
-    <aura:attribute name="disclaimer4" type="String" default="{!$Label.c.PMP_Form_Image_Uploader_Disclaimer4}" />
 	<aura:attribute name="prefixUrl" type="string" default="/sfc/servlet.shepherd/version/download/"/>
     <aura:attribute name="method" type="Aura.action"/>
     <aura:attribute name="livesInsideModal" type="Boolean" default="false" />
@@ -34,23 +33,18 @@
      <!--Added By raj (ONYX) US357476-->
     <aura:attribute name="error" type="string"/>
     <aura:attribute name="hasError" type="boolean" default="false"/>
-    <!--Added By Priya (ONYX) -->
-    <aura:attribute name="totalGalleryCount" type="integer" description="Holds the count of Gallery images/videos" />
-
-    <!--Added By Pranjal -->
-    <aura:attribute name="showFileExceeded" type="boolean" default="false"/>
-    
 
     <div class="{!join(' ', 'slds-show_inline-block', v.required ? 'isRequired' : '', v.showInvalid ? 'isInvalid' : '', v.disabled ? 'isDisabled' : '')}">
       <label class="uploaderLabel slds-form-element__label slds-m-bottom_medium" for="fileUploader">
         {!v.label}
       </label>
-      <div class="borderDashed slds-p-around_medium slds-is-relative" data-disabled="{!or(v.disabled, v.images.length >= v.maxUploads)}">
+      <div class="borderDashed slds-p-around_medium slds-is-relative">
         <aura:if isTrue="{!v.isLoading}">
           <lightning:spinner alternativeText="Loading images..." />
         </aura:if>
-        <lightning:fileUpload 
-                              name="fileUploader"
+        <lightning:fileUpload name="fileUploader"
+                              disabled="{!or(v.disabled, v.images.length >= v.maxUploads)}"
+                              title="TODO-Label.c.imageuploadertooltip"
                               multiple="false"
                               accept="{! v.isIE ? null :v.acceptableFormats}"
                               recordId="{!v.recordIdForUpload}"
@@ -66,9 +60,6 @@
         
 
         <aura:if isTrue="{!v.showInvalid}">
-          <p class="slds-m-top_small error-text">{!v.errorMessage}</p>
-        </aura:if>
-        <aura:if isTrue="{!v.showFileExceeded}">
           <p class="slds-m-top_small error-text">{!v.errorMessage}</p>
         </aura:if>
         
@@ -102,17 +93,6 @@
                     </span>
                   </lightning:layoutItem>
                 </lightning:layout>
-                <!--Added By Pranjal : TWC4497-41 starts-->
-                <aura:if isTrue="{!v.label!=$Label.c.PMP_Edit_Storefront_Logo_Label}">
-                    <lightning:layout horizontalAlign="spread" class="slds-p-around_small">
-                      <label class="uploaderLabel slds-form-element__label slds-m-bottom_medium" for="alttext">
-                        {!$Label.c.PMP_Alt_Text}&nbsp;{!$Label.c.PMP_Max_100_characters}
-                      <lightning:input type="text"  name="{!'alttext'+i}" required="true" value="{!image.altText}" maxlength="100" pattern="{!v.regex}" />
-                      <p class="altTextDisclaimer">{!v.disclaimer4}</p>
-                    </label>
-                    </lightning:layout>
-              </aura:if>
-                <!--Added By Pranjal : TWC4497-41 ends-->
               </div>
             </lightning:layoutItem>
           </aura:iteration>

@@ -8,6 +8,9 @@ public class UCD_ACM_AccountTestData {
         accountModel.RequesterName = requesterName;
         accountModel.RequesterEmail = requesterEmail;
         accountModel.Addresses = getAccountAddress(countryName,countryCode,'Billing');
+        accountModel.RecordTypeId = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Requested Account').getRecordTypeId();
+
+
         return accountModel;
     }
     

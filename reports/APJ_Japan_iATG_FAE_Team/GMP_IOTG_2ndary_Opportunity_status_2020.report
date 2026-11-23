@@ -112,6 +112,13 @@
     </columns>
     <filter>
         <criteriaItems>
+            <column>Account.Core_Sub_Geo__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>IJKK</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>Opportunity.Core_Opportunity_Type__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>

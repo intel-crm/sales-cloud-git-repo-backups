@@ -15,9 +15,9 @@ public without sharing class Pricing_QuoteLine_BulkDealController {
     **/
     @AuraEnabled
     public static List<SBQQ__QuoteLine__c>  getQuoteLineDetails(Id quoteId){
-        List<SBQQ__QuoteLine__c> quoteLineList = [SELECT Id,SBQQ__Quote__c,Pricing_Quote_Line_Number__c,Pricing_Product_Nm__r.Id,Pricing_Product_Nm__r.Name,Pricing_Req_Discounted_Unit_Price__c,Pricing_Approved_Start_Date_Dt__c,Pricing_Approved_End_Date_Dt__c,Pricing_Reason_for_FeedBack_Txt__c,Pricing_SIPP_Cb__c,Pricing_Change_Request_cb__c,
+        List<SBQQ__QuoteLine__c> quoteLineList = [SELECT Id,SBQQ__Quote__c,Pricing_Quote_Line_Number__c,Pricing_Product_Nm__r.Id,Pricing_Product_Nm__r.Name,Pricing_Req_Discounted_Unit_Price__c,Pricing_Approved_Start_Date_Dt__c,Pricing_Approved_End_Date_Dt__c,Pricing_SIPP_Cb__c,Pricing_Change_Request_cb__c,
                                                 Pricing_ECAP_Price_Amt__c,Pricing_Billing_Start_Date_Dt__c,Pricing_Billing_End_Date_Dt__c,Pricing_Approved_Unit_Qty__c,Pricing_Payable_Quantity__c,Pricing_Backdate_Reason_Txt__c,Pricing_Meet_Comp_Price_Amt__c,Pricing_Program_Type_Nm__c,Pricing_Other_Competitor_Product_Nm__c,Pricing_Recommendation_FeedBack_Nm__c,
-                                                Pricing_Group_Type_nm__c,Pricing_Market_Segment_values_Nm__c,Pricing_Market_Segment_Nm__c,Pricing_Reference_Quote_Line_Nbr__c,Pricing_Form_Factor_Nm__c,Pricing_Tentative_ECAP_Price_Amt__c,Pricing_Recommended_Price_Amt__c,Pricing_Price_Interval_Txt__c,Pricing_Discount_Pct__c,Pricing_Reference_Quote_Line_Nbr__r.Pricing_Status_Nm__c,
+                                                Pricing_Group_Type_nm__c,Pricing_Market_Segment_values_Nm__c,Pricing_Market_Segment_Nm__c,Pricing_Reference_Quote_Line_Nbr__c,Pricing_Recommended_Price_Amt__c,Pricing_Reference_Quote_Line_Nbr__r.Pricing_Status_Nm__c,
                                                 Pricing_Competetor_Product__c,Pricing_Competetor_Product__r.Name,Pricing_Comp_Product_Txt__c,Pricing_Processor_Number_Nm__c,Pricing_Family_Name_Nm__c,Pricing_DealProduct_Nm__c,SBQQ__Quote__r.Pricing_Server_Deal_Type_Nm__c,Pricing_Workload_Nm__c,Pricing_Server_Deal_Type_Nm__c,Pricing_EndCustomer_Nm__c,Pricing_Unit_Qty__c,
                                                 Pricing_Manager__c,Pricing_Manager__r.Name,Pricing_Additional_T_C_s_Txt__c,Pricing_RegionQL_Nm__c,Pricing_pm_approval_comments_nm__c, Pricing_Rejection_Comments_nm__c,Pricing_Deal_Description__c,SBQQ__Quote__r.SBQQ__Account__c
                                                 FROM SBQQ__QuoteLine__c WHERE SBQQ__Quote__c =: quoteId AND Pricing_Status_Nm__c =: Label.Pricing_Tender_QuoteLine_Status_PendingFurtherIntelReview AND Pricing_Other_Product_Nm__c = '' AND
@@ -98,8 +98,8 @@ public without sharing class Pricing_QuoteLine_BulkDealController {
                     ql.Pricing_Payable_Quantity__c = ql.Pricing_Approved_Unit_Qty__c;
                 }
             }
-            Pricing_Tender_Utility.createUsageTrackingLog(qliIds,quoteLineListtoUpdate[0].SBQQ__Quote__c,(action+' Deal'));
             if(quoteLineListtoUpdate.size() > 0){
+                Pricing_Tender_Utility.createUsageTrackingLog(qliIds,quoteLineListtoUpdate[0].SBQQ__Quote__c,(action+' Deal'));
                 SBQQ.TriggerControl.disable();
                 update quoteLineListtoUpdate;
                 SBQQ.TriggerControl.enable();
@@ -136,7 +136,7 @@ public without sharing class Pricing_QuoteLine_BulkDealController {
         quoteLineMap = new Map<Id,SBQQ__QuoteLine__c>([SELECT Id, SBQQ__Quote__c,SBQQ__Quote__r.Pricing_My_Deals_Folio_Name_Nm__c,SBQQ__Quote__r.Id, Pricing_Reference_Quote_Line_Nbr__r.Pricing_Status_Nm__c,
                                                        SBQQ__Quote__r.Name, Pricing_EndCustomer_Nm__c, SBQQ__Quote__r.Pricing_Folio_ID_Nm__c,SBQQ__Quote__r.Pricing_Deal_Type_Nm__c,
                                                        Pricing_Reference_Quote_Line_Nbr__c,Pricing_Reference_Quote_Line_Nbr__r.Pricing_Quote_Line_Number__c,SBQQ__Quote__r.Pricing_Customer_Nm__c,SBQQ__Quote__r.Pricing_Project_Name_Nm__c,
-                                                       SBQQ__Quote__r.Pricing_ShipmentStDate_Dt__c,Pricing_Other_Competitor_Product_Nm__c,SBQQ__Quote__r.Pricing_ShipmentEndDate_Dt__c,
+                                                       SBQQ__Quote__r.Pricing_AI_Host_Node_cb__c,SBQQ__Quote__r.Pricing_ShipmentStDate_Dt__c,Pricing_Other_Competitor_Product_Nm__c,SBQQ__Quote__r.Pricing_ShipmentEndDate_Dt__c,
                                                        Pricing_Server_Deal_Type_Nm__c,SBQQ__Quote__r.Pricing_Program_Type_Nm__c,SBQQ__Quote__r.Pricing_Region_Nm__c,Pricing_Other_Product_Nm__c,Pricing_Manager__c,
                                                        Pricing_Manager__r.Core_WWID__c,SBQQ__Quote__r.SBQQ__Account__r.Id,SBQQ__Quote__r.SBQQ__Account__r.Name,SBQQ__Quote__r.SBQQ__Account__r.Core_Business_Party_Id__c,SBQQ__Quote__r.Pricing_Market_Segment_values_Nm__c,
                                                        Name,Pricing_Revised_Pricing_Start_Date_dt__c,Pricing_Group_Type_nm__c,Pricing_Billing_Start_Date_Dt__c,Pricing_Workload_Nm__c,Pricing_New_Change_Request_cb__c,
@@ -296,6 +296,7 @@ public without sharing class Pricing_QuoteLine_BulkDealController {
         //This method is called by LWC to find the user from searchkey
         String searchText = String.escapeSingleQuotes(searchKey) + '%';               
         String query =  'SELECT Id, Name, Email, Isactive,IsPortalEnabled FROM User WHERE Name LIKE :searchText AND IsPortalEnabled = false AND ContactId = null AND Isactive = true LIMIT 5';
+        System.debug('Query' +query);
         return Database.query(query);
     }
 

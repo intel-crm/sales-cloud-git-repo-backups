@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>U.S. Micro Pc, Inc. Partner Manager</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>U.S. Micro Pc, Inc. Partner Manager</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>USMicroPcIncPartnerExecutive</parentRole>
+</Role>

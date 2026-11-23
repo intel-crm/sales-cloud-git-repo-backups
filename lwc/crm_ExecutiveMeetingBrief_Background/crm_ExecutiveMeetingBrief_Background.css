@@ -1,0 +1,70 @@
+.custom-container {
+    color: black;
+}
+
+.background-objective-column {
+    width: 25%; /* Adjust the width as needed */
+}
+
+.proactive-talking-points-column {
+    width: 25%; /* Adjust the width as needed */
+}
+
+.reactive-talking-points-column {
+    width: 25%; /* Adjust the width as needed */
+}
+
+.action-column {
+    width: 70px; /* Set the width to 50px */
+}
+
+.slds-table {
+    width: 100%;
+}
+
+.slds-table th, .slds-table td {
+    white-space: normal;
+}
+
+.lightning-textarea {
+    height: 250px; /* Set the desired height */
+}
+
+.custom-textarea {
+    height: 200px;
+}
+
+.custom-textarea :host :deep(textarea), lightning-textarea::part(textarea), .custom-textarea {
+    --slds-c-textarea-sizing-min-height: 200px;
+}
+
+.fixed-width {
+    width: 230px;
+    /* min-width: 230px; */
+    padding: 5px;
+}
+
+.custom-input {
+    width: auto;
+    padding: 5px;
+}
+
+.rich-text-wrapper {
+    width: auto;
+    padding: 5px;
+}
+
+.help-icon {
+    margin-left: 0.25rem; /* Adjust the margin as needed */
+}
+
+.sow-table {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

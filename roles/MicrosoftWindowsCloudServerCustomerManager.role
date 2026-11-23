@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>Microsoft - Windows Cloud Server Customer Manager</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>Microsoft - Windows Cloud Server Customer Manager</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>MicrosoftWindowsCloudServerCustomerExecutive</parentRole>
+</Role>

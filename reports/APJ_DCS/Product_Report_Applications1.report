@@ -51,13 +51,6 @@
             <value>processors</value>
         </criteriaItems>
         <criteriaItems>
-            <column>CLOSE_DATE</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>equals</operator>
-            <value>THIS_FISCAL_YEAR</value>
-        </criteriaItems>
-        <criteriaItems>
             <column>Opportunity.Core_Opportunity_Products__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>

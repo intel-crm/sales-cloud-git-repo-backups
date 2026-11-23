@@ -39,6 +39,9 @@
                             </visibilityRule>
                         </valueListItems>
                         <valueListItems>
+                            <value>CustomButton.Opportunity.Clone_LWC_test</value>
+                        </valueListItems>
+                        <valueListItems>
                             <value>Opportunity.Core_Submit_for_Approval_LWC</value>
                             <visibilityRule>
                                 <booleanFilter>((1 AND 2 AND 3 AND (NOT(4 AND 5))) AND 6  AND 7) OR((1 AND 2 AND 3 AND 4 AND 5) AND 6 AND 7)</booleanFilter>
@@ -280,6 +283,9 @@
                                 </criteria>
                             </visibilityRule>
                         </valueListItems>
+                        <valueListItems>
+                            <value>Opportunity.crm_Sharing_LWC</value>
+                        </valueListItems>
                     </valueList>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
@@ -512,29 +518,6 @@
             <fieldInstance>
                 <fieldInstanceProperties>
                     <name>uiBehavior</name>
-                    <value>readonly</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Core_Design_Type__c</fieldItem>
-                <identifier>RecordCore_Design_Type_cField</identifier>
-                <visibilityRule>
-                    <booleanFilter>1 AND 2</booleanFilter>
-                    <criteria>
-                        <leftValue>{!Record.RecordType.DeveloperName}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Core_Design_Opportunity</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_Opportunity_Coverage_Nm__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Partner-Led Opportunity</rightValue>
-                    </criteria>
-                </visibilityRule>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
                     <value>required</value>
                 </fieldInstanceProperties>
                 <fieldItem>Record.Core_Military_Aerospace_Govmt_End_Use__c</fieldItem>
@@ -670,6 +653,36 @@
                         <operator>EQUAL</operator>
                     </criteria>
                 </visibilityRule>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Analysis_Rich_Text__c</fieldItem>
+                <identifier>RecordAnalysis_Rich_Text__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Core_Home_page_Banner_text__c</fieldItem>
+                <identifier>RecordCore_Home_page_Banner_text__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Core_Design_Type__c</fieldItem>
+                <identifier>RecordCore_Design_Type__cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-f71a649f-6f29-40df-9cd0-2c74dfc54c72</name>
@@ -1092,9 +1105,9 @@
                     <value>none</value>
                 </fieldInstanceProperties>
                 <fieldItem>Record.Core_VBS_Potential__c</fieldItem>
-                <identifier>RecordCore_VBS_Potential_cField</identifier>
+                <identifier>RecordCore_VBS_Potential_cField2</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 AND 2 AND 3 AND 4</booleanFilter>
+                    <booleanFilter>1 AND 2 AND 3 AND (4 OR 5) AND 6</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.Core_Opportunity_Coverage_Nm__c}</leftValue>
                         <operator>EQUAL</operator>
@@ -1108,6 +1121,16 @@
                     <criteria>
                         <leftValue>{!Record.CreatedBy.FirstName}</leftValue>
                         <operator>NE</operator>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Opportunity_Focus__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Growth</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Core_Opportunity_Type__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Deal: Partner Scale-enable</rightValue>
                     </criteria>
                     <criteria>
                         <leftValue>{!Record.Core_VBS_Potential__c}</leftValue>
@@ -1124,9 +1147,9 @@
                     <value>readonly</value>
                 </fieldInstanceProperties>
                 <fieldItem>Record.Core_VBS_Potential__c</fieldItem>
-                <identifier>RecordCore_VBS_Potential_cField3</identifier>
+                <identifier>RecordCore_VBS_Potential_cField</identifier>
                 <visibilityRule>
-                    <booleanFilter>((1 AND 4 ) OR 5) AND 2 AND 3</booleanFilter>
+                    <booleanFilter>((1 AND 6 ) OR 7) AND 2 AND 3 AND (4 OR 5)</booleanFilter>
                     <criteria>
                         <leftValue>{!$Permission.CustomPermission.Data_Ops_Elevated_Access}</leftValue>
                         <operator>EQUAL</operator>
@@ -1140,6 +1163,16 @@
                     <criteria>
                         <leftValue>{!Record.CreatedBy.FirstName}</leftValue>
                         <operator>NE</operator>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Opportunity_Focus__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Growth</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Core_Opportunity_Type__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Deal: Partner Scale-enable</rightValue>
                     </criteria>
                     <criteria>
                         <leftValue>{!Record.Core_VBS_Potential__c}</leftValue>
@@ -1163,7 +1196,7 @@
                 <fieldItem>Record.CRM_VBS_Note__c</fieldItem>
                 <identifier>RecordVBS_cField</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 AND 2</booleanFilter>
+                    <booleanFilter>1 AND 2 AND (3 OR 4)</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.Core_Opportunity_Coverage_Nm__c}</leftValue>
                         <operator>EQUAL</operator>
@@ -1172,6 +1205,16 @@
                     <criteria>
                         <leftValue>{!Record.CreatedBy.FirstName}</leftValue>
                         <operator>NE</operator>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Opportunity_Focus__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Growth</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Core_Opportunity_Type__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Deal: Partner Scale-enable</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>
@@ -1879,6 +1922,19 @@
                 </fieldInstanceProperties>
                 <fieldItem>Record.Desired_End_State__c</fieldItem>
                 <identifier>RecordPain_Points_cField</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 OR 2</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.Opportunity_Focus__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Core</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Opportunity_Focus__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Growth</rightValue>
+                    </criteria>
+                </visibilityRule>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -1889,6 +1945,19 @@
                 </fieldInstanceProperties>
                 <fieldItem>Record.Business_Need__c</fieldItem>
                 <identifier>RecordBusiness_Need_cField</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 OR 2</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.Opportunity_Focus__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Core</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Opportunity_Focus__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Growth</rightValue>
+                    </criteria>
+                </visibilityRule>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -1899,6 +1968,19 @@
                 </fieldInstanceProperties>
                 <fieldItem>Record.POC_Start_Date__c</fieldItem>
                 <identifier>RecordPOC_Start_Date_cField2</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 OR 2</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.Opportunity_Focus__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Core</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Opportunity_Focus__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Growth</rightValue>
+                    </criteria>
+                </visibilityRule>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -1909,6 +1991,19 @@
                 </fieldInstanceProperties>
                 <fieldItem>Record.FAD_Start_Date__c</fieldItem>
                 <identifier>RecordPOC_Start_Date_cField</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 OR 2</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.Opportunity_Focus__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Core</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Opportunity_Focus__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Growth</rightValue>
+                    </criteria>
+                </visibilityRule>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -1919,6 +2014,19 @@
                 </fieldInstanceProperties>
                 <fieldItem>Record.RFP_Open_Date__c</fieldItem>
                 <identifier>RecordRFP_Open_Date_cField</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 OR 2</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.Opportunity_Focus__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Core</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Opportunity_Focus__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Growth</rightValue>
+                    </criteria>
+                </visibilityRule>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -1929,6 +2037,19 @@
                 </fieldInstanceProperties>
                 <fieldItem>Record.Competitor_Threat_Mitigation__c</fieldItem>
                 <identifier>RecordCompetitive_Assessment_cField</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 OR 2</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.Opportunity_Focus__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Core</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Opportunity_Focus__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Growth</rightValue>
+                    </criteria>
+                </visibilityRule>
             </fieldInstance>
         </itemInstances>
         <name>Facet-e691f016-e900-43d2-9747-f617979962a2</name>
@@ -1943,6 +2064,19 @@
                 </fieldInstanceProperties>
                 <fieldItem>Record.Technology_and_Readiness_Gaps__c</fieldItem>
                 <identifier>RecordGap_In_Clients_Tech_Stack_cField</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 OR 2</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.Opportunity_Focus__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Core</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Opportunity_Focus__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Growth</rightValue>
+                    </criteria>
+                </visibilityRule>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -1953,6 +2087,19 @@
                 </fieldInstanceProperties>
                 <fieldItem>Record.Technical_Need__c</fieldItem>
                 <identifier>RecordTechnical_Need_cField</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 OR 2</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.Opportunity_Focus__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Core</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Opportunity_Focus__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Growth</rightValue>
+                    </criteria>
+                </visibilityRule>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -1963,6 +2110,19 @@
                 </fieldInstanceProperties>
                 <fieldItem>Record.POC_End_Date__c</fieldItem>
                 <identifier>RecordPOC_End_Date_cField2</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 OR 2</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.Opportunity_Focus__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Core</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Opportunity_Focus__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Growth</rightValue>
+                    </criteria>
+                </visibilityRule>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -1973,6 +2133,19 @@
                 </fieldInstanceProperties>
                 <fieldItem>Record.FAD_End_Date__c</fieldItem>
                 <identifier>RecordPOC_End_Date_cField</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 OR 2</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.Opportunity_Focus__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Core</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Opportunity_Focus__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Growth</rightValue>
+                    </criteria>
+                </visibilityRule>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -1983,6 +2156,19 @@
                 </fieldInstanceProperties>
                 <fieldItem>Record.RFP_Close_Date__c</fieldItem>
                 <identifier>RecordRFP_Close_Date_cField</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 OR 2</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.Opportunity_Focus__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Core</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Opportunity_Focus__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Growth</rightValue>
+                    </criteria>
+                </visibilityRule>
             </fieldInstance>
         </itemInstances>
         <name>Facet-b00864b2-bca3-47fb-bda9-48e7988679ac</name>
@@ -2365,8 +2551,8 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.CRM_Audit_Start_Date__c</fieldItem>
-                <identifier>RecordCRM_Audit_Start_Date_cField</identifier>
+                <fieldItem>Record.CRM_Audit_Status__c</fieldItem>
+                <identifier>RecordCRM_Audit_Status_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -2379,7 +2565,7 @@
                 <identifier>RecordCRM_Audit_Fail_Reason_cField</identifier>
             </fieldInstance>
         </itemInstances>
-        <name>Facet-175d4e3b-1488-4159-866a-8d43fa47389a</name>
+        <name>Facet-42a4f2c8-6c2e-4f95-87b3-8dc1f63d9ca1</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -2389,8 +2575,8 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.CRM_Audit_Status__c</fieldItem>
-                <identifier>RecordCRM_Audit_Status_cField</identifier>
+                <fieldItem>Record.CRM_Audit_Start_Date__c</fieldItem>
+                <identifier>RecordCRM_Audit_Start_Date_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -2413,7 +2599,7 @@
                 <identifier>RecordCRM_Auditor_Comments_cField</identifier>
             </fieldInstance>
         </itemInstances>
-        <name>Facet-9cfcf7da-e389-49f9-8316-891c155e092b</name>
+        <name>Facet-2f6b897b-cbeb-48f6-a9ea-e94dda67942f</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -2421,7 +2607,7 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>body</name>
-                    <value>Facet-175d4e3b-1488-4159-866a-8d43fa47389a</value>
+                    <value>Facet-42a4f2c8-6c2e-4f95-87b3-8dc1f63d9ca1</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:column</componentName>
                 <identifier>flexipage_column20</identifier>
@@ -2431,13 +2617,13 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>body</name>
-                    <value>Facet-9cfcf7da-e389-49f9-8316-891c155e092b</value>
+                    <value>Facet-2f6b897b-cbeb-48f6-a9ea-e94dda67942f</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:column</componentName>
                 <identifier>flexipage_column21</identifier>
             </componentInstance>
         </itemInstances>
-        <name>Facet-05fc2418-9d49-4b09-9cb3-c34564059ca1</name>
+        <name>Facet-1bb587b4-9c09-43bd-abab-17143e8e5ae6</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -2691,7 +2877,7 @@
                 <componentName>flexipage:fieldSection</componentName>
                 <identifier>flexipage_fieldSection8</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 AND 2</booleanFilter>
+                    <booleanFilter>1 AND 2 AND 3</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.Core_Opportunity_Coverage_Nm__c}</leftValue>
                         <operator>EQUAL</operator>
@@ -2700,6 +2886,11 @@
                     <criteria>
                         <leftValue>{!Record.CreatedBy.FirstName}</leftValue>
                         <operator>NE</operator>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Core_Opportunity_Type__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Deal: Partner Scale-enable</rightValue>
                     </criteria>
                 </visibilityRule>
             </componentInstance>
@@ -2808,7 +2999,7 @@
                         <rightValue>Intel-Led Opportunity</rightValue>
                     </criteria>
                     <criteria>
-                        <leftValue>{!Record.Core_Opportunity_ID__c}</leftValue>
+                        <leftValue>{!Record.X18_Digit_Opportunity_ID__c}</leftValue>
                         <operator>NE</operator>
                     </criteria>
                 </visibilityRule>
@@ -2821,6 +3012,10 @@
                     <value>50</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
+                    <name>label</name>
+                    <value>Pre-Submit Check</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
                     <name>pageName</name>
                     <value>Core_Oppty_PreSubmitCheck</value>
                 </componentInstanceProperties>
@@ -2830,6 +3025,12 @@
                 </componentInstanceProperties>
                 <componentName>flexipage:visualforcePage</componentName>
                 <identifier>flexipage_visualforcePage</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentName>crm_Opp_PreSubmitChecklist</componentName>
+                <identifier>c_crm_Opp_PreSubmitChecklist</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -2943,8 +3144,25 @@
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
+                    <name>minimumHeight</name>
+                    <value>20</value>
+                </componentInstanceProperties>
+                <componentName>crm_MINDS_Compliance_Message</componentName>
+                <identifier>c_crm_MINDS_Compliance_Message</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!Record.Core_Compliance_Status__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Approved with Guardrails</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
                     <name>columns</name>
-                    <value>Facet-05fc2418-9d49-4b09-9cb3-c34564059ca1</value>
+                    <value>Facet-1bb587b4-9c09-43bd-abab-17143e8e5ae6</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>horizontalAlignment</name>
@@ -3190,9 +3408,9 @@
                 <visibilityRule>
                     <booleanFilter>1 AND 2</booleanFilter>
                     <criteria>
-                        <leftValue>{!Record.RecordType.Name}</leftValue>
+                        <leftValue>{!Record.RecordType.DeveloperName}</leftValue>
                         <operator>EQUAL</operator>
-                        <rightValue>Deal Opportunity</rightValue>
+                        <rightValue>Core_Deal_Opportunity</rightValue>
                     </criteria>
                     <criteria>
                         <leftValue>{!Record.Core_Opportunity_Coverage_Nm__c}</leftValue>
@@ -5093,16 +5311,112 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>richTextValue</name>
-                    <value>&lt;p&gt;&lt;strong style=&quot;font-size: 16px;&quot;&gt;Important: Seismic EOL effective January 31, 2025&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;Intel’s contract with Seismic ends January 31, 2025. Please visit &lt;/span&gt;&lt;a href=&quot;https://goto.intel.com/SMR&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-size: 16px;&quot;&gt;&lt;strong&gt;Sales and Marketing Resources (SMR)&lt;/strong&gt;&lt;/a&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt; to access your content needs.&amp;nbsp;For questions about SMR, please visit &lt;/span&gt;&lt;a href=&quot;https://salescrmtraining.intel.com/sales-tools/smr/&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-size: 16px;&quot;&gt;the SMR Training page&lt;/a&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;. &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;Please bookmark these resource links: &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: Symbol; font-size: 16px;&quot;&gt;·&lt;/span&gt;&lt;span style=&quot;font-family: &amp;quot;Times New Roman&amp;quot;; font-size: 16px;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;a href=&quot;https://goto.intel.com/SMR&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-size: 16px;&quot;&gt;goto/SMR&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: Symbol; font-size: 16px;&quot;&gt;·&lt;/span&gt;&lt;span style=&quot;font-family: &amp;quot;Times New Roman&amp;quot;; font-size: 16px;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;a href=&quot;https://goto.intel.com/CCGresources&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-size: 16px;&quot;&gt;goto/CCGresources&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: Symbol; font-size: 16px;&quot;&gt;·&lt;/span&gt;&lt;span style=&quot;font-family: &amp;quot;Times New Roman&amp;quot;; font-size: 16px;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;a href=&quot;https://goto.intel.com/DCAIResources&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-size: 16px;&quot;&gt;goto/DCAIresources&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: Symbol; font-size: 16px;&quot;&gt;·&lt;/span&gt;&lt;span style=&quot;font-family: &amp;quot;Times New Roman&amp;quot;; font-size: 16px;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;a href=&quot;https://goto.intel.com/AIresources&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-size: 16px;&quot;&gt;goto/AIresources&lt;/a&gt;&lt;/p&gt;</value>
+                    <value>&lt;p&gt;&lt;strong style=&quot;color: rgb(221, 20, 20); font-size: 16px;&quot;&gt;Important: Seismic EOL effective January 31, 2025&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;Intel’s contract with Seismic &lt;/span&gt;&lt;span style=&quot;font-size: 16px; color: rgb(24, 24, 24);&quot;&gt;ended&lt;/span&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt; January 31, 2025. Please visit &lt;/span&gt;&lt;a href=&quot;https://goto.intel.com/SMR&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-size: 16px;&quot;&gt;&lt;strong&gt;Sales and Marketing Resources (SMR)&lt;/strong&gt;&lt;/a&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt; to access your content needs.&amp;nbsp;For questions about SMR, please visit &lt;/span&gt;&lt;a href=&quot;https://salescrmtraining.intel.com/sales-tools/smr/&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-size: 16px;&quot;&gt;the SMR Training page&lt;/a&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;. &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;Please bookmark these resource links: &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: Symbol; font-size: 16px;&quot;&gt;·&lt;/span&gt;&lt;span style=&quot;font-family: &amp;quot;Times New Roman&amp;quot;; font-size: 16px;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;a href=&quot;https://goto.intel.com/SMR&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-size: 16px;&quot;&gt;goto/SMR&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: Symbol; font-size: 16px;&quot;&gt;·&lt;/span&gt;&lt;span style=&quot;font-family: &amp;quot;Times New Roman&amp;quot;; font-size: 16px;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;a href=&quot;https://goto.intel.com/CCGresources&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-size: 16px;&quot;&gt;goto/CCGresources&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: Symbol; font-size: 16px;&quot;&gt;·&lt;/span&gt;&lt;span style=&quot;font-family: &amp;quot;Times New Roman&amp;quot;; font-size: 16px;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;a href=&quot;https://goto.intel.com/DCAIResources&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-size: 16px;&quot;&gt;goto/DCAIresources&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: Symbol; font-size: 16px;&quot;&gt;·&lt;/span&gt;&lt;span style=&quot;font-family: &amp;quot;Times New Roman&amp;quot;; font-size: 16px;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;a href=&quot;https://goto.intel.com/AIresources&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-size: 16px;&quot;&gt;goto/AIresources&lt;/a&gt;&lt;/p&gt;</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:richText</componentName>
                 <identifier>flexipage_richText</identifier>
             </componentInstance>
         </itemInstances>
-        <name>Facet-eb6562a7-d75b-4c02-a729-a9098ea93c03</name>
+        <name>Facet-6e5ec748-8ef9-4365-b2c6-1dfc8ab0865a</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>displayConnections</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>displayHeader</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>displayNews</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>displayRecommendedLeads</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>displayTopcard</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>headerText</name>
+                    <value>Company Profile</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>minHeight</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>scrolling</name>
+                    <value>auto</value>
+                </componentInstanceProperties>
+                <componentName>LID:SalesNavigatorCompanyProfileComponent</componentName>
+                <identifier>LID_SalesNavigatorCompanyProfileComponent</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!$Permission.CustomPermission.LISN_View_Components}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>true</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>displayGetIntroduced</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>displayHeader</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>displayHighlight</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>displayIcebreakers</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>displayRecentActivity</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>displayRelatedLeads</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>displayTopcard</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>headerText</name>
+                    <value>Member Profile</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>minHeight</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>scrolling</name>
+                    <value>auto</value>
+                </componentInstanceProperties>
+                <componentName>LID:SalesNavigatorMemberProfileComponent</componentName>
+                <identifier>LID_SalesNavigatorMemberProfileComponent</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!$Permission.CustomPermission.LISN_View_Components}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>true</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </componentInstance>
+        </itemInstances>
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
@@ -5132,6 +5446,36 @@
             </componentInstance>
         </itemInstances>
         <name>Facet-9c48da09-6420-4744-9bdb-f797b85d8d21</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>parentFieldApiName</name>
+                    <value>Opportunity.Id</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>relatedListApiName</name>
+                    <value>Change_Requesst__r</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>relatedListComponentOverride</name>
+                    <value>NONE</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>rowsToDisplay</name>
+                    <value>10</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showActionBar</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentName>force:relatedListSingleContainer</componentName>
+                <identifier>force_relatedListSingleContainer20</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-2acb71de-4ca0-4938-b97c-5e4b14d0f982</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -5178,7 +5522,7 @@
                     <value>Support Status</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
-                <identifier>flexipage_tab38</identifier>
+                <identifier>flexipage_tab2</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -5259,14 +5603,14 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>body</name>
-                    <value>Facet-eb6562a7-d75b-4c02-a729-a9098ea93c03</value>
+                    <value>Facet-6e5ec748-8ef9-4365-b2c6-1dfc8ab0865a</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>title</name>
                     <value>Content</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
-                <identifier>customTab4</identifier>
+                <identifier>flexipage_tab4</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -5295,6 +5639,27 @@
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
                 <identifier>collaborateTab</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-2acb71de-4ca0-4938-b97c-5e4b14d0f982</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>title</name>
+                    <value>Change Request</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:tab</componentName>
+                <identifier>flexipage_tab3</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!Record.Core_Coverage_Type_Nm__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Deal Registration</rightValue>
+                    </criteria>
+                </visibilityRule>
             </componentInstance>
         </itemInstances>
         <mode>Replace</mode>
@@ -5418,6 +5783,21 @@
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
+                    <name>actionNames</name>
+                    <valueList>
+                        <valueListItems>
+                            <value>New</value>
+                        </valueListItems>
+                    </valueList>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>adminFilters</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>maxRecordsToDisplay</name>
+                    <value>10</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
                     <name>parentFieldApiName</name>
                     <value>Opportunity.Id</value>
                 </componentInstanceProperties>
@@ -5426,19 +5806,44 @@
                     <value>Taggings__r</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
-                    <name>relatedListComponentOverride</name>
-                    <value>NONE</value>
+                    <name>relatedListDisplayType</name>
+                    <value>ADVGRID</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
-                    <name>rowsToDisplay</name>
-                    <value>10</value>
+                    <name>relatedListFieldAliases</name>
+                    <valueList>
+                        <valueListItems>
+                            <value>NAME</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>UniTag__Tag__c</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>CREATEDBY_USER</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>CREATED_DATE</value>
+                        </valueListItems>
+                    </valueList>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>relatedListLabel</name>
+                    <value>Taggings</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>showActionBar</name>
                     <value>true</value>
                 </componentInstanceProperties>
-                <componentName>force:relatedListSingleContainer</componentName>
-                <identifier>force_relatedListSingleContainer8</identifier>
+                <componentInstanceProperties>
+                    <name>sortFieldAlias</name>
+                    <value>__DEFAULT__</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>sortFieldOrder</name>
+                    <value>Default</value>
+                </componentInstanceProperties>
+                <componentName>lst:dynamicRelatedList</componentName>
+                <identifier>lst_dynamicRelatedList3</identifier>
                 <visibilityRule>
                     <booleanFilter>1 OR 2</booleanFilter>
                     <criteria>
@@ -5920,91 +6325,8 @@
         </itemInstances>
         <itemInstances>
             <componentInstance>
-                <componentInstanceProperties>
-                    <name>parentFieldApiName</name>
-                    <value>Opportunity.Id</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>relatedListApiName</name>
-                    <value>CampaignInfluences</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>relatedListComponentOverride</name>
-                    <value>NONE</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>rowsToDisplay</name>
-                    <value>10</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>showActionBar</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentName>force:relatedListSingleContainer</componentName>
-                <identifier>force_relatedListSingleContainer20</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>actionNames</name>
-                    <valueList>
-                        <valueListItems>
-                            <value>New</value>
-                        </valueListItems>
-                    </valueList>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>adminFilters</name>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>maxRecordsToDisplay</name>
-                    <value>10</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>parentFieldApiName</name>
-                    <value>Opportunity.Id</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>relatedListApiName</name>
-                    <value>Partner_Deal_Opportunities__r</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>relatedListDisplayType</name>
-                    <value>ADVGRID</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>relatedListFieldAliases</name>
-                    <valueList>
-                        <valueListItems>
-                            <value>NAME</value>
-                        </valueListItems>
-                        <valueListItems>
-                            <value>PRM_Partner_Account__c</value>
-                        </valueListItems>
-                        <valueListItems>
-                            <value>PRM_End_Customer_Account__c</value>
-                        </valueListItems>
-                    </valueList>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>relatedListLabel</name>
-                    <value>Partner Deal Opportunities</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>showActionBar</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>sortFieldAlias</name>
-                    <value>__DEFAULT__</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>sortFieldOrder</name>
-                    <value>Default</value>
-                </componentInstanceProperties>
-                <componentName>lst:dynamicRelatedList</componentName>
-                <identifier>lst_dynamicRelatedList3</identifier>
+                <componentName>crm_OpptyTeamWarningMessage</componentName>
+                <identifier>c_crm_OpptyTeamWarningMessage</identifier>
             </componentInstance>
         </itemInstances>
         <mode>Replace</mode>

@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>COMMIT GENERAL TRADING &amp; CONTRACTING CO. WLL Partner User</description>
+    <description>LIMRA EST. Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>COMMIT GENERAL TRADING &amp; CONTRACTING CO. WLL Partner User</name>
+    <name>LIMRA EST. Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>LIMRAESTPartnerManager</parentRole>
 </Role>

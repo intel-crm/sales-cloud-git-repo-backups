@@ -1,0 +1,25 @@
+<template>
+    <lightning-input
+        label="Search Users"
+        placeholder="Start typing to search users"
+        value={searchTerm}
+        onchange={handleInputChange}
+    ></lightning-input>
+    <template if:true={userOptions.length}>
+        <ul class="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid">
+            <template for:each={userOptions} for:item="user">
+                <li key={user.value} class="slds-listbox__item" role="presentation">
+                    <div class="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_center" role="option" data-id={user.value} onclick={handleUserSelect}>
+                        <span class="slds-media__body">
+                            <span class="slds-truncate" title={user.label}>{user.label}</span>
+                        </span>
+                    </div>
+                </li>
+            </template>
+        </ul>
+    </template>
+    <lightning-pill-container
+        items={items}
+        onitemremove={handleItemRemove}
+    ></lightning-pill-container>
+</template>

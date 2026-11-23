@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>PSG_QLE View</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>PSG_QLE Views</value>
+    </caseValues>
+    <fields>
+        <label><!-- Condition --></label>
+        <name>Condition__c</name>
+    </fields>
+    <fields>
+        <label><!-- PSG_Fieldset --></label>
+        <name>PSG_Fieldset__c</name>
+        <picklistValues>
+            <masterLabel>PSG_BM_Field_set</masterLabel>
+            <translation><!-- PSG_BM_Field_set --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSG_BO_Field_set</masterLabel>
+            <translation><!-- PSG_BO_Field_set --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSG_SOS_Field_Set_DR</masterLabel>
+            <translation><!-- PSG_SOS_Field_Set_DR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSG_TOOLS_FIELD_SET</masterLabel>
+            <translation><!-- PSG_TOOLS_FIELD_SET --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- PSG_Quote Type --></label>
+        <name>PSG_Quote_Type__c</name>
+        <picklistValues>
+            <masterLabel>Budgetary</masterLabel>
+            <translation><!-- Budgetary --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Contract Pricing</masterLabel>
+            <translation><!-- Contract Pricing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Design Win</masterLabel>
+            <translation><!-- Design Win --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tools</masterLabel>
+            <translation><!-- Tools --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transfer Pricing</masterLabel>
+            <translation><!-- Transfer Pricing --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Personas --></label>
+        <name>Personas__c</name>
+        <picklistValues>
+            <masterLabel>PSG_Internal_Biz_Ops</masterLabel>
+            <translation><!-- PSG_Internal_Biz_Ops --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSG_Internal_Business_Manager</masterLabel>
+            <translation><!-- PSG_Internal_Business_Manager --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSG_Internal_SOS</masterLabel>
+            <translation><!-- PSG_Internal_SOS --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Program --></label>
+        <name>Program__c</name>
+        <picklistValues>
+            <masterLabel>PSG</masterLabel>
+            <translation><!-- PSG --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

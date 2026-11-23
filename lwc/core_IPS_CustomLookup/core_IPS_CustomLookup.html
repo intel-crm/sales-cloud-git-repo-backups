@@ -3,13 +3,10 @@
         <div class="slds-combobox_container">
             <div class="slds-combobox slds-dropdown-trigger" aria-expanded="false" aria-haspopup="listbox" role="combobox">
                 <template if:false={selectedRecord}>
-                    <c-core_-i-p-s_-search-component onchange={handleOnchange} onfocusout={handleFocusOut} is-required-field={isRequiredField} is-disabled-field={isReadOnly} label={label} placeholder={placeholder} is-proj={isProj} key-len-msg={keyLenMsg}></c-core_-i-p-s_-search-component>
-                    <template if:true={minKeyLenMsg}>
-                        <div style="font-size: smaller;">Please enter at least 3 characters.</div> 
-                    </template>
+                    <c-core_-i-p-s_-search-component onchange={handleOnchange} onfocusout={handleFocusOut} is-required-field={isRequiredField} label={label} placeholder={placeholder}></c-core_-i-p-s_-search-component>
                     <template if:true={isRecordLoading}>
                         <div class="slds-input__icon-group slds-input__icon-group_right " >
-                            <div role="status" class="slds-spinner slds-spinner_brand slds-spinner_x-small slds-input__spinner slds-is-relative">
+                            <div role="status" class="slds-spinner slds-spinner_brand slds-spinner_x-small slds-input__spinner slds-is-relative" style={margintopforspinner}>
                             <span class="slds-assistive-text">Loading</span>
                             <div class="slds-spinner__dot-a"></div>
                             <div class="slds-spinner__dot-b"></div>
@@ -33,8 +30,6 @@
                                             extra-field1={extraField1}
                                             extra-field2-label={extraField2Label}
                                             extra-field2={extraField2}
-                                            extra-field3-label={extraField3Label}
-                                            extra-field3={extraField3}
                                             >
                                         </c-core_-i-p-s_-record-list>
                                     </template>
@@ -93,44 +88,32 @@
                     <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_left-right" role="none">
                         <template if:false={isRequiredField}>
                             <template  if:true={label}>
-                                <template if:false={isLightingportal}>
                                 <span class="slds-icon_container slds-icon-standard-account slds-combobox__input-entity-icon" style="margin-top: 12px;">
                                     <lightning-icon icon-name={iconname}></lightning-icon>
                                 </span>
-                                </template>
                                 <lightning-input 
                                     autocomplete="off"
                                     role="textbox"
                                     type="text"
                                     label={label} 
                                     value={selectedRecordFieldlabel} 
-                                    disabled
-                                    >
+                                    disabled>
                                 </lightning-input>
-                                <template if:false={isReadOnly}>
-                                    <button class="sicon_container slds-button slds-button_icon slds-input__icon slds-input__icon_right" title="Remove selected option" onclick={handleRemove}>
-                                        <div class="slds-m-top_medium">
-                                        <lightning-icon icon-name="utility:close" size="small" style="margin-top: 5px;"></lightning-icon>
-                                        <span class="slds-assistive-text">Remove selected option</span>
-                                       </div>
-                                    </button>
-                                </template>
+                                <button class="sicon_container slds-button slds-button_icon slds-input__icon slds-input__icon_right" title="Remove selected option" onclick={handleRemove}>
+                                    <lightning-icon icon-name="utility:close" size="small" style="margin-top: 5px;"></lightning-icon>
+                                    <span class="slds-assistive-text">Remove selected option</span>
+                                </button>
                             </template>
 
                             <template  if:false={label}>
-                                <template if:false={isLightingportal}>
-
-                                    <span class="slds-icon_container slds-icon-standard-account slds-combobox__input-entity-icon" title="Account">
-                                        <lightning-icon icon-name={iconname}></lightning-icon>
-                                    </span>
-                                </template>
+                                <span class="slds-icon_container slds-icon-standard-account slds-combobox__input-entity-icon" title="Account">
+                                    <lightning-icon icon-name={iconname}></lightning-icon>
+                                </span>
                                 <input class="slds-input slds-combobox__input slds-combobox__input-value" id="combobox-id-5" aria-controls="listbox-id-5" autocomplete="off" role="textbox" type="text" placeholder="Select an Option" readonly="" value={selectedRecordFieldlabel} disabled />
-                                <template if:false={isReadOnly}>
-                                    <button class="sicon_container slds-button slds-button_icon slds-input__icon slds-input__icon_right" title="Remove selected option" onclick={handleRemove}>
-                                        <lightning-icon icon-name="utility:close" size="small" style="margin-top: -5px;"></lightning-icon>
-                                        <span class="slds-assistive-text">Remove selected option</span>
-                                    </button>
-                                </template>
+                                <button class="sicon_container slds-button slds-button_icon slds-input__icon slds-input__icon_right" title="Remove selected option" onclick={handleRemove}>
+                                    <lightning-icon icon-name="utility:close" size="small" style="margin-top: -5px;"></lightning-icon>
+                                    <span class="slds-assistive-text">Remove selected option</span>
+                                </button>
                             </template>
                         </template>
                         <template if:true={isRequiredField}>
@@ -146,14 +129,10 @@
                                 required
                                 disabled>
                             </lightning-input>
-                            <template if:false={isReadOnly}>
-                                <button class="sicon_container slds-button slds-button_icon slds-input__icon slds-input__icon_right" title="Remove selected option" onclick={handleRemove}>
-                                    <div class="slds-m-top_medium">
-                                    <lightning-icon icon-name="utility:close" size="small" style="margin-top: 5px;"></lightning-icon>
-                                    <span class="slds-assistive-text">Remove selected option</span>
-                                </div>
-                                </button>
-                            </template>    
+                            <button class="sicon_container slds-button slds-button_icon slds-input__icon slds-input__icon_right" title="Remove selected option" onclick={handleRemove}>
+                                <lightning-icon icon-name="utility:close" size="small" style="margin-top: 5px;"></lightning-icon>
+                                <span class="slds-assistive-text">Remove selected option</span>
+                            </button>
                         </template>
                     </div>
                 </template>

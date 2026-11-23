@@ -34,13 +34,16 @@ public with sharing class Core_RestAPI_SPEnvDetailV1_Handler{
     //Default Constructor
     public Core_RestAPI_SPEnvDetailV1_Handler(DateTime currTime, String APIname){
         
+        System.debug('SOQL:'+ GET_ENVIRONMENT_DETAILS_SOQL);
         this.entryTime = currTime;
         this.apiName= APIname;
         response.successContent = new List<SupportedproductEnvDetailsWrapper>();
+        System.debug('Core_RestAPI_SPEnvDetailV1_Handler success response'+response.successContent);
     }
     
     //Retrieve specific Supported Product's Environment details for the logged in User
     public Core_RestAPI_Response getEnvironmentDetails(){
+        System.debug(' Core_RestAPI_SPEnvDetailV1_Handler getEnvironmentDetails Entered  \n ');
         try{
             //Validations if need to be handled in util class       
             Boolean isRequestValid = doValidations();               
@@ -51,20 +54,24 @@ public with sharing class Core_RestAPI_SPEnvDetailV1_Handler{
         }catch(Exception e){
             Core_RestAPI_Util.processException(e,ERROR_CODE_500,response,apiName,entryTime);
         }finally{    
+            System.debug('Core_RestAPI_SPEnvDetailV1_Handler Logging transaction and returning the response '+response);  
             if(String.isBlank(response.code))
                 response.code = SUCCESS_CODE_200 ;
             Core_RestAPI_LoggingUtil.logTransaction(entryTime, response);
         }        
+        System.debug(' Core_RestAPI_SPEnvDetailV1_Handler getEnvironmentDetails Exiting ');
         return response;
     } 
     //Validate the data , Incase of error set the error code to 
     @testVisible private Boolean doValidations(){
         
+        System.debug('Core_RestAPI_SPEnvDetailV1_Handler doValidations Invoked '+PRODUCT_ID);
         Boolean isRequestValid = true;
         if (Core_RestAPI_Util.isProductIdValid(PRODUCT_ID)){
             Core_RestAPI_Util.processException(null ,MALFORMED_INPUT_9011, response, apiName, entryTime);
             isRequestValid = false;
         }else if(Core_RestAPI_Util.isRequestURIValid(SPEnvDetailV1_URI) == false){
+            system.debug('inside isRequestValid ==>> '+isRequestValid );
             Core_RestAPI_Util.processException(null , INVALID_URI_404, response, apiName, entryTime);   
             isRequestValid = false;
         }
@@ -83,13 +90,12 @@ public with sharing class Core_RestAPI_SPEnvDetailV1_Handler{
                 for(Core_IPS_Assigned_Environment_Variables__c envQuestn : lstEnvirVariable){
                     envQuestnIds.add(envQuestn.Core_IPS_Question__c); 
                 }
-                //FLS check added -Venugopal
-                if(Core_IPS_Question__c.SObjectType.getDescribe().isAccessible()){
-                    lstCoreQuestions = [SELECT Id,Name,Core_IPS_Question__c,Core_IPS_Parent_Question__c,Core_IPS_Datatype__c,Core_IPS_Required__c,(select id,Core_IPS_Answer__c,Core_IPS_Parent_Answer__r.Name, Name from Core_Answers__r WHERE Core_IPS_Status__c = 'Active') FROM Core_IPS_Question__c WHERE ID IN: envQuestnIds AND Core_IPS_Status__c = 'Active'];
-                }
+                lstCoreQuestions = [SELECT Id,Name,Core_IPS_Question__c,Core_IPS_Parent_Question__c,Core_IPS_Datatype__c,Core_IPS_Required__c,(select id,Core_IPS_Answer__c,Core_IPS_Parent_Answer__r.Name, Name from Core_Answers__r WHERE Core_IPS_Status__c = 'Active') FROM Core_IPS_Question__c WHERE ID IN: envQuestnIds AND Core_IPS_Status__c = 'Active'];
+                System.debug('lstCoreQuestions--->'+lstCoreQuestions);
                 for(Core_IPS_Question__c objAns :lstCoreQuestions){
                     mapQues2Answer.put(objAns.Id,objAns.Core_Answers__r);
                 }
+                System.debug('Map of Question and Answers'+mapQues2Answer);
                 SupportedproductEnvDetailsWrapper objWrapp = new SupportedproductEnvDetailsWrapper ();
                 List<EnvironmentDetailsWrapper> objEDWrapp=new List<EnvironmentDetailsWrapper>();
                 for(Core_IPS_Assigned_Environment_Variables__c objEnvirVariable: lstEnvirVariable)
@@ -118,6 +124,7 @@ public with sharing class Core_RestAPI_SPEnvDetailV1_Handler{
                 } 
                 objWrapp.envDetails=objEDWrapp;
                 response.successContent.add(objWrapp);
+                System.debug('ProcessRequest response.successContent '+response.successContent);
                 
             }
         }else{

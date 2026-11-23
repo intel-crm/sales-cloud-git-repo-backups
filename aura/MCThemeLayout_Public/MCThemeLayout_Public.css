@@ -1,8 +1,5 @@
-.THIS .forceCommunityRichText {
-  font-family: Intel-Clear,"arial", "helvetica", sans-serif !important;
-  font-size: 16px;
-}
-
-.THIS {
-  font-family: Intel-Clear,"arial", "helvetica", sans-serif !important;
+.THIS .forceCommunityRichText 
+{
+    font-family : intel-clear;
+    font-size: 16px;
 }

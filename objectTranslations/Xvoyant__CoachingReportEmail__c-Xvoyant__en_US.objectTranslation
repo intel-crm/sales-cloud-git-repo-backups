@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Coaching Report Email</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Coaching Report Email List</value>
+    </caseValues>
+    <fields>
+        <label><!-- FunctionalGroupId --></label>
+        <name>Xvoyant__FunctionalGroupId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Recipient Email --></label>
+        <name>Xvoyant__Recipient_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- SF User --></label>
+        <name>Xvoyant__SF_User__c</name>
+        <relationshipLabel><!-- Coaching Report Email List --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

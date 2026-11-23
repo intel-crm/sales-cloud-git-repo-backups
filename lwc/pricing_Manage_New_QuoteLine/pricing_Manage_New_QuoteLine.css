@@ -1,3 +1,22 @@
 .spinnerClass{
     background-color: transparent;
 }
+
+.footerStyle {
+    position: sticky;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    background: rgba(236, 235, 234, .9);
+    z-index: 1000;
+    height: 70px;
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.spinnerStyle {
+    margin-top: 100px;
+    margin-bottom: 100px;
+}

@@ -169,15 +169,6 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>PMP_Boolean_Ind__c</fullName>
-        <formula>If(((PMP_Specification_Value_Cd__c==&apos;Yes&apos; || PMP_Specification_Value_Cd__c==&apos;No&apos;) &amp;&amp;   PMP_Display_Type_Nm__c==&apos;Radiobutton&apos;),true,false)</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Boolean Indicator</label>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
         <fullName>PMP_Display_Type_Nm__c</fullName>
         <description>Display Type</description>
         <externalId>false</externalId>
@@ -292,18 +283,6 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>PMP_Specification_Value_Chinese_Nm__c</fullName>
-        <description>This formula field is used to get Spec Value Chinese</description>
-        <externalId>false</externalId>
-        <formula>PMP_Specification_Value_Id__r.PMP_Specification_Value_Chinese_Cd__c</formula>
-        <label>Specification Value Chinese</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>PMP_Specification_Value_Id__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <description>Lookup to specification value</description>
@@ -314,30 +293,6 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>PMP_Specification_Value_Image_URL_Nm__c</fullName>
-        <description>This formula field is used to get Spec Value Image URL</description>
-        <externalId>false</externalId>
-        <formula>PMP_Specification_Value_Id__r.PMP_Image_URL__c</formula>
-        <label>Specification Value Image URL</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>PMP_Specification_Value_Japanese_Nm__c</fullName>
-        <description>This formula field is used to get Spec Value Japanese</description>
-        <externalId>false</externalId>
-        <formula>PMP_Specification_Value_Id__r.PMP_Specification_Value_Japanese_Cd__c</formula>
-        <label>Specification Value Japanese</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
     </fields>
     <fields>
         <fullName>PMP_Specification_Value_Nm__c</fullName>
@@ -352,43 +307,10 @@
         <type>Text</type>
         <unique>false</unique>
     </fields>
-    <fields>
-        <fullName>PMP_Specification_Value_PIM_Id_Nm__c</fullName>
-        <description>This formula field is used to get Spec Value PIM Id</description>
-        <externalId>false</externalId>
-        <formula>PMP_Specification_Value_Id__r.PMP_Product_Specification_Value_Key__c</formula>
-        <label>Specification Value PIM Id</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>PMP_Specification_Value_Product_URL_Nm__c</fullName>
-        <description>This formula field is used to get Spec Value Product URL</description>
-        <externalId>false</externalId>
-        <formula>PMP_Specification_Value_Id__r.PMP_Product_URL__c</formula>
-        <label>Specification Value Product URL</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
     <label>Partner Offering Specification</label>
     <listViews>
         <fullName>All</fullName>
-        <columns>NAME</columns>
-        <columns>PMP_Specification_Id__c</columns>
-        <columns>PMP_Specification_Nm__c</columns>
-        <columns>PMP_Specification_Value_Cd__c</columns>
         <filterScope>Everything</filterScope>
-        <filters>
-            <field>PMP_Specification_Nm__c</field>
-            <operation>contains</operation>
-            <value>12th Generation Intel® Core™ i9 Processors</value>
-        </filters>
         <label>All</label>
     </listViews>
     <nameField>

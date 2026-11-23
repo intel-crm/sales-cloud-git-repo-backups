@@ -104,10 +104,6 @@
         <connector>
             <targetReference>Add_Details</targetReference>
         </connector>
-        <faultConnector>
-            <isGoTo>true</isGoTo>
-            <targetReference>Error_message</targetReference>
-        </faultConnector>
         <inputAssignments>
             <field>Bypass__c</field>
             <value>
@@ -124,10 +120,6 @@
         <connector>
             <targetReference>Successful_message</targetReference>
         </connector>
-        <faultConnector>
-            <isGoTo>true</isGoTo>
-            <targetReference>Error_message</targetReference>
-        </faultConnector>
         <inputAssignments>
             <field>Bypass__c</field>
             <value>
@@ -149,11 +141,11 @@
         </faultConnector>
         <inputReference>recordId</inputReference>
     </recordUpdates>
-    <runInMode>SystemModeWithoutSharing</runInMode>
+    <runInMode>DefaultMode</runInMode>
     <screens>
         <name>Error_message</name>
         <label>Error message</label>
-        <locationX>704</locationX>
+        <locationX>440</locationX>
         <locationY>566</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
@@ -206,13 +198,6 @@
         </connector>
     </start>
     <status>Active</status>
-    <variables>
-        <name>BypassOrgId</name>
-        <dataType>String</dataType>
-        <isCollection>false</isCollection>
-        <isInput>false</isInput>
-        <isOutput>false</isOutput>
-    </variables>
     <variables>
         <name>RecordDetails</name>
         <dataType>String</dataType>

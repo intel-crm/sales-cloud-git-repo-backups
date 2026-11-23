@@ -16,9 +16,11 @@ public class Core_Batch_KPIStageDelete_Test {
         Test.startTest();
 
             //Core_DeleteKPIInt_Batch obj = new Core_DeleteKPIInt_Batch();
-          String cron = '0 0 0 1 * ? *';
-          System.schedule('KPI_DeltaLoad_Every24hrs', cron, new Core_Scheduler_DeleteKPIStage());
-            //DataBase.executeBatch(obj); 
+          /*String cron = '0 0 0 1 * ? *';
+          System.schedule('KPI_DeltaLoad_Every24hrs', cron, new Core_Scheduler_DeleteKPIStage());*/
+         Core_Batch_KPIStageDelete obj = new Core_Batch_KPIStageDelete();//TWC4767-3867
+         DataBase.executeBatch(obj); 
+            
             
         Test.stopTest();
     }

@@ -4,40 +4,18 @@
     <encodingKey>UTF-8</encodingKey>
     <name>SCRREQTOAPVDNEW_ZHT</name>
     <style>none</style>
-    <subject>需要採取行動：45 天內啟動夥伴計畫存取權限</subject>
-    <textOnly>恭喜您，您的會員申請已獲得核准及處理！
+    <subject>恭喜您，歡迎加入 Intel 的夥伴計畫</subject>
+    <textOnly>You Have Been Approved!
 
 
-歡迎來到 Intel® 夥伴聯盟計畫！
+Welcome! {!Account.Name} is now a member of Intel’s Partner program. After 30 minutes, please log in here for marketing materials, sales tools and other information about your benefits. If you would like to make changes to your account, please visit your profile here.www.intel.com/content/www/us/en/secure/my-intel/profile.html
 
-很高興您能加入這個整合生態系統，讓夥伴與 Intel 生態系統連結，加速創新解決方案，實現業務成果並開啟成長契機
+Questions? Contact Support here
 
-為確保您能夠持續存取您的帳戶，請在收到本電子郵件後 45 天內登入。登入可讓您的個人檔案保持活躍，並與貴公司綁定。
-
-透過為貴企業量身打造的福利，您將能：
-
-利用最新的工具、訓練與資源，開創全新的商機
-透過合格的購買項目與活動，賺取並兌換點數
-利用市場開發基金加速行銷與銷售成功
-在最新的 Intel® 軟體上學習、設計原型及測試工作負載
-透過 Intel® 夥伴大學的一流訓練，拓展知識
-利用 NDA 內容、藍圖和開發者工具打造創新產品
-利用 Intel® 行銷工作室的共同行銷素材，快速推出行銷活動
-透過 Intel® Partner Showcase 的夥伴店面，開創合格的潛在客戶
-
-登入開始使用
-
-如果需要 Intel 登入程序的協助，請按一下這裡。
-
-
-
-謝謝您，
-您的 Intel® 夥伴聯盟團隊
-
-此訊息作為您目前與Intel® 夥伴聯盟關係相關的重要商業通訊發送給您。
-© {!$Label.PRM_CurrentYear} Intel公司
-Intel Corporation,2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.www.intel.com
-隱私權&amp;verbar;Cookie</textOnly>
+Copyright © 2016 Intel Corporation. All rights reserved. Intel, the Intel logo are trademarks of Intel Corporation in the U.S. and/or other countries.
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. Intel.com
+You may unsubscribe at any time by updating your profile settings at: {!$Label.PRM_MyIntelProfileURL}
+Privacy | Cookies | *Trademarks</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

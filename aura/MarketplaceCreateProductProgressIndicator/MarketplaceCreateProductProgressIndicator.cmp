@@ -1,7 +1,4 @@
-<aura:component></aura:component>
-<!-- IPA2.0 + US TWC4497-1631 -->
-
-<!-- extends="c:MarketplaceRedux" implements="forceCommunity:availableForAllPageTypes">
+<aura:component extends="c:MarketplaceRedux" implements="forceCommunity:availableForAllPageTypes">
         <aura:if isTrue="{! v.appState.Settings.currentSldsBreakPoint == 'large' || v.appState.Settings.currentSldsBreakPoint == 'x-large'}">
                 <div class="slds-progress-wrapper">
                         <ul class="progressbar">
@@ -49,4 +46,4 @@
                         </div>
                 </div>
 </aura:if>
-</aura:component> -->
+</aura:component>

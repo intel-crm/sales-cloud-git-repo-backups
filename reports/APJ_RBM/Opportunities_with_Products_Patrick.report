@@ -146,7 +146,6 @@
         <field>PROBABILITY</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
         <field>Opportunity.Core_Architecture_Conversion__c</field>
     </columns>
     <columns>
@@ -206,6 +205,9 @@
         <field>Opportunity.Core_At_Risk_Created_Date__c</field>
     </columns>
     <columns>
+        <field>Opportunity.Core_Risk_Reason__c</field>
+    </columns>
+    <columns>
         <field>Opportunity.Core_Loss_Cancel_Reason__c</field>
     </columns>
     <columns>
@@ -216,13 +218,13 @@
         <field>Opportunity.Core_Opportunity_Count__c</field>
     </columns>
     <filter>
-        <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND (6 OR 8) AND 7 AND 9</booleanFilter>
+        <booleanFilter>(1 AND 2 AND 3 AND 4 AND 5 AND (6 OR 9) AND 7 AND 8) AND 10</booleanFilter>
         <criteriaItems>
             <column>Account.Core_Sales_Groups__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>APJ Sales Territory</value>
+            <value>GMP APJ Sales Territory</value>
         </criteriaItems>
         <criteriaItems>
             <column>STAGE_NAME</column>
@@ -250,7 +252,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>,Design: Original,Design: Secondary,Deal: Scale-enable,Deal: Sell-through,Deal: Sell-to</value>
+            <value>,Design: Original,Design: Secondary,Deal: Sell-through,Deal: Sell-to</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Approver_1__c</column>
@@ -267,6 +269,13 @@
             <value>Lost,Cancelled,Deleted</value>
         </criteriaItems>
         <criteriaItems>
+            <column>OpportunityLineItem.Core_KPI_Date__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>THIS_YEAR</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>ROLLUP_DESCRIPTION</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
@@ -274,11 +283,11 @@
             <value>Partner,Patrick</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <column>OpportunityLineItem.Core_KPI_Date__c</column>
             <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>NEX</value>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>THIS_YEAR</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

@@ -1,5 +1,5 @@
 import { LightningElement, api, wire, track } from 'lwc';
-/*import { getRecord } from 'lightning/uiRecordApi';
+import { getRecord } from 'lightning/uiRecordApi';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import getHostId from '@salesforce/apex/Sales_LicenseGenIntegration_Utility.returnHostIdDetail';
 import hostRelatedLicensesCount from '@salesforce/apex/Sales_LicenseGenIntegration_Utility.hostRelatedLicensesCount';
@@ -9,10 +9,10 @@ import SalesSuccessLicFile from '@salesforce/label/c.Sales_SuccessLicFile';
 import SalesErrorMessage from '@salesforce/label/c.Sales_Error_Message';
 import Sales_Failuremsg from '@salesforce/label/c.Sales_Failuremsg';
 import Sales_Order_Success from '@salesforce/label/c.Sales_Order_Success';
-*/
+
 
 export default class Sales_LicenseGenerationIntegration extends LightningElement {
-        /*@api recordId;
+        @api recordId;
         @track showModal = false;
         @api inputType;
         @api input;
@@ -91,12 +91,12 @@ export default class Sales_LicenseGenerationIntegration extends LightningElement
                 /*window.setTimeout(function(){ 
                         location.reload(true);
                 }, 2000);*/
-        /*}
+        }
 
         closeQuickAction() {
                 const closeModal = new CustomEvent('close');
                 // Dispatches the event.
                 this.dispatchEvent(closeModal);
-        }*/
+        }
 
 }

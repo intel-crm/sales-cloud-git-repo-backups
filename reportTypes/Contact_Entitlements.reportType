@@ -213,6 +213,21 @@
             <field>Core_DontNotify__c</field>
             <table>Core_Entitlement__c.Entitlements__r</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Campaign_Id__c</field>
+            <table>Core_Entitlement__c.Entitlements__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Status_of_Assignment_Failure__c</field>
+            <table>Core_Entitlement__c.Entitlements__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Display_Nm__c</field>
+            <table>Core_Entitlement__c.Entitlements__r</table>
+        </columns>
         <masterLabel>Contact Entitlements</masterLabel>
     </sections>
 </ReportType>

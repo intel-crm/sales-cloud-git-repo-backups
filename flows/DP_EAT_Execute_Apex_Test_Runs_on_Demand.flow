@@ -4,7 +4,7 @@
         <name>Email_notification_for_Flow_exception</name>
         <label>Email notification for Flow exception</label>
         <locationX>1106</locationX>
-        <locationY>638</locationY>
+        <locationY>878</locationY>
         <actionName>emailSimple</actionName>
         <actionType>emailSimple</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -29,10 +29,10 @@
         <nameSegment>emailSimple</nameSegment>
     </actionCalls>
     <actionCalls>
-        <name>Email_Notification_with_Report_links_0</name>
+        <name>Email_Notification_with_Report_links</name>
         <label>Email Notification with Report links</label>
         <locationX>50</locationX>
-        <locationY>1478</locationY>
+        <locationY>1718</locationY>
         <actionName>emailSimple</actionName>
         <actionType>emailSimple</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -45,7 +45,7 @@
         <inputParameters>
             <name>emailAddresses</name>
             <value>
-                <elementReference>Get_job_status_of_Project_Info.DP_EAT_Email_Addresses__c</elementReference>
+                <elementReference>Fetch_Project_Info_record.DP_EAT_Email_Addresses__c</elementReference>
             </value>
         </inputParameters>
         <inputParameters>
@@ -60,7 +60,7 @@
         <name>Enqueue_Project_Test_Classes_0</name>
         <label>Enqueue Project Test Classes</label>
         <locationX>611</locationX>
-        <locationY>518</locationY>
+        <locationY>758</locationY>
         <actionName>DP_EAT_InvocableUtility</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -82,7 +82,7 @@
         <name>Log_Project_Test_Run_Results</name>
         <label>Log Project Test Run Results</label>
         <locationX>380</locationX>
-        <locationY>998</locationY>
+        <locationY>1238</locationY>
         <actionName>DP_EAT_InvocableUtility</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -103,7 +103,7 @@
         <name>Assign_Enqueue_Tests_Params_0</name>
         <label>Assign Enqueue Tests Params</label>
         <locationX>611</locationX>
-        <locationY>398</locationY>
+        <locationY>638</locationY>
         <assignmentItems>
             <assignToReference>EnqueueTestsParams</assignToReference>
             <operator>Add</operator>
@@ -126,7 +126,7 @@
         <name>Assign_log_results_params</name>
         <label>Assign log results params</label>
         <locationX>380</locationX>
-        <locationY>878</locationY>
+        <locationY>1118</locationY>
         <assignmentItems>
             <assignToReference>logResultsParams</assignToReference>
             <operator>Add</operator>
@@ -143,6 +143,30 @@
         </assignmentItems>
         <connector>
             <targetReference>Log_Project_Test_Run_Results</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Increment counter by 1</description>
+        <name>Counter_1</name>
+        <label>Counter+1</label>
+        <locationX>990</locationX>
+        <locationY>278</locationY>
+        <assignmentItems>
+            <assignToReference>CountOfClicks</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Fetch_Project_Info_before_enqueuing.DP_EAT_TestRunButtonCount__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>CountOfClicks</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <numberValue>1.0</numberValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>UpdateTestCountOnClick</targetReference>
         </connector>
     </assignments>
     <constants>
@@ -163,20 +187,27 @@
         <name>Check_if_job_completed</name>
         <label>Check if job completed</label>
         <locationX>182</locationX>
-        <locationY>1358</locationY>
+        <locationY>1598</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Job_completed</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>Get_job_status_of_Project_Info.DP_EAT_Job_Status__c</leftValueReference>
+                <leftValueReference>Fetch_Project_Info_record.DP_EAT_Job_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Queued</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Project_info_after_logging_results.DP_EAT_Job_Status__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <stringValue>Completed</stringValue>
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Email_Notification_with_Report_links_0</targetReference>
+                <targetReference>Email_Notification_with_Report_links</targetReference>
             </connector>
             <label>Job completed</label>
         </rules>
@@ -185,7 +216,7 @@
         <name>If_Send_Email_is_true</name>
         <label>If Send Email is true</label>
         <locationX>380</locationX>
-        <locationY>1118</locationY>
+        <locationY>1358</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Send_Email_is_true</name>
@@ -198,7 +229,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Get_job_status_of_Project_Info</targetReference>
+                <targetReference>Get_Project_info_after_logging_results</targetReference>
             </connector>
             <label>Send Email is true</label>
         </rules>
@@ -207,7 +238,7 @@
         <name>If_Status_is_Not_Queued</name>
         <label>If Status is Not Queued</label>
         <locationX>990</locationX>
-        <locationY>278</locationY>
+        <locationY>518</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Status_is_not_Queued</name>
@@ -225,6 +256,7 @@
             <label>Status is not Queued</label>
         </rules>
     </decisions>
+    <environments>Default</environments>
     <formulas>
         <name>dateTimeafterXMinutes</name>
         <dataType>DateTime</dataType>
@@ -271,7 +303,7 @@ SUBSTITUTE({!Fetch_Project_Info_record.Name}, &quot; &quot;, &quot;%20&quot;),
         <locationY>158</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>If_Status_is_Not_Queued</targetReference>
+            <targetReference>Counter_1</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -289,7 +321,7 @@ SUBSTITUTE({!Fetch_Project_Info_record.Name}, &quot; &quot;, &quot;%20&quot;),
         <name>Fetch_Project_Info_record</name>
         <label>Fetch Project Info record</label>
         <locationX>611</locationX>
-        <locationY>638</locationY>
+        <locationY>878</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Time_Delay</targetReference>
@@ -307,10 +339,10 @@ SUBSTITUTE({!Fetch_Project_Info_record.Name}, &quot; &quot;, &quot;%20&quot;),
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordLookups>
-        <name>Get_job_status_of_Project_Info</name>
-        <label>Get job status of Project Info</label>
+        <name>Get_Project_info_after_logging_results</name>
+        <label>Get Project info after logging results</label>
         <locationX>182</locationX>
-        <locationY>1238</locationY>
+        <locationY>1478</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Check_if_job_completed</targetReference>
@@ -327,6 +359,30 @@ SUBSTITUTE({!Fetch_Project_Info_record.Name}, &quot; &quot;, &quot;%20&quot;),
         <object>DP_EAT_Project_Info__c</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
+    <recordUpdates>
+        <name>UpdateTestCountOnClick</name>
+        <label>UpdateTestCountOnClick</label>
+        <locationX>990</locationX>
+        <locationY>398</locationY>
+        <connector>
+            <targetReference>If_Status_is_Not_Queued</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>DP_EAT_TestRunButtonCount__c</field>
+            <value>
+                <elementReference>CountOfClicks</elementReference>
+            </value>
+        </inputAssignments>
+        <object>DP_EAT_Project_Info__c</object>
+    </recordUpdates>
     <runInMode>DefaultMode</runInMode>
     <start>
         <locationX>864</locationX>
@@ -335,7 +391,7 @@ SUBSTITUTE({!Fetch_Project_Info_record.Name}, &quot; &quot;, &quot;%20&quot;),
             <targetReference>Fetch_Project_Info_before_enqueuing</targetReference>
         </connector>
     </start>
-    <status>Active</status>
+    <status>Obsolete</status>
     <textTemplates>
         <name>emailBody</name>
         <isViewedAsPlainText>true</isViewedAsPlainText>
@@ -343,18 +399,17 @@ SUBSTITUTE({!Fetch_Project_Info_record.Name}, &quot; &quot;, &quot;%20&quot;),
 
 The execution of selected test classes for {!Fetch_Project_Info_record.Name} is completed. Please visit the below Reports for detailed results:-
 
-https://intel--crmdevint3.lightning.force.com/lightning/r/Report/00O2i000000TsOUEA0/view?queryScope=userFolders&amp;fv0={!ProjectNameFilterValue}
+https://intel--crmdevsls3.lightning.force.com/lightning/r/Report/00O2D000000XlEEUA0/view?queryScope=userFolders&amp;fv0={!ProjectNameFilterValue}
 
-https://intel--crmdevint3.lightning.force.com/lightning/r/Report/00O2i000000TsOTEA0/view?queryScope=userFolders&amp;fv0={!ProjectNameFilterValue}</text>
+https://intel--crmdevsls3.lightning.force.com/lightning/r/Report/00O2D000000XlEDUA0/view?queryScope=userFolders&amp;fv0={!ProjectNameFilterValue}</text>
     </textTemplates>
     <textTemplates>
         <name>faultEmailBody</name>
         <isViewedAsPlainText>true</isViewedAsPlainText>
         <text>Hi,
 
-Something went wrong while executing test runs for {!Fetch_Project_Info_before_enqueuing.Name} through EAT automation. Please try again later.
-Most likely, the test classes you&apos;re trying to run are already enqueued for test runs. Refer this for more details-
-https://intel.sharepoint.com/:p:/r/sites/Bhoomi/_layouts/15/Doc.aspx?sourcedoc=%7B4F4DB4D5-098A-4679-8F36-D3F2EF92A6F5%7D&amp;file=UI%20%26%20Functional%20Design%20for%20EAT.pptx&amp;action=edit&amp;mobileredirect=true&amp;wdOrigin=TEAMS-ELECTRON.teams.files&amp;wdExp=TEAMS-CONTROL&amp;wdhostclicktime=1649218975445
+Something went wrong while executing test runs for {!Fetch_Project_Info_before_enqueuing.Name} through EAT automation.
+Please try again later.
 
 Error message:
 {!$Flow.FaultMessage}</text>
@@ -364,11 +419,17 @@ Error message:
         <isViewedAsPlainText>true</isViewedAsPlainText>
         <text>Fault occurred while executing test runs for {!Fetch_Project_Info_before_enqueuing.Name}</text>
     </textTemplates>
-    <textTemplates>
-        <name>PPTLink</name>
-        <isViewedAsPlainText>false</isViewedAsPlainText>
-        <text>&lt;p&gt;&lt;a href=&quot;https://intel.sharepoint.com/:p:/r/sites/Bhoomi/_layouts/15/Doc.aspx?sourcedoc=%7B4F4DB4D5-098A-4679-8F36-D3F2EF92A6F5%7D&amp;amp;file=UI%20%26%20Functional%20Design%20for%20EAT.pptx&amp;amp;action=edit&amp;amp;mobileredirect=true&amp;amp;wdOrigin=TEAMS-ELECTRON.teams.files&amp;amp;wdExp=TEAMS-CONTROL&amp;amp;wdhostclicktime=1649218975445&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;https://intel.sharepoint.com/:p:/r/sites/Bhoomi/_layouts/15/Doc.aspx?sourcedoc=%7B4F4DB4D5-098A-4679-8F36-D3F2EF92A6F5%7D&amp;amp;file=UI%20%26%20Functional%20Design%20for%20EAT.pptx&amp;amp;action=edit&amp;amp;mobileredirect=true&amp;amp;wdOrigin=TEAMS-ELECTRON.teams.files&amp;amp;wdExp=TEAMS-CONTROL&amp;amp;wdhostclicktime=1649218975445&lt;/a&gt;&lt;/p&gt;</text>
-    </textTemplates>
+    <variables>
+        <name>CountOfClicks</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>0</scale>
+        <value>
+            <elementReference>Fetch_Project_Info_record.DP_EAT_TestRunButtonCount__c</elementReference>
+        </value>
+    </variables>
     <variables>
         <name>emailSubject</name>
         <dataType>String</dataType>
@@ -404,7 +465,7 @@ Error message:
         <name>Time_Delay</name>
         <label>Time Delay</label>
         <locationX>611</locationX>
-        <locationY>758</locationY>
+        <locationY>998</locationY>
         <defaultConnectorLabel>Default Path</defaultConnectorLabel>
         <waitEvents>
             <name>After_time_delay</name>

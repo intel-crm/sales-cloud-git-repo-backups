@@ -1,0 +1,73 @@
+<template>
+    <!-- Button to add a new row -->
+    <lightning-button label="Add Row" onclick={handleAddRow}>
+    </lightning-button>
+    <!-- Dynamically render rows -->
+    <template for:each={rows} for:item="row">
+        <div key={row.id} class="row-container">
+            <!-- Account Brief Summary -->
+            <div class="input-group">
+                <label class="custom-label" for={row.id}>External Attendees</label>
+                <lightning-input value={row.CRM_External_Attendees__c} onchange={handleFieldChange}
+                    data-id={row.id} data-field="CRM_External_Attendees__c">
+                </lightning-input>
+            </div>
+
+            <!-- Meeting Invite -->
+            <div class="input-group">
+                <label class="custom-label" for={row.id}>Intel Attendees</label>
+                <lightning-input value={row.CRM_Intel_Attendees__c} onchange={handleFieldChange}
+                    data-id={row.id} data-field="CRM_Intel_Attendees__c">
+                </lightning-input>
+            </div>
+        </div>
+    </template>
+    <!-- Button to Save Rows -->
+    <lightning-button label="Save Rows" onclick={handleSave}>
+    </lightning-button>
+    <!-- Display existing child records in a table format 
+    <template if:true={childRecords}>-->
+    <lightning-card title="Existing Rows">
+        <table class="slds-table slds-table_bordered slds-table_cell-buffer slds-table_striped custom-table">
+            <thead>
+                <tr>
+                    <th>External Attendees</th>
+                    <th>Intel Attendees</th>
+                </tr>
+            </thead>
+            <tbody>
+                <template for:each={childRecords} for:item="childRecord">
+                    <tr key={childRecord.Id}>
+                        <td class="custom-cell">
+                            <lightning-formatted-rich-text value={childRecord.CRM_External_Attendees__c}>
+                            </lightning-formatted-rich-text>
+                        </td>
+                        <td class="custom-cell">
+                            <lightning-formatted-rich-text value={childRecord.CRM_Intel_Attendees__c}>
+                            </lightning-formatted-rich-text>
+                        </td>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+    </lightning-card>
+    <!--</template>
+    <lightning-card title="Search User">
+    <div class="slds-form-element">
+            <div class="slds-form-element__control">
+                <input type="text" class="slds-input" placeholder="Search..." oninput={handleInput} />
+            </div>
+            <template if:true={showDropdown}>
+                <ul class="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid">
+                    <template for:each={searchResults} for:item="result">
+                        <li key={result.Id} class="slds-listbox__item" role="presentation">
+                            <div class="slds-listbox__option" role="option" onclick={handleSelect} data-id={result.Id}>
+                                {result.Name}
+                            </div>
+                        </li>
+                    </template>
+                </ul>
+            </template>
+        </div>
+    </lightning-card>-->
+</template>

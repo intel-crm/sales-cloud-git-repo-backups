@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DuplicateRule xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <actionOnInsert>Block</actionOnInsert>
+    <actionOnUpdate>Block</actionOnUpdate>
+    <alertText>Use one of these records?</alertText>
+    <description>Identify contacts with duplicate leads.</description>
+    <duplicateRuleFilter>
+        <booleanFilter>(1 OR 2 OR 3 OR 4 OR 5 OR 6 OR 8) AND 7</booleanFilter>
+        <duplicateRuleFilterItems>
+            <field>Profile</field>
+            <operation>equals</operation>
+            <value>Sales Rep-BB</value>
+            <sortOrder>1</sortOrder>
+            <table>User</table>
+        </duplicateRuleFilterItems>
+        <duplicateRuleFilterItems>
+            <field>Profile</field>
+            <operation>equals</operation>
+            <value>Sales Manager</value>
+            <sortOrder>2</sortOrder>
+            <table>User</table>
+        </duplicateRuleFilterItems>
+        <duplicateRuleFilterItems>
+            <field>Profile</field>
+            <operation>equals</operation>
+            <value>Sales Ops</value>
+            <sortOrder>3</sortOrder>
+            <table>User</table>
+        </duplicateRuleFilterItems>
+        <duplicateRuleFilterItems>
+            <field>Profile</field>
+            <operation>equals</operation>
+            <value>Sales Rep-CW</value>
+            <sortOrder>4</sortOrder>
+            <table>User</table>
+        </duplicateRuleFilterItems>
+        <duplicateRuleFilterItems>
+            <field>Profile</field>
+            <operation>equals</operation>
+            <value>Sales Rep-BB-Dual IPS</value>
+            <sortOrder>5</sortOrder>
+            <table>User</table>
+        </duplicateRuleFilterItems>
+        <duplicateRuleFilterItems>
+            <field>Profile</field>
+            <operation>equals</operation>
+            <value>SMG/GMC Read Only</value>
+            <sortOrder>6</sortOrder>
+            <table>User</table>
+        </duplicateRuleFilterItems>
+        <duplicateRuleFilterItems>
+            <field>Core_Lead_Conversion_Flag__c</field>
+            <operation>equals</operation>
+            <value>false</value>
+            <sortOrder>7</sortOrder>
+            <table>Contact</table>
+        </duplicateRuleFilterItems>
+        <duplicateRuleFilterItems>
+            <field>Profile</field>
+            <operation>equals</operation>
+            <value>A&amp;E User</value>
+            <sortOrder>8</sortOrder>
+            <table>User</table>
+        </duplicateRuleFilterItems>
+    </duplicateRuleFilter>
+    <duplicateRuleMatchRules>
+        <matchRuleSObjectType>Lead</matchRuleSObjectType>
+        <matchingRule>SWS_Lead_Matching_Email</matchingRule>
+        <objectMapping>
+            <inputObject>Contact</inputObject>
+            <mappingFields>
+                <inputField>Email</inputField>
+                <outputField>Email</outputField>
+            </mappingFields>
+            <mappingFields>
+                <inputField xsi:nil="true"/>
+                <outputField>SWS_Non_Partner_Lead__c</outputField>
+            </mappingFields>
+            <outputObject>Lead</outputObject>
+        </objectMapping>
+    </duplicateRuleMatchRules>
+    <isActive>false</isActive>
+    <masterLabel>Contact Duplicates Show Matching Leads</masterLabel>
+    <securityOption>BypassSharingRules</securityOption>
+    <sortOrder>2</sortOrder>
+</DuplicateRule>

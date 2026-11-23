@@ -4,35 +4,23 @@
     <encodingKey>UTF-8</encodingKey>
     <name>SCRRENGENRLREV_ITA</name>
     <style>none</style>
-    <subject>Verifica l&apos;indirizzo e-mail</subject>
-    <textOnly>Verifica la tua e-mail e imposta la password
+    <subject>Adesione al programma per i partner Intel</subject>
+    <textOnly>Verify your Email to Activate your Account
+
+Dear {!PRM_Registration_Request__c.PRM_First_Name__c},
+
+Thanks for joining Intel’s Partner program. Please click below to activate your account.
+
+Activate Your Account
+
+Can&apos;t access the link above?
+https://www.intel...
 
 
-
-{!PRM_Registration_Request__c.PRM_First_Name__c},
-
-Grazie per aver avviato la tua richiesta di iscrizione a Intel® Partner Alliance!
-Fai clic sul link qui di seguito per continuare
-
-
-Verifica la tua e-mail e imposta la password
-
-
-Tieni presente che questo link scadrà tra 24 orePer completare il passaggio successivo e impostare la tua password, utilizza il nome utente elencato di seguito
-Nome utente: {!PRM_Registration_Request__c.PRM_Email_ID__c}
-
-Non riesci ad accedere al collegamento sopra?
-https://signinpp.intel.com/PasswordUpdate?var={!PRM_Registration_Request__c.PRM_EV_Token__c}&amp;culture=it&amp;target=https://wcm-ciqa.intel.com/content/www/it/it/secure/partner/forms/ipa-account-search.html
-
-
-Non vediamo l&apos;ora di averti nel programma!
-Cordiali saluti,
-Il tuo team Intel® Partner Alliance
-
-Questo messaggio ti è stato inviato come un&apos;importante comunicazione aziendale relativa al tuo rapporto attuale con Intel® Partner Alliance.
-© {!$Label.PRM_CurrentYear} Intel Corporation
-Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.www.intel.com
-Privacy&amp;verbar;Cookies</textOnly>
+Copyright © 2016 Intel Corporation. All rights reserved. Intel, the Intel logo are trademarks of Intel Corporation in the U.S. and/or other countries.
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. Intel.com
+You may unsubscribe at any time by updating your profile settings at: {!$Label.PRM_MyIntelProfileURL}
+Privacy | Cookies | *Trademarks</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

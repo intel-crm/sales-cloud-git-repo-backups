@@ -233,6 +233,10 @@
     <searchLayouts/>
     <sharingModel>Private</sharingModel>
     <sharingReasons>
+        <fullName>Pricing_Account_Team_Group__c</fullName>
+        <label>Account Team Group</label>
+    </sharingReasons>
+    <sharingReasons>
         <fullName>Pricing_On_Hold_Account_Team_Group__c</fullName>
         <label>On Hold Account Team Group</label>
     </sharingReasons>

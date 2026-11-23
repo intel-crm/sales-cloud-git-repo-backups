@@ -34,27 +34,117 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
-                <componentInstanceProperties>
-                    <name>relatedListComponentOverride</name>
-                    <value>NONE</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>rowsToDisplay</name>
-                    <value>10</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>showActionBar</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentName>force:relatedListContainer</componentName>
-                <identifier>force_relatedListContainer</identifier>
+                <componentName>crm_quoteLineRelatedList</componentName>
+                <identifier>c_crm_quoteLineRelatedList</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 AND 2</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.Opportunity.Core_Opportunity_Coverage_Nm__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Partner-Led Opportunity</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Opportunity.Core_Coverage_Type_Nm__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Deal Registration</rightValue>
+                    </criteria>
+                </visibilityRule>
             </componentInstance>
         </itemInstances>
-        <mode>Replace</mode>
-        <name>relatedTabContent</name>
+        <name>Facet-b5f857ec-f143-42b4-bd5a-7b0844522972</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>calcDate</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>collapseDetail</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>dateDisplayType</name>
+                    <value>specificDate</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>historyRefPoint</name>
+                    <value>lastChange</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>isUnitLeft</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>mainTitle</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>negativePred</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>numRecommendation</name>
+                    <value>5</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>positivePred</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>predDef</name>
+                    <value>DISCOVERY:Predicted_Stage_Lineitems</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>recommendationThreshold</name>
+                    <value>5</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>refDate</name>
+                    <value>ServiceDate</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showModelCardLink</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showPredDefLabel</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showRankedList</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showRecommendation</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showTitle</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showTopFactor</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showValue</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showWarning</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>timePeriod</name>
+                    <value>days</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>unit</name>
+                </componentInstanceProperties>
+                <componentName>runtime_einstein_discovery:einsteinDiscoveryPanel</componentName>
+                <identifier>runtime_einstein_discovery_einsteinDiscoveryPanel</identifier>
+            </componentInstance>
+        </itemInstances>
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
@@ -63,7 +153,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>richTextValue</name>
-                    <value>&lt;p&gt;&lt;strong style=&quot;color: rgb(240, 2, 2); font-size: 12px;&quot;&gt;&lt;em&gt;Intel will review Sales Price as part of the design registration review process, in order to accurately calculate the value of the design registration. Intel will not provide input or guidance on the Sales Price, which will/must be inputted by the Distributor registering the design. Submission of the Sales Price does not constitute agreement on or endorsement of that price by Intel, and it will not affect the price offered by Intel to the Distributor.&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</value>
+                    <value>&lt;p&gt;&lt;strong style=&quot;font-size: 12px; color: rgb(224, 21, 21);&quot;&gt;&lt;em&gt;Intel will review Sale Price as part of the design registration review process, in order to accurately calculate the value of the design registration. Intel will not provide input or guidance on the Sale Price, which will/must be inputted by the Distributor registering the design. Submission of the Sale Price does not constitute agreement on or endorsement of that price by Intel, and it will not affect the price offered by Intel to the Distributor.&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:richText</componentName>
                 <identifier>flexipage_richText</identifier>
@@ -79,7 +169,7 @@
         <itemInstances>
             <componentInstance>
                 <componentName>core_ReadOnly_FieldSet_Form</componentName>
-                <identifier>c_core_ReadOnly_FieldSet_Form2</identifier>
+                <identifier>c_core_ReadOnly_FieldSet_Form</identifier>
             </componentInstance>
         </itemInstances>
         <mode>Replace</mode>
@@ -91,14 +181,14 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>body</name>
-                    <value>relatedTabContent</value>
+                    <value>Facet-b5f857ec-f143-42b4-bd5a-7b0844522972</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>title</name>
                     <value>Standard.Tab.relatedLists</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
-                <identifier>relatedListsTab</identifier>
+                <identifier>flexipage_tab</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -126,6 +216,10 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
+                <componentInstanceProperties>
+                    <name>label</name>
+                    <value>Tabs</value>
+                </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>tabs</name>
                     <value>tabs</value>

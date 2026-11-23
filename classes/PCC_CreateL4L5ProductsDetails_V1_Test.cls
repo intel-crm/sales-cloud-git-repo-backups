@@ -24,7 +24,7 @@ public class PCC_CreateL4L5ProductsDetails_V1_Test {
 		Product_MM_Attribute_Mapping__c pmam1 = new Product_MM_Attribute_Mapping__c();
         pmam1.Ordering_Code__c = 'WX80550E52630V4';
         pmam1.Name = '949348';
-		pmam1.MMID__c = '949348';
+		//pmam1.MMID__c = '949348';
 		pmam1.L4_Product__c = pr.Id;
         pmam1.L5_Product__c = pr.Id;
         insert pmam1;
@@ -98,7 +98,7 @@ public class PCC_CreateL4L5ProductsDetails_V1_Test {
         
         req.addHeader('Content-Type', 'application/json'); // Add a JSON Header as it is validated
         req.requestURI = '/services/apexrest/v1.0/design-registration/product/*';
-        req.addParameter('oldmmid','981061');
+        req.addParameter('orderingcd','WX80550E52630w5');
         req.httpMethod = 'Get';
         
         
@@ -123,7 +123,7 @@ public class PCC_CreateL4L5ProductsDetails_V1_Test {
         
         req.addHeader('Content-Type', 'application/json'); // Add a JSON Header as it is validated
         req.requestURI = '/services/apexrest/v1.0/design-registration/product/*';
-        req.addParameter('oldmmid','981069');
+        req.addParameter('orderingcd','981069');
         req.httpMethod = 'Get';
         
         
@@ -149,7 +149,7 @@ public class PCC_CreateL4L5ProductsDetails_V1_Test {
 		Product_MM_Attribute_Mapping__c pmam1 = new Product_MM_Attribute_Mapping__c();
         pmam1.Ordering_Code__c = 'WX80550E52630V4';
         pmam1.Name = '949348';
-		pmam1.MMID__c = '949348';
+		//pmam1.MMID__c = '949348';
 		pmam1.L4_Product__c = pr.Id;
         pmam1.L5_Product__c = pr.Id;
         insert pmam1;
@@ -182,7 +182,7 @@ public class PCC_CreateL4L5ProductsDetails_V1_Test {
 		Product_MM_Attribute_Mapping__c pmam1 = new Product_MM_Attribute_Mapping__c();
         pmam1.Ordering_Code__c = 'WX80550E52630V4';
         pmam1.Name = '949348';
-		pmam1.MMID__c = '949348';
+		//pmam1.MMID__c = '949348';
 		pmam1.L4_Product__c = pr.Id;
         pmam1.L5_Product__c = pr.Id;
         insert pmam1;

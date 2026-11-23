@@ -9,7 +9,7 @@ Modifications   :
 * ----------------------------------------------------------------------------                 
 * Rajadinakaran             11/03/2017             Created
 *****************************************************************************************************/
-global with sharing Class Core_Batch_DDR_PriceBook_Scheduler implements Schedulable 
+global Class Core_Batch_DDR_PriceBook_Scheduler implements Schedulable 
 {
 
     global void execute(SchedulableContext sc) 

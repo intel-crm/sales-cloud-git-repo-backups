@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ExpressionSetDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
+    <executionMode>Cloud</executionMode>
     <executionScale>Low</executionScale>
     <label>Pricing Route Rule Expression Set EMEA DCG CR</label>
     <processType>Bre</processType>
@@ -106,6 +107,7 @@
         <variables>
             <collection>false</collection>
             <dataType>Text</dataType>
+            <decimalPlaces>2</decimalPlaces>
             <description>Pricing_RouteRule_Id</description>
             <input>false</input>
             <name>Pricing_RouteRule_Id</name>
@@ -115,6 +117,7 @@
         <variables>
             <collection>false</collection>
             <dataType>Text</dataType>
+            <decimalPlaces>2</decimalPlaces>
             <description>Pricing_RouteRule_Name</description>
             <input>false</input>
             <name>Pricing_RouteRule_Name</name>
@@ -124,6 +127,7 @@
         <variables>
             <collection>false</collection>
             <dataType>Text</dataType>
+            <decimalPlaces>2</decimalPlaces>
             <description>Pricing_Routing_Output_Criteria_Nm</description>
             <input>false</input>
             <name>Pricing_Routing_Output_Criteria_Nm</name>
@@ -133,6 +137,7 @@
         <variables>
             <collection>false</collection>
             <dataType>Text</dataType>
+            <decimalPlaces>2</decimalPlaces>
             <description>Pricing_Routing_RPM_Email</description>
             <input>false</input>
             <name>Pricing_Routing_RPM_Email</name>
@@ -142,6 +147,7 @@
         <variables>
             <collection>false</collection>
             <dataType>Text</dataType>
+            <decimalPlaces>2</decimalPlaces>
             <description>Pricing_Routing_RPM_Group</description>
             <input>false</input>
             <name>Pricing_Routing_RPM_Group</name>

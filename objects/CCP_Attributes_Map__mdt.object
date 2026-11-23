@@ -1,0 +1,1170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Activity_Sub_Type__c</fullName>
+        <description>Activity sub type values</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Activity Sub Type</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Affiliate</fullName>
+                    <default>true</default>
+                    <label>Affiliate</label>
+                </value>
+                <value>
+                    <fullName>Banner/Display</fullName>
+                    <default>false</default>
+                    <label>Banner/Display</label>
+                </value>
+                <value>
+                    <fullName>Catalog/Brochure</fullName>
+                    <default>false</default>
+                    <label>Catalog/Brochure</label>
+                </value>
+                <value>
+                    <fullName>Circular</fullName>
+                    <default>false</default>
+                    <label>Circular</label>
+                </value>
+                <value>
+                    <fullName>Connected IPOS</fullName>
+                    <default>false</default>
+                    <label>Connected IPOS</label>
+                </value>
+                <value>
+                    <fullName>Demonstration</fullName>
+                    <default>false</default>
+                    <label>Demonstration</label>
+                </value>
+                <value>
+                    <fullName>Email</fullName>
+                    <default>false</default>
+                    <label>Email</label>
+                </value>
+                <value>
+                    <fullName>End Cap</fullName>
+                    <default>false</default>
+                    <label>End Cap</label>
+                </value>
+                <value>
+                    <fullName>Giveaway</fullName>
+                    <default>false</default>
+                    <label>Giveaway</label>
+                </value>
+                <value>
+                    <fullName>Insert/Outsert/Flyer</fullName>
+                    <default>false</default>
+                    <label>Insert/Outsert/Flyer</label>
+                </value>
+                <value>
+                    <fullName>IPOS/ePOS</fullName>
+                    <default>false</default>
+                    <label>IPOS/ePOS</label>
+                </value>
+                <value>
+                    <fullName>Landing Experience</fullName>
+                    <default>false</default>
+                    <label>Landing Experience</label>
+                </value>
+                <value>
+                    <fullName>Listing Page Branding</fullName>
+                    <default>false</default>
+                    <label>Listing Page Branding</label>
+                </value>
+                <value>
+                    <fullName>Other (Collateral)</fullName>
+                    <default>false</default>
+                    <label>Other (Collateral)</label>
+                </value>
+                <value>
+                    <fullName>Other (Direct Mail)</fullName>
+                    <default>false</default>
+                    <label>Other (Direct Mail)</label>
+                </value>
+                <value>
+                    <fullName>Other (IndustryPartner.com)</fullName>
+                    <default>false</default>
+                    <label>Other (IndustryPartner.com)</label>
+                </value>
+                <value>
+                    <fullName>Other (Joint Event)</fullName>
+                    <default>false</default>
+                    <label>Other (Joint Event)</label>
+                </value>
+                <value>
+                    <fullName>Other (Member.com)</fullName>
+                    <default>false</default>
+                    <label>Other (Member.com)</label>
+                </value>
+                <value>
+                    <fullName>Other (NonPartner.com)</fullName>
+                    <default>false</default>
+                    <label>Other (NonPartner.com)</label>
+                </value>
+                <value>
+                    <fullName>Other (Promotion)</fullName>
+                    <default>false</default>
+                    <label>Other (Promotion)</label>
+                </value>
+                <value>
+                    <fullName>Poster/Sign/Banner</fullName>
+                    <default>false</default>
+                    <label>Poster/Sign/Banner</label>
+                </value>
+                <value>
+                    <fullName>Product Page Branding</fullName>
+                    <default>false</default>
+                    <label>Product Page Branding</label>
+                </value>
+                <value>
+                    <fullName>Product Page Carousel</fullName>
+                    <default>false</default>
+                    <label>Product Page Carousel</label>
+                </value>
+                <value>
+                    <fullName>Product Page Content</fullName>
+                    <default>false</default>
+                    <label>Product Page Content</label>
+                </value>
+                <value>
+                    <fullName>Promo/Landing Page</fullName>
+                    <default>false</default>
+                    <label>Promo/Landing Page</label>
+                </value>
+                <value>
+                    <fullName>Promoter</fullName>
+                    <default>false</default>
+                    <label>Promoter</label>
+                </value>
+                <value>
+                    <fullName>Recommendation Tool</fullName>
+                    <default>false</default>
+                    <label>Recommendation Tool</label>
+                </value>
+                <value>
+                    <fullName>Retargeting - Banner/Display</fullName>
+                    <default>false</default>
+                    <label>Retargeting - Banner/Display</label>
+                </value>
+                <value>
+                    <fullName>Retargeting - Text Ad</fullName>
+                    <default>false</default>
+                    <label>Retargeting - Text Ad</label>
+                </value>
+                <value>
+                    <fullName>Riser</fullName>
+                    <default>false</default>
+                    <label>Riser</label>
+                </value>
+                <value>
+                    <fullName>Sales Onsite</fullName>
+                    <default>false</default>
+                    <label>Sales Onsite</label>
+                </value>
+                <value>
+                    <fullName>Search - Banner/Display</fullName>
+                    <default>false</default>
+                    <label>Search - Banner/Display</label>
+                </value>
+                <value>
+                    <fullName>Search - Shopping</fullName>
+                    <default>false</default>
+                    <label>Search - Shopping</label>
+                </value>
+                <value>
+                    <fullName>Search - Text Ad</fullName>
+                    <default>false</default>
+                    <label>Search - Text Ad</label>
+                </value>
+                <value>
+                    <fullName>Search - Sponsored Brand</fullName>
+                    <default>false</default>
+                    <label>Search - Sponsored Brand</label>
+                </value>
+                <value>
+                    <fullName>Search - Top Products</fullName>
+                    <default>false</default>
+                    <label>Search - Top Products</label>
+                </value>
+                <value>
+                    <fullName>Shop in Shop</fullName>
+                    <default>false</default>
+                    <label>Shop in Shop</label>
+                </value>
+                <value>
+                    <fullName>Shopper Review</fullName>
+                    <default>false</default>
+                    <label>Shopper Review</label>
+                </value>
+                <value>
+                    <fullName>Signage</fullName>
+                    <default>false</default>
+                    <label>Signage</label>
+                </value>
+                <value>
+                    <fullName>Social Media - Banner/Display</fullName>
+                    <default>false</default>
+                    <label>Social Media - Banner/Display</label>
+                </value>
+                <value>
+                    <fullName>Social Media - Post</fullName>
+                    <default>false</default>
+                    <label>Social Media - Post</label>
+                </value>
+                <value>
+                    <fullName>Text Ad</fullName>
+                    <default>false</default>
+                    <label>Text Ad</label>
+                </value>
+                <value>
+                    <fullName>Video</fullName>
+                    <default>false</default>
+                    <label>Video</label>
+                </value>
+                <value>
+                    <fullName>Zone</fullName>
+                    <default>false</default>
+                    <label>Zone</label>
+                </value>
+                <value>
+                    <fullName>Search</fullName>
+                    <default>false</default>
+                    <label>Search</label>
+                </value>
+                <value>
+                    <fullName>Searchandizing - Banner/Display</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Searchandizing - Banner/Display</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Budget_Amount__c</fullName>
+        <defaultValue>100000</defaultValue>
+        <description>Has the Budget Amount Mapping For the display of the Upload File for the PFR Record</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>Budget Amount controls only file upload</inlineHelpText>
+        <label>Budget Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Category__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Category</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Broadcast</fullName>
+                    <default>true</default>
+                    <label>Broadcast</label>
+                </value>
+                <value>
+                    <fullName>Digital Media</fullName>
+                    <default>false</default>
+                    <label>Digital Media</label>
+                </value>
+                <value>
+                    <fullName>Event</fullName>
+                    <default>false</default>
+                    <label>Event</label>
+                </value>
+                <value>
+                    <fullName>Lead Management</fullName>
+                    <default>false</default>
+                    <label>Lead Management</label>
+                </value>
+                <value>
+                    <fullName>Out of Home Media</fullName>
+                    <default>false</default>
+                    <label>Out of Home Media</label>
+                </value>
+                <value>
+                    <fullName>Paid Social Media</fullName>
+                    <default>false</default>
+                    <label>Paid Social Media</label>
+                </value>
+                <value>
+                    <fullName>Print Media</fullName>
+                    <default>false</default>
+                    <label>Print Media</label>
+                </value>
+                <value>
+                    <fullName>Search Engine Marketing (SEM)</fullName>
+                    <default>false</default>
+                    <label>Search Engine Marketing (SEM)</label>
+                </value>
+                <value>
+                    <fullName>Media</fullName>
+                    <default>false</default>
+                    <label>Media</label>
+                </value>
+                <value>
+                    <fullName>Online</fullName>
+                    <default>false</default>
+                    <label>Online</label>
+                </value>
+                <value>
+                    <fullName>Sales Readiness</fullName>
+                    <default>false</default>
+                    <label>Sales Readiness</label>
+                </value>
+                <value>
+                    <fullName>Tech Exploration</fullName>
+                    <default>false</default>
+                    <label>Tech Exploration</label>
+                </value>
+                <value>
+                    <fullName>OOH</fullName>
+                    <default>false</default>
+                    <label>OOH</label>
+                </value>
+                <value>
+                    <fullName>Print</fullName>
+                    <default>false</default>
+                    <label>Print</label>
+                </value>
+                <value>
+                    <fullName>Incentive</fullName>
+                    <default>false</default>
+                    <label>Incentive</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Channel_Partner__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Channel Partner</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Activity_Description_Txt__c</fullName>
+        <description>Custom Label Name where Description data stored</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Activity Description</label>
+        <required>false</required>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Activity_Pillar_Nm__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Activity Pillar</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Out of Store</fullName>
+                    <default>true</default>
+                    <label>Out of Store</label>
+                </value>
+                <value>
+                    <fullName>Online</fullName>
+                    <default>false</default>
+                    <label>Online</label>
+                </value>
+                <value>
+                    <fullName>In Store</fullName>
+                    <default>false</default>
+                    <label>In Store</label>
+                </value>
+                <value>
+                    <fullName>Out of Store/In Store</fullName>
+                    <default>false</default>
+                    <label>Out of Store/In Store</label>
+                </value>
+                <value>
+                    <fullName>Advocacy</fullName>
+                    <default>false</default>
+                    <label>Advocacy</label>
+                </value>
+                <value>
+                    <fullName>Win Screen</fullName>
+                    <default>false</default>
+                    <label>Win Screen</label>
+                </value>
+                <value>
+                    <fullName>Win in Store/Out of Store</fullName>
+                    <default>false</default>
+                    <label>Win in Store/Out of Store</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Activity_Secondary_Pillar_Nm__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Activity Secondary Pillar</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Traffic Driver</fullName>
+                    <default>true</default>
+                    <label>Traffic Driver</label>
+                </value>
+                <value>
+                    <fullName>Product Page Content</fullName>
+                    <default>false</default>
+                    <label>Product Page Content</label>
+                </value>
+                <value>
+                    <fullName>Traffic Drivers</fullName>
+                    <default>false</default>
+                    <label>Traffic Drivers</label>
+                </value>
+                <value>
+                    <fullName>PC Category Pages</fullName>
+                    <default>false</default>
+                    <label>PC Category Pages</label>
+                </value>
+                <value>
+                    <fullName>??</fullName>
+                    <default>false</default>
+                    <label>??</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Enable_Channel_Partner_Led__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Enable Channel Partner Led</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Enable_ELC_Reminder__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Enable ELC Reminder</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Enable_Event_Format_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Enable Event Format</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Enable_File_Upload__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Used to check if the attachment needs to be uploaded with that Activity</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Enable File Upload</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Enable_Question__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Checks if questions needs to be displayed to user</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Enable Question</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_POP_Requirements_txt__c</fullName>
+        <description>This field stores the POP Requirement information of the Activity.</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>POP Requirements</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Enable_Event_Popup__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Mapping for the Event Popup based on the Activity Type and Category and Budget Amount</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Enable Event Popup</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Event__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Event</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Govt_Nexus_Flag__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Stores mapping for Government Nexus Questions based on Activity Type and Category</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Govt. Nexus Flag</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Print__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Print</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Program__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Program</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>CCF</fullName>
+                    <default>true</default>
+                    <label>CCF</label>
+                </value>
+                <value>
+                    <fullName>DCF</fullName>
+                    <default>false</default>
+                    <label>DCF</label>
+                </value>
+                <value>
+                    <fullName>CCF/DCF</fullName>
+                    <default>false</default>
+                    <label>CCF/DCF</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>RecordType_Name__c</fullName>
+        <description>Stores Recordtype name mapping for Activity Category and Activity</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>RecordType Name</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Record_Type_Picklist__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Record Type Picklist</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Core_MDF_Client_CoMarketing_Fund</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_Client_CoMarketing_Fund</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Data_Center_CoMarketing_Fund</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_Data_Center_CoMarketing_Fund</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Service_Provider_CoMarketing_Fund</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_Service_Provider_CoMarketing_Fund</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Client_CoMarketing_Fund_Boost</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_Client_CoMarketing_Fund_Boost</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Retail_Marketing_Funds</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_Retail_Marketing_Funds</label>
+                </value>
+                <value>
+                    <fullName>Intel_Partner_Alliance</fullName>
+                    <default>false</default>
+                    <label>Intel_Partner_Alliance</label>
+                </value>
+                <value>
+                    <fullName>CCF</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>CCF</label>
+                </value>
+                <value>
+                    <fullName>CCF/DCF</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>CCF/DCF</label>
+                </value>
+                <value>
+                    <fullName>DCF</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>DCF</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Type__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Type</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Billboard/Transit</fullName>
+                    <default>true</default>
+                    <label>Billboard/Transit</label>
+                </value>
+                <value>
+                    <fullName>Podcast</fullName>
+                    <default>false</default>
+                    <label>Podcast</label>
+                </value>
+                <value>
+                    <fullName>Radio</fullName>
+                    <default>false</default>
+                    <label>Radio</label>
+                </value>
+                <value>
+                    <fullName>Television</fullName>
+                    <default>false</default>
+                    <label>Television</label>
+                </value>
+                <value>
+                    <fullName>Catalog/Brochure</fullName>
+                    <default>false</default>
+                    <label>Catalog/Brochure</label>
+                </value>
+                <value>
+                    <fullName>Channel Partner Owned Event</fullName>
+                    <default>false</default>
+                    <label>Channel Partner Owned Event</label>
+                </value>
+                <value>
+                    <fullName>Channel Partner Participation in Third-Party Event</fullName>
+                    <default>false</default>
+                    <label>Channel Partner Participation in Third-Party Event</label>
+                </value>
+                <value>
+                    <fullName>Cinema</fullName>
+                    <default>false</default>
+                    <label>Cinema</label>
+                </value>
+                <value>
+                    <fullName>Collateral - Other</fullName>
+                    <default>false</default>
+                    <label>Collateral - Other</label>
+                </value>
+                <value>
+                    <fullName>Digital Video screen</fullName>
+                    <default>false</default>
+                    <label>Digital Video screen</label>
+                </value>
+                <value>
+                    <fullName>Direct Mail</fullName>
+                    <default>false</default>
+                    <label>Direct Mail</label>
+                </value>
+                <value>
+                    <fullName>Email</fullName>
+                    <default>false</default>
+                    <label>Email</label>
+                </value>
+                <value>
+                    <fullName>Member Owned Event</fullName>
+                    <default>false</default>
+                    <label>Member Owned Event</label>
+                </value>
+                <value>
+                    <fullName>Graphic Ad</fullName>
+                    <default>false</default>
+                    <label>Graphic Ad</label>
+                </value>
+                <value>
+                    <fullName>Insert/Outsert/Flyer</fullName>
+                    <default>false</default>
+                    <label>Insert/Outsert/Flyer</label>
+                </value>
+                <value>
+                    <fullName>Lead Generation</fullName>
+                    <default>false</default>
+                    <label>Lead Generation</label>
+                </value>
+                <value>
+                    <fullName>Lead Nurturing</fullName>
+                    <default>false</default>
+                    <label>Lead Nurturing</label>
+                </value>
+                <value>
+                    <fullName>Magazine/Newspaper</fullName>
+                    <default>false</default>
+                    <label>Magazine/Newspaper</label>
+                </value>
+                <value>
+                    <fullName>Member Participation in Third-Party Event</fullName>
+                    <default>false</default>
+                    <label>Member Participation in Third-Party Event</label>
+                </value>
+                <value>
+                    <fullName>Member Website Online Display</fullName>
+                    <default>false</default>
+                    <label>Member Website Online Display</label>
+                </value>
+                <value>
+                    <fullName>Online Display</fullName>
+                    <default>false</default>
+                    <label>Online Display</label>
+                </value>
+                <value>
+                    <fullName>Online Video Spot</fullName>
+                    <default>false</default>
+                    <label>Online Video Spot</label>
+                </value>
+                <value>
+                    <fullName>Poster/Sign/Banner</fullName>
+                    <default>false</default>
+                    <label>Poster/Sign/Banner</label>
+                </value>
+                <value>
+                    <fullName>Promotion</fullName>
+                    <default>false</default>
+                    <label>Promotion</label>
+                </value>
+                <value>
+                    <fullName>Social Online Display</fullName>
+                    <default>false</default>
+                    <label>Social Online Display</label>
+                </value>
+                <value>
+                    <fullName>Social Post</fullName>
+                    <default>false</default>
+                    <label>Social Post</label>
+                </value>
+                <value>
+                    <fullName>Text Ad</fullName>
+                    <default>false</default>
+                    <label>Text Ad</label>
+                </value>
+                <value>
+                    <fullName>Channel Partner Website Online Ad</fullName>
+                    <default>false</default>
+                    <label>Channel Partner Website Online Ad</label>
+                </value>
+                <value>
+                    <fullName>Event w Product Sales Onsite</fullName>
+                    <default>false</default>
+                    <label>Event w Product Sales Onsite</label>
+                </value>
+                <value>
+                    <fullName>General (Customer-owned)</fullName>
+                    <default>false</default>
+                    <label>General (Customer-owned)</label>
+                </value>
+                <value>
+                    <fullName>Sponsorships/ Third Party Event</fullName>
+                    <default>false</default>
+                    <label>Sponsorships/ Third Party Event</label>
+                </value>
+                <value>
+                    <fullName>Broadcast (Audio-Visual) - TV Ad - TV Channels</fullName>
+                    <default>false</default>
+                    <label>Broadcast (Audio-Visual) - TV Ad - TV Channels</label>
+                </value>
+                <value>
+                    <fullName>In store Point of Sale - TV Ad - in store</fullName>
+                    <default>false</default>
+                    <label>In store Point of Sale - TV Ad - in store</label>
+                </value>
+                <value>
+                    <fullName>Billboard, Transit and Digital Signage - OOH Digital Displays</fullName>
+                    <default>false</default>
+                    <label>Billboard, Transit and Digital Signage - OOH Digital Displays</label>
+                </value>
+                <value>
+                    <fullName>Radio Ad - out of store</fullName>
+                    <default>false</default>
+                    <label>Radio Ad - out of store</label>
+                </value>
+                <value>
+                    <fullName>Broadcast (Audio-Visual) - Radio Ad - out of store</fullName>
+                    <default>false</default>
+                    <label>Broadcast (Audio-Visual) - Radio Ad - out of store</label>
+                </value>
+                <value>
+                    <fullName>Customer.com - Processor Badges on listing pages</fullName>
+                    <default>false</default>
+                    <label>Customer.com - Processor Badges on listing pages</label>
+                </value>
+                <value>
+                    <fullName>Customer.com - Processor Badges on product pages</fullName>
+                    <default>false</default>
+                    <label>Customer.com - Processor Badges on product pages</label>
+                </value>
+                <value>
+                    <fullName>Customer.com - Intel Promo Page</fullName>
+                    <default>false</default>
+                    <label>Customer.com - Intel Promo Page</label>
+                </value>
+                <value>
+                    <fullName>Customer.com - Intel Shop in Shop [SIS]</fullName>
+                    <default>false</default>
+                    <label>Customer.com - Intel Shop in Shop [SIS]</label>
+                </value>
+                <value>
+                    <fullName>Customer.com - Intel Shopper Recommendation Tool [SRT]</fullName>
+                    <default>false</default>
+                    <label>Customer.com - Intel Shopper Recommendation Tool [SRT]</label>
+                </value>
+                <value>
+                    <fullName>Customer.com - Onsite Search - Cross sell keywords</fullName>
+                    <default>false</default>
+                    <label>Customer.com - Onsite Search - Cross sell keywords</label>
+                </value>
+                <value>
+                    <fullName>Customer.com - Onsite Search - PC keywords</fullName>
+                    <default>false</default>
+                    <label>Customer.com - Onsite Search - PC keywords</label>
+                </value>
+                <value>
+                    <fullName>Customer.com - Retail Campaign landing page</fullName>
+                    <default>false</default>
+                    <label>Customer.com - Retail Campaign landing page</label>
+                </value>
+                <value>
+                    <fullName>Collateral - Newsletter - PC Products</fullName>
+                    <default>false</default>
+                    <label>Collateral - Newsletter - PC Products</label>
+                </value>
+                <value>
+                    <fullName>Collateral - Collateral (Print)</fullName>
+                    <default>false</default>
+                    <label>Collateral - Collateral (Print)</label>
+                </value>
+                <value>
+                    <fullName>Collateral - Intel Text boxes on Collateral (Print)</fullName>
+                    <default>false</default>
+                    <label>Collateral - Intel Text boxes on Collateral (Print)</label>
+                </value>
+                <value>
+                    <fullName>Collateral - Ad- Magazine/ Newspaper (Print)</fullName>
+                    <default>false</default>
+                    <label>Collateral - Ad- Magazine/ Newspaper (Print)</label>
+                </value>
+                <value>
+                    <fullName>Salesforce Training - RSP Training - IREP</fullName>
+                    <default>false</default>
+                    <label>Salesforce Training - RSP Training - IREP</label>
+                </value>
+                <value>
+                    <fullName>Salesforce Training - RSP Training - F2F</fullName>
+                    <default>false</default>
+                    <label>Salesforce Training - RSP Training - F2F</label>
+                </value>
+                <value>
+                    <fullName>In store Point of Sale - Store Zone</fullName>
+                    <default>false</default>
+                    <label>In store Point of Sale - Store Zone</label>
+                </value>
+                <value>
+                    <fullName>In store Point of Sale - End-Cap</fullName>
+                    <default>false</default>
+                    <label>In store Point of Sale - End-Cap</label>
+                </value>
+                <value>
+                    <fullName>In store Point of Sale - Riser</fullName>
+                    <default>false</default>
+                    <label>In store Point of Sale - Riser</label>
+                </value>
+                <value>
+                    <fullName>In store Point of Sale - Intel POS Materials</fullName>
+                    <default>false</default>
+                    <label>In store Point of Sale - Intel POS Materials</label>
+                </value>
+                <value>
+                    <fullName>In store Point of Sale - IPOS</fullName>
+                    <default>false</default>
+                    <label>In store Point of Sale - IPOS</label>
+                </value>
+                <value>
+                    <fullName>In store Point of Sale - ePOS with Intel Content</fullName>
+                    <default>false</default>
+                    <label>In store Point of Sale - ePOS with Intel Content</label>
+                </value>
+                <value>
+                    <fullName>Marketing Support Headcount - Headcount</fullName>
+                    <default>false</default>
+                    <label>Marketing Support Headcount - Headcount</label>
+                </value>
+                <value>
+                    <fullName>Customer.com - Onsite Banner Ad</fullName>
+                    <default>false</default>
+                    <label>Customer.com - Onsite Banner Ad</label>
+                </value>
+                <value>
+                    <fullName>Customer.com - Third Party Banner ad</fullName>
+                    <default>false</default>
+                    <label>Customer.com - Third Party Banner ad</label>
+                </value>
+                <value>
+                    <fullName>Thirdparty.com - Retargeting</fullName>
+                    <default>false</default>
+                    <label>Thirdparty.com - Retargeting</label>
+                </value>
+                <value>
+                    <fullName>Thirdparty.com - Social Post</fullName>
+                    <default>false</default>
+                    <label>Thirdparty.com - Social Post</label>
+                </value>
+                <value>
+                    <fullName>Thirdparty.com - SEM</fullName>
+                    <default>false</default>
+                    <label>Thirdparty.com - SEM</label>
+                </value>
+                <value>
+                    <fullName>Customer.com - Searchandizing</fullName>
+                    <default>false</default>
+                    <label>Customer.com - Searchandizing</label>
+                </value>
+                <value>
+                    <fullName>Customer.com - Processor Fact tags/ Processor Videos</fullName>
+                    <default>false</default>
+                    <label>Customer.com - Processor Fact tags/ Processor Videos</label>
+                </value>
+                <value>
+                    <fullName>Thirdparty.com - Blog Post</fullName>
+                    <default>false</default>
+                    <label>Thirdparty.com - Blog Post</label>
+                </value>
+                <value>
+                    <fullName>Customer.com - Newsletter - PC/non PC Products</fullName>
+                    <default>false</default>
+                    <label>Customer.com - Newsletter - PC/non PC Products</label>
+                </value>
+                <value>
+                    <fullName>Broadcast (Audio-Visual) - TV Ad - in store</fullName>
+                    <default>false</default>
+                    <label>Broadcast (Audio-Visual) - TV Ad - in store</label>
+                </value>
+                <value>
+                    <fullName>Content Creation</fullName>
+                    <default>false</default>
+                    <label>Content Creation</label>
+                </value>
+                <value>
+                    <fullName>Case Study</fullName>
+                    <default>false</default>
+                    <label>Case Study</label>
+                </value>
+                <value>
+                    <fullName>Demo Hardware</fullName>
+                    <default>false</default>
+                    <label>Demo Hardware</label>
+                </value>
+                <value>
+                    <fullName>Proof of Concept</fullName>
+                    <default>false</default>
+                    <label>Proof of Concept</label>
+                </value>
+                <value>
+                    <fullName>Seed Unit</fullName>
+                    <default>false</default>
+                    <label>Seed Unit</label>
+                </value>
+                <value>
+                    <fullName>Other (Broadcast)</fullName>
+                    <default>false</default>
+                    <label>Other (Broadcast)</label>
+                </value>
+                <value>
+                    <fullName>Streaming</fullName>
+                    <default>false</default>
+                    <label>Streaming</label>
+                </value>
+                <value>
+                    <fullName>TV</fullName>
+                    <default>false</default>
+                    <label>TV</label>
+                </value>
+                <value>
+                    <fullName>IndustryPartner.com</fullName>
+                    <default>false</default>
+                    <label>IndustryPartner.com</label>
+                </value>
+                <value>
+                    <fullName>Member.com</fullName>
+                    <default>false</default>
+                    <label>Member.com</label>
+                </value>
+                <value>
+                    <fullName>NonPartner.com</fullName>
+                    <default>false</default>
+                    <label>NonPartner.com</label>
+                </value>
+                <value>
+                    <fullName>Other (Sales Readiness)</fullName>
+                    <default>false</default>
+                    <label>Other (Sales Readiness)</label>
+                </value>
+                <value>
+                    <fullName>Collateral</fullName>
+                    <default>false</default>
+                    <label>Collateral</label>
+                </value>
+                <value>
+                    <fullName>Buyer - Bundle/Offer</fullName>
+                    <default>false</default>
+                    <label>Buyer - Bundle/Offer</label>
+                </value>
+                <value>
+                    <fullName>Buyer - Other</fullName>
+                    <default>false</default>
+                    <label>Buyer - Other</label>
+                </value>
+                <value>
+                    <fullName>Buyer - Reward/Frequency</fullName>
+                    <default>false</default>
+                    <label>Buyer - Reward/Frequency</label>
+                </value>
+                <value>
+                    <fullName>Buyer - Sweepstakes</fullName>
+                    <default>false</default>
+                    <label>Buyer - Sweepstakes</label>
+                </value>
+                <value>
+                    <fullName>Seller - Contest SPIF</fullName>
+                    <default>false</default>
+                    <label>Seller - Contest SPIF</label>
+                </value>
+                <value>
+                    <fullName>Seller - Other</fullName>
+                    <default>false</default>
+                    <label>Seller - Other</label>
+                </value>
+                <value>
+                    <fullName>Seller - Per Unit SPIF</fullName>
+                    <default>false</default>
+                    <label>Seller - Per Unit SPIF</label>
+                </value>
+                <value>
+                    <fullName>Seller - Target SPIF</fullName>
+                    <default>false</default>
+                    <label>Seller - Target SPIF</label>
+                </value>
+                <value>
+                    <fullName>Other (OOH)</fullName>
+                    <default>false</default>
+                    <label>Other (OOH)</label>
+                </value>
+                <value>
+                    <fullName>Video Screen</fullName>
+                    <default>false</default>
+                    <label>Video Screen</label>
+                </value>
+                <value>
+                    <fullName>Joint Event</fullName>
+                    <default>false</default>
+                    <label>Joint Event</label>
+                </value>
+                <value>
+                    <fullName>Member Event</fullName>
+                    <default>false</default>
+                    <label>Member Event</label>
+                </value>
+                <value>
+                    <fullName>Other (Event)</fullName>
+                    <default>false</default>
+                    <label>Other (Event)</label>
+                </value>
+                <value>
+                    <fullName>Third Party Event</fullName>
+                    <default>false</default>
+                    <label>Third Party Event</label>
+                </value>
+                <value>
+                    <fullName>In-Store Promotion</fullName>
+                    <default>false</default>
+                    <label>In-Store Promotion</label>
+                </value>
+                <value>
+                    <fullName>Out-of-Store Promotion</fullName>
+                    <default>false</default>
+                    <label>Out-of-Store Promotion</label>
+                </value>
+                <value>
+                    <fullName>Telemarketing</fullName>
+                    <default>false</default>
+                    <label>Telemarketing</label>
+                </value>
+                <value>
+                    <fullName>Training/Meeting</fullName>
+                    <default>false</default>
+                    <label>Training/Meeting</label>
+                </value>
+                <value>
+                    <fullName>Slotting</fullName>
+                    <default>false</default>
+                    <label>Slotting</label>
+                </value>
+                <value>
+                    <fullName>Personnel</fullName>
+                    <default>false</default>
+                    <label>Personnel</label>
+                </value>
+                <value>
+                    <fullName>Channel Partner Online Display</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Channel Partner Online Display</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <label>CCP Attributes Map</label>
+    <listViews>
+        <fullName>CCP_View</fullName>
+        <columns>MasterLabel</columns>
+        <columns>Category__c</columns>
+        <columns>Record_Type_Picklist__c</columns>
+        <columns>Type__c</columns>
+        <columns>Channel_Partner__c</columns>
+        <columns>Budget_Amount__c</columns>
+        <columns>RecordType_Name__c</columns>
+        <columns>Core_MDF_Enable_ELC_Reminder__c</columns>
+        <columns>Enable_Event_Popup__c</columns>
+        <columns>Core_MDF_Enable_File_Upload__c</columns>
+        <columns>Govt_Nexus_Flag__c</columns>
+        <columns>Print__c</columns>
+        <columns>Core_MDF_Enable_Channel_Partner_Led__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>CCP View</label>
+        <language>en_US</language>
+    </listViews>
+    <pluralLabel>CCP Attributes Maps</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

@@ -43,6 +43,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Quote</field>
+            <table>Order</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Sales_Ship_To_Account__c</field>
             <table>Order</table>
         </columns>

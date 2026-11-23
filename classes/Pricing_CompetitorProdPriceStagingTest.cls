@@ -14,7 +14,6 @@ public class Pricing_CompetitorProdPriceStagingTest {
         priceStage.Pricing_List_Price_Staging__c = 5; 
         priceStage.Pricing_Median_Meet_Comp_Disty_Staging__c = 4; 
         priceStage.Pricing_Final_Meet_Comp_Price_Staging__c = 2; 
-        priceStage.Pricing_Application_Staging_Nm__c = null;
         priceStage.Pricing_Competitor_Product_Name_Staging__c = 'TestCompProduct';
         insert priceStage;
         
@@ -22,8 +21,7 @@ public class Pricing_CompetitorProdPriceStagingTest {
         compProdPrice.Pricing_Region_Nm__c = 'APJ'; 
         compProdPrice.Pricing_List_Price__c = 8; 
         compProdPrice.Pricing_Median_Meet_Comp_Discount__c = 0; 
-        compProdPrice.Pricing_Final_Meet_Comp_Price__c = 8;
-        compProdPrice.Pricing_Application_Nm__c = 'Enterprise';
+        compProdPrice.Pricing_Final_Meet_Comp_Price__c = 8; 
         compProdPrice.Pricing_Competitor_Product__c = compProduct.id;
         insert compProdPrice;
         
@@ -32,8 +30,7 @@ public class Pricing_CompetitorProdPriceStagingTest {
         compProductPriceStaging.Pricing_Region_Staging_Nm__c = 'APJ'; 
         compProductPriceStaging.Pricing_List_Price_Staging__c = 5; 
         compProductPriceStaging.Pricing_Median_Meet_Comp_Disty_Staging__c = 4; 
-        compProductPriceStaging.Pricing_Final_Meet_Comp_Price_Staging__c = 2;
-        compProductPriceStaging.Pricing_Application_Staging_Nm__c = null;
+        compProductPriceStaging.Pricing_Final_Meet_Comp_Price_Staging__c = 2; 
         compProductPriceStaging.Pricing_Competitor_Product_Name_Staging__c = 'TestCompProduct1';
         insert compProductPriceStaging;
         

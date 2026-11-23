@@ -18,7 +18,12 @@ global Class Core_Batch_DDR_NotifyApprover implements Database.Batchable<sObject
     
     global Database.QueryLocator start(Database.BatchableContext BC) {
         // collect the batches of records or objects to be passed to execute
-      String query = LabelConfiguration__mdt.getInstance('DDR_NotifyApproverBatchQueryPart4').value__c.trim() + LabelConfiguration__mdt.getInstance('DDR_NotifyApproverBatchQueryPart5').value__c.trim()+ LabelConfiguration__mdt.getInstance('DDR_NotifyApproverBatchQueryPart1').value__c.trim() + LabelConfiguration__mdt.getInstance('DDR_NotifyApproverBatchQueryPart3').value__c.trim()+' '+LabelConfiguration__mdt.getInstance('DDR_NotifyApproverBatchQueryPart2').value__c.trim();              
+      String query = LabelConfiguration__mdt.getInstance('DDR_NotifyApproverBatchQueryPart4').value__c.trim() + LabelConfiguration__mdt.getInstance('DDR_NotifyApproverBatchQueryPart5').value__c.trim()+ LabelConfiguration__mdt.getInstance('DDR_NotifyApproverBatchQueryPart1').value__c.trim() + LabelConfiguration__mdt.getInstance('DDR_NotifyApproverBatchQueryPart3').value__c.trim()+' '+LabelConfiguration__mdt.getInstance('DDR_NotifyApproverBatchQueryPart2').value__c.trim();        
+        /*list<string> someId=new list<string>();
+        someId.add('a3DD3000001RIfVMAW');someId.add('a3DD3000001G4iqMAC');
+        string query = 'SELECT Id, PCC_Empty_Approver_Group__c,Name,Core_Intel_Technical_Owner_Id__r.isActive,PCC_End_Customer_Country__c, Core_End_Customer_Country_Subdivision_Nm__c,Resubmission_mail_design__c,PCC_Registration_Type__c,PCC_EndCustomerAcc_Mapping__r.Name'+
+            ',PCC_EndCustomerAcc_Mapping__r.PCC_End_Customer_City_Nm__c,PCC_EndCustomerAcc_Mapping__r.PCC_End_Customer_State_Nm__c,toLabel(PCC_EndCustomerAcc_Mapping__r.PCC_End_Customer_Account_Id__r.BillingCountryCode),Core_Approver_Grp_Nm__c, Core_Approver_Grp_Notification_Sent_Ind__c, OwnerId, Owner.Name, CreatedById, Core_Partner_Account_Id__c, Core_Partner_Account_Nm__c, Core_End_Customer_Nm__c, Core_Design_Registration_Nm__c ,Core_Design_Registration_Status_Nm__c, Core_Intel_Technical_Owner_Id__r.Email FROM Core_Design_Registration__c where id=:someId';       
+        */
         return Database.getQueryLocator(query);  
         
     }
@@ -53,6 +58,9 @@ global Class Core_Batch_DDR_NotifyApprover implements Database.Batchable<sObject
         String drOwnerId;
         List<Core_Design_Registration__c> lstUpdateDesigns1 = new List<Core_Design_Registration__c>();
         Map<Id,String> failedDrs = new Map<Id,String>();
+      /*  map<id,string> mailSentFailedDrs= new map<id,string>();
+        Map<Id,String> drName1 = new Map<Id,String>();
+        Map<Id,String> failedDrs1 = new Map<Id,String>();*/
         try {
             for(Core_Design_Registration__c iDesign : lstDesignReg) {
                 drName.put(iDesign.Id,iDesign.Name);
@@ -77,9 +85,17 @@ global Class Core_Batch_DDR_NotifyApprover implements Database.Batchable<sObject
                     drIds.add(drId);
                 }
                 Messaging.SendEmailResult[] results;
-                
+                //try{
                     results = Messaging.sendEmail(lstMailsMap.values(),false);
-               
+               /* }catch(exception ex){                    
+                    for (Integer i = 0; i < drIds.size(); i++) {
+                        mailSentFailedDrs.put(batchId,'Failure occured at sending email to Approver Group.');                  
+                    }                    
+                    Map<Id,Messaging.SingleEmailMessage> lstL2MailsMap = sendEmailToL2(failedDrs1,batchId,drName1);
+          			if(lstL2MailsMap.size() > 0) {
+                		Messaging.SendEmailResult[] resultsL2 = Messaging.sendEmail(lstL2MailsMap.values());
+                    } 
+                }*/
                          
                 for (Integer i = 0; i < drIds.size(); i++) {
                     Messaging.SendEmailResult Result = results[i];
@@ -107,7 +123,10 @@ global Class Core_Batch_DDR_NotifyApprover implements Database.Batchable<sObject
                 }
                 if(!failedDrs.isempty()){
                      sendToL2(failedDrs,batchId,drName);
-                                      
+                    /*Map<Id,Messaging.SingleEmailMessage> lstL2MailsMap = sendEmailToL2(failedDrs,batchId,drName);
+          			if(lstL2MailsMap.size() > 0) {
+                		Messaging.SendEmailResult[] resultsL2 = Messaging.sendEmail(lstL2MailsMap.values());
+                    } */                  
                 }
             }
         }
@@ -135,30 +154,27 @@ global Class Core_Batch_DDR_NotifyApprover implements Database.Batchable<sObject
             }  
         }
      }
-/*private List<Core_Design_Registration__c> updateDesignFunc(List<Id> lstDesignReg1,Messaging.SendEmailResult[] results)
-{
-    List<Core_Design_Registration__c> lstUpdateDesigns1 = new List<Core_Design_Registration__c>();
-    for (Integer i = 0; i < lstDesignReg1.size(); i++) {
-        Messaging.SendEmailResult Result = results[i];
-        if(Result.isSuccess()) {
-            /*Core_Design_Registration__c itUpdDesign;
-            if(lstDesignReg1[i].Core_Approver_Grp_Notification_Sent_Ind__c == false)
-            {
-                itUpdDesign = new Core_Design_Registration__c(Id = lstDesignReg1[i].Id, Core_Approver_Grp_Notification_Sent_Ind__c = TRUE);
-            }*/
-            //Core_Design_Registration__c itUpdDesign = new Core_Design_Registration__c(Id = lstDesignReg1[i], Core_Approver_Grp_Notification_Sent_Ind__c = TRUE);
-            /*else if(lstDesignReg1[i].Resubmission_mail_design__c == false)
-            {
-                itUpdDesign = new Core_Design_Registration__c(Id = lstDesignReg1[i].Id, Resubmission_mail_design__c = TRUE);
-            }*/
-           /* lstUpdateDesigns1.add(itUpdDesign);
-
+   /* private List<Core_Design_Registration__c> updateDesignFunc(List<Id> lstDesignReg1,Messaging.SendEmailResult[] results,id batchId,Map<Id,String> drName)
+    {
+        List<Core_Design_Registration__c> lstUpdateDesigns1 = new List<Core_Design_Registration__c>();
+        list<Core_Design_Registration__c> failedDRs= new list<Core_Design_Registration__c>();
+        list<id> mailSentFailedDrs = new list<id>();
+        for (Integer i = 0; i < lstDesignReg1.size(); i++) {
+            Messaging.SendEmailResult Result = results[i];
+            Core_Design_Registration__c itUpdDesign = new Core_Design_Registration__c(Id = lstDesignReg1[i], Core_Approver_Grp_Notification_Sent_Ind__c = TRUE);
+            
+            if(Result.isSuccess()) {              
+                lstUpdateDesigns1.add(itUpdDesign);
+            }
+            else if (!Result.isSuccess()) {
+                //we can send email from here but the issue is we will have to call method send email many times, per transaction governer limit is 10
+                mailSentFailedDrs.add(itUpdDesign[i]);
+                System.debug('### The email failed to send: ' + Result.errors[0].message);
+            }
+            //handleDRCreationFailureStageRecords(mailSentFailedDrs);
         }
-        else if (!Result.isSuccess()) {
-            System.debug('### The email failed to send: ' + Result.errors[0].message);
-        }
-    }
-    return lstUpdateDesigns1;
+        
+        return lstUpdateDesigns1;
     }*/
     //TWC727-2695 -PCC: Email should be sent to L2 if there is any exception in email batch job
     @testvisible

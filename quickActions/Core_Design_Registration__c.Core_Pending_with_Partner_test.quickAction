@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Change the design status to Pending with Partner</description>
+    <fieldOverrides>
+        <field>Core_Design_Registration_Status_Nm__c</field>
+        <formula>IF(ISPICKVAL(Core_Design_Registration__c.Core_Design_Registration_Status_Nm__c, &apos;Design accepted&apos;),&quot;Pending with Partner&quot;,&quot;Design accepted&quot;)</formula>
+        <literalValue>Pending with Partner</literalValue>
+    </fieldOverrides>
+    <label>Pending with Partner test</label>
+    <optionsCreateFeedItem>false</optionsCreateFeedItem>
+    <quickActionLayout>
+        <layoutSectionStyle>TwoColumnsLeftToRight</layoutSectionStyle>
+        <quickActionLayoutColumns>
+            <quickActionLayoutItems>
+                <emptySpace>true</emptySpace>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+        </quickActionLayoutColumns>
+        <quickActionLayoutColumns/>
+    </quickActionLayout>
+    <successMessage>Changed the Status to Pending with Partner</successMessage>
+    <type>Update</type>
+</QuickAction>

@@ -1,0 +1,16 @@
+.slds-modal__container{
+	width: 80% !important;
+	max-width: 80% !important;
+}
+.option_modal{
+		width: 50% !important;
+		max-width: 50% !important;
+}
+.spins::after {
+    position: absolute;
+    content: 'Please wait while licenses are loading';
+    width: 100%;
+    text-align: center;
+    top: calc(50% + 3em);
+    font-weight: bold;
+}

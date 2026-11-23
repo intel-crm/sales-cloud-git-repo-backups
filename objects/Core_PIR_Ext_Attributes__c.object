@@ -176,6 +176,17 @@
         <visibleLines>3</visibleLines>
     </fields>
     <fields>
+        <fullName>Core_OPN_Status_Txt__c</fullName>
+        <externalId>false</externalId>
+        <formula>Core_Part__c &amp; &quot;_&quot; &amp;  Core_Processing_Status__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Core OPN Status Txt</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Core_Package__c</fullName>
         <description>Holds package associated with the product</description>
         <externalId>false</externalId>

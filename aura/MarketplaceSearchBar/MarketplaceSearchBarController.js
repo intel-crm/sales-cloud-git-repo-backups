@@ -164,15 +164,11 @@
                 console.log('type ahead clicked');
                 var analyticsData = component.find("analyticsData");
                 var type = 'click';
-                var element = 'search';
-                // IPA2.0 + US TWC4497-1631
-                // var element = (component.get('v.page') == 'search')? 'search-offerings-filter' : 'search';            
+                var element = (component.get('v.page') == 'search')? 'search-offerings-filter' : 'search';
+            
                 var detail = recordId;
-                var pageType = 'PartnerDetailPage';
-                var href = '/s/partner/' + recordId + '/' + label.replace(/\W+/g, '-').toLowerCase();
-                // IPA2.0 + US TWC4497-1631
-            	// var pageType = ((searchType == 'product') ? 'OfferingDetailPage' : 'PartnerDetailPage');
-                // var href = ((searchType == 'product') ? '/s/offering/'+recordId+'/' : '/s/partner/'+recordId+'/') + label.replace(/\W+/g, '-').toLowerCase(); 
+            	var pageType = ((searchType == 'product') ? 'OfferingDetailPage' : 'PartnerDetailPage');
+                var href = ((searchType == 'product') ? '/s/offering/'+recordId+'/' : '/s/partner/'+recordId+'/') + label.replace(/\W+/g, '-').toLowerCase(); 
                 analyticsData.formAnalyticsData(type,detail,element,href, pageType);
                 //Analytics code end
             

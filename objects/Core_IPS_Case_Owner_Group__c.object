@@ -149,7 +149,7 @@
     <enableHistory>false</enableHistory>
     <enableLicensing>false</enableLicensing>
     <enableReports>true</enableReports>
-    <enableSearch>true</enableSearch>
+    <enableSearch>false</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>ControlledByParent</externalSharingModel>
@@ -224,13 +224,6 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Core_IPS_Owner_Group_Comment__c</fullName>
-        <label>Owner Group Comment</label>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>TextArea</type>
-    </fields>
-    <fields>
         <fullName>Core_IPS_Owner_Team_1__c</fullName>
         <externalId>false</externalId>
         <label>Owner Team 1</label>
@@ -274,13 +267,14 @@
     </fields>
     <fields>
         <fullName>Core_IPS_Unique_Owner_Group__c</fullName>
+        <caseSensitive>true</caseSensitive>
         <externalId>false</externalId>
         <label>Unique Owner Group</label>
         <length>255</length>
         <required>false</required>
         <trackTrending>false</trackTrending>
         <type>Text</type>
-        <unique>false</unique>
+        <unique>true</unique>
     </fields>
     <label>Case Owner Group</label>
     <listViews>
@@ -294,24 +288,7 @@
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Case Owner Groups</pluralLabel>
-    <searchLayouts>
-        <lookupDialogsAdditionalFields>Core_IPS_Support_Org__c</lookupDialogsAdditionalFields>
-        <lookupDialogsAdditionalFields>Core_IPS_Case_Owner_Email__c</lookupDialogsAdditionalFields>
-        <lookupDialogsAdditionalFields>Core_IPS_Owner_Group_1__c</lookupDialogsAdditionalFields>
-        <lookupDialogsAdditionalFields>Core_IPS_Owner_Group_2__c</lookupDialogsAdditionalFields>
-        <lookupDialogsAdditionalFields>Core_IPS_Owner_Group_3__c</lookupDialogsAdditionalFields>
-        <lookupDialogsAdditionalFields>Core_IPS_Owner_Team_1__c</lookupDialogsAdditionalFields>
-        <lookupDialogsAdditionalFields>Core_IPS_Owner_Team_2__c</lookupDialogsAdditionalFields>
-        <lookupDialogsAdditionalFields>Core_IPS_Owner_Team_3__c</lookupDialogsAdditionalFields>
-        <searchResultsAdditionalFields>Core_IPS_Support_Org__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>Core_IPS_Case_Owner_Email__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>Core_IPS_Owner_Group_1__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>Core_IPS_Owner_Group_2__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>Core_IPS_Owner_Group_3__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>Core_IPS_Owner_Team_1__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>Core_IPS_Owner_Team_2__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>Core_IPS_Owner_Team_3__c</searchResultsAdditionalFields>
-    </searchLayouts>
+    <searchLayouts/>
     <sharingModel>ControlledByParent</sharingModel>
     <validationRules>
         <fullName>Atleast_One_Owner_group_should_be_added</fullName>

@@ -9,6 +9,22 @@
         <value>Commissionable Transactions</value>
     </caseValues>
     <fields>
+        <label><!-- Audit Close Date --></label>
+        <name>CRM_Audit_Close_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Audit Status --></label>
+        <name>CRM_Audit_Status_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Approved DateTime --></label>
+        <name>CRM_Last_Approved_DateTime__c</name>
+    </fields>
+    <fields>
+        <label><!-- Team Member Addition Date --></label>
+        <name>CRM_Team_Member_Addition_Date__c</name>
+    </fields>
+    <fields>
         <label><!-- Account --></label>
         <name>Core_Account_ID__c</name>
         <relationshipLabel><!-- Commissionable Transactions --></relationshipLabel>
@@ -65,6 +81,14 @@
     <fields>
         <label><!-- Employee Name --></label>
         <name>Core_Employee_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- FC Quarter Name --></label>
+        <name>Core_FC_Quarter_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- FC Revenue --></label>
+        <name>Core_FC_Revenue__c</name>
     </fields>
     <fields>
         <label><!-- Forecast Product Schedule --></label>

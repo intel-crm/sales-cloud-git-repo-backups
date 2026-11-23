@@ -3,6 +3,11 @@
     <doesIncludeBosses>true</doesIncludeBosses>
     <doesSendEmailToMembers>false</doesSendEmailToMembers>
     <name>Commissions-GAR CO</name>
+    <queueMembers>
+        <publicGroups>
+            <publicGroup>Core_AAQC_Commissions_GAR_CO</publicGroup>
+        </publicGroups>
+    </queueMembers>
     <queueSobject>
         <sobjectType>Case</sobjectType>
     </queueSobject>

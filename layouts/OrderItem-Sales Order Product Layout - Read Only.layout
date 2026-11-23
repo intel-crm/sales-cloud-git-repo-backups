@@ -120,15 +120,18 @@
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
     </layoutSections>
-    <multilineLayoutFields>Product2Id</multilineLayoutFields>
+    <multilineLayoutFields>OrderId</multilineLayoutFields>
     <multilineLayoutFields>Quantity</multilineLayoutFields>
     <multilineLayoutFields>UnitPrice</multilineLayoutFields>
-    <multilineLayoutFields>OrderId</multilineLayoutFields>
     <platformActionList>
         <actionListContext>Record</actionListContext>
     </platformActionList>
     <relatedLists>
         <relatedList>RelatedEntityHistoryList</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>Sales_License_Order_Product__c.Sales_Order_Product__c</relatedList>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>

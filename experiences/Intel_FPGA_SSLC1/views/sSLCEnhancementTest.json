@@ -1,0 +1,46 @@
+{
+  "appPageId" : "6b36c665-0609-49d0-9746-033feed642b2",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "1b590dc3-dd34-42fd-b8eb-bd67b3016317",
+  "label" : "SSLC Enhancement Test",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:sales_FreeLicenseParent",
+      "id" : "bad0ece5-0899-4729-98e3-60ed3c62b465",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "be56818f-36a6-41d7-8fea-58632b1c392f",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "id" : "bab20cd7-fa38-4913-9721-5419fb7de1b4",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "8740773c-ebc3-4b0a-8d38-3417ab8529a2",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "SSLC Enhancement Test"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "1a267db6-17ad-4ad6-8db1-e32f06ccbca3",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "5298d973-24bd-4d2a-a92e-d85439e226b4",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-sslc-enhancement-test"
+}

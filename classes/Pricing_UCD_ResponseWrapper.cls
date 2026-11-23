@@ -5,6 +5,7 @@ public class Pricing_UCD_ResponseWrapper {
         public String AccountName {set;get;}
         public string SurvivorAccountId {set;get;}
         public String MasteredSimplifiedAccountName {set;get;}
+        public String MasteredSimplifiedAccountLocalLanguageName {set;get;}
         public String BusinessPartyIdentifier {set;get;} 
         public String RequestedAccountRejectionReason {set;get;}
         public string RequestedAccountRejectionNotes {get; set;}
@@ -16,7 +17,6 @@ public class Pricing_UCD_ResponseWrapper {
         public List<CustomerProcessEngagement> CustomerProcessEngagement {set;get;}
         public Pricing_UCD_ResponseWrapper.ResponseData ParentAccount {set;get;}
         public List<ComplianceWatchList> ComplianceWatchList {set;get;} 
-        public string ComplianceStatus {set;get;}
     }
 
     public class AccountAddress{

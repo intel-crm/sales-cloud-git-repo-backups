@@ -179,6 +179,71 @@
         <visibleLines>5</visibleLines>
     </fields>
     <fields>
+        <fullName>SWS_Amount__c</fullName>
+        <externalId>false</externalId>
+        <label>Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SWS_ApprovalRequiredForProduct_fm__c</fullName>
+        <formula>IF(FIND(TEXT(SWS_HW_Compute_Platform_PL__c), $Label.SWS_NeedApprovalForProduct) = 0, false, true)</formula>
+        <label>Approval Required For Product</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>SWS_Approval_status__c</fullName>
+        <label>Approval Status</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Approved</fullName>
+                    <default>false</default>
+                    <label>Approved</label>
+                </value>
+                <value>
+                    <fullName>Rejected</fullName>
+                    <default>false</default>
+                    <label>Rejected</label>
+                </value>
+                <value>
+                    <fullName>Recalled</fullName>
+                    <default>false</default>
+                    <label>Recalled</label>
+                </value>
+                <value>
+                    <fullName>Submitted</fullName>
+                    <default>false</default>
+                    <label>Submitted</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>SWS_Approver__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Approver</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Cloud_Credit_Requests3</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
         <fullName>SWS_Community_Program_Coupon_Type__c</fullName>
         <inlineHelpText>SATG and Community and Academic Outreach programs may request the following types of cloud coupons.</inlineHelpText>
         <label>Community Program – Coupon Type</label>
@@ -243,8 +308,8 @@ Intel program not listed? Contact the AI Cloud IDC.Getting.Started@intel.com</in
     </fields>
     <fields>
         <fullName>SWS_Compute_Service_Requirements__c</fullName>
-        <label>Compute/Service Requirements</label>
-        <length>131072</length>
+        <label>Additional Notes</label>
+        <length>500</length>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
@@ -376,7 +441,7 @@ Intel program not listed? Contact the AI Cloud IDC.Getting.Started@intel.com</in
     <fields>
         <fullName>SWS_Coupon_Status__c</fullName>
         <externalId>false</externalId>
-        <formula>IF(  NOT(ISBLANK( SWS_Coupon_Code__c )) , IF(  DATEVALUE(SWS_Coupon_Expiration_Date__c) &gt;=  TODAY() , &apos;Active&apos;, &apos;Expired&apos;), &apos;&apos; )</formula>
+        <formula>IF(  NOT(ISBLANK( SWS_Coupon_Code__c )) , IF(  DATEVALUE(SWS_Coupon_Expiration_Date__c) &gt;  TODAY() , &apos;Active&apos;, &apos;Expired&apos;), &apos;&apos; )</formula>
         <label>Coupon Status</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -643,11 +708,60 @@ IMAGE(&apos;/resource/Checklist_Green&apos;, &quot;Verified&quot;,20,20) &amp; &
     </fields>
     <fields>
         <fullName>SWS_Expiry_Date__c</fullName>
+        <inlineHelpText>This field specifies end date of the coupon in UTC. By default, the coupon end time will be 11:59 PM of the selected date</inlineHelpText>
         <label>End Date</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>SWS_Fields_approval_fm__c</fullName>
+        <formula>IF(
+    ISPICKVAL(SWS_Request_Type__c, &quot;Intel internal use – one-time or ongoing use for internal development and research projects&quot;),
+    AND(
+        NOT(ISBLANK(SWS_Job_Title__c)),
+        NOT(ISPICKVAL(SWS_Country__c, &quot;&quot;)),
+        NOT(ISPICKVAL(SWS_HW_Compute_Platform_PL__c, &quot;&quot;)),
+        NOT(ISPICKVAL(SWS_Coupon_Type__c, &quot;&quot;)),
+        NOT(ISBLANK(SWS_Processing_Team__c))
+    ),
+    
+    IF(
+        ISPICKVAL(SWS_Request_Type__c, &quot;External Customer – Intel platform evaluation for external customer(s).&quot;),
+        AND(
+            NOT(ISBLANK(SWS_Intel_BU_Field_Sales_Contact__c)),
+            NOT(ISPICKVAL(SWS_Use_Case__c, &quot;&quot;)),
+            NOT(ISBLANK(SWS_Job_Title__c)),
+            NOT(ISBLANK(SWS_Company_Name__c)),
+            NOT(ISPICKVAL(SWS_Country__c, &quot;&quot;)),
+            NOT(ISPICKVAL(SWS_HW_Compute_Platform_PL__c, &quot;&quot;)),
+            NOT(ISPICKVAL(SWS_Coupon_Type__c, &quot;&quot;)),
+            NOT(ISBLANK(SWS_Processing_Team__c))
+        ),
+        
+        IF(
+            ISPICKVAL(SWS_Request_Type__c, &quot;One-time external event – one-time use by participants attending an Intel community or customer outreach event (e.g., workshop, training, or hackathon).&quot;),
+            AND(
+                NOT(ISPICKVAL(SWS_Country__c, &quot;&quot;)),
+                NOT(ISBLANK(SWS_Event_Start_Date__c)),
+                NOT(ISBLANK(SWS_Event_End_Date__c)),
+                NOT(ISBLANK(SWS_Number_of_Participants__c)),
+                NOT(ISBLANK(SWS_Event_Compute_Environment_Details__c)),
+                NOT(ISBLANK(SWS_Intel_BU_Field_Sales_Contact__c)),
+                NOT(ISPICKVAL(SWS_HW_Compute_Platform_PL__c, &quot;&quot;)),
+                NOT(ISBLANK(SWS_Processing_Team__c))
+            ),
+            
+            FALSE
+        )
+    )
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Fields present before approval</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>SWS_First_Name__c</fullName>
@@ -680,7 +794,6 @@ IMAGE(&apos;/resource/Checklist_Green&apos;, &quot;Verified&quot;,20,20) &amp; &
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
-            <restricted>true</restricted>
             <valueSetDefinition>
                 <sorted>false</sorted>
                 <value>
@@ -718,62 +831,29 @@ IMAGE(&apos;/resource/Checklist_Green&apos;, &quot;Verified&quot;,20,20) &amp; &
                     <default>false</default>
                     <label>N/A</label>
                 </value>
-                <value>
-                    <fullName>4th Generation Intel® Xeon® Scalable processors</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>4th Generation Intel® Xeon® Scalable processors</label>
-                </value>
-                <value>
-                    <fullName>5th Generation Intel® Xeon® Scalable Processors</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>5th Generation Intel® Xeon® Scalable Processors</label>
-                </value>
-                <value>
-                    <fullName>6th Generation Intel® Xeon® Scalable Processors</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>6th Generation Intel® Xeon® Scalable Processors</label>
-                </value>
-                <value>
-                    <fullName>Intel® Data Center GPU Flex Series on latest Intel® Xeon® processors</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Intel® Data Center GPU Flex Series on latest Intel® Xeon® processors</label>
-                </value>
-                <value>
-                    <fullName>Intel® Gaudi2 Deep Learning Server featuring eight Gaudi2 HL-225H mezzanine cards (SMC)</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Intel® Gaudi2 Deep Learning Server featuring eight Gaudi2 HL-225H mezzanine cards (SMC)</label>
-                </value>
-                <value>
-                    <fullName>Intel® Xeon® CPU Max Series processor with high bandwidth memory (HBM)</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Intel® Xeon® CPU Max Series processor with high bandwidth memory (HBM)</label>
-                </value>
-                <value>
-                    <fullName>Jupyter - Gaudi</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Jupyter - Gaudi</label>
-                </value>
-                <value>
-                    <fullName>Jupyter - Standard</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Jupyter - Standard</label>
-                </value>
-                <value>
-                    <fullName>aEaDf000000CbxrKAC</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>aEaDf000000CbxrKAC</label>
-                </value>
             </valueSetDefinition>
         </valueSet>
+    </fields>
+    <fields>
+        <fullName>SWS_HW_Compute_Platform__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>HW Compute Platform</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>SWS_IDC_Product_List__c.SWS_Product_is_active__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>SWS_IDC_Product_List__c</referenceTo>
+        <relationshipLabel>Cloud Credit Requests</relationshipLabel>
+        <relationshipName>Cloud_Credit_Requests</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
     </fields>
     <fields>
         <fullName>SWS_HW_Compute_Quantity__c</fullName>
@@ -894,6 +974,14 @@ HW reservations are not guaranteed with this Request Form.</inlineHelpText>
         <type>Checkbox</type>
     </fields>
     <fields>
+        <fullName>SWS_Is_Updating__c</fullName>
+        <defaultValue>true</defaultValue>
+        <label>Is Updating</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>SWS_Job_Title__c</fullName>
         <externalId>false</externalId>
         <inlineHelpText>Type &apos;Unknown&apos; if you don&apos;t know.</inlineHelpText>
@@ -904,6 +992,14 @@ HW reservations are not guaranteed with this Request Form.</inlineHelpText>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SWS_Justification__c</fullName>
+        <label>Justification</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
     </fields>
     <fields>
         <fullName>SWS_Last_Name__c</fullName>
@@ -933,6 +1029,25 @@ HW reservations are not guaranteed with this Request Form.</inlineHelpText>
         <type>DateTime</type>
     </fields>
     <fields>
+        <fullName>SWS_Lead_Creation_Status__c</fullName>
+        <label>Lead Creation Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>SWS_Lead_Stage__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( NOT(ISNULL(SWS_Lead__c)) ,  TEXT(SWS_Lead__r.Status)   , &apos;&apos;)</formula>
+        <label>Lead Stage</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>SWS_Lead__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <label>Lead</label>
@@ -953,9 +1068,30 @@ HW reservations are not guaranteed with this Request Form.</inlineHelpText>
         <type>Checkbox</type>
     </fields>
     <fields>
+        <fullName>SWS_LogoUrl__c</fullName>
+        <externalId>false</externalId>
+        <formula>$Label.PSG_IntelLogo</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>SWS_LogoUrl</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SWS_Missing_Field__c</fullName>
+        <label>Missing Fields</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
         <fullName>SWS_No_Of_User__c</fullName>
         <externalId>false</externalId>
-        <label>Number of users</label>
+        <label>Number of Users</label>
         <precision>18</precision>
         <required>false</required>
         <scale>0</scale>
@@ -1078,7 +1214,7 @@ HW reservations are not guaranteed with this Request Form.</inlineHelpText>
         <referenceTo>User</referenceTo>
         <relationshipName>Cloud_Credit_Requests1</relationshipName>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -1089,6 +1225,19 @@ HW reservations are not guaranteed with this Request Form.</inlineHelpText>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>SWS_Rejected_On_fm__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(NOT(ISBLANK(SWS_Rejected_On__c)),TEXT(MONTH(DATEVALUE(SWS_Rejected_On__c)))+&quot;/&quot;+TEXT(DAY(DATEVALUE(SWS_Rejected_On__c)))+&quot;/&quot;+TEXT(YEAR(DATEVALUE(SWS_Rejected_On__c)))+&quot;, &quot;+
+IF(VALUE(TEXT(HOUR(TIMEVALUE(SWS_Rejected_On__c))))&gt;12, TEXT(VALUE(TEXT(HOUR(TIMEVALUE(SWS_Rejected_On__c))))-12),TEXT(HOUR(TIMEVALUE(SWS_Rejected_On__c))))+&quot;:&quot;+ IF(VALUE(TEXT(MINUTE(TIMEVALUE(SWS_Rejected_On__c))))&lt;10,&quot;0&quot;+TEXT(MINUTE(TIMEVALUE(SWS_Rejected_On__c))),TEXT(MINUTE(TIMEVALUE(SWS_Rejected_On__c)))) +&quot; &quot;+IF(VALUE(TEXT(HOUR(TIMEVALUE(SWS_Rejected_On__c))))&gt;=12,&quot;PM&quot;,&quot;AM&quot;),&apos;&apos;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Rejected On</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>SWS_Replied_back__c</fullName>
@@ -1107,7 +1256,6 @@ HW reservations are not guaranteed with this Request Form.</inlineHelpText>
 &quot;Coupon_Generation_in_Progress&quot;,3,
 &quot;Coupon_Generated&quot;,4,
 null)</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>SWS_RequestStatus_fm</label>
         <precision>18</precision>
         <required>false</required>
@@ -1129,7 +1277,7 @@ null)</formula>
         <fullName>SWS_Request_Status__c</fullName>
         <label>Request Status</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -1163,7 +1311,7 @@ null)</formula>
         <fullName>SWS_Request_Status_fm__c</fullName>
         <label>Request Status</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -1184,17 +1332,11 @@ null)</formula>
                     <default>false</default>
                     <label>Coupon Generated</label>
                 </value>
-                <value>
-                    <fullName>Rejected</fullName>
-                    <default>false</default>
-                    <label>Rejected</label>
-                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
     <fields>
         <fullName>SWS_Request_Type__c</fullName>
-        <inlineHelpText>Select the type or reason you are requesting a cloud coupon.</inlineHelpText>
         <label>Request Type</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -1311,7 +1453,7 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
         <referenceTo>User</referenceTo>
         <relationshipName>Cloud_Credit_Requests</relationshipName>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -1324,12 +1466,43 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
         <type>DateTime</type>
     </fields>
     <fields>
+        <fullName>SWS_Submitted_On_fm__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(NOT(ISBLANK(SWS_Submitted_On__c)),MID(TEXT(SWS_Submitted_On__c),6,2)+&apos;/&apos;+MID(TEXT(SWS_Submitted_On__c),9,2)+&apos;/&apos;+MID(TEXT(SWS_Submitted_On__c),1,4)+&apos;, &apos;+IF(VALUE(MID(TEXT(SWS_Submitted_On__c),12,2))&gt;12,TEXT(VALUE(MID(TEXT(SWS_Submitted_On__c),12,2))-12),MID(TEXT(SWS_Submitted_On__c),12,2))+&apos;:&apos;+MID(TEXT(SWS_Submitted_On__c),15,2)+&apos; &apos;+IF(VALUE(MID(TEXT(SWS_Submitted_On__c),12,2))&gt;12,&apos;PM&apos;,&apos;AM&apos;), &apos;&apos;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Submitted On</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SWS_Submitted_by_for_approval__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Submitted By for Approval</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Cloud_Credit_Requests2</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>SWS_Submitted_for_Approval_On__c</fullName>
+        <label>Submitted for Approval On</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
         <fullName>SWS_Submitter_Email__c</fullName>
         <externalId>false</externalId>
         <inlineHelpText>Submitter email will be cc&apos;d in the coupon email</inlineHelpText>
         <label>Submitter Email Address</label>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Email</type>
         <unique>false</unique>
@@ -1340,7 +1513,7 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
         <label>Submitter Last Name</label>
         <length>255</length>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -1351,7 +1524,7 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
         <label>Submitter Name</label>
         <length>255</length>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -1489,6 +1662,30 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
         <type>Number</type>
         <unique>false</unique>
     </fields>
+    <fields>
+        <fullName>SWS_test_created_on__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(NOT(ISBLANK(SWS_Coupon_Created_On__c)),MID(TEXT(SWS_Coupon_Created_On__c),6,2)+&apos;/&apos;+MID(TEXT(SWS_Coupon_Created_On__c),9,2)+&apos;/&apos;+MID(TEXT(SWS_Coupon_Created_On__c),1,4)+&apos;, &apos;+IF(VALUE(MID(TEXT(SWS_Coupon_Created_On__c),12,2))&gt;12,IF((VALUE(MID(TEXT(SWS_Coupon_Created_On__c),12,2))-12)&lt;10,&apos;0&apos;+TEXT(VALUE(MID(TEXT(SWS_Coupon_Created_On__c),12,2))-12),TEXT(VALUE(MID(TEXT(SWS_Coupon_Created_On__c),12,2))-12)),MID(TEXT(SWS_Coupon_Created_On__c),12,2))+&apos;:&apos;+MID(TEXT(SWS_Coupon_Created_On__c),15,2)+&apos; &apos;+IF(VALUE(MID(TEXT(SWS_Coupon_Created_On__c),12,2))&gt;12,&apos;PM&apos;,&apos;AM&apos;), &apos;&apos;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>SWS_test_created_on</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>URL__c</fullName>
+        <externalId>false</externalId>
+        <formula>CreatedById</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>URL (Not Used)</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
     <label>Cloud Credit Request</label>
     <listViews>
         <fullName>All</fullName>
@@ -1545,11 +1742,11 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
         <columns>CREATEDBY_USER</columns>
         <columns>CREATED_DATE</columns>
         <columns>SWS_Coupon_Value__c</columns>
-        <filterScope>Mine</filterScope>
+        <filterScope>Everything</filterScope>
         <filters>
             <field>SWS_Request_Status__c</field>
             <operation>equals</operation>
-            <value>Coupon_Generated</value>
+            <value>Coupon_Generated,Coupon Generated</value>
         </filters>
         <label>Coupon Generated</label>
         <sharedTo>
@@ -1565,6 +1762,7 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
         <columns>SWS_Email_Verification_fm__c</columns>
         <columns>SWS_Company_Name__c</columns>
         <columns>SWS_Use_Case__c</columns>
+        <columns>SWS_Interested_in__c</columns>
         <columns>SWS_Replied_back__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
@@ -1586,6 +1784,7 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
         <columns>SWS_Email_Verification_fm__c</columns>
         <columns>SWS_Company_Name__c</columns>
         <columns>SWS_Use_Case__c</columns>
+        <columns>SWS_Interested_in__c</columns>
         <columns>SWS_Replied_back__c</columns>
         <filterScope>Mine</filterScope>
         <filters>
@@ -1676,6 +1875,25 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
         <active>true</active>
         <label>Cloud Credit Request</label>
         <picklistValues>
+            <picklist>SWS_Approval_status__c</picklist>
+            <values>
+                <fullName>Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Recalled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rejected</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Submitted</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>SWS_Community_Program_Coupon_Type__c</picklist>
             <values>
                 <fullName>Innovator coupon %E2%80%93 Intended for an individual user and covers approximately 7 days of bare-metal access%2E</fullName>
@@ -1737,6 +1955,10 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
             </values>
             <values>
                 <fullName>Antigua%2FBarbuda</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Antilles</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -1812,6 +2034,10 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
                 <default>false</default>
             </values>
             <values>
+                <fullName>Bosnia And Herzegovina</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Bosnia-Herz%2E</fullName>
                 <default>false</default>
             </values>
@@ -1836,6 +2062,10 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
                 <default>false</default>
             </values>
             <values>
+                <fullName>British Virgin Islands</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Brunei</fullName>
                 <default>false</default>
             </values>
@@ -1845,6 +2075,10 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
             </values>
             <values>
                 <fullName>Burkina Faso</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Burma</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -1936,14 +2170,6 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
                 <default>false</default>
             </values>
             <values>
-                <fullName>Czech Republic</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Czechia</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Dem%2E Rep%2E Congo</fullName>
                 <default>false</default>
             </values>
@@ -1961,6 +2187,10 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
             </values>
             <values>
                 <fullName>Dominican Rep%2E</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Dominican Republic</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -2100,6 +2330,10 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
                 <default>false</default>
             </values>
             <values>
+                <fullName>Holland</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Honduras</fullName>
                 <default>false</default>
             </values>
@@ -2173,6 +2407,10 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
             </values>
             <values>
                 <fullName>Kiribati</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Korea</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -2312,6 +2550,10 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
                 <default>false</default>
             </values>
             <values>
+                <fullName>N%2E IRELAND</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>N%2EMariana Islnd</fullName>
                 <default>false</default>
             </values>
@@ -2353,6 +2595,10 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
             </values>
             <values>
                 <fullName>Niue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>None</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -2436,6 +2682,10 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
                 <default>false</default>
             </values>
             <values>
+                <fullName>Russia</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Russian Fed</fullName>
                 <default>false</default>
             </values>
@@ -2473,6 +2723,10 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
             </values>
             <values>
                 <fullName>Saudi Arabia</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Scotland</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -2684,11 +2938,19 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
                 <default>false</default>
             </values>
             <values>
+                <fullName>West Indies</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Western Sahara</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>Yemen</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yugoslavia</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -2773,6 +3035,10 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
                 <default>false</default>
             </values>
             <values>
+                <fullName>Antilles</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Argentina</fullName>
                 <default>false</default>
             </values>
@@ -2845,6 +3111,10 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
                 <default>false</default>
             </values>
             <values>
+                <fullName>Bosnia And Herzegovina</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Bosnia-Herz%2E</fullName>
                 <default>false</default>
             </values>
@@ -2869,6 +3139,10 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
                 <default>false</default>
             </values>
             <values>
+                <fullName>British Virgin Islands</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Brunei</fullName>
                 <default>false</default>
             </values>
@@ -2878,6 +3152,10 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
             </values>
             <values>
                 <fullName>Burkina Faso</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Burma</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -2969,14 +3247,6 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
                 <default>false</default>
             </values>
             <values>
-                <fullName>Czech Republic</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Czechia</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Dem%2E Rep%2E Congo</fullName>
                 <default>false</default>
             </values>
@@ -2994,6 +3264,10 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
             </values>
             <values>
                 <fullName>Dominican Rep%2E</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Dominican Republic</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -3133,6 +3407,10 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
                 <default>false</default>
             </values>
             <values>
+                <fullName>Holland</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Honduras</fullName>
                 <default>false</default>
             </values>
@@ -3206,6 +3484,10 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
             </values>
             <values>
                 <fullName>Kiribati</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Korea</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -3345,6 +3627,10 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
                 <default>false</default>
             </values>
             <values>
+                <fullName>N%2E IRELAND</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>N%2EMariana Islnd</fullName>
                 <default>false</default>
             </values>
@@ -3386,6 +3672,10 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
             </values>
             <values>
                 <fullName>Niue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>None</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -3469,6 +3759,10 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
                 <default>false</default>
             </values>
             <values>
+                <fullName>Russia</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Russian Fed</fullName>
                 <default>false</default>
             </values>
@@ -3506,6 +3800,10 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
             </values>
             <values>
                 <fullName>Saudi Arabia</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Scotland</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -3717,11 +4015,19 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
                 <default>false</default>
             </values>
             <values>
+                <fullName>West Indies</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Western Sahara</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>Yemen</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yugoslavia</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -3814,10 +4120,6 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
             </values>
             <values>
                 <fullName>Coupon_Generation_in_Progress</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Rejected</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -3882,6 +4184,25 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
         <compactLayoutAssignment>Inquiry_Layout</compactLayoutAssignment>
         <label>Inquiry</label>
         <picklistValues>
+            <picklist>SWS_Approval_status__c</picklist>
+            <values>
+                <fullName>Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Recalled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rejected</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Submitted</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>SWS_Community_Program_Coupon_Type__c</picklist>
             <values>
                 <fullName>Innovator coupon %E2%80%93 Intended for an individual user and covers approximately 7 days of bare-metal access%2E</fullName>
@@ -3943,6 +4264,10 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
             </values>
             <values>
                 <fullName>Antigua%2FBarbuda</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Antilles</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -4018,6 +4343,10 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
                 <default>false</default>
             </values>
             <values>
+                <fullName>Bosnia And Herzegovina</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Bosnia-Herz%2E</fullName>
                 <default>false</default>
             </values>
@@ -4042,6 +4371,10 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
                 <default>false</default>
             </values>
             <values>
+                <fullName>British Virgin Islands</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Brunei</fullName>
                 <default>false</default>
             </values>
@@ -4051,6 +4384,10 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
             </values>
             <values>
                 <fullName>Burkina Faso</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Burma</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -4142,14 +4479,6 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
                 <default>false</default>
             </values>
             <values>
-                <fullName>Czech Republic</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Czechia</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Dem%2E Rep%2E Congo</fullName>
                 <default>false</default>
             </values>
@@ -4167,6 +4496,10 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
             </values>
             <values>
                 <fullName>Dominican Rep%2E</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Dominican Republic</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -4306,6 +4639,10 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
                 <default>false</default>
             </values>
             <values>
+                <fullName>Holland</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Honduras</fullName>
                 <default>false</default>
             </values>
@@ -4379,6 +4716,10 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
             </values>
             <values>
                 <fullName>Kiribati</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Korea</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -4518,6 +4859,10 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
                 <default>false</default>
             </values>
             <values>
+                <fullName>N%2E IRELAND</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>N%2EMariana Islnd</fullName>
                 <default>false</default>
             </values>
@@ -4559,6 +4904,10 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
             </values>
             <values>
                 <fullName>Niue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>None</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -4642,6 +4991,10 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
                 <default>false</default>
             </values>
             <values>
+                <fullName>Russia</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Russian Fed</fullName>
                 <default>false</default>
             </values>
@@ -4679,6 +5032,10 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
             </values>
             <values>
                 <fullName>Saudi Arabia</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Scotland</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -4890,11 +5247,19 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
                 <default>false</default>
             </values>
             <values>
+                <fullName>West Indies</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Western Sahara</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>Yemen</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yugoslavia</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -4979,6 +5344,10 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
                 <default>false</default>
             </values>
             <values>
+                <fullName>Antilles</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Argentina</fullName>
                 <default>false</default>
             </values>
@@ -5051,6 +5420,10 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
                 <default>false</default>
             </values>
             <values>
+                <fullName>Bosnia And Herzegovina</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Bosnia-Herz%2E</fullName>
                 <default>false</default>
             </values>
@@ -5075,6 +5448,10 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
                 <default>false</default>
             </values>
             <values>
+                <fullName>British Virgin Islands</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Brunei</fullName>
                 <default>false</default>
             </values>
@@ -5084,6 +5461,10 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
             </values>
             <values>
                 <fullName>Burkina Faso</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Burma</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -5175,14 +5556,6 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
                 <default>false</default>
             </values>
             <values>
-                <fullName>Czech Republic</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Czechia</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Dem%2E Rep%2E Congo</fullName>
                 <default>false</default>
             </values>
@@ -5200,6 +5573,10 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
             </values>
             <values>
                 <fullName>Dominican Rep%2E</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Dominican Republic</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -5339,6 +5716,10 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
                 <default>false</default>
             </values>
             <values>
+                <fullName>Holland</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Honduras</fullName>
                 <default>false</default>
             </values>
@@ -5412,6 +5793,10 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
             </values>
             <values>
                 <fullName>Kiribati</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Korea</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -5551,6 +5936,10 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
                 <default>false</default>
             </values>
             <values>
+                <fullName>N%2E IRELAND</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>N%2EMariana Islnd</fullName>
                 <default>false</default>
             </values>
@@ -5592,6 +5981,10 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
             </values>
             <values>
                 <fullName>Niue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>None</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -5675,6 +6068,10 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
                 <default>false</default>
             </values>
             <values>
+                <fullName>Russia</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Russian Fed</fullName>
                 <default>false</default>
             </values>
@@ -5712,6 +6109,10 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
             </values>
             <values>
                 <fullName>Saudi Arabia</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Scotland</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -5923,11 +6324,19 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
                 <default>false</default>
             </values>
             <values>
+                <fullName>West Indies</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Western Sahara</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>Yemen</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yugoslavia</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -5942,19 +6351,7 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
         <picklistValues>
             <picklist>SWS_HW_Compute_Platform_PL__c</picklist>
             <values>
-                <fullName>Intel%C2%AE Gaudi Learning Server</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Intel%C2%AE Max Series GPU</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Xeon%C2%AE Scalable processor</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Jupyter Notebook</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -5963,10 +6360,6 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
             </values>
             <values>
                 <fullName>N%2FA</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Other</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -6026,10 +6419,6 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
                 <fullName>Coupon_Generation_in_Progress</fullName>
                 <default>false</default>
             </values>
-            <values>
-                <fullName>Rejected</fullName>
-                <default>false</default>
-            </values>
         </picklistValues>
         <picklistValues>
             <picklist>SWS_Request_Type__c</picklist>
@@ -6077,10 +6466,6 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
                 <default>false</default>
             </values>
             <values>
-                <fullName>N%2FA</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Other</fullName>
                 <default>false</default>
             </values>
@@ -6090,8 +6475,17 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
         <excludedStandardButtons>PrintableListView</excludedStandardButtons>
         <listViewButtons>Download_Template</listViewButtons>
         <listViewButtons>Submit_Coupon_for_Multiple_Requests</listViewButtons>
+        <searchResultsCustomButtons>Submit_Coupon_for_Multiple_Requests</searchResultsCustomButtons>
+        <searchResultsCustomButtons>Download_Template</searchResultsCustomButtons>
     </searchLayouts>
     <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>Approver_not_blank_for_Gaudi2_product</fullName>
+        <active>false</active>
+        <errorConditionFormula>AND( SWS_ApprovalRequiredForProduct_fm__c, ISBLANK( SWS_Approver__c ) )</errorConditionFormula>
+        <errorDisplayField>SWS_Approver__c</errorDisplayField>
+        <errorMessage>Select an approver</errorMessage>
+    </validationRules>
     <validationRules>
         <fullName>Community_Program_Coupon_cannot_blank</fullName>
         <active>true</active>
@@ -6154,11 +6548,18 @@ NOT(ISNEW()), (ISPICKVAL(SWS_Request_Type__c,&apos;Research_and_education&apos;)
     </validationRules>
     <validationRules>
         <fullName>End_Date_Greater_than_Current_Date</fullName>
-        <active>false</active>
+        <active>true</active>
         <description>End date should be greater than current date</description>
         <errorConditionFormula>AND(NOT($Setup.SWS_Bypass_Validation_Rule__c.Bypass__c),SWS_Expiry_Date__c &lt; TODAY())</errorConditionFormula>
         <errorDisplayField>SWS_Expiry_Date__c</errorDisplayField>
         <errorMessage>End date cannot be less than current date</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>End_Date_cannot_be_blank</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(SWS_Is_Submitted_For_Coupon__c,NOT($Setup.SWS_Bypass_Validation_Rule__c.Bypass__c),ISBLANK(TEXT(SWS_Expiry_Date__c)), NOT(ISNEW()))</errorConditionFormula>
+        <errorDisplayField>SWS_Expiry_Date__c</errorDisplayField>
+        <errorMessage>This is required field</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>End_date_not_exceeds_more_than_1_year</fullName>
@@ -6190,7 +6591,7 @@ NOT(ISNEW()), (ISPICKVAL(SWS_Request_Type__c,&apos;Research_and_education&apos;)
     </validationRules>
     <validationRules>
         <fullName>Event_Start_Date_cannot_be_blank</fullName>
-        <active>true</active>
+        <active>false</active>
         <errorConditionFormula>AND(SWS_Is_Submitted_For_Coupon__c,NOT($Setup.SWS_Bypass_Validation_Rule__c.Bypass__c),ISBLANK(TEXT(SWS_Event_Start_Date__c)), NOT(ISNEW()), (ISPICKVAL(SWS_Request_Type__c,&apos;One_time_external_event&apos;)))</errorConditionFormula>
         <errorDisplayField>SWS_Event_Start_Date__c</errorDisplayField>
         <errorMessage>This is required field</errorMessage>
@@ -6200,21 +6601,6 @@ NOT(ISNEW()), (ISPICKVAL(SWS_Request_Type__c,&apos;Research_and_education&apos;)
         <active>true</active>
         <errorConditionFormula>AND(SWS_Is_Submitted_For_Coupon__c,NOT($Setup.SWS_Bypass_Validation_Rule__c.Bypass__c),ISBLANK(TEXT(SWS_Event_Country_Name__c)), NOT(ISNEW()), ISPICKVAL(SWS_Request_Type__c,&apos;One_time_external_event&apos;))</errorConditionFormula>
         <errorDisplayField>SWS_Event_Country_Name__c</errorDisplayField>
-        <errorMessage>This is required field</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>Expiry_Date_Greater_than_Start_date</fullName>
-        <active>true</active>
-        <description>Expiry date should be greater than start date</description>
-        <errorConditionFormula>AND(NOT($Setup.SWS_Bypass_Validation_Rule__c.Bypass__c),SWS_Expiry_Date__c &lt; TODAY())</errorConditionFormula>
-        <errorDisplayField>SWS_Expiry_Date__c</errorDisplayField>
-        <errorMessage>Expiry date cannot be less than current date</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>Expiry_Date_cannot_be_blank</fullName>
-        <active>true</active>
-        <errorConditionFormula>AND(SWS_Is_Submitted_For_Coupon__c,NOT($Setup.SWS_Bypass_Validation_Rule__c.Bypass__c),ISBLANK(TEXT(SWS_Expiry_Date__c)), NOT(ISNEW()))</errorConditionFormula>
-        <errorDisplayField>SWS_Expiry_Date__c</errorDisplayField>
         <errorMessage>This is required field</errorMessage>
     </validationRules>
     <validationRules>
@@ -6234,11 +6620,18 @@ ISBLANK(TEXT(SWS_HW_Compute_Platform_PL__c)), NOT(ISNEW()), NOT(ISPICKVAL(SWS_Re
     </validationRules>
     <validationRules>
         <fullName>HW_Compute_Quantity_cannot_be_blank</fullName>
-        <active>true</active>
+        <active>false</active>
         <description>HW_Compute_Quantity__c cannot be blank</description>
         <errorConditionFormula>AND(SWS_Is_Submitted_For_Coupon__c,NOT($Setup.SWS_Bypass_Validation_Rule__c.Bypass__c),ISBLANK(SWS_HW_Compute_Quantity__c), NOT(ISNEW()), NOT(ISPICKVAL(SWS_Request_Type__c,&apos;Research_and_education&apos;)))</errorConditionFormula>
         <errorDisplayField>SWS_HW_Compute_Quantity__c</errorDisplayField>
         <errorMessage>This is required field</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Incorrect_value_for_Cloud_Coupon_Type</fullName>
+        <active>false</active>
+        <errorConditionFormula>(SWS_Is_Giveaway__c=false)&amp;&amp;(ISPICKVAL(SWS_Coupon_Type__c ,&quot;N/A&quot;))&amp;&amp;((ISPICKVAL(SWS_Request_Type__c,&quot;External_Customer&quot;))||(ISPICKVAL(SWS_Request_Type__c,&quot;Intel_Internal_Use&quot;)))</errorConditionFormula>
+        <errorDisplayField>SWS_Coupon_Type__c</errorDisplayField>
+        <errorMessage>Select a different value, as this is not a Giveaway coupon.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Incorrect_value_for_HW_Compute_Platform</fullName>
@@ -6355,6 +6748,13 @@ ISBLANK(TEXT(SWS_HW_Compute_Platform_PL__c)), NOT(ISNEW()), NOT(ISPICKVAL(SWS_Re
         <errorMessage>This is required field</errorMessage>
     </validationRules>
     <validationRules>
+        <fullName>LoggedInUser_and_approver_be_different</fullName>
+        <active>false</active>
+        <errorConditionFormula>$User.Username  =  SWS_Approver__r.Username</errorConditionFormula>
+        <errorDisplayField>SWS_Approver__c</errorDisplayField>
+        <errorMessage>Choose an different approver !</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>No_Of_user_cannot_be_blank</fullName>
         <active>true</active>
         <errorConditionFormula>AND(SWS_Is_Submitted_For_Coupon__c,NOT($Setup.SWS_Bypass_Validation_Rule__c.Bypass__c),ISBLANK(TEXT(SWS_No_Of_User__c)), NOT(ISNEW()))</errorConditionFormula>
@@ -6415,6 +6815,13 @@ NOT(SWS_No_Of_User__c=0)
         <errorMessage>Number cannot exceed 50 per request.</errorMessage>
     </validationRules>
     <validationRules>
+        <fullName>Processing_Team_cannot_be_blank</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(SWS_Is_Submitted_For_Coupon__c,NOT($Setup.SWS_Bypass_Validation_Rule__c.Bypass__c),ISBLANK(SWS_Processing_Team__c), NOT(ISNEW()))</errorConditionFormula>
+        <errorDisplayField>SWS_Processing_Team__c</errorDisplayField>
+        <errorMessage>This is required field</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>Program_name_cannot_be_blank</fullName>
         <active>true</active>
         <errorConditionFormula>AND(SWS_Is_Submitted_For_Coupon__c,NOT($Setup.SWS_Bypass_Validation_Rule__c.Bypass__c),ISBLANK(TEXT(SWS_Community_Program_Name__c)), NOT(ISNEW()), (ISPICKVAL(SWS_Request_Type__c,&apos;Research_and_education&apos;)))</errorConditionFormula>
@@ -6434,25 +6841,10 @@ NOT(SWS_No_Of_User__c=0)
         ISBLANK(SWS_Email__c),
         ISBLANK(SWS_Submitter_Name__c),
         ISBLANK(SWS_Submitter_Email__c),
-        ISBLANK(TEXT(SWS_Request_Type__c)),
-        IF(
-            ISPICKVAL(SWS_Request_Type__c, &apos;External_Customer&apos;),
-            ISBLANK(SWS_Company_Name__c),
-            false
-        ),
-        IF(
-            ISPICKVAL(SWS_Request_Type__c, &apos;Research_and_education&apos;),
-            ISBLANK(TEXT(SWS_Community_Program_Name__c)),
-            false
-        ),
-        IF(
-            ISPICKVAL(SWS_Request_Type__c, &apos;One_time_external_event&apos;),
-            ISBLANK(SWS_Event_Name__c),
-            false
-        )
+        ISBLANK(TEXT(SWS_Request_Type__c))
     )
 )</errorConditionFormula>
-        <errorMessage>RecordTypeId, Request Type, First Name, Last Name, Customer Email Address, Submitter Name, Submitter Email Address,Company Name,Event Name and Community Program Name are required fields to create a record based on the request type.</errorMessage>
+        <errorMessage>RecordTypeId, Request Type, First Name, Last Name, Customer Email Address, Submitter Name, Submitter Email Address are required fields to create a record.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Required_field_for_Inquiry_record</fullName>
@@ -6499,12 +6891,18 @@ NOT($Setup.SWS_Bypass_Validation_Rule__c.Bypass__c)
         <errorMessage>You can either choose to create a new lead or select an existing lead for the credit request. Please fill out only one of the fields.</errorMessage>
     </validationRules>
     <validationRules>
-        <fullName>SW_Lead_creation_validation_rule</fullName>
+        <fullName>Salesforce_Opportunity_ID_cannot_blank</fullName>
         <active>false</active>
-        <errorConditionFormula>AND(PRIORVALUE(SWS_Create_Lead__c), TRUE,
-ISCHANGED(SWS_Create_Lead__c))</errorConditionFormula>
-        <errorDisplayField>SWS_Create_Lead__c</errorDisplayField>
-        <errorMessage>You can&apos;t change this value</errorMessage>
+        <errorConditionFormula>AND(NOT($Setup.SWS_Bypass_Validation_Rule__c.Bypass__c),ISBLANK(SWS_Salesforce_Opportunity_ID__c), NOT(ISNEW()), (ISPICKVAL(SWS_Request_Type__c,&apos;External_Customer&apos;)))</errorConditionFormula>
+        <errorDisplayField>SWS_Salesforce_Opportunity_ID__c</errorDisplayField>
+        <errorMessage>This is required field</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Start_date_cannot_be_earlier_than_1month</fullName>
+        <active>false</active>
+        <errorConditionFormula>SWS_Event_Start_Date__c  &lt;  TODAY()- 30</errorConditionFormula>
+        <errorDisplayField>SWS_Event_Start_Date__c</errorDisplayField>
+        <errorMessage>Start date cannot be earlier than 1 month from today.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Start_date_is_required</fullName>
@@ -6519,13 +6917,6 @@ ISCHANGED(SWS_Create_Lead__c))</errorConditionFormula>
         <errorConditionFormula>AND(NOT($Setup.SWS_Bypass_Validation_Rule__c.Bypass__c),SWS_Start_Date__c &lt; (TODAY()))</errorConditionFormula>
         <errorDisplayField>SWS_Start_Date__c</errorDisplayField>
         <errorMessage>Start date should not be past date</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>Start_date_not_less_than_current_date</fullName>
-        <active>false</active>
-        <errorConditionFormula>AND( ISCHANGED( SWS_Event_Start_Date__c ) ,SWS_Event_Start_Date__c &lt; TODAY())</errorConditionFormula>
-        <errorDisplayField>SWS_Event_Start_Date__c</errorDisplayField>
-        <errorMessage>Event start date should not be past date</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Start_date_not_less_than_one_month</fullName>
@@ -6547,6 +6938,13 @@ ISCHANGED(SWS_Create_Lead__c))</errorConditionFormula>
         <errorConditionFormula>AND(SWS_Is_Submitted_For_Coupon__c,NOT($Setup.SWS_Bypass_Validation_Rule__c.Bypass__c),ISBLANK(SWS_Submitter_Name__c), NOT(ISNEW()),NOT(SWS_Submitter_Requster_Email__c))</errorConditionFormula>
         <errorDisplayField>SWS_Submitter_Name__c</errorDisplayField>
         <errorMessage>This is required field</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Submitter_details_cannot_be_changed</fullName>
+        <active>false</active>
+        <errorConditionFormula>If(SWS_Submitter_Requster_Email__c, if(OR(ISCHANGED(SWS_Submitter_Name__c),ISCHANGED(SWS_Submitter_Email__c)),True,false),false)</errorConditionFormula>
+        <errorDisplayField>SWS_Submitter_Requster_Email__c</errorDisplayField>
+        <errorMessage>Cannot change the submitters details</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Use_Case_cannot_be_blank</fullName>

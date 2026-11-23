@@ -1,0 +1,4 @@
+<apex:page >
+ <apex:outputText value="{!IF($Profile.Name=='Partner', 'The message is enabled', 'The message is disabled')}"/>
+
+</apex:page>

@@ -102,6 +102,13 @@
         <criteriaItems>
             <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
             <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>iotg</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
             <value>IOTG</value>
@@ -114,11 +121,11 @@
             <value>Design: Original,Design: Secondary</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Opportunity.Core_Opp_Prime_Account_Name__c</column>
+            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
             <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>siemens</value>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>IOTG</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -150,10 +157,10 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>Opportunity.Core_Approved_Date__c</sortColumn>
-    <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <interval>INTERVAL_CURY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

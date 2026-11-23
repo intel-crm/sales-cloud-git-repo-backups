@@ -1,0 +1,6 @@
+<table border="0" cellpadding="5" width="550" cellspacing="5" height="400" >
+<tr valign="top" height="400" >
+<td tEditID="c1r1" style=" background-color:#FFFFFF; color:#000000; bEditID:r3st1; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="0" >
+<![CDATA[<table border="0" cellpadding="5" width="600" cellspacing="5" height="400"><tbody><tr valign="top" height="50"><td teditid="c1r1" aeditid="c1r1" locked="0" style="background-color: rgb(255, 255, 255); font-size: 12pt;">Hi,</td></tr><tr valign="top" height="300"><td teditid="c1r2" aeditid="c1r2" locked="0" style="background-color: rgb(255, 255, 255); font-size: 12pt;">Contact&nbsp;{!Contact_Move_Governance__c.Contact_Email__c} move is Rejected.<br><br>Massage ==&gt;&nbsp;{!Contact_Move_Governance__c.New_Comments__c}</td></tr></tbody></table>]]></td>
+</tr>
+</table>

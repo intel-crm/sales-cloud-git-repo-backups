@@ -28,14 +28,6 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Core_IPA_Support_Email_Address__c</fullName>
-        <description>Support Emails of IPA Team</description>
-        <label>IPA Support Email Address</label>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>TextArea</type>
-    </fields>
-    <fields>
         <fullName>Core_Number_Of_Attempts__c</fullName>
         <description>Holds number of attempts the Platform Event Bus can republish</description>
         <externalId>false</externalId>

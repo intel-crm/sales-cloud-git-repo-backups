@@ -37,12 +37,12 @@ Modified By: Sandip        Date:  04/06/2019     Changes: Initial Version
         List<Core_Partner_Entitlement_Wrapper> lstPartnerEntWrapper 
             = new List<Core_Partner_Entitlement_Wrapper>();
         
-        System.debug('contactId = ' + contactId);
+        
         ccEntController.idContact = contactId; 
         Core_AuraProcessingMessage auraProcessingMessage = ccEntController.checkAGSStatus(); 
         ccEntController.filterEntitlementsByProfile();
         lstEntWrapper = ccEntController.populateEntitlementWrapper();
-        System.debug(lstEntWrapper);
+        
         for(Core_Contact_Entitlements_Controller.Core_Entitlement_Wrapper ceWrapper : lstEntWrapper){
         	Core_Partner_Entitlement_Wrapper cpeWrapper = new Core_Partner_Entitlement_Wrapper() ;
             cpeWrapper.strName = ceWrapper.name;
@@ -57,8 +57,8 @@ Modified By: Sandip        Date:  04/06/2019     Changes: Initial Version
         }
         corePartnerEntResponseWrapper.lstPartnerEntWrapper = lstPartnerEntWrapper;
         corePartnerEntResponseWrapper.auraProcessingMessage = auraProcessingMessage;
-        System.debug('lstPartnerEntWrapper = '+ lstPartnerEntWrapper);
-        System.debug('corePartnerEntResponseWrapper = '+ corePartnerEntResponseWrapper);
+        
+        
         return corePartnerEntResponseWrapper;
         //return lstPartnerEntWrapper;
 	}
@@ -66,8 +66,8 @@ Modified By: Sandip        Date:  04/06/2019     Changes: Initial Version
     @AuraEnabled
     public static Boolean saveContactEntitlements(List<Core_Partner_Entitlement_Wrapper> cpEWrapperList, String contactId) {
         String UPDATE_REASON_EUM = 'External User Management';
-        System.debug('saveContactEntitlements > cpEWrapperList = '+ cpEWrapperList);
-        System.debug('contactId = ' + contactId);
+        
+        
         List<List<Core_Contact_Entitlements_Controller.Core_Entitlement_Wrapper>> localLstlstEntitlementWrapper 
             = new List<List<Core_Contact_Entitlements_Controller.Core_Entitlement_Wrapper>>();
         List<Core_Contact_Entitlements_Controller.Core_Entitlement_Wrapper> lstEntWrapper 
@@ -89,16 +89,16 @@ Modified By: Sandip        Date:  04/06/2019     Changes: Initial Version
             }
         }
         
-        System.debug(lstEntWrapper);
+        
         localLstlstEntitlementWrapper.add(lstEntWrapper);
-        System.debug(localLstlstEntitlementWrapper);
+        
 		Core_Contact_Entitlements_Controller ccEntController = new Core_Contact_Entitlements_Controller(contactId);
         ccEntController.idContact = contactId;
-        System.debug('saveContactEntitlements > before calling filterEntitlementsByProfile');
+        
         ccEntController.filterEntitlementsByProfile();
-        System.debug('saveContactEntitlements > before calling populateEntitlementWrapper');
+        
         ccEntController.populateEntitlementWrapper();
-        System.debug('saveContactEntitlements > before calling saveContactEntitlements');
+        
         ccEntController.saveContactEntitlements(localLstlstEntitlementWrapper,UPDATE_REASON_EUM);
         return false;
     }

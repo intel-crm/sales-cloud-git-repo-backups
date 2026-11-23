@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
-    <customButtons>SBQQ__CloneWithRelated</customButtons>
-    <customButtons>SBQQ__EditLines</customButtons>
-    <customButtons>SBQQ__IncludeDocument</customButtons>
-    <customButtons>SBQQ__GenerateDocument</customButtons>
-    <customButtons>SBQQ__PreviewDocument</customButtons>
-    <customButtons>SBQQ__RefreshPrices</customButtons>
-    <customButtons>SBQQ__ImportLines</customButtons>
-    <customButtons>SBQQ__ModifyQuoteTerms</customButtons>
-    <customButtons>SBQQ__CalculateQuote</customButtons>
+    <excludeButtons>AssignRecordLabel</excludeButtons>
+    <excludeButtons>ChangeOwnerOne</excludeButtons>
+    <excludeButtons>ChangeRecordType</excludeButtons>
+    <excludeButtons>Clone</excludeButtons>
+    <excludeButtons>Delete</excludeButtons>
+    <excludeButtons>Edit</excludeButtons>
+    <excludeButtons>OpenSlackRecordChannel</excludeButtons>
+    <excludeButtons>PrintableView</excludeButtons>
+    <excludeButtons>RecordShareHierarchy</excludeButtons>
+    <excludeButtons>Share</excludeButtons>
+    <excludeButtons>Submit</excludeButtons>
     <layoutSections>
         <customLabel>true</customLabel>
         <detailHeading>false</detailHeading>
@@ -31,6 +33,10 @@
         <editHeading>true</editHeading>
         <label>Information</label>
         <layoutColumns>
+            <layoutItems>
+                <behavior>Required</behavior>
+                <field>Pricing_SW_Quote_Product_Type__c</field>
+            </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>SBQQ__Primary__c</field>
@@ -155,7 +161,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00hHo000005ZJjD</masterLabel>
+        <masterLabel>00hDf000005Nws5</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

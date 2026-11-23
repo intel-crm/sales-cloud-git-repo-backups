@@ -87,18 +87,18 @@
                     <booleanFilter>1 OR 2 OR 3</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.core_CRM_type__c}</leftValue>
-                        <operator>NE</operator>
-                        <rightValue>Home Page Default</rightValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Home Page</rightValue>
                     </criteria>
                     <criteria>
                         <leftValue>{!Record.core_CRM_type__c}</leftValue>
-                        <operator>NE</operator>
-                        <rightValue>KPI Header Default</rightValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>KPI Header</rightValue>
                     </criteria>
                     <criteria>
                         <leftValue>{!Record.core_CRM_type__c}</leftValue>
-                        <operator>NE</operator>
-                        <rightValue>KPI Body Default</rightValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>KPI Body</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>
@@ -115,18 +115,18 @@
                     <booleanFilter>1 OR 2 OR 3</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.core_CRM_type__c}</leftValue>
-                        <operator>NE</operator>
-                        <rightValue>Home Page Default</rightValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Home Page</rightValue>
                     </criteria>
                     <criteria>
                         <leftValue>{!Record.core_CRM_type__c}</leftValue>
-                        <operator>NE</operator>
-                        <rightValue>KPI Header Default</rightValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>KPI Header</rightValue>
                     </criteria>
                     <criteria>
                         <leftValue>{!Record.core_CRM_type__c}</leftValue>
-                        <operator>NE</operator>
-                        <rightValue>KPI Body Default</rightValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>KPI Body</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>
@@ -167,18 +167,18 @@
                     <booleanFilter>1 OR 2 OR 3</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.core_CRM_type__c}</leftValue>
-                        <operator>NE</operator>
-                        <rightValue>Home Page Default</rightValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Home Page</rightValue>
                     </criteria>
                     <criteria>
                         <leftValue>{!Record.core_CRM_type__c}</leftValue>
-                        <operator>NE</operator>
-                        <rightValue>KPI Header Default</rightValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>KPI Header</rightValue>
                     </criteria>
                     <criteria>
                         <leftValue>{!Record.core_CRM_type__c}</leftValue>
-                        <operator>NE</operator>
-                        <rightValue>KPI Body Default</rightValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>KPI Body</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>
@@ -218,148 +218,6 @@
             </componentInstance>
         </itemInstances>
         <name>Facet-b78f825e-5859-4403-8c4b-844c6118fbdc</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Core_Label_zh_CN_txt__c</fieldItem>
-                <identifier>RecordCore_Label_zh_CN_txt_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Core_Label_zh_TW_txt__c</fieldItem>
-                <identifier>RecordCore_Label_zh_TW_txt_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Core_Label_fr_txt__c</fieldItem>
-                <identifier>RecordCore_Label_fr_txt_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Core_Label_de_txt__c</fieldItem>
-                <identifier>RecordCore_Label_de_txt_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Core_Label_it_txt__c</fieldItem>
-                <identifier>RecordCore_Label_it_txt_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Core_Label_ja_txt__c</fieldItem>
-                <identifier>RecordCore_Label_ja_txt_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <name>Facet-f71a60dd-9cef-40b5-b8ec-89037930fb26</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Core_Label_ko_txt__c</fieldItem>
-                <identifier>RecordCore_Label_ko_txt_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Core_Label_pt_BR_txt__c</fieldItem>
-                <identifier>RecordCore_Label_pt_BR_txt_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Core_Label_ru_txt__c</fieldItem>
-                <identifier>RecordCore_Label_ru_txt_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Core_Label_es_txt__c</fieldItem>
-                <identifier>RecordCore_Label_es_txt_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Core_Label_es_MX_txt__c</fieldItem>
-                <identifier>RecordCore_Label_es_MX_txt_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <name>Facet-9d0453da-cf59-4242-b512-91665583f83c</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>body</name>
-                    <value>Facet-f71a60dd-9cef-40b5-b8ec-89037930fb26</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:column</componentName>
-                <identifier>flexipage_column5</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>body</name>
-                    <value>Facet-9d0453da-cf59-4242-b512-91665583f83c</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:column</componentName>
-                <identifier>flexipage_column6</identifier>
-            </componentInstance>
-        </itemInstances>
-        <name>Facet-7fbb73b7-9590-4d30-b76a-65608cc4256e</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -431,31 +289,6 @@
                 </componentInstanceProperties>
                 <componentName>flexipage:fieldSection</componentName>
                 <identifier>flexipage_fieldSection</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>columns</name>
-                    <value>Facet-7fbb73b7-9590-4d30-b76a-65608cc4256e</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>horizontalAlignment</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>label</name>
-                    <value>Translations</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:fieldSection</componentName>
-                <identifier>flexipage_fieldSection3</identifier>
-                <visibilityRule>
-                    <criteria>
-                        <leftValue>{!Record.Core_CRM_Project__c}</leftValue>
-                        <operator>NE</operator>
-                        <rightValue>CRM</rightValue>
-                    </criteria>
-                </visibilityRule>
             </componentInstance>
         </itemInstances>
         <itemInstances>

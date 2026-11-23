@@ -7,9 +7,7 @@ public class CST_FlowApexActionController {
     @InvocableMethod(label = 'Get Security Map Regions')
     public static List<FlowOutput> getSecurity(List<Id> feedbackBy) {
         
-        system.debug('Feedback by size:'+feedbackBy.size());
         Set<Id> feedbackBySet = new Set<Id>(feedbackBy);
-        system.debug('feedbackBySet ::'+feedbackBySet);
         List<FlowOutput> flowOutput = new List<FlowOutput>();
         FlowOutput output = new FlowOutput();
         list<String> secMapRegionList = new list<string>();
@@ -32,7 +30,6 @@ public class CST_FlowApexActionController {
                 flowOutput.add(null);
             }
         }
-        system.debug('flowOutput ::'+flowOutput);
         return flowOutput;
     }
     

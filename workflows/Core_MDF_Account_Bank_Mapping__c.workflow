@@ -27,7 +27,7 @@
             <name>Core_MDF_Update_the_Program_Field</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <formula>1 != 2</formula>
         <triggerType>onAllChanges</triggerType>
     </rules>
@@ -37,7 +37,7 @@
             <name>Core_MDF_Update_AccountIdBankIdMapping</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>It updates the AccountIdBankIdMapping field with concatenated id of Account and Bank.</description>
         <formula>true</formula>
         <triggerType>onAllChanges</triggerType>

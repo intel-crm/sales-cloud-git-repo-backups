@@ -12,6 +12,9 @@
         </users>
     </queueMembers>
     <queueSobject>
+        <sobjectType>Core_Inquiry__c</sobjectType>
+    </queueSobject>
+    <queueSobject>
         <sobjectType>Lead</sobjectType>
     </queueSobject>
 </Queue>

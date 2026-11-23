@@ -1,25 +1,13 @@
 {
   "appPageId" : "6b36c665-0609-49d0-9746-033feed642b2",
-  "componentName" : "siteforce:sldsOneColLayout",
+  "componentName" : "c:PSGPatnerLayout",
   "dataProviders" : [ ],
-  "id" : "cbb8f645-f5e7-4326-9b23-46c22be98fd8",
+  "id" : "9301b377-85b4-46b1-886d-13411678eb3a",
   "label" : "Maintenance expired licenses",
   "regions" : [ {
     "components" : [ {
-      "componentAttributes" : { },
-      "componentName" : "c:sales_NonEventFeedback",
-      "id" : "fd651999-ab12-40a4-88f7-34691e976fbf",
-      "renderPriority" : "NEUTRAL",
-      "renditionMap" : { },
-      "type" : "component"
-    } ],
-    "id" : "26b4b4b4-d36d-45f4-8cec-4c1505773727",
-    "regionName" : "header",
-    "type" : "region"
-  }, {
-    "components" : [ {
       "componentAttributes" : {
-        "enableInlineEdit" : true,
+        "enableInlineEdit" : false,
         "filterName" : "Sales_Inactive_License_Expiration_External",
         "layout" : "FULL",
         "pageSize" : 25,
@@ -31,21 +19,36 @@
         "showImageIcon" : true,
         "showManualRefreshButton" : true,
         "showObjectName" : true,
-        "showPinnedList" : true,
+        "showPinnedList" : false,
         "showSearchBar" : true
       },
       "componentName" : "forceCommunity:objectHome",
-      "id" : "ee516d17-9ca2-4fd0-82b8-0f423eeaf738",
+      "id" : "92cc7533-a7a7-4065-a78c-3922a37dc2f0",
       "renderPriority" : "NEUTRAL",
-      "renditionMap" : { },
+      "renditionMap" : {
+        "zh_cn" : "e5a3da8f-469c-4ea5-b6bf-7b4a349cad47"
+      },
+      "renditions" : [ {
+        "id" : "e5a3da8f-469c-4ea5-b6bf-7b4a349cad47",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "layout" : "FULL"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
       "type" : "component"
     } ],
-    "id" : "2dc76b01-9cdd-45d1-a56d-408f3dcf6465",
-    "regionName" : "content",
+    "id" : "5100e765-cd55-4892-aa8d-02bd2b17c6c4",
+    "regionName" : "Header",
     "type" : "region"
   }, {
-    "id" : "69992472-b2af-472f-b40c-70bc69ce32a1",
-    "regionName" : "footer",
+    "id" : "4db8bfca-8a6a-4508-96f3-1cb47f3bd9ab",
+    "regionName" : "mainFullWidth",
+    "type" : "region"
+  }, {
+    "id" : "be26b24a-db23-43d0-bcbe-27764ca5ee7b",
+    "regionName" : "main",
     "type" : "region"
   }, {
     "components" : [ {
@@ -55,11 +58,24 @@
         "title" : "Maintenance expired licenses"
       },
       "componentName" : "forceCommunity:seoAssistant",
-      "id" : "6a99610f-114c-41ab-af93-ab9eb16bb21c",
-      "renditionMap" : { },
+      "id" : "5afadefc-a0ad-4c16-99e4-1c58a4d109f5",
+      "renditionMap" : {
+        "zh_cn" : "59cd68cd-1327-41f6-bc7f-a13501c2cc7d"
+      },
+      "renditions" : [ {
+        "id" : "59cd68cd-1327-41f6-bc7f-a13501c2cc7d",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "customHeadTags" : "市场推广基金",
+            "description" : "市场推广基金",
+            "title" : "Maintenance expired licenses"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
       "type" : "component"
     } ],
-    "id" : "83cc70fc-6258-4f8b-a9bc-15e3dbd24daa",
+    "id" : "88ea8726-63e9-4ead-a39f-44426c9f6000",
     "regionName" : "sfdcHiddenRegion",
     "type" : "region"
   } ],

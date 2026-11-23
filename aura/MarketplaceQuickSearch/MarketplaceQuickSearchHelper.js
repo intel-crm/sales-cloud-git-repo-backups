@@ -30,7 +30,7 @@
                     };
                 }
             } else {
-                this.reject('Unknown error.');
+                reject('Unknown error.');
             }
         });
         $A.enqueueAction(action);

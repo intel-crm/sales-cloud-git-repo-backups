@@ -22,7 +22,7 @@
       langCode: $A.get("$Locale.langLocale") 	
     };
 
-		/*var urlParams = helper.getUrlParams(component, helper);
+		var urlParams = helper.getUrlParams(component, helper);
 		var searchParams = Object.assign(defaultSearchParams, urlParams);
         if(component.get('v.hasSelectedFilter')){
             helper.getSelectedFilters(component,component.get('v.contextualCat')).then($A.getCallback(function(){                   
@@ -80,7 +80,7 @@
                 }
             });
         }
-        */
+        
 	},
 
 	handleChangeUrlParams : function(component, event, helper) {

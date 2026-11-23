@@ -1,11 +1,11 @@
 @isTest
 public class Core_Opp_KPI_Test {
-    static List<Account> accountList;
+	static List<Account> accountList;
     static testMethod void test1(){
         /* Create a new account        
         Account acct = new Account(Name = 'Test Account1', BillingStreet = '123 Fake St',
                                    BillingCity = 'Springfield', BillingState = 'IL', BillingCountry = 'USA',Industry='Agriculture',Core_Sub_Industry__c= 'Crop Production',
-                                   BillingPostalCode = '12345', Core_Business_Party_Id__c= '8675309',Core_Sales_Groups__c='Americas Partner Holding');
+                                   BillingPostalCode = '12345', Core_CIM_ID__c = '8675309',Core_Sales_Groups__c='Americas Partner Holding');
         insert acct;*/
          Id accountRecordTypeIntel = Schema.sObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();   
         accountList = Core_Test_Utility.createAccount(1);

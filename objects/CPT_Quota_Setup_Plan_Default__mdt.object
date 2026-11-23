@@ -41,8 +41,8 @@
     <label>Quota Setup Plan Default</label>
     <listViews>
         <fullName>Quota_Setup_Plan_Defaults</fullName>
-        <columns>MasterLabel</columns>
         <columns>DeveloperName</columns>
+        <columns>MasterLabel</columns>
         <columns>CPT_Sales_KPI_Type__c</columns>
         <columns>CPT_QuotaSetup_Field_Name__c</columns>
         <columns>CPT_Default_Value__c</columns>

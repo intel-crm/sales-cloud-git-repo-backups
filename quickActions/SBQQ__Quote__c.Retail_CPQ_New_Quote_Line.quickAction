@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Create QuoteLine fron QuoteLine detail page.
+This Field Belongs to Retail Quote Project.</description>
+    <height>250</height>
+    <label>New Quote Line</label>
+    <lightningComponent>Retail_CPQ_CreateQuoteLine</lightningComponent>
+    <optionsCreateFeedItem>false</optionsCreateFeedItem>
+    <type>LightningComponent</type>
+    <width>-100</width>
+</QuickAction>

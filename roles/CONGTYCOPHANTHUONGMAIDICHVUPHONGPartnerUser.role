@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>Cong Ty Co Phan Thuong Mai Dich Vu Phong Vu Partner User</description>
+    <description>CONG TY CO PHAN THUONG MAI DICH VU PHONG Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>Cong Ty Co Phan Thuong Mai Dich Vu Phong Vu Partner User</name>
+    <name>CONG TY CO PHAN THUONG MAI DICH VU PHONG Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>EMP_12184665_Hong_Phuong_Phan</parentRole>
+    <parentRole>CONGTYCOPHANTHUONGMAIDICHVUPHONGPartnerManager</parentRole>
 </Role>

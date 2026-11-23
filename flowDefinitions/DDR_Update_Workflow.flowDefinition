@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <FlowDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
-    <activeVersionNumber>9</activeVersionNumber>
+    <activeVersionNumber>42</activeVersionNumber>
+    <description>Updates the Workflow_Status to &apos;Submitted/Pre-Approval/Completed&apos;</description>
+    <masterLabel>DDR_Update_Workflow_Status</masterLabel>
 </FlowDefinition>

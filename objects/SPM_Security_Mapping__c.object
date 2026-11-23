@@ -198,12 +198,68 @@
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
+            <restricted>true</restricted>
             <valueSetDefinition>
                 <sorted>false</sorted>
                 <value>
-                    <fullName>PCR</fullName>
+                    <fullName>PRC</fullName>
                     <default>false</default>
-                    <label>PCR</label>
+                    <label>PRC</label>
+                </value>
+                <value>
+                    <fullName>EMEA</fullName>
+                    <default>false</default>
+                    <label>EMEA</label>
+                </value>
+                <value>
+                    <fullName>United States</fullName>
+                    <default>false</default>
+                    <label>United States</label>
+                </value>
+                <value>
+                    <fullName>South Korea</fullName>
+                    <default>false</default>
+                    <label>South Korea</label>
+                </value>
+                <value>
+                    <fullName>LATAM</fullName>
+                    <default>false</default>
+                    <label>LATAM</label>
+                </value>
+                <value>
+                    <fullName>AMR</fullName>
+                    <default>false</default>
+                    <label>AMR</label>
+                </value>
+                <value>
+                    <fullName>Taiwan</fullName>
+                    <default>false</default>
+                    <label>Taiwan</label>
+                </value>
+                <value>
+                    <fullName>APJ</fullName>
+                    <default>false</default>
+                    <label>APJ</label>
+                </value>
+                <value>
+                    <fullName>Canada</fullName>
+                    <default>false</default>
+                    <label>Canada</label>
+                </value>
+                <value>
+                    <fullName>India</fullName>
+                    <default>false</default>
+                    <label>India</label>
+                </value>
+                <value>
+                    <fullName>APJ_SEANZ</fullName>
+                    <default>false</default>
+                    <label>APJ_SEANZ</label>
+                </value>
+                <value>
+                    <fullName>Japan</fullName>
+                    <default>false</default>
+                    <label>Japan</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -257,6 +313,20 @@
         <type>Lookup</type>
     </fields>
     <label>Security Mapping</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>My_view</fullName>
+        <columns>NAME</columns>
+        <columns>Account_Owner__c</columns>
+        <columns>Role__c</columns>
+        <columns>Manager__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>My view</label>
+    </listViews>
     <nameField>
         <displayFormat>SM-{0000}</displayFormat>
         <label>Security Mapping Name</label>

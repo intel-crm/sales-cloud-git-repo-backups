@@ -11,14 +11,14 @@
         <label>PRC</label>
     </customValue>
     <customValue>
-        <fullName>APJ</fullName>
-        <default>false</default>
-        <label>APJ</label>
-    </customValue>
-    <customValue>
         <fullName>ASMO</fullName>
         <default>false</default>
         <label>ASMO</label>
+    </customValue>
+    <customValue>
+        <fullName>APJ</fullName>
+        <default>false</default>
+        <label>APJ</label>
     </customValue>
     <masterLabel>Region</masterLabel>
     <sorted>false</sorted>

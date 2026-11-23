@@ -23,14 +23,9 @@
     <aura:attribute name="maxRecordWarning" type="String"/>
     <aura:attribute name="buttonList" type="List"/>
     <aura:attribute name="selectedButton" type="String" default="{!$Label.c.Core_Lead_ExportButton}"/>
-    <aura:attribute name="showSearchButton" type="Boolean" default="false"/>
-    <!-- Added by Divya for Search List View-->
     
-    <div style="text-align: right;padding-top: 30px;padding-bottom: 30px;">
-        <aura:if isTrue="{!v.showSearchButton}">
-                <c:pmp_createSearchDatatable />                
-         </aura:if>
-        <lightning:button class="searchauracss" label="{!$Label.c.PMP_ExportListView}" title="Export" onclick="{!c.handleShowModal}"/>
+    <div style="text-align: right;">
+        <lightning:button class="ExportListButton" label="Export List View" title="Export" onclick="{!c.handleShowModal}"/>
     </div>
         
     <!-- custom dropdown to display available list view options-->

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Bank Tax Code Vat Percentage Mapping</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Bank Tax Code Vat Percentage Mapping</value>
+    </caseValues>
+    <fields>
+        <label><!-- Tax codes --></label>
+        <name>Core_MDF_Tax_codes_cd__c</name>
+        <picklistValues>
+            <masterLabel>I0</masterLabel>
+            <translation><!-- I0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>I1</masterLabel>
+            <translation><!-- I1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>UB</masterLabel>
+            <translation><!-- UB --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>UY</masterLabel>
+            <translation><!-- UY --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>V3</masterLabel>
+            <translation><!-- V3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>V6</masterLabel>
+            <translation><!-- V6 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- VAT % --></label>
+        <name>Core_MDF_VAT_pct__c</name>
+        <picklistValues>
+            <masterLabel>0%</masterLabel>
+            <translation><!-- 0% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>10%</masterLabel>
+            <translation><!-- 10% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>20%</masterLabel>
+            <translation><!-- 20% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>8%</masterLabel>
+            <translation><!-- 8% --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

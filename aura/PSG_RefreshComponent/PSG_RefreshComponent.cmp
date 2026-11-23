@@ -1,0 +1,5 @@
+<aura:component implements="force:hasRecordId,flexipage:availableForRecordHome">
+  <aura:attribute name="recordId" type="String" />
+  <aura:handler event="force:refreshView" action="{!c.handleForceRefreshViewForLWC }"></aura:handler>
+  <c:psg_quoteLineRelatedList aura:id="temp" onforceRefreshView="{!c.forceRefreshView}" recordId="{!v.recordId}"></c:psg_quoteLineRelatedList>
+</aura:component>

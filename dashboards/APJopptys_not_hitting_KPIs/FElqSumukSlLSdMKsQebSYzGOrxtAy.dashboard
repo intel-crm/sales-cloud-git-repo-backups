@@ -108,7 +108,7 @@
                 <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
                 <chartSummary>
                     <aggregate>Sum</aggregate>
-                    <column>OpportunityLineItem.Core_KPI_Total_Price__c</column>
+                    <column>CDF1</column>
                 </chartSummary>
                 <componentType>Metric</componentType>
                 <dashboardFilterColumns>
@@ -126,9 +126,9 @@
                 <header>$ @Risk</header>
                 <indicatorBreakpoint1>33.0</indicatorBreakpoint1>
                 <indicatorBreakpoint2>67.0</indicatorBreakpoint2>
-                <indicatorHighColor>#00716B</indicatorHighColor>
+                <indicatorHighColor>#C23934</indicatorHighColor>
                 <indicatorLowColor>#C23934</indicatorLowColor>
-                <indicatorMiddleColor>#FFB75D</indicatorMiddleColor>
+                <indicatorMiddleColor>#C23934</indicatorMiddleColor>
                 <report>APJ_RBM/Risk_2_Only_Risk</report>
                 <showRange>false</showRange>
             </dashboardComponent>
@@ -730,7 +730,7 @@
                     <axisBinding>y</axisBinding>
                     <column>OpportunityLineItem.Core_KPI_Total_Price__c</column>
                 </chartSummary>
-                <componentType>BarGrouped</componentType>
+                <componentType>Bar</componentType>
                 <dashboardFilterColumns>
                     <column>Account.Core_Sales_Groups__c</column>
                 </dashboardFilterColumns>
@@ -746,27 +746,23 @@
                 <drillToDetailEnabled>false</drillToDetailEnabled>
                 <enableHover>false</enableHover>
                 <expandOthers>false</expandOthers>
-                <groupingColumn>OpportunityLineItem.Core_Product_Risk_Owner__c</groupingColumn>
-                <groupingColumn>OpportunityLineItem.Core_Risk_Reason1__c</groupingColumn>
+                <groupingColumn>OpportunityLineItem.Core_Risk_Reason2__c</groupingColumn>
                 <groupingSortProperties>
                     <groupingSorts>
                         <groupingLevel>g1</groupingLevel>
                         <sortColumn>s!OpportunityLineItem.Core_KPI_Total_Price__c</sortColumn>
                         <sortOrder>d</sortOrder>
                     </groupingSorts>
-                    <groupingSorts>
-                        <groupingLevel>g2</groupingLevel>
-                        <sortColumn>s!OpportunityLineItem.Core_KPI_Total_Price__c</sortColumn>
-                        <sortOrder>d</sortOrder>
-                    </groupingSorts>
                 </groupingSortProperties>
-                <header>Top Main Reason @Risk w Product Risk Owner</header>
-                <legendPosition>Right</legendPosition>
+                <header>Top Secondary Risk Reason</header>
+                <legendPosition>Bottom</legendPosition>
                 <report>APJ_RBM/Risk_3_Only_Risk</report>
                 <showPercentage>false</showPercentage>
+                <showPicturesOnCharts>false</showPicturesOnCharts>
                 <showValues>true</showValues>
                 <sortBy>RowLabelAscending</sortBy>
                 <sortLegendValues>false</sortLegendValues>
+                <title>Blank = No Secondary Risk Reason</title>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
             <rowIndex>20</rowIndex>
@@ -846,7 +842,7 @@
                 <drillToDetailEnabled>false</drillToDetailEnabled>
                 <enableHover>false</enableHover>
                 <expandOthers>false</expandOthers>
-                <groupingColumn>OpportunityLineItem.Core_At_Risk_Status__c</groupingColumn>
+                <groupingColumn>OpportunityLineItem.Core_Risk_Category__c</groupingColumn>
                 <groupingColumn>OpportunityLineItem.Core_Risk_Priority__c</groupingColumn>
                 <groupingSortProperties>
                     <groupingSorts>
@@ -858,14 +854,13 @@
                         <sortOrder>a</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>@Risk by Status</header>
+                <header>@Risk by Risk Category</header>
                 <legendPosition>Bottom</legendPosition>
-                <report>APJ_RBM/Risk_6_GMP_Risk</report>
+                <report>APJ_RBM/Risk_7_GMP_Risk</report>
                 <showPercentage>false</showPercentage>
                 <showValues>false</showValues>
                 <sortBy>RowLabelAscending</sortBy>
                 <sortLegendValues>false</sortLegendValues>
-                <title>(Support Not Required = FYI Only)</title>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
             <rowIndex>30</rowIndex>
@@ -898,8 +893,8 @@
                 <drillToDetailEnabled>false</drillToDetailEnabled>
                 <enableHover>false</enableHover>
                 <expandOthers>false</expandOthers>
-                <groupingColumn>CLOSE_DATE</groupingColumn>
-                <groupingColumn>Opportunity.Core_At_Risk_Created_Date__c</groupingColumn>
+                <groupingColumn>OpportunityLineItem.Core_At_Risk_Status__c</groupingColumn>
+                <groupingColumn>OpportunityLineItem.Core_Risk_Priority__c</groupingColumn>
                 <groupingSortProperties>
                     <groupingSorts>
                         <groupingLevel>g1</groupingLevel>
@@ -910,14 +905,13 @@
                         <sortOrder>a</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>@Risk By Decision Date</header>
-                <legendPosition>Right</legendPosition>
-                <report>APJ_RBM/Risk_10_GMP_Risk</report>
+                <header>@Risk by Status</header>
+                <legendPosition>Bottom</legendPosition>
+                <report>APJ_RBM/Risk_6_GMP_Risk</report>
                 <showPercentage>false</showPercentage>
                 <showValues>false</showValues>
                 <sortBy>RowLabelAscending</sortBy>
                 <sortLegendValues>false</sortLegendValues>
-                <title>(Split by @Risk Created Date)</title>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
             <rowIndex>30</rowIndex>
@@ -1004,96 +998,66 @@
                         <type>detail</type>
                     </flexTableColumn>
                     <flexTableColumn>
-                        <reportColumn>Account.Core_Account_ID__c</reportColumn>
+                        <reportColumn>OPPORTUNITY_NAME</reportColumn>
                         <showSubTotal>false</showSubTotal>
                         <showTotal>false</showTotal>
                         <type>detail</type>
                     </flexTableColumn>
                     <flexTableColumn>
-                        <reportColumn>ACCOUNT_OWNER</reportColumn>
+                        <reportColumn>OpportunityLineItem.Core_KPI_Date__c</reportColumn>
                         <showSubTotal>false</showSubTotal>
                         <showTotal>false</showTotal>
                         <type>detail</type>
                     </flexTableColumn>
                     <flexTableColumn>
-                        <reportColumn>Account.Core_Account_Country__c</reportColumn>
+                        <reportColumn>Opportunity.Core_Product_Segment__c</reportColumn>
+                        <showSubTotal>false</showSubTotal>
+                        <showTotal>false</showTotal>
+                        <type>detail</type>
+                    </flexTableColumn>
+                    <flexTableColumn>
+                        <reportColumn>PRODUCT_NAME</reportColumn>
+                        <showSubTotal>false</showSubTotal>
+                        <showTotal>false</showTotal>
+                        <type>detail</type>
+                    </flexTableColumn>
+                    <flexTableColumn>
+                        <reportColumn>OpportunityLineItem.Core_KPI_Total_Price__c</reportColumn>
+                        <showSubTotal>false</showSubTotal>
+                        <showTotal>false</showTotal>
+                        <type>detail</type>
+                    </flexTableColumn>
+                    <flexTableColumn>
+                        <reportColumn>OpportunityLineItem.Core_Risk_Priority__c</reportColumn>
+                        <showSubTotal>false</showSubTotal>
+                        <showTotal>false</showTotal>
+                        <type>detail</type>
+                    </flexTableColumn>
+                    <flexTableColumn>
+                        <reportColumn>OpportunityLineItem.Core_Risk_Reason1__c</reportColumn>
+                        <showSubTotal>false</showSubTotal>
+                        <showTotal>false</showTotal>
+                        <type>detail</type>
+                    </flexTableColumn>
+                    <flexTableColumn>
+                        <reportColumn>Opportunity.Core_Support_Requested__c</reportColumn>
                         <showSubTotal>false</showSubTotal>
                         <showTotal>false</showTotal>
                         <type>detail</type>
                     </flexTableColumn>
                     <flexTableSortInfo>
-                        <sortColumn>Account.Core_Sales_Groups__c</sortColumn>
-                        <sortOrder>1</sortOrder>
+                        <sortColumn>OpportunityLineItem.Core_KPI_Total_Price__c</sortColumn>
+                        <sortOrder>2</sortOrder>
                     </flexTableSortInfo>
                     <hideChatterPhotos>true</hideChatterPhotos>
                     <useReportTableSetting>false</useReportTableSetting>
                 </flexComponentProperties>
                 <groupingSortProperties/>
-                <header>Opportunities @Risk Closing in 2021</header>
+                <header>Opportunities @Risk Closing in 2020</header>
                 <report>APJ_RBM/Copy_of_Risk_5_Only_Risk_Open</report>
+                <title>(Descending by $)</title>
             </dashboardComponent>
             <rowIndex>38</rowIndex>
-            <rowSpan>17</rowSpan>
-        </dashboardGridComponents>
-        <dashboardGridComponents>
-            <colSpan>12</colSpan>
-            <columnIndex>0</columnIndex>
-            <dashboardComponent>
-                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
-                <componentType>FlexTable</componentType>
-                <dashboardFilterColumns>
-                    <column>Account.Core_Sales_Groups__c</column>
-                </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
-                </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>Opportunity.Core_Opportunity_Type__c</column>
-                </dashboardFilterColumns>
-                <flexComponentProperties>
-                    <decimalPrecision>-1</decimalPrecision>
-                    <flexTableColumn>
-                        <reportColumn>Account.Core_Sales_Groups__c</reportColumn>
-                        <showSubTotal>false</showSubTotal>
-                        <showTotal>false</showTotal>
-                        <type>detail</type>
-                    </flexTableColumn>
-                    <flexTableColumn>
-                        <reportColumn>ACCOUNT_NAME</reportColumn>
-                        <showSubTotal>false</showSubTotal>
-                        <showTotal>false</showTotal>
-                        <type>detail</type>
-                    </flexTableColumn>
-                    <flexTableColumn>
-                        <reportColumn>Account.Core_Account_ID__c</reportColumn>
-                        <showSubTotal>false</showSubTotal>
-                        <showTotal>false</showTotal>
-                        <type>detail</type>
-                    </flexTableColumn>
-                    <flexTableColumn>
-                        <reportColumn>ACCOUNT_OWNER</reportColumn>
-                        <showSubTotal>false</showSubTotal>
-                        <showTotal>false</showTotal>
-                        <type>detail</type>
-                    </flexTableColumn>
-                    <flexTableColumn>
-                        <reportColumn>Account.Core_Account_Country__c</reportColumn>
-                        <showSubTotal>false</showSubTotal>
-                        <showTotal>false</showTotal>
-                        <type>detail</type>
-                    </flexTableColumn>
-                    <flexTableSortInfo>
-                        <sortColumn>Account.Core_Sales_Groups__c</sortColumn>
-                        <sortOrder>1</sortOrder>
-                    </flexTableSortInfo>
-                    <hideChatterPhotos>true</hideChatterPhotos>
-                    <useReportTableSetting>false</useReportTableSetting>
-                </flexComponentProperties>
-                <groupingSortProperties/>
-                <header>@Risk Added within 30 Days</header>
-                <report>APJ_RBM/Risk_9_GMP_Risk_Last_30_Days</report>
-            </dashboardComponent>
-            <rowIndex>55</rowIndex>
             <rowSpan>17</rowSpan>
         </dashboardGridComponents>
         <numberOfColumns>12</numberOfColumns>
@@ -1102,7 +1066,7 @@
     <dashboardType>SpecifiedUser</dashboardType>
     <isGridLayout>true</isGridLayout>
     <owner>11568039@intel.com.crm</owner>
-    <runningUser>10689819@intel.com.crm</runningUser>
+    <runningUser>11568039@intel.com.crm</runningUser>
     <textColor>#000000</textColor>
     <title>GMP @Risk</title>
     <titleColor>#000000</titleColor>

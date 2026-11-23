@@ -15,49 +15,51 @@ public class CORE_DDR_TriggerHandler extends TriggerHandler{
     
     Boolean newTrigger = Boolean.valueOf(System.Label.CORE_DDR_New_Trigger_Switch);
     public override void beforeInsert() {
-        if(executeTrigger)
+        if(executeTrigger && Trigger.isInsert && isActive('DDR_Before_Insert') && Core_DDR_Design_Handler_Utility.firstRunBeforeInsert)
         {
-            if(isActive('DDR_Before_Insert') && Core_DDR_Design_Handler_Utility.firstRunBeforeInsert){ 
-                if(Trigger.isInsert){
+           // if(isActive('DDR_Before_Insert') && Core_DDR_Design_Handler_Utility.firstRunBeforeInsert){ 
+                //if(Trigger.isInsert){
                     Core_DDR_Design_Handler_Utility.firstRunBeforeInsert = false;                    
                     Core_DDR_Design_Handler_Utility.processBeforeInsert(Trigger.old,Trigger.new,(Map<Id,Core_Design_Registration__c>) Trigger.oldMap,(Map<Id,Core_Design_Registration__c>)Trigger.newMap);
-                }
-            }
+                //}
+            //}
         }
     }
     public override void beforeUpdate() {
-        if(isActive('DDR_Before_Update') && Core_DDR_Design_Handler_Utility.firstRunBeforeUpdate){//Retrieved from Custom labels            
-            if(Trigger.isUpdate){
+        if(isActive('DDR_Before_Update') && Core_DDR_Design_Handler_Utility.firstRunBeforeUpdate && Trigger.isUpdate){//Retrieved from Custom labels            
+           // if(Trigger.isUpdate){
                 Core_DDR_Design_Handler_Utility.firstRunBeforeUpdate = false;
                 system.debug('Inside DDR Before update trigger');
                 Core_DDR_Design_Handler_Utility.processBeforeUpdate(Trigger.old,Trigger.new,(Map<Id,Core_Design_Registration__c>) Trigger.oldMap,(Map<Id,Core_Design_Registration__c>)Trigger.newMap);
-            }
+           // }
         }
     }
     public override void afterInsert() {
-        if(executeTrigger)
+        if(executeTrigger && isActive('DDR_After_Insert') && trigger.IsInsert && Core_DDR_Design_Handler_Utility.firstRunAfterInsert)
         {
-            if(isActive('DDR_After_Insert')){
-                if(trigger.IsInsert && Core_DDR_Design_Handler_Utility.firstRunAfterInsert){
+            //if(isActive('DDR_After_Insert')){
+               // if(trigger.IsInsert && Core_DDR_Design_Handler_Utility.firstRunAfterInsert){
                     Core_DDR_Design_Handler_Utility.firstRunAfterInsert = false;
                     Core_DDR_Design_Handler_Utility.processAfterInsert(Trigger.old,Trigger.new,(Map<Id,Core_Design_Registration__c>) Trigger.oldMap,(Map<Id,Core_Design_Registration__c>)Trigger.newMap);                
                     
-                }
-            } 
+                //}
+           // } 
         }
     }
     public override void afterUpdate() {
-        if(executeTrigger)
+        if(executeTrigger && isActive('DDR_After_Update') && trigger.isUpdate && Core_DDR_Design_Handler_Utility.AfterUpdateIterated )
         {
-            if(isActive('DDR_After_Update')){
-                if(trigger.isUpdate && Core_DDR_Design_Handler_Utility.AfterUpdateIterated){//afterupdaterun
+           // if(isActive('DDR_After_Update')){
+               // if(trigger.isUpdate && Core_DDR_Design_Handler_Utility.AfterUpdateIterated){//afterupdaterun
                     //afterupdaterun = false;
+                    System.debug('before calling function 55--');
                     Core_DDR_Design_Handler_Utility.postApprovalFromResubmittedDR(Trigger.old,Trigger.new,(Map<Id,Core_Design_Registration__c>) Trigger.oldMap,(Map<Id,Core_Design_Registration__c>)Trigger.newMap); 
                     Core_DDR_Design_Handler_Utility.processAfterUpdate(Trigger.old,Trigger.new, (Map<Id,Core_Design_Registration__c>) Trigger.oldMap,(Map<Id,Core_Design_Registration__c>)Trigger.newMap);        
                     Core_DDR_Design_Handler_Utility.lockEditsDRP((Map<Id,Core_Design_Registration__c>)Trigger.oldMap,Trigger.New);
-		            Core_DDR_Design_Handler_Utility.fetchPartnerEndCustMapping((Map<Id,Core_Design_Registration__c>)Trigger.oldMap,Trigger.New);
-                }
-            } 
+                    System.debug('before calling function 59--');
+                    Core_DDR_Design_Handler_Utility.fetchPartnerEndCustMapping((Map<Id,Core_Design_Registration__c>)Trigger.oldMap,Trigger.New);
+                //}
+           // } 
         }
     }
 }

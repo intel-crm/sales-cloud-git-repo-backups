@@ -1,0 +1,662 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Email Message External</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Email Messages External</value>
+    </caseValues>
+    <fields>
+        <label><!-- Activity ID --></label>
+        <name>ActivityId__c</name>
+    </fields>
+    <fields>
+        <label><!-- BCC Address --></label>
+        <name>BccAddress__c</name>
+    </fields>
+    <fields>
+        <label><!-- CC Address --></label>
+        <name>CcAddress__c</name>
+    </fields>
+    <fields>
+        <label><!-- Created By ID --></label>
+        <name>CreatedById__c</name>
+    </fields>
+    <fields>
+        <label><!-- Created Date --></label>
+        <name>CreatedDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Email Template ID --></label>
+        <name>EmailTemplateId__c</name>
+    </fields>
+    <fields>
+        <label><!-- First Opened --></label>
+        <name>FirstOpenedDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- From Address --></label>
+        <name>FromAddress__c</name>
+    </fields>
+    <fields>
+        <label><!-- From Name --></label>
+        <name>FromName__c</name>
+    </fields>
+    <fields>
+        <label><!-- Has Attachment --></label>
+        <name>HasAttachment__c</name>
+    </fields>
+    <fields>
+        <label><!-- Headers --></label>
+        <name>Headers__c</name>
+    </fields>
+    <fields>
+        <label><!-- HTML Body --></label>
+        <name>HtmlBody__c</name>
+    </fields>
+    <fields>
+        <label><!-- ICS Agents Contact Center --></label>
+        <name>ICS_Agent_Contact_Center_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- ICS Agents Name --></label>
+        <name>ICS_Agents_Name_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- In Email Response SLA --></label>
+        <name>ICS_In_SLA_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- SLA end time --></label>
+        <name>ICS_SLA_end_time_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- SLA start time --></label>
+        <name>ICS_SLA_start_time_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Timestamp of Outbound email --></label>
+        <name>ICS_Timestamp_Of_Outbound_email_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Timestamp of Inbound email --></label>
+        <name>ICS_Timestamp_of_Inbound_email_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Incoming --></label>
+        <name>Incoming__c</name>
+    </fields>
+    <fields>
+        <label><!-- Bounced? --></label>
+        <name>IsBounced__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Client Managed --></label>
+        <name>IsClientManaged__c</name>
+    </fields>
+    <fields>
+        <label><!-- Deleted --></label>
+        <name>IsDeleted__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Externally Visible --></label>
+        <name>IsExternallyVisible__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opened? --></label>
+        <name>IsOpened__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Private Draft --></label>
+        <name>IsPrivateDraft__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Tracked --></label>
+        <name>IsTracked__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Modified By ID --></label>
+        <name>LastModifiedById__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Modified Date --></label>
+        <name>LastModifiedDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Opened --></label>
+        <name>LastOpenedDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Message Date --></label>
+        <name>MessageDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Message ID --></label>
+        <name>MessageIdentifier__c</name>
+    </fields>
+    <fields>
+        <label><!-- Case ID --></label>
+        <name>ParentId__c</name>
+        <relationshipLabel><!-- Email Messages External --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Email Message ID --></label>
+        <name>ReplyToEmailMessageId__c</name>
+        <relationshipLabel><!-- Email Messages External --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Status__c</name>
+        <picklistValues>
+            <masterLabel>Draft</masterLabel>
+            <translation><!-- Draft --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Forwarded</masterLabel>
+            <translation><!-- Forwarded --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New</masterLabel>
+            <translation><!-- New --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Read</masterLabel>
+            <translation><!-- Read --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Replied</masterLabel>
+            <translation><!-- Replied --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sent</masterLabel>
+            <translation><!-- Sent --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Subject --></label>
+        <name>Subject__c</name>
+    </fields>
+    <fields>
+        <label><!-- System Modstamp --></label>
+        <name>SystemModstamp__c</name>
+    </fields>
+    <fields>
+        <label><!-- Text Body --></label>
+        <name>TextBody__c</name>
+    </fields>
+    <fields>
+        <label><!-- Thread ID --></label>
+        <name>ThreadIdentifier__c</name>
+    </fields>
+    <fields>
+        <label><!-- To Address --></label>
+        <name>ToAddress__c</name>
+    </fields>
+    <fields>
+        <label><!-- From --></label>
+        <name>ValidatedFromAddress__c</name>
+        <picklistValues>
+            <masterLabel>AAQ Email to Case &lt;enterprise.operations@intel.com&gt;</masterLabel>
+            <translation><!-- AAQ Email to Case &lt;enterprise.operations@intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ADAPTERSUPPOR &lt;adaptersuppor@mailbox.cps.intel.com&gt;</masterLabel>
+            <translation><!-- ADAPTERSUPPOR &lt;adaptersuppor@mailbox.cps.intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AIMS &lt;aim-support@intel.com&gt;</masterLabel>
+            <translation><!-- AIMS &lt;aim-support@intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AIMS2 &lt;aim-support2@intel.com&gt;</masterLabel>
+            <translation><!-- AIMS2 &lt;aim-support2@intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>APAC.CIM &lt;apac.cim@mailbox.cps.intel.com&gt;</masterLabel>
+            <translation><!-- APAC.CIM &lt;apac.cim@mailbox.cps.intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>APACESCSA &lt;apacescsa@mailbox.cps.intel.com&gt;</masterLabel>
+            <translation><!-- APACESCSA &lt;apacescsa@mailbox.cps.intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>APACESCSSEA &lt;apacescssea@mailbox.cps.intel.com&gt;</masterLabel>
+            <translation><!-- APACESCSSEA &lt;apacescssea@mailbox.cps.intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>APACESSA &lt;apacessa@mailbox.cps.intel.com&gt;</masterLabel>
+            <translation><!-- APACESSA &lt;apacessa@mailbox.cps.intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>APACSMJPN &lt;apacsmjpn@mailbox.cps.intel.com&gt;</masterLabel>
+            <translation><!-- APACSMJPN &lt;apacsmjpn@mailbox.cps.intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>APACWARRANTY &lt;apacwarranty@mailbox.intel.com&gt;</masterLabel>
+            <translation><!-- APACWARRANTY &lt;apacwarranty@mailbox.intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bookpush &lt;bookpush@intel.com&gt;</masterLabel>
+            <translation><!-- Bookpush &lt;bookpush@intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Corporate Information Support (old address) &lt;channelfb@mailbox.cps.intel.com&gt;</masterLabel>
+            <translation><!-- Corporate Information Support (old address) &lt;channelfb@mailbox.cps.intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Corporate Information Support &lt;corporate.information.support@intel.com&gt;</masterLabel>
+            <translation><!-- Corporate Information Support &lt;corporate.information.support@intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DEVWEBSITEFB &lt;devwebsitefb@mailbox.cps.intel.com&gt;</masterLabel>
+            <translation><!-- DEVWEBSITEFB &lt;devwebsitefb@mailbox.cps.intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DISTI &lt;disti@intel.com&gt;</masterLabel>
+            <translation><!-- DISTI &lt;disti@intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Developers Recon Instruments &lt;developers@reconinstruments.com&gt;</masterLabel>
+            <translation><!-- Developers Recon Instruments &lt;developers@reconinstruments.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMA email to case &lt;ema.support@intel.com&gt;</masterLabel>
+            <translation><!-- EMA email to case &lt;ema.support@intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEACHANNELTECHSUPPORT &lt;emeachanneltechsupport@mailbox.cps.intel.com&gt;</masterLabel>
+            <translation><!-- EMEACHANNELTECHSUPPORT &lt;emeachanneltechsupport@mailbox.cps.intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEACWP &lt;emeacwp@mailbox.cps.intel.com&gt;</masterLabel>
+            <translation><!-- EMEACWP &lt;emeacwp@mailbox.cps.intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEASUPPORT &lt;emeasupport@mailbox.cps.intel.com&gt;</masterLabel>
+            <translation><!-- EMEASUPPORT &lt;emeasupport@mailbox.cps.intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEAWARRANTY &lt;emeawarranty@mailbox.cps.intel.com&gt;</masterLabel>
+            <translation><!-- EMEAWARRANTY &lt;emeawarranty@mailbox.cps.intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ESG &lt;esg@intel.com&gt;</masterLabel>
+            <translation><!-- ESG &lt;esg@intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Fabric Support &lt;fabricsupport@intel.com&gt;</masterLabel>
+            <translation><!-- Fabric Support &lt;fabricsupport@intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GRAPHICS &lt;graphics@mailbox.cps.intel.com&gt;</masterLabel>
+            <translation><!-- GRAPHICS &lt;graphics@mailbox.cps.intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hadoop Support &lt;idh-support@intel.com&gt;</masterLabel>
+            <translation><!-- Hadoop Support &lt;idh-support@intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS Assignment &lt;aksharax.kalakonda@intel.com&gt;</masterLabel>
+            <translation><!-- ICS Assignment &lt;aksharax.kalakonda@intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS Newsletter Support &lt;newslettersupport@mailbox.intel.com&gt;</masterLabel>
+            <translation><!-- ICS Newsletter Support &lt;newslettersupport@mailbox.intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS.CUSTOMER.ESCALATIONS &lt;ics.customer.escalations@intel.com&gt;</masterLabel>
+            <translation><!-- ICS.CUSTOMER.ESCALATIONS &lt;ics.customer.escalations@intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IJKK.NGIP.LOGIN &lt;ijkk.ngip.login@mailbox.cps.intel.com&gt;</masterLabel>
+            <translation><!-- IJKK.NGIP.LOGIN &lt;ijkk.ngip.login@mailbox.cps.intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IJKKSUPPORT &lt;ijkksupport@mailbox.cps.intel.com&gt;</masterLabel>
+            <translation><!-- IJKKSUPPORT &lt;ijkksupport@mailbox.cps.intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IPA Field &lt;ipa-field@intel.com&gt;</masterLabel>
+            <translation><!-- IPA Field &lt;ipa-field@intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ISVC Admin &lt;isvcadmin@intel.com&gt;</masterLabel>
+            <translation><!-- ISVC Admin &lt;isvcadmin@intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ISVC Production Migration Email Address &lt;isvc_sandbox@intel.com&gt;</masterLabel>
+            <translation><!-- ISVC Production Migration Email Address &lt;isvc_sandbox@intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ics.asmo.refund &lt;ics.asmo.refund@intel.com&gt;</masterLabel>
+            <translation><!-- Ics.asmo.refund &lt;ics.asmo.refund@intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ics.prc.refund &lt;ics.prc.refund@intel.com&gt;</masterLabel>
+            <translation><!-- Ics.prc.refund &lt;ics.prc.refund@intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ijkk.refund &lt;ijkk.refund@intel.com&gt;</masterLabel>
+            <translation><!-- Ijkk.refund &lt;ijkk.refund@intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel Customer Support &lt;supportreplies-isvcdevsco@intel.com&gt;</masterLabel>
+            <translation><!-- Intel Customer Support &lt;supportreplies-isvcdevsco@intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel Developer Zone Support &lt;idzsupport@intel.com&gt;</masterLabel>
+            <translation><!-- Intel Developer Zone Support &lt;idzsupport@intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel Education &lt;education.support@intel.com&gt;</masterLabel>
+            <translation><!-- Intel Education &lt;education.support@intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel Education Classmate PC &lt;classmatepc@intel.com&gt;</masterLabel>
+            <translation><!-- Intel Education Classmate PC &lt;classmatepc@intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel Insight Platform Support &lt;intelinsightplatformsupport@intel.com&gt;</masterLabel>
+            <translation><!-- Intel Insight Platform Support &lt;intelinsightplatformsupport@intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel Support Reply &lt;intelsupportreply-isvcdevsco@intel.com&gt;</masterLabel>
+            <translation><!-- Intel Support Reply &lt;intelsupportreply-isvcdevsco@intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IntelStudios.Support@intel.com &lt;intelstudios.support@intel.com&gt;</masterLabel>
+            <translation><!-- IntelStudios.Support@intel.com &lt;intelstudios.support@intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LAR.NGIP.LOGIN &lt;lar.ngip.login@mailbox.cps.intel.com&gt;</masterLabel>
+            <translation><!-- LAR.NGIP.LOGIN &lt;lar.ngip.login@mailbox.cps.intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LARDISTI &lt;lardisti@mailbox.cps.intel.com&gt;</masterLabel>
+            <translation><!-- LARDISTI &lt;lardisti@mailbox.cps.intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LARFIELD &lt;larfield@mailbox.cps.intel.com&gt;</masterLabel>
+            <translation><!-- LARFIELD &lt;larfield@mailbox.cps.intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LARPREMIER &lt;larpremier@mailbox.cps.intel.com&gt;</masterLabel>
+            <translation><!-- LARPREMIER &lt;larpremier@mailbox.cps.intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LARSUPPORT &lt;larsupport@mailbox.cps.intel.com&gt;</masterLabel>
+            <translation><!-- LARSUPPORT &lt;larsupport@mailbox.cps.intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LARWARRANTY &lt;larwarranty@mailbox.cps.intel.com&gt;</masterLabel>
+            <translation><!-- LARWARRANTY &lt;larwarranty@mailbox.cps.intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MEA &lt;mea@intel.com&gt;</masterLabel>
+            <translation><!-- MEA &lt;mea@intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mavinci Support &lt;grp_falcon8_plus_support@intel.com&gt;</masterLabel>
+            <translation><!-- Mavinci Support &lt;grp_falcon8_plus_support@intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NAMO.NGIP.LOGIN &lt;namo.ngip.login@mailbox.cps.intel.com&gt;</masterLabel>
+            <translation><!-- NAMO.NGIP.LOGIN &lt;namo.ngip.login@mailbox.cps.intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NAMOAWRSUPPORT &lt;namoawrsupport@mailbox.cps.intel.com&gt;</masterLabel>
+            <translation><!-- NAMOAWRSUPPORT &lt;namoawrsupport@mailbox.cps.intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NAMOFIELDSUPPORT &lt;namofieldsupport@mailbox.cps.intel.com&gt;</masterLabel>
+            <translation><!-- NAMOFIELDSUPPORT &lt;namofieldsupport@mailbox.cps.intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NAMOIPMSUPPORT &lt;namoipmsupport@mailbox.cps.intel.com&gt;</masterLabel>
+            <translation><!-- NAMOIPMSUPPORT &lt;namoipmsupport@mailbox.cps.intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NAMO_DIRECT &lt;namo_direct@mailbox.cps.intel.com&gt;</masterLabel>
+            <translation><!-- NAMO_DIRECT &lt;namo_direct@mailbox.cps.intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NAMO_DRA &lt;namo_dra@mailbox.cps.intel.com&gt;</masterLabel>
+            <translation><!-- NAMO_DRA &lt;namo_dra@mailbox.cps.intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nervana Support &lt;nervanasupport@intel.com&gt;</masterLabel>
+            <translation><!-- Nervana Support &lt;nervanasupport@intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ORDERS &lt;orders@mailbox.cps.intel.com&gt;</masterLabel>
+            <translation><!-- ORDERS &lt;orders@mailbox.cps.intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRIVACY.INFO &lt;privacy.info@mailbox.cps.intel.com&gt;</masterLabel>
+            <translation><!-- PRIVACY.INFO &lt;privacy.info@mailbox.cps.intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PROCIATS &lt;prociats@intel.com&gt;</masterLabel>
+            <translation><!-- PROCIATS &lt;prociats@intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PROGRAMAS &lt;programas@mailbox.cps.intel.com&gt;</masterLabel>
+            <translation><!-- PROGRAMAS &lt;programas@mailbox.cps.intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PROGRAMS &lt;programs@intel.com&gt;</masterLabel>
+            <translation><!-- PROGRAMS &lt;programs@intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Privacy &lt;privacy@intel.com&gt;</masterLabel>
+            <translation><!-- Privacy &lt;privacy@intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Privacy Feedback &lt;privacy.feedback@intel.com&gt;</masterLabel>
+            <translation><!-- Privacy Feedback &lt;privacy.feedback@intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Privacy Info &lt;privacy.info@intel.com&gt;</masterLabel>
+            <translation><!-- Privacy Info &lt;privacy.info@intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RDC Support &lt;rdc.support@intel.com&gt;</masterLabel>
+            <translation><!-- RDC Support &lt;rdc.support@intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RETAILEXPERT &lt;retailexpert@mailbox.cps.intel.com&gt;</masterLabel>
+            <translation><!-- RETAILEXPERT &lt;retailexpert@mailbox.cps.intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RMA &lt;rma@mailbox.cps.intel.com&gt;</masterLabel>
+            <translation><!-- RMA &lt;rma@mailbox.cps.intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RUSSIAN.SUPPORT &lt;russian.support@mailbox.cps.intel.com&gt;</masterLabel>
+            <translation><!-- RUSSIAN.SUPPORT &lt;russian.support@mailbox.cps.intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RUSSIAN.TECHSUPPORT &lt;russian.techsupport@mailbox.cps.intel.com&gt;</masterLabel>
+            <translation><!-- RUSSIAN.TECHSUPPORT &lt;russian.techsupport@mailbox.cps.intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retail Edge &lt;retailedge@intel.com&gt;</masterLabel>
+            <translation><!-- Retail Edge &lt;retailedge@intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SASUPPORT &lt;sasupport@mailbox.cps.intel.com&gt;</masterLabel>
+            <translation><!-- SASUPPORT &lt;sasupport@mailbox.cps.intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SAWARRANTY &lt;sawarranty@mailbox.cps.intel.com&gt;</masterLabel>
+            <translation><!-- SAWARRANTY &lt;sawarranty@mailbox.cps.intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SOPORTE &lt;soporte@mailbox.cps.intel.com&gt;</masterLabel>
+            <translation><!-- SOPORTE &lt;soporte@mailbox.cps.intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SSDWARRANTYTOOL &lt;ssdwarrantytool@intel.com&gt;</masterLabel>
+            <translation><!-- SSDWARRANTYTOOL &lt;ssdwarrantytool@intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SUPORTE &lt;suporte@mailbox.cps.intel.com&gt;</masterLabel>
+            <translation><!-- SUPORTE &lt;suporte@mailbox.cps.intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sanket Mahajan &lt;sanketx.mahajan@intel.com&gt;</masterLabel>
+            <translation><!-- Sanket Mahajan &lt;sanketx.mahajan@intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Smart Edge Support &lt;smartedgesup@intel.com&gt;</masterLabel>
+            <translation><!-- Smart Edge Support &lt;smartedgesup@intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Support Recon Instruments &lt;support@reconinstruments.com&gt;</masterLabel>
+            <translation><!-- Support Recon Instruments &lt;support@reconinstruments.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Test Customer Support &lt;testemailtocase@intel.com&gt;</masterLabel>
+            <translation><!-- Test Customer Support &lt;testemailtocase@intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wireless Support &lt;wireless.support@intel.com&gt;</masterLabel>
+            <translation><!-- Wireless Support &lt;wireless.support@intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>apacsupport@intel.com &lt;apacsupport@intel.com&gt;</masterLabel>
+            <translation><!-- apacsupport@intel.com &lt;apacsupport@intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>asmo.cit.support &lt;asmo.cit.support@intel.com&gt;</masterLabel>
+            <translation><!-- asmo.cit.support &lt;asmo.cit.support@intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>authenticate_support &lt;authenticate_support@intel.com&gt;</masterLabel>
+            <translation><!-- authenticate_support &lt;authenticate_support@intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>authenticatesupport@intel.com &lt;authenticatesupport@intel.com&gt;</masterLabel>
+            <translation><!-- authenticatesupport@intel.com &lt;authenticatesupport@intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>bizsupport &lt;bizsupport@intel.com&gt;</masterLabel>
+            <translation><!-- bizsupport &lt;bizsupport@intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>crmotherboard &lt;crmotherboard@mailbox.intel.com&gt;</masterLabel>
+            <translation><!-- crmotherboard &lt;crmotherboard@mailbox.intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>designintools@intel.com &lt;designintools@intel.com&gt;</masterLabel>
+            <translation><!-- designintools@intel.com &lt;designintools@intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>elseviersupport &lt;elseviersupport@intel.com&gt;</masterLabel>
+            <translation><!-- elseviersupport &lt;elseviersupport@intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>estorereturns@intel.com &lt;estorereturns@intel.com&gt;</masterLabel>
+            <translation><!-- estorereturns@intel.com &lt;estorereturns@intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>gatewaysupport &lt;gatewaysupport@intel.com&gt;</masterLabel>
+            <translation><!-- gatewaysupport &lt;gatewaysupport@intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>hmhsupport &lt;hmhsupport@intel.com&gt;</masterLabel>
+            <translation><!-- hmhsupport &lt;hmhsupport@intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>intelaiacademysupport@intel.com &lt;intelaiacademysupport@intel.com&gt;</masterLabel>
+            <translation><!-- intelaiacademysupport@intel.com &lt;intelaiacademysupport@intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>intelaibuilderssupport@intel.com &lt;intelaibuilderssupport@intel.com&gt;</masterLabel>
+            <translation><!-- intelaibuilderssupport@intel.com &lt;intelaibuilderssupport@intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>inteldeveloperzonesupport@intel.com &lt;inteldeveloperzonesupport@intel.com&gt;</masterLabel>
+            <translation><!-- inteldeveloperzonesupport@intel.com &lt;inteldeveloperzonesupport@intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>jit-request &lt;jit-request@intel.com&gt;</masterLabel>
+            <translation><!-- jit-request &lt;jit-request@intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>k4snotifications &lt;k4snotifications@intel.com&gt;</masterLabel>
+            <translation><!-- k4snotifications &lt;k4snotifications@intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>namoscs &lt;namoscs@intel.com&gt;</masterLabel>
+            <translation><!-- namoscs &lt;namoscs@intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>rma.center.jpss@intel.com &lt;rma.center.jpss@intel.com&gt;</masterLabel>
+            <translation><!-- rma.center.jpss@intel.com &lt;rma.center.jpss@intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>rma.dell@intel.com &lt;rma.dell@intel.com&gt;</masterLabel>
+            <translation><!-- rma.dell@intel.com &lt;rma.dell@intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>rma.hp@intel.com &lt;rma.hp@intel.com&gt;</masterLabel>
+            <translation><!-- rma.hp@intel.com &lt;rma.hp@intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>rpd &lt;rpd@mailbox.cps.intel.com&gt;</masterLabel>
+            <translation><!-- rpd &lt;rpd@mailbox.cps.intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>russian_channel_warranty &lt;russian_channel_warranty@intel.com&gt;</masterLabel>
+            <translation><!-- russian_channel_warranty &lt;russian_channel_warranty@intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>sample-books &lt;sample-books@intel.com&gt;</masterLabel>
+            <translation><!-- sample-books &lt;sample-books@intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>software.developer.zone@intel.com &lt;software.developer.zone@intel.com&gt;</masterLabel>
+            <translation><!-- software.developer.zone@intel.com &lt;software.developer.zone@intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>soundvision@intel.com &lt;soundvision@intel.com&gt;</masterLabel>
+            <translation><!-- soundvision@intel.com &lt;soundvision@intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ssfsupport@intel.com &lt;ssfsupport@intel.com&gt;</masterLabel>
+            <translation><!-- ssfsupport@intel.com &lt;ssfsupport@intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>studysupport &lt;studysupport@intel.com&gt;</masterLabel>
+            <translation><!-- studysupport &lt;studysupport@intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>tsanet_case@intel.com &lt;tsanet_case@intel.com&gt;</masterLabel>
+            <translation><!-- tsanet_case@intel.com &lt;tsanet_case@intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>unitecloudsupportl4@intel.com &lt;unitecloudsupportl4@intel.com&gt;</masterLabel>
+            <translation><!-- unitecloudsupportl4@intel.com &lt;unitecloudsupportl4@intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>unitesupport@intel.com &lt;unitesupport@intel.com&gt;</masterLabel>
+            <translation><!-- unitesupport@intel.com &lt;unitesupport@intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>vprosupport@intel.com &lt;vprosupport@intel.com&gt;</masterLabel>
+            <translation><!-- vprosupport@intel.com &lt;vprosupport@intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>yap emoji &lt;yapemoji@intel.com&gt;</masterLabel>
+            <translation><!-- yap emoji &lt;yapemoji@intel.com&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>yap support &lt;yapsupport@intel.com&gt;</masterLabel>
+            <translation><!-- yap support &lt;yapsupport@intel.com&gt; --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

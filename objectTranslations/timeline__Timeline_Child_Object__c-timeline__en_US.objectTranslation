@@ -55,7 +55,6 @@
         <name>timeline__Icon_Name__c</name>
     </fields>
     <fields>
-        <help><!-- This field doesn&apos;t have a function. If you are planning to include archived activities, please refer to the documentation to implement an Apex dataprovider. --></help>
         <label><!-- Include All Records --></label>
         <name>timeline__Include_All_Records__c</name>
     </fields>

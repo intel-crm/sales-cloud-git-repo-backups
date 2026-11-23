@@ -1,0 +1,18 @@
+/* ✅ View mode - Salesforce style greyed out */
+.view-greyed lightning-base-combobox::part(input) {
+    background-color: #f3f3f3;
+    color: #706e6b;
+    border-color: #dddbda;
+}
+
+/* ✅ Edit mode - slight highlight */
+.edit-active lightning-base-combobox::part(input) {
+    background-color: #ffffff;
+    border-color: #1b96ff;
+}
+
+.readonly lightning-base-combobox::part(input) {
+    background-color: #f3f3f3;
+    color: #706e6b;
+    border-color: #dddbda;
+}

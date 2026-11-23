@@ -13,17 +13,14 @@ private class Core_IPS_File_AttachToCase_Cont_Test
     * ----------------------------------------------------------------------------                 
     * Vaibhav Dubey              11/07/2015              Created
     ****************************************************************************************************/
-  /*  static testMethod void testAttachment() {
+    static testMethod void testAttachment() {
         Case c=new Case();
-                
-        String toEncode = 'Public to Customers';   
-        ApexPages.currentPage().getParameters().put('Type',EncodingUtil.urlEncode(toEncode,'UTF-8')); //TWC745-321 - IPS: Update upload URLs and field mappings [KIIT] - 16/09/2021 - Popcornapps
-
+        
         ApexPages.StandardController sc = new ApexPages.StandardController(c);
         Core_IPS_File_AttachToCase_Controller testAccPlan = new Core_IPS_File_AttachToCase_Controller(sc);
-        //commented for Classic EOL -Tejaswini
-      /*  PageReference pref = Page.Core_IPS_File_AttachToCase;
-        Test.setCurrentPage(pref); 
+        
+        PageReference pref = Page.Core_IPS_File_AttachToCase;
+        Test.setCurrentPage(pref);
         
         Core_IPS_File_AttachToCase_Controller  cpfa=new Core_IPS_File_AttachToCase_Controller ();
         
@@ -31,7 +28,7 @@ private class Core_IPS_File_AttachToCase_Cont_Test
         pref = cpfa.saveAndReturn();
         Test.stopTest(); 
 
-    } */
+    }
     
     /***************************************************************************************************
     Method Name:  testAttachment1
@@ -45,15 +42,13 @@ private class Core_IPS_File_AttachToCase_Cont_Test
     * ----------------------------------------------------------------------------                 
     * Vaibhav Dubey              11/07/2015              Created
     ****************************************************************************************************/
- /*   static testMethod void testAttachment1() {
+    static testMethod void testAttachment1() {
         
         Case c= TestUtilities.getcase();
         insert c;
-         
-        //commented for Classic EOL -Tejaswini
-      /*  PageReference pref = Page.Core_IPS_File_AttachToCase;
-        Test.setCurrentPage(pref); 
-        
+                
+        PageReference pref = Page.Core_IPS_File_AttachToCase;
+        Test.setCurrentPage(pref);
         ApexPages.currentPage().getParameters().put('Id',c.id);
         
         Core_IPS_File_AttachToCase_Controller  cpfa=new Core_IPS_File_AttachToCase_Controller ();
@@ -62,7 +57,7 @@ private class Core_IPS_File_AttachToCase_Cont_Test
         pref = cpfa.saveAndReturn();
         Test.stopTest(); 
 
-    } */
+    }
  
 /***************************************************************************************************
     Method Name        :  testAttachment2
@@ -176,13 +171,13 @@ private class Core_IPS_File_AttachToCase_Cont_Test
          insert listcstSettings;
         
           user agentUser=TestUtilities.getUser();
-          profile p=[select id,name from profile where name='System Administrator' limit 1];
+          profile p=[select id,name from profile where name='IT Admin' limit 1];
           agentUser.profileid =p.id;
           agentUser.Username +=string.valueOf(dateTime.now().getTime());
           insert agentUser;
           
           system.runAs(agentUser){
-          User u = [select Id from User where profile.Name = 'System Administrator' and userRoleId != null AND ISActive=true Limit 1];
+          User u = [select Id from User where profile.Name = 'IT Admin' and userRoleId != null AND ISActive=true Limit 1];
         
         Case c= TestUtilities.getcase();
         insert c;
@@ -203,16 +198,15 @@ private class Core_IPS_File_AttachToCase_Cont_Test
         cmt.Core_IPS_Comment__c='Test Comment';
         cmt.Core_IPS_Comment_Author_Type__c='';
         insert cmt;
-         
-              //commented for Classic EOL -Tejaswini
-      /*  PageReference pref = Page.Core_IPS_File_AttachToCase;
-        Test.setCurrentPage(pref); */
-        
+               
+        PageReference pref = Page.Core_IPS_File_AttachToCase;
+        Test.setCurrentPage(pref);
        
         ApexPages.currentPage().getParameters().put('id',c.id);
         ApexPages.currentPage().getParameters().put('Type','Public to Customers');
         Apexpages.StandardController ap = new apexpages.StandardController(attachments);
         Core_IPS_File_AttachToCase_Controller cpfa=new Core_IPS_File_AttachToCase_Controller (ap);
+        system.debug('@@@@'+cpfa.mapJsonList.get('visibility'));
         system.assertEquals(cpfa.mapJsonList.get('visibility'),'Public to Customers');
         }
     }
@@ -328,13 +322,13 @@ private class Core_IPS_File_AttachToCase_Cont_Test
          insert listcstSettings;
         
           user agentUser=TestUtilities.getUser();
-          profile p=[select id,name from profile where name='System Administrator' limit 1];
+          profile p=[select id,name from profile where name='IT Admin' limit 1];
           agentUser.profileid =p.id;
           agentUser.Username +=string.valueOf(dateTime.now().getTime());
           insert agentUser;
           
           system.runAs(agentUser){
-          User u = [select Id from User where profile.Name = 'System Administrator' and userRoleId != null AND ISActive=true Limit 1];
+          User u = [select Id from User where profile.Name = 'IT Admin' and userRoleId != null AND ISActive=true Limit 1];
         
         Case c= TestUtilities.getcase();
         insert c;
@@ -355,86 +349,18 @@ private class Core_IPS_File_AttachToCase_Cont_Test
         cmt.Core_IPS_Comment__c='Test Comment';
         cmt.Core_IPS_Comment_Author_Type__c='';
         insert cmt;
-           //commented for Classic EOL -Tejaswini
-      /*  PageReference pref = Page.Core_IPS_File_AttachToCase;
-        Test.setCurrentPage(pref); */    
-        
+               
+        PageReference pref = Page.Core_IPS_File_AttachToCase;
+        Test.setCurrentPage(pref);
        
         ApexPages.currentPage().getParameters().put('id',c.id);
         ApexPages.currentPage().getParameters().put('Type','Private to Intel');
         Apexpages.StandardController ap = new apexpages.StandardController(attachments);
         Core_IPS_File_AttachToCase_Controller cpfa=new Core_IPS_File_AttachToCase_Controller (ap);
+        system.debug('@@@@'+cpfa.mapJsonList.get('visibility'));
         system.assertEquals(cpfa.mapJsonList.get('visibility'),'Private to Intel');
         }
-    }
-
-    static testMethod void testprepareURl(){
-        list<Core_IPS_Labels__c> listcstSettings = new list<Core_IPS_Labels__c >();
-       
-        Core_IPS_Labels__c lbl = new Core_IPS_Labels__c();
-        lbl.name='Data Migration Profile Id';
-        lbl.value__c = '00eo0000000f7test';
-        listcstSettings.add(lbl);
-        
-        Core_IPS_Labels__c lbl1 = new Core_IPS_Labels__c();
-        lbl1.name='COMPLETE';
-        lbl1.value__c = 'Complete';
-        listcstSettings.add(lbl1);
-        
-        Core_IPS_Labels__c lbl2 = new Core_IPS_Labels__c();
-        lbl2.name='Agent';
-        lbl2.value__c = 'Agent';
-        listcstSettings.add(lbl2);
-        
-        Core_IPS_Labels__c  label = new Core_IPS_Labels__c();
-        label.name = 'PUBLIC_TO_CUSTOMERS';
-        label.value__C = 'Public to Customers';
-        listcstSettings.add(label);
-        
-        Core_IPS_Labels__c  label1 = new Core_IPS_Labels__c();
-        label1.name = 'PRIVATE_TO_INTEL';
-        label1.value__c = 'Private to Intel';
-        listcstSettings.add(label1);
-        
-        Core_IPS_Labels__c  label2 = new Core_IPS_Labels__c();
-        label2.name = 'PRIVATE_TO_AGENTS';
-        label2.value__c = 'Private to Agents';
-        listcstSettings.add(label2);
-        
-        Core_IPS_Labels__c  label3 = new Core_IPS_Labels__c();
-        label3.name = 'Partner';
-        label3.value__c = 'Partner';
-        listcstSettings.add(label3);
-        
-        Core_IPS_Labels__c  label4 = new Core_IPS_Labels__c();
-        label4.name = 'PRIVATE_TO_PARTNERS';
-        label4.value__c = 'Private to Partner';
-        listcstSettings.add(label4);
-     
-        Core_IPS_Labels__c label5= new Core_IPS_Labels__c();
-        label5.name='Backend Integration';
-        label5.value__c='Backend Integration';
-        listcstSettings.add(label5);
-     
-         insert listcstSettings;
-        
-          user agentUser=TestUtilities.getUser();
-          profile p=[select id,name from profile where name='System Administrator' limit 1];
-          agentUser.profileid =p.id;
-          agentUser.Username +=string.valueOf(dateTime.now().getTime());
-          insert agentUser;
-          
-          system.runAs(agentUser){
-          User u = [select Id from User where profile.Name = 'System Administrator' and userRoleId != null AND ISActive=true Limit 1];
-        
-        Case c= TestUtilities.getcase();
-        insert c;
-        Test.startTest();
-              Core_IPS_File_AttachToCase_Controller.prepareUrl(c.Id,Core_IPS_Labels__c.getValues('PRIVATE_TO_PARTNERS').value__c);
-        Test.stopTest();      
-      }
-    }
-    
+    }    
  /***************************************************************************************************
     Method Name        : testAttachment4
     Method Type        : Test Method
@@ -510,13 +436,13 @@ private class Core_IPS_File_AttachToCase_Cont_Test
          insert listcstSettings;
         
           user agentUser=TestUtilities.getUser();
-          profile p=[select id,name from profile where name='System Administrator' limit 1];
+          profile p=[select id,name from profile where name='IT Admin' limit 1];
           agentUser.profileid =p.id;
           agentUser.Username +=string.valueOf(dateTime.now().getTime());
           insert agentUser;
           
           system.runAs(agentUser){
-          User u = [select Id from User where profile.Name = 'System Administrator' and userRoleId != null AND ISActive=true Limit 1];
+          User u = [select Id from User where profile.Name = 'IT Admin' and userRoleId != null AND ISActive=true Limit 1];
         
         Case c= TestUtilities.getcase();
         insert c;
@@ -531,17 +457,15 @@ private class Core_IPS_File_AttachToCase_Cont_Test
         attachments.Core_FileSizeInBytes__c='2KB';
         attachments.Core_Upload_Status__c=Core_IPS_Labels__c.getValues('COMPLETE').value__c;
         Insert attachments;
-         
-              //commented for Classic EOL -Tejaswini
-      /*  PageReference pref = Page.Core_IPS_File_AttachToCase;
-        Test.setCurrentPage(pref); */
-    /*    PageReference pref = Page.Core_IPS_File_AttachToCase;
-        Test.setCurrentPage(pref); */
+                              
+        PageReference pref = Page.Core_IPS_File_AttachToCase;
+        Test.setCurrentPage(pref);
        
         ApexPages.currentPage().getParameters().put('id',c.id);
         ApexPages.currentPage().getParameters().put('Type','Private to Partner');
         Apexpages.StandardController ap = new apexpages.StandardController(attachments);
         Core_IPS_File_AttachToCase_Controller cpfa=new Core_IPS_File_AttachToCase_Controller (ap);
+        system.debug('@@@@'+cpfa.mapJsonList.get('visibility'));
         system.assertEquals(cpfa.mapJsonList.get('visibility'),'Private to Partner');
         }
     } 

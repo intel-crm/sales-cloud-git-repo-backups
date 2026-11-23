@@ -11,6 +11,11 @@
         <label>PSG</label>
     </customValue>
     <customValue>
+        <fullName>Retail</fullName>
+        <default>false</default>
+        <label>Retail</label>
+    </customValue>
+    <customValue>
         <fullName>Financial Incentive</fullName>
         <default>false</default>
         <label>Financial Incentive</label>

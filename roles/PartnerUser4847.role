@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>心医国际数字医疗系统（大连）有限公司 Partner User</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>心医国际数字医疗系统（大连）有限公司 Partner User</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>PartnerManager4847</parentRole>
+</Role>

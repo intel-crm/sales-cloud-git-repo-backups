@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>DRP_Design_Registration_ID_mapped_with__c</fullName>
+        <externalId>false</externalId>
+        <label>DRP Design Registration ID mapped with</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DRP_MMID_mapped_with__c</fullName>
+        <externalId>false</externalId>
+        <label>DRP MMID mapped with</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DRP_Mapped_to_Rec_Id__c</fullName>
+        <externalId>false</externalId>
+        <label>DRP Mapped to Rec Id</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DRP_Name_mapped_with__c</fullName>
+        <externalId>false</externalId>
+        <label>DRP Name mapped with</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DRP_Object_to_be_mapped__c</fullName>
+        <externalId>false</externalId>
+        <label>DRP Object to be mapped</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DRP_Old_MMID_mapped_with__c</fullName>
+        <externalId>false</externalId>
+        <label>DRP Old MMID mapped with</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DRP_Ordering_Code_mapped_with__c</fullName>
+        <externalId>false</externalId>
+        <label>DRP Ordering Code mapped with</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DRP_Quantity_mapped_with__c</fullName>
+        <externalId>false</externalId>
+        <label>DRP Quantity mapped with</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DRP_Target_Resale_Price_mapped_with__c</fullName>
+        <externalId>false</externalId>
+        <label>DRP Target Resale Price mapped with</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DR_Are_Intel_items_used_mapped_with__c</fullName>
+        <externalId>false</externalId>
+        <label>DR Are Intel items used mapped with</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DR_City_mapped_with__c</fullName>
+        <externalId>false</externalId>
+        <label>DR City mapped with</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DR_Country_mapped_with__c</fullName>
+        <externalId>false</externalId>
+        <label>DR Country mapped with</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DR_Decision_Date_mapped_with__c</fullName>
+        <externalId>false</externalId>
+        <label>DR Decision Date mapped with</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DR_Description_mapped_with__c</fullName>
+        <externalId>false</externalId>
+        <label>DR Description mapped with</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DR_End_Customer_Name_mapped_with__c</fullName>
+        <externalId>false</externalId>
+        <label>DR End Customer Name mapped with</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DR_External_Id_mapped_with__c</fullName>
+        <externalId>false</externalId>
+        <label>DR External Id mapped with</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DR_First_Customer_Ship_Date_mapped_with__c</fullName>
+        <externalId>false</externalId>
+        <label>DR First Customer Ship Date mapped with</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DR_Mapped_to_Rec_Id__c</fullName>
+        <externalId>false</externalId>
+        <label>DR Mapped to Rec Id</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DR_Name_mapped_with__c</fullName>
+        <externalId>false</externalId>
+        <label>DR Name mapped with</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DR_Object_to_be_mapped__c</fullName>
+        <externalId>false</externalId>
+        <label>DR Object to be mapped</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DR_Opportunity_Volume_mapped_with__c</fullName>
+        <externalId>false</externalId>
+        <label>DR Opportunity Volume mapped with</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DR_Partner_FAE_Email_mapped_with__c</fullName>
+        <externalId>false</externalId>
+        <label>DR Partner FAE Email mapped with</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DR_Partner_FAE_mapped_with__c</fullName>
+        <externalId>false</externalId>
+        <label>DR Partner FAE mapped with</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DR_Product_Application_mapped_with__c</fullName>
+        <externalId>false</externalId>
+        <label>DR Product Application mapped with</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DR_Product_Group_mapped_with__c</fullName>
+        <externalId>false</externalId>
+        <label>DR Product Group mapped with</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DR_Product_Segment_mapped_with__c</fullName>
+        <externalId>false</externalId>
+        <label>DR Product Segment mapped with</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DR_Production_End_Date_mapped_with__c</fullName>
+        <externalId>false</externalId>
+        <label>DR Production End Date mapped with</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DR_State_Province_mapped_with__c</fullName>
+        <externalId>false</externalId>
+        <label>DR State/Province mapped with</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DR_Street1_mapped_with__c</fullName>
+        <externalId>false</externalId>
+        <label>DR Street1 mapped with</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DR_Vertical_Market_mapped_with__c</fullName>
+        <externalId>false</externalId>
+        <label>DR Vertical Market mapped with</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DR_Zip_Postal_Code_mapped_with__c</fullName>
+        <externalId>false</externalId>
+        <label>DR Zip/Postal Code mapped with</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>DR and DRP Field Mapping List</label>
+    <visibility>Public</visibility>
+</CustomObject>

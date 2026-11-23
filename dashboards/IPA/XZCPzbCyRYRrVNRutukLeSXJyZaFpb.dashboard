@@ -21,24 +21,62 @@
                 <componentChartTheme>dark</componentChartTheme>
                 <componentType>Donut</componentType>
                 <decimalPrecision>-1</decimalPrecision>
+                <displayUnits>Auto</displayUnits>
+                <drillEnabled>false</drillEnabled>
+                <drillToDetailEnabled>false</drillToDetailEnabled>
+                <enableHover>false</enableHover>
+                <expandOthers>false</expandOthers>
+                <groupingColumn>Account.Core_Geo__c</groupingColumn>
+                <groupingSortProperties>
+                    <groupingSorts>
+                        <groupingLevel>g1</groupingLevel>
+                        <sortColumn>RowCount</sortColumn>
+                        <sortOrder>d</sortOrder>
+                    </groupingSorts>
+                </groupingSortProperties>
+                <header>Accounts based on Geo</header>
+                <legendPosition>Right</legendPosition>
+                <maxValuesDisplayed>6</maxValuesDisplayed>
+                <report>IPAReports/Accounts_based_on_Geo_KJT</report>
+                <showPercentage>true</showPercentage>
+                <showTotal>true</showTotal>
+                <showValues>true</showValues>
+                <sortBy>RowValueDescending</sortBy>
+                <sortLegendValues>false</sortLegendValues>
+                <useReportChart>false</useReportChart>
+            </dashboardComponent>
+            <rowIndex>0</rowIndex>
+            <rowSpan>12</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>6</colSpan>
+            <columnIndex>6</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <chartAxisRange>Auto</chartAxisRange>
+                <chartSummary>
+                    <axisBinding>y</axisBinding>
+                    <column>RowCount</column>
+                </chartSummary>
+                <componentChartTheme>dark</componentChartTheme>
+                <componentType>Funnel</componentType>
+                <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Integer</displayUnits>
                 <drillEnabled>false</drillEnabled>
                 <drillToDetailEnabled>false</drillToDetailEnabled>
                 <enableHover>false</enableHover>
                 <expandOthers>true</expandOthers>
-                <groupingColumn>Account.Core_PAG_Grouping_Method__c</groupingColumn>
+                <groupingColumn>PRM_AccountBenefitAssociation__c.PRM_Partner_Benefit_Id__c</groupingColumn>
                 <groupingSortProperties>
                     <groupingSorts>
                         <groupingLevel>g1</groupingLevel>
-                        <sortOrder>a</sortOrder>
+                        <sortOrder>d</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>OPID&apos;s  by Grouping method</header>
+                <header>CSP Benefits</header>
                 <legendPosition>Right</legendPosition>
-                <maxValuesDisplayed>6</maxValuesDisplayed>
-                <report>IPAReports/OPIDs_by_Grouping_method_Cxy</report>
+                <report>IPAReports/Cloud_Service_Provider_Benefits_igL21</report>
                 <showPercentage>false</showPercentage>
-                <showTotal>true</showTotal>
                 <showValues>true</showValues>
                 <sortBy>RowLabelAscending</sortBy>
                 <sortLegendValues>false</sortLegendValues>
@@ -49,7 +87,7 @@
         </dashboardGridComponents>
         <dashboardGridComponents>
             <colSpan>6</colSpan>
-            <columnIndex>6</columnIndex>
+            <columnIndex>0</columnIndex>
             <dashboardComponent>
                 <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
                 <chartAxisRange>Auto</chartAxisRange>
@@ -86,7 +124,33 @@
                 <sortLegendValues>false</sortLegendValues>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>0</rowIndex>
+            <rowIndex>12</rowIndex>
+            <rowSpan>12</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>6</colSpan>
+            <columnIndex>6</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
+                <chartAxisRange>Auto</chartAxisRange>
+                <componentChartTheme>dark</componentChartTheme>
+                <componentType>Bar</componentType>
+                <displayUnits>Auto</displayUnits>
+                <drillEnabled>false</drillEnabled>
+                <drillToDetailEnabled>false</drillToDetailEnabled>
+                <enableHover>false</enableHover>
+                <expandOthers>false</expandOthers>
+                <groupingSortProperties/>
+                <header>Cloud Insider Accounts and Contacts</header>
+                <report>IPAReports/No_of_Acct_and_Cont</report>
+                <showPercentage>false</showPercentage>
+                <showPicturesOnCharts>false</showPicturesOnCharts>
+                <showValues>false</showValues>
+                <sortBy>RowLabelAscending</sortBy>
+                <sortLegendValues>false</sortLegendValues>
+                <useReportChart>true</useReportChart>
+            </dashboardComponent>
+            <rowIndex>12</rowIndex>
             <rowSpan>12</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
@@ -100,33 +164,30 @@
                     <column>RowCount</column>
                 </chartSummary>
                 <componentChartTheme>dark</componentChartTheme>
-                <componentType>Donut</componentType>
+                <componentType>Column</componentType>
                 <decimalPrecision>-1</decimalPrecision>
-                <displayUnits>Auto</displayUnits>
+                <displayUnits>Integer</displayUnits>
                 <drillEnabled>false</drillEnabled>
                 <drillToDetailEnabled>false</drillToDetailEnabled>
                 <enableHover>false</enableHover>
                 <expandOthers>false</expandOthers>
-                <groupingColumn>Account.Core_Geo__c</groupingColumn>
+                <groupingColumn>FK_NAME</groupingColumn>
                 <groupingSortProperties>
                     <groupingSorts>
                         <groupingLevel>g1</groupingLevel>
-                        <sortColumn>RowCount</sortColumn>
-                        <sortOrder>d</sortOrder>
+                        <sortOrder>a</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>Accounts based on Geo</header>
-                <legendPosition>Right</legendPosition>
-                <maxValuesDisplayed>6</maxValuesDisplayed>
-                <report>IPAReports/Accounts_based_on_Geo_KJT</report>
-                <showPercentage>true</showPercentage>
-                <showTotal>true</showTotal>
+                <header>Specialty</header>
+                <legendPosition>Bottom</legendPosition>
+                <report>IPAReports/Specialty_Ava</report>
+                <showPercentage>false</showPercentage>
                 <showValues>true</showValues>
-                <sortBy>RowValueDescending</sortBy>
+                <sortBy>RowLabelAscending</sortBy>
                 <sortLegendValues>false</sortLegendValues>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>12</rowIndex>
+            <rowIndex>24</rowIndex>
             <rowSpan>12</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
@@ -147,33 +208,33 @@
                 <drillToDetailEnabled>false</drillToDetailEnabled>
                 <enableHover>false</enableHover>
                 <expandOthers>false</expandOthers>
-                <groupingColumn>Account.Contacts$Core_IPA_PartnerRole__c</groupingColumn>
+                <groupingColumn>FK_NAME</groupingColumn>
                 <groupingSortProperties>
                     <groupingSorts>
                         <groupingLevel>g1</groupingLevel>
                         <sortOrder>a</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>IPA Contacts By Partner Role</header>
+                <header>Select Benefit</header>
                 <legendPosition>Bottom</legendPosition>
-                <report>IPAReports/IPA_Contacts_Per_Partner_Role_H1H</report>
+                <report>IPAReports/Select_Benefit_CHN</report>
                 <showPercentage>false</showPercentage>
                 <showValues>true</showValues>
                 <sortBy>RowLabelAscending</sortBy>
                 <sortLegendValues>false</sortLegendValues>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>12</rowIndex>
+            <rowIndex>24</rowIndex>
             <rowSpan>12</rowSpan>
         </dashboardGridComponents>
         <numberOfColumns>12</numberOfColumns>
         <rowHeight>36</rowHeight>
     </dashboardGridLayout>
-    <dashboardType>SpecifiedUser</dashboardType>
+    <dashboardType>MyTeamUser</dashboardType>
     <description>Partner Account Dashboard</description>
     <isGridLayout>true</isGridLayout>
     <owner>11227352@intel.com.crm</owner>
-    <runningUser>ipa-test-with-ipa-a&amp;e-access-bb@intel.com.crm</runningUser>
+    <runningUser>11227352@intel.com.crm</runningUser>
     <textColor>#000000</textColor>
     <title>IPA Dashboard</title>
     <titleColor>#000000</titleColor>

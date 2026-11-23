@@ -29,36 +29,24 @@
                 <field>Core_Group__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_Group_Code__c</field>
-            </layoutItems>
-            <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>Core_Division__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Core_Division_Code__c</field>
+                <field>Core_BU_Product_Segment_Old__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_BU_Product_Segment__c</field>
+                <behavior>Edit</behavior>
+                <field>Core_BU_Short_Name_Old__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_BU_Short_Name__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_Owning_BU_Short_Name_New__c</field>
+                <behavior>Edit</behavior>
+                <field>Core_Owning_BU_ShortName__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>Core_KPI_Product_Group__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_Prime_Account_Name__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
@@ -75,6 +63,54 @@
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>Core_Intel_vPro_Platform_Eligibility__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_Is_Product_EOL__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Core_BU_Short_Name__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Core_BU_Product_Segment__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Core_Vendor_InActive__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Core_Owning_BU_Short_Name_New__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Solution_Area_Product__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Core_Opportunity_Type_RecordId__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Is_Reversal__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Opportunity_Account_name__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Core_Total_Amount__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>CRM_DW_App_UCD_Customer_Name__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>CRM_PW_App_UCD_Customer_Name__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -128,11 +164,11 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>Core_Opportunity_Product_Vendor_Prime__c</field>
+                <field>Core_UCD_Opportunity_Product_Vendor__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>Core_UCD_Opportunity_Product_Vendor__c</field>
+                <field>Core_Opportunity_Product_Vendor_Prime__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -244,7 +280,7 @@
         <label>Approval Information (Production Win - PW)</label>
         <layoutColumns>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Readonly</behavior>
                 <field>Core_PW_Approved_By__c</field>
             </layoutItems>
             <layoutItems>
@@ -329,9 +365,9 @@
         <layoutColumns/>
         <style>CustomLinks</style>
     </layoutSections>
-    <multilineLayoutFields>UnitPrice</multilineLayoutFields>
     <multilineLayoutFields>Product2Id</multilineLayoutFields>
     <multilineLayoutFields>Quantity</multilineLayoutFields>
+    <multilineLayoutFields>UnitPrice</multilineLayoutFields>
     <multilineLayoutFields>Core_Status__c</multilineLayoutFields>
     <multilineLayoutFields>Core_Write_In_Product_Name__c</multilineLayoutFields>
     <multilineLayoutFields>Core_Vendor__c</multilineLayoutFields>
@@ -340,6 +376,24 @@
     <multilineLayoutFields>Core_Competitor__c</multilineLayoutFields>
     <multilineLayoutFields>Core_Competitor_Product__c</multilineLayoutFields>
     <multilineLayoutFields>OpportunityId</multilineLayoutFields>
+    <platformActionList>
+        <actionListContext>Record</actionListContext>
+        <platformActionListItems>
+            <actionName>SendSurveyInvitation</actionName>
+            <actionType>StandardButton</actionType>
+            <sortOrder>0</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>PrintableView</actionName>
+            <actionType>StandardButton</actionType>
+            <sortOrder>1</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>ChangeRecordType</actionName>
+            <actionType>StandardButton</actionType>
+            <sortOrder>2</sortOrder>
+        </platformActionListItems>
+    </platformActionList>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>

@@ -9,8 +9,8 @@
 ******************************************************************************************************************************************************************************************************/
 @isTest
 public class PMP_NUC_CreateJunctionData_Test {
-    //IPA 2.0- US-TWC729-7980
-    /*public testMethod static void createNUCJunctionDataMetTest(){
+    
+    public testMethod static void createNUCJunctionDataMetTest(){
         
         List<PMP_Specification__c> uploadableSpecifications = new List<PMP_Specification__c>();//list containing specifications to be uploaded
         List<PMP_Specification_Value__c> uploadableSpecificationValues = new List<PMP_Specification_Value__c>();//list containing specificationValues to be uploaded
@@ -160,29 +160,11 @@ public class PMP_NUC_CreateJunctionData_Test {
         
         insert test_Proc_CSA;
         
-        PMP_Category_Specification_Association__c nucCatAssoc = new PMP_Category_Specification_Association__c();
-        nucCatAssoc.Name = 'System:Intel® NUC Elements';
-        nucCatAssoc.PMP_Active_Ind__c = true;
-        nucCatAssoc.PMP_Category_Id__c = test_category_System.id;
-        nucCatAssoc.PMP_Specification_Id__c = Spec1.id;
-        nucCatAssoc.PMP_Category_Specification_External_Key__c = 'npp_02_type_sys|197864';
-        insert nucCatAssoc;
-        
-        //Create Spec-SpecValue association records
-        PMP_Specification_Value_Association__c specValueAssoc = new PMP_Specification_Value_Association__c ();
-        specValueAssoc.Name = 'Intel® NUC 9 Extreme Compute Element - NUC9i9QNB(formerly Ghost Canyon)';
-        specValueAssoc.PMP_Active_Ind__c = true;
-        specValueAssoc.PMP_Category_Id__c = test_category_System.id;
-        specValueAssoc.PMP_Specification_Id__c = Spec1.id;
-        specValueAssoc.PMP_Specification_Value_Id__c = specValueNUC1.id;
-        specValueAssoc.PMP_Category_Spec_Value_External_Key__c = 'npp_02_type_sys|199870|197864';
-        insert specValueAssoc;
-        
-        PMP_NUC_CreateJunctionData.createAssociationRecords();
+        PMP_NUC_CreateJunctionData.createNUCJunctionDataMet();
         PMP_Category_Specification_Association__c csa = [SELECT Id, PMP_Category_Id__c FROM PMP_Category_Specification_Association__c WHERE PMP_Specification_Id__c =: Spec1.Id];
         System.assertEquals(test_category_System.Id, csa.PMP_Category_Id__c);
         Test.stopTest();
         
-    }*/
+    }
     
 }

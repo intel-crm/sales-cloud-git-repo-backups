@@ -73,37 +73,17 @@
     </fields>
     <fields>
         <fullName>Core_Account_Category__c</fullName>
-        <inlineHelpText>Customer categorization and selling motion to evaluate Customers and to determine proper SMG coverage model.</inlineHelpText>
-        <label>Account Category Owner</label>
+        <label>Account Category</label>
         <required>false</required>
-        <type>Picklist</type>
+        <type>MultiselectPicklist</type>
         <valueSet>
+            <restricted>true</restricted>
             <valueSetDefinition>
                 <sorted>false</sorted>
                 <value>
-                    <fullName>Device Builder - MNC</fullName>
+                    <fullName>Distributors</fullName>
                     <default>false</default>
-                    <label>Device Builder - MNC</label>
-                </value>
-                <value>
-                    <fullName>Device Builder - Regional OxM</fullName>
-                    <default>false</default>
-                    <label>Device Builder - Regional OxM</label>
-                </value>
-                <value>
-                    <fullName>Distributors (IA)</fullName>
-                    <default>false</default>
-                    <label>Distributors (IA)</label>
-                </value>
-                <value>
-                    <fullName>End Customer</fullName>
-                    <default>false</default>
-                    <label>End Customer</label>
-                </value>
-                <value>
-                    <fullName>Hyperscaler (AWS, Azure, GCP)</fullName>
-                    <default>false</default>
-                    <label>Hyperscaler (AWS, Azure, GCP)</label>
+                    <label>Distributors</label>
                 </value>
                 <value>
                     <fullName>Regional Co-Sell Partners</fullName>
@@ -111,30 +91,60 @@
                     <label>Regional Co-Sell Partners</label>
                 </value>
                 <value>
-                    <fullName>Reseller - Branded Disti</fullName>
+                    <fullName>Regional GSI/ISV/MSP</fullName>
                     <default>false</default>
-                    <label>Reseller - Branded Disti</label>
+                    <label>Regional GSI/ISV/MSP</label>
                 </value>
                 <value>
-                    <fullName>Reseller - Named Billing Accounts</fullName>
+                    <fullName>Regional Retailer</fullName>
                     <default>false</default>
-                    <label>Reseller - Named Billing Accounts</label>
+                    <label>Regional Retailer</label>
                 </value>
                 <value>
-                    <fullName>Reseller - Retailers</fullName>
+                    <fullName>Region Branded Disti</fullName>
                     <default>false</default>
-                    <label>Reseller - Retailers</label>
+                    <label>Region Branded Disti</label>
                 </value>
                 <value>
-                    <fullName>Solution Enabler (SI, ISV, CSP, MSP)</fullName>
+                    <fullName>Region Direct OxM Accts (non-T30)</fullName>
                     <default>false</default>
-                    <label>Solution Enabler (SI, ISV, CSP, MSP)</label>
+                    <label>Region Direct OxM Accts (non-T30)</label>
+                </value>
+                <value>
+                    <fullName>Region Named B2B End User</fullName>
+                    <default>false</default>
+                    <label>Region Named B2B End User</label>
+                </value>
+                <value>
+                    <fullName>Region Named Billings Accts</fullName>
+                    <default>false</default>
+                    <label>Region Named Billings Accts</label>
+                </value>
+                <value>
+                    <fullName>Strategic Acct/Country Opportunity</fullName>
+                    <default>false</default>
+                    <label>Strategic Acct/Country Opportunity</label>
+                </value>
+                <value>
+                    <fullName>Top 30 Global Billings</fullName>
+                    <default>false</default>
+                    <label>Top 30 Global Billings</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
+        <visibleLines>4</visibleLines>
     </fields>
     <fields>
         <fullName>OpportunityAccessLevel</fullName>
+    </fields>
+    <fields>
+        <fullName>Role_Description__c</fullName>
+        <externalId>false</externalId>
+        <label>Role Description</label>
+        <length>40</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>TeamMemberRole</fullName>

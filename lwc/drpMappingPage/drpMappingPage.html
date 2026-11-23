@@ -1,0 +1,38 @@
+<template>
+ <div class="slds-size_x-large">
+    <lightning-card title="Design Registration Product Mapping">
+        <!-- Select Object Combobox -->
+        <div class="slds-align_absolute-center">
+            <lightning-combobox
+                label="Select Object"
+                value={selectedObject}
+                options={objectOptions}
+                onchange={handleObjectChange}
+                class="slds-size_medium"
+                typeahead="true"
+            ></lightning-combobox>
+        </div>
+        
+    <template for:each={drpFields} for:item="field">
+        <div key={field.value} class="slds-align_absolute-center">
+            <lightning-combobox
+                label={field.label}
+                options={fieldOptions}
+                onchange={handleFieldChange}
+                data-label={field.label}
+                class="slds-size_medium"
+                typeahead="true"
+            ></lightning-combobox>
+        </div>
+    </template>
+
+        <!--  Button -->
+        <div class="slds-align_absolute-center slds-m-top_medium">
+            <lightning-button label="Save" onclick={handleSave}></lightning-button>
+            <div class="slds-m-left_medium"></div>
+            <lightning-button label="Cancel" onclick={handleCancel}></lightning-button>
+        </div>
+    </lightning-card>
+
+    </div>
+</template>

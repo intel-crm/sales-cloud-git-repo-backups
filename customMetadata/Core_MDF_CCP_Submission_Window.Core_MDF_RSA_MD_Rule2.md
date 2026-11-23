@@ -11,12 +11,8 @@
         <value xsi:type="xsd:string">Core_MDF_Activity_Auto_Closure_SLA__c</value>
     </values>
     <values>
-        <field>Core_MDF_Activity_Auto_Closure_SLA_Month__c</field>
-        <value xsi:nil="true"/>
-    </values>
-    <values>
         <field>Core_MDF_Activity_Auto_Closure_SLA__c</field>
-        <value xsi:type="xsd:double">60.0</value>
+        <value xsi:type="xsd:double">30.0</value>
     </values>
     <values>
         <field>Core_MDF_Budget_Type__c</field>
@@ -28,19 +24,11 @@
     </values>
     <values>
         <field>Core_MDF_Claim_Submission_Window_days__c</field>
-        <value xsi:type="xsd:double">60.0</value>
-    </values>
-    <values>
-        <field>Core_MDF_Claim_Submission_Window_mnth__c</field>
         <value xsi:type="xsd:double">0.0</value>
     </values>
     <values>
-        <field>Core_MDF_Closure_Date_Extension__c</field>
-        <value xsi:type="xsd:double">10.0</value>
-    </values>
-    <values>
-        <field>Core_MDF_Closure_date_Extension_Rule__c</field>
-        <value xsi:type="xsd:string">Core_MDF_Closure_Date_Extension__c</value>
+        <field>Core_MDF_Claim_Submission_Window_mnth__c</field>
+        <value xsi:type="xsd:double">1.0</value>
     </values>
     <values>
         <field>Core_MDF_Country__c</field>
@@ -48,23 +36,19 @@
     </values>
     <values>
         <field>Core_MDF_Doc_Submission_Rule__c</field>
-        <value xsi:type="xsd:string">Core_MDF_Claim_Submission_Window_days__c+Core_MDF_Doc_Submission_Window__c</value>
-    </values>
-    <values>
-        <field>Core_MDF_Doc_Submission_Window_Claim_Nbr__c</field>
-        <value xsi:nil="true"/>
+        <value xsi:type="xsd:string">Core_MDF_Claim_Submission_Window_mnth__c+Core_MDF_Doc_Submission_Window__c</value>
     </values>
     <values>
         <field>Core_MDF_Doc_Submission_Window__c</field>
-        <value xsi:type="xsd:double">10.0</value>
+        <value xsi:type="xsd:double">14.0</value>
     </values>
     <values>
         <field>Core_MDF_Escalation_Submission_Rule__c</field>
-        <value xsi:type="xsd:string">Core_MDF_Claim_Submission_Window_days__c+Core_MDF_Escalation_Submission_Window__c</value>
+        <value xsi:type="xsd:string">Core_MDF_Claim_Submission_Window_mnth__c+Core_MDF_Escalation_Submission_Window__c</value>
     </values>
     <values>
         <field>Core_MDF_Escalation_Submission_Window__c</field>
-        <value xsi:nil="true"/>
+        <value xsi:type="xsd:double">14.0</value>
     </values>
     <values>
         <field>Core_MDF_Geo__c</field>

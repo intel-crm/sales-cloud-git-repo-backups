@@ -17,10 +17,6 @@
         <name>Core_Days_To_Purge_Until__c</name>
     </fields>
     <fields>
-        <label><!-- IPA Support Email Address --></label>
-        <name>Core_IPA_Support_Email_Address__c</name>
-    </fields>
-    <fields>
         <label><!-- Number Of Attempts --></label>
         <name>Core_Number_Of_Attempts__c</name>
     </fields>

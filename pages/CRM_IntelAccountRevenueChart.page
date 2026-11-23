@@ -1,0 +1,32 @@
+<apex:page controller="Core_AccountPlan_PDFController" contentType="text/html">
+    <script src="{!URLFOR($Resource.chartJs)}"></script>
+    <canvas id="myChart" width="400" height="200" style="display:none;"/>
+     <img id="chartImg" />
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const ctx = document.getElementById('myChart').getContext('2d');
+            const chart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: {!labels},
+                    datasets: [{
+                        label: 'Amount by Year',
+                        data: {!data},
+                        backgroundColor: 'rgba(153, 102, 255, 0.5)'
+                    }]
+                },
+                options: {
+                    responsive: false,
+                    scales: {
+                        y: { beginAtZero: true }
+                    }
+                }
+            });
+
+            setTimeout(function () {
+                const imgData = chart.toBase64Image();
+                window.location.href = '/apex/ChartPdfPage?img=' + encodeURIComponent(imgData);
+            }, 1500);
+        });
+    </script>
+</apex:page>

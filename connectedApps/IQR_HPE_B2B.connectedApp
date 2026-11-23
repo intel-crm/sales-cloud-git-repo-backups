@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
-    <contactEmail>Tender.Tech.Team@intel.com</contactEmail>
+    <contactEmail>nareshx.yendluri@intel.com</contactEmail>
     <label>IQR HPE B2B</label>
     <oauthConfig>
-        <callbackUrl>https://intel.com/</callbackUrl>
-        <certificate>MIIFgzCCBGugAwIBAgIUU6H09NQkCf21MCBEZxIW2XFxALUwDQYJKoZIhvcNAQELBQAwgZAxCzAJBgNVBAYTAlVTMSswKQYDVQQKEyJIZXdsZXR0IFBhY2thcmQgRW50ZXJwcmlzZSBDb21wYW55MSAwHgYDVQQLExdJbmZyYXN0cnVjdHVyZSBTZXJ2aWNlczEyMDAGA1UEAxMpSGV3bGV0dCBQYWNrYXJkIEVudGVycHJpc2UgUHJpdmF0ZSBTU0wgQ0EwHhcNMjYwMjI1MTAyMTUxWhcNMjcwMjI1MjM1OTU5WjCBhTELMAkGA1UEBhMCVVMxDjAMBgNVBAgTBVRleGFzMQ8wDQYDVQQHEwZTcHJpbmcxKzApBgNVBAoTIkhld2xldHQgUGFja2FyZCBFbnRlcnByaXNlIENvbXBhbnkxKDAmBgNVBAMTH3AxbGc1MDgxMDcuZGMwMS5pdHMuaHBlY29ycC5uZXQwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDWIruM4CluRCdtu/iF9ieWQmCzPBA0+Uc/4Bks1oLU8fEp5TPRmz0UFqTORHeSvPMtsfkAu16gcLUmTxI+NXcVjLHZO/QMUGkBYzybCFg1uZHtMLil89bOzDCyrQHaZFxM2I7KAb6Nrxt99JWWvJHpw5p7Nm/9UYyJ0ya4eKBILbs7qZaHX0+Wqm8FMaGKnotPVzkJlH9ThJTS09aU5y3HhkmKmNaADC+0KYl3PScUHneDBwGuk9Y4rZglfqRjQ2fTueTCRjjlZOnxu+/i3HTRwbMRbHeogGEWL7ASlqmJ54x7LXUzX0namFxbIK42Zs90GNMN+0afyF/w9DJoftoNAgMBAAGjggHcMIIB2DAMBgNVHRMBAf8EAjAAMB0GA1UdDgQWBBRiFzmtNbfFy3fdSPMKbJFCeCodhTAfBgNVHSMEGDAWgBSQ+UTroPqT25YapUKw/cEzoD4kPTAOBgNVHQ8BAf8EBAMCBLAwIAYDVR0lAQH/BBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMCoGA1UdEQQjMCGCH3AxbGc1MDgxMDcuZGMwMS5pdHMuaHBlY29ycC5uZXQwgY0GCCsGAQUFBwEBBIGAMH4wLAYIKwYBBQUHMAGGIGh0dHA6Ly9tc3NsLW9jc3Aud3Muc3ltYW50ZWMuY29tME4GCCsGAQUFBzAChkJodHRwOi8vbXNzbC1haWEud3Muc3ltYW50ZWMuY29tL1ByaXZhdGVDQS83OTg1NzIwODUtUlNBLVNIQTI1Ni5jZXIwUwYDVR0fBEwwSjBIoEagRIZCaHR0cDovL21zc2wtY3JsLndzLnN5bWFudGVjLmNvbS9Qcml2YXRlQ0EvNzk4NTcyMDg1LVJTQS1TSEEyNTYuY3JsMEUGA1UdIAQ+MDwwOgYKKwYBBAELBAMFATAsMCoGCCsGAQUFBwIBFh5odHRwOi8vZGlnaXRhbGJhZGdlLmhwZS5jb20vY3AwDQYJKoZIhvcNAQELBQADggEBAGEoiMxTzrznW0aSXkYhX7kTKXYFvVnvHMsheygpgYimikcIgXdJxNoVcZusH1xAQFl+drwZmSHyAjJj1yaX9a8OGP+TVzswd2cQqAK1gtRFi5qnQHIeB70z6Tj2KagsVytSm/RADS91r5pMPWs0EaeG+MCETzrPPD7KWHH1trAguC5UcDACm+16yekEHpbBSnMywAJe+nC6Gx97eoMk0q7sgCqIUWNCTwkEY+QX3SYVPn4sYcdPpKzAGeh+atQ2+sOMKpqVuAny/ziVuAA7NoWmFQ92xXYou7BcN2uTHQtgr8AWvN/ZDcP6eVfIjDBWQVfholhysHhsrlZ/jVZtO8U=</certificate>
-        <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6r.LX2GcPRuE7rmpVjYLUaLaOWVF6c09sg5Dd8wsv9LUs45c1QkP0UbBAUil</consumerKey>
-        <isAdminApproved>true</isAdminApproved>
+        <callbackUrl>https://www.getpostman.com/oauth2/callback</callbackUrl>
+        <consumerKey>3MVG9FxR3Tq3eZN88sLG9b4Pw8NWY7hmKGGr_y6600A1VwoXvxl3Tj.3RocWHeTas7OD25IpRBDIrOGEkJxgf</consumerKey>
+        <isAdminApproved>false</isAdminApproved>
         <isClientCredentialEnabled>false</isClientCredentialEnabled>
         <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
         <isCodeCredentialPostOnly>false</isCodeCredentialPostOnly>
@@ -20,7 +19,7 @@
         <isPKImTLSEnabled>false</isPKImTLSEnabled>
         <isPkceRequired>false</isPkceRequired>
         <isRefreshTokenRotationEnabled>false</isRefreshTokenRotationEnabled>
-        <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
+        <isSecretRequiredForRefreshToken>true</isSecretRequiredForRefreshToken>
         <isSecretRequiredForTokenExchange>false</isSecretRequiredForTokenExchange>
         <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
         <scopes>Api</scopes>
@@ -29,10 +28,6 @@
     <oauthPolicy>
         <ipRelaxation>ENFORCE</ipRelaxation>
         <isTokenExchangeFlowEnabled>false</isTokenExchangeFlowEnabled>
-        <refreshTokenPolicy>zero</refreshTokenPolicy>
+        <refreshTokenPolicy>infinite</refreshTokenPolicy>
     </oauthPolicy>
-    <permissionSetName>Pricing IQR HPE B2B</permissionSetName>
-    <sessionPolicy>
-        <sessionTimeout>60</sessionTimeout>
-    </sessionPolicy>
 </ConnectedApp>

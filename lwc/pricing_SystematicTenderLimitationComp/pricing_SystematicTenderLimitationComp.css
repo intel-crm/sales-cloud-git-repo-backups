@@ -1,0 +1,12 @@
+.button-container {
+    display: flex;
+    justify-content: flex-end; /* Aligns buttons to the right */
+    padding: 10px;
+}
+.tableContentHide {
+    /* @sldsValidatorIgnore */
+    white-space: break-spaces;
+    width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

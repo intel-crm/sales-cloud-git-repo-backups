@@ -1,170 +1,124 @@
-<aura:component ></aura:component>
-<!-- IPA2.0 + US TWC4497-1631 -->
-    <!-- <aura:attribute name="type" type="string" required="true" default="Description" />
-    <aura:attribute name="data" type="object" required="true" default="Description" />
-    <aura:attribute name="currentScreenSize" type="string" required="false" />
-    <aura:attribute name="mdaId" type="string" default="" />
+<aura:component >
+	<aura:attribute name="type" type="string" required="true" default="Description" />
+	<aura:attribute name="data" type="object" required="true" default="Description" />
+	<aura:attribute name="currentScreenSize" type="string" required="false" />
+     <aura:attribute name="mdaId" type="string" default="" />
     <aura:attribute name="offeringId" type="Id"/>
     <aura:attribute name="Header" type="string" default="" />
     
-    <aura:if isTrue="{!v.type == 'technicalSpecifications'}">
-        <aura:iteration items="{!v.data.selectedSpecificationsMap}" var="item">
-            <aura:if isTrue="{!item.category != 'BoardQualityMetricsLevel1'}">
-                <aura:if isTrue="{!item.category != 'IPQualityMetricsLevel1'}">
-                    <lightning:layout>
-                        <lightning:layoutItem size="4" class="slds-p-vertical_small">
-                            {!item.masterCategory}:
-                        </lightning:layoutItem>
-                        <lightning:layoutItem size="8" class="slds-p-vertical_small">
-                            <ul class="specification"> 
-                                <aura:iteration items="{!item.valueList}" var="data"> 					
-                                    <aura:if isTrue="{! !empty(item.category)}">
-                                        <aura:iteration items="{!item.category}" var="category" indexVar="index">
-                    
-                                            <aura:if isTrue="{!and(category.PMP_Ancestor_Category_Cd__c=='NPP_01_TYPE',index>0)}">
-                                                <br/> 
-                                            </aura:if>    
-                                            <c:IntelLink class="full-width" recordId="{!category.PMP_Category_Id__c}" objectApiName="PMP_Category__c" label="{!category.Name}"/> 
-                                            
-                                        </aura:iteration>
-                                        <aura:set attribute="else">
-                                            {!data}<br/>
-                                        </aura:set>
-                                        
-                                    </aura:if>
-                                </aura:iteration> -->
+	<aura:if isTrue="{!v.type == 'technicalSpecifications'}">
+		<aura:iteration items="{!v.data.selectedSpecificationsMap}" var="item">
+				<lightning:layout>
+						<lightning:layoutItem size="4" class="slds-p-vertical_small">
+							{!item.masterCategory}:
+						</lightning:layoutItem>
+						<lightning:layoutItem size="8" class="slds-p-vertical_small">
+							<ul class="specification">
+							   <aura:iteration items="{!item.valueList}" var="data">  					
+                                  <aura:if isTrue="{! !empty(item.category)}">
+                                      <c:IntelLink class="full-width" recordId="{!item.category}" objectApiName="PMP_Category__c" label="{!data}"/>
+                                      <aura:set attribute="else">
+                                         {!data}<br/>
+                                      </aura:set>
+                                   </aura:if>
+                                </aura:iteration>
+							</ul>
+						</lightning:layoutItem>
+				</lightning:layout>
+		</aura:iteration>
+     
+	</aura:if>
 
-
-
-                                <!-- <aura:iteration items="{!v.categoryList}" var="data">
-                                    <aura:if isTrue="{! !empty(v.categoryList)}">
-                                   <c:IntelLink class="full-width" recordId="{!data.PMP_Category_Id__c}" objectApiName="PMP_Category__c" label="{!data.Name}"/>  
-                                    <aura:set attribute="else">
-                                         {!data.Name}<br/>
-                                      </aura:set>    
-                                    </aura:if>
-                                </aura:iteration>-->
-                                <!-- IPA2.0 + US TWC4497-1631 -->
-                            <!-- </ul>
-                        </lightning:layoutItem>
-                    </lightning:layout>
-                </aura:if>
-            </aura:if>
-        </aura:iteration>
-        
-    </aura:if>
-    
-    <aura:if isTrue="{!v.type == 'qualityMetrics'}">
-        <aura:iteration items="{!v.data.selectedQualityMetricsMap}" var="item">
-            <span class="bold">{!item.masterCategory}:</span><br/><br/>
-                    <ul class="specification">
-                        <aura:iteration items="{!item.keyList}" var="data"> -->
-                            <!-- Scneario Five: Specs below Master Category & No Space betweeen Question and answer-->
-<!-- IPA2.0 + US TWC4497-1631  -->
-                            <!-- <span class="spacing">
-                            {!data.key}:			<aura:if isTrue="{!data.isYes}">
-                                               		<span class="metriccValues">{!data.value}</span><br/>
-                            						<aura:set attribute="else">
-                                                    	<span class="otherText slds-hyphenate">{!data.value}</span><br/>
-                            						</aura:set>
-                                                    </aura:if>
-                             </span>   
-                        </aura:iteration>
-                    </ul>
-       		</aura:iteration>
-    </aura:if>	
-    
-    <aura:if isTrue="{!v.type == 'threeColumnLinks'}">
-        <lightning:layout multipleRows="true">
-            <lightning:layoutItem size="12" class="slds-p-vertical_small">
-                <aura:iteration items="{!v.data}" var="item">
-                    <lightning:layoutItem size="12" mediumDeviceSize="6" largeDeviceSize="12" class="slds-p-bottom_small">
-                        <c:IntelLink url="{!item.link}" openInBlank="true" PartnerMDAId="{!v.mdaId}" offeringId="{!v.offeringId}" LabelHeader="{!v.Header}">
-                            {!item.label}
-                        </c:IntelLink>
-                    </lightning:layoutItem>
-                </aura:iteration>
+	<aura:if isTrue="{!v.type == 'threeColumnLinks'}">
+		<lightning:layout multipleRows="true">
+            <lightning:layoutItem size="12" class="slds-p-vertical_small"><!--Added by raj to display data in a single column-->
+			<aura:iteration items="{!v.data}" var="item">
+                	<!--largeDeviceSize increased from 4 to 12 by raj-->
+					<lightning:layoutItem size="12" mediumDeviceSize="6" largeDeviceSize="12" class="slds-p-bottom_small">
+                       <c:IntelLink url="{!item.link}" openInBlank="true" PartnerMDAId="{!v.mdaId}" offeringId="{!v.offeringId}" LabelHeader="{!v.Header}">
+                           			{!item.label}
+                       </c:IntelLink>
+					</lightning:layoutItem>
+			</aura:iteration>
             </lightning:layoutItem>
-        </lightning:layout>
-        
-    </aura:if>
+		</lightning:layout>
+
+	</aura:if>
     
     <aura:if isTrue="{!v.type == 'marketingInfo'}">
-        <lightning:layout multipleRows="true">
-            <aura:iteration items="{!v.data}" var="item">
-                <lightning:layoutItem size="12" class="slds-p-top_small">
-                    {!item.label}
-                </lightning:layoutItem>
-                
-            </aura:iteration>
-        </lightning:layout>
-        
-    </aura:if>
-    
-    <aura:if isTrue="{!v.type == 'fullfillmentPartners'}">
-        <aura:iteration items="{!v.data}" var="item">
-            <aura:if isTrue="{! v.currentScreenSize == 'desktop'}">
-                <lightning:layout >
-                    <lightning:layoutItem size="12" mediumDeviceSize="4"  class="slds-p-vertical_small slds-p-right_xx-small">
-                        {!item.name}
-                    </lightning:layoutItem>
-                    <lightning:layoutItem size="12" mediumDeviceSize="4" class="slds-p-vertical_small slds-p-right_xx-small">
-                        <c:IntelLink url="{! item.link}" class="break-word" openInBlank="true">{!item.linkTitle}</c:IntelLink>
-                    </lightning:layoutItem>
-                    <lightning:layoutItem size="12" mediumDeviceSize="4" class="slds-p-vertical_small">
-                        <c:IntelButton href="{!item.buyUrl}" class="inline">Buy&nbsp;Now</c:IntelButton>
-                    </lightning:layoutItem>
-                </lightning:layout >
-                <aura:set attribute="else">
-                    <lightning:layout class="borderBottom">
-                        <lightning:layoutItem size="8" mediumDeviceSize="4"  class="slds-p-vertical_medium slds-p-right_xx-small break-word">
-                            {!item.name}<br/>
-                            <c:IntelLink url="{! item.link}" openInBlank="true">{!item.linkTitle}</c:IntelLink>
-                        </lightning:layoutItem>
-                        <lightning:layoutItem size="4" mediumDeviceSize="4" class="slds-p-vertical_medium slds-text-align_right">
-                            <c:IntelButton href="{!item.buyUrl}" class="inline">Buy&nbsp;Now</c:IntelButton>
-                        </lightning:layoutItem>
-                    </lightning:layout>
-                    
-                </aura:set>
-            </aura:if>
-        </aura:iteration>
-    </aura:if>
-    <aura:if isTrue="{!v.type == 'regions'}">
-        <lightning:layout multipleRows="true">
-            <aura:iteration items="{!v.data}" var="item">
-                <lightning:layoutItem size="12" class="slds-p-top_small">
-                    {!item.value}
-                </lightning:layoutItem> -->
-<!-- endIPA2.0 + US TWC4497-1631 -->
-                
-                <!--<lightning:layoutItem size="12" class="slds-p-vertical_small">
-      <lightning:layout multipleRows="true">
-       <aura:iteration items="{!item.data}" var="regions">
-         <lightning:layoutItem size="6" mediumDeviceSize="6" largeDeviceSize="4" class="slds-p-bottom_small">
-          <c:IntelLink url="{! regions.link}" openInBlank="true">{!regions.value}</c:IntelLink>
-         </lightning:layoutItem>
-       </aura:iteration>
-      </lightning:layout>
-     </lightning:layoutItem>-->
-            <!-- </aura:iteration>
-        </lightning:layout>
-        
-    </aura:if>
-    <aura:if isTrue="{!v.type == 'resources'}">
-        <c:MarketPlaceAccordion allowMultipleSectionsOpen="false" theme="resource">
-            <aura:iteration items="{!v.data}" var="faq" indexVar="idx">
-                <c:MarketPlaceAccordionSection name="{!'faq-' + idx}" label="{!faq.title}">
-                    <p class="slds-p-vertical_medium slds-p-horizontal_small">
-                        {!faq.content}
-                    </p>
-                </c:MarketPlaceAccordionSection>
-            </aura:iteration>
-        </c:MarketPlaceAccordion>
-        
-    </aura:if>
-    
-    
-    
-    
-</aura:component> -->
+		<lightning:layout multipleRows="true">
+			<aura:iteration items="{!v.data}" var="item">
+					<lightning:layoutItem size="12" class="slds-p-top_small">
+                        {!item.label}
+					</lightning:layoutItem>
+				
+			</aura:iteration>
+	</lightning:layout>
+
+	</aura:if>
+
+	<aura:if isTrue="{!v.type == 'fullfillmentPartners'}">
+		<aura:iteration items="{!v.data}" var="item">
+			<aura:if isTrue="{! v.currentScreenSize == 'desktop'}">
+						<lightning:layout >
+							<lightning:layoutItem size="12" mediumDeviceSize="4"  class="slds-p-vertical_small slds-p-right_xx-small">
+								{!item.name}
+							</lightning:layoutItem>
+							<lightning:layoutItem size="12" mediumDeviceSize="4" class="slds-p-vertical_small slds-p-right_xx-small">
+								<c:IntelLink url="{! item.link}" class="break-word" openInBlank="true">{!item.linkTitle}</c:IntelLink>
+							</lightning:layoutItem>
+							<lightning:layoutItem size="12" mediumDeviceSize="4" class="slds-p-vertical_small">
+								<c:IntelButton href="{!item.buyUrl}" class="inline">Buy&nbsp;Now</c:IntelButton>
+	 						</lightning:layoutItem>
+						</lightning:layout >
+						<aura:set attribute="else">
+							<lightning:layout class="borderBottom">
+								<lightning:layoutItem size="8" mediumDeviceSize="4"  class="slds-p-vertical_medium slds-p-right_xx-small break-word">
+									{!item.name}<br/>
+									<c:IntelLink url="{! item.link}" openInBlank="true">{!item.linkTitle}</c:IntelLink>
+								</lightning:layoutItem>
+								<lightning:layoutItem size="4" mediumDeviceSize="4" class="slds-p-vertical_medium slds-text-align_right">
+									<c:IntelButton href="{!item.buyUrl}" class="inline">Buy&nbsp;Now</c:IntelButton>
+		 						</lightning:layoutItem>
+						</lightning:layout>
+
+						</aura:set>
+			</aura:if>
+		</aura:iteration>
+	</aura:if>
+	<aura:if isTrue="{!v.type == 'regions'}">
+		<lightning:layout multipleRows="true">
+			<aura:iteration items="{!v.data}" var="item">
+					<lightning:layoutItem size="12" class="slds-p-top_small">
+                        {!item.value}
+					</lightning:layoutItem>
+					<!--<lightning:layoutItem size="12" class="slds-p-vertical_small">
+						<lightning:layout multipleRows="true">
+							<aura:iteration items="{!item.data}" var="regions">
+									<lightning:layoutItem size="6" mediumDeviceSize="6" largeDeviceSize="4" class="slds-p-bottom_small">
+										<c:IntelLink url="{! regions.link}" openInBlank="true">{!regions.value}</c:IntelLink>
+									</lightning:layoutItem>
+							</aura:iteration>
+						</lightning:layout>
+					</lightning:layoutItem>-->
+			</aura:iteration>
+	</lightning:layout>
+
+	</aura:if>
+	<aura:if isTrue="{!v.type == 'resources'}">
+		<c:MarketPlaceAccordion allowMultipleSectionsOpen="false" theme="resource">
+			<aura:iteration items="{!v.data}" var="faq" indexVar="idx">
+				<c:MarketPlaceAccordionSection name="{!'faq-' + idx}" label="{!faq.title}">
+					<p class="slds-p-vertical_medium slds-p-horizontal_small">
+						{!faq.content}
+					</p>
+				</c:MarketPlaceAccordionSection>
+			</aura:iteration>
+		</c:MarketPlaceAccordion>
+
+	</aura:if>
+
+
+
+
+</aura:component>

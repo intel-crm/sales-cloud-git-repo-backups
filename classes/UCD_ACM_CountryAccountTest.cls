@@ -9,7 +9,7 @@ public class UCD_ACM_CountryAccountTest {
         List <UCD_ACM_Models.BusinessOrganizationResponseforService> responseModel = new List <UCD_ACM_Models.BusinessOrganizationResponseforService>();
     	accountRequest.add(UCD_ACM_AccountTestData.getAccountModel('TestAccount1','UNFD_CTRY_CUST','DIR_PRC_EXCPT','Test','Test@test.com','India',''));
         test.startTest();
-        responseModel = accountCountryInstance.createBusinessOrganizationRequest(accountRequest,invalidResponse);
+        responseModel = accountCountryInstance.createBusinessOrganizationRequest(accountRequest,validAccounts,invalidResponse);
         system.assertEquals('India', responseModel[0].CountryName);
         test.stopTest();
     }
@@ -22,7 +22,7 @@ public class UCD_ACM_CountryAccountTest {
         List <UCD_ACM_Models.BusinessOrganizationResponseforService> responseModel = new List <UCD_ACM_Models.BusinessOrganizationResponseforService>();
         accountRequest.add(UCD_ACM_AccountTestData.getAccountModel('TestAccount','UNFD_CTRY_CUST','DIR_PRC_EXCPT','Test','Test@test.com','India','IND'));
         test.startTest();
-        responseModel = accountCountryInstance.createBusinessOrganizationRequest(accountRequest,invalidResponse);
+        responseModel = accountCountryInstance.createBusinessOrganizationRequest(accountRequest,validAccounts,invalidResponse);
         system.assertEquals('TestAccount', responseModel[0].AccountData.Name); 
         test.stopTest();
     }

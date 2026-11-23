@@ -104,9 +104,24 @@
     <columns>
         <field>FULL_NAME</field>
     </columns>
+    <columns>
+        <field>Opportunity.Core_Technical_Owner__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Consumption_Market__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Product_Application__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Solution_Type__c</field>
+    </columns>
+    <columns>
+        <field>STAGE_NAME</field>
+    </columns>
     <description>APJ 2020 opportunities where HPE SDMS are team members and the vendor name is HPE (and its aliases)</description>
     <filter>
-        <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6</booleanFilter>
+        <booleanFilter>1 AND 2 AND 3 AND 4 AND 5</booleanFilter>
         <criteriaItems>
             <column>OpportunityLineItem.Core_Vendor__c</column>
             <columnToColumn>false</columnToColumn>
@@ -133,7 +148,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>Qualify,Define,Develop,Design,Lost,Cancelled,Production Lost,Production Cancelled</value>
+            <value>Lost,Cancelled</value>
         </criteriaItems>
         <criteriaItems>
             <column>OpportunityLineItem.Core_Status__c</column>
@@ -141,13 +156,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
             <value>Lost,Cancelled,Deleted,Production Lost,Production Cancelled</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>DCG</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -164,7 +172,7 @@
     </params>
     <params>
         <name>open</name>
-        <value>closedwon</value>
+        <value>all</value>
     </params>
     <params>
         <name>probability</name>
@@ -179,8 +187,12 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
+    <sortColumn>Account.Core_Account_Country__c</sortColumn>
+    <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_PREVFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

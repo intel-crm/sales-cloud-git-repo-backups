@@ -9,19 +9,6 @@
         <value>Journaux de transfert de compte</value>
     </caseValues>
     <fields>
-        <label><!-- Activity Reverse Transfer Indicator --></label>
-        <name>Core_MDF_Activity_Reverse_Transfer_Ind__c</name>
-    </fields>
-    <fields>
-        <label><!-- Budget Type --></label>
-        <name>Core_MDF_Budget_Type_Txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Co-Marketing Activity --></label>
-        <name>Core_MDF_Co_Marketing_Activity__c</name>
-        <relationshipLabel><!-- Account Transfer Logs --></relationshipLabel>
-    </fields>
-    <fields>
         <label><!-- Created By --></label>
         <name>Core_MDF_CreatedBy_Nm__c</name>
     </fields>
@@ -70,10 +57,6 @@
         <picklistValues>
             <masterLabel>Auto</masterLabel>
             <translation><!-- Auto --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Auto-Activity</masterLabel>
-            <translation><!-- Auto-Activity --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Manual</masterLabel>

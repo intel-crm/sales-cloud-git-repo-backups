@@ -752,7 +752,7 @@
         <field>BucketField_34924917</field>
     </columns>
     <filter>
-        <booleanFilter>((1 AND 2 AND 3 AND 4 AND (5 OR 11)) AND (6 OR 7 OR 8 OR 9)) AND 10 AND 12 AND 13</booleanFilter>
+        <booleanFilter>(((1 AND 2 AND 3 AND 4 AND (5 OR 11) ) AND (6 OR 7 OR 8 OR 9)) AND 10)</booleanFilter>
         <criteriaItems>
             <column>Case.Core_Product_Organization__c</column>
             <columnToColumn>false</columnToColumn>
@@ -821,7 +821,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>lessThan</operator>
-            <value>11/6/2024 12:00 AM</value>
+            <value>6/16/2020 12:00 AM</value>
         </criteriaItems>
         <criteriaItems>
             <column>Case.Core_IPS_Escalated_Level__c</column>
@@ -829,20 +829,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value></value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Case.Core_IPS_Assigned_Queue__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>-FACR</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OWNER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>Test IPS</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

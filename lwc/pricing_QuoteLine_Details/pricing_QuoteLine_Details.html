@@ -1,0 +1,25 @@
+<template>
+	<!-- <lightning-layout multiple-rows> -->
+		<lightning-card title="Quote Line Details" icon-name="custom:custom26">
+			<!-- New Quote Line button goes here -->
+			<!-- <lightning-button variant="neutral" label="New Quote Line" title="New Quote Line"
+				slot="actions" onclick={createNewQuoteLine}></lightning-button> -->
+				<div slot="actions">
+					<template if:true={hasCreateAccess}>
+						<c-pricing_-manage_-new_-quote-line record-id={recordId} ></c-pricing_-manage_-new_-quote-line>
+					</template>					
+				</div>			
+
+			<lightning-layout-item size="12" class="slds-p-top_small slds-is-relative">
+				<!-- Spinner goes here -->
+				<template if:true={isLoading}>
+					<lightning-spinner alternative-text="Loading" variant="brand"></lightning-spinner>
+				</template>
+				<!-- quoteline SearchResults goes here -->
+				<c-quoteline-search-results onloading={handleLoading} ondoneloading={handleDoneLoading}
+					record-id={recordId}></c-quoteline-search-results>
+			</lightning-layout-item>
+
+		</lightning-card>
+	<!-- </lightning-layout> -->
+</template>

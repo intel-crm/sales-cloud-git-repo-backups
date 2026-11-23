@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Stores the claim window for CCP Program.</description>
+    <fields>
+        <fullName>Core_MDF_Accounts_To_Be_Audited_txt__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Accounts To Be Audited</label>
+        <length>131072</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Activity_Type_Percentage_nbr__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Activity Type Percentage</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Activity_Types_txt__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Activity Types</label>
+        <length>32768</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Amount__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Threshold Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Amount_nbr__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Baseline_Random_Number__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Baseline Random Number</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Budget_Percentage_nbr__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Budget Percentage</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Budget_Type_Txt__c</fullName>
+        <description>Stores budget type of the program (currently applicable for RMF only)</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Budget Type</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Retail MDF</fullName>
+                    <default>false</default>
+                    <label>Retail MDF</label>
+                </value>
+                <value>
+                    <fullName>RSA MD</fullName>
+                    <default>false</default>
+                    <label>RSA MD</label>
+                </value>
+                <value>
+                    <fullName>NA</fullName>
+                    <default>true</default>
+                    <label>NA</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Case_SLA_Nbr__c</fullName>
+        <description>Stores the SLA for the Auditors to close the case</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Case SLA</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Claim_Window__c</fullName>
+        <description>Stores the claim window in months.</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Claim Window</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Enable_Predictive_Audit__c</fullName>
+        <defaultValue>true</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Enable Predictive Audit</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Enable_Random_Audit__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Enable Random Audit</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Mark_All_Claims_For_Predictive__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Mark All Claims For Predictive</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Multicurrency_Batch_Indicator__c</fullName>
+        <defaultValue>true</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Multicurrency Batch Indicator</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Predictive_Audit__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Predictive Audit</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Program_Txt__c</fullName>
+        <description>Stores the Program Name</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Program Text</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Program__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Program</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Client CoMarketing Fund</fullName>
+                    <default>true</default>
+                    <label>Client Co-Marketing Fund</label>
+                </value>
+                <value>
+                    <fullName>Data Center CoMarketing Fund</fullName>
+                    <default>false</default>
+                    <label>Data Center Co-Marketing Fund</label>
+                </value>
+                <value>
+                    <fullName>Service Provider CoMarketing Fund</fullName>
+                    <default>false</default>
+                    <label>Service Provider Co-Marketing Fund</label>
+                </value>
+                <value>
+                    <fullName>Client CoMarketing Fund Boost</fullName>
+                    <default>false</default>
+                    <label>Client Co-Marketing Fund Boost</label>
+                </value>
+                <value>
+                    <fullName>Retail Marketing Funds</fullName>
+                    <default>false</default>
+                    <label>Retail Marketing Funds</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Random_Audit__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Random Audit</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Region_nm__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Region</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>APJ</fullName>
+                    <default>false</default>
+                    <label>APJ</label>
+                </value>
+                <value>
+                    <fullName>ASMO</fullName>
+                    <default>false</default>
+                    <label>ASMO</label>
+                </value>
+                <value>
+                    <fullName>EMEA</fullName>
+                    <default>false</default>
+                    <label>EMEA</label>
+                </value>
+                <value>
+                    <fullName>PRC</fullName>
+                    <default>false</default>
+                    <label>PRC</label>
+                </value>
+                <value>
+                    <fullName>NA</fullName>
+                    <default>true</default>
+                    <label>NA</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Submission_SLA_Nbr__c</fullName>
+        <description>Stores the SLA given to Claim Submitter to submit the documents for Audit</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Submission SLA</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Target_Percentage__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Target Percentage</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_isEligibleForBatchAudit_ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>is Eligible For Batch Audit</label>
+        <type>Checkbox</type>
+    </fields>
+    <label>CCP Claim Window</label>
+    <pluralLabel>CCP Claim Windows</pluralLabel>
+    <validationRules>
+        <fullName>Core_MDF_Baseline_Random_Number</fullName>
+        <active>true</active>
+        <errorConditionFormula>(100 / Core_MDF_Target_Percentage__c) &lt; Core_MDF_Baseline_Random_Number__c</errorConditionFormula>
+        <errorMessage>Baseline Random Number should be less than or equal to 100/ Target Percentage</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_MDF_Check_Empty_Fields</fullName>
+        <active>true</active>
+        <errorConditionFormula>OR(ISNULL(Core_MDF_Target_Percentage__c),ISNULL(Core_MDF_Baseline_Random_Number__c),ISNULL( Core_MDF_Amount__c ))</errorConditionFormula>
+        <errorMessage>Please provide values for Target Percentage, Baseline Random Number, Threshold Amount</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+</CustomObject>

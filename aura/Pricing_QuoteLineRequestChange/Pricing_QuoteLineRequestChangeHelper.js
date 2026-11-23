@@ -21,7 +21,6 @@
         // $Label.c.Pricing_Tender_CR_priceStrDateError
         // $Label.c.Pricing_Tender_CR_negativevalueError
         // $Label.c.Pricing_Tender_CR_negativeQtrvalueError
-
         component.find('mySpinner').set('v.class', 'slds-show');
         component.set('v.isSpinner', true);
         let allValid;
@@ -48,13 +47,11 @@
                     return validSoFar && !inputCmp.get('v.validity').valueMissing;
                 }, true);
         }
-
         if (!allValid) {
             component.find('mySpinner').set('v.class', 'slds-hide');
             component.set('v.isSpinner', false);
             return;
         }
-
         //  Clear our errors during Submission        
         const oldQuoteLine = component.get('v.oldQuoteLine');
         let addComment = component.get('v.isValidAddComment'); //NOSONAR
@@ -64,7 +61,6 @@
         let isApprovedStartDateChange = component.get('v.approvedStartDateChange'); //NOSONAR
         component.set('v.errors', []);
         let errorList = []; //NOSONAR
-
         //Validate the non Latin characters
         if ((addComment === 'true') || (dealDesc === 'true') || (additionalTs === 'true') || (isValidRecipients === 'true')) {
             allValid = false;
@@ -77,20 +73,15 @@
                 quoteLine.Pricing_New_Quantity_qty__c == quoteLine.Pricing_Approved_Unit_Qty__c &&
                 quoteLine.Pricing_Request_Discount_Unit_Price_qty__c == quoteLine.Pricing_ECAP_Price_Amt__c &&
                 quoteLine.Pricing_Start_Date_dt__c === quoteLine.Pricing_Approved_Start_Date_Dt__c &&
-
                 quoteLine.Pricing_Consumption_Platform__c === oldQuoteLine.Pricing_Consumption_Platform__c &&
                 quoteLine.Pricing_Consumption_Sale_Geo__c === oldQuoteLine.Pricing_Consumption_Sale_Geo__c &&
                 quoteLine.Pricing_Consumption_Region__c === oldQuoteLine.Pricing_Consumption_Region__c &&
                 quoteLine.Pricing_Consumption_Country__c === oldQuoteLine.Pricing_Consumption_Country__c &&
                 quoteLine.Pricing_Consumption_Segment__c === oldQuoteLine.Pricing_Consumption_Segment__c &&
-
                 isRPMUser === false && (isFIPMUser === false && quoteLine.Pricing_Program_Type_Nm__c !== $A.get('$Label.c.Pricing_Tender_FinancialIncentive_Quote'))) {
                 const noChangeError = $A.get('$Label.c.Pricing_Tender_CR_No_Changes_Error');
                 errorList.push(noChangeError);
             }
-
-            quoteLine.Pricing_Backdate_Reason_Txt__c = quoteLine.Pricing_Backdate_Reason_Txt__c != undefined ? quoteLine.Pricing_Backdate_Reason_Txt__c : '';
-                
             // Check if user change the date or quantity if there no change no need of request..
             if (quoteLine.Pricing_Approved_Start_Date_Dt__c === oldQuoteLine.Pricing_Approved_Start_Date_Dt__c &&
                 quoteLine.Pricing_Approved_End_Date_Dt__c === oldQuoteLine.Pricing_Approved_End_Date_Dt__c &&
@@ -102,31 +93,25 @@
                 quoteLine.Pricing_Backdate_Reason_Txt__c === oldQuoteLine.Pricing_Backdate_Reason_Txt__c &&
                 quoteLine.Pricing_Additional_T_C_s_Txt__c === oldQuoteLine.Pricing_Additional_T_C_s_Txt__c &&
                 quoteLine.Pricing_Deal_Description__c === oldQuoteLine.Pricing_Deal_Description__c &&
-
                 quoteLine.Pricing_Consumption_Platform__c === oldQuoteLine.Pricing_Consumption_Platform__c &&
                 quoteLine.Pricing_Consumption_Sale_Geo__c === oldQuoteLine.Pricing_Consumption_Sale_Geo__c &&
                 quoteLine.Pricing_Consumption_Region__c === oldQuoteLine.Pricing_Consumption_Region__c &&
                 quoteLine.Pricing_Consumption_Country__c === oldQuoteLine.Pricing_Consumption_Country__c &&
                 quoteLine.Pricing_Consumption_Segment__c === oldQuoteLine.Pricing_Consumption_Segment__c &&
                 quoteLine.Pricing_Product_Nm__c === oldQuoteLine.Pricing_Product_Nm__c &&
-
                 (isRPMUser === true && quoteLine.Pricing_Quote_Program_Nm__c === $A.get('$Label.c.Pricing_Tender_Quote_Program'))) {
                 const norpmChangeError = $A.get('$Label.c.Pricing_Tender_RPMCR_No_Changes_Error');
                 errorList.push(norpmChangeError);
             }
-
             if (quoteLine.Pricing_Approved_Start_Date_Dt__c === oldQuoteLine.Pricing_Approved_Start_Date_Dt__c &&
                 quoteLine.Pricing_Approved_End_Date_Dt__c === oldQuoteLine.Pricing_Approved_End_Date_Dt__c &&
                 quoteLine.Pricing_Approved_Unit_Qty__c == oldQuoteLine.Pricing_Approved_Unit_Qty__c &&
                 quoteLine.Pricing_Additional_T_C_s_Txt__c === oldQuoteLine.Pricing_Additional_T_C_s_Txt__c &&
                 quoteLine.Pricing_Additional_Comments_Txt__c === oldQuoteLine.Pricing_Additional_Comments_Txt__c &&
-
                 (isFIPMUser === true && quoteLine.Pricing_Program_Type_Nm__c === $A.get('$Label.c.Pricing_Tender_FinancialIncentive_Quote'))) {
                 const noFIrpmChangeError = $A.get('$Label.c.Pricing_Tender_FIRPMCR_No_Changes_Error');
                 errorList.push(noFIrpmChangeError);
             }
-
-
             // added by Anusha M for the US836420
             if (isRPMUser === true || (isFIPMUser === true && quoteLine.Pricing_Program_Type_Nm__c === $A.get('$Label.c.Pricing_Tender_FinancialIncentive_Quote'))) {
                 // check if Approved Quantity must be greater than zero
@@ -146,42 +131,35 @@
                 }
                 // check if Billing End Date cannot be earlier than the Billing Start Date.
                 if (quoteLine.Pricing_Billing_End_Date_Dt__c < quoteLine.Pricing_Billing_Start_Date_Dt__c) {
-
                     const billingDateError = $A.get('$Label.c.Pricing_Tender_CR_billingDateError');
                     errorList.push(billingDateError);
                 }
                 // check if Billing End Date cannot be later than the Approved Pricing End Date.
                 if (quoteLine.Pricing_Billing_End_Date_Dt__c > quoteLine.Pricing_Approved_End_Date_Dt__c) {
-
                     const billingApprovedDateError = $A.get('$Label.c.Pricing_Tender_CR_billingApprovedDateError');
                     errorList.push(billingApprovedDateError);
                 }
                 // check if Billing Start Date cannot be later than the Approved Pricing Start Date.
                 if (quoteLine.Pricing_Billing_Start_Date_Dt__c > quoteLine.Pricing_Approved_Start_Date_Dt__c) {
-
                     const billingApprovedDateError = $A.get('$Label.c.Pricing_Tender_CR_billingApprovedStrDateError');
                     errorList.push(billingApprovedDateError);
                 }
                 //check if Back Date Reason Cannot be editable when Approved start Date is in Past
-
                 const backDateReasonSelected = component.get('v.quoteLine.Pricing_Backdate_Reason_Txt__c');
                 if (isApprovedStartDateChange === 'true' && quoteLine.Pricing_Program_Type_Nm__c != 'Financial Incentive' && quoteLine.Pricing_Approved_Start_Date_Dt__c < todayDateValue && (backDateReasonSelected === '' || backDateReasonSelected === oldQuoteLine.Pricing_Backdate_Reason_Txt__c)) {
                     const backDateReasonError = $A.get('$Label.c.Pricing_Tender_CR_backDateReasonError');
                     errorList.push(backDateReasonError);
                 }
                 if (quoteLine.Pricing_Approved_End_Date_Dt__c < quoteLine.Pricing_Approved_Start_Date_Dt__c) {
-
                     const approved_EndDt_Before_Approved_StartDtError = $A.get('$Label.c.Pricing_Tender_CR_approvedEndDtBeforeApprovedStartDtError');
                     errorList.push(approved_EndDt_Before_Approved_StartDtError);
                 }
                 // check for Inflight anf Future Deal Approved end date cannot be earlier than approved start Date
-
                 if (isInflightFutureDeal === 'true' &&
                     (quoteLine.Pricing_Approved_End_Date_Dt__c !== null
                         &&/*(isApprovedEndDateChange == true || isApprovedEndDateChange == true) &&*/
                         (quoteLine.Pricing_Approved_End_Date_Dt__c < quoteLine.Pricing_Approved_Start_Date_Dt__c) ||
                         (quoteLine.Pricing_Approved_End_Date_Dt__c < todayDateValue))) {
-
                     const approveEndDtInflightFutureError = $A.get('$Label.c.Pricing_Tender_CR_approveEndDtInflightFutureError');
                     errorList.push(approveEndDtInflightFutureError);
                 }
@@ -215,29 +193,24 @@
                         && quoteLine.Pricing_Payable_Quantity__c === oldQuoteLine.Pricing_Payable_Quantity__c
                         && quoteLine.Pricing_Approved_Start_Date_Dt__c === oldQuoteLine.Pricing_Approved_Start_Date_Dt__c
                         && quoteLine.Pricing_ECAP_Price_Amt__c === oldQuoteLine.Pricing_ECAP_Price_Amt__c)) {
-
                     const MeetCompPriceandEffectiveStartDatevalueError = $A.get('$Label.c.Pricing_Tender_CR_MeetCompPriceandEffectiveStartDatevalueError');
                     errorList.push(MeetCompPriceandEffectiveStartDatevalueError);
                 }
-
                 //Effective Pricing Start Date mandatory check
                 if (quoteLine.Pricing_Revised_Pricing_Start_Date_dt__c !== oldQuoteLine.Pricing_Revised_Pricing_Start_Date_dt__c && quoteLine.Pricing_Revised_Pricing_Start_Date_dt__c == null) {
                     const effectiveDateMandatoryError = $A.get('$Label.c.Pricing_QLI_EffectiveDateRequired_ErrorMsg');
                     errorList.push(effectiveDateMandatoryError);
                 }
-
                 if (quoteLine.Pricing_Quote_Program_Nm__c == 'Tender' && quoteLine.Pricing_Consumption_Sale_Geo__c !== '' && (quoteLine.Pricing_Consumption_Country__c !== '' || quoteLine.Pricing_Consumption_Region__c !== '')) {
                     const consumptionError = $A.get('$Label.c.Pricing_Consumption_CountrySalesGeo_Error');
                     errorList.push(consumptionError);
                 }
-
                 // Add Product check is marked but product is not selected 
                 let selectedProdName = component.get("v.selectedProduct");
                 if (component.get("v.isFieldEnabled") && (selectedProdName.Name == 'Write In Product' || selectedProdName.Name == '' || quoteLine.Pricing_Product_Nm__c == oldQuoteLine.Pricing_Product_Nm__c)) {
                     const productError = 'Please Select Product';
                     errorList.push(productError);
                 }
-
                 //Billing Date Quarter validation
                 const action = component.get('c.billingStartDateCheck');
                 action.setParams({ quoteLine: quoteLine });
@@ -267,7 +240,6 @@
                         this.createChangeRequest(component, event);
                     }
                 });
-
                 //$A.enqueueAction(action);
                 $A.enqueueAction(action);
             }
@@ -277,7 +249,6 @@
                     const pastDateError = $A.get('$Label.c.Pricing_Tender_CR_Past_Date_Error');
                     errorList.push(pastDateError);
                 }
-
                 if (isApprovedStartDatePast === false && quoteLine.Pricing_Start_Date_dt__c < todayDateValue) {
                     const pastDateError = $A.get('$Label.c.Pricing_Tender_CR_StartDate_Past_Error');
                     errorList.push(pastDateError);
@@ -299,12 +270,10 @@
                     const negativevalueError = $A.get('$Label.c.Pricing_Tender_CR_negativeQtrvalueError');
                     errorList.push(negativevalueError);
                 }
-
                 if (quoteLine.Pricing_Quote_Program_Nm__c == 'Tender' && quoteLine.Pricing_Consumption_Sale_Geo__c !== '' && (quoteLine.Pricing_Consumption_Country__c !== '' || quoteLine.Pricing_Consumption_Region__c !== '')) {
                     const consumptionError = $A.get('$Label.c.Pricing_Consumption_CountrySalesGeo_Error');
                     errorList.push(consumptionError);
                 }
-
                 //Validate all the FSE from Quote Team
                 const validateFSEAction = component.get('c.validateQuoteTeamFSE');
                 validateFSEAction.setParams({ quoteLine: quoteLine });
@@ -331,9 +300,7 @@
                         this.createChangeRequest(component, event);
                     }
                 });
-
                 $A.enqueueAction(validateFSEAction);
-
             }
             // consumption param 
             let platformOptions = Array.from(component.get('v.platformOptions'));
@@ -345,28 +312,22 @@
             let regionOldValues = (oldQuoteLine.Pricing_Consumption_Region__c != null) && (oldQuoteLine.Pricing_Consumption_Region__c != undefined) && (oldQuoteLine.Pricing_Consumption_Region__c != "") ? oldQuoteLine.Pricing_Consumption_Region__c.split(", ") : [];
             let segmentOldValues = (oldQuoteLine.Pricing_Consumption_Segment__c != null) && (oldQuoteLine.Pricing_Consumption_Segment__c != undefined) && (oldQuoteLine.Pricing_Consumption_Segment__c != "") ? oldQuoteLine.Pricing_Consumption_Segment__c.split(", ") : [];
             let errors = ['Can not delete the existing '];
-
             if (oldQuoteLine.Pricing_Status_Nm__c === 'Won') {
                 if (!regionOldValues.every(oldValue => quoteLine.Pricing_Consumption_Region__c.split(', ').includes(oldValue))) {
                     errors.push('Consumption Region');
                 }
-
                 if (!segmentOldValues.filter(item => segmentOptions.includes(item)).every(oldValue => quoteLine.Pricing_Consumption_Segment__c.split(', ').includes(oldValue))) {
                     errors.push('Consumption Segment');
                 }
-
                 if (!countryOldValues.every(oldValue => quoteLine.Pricing_Consumption_Country__c.split(', ').includes(oldValue))) {
                     errors.push('Consumption Country');
                 }
-
                 if (!salesGeoOldValues.filter(item => salesGeoOptions.includes(item)).every(oldValue => quoteLine.Pricing_Consumption_Sale_Geo__c.split(', ').includes(oldValue))) {
                     errors.push('Consumption Sales Geo');
                 }
-
                 if (!platformOldValues.filter(item => platformOptions.includes(item)).every(oldValue => quoteLine.Pricing_Consumption_Platform__c.split(', ').includes(oldValue))) {
                     errors.push('Consumption Platform');
                 }
-
                 if (errors.length > 1) {
                     errorList.push(errors.join(', '));
                 }
@@ -407,7 +368,6 @@
             quoteLine: quoteLineObject,
             action: component.get('v.action'),
         });
-
         cloneAction.setCallback(this, function (response) {
             const state = response.getState();
             if (component.isValid()) {
@@ -446,7 +406,6 @@
                                 mode: 'dismissible',
                             });
                         }
-
                     } else {
                         //todo if result === null
                         component.set('v.isSpinner', false);

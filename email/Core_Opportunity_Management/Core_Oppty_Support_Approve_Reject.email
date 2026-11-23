@@ -1,28 +1,10 @@
-<messaging:emailTemplate subject="{!CASE(relatedTo.Core_Status__c,
-  'Approved','Approved',
-  'Rejected','Rejected',
- '')+' Opportunity Support Request ('+IF(relatedTo.RecordType.DeveloperName = 'Core_CSA_RecordType' ,'CSA',IF(relatedTo.RecordType.DeveloperName = 'Core_TSS_Request', LEFT(relatedTo.Core_TSS_Support_Type__c, LEN(relatedTo.Core_TSS_Support_Type__c) - 8),IF(relatedTo.RecordType.DeveloperName = 'Core_Center_of_Excellence_Request','COE','')))+') : ' +relatedTo.Opportunity__r.Account.Name+' - '+relatedTo.Opportunity__r.Name}" recipientType="User" relatedToType="Core_Opportunity_Support__c"><messaging:htmlEmailBody >
+<messaging:emailTemplate subject="{!relatedTo.Core_Status__c+' Opportunity Support Request ('+IF(relatedTo.RecordType.DeveloperName = 'Core_CSA_RecordType' ,'CSA',IF(relatedTo.RecordType.DeveloperName = 'Core_TSS_Request',LEFT(relatedTo.Core_TSS_Support_Type__c, LEN(relatedTo.Core_TSS_Support_Type__c) - 8),IF(relatedTo.RecordType.DeveloperName = 'Core_Center_of_Excellence_Request','COE','')))+'): '+relatedTo.Opportunity__r.Account.Name+' - '+relatedTo.Opportunity__r.Name}" recipientType="User" relatedToType="Core_Opportunity_Support__c"><messaging:htmlEmailBody >
  <table style="background-color: #0071c5;" width="100%">
    <tbody>
     <tr>
       <td style="padding-left: 50px; border: none;">
         <div style="color: white;">
-          <h1><apex:outputPanel rendered="{!relatedTo.Core_Status__c = 'Approved'}">
-           Approved
-           </apex:outputPanel>
-          <apex:outputPanel rendered="{!relatedTo.Core_Status__c = 'Rejected'}">
-          Rejected
-          </apex:outputPanel>
-             Opportunity Support Request <apex:outputPanel rendered="{!relatedTo.RecordType.DeveloperName = 'Core_CSA_RecordType'}">
-            CSA
-            </apex:outputPanel>
-           <apex:outputPanel rendered="{!relatedTo.RecordType.DeveloperName = 'Core_TSS_Request'}">
-            {!LEFT(relatedTo.Core_TSS_Support_Type__c, LEN(relatedTo.Core_TSS_Support_Type__c) - 8)}
-            </apex:outputPanel>
-           <apex:outputPanel rendered="{!relatedTo.RecordType.DeveloperName = 'Core_Center_of_Excellence_Request'}">
-           COE
-           </apex:outputPanel>
-             </h1>
+           <h1>{!relatedTo.Core_Status__c} Opportunity Support Request {!( IF(relatedTo.RecordType.DeveloperName = 'Core_CSA_RecordType' ,'CSA',IF(relatedTo.RecordType.DeveloperName = 'Core_TSS_Request',LEFT(relatedTo.Core_TSS_Support_Type__c, LEN(relatedTo.Core_TSS_Support_Type__c) - 8),IF(relatedTo.RecordType.DeveloperName = 'Core_Center_of_Excellence_Request','COE',''))))}!</h1>
          </div>
         </td>
         <td style="border: none; padding-right: 20px;" align="right">
@@ -37,19 +19,7 @@
   <tr>
     <td>
      Dear Opportunity Owner/Requestor/Approvers,<br/><br/>
-     <apex:outputPanel rendered="{!relatedTo.RecordType.DeveloperName = 'Core_CSA_RecordType'}">
-            CSA
-            </apex:outputPanel>
-           <apex:outputPanel rendered="{!relatedTo.RecordType.DeveloperName = 'Core_TSS_Request'}">
-            TSS
-            </apex:outputPanel>
-           <apex:outputPanel rendered="{!relatedTo.RecordType.DeveloperName = 'Core_Center_of_Excellence_Request'}">
-           COE
-           </apex:outputPanel> support has been {!CASE(relatedTo.Core_Status__c,
-  'Approved','Approved',
-  'Rejected','Rejected',
-  '')}
-   for the below Opportunity. Please find the link to the Support Request and Opportunity Information below: 
+     {!(LEFT(relatedTo.RecordType.Name,3))} support has been {!relatedTo.Core_Status__c} for the below Opportunity. Please find the link to the Support Request and Opportunity Information below: 
      <br/>
      <br/>
      </td>
@@ -122,9 +92,7 @@
    </tr>
    </tbody>
    </table>
-      
-    <c:Core_oppty_fetchLineItems opportunityIDForController="{!relatedTo.Opportunity__r.Id}"/>
-  
+    <c:Core_oppty_fetchLineItems opportunityIDForController="{!relatedTo.Opportunity__r.Id}"/>  
     <table style="border: 1px solid #d3d3d3;padding-left:50px;padding-top:5px;padding-bottom:5px;font-size: 20px;" width="100%">
   <tr>
     <td>
@@ -149,18 +117,7 @@
     </td>
    </tr>
    <tr>
-    <td style="border: 1px solid #cecfd5;width:10%;" width="30%"> 
-    <apex:outputPanel rendered="{!relatedTo.RecordType.DeveloperName = 'Core_CSA_RecordType'}">
-            CSA
-            </apex:outputPanel>
-           <apex:outputPanel rendered="{!relatedTo.RecordType.DeveloperName = 'Core_TSS_Request'}">
-            TSS
-            </apex:outputPanel>
-           <apex:outputPanel rendered="{!relatedTo.RecordType.DeveloperName = 'Core_Center_of_Excellence_Request'}">
-           COE
-           </apex:outputPanel>
-             
-    Resource Assigned </td>
+    <td style="border: 1px solid #cecfd5;width:10%;" width="30%">{!(LEFT(relatedTo.RecordType.Name,3))} Resource Assigned </td>
     <td style="border: 1px solid #cecfd5;width:10%;" width="70%">
     <apex:repeat var="cx" value="{!relatedTo.Core_Opportunity_Support_Team__r}">
     {!cx.Core_Opportunity_Support_Team_Member__r.Name}

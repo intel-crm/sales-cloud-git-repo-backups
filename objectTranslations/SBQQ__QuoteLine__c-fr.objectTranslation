@@ -9,6 +9,46 @@
         <value>Lignes de devis</value>
     </caseValues>
     <fieldSets>
+        <label><!-- PSG BM Field set --></label>
+        <name>PSG_BM_Field_set</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- PSG BO Field Set Drawer --></label>
+        <name>PSG_BO_Field_Set_Drawer</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- PSG BO Field set --></label>
+        <name>PSG_BO_Field_set</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- PSG_Fieldset_SOS --></label>
+        <name>PSG_Fieldset_SOS</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- PSG SOS Field Set DR --></label>
+        <name>PSG_SOS_Field_Set_DR</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- PSG SOS Field Set DR with Comp --></label>
+        <name>PSG_SOS_Field_Set_DR_with_Comp</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- PSG SOS Field Set No DR --></label>
+        <name>PSG_SOS_Field_Set_No_DR</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- PSG SOS Field Set No DR with Comp --></label>
+        <name>PSG_SOS_Field_Set_No_DR_with_Comp</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- PSG TOOLS FIELD SET --></label>
+        <name>PSG_TOOLS_FIELD_SET</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- PSG View --></label>
+        <name>PSG_View</name>
+    </fieldSets>
+    <fieldSets>
         <label><!-- Client-Additional Details --></label>
         <name>Pricing_Client_Additional_Details</name>
     </fieldSets>
@@ -63,6 +103,26 @@
     <fieldSets>
         <label><!-- Default-Payment --></label>
         <name>Pricing_Default_Payment</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- GPU-Additional Details --></label>
+        <name>Pricing_GPU_Additional_Details</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- GPU-MyDeals-Int --></label>
+        <name>Pricing_GPU_MyDeals_Int</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- GPU-Performance Metric --></label>
+        <name>Pricing_GPU_Performance_Metric</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- GPU RPM-Approved Details --></label>
+        <name>Pricing_GPU_RPM_Approved_Details</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- GPU RPM-MyDeals Section --></label>
+        <name>Pricing_GPU_RPM_MyDeals_Section</name>
     </fieldSets>
     <fieldSets>
         <label><!-- NIC-AdditionalDetails --></label>
@@ -121,6 +181,10 @@
         <name>Pricing_SVD_Intel_Product_Info</name>
     </fieldSets>
     <fieldSets>
+        <label><!-- Pricing_SW PLI QL Line Editor --></label>
+        <name>Pricing_SW_PLI_QL_Line_Editor</name>
+    </fieldSets>
+    <fieldSets>
         <label><!-- Pricing_SW QL Line Editor --></label>
         <name>Pricing_SW_QL_Line_Editor</name>
     </fieldSets>
@@ -135,6 +199,10 @@
     <fieldSets>
         <label><!-- Standard-Intel Product Info --></label>
         <name>Pricing_Standard_Intel_Product_Info</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- ReferencedFields --></label>
+        <name>ReferencedFields</name>
     </fieldSets>
     <fieldSets>
         <label><!-- Related List on Opportunity --></label>
@@ -173,6 +241,18 @@
         <name>SBQQ__SummaryFields</name>
     </fieldSets>
     <fields>
+        <label><!-- Biswa --></label>
+        <name>Biswa__c</name>
+    </fields>
+    <fields>
+        <label><!-- Change RequestType --></label>
+        <name>Change_RequestType__c</name>
+    </fields>
+    <fields>
+        <label><!-- Material Id --></label>
+        <name>Core_Item_Id__c</name>
+    </fields>
+    <fields>
         <label><!-- OPN --></label>
         <name>Core_OPN__c</name>
     </fields>
@@ -193,6 +273,22 @@
         <name>PSG_Disty_Cost_nbr__c</name>
     </fields>
     <fields>
+        <label><!-- test3 --></label>
+        <name>PSG_MSVP_L1_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- test2 --></label>
+        <name>PSG_MSVP_L2_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- test1 --></label>
+        <name>PSG_Price_Eligibility_Date_dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- test4 --></label>
+        <name>PSG_Std_Fwd_Cost_Amt__c</name>
+    </fields>
+    <fields>
         <help><!-- Selecting an Account Division limits the billings that can be used for this quote to those of the account divisions selected. Leaving Account Divisions blank means all billings are eligible for this quote. --></help>
         <label><!-- Account Division --></label>
         <name>Pricing_Account_Division_Nm__c</name>
@@ -200,6 +296,11 @@
     <fields>
         <label><!-- Intel Account Executive --></label>
         <name>Pricing_Account_Executive_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account ID --></label>
+        <name>Pricing_Account_ID__c</name>
+        <relationshipLabel><!-- Quote Lines (Account ID) --></relationshipLabel>
     </fields>
     <fields>
         <help><!-- Additional comments for the quote line. --></help>
@@ -256,7 +357,7 @@
         <name>Pricing_Approved_Rejected_Month_Txt__c</name>
     </fields>
     <fields>
-        <label><!-- Approved/Rejected Month --></label>
+        <label><!-- Approved/Rejected Month Old --></label>
         <name>Pricing_Approved_Rejected_Month__c</name>
     </fields>
     <fields>
@@ -410,6 +511,10 @@
         <name>Pricing_Comp_SKU_Performance_Nbr__c</name>
     </fields>
     <fields>
+        <label><!-- Pricing Comp SingleSysPrice Invalid --></label>
+        <name>Pricing_Comp_SingleSysPrice_Invalid__c</name>
+    </fields>
+    <fields>
         <help><!-- Assumed price of one competitor system with all components included (in US Dollars). --></help>
         <label><!-- Competitor Single System Price --></label>
         <name>Pricing_Comp_Single_System_Price_Amt__c</name>
@@ -478,9 +583,19 @@
         <name>Pricing_Consumption_Country__c</name>
     </fields>
     <fields>
+        <label><!-- Consumption Look back Period --></label>
+        <name>Pricing_Consumption_Look_back_Period__c</name>
+        <relationshipLabel><!-- Quote Lines (Consumption Look back Period) --></relationshipLabel>
+    </fields>
+    <fields>
         <help><!-- Platform in which the product is integrated into. This field lists OEM specific platforms. To add a new value, reach out to your Sales Rep. --></help>
         <label><!-- Consumption Platform --></label>
         <name>Pricing_Consumption_Platform__c</name>
+    </fields>
+    <fields>
+        <label><!-- Consumption Reason --></label>
+        <name>Pricing_Consumption_Reason__c</name>
+        <relationshipLabel><!-- Quote Lines (Consumption Reason) --></relationshipLabel>
     </fields>
     <fields>
         <help><!-- Country/Region in which the product must be consumed in. If a selection is made in Consumption Country/Region, a selection cannot be made in Customer Sales Geography. --></help>
@@ -634,38 +749,6 @@
     <fields>
         <label><!-- OEM Name test --></label>
         <name>Pricing_FI_OEM_Name_Nm__c</name>
-        <picklistValues>
-            <masterLabel>Acer</masterLabel>
-            <translation><!-- Acer --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Apple</masterLabel>
-            <translation><!-- Apple --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Asus</masterLabel>
-            <translation><!-- Asus --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Dell</masterLabel>
-            <translation><!-- Dell --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>HP</masterLabel>
-            <translation><!-- HP --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Lenovo</masterLabel>
-            <translation><!-- Lenovo --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>OEM Name 2</masterLabel>
-            <translation><!-- OEM Name 2 --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Write In OEM Name</masterLabel>
-            <translation><!-- Write In OEM Name --></translation>
-        </picklistValues>
     </fields>
     <fields>
         <label><!-- Write In OEM Name --></label>
@@ -757,6 +840,11 @@
             <masterLabel>Notebook</masterLabel>
             <translation><!-- Notebook --></translation>
         </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- GPU or Memory Product --></label>
+        <name>Pricing_GPU_or_Memory_Product__c</name>
+        <relationshipLabel><!-- Quote Lines (GPU or Memory Product) --></relationshipLabel>
     </fields>
     <fields>
         <help><!-- For the purpose of PCT, indicates whether quote line can be used in conjunction with other pricing offerings. --></help>
@@ -983,6 +1071,10 @@
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- Material ID --></label>
+        <name>Pricing_Material_ID_Nm__c</name>
+    </fields>
+    <fields>
         <label><!-- My Deals Meet Comp Price --></label>
         <name>Pricing_Meet_Comp_Price_Amt__c</name>
     </fields>
@@ -1015,6 +1107,10 @@
         <name>Pricing_No_of_GPUs_per_system_nbr__c</name>
     </fields>
     <fields>
+        <label><!-- Non-HPC Eligible Pricing Envelope --></label>
+        <name>Pricing_NonHPC_Eligible_Pricing_Envelope__c</name>
+    </fields>
+    <fields>
         <label><!-- Account --></label>
         <name>Pricing_OEM_Account_Nm__c</name>
     </fields>
@@ -1032,7 +1128,7 @@
         <name>Pricing_OEM_Name_FI__c</name>
     </fields>
     <fields>
-        <help><!-- Current OEM standard CPU price (in US Dollars) --></help>
+        <help><!-- Current OEM standard unit price (in US Dollars) --></help>
         <label><!-- Customer Standard Unit Price --></label>
         <name>Pricing_OEM_Standard_Unit_Price_Amt__c</name>
     </fields>
@@ -1169,6 +1265,10 @@
         <relationshipLabel><!-- Quote Lines (Product) --></relationshipLabel>
     </fields>
     <fields>
+        <label><!-- Product Series Check --></label>
+        <name>Pricing_Product_Series_Check__c</name>
+    </fields>
+    <fields>
         <label><!-- Product Series --></label>
         <name>Pricing_Product_Series_Name__c</name>
     </fields>
@@ -1229,7 +1329,7 @@
         <name>Pricing_QuoteLineField__c</name>
     </fields>
     <fields>
-        <label><!-- Quote Line ID --></label>
+        <label><!-- Quote Line Id --></label>
         <name>Pricing_QuoteLine_Id__c</name>
     </fields>
     <fields>
@@ -1274,7 +1374,6 @@
         <name>Pricing_Quote_Total_Requested_Quantity__c</name>
     </fields>
     <fields>
-        <help><!-- Explanation for the recommended price and eligible pricing envelope. Data and deals referenced --></help>
         <label><!-- Rationale for Pricing --></label>
         <name>Pricing_Rationale_for_Pricing__c</name>
     </fields>
@@ -1341,12 +1440,24 @@
         <relationshipLabel><!-- Quote Lines (Reference Quote Line Number) --></relationshipLabel>
     </fields>
     <fields>
-        <help><!-- The region for which billed units will be eligible for rebate if consumed within quote line parameters. If billings from all regions are eligible, select Worldwide. --></help>
+        <help><!-- This field represents which region billed units will be eligible for rebate if consumed within the quote line parameters. If billings from all regions are eligible, select Worldwide. --></help>
         <label><!-- Region --></label>
         <name>Pricing_RegionQL_Nm__c</name>
         <picklistValues>
+            <masterLabel>AMR</masterLabel>
+            <translation><!-- AMR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AMR_SR</masterLabel>
+            <translation><!-- AMR_SR --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>APJ</masterLabel>
             <translation><!-- APJ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>APJ_SR</masterLabel>
+            <translation><!-- APJ_SR --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>ASMO</masterLabel>
@@ -1357,8 +1468,24 @@
             <translation><!-- EMEA --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>EMEA_SR</masterLabel>
+            <translation><!-- EMEA_SR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>India</masterLabel>
+            <translation><!-- India --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>India_SR</masterLabel>
+            <translation><!-- India_SR --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>PRC</masterLabel>
             <translation><!-- PRC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRC_SR</masterLabel>
+            <translation><!-- PRC_SR --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Worldwide</masterLabel>
@@ -1466,8 +1593,20 @@
         <name>Pricing_SW_Description_hyperlink__c</name>
     </fields>
     <fields>
+        <label><!-- Discount % --></label>
+        <name>Pricing_SW_Discount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Exclude Prepaid Upfront --></label>
+        <name>Pricing_SW_Exclude_Prepaid_Upfront__c</name>
+    </fields>
+    <fields>
         <label><!-- Monthly Price --></label>
         <name>Pricing_SW_Monthly_Price__c</name>
+    </fields>
+    <fields>
+        <label><!-- PLI Approval Discount --></label>
+        <name>Pricing_SW_PLI_Approval_Discount__c</name>
     </fields>
     <fields>
         <label><!-- Sales Rep Approver --></label>
@@ -1532,6 +1671,10 @@
         <help><!-- Price of one system with all components included (in US Dollars) --></help>
         <label><!-- Single System Price Point --></label>
         <name>Pricing_Single_System_Price_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Special Requirements --></label>
+        <name>Pricing_Special_Requirements_txt__c</name>
     </fields>
     <fields>
         <help><!-- Pricing start date for this quote line. If currently approved pricing start date is in the future, a change to the pricing start date can be requested. --></help>
@@ -1604,7 +1747,7 @@
     </fields>
     <fields>
         <help><!-- Total number of units. --></help>
-        <label><!-- Quantity --></label>
+        <label><!-- Quantity_12 --></label>
         <name>Pricing_Total_Volume_Qty__c</name>
     </fields>
     <fields>
@@ -1634,6 +1777,10 @@
         <help><!-- Commentary about why the bid was either won or lost. --></help>
         <label><!-- Won/Lost Comments --></label>
         <name>Pricing_Won_Lost_Comments_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Won Status --></label>
+        <name>Pricing_Won_Status__c</name>
     </fields>
     <fields>
         <help><!-- When the Application is CoSP, Workload/BU Segment must be selected. This represents the type of workload or network segment in which the product is used. --></help>
@@ -1694,6 +1841,14 @@
         <help><!-- Check this box to prevent this quote line from running through price rules when the deal is created in My Deals. --></help>
         <label><!-- Exclude from Price Rules --></label>
         <name>Pricng_Exclude_from_Price_Approval_Rules__c</name>
+    </fields>
+    <fields>
+        <label><!-- Ql_TestWon --></label>
+        <name>Ql_TestWon__c</name>
+    </fields>
+    <fields>
+        <label><!-- Rajiya --></label>
+        <name>Rajiya__c</name>
     </fields>
     <fields>
         <help>Remise client supplémentaire étendue dans cet élément de ligne sous la forme d&apos;un montant absolu.</help>
@@ -2493,8 +2648,84 @@
         <name>SBQQ__VolumeDiscount__c</name>
     </fields>
     <fields>
+        <label><!-- SF Test1 --></label>
+        <name>SF_Test1__c</name>
+    </fields>
+    <fields>
+        <label><!-- SF Test --></label>
+        <name>SF_Test__c</name>
+    </fields>
+    <fields>
+        <label><!-- SF --></label>
+        <name>SF__c</name>
+    </fields>
+    <fields>
+        <label><!-- Salesforce --></label>
+        <name>Salesforce__c</name>
+    </fields>
+    <fields>
+        <label><!-- Test_Field --></label>
+        <name>Test_Field1__c</name>
+    </fields>
+    <fields>
+        <label><!-- Test_Won_Prediction --></label>
+        <name>Test_Won_Prediction__c</name>
+    </fields>
+    <fields>
+        <label><!-- Test field --></label>
+        <name>Test_field__c</name>
+    </fields>
+    <fields>
+        <label><!-- Test formula --></label>
+        <name>Test_formula__c</name>
+    </fields>
+    <fields>
+        <label><!-- Testing123455678 --></label>
+        <name>Testing12345678__c</name>
+    </fields>
+    <fields>
+        <label><!-- Testing1 --></label>
+        <name>Testing1__c</name>
+    </fields>
+    <fields>
+        <label><!-- Testing --></label>
+        <name>Testing__c</name>
+    </fields>
+    <fields>
+        <label><!-- Won Quote Line Status --></label>
+        <name>Won_Quote_Line_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Won Status --></label>
+        <name>Won_Status__c</name>
+    </fields>
+    <fields>
         <label><!-- Broken Cost Check --></label>
         <name>core_cpq_Broken_Cost_Check__c</name>
+    </fields>
+    <fields>
+        <label><!-- DM End Date --></label>
+        <name>core_cpq_DM_End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- DM Validity Check --></label>
+        <name>core_cpq_DM_Validity_Check__c</name>
+    </fields>
+    <fields>
+        <label><!-- Forecasted Quantity --></label>
+        <name>core_cpq_Forecasted_Quantity__c</name>
+    </fields>
+    <fields>
+        <label><!-- Form Factor --></label>
+        <name>core_cpq_Form_Factor__c</name>
+        <picklistValues>
+            <masterLabel>Desktop</masterLabel>
+            <translation><!-- Desktop --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Notebook</masterLabel>
+            <translation><!-- Notebook --></translation>
+        </picklistValues>
     </fields>
     <fields>
         <label><!-- Last DM% Refresh Date --></label>
@@ -2505,12 +2736,41 @@
         <name>core_cpq_OPN_Concatenation_txt__c</name>
     </fields>
     <fields>
+        <label><!-- Operating System --></label>
+        <name>core_cpq_Operating_System__c</name>
+        <picklistValues>
+            <masterLabel>Chrome</masterLabel>
+            <translation><!-- Chrome --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MAC</masterLabel>
+            <translation><!-- MAC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Others</masterLabel>
+            <translation><!-- Others --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Windows</masterLabel>
+            <translation><!-- Windows --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- PRID --></label>
+        <name>core_cpq_PRID__c</name>
+        <relationshipLabel><!-- Quote Lines --></relationshipLabel>
+    </fields>
+    <fields>
         <label><!-- PSG Restricted Product --></label>
         <name>core_cpq_PSG_Restricted_Product__c</name>
     </fields>
     <fields>
         <label><!-- Parent Quote Flag for quote documents --></label>
         <name>core_cpq_Parent_Quote_Flag_for_documen__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Group Name --></label>
+        <name>core_cpq_Product_Group_Name__c</name>
     </fields>
     <fields>
         <label><!-- Tool Type --></label>
@@ -2532,10 +2792,6 @@
             <translation><!-- CORPORATE --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>HARD ALLOCATION</masterLabel>
-            <translation><!-- HARD ALLOCATION --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>IP</masterLabel>
             <translation><!-- IP --></translation>
         </picklistValues>
@@ -2554,10 +2810,6 @@
         <picklistValues>
             <masterLabel>SOC</masterLabel>
             <translation><!-- SOC --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SOFT ALLOCATION</masterLabel>
-            <translation><!-- SOFT ALLOCATION --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>SOFTWARE</masterLabel>
@@ -2612,6 +2864,10 @@
     <fields>
         <label><!-- AuthCode Product --></label>
         <name>core_cpq_authcode_product_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- CCF Flag --></label>
+        <name>core_cpq_ccf_flag_cb__c</name>
     </fields>
     <fields>
         <label><!-- $Change flag --></label>
@@ -2731,6 +2987,11 @@
         <name>core_cpq_disti_pct__c</name>
     </fields>
     <fields>
+        <label><!-- Distributor Margin # --></label>
+        <name>core_cpq_distributor_margin__c</name>
+        <relationshipLabel><!-- Quote Lines --></relationshipLabel>
+    </fields>
+    <fields>
         <label><!-- Disti Margin % --></label>
         <name>core_cpq_distributor_margin_pct__c</name>
     </fields>
@@ -2744,10 +3005,6 @@
         <picklistValues>
             <masterLabel>Hunter</masterLabel>
             <translation><!-- Hunter --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Manual</masterLabel>
-            <translation><!-- Manual --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -2773,10 +3030,6 @@
     <fields>
         <label><!-- FollowOnProcess --></label>
         <name>core_cpq_follow_on_process_cb__c</name>
-    </fields>
-    <fields>
-        <label><!-- Goal Price --></label>
-        <name>core_cpq_goal_price_amt__c</name>
     </fields>
     <fields>
         <label><!-- GP - MSVPL2 --></label>
@@ -2819,8 +3072,16 @@
         <name>core_cpq_lower_bound_qty_qty__c</name>
     </fields>
     <fields>
+        <label><!-- Mandatory Field Check --></label>
+        <name>core_cpq_mandatory_field_check__c</name>
+    </fields>
+    <fields>
         <label><!-- Margin Exception --></label>
         <name>core_cpq_margin_exception_txt__c</name>
+        <picklistValues>
+            <masterLabel>Approved DDR</masterLabel>
+            <translation><!-- Approved DDR --></translation>
+        </picklistValues>
         <picklistValues>
             <masterLabel>Budgetary</masterLabel>
             <translation><!-- Budgetary --></translation>
@@ -2943,6 +3204,10 @@
         <label><!-- Previous Disty Margin Exception --></label>
         <name>core_cpq_previous_margin_exception_txt__c</name>
         <picklistValues>
+            <masterLabel>Approved DDR</masterLabel>
+            <translation><!-- Approved DDR --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Budgetary</masterLabel>
             <translation><!-- Budgetary --></translation>
         </picklistValues>
@@ -2957,10 +3222,6 @@
         <picklistValues>
             <masterLabel>Margin Plan Compliance</masterLabel>
             <translation><!-- Margin Plan Compliance --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>TQ DDR Transfer</masterLabel>
-            <translation><!-- TQ DDR Transfer --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -2986,6 +3247,10 @@
     <fields>
         <label><!-- Price Start Date --></label>
         <name>core_cpq_pricing_start_date_dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- PRID Active Flag --></label>
+        <name>core_cpq_prid_active_cb__c</name>
     </fields>
     <fields>
         <label><!-- PRID Change Alert  --></label>
@@ -3057,6 +3322,10 @@
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- Quote Number --></label>
+        <name>core_cpq_quote_number__c</name>
+    </fields>
+    <fields>
         <label><!-- Quote Type --></label>
         <name>core_cpq_quote_type__c</name>
         <picklistValues>
@@ -3073,8 +3342,16 @@
         </picklistValues>
     </fields>
     <fields>
-        <label><!-- Reg Number --></label>
-        <name>core_cpq_reg_number_txt__c</name>
+        <label><!-- Record Type Name --></label>
+        <name>core_cpq_record_type_name_nm__c</name>
+        <picklistValues>
+            <masterLabel>IQR</masterLabel>
+            <translation><!-- IQR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSG</masterLabel>
+            <translation><!-- PSG --></translation>
+        </picklistValues>
     </fields>
     <fields>
         <label><!-- Reg Status --></label>
@@ -3098,6 +3375,14 @@
         <picklistValues>
             <masterLabel>Retired</masterLabel>
             <translation><!-- Retired --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Submitted</masterLabel>
+            <translation><!-- Submitted --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Valid</masterLabel>
+            <translation><!-- Valid --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -3282,6 +3567,10 @@
         <label><!-- Source System Id --></label>
         <name>src_sys_id__c</name>
     </fields>
+    <fields>
+        <label><!-- test --></label>
+        <name>test__c</name>
+    </fields>
     <gender>Feminine</gender>
     <nameFieldLabel>Nom de la ligne</nameFieldLabel>
     <recordTypes>
@@ -3308,6 +3597,10 @@
         <description><!-- Represents Data Center GPU Quote Line in Create Status --></description>
         <label><!-- Data Center GPU --></label>
         <name>Pricing_Data_Center_GPU_Quote_Line_Create</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Financial Incentive Quote Line --></label>
+        <name>Pricing_Financial_Incentive_Quote_Line_Create</name>
     </recordTypes>
     <recordTypes>
         <description><!-- Represents Financial IncentiveTender Quote Line in Edit Status --></description>
@@ -3375,6 +3668,26 @@
         <name>Pricing_Tender_Quote_Line_Submitted</name>
     </recordTypes>
     <recordTypes>
+        <description><!-- Represents Retail Base RSA Quote Line --></description>
+        <label><!-- Retail Quote Line - Base RSA --></label>
+        <name>Retail_Quote_Line_Base_RSA</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Represents Retail  IVR Quote Line --></description>
+        <label><!-- Retail Quote Line - IVR --></label>
+        <name>Retail_Quote_Line_IVR</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Represents Retail MD Quote Line --></description>
+        <label><!-- Retail Quote Line - MD --></label>
+        <name>Retail_Quote_Line_MD</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Represents Retail Sell-In Rebates Quote Line --></description>
+        <label><!-- Retail Quote Line - Sell-In Rebates --></label>
+        <name>Retail_Quote_Line_Sell_In_Rebates</name>
+    </recordTypes>
+    <recordTypes>
         <description><!-- Represents Software CPQ Quote Line --></description>
         <label><!-- Software &amp; Services --></label>
         <name>Software_Services_Quote_Line</name>
@@ -3386,6 +3699,10 @@
     </recordTypes>
     <startsWith>Consonant</startsWith>
     <validationRules>
+        <errorMessage><!-- The Approved Pricing End Date is before the Approved Pricing Start Date. Please enter a Approved Pricing End Date that is after the Approved Pricing Start Date. --></errorMessage>
+        <name>Approved_EndDt_Before_Approved_StartDt</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- Quote Line Pricing End Date has already passed. Please enter a Quote Line Pricing End Date in the future. --></errorMessage>
         <name>End_date_check</name>
     </validationRules>
@@ -3394,7 +3711,15 @@
         <name>Other_Competitor_Product_Validation</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Invalid Product selected for a Contract Pricing Quote. (Active = X, Quotable = X, Orderable = X, FPGA Product Type = &apos;Component&apos;) --></errorMessage>
+        <errorMessage><!-- This PRID is associated with a Design Win  Quote. Please choose another PRID to proceed further --></errorMessage>
+        <name>PSG_Active_PRID_associated_with_CP_Quote</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Broken Cost cannot be more than Disty Cost. --></errorMessage>
+        <name>PSG_Broken_Cost_Disty_Cost_check</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Invalid Product selected for a Contract Pricing Quote. (Active = X, Quotable = X, Orderable = X, FPGA Product Type = &apos;Component&apos;, Product Org = &apos;Sales&apos;) --></errorMessage>
         <name>PSG_CP_Quote_Validation</name>
     </validationRules>
     <validationRules>
@@ -3410,16 +3735,36 @@
         <name>PSG_Distymarginexception_Validation</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- FPGA Product Type is empty for this product. --></errorMessage>
+        <name>PSG_FPGA_Product_Type_Empty</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Goal Price/Suggested Resale Price should not be blank &amp; PRID need not be selected for Budgetary Quotes --></errorMessage>
+        <name>PSG_Goal_Suggested_Resale_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- No negative values are allowed --></errorMessage>
+        <name>PSG_No_neagative_value_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- OPN added is not valid. OPN might be Inactive or may not be available for Quoting --></errorMessage>
+        <name>PSG_OPN_Validaton</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- Product/Device  is not valid. Product/Device might be Inactive or may not be available for Quoting --></errorMessage>
         <name>PSG_Orderable_Validation</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Invalid Product selected for Contract Pricing Quote (Active = X, Quotable = X, Orderable = X) 
+        <errorMessage><!-- Price Eligibility Date is mandatory. --></errorMessage>
+        <name>PSG_PED_Mandatory_check</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Invalid Product selected for Contract Pricing Quote (Active = X, Quotable = X, Orderable = X)
 (Note: The only Tools product that can be added to Design Win Quotes are specific PAC Cards) --></errorMessage>
         <name>PSG_Post_Release_Prod_Validation</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Invalid Product selected for Budgetary Quote (Active = X,  Quotable = X) --></errorMessage>
+        <errorMessage><!-- Invalid Product selected for Budgetary Quote (Active = X,  Quotable = X) and Product Org = &apos;Sales&apos; --></errorMessage>
         <name>PSG_Pre_Release_Prod_Validation</name>
     </validationRules>
     <validationRules>
@@ -3455,6 +3800,10 @@
         <name>PSG_Validate_PED</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- QuoteLine can not be edited for Approved Quotes --></errorMessage>
+        <name>Prevent_editing_of_approved_QL</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- Quote line cannot be Edited while Quote is On Hold --></errorMessage>
         <name>Preventing_Editing_of_Hold_QL</name>
     </validationRules>
@@ -3465,10 +3814,6 @@
     <validationRules>
         <errorMessage><!-- Approved Pricing Start Date cannot be edited for Won quote lines that are active (i.e. today is between Approved Pricing Start Date and Approved Pricing End Date) or  for a Approved/Won Past Deal. --></errorMessage>
         <name>Pricing_ApprStartDtPastInflightWon_Check</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Back Date Reason is mandatory when Approved Pricing Start Date is in the past. --></errorMessage>
-        <name>Pricing_ApproStartDtInflightFuture_Check</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Approved Pricing End Date cannot be earlier than Approved Pricing Start Date nor earlier than today. --></errorMessage>
@@ -3501,6 +3846,10 @@
     <validationRules>
         <errorMessage><!-- Back Date Reason can only be edited when Approved Pricing Start Date is in the past. --></errorMessage>
         <name>Pricing_BackdateReason_Field_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Backdate Reason is mandatory when Approved Pricing Start Date is in the past. --></errorMessage>
+        <name>Pricing_Backdate_ApprStartDt_Check</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Billing End Date must be greater than Billing Start Date. --></errorMessage>
@@ -3591,12 +3940,24 @@
         <name>Pricing_Intel_Write_In_Product_Restrict</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Lost Reason can only be edited when Won/Lost Status is set to Lost. --></errorMessage>
+        <errorMessage><!-- When &apos;Other&apos; is selected in the Lost Reason field, lost reason must be entered in the Won/Lost Comments field --></errorMessage>
         <name>Pricing_LostReason_Validation</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- My Deals Meet Comp Price must be greater than $0. --></errorMessage>
         <name>Pricing_MyDealsMeetCompPrice_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- New Quantity must be greater than zero. --></errorMessage>
+        <name>Pricing_NewQuantity_Field_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- New Requested Discount Unit Price for a past deal cannot be edited. --></errorMessage>
+        <name>Pricing_NewReqDiscUnitPricePast_Check</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- New Requested Discount Unit Price must be greater than $0. --></errorMessage>
+        <name>Pricing_NewReqDiscountPrice_Validation</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- No. of CPUs per system cannot be less than or equal to zero. --></errorMessage>
@@ -3619,12 +3980,36 @@
         <name>Pricing_Other_Product_Validation</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- When &apos;Write In Product&apos; is selected in the Paired CPU field, the name of the other product must be provided in the Write In Paired CPU field. --></errorMessage>
+        <name>Pricing_Paired_CPU_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Quote Line Record cannot be edited while in Draft Status for a RPM User. --></errorMessage>
+        <name>Pricing_Prevent_Save_DraftQLStatus_RPM</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Pricing Manager cannot be edited after deal is created in My Deals. --></errorMessage>
+        <name>Pricing_PricingManagerAfterDealSent</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please select a quote with the same quote type. --></errorMessage>
+        <name>Pricing_QuoteTypeQuoteLineType_Check</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Value must be one or multiple email addresses separated by semi-colons. Only Intel email addresses are allowed. --></errorMessage>
+        <name>Pricing_RPM_MultipleEmailCheck</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- Rebate Per Unit must be greater than 0. --></errorMessage>
         <name>Pricing_Rebate_Per_Unit_Validation</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Requested Unit Price must be greater than zero. --></errorMessage>
         <name>Pricing_ReqDiscountUnitPrice_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Won/Lost status can only be changed for the Quote Line in Approved status. --></errorMessage>
+        <name>Pricing_Restrict_Bulk_Won_Lost_Status</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Small Volume Quote Line creation is no longer supported. --></errorMessage>
@@ -3637,6 +4022,22 @@
     <validationRules>
         <errorMessage><!-- Cannot Update List Unit Price --></errorMessage>
         <name>Pricing_SW_List_Unit_Price_update</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Additional Disc. should be entered only as % and not as USD. --></errorMessage>
+        <name>Pricing_SW_QL_AdditionalDiscount_Not_USD</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Additional Discount % should be in between 0 - 100. --></errorMessage>
+        <name>Pricing_SW_QL_Additional_Discount_0_100</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Quantity should be greater than or equals to 1. --></errorMessage>
+        <name>Pricing_SW_QL_Quantity_Greaterthan_0</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Competitor Single System Price cannot be higher than Single System Price. --></errorMessage>
+        <name>Pricing_Single_System_Price_Validation</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Tentative ECAP Price must be greater than $0. --></errorMessage>
@@ -3675,13 +4076,17 @@
         <name>SBQQ__Validate_billing_type</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- The Transfer pricing quote should have a Parent Quote  associated  with it --></errorMessage>
-        <name>core_cpq_transferpricing_val</name>
+        <errorMessage><!-- Invalid Product selected for DW/Contract Pricing/Transfer Pricing Quote (Active = X,  Quotable = X, Orderable = X) --></errorMessage>
+        <name>Validate_QuoteLine_OPN_for_Pre_Release</name>
     </validationRules>
-    <webLinks>
-        <label><!-- Pricing_QL_Export_List_View --></label>
-        <name>Pricing_QL_Export_List_View</name>
-    </webLinks>
+    <validationRules>
+        <errorMessage><!-- Invalid Product selected for Tools Quote(Active = X,  Quotable = X, Orderable = X, FPGA Product Type = &apos;Tool&apos;) --></errorMessage>
+        <name>Validate_QuoteLine_Tools_OPN_for_Pre_Rel</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- invalid DRP for this oppty --></errorMessage>
+        <name>Validate_Quoteline_DRP</name>
+    </validationRules>
     <webLinks>
         <label><!-- CalculateQuoteFromQuoteLine --></label>
         <name>SBQQ__CalculateQuoteFromQuoteLine</name>

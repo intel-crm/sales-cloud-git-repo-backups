@@ -2,7 +2,7 @@
 <QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
     <description>Update the activity with closed status</description>
     <height>250</height>
-    <label>Close</label>
+    <label>Close Activity</label>
     <lightningComponent>Core_MDF_CloseActivity</lightningComponent>
     <optionsCreateFeedItem>false</optionsCreateFeedItem>
     <type>LightningComponent</type>

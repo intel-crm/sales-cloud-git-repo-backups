@@ -16,6 +16,7 @@
              <property name="ReportId" type="String" default=""/>
              <property name="WorkspaceId" type="String" default=""/>
              <property name="roles" type="String" default=""/>
+						<property name="height" type="String" default=""/>
             <supportedFormFactors>
                 <supportedFormFactor type="Large"/>
                 <supportedFormFactor type="Small"/>
@@ -26,12 +27,14 @@
             <property name="ReportId" type="String" default=""/>
              <property name="WorkspaceId" type="String" default=""/>
              <property name="roles" type="String" default=""/>
+						<property name="height" type="String" default=""/>
         </targetConfig>
         <targetConfig targets="lightning__HomePage">
             <property name="configName" type="String" default=""/>
              <property name="ReportId" type="String" default=""/>
              <property name="WorkspaceId" type="String" default=""/>
              <property name="roles" type="String" default=""/>
+						<property name="height" type="String" default=""/>
             <supportedFormFactors>
                 <supportedFormFactor type="Large"/>
                 <supportedFormFactor type="Small"/>
@@ -42,6 +45,7 @@
              <property name="ReportId" type="String" default=""/>
              <property name="WorkspaceId" type="String" default=""/>
              <property name="roles" type="String" default=""/>
+						<property name="height" type="String" default=""/>
             <supportedFormFactors>
                 <supportedFormFactor type="Large"/>
                 <supportedFormFactor type="Small"/>

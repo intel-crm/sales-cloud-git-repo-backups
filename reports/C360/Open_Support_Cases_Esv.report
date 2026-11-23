@@ -49,7 +49,6 @@
     <columns>
         <field>Case.Core_IPS_Escalated_Level__c</field>
     </columns>
-    <description>**Do not Edit without Approval**</description>
     <filter>
         <criteriaItems>
             <column>STATUS</column>

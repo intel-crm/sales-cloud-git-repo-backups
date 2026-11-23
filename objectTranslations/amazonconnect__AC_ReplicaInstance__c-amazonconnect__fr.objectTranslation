@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Instance de réplication AC</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value><!-- Instance de réplication AC --></value>
+    </caseValues>
+    <fields>
+        <label> AARN de l’instance </label>
+        <name>amazonconnect__Arn__c</name>
+    </fields>
+    <fields>
+        <label> Adaptateur CTI </label>
+        <name>amazonconnect__CtiAdapter__c</name>
+        <relationshipLabel><!-- Cti Adapter Replica Instance --></relationshipLabel>
+    </fields>
+    <fields>
+        <label> Alias de l’instance Amazon Connect </label>
+        <name>amazonconnect__Instance__c</name>
+    </fields>
+    <fields>
+        <help><!-- Optional: This is the Named Credential used for the &quot;Recording Controls&quot; feature. If this is empty, a default value of &quot;AmazonConnectAPI&quot; will be assumed. --></help>
+        <label> Identifiants nommés </label>
+        <name>amazonconnect__NamedCredential__c</name>
+    </fields>
+    <fields>
+        <label> Région de l’instance Amazon Connect </label>
+        <name>amazonconnect__Region__c</name>
+    </fields>
+    <gender>Feminine</gender>
+    <nameFieldLabel>Instance de réplication AC</nameFieldLabel>
+    <recordTypes>
+        <description><!-- The standard record type for AC Replica Instances --></description>
+        <label><!-- Standard Record Type --></label>
+        <name>amazonconnect__Standard</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

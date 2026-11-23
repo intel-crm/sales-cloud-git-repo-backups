@@ -8,10 +8,10 @@
     </values>
     <values>
         <field>Subject__c</field>
-        <value xsi:type="xsd:string">License renewal errors</value>
+        <value xsi:type="xsd:string">Can&apos;t find Add Seat product</value>
     </values>
     <values>
         <field>Type_of_License_Issue__c</field>
-        <value xsi:type="xsd:string">I am getting errors renewing a license</value>
+        <value xsi:type="xsd:string">I can&apos;t see/find the product for Add Seats</value>
     </values>
 </CustomMetadata>

@@ -45,10 +45,9 @@
     * @return {string} The Offering ID if it is available, otherwise
     * an empty string.
   	*/
-	// IPA2.0 + US TWC4497-1631
-    // getOfferingId: function (component, event, helper) {
-    //     return helper.getOfferingId(component, event, helper);
-    // },
+    getOfferingId: function (component, event, helper) {
+        return helper.getOfferingId(component, event, helper);
+    },
     
     
     /**

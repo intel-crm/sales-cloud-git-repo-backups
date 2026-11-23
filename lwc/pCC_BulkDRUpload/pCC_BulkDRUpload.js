@@ -23,6 +23,7 @@ const columns = [
    { label: 'Opportunity Volume', fieldName: 'Core_Opportunity_Volume_Cnt__c', type: 'Text' },
    { label: 'Partner FAE', fieldName: 'Core_Partner_FAE_Nm__c', type: 'Text' },
    { label: 'Partner FSR', fieldName: 'Core_Partner_FSR_Nm__c', type: 'Text' },
+   { label: 'Design Solution Network', fieldName: 'Core_Design_Solution_Network_Ind__c', type: 'Text' },
    { label: 'End Customer Name', fieldName: 'Core_End_Customer_Nm__c', type: 'Text' },
    { label: 'End Customer Address1', fieldName: 'Core_End_Customer_Street_Addr_Line1_Txt__c', type: 'Text' },
    { label: 'End Customer Address2', fieldName: 'Core_End_Customer_Street_Addr_Line2_Txt__c', type: 'Text' },
@@ -30,11 +31,11 @@ const columns = [
    { label: 'End Customer State', fieldName: 'Core_End_Customer_Country_Subdivision_Nm__c', type: 'Text'},
    { label: 'End Customer Zip/Postal Code', fieldName: 'Core_End_Customer_Postal_Cd__c', type: 'Text'},
    { label: 'End Customer Country', fieldName: 'PCC_End_Customer_Country__c', type: 'Picklist'},
-   { label: 'Contact Title', fieldName: 'Core_End_Customer_Contact_Title_Txt__c', type: 'Text' },
-   { label: 'Contact Name', fieldName: 'Core_End_Customer_Contact_Nm__c', type: 'Text' },
-   { label: 'Contact Email', fieldName: 'Core_End_Customer_Contact_Email_Txt__c', type: 'Text' },
-   { label: 'Contact Phone', fieldName: 'Core_End_Customer_Contact_Phone_Txt__c', type: 'Text' },
-   { label: 'Are Intel items used for MINDS?', fieldName: 'Core_Military_Aerospace_Gvrnmt_Use_Ind__c', type: 'Text' },
+   { label: 'End Customer Contact Title', fieldName: 'Core_End_Customer_Contact_Title_Txt__c', type: 'Text' },
+   { label: 'End Customer Contact Name', fieldName: 'Core_End_Customer_Contact_Nm__c', type: 'Text' },
+   { label: 'End Customer Contact Email', fieldName: 'Core_End_Customer_Contact_Email_Txt__c', type: 'Text' },
+   { label: 'End Customer Contact Phone', fieldName: 'Core_End_Customer_Contact_Phone_Txt__c', type: 'Text' },
+   { label: 'Are Intel items used for MINDS? (It is the Intel Partner\'s responsibility to understand the export customs and sanction controls applicable to Intel Partner\'s company project and product and take all actions necessary to ensure compliance.)', fieldName: 'Core_Military_Aerospace_Gvrnmt_Use_Ind__c', type: 'Text' },
    { label: 'Decision Date', fieldName: 'Core_Opportunity_Decision_Dt__c', type: 'Text' },
    { label: 'First Customer Ship Date', fieldName: 'Core_First_Customer_Ship_Dt__c', type: 'Text' },
    { label: 'Production End Date', fieldName: 'Core_Production_End_Dt__c', type: 'Text'},
@@ -43,6 +44,7 @@ const columns = [
    { label: 'Product Segment', fieldName: 'Core_Product_Segment_Nm__c', type: 'Text'},
    { label: 'Product Application', fieldName: 'Core_Product_Application_Nm__c', type: 'Text' },
    { label: 'Manufacturing Region', fieldName: 'Core_Manufacturing_Region_Cd__c', type: 'Text' },
+   { label: 'FPGA Quote Comments', fieldName: 'Core_FPGA_Quote_Comments_Txt__c', type: 'Text' },
    { label: 'End Customer URL', fieldName: 'Core_End_Customer_URL__c', type: 'Text' },
    { label: 'Partner FAE Email', fieldName: 'DDR_Partner_FAE_Email__c', type: 'Text' }
    
@@ -58,7 +60,6 @@ export default class LwcCSVUploader extends LightningElement {
 	@track UploadFile = 'Upload CSV File';
 	@track showLoadingSpinner = false;
 	@track isTrue = false;
-	@api csvFileName = '';
 	selectedRecords;
 	filesUploaded = [];
 	file;
@@ -69,11 +70,11 @@ export default class LwcCSVUploader extends LightningElement {
 	
 
 	handleFilesChange(event) {
-		console.log('csvFileName ====> ', event.target.files[0].name);
-		this.csvFileName = event.target.files[0].name;
-        if(event.target.files.length > 0) {
+
+       if(event.target.files.length > 0) {
 			this.filesUploaded = event.target.files;
 			this.fileName = event.target.files[0].name;
+			//csvName = event.target.files[0].name;
 		}
 	}
 	handleSave() {
@@ -100,8 +101,7 @@ export default class LwcCSVUploader extends LightningElement {
 		this.fileReader.readAsText(this.file);
 	}
 	saveToFile() {
-		console.log('csvFileName here ====> ', this.csvFileName);
-		saveFile({base64Data: JSON.stringify(this.fileContents), cdbId: this.recordid, csvFileName: this.csvFileName})
+		saveFile({ base64Data: JSON.stringify(this.fileContents), cdbId: this.recordid},this.fileName)
 		.then(result => {
 			console.log('result ====> ', result);
 			this.data = result;

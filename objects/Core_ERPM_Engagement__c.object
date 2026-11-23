@@ -295,7 +295,6 @@
         <columns>Core_IsActive__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
-        <language>en_US</language>
     </listViews>
     <nameField>
         <label>ERPM Engagement Name</label>

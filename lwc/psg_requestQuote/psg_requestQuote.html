@@ -71,6 +71,10 @@
                     </template>
                 </div>
                 <div class="slds-scrollable_y">
+                <!--    <form class="formClass"> main-form -->
+                        <lightning-accordion allow-multiple-sections-open
+                                            onsectiontoggle={handleSectionToggle}
+                                            active-section-name={activeSections}>
                             <!----------------------------- Quote Details Section--------------------------------- -->
                             <lightning-accordion-section name="quoteDetails" label="Quote Details">
                                 <div class="main-panel">
@@ -291,24 +295,153 @@
                                 
                             
 
-
+                            <!-- --------------------- Notes And Attachments Section------------------------------ -->
+                            <template if:false={requestDPAFlag}>
+                                <template if:false={requestALNFlag}>
+                                     <!--<template if:false={isCpQuote}>-->
+                                        <!--<template if:false={pendingvisblity}>-->
+                                        <lightning-accordion-section name="notes" label="Notes and Attachments">
+                                            <c-psg_file-uploader 
+                                                record-id={recordId} 
+                                                lock-record={attachmentEnable}>
+                                            </c-psg_file-uploader>
+                                            </lightning-accordion-section>
+                                    <!--</template>-->
+                                        
+                                    <!--</template>-->
+                                    
+                                </template>
+                            </template> 
                             <!-- ---------------------------- Quote Lines Section------------------------------- -->
+                            <lightning-accordion-section name="quoteLines" label="Quote Line Items"> 
+                                <template if:false={requestDPAFlag}>
+                                    <template if:false={requestALNFlag}>
+                                        <c-psg_quote-line-detail 
+                                            onsavequote={savequote} 
+                                            onaddnewquoteline = {addnewquoteline} 
+                                            ql-edit-list={qlEditList} 
+                                            is-edit={isEditMode} 
+                                            lock-record={lockRecord} 
+                                            lock-partial-record={lockPartialRecord} 
+                                            show-new-search-options ={showNewSearchOptions} 
+                                            in-progress-quote={requestUpdateAction} 
+                                            is-draft ={isDraft} 
+                                            is-cp-quote={isCpQuote}
+                                            pendingvisblity= {pendingvisblity}
+                                            is-new-status ={isNewStatus} 
+                                            record-id={recordId} 
+                                            oncloseupdaterequest={handleCloseUpdateRequest}
+                                            
+                                        >
+                                    </c-psg_quote-line-detail>
+                                    </template>
+                                </template>
+                                <template if:true={requestDPAFlag}>
+                                    <c-psg_quote-line-detail 
+                                        onsavequote={savequote} 
 
+                                        lock-record={lockRecord} 
+                                        lock-partial-record={lockPartialRecord} 
+                                        show-new-search-options ={showNewSearchOptions} 
+                                        
+                                        is-draft ={isDraft} 
+                                        request-d-p-a-flag ={requestDPAFlag}
+                                        request-a-l-n-flag ={requestALNFlag}
+                                        is-new-status ={isNewStatus} 
+                                        record-id={recordId} 
+                                        oncloseupdaterequest={handleCloseUpdateRequest}
+                                        closedparequest={handleCloseDpaRequest}
+                                       
+                                    >
+                                </c-psg_quote-line-detail>
+                                </template>
+                                <template if:true={requestALNFlag}>
+                                    <c-psg_quote-line-detail 
+                                        onsavequote={savequote} 
+
+                                        lock-record={lockRecord} 
+                                        lock-partial-record={lockPartialRecord} 
+                                        show-new-search-options ={showNewSearchOptions} 
+                                        
+                                        is-draft ={isDraft} 
+                                        request-d-p-a-flag ={requestDPAFlag}
+                                        request-a-l-n-flag ={requestALNFlag}
+                                        is-new-status ={isNewStatus} 
+                                        record-id={recordId} 
+                                        oncloseupdaterequest={handleCloseUpdateRequest}
+                                        closedparequest={handleCloseDpaRequest}
+                                       
+                                    >
+                                </c-psg_quote-line-detail>
+                                </template>
+                            </lightning-accordion-section>
+                        </lightning-accordion>
                             <!-- ******************Related List****************** -->
                             <template if:true={relatedList}>
                             <lightning-accordion allow-multiple-sections-open active-section-name="dpaAlnRelatedList">
                             <lightning-accordion-section name="dpaAlnRelatedList" label="DPAs and ALNs">    
                                 <template lwc:if={dpaalnRecords}>
-                                    <div class="slds-scrollable slds-hint-parent" style="height:14rem;">
-                                        <lightning-datatable 
-                                            key-field="Id"
-                                            data={dpaalnRecords}
-                                            columns={dpaAlnColumn}
-                                            hide-checkbox-column="true"
-                                            min-column-width="20px"
-                                            show-row-number-column="true" 
-                                            onrowaction={navigateToDPAsALNsDetail}>
-                                        </lightning-datatable>
+                                    <div class="slds-scrollable" style="height:10rem;" tabindex="0">
+                                    <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered" aria-label="Related List Table">
+                                        <thead>
+                                          <tr class="slds-line-height_reset">                                            
+                                            <th class="" scope="col">
+                                              <div class="slds-truncate" title="CIS #">CIS #</div>
+                                            </th>
+                                            <th class="" scope="col">
+                                                <div class="slds-truncate" title="SAP#">SAP#</div>
+                                              </th>
+                                            <th class="" scope="col">
+                                              <div class="slds-truncate" title="Status">Status</div>
+                                            </th>
+                                            <th class="" scope="col">
+                                              <div class="slds-truncate" title="Request Type">Request Type</div>
+                                            </th>
+                                            <th class="" scope="col">
+                                                <div class="slds-truncate" title="SAP End Customer">SAP End Customer</div>
+                                              </th>
+                                            <th class="" scope="col">
+                                              <div class="slds-truncate" title="SAP Distributor">SAP Distributor</div>
+                                            </th>
+                                            <th class="" scope="col">
+                                              <div class="slds-truncate" title="Ship Start Date">Ship Start Date</div>
+                                            </th>
+                                            <th class="" scope="col">
+                                              <div class="slds-truncate" title="Ship End Date">Ship End Date</div>
+                                            </th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                        <template for:each={dpaalnRecords} for:item="rec">
+                                            <tr key={rec.fields.core_cpq_cis__c.value} class="slds-hint-parent">
+                                                <th data-label="CIS #" scope="col">
+                                                    <div class="slds-truncate" title="CIS #"><a data-id={rec.fields.Id.value} onclick={navigateToDPAsALNsDetail}>{rec.fields.core_cpq_cis__c.value}</a></div>
+                                                </th>
+                                                <th data-label="SAP#" scope="col">
+                                                    <div class="slds-truncate" title="SAP #">{rec.fields.core_cpq_dpa_aln_no_nbr__c.value}</div>
+                                                </th>                                                
+                                                <th data-label="Status" scope="col">
+                                                    <div class="slds-truncate" title="Status">{rec.fields.core_cpq_status_txt__c.value}</div>
+                                                </th>
+                                                <th data-label="Request Type" scope="col">
+                                                    <div class="slds-truncate" title="Request Type">{rec.fields.core_cpq_record_type_identifier__c.value}</div>
+                                                </th>
+                                                <th data-label="SAP Distributor" scope="col">
+                                                    <div class="slds-truncate" title="SAP End Customer">{rec.fields.core_cpq_sap_end_customer_nm__r.displayValue}</div>
+                                                </th>
+                                                <th data-label="SAP Distributor" scope="col">
+                                                    <div class="slds-truncate" title="SAP Distributor">{rec.fields.core_cpq_sap_distributor__c.value}</div>
+                                                </th>
+                                                <th data-label="Ship Start Date" scope="col">
+                                                    <div class="slds-truncate" title="Ship Start Date">{rec.fields.core_cpq_ship_start_date_dt__c.value}</div>
+                                                </th>
+                                                <th data-label="Ship End Date" scope="col">
+                                                    <div class="slds-truncate" title="Ship End Date">{rec.fields.core_cpq_ship_end_date_dt__c.value}</div>
+                                                </th>    
+                                            </tr>
+                                    </template>
+                                    </tbody>
+                                    </table>
                                     </div>
                                 </template>
                             </lightning-accordion-section>

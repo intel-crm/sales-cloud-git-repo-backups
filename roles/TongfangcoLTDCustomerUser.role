@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>RuanTong Computer Co.,Ltd Customer User</description>
+    <description>Tongfang co., LTD Customer User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>RuanTong Computer Co.,Ltd Customer User</name>
+    <name>Tongfang co., LTD Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>EMP_12009616_Xiang_You</parentRole>
+    <parentRole>TongfangcoLTDCustomerManager</parentRole>
 </Role>

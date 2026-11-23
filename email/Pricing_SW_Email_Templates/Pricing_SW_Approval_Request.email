@@ -1,0 +1,22 @@
+<messaging:emailTemplate subject="Approval Needed for Quote: {!relatedTo.Quote__r.Name}" recipientType="User" relatedToType="sbaa__Approval__c">
+<messaging:HtmlEmailBody >
+<html>
+<div id="logo"><img height="50px" src="https://intel--devsoftiqr.sandbox.file.force.com/servlet/servlet.ImageServer?id=015Dy000000GNrD&oid=00DDy0000008xA0&lastMod=1719471011000"/></div>
+
+<body>
+<p>Hello, </p>
+
+<p>{!relatedTo.CreatedBy.Name} has requested approval for Quote: {!relatedTo.Quote__r.Name}</p>
+
+
+<p><b>Approval:</b>&nbsp;<apex:outputLink value="https://intel--devsoftiqr.sandbox.lightning.force.com/{!relatedTo.ID}" >{!relatedTo.Name}</apex:outputLink> of <b>Quote:</b>&nbsp;<apex:outputLink value="https://intel--devsoftiqr.sandbox.lightning.force.com/{!relatedTo.Quote__r.Id}" >{!relatedTo.Quote__r.Name}</apex:outputLink></p>
+
+<p><b>Quote Total:</b>&nbsp;<apex:outputField value=" {!relatedTo.Quote__r.SBQQ__NetAmount__c}"/></p>
+
+<br/><br/>
+<h4>Please reply to this email with the word 'Approve' or 'Reject' in the first line</h4>
+<h5>Any additional comments can be included on the second line.</h5>
+</body>
+</html>
+</messaging:HtmlEmailBody>
+</messaging:emailTemplate>

@@ -5,14 +5,8 @@
     <name>IPA Admins</name>
     <queueMembers>
         <publicGroups>
-            <publicGroup>PRM_IPA_Registration_Approvers</publicGroup>
+            <publicGroup>IPA_All_Intel_Admin_Users</publicGroup>
         </publicGroups>
-        <users>
-            <user>12045797@intel.com.crm</user>
-            <user>12067610@intel.com.crm</user>
-            <user>12027704@intel.com.crm</user>
-            <user>12083963@intel.com.crm</user>
-        </users>
     </queueMembers>
     <queueSobject>
         <sobjectType>PRM_Registration_Request__c</sobjectType>

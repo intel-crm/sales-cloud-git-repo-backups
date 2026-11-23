@@ -8,11 +8,11 @@
 * Accenture - JV    02-07-2019       Helper Class for notifying Account Managers/Support Team in case of any Escalation Errors
 *****************************************************************************************************************************************/
 public without sharing class Core_MDF_SendEmailHelper {
-    
+	
     /* Method to SendEmail to Account Managers/Support Team in case of any Escalation Errors */
     public static void sendEmail(List<Core_MDF_Notify_Account_Manager__e> listEvents){
 
-       /* try {
+        try {
             Set<Id> escalationIdset = new Set<Id>();
             Map<Id,Core_MDF_Escalation__c> escalationIdToEscalationMap= new Map<Id,Core_MDF_Escalation__c>();
             Messaging.SingleEmailMessage[] emailmessages = new List<Messaging.SingleEmailMessage>();
@@ -36,7 +36,7 @@ public without sharing class Core_MDF_SendEmailHelper {
                 && notificationevent.Core_MDF_isBusinessError_ind__c) 
                 {
                     //added condition for Core_MDF_Retail_Claim_Amount_ShdBeWithIn_ActyBudgetAmt
-                    String emailBody = getEmailBody(escalationIdToEscalationMap,notificationevent);
+					String emailBody = getEmailBody(escalationIdToEscalationMap,notificationevent);
                     Messaging.SingleEmailMessage message = new Messaging.SingleEmailMessage();
                     message.setTargetObjectId(escalationIdToEscalationMap.get(notificationevent.Core_MDF_Escalation_Id_txt__c).createdById);
                     message.setSaveAsActivity(false);
@@ -44,22 +44,18 @@ public without sharing class Core_MDF_SendEmailHelper {
                     message.subject = Label.Core_MDF_Budget_Cap_Subject;
                     message.setHTMLBody(emailBody);
                     emailmessages.add(message);
-                    //Messaging.SendEmailResult[] results = Messaging.sendEmail(emailmessages);
+                    Messaging.SendEmailResult[] results = Messaging.sendEmail(emailmessages);
                     Core_MDF_CCP_UtilityClass.logErrorinLogObject(notificationevent.Core_MDF_errorMessage_txt__c,'Core_MDF_Escalation__c');
             
                 }else if(notificationevent.Core_MDF_errorMessage_txt__c != null) {
                     Core_MDF_CCP_UtilityClass.logErrorinLogObject(notificationevent.Core_MDF_errorMessage_txt__c,'Core_MDF_Escalation__c');
                 }
             }
-            if(emailmessages!=null && !emailmessages.isEmpty()){
-                Messaging.SendEmailResult[] results = Messaging.sendEmail(emailmessages);
-            }
-            
-        } catch (Exception e) {Core_MDF_CCP_UtilityClass.logError(e);}*/
+        } catch (Exception e) {Core_MDF_CCP_UtilityClass.logError(e);}
     }
 
-      /*public static String getEmailBody (Map<Id,Core_MDF_Escalation__c> escalationIdToEscalationMap, Core_MDF_Notify_Account_Manager__e notificationevent){
-          string errorType;
+      public static String getEmailBody	(Map<Id,Core_MDF_Escalation__c> escalationIdToEscalationMap, Core_MDF_Notify_Account_Manager__e notificationevent){
+		  string errorType;
           if(notificationevent.Core_MDF_errorMessage_txt__c.contains(Label.Core_MDF_ClaimExceedsCapRemainder_ErrorMsg)){
               errorType='BudgetCapError';
           }
@@ -86,5 +82,5 @@ public without sharing class Core_MDF_SendEmailHelper {
           String emailBody = emailBody1 + emailBody2 + emailBody3 + emailBody4 +emailBody5+emailBody6+emailBody7+emailBody8;
           
           return emailBody;
-      }*/
+	  }
 }

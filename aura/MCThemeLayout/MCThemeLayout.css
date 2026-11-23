@@ -88,3 +88,7 @@
   visibility: hidden;
 }
 */
+
+.THIS .forceCommunityRecordDetail .slds-card {
+    border-style: solid !important;
+}

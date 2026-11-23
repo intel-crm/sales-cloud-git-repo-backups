@@ -128,11 +128,14 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <type>Default</type>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Opportunity_Support_Team_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <formFactor>Large</formFactor>
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
@@ -209,6 +212,19 @@
         <writeRequiresMasterRead>false</writeRequiresMasterRead>
     </fields>
     <fields>
+        <fullName>Core_Opportunity__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Opportunity Lookup</description>
+        <label>Opportunity</label>
+        <referenceTo>Opportunity</referenceTo>
+        <relationshipLabel>Opportunity Support Team</relationshipLabel>
+        <relationshipName>Opportunity_Support_Team</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
         <fullName>Core_Reassign_counter__c</fullName>
         <defaultValue>0</defaultValue>
         <externalId>false</externalId>
@@ -266,6 +282,54 @@
             </valueSetDefinition>
         </valueSet>
     </fields>
+    <fields>
+        <fullName>Test_Picklist__c</fullName>
+        <label>New Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>AI</fullName>
+                    <default>false</default>
+                    <label>AI</label>
+                </value>
+                <value>
+                    <fullName>Newvalue</fullName>
+                    <default>false</default>
+                    <label>New value</label>
+                </value>
+                <value>
+                    <fullName>Newvalue2</fullName>
+                    <default>false</default>
+                    <label>New value2</label>
+                </value>
+                <value>
+                    <fullName>Newvalue3</fullName>
+                    <default>false</default>
+                    <label>New value3</label>
+                </value>
+                <value>
+                    <fullName>Newvalue4</fullName>
+                    <default>false</default>
+                    <label>New value4</label>
+                </value>
+                <value>
+                    <fullName>what happens to space</fullName>
+                    <default>false</default>
+                    <label>what happens to space</label>
+                </value>
+                <value>
+                    <fullName>parametrized!</fullName>
+                    <default>false</default>
+                    <label>parametrized!</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
     <label>Opportunity Support Team</label>
     <nameField>
         <displayFormat>OST- {0000}</displayFormat>
@@ -274,6 +338,58 @@
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Opportunity Support Team</pluralLabel>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>Test</fullName>
+        <active>true</active>
+        <label>Test</label>
+        <picklistValues>
+            <picklist>Core_Status__c</picklist>
+            <values>
+                <fullName>Accepted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cancelled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Denied</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pending</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Test_Picklist__c</picklist>
+            <values>
+                <fullName>AI</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Newvalue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Newvalue2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Newvalue3</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Newvalue4</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
     <searchLayouts/>
     <sharingModel>ControlledByParent</sharingModel>
     <startsWith>Vowel</startsWith>
@@ -290,6 +406,17 @@ Core_Opportunity_Support__r.Core_Sales_Stages__c = &apos;Production Lost&apos;,
 Core_Opportunity_Support__r.Core_Sales_Stages__c = &apos;Production Cancelled&apos;
 ))</errorConditionFormula>
         <errorMessage>Once Opportunity is Closed, Support Request cannot be Edited</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CoE_Reassign_check</fullName>
+        <active>false</active>
+        <description>once status is closed , Approver can&apos;t reassign  deny request</description>
+        <errorConditionFormula>AND(
+        ISCHANGED(Core_Opportunity_Support_Team_Member__c) , 
+        Core_Opportunity_Support__r.RecordType.DeveloperName = &apos;Core_Center_of_Excellence_Request&apos;,
+        OR(ISPICKVAL( Core_Opportunity_Support__r.Core_Status__c, &apos;Closed : Support Provided&apos;),    ISPICKVAL( Core_Opportunity_Support__r.Core_Status__c, &apos;Closed : Support Not Provided&apos;))
+        )</errorConditionFormula>
+        <errorMessage>Support request already closed , cannot reassign now</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Reassign_counter_limit</fullName>

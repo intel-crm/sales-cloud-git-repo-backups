@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<NavigationMenu xmlns="http://soap.sforce.com/2006/04/metadata">
+    <container>testcas</container>
+    <containerType>Network</containerType>
+    <label>test</label>
+    <navigationMenuItem>
+        <label>testt</label>
+        <position>1</position>
+        <publiclyAvailable>true</publiclyAvailable>
+        <target>Core_Design_Registration__c</target>
+        <type>SalesforceObject</type>
+    </navigationMenuItem>
+</NavigationMenu>

@@ -15,6 +15,7 @@ export default class Pricing_ReadOnly_FieldSet_Form extends LightningElement {
     getFieldSetFormDetails() {
         getFormDetails({ recordId: this.recordId })
             .then(result => {
+                console.log('Raw result- pricing_readonly_Fieldset_Form.js :'+JSON.stringify(result));
                 getRecordNotifyChange([{ recordId: this.recordId }]);
                 if(result !== undefined && result !== '' && result !== null){
                     this.formValues = result;

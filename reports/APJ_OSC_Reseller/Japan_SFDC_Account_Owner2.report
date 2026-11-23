@@ -50,13 +50,6 @@
             <operator>equals</operator>
             <value>Japan</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>USERS.NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Takahiro Katayama,Amy Yee Peng Yip,Mee Chee Wong,Emily Thay,Richard Khoo</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Tabular</format>

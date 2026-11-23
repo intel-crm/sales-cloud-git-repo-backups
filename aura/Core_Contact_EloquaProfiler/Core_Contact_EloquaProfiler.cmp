@@ -13,7 +13,8 @@
         <aura:if isTrue="{!!v.isLoaded}">
             <lightning:spinner aura:id="mySpinner" alternativeText="Processing.." title="Processing.." variant="brand" size="large"/>
         </aura:if>
-        <lightning:card iconName="standard:apex_plugin" title="Eloqua Profiler"> <!--title="Eloqua Profiler" -->
+        
+         <lightning:card iconName="standard:apex_plugin" title="Eloqua Profiler"> <!--title="Eloqua Profiler" -->
             <aura:set attribute="title">
                 <a ><span onclick="{! c.openLink }">Eloqua Profiler </span></a>
             </aura:set>

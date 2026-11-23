@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ExpressionSetDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
+    <executionMode>Cloud</executionMode>
     <executionScale>Low</executionScale>
     <label>Pricing Route Rule Expression Set ASMO/EMEA CCG Retail</label>
     <processType>Bre</processType>

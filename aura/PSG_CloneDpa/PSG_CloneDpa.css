@@ -1,0 +1,9 @@
+.THIS .no-spacing {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.THIS .with-spacing {
+    margin-top: 1rem; 
+    margin-bottom: 1rem; 
+}

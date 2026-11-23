@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>56.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <description>PRIORVALUE as TAL_MQL_SAL_TQL_Unqualified</description>
+        <name>PRIORVALUE_AS_TAL_MQL_SAL_TQL_Unqualified</name>
+        <label>PRIORVALUE as TAL_MQL_SAL_TQL_Unqualified</label>
+        <locationX>270</locationX>
+        <locationY>335</locationY>
+        <defaultConnector>
+            <targetReference>mainUpdate</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>PRIORVALUE_as_TAL_MQL_SAL_TQL_Unqualified_Outcome</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>PRIORVALUE_TAL</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>TALandStatusChanged</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_TAL_Status_change</targetReference>
+            </connector>
+            <label>PRIORVALUE as TAL_MQL_SAL_TQL_Unqualified_Outcome</label>
+        </rules>
+        <rules>
+            <name>PRIORVALUE_as_MQL_Status_SAL</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>TALandStatusChanged</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>mainUpdate</targetReference>
+            </connector>
+            <label>PRIORVALUE as MQL_Status_SAL</label>
+        </rules>
+    </decisions>
+    <description>Migrated from the: Core_Stamp_Coverage_For_Stage_SAL_MQL_Unqualified workflow rule
+Workflow rule description: &quot;</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>Core_Coverage_MAQL_FastTrack1Formula</name>
+        <dataType>String</dataType>
+        <expression>IF(AND (TEXT(PRIORVALUE($Record.Status))=&quot;Marketing Qualified Lead&quot;, ISPICKVAL($Record.Status, &quot;Sales Accepted Lead&quot;), $Record.RecordType.Name = &quot;Lead&quot; ), (IF(ISBLANK (TEXT($Record.Owner:User.Core_User_Coverage__c)),&apos;Other&apos;,TEXT($Record.Owner:User.Core_User_Coverage__c))),$Record.Core_Locked_TAL_Coverage__c)</expression>
+    </formulas>
+    <formulas>
+        <name>Core_Coverage_MAQL_FastTrack2Formula</name>
+        <dataType>String</dataType>
+        <expression>IF(AND (TEXT(PRIORVALUE($Record.Status))=&quot;Marketing Qualified Lead&quot;, ISPICKVAL($Record.Status, &quot;Sales Accepted Lead&quot;), $Record.RecordType.Name = &quot;Lead&quot; ), (IF(ISBLANK (TEXT($Record.Owner:User.Core_User_Coverage__c)),&apos;Other&apos;,TEXT($Record.Owner:User.Core_User_Coverage__c))),$Record.Core_Locked_TQL_Coverage__c)</expression>
+    </formulas>
+    <formulas>
+        <name>Core_Coverage_TAL_SAL_FastTrackFormula</name>
+        <dataType>String</dataType>
+        <expression>IF(AND (TEXT(PRIORVALUE($Record.Status))=&quot;Tele Accepted Lead&quot;, ISPICKVAL($Record.Status, &quot;Sales Accepted Lead&quot;)), (IF(ISBLANK (TEXT($Record.Owner:User.Core_User_Coverage__c)),&apos;Other&apos;,TEXT($Record.Owner:User.Core_User_Coverage__c))),$Record.Core_Locked_TQL_Coverage__c)</expression>
+    </formulas>
+    <formulas>
+        <name>Core_Update_MQL_Lead_CoverageFormula</name>
+        <dataType>String</dataType>
+        <expression>IF(TEXT(PRIORVALUE($Record.Status))=&quot;Marketing Qualified Lead&quot;, (IF(ISBLANK (TEXT($Record.Owner:User.Core_User_Coverage__c)),&apos;Other&apos;,TEXT($Record.Owner:User.Core_User_Coverage__c))),$Record.Core_Locked_MQL_Coverage__c)</expression>
+    </formulas>
+    <formulas>
+        <name>Core_Update_SALFormula</name>
+        <dataType>String</dataType>
+        <expression>IF(TEXT(PRIORVALUE($Record.Status))=&quot;Sales Accepted Lead&quot;,  (IF(ISBLANK (TEXT($Record.Owner:User.Core_User_Coverage__c)),&apos;Other&apos;,TEXT($Record.Owner:User.Core_User_Coverage__c))),$Record.Core_Locked_SAL_Coverage__c)</expression>
+    </formulas>
+    <formulas>
+        <name>Core_Update_TAL_Lead_CoverageFormula</name>
+        <dataType>String</dataType>
+        <expression>IF(AND(TEXT(PRIORVALUE($Record.Status))=&quot;Tele Accepted Lead&quot;, ISCHANGED($Record.Status)), (IF(ISBLANK (TEXT($Record.Owner:User.Core_User_Coverage__c)),&apos;Other&apos;,TEXT($Record.Owner:User.Core_User_Coverage__c))),$Record.Core_Locked_TAL_Coverage__c)</expression>
+    </formulas>
+    <formulas>
+        <name>Core_Update_TQL_Lead_CoverageFormula</name>
+        <dataType>String</dataType>
+        <expression>IF(TEXT(PRIORVALUE($Record.Status))=&quot;Tele Qualified Lead&quot;, (IF(ISBLANK (TEXT($Record.Owner:User.Core_User_Coverage__c)),&apos;Other&apos;,TEXT($Record.Owner:User.Core_User_Coverage__c))),$Record.Core_Locked_TQL_Coverage__c)</expression>
+    </formulas>
+    <formulas>
+        <name>Core_Update_Unqualified_Lead_CoverageFormula</name>
+        <dataType>String</dataType>
+        <expression>IF(TEXT(PRIORVALUE($Record.Status))=&quot;Unqualified&quot;,  (IF(ISBLANK (TEXT($Record.Owner:User.Core_User_Coverage__c)),&apos;Other&apos;,TEXT($Record.Owner:User.Core_User_Coverage__c))),$Record.Core_Locked_Unqualified_Coverage__c)</expression>
+    </formulas>
+    <formulas>
+        <name>LockedTALCoverage_With_Status_change</name>
+        <dataType>String</dataType>
+        <expression>IF(AND(TEXT(PRIORVALUE({!$Record.Status}))=&quot;Tele Accepted Lead&quot;, ISCHANGED({!$Record.Status})), (IF(ISBLANK (TEXT({!$Record.Owner:User.Core_User_Coverage__c})),&apos;Other&apos;,TEXT({!$Record.Owner:User.Core_User_Coverage__c}))),{!$Record.Core_Locked_TAL_Coverage__c})</expression>
+    </formulas>
+    <formulas>
+        <description>PRIORVALUE AS TAL</description>
+        <name>PRIORVALUE_TAL</name>
+        <dataType>Boolean</dataType>
+        <expression>PRIORVALUE({!$Record.Status})=&apos;Tele Accepted Lead&apos;  &amp;&amp; ISCHANGED({!$Record.Status})</expression>
+    </formulas>
+    <formulas>
+        <name>TALandStatusChanged</name>
+        <dataType>Boolean</dataType>
+        <expression>ISPICKVAL(({!$Record__Prior.Status}),&quot;Tele Accepted Lead&quot;) &amp;&amp; ISCHANGED({!$Record.Status})</expression>
+    </formulas>
+    <label>Core_Stamp_Coverage_For_Stage_SAL_MQL_Unqualified_3</label>
+    <migratedFromWorkflowRuleName>Core_Stamp_Coverage_For_Stage_SAL_MQL_Unqualified</migratedFromWorkflowRuleName>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>mainUpdate</name>
+        <label>mainUpdate1</label>
+        <locationX>270</locationX>
+        <locationY>671</locationY>
+        <inputAssignments>
+            <field>Core_Locked_SAL_Coverage__c</field>
+            <value>
+                <elementReference>Core_Update_SALFormula</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Locked_TAL_Coverage__c</field>
+            <value>
+                <elementReference>Core_Coverage_MAQL_FastTrack1Formula</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Locked_TQL_Coverage__c</field>
+            <value>
+                <elementReference>Core_Coverage_MAQL_FastTrack2Formula</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Locked_Unqualified_Coverage__c</field>
+            <value>
+                <elementReference>Core_Update_Unqualified_Lead_CoverageFormula</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_TAL_Status_change</name>
+        <label>Update_TAL_Status_change</label>
+        <locationX>50</locationX>
+        <locationY>455</locationY>
+        <connector>
+            <targetReference>mainUpdate</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_Locked_TAL_Coverage__c</field>
+            <value>
+                <elementReference>LockedTALCoverage_With_Status_change</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>144</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>PRIORVALUE_AS_TAL_MQL_SAL_TQL_Unqualified</targetReference>
+        </connector>
+        <filterFormula>AND( OR( ISNEW(), ISCHANGED({!$Record.Status}) ), LEFT({!$Record.OwnerId}, 3) = &apos;005&apos;, OR( TEXT(PRIORVALUE({!$Record.Status}))=&quot;Unqualified&quot;, TEXT(PRIORVALUE({!$Record.Status}))=&quot;Sales Accepted Lead&quot;, TEXT(PRIORVALUE({!$Record.Status}))=&quot;Marketing Qualified Lead&quot;, TEXT(PRIORVALUE({!$Record.Status}))=&quot;Tele Qualified Lead&quot;,TEXT(PRIORVALUE({!$Record.Status}))=&quot;Tele Accepted Lead&quot; ) )</filterFormula>
+        <object>Lead</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Draft</status>
+</Flow>

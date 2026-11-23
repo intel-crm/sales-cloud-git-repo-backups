@@ -57,7 +57,7 @@
         <field>Opportunity.Core_Product_Application__c</field>
     </columns>
     <filter>
-        <booleanFilter>((1 OR 2 OR 5) AND 3) AND 4</booleanFilter>
+        <booleanFilter>((1 OR 2) AND 3) AND 4</booleanFilter>
         <criteriaItems>
             <column>Product2.Core_Product_Type_EPM_ID__c</column>
             <columnToColumn>false</columnToColumn>
@@ -86,13 +86,6 @@
             <operator>equals</operator>
             <value>Design: Original,Design: Secondary</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>Product2.Core_Product_Type_EPM_ID__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>36773</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Matrix</format>
@@ -106,7 +99,7 @@
         <field>PRODUCT_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>IOTG Ethernet_Wireless_Comms DW Status</name>
+    <name>IOTG Wireless and Comms DW Status</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -129,8 +122,8 @@
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
-        <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <endDate>2023-12-31</endDate>
+        <dateColumn>CLOSE_DATE</dateColumn>
+        <endDate>2019-12-28</endDate>
         <interval>INTERVAL_CUSTOM</interval>
         <startDate>2016-01-01</startDate>
     </timeFrameFilter>

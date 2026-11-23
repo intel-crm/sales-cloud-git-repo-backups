@@ -24,7 +24,6 @@ BillingPostalCode = '12345', Core_CIM_ID__c = '8675309',Core_Sales_Groups__c='Gl
         }
         
         List<Core_Design_Registration__c> DDRLst = Core_DDR_Utility.createDDR(2);
-        DDRLst[0].Core_Product_Group_Nm__c = 'Embedded/IOT';
         DDRLst[0].Core_Design_Registration_Nm__c = 'DDR CAS';
         //DDRLst[0].Core_Product_Group_Nm__c = 'Embedded/IOT';
         DDRLst[0].Core_End_Customer_Account_Id__c = acList[0].id;
@@ -39,13 +38,12 @@ BillingPostalCode = '12345', Core_CIM_ID__c = '8675309',Core_Sales_Groups__c='Gl
         insert DDRLst;
 
         List<Product2> listOfProducts = Core_DDR_Utility.CreateProduct(1);
-        listOfProducts[0].name = 'Intel® Ethernet SFP+ LR Optics0';
         insert listOfProducts;
 
         Core_Design_Registration_Product__c drp = new Core_Design_Registration_Product__c();
         drp.Core_Design_Registration_Id__c = DDRLst[1].id;
         drp.Core_Product_Id__c = listOfProducts[0].Id;      
-        //insert drp;
+        insert drp;
 
         Id newOppRecTypeId = [select Id from RecordType where DeveloperName = 'Core_Design_Opportunity' limit 1][0].Id;       
         Opportunity oppForLoss = new Opportunity(Name = 'OppCAS', RecordTypeId = newOppRecTypeId,
@@ -159,11 +157,6 @@ BillingPostalCode = '12345', Core_CIM_ID__c = '8675309',Core_Sales_Groups__c='Gl
         List<Core_LogEntry_Switch__c> LogEntryCS = Core_DDR_Utility.CreateLogEntry();
         
         List<Product2> ProdLst = Core_DDR_Utility.CreateProduct(5);
-        ProdLst[0].name = 'Intel® Ethernet SFP+ LR Optics0';
-        ProdLst[1].name = 'Intel® Ethernet SFP+ LR Optics1';
-        ProdLst[2].name = 'Intel® Ethernet SFP+ LR Optics2';
-        ProdLst[3].name = 'Intel® Ethernet SFP+ LR Optics3';
-        ProdLst[4].name = 'Intel® Ethernet SFP+ LR Optics4';
         insert ProdLst;
         
         List<PriceBook2> PriceBookLst = Core_DDR_Utility.CreatePriceBook2();
@@ -172,11 +165,6 @@ BillingPostalCode = '12345', Core_CIM_ID__c = '8675309',Core_Sales_Groups__c='Gl
         List<PriceBookEntry> PBELst = Core_DDR_Utility.CreatePriceBookEntry(5, ProdLst, PriceBookLst);
         
         List<Core_Design_Registration__c> DDRLst = Core_DDR_Utility.createDDR(5);
-        DDRLst[0].Core_Product_Group_Nm__c = 'Embedded/IOT';
-        DDRLst[1].Core_Product_Group_Nm__c = 'Embedded/IOT';
-        DDRLst[2].Core_Product_Group_Nm__c = 'Embedded/IOT';
-        DDRLst[3].Core_Product_Group_Nm__c = 'Embedded/IOT';
-        DDRLst[4].Core_Product_Group_Nm__c = 'Embedded/IOT';
         //DDRLst[0].Core_Product_Group_Nm__c = 'Embedded/IOT';
         insert DDRLst;
         
@@ -388,11 +376,6 @@ update TestDDRupdate;
         List<Core_LogEntry_Switch__c> LogEntryCS = Core_DDR_Utility.CreateLogEntry();
         
         List<Product2> ProdLst = Core_DDR_Utility.CreateProduct(5);
-        ProdLst[0].name = 'Intel® Ethernet SFP+ LR Optics0';
-        ProdLst[1].name = 'Intel® Ethernet SFP+ LR Optics1';
-        ProdLst[2].name = 'Intel® Ethernet SFP+ LR Optics2';
-        ProdLst[3].name = 'Intel® Ethernet SFP+ LR Optics3';
-        ProdLst[4].name = 'Intel® Ethernet SFP+ LR Optics4';
         insert ProdLst;
         
         List<PriceBook2> PriceBookLst = Core_DDR_Utility.CreatePriceBook2();
@@ -401,11 +384,6 @@ update TestDDRupdate;
         List<PriceBookEntry> PBELst = Core_DDR_Utility.CreatePriceBookEntry(5, ProdLst, PriceBookLst);
         
         List<Core_Design_Registration__c> DDRLst = Core_DDR_Utility.createDDR(5);
-        DDRLst[0].Core_Product_Group_Nm__c = 'Embedded/IOT';
-        DDRLst[1].Core_Product_Group_Nm__c = 'Embedded/IOT';
-        DDRLst[2].Core_Product_Group_Nm__c = 'Embedded/IOT';
-        DDRLst[3].Core_Product_Group_Nm__c = 'Embedded/IOT';
-        DDRLst[4].Core_Product_Group_Nm__c = 'Embedded/IOT';
         //DDRLst[0].Core_Product_Group_Nm__c = 'Embedded/IOT';
         insert DDRLst;
         List<Core_Design_Registration_Product__c> DRPUpdateLst = Core_DDR_Utility.CreateDRProduct(5, DDRLst, ProdLst);
@@ -455,20 +433,9 @@ update TestDDRupdate;
         insert LstAcc;
         
         List<Product2> ProdLst = Core_DDR_Utility.CreateProduct(5);
-        ProdLst[0].name = 'Intel® Ethernet SFP+ LR Optics0';
-        ProdLst[1].name = 'Intel® Ethernet SFP+ LR Optics1';
-        ProdLst[2].name = 'Intel® Ethernet SFP+ LR Optics2';
-        ProdLst[3].name = 'Intel® Ethernet SFP+ LR Optics3';
-        ProdLst[4].name = 'Intel® Ethernet SFP+ LR Optics4';
-
         insert ProdLst;
         
         List<Core_Design_Registration__c> TestDDRlst = Core_DDR_Utility.createDDR(5);
-        TestDDRlst[0].Core_Product_Group_Nm__c = 'Embedded/IOT';
-        TestDDRlst[1].Core_Product_Group_Nm__c = 'Embedded/IOT';
-        TestDDRlst[2].Core_Product_Group_Nm__c = 'Embedded/IOT';
-        TestDDRlst[3].Core_Product_Group_Nm__c = 'Embedded/IOT';
-        TestDDRlst[4].Core_Product_Group_Nm__c = 'Embedded/IOT';
         insert TestDDRlst;
         
         List<Core_Design_Registration_Product__c> DRPLst = Core_DDR_Utility.CreateDRProduct(5, TestDDRlst, ProdLst);
@@ -513,7 +480,7 @@ update TestDDRupdate;
         List<Product2> NewProducts = new List<Product2>();
         Product2 prod = new Product2();
         
-        prod.name = 'Intel® Ethernet SFP+ LR Optics';
+        prod.name = 'Intel Atom® CE4275 Media Processor';
         prod.Core_Design_Registration_Eligible_Ind__c  = true;
         prod.Core_Sales_Visible_Flag__c = true;
         prod.isActive = true;
@@ -522,7 +489,7 @@ update TestDDRupdate;
         
         Product2 prod2 = new Product2();
         
-        prod2.name = 'Intel® Ethernet SFP+ LR Optics';
+        prod2.name = '1300W AC CRPS 80+ Titanium efficiency power supply module AXX1300TCRPS_Sid';
         prod2.Core_Design_Registration_Eligible_Ind__c  = true;
         prod2.Core_Sales_Visible_Flag__c = true;
         prod2.isActive = true;
@@ -536,7 +503,7 @@ update TestDDRupdate;
         List<Core_Design_Registration__c> TestDDRlst = new List<Core_Design_Registration__c>();
         Core_Design_Registration__c ddr = new Core_Design_Registration__c();
         
-        ddr.Core_Product_Group_Nm__c = 'Embedded/IOT';
+        ddr.Core_Product_Group_Nm__c = 'FPGA/Power';
         ddr.Core_Design_Registration_Nm__c = 'DDR Test';
         ddr.Core_Design_Registration_Dsc__c = 'ABC';
         ddr.Core_Opportunity_Volume_Cnt__c = 5;
@@ -628,11 +595,6 @@ update TestDDRupdate;
         List<Core_LogEntry_Switch__c> LogEntryCS = Core_DDR_Utility.CreateLogEntry();
         
         List<Product2> ProdLst = Core_DDR_Utility.CreateProduct(5);
-        ProdLst[0].name = 'Intel® Ethernet SFP+ LR Optics0';
-        ProdLst[1].name = 'Intel® Ethernet SFP+ LR Optics1';
-        ProdLst[2].name = 'Intel® Ethernet SFP+ LR Optics2';
-        ProdLst[3].name = 'Intel® Ethernet SFP+ LR Optics3';
-        ProdLst[4].name = 'Intel® Ethernet SFP+ LR Optics4';
         insert ProdLst;
         
         List<PriceBook2> PriceBookLst = Core_DDR_Utility.CreatePriceBook2();
@@ -641,11 +603,7 @@ update TestDDRupdate;
         List<PriceBookEntry> PBELst = Core_DDR_Utility.CreatePriceBookEntry(5, ProdLst, PriceBookLst);
         
         List<Core_Design_Registration__c> DDRLst = Core_DDR_Utility.createDDR(5);
-        DDRLst[0].Core_Product_Group_Nm__c = 'Embedded/IOT';
-        DDRLst[1].Core_Product_Group_Nm__c = 'Embedded/IOT';
-        DDRLst[2].Core_Product_Group_Nm__c = 'Embedded/IOT';
-        DDRLst[3].Core_Product_Group_Nm__c = 'Embedded/IOT';
-        DDRLst[4].Core_Product_Group_Nm__c = 'Embedded/IOT';
+        DDRLst[0].Core_Product_Group_Nm__c = 'FPGA/Power';
         insert DDRLst;
         
         List<Core_Design_Registration_Product__c> DRPLst = Core_DDR_Utility.CreateDRProduct(5, DDRLst, ProdLst);
@@ -713,12 +671,6 @@ update TestDDRupdate;
         List<Core_LogEntry_Switch__c> LogEntryCS = Core_DDR_Utility.CreateLogEntry();
         
         List<Product2> ProdLst = Core_DDR_Utility.CreateProduct(5);
-        ProdLst[0].name = 'Intel® Ethernet SFP+ LR Optics0';
-        ProdLst[1].name = 'Intel® Ethernet SFP+ LR Optics1';
-        ProdLst[2].name = 'Intel® Ethernet SFP+ LR Optics2';
-        ProdLst[3].name = 'Intel® Ethernet SFP+ LR Optics3';
-        ProdLst[4].name = 'Intel® Ethernet SFP+ LR Optics4';
-        
         insert ProdLst;
         
         List<PriceBook2> PriceBookLst = Core_DDR_Utility.CreatePriceBook2();
@@ -728,11 +680,7 @@ update TestDDRupdate;
         // user owner=[select id from user where profile.name='CCP - Core Access' limit 1];
         
         List<Core_Design_Registration__c> DDRLst = Core_DDR_Utility.createDDR(5);
-        DDRLst[0].Core_Product_Group_Nm__c = 'Embedded/IOT';
-        DDRLst[1].Core_Product_Group_Nm__c = 'Embedded/IOT';
-        DDRLst[2].Core_Product_Group_Nm__c = 'Embedded/IOT';
-        DDRLst[3].Core_Product_Group_Nm__c = 'Embedded/IOT';
-        DDRLst[4].Core_Product_Group_Nm__c = 'Embedded/IOT';
+        DDRLst[0].Core_Product_Group_Nm__c = 'FPGA/Power';
         DDRLst[0].Core_Partner_Account_Id__c=null;
         DDRLst[0].Core_Opportunity_Id__c = null;
         //DDRLst[0].OwnerId=owner.id;         
@@ -860,11 +808,6 @@ BillingPostalCode = '12345', Core_CIM_ID__c = '8675309',Core_Sales_Groups__c='Am
             List<Core_LogEntry_Switch__c> LogEntryCS = Core_DDR_Utility.CreateLogEntry();
             
             List<Product2> ProdLst = Core_DDR_Utility.CreateProduct(5);
-            ProdLst[0].name = 'Intel® Ethernet SFP+ LR Optics0';
-            ProdLst[1].name = 'Intel® Ethernet SFP+ LR Optics1';
-            ProdLst[2].name = 'Intel® Ethernet SFP+ LR Optics2';
-            ProdLst[3].name = 'Intel® Ethernet SFP+ LR Optics3';
-            ProdLst[4].name = 'Intel® Ethernet SFP+ LR Optics4';
             insert ProdLst;
             
             List<PriceBook2> PriceBookLst = Core_DDR_Utility.CreatePriceBook2();
@@ -885,11 +828,6 @@ BillingPostalCode = '12345', Core_CIM_ID__c = '8675309',Core_Sales_Groups__c='Am
             insert psa1;
             
             List<Core_Design_Registration__c> DDRLst = Core_DDR_Utility.createDDR(5);
-            DDRLst[0].Core_Product_Group_Nm__c = 'Embedded/IOT';
-            DDRLst[1].Core_Product_Group_Nm__c = 'Embedded/IOT';
-            DDRLst[2].Core_Product_Group_Nm__c = 'Embedded/IOT';
-            DDRLst[3].Core_Product_Group_Nm__c = 'Embedded/IOT';
-            DDRLst[4].Core_Product_Group_Nm__c = 'Embedded/IOT';
             //DDRLst[0].Core_Product_Group_Nm__c = 'Embedded/IOT';
             
             insert DDRLst;
@@ -965,11 +903,6 @@ BillingPostalCode = '12345', Core_CIM_ID__c = '8675309',Core_Sales_Groups__c='Am
         List<Core_LogEntry_Switch__c> LogEntryCS = Core_DDR_Utility.CreateLogEntry();
         
         List<Product2> ProdLst = Core_DDR_Utility.CreateProduct(5);
-        ProdLst[0].name = 'Intel® Ethernet SFP+ LR Optics0';
-        ProdLst[1].name = 'Intel® Ethernet SFP+ LR Optics1';
-        ProdLst[2].name = 'Intel® Ethernet SFP+ LR Optics2';
-        ProdLst[3].name = 'Intel® Ethernet SFP+ LR Optics3';
-        ProdLst[4].name = 'Intel® Ethernet SFP+ LR Optics4';
         insert ProdLst;
         
         List<PriceBook2> PriceBookLst = Core_DDR_Utility.CreatePriceBook2();
@@ -984,13 +917,8 @@ BillingPostalCode = '12345', Core_CIM_ID__c = '8675309',Core_Sales_Groups__c='Am
         Map<Id,Core_Design_Registration__c> newMap = new Map<Id,Core_Design_Registration__c>();
         
         List<Core_Design_Registration__c> DDRLst = Core_DDR_Utility.createDDR(5);
-        DDRLst[0].Core_Product_Group_Nm__c = 'Embedded/IOT';
-        DDRLst[1].Core_Product_Group_Nm__c = 'Embedded/IOT';
-        DDRLst[2].Core_Product_Group_Nm__c = 'Embedded/IOT';
-        DDRLst[3].Core_Product_Group_Nm__c = 'Embedded/IOT';
-        DDRLst[4].Core_Product_Group_Nm__c = 'Embedded/IOT';
         //DDRLst[0].Core_Product_Group_Nm__c = 'Embedded/IOT';
-        DDRLst[1].Core_Product_Group_Nm__c = 'Embedded/IOT';
+        DDRLst[1].Core_Product_Group_Nm__c = 'FPGA/Power';
         insert DDRLst;
         
         List<Opportunity> oppsd = new List<Opportunity>();
@@ -1041,7 +969,7 @@ BillingPostalCode = '12345', Core_CIM_ID__c = '8675309',Core_Sales_Groups__c='Am
             newList.add(Design);
             newMap.put(Design.Id, Design);
         }  
-        DDRLst[1].Core_Product_Group_Nm__c = 'Embedded/IOT';
+        DDRLst[1].Core_Product_Group_Nm__c = 'FPGA/Power';
         update DDRLst;
         
         Core_DDR_Design_Handler_Utility.processAfterUpdate(oldList,newList,oldMap,newMap);
@@ -1073,7 +1001,6 @@ insert acc;*/
         insert LstAcc;
         
         List<Product2> ProdLst = Core_DDR_Utility.CreateProduct(1);
-        ProdLst[0].name = 'Intel® Ethernet SFP+ LR Optics0';
         insert ProdLst;
         
         List<PriceBook2> PriceBookLst = Core_DDR_Utility.CreatePriceBook2();
@@ -1090,7 +1017,7 @@ insert acc;*/
         //
         
         Core_Design_Registration__c DDRLst = new Core_Design_Registration__c(
-            Core_Product_Group_Nm__c = 'Embedded/IOT',
+            Core_Product_Group_Nm__c = 'FPGA/Power',
             Core_Design_Registration_Nm__c = 'DDR Test',
             Core_Design_Registration_Dsc__c = 'ABC',
             Core_Opportunity_Volume_Cnt__c = 5,
@@ -1116,7 +1043,7 @@ insert acc;*/
         
         
         //   List<Core_Design_Registraction__c> DDRLst=new List<Core_Design_Registraction__c>;
-        DDRLst.Core_Product_Group_Nm__c ='Embedded/IOT';
+        DDRLst.Core_Product_Group_Nm__c ='FPGA/Power';
         insert DDRLst;
         
         
@@ -1181,7 +1108,6 @@ insert acc;*/
         insert LstAcc;
         
         List<Product2> ProdLst = Core_DDR_Utility.CreateProduct(1);
-        ProdLst[0].name = 'Intel® Ethernet SFP+ LR Optics0';
         insert ProdLst;
         
         List<PriceBook2> PriceBookLst = Core_DDR_Utility.CreatePriceBook2();
@@ -1198,7 +1124,7 @@ insert acc;*/
         //
         List<Id> listDDRId = new List<Id>();
         Core_Design_Registration__c DDRLst = new Core_Design_Registration__c(
-            Core_Product_Group_Nm__c = 'Embedded/IOT',
+            Core_Product_Group_Nm__c = 'FPGA/Power',
             Core_Design_Registration_Nm__c = 'DDR Test',
             Core_Design_Registration_Dsc__c = 'ABC',
             Core_Opportunity_Volume_Cnt__c = 5,
@@ -1283,7 +1209,6 @@ insert acc;*/
         
         Core_DDR_Design_Handler_Utility.processAfterUpdate(oldList,newList,oldMap,newMap);
         List<Core_design_registration__c> ddrNew=Core_DDR_Utility.createDDR(1);
-        ddrNew[0].Core_Product_Group_Nm__c = 'Embedded/IOT';
         ddrNew[0].Core_Partner_Account_Id__c = LstAcc[0].id;
         insert ddrNew;
         Opportunity oppNew = new Opportunity();
@@ -1325,7 +1250,6 @@ insert acc;*/
         insert LstAcc;
         
         List<Product2> ProdLst = Core_DDR_Utility.CreateProduct(1);
-        ProdLst[0].name = 'Intel® Ethernet SFP+ LR Optics0';
         insert ProdLst;
         
         List<PriceBook2> PriceBookLst = Core_DDR_Utility.CreatePriceBook2();
@@ -1339,7 +1263,7 @@ insert acc;*/
         Map<Id,Core_Design_Registration__c> newMap= new Map<Id,Core_Design_Registration__c>();
         
         Core_Design_Registration__c DDRLst = new Core_Design_Registration__c(
-            Core_Product_Group_Nm__c = 'Embedded/IOT',
+            Core_Product_Group_Nm__c = 'FPGA/Power',
             Core_Design_Registration_Nm__c = 'DDR Test',
             Core_Design_Registration_Dsc__c = 'ABC',
             Core_Opportunity_Volume_Cnt__c = 5,
@@ -1362,7 +1286,7 @@ insert acc;*/
             Core_Manufacturing_Region_Cd__c = 'APJ',
             Core_Design_Registration_Status_Nm__c = 'Submitted'
         );
-        DDRLst.Core_Product_Group_Nm__c ='Embedded/IOT';
+        DDRLst.Core_Product_Group_Nm__c ='FPGA/Power';
         insert DDRLst;
         Test.startTest();
         DDRLst.Core_Design_Registration_Status_Nm__c = 'Rejected';
@@ -1397,7 +1321,6 @@ insert acc;*/
         insert LstAcc;
         
         List<Product2> ProdLst = Core_DDR_Utility.CreateProduct(1);
-        ProdLst[0].name = 'Intel® Ethernet SFP+ LR Optics0';
         insert ProdLst;
         
         List<PriceBook2> PriceBookLst = Core_DDR_Utility.CreatePriceBook2();
@@ -1411,7 +1334,7 @@ insert acc;*/
         Map<Id,Core_Design_Registration__c> newMap= new Map<Id,Core_Design_Registration__c>();
         
         Core_Design_Registration__c DDRLst = new Core_Design_Registration__c(
-            Core_Product_Group_Nm__c = 'Embedded/IOT',
+            Core_Product_Group_Nm__c = 'FPGA/Power',
             Core_Design_Registration_Nm__c = 'DDR Test',
             Core_Design_Registration_Dsc__c = 'ABC',
             Core_Opportunity_Volume_Cnt__c = 5,
@@ -1472,7 +1395,6 @@ insert acc;*/
         lstAcc[1].recordtypeID = accountRecordTypeIntel;
         insert LstAcc;
          List<Product2> ProdLst = Core_DDR_Utility.CreateProduct(1);
-        ProdLst[0].name = 'Intel® Ethernet SFP+ LR Optics0';
         insert ProdLst;
         List<Core_Design_Registration__c> oldList = new  List<Core_Design_Registration__c>();
         List<Core_Design_Registration__c> newList=new List<Core_Design_Registration__c>();
@@ -1631,7 +1553,7 @@ insert acc;*/
             insert odr;
             
             Core_Design_Registration__c DDR = new Core_Design_Registration__c(
-                Core_Product_Group_Nm__c = 'Embedded/IOT',
+                Core_Product_Group_Nm__c = 'FPGA/Power',
                 Core_Design_Registration_Nm__c = 'DDR Test',
                 Core_Design_Registration_Dsc__c = 'ABC',
                 Core_Opportunity_Volume_Cnt__c = 5,
@@ -1687,7 +1609,7 @@ insert acc;*/
                 Core_End_Customer_URL__c = 'https://www.testweb.com',
                 DDR_Partner_FAE_Email__c = 'test.user@intel.com',
                 OwnerId = partnerUser.Id,
-                Core_Product_Group_Nm__c = 'Embedded/IOT',
+                Core_Product_Group_Nm__c = 'FPGA/Power',
                 Core_Submission_Type__c = 'M2M'
             );
             List<Core_Design_Registration__c> drList=new  List<Core_Design_Registration__c>();
@@ -1993,7 +1915,6 @@ insert acc;*/
         insert dealReg;
         
         List<Product2> listOfProducts = Core_DDR_Utility.CreateProduct(1);
-        listOfProducts[0].name = 'Intel® Ethernet SFP+ LR Optics0';
         insert listOfProducts;
         
         Core_Design_Registration_Product__c dealRegProduct1 = new Core_Design_Registration_Product__c();
@@ -2077,7 +1998,7 @@ insert acc;*/
         List<Product2> testProducts = new List<Product2>();
         Product2 prod = new Product2();
         
-        prod.name = 'Intel® Ethernet SFP+ LR Optics';
+        prod.name = 'Intel Atom® CE4275 Media Processor';
         prod.Core_Design_Registration_Eligible_Ind__c  = true;
         prod.Core_Sales_Visible_Flag__c = true;
         prod.isActive = true;
@@ -2086,7 +2007,7 @@ insert acc;*/
         
         Product2 prod2 = new Product2();
         
-        prod2.name = 'Intel® Ethernet SFP+ LR Optics';
+        prod2.name = '1300W AC CRPS 80+ Titanium efficiency power supply module AXX1300TCRPS_Sid';
         prod2.Core_Design_Registration_Eligible_Ind__c  = true;
         prod2.Core_Sales_Visible_Flag__c = true;
         prod2.isActive = true;
@@ -2101,7 +2022,7 @@ insert acc;*/
         List<Core_Design_Registration__c> designReg = new List<Core_Design_Registration__c>();
         Core_Design_Registration__c ddr = new Core_Design_Registration__c();
         
-        ddr.Core_Product_Group_Nm__c = 'Embedded/IOT';
+        ddr.Core_Product_Group_Nm__c = 'FPGA/Power';
         ddr.Core_Design_Registration_Nm__c = 'DDR Test';
         ddr.Core_Design_Registration_Dsc__c = 'ABC';
         ddr.Core_Opportunity_Volume_Cnt__c = 5;
@@ -2208,7 +2129,7 @@ insert acc;*/
         List<Product2> testProducts = new List<Product2>();
         Product2 prod = new Product2();
         
-        prod.name = 'Intel® Ethernet SFP+ LR Optics';
+        prod.name = 'Intel Atom® CE4275 Media Processor';
         prod.Core_Design_Registration_Eligible_Ind__c  = true;
         prod.Core_Sales_Visible_Flag__c = true;
         prod.isActive = true;
@@ -2217,7 +2138,7 @@ insert acc;*/
         
         Product2 prod2 = new Product2();
         
-        prod2.name = 'Intel® Ethernet SFP+ LR Optics';
+        prod2.name = '1300W AC CRPS 80+ Titanium efficiency power supply module AXX1300TCRPS_Sid';
         prod2.Core_Design_Registration_Eligible_Ind__c  = true;
         prod2.Core_Sales_Visible_Flag__c = true;
         prod2.isActive = true;
@@ -2232,7 +2153,7 @@ insert acc;*/
         List<Core_Design_Registration__c> designReg = new List<Core_Design_Registration__c>();
         Core_Design_Registration__c ddr = new Core_Design_Registration__c();
         
-        ddr.Core_Product_Group_Nm__c = 'Embedded/IOT';
+        ddr.Core_Product_Group_Nm__c = 'FPGA/Power';
         ddr.Core_Design_Registration_Nm__c = 'DDR Test';
         ddr.Core_Design_Registration_Dsc__c = 'ABC';
         ddr.Core_Opportunity_Volume_Cnt__c = 5;
@@ -2334,7 +2255,7 @@ insert acc;*/
         List<Core_Design_Registration__c> designReg = new List<Core_Design_Registration__c>();
         Core_Design_Registration__c ddr = new Core_Design_Registration__c();
         
-        ddr.Core_Product_Group_Nm__c = 'Embedded/IOT';
+        ddr.Core_Product_Group_Nm__c = 'FPGA/Power';
         ddr.Core_Design_Registration_Nm__c = 'DDR Test';
         ddr.Core_Design_Registration_Dsc__c = 'ABC';
         ddr.Core_Opportunity_Volume_Cnt__c = 5;

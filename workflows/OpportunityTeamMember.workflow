@@ -8,8 +8,21 @@
             <field>UserId</field>
             <type>userLookup</type>
         </recipients>
-        <senderType>DefaultWorkflowUser</senderType>
+        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
         <template>Core_Opportunity_Management/Opportunity_Team_Email_Template</template>
+    </alerts>
+    <alerts>
+        <fullName>When_Opportunity_Support_team_is_in_Pending_State</fullName>
+        <description>When Opportunity Support team is in Pending State</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>Team Member (100%)</recipient>
+            <type>opportunityTeam</type>
+        </recipients>
+        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Opportunity_Support_Test</template>
     </alerts>
     <fieldUpdates>
         <fullName>Core_OppTM_Org</fullName>
@@ -66,7 +79,7 @@
             <name>Core_Opp_TM_OSC_Update</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Update Core_OSC_Snapshot upon team member creation.</description>
         <formula>ISNULL( Core_OSC_Snapshot__c )</formula>
         <triggerType>onAllChanges</triggerType>

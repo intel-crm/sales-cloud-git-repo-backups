@@ -5,8 +5,8 @@
     <decisions>
         <name>Check_Contact_Established</name>
         <label>Check Contact Established</label>
-        <locationX>314</locationX>
-        <locationY>395</locationY>
+        <locationX>578</locationX>
+        <locationY>431</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Contact_Established</name>
@@ -84,8 +84,8 @@
     <decisions>
         <name>Check_Lead_Status</name>
         <label>Check Lead Status</label>
-        <locationX>1106</locationX>
-        <locationY>287</locationY>
+        <locationX>1766</locationX>
+        <locationY>323</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Lead_Status_Contacted</name>
@@ -136,8 +136,8 @@
     <decisions>
         <name>Check_Prior_Lead_Status</name>
         <label>Check Prior Lead Status</label>
-        <locationX>974</locationX>
-        <locationY>395</locationY>
+        <locationX>1634</locationX>
+        <locationY>431</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Prior_Status_Contacted</name>
@@ -165,8 +165,8 @@
     <decisions>
         <name>Check_record_create_or_Update</name>
         <label>Check record create or Update</label>
-        <locationX>1502</locationX>
-        <locationY>395</locationY>
+        <locationX>2426</locationX>
+        <locationY>431</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Create_or_Update</name>
@@ -223,11 +223,214 @@
         </value>
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <name>Create_Log_Entry_Contacted</name>
+        <label>Create Log Entry Contacted</label>
+        <locationX>842</locationX>
+        <locationY>647</locationY>
+        <inputAssignments>
+            <field>Core_Details__c</field>
+            <value>
+                <elementReference>$Flow.FaultMessage</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Message__c</field>
+            <value>
+                <stringValue>Partner_Lead_Entrance_Date_Related_Field_Updates : Error Occurred in Flow on Lead </stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Origin__c</field>
+            <value>
+                <stringValue>Partner_Lead_Entrance_Date_Related_Field_Updates Flow</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Project__c</field>
+            <value>
+                <stringValue>Lead</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Severity__c</field>
+            <value>
+                <stringValue>High</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_When__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_sObjectId__c</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Core_Log_Entry__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <name>Create_Log_Entry_New_Update</name>
+        <label>Create Log Entry New_Update</label>
+        <locationX>2426</locationX>
+        <locationY>647</locationY>
+        <inputAssignments>
+            <field>Core_Details__c</field>
+            <value>
+                <elementReference>$Flow.FaultMessage</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Message__c</field>
+            <value>
+                <stringValue>Partner_Lead_Entrance_Date_Related_Field_Updates : Error Occurred in Flow on Lead </stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Origin__c</field>
+            <value>
+                <stringValue>Partner_Lead_Entrance_Date_Related_Field_Updates Flow</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Project__c</field>
+            <value>
+                <stringValue>Lead</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Severity__c</field>
+            <value>
+                <stringValue>High</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_When__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_sObjectId__c</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Core_Log_Entry__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <name>Create_Log_Entry_Qualified</name>
+        <label>Create Log Entry Qualified</label>
+        <locationX>1634</locationX>
+        <locationY>647</locationY>
+        <inputAssignments>
+            <field>Core_Details__c</field>
+            <value>
+                <elementReference>$Flow.FaultMessage</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Message__c</field>
+            <value>
+                <stringValue>Partner_Lead_Entrance_Date_Related_Field_Updates : Error Occurred in Flow on Lead </stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Origin__c</field>
+            <value>
+                <stringValue>Partner_Lead_Entrance_Date_Related_Field_Updates Flow</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Project__c</field>
+            <value>
+                <stringValue>Lead</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Severity__c</field>
+            <value>
+                <stringValue>High</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_When__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_sObjectId__c</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Core_Log_Entry__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <name>Create_Log_Entry_Record_EstablishedContact</name>
+        <label>Create Log Entry Record_EstablishedContact</label>
+        <locationX>314</locationX>
+        <locationY>647</locationY>
+        <inputAssignments>
+            <field>Core_Details__c</field>
+            <value>
+                <elementReference>$Flow.FaultMessage</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Message__c</field>
+            <value>
+                <stringValue>Partner_Lead_Entrance_Date_Related_Field_Updates : Error Occurred in flow on Lead Object </stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Origin__c</field>
+            <value>
+                <stringValue>Partner_Lead_Entrance_Date_Related_Field_Updates  Flow</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Project__c</field>
+            <value>
+                <stringValue>Lead</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Severity__c</field>
+            <value>
+                <stringValue>High</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_When__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_sObjectId__c</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Core_Log_Entry__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
     <recordUpdates>
         <name>Update_Entrance_Date_Contact_Established</name>
         <label>Update Entrance Date Contact Established</label>
         <locationX>50</locationX>
-        <locationY>503</locationY>
+        <locationY>539</locationY>
+        <faultConnector>
+            <targetReference>Create_Log_Entry_Record_EstablishedContact</targetReference>
+        </faultConnector>
         <inputAssignments>
             <field>Core_Contact_Estb_Dt__c</field>
             <value>
@@ -239,8 +442,11 @@
     <recordUpdates>
         <name>Update_Entrance_Date_Contacted</name>
         <label>Update Entrance Date Contacted</label>
-        <locationX>314</locationX>
-        <locationY>503</locationY>
+        <locationX>578</locationX>
+        <locationY>539</locationY>
+        <faultConnector>
+            <targetReference>Create_Log_Entry_Contacted</targetReference>
+        </faultConnector>
         <inputAssignments>
             <field>Core_Entrance_Date_Contacted_Dt__c</field>
             <value>
@@ -252,8 +458,11 @@
     <recordUpdates>
         <name>Update_Entrance_Date_PQL_Exit_Date_PAL</name>
         <label>Update_Entrance_Date_PQL_Exit_Date_PAL</label>
-        <locationX>842</locationX>
-        <locationY>503</locationY>
+        <locationX>1370</locationX>
+        <locationY>539</locationY>
+        <faultConnector>
+            <targetReference>Create_Log_Entry_Qualified</targetReference>
+        </faultConnector>
         <inputAssignments>
             <field>Core_Exit_Date_Contacted_Dt__c</field>
             <value>
@@ -289,12 +498,15 @@
     <recordUpdates>
         <name>Update_Entrance_Date_PRL</name>
         <label>Update Entrance Date PRL</label>
-        <locationX>1370</locationX>
-        <locationY>503</locationY>
+        <locationX>2162</locationX>
+        <locationY>539</locationY>
+        <faultConnector>
+            <targetReference>Create_Log_Entry_New_Update</targetReference>
+        </faultConnector>
         <inputAssignments>
             <field>Core_PRL_Entry_Dt__c</field>
             <value>
-                <elementReference>$Flow.CurrentDateTime</elementReference>
+                <elementReference>Date_Time_Now</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -306,7 +518,7 @@
         <inputReference>$Record</inputReference>
     </recordUpdates>
     <start>
-        <locationX>980</locationX>
+        <locationX>1640</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Check_Lead_Status</targetReference>
@@ -314,7 +526,7 @@
         <filterFormula>AND({!$Record.RecordType.Name}=&apos;Partner Lead&apos;, OR(ISPICKVAL({!$Record.Core_Lead_Status__c}, &apos;New&apos;), ISPICKVAL({!$Record.Core_Lead_Status__c}, &apos;Contacted&apos;),ISPICKVAL({!$Record.Core_Lead_Status__c}, &apos;Qualified&apos;)))</filterFormula>
         <object>Lead</object>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
-        <triggerType>RecordBeforeSave</triggerType>
+        <triggerType>RecordAfterSave</triggerType>
     </start>
     <status>Active</status>
 </Flow>

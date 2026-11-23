@@ -39,7 +39,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>LAST_N_DAYS:14,TODAY</value>
+            <value>LAST_N_DAYS:30,TODAY</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Opportunity_Type__c</column>
@@ -53,7 +53,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Design,Design Win,Lost,Cancelled,Production Lost,Production Cancelled</value>
+            <value>Design,Design Win,Production Win,Lost,Cancelled,Production Lost,Production Cancelled</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_External_ID__c</column>
@@ -65,7 +65,7 @@
         <language>en_US</language>
     </filter>
     <format>Tabular</format>
-    <name>PSG Top Opps Last 14 Days Outcomes</name>
+    <name>PSG Top Opps Last 30 Days Outcomes</name>
     <params>
         <name>terr</name>
         <value>all</value>

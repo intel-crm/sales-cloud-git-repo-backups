@@ -84,7 +84,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>greaterThan</operator>
-            <value>49</value>
+            <value>49.00</value>
         </criteriaItems>
         <criteriaItems>
             <column>STAGE_NAME</column>

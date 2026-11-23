@@ -22,9 +22,6 @@
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$SBQQ__Quote__c</field>
     </columns>
     <columns>
-        <field>SBQQ__Quote__c$Pricing_Customer_Reference_Id__c</field>
-    </columns>
-    <columns>
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Quote_Line_Number_Txt__c</field>
     </columns>
     <columns>
@@ -34,7 +31,7 @@
         <field>SBQQ__Quote__c$Pricing_End_Customer_Account__c</field>
     </columns>
     <columns>
-        <field>SBQQ__Quote__c$Pricing_Decision_Date__c</field>
+        <field>SBQQ__Quote__c$Pricing_Bid_Dt__c</field>
     </columns>
     <columns>
         <field>SBQQ__Quote__c$Pricing_Project_Name_Nm__c</field>

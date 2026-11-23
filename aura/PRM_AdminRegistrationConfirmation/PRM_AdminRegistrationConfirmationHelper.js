@@ -3,8 +3,7 @@
         console.log('displayInputs 1'+JSON.stringify(component.get("v.displayInputs")));
         var JSONVALUE = component.get("v.displayInputs");
         var JSON1 = JSONVALUE.SelectedRow;
-        console.log('JSON1'+JSON.stringify(JSON1));
-        console.log('JSONVal'+JSON.stringify(JSONVALUE));
+        //console.log('JSON1'+JSON.stringify(JSON1));
         var associatedAccount = JSONVALUE.accountAssociatedToExistingContact;
         //console.log('associatedAccount'+JSON.stringify(associatedAccount));
         var existingContact = JSONVALUE.duplicateContactRecord;
@@ -105,7 +104,7 @@
             //address = associatedAccount.BillingStreet+'\n'+associatedAccount.BillingCity+','+' '+associatedAccount.BillingState+' '+associatedAccount.BillingPostalCode+'\n'+associatedAccount.BillingCountry;
             
             accountListData.AccountName = associatedAccount.Name,
-            accountListData.BillingAddress = address
+                accountListData.BillingAddress = address
         }
         
         else{
@@ -113,23 +112,23 @@
             if(JSON1 == null || JSON1 == '' || JSON1.length == 0){
                 //alert('UI INPUT');
                 
-                /*if(component.get("v.displayInputs")['AddressLine2'] != null && component.get("v.displayInputs")['AddressLine2'] != 'undefined' && component.get("v.displayInputs")['AddressLine2'] != ''){
+                if(component.get("v.displayInputs")['AddressLine2'] != null && component.get("v.displayInputs")['AddressLine2'] != 'undefined' && component.get("v.displayInputs")['AddressLine2'] != ''){
                     address = component.get("v.displayInputs")['AddressLine1']+' '+component.get("v.displayInputs")['AddressLine2']+'\n'+component.get("v.displayInputs")['City']+','+' '+component.get("v.displayInputs")['State']+' '+component.get("v.displayInputs")['PostalCode']+'\n'+component.get("v.displayInputs")['Country'];
                 }
                 else
                 {
                     address = component.get("v.displayInputs")['AddressLine1']+'\n'+component.get("v.displayInputs")['City']+','+' '+component.get("v.displayInputs")['State']+' '+component.get("v.displayInputs")['PostalCode']+'\n'+component.get("v.displayInputs")['Country'];
-                }*/
+                }
                 
                 accountListData.AccountName = component.get("v.displayInputs")['AccountName'],
-                accountListData.BillingAddress = component.get("v.displayInputs")['BillingAddress']
+                    accountListData.BillingAddress = address
             }
             
             else {
                 //alert('SELECTED ROW');
                 //address = JSON1[0].BillingStreet+'\n'+JSON1[0].BillingCity+','+' '+JSON1[0].BillingState+' '+JSON1[0].BillingPostalCode+'\n'+JSON1[0].BillingCountry;
                 
-                /*if(JSON1[0].BillingStreet != undefined && JSON1[0].BillingStreet != null){
+                if(JSON1[0].BillingStreet != undefined && JSON1[0].BillingStreet != null){
                     billingStreet = JSON1[0].BillingStreet;
                 }
                 
@@ -187,10 +186,10 @@
                     else{
                         address += billingCountry;
                     }
-                }*/
+                }
                 
                 accountListData.AccountName = JSON1[0].Name,
-                accountListData.BillingAddress = JSON1[0].BillingAddress                
+                    accountListData.BillingAddress = address                
             }
         }
         

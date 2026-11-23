@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>Hierarchy</customSettingsType>
+    <description>PSG Feedback custom setting panel.</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>core_cpq_emoji_form__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>To activate PSG Feedback Emoji form.</description>
+        <inlineHelpText>Check to activate the emoji feedback form.</inlineHelpText>
+        <label>Emoji Form</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>core_cpq_enabled__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Enabler for PSG Feedback Form.</description>
+        <inlineHelpText>Check to enable the PSG Feedback Form.</inlineHelpText>
+        <label>Enabled?</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>core_cpq_end_date__c</fullName>
+        <description>End Date for PSG Feedback Form.</description>
+        <inlineHelpText>End Date for PSG Feedback Form.</inlineHelpText>
+        <label>End Date</label>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>core_cpq_feedback_interval__c</fullName>
+        <description>Feedback Interval for new Feedback record.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Feedback Interval for new Feedback record.</inlineHelpText>
+        <label>Feedback Interval</label>
+        <precision>18</precision>
+        <required>true</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>core_cpq_skipped_interval__c</fullName>
+        <description>Enter Skipped Interval days when to populate again.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter Skipped Interval days when to populate again.</inlineHelpText>
+        <label>Skipped Interval</label>
+        <precision>18</precision>
+        <required>true</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>core_cpq_start_date__c</fullName>
+        <description>Starting date for PSG Feedback form.</description>
+        <inlineHelpText>Starting date for PSG Feedback form.</inlineHelpText>
+        <label>Start Date</label>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <label>PSG Feedback Setting</label>
+    <visibility>Public</visibility>
+</CustomObject>

@@ -1,0 +1,23 @@
+<template>
+    <div class=".slds-modal__container ">
+       
+    <div class="content-section">
+        <lightning-formatted-rich-text value={quotingFunctionalityMessage}></lightning-formatted-rich-text>
+    </div>
+
+    <div>
+        <lightning-button onclick={createQuote1} label="Create FPGA Quote" disabled={isButtonDisabled}></lightning-button>
+        <template if:true={showSpinner}>
+            <div class="spinner"></div>
+          </template>
+    
+        <template if:true={showErrorMessage}>
+                <ul>
+                    <template for:each={errorMessage} for:item="errorMessage">
+                        <li key={errorMessage}><div class="error-message"><lightning-formatted-rich-text value={errorMessage}></lightning-formatted-rich-text></div> </li>
+                    </template>
+                </ul>
+            </template>
+        </div>
+    </div>
+</template>

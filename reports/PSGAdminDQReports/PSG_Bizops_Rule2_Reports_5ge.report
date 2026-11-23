@@ -65,9 +65,20 @@
         <field>SBQQ__QuoteLine__c$core_cpq_dollar_change_flag_cb__c</field>
     </columns>
     <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>SBQQ__QuoteLine__c$core_cpq_prid_active_cb__c</field>
+    </columns>
+    <columns>
         <field>SBQQ__QuoteLine__c$SBQQ__Quote__c.core_cpq_quote_type_nm__c</field>
     </columns>
     <filter>
+        <criteriaItems>
+            <column>SBQQ__QuoteLine__c$core_cpq_prid_active_cb__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>0</value>
+        </criteriaItems>
         <criteriaItems>
             <column>SBQQ__QuoteLine__c$core_cpq_quote_active_cb__c</column>
             <columnToColumn>false</columnToColumn>
@@ -88,6 +99,13 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Design Win,Transfer Pricing,Contract Pricing</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>SBQQ__QuoteLine__c$core_cpq_PRID__c.Id</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value></value>
         </criteriaItems>
         <criteriaItems>
             <column>SBQQ__QuoteLine__c$SBQQ__Quote__c.SBQQ__Status__c</column>

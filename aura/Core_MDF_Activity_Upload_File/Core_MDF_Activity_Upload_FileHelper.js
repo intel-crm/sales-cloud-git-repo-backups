@@ -14,15 +14,8 @@
             var docIds = [];
             var vdata = [];
             if(state === 'SUCCESS'){
-                 var result = response.getReturnValue();
-                 var isCommunityUser = true;
-                if(result[0] != null && result[0].userType != undefined && !$A.util.isEmpty(result[0].userType)){            
-                 var userType = result[0].userType;
-                 isCommunityUser = userType == 'PowerPartner' ? true :false;
-                }
-                 var urlString = "";
-               // if(window.location.href.indexOf($A.get("$Label.c.Core_MDF_PartnerCommunityIdentifier ")) > -1) {
-                if(isCommunityUser){
+                var urlString = "";
+                if(window.location.href.indexOf($A.get("$Label.c.Core_MDF_PartnerCommunityIdentifier ")) > -1) {
        				urlString = $A.get("$Label.c.Core_MDF_PFRCommunityLink") + 'sfc/servlet.shepherd/document/download/';
     			}
                 else

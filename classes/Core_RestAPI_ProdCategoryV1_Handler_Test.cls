@@ -55,6 +55,7 @@ public class Core_RestAPI_ProdCategoryV1_Handler_Test{
             );
             insert objAsst;
             strProductId = objAsst.id;
+            System.debug('strProductId-->'+strProductId);
             List<Core_IPS_Product_Issue_Category__c> CategoriesList = Core_RestAPI_TestUtilities.getListOfCoreProdIssCategory(10);
             for(Integer i=0;i<CategoriesList.size()/2;i++){
                 Core_IPS_Product_Issue_Category__c objAPI = CategoriesList[i]; 
@@ -91,6 +92,7 @@ public class Core_RestAPI_ProdCategoryV1_Handler_Test{
     //This method test the handler methods: getCategoriesandSubCategories & processrequest
     @isTest public static void test_getCategoriesandSubCategories_Positive(){
         objsuppProdName = [SELECT Id,Core_Supported_Product__r.Name FROM Asset  WHERE Name = 'Haswell EP Intel products'];
+        System.debug('objsuppProdName -->'+objsuppProdName);
         RestRequest requestObj = (RestRequest)System.jSON.deserialize(Core_RestAPI_TestUtilities.REQUEST_TEMPLATE , RestRequest.class);
         requestObj.resourcePath ='/services/apexrest/v1.0/products/'+objsuppProdName.Id+'/categories/';
         requestObj.requestUri ='/v1.0/products/'+objsuppProdName.Id+'/categories/';

@@ -1,7 +1,7 @@
 @isTest
 public class Core_AccountTriggerHandler_Test {
     @TestSetup
-    public static void setData() {
+    public static void setData(){
         
         insert new Core_Trigger_Executions__c(Name='UCD_ACM_ExecutePlatformEvent',Core_Active__c = true,
                 Core_Class_Name__c='Test',Core_Description__c='TestDescription',Core_Object__c='TestObject',
@@ -41,7 +41,7 @@ public class Core_AccountTriggerHandler_Test {
                 Core_Class_Name__c='Test Class',Core_Description__c='This is test description',Core_Object__c='Descriptive Feature',
                 Core_Trigger_Events__c = 'After insert');
 
-        insert new Core_Trigger_Executions__c(Name = 'Core_MDF_MultipleVCForSameProg',Core_Active__c = false,
+        insert new Core_Trigger_Executions__c(Name = 'Core_MDF_MultipleVCForSameProg',Core_Active__c = True,
                 Core_Class_Name__c = 'Core_AccountHandler',Core_Description__c = 'To Prevent Multiple Virtual Corp for same program.',
                 Core_Object__c = 'Account',Core_Trigger_Events__c = 'before insert');
 
@@ -61,19 +61,19 @@ public class Core_AccountTriggerHandler_Test {
                 Core_Class_Name__c = 'Core_AccountHandlerTest2',Core_Description__c = 'This is Test Descriptions2',
                 Core_Object__c = 'Account',Core_Trigger_Events__c = 'before update');
 
-        insert new Core_Trigger_Executions__c(Name = 'Core_MDF_ValidatePFAChange',Core_Active__c = false,
+        insert new Core_Trigger_Executions__c(Name = 'Core_MDF_ValidatePFAChange',Core_Active__c = True,
                 Core_Class_Name__c = 'Core_AccountHandlerTest3',Core_Description__c = 'This is Test Descriptions3',
                 Core_Object__c = 'Account',Core_Trigger_Events__c = 'before update');
 
-        insert new Core_Trigger_Executions__c(Name = 'Core_MDF_createGroupForAccountNode',Core_Active__c = false,
+        insert new Core_Trigger_Executions__c(Name = 'Core_MDF_createGroupForAccountNode',Core_Active__c = True,
                 Core_Class_Name__c = 'Core_AccountHandlerTest4',Core_Description__c = 'This is Test Descriptions4',
                 Core_Object__c = 'Account',Core_Trigger_Events__c = 'After Insert');
 
-        insert new Core_Trigger_Executions__c(Name = 'Core_MDF_ShareAccountsWithGroups',Core_Active__c = false,
+        insert new Core_Trigger_Executions__c(Name = 'Core_MDF_ShareAccountsWithGroups',Core_Active__c = True,
                 Core_Class_Name__c = 'Core_AccountHandlerTest5',Core_Description__c = 'This is Test Descriptions5',
                 Core_Object__c = 'Account',Core_Trigger_Events__c = 'After Insert');
 
-        insert new Core_Trigger_Executions__c(Name = 'Core_MDF_Account_node_share',Core_Active__c = false,
+        insert new Core_Trigger_Executions__c(Name = 'Core_MDF_Account_node_share',Core_Active__c = True,
                 Core_Class_Name__c = 'Core_AccountHandlerTest6',Core_Description__c = 'This is Test Descriptions6',
                 Core_Object__c = 'Account',Core_Trigger_Events__c = 'After Insert');
 
@@ -110,15 +110,15 @@ public class Core_AccountTriggerHandler_Test {
                 Core_Class_Name__c = 'Core_AccountHandlerTest12',Core_Description__c = 'This is Test Descriptions12',
                 Core_Object__c = 'Account',Core_Trigger_Events__c = 'After Delete');
 
-        insert new Core_Trigger_Executions__c(Name = 'Core_MDF_UpdateHostRegionOnNodeAcc',Core_Active__c = false,
+        insert new Core_Trigger_Executions__c(Name = 'Core_MDF_UpdateHostRegionOnNodeAcc',Core_Active__c = True,
                 Core_Class_Name__c = 'Core_AccountTriggerHandler',Core_Description__c = 'To update the host region on node accounts from its parent fund account',
                 Core_Object__c = 'Account',Core_Trigger_Events__c = 'Before Insert');
         
-        insert new Core_Trigger_Executions__c(Name = 'Core_MDF_UpdateHostRegionAfterVCUpdate',Core_Active__c = false,
+        insert new Core_Trigger_Executions__c(Name = 'Core_MDF_UpdateHostRegionAfterVCUpdate',Core_Active__c = True,
                 Core_Class_Name__c = 'Core_AccountTriggerHandler',Core_Description__c = 'Update the host region on node accounts when a virtual corps host region is updated',
                 Core_Object__c = 'Account',Core_Trigger_Events__c = 'After Update');
         
-        insert new Core_Trigger_Executions__c(Name = 'Core_MDF_IPA_Account_Region_Check',Core_Active__c = false,
+        insert new Core_Trigger_Executions__c(Name = 'Core_MDF_IPA_Account_Region_Check',Core_Active__c = True,
                 Core_Class_Name__c = 'Core_AccountTriggerHandler',Core_Description__c = 'To restrict the updates of region and sub-region field on IPA Co-Marketing Account',
                 Core_Object__c = 'Account',Core_Trigger_Events__c = 'Before Update');
         
@@ -126,7 +126,7 @@ public class Core_AccountTriggerHandler_Test {
                 Core_Class_Name__c = 'Core_AccountTriggerHandler',Core_Description__c = 'To restrict the updates of region and sub-region field on IPA Co-Marketing Account',
                 Core_Object__c = 'Account',Core_Trigger_Events__c = 'Before Update');
 
-        insert new Core_Trigger_Executions__c(Name = 'Core_MDF_ValidatePFAChangeOnAftrUpdt',Core_Active__c = false,
+        insert new Core_Trigger_Executions__c(Name = 'Core_MDF_ValidatePFAChangeOnAftrUpdt',Core_Active__c = True,
                 Core_Class_Name__c = 'Core_AccountTriggerHandler',Core_Description__c = 'To restrict the updates of region and sub-region field on IPA Co-Marketing Account',
                 Core_Object__c = 'Account',Core_Trigger_Events__c = 'Before Update');
 

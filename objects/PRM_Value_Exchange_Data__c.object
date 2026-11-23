@@ -275,7 +275,7 @@
     <fields>
         <fullName>PRM_Partner_Role_Nm__c</fullName>
         <label>Partner Role</label>
-        <required>false</required>
+        <required>true</required>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -405,8 +405,7 @@
     </fields>
     <fields>
         <fullName>PRM_TimePeriod_Nm__c</fullName>
-        <description>This field to display the incoming data is for pervious time period or current time period.</description>
-        <label>Measurement Period</label>
+        <label>TimePeriod</label>
         <required>false</required>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
@@ -415,20 +414,14 @@
             <valueSetDefinition>
                 <sorted>false</sorted>
                 <value>
-                    <fullName>Q4 2026 - Q3 2027</fullName>
-                    <default>true</default>
-                    <label>Q4 2026 - Q3 2027</label>
+                    <fullName>Q4 2021 - Q3 2022</fullName>
+                    <default>false</default>
+                    <label>Q4 2021 - Q3 2022</label>
                 </value>
                 <value>
-                    <fullName>Q4 2025 - Q3 2026</fullName>
+                    <fullName>Q4 2022 - Q3 2023</fullName>
                     <default>false</default>
-                    <label>Q4 2025 - Q3 2026</label>
-                </value>
-                <value>
-                    <fullName>None</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>None</label>
+                    <label>Q4 2022 - Q3 2023</label>
                 </value>
                 <value>
                     <fullName>Q4 2018 - Q3 2019</fullName>
@@ -447,30 +440,6 @@
                     <default>false</default>
                     <isActive>false</isActive>
                     <label>Q4 2020 - Q3 2021</label>
-                </value>
-                <value>
-                    <fullName>Q4 2021 - Q3 2022</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Q4 2021 - Q3 2022</label>
-                </value>
-                <value>
-                    <fullName>Q4 2022 - Q3 2023</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Q4 2022 - Q3 2023</label>
-                </value>
-                <value>
-                    <fullName>Q4 2023 - Q3 2024</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Q4 2023 - Q3 2024</label>
-                </value>
-                <value>
-                    <fullName>Q4 2024 - Q3 2025</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Q4 2024 - Q3 2025</label>
                 </value>
                 <value>
                     <fullName>Q42020-Q32021</fullName>
@@ -622,42 +591,6 @@
         <unique>true</unique>
     </fields>
     <label>Value Exchange Data</label>
-    <listViews>
-        <fullName>All</fullName>
-        <columns>PRM_Account_Id__c</columns>
-        <columns>NAME</columns>
-        <columns>PRM_Processed_Date_Time_Dt__c</columns>
-        <columns>PRM_One_Partner_Id__c</columns>
-        <columns>PRM_Tier_Id__c</columns>
-        <columns>PRM_Partner_Role_Nm__c</columns>
-        <columns>PRM_Value_Exchange_ext_id__c</columns>
-        <columns>PRM_Training_Credit_Points_Count_Nbr__c</columns>
-        <columns>PRM_Sales_Amount_Nbr__c</columns>
-        <columns>PRM_Sales_To_Next_Tier_Nbr__c</columns>
-        <columns>PRM_Sales_to_next_tier_percent_nbr__c</columns>
-        <columns>PRM_Sales_Calculation_Group_Txt__c</columns>
-        <columns>PRM_Country_Market_Type_Nm__c</columns>
-        <columns>PRM_Number_Of_Employees_Nbr__c</columns>
-        <columns>PRM_Percent_to_next_tier_Nbr__c</columns>
-        <filterScope>Everything</filterScope>
-        <label>All</label>
-    </listViews>
-    <listViews>
-        <fullName>Value_Exchange_Data</fullName>
-        <columns>NAME</columns>
-        <columns>PRM_Account_Id__c</columns>
-        <columns>PRM_One_Partner_Id__c</columns>
-        <columns>PRM_Tier_Id__c</columns>
-        <columns>PRM_Partner_Role_Nm__c</columns>
-        <columns>PRM_Country_Market_Type_Nm__c</columns>
-        <columns>PRM_Training_Credit_Points_Count_Nbr__c</columns>
-        <columns>PRM_Sales_Amount_Nbr__c</columns>
-        <columns>PRM_Number_Of_Employees_Nbr__c</columns>
-        <columns>PRM_Total_Achieved_Competency_Nbr__c</columns>
-        <columns>PRM_IsChanged_Ind__c</columns>
-        <filterScope>Everything</filterScope>
-        <label>Value Exchange Data</label>
-    </listViews>
     <nameField>
         <label>Value Exchange data Name</label>
         <type>Text</type>

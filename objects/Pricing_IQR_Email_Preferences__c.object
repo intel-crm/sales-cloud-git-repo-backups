@@ -154,50 +154,12 @@
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
     <fields>
-        <fullName>Core_MDF_Active_Ind__c</fullName>
-        <formula>Core_MDF_Subscription_Notification_Type__r.Core_MDF_Active_Ind__c</formula>
-        <label>Active</label>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_External_Id__c</fullName>
-        <externalId>false</externalId>
-        <label>External Id</label>
-        <length>255</length>
-        <required>false</required>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Module_Nm__c</fullName>
-        <label>Module</label>
-        <required>false</required>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>TextArea</type>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Subscription_Notification_Type__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <label>Subscription Notification Type</label>
-        <referenceTo>Core_MDF_Subscription_Notification_Type__c</referenceTo>
-        <relationshipName>IQR_Email_Preferences</relationshipName>
-        <required>false</required>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Lookup</type>
-    </fields>
-    <fields>
         <fullName>Pricing_Notification_Name_Nm__c</fullName>
         <externalId>false</externalId>
         <label>Notification Name</label>
         <length>255</length>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -206,7 +168,7 @@
         <fullName>Pricing_Opt_In_Ind__c</fullName>
         <defaultValue>false</defaultValue>
         <label>Opt-In</label>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
@@ -228,23 +190,23 @@
         <referenceTo>User</referenceTo>
         <relationshipName>IQR_Email_Preferences</relationshipName>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
-    <label>Email preferences</label>
+    <label>IQR Email Preference</label>
     <listViews>
         <fullName>All</fullName>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
     <nameField>
-        <displayFormat>EP-{0000000000}</displayFormat>
+        <displayFormat>IQREP-{0000000000}</displayFormat>
         <label>IQR Email Preference Name</label>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <type>AutoNumber</type>
     </nameField>
-    <pluralLabel>Email Preferences</pluralLabel>
+    <pluralLabel>IQR Email Preferences</pluralLabel>
     <searchLayouts/>
     <sharingModel>Private</sharingModel>
     <visibility>Public</visibility>

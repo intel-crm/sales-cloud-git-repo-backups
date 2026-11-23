@@ -1,0 +1,142 @@
+<template> 
+<lightning-card> 
+    <div class="slds-m-around_medium">
+            <div class="slds-border_left slds-border_right slds-border_top slds-border_bottom">
+                <div class="slds-section__title slds-theme--shade primaryPaletteBorder test-id__section-header-container">
+                    <span class="test-id__section-header-title section-header-title slds-p-horizontal--small slds-truncate">
+                        REGION 
+                    </span>
+                </div>
+            <lightning-accordion allow-multiple-sections-open class="slds-accordion">
+                <template for:each={regMap} for:item="reg" for:index="indexReg">
+                    <lightning-accordion-section class="slds-accordion__list-item" 
+                    key={reg.key} name={reg.key} label={reg.key} >
+                    
+                    <div class="slds-border_left slds-border_right slds-border_top slds-border_bottom">
+                        <div class="slds-section__title slds-theme--shade primaryPaletteBorder test-id__section-header-container">
+                            <span class="test-id__section-header-title section-header-title slds-p-horizontal--small slds-truncate">
+                                CIM ID 
+                            </span>
+                        </div>
+                    <template for:each={reg.value} for:item="dup" for:index="indexVar">                      
+                        <lightning-accordion-section class="slds-accordion__list-item" 
+                        key={dup.key} name={dup.key} label={dup.key} >
+                            <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_fixed-layout slds-table_resizable-cols
+                                        slds-border_left slds-border_right" >
+                                <thead>
+                                    <tr style="height: 40px;" class="slds-text-title_caps">                      
+                                        
+                                        <th scope="col">
+                                            <div title="Value">Account Name</div>
+                                        </th>
+                                        <th scope="col">
+                                            <div title="Value">Account Owner</div>
+                                        </th>
+                                        
+                                        <th scope="col" style = "width: 10%;">
+                                            <div title="Value">IPA</div>
+                                        </th>
+                                        <th scope="col">
+                                            <div title="Value">Sales Group</div>
+                                        </th>
+                                        <th scope="col">
+                                            <div title="Key">SalesCloud ID</div>
+                                        </th>
+                                        <th scope="col">
+                                            <div title="Value">Contacts Count</div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <template for:each={dup.value} for:item="dupval">
+                                        <tr key={dupval.value.Id}>                                       
+                                            <th scope="col" style = "white-space: normal;">
+                                                <div title={dupval.value.Name}>{dupval.value.Name}</div>
+                                            </th>
+                                            <th scope="col">
+                                                <div title={dupval.value.Owner.Name}>{dupval.value.Owner.Name}</div>
+                                            </th>                                    
+                                            <th scope="col">
+                                                <div title={dupval.value.Core_Intel_Partner_Alliance_PartnerGroup__c}>{dupval.value.Core_Intel_Partner_Alliance_PartnerGroup__c}</div>
+                                            </th>
+                                            <th scope="col" style = "white-space: normal;">
+                                                <div title={dupval.value.Core_Sales_Groups__c}>{dupval.value.Core_Sales_Groups__c }</div>
+                                            </th>
+                                            <th scope="col">
+                                                <lightning-button variant="base" label ={dupval.value.Id} value={dupval.value.Id} onclick={navigateToDetail} class="slds-m-left_x-small"> {dupval.value.Id}</lightning-button>
+                                            </th>
+                                            <th scope="col">
+                                                <p >{dupval.key}</p>
+                                            </th>
+                                        </tr>
+                                    </template>
+                                </tbody>
+                            </table>
+                                 
+                        </lightning-accordion-section>
+                      
+                        
+                    </template>
+                </div>
+                    </lightning-accordion-section>
+                </template>
+               
+            </lightning-accordion>
+        </div>
+    </div>
+</lightning-card>
+
+
+
+
+   <!--<br/><br/><br/>
+    <br/><br/><br/>
+    <lightning-card>
+        <div class="slds-grid slds-grid_vertical-align-start">
+            <template for:each={regMap} for:item="reg" for:index="indexReg">
+                <div key={reg.key} class="slds-col slds-m-around_medium">
+                    <div class="slds-border_left slds-border_right slds-border_top slds-border_bottom">
+                    <div class="slds-section__title slds-theme--shade primaryPaletteBorder test-id__section-header-container">
+                        <span class="test-id__section-header-title section-header-title slds-p-horizontal--small slds-truncate">
+                            {reg.key}
+                        </span>
+                    </div>
+                    <ul class="slds-list_ordered">
+                    <template for:each={reg.value} for:item="dup" for:index="indexVar">
+                        <li class="slds-item" key={dup.key}>
+                            <lightning-button variant="base" label={dup.key} name={dup.key} title={dup.key} onclick={fetchRecord} class="slds-align_absolute-center">{dup.key}</lightning-button>
+                        </li>
+                    </template>                   
+                    </ul>   
+                    </div>                                   
+                </div>
+
+            </template>
+        </div>
+    </lightning-card>
+
+    <template if:true={isModalOpen}>
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Duplicate Accounts</h2>
+                </header>
+               
+                <div class="slds-modal__content" id="modal-content-id-01">
+                    <template for:each={acctList.value} for:item="dup" >
+                            {dup.Id}
+                          
+                        </template>
+                    
+                </div>
+                 
+                <footer class="slds-modal__footer">
+                    <button class="slds-button slds-button_neutral" onclick={closeModal} title="Cancel">Cancel</button>
+                    <button class="slds-button slds-button_brand" onclick={onNextClickHandler} title="OK">OK</button>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>-->
+
+</template>

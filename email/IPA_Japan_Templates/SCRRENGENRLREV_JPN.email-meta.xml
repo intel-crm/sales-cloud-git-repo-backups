@@ -4,35 +4,23 @@
     <encodingKey>UTF-8</encodingKey>
     <name>SCRRENGENRLREV_JPN</name>
     <style>none</style>
-    <subject>メールアドレス確認のお願い</subject>
-    <textOnly>メールを確認し、パスワードを設定してください
+    <subject>インテル・パートナー・プログラムへのお申込み</subject>
+    <textOnly>Verify your Email to Activate your Account
+
+Dear {!PRM_Registration_Request__c.PRM_First_Name__c},
+
+Thanks for joining Intel’s Partner program. Please click below to activate your account.
+
+Activate Your Account
+
+Can&apos;t access the link above?
+https://www.intel...
 
 
-
-{!PRM_Registration_Request__c.PRM_First_Name__c} 様、
-
-インテル® パートナー・アライアンスへの登録を開始していだだき、ありがとうございます。
-続行するには、以下のリンクをクリックしてください
-
-
-メールを確認し、パスワードを設定してください
-
-
-このリンクは 24 時間後に期限切れになりますのでご注意ください次のステップを完了してパスワードを設定するには、下記のユーザー名を使用してください
-ユーザー名: {!PRM_Registration_Request__c.PRM_Email_ID__c}
-
-上のリンクにアクセスできない場合
-https://signinpp.intel.com/PasswordUpdate?var={!PRM_Registration_Request__c.PRM_EV_Token__c}&amp;culture=ja&amp;target=https://wcm-ciqa.intel.com/content/www/jp/ja/secure/partner/forms/ipa-account-search.html
-
-
-プログラムにご参加いただけることを楽しみにしております。
-敬具
-インテル® パートナー・アライアンス
-
-このメッセージは、インテル® パートナー・アライアンス関係者の皆様に、重要なビジネス・コミュニケーションとして送信されました。
-© {!$Label.PRM_CurrentYear} Intel Corporation
-Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.www.intel.com
-プライバシー &amp;verbar; クッキー</textOnly>
+Copyright © 2016 Intel Corporation. All rights reserved. Intel, the Intel logo are trademarks of Intel Corporation in the U.S. and/or other countries.
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. Intel.com
+You may unsubscribe at any time by updating your profile settings at: {!$Label.PRM_MyIntelProfileURL}
+Privacy | Cookies | *Trademarks</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

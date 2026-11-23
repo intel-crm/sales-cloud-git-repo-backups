@@ -8,13 +8,21 @@
         <label><!-- iPaas Message --></label>
         <name>Core_iPaas_Message</name>
     </fieldSets>
+    <fieldSets>
+        <label><!-- UCD_SearchField --></label>
+        <name>UCD_SearchField</name>
+    </fieldSets>
     <fields>
         <label><!-- Account ISvC Match --></label>
         <name>Account_ISvC_Match__c</name>
     </fields>
     <fields>
-        <label><!-- Note --></label>
-        <name>Account_Note__c</name>
+        <label><!-- Account Record Type --></label>
+        <name>Account_Record_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Business Type Category --></label>
+        <name>Business_Type_Category__c</name>
     </fields>
     <fields>
         <label><!-- Channel Program ID --></label>
@@ -22,7 +30,7 @@
     </fields>
     <fields>
         <label><!-- 1H 2023 Sales Group --></label>
-        <name>Core_1H_2023_Sales_Group__c</name>
+        <name>Core_1H_2023_SalesGroup__c</name>
         <picklistValues>
             <masterLabel>APJ Australia &amp; New Zealand Sales Group</masterLabel>
             <translation><!-- APJ Australia &amp; New Zealand Sales Group --></translation>
@@ -92,8 +100,8 @@
             <translation><!-- EMEA Partner Holding --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>EMEA Sales Group</masterLabel>
-            <translation><!-- EMEA Sales Group --></translation>
+            <masterLabel>EMEA Sales Group,</masterLabel>
+            <translation><!-- EMEA Sales Group, --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Global Accounts Sales Group</masterLabel>
@@ -213,24 +221,16 @@
         <label><!-- Account BU Focus --></label>
         <name>Core_Account_BU_Focus__c</name>
         <picklistValues>
-            <masterLabel>AI Foundational Model</masterLabel>
-            <translation><!-- AI Foundational Model --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>AI ISV</masterLabel>
-            <translation><!-- AI ISV --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>CCG</masterLabel>
             <translation><!-- CCG --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>CCG ECG</masterLabel>
-            <translation><!-- CCG ECG --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>CSP Not AI Inf</masterLabel>
             <translation><!-- CSP Not AI Inf --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSV-AMS</masterLabel>
+            <translation><!-- CSV-AMS --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Channel-NSP/NSI</masterLabel>
@@ -245,6 +245,18 @@
             <translation><!-- DCAI --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>DCAI PSG</masterLabel>
+            <translation><!-- DCAI PSG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DCAI PSG-CM</masterLabel>
+            <translation><!-- DCAI PSG-CM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DCAI PSG-DISTI</masterLabel>
+            <translation><!-- DCAI PSG-DISTI --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>DCAI-Cloud</masterLabel>
             <translation><!-- DCAI-Cloud --></translation>
         </picklistValues>
@@ -253,52 +265,48 @@
             <translation><!-- DCAI-E&amp;G --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Independent Software Vendor</masterLabel>
-            <translation><!-- Independent Software Vendor --></translation>
+            <masterLabel>Influencer-BoC SI</masterLabel>
+            <translation><!-- Influencer-BoC SI --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Influencer</masterLabel>
-            <translation><!-- Influencer --></translation>
+            <masterLabel>Influencer-GSI</masterLabel>
+            <translation><!-- Influencer-GSI --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Influencer-AI</masterLabel>
-            <translation><!-- Influencer-AI --></translation>
+            <masterLabel>Influencer-ISV</masterLabel>
+            <translation><!-- Influencer-ISV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Influencer-MSP</masterLabel>
+            <translation><!-- Influencer-MSP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Influencer-OTSI</masterLabel>
+            <translation><!-- Influencer-OTSI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NEX Comms</masterLabel>
+            <translation><!-- NEX Comms --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NEX NCCG</masterLabel>
+            <translation><!-- NEX NCCG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NEX NESG</masterLabel>
+            <translation><!-- NEX NESG --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>NSG</masterLabel>
             <translation><!-- NSG --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>NTG</masterLabel>
-            <translation><!-- NTG --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>NTG Comms</masterLabel>
-            <translation><!-- NTG Comms --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>NeoCloud</masterLabel>
-            <translation><!-- NeoCloud --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Not Applicable</masterLabel>
             <translation><!-- Not Applicable --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>PSG</masterLabel>
-            <translation><!-- PSG --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>PSG-CM</masterLabel>
-            <translation><!-- PSG-CM --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>PSG-DISTI</masterLabel>
-            <translation><!-- PSG-DISTI --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Sovereign Cloud</masterLabel>
-            <translation><!-- Sovereign Cloud --></translation>
+            <masterLabel>Security COE</masterLabel>
+            <translation><!-- Security COE --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -326,7 +334,6 @@
         </picklistValues>
     </fields>
     <fields>
-        <help><!-- Customer categorization and selling motion to evaluate Customers and to determine proper SMG coverage model. --></help>
         <label><!-- Account Category Preview --></label>
         <name>Core_Account_Category_Preview__c</name>
         <picklistValues>
@@ -344,10 +351,6 @@
         <picklistValues>
             <masterLabel>End Customer</masterLabel>
             <translation><!-- End Customer --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Extended Sales Force</masterLabel>
-            <translation><!-- Extended Sales Force --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Hyperscaler (AWS, Azure, GCP)</masterLabel>
@@ -375,52 +378,47 @@
         </picklistValues>
     </fields>
     <fields>
-        <help><!-- Customer categorization and selling motion to evaluate Customers and to determine proper SMG coverage model. --></help>
-        <label><!-- Account Category --></label>
+        <label><!-- Semi-Annual Temp Account Category --></label>
         <name>Core_Account_Category__c</name>
         <picklistValues>
-            <masterLabel>Device Builder - MNC</masterLabel>
-            <translation><!-- Device Builder - MNC --></translation>
+            <masterLabel>Distributors</masterLabel>
+            <translation><!-- Distributors --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Device Builder - Regional OxM</masterLabel>
-            <translation><!-- Device Builder - Regional OxM --></translation>
+            <masterLabel>Region Branded Disti</masterLabel>
+            <translation><!-- Region Branded Disti --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Distributors (IA)</masterLabel>
-            <translation><!-- Distributors (IA) --></translation>
+            <masterLabel>Region Direct OxM Accts (non-T30)</masterLabel>
+            <translation><!-- Region Direct OxM Accts (non-T30) --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>End Customer</masterLabel>
-            <translation><!-- End Customer --></translation>
+            <masterLabel>Region Named B2B End User</masterLabel>
+            <translation><!-- Region Named B2B End User --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Extended Sales Force</masterLabel>
-            <translation><!-- Extended Sales Force --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Hyperscaler (AWS, Azure, GCP)</masterLabel>
-            <translation><!-- Hyperscaler (AWS, Azure, GCP) --></translation>
+            <masterLabel>Region Named Billings Accts</masterLabel>
+            <translation><!-- Region Named Billings Accts --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Regional Co-Sell Partners</masterLabel>
             <translation><!-- Regional Co-Sell Partners --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Reseller - Branded Disti</masterLabel>
-            <translation><!-- Reseller - Branded Disti --></translation>
+            <masterLabel>Regional GSI/ISV/MSP</masterLabel>
+            <translation><!-- Regional GSI/ISV/MSP --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Reseller - Named Billing Accounts</masterLabel>
-            <translation><!-- Reseller - Named Billing Accounts --></translation>
+            <masterLabel>Regional Retailer</masterLabel>
+            <translation><!-- Regional Retailer --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Reseller - Retailers</masterLabel>
-            <translation><!-- Reseller - Retailers --></translation>
+            <masterLabel>Strategic Acct/Country Opportunity</masterLabel>
+            <translation><!-- Strategic Acct/Country Opportunity --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Solution Enabler (SI, ISV, CSP, MSP)</masterLabel>
-            <translation><!-- Solution Enabler (SI, ISV, CSP, MSP) --></translation>
+            <masterLabel>Top 30 Global Billings</masterLabel>
+            <translation><!-- Top 30 Global Billings --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -675,8 +673,8 @@
             <translation><!-- Cyprus --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Czechia</masterLabel>
-            <translation><!-- Czechia --></translation>
+            <masterLabel>Czech Republic</masterLabel>
+            <translation><!-- Czech Republic --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Dem. Rep. Congo</masterLabel>
@@ -721,10 +719,6 @@
         <picklistValues>
             <masterLabel>Estonia</masterLabel>
             <translation><!-- Estonia --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Eswatini</masterLabel>
-            <translation><!-- Eswatini --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Ethiopia</masterLabel>
@@ -959,6 +953,10 @@
             <translation><!-- Macao SAR China --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Macedonia</masterLabel>
+            <translation><!-- Macedonia --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Madagascar</masterLabel>
             <translation><!-- Madagascar --></translation>
         </picklistValues>
@@ -1097,10 +1095,6 @@
         <picklistValues>
             <masterLabel>North Korea</masterLabel>
             <translation><!-- North Korea --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>North Macedonia</masterLabel>
-            <translation><!-- North Macedonia --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Norway</masterLabel>
@@ -1299,6 +1293,10 @@
             <translation><!-- Svalbard &amp; JM --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Swaziland</masterLabel>
+            <translation><!-- Swaziland --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Sweden</masterLabel>
             <translation><!-- Sweden --></translation>
         </picklistValues>
@@ -1351,8 +1349,8 @@
             <translation><!-- Tunisia --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Turkiye</masterLabel>
-            <translation><!-- Turkiye --></translation>
+            <masterLabel>Turkey</masterLabel>
+            <translation><!-- Turkey --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Turkmenistan</masterLabel>
@@ -1532,36 +1530,8 @@
         <name>Core_Account_Legal_Name__c</name>
     </fields>
     <fields>
-        <help><!-- Segmentation of accounts for focus &amp; resourcing.
-Level 1: High-level customer engagement &amp; dedicated Sales/Technical resources
-Level 2: Transaction and discovery accounts with minimal required resources
-Level 3: Program generated accounts (ODRs, DDRs, DRs)
-No Level: Not Covered Accounts &amp; no Opportunities present --></help>
-        <label><!-- Account Level Preview --></label>
-        <name>Core_Account_Level_Preview__c</name>
-        <picklistValues>
-            <masterLabel>Level 1</masterLabel>
-            <translation><!-- Level 1 --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Level 2</masterLabel>
-            <translation><!-- Level 2 --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Level 3</masterLabel>
-            <translation><!-- Level 3 --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>No Level</masterLabel>
-            <translation><!-- No Level --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
-        <help><!-- Segmentation of accounts for focus &amp; resourcing.
-Level 1: High-level customer engagement &amp; dedicated Sales/Technical resources
-Level 2: Transaction and discovery accounts with minimal required resources
-Level 3: Program generated accounts (ODRs, DDRs, DRs)
-No Level: Not Covered Accounts &amp; no Opportunities present --></help>
+        <help><!-- Intel Covered could be level 1 or 2
+All indirect account will be level 3 --></help>
         <label><!-- Account Level --></label>
         <name>Core_Account_Level__c</name>
         <picklistValues>
@@ -1664,9 +1634,12 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         </picklistValues>
     </fields>
     <fields>
-        <help><!-- • Intel Covered = Accounts listed in annual account selection process of having Intel-led sales coverage
-• Indirect Covered = Accounts that are not Intel Covered &amp; ONLY have Design/Deal Registration opportunity within the last 5 years (and future)
-• Not Covered = Accounts with no Owner --></help>
+        <label><!-- Account Primary Coverage Grouped --></label>
+        <name>Core_Account_Primary_Coverage_Grouped__c</name>
+    </fields>
+    <fields>
+        <help><!-- • Intel Covered = Accounts listed in semi-annual account selection process of having Intel-led sales coverage
+• Indirect Covered = Accounts that are not Intel-led and have Design/Deal Registration opportunity within the last 5 years (and future) --></help>
         <label><!-- Account Primary Coverage Preview --></label>
         <name>Core_Account_Primary_Coverage_Preview__c</name>
         <picklistValues>
@@ -1683,9 +1656,9 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         </picklistValues>
     </fields>
     <fields>
-        <help><!-- • Intel Covered =  Accounts listed in annual account selection process of having Intel-led sales coverage 
-• Indirect Covered = Accounts that are not Intel Covered &amp; ONLY have Design/Deal Registration opportunity within the last 5 years (and future)
-• Not Covered =  Accounts with no Owner --></help>
+        <help><!-- •  Intel Covered = Accounts listed in semi-annual account selection process of having Intel-led sales coverage
+• Indirect Covered = Accounts that are not Intel-led and have Design/Deal Registration opportunity within the last 5 years (and future)
+• Not Covered =  Accounts with no open opportunities --></help>
         <label><!-- Account Primary Coverage --></label>
         <name>Core_Account_Primary_Coverage__c</name>
         <picklistValues>
@@ -1699,10 +1672,6 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <picklistValues>
             <masterLabel>Not Covered</masterLabel>
             <translation><!-- Not Covered --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Other-led Account</masterLabel>
-            <translation><!-- Other-led Account --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -1765,10 +1734,6 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
             <translation><!-- Opportunity Management --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Other</masterLabel>
-            <translation><!-- Other --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Partner</masterLabel>
             <translation><!-- Partner --></translation>
         </picklistValues>
@@ -1778,31 +1743,15 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <name>Core_Account_Request_Rejection_Notes__c</name>
     </fields>
     <fields>
-        <label><!-- Reltio Rejection Reason --></label>
+        <label><!-- Account Request Rejection Reason --></label>
         <name>Core_Account_Request_Rejection_Reason__c</name>
-        <picklistValues>
-            <masterLabel>Already Existing</masterLabel>
-            <translation><!-- Already Existing --></translation>
-        </picklistValues>
         <picklistValues>
             <masterLabel>Cannot Validate Company</masterLabel>
             <translation><!-- Cannot Validate Company --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Country Mismatch</masterLabel>
-            <translation><!-- Country Mismatch --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Duplicate</masterLabel>
             <translation><!-- Duplicate --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Exceeds 30-day Response Time</masterLabel>
-            <translation><!-- Exceeds 30-day Response Time --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Multiple Customers Requested</masterLabel>
-            <translation><!-- Multiple Customers Requested --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>No Clarification Response Provided</masterLabel>
@@ -1837,16 +1786,16 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <label><!-- Account Tier --></label>
         <name>Core_Account_Tier__c</name>
         <picklistValues>
-            <masterLabel>CCG ECG-Tier 1</masterLabel>
-            <translation><!-- CCG ECG-Tier 1 --></translation>
+            <masterLabel>AXG-Tier 1</masterLabel>
+            <translation><!-- AXG-Tier 1 --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>CCG ECG-Tier 2</masterLabel>
-            <translation><!-- CCG ECG-Tier 2 --></translation>
+            <masterLabel>AXG-Tier 2</masterLabel>
+            <translation><!-- AXG-Tier 2 --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>CCG ECG-Tier 3</masterLabel>
-            <translation><!-- CCG ECG-Tier 3 --></translation>
+            <masterLabel>AXG-Tier 3</masterLabel>
+            <translation><!-- AXG-Tier 3 --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>CCG-Tier 1</masterLabel>
@@ -1869,6 +1818,26 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
             <translation><!-- CCG-Tier 5 --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>DCAI PSG-Tier 1</masterLabel>
+            <translation><!-- DCAI PSG-Tier 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DCAI PSG-Tier 2</masterLabel>
+            <translation><!-- DCAI PSG-Tier 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DCAI PSG-Tier 3</masterLabel>
+            <translation><!-- DCAI PSG-Tier 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DCAI PSG-Tier 4</masterLabel>
+            <translation><!-- DCAI PSG-Tier 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DCAI RTM-Tier 1</masterLabel>
+            <translation><!-- DCAI RTM-Tier 1 --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>DCAI-Tier 1</masterLabel>
             <translation><!-- DCAI-Tier 1 --></translation>
         </picklistValues>
@@ -1885,24 +1854,20 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
             <translation><!-- DCAI-Tier 4 --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>PSG-Tier 0</masterLabel>
-            <translation><!-- PSG-Tier 0 --></translation>
+            <masterLabel>DCAI-Tier 5</masterLabel>
+            <translation><!-- DCAI-Tier 5 --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>PSG-Tier 1</masterLabel>
-            <translation><!-- PSG-Tier 1 --></translation>
+            <masterLabel>NEX NESG-Tier 1</masterLabel>
+            <translation><!-- NEX NESG-Tier 1 --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>PSG-Tier 2</masterLabel>
-            <translation><!-- PSG-Tier 2 --></translation>
+            <masterLabel>NEX NESG-Tier 2</masterLabel>
+            <translation><!-- NEX NESG-Tier 2 --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>PSG-Tier 3</masterLabel>
-            <translation><!-- PSG-Tier 3 --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>PSG-Tier 4</masterLabel>
-            <translation><!-- PSG-Tier 4 --></translation>
+            <masterLabel>NEX NESG-Tier 3</masterLabel>
+            <translation><!-- NEX NESG-Tier 3 --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -2057,10 +2022,6 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
     <fields>
         <label><!-- Address Details --></label>
         <name>Core_Address_Details__c</name>
-    </fields>
-    <fields>
-        <label><!-- Opportunity Account Edit --></label>
-        <name>Core_Allow_Opportunity_Account_Edit__c</name>
     </fields>
     <fields>
         <label><!-- Alt  Language Address 1 --></label>
@@ -2366,12 +2327,8 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
             <translation><!-- Chiga --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Chinese Simplified</masterLabel>
-            <translation><!-- Chinese Simplified --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Chinese Traditional</masterLabel>
-            <translation><!-- Chinese Traditional --></translation>
+            <masterLabel>Chinese</masterLabel>
+            <translation><!-- Chinese --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Chinook jargon</masterLabel>
@@ -3984,6 +3941,10 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <name>Core_B2B_Entitlement__c</name>
     </fields>
     <fields>
+        <label><!-- BVD9 ID --></label>
+        <name>Core_BVD9_ID__c</name>
+    </fields>
+    <fields>
         <label><!-- Account Clean Up Batch Run Date --></label>
         <name>Core_Batch_Run_Date__c</name>
     </fields>
@@ -4022,6 +3983,14 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <name>Core_CIM_Intel_Ultimate_Name__c</name>
     </fields>
     <fields>
+        <label><!-- Express Station Id --></label>
+        <name>Core_CMF_Express_Station_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Train Station Id --></label>
+        <name>Core_CMF_Train_Station_Id__c</name>
+    </fields>
+    <fields>
         <label><!-- CNDA Number --></label>
         <name>Core_CNDA_Number__c</name>
     </fields>
@@ -4046,16 +4015,17 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <name>Core_Calculated_Sales_Group__c</name>
     </fields>
     <fields>
+        <label><!-- Change Review POC --></label>
+        <name>Core_Change_Review__c</name>
+    </fields>
+    <fields>
         <label><!-- Closed Revenue For Account --></label>
         <name>Core_Closed_Revenue_For_Account__c</name>
     </fields>
     <fields>
-        <label><!-- Comment Preview --></label>
-        <name>Core_Comment_Preview__c</name>
-    </fields>
-    <fields>
-        <label><!-- Compliance Watch List Type --></label>
-        <name>Core_Compliance_Watch_List_Type__c</name>
+        <help><!-- Compliance Watch List --></help>
+        <label><!-- Compliance Watch List --></label>
+        <name>Core_Compliance_Watch_List__c</name>
         <picklistValues>
             <masterLabel>Block Items from Intel</masterLabel>
             <translation><!-- Block Items from Intel --></translation>
@@ -4073,36 +4043,56 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
             <translation><!-- Block Payment to Intel --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Embargo</masterLabel>
-            <translation><!-- Embargo --></translation>
+            <masterLabel>Delist</masterLabel>
+            <translation><!-- Delist --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Denied Parties List</masterLabel>
+            <translation><!-- Denied Parties List --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Embargoed Country</masterLabel>
             <translation><!-- Embargoed Country --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Enhanced Proliferation Control Initiative</masterLabel>
+            <translation><!-- Enhanced Proliferation Control Initiative --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Export Compliance Block</masterLabel>
             <translation><!-- Export Compliance Block --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Financial Conditions</masterLabel>
+            <translation><!-- Financial Conditions --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Foreign Government Entity</masterLabel>
+            <translation><!-- Foreign Government Entity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Military, Aerospace, or Government</masterLabel>
+            <translation><!-- Military, Aerospace, or Government --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>No Sanction or Embargo</masterLabel>
             <translation><!-- No Sanction or Embargo --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Out of Business</masterLabel>
+            <translation><!-- Out of Business --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Review is pending</masterLabel>
             <translation><!-- Review is pending --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>SPLCN – Sanctioned Party List (China)</masterLabel>
-            <translation><!-- SPLCN – Sanctioned Party List (China) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Sanctioned Party List (United States)</masterLabel>
-            <translation><!-- Sanctioned Party List (United States) --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Trade Conditions Apply</masterLabel>
             <translation><!-- Trade Conditions Apply --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Undeliverable Address</masterLabel>
+            <translation><!-- Undeliverable Address --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -4132,6 +4122,31 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <picklistValues>
             <masterLabel>Unified Location Customer</masterLabel>
             <translation><!-- Unified Location Customer --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Customer Business Process Usage --></help>
+        <label><!-- Customer Process Engagement --></label>
+        <name>Core_Customer_Process_Engg__c</name>
+        <picklistValues>
+            <masterLabel>Direct Price Exception</masterLabel>
+            <translation><!-- Direct Price Exception --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Distributor Price Exception</masterLabel>
+            <translation><!-- Distributor Price Exception --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner</masterLabel>
+            <translation><!-- Partner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sales Pipeline</masterLabel>
+            <translation><!-- Sales Pipeline --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Supply Demand Revenue</masterLabel>
+            <translation><!-- Supply Demand Revenue --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -4173,6 +4188,11 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <name>Core_D_B_Industry_6__c</name>
     </fields>
     <fields>
+        <help><!-- Mastered Business Physical Address Country Code --></help>
+        <label><!-- Core Data Country Code --></label>
+        <name>Core_Data_Country_Cd__c</name>
+    </fields>
+    <fields>
         <help><!-- Mastered Business Physical Address Country Name --></help>
         <label><!-- Unified Country/Region Name --></label>
         <name>Core_Data_Country_Nm__c</name>
@@ -4186,6 +4206,10 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <help><!-- Mastered Name of type Simplified Local Language --></help>
         <label><!-- Simplified Local Language Name --></label>
         <name>Core_Data_Simplified_Local_Language_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Deactivate Date Time --></label>
+        <name>Core_Deactivate_DateTime__c</name>
     </fields>
     <fields>
         <label><!-- Deactivated --></label>
@@ -4388,7 +4412,43 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <name>Core_Fully_Executed_NDA__c</name>
     </fields>
     <fields>
-        <label>Región</label>
+        <label><!-- GTM Model Preview --></label>
+        <name>Core_GTM_Model_Preview__c</name>
+        <picklistValues>
+            <masterLabel>Core</masterLabel>
+            <translation><!-- Core --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Growth</masterLabel>
+            <translation><!-- Growth --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Growth-VBS</masterLabel>
+            <translation><!-- Growth-VBS --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- GTM Model --></label>
+        <name>Core_GTM_Model__c</name>
+        <picklistValues>
+            <masterLabel>Core</masterLabel>
+            <translation><!-- Core --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Growth</masterLabel>
+            <translation><!-- Growth --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Growth-VBS</masterLabel>
+            <translation><!-- Growth-VBS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Specialty</masterLabel>
+            <translation><!-- Specialty --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Region --></label>
         <name>Core_Geo__c</name>
         <picklistValues>
             <masterLabel>APJ</masterLabel>
@@ -4401,6 +4461,10 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <picklistValues>
             <masterLabel>EMEA</masterLabel>
             <translation><!-- EMEA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>India</masterLabel>
+            <translation><!-- India --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>PRC</masterLabel>
@@ -4424,1151 +4488,6 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <name>Core_Global_Ultimate_Indicator__c</name>
     </fields>
     <fields>
-        <label><!-- Umbrella Group ID --></label>
-        <name>Core_Group_Id__c</name>
-    </fields>
-    <fields>
-        <help><!-- This field designates the account with the associated Public/Gov/Education group of customers --></help>
-        <label><!-- Umbrella Group Name --></label>
-        <name>Core_Group_Name__c</name>
-        <picklistValues>
-            <masterLabel>Academia HPC account</masterLabel>
-            <translation><!-- Academia HPC account --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Affiliated Universities To Moe</masterLabel>
-            <translation><!-- Affiliated Universities To Moe --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Algeria Government</masterLabel>
-            <translation><!-- Algeria Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Anduril</masterLabel>
-            <translation><!-- Anduril --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Argonne</masterLabel>
-            <translation><!-- Argonne --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Army</masterLabel>
-            <translation><!-- Army --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Army &amp; Air Force Exchange Service</masterLabel>
-            <translation><!-- Army &amp; Air Force Exchange Service --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Australian Government</masterLabel>
-            <translation><!-- Australian Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Austria Government</masterLabel>
-            <translation><!-- Austria Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Aversan</masterLabel>
-            <translation><!-- Aversan --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>BAE Systems</masterLabel>
-            <translation><!-- BAE Systems --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Bahrain Government</masterLabel>
-            <translation><!-- Bahrain Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Baker Hughes</masterLabel>
-            <translation><!-- Baker Hughes --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Bangladesh Government</masterLabel>
-            <translation><!-- Bangladesh Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Bank of Baroda</masterLabel>
-            <translation><!-- Bank of Baroda --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>BeiGene(百济神州）</masterLabel>
-            <translation><!-- BeiGene(百济神州） --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Belgium Government</masterLabel>
-            <translation><!-- Belgium Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Benin Government</masterLabel>
-            <translation><!-- Benin Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>BlueForge Alliance</masterLabel>
-            <translation><!-- BlueForge Alliance --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Boeing</masterLabel>
-            <translation><!-- Boeing --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Bonneville Power Administration</masterLabel>
-            <translation><!-- Bonneville Power Administration --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Booz Allen Hamilton</masterLabel>
-            <translation><!-- Booz Allen Hamilton --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Boss Digital-Procurement (博思数采)</masterLabel>
-            <translation><!-- Boss Digital-Procurement (博思数采) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Brookhaven National Laboratory</masterLabel>
-            <translation><!-- Brookhaven National Laboratory --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Bulgaria Government</masterLabel>
-            <translation><!-- Bulgaria Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>CACI</masterLabel>
-            <translation><!-- CACI --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>CAE</masterLabel>
-            <translation><!-- CAE --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>CENTER FOR DISEASE CONTROL</masterLabel>
-            <translation><!-- CENTER FOR DISEASE CONTROL --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>CENTERS FOR MEDICARE AND MEDICAID</masterLabel>
-            <translation><!-- CENTERS FOR MEDICARE AND MEDICAID --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>CHINA - MINISTRY OF EDUCATION (HQ)</masterLabel>
-            <translation><!-- CHINA - MINISTRY OF EDUCATION (HQ) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>CHINA GOVERNMENT PURCHASE CENTRE</masterLabel>
-            <translation><!-- CHINA GOVERNMENT PURCHASE CENTRE --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>CNCERT（国家互联网应急中心）</masterLabel>
-            <translation><!-- CNCERT（国家互联网应急中心） --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Central Government Procurement Center</masterLabel>
-            <translation><!-- Central Government Procurement Center --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>China Meteorology Administration （中国气象局）</masterLabel>
-            <translation><!-- China Meteorology Administration （中国气象局） --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Chinese Academy of Sciences (中国科学院）</masterLabel>
-            <translation><!-- Chinese Academy of Sciences (中国科学院） --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Costa Rica Government</masterLabel>
-            <translation><!-- Costa Rica Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Crystal</masterLabel>
-            <translation><!-- Crystal --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Curtiss Wright</masterLabel>
-            <translation><!-- Curtiss Wright --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Czechia Government</masterLabel>
-            <translation><!-- Czechia Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Defense</masterLabel>
-            <translation><!-- Defense --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Dem. Rep. Congo Government</masterLabel>
-            <translation><!-- Dem. Rep. Congo Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Denmark Government</masterLabel>
-            <translation><!-- Denmark Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>EU</masterLabel>
-            <translation><!-- EU --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>EU Govt – Research</masterLabel>
-            <translation><!-- EU Govt – Research --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Egypt Government</masterLabel>
-            <translation><!-- Egypt Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>El Salvador Government</masterLabel>
-            <translation><!-- El Salvador Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Estonia Government</masterLabel>
-            <translation><!-- Estonia Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Ethiopia Government</masterLabel>
-            <translation><!-- Ethiopia Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Extreme Engineering</masterLabel>
-            <translation><!-- Extreme Engineering --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>FDA</masterLabel>
-            <translation><!-- FDA --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Federal Government Of Brazil</masterLabel>
-            <translation><!-- Federal Government Of Brazil --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Fermilab</masterLabel>
-            <translation><!-- Fermilab --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Fidelis Cybersecurity</masterLabel>
-            <translation><!-- Fidelis Cybersecurity --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Finland Government</masterLabel>
-            <translation><!-- Finland Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>France Government</masterLabel>
-            <translation><!-- France Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>France Govt - Research</masterLabel>
-            <translation><!-- France Govt - Research --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>GACC-General Administration of Customs of PR China</masterLabel>
-            <translation><!-- GACC-General Administration of Customs of PR China --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>GE Aerospace</masterLabel>
-            <translation><!-- GE Aerospace --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>GE Vernova</masterLabel>
-            <translation><!-- GE Vernova --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>General Dynamics</masterLabel>
-            <translation><!-- General Dynamics --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Georgia Government</masterLabel>
-            <translation><!-- Georgia Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Germany Government</masterLabel>
-            <translation><!-- Germany Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Germany Govt - Research</masterLabel>
-            <translation><!-- Germany Govt - Research --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Ghana Government</masterLabel>
-            <translation><!-- Ghana Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Gibraltar Government</masterLabel>
-            <translation><!-- Gibraltar Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Gov-Guangdong</masterLabel>
-            <translation><!-- Gov-Guangdong --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Government Sector (GOV STM Sector)</masterLabel>
-            <translation><!-- Government Sector (GOV STM Sector) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Government of Anhui Province</masterLabel>
-            <translation><!-- Government of Anhui Province --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Government of Chongqing</masterLabel>
-            <translation><!-- Government of Chongqing --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Government of Hainan</masterLabel>
-            <translation><!-- Government of Hainan --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Government of Henan</masterLabel>
-            <translation><!-- Government of Henan --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Government of Hubei Province</masterLabel>
-            <translation><!-- Government of Hubei Province --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Government of Jiangsu</masterLabel>
-            <translation><!-- Government of Jiangsu --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Government of Shandong</masterLabel>
-            <translation><!-- Government of Shandong --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Government of Shanghai</masterLabel>
-            <translation><!-- Government of Shanghai --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Government of Zhejiang</masterLabel>
-            <translation><!-- Government of Zhejiang --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Great Wall Securities</masterLabel>
-            <translation><!-- Great Wall Securities --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Greece Government</masterLabel>
-            <translation><!-- Greece Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Guizhou Government</masterLabel>
-            <translation><!-- Guizhou Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Hongkong Hospital Authority</masterLabel>
-            <translation><!-- Hongkong Hospital Authority --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Hongkong SAR Education Bureau</masterLabel>
-            <translation><!-- Hongkong SAR Education Bureau --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Hungary Government</masterLabel>
-            <translation><!-- Hungary Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Idaho National Lab</masterLabel>
-            <translation><!-- Idaho National Lab --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>India Government</masterLabel>
-            <translation><!-- India Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Indonesia Government</masterLabel>
-            <translation><!-- Indonesia Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Iraq Government</masterLabel>
-            <translation><!-- Iraq Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Ireland Government</masterLabel>
-            <translation><!-- Ireland Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Israel Government</masterLabel>
-            <translation><!-- Israel Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Italy Government</masterLabel>
-            <translation><!-- Italy Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Japan Government</masterLabel>
-            <translation><!-- Japan Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Japan Local BOE</masterLabel>
-            <translation><!-- Japan Local BOE --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Jefferson Lab</masterLabel>
-            <translation><!-- Jefferson Lab --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Jordan Government</masterLabel>
-            <translation><!-- Jordan Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Kazakhstan Government</masterLabel>
-            <translation><!-- Kazakhstan Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Kenya Government</masterLabel>
-            <translation><!-- Kenya Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Knolls Atomic Power Laboratory</masterLabel>
-            <translation><!-- Knolls Atomic Power Laboratory --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Kratos Defense &amp; Security Solutions</masterLabel>
-            <translation><!-- Kratos Defense &amp; Security Solutions --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Kuwait Government</masterLabel>
-            <translation><!-- Kuwait Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>L3Harris</masterLabel>
-            <translation><!-- L3Harris --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Latvia Government</masterLabel>
-            <translation><!-- Latvia Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Lawerence Berkeley National Laboratory</masterLabel>
-            <translation><!-- Lawerence Berkeley National Laboratory --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Lawerence Livermore National Laboratory</masterLabel>
-            <translation><!-- Lawerence Livermore National Laboratory --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Lebanon Government</masterLabel>
-            <translation><!-- Lebanon Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Leidos</masterLabel>
-            <translation><!-- Leidos --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Leonardo</masterLabel>
-            <translation><!-- Leonardo --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Libya Government</masterLabel>
-            <translation><!-- Libya Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Liechtenstein Government</masterLabel>
-            <translation><!-- Liechtenstein Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Lithuania Government</masterLabel>
-            <translation><!-- Lithuania Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Lockheed Martin</masterLabel>
-            <translation><!-- Lockheed Martin --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Los Alamos National Laboratories</masterLabel>
-            <translation><!-- Los Alamos National Laboratories --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Luxembourg Government</masterLabel>
-            <translation><!-- Luxembourg Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>MGI Life Science</masterLabel>
-            <translation><!-- MGI Life Science --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>MISSILE DEFENSE AGENCY</masterLabel>
-            <translation><!-- MISSILE DEFENSE AGENCY --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>MITRE</masterLabel>
-            <translation><!-- MITRE --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>MOE of Guangdong</masterLabel>
-            <translation><!-- MOE of Guangdong --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>MOE of Shanghai</masterLabel>
-            <translation><!-- MOE of Shanghai --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>MOE of Sichuan</masterLabel>
-            <translation><!-- MOE of Sichuan --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>MOE of Zhejiang</masterLabel>
-            <translation><!-- MOE of Zhejiang --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>MOH (NHFPC)</masterLabel>
-            <translation><!-- MOH (NHFPC) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>MOH-Shaanxi</masterLabel>
-            <translation><!-- MOH-Shaanxi --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>MOH-Sichuan</masterLabel>
-            <translation><!-- MOH-Sichuan --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Machinechat</masterLabel>
-            <translation><!-- Machinechat --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Malaysia Government</masterLabel>
-            <translation><!-- Malaysia Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Malta Government</masterLabel>
-            <translation><!-- Malta Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Mercury Systems</masterLabel>
-            <translation><!-- Mercury Systems --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Meteorological Bureau Meteorology Development And Planning Institute</masterLabel>
-            <translation><!-- Meteorological Bureau Meteorology Development And Planning Institute --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Military</masterLabel>
-            <translation><!-- Military --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Ministry Of Education Of The Peoples Republic Of China</masterLabel>
-            <translation><!-- Ministry Of Education Of The Peoples Republic Of China --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Ministry Of Public Security</masterLabel>
-            <translation><!-- Ministry Of Public Security --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Ministry of Natural Resources</masterLabel>
-            <translation><!-- Ministry of Natural Resources --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Moe Of Hunan</masterLabel>
-            <translation><!-- Moe Of Hunan --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Moh</masterLabel>
-            <translation><!-- Moh --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Morocco Government</masterLabel>
-            <translation><!-- Morocco Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>NASA</masterLabel>
-            <translation><!-- NASA --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>NATIONAL CANCER INSTITUTE</masterLabel>
-            <translation><!-- NATIONAL CANCER INSTITUTE --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>NCS Technologies</masterLabel>
-            <translation><!-- NCS Technologies --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>NDRC-National Development and Reform Commission</masterLabel>
-            <translation><!-- NDRC-National Development and Reform Commission --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>NIST</masterLabel>
-            <translation><!-- NIST --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>NOAA</masterLabel>
-            <translation><!-- NOAA --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>NSW Government</masterLabel>
-            <translation><!-- NSW Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Naprotek</masterLabel>
-            <translation><!-- Naprotek --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>National Archives and Records Administration</masterLabel>
-            <translation><!-- National Archives and Records Administration --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>National Center for Education Technology (NCET)</masterLabel>
-            <translation><!-- National Center for Education Technology (NCET) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>National Energy Technology Laboratory - NETL</masterLabel>
-            <translation><!-- National Energy Technology Laboratory - NETL --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>National Healthcare Security Administration (NHSA)</masterLabel>
-            <translation><!-- National Healthcare Security Administration (NHSA) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>National Institutes of Health</masterLabel>
-            <translation><!-- National Institutes of Health --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>National Labs</masterLabel>
-            <translation><!-- National Labs --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>National Medical Products Administration</masterLabel>
-            <translation><!-- National Medical Products Administration --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>National Nuclear Security Administration</masterLabel>
-            <translation><!-- National Nuclear Security Administration --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>National Renewable Energy Laboratory</masterLabel>
-            <translation><!-- National Renewable Energy Laboratory --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>National Spectrum Consortium</masterLabel>
-            <translation><!-- National Spectrum Consortium --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Netherlands Government</masterLabel>
-            <translation><!-- Netherlands Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>New China Life Insurance</masterLabel>
-            <translation><!-- New China Life Insurance --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Nigeria Government</masterLabel>
-            <translation><!-- Nigeria Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Northrop Grumman</masterLabel>
-            <translation><!-- Northrop Grumman --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Norway Government</masterLabel>
-            <translation><!-- Norway Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>ORock Technologies</masterLabel>
-            <translation><!-- ORock Technologies --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Oak Ridge National Lab</masterLabel>
-            <translation><!-- Oak Ridge National Lab --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Oman Government</masterLabel>
-            <translation><!-- Oman Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Other African Government</masterLabel>
-            <translation><!-- Other African Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Overland AI</masterLabel>
-            <translation><!-- Overland AI --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Pacific Northwest National Laboratory</masterLabel>
-            <translation><!-- Pacific Northwest National Laboratory --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Pakistan Government</masterLabel>
-            <translation><!-- Pakistan Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Peraton</masterLabel>
-            <translation><!-- Peraton --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Petrochina</masterLabel>
-            <translation><!-- Petrochina --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Philippines Government</masterLabel>
-            <translation><!-- Philippines Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Poland Government</masterLabel>
-            <translation><!-- Poland Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Portugal Government</masterLabel>
-            <translation><!-- Portugal Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Public Sector Financial Institute</masterLabel>
-            <translation><!-- Public Sector Financial Institute --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Qatar Government</masterLabel>
-            <translation><!-- Qatar Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Queensland Government</masterLabel>
-            <translation><!-- Queensland Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>RTX</masterLabel>
-            <translation><!-- RTX --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Reinsurance</masterLabel>
-            <translation><!-- Reinsurance --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Romania Government</masterLabel>
-            <translation><!-- Romania Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Rwanda Government</masterLabel>
-            <translation><!-- Rwanda Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SAIC</masterLabel>
-            <translation><!-- SAIC --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SASAC of Chongqing</masterLabel>
-            <translation><!-- SASAC of Chongqing --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SASAC of Fujian</masterLabel>
-            <translation><!-- SASAC of Fujian --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SASAC of Guangdong</masterLabel>
-            <translation><!-- SASAC of Guangdong --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SASAC of Jiangsu</masterLabel>
-            <translation><!-- SASAC of Jiangsu --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SASAC of Shandong</masterLabel>
-            <translation><!-- SASAC of Shandong --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SASAC of Shanghai</masterLabel>
-            <translation><!-- SASAC of Shanghai --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SASAC of Shenzhen</masterLabel>
-            <translation><!-- SASAC of Shenzhen --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SASAC of Sichuan</masterLabel>
-            <translation><!-- SASAC of Sichuan --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>STANFORD LINEAR ACCELERATOR CENTER</masterLabel>
-            <translation><!-- STANFORD LINEAR ACCELERATOR CENTER --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Sandia National Laboratories</masterLabel>
-            <translation><!-- Sandia National Laboratories --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Saudi Arabia Government</masterLabel>
-            <translation><!-- Saudi Arabia Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Saudi Arabia Government - Research</masterLabel>
-            <translation><!-- Saudi Arabia Government - Research --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Sierra Nevada</masterLabel>
-            <translation><!-- Sierra Nevada --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Singapore Government</masterLabel>
-            <translation><!-- Singapore Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Sinopharm (国药集团）</masterLabel>
-            <translation><!-- Sinopharm (国药集团） --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Slovakia Government</masterLabel>
-            <translation><!-- Slovakia Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>South Africa Government</masterLabel>
-            <translation><!-- South Africa Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>South Korea Government</masterLabel>
-            <translation><!-- South Korea Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Spain Government</masterLabel>
-            <translation><!-- Spain Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>State Administration Of Taxati</masterLabel>
-            <translation><!-- State Administration Of Taxati --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>State Gov Brazil (Sp + Rj + Mg)</masterLabel>
-            <translation><!-- State Gov Brazil (Sp + Rj + Mg) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>State of California</masterLabel>
-            <translation><!-- State of California --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>State of Florida</masterLabel>
-            <translation><!-- State of Florida --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>State of New York</masterLabel>
-            <translation><!-- State of New York --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>State of Ohio</masterLabel>
-            <translation><!-- State of Ohio --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>State of Texas</masterLabel>
-            <translation><!-- State of Texas --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>States Taxation Bureau</masterLabel>
-            <translation><!-- States Taxation Bureau --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Sweden Government</masterLabel>
-            <translation><!-- Sweden Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Switzerland Government</masterLabel>
-            <translation><!-- Switzerland Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SysPro Consulting</masterLabel>
-            <translation><!-- SysPro Consulting --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>TAL</masterLabel>
-            <translation><!-- TAL --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Taiwan Government</masterLabel>
-            <translation><!-- Taiwan Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Tanzania Government</masterLabel>
-            <translation><!-- Tanzania Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Thailand Government</masterLabel>
-            <translation><!-- Thailand Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Tier 1 University</masterLabel>
-            <translation><!-- Tier 1 University --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Tigerlabs</masterLabel>
-            <translation><!-- Tigerlabs --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Togo Government</masterLabel>
-            <translation><!-- Togo Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Tongcheng Network Technology</masterLabel>
-            <translation><!-- Tongcheng Network Technology --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Trenton Systems</masterLabel>
-            <translation><!-- Trenton Systems --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Tsinghua University</masterLabel>
-            <translation><!-- Tsinghua University --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Tunisia Government</masterLabel>
-            <translation><!-- Tunisia Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Turkey Government</masterLabel>
-            <translation><!-- Turkey Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>U.S. Department of Transportation</masterLabel>
-            <translation><!-- U.S. Department of Transportation --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>UAE Government</masterLabel>
-            <translation><!-- UAE Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>UK Government</masterLabel>
-            <translation><!-- UK Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>UK Govt - Research</masterLabel>
-            <translation><!-- UK Govt - Research --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>UNITED STATES NUCLEAR REGULATORY COMMISS</masterLabel>
-            <translation><!-- UNITED STATES NUCLEAR REGULATORY COMMISS --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>US AFRICA COMMAND</masterLabel>
-            <translation><!-- US AFRICA COMMAND --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>US AIR FORCE</masterLabel>
-            <translation><!-- US AIR FORCE --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>US ARMY</masterLabel>
-            <translation><!-- US ARMY --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>US Amber</masterLabel>
-            <translation><!-- US Amber --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>US CENTCOM</masterLabel>
-            <translation><!-- US CENTCOM --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>US Courts</masterLabel>
-            <translation><!-- US Courts --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>US DEFENSE AGENCIES</masterLabel>
-            <translation><!-- US DEFENSE AGENCIES --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>US DEFENSE INFORMATION SYSTEMS AGENCY</masterLabel>
-            <translation><!-- US DEFENSE INFORMATION SYSTEMS AGENCY --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>US DEFENSE LOGISTICS AGENCY (DLA)</masterLabel>
-            <translation><!-- US DEFENSE LOGISTICS AGENCY (DLA) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>US DEPARTMENT OF AGRICULTURE</masterLabel>
-            <translation><!-- US DEPARTMENT OF AGRICULTURE --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>US DEPARTMENT OF COMMERCE</masterLabel>
-            <translation><!-- US DEPARTMENT OF COMMERCE --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>US DEPARTMENT OF EDUCATION</masterLabel>
-            <translation><!-- US DEPARTMENT OF EDUCATION --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>US DEPARTMENT OF ENERGY</masterLabel>
-            <translation><!-- US DEPARTMENT OF ENERGY --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>US DEPARTMENT OF HEALTH &amp; HUMAN SERVICES</masterLabel>
-            <translation><!-- US DEPARTMENT OF HEALTH &amp; HUMAN SERVICES --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>US DEPARTMENT OF HOMELAND SECURITY</masterLabel>
-            <translation><!-- US DEPARTMENT OF HOMELAND SECURITY --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>US DEPARTMENT OF INTERIOR</masterLabel>
-            <translation><!-- US DEPARTMENT OF INTERIOR --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>US DEPARTMENT OF JUSTICE</masterLabel>
-            <translation><!-- US DEPARTMENT OF JUSTICE --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>US DEPARTMENT OF STATE</masterLabel>
-            <translation><!-- US DEPARTMENT OF STATE --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>US DEPARTMENT OF TRANSPORTATION</masterLabel>
-            <translation><!-- US DEPARTMENT OF TRANSPORTATION --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>US DEPARTMENT OF TRANSPORTATION - FAA</masterLabel>
-            <translation><!-- US DEPARTMENT OF TRANSPORTATION - FAA --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>US DEPARTMENT OF TREASURY</masterLabel>
-            <translation><!-- US DEPARTMENT OF TREASURY --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>US DEPARTMENT OF VETERANS AFFAIRS (VA)</masterLabel>
-            <translation><!-- US DEPARTMENT OF VETERANS AFFAIRS (VA) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>US Defense Advanced Research Projects Agency</masterLabel>
-            <translation><!-- US Defense Advanced Research Projects Agency --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>US Department of Defense</masterLabel>
-            <translation><!-- US Department of Defense --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>US Diamond</masterLabel>
-            <translation><!-- US Diamond --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>US ENVIRONMENTAL PROTECTION AGENCY</masterLabel>
-            <translation><!-- US ENVIRONMENTAL PROTECTION AGENCY --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>US EUROPEAN COMMAND</masterLabel>
-            <translation><!-- US EUROPEAN COMMAND --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>US Garnet</masterLabel>
-            <translation><!-- US Garnet --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>US General Services Administration</masterLabel>
-            <translation><!-- US General Services Administration --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>US HPC Institutions</masterLabel>
-            <translation><!-- US HPC Institutions --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>US HigherEd Institutions</masterLabel>
-            <translation><!-- US HigherEd Institutions --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>US Housing and Urban Development</masterLabel>
-            <translation><!-- US Housing and Urban Development --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>US ICFM</masterLabel>
-            <translation><!-- US ICFM --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>US ICHQ</masterLabel>
-            <translation><!-- US ICHQ --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>US ICS</masterLabel>
-            <translation><!-- US ICS --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>US ICWF</masterLabel>
-            <translation><!-- US ICWF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>US K-12 Institutions</masterLabel>
-            <translation><!-- US K-12 Institutions --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>US Local Government</masterLabel>
-            <translation><!-- US Local Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>US MARINE CORPS</masterLabel>
-            <translation><!-- US MARINE CORPS --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>US MILITARY HEALTH SYSTEM - DEPARTMENT OF DEFENSE</masterLabel>
-            <translation><!-- US MILITARY HEALTH SYSTEM - DEPARTMENT OF DEFENSE --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>US NAVY</masterLabel>
-            <translation><!-- US NAVY --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>US PATENT &amp; TRADEMARK OFFICE</masterLabel>
-            <translation><!-- US PATENT &amp; TRADEMARK OFFICE --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>US POSTAL SERVICE</masterLabel>
-            <translation><!-- US POSTAL SERVICE --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>US Ruby</masterLabel>
-            <translation><!-- US Ruby --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>US SAPPHIRE</masterLabel>
-            <translation><!-- US SAPPHIRE --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>US SOCIAL SECURITY ADMINISTRATION</masterLabel>
-            <translation><!-- US SOCIAL SECURITY ADMINISTRATION --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>US SPECIAL OPERATIONS COMMAND</masterLabel>
-            <translation><!-- US SPECIAL OPERATIONS COMMAND --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>US Space Force</masterLabel>
-            <translation><!-- US Space Force --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>US State Government</masterLabel>
-            <translation><!-- US State Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>USGS</masterLabel>
-            <translation><!-- USGS --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Uganda Government</masterLabel>
-            <translation><!-- Uganda Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>United Imaging Group</masterLabel>
-            <translation><!-- United Imaging Group --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>United States Securities and Exchange Commission</masterLabel>
-            <translation><!-- United States Securities and Exchange Commission --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>University</masterLabel>
-            <translation><!-- University --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Uruguay Government</masterLabel>
-            <translation><!-- Uruguay Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Uzbekistan Government</masterLabel>
-            <translation><!-- Uzbekistan Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Victoria Government</masterLabel>
-            <translation><!-- Victoria Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Vietnam Government</masterLabel>
-            <translation><!-- Vietnam Government --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>YangCong Academy_End Customer</masterLabel>
-            <translation><!-- YangCong Academy_End Customer --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Zuoyebang</masterLabel>
-            <translation><!-- Zuoyebang --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>zhengcaiyun.cn(政采云)</masterLabel>
-            <translation><!-- zhengcaiyun.cn(政采云) --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
         <label><!-- Headquarter Parent DUNS --></label>
         <name>Core_Headquarter_Parent_DUNS__c</name>
     </fields>
@@ -5588,12 +4507,16 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <label><!-- IPA Badge Tier --></label>
         <name>Core_IPA_Badge_Tier__c</name>
         <picklistValues>
-            <masterLabel>Partner</masterLabel>
-            <translation><!-- Partner --></translation>
+            <masterLabel>Gold</masterLabel>
+            <translation><!-- Gold --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Prestige</masterLabel>
-            <translation><!-- Prestige --></translation>
+            <masterLabel>Member</masterLabel>
+            <translation><!-- Member --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Titanium</masterLabel>
+            <translation><!-- Titanium --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -5601,16 +4524,8 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <name>Core_IPA_One_Partner_Id__c</name>
     </fields>
     <fields>
-        <label><!-- IPA Partner Role History --></label>
-        <name>Core_IPA_Partner_Role_History__c</name>
-    </fields>
-    <fields>
         <label><!-- Partner Role --></label>
         <name>Core_IPA_Partner_Role__c</name>
-        <picklistValues>
-            <masterLabel>Builder</masterLabel>
-            <translation><!-- Builder --></translation>
-        </picklistValues>
         <picklistValues>
             <masterLabel>Cloud &amp; Comms Service Provider</masterLabel>
             <translation><!-- Cloud &amp; Comms Service Provider --></translation>
@@ -5618,6 +4533,10 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <picklistValues>
             <masterLabel>Distributor</masterLabel>
             <translation><!-- Distributor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA Design Services</masterLabel>
+            <translation><!-- FPGA Design Services --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Guest</masterLabel>
@@ -5628,8 +4547,24 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
             <translation><!-- Independent Software Vendor --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Solution Integrator</masterLabel>
-            <translation><!-- Solution Integrator --></translation>
+            <masterLabel>Manufacturer</masterLabel>
+            <translation><!-- Manufacturer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Applicable</masterLabel>
+            <translation><!-- Not Applicable --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Original Equipment Manufacturer (OEM)</masterLabel>
+            <translation><!-- Original Equipment Manufacturer (OEM) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service  Integrator</masterLabel>
+            <translation><!-- Service  Integrator --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Solution Provider</masterLabel>
+            <translation><!-- Solution Provider --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -5759,16 +4694,11 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <name>Core_MAG_Value__c</name>
     </fields>
     <fields>
-        <label><!-- Account Node Attribute --></label>
-        <name>Core_MDF_Account_Node_Attribute_Id__c</name>
-        <relationshipLabel><!-- Accounts --></relationshipLabel>
-    </fields>
-    <fields>
         <label>Cuenta activa</label>
         <name>Core_MDF_Active_Ind__c</name>
     </fields>
     <fields>
-        <label>Cuenta de transferencia automática</label>
+        <label><!-- Auto-Transfer Account --></label>
         <name>Core_MDF_Auto_Transfer_Account__c</name>
         <relationshipLabel><!-- Accounts (Auto-Transfer Account) --></relationshipLabel>
     </fields>
@@ -5778,7 +4708,7 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <relationshipLabel><!-- Accounts --></relationshipLabel>
     </fields>
     <fields>
-        <label><!-- Co-Marketing Active --></label>
+        <label><!-- CoMarketingActive --></label>
         <name>Core_MDF_CoMarketingActive__c</name>
     </fields>
     <fields>
@@ -5791,20 +4721,16 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <relationshipLabel><!-- Accounts (CoMarketing Ultimate Account) --></relationshipLabel>
     </fields>
     <fields>
-        <label>Transferencia automática habilitada</label>
+        <label><!-- Enabled Auto-Transfer --></label>
         <name>Core_MDF_Enabled_Auto_Transfer__c</name>
     </fields>
     <fields>
-        <label><!-- External Group Id --></label>
+        <label><!-- Core_MDF_External_Group_Id --></label>
         <name>Core_MDF_External_Group_Id__c</name>
     </fields>
     <fields>
         <label><!-- Group Id --></label>
         <name>Core_MDF_Group_Id__c</name>
-    </fields>
-    <fields>
-        <label><!-- Is Top Account --></label>
-        <name>Core_MDF_Is_Top_Account_Ind__c</name>
     </fields>
     <fields>
         <help><!-- This will be used in the CCP module. --></help>
@@ -5813,45 +4739,19 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <relationshipLabel><!-- Accounts (Parent Account) --></relationshipLabel>
     </fields>
     <fields>
-        <label>Tipo de socio</label>
-        <name>Core_MDF_Partner_Type_nm__c</name>
-        <picklistValues>
-            <masterLabel>Activating Partner</masterLabel>
-            <translation>Activando socio</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Primary Partner</masterLabel>
-            <translation>Socio principal</translation>
-        </picklistValues>
+        <label><!-- MDM CPEs --></label>
+        <name>Core_MDM_CPEs__c</name>
     </fields>
     <fields>
-        <label><!-- Payment Type Node Level --></label>
-        <name>Core_MDF_Payment_Type_NodeLevel_nm__c</name>
+        <label><!-- MDM Deactivated --></label>
+        <name>Core_MDM_Deactivated__c</name>
     </fields>
     <fields>
-        <label><!-- Payment Type --></label>
-        <name>Core_MDF_Payment_Type_nm__c</name>
-    </fields>
-    <fields>
-        <label><!-- Corp Virtual Account --></label>
-        <name>Core_MDF_Virtual_Corp_Account_Id__c</name>
-        <relationshipLabel><!-- Accounts (Virtual Corp Account Id) --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- MDM Address Location Type --></label>
-        <name>Core_MDM_Address_Location_Type__c</name>
-    </fields>
-    <fields>
-        <label><!-- MDM Address Usage Type --></label>
-        <name>Core_MDM_Address_Usage_Type__c</name>
-    </fields>
-    <fields>
-        <help><!-- Reltio HQ Address Country Name --></help>
+        <help><!-- Mastered Business Physical Address Country Name --></help>
         <label><!-- MDM Primary Country Nm --></label>
         <name>Core_MDM_Location_Country_Nm__c</name>
     </fields>
     <fields>
-        <help><!-- Reltio HQ Address State Code --></help>
         <label><!-- MDM Primary State Cd --></label>
         <name>Core_MDM_Location_State_Nm__c</name>
     </fields>
@@ -5867,15 +4767,11 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
     </fields>
     <fields>
         <help><!-- Reltio Data Steward Validation Status --></help>
-        <label><!-- Reltio Status --></label>
+        <label><!-- MDM Status --></label>
         <name>Core_MDM_Status__c</name>
         <picklistValues>
             <masterLabel>Approved</masterLabel>
             <translation><!-- Approved --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Inactive</masterLabel>
-            <translation><!-- Inactive --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Rejected</masterLabel>
@@ -5889,6 +4785,20 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
     <fields>
         <label><!-- Unified Customer URL --></label>
         <name>Core_MDM_Website__c</name>
+    </fields>
+    <fields>
+        <label><!-- Marked for Deletion --></label>
+        <name>Core_Marked_for_Deletion__c</name>
+    </fields>
+    <fields>
+        <help><!-- Mastered Business Physical Address Country Name --></help>
+        <label><!-- Mastered Country Name --></label>
+        <name>Core_Mastered_Country_Nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- Mastered Name of type Simplified --></help>
+        <label><!-- Mastered Simplified Account Name --></label>
+        <name>Core_Mastered_Simplified_Account_Nm__c</name>
     </fields>
     <fields>
         <help><!-- Indicates Military, Aerospace or Government account; use of Intel products &amp; solutions for military, intelligence, nuclear/biochemical, defense, &amp; space items and applications is managed at OPPORTUNITY level. Questions?  Contact export.customer@intel.com. --></help>
@@ -5936,7 +4846,11 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <name>Core_Not_on_Denied_Persons_List__c</name>
     </fields>
     <fields>
-        <label><!-- One Partner ID --></label>
+        <label><!-- Notify Partner --></label>
+        <name>Core_Notify_Owner__c</name>
+    </fields>
+    <fields>
+        <label><!-- CIM One Partner ID --></label>
         <name>Core_OnePartnerID__c</name>
     </fields>
     <fields>
@@ -5975,10 +4889,6 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
             <masterLabel>Line of Business</masterLabel>
             <translation><!-- Line of Business --></translation>
         </picklistValues>
-        <picklistValues>
-            <masterLabel>Region</masterLabel>
-            <translation><!-- Region --></translation>
-        </picklistValues>
     </fields>
     <fields>
         <label><!-- Marketplace Membership Changed? --></label>
@@ -5992,6 +4902,10 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <help><!-- Parent&apos;s Business Party ID from Reltio --></help>
         <label><!-- Parent Unified ID --></label>
         <name>Core_Parent_Business_Party_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Parent Customer Aggregation Type --></label>
+        <name>Core_Parent_Customer_Aggregation_Type__c</name>
     </fields>
     <fields>
         <label><!-- Parent Simplified Account Name --></label>
@@ -6098,20 +5012,8 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <name>Core_Recommendations_Indicator__c</name>
     </fields>
     <fields>
-        <label><!-- Reltio Address Status --></label>
-        <name>Core_Reltio_Address_Status__c</name>
-        <picklistValues>
-            <masterLabel>Completed</masterLabel>
-            <translation><!-- Completed --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Pending</masterLabel>
-            <translation><!-- Pending --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
-        <label><!-- Reltio Integration Status --></label>
-        <name>Core_Reltio_Integration_Status__c</name>
+        <label><!-- Reltio Data Steward Validation Status --></label>
+        <name>Core_Reltio_DataStewardValidationStatus__c</name>
     </fields>
     <fields>
         <label><!-- Requested Name --></label>
@@ -6204,6 +5106,10 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
             <translation><!-- PRC Sales Group --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>PSG Sales</masterLabel>
+            <translation><!-- PSG Sales --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>US Sales Group</masterLabel>
             <translation><!-- US Sales Group --></translation>
         </picklistValues>
@@ -6254,12 +5160,20 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
             <translation><!-- APJ Hosted Sales Group --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>APJ India Sales Group</masterLabel>
+            <translation><!-- APJ India Sales Group --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>APJ Japan Sales Group</masterLabel>
             <translation><!-- APJ Japan Sales Group --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>APJ Korea Sales Group</masterLabel>
             <translation><!-- APJ Korea Sales Group --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>APJ Partner Holding</masterLabel>
+            <translation><!-- APJ Partner Holding --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>APJ Partner Led</masterLabel>
@@ -6294,6 +5208,10 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
             <translation><!-- Americas Mexico Sales Group --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Americas Partner Holding</masterLabel>
+            <translation><!-- Americas Partner Holding --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Americas Partner Led</masterLabel>
             <translation><!-- Americas Partner Led --></translation>
         </picklistValues>
@@ -6306,6 +5224,10 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
             <translation><!-- EMEA Hosted Sales Group --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>EMEA Partner Holding</masterLabel>
+            <translation><!-- EMEA Partner Holding --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>EMEA Partner Led</masterLabel>
             <translation><!-- EMEA Partner Led --></translation>
         </picklistValues>
@@ -6314,16 +5236,16 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
             <translation><!-- EMEA Sales Group --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>India Partner Led</masterLabel>
-            <translation><!-- India Partner Led --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>India Sales Group</masterLabel>
-            <translation><!-- India Sales Group --></translation>
+            <masterLabel>Global Solutions &amp; Services Sales Group</masterLabel>
+            <translation><!-- Global Solutions &amp; Services Sales Group --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>PRC Hosted Sales Group</masterLabel>
             <translation><!-- PRC Hosted Sales Group --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRC Partner Holding</masterLabel>
+            <translation><!-- PRC Partner Holding --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>PRC Partner Led</masterLabel>
@@ -6387,12 +5309,28 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <name>Core_Secondary_Zip_Code__c</name>
     </fields>
     <fields>
+        <label><!-- Street --></label>
+        <name>Core_ShipTo1_Street__c</name>
+    </fields>
+    <fields>
+        <label><!-- Country --></label>
+        <name>Core_ShipTo_Country__c</name>
+    </fields>
+    <fields>
+        <label><!-- Street --></label>
+        <name>Core_ShipTo_Street__c</name>
+    </fields>
+    <fields>
         <label><!-- Zip/Postal Code --></label>
         <name>Core_ShipTo_Zip_Postal_Code__c</name>
     </fields>
     <fields>
         <label><!-- City --></label>
         <name>Core_Shipo_City__c</name>
+    </fields>
+    <fields>
+        <label><!-- Zip/Postal Code --></label>
+        <name>Core_Shipto1_Zip_Postal_Code__c</name>
     </fields>
     <fields>
         <label><!-- Standard Industry Classification 1 --></label>
@@ -6419,7 +5357,7 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <name>Core_Standard_Industry_Classification_6__c</name>
     </fields>
     <fields>
-        <label>Subregión</label>
+        <label><!-- Sub Region --></label>
         <name>Core_Sub_Geo__c</name>
         <picklistValues>
             <masterLabel>ANZ</masterLabel>
@@ -7038,8 +5976,925 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <name>Core_Trade_Style_Name__c</name>
     </fields>
     <fields>
+        <label><!-- Umbrella Group ID --></label>
+        <name>Core_Umbrella_Group_ID__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>10</masterLabel>
+            <translation><!-- 10 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>100</masterLabel>
+            <translation><!-- 100 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>106</masterLabel>
+            <translation><!-- 106 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>107</masterLabel>
+            <translation><!-- 107 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>11</masterLabel>
+            <translation><!-- 11 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>110</masterLabel>
+            <translation><!-- 110 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>113</masterLabel>
+            <translation><!-- 113 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>114</masterLabel>
+            <translation><!-- 114 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>115</masterLabel>
+            <translation><!-- 115 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>118</masterLabel>
+            <translation><!-- 118 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>12</masterLabel>
+            <translation><!-- 12 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>122</masterLabel>
+            <translation><!-- 122 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>123</masterLabel>
+            <translation><!-- 123 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>124</masterLabel>
+            <translation><!-- 124 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>126</masterLabel>
+            <translation><!-- 126 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>127</masterLabel>
+            <translation><!-- 127 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>128</masterLabel>
+            <translation><!-- 128 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>13</masterLabel>
+            <translation><!-- 13 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>14</masterLabel>
+            <translation><!-- 14 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>144</masterLabel>
+            <translation><!-- 144 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>149</masterLabel>
+            <translation><!-- 149 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>15</masterLabel>
+            <translation><!-- 15 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>153</masterLabel>
+            <translation><!-- 153 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>159</masterLabel>
+            <translation><!-- 159 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>16</masterLabel>
+            <translation><!-- 16 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>160</masterLabel>
+            <translation><!-- 160 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>163</masterLabel>
+            <translation><!-- 163 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>164</masterLabel>
+            <translation><!-- 164 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>165</masterLabel>
+            <translation><!-- 165 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>166</masterLabel>
+            <translation><!-- 166 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>17</masterLabel>
+            <translation><!-- 17 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>18</masterLabel>
+            <translation><!-- 18 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>19</masterLabel>
+            <translation><!-- 19 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>20</masterLabel>
+            <translation><!-- 20 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>21</masterLabel>
+            <translation><!-- 21 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>22</masterLabel>
+            <translation><!-- 22 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>23</masterLabel>
+            <translation><!-- 23 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>24</masterLabel>
+            <translation><!-- 24 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>25</masterLabel>
+            <translation><!-- 25 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>26</masterLabel>
+            <translation><!-- 26 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>27</masterLabel>
+            <translation><!-- 27 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>28</masterLabel>
+            <translation><!-- 28 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>29</masterLabel>
+            <translation><!-- 29 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>30</masterLabel>
+            <translation><!-- 30 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>31</masterLabel>
+            <translation><!-- 31 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>32</masterLabel>
+            <translation><!-- 32 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>33</masterLabel>
+            <translation><!-- 33 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>34</masterLabel>
+            <translation><!-- 34 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>35</masterLabel>
+            <translation><!-- 35 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>36</masterLabel>
+            <translation><!-- 36 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>37</masterLabel>
+            <translation><!-- 37 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>38</masterLabel>
+            <translation><!-- 38 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>39</masterLabel>
+            <translation><!-- 39 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>40</masterLabel>
+            <translation><!-- 40 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>41</masterLabel>
+            <translation><!-- 41 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>42</masterLabel>
+            <translation><!-- 42 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>43</masterLabel>
+            <translation><!-- 43 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>44</masterLabel>
+            <translation><!-- 44 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>45</masterLabel>
+            <translation><!-- 45 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>46</masterLabel>
+            <translation><!-- 46 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>47</masterLabel>
+            <translation><!-- 47 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>48</masterLabel>
+            <translation><!-- 48 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>49</masterLabel>
+            <translation><!-- 49 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>5</masterLabel>
+            <translation><!-- 5 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>50</masterLabel>
+            <translation><!-- 50 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>51</masterLabel>
+            <translation><!-- 51 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>52</masterLabel>
+            <translation><!-- 52 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>53</masterLabel>
+            <translation><!-- 53 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>54</masterLabel>
+            <translation><!-- 54 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>55</masterLabel>
+            <translation><!-- 55 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>56</masterLabel>
+            <translation><!-- 56 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>57</masterLabel>
+            <translation><!-- 57 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>58</masterLabel>
+            <translation><!-- 58 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>59</masterLabel>
+            <translation><!-- 59 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>6</masterLabel>
+            <translation><!-- 6 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>60</masterLabel>
+            <translation><!-- 60 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>61</masterLabel>
+            <translation><!-- 61 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>62</masterLabel>
+            <translation><!-- 62 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>63</masterLabel>
+            <translation><!-- 63 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>64</masterLabel>
+            <translation><!-- 64 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>65</masterLabel>
+            <translation><!-- 65 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>66</masterLabel>
+            <translation><!-- 66 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>67</masterLabel>
+            <translation><!-- 67 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>68</masterLabel>
+            <translation><!-- 68 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>69</masterLabel>
+            <translation><!-- 69 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>7</masterLabel>
+            <translation><!-- 7 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>70</masterLabel>
+            <translation><!-- 70 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>71</masterLabel>
+            <translation><!-- 71 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>72</masterLabel>
+            <translation><!-- 72 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>74</masterLabel>
+            <translation><!-- 74 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>75</masterLabel>
+            <translation><!-- 75 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>76</masterLabel>
+            <translation><!-- 76 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>77</masterLabel>
+            <translation><!-- 77 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>78</masterLabel>
+            <translation><!-- 78 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>79</masterLabel>
+            <translation><!-- 79 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>8</masterLabel>
+            <translation><!-- 8 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>80</masterLabel>
+            <translation><!-- 80 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>81</masterLabel>
+            <translation><!-- 81 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>9</masterLabel>
+            <translation><!-- 9 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>93</masterLabel>
+            <translation><!-- 93 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>94</masterLabel>
+            <translation><!-- 94 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>95</masterLabel>
+            <translation><!-- 95 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>96</masterLabel>
+            <translation><!-- 96 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Umbrella Group Name --></label>
+        <name>Core_Umbrella_Group_Name__c</name>
+        <picklistValues>
+            <masterLabel>Academia HPC accoun</masterLabel>
+            <translation><!-- Academia HPC accoun --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Affiliated Universities To Moe</masterLabel>
+            <translation><!-- Affiliated Universities To Moe --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Army &amp; Air Force Exchange Service</masterLabel>
+            <translation><!-- Army &amp; Air Force Exchange Service --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Australia Government</masterLabel>
+            <translation><!-- Australia Government --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Austria Government</masterLabel>
+            <translation><!-- Austria Government --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bangladesh Government</masterLabel>
+            <translation><!-- Bangladesh Government --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bank of Baroda</masterLabel>
+            <translation><!-- Bank of Baroda --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Belgium Government</masterLabel>
+            <translation><!-- Belgium Government --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bonneville Power Administration</masterLabel>
+            <translation><!-- Bonneville Power Administration --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CENTER FOR DISEASE CONTROL</masterLabel>
+            <translation><!-- CENTER FOR DISEASE CONTROL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CENTERS FOR MEDICARE AND MEDICAID</masterLabel>
+            <translation><!-- CENTERS FOR MEDICARE AND MEDICAID --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Central Government Procurement Center</masterLabel>
+            <translation><!-- Central Government Procurement Center --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Costa Rica Government</masterLabel>
+            <translation><!-- Costa Rica Government --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Denmark Government</masterLabel>
+            <translation><!-- Denmark Government --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>El Salvador Government</masterLabel>
+            <translation><!-- El Salvador Government --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FDA</masterLabel>
+            <translation><!-- FDA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Federal Government Of Brazil</masterLabel>
+            <translation><!-- Federal Government Of Brazil --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Finland Government</masterLabel>
+            <translation><!-- Finland Government --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>France Government</masterLabel>
+            <translation><!-- France Government --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Germany Government</masterLabel>
+            <translation><!-- Germany Government --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Government of Chongqing</masterLabel>
+            <translation><!-- Government of Chongqing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Government of Henan</masterLabel>
+            <translation><!-- Government of Henan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Great Wall Securities</masterLabel>
+            <translation><!-- Great Wall Securities --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Guizhou Government</masterLabel>
+            <translation><!-- Guizhou Government --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>India Government</masterLabel>
+            <translation><!-- India Government --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Indonesia Government</masterLabel>
+            <translation><!-- Indonesia Government --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Italy Government</masterLabel>
+            <translation><!-- Italy Government --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Japan Government</masterLabel>
+            <translation><!-- Japan Government --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Japan Local BOE</masterLabel>
+            <translation><!-- Japan Local BOE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MISSILE DEFENSE AGENCY</masterLabel>
+            <translation><!-- MISSILE DEFENSE AGENCY --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Malaysia Government</masterLabel>
+            <translation><!-- Malaysia Government --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Meteorological Bureau Meteorology Development And Planning Institute</masterLabel>
+            <translation><!-- Meteorological Bureau Meteorology Development And Planning Institute --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ministry Of Education Of The Peoples Republic Of China</masterLabel>
+            <translation><!-- Ministry Of Education Of The Peoples Republic Of China --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ministry Of Public Security</masterLabel>
+            <translation><!-- Ministry Of Public Security --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Moe Of Hunan</masterLabel>
+            <translation><!-- Moe Of Hunan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Moh</masterLabel>
+            <translation><!-- Moh --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NASA</masterLabel>
+            <translation><!-- NASA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NATIONAL CANCER INSTITUTE</masterLabel>
+            <translation><!-- NATIONAL CANCER INSTITUTE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NIST</masterLabel>
+            <translation><!-- NIST --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NOAA</masterLabel>
+            <translation><!-- NOAA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NSW Government</masterLabel>
+            <translation><!-- NSW Government --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>National Archives and Records Administration</masterLabel>
+            <translation><!-- National Archives and Records Administration --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>National Institutes of Health</masterLabel>
+            <translation><!-- National Institutes of Health --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>National Labs</masterLabel>
+            <translation><!-- National Labs --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>National Medical Products Administration</masterLabel>
+            <translation><!-- National Medical Products Administration --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Netherlands Government</masterLabel>
+            <translation><!-- Netherlands Government --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New China Life Insurance</masterLabel>
+            <translation><!-- New China Life Insurance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Norway Government</masterLabel>
+            <translation><!-- Norway Government --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other African Government</masterLabel>
+            <translation><!-- Other African Government --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pakistan Government</masterLabel>
+            <translation><!-- Pakistan Government --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Petrochina</masterLabel>
+            <translation><!-- Petrochina --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Philippines Government</masterLabel>
+            <translation><!-- Philippines Government --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Poland Government</masterLabel>
+            <translation><!-- Poland Government --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Public Sector Financial Institute</masterLabel>
+            <translation><!-- Public Sector Financial Institute --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Qatar Government</masterLabel>
+            <translation><!-- Qatar Government --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Queensland Government</masterLabel>
+            <translation><!-- Queensland Government --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Reinsurance</masterLabel>
+            <translation><!-- Reinsurance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>STANFORD LINEAR ACCELERATOR CENTER</masterLabel>
+            <translation><!-- STANFORD LINEAR ACCELERATOR CENTER --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Saudi Government</masterLabel>
+            <translation><!-- Saudi Government --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Singapore Government</masterLabel>
+            <translation><!-- Singapore Government --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>South Africa Government</masterLabel>
+            <translation><!-- South Africa Government --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>South Korea Government</masterLabel>
+            <translation><!-- South Korea Government --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Spain Government</masterLabel>
+            <translation><!-- Spain Government --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>State Administration Of Taxati</masterLabel>
+            <translation><!-- State Administration Of Taxati --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>State Gov Brazil (Sp + Rj + Mg)</masterLabel>
+            <translation><!-- State Gov Brazil (Sp + Rj + Mg) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>State of California</masterLabel>
+            <translation><!-- State of California --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>State of Florida</masterLabel>
+            <translation><!-- State of Florida --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>State of New York</masterLabel>
+            <translation><!-- State of New York --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>State of Ohio</masterLabel>
+            <translation><!-- State of Ohio --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>State of Texas</masterLabel>
+            <translation><!-- State of Texas --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sweden Government</masterLabel>
+            <translation><!-- Sweden Government --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Taiwan Government</masterLabel>
+            <translation><!-- Taiwan Government --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Thailand Government</masterLabel>
+            <translation><!-- Thailand Government --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tongcheng Network Technology</masterLabel>
+            <translation><!-- Tongcheng Network Technology --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tsinghua University</masterLabel>
+            <translation><!-- Tsinghua University --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>U.S. Department of Transportation</masterLabel>
+            <translation><!-- U.S. Department of Transportation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>UAE Government</masterLabel>
+            <translation><!-- UAE Government --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>UNITED STATES NUCLEAR REGULATORY COMMISS</masterLabel>
+            <translation><!-- UNITED STATES NUCLEAR REGULATORY COMMISS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>US AIR FORCE</masterLabel>
+            <translation><!-- US AIR FORCE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>US ARMY</masterLabel>
+            <translation><!-- US ARMY --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>US Courts</masterLabel>
+            <translation><!-- US Courts --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>US DEFENSE INFORMATION SYSTEMS AGENCY</masterLabel>
+            <translation><!-- US DEFENSE INFORMATION SYSTEMS AGENCY --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>US DEFENSE LOGISTICS AGENCY (DLA)</masterLabel>
+            <translation><!-- US DEFENSE LOGISTICS AGENCY (DLA) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>US DEPARTMENT OF AGRICULTURE</masterLabel>
+            <translation><!-- US DEPARTMENT OF AGRICULTURE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>US DEPARTMENT OF COMMERCE</masterLabel>
+            <translation><!-- US DEPARTMENT OF COMMERCE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>US DEPARTMENT OF EDUCATION</masterLabel>
+            <translation><!-- US DEPARTMENT OF EDUCATION --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>US DEPARTMENT OF ENERGY</masterLabel>
+            <translation><!-- US DEPARTMENT OF ENERGY --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>US DEPARTMENT OF HEALTH &amp; HUMAN SERVICES</masterLabel>
+            <translation><!-- US DEPARTMENT OF HEALTH &amp; HUMAN SERVICES --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>US DEPARTMENT OF HOMELAND SECURITY</masterLabel>
+            <translation><!-- US DEPARTMENT OF HOMELAND SECURITY --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>US DEPARTMENT OF INTERIOR</masterLabel>
+            <translation><!-- US DEPARTMENT OF INTERIOR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>US DEPARTMENT OF JUSTICE</masterLabel>
+            <translation><!-- US DEPARTMENT OF JUSTICE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>US DEPARTMENT OF STATE</masterLabel>
+            <translation><!-- US DEPARTMENT OF STATE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>US DEPARTMENT OF TRANSPORTATION</masterLabel>
+            <translation><!-- US DEPARTMENT OF TRANSPORTATION --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>US DEPARTMENT OF TRANSPORTATION - FAA</masterLabel>
+            <translation><!-- US DEPARTMENT OF TRANSPORTATION - FAA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>US DEPARTMENT OF TREASURY</masterLabel>
+            <translation><!-- US DEPARTMENT OF TREASURY --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>US DEPARTMENT OF VETERANS AFFAIRS (VA)</masterLabel>
+            <translation><!-- US DEPARTMENT OF VETERANS AFFAIRS (VA) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>US Defense Advanced Research Projects Agency</masterLabel>
+            <translation><!-- US Defense Advanced Research Projects Agency --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>US ENVIRONMENTAL PROTECTION AGENCY</masterLabel>
+            <translation><!-- US ENVIRONMENTAL PROTECTION AGENCY --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>US Housing and Urban Development</masterLabel>
+            <translation><!-- US Housing and Urban Development --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>US ICFM</masterLabel>
+            <translation><!-- US ICFM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>US ICHQ</masterLabel>
+            <translation><!-- US ICHQ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>US ICS</masterLabel>
+            <translation><!-- US ICS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>US ICWF</masterLabel>
+            <translation><!-- US ICWF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>US MARINE CORPS</masterLabel>
+            <translation><!-- US MARINE CORPS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>US MILITARY HEALTH SYSTEM - DEPARTMENT OF DEFENSE</masterLabel>
+            <translation><!-- US MILITARY HEALTH SYSTEM - DEPARTMENT OF DEFENSE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>US NAVY</masterLabel>
+            <translation><!-- US NAVY --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>US PATENT &amp; TRADEMARK OFFICE</masterLabel>
+            <translation><!-- US PATENT &amp; TRADEMARK OFFICE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>US POSTAL SERVICE</masterLabel>
+            <translation><!-- US POSTAL SERVICE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>US SOCIAL SECURITY ADMINISTRATION</masterLabel>
+            <translation><!-- US SOCIAL SECURITY ADMINISTRATION --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>US SPECIAL OPERATIONS COMMAND</masterLabel>
+            <translation><!-- US SPECIAL OPERATIONS COMMAND --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>US Space Force</masterLabel>
+            <translation><!-- US Space Force --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>USGS</masterLabel>
+            <translation><!-- USGS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>United Kingdom Government</masterLabel>
+            <translation><!-- United Kingdom Government --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>United States Securities and Exchange Commission</masterLabel>
+            <translation><!-- United States Securities and Exchange Commission --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Uruguay Government</masterLabel>
+            <translation><!-- Uruguay Government --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Victoria Government</masterLabel>
+            <translation><!-- Victoria Government --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Vietnam Government</masterLabel>
+            <translation><!-- Vietnam Government --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
         <label><!-- Uncovered Marked for Clean Up --></label>
         <name>Core_Uncover_Marked_for_Clean_Up__c</name>
+    </fields>
+    <fields>
+        <label><!-- Unified Hierarchy --></label>
+        <name>Core_UnifiedHierarchy__c</name>
+    </fields>
+    <fields>
+        <label><!-- Unified Country Customer --></label>
+        <name>Core_Unified_Country_Customer__c</name>
+        <relationshipLabel><!-- Accounts (Unified Country Customer) --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- Unified Customer Address --></label>
@@ -7056,6 +6911,11 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <name>Core_Unified_Global_Customer_Name__c</name>
     </fields>
     <fields>
+        <label><!-- Unified Global Customer --></label>
+        <name>Core_Unified_Global_Customer__c</name>
+        <relationshipLabel><!-- Accounts (Unified Global Customer) --></relationshipLabel>
+    </fields>
+    <fields>
         <help><!-- Intermediate Level2 Customer&apos;s Business Party Identifier --></help>
         <label><!-- Unified Intermediate Level2 ID --></label>
         <name>Core_Unified_Intermdt_Customer_2_BP_Id__c</name>
@@ -7064,6 +6924,11 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <help><!-- Intermediate Level2 Customer&apos;s Simplified Name --></help>
         <label><!-- Unified Intermediate Level2 Name --></label>
         <name>Core_Unified_Intermdt_Customer_2_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Unified Intermediate Child Customer --></label>
+        <name>Core_Unified_Intermediate_Customer_2__c</name>
+        <relationshipLabel><!-- Accounts (Unified Intermediate Customer) --></relationshipLabel>
     </fields>
     <fields>
         <help><!-- Intermediate Customer&apos;s Business Party Identifier --></help>
@@ -7076,9 +6941,9 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <name>Core_Unified_Intermediate_Customer_Name__c</name>
     </fields>
     <fields>
-        <help><!-- Back end field used for Reltio mapping and Address translation for Country/Location customer Aggregation type --></help>
-        <label><!-- Core Unified Secondary Address --></label>
-        <name>Core_Unified_Secondary_Address__c</name>
+        <label><!-- Unified Intermediate Customer --></label>
+        <name>Core_Unified_Intermediate_Customer__c</name>
+        <relationshipLabel><!-- Accounts (Unified Intermediate Customer) --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- User Defined Number of Employees --></label>
@@ -7141,6 +7006,186 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <name>Core_Year_Started__c</name>
     </fields>
     <fields>
+        <label><!-- bC_Address --></label>
+        <name>Core_bC_Address__c</name>
+    </fields>
+    <fields>
+        <label><!-- bC_Industry --></label>
+        <name>Core_bC_Industry__c</name>
+        <picklistValues>
+            <masterLabel>Accommodation and Food Services</masterLabel>
+            <translation><!-- Accommodation and Food Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Agriculture</masterLabel>
+            <translation><!-- Agriculture --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Arts, Entertainment and Recreation</masterLabel>
+            <translation><!-- Arts, Entertainment and Recreation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Automotive (Non Manufacturing)</masterLabel>
+            <translation><!-- Automotive (Non Manufacturing) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Construction</masterLabel>
+            <translation><!-- Construction --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Consulting</masterLabel>
+            <translation><!-- Consulting --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Defense and Space</masterLabel>
+            <translation><!-- Defense and Space --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Education</masterLabel>
+            <translation><!-- Education --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Energy and Utilities</masterLabel>
+            <translation><!-- Energy and Utilities --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Finance and Insurance</masterLabel>
+            <translation><!-- Finance and Insurance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gaming</masterLabel>
+            <translation><!-- Gaming --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Government</masterLabel>
+            <translation><!-- Government --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Healthcare</masterLabel>
+            <translation><!-- Healthcare --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Manufacturing</masterLabel>
+            <translation><!-- Manufacturing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Media</masterLabel>
+            <translation><!-- Media --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not For Profit</masterLabel>
+            <translation><!-- Not For Profit --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Professional and Business Services</masterLabel>
+            <translation><!-- Professional and Business Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Real Estate, Rental and Leasing</masterLabel>
+            <translation><!-- Real Estate, Rental and Leasing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retail</masterLabel>
+            <translation><!-- Retail --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Software and Services</masterLabel>
+            <translation><!-- Software and Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Telecommunications</masterLabel>
+            <translation><!-- Telecommunications --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>To Be Defined</masterLabel>
+            <translation><!-- To Be Defined --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transportation, Travel and Warehousing</masterLabel>
+            <translation><!-- Transportation, Travel and Warehousing --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- bC_Partner Segment --></label>
+        <name>Core_bC_Partner_Segment__c</name>
+        <picklistValues>
+            <masterLabel>Client Computing</masterLabel>
+            <translation><!-- Client Computing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Center</masterLabel>
+            <translation><!-- Data Center --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Internet of Things and Embedded</masterLabel>
+            <translation><!-- Internet of Things and Embedded --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Programmable Logic</masterLabel>
+            <translation><!-- Programmable Logic --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Storage and Memory</masterLabel>
+            <translation><!-- Storage and Memory --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- bC_Role --></label>
+        <name>Core_bC_Role__c</name>
+        <picklistValues>
+            <masterLabel>Cloud &amp; Comms Service Provider</masterLabel>
+            <translation><!-- Cloud &amp; Comms Service Provider --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Distributor</masterLabel>
+            <translation><!-- Distributor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA Design Services</masterLabel>
+            <translation><!-- FPGA Design Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Guest</masterLabel>
+            <translation><!-- Guest --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Independent Software Vendor</masterLabel>
+            <translation><!-- Independent Software Vendor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Manufacturer</masterLabel>
+            <translation><!-- Manufacturer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Applicable</masterLabel>
+            <translation><!-- Not Applicable --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Original Equipment Manufacturer (OEM)</masterLabel>
+            <translation><!-- Original Equipment Manufacturer (OEM) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service Integrator</masterLabel>
+            <translation><!-- Service Integrator --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Solution Provider</masterLabel>
+            <translation><!-- Solution Provider --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- bC_Telephone number --></label>
+        <name>Core_bC_Telephone_number__c</name>
+    </fields>
+    <fields>
+        <label><!-- bC_Trading Name / Doing business as --></label>
+        <name>Core_bC_Trading_Name_Doing_business_as__c</name>
+    </fields>
+    <fields>
+        <label><!-- bC_Website URL --></label>
+        <name>Core_bC_Website_URL__c</name>
+    </fields>
+    <fields>
         <label><!-- The Fortune 1000 Rank --></label>
         <name>Core_global_1000__c</name>
     </fields>
@@ -7149,16 +7194,132 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <name>Core_global_500__c</name>
     </fields>
     <fields>
-        <label><!-- Internal Comments --></label>
-        <name>Exception_Comments__c</name>
+        <label><!-- Country Name --></label>
+        <name>Country_Name__c</name>
     </fields>
     <fields>
-        <label><!-- Exception OPID --></label>
-        <name>Exception_Opid__c</name>
+        <label><!-- Data Quality Description --></label>
+        <name>Data_Quality_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Data Quality Score --></label>
+        <name>Data_Quality_Score2__c</name>
+    </fields>
+    <fields>
+        <label><!-- Data Quality Score --></label>
+        <name>Data_Quality_Score__c</name>
+    </fields>
+    <fields>
+        <label><!-- DisplayFlag --></label>
+        <name>DisplayFlag__c</name>
     </fields>
     <fields>
         <label><!-- External_Id --></label>
         <name>External_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- GTS Blocked --></label>
+        <name>GTS_Blocked__c</name>
+    </fields>
+    <fields>
+        <label><!-- Active --></label>
+        <name>HG_Insights__Active__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Customer Priority --></label>
+        <name>HG_Insights__CustomerPriority__c</name>
+        <picklistValues>
+            <masterLabel>High</masterLabel>
+            <translation><!-- High --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Low</masterLabel>
+            <translation><!-- Low --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Medium</masterLabel>
+            <translation><!-- Medium --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- HG Id --></label>
+        <name>HG_Insights__HG_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- HG Match Status --></label>
+        <name>HG_Insights__HG_Match_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- HG Matched Date --></label>
+        <name>HG_Insights__HG_Matched_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number of Locations --></label>
+        <name>HG_Insights__NumberofLocations__c</name>
+    </fields>
+    <fields>
+        <label><!-- SLA Expiration Date --></label>
+        <name>HG_Insights__SLAExpirationDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- SLA Serial Number --></label>
+        <name>HG_Insights__SLASerialNumber__c</name>
+    </fields>
+    <fields>
+        <label><!-- SLA --></label>
+        <name>HG_Insights__SLA__c</name>
+        <picklistValues>
+            <masterLabel>Bronze</masterLabel>
+            <translation><!-- Bronze --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gold</masterLabel>
+            <translation><!-- Gold --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Platinum</masterLabel>
+            <translation><!-- Platinum --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Silver</masterLabel>
+            <translation><!-- Silver --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Upsell Opportunity --></label>
+        <name>HG_Insights__UpsellOpportunity__c</name>
+        <picklistValues>
+            <masterLabel>Maybe</masterLabel>
+            <translation><!-- Maybe --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Global Entity ID --></label>
+        <name>HG_Insights__globalEntityId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Match Company ID --></label>
+        <name>HG_Insights__matchCompanyId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is 6Sense Integration Bypass Enabled --></label>
+        <name>Is_6Sense_Integration_BypassEnabled__c</name>
     </fields>
     <fields>
         <label><!-- Is 6Sense Integration Enabled --></label>
@@ -7201,14 +7362,6 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
             <translation><!-- Keep --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Keep - Location of Global</masterLabel>
-            <translation><!-- Keep - Location of Global --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Keep - Location of Intermediate</masterLabel>
-            <translation><!-- Keep - Location of Intermediate --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Keep – Country</masterLabel>
             <translation><!-- Keep – Country --></translation>
         </picklistValues>
@@ -7241,6 +7394,10 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <label><!-- KCR Target Intermediate Name --></label>
         <name>KCR_Target_Intermediate_Name__c</name>
         <relationshipLabel><!-- Accounts (KCR Target Intermediate Name) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- LinkedIn Company Id --></label>
+        <name>LID__LinkedIn_Company_Id__c</name>
     </fields>
     <fields>
         <label><!-- Lead to Account on Contact_NoOpportunity --></label>
@@ -7323,20 +7480,44 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- New Business Partner Id --></label>
+        <name>New_Business_Partner_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- New Simplified Account Name --></label>
+        <name>New_Simplified_Account_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- New Simplified Local Language Name --></label>
+        <name>New_Simplified_Local_Language_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- New Unified Customer Type --></label>
+        <name>New_Unified_Customer_Type__c</name>
+        <picklistValues>
+            <masterLabel>Unified Country Customer</masterLabel>
+            <translation><!-- Unified Country Customer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unified Global Customer</masterLabel>
+            <translation><!-- Unified Global Customer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unified Intermediate Customer</masterLabel>
+            <translation><!-- Unified Intermediate Customer --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
         <label><!-- OPID Hierarchy --></label>
         <name>OPID_Hierarchy__c</name>
     </fields>
     <fields>
+        <label><!-- Opportunity Account --></label>
+        <name>Opportunity_Account__c</name>
+    </fields>
+    <fields>
         <label><!-- PRM AccountNumberFormula --></label>
         <name>PRM_AccountNumberFormula__c</name>
-    </fields>
-    <fields>
-        <label><!-- Active Associations --></label>
-        <name>PRM_Active_Associations__c</name>
-    </fields>
-    <fields>
-        <label><!-- Altera Account --></label>
-        <name>PRM_Altera_Account__c</name>
     </fields>
     <fields>
         <label><!-- Count IPA Terms And Conditions --></label>
@@ -7369,18 +7550,6 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
     <fields>
         <label><!-- IPA Row Level Security --></label>
         <name>PRM_IPA_Row_Level_Security__c</name>
-    </fields>
-    <fields>
-        <label><!-- Impartner Deal Sync --></label>
-        <name>PRM_Impartner_Deal_Sync__c</name>
-    </fields>
-    <fields>
-        <label><!-- Is Deal End Customer Account? --></label>
-        <name>PRM_Is_Deal_End_Customer_Account__c</name>
-    </fields>
-    <fields>
-        <label><!-- Is Deal Partner Account? --></label>
-        <name>PRM_Is_Deal_Partner_Account__c</name>
     </fields>
     <fields>
         <label><!-- Pre-consolidation Account Name --></label>
@@ -7491,6 +7660,14 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- Simplified Account Name --></label>
+        <name>Simplified_Account_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Simplified Local Language Name --></label>
+        <name>Simplified_Local_Language_Name__c</name>
+    </fields>
+    <fields>
         <label><!-- Sync Account Team --></label>
         <name>Sync_Account_Team__c</name>
     </fields>
@@ -7502,6 +7679,19 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
     <fields>
         <label><!-- Unified Hierarchy --></label>
         <name>Unified_Hierarchy_View__c</name>
+    </fields>
+    <fields>
+        <label><!-- User Defined BVD ID --></label>
+        <name>User_Defined_BVD_ID__c</name>
+    </fields>
+    <fields>
+        <help><!-- Formula Field to return the 18 digit ID used for reporting in external systems --></help>
+        <label><!-- 18 Digit Account ID --></label>
+        <name>X18_Digit_Account_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Compliance Watchlist --></label>
+        <name>complaince_watchlist_test__c</name>
     </fields>
     <fields>
         <label><!-- 2H 2023 Sales Group Preview --></label>
@@ -7619,11 +7809,18 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <label><!-- Sales Last Replied --></label>
         <name>mkto_si__Sales_Last_Replied__c</name>
     </fields>
-    <recordTypes>
-        <description><!-- This record type is to identify the account as CMF Groups/Business Partners --></description>
-        <label><!-- Business Partner --></label>
-        <name>Business_Partner</name>
-    </recordTypes>
+    <fields>
+        <label><!-- opportunity count --></label>
+        <name>opportunity_count__c</name>
+    </fields>
+    <fields>
+        <label><!-- test1 --></label>
+        <name>test1__c</name>
+    </fields>
+    <fields>
+        <label><!-- test form --></label>
+        <name>test_form__c</name>
+    </fields>
     <recordTypes>
         <description><!-- Represents an Intel Ultimate record, which is simply a grouping of Standard Account records, not to be used in transactions --></description>
         <label><!-- Intel Ultimate Account --></label>
@@ -7645,13 +7842,33 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <name>Core_Partner_Account_Group</name>
     </recordTypes>
     <recordTypes>
+        <description><!-- This record type added to manage UCD hierarchy for Accounts --></description>
+        <label><!-- Country Customer --></label>
+        <name>Country_Customer</name>
+    </recordTypes>
+    <recordTypes>
         <description><!-- The Record Type is used for End Customer Accounts associated to Deal related applications --></description>
         <label><!-- End Customer Deal Account --></label>
         <name>End_Customer_Deal_Account</name>
     </recordTypes>
     <recordTypes>
+        <description><!-- This record type added to manage UCD hierarchy for Accounts --></description>
+        <label><!-- Global Customer --></label>
+        <name>Global_Customer</name>
+    </recordTypes>
+    <recordTypes>
         <label><!-- Inactive Account --></label>
         <name>Inactive_Account</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- This record type added to manage UCD hierarchy for Accounts --></description>
+        <label><!-- Intermediate Customer --></label>
+        <name>Intermediate_Customer</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- This record type added to manage UCD hierarchy for Accounts --></description>
+        <label><!-- Location Customer --></label>
+        <name>Location_Customer</name>
     </recordTypes>
     <recordTypes>
         <description><!-- Record type to dictate mastered and un-mastered accounts --></description>
@@ -7668,13 +7885,25 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <label><!-- Requested Account --></label>
         <name>Requested_Account</name>
     </recordTypes>
+    <recordTypes>
+        <label><!-- Sales Place Holder Account --></label>
+        <name>Sales_Place_Holder_Account</name>
+    </recordTypes>
     <validationRules>
-        <errorMessage><!-- You can&apos;t update ECB flag, account is enabled with other program based flags. --></errorMessage>
-        <name>ACM_ExportCompliance_Edit_Access</name>
+        <errorMessage><!-- Account Name only allows English characters --></errorMessage>
+        <name>Account_Name_Should_be_alphanumeric</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Umbrella Group Name is Mandatory when Industry is Government --></errorMessage>
-        <name>ACM_UmbrellaGroupRequired</name>
+        <errorMessage><!-- You can&apos;t update the Account Owner --></errorMessage>
+        <name>Core_ACM_Account_Owner</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please select only one CCG Tier value. --></errorMessage>
+        <name>Core_Account_CCG_Tier</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please select only one DCG Tier value. --></errorMessage>
+        <name>Core_Account_DCG_Tier</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Please enter a deactivation reason. --></errorMessage>
@@ -7685,8 +7914,28 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <name>Core_Account_English_Only_Name</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- Please select only one GA Tier value. --></errorMessage>
+        <name>Core_Account_GA_Tier</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please select only one IOTG Tier value. --></errorMessage>
+        <name>Core_Account_IOTG_Tier</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please select only one ISG Tier value. --></errorMessage>
+        <name>Core_Account_ISG_Tier</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- You cannot uncheck the Military, Aerospace, and Government account --></errorMessage>
         <name>Core_Account_MAG_Uncheck</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please select only one NTG Tier value. --></errorMessage>
+        <name>Core_Account_NTG_Tier</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Account Name cannot be updated if value is entered for CIM ID field. --></errorMessage>
+        <name>Core_Account_Name_CIM_ID_Field</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Account Name cannot be updated if value is entered for Unified ID field. --></errorMessage>
@@ -7697,8 +7946,20 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <name>Core_Account_Owner</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- Account Owner Preview can be edited by Data Ops. --></errorMessage>
+        <name>Core_Account_Owner_Prvw_DataOps_Editable</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- You do not have enough permission to edit this field. --></errorMessage>
         <name>Core_Account_PSG_SalesGroup</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please select only one PSG Tier value. --></errorMessage>
+        <name>Core_Account_PSG_Tier</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Primary Address cannot be updated if value is entered for CIM ID field. --></errorMessage>
+        <name>Core_Account_Primary_Addr_CIM_ID</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Please enter a Primary Address City --></errorMessage>
@@ -7717,7 +7978,15 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <name>Core_Account_Primary_Addr_Unified_ID</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- SalesGroup can be edited by Dataops elevated permission --></errorMessage>
+        <errorMessage><!-- Please select only one RSG Tier value. --></errorMessage>
+        <name>Core_Account_RSG_Tier</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This field can be edited only by Data ops. --></errorMessage>
+        <name>Core_Account_SalesGroup</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Sales Group can be edited by Data Ops. --></errorMessage>
         <name>Core_Account_SalesGroup_DataOps_Editable</name>
     </validationRules>
     <validationRules>
@@ -7757,32 +8026,8 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <name>Core_MDF_Account_Hierarchy_Validation</name>
     </validationRules>
     <validationRules>
-        <errorMessage>La transferencia automática no procede en esta cuenta; cuando sea posible, asegúrese de tener seleccionado activar transferencia automática y transferencia automática desde la cuenta.</errorMessage>
+        <errorMessage><!-- Auto transfer may not be applicable for this account; When applicable ensure enable auto transfer and auto transfer from account are selected. --></errorMessage>
         <name>Core_MDF_Auto_Transfer_Validation</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage>Seleccione Programa de canal.</errorMessage>
-        <name>Core_MDF_Channel_Program_NotNull</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Payment Type and Payment Type Node level with value &apos;Customer - NonPO&apos; is not applicable --></errorMessage>
-        <name>Core_MDF_IPA_PaymentTypeCheck</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Account nodes cannot be created beyond five levels of hierarchy --></errorMessage>
-        <name>Core_MDF_NonRMF_Acc_Hierarchy_Validation</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Parent Fund Account cannot be an Intel Account. --></errorMessage>
-        <name>Core_MDF_PFACannotBeIntelAccount</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Parent Fund Account cannot be edited if Enable Auto Transfer is true and Auto-Transfer Account is populated. --></errorMessage>
-        <name>Core_MDF_PFAEnabledAutoTransfer</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Parent Fund Account should belong to same account hierarchy and same program. --></errorMessage>
-        <name>Core_MDF_PFAProgramAndUltimateAccount</name>
     </validationRules>
     <validationRules>
         <errorMessage>La cuenta principal no se puede editar</errorMessage>
@@ -7793,40 +8038,12 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <name>Core_MDF_Parent_Hierarchy_Account</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Seleccione Cuenta del Fondo Parental.</errorMessage>
-        <name>Core_MDF_PartnerFundAccount_NotNull</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Please select &apos;Customer&apos; or &apos;Non-Customer&apos; for Payment Type or Payment Type Node Level fields --></errorMessage>
-        <name>Core_MDF_Payment_Type_Validation</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Selected Payment Type or Payment Type Node Level is not applicable for this program. --></errorMessage>
-        <name>Core_MDF_Payment_Type_Validation_Rule</name>
-    </validationRules>
-    <validationRules>
         <errorMessage>La cuenta principal seleccionada está inactiva</errorMessage>
         <name>Core_MDF_PreventInactiveAccountAsPFA</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- You cannot disable this Flag, please contact your Salesforce Admin. --></errorMessage>
-        <name>Core_MDF_PreventUncheckCCPFlag</name>
-    </validationRules>
-    <validationRules>
         <errorMessage><!-- Please select region. Region and sub region values selected should be the same as that on the parent account. Once selected, region and sub region values cannot be changed. --></errorMessage>
         <name>Core_MDF_RMF_Geo_SubGeo_Validation</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage>La región/subregión no es aplicable para el programa para socios seleccionado.</errorMessage>
-        <name>Core_MDF_RegionAndSubRegionRestriction</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Top Account option can be selected only on Virtual Corp Accounts --></errorMessage>
-        <name>Core_MDF_TopAccountValidation</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Virtual Corp node&apos;s Parent Fund Account cannot be edited. --></errorMessage>
-        <name>Core_MDF_Virtual_Corp_ParentNotEditable</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Please fill in an Industry value apart from &quot;To Be Defined&quot; before changing the ownership of this account --></errorMessage>
@@ -7845,8 +8062,16 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <name>Core_Prevent_AnEAccountOwner_Assign</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- Direct, Requested or Rejected Account Record Types are not permissible on this field. Please choose the Intel Account. --></errorMessage>
+        <name>Core_Prevent_Duplicate_Account</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- You cannot edit PSG data --></errorMessage>
         <name>Core_Prevent_Non_PSG_Usr_Account_Fields</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You cannot edit PSG data --></errorMessage>
+        <name>Core_Prevent_Non_PSG_Usr_IAccount_Fields</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- You cannot edit non-PSG records, Please contact the support team for any access related help --></errorMessage>
@@ -7865,36 +8090,36 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <name>Core_Restrict_Edit_Business_Org_Type</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- All new accounts must go through the SMG Account Request Process which can be initiated through Home&gt;&gt; Accounts &gt;&gt; New --></errorMessage>
-        <name>Core_Restrict_Master_Account_Creation</name>
-    </validationRules>
-    <validationRules>
         <errorMessage><!-- You cannot edit PSG Downstream field --></errorMessage>
         <name>Core_Restrict_PSG_Downstream</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Sales Group Preview can be edited by Data Ops. --></errorMessage>
+        <name>Core_Sales_Grp_Preview_DataOps_Editable</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- This registration was denied because the registrant identified their location as an embargoed country or their IP address is from an embargoed country.For more information please visit https://goto.intel.com/gec-sanctioned-country-info --></errorMessage>
         <name>Embargo_country_validation</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Account cannot be deactivated if previous reactivation is in CCDO queue in Requested state. --></errorMessage>
-        <name>Restrict_Deactivation_Fr_Reactivated_Acc</name>
+        <errorMessage><!-- CompanyId should be a numeric value --></errorMessage>
+        <name>LID__Check_CompanyId_Value</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- You are not authorized to edit the 1PID name. Please raise a ticket with IT support. --></errorMessage>
-        <name>Restrict_OPID_Account_Name_Edit</name>
+        <errorMessage><!-- CompanyId should be a numeric value --></errorMessage>
+        <name>LID__Check_Company_Id_Value</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Account cannot be reactivated if previous reactivation of same account is rejected in Reltio. --></errorMessage>
-        <name>Restrict_Reactivation_For_Rejected_Acc</name>
+        <errorMessage><!-- The &quot;DCG Sales Group - Direct System Sales&quot; Sales Group can only be selected by DSS team members.  If you feel you&apos;ve received this message in error, please submit an AAQ. --></errorMessage>
+        <name>Limit_DSS_Users</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- ECB Flagged Accounts Can Not Be Updated --></errorMessage>
-        <name>UCD_ACM_Stop_ECB_Account_Update</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Account Category is mandatory for Intel Covered, please select appropriately --></errorMessage>
-        <name>UCD_Account_Category_required</name>
+        <errorMessage><!-- This Value is only for Data ops Profile. Please Select any of these value mention below Americas Partner Holding
+EMEA Partner Holding
+APJ Partner Holding
+PRC Partner Holding
+Undefined --></errorMessage>
+        <name>Limiting_the_sales_group_values</name>
     </validationRules>
     <webLinks>
         <label><!-- AltavistaNews --></label>
@@ -7907,6 +8132,10 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
     <webLinks>
         <label><!-- Core_Account_Team_Request --></label>
         <name>Core_Account_Team_Request</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Core_Channel_Data_Button --></label>
+        <name>Core_Channel_Data_Button</name>
     </webLinks>
     <webLinks>
         <label><!-- Core_Create_Par --></label>
@@ -7929,8 +8158,8 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <name>Core_Export_List_view</name>
     </webLinks>
     <webLinks>
-        <label><!-- Core_IPS_PAR_Lex --></label>
-        <name>Core_IPS_PAR_Lex</name>
+        <label><!-- Core_IPS_Manage_Account_Team --></label>
+        <name>Core_IPS_Manage_Account_Team</name>
     </webLinks>
     <webLinks>
         <label><!-- Core_Lex_Account_Sharing --></label>
@@ -7989,6 +8218,10 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <name>MaritzCX__Billing</name>
     </webLinks>
     <webLinks>
+        <label><!-- New_Account_SBR --></label>
+        <name>New_Account_SBR</name>
+    </webLinks>
+    <webLinks>
         <label><!-- Request_Product_Access_Lex --></label>
         <name>Request_Product_Access_Lex</name>
     </webLinks>
@@ -7999,6 +8232,18 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
     <webLinks>
         <label><!-- Renew_Assets --></label>
         <name>SBQQ__Renew_Assets</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- SBR_POC1 --></label>
+        <name>SBR_POC1</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Email_Docs --></label>
+        <name>SDOC__Email_Docs</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- S_Docs --></label>
+        <name>SDOC__S_Docs</name>
     </webLinks>
     <webLinks>
         <label><!-- YahooMaps --></label>

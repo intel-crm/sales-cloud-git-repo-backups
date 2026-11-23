@@ -9,6 +9,10 @@
         <value>Unified End Customer Country Mappings</value>
     </caseValues>
     <fields>
+        <label><!-- Is Intel Covered Account --></label>
+        <name>Is_Intel_Covered_Account__c</name>
+    </fields>
+    <fields>
         <label><!-- Compliance Watch List --></label>
         <name>Pricing_Compliance_Watch_List__c</name>
         <picklistValues>
@@ -28,14 +32,6 @@
             <translation><!-- Block items to Intel --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Blocked</masterLabel>
-            <translation><!-- Blocked --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Embargo</masterLabel>
-            <translation><!-- Embargo --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Embargoed Country</masterLabel>
             <translation><!-- Embargoed Country --></translation>
         </picklistValues>
@@ -48,24 +44,8 @@
             <translation><!-- No Sanction or Embargo --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Released</masterLabel>
-            <translation><!-- Released --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Review Pending</masterLabel>
-            <translation><!-- Review Pending --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Review is pending</masterLabel>
             <translation><!-- Review is pending --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SPLCN – Sanctioned Party List (China)</masterLabel>
-            <translation><!-- SPLCN – Sanctioned Party List (China) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Sanctioned Party List (United States)</masterLabel>
-            <translation><!-- Sanctioned Party List (United States) --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Trade Conditions Apply. Contact Trade before proceeding</masterLabel>
@@ -332,10 +312,6 @@
             <translation><!-- Czech Republic --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Czechia</masterLabel>
-            <translation><!-- Czechia --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Dem. Rep. Congo</masterLabel>
             <translation><!-- Dem. Rep. Congo --></translation>
         </picklistValues>
@@ -382,10 +358,6 @@
         <picklistValues>
             <masterLabel>Estonia</masterLabel>
             <translation><!-- Estonia --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Eswatini</masterLabel>
-            <translation><!-- Eswatini --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Ethiopia</masterLabel>
@@ -780,10 +752,6 @@
             <translation><!-- North Korea --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>North Macedonia</masterLabel>
-            <translation><!-- North Macedonia --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Norway</masterLabel>
             <translation><!-- Norway --></translation>
         </picklistValues>
@@ -1048,10 +1016,6 @@
             <translation><!-- Tunisia --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Turkey</masterLabel>
-            <translation><!-- Turkey --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Turkiye</masterLabel>
             <translation><!-- Turkiye --></translation>
         </picklistValues>
@@ -1154,7 +1118,11 @@
         <relationshipLabel><!-- Unified End Customer Country Mappings --></relationshipLabel>
     </fields>
     <fields>
-        <label><!-- Unified Country End Customer Id --></label>
+        <label><!-- Request ID Text Old --></label>
+        <name>Pricing_Request_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Unified Country End Customer ID --></label>
         <name>Pricing_Unified_Country_EndCustomer_Id__c</name>
     </fields>
     <fields>
@@ -1163,7 +1131,7 @@
         <relationshipLabel><!-- Unified End Customer Country Mappings --></relationshipLabel>
     </fields>
     <fields>
-        <label><!-- Unified End Customer Id --></label>
+        <label><!-- Unified End Customer ID --></label>
         <name>Pricing_Unified_EndCustomer_Id__c</name>
     </fields>
     <startsWith>Consonant</startsWith>

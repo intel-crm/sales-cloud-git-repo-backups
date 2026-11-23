@@ -1,0 +1,19 @@
+<template>
+    <lightning-accordion allow-multiple-sections-open>
+        
+            <lightning-accordion-section label={accountsWithContacts.accountName}>
+                <div class="account-section">
+                    <div class="contact-list">
+                        <template for:each={accountsWithContacts.childAccounts} for:item="contact">
+                            <div key={contact.bpId} class="contact-item">
+                                <div class="horizontal-line"></div>
+                                <div class="contact-details">
+                                    <p><lightning-icon icon-name="standard:contact" size="small"></lightning-icon>{contact.accName} | {contact.bpId} | {contact.countryName} |</p>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </lightning-accordion-section>
+    </lightning-accordion>
+</template>

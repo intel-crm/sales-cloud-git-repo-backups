@@ -12,10 +12,10 @@
         <chartType>VerticalColumnStacked</chartType>
         <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>true</expandOthers>
-        <groupingColumn>ConvDefDialogHourlyMetric$BotDefinitionName</groupingColumn>
+        <groupingColumn>ConvDefDialogHourlyMetric$Hour</groupingColumn>
         <legendPosition>Right</legendPosition>
         <location>CHART_BOTTOM</location>
-        <secondaryGroupingColumn>ConvDefDialogHourlyMetric$DialogDefinitionName</secondaryGroupingColumn>
+        <secondaryGroupingColumn>ConvDefDialogHourlyMetric$BotDefinitionName</secondaryGroupingColumn>
         <showAxisLabels>true</showAxisLabels>
         <showPercentage>false</showPercentage>
         <showTotal>false</showTotal>

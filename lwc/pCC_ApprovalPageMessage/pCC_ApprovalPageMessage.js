@@ -14,16 +14,23 @@ export default class PCC_ApprovalPageMessage extends LightningElement {
     @wire(FIELD_NAME, { recordId: '$recordId'})
     wiredRecord({ error, data }) {
         if (data) {
+            console.log('Data received:', data);
             this.showMessage = true
+            console.log('Field Value:', this.fieldValue);
+            console.log('showMessage', this.showMessage);
         } else if (error) {
+            console.error('Error retrieving record data', error);
         }
     }
     @wire(hasPermissionSet, { permissionSetName: 'PCC_Deal_Reg_Internal_Admin' })
     wiredPermissionSet({ error, data }) {
         if (data) {
             this.enableMessage = data;
+            console.log('enablemessage', this.enableMessage);
+
         } else if (error) {
             this.error = error;
+            console.error('Error retrieving permission set assignment', error);
 
         }
     }
@@ -31,10 +38,14 @@ export default class PCC_ApprovalPageMessage extends LightningElement {
     wiredPermissionS({ error, data }) {
         if (data) {
             this.enableMessagesPre = data;
-        
+            console.log('enableMessagesPre', this.enableMessagesPre);
+
         } else if (error) {
             this.error = error;
+            console.error('Error retrieving permission set assignment', error);
 
         }
-    }    
+    }
+
+    
         }

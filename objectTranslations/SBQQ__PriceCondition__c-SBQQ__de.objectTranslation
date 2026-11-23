@@ -65,8 +65,20 @@
             <translation><!-- RecordTypeId --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>SBQQ__EffectiveStartDate__c</masterLabel>
+            <translation><!-- SBQQ__EffectiveStartDate__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SBQQ__ListPrice__c</masterLabel>
+            <translation><!-- SBQQ__ListPrice__c --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>SBQQ__OptionLevel__c</masterLabel>
             <translation><!-- SBQQ__OptionLevel__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SBQQ__OptionSelectionMethod__c</masterLabel>
+            <translation><!-- SBQQ__OptionSelectionMethod__c --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>SBQQ__ProductName__c</masterLabel>
@@ -79,6 +91,10 @@
         <picklistValues>
             <masterLabel>SBQQ__Quantity__c</masterLabel>
             <translation><!-- SBQQ__Quantity__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SBQQ__Source__c</masterLabel>
+            <translation><!-- SBQQ__Source__c --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>SBQQ__StartDate__c</masterLabel>
@@ -161,6 +177,10 @@
         <picklistValues>
             <masterLabel>Quote Line</masterLabel>
             <translation><!-- Quote Line --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SBQQ__ProductFeature__c</masterLabel>
+            <translation><!-- SBQQ__ProductFeature__c --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Summary Variable</masterLabel>

@@ -138,12 +138,14 @@
         <value>1</value>
     </params>
     <reportType>OpportunityCustomEntity$Core_Opp_FC_Prod_Schedule__c@Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Product__c</reportType>
-    <scope>organization</scope>
+    <scope>team</scope>
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

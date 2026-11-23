@@ -1,20 +1,12 @@
-/**
- * @description       : 
- * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
- * @group             : 
- * @last modified on  : 03-10-2026
- * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
-**/
 @isTest
 public class Pricing_FieldSetFormControllerTest {
 	@testSetUp
     public static void setUpData() {
-        Pricing_Test_Utility.createPriceBook();
         List<User> adminUserList = Pricing_Test_Utility.createAdminUser();
         System.runAs(adminUserList[0]) {
             Test.startTest();
             	Account acc = Pricing_Test_Utility.createAccount();
-            	Contact con = Pricing_Test_Utility.createPrimaryContactWithParam(acc.Id,'Field_Set_Form_Controller_Test');
+            	Contact con = Pricing_Test_Utility.createPrimaryContactWithParam(acc.Id,'Field_Set_Form_Controller');
             	List<User> accountExecutiveUserList = Pricing_Test_Utility.createAEUser();
             	List<User> salesRepUserList = Pricing_Test_Utility.createSalesRepUser();
             	AccountTeamMember accTeam = new AccountTeamMember(AccountId = acc.Id,TeamMemberRole = 'Technical Sales',UserId = adminUserList[0].Id);
@@ -35,7 +27,6 @@ public class Pricing_FieldSetFormControllerTest {
         System.runAs(adminUser){
         	form = Pricing_FieldSetFormController.getFormFieldsAndSectionLabel(quoteLineList[0].Id);
             SBQQ__QuoteLine__c quoteLine = Pricing_FieldSetFormController.getQuoteLineDetails(quoteLineList[0].Id);
-            System.assertEquals(true, quoteLineList.size() > 0);
         }
         Test.stopTest();
     }

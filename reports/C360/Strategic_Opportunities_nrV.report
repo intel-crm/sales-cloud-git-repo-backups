@@ -62,14 +62,13 @@
     <columns>
         <field>TYPE</field>
     </columns>
-    <description>**Do not Edit without Approval**</description>
     <filter>
         <criteriaItems>
             <column>Opportunity.Core_Opp_Strategic_Opportunity__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
-            <value>Lighthouse,Regional Strategic</value>
+            <value></value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Decision_Date__c</column>

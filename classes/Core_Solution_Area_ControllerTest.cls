@@ -26,11 +26,19 @@ public class Core_Solution_Area_ControllerTest {
         }        
         Opportunity opps = new Opportunity(Name = 'Opportunity to Lose 03-24-2015', RecordTypeId = newOppRecTypeId,
                                            AccountId = acct.Id,
-                                           StageName = 'Qualifying', CloseDate = System.Date.today().addYears(1));
+                                           StageName = 'Qualifying',Core_Product_Segment__c='Client Computing', CloseDate = System.Date.today().addYears(1));
         System.runAs(Core_Test_Utility.systemAdminUser) {
             insert opps;
         }
+        Map<String, Schema.RecordTypeInfo> recordTypes = Schema.SObjectType.Core_Solution_Areas__c.getRecordTypeInfosByName();
+ 		Id reqRecTypeId = recordTypes.get('Requested Solutions').getRecordTypeId();
 
+        Core_Solution_Approvers__c customsetting= new Core_Solution_Approvers__c();
+		customsetting.Name='Client Computing';
+        customsetting.Approver_1__c=Userinfo.getUserId();
+		customsetting.Approver_2__c=Userinfo.getUserId();
+		customsetting.Approver_3__c =Userinfo.getUserId();
+		insert customsetting;
         List<Core_Solution_Areas__c> SAList= new List<Core_Solution_Areas__c>();
         Map<Id, Core_Solution_Areas__c> SAMap= new Map<Id, Core_Solution_Areas__c>();
         Core_Solution_Areas__c cSA = new Core_Solution_Areas__c();
@@ -40,13 +48,14 @@ public class Core_Solution_Area_ControllerTest {
         cSA.Core_Solution_Type__c = 'S1: Product';
         cSA.Core_Design_Visible__c = true;
         cSA.Core_Deal_Visible__c = true;
-        cSA.Core_Status__c = 'Active';
+      //  cSA.Core_Status__c = 'Active';
         cSA.Core_Industry_Use_Case__c='Visual Cloud-CDN/vCDN';
         cSA.Core_Application_Workload__c='AI Training';
          cSA.Core_Technology_Enabled__c='AMT';
          cSA.Core_Solution_Description__c ='Desc...';
          cSA.Core_Solution_owner_email__c ='wwwwwasfdasdf@test.com';
          cSA.Core_Region_of_availability__c = 'PRC';
+         cSA.RecordTypeId=reqRecTypeId;
         
 		 
         insert cSA;
@@ -55,9 +64,20 @@ public class Core_Solution_Area_ControllerTest {
         Core_Solution_Area_Controller.addValuesToSolution(SAList);
          cSA.Core_Solution_Description__c ='Desc...111';
         cSA.Core_Solution_owner_email__c ='wwwasfdasdf@test.com';
+        /* cSA.Core_Industry_Use_Case__c ='ADAS';
+         cSA.Core_Application_Workload__c ='AI Training';
+         cSA.Core_Technology_Enabled__c ='AMT';
+         cSA.Core_Industry__c ='Agriculture';*/
+         cSA.Core_Region_of_availability__c ='APJ';
+		 cSA.Opportunity__c=opps.id;
+		 cSA.Core_Status__c = 'Pending';
+		 //System.runAs(Core_Test_Utility.systemAdminUser) {
          update cSA;
 		  
+		// }
           SAMap.put(cSA.Id, cSA);
+		   List<Core_Solution_Areas__c> SAUpList= new List<Core_Solution_Areas__c>();
+		  SAUpList.add(cSA);
           Core_Solution_Area_Controller.updatedValuesToSolution(SAList, SAMap);
          
         System.runAs(Core_Test_Utility.systemAdminUser) {
@@ -76,6 +96,8 @@ public class Core_Solution_Area_ControllerTest {
            update cSA;
 		 
              Core_Solution_Area_Controller.updateOpportunitySolutionArea(SAList, SAMap);
+             Core_Solution_Area_Controller.submitSolutionsforApproval(SAUpList);
+             Core_Solution_Area_Controller.determineApprovers(SAUpList);
 		
         }
           Test.stopTest();

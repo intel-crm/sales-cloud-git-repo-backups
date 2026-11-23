@@ -69,10 +69,6 @@
         <aggregateTypes>Average</aggregateTypes>
         <field>CDF1</field>
     </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Lead.SWS_Software_Lead__c</field>
-    </columns>
     <customDetailFormulas>
         <calculatedFormula>Lead.Core_Entrance_Date_TQL__c-Lead.Core_Entrance_Date_MQL__c</calculatedFormula>
         <dataType>Double</dataType>

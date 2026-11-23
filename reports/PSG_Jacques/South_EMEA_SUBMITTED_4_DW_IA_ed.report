@@ -75,7 +75,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>AND,BEL,FRA,ITA,LUX,NLD,PRT,ESP,TUN</value>
+            <value>BEL,FRA,ITA,LUX,NLD,PRT,ESP</value>
         </criteriaItems>
         <criteriaItems>
             <column>STAGE_NAME</column>
@@ -89,7 +89,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Submitted</value>
+            <value>Submitted,Rejected</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -125,6 +125,8 @@
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
+        <endDate>2023-03-25</endDate>
         <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2018-01-01</startDate>
     </timeFrameFilter>
 </Report>

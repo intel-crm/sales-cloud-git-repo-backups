@@ -52,7 +52,7 @@ public class Pricing_BulkUpdatePrimarycontact_Batch implements Database.Batchabl
 
             	if(oldPrimaryContact.size() > 0){
                 	quoteList = [SELECT Id,Name,SBQQ__PrimaryContact__c FROM SBQQ__Quote__c WHERE Pricing_Quote_Program_Nm__c =: Label.Pricing_Tender_Quote_Program
-                             AND SBQQ__PrimaryContact__c =: oldPrimaryContact[0].ContactId];
+                             AND SBQQ__PrimaryContact__c =: oldPrimaryContact[0].ContactId AND Pricing_On_Hold_Cb__c = false];
             	}
 
             	if(oldPrimaryContact.size() == 0 || newPrimaryContact.size() == 0){
@@ -114,7 +114,7 @@ public class Pricing_BulkUpdatePrimarycontact_Batch implements Database.Batchabl
         return Database.getQueryLocator([SELECT Id,Name,SBQQ__Account__c,SBQQ__Account__r.Name,Pricing_End_Customer_Name__c,RecordType.DeveloperName,SBQQ__Status__c,SBQQ__PrimaryContact__c,Pricing_Folio_ID_Nm__c,
                                             Pricing_End_Customer__c,Pricing_Customer_Nm__c,Pricing_End_Customer_Country_Nm__c,Pricing_Region_Nm__c,Pricing_Project_Name_Nm__c,Pricing_Account_Executive_Nm__c,
                                             Pricing_ShipmentStDate_Dt__c,Pricing_ShipmentEndDate_Dt__c,Pricing_Intel_Response_Requested_By_Date__c,Pricing_Bid_Dt__c,Pricing_Customer_Reference_Id__c FROM SBQQ__Quote__c
-                                            WHERE Pricing_Quote_Program_Nm__c =: Label.Pricing_Tender_Quote_Program AND SBQQ__PrimaryContact__c =: oldPrimaryContactUser.ContactId]);
+                                            WHERE Pricing_Quote_Program_Nm__c =: Label.Pricing_Tender_Quote_Program AND SBQQ__PrimaryContact__c =: oldPrimaryContactUser.ContactId AND Pricing_On_Hold_Cb__c = false]);
     }
     
     /**
@@ -213,7 +213,6 @@ public class Pricing_BulkUpdatePrimarycontact_Batch implements Database.Batchabl
             String loggedInUserEmail = UserInfo.getUserEmail();
             String status = '';
 
-
             for(Id key: quoteIdToQuoteNumMap.keyset()){
                 String row;
                 status = quoteIdToMsgMap.containsKey(key)?quoteIdToMsgMap.get(key):'';
@@ -243,11 +242,13 @@ public class Pricing_BulkUpdatePrimarycontact_Batch implements Database.Batchabl
             //Send an email once the Batch finishes processing
             Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
             Messaging.EmailFileAttachment attachedFile = new Messaging.EmailFileAttachment();
+
             String[] toAddresses = new String[] {loggedInUserEmail};
             String[] bccAddresses = new String[] {Label.Pricing_IQR_Support_Email};
             String body = 'Updating the Primary contact from '+ oldPrimaryContactUser.Contact.Name + ' to ' + newPrimaryContactUser.Contact.Name + ' is complete. Please forward the attached file to the requestor and advise to refer to the file to see the list of quotes updated and errors, if any.';
             attachedFile.setFileName('Bulk Primary Contact Update_'+string.valueOf(system.now())+'.csv');
             attachedFile.setBody(b);
+            mail.setTargetObjectId(UserInfo.getUserId());
             mail.setFileAttachments(new Messaging.EmailFileAttachment[]{attachedFile});
             mail.setToAddresses(toAddresses);
             mail.setbccAddresses(bccAddresses);

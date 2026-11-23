@@ -9,12 +9,47 @@
         <masterLabel># of Fallouts</masterLabel>
         <scale>0</scale>
     </aggregates>
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <axisBinding>y</axisBinding>
+            <column>RowCount</column>
+        </chartSummaries>
+        <chartType>Donut</chartType>
+        <enableHoverLabels>false</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>CDF1</groupingColumn>
+        <legendPosition>Right</legendPosition>
+        <location>CHART_BOTTOM</location>
+        <showAxisLabels>true</showAxisLabels>
+        <showPercentage>true</showPercentage>
+        <showTotal>true</showTotal>
+        <showValues>false</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
     <columns>
         <field>SBQQ__QuoteLine__c$Name</field>
     </columns>
     <columns>
         <field>SBQQ__QuoteLine__c$SBQQ__Quote__c.core_cpq_quote_type_nm__c</field>
     </columns>
+    <columns>
+        <field>SBQQ__QuoteLine__c$core_cpq_PRID__c</field>
+    </columns>
+    <customDetailFormulas>
+        <calculatedFormula>IF(ISBLANK(SBQQ__QuoteLine__c.core_cpq_PRID__c.Name) ,&quot;No&quot;,&quot;Yes&quot;)</calculatedFormula>
+        <dataType>Text</dataType>
+        <developerName>CDF1</developerName>
+        <label>PRID Tagged</label>
+        <scale>2</scale>
+    </customDetailFormulas>
     <filter>
         <criteriaItems>
             <column>SBQQ__QuoteLine__c$SBQQ__Quote__c.core_cpq_quote_type_nm__c</column>
@@ -40,6 +75,11 @@
         <language>en_US</language>
     </filter>
     <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>CDF1</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
     <name>PSG Budgetary Quote PRID Fallouts</name>
     <params>
         <name>co</name>

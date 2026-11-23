@@ -71,6 +71,11 @@
 
 
         <template if:true={showForm}> 
+        <lightning-accordion>Abcd
+            <lightning-accordion-section>
+                12345
+            </lightning-accordion-section>
+        </lightning-accordion>
             <template if:true={opportunityData}>         
                 <lightning-layout multiple-rows="true">
                         <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12"
@@ -172,8 +177,10 @@
                                         disabled></lightning-input>
                         </lightning-layout-item>               
                     
-                </lightning-layout>   
+                </lightning-layout> 
+              
             </template> 
+            
         </template> 
         <template if:true={showForm}>   
             <div class="slds-card slds-m-around_xx-small">
@@ -190,6 +197,12 @@
                                         value={recortypName} label= "Record type"                        
                                         disabled
                                 ></lightning-input> 
+                        </lightning-layout-item>
+                        <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12" medium-device-size="12" large-device-size="12" padding="around-small">
+                            <label class="slds-form-element__label" for="textarea-id-01">Opportunity Description</label>
+                            <div class="custom-textarea-container">
+                                <textarea class="custom-textarea"  disabled>{opp_diesc}</textarea>
+                            </div>
                         </lightning-layout-item>
                     <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12" medium-device-size="12" large-device-size="12" padding="around-small">
                         <lightning-textarea name="Opportunity Description" maxlength="2050" field-level-help="Any Updates to Opportunity Description has to be made on Opportunity Directly." onchange={handleInputChange}

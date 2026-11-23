@@ -1,0 +1,31 @@
+<!---
+/**************************************************************************************
+Name:  Crm_Opp_PreSubmitChecklist
+Version     : 1.0 
+Created Date: February 5, 2025
+Description : Converted from VF-Core_Oppty_PreSubmitCheck.
+LWC page embedded in opportunity page field as 'Pre-Submit Check'  redirect to the Crm_Opp_ApprovalChecklist LWC
+--->
+<template>
+    <lightning-card>
+        <div class="slds-box">
+            <h1 class='slds-text-title_bold'>Pre-Submit Check LWC</h1>
+            <br> 
+            <div if:true={ListtoReview}>
+                <a target="_self" style="font-weight:bold; color:black;" onclick={navigateToApprovalChecklist} href="javascript:void(0)">List to Review Before Approval</a>
+            </div>
+            <div if:true={ARReviewtheListcheck}>
+                <a target="_self" style="font-weight:bold;color:red;"  onclick={navigateToApprovalChecklist} href="javascript:void(0)">AR: Review the List</a>
+            </div>
+            <div if:true={Completeflagcheck}>
+                <a target="_self" style="font-weight:bold;color:green;" onclick={navigateToApprovalChecklist} href="javascript:void(0)">Complete</a>
+            </div>
+            <div if:true={Approvedflag}>
+                <a target="_self" style="font-weight:bold;color:black;"  onclick={navigateToApprovalChecklist} href="javascript:void(0)">Approved</a>
+            </div>
+            <div if:true={noLinkflag}>
+                <a target="_self"  onclick={navigateToApprovalChecklist} href="javascript:void(0)" ></a>
+            </div>
+        </div>
+    </lightning-card>
+</template>

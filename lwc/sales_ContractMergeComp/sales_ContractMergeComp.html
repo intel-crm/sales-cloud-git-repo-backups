@@ -1,0 +1,35 @@
+<template>
+        <div class="hovernow slds-var-m-around_xx-large" style="margin: 1% 25% 5% 25%">
+            <lightning-card >
+                <div class="slds-m-around_large">
+                    <lightning-record-edit-form object-api-name="Sales_License__c" columns="1">
+                        <label class="slds-float_left" for="source">Source Contract</label>
+                        <lightning-input-field field-name="Sales_License_Contract__c" onchange={handleSource} variant="label-hidden"  required="true" ></lightning-input-field>
+                        <br>
+                        <label class="slds-float_left" for="target">Target Contract</label>
+                        <lightning-input-field field-name="Sales_License_Contract__c" onchange={handleTarget} variant="label-hidden"  required="true" ></lightning-input-field>
+
+                    </lightning-record-edit-form>
+                        <br>
+                    <template if:true={showLicenses}>
+                        <div class="slds-clearfix">
+                        <lightning-input type="text" name="filtLicense" label="Filter records By License Name" class="slds-float_right" onchange={searchLicenses}></lightning-input>
+                        </div>
+                            <br>
+                            <div style="overflow-y: auto; max-height: 300px">
+                                <lightning-datatable
+                                        key-field="Id"
+                                        data={licenseList}
+                                        columns={licenseColumns} 
+                                        onrowselection={selectRows}     
+                                        >
+                                </lightning-datatable>
+                    </div>
+                    </template>
+                    </div>
+                    <template if:true={showMergeButton}>
+                        <button name="mergeContract" class="slds-button slds-button_success slds-align_absolute-center" disabled={disableMergeButton} onclick={performMergeOper}>Merge Contract</button>
+                    </template>
+             </lightning-card>
+    </div>
+</template>

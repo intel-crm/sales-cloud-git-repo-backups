@@ -30,9 +30,34 @@
             <valueSetDefinition>
                 <sorted>false</sorted>
                 <value>
-                    <fullName>I can&apos;t see/find a product</fullName>
+                    <fullName>I can&apos;t see/find a product that I want to license</fullName>
                     <default>false</default>
-                    <label>I can&apos;t see/find a product</label>
+                    <label>I can&apos;t see/find a product that I want to license</label>
+                </value>
+                <value>
+                    <fullName>I can&apos;t see/find my Renewal product</fullName>
+                    <default>false</default>
+                    <label>I can&apos;t see/find my Renewal product</label>
+                </value>
+                <value>
+                    <fullName>I can&apos;t see/find the product for Add Seats</fullName>
+                    <default>false</default>
+                    <label>I can&apos;t see/find the product for Add Seats</label>
+                </value>
+                <value>
+                    <fullName>I can&apos;t see/find a computer</fullName>
+                    <default>false</default>
+                    <label>I can&apos;t see/find a computer</label>
+                </value>
+                <value>
+                    <fullName>I can&apos;t assign product to a computer</fullName>
+                    <default>false</default>
+                    <label>I can&apos;t assign product to a computer</label>
+                </value>
+                <value>
+                    <fullName>I need to remove a product from a computer</fullName>
+                    <default>false</default>
+                    <label>I need to remove a product from a computer</label>
                 </value>
                 <value>
                     <fullName>I am getting errors generating a license file</fullName>
@@ -40,29 +65,24 @@
                     <label>I am getting errors generating a license file</label>
                 </value>
                 <value>
-                    <fullName>I am getting errors renewing a license</fullName>
-                    <default>false</default>
-                    <label>I am getting errors renewing a license</label>
-                </value>
-                <value>
-                    <fullName>I can&apos;t assign or remove product to/from a computer</fullName>
-                    <default>false</default>
-                    <label>I can&apos;t assign or remove product to/from a computer</label>
-                </value>
-                <value>
                     <fullName>I can&apos;t generate a companion or temporary license</fullName>
                     <default>false</default>
                     <label>I can&apos;t generate a companion or temporary license</label>
                 </value>
                 <value>
-                    <fullName>I can’t merge or split licenses</fullName>
+                    <fullName>I need to merge licenses/seats</fullName>
                     <default>false</default>
-                    <label>I can’t merge or split licenses</label>
+                    <label>I need to merge licenses/seats</label>
                 </value>
                 <value>
-                    <fullName>I can&apos;t update License User/delegate admin</fullName>
+                    <fullName>Having issue when generating license for Questa Beta version</fullName>
                     <default>false</default>
-                    <label>I can&apos;t update License User/delegate admin</label>
+                    <label>Having issue when generating license for Questa Beta version</label>
+                </value>
+                <value>
+                    <fullName>I can&apos;t update License User</fullName>
+                    <default>false</default>
+                    <label>I can&apos;t update License User</label>
                 </value>
                 <value>
                     <fullName>Other</fullName>
@@ -73,60 +93,6 @@
                     <fullName>Having an issue in generating Employee or Evaluation or No-Cost or Legacy Licenses?</fullName>
                     <default>false</default>
                     <label>Having an issue in generating Employee or Evaluation or No-Cost or Legacy Licenses?</label>
-                </value>
-                <value>
-                    <fullName>Having issue when generating license for Questa Beta version</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Having issue when generating license for Questa Beta version</label>
-                </value>
-                <value>
-                    <fullName>I can&apos;t assign product to a computer</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>I can&apos;t assign product to a computer</label>
-                </value>
-                <value>
-                    <fullName>I can&apos;t see/find a computer</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>I can&apos;t see/find a computer</label>
-                </value>
-                <value>
-                    <fullName>I can&apos;t see/find a product that I want to license</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>I can&apos;t see/find a product that I want to license</label>
-                </value>
-                <value>
-                    <fullName>I can&apos;t see/find my Renewal product</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>I can&apos;t see/find my Renewal product</label>
-                </value>
-                <value>
-                    <fullName>I can&apos;t see/find the product for Add Seats</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>I can&apos;t see/find the product for Add Seats</label>
-                </value>
-                <value>
-                    <fullName>I can&apos;t update License User</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>I can&apos;t update License User</label>
-                </value>
-                <value>
-                    <fullName>I need to merge licenses/seats</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>I need to merge licenses/seats</label>
-                </value>
-                <value>
-                    <fullName>I need to remove a product from a computer</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>I need to remove a product from a computer</label>
                 </value>
             </valueSetDefinition>
         </valueSet>

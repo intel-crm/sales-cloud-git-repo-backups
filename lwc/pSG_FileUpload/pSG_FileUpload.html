@@ -1,0 +1,49 @@
+<template>
+    <lightning-card title="Notes and Attachments">
+        <!-- addeding object combobox -->
+        <lightning-layout>
+            <lightning-layout-item class="slds-align-middle">
+              <lightning-combobox class="slds-align-middle"
+              name="objectNames"
+              value={selectObjectDevName}
+              options={searchOptions}
+              onchange={handleSearchOptionChange}></lightning-combobox>
+            </lightning-layout-item>
+          </lightning-layout>
+
+        <div style="margin-left:4%">
+            <div>
+                <lightning-input type="file" 
+                                 label="Upload File" 
+                                 onchange={handleFileChanges} 
+                                 multiple>
+                </lightning-input>
+            </div><br/>
+            <div class="slds-text-body_small slds-text-color_error">
+                <template if:true={error}>
+                    <p>{error}</p>
+                </template>
+            </div>
+            
+            <div if:true={fileNames} class="slds-text-body_small slds-text-color_error">
+                <template if:true={showLoadingSpinner}>
+                    <lightning-spinner alternative-text="Uploading......" size="medium"></lightning-spinner>
+                </template>
+            </div><br />
+        </div><br />
+        <template if:true={data}>
+            <lightning-card title="Uploaded Files" icon-name="standard:account">
+                <div style="width: auto;">
+                    <lightning-datatable data={data} 
+                                         columns={columns} 
+                                         key-field="id"
+                                         onrowaction={handleRowAction}
+                                         show-row-number-column ="true"
+                                         hide-checkbox-column = "true"
+                                         >
+                    </lightning-datatable>
+                </div>
+            </lightning-card>
+        </template>
+    </lightning-card>
+</template>

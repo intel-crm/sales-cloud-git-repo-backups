@@ -8,7 +8,10 @@
             <quickActionName>NewLead</quickActionName>
         </quickActionListItems>
         <quickActionListItems>
-            <quickActionName>NewOpportunity</quickActionName>
+            <quickActionName>NewDealOpportunity</quickActionName>
+        </quickActionListItems>
+        <quickActionListItems>
+            <quickActionName>NewDesignOpportunity</quickActionName>
         </quickActionListItems>
         <quickActionListItems>
             <quickActionName>NewTask</quickActionName>

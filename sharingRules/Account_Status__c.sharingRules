@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
     <sharingCriteriaRules>
-        <fullName>Account_360_ELT</fullName>
+        <fullName>Core_Share_Account_Status_records_with_ELT_group</fullName>
         <accessLevel>Read</accessLevel>
-        <description>Read only Access of Account Status for Account 360</description>
-        <label>Account Status for Account 360 ELT</label>
+        <description>To share all Account Status records in read-only mode with group - Intel ELT group</description>
+        <label>Share Account Status records with ELT group</label>
         <sharedTo>
-            <group>Account_360_PG_READ</group>
+            <group>Core_Intel_ELT_group</group>
         </sharedTo>
         <criteriaItems>
-            <field>Account__c</field>
+            <field>Name</field>
             <operation>notEqual</operation>
-            <value></value>
+            <value>null</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>

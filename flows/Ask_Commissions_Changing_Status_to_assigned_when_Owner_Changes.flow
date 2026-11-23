@@ -45,6 +45,7 @@
 Workflow rule description: Ask Commissions-Changing Status to assigned when Owner Changes and Status is New&quot;</description>
     <environments>Default</environments>
     <label>Ask Commissions-Changing Status to assigned when Owner Changes</label>
+    <migratedFromWorkflowRuleName>Ask Commissions-Changing Status to assigned when Owner Changes</migratedFromWorkflowRuleName>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
@@ -126,4 +127,5 @@ Workflow rule description: Ask Commissions-Changing Status to assigned when Owne
         <triggerType>RecordBeforeSave</triggerType>
     </start>
     <status>Active</status>
+    <triggerOrder>2</triggerOrder>
 </Flow>

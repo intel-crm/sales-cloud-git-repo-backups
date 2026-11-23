@@ -1,0 +1,19 @@
+<aura:component  controller="pBI_Embed_Cloud" implements="force:appHostable,flexipage:availableForAllPageTypes" access="global" >
+
+  <aura:attribute name="workspaceId" type="String" default="1f0210e2-2cb4-432a-99c0-28d3f4d5e58a" />
+  <aura:attribute name="reportId" type="String" default="a9c961d0-738f-4e13-b8fa-f8997472ecd7" />
+  <aura:attribute name="errorMessage" type="String" default="" />
+
+  <ltng:require
+    scripts="{!$Resource.powerbijs}"
+    afterScriptsLoaded="{!c.afterScriptsLoaded}"
+  />
+
+  <lightning:card title="Embedded Power BI Report (AURA)" class="mainCard" iconName="utility:graph" >
+    <div>
+      <div aura:id="error-message" class="error-message" >{!v.errorMessage}</div>
+      <div aura:id="embed-container" style="height: 560px"></div>  
+    </div>
+  </lightning:card>
+	
+</aura:component>

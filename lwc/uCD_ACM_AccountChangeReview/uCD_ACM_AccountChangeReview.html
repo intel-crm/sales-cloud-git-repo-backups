@@ -1,0 +1,37 @@
+<template>
+   <!-- <template if:true={isDisplayPage}>-->
+    <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped">
+        <thead>
+            <tr class="slds-text-title_caps">
+                <th role="gridcell">
+                    <div class="slds-align_absolute-left" title="Name">ACCOUNT NAME</div>
+                </th>
+                <th role="gridcell">
+                    <div class="slds-align_absolute-left" id= {NewUnifiedId} title="Unified ID">Unified ID</div>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <template for:each={accountList} for:item="acct">
+                <tr key={acct.Id}>
+
+                    <td class="slds-cell-wrap" data-label="Wrapped, line clamped">
+                       <!--<div class="slds-line-clamp" ><a href="#" tabindex="-1" value={acct.Id}  onclick={navigateToDetail}>{acct.Name}</a>
+                        </div>-->
+                        <lightning-button variant="base" label={acct.Name} value={acct.Id}
+                                onclick={navigateToDetail} class="slds-align_absolute-left">{acct.Name}
+                            </lightning-button>
+                    </td>
+                     <td class="slds-cell-wrap" data-label="Wrapped, line clamped" >
+                        <div class="slds-align_absolute-left" >{acct.Core_Business_Party_Id__c}
+                        </div>
+                    </td>
+                 </tr>
+            </template>
+        </tbody>
+    </table>  
+    <!--</template>
+    <template if:false={isDisplayPage}>
+   <p>No records found with the new unified Id.</P>
+    </template>-->
+  </template>

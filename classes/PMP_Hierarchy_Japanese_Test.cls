@@ -18,7 +18,7 @@ public class PMP_Hierarchy_Japanese_Test
         
         
         test.startTest();
-        PMP_ParseCategoryJSON.languageCode = 'ja_JP';
+        PMP_ParseCategoryJSON.strBaseKey = 'ja_JP';
         catHierJap.processData('PMP_Category_Hierarchy_Test');
         system.assertNotEquals(resultData,null);
         test.stopTest();

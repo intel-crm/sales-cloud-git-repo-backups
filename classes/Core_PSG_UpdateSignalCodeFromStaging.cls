@@ -9,17 +9,15 @@ Modification Log :
 * Sandhya Dayananda             07 Sept 2021            Original Version
 
 *****************************************************************************************************************************************************************************************************/
-@isTest
-public class Core_PSG_UpdateSignalCodeFromStaging {
+public without sharing class Core_PSG_UpdateSignalCodeFromStaging {
 
-    /*@InvocableMethod
+    @InvocableMethod
     public static void updateSignalCode() {  
-        List<Core_PIR_Ext_Attributes__c> lstStaging= new List<Core_PIR_Ext_Attributes__c>();
     	try{          
         	Database.executeBatch(new Core_PSG_ProcessSignalCodeFromStaging());         
         }
         catch(exception e){
-        	system.debug('**exception** -->'+ e);
+        	PSG_Utility.logError(e);
         }
-    }*/
+    }
 }

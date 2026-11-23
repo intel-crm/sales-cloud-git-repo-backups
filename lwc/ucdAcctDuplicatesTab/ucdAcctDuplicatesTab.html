@@ -1,0 +1,109 @@
+<template>
+    <!-- Start of spinner logic on page load--> 
+    <template if:false={pageLoaded}>
+        <div class="exampleHolder">
+            <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
+        </div>
+    </template>
+
+   
+
+    <!-- Start of spinner logic-->                         
+    <template if:true={showTable}>  
+        <!-- Table UI-->
+        <lightning-card>
+        <div class="slds-box slds-p-around_none slds-m-top_x-small slds-m-bottom_medium slds-m-horizontal_none">
+            <lightning-layout class="slds-grid slds-wrap">              
+                <template for:each={regionData} for:item="rData">
+                    <lightning-layout-item key={rData.region} padding="around-small" class = "slds-col slds-size_1-of-2">                   
+                        <c-ucd-acct-dup-tile regiondata={rData} onrecordclick={recordClickHandler}>
+                        </c-ucd-acct-dup-tile>                   
+                    </lightning-layout-item>
+                </template>
+            </lightning-layout>
+        </div>
+        </lightning-card>
+        
+        <!-- End of table UI-->
+    </template>
+    <!-- Modal pop on click of CIM of id-->
+    <template if:true={isModalOpen}>        
+        <section role="dialog" tabindex="0" aria-labelledby="modal-heading-01" aria-modal="true"
+            aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Duplicate Accounts</h2>
+                </header>
+                <div style="height:150px;">
+                    <div class="slds-scrollable_y" style="height:100%;">  
+                <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped">
+                    <thead>
+                        <tr class="slds-text-title_caps">
+                            <th role="gridcell">
+                                <div class="slds-align_absolute-left" title="Name">ACCOUNT NAME</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="ACCOUNT OWNER">ACCOUNT OWNER</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="IPA">IPA</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="SALES GROUP">SALES GROUP</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="SALESCLOUD ID">ACCOUNT ID</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="CONTACTS COUNT">CONTACTS COUNT</div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template for:each={accountsForCim} for:item="acct">
+                            <tr key={acct.accountid}>
+
+                                <td class="slds-cell-wrap" data-label="Wrapped, line clamped">
+                                    <div class="slds-line-clamp">{acct.accountName}
+                                    </div>
+                                </td>
+                                <th scope="col">
+                                    <div class="slds-truncate">{acct.accountOwner}</div>
+                                </th>
+                                <th scope="col">
+                                    <div class="slds-truncate">
+                                        {acct.isIPA}</div>
+                                </th>
+                                <th scope="col">
+                                    <div class="slds-truncate">{acct.salesgroup}
+                                    </div>
+                                </th>
+                                <th scope="col">
+                                    <lightning-button variant="base" label={acct.accountid} value={acct.accountid}
+                                        onclick={navigateToDetail} class="slds-m-left_x-small"> {acct.accountid}
+                                    </lightning-button>
+                                </th>
+                                <th scope="col">
+                                    <div class="slds-truncate">{acct.contactCount}</div>
+                                </th>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+                </div>
+                </div>
+                <footer class="slds-modal__footer">
+                    <button class="slds-button slds-button_brand" onclick={closeModal} title="OK">OK</button>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+    <!-- end of Modal pop on click of CIM of id-->
+
+    <template if:true={noAccessToObject}>
+        <lightning-card>
+            <h1>You do not have access to use any functionality on this tab</h1>
+        </lightning-card>
+    </template>
+</template>

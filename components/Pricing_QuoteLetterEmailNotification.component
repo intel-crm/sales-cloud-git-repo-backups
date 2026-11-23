@@ -80,6 +80,10 @@
                         <br/>Hello. Attached is the quote letter for the price quote request submitted in the Intel Quote Request (IQR) tool.<br/><br/>
                         <apex:outputPanel rendered="{!isRecallMail}">
                             <apex:outputText value="EmailStart ToStart {!toEmails}; ToEnd CCStart {!ccEmails}; CCEnd BCCStart {!bccEmails}; BCCEnd EmailEnd" /><br/><br/>
+                            <!--<apex:outputText value="<to> {!toEmails} </to>" /><br/>
+                            <apex:outputText value="<cc> {!ccEmails} </cc>" /><br/>
+                            <apex:outputText value="<bcc> {!bccEmails} </bcc>" /><br/>
+                            <apex:outputText value="</Email>" /><br/><br/>-->
                         </apex:outputPanel>
                         <b>Quote:</b>&nbsp;<apex:outputLink value="{!externalDomainName}/quote/{!quoteData.Id}" >{!quoteData.Name}</apex:outputLink><b> (External) </b><apex:outputLink value="{!domainName}/{!quoteData.Id}" >{!quotedata.Name}</apex:outputLink><b> (Internal)</b><br/>
                         <b>End Customer:</b>&nbsp;{!quoteData.Pricing_End_Customer_Name__c}<br/>

@@ -21,6 +21,10 @@
         <name>Account_Owner__c</name>
     </fields>
     <fields>
+        <label><!-- Active --></label>
+        <name>Active__c</name>
+    </fields>
+    <fields>
         <label><!-- CIM ID --></label>
         <name>CIM_ID__c</name>
     </fields>
@@ -32,6 +36,26 @@
         <label><!-- New Account Owner --></label>
         <name>CST_Account_Owner_Id__c</name>
         <relationshipLabel><!-- Account Detail (New Account Owner) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- New Account Level --></label>
+        <name>CST_New_Account_Level__c</name>
+        <picklistValues>
+            <masterLabel>Level 1</masterLabel>
+            <translation><!-- Level 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Level 2</masterLabel>
+            <translation><!-- Level 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Level 3</masterLabel>
+            <translation><!-- Level 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No Level</masterLabel>
+            <translation><!-- No Level --></translation>
+        </picklistValues>
     </fields>
     <fields>
         <label><!-- Region --></label>
@@ -469,10 +493,6 @@
             <translation><!-- Location: Argentina --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Location: Australia</masterLabel>
-            <translation><!-- Location: Australia --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Location: Belgium</masterLabel>
             <translation><!-- Location: Belgium --></translation>
         </picklistValues>
@@ -487,14 +507,6 @@
         <picklistValues>
             <masterLabel>Location: China</masterLabel>
             <translation><!-- Location: China --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Location: Colombia</masterLabel>
-            <translation><!-- Location: Colombia --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Location: Denmark</masterLabel>
-            <translation><!-- Location: Denmark --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Location: Ecuador</masterLabel>
@@ -515,10 +527,6 @@
         <picklistValues>
             <masterLabel>Location: Hong Kong</masterLabel>
             <translation><!-- Location: Hong Kong --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Location: Hungary</masterLabel>
-            <translation><!-- Location: Hungary --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Location: India</masterLabel>
@@ -607,10 +615,6 @@
         <picklistValues>
             <masterLabel>Location: Taiwan</masterLabel>
             <translation><!-- Location: Taiwan --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Location: Turkiye</masterLabel>
-            <translation><!-- Location: Turkiye --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Location: United Kingdom</masterLabel>
@@ -974,7 +978,7 @@
         <name>CST_Unified_ID__c</name>
     </fields>
     <fields>
-        <label><!-- Semi-Annual Temp Account Category --></label>
+        <label><!-- Account Category --></label>
         <name>Category__c</name>
     </fields>
     <fields>
@@ -993,33 +997,29 @@
         <label><!-- Account Primary Coverage --></label>
         <name>Coverage_Type__c</name>
         <picklistValues>
-            <masterLabel>Intel-led Account</masterLabel>
-            <translation><!-- Intel-led Account --></translation>
+            <masterLabel>Indirect-Covered</masterLabel>
+            <translation><!-- Indirect-Covered --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Not Covered Account</masterLabel>
-            <translation><!-- Not Covered Account --></translation>
+            <masterLabel>Intel Covered</masterLabel>
+            <translation><!-- Intel Covered --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Other-led Account</masterLabel>
-            <translation><!-- Other-led Account --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Partner-led Account</masterLabel>
-            <translation><!-- Partner-led Account --></translation>
+            <masterLabel>Not Covered</masterLabel>
+            <translation><!-- Not Covered --></translation>
         </picklistValues>
     </fields>
     <fields>
-        <label><!-- SPM_Customer_ID__c --></label>
+        <label><!-- Customer Name --></label>
         <name>Customer_Name__c</name>
     </fields>
     <fields>
-        <label><!-- Feedback --></label>
+        <label><!-- Delete: Feedback --></label>
         <name>DR_FeedbackId__c</name>
         <relationshipLabel><!-- Account Detail --></relationshipLabel>
     </fields>
     <fields>
-        <label><!-- DR Feedback --></label>
+        <label><!-- Delete: DR Feedback --></label>
         <name>DR_Feedback__c</name>
     </fields>
     <fields>
@@ -1037,7 +1037,7 @@
         <name>Feedback__c</name>
     </fields>
     <fields>
-        <label><!-- Account Feedback --></label>
+        <label><!-- Delete: Account Feedback --></label>
         <name>GM_FeedbackId__c</name>
         <relationshipLabel><!-- Account Detail (Account Feedback) --></relationshipLabel>
     </fields>
@@ -1061,10 +1061,6 @@
     <fields>
         <label><!-- Account Legal Name --></label>
         <name>Legal_Name__c</name>
-    </fields>
-    <fields>
-        <label><!-- New Account --></label>
-        <name>New_Account__c</name>
     </fields>
     <fields>
         <label><!-- Old Account Primary Coverage --></label>
@@ -1132,12 +1128,12 @@
         <name>Team_Members__c</name>
     </fields>
     <fields>
-        <label><!-- Account Feedback --></label>
+        <label><!-- Delete: Account Feedback --></label>
         <name>VP_FeedbackId__c</name>
         <relationshipLabel><!-- Account Detail (Account Feedback) --></relationshipLabel>
     </fields>
     <fields>
-        <label><!-- VP Feedback --></label>
+        <label><!-- Delete: VP Feedback --></label>
         <name>VP_Feedback__c</name>
     </fields>
     <fields>
@@ -1150,4 +1146,8 @@
         <name>X2nd_level_Manager__c</name>
     </fields>
     <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Access is denied to create a new Account --></errorMessage>
+        <name>check_New_Account_Creation</name>
+    </validationRules>
 </CustomObjectTranslation>

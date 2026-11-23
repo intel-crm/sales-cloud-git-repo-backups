@@ -1,6 +1,6 @@
 <apex:page controller="GBLite.GridWizardController" action="{!initUserFilter}" showHeader="false" sidebar="false">
     <!--[if IE 8]>
-        <link rel="stylesheet" type="text/css" href="{!URLFOR($Resource.gb_resources, 'ie8-styles.css')}" />
+        <link rel="stylesheet" type="text/css" href="{!URLFOR($Resource.GBLite__gb_resources, 'ie8-styles.css')}" />
     <![endif]-->
 	<div class="gbAppPage gbwPage gbUserFilter gb{!lang.langCode}{!IF(lightningStylesEnabled, ' gbLightning', '')}">
 		<c:EmptyComponent rendered="{!errors.showErrorMessages}">

@@ -9,8 +9,8 @@
 * ****************************************************************************************************************************************/
 @isTest
 public class PMP_Processors_Attribute_Japanese_Test {
-//IPA 2.0- US-TWC729-7980
-    /*@isTest
+
+    @isTest
     public static void testProcMethod(){
     
         PMP_Specification__c spec1 = PMP_TestDataUtility.getSpecs();
@@ -21,9 +21,9 @@ public class PMP_Processors_Attribute_Japanese_Test {
         
         PMP_Processors_Attribute_Japanese testProcessor = new PMP_Processors_Attribute_Japanese();
         test.startTest();
-        PMP_ParseProcessorJSON.languageCode = 'ja_JP';
+        PMP_ParseProcessorJSON.strBaseKey = 'ja_JP';
         resultData = testProcessor.processData('PMP_Processors_Attribute_Test');
         system.assertNotEquals(resultData,null);
         test.stopTest();
-    }*/
+    }
 }

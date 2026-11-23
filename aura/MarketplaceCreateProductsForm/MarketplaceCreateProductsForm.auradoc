@@ -1,26 +1,25 @@
 <aura:documentation>
 	<aura:description>
-    <!-- IPA2.0 + US TWC4497-1631 -->
-    <!-- <p>Create Offering Wizard - Main Component</p> -->
+    <p>Create Offering Wizard - Main Component</p>
 
     <!-- LAST UPDATED DATE / VERSION -->
-    <!-- <p>Last Updated: 4/30/2019</p>
+    <p>Last Updated: 4/30/2019</p>
     <p>CurrentVersion: 1.2</p>
-    <hr/> -->
+    <hr/>
     <!-- UPDATE DATE / VERSION WITH ANY UPDATES -->
 
-    <!-- <p>Input components keep track of their own validity / error messages.</p>
+    <p>Input components keep track of their own validity / error messages.</p>
     <p>This Form component keeps track of overall form validity (Back/Next) buttons.</p>
 		<p>See the documentation for <code>ISGCreateOfferingFormInputBase</code>
-			for more about the input components, and how they inter.</p> -->
+			for more about the input components, and how they inter.</p>
 
     <!-- CHANGELOG ADD ANY UPDATES HERE -->
-    <!-- <hr/>
+    <hr/>
     <p>Change Log</p>
-    <p>1.2 bug fix  now sets v.record before setting wizard data / inputs</p>
+    <p>1.2 bug fix -- now sets v.record before setting wizard data / inputs</p>
     <br />
     <p>1.1 adds saveAndRefresh form functionality from input components</p>
-    <p>(ie. if Subsection2 depends on the selection in Subsection1)</p> -->
+    <p>(ie. if Subsection2 depends on the selection in Subsection1)</p>
 
 
     <!-- CHANGELOG -->

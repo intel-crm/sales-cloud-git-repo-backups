@@ -1,6 +1,5 @@
 @isTest
 public class Core_PSG_UpdateSignalCodeFromStagingTest {
-    /*
     @isTest static void updateSignalCOdeTest(){
         
         List<Core_PIR_Ext_Attributes__c> lstStaging= new List<Core_PIR_Ext_Attributes__c>();
@@ -20,5 +19,5 @@ public class Core_PSG_UpdateSignalCodeFromStagingTest {
             Core_PSG_UpdateSignalCodeFromStaging.updateSignalCode();
             
         Test.stopTest();
-    }*/
+    }
 }

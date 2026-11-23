@@ -14,7 +14,17 @@ public class PMP_GlobalFooterController {
     
     public String communityHelpURL;
     public String getCommunityHelpURL(){
-        communityHelpURL = System.Label.PMP_IPA_HelpLink;
+        Network myNetwork = [SELECT Id FROM Network WHERE Name = :PMP_Utility.getValue('Marketplace_Community_Name') ];
+        communityHelpURL = Network.getLoginUrl(myNetwork.Id);
+      
+         communityHelpURL = communityHelpURL.substringBeforeLast('/') ;
+        
+        //Sandhya : we need to check if SFDC outofthe box method will return "/s" at the end         
+        if(!communityHelpURL.endsWith('/s')){
+            communityHelpURL = communityHelpURL + '/s';
+        }        
+        //remove the word login from the communiyt URL and append with help
+        communityHelpURL  = communityHelpURL + PMP_Utility.getValue('Community_Help_URL');
         return communityHelpURL;
     }
 }

@@ -27,6 +27,11 @@
         <relationshipLabel><!-- Opportunity Support Team --></relationshipLabel>
     </fields>
     <fields>
+        <label><!-- Opportunity --></label>
+        <name>Core_Opportunity__c</name>
+        <relationshipLabel><!-- Opportunity Support Team --></relationshipLabel>
+    </fields>
+    <fields>
         <label><!-- Reassign counter --></label>
         <name>Core_Reassign_counter__c</name>
     </fields>
@@ -54,10 +59,50 @@
             <translation><!-- Pending --></translation>
         </picklistValues>
     </fields>
+    <fields>
+        <label><!-- New Name --></label>
+        <name>Test_Picklist__c</name>
+        <picklistValues>
+            <masterLabel>AI</masterLabel>
+            <translation><!-- AI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New value</masterLabel>
+            <translation><!-- New value --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New value2</masterLabel>
+            <translation><!-- New value2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New value3</masterLabel>
+            <translation><!-- New value3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New value4</masterLabel>
+            <translation><!-- New value4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>parametrized!</masterLabel>
+            <translation><!-- parametrized! --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>what happens to space</masterLabel>
+            <translation><!-- what happens to space --></translation>
+        </picklistValues>
+    </fields>
+    <recordTypes>
+        <label><!-- Test --></label>
+        <name>Test</name>
+    </recordTypes>
     <startsWith>Vowel</startsWith>
     <validationRules>
         <errorMessage><!-- Once Opportunity is Closed, Support Request cannot be Edited --></errorMessage>
         <name>CRM_Restrict_STM_modifiey</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Support request already closed , cannot reassign now --></errorMessage>
+        <name>CoE_Reassign_check</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Reached max reassignment limit --></errorMessage>

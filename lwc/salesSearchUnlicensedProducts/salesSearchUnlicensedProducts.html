@@ -1,0 +1,45 @@
+<template>
+    <div class="slds-box">
+        <lightning-input type="text" name="hostinput" label="Enter Product Name" onchange={inputChange}>
+        </lightning-input>
+        <br>
+            <lightning-button name="Search" label="Search" onclick={validateLicenseName} ></lightning-button> 
+        </div> 
+    
+        <br>
+        
+        <template if:true={isDataFoundonSeach}> 
+            <div class="slds-box" onscroll={tableOuterDivScrolled}><!--style="width:800px" -->
+            <lightning-datatable
+                    key-field="id"
+                    data={licListonSearch}
+                    columns={columns}
+                    onrowselection={handleRowSelection}
+                    max-row-selection="1">
+            </lightning-datatable>
+        </div>
+        </template>
+          
+            <template if:true={isDefaultDataFound}>
+                <div class="slds-box" onscroll={tableOuterDivScrolled}>
+            <lightning-datatable
+            key-field="id"
+                    data={Liclist}
+                    columns={columns}
+                    onrowselection={handleRowSelection}
+                    max-row-selection="1">
+            </lightning-datatable>
+            <br>
+            <lightning-button  name="Previous" label="Prev" onclick={hostReassignment} disabled={firstpage}></lightning-button>
+            <lightning-button name="Next" label="Next" onclick={hostReassignment} ></lightning-button>
+        </div>
+        </template>
+        <br>
+        <lightning-button name="Assign" label="Assign" onclick={callComputerNameComp} ></lightning-button> 
+        <br>
+        <template if:true={validSerialNo}>
+          <c-sales-Search-Host-Information item={selectedSerialNo}></c-sales-Search-Host-Information>
+        </template>
+        <br>
+        <br>    
+</template>

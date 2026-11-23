@@ -172,7 +172,9 @@
         <showSubTotals>true</showSubTotals>
         <timeFrameFilter>
             <dateColumn>CLOSE_DATE</dateColumn>
-            <interval>INTERVAL_PREVCURFY</interval>
+            <endDate>2026-11-23</endDate>
+            <interval>INTERVAL_CUSTOM</interval>
+            <startDate>2026-11-23</startDate>
         </timeFrameFilter>
     </block>
     <block>
@@ -210,7 +212,9 @@
         <showSubTotals>true</showSubTotals>
         <timeFrameFilter>
             <dateColumn>CUST_CREATED_DATE</dateColumn>
-            <interval>INTERVAL_PREVCURFY</interval>
+            <endDate>2026-11-23</endDate>
+            <interval>INTERVAL_CUSTOM</interval>
+            <startDate>2026-11-23</startDate>
         </timeFrameFilter>
     </block>
     <blockInfo>

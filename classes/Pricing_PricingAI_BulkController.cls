@@ -2,10 +2,10 @@
  * @description       : Class to run Bulk Pricing AI from Bulk Create Deal Popup
  * @author            : Sandeep
  * @group             : Accenture
- * @last modified on  : 06-17-2025
+ * @last modified on  : 01-18-2025
  * @last modified by  : Bharath Chandrashekar
 **/
-public without sharing class Pricing_PricingAI_BulkController extends TriggerHandler{
+public without sharing class Pricing_PricingAI_BulkController extends TriggerHandler {
 
     /**
     * @description method to call the pricing AI Integrtion
@@ -21,7 +21,7 @@ public without sharing class Pricing_PricingAI_BulkController extends TriggerHan
         List<String> pricingAIRespJSONString = new List<String>();
         List<Core_Log_Entry__c> logEntryList = new List<Core_Log_Entry__c>();
         try{
-            List<SBQQ__QuoteLine__c>  quoteLineList = [SELECT Id, Name,Pricing_Quote_Line_Number__c, Pricing_Recommended_Price_Amt__c, Pricing_Price_Interval_Txt__c, Pricing_Discount_Pct__c 
+            List<SBQQ__QuoteLine__c>  quoteLineList = [SELECT Id, Name,Pricing_Quote_Line_Number__c, Pricing_Recommended_Price_Amt__c 
                                         FROM SBQQ__QuoteLine__c WHERE Id IN: quoteLineId];
             Map<String,String> successMsgMap = new Map<String,String>();
             Map<String,String> errorMsgMap = new Map<String,String>();
@@ -39,7 +39,6 @@ public without sharing class Pricing_PricingAI_BulkController extends TriggerHan
                 req.setMethod('POST');
                 req.setBody(inputJSON);
                 HttpResponse response = new Http().send(req);
-                if(response.getStatusCode() == 200){
                 Map<String,Object> results = (Map<String,Object>)JSON.deserializeUntyped(response.getBody());
                 List<Object> successContentList = (List<Object>)results.get('successContent');
                 List<Object> errorContestList = (List<Object>)results.get('errorContent');
@@ -78,7 +77,6 @@ public without sharing class Pricing_PricingAI_BulkController extends TriggerHan
                 }
                 if(logEntryList.size() > 0){
                     insert logEntryList;    
-                }
                 }
             }else{
                 String msg = 'Quote Line Records are processed with an error, as the inputJSON is invalid. Please check the request.';
@@ -129,7 +127,7 @@ public without sharing class Pricing_PricingAI_BulkController extends TriggerHan
                                               SBQQ__Quote__r.Pricing_Market_Segment_values_Nm__c,
                                               //Quote Line Details
                                               Pricing_EndCustomer_Nm__c,Pricing_UnifiedEndCustomer__c,Pricing_Group_Type_nm__c,Pricing_Approved_Start_Date_Dt__c,SBQQ__Product__r.Core_Product_Family__c,Pricing_Approved_End_Date_Dt__c,
-                                              SBQQ__ProductFamily__c,Pricing_Meet_Comp_Price_Amt__c,Pricing_Tentative_ECAP_Price_Amt__c,Pricing_Req_Discounted_Unit_Price__c,
+                                              SBQQ__ProductFamily__c,Pricing_Meet_Comp_Price_Amt__c,Pricing_Req_Discounted_Unit_Price__c,
                                               SBQQ__Quote__r.Pricing_End_Customer__r.Pricing_Unified_EndCustomer_Id__c,SBQQ__Quote__r.Pricing_Unified_Global_End_Customer_Nm__r.Pricing_Unified_Country_EndCustomer_Id__c,
                                               Pricing_Region_Nm__c,Pricing_End_Customer_Country__c,Pricing_Billing_Start_Date_Dt__c,Pricing_Billing_End_Date_Dt__c,Pricing_RegionQL_Nm__c,Pricing_Market_Segment_Nm__c,Pricing_Market_Segment_values_Nm__c,
                                               SBQQ__Quote__r.Pricing_ShipmentStDate_Dt__c,Pricing_Approved_Unit_Qty__c,Pricing_CPUs_per_system_qty__c,Pricing_Comp_CPUs_per_system_Cnt__c,
@@ -149,8 +147,6 @@ public without sharing class Pricing_PricingAI_BulkController extends TriggerHan
                 Pricing_PricingAI_Wrapper.AccountWrapper accountDetails = new Pricing_PricingAI_Wrapper.AccountWrapper();
                 accountDetails.name = qli.SBQQ__Quote__r.SBQQ__Account__r.Name;
                 accountDetails.cimId = CIMiId;
-                //Forming Customer mapping Id and assigning CIM Id (If CIM Id is present we are passing CIM Id, If not there then we are passing Business party id)
-                accountDetails.CustomerMappingId = CIMiId;
                 accountDetails.id = qli.SBQQ__Quote__r.SBQQ__Account__c;
                 calloutWrapper.accountDetails = accountDetails;
                 
@@ -171,8 +167,7 @@ public without sharing class Pricing_PricingAI_BulkController extends TriggerHan
                 calloutWrapper.productFamily = qli.SBQQ__Product__r.Core_Product_Family__c!=null? qli.SBQQ__Product__r.Core_Product_Family__c: '';
                 calloutWrapper.processorNumber = qli.SBQQ__Product__r.Core_Processor_Number_Nm__c!=null? qli.SBQQ__Product__r.Core_Processor_Number_Nm__c: '';
                 calloutWrapper.meetCompPrice = qli.Pricing_Meet_Comp_Price_Amt__c;
-                calloutWrapper.tentativeECAPPrice = QuoteLineBusinessLogic.checkforAuotoPopLogic(qli, qli.Pricing_Server_Deal_Type_Nm__c, qli.Pricing_EndCustomer_Nm__c) && qli.Pricing_Tentative_ECAP_Price_Amt__c == null ?
-                                                    Integer.valueOf(Label.Pricing_TentaticeEcapValue_AutoAI) : qli.Pricing_Tentative_ECAP_Price_Amt__c;
+               
                 
                 calloutWrapper.requestedDiscountPrice = qli.Pricing_New_Change_Request_cb__c == true && qli.Pricing_Req_Discounted_Unit_Price__c==null?qli.Pricing_Request_Discount_Unit_Price_qty__c:qli.Pricing_Req_Discounted_Unit_Price__c;
                 calloutWrapper.unifiedCountryEndCustomerId = qli.SBQQ__Quote__r.Pricing_Unified_Global_End_Customer_Nm__r.Pricing_Unified_Country_EndCustomer_Id__c;
@@ -204,7 +199,9 @@ public without sharing class Pricing_PricingAI_BulkController extends TriggerHan
 
             jsonObj = JSON.serialize(calloutWrapperList);
         }
+        system.debug('jsonObj:'+jsonObj);
         return jsonObj;
+        
     }
 
     /**

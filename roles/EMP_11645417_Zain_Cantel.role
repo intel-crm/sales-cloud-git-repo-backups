@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>Edit</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>EMP of Stefani Eisele</description>
+    <description>EMP of Sean Dougherty</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>EMP_11645417_Zain_Cantel</name>
     <opportunityAccessLevel>Edit</opportunityAccessLevel>
-    <parentRole>EMP_11368678_Stefani_Eisele</parentRole>
+    <parentRole>EMP_11645985_Sean_Dougherty</parentRole>
 </Role>

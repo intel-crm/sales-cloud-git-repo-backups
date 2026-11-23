@@ -4,16 +4,7 @@
     <actionOnUpdate>Block</actionOnUpdate>
     <alertText>Only one Budget Cap per cap type.</alertText>
     <description xsi:nil="true"/>
-    <duplicateRuleFilter>
-        <booleanFilter xsi:nil="true"/>
-        <duplicateRuleFilterItems>
-            <field>RecordType</field>
-            <operation>notContain</operation>
-            <value>IPA Budget Type Cap</value>
-            <sortOrder>1</sortOrder>
-            <table>Core_MDF_Budget_Cap__c</table>
-        </duplicateRuleFilterItems>
-    </duplicateRuleFilter>
+    <duplicateRuleFilter xsi:nil="true"/>
     <duplicateRuleMatchRules>
         <matchRuleSObjectType>Core_MDF_Budget_Cap__c</matchRuleSObjectType>
         <matchingRule>Core_MDF_Duplicate_Check_Budget_CAP_matching_rule</matchingRule>

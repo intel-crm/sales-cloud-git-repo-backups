@@ -1,12 +1,10 @@
 <design:component>
     <design:attribute name="disableManageEvents" label="Disable Manage Events" />
-    <!-- IPA2.0 + US TWC4497-1631 -->
     <design:attribute name="disableManageOfferings" label="Disable Manage Offerings" />
     <design:attribute name="disableViewDashboard" label="Disable View Dashboard" />
     <design:attribute name="disableManageLeads" label="Disable Manage Leads" />
     <design:attribute name="disableManageStorefront" label="Disable Manage Storefront" />
     <design:attribute name="disableManagedMPPartners" label="Disable Manage Marketplace Partners" />
-    <design:attribute name="showAllButtons" label="Show all buttons" />
     <design:attribute name="portal" label="Portal displaying the Navigation Bar" datasource="Marketplace, Partner Admin" default="Marketplace"/>
     <design:attribute name="fullWidth" label="fullWidth" default="true"/>
 </design:component>

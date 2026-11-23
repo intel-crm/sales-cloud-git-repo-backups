@@ -9,7 +9,7 @@
 * ----------------------------------------------------------------------------                 
 * Bishal Singh  	 2024-06-14    		 Modified
 *****************************************************************************************************/
-public without sharing class core_S2S_FileDownloadCaseController {
+public with sharing class core_S2S_FileDownloadCaseController {
 
     /************************************************************************************************************
     * Method Name    	: getRelatedFilesByRecordId
@@ -24,7 +24,7 @@ public without sharing class core_S2S_FileDownloadCaseController {
         for(ContentDocumentLink__x cntLink : [SELECT Id, ContentDocumentId__c FROM ContentDocumentLink__x WHERE LinkedEntityId__c =:caseObjId]) {
             fileIDs.add(cntLink.ContentDocumentId__c);
         }
-        List<ContentVersion__x> docs = [SELECT Id, Title__c, ContentDocumentId__c, ContentDocumentId__r.FileType__c, VersionData__c FROM ContentVersion__x WHERE ContentDocumentId__c IN :fileIDs ORDER BY createddate__c DESC];
+        List<ContentVersion__x> docs = [SELECT Id, Title__c, ContentDocumentId__c, ContentDocumentId__r.FileType__c, VersionData__c FROM ContentVersion__x WHERE ContentDocumentId__c IN :fileIDs WITH SECURITY_ENFORCED ORDER BY createddate__c DESC];
         Map<Id, ContentVersion__x> mapIdTitle = new Map<Id, ContentVersion__x>();
         for (ContentVersion__x docLink : docs) {
             mapIdTitle.put(docLink.ContentDocumentId__c, docLink);
@@ -38,14 +38,13 @@ public without sharing class core_S2S_FileDownloadCaseController {
     * Description    	: Retrieves ContentVersion data.
     * Last Modified By	: Bishal Singh
     ************************************************************************************************************/
-    @AuraEnabled(cacheable=true)
+    @AuraEnabled(cacheable=false)
     public static String getContentVersion(String recordId) {
         HttpRequest req = new HttpRequest();
         req.setEndpoint('callout:Service_Cloud_API/sobjects/ContentVersion/' + recordId + '/VersionData');
         req.setMethod('GET');
         Http http = new Http();
         HTTPResponse res = http.send(req);
-        System.debug(res.getBody());
         return (EncodingUtil.base64Encode(res.getBodyAsBlob()));
     }
 }

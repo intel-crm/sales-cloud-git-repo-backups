@@ -87,7 +87,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Brand_nm__c</field>
+            <field>Core_MDF_Brand__c</field>
             <table>PartnerFundClaim</table>
         </columns>
         <columns>
@@ -137,6 +137,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Country_Location__c</field>
+            <table>PartnerFundClaim</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_Country_Location_nm__c</field>
             <table>PartnerFundClaim</table>
         </columns>
@@ -163,6 +168,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_Duplicate_Claim__c</field>
+            <table>PartnerFundClaim</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_EFT_Nbr__c</field>
             <table>PartnerFundClaim</table>
         </columns>
         <columns>
@@ -441,12 +451,6 @@
             <field>Core_MDF_Bank__c.Core_MDF_Supplier_Number__c</field>
             <table>PartnerFundClaim</table>
         </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <displayNameOverride>Program</displayNameOverride>
-            <field>Request.ChannelPartner.Core_MDF_Channel_Program__c.Core_MDF_Technical_Program_Name__c</field>
-            <table>PartnerFundClaim</table>
-        </columns>
         <masterLabel>Partner Fund Claims</masterLabel>
     </sections>
     <sections>
@@ -510,12 +514,7 @@
     <sections>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Budget_Type_Options_Nm__c</field>
-            <table>PartnerFundClaim</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_EFT_Number_txt__c</field>
+            <field>Core_MDF_Campaign_Id__c</field>
             <table>PartnerFundClaim</table>
         </columns>
         <masterLabel>Claims</masterLabel>

@@ -12,13 +12,12 @@ public class PMP_Geo_Attribute_English_Test {
      @isTest
     public static void testProcessGeoAttributes()
     {
-        
         PMP_Geo_Attribute_English procAttrEng = new PMP_Geo_Attribute_English();
         PMP_GeoRegion_CreateJunctionData_Test.PMP_GeoRegion_CreateJunctionDataMet_Test();
-        
-       	PMP_ParseGeoRegionsJSON.languageCode = 'en_US';
+       // test.startTest();
+       	PMP_ParseGeoRegionsJSON.strBaseKey = 'en_US';
         List<Database.UpsertResult> resultData = procAttrEng.processData('Geo_Attribute_English_Test');
         system.assertNotEquals(resultData,null);
-        
+       // test.stopTest();
     }
 }

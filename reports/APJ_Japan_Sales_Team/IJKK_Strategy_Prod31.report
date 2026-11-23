@@ -42,10 +42,6 @@
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>AMOUNT</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
         <field>OpportunityLineItem.Core_Approved_Total_Price__c</field>
     </columns>
     <filter>
@@ -76,7 +72,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Qualify,Define,Develop,Design,Design Win,Production Win</value>
+            <value>Qualify,Define,Develop,Design</value>
         </criteriaItems>
         <criteriaItems>
             <column>User.Core_User_Sub_Geo__c</column>

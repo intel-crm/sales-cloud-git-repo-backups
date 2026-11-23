@@ -20,10 +20,6 @@
                 <behavior>Readonly</behavior>
                 <field>BudgetId</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_MDF_3rd_Party_POP_Doc_Required_Ind__c</field>
-            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -37,14 +33,6 @@
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>AllocationId</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_MDF_Due_Date_nbr__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_MDF_Document_Submission_DueDate_dtm__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
@@ -105,10 +93,6 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Core_MDF_Excess_Requested_Amount__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
                 <field>Core_MDF_Claim_Comments__c</field>
             </layoutItems>
         </layoutColumns>
@@ -158,10 +142,6 @@
                 <field>Core_MDF_Audit_Adjustment_Amount__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_MDF_Total_Claim_Recovery_Amount__c</field>
-            </layoutItems>
-            <layoutItems>
                 <behavior>Required</behavior>
                 <field>Amount</field>
             </layoutItems>
@@ -198,7 +178,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>Core_MDF_Brand_nm__c</field>
+                <field>Core_MDF_Brand__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -247,10 +227,6 @@
                 <behavior>Edit</behavior>
                 <field>Core_MDF_Intel_Manual_Hold_Ind__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_MDF_Recovery_Hold_Ind__c</field>
-            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -289,8 +265,8 @@
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_MDF_EFT_Number_txt__c</field>
+                <behavior>Readonly</behavior>
+                <field>Core_MDF_EFT_Nbr__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
@@ -356,11 +332,6 @@
             <sortOrder>4</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>PartnerFundClaim.Core_MDF_Submit_For_PIC</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>6</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
             <actionName>ChangeOwnerOne</actionName>
             <actionType>StandardButton</actionType>
             <sortOrder>5</sortOrder>
@@ -397,16 +368,6 @@
         <fields>Core_MDF_Selected_Document_Types_txt__c</fields>
         <fields>CREATED_DATE</fields>
         <relatedList>Core_MDF_Audit_Document__c.Core_MDF_Claim__c</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <excludeButtons>MassChangeOwner</excludeButtons>
-        <excludeButtons>New</excludeButtons>
-        <fields>NAME</fields>
-        <fields>Core_MDF_Amount_Amt__c</fields>
-        <fields>Core_MDF_PartnershipGradeMaintenance_Nbr__c</fields>
-        <fields>Core_MDF_Sure_Pay_Ind__c</fields>
-        <fields>CREATED_DATE</fields>
-        <relatedList>Core_MDF_Recovery__c.Core_MDF_Claim_Id__c</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>Core_MDF_Adjustment_Claim_Nbr__c</fields>

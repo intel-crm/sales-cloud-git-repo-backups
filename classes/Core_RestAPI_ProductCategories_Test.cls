@@ -58,12 +58,15 @@
             sp = [Select Name,Core_Product_Organization__c,Core_EOIS__c,Core_Supported_Product_Name__c,Core_Product__c    FROM Core_IPS_Supported_Product__c limit 1];
             
             
+            System.debug('sp.name--'+allAssets[0].Core_Supported_Product__r.Name);
             Asset objAsst = new Asset(
                 Name = 'Haswell EP Intel products',
                 Core_Supported_Product__c = allAssets[0].Core_Supported_Product__c;
             );
             insert objAsst;
+            System.debug('Support auto number');
             strProductId = objAsst.id;
+            System.debug('strProductId-->'+strProductId);
 
 			*/
             List<Asset> allAssets = [Select Name, Account.Name, Core_Supported_Product__c, Core_Supported_Product__r.Name FROM Asset ORDER BY NAME ];
@@ -82,6 +85,7 @@
                 objProj.Core_Supported_Product__c = allAssets[0].Core_Supported_Product__c;
             }
             Insert CategoriesList;
+            System.debug('CategoriesList-->'+CategoriesList);
             List<Core_IPS_Product_Issue_Category__c> CategoriesandSubCategoriesList = Core_RestAPI_TestUtilities.getListOfCoreProdIssCategory(10);
             for(Integer i=0;i<CategoriesandSubCategoriesList.size()/2;i++){
                 Core_IPS_Product_Issue_Category__c objAPI = CategoriesandSubCategoriesList[i]; 
@@ -103,6 +107,7 @@
     //Pass the version, the method returns the request based on the version number 
     private static RestRequest doGet_getCategoriesandSubCategories_VersionRequest(String version){
         objsuppProdName = [SELECT Id,Core_Supported_Product__r.Name FROM Asset];
+        System.debug('objsuppProdName -->'+objsuppProdName);
         RestRequest requestObj = (RestRequest)System.jSON.deserialize(Core_RestAPI_TestUtilities.REQUEST_TEMPLATE , RestRequest.class);
         requestObj.httpMethod = 'GET';
         RestContext.request = requestObj;
@@ -126,7 +131,7 @@
             System.assertEquals(true, apiResponse.isSuccess);
             System.assertNotEquals(null, apiResponse.successContent);
             //check for all sharing Categories and SubCategories are retrieved
-            System.assertEquals(apiResponse.successContent.size() != null, true);
+            System.assertEquals(1,apiResponse.successContent.size(), 'All Admin user Categories and SubCategories retrieved ');
         }
         //Common Asserts for all versions
         //Verify the transaction log is created
@@ -147,6 +152,7 @@
         RestContext.request = doGet_getCategoriesandSubCategories_VersionRequest(v1_0);//v1_0 is the parameter (String) of doGet_getCategoriesandSubCategories_VersionRequest
         System.runAs(commUser){
             Core_RestAPI_Response apiResponse = Core_RestAPI_ProductCategoriesV1.doGet();
+            System.debug('apiResponse --->'+apiResponse);
             System.assertEquals('200',apiResponse.code);
             getCategoriesandSubCategories_Asserts(apiResponse,null,v1_0);
         } 

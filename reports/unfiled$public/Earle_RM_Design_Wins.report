@@ -54,13 +54,13 @@
         <field>PRODUCT_ACTIVE</field>
     </columns>
     <filter>
-        <booleanFilter>2 AND (1 OR 3)</booleanFilter>
+        <booleanFilter>(2 AND (1 OR 3)) AND 4</booleanFilter>
         <criteriaItems>
             <column>FULL_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>troxel,cambrey cammon,Lovell,Colino,Day,Mills,Reichlin,Braley,Dimtsios,Sayer,Gauthier</value>
+            <value>cambrey cammon,Lovell,Colino,Day,Mills,Reichlin,Braley,Dimtsios,Sayer,Gauthier</value>
         </criteriaItems>
         <criteriaItems>
             <column>OpportunityLineItem.Core_Product_Type__c</column>
@@ -74,7 +74,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>troxel,cambrey cammon,Lovell,Colino,Day,Mills,Reichlin,Braley,Dimtsios,Sayer,Gauthier</value>
+            <value>cambrey cammon,Lovell,Colino,Day,Mills,Reichlin,Braley,Dimtsios,Sayer,Gauthier</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

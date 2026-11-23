@@ -1,0 +1,224 @@
+<table border="0" cellpadding="5" width="600" cellspacing="5" height="400" >
+<tr valign="top" height="50" >
+<td tEditID="c1r1" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="0" >
+<![CDATA[]]></td>
+</tr>
+<tr valign="top" height="300" >
+<td tEditID="c1r2" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r2" locked="0" >
+<![CDATA[<div style="color: rgb(0, 0, 0); font-family: arial;"><div style="">{!$Label.Core_MDF_EmailTemp_StatusUpdate_Body1} {!PartnerFundRequest.RecordType}</div><div style="">{!$Label.Core_MDF_EmailTemp_StatusUpdate_Body2} {!PartnerFundRequest.Core_MDF_Activity_Number__c}&nbsp;&nbsp;</div><div style="">{!$Label.Core_MDF_EmailTemp_StatusUpdate_Body3}&nbsp; {!PartnerFundRequest.Core_MDF_PriorValueOfStatus__c}&nbsp;</div><div style="">{!$Label.Core_MDF_EmailTemp_StatusUpdate_Body4} {!PartnerFundRequest.Core_MDF_Fund_Request_Status__c}</div><div style="">{!$Label.Core_MDF_EmailTemp_StatusUpdate_Body5}&nbsp;<a href="{!PartnerFundRequest.Core_MDF_PFRRecordCommunityLink__c}">{!$Label.Core_MDF_EmailTemp_StatusUpdate_Body9}</a></div><div style="">{!$Label.Core_MDF_EmailTemp_StatusUpdate_Body6}</div></div>
+
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:"Segoe UI";
+	panose-1:2 11 5 2 4 2 4 2 2 3;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:8.0pt;
+	margin-left:0in;
+	line-height:107%;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+.MsoChpDefault
+	{font-family:"Calibri",sans-serif;}
+.MsoPapDefault
+	{margin-bottom:8.0pt;
+	line-height:107%;}
+ /* Page Definitions */
+ @page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.WordSection1
+	{page:WordSection1;}
+-->
+</style>
+
+
+
+
+
+<div style=""><span style="color: rgb(0, 0, 0); font-family: arial; background-color: rgb(255, 255, 255);">{!$Label.Core_MDF_Member}&nbsp;</span><font face="arial">{!PartnerFundRequest.OwnerFullName}</font></div><div style="color: rgb(0, 0, 0); font-family: arial;"><span style="background-color: rgb(255, 255, 255);">{!$Label.Core_MDF_Activity}&nbsp;</span>{!PartnerFundRequest.Core_MDF_Activity_Number__c}</div><div style="color: rgb(0, 0, 0); font-family: arial;"><span style="background-color: rgb(255, 255, 255);">{!$Label.Core_MDF_Country_Location}&nbsp;</span>{!PartnerFundRequest.Core_MDF_Country__c}</div><div style="color: rgb(0, 0, 0); font-family: arial;"><span style="color: rgb(0, 0, 0); font-family: arial;">{!$Label.Core_MDF_EmailTemp_Campaign}&nbsp;</span><font face="arial">{!PartnerFundRequest.Core_MDF_UpdateCampaign__c}</font></div><div style="color: rgb(0, 0, 0); font-family: arial;"><span style="font-family: arial;">{!$Label.Core_MDF_EmailTemp_Activity_Type}&nbsp;</span><font face="arial">{!PartnerFundRequest.Core_MDF_Activity_Types__c}</font></div><div style="color: rgb(0, 0, 0); font-family: arial;"><span style="background-color: rgb(255, 255, 255);">{!$Label.Core_MDF_EmailTemp_StatusUpdate_Body7}</span></div><div style="color: rgb(0, 0, 0); font-family: arial;"><span style="background-color: rgb(255, 255, 255);"><br></span></div><div style="color: rgb(0, 0, 0); font-family: arial;">{!PartnerFundRequest.RecordType}&nbsp;<span style="background-color: rgb(255, 255, 255);">{!$Label.Core_MDF_EmailTemp_StatusUpdate_Body8}</span></div>
+
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:"Segoe UI";
+	panose-1:2 11 5 2 4 2 4 2 2 3;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:8.0pt;
+	margin-left:0in;
+	line-height:107%;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+.MsoChpDefault
+	{font-family:"Calibri",sans-serif;}
+.MsoPapDefault
+	{margin-bottom:8.0pt;
+	line-height:107%;}
+ /* Page Definitions */
+ @page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.WordSection1
+	{page:WordSection1;}
+-->
+</style>
+
+
+
+
+
+<div style="font-size: 12pt; color: rgb(0, 0, 0); font-family: arial;"><br></div><div style="font-size: 12pt; color: rgb(0, 0, 0); font-family: arial;"><div class="WordSection1" style="">
+
+</div></div><style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:"Segoe UI";
+	panose-1:2 11 5 2 4 2 4 2 2 3;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:8.0pt;
+	margin-left:0in;
+	line-height:107%;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+.MsoChpDefault
+	{font-family:"Calibri",sans-serif;}
+.MsoPapDefault
+	{margin-bottom:8.0pt;
+	line-height:107%;}
+ /* Page Definitions */
+ @page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.WordSection1
+	{page:WordSection1;}
+-->
+</style><style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:"Segoe UI";
+	panose-1:2 11 5 2 4 2 4 2 2 3;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:8.0pt;
+	margin-left:0in;
+	line-height:107%;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+.MsoChpDefault
+	{font-family:"Calibri",sans-serif;}
+.MsoPapDefault
+	{margin-bottom:8.0pt;
+	line-height:107%;}
+ /* Page Definitions */
+ @page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.WordSection1
+	{page:WordSection1;}
+-->
+</style><style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:"Segoe UI";
+	panose-1:2 11 5 2 4 2 4 2 2 3;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:8.0pt;
+	margin-left:0in;
+	line-height:107%;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+.MsoChpDefault
+	{font-family:"Calibri",sans-serif;}
+.MsoPapDefault
+	{margin-bottom:8.0pt;
+	line-height:107%;}
+ /* Page Definitions */
+ @page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.WordSection1
+	{page:WordSection1;}
+-->
+</style><style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:"Segoe UI";
+	panose-1:2 11 5 2 4 2 4 2 2 3;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:8.0pt;
+	margin-left:0in;
+	line-height:107%;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+.MsoChpDefault
+	{font-family:"Calibri",sans-serif;}
+.MsoPapDefault
+	{margin-bottom:8.0pt;
+	line-height:107%;}
+ /* Page Definitions */
+ @page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.WordSection1
+	{page:WordSection1;}
+-->
+</style>]]></td>
+</tr>
+<tr valign="top" height="50" >
+<td tEditID="c1r3" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r3" locked="0" >
+<![CDATA[<div style=""><span style="background-color: rgb(255, 255, 255);"><font face="Arial, sans-serif" style="" size="2">{!$Label.Core_MDF_EmailTemp_Footer}</font></span></div><div style=""><span style="background-color: rgb(255, 255, 255);"><font face="Arial, sans-serif" size="2">{!$Label.Core_MDF_EmailTemp_Footer2}</font></span></div><div style=""><div style=""><span style="background-color: rgb(255, 255, 255);"><font face="Arial, sans-serif" style="" size="2">{!$Label.Core_MDF_EmailTemp_Footer3}</font></span></div></div><div style="font-size: 12pt; font-family: arial;"><br><div style="font-size: 12pt; font-family: arial;"><span style="font-size: medium; background-color: rgb(255, 255, 255);"><br></span></div></div>]]></td>
+</tr>
+</table>

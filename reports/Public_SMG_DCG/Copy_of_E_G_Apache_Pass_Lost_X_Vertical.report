@@ -138,7 +138,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>telecommunications,technology,media,consulting,software and services</value>
+            <value>telecommunications,technology,media,consulting</value>
         </criteriaItems>
         <criteriaItems>
             <column>PRODUCT_NAME</column>

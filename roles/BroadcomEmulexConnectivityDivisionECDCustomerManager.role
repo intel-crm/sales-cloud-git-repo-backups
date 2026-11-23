@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>Broadcom Emulex Connectivity Division (ECD) Customer Manager</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>Broadcom Emulex Connectivity Division (ECD) Customer Manager</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>BroadcomEmulexConnectivityDivisionECDCustomerExecutive</parentRole>
+</Role>

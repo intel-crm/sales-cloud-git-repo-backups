@@ -1,0 +1,5 @@
+<apex:page standardController="Case__x" recordSetVar="externalCases">
+    <flow:interview name="Case_Create_Service_Cloud_Case">
+        <apex:param name="recordId" value="x06U000001VHVgAIAX"/>
+    </flow:interview>
+</apex:page>

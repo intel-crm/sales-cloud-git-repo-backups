@@ -10,37 +10,31 @@
         <field>Opportunity.Core_Support_Requested__c</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_At_Risk_Created_Date__c</field>
-    </columns>
-    <columns>
         <field>ACCOUNT_NAME</field>
-    </columns>
-    <columns>
-        <field>OPPORTUNITY_NAME</field>
-    </columns>
-    <columns>
-        <field>FULL_NAME</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Sales_Groups__c</field>
     </columns>
     <columns>
+        <field>OPPORTUNITY_NAME</field>
+    </columns>
+    <columns>
         <field>STAGE_NAME</field>
     </columns>
     <columns>
+        <field>FULL_NAME</field>
+    </columns>
+    <columns>
         <field>CLOSE_DATE</field>
-    </columns>
-    <columns>
-        <field>OpportunityLineItem.Core_BU_Product_Segment_Old__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Product_Segment__c</field>
     </columns>
     <columns>
         <field>PRODUCT_NAME</field>
     </columns>
     <columns>
         <field>OpportunityLineItem.Core_Status__c</field>
+    </columns>
+    <columns>
+        <field>OpportunityLineItem.Core_BU_Product_Segment_Old__c</field>
     </columns>
     <columns>
         <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
@@ -56,6 +50,9 @@
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>OpportunityLineItem.Core_At_Risk__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_At_Risk_Created_Date__c</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
@@ -107,7 +104,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>,Design: Original,Design: Secondary,Deal: Scale-enable,Deal: Sell-through,Deal: Sell-to</value>
+            <value>,Design: Original,Design: Secondary,Deal: Sell-through,Deal: Sell-to</value>
         </criteriaItems>
         <criteriaItems>
             <column>OpportunityLineItem.Core_Status__c</column>
@@ -148,7 +145,7 @@
         <field>OpportunityLineItem.Core_Risk_Priority__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>2020_21 IOTG Prod. AtRisk_P_C_S_Last7day</name>
+    <name>2020 IOTG Prod. AT RISK_P_C_S_Last 7 day</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -172,7 +169,7 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2021-12-31</endDate>
+        <endDate>2020-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
         <startDate>2020-01-01</startDate>
     </timeFrameFilter>

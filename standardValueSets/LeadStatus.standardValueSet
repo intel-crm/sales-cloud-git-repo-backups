@@ -2,6 +2,30 @@
 <StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <sorted>false</sorted>
     <standardValue>
+        <fullName>New</fullName>
+        <default>false</default>
+        <label>New</label>
+        <converted>false</converted>
+    </standardValue>
+    <standardValue>
+        <fullName>On-Hold</fullName>
+        <default>false</default>
+        <label>On-Hold</label>
+        <converted>false</converted>
+    </standardValue>
+    <standardValue>
+        <fullName>Disqualified</fullName>
+        <default>false</default>
+        <label>Disqualified</label>
+        <converted>false</converted>
+    </standardValue>
+    <standardValue>
+        <fullName>On_Hold</fullName>
+        <default>false</default>
+        <label>On_Hold</label>
+        <converted>false</converted>
+    </standardValue>
+    <standardValue>
         <fullName>Marketing Engaged Lead</fullName>
         <default>true</default>
         <label>Marketing Engaged Lead</label>
@@ -17,18 +41,6 @@
         <fullName>Sales Generated Lead</fullName>
         <default>false</default>
         <label>Sales Generated Lead</label>
-        <converted>false</converted>
-    </standardValue>
-    <standardValue>
-        <fullName>Tele Accepted Lead</fullName>
-        <default>false</default>
-        <label>Tele Accepted Lead</label>
-        <converted>false</converted>
-    </standardValue>
-    <standardValue>
-        <fullName>Tele Qualified Lead</fullName>
-        <default>false</default>
-        <label>Tele Qualified Lead</label>
         <converted>false</converted>
     </standardValue>
     <standardValue>
@@ -92,5 +104,17 @@
         <default>false</default>
         <label>Rejected</label>
         <converted>false</converted>
+    </standardValue>
+    <standardValue>
+        <fullName>Sales Qualified</fullName>
+        <default>false</default>
+        <label>Sales Qualified</label>
+        <converted>false</converted>
+    </standardValue>
+    <standardValue>
+        <fullName>Converted To Opportunity</fullName>
+        <default>false</default>
+        <label>Converted To Opportunity</label>
+        <converted>true</converted>
     </standardValue>
 </StandardValueSet>

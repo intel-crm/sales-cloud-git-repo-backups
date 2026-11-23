@@ -88,18 +88,6 @@
     <columns>
         <field>Opportunity.Core_Technical_Owner_Manager__c</field>
     </columns>
-    <columns>
-        <field>OPPORTUNITY_ID</field>
-    </columns>
-    <columns>
-        <field>ACCOUNT_OWNER</field>
-    </columns>
-    <columns>
-        <field>ACCOUNT_ID</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Sales_Groups__c</field>
-    </columns>
     <filter>
         <criteriaItems>
             <column>STAGE_NAME</column>

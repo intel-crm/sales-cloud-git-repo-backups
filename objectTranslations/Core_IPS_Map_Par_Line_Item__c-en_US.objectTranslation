@@ -141,10 +141,6 @@
         <label><!-- isPARRequest --></label>
         <name>Core_isPARRequest__c</name>
     </fields>
-    <fields>
-        <label><!-- Map Item Internal Assigned Subject --></label>
-        <name>Map_Item_internal_Subject__c</name>
-    </fields>
     <recordTypes>
         <description><!-- Record Type for Managed Access Policies (MAP) --></description>
         <label><!-- MAP --></label>

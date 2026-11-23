@@ -11,8 +11,16 @@
         <value xsi:type="xsd:boolean">true</value>
     </values>
     <values>
+        <field>Pricing_ObjectAPI_Nm__c</field>
+        <value xsi:type="xsd:string">Pricing_Performance_Metric__c</value>
+    </values>
+    <values>
         <field>Pricing_ObjectAPI_Pkl__c</field>
         <value xsi:type="xsd:string">Pricing_Performance_Metric__c</value>
+    </values>
+    <values>
+        <field>Pricing_RecordTypeAPI_Nm__c</field>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>Pricing_RecordTypeAPI_Pkl__c</field>

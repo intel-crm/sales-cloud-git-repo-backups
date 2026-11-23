@@ -155,6 +155,15 @@
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
     <fields>
+        <fullName>Pricing_AI_Host_Node_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>This field indicates that the Account is of  AI Host Node</description>
+        <label>AI Host Node</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>Pricing_ASMO_Country__c</fullName>
         <description>This field will check for country Canada and United States</description>
         <formula>IF(OR(INCLUDES(Pricing_End_Customer_Country_Nm__c,&quot;Canada&quot;), INCLUDES(Pricing_End_Customer_Country_Nm__c,&quot;United States&quot;)),true, false)</formula>
@@ -223,8 +232,59 @@
         <type>Checkbox</type>
     </fields>
     <fields>
+        <fullName>Pricing_Change_Request_Type_Nm__c</fullName>
+        <label>Change Request Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Volume Change</fullName>
+                    <default>false</default>
+                    <label>Volume Change</label>
+                </value>
+                <value>
+                    <fullName>Price Change</fullName>
+                    <default>false</default>
+                    <label>Price Change</label>
+                </value>
+                <value>
+                    <fullName>Date Change</fullName>
+                    <default>false</default>
+                    <label>Date Change</label>
+                </value>
+                <value>
+                    <fullName>Payable Quantity Change</fullName>
+                    <default>false</default>
+                    <label>Payable Quantity Change</label>
+                </value>
+                <value>
+                    <fullName>Consumption Reason Change</fullName>
+                    <default>false</default>
+                    <label>Consumption Reason Change</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
         <fullName>Pricing_Decision_Table_Name_Txt__c</fullName>
         <description>This fields the lookup/decision table name specific to this Record</description>
+        <externalId>false</externalId>
+        <label>Decision Table Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Pricing_Decision_Table_Name__c</fullName>
         <externalId>false</externalId>
         <label>Decision Table Name</label>
         <length>255</length>
@@ -286,7 +346,6 @@
     </fields>
     <fields>
         <fullName>Pricing_Is_Routing_Rule_Active_Ind__c</fullName>
-        <description>This fields determines whether the Routing Rule is Active/Inactive.</description>
         <formula>IF((TODAY() &gt;=  Pricing_Routing_Rule_Start_Dt__c &amp;&amp; TODAY() &lt;  Pricing_Routing_Rule_End_Dt__c &amp;&amp; Owner:User.IsActive == true) , true, false)</formula>
         <label>Is Routing Rule Active</label>
         <trackHistory>false</trackHistory>
@@ -304,7 +363,7 @@
         <valueSet>
             <restricted>true</restricted>
             <valueSetDefinition>
-                <sorted>true</sorted>
+                <sorted>false</sorted>
                 <value>
                     <fullName>Consumer Retail Pull</fullName>
                     <default>false</default>
@@ -412,6 +471,20 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Pricing_Overall_Quote_Quantity_Calc_Nbr__c</fullName>
+        <externalId>false</externalId>
+        <formula>Pricing_Overall_Quote_Quantity_Nbr__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Total Requested Quantity Calc</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Pricing_Overall_Quote_Quantity_Nbr__c</fullName>
         <description>This field holds the Total Requested Quantity</description>
         <externalId>false</externalId>
@@ -456,35 +529,20 @@
                     <default>false</default>
                     <label>Small Volume Quotes - Data Center Xeon® CPU</label>
                 </value>
-                <value>
-                    <fullName>Optane™ PMem</fullName>
-                    <default>false</default>
-                    <label>Optane™ PMem</label>
-                </value>
-                <value>
-                    <fullName>Optane™ SSD</fullName>
-                    <default>false</default>
-                    <label>Optane™ SSD</label>
-                </value>
-                <value>
-                    <fullName>Data Center GPU</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Data Center GPU</label>
-                </value>
-                <value>
-                    <fullName>Data Center Xeon® CPU</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Data Center Xeon® CPU</label>
-                </value>
-                <value>
-                    <fullName>Ethernet</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Ethernet</label>
-                </value>
             </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Pricing_Program_Types_Nm__c</fullName>
+        <description>This holds the Quote Program Type</description>
+        <label>Program Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Quote_Program</valueSetName>
         </valueSet>
     </fields>
     <fields>
@@ -535,21 +593,31 @@
         <valueSet>
             <restricted>true</restricted>
             <valueSetDefinition>
-                <sorted>true</sorted>
-                <value>
-                    <fullName>High Touch</fullName>
-                    <default>false</default>
-                    <label>High Touch</label>
-                </value>
+                <sorted>false</sorted>
                 <value>
                     <fullName>Low Touch</fullName>
                     <default>false</default>
                     <label>Low Touch</label>
                 </value>
                 <value>
+                    <fullName>High Touch</fullName>
+                    <default>false</default>
+                    <label>High Touch</label>
+                </value>
+                <value>
                     <fullName>No Touch</fullName>
                     <default>false</default>
                     <label>No Touch</label>
+                </value>
+                <value>
+                    <fullName>CSP</fullName>
+                    <default>false</default>
+                    <label>CSP</label>
+                </value>
+                <value>
+                    <fullName>Exclusion</fullName>
+                    <default>false</default>
+                    <label>Exclusion</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -597,19 +665,18 @@
         <trackTrending>false</trackTrending>
         <type>Date</type>
     </fields>
+    <fields>
+        <fullName>Routing_Rule_Active_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>This fields determines whether the Routing Rule is Active/Inactive.</description>
+        <label>Routing Rule Active</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
     <label>Routing Rule</label>
     <listViews>
         <fullName>All</fullName>
-        <columns>NAME</columns>
-        <columns>Pricing_Route_Rule_Name_Txt__c</columns>
-        <columns>Pricing_Is_Routing_Rule_Active_Ind__c</columns>
-        <columns>Pricing_EndCustomer_CSP_List_Ind__c</columns>
-        <columns>Pricing_EndCust_Exclusion_List_Ind__c</columns>
-        <columns>Pricing_EndCust_HighTouch_List_Ind__c</columns>
-        <columns>Pricing_Is_Covered_Account_Ind__c</columns>
-        <columns>Pricing_ASMO_Country__c</columns>
-        <columns>Pricing_Program_Type_Nm__c</columns>
-        <columns>Pricing_Routing_Output_Criteria_Nm__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>

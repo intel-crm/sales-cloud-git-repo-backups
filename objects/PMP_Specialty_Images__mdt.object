@@ -2,19 +2,11 @@
 <CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
     <description>Used to store the specialty url</description>
     <fields>
-        <fullName>Grey_Image_URL__c</fullName>
-        <description>Used in L3 storefront page</description>
-        <fieldManageability>DeveloperControlled</fieldManageability>
-        <label>Grey Image URL</label>
-        <required>false</required>
-        <type>Url</type>
-    </fields>
-    <fields>
         <fullName>PMP_Account_Specialty_Name__c</fullName>
         <externalId>false</externalId>
         <fieldManageability>DeveloperControlled</fieldManageability>
         <label>PMP Account Specialty Name</label>
-        <length>100</length>
+        <length>255</length>
         <required>true</required>
         <type>Text</type>
         <unique>false</unique>
@@ -26,7 +18,7 @@
         <fieldManageability>DeveloperControlled</fieldManageability>
         <inlineHelpText>Enter chinese value</inlineHelpText>
         <label>PMP Specialty Name Chinese</label>
-        <length>100</length>
+        <length>255</length>
         <required>false</required>
         <type>Text</type>
         <unique>false</unique>
@@ -38,7 +30,7 @@
         <fieldManageability>DeveloperControlled</fieldManageability>
         <inlineHelpText>Enter Japanese value</inlineHelpText>
         <label>PMP Specialty Name Japanese</label>
-        <length>100</length>
+        <length>255</length>
         <required>false</required>
         <type>Text</type>
         <unique>false</unique>

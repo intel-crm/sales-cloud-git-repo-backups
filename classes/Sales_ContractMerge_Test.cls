@@ -1,0 +1,546 @@
+/*********************************************************************************************************************
+Class Name    : Sales_ContractMerge_Test
+Version       : 1.0
+Created Date  : March 2022
+Function      :  
+Modification Log :
+* Developer                 Date                    Description
+* ---------------------------------------------------------------------------------------------------------
+* Nilesh Mithapelli           30-Mar-2022           TWC3144-308 :SPIKE: Contract Merge
+* *********************************************************************************************************************/
+@isTest
+public class Sales_ContractMerge_Test {
+    public static Order createOrdersWithAllAccAndQuote(Id accId, Id pricebookId, String OrderType, Id quoteId, Account soldToAcc, Account shipto, Account endCustmer){                                      
+        Account accSoldTo = soldToAcc;
+        Order o = new Order();
+        o.Type= OrderType;
+        o.RecordTypeId= Order.sObjectType.getDescribe().getRecordTypeInfosByDeveloperName().get('Sales_Order_Record').getRecordTypeId();
+        o.Name = 'Test Order ';
+        o.Status = 'Draft';
+        o.Sales_status__c = 'Draft Order';  
+        o.EffectiveDate = system.today();
+        o.EndDate = system.today() + 365;
+        o.AccountId = accSoldTo.ParentId;
+        o.Sales_Order_Reason__c='Non Stocking Order';
+        o.Pricebook2Id =  pricebookId ;  
+        o.Sales_PO_Number_Txt__c = '687900PONUMBR';
+        o.Sales_Header_Special_Instructions_Dsc__c = 'abc';
+        Account accShipTo = shipto;
+        o.Sales_Sold_To_Account__c=accSoldTo.Id;
+        o.Sales_Ship_To_Account__c = accShipTo.Id;
+        o.Sales_Shipping_Condition_Txt__c = '1Q';
+        o.Sales_Incoterms_Txt__c = 'PCT';
+        o.Sales_Payment_Terms__c = 'KB';
+        o.Sales_Req_Ship_Date_Dt__c = system.today() + 2;
+        o.Sales_SoldTo_Street_Dsc__c = '3695  Green Avenue';
+        o.Sales_SoldTo_City_Txt__c = 'Oakland';
+        o.Sales_SoldTo_State_Txt__c = 'California';
+        o.Sales_SoldTo_Province_Txt__c = 'CA';
+        o.Sales_SoldTo_Zip_Txt__c = '94621';
+        o.Sales_SoldTo_Country_Txt__c = 'United States';
+        o.Sales_ShipTo_Street_Dsc__c = '1893  Orchard Street';
+        o.Sales_ShipTo_City_Txt__c = 'RODNEY';
+        o.Sales_ShipTo_State_Txt__c = 'Michigan';
+        o.Sales_ShipTo_Province_Txt__c = 'MI';
+        o.Sales_ShipTo_Zip_Txt__c = '49342';
+        o.Sales_ShipTo_Country_Txt__c = 'United States';
+        Account endCustAccount = endCustmer;
+        o.Sales_End_Customer_Account__c=endCustAccount.Id;
+        o.Sales_End_Customer_Account_2_Txt__c=endCustAccount.Name;
+        o.Sales_End_Customer_City_Txt__c=endCustAccount.BillingCity;
+        o.Sales_End_Customer_Country_Txt__c=endCustAccount.BillingCountry;
+        o.Sales_End_Customer_Province_Txt__c=endCustAccount.BillingCountry;
+        o.Sales_End_Customer_State_Txt__c=endCustAccount.BillingState;
+        o.Sales_End_Customer_Street_Dsc__c=endCustAccount.BillingStreet;
+        o.Sales_End_Customer_Zip_Txt__c=endCustAccount.BillingPostalCode;
+        o.SBQQ__Quote__c=quoteId;
+        insert o;  
+        return o;
+    }
+    Public static List<Sales_License__c> createSalesLicense(Id accId, Id orderId, Id ordProdId, Id prodId ,Id ContractId){
+        List<Sales_License__c> liclist = new List<Sales_License__c>();
+        Sales_License__c licobj = new Sales_License__c();
+        licobj.Sales_License_Account__c = accId;
+        licobj.Sales_License_Order__c = orderId;
+        licobj.Sales_License_Order_Product__c=ordProdId;
+        licobj.Sales_License_Contract__c = ContractId;
+        licobj.Sales_License_Start_Date_Dt__c = System.Today();
+        licobj.Sales_License_Status__c = 'Licensed';
+        licobj.Sales_License_Product__c = prodId;
+        licobj.Sales_License_Type__c = 'Original';
+        liclist.add(licobj);
+        insert liclist;
+        return liclist;
+    }
+    Public static List<Sales_License_Order_Product__c> createSalesLicenseOrdProd(Id licenseId,Id ContractId,Id OrderProductId){
+        List<Sales_License_Order_Product__c> licOrdProdList = new List<Sales_License_Order_Product__c>();
+        Sales_License_Order_Product__c licOrdProd = new Sales_License_Order_Product__c();
+        licOrdProd.Sales_License__c = licenseId;
+        licOrdProd.Sales_License_ContractId__c = ContractId;
+        licOrdProd.Sales_Order_Product__c = OrderProductId;
+        licOrdProd.Sales_License_Expiration_Date_Dt__c = System.Today()+10;
+        licOrdProd.Sales_Quantity__c = 1;
+        licOrdProdList.add(licOrdProd);
+        insert licOrdProdList;
+        return licOrdProdList;
+    }
+    public static SBQQ__Quote__c createQuote(Id distributorId,Id oppId, Id endCusId,Id pbId){
+        SBQQ__Quote__c quote = new SBQQ__Quote__c();
+        quote.RecordTypeId= SBQQ__Quote__c.sObjectType.getDescribe().getRecordTypeInfosByDeveloperName().get('PSG_Quote_New').getRecordTypeId();
+        quote.core_cpq_active_cb__c = true;
+        quote.SBQQ__Primary__c = true;
+        quote.SBQQ__PriceBook__c = pbId;
+        quote.core_cpq_business_unit_nm__c = 'Military';
+        quote.SBQQ__Type__c = 'Quote';
+        quote.core_cpq_status_txt__c = 'Approved';
+        quote.SBQQ__Opportunity2__c = oppId;
+        quote.core_cpq_quote_type_nm__c='Design Win';
+        quote.SBQQ__StartDate__c = date.today()+10;
+        quote.SBQQ__SubscriptionTerm__c = 12;
+        quote.SBQQ__Status__c = 'Approved';
+        quote.core_cpq_end_customer_nm__c=endCusId;
+        quote.SBQQ__Account__c=distributorId;
+        insert quote;
+        return quote;
+    }
+    public static Core_Product_Ext_Attribute__c createProductExtAttributeWithLicTypeExpDuration(String toolType, Id lcGroupid, String licType, Integer expDuration){
+        Core_Product_Ext_Attribute__c l1 = new Core_Product_Ext_Attribute__c();
+        l1.Core_SW_Lic_Enforcement_Method_Nm__c = 'File';
+        l1.Core_Prod_Tool_Type_Nm__c = toolType;
+        l1.Core_SW_Lic_Type_Nm__c = licType ; 
+        l1.Core_SW_Prod_Max_Rehost_Cnt__c = 1;
+        l1.Core_SW_Prod_Web_Dsc__c='Test';
+        l1.Core_SW_Lic_File_Data_Encryption_Std_Cd__c = '1DES' ;
+        l1.Core_SW_Prod_Avail_To_TL_ORD_ENBLMT_Ind__c = true;
+        l1.Core_SW_Prod_Temporary_Lic_Allowed_Ind__c = true;
+        l1.Core_SW_Prod_Expiration_Duration_Nbr__c = 25;
+        l1.Core_SW_Lic_Generator_Parameter_Txt__c = 'testing';
+        l1.Core_SW_Prod_Expiration_Duration_Nbr__c = expDuration;
+        insert l1;
+        return l1;
+    }
+    public static List<Contract> createContractAssociatedwithQuoteOrder(Id accId, Id orderId, Id quoteId){
+        List<Contract> conList = new List<Contract>();
+        Contract con = new Contract(); 
+        con.AccountId = accId;
+        con.SBQQ__Order__c = orderId;
+        con.SBQQ__Quote__c = quoteId;
+        con.StartDate = System.today();
+        con.Status = 'Draft';
+        con.ContractTerm = 12; 
+        conList.add(con);
+        insert conList;
+        return conList;
+    }
+    public static SBQQ__Subscription__c createSubscription(Id contractId,Id productId,Id accountId){
+        SBQQ__Subscription__c subs = new SBQQ__Subscription__c();
+        subs.SBQQ__Product__c = productId;
+        subs.SBQQ__Quantity__c = 3;
+        subs.SBQQ__BundledQuantity__c = 3;
+        subs.SBQQ__RenewalQuantity__c = 3;
+        subs.SBQQ__Contract__c = contractId;
+        subs.SBQQ__Account__c = accountId;
+        subs.SBQQ__SubscriptionEndDate__c = System.today();
+        subs.SBQQ__SubscriptionEndDate__c = System.today().addDays(3);
+        insert subs;
+        return subs;
+    }
+    public static SBQQ__ProductFeature__c createCorpFeature(Id corpId){
+        SBQQ__ProductFeature__c corpFeature = new SBQQ__ProductFeature__c();
+        corpFeature.SBQQ__ConfiguredSKU__c = corpId;
+        corpFeature.SBQQ__OptionSelectionMethod__c = 'Dynamic';
+        corpFeature.SBQQ__MinOptionCount__c = 1;
+        corpFeature.SBQQ__Number__c = 1;
+        insert corpFeature;
+        return corpFeature;
+    }
+    @isTest
+    static void updateContractOnLicensesTest(){
+        List<Sales_License_Generator__c> gen = Sales_TestFactory_Utility.createLiceneseGenerator();
+        List<Sales_License_Group__c> lcgrp = Sales_TestFactory_Utility.createLiceneseGroup(gen[0].id);
+        Core_Product_Ext_Attribute__c lc = createProductExtAttributeWithLicTypeExpDuration('BASE',lcgrp[0].id,'Fixed',45);
+        Product2 prod = Sales_TestFactory_Utility.createDifferentProducts(lc.id, '', 'myCorp');
+        PricebookEntry standardPrice = Sales_TestFactory_Utility.createPriceBookEntry(prod.Id, Test.getStandardPricebookId());        
+        Account intelSoldto = Sales_TestFactory_Utility.createIntelSoldAccount();
+        Account endcust = Sales_TestFactory_Utility.createEndCustAccount();
+        Contact con = Sales_TestFactory_Utility.createContact(endcust.Id);
+        Account intelShipto = Sales_TestFactory_Utility.createIntelShipAccount();
+        List<Account> acList = new List<Account>();
+        acList.add(intelSoldto);
+        acList.add(intelShipto);
+        TriggerHandler.bypass('Core_AccountHandler');
+        insert acList;        
+        List<Account> accList2 = new list<Account>();
+        Account soldTo = Sales_TestFactory_Utility.createSoldToAccount();
+        Account shipTo = Sales_TestFactory_Utility.createShipToAccount();
+        Account intelAccount = Sales_TestFactory_Utility.createAccount();
+        accList2.add(soldTo);
+        accList2.add(shipTo);
+        Account parentEndCustomerAccount = Sales_TestDataFactory.createParentEndCustomerAccount();
+        parentEndCustomerAccount.Core_Sub_Industry__c = null;
+        accList2.add(parentEndCustomerAccount);
+        Account accEndPricing = Sales_TestDataFactory.createDirectEndCustomerPricingParentAccount();
+        accList2.add(accEndPricing);
+        TriggerHandler.bypass('Core_AccountHandler');
+        insert accList2;               
+        Account endCustomerObj = Sales_TestFactory_Utility.createDiffPSGDownstreamAccounts('End Customer','End User');  
+        endCustomerObj.Core_Sales_Group__c = 'PSG Sales';
+        endCustomerObj.Core_PSG_Account__c = true;
+        endCustomerObj.Core_Account_Type__c = 'End Customer';
+        endCustomerObj.Core_Direct_Pricing_Parent_Id__c = accEndPricing.Id;
+        endCustomerObj.Core_Direct_Legal_Parent_Id__c = accEndPricing.Id;
+        Account endCustomer = Sales_TestDataFactory.createDefaultAccount();
+        endCustomer.Core_PSG_Account__c = true;
+        endCustomer.Core_Account_Type__c = 'End Customer';
+        endCustomer.Core_Direct_Pricing_Parent_Id__c = accEndPricing.Id;
+        endCustomer.Core_Direct_Legal_Parent_Id__c = accEndPricing.Id;
+        Account endCustForOrder = Sales_TestDataFactory.createEndCustomerAccount();
+        endCustForOrder.ParentId = parentEndCustomerAccount.Id;
+        List<Account> endCustAccList = new List<Account>();
+        endCustAccList.add(endCustForOrder);
+        endCustAccList.add(endCustomer);
+        endCustAccList.add(endCustomerObj);
+        TriggerHandler.bypass('Core_AccountHandler');
+        insert endCustAccList;                       
+        Core_Account_SoldTo_ShipTo_Rel__c relation_Ship_Sold = Sales_TestDataFactory.accSoldToShipToRelationshipRecord(new Map<String,String>{
+            'Core_Sold_To_Account__c'  =>  soldTo.Id,
+                'Core_Ship_To_Account__c'  =>  shipTo.Id
+                });
+        insert relation_Ship_Sold;
+        TriggerHandler.bypass('Core_OpportunityHandler');
+        TriggerHandler.bypass('QuoteTriggerHandler');
+        TriggerHandler.clearAllBypasses();
+        Order o1 = createOrdersWithAllAccAndQuote(intelAccount.Id, Test.getStandardPricebookId(),'Licensed Tool Order',null, soldTo, shipTo, endCustForOrder); 
+        TriggerHandler.bypass('Sales_OrderTriggerHandler');
+        TriggerHandler.clearAllBypasses();
+        TriggerHandler.bypass('Sales_OrderProductTriggerHandler');
+        Contract cont = Sales_TestDataFactory.createContract();
+        cont.AccountId=intelSoldto.Id;
+        cont.Sales_Program__c = 'PSG';
+        cont.StartDate = system.today();
+        cont.EndDate = System.today().addDays(3);
+        cont.Status = 'Draft';
+        TriggerHandler.bypass('Sales_ContractTriggerHandler');
+        insert cont;
+        OrderItem op1 = Sales_TestDataFactory.createOrderItem(); 
+        TriggerHandler.bypass('Sales_OrderProductTriggerHandler');
+        TriggerHandler.bypass('Sales_OrderTriggerHandler');
+        op1.OrderId = o1.Id;
+        op1.Quantity = 2;
+        op1.UnitPrice = 240;
+        op1.Product2Id = prod.Id;
+        op1.PricebookEntryId = standardPrice.Id;
+        op1.SBQQ__Contract__c=cont.id;
+        op1.Sales_Contact__c = con.Id;
+        Test.startTest(); 
+        insert op1;
+        SBQQ__Subscription__c subs = createSubscription(cont.Id,prod.Id,intelSoldto.Id);
+        Sales_License__c license =Sales_TestDataFactory.createLicenseRecord();
+        license.Sales_License_Product__c = prod.id;
+        license.Sales_License_Contract__c = cont.id;
+        license.Sales_License_Order_Product__c = op1.id;
+        TriggerHandler.bypass('Sales_LicenseTriggerHandler');
+        insert license;
+        TriggerHandler.clearAllBypasses();
+        Sales_License_Order_Product__c  licenseproduct =Sales_TestDataFactory.createLicenseOrderProductRecord();
+        licenseproduct.Sales_Order_Product__c = op1.id;
+        licenseproduct.Sales_License__c = license.id;
+        licenseproduct.Sales_License_ContractId__c = cont.id;
+        insert licenseproduct;
+        Contract cont1 = Sales_TestDataFactory.createContract();
+        cont1.AccountId=intelSoldto.Id;
+        cont1.Sales_Program__c = 'PSG';
+        cont1.StartDate = system.today();
+        cont1.EndDate = System.today().addDays(3);
+        cont1.Status = 'Draft';
+        TriggerHandler.bypass('Sales_ContractTriggerHandler');
+        insert cont1;
+        SBQQ__Subscription__c subs2 = createSubscription(cont1.Id,prod.Id,intelSoldto.Id);
+        List<String> licList = new List<String>();
+        licList.add(license.Id);
+        Sales_ContractMerge.updateContractOnLicenses(licList,cont1.Id);
+        TriggerHandler.clearAllBypasses();   
+        Test.stopTest();
+    }
+    @isTest
+    public static void createCorpSubsTest(){
+        TriggerHandler.bypass('Core_AccountHandler');
+        Account accObj = Sales_TestFactory_Utility.createAccount(); 
+        Core_Product_Ext_Attribute__c prodExt1 = Sales_TestDataFactory.createProductExternalAttributes();
+        prodExt1.put('Core_SW_Lic_Type_Nm__c','FLOAT');
+        prodExt1.put('Core_Prod_Tool_Type_Nm__c','CORPORATE');
+        insert prodExt1 ;
+        Product2 prod1 = Sales_TestDataFactory.createProduct();
+        prod1.put('Core_Product_Ext_Attribute_Id__c',prodExt1.Id);
+        insert prod1;
+        Contract cont = Sales_TestDataFactory.createContract();
+        cont.AccountId=accObj.Id;
+        cont.Sales_Program__c = 'PSG';
+        cont.StartDate = system.today();
+        cont.EndDate = System.today().addDays(3);
+        cont.Status = 'Draft';
+        TriggerHandler.bypass('Sales_ContractTriggerHandler');
+        insert cont;
+        Sales_ContractMerge.corporateSubscriptionCreation(prod1.Id,cont.Id);
+    }
+    @isTest
+    public static void updateNonCorpSubsTest(){
+        TriggerHandler.bypass('Core_AccountHandler');
+        Account accObj = Sales_TestFactory_Utility.createAccount(); 
+        Core_Product_Ext_Attribute__c prodExt1 = Sales_TestDataFactory.createProductExternalAttributes();
+        prodExt1.put('Core_SW_Lic_Type_Nm__c','FLOAT');
+        prodExt1.put('Core_Prod_Tool_Type_Nm__c','CORPORATE');
+        insert prodExt1 ;
+        Product2 prod1 = Sales_TestDataFactory.createProduct();
+        prod1.put('Core_Product_Ext_Attribute_Id__c',prodExt1.Id);
+        insert prod1;
+        Core_Product_Ext_Attribute__c prodExt2 = Sales_TestDataFactory.createProductExternalAttributes();
+        prodExt2.put('Core_SW_Lic_Type_Nm__c','FLOAT');
+        prodExt2.put('Core_Prod_Tool_Type_Nm__c','BASE');
+        insert prodExt2 ;
+        Product2 prod2 = Sales_TestDataFactory.createProduct();
+        prod2.put('Core_Product_Ext_Attribute_Id__c',prodExt2.Id);
+        insert prod2;
+        Contract cont = Sales_TestDataFactory.createContract();
+        cont.AccountId=accObj.Id;
+        cont.Sales_Program__c = 'PSG';
+        cont.StartDate = system.today();
+        cont.EndDate = System.today().addDays(3);
+        cont.Status = 'Draft';
+        TriggerHandler.bypass('Sales_ContractTriggerHandler');
+        insert cont;
+        SBQQ__ProductFeature__c corpFeatureId = createCorpFeature(prod1.Id);
+        SBQQ__Subscription__c subs = createSubscription(cont.Id,prod1.Id,accObj.Id);
+        SBQQ__Subscription__c subs1 = createSubscription(cont.Id,prod2.Id,accObj.Id);
+        Sales_ContractMerge.updateNonCorpSubscription(cont.Id,prod1.Id,subs.Id,corpFeatureId.Id);
+    }  
+    @isTest
+    static void updateContractOnLicensesDifferentTest(){
+        List<Sales_License_Generator__c> gen = Sales_TestFactory_Utility.createLiceneseGenerator();
+        List<Sales_License_Group__c> lcgrp = Sales_TestFactory_Utility.createLiceneseGroup(gen[0].id);
+        Core_Product_Ext_Attribute__c lc = createProductExtAttributeWithLicTypeExpDuration('BASE',lcgrp[0].id,'Fixed',45);
+        Product2 prod = Sales_TestFactory_Utility.createDifferentProducts(lc.id, '', 'myCorp');
+        prod.Core_OPN__c = 'SW-QUARTUS-SE-FIX';
+        update prod;
+        Core_Product_Ext_Attribute__c lc2 = createProductExtAttributeWithLicTypeExpDuration('BASE',lcgrp[0].id,'Float',45);
+        Product2 prod2 = Sales_TestFactory_Utility.createDifferentProducts(lc2.id, '', 'myCorp1');
+        PricebookEntry standardPrice = Sales_TestFactory_Utility.createPriceBookEntry(prod.Id, Test.getStandardPricebookId());        
+        PricebookEntry standardPrice2 = Sales_TestFactory_Utility.createPriceBookEntry(prod2.Id, Test.getStandardPricebookId());        
+        Account intelSoldto = Sales_TestFactory_Utility.createIntelSoldAccount();
+        Account endcust = Sales_TestFactory_Utility.createEndCustAccount();
+        Contact con = Sales_TestFactory_Utility.createContact(endcust.Id);
+        Account intelShipto = Sales_TestFactory_Utility.createIntelShipAccount();
+        List<Account> acList = new List<Account>();
+        acList.add(intelSoldto);
+        acList.add(intelShipto);
+        TriggerHandler.bypass('Core_AccountHandler');
+        insert acList;        
+        List<Account> accList2 = new list<Account>();
+        Account soldTo = Sales_TestFactory_Utility.createSoldToAccount();
+        Account shipTo = Sales_TestFactory_Utility.createShipToAccount();
+        Account intelAccount = Sales_TestFactory_Utility.createAccount();
+        accList2.add(soldTo);
+        accList2.add(shipTo);
+        Account parentEndCustomerAccount = Sales_TestDataFactory.createParentEndCustomerAccount();
+        parentEndCustomerAccount.Core_Sub_Industry__c = null;
+        accList2.add(parentEndCustomerAccount);
+        Account accEndPricing = Sales_TestDataFactory.createDirectEndCustomerPricingParentAccount();
+        accList2.add(accEndPricing);
+        TriggerHandler.bypass('Core_AccountHandler');
+        insert accList2;               
+        Account endCustomerObj = Sales_TestFactory_Utility.createDiffPSGDownstreamAccounts('End Customer','End User');  
+        endCustomerObj.Core_Sales_Group__c = 'PSG Sales';
+        endCustomerObj.Core_PSG_Account__c = true;
+        endCustomerObj.Core_Account_Type__c = 'End Customer';
+        endCustomerObj.Core_Direct_Pricing_Parent_Id__c = accEndPricing.Id;
+        endCustomerObj.Core_Direct_Legal_Parent_Id__c = accEndPricing.Id;
+        Account endCustomer = Sales_TestDataFactory.createDefaultAccount();
+        endCustomer.Core_PSG_Account__c = true;
+        endCustomer.Core_Account_Type__c = 'End Customer';
+        endCustomer.Core_Direct_Pricing_Parent_Id__c = accEndPricing.Id;
+        endCustomer.Core_Direct_Legal_Parent_Id__c = accEndPricing.Id;
+        Account endCustForOrder = Sales_TestDataFactory.createEndCustomerAccount();
+        endCustForOrder.ParentId = parentEndCustomerAccount.Id;
+        List<Account> endCustAccList = new List<Account>();
+        endCustAccList.add(endCustForOrder);
+        endCustAccList.add(endCustomer);
+        endCustAccList.add(endCustomerObj);
+        TriggerHandler.bypass('Core_AccountHandler');
+        TriggerHandler.bypass('Core_DirectAccount_Handler');
+        insert endCustAccList;                       
+        Core_Account_SoldTo_ShipTo_Rel__c relation_Ship_Sold = Sales_TestDataFactory.accSoldToShipToRelationshipRecord(new Map<String,String>{
+            'Core_Sold_To_Account__c'  =>  soldTo.Id,
+                'Core_Ship_To_Account__c'  =>  shipTo.Id
+                });
+        insert relation_Ship_Sold;
+        TriggerHandler.bypass('Core_OpportunityHandler');
+        TriggerHandler.bypass('QuoteTriggerHandler');
+        TriggerHandler.clearAllBypasses();
+        Order o1 = createOrdersWithAllAccAndQuote(intelAccount.Id, Test.getStandardPricebookId(),'Licensed Tool Order',null, soldTo, shipTo, endCustForOrder); 
+        TriggerHandler.bypass('Sales_OrderTriggerHandler');
+        TriggerHandler.clearAllBypasses();
+        TriggerHandler.bypass('Sales_OrderProductTriggerHandler');
+        Contract cont = Sales_TestDataFactory.createContract();
+        cont.AccountId=intelSoldto.Id;
+        cont.Sales_Program__c = 'PSG';
+        cont.StartDate = system.today();
+        cont.EndDate = System.today().addDays(3);
+        cont.Status = 'Draft';
+        TriggerHandler.bypass('Sales_ContractTriggerHandler');
+        insert cont;
+        OrderItem op1 = Sales_TestDataFactory.createOrderItem(); 
+        TriggerHandler.bypass('Sales_OrderProductTriggerHandler');
+        TriggerHandler.bypass('Sales_OrderTriggerHandler');
+        op1.OrderId = o1.Id;
+        op1.Quantity = 2;
+        op1.UnitPrice = 240;
+        op1.Product2Id = prod.Id;
+        op1.PricebookEntryId = standardPrice.Id;
+        op1.SBQQ__Contract__c=cont.id;
+        op1.Sales_Contact__c = con.Id;
+        Test.startTest(); 
+        insert op1;
+        SBQQ__Subscription__c subs = createSubscription(cont.Id,prod.Id,intelSoldto.Id);
+        Sales_License__c license =Sales_TestDataFactory.createLicenseRecord();
+        license.Sales_License_Product__c = prod.id;
+        license.Sales_License_Contract__c = cont.id;
+        license.Sales_License_Order_Product__c = op1.id;
+        TriggerHandler.bypass('Sales_LicenseTriggerHandler');
+        insert license;
+        TriggerHandler.clearAllBypasses();
+        Sales_License_Order_Product__c  licenseproduct =Sales_TestDataFactory.createLicenseOrderProductRecord();
+        licenseproduct.Sales_Order_Product__c = op1.id;
+        licenseproduct.Sales_License__c = license.id;
+        licenseproduct.Sales_License_ContractId__c = cont.id;
+        insert licenseproduct;
+        Contract cont1 = Sales_TestDataFactory.createContract();
+        cont1.AccountId=intelSoldto.Id;
+        cont1.Sales_Program__c = 'PSG';
+        cont1.StartDate = system.today();
+        cont1.EndDate = System.today().addDays(3);
+        cont1.Status = 'Draft';
+        TriggerHandler.bypass('Sales_ContractTriggerHandler');
+        insert cont1;
+        SBQQ__Subscription__c subs3 = createSubscription(cont1.Id,prod2.Id,intelSoldto.Id);
+        List<String> licList = new List<String>();
+        licList.add(license.Id);
+        Sales_ContractMerge.updateContractOnLicenses(licList,cont1.Id);
+        TriggerHandler.clearAllBypasses();   
+        Test.stopTest();
+    }
+    @isTest
+    static void updateContractOnLicensesDifferentCorpTest(){
+        List<Sales_License_Generator__c> gen = Sales_TestFactory_Utility.createLiceneseGenerator();
+        List<Sales_License_Group__c> lcgrp = Sales_TestFactory_Utility.createLiceneseGroup(gen[0].id);
+        Core_Product_Ext_Attribute__c lc = createProductExtAttributeWithLicTypeExpDuration('BASE',lcgrp[0].id,'Fixed',45);
+        Product2 prod = Sales_TestFactory_Utility.createDifferentProducts(lc.id, '', 'myCorp');
+        prod.Core_OPN__c = 'SW-QUARTUS-SE-FIX';
+        update prod;
+        Core_Product_Ext_Attribute__c lc2 = createProductExtAttributeWithLicTypeExpDuration('CORPORATE',lcgrp[0].id,'Float',45);
+        Product2 prod2 = Sales_TestFactory_Utility.createDifferentProducts(lc2.id, '', 'myCorp1');
+        prod2.Core_OPN__c = 'SW-CORPORATE';
+        update prod2;
+        PricebookEntry standardPrice = Sales_TestFactory_Utility.createPriceBookEntry(prod.Id, Test.getStandardPricebookId());        
+        PricebookEntry standardPrice2 = Sales_TestFactory_Utility.createPriceBookEntry(prod2.Id, Test.getStandardPricebookId());        
+        Account intelSoldto = Sales_TestFactory_Utility.createIntelSoldAccount();
+        Account endcust = Sales_TestFactory_Utility.createEndCustAccount();
+        Contact con = Sales_TestFactory_Utility.createContact(endcust.Id);
+        Account intelShipto = Sales_TestFactory_Utility.createIntelShipAccount();
+        List<Account> acList = new List<Account>();
+        acList.add(intelSoldto);
+        acList.add(intelShipto);
+        TriggerHandler.bypass('Core_AccountHandler');
+        insert acList;        
+        List<Account> accList2 = new list<Account>();
+        Account soldTo = Sales_TestFactory_Utility.createSoldToAccount();
+        Account shipTo = Sales_TestFactory_Utility.createShipToAccount();
+        Account intelAccount = Sales_TestFactory_Utility.createAccount();
+        accList2.add(soldTo);
+        accList2.add(shipTo);
+        Account parentEndCustomerAccount = Sales_TestDataFactory.createParentEndCustomerAccount();
+        parentEndCustomerAccount.Core_Sub_Industry__c = null;
+        accList2.add(parentEndCustomerAccount);
+        Account accEndPricing = Sales_TestDataFactory.createDirectEndCustomerPricingParentAccount();
+        accList2.add(accEndPricing);
+        TriggerHandler.bypass('Core_AccountHandler');
+        insert accList2;               
+        Account endCustomerObj = Sales_TestFactory_Utility.createDiffPSGDownstreamAccounts('End Customer','End User');  
+        endCustomerObj.Core_Sales_Group__c = 'PSG Sales';
+        endCustomerObj.Core_PSG_Account__c = true;
+        endCustomerObj.Core_Account_Type__c = 'End Customer';
+        endCustomerObj.Core_Direct_Pricing_Parent_Id__c = accEndPricing.Id;
+        endCustomerObj.Core_Direct_Legal_Parent_Id__c = accEndPricing.Id;
+        Account endCustomer = Sales_TestDataFactory.createDefaultAccount();
+        endCustomer.Core_PSG_Account__c = true;
+        endCustomer.Core_Account_Type__c = 'End Customer';
+        endCustomer.Core_Direct_Pricing_Parent_Id__c = accEndPricing.Id;
+        endCustomer.Core_Direct_Legal_Parent_Id__c = accEndPricing.Id;
+        Account endCustForOrder = Sales_TestDataFactory.createEndCustomerAccount();
+        endCustForOrder.ParentId = parentEndCustomerAccount.Id;
+        List<Account> endCustAccList = new List<Account>();
+        endCustAccList.add(endCustForOrder);
+        endCustAccList.add(endCustomer);
+        endCustAccList.add(endCustomerObj);
+        TriggerHandler.bypass('Core_AccountHandler');
+        insert endCustAccList;                       
+        Core_Account_SoldTo_ShipTo_Rel__c relation_Ship_Sold = Sales_TestDataFactory.accSoldToShipToRelationshipRecord(new Map<String,String>{
+            'Core_Sold_To_Account__c'  =>  soldTo.Id,
+                'Core_Ship_To_Account__c'  =>  shipTo.Id
+                });
+        insert relation_Ship_Sold;
+        TriggerHandler.bypass('Core_OpportunityHandler');
+        TriggerHandler.bypass('QuoteTriggerHandler');
+        TriggerHandler.clearAllBypasses();
+        Order o1 = createOrdersWithAllAccAndQuote(intelAccount.Id, Test.getStandardPricebookId(),'Licensed Tool Order',null, soldTo, shipTo, endCustForOrder); 
+        TriggerHandler.bypass('Sales_OrderTriggerHandler');
+        TriggerHandler.clearAllBypasses();
+        TriggerHandler.bypass('Sales_OrderProductTriggerHandler');
+        Contract cont = Sales_TestDataFactory.createContract();
+        cont.AccountId=intelSoldto.Id;
+        cont.Sales_Program__c = 'PSG';
+        cont.StartDate = system.today();
+        cont.EndDate = System.today().addDays(3);
+        cont.Status = 'Draft';
+        TriggerHandler.bypass('Sales_ContractTriggerHandler');
+        insert cont;
+        OrderItem op1 = Sales_TestDataFactory.createOrderItem(); 
+        TriggerHandler.bypass('Sales_OrderProductTriggerHandler');
+        TriggerHandler.bypass('Sales_OrderTriggerHandler');
+        op1.OrderId = o1.Id;
+        op1.Quantity = 2;
+        op1.UnitPrice = 240;
+        op1.Product2Id = prod.Id;
+        op1.PricebookEntryId = standardPrice.Id;
+        op1.SBQQ__Contract__c=cont.id;
+        op1.Sales_Contact__c = con.Id;
+        Test.startTest(); 
+        insert op1;
+        SBQQ__Subscription__c subs = createSubscription(cont.Id,prod.Id,intelSoldto.Id);
+        Sales_License__c license =Sales_TestDataFactory.createLicenseRecord();
+        license.Sales_License_Product__c = prod.id;
+        license.Sales_License_Contract__c = cont.id;
+        license.Sales_License_Order_Product__c = op1.id;
+        TriggerHandler.bypass('Sales_LicenseTriggerHandler');
+        insert license;
+        TriggerHandler.clearAllBypasses();
+        Sales_License_Order_Product__c  licenseproduct =Sales_TestDataFactory.createLicenseOrderProductRecord();
+        licenseproduct.Sales_Order_Product__c = op1.id;
+        licenseproduct.Sales_License__c = license.id;
+        licenseproduct.Sales_License_ContractId__c = cont.id;
+        insert licenseproduct;
+        Contract cont1 = Sales_TestDataFactory.createContract();
+        cont1.AccountId=intelSoldto.Id;
+        cont1.Sales_Program__c = 'PSG';
+        cont1.StartDate = system.today();
+        cont1.EndDate = System.today().addDays(3);
+        cont1.Status = 'Draft';
+        TriggerHandler.bypass('Sales_ContractTriggerHandler');
+        insert cont1;
+        SBQQ__Subscription__c subs3 = createSubscription(cont1.Id,prod2.Id,intelSoldto.Id);
+        List<String> licList = new List<String>();
+        licList.add(license.Id);
+        Sales_ContractMerge.updateContractOnLicenses(licList,cont1.Id);
+        TriggerHandler.clearAllBypasses();   
+        Test.stopTest();
+    }
+}

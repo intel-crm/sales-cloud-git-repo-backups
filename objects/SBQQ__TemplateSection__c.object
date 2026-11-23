@@ -226,6 +226,11 @@
                     <default>false</default>
                     <label>Primary</label>
                 </value>
+                <value>
+                    <fullName>core_cpq_if_TP__c</fullName>
+                    <default>false</default>
+                    <label>core_cpq_if_TP__c</label>
+                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -293,6 +298,11 @@
                     <fullName>core_cpq_Parent_Quote_Flag_for_documen__c</fullName>
                     <default>false</default>
                     <label>core_cpq_Parent_Quote_Flag_for_documen__c</label>
+                </value>
+                <value>
+                    <fullName>Pricing_Status_Nm__c</fullName>
+                    <default>false</default>
+                    <label>Pricing_Status_Nm__c</label>
                 </value>
             </valueSetDefinition>
         </valueSet>

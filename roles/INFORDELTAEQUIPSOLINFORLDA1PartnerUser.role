@@ -6,5 +6,5 @@
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>INFORDELTA-EQUIP SOL INFOR LDA1 Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>INFORDELTAEQUIPSOLINFORLDA1PartnerManager</parentRole>
 </Role>

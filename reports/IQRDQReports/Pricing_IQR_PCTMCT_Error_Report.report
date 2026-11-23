@@ -7,12 +7,16 @@
         <field>Core_Log_Entry__c.Core_Origin__c</field>
     </columns>
     <columns>
-        <field>Core_Log_Entry__c.Core_sObjectId__c</field>
-    </columns>
-    <columns>
-        <field>Core_Log_Entry__c.Core_Message__c</field>
+        <field>CUST_NAME</field>
     </columns>
     <filter>
+        <criteriaItems>
+            <column>Core_Log_Entry__c.Core_Project__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Intel Quote Request(IQR)</value>
+        </criteriaItems>
         <criteriaItems>
             <column>Core_Log_Entry__c.Core_Details__c</column>
             <columnToColumn>false</columnToColumn>
@@ -20,21 +24,9 @@
             <operator>contains</operator>
             <value>PCT/MCT</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>Core_Log_Entry__c.Core_Project__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Intel Quote Request (IQR)</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
-    <format>Summary</format>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>Core_Log_Entry__c.Core_Project__c</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
+    <format>Tabular</format>
     <name>IQR - PCT/MCT Error</name>
     <params>
         <name>co</name>
@@ -47,6 +39,6 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CUST_CREATED_DATE</dateColumn>
-        <interval>INTERVAL_PREVCURFY</interval>
+        <interval>INTERVAL_CUSTOM</interval>
     </timeFrameFilter>
 </Report>

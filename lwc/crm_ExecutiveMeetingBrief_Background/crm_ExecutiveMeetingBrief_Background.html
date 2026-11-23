@@ -1,0 +1,175 @@
+<template>
+    <div class="sow-table">
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+            <thead if:false={EMBBackgroundedit}>
+                <tr class="slds-line-height_reset">
+                    <th scope="col">
+                        <div class="slds-truncate" title="Agenda Topic">Agenda Topic
+                            <span class="help-icon" title="Agenda Topic Name">
+                                <lightning-icon icon-name="utility:info" size="x-small" alternative-text="Help"></lightning-icon>
+                            </span>
+                        </div>
+                    </th>
+                    <th scope="col">
+                        <div class="slds-truncate" title="Background">Background
+                            <span class="help-icon" title="No more than 2-3 bullets per background section aligned to the meeting objectives">
+                                <lightning-icon icon-name="utility:info" size="x-small" alternative-text="Help"></lightning-icon>
+                            </span>
+                        </div>
+                    </th>
+                    <th scope="col">
+                        <div class="slds-truncate" title="Reactive Talking Points">Reactive Talking Points
+                            <span class="help-icon" title="3 TOPICS MAX PER MEETING HALF HOUR">
+                                <lightning-icon icon-name="utility:info" size="x-small" alternative-text="Help"></lightning-icon>
+                            </span>
+                        </div>
+                    </th>
+                    <th scope="col">
+                        <div class="slds-truncate" title="Proactive Talking Points">Proactive Talking Points
+                            <span class="help-icon" title="3 TOPICS MAX PER MEETING HALF HOUR">
+                                <lightning-icon icon-name="utility:info" size="x-small" alternative-text="Help"></lightning-icon>
+                            </span>
+                        </div>
+                    </th>
+                    <th scope="col" class="action-column">
+                        <div class="slds-truncate" title="Actions">Actions</div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody if:false={EMBBackgroundedit}>
+                <template for:each={backgroundItems} for:item="background" if:false={background.isEditing}>
+                    <tr key={background.id}>
+                        <td class="fixed-width">
+                            <template if:false={background.isEditing}>
+                                <div>{background.agendaTopic}</div>
+                            </template>
+                        </td>
+                        <td class="fixed-width">
+                            <template if:false={background.isEditing}>
+                                <div>
+                                    <lightning-formatted-rich-text value={background.backgroundObjective1}
+                                        formats={formats}></lightning-formatted-rich-text>
+                                </div>
+                            </template>
+                        </td>
+                        <td class="fixed-width">
+                            <template if:false={background.isEditing}>
+                                <div>
+                                    <lightning-formatted-rich-text value={background.reactiveTalkingPoints}
+                                        formats={formats}></lightning-formatted-rich-text>
+                                </div>
+                            </template>
+                        </td>
+                        <td class="fixed-width">
+                            <template if:false={background.isEditing}>
+                                <div>
+                                    <lightning-formatted-rich-text value={background.proactiveTalkingPoints}
+                                        formats={formats}></lightning-formatted-rich-text>
+                                </div>
+                            </template>
+                        </td>
+                        <td class="action-column">
+                            <div class="action-column">
+                                <lightning-button-icon icon-name="utility:edit" alternative-text="Edit"
+                                    onclick={handleEdit} data-id={background.id}></lightning-button-icon>
+                                <lightning-button-icon icon-name="utility:delete" alternative-text="Remove"
+                                    onclick={handleDeleteRow} data-id={background.id}></lightning-button-icon>
+                            </div>
+                        </td>
+                    </tr>
+                </template>
+            </tbody>
+            <thead if:true={EMBBackgroundedit}>
+                <tr class="slds-line-height_reset">
+                    <th scope="col">
+                        <div class="slds-truncate" title="Agenda Topic">Agenda Topic</div>
+                    </th>
+                    <th scope="col">
+                        <div class="slds-truncate" title="Background">Background</div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody if:true={EMBBackgroundedit}>
+                <template for:each={backgroundItems} for:item="background" if:true={background.isEditing}>
+                    <tr key={background.id}>
+                        <td class="fixed-width">
+                            <template if:true={background.isEditing}>
+                                <lightning-textarea class="custom-input" data-id={background.id}
+                                    data-field="agendaTopic" value={background.agendaTopic}
+                                    onchange={handleInputChange}>
+                                </lightning-textarea>
+                            </template>
+                        </td>
+                        <td class="fixed-width">
+                            <template if:true={background.isEditing}>
+                                <lightning-input-rich-text class="custom-input" value={background.backgroundObjective1} formats={formats}
+                                    data-id={background.id} data-field="backgroundObjective1"
+                                    onchange={handleInputChange} rows="10" placeholder="No more than 2-3 bullets per background section aligned to the meeting objectives">
+                                </lightning-input-rich-text>
+                            </template>
+                        </td>
+                    </tr>
+                </template>
+            </tbody>
+            <thead if:true={EMBBackgroundedit}>
+                <tr class="slds-line-height_reset">
+                    <th scope="col">
+                        <div class="slds-truncate" title="Reactive Talking Points">Reactive Talking Points</div>
+                    </th>
+                    <th scope="col">
+                        <div class="slds-truncate" title="Proactive Talking Points">Proactive Talking Points</div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody if:true={EMBBackgroundedit}>
+                <template for:each={backgroundItems} for:item="background" if:true={background.isEditing}>
+                    <tr key={background.id}>
+                        <td class="fixed-width">
+                            <template if:true={background.isEditing}>
+                                <lightning-input-rich-text class="rich-text-wrapper" label="Reactive Talking Points"
+                                    formats={formats} value={background.reactiveTalkingPoints}
+                                    data-id={background.id} data-field="reactiveTalkingPoints"
+                                    onchange={handleInputChange} placeholder="3 TOPICS MAX PER MEETING HALF HOUR">
+                                </lightning-input-rich-text>
+                            </template>
+                        </td>
+                        <td class="fixed-width">
+                            <template if:true={background.isEditing}>
+                                <lightning-input-rich-text class="rich-text-wrapper"
+                                    label="Proactive Talking Points" formats={formats}
+                                    value={background.proactiveTalkingPoints} data-id={background.id}
+                                    data-field="proactiveTalkingPoints" onchange={handleInputChange} placeholder="3 TOPICS MAX PER MEETING HALF HOUR">
+                                </lightning-input-rich-text>
+                            </template>
+                        </td>
+                    </tr>
+                </template>
+            </tbody>
+            <thead if:true={EMBBackgroundedit}>
+                <tr class="slds-line-height_reset">
+                    <th scope="col">
+                        <div class="slds-truncate" title="Actions">Actions</div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody if:true={EMBBackgroundedit}>
+                <template for:each={backgroundItems} for:item="background" if:true={background.isEditing}>
+                    <tr key={background.id}>
+                        <td class="action-column">
+                            <lightning-button-icon icon-name="utility:edit" alternative-text="Edit"
+                                onclick={handleEdit} data-id={background.id}></lightning-button-icon>
+                            <lightning-button-icon icon-name="utility:delete" alternative-text="Remove"
+                                onclick={handleDeleteRow} data-id={background.id}></lightning-button-icon>
+                        </td>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+    </div>
+    <div class="button-container slds-p-around_medium">
+        <lightning-button label="Cancel" onclick={handleCancel} ></lightning-button>
+        <lightning-button label="Save" variant="brand" onclick={handleSave} class="slds-m-left_small"></lightning-button>
+        <lightning-button label="Add New" onclick={handleAddRow} class="slds-m-left_small"></lightning-button>
+
+    </div>
+</template>

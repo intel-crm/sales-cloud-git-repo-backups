@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>Edit</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>EMP of Americo Tome</description>
+    <description>EMP of Regie Rodrigues</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>EMP_11692233_Francine_Gaeski</name>
     <opportunityAccessLevel>Edit</opportunityAccessLevel>
-    <parentRole>EMP_10775444_Americo_Tome</parentRole>
+    <parentRole>EMP_10634978_Regie_Rodrigues</parentRole>
 </Role>

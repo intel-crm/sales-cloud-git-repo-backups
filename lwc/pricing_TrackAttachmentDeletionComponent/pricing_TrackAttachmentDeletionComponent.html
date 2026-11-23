@@ -1,0 +1,21 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 11-12-2024
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+    <lightning-card title="Deletion Tracker">
+        <template if:true={deletionLogs}>
+            <ul>
+                <template for:each={deletionLogs} for:item="log">
+                    <li key={log}>{log}</li>
+                </template>
+            </ul>
+        </template>
+        <template if:false={deletionLogs}>
+            <p>No deletions recorded for this session.</p>
+        </template>
+    </lightning-card>
+</template>

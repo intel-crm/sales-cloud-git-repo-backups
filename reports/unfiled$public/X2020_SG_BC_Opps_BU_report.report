@@ -28,7 +28,7 @@
         <titleSize>18</titleSize>
     </chart>
     <columns>
-        <field>Opportunity.Core_Opportunity_Owner__c</field>
+        <field>ROLLUP_DESCRIPTION</field>
     </columns>
     <columns>
         <field>ACCOUNT_NAME</field>
@@ -54,6 +54,13 @@
     </columns>
     <filter>
         <criteriaItems>
+            <column>ROLLUP_DESCRIPTION</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>EMP of Swee Hoon Chan</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>STAGE_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
@@ -66,20 +73,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
             <value>vineet giri</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OWNER_MANAGER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>swee hoon chan</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>AMOUNT</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value></value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

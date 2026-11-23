@@ -49,6 +49,8 @@ public class Pricing_RestAPI_LoggingUtil_Test{
             RestRequest request1 = (RestRequest)System.jSON.deserialize(Core_RestAPI_TestUtilities.REQUEST_TEMPLATE, RestRequest.class);
             request1.requestUri ='https://intel.my.salesforce.com//services/apexrest/v1.0/cases';
             request1.httpMethod = 'GET';
+            //request1.remoteAddress = '198.175.68.37';
+            //request1.headers= '{"Content-Type":"application/json","Postman-Token":"6cc70844-7f01-4566-8d83-0ac47be8d51a","X-Cnection":"close","Cache-Control":"no-cache","X-Salesforce-SIP":"198.175.68.37","Accept-Encoding":"gzip, deflate","Host":"intel--crmdevcase.cs92.my.salesforce.com","User-Agent":"PostmanRuntime/7.1.1","CipherSuite":"ECDHE-RSA-AES256-GCM-SHA384 TLSv1.2 256-bits","Accept":"*/*"}';
             RestContext.request = request1;
             Pricing_RestAPI_Response response = new Pricing_RestAPI_Response();
             response.successContent = new List<Pricing_RestAPI_SuccessContent>();

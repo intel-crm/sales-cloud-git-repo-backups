@@ -38,15 +38,9 @@
     <columns>
         <field>MEMBER_ROLE</field>
     </columns>
-    <columns>
-        <field>Opportunity.Core_Opportunity_Type__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Opportunity_Products__c</field>
-    </columns>
     <description>Report of opps where TSFAEs are team members</description>
     <filter>
-        <booleanFilter>1 OR 2 OR 3 OR 4 OR 5 OR 6 OR 7 OR 8 OR 9 OR 10</booleanFilter>
+        <booleanFilter>(1 OR 2 OR 3 OR 4) AND 5</booleanFilter>
         <criteriaItems>
             <column>MEMBER_NAME</column>
             <columnToColumn>false</columnToColumn>
@@ -66,48 +60,6 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Karl Neumayer</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>MEMBER_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Klaus Engelhardt</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>MEMBER_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Thomas Siebert</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>MEMBER_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Rolf Richter</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>MEMBER_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Hardik Shah</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>MEMBER_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Shivani Saravanan</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>MEMBER_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
             <value>Christian Faerber</value>
         </criteriaItems>
         <criteriaItems>
@@ -115,19 +67,26 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Konstantin Dobrosolets</value>
+            <value>Karl Neumayer</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>AMOUNT</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>greaterOrEqual</operator>
+            <value>500000</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Tabular</format>
-    <name>FAEs Team members</name>
+    <name>TSFAEs Team members</name>
     <params>
         <name>terr</name>
         <value>all</value>
     </params>
     <params>
         <name>include</name>
-        <value>all</value>
+        <value>open</value>
     </params>
     <params>
         <name>co</name>
@@ -140,8 +99,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2099-12-31</endDate>
+        <endDate>2021-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2022-01-01</startDate>
+        <startDate>2020-01-01</startDate>
     </timeFrameFilter>
 </Report>

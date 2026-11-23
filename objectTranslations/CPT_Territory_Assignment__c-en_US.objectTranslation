@@ -19,12 +19,21 @@
     </fields>
     <fields>
         <help><!-- Value is in whole dollars. --></help>
-        <label><!-- BR - CCG Target --></label>
+        <label><!-- BR - CCPG Target --></label>
         <name>CPT_BR_CCG_Target__c</name>
     </fields>
     <fields>
-        <label><!-- BR - CCG --></label>
+        <label><!-- BR - CCPG --></label>
         <name>CPT_BR_CCG__c</name>
+    </fields>
+    <fields>
+        <help><!-- Value is in whole dollars. --></help>
+        <label><!-- BR - CSV AMS Target --></label>
+        <name>CPT_BR_CSV_AMS_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- BR - CSV AMS --></label>
+        <name>CPT_BR_CSV_AMS__c</name>
     </fields>
     <fields>
         <help><!-- Value is in whole dollars. --></help>
@@ -64,6 +73,33 @@
     </fields>
     <fields>
         <help><!-- Value is in whole dollars. --></help>
+        <label><!-- BR - NEX Target --></label>
+        <name>CPT_BR_NEX_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- BR - NEX --></label>
+        <name>CPT_BR_NEX__c</name>
+    </fields>
+    <fields>
+        <help><!-- Value is in whole dollars. --></help>
+        <label><!-- BR - SATG Federal Target --></label>
+        <name>CPT_BR_SATG_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- BR - SATG Federal --></label>
+        <name>CPT_BR_SATG__c</name>
+    </fields>
+    <fields>
+        <help><!-- Value is in whole dollars. --></help>
+        <label><!-- CR - CCG Chan Ptr Target --></label>
+        <name>CPT_CR_CCG_Chan_Ptr_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- CR - CCG Chan Ptr --></label>
+        <name>CPT_CR_CCG_Chan_Ptr__c</name>
+    </fields>
+    <fields>
+        <help><!-- Value is in whole dollars. --></help>
         <label><!-- CR - CCG Consumer Target --></label>
         <name>CPT_CR_CCG_Consumer_Target__c</name>
     </fields>
@@ -85,8 +121,35 @@
         <name>CPT_CR_CCG_Target_V2__c</name>
     </fields>
     <fields>
+        <help><!-- Value is in whole dollars. --></help>
+        <label><!-- CR - DCAI Chan Ptr Target --></label>
+        <name>CPT_CR_DCAI_Chan_Ptr_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- CR - DCAI Chan Ptr --></label>
+        <name>CPT_CR_DCAI_Chan_Ptr__c</name>
+    </fields>
+    <fields>
         <label><!-- CR - DCAI Target --></label>
         <name>CPT_CR_DCAI_Target_V2__c</name>
+    </fields>
+    <fields>
+        <help><!-- Value is in whole dollars. --></help>
+        <label><!-- CR - DCAI nwCSP Target --></label>
+        <name>CPT_CR_DCAI_nwCSP_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- CR - DCAI nwCSP --></label>
+        <name>CPT_CR_DCAI_nwCSP__c</name>
+    </fields>
+    <fields>
+        <help><!-- Value is in whole dollars. --></help>
+        <label><!-- CR - NEX Comms Target --></label>
+        <name>CPT_CR_NEX_Comms_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- CR - NEX Comms --></label>
+        <name>CPT_CR_NEX_Comms__c</name>
     </fields>
     <fields>
         <label><!-- CR - NEX Target --></label>
@@ -115,6 +178,26 @@
     <fields>
         <label><!-- CR - Retail --></label>
         <name>CPT_CR_Retail__c</name>
+    </fields>
+    <fields>
+        <help><!-- Enter value in whole dollars. --></help>
+        <label><!-- DR - AXG Target --></label>
+        <name>CPT_DR_AXG_Target__c</name>
+    </fields>
+    <fields>
+        <help><!-- Enter value in whole dollars. --></help>
+        <label><!-- DR - CCG Target --></label>
+        <name>CPT_DR_CCG_Target__c</name>
+    </fields>
+    <fields>
+        <help><!-- Enter value in whole dollars. --></help>
+        <label><!-- DR - DCAI Target --></label>
+        <name>CPT_DR_DCAI_Target__c</name>
+    </fields>
+    <fields>
+        <help><!-- Enter value in whole dollars. --></help>
+        <label><!-- DR - NEX Target --></label>
+        <name>CPT_DR_NEX_Target__c</name>
     </fields>
     <fields>
         <label><!-- Employee Name --></label>
@@ -189,6 +272,14 @@
         <name>CPT_MarVol_Next_Gen_DCG_GNR__c</name>
     </fields>
     <fields>
+        <label><!-- MARGIN - Account Target --></label>
+        <name>CPT_Margin_Account_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- MARGIN - Account --></label>
+        <name>CPT_Margin_Account__c</name>
+    </fields>
+    <fields>
         <label><!-- Quota Period --></label>
         <name>CPT_Quota_Period__c</name>
     </fields>
@@ -210,7 +301,35 @@
         <label><!-- Unique Identifier --></label>
         <name>CPT_Unique_Identifier__c</name>
     </fields>
+    <fields>
+        <label><!-- VOL - Next Gen Target --></label>
+        <name>CPT_Vol_Next_Gen_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- VOL - Next Gen --></label>
+        <name>CPT_Vol_Next_Gen__c</name>
+    </fields>
+    <fields>
+        <label><!-- Wins -Deal Target --></label>
+        <name>CPT_Wins_Deal_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- Wins - Deal --></label>
+        <name>CPT_Wins_Deal__c</name>
+    </fields>
+    <fields>
+        <label><!-- Wins -Design Target --></label>
+        <name>CPT_Wins_Design_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- Wins - Design --></label>
+        <name>CPT_Wins_Design__c</name>
+    </fields>
     <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- This Territory Assignment cannot be updated because its Quota Setup is Completed. --></errorMessage>
+        <name>CPT_Block_TA_Update_When_QS_Completed</name>
+    </validationRules>
     <validationRules>
         <errorMessage><!-- The Billings Revenue Target for the Business Unit (BU) must exceed $0 to assign the BU to the employee. --></errorMessage>
         <name>CPT_Prevent_BR_Territory_BU_Update</name>
@@ -220,8 +339,24 @@
         <name>CPT_Prevent_CR_Territory_BU_Update</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- The Margin Target for the Business Unit (BU) must exceed $0 to assign the BU to the employee. --></errorMessage>
+        <name>CPT_Prevent_MARGIN_Territory_BU_Update</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- For Plans 120 and 122, select either Consumption Revenue OEM or Partner, not both, on this Territory Assignment. --></errorMessage>
+        <name>CPT_Prevent_Multiple_TT_CR_120and122</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- For Plan 240, select either Consumption Revenue Partner or Retail, not both, on this Territory Assignment. --></errorMessage>
+        <name>CPT_Prevent_Multiple_TT_CR_240</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- You do not have permission to make updates to the Target field. --></errorMessage>
         <name>CPT_Prevent_Territory_Target_Update</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The Volume Target for the Business Unit (BU) must exceed $0 to assign the BU to the employee. --></errorMessage>
+        <name>CPT_Prevent_VOL_Territory_BU_Update</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- This record is locked. Please contact the Commissions Admin if you have any questions. --></errorMessage>

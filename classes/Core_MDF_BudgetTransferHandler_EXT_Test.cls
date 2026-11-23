@@ -17,10 +17,8 @@ public class Core_MDF_BudgetTransferHandler_EXT_Test {
     @isTest static void validateTransferAllocationAmount(){
         
         // Creating channel program with utility class
-        ChannelProgram cp1 = Core_MDF_CCP_TestDataUtility.createProgram ('Client','Client CoMarketing Fund', true);//US - TWC702-14285: Worked on this test class (no logic/structure change)
-        cp1.Core_MDF_Technical_Program_Name__c='';
-        
-
+        ChannelProgram cp1 = Core_MDF_CCP_TestDataUtility.createProgram ('Client Co-Marketing Fund','Client CoMarketing Fund', true);
+        ChannelProgram cp2 = Core_MDF_CCP_TestDataUtility.createProgram ('Data Center Co-Marketing Fund','Data Center CoMarketing Fund', true);
         
         // Creating Account with utility class
         Account acc1 = Core_MDF_CCP_TestDataUtility.createIntelAccount('Test Account 1', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, true);
@@ -39,22 +37,9 @@ public class Core_MDF_BudgetTransferHandler_EXT_Test {
         accList.add(acc3);
         Database.update(accList);
         
-        //adding bypass feature to bypass access validation
-			List<String> bypassFunctionKeys = new List<String>();
-            bypassFunctionKeys.add('Bypass_MDF_Budget_Access_Validation');
-            bypassFunctionKeys.add('Bypass_MDF_Budget_Status_Validation');
-            bypassFunctionKeys.add('ByPass_BlockLegacyBudgetCreation');
-            
-            Set<String> myset1 = new Set<String>();
-            List<String> result1 = new List<String>();
-            myset1.addAll(bypassFunctionKeys);
-            result1.addAll(myset1);
-            
-            List<Core_Trigger_Executions__c> bypassfunctinalitylist1 = Core_MDF_CCP_TestDataUtility.byPassFeature(result1,true,true);
         
-        PartnerMarketingBudget pbm1 = Core_MDF_CCP_TestDataUtility.createBudget('Test Budget 1', Core_MDF_CCP_TestDataUtility.Budget_Record_Type, acc2.Id, cp1.Id, 3000, Date.newInstance(2019,01,01), Date.newInstance(2019,12,31), false);
-        pbm1.Core_MDF_Budget_Type_Txt__c='CCF 1.0';
-        insert pbm1;
+        PartnerMarketingBudget pbm1 = Core_MDF_CCP_TestDataUtility.createBudget('Test Budget 1', Core_MDF_CCP_TestDataUtility.Budget_Record_Type, acc2.Id, cp1.Id, 3000, Date.newInstance(2019,01,01), Date.newInstance(2019,12,31), true);
+        
         Profile systemAdminProfile = [SELECT Id FROM Profile WHERE Name='System Administrator' limit 1];
         
         // Creating User with utility class 
@@ -65,8 +50,7 @@ public class Core_MDF_BudgetTransferHandler_EXT_Test {
         
         System.runAs(usr){
             
-            
-            pbm1.Core_MDF_Budget_Status__c = '';
+            pbm1.Core_MDF_Budget_Status__c = 'Approved';
             Database.update(pbm1);
             
             pbm1.Core_MDF_Budget_Status__c = 'Released';
@@ -79,21 +63,10 @@ public class Core_MDF_BudgetTransferHandler_EXT_Test {
         }
     }
     @isTest static void validateTransferAllocationAmountForPendingReviewBudget(){
-        //adding bypass feature to bypass access validation
-			List<String> bypassFunctionKeys = new List<String>();
-            bypassFunctionKeys.add('Bypass_MDF_Budget_Access_Validation');
-            bypassFunctionKeys.add('Bypass_MDF_Budget_Status_Validation');
-            
-            Set<String> myset1 = new Set<String>();
-            List<String> result1 = new List<String>();
-            myset1.addAll(bypassFunctionKeys);
-            result1.addAll(myset1);
-            
-            List<Core_Trigger_Executions__c> bypassfunctinalitylist1 = Core_MDF_CCP_TestDataUtility.byPassFeature(result1,true,true);
         
        // Creating channel program with utility class
-        ChannelProgram cp1 = Core_MDF_CCP_TestDataUtility.createProgram ('Client ','Client CoMarketing Fund', true);//US - TWC702-14285: Worked on this test class (no logic/structure change)
-        ChannelProgram cp2 = Core_MDF_CCP_TestDataUtility.createProgram ('Datacenter','Data Center CoMarketing Fund', true);//US - TWC702-14285: Worked on this test class (no logic/structure change)
+        ChannelProgram cp1 = Core_MDF_CCP_TestDataUtility.createProgram ('Client Co-Marketing Fund','Client CoMarketing Fund', true);
+        ChannelProgram cp2 = Core_MDF_CCP_TestDataUtility.createProgram ('Data Center Co-Marketing Fund','Data Center CoMarketing Fund', true);
         
         // Creating Account with utility class
         Account acc1 = Core_MDF_CCP_TestDataUtility.createIntelAccount('Test Account 1', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, true);
@@ -113,9 +86,8 @@ public class Core_MDF_BudgetTransferHandler_EXT_Test {
         Database.update(accList);
         
         
-        PartnerMarketingBudget pbm1 = Core_MDF_CCP_TestDataUtility.createBudget('Test Budget 1', Core_MDF_CCP_TestDataUtility.Budget_Record_Type, acc2.Id, cp1.Id, 3000, Date.newInstance(2019,01,01), Date.newInstance(2019,12,31), false);
-       pbm1.Core_MDF_Budget_Type_Txt__c='OEM CMP';//US - TWC702-14285: Worked on this test class (no logic/structure change)
-        insert pbm1;
+        PartnerMarketingBudget pbm1 = Core_MDF_CCP_TestDataUtility.createBudget('Test Budget 1', Core_MDF_CCP_TestDataUtility.Budget_Record_Type, acc2.Id, cp1.Id, 3000, Date.newInstance(2019,01,01), Date.newInstance(2019,12,31), true);
+        
         Profile systemAdminProfile = [SELECT Id FROM Profile WHERE Name='System Administrator' limit 1];
         
         // Creating User with utility class 

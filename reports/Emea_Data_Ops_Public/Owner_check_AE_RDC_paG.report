@@ -42,31 +42,28 @@
     <columns>
         <field>Account.Core_IPS_Active__c</field>
     </columns>
-    <columns>
-        <field>CREATED_DATE</field>
-    </columns>
     <filter>
-        <booleanFilter>(1 OR 2 OR 3) AND 4 AND 5</booleanFilter>
+        <booleanFilter>(1 OR 2 OR 3) AND 4</booleanFilter>
         <criteriaItems>
             <column>CONTACT_OWNER</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Ethan Street,Justyna Pieniążek,KAROLINA JURKIEWICZ,Alexandru Craciun,Crina Capusan,Ankita A Chaudhary,MOHAMMAD SHAFI UR Rahman,Mihail Antonio-Hristo Vlahopol</value>
+            <value>Julia Sallaiova,Michael Sweet,Paulo Quaresma,Daria Serzysko,Filip Ostojski</value>
         </criteriaItems>
         <criteriaItems>
             <column>Contact.Core_IPS_Intel_Support_Owner__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Ethan Street,Justyna Pieniążek,KAROLINA JURKIEWICZ,Alexandru Craciun,Crina Capusan,Ankita A Chaudhary,MOHAMMAD SHAFI UR Rahman,Mihail Antonio-Hristo Vlahopol</value>
+            <value>Julia Sallaiova,Michael Sweet,Paulo Quaresma,Daria Serzysko,Filip Ostojski</value>
         </criteriaItems>
         <criteriaItems>
             <column>OWNER_FULL_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Ethan Street,Justyna Pieniążek,KAROLINA JURKIEWICZ,Alexandru Craciun,Crina Capusan,Ankita A Chaudhary,MOHAMMAD SHAFI UR Rahman,Mihail Antonio-Hristo Vlahopol</value>
+            <value>Julia Sallaiova,Michael Sweet,Paulo Quaresma,Daria Serzysko,Filip Ostojski</value>
         </criteriaItems>
         <criteriaItems>
             <column>FIRST_NAME</column>
@@ -75,17 +72,10 @@
             <operator>notContain</operator>
             <value>case holder</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>EMAIL</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>mail7.io,mailosaur</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Tabular</format>
-    <name>Owner check - A&amp;E/ RDC(OSC) / IQR(BSG)</name>
+    <name>Owner check - A&amp;E / RDC</name>
     <params>
         <name>co</name>
         <value>1</value>

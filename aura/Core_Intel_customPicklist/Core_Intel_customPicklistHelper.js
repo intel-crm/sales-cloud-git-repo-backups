@@ -18,7 +18,6 @@
 		var categoryFromPFR = [];
 		var activityTypeFromPFR = [];
 		var countriesPFR = [];
-        
 
 		if (fieldName == 'Core_MDF_TargetAudience__c') {
 			targetAudienceFromPFR = component.get("v.options");
@@ -28,11 +27,10 @@
 			productTypeFromPFR = component.get("v.options");
 			//console.log("line 11 invalues "+JSON.stringify(productTypeFromPFR));
 		}
-		/*else if (fieldName == 'Core_MDF_Brand__c') {
+		else if (fieldName == 'Core_MDF_Brand__c') {
 			brandFromPFR = component.get("v.options");
 			//console.log("line 11 invalues for brand "+JSON.stringify(brandFromPFR));
-		}*/
-        
+		}
 		else if (fieldName == 'Core_MDF_Activity_Types__c') {
 			activityTypeFromPFR = component.get("v.options");
 			//console.log("line 11 invalues "+JSON.stringify(activityTypeFromPFR));
@@ -55,19 +53,12 @@
 			"recordTypeName": rTypeName,
 			"sctrlvalue": cvalue
 		});
-		// Clear stale options immediately while waiting for latest dependent values.
-		component.set("v.myoptions", []);
-        
+
 		action.setCallback(this, function (response) {
-			var currentControllingValue = component.get("v.controllingvalue");
-			// Ignore stale async responses after another controlling value change.
-            if ((currentControllingValue == null ? '' : currentControllingValue) !== (cvalue == null ? '' : cvalue)) {
-				return;
-			}
+
 			if (response.getState() == "SUCCESS") {
 				var optionMap = new Map();
 				optionMap = response.getReturnValue();
-                //console.log("GS--->at 62"+JSON.stringify(optionMap));
 				//alert('optionMap.size-->'+optionMap.length);
 				// if(optionMap.length > 1){
 				//console.log("optionMap"+JSON.stringify(optionMap));
@@ -85,36 +76,32 @@
 				}
 
 				//console.log("Campaign Values (opts) "+JSON.stringify(opts));
-				var updatedopts =component.get("v.options") || [];
+				var updatedopts = [];
 
-				/*if (fieldName == 'Core_MDF_Country__c') {
+				if (fieldName == 'Core_MDF_Country__c') {
 					//console.log(" country myopts "+JSON.stringify(opts));
 					component.set("v.myoptions", opts);
 					//this.setMyOptionValues(component, countriesPFR, opts);
-				}*/
-                //else{
-					if (fieldName == 'Core_MDF_TargetAudience__c') { 
-						this.setMyOptionValues(component, targetAudienceFromPFR, opts, true);
+				}
+				else {
+					if (fieldName == 'Core_MDF_TargetAudience__c') {
+						this.setMyOptionValues(component, targetAudienceFromPFR, opts);
 					}
 					else if (fieldName == 'Core_MDF_ProductType__c') {
-						this.setMyOptionValues(component, productTypeFromPFR, opts, true);
+						this.setMyOptionValues(component, productTypeFromPFR, opts);
 
 
-					} 
-                        /*else if (fieldName == 'Core_MDF_Brand__c') {
+					} else if (fieldName == 'Core_MDF_Brand__c') {
 						this.setMyOptionValues(component, brandFromPFR, opts);
-					}*/
-                        
-                        
-                        else if (fieldName == 'Core_MDF_ActivityCategory__c') {
-						this.setMyOptionValues(component, categoryFromPFR, opts, false);
+					} else if (fieldName == 'Core_MDF_ActivityCategory__c') {
+						this.setMyOptionValues(component, categoryFromPFR, opts);
 
 					} else if (fieldName == 'Core_MDF_Activity_Types__c') {
-						this.setMyOptionValues(component, activityTypeFromPFR, opts, false);
+						this.setMyOptionValues(component, activityTypeFromPFR, opts);
 					}
 
-                }
-               // }
+				}
+			}
 		});
 		$A.enqueueAction(action);
 	},
@@ -122,27 +109,18 @@
 	GetChannelPartners: function (component, ctry) {
 		var channelParts;
 		var opts = [];
-		var action = component.get("c.fetchIndPartnerCtryPgmMapping");
+		var action = component.get("c.fetchCPCtryMetaData");
 		action.setParams({
 			"ctry": ctry
 		});
 
 		action.setCallback(this, function (response) {
 			channelParts = response.getReturnValue();
-            if(component.get("v.isOpalAct")){
-                opts.push({
-                    class: "optionClass",
-                    label: $A.get("$Label.c.Core_MDF_None_Label"),
-                    value: $A.get("$Label.c.Core_MDF_None_Label")                    
-                }); 
-            }else{
-                opts.push({
-                    class: "optionClass",
-                    label: $A.get("$Label.c.Core_MDF_PFR_None_Translation"),
-                    value: ""
-                });
-            }
-			
+			opts.push({
+				class: "optionClass",
+				label: $A.get("$Label.c.Core_MDF_PFR_None_Translation"),
+				value: ""
+			});
 
 			if (channelParts != undefined && channelParts.length > 0) {
 				for (var i = 0; i < channelParts.length; i++) {
@@ -160,7 +138,6 @@
 			});
 			component.set("v.myoptions", opts);
 		});
-     
 		$A.enqueueAction(action);
 	},
 	// SS - Assign the event parameter values and send the callback to parent control
@@ -174,37 +151,16 @@
 	},
 
 	// helper called to set values of in Myoption attribute
-	setMyOptionValues: function (component, valuefromPFR, myopts, dependentPicklistField) {
-        if (!$A.util.isEmpty(myopts) && myopts.length > 0 && myopts != undefined) {
-		myopts.sort(this.case_insensitive_sort);
-        }
+	setMyOptionValues: function (component, valuefromPFR, myopts) {
 		var updatedopts = [];
-        var allowedValuesMap = {};
-		for (var index = 0; index < valuefromPFR.length; index++) {
-			if (valuefromPFR[index] && valuefromPFR[index].value != undefined) {
-				allowedValuesMap[valuefromPFR[index].value] = true;
-			}
-		}
-
-		for (var validOpt = 0; validOpt < myopts.length; validOpt++) {
-			if (myopts[validOpt] && (myopts[validOpt].value === "" || dependentPicklistField == true || allowedValuesMap[myopts[validOpt].value] === true)) {
-				updatedopts.push(myopts[validOpt]);
-			}
-		}
-
-		if (currentSelectedValue != null && currentSelectedValue !== "") {
-			var isSelectedValueAvailable = false;
-			for (var checkValue = 0; checkValue < updatedopts.length; checkValue++) {
-				if (updatedopts[checkValue] && updatedopts[checkValue].value === currentSelectedValue) {
-					isSelectedValueAvailable = true;
-					break;
+		for (var i = 0; i < valuefromPFR.length; i++) {
+			for (var j = 0; j < myopts.length; j++) {
+				if (valuefromPFR[i].value == myopts[j].value) {
+					updatedopts[j] = myopts[j];
 				}
-			}
-			if (!isSelectedValueAvailable) {
-				component.set("v.selectedValue", "");
+
 			}
 		}
-
 		if (updatedopts.length == 2) {
 			updatedopts.splice(0, 1);
 			component.set("v.selectedValue", updatedopts[0].value)
@@ -261,8 +217,5 @@
 		}
 		//console.log('updatedopts here --->'+JSON.stringify(updatedOpts));
 		component.set("v.ccfoptions", updatedOpts);
-	},
-    	case_insensitive_sort : function (picklistValue1, picklistValue2) {
-    		return picklistValue1.label.toLowerCase().localeCompare(picklistValue2.label.toLowerCase());
 	}
 })

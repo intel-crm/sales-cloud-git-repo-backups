@@ -1,0 +1,52 @@
+.container {
+    padding: 20px;
+  }
+  
+  .spinner-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+  }
+  
+  .status-message {
+    margin-top: 10px;
+  }
+  
+  .trade-compliance-settings {
+    margin-bottom: 20px;
+  }
+  
+  .trade-compliance-message {
+    font-weight: bold;
+  }
+  
+  .trade-compliance-radio-group {
+    margin-top: 10px;
+  }
+  
+  .email-preferences-settings {
+    margin-bottom: 20px;
+  }
+  
+  .email-preferences-message {
+    font-weight: bold;
+  }
+  
+  .email-preferences-checkbox-group {
+    margin-top: 10px;
+  }
+  
+  .time-zone-settings {
+    margin-bottom: 20px;
+  }
+  
+  .time-zone-message {
+    font-weight: bold;
+  }
+  
+
+  .radio-combo-inline .slds-form-element__control .slds-radio
+{
+    display: inline-block !important;
+}

@@ -10,7 +10,7 @@
 
 Case {!Case.CaseNumber} has been closed.
 
-To view the case please go here: {!$Label.Core_IPS_Notification_External_URL}/{!Case.Id}/
+To view the case please go here: {!$Label.Core_IPS_Notification_External_URL}/{!Case.Id}
 
 {!if(Case.Core_IPS_Restricted_Secret_Content__c,&quot;This message was designed such that it contains no information which may be considered confidential.&quot;,if(isblank(Case.Core_Last_Case_Comment__c),&quot;&quot;,&quot;Latest Case Communication*: &quot;))}
 {!if(isblank(Case.Core_Last_Case_Comment__c),&quot;&quot;,if(Case.Core_IPS_Restricted_Secret_Content__c,&quot;&quot;,Case.Core_Last_Case_Comment__c))}

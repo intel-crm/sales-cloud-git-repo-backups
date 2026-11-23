@@ -1,0 +1,47 @@
+<table style="background-color: #0071c5;" width="100%">
+<tbody>
+    <tr>
+      <td style="padding-left: 50px; border: none;">
+        <div style="color: white;">
+          <h1>Business Review  {!Business_Review__c.Name} </h1>
+         </div>
+        </td>
+        <td style="border: none; padding-right: 20px;" align="right">
+        <apex:image url="https://intel--c.na104.content.force.com/servlet/servlet.ImageServer?id=0153b000004Pg4i&amp;oid=00Do0000000aRcf" /> 
+        </td>
+        </tr>
+        </tbody>
+<table>
+
+{!Business_Review__c.Name} has been created by {!User.FirstName}  {!User.LastName}   <br/>
+
+Please find the link below:  <br/>
+
+ <a href="{!LEFT($Api.Partner_Server_URL_290,FIND('services',$Api.Partner_Server_URL_290)-1)}{!Business_Review__c.Id}" style="font-size: 14px">{!Business_Review__c.Name} </a>
+<br/>
+Business Review Details:<br/>
+<tr>Review # {!Business_Review__c.Name}</tr><br/>
+<tr>Meeting Date {!Business_Review__c.Meeting_Date__c}</tr><br/>
+<tr>New/Increased {!Business_Review__c.New_Increased__c}</tr><br/>
+<tr>Won {!Business_Review__c.Won__c}</tr><br/>
+<tr>Lost {!Business_Review__c.Lost__c}</tr><br/>
+<tr>Pushed {!Business_Review__c.Pushed__c}</tr><br/>
+<tr>Help Needed {!Business_Review__c.Help_Needed__c}</tr><br/>
+<tr>Help Needed {!Business_Review__c.Help_Needed__c}</tr><br/>
+<tr>Insights/Trends {!Business_Review__c.Insights_Trends__c}</tr><br/>
+<tr>Escalation Review? {!Business_Review__c.Escalation_Review__c}</tr><br/>
+<tr>Owner {!Business_Review__c.OwnerId}</tr><br/>
+ </table>
+ <table style="border: 1px solid #d3d3d3;padding-left:50px;padding-top:5px;padding-bottom:5px;font-size: 20px;" width="100%">
+      <tr>
+    <td>
+    
+     <p style="text-align: center;font-size: 12px;">This message was sent to you as an important business communication related to your current relationship with Intel Corporation<br/>&copy;
+ {! YEAR( TODAY() )} Intel Corporation<br />
+ Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.<br/>
+ <a href="http://www.intel.com">www.intel.com</a><br/>
+ <a href="http://www.intel.com/privacy">Privacy</a> | <a href="http://www.intel.com/cookies">Cookies</a></p>
+ 
+      </td>
+     </tr>
+     </table>

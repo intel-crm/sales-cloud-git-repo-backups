@@ -41,7 +41,6 @@ public class TestUtilities{
             Email = 'Contact1Dell@gmail.com',
             recordTypeId = schema.sobjecttype.Contact.getrecordtypeinfosbyname().get('Outlook contact').getRecordTypeId(),
             Core_IPS_Active__c = true,
-            MailingCountry = 'India',
             Core_IPS_Intel_Support_Owner__c = UserInfo.getUserId()
         );
         return contactRecord;
@@ -50,20 +49,17 @@ public class TestUtilities{
     
     public static User getCustomerUser(){
         Set<String> customerUserTypes = new Set<String> {'CSPLiteUser', 'PowerPartner', 'PowerCustomerSuccess',   'CustomerSuccess'};
-            
         Account acc = new Account (
             Name = 'newAcc1',
             BillingCity = 'folsom',
             BillingCountry = 'USA',
-            BillingStreet = 'Creek Side Dr',
-            recordTypeId = schema.sobjecttype.Account.getrecordtypeinfosbyname().get('Intel Account').getRecordTypeId()
+            BillingStreet = 'Creek Side Dr'
         );  
         insert acc;
         Contact con = new Contact (
         AccountId = acc.id,
         FirstName = 'portia',
-        LastName  = 'portalTestUser',
-        MailingCountry = 'India'
+        LastName  = 'portalTestUser'
         );
         insert con;
         User thisUser = [ select Id from User where Id = :UserInfo.getUserId() ];
@@ -107,16 +103,14 @@ public class TestUtilities{
             Core_CIM_ID__c = '11429344',
             Core_B2B_Entitlement__c = true,
             Core_Account_Legal_Name__c = 'TestLegalName',
-        	Ownerid =thisUser.id,
-            recordTypeId = schema.sobjecttype.Account.getrecordtypeinfosbyname().get('Intel Account').getRecordTypeId()
+        	Ownerid =thisUser.id
         );  
         insert acc;
         Contact con = new Contact (
         AccountId = acc.id,
         FirstName = 'portia',
         LastName  = 'portalTestUser',
-        email     = 'pb@ff.com',
-        MailingCountry = 'India'
+        email     = 'pb@ff.com'
         );
         insert con;
         
@@ -124,10 +118,11 @@ public class TestUtilities{
         System.runAs ( thisUser ) {
        // UserRole ur = [Select PortalType, PortalAccountId From UserRole where PortalType =:'CustomerPortal' limit 1];
         Profile p =   [select Id,name from Profile where Name = :profileName limit 1];
+         system.debug('>>>>>>>>>>>>>>>' + p);
         newUser = new User(
         //UserRoleId = ur.Id,
         profileId = p.id,
-        username = 'newUser233@yahoo.com',
+        username = 'newUser@yahoo.com',
         email = 'pb@ff.com',
         emailencodingkey = 'UTF-8',
         localesidkey = 'en_US',
@@ -137,7 +132,9 @@ public class TestUtilities{
         lastname='lastname',
         contactId = con.id
         );
+        system.debug(newUser);
         insert newUser;  
+        system.debug('?>>>>' + newUser);
         }
         return newUser;
     }
@@ -540,7 +537,7 @@ public class TestUtilities{
         List<user> userList = getListofuser(1);
         userlist[0].profileid=prof.id;
         userList[0].userroleid=role.id;
-        userlist[0].username='portal.user13332@user.com';
+        userlist[0].username='portal.user@user.com';
         
         insert userlist;
         
@@ -576,8 +573,7 @@ public class TestUtilities{
                 Email = 'Contact1Dell@gmail.com',
                 recordTypeId = recordTypeId,
                 Core_IPS_Intel_Support_Owner__c=u.id,
-                Core_IPS_Active__c = true,
-                MailingCountry = 'India'
+                Core_IPS_Active__c = true
             );
             ListOfContacts.add(contactRecord);
         }
@@ -884,15 +880,6 @@ public class TestUtilities{
             TriggerExecution.Core_Trigger_Events__c = 'Before Insert';
             ListOfTriggerExecutions.add(TriggerExecution);
         }
-         Core_Trigger_Executions__c  triggerExecution1 = new Core_Trigger_Executions__c();
-            triggerExecution1.Name = 'myIntelIntegration';
-            triggerExecution1.Core_Active__c = true;
-            triggerExecution1.Core_Class_Name__c ='myIntelIntegration';
-            triggerExecution1.Core_Description__c = 'To update Support Level On Case.';
-            triggerExecution1.Core_Object__c = 'Case';
-            triggerExecution1.Core_Trigger_Events__c = 'before update';
-            ListOfTriggerExecutions.add(TriggerExecution1);
-
         return ListOfTriggerExecutions;
     }
      /**********************************************************************************
@@ -1134,7 +1121,7 @@ public class TestUtilities{
     
     public static Opportunity getOpportunityRecord(){
         Opportunity opportunityRecord = new Opportunity(
-            recordTypeId = schema.sobjecttype.Opportunity.getrecordtypeinfosbyname().get('New Opportunity').getRecordTypeId(),
+            recordTypeId = schema.sobjecttype.Opportunity.getrecordtypeinfosbyname().get('Design Opportunity').getRecordTypeId(),
             Name = 'Test Opportunity',
             StageName = 'Test Name',
             CloseDate = (system.today() + 2)
@@ -1225,6 +1212,7 @@ public class TestUtilities{
                                                                Integer noOfNonIPSContacts, Integer noOfCommUsers, String communityProfileName,  Integer noOfAssets)
     {
        
+        System.debug(' TestUtilities Setup data for getCustomerUsersWithAccountsAndContacts Entered');                                                           
         RecordType acctRT = [SELECT Id, Name, DeveloperName, SobjectType FROM RecordType where SobjectType='Account' AND Name ='Intel Account'];
         RecordType conRT = [SELECT Id, Name, DeveloperName, SobjectType FROM RecordType where SobjectType='Contact' AND Name ='Intel Contact'];
         
@@ -1242,6 +1230,7 @@ public class TestUtilities{
             
         }
         insert accts;
+        System.debug(' Accounts '+Json.serialize(accts));
         
         List<Contact> contacts = new List<Contact>();
         for(Integer a = 0;a<accts.size();a++){
@@ -1250,28 +1239,32 @@ public class TestUtilities{
                 String fname = 'Contact'+String.valueOf(i);
                 contacts.add(new Contact (AccountId = accts[a].Id,FirstName = fname, LastName  = accts[a].Name,
                                           email = accts[a].Name+fname+'@unitTest.com',Core_IPS_Intel_Support_Owner__c= adminUser.id,
-                                          Core_IPS_Active__c = true, RecordType = conRT,MailingCountry = 'India'));
+                                          Core_IPS_Active__c = true, RecordType = conRT));
                 i+=1;
             }
             for(Integer c=0;c< noOfNonIPSContacts;c++){
                 String fname = 'Contact'+String.valueOf(i);
                 contacts.add(new Contact (AccountId = accts[a].Id,FirstName = fname, LastName  = accts[a].Name,
                                           email = accts[a].Name+fname+'@unitTest.com',Core_IPS_Intel_Support_Owner__c= adminUser.id,
-                                          Core_IPS_Active__c = false, RecordType = conRT, MailingCountry = 'India'));
+                                          Core_IPS_Active__c = false, RecordType = conRT));
                 i+=1;
             }
         }
         insert contacts;
+        System.debug(' contacts '+Json.serialize(contacts));
         
         List<Account> allAccts = [Select Id, Name, (Select FirstName, LastName, email FROM Contacts) from Account];
+        System.debug(' allAccts '+Json.serialize(allAccts));
         List<User> users = new List<User>();
         User commUser;
         Set<Id> allIds = new Set<Id>();
         System.runAs ( adminUser ) {
             Profile p =   [select Id,name from Profile where Name = :communityProfileName limit 1];
+            system.debug('>>>>>>>>>>>>>>>' + p);            
             for(Account acct : allAccts){
                 Integer i= 0;
                 for(Contact cont: acct.contacts){
+                    System.debug('+++++++ '+cont);
                     allIds.add(cont.Id);
                     commUser = new User(
                         //UserRoleId = ur.Id,
@@ -1292,11 +1285,13 @@ public class TestUtilities{
                     i=i+1;
                     users.add(commUser);
                 }
+                //System.debug(' Community User '+[Select Id, Name, ContactId, AccountId, UserType, UserRole.Name FROM User ]);
             }
             insert users;  
             getAssets(accts, noOfAssets);
             
         }
+        System.debug(' TestUtilities Setup data for getCustomerUsersWithAccountsAndContacts Exiting');       
     }
     
     
@@ -1306,6 +1301,7 @@ public class TestUtilities{
     @noOfAssets - No of Assets for Each Account.
     **********************************************************************************/
     public static List<Asset> getAssets(List<Account> accts, Integer noOfAssets){
+        System.debug(' TestUtilities Setup data for getAssets Entered');       
         //Create Support Org
         Core_IPS_Product_Organization__c SupOrg = new Core_IPS_Product_Organization__c(); //SupportOrg
         SupOrg.Core_IPS_Support_Org_Name__c='Trident Solutions';
@@ -1363,6 +1359,7 @@ public class TestUtilities{
             }
         }
         insert listofAssets;
+        System.debug(' TestUtilities Setup data for getAssets Exiting');       
         return listofAssets;
     } 
     
@@ -1379,6 +1376,7 @@ public class TestUtilities{
        // acctRecord.OwnerId= ListOfUser.get(1).id;
         acctRecord.Core_CNDA_Number__c='123';
         insert acctRecord;
+     //   System.debug('acctRecord>>'+acctRecord.Owner.UserRole.Name+' ListOfUser.get(1) '+ListOfUser.get(1));
         Contact contactRecord;
         contactRecord = TestUtilities.getContact();
         contactRecord.Accountid = acctRecord.id;
@@ -1386,6 +1384,7 @@ public class TestUtilities{
         contactRecord.core_ips_Active__c=false;
         contactRecord.Email = 'ContactDellTest@gmail.com';
         insert contactRecord;
+        System.debug('contactRecord '+contactRecord);
         
         Core_IPS_Product_Organization__c prodOrg = TestUtilities.getSupportOrg();
         insert prodOrg;
@@ -1398,41 +1397,31 @@ public class TestUtilities{
         sp.Core_Product_Organization__c = prodOrg.id;
         sp.Core_Flag_Status__c = 'Auto Approve';
         insert sp;
-        // Code Refactor on 3rd June 2020 as Avoid Calling SOQL and DML Inside Loops.
-        List<core_ips_account__c> projAccountList = new List<core_ips_account__c>();
-        List<Core_IPS_Project_Member__c> projectMemberList = new List<Core_IPS_Project_Member__c>();
-        List<Core_IPS_Product__c> projProductList = new List<Core_IPS_Product__c>();
+           System.debug('>>SP>>'+sp);
         for(Core_IPS_Project__c proj: projList){
         
-            core_ips_account__c projAccount= getCoreIpsAccount();
-            projAccount.Core_Account__c=acctRecord.Id;
-            projAccount.Core_IPS_Project__c=proj.Id;
-            projAccountList.add(projAccount);
-            
-            Core_IPS_Project_Member__c projectMember = TestUtilities.getProjectMember();
-            projectMember.core_ips_contact__c = contactRecord.id;
-            projectMember.Core_IPS_Project__c = proj.id;
-            projectMemberList.add(projectMember);
-            
-            Core_IPS_Product__c projProduct=getIpsProduct();
-            projProduct.Core_IPS_Project__c=proj.Id;
-            projProduct.Core_Supported_Product__c=sp.Id;
-            projProductList.add(projProduct);
-        }
-        if(projAccountList.size()>0){
-            insert projAccountList;
-        }
-        if(projectMemberList.size()>0){
-            insert projectMemberList;
-        }
-        if(projProductList.size()>0){
-            insert projProductList;
+        core_ips_account__c projAccount= getCoreIpsAccount();
+        projAccount.Core_Account__c=acctRecord.Id;
+        projAccount.Core_IPS_Project__c=proj.Id;
+        insert projAccount;
+        
+        Core_IPS_Project_Member__c projectMember = TestUtilities.getProjectMember();
+        projectMember.core_ips_contact__c = contactRecord.id;
+        projectMember.Core_IPS_Project__c = proj.id;
+        insert projectMember;
+        
+        Core_IPS_Product__c projProduct=getIpsProduct();
+        projProduct.Core_IPS_Project__c=proj.Id;
+        projProduct.Core_Supported_Product__c=sp.Id;
+        insert projProduct;
+        System.debug('>>projProduct>>'+projProduct+'>>spId>>'+sp.Id);
         }
        // }   
     }
     public static List<Asset> getAssetList2(integer NumOfRec){
         List<Asset> AssetList = new List<Asset>();
       AssetList =[SELECT Core_IPS_Project_Name__c,Core_IPS_Project__c,core_Product_Application__c,Core_Supported_Product__r.Core_IPS_Public_Product__c, Core_Supported_Product__r.Core_Supported_Product_Name__c,Id FROM Asset];
+        system.debug([SELECT Core_IPS_Project_Name__c,Core_IPS_Project__c,core_Product_Application__c,Core_Supported_Product__r.Core_IPS_Public_Product__c, Core_Supported_Product__r.Core_Supported_Product_Name__c,Id FROM Asset]);
       /*  for(Integer i=1;i<=NumOfRec;i++){
             Asset AssetRecord = new Asset(
                 name = 'AssetName '+i,
@@ -1452,7 +1441,9 @@ public class TestUtilities{
       Core_IPS_Supported_Product__c sp= getSupportedProduct();
       sp.Core_Product__c=prod.id;
       insert sp;
+      system.debug('sp.id ===>>  '+sp.Id);
       List<Core_IPS_Supported_Product__c> str= [select Name from Core_IPS_Supported_Product__c where Id=: sp.id Limit 1];
+      system.debug('str ===>>  '+str);
         for(Integer i=0;i<NumOfRec;i++){
             Core_IPS_Product_Issue_Category__c CoreProdIssCategory = new Core_IPS_Product_Issue_Category__c();
             CoreProdIssCategory.Core_Supported_Product__c = sp.id;
@@ -1539,26 +1530,5 @@ public class TestUtilities{
             lstIST.add(objIST);
         }
         return lstIST;
-    }
-    //Nuthana as part of bug fix
-    public static User getAccountOwner(){
-        UserRole portalRole = [Select Id From UserRole Where Name = 'Admin' Limit 1];
-         Profile profile1 = [Select Id from Profile where name = 'System Administrator'];
-          User AccountOwner = new User(
-            ProfileId = profile1.Id,
-            LastName = 'last',
-            Email = 'puser00012@example.com',
-            Username = 'puser00012@example.com' + System.currentTimeMillis(),
-            CompanyName = 'TEST',
-            Title = 'title',
-            Alias = 'alias',
-            TimeZoneSidKey = 'America/Los_Angeles',
-            EmailEncodingKey = 'UTF-8',
-            LanguageLocaleKey = 'en_US',
-            LocaleSidKey = 'en_US',
-            UserRoleId=portalRole.Id
-            );
-        insert AccountOwner;
-        return AccountOwner;
     }
 }

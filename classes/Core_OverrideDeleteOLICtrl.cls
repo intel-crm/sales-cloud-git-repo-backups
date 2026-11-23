@@ -41,6 +41,7 @@ public without sharing class Core_OverrideDeleteOLICtrl{
                 }
                 else if(OplRecord.Core_Status__c == System.Label.Core_OppoLineItemPending || OplRecord.Core_Status__c == System.Label.Core_OppoLineItemOnHold){
                     //TWC4767-10 : NP : Prod issue- Do not allow deletion of Oppty product when there is already approved 6QPS record
+                    String profileName=[Select Id,Name from Profile where Id=:Userinfo.getProfileId()].Name;
                     if(canDelOLI.containsKey(OplRecord.id)){
                         ApexPages.addmessage(new ApexPages.message(ApexPages.severity.Error, 'You cannot delete this product since there is already an approved 6QPS Quarter'));
                     }
@@ -52,6 +53,10 @@ public without sharing class Core_OverrideDeleteOLICtrl{
                         ApexPages.addmessage(new ApexPages.message(ApexPages.severity.Warning, System.Label.Core_Pending_and_OnHold_products));
                         isProceedEnable = true;
                     }
+                    /*else if (profileName.equalsIgnoreCase(Core_CRM_Utility.getCRMLabel('Core_SMGProfilename')) && FeatureManagement.checkPermission('CRM_Opportunity_Auditor_CustomPermission')){
+                        ApexPages.addmessage(new ApexPages.message(ApexPages.severity.Error,Core_CRM_Utility.getCRMLabel('CRM_OpportunityAuditorsError')));
+                        isProceedEnable = False;
+                    }*/
                     else{
                         OplRecord.Core_Status__c = System.Label.Core_LineItem_Status;
                         listOppoLI.add(OplRecord);

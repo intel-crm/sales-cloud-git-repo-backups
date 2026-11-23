@@ -19,6 +19,9 @@
         <field>PRODUCT_NAME</field>
     </columns>
     <columns>
+        <field>FK_$Core_Design_Registration__c.Core_Partner_Account_Name__c</field>
+    </columns>
+    <columns>
         <field>Opportunity.Core_Technical_Owner__c</field>
     </columns>
     <columns>

@@ -97,8 +97,6 @@
         <fields>CASES.PRIORITY</fields>
         <fields>CASES.CREATED_DATE</fields>
         <relatedList>Case.Core_IPS_Project_Case__c</relatedList>
-        <sortField>CASES.CREATED_DATE</sortField>
-        <sortOrder>Desc</sortOrder>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>

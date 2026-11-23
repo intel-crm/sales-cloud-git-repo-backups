@@ -109,9 +109,6 @@
         <field>Account.Core_Sales_Groups__c</field>
     </columns>
     <columns>
-        <field>Account.Core_Account_Type__c</field>
-    </columns>
-    <columns>
         <field>ROLLUP_DESCRIPTION</field>
     </columns>
     <columns>
@@ -143,7 +140,6 @@
         <field>Opportunity.Core_Product_Segment__c</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
         <field>Opportunity.Core_Architecture_Conversion__c</field>
     </columns>
     <columns>
@@ -217,6 +213,9 @@
         <field>EXP_AMOUNT</field>
     </columns>
     <columns>
+        <field>Opportunity.Core_Risk_Reason__c</field>
+    </columns>
+    <columns>
         <field>Opportunity.Core_At_Risk_Created_Date__c</field>
     </columns>
     <columns>
@@ -247,7 +246,7 @@
             <column>OpportunityLineItem.Core_KPI_Date__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
+            <operator>greaterOrEqual</operator>
             <value>LAST_YEAR</value>
         </criteriaItems>
         <criteriaItems>
@@ -279,11 +278,11 @@
             <value>National Solution Integrator (NSI)</value>
         </criteriaItems>
         <criteriaItems>
-            <column>FULL_NAME</column>
+            <column>ROLLUP_DESCRIPTION</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Audrey,Kim,Harish,Estelle,Lara,Ivan,Monchai</value>
+            <operator>notContain</operator>
+            <value>Ram</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -325,8 +324,6 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>Account.Core_Account_Type__c</sortColumn>
-    <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>

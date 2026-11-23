@@ -40,9 +40,6 @@
             <field>SBQQ__Quote__c$Pricing_IsUnifiedCustomer__c</field>
         </columns>
         <columns>
-            <field>SBQQ__Quote__c$Pricing_Market_Segment_values_Nm__c</field>
-        </columns>
-        <columns>
             <field>SBQQ__Quote__c$Pricing_Project_Name_Nm__c</field>
         </columns>
         <columns>
@@ -160,10 +157,10 @@
             <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Rejection_Comments_nm__c</field>
         </columns>
         <columns>
-            <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Lost_Reason_Nm__c</field>
+            <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Won_Lost_Comments_Txt__c</field>
         </columns>
         <columns>
-            <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Won_Lost_Comments_Txt__c</field>
+            <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Lost_Reason_Nm__c</field>
         </columns>
         <columns>
             <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_End_Date_dt__c</field>
@@ -197,9 +194,6 @@
         <columns>
             <aggregateTypes>Sum</aggregateTypes>
             <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Req_Discounted_Unit_Price__c</field>
-        </columns>
-        <columns>
-            <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Form_Factor_Nm__c</field>
         </columns>
         <columns>
             <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Competitor_OEM_Nm__c</field>
@@ -329,7 +323,7 @@
                 <value>Client</value>
             </criteriaItems>
         </filter>
-        <format>Summary</format>
+        <format>Tabular</format>
         <name>IQR Quote without Comments block 1</name>
         <params>
             <name>co</name>
@@ -388,7 +382,7 @@
                 <value>Client</value>
             </criteriaItems>
         </filter>
-        <format>Summary</format>
+        <format>Tabular</format>
         <name>IQR Quote Header and Comments block 1</name>
         <params>
             <name>co</name>

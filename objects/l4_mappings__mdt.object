@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Active__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Active?</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FPH_Field__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>FPH Field</label>
+        <length>100</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Hierarchy_ID__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Hierarchy ID</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>43</fullName>
+                    <default>true</default>
+                    <label>43</label>
+                </value>
+                <value>
+                    <fullName>59</fullName>
+                    <default>false</default>
+                    <label>59</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>IPS_Visible_Flag_External__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>IPS Visible Flag - External</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>IQR_Visible__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>IQR Visible?</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Is_L4_Mapping_Field__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Is L4 Mapping Field</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Is_four_levels_available__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Is four levels available</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Is_one_level_available__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Is one level available</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Is_three_levels_available__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Is three levels available</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Is_two_levels_available__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Is two levels available</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Level__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Level</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>1</fullName>
+                    <default>true</default>
+                    <label>1</label>
+                </value>
+                <value>
+                    <fullName>2</fullName>
+                    <default>false</default>
+                    <label>2</label>
+                </value>
+                <value>
+                    <fullName>3</fullName>
+                    <default>false</default>
+                    <label>3</label>
+                </value>
+                <value>
+                    <fullName>4</fullName>
+                    <default>false</default>
+                    <label>4</label>
+                </value>
+                <value>
+                    <fullName>5</fullName>
+                    <default>false</default>
+                    <label>5</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Order__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Order</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>Product2_field__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Product2 field</label>
+        <length>100</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Product_Inbound_Staging_Field__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Product Inbound Staging Field</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Product_Org__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Product Org</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Sales</fullName>
+                    <default>true</default>
+                    <label>Sales</label>
+                </value>
+                <value>
+                    <fullName>IPS</fullName>
+                    <default>false</default>
+                    <label>IPS</label>
+                </value>
+                <value>
+                    <fullName>FPH</fullName>
+                    <default>false</default>
+                    <label>FPH</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Product_Type__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Product Type</label>
+        <length>100</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Products_Staging_Field__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Products Staging Field</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_Visible__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Sales Visible?</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Type__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Type</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Mapping</fullName>
+                    <default>true</default>
+                    <label>Mapping</label>
+                </value>
+                <value>
+                    <fullName>Level Configuration</fullName>
+                    <default>false</default>
+                    <label>Level Configuration</label>
+                </value>
+                <value>
+                    <fullName>Roll up</fullName>
+                    <default>false</default>
+                    <label>Roll up</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <label>l4 mappings</label>
+    <pluralLabel>l4 mappings</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

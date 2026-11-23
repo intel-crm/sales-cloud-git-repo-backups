@@ -9,8 +9,7 @@
     <aura:attribute name="size" type="string"  description="Marquee Desktop: tall, medium, short, x-short" />
     <aura:attribute name="recordId" type="string" />
     <aura:attribute name="objectAPiName" type="string" />
-    <aura:attribute name="searchParams" type="string" />
-    <aura:attribute name="loginUrl" type="string" description="URL for login link"/>
+   <aura:attribute name="searchParams" type="string" />
     
     <aura:attribute name="storeName" type="string" default="Search" />
     
@@ -25,7 +24,8 @@
                       recordUpdated="{!c.recordUpdate}" 
                       />
     
-    <c:coreIntcSso aura:id="ssoLibrary" />
+    
+    <c:IntelSignInRedirectLibrary aura:id="redirectLibrary" />
     
     <!-- Analytics -->
     <aura:attribute name="analyticsPageType" type="string" description="PageType for analytics" />
@@ -44,12 +44,12 @@
                     <div class="slds-show_medium slds-text-align_right signIn">
                         {!$Label.c.PMP_L2_Marquee_Intel_Prartner_Program_Member}<br/>
                         <a class="color-pale-blue" 
-                           href="{!v.loginUrl}" onclick="{!c.handleSignIn}">{!$Label.c.PMP_Sign_In}</a> | <c:IntelLink class="color-pale-blue" url="{!$Label.c.PMP_Partner_Program_Url}" openInBlank="true">{!$Label.c.PMP_Learn_More}</c:IntelLink>
+                           href="{!$Label.c.PMP_SSO_MP_Login_URL}" onclick="{!c.handleSignIn}">{!$Label.c.PMP_Sign_In}</a> | <c:IntelLink class="color-pale-blue" url="{!$Label.c.PMP_Partner_Program_Url}" openInBlank="true">{!$Label.c.PMP_Learn_More}</c:IntelLink>
                     </div>
                     <div class="slds-hide_medium signIn slds-p-vertical_medium slds-text-align_center" >
                         {!$Label.c.PMP_L2_Marquee_Intel_Prartner_Program_Member}
                         <a class="color-pale-blue slds-m-left_medium" 
-                           href="{!v.loginUrl}" onclick="{!c.handleSignIn}">{!$Label.c.PMP_Sign_In}</a> | <c:IntelLink class="color-pale-blue" url="{!$Label.c.PMP_Partner_Program_Url}" openInBlank="true">{!$Label.c.PMP_Learn_More}</c:IntelLink>
+                           href="{!$Label.c.PMP_SSO_MP_Login_URL}" onclick="{!c.handleSignIn}">{!$Label.c.PMP_Sign_In}</a> | <c:IntelLink class="color-pale-blue" url="{!$Label.c.PMP_Partner_Program_Url}" openInBlank="true">{!$Label.c.PMP_Learn_More}</c:IntelLink>
                     </div>
                 </aura:if>                
                 <aura:if isTrue="{!v.showBreadcrumbs}">

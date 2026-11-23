@@ -31,6 +31,7 @@ public with sharing class Core_RestAPI_SubEnvDetailV1_Handler{
         'where '+envFilterCondition +' AND ' +filterCondition+ ' LIMIT ' +LABEL.Core_RestAPI_Sub_Env_DetailV1_Records_Limit;
     
     public Core_RestAPI_SubEnvDetailV1_Handler(DateTime currTime, String APIname){
+        system.debug('GET_ENVIRONMENT_DETAILS_SOQL ==>> '+GET_ENVIRONMENT_DETAILS_SOQL);
         this.entryTime = currTime;
         this.apiName= APIname;
         response.successContent = new List<SubCatEnvDetailsWrapper >();
@@ -38,6 +39,7 @@ public with sharing class Core_RestAPI_SubEnvDetailV1_Handler{
     }
     //Retrieve specific Supported Product's Subcategories Env details for the logged in User
     public Core_RestAPI_Response getEnvironmentDetails(){
+        System.debug(' Core_RestAPI_SubEnvDetailV1_Handler getEnvironmentDetails Entered  \n ');
         try{
             //Validations if need to be handled in util class      
             Boolean isRequestValid = doValidations();               
@@ -49,15 +51,18 @@ public with sharing class Core_RestAPI_SubEnvDetailV1_Handler{
         }catch(Exception e){
             Core_RestAPI_Util.processException(e,ERROR_CODE_500 ,response,apiName,entryTime);
         }finally{   
+            System.debug('Core_RestAPI_SubEnvDetailV1_Handler Logging transaction and returning the response '+response);
             if(String.isBlank(response.code))
                 response.code = SUCCESS_CODE_200 ;
             Core_RestAPI_LoggingUtil.logTransaction(entryTime, response);
         }        
+        System.debug(' Core_RestAPI_SubEnvDetailV1_Handler getEnvironmentDetails Exiting ');
         return response;
     } 
     // Validation if any for the API goes here
     @testVisible
     private Boolean doValidations(){
+        System.debug('Core_RestAPI_SubEnvDetailV1_Handler  doValidations Invoked ');
         Boolean isRequestValid = true; 
         Pattern testPattern = Pattern.compile('IC-[0-9]{8}');
         Matcher testMatcher = testPattern.matcher(SUB_CATEGORY_ID);
@@ -67,6 +72,7 @@ public with sharing class Core_RestAPI_SubEnvDetailV1_Handler{
         }
         else if(Core_RestAPI_Util.isRequestURIValid(SubEnvDetailV1_URI ) == false){
             //TODO Move to constant after the code review
+            system.debug('inside isRequestValid ==>> '+isRequestValid );
             Core_RestAPI_Util.processException(null , INVALID_URI_404, response, apiName, entryTime);   
             isRequestValid = false;
         } 
@@ -76,21 +82,22 @@ public with sharing class Core_RestAPI_SubEnvDetailV1_Handler{
     // Execute the SOQL and populate the result to wrapper list objects 
     public void processRequest(){
         
+        System.debug('Core_RestAPI_SubEnvDetailV1_Handler  processRequest Entering SOQL  \n '+GET_ENVIRONMENT_DETAILS_SOQL);
         // In this for loop retrieving fields of Core_IPS_Assigned_Environment_Variables__c Custom Object
         List<Core_IPS_Assigned_Environment_Variables__c> lstEnvirVariable = new List<Core_IPS_Assigned_Environment_Variables__c>();
         lstEnvirVariable = DATABASE.Query(GET_ENVIRONMENT_DETAILS_SOQL );
+        system.debug('lstEnvirVariable==>> '+lstEnvirVariable);
         List<Core_IPS_Question__c> lstCoreQuestions = new List<Core_IPS_Question__c>();
         if(!lstEnvirVariable.isEmpty()){
             for(Core_IPS_Assigned_Environment_Variables__c envQuestn : lstEnvirVariable){
                 envQuestnIds.add(envQuestn.Core_IPS_Question__c); 
             }
-            //FLS check added-Venugopal
-            if(Core_IPS_Question__c.SObjectType.getDescribe().isAccessible()){
             lstCoreQuestions = [SELECT Id,Name,Core_IPS_Question__c,Core_IPS_Parent_Question__c,Core_IPS_Datatype__c,Core_IPS_Required__c , (SELECT Id,Core_IPS_Answer__c,Core_IPS_Parent_Answer__r.Name, Name from Core_Answers__r WHERE Core_IPS_Status__c = 'Active') FROM Core_IPS_Question__c WHERE ID IN: envQuestnIds AND Core_IPS_Status__c = 'Active'];
-            }
+            System.debug('lstCoreQuestions --->'+lstCoreQuestions );
             for(Core_IPS_Question__c objAns :lstCoreQuestions ){
                 mapQues2Answer.put(objAns.Id,objAns.Core_Answers__r);
             }
+            System.debug('Map of Question and Answers'+mapQues2Answer);
             
             SubCatEnvDetailsWrapper objWrapp = new SubCatEnvDetailsWrapper ();
             List<EnvQuestionWrapper> objEDWrapp=new List<EnvQuestionWrapper>();
@@ -122,6 +129,7 @@ public with sharing class Core_RestAPI_SubEnvDetailV1_Handler{
             response.successContent.add(objWrapp);
             
         }
+        System.debug('ProcessRequest response.successContent '+response.successContent);
     }
     // Here below EnvironmentDetailsWrapper Wrapper class must implements the interface Core_RestAPI_SuccessContent
     // Wrapper to build fields of Core_IPS_Assigned_Environment_Variables__c Custom object

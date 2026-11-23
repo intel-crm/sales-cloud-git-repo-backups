@@ -1,93 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
-    <buckets>
-        <bucketType>picklist</bucketType>
-        <developerName>BucketField_89315476</developerName>
-        <masterLabel>Region Rptg</masterLabel>
-        <nullTreatment>n</nullTreatment>
-        <sourceColumnName>Lead.Core_Sub_Geo__c</sourceColumnName>
-        <useOther>false</useOther>
-        <values>
-            <sourceValues>
-                <sourceValue>ANZ</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>IJKK</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Korea</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>ROA</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>SA</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>SEA</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Taiwan</sourceValue>
-            </sourceValues>
-            <value>APJ</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>CEE</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>CER</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>META</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>NEUR</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>RCIS</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>SEUR</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>WEUR</sourceValue>
-            </sourceValues>
-            <value>EMEA</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>LAR</sourceValue>
-            </sourceValues>
-            <value>LAR</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>NAR</sourceValue>
-            </sourceValues>
-            <value>NAR</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>PRC</sourceValue>
-            </sourceValues>
-            <value>PRC</value>
-        </values>
-    </buckets>
-    <columns>
-        <field>COUNTRY_CODE</field>
-    </columns>
-    <columns>
-        <field>Lead.Core_Lead_State__c</field>
-    </columns>
     <columns>
         <field>STATUS</field>
     </columns>
     <columns>
         <field>OWNER</field>
-    </columns>
-    <columns>
-        <field>Lead.Core_TQL_Lead_Coverage__c</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
@@ -137,14 +54,14 @@
     <columns>
         <field>Lead.Core_Marketing_Tactic_ID__c</field>
     </columns>
-    <description>RT: Leads.  TQLs owned by LDRs awaiting hand off to Sales</description>
+    <description>RT: Leads</description>
     <filter>
         <criteriaItems>
             <column>CREATED</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>eloqua</value>
+            <operator>equals</operator>
+            <value>user eloqua</value>
         </criteriaItems>
         <criteriaItems>
             <column>RECORDTYPE</column>
@@ -172,14 +89,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Inside LDR</value>
+            <value>osc</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>Lead.Core_Geo__c</field>
+        <field>COUNTRY_CODE</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
@@ -187,7 +104,12 @@
         <field>Lead.Core_Lead_Priority__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Global Inside LDR MGL TQLs</name>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Lead.Core_Lead_State__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Global Inside MGL TQLs</name>
     <params>
         <name>co</name>
         <value>1</value>

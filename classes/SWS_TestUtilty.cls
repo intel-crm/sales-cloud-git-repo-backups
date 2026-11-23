@@ -16,8 +16,8 @@ public class SWS_TestUtilty {
         acc.Industry = 'Banking';
         acc.BillingCity = 'Texas';
         acc.BillingCountry = 'USA';
-        acc.BillingStreet = 'G-2101';
-        acc.Core_Sales_Groups__c = 'Americas US Sales Group';
+        acc.BillingStreet = 'G-2101'; 
+        acc.Core_Sales_Groups__c = 'APJ India Sales Group'; 
         acc.Core_Geo__c = 'APJ';
         acc.Core_Sub_Geo__c = 'IJKK';
         acc.Core_PSG_Account__c = true;

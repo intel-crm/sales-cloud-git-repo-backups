@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>PFU LIMITED Partner User</description>
+    <description>PFU Ltd. Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>PFU LIMITED Partner User</name>
+    <name>PFU Ltd. Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>EMP_11646204_Daisuke_Izumi</parentRole>
+    <parentRole>PFULIMITEDPartnerManager</parentRole>
 </Role>

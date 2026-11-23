@@ -51,10 +51,10 @@
                             <apex:repeat value="{!subCatenvDetList}" var="env" rendered="{!subCatenvDetList!=null && subCategorySelected!=null}" id="EnvironmentDetails1">
                                 <!--Removed rendered="{!if(CONTAINS(env.type,'Text Area'),false,true)}" as part of US113683 by karthick -->
                                 <apex:pageblockSectionItem id="section" >
-                                    <apex:outputLabel value="{!JSENCODE(env.label)}" escape="true"></apex:outputLabel>
+                                    <apex:outputLabel value="{!env.label}" escape="true"></apex:outputLabel>
                                     <apex:outputPanel id="panel">
                                         <!-- Text -->
-                                        <apex:outputPanel rendered="{!if(JSENCODE(env.type)=='Text',true,false)}" id="panel1">
+                                        <apex:outputPanel rendered="{!if(env.type=='Text',true,false)}" id="panel1">
                                             <apex:outputPanel styleClass="{!IF(env.required,'requiredInput','')}" layout="block">
                                                 <apex:outputPanel styleClass="requiredBlock" layout="block" rendered="{!env.required}"/>
                                                 <apex:inputText value="{!env.sPlaceHolder}">
@@ -150,14 +150,14 @@
                         
                         <!-- Environment Details for Supported Product -->
                         <!--Ashutosh - US102781 - removed page block section tag -->
-                         
+                        
                             <apex:repeat value="{!envDetails}" var="env" id="EnvironmentDetails">
                                 <!--Removed rendered="{!if(CONTAINS(env.type,'Text Area'),false,true)}" as part of US113683 by karthick -->
                                 <apex:pageblockSectionItem id="section" >
-                                    <apex:outputLabel value="{!JSENCODE(env.label)}" escape="true"></apex:outputLabel>
+                                    <apex:outputLabel value="{!env.label}" escape="true"></apex:outputLabel>
                                     <apex:outputPanel id="panel">
                                         <!-- Text -->
-                                        <apex:outputPanel rendered="{!if(JSENCODE(env.type)=='Text',true,false)}" id="panel1">
+                                        <apex:outputPanel rendered="{!if(env.type=='Text',true,false)}" id="panel1">
                                             <apex:outputPanel styleClass="{!IF(env.required,'requiredInput','')}" layout="block">
                                                 <apex:outputPanel styleClass="requiredBlock" layout="block" rendered="{!env.required}"/>
                                                 <!-- changed sPlaceHolder to splaceholder Gourav: DE36223-->

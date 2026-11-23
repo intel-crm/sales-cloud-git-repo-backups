@@ -44,5 +44,9 @@
         <label><!-- Upper Bound --></label>
         <name>SBQQ__UpperBound__c</name>
     </fields>
+    <fields>
+        <label><!-- Rebate --></label>
+        <name>core_cpq_Rebate__c</name>
+    </fields>
     <nameFieldLabel>階層名</nameFieldLabel>
 </CustomObjectTranslation>

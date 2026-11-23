@@ -7,10 +7,10 @@
         <field>FULL_NAME</field>
     </columns>
     <columns>
-        <field>OPPORTUNITY_NAME</field>
+        <field>Opportunity.Core_Technical_Owner__c</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Technical_Owner__c</field>
+        <field>OPPORTUNITY_ID</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Product_Application__c</field>
@@ -28,6 +28,16 @@
         <field>Opportunity.Core_Product_Segment__c</field>
     </columns>
     <columns>
+        <field>QUANTITY</field>
+    </columns>
+    <columns>
+        <field>UNIT_PRICE</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>TOTAL_PRICE</field>
+    </columns>
+    <columns>
         <field>Opportunity.Core_OEM__c</field>
     </columns>
     <columns>
@@ -39,124 +49,53 @@
     <columns>
         <field>Opportunity.Core_Opportunity_Products__c</field>
     </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Opportunity.Core_Descriptive_Feature__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Solution_Area__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Solution_Type__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Combined_Solution_Detail__c</field>
-    </columns>
-    <columns>
-        <field>DESCRIPTION</field>
-    </columns>
-    <columns>
-        <field>OpportunityLineItem.Core_Advanced_Technology__c</field>
-    </columns>
-    <columns>
-        <field>CLOSE_DATE</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>CLOSED</field>
-    </columns>
-    <columns>
-        <field>Account.Core_Sales_Groups__c</field>
-    </columns>
-    <description>vPro wins for 10th &amp; 11th Gen Core</description>
+    <description>vPro wins</description>
     <filter>
-        <booleanFilter>1 AND 2 AND 3 AND (4 OR 5 OR 6 OR 7 OR 8) AND 9 AND 10</booleanFilter>
+        <booleanFilter>1 AND 2 AND 3 AND 4</booleanFilter>
         <criteriaItems>
-            <column>Opportunity.Core_Opportunity_Products__c</column>
+            <column>STAGE_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>-12</value>
+            <operator>notEqual</operator>
+            <value>Cancelled</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>STAGE_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Design Win,Production Win</value>
         </criteriaItems>
         <criteriaItems>
             <column>PRODUCT_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Core</value>
+            <value>Intel vPro® Platform</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_Advanced_Technology__c</column>
+            <column>Opportunity.Core_Solution_Area__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>INTEL® VPRO™ TECHNOLOGY</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Combined_Solution_Detail__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>refresh</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Combined_Solution_Detail__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>security</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Combined_Solution_Detail__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>manageability</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Combined_Solution_Detail__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Performance</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Combined_Solution_Detail__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Stability</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Combined_Solution_Detail__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>Not Applicable</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>ADDRESS1_COUNTRY_CODE</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>FRA</value>
+            <value>CCG vPro Adoption Technologies Deal #,CCG vPro Deal #</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>OPPORTUNITY_ID</field>
+        <field>OPPORTUNITY_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>2024 CCG vPro Hunting AMT</name>
+    <name>2020 CCG vPro Hunting AMT</name>
     <params>
         <name>terr</name>
         <value>all</value>
     </params>
     <params>
         <name>open</name>
-        <value>closedwon</value>
+        <value>all</value>
     </params>
     <params>
         <name>probability</name>
@@ -164,19 +103,19 @@
     </params>
     <params>
         <name>co</name>
-        <value>1</value>
+        <value>0</value>
     </params>
     <reportType>OpportunityProduct</reportType>
     <scope>organization</scope>
     <showDetails>true</showDetails>
-    <showGrandTotal>true</showGrandTotal>
-    <showSubTotals>true</showSubTotals>
+    <showGrandTotal>false</showGrandTotal>
+    <showSubTotals>false</showSubTotals>
     <sortColumn>PRODUCT_NAME</sortColumn>
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2024-02-29</endDate>
+        <endDate>2022-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2023-10-01</startDate>
+        <startDate>2019-01-01</startDate>
     </timeFrameFilter>
 </Report>

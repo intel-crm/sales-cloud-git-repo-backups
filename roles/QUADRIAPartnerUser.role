@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>Heliaq Partner User</description>
+    <description>QUADRIA Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>Heliaq Partner User</name>
+    <name>QUADRIA Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>EMP_11638115_Bruno_Le_Gallou</parentRole>
+    <parentRole>QUADRIAPartnerManager</parentRole>
 </Role>

@@ -28,11 +28,6 @@ public class UCD_ACM_Common_Test {
         Account intChildAcc1 = UCD_ACM_Cntrlr_TestDataInitialization.createAccountByRecordType('TestIntChildAccount1','End Customer Deal Account','UNFD_INTRMD_CUST');
         intChildAcc1.parentId = parentAccount.Id;
         insert intChildAcc1;
-
-        // Create Intel Account Intermediate1 child
-        Account IntelintChildAcc1 = UCD_ACM_Cntrlr_TestDataInitialization.createAccountByRecordType('IntelTestIntChildAccount1','Intel Account','UNFD_INTRMD_CUST');
-        IntelintChildAcc1.parentId = parentAccount.Id;
-        insert IntelintChildAcc1;
         
         // Create End Customer Deal Account Intermediate2 child
         Account intChildAcc2 = UCD_ACM_Cntrlr_TestDataInitialization.createAccountByRecordType('TestIntChildAccount2','End Customer Deal Account','UNFD_INTRMD_CUST');
@@ -71,6 +66,12 @@ public class UCD_ACM_Common_Test {
             accountBusinessTypes.add(UCD_ACM_Cntrlr_TestDataInitialization.createAccountBusinessType(acc.Id,businessType.Id));
         }
         insert accountBusinessTypes;
+        
+        // Create Compliance Watch List
+        List<Core_Account_Compliance_Watch_List__c> complianceWatchLists = new List<Core_Account_Compliance_Watch_List__c>();
+        complianceWatchLists.add(UCD_ACM_Cntrlr_TestDataInitialization.createComplianceWatchList(acc.Id,'NOTRDOUT'));
+        complianceWatchLists.add(UCD_ACM_Cntrlr_TestDataInitialization.createComplianceWatchList(acc.Id,'DPL'));
+        insert complianceWatchLists;
         
         // Create Parent Account With Business Party Id
         List<Account> accountToInsertForBpId = new List<Account>();
@@ -145,17 +146,17 @@ public class UCD_ACM_Common_Test {
         List<Account> pAccount = [Select Id,Name,Core_Customer_Aggregation_Type__c,ParentId,RecordTypeId from Account where Name = 'TestParentAccount'];
 		Account parentAccount = new Account();
         parentAccount.Id = pAccount[0].Id;
-            List<Account> intChildAcc1 = [Select Id,Name,Parent.Core_Customer_Aggregation_Type__c,Core_Customer_Aggregation_Type__c,ParentId,RecordTypeId from Account where Name = 'TestChildAccountWithBpId1'];
-            List<Account> intChildAcc2 = [Select Id,Name,Parent.Core_Customer_Aggregation_Type__c,Core_Customer_Aggregation_Type__c,ParentId,RecordTypeId from Account where Name = 'TestParentAccountWithBpId2'];
-            List<Account> ctryChildAcc = [Select Id,Name,Parent.Core_Customer_Aggregation_Type__c,Core_Customer_Aggregation_Type__c,ParentId,RecordTypeId from Account where Name = 'TestChildAccountWithBpId3'];
-            List<Account> locChildAcc = [Select Id,Name,Parent.Core_Customer_Aggregation_Type__c,Core_Customer_Aggregation_Type__c,ParentId,RecordTypeId from Account where Name = 'TestChildAccountWithBpId4'];
+            List<Account> intChildAcc1 = [Select Id,Name,Core_Customer_Aggregation_Type__c,ParentId,RecordTypeId from Account where Name = 'TestChildAccountWithBpId1'];
+            List<Account> intChildAcc2 = [Select Id,Name,Core_Customer_Aggregation_Type__c,ParentId,RecordTypeId from Account where Name = 'TestParentAccountWithBpId2'];
+            List<Account> ctryChildAcc = [Select Id,Name,Core_Customer_Aggregation_Type__c,ParentId,RecordTypeId from Account where Name = 'TestChildAccountWithBpId3'];
+            List<Account> locChildAcc = [Select Id,Name,Core_Customer_Aggregation_Type__c,ParentId,RecordTypeId from Account where Name = 'TestChildAccountWithBpId4'];
           
             
         Test.startTest();     
         //UCD_ACM_Common.hasSecondaryIntermediateParent(intChildAcc2);
-         UCD_ACM_Common.setAccountHierarchyFields(ctryChildAcc,parentAccount);
-          UCD_ACM_Common.setAccountHierarchyFields(locChildAcc,parentAccount);
-        UCD_ACM_Common.setAccountHierarchyFields(accountsBeforeUpdate,null);
+         UCD_ACM_Common.setHierarchyFields(ctryChildAcc[0],parentAccount);
+          UCD_ACM_Common.setHierarchyFields(locChildAcc[0],parentAccount);
+        UCD_ACM_Common.setHierarchyFields(accountsBeforeUpdate[0],null);
     
         Test.stopTest();
      //   System.assertEquals('UNFD_GLBL_CUST', acc.Industry,'Industry should match');
@@ -178,8 +179,8 @@ public class UCD_ACM_Common_Test {
         unitOfWork.commitWork();
         test.stopTest();
         List<ACM_Integration_Message_Queue__c> intMessageQueue = [select id from ACM_Integration_Message_Queue__c]; 
-        
-        System.assertNotEquals(20,intMessageQueue.size(),'size should equal');
+        system.debug('intMessageQueue--'+intMessageQueue.size());
+        System.assertEquals(2,intMessageQueue.size(),'size should equal');
     }
     
     @isTest
@@ -193,6 +194,7 @@ public class UCD_ACM_Common_Test {
         accountsAfterUpdate.addAll(newAccounts);
         
       //  List<ACM_Integration_Message_Queue__c> integrationMessage = [Select Id,Content__c,Content_Type__c,Message_Status__c,Module_Name__c,Queue_Type__c,Source_System__c,Custom_Filter__c from ACM_Integration_Message_Queue__c where Message_Status__c = 'Success'];
+      //  System.debug('list'+integrationMessage);
       //  integrationMessage[0].Message_Status__c = 'Success';
         
         Test.startTest();
@@ -201,21 +203,10 @@ public class UCD_ACM_Common_Test {
         Test.stopTest();
         List<ACM_Integration_Message_Queue__c> intMessageQueue = [select id from ACM_Integration_Message_Queue__c]; 
         
-        System.assertNotEquals(20,intMessageQueue.size(),'size should equal');
+        System.assertEquals(1,intMessageQueue.size(),'size should equal');
       //  System.assertNotEquals('New', integrationMessage[0].Message_Status__c, 'Update Successful');
     }
-    
-    @isTest
-    private static void whenUpdateHierarchyFieldsWithTrue(){
-        Account account = [Select Id,Name,Core_Survivor_Account_Id__c,Core_Business_Party_Id__c,Core_Data_Simplified_Account_Nm__c,Core_Data_Country_Nm__c,Core_Data_Simplified_Local_Language_Nm__c,Unified_Hierarchy_View__c,Core_Customer_Aggregation_Type__c,ParentId,RecordTypeId,BillingCountryCode,BillingCountry,Core_Account_Request_Rejection_Reason__c,Core_Account_Request_Rejection_Notes__c,ShippingCountryCode,ShippingCountry,BillingCity,BillingStreet from Account where Name = 'TestParentAccount' LIMIT 1];
-        Set<Id> loggingAccountIds = new Set<Id>(); 
-        loggingAccountIds.add(account.Id);
-        UCD_ACM_UpdateHierarchyFieldsQueueable updateJob = new UCD_ACM_UpdateHierarchyFieldsQueueable(loggingAccountIds);
-         test.startTest();
-        	System.enqueueJob(updateJob);
-        test.stopTest();
-        System.assertNotEquals(updateJob,null);
 
-    }
+    
     
 }

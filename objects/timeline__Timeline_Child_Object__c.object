@@ -262,7 +262,6 @@
         <fullName>timeline__Include_All_Records__c</fullName>
         <defaultValue>false</defaultValue>
         <deprecated>false</deprecated>
-        <inlineHelpText>This field doesn&apos;t have a function. If you are planning to include archived activities, please refer to the documentation to implement an Apex dataprovider.</inlineHelpText>
         <label>Include All Records</label>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>

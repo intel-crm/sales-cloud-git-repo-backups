@@ -40,7 +40,7 @@
  *   Note that the query to the database is demand loaded only on the first call to the hasPermission method
  *   thus constructing the object carries no SOQL / database overhead.
  **/
-public With Sharing virtual class PMP_CustomPermissionsReader {
+public virtual class PMP_CustomPermissionsReader {
 
     private SObjectType managedObject;
 
@@ -115,7 +115,7 @@ public With Sharing virtual class PMP_CustomPermissionsReader {
             customPermissionNamesById.put(customPermission.Id, customPermission.DeveloperName);
         }
         
-        //System.debug('customPermissionNamesById = '+ customPermissionNamesById);
+        System.debug('customPermissionNamesById = '+ customPermissionNamesById);
 
         // Query to determine which of these custome settings are assigned to this user
         List<SetupEntityAccess> setupEntities = 

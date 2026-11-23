@@ -3,16 +3,12 @@
         <apex:includeLightning />
         <apex:slds /> 
     </apex:outputPanel>
-    <apex:includeLightning />
-    <apex:slds />
     <apex:sectionHeader title="Contact - Grant Access" subtitle="{!strContactName}" />
     <apex:pageMessages id="pageMessages"  escape="false"/>
     <apex:outputPanel rendered="{!$User.UITheme == 'Theme3'}">
-        
+        <hr class="lightWeightDivider" />
     </apex:outputPanel> 
-
-        <div id="bannerCompId" />
-
+    
 	<apex:slds />
     <div id="spinner" class="slds-scope" >
     <apex:form id="form" style="height: 100vh">
@@ -28,8 +24,7 @@
     </div>
     
     <style>
-        
-        
+        /*
         .bPageBlock .detailList .labelCol {
         width: 80%;
         text-align: left;
@@ -45,7 +40,7 @@
         }
         body .bRelatedList .pbBody table.list, body .apexp .pbBody table.list {
         border: 2px solid #36a0fe;
-        } 
+        }*/
         .apexpageBlockOuterTable{
         border: 2px solid #d9d9d9;
         float: left;
@@ -183,55 +178,9 @@
         background :#f2f2f2;
         border-radius: 5px;
         }
-        
-        .popup
-        {
-        background-color: white;
-        border-width: 2px;
-        border-style: solid;
-        z-index: 9999;
-        left: 50%;
-        padding:10px;
-        position: absolute;
-        width: 500px;
-        margin-left: -216px;
-        top:48px;
-        }
-        
-        .popupBg
-        {
-        background-color:black;
-        opacity: 0.20;
-        filter: alpha(opacity = 70);
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        z-index: 9998;
-        }
-        
-         
     </style>
     <apex:includeScript value="{!$Resource.Core_Jquery}" />
     <script>
-    var flagcheck = {!blnIsValid};
-    console.log("flagCheck-->"+flagcheck)
-    if(flagcheck)
-     $Lightning.use("c:Core_GrantAccess_Banner", function() {
-        console.log('in lwc00');
-         
-          $Lightning.createComponent("c:core_GrantAccessBanner",
-            {
-                recordId : '{!JSENCODE($CurrentPage.parameters.id)}'
-            },
-              "bannerCompId",
-              function(cmp) {
-                  
-                console.log("lwc was called");
-              }
-          );
-        });
     $(document).ready(function() {
         var allData = document.getElementsByClassName('helpButton')
         for (var i = 0; i < allData.length; i++) {
@@ -274,11 +223,11 @@
             var isExpand = document.getElementById('collapsebutton').innerHTML =='Expand All';
             if(isExpand){
                  $('div.headerIconColumn').each(expandAllSections);
-                $("html, body").animate({ scrollTop: $(this).offset().top }, 500);
+            	 $("html, body").animate({ scrollTop: $(this).scrollTop() }, 1000);
                 document.getElementById('collapsebutton').innerHTML = 'Collapse All';
             } else {
            		 $('div.headerIconColumn').each(collapseAllSections);
-                $("html, body").animate({ scrollTop: $(this).offset().top }, 500);
+            	 $("html, body").animate({ scrollTop: $(this).scrollTop() }, 1000);
                 document.getElementById('collapsebutton').innerHTML = 'Expand All';
             }
             
@@ -293,17 +242,11 @@
                 $('div.headerIconColumn').each(collapseAllSections);
                 $(elemsToToggle).show();
                 $(this).find('.headerPlusMinusIcon').html('-');
-                $("html, body").animate({ scrollTop: $(this).offset().top }, 500);
+                $("html, body").animate({ scrollTop: $(this).scrollTop() }, 1000);
             }
         });
         document.getElementById('spinner').className += ' slds-hide';
     });
-    
-    /*Stop spinner after the page load---Start---Part of GEC functionality*/   // om added spinner
-    $( window ).load(function() {
-    	document.getElementById('spinner').className += ' slds-hide';
-    });
-    /*Stop spinner after the page load---End*/
     
     var isClicked = true;
     function submitPage() {
@@ -328,7 +271,7 @@
     }
     
     function showHelpText(data, id){
-        $Lightning.use("c:Core_GrantAccess_Banner", function() {
+        $Lightning.use("c:Core_AppForHelpText", function() {
             $Lightning.createComponent("lightning:helptext",
                                        { content : data },
                                        id,
@@ -336,214 +279,17 @@
                                            // do some stuff
                                        });
         });
-        
-        
     }
     
     function redirectToContact(){
         sforce.one.navigateToSObject("{!JSENCODE(idContact)}","VIEW");
     }
     
-    function checkEmployee(name,isSelected,val)
-    { 
-        
-        if(name !='Employee' && name !='Partner Admin' && name !='Partner Admin Delegate' &&val.checked){
-            // Logging map object to console
-            var entitlementAndBenifits = JSON.parse('{!entBenifitsMap}');
-             let lstOfEntitlementForSuppressSoftPopups='{!lstOfEntitlementForSuppressSoftPopups}';
-            for (let key in entitlementAndBenifits) {
-                if(entitlementAndBenifits.hasOwnProperty(key)) {
-                    value = entitlementAndBenifits[key];
-                    if(value!='' && key==name && isSelected == 'false' && val.checked && !lstOfEntitlementForSuppressSoftPopups.includes(name)){
-                        var ele =document.getElementById("newPopupId");
-						ele.innerHTML = ''; // clear safely
-						ele.insertAdjacentHTML("beforeend", modalHtml); 
-                        var modalHtml ='<div id="myModal" class="slds-modal slds-fade-in-open"><div class="slds-modal__container"><div class="slds-modal__content slds-p-around_medium benifitsClass"><p style="color:red;font-size:15px;text-align: center;">'+
-                            '<b><i> Please De-Select the selected Entitlement if not required</i></b></p>'+
-                            '<p>'+name+' Entitlement can only be granted if OPID has any one of the following benefit(s)</p></div>'+
-                            '<div class="slds-modal__footer">'+
-                            '<div class="slds-align_absolute-center"><button class="slds-button slds-button_brand" onclick="callSaveMethod2()">Ok</button></div></div></div></div>'+
-                            '<div class="slds-backdrop slds-backdrop_open"></div>';
-                        ele.innerHTML +=modalHtml; 
-                        for (let val in value) {
-                            let list = document.createElement('li');
-                            list.innerText=value[val];
-                            document.querySelector('.benifitsClass').appendChild(list);
-                        }
-                    }
-                }
-            }
-        }
-        //Employee Removal Popup issue Fix code change added by Sonali ----Start
-        if(name == 'Employee' && isSelected == 'true'){
-            document.getElementById('myEmpModal').style.display = 'block';                        
-        }
-        
-    }
     
-    /*function checkACR(name, acrCount, acrPA, acrPAD, val){
-    	if(((name == 'Employee' && acrCount == 0)||(name == 'Partner Admin' && acrPA == 0)||(name == 'Partner Admin Delegate' && acrPAD == 0)) && val.checked){
-        	document.getElementById('acrId').style.display = 'block';
-        }
-        /*  if(name == 'Partner Admin' && acrPA == 0 && val.checked){
-        	document.getElementById('acrId').style.display = 'block';
-        }
-        if(name == 'Partner Admin Delegate' && acrPAD == 0 && val.checked){
-        	document.getElementById('acrId').style.display = 'block';
-        }
-    }*/
-    //Shashwat changes END-------------------
-    /*----------popup for US751531--changes made by sonali -------------*/
-    function showPop(){
-        callOnSave();
-    }
-    
-    //popup for US751531---added by sonali
-    function callSaveMethod(){
-        
-          document.getElementById('myModal').style.display = 'none';
-        document.getElementById('myEmpModal').style.display = 'none';//Sonali -----employee removal popup issue 
-        callOnSave();
-    }
-    function callSaveMethod2(){
-        const acrPopup = document.getElementById('acrId');
-        if (acrPopup) acrPopup.style.display = 'none';
-        
-        const modalContainer = document.getElementById('newPopupId');
-        modalContainer.innerHTML = '';
-        
-    }
-    //Shashwat Changes End
-    //popup for US751531---added by sonali
-    var entitlement = [];
-    function checkCustomer(subcategory,name,isSelected){
-        if(subcategory == 'Intel Quote Request' && isSelected == 'false'){
-            if(!entitlement.includes(name)){
-                entitlement.push(name);
-            }else{
-                entitlement.splice(entitlement.indexOf(name),1);
-            }
-        }
-    }
-    
-    //popup for US751531---added by sonali
-    function closeModal() {
-        document.getElementById('confirmModal').style.display = 'none';
-        document.getElementById('myEmpModal').style.display = 'none';////Sonali -----employee removal popup issue
-        callApexMethod();
-    }
-    
-     //Shashwat Changes Start-------
-     function closeModal2() {
-         document.getElementById('myEmpModal').style.display = 'none';
-     }
-     //Shashwat Changes End------- 
-    //confirmation popup for US751531---added by sonali
-    function openConfirmPopup() { 
-        document.getElementById('myModal').style.display = 'none';
-        document.getElementById('confirmModal').style.display = 'block';        
-    }
     </script>
-    <apex:slds />
     
     <div class="slds-scope">
         <apex:Form >
-            <!--Shashwat changes START-->
-             <!--<div id="acrId" style="display: none; visibility: visible;" class="modal slds-scope">
-                 <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open slds-modal_small" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1">
-                    <div class="slds-modal__container"> 
-                        
-                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
-                            <p style="color:red;font-size:15px;text-align: center;"><b><i> Please De-Select the selected Entitlement if not required</i></b></p>
-                            <p>Contact does not have correct contact relationship. Are you sure you want to proceed?</p>
-                            
-                        </div>
-                        <footer class="slds-modal__footer">
-                            <div class="slds-align_absolute-center">
-                                <commandbutton class="slds-button slds-button_brand " onclick="callSaveMethod2(); ">Ok</commandbutton>
-                                
-                            </div>
-                        </footer>
-                    </div> 
-                </section>
-                <div class="slds-backdrop slds-backdrop_open"></div>
-            </div>-->
-            <div id="newPopupId">
-            </div>
-            <!--Shashwat changes END-->
-            <!--Employee Removal Popup issue Fix code change added by Sonali ----Start  -->    
-            <div id="myEmpModal" style="display: none; visibility: visible;" class="modal slds-scope">
-                <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open slds-modal_small" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1">
-                    <div class="slds-modal__container">                        
-                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
-                            <p>Removal of the employee will remove the user from the Intel® Partner Alliance Program. Are you sure you want to proceed?</p>
-                        </div>
-                        <footer class="slds-modal__footer">
-                            <div class="slds-align_absolute-center">
-                                <commandbutton class="slds-button slds-button_brand " onclick="callSaveMethod(); ">Yes</commandbutton>
-                                <commandbutton class="slds-button slds-button_neutral" onclick="closeModal2(); ">No</commandbutton> 
-                            </div>
-                        </footer>
-                    </div>
-                </section>
-                <div class="slds-backdrop slds-backdrop_open"></div>
-            </div>  
-            
-            <!--popup for US751531---added by sonali-->
-            <div id="myModal" style="display: none; visibility: visible;" class="modal slds-scope">
-                <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open slds-modal_small" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1">
-                    <div class="slds-modal__container">                        
-                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
-                            <p>Have you verified the customer has accepted or signed the Intel Quote Request Terms and Conditions and that the executed Terms and Conditions agreement has been uploaded for the customer account to which this user belongs? </p>
-                        </div>
-                        <footer class="slds-modal__footer">
-                            <div class="slds-align_absolute-center">
-                                <commandbutton class="slds-button slds-button_brand " onclick="callSaveMethod(); ">Yes</commandbutton>
-                                <commandbutton class="slds-button slds-button_neutral" onclick="openConfirmPopup(); ">No</commandbutton>
-                            </div>
-                        </footer>
-                    </div>
-                </section>
-                <div class="slds-backdrop slds-backdrop_open"></div>
-            </div>
-            <!-- confirmation popup -->
-            <div id="confirmModal" style="display: none; visibility: visible;" class="modal slds-scope ">
-                <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open " aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1">
-                    <div class="slds-modal__container ">                        
-                        <div class="slds-modal__content slds-p-around_medium slds-text-align_center" id="modal-content-id-1">
-                            <p>Role(s) not assigned.</p>
-                        </div>  
-                        <footer class="slds-modal__footer ">
-                            <div class="slds-align_absolute-center">
-                                <commandbutton class="slds-button slds-button_brand " onclick="closeModal();">Ok</commandbutton> 
-                            </div>                            
-                        </footer>
-                    </div>
-                </section>
-                <div class="slds-backdrop slds-backdrop_open"></div>
-            </div>
-            
-            <apex:actionFunction name="callApexMethod" action="{!onReturnPress}" status="pageStatus"/><!--Sonali-->
-            <apex:actionFunction name="callOnSave"  action="{!onSave}" reRender="rerenderId,pageMessages" status="pageStatus"/><!--Sonali-->
-                        
-            <apex:actionStatus id="pageStatus">
-                <apex:facet name="start">
-                    <div style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.75; z-index: 1000; background-color: rgb(202 228 237);">
-                        &nbsp;
-                    </div>
-                    <div style="position: fixed; left: 0; top: 0; bottom: 0; right: 0; z-index: 1001; margin: 20% 50%">
-                        <!--img src="https://simplysalesforcedotcom.files.wordpress.com/2014/09/spinner-gif-red.gif" /-->
-                        <div id="spinner" class="slds-spinner_container slds-is-relative" >
-                            <div role="status" class="slds-spinner slds-spinner--large slds-spinner--brand">
-                                <div class="slds-spinner__dot-a"></div>
-                                <div class="slds-spinner__dot-b"></div>
-                            </div>
-                        </div>
-                    </div>
-                </apex:facet>
-            </apex:actionStatus>
-            <!--popup for US751531---added by sonali END-->
-            
             <apex:outputPanel rendered="{!blnIsValid == FALSE}"> <!-- styleClass="slds_align_absolute-center" -->
                 <div style="margin:auto;width:200px;">
                     <apex:commandButton value="Save" disabled="true" />
@@ -554,7 +300,7 @@
             <apex:pageBlock id="pbEngagements" tabStyle="Contact" rendered="{!blnIsValid == TRUE}">
                 
                 <div style="text-align: center;">
-                    <apex:commandButton value=" Save " reRender="rerenderId,pageMessages" onclick="showPop();"/> 
+                    <apex:commandButton value=" Save " action="{!onSave}"  onclick="this.className='btnDisabled'; return submitPage();"/> 
                     <apex:commandButton value="Cancel" onclick="redirectToContact();" />
                 </div>
                 <apex:pageBlockSection >
@@ -587,7 +333,7 @@
                                                 <div class="headerPlusMinusIcon">+</div>
                                             </div>
                                             <div class="apexColumn categoryColumn">
-                                                <apex:outputText value="{!HTMLENCODE(section[0].category)}" escape="false"></apex:outputText>
+                                                <apex:outputText value="{!section[0].category}"></apex:outputText>
                                             </div>
                                            <!-- <div class="apexColumn accessColumn">
                                                 <apex:outputText value="Access"></apex:outputText>
@@ -603,7 +349,7 @@
 <apex:pageBlockSectionItem helpText="{!row.subCatHelpText}" rendered="{!IF((ISNULL(row.subCatHelpText) || row.subCatHelpText==''),false, true)}"> -->
                                                     <div style="height: 30px;" Class="subCategoryBgColor">
                                                         <apex:outputPanel rendered="{!IF((ISNULL(row.subCatHelpText) || row.subCatHelpText==''),false, true)}" styleClass="slds-panel1">
-                                                            <apex:outputText value="{!HTMLENCODE(row.SubCategory)}" escape="false" style=" width: 88%; float:left; text-align: left;  padding-left:5px; font-weight: bold;font-size:14px; margin-bottom:7px;margin-top:4px;"></apex:outputText>
+                                                            <apex:outputText value="{!row.SubCategory}" style=" width: 88%; float:left; text-align: left;  padding-left:5px; font-weight: bold;font-size:14px; margin-bottom:7px;margin-top:4px;"></apex:outputText>
                                                             <apex:outputText value="Access"></apex:outputText>
                                                             <div id="{!row.subCatHelpText}" style="{!IF($User.UITheme != 'Theme3', 'display:inline', 'display:none')}">
                                                                 <script type="text/javascript">
@@ -614,7 +360,7 @@
                                                         <!-- </apex:pageBlockSectionItem> -->
                                                         <!-- <apex:pageBlockSectionItem rendered="{!IF((ISNULL(row.subCatHelpText) || row.subCatHelpText==''),true, false)}">-->
                                                         <apex:outputPanel rendered="{!IF((ISNULL(row.subCatHelpText) || row.subCatHelpText==''),true, false)}">
-                                                            <apex:outputText value="{!HTMLENCODE(row.SubCategory)}" escape="false" style=" width: 88%; float:left; text-align: left;  padding-left:5px; font-weight: bold;font-size:14px; margin-bottom:7px; margin-top: 4px;"></apex:outputText>
+                                                            <apex:outputText value="{!row.SubCategory}" style=" width: 88%; float:left; text-align: left;  padding-left:5px; font-weight: bold;font-size:14px; margin-bottom:7px; margin-top: 4px;"></apex:outputText>
                                                             <apex:outputText value="Access" style="float:left; text-align: left;  padding-left:5px; font-weight: bold;font-size:14px; margin-bottom:7px; margin-top: 4px;"></apex:outputText>
                                                             <!-- </apex:pageBlockSectionItem> -->
                                                         </apex:outputPanel>
@@ -632,8 +378,8 @@
 <apex:pageBlockSectionItem helpText="{!row.entitlehelpText}" rendered="{!IF((ISNULL(row.entitlehelpText) || row.entitlehelpText ==''),false, true)}">-->
                                                         <div style="height: 30px;">
                                                             <apex:outputPanel rendered="{!IF((ISNULL(row.entitlehelpText) || row.entitlehelpText ==''),false, true)}" styleClass="slds-panel1">
-                                                                <apex:outputText value="{!HTMLENCODE(row.name)}" escape="false" style="padding-left:25px;" />
-                                                                <apex:outputText value="{!HTMLENCODE(entitlementStatus[LEFT(row.idEntitlement,15)])}" escape="false" style="white-space: nowrap;color: cornflowerblue;" styleClass="entitlementStatusSection"></apex:outputText>
+                                                                <apex:outputText value="{!row.name}" style="padding-left:25px;" />
+                                                                <apex:outputText value="{!entitlementStatus[LEFT(row.idEntitlement,15)]}" style="white-space: nowrap;color: cornflowerblue;" styleClass="entitlementStatusSection"></apex:outputText>
                                                                 <div id="{!row.entitlehelpText}" style="{!IF($User.UITheme != 'Theme3', 'display:inline', 'display:none')}">
                                                                     <script type="text/javascript">
                                                                     new function() { showHelpText("{!JSENCODE(row.entitlehelpText)}","{!JSENCODE(row.entitlehelpText)}"); };
@@ -643,8 +389,8 @@
                                                             <!--</apex:pageBlockSectionItem>
 <apex:pageBlockSectionItem rendered="{!IF((ISNULL(row.entitlehelpText) || row.entitlehelpText ==''),true, false)}" > -->
                                                             <apex:outputPanel rendered="{!IF((ISNULL(row.entitlehelpText) || row.entitlehelpText ==''),true, false)}" styleClass="slds-panel1">
-                                                                <apex:outputText value="{!HTMLENCODE(row.name)}" escape="false" style="padding-left:25px;" />
-                                                                <apex:outputText value="{!HTMLENCODE(entitlementStatus[LEFT(row.idEntitlement,15)])}" escape="false" style="white-space: nowrap;color: cornflowerblue;" styleClass="entitlementStatusSection"></apex:outputText>
+                                                                <apex:outputText value="{!row.name}" style="padding-left:25px;" />
+                                                                <apex:outputText value="{!entitlementStatus[LEFT(row.idEntitlement,15)]}" style="white-space: nowrap;color: cornflowerblue;" styleClass="entitlementStatusSection"></apex:outputText>
                                                             </apex:outputPanel>
                                                         </div>
                                                         <!--    </apex:pageBlockSectionItem>-->
@@ -672,7 +418,7 @@
                                                             <div class="slds-form-element__row">
                                                                 <div class="slds-form-element">
                                                                     <label class="slds-checkbox">
-                                                                        <apex:inputcheckbox id="isinstance" styleclass="slds-input" value="{!row.selected}" onclick="checkEmployee('{!row.name}','{!row.selected}',this); checkCustomer('{!section[0].category}','{!row.name}','{!row.selected}')"/>                           <!--<apex:actionSupport action="{!checkEntitlementSubordinates}" event="onchange" reRender="pbEngagements">
+                                                                        <apex:inputcheckbox id="isinstance" styleclass="slds-input" value="{!row.selected}" />                           <!--<apex:actionSupport action="{!checkEntitlementSubordinates}" event="onchange" reRender="pbEngagements">
 <apex:param name="entName" value="{!row.name}" assignTo="{!subordinateEntName}"/>
 </apex:actionSupport> -->
                                                                         <span class="slds-checkbox--faux"></span>
@@ -687,7 +433,7 @@
                                                             </apex:outputPanel>
                                                             <apex:outputPanel rendered="{!!row.selected}">
                                                                 <!-- <input type="checkbox" style="float:left;position: inherit;opacity:0.5;"  disabled="true"/> -->
-                                                                <input type="checkbox" style="opacity:0.5;" disabled="true"/>
+                                                                <input type="checkbox" style="opacity:0.5;" checked="true" disabled="true"/>
                                                             </apex:outputPanel>
                                                             <apex:InputHidden value="{!row.selected}" id="uncheckedent2"/>
                                                         </apex:outputPanel>
@@ -699,7 +445,7 @@
                                                         </apex:outputPanel>
                                                         <apex:outputPanel rendered="{!!row.selected}">
                                                             <!-- <input type="checkbox" style="float:left;position: inherit;opacity:0.5;"  disabled="true"/>  -->
-                                                            <input type="checkbox" style="opacity:0.5;" disabled="true"/>
+                                                            <input type="checkbox" style="opacity:0.5;" checked="true" disabled="true"/>
                                                         </apex:outputPanel>
                                                         <apex:InputHidden value="{!row.selected}" id="uncheckedent1" />
                                                     </apex:outputPanel>
@@ -716,7 +462,7 @@
                        		 <!-- harshita search results start -->
                             <apex:outputPanel rendered="{!isNotExist == TRUE}" layout="block" >
                                   <div class = "blankSearchTextMessage">
-              						<apex:outputText value="{!HTMLENCODE($Label.Core_A_E_Entitlement_Does_Not_Exist)}" escape="false"></apex:outputText>
+              						<apex:outputText value="{!$Label.Core_A_E_Entitlement_Does_Not_Exist}"></apex:outputText>
                                   </div>
                             </apex:outputPanel>
                             
@@ -729,7 +475,7 @@
                                                 <div class="headerPlusMinusIcon">+</div>
                                             </div>
                                             <div class="apexColumn categoryColumn">
-                                                <apex:outputText value="{!HTMLENCODE(section[0].category)}" escape="false"></apex:outputText>
+                                                <apex:outputText value="{!section[0].category}"></apex:outputText>
                                             </div>
                                            <!-- <div class="apexColumn accessColumn">
                                                 <apex:outputText value="Access"></apex:outputText>
@@ -745,7 +491,7 @@
 <apex:pageBlockSectionItem helpText="{!row.subCatHelpText}" rendered="{!IF((ISNULL(row.subCatHelpText) || row.subCatHelpText==''),false, true)}"> -->
                                                     <div style="height: 30px;" Class="subCategoryBgColor">
                                                         <apex:outputPanel rendered="{!IF((ISNULL(row.subCatHelpText) || row.subCatHelpText==''),false, true)}" styleClass="slds-panel1">
-                                                            <apex:outputText value="{!HTMLENCODE(row.SubCategory)}" escape="false" style=" width: 87.4%; float:left; text-align: left;  padding-left:5px; font-weight: bold;font-size:14px; margin-bottom:7px;margin-top:4px;"></apex:outputText>
+                                                            <apex:outputText value="{!row.SubCategory}" style=" width: 87.4%; float:left; text-align: left;  padding-left:5px; font-weight: bold;font-size:14px; margin-bottom:7px;margin-top:4px;"></apex:outputText>
                                                             <apex:outputText value="Access"></apex:outputText>
                                                             <div id="{!row.subCatHelpText}" style="{!IF($User.UITheme != 'Theme3', 'display:inline', 'display:none')}">
                                                                 <script type="text/javascript">
@@ -756,7 +502,7 @@
                                                         <!-- </apex:pageBlockSectionItem> -->
                                                         <!-- <apex:pageBlockSectionItem rendered="{!IF((ISNULL(row.subCatHelpText) || row.subCatHelpText==''),true, false)}">-->
                                                         <apex:outputPanel rendered="{!IF((ISNULL(row.subCatHelpText) || row.subCatHelpText==''),true, false)}">
-                                                            <apex:outputText value="{!HTMLENCODE(row.SubCategory)}" escape="false" style=" width: 87.4%; float:left; text-align: left;  padding-left:5px; font-weight: bold;font-size:14px; margin-bottom:7px; margin-top: 4px;"></apex:outputText>
+                                                            <apex:outputText value="{!row.SubCategory}" style=" width: 87.4%; float:left; text-align: left;  padding-left:5px; font-weight: bold;font-size:14px; margin-bottom:7px; margin-top: 4px;"></apex:outputText>
                                                             <apex:outputText value="Access" style="float:left; text-align: left;  padding-left:5px; font-weight: bold;font-size:14px; margin-bottom:7px; margin-top: 4px;"></apex:outputText>
                                                             <!-- </apex:pageBlockSectionItem> -->
                                                         </apex:outputPanel>
@@ -774,8 +520,8 @@
 <apex:pageBlockSectionItem helpText="{!row.entitlehelpText}" rendered="{!IF((ISNULL(row.entitlehelpText) || row.entitlehelpText ==''),false, true)}">-->
                                                         <div style="height: 30px;">
                                                             <apex:outputPanel rendered="{!IF((ISNULL(row.entitlehelpText) || row.entitlehelpText ==''),false, true)}" styleClass="slds-panel1">
-                                                                <apex:outputText value="{!HTMLENCODE(row.name)}" escape="false" style="padding-left:25px;" />
-                                                                <apex:outputText value="{!HTMLENCODE(entitlementStatus[LEFT(row.idEntitlement,15)])}" escape="false" style="white-space: nowrap;color: cornflowerblue;" styleClass="entitlementStatusSection"></apex:outputText>
+                                                                <apex:outputText value="{!row.name}" style="padding-left:25px;" />
+                                                                <apex:outputText value="{!entitlementStatus[LEFT(row.idEntitlement,15)]}" style="white-space: nowrap;color: cornflowerblue;" styleClass="entitlementStatusSection"></apex:outputText>
                                                                 <div id="{!row.entitlehelpText}" style="{!IF($User.UITheme != 'Theme3', 'display:inline', 'display:none')}">
                                                                     <script type="text/javascript">
                                                                     new function() { showHelpText("{!JSENCODE(row.entitlehelpText)}","{!JSENCODE(row.entitlehelpText)}"); };
@@ -785,8 +531,8 @@
                                                             <!--</apex:pageBlockSectionItem>
 <apex:pageBlockSectionItem rendered="{!IF((ISNULL(row.entitlehelpText) || row.entitlehelpText ==''),true, false)}" > -->
                                                             <apex:outputPanel rendered="{!IF((ISNULL(row.entitlehelpText) || row.entitlehelpText ==''),true, false)}" styleClass="slds-panel1">
-                                                                <apex:outputText value="{!HTMLENCODE(row.name)}" escape="false" style="padding-left:25px;" />
-                                                                <apex:outputText value="{!HTMLENCODE(entitlementStatus[LEFT(row.idEntitlement,15)])}" escape="false" style="white-space: nowrap;color: cornflowerblue;" styleClass="entitlementStatusSection"></apex:outputText>
+                                                                <apex:outputText value="{!row.name}" style="padding-left:25px;" />
+                                                                <apex:outputText value="{!entitlementStatus[LEFT(row.idEntitlement,15)]}" style="white-space: nowrap;color: cornflowerblue;" styleClass="entitlementStatusSection"></apex:outputText>
                                                             </apex:outputPanel>
                                                         </div>
                                                         <!--    </apex:pageBlockSectionItem>-->
@@ -814,7 +560,7 @@
                                                             <div class="slds-form-element__row">
                                                                 <div class="slds-form-element">
                                                                     <label class="slds-checkbox">
-                                                                        <apex:inputcheckbox id="isinstance" styleclass="slds-input" value="{!row.selected}" onclick="checkEmployee('{!row.name}','{!row.selected}',this); checkCustomer('{!section[0].category}','{!row.name}','{!row.selected}')"/>                           <!--<apex:actionSupport action="{!checkEntitlementSubordinates}" event="onchange" reRender="pbEngagements">
+                                                                        <apex:inputcheckbox id="isinstance" styleclass="slds-input" value="{!row.selected}" />                           <!--<apex:actionSupport action="{!checkEntitlementSubordinates}" event="onchange" reRender="pbEngagements">
 <apex:param name="entName" value="{!row.name}" assignTo="{!subordinateEntName}"/>
 </apex:actionSupport> -->
                                                                         <span class="slds-checkbox--faux"></span>
@@ -863,29 +609,10 @@
                 </div>
                 <br/>
                 <div style="text-align: center;">
-                    <apex:commandButton value=" Save " reRender="none" styleClass="slds-button slds-button_neutral" onclick="showPop();"/> 
+                    <apex:commandButton value=" Save " action="{!onSave}"  onclick="this.className='btnDisabled'; return submitPage();"/> 
                     <apex:commandButton value="Cancel" onclick="redirectToContact();" />
                 </div>
             </apex:pageBlock>
-            
-            <!--apex:outputPanel id="popup" >
-            <apex:outputPanel styleClass="popupBg" layout="block" rendered="{!displayPopUp}"/>
-            <apex:outputPanel styleClass="popup" layout="block" rendered="{!displayPopUp}">
-                Removal of Employee role would remove him/her from IPA program. 
-                Do you wish to continue with the removal? 
-                <br/>   
-                <apex:commandButton value="No" style="float: right; margin-right: 30px; width: 52px;" action="{!onReturnPress}" rerender="popup"/> 
-                <apex:commandButton value="Yes" style="float: right; margin-right: 7px; width: 52px;"  action="{!onSave}" onclick="this.className='btnDisabled'; return submitPage();"/>
-                                
-            </apex:outputPanel>
-
-            
-        </apex:outputPanel>
-             <apex:actionFunction name="Show" action="{!showPopup}" rerender="popup">
-                                                                        <apex:param name="myParam1" value=""/>
-                                                                        <apex:param name="myParam2" value=""/>
-                                                                    </apex:actionFunction-->
-
         </apex:Form>
     </div>
 </apex:page>

@@ -1,0 +1,4 @@
+Contact integration for contact - {Email}, has failed because of the following reasons.
+
+    1. Contact part of multiple accounts (multiple SF Ids) in eRPM.
+    2. Salesforce Id mismatch between eRPM and Salescloud.

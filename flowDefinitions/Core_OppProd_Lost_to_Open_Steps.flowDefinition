@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <FlowDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
-    <activeVersionNumber>1</activeVersionNumber>
+    <description>deactivated and migrated to Core_OpptyProd_Consolidation_Before, Core_OpptyProd_StatusChange_Consolidation_After
+
+Contains  Core_OppProd_Lost_to_Open_Step 1a, 1b and 2</description>
+    <masterLabel>Core_OppProd_Lost_to_Open_Steps</masterLabel>
 </FlowDefinition>

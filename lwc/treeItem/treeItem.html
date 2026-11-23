@@ -1,0 +1,61 @@
+<!-- lightningTreeNode.html -->
+<template>
+    <ul>
+      <div class="node-container">
+        <div class={toggleIconClass}>
+           <template if:true={hasChildItems}>
+            <template if:true={foundornot}>
+              <template if:false={isRoot}>
+                <lightning-icon icon-name={ToggleIconName} size="small" onclick={toggleNode}></lightning-icon>
+                </template>
+                <b><lightning-button  variant="base" label={item.name} title={item.label} class={btncls} onclick={handleSelected}></lightning-button></b>
+                <template if:true={nameVisible}>
+                  <template if:false={isRoot}>
+                  <span class="colordarkred slds-p-horizontal_x-small">
+                    <b>{item.label}</b> 
+                  </span>
+                  </template>
+                </template>
+                <template if:true={levelVisible}>
+                  <span class="colorred slds-m-horizontal_x-small">
+                   <b> <span class="slds-p-horizontal_x-small">Level: {item.level}</span> </b> </span>
+                </template>
+          </template>
+        </template>
+          <template if:false={hasChildItems}>
+            <template if:true={foundornot}>
+              <div class="slds-m-left_medium">
+                <b><lightning-button  variant="base" label={item.name} title={item.label} class={btncls} onclick={handleSelected}></lightning-button></b>
+              
+              <template if:true={nameVisible}>
+                <span class="colordarkred slds-p-horizontal_x-small">
+                  <b>{item.label}</b> 
+                </span>
+              </template>
+              <template if:true={levelVisible}>
+                <span class="colorred slds-m-horizontal_x-small">
+                 <b> <span class="slds-p-horizontal_x-small">Level: {item.level}</span> </b> </span>
+              </template>
+              </div>
+            </template>
+          </template>
+          <!--
+          <template if:true={item.found}>
+                <b><lightning-button  variant="brand" label={item.name} title={item.label} class="mybutton1 slds-m-left_x-small" onclick={handleSelected}></lightning-button></b>
+          </template>
+          <template if:false={item.found}>
+              <b><lightning-button  variant="base" label={item.name} title={item.label} class="slds-m-left_x-small" onclick={handleSelected}></lightning-button></b>
+          </template>-->
+          
+        </div><!--
+        <span>{item.label}</span>-->
+      </div>
+      <template if:true={item.expanded}>
+        <li class="slds-p-left_medium">
+          <template for:each={item.items} for:item="item">
+            <c-tree-item key={item.label} item={item} name-visible={nameVisible} level-visible={levelVisible} checked={checked}></c-tree-item>
+          </template>
+        </li>
+      </template>
+    </ul>
+  </template>

@@ -87,6 +87,10 @@
             <translation>SBQQ__LookupData__c</translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>core_cpq_distributor_margin__c</masterLabel>
+            <translation><!-- core_cpq_distributor_margin__c --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>core_cpq_list_price__c</masterLabel>
             <translation><!-- core_cpq_list_price__c --></translation>
         </picklistValues>

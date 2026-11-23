@@ -57,7 +57,7 @@ public class CRM_EMB_AI_Integration_Outbound {
                     
                     mapOfAccIdToBriefId.put(briefRecordsForAcc[0].Account__c,briefRecordsForAcc[0].Id);
                     historyContentDocLinksList = [SELECT Id,LinkedEntityId,ContentDocument.LatestPublishedVersionId,ContentDocument.LatestPublishedVersion.FileExtension,
-                                                ContentDocument.Title from ContentDocumentLink WHERE ContentDocument.Title like 'Briefing for%' and LinkedEntityId =:briefRecordsForAcc[0].Id order by ContentDocument.CreatedDate desc limit 1];
+                                       			ContentDocument.Title from ContentDocumentLink WHERE ContentDocument.Title like 'Briefing for%' and LinkedEntityId =:briefRecordsForAcc[0].Id order by ContentDocument.CreatedDate desc limit 1];
                     // Initialize map for all brief IDs
                     for(Executive_Meeting_Brief__c briefId : briefRecordsForAcc) {
                         briefIdToHistoryContentVersionsMap.put(briefId.Id, new List<String>()); 
@@ -103,7 +103,7 @@ public class CRM_EMB_AI_Integration_Outbound {
                             }
                         }
                     }
-                
+				
                 //Account pulse callout
                 executiveBriefIdToAccPulseMap= CRM_Account_Pulse_Integration.getAccountPulse(briefRecordIds);
                 
@@ -186,8 +186,10 @@ public class CRM_EMB_AI_Integration_Outbound {
                 if (accPulseValue != null) {
                     briefWrap.acc_pulse = accPulseValue;
                 }
+                system.debug('briefWrap-'+briefWrap);
                 // Add content version IDs for this brief
                 String jsonPayload = JSON.serialize(briefWrap);
+                system.debug('jsonPayload-->'+jsonPayload);
                 executiveBriefIdToJsonMap.put(briefRecord.Id,jsonPayload);
             }
             if(!executiveBriefIdToJsonMap.isEmpty()){

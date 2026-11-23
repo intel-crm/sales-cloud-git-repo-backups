@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>Mb Games Comercio De Eletronicos Eireli Partner Manager</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>Mb Games Comercio De Eletronicos Eireli Partner Manager</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>MbGamesComercioDeEletronicosEireliPartnerExecutive</parentRole>
+</Role>

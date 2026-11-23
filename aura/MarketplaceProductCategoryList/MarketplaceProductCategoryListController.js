@@ -24,8 +24,7 @@
         //component.set('v.subtitle', '');
         component.set('v.subtitle', $A.get("$Label.c.PMP_Subheading"));
         //component.set('v.CTA', $A.get("$Label.c.PMP_View_All_Products"));
-        // IPA2.0 + US TWC4497-1631
-        // component.set('v.CTA', $A.get("$Label.c.PMP_View_All_Offerings"));
+        component.set('v.CTA', $A.get("$Label.c.PMP_View_All_Offerings"));
         
 /*        
         if (component.get('v.displayType')=='Home'){
@@ -35,18 +34,16 @@
             
         else
             component.set('v.viewAllSearchParams', { type: 'product' });
-*/      
-// IPA2.0 + US TWC4497-1631
-        // if (component.get('v.displayType')=='home'){
-        //     component.set('v.CTAUrl', '/offerings');
-        //     debugger;
-		// 	//console.log('v.displayType = ',v.displayType);
-		// 	//console.log('v.CTAUrl = ',v.CTAUrl);            
-        // } else 
-        // {
+*/ 
+        if (component.get('v.displayType')=='home'){
+            component.set('v.CTAUrl', '/offerings');
+            debugger;
+			//console.log('v.displayType = ',v.displayType);
+			//console.log('v.CTAUrl = ',v.CTAUrl);            
+        } else {
             component.set('v.viewAllSearchParams', { type: 'product' });
             //console.log('v.viewAllSearchParams = ',v.viewAllSearchParamse);
-        // }
+        }
     },
         
 })

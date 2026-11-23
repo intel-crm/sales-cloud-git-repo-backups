@@ -29,9 +29,11 @@
 					size="x-small" />
 			</aura:if>
             <aura:if isTrue="{!and(v.aiIntegrationStatus != '',v.isRPMUserAlpha)}">
-				<lightning:icon class="slds-var-p-right_xxx-small" iconName="{!v.aiIconName}"
-					alternativeText="{!v.aiAlternativeText}" title="{!v.aiAlternativeText}" variant="{!v.aiVariant}"
-					size="x-small" />
+                <aura:if isTrue="{!not(v.isPricingNotEligible)}">
+                    <lightning:icon class="slds-var-p-right_xxx-small" iconName="{!v.aiIconName}"
+                        alternativeText="{!v.aiAlternativeText}" title="{!v.aiAlternativeText}" variant="{!v.aiVariant}"
+                        size="x-small" />
+                </aura:if>
 			</aura:if>
 			
 		</div>

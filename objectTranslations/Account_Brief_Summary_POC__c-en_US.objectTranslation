@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Account Brief Items</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Account Brief Items</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account_Brief_Summary_Row --></label>
+        <name>Account_Brief_Summary_Row__c</name>
+        <relationshipLabel><!-- Account Brief Items --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Account Brief Summary --></label>
+        <name>Account_Brief_Summary__c</name>
+    </fields>
+    <fields>
+        <label><!-- Attendees --></label>
+        <name>Attendees__c</name>
+    </fields>
+    <fields>
+        <label><!-- Meeting Invite --></label>
+        <name>Meeting_Invite__c</name>
+    </fields>
+    <nameFieldLabel>Account Brief Items</nameFieldLabel>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

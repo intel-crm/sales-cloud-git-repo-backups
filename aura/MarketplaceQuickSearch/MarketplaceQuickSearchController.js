@@ -86,8 +86,7 @@
                         type: 'intel.salesForceHit',
                         pageType: pageType, 
                         partnerMDAId : partnerMDAId,
-                        // IPA2.0 + US TWC4497-1631
-                        // offeringId : offeringId,
+                        offeringId : offeringId,
                         element : labelHeader,
                         title : title,
                         targetURL : targetURL,

@@ -1,37 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <columns>
-        <field>USER_ID</field>
-    </columns>
-    <columns>
-        <field>User.Core_Federation_ID__c</field>
-    </columns>
-    <columns>
-        <field>User.Core_User_Profile_Name__c</field>
-    </columns>
-    <columns>
-        <field>User.Core_User_Geo__c</field>
-    </columns>
-    <columns>
         <field>FIRST_NAME</field>
+    </columns>
+    <columns>
+        <field>PROFILE</field>
     </columns>
     <columns>
         <field>LAST_NAME</field>
     </columns>
     <columns>
-        <field>EMAIL</field>
-    </columns>
-    <columns>
-        <field>TITLE</field>
-    </columns>
-    <columns>
         <field>USERNAME</field>
-    </columns>
-    <columns>
-        <field>DEPARTMENT</field>
-    </columns>
-    <columns>
-        <field>User.Core_Manager__c</field>
     </columns>
     <columns>
         <field>ACTIVE</field>
@@ -40,17 +19,13 @@
         <field>LAST_LOGIN</field>
     </columns>
     <columns>
-        <field>CREATED_DATE</field>
+        <field>User.Core_User_Profile_Name__c</field>
     </columns>
     <columns>
         <field>ROLE</field>
     </columns>
     <columns>
         <field>OWNER_ROLE</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>User.Core_Is_HQ_User__c</field>
     </columns>
     <filter>
         <criteriaItems>
@@ -65,24 +40,17 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Sales Rep,Sales Man,Sales Ops,Brief,Marketing Dev,Program Core,SMG,IPS Agent</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>FIRST_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>test</value>
+            <value>Sales Rep,Rep-BB,Rep-CW</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>User.Core_User_Coverage__c</field>
+        <field>User.Core_User_Geo__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Users With No Role</name>
+    <name>Users No Role</name>
     <params>
         <name>active</name>
         <value>active</value>
@@ -95,8 +63,8 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>User.Core_User_Profile_Name__c</sortColumn>
-    <sortOrder>Asc</sortOrder>
+    <sortColumn>LAST_LOGIN</sortColumn>
+    <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>LAST_LOGIN</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>

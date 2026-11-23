@@ -1,0 +1,28 @@
+<template>
+    <div class="background">
+        <lightning-layout multiple-rows="true">
+            <lightning-layout-item padding="around-small" size="12">
+                <c-ucd-acct-progress-indicator stepnum={stepnum}>
+                </c-ucd-acct-progress-indicator>
+            </lightning-layout-item>
+            <lightning-layout-item padding="around-small" size="12">
+                <template if:true={acctCreateStep}>
+                    <c-ucd-acct-create-form onacctcreatenextclick={acctCreateNextClickHandler}
+                        acctformdetails={acctDetails}></c-ucd-acct-create-form>
+                </template>
+                <template if:true={acctDuplicateInfoStep}>
+                    <!--<c-ucd-acct-duplicate-info onacctdupinfoprevclick={acctDupInfoPrevClick}
+                        onacctdupinfonextclick={acctDupInfoNextClick} acctformdetails={acctDetails}>
+                    </c-ucd-acct-duplicate-info> -->
+                    <c-ucd-acct-duplicate onacctdupinfoprevclick={acctDupInfoPrevClick}
+                        onacctdupinfonextclick={acctDupInfoNextClick} acctformdetails={acctDetails}>
+                    </c-ucd-acct-duplicate>
+                </template>
+                <template if:true={acctFinalSubmnStep}>
+                    <c-ucd-acct-final-submn-form acctformdetails={acctDetails}>
+                    </c-ucd-acct-final-submn-form> 
+                </template>
+            </lightning-layout-item>
+        </lightning-layout>
+    </div>
+</template>

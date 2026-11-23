@@ -1,0 +1,7 @@
+<aura:component implements="lightning:actionOverride,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome">
+	
+    <lightning:quickActionAPI aura:id="quickActionAPI" />
+
+    <lightning:button label="Split_Seats_New" onclick="{!c.Split_Seats_New }" />
+
+</aura:component>

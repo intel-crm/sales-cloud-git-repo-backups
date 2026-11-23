@@ -6,5 +6,5 @@
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>Grandes Almacenes Fnac España Sa Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>GrandesAlmacenesFnacEspaaSaPartnerManager</parentRole>
 </Role>

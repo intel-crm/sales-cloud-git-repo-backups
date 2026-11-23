@@ -12,6 +12,10 @@
         <label><!-- CPQ_Lookup --></label>
         <name>CPQ_Lookup</name>
     </fieldSets>
+    <fieldSets>
+        <label><!-- DRP FS --></label>
+        <name>DRP_FS</name>
+    </fieldSets>
     <fields>
         <label><!-- Active Status --></label>
         <name>Core_Active_Status__c</name>
@@ -162,7 +166,7 @@
         </picklistValues>
     </fields>
     <fields>
-        <help><!-- Target Resale Price is automatically populated by SDC price Once Product is selected  and is read‑only for distributors. In cases where SDC pricing is not available, the field may remain blank at the time of submission and will be completed by Intel during the design registration review process. The displayed Target Resale Price does not constitute approval, endorsement, or a pricing commitment by Intel. --></help>
+        <help><!-- Intel will review Target Resale Price as part of the design registration review process, in order to accurately calculate the value of the design registration. Intel will not provide input or guidance on the Target Resale Price, which will/must be inputted by the Distributor registering the design. Submission of the Target Resale Price does not constitute agreement on or endorsement of that price by Intel, and it will not affect the price offered by Intel to the Distributor. --></help>
         <label><!-- Target Resale Price --></label>
         <name>Core_Target_Resale_Amt__c</name>
     </fields>
@@ -171,8 +175,16 @@
         <name>Core_ThrowValidation__c</name>
     </fields>
     <fields>
+        <label><!-- MMID or Ordering code --></label>
+        <name>DDR_MMID_or_Ordering_code__c</name>
+    </fields>
+    <fields>
         <label><!-- Target Resale Price Note --></label>
         <name>DDR_Target_Resale_Price_Note__c</name>
+    </fields>
+    <fields>
+        <label><!-- Design Deal Registration Status --></label>
+        <name>Design_Deal_Registration_Status__c</name>
     </fields>
     <fields>
         <help><!-- Search Product by MMID or Old MMID or Ordering Code --></help>
@@ -183,6 +195,15 @@
     <fields>
         <label><!-- Additional Comments --></label>
         <name>PCC_Additional_Comments__c</name>
+    </fields>
+    <fields>
+        <label><!-- Change Request Line Item --></label>
+        <name>PCC_Change_Request_Line_Item__c</name>
+        <relationshipLabel><!-- Design-Deal Registration Products --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Change Requested? --></label>
+        <name>PCC_Change_Requested__c</name>
     </fields>
     <fields>
         <help><!-- Partner&apos;s competitor assumed to bid for this opportunity --></help>
@@ -254,6 +275,10 @@
         <name>PCC_Form_Factor__c</name>
     </fields>
     <fields>
+        <label><!-- PCC_L4L5_Product_NewDesignAvailability --></label>
+        <name>PCC_L4L5_Product_NewDesignAvailability__c</name>
+    </fields>
+    <fields>
         <help><!-- Please select OEM provider --></help>
         <label><!-- OEM Name --></label>
         <name>PCC_OEM_Name__c</name>
@@ -264,10 +289,22 @@
         <name>PCC_Payment_Expiration_Date__c</name>
     </fields>
     <fields>
+        <label><!-- Pricing End Date --></label>
+        <name>PCC_Pricing_End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Pricing Start Date --></label>
+        <name>PCC_Pricing_Start_Date__c</name>
+    </fields>
+    <fields>
         <help><!-- Please select products --></help>
         <label><!-- Deal Product --></label>
         <name>PCC_Product_Additional_Attribute__c</name>
         <relationshipLabel><!-- Design-Deal Registration Products --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Product JSON --></label>
+        <name>PCC_Product_JSON__c</name>
     </fields>
     <fields>
         <label><!-- Programs Eligible --></label>
@@ -330,6 +367,10 @@
         <label><!-- Product Hierarchy --></label>
         <name>core_cpq_product_hierarchy_txt__c</name>
     </fields>
+    <fields>
+        <label><!-- round off Test --></label>
+        <name>round_off_Test__c</name>
+    </fields>
     <recordTypes>
         <description><!-- Design Registration Product owned by Intel User. --></description>
         <label><!-- Design Registration Product - Intel --></label>
@@ -366,19 +407,31 @@
         <name>Core_Enter_Comments_for_Rejection</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- This Product is not available for Design Submission --></errorMessage>
+        <name>DDR_Product_Not_Available_for_New_Design</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- Editing the product is not allowed. If you want to make changes, please cancel the current product and submit a new one. --></errorMessage>
         <name>DDR_Product_validation_Message</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Registrations for FPGA product group has been disabled. --></errorMessage>
-        <name>DDR_Restrict_FPGA_Product</name>
+        <errorMessage><!-- Product cannot be added as opportunity is in the win state. Update for Portal and M2M --></errorMessage>
+        <name>Design_Check</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- wrong product segment value on DR --></errorMessage>
+        <name>EmbeddedIOTrule</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Required --></errorMessage>
         <name>PCC_Competitor_System_Model_is_Required</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Products cannot be added at this stage. --></errorMessage>
+        <errorMessage><!-- Editing the Deal product is not allowed. If you want to make changes, please delete the current product and submit a new one. --></errorMessage>
+        <name>PCC_Deal_Product_Edit_Validation_Rule</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Products cannot be added at this stage, Opportunity is already sent for approval/lost/cancelled. --></errorMessage>
         <name>PCC_Deal_Product_Restriction</name>
     </validationRules>
     <validationRules>
@@ -398,7 +451,7 @@
         <name>PCC_Pricing_StartEndDate_Edit_Validation</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Quote Line Pricing End Date must be on/after to the current date --></errorMessage>
+        <errorMessage><!-- Quote Line Pricing End Date must be on/prior to the current date --></errorMessage>
         <name>PCC_Pricng_end_date_future</name>
     </validationRules>
     <validationRules>
@@ -410,12 +463,24 @@
         <name>PCC_Quote_Startdate_Greaterthan_Pricing</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- This Value is changed. Please do not edit this value --></errorMessage>
+        <name>PCC_RestrictDRP_DRIdEdit</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Partners cannot add/modify DRP at this stage. --></errorMessage>
+        <name>PCC_Restrict_Partners_from_Save_New</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- Required --></errorMessage>
         <name>PCC_System_Model_is_Required</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Target Resale Price should not be blank or zero. --></errorMessage>
-        <name>PCC_TargetResalePrice_Mandatory</name>
+        <errorMessage><!-- Quote Line Pricing Start Date/Quote Line Pricing End Date is required for Fin eligible product. --></errorMessage>
+        <name>PCC_Update_Pricing_Start_End_Date_Blank</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Check the status or record type of the product --></errorMessage>
+        <name>PCC_ValidationOnCompetitorProduct</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- This Product is not eligible for DR submission. --></errorMessage>
@@ -450,6 +515,10 @@
         <name>PCC_end_dt_cant_be_mor_thn_hdr_strt</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- Quote Line  Pricing Start Date should not be earlier than the Deal Reg Header End Date --></errorMessage>
+        <name>PCC_start_dt_cant_be_mor_thn_hdr_end</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- Quote Line Pricing Start Date cannot be more than Quote Line Pricing End Date --></errorMessage>
         <name>PCC_strt_Dt_cant_be_mor_thn_end_dt</name>
     </validationRules>
@@ -458,7 +527,7 @@
         <name>PCC_strt_Dt_cant_be_mor_thn_today</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Please provide value for either Product or MMID or Old MMID or Ordering code, but not both. At least one field must be filled in. --></errorMessage>
+        <errorMessage><!-- Please select product from product dropdown or please provide valid MMID or Ordering code --></errorMessage>
         <name>Product_selection_error_message</name>
     </validationRules>
     <validationRules>
@@ -469,6 +538,14 @@
         <errorMessage><!-- Quantity must be greater than zero. --></errorMessage>
         <name>Restrict_products_with_Zero_Qty</name>
     </validationRules>
+    <validationRules>
+        <errorMessage><!-- Cannot approve --></errorMessage>
+        <name>approve_all_test</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Approve_All_Products --></label>
+        <name>Approve_All_Products</name>
+    </webLinks>
     <webLinks>
         <label><!-- Core_Approve_Product --></label>
         <name>Core_Approve_Product</name>
@@ -494,7 +571,15 @@
         <name>Core_Reject_Products_Pending_Lex</name>
     </webLinks>
     <webLinks>
+        <label><!-- DRP_CR --></label>
+        <name>DRP_CR</name>
+    </webLinks>
+    <webLinks>
         <label><!-- Expired_all_button --></label>
         <name>Expired_all_button</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Set_as_Expired_Bulk_Button --></label>
+        <name>Set_as_Expired_Bulk_Button</name>
     </webLinks>
 </CustomObjectTranslation>

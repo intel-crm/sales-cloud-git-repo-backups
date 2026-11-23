@@ -19,7 +19,7 @@
   <table style="font-family:intel clear;border: 1px solid #d3d3d3;padding-left:50px;padding-top:5px;padding-bottom:5px;font-size: 14px;" width="100%">
   <tr>
     <td>
-     Dear Opportunity Owner  {!relatedTo.Owner.Name},<br/><br/>
+     Hi ,<br/><br/>
      The below Opportunity is marked as Risk, Please find the Opportunity Information below
      </td>
     </tr> 
@@ -74,7 +74,7 @@
    </tr>
    
    <tr>
-     <td style="font-family:intel clear;" width="40%">Architecture Conversion : {!relatedTo.Core_Architecture_Conversion__c}</td>
+     <td style="font-family:intel clear;" width="40%">Architecture Conversion: {!relatedTo.Core_Architecture_Conversion__c}</td>
      <td style="font-family:intel clear;" width="40%"> Solution Group : {!relatedTo.Core_Solution_Group__c}</td>
    </tr>
    

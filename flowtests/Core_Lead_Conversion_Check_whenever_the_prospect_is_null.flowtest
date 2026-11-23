@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowTest xmlns="http://soap.sforce.com/2006/04/metadata">
+    <flowApiName>Core_Lead_Conversion_Check</flowApiName>
+    <label>whenever the prospect is null</label>
+    <testPoints>
+        <elementApiName>Start</elementApiName>
+        <isUseMockOutput>false</isUseMockOutput>
+        <parameters>
+            <leftValueReference>$Record</leftValueReference>
+            <type>InputTriggeringRecordInitial</type>
+            <value>
+                <sobjectValue>{&quot;City&quot;:&quot;dfdf&quot;,&quot;Company&quot;:&quot;Enterprise&quot;,&quot;Core_Account_Conversion_Flag__c&quot;:true,&quot;Core_Ask_to_talk_to_Sales__c&quot;:false,&quot;Core_Cold_Contact_Approved__c&quot;:false,&quot;Core_Confirmed_Budget__c&quot;:false,&quot;Core_Contact_Conversion_Flag__c&quot;:true,&quot;Core_Contact_Established_Engaged__c&quot;:true,&quot;Core_Converted_Lead__c&quot;:false,&quot;Core_CountryLabel__c&quot;:&quot;India&quot;,&quot;Core_Created_Post_NewLead_Process__c&quot;:false,&quot;Core_Created_Post_NewPartnerLead_Process__c&quot;:false,&quot;Core_Customer_Consent_for_Marketing__c&quot;:false,&quot;Core_Do_not_call__c&quot;:false,&quot;Core_Entrance_Date_TQL__c&quot;:&quot;2022-10-12T05:15:21.000Z&quot;,&quot;Core_Geo__c&quot;:&quot;APJ&quot;,&quot;Core_Having_Tasks__c&quot;:false,&quot;Core_Having_Tasks_in_TQL__c&quot;:false,&quot;Core_Individual_Send_Email__c&quot;:false,&quot;Core_Is_Lead_Shared__c&quot;:false,&quot;Core_Is_Segment_Available_In_Offering__c&quot;:false,&quot;Core_Lead_Contact_Estb_Dt__c&quot;:false,&quot;Core_Lead_Opt_In_Indicator__c&quot;:false,&quot;Core_Lead_Priority__c&quot;:&quot;Warm&quot;,&quot;Core_Lead_State__c&quot;:&quot;In Pursuit&quot;,&quot;Core_Lead_Status__c&quot;:&quot;Qualified&quot;,&quot;Core_Lead_to_Opportunity_Conversion_flag__c&quot;:false,&quot;Core_Locked_TAL_Coverage__c&quot;:&quot;Other&quot;,&quot;Core_Marketing_Do_Not_Contact_Ind__c&quot;:false,&quot;Core_Marketing_Score__c&quot;:&quot;A2&quot;,&quot;Core_Notify_Owner__c&quot;:false,&quot;Core_Ownership_change_in_one_day_TQL__c&quot;:false,&quot;Core_PSG_Lead__c&quot;:&quot;DCAI&quot;,&quot;Core_Pre_Validated__c&quot;:false,&quot;Core_Profession__c&quot;:&quot;CISO&quot;,&quot;Core_Prospect__c&quot;:&quot;a7B2D000000B98dUAC&quot;,&quot;Core_Rejected_Flag__c&quot;:false,&quot;Core_Remove_Current_Sharing_Ind__c&quot;:false,&quot;Core_Reprocess_Lead_Sharing__c&quot;:false,&quot;Core_SLA_Listed_User__c&quot;:false,&quot;Core_SendEmail4__c&quot;:false,&quot;Core_SendEmail__c&quot;:false,&quot;Core_Sub_Geo__c&quot;:&quot;India&quot;,&quot;Core_System_Update_Address__c&quot;:false,&quot;Core_Unreachable_flag__c&quot;:false,&quot;Country&quot;:&quot;IND&quot;,&quot;CountryCode&quot;:&quot;IND&quot;,&quot;DaScoopComposer__Is_Created_By_Groove__c&quot;:false,&quot;Email&quot;:&quot;jack@gmail.com&quot;,&quot;IsUnreadByOwner&quot;:false,&quot;LastName&quot;:&quot;Test Sales Lead&quot;,&quot;LeadSource&quot;:&quot;Intel Customer Support&quot;,&quot;OwnerId&quot;:&quot;0052D000007LWNSQA4&quot;,&quot;PostalCode&quot;:&quot;8347747&quot;,&quot;RecordTypeId&quot;:&quot;0121J000000yaQ1QAI&quot;,&quot;Salutation&quot;:&quot;Mr.&quot;,&quot;State&quot;:&quot;BR&quot;,&quot;StateCode&quot;:&quot;BR&quot;,&quot;Status&quot;:&quot;Tele Qualified Lead&quot;,&quot;Street&quot;:&quot;street&quot;,&quot;bvd_connector__Unlinked_from_BvD__c&quot;:false}</sobjectValue>
+            </value>
+        </parameters>
+    </testPoints>
+    <testPoints>
+        <assertions>
+            <conditions>
+                <leftValueReference>$Record.Core_Prospect__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+        </assertions>
+        <elementApiName>Finish</elementApiName>
+        <isUseMockOutput>false</isUseMockOutput>
+    </testPoints>
+    <testType>WithAssertion</testType>
+</FlowTest>

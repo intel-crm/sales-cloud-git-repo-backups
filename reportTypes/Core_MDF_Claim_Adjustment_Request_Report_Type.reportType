@@ -159,29 +159,6 @@
             <field>Core_MDF_Adjustment_Status_nm__c</field>
             <table>Core_MDF_Adjustment_Request__c</table>
         </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <displayNameOverride>Program</displayNameOverride>
-            <field>Core_MDF_Reference_Claim_Nbr__c.Request.ChannelPartner.Core_MDF_Channel_Program__c.Core_MDF_Technical_Program_Name__c</field>
-            <table>Core_MDF_Adjustment_Request__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <displayNameOverride>Claim Status</displayNameOverride>
-            <field>Core_MDF_Reference_Claim_Nbr__c.Core_MDF_Status__c</field>
-            <table>Core_MDF_Adjustment_Request__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <displayNameOverride>Region</displayNameOverride>
-            <field>Core_MDF_Reference_Claim_Nbr__c.Core_MDF_Region_Cd__c</field>
-            <table>Core_MDF_Adjustment_Request__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Adjustment_Claim_Nbr__c.Core_MDF_Budget_Type_Options_Nm__c</field>
-            <table>Core_MDF_Adjustment_Request__c</table>
-        </columns>
         <masterLabel>Claim Adjustment Requests</masterLabel>
     </sections>
 </ReportType>

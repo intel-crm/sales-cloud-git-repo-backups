@@ -13,6 +13,10 @@
         <name>BU_Operation_Code__c</name>
     </fields>
     <fields>
+        <label><!-- BU Operation Code --></label>
+        <name>BU_Operation_Code_c__c</name>
+    </fields>
+    <fields>
         <label><!-- Custom Customer Code --></label>
         <name>Custom_Customer_Code__c</name>
     </fields>
@@ -35,6 +39,10 @@
             <masterLabel>Tier 3</masterLabel>
             <translation><!-- Tier 3 --></translation>
         </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Design Expiration Date --></label>
+        <name>Design_Expiration_Date__c</name>
     </fields>
     <fields>
         <label><!-- Division Code Short Name --></label>
@@ -171,6 +179,10 @@
         <name>PCC_L4_L5_Available_For_New_Design__c</name>
     </fields>
     <fields>
+        <label><!-- PCC_Payment_EligibilityFlag --></label>
+        <name>PCC_Payment_EligibilityFlag__c</name>
+    </fields>
+    <fields>
         <label><!-- DDI Program Payment Expiration Date --></label>
         <name>Payment_Expiration_Date__c</name>
     </fields>
@@ -185,10 +197,6 @@
     <fields>
         <label><!-- Product Status --></label>
         <name>Product_Status__c</name>
-    </fields>
-    <fields>
-        <label><!-- ProfitCenter --></label>
-        <name>Profit_Center__c</name>
     </fields>
     <fields>
         <label><!-- Region --></label>

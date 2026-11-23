@@ -1,0 +1,15 @@
+.section-header {
+    cursor: pointer;
+     justify-content: space-between;
+}
+
+.section-content {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+
+.arrow {
+    font-size: 12px;
+    line-height: 12px;
+}

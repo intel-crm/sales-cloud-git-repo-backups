@@ -2,8 +2,8 @@
  * @description       : Handler Class for Record Job object Trigger
  * @author            : Sandeep Chamate
  * @group             : Accenture
- * @last modified on  : 05-13-2026
- * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+ * @last modified on  : 06-13-2024
+ * @last modified by  : Sandeep Chamate
 **/
 public without sharing class Pricing_RecordJobHandler extends TriggerHandler {
 
@@ -11,7 +11,6 @@ public without sharing class Pricing_RecordJobHandler extends TriggerHandler {
     * @description Overridden method for before update Trigger
     * @author Sandeep Chamate | 06-13-2024 
     **/
-    public static Boolean isStopCalculatorForBulkWon = false;
     public override void beforeUpdate() {
 
         Set<Id> quoteIds = new Set<Id>();
@@ -55,9 +54,9 @@ public without sharing class Pricing_RecordJobHandler extends TriggerHandler {
                 Boolean isCalculationPending = false;
                 
                 if(quoteIdToQLIMap.size() > 0 && quoteIdToQLIMap.get(qId) != null){
-                for(SBQQ__QuoteLine__c qli: quoteIdToQLIMap.get(qId)) {
-                    if(!qli.Pricing_Save_After_Calculation_cb__c) {
-                        isCalculationPending = true;
+                    for(SBQQ__QuoteLine__c qli: quoteIdToQLIMap.get(qId)) {
+                        if(!qli.Pricing_Save_After_Calculation_cb__c) {
+                            isCalculationPending = true;
                         }
                     }
                 }
@@ -67,11 +66,10 @@ public without sharing class Pricing_RecordJobHandler extends TriggerHandler {
             }
 
             for(AsyncApexJob queue: [Select Id,CreatedBy.Profile.Name,Status,ApexClass.Name from AsyncApexJob WHERE Id IN: apexJobIds AND Status NOT IN ('Aborted','Completed') and JobType = 'Queueable']) {
-                if(queue.CreatedBy.Profile.Name == 'Integration' || isStopCalculatorForBulkWon){
+                if(queue.CreatedBy.Profile.Name == 'Integration'){
                 	System.AbortJob(queue.Id);
                 }
             }
-            isStopCalculatorForBulkWon = false;
         }
         catch(Exception ex) {
             Pricing_Tender_Utility.logError(ex);

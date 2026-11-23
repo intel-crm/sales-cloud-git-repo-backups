@@ -9,8 +9,20 @@
         <value>Jifflenow Surveys</value>
     </caseValues>
     <fields>
-        <label><!-- Meeting Notes --></label>
-        <name>Meeting_Notes__c</name>
+        <label><!-- Additional Comment --></label>
+        <name>Additional_Comment__c</name>
+    </fields>
+    <fields>
+        <label><!-- Feedback/Comment --></label>
+        <name>Feedback_Comment__c</name>
+    </fields>
+    <fields>
+        <label><!-- Notes 1 --></label>
+        <name>Notes_1__c</name>
+    </fields>
+    <fields>
+        <label><!-- Notes 2 --></label>
+        <name>Notes_2__c</name>
     </fields>
     <fields>
         <label><!-- Account --></label>

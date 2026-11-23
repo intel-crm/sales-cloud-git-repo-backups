@@ -54,7 +54,7 @@ public with sharing Class Core_DDR_Cancel_Product_Controller
             List<OpportunityLineItem> oppLineItem = new List<OpportunityLineItem>();
             
             if(!isDealReg){
-                oppLineItem = !String.isEmpty(oppProdId) ? [Select Id,core_status__c,SBQQ__QuoteLine__r.Pricing_Status_Nm__c from OpportunityLineItem where Id=:oppProdId WITH USER_MODE limit 1]:null;
+                oppLineItem = !String.isEmpty(oppProdId) ? [Select Id,core_status__c from OpportunityLineItem where Id=:oppProdId WITH USER_MODE limit 1]:null;
             }else{
                 List<SBQQ__QuoteLine__c> quotelines = [select Id, (select id from sbqq__OpportunityProducts__r) from SBQQ__QuoteLine__c  where SBQQ__Quote__r.SBQQ__Opportunity2__c =:opportunityId and Pricing_Status_Nm__c   in : LabelConfiguration__mdt.getInstance('PCC_QLIStatus').Value__c.trim().split(';') limit 1];
                 if(quotelines.size()>0 ){
@@ -78,13 +78,11 @@ public with sharing Class Core_DDR_Cancel_Product_Controller
     
     public static string checkValidation(Boolean isDealReg, OpportunityLineItem oppLineItem, Core_Design_Registration_Product__c lstDDRProducts){
         String opptyApprovalStatus = LabelConfiguration__mdt.getInstance('PCC_Deal_SubmittedOpptyStatus').Value__c;
-        List<String> opptyStage = LabelConfiguration__mdt.getInstance('PCC_Deal_OpptyStage').Value__c.trim().split(';');
         final String qliStatus = LabelConfiguration__mdt.getInstance('PCC_QLIStatus').Value__c;
         List<String> statusList = QliStatus.split(';');
         String alertMsg='';
         alertMsg= String.isBlank(alertMsg.trim()) && isDealReg && oppLineItem!=null?LabelConfiguration__mdt.getInstance('PCC_Deal_CancelProductError').Value__c:alertMsg;
-        alertMsg= String.isBlank(alertMsg.trim()) && isDealReg && opptyStage.contains(lstDDRProducts.Core_Design_Registration_Id__r.Core_Opportunity_Id__r.StageName)?LabelConfiguration__mdt.getInstance('PCC_Deal_OpptyStageAlert').Value__c:alertMsg;
-
+        
         alertMsg= String.isBlank(alertMsg.trim()) && isDealReg && !OpptyApprovalStatus.split(';').contains(lstDDRProducts.Core_Design_Registration_Id__r.Core_Opportunity_Id__r.Core_Approval_Status__c)?LabelConfiguration__mdt.getInstance('PCC_Deal_SubmittedOpptyAlert').Value__c:alertMsg;
         
         alertMsg=String.isBlank(alertMsg.trim()) && isDealReg && !lstDDRProducts.PCC_Product_Additional_Attribute__r.Eligible_for_Deal_Reg__c?LabelConfiguration__mdt.getInstance('PCC_DealDRPIneligibleAlert').Value__c:alertMsg;
@@ -118,19 +116,12 @@ public with sharing Class Core_DDR_Cancel_Product_Controller
             updateDRP.Core_Comment_Txt__c =lstDDRProducts[0].Core_Comment_Txt__c!=null?lstDDRProducts[0].Core_Comment_Txt__c+'\n'+cancelComments:cancelComments;
             
             Database.SaveResult results  = Database.update(updateDRP,false,AccessLevel.User_mode);
-            if(!results.isSuccess()){
-                String errors = '';
-                for(Database.error errs : results.getErrors()){
-                    errors +='\n fields :'+errs.getFields()+' :'+errs.getMessage();
-                }
-                Core_Log_Entry.logEntryWithException(LOG_ENTRY_ORIGIN, LOG_ENTRY_PROJECT, LOG_ENTRY_SCOPE, LOG_ENTRY_SEVERITY,errors, '' ,'' ,'Core_DDR_Cancel_Product_Controller.updatingComments' ,'' ,null);
-            }
             System.enqueueJob(new PCC_UpdateOppLineItem(recId)); // Commented by DINESH
             //updateOppLineItem(recId);  // ADDED by DINESH
             return true;
         }catch (Exception e) {
-
-            Core_Log_Entry.logEntryWithException(LOG_ENTRY_ORIGIN, LOG_ENTRY_PROJECT, LOG_ENTRY_SCOPE, LOG_ENTRY_SEVERITY,'', '' ,'' ,'Core_DDR_Cancel_Product_Controller.updatingComments' ,'' ,e);
+            system.debug(e.getMessage());
+            Core_Log_Entry.logEntryWithException(LOG_ENTRY_ORIGIN, LOG_ENTRY_PROJECT, LOG_ENTRY_SCOPE, LOG_ENTRY_SEVERITY,'', '' ,'' ,'Core_DDR_Cancel_Product_Controller.cancelProduct' ,'' ,e);
             return false;
         }
     }
@@ -159,19 +150,7 @@ public with sharing Class Core_DDR_Cancel_Product_Controller
             
             // Update the cancelled record
             //update oliToUpdate;
-            
-            Database.SaveResult[] results  = Database.update(oliToUpdate,false,AccessLevel.User_mode);
-            for (Database.SaveResult result : results) {
-                
-                
-                if(!result.isSuccess()){
-                    String errors = '';
-                    for(Database.error errs : result.getErrors()){
-                        errors +='\n fields :'+errs.getFields()+' :'+errs.getMessage();
-                    }
-                    Core_Log_Entry.logEntryWithException(LOG_ENTRY_ORIGIN, LOG_ENTRY_PROJECT, LOG_ENTRY_SCOPE, LOG_ENTRY_SEVERITY,errors, '' ,'' ,'Core_DDR_Cancel_Product_Controller.updateOppLineItem' ,'' ,null);
-                }
-            }
+            Database.update(oliToUpdate,false,AccessLevel.User_mode);
         }
     }
 }

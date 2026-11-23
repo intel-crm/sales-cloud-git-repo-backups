@@ -1,0 +1,32 @@
+<template>
+    <lightning-card>
+        <h2 slot="title" class="slds-text-heading_large">Inquiry</h2>
+        <div class="slds-grid slds-m-bottom_small slds-align_absolute-center">
+            <div class="slds-size_1-of-6">
+                <div class="slds-text-title_bold">
+                    <lightning-combobox
+                        label="Select List View"
+                        value={selectedListView}
+                        options={listViews}
+                        onchange={handleListViewChange}>
+                    </lightning-combobox>
+                </div>
+            </div>
+
+            <div class="slds-col slds-grow"></div>
+
+            <div>
+                <lightning-button label="New Record" onclick={handleNewRecord}></lightning-button>
+            </div>
+        </div>
+
+        <lightning-datatable
+            key-field="Id"
+            data={records}
+            columns={tableColumns}
+            onsave={handleSave}
+            draft-values={draftValues}
+            hide-checkbox-column>
+        </lightning-datatable>
+    </lightning-card>
+</template>

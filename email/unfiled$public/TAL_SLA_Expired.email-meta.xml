@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <letterhead>Lead_Intel</letterhead>
+    <name>TAL SLA Expired</name>
+    <style>freeForm</style>
+    <subject>Please log a call or email task on your pending TAL lead</subject>
+    <textOnly>Dear {!Lead.OwnerFirstName},
+
+The lead  {!Lead.Name} from {!Lead.Company} assigned to you with a lead stage of &quot;TAL&quot;,  and Lead Status of “accepted” has eclipsed the maximum allowed SLA time with no initial task logged.
+Click here to visit this lead record in SFDC
+
+As a reminder, the following SLA’s are expected for any TAL lead owned by you:
+(&lt;Lead Priority&gt; = Hot): Initial Task (Email or Phone Call) must be logged within 1 business day of Entrance Date
+(&lt;Lead Priority&gt; = Warm): Initial Task (Email or Phone Call) must be logged within 2 business days of Entrance Date
+(&lt;Lead Priority&gt; = Cold):  Initial Task (Email or Phone Call) must be logged within 4 business days of Entrance Date
+Please disposition your lead by completing the required email or phone call task or mark the Lead Status as “disqualified” or “unreachable” as required.
+Thank you.</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

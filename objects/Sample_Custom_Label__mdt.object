@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Dynamic_Filter_and_Value__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Dynamic Filter and Value</label>
+        <length>1000</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>No_Access_Error__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>No Access Error</label>
+        <length>1000</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Tesr__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Tesr</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>one</fullName>
+                    <default>true</default>
+                    <label>one</label>
+                </value>
+                <value>
+                    <fullName>two</fullName>
+                    <default>false</default>
+                    <label>two</label>
+                </value>
+                <value>
+                    <fullName>three</fullName>
+                    <default>false</default>
+                    <label>three</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <label>Sample Custom Label</label>
+    <pluralLabel>Sample Custom Labels</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

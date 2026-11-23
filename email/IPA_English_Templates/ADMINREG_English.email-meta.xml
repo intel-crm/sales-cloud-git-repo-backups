@@ -4,38 +4,13 @@
     <encodingKey>UTF-8</encodingKey>
     <name>ADMINREG_English</name>
     <style>none</style>
-    <subject>Action Required to Complete Your IPA Registration</subject>
-    <textOnly>Action Required to Complete Your IPA Registration
+    <subject>Final step required for your application to Intel&apos;s Partner program</subject>
+    <textOnly>{!Contact.FirstName},
 
-{!Contact.FirstName},
+A profile has been created with Username/Login ID: {!Contact.Core_Login_Id__c}, and you are only a few steps away from becoming an Intel® Cloud Insider Program member. To activate your account and start enjoying your benefits, please review your account information and complete the legal requirements section.
 
-Congratulations, your company administrator or an Intel representative has added you to an Intel® Partner Alliance account! You are only a few steps away from completing your registration
-
-The below profile information has been created for you:
-
-Email Address: {!Contact.Email}
-Company Name: {{ACCOUNTNAME}}
-Intel Partner Alliance Business ID: {{ACCOUNTNUMBER}}
-
-
-Please click on the link below to complete your registration
-
-
-{{ButtonText}}
-
-Can&apos;t access the link above?
-{{EVLINK}}
-
-If you have any questions, please contact us at {{SUPPORTLINK}}.
-
-We look forward to having you in the program!
-Sincerely,
-Your Intel® Partner Alliance team
-
-This message was sent to you as an important business communication related to your current relationship with Intel® Partner Alliance.
-© {!Contact.Core_Current_Year__c} Intel Corporation
-Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
-Privacy | Cookies</textOnly>
+Complete Now
+Questions? Contact Intel® Cloud Insider Support at programs@intel.com or here</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

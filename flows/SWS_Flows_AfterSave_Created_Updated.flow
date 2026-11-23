@@ -1,0 +1,775 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <description>for the workflow &quot; Core_CoveredAccount_Email_Notification &quot;</description>
+        <name>CoveredAccountLead_Email_Trigger</name>
+        <label>CoveredAccountLead_Email_Trigger</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <actionName>Lead.Core_CoveredAccount_Notification</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Lead.Core_CoveredAccount_Notification</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
+        <name>LeadOwnershipChanegEmail</name>
+        <label>LeadOwnershipChanegEmail</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <actionName>Lead.Core_Email_Notification_For_Lead_Ownership_Change</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Lead.Core_Email_Notification_For_Lead_Ownership_Change</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <apiVersion>64.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Core_Lead_Update_Stage_State_Changed_Date_Time</name>
+        <label>Core_Lead_Update_Stage/State_Changed_Date_Time</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Core_Lead_Update_State_Status_Flag</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Core_Lead_Update_State_Changed_Date_TimeTRUE</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_Lead_State__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Lead_Update_Stage_Stage_Date_Time_Formula</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Lead_State_Change_Date_Time</targetReference>
+            </connector>
+            <label>Core_Lead_Update_State_Changed_Date_TimeTRUE</label>
+        </rules>
+        <rules>
+            <name>Core_Lead_Update_Stage_Changed_Date_TimeTRUE</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Lead_Update_Stage_Stage_Date_Time_Formula</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>FieldUpdateCore_Lead_Update_Stage_Changed_Date_Time</targetReference>
+            </connector>
+            <label>Core_Lead_Update_Stage_Changed_Date_TimeTRUE</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Core_Lead_Update_State_Status_Flag</name>
+        <label>Core_Lead_Update_State_Status_Flag</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Core_Reject_flag_updateTQLEntrance</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Core_Update_State_To_InPursuit</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>F_Core_Update_State_To_InPursuit</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Check_State_Status_Change</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>In_Pursuit_Field_Update</targetReference>
+            </connector>
+            <label>Core_Update_State_To_InPursuit</label>
+        </rules>
+        <rules>
+            <name>Core_Update_Task_flag_on_Lead</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>F_Core_Update_Task_flag_on_Lead</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Check_State_Status_Change</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Flag_on_Lead_Field_Update</targetReference>
+            </connector>
+            <label>Core_Update_Task_flag_on_Lead</label>
+        </rules>
+        <rules>
+            <name>Core_Update_State_Terminated</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>F_Core_Update_State_Terminated</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Check_State_Status_Change</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>State_Terminated_Field_Update</targetReference>
+            </connector>
+            <label>Core_Update_State_Terminated</label>
+        </rules>
+        <rules>
+            <name>Core_Update_Lead_Status_onConvert</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.IsConverted</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Sales Qualified Lead</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Check_State_Status_Change</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>on_Convert_Field_Update</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>Core_Update_Lead_Status_onConvert</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Core_Reject_flag_updateTQLEntrance</name>
+        <label>Core_Reject_flag_updateTQLEntrance</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Core_SalesLead_LeadSource</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Reject_Flag_True</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Check_Reject_Flag</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>FIELDUPDATECore_Reject_flag_update</targetReference>
+            </connector>
+            <label>Reject_Flag_True</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Core_SalesLead_LeadSource</name>
+        <label>Core_SalesLead_LeadSource</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Core_Update_Field_Distinguish_New_Lead</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Sales_Lead_Source</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Permission.LISN_View_Components</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.LeadSource</leftValueReference>
+                <operator>EqualTo</operator>
+            </conditions>
+            <conditions>
+                <leftValueReference>IsNew</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.RecordType.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Sales_Lead</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Core_SaleLead_Lead_Source</targetReference>
+            </connector>
+            <label>Sales_Lead_Source</label>
+        </rules>
+        <rules>
+            <name>LeadSource_LinkedInSalesNavigator</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.LeadSource</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>LinkedIn Sales Navigator</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.OwnerId</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>$Record.CreatedById</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Owner_as_Created_By</targetReference>
+            </connector>
+            <label>LeadSource_LinkedInSalesNavigator</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Core_Update_Field_Distinguish_New_Lead</name>
+        <label>Core_Update_Field_Distinguish_New_Lead</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>CoveredAccount_and_LeadOwnership_Change_Email_Notification</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Partner_Lead_Outcome</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordType.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Partner Lead</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Check_Distinguish_New_Lead</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Partner_Lead_Update</targetReference>
+            </connector>
+            <label>Partner Lead outcome</label>
+        </rules>
+        <rules>
+            <name>Lead_and_Sales_Lead_outcome</name>
+            <conditionLogic>((1 OR 2) AND 3)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordType.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Lead</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.RecordType.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Sales Lead</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Check_Distinguish_New_Lead</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Sales_Lead_and_Lead_Update</targetReference>
+            </connector>
+            <label>Lead and Sales Lead outcome</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>CoveredAccount_and_LeadOwnership_Change_Email_Notification</name>
+        <label>CoveredAccount_and_LeadOwnership_Change_Email_Notification</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>CoveredAccountTriggerEmail</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>F_Core_CoveredAccount_Email_Notification</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Email_Notification_Entry_Formula</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>CoveredAccountLead_Email_Trigger</targetReference>
+            </connector>
+            <label>CoveredAccountTriggerEmail</label>
+        </rules>
+        <rules>
+            <name>Core_Email_Notification_For_LeadOwnership_Change</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>F_Core_Email_Notification_For_LeadOwnership_Change</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Email_Notification_Entry_Formula</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>LeadOwnershipChanegEmail</targetReference>
+            </connector>
+            <label>Core_Email_Notification_For_LeadOwnership_Change</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <formulas>
+        <name>Check_Distinguish_New_Lead</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(
+  OR(
+    ISNULL({!$Record.Core_lead_Id__c}),
+    ISBLANK({!$Record.Core_lead_Id__c})
+  ),
+  OR(
+    {!$Record.RecordType.Name} = &quot;Lead&quot;,
+    {!$Record.RecordType.Name} = &quot;Sales Lead&quot;,
+    {!$Record.RecordType.Name} = &quot;Partner Lead&quot;
+  )
+)</expression>
+    </formulas>
+    <formulas>
+        <name>Check_Record_Type</name>
+        <dataType>Boolean</dataType>
+        <expression>OR(
+{!$Record.RecordType.DeveloperName} = &quot;Lead&quot;,
+{!$Record.RecordType.DeveloperName}= &quot;Sales_Lead&quot;
+)</expression>
+    </formulas>
+    <formulas>
+        <name>Check_Reject_Flag</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(
+  OR({!$Record.RecordType.Name} = &quot;Sales Lead&quot;, {!$Record.RecordType.Name} = &quot;Lead&quot;),
+  ISPICKVAL({!$Record.Core_Lead_State__c}, &apos;In Pursuit&apos;),
+  ISPICKVAL({!$Record__Prior.Core_Lead_State__c}, &apos;Terminated&apos;),
+  NOT(ISPICKVAL({!$Record__Prior.Core_Lead_Status__c}, &apos;Unreachable&apos;)),
+  ISCHANGED({!$Record.Core_Lead_State__c})
+)</expression>
+    </formulas>
+    <formulas>
+        <name>Check_State_Status_Change</name>
+        <dataType>Boolean</dataType>
+        <expression>OR(
+ISCHANGED({!$Record.Core_Lead_Status__c}),
+ISCHANGED({!$Record.OwnerId}),
+{!$Record.IsConverted}=true
+)</expression>
+    </formulas>
+    <formulas>
+        <name>Core_Converted_Date_Formula</name>
+        <dataType>Date</dataType>
+        <expression>NOW()</expression>
+    </formulas>
+    <formulas>
+        <name>Core_Exitt_Datee_MAQLFormula</name>
+        <dataType>DateTime</dataType>
+        <expression>IF( ISPICKVAL($Record.Status,&apos;Marketing Qualified Lead&apos;) ,Now(),  $Record.Core_Exit_Date_MAQL__c )</expression>
+    </formulas>
+    <formulas>
+        <name>Core_Exxit_Datee_SALFormula</name>
+        <dataType>DateTime</dataType>
+        <expression>IF( ISPICKVAL($Record.Status,&apos;Sales Accepted Lead&apos;) ,Now(),  $Record.Core_Exit_Date_SAL__c )</expression>
+    </formulas>
+    <formulas>
+        <name>Core_Unreachable_StageFormula</name>
+        <dataType>String</dataType>
+        <expression>Text($Record.Status)</expression>
+    </formulas>
+    <formulas>
+        <name>Core_Unreachable_Start_DateFormula</name>
+        <dataType>DateTime</dataType>
+        <expression>NOW()</expression>
+    </formulas>
+    <formulas>
+        <name>Email_Notification_Entry_Formula</name>
+        <dataType>Boolean</dataType>
+        <expression>{!$Record.RecordType.DeveloperName} =&quot;Lead&quot; || {!$Record.RecordType.DeveloperName} =&quot;Sales_Lead&quot;</expression>
+    </formulas>
+    <formulas>
+        <name>ExitDateSGLFormula</name>
+        <dataType>DateTime</dataType>
+        <expression>IF( ISPICKVAL($Record.Status,&apos;Sales Generated Lead&apos;) ,Now(), {!$Record.SWS_Exit_Date_SGL__c} )</expression>
+    </formulas>
+    <formulas>
+        <name>F_Core_CoveredAccount_Email_Notification</name>
+        <dataType>Boolean</dataType>
+        <expression>OR(
+     AND( ISNEW(), OR({!$Record.RecordType.Name} = &quot;Lead&quot;, {!$Record.RecordType.Name} = &quot;Sales Lead&quot;), 
+	 OR(ISPICKVAL({!$Record.Status}, &quot;Marketing Qualified Lead&quot;),ISPICKVAL({!$Record.Status}, &quot;Sales Generated Lead&quot;)), 
+     {!$Record.Core_Covered_account_owner__c}={!$Record.Core_Lead_Owner_Name__c}, {!$Record.Core_Is_Covered_Account__c}=true ),
+	 AND( 
+		 OR(ISCHANGED({!$Record.Core_Existing_Covered_Account__c}), ISCHANGED({!$Record.OwnerId})), 
+		{!$Record.Core_Flag_on_Queue_or_User__c} =&quot;User&quot;,OR({!$Record.RecordType.Name} = &quot;Lead&quot;, {!$Record.RecordType.Name} = &quot;Sales Lead&quot;), 
+		OR(ISPICKVAL({!$Record.Status}, &quot;Marketing Qualified Lead&quot;),ISPICKVAL({!$Record.Status}, &quot;Sales Generated Lead&quot;)),
+		{!$Record.Core_Covered_account_owner__c}={!$Record.Core_Lead_Owner_Name__c}, {!$Record.Core_Is_Covered_Account__c}=true ))</expression>
+    </formulas>
+    <formulas>
+        <name>F_Core_Email_Notification_For_LeadOwnership_Change</name>
+        <dataType>Boolean</dataType>
+        <expression>OR(
+AND( OR({!$Record.RecordType.Name} = &quot;Lead&quot;, {!$Record.RecordType.Name} = &quot;Sales Lead&quot;),OR(ISPICKVAL({!$Record.Status}, &quot;Marketing Qualified Lead&quot;),
+ISPICKVAL({!$Record.Status}, &quot;Sales Generated Lead&quot;)),
+ISCHANGED({!$Record.OwnerId}), {!$Record.Core_Flag_on_Queue_or_User__c} =&quot;User&quot;,
+OR({!$Record.Core_Covered_account_owner__c} &lt;&gt; {!$Record.Core_Lead_Owner_Name__c}, {!$Record.Core_Covered_account_owner__c} = null) ),
+
+AND( OR({!$Record.RecordType.Name} = &quot;Lead&quot;, {!$Record.RecordType.Name} = &quot;Sales Lead&quot;),
+ISPICKVAL( {!$Record.Status}, &quot;Sales Accepted Lead&quot; ), ISCHANGED({!$Record.OwnerId}),
+{!$Record.Core_Flag_on_Queue_or_User__c} =&quot;User&quot; ))</expression>
+    </formulas>
+    <formulas>
+        <name>F_Core_Update_State_Terminated</name>
+        <dataType>Boolean</dataType>
+        <expression>AND( ISCHANGED({!$Record.Core_Lead_Status__c}),ISPICKVAL({!$Record.Core_Lead_Status__c} , &apos;Disqualified&apos;) ,
+{!$Record.RecordType.Name} &lt;&gt; &apos;Partner Lead&apos; , NOT(ISCHANGED({!$Record.OwnerId})) )</expression>
+    </formulas>
+    <formulas>
+        <name>F_Core_Update_State_To_InPursuit</name>
+        <dataType>Boolean</dataType>
+        <expression>OR( AND( ISCHANGED({!$Record.Core_Lead_Status__c}),OR(ISPICKVAL({!$Record.Core_Lead_Status__c} , &apos;Accepted&apos;), ISPICKVAL({!$Record.Core_Lead_Status__c} , &apos;Qualified&apos;)),
+  OR(ISPICKVAL((PRIORVALUE({!$Record.Core_Lead_Status__c})), &apos;New&apos;), ISPICKVAL((PRIORVALUE({!$Record.Core_Lead_Status__c})), &apos;Disqualified&apos;)), 
+  {!$Record.RecordType.Name} &lt;&gt; &apos;Partner Lead&apos;, NOT(ISCHANGED({!$Record.OwnerId})) ),  
+  
+  AND( ISCHANGED({!$Record.OwnerId}), LEFT(PRIORVALUE({!$Record.OwnerId}),3) == &apos;00G&apos; , LEFT({!$Record.OwnerId},3) == &apos;005&apos; , 
+  {!$Record.RecordType.Name} &lt;&gt; &apos;Partner Lead&apos; )  )</expression>
+    </formulas>
+    <formulas>
+        <name>F_Core_Update_Task_flag_on_Lead</name>
+        <dataType>Boolean</dataType>
+        <expression>OR(
+  AND ( NOT(ISNULL({!$Record.Core_Entrance_Date_SAL__c})),  {!$Record.Core_Having_Tasks__c}=true, {!$Record.RecordType.Name} &lt;&gt; &apos;Partner Lead&apos;,
+  OR(ISPICKVAL(PRIORVALUE({!$Record.Status}), &apos;Marketing Qualified Lead&apos;),ISPICKVAL(PRIORVALUE({!$Record.Status}), &apos;Sales Generated Lead&apos;))), 
+  
+  AND ( {!$Record.Core_Having_Tasks__c}=true, ISPICKVAL({!$Record.Status}, &apos;Sales Accepted Lead&apos;) ,
+  {!$Record.RecordType.Name} &lt;&gt; &apos;Partner Lead&apos;, ISPICKVAL(PRIORVALUE({!$Record.Core_Lead_Status__c}), &apos;Disqualified&apos;),
+  ISPICKVAL({!$Record.Core_Lead_Status__c}, &apos;Qualified&apos;) ) 
+  )</expression>
+    </formulas>
+    <formulas>
+        <name>F_ONCOVERT_Core_SQL_Converted_UserFormula</name>
+        <dataType>String</dataType>
+        <expression>{!$User.FirstName} +&apos; &apos;+{!$User.LastName}</expression>
+    </formulas>
+    <formulas>
+        <name>getIDinFormated</name>
+        <dataType>String</dataType>
+        <expression>LEFT({!$Record.Id}, 14)</expression>
+    </formulas>
+    <formulas>
+        <name>IsNew</name>
+        <dataType>Boolean</dataType>
+        <expression>ISNEW()</expression>
+    </formulas>
+    <formulas>
+        <name>Lead_Update_Stage_Stage_Date_Time_Formula</name>
+        <dataType>Boolean</dataType>
+        <expression>(ISCHANGED({!$Record.Core_Lead_State__c}) || ISCHANGED({!$Record.Status}) )</expression>
+    </formulas>
+    <interviewLabel>SWS_Flows_After {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>SWS_Flows_AfterSave_Created_Updated</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Core_SaleLead_Lead_Source</name>
+        <label>Core_SaleLead_Lead_Source</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Core_Update_Field_Distinguish_New_Lead</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>LeadSource</field>
+            <value>
+                <stringValue>Social Selling</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>FieldUpdateCore_Lead_Update_Stage_Changed_Date_Time</name>
+        <label>FieldUpdateCore_Lead_Update_Stage_Changed_Date_Time</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Core_Lead_Update_State_Status_Flag</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_Lead_Stage_Change_Date_Time__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>FIELDUPDATECore_Reject_flag_update</name>
+        <label>FIELDUPDATECore_Reject_flag_update</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Core_SalesLead_LeadSource</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_Rejected_Flag__c</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Flag_on_Lead_Field_Update</name>
+        <label>Flag on Lead Field Update</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Core_Reject_flag_updateTQLEntrance</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_Having_Tasks__c</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>In_Pursuit_Field_Update</name>
+        <label>In Pursuit Field Update</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Core_Reject_flag_updateTQLEntrance</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_Lead_State__c</field>
+            <value>
+                <stringValue>In Pursuit</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>on_Convert_Field_Update</name>
+        <label>on Convert Field Update</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Core_Reject_flag_updateTQLEntrance</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_SQL_Converted_User__c</field>
+            <value>
+                <elementReference>F_ONCOVERT_Core_SQL_Converted_UserFormula</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Partner_Lead_Update</name>
+        <label>Partner Lead Update</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>CoveredAccount_and_LeadOwnership_Change_Email_Notification</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_Created_Post_NewPartnerLead_Process__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_lead_Id__c</field>
+            <value>
+                <elementReference>getIDinFormated</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Sales_Lead_and_Lead_Update</name>
+        <label>Sales Lead and Lead Update</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>CoveredAccount_and_LeadOwnership_Change_Email_Notification</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_Created_Post_NewLead_Process__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_lead_Id__c</field>
+            <value>
+                <elementReference>getIDinFormated</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>State_Terminated_Field_Update</name>
+        <label>State Terminated Field Update</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Core_Reject_flag_updateTQLEntrance</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_Lead_State__c</field>
+            <value>
+                <stringValue>Terminated</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Lead_State_Change_Date_Time</name>
+        <label>Update_Lead_State_Change_Date_Time</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Core_Lead_Update_State_Status_Flag</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_Lead_State_Change_Date_Time__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Owner_as_Created_By</name>
+        <label>Update Owner as Created By</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Core_Update_Field_Distinguish_New_Lead</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>$Record.CreatedById</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Core_Lead_Update_Stage_State_Changed_Date_Time</targetReference>
+        </connector>
+        <object>Lead</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+</Flow>

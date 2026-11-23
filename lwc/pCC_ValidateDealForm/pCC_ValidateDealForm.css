@@ -1,17 +1,9 @@
-.toastMessage {
-    white-space: pre-line !important;
-}
-.lisize{
-    font-size:0.7rem
-}
-.fontbold{
-    font-weight: bold;
-}
-.spanux{
-    color:red;
-    font-weight: bold;
-    font-size:0.8rem
-}
-.paddingleft{
-    padding-left:1rem
-}
+h1 {
+    height: auto;
+  min-height: 100%;
+  line-height: 1.5em;
+  word-break: break-all;
+  background-color: black;
+  padding: 10px 25px;
+  font-size: 1.1rem;
+  }

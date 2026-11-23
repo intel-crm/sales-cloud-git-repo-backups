@@ -28,6 +28,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Core_FC_Approved_Claim_Quantity_nbr__c</field>
+            <table>Core_Opp_FC_Prod_Schedule__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_FC_BU_Product_Segment__c</field>
             <table>Core_Opp_FC_Prod_Schedule__c</table>
         </columns>
@@ -189,6 +194,16 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_Opp_FC_Product__c</field>
+            <table>Core_Opp_FC_Prod_Schedule__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_FC_Remaining_Claim_Quantity_nbr__c</field>
+            <table>Core_Opp_FC_Prod_Schedule__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_FC_Submitted_Claim_Quantity_nbr__c</field>
             <table>Core_Opp_FC_Prod_Schedule__c</table>
         </columns>
         <columns>

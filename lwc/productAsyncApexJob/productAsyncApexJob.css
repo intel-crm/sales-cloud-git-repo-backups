@@ -1,0 +1,58 @@
+.progressText{
+    text-align: center;
+    margin-top: 3.8rem;
+    margin-bottom: 3rem;
+}
+.headings{
+    font-weight: 635;
+}
+.circlesuccess{
+    border-radius: 50%;
+    width: 10rem;
+    height: 10rem;
+    background: green;
+    border: 5px solid #c3c2c2;
+    color: white;
+    font-size: 1.1rem;
+}
+.circlefailed{
+    border-radius: 50%;
+    width: 10rem;
+    height: 10rem;
+    background: rgb(166, 14, 14);
+    border: 5px solid #c3c2c2;
+    color: white;
+    font-size: 1.1rem;   
+}
+.circleprogress{
+    border-radius: 50%;
+    width: 10rem;
+    height: 10rem;
+    background: #014486;
+    border: 5px solid #c3c2c2;
+    color: white;
+    font-size: 1.1rem;
+}
+.borpad{
+    border: 4px #9c9cb2;
+    border-style: solid;
+    border-radius: 5%;
+    width: 26rem;
+    height: 12.5rem;
+    margin-left: 2rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    margin-right: 2rem;
+}
+.divcen{
+    display: flex;
+    align-items: center;
+} 
+.lastrefreshsize{
+    font-size: 1.5rem;
+    color: white;
+    background-color: #5679C0;
+}
+.headersize{
+    font-size: 1.5rem;
+}

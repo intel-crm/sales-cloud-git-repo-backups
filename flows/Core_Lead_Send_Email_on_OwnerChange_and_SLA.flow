@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>email_notification_On_Owner_Change</name>
+        <label>email notification On_Owner_Change</label>
+        <locationX>288</locationX>
+        <locationY>603</locationY>
+        <actionName>Lead.Core_Lead_Send_Email_To_Partners</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Lead.Core_Lead_Send_Email_To_Partners</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <name>SAL_Email_AlertTrigger</name>
+        <label>SAL_Email_AlertTrigger</label>
+        <locationX>1014</locationX>
+        <locationY>383</locationY>
+        <actionName>Lead.Core_SAL_SLAEmail</actionName>
+        <actionType>emailAlert</actionType>
+        <connector>
+            <targetReference>Lead_Send_Email_To_Partners_On_Owner_Change</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Lead.Core_SAL_SLAEmail</nameSegment>
+    </actionCalls>
+    <apiVersion>56.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <description>for the WF &quot; Core_Lead_Send_Email_To_Partners_On_Owner_Change  &quot;</description>
+        <name>Lead_Send_Email_To_Partners_On_Owner_Change</name>
+        <label>Lead_Send_Email_To_Partners_On_Owner_Change</label>
+        <locationX>580</locationX>
+        <locationY>610</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>On_Owner_Change</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>F_Send_Email_To_Partners_On_Owner_Change</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>email_notification_On_Owner_Change</targetReference>
+            </connector>
+            <label>On_Owner_Change</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>for the WF &quot; Core_SAL_Email_Alert_Trigger &quot;</description>
+        <name>SAL_Email_Alert_Trigger</name>
+        <label>SAL_Email_Alert_Trigger</label>
+        <locationX>579</locationX>
+        <locationY>373</locationY>
+        <defaultConnector>
+            <targetReference>Lead_Send_Email_To_Partners_On_Owner_Change</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>SAL_EMAIL_TRIGGER</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>F_Core_SAL_Email_Alert_Trigger</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>SAL_Email_AlertTrigger</targetReference>
+            </connector>
+            <label>SAL EMAIL TRIGGER</label>
+        </rules>
+    </decisions>
+    <description>for the following WFs --
+1.Core_SAL_Email_Alert_Trigger
+2.Core_Lead_Send_Email_To_Partners_On_Owner_Change</description>
+    <environments>Default</environments>
+    <formulas>
+        <description>The formula for the WF &quot; Core_SAL_Email_Alert_Trigger &quot;</description>
+        <name>F_Core_SAL_Email_Alert_Trigger</name>
+        <dataType>Boolean</dataType>
+        <expression>OR(AND(ISCHANGED({!$Record.Core_SendEmail__c}), {!$Record.Core_SendEmail__c} = true, {!$Record.RecordType.DeveloperName} &lt;&gt; &apos;Partner_Lead&apos;, ISPICKVAL( {!$Record.Status} , &apos;Sales Accepted Lead&apos;), ISPICKVAL( {!$Record.Core_Lead_Status__c} , &apos;Accepted&apos;), {!$Record.Core_Having_Tasks__c} = false, {!$Record.Core_Created_Post_NewLead_Process__c}=true, {!$Record.Core_SLA_Listed_User__c} = true), AND(ISCHANGED( {!$Record.Core_SendEmail4__c} ), {!$Record.Core_SendEmail4__c} = true, {!$Record.RecordType.DeveloperName} &lt;&gt; &apos;Partner_Lead&apos;, ISPICKVAL( {!$Record.Status} , &apos;Sales Accepted Lead&apos;), ISPICKVAL( {!$Record.Core_Lead_Status__c} , &apos;Accepted&apos;), {!$Record.Core_Created_Post_NewLead_Process__c}=True, {!$Record.Core_SLA_Listed_User__c} = true))</expression>
+    </formulas>
+    <formulas>
+        <description>for the WF &quot;Core_Lead_Send_Email_To_Partners_On_Owner_Change &quot;</description>
+        <name>F_Send_Email_To_Partners_On_Owner_Change</name>
+        <dataType>Boolean</dataType>
+        <expression>AND  (  ISCHANGED({!$Record.OwnerId}),  PRIORVALUE({!$Record.OwnerId}) = {!$Label.Core_Partner_Invalid_Queue_Id},  CONTAINS({!$Record.Owner:Group.DeveloperName}, &quot;Core_PTNR&quot;), {!$Record.RecordType.Name} = &apos;Partner Lead&apos;, ISPICKVAL({!$Record.Core_PSG_Lead__c} , &quot;PSG&quot;) )</expression>
+    </formulas>
+    <interviewLabel>Core_Lead_Send_Email_on_OwnerChange_ {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Core_Lead_Send_Email_on_OwnerChange_and_SLA</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>458</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>SAL_Email_Alert_Trigger</targetReference>
+        </connector>
+        <object>Lead</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+</Flow>

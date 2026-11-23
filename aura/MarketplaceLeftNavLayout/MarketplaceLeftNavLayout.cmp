@@ -1,7 +1,6 @@
 <aura:component extends="c:MarketplaceRedux" implements="forceCommunity:layout"
     description="Marquee w/ right sidebar content area" access="global">
-    <!-- IPA2.0 + US TWC4497-1631 
-    <aura:attribute name="manageOfferingBar" type="Aura.Component[]" required="false"></aura:attribute> -->
+    <aura:attribute name="manageOfferingBar" type="Aura.Component[]" required="false"></aura:attribute>
     <aura:attribute name="marquee" type="Aura.Component[]" required="false"></aura:attribute>
     <aura:attribute name="header" type="Aura.Component[]" required="false"></aura:attribute>
     <aura:attribute name="footer" type="Aura.Component[]" required="false"></aura:attribute>
@@ -24,10 +23,9 @@
     <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
 
     <div>
-        <!-- IPA2.0 + US TWC4497-1631 
         <div class="manageOfferingBar">
             {!v.manageOfferingBar}
-        </div> -->
+        </div>
         <div class="marquee">
             {!v.marquee}
         </div>

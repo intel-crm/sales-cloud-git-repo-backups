@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesIncludeBosses>false</doesIncludeBosses>
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <email>vinodhinix.baskar@intel.com</email>
+    <name>ASMO DCG HPC Pricing Manager Group</name>
+    <queueMembers>
+        <users>
+            <user>12035977@intel.com.crm</user>
+            <user>12059009@intel.com.crm.crmdevsls</user>
+        </users>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>SBQQ__Quote__c</sobjectType>
+    </queueSobject>
+</Queue>

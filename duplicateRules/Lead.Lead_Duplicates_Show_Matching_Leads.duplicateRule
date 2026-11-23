@@ -2,8 +2,8 @@
 <DuplicateRule xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <actionOnInsert>Block</actionOnInsert>
     <actionOnUpdate>Block</actionOnUpdate>
-    <alertText>Duplicate Contact/Lead found, Use one of these records.</alertText>
-    <description>From Lead Screen - Display all Matching Leads</description>
+    <alertText>Duplicate Contact/Lead found, Use one of these records</alertText>
+    <description>From Lead Screen - Display all Matching Leads - Except for Eloqua Integration Profile/User</description>
     <duplicateRuleFilter>
         <booleanFilter xsi:nil="true"/>
         <duplicateRuleFilterItems>

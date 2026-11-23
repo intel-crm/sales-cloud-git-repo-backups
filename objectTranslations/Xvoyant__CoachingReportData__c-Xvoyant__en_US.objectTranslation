@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>CoachingReportData</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>CoachingReportData</value>
+    </caseValues>
+    <fields>
+        <label><!-- XUser --></label>
+        <name>Xvoyant__Xuser__c</name>
+        <relationshipLabel><!-- CoachingReportData --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- coachability prev --></label>
+        <name>Xvoyant__coachabilityPrev__c</name>
+    </fields>
+    <fields>
+        <label><!-- coachability --></label>
+        <name>Xvoyant__coachability__c</name>
+    </fields>
+    <fields>
+        <label><!-- daysSinceSession --></label>
+        <name>Xvoyant__daysSinceSession__c</name>
+    </fields>
+    <fields>
+        <label><!-- p2g Goal Prev --></label>
+        <name>Xvoyant__goalPrev__c</name>
+    </fields>
+    <fields>
+        <label><!-- p2g Goal progress Prev --></label>
+        <name>Xvoyant__goalProgressPrev__c</name>
+    </fields>
+    <fields>
+        <label><!-- p2g Goal progress --></label>
+        <name>Xvoyant__goalProgress__c</name>
+    </fields>
+    <fields>
+        <label><!-- p2g Goal --></label>
+        <name>Xvoyant__goal__c</name>
+    </fields>
+    <fields>
+        <label><!-- needsASession --></label>
+        <name>Xvoyant__needsASession__c</name>
+    </fields>
+    <fields>
+        <label><!-- numCoachingGoalsPrev --></label>
+        <name>Xvoyant__numCoachingGoalsPrev__c</name>
+    </fields>
+    <fields>
+        <label><!-- numCoachingGoals --></label>
+        <name>Xvoyant__numCoachingGoals__c</name>
+    </fields>
+    <fields>
+        <label><!-- num Sessions prev --></label>
+        <name>Xvoyant__numSessionsPrev__c</name>
+    </fields>
+    <fields>
+        <label><!-- numSessions --></label>
+        <name>Xvoyant__numSessions__c</name>
+    </fields>
+    <fields>
+        <label><!-- previous month revenue --></label>
+        <name>Xvoyant__revenuePrev__c</name>
+    </fields>
+    <fields>
+        <label><!-- month revenue --></label>
+        <name>Xvoyant__revenue__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -1,0 +1,180 @@
+<messaging:emailTemplate subject="Credit Request {!relatedTo.Name} submitted for approval" recipientType="User" relatedToType="SWS_Cloud_Credit_Request__c" >
+   <messaging:htmlEmailBody >
+      <html>
+         <head title="Complete your Intel® Partner Alliance application">
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+            </meta>
+         </head>
+         <body>
+            <p></p>
+            <table class="body" style="background: #f3f3f3; margin: 0px; padding: 0px; width: 100%; height: 100%; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; border-collapse: collapse; border-spacing: 0;">
+               <tbody>
+                  <tr style="padding: 0px; text-align: left; vertical-align: top;">
+                     <td align="center" class="center" valign="top" style="margin: 0px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-word-wrap: break-word; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;">
+                        <center style="width: 100%; min-width: 670px;">
+                           <div align="center" class="float-center">
+                              <center style="width: 100%; min-width: 670px;">
+                                 <table align="center" class="float-center" style="margin: 0px auto; padding: 0px; width: 100%; text-align: center; vertical-align: top; float: none; border-collapse: collapse; max-width: 670px !important; border-spacing: 0;" cellspacing="0" cellpadding="0">
+                                    <tbody>
+                                       <tr style="padding: 0px; text-align: left; vertical-align: top;">
+                                          <td style="margin: 0px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-word-wrap: break-word; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;">
+                                             <table align="center" class="container" style="background: #f3f3f3; margin: 0px auto; padding: 0px; width: 670px; text-align: inherit; vertical-align: top; border-collapse: collapse; border-spacing: 0;">
+                                                <tbody>
+                                                   <tr style="padding: 0px; text-align: left; vertical-align: top;">
+                                                      <td style="margin: 0px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-word-wrap: break-word; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;">
+                                                         <table class="row collapse header" style="padding: 0px; width: 100%; text-align: left; vertical-align: top; display: table; border-collapse: collapse; position: relative; border-spacing: 0; background-color: #0168B5;">
+                                                            <tbody>
+                                                               <tr style="padding: 0px; text-align: left; vertical-align: top;">
+                                                                  <th class="small-12 large-12 columns first last" style="margin: 0px auto; padding: 0px; width: 680px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400;">
+                                                                     <table style="padding: 0px; width: 100%; text-align: left; vertical-align: top; border-collapse: collapse; border-spacing: 0;">
+                                                                        <tbody>
+                                                                           <tr style="padding: 0px; text-align: left; vertical-align: top;">
+                                                                              <th style="margin: 0px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400;">
+                                                                                 <table class="row header-content" style="padding: 0px; width: 100%; text-align: left; vertical-align: top; display: table; border-collapse: collapse; position: relative; border-spacing: 0; background-color: #0071c5;">
+                                                                                    <tbody>
+                                                                                       <tr style="padding: 0px; text-align: left; vertical-align: top;">
+                                                                                          <th class="mobile-padding small-12 large-12 columns first last" style="margin: 0px auto; padding: 0px 20px; width: 100%; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400;">
+                                                                                             <table style="padding: 0px; width: 100%; text-align: left; vertical-align: top; border-collapse: collapse; border-spacing: 0;">
+                                                                                                <tbody>
+                                                                                                   <tr style="padding: 0px; text-align: left; vertical-align: top;">
+                                                                                                      <th style="margin: 0px; padding: 0px 0px 10px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400;">
+                                                                                                         <h1 style="margin: 0px 0px 17.39px;padding-top: 25px;text-align: left;color: #fefefe;line-height: 1.3;font-family: Arial,Helvetica,sans-serif;font-size: 18px;font-weight: 400;border-collapse: collapse !important;-ms-word-break: keep-all;-ms-word-wrap: normal;-ms-hyphens: none;-moz-hyphens: none;-webkit-hyphens: none;hyphens: none;"></h1>
+                                                                                                      </th>
+                                                                                                      <th class="callout-inner" style="padding:25px 15px;"> 
+                                                                                                         <img src="{!$Label.PSG_IntelLogo}" alt="Intel" title="Intel" align="right" class="float-center" width="75" height="50"></img>
+                                                                                                      </th>
+                                                                                                      <th class="expander" style="margin: 0px; padding: 0px !important; width: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; visibility: hidden;"></th>
+                                                                                                   </tr>
+                                                                                                </tbody>
+                                                                                             </table>
+                                                                                          </th>
+                                                                                       </tr>
+                                                                                    </tbody>
+                                                                                 </table>
+                                                                              </th>
+                                                                           </tr>
+                                                                        </tbody>
+                                                                     </table>
+                                                                  </th>
+                                                               </tr>
+                                                            </tbody>
+                                                         </table>
+                                                         <table class="spacer" style="padding: 0px; width: 100%; text-align: left; vertical-align: top; border-collapse: collapse; border-spacing: 0; background-color: #f3f3f3;"></table>
+                                                         <table class="row module full-width" style="padding: 0px; width: 100%; text-align: left; vertical-align: top; display: table; border-collapse: collapse; position: relative; border-spacing: 0; background-color: #fefefe;">
+                                                            <tbody>
+                                                               <tr style="padding: 0px; text-align: left; vertical-align: top;">
+                                                                  <th class="small-12 large-12 columns first last" style="margin: 0px auto; padding: 20px 20px 10px;width: 650px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; background-color: #fefefe;">
+                                                                     <p></p>
+                                                                     <p style="margin: 0px 0px 10px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 11px; font-weight: 400; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;"></p>
+                                                                     <table style="padding: 0px; width: 100%; text-align: left; vertical-align: top; border-collapse: collapse; border-spacing: 0;">
+                                                                        <tbody>
+                                                                           <tr style="padding: 0px; text-align: left; vertical-align: top;">
+                                                                              <th style="margin: 0px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400;">
+                                                                                 <p class="h2" style="margin: 0px 0px 10px; padding: 0px; text-align: left; color: #0071c5; line-height: 19px; font-family: Arial,Helvetica,sans-serif; font-size: 18px; font-weight: 400; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;"><span class="eloquaemail"></span></p>
+                                                                                 <p style="margin: 0px 0px 10px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 11px; font-weight: 400; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;">
+                                                                                 <p style="color:red; font-size: 25px">ACTION REQUIRED</p>
+                                                                                 <br></br>  
+                                                                                 
+                                                                                    <apex:outputText rendered="{!relatedTo.SWS_Approval_status__c == 'Submitted'}">
+                                                                                    <b>You have received a request to approve the Credit Request
+                                                                                    <apex:outputLink value="{!LEFT($Api.Partner_Server_URL_270, FIND('.com', $Api.Partner_Server_URL_270) + 4) + relatedTo.id}">
+                                                                                    {!relatedTo.Name} </apex:outputLink> for generating IDC Coupon. </b>
+                                                                                    </apex:outputText>
+                                                                                    
+                                                                                     <apex:outputText rendered="{!relatedTo.SWS_Approval_status__c != 'Submitted'}">
+                                                                                    <b> Credit Request <apex:outputLink value="{!LEFT($Api.Partner_Server_URL_270, FIND('.com', $Api.Partner_Server_URL_270) + 4) + relatedTo.id}">
+                                                                                    {!relatedTo.Name} </apex:outputLink> has been {!relatedTo.SWS_Approval_status__c} for IDC Coupon generation. </b>
+                                                                                    </apex:outputText>
+
+
+                                                                               
+                                                                                 <br/>
+                                                                                 <br></br>
+                                                                                 <style>
+                                                                                    .t {
+                                                                                    border: 1px solid black;
+                                                                                    width: 100%;
+                                                                                    border-collapse: collapse;
+                                                                                    }  
+                                                                                    .t1 {
+                                                                                    background-color:rgb(240,240,240);
+                                                                                    border: 1px solid black;
+                                                                                    font-size: 15px;
+                                                                                    text-align: center;
+                                                                                    }  
+                                                                                    .t2 {
+                                                                                    background-color:rgb(192,192,192);
+                                                                                    border: 1px solid black;
+                                                                                    font-size: 15px;
+                                                                                    text-align: center;
+                                                                                    }                     
+                                                                                 </style>
+                                                                                 <table class="t">
+                                                                                    <tr>
+                                                                                       <th class="t2">Credit Request ID</th>
+                                                                                       <th class="t2">Request Type</th>
+                                                                                       <th class="t2">Customer Email</th>
+                                                                                       <th class="t2">Customer Name</th>
+                                                                                       <th class="t2">Product Interest (HW Compute Platform)</th>
+                                                                                       <apex:outputText rendered="{!relatedTo.SWS_Approval_status__c == 'Submitted'}">
+                                                                                       <th class="t2">Submitted By</th>
+                                                                                       <th class="t2">Submitted On</th>
+                                                                                       </apex:outputText>
+                                                                                       <apex:outputText rendered="{!relatedTo.SWS_Approval_status__c == 'Approved'}">
+                                                                                       <th class="t2">Approved By</th>
+                                                                                       <th class="t2">Approved On</th>
+                                                                                       </apex:outputText>
+                                                                                       <apex:outputText rendered="{!relatedTo.SWS_Approval_status__c == 'Rejected'}">
+                                                                                       <th class="t2">Rejection Comments</th>
+                                                                                       <th class="t2">Rejected By</th>
+                                                                                       <th class="t2">Rejected On</th>
+                                                                                       </apex:outputText>
+                                                                                       <apex:outputText rendered="{!relatedTo.SWS_Approval_status__c == 'Recalled'}">
+                                                                                       <th class="t2">Submitted By</th>
+                                                                                       </apex:outputText>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                       <td class="t1">{!relatedTo.Name}</td>
+                                                                                       <td class="t1">{!relatedto.SWS_Request_Type__c}</td>
+                                                                                       <td class="t1">{!relatedto.SWS_Email__c}</td>
+                                                                                       <td class="t1">{!relatedto.SWS_Full_Name__c}</td>
+                                                                                       <td class="t1">{!relatedto.SWS_HW_Compute_Platform_PL__c}</td>
+                                                                                       <td class="t1">
+                                                                                          <apex:outputText value="{0,date,MM-dd-yyyy}">
+                                                                                             <apex:Param value="{!relatedto.SWS_Expiry_Date__c}" />
+                                                                                          </apex:outputText>
+                                                                                       </td> 
+                                                                                         
+                                                                                    </tr>
+                                                                                 </table>
+                                                                                 <br></br>
+                                                                                 <br></br>
+                                                                                 </p>
+                                                                              </th>
+                                                                           </tr>
+                                                                        </tbody>
+                                                                     </table>
+                                                                  </th>
+                                                               </tr>
+                                                            </tbody>
+                                                         </table>
+                                                      </td>
+                                                   </tr>
+                                                </tbody>
+                                             </table>
+                                          </td>
+                                       </tr>
+                                    </tbody>
+                                 </table>
+                              </center>
+                           </div>
+                        </center>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p></p>
+         </body>
+      </html>
+   </messaging:htmlEmailBody>
+</messaging:emailTemplate>

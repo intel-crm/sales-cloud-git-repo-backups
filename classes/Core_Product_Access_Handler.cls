@@ -21,14 +21,11 @@ public class Core_Product_Access_Handler{
     public static void changeOwner(List<Core_IPS_MAP_PAR__c> newList){
         List<Id> ListofOrgIds =new List<Id>();
         List<Id> ListofOrgOwnerIds = new List<Id>();
-        List<Core_IPS_Product_Organization__c> Orgrecords = new List<Core_IPS_Product_Organization__c>();
             for(Core_IPS_MAP_PAR__c Mapids: newList ){
                 ListofOrgIds.add(Mapids.Core_Product_Organization__c); 
-            }
-        //FLS check added-Venugopal
-        if(Core_IPS_Product_Organization__c.SObjectType.getDescribe().isAccessible()){
-            Orgrecords = [Select id, Core_IPS_Support_Org_Name__c, Ownerid from Core_IPS_Product_Organization__c where id IN: ListofOrgIds];
-        }
+            }   
+    
+        List<Core_IPS_Product_Organization__c> Orgrecords = [Select id, Core_IPS_Support_Org_Name__c, Ownerid from Core_IPS_Product_Organization__c where id IN: ListofOrgIds];
             for(Core_IPS_Product_Organization__c Org: Orgrecords){
                 ListofOrgOwnerIds.add(Org.OwnerId);
             }

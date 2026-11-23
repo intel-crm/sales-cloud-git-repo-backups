@@ -1,0 +1,19 @@
+<template>
+    <template if:true={isStandardQuoteLine}>
+        <div class="slds-p-around_medium styleClass">
+        <!--<c-pricing-_-quote-line-_-collapsible-_-section record-id={recordId}></c-pricing-_-quote-line-_-collapsible-_-section>-->
+            <lightning-record-form
+                object-api-name="SBQQ__QuoteLine__c"
+                record-id={recordId}
+                layout-type="Full"
+                columns="2"
+                mode="view"
+                >
+            </lightning-record-form>
+        </div>
+    </template>
+    <template if:false={isStandardQuoteLine}>
+        <c-pricing-_-read-only-_-field-set-_-form record-id={recordId}></c-pricing-_-read-only-_-field-set-_-form>
+    </template>
+    
+</template>

@@ -65,7 +65,7 @@ public without sharing class Pricing_QuoteLineStatusAgeHandler extends TriggerHa
             }
         }           
         if(!TPTShare.isEmpty()){
-            Database.SaveResult[] lsShareResult = Database.insert(TPTShare ,false);
+            Database.insert(TPTShare ,false);
             if(!System.isBatch()){
                 updateShareRequiredMethod(tptIds); 
             }

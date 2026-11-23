@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>Nat W Garrison Jr Partner Manager</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>Nat W Garrison Jr Partner Manager</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>NatWGarrisonJrPartnerExecutive</parentRole>
+</Role>

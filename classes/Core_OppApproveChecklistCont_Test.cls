@@ -5,8 +5,8 @@ private class Core_OppApproveChecklistCont_Test{
     
     testMethod static void InsertOppTest1() {
         Test.startTest(); 
-        Profile pr = [SELECT id, Name FROM Profile WHERE Name='Sales Rep-BB'];
-        usr = [SELECT id, Name, isActive FROM User WHERE ProfileId = :pr.Id AND isActive = true LIMIT 1]; 
+        PermissionSetAssignment psa = [SELECT Id, PermissionSet.Name,PermissionSetId, AssigneeId from PermissionSetAssignment  where PermissionSet.Name='SalesRepBB' LIMIT 1];
+        User usr = [SELECT id, Name, isActive FROM User WHERE Id = :psa.AssigneeId AND isActive = true LIMIT 1]; 
         System.runAs(Core_Test_Utility.systemAdminUser){  
             Account accountInstance = new Account();
             accountInstance.name = 'TestAccount';
@@ -63,8 +63,8 @@ private class Core_OppApproveChecklistCont_Test{
     testMethod static void InsertOppTest2() {
         
         Test.startTest();
-        Profile pr = [SELECT id, Name FROM Profile WHERE Name='Sales Rep-BB'];
-        usr = [SELECT id, Name, isActive FROM User WHERE ProfileId = :pr.Id AND isActive = true LIMIT 1];
+        PermissionSetAssignment psa = [SELECT Id, PermissionSet.Name,PermissionSetId, AssigneeId from PermissionSetAssignment  where PermissionSet.Name='SalesRepBB' LIMIT 1];
+        User usr = [SELECT id, Name, isActive FROM User WHERE Id = :psa.AssigneeId AND isActive = true LIMIT 1];
         System.runAs(Core_Test_Utility.systemAdminUser){          
             Account accountInstance = new Account();
             accountInstance.name = 'TestAccount';
@@ -139,8 +139,8 @@ private class Core_OppApproveChecklistCont_Test{
     testMethod static void InsertOppTestAttach() {
         
         Test.startTest(); 
-        Profile pr = [SELECT id, Name FROM Profile WHERE Name='Sales Rep-BB'];
-        usr = [SELECT id, Name, isActive FROM User WHERE ProfileId = :pr.Id AND isActive = true LIMIT 1];
+        PermissionSetAssignment psa = [SELECT Id, PermissionSet.Name,PermissionSetId, AssigneeId from PermissionSetAssignment  where PermissionSet.Name='SalesRepBB' LIMIT 1];
+        User usr = [SELECT id, Name, isActive FROM User WHERE Id = :psa.AssigneeId AND isActive = true LIMIT 1];
         System.runAs(Core_Test_Utility.systemAdminUser){          
             Account accountInstance = new Account();
             accountInstance.name = 'TestAccount';
@@ -205,7 +205,7 @@ private class Core_OppApproveChecklistCont_Test{
             Test.setCurrentPage(pageRef);
             testAccPlan.cancel();
         }
-        Test.stopTest();     
+        Test.stopTest();
         system.assertEquals(true, true);     
     }
     
@@ -283,8 +283,8 @@ private class Core_OppApproveChecklistCont_Test{
             testAccPlan3.cancel();
             
         }
-        Test.stopTest();    
-        system.assertEquals( 5, opptyList.size());    
+        Test.stopTest();
+        system.assertEquals( 4, opptyList.size());    
     }  
     static testmethod void Bonus() {
         List<Core_CRM_Labels__c> customSetting= new List<Core_CRM_Labels__c>();
@@ -470,7 +470,7 @@ private class Core_OppApproveChecklistCont_Test{
         // Create an account
         Account acct = new Account(Name = 'TestoppAccounthandle', BillingStreet = '123 Fake St',
                                    BillingCity = 'Springfield', BillingState = 'IL', BillingCountry = 'USA',Industry='Agriculture',Core_Sub_Industry__c= 'Crop Production',
-                                   BillingPostalCode = '12345',Core_Sales_Groups__c='Americas US Sales Group',Core_Business_Party_Id__c='BusinessPartyId', Core_CIM_ID__c='CIMId');
+                                   BillingPostalCode = '12345',Core_Sales_Groups__c='Americas US Sales Group',Core_Business_Party_Id__c='BusinessPartyId');
         System.runAs(Core_Test_Utility.systemAdminUser) {
             insert acct;
         }
@@ -507,15 +507,13 @@ private class Core_OppApproveChecklistCont_Test{
         opps.Core_Status_Update__c='test';
         opps.Core_Technical_Owner__c = usr1.id;
         opps.StageName= 'Define';
-        System.runAs(Core_Test_Utility.systemAdminUser) {
-            update opps;}
+        update opps;
         
         opps.Core_Status_Update__c='test 1';
         opps.StageName= 'Lost';
-	        opps.Core_Loss_Cancel_Details__c='Lost';
+        opps.Core_Loss_Cancel_Details__c='Lost';
         opps.Core_Loss_Cancel_Reason__c = 'Intel No Longer Pursuing';
-        System.runAs(Core_Test_Utility.systemAdminUser){
-         update opps;}
+        update opps;
         Test.startTest();
         ApexPages.StandardController sc1 = new ApexPages.StandardController(opps);
         Core_OppApproveChecklistCont testAccPlan = new Core_OppApproveChecklistCont(sc1);
@@ -535,7 +533,7 @@ private class Core_OppApproveChecklistCont_Test{
         // Create an account
         Account acct = new Account(Name = 'TestoppAccounthandle', BillingStreet = '123 Fake St',
                                    BillingCity = 'Springfield', BillingState = 'IL', BillingCountry = 'USA',Industry='Agriculture',Core_Sub_Industry__c= 'Crop Production',
-                                   BillingPostalCode = '12345',Core_Sales_Groups__c='Americas US Sales Group',Core_Business_Party_Id__c='BusinessPartyId', Core_CIM_ID__c='CIMId');
+                                   BillingPostalCode = '12345',Core_Sales_Groups__c='Americas US Sales Group',Core_Business_Party_Id__c='BusinessPartyId');
         System.runAs(Core_Test_Utility.systemAdminUser) {
             insert acct;
         }

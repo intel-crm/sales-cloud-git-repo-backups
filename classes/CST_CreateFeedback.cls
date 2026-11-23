@@ -1,3 +1,10 @@
+/**
+ * @description       : 
+ * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+ * @group             : 
+ * @last modified on  : 11-04-2024
+ * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+**/
 public without sharing class CST_CreateFeedback {
     
     public class CustomerFeedBackFields    {
@@ -21,6 +28,9 @@ public without sharing class CST_CreateFeedback {
         public Id RecordTypeId { get; set; } 
         @AuraEnabled
         public String FeedbackBy { get; set; }  
+        @AuraEnabled
+        public String NewAccTier { get; set; } //acctier
+        
         
     }
     
@@ -45,6 +55,8 @@ public without sharing class CST_CreateFeedback {
         public Id RecordTypeId { get; set; } 
         @AuraEnabled
         public List<String> AccCategoryList { get; set; }
+        @AuraEnabled
+        public String NewAccTier { get; set; } //TWC3123-6732
         
         
     }
@@ -69,6 +81,8 @@ public without sharing class CST_CreateFeedback {
         public List<String> salesGroupOptions { get; set; } 
         @AuraEnabled
         public Boolean showComp { get; set; } 
+         @AuraEnabled
+        public List<String> accountTierOptions { get; set; } //TWC3123-6732
     }
     
     public with sharing class CST_CheckPerm{
@@ -86,7 +100,7 @@ public without sharing class CST_CreateFeedback {
                             validUser=true;
                             break;
                         }
-                    }
+                    } 
                     
                 }
                 else if(FeatureManagement.checkPermission('CST_Director') || FeatureManagement.checkPermission('CST_Super_Admin') || FeatureManagement.checkPermission('CST_Regional_Admin')){
@@ -119,9 +133,9 @@ public without sharing class CST_CreateFeedback {
     public static Map<Boolean,String> createCustomerFeedback(CustomerFeedBackFields customerFeedback){
         Map<Boolean,String> success = new Map<Boolean,String>();
         SPM_Customer_Feedback__c cf = new SPM_Customer_Feedback__c();
-        Boolean isValidUser = true; Id feedbackById;       
+        Boolean isValidUser = true; 
+        Id feedbackById;       
         List<User> feedbackBy = [SELECT id from User where email=:customerFeedback.feedbackBy and isActive=true];
-        List<SPM_Account_Feedback__c> accFeedList = new List<SPM_Account_Feedback__c>();
         
         if(feedbackBy.size() > 0){
             feedbackById = feedbackBy[0].id;
@@ -159,15 +173,14 @@ public without sharing class CST_CreateFeedback {
             
         }
         
-        system.debug('isValidUser: '+isValidUser);
         if(isValidUser){
             if(customerFeedback.FeedbackType == 'DR'){
                 cf.DR_Feedback__c = customerFeedback.Feedback;
-                //cf.Feedback__c = customerFeedback.Feedback;//TWC3123-6350
+                cf.Feedback__c = customerFeedback.Feedback;//TWC3123-6350
             }
             else if(customerFeedback.FeedbackType == 'VP'){
                 cf.VP_Feedback__c = customerFeedback.Feedback;
-                //cf.Feedback__c = customerFeedback.Feedback;//TWC3123-6350
+                cf.Feedback__c = customerFeedback.Feedback;//TWC3123-6350
             }
             if(customerFeedback.ReasonForChange != '') {cf.Reason_for_change__c = customerFeedback.ReasonForChange;}
             if(customerFeedback.TeamMembers != '') {cf.Team_Members__c = customerFeedback.TeamMembers;}
@@ -177,25 +190,21 @@ public without sharing class CST_CreateFeedback {
             cf.Feedback_Type__c = customerFeedback.FeedbackType;
             //cf.RecordTypeId = customerFeedback.RecordTypeId;
             cf.Feedback_By__c = feedbackById;
+           if(customerFeedback.NewAccTier != '') {cf.CST_New_Account_Level__c = customerFeedback.NewAccTier;}//TWC3123-6732
             
             Database.SaveResult srList = Database.insert(cf, false);
-            if(srList.isSuccess() && (customerFeedback.Feedback=='Change Ownership' || customerFeedback.Feedback=='Partial' || customerFeedback.Feedback=='Add to Intel led')){
+
+            if(srList.isSuccess() && (customerFeedback.Feedback=='Change Ownership' || customerFeedback.Feedback=='Partial' || customerFeedback.Feedback=='Add to Intel Covered' || customerFeedback.Feedback=='Change Account Level')){//TWC3123-5894
                 success.put(true,Core_CRM_Utility.getCRMLabel('CST_Nonpropogated_Feedback_Error'));
             }
-            else if (srList.isSuccess() && (customerFeedback.Feedback=='Change to Partner' || customerFeedback.Feedback=='Change to Uncovered' || customerFeedback.Feedback=='Change to Other Led')){
+            else if (srList.isSuccess() && (customerFeedback.Feedback=='Change to Indirect Covered' || customerFeedback.Feedback=='Change to Not Covered' /*|| customerFeedback.Feedback=='Change to Other Led'*/)){//TWC3123-5894
                 success.put(true,'');
             }
             else{
-                system.debug('error:'+srList.getErrors());
+                //system.debug('error:'+srList.getErrors());
                 success.put(false,Core_CRM_Utility.getCRMLabel('CST_Save_Error'));
-                //added for testing
-                for(Database.Error err : srList.getErrors()) {
-                    System.debug('The following error has occurred customer feedback'+err.getMessage()+' Fields is:'+err.getFields()); 
-                }
-                //added for testing
             }
         }
-        system.debug('success:'+success);
         return success;
         
     }
@@ -293,7 +302,7 @@ public without sharing class CST_CreateFeedback {
             af.Account_ID__c = acctFeedback.AccountId;
             af.Feedback_Type__c = acctFeedback.FeedbackType;
             af.RecordTypeId = acctFeedback.RecordTypeId;
-            
+            if(acctFeedback.NewAccTier != '') {af.CST_New_Account_Level__c = acctFeedback.NewAccTier;}//TWC3123-6732
             
             string accountCategoryValues='';
             if(acctFeedback.AccCategoryList!=null){
@@ -311,11 +320,6 @@ public without sharing class CST_CreateFeedback {
                 }
                 else{
                     success.put(false,Core_CRM_Utility.getCRMLabel('CST_Save_Error'));
-                    //added for testing
-                    for(Database.Error err : srList.getErrors()) {
-                        System.debug('The following error has occurred.'+err.getMessage()); 
-                    }
-                    //added for testing
                 }
             }
         }
@@ -328,10 +332,12 @@ public without sharing class CST_CreateFeedback {
         
         List<String> feedbackOptions = new List<String>();
         List<String> salesGroupOptions = new List<String>();
+        List<String> accountTierOptions = new List<String>();//TWC3123-6732
         Id recordTypeId;
         Schema.DescribeFieldResult fieldDescribe2 = Schema.getGlobalDescribe().get('SPM_Customer_Feedback__c').getDescribe().fields.getMap().get('New_Sales_Group__c').getDescribe();
         Schema.DescribeFieldResult fieldDescribe = Schema.getGlobalDescribe().get('SPM_Customer_Feedback__c').getDescribe().fields.getMap().get('DR_Feedback__c').getDescribe();
-        
+        Schema.DescribeFieldResult fieldDescribeAccTier = Schema.getGlobalDescribe().get('SPM_Customer_Feedback__c').getDescribe().fields.getMap().get('CST_New_Account_Level__c').getDescribe();//TWC3123-6732
+       
         SPM_Customer_Category__c cd = [select Customer_Detail__r.RCStage__c, Coverage__c  from SPM_Customer_Category__c WHERE Customer_Detail__c=:recordId LIMIT 1];
         
         if(cd.Customer_Detail__r.RCStage__c == 'DR' || cd.Customer_Detail__r.RCStage__c == 'VP'){
@@ -347,6 +353,11 @@ public without sharing class CST_CreateFeedback {
         for (Schema.PicklistEntry entry : fieldDescribe2.getPicklistValues()) {
             salesGroupOptions.add(entry.getLabel()+'|'+ entry.getLabel());
         }
+        //TWC3123-6732 start
+        for (Schema.PicklistEntry entry : fieldDescribeAccTier.getPicklistValues()) {
+            accountTierOptions.add(entry.getLabel()+'|'+ entry.getLabel());
+        }
+        //TWC3123-6732 end
         ff.coverage = cd.Coverage__c;  
         
         ff.objectName = 'SPM_Customer_Detail__c';
@@ -354,15 +365,17 @@ public without sharing class CST_CreateFeedback {
         ff.feedbackOptions = feedbackOptions;
         ff.salesGroupOptions = salesGroupOptions;
         ff.feedbackBy = System.UserInfo.getUserEmail();
+        ff.accountTierOptions = accountTierOptions;//TWC3123-6732
         return ff;
     }
     
     public static FeedBackFields getAccountDetailsFormat(Id recordId){
         FeedBackFields ff = new FeedBackFields();
         List<String> feedbackOptions = new List<String>();
+        List<String> accTierOptions = new List<String>();//acc tier
         Id recordTypeId;
         Schema.DescribeFieldResult fieldDescribe = Schema.getGlobalDescribe().get('SPM_Account_Feedback__c').getDescribe().fields.getMap().get('Feedback__c').getDescribe();
-        
+        Schema.DescribeFieldResult fieldDescribeAccTier = Schema.getGlobalDescribe().get('SPM_Account_Feedback__c').getDescribe().fields.getMap().get('CST_New_Account_Level__c').getDescribe();//acc tier
         SPM_Account_Detail__c ad = [SELECT SPM_Customer_ID__c FROM SPM_Account_Detail__c WHERE Id=:recordId LIMIT 1];
         SPM_Customer_Category__c cd = [select Customer_Detail__r.RCStage__c, Coverage__c  from SPM_Customer_Category__c WHERE Customer_Detail__c=:ad.SPM_Customer_ID__c LIMIT 1];
         
@@ -383,16 +396,22 @@ public without sharing class CST_CreateFeedback {
         for (Schema.PicklistEntry entry : fieldDescribe.getPicklistValues()) {
             feedbackOptions.add(entry.getLabel()+'|'+ entry.getLabel());
         }
-        if(cd.Coverage__c=='Intel-led Account'){
-            ff.coverage = 'Intel Led';
+        //TWC3123-6732 start
+        for (Schema.PicklistEntry entry : fieldDescribeAccTier.getPicklistValues()) {
+            accTierOptions.add(entry.getLabel()+'|'+ entry.getLabel());
+        }
+        //TWC3123-6732 end
+        if(cd.Coverage__c=='Intel Covered'){
+            ff.coverage = 'Intel Covered';//TWC3123-5894
         }
         else{
-            ff.coverage = 'Partner Led';
+            ff.coverage = 'Indirect Covered';//TWC3123-5894
         }
         ff.objectName = 'SPM_Account_Detail__c';
         
         ff.feedbackOptions = feedbackOptions;
         ff.recordTypeId=recordTypeId;
+        ff.accountTierOptions = accTierOptions;//TWC3123-6732
         return ff;
     }   
     

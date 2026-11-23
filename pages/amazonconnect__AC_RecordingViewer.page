@@ -1,0 +1,5 @@
+<apex:page id="AC_RecordingViewer" standardController="amazonconnect__AC_ContactChannelAnalytics__c" extensions="amazonconnect.AC_RecordingViewerExtendedController" docType="html-5.0" showHeader="false" showChat="false">
+    <apex:include pageName="amazonconnect__AC_UtilScriptIncludes" />
+    <!-- get contact if from CCA object and instance url from extended controller -->
+    <c:ACSFCCP_CallRecordingLink contactId="{!JSENCODE(record.amazonconnect__ContactId__c)}" instanceUrl="{!JSENCODE(instanceUrl)}"/>
+</apex:page>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>河源市百灵电脑有限公司_BVAR Partner Manager</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>河源市百灵电脑有限公司_BVAR Partner Manager</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>x_BVARPartnerExecutive18</parentRole>
+</Role>

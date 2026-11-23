@@ -51,6 +51,10 @@
         <label>Feld</label>
         <name>SBQQ__Field__c</name>
         <picklistValues>
+            <masterLabel>PSG_Restricted_Product__c</masterLabel>
+            <translation><!-- PSG_Restricted_Product__c --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Pricing_SW_Custom_Action__c</masterLabel>
             <translation><!-- Pricing_SW_Custom_Action__c --></translation>
         </picklistValues>
@@ -125,6 +129,10 @@
         <help><!-- Object against which the condition is evaluated. --></help>
         <label>Zielobjekt</label>
         <name>SBQQ__TargetObject__c</name>
+        <picklistValues>
+            <masterLabel>Core_Product_Ext_Attribute__c</masterLabel>
+            <translation><!-- Core_Product_Ext_Attribute__c --></translation>
+        </picklistValues>
         <picklistValues>
             <masterLabel>Product</masterLabel>
             <translation><!-- Product --></translation>

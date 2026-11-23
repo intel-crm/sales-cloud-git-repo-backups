@@ -147,16 +147,6 @@
         <type>Lookup</type>
     </fields>
     <fields>
-        <fullName>PRM_Partner_Tier_Name__c</fullName>
-        <externalId>false</externalId>
-        <label>Partner Tier Name</label>
-        <length>100</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>PRM_inactind__c</fullName>
         <defaultValue>false</defaultValue>
         <label>Inactive Indicator</label>
@@ -165,13 +155,14 @@
     </fields>
     <fields>
         <fullName>PRM_programlevelcode__c</fullName>
+        <caseSensitive>false</caseSensitive>
         <externalId>false</externalId>
         <label>Program Level Code</label>
         <length>20</length>
         <required>false</required>
         <trackHistory>true</trackHistory>
         <type>Text</type>
-        <unique>false</unique>
+        <unique>true</unique>
     </fields>
     <fields>
         <fullName>ProgramId</fullName>

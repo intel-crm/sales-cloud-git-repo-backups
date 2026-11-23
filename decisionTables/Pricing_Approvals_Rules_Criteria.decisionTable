@@ -5,22 +5,22 @@
     <dataSourceType>SingleSobject</dataSourceType>
     <decisionTableParameters>
         <dataType>String</dataType>
+        <fieldName>Pricing_End_Customer_Country__c</fieldName>
+        <fieldPath>Pricing_End_Customer_Country__c</fieldPath>
+        <isGroupByField>false</isGroupByField>
+        <isRequired>false</isRequired>
+        <operator>Equals</operator>
+        <sequence>1</sequence>
+        <usage>INPUT</usage>
+    </decisionTableParameters>
+    <decisionTableParameters>
+        <dataType>String</dataType>
         <fieldName>Pricing_Form_Factor__c</fieldName>
         <fieldPath>Pricing_Form_Factor__c</fieldPath>
         <isGroupByField>false</isGroupByField>
         <isRequired>false</isRequired>
         <operator>Equals</operator>
         <sequence>3</sequence>
-        <usage>INPUT</usage>
-    </decisionTableParameters>
-    <decisionTableParameters>
-        <dataType>String</dataType>
-        <fieldName>Pricing_Market_Segment_values_Nm__c</fieldName>
-        <fieldPath>Pricing_Market_Segment_values_Nm__c</fieldPath>
-        <isGroupByField>false</isGroupByField>
-        <isRequired>false</isRequired>
-        <operator>Equals</operator>
-        <sequence>2</sequence>
         <usage>INPUT</usage>
     </decisionTableParameters>
     <decisionTableParameters>
@@ -33,22 +33,12 @@
     </decisionTableParameters>
     <decisionTableParameters>
         <dataType>String</dataType>
-        <fieldName>Pricing_Minimum_Quantity__c</fieldName>
-        <fieldPath>Pricing_Minimum_Quantity__c</fieldPath>
+        <fieldName>Pricing_End_Date__c</fieldName>
+        <fieldPath>Pricing_End_Date__c</fieldPath>
         <isGroupByField>false</isGroupByField>
         <isRequired>true</isRequired>
-        <operator>GreaterOrEqual</operator>
-        <sequence>9</sequence>
-        <usage>INPUT</usage>
-    </decisionTableParameters>
-    <decisionTableParameters>
-        <dataType>String</dataType>
-        <fieldName>Pricing_Maximum_Requested_Unit_Price__c</fieldName>
-        <fieldPath>Pricing_Maximum_Requested_Unit_Price__c</fieldPath>
-        <isGroupByField>false</isGroupByField>
-        <isRequired>false</isRequired>
         <operator>LessOrEqual</operator>
-        <sequence>6</sequence>
+        <sequence>4</sequence>
         <usage>INPUT</usage>
     </decisionTableParameters>
     <decisionTableParameters>
@@ -63,12 +53,12 @@
     </decisionTableParameters>
     <decisionTableParameters>
         <dataType>String</dataType>
-        <fieldName>Pricing_End_Customer_Country__c</fieldName>
-        <fieldPath>Pricing_End_Customer_Country__c</fieldPath>
+        <fieldName>Pricing_Maximum_Requested_Unit_Price__c</fieldName>
+        <fieldPath>Pricing_Maximum_Requested_Unit_Price__c</fieldPath>
         <isGroupByField>false</isGroupByField>
         <isRequired>false</isRequired>
-        <operator>Equals</operator>
-        <sequence>1</sequence>
+        <operator>LessOrEqual</operator>
+        <sequence>6</sequence>
         <usage>INPUT</usage>
     </decisionTableParameters>
     <decisionTableParameters>
@@ -83,12 +73,22 @@
     </decisionTableParameters>
     <decisionTableParameters>
         <dataType>String</dataType>
-        <fieldName>Pricing_End_Date__c</fieldName>
-        <fieldPath>Pricing_End_Date__c</fieldPath>
+        <fieldName>Pricing_Minimum_Quantity__c</fieldName>
+        <fieldPath>Pricing_Minimum_Quantity__c</fieldPath>
         <isGroupByField>false</isGroupByField>
         <isRequired>true</isRequired>
+        <operator>GreaterOrEqual</operator>
+        <sequence>9</sequence>
+        <usage>INPUT</usage>
+    </decisionTableParameters>
+    <decisionTableParameters>
+        <dataType>String</dataType>
+        <fieldName>Pricing_Maximum_Quantity__c</fieldName>
+        <fieldPath>Pricing_Maximum_Quantity__c</fieldPath>
+        <isGroupByField>false</isGroupByField>
+        <isRequired>false</isRequired>
         <operator>LessOrEqual</operator>
-        <sequence>4</sequence>
+        <sequence>8</sequence>
         <usage>INPUT</usage>
     </decisionTableParameters>
     <decisionTableParameters>
@@ -101,12 +101,12 @@
     </decisionTableParameters>
     <decisionTableParameters>
         <dataType>String</dataType>
-        <fieldName>Pricing_Maximum_Quantity__c</fieldName>
-        <fieldPath>Pricing_Maximum_Quantity__c</fieldPath>
+        <fieldName>Pricing_Market_Segment_values_Nm__c</fieldName>
+        <fieldPath>Pricing_Market_Segment_values_Nm__c</fieldPath>
         <isGroupByField>false</isGroupByField>
         <isRequired>false</isRequired>
-        <operator>LessOrEqual</operator>
-        <sequence>8</sequence>
+        <operator>Equals</operator>
+        <sequence>2</sequence>
         <usage>INPUT</usage>
     </decisionTableParameters>
     <decisionTableParameters>
@@ -122,22 +122,22 @@
     <decisionTableSourceCriterias>
         <operator>Equals</operator>
         <sequenceNumber>1</sequenceNumber>
+        <sourceFieldName>Pricing_Approval_Status__c</sourceFieldName>
+        <value>Approved</value>
+        <valueType>Literal</valueType>
+    </decisionTableSourceCriterias>
+    <decisionTableSourceCriterias>
+        <operator>Equals</operator>
+        <sequenceNumber>2</sequenceNumber>
         <sourceFieldName>Pricing_Quote_Type__c</sourceFieldName>
         <value>Client</value>
         <valueType>Literal</valueType>
     </decisionTableSourceCriterias>
     <decisionTableSourceCriterias>
         <operator>Equals</operator>
-        <sequenceNumber>2</sequenceNumber>
+        <sequenceNumber>3</sequenceNumber>
         <sourceFieldName>Pricing_Is_Active__c</sourceFieldName>
         <value>true</value>
-        <valueType>Literal</valueType>
-    </decisionTableSourceCriterias>
-    <decisionTableSourceCriterias>
-        <operator>Equals</operator>
-        <sequenceNumber>3</sequenceNumber>
-        <sourceFieldName>Pricing_Approval_Status__c</sourceFieldName>
-        <value>Approved</value>
         <valueType>Literal</valueType>
     </decisionTableSourceCriterias>
     <doesConsiderNullValue>false</doesConsiderNullValue>

@@ -17,8 +17,8 @@
         <name>Groove_New_Opportunity</name>
     </fieldSets>
     <fieldSets>
-        <label><!-- Mass Assign to Partner --></label>
-        <name>ImpartnerPRM__MassAssignToPartner</name>
+        <label><!-- New Opp --></label>
+        <name>New_Opp</name>
     </fieldSets>
     <fieldSets>
         <label><!-- Opportunity VBS Field Set --></label>
@@ -28,6 +28,10 @@
         <label><!-- Deal Desk --></label>
         <name>sbaa__DealDesk</name>
     </fieldSets>
+    <fields>
+        <label><!-- Analysis Rich Text --></label>
+        <name>Analysis_Rich_Text__c</name>
+    </fields>
     <fields>
         <help><!-- Customer’s prioritized challenges, business metrics/KPIs, and outcomes related to the Desired End State. --></help>
         <label><!-- Business Need --></label>
@@ -123,6 +127,14 @@
         <relationshipLabel><!-- Opportunities (Auditor Name) --></relationshipLabel>
     </fields>
     <fields>
+        <label><!-- Base Commit Revenue --></label>
+        <name>CRM_Base_Commit_Revenue__c</name>
+    </fields>
+    <fields>
+        <label><!-- Current To Base Commit Percent --></label>
+        <name>CRM_Current_To_Base_Commit_Percent__c</name>
+    </fields>
+    <fields>
         <label><!-- isLowTouchAdmin --></label>
         <name>CRM_IsLowTouchAdmin_Chk__c</name>
     </fields>
@@ -151,6 +163,42 @@
         <name>CRM_Reversed_By_Low_Touch_Admin__c</name>
     </fields>
     <fields>
+        <label><!-- SLA Email Sent To --></label>
+        <name>CRM_SLA_Email_Sent_To__c</name>
+        <picklistValues>
+            <masterLabel>Define Opportunity Manager</masterLabel>
+            <translation><!-- Define Opportunity Manager --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Define Opportunity Seller</masterLabel>
+            <translation><!-- Define Opportunity Seller --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Design Opportunity Manager</masterLabel>
+            <translation><!-- Design Opportunity Manager --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Design Opportunity Seller</masterLabel>
+            <translation><!-- Design Opportunity Seller --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Develop Opportunity Manager</masterLabel>
+            <translation><!-- Develop Opportunity Manager --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Develop Opportunity Seller</masterLabel>
+            <translation><!-- Develop Opportunity Seller --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Qualify Opportunity Manager</masterLabel>
+            <translation><!-- Qualify Opportunity Manager --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Qualify Opportunity Seller</masterLabel>
+            <translation><!-- Qualify Opportunity Seller --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
         <label><!-- Software Flag --></label>
         <name>CRM_SW_Flag_Ind__c</name>
     </fields>
@@ -166,6 +214,22 @@
         <help><!-- The sum of the highest rolling 12 month period of committed/guaranteed revenue (if there is a convenience clause, only amounts up to convenience clause date are includable) --></help>
         <label><!-- Annual Recurring Revenue --></label>
         <name>CRM_VBS_Annual_Recurring_Revenue__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approved Annual Recurring Revenue --></label>
+        <name>CRM_VBS_App_AnnualRecurringRevenue__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approved Contract Lifetime in Months --></label>
+        <name>CRM_VBS_App_ContractLifetime_in_Months__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approved Contract Start Date --></label>
+        <name>CRM_VBS_App_ContractStartDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approved Total Contract Value --></label>
+        <name>CRM_VBS_App_TotalContractValue__c</name>
     </fields>
     <fields>
         <help><!-- Contract duration --></help>
@@ -228,9 +292,21 @@
         <name>CRM_VBS_Total_Contract_Value__c</name>
     </fields>
     <fields>
+        <label><!-- Is DW Reversed --></label>
+        <name>CRM_is_DW_reversed__c</name>
+    </fields>
+    <fields>
+        <label><!-- Close date v2 --></label>
+        <name>Close_date_v2__c</name>
+    </fields>
+    <fields>
         <help><!-- Select the applicable Center of Excellence(s) where support is needed for this opportunity --></help>
         <label><!-- CoE Engagement Needed? --></label>
         <name>CoE_Engagement_Needed__c</name>
+        <picklistValues>
+            <masterLabel>Artificial Intelligence</masterLabel>
+            <translation><!-- Artificial Intelligence --></translation>
+        </picklistValues>
         <picklistValues>
             <masterLabel>Artificial Intelligence (AI)</masterLabel>
             <translation><!-- Artificial Intelligence (AI) --></translation>
@@ -238,6 +314,10 @@
         <picklistValues>
             <masterLabel>Automotive</masterLabel>
             <translation><!-- Automotive --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Comms Service Provider</masterLabel>
+            <translation><!-- Comms Service Provider --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Comms Service Providers</masterLabel>
@@ -401,8 +481,24 @@
     </fields>
     <fields>
         <help><!-- Check the box to indicate this is an opportunity to convert an existing design based on a competitive architecture over to Intel Architecture. --></help>
-        <label><!-- Architecture Conversion --></label>
+        <label><!-- Architecture --></label>
         <name>Core_Architecture_Conversion__c</name>
+        <picklistValues>
+            <masterLabel>Architecture Conversion</masterLabel>
+            <translation><!-- Architecture Conversion --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Architecture Conversion/Win Back</masterLabel>
+            <translation><!-- Architecture Conversion/Win Back --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel Architecture Refresh</masterLabel>
+            <translation><!-- Intel Architecture Refresh --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New Project</masterLabel>
+            <translation><!-- New Project --></translation>
+        </picklistValues>
     </fields>
     <fields>
         <label><!-- Assists --></label>
@@ -453,6 +549,14 @@
         <name>Core_Bypass_Field_Validation__c</name>
     </fields>
     <fields>
+        <label><!-- CEG Comments --></label>
+        <name>Core_CEG_Comments__c</name>
+    </fields>
+    <fields>
+        <label><!-- CEG Contact --></label>
+        <name>Core_CEG_Contact__c</name>
+    </fields>
+    <fields>
         <label><!-- CPU --></label>
         <name>Core_CPU__c</name>
     </fields>
@@ -479,6 +583,10 @@
     <fields>
         <label><!-- Cloud Service Provider --></label>
         <name>Core_Cloud_Service_Provider__c</name>
+    </fields>
+    <fields>
+        <label><!-- Collaboration Model --></label>
+        <name>Core_Collaboration_Model__c</name>
     </fields>
     <fields>
         <help><!-- Select all applicable values to submit Deal opportunity for Approval. Add specific solution usage (i.e. MRS, Software). --></help>
@@ -779,10 +887,6 @@
             <translation><!-- Cloud Service Providers --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Comms Service Providers</masterLabel>
-            <translation><!-- Comms Service Providers --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Consumer</masterLabel>
             <translation><!-- Consumer --></translation>
         </picklistValues>
@@ -965,6 +1069,22 @@
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- Custom Silicon Application --></label>
+        <name>Core_Custom_Silicon_Application__c</name>
+    </fields>
+    <fields>
+        <label><!-- Custom Silicon Product Type --></label>
+        <name>Core_Custom_Silicon_Product_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Custom Silicon Project Stage --></label>
+        <name>Core_Custom_Silicon_Project_Stage__c</name>
+    </fields>
+    <fields>
+        <label><!-- Custom Silicon Segment --></label>
+        <name>Core_Custom_Silicon_Segment__c</name>
+    </fields>
+    <fields>
         <label><!-- Customer Project Details --></label>
         <name>Core_Customer_Project_Details__c</name>
     </fields>
@@ -997,6 +1117,10 @@
         <help><!-- Date that an opportunity was submitted for approval. --></help>
         <label><!-- Date Submitted for Approval --></label>
         <name>Core_Date_Submitted_for_Approval__c</name>
+    </fields>
+    <fields>
+        <label><!-- Date &amp; Time Submitted for Approval --></label>
+        <name>Core_Date_Time_Submitted_for_Approval__c</name>
     </fields>
     <fields>
         <help><!-- # of Days from Opportunity Creation to Submission. --></help>
@@ -1087,6 +1211,10 @@
         <name>Core_Distributor__c</name>
     </fields>
     <fields>
+        <label><!-- Dual boarded --></label>
+        <name>Core_Dual_boarded__c</name>
+    </fields>
+    <fields>
         <label><!-- Dynamic Tuning Technology --></label>
         <name>Core_Dynamic_Tuning_Technology__c</name>
     </fields>
@@ -1111,8 +1239,20 @@
         <name>Core_End_Customer__c</name>
     </fields>
     <fields>
+        <label><!-- End Date --></label>
+        <name>Core_End_Date__c</name>
+    </fields>
+    <fields>
         <label><!-- Entry SPP (US$) --></label>
         <name>Core_Entry_SPP_US__c</name>
+    </fields>
+    <fields>
+        <label><!-- Ethernet --></label>
+        <name>Core_Ethernet__c</name>
+    </fields>
+    <fields>
+        <label><!-- Evo Candidate --></label>
+        <name>Core_Evo_Candidate__c</name>
     </fields>
     <fields>
         <help><!-- Check the box if this opportunity should NOT receive KPI credit. If checked, the &apos;Opportunity KPIs&apos; section will not populate, any data already there will be removed within 24 hours. This does not apply to Consumption KPI. --></help>
@@ -1122,6 +1262,10 @@
     <fields>
         <label><!-- Exclude from Confidence --></label>
         <name>Core_Exclude_from_Confidence__c</name>
+    </fields>
+    <fields>
+        <label><!-- Exec Sponsor Contact --></label>
+        <name>Core_Exec_Sponsor_Contact__c</name>
     </fields>
     <fields>
         <help><!-- Free form text field to track the lead number or other reference ID from the system where the Opportunity originated. --></help>
@@ -1340,6 +1484,14 @@
         <name>Core_Graphics__c</name>
     </fields>
     <fields>
+        <label><!-- Home page Banner text --></label>
+        <name>Core_Home_page_Banner_text__c</name>
+    </fields>
+    <fields>
+        <label><!-- IDT --></label>
+        <name>Core_IDT__c</name>
+    </fields>
+    <fields>
         <label><!-- ID Chassis Refresh --></label>
         <name>Core_ID_Chassis_Refresh__c</name>
     </fields>
@@ -1504,6 +1656,10 @@
             <translation><!-- CRESCENT ISLAND --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>CUSTOM SILICON</masterLabel>
+            <translation><!-- CUSTOM SILICON --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>CYCLONE</masterLabel>
             <translation><!-- CYCLONE --></translation>
         </picklistValues>
@@ -1644,6 +1800,10 @@
             <translation><!-- PHOEBE LAKE --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>PINE STREAM</masterLabel>
+            <translation><!-- PINE STREAM --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>PURLEY</masterLabel>
             <translation><!-- PURLEY --></translation>
         </picklistValues>
@@ -1662,6 +1822,18 @@
         <picklistValues>
             <masterLabel>RAPTOR LAKE REFRESH M</masterLabel>
             <translation><!-- RAPTOR LAKE REFRESH M --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RAZOR LAKE AX</masterLabel>
+            <translation><!-- RAZOR LAKE AX --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RAZOR LAKE D</masterLabel>
+            <translation><!-- RAZOR LAKE D --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RAZOR LAKE M</masterLabel>
+            <translation><!-- RAZOR LAKE M --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>REDONDO LAKE</masterLabel>
@@ -1769,6 +1941,10 @@
         <name>Core_IsClone__c</name>
     </fields>
     <fields>
+        <label><!-- Is Cloned --></label>
+        <name>Core_Is_Cloned__c</name>
+    </fields>
+    <fields>
         <label><!-- Is DCS? --></label>
         <name>Core_Is_DCS__c</name>
     </fields>
@@ -1785,8 +1961,20 @@
         <name>Core_Is_KPI_Refresh__c</name>
     </fields>
     <fields>
+        <label><!-- Is_PSG_PrimaryQuote --></label>
+        <name>Core_Is_PSG_PrimaryQuote__c</name>
+    </fields>
+    <fields>
+        <label><!-- Core_Is_Processed --></label>
+        <name>Core_Is_Processed__c</name>
+    </fields>
+    <fields>
         <label><!-- Is Product Vendor Inactive --></label>
         <name>Core_Is_Product_Vendor_Inactive__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Renewal/Amend PSG Quote --></label>
+        <name>Core_Is_Renewal_Amend_PSG_Quote__c</name>
     </fields>
     <fields>
         <label><!-- KPI - Business Industry Function --></label>
@@ -1846,7 +2034,7 @@
         <name>Core_Lead_to_Opportunity_Conversion__c</name>
     </fields>
     <fields>
-        <help><!-- Required field to provide details that expand upon the Loss/Cancel Reason.  This data helps us learn from losses. --></help>
+        <help><!-- Required field to provide details that expand upon the Loss/Cancel Reason. This data helps us learn from losses. --></help>
         <label><!-- Loss/Cancel Details --></label>
         <name>Core_Loss_Cancel_Details__c</name>
     </fields>
@@ -1855,44 +2043,44 @@
         <label><!-- Loss/Cancel Reason --></label>
         <name>Core_Loss_Cancel_Reason__c</name>
         <picklistValues>
-            <masterLabel>Another IA Bid Selected </masterLabel>
-            <translation><!-- Another IA Bid Selected  --></translation>
+            <masterLabel>Another IA Bid Selected</masterLabel>
+            <translation><!-- Another IA Bid Selected --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Customer Discontinued Project </masterLabel>
-            <translation><!-- Customer Discontinued Project  --></translation>
+            <masterLabel>Customer Discontinued Project</masterLabel>
+            <translation><!-- Customer Discontinued Project --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Entered in Error </masterLabel>
-            <translation><!-- Entered in Error  --></translation>
+            <masterLabel>Entered in Error</masterLabel>
+            <translation><!-- Entered in Error --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Feature/Performance</masterLabel>
             <translation><!-- Feature/Performance --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Intel No Longer Pursuing </masterLabel>
-            <translation><!-- Intel No Longer Pursuing  --></translation>
+            <masterLabel>Intel No Longer Pursuing</masterLabel>
+            <translation><!-- Intel No Longer Pursuing --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Other (refer to Loss Details) </masterLabel>
-            <translation><!-- Other (refer to Loss Details)  --></translation>
+            <masterLabel>Other (refer to Loss Details)</masterLabel>
+            <translation><!-- Other (refer to Loss Details) --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>POP Unobtainable </masterLabel>
-            <translation><!-- POP Unobtainable  --></translation>
+            <masterLabel>POP Unobtainable</masterLabel>
+            <translation><!-- POP Unobtainable --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Price </masterLabel>
-            <translation><!-- Price  --></translation>
+            <masterLabel>Price</masterLabel>
+            <translation><!-- Price --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Product Schedule </masterLabel>
-            <translation><!-- Product Schedule  --></translation>
+            <masterLabel>Product Schedule</masterLabel>
+            <translation><!-- Product Schedule --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Supply </masterLabel>
-            <translation><!-- Supply  --></translation>
+            <masterLabel>Supply</masterLabel>
+            <translation><!-- Supply --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -2033,12 +2221,20 @@
         <name>Core_Modern_Standby__c</name>
     </fields>
     <fields>
+        <label><!-- NRE $ --></label>
+        <name>Core_NRE__c</name>
+    </fields>
+    <fields>
         <label><!-- Named/Strategic Territory Name --></label>
         <name>Core_Named_Strategic_Territory_Name__c</name>
     </fields>
     <fields>
         <label><!-- Named/Strategic Territory --></label>
         <name>Core_Named_Strategic__c</name>
+    </fields>
+    <fields>
+        <label><!-- New Chassis --></label>
+        <name>Core_New_Chassis__c</name>
     </fields>
     <fields>
         <label><!-- New ID? --></label>
@@ -2126,6 +2322,10 @@
     <fields>
         <label><!-- Number of Quarters --></label>
         <name>Core_Number_of_Quarters__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number of Thunderbolt Ports --></label>
+        <name>Core_Number_of_Thunderbolt_Ports__c</name>
     </fields>
     <fields>
         <label><!-- ODM --></label>
@@ -3248,6 +3448,10 @@ Partner-led - This option is systematically populated when an opportunity is cre
         <name>Core_Opportunity_ID__c</name>
     </fields>
     <fields>
+        <label><!-- Opportunity Lock Status --></label>
+        <name>Core_Opportunity_Lock_Status__c</name>
+    </fields>
+    <fields>
         <label><!-- Opportunity Lost (U) --></label>
         <name>Core_Opportunity_Lost_U__c</name>
     </fields>
@@ -3528,6 +3732,10 @@ Partner-led - This option is systematically populated when an opportunity is cre
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- Pre Submit Check --></label>
+        <name>Core_Pre_Submit_Check__c</name>
+    </fields>
+    <fields>
         <label><!-- Primary Customer Contact --></label>
         <name>Core_Primary_Customer_Contact__c</name>
     </fields>
@@ -3539,6 +3747,10 @@ Partner-led - This option is systematically populated when an opportunity is cre
         <help><!-- Private compliance comments. Shown only to the compliance team and admins --></help>
         <label><!-- Private Compliance Comments --></label>
         <name>Core_Private_Compliance_Comments__c</name>
+    </fields>
+    <fields>
+        <label><!-- Process Node --></label>
+        <name>Core_Process_Node__c</name>
     </fields>
     <fields>
         <help><!-- Select the customer&apos;s application for the opportunity products. The available options are determined by the Product Segment selected. --></help>
@@ -3777,6 +3989,14 @@ Partner-led - This option is systematically populated when an opportunity is cre
             <translation><!-- Wireless Baseband/Radio --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Wireless Fronthaul</masterLabel>
+            <translation><!-- Wireless Fronthaul --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wireless Radio</masterLabel>
+            <translation><!-- Wireless Radio --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Wireless Remote Radio Head</masterLabel>
             <translation><!-- Wireless Remote Radio Head --></translation>
         </picklistValues>
@@ -3909,6 +4129,10 @@ Partner-led - This option is systematically populated when an opportunity is cre
         <name>Core_Products_At_Risk_Count__c</name>
     </fields>
     <fields>
+        <label><!-- Project Code Name --></label>
+        <name>Core_Project_Code_Name__c</name>
+    </fields>
+    <fields>
         <help><!-- Describes where the customer is in the &quot;Purchase Cycle&quot;. This field will default from a converted lead if applicable and is not editable. --></help>
         <label><!-- Project Phase --></label>
         <name>Core_Project_Phase__c</name>
@@ -3928,6 +4152,26 @@ Partner-led - This option is systematically populated when an opportunity is cre
             <masterLabel>Purchase</masterLabel>
             <translation><!-- Purchase --></translation>
         </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Project Schedule: Engineering Sample --></label>
+        <name>Core_Project_Schedule_Engineering_Sample__c</name>
+    </fields>
+    <fields>
+        <label><!-- Project Schedule: PRQ --></label>
+        <name>Core_Project_Schedule_PRQ__c</name>
+    </fields>
+    <fields>
+        <label><!-- Project Schedule: RFx --></label>
+        <name>Core_Project_Schedule_RFx__c</name>
+    </fields>
+    <fields>
+        <label><!-- Project Schedule: TR Kick off --></label>
+        <name>Core_Project_Schedule_TR_Kick_off__c</name>
+    </fields>
+    <fields>
+        <label><!-- Project Schedule: Tape In/Out --></label>
+        <name>Core_Project_Schedule_Tape_In_Out__c</name>
     </fields>
     <fields>
         <help><!-- Indicates the estimated US dollar size of the opportunity. This field will default from a converted lead if applicable and is not editable. --></help>
@@ -10194,11 +10438,20 @@ Scale Estimate: Only applies selected scale partner --></help>
         <name>Core_Standard_Customer_Refresh__c</name>
     </fields>
     <fields>
+        <label><!-- Start Date --></label>
+        <name>Core_Start_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- This field stores the start date of current stage --></help>
+        <label><!-- Start Date of Current Stage --></label>
+        <name>Core_Start_Date_of_Current_Stage__c</name>
+    </fields>
+    <fields>
         <label><!-- Is Blank Status Update --></label>
         <name>Core_Status_Update_Check__c</name>
     </fields>
     <fields>
-        <help><!-- Text field to enter status of the opportunity. Use format:   [MM/DD/YY]:  Status details, next steps, key actions and relevant comments, w/MOST CURRENT update at top. This field is searchable, but only the first 255 characters can be exported in reporting --></help>
+        <help><!-- Text field to enter status of the opportunity. Use format: [MM/DD/YY]: Status details, next steps, key actions and relevant comments, w/MOST CURRENT update at top. This field is searchable, but only the first 255 characters can be exported in reporting --></help>
         <label><!-- Status Update --></label>
         <name>Core_Status_Update__c</name>
     </fields>
@@ -10287,6 +10540,18 @@ Scale Estimate: Only applies selected scale partner --></help>
         <name>Core_Territory_Label__c</name>
     </fields>
     <fields>
+        <label><!-- Test Validation Check --></label>
+        <name>Core_Test_Validation_Check__c</name>
+        <picklistValues>
+            <masterLabel>Error1</masterLabel>
+            <translation><!-- Error1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Error2</masterLabel>
+            <translation><!-- Error2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
         <label><!-- Thunderbolt --></label>
         <name>Core_Thunderbolt__c</name>
     </fields>
@@ -10303,6 +10568,10 @@ Scale Estimate: Only applies selected scale partner --></help>
     <fields>
         <label><!-- Ultrabook --></label>
         <name>Core_Ultrabook__c</name>
+    </fields>
+    <fields>
+        <label><!-- Unison --></label>
+        <name>Core_Unison__c</name>
     </fields>
     <fields>
         <label><!-- Unit Height --></label>
@@ -10434,16 +10703,40 @@ SOAR4 Contract Not Signed- Customer does not agree to deal. --></help>
         <name>Core_Write_In_Product_Count__c</name>
     </fields>
     <fields>
+        <label><!-- Xvoyant Filter --></label>
+        <name>Core_Xvoyant_Filter__c</name>
+    </fields>
+    <fields>
         <label><!-- Z Height --></label>
         <name>Core_Z_Height__c</name>
+    </fields>
+    <fields>
+        <label><!-- difference --></label>
+        <name>Core_difference__c</name>
     </fields>
     <fields>
         <label><!-- Has Solution --></label>
         <name>Core_has_Solution__c</name>
     </fields>
     <fields>
+        <label><!-- isInactiveAccount --></label>
+        <name>Core_isInactiveAccount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Core_isUpdatedFromFlow --></label>
+        <name>Core_isUpdatedFromFlow__c</name>
+    </fields>
+    <fields>
+        <label><!-- is cloned Opportunity --></label>
+        <name>Core_is_cloned_Opportunity__c</name>
+    </fields>
+    <fields>
         <label><!-- lead Id --></label>
         <name>Core_lead_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Converted date --></label>
+        <name>Core_opp_Converted_date_formula__c</name>
     </fields>
     <fields>
         <label><!-- vPro --></label>
@@ -10464,6 +10757,30 @@ SOAR4 Contract Not Signed- Customer does not agree to deal. --></help>
         <relationshipLabel><!-- Opportunities --></relationshipLabel>
     </fields>
     <fields>
+        <label><!-- DB Competitor --></label>
+        <name>DB_Competitor__c</name>
+        <picklistValues>
+            <masterLabel>Competitor A</masterLabel>
+            <translation><!-- Competitor A --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Competitor B</masterLabel>
+            <translation><!-- Competitor B --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Competitor C</masterLabel>
+            <translation><!-- Competitor C --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Data Quality Description --></label>
+        <name>Data_Quality_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Data Quality Score --></label>
+        <name>Data_Quality_Score__c</name>
+    </fields>
+    <fields>
         <label><!-- Decision Date --></label>
         <name>Decision_Date__c</name>
     </fields>
@@ -10471,6 +10788,27 @@ SOAR4 Contract Not Signed- Customer does not agree to deal. --></help>
         <help><!-- Customer’s strategic investment-worthy aspirations that form the rationale for customer engagement with Intel. (e.g. how to make company a Great Place to Work, Live, Play, or Visit [GPtWLPV] OR new services to their customers) --></help>
         <label><!-- Desired End State --></label>
         <name>Desired_End_State__c</name>
+    </fields>
+    <fields>
+        <help><!-- This field is created for testing purpose do not use --></help>
+        <label><!-- Dummy Field --></label>
+        <name>Dummy_Field__c</name>
+        <picklistValues>
+            <masterLabel>Education</masterLabel>
+            <translation><!-- Education --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Test Business Industry</masterLabel>
+            <translation><!-- Test Business Industry --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Test Energy</masterLabel>
+            <translation><!-- Test Energy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Test Utilities</masterLabel>
+            <translation><!-- Test Utilities --></translation>
+        </picklistValues>
     </fields>
     <fields>
         <help><!-- The First Article of Deployment (FAD) is an operational deployment of a solution in a working environment that has a higher implementation value than a lab-based experiment which is indicative of a POC. --></help>
@@ -10483,46 +10821,72 @@ SOAR4 Contract Not Signed- Customer does not agree to deal. --></help>
         <name>FAD_Start_Date__c</name>
     </fields>
     <fields>
-        <label><!-- Date Assigned to Partner --></label>
-        <name>ImpartnerPRM__DateAssignedToPartner__c</name>
+        <label><!-- IsReverseLowTouchAdmin --></label>
+        <name>IsReverseLowTouchAdmin__c</name>
     </fields>
     <fields>
-        <label><!-- Is Deal Registration --></label>
-        <name>ImpartnerPRM__IsDealRegistration__c</name>
+        <label><!-- KCR Global Account Name --></label>
+        <name>KCR_Global_Account_Name_Temp__c</name>
     </fields>
     <fields>
-        <label><!-- Notify Partner --></label>
-        <name>ImpartnerPRM__NotifyPartner__c</name>
+        <label><!-- Current Generator(s) --></label>
+        <name>LID__CurrentGenerators__c</name>
     </fields>
     <fields>
-        <label><!-- Partner Account --></label>
-        <name>ImpartnerPRM__PartnerAccount__c</name>
-        <relationshipLabel><!-- Opportunities --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Partner Contact --></label>
-        <name>ImpartnerPRM__PartnerContact__c</name>
-        <relationshipLabel><!-- Opportunities --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Partner Last Modified Date --></label>
-        <name>ImpartnerPRM__PartnerLastModifiedDate__c</name>
-    </fields>
-    <fields>
-        <label><!-- Partner Opportunity Acceptance --></label>
-        <name>ImpartnerPRM__PartnerOpportunityAcceptance__c</name>
+        <label><!-- Delivery/Installation Status --></label>
+        <name>LID__DeliveryInstallationStatus__c</name>
         <picklistValues>
-            <masterLabel>Accepted</masterLabel>
-            <translation><!-- Accepted --></translation>
+            <masterLabel>Completed</masterLabel>
+            <translation><!-- Completed --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Pending</masterLabel>
-            <translation><!-- Pending --></translation>
+            <masterLabel>In progress</masterLabel>
+            <translation><!-- In progress --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Rejected</masterLabel>
-            <translation><!-- Rejected --></translation>
+            <masterLabel>Yet to begin</masterLabel>
+            <translation><!-- Yet to begin --></translation>
         </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Is_Influenced --></label>
+        <name>LID__Is_Influenced__c</name>
+    </fields>
+    <fields>
+        <label><!-- LinkedIn Company Id --></label>
+        <name>LID__LinkedIn_Company_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Main Competitor(s) --></label>
+        <name>LID__MainCompetitors__c</name>
+    </fields>
+    <fields>
+        <label><!-- My DateTime --></label>
+        <name>LID__My_DateTime__c</name>
+    </fields>
+    <fields>
+        <label><!-- My Geolocation --></label>
+        <name>LID__My_Geolocation__c</name>
+    </fields>
+    <fields>
+        <label><!-- Order Number --></label>
+        <name>LID__OrderNumber__c</name>
+    </fields>
+    <fields>
+        <label><!-- Tracking Number --></label>
+        <name>LID__TrackingNumber__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Stage Change Date --></label>
+        <name>Last_Stage_Change_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner FAE Email --></label>
+        <name>Opp_Partner_FAE_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Count --></label>
+        <name>Opportunity_Count__c</name>
     </fields>
     <fields>
         <help><!-- • Core: Ecosystem-led Transactional selling motions (e.g. Ecosystem-led end-customer engagement, Run-rate or Repeat silicon and accelerator business)
@@ -10539,6 +10903,10 @@ SOAR4 Contract Not Signed- Customer does not agree to deal. --></help>
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- Opportunity Win Prediction --></label>
+        <name>Opportunity_Win_Prediction__c</name>
+    </fields>
+    <fields>
         <help><!-- Proof of Concept (POC) dates to inform resource scheduling/allocation for POC delivery. --></help>
         <label><!-- POC End Date --></label>
         <name>POC_End_Date__c</name>
@@ -10547,6 +10915,14 @@ SOAR4 Contract Not Signed- Customer does not agree to deal. --></help>
         <help><!-- Proof of Concept (POC) dates to inform resource scheduling/allocation for POC delivery. --></help>
         <label><!-- POC Start Date --></label>
         <name>POC_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quote Id --></label>
+        <name>Pricing_Quote_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Total Price Sum --></label>
+        <name>Product_Total_Price_Sum__c</name>
     </fields>
     <fields>
         <help><!-- Push Reason Details is mandatory when Decision Date is pushed in Develop/Design stage --></help>
@@ -10640,6 +11016,34 @@ SOAR4 Contract Not Signed- Customer does not agree to deal. --></help>
         <relationshipLabel>Verlängerungs-Opportunities</relationshipLabel>
     </fields>
     <fields>
+        <label><!-- Smartpicklist_TestingField --></label>
+        <name>Smartpicklist_TestingField__c</name>
+        <picklistValues>
+            <masterLabel>PickVal1</masterLabel>
+            <translation><!-- PickVal1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PickVal2</masterLabel>
+            <translation><!-- PickVal2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PickVal3</masterLabel>
+            <translation><!-- PickVal3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PickVal4</masterLabel>
+            <translation><!-- PickVal4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PickVal5</masterLabel>
+            <translation><!-- PickVal5 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- SubmitForApproval Button For PCC --></label>
+        <name>SubmitForApproval_Button_For_PCC__c</name>
+    </fields>
+    <fields>
         <help><!-- Requirements for integration into customer environment to manage existing Technical Debt and minimize Rip and Replace. (e.g. customer’s untouchable areas of sovereignty, areas of innovation without disruption, etc.) --></help>
         <label><!-- Technical Need --></label>
         <name>Technical_Need__c</name>
@@ -10648,6 +11052,63 @@ SOAR4 Contract Not Signed- Customer does not agree to deal. --></help>
         <help><!-- Customer’s current and missing capabilities to execute aspirational Desired End State. (e.g. Who is customer already working with today, what decisions have been made, what has been deployed?) --></help>
         <label><!-- Technology and Readiness Gaps --></label>
         <name>Technology_and_Readiness_Gaps__c</name>
+    </fields>
+    <fields>
+        <label><!-- Test Picklist --></label>
+        <name>Test_Picklist__c</name>
+        <picklistValues>
+            <masterLabel>test 1</masterLabel>
+            <translation><!-- test 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>test 2</masterLabel>
+            <translation><!-- test 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>test 3</masterLabel>
+            <translation><!-- test 3 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Test pipeline to be deleted --></label>
+        <name>Test_pipeline_to_be_deleted__c</name>
+    </fields>
+    <fields>
+        <label><!-- Testing Field --></label>
+        <name>Testing_Field__c</name>
+    </fields>
+    <fields>
+        <label><!-- Val_Test --></label>
+        <name>Val_Test__c</name>
+    </fields>
+    <fields>
+        <label><!-- Win/Loss Indicator --></label>
+        <name>Win_Loss_Indicator__c</name>
+    </fields>
+    <fields>
+        <help><!-- Formula Field to return the 18 digit ID used for reporting in external systems --></help>
+        <label><!-- 18 Digit Opportunity ID --></label>
+        <name>X18_Digit_Opportunity_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Xvoyant Opp Amount --></label>
+        <name>Xvoyant_Opp_Amount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Department(s) --></label>
+        <name>Xvoyant__Department__c</name>
+    </fields>
+    <fields>
+        <label><!-- oppCreatedDate --></label>
+        <name>Xvoyant__oppCreatedDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- close date Pridi --></label>
+        <name>close_date_Pridi__c</name>
+    </fields>
+    <fields>
+        <label><!-- dummy --></label>
+        <name>dummy11__c</name>
     </fields>
     <fields>
         <label><!-- Current Sales Campaign --></label>
@@ -10721,6 +11182,10 @@ SOAR4 Contract Not Signed- Customer does not agree to deal. --></help>
         <name>sbaa__SubmittedUser__c</name>
         <relationshipLabel><!-- Opportunities (Submitted User) --></relationshipLabel>
     </fields>
+    <fields>
+        <label><!-- ucdDate --></label>
+        <name>ucdDate__c</name>
+    </fields>
     <recordTypes>
         <description><!-- Used to create Deal related Opportunities --></description>
         <label><!-- Deal Opportunity --></label>
@@ -10792,8 +11257,21 @@ SOAR4 Contract Not Signed- Customer does not agree to deal. --></help>
         <name>CRM_Valid_Contract_Lifetime</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- Account(s) associated as Opportunity Account/Product Vendor account is/are no longer active.
+You must replace with an active Vendor account prior to submitting for approval. --></errorMessage>
+        <name>Check_Inactive_Vendor_Account_on_Approva</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- The account on this opportunity is not an intel account. Please ensure the account selected on the opportunity is an Intel Account in order to proceed with any operations on this opportunity. --></errorMessage>
         <name>Core_Account_Check_OnCreate_Update</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please provide specific details on the Support Requested to mitigate the Significant Risk --></errorMessage>
+        <name>Core_At_Risk_Oppty</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This error message, can either appear at the top of the page or below a specific field on the page. Exception, test --></errorMessage>
+        <name>Core_City_not</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Please check ‘Do Not Create a New Opportunity’ check box when converting a disqualified lead to ‘Contact No Opportunity’ stage --></errorMessage>
@@ -10804,10 +11282,6 @@ SOAR4 Contract Not Signed- Customer does not agree to deal. --></help>
         <name>Core_DDR_Lock_MINDS_Field</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Production Win/Lost/Cancelled Stages are not applicable for Deal Opportunity --></errorMessage>
-        <name>Core_DealOppty_PWStage</name>
-    </validationRules>
-    <validationRules>
         <errorMessage><!-- Each of the fields must be completed before moving to the next Stage:  Product Segment, Product Application and Vertical Market and have at least one Contact must be associated to the Opportunity (Contact Roles section). --></errorMessage>
         <name>Core_Deal_Define_Exit_Criteria</name>
     </validationRules>
@@ -10816,8 +11290,16 @@ SOAR4 Contract Not Signed- Customer does not agree to deal. --></help>
         <name>Core_Deal_Develop_Exit_Criteria</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- Each of the fields must be completed before moving to the next Stage: Description, Status Update Product Segment, Product Application, Vertical Market and have at least one Contact must be associated to the Opportunity (Contact Roles section). --></errorMessage>
+        <name>Core_Deal_QualifyDefine_Exit_Criteria</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- Each of the following fields must be completed before moving to the next Stage:  Description and Status Update. --></errorMessage>
         <name>Core_Deal_Qualify_Exit_Criteria</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Each of the following fields must be completed: Description and Status Update. --></errorMessage>
+        <name>Core_Description_StatusUpdate_NotBlank</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Each of the fields must be completed before moving to the next Stage:  Product Segment, Product Application and Vertical Market and at least one Contact must be associated to the Opportunity (Contact Roles section). --></errorMessage>
@@ -10826,6 +11308,10 @@ SOAR4 Contract Not Signed- Customer does not agree to deal. --></help>
     <validationRules>
         <errorMessage><!-- Each of the following fields must be completed before moving to the next Stage:  Competitive Architecture, Intel Platform and must include at least one (1) Product and zero (0)  Write In Products. --></errorMessage>
         <name>Core_Design_Develop_Exit_Criteria</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Each of the fields must be completed before moving to the next Stage: Technical Owner, Description, Status Update, Product Segment, Product Application, Vertical Market and at least one Contact must be associated to the Opportunity (Contact Roles section) --></errorMessage>
+        <name>Core_Design_QualifyDefine_Exit_Criteria</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Each of the following fields must be completed before moving to the next Stage:  Technical Owner, Description and Status Update. --></errorMessage>
@@ -10894,12 +11380,20 @@ This is triggered by Click on &quot;Submit for PW Approval&quot;. --></errorMess
         <name>Core_Opp_Intel_Ultimate_Account</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- Opportunity Name can&apos;t be changed after Opportunity approval. --></errorMessage>
+        <name>Core_Opp_Locked_Fields_after_Approval</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- Account can only be changed by Data Ops and Admins in the Design Win, Production Win, Production Loss, and Production Cancelled stages --></errorMessage>
         <name>Core_Opp_Locking_Account</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Value cannot be changed from &apos;Yes&apos; --></errorMessage>
         <name>Core_Opp_Opportunity_MAG</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- A partner user can’t be selected as Opportunity Owner .Please select appropriate user to proceed. --></errorMessage>
+        <name>Core_Opp_Owner_Partner_User_Check</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Opportunities with Stage of Design Win  or Production Lost/Cancelled cannot be changed to previous Stage. --></errorMessage>
@@ -11014,8 +11508,16 @@ This is triggered by Click on &quot;Submit for PW Approval&quot;. --></errorMess
         <name>Core_OpportunityIOGMCheck</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- Please enter the At Risk details of the products before updating this opportunity. --></errorMessage>
+        <name>Core_Opportunity_At_Risk_Rule</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- Past Decision Dates are invalid. Please enter a future Decision Date. --></errorMessage>
         <name>Core_Oppty_Decision_Date_In_Future</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please Provide the Decision date in future and Should be within one year from todays date. --></errorMessage>
+        <name>Core_Oppty_UpdateDecision_Date_In_Future</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Production Win/Production Cancelled/Production Lost are not applicable for Partner Opportunities. --></errorMessage>
@@ -11034,6 +11536,10 @@ This is triggered by Click on &quot;Submit for PW Approval&quot;. --></errorMess
         <name>Core_PCC_Restrict_OPTY_TechOwner_Update</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- You cannot delete the Opportunity Product while the KPIs are getting refreshed. Please wait for  5 minutes. --></errorMessage>
+        <name>Core_PreventOLIDeletion</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- Cannot edit Opportunity. Please contact system admin. --></errorMessage>
         <name>Core_Prevent_Edit_BU_Collaborator_User</name>
     </validationRules>
@@ -11042,8 +11548,16 @@ This is triggered by Click on &quot;Submit for PW Approval&quot;. --></errorMess
         <name>Core_Prevent_OpportunityStage_Update</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- You don&apos;t have the necessary permissions to approve/reject this opportunity. Please reach out to your system administrator --></errorMessage>
+        <name>Core_RestrictSMGOppApproval</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- Skipping stage is not allowed. --></errorMessage>
         <name>Core_Restrict_Forward_Jump</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You cannot change the Stage to Lost --></errorMessage>
+        <name>Core_Restrict_OppStage_Mgr</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Cannot move back to the previous stage. --></errorMessage>
@@ -11058,15 +11572,19 @@ This is triggered by Click on &quot;Submit for PW Approval&quot;. --></errorMess
         <name>Core_SalesGroup_WithoutAccount</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- End Date of all the Summary Date fields should be greater than or equal to Start Date --></errorMessage>
+        <errorMessage><!-- Please enter valid sales motion date (End is greater then start dates) --></errorMessage>
         <name>Core_Sales_motion_date_validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You do not have necessary permissions to perform this operation. --></errorMessage>
+        <name>Core_SmgOpptyRestrict</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Solution Area is Required on Deal opportunities. --></errorMessage>
         <name>Core_Solution_Area_Required</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- A partner user can’t be selected as technical owner .Please select appropriate user to proceed. --></errorMessage>
+        <errorMessage><!-- A partner user can’t be selected as technical owner. Please select appropriate user to proceed. --></errorMessage>
         <name>Core_TechOwner_Check_OnCreate_Update</name>
     </validationRules>
     <validationRules>
@@ -11080,6 +11598,10 @@ This is triggered by Click on &quot;Submit for PW Approval&quot;. --></errorMess
     <validationRules>
         <errorMessage><!-- You can create VBS potential Opportunities only in Qualify/Define stages. --></errorMessage>
         <name>Core_VBSPotential_Check_for_creating_Opp</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Uncovered Account not allowed --></errorMessage>
+        <name>Core_ValidateOppForUncoveredAccts</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Please enter Push Reason --></errorMessage>
@@ -11098,17 +11620,49 @@ This is triggered by Click on &quot;Submit for PW Approval&quot;. --></errorMess
         <name>Core_restrict_to_update_submitted_oppty</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- The reversal should be the done in the same quarter as approval of the Opportunity. --></errorMessage>
+        <name>Core_reversal_in_same_quarter</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- CompanyId should be a numeric value --></errorMessage>
+        <name>LID__Check_CompanyId_Value</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- CompanyId should be a numeric value --></errorMessage>
+        <name>LID__Check_Company_Id_Value</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- Reversal is only possible from Reverse Button. --></errorMessage>
         <name>Low_Touch_Admin_Check_on_Recall</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Quote associated to this Opportunity is Submitted for Review. None allowed on Opportunity during the Review process. --></errorMessage>
+        <name>Opportunity_QuoteSubmittedStatusLock</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- You are not authorized to update the opportunity stage. --></errorMessage>
         <name>Restrict_Opp_Stage_Update_By_Int_User</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- Test Approval Validation error. --></errorMessage>
+        <name>Validation_Test_Rule</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- Opportunity has been pushed, please update the push reason and push reason details. --></errorMessage>
         <name>core_decisionDate_move</name>
     </validationRules>
+    <validationRules>
+        <errorMessage><!-- &quot;test&quot; is a invalid status update --></errorMessage>
+        <name>core_statusupdatenot_test</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Clone_LWC_test --></label>
+        <name>Clone_LWC_test</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Core_Create_PSG_Quote --></label>
+        <name>Core_Create_PSG_Quote</name>
+    </webLinks>
     <webLinks>
         <label><!-- Core_Deal_Support --></label>
         <name>Core_Deal_Support</name>
@@ -11138,8 +11692,8 @@ This is triggered by Click on &quot;Submit for PW Approval&quot;. --></errorMess
         <name>Core_Sales_Support</name>
     </webLinks>
     <webLinks>
-        <label><!-- MassAssignToPartner --></label>
-        <name>ImpartnerPRM__MassAssignToPartner</name>
+        <label><!-- Ren_Opp --></label>
+        <name>Ren_Opp</name>
     </webLinks>
     <webLinks>
         <label>Vermögenswerte ändern</label>
@@ -11156,6 +11710,14 @@ This is triggered by Click on &quot;Submit for PW Approval&quot;. --></errorMess
     <webLinks>
         <label>Dokument einbeziehen</label>
         <name>SBQQ__Include_Document</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Email_Docs --></label>
+        <name>SDOC__Email_Docs</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- S_Docs --></label>
+        <name>SDOC__S_Docs</name>
     </webLinks>
     <webLinks>
         <label><!-- Jifflenow_Meetings --></label>

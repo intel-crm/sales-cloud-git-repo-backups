@@ -27,6 +27,12 @@
     <crossFilters>
         <operation>without</operation>
         <primaryTableColumn>OPPORTUNITY_ID</primaryTableColumn>
+        <relatedTable>Core_Opportunity_KPI__c</relatedTable>
+        <relatedTableJoinColumn>Core_Opp_KPI_Opportunity__c</relatedTableJoinColumn>
+    </crossFilters>
+    <crossFilters>
+        <operation>with</operation>
+        <primaryTableColumn>OPPORTUNITY_ID</primaryTableColumn>
         <relatedTable>OpportunityLineItem</relatedTable>
         <relatedTableJoinColumn>Opportunity</relatedTableJoinColumn>
     </crossFilters>
@@ -36,7 +42,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>EMEA Germany Sales Group,EMEA Named Account Sales Group</value>
+            <value>GMP Germany Sales Group</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Exclude_From_KPIs__c</column>
@@ -46,11 +52,11 @@
             <value>0</value>
         </criteriaItems>
         <criteriaItems>
-            <column>FULL_NAME</column>
+            <column>ROLLUP_DESCRIPTION</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Donal O Donnabhain,Christian Donitzky,Thomas Kellerer,Oliver Freundel</value>
+            <operator>equals</operator>
+            <value>EMP of Dieter Hoffend</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -83,15 +89,14 @@
         <value>1</value>
     </params>
     <reportType>Opportunity</reportType>
-    <roleHierarchyFilter>SMG</roleHierarchyFilter>
     <scope>organization</scope>
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2022-12-31</endDate>
+        <endDate>2020-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2022-01-01</startDate>
+        <startDate>2020-01-01</startDate>
     </timeFrameFilter>
 </Report>

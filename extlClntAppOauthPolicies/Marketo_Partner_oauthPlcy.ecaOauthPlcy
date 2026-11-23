@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ExtlClntAppOauthConfigurablePolicies xmlns="http://soap.sforce.com/2006/04/metadata">
-    <clientCredentialsFlowUser>partner_lead_user@intel.com.crm</clientCredentialsFlowUser>
     <externalClientApplication>Marketo_Partner</externalClientApplication>
     <ipRelaxationPolicyType>Enforce</ipRelaxationPolicyType>
-    <isClientCredentialsFlowEnabled>true</isClientCredentialsFlowEnabled>
+    <isClientCredentialsFlowEnabled>false</isClientCredentialsFlowEnabled>
     <isGuestCodeCredFlowEnabled>false</isGuestCodeCredFlowEnabled>
     <isTokenExchangeFlowEnabled>false</isTokenExchangeFlowEnabled>
     <label>Marketo_Partner_oauthPlcy</label>

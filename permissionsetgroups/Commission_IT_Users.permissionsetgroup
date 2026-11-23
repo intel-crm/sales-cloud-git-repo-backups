@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSetGroup xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Permission Set Group only for Commission IT Users</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Commission_IT_Users</label>
+    <permissionSets>CPT_Commission_Power_User</permissionSets>
+    <permissionSets>CPT_PS_Commission_Admin</permissionSets>
+    <status>Updated</status>
+</PermissionSetGroup>

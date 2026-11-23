@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>WisdomEye Qianxun(Guangzhou)Cloud Technology Co.,Ltd Partner User</description>
+    <description>Guangzhou Guangzhijia Techonology Co., Ltd. Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>WisdomEye Qianxun(Guangzhou)Cloud Technology Co.,Ltd Partner User</name>
+    <name>Guangzhou Guangzhijia Techonology Co., Ltd. Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>EMP_11380905_Yong_Zhou_Chen</parentRole>
+    <parentRole>GuangzhouGuangzhijiaTechonologyCoLtdPartnerManager</parentRole>
 </Role>

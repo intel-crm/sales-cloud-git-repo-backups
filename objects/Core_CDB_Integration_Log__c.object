@@ -219,7 +219,7 @@
     </fields>
     <fields>
         <fullName>Core_Record_Id__c</fullName>
-        <description>Stores the Record Id of the corresponding object that is associated with the CDB API callout. For MDF, this field stores a composite value of Claim Id and the Review Id, and for IPA, this field stores the Registration Id</description>
+        <description>Stores the Record Id of the corresponding object that is associated with the CDB API callout. For MDF, this field stores a composite value of Claim Id and the Review Id, and for IPA, this field stores the Registration Id, Executive Meeting Brief Id</description>
         <externalId>true</externalId>
         <label>Record Id</label>
         <length>255</length>

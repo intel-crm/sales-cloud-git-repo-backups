@@ -21,11 +21,11 @@ public without sharing class Pricing_QuoteDocumentTriggerHandler extends Trigger
         
         //Tender QuoteLetter
         if(quoteLineIds.size() > 0){
-            Pricing_EmailUtility.sendEmail(quoteLineIds, Label.Pricing_QuoteLetter_Template_Name);
+            Pricing_EmailUtility.sendEmail(quoteLineIds, TriggerHandler.isActive('Pricing_RecallEmailSwitch') ? 'Pricing_RecallQuoteLetterNotification' :Label.Pricing_QuoteLetter_Template_Name);
         }
         //FI QuoteLetter
         if(fiquoteLineIds.size() > 0){
-            Pricing_EmailUtility.sendEmail(fiquoteLineIds, Label.Pricing_FI_QuoteLetter_Template_Name);
+            Pricing_EmailUtility.sendEmail(fiquoteLineIds, TriggerHandler.isActive('Pricing_RecallEmailSwitch') ? 'Pricing_FI_RecallQuoteLetterEmailNotifi' :Label.Pricing_FI_QuoteLetter_Template_Name);
         }
     }
     

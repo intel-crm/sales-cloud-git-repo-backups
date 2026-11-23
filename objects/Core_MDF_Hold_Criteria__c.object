@@ -227,8 +227,8 @@
     <fields>
         <fullName>Core_MDF_Program_id__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
-        <description>The program, the rule should apply to.</description>
-        <inlineHelpText>The program, the rule should apply to.</inlineHelpText>
+        <description>The program, the rule should apply to. (CCF/DCF/SPCF)</description>
+        <inlineHelpText>The program, the rule should apply to. (CCF/DCF/SPCF)</inlineHelpText>
         <label>Program</label>
         <referenceTo>ChannelProgram</referenceTo>
         <relationshipLabel>Hold Criteria List</relationshipLabel>

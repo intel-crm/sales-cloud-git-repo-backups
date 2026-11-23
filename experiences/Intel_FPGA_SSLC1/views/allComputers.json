@@ -2,19 +2,89 @@
   "appPageId" : "6b36c665-0609-49d0-9746-033feed642b2",
   "componentName" : "siteforce:sldsOneColLayout",
   "dataProviders" : [ ],
-  "id" : "0e94097b-4512-4a1d-a8ab-4f6121e27253",
+  "id" : "9a4bc98d-1fac-4941-8d09-91a137ec9938",
   "label" : "All computers",
   "regions" : [ {
     "components" : [ {
       "componentAttributes" : { },
       "componentName" : "c:sales_NonEventFeedback",
-      "id" : "dcb95e1a-1a3d-4ef2-b869-8856c58fcf9b",
+      "id" : "403cd2a1-8507-4dad-9b1c-5a2b5c774fd4",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "3023d423-c883-4c82-8a96-abe0c6824cce",
+    "id" : "56578173-dc44-4e36-bfed-2e5074296c70",
     "regionName" : "header",
+    "type" : "region"
+  }, {
+    "id" : "788f9b61-7f8b-4f02-98bc-afad8a90c06c",
+    "regionName" : "mainFullWidth",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "enableInlineEdit" : false,
+        "filterName" : "All",
+        "layout" : "FULL",
+        "pageSize" : 25,
+        "scope" : "Sales_Host__c",
+        "showActionBar" : true,
+        "showChartsPanel" : true,
+        "showDisplay" : "showall",
+        "showFilterPanel" : true,
+        "showImageIcon" : true,
+        "showManualRefreshButton" : true,
+        "showObjectName" : true,
+        "showPinnedList" : false,
+        "showSearchBar" : true
+      },
+      "componentName" : "forceCommunity:objectHome",
+      "id" : "dfc745bb-d189-4866-a4bf-bd245e0b9abf",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "zh_cn" : "ed3c60bd-c1e6-4d83-bd8a-0d6ffe88e466"
+      },
+      "renditions" : [ {
+        "id" : "ed3c60bd-c1e6-4d83-bd8a-0d6ffe88e466",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "layout" : "FULL"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "11fb39f3-6044-402c-b7b2-2fd984a0b46f",
+    "regionName" : "main",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "All computers"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "d111d331-066b-46c2-90be-65035e608a90",
+      "renditionMap" : {
+        "zh_cn" : "0540f33e-eaff-410e-b830-b119c3f4e1a9"
+      },
+      "renditions" : [ {
+        "id" : "0540f33e-eaff-410e-b830-b119c3f4e1a9",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "customHeadTags" : "市场推广基金",
+            "description" : "市场推广基金",
+            "title" : "All computers"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "7e6e8317-afb3-4ec3-878f-a77b08e721ca",
+    "regionName" : "sfdcHiddenRegion",
     "type" : "region"
   }, {
     "components" : [ {
@@ -35,32 +105,17 @@
         "showSearchBar" : true
       },
       "componentName" : "forceCommunity:objectHome",
-      "id" : "2fb347cf-31b3-4bce-86cd-96f8e6d96d25",
+      "id" : "a54c767e-672e-438e-938d-24b1e4394915",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "79a7fd7c-d566-4d47-80f4-3cbddbc44363",
+    "id" : "abd987d0-303d-459c-a2c5-2f5af1937d0e",
     "regionName" : "content",
     "type" : "region"
   }, {
-    "id" : "41c01758-c236-47aa-b956-f832ecf4e775",
+    "id" : "47cf7814-e86b-477e-872a-4df61b36ffa5",
     "regionName" : "footer",
-    "type" : "region"
-  }, {
-    "components" : [ {
-      "componentAttributes" : {
-        "customHeadTags" : "",
-        "description" : "",
-        "title" : "All computers"
-      },
-      "componentName" : "forceCommunity:seoAssistant",
-      "id" : "434f305c-5c11-417e-9128-f78fa8c2ce5f",
-      "renditionMap" : { },
-      "type" : "component"
-    } ],
-    "id" : "089fff6e-4506-43a1-babf-495c54bf948b",
-    "regionName" : "sfdcHiddenRegion",
     "type" : "region"
   } ],
   "themeLayoutType" : "Inner",

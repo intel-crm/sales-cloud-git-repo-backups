@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>VCExcludedPhoneNumbers</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>VCExcludedPhoneNumbers</value>
+    </caseValues>
+    <fields>
+        <label><!-- CTI Dev Name --></label>
+        <name>voice_connector__VCCTIDevName__c</name>
+    </fields>
+    <fields>
+        <label><!-- Phone Number --></label>
+        <name>voice_connector__VCCTIExcludedPhoneNumber__c</name>
+    </fields>
+    <fields>
+        <label><!-- Unique External Id --></label>
+        <name>voice_connector__VCCTIUniqueExternalId__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

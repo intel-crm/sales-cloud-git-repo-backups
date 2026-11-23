@@ -27,16 +27,14 @@
     <!-- Optional Display Controls -->
     <aura:attribute name="displayAttributes" type="boolean" default="true" />
     <aura:attribute name="displayContactPartner" type="boolean" default="true" />
-    <!-- IPA2.0 + US TWC4497-1631 -->
-    <!-- <aura:attribute name="displayAllCompanyOffering" type="boolean" default="false" /> -->
+    <aura:attribute name="displayAllCompanyOffering" type="boolean" default="false" />
     <aura:attribute name="displayCardDescription" type="boolean" default="false" />
     <!-- Optional Card Attribute Count Limit -->
     <aura:attribute name="enableAttributeCountLimit" type="boolean" default="true" />
     <aura:attribute name="attributeCountLimit" type="Integer" default="2" />
     
     <aura:attribute name="editEnabled" type="boolean" default="false" />
-    <!-- IPA2.0 + US TWC4497-1631 -->
-    <!-- <aura:attribute name="allOfferingsUrl" type="string" /> -->
+    <aura:attribute name="allOfferingsUrl" type="string" />
     <aura:attribute name="orientation" type="String" default="stretchWidth" description="internal" />
     
     <aura:attribute name="renderAttribute" type="boolean" default="false" description="Internal Render Delay"/>
@@ -151,14 +149,13 @@
                                 <c:MarketplaceContactPartner label="{!$Label.c.PMP_Contact_Partner}" isLoggedIn="{!!v.dataObj.isGuest}" languagePreference="{!v.partner.leadLangPreference}" dataObj="{!v.dataObj}" />
                             </div>
                         </aura:if>
-                        <!-- IPA2.0 + US TWC4497-1631 -->
-                        <!-- <aura:if isTrue="{!v.displayAllCompanyOffering}">
+                        <aura:if isTrue="{!v.displayAllCompanyOffering}">
                             <div class="indent slds-p-bottom_x-large slds-size_12-of-12" >
                                 <c:IntelButton communityLink="{!v.allOfferingsUrl}" class="full-width">
                                     {!$Label.c.PMP_All_Company_Offerings}
                                 </c:IntelButton>
                             </div>
-                        </aura:if> -->
+                        </aura:if>
                     </div>
                     
                     
@@ -271,8 +268,7 @@
         <div class="{!join(' ', 'intelOnlyFooter')}">  <!--, v.displayType == 'list' ? 'slds-hide' : '')}"-->
             <span class="slds-hidden">
                 <!-- SPACE FOR EQUAL FOOTER w/ PRODUCT CARD -->
-                 <!-- PMP_Offer_Only_Visible_in_Intel -->
-                <!-- {!$Label.c.PMP_Offer_Only_Visible_in_Intel} -->
+                {!$Label.c.PMP_Offer_Only_Visible_in_Intel}
             </span>
         </div>
     </div>

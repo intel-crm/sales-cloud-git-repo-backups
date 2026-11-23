@@ -30,6 +30,9 @@
         <field>AMOUNT</field>
     </columns>
     <columns>
+        <field>Opportunity.Core_Approval_Status__c</field>
+    </columns>
+    <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>EXP_AMOUNT</field>
     </columns>
@@ -95,7 +98,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Nadine St Gemme,Akanksha Balani,Katey Robertson,Loubna Wortley,Amy Doescher</value>
+            <value>Nadine St Gemme,Akanksha Balani,Katey Robertson,Loubna Wortley</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Solution_Area__c</column>

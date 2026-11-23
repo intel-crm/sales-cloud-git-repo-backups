@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Test Contact Warning Message</masterLabel>
+    <promptVersions>
+        <actionButtonLabel>test</actionButtonLabel>
+        <actionButtonLink>https://google.com</actionButtonLink>
+        <body>&lt;p&gt;Warning Text &lt;/p&gt;</body>
+        <customApplication>standard__LightningSales</customApplication>
+        <delayDays>1</delayDays>
+        <dismissButtonLabel>Close</dismissButtonLabel>
+        <displayPosition>TopCenter</displayPosition>
+        <displayType>FloatingPanel</displayType>
+        <experience>Lightning</experience>
+        <isPublished>true</isPublished>
+        <masterLabel>Test Contact Warning Message</masterLabel>
+        <publishedDate>2024-01-23</publishedDate>
+        <shouldDisplayActionButton>true</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>true</shouldIgnoreGlobalDelay>
+        <startDate>2024-01-23</startDate>
+        <targetPageKey1>Contact</targetPageKey1>
+        <targetPageKey2>new</targetPageKey2>
+        <targetPageKey3>{&quot;navigationLocation&quot;:&quot;LIST_VIEW&quot;,&quot;nooverride&quot;:&quot;1&quot;,&quot;useRecordTypeCheck&quot;:&quot;1&quot;,&quot;onRecordTypeSelection&quot;:false}</targetPageKey3>
+        <targetPageType>standard__objectPage</targetPageType>
+        <targetRecordType>Contact.Core_Intel_Contact</targetRecordType>
+        <timesToDisplay>10</timesToDisplay>
+        <title>Warning</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+</Prompt>

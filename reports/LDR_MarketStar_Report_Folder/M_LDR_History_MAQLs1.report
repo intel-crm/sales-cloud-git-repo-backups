@@ -57,10 +57,6 @@
     <columns>
         <field>Lead.Core_Entrance_Date_SQL__c</field>
     </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Lead.SWS_Software_Lead__c</field>
-    </columns>
     <description>RT: History Claimed MGLs by M* LDRs</description>
     <filter>
         <criteriaItems>

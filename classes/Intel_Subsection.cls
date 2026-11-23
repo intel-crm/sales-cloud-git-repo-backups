@@ -10,15 +10,12 @@
 * 
 **************************************************************************************************************************************************************************/
 public class Intel_Subsection {
-    public static Boolean isWorking() {
-        return true;
-    }
-    //   public String headline { get; set; }
-    //   public String additionalText { get; set; }
-    //   public Boolean showHeadline { get; set; }
-    //   public Boolean notActive { get; set; }
-    //   public Boolean expandable { get; set; } // Not sure who added this variable . It is not given by DRACO
-    //   public List<Intel_Input> inputs { get; set; } { inputs = new List<Intel_Input>(); }
-    //   public Intel_Subsection(String h) { headline = h; }
-    // public Intel_Subsection(){}
+      public String headline { get; set; }
+      public String additionalText { get; set; }
+      public Boolean showHeadline { get; set; }
+      public Boolean notActive { get; set; }
+      public Boolean expandable { get; set; } // Not sure who added this variable . It is not given by DRACO
+      public List<Intel_Input> inputs { get; set; } { inputs = new List<Intel_Input>(); }
+      public Intel_Subsection(String h) { headline = h; }
+    public Intel_Subsection(){}
     }

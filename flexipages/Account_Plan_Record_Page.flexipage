@@ -45,7 +45,7 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>configurationData</name>
-                    <value>{&quot;appBuilderConfig&quot;:{&quot;optionSelected&quot;:3},&quot;globalTemplateUrl&quot;:&quot;https://intel.quip.com/m2pFAaR0MviE/Account-Plan-Accountr-Account-Name-Executive-Review&quot;,&quot;documentRecordFieldName&quot;:&quot;Quip_Account_Plan__c&quot;,&quot;linkSharingMode&quot;:&quot;edit&quot;}</value>
+                    <value>{&quot;appBuilderConfig&quot;:{&quot;optionSelected&quot;:3},&quot;globalTemplateUrl&quot;:&quot;https://intel-salescrm-dev.quip.com/k1GKAOvAB28O/Account-Plan-quip-doc&quot;,&quot;documentRecordFieldName&quot;:&quot;Quip_Account_Plan__c&quot;,&quot;linkSharingMode&quot;:&quot;edit&quot;}</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>height</name>
@@ -120,6 +120,10 @@
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
+                    <name>label</name>
+                    <value>Tabs</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
                     <name>tabs</name>
                     <value>Facet-2573cb9c-620c-4438-a85c-fa9c00b6e480</value>
                 </componentInstanceProperties>
@@ -141,37 +145,37 @@
                 <identifier>runtime_sales_activities_activityPanel</identifier>
             </componentInstance>
         </itemInstances>
-        <name>Facet-0c3a1ab8-0322-4e09-a9d9-125210e87938</name>
+        <name>Facet-a68d87e1-d7c6-4bd5-85a5-c6eb4a0ae971</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
-                    <name>active</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
                     <name>body</name>
-                    <value>Facet-0c3a1ab8-0322-4e09-a9d9-125210e87938</value>
+                    <value>Facet-a68d87e1-d7c6-4bd5-85a5-c6eb4a0ae971</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>title</name>
                     <value>Standard.Tab.activity</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
-                <identifier>flexipage_tab3</identifier>
+                <identifier>flexipage_tab4</identifier>
             </componentInstance>
         </itemInstances>
-        <name>Facet-6b093ecc-60a5-4995-a67e-99f3c277428e</name>
+        <name>Facet-5d0f9aa3-a910-4a9f-af25-7de76ee33e65</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
+                    <name>label</name>
+                    <value>Tabs</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
                     <name>tabs</name>
-                    <value>Facet-6b093ecc-60a5-4995-a67e-99f3c277428e</value>
+                    <value>Facet-5d0f9aa3-a910-4a9f-af25-7de76ee33e65</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:tabset</componentName>
                 <identifier>flexipage_tabset2</identifier>
@@ -193,13 +197,19 @@
         </itemInstances>
         <itemInstances>
             <componentInstance>
+                <componentName>accountHotButton</componentName>
+                <identifier>c_accountHotButton</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
                 <componentInstanceProperties>
                     <name>decorate</name>
                     <value>true</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>richTextValue</name>
-                    <value>&lt;p&gt;&lt;strong&gt;Templates:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://intel.my.salesforce.com/sfc/p/o0000000aRcf/a/3b000000ksFM/SLuD4vHZOtWj8a26Az.I5BKzVd0FGptSmOlkGnqo46E&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;SMG Account Review Template&lt;/a&gt;&lt;/p&gt;</value>
+                    <value>&lt;p&gt;&lt;strong&gt;Templates:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://intel.my.salesforce.com/sfc/p/2i0000000bck/a/2i0000005Jr5/EhbVVmiYcH83M3eR7HNiAoO8kuD5ZnVIIvUDy0.vQtk&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;SMG Account Review Template&lt;/a&gt;&lt;/p&gt;</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:richText</componentName>
                 <identifier>flexipage_richText</identifier>

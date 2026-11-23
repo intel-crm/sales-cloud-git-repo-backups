@@ -1,11 +1,13 @@
 public without sharing class Core_OppEmailAlertController {
+   
     public Id oppId {get;set;}   
     private List<Opportunity> oppDataToBeDisplayed = new List<Opportunity>();
     private List<OpportunityLineItem> oppProdDataToBeDisplayed = new List<OpportunityLineItem>();
     public Opportunity oppData; 
     public List<OpportunityLineItem> oppProdData; 
+      
     public String headerURL;
-    public String rejectionComment;    
+    public String rejectionComment;  
     
     public String getHeaderURL(){
         String domainName;
@@ -17,6 +19,7 @@ public without sharing class Core_OppEmailAlertController {
         domainName = domainName.split('=')[1].split(']')[0];
         orgId = UserInfo.getOrganizationId();
         headerURL = domainName + '/servlet/servlet.ImageServer?id=' + document.Id + '&oid=' + orgId;
+        system.debug('getHeaderURL');
         return headerURL;
     }
     
@@ -24,6 +27,7 @@ public without sharing class Core_OppEmailAlertController {
         String domainName;
         domainName =  String.valueOf(System.Url.getOrgDomainUrl());
         domainName = domainName.split('=')[1].split(']')[0];
+         system.debug('getDomainName');
         return domainName;
     }
     
@@ -32,6 +36,7 @@ public without sharing class Core_OppEmailAlertController {
         Network site = [Select id from Network where Name =: Label.Pricing_DealReg_Community_Name];
         dealRegExternalDomainName = Network.getLoginUrl(site.Id);
         dealRegExternalDomainName = dealRegExternalDomainName.removeEnd('/login');
+           system.debug('getDealRegExternalDomainName');
         return dealRegExternalDomainName;
     }
     
@@ -69,4 +74,6 @@ public without sharing class Core_OppEmailAlertController {
         }
         return oppProdData;
     }
+    
+   
 }

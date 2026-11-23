@@ -1,0 +1,67 @@
+<apex:page controller="SalesFeedbackControllerPDF">
+    <apex:form >
+        <apex:pageBlock title="Dynamic Rich Text Rows">
+            <apex:pageBlockButtons >
+                <!-- Button to Add a Row -->
+                <button type="button" onclick="addRow()">Add Row</button>
+
+                <!-- Button to Save Rows -->
+                <apex:commandButton value="Save" action="{!saveRows}" rerender="meetingTable" />
+
+                <!-- Button to Generate PDF -->
+                <apex:commandButton value="Generate PDF" action="{!generatePDF}" />
+            </apex:pageBlockButtons>
+
+            <!-- Dynamic Table Section -->
+            <apex:pageBlockSection >
+                <apex:outputPanel id="meetingTable">
+                    <table id="rowsTable" style="width: 100%; border-collapse: collapse;">
+                        <thead>
+                            <tr>
+                                <th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;">Intel’s Meeting Objectives</th>
+                                <th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;">Other Party’s Meeting Objectives</th>
+                                <th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;">Most Critical Messages</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <apex:repeat value="{!meetingRows}" var="row">
+                                <tr>
+                                    <td style="border: 1px solid #ddd; padding: 8px;">
+                                        <apex:inputTextarea value="{!row.intelObjective}" richText="true" style="width: 100%; height: 100px;" />
+                                    </td>
+                                    <td style="border: 1px solid #ddd; padding: 8px;">
+                                        <apex:inputTextarea value="{!row.otherPartyObjective}" richText="true" style="width: 100%; height: 100px;" />
+                                    </td>
+                                    <td style="border: 1px solid #ddd; padding: 8px;">
+                                        <apex:inputTextarea value="{!row.criticalMessage}" richText="true" style="width: 100%; height: 100px;" />
+                                    </td>
+                                </tr>
+                            </apex:repeat>
+                        </tbody>
+                    </table>
+                </apex:outputPanel>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+
+    <!-- JavaScript to dynamically add new rows -->
+    <script type="text/javascript">
+        function addRow() {
+            // Find the table body to append a new row
+            var table = document.getElementById("rowsTable").getElementsByTagName("tbody")[0];
+
+            // Create a new row
+            var newRow = table.insertRow(table.rows.length);
+
+            // Insert cells and add input fields for new row
+            for (var i = 0; i < 3; i++) {
+                var cell = newRow.insertCell(i);
+                var input = document.createElement("textarea");
+                input.style.width = "100%";
+                input.style.height = "100px";
+                input.setAttribute("richText", "true");
+                cell.appendChild(input);
+            }
+        }
+    </script>
+</apex:page>

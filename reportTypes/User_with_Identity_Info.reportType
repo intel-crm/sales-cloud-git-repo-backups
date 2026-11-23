@@ -467,6 +467,16 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Xvoyant__FunctionalGroupID__c</field>
+            <table>User</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Xvoyant__IsAtmUser__c</field>
+            <table>User</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_Manager__c</field>
             <table>User</table>
         </columns>
@@ -538,6 +548,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_IPA_One_Partner_Id__c</field>
+            <table>User</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CheckPreApprover__c</field>
             <table>User</table>
         </columns>
         <masterLabel>Users</masterLabel>

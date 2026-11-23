@@ -310,11 +310,13 @@ public class CRM_GeneratePDF_EMBController {
                 // Return mock blob for testing
                 pdfContent=Blob.valueOf('Test PDF Content');
             } else{
+                system.debug('recordId-->'+recordId);
                  PageReference pdfPage = Page.CRM_GeneratePDF_EMB;
             
                   pdfPage.getParameters().put('id', recordId);
                     
                  pdfContent = pdfPage.getContentAsPDF();
+                 system.debug('pdfContent-->'+pdfContent);
             }
              return EncodingUtil.base64Encode(pdfContent);
             

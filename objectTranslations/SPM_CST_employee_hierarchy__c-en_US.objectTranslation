@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>CST employee hierarchy</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>CST employee hierarchy</value>
+    </caseValues>
+    <fields>
+        <label><!-- Acc Manager Name --></label>
+        <name>Acc_Manager_Name__c</name>
+        <relationshipLabel><!-- CST employee hierarchy (Acc Manager Name) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Acc Manager WWID --></label>
+        <name>Acc_Manager_WWID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Owner WWID --></label>
+        <name>Account_Owner_WWID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Owner --></label>
+        <name>Account_Owner__c</name>
+        <relationshipLabel><!-- CST employee hierarchy (Account Owner) --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

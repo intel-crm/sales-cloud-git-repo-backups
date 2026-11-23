@@ -19,11 +19,15 @@
         <value xsi:type="xsd:string">Small Volume Quotes - Data Center Xeon® CPU</value>
     </values>
     <values>
+        <field>Pricing_Record_Type__c</field>
+        <value xsi:type="xsd:string">Small Volume Quotes - Data Center Xeon® CPU</value>
+    </values>
+    <values>
         <field>Pricing_SearchColumn_Field__c</field>
         <value xsi:type="xsd:string">AND Name Like &apos;{{searchString}}&apos;</value>
     </values>
     <values>
         <field>Pricing_Where_Clause__c</field>
-        <value xsi:type="xsd:string">WHERE ((IsActive = true AND Core_Product_Org__c = &apos;Sales&apos; AND Core_Product_Type__c IN (&apos;Processors&apos;, &apos;Partnered Products&apos;) AND Core_Sales_Visible_Flag__c = true AND Core_Hierarchy_ID__c = &apos;43&apos; AND (Core_Group_Code_Short_Name__c Like &apos;%DCAI%&apos; OR Core_Group_Code_Short_Name__c Like &apos;%CCG%&apos; OR Core_Group_Code_Short_Name__c Like &apos;%CPLG%&apos; OR Name Like &apos;%Intel® Xeon®%&apos;) AND Core_Product_Group_EPM_ID__c = null ) OR Name = &apos;Write In Product&apos;)</value>
+        <value xsi:type="xsd:string">WHERE ((IsActive = true AND Core_Product_Org__c = &apos;Sales&apos; AND Core_Product_Type__c IN (&apos;Processors&apos;, &apos;Partnered Products&apos;) AND Core_Sales_Visible_Flag__c = true AND Core_Hierarchy_ID__c = &apos;43&apos; AND (Core_Group_Code_Short_Name__c Like &apos;%DCG%&apos; OR Core_Group_Code_Short_Name__c Like &apos;%CCG%&apos; OR Core_Group_Code_Short_Name__c Like &apos;%CPLG%&apos; OR Name Like &apos;%Intel® Xeon®%&apos;) AND Core_Product_Group_EPM_ID__c = null ) OR Name = &apos;Write In Product&apos;)</value>
     </values>
 </CustomMetadata>

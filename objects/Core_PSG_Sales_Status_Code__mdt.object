@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Sales_Status_Code_Mapping__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Sales Status Code Mapping</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>PSG Sales Status Code</label>
+    <pluralLabel>PSG Sales Status Code</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

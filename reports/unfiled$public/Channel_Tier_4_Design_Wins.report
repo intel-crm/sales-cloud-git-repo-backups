@@ -13,9 +13,6 @@
         <field>OPPORTUNITY_NAME</field>
     </columns>
     <columns>
-        <field>OPPORTUNITY_ID</field>
-    </columns>
-    <columns>
         <field>Opportunity.Core_Opportunity_Type__c</field>
     </columns>
     <columns>
@@ -93,9 +90,6 @@
     <columns>
         <field>Opportunity.Core_Consumption_Market__c</field>
     </columns>
-    <columns>
-        <field>Opportunity.Core_Opportunity_Owner_Geo__c</field>
-    </columns>
     <filter>
         <criteriaItems>
             <column>OpportunityLineItem.Core_Product_Type__c</column>
@@ -123,7 +117,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>includes</operator>
-            <value>PSG-Tier 4</value>
+            <value>PSG-Tier 4,DCAI PSG-Tier 4</value>
         </criteriaItems>
         <criteriaItems>
             <column>FULL_NAME</column>
@@ -131,13 +125,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
             <value>Charlie Mark,Pete Schmitz,Fekete,Anna Spencer,Scott Blackburn,Claudine Conway,Dean Johnson,Colton Story,Richard Mason,Billo,Charles Mark,Martin Santucci,Dave Ciampa</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Opportunity_Type__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Design: Original,Design: Secondary,Design: Software-enable</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

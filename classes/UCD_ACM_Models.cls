@@ -5,7 +5,6 @@ public without sharing class UCD_ACM_Models {
         }
     }
 
-    /* Unused code Ankit 25/11/23
     public class ResponseAfterAccountInset{
         public Boolean IsSuccess {
             set; 
@@ -19,7 +18,7 @@ public without sharing class UCD_ACM_Models {
             set;
             get;
         }
-    }*/
+    }
 
     public class AccountModel {
         public String Name {
@@ -27,8 +26,7 @@ public without sharing class UCD_ACM_Models {
             get;
         }
         public String CustomerURL {
-            set;
-            get;
+            set; get;
         }
         public String CustomerAggregationTypeCode {
             get; set;
@@ -45,6 +43,7 @@ public without sharing class UCD_ACM_Models {
         public String RequesterWWID {
             get; set;
         }
+        
         public List<AccountAddress> Addresses {
             set; get;
         }
@@ -69,33 +68,6 @@ public without sharing class UCD_ACM_Models {
 		public String ParentBusinessPartyIdentifierReference {
             get;set;
         }
-    }
-    public class AccountRequestQueueModel {
-        public AccountResponseModel Account {
-            get;
-            set;
-        }
-        public string RequestId {
-            get;
-            set;
-        }
-        public string Status {
-            get;
-            set;
-        }
-        public string AccountId {
-            get;
-            set;
-        }
-        public string RejectionReason {
-            get;
-            set;
-        }
-        public string AccountReferenceSourceName {
-            get;
-            set;
-        }
-        
     }
 
 
@@ -200,7 +172,7 @@ public without sharing class UCD_ACM_Models {
     }
 
     public class MasteredBusinessPhysicalAddress {
-        /*public string CountryCode {
+       /* public string CountryCode {
             get;
             set;
         }*/
@@ -208,7 +180,7 @@ public without sharing class UCD_ACM_Models {
             get; set;
         }
         public MasteredBusinessPhysicalAddress(String countryName) {
-            //this.countryCode = countryCode;
+           // this.countryCode = countryCode;
             this.countryName = countryName;
         }
     }
@@ -277,6 +249,30 @@ public without sharing class UCD_ACM_Models {
         }
     }
 
+    public class AccountRequestQueueModel {
+        public AccountResponseModel Account {
+            get;
+            set;
+        }
+        public string RequestId {
+            get;
+            set;
+        }
+        public string Status {
+            get;
+            set;
+        }
+        public string RejectionReason {
+            get;
+            set;
+        }
+        public string AccountReferenceSourceName {
+            get;
+            set;
+        }
+        
+    }
+
     public class AccountResponseModel {
         public string AccountId {
             get;
@@ -294,9 +290,7 @@ public without sharing class UCD_ACM_Models {
         public string MasteredSimplifiedAccountName {
             get; set;
         }
-        // public string DataSimplifiedAccountName {
-        //     get; set;
-        // }
+
         public String RecordType {
             get; set;
         }
@@ -304,24 +298,6 @@ public without sharing class UCD_ACM_Models {
             get; set;
         }
         public string RequestedAccountRejectionNotes {
-            get; set;
-        }
-        public string GlobalCustomerBPId {
-            get; set;
-        }
-        public string GlobalCustomerSimplifiedName {
-            get; set;
-        }
-        public string IntermediateCustomer1BPId {
-            get; set;
-        }
-        public string IntermediateCustomer1SimplifiedName {
-            get; set;
-        }
-        public string IntermediateCustomer2BPId {
-            get; set;
-        }
-        public string IntermediateCustomer2SimplifiedName {
             get; set;
         }
         public AccountAddress PrimaryAddress {
@@ -350,7 +326,7 @@ public without sharing class UCD_ACM_Models {
 
         // This method used to return query to get parent account details.
         public String getParentAccountQueryForEvent() {
-            return 'Id,Name,RecordTypeId,Core_Business_Party_Id__c, Core_Compliance_Watch_List_Type__c, Core_Data_Simplified_Account_Nm__c,Core_Parent_Data_Simplified_Account_Nm__c,ParentId,Parent.Core_Customer_Aggregation_Type__c,Core_Customer_Aggregation_Type__c,Core_Unified_Global_Customer_Name__c,Core_Unified_Global_Customer_BP_Id__c,Core_Account_Reference_Source_Name__c,Core_Unified_Intermediate_Customer_BP_Id__c,Core_Unified_Intermediate_Customer_Name__c,Core_Unified_Intermdt_Customer_2_BP_Id__c,Core_Unified_Intermdt_Customer_2_Name__c,Core_Survivor_Account_Id__c,Core_Account_Request_Rejection_Reason__c,Core_Account_Request_Rejection_Notes__c,BillingCountry,BillingCountryCode,ShippingCountry,ShippingCountryCode,Core_Data_Country_Nm__c,Core_Parent_Business_Party_Id__c';        
+            return 'Id,Name,RecordTypeId,Core_Business_Party_Id__c,Core_Data_Simplified_Account_Nm__c,ParentId,Core_Customer_Aggregation_Type__c,Core_Unified_Global_Customer__c,Core_Unified_Intermediate_Customer__c,Core_Unified_Intermediate_Customer_2__c,Core_Unified_Global_Customer__r.Core_Business_Party_Id__c,Core_Unified_Global_Customer__r.Core_Data_Simplified_Account_Nm__c,Core_Unified_Intermediate_Customer__r.Core_Business_Party_Id__c,Core_Unified_Intermediate_Customer__r.Core_Data_Simplified_Account_Nm__c,Core_Unified_Global_Customer_Name__c,Core_Unified_Global_Customer_BP_Id__c,Core_Account_Reference_Source_Name__c,Core_Unified_Intermediate_Customer_BP_Id__c,Core_Unified_Intermediate_Customer_Name__c,Core_Unified_Intermdt_Customer_2_BP_Id__c,Core_Unified_Intermdt_Customer_2_Name__c';        
         }
 
         // This method used to return query to get customerProcessEngagement details.
@@ -374,40 +350,26 @@ public without sharing class UCD_ACM_Models {
             AccountAddress address = new AccountAddress();
             AccountResponseModel responseModel = new AccountResponseModel();
             String objectName = 'Account';
-            List<UCD_ACM_Models.ComplianceWatchList> complianceWatchLists = new List<UCD_ACM_Models.ComplianceWatchList>();
-            if(account.Core_Compliance_Watch_List_Type__c!=null){
-                List<String> complianceWatchListValues=account.Core_Compliance_Watch_List_Type__c.split(';');
-                for(String cwlValue : complianceWatchListValues){
-                    complianceWatchLists.add(new UCD_ACM_Models.ComplianceWatchList(cwlValue,UCD_ACM_Utils.getPicklistLabel('Account','Core_Compliance_Watch_List_Type__c',cwlValue)));
-                }
-            }
-            responseModel.ComplianceWatchList=complianceWatchLists;
             responseModel.accountId = account.Id;
-            responseModel.accountName = String.isNotBlank(account.Name)?account.Name:'';
-            responseModel.SurvivorAccountId = String.isNotBlank(account.Core_Survivor_Account_Id__c) ? account.Core_Survivor_Account_Id__c : null;
-            responseModel.businessPartyIdentifier = String.isNotBlank(account.Core_Business_Party_Id__c) ? account.Core_Business_Party_Id__c:'';
-            responseModel.masteredSimplifiedAccountName = String.isNotBlank(account.Core_Data_Simplified_Account_Nm__c) ? account.Core_Data_Simplified_Account_Nm__c : '';
-            //responseModel.dataSimplifiedAccountName = account.Core_Data_Simplified_Account_Nm__c != null ? account.Core_Data_Simplified_Account_Nm__c : '';
+            responseModel.accountName = account.Name != null?account.Name:'';
+            responseModel.SurvivorAccountId = account.Core_Survivor_Account_Id__c != null ? account.Core_Survivor_Account_Id__c : null;
+            responseModel.businessPartyIdentifier = account.Core_Business_Party_Id__c != null?account.Core_Business_Party_Id__c:'';
+            responseModel.masteredSimplifiedAccountName = account.Core_Data_Simplified_Account_Nm__c != null ? account.Core_Data_Simplified_Account_Nm__c : '';
             responseModel.recordType = Schema.getGlobalDescribe().get(objectName).getDescribe().getRecordTypeInfosById().get(account.RecordTypeId).getName();
-            responseModel.requestedAccountRejectionReason = String.isNotBlank(account.Core_Account_Request_Rejection_Reason__c) ? UCD_ACM_Utils.getPicklistLabel(objectName,'Core_Account_Request_Rejection_Reason__c',account.Core_Account_Request_Rejection_Reason__c) : '';
-            responseModel.requestedAccountRejectionNotes = String.isNotBlank(account.Core_Account_Request_Rejection_Notes__c) ? account.Core_Account_Request_Rejection_Notes__c : '';           
-            responseModel.GlobalCustomerBPId = String.isNotBlank(account.Core_Unified_Global_Customer_BP_Id__c) ? account.Core_Unified_Global_Customer_BP_Id__c : '';
-            responseModel.GlobalCustomerSimplifiedName = String.isNotBlank(account.Core_Unified_Global_Customer_Name__c) ? account.Core_Unified_Global_Customer_Name__c : '';
-            responseModel.IntermediateCustomer1BPId = String.isNotBlank(account.Core_Unified_Intermediate_Customer_BP_Id__c) ? account.Core_Unified_Intermediate_Customer_BP_Id__c : '';
-            responseModel.IntermediateCustomer1SimplifiedName = String.isNotBlank(account.Core_Unified_Intermediate_Customer_Name__c) ? account.Core_Unified_Intermediate_Customer_Name__c : '';
-            responseModel.IntermediateCustomer2BPId = String.isNotBlank(account.Core_Unified_Intermdt_Customer_2_BP_Id__c) ? account.Core_Unified_Intermdt_Customer_2_BP_Id__c : '';
-            responseModel.IntermediateCustomer2SimplifiedName = String.isNotBlank(account.Core_Unified_Intermdt_Customer_2_Name__c) ? account.Core_Unified_Intermdt_Customer_2_Name__c : '';        
-            responseModel.primaryAddress = String.isNotBlank(account.BillingCountry) ? address.mapAddressToAccountAddress(account,'Billing') : null;
-            responseModel.secondaryAddress = String.isNotBlank(account.ShippingCountry) ? address.mapAddressToAccountAddress(account,'Shipping') : null;
-            responseModel.masteredBusinessPhysicalAddress = new UCD_ACM_Models.masteredBusinessPhysicalAddress(String.isNotBlank(account.Core_Data_Country_Nm__c) ?account.Core_Data_Country_Nm__c:'');
-            responseModel.customerAggregationType = new UCD_ACM_Models.customerAggregationType(String.isNotBlank(account.Core_Customer_Aggregation_Type__c) ? account.Core_Customer_Aggregation_Type__c:'',UCD_ACM_Utils.getPicklistLabel(objectName,'Core_Customer_Aggregation_Type__c',String.isNotBlank(account.Core_Customer_Aggregation_Type__c) ? account.Core_Customer_Aggregation_Type__c:''));
+            responseModel.requestedAccountRejectionReason = account.Core_Account_Request_Rejection_Reason__c != null ? UCD_ACM_Utils.getPicklistLabel(objectName,'Core_Account_Request_Rejection_Reason__c',account.Core_Account_Request_Rejection_Reason__c) : '';
+            responseModel.requestedAccountRejectionNotes = account.Core_Account_Request_Rejection_Notes__c != null ? account.Core_Account_Request_Rejection_Notes__c : '';
+            responseModel.primaryAddress = account.BillingCountry != null ? address.mapAddressToAccountAddress(account,'Billing') : null;
+            responseModel.secondaryAddress = account.ShippingCountry != null ? address.mapAddressToAccountAddress(account,'Shipping') : null;
+            responseModel.masteredBusinessPhysicalAddress = new UCD_ACM_Models.masteredBusinessPhysicalAddress(account.Core_Data_Country_Nm__c != null?account.Core_Data_Country_Nm__c:'');
+            responseModel.customerAggregationType = new UCD_ACM_Models.customerAggregationType(account.Core_Customer_Aggregation_Type__c != null?account.Core_Customer_Aggregation_Type__c:'',UCD_ACM_Utils.getPicklistLabel(objectName,'Core_Customer_Aggregation_Type__c',account.Core_Customer_Aggregation_Type__c != null?account.Core_Customer_Aggregation_Type__c:''));
+
             // Create Parent Account Refrence
             if (parentAccountById != null && parentAccountById.containsKey(account.parentId)) {
                 AccountResponseModel responseModelForParent = new AccountResponseModel();
                 responseModelForParent.accountId = account.parentId;
-                responseModelForParent.accountName = String.isNotBlank(parentAccountById.get(account.parentId).Name) ? parentAccountById.get(account.parentId).Name:'';
-                responseModelForParent.businessPartyIdentifier = String.isNotBlank(parentAccountById.get(account.parentId).Core_Business_Party_Id__c) ? parentAccountById.get(account.parentId).Core_Business_Party_Id__c:'';
-                responseModelForParent.MasteredSimplifiedAccountName = String.isNotBlank(parentAccountById.get(account.parentId).Core_Data_Simplified_Account_Nm__c) ? parentAccountById.get(account.parentId).Core_Data_Simplified_Account_Nm__c:'';
+                responseModelForParent.accountName = parentAccountById.get(account.parentId).Name != null?parentAccountById.get(account.parentId).Name:'';
+                responseModelForParent.businessPartyIdentifier = parentAccountById.get(account.parentId).Core_Business_Party_Id__c != null?parentAccountById.get(account.parentId).Core_Business_Party_Id__c:'';
+                responseModelForParent.MasteredSimplifiedAccountName = parentAccountById.get(account.parentId).Core_Data_Simplified_Account_Nm__c != null?parentAccountById.get(account.parentId).Core_Data_Simplified_Account_Nm__c:'';
                 responseModel.parentAccount = responseModelForParent;
             }
             else if(String.isNotBlank(account.Core_Parent_Business_Party_Id__c ) && (String.isNotBlank(account.Core_Parent_Data_Simplified_Account_Nm__c))) {
@@ -421,6 +383,10 @@ public without sharing class UCD_ACM_Models {
 
             return responseModel;
         }
+
+
+
+
         /*
          * description : Map BusinessTypes Records To AccountResponseModel
          * params : AccountResponseModel , List<Business_Types__c>
@@ -437,7 +403,25 @@ public without sharing class UCD_ACM_Models {
                 return mappedAccountResponse;
             }
             return mappedAccountResponse;
-        } 
+        }
+        /*
+         * description : Map ComplianceWatchList Records To AccountResponseModel
+         * params : AccountResponseModel , List<Core_Account_Compliance_Watch_List__c>
+         * return : AccountResponseModel
+         * author and date : harshalx.sunil.gosavi@intel.com, 22nd August 2021
+         */
+        public AccountResponseModel mapComplianceWatchListToModel(UCD_ACM_Models.AccountResponseModel mappedAccountResponse, List<Core_Account_Compliance_Watch_List__c> complianceWatchListFromService) {
+            List<UCD_ACM_Models.ComplianceWatchList> complianceWatchLists = new List<UCD_ACM_Models.ComplianceWatchList>();
+            For(Core_Account_Compliance_Watch_List__c complianceWatch: complianceWatchListFromService) {
+                complianceWatchLists.add(new UCD_ACM_Models.ComplianceWatchList(complianceWatch.Core_Type__c,UCD_ACM_Utils.getPicklistLabel('Core_Account_Compliance_Watch_List__c','Core_Type__c',complianceWatch.Core_Type__c)));
+            }
+            if (complianceWatchLists.size() > 0) {
+                mappedAccountResponse.ComplianceWatchList = complianceWatchLists;
+                return mappedAccountResponse;
+            }
+            return mappedAccountResponse;
+        }
+        
     }
 
      /***************************************

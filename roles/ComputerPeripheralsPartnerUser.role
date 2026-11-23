@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>KMG Peripherals Partner User</description>
+    <description>Computer &amp; Peripherals Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>KMG Peripherals Partner User</name>
+    <name>Computer &amp; Peripherals Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>ComputerPeripheralsPartnerManager</parentRole>
 </Role>

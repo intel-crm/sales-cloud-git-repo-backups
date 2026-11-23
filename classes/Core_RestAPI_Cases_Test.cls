@@ -42,9 +42,12 @@
         Asset assetWithCategories = allAssets[0];
         Asset assetWithNoCategories = allAssets[1];
         
-       
+        System.debug(' Core_RestAPI_Cases_Test \n Account '+allAccounts+'\n IPS Contacts '+allIPSContacts +'\n Non Contact '+nonIpsContact + ' \n All CommUsers '+allCommUsers);
+        
         commUser1 = allCommUsers[0];
         commUser2 = allCommUsers[1];
+        System.debug(' \n allCommUsers  '+allCommUsers);
+        System.debug(' \n allAssets  '+Json.serialize(allAssets));
         
         
         System.runAs(adminUser){
@@ -83,29 +86,26 @@
                 c.OwnerId = commUser2.Id;
                 c.AccountId = allAccounts[0].id;
             }
-             //Added by Sowmya -Start - 10/10/2024 - TWC745-6800 - Fix test coverage for all failed classes 
-    		for(Integer i = 0;i<5;i++){
-                Case c = caseList[i];
-                c.OwnerId = adminUser.Id;
-                c.ContactId = commUser1.ContactId;
-                c.Status = 'New';
-                c.AssetId = assetWithCategories.Id;
-                c.Core_IPS_Customer_Visible__c = True;
-            }
- 	    //Sowmya -End - 10/10/2024 - TWC745-6800 - Fix test coverage for all failed classes 
-    
             insert caseList;
             
             
             
             //Insert environment variables for the case
             List<Core_IPS_Environment_Details__c> envDet = Core_RestAPI_TestUtilities.getEnvironmentDetailResponses(5);
+            System.debug(' envDet '+envDet);
             for(Integer i=0 ;i< envDet.size();i++){
                 Core_IPS_Environment_Details__c env = envDet[i];
                 env.Core_Case__c = caseList[i+5].id;
-                }
+                System.debug('+++++++ ENV Details '+env.Core_Case__c);
+            }
             insert envDet;
-           }
+            //TODO remove the below for loop
+            for(Case c: [Select Id, Account.Name, Contact.Name, Owner.Name, Core_IPSPortal_Check__c from Case]){
+                System.debug('+++++++ Account'+c.Account.Name+'>> Contact : '+c.contact.Name+'>> Owner '+c.Owner.Name+'>> Core_IPSPortal_Check__c '+c.Core_IPSPortal_Check__c);
+            }
+            
+            System.debug('\n +++++++ ENV Details '+[Select Id, Name from Core_IPS_Environment_Details__c]);
+        }
         
         //Insert master categories Data 
         List<Core_IPS_Master_Issue_Category__c> masterSubCatList = new List<Core_IPS_Master_Issue_Category__c>();
@@ -173,9 +173,8 @@
             if(includeFilter == false)
                 request.requestUri ='/v1.0/cases/'; 
             else 
-			request.requestUri ='/v1.0/cases?v=mycases'; 
+                request.requestUri ='/v1.0/cases?v=mycases'; 
             request.resourcePath ='/services/apexrest/v1.0/cases/';
-     
         }/*else if(v2_0.equals(version)){
             if(includeFilter == false)
                 request.requestUri ='/v2.0/cases/'; 
@@ -183,6 +182,7 @@
                 request.requestUri ='/v2.0/cases?v=mycases'; 
             request.resourcePath ='/services/apexrest/v2.0/cases/';
         }*/
+        
         return request;
     }
     
@@ -200,13 +200,12 @@
         }*/
         return request;
     }
-
+    
     private static void doGet_getCases_Asserts_Positive(Core_RestAPI_Response apiResponse, RestResponse objResponse, String strVersion) {
         //Consolidate asserts so that each test method does not have to copy/paste the logic
         
         //expand if statement when multiple versions share the same asserts
         If(strVersion == v1_0) {  
-            
             System.assertEquals('200', apiResponse.Code, ' RestAPIResponse Success code 200');
             System.assertNotEquals(null, apiResponse);
             System.assertEquals(true, apiResponse.isSuccess);
@@ -214,7 +213,8 @@
             System.assertEquals(null, apiResponse.errorContent);
             
             RestRequest request = RestContext.request;
-            System.assertEquals(5, apiResponse.successContent.size(), 'All Community user cases retrieved ');
+            System.debug(apiResponse.successContent.size()+' ++++++++request++++++++ '+request.requestURI);
+            System.assertEquals(10, apiResponse.successContent.size(), 'All Community user cases retrieved ');
             
         }/*else If(strVersion == v2_0) {  
             System.assertEquals('200', apiResponse.Code, ' RestAPIResponse Success code 200');
@@ -224,6 +224,7 @@
             System.assertEquals(null, apiResponse.errorContent);
             
             RestRequest request = RestContext.request;
+            System.debug(apiResponse.successContent.size()+' ++++++++request++++++++ '+request.requestURI);
             System.assertEquals(10, apiResponse.successContent.size(), 'All Community user cases retrieved ');
             
         }*/
@@ -298,15 +299,19 @@
     @isTest public static void test_doGet_getCases_v1_0(){
         RestContext.request = doGet_getCases_VersionRequest(v1_0, false);
         commUser1  = [Select Name FROM User WHERE Name = 'CommUser0 RestApiUnitTest0'];
+        System.debug(' \n\n Running test method test_doGet_getCases_v1_0 as  '+commUser1);  
         System.runAs(commUser1){
             Core_RestAPI_Response apiResponse = Core_RestAPI_CasesV1.doGet();
+            System.debug(' test_doGet_getCases_v1_0 positive >>>> '+apiResponse.successContent); 
             doGet_getCases_Asserts_Positive(apiResponse,null ,v1_0);
         }
         
         //Negative testing User has no casess and verify the user never gets other contacts cases from his account
         commUser3_NoCases  = [Select Name FROM User WHERE Name = 'CommUser2 RestApiUnitTest0'];
+        System.debug(' Running test as  '+commUser1);  
         System.runAs(commUser3_NoCases){
             Core_RestAPI_Response apiResponse = Core_RestAPI_CasesV1.doGet();
+            System.debug(' test_doGet_getCases_v1_0 Negative>>>> '+apiResponse.successContent); 
             doGet_getCases_Asserts_Negative(apiResponse, null , v1_0);
         } 
     }
@@ -317,10 +322,14 @@
         RestContext.request = doGet_getCases_VersionRequest(v1_0, true);
         commUser1  = [Select Name FROM User WHERE Name = 'CommUser0 RestApiUnitTest0'];
         
-       RestContext.request.requestUri ='/v1.0/cases?v=mycases'; 
+        System.debug(' \n\n Running test method test_doGet_getCases_WithFilter_v1_0 as  '+commUser1);  
+        System.debug(' Test method Request URI Before '+RestContext.request.requestUri);
+        RestContext.request.requestUri ='/v1.0/cases?v=mycases'; 
+        System.debug(' Test method Request URI After  '+RestContext.request.requestUri);
         Map<String,String> params1 = new Map<String,String>();
         System.runAs(commUser1){
             Core_RestAPI_Response apiResponse = Core_RestAPI_CasesV1.doGet();
+            System.debug(' test_doGet_getCases_WithFilter_v1_0 >>>> '+apiResponse.successContent); 
             doGet_getCases_Asserts_Positive(apiResponse, null ,v1_0);
         } 
         
@@ -332,9 +341,11 @@
     @isTest public static void test_doGet_getCases_v2_0(){
         RestContext.request = doGet_getCases_VersionRequest(v2_0, false);
         commUser1  = [Select Name FROM User WHERE Name = 'CommUser0 RestApiUnitTest0'];
+        System.debug(' \n\n Running test method test_doGet_getCases_v2_0 as  '+commUser1);  
         System.runAs(commUser1){
             Core_RestAPI_Response apiResponse = Core_RestAPI_CasesV2.doGet();
-           doGet_getCases_Asserts_Positive(apiResponse,null ,v2_0);
+            System.debug(' test_doGet_getCases_v2_0 >>>> '+apiResponse.successContent); 
+            doGet_getCases_Asserts_Positive(apiResponse,null ,v2_0);
         }  
     } */
     
@@ -361,15 +372,13 @@
         caseDetail.envDetails = null;
         System.runAs(commUser1){
             Core_RestAPI_Response apiResponse = Core_RestAPI_CasesV1.doPost(caseDetail);
-           doPost_CreateCase_Asserts_Negative(apiResponse, v1_0);
+            system.debug(' doPost_CreateCases_VersionRequest apiResponse '+apiResponse);
+            doPost_CreateCase_Asserts_Negative(apiResponse, v1_0);
         }
         
     }
     
     @isTest public static void test_doPost_CreateCase_V1_0_Positive(){
-        
-
-        
         RestContext.request = doPost_CreateCases_VersionRequest(v1_0);
         commUser1  = [Select Name FROM User WHERE Name = 'CommUser0 RestApiUnitTest0'];
         List<Asset> allAssets = [Select Name, Account.Name, Core_Supported_Product__c, Core_Supported_Product__r.Name FROM Asset ORDER BY NAME ];
@@ -389,13 +398,12 @@
         caseDetail.caseCategoryId = catgName.Name;
         caseDetail.subCategoryId = subCatgName.Name;
         caseDetail.envDetails = null;
-      	System.runAs(commUser1){
+        System.runAs(commUser1){
             Core_RestAPI_Response apiResponse = Core_RestAPI_CasesV1.doPost(caseDetail);
-            
+            system.debug(' test_doPost_CreateCase_V1_0_Positive apiResponse '+apiResponse);
             doPost_CreateCase_Asserts_Positive(apiResponse, v1_0);
         }
         
     }
-    
     
 }

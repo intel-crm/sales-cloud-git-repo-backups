@@ -10,9 +10,6 @@
         <field>SBQQ__Quote__c$core_cpq_account_tier__c</field>
     </columns>
     <columns>
-        <field>SBQQ__Quote__c.SBQQ__LineItems__r$core_cpq_product_family_txt__c</field>
-    </columns>
-    <columns>
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$Core_OPN__c</field>
     </columns>
     <columns>
@@ -38,10 +35,10 @@
         <field>SBQQ__Quote__c$Name</field>
     </columns>
     <columns>
-        <field>SBQQ__Quote__c$core_cpq_quote_type_nm__c</field>
+        <field>SBQQ__Quote__c.SBQQ__LineItems__r$core_cpq_quote_line_type_txt__c</field>
     </columns>
     <columns>
-        <field>SBQQ__Quote__c.SBQQ__LineItems__r$core_cpq_quote_line_type_txt__c</field>
+        <field>SBQQ__Quote__c.SBQQ__LineItems__r$core_cpq_PRID__c</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
@@ -65,9 +62,6 @@
     </columns>
     <columns>
         <field>SBQQ__Quote__c$core_cpq_quote_owner_name__c</field>
-    </columns>
-    <columns>
-        <field>SBQQ__Quote__c$SBQQ__Status__c</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
@@ -153,16 +147,23 @@
     </columns>
     <filter>
         <criteriaItems>
+            <column>SBQQ__Quote__c$core_cpq_active_cb__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>SBQQ__Quote__c$Pricing_Quote_Program_Nm__c</column>
             <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
+            <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>PSG</value>
         </criteriaItems>
         <criteriaItems>
             <column>SBQQ__Quote__c$core_cpq_acc_program_match__c</column>
             <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
+            <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>0</value>
         </criteriaItems>
@@ -172,13 +173,6 @@
             <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
             <value>1</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>SBQQ__Quote__c$SBQQ__Status__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>equals</operator>
-            <value>Approved</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

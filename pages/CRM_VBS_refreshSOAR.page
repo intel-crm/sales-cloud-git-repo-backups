@@ -1,0 +1,6 @@
+<!-- RefreshPage.page -->
+<apex:page standardController="CRM_VBS_SOAR__c">
+    <script>
+        window.location.reload(true);
+    </script>
+</apex:page>

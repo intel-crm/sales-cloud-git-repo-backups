@@ -4,35 +4,23 @@
     <encodingKey>UTF-8</encodingKey>
     <name>SCRRENGENRLREV_DEU</name>
     <style>none</style>
-    <subject>Bestätigen Sie Ihre E-Mail-Adresse.</subject>
-    <textOnly>Überprüfen Sie Ihre E-Mail-Adresse und richten Sie Ihr Passwort ein
+    <subject>Ihre Bewerbung für das Intel Partnerprogramm</subject>
+    <textOnly>Verify your Email to Activate your Account
+
+Dear {!PRM_Registration_Request__c.PRM_First_Name__c},
+
+Thanks for joining Intel’s Partner program. Please click below to activate your account.
+
+Activate Your Account
+
+Can&apos;t access the link above?
+https://www.intel...
 
 
-
-{!PRM_Registration_Request__c.PRM_First_Name__c},
-
-Vielen Dank, dass Sie mit der Registrierung für die Intel® Partner Alliance begonnen haben.
-Bitte klicken Sie auf den folgenden Link, um fortzufahren
-
-
-Überprüfen Sie Ihre E-Mail-Adresse und richten Sie Ihr Passwort ein
-
-
-Bitte beachten Sie, dass dieser Link in 24 Stunden inaktiv wirdUm den nächsten Schritt abzuschließen und Ihr Passwort einzurichten, verwenden Sie bitte den unten aufgeführten Benutzernamen
-Benutzername: {!PRM_Registration_Request__c.PRM_Email_ID__c}
-
-Können Sie auf den obigen Link nicht zugreifen?
-https://signinpp.intel.com/PasswordUpdate?var={!PRM_Registration_Request__c.PRM_EV_Token__c}&amp;culture=de&amp;target=https://wcm-ciqa.intel.com/content/www/de/de/secure/partner/forms/ipa-account-search.html
-
-
-Wir freuen uns über Ihre Teilnahme am Programm!
-Mit freundlichen Grüßen
-Ihr Intel® Partner Alliance Team
-
-Diese Nachricht wurde als wichtige Geschäftskommunikation bezüglich Ihrer aktuellen Beziehung zur Intel® Partner Alliance an Sie gesendet.
-© {!$Label.PRM_CurrentYear} Intel Corporation
-Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.www.intel.com
-Datenschutz&amp;verbar;Cookies</textOnly>
+Copyright © 2016 Intel Corporation. All rights reserved. Intel, the Intel logo are trademarks of Intel Corporation in the U.S. and/or other countries.
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. Intel.com
+You may unsubscribe at any time by updating your profile settings at: {!$Label.PRM_MyIntelProfileURL}
+Privacy | Cookies | *Trademarks</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

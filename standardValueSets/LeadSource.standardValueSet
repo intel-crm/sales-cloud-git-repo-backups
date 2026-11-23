@@ -92,6 +92,26 @@
         <label>Sales AI</label>
     </standardValue>
     <standardValue>
+        <fullName>Web</fullName>
+        <default>false</default>
+        <label>Web</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Portal</fullName>
+        <default>false</default>
+        <label>Portal</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Conference</fullName>
+        <default>false</default>
+        <label>Conference</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Training</fullName>
+        <default>false</default>
+        <label>Training</label>
+    </standardValue>
+    <standardValue>
         <fullName>IDC Credit Request</fullName>
         <default>false</default>
         <label>IDC Credit Request</label>
@@ -100,10 +120,5 @@
         <fullName>LinkedIn Sales Navigator</fullName>
         <default>false</default>
         <label>LinkedIn Sales Navigator</label>
-    </standardValue>
-    <standardValue>
-        <fullName>Salesforce</fullName>
-        <default>false</default>
-        <label>Salesforce</label>
     </standardValue>
 </StandardValueSet>

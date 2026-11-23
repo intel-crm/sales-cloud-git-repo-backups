@@ -12,7 +12,11 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Required</behavior>
-                <field>UsageType</field>
+                <field>ApiName</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>CreatedById</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -21,8 +25,8 @@
                 <field>OwnerId</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>CreatedById</field>
+                <behavior>Required</behavior>
+                <field>UsageType</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>

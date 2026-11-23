@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Core_Design_Registration__c$Name</field>
+    </columns>
+    <columns>
+        <field>Core_Design_Registration__c$Core_Design_Registration_Status_Nm__c</field>
+    </columns>
+    <columns>
+        <field>Core_Design_Registration__c.Design_Registration_Line_Items__r$Name</field>
+    </columns>
+    <columns>
+        <field>Core_Design_Registration__c.Design_Registration_Line_Items__r$Core_Design_Product_Status_Nm__c</field>
+    </columns>
+    <columns>
+        <field>Core_Design_Registration__c.Design_Registration_Line_Items__r.DDR_Product_Mappings__r$PCC_MM_ID__c</field>
+    </columns>
+    <columns>
+        <field>Core_Design_Registration__c.Design_Registration_Line_Items__r.DDR_Product_Mappings__r$PCC_Ordering_Cd__c</field>
+    </columns>
+    <format>Tabular</format>
+    <name>DR with DRP and DRP Mappings</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Design_Registration_with_DRP_and_DRP_Mapping__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Core_Design_Registration__c$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

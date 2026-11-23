@@ -24,7 +24,7 @@ Workflow rule description: Clears the Loss/Cancel Details text field if the Oppo
         <name>mainUpdate</name>
         <label>mainUpdate</label>
         <locationX>176</locationX>
-        <locationY>311</locationY>
+        <locationY>287</locationY>
         <inputAssignments>
             <field>Core_Loss_Cancel_Details__c</field>
         </inputAssignments>
@@ -36,7 +36,7 @@ Workflow rule description: Clears the Loss/Cancel Details text field if the Oppo
         <connector>
             <targetReference>mainUpdate</targetReference>
         </connector>
-        <filterFormula>AND(   OR(     ISPICKVAL(PRIORVALUE({!$Record.StageName}), &apos;Lost&apos;),     ISPICKVAL(PRIORVALUE({!$Record.StageName}), &apos;Cancelled&apos;),     ISPICKVAL(PRIORVALUE({!$Record.StageName}), &apos;Production Lost&apos;),     ISPICKVAL(PRIORVALUE({!$Record.StageName}), &apos;Production Cancelled&apos;)   ),   NOT(OR(     ISPICKVAL({!$Record.StageName}, &apos;Lost&apos;),     ISPICKVAL({!$Record.StageName}, &apos;Cancelled&apos;),     ISPICKVAL({!$Record.StageName}, &apos;Production Lost&apos;),     ISPICKVAL({!$Record.StageName}, &apos;Production Cancelled&apos;)   )) )</filterFormula>
+        <filterFormula>AND(AND(NOT(ISNULL({!$Record.RecordTypeId})),CONTAINS({!$Label.Core_Sales_CRM_Record_Types},{!$Record.RecordType.DeveloperName})),AND(   OR(     ISPICKVAL(PRIORVALUE({!$Record.StageName}), &apos;Lost&apos;),     ISPICKVAL(PRIORVALUE({!$Record.StageName}), &apos;Cancelled&apos;),     ISPICKVAL(PRIORVALUE({!$Record.StageName}), &apos;Production Lost&apos;),     ISPICKVAL(PRIORVALUE({!$Record.StageName}), &apos;Production Cancelled&apos;)   ),   NOT(OR(     ISPICKVAL({!$Record.StageName}, &apos;Lost&apos;),     ISPICKVAL({!$Record.StageName}, &apos;Cancelled&apos;),     ISPICKVAL({!$Record.StageName}, &apos;Production Lost&apos;),     ISPICKVAL({!$Record.StageName}, &apos;Production Cancelled&apos;)   )) ))</filterFormula>
         <object>Opportunity</object>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordBeforeSave</triggerType>

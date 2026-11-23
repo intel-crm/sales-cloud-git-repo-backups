@@ -24,6 +24,7 @@ public without sharing class Account360_DeleteSharing {
         List<Executive_Meeting_Brief__Share> embShare = new List<Executive_Meeting_Brief__Share>();
         List<Account_Status__Share> accStatusShare = new List<Account_Status__Share>();
         List<Account_Revenue__Share> accRevenueShare = new List<Account_Revenue__Share>();
+        List<AccountPlanShare> accStdPlanShare = new List<AccountPlanShare>();
         List<Sobject> objList = new List<Sobject>();
         List<Core_Log_Entry__c> logEntries = new List<Core_Log_Entry__c>();
         List<Core_Log_Entry__c> logEntries2 = new List<Core_Log_Entry__c>();
@@ -60,7 +61,14 @@ public without sharing class Account360_DeleteSharing {
                     objList.addAll(accRevenueShare);
                     }
                 }
-                         
+                //TWC4767-4408 CRM: Sharing and security model for New Standard Account Plans
+                if(objectsForAccount360Sharing.contains('AccountPlan'))
+                {
+                    accStdPlanShare = [Select ID,ParentId, UserOrGroupId,Parent.AccountId from AccountPlanShare where UserOrGroupId IN :userIdSet and Parent.AccountId IN : accIds and RowCause = 'Manual'];
+                    if(accStdPlanShare != null){
+                    objList.addAll(accStdPlanShare);
+                    }
+                }         
                 
             	if(objList <> null){
                     String listOfDeleted = objList.toString();

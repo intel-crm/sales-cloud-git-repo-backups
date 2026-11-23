@@ -10,7 +10,7 @@ public without sharing class Core_AccountTriggerHandlerController {
     public static Id DirectAccRecTypeId = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Direct Account').getRecordTypeId();// Added by Unicorn Team to bypass trigger methods 
     public static Id requestedAccount = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByName().get('Requested Account').getRecordTypeId();
     public static Map<Id,set<Id>> accIdToExtGrpIdMap = new Map<Id,set<Id>>();
-    public static Boolean runOnce = true;
+
     private static UCD_ACM_ServiceContracts.IAccountService accountServiceInstance = UCD_ACM_AccountService.getInstance();
     private static Id intelAccountRecordType = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
     private static Id endCustomerRecordType = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByName().get('End Customer Deal Account').getRecordTypeId();
@@ -25,12 +25,8 @@ public without sharing class Core_AccountTriggerHandlerController {
      * return : NA
      * author and date : Tejasri yenuganti, 19 May 2022
     */
-   
-
     public static void accountRecordTypeDupFieldUpdate(List<Account> allAccounts) {
-
         if(allAccounts!= null){
-
             Map<String, String> mapOfRecordtypeIdByName = new   Map<String, String>();
             Map<Id,Schema.RecordTypeInfo> rtMapById = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosById();
 
@@ -42,8 +38,8 @@ public without sharing class Core_AccountTriggerHandlerController {
                     newAccount.Core_Account_Record_Type_Dup_Check__c = mapOfRecordtypeIdByName.get(newAccount.RecordTypeId);
                 }
             }
-        } 
-
+        }
+    
     }
 
 
@@ -54,8 +50,8 @@ public without sharing class Core_AccountTriggerHandlerController {
      * return : NA
      * author and date : Sunidhi Nadagouda, 03 Jan 2023
     */
-   /* public static void accountHierarchyViewUpdate(List<Account> newAccounts) {
-        if(newAccounts!=null){
+    public static void accountHierarchyViewUpdate(List<Account> newAccounts) {
+/*        if(newAccounts!=null){
             for (Account account : newAccounts) {
                 if(account.KCR_Process_Outcome_Temp__c == 'Business Process Block'){
                     account.Unified_Hierarchy_View__c = 'Not Unified';
@@ -71,10 +67,11 @@ public without sharing class Core_AccountTriggerHandlerController {
                     else if(account.Core_Customer_Aggregation_Type__c == 'UNFD_CTRY_CUST'){
                         account.Unified_Hierarchy_View__c = account.Core_Data_Country_Nm__c;
                     }
-               }
+            }
         }
-    }
     }*/
+    }
+    
 
     /*
     * Method name  : AccountObjectBeforeHandler
@@ -132,6 +129,7 @@ public without sharing class Core_AccountTriggerHandlerController {
                    (mapOldsObject.get(acct.Id) == null) ||
                    (acct.Core_CPM_ID__c != mapOldsObject.get(acct.Id).Core_CPM_ID__c))
                 {
+                    System.debug('Evaluating CPM ID');
                     cpmIdStr = acct.Core_CPM_ID__c;
                     if (string.isblank(cpmIdStr))
                         continue;
@@ -155,7 +153,8 @@ public without sharing class Core_AccountTriggerHandlerController {
                                 break;
                             else
                                 cpmIdStr = newStr + CPMID_DELIMITER;  
-                                   
+                                
+                            System.debug('cpmIdStr = ' + cpmIdStr);     
                         }    
                         
                         while (cpmIdStr.right(2) == CPMID_DELIMITER)
@@ -271,9 +270,11 @@ public without sharing class Core_AccountTriggerHandlerController {
                             displayMessage(acc,'NTG');
                         }
                         if(tier.contains('PSG')){
+                            system.debug('PSG');
                             Integer tierValue = tier.countMatches('PSG');
                             if(tierValue > 1)
                             displayMessage(acc,'PSG');
+                            system.debug('>1 psg');
                         }
                         if(tier.contains('RSG')){
                             Integer tierValue = tier.countMatches('RSG');
@@ -312,6 +313,8 @@ public without sharing class Core_AccountTriggerHandlerController {
         {
            if(a.RecordTypeId != coMarketingRecordTypeId && a.RecordTypeId != pAGRecordTypeId && a.RecordTypeId != DirectAccRecTypeId) //Added by Accenture - VD -> Check if the record type is not Co-Marketing. Check to bypass for PAG record type is Added by Accenture - Anupam
             {
+                System.debug(a);
+                System.debug('preventAEUserAccountOwnership!!!'+a.OwnerId + '@@@'+ oldMap.get(a.Id).OwnerId);
                 if (a.OwnerId != oldMap.get(a.Id).OwnerId) {
                     accountsChangedOwnership.add(a);
                     accountOwnerIdsChangedOwnership.add(a.OwnerId);
@@ -335,8 +338,8 @@ public without sharing class Core_AccountTriggerHandlerController {
             superUserIds.add(psa.AssigneeId);       
         
         for (Account a : accountsChangedOwnership)  {
-            if (aeUserIds.contains(a.OwnerId) && !superUserIds.contains(a.OwnerId))
-                a.addError('An Account cannot be owned by an A&E User who is not an A&E Super User');
+           // if (aeUserIds.contains(a.OwnerId) && !superUserIds.contains(a.OwnerId))
+               // a.addError('An Account cannot be owned by an A&E User who is not an A&E Super User');
         }
         }
     }
@@ -349,35 +352,34 @@ public without sharing class Core_AccountTriggerHandlerController {
     Accenture – VD                          07/23/2018       US99134 - Updated Method to stop creating OutBound message for Co-Marketing Record Type of Account 
     ******************************************************************************************************/
     public static void preventUncoveredAccountChange(List<Account> newList, Map<Id, Account> oldMap) {
+        
+         //Adding permission set logic to bypass error message on owner change to uncovered Account.
 
-       //Adding permission set logic to bypass error message on owner change to uncovered Account.       
+         System.debug('preventUncoveredAccountChange+Entry');
+         List<PermissionSetAssignment> currentUserPerSet = new List<PermissionSetAssignment>();
+         currentUserPerSet = [SELECT Id, PermissionSet.Name,AssigneeId
+                                 FROM PermissionSetAssignment
+                                 WHERE AssigneeId = :Userinfo.getUserId() and PermissionSet.Name = 'Account_Validations_Bypass'];
+         System.debug('currentUserPerSet@@@'+currentUserPerSet);
+ 
+         if(!currentUserPerSet.isEmpty()){
+             System.debug('currentUserPerSet2@@@'+currentUserPerSet);
+             return;
+         } 
+        
         if(newList!=null){
         List<Account> accountsChangedToUncovered = new List<Account>();
         for(Account acctObj : newList) 
         {
             if(acctObj.RecordTypeId != coMarketingRecordTypeId && acctObj.RecordTypeId != pAGRecordTypeId && acctObj.RecordTypeId != DirectAccRecTypeId) //Added by Accenture - VD -> Check if the record type is not Co-Marketing. Check to bypass for PAG record type is Added by Accenture - Anupam 
             {
+                System.debug('preventUncoveredAccountChange!!!'+acctObj.OwnerId + '@@@'+ oldMap.get(acctObj.Id).OwnerId);
                 if(acctObj.OwnerId == Label.Core_Uncovered_Account_ID && oldMap.get(acctObj.Id).OwnerId != Label.Core_Uncovered_Account_ID) {
                     accountsChangedToUncovered.add(acctObj);
                 }
             }
         }
-        /*Utkarsh Changes start - TWC729-9520 - Calling IPA Partner Deal class when account become uncovered.*/
-        if (!accountsChangedToUncovered.isEmpty()) {
-        List<AccountTeamMember> lstAccountTeamMember = new List<AccountTeamMember>();
-        
-        lstAccountTeamMember = [Select id, AccountId, UserId,Core_Account_Category__c,TeamMemberRole from AccountTeamMember where AccountId IN : accountsChangedToUncovered  Order By CreatedDate ];
-        PRM_PartnerDealOpportunitySharingService.removeShares(lstAccountTeamMember);}
-        /*Utkarsh Changes END*/
         if(accountsChangedToUncovered != null && !accountsChangedToUncovered.isEmpty()) {
-            List<PermissionSetAssignment> currentUserPerSet = new List<PermissionSetAssignment>();
-            currentUserPerSet = [SELECT Id, PermissionSet.Name,AssigneeId
-                                    FROM PermissionSetAssignment
-                                    WHERE AssigneeId = :Userinfo.getUserId() and PermissionSet.Name = 'Account_Validations_Bypass'];
-    
-            if(!currentUserPerSet.isEmpty()){
-                return;
-            }
             List<Contact> lContacts = new List<Contact>();
             List<Core_Contact_Entitlement__c> lContactEntitlements = new List<Core_Contact_Entitlement__c>();
             List<Core_Contact_Entitlement__c> lContactEntitlementsForASingleObject = new List<Core_Contact_Entitlement__c>();
@@ -452,7 +454,7 @@ public without sharing class Core_AccountTriggerHandlerController {
                 for(Account acctObj : accountsChangedToUncovered){
                     List<Opportunity> OppList = new List<Opportunity>();
                     OppList = AccntOppMap.get(acctObj.id);
-                    if(Opplist!= NULL && OppList.size()>0){
+                    if(OppList.size()>0){
                         for(Opportunity opp : OppList){
                             if(opp.Core_Open_Oppty__c  == 1 || opp.Core_Pending_Product_Count__c > 0 || opp.Core_No_of_On_Hold_Opportunity_Products__c > 0){
                                 acctObj.addError(Label.Core_PreventUncoveredonUpdate);
@@ -506,6 +508,8 @@ public without sharing class Core_AccountTriggerHandlerController {
                     for(Account acc : hierarchyList){
                         //Retail sharing
                         if(!Core_MDF_Utility.byPassFeature('byPassRetailCampSharingOnPFAChange')){
+                            System.debug('acc.Core_MDF_Channel_Program__r@@@'+acc.Core_MDF_Channel_Program__c);
+                            System.debug('acc.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c@@@'+acc.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c);
                             if(acc.Id == acctObj.Id && acc.Core_MDF_External_Group_Id__c != NULL && acc.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c == 'Retail Marketing Funds'){
                                 accIdToExtGrpIdMap.put(acc.Id, new set<Id>{acc.Core_MDF_External_Group_Id__c});
                                 if(acc.Core_MDF_Parent_Fund_Account__c != null && acc.Core_MDF_Parent_Fund_Account__r.Core_MDF_External_Group_Id__c != null){
@@ -524,6 +528,7 @@ public without sharing class Core_AccountTriggerHandlerController {
                                         accIdToExtGrpIdMap.put(acc.id, new set<Id>{acc.Core_MDF_Parent_Fund_Account__r.Core_MDF_Parent_Fund_Account__r.Core_MDF_External_Group_Id__c});
                                     }
                                 }
+                                system.debug('addingtomap::'+accIdToExtGrpIdMap);
                             }
                         }
                         //check if child nodes parent match with editing node  
@@ -653,6 +658,7 @@ public without sharing class Core_AccountTriggerHandlerController {
     ******************************************************************************************************/
     public static void accountObjectAfterDelete(List<Account> newList, Map<Id,Account> newMap, List<Account> oldList, Map<Id,Account> oldMap)
     { 
+        System.debug('accountObjectAfterDelete : START');
         try {                    
             List<Core_Integration_Outbound_Message__c> msgList;        
             Set<Id> dupeCheck = new Set<Id>();
@@ -665,6 +671,7 @@ public without sharing class Core_AccountTriggerHandlerController {
                     else
                         dupeCheck.add(account.Id);    
         
+                    System.debug('IOM Message create for ' + account.Id);
         
                     // Get a fresh instance for each use.
                     JSONGenerator jsonGen = JSON.createGenerator(false);                    
@@ -696,12 +703,15 @@ public without sharing class Core_AccountTriggerHandlerController {
                 insert msgList;    
         }
         catch(Exception e){
+            System.debug('check@@@!!!===>'+e.getStackTraceString());
             //If there is any exception, append it to the list of sobject records
             if(oldList!=null){
             for(Account account : oldList)
                 account.addError(System.Label.Core_Exception+e.getMessage());   
             }                       
-        }          
+        }    
+        
+        System.debug('accountObjectAfterDelete : END');        
     }
     
     //TWC729-3627:Update Intel Record type field for Inactive_Account.
@@ -783,7 +793,7 @@ public without sharing class Core_AccountTriggerHandlerController {
     Date: 29/7/2020                  
     Manikanta                                                  
     ******************************************************************************************************/
-    /*public static void membershipFlagUpdate(List<Account> oldAccList,List<Account> newAccList, Map<Id,Account> oldAccMap, Map<Id,Account> newAccMap){
+    public static void membershipFlagUpdate(List<Account> oldAccList,List<Account> newAccList, Map<Id,Account> oldAccMap, Map<Id,Account> newAccMap){
 
         if(newAccList!=null){
         Set<Id> accIds = new Set<Id>();
@@ -817,25 +827,11 @@ public without sharing class Core_AccountTriggerHandlerController {
              
          }
         if(!accToUpdate.isEmpty()){
-                    //Database.Update(accToUpdate);
-                    asyncAccountUpdate(JSON.serialize(accToUpdate));
+            Database.Update(accToUpdate);
         }
         }
         
-    }*/
-
-/***************************************************************************************************** 
-Method Name:asyncAccountUpdate      
-Description: This method is created to update the Account in Async to avoid issue with multiple trigger hits                                    
-@return  :  Void
-Created By: Akshay More [Team Draco]               
-Date: 26/02/2024                                                                  
-******************************************************************************************************/
-@future
-public static void asyncAccountUpdate(String accObj){
-    List<Account> accToUpdateList = (List<Account>)JSON.deserialize(accObj, List<Account>.class);
-    Database.Update(accToUpdateList);
-}
+    }
 
     /***************************************************************************************************** 
     Method Name:invokeRollUpScenario                                          
@@ -947,6 +943,7 @@ public static void asyncAccountUpdate(String accObj){
     public static void triggerReltioSync(System.TriggerOperation operation, List<Account> newAccounts, Map<Id,Account> mNewAccounts, List<Account> oldAccounts, Map<Id,Account> mOldAccounts) {
         String events = System.Label.Reltio_Sync_Trigger_Events;
         List<String> newEvents = String.IsNotEmpty(events)? events.split(','): new List<String>();
+        system.debug('this is from '+(String.IsNoTEmptY(events)));
         if(newEvents.contains(string.valueof(operation))) {   
             List<Account> rNewAccounts = new List<Account>();
             List<Account> rOldAccounts = new List<Account>();
@@ -966,6 +963,8 @@ public static void asyncAccountUpdate(String accObj){
                         }
                     }
                     if (!rNewAccounts.isEmpty()) {
+                        System.debug('firstnew'+rNewAccounts +'@@@'+'old'+rOldAccounts);
+                        System.debug('firstnewnewmap'+rMapNewAccounts +'@@@'+'old'+rMapOldAccounts);
                         rtsync.TriggerHandler.handle(operation, rNewAccounts, rMapNewAccounts, rOldAccounts, rMapOldAccounts);
                     }
                 } else*/ {
@@ -976,6 +975,8 @@ public static void asyncAccountUpdate(String accObj){
                         }
                     }
                     if (!rNewAccounts.isEmpty()) {
+                        System.debug('secnew'+rNewAccounts +'@@@'+'old'+rOldAccounts);
+                        System.debug('secnewnewmap'+rMapNewAccounts +'@@@'+'old'+rMapOldAccounts);
                         
                         rtsync.TriggerHandler.handle(operation, rNewAccounts, rMapNewAccounts, oldAccounts, mOldAccounts);
                     }
@@ -1017,19 +1018,20 @@ public static void asyncAccountUpdate(String accObj){
     * return : NA
      author and date:dnyanadax.argulwar@intel.com ,23Nov    
      */
-    // Public static void sendAccountDetailsToPsgMethods(List<Account> newAccounts, Map<Id, Account> oldAccounts){
-    //     List<Account> AcountList=new List<Account>();
-    //     if(newAccounts!=null){
-    //         for(Account acc: newAccounts){
-    //             if(oldAccounts.get(acc.Id).name!=acc.name && acc.Core_Account_Record_Type__c=='Intel Account'){
-    //               AcountList.add(acc);
-    //             }
-    //         }
-    //         if(AcountList.size()>0){
-    //             Sales_UpdateAccountDetails.updateAccountDetails_License(AcountList); 
-    //         }
-    //     }
-    // }
+    Public static void sendAccountDetailsToPsgMethods(List<Account> newAccounts, Map<Id, Account> oldAccounts){
+        List<Account> AcountList=new List<Account>();
+        if(newAccounts!=null){
+            for(Account acc: newAccounts){
+                if(oldAccounts.get(acc.Id).name!=acc.name && acc.Core_Account_Record_Type__c=='Intel Account'){
+                  AcountList.add(acc);
+                }
+            }
+            if(AcountList.size()>0){
+                System.debug('Entry in Sales_UpdateAccountDetails');
+                Sales_UpdateAccountDetails.updateAccountDetails_License(AcountList); 
+            }
+        }
+    }
 
     /***************************************************************************************************** 
     Method name  : processCCPTriggerUpdates

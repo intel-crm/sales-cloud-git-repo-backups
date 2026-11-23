@@ -115,15 +115,14 @@ export default class Pricing_Manage_QuoteTeam extends LightningElement {
     connectedCallback() {
 
         this.getQuoteTeamMembers();
-        getQuoteName({ quoteId: this.recordId }) //
+        getQuoteName({ quoteId: this.recordId })
             .then(result => {
-                console.log('this.result connected callback--' + result);
                 this.quoteName = result;
             });
     }
 
     getQuoteTeamMembers() {
-        getQuoteTeam({ quoteId: this.recordId }) //
+        getQuoteTeam({ quoteId: this.recordId })
             .then(result => {
                 this.resultList = result;
                 this.quoteTeamMemberList = [];
@@ -138,7 +137,10 @@ export default class Pricing_Manage_QuoteTeam extends LightningElement {
                 this.totalNoOfRecords = result.length;
                 this.totalPages = Math.ceil(result.length / this.recordsPerPage);
                 this.isSpinner = false;
-                console.log('Quote team Member List-->' + JSON.stringify(this.quoteTeamMemberList));
+            })
+            .catch(error => {
+                console.error('Error @ getQuoteTeam : ', JSON.stringify(error));
+                this.isSpinner = false;
             });
     }
 
@@ -176,6 +178,7 @@ export default class Pricing_Manage_QuoteTeam extends LightningElement {
         }
         if (this.userRole !== undefined && !isPresent && isValidUser) {
             this.isSpinner = true;
+            console.log('Enetered createQuoteTeamMember method');
             createQuoteTeamMember({ teamMemberEmail: emailCheck, quoteId: this.recordId, role: this.userRole, reassignPrimaryFSE: this.reassignPrimaryFSE }) //
                 .then(result => {
                     this.message = result;
@@ -195,9 +198,8 @@ export default class Pricing_Manage_QuoteTeam extends LightningElement {
                         );
                         this.removeRecordOnLookup();
                         this.refreshPage();
-                    }           
+                    }
                     else if (result === null && this.userRole === FSERole) {
-                        console.log('error');
                         this.errorMsg = FSEError;
                     }
                     else if (result === null) {
@@ -207,13 +209,10 @@ export default class Pricing_Manage_QuoteTeam extends LightningElement {
                     this.getQuoteTeamMembers();
                 })
                 .catch(error => {
-                    const evt = new ShowToastEvent({
-                        title: 'Error',
-                        message: (error !== null && error != '' && error !== undefined) ? error.body.message : 'Error occured while processing the request Please Contact IQR Team',
-                        variant: 'error'
-                    });
-                    this.dispatchEvent(evt);
+                    console.error('Error @ createQuoteTeamMember', JSON.stringify(error));
+                    this.errorMsg = JSON.stringify(error);
                     this.isSpinner = false;
+
                 });
         } else if (isPresent) {
             this.errorMsg = duplicateUser;
@@ -225,7 +224,7 @@ export default class Pricing_Manage_QuoteTeam extends LightningElement {
     }
 
     //*********US748996*********
-    onLeave(event) {
+    onLeave() {
         setTimeout(() => {
             this.searchKey = '';
             this.recordsList = null;
@@ -237,7 +236,6 @@ export default class Pricing_Manage_QuoteTeam extends LightningElement {
         this.selectedValue = event.target.dataset.name;
         this.searchKey = '';
         this.selectedRecord = this.recordsList.find(element => element.Name === this.selectedValue);
-
         this.selectedRecordEmail = this.selectedRecord.Email;
         this.onSeletedRecordUpdate();
     }
@@ -247,18 +245,17 @@ export default class Pricing_Manage_QuoteTeam extends LightningElement {
         const searchKey = event.target.value;
         this.searchKey = searchKey;
         const thisKey = this;
-        console.log(searchKey);
         this.typingTimer = setTimeout(function () {
             console.log('thisKey.getLookupResult')
             thisKey.getLookupResult();
         }.bind(this), 1000);
     }
 
-    handleKeyDown(event) {
+    handleKeyDown() {
         clearTimeout(this.typingTimer);
     }
 
-    removeRecordOnLookup(event) {
+    removeRecordOnLookup() {
         this.searchKey = '';
         this.selectedValue = null;
         this.selectedRecordId = null;
@@ -270,6 +267,7 @@ export default class Pricing_Manage_QuoteTeam extends LightningElement {
     getLookupResult() {
         findRecords({ searchKey: this.searchKey })
             .then((result) => {
+                console.log('Enetered find records(quote team) method: '+result);
                 if (result.length === 0) {
                     this.recordsList = [];
                     this.message = 'No Records Found';
@@ -462,15 +460,10 @@ export default class Pricing_Manage_QuoteTeam extends LightningElement {
                 this.isSpinner = false;
             })
             .catch(error => {
-                console.log('error===>', JSON.stringify(error));
+                console.log('Error @ handleFSEtoGroupAdd =>', JSON.stringify(error));
                 this.isSpinner = false;
 
             });
     }
 
-    //primary fse change
-    /*primyFSECheck(event) {
-        this.reassignPrimaryFSE = event.target.checked;
-        console.log(event.target.checked);
-    }*/
 }

@@ -62,16 +62,17 @@
         <relationshipLabel><!-- Project Info (Project Key Contact 2) --></relationshipLabel>
     </fields>
     <fields>
-        <label><!-- Result Summary --></label>
-        <name>DP_EAT_Result_Summary__c</name>
-    </fields>
-    <fields>
         <label><!-- Run related apex tests daily --></label>
         <name>DP_EAT_Run_related_apex_tests_daily__c</name>
     </fields>
     <fields>
         <label><!-- Send Email --></label>
         <name>DP_EAT_Send_Email__c</name>
+    </fields>
+    <fields>
+        <help><!-- This field holds the count of clicks on &apos;Execute Test Run&apos; button --></help>
+        <label><!-- Number of clicks on test run button --></label>
+        <name>DP_EAT_TestRunButtonCount__c</name>
     </fields>
     <startsWith>Consonant</startsWith>
     <validationRules>

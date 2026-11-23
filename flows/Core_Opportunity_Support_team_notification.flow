@@ -92,14 +92,14 @@
                 <leftValueReference>$Record.Core_Status__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>Pending</stringValue>
+                    <stringValue>Accepted</stringValue>
                 </rightValue>
             </conditions>
             <conditions>
                 <leftValueReference>$Record.Core_Opportunity_Support__r.Core_Status__c</leftValueReference>
-                <operator>NotEqualTo</operator>
+                <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>Submitted</stringValue>
+                    <stringValue>Approved</stringValue>
                 </rightValue>
             </conditions>
             <connector>
@@ -119,12 +119,26 @@
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Reassignment</name>
-            <conditionLogic>and</conditionLogic>
+            <conditionLogic>(1 OR 2) AND 3 AND 4</conditionLogic>
             <conditions>
                 <leftValueReference>$Record.Core_Opportunity_Support__r.Core_Status__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>Pending</stringValue>
+                    <stringValue>Approved</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Opportunity_Support__r.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Rejected</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Status__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
                 </rightValue>
             </conditions>
             <conditions>
@@ -164,6 +178,12 @@
         <expression>LEFT({!$Api.Partner_Server_URL_550}, FIND( &apos;/services&apos;, {!$Api.Partner_Server_URL_550})) &amp; {!$Record.Core_Opportunity_Support__c}</expression>
     </formulas>
     <formulas>
+        <name>recordcounter</name>
+        <dataType>Number</dataType>
+        <expression>if ( ISBLANK({!$Record.Core_Reassign_counter__c}) || ISNULL({!$Record.Core_Reassign_counter__c}) , 1 , {!$Record.Core_Reassign_counter__c} + 1)</expression>
+        <scale>2</scale>
+    </formulas>
+    <formulas>
         <name>technicalOwner</name>
         <dataType>String</dataType>
         <expression>IF(ISNULL({!$Record.Core_Opportunity_Support__r.Opportunity__r.Core_Technical_Owner__c}) || ISBLANK({!$Record.Core_Opportunity_Support__r.Opportunity__r.Core_Technical_Owner__c}), &apos; &apos;, {!$Record.Core_Opportunity_Support__r.Opportunity__r.Core_Technical_Owner__r.FirstName} + &apos; &apos; +{!$Record.Core_Opportunity_Support__r.Opportunity__r.Core_Technical_Owner__r.LastName})</expression>
@@ -200,11 +220,12 @@
         <connector>
             <targetReference>Opportunity_Support_Request_is_Approved_with_Team_Members_Added</targetReference>
         </connector>
+        <filterFormula>(ISNEW()||ISCHANGED({!$Record.Core_Opportunity_Support_Team_Member__c})||ISCHANGED ({!$Record.Core_Status__c}))</filterFormula>
         <object>Core_Opportunity_Support_Team__c</object>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Active</status>
+    <status>Draft</status>
     <textTemplates>
         <name>userAddtionEmailTemplate</name>
         <isViewedAsPlainText>true</isViewedAsPlainText>

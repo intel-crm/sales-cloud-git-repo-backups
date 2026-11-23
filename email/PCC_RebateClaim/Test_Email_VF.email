@@ -1,0 +1,36 @@
+<messaging:emailTemplate renderUsingSystemContextWithoutSharing="True" subject="Rebate Claim Upload #{!relatedTo.Name} | Processing FAILED" recipientType="Contact" relatedToType="PCC_Rebate_Claim_Stage__c">
+    <messaging:htmlEmailBody >
+    <html><head title="Rebate Claim Upload Status"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+</head>
+<body>
+
+<p>Recipient Id : {!recipient.Name}</p>
+ <apex:outputText rendered="{!(recipient.Id == relatedTo.PCC_Partner_Contact__r.Id)}">
+           <p> Hello {!relatedTo.PCC_Partner_Contact__r.FirstName}{!relatedTo.PCC_Partner_Contact__r.LastName},<br></br></p>
+ </apex:outputText>
+        
+<apex:outputText rendered="{!(recipient.Id != relatedTo.PCC_Partner_Contact__r.Id)}">
+           <p>Hello {!$User.FirstName} {!$User.LastName},<br></br></p>
+</apex:outputText>
+
+<p style="font-size: 15px;"> The processing of your Rebate Claim<b> # {!relatedTo.Name}</b> on {!relatedTo.CreatedDate} has FAILED.
+<br></br></p>
+
+<apex:outputText rendered="{!AND($User.ContactId=null, recipient.Id != relatedTo.PCC_Partner_Contact__r.Id )}">
+
+<p style="font-size: 15px;"> Please click <a href="https://intel--crmdevsls3.sandbox.lightning.force.com/lightning/r/PCC_Rebate_Claim__c/{!relatedTo.Id}/view">here</a> for further details. </p>
+
+</apex:outputText>
+
+<apex:outputText rendered="{!OR($User.ContactId!=null , recipient.Id == relatedTo.PCC_Partner_Contact__r.Id )}">
+
+<p style="font-size: 15px;"> Please click <a href="https://intel--crmdevsls3.sandbox.my.site.com/partneradmin/s/rebate-claim-stage/{!relatedTo.Id}">here</a> for further details. </p>
+
+</apex:outputText>
+
+
+
+
+</body></html>
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>

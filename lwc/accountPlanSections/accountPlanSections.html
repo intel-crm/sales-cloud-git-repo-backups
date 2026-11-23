@@ -1,0 +1,24 @@
+<template>
+    <lightning-card title="Account Plan Sections">
+        <div class="slds-m-around_medium">
+            <lightning-button variant="brand" label="Add Hot Button" onclick={handleAddHotButton}></lightning-button>
+        </div>
+        <lightning-layout multiple-rows="true">
+            <lightning-layout-item class="slds-size_1-of-1">
+                <lightning-card title="Hot Buttons">
+                    <template if:true={hotButtons.data}>
+                        <ul>
+                            <template for:each={hotButtons.data} for:item="button">
+                                <li key={button.Id}>
+                                    <p><strong>{button.Title}</strong></p>
+                                    <p>{button.Description}</p>
+                                    <p><strong>Status:</strong> {button.Status}</p>
+                                </li>
+                            </template>
+                        </ul>
+                    </template>
+                </lightning-card>
+            </lightning-layout-item>
+        </lightning-layout>
+    </lightning-card>
+</template>

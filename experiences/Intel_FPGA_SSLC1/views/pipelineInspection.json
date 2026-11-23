@@ -2,18 +2,28 @@
   "appPageId" : "6b36c665-0609-49d0-9746-033feed642b2",
   "componentName" : "siteforce:sldsOneColLayout",
   "dataProviders" : [ ],
-  "id" : "646ef0bf-97ee-4366-a149-a8cef8900bbc",
+  "id" : "a902c3b3-213a-4562-aa19-303afde7cd97",
   "label" : "Pipeline Inspection",
   "regions" : [ {
-    "id" : "13fd0483-a5f9-4fb8-8d75-caa604923db9",
+    "id" : "c029ece9-6214-4f2c-967d-614911c54f40",
     "regionName" : "header",
     "type" : "region"
   }, {
-    "id" : "0be04913-7975-4dca-acf8-2a555fed0144",
+    "components" : [ {
+      "componentAttributes" : {
+        "objectApiName" : "Opportunity"
+      },
+      "componentName" : "runtime_pipeline_inspector:pipelineInspectorHomeExperienceContainer",
+      "id" : "0cb0bcca-8796-4ac2-a428-022226162bd0",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "a584b512-604f-4b8a-b049-9056a7d130dd",
     "regionName" : "content",
     "type" : "region"
   }, {
-    "id" : "6dc6a193-d8f2-446b-acd8-f10bc0701650",
+    "id" : "f6c24b6d-4365-43aa-89b1-6f059dfea8bf",
     "regionName" : "footer",
     "type" : "region"
   } ],

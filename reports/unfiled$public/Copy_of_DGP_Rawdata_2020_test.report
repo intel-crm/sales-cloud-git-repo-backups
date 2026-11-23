@@ -52,7 +52,6 @@
         <field>Opportunity.Core_Technical_Owner__c</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
         <field>Opportunity.Core_Architecture_Conversion__c</field>
     </columns>
     <columns>
@@ -73,18 +72,6 @@
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>OpportunityLineItem.Core_KPI_Total_Price__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Opportunity.Core_Past_Due__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Opportunity.Core_Inactive__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Opportunity.Core_Low_Velocity__c</field>
     </columns>
     <description>For 2018~ DGP rawdata
 Opportunities with Products Report</description>
@@ -120,7 +107,7 @@ Opportunities with Products Report</description>
         <language>en_US</language>
     </filter>
     <format>Tabular</format>
-    <name>DGP Rawdata 2021- unhealthy indicator</name>
+    <name>Copy of DGP Rawdata 2020-test</name>
     <params>
         <name>terr</name>
         <value>all</value>

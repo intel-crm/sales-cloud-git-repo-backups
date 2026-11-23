@@ -2,9 +2,20 @@
     <script>
     window.onload = function () {
         var showWar = {!showWarning};
+        var showWarMsg = {!showWarningMsg};
         var warMsg='{!warningMsg}';
+        var pridMsg='{!pridMsg}';
+        var check = true;
         if(showWar){
             var con=confirm(warMsg);
+            if(con){
+                onSubmit();
+            }else{
+                check=false;
+                goToRecord();
+            }
+        }if(showWarMsg==true && check==true){
+            var con=confirm(pridMsg);
             if(con){
                 onSubmit();
             }else{

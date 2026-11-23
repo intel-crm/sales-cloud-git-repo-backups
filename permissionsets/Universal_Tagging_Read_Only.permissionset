@@ -15,6 +15,16 @@
     <description>Grants read permissions to assigned users, but does not grant create, edit, or delete access to Universal Tagging objects and components.</description>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Business_Review__c.User_s_Manager__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>SPM_Account_Feedback__c.CRM_CST_Is_Active_Planning_Period__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>UniTag__Tag__c.Core_Business_Owner__c</field>
         <readable>true</readable>
     </fieldPermissions>

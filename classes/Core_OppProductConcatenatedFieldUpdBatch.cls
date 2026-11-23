@@ -13,7 +13,6 @@ global class Core_OppProductConcatenatedFieldUpdBatch implements Database.Batcha
     global Core_Batch_Processing__c batchProcessing;
     global Integer count = 0;
     global Integer batchSize = 0;
-    global Set<Id> noUpdateProductIdSet = new Set<Id>(); 
     /*
      * Method name  : start()
      * Description  : Method to query all the products whose name was changed( Core_IsName_Changed__c = true).
@@ -51,17 +50,21 @@ global class Core_OppProductConcatenatedFieldUpdBatch implements Database.Batcha
         Integer batchRecCount=0;
         Integer failedRecordCount= 0;
         String errorString='';
+        System.debug('debug1 productList: '+ productList);
         Set<Id>successfulOppIds = new set<Id>();
         Batch_Processing_Line_Item__c batchline = new Batch_Processing_Line_Item__c();
         if(productList.size() > batchSize)
             batchSize = productList.size();
         // We only want to operate on Products whose names are changing, so build a set of those
         List<Product2> updateProductList = new List<Product2>();
+        Set<Product2> noNpdateProductIdSet = new Set<Product2>();
         Set<Id> productIdsChanging = new Set<Id>();
         for(Product2 prod : productList){
             productIdsChanging.add(prod.Id);
-        }        
+        }    
+        System.debug('debug2 productIdsChanging: '+productIdsChanging);    
         try{
+            
             // Do we have any where the name changed?
             List<OpportunityLineItem> oppProdsChanging = new List<OpportunityLineItem>();
             if (productIdsChanging.size() > 0){
@@ -71,21 +74,23 @@ global class Core_OppProductConcatenatedFieldUpdBatch implements Database.Batcha
             for (OpportunityLineItem oppProd : oppProdsChanging) {
                 oppIdsToBeUpdated.add(oppProd.OpportunityId);
             }
+            System.debug('debug3 oppIdsToBeUpdated: '+oppIdsToBeUpdated);
             List<OpportunityLineItem> fullSetOppProds = new List<OpportunityLineItem>();
             if(!oppIdsToBeUpdated.isEmpty() && oppIdsToBeUpdated.size()!=0){
                 fullSetOppProds = [SELECT OpportunityId, Product2.Name FROM OpportunityLineItem WHERE OpportunityId in :oppIdsToBeUpdated];
             }
+            System.debug('debug4 fullSetOppProds: '+fullSetOppProds);
             // Build a map of Opportunity IDs to the string of Product name for each, so we can use it for later lookups 
             Map<Id, Set<String>> mapOfOppIdAndSetProdName = new Map<Id, Set<String>>();
             Map<Id, String> mapOfOppIdAndStrProdName = new Map<Id, String>();
-            Map<Id, Set<Id>> mapOfOppIdToProducts = new Map<Id, Set<Id>>();
+            Map<Id, Set<Product2>> mapOfOppIdToProducts = new Map<Id, Set<Product2>>();
             for(OpportunityLineItem oppLineItem : fullSetOppProds){         
                 if(mapOfOppIdAndSetProdName.containsKey(oppLineItem.OpportunityId)){
                     if(mapOfOppIdAndStrProdName.containsKey(oppLineItem.OpportunityId)){               
                         Set<String> setProdName = mapOfOppIdAndSetProdName.get(oppLineItem.OpportunityId);
                         String prodName = mapOfOppIdAndStrProdName.get(oppLineItem.OpportunityId); 
-                        Set<Id> setProd = mapOfOppIdToProducts.get(oppLineItem.OpportunityId);
-                        setProd.add(oppLineItem.Product2.Id);
+                        Set<Product2> setProd = mapOfOppIdToProducts.get(oppLineItem.OpportunityId);
+                        setProd.add(oppLineItem.Product2);
                         if(!setProdName.contains(oppLineItem.Product2.Name)){
                             setProdName.add(oppLineItem.Product2.Name);
                             prodName = prodName + oppLineItem.Product2.Name +', ';
@@ -94,6 +99,7 @@ global class Core_OppProductConcatenatedFieldUpdBatch implements Database.Batcha
                         mapOfOppIdAndStrProdName.put(oppLineItem.OpportunityId, prodName);
                         mapOfOppIdToProducts.put(oppLineItem.OpportunityId, setProd);
                     }
+                    System.debug('debug5 mapOfOppIdAndStrProdName: '+mapOfOppIdAndStrProdName);
                 }
                 else{
                     Set<String> setProdName = new Set<String>();
@@ -102,7 +108,7 @@ global class Core_OppProductConcatenatedFieldUpdBatch implements Database.Batcha
                     prodName = prodName + oppLineItem.Product2.Name +', ';  
                     mapOfOppIdAndSetProdName.put(oppLineItem.OpportunityId, setProdName);
                     mapOfOppIdAndStrProdName.put(oppLineItem.OpportunityId, prodName);
-                    mapOfOppIdToProducts.put(oppLineItem.OpportunityId, new Set<Id>{oppLineItem.Product2.Id});
+                    mapOfOppIdToProducts.put(oppLineItem.OpportunityId, new Set<Product2>{oppLineItem.Product2});
                 }
             }
             //Populate the Core_Opportunity_Products__c field of Opportunity with the child OppLineItem's Product Name field
@@ -117,10 +123,13 @@ global class Core_OppProductConcatenatedFieldUpdBatch implements Database.Batcha
                         productName = productName.left(productName.length()-2);
                     oppUpdate.Core_Opportunity_Products__c = productName; 
                     oppList.add(oppUpdate);                
-                }            
+                    System.debug('debug7 productName: '+productName); 
+                }      
+                System.debug('debug6 oppList: '+oppList);  
             }
             //Update the Opportunity list            
             if(!oppList.isEmpty() && oppList.size()!=0){
+                system.debug('########&&&&opplist'+oppList.size());
                 Database.SaveResult[] oppsr = Database.update(oppList, false);
                 for(Database.SaveResult sr:oppsr){
                     if(sr.isSuccess()){
@@ -128,16 +137,17 @@ global class Core_OppProductConcatenatedFieldUpdBatch implements Database.Batcha
                         successfulOppIds.add(sr.getId());                       
                     }
                     else{
+                        noNpdateProductIdSet.addAll(mapOfOppIdToProducts.get(sr.getId()));
                         for(Database.Error err : sr.getErrors()) { 
-                            errorString=errorString +err.getStatusCode() + ': ' + err.getMessage()+' | ';                            
+                            errorString=errorString +err.getStatusCode() + ': ' + err.getMessage();                            
                         }
                     }
                 }
+                System.debug('debug7 errorString'+errorString);
                 for(Opportunity opp : oppList)
                 {
                     if(!successfulOppIds.contains(opp.Id) ){
-                        noUpdateProductIdSet.addAll(mapOfOppIdToProducts.get(opp.Id));
-                        errorString=errorString + '  Failed Id: '+ String.valueOf(opp.Id)+';';
+                        errorString=errorString + String.valueOf(opp.Id)+';';
                         failedRecordCount=failedRecordCount+1;                          
                     }
                 }                  
@@ -153,15 +163,17 @@ global class Core_OppProductConcatenatedFieldUpdBatch implements Database.Batcha
             
             //Not resetting the product checkbox, if the opportunity is not updated
             for(Product2 prod : productList){
-                if(!noUpdateProductIdSet.contains(prod.Id)){
+                if(!noNpdateProductIdSet.contains(prod)){
                     prod.Core_Is_Name_Changed_Chk__c = False;
                     updateProductList.add(prod);
                 }
             }
+            
             //Update the Product Core_IsName_Changed__c field to false once processed
             if(!updateProductList.isEmpty() && updateProductList.size()!=0){
                 Database.update(updateProductList);        
-            }  
+            }
+            
         }
         catch(Exception e){
             batchProcessing.Core_Exception_Log__c = e.getMessage();

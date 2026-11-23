@@ -52,10 +52,6 @@
     <columns>
         <field>RECORDTYPE</field>
     </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Lead.SWS_Software_Lead__c</field>
-    </columns>
     <description>RT:LEADS</description>
     <filter>
         <booleanFilter>((1 AND 2) OR 6) AND 3 AND 4 AND 5</booleanFilter>

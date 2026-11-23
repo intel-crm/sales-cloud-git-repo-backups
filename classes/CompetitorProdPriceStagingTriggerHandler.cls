@@ -1,3 +1,10 @@
+/**
+ * @description       : 
+ * @author            : Rajesh Gajul
+ * @group             : 
+ * @last modified on  : 09-26-2024
+ * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+**/
 public without sharing class CompetitorProdPriceStagingTriggerHandler extends TriggerHandler {
     public List<Pricing_Competitor_Product_Price_Staging__c> iqrTriggerNewList = new List<Pricing_Competitor_Product_Price_Staging__c>();
     public Set<String> compProdPriceStagingName = new Set<String>();

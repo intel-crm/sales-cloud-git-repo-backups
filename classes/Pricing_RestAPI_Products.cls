@@ -34,7 +34,7 @@ global without sharing class Pricing_RestAPI_Products {
     private static final String RESTAPI_NAME = Pricing_RestAPI_Products.class.getName();
     
     @HttpGet
-    global static Pricing_RestAPI_Response doGet(){
+    global static Pricing_RestAPI_Response doGet(){        
         if(validateRequest()){
             processRequest();
         }else{
@@ -82,9 +82,9 @@ global without sharing class Pricing_RestAPI_Products {
     }
     
     /**
-* @description: Fetch the product based on the input parameters
-* @author Subhanku/Bharath | 03-24-2022 
-**/
+    * @description: Fetch the product based on the input parameters
+    * @author Subhanku/Bharath | 03-24-2022 
+    **/
     private static void getProducts(user currentUser){ 
         try{
             isDPG = (!String.isEmpty(productType))?(productType == Label.Pricing_RestAPI_Products_SSD_Param || 
@@ -112,11 +112,11 @@ global without sharing class Pricing_RestAPI_Products {
     }
     
     /**
-* @description: Get the list of products based on keyword/limit/offset
-* @author Bharath | 03-24-2022 
-* @param products
-* @return List<ProductWrapper> 
-**/
+    * @description: Get the list of products based on keyword/limit/offset
+    * @author Bharath | 03-24-2022 
+    * @param products
+    * @return List<ProductWrapper> 
+    **/
     private static List<ProductWrapper> getFinalProductsList(List<Product2> products){
         String prodType;
         List<ProductWrapper> finalProducts = new List<ProductWrapper>();
@@ -130,9 +130,9 @@ global without sharing class Pricing_RestAPI_Products {
             for(Integer start=intRowsOffset; counter < intRowsLimit && start < products.size()  ; start++){
                 Product2 prodct = products.get(start);
                 prodType =  (prodct.Core_Product_Type__c == 'Memory and Storage')?
-                    (Label.Pricing_Tender_SSD_BU_OpCode.split(',').contains(prodct.Core_Profit_Center__c)?Label.Pricing_RestAPI_Products_SSD_Param:
-                     Label.Pricing_Tender_PMem_BU_OpCode.split(',').contains(prodct.Core_Profit_Center__c)?Label.Pricing_RestAPI_Products_PMem_Param:''):
-                (prodct.Core_Product_Type__c == 'Ethernet Products' && (Label.Pricing_Tender_Ethernet_BU_OpCode.split(',').contains(prodct.Core_Profit_Center__c)))? Label.Pricing_Tender_NIC_Quote: 
+                    (Label.Pricing_Tender_SSD_BU_OpCode.split(',').contains(prodct.Core_BU_Operation_Code__c)?Label.Pricing_RestAPI_Products_SSD_Param:
+                     Label.Pricing_Tender_PMem_BU_OpCode.split(',').contains(prodct.Core_BU_Operation_Code__c)?Label.Pricing_RestAPI_Products_PMem_Param:''):
+                (prodct.Core_Product_Type__c == 'Ethernet Products' && (Label.Pricing_Tender_Ethernet_BU_OpCode.split(',').contains(prodct.Core_BU_Operation_Code__c)))? Label.Pricing_Tender_NIC_Quote: 
                 //productType != Label.Pricing_Tender_Processor_Product && (Label.Pricing_Tender_CCG_ProdType.split(',').contains(prodct.Core_VerticalSegment__c)) ? Label.Pricing_Tender_CCG_Quote :
                 //(prodct.Core_Product_Type__c == Label.Pricing_Tender_Processor_Product && (!String.isEmpty(prodct.Core_Group_Code_Short_Name__c)?prodct.Core_Group_Code_Short_Name__c.contains('CCG'):false) && productType!=Label.Pricing_Tender_Processor_Product)?Label.Pricing_Tender_CCG_Quote: //CH - Added logic to check the 'Client' productType 
                 (prodct.Core_Product_Type__c == Label.Pricing_Tender_Processor_Product)?Label.Pricing_Tender_Processor_Product:
@@ -146,9 +146,9 @@ global without sharing class Pricing_RestAPI_Products {
             //if there is no limit and offset, return complete products list
             for(Product2 prodct: products){
                 prodType = (prodct.Core_Product_Type__c == 'Memory and Storage')?
-                    (Label.Pricing_Tender_SSD_BU_OpCode.split(',').contains(prodct.Core_Profit_Center__c)?Label.Pricing_RestAPI_Products_SSD_Param:
-                     Label.Pricing_Tender_PMem_BU_OpCode.split(',').contains(prodct.Core_Profit_Center__c)?Label.Pricing_RestAPI_Products_PMem_Param:''):
-                (prodct.Core_Product_Type__c == 'Ethernet Products' && (Label.Pricing_Tender_Ethernet_BU_OpCode.split(',').contains(prodct.Core_Profit_Center__c)))? Label.Pricing_Tender_NIC_Quote: 
+                    (Label.Pricing_Tender_SSD_BU_OpCode.split(',').contains(prodct.Core_BU_Operation_Code__c)?Label.Pricing_RestAPI_Products_SSD_Param:
+                     Label.Pricing_Tender_PMem_BU_OpCode.split(',').contains(prodct.Core_BU_Operation_Code__c)?Label.Pricing_RestAPI_Products_PMem_Param:''):
+                (prodct.Core_Product_Type__c == 'Ethernet Products' && (Label.Pricing_Tender_Ethernet_BU_OpCode.split(',').contains(prodct.Core_BU_Operation_Code__c)))? Label.Pricing_Tender_NIC_Quote: 
                 //productType != Label.Pricing_Tender_Processor_Product && (Label.Pricing_Tender_CCG_ProdType.split(',').contains(prodct.Core_VerticalSegment__c)) ? Label.Pricing_Tender_CCG_Quote :
                 //(prodct.Core_Product_Type__c == Label.Pricing_Tender_Processor_Product && (!String.isEmpty(prodct.Core_Group_Code_Short_Name__c)?prodct.Core_Group_Code_Short_Name__c.contains('CCG'):false) && productType!=Label.Pricing_Tender_Processor_Product)?Label.Pricing_Tender_CCG_Quote: //CH - Added logic to check the 'Client' productType
                 (prodct.Core_Product_Type__c == Label.Pricing_Tender_Processor_Product)?Label.Pricing_Tender_Processor_Product :
@@ -158,14 +158,14 @@ global without sharing class Pricing_RestAPI_Products {
             }
         }        
         return finalProducts;
-    }  
+    }
     
     /**
-* @description: Get the list of competitor products based on keyword/limit/offset
-* @author Subhanku | 06-16-2021 
-* @param compProducts 
-* @return List<CompetitorProduct> 
-**/
+    * @description: Get the list of competitor products based on keyword/limit/offset
+    * @author Subhanku | 06-16-2021 
+    * @param compProducts 
+    * @return List<CompetitorProduct> 
+    **/
     private static List<CompetitorProduct> getFinalCompProductsList(List<Pricing_Competitor_Product__c> compProducts){
         List<CompetitorProduct> finalCompProducts = new List<CompetitorProduct>();
         if(intRowsOffset >= compProducts.size()){            
@@ -191,10 +191,10 @@ global without sharing class Pricing_RestAPI_Products {
     }  
     
     /**
-* @description: Method that returns the whereClause to be used in the Products query in the getProducts() method
-* @author Subhanku/Bharath | 03-24-2022 
-* @return String 
-**/
+    * @description: Method that returns the whereClause to be used in the Products query in the getProducts() method
+    * @author Subhanku/Bharath | 03-24-2022 
+    * @return String 
+    **/
     private static String getWhereClause(){
         String whereClause = '';
         if(reqType == PRODUCTS) {
@@ -216,7 +216,7 @@ global without sharing class Pricing_RestAPI_Products {
                 (isDPG != false)?(getMetadataWhereClause(productType))[1].replace('{{searchString}}','%'+srchStr+'%'):
                 (productType == Label.Pricing_Tender_CCG_Quote)?  //CH - Added condition for 'Client' search text 
                     (getMetadataWhereClause(productType))[1].replace('{{searchString}}','%'+srchStr+'%'):
-                    ' AND (Name LIKE ' + '\'%'+srchStr+'%\'' + ' OR Core_Processor_Number_Nm__c LIKE ' + '\'%'+srchStr+'%\'' + ')';
+                    ' AND (Name LIKE ' + '\'%'+srchStr+'%\'' + ' OR Core_Processor_Number_Nm__c LIKE ' + '\'%'+srchStr+'%\'' + ')'; // Ch-vru-TWC1972-5311
             }
             if(!String.isEmpty(recId)){
                 whereClause += ' AND id=\''+ String.escapeSingleQuotes(recId)+'\'';
@@ -230,7 +230,7 @@ global without sharing class Pricing_RestAPI_Products {
                 strWhrClause = (String.isEmpty(strWhrClause)) ? ' Name LIKE \'%'+ String.escapeSingleQuotes(srchStr)+'%\'' :  strWhrClause+' AND Name LIKE \'%'+ String.escapeSingleQuotes(srchStr)+'%\'';
             }
             //CH.Start - Added logic to filter COMPETITOR PRODUCTS records on the basis of productType (Client/DataCenter/All)
-            String recordTypeFilter = productType==Label.Pricing_Tender_CCG_Quote ? Label.Pricing_Tender_CCG_Quote : productType.toLowerCase()=='datacenter' ? 'Data Center' :productType.toLowerCase()=='graphics' ? 'Graphics' :'All';
+            String recordTypeFilter = productType==Label.Pricing_Tender_CCG_Quote ? Label.Pricing_Tender_CCG_Quote : productType.toLowerCase()=='datacenter' ? 'Data Center' :productType.toLowerCase()=='graphics' ? 'Graphics' : 'All';
             if(recordTypeFilter != 'All'){
                 strWhrClause =(String.isEmpty(strWhrClause)) ? ' (RecordType.Name=\''+ String.escapeSingleQuotes(recordTypeFilter)+'\' OR Name = \''+Label.Pricing_Tender_Write_In_Product+'\')' :  strWhrClause+' AND  (RecordType.Name=\''+ String.escapeSingleQuotes(recordTypeFilter)+'\' OR Name = \''+Label.Pricing_Tender_Write_In_Product+'\')';   
             }
@@ -241,10 +241,10 @@ global without sharing class Pricing_RestAPI_Products {
     }
     
     /**
-* @description: Validate the input parameters specified in the endpoint URL
-* @author Subhanku/Bharath | 03-24-2022 
-* @return boolean 
-**/
+    * @description: Validate the input parameters specified in the endpoint URL
+    * @author Subhanku/Bharath | 03-24-2022 
+    * @return boolean 
+    **/
     private static boolean validateRequest(){
         boolean isValid = true;
         RestRequest restReq = RestContext.request;
@@ -255,7 +255,7 @@ global without sharing class Pricing_RestAPI_Products {
         rowsLimit = restReq.params.get('limit');
         rowsOffset = restReq.params.get('offset'); 
         /*code block to verify if reqType/rowsLimit/rowsOffset are valid, 
-check if its a valid productType and to check if rowsLimit/rowsOffset are invalid numbers*/
+        check if its a valid productType and to check if rowsLimit/rowsOffset are invalid numbers*/
         isValid = (String.isEmpty(reqType) || (reqType!=PRODUCTS && reqType!=COMPETITOR_PRODUCTS ) || 
                    (!String.isEmpty(rowsLimit) && !rowsLimit.isNumeric()) || (!String.isEmpty(rowsOffset) && !rowsOffset.isNumeric()) || 
                    (!String.isEmpty(recId) && recId.length()!=15 && recId.length()!=18))?false:((!String.isEmpty(rowsLimit) && rowsLimit.isNumeric() 
@@ -282,11 +282,11 @@ check if its a valid productType and to check if rowsLimit/rowsOffset are invali
     }
     
     /**
-* @description: Method written to retrieve the custom metadata record Where Clause column value based on the Product Type parameter
-* @author Bharath Chandrashekar | 03-24-2022
-* @param productType 
-* @return List<String> 
-**/
+    * @description: Method written to retrieve the custom metadata record Where Clause column value based on the Product Type parameter
+    * @author Bharath Chandrashekar | 03-24-2022
+    * @param productType 
+    * @return List<String> 
+    **/
     public static List<String> getMetadataWhereClause(String productType){
         String whereClause;
         String searchColumn;
@@ -296,7 +296,7 @@ check if its a valid productType and to check if rowsLimit/rowsOffset are invali
         List<Pricing_Dynamic_Data_Table__mdt> productTypeMetadataList = new List<Pricing_Dynamic_Data_Table__mdt>();
         List<String> whereClauseList = new List<String>();
         if(productType == 'All'){
-            productTypeMetadataList = [SELECT Id, Pricing_Query__c, Pricing_Record_Type_Pkl__c, Pricing_Where_Clause__c 
+            productTypeMetadataList = [SELECT Id, Pricing_Query__c, Pricing_Record_Type__c, Pricing_Where_Clause__c 
                                        FROM Pricing_Dynamic_Data_Table__mdt WHERE DeveloperName IN: (Label.Pricing_AllProducts_Param.split(','))];
             if(productTypeMetadataList.size() > 0) {
                 for(Pricing_Dynamic_Data_Table__mdt mdt : productTypeMetadataList ) {
@@ -316,9 +316,9 @@ check if its a valid productType and to check if rowsLimit/rowsOffset are invali
                 : productType == Label.Pricing_RestAPI_Products_SSD_Param ? Label.Pricing_AllProducts_Param.split(',')[0]
                     : productType == Label.Pricing_RestAPI_Products_PMem_Param ? Label.Pricing_AllProducts_Param.split(',')[1]
                         : productType == Label.Pricing_Tender_Graphics_Product ? Label.Pricing_AllProducts_Param.split(',')[4]
-                        : productType == Label.Pricing_Tender_CCG_Quote ? Label.Pricing_AllProducts_Param.split(',')[3] //CH - Added condition for 'Client' productType
-                            : productType;
-            productTypeMetadataList = [SELECT Id, Pricing_Query__c, Pricing_Record_Type_Pkl__c, Pricing_Where_Clause__c, 
+                            : productType == Label.Pricing_Tender_CCG_Quote ? Label.Pricing_AllProducts_Param.split(',')[3] //CH - Added condition for 'Client' productType
+                                : productType;
+            productTypeMetadataList = [SELECT Id, Pricing_Query__c, Pricing_Record_Type__c, Pricing_Where_Clause__c, 
                                        Pricing_SearchColumn_Field__c FROM Pricing_Dynamic_Data_Table__mdt 
                                        WHERE DeveloperName =: prodType];
             if(productTypeMetadataList.size() > 0) {
@@ -332,7 +332,7 @@ check if its a valid productType and to check if rowsLimit/rowsOffset are invali
                 }
             }
         }
-                return whereClauseWithSearchCol;
+        return whereClauseWithSearchCol;
     }
     
     //Wrapper that is used for the Response of the Product GET API containing the product fields

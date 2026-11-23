@@ -21,7 +21,7 @@ public without sharing class QuoteBusinessLogic{
                                         FROM User WHERE Id =: UserInfo.getUserId() and IsActive = true];
     private static Id commentRecordTypeId = Pricing_Tender_Utility.getRecordTypeId('Pricing_Comments__c',Label.Pricing_Tender_Comment_RecordType_QuoteComment);
     private static Id qtmRecordTypeId = Pricing_Tender_Utility.getRecordTypeId('Pricing_Quote_Team__c',Label.Pricing_Tender_Quote_Team_RecordType);
-
+    public static Set<Id> quoteIdWithOutSDMLst = new Set<Id>();
     public static Map<id,SBQQ__Quote__c> quotesMap = new Map<id,SBQQ__Quote__c>();
     public static Map<Id,Account> accountIdtoRecordMap = new Map<Id, Account>();
     public static Map<Id, Opportunity> quoteIdToOppRecdMap = new Map<Id, Opportunity>();
@@ -29,11 +29,12 @@ public without sharing class QuoteBusinessLogic{
     public static Boolean isVolumeExceptionCheck = false;
     public static Boolean skipMethodExecution = false;
     public static Set<Id> quoteIdsWithInvalidEndCustomerOpportunityId = new Set<Id>();
+     public static Boolean isQuoteFirstSubmission = false;
     /**
-    * @description Share the Quote with Account Team Members
-    * @author Subhanku | 12-19-2022 
-    * @param List<sObject> quoteList 
-    **/
+* @description Share the Quote with Account Team Members
+* @author Subhanku | 12-19-2022 
+* @param List<sObject> quoteList 
+**/
     public static void shareQuotes(List<sObject> quoteList){
         if(quoteList!=null && !quoteList.isEmpty()){
             Map<Id, SBQQ__Quote__c> pvtMap = new Map<Id, SBQQ__Quote__c>((List<SBQQ__Quote__c>)quoteList);
@@ -61,7 +62,7 @@ public without sharing class QuoteBusinessLogic{
             Set<Id> externalGroupIdSet = new  Set<Id>();
             // Get the Map of Quote and Comments
             Map<Id,SBQQ__Quote__c> mapQuotesWithComments = new Map<Id,SBQQ__Quote__c>([SELECT Id, (SELECT Id FROM Comments__r where recordtypeid =: commentRecordTypeId) from SBQQ__Quote__c WHERE Id IN:pvtMap.keySet()]);
-            for(Core_MDF_Partner_Group_Mapping__c partnerGroup : [select Id,Core_MDF_Account__c,Core_MDF_Channel_Program_Name_Txt__c,Core_MDF_Channel_Program__c,Core_MDF_AccountIdGroupName__c,Core_MDF_Group_Id__c,Core_MDF_Type_of_Access__c from Core_MDF_Partner_Group_Mapping__c where
+            for(Core_MDF_Partner_Group_Mapping__c partnerGroup : [select Id,Core_MDF_Account__c,Core_MDF_Channel_Program_Name_Txt__c,Core_MDF_Group_Id__c,Core_MDF_Type_of_Access__c from Core_MDF_Partner_Group_Mapping__c where
                                                                   Core_MDF_Channel_Program_Name_Txt__c =: Label.Pricing_Tender_PGM_Channel and   Core_MDF_Account__c in : accountIds and Core_MDF_Group_Id__c!=null]){
                                                                       if(!accountToGroupIdMap.containsKey(partnerGroup.Core_MDF_Account__c)){
                                                                           accountToGroupIdMap.put(partnerGroup.Core_MDF_Account__c,new Set<Id>{partnerGroup.Core_MDF_Group_Id__c});
@@ -81,6 +82,7 @@ public without sharing class QuoteBusinessLogic{
                                                                   }
             
             for(SBQQ__Quote__c pvt : pvtMap.values()){
+                
                 if(accountToGroupIdMap.containsKey(pvt.SBQQ__Account__c) && !(accountToGroupIdMap.get(pvt.SBQQ__Account__c)).isEmpty()){ 
                     createQuoteAndCmntShare(pvt.Id,externalGroupIdSet,accountToGroupIdMap.get(pvt.SBQQ__Account__c),false,mapQuotesWithComments,quoteShares,commentShares);
                 }
@@ -119,11 +121,11 @@ public without sharing class QuoteBusinessLogic{
     }
     
     /**
-    * @description Method to Share Records with AE and Sales Rep Synchronization
-    * @author Subhanku | 12-19-2022 
-    * @param List<sObject> quoteList 
-    * @param Map<Id Set<Id>> quoteIdToAESalesRepShareMap 
-    **/
+* @description Method to Share Records with AE and Sales Rep Synchronization
+* @author Subhanku | 12-19-2022 
+* @param List<sObject> quoteList 
+* @param Map<Id Set<Id>> quoteIdToAESalesRepShareMap 
+**/
     public static void shareQuotesCommentsWithAESalesRep(List<sObject> quoteList, Map<Id,Set<Id>> quoteIdToAESalesRepShareMap){
         if(quoteList!=null && !quoteList.isEmpty()){
             Map<Id, SBQQ__Quote__c> pvtMap = new Map<Id, SBQQ__Quote__c>((List<SBQQ__Quote__c>)quoteList);
@@ -179,12 +181,12 @@ public without sharing class QuoteBusinessLogic{
     }
     
     /**
-    * @description Check if Primary Contact Changes and call the Future Method to update the Owner 
-    * @author Subhanku | 12-19-2022 
-    * @param List<SBQQ__Quote__c> lstquote 
-    * @param Boolean isInsert 
-    * @param Map<id SBQQ__Quote__c> oldMap 
-    **/
+* @description Check if Primary Contact Changes and call the Future Method to update the Owner 
+* @author Subhanku | 12-19-2022 
+* @param List<SBQQ__Quote__c> lstquote 
+* @param Boolean isInsert 
+* @param Map<id SBQQ__Quote__c> oldMap 
+**/
     public static void checkChangeInPrimaryContact(List<SBQQ__Quote__c> lstquote, Boolean isInsert,Map<id,SBQQ__Quote__c> oldMap){
         if(lstquote!=null && !lstquote.isEmpty()){
             Map<Id,Set<Id>> quoteIdToAESalesRepShareMap =new Map<Id,Set<Id>>();
@@ -213,8 +215,8 @@ public without sharing class QuoteBusinessLogic{
             List<Pricing_Quote_Team__c> qtmToBeDeleted = new List<Pricing_Quote_Team__c>();
             Map<Id,SBQQ__Quote__c> quotewithOwnerChangeMap = new Map<Id,SBQQ__Quote__c>();
             List<Id> quoteIdForOnHoldUpdate = new List<Id>();
-      List<Pricing_Quote_Hold_Status_Age__c> insertOnHoldRec = new List<Pricing_Quote_Hold_Status_Age__c>();
-           
+            List<Pricing_Quote_Hold_Status_Age__c> insertOnHoldRec = new List<Pricing_Quote_Hold_Status_Age__c>();
+            
             
             Id currentLoggedInUserId = currentUser.Id;
             for(PermissionSetAssignment ps : currentUser.PermissionSetAssignments){
@@ -239,6 +241,9 @@ public without sharing class QuoteBusinessLogic{
                     //Current Logged in user is a AE or SalesRep provide Access 
                     if(currentUserIsAE || (currentUserIsSalesRep && salesRepMemberAccountIdSet.contains(quote.SBQQ__Account__c))){
                         addToAEorSalesRepShareMap(quote.Id,currentLoggedInUserId,quoteIdToAESalesRepShareMap);
+                    }
+                    if(quote.Pricing_Intel_Sales_Rep_Email_Txt__c == null && isPartnerUser){
+                        quoteIdWithOutSDMLst.add(quote.id);
                     }
                     if (quote.Pricing_Account_Executive_Nm__c != null){
                         quoteIdToQuoteMap.put(quote.id,quote);
@@ -276,15 +281,18 @@ public without sharing class QuoteBusinessLogic{
                 if(!quoteIdITSAddToQTMMap.isEmpty()){
                     qtmTobeInserted.addAll(createITSDefaultQuoteTeamMember(quoteIdITSAddToQTMMap));
                 }
-                //Citrus change insert
+                if(!quoteIdWithOutSDMLst.isEmpty() && !test.isRunningTest()){
+                    autoPopulateSDM(quoteIdWithOutSDMLst);
+                }
+		  //Citrus change insert
                 if(!ugEndCustomerChangedQuotes.isEmpty()){
                     autoPopulateIntelAccountExceutive(ugEndCustomerChangedQuotes,lstquote);
                 }
-
+ 
             }
             if(isUpdate){ 
                 for (SBQQ__Quote__c quote : lstquote) {
-
+                    
                     if(currentUserIsAE || currentUserIsSalesRep){
                         addToAEorSalesRepShareMap(quote.Id,currentLoggedInUserId,quoteIdToAESalesRepShareMap);
                     }
@@ -344,7 +352,7 @@ public without sharing class QuoteBusinessLogic{
                     }
                     // Citrus: Auto Populate Intel Account Executive and Intel Account Executive Email
                     if(oldMap.get(quote.id).Pricing_Unified_Global_End_Customer_Nm__c != quote.Pricing_Unified_Global_End_Customer_Nm__c && quote.Pricing_Unified_Global_End_Customer_Nm__c != null){
-                        ugEndCustomerChangedQuotes.put(quote.Pricing_Unified_Global_End_Customer_Nm__c, quote);
+                              ugEndCustomerChangedQuotes.put(quote.Pricing_Unified_Global_End_Customer_Nm__c, quote);
                     }
                     if(oldMap.get(quote.id).Pricing_On_Hold_Cb__c != quote.Pricing_On_Hold_Cb__c && quote.Pricing_On_Hold_Cb__c == true){
                         Pricing_Quote_Hold_Status_Age__c onHoldEntry = new Pricing_Quote_Hold_Status_Age__c();
@@ -358,11 +366,11 @@ public without sharing class QuoteBusinessLogic{
                     
                     if((oldMap.get(quote.id).Pricing_On_Hold_Cb__c != quote.Pricing_On_Hold_Cb__c && quote.Pricing_On_Hold_Cb__c == false) || (oldMap.get(quote.id).Pricing_On_Hold_Comment__c != quote.Pricing_On_Hold_Comment__c)){
                         quoteIdForOnHoldUpdate.add(quote.id);
-                    }
+                    }                   
                 }
-                    if(!insertOnHoldRec.isEmpty()){
-                        insert insertOnHoldRec;
-                    }
+                if(!insertOnHoldRec.isEmpty()){
+                    insert insertOnHoldRec;
+                } 
                 
                 if(!quotewithOwnerChangeMap.isEmpty()){
                     updateOwneronComments(quotewithOwnerChangeMap);
@@ -378,7 +386,28 @@ public without sharing class QuoteBusinessLogic{
                 
                 // Citrus: Auto Populate Intel Account Executive and Intel Account Executive Email
                 autoPopulateIntelAccountExceutive(ugEndCustomerChangedQuotes,lstquote);
-               
+                /*if (!ugEndCustomerChangedQuotes.isEmpty()) {
+                    Map<Id, Account> quoteToIntelAccRecMap = getIntelAccByUnifiedEndCustomer(ugEndCustomerChangedQuotes,lstquote);
+                    
+                    for (SBQQ__Quote__c q : lstquote) {
+                        String salesRepEmail = q.Pricing_Intel_Sales_Rep_Email_Txt__c;
+                        Account acc = quoteToIntelAccRecMap.get(q.Id);
+                        Boolean isAccountExecutiveAndEmailBlank = q.Pricing_Account_Executive_Nm__c == null && q.Pricing_Intel_Account_Exec_Email_Txt__c == null;
+                       // system.debug('OwnerId >> '+acc.OwnerId);
+                      quoteList.add(new SBQQ__Quote__c(
+                            Id = q.Id,
+                            Pricing_Account_Executive_Nm__c = isAccountExecutiveAndEmailBlank ? (acc != null ? (acc.Owner !=null && acc.Owner.Email != salesRepEmail ? acc.OwnerId: null): null) : q.Pricing_Account_Executive_Nm__c,
+                            Pricing_Intel_Account_Exec_Email_Txt__c = isAccountExecutiveAndEmailBlank ? (acc != null && acc.Owner !=null && acc.Owner.Email !=null && acc.Owner.Email != salesRepEmail ? acc.Owner.Email : null) : q.Pricing_Intel_Account_Exec_Email_Txt__c,
+                            Pricing_Is_Covered_Account_cb__c = acc != null ? acc.Core_Covered_Account__c : false
+                            
+                        ));
+                    }
+                }
+                if (!quoteList.isEmpty()) {
+                    SBQQ.TriggerControl.disable();
+                    update quoteList;
+                    SBQQ.TriggerControl.enable();
+                }*/
                 skipMethodExecution = false;
             }
             
@@ -487,7 +516,8 @@ public without sharing class QuoteBusinessLogic{
         skipMethodExecution = true;
         
         for(String ownerEmail : ownerEmailToAccount.keyset()){
-            
+            system.debug('validEmailIdSet>>'+validEmailIds);
+            system.debug('accountExecutiveSelfAssignment>>'+userEmailToUserHaveAEPermission);
             
             if(validEmailIds.contains(ownerEmail) && userEmailToUserHaveAEPermission.containsKey(ownerEmail) && String.isNotBlank(ownerEmailToAccount.get(ownerEmail).Core_Business_Party_Id__c)){
                 bpIdToAccount.put(ownerEmailToAccount.get(ownerEmail).Core_Business_Party_Id__c, ownerEmailToAccount.get(ownerEmail));
@@ -520,7 +550,7 @@ public without sharing class QuoteBusinessLogic{
         update onHoldRec;
         SBQQ.TriggerControl.enable();
     }
-
+    
     @future
     public Static void changeOwnerId(Set<Id> quoteIdLst){
         List<SBQQ__Quote__c> quotePrimaryContactUpdate = new List<SBQQ__Quote__c>([select id,Pricing_Primary_Contact_Email__c from SBQQ__Quote__c where id in : quoteIdLst]);
@@ -540,15 +570,15 @@ public without sharing class QuoteBusinessLogic{
             update quotePrimaryContactUpdate;
             SBQQ.TriggerControl.enable();
         } catch (exception ex){
-              Pricing_Tender_Utility.logError(ex);
+            Pricing_Tender_Utility.logError(ex);
         }
     }
     
     /**
-    * @description delete quote shares after removing the AE
-    * @author Subhanku | 12-19-2022 
-    * @param Map<Id Id> aeoldQuoteIdMap 
-    **/
+* @description delete quote shares after removing the AE
+* @author Subhanku | 12-19-2022 
+* @param Map<Id Id> aeoldQuoteIdMap 
+**/
     @future
     public static void deleteShareQuoteFuture(Map<Id,Id> aeoldQuoteIdMap){
         List<SBQQ__Quote__Share> quoteShareList=new List<SBQQ__Quote__Share>();
@@ -590,11 +620,11 @@ public without sharing class QuoteBusinessLogic{
     }
     
     /**
-    * @description: Get the list of Quote Comments questions set from the custom metadata
-    * @author Bharath | 05-26-2022 
-    * @param
-    * @return List<Core_CPQ_Tender_Comments__mdt>> 
-    **/
+* @description: Get the list of Quote Comments questions set from the custom metadata
+* @author Bharath | 05-26-2022 
+* @param
+* @return List<Core_CPQ_Tender_Comments__mdt>> 
+**/
     private static Map<String,List<Core_CPQ_Tender_Comments__mdt>> RetrieveComments(){
         List<Core_CPQ_Tender_Comments__mdt> result = new List<Core_CPQ_Tender_Comments__mdt>();
         Map<String,List<Core_CPQ_Tender_Comments__mdt>> commentsMetaDataMap = new Map<String,List<Core_CPQ_Tender_Comments__mdt>>();
@@ -616,11 +646,11 @@ public without sharing class QuoteBusinessLogic{
     }
     
     /**
-    * @description: Method to insert Quote Comments and associate the quote comments to the Quote on after insert of the Quote record
-    * @author Bharath | 05-26-2022 
-    * @param List<SBQQ__Quote__c> lstquote
-    * @return 
-    **/
+* @description: Method to insert Quote Comments and associate the quote comments to the Quote on after insert of the Quote record
+* @author Bharath | 05-26-2022 
+* @param List<SBQQ__Quote__c> lstquote
+* @return 
+**/
     public static void updateQuoteCommnents(List<SBQQ__Quote__c> lstquote){
         if(lstquote!=null && !lstquote.isEmpty()){
             List<Pricing_Comments__c> tobeInserted = new List<Pricing_Comments__c>();
@@ -660,10 +690,10 @@ public without sharing class QuoteBusinessLogic{
     
     
     /**
-    * @description Insert Document Share Record on After Insert of Quote
-    * @author Subhanku | 12-19-2022 
-    * @param List<SBQQ__Quote__c> lstquote 
-    **/
+* @description Insert Document Share Record on After Insert of Quote
+* @author Subhanku | 12-19-2022 
+* @param List<SBQQ__Quote__c> lstquote 
+**/
     public static void insertDocumentShareOnQuote(List<SBQQ__Quote__c> lstquote){
         if(lstquote!=null && !lstquote.isEmpty()){
             List<Pricing_Document__c> docInsertList=new List<Pricing_Document__c>();
@@ -688,14 +718,15 @@ public without sharing class QuoteBusinessLogic{
     
     //-----------------------Start - Refactored code------------------------------------------------------------------------------------//
     /**
-    * @description Method called from before trigger to update the quote details based on values
-    * @author Subhanku | 12-19-2022 
-    * @param List<SBQQ__Quote__c> lstquote 
-    * @param Boolean isInsert 
-    * @param Map<Id SBQQ__Quote__c> oldMap 
-    **/
+* @description Method called from before trigger to update the quote details based on values
+* @author Subhanku | 12-19-2022 
+* @param List<SBQQ__Quote__c> lstquote 
+* @param Boolean isInsert 
+* @param Map<Id SBQQ__Quote__c> oldMap 
+**/
     public static void updateQuoteDetails(List<SBQQ__Quote__c> lstquote, Boolean isInsert,Map<Id,SBQQ__Quote__c> oldMap) {
         if(lstquote!=null && !lstquote.isEmpty()){
+            
             try{
                 Id partnerAccountId;
                 boolean hasAPIPermissionSet = false;
@@ -729,7 +760,6 @@ public without sharing class QuoteBusinessLogic{
                 Map<Id,Boolean> quoteIdtoIsFSEUserMap = new Map<Id,Boolean>();
                 Set<String> userEmailSetFI = new Set<String>();
                 Map<String,Id> userEmailtoIdMapFI = new Map<String,Id>();
-                Boolean isFIQuote = false;
                 
                 Id EditId = Pricing_Tender_Utility.getRecordTypeId('SBQQ__Quote__c',Label.Pricing_Tender_Quote_RecordType_Edit);
                 Id EditIdClient = Pricing_Tender_Utility.getRecordTypeId('SBQQ__Quote__c',Label.Pricing_Tender_Client_Quote_RecordType_Edit);
@@ -741,7 +771,7 @@ public without sharing class QuoteBusinessLogic{
                 List<SBQQ__Quote__c> updateUnifiedEndQuoteList = new List<SBQQ__Quote__c>();
                 List<String> primaryEmailList = new List<String>();
                 List<String> primaryContactIdList = new List<String>();
-                
+                List<Pricing_AI_Host_Node_Soft_Warning__e> events = new List<Pricing_AI_Host_Node_Soft_Warning__e>();
                 for (SBQQ__Quote__c quote : lstquote){
                     quotesMap.put(quote.id,quote);
                     if(quote.Pricing_Primary_Contact_Email__c != null){
@@ -750,28 +780,45 @@ public without sharing class QuoteBusinessLogic{
                     if(quote.SBQQ__PrimaryContact__c != null){
                         primaryContactIdList.add (quote.SBQQ__PrimaryContact__c);
                     }
-                   
-                    
-                    //Low Touch No Touch
+                    system.debug('AI Host Node current value>>' + quote.Pricing_AI_Host_Node_cb__c );
+                    // Citrus-Change Start- AI Host Node Changes - Showing soft warning to user when AI Host Node set to true and set the exclude volume exception true
+                    if (isUpdate && quote.Pricing_AI_Host_Node_cb__c != oldMap.get(quote.Id).Pricing_AI_Host_Node_cb__c
+                        && quote.Pricing_AI_Host_Node_cb__c == true && quote.Pricing_Program_Type_Nm__c == Label.Pricing_Tender_Standard_Quote) {
+                            events.add(new Pricing_AI_Host_Node_Soft_Warning__e(
+                                RecordId__c = quote.Id,
+                                AI_Host_Node_Value__c = quote.Pricing_AI_Host_Node_cb__c
+                            ));
+                            if(quote.Pricing_Overall_Quote_Quantity_CPU__c != 0 && quote.Pricing_Overall_Quote_Quantity_CPU__c < Integer.valueOf(Label.Pricing_DataCenterCPU_Overall_Quantity_Min)){
+                                quote.Pricing_Exclude_from_Volume_Excep_Quota__c = true;
+                                quote.Pricing_Quota_Exclusion_Reason__c = null;
+                            }
+                        }
+                   //Low Touch No Touch
                     if (isUpdate && quote.Pricing_Route_Rule_Name_Txt__c != oldMap.get(quote.Id).Pricing_Route_Rule_Name_Txt__c && !String.isBlank(quote.Pricing_Pricing_Manager__c) 
-                         && (quote.Pricing_Program_Type_Nm__c == Label.Pricing_Tender_Standard_Quote || quote.Pricing_Program_Type_Nm__c == Label.Pricing_Tender_CCG_Quote)) {
+                        && quote.Pricing_Program_Type_Nm__c == Label.Pricing_Tender_Standard_Quote) {
                             quote.Pricing_Pricing_Manager_Group_Name_Txt__c = null;
                             quote.Pricing_Pricing_Manager_Group_Label_Txt__c = null;
-                           
+                            //quote.Pricing_ReRouting_Reason_Nm__c = null;
                         }else if (isUpdate && quote.Pricing_Route_Rule_Name_Txt__c != oldMap.get(quote.Id).Pricing_Route_Rule_Name_Txt__c && !String.isBlank(quote.Pricing_Pricing_Manager_Group_Name_Txt__c) 
-                         && (quote.Pricing_Program_Type_Nm__c == Label.Pricing_Tender_Standard_Quote || quote.Pricing_Program_Type_Nm__c == Label.Pricing_Tender_CCG_Quote)) {
-                            quote.Pricing_Pricing_Manager__c = null;
-                           
-                        }
+                                  && quote.Pricing_Program_Type_Nm__c == Label.Pricing_Tender_Standard_Quote) {
+                                      quote.Pricing_Pricing_Manager__c = null;
+                                      //quote.Pricing_ReRouting_Reason_Nm__c = null;
+                                  }
+                    
                     if (isUpdate && FeatureManagement.checkPermission('Pricing_Tender_Regional_Pricing_Manager') && quote.Pricing_Route_Rule_Name_Txt__c == oldMap.get(quote.Id).Pricing_Route_Rule_Name_Txt__c && quote.Pricing_Pricing_Manager__c != oldMap.get(quote.Id).Pricing_Pricing_Manager__c && !String.isBlank(quote.Pricing_ReRouting_Reason_Nm__c) &&
-                        (quote.Pricing_Program_Type_Nm__c == Label.Pricing_Tender_Standard_Quote || quote.Pricing_Program_Type_Nm__c == Label.Pricing_Tender_CCG_Quote)) {
+                        quote.Pricing_Program_Type_Nm__c == Label.Pricing_Tender_Standard_Quote) {
+                            quote.Pricing_Quote_Routing_Category_Nm__c = null;
                             quote.Pricing_Route_Rule_Name_Txt__c = null;
                             quote.Pricing_Pricing_Manager_Group_Name_Txt__c = null;
                             quote.Pricing_Pricing_Manager_Group_Label_Txt__c = null;
                             quote.Pricing_Route_Rule_Id_Txt__c = null;
                         }
                 }
-               
+                if (!events.isEmpty()) {
+                    system.debug('>>Inside Events');
+                    EventBus.publish(events); // Publish Immediately
+                }
+                //Citrus - Change End 
                 List<String> apiUserPermissionSets = label.Pricing_IQR_API_UserPermissionSets.split(',');
                 for (PermissionSetAssignment psa : currentUser.PermissionSetAssignments) {
                     if(apiUserPermissionSets.contains(psa.PermissionSet.Name)){
@@ -784,17 +831,19 @@ public without sharing class QuoteBusinessLogic{
                         isRPMUser = true;
                     }
                 }
-
-                for(Pricing_Quote_Hold_Status_Age__c quoteHoldAge: [Select Id, Pricing_QuoteOnHold__c, Pricing_QuoteOnHold_User_Role__c
-                                                                    FROM Pricing_Quote_Hold_Status_Age__c WHERE Pricing_QuoteOnHold__c IN: quotesMap.keySet() AND Pricing_Is_On_Hold__c = true ORDER By CreatedDate DESC]){
-                                                                  
-                                                                    if(quoteHoldAge.Pricing_QuoteOnHold_User_Role__c == 'SDM'){
-                                                                        quoteIdtoIsFSEUserMap.put(quoteHoldAge.Pricing_QuoteOnHold__c, true);
+                system.debug('hasAPIPermissionSet' + hasAPIPermissionSet);
+                
+                for(Pricing_Quote_Hold_Status_Age__c quoteHoldAge: [Select Id, CreatedById, Pricing_QuoteOnHold__c,Pricing_QuoteOnHold__r.Pricing_On_Hold_Cb__c ,
+                                                                    Pricing_QuoteOnHold_User_Role__c, Pricing_QuoteOnHold_Start_Time__c,Pricing_QuoteOnHold_End_Time__c,
+                                                                    Pricing_OnHold_Cummulative_Time__c,Pricing_Is_On_Hold__c FROM Pricing_Quote_Hold_Status_Age__c WHERE Pricing_QuoteOnHold__c IN: quotesMap.keySet() AND Pricing_Is_On_Hold__c = true ORDER By CreatedDate DESC]){
+                                                                        
+                                                                        if(quoteHoldAge.Pricing_QuoteOnHold_User_Role__c == 'SDM'){
+                                                                            quoteIdtoIsFSEUserMap.put(quoteHoldAge.Pricing_QuoteOnHold__c, true);
+                                                                        }
+                                                                        else{
+                                                                            quoteIdtoIsFSEUserMap.put(quoteHoldAge.Pricing_QuoteOnHold__c, false);
+                                                                        }
                                                                     }
-                                                                    else{
-                                                                        quoteIdtoIsFSEUserMap.put(quoteHoldAge.Pricing_QuoteOnHold__c, false);
-                                                                    }
-                }
                 
                 if(currentUser.Core_User_Profile_Name__c == Label.Pricing_Tender_Profiles_Partner && !hasAPIPermissionSet){
                     partnerAccountId = currentUser.contact.accountId;
@@ -818,11 +867,10 @@ public without sharing class QuoteBusinessLogic{
                     Id priceBookId = [SELECT Id FROM Pricebook2 WHERE Name = 'DCG Price Book' LIMIT 1].Id;
                     
                     for (SBQQ__Quote__c quote : lstquote){
-
-                        if(quote.Pricing_Program_Type_Nm__c == Label.Pricing_Tender_FinancialIncentive_Quote) {
-                            isFIQuote = true;
-                        }
-
+                        
+                        // TWC1972-4065 : Remove special sequence characters in text fields
+                        quote.Pricing_Customer_Nm__c = String.isBlank(quote.Pricing_Customer_Nm__c) ? quote.Pricing_Customer_Nm__c : String.valueOf(quote.Pricing_Customer_Nm__c.unescapeJava()).replaceAll('[\\t\\n\\r]', '').replaceAll( '\\s+', ' ');
+                        quote.Pricing_Project_Name_Nm__c = String.isBlank(quote.Pricing_Project_Name_Nm__c) ? quote.Pricing_Project_Name_Nm__c : String.valueOf(quote.Pricing_Project_Name_Nm__c.unescapeJava()).replaceAll('[\\t\\n\\r]', '').replaceAll( '\\s+', ' ');
                         
                         populatePrimaryContactAndAccount(quote,partnerAccountId,userContactIds,emailToContactIdMap,contactIdToEmailMap);
                         
@@ -831,7 +879,7 @@ public without sharing class QuoteBusinessLogic{
                         if(quote.Pricing_Program_Type_Nm__c == Label.Pricing_Tender_Small_Volume_Quote && !accountIdSVDSet.contains(quote.SBQQ__Account__c)){
                             accountIdSVDSet.add(quote.SBQQ__Account__c);
                         }
-
+                        
                         if(quote.Pricing_Customer_Nm__c == null){
                             endCustomerIdSet.add(quote.Pricing_End_Customer__c);
                         }
@@ -855,18 +903,18 @@ public without sharing class QuoteBusinessLogic{
                         quote.RecordTypeId = quote.Pricing_Program_Type_Nm__c == Label.Pricing_Tender_CCG_Quote ? EditIdClient : quote.Pricing_Program_Type_Nm__c == Label.Pricing_Tender_FinancialIncentive_Quote ? SubmittedIdFinancialIncentive : EditId;
                         quote.SBQQ__PricebookId__c = priceBookId;
                         quote.SBQQ__QuoteTemplateId__c = quote.Pricing_Program_Type_Nm__c == Label.Pricing_Tender_FinancialIncentive_Quote? Label.Pricing_FI_QuoteLetterEmailNotificationTemplate:Label.Pricing_Quote_Template;
-
+                        
                         //To update Unified Global End customer on Insert
                         if(quote.Pricing_End_Customer__c!=null && quote.Pricing_Customer_Nm__c == null && !updateUnifiedEndQuoteList.contains(quote)){
                             updateUnifiedEndQuoteList.add(quote);
                         }
                     }
-
+                    
                     //Populate folio Id Name
                     if(!accountIdSet.isEmpty()){
                         getAccountToNameMap(accountIdSet,accountIdNameMap);
                     }
-
+                    
                     if(!endCustomerIdSet.isEmpty()){
                         getEndCustIdToNameMap(endCustomerIdSet,endCustomerIdNameMap);
                     }
@@ -874,32 +922,32 @@ public without sharing class QuoteBusinessLogic{
                     if(!userContactIds.isEmpty()){
                         getUsrContactDtlsMap(userContactIds,userContactDtls);
                     }
-
+                    
                     //Check Cap size volume for SVD Quotes
                     if(!accountIdSVDSet.isEmpty()){
                         getSVDCapSizeMap(accountIdSVDSet,accountIdSVDQuoteNumberMap);
                     }
-
+                    
                     //Populate Account Name for Quote Letter
-                   if(!quotesMap.isEmpty()){
+                    if(!quotesMap.isEmpty()){
                         accountNamePopulate(quotesMap, accountIdtoRecordMap,false);
                     } 
                     
+                    system.debug('accountIdSVDQuoteNumberMap:'+accountIdSVDQuoteNumberMap);
                     //Check Cap size volume for SVD Quotes 
                     if(!accountIdSVDQuoteNumberMap.isEmpty()){
                         checkSVDMaxVolume(accountIdSVDQuoteNumberMap,lstquote);
                     }
                     
-
+                    
                     // Get sales rep assignment
                     if(!hasAPIPermissionSet){
-                    accountToValidEmailMap = getSalesrepMap(oemEmailIds, accountIdToSalesRepEmailMap, salesRepAssignment);
+                        system.debug('hasAPIPermissionSet inside if 777' + hasAPIPermissionSet);
+                        accountToValidEmailMap = getSalesrepMap(oemEmailIds, accountIdToSalesRepEmailMap, salesRepAssignment);
                     }
                     getAccountExecutiveMap(accountExecutiveEmailId, accountExecutiveAssignment, validEmailIdSet, accountExecutiveSelfAssignment);
-                    if(isFIQuote){
-                        getUserIdsMapFI(userEmailSetFI, userEmailtoIdMapFI);
-                    }
-
+                    getUserIdsMapFI(userEmailSetFI, userEmailtoIdMapFI);
+                    
                     // Validate PrimaryContact, SalesRep, AccountExecutive
                     for(SBQQ__Quote__c quote2 : lstquote) {
                         if(quote2.Pricing_Program_Type_Nm__c == Label.Pricing_Tender_FinancialIncentive_Quote) {
@@ -908,22 +956,27 @@ public without sharing class QuoteBusinessLogic{
                         }
                         if(quote2.Pricing_Program_Type_Nm__c != Label.Pricing_Tender_FinancialIncentive_Quote){
                             validatePrimaryContact(userContactDtls, quote2);
+                        }
+                        if(!hasAPIPermissionSet && quote2.Pricing_Program_Type_Nm__c != Label.Pricing_Tender_FinancialIncentive_Quote && quote2.Pricing_Intel_Sales_Rep_Email_Txt__c != null && !TriggerHandler.isActive('Pricing_Prevent_Sales_Rep_Validation')){
+                            system.debug('hasAPIPermissionSet inside if' + hasAPIPermissionSet);
+                            validateSalesRep(accountToValidEmailMap, quote2,salesRepAssignment); 
+                        } 
+                        if(quote2.Pricing_Program_Type_Nm__c != Label.Pricing_Tender_FinancialIncentive_Quote){
                             validateAccountExecutive(accountExecutiveAssignment, quote2, accountExecutiveSelfAssignment, quote2.Pricing_Intel_Sales_Rep_Email_Txt__c);
                             checkValidAccountExecutiveEmail(validEmailIdSet, quote2);
-                            }
-                        if(!hasAPIPermissionSet && quote2.Pricing_Program_Type_Nm__c != Label.Pricing_Tender_FinancialIncentive_Quote && quote2.Pricing_Intel_Sales_Rep_Email_Txt__c != null && !TriggerHandler.isActive('Pricing_Prevent_Sales_Rep_Validation')){
-                            validateSalesRep(accountToValidEmailMap, quote2,salesRepAssignment); 
-                        }         
+                        }           
                         //Populate Folio Id Name
                         if(quote2.Pricing_My_Deals_Folio_Name_Nm__c == null && quote2.Pricing_Program_Type_Nm__c != Label.Pricing_Tender_FinancialIncentive_Quote) {
                             populateFolioIdAndName(quote2,accountIdNameMap,endCustomerIdNameMap);
                         }
-
+                        
                         //Validate Quote Text Area fields and throw error if Non latin characters are present 
                         validateQuoteTextFieldsForLatinChars(quote2,oldMap,true); 
+                        
+                  
                     }  
                 }
-
+                
                 if(isUpdate){
                     Set<Id> quoteIdWithSalesRepChange = new Set<Id>();
                     Set<Id> quoteIdWithPrimaryContactChange = new Set<Id>();
@@ -940,6 +993,8 @@ public without sharing class QuoteBusinessLogic{
                     Map<Id, Boolean> quoteIdwithProdMap = new Map<Id, Boolean>();
                     Map<Id, Boolean> quoteIdvalidEndCustomerMap = new Map<Id, Boolean>();
                     Set<String> accountIds = new Set<String>();
+                    //Set<Id> quoteIds = new Set<Id>();
+                    //List<SBQQ__QuoteLine__c> qlList = new List<SBQQ__QuoteLine__c>();
                     
                     getQuoteStatusAndRecTypeMap(quoteLineNumberToStatusMap,quoteLineNumberToRecordTypeMap,quoteLineNumberToClientRecordTypeMap,quoteLineNumberToFinancialIncentiveRecordTypeMap,SubmittedIdFinancialIncentive,ReadOnlyIdFinancialIncentive,EditId,EditIdClient);
                     
@@ -947,9 +1002,13 @@ public without sharing class QuoteBusinessLogic{
                     Set<Id> quoteIdWithFolioErrorSet = new Set<Id>(); 
                     Set<Id> quoteIdWithStartDatechange = new Set<Id>();
                     List<SBQQ__QuoteLine__c> quoteLineList = new List<SBQQ__QuoteLine__c>();
-
+                    
                     for (SBQQ__Quote__c quote : lstquote){
-
+                        
+                        // TWC1972-4065 : Remove special sequence characters in text field
+                        quote.Pricing_Customer_Nm__c = (!String.isBlank(quote.Pricing_Customer_Nm__c) && quote.Pricing_Customer_Nm__c != oldMap.get(quote.Id).Pricing_Customer_Nm__c) ? String.valueOf(quote.Pricing_Customer_Nm__c.unescapeJava()).replaceAll('[\\t\\n\\r]', '').replaceAll( '\\s+', ' ') : quote.Pricing_Customer_Nm__c;
+                        quote.Pricing_Project_Name_Nm__c = !String.isBlank(quote.Pricing_Project_Name_Nm__c) && quote.Pricing_Project_Name_Nm__c != oldMap.get(quote.Id).Pricing_Project_Name_Nm__c ? String.valueOf(quote.Pricing_Project_Name_Nm__c.unescapeJava()).replaceAll('[\\t\\n\\r]', '').replaceAll( '\\s+', ' ') : quote.Pricing_Project_Name_Nm__c;
+                        
                         if(quote.Pricing_My_Deals_Folio_Name_Nm__c != oldMap.get(quote.Id).Pricing_My_Deals_Folio_Name_Nm__c){
                             if(quote.Pricing_Folio_ID_Nm__c != null){
                                 quoteIdWithFolioErrorSet.add(quote.Id);        
@@ -959,13 +1018,15 @@ public without sharing class QuoteBusinessLogic{
                         }
                         
                         if(quote.Pricing_ShipmentStDate_Dt__c != oldMap.get(quote.Id).Pricing_ShipmentStDate_Dt__c && !hasAPIPermissionSet){
+                            system.debug('8551:'+oldMap.get(quote.Id).Pricing_ShipmentStDate_Dt__c);
+                            system.debug('8551:'+quote.Pricing_ShipmentStDate_Dt__c);
                             quoteIdWithStartDatechange.add(quote.Id);
                         }
-
+                        
                         if(quote.Pricing_Intel_Sales_Rep_Email_Txt__c == null){
                             quote.SBQQ__SalesRep__c = null;
                         }
-
+                        
                         // Sales rep is mandatory field, get thos with only changes for validation
                         if(quote.Pricing_Intel_Sales_Rep_Email_Txt__c != null && oldMap.get(quote.id).Pricing_Intel_Sales_Rep_Email_Txt__c != quote.Pricing_Intel_Sales_Rep_Email_Txt__c){
                             oemEmailIds.add(quote.Pricing_Intel_Sales_Rep_Email_Txt__c);
@@ -974,7 +1035,7 @@ public without sharing class QuoteBusinessLogic{
                                 getAccountToSalesRepEmailMap(quote,quote.Pricing_Intel_Sales_Rep_Email_Txt__c,accountIdToSalesRepEmailMap);
                             }
                         }   
-
+                        
                         // Account executive is not a mandatory field, get thos with only changes for validation or make AE lookup bnull               
                         if(quote.Pricing_Intel_Account_Exec_Email_Txt__c != null){
                             accountExecutiveEmailId.add(quote.Pricing_Intel_Account_Exec_Email_Txt__c);
@@ -986,24 +1047,24 @@ public without sharing class QuoteBusinessLogic{
                         }else {
                             quote.Pricing_Account_Executive_Nm__c = null;
                         }
-
+                        
                         // opportunity field is non mandatory fields
                         if(quote.Pricing_End_Customer_Opportunity_Txt__c != null){
                             opportunityIdToQuoteId.put(quote.Pricing_End_Customer_Opportunity_Txt__c,quote.id);
                         }
-
+                        
                         checkOwnerAndPrimaryContactChange(oldMap,quote,userContactIds,allPrimaryContactIds,quoteIdWithPrimaryContactChange,quoteIdWithOwnerChange,emailToContactIdMap,contactIdToEmailMap);
                         //Change Primary contact if Primary contact is Drafter or Drafter Limited on Submission
                         if((oldMap.get(quote.id).Pricing_Status_Precedence_Number__c==10) && (quote.Pricing_Status_Precedence_Number__c ==30 || quote.Pricing_Status_Precedence_Number__c ==40)){
                             quoteIdWithPrecedenceNumber.put(quote.id,quote.Pricing_Status_Precedence_Number__c);
                         }
-
+                        
                         //Update Unified Global End Customer if End Customer/End customer region is changed
                         if(((oldMap.get(quote.id).Pricing_End_Customer__c!=quote.Pricing_End_Customer__c && quote.Pricing_Customer_Nm__c == null) ||
                             oldMap.get(quote.id).Pricing_End_Customer_Country_Nm__c!=quote.Pricing_End_Customer_Country_Nm__c )&& !updateUnifiedEndQuoteList.contains(quote)){
                                 updateUnifiedEndQuoteList.add(quote);
-                        }
-
+                            }
+                        
                         if((oldMap.get(quote.id).Pricing_Customer_Nm__c!=quote.Pricing_Customer_Nm__c) && quote.Pricing_Customer_Nm__c!=null){
                             quote.Pricing_Unified_Global_End_Customer_Nm__c = null;                            
                         }
@@ -1022,15 +1083,15 @@ public without sharing class QuoteBusinessLogic{
                             quote.addError(label.Pricing_Tender_Hold_Comments_Mandatory_Error_Message);
                         }
                     }
-
+                    
                     if(!allPrimaryContactIds.isEmpty()){
                         getUsrDtlsMapAndDrafterSet(userContactIds,allPrimaryContactIds,contactIdWithDrafterLimitedSet,userContactDtls);
                     }
-
+                    
                     if(!hasAPIPermissionSet && !oemEmailIds.isEmpty()) {              
                         accountToValidEmailMap = getSalesrepMap(oemEmailIds,accountIdToSalesRepEmailMap, salesRepAssignment);
                     }
-                   
+                    system.debug('skipMethodExecution>>'+skipMethodExecution);
                     if(!accountExecutiveEmailId.isEmpty() && !skipMethodExecution) {              
                         getAccountExecutiveMap(accountExecutiveEmailId, accountExecutiveAssignment, validEmailIdSet ,accountExecutiveSelfAssignment);
                     }
@@ -1039,22 +1100,22 @@ public without sharing class QuoteBusinessLogic{
                     if(!opportunityIdToQuoteId.isEmpty()){
                         getOpportunityMap(opportunityIdToQuoteId,opportunityDetails,quoteIdToOppRecdMap,false);
                     }
-
+                    
                     if(!quoteIdWithFolioNameChangeSet.isEmpty()){
                         checkForIntegrationError(quoteIdWithFolioNameChangeSet,quoteIdWithFolioErrorSet);               
                     }
-
+                    
                     if(!oppIdtoQuoteIdMap.isEmpty()){
                         validateQLIProductagainstOpportunityProduct(oppIdtoQuoteIdMap, quoteIdwithProdMap);
                         getOpportunityMap(oppIdtoQuoteIdMap,opportunityDetails,quoteIdToOppRecdMap,true);
                         validateEndCustOfQuoteAndOppty(oppIdtoQuoteIdMap,quoteIdvalidEndCustomerMap);
                     }
-
+                    
                     Map<Id,List<SBQQ__QuoteLine__c>> quotelineStartDateChange = new Map<Id,List<SBQQ__QuoteLine__c>>();
                     if(!quoteIdWithStartDatechange.isEmpty()) {
                         getQuoteToStartDateMap(quoteIdWithStartDatechange,quotelineStartDateChange);
                     }
-
+                    
                     for (SBQQ__Quote__c quote : lstquote){
                         if(quoteIdWithFolioErrorSet.contains(quote.Id)){
                             quote.addError(Label.Pricing_Folio_Validation_Error_Message);
@@ -1068,7 +1129,7 @@ public without sharing class QuoteBusinessLogic{
                         }
                         if(!quoteIdWithPrecedenceNumber.isEmpty()&& !contactIdWithDrafterLimitedSet.isEmpty())
                         {
-                            checkPrimaryContactIsDrafterLimited(quoteIdWithPrecedenceNumber,contactIdWithDrafterLimitedSet,quote,currentUser);          
+                            checkPrimaryContactIsDrafterLimited(quoteIdWithPrecedenceNumber,contactIdWithDrafterLimitedSet,quote,currentUser);					
                         }
                         if(quote.Pricing_Program_Type_Nm__c != Label.Pricing_Tender_FinancialIncentive_Quote && quoteIdWithPrimaryContactChange.contains(quote.Id)){
                             validatePrimaryContact(userContactDtls, quote);
@@ -1084,9 +1145,11 @@ public without sharing class QuoteBusinessLogic{
                            quote.ownerid != userContactDtls.get(quote.SBQQ__PrimaryContact__c).Id){
                                quote.addError(Label.Pricing_Tender_Owner_Change_Error);
                            }
+                        System.debug('Before calling the validateOpportunity checking quoteIdsWithInvalidEndCustomerOpportunityId: ' + quoteIdsWithInvalidEndCustomerOpportunityId);
                         if(!quoteIdsWithInvalidEndCustomerOpportunityId.contains(quote.Id)){
-                             validateOpportunity(opportunityDetails, quote);
-			}     
+                            system.debug('Validating Opportunity for Quote Id: ' + quote.Id + ' as it is not in quoteIdsWithInvalidEndCustomerOpportunityId: ' + quoteIdsWithInvalidEndCustomerOpportunityId);
+                            validateOpportunity(opportunityDetails, quote);
+                        }  
                         statusRevertFix( quote,quoteLineNumberToStatusMap,quoteLineNumberToRecordTypeMap,quoteLineNumberToClientRecordTypeMap,quoteLineNumberToFinancialIncentiveRecordTypeMap);
                         //Validate Quote Text fields and throw error if Non latin character is present
                         validateQuoteTextFieldsForLatinChars(quote,oldMap,false);
@@ -1095,18 +1158,22 @@ public without sharing class QuoteBusinessLogic{
                         if(oldMap.get(quote.id).SBQQ__Status__c != quote.SBQQ__Status__c && quote.SBQQ__Status__c == 'Submitted'  && isVolumeExceptionCheck){
                             quote.Pricing_Volume_Exception_Quota_Cb__c = true;
                         }
-
+                        
                         //when RPM/SDM unchecks Pricing_Exclude_from_Volume_Excep_Quota__c will check again quota and if quota exists then allow or throw error
-                        if((isRPMUser || isFSEUser) && ((oldMap.get(quote.id).Pricing_Exclude_from_Volume_Excep_Quota__c != quote.Pricing_Exclude_from_Volume_Excep_Quota__c && quote.Pricing_Exclude_from_Volume_Excep_Quota__c == false)|| (oldMap.get(quote.id).Pricing_Quota_Exclusion_Reason__c != quote.Pricing_Quota_Exclusion_Reason__c && quote.Pricing_Quota_Exclusion_Reason__c == null)) && quote.Pricing_Program_Type_Nm__c != Label.Pricing_Tender_Small_Volume_Quote){
+                        if((isRPMUser || isFSEUser) && ((oldMap.get(quote.id).Pricing_Exclude_from_Volume_Excep_Quota__c != quote.Pricing_Exclude_from_Volume_Excep_Quota__c && quote.Pricing_Exclude_from_Volume_Excep_Quota__c == false)|| (oldMap.get(quote.id).Pricing_Quota_Exclusion_Reason__c != quote.Pricing_Quota_Exclusion_Reason__c && quote.Pricing_Quota_Exclusion_Reason__c == null && quote.Pricing_AI_Host_Node_cb__c == false )) && quote.Pricing_Program_Type_Nm__c != Label.Pricing_Tender_Small_Volume_Quote){
                             accountIds.add(quote.SBQQ__Account__c);
                         }
-                        
+                        // Citrus-Change Start- AI Host Node Changes
+                        if(oldMap.get(quote.id).Pricing_Quota_Exclusion_Reason__c != quote.Pricing_Quota_Exclusion_Reason__c && quote.Pricing_AI_Host_Node_cb__c == true && quote.Pricing_Program_Type_Nm__c == Label.Pricing_Tender_Standard_Quote){
+                            quote.Pricing_Quota_Exclusion_Reason__c = null;
+                        }
                         // Validate if Quoteline is present or not for validating against Opportunity Product
                         if(quoteIdtoProdMap.isEmpty() && ((oldMap.get(quote.id).Pricing_End_Customer_Opportunity_Txt__c != quote.Pricing_End_Customer_Opportunity_Txt__c && quote.Pricing_End_Customer_Opportunity_Txt__c != null) || (oldMap.get(quote.id).SBQQ__Opportunity2__c != quote.SBQQ__Opportunity2__c && quote.SBQQ__Opportunity2__c != null)) && quote.Pricing_Quote_Program_Nm__c == Label.Pricing_Tender_Quote_Program){
                             quote.addError(Label.Pricing_No_QL_For_Opportunity);
                         }
                         //Validate if no Opportunity Products are present for validating against Quote Line product 
                         else if(quoteIdwithProdMap.isEmpty() && ((oldMap.get(quote.id).Pricing_End_Customer_Opportunity_Txt__c != quote.Pricing_End_Customer_Opportunity_Txt__c && quote.Pricing_End_Customer_Opportunity_Txt__c != null) || (oldMap.get(quote.id).SBQQ__Opportunity2__c != quote.SBQQ__Opportunity2__c && quote.SBQQ__Opportunity2__c != null)) && quote.Pricing_Quote_Program_Nm__c == Label.Pricing_Tender_Quote_Program){
+                            system.debug('KD Testing quoteIdwithProdMap: '+quoteIdwithProdMap);
                             quote.addError(Label.Pricing_No_OppLineItems_For_Opportunity);
                         }
                         // Validate if one of the same product is present in both Opportunity and Quoteline 
@@ -1123,50 +1190,53 @@ public without sharing class QuoteBusinessLogic{
                            || (oldMap.get(quote.Id).SBQQ__Account__c != quote.SBQQ__Account__c) ||(oldMap.get(quote.Id).SBQQ__PrimaryContact__c != quote.SBQQ__PrimaryContact__c)
                            || (oldMap.get(quote.Id).Pricing_Region_Nm__c != quote.Pricing_Region_Nm__c)||(oldMap.get(quote.Id).SBQQ__SalesRep__c != quote.SBQQ__SalesRep__c) 
                            || (oldMap.get(quote.Id).Pricing_Server_Deal_Type_Nm__c != quote.Pricing_Server_Deal_Type_Nm__c) || (oldMap.get(quote.Id).Pricing_Market_Segment_values_Nm__c != quote.Pricing_Market_Segment_values_Nm__c)){
-                            QuoteLineBusinessLogic.changeTwinField = true;
-                        }
+                               QuoteLineBusinessLogic.changeTwinField = true;
+                           }
+                        
                     }
                     if(accountIds.size() > 0){
                         validateExcludeVolExcepQuota(accountIds,lstquote);
                     }
                 }
-
+                
                 //Unified End Customer
                 if(!updateUnifiedEndQuoteList.isEmpty()){
                     updateUnifiedEndCustomerQuote(updateUnifiedEndQuoteList);
                 }
             } catch(exception ex){Pricing_Tender_Utility.logError(ex);}
         }
-    }         
+    }   
     
-
+    
     /**
-    * @description Method to throw error  when ever Pricing_Exclude_from_Volume_Excep_Quota__c is uncheck and Volume Quota is exhausted.
-    * @author ChangeMeIn@UserSettingsUnder.SFDoc | 02-05-2025 
-    * @param accountIds 
-    * @param lstquote 
-    **/
+* @description Method to throw error  when ever Pricing_Exclude_from_Volume_Excep_Quota__c is uncheck and Volume Quota is exhausted.
+* @author ChangeMeIn@UserSettingsUnder.SFDoc | 02-05-2025 
+* @param accountIds 
+* @param lstquote 
+**/
     public static void validateExcludeVolExcepQuota(Set<String> accountIds,List<SBQQ__Quote__c> lstquote){
         Map<String,String> quoteCreationAllowed = new Map<String,String>(Pricing_Manage_Small_Volume_Deal.capSizeCheckToCreation(accountIds,false)); 
         if(!quoteCreationAllowed.isEmpty()){
             for(SBQQ__Quote__c quote : lstquote){
                 if((quote.Pricing_Program_Type_Nm__c == Label.Pricing_Tender_CCG_Quote || quote.Pricing_Program_Type_Nm__c == Label.Pricing_Tender_Standard_Quote) && quoteCreationAllowed.containsKey(quote.Pricing_Program_Type_Nm__c) && quoteCreationAllowed.get(quote.Pricing_Program_Type_Nm__c).split(':')[0] == 'false'){
                     String quantityError = Label.Pricing_ExcludeQuotaErrorMsg;
+                    //antityError = quote.Pricing_Program_Type_Nm__c == Label.Pricing_Tender_CCG_Quote ? quantityError.replace('{{QuoteQuantity}}',String.valueOf(quote.Pricing_Overall_Quote_Quantity__c)).replace('{{ExceptionQuantity}}',String.valueOf(Label.Pricing_Client_Overall_Quantity_Min)) : quantityError.replace('{{QuoteQuantity}}',String.valueOf(quote.Pricing_Overall_Quote_Quantity_CPU__c)).replace('{{ExceptionQuantity}}',String.valueOf(Label.Pricing_DataCenterCPU_Overall_Quantity_Min)) ;
                     quote.addError(quantityError);
                 }else{
                     quote.Pricing_Quota_Exclusion_Reason__c = null;
+                    
                 }
             }
         }
     }
-
+    
     /**
-    * @description : Method to populate Simplified Name on Quote from Pricing_Account_To_CIM_ID_Mapping__mdt Metadata on insertion of Quote and update at QuoteLetter Generation if there is any change in Names and Type.
-    * @author Divya Gangasaram | 07-19-2023 
-    *  @param Map<Id,SBQQ__Quote__c> quotesMap
-    * @param Map<Id, Account> accountIdtoRecordMap
-    * @param Boolean isSaveQuote 
-    **/
+* @description : Method to populate Simplified Name on Quote from Pricing_Account_To_CIM_ID_Mapping__mdt Metadata on insertion of Quote and update at QuoteLetter Generation if there is any change in Names and Type.
+* @author Divya Gangasaram | 07-19-2023 
+*  @param Map<Id,SBQQ__Quote__c> quotesMap
+* @param Map<Id, Account> accountIdtoRecordMap
+* @param Boolean isSaveQuote 
+**/
     public static void accountNamePopulate(Map<Id,SBQQ__Quote__c> quotesMap, Map<Id, Account> accountIdtoRecordMap,Boolean isSaveQuote){
         if(!quotesMap.isEmpty()){
             List<SBQQ__Quote__c> quoteListToUpdate = new List<SBQQ__Quote__c>();
@@ -1196,7 +1266,7 @@ public without sharing class QuoteBusinessLogic{
                     }
                     
                     if(isSaveQuote){
-                    quoteListToUpdate.add(quote);
+                        quoteListToUpdate.add(quote);
                     }
                 }
             } 
@@ -1209,13 +1279,13 @@ public without sharing class QuoteBusinessLogic{
     }
     
     /**
-    * @description Method to check if Primary Contact is Drafter Limited on submission
-    * @author Subhanku | 12-19-2022 
-    * @param Map<Id Decimal> quoteIdWithPrecedenceNumber 
-    * @param Set<Id> contactIdWithDrafterLimitedSet 
-    * @param SBQQ__Quote__c quote 
-    * @param User currentUser 
-    **/
+* @description Method to check if Primary Contact is Drafter Limited on submission
+* @author Subhanku | 12-19-2022 
+* @param Map<Id Decimal> quoteIdWithPrecedenceNumber 
+* @param Set<Id> contactIdWithDrafterLimitedSet 
+* @param SBQQ__Quote__c quote 
+* @param User currentUser 
+**/
     private static void checkPrimaryContactIsDrafterLimited(Map<Id,Decimal> quoteIdWithPrecedenceNumber,Set<Id> contactIdWithDrafterLimitedSet,SBQQ__Quote__c quote,User currentUser){       
         if(!String.isEmpty(quote.SBQQ__PrimaryContact__c) && contactIdWithDrafterLimitedSet.contains(quote.SBQQ__PrimaryContact__c)){
             if(quoteIdWithPrecedenceNumber.get(quote.id) == 40){
@@ -1230,11 +1300,11 @@ public without sharing class QuoteBusinessLogic{
     
     
     /**
-    * @description method to check if primary contact is valid and then change the owner
-    * @author Subhanku | 12-19-2022 
-    * @param Map<Id User> userContactDtls 
-    * @param SBQQ__Quote__c quote 
-    **/
+* @description method to check if primary contact is valid and then change the owner
+* @author Subhanku | 12-19-2022 
+* @param Map<Id User> userContactDtls 
+* @param SBQQ__Quote__c quote 
+**/
     private static void validatePrimaryContact(Map<Id, User> userContactDtls,  SBQQ__Quote__c quote){
         if(userContactDtls.get(quote.SBQQ__PrimaryContact__c) != null  && userContactDtls.get(quote.SBQQ__PrimaryContact__c).PermissionSetAssignments.size()>0){
             if(!isPartnerUser && quote.SBQQ__PrimaryContact__c != null){
@@ -1253,27 +1323,27 @@ public without sharing class QuoteBusinessLogic{
     
     
     /**
-    * @description method to check if sales rep is valid then assign to respective field
-    * @author Subhanku | 12-19-2022 
-    * @param Map<Id Set<String>> accountToValidEmailMap 
-    * @param SBQQ__Quote__c quote 
-    * @param Map<String PermissionSetAssignment> salesRepAssignment 
-    **/
+* @description method to check if sales rep is valid then assign to respective field
+* @author Subhanku | 12-19-2022 
+* @param Map<Id Set<String>> accountToValidEmailMap 
+* @param SBQQ__Quote__c quote 
+* @param Map<String PermissionSetAssignment> salesRepAssignment 
+**/
     private static void validateSalesRep(Map<Id,Set<String>> accountToValidEmailMap, SBQQ__Quote__c quote ,Map<String, PermissionSetAssignment> salesRepAssignment){
         if(accountToValidEmailMap.containsKey(quote.SBQQ__Account__c) && 
-        accountToValidEmailMap.get(quote.SBQQ__Account__c).contains(quote.Pricing_Intel_Sales_Rep_Email_Txt__c) &&
-        salesRepAssignment.containsKey(quote.Pricing_Intel_Sales_Rep_Email_Txt__c)){
-            quote.SBQQ__SalesRep__c = salesRepAssignment.get(quote.Pricing_Intel_Sales_Rep_Email_Txt__c).AssigneeId;        
-        }else{
-            quote.Pricing_Intel_Sales_Rep_Email_Txt__c.addError(Label.Pricing_Tender_Quote_Sales_Rep_Error_Message);
-        }  
+           accountToValidEmailMap.get(quote.SBQQ__Account__c).contains(quote.Pricing_Intel_Sales_Rep_Email_Txt__c) &&
+           salesRepAssignment.containsKey(quote.Pricing_Intel_Sales_Rep_Email_Txt__c)){
+               quote.SBQQ__SalesRep__c = salesRepAssignment.get(quote.Pricing_Intel_Sales_Rep_Email_Txt__c).AssigneeId;        
+           }else{
+               quote.Pricing_Intel_Sales_Rep_Email_Txt__c.addError(Label.Pricing_Tender_Quote_Sales_Rep_Error_Message);
+           }  
     }
     
     /**
-    * @description method to validate the pricing start date of quote and quoteline pricing end date
-    * @author Subhanku | 12-19-2022 
-    * @param List<SBQQ__QuoteLine__c> quoteListList 
-    **/
+* @description method to validate the pricing start date of quote and quoteline pricing end date
+* @author Subhanku | 12-19-2022 
+* @param List<SBQQ__QuoteLine__c> quoteListList 
+**/
     private static void validateStartDate(List<SBQQ__QuoteLine__c> quoteLineList,SBQQ__Quote__c quote){
         if(quote.Pricing_ShipmentStDate_Dt__c != null){                
             for(SBQQ__QuoteLine__c ql: quoteLineList){
@@ -1285,13 +1355,13 @@ public without sharing class QuoteBusinessLogic{
     }
     
     /**
-    * @description method to check if AE is valid then assign to respective field
-    * @author Subhanku | 12-19-2022 
-    * @param Map<String Id> accountExecutiveAssignment 
-    * @param SBQQ__Quote__c quote 
-    * @param Map<String Id> accountExecutiveSelfAssignment 
-    * @param String salesRepEmailId 
-    **/
+* @description method to check if AE is valid then assign to respective field
+* @author Subhanku | 12-19-2022 
+* @param Map<String Id> accountExecutiveAssignment 
+* @param SBQQ__Quote__c quote 
+* @param Map<String Id> accountExecutiveSelfAssignment 
+* @param String salesRepEmailId 
+**/
     private static void validateAccountExecutive(Map<String, Id> accountExecutiveAssignment, SBQQ__Quote__c quote,Map<String, Id> accountExecutiveSelfAssignment, String salesRepEmailId){
         if(accountExecutiveAssignment.get(quote.Pricing_Intel_Account_Exec_Email_Txt__c) != null){
             quote.Pricing_Account_Executive_Nm__c = accountExecutiveAssignment.get(quote.Pricing_Intel_Account_Exec_Email_Txt__c);                        
@@ -1304,18 +1374,18 @@ public without sharing class QuoteBusinessLogic{
     }
     
     /**
-    * @description method to get sales rep with valid PS
-    * @author Subhanku | 12-19-2022 
-    * @param Set<String> oemEmailIds 
-    * @param Map<Id Set<String>> accountIdToSalesRepEmailMap 
-    * @param Map<String PermissionSetAssignment> salesRepAssignment 
-    * @return Map<Id, Set<String>> 
-    **/
+* @description method to get sales rep with valid PS
+* @author Subhanku | 12-19-2022 
+* @param Set<String> oemEmailIds 
+* @param Map<Id Set<String>> accountIdToSalesRepEmailMap 
+* @param Map<String PermissionSetAssignment> salesRepAssignment 
+* @return Map<Id, Set<String>> 
+**/
     public static Map<Id,Set<String>> getSalesrepMap(Set<String> oemEmailIds, Map<Id,Set<String>> accountIdToSalesRepEmailMap , Map<String, PermissionSetAssignment> salesRepAssignment){
         Set<Id> userIdSet = new Set<Id>();
-               Map<Id,Set<String>> accountToValidEmailMap = new Map<Id,Set<String>>();
+        Map<Id,Set<String>> accountToValidEmailMap = new Map<Id,Set<String>>();
         // Get sales rep details from Supplied Sales rep emails
-                List<PermissionSetAssignment> salesRepAssignmentDtl = new List<PermissionSetAssignment>([SELECT Assignee.Email,PermissionSet.Name,AssigneeId
+        List<PermissionSetAssignment> salesRepAssignmentDtl = new List<PermissionSetAssignment>([SELECT Assignee.Email,PermissionSet.Name,AssigneeId
                                                                                                  FROM PermissionSetAssignment 
                                                                                                  WHERE Assignee.Email IN :oemEmailIds AND Assignee.IsActive = true
                                                                                                  AND PermissionSet.Name =:Label.Pricing_Tender_PermissionSets_TenderUser]);
@@ -1340,13 +1410,13 @@ public without sharing class QuoteBusinessLogic{
     }
     
     /**
-    * @description method to get AE with valid PS
-    * @author Subhanku | 12-19-2022 
-    * @param Set<String> accountExecutiveEmailId 
-    * @param Map<String Id> accountExecutiveAssignment 
-    * @param Set<String> validEmailIdSet 
-    * @param Map<String Id> accountExecutiveSelfAssignment 
-    **/
+* @description method to get AE with valid PS
+* @author Subhanku | 12-19-2022 
+* @param Set<String> accountExecutiveEmailId 
+* @param Map<String Id> accountExecutiveAssignment 
+* @param Set<String> validEmailIdSet 
+* @param Map<String Id> accountExecutiveSelfAssignment 
+**/
     private static void getAccountExecutiveMap(Set<String> accountExecutiveEmailId, Map<String, Id> accountExecutiveAssignment, Set<String> validEmailIdSet,Map<String, Id> accountExecutiveSelfAssignment){
         // Boolean shareToNonAE = TriggerHandler.isActive('Pricing_Share_to_Non_AE');
         Set<String> allPermissionsExceptAE = new Set<String>((Label.Pricing_Permission_Set_Except_AE).split(':'));
@@ -1376,24 +1446,25 @@ public without sharing class QuoteBusinessLogic{
         }
     }
     
-        /**
-    * @description method to check valid AE email
-    * @author Subhanku | 12-19-2022 
-    * @param Set<String> validEmailIdSet 
-    * @param SBQQ__Quote__c quote 
-    **/
+    /**
+* @description method to check valid AE email
+* @author Subhanku | 12-19-2022 
+* @param Set<String> validEmailIdSet 
+* @param SBQQ__Quote__c quote 
+**/
     private static void checkValidAccountExecutiveEmail(Set<String> validEmailIdSet, SBQQ__Quote__c quote){
         if(quote.Pricing_Intel_Account_Exec_Email_Txt__c!=null && (!validEmailIdSet.contains(quote.Pricing_Intel_Account_Exec_Email_Txt__c))){
+            system.debug('Inside checkValidAccountExecutiveEmail>>>');
             quote.addError(Label.Pricing_Invalid_Account_Executive_Error);
         }
     }
     
     /**
-    * @description method to get valid quote Id to User Id map
-    * @author Subhanku | 12-19-2022 
-    * @param Map<Id String> quoteIdToEmailMap 
-    * @return Map<Id, Id> 
-    **/
+* @description method to get valid quote Id to User Id map
+* @author Subhanku | 12-19-2022 
+* @param Map<Id String> quoteIdToEmailMap 
+* @return Map<Id, Id> 
+**/
     private static Map<Id,Id> getQuoteIdUserIdMap(Map<Id,String> quoteIdToEmailMap){
         Map<String,Id> userEmailToUserIdMap = new Map<String,Id>();
         Map<Id,Id> quoteIdToUserIdMap = new Map<Id,Id>();
@@ -1411,19 +1482,19 @@ public without sharing class QuoteBusinessLogic{
     }
     //check if end customer opportunity id field value is valid and map it to opportunity lookup
     private static void validateOpportunity(Map<string, Opportunity> opportunityDetails, SBQQ__Quote__c quote){
+        System.debug('Enetered vaildateOpportunity for Quote Id: ' + quote.Id);
         if(opportunityDetails.get(quote.Pricing_End_Customer_Opportunity_Txt__c) == null && 
            !String.isBlank(quote.Pricing_End_Customer_Opportunity_Txt__c)){
                quote.Pricing_End_Customer_Opportunity_Txt__c.addError(Label.Pricing_Tender_Quote_Opportunity_Error_Message);
            }
-    } 
-    
+    }     
     
     /**
-    * @description method called after insert to publish an event for Quote and Comment Share
-    * @author Subhanku | 12-19-2022 
-    * @param Set<Id> quoteIdSet 
-    * @param String eventName 
-    **/
+* @description method called after insert to publish an event for Quote and Comment Share
+* @author Subhanku | 12-19-2022 
+* @param Set<Id> quoteIdSet 
+* @param String eventName 
+**/
     public static void publishIQR(Set<Id> quoteIdSet,String eventName){
         // List to hold event objects to be published.
         List<Pricing_IQR_Event__e> newsEventList = new List<Pricing_IQR_Event__e>();
@@ -1445,15 +1516,15 @@ public without sharing class QuoteBusinessLogic{
             List<Database.SaveResult> results = EventBus.publish(newsEventList);
         }
     }
-        
+    
     /**
-    * @description Insert Quote AE as default Quote Team member
-    * @author Subhanku | 12-19-2022 
-    * @param Map<Id Id> quoteIdAEUserIdMap 
-    * @param List<SBQQ__Quote__c> lstquote 
-    * @param boolean addDuplicateError 
-    * @return List<Pricing_Quote_Team__c> 
-    **/
+* @description Insert Quote AE as default Quote Team member
+* @author Subhanku | 12-19-2022 
+* @param Map<Id Id> quoteIdAEUserIdMap 
+* @param List<SBQQ__Quote__c> lstquote 
+* @param boolean addDuplicateError 
+* @return List<Pricing_Quote_Team__c> 
+**/
     public static List<Pricing_Quote_Team__c> createAEQuoteTeamMember(Map<Id,Id> quoteIdAEUserIdMap, List<SBQQ__Quote__c> lstquote, boolean addDuplicateError){       
         List<Pricing_Quote_Team__c> newAEQuoteTeamList = new List<Pricing_Quote_Team__c>();
         Map<Id,Id> quoteIdAEUserIdAddQTMMap = quoteIdAEUserIdMap;
@@ -1489,12 +1560,12 @@ public without sharing class QuoteBusinessLogic{
     
     
     /**
-    * @description If Quote AE is updated, update Quote Team member
-    * @author Subhanku | 12-19-2022 
-    * @param Map<Id Id> quoteIdAEUserIdRemoveMap 
-    * @param List<SBQQ__Quote__c> lstquote 
-    * @param boolean isBefore 
-    **/
+* @description If Quote AE is updated, update Quote Team member
+* @author Subhanku | 12-19-2022 
+* @param Map<Id Id> quoteIdAEUserIdRemoveMap 
+* @param List<SBQQ__Quote__c> lstquote 
+* @param boolean isBefore 
+**/
     public static List<Pricing_Quote_Team__c> removeAEQuoteTeamMember(Map<Id,Id> quoteIdAEUserIdRemoveMap, List<SBQQ__Quote__c> lstquote, boolean isBefore){
         if(isQTMChanged){
             List<Pricing_Quote_Team__c> removeAEQuoteTeamList = new List<Pricing_Quote_Team__c>();
@@ -1534,6 +1605,7 @@ public without sharing class QuoteBusinessLogic{
                             }
                         }
                         lstquote.get(quoteIdList.indexOf(qtm.Pricing_Quote_Id__c)).Pricing_Intel_Account_Exec_Email_Txt__c = defaultAE.Pricing_Quote_Team_Member_Id__r.Email;
+                        system.debug('AE Set>>'+ lstquote.get(quoteIdList.indexOf(qtm.Pricing_Quote_Id__c)).Pricing_Intel_Account_Exec_Email_Txt__c);
                     }else{
                         removeAEQuoteTeamList.add(qtm);
                     }
@@ -1548,10 +1620,10 @@ public without sharing class QuoteBusinessLogic{
     }
     
     /**
-    * @description method to create default ITS QuoteTeam Member
-    * @author Subhanku | 12-19-2022 
-    * @param Map<Id Id> quoteIdITSUserIdMap 
-    **/
+* @description method to create default ITS QuoteTeam Member
+* @author Subhanku | 12-19-2022 
+* @param Map<Id Id> quoteIdITSUserIdMap 
+**/
     public static List<Pricing_Quote_Team__c> createITSDefaultQuoteTeamMember(Map<Id,Id> quoteIdITSUserIdMap){
         List<Pricing_Quote_Team__c> newITSQuoteTeamList = new List<Pricing_Quote_Team__c>();
         for(Id quoteId : quoteIdITSUserIdMap.keySet()){
@@ -1567,13 +1639,13 @@ public without sharing class QuoteBusinessLogic{
     
     
     /**
-    * @description Method to add primary FSE to Quote Team
-    * @author Subhanku | 12-19-2022 
-    * @param Map<Id Id> quoteIdFSEUserIdAddQTMMap 
-    * @param List<SBQQ__Quote__c> lstquote 
-    * @param boolean addDuplicateError 
-    * @return List<Pricing_Quote_Team__c> 
-    **/
+* @description Method to add primary FSE to Quote Team
+* @author Subhanku | 12-19-2022 
+* @param Map<Id Id> quoteIdFSEUserIdAddQTMMap 
+* @param List<SBQQ__Quote__c> lstquote 
+* @param boolean addDuplicateError 
+* @return List<Pricing_Quote_Team__c> 
+**/
     public static List<Pricing_Quote_Team__c> createFSEDefaultQuoteTeamMember(Map<Id,Id> quoteIdFSEUserIdAddQTMMap, List<SBQQ__Quote__c> lstquote, boolean addDuplicateError){
         List<Pricing_Quote_Team__c> newFSEQuoteTeamList = new List<Pricing_Quote_Team__c>();
         Map<Id,Id> quoteIdFSEUserIdQTMMap = quoteIdFSEUserIdAddQTMMap;
@@ -1606,10 +1678,10 @@ public without sharing class QuoteBusinessLogic{
     }
     
     /**
-    * @description Method to udpate primary FSE in Quote Team if updated on Quote
-    * @author Subhanku | 12-19-2022 
-    * @param Map<Id Id> quoteIdFSEUserIdRemoveQTMMap 
-    **/
+* @description Method to udpate primary FSE in Quote Team if updated on Quote
+* @author Subhanku | 12-19-2022 
+* @param Map<Id Id> quoteIdFSEUserIdRemoveQTMMap 
+**/
     public static List<Pricing_Quote_Team__c> updateFSEQuoteTeamMember(Map<Id,Id> quoteIdFSEUserIdRemoveQTMMap){
         if(isQTMChanged){
             List<Pricing_Quote_Team__c> removeQTMList = new List<Pricing_Quote_Team__c>([Select id,Pricing_Quote_Id__c,Pricing_Quote_Team_Member_Id__c,Pricing_Role_Nm__c from Pricing_Quote_Team__c where Pricing_Quote_Id__c IN :quoteIdFSEUserIdRemoveQTMMap.keySet() and Pricing_Role_Nm__c =: Label.Pricing_Quote_Team_Role_FSE]);
@@ -1626,14 +1698,14 @@ public without sharing class QuoteBusinessLogic{
         }
         return new List<Pricing_Quote_Team__c>();
     }
-
+    
     /**
-    * @description Method to reassign pending approval records on Quote FSE update
-    * @author Subhanku | 12-19-2022 
-    * @param Map<Id Id> quoteIdOldFseMap 
-    * @param Map<Id Id> quoteIdNewFseMap 
-    * @param List<SBQQ__Quote__c> lstquote 
-    **/
+* @description Method to reassign pending approval records on Quote FSE update
+* @author Subhanku | 12-19-2022 
+* @param Map<Id Id> quoteIdOldFseMap 
+* @param Map<Id Id> quoteIdNewFseMap 
+* @param List<SBQQ__Quote__c> lstquote 
+**/
     public static void reassignApprovalRecords(Map<Id,Id> quoteIdOldFseMap, Map<Id,Id> quoteIdNewFseMap, List<SBQQ__Quote__c> lstquote){
         List<Approval.ProcessWorkitemRequest> approvalRequestList = new List<Approval.ProcessWorkitemRequest>();
         Map<Id,Id> quoteLineIdQuoteIdMap = new Map <Id,Id>();
@@ -1694,12 +1766,12 @@ public without sharing class QuoteBusinessLogic{
     }
     
     /**
-    * @description Method to check if Non-Latin characters are present in Text fields
-    * @author Subhanku | 12-19-2022 
-    * @param SBQQ__Quote__c quote 
-    * @param Map<Id SBQQ__Quote__c> oldMap 
-    * @param Boolean isInsert 
-    **/
+* @description Method to check if Non-Latin characters are present in Text fields
+* @author Subhanku | 12-19-2022 
+* @param SBQQ__Quote__c quote 
+* @param Map<Id SBQQ__Quote__c> oldMap 
+* @param Boolean isInsert 
+**/
     public static void validateQuoteTextFieldsForLatinChars(SBQQ__Quote__c quote,Map<Id,SBQQ__Quote__c> oldMap, Boolean isInsert){
         try{
             Set<String> quoteTextFields = new Set < String > ((Label.Pricing_Tender_Quote_Text_Fields).split(':'));
@@ -1729,10 +1801,10 @@ public without sharing class QuoteBusinessLogic{
     
     
     /**
-    * @description Method to update CPQ Opportunity field
-    * @author Subhanku | 12-19-2022 
-    * @param List<SBQQ__Quote__c> lstQuote 
-    **/
+* @description Method to update CPQ Opportunity field
+* @author Subhanku | 12-19-2022 
+* @param List<SBQQ__Quote__c> lstQuote 
+**/
     public static void updateCPQOpportunityField(List<SBQQ__Quote__c> lstQuote, Map<Id,SBQQ__Quote__c>oldQuoteMap)
     {
         if(lstQuote != null && !lstquote.isEmpty()){
@@ -1741,7 +1813,9 @@ public without sharing class QuoteBusinessLogic{
                 Boolean cpqOpportunityChanged = q.SBQQ__Opportunity2__c != oldQuoteMap.get(q.Id).SBQQ__Opportunity2__c;
 
                 if(endCustomerOpportunityChanged && !isValidEndCustomerOpportunityId(q)){
+                    system.debug('Invalid End Customer Opportunity Id for Quote Id: ' + q.Id + ' with End Customer Opportunity Txt: ' + q.Pricing_End_Customer_Opportunity_Txt__c);
                     quoteIdsWithInvalidEndCustomerOpportunityId.add(q.Id);
+                    system.debug('Added Quote Id tO quoteIdsWithInvalidEndCustomerOpportunityId: ' + quoteIdsWithInvalidEndCustomerOpportunityId);
                     continue;
                 }
 
@@ -1754,18 +1828,49 @@ public without sharing class QuoteBusinessLogic{
                 else if(cpqOpportunityChanged){
                     q.Pricing_End_Customer_Opportunity_Txt__c = q.SBQQ__Opportunity2__c;
                 }
-                                             
+                
             }
             
         }        
     }
     
+    /**
+* @description FUTURE Method to update Opportunity Id on Quotes
+* @author Vrushabh | 06/06/2023 
+* @param Map<Id, Id> QuoteId, opportunityId 
+**/
+    /*@future
+public static void updateOpportunityIdOnQuotes(Map<Id, Id> quoteOppoIdMap){
+
+List<SBQQ__Quote__c>  quoteDataToBeUpdated = new List<SBQQ__Quote__c>();
+List<SBQQ__Quote__c>  quoteData = new List<SBQQ__Quote__c>();
+
+if(!quoteOppoIdMap.isEmpty()){
+quoteData = [SELECT Id , Pricing_End_Customer_Opportunity_Txt__c,SBQQ__Opportunity2__c from SBQQ__Quote__c Where ID IN : quoteOppoIdMap.keySet()];
+}
+
+for(SBQQ__Quote__c quote : quoteData){		
+if(String.isBlank(quote.Pricing_End_Customer_Opportunity_Txt__c)){
+quote.Pricing_End_Customer_Opportunity_Txt__c = quoteOppoIdMap.get(quote.Id);
+quote.SBQQ__Opportunity2__c = quoteOppoIdMap.get(quote.Id);
+quoteDataToBeUpdated.add(quote);
+}
+}
+
+try{
+if(quoteDataToBeUpdated.size()> 0){
+update quoteDataToBeUpdated;
+}
+}catch(exception e){
+Pricing_Tender_Utility.logError(e);
+}
+}*/
     
     /**
-    * @description Method to update Unified Global End Customer on Quote 
-    * @author Subhanku | 12-19-2022 
-    * @param List<SBQQ__Quote__c> quoteList 
-    **/
+* @description Method to update Unified Global End Customer on Quote 
+* @author Subhanku | 12-19-2022 
+* @param List<SBQQ__Quote__c> quoteList 
+**/
     public static void updateUnifiedEndCustomerQuote(List<SBQQ__Quote__c> quoteList) {
         //Map to store the L1 Ids along with the different combinations of L2 SFId and End Customer Country
         Map<String,Map<String,String>> mapOfL1L2Country = new Map<String,Map<String,String>>(); //Map<L1Id,Map<Country,L2ObjId>> ---> L1Id=>{Country1=>L2ObjId} 
@@ -1841,11 +1946,11 @@ public without sharing class QuoteBusinessLogic{
     } 
     
     /**
-    * @description Check Cap size volume for SVD Quotes
-    * @author Subhanku | 12-19-2022 
-    * @param Map<Id Integer> accountIdSVDQuoteNumberMap 
-    * @param List<SBQQ__Quote__c> quotes 
-    **/
+* @description Check Cap size volume for SVD Quotes
+* @author Subhanku | 12-19-2022 
+* @param Map<Id Integer> accountIdSVDQuoteNumberMap 
+* @param List<SBQQ__Quote__c> quotes 
+**/
     public static void checkSVDMaxVolume(Map<Id,Integer> accountIdSVDQuoteNumberMap,List<SBQQ__Quote__c> quotes){
         List<Pricing_QuoteProgram_CAPSize__c> quoteProgramList = [SELECT Id,Pricing_Account_Id__c,Pricing_Active_cb__c,Pricing_Small_Deal_CAP_size_Number__c FROM Pricing_QuoteProgram_CAPSize__c WHERE Pricing_Account_Id__c IN: accountIdSVDQuoteNumberMap.keySet() AND Pricing_Active_cb__c = true ];
         Map<Id,Integer> accountIdSVDCAPsizeMap = new Map<Id,Integer>();
@@ -1868,13 +1973,13 @@ public without sharing class QuoteBusinessLogic{
             }
         }
     }
-
-
+    
+    
     /**
-    * @description - Method to update Comment record's owner when Quote record owner is updated
-    * @author Sandeep Chamate | 08-21-2023 
-    * @param quotesIdtoRecMap - quote Id to Record Map
-    **/
+* @description - Method to update Comment record's owner when Quote record owner is updated
+* @author Sandeep Chamate | 08-21-2023 
+* @param quotesIdtoRecMap - quote Id to Record Map
+**/
     public static void updateOwneronComments(Map<Id, SBQQ__Quote__c> quotesIdtoRecMap){
         List<Pricing_Comments__c> commentListtoUpdate = new List<Pricing_Comments__c>();
         for(Pricing_Comments__c cmt: [SELECT Id,OwnerId,Pricing_Quote__c FROM Pricing_Comments__c WHERE Pricing_Quote__c IN: quotesIdtoRecMap.keySet()]){
@@ -1887,32 +1992,127 @@ public without sharing class QuoteBusinessLogic{
             SBQQ.TriggerControl.enable();
         }
     }
-
+    
     /**
-    * @description Method to populate User Ids Map for AE and Sales Rep for Financial Incentive
-    * @author Sandeep Chamate | 02-23-2024 
-    * @param userEmailSet 
-    * @param userEmailtoIdMapFI 
-    **/
+* @description Method to populate User Ids Map for AE and Sales Rep for Financial Incentive
+* @author Sandeep Chamate | 02-23-2024 
+* @param userEmailSet 
+* @param userEmailtoIdMapFI 
+**/
     public static void getUserIdsMapFI(Set<String> userEmailSet, Map<String, Id> userEmailtoIdMapFI) {
         for(User usr : [SELECT Id,Email,IsActive FROM User WHERE Email IN: userEmailSet AND IsActive = true]) {
             userEmailtoIdMapFI.put(usr.Email, usr.Id);
         }
     }
+    
+    @future(callout=true)
+    public static void autoPopulateSDM(Set<Id> quoteIdLst){
+        /*List<SBQQ__Quote__c> quoteLst = [select id,SBQQ__Account__r.Name,Pricing_End_Customer_Country_Nm__c,Pricing_Region_Nm__c from SBQQ__Quote__c where id in :quoteIdLst];
+Http http = new Http();
+HttpRequest request = new HttpRequest();
+request.setEndpoint('callout:IQR_Access_Test_Cred/services/data/v55.0/actions/custom/runDecisionMatrix/Pricing_CountryToSDM_Mapping');
+request.setMethod('POST');
+request.setHeader('Content-Type', 'application/json;charset=UTF-8');
+InputLst reqInput = new InputLst();
+reqInput.inputs = new List<Inputs>();
+for(SBQQ__Quote__c quote:quoteLst){
+Inputs input = new Inputs();
+input.AccountName = quote.SBQQ__Account__r.Name;
+input.EndCustomerCountry = quote.Pricing_End_Customer_Country_Nm__c;
+input.Region = quote.Pricing_Region_Nm__c;
+reqInput.inputs.add(input);
+}
+request.setBody(JSON.serialize(reqInput));
+HttpResponse response = http.send(request);
+if(response.getStatusCode() != 200) {
+System.debug('The status code returned was not expected: ' + response.getStatusCode() + ' ' + response.getStatus());
+} else {
+List<BreWrapper> json = (List<BreWrapper>) JSON.deserialize(response.getBody(), List<BREWrapper>.class);
+integer i = 0;
+List<String> emailList = new List<String>();
+Map<String,Id> userEmailToIdMap = new Map<String,Id>();
+List<Pricing_Quote_Team__c> newFSEQuoteTeamList = new List<Pricing_Quote_Team__c>();
+for(BreWrapper output:json){
+if(output.outputValues.IntelSalesRep != null && output.outputValues.IntelSalesRep.split(',').size() > 1){
+emailList.addAll(output.outputValues.IntelSalesRep.split(','));
+}
+}
+for(User usr:[select id,email from User where email in :emailList]){
+userEmailToIdMap.put(usr.email,usr.id);
+}
+for(SBQQ__Quote__c quote:quoteLst){
+if(json[i].outputValues.IntelSalesRep != null){
+if(json[i].outputValues.IntelSalesRep.split(',').size() > 1){
+List<String> salesRepEmailLst =  json[i].outputValues.IntelSalesRep.split(',');
+quote.Pricing_Intel_Sales_Rep_Email_Txt__c = salesRepEmailLst[0];
+salesRepEmailLst.remove(0);
+newFSEQuoteTeamList.addAll(createFseQTM(quote.Id,salesRepEmailLst,userEmailToIdMap));
+}else{
+quote.Pricing_Intel_Sales_Rep_Email_Txt__c = json[i].outputValues.IntelSalesRep;
+}
+}
+i++;
+}
+if(!quoteLst.isEmpty()){
+update quoteLst;
+}
+if(!newFSEQuoteTeamList.isEmpty()){
+insert newFSEQuoteTeamList;
+}
 
+}*/
+    }
+    
+    /*public static List<Pricing_Quote_Team__c> createFseQTM(Id quoteId,List<String> salesRepEmailLst,Map<String,Id> userEmailToIdMap){
+List<Pricing_Quote_Team__c> newFSEQuoteTeamList = new List<Pricing_Quote_Team__c>();
+for(String email : salesRepEmailLst){
+Pricing_Quote_Team__c newQTM = new Pricing_Quote_Team__c();
+newQTM.Pricing_Quote_Id__c = quoteId;
+newQTM.Pricing_Role_Nm__c = Label.Pricing_Quote_Team_Role_FSE;
+newQTM.Pricing_Quote_Team_Member_Id__c = userEmailToIdMap.get(email);
+newQTM.RecordTypeId = qtmRecordTypeId;
+newFSEQuoteTeamList.add(newQTM);
+}
+return newFSEQuoteTeamList;
+}
+
+public class InputLst{
+public List<Inputs> inputs{get;set;}
+}
+
+public class Inputs {
+public String AccountName{get;set;}
+public String EndCustomerCountry{get;set;}
+public String Region{get;set;}
+}
+
+public class BREWrapper{
+public String actionName{get;set;}
+public Errors errors{get;set;}
+public String isSuccess{get;set;}
+public OutputValue outputValues{get;set;}
+}
+public class OutputValue{
+public String IntelSalesRep{get;set;}
+}
+public class Errors{
+public String statusCode{get;set;}
+public String message{get;set;}
+public List<String> fields{get;set;}
+}*/
     //-----------------------Refactored Methods------------------------------------------------------------------------------------// 
     
     /**
-    * @description create share record for parent id and user or group Id
-    * @author Subhanku | 02-22-2023 
-    * @param Id quoteId 
-    * @param Set<Id> externalGroupIdSet 
-    * @param Set<Id> userOrGroupId 
-    * @param Boolean isAEShare 
-    * @param Map<Id SBQQ__Quote__c> mapQuotesWithComments 
-    * @param List<SBQQ__Quote__Share> quoteShares 
-    * @param List<Pricing_Comments__Share> commentShares 
-    **/
+* @description create share record for parent id and user or group Id
+* @author Subhanku | 02-22-2023 
+* @param Id quoteId 
+* @param Set<Id> externalGroupIdSet 
+* @param Set<Id> userOrGroupId 
+* @param Boolean isAEShare 
+* @param Map<Id SBQQ__Quote__c> mapQuotesWithComments 
+* @param List<SBQQ__Quote__Share> quoteShares 
+* @param List<Pricing_Comments__Share> commentShares 
+**/
     public static void createQuoteAndCmntShare(Id quoteId,Set<Id> externalGroupIdSet,Set<Id> userOrGroupId,Boolean isAEShare,Map<Id,SBQQ__Quote__c> mapQuotesWithComments,List<SBQQ__Quote__Share> quoteShares,List<Pricing_Comments__Share> commentShares){
         for(id userId : userOrGroupId){
             quoteShares.add(new SBQQ__Quote__Share(ParentId = quoteId,
@@ -1935,11 +2135,11 @@ public without sharing class QuoteBusinessLogic{
     }
     
     /**
-    * @description add quote id to user id in Map for share creation
-    * @author Subhanku | 02-22-2023 
-    * @param Id quoteId 
-    * @param Id userId 
-    **/
+* @description add quote id to user id in Map for share creation
+* @author Subhanku | 02-22-2023 
+* @param Id quoteId 
+* @param Id userId 
+**/
     public static void addToAEorSalesRepShareMap(Id quoteId,Id userId,Map<Id,Set<Id>> quoteIdToAESalesRepShareMap){
         if(!quoteIdToAESalesRepShareMap.containsKey(quoteId)){
             quoteIdToAESalesRepShareMap.put(quoteId,new Set<Id>{userId});
@@ -1948,16 +2148,16 @@ public without sharing class QuoteBusinessLogic{
             quoteIdToAESalesRepShareMap.get(quoteId).add(userId);
         }
     }
-
+    
     /**
-    * @description populate quote account and primary contact
-    * @author Subhanku | 02-22-2023 
-    * @param SBQQ__Quote__c quote 
-    * @param Id partnerAccountId 
-    * @param Set<id> userContactIds 
-    * @param Map<String Id> emailToContactIdMap 
-    * @param Map<Id String> contactIdToEmailMap 
-    **/
+* @description populate quote account and primary contact
+* @author Subhanku | 02-22-2023 
+* @param SBQQ__Quote__c quote 
+* @param Id partnerAccountId 
+* @param Set<id> userContactIds 
+* @param Map<String Id> emailToContactIdMap 
+* @param Map<Id String> contactIdToEmailMap 
+**/
     public static void populatePrimaryContactAndAccount(SBQQ__Quote__c quote,Id partnerAccountId,Set<id> userContactIds,Map<String,Id> emailToContactIdMap,Map<Id,String> contactIdToEmailMap){
         if(isPartnerUser || quote.Pricing_Quote_Program_Nm__c == Label.Pricing_Tender_FinancialIncentive_Quote){
             quote.SBQQ__Account__c = String.isNotBlank(partnerAccountId) ? partnerAccountId : quote.SBQQ__Account__c;
@@ -1975,14 +2175,14 @@ public without sharing class QuoteBusinessLogic{
             quote.Pricing_Primary_Contact_Email__c = contactIdToEmailMap.get(quote.SBQQ__PrimaryContact__c);
         }
     }
-
+    
     /**
-    * @description creating quote account to quote salesRep Map for validating sales rep
-    * @author Subhanku | 02-22-2023 
-    * @param SBQQ__Quote__c quote 
-    * @param String salesRepEmail 
-    * @param Map<Id Set<String>> accountIdToSalesRepEmailMap 
-    **/
+* @description creating quote account to quote salesRep Map for validating sales rep
+* @author Subhanku | 02-22-2023 
+* @param SBQQ__Quote__c quote 
+* @param String salesRepEmail 
+* @param Map<Id Set<String>> accountIdToSalesRepEmailMap 
+**/
     public static void getAccountToSalesRepEmailMap(SBQQ__Quote__c quote,String salesRepEmail,Map<Id,Set<String>> accountIdToSalesRepEmailMap){
         if(!accountIdToSalesRepEmailMap.containsKey(quote.SBQQ__Account__c)){
             accountIdToSalesRepEmailMap.put(quote.SBQQ__Account__c,new Set<String>{salesRepEmail});
@@ -1990,29 +2190,29 @@ public without sharing class QuoteBusinessLogic{
             accountIdToSalesRepEmailMap.get(quote.SBQQ__Account__c).add(salesRepEmail);
         }
     }
-
+    
     /**
-    * @description creating quote account to name Map
-    * @author Subhanku | 02-22-2023 
-    * @param Set<Id> accountIdSet 
-    * @param Map<Id String> accountIdNameMap 
-    **/
+* @description creating quote account to name Map
+* @author Subhanku | 02-22-2023 
+* @param Set<Id> accountIdSet 
+* @param Map<Id String> accountIdNameMap 
+**/
     public static void getAccountToNameMap(Set<Id> accountIdSet,Map<Id,String> accountIdNameMap){
         for(Account acc:[SELECT Id, Name, Core_Customer_Aggregation_Type__c, Core_Unified_Intermediate_Customer_Name__c,Core_Unified_Global_Customer_Name__c ,Core_Unified_Intermdt_Customer_2_Name__c 
                          FROM Account WHERE id IN:accountIdSet]){
-            if(!accountIdNameMap.containsKey(acc.Id)){
-                accountIdNameMap.put(acc.Id,acc.Name);
-                accountIdtoRecordMap.put(acc.Id, acc);
-            }
-        }
+                             if(!accountIdNameMap.containsKey(acc.Id)){
+                                 accountIdNameMap.put(acc.Id,acc.Name);
+                                 accountIdtoRecordMap.put(acc.Id, acc);
+                             }
+                         }
     }
-
+    
     /**
-    * @description creating endcustomer id to name Map 
-    * @author Subhanku | 02-22-2023 
-    * @param Set<Id> endCustomerIdSet 
-    * @param Map<Id String> endCustomerIdNameMap 
-    **/
+* @description creating endcustomer id to name Map 
+* @author Subhanku | 02-22-2023 
+* @param Set<Id> endCustomerIdSet 
+* @param Map<Id String> endCustomerIdNameMap 
+**/
     public static void getEndCustIdToNameMap(Set<Id> endCustomerIdSet,Map<Id,String> endCustomerIdNameMap){
         for(Pricing_UnifiedEndCustomerAccountMapping__c endCustomer:[SELECT Id, Name FROM Pricing_UnifiedEndCustomerAccountMapping__c WHERE id IN:endCustomerIdSet]){
             if(!endCustomerIdNameMap.containsKey(endCustomer.Id)){
@@ -2020,13 +2220,13 @@ public without sharing class QuoteBusinessLogic{
             }
         }
     }
-
+    
     /**
-    * @description creating user contact id to user Map for validating primary contact
-    * @author Subhanku | 02-22-2023 
-    * @param Set<id> userContactIds 
-    * @param Map<Id User> userContactDtls 
-    **/
+* @description creating user contact id to user Map for validating primary contact
+* @author Subhanku | 02-22-2023 
+* @param Set<id> userContactIds 
+* @param Map<Id User> userContactDtls 
+**/
     public static void getUsrContactDtlsMap(Set<id> userContactIds,Map<Id, User> userContactDtls){
         For(User usr : [SELECT Id,ContactId,contact.accountid,Core_User_Profile_Name__c, (SELECT Id, PermissionSet.Name, AssigneeId, Assignee.ContactId
                                                                                           FROM PermissionSetAssignments WHERE PermissionSet.Name IN: Label.Pricing_Tender_PermissionSets_AllExternal.Split(':'))
@@ -2034,13 +2234,13 @@ public without sharing class QuoteBusinessLogic{
                             userContactDtls.put(usr.ContactId,usr);
                         }
     }
-
+    
     /**
-    * @description creating account to cap size map for checking svd cap size
-    * @author Subhanku | 02-22-2023 
-    * @param Set<Id> accountIdSVDSet 
-    * @param Map<Id Integer> accountIdSVDQuoteNumberMap 
-    **/
+* @description creating account to cap size map for checking svd cap size
+* @author Subhanku | 02-22-2023 
+* @param Set<Id> accountIdSVDSet 
+* @param Map<Id Integer> accountIdSVDQuoteNumberMap 
+**/
     public static void getSVDCapSizeMap(Set<Id> accountIdSVDSet,Map<Id,Integer> accountIdSVDQuoteNumberMap){
         for(AggregateResult aggResult : [SELECT SBQQ__Account__c,count(Id) FROM SBQQ__Quote__c WHERE Pricing_Program_Type_Nm__c =: Label.Pricing_Tender_Small_Volume_Quote 
                                          AND CreatedDate = THIS_QUARTER AND SBQQ__Account__c IN :accountIdSVDSet AND
@@ -2049,13 +2249,13 @@ public without sharing class QuoteBusinessLogic{
                                              
                                          }
     }
-
+    
     /**
-    * @description populate quote Folio name
-    * @author Subhanku | 02-22-2023 
-    * @param SBQQ__Quote__c quote2 
-    * @param Map<Id String> accountIdNameMap 
-    **/
+* @description populate quote Folio name
+* @author Subhanku | 02-22-2023 
+* @param SBQQ__Quote__c quote2 
+* @param Map<Id String> accountIdNameMap 
+**/
     public static void populateFolioIdAndName(SBQQ__Quote__c quote2,Map<Id,String> accountIdNameMap,Map<Id,String> endCustomerIdNameMap){
         String endCustomer = '';
         if(quote2.Pricing_Customer_Nm__c!=null){
@@ -2066,14 +2266,14 @@ public without sharing class QuoteBusinessLogic{
         quote2.Pricing_My_Deals_Folio_Name_Nm__c = accountIdNameMap.get(quote2.SBQQ__Account__c) + ' - '+quote2.Pricing_Region_Nm__c + ' - ' +endCustomer + ' - ' + system.now();
         quote2.Pricing_My_Deals_Folio_Name_Nm__c.substring(0, Math.min(quote2.Pricing_My_Deals_Folio_Name_Nm__c.length(), Integer.valueOf(Label.Pricing_Folio_Name_Limit)));
     }
-
+    
     /**
-    * @description creating status and recordtype Map
-    * @author Subhanku | 02-22-2023 
-    * @param Map<Decimal String> quoteLineNumberToStatusMap 
-    * @param Map<Decimal String> quoteLineNumberToRecordTypeMap 
-    * @param Map<Decimal String> quoteLineNumberToClientRecordTypeMap 
-    **/
+* @description creating status and recordtype Map
+* @author Subhanku | 02-22-2023 
+* @param Map<Decimal String> quoteLineNumberToStatusMap 
+* @param Map<Decimal String> quoteLineNumberToRecordTypeMap 
+* @param Map<Decimal String> quoteLineNumberToClientRecordTypeMap 
+**/
     public static void getQuoteStatusAndRecTypeMap(Map<Decimal,String> quoteLineNumberToStatusMap,Map<Decimal,String> quoteLineNumberToRecordTypeMap,Map<Decimal,String> quoteLineNumberToClientRecordTypeMap,Map<Decimal,String> quoteLineNumberToFinancialIncentiveRecordTypeMap,Id SubmittedIdFinancialIncentive,Id ReadOnlyIdFinancialIncentive,Id EditId,Id EditIdClient){
         Id submittedId = Pricing_Tender_Utility.getRecordTypeId('SBQQ__Quote__c',Label.Pricing_Tender_Quote_RecordType_Submitted);
         Id readOnlyId = Pricing_Tender_Utility.getRecordTypeId('SBQQ__Quote__c',Label.Pricing_Tender_Quote_RecordType_ReadOnly);
@@ -2106,7 +2306,7 @@ public without sharing class QuoteBusinessLogic{
         quoteLineNumberToClientRecordTypeMap.put(50,readOnlyIdClient);
         quoteLineNumberToClientRecordTypeMap.put(60,readOnlyIdClient);
         quoteLineNumberToClientRecordTypeMap.put(70,readOnlyIdClient);
-
+        
         quoteLineNumberToFinancialIncentiveRecordTypeMap.put(20,SubmittedIdFinancialIncentive);
         quoteLineNumberToFinancialIncentiveRecordTypeMap.put(30,SubmittedIdFinancialIncentive);
         quoteLineNumberToFinancialIncentiveRecordTypeMap.put(40,SubmittedIdFinancialIncentive);
@@ -2115,19 +2315,19 @@ public without sharing class QuoteBusinessLogic{
         quoteLineNumberToFinancialIncentiveRecordTypeMap.put(60,ReadOnlyIdFinancialIncentive);
         quoteLineNumberToFinancialIncentiveRecordTypeMap.put(70,ReadOnlyIdFinancialIncentive);
     }
-
+    
     /**
-    * @description check for Owner change or Primary Contact Change
-    * @author Subhanku | 02-22-2023 
-    * @param Map<Id SBQQ__Quote__c> oldMap 
-    * @param SBQQ__Quote__c quote 
-    * @param Set<id> userContactIds 
-    * @param Set<Id> allPrimaryContactIds 
-    * @param Set<Id> quoteIdWithPrimaryContactChange 
-    * @param Set<Id> quoteIdWithOwnerChange 
-    * @param Map<String Id> emailToContactIdMap 
-    * @param Map<Id String> contactIdToEmailMap 
-    **/
+* @description check for Owner change or Primary Contact Change
+* @author Subhanku | 02-22-2023 
+* @param Map<Id SBQQ__Quote__c> oldMap 
+* @param SBQQ__Quote__c quote 
+* @param Set<id> userContactIds 
+* @param Set<Id> allPrimaryContactIds 
+* @param Set<Id> quoteIdWithPrimaryContactChange 
+* @param Set<Id> quoteIdWithOwnerChange 
+* @param Map<String Id> emailToContactIdMap 
+* @param Map<Id String> contactIdToEmailMap 
+**/
     public static void checkOwnerAndPrimaryContactChange(Map<Id,SBQQ__Quote__c> oldMap,SBQQ__Quote__c quote,Set<id> userContactIds,Set<Id> allPrimaryContactIds,Set<Id> quoteIdWithPrimaryContactChange,Set<Id> quoteIdWithOwnerChange,Map<String,Id> emailToContactIdMap,Map<Id,String> contactIdToEmailMap){
         // Capture owner change to prevent from user actions from Change Owner OOB functionality
         if (oldMap.get(quote.id).ownerid != quote.ownerid && quote.SBQQ__PrimaryContact__c != null) {
@@ -2157,16 +2357,16 @@ public without sharing class QuoteBusinessLogic{
             allPrimaryContactIds.add(quote.SBQQ__PrimaryContact__c);
         }
     }
-
+    
     /**
-    * @description creating user contact id to user map and drafter primary contact set to validate Primary contact
-    * @author Subhanku | 02-22-2023 
-    * @param Set<id> userContactIds 
-    * @param Set<Id> allPrimaryContactIds 
-    * @param Set<Id> contactIdWithDrafterLimitedSet 
-    * @param Map<Id User> userContactDtls 
-    * @return staic 
-    **/
+* @description creating user contact id to user map and drafter primary contact set to validate Primary contact
+* @author Subhanku | 02-22-2023 
+* @param Set<id> userContactIds 
+* @param Set<Id> allPrimaryContactIds 
+* @param Set<Id> contactIdWithDrafterLimitedSet 
+* @param Map<Id User> userContactDtls 
+* @return staic 
+**/
     public static void getUsrDtlsMapAndDrafterSet(Set<id> userContactIds,Set<Id> allPrimaryContactIds,Set<Id> contactIdWithDrafterLimitedSet,Map<Id,User> userContactDtls){
         For(User usr: [SELECT Id,ContactId,contact.accountid,Core_User_Profile_Name__c,(SELECT PermissionSet.Name,AssigneeId FROM PermissionSetAssignments WHERE PermissionSet.Name IN: Label.Pricing_Tender_PermissionSets_AllExternal.Split(':')) 
                        FROM User WHERE ContactId IN :allPrimaryContactIds and IsActive = true]){
@@ -2180,35 +2380,37 @@ public without sharing class QuoteBusinessLogic{
                            }
                        }
     }
-
+    
     /**
-    * @description creating Map of opportunity id to opportunity to validate opportunity and populate
-    * @author Subhanku | 02-22-2023 
-    * @param Set<String> opportunityIds 
-    * @param Map<String Opportunity> opportunityDetails 
-    **/
+* @description creating Map of opportunity id to opportunity to validate opportunity and populate
+* @author Subhanku | 02-22-2023 
+* @param Set<String> opportunityIds 
+* @param Map<String Opportunity> opportunityDetails 
+**/
     public static void getOpportunityMap(Map<String,id> opportunityIdquoteId,Map<String, Opportunity> opportunityDetails,Map<Id, Opportunity> quoteIdToOppRecdMap,Boolean isEndCustCheck){
         List<Opportunity> opportunityDtl = new List<Opportunity>([SELECT Id,Name,Account.Core_Business_Party_Id__c, Account.Core_Unified_Global_Customer_BP_Id__c FROM Opportunity 
                                                                   WHERE Id IN :opportunityIdquoteId.keyset()]);
         For(Opportunity opDtl:opportunityDtl){
             if(!isEndCustCheck){
-            opportunityDetails.put(opDtl.Id,opDtl);
+                opportunityDetails.put(opDtl.Id,opDtl);
             }else{
                 quoteIdToOppRecdMap.put(opportunityIdquoteId.get(opDtl.Id),opDtl);
             }
         }
     }
-
+    
     /**
-    * @description check for any integration error during create deal
-    * @author Subhanku | 02-22-2023 
-    * @param Set<Id> quoteIdWithFolioNameChangeSet 
-    * @param Set<Id> quoteIdWithFolioErrorSet 
-    **/
+* @description check for any integration error during create deal
+* @author Subhanku | 02-22-2023 
+* @param Set<Id> quoteIdWithFolioNameChangeSet 
+* @param Set<Id> quoteIdWithFolioErrorSet 
+**/
     public static void checkForIntegrationError(Set<Id> quoteIdWithFolioNameChangeSet,Set<Id> quoteIdWithFolioErrorSet){
         List<SBQQ__QuoteLine__c> quoteLineList = [SELECT Id,Pricing_Error_Messages__c,Pricing_Status_Nm__c,Pricing_Integration_Status_Nm__c,
                                                   SBQQ__Quote__c from SBQQ__QuoteLine__c where SBQQ__Quote__c IN: quoteIdWithFolioNameChangeSet 
-                                                  and (Pricing_Integration_Status_Nm__c IN: Label.Pricing_IntegrationStatus.Split(','))
+                                                  and (Pricing_Integration_Status_Nm__c =:Label.Pricing_Tender_MyDeal_Integration_Status_Pending 
+                                                       or Pricing_Integration_Status_Nm__c =: Label.Pricing_Tender_MyDeal_Integration_Status_InProcess 
+                                                       or Pricing_Integration_Status_Nm__c =: Label.Pricing_Tender_MyDeal_Integration_Status_Error)
                                                   and Pricing_Status_Nm__c =: Label.Pricing_Tender_QuoteLine_Status_PendingFurtherIntelReview];
         for(SBQQ__QuoteLine__c quoteLine : quoteLineList){
             String errMsg = quoteLine.Pricing_Error_Messages__c;
@@ -2221,13 +2423,13 @@ public without sharing class QuoteBusinessLogic{
             }
         }
     }
-
+    
     /**
-    * @description creating map of quote id to pricing start date for validating quoteline end date
-    * @author Subhanku | 02-22-2023 
-    * @param Set<Id> quoteIdWithStartDatechange 
-    * @param Map<Id List<SBQQ__QuoteLine__c>> quotelineStartDateChange 
-    **/
+* @description creating map of quote id to pricing start date for validating quoteline end date
+* @author Subhanku | 02-22-2023 
+* @param Set<Id> quoteIdWithStartDatechange 
+* @param Map<Id List<SBQQ__QuoteLine__c>> quotelineStartDateChange 
+**/
     public static void getQuoteToStartDateMap(Set<Id> quoteIdWithStartDatechange,Map<Id,List<SBQQ__QuoteLine__c>> quotelineStartDateChange){
         for(SBQQ__QuoteLine__c qli: [Select Id, Pricing_Quote_Line_Number__c, Pricing_End_Date_dt__c,SBQQ__Quote__c from SBQQ__QuoteLine__c where SBQQ__Quote__c IN :quoteIdWithStartDatechange]){
             if(quotelineStartDateChange.containsKey(qli.SBQQ__Quote__c)){
@@ -2237,15 +2439,15 @@ public without sharing class QuoteBusinessLogic{
             }
         }
     }
-
+    
     /**
-    * @description fix added for flip flop issue
-    * @author Subhanku | 02-22-2023 
-    * @param SBQQ__Quote__c quote 
-    * @param Map<Decimal String> quoteLineNumberToStatusMap 
-    * @param Map<Decimal String> quoteLineNumberToRecordTypeMap 
-    * @param Map<Decimal String> quoteLineNumberToClientRecordTypeMap 
-    **/
+* @description fix added for flip flop issue
+* @author Subhanku | 02-22-2023 
+* @param SBQQ__Quote__c quote 
+* @param Map<Decimal String> quoteLineNumberToStatusMap 
+* @param Map<Decimal String> quoteLineNumberToRecordTypeMap 
+* @param Map<Decimal String> quoteLineNumberToClientRecordTypeMap 
+**/
     public static void statusRevertFix(SBQQ__Quote__c quote,Map<Decimal,String> quoteLineNumberToStatusMap,Map<Decimal,String> quoteLineNumberToRecordTypeMap,Map<Decimal,String> quoteLineNumberToClientRecordTypeMap, Map<Decimal,String> quoteLineNumberToFinancialIncentiveRecordTypeMap){
         if(quote.Pricing_Status_Precedence_Number__c != null && quoteLineNumberToStatusMap.containsKey(quote.Pricing_Status_Precedence_Number__c) 
            && quoteLineNumberToStatusMap.get(quote.Pricing_Status_Precedence_Number__c) != quote.SBQQ__Status__c) {
@@ -2253,8 +2455,8 @@ public without sharing class QuoteBusinessLogic{
            }
         if(quote.Pricing_Status_Precedence_Number__c != null && (quoteLineNumberToClientRecordTypeMap.containsKey(quote.Pricing_Status_Precedence_Number__c) || quoteLineNumberToRecordTypeMap.containsKey(quote.Pricing_Status_Precedence_Number__c) || quoteLineNumberToFinancialIncentiveRecordTypeMap.containsKey(quote.Pricing_Status_Precedence_Number__c)) 
            && (quoteLineNumberToClientRecordTypeMap.get(quote.Pricing_Status_Precedence_Number__c) != quote.recordTypeId  || quoteLineNumberToRecordTypeMap.get(quote.Pricing_Status_Precedence_Number__c) != quote.recordTypeId || quoteLineNumberToFinancialIncentiveRecordTypeMap.get(quote.Pricing_Status_Precedence_Number__c) != quote.recordTypeId)) {
-            quote.recordTypeId = (quote.Pricing_Program_Type_Nm__c == Label.Pricing_Tender_CCG_Quote)?quoteLineNumberToClientRecordTypeMap.get(quote.Pricing_Status_Precedence_Number__c): quote.Pricing_Program_Type_Nm__c == Label.Pricing_Tender_FinancialIncentive_Quote ? quoteLineNumberToFinancialIncentiveRecordTypeMap.get(quote.Pricing_Status_Precedence_Number__c) : quoteLineNumberToRecordTypeMap.get(quote.Pricing_Status_Precedence_Number__c);  
-        }
+               quote.recordTypeId = (quote.Pricing_Program_Type_Nm__c == Label.Pricing_Tender_CCG_Quote)?quoteLineNumberToClientRecordTypeMap.get(quote.Pricing_Status_Precedence_Number__c): quote.Pricing_Program_Type_Nm__c == Label.Pricing_Tender_FinancialIncentive_Quote ? quoteLineNumberToFinancialIncentiveRecordTypeMap.get(quote.Pricing_Status_Precedence_Number__c) : quoteLineNumberToRecordTypeMap.get(quote.Pricing_Status_Precedence_Number__c);  
+           }
     }   
     
     public static void validateQLIProductagainstOpportunityProduct(Map<String, Id> oppIdtoQuoteIdMap, Map<Id, Boolean> quoteIdwithProdMap){
@@ -2279,14 +2481,14 @@ public without sharing class QuoteBusinessLogic{
             }
         }
     }
-
+    
     
     /**
-    * @description :Method to validate Quotes unified Endcustomer to opportunity Account End customer.
-    * @author ChangeMeIn@UserSettingsUnder.SFDoc | 03-13-2024 
-    * @param opptyIdtoQuoteIdMap 
-    * @param quoteIdvalidEndCustomerMap 
-    **/
+* @description :Method to validate Quotes unified Endcustomer to opportunity Account End customer.
+* @author ChangeMeIn@UserSettingsUnder.SFDoc | 03-13-2024 
+* @param opptyIdtoQuoteIdMap 
+* @param quoteIdvalidEndCustomerMap 
+**/
     public static void validateEndCustOfQuoteAndOppty(Map<String,Id> opptyIdtoQuoteIdMap, Map<Id, Boolean> quoteIdvalidEndCustomerMap){
         for(SBQQ__Quote__c quote: [SELECT Id,Pricing_Unified_Global_End_Customer_Nm__r.Pricing_Unified_Country_EndCustomer_Id__c, Pricing_Unified_Global_End_Customer_Nm__r.Pricing_RequestID__r.Core_Unified_Global_Customer_BP_Id__c,Pricing_IsUnifiedCustomer__c  FROM SBQQ__Quote__c WHERE id IN: opptyIdtoQuoteIdMap.values()]){ 
             if(quote.Pricing_IsUnifiedCustomer__c && quoteIdToOppRecdMap.containskey(quote.id)  && quote.Pricing_Unified_Global_End_Customer_Nm__r.Pricing_RequestID__r.Core_Unified_Global_Customer_BP_Id__c != quoteIdToOppRecdMap.get(quote.id).Account.Core_Unified_Global_Customer_BP_Id__c){
@@ -2297,19 +2499,19 @@ public without sharing class QuoteBusinessLogic{
             }
         }
     } 
-
+    
     /**
-    * @description: Method to sent QuoteLine Approve Notification to AE when opportunity Won/Lost. 
-    * @author ChangeMeIn@UserSettingsUnder.SFDoc | 03-13-2024 
-    * @param quoteIds 
-    **/
+* @description: Method to sent QuoteLine Approve Notification to AE when opportunity Won/Lost. 
+* @author ChangeMeIn@UserSettingsUnder.SFDoc | 03-13-2024 
+* @param quoteIds 
+**/
     public static void qlApproveAENotifyForOppWonLost(set<id> quoteIds){
         Map<Id,Id> quoteNotifyMap= new Map <Id,Id>();
         List<SBQQ__QuoteLine__c> quoteLineList = ([SELECT Id, Name,SBQQ__Quote__c,Pricing_Status_Nm__c ,SBQQ__Quote__r.Pricing_Intel_Account_Exec_Email_Txt__c,Pricing_Product_Nm__c FROM SBQQ__QuoteLine__c WHERE SBQQ__Quote__c IN: quoteIds and Pricing_Quote_Program_Nm__c =: Label.Pricing_Tender_Quote_Program]);
         for(SBQQ__QuoteLine__c quoteLine : quoteLineList){
-                if(!quoteNotifyMap.containsKey(quoteLine.SBQQ__Quote__c) && quoteLine.Pricing_Status_Nm__c == Label.Pricing_Tender_Quote_Status_Approved && !String.isBlank(quoteline.SBQQ__Quote__r.Pricing_Intel_Account_Exec_Email_Txt__c)){
-                    quoteNotifyMap.put(quoteLine.SBQQ__Quote__c, quoteLine.Id);
-                }
+            if(!quoteNotifyMap.containsKey(quoteLine.SBQQ__Quote__c) && quoteLine.Pricing_Status_Nm__c == Label.Pricing_Tender_Quote_Status_Approved && !String.isBlank(quoteline.SBQQ__Quote__r.Pricing_Intel_Account_Exec_Email_Txt__c)){
+                quoteNotifyMap.put(quoteLine.SBQQ__Quote__c, quoteLine.Id);
+            }
         }
         if(!quoteNotifyMap.isEmpty()){
             Pricing_EmailUtility.sendEmailToReciepents(new Set<Id>(quoteNotifyMap.values()),Label.Pricing_QuoteLine_Approve_OppWonLost_Notification);

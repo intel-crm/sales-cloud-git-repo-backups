@@ -88,7 +88,8 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Adjustment_Claim_Nbr__c.Core_MDF_Country_Location_nm__c</field>
+            <displayNameOverride>Country/Region</displayNameOverride>
+            <field>Core_MDF_Adjustment_Claim_Nbr__c.Core_MDF_Country_Location__c</field>
             <table>Core_MDF_Claim_Offset__c</table>
         </columns>
         <columns>

@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-
-<html><head><meta charset="UTF-8">
+<html>
+<head>
 </head>
 <body>
 <p></p>
-<table class="body" style="background: #f3f3f3; margin: 0px; padding: 0px; width: 100%; height: 100%; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; border-collapse: collapse; border-spacing: 0;">
+<table class="body" style="background: #f3f3f3; margin: 0px; padding: 0px; width: 99.8817%; height: 100%; text-align: left; color: #555554; line-height: 20px; font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; border-collapse: collapse; border-spacing: 0px;">
 <tbody>
 <tr style="padding: 0px; text-align: left; vertical-align: top;">
-<td align="center" class="center" valign="top" style="margin: 0px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-word-wrap: break-word; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;"><center style="width: 100%; min-width: 670px;">
+<td align="center" class="center" valign="top" style="margin: 0px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; hyphens: none; border-collapse: collapse !important; width: 100%;"><center style="width: 100%; min-width: 670px;">
 <div align="center" class="float-center"><center style="width: 100%; min-width: 670px;">
 <table align="center" class="float-center" style="margin: 0px auto; padding: 0px; width: 100%; text-align: center; vertical-align: top; float: none; border-collapse: collapse; max-width: 670px !important; border-spacing: 0;" cellspacing="0" cellpadding="0">
 <tbody>
@@ -27,15 +27,17 @@
 <th style="margin: 0px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400;">
 <table class="row header-content" style="padding: 0px; width: 100%; text-align: left; vertical-align: top; display: table; border-collapse: collapse; position: relative; border-spacing: 0;">
 <tbody>
-<tr style="padding: 0px; text-align: left; vertical-align: top;">
-<th class="mobile-padding small-12 large-12 columns first last" style="margin: 0px auto; padding: 0px 20px; width: 100%; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400;">
+
 <table style="padding: 0px; width: 100%; text-align: left; vertical-align: top; border-collapse: collapse; border-spacing: 0;">
 <tbody>
 <tr style="padding: 0px; text-align: left; vertical-align: top;">
-<th style="margin: 0px; padding: 0px 0px 10px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400;">
-<h1 style="margin: 0px 0px 17.39px;padding-top: 25px;text-align: left;color: #fefefe;line-height: 1.3;font-family: Arial,Helvetica,sans-serif;font-size: 18px;font-weight: 400;border-collapse: collapse !important;-ms-word-break: keep-all;-ms-word-wrap: normal;-ms-hyphens: none;-moz-hyphens: none;-webkit-hyphens: none;hyphens: none;">Verifique seu e-mail e defina sua senha</h1>
+
+<th style="margin: 0px;/* padding: 0px 0px 10px; */text-align: left;color: #555554;line-height: 20px;font-family: Arial,Helvetica,sans-serif;font-size: 12px;font-weight: 400;height: 10px;width: 450px;padding-top: 25px;">
+<h1 style="margin: 0px 0px 17.39px; padding: 0px; text-align: left; color: #fefefe; line-height: 1.3; font-family: Arial,Helvetica,sans-serif; font-size: 24px; font-weight: 400; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-word-wrap: normal; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;">Verifique seu endereço de e-mail para ativar sua conta</h1>
 </th>
-<th class="callout-inner" style="padding:15px;"><img src="https://intel--c.documentforce.com/servlet/servlet.ImageServer?id=0153b000005OXH2&oid=00Do0000000aRcf&lastMod=1609662404000" alt="Intel" title="Intel" align="right" class="float-center" style="height:100%;width:auto"></th>
+<th class="callout-inner" style="padding:25px;"> 
+<img src="https://img03.en25.com/EloquaImages/clients/IntelCorporation/{1a814392-3a10-434c-bdb3-175cc3fbfa07}_intel-logo-white_UPDATED.png" alt="Intel" title="Intel" align="right" class="float-center" style="height:100%;width:auto">
+</th>
 <th class="expander" style="margin: 0px; padding: 0px !important; width: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; visibility: hidden;"></th>
 </tr>
 </tbody>
@@ -53,18 +55,26 @@
 </tbody>
 </table>
 <table class="spacer" style="padding: 0px; width: 100%; text-align: left; vertical-align: top; border-collapse: collapse; border-spacing: 0; background-color: #f3f3f3;">
+<tbody>
+<tr style="padding: 0px; text-align: left; vertical-align: top;">
+<td height="10" style="margin: 0px; padding: 0px; text-align: left; color: #555554; line-height: 10px; font-family: Arial,Helvetica,sans-serif; font-size: 10px; font-weight: 400; vertical-align: top; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-word-wrap: break-word; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;"></td>
+</tr>
+</tbody>
 </table>
-<table class="row module full-width" style="padding: 0px; width: 100%; text-align: left; vertical-align: top; display: table; border-collapse: collapse; position: relative; border-spacing: 0; background-color: #fefefe;">
+<table class="row module full-width" align="center" style="padding: 0px; width: 100%; text-align: left; vertical-align: top; display: table; border-collapse: collapse; position: relative; border-spacing: 0; background-color: #fefefe;">
 <tbody>
 <tr style="padding: 0px; text-align: left; vertical-align: top;">
 <th class="small-12 large-12 columns first last" style="margin: 0px auto; padding: 20px 20px 10px; width: 650px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; background-color: #fefefe;">
 <table style="padding: 0px; width: 100%; text-align: left; vertical-align: top; border-collapse: collapse; border-spacing: 0;">
 <tbody>
+<tbody>
+<tr style="padding: 0px; text-align: left; vertical-align: top;">
+<p style="margin: 0px 0px 10px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;">Prezado(a) {!PRM_Registration_Request__c.PRM_First_Name__c},</p>
+</tr>
+</tbody>
 <tr style="padding: 0px; text-align: left; vertical-align: top;">
 <th style="margin: 0px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400;">
-<p style="margin: 0px 0px 10px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 11px; font-weight: 400; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;"><img src="https://intel--c.documentforce.com/servlet/servlet.ImageServer?id=0153b000005JiRU&oid=00Do0000000aRcf&lastMod=1629971390000" width="500" height="115"><br><br>{!PRM_Registration_Request__c.PRM_First_Name__c},</br>
-<p>Obrigado por iniciar seu registro para a Intel&reg; Partner Alliance!<br>Clique no link abaixo para continuar<br>
-</p>
+<p style="margin: 0px 0px 10px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;">Agradecemos sua participação no programa de parceiros Intel. Clique no link abaixo para ativar sua conta.</p>
 <p class="btn-spacer" style="margin: 0px 0px 10px; padding: 0px; text-align: left; color: #555554; line-height: 0; font-family: Arial,Helvetica,sans-serif; font-size: 0px; font-weight: 400; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;"></p>
 <table class="button radius" style="margin: 0px 0px 20px; padding: 0px; width: 100%; text-align: center; vertical-align: top; border-collapse: collapse; border-spacing: 0;">
 <tbody>
@@ -73,7 +83,7 @@
 <table style="padding: 0px; width: auto; text-align: left; vertical-align: top; border-collapse: collapse; border-spacing: 0;">
 <tbody>
 <tr style="padding: 0px; text-align: left; vertical-align: top;">
-<td style="background-color: #00aeef; margin: 0px; padding: 0px 20px; border-radius: 3px; border: currentColor; text-align: center !important; color: #fefefe; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-word-wrap: break-word; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;"><a style="margin: 0px; padding: 5px 0px; border-radius: 3px; border: 0px solid #00aeef; text-align: left; color: #fefefe; line-height: 1.3; font-family: Arial,Helvetica,sans-serif; font-size: 18px; font-weight: 400; text-decoration: none; display: inline-block;" href="https://signin.intel.com/PasswordUpdate?var={!PRM_Registration_Request__c.PRM_EV_Token__c}&culture=pt&target=https://www.intel.com/content/www/br/pt/secure/partner/forms/ipa-account-search.html"><u>Verifique seu e-mail e defina sua senha</u></a></td>
+<td style="background: #00aeef; margin: 0px; padding: 0px 20px; border-radius: 3px; border: currentColor; text-align: center !important; color: #fefefe; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-word-wrap: break-word; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;"><a style="margin: 0px; padding: 5px 0px; border-radius: 3px; border: 0px solid #00aeef; text-align: left; color: #fefefe; line-height: 1.3; font-family: Arial,Helvetica,sans-serif; font-size: 18px; font-weight: 400; text-decoration: none; display: inline-block;" href="https://signinpp.intel.com/PasswordUpdate?var={!PRM_Registration_Request__c.PRM_EV_Token__c}&target=http://devfm1aempdts03.amr.corp.intel.com/content/www/us/en/secure/partner/forms/ipa-account-search.html">Ativar sua conta</a></td>
 </tr>
 </tbody>
 </table>
@@ -81,13 +91,7 @@
 </tr>
 </tbody>
 </table>
-
-<p style="margin: 0px 0px 10px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 11px; font-weight: 400; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;">
-<h3><b>Este link expirará em 24 horas</b></h3>Para concluir o próximo passo e definir sua senha, use o nome de usuário listado abaixo<br><b>Nome de usuário:</b> {!PRM_Registration_Request__c.PRM_Email_ID__c}<br>
-<br>Não consegue acessar o link acima?</br>
-<tr style="font-size: 11px;"><td style="word-break:break-all;font-size: 11px;"><a href="https://signin.intel.com/PasswordUpdate?var={!PRM_Registration_Request__c.PRM_EV_Token__c}&culture=pt&target=https://www.intel.com/content/www/br/pt/secure/partner/forms/ipa-account-search.html"" style="color:#FF0000;">https://signin.intel.com/PasswordUpdate?var={!PRM_Registration_Request__c.PRM_EV_Token__c}&culture=pt&target=https://www.intel.com/content/www/br/pt/secure/partner/forms/ipa-account-search.html</a></td></tr>
-</p><!--<p style="margin: 0px 0px 10px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 11px; font-weight: 400; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;"><a href="http://www.intel.com/partner" style="color:#FF0000;">Verify now</a><br> --><p style="margin: 0px 0px 10px; padding: 0px; text-align: left; color: #555554; line-height: 11px; font-family: Arial,Helvetica,sans-serif; font-size: 11px; font-weight: 400; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;">
-<tr><td style="word-break:break-all;font-size: 11px;color: #555554;font-family: Arial,Helvetica,sans-serif; font-size: 11px; font-weight: 400;"><br>Esperamos ter você no programa!<br>Atenciosamente,<br>Sua equipe Intel&reg; Partner Alliance</td></tr></p> 
+<p style="margin: 0px 0px 10px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;">Não consegue acessar o link acima?<br/><a href="{!PRM_Email_Content_DataSetup__c.DataValue_1__c}">{!PRM_Email_Content_DataSetup__c.DataValue_1__c}</a></p>
 </th>
 <th class="expander" style="margin: 0px; padding: 0px !important; width: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; visibility: hidden;"></th>
 </tr>
@@ -96,7 +100,9 @@
 </th>
 </tr>
 </tbody>
-</table><span class="remove-absolute" style="display: block;" elqid="8645" elqtype="DynamicContent"></span><table class="spacer" style="padding: 0px; width: 100%; text-align: left; vertical-align: top; border-collapse: collapse; border-spacing: 0; background-color: #f3f3f3;">
+</table>
+<span class="remove-absolute" style="display: block;" elqid="8645" elqtype="DynamicContent"> </span>
+<table class="spacer" style="padding: 0px; width: 100%; text-align: left; vertical-align: top; border-collapse: collapse; border-spacing: 0; background-color: #f3f3f3;">
 <tbody>
 <tr style="padding: 0px; text-align: left; vertical-align: top;">
 <td height="10" style="margin: 0px; padding: 0px; text-align: left; color: #555554; line-height: 10px; font-family: Arial,Helvetica,sans-serif; font-size: 10px; font-weight: 400; vertical-align: top; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-word-wrap: break-word; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;"></td>
@@ -116,23 +122,20 @@
 <tbody>
 <tr style="background: 0px 0px; padding: 0px; border: 0px solid transparent; text-align: left; vertical-align: top; border-collapse: collapse;">
 <th class="small-12 large-12 columns first last" style="background: 0px 0px; margin: 0px auto; padding: 0px 0px 20px; border: 0px solid transparent; width: 680px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; border-collapse: collapse;">
-<table align="center" class="cq-rte-forcedborder" style="border: 1px dotted #d3d3d3; background-color: #003c71; border-collapse: collapse; margin: 0px auto; min-width: 670px; width: 700px;" border="0" cellspacing="0" cellpadding="0">
+<table align="center" class="cq-rte-forcedborder" style="border: 1px dotted #d3d3d3; background-color: #003c71; border-collapse: collapse; margin: 0px auto; min-width: 670px; width: 670px;" border="0" cellspacing="0" cellpadding="0">
 <tbody>
 <tr>
-<td style="font-size: 12px; border: #d3d3d3; padding-left: 10px; padding-right: 30px; padding-bottom: 20px; background-color: #0071c5;">
+<td style="font-size: 12px; border: #d3d3d3; padding-left: 10px; padding-right: 30px; padding-bottom: 20px;">
 <table width="100%" class="cq-rte-forcedborder" style="border: #d3d3d3; border-collapse: collapse;" border="0" cellspacing="0" cellpadding="0">
 <tbody>
 <tr>
-<td class="auto-style1" valign="top" style="font-size: 10px; color: #ffffff; font-family: Arial, Helvetica, sans-serif; line-height: 14px; padding-top: 10px; padding-bottom: 10px; text-align: center;">Esta mensagem foi enviada a você como uma importante comunicação comercial relacionada ao seu relacionamento atual com a Intel&reg; Partner Alliance.</td>
+<td class="auto-style1" valign="top" style="font-size: 10px; ); color: #ffffff; font-family: Arial, Helvetica, sans-serif; line-height: 14px; padding-top: 10px; padding-bottom: 10px; text-align: left;">Copyright © 2020 Intel Corporation. All rights reserved. Intel, the Intel logo are trademarks of Intel Corporation in the U.S. and/or other countries.</td>
 </tr>
 <tr>
-<td class="auto-style1" valign="top" style="font-size: 10px;border: #d3d3d3;color: #ffffff; font-family: Arial, Helvetica, sans-serif; line-height: 14px; padding-bottom: 10px; text-align: center;">&copy; {!$Label.PRM_CurrentYear} Intel Corporation</td>
+<td class="auto-style1" valign="top" style="font-size: 10px; border: #d3d3d3; color: #ffffff; font-family: Arial, Helvetica, sans-serif; line-height: 14px; padding-bottom: 10px; text-align: left;">Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.<span class="Apple-converted-space"> </span><a style="color: #ffffff; text-decoration: none;" href="https://www.intel.com/content/www/pt/br/privacy/intel-privacy-notice.html" target="_blank" _rte_href="https://www.intel.com/content/www/pt/br/privacy/intel-privacy-notice.html">Intel.com</a></td>
 </tr>
 <tr>
-<td class="auto-style1" valign="top" style="font-size: 10px; border: #d3d3d3; color: #ffffff; font-family: Arial, Helvetica, sans-serif; line-height: 14px; padding-bottom: 10px; text-align: center;">Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.<span class="Apple-converted-space"></span><a style="color: #ffffff; text-decoration: none;" href="https://www.intel.com/content/www/br/pt/homepage.html" target="_blank" _rte_href="http://www.intel.com/"><u>www.intel.com</u></a></td>
-</tr>
-<tr>
-<td class="auto-style1" valign="top" style="font-size: 10px; border: 1px #d3d3d3; color: #ffffff; font-family: Arial, Helvetica, sans-serif; line-height: 14px; text-align: center;"><a style="color: #ffffff; text-decoration: none;" href="https://www.intel.com/content/www/br/pt/privacy/intel-privacy-notice.html" _rte_href="https://www.intel.com/content/www/br/pt/privacy/intel-privacy-notice.html"><u>Privacidade</u></a><span class="Apple-converted-space"></span>&verbar;<span class="Apple-converted-space"></span><a style="color: #ffffff; text-decoration: none;" href="https://www.intel.com/content/www/br/pt/privacy/intel-cookie-notice.html" _rte_href="https://www.intel.com/content/www/br/pt/privacy/intel-cookie-notice.html"><u>Cookies</u></a><span class="Apple-converted-space"></span><span class="Apple-converted-space"></span></td>
+<td class="auto-style1" valign="top" style="font-size: 10px; border: 1px #d3d3d3; color: #ffffff; font-family: Arial, Helvetica, sans-serif; line-height: 14px; text-align: left;"><a style="color: #ffffff; text-decoration: none;" href="https://www.intel.com/content/www/pt/br/privacy/intel-privacy-notice.html" _rte_href="https://www.intel.com/content/www/pt/br/privacy/intel-privacy-notice.html">Privacidade</a><span class="Apple-converted-space"> </span>|<span class="Apple-converted-space"> </span><a style="color: #ffffff; text-decoration: none;" href="https://www.intel.com/content/www/pt/br/privacy/intel-privacy-notice.html" _rte_href="https://www.intel.com/content/www/pt/br/privacy/intel-privacy-notice.html">Cookies</a><span class="Apple-converted-space"> </span>|<span class="Apple-converted-space"> </span><a style="color: #ffffff; text-decoration: none;" href="https://www.intel.com/content/www/pt/br/privacy/intel-privacy-notice.html" _rte_href="https://www.intel.com/content/www/pt/br/privacy/intel-privacy-notice.html">*Marcas comerciais</a><span class="Apple-converted-space"> </span>|<span class="Apple-converted-space"> </span><a style="color: #ffffff; text-decoration: none;" href="https://www.intel.com/content/www/pt/br/privacy/intel-privacy-notice.html" _rte_href="https://www.intel.com/content/www/pt/br/privacy/intel-privacy-notice.html">Cancelar inscrição</a></td>
 </tr>
 </tbody>
 </table>
@@ -140,8 +143,25 @@
 </tr>
 </tbody>
 </table>
-<p style="color: #000000; font-family: tahoma, arial, helvetica, sans-serif; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: #ffffff; text-decoration-style: initial; text-decoration-color: initial;"><img width="352" height="1" src="./sample_files/spacer.gif" border="0" _rte_src="https://www-ssl.intel.com/Assets/en_US/Image/tab/spacer.gif"></p>
+
 </th>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
 </tr>
 </tbody>
 </table>
@@ -168,5 +188,5 @@
 </tbody>
 </table>
 <p></p>
-
-</body></html>
+</body>
+</html>

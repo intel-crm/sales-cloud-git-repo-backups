@@ -346,7 +346,7 @@
                                
                                 <apex:outputText >**</apex:outputText>
                                 <b>{!$Label.Core_IPS_CaseRTF_Private_to_Intel } </b> &nbsp; &nbsp; &nbsp;
-                               <b>{!$Label.Core_IPS_CCP_CoreAccess_ProfileName} </b> &nbsp; &nbsp; &nbsp; <!--TWC745-6044 -Merging IPS Data Migration Profile to generic profile -CCP Core Access -->
+                               <b>{!$Label.Core_IPS_Data_Migration_Profile_Name} </b> &nbsp; &nbsp; &nbsp; 
                                 <!--<b>{!$Label.Core_IPS_CaseRTF_Intel_Technical_Specialist}</b> &nbsp; &nbsp; &nbsp;-->
                                 <b><apex:outputField value="{!comnt.CreatedDate}" /></b> &nbsp; &nbsp; &nbsp;     <br/>                  
                                 <apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> 
@@ -358,7 +358,7 @@
                                
                                <apex:outputText >*</apex:outputText>
                                 <b>{!$Label.Core_IPS_CaseRTF_Private_To_Partner } </b> &nbsp; &nbsp; &nbsp;     
-                               <b>{!$Label.Core_IPS_CCP_CoreAccess_ProfileName} </b> &nbsp; &nbsp; &nbsp; <!--TWC745-6044 -Merging IPS Data Migration Profile to generic profile -CCP Core Access -->                         
+                               <b>{!$Label.Core_IPS_Data_Migration_Profile_Name} </b> &nbsp; &nbsp; &nbsp;                          
                                 <b><apex:outputField value="{!comnt.CreatedDate}" /></b> &nbsp; &nbsp; &nbsp;   <br/>                     
                                 <apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> 
                             </apex:column>
@@ -369,14 +369,14 @@
                                
                                 <apex:outputText >***</apex:outputText>
                                 <b>{!$Label.Core_IPS_CaseRTF_Notetype_PrivateToAgents }</b> &nbsp; &nbsp; &nbsp;
-                               <b>{!$Label.Core_IPS_CCP_CoreAccess_ProfileName} </b> &nbsp; &nbsp; &nbsp; <!--TWC745-6044 -Merging IPS Data Migration Profile to generic profile -CCP Core Access -->
+                               <b>{!$Label.Core_IPS_Data_Migration_Profile_Name} </b> &nbsp; &nbsp; &nbsp; 
                                 <b><apex:outputField value="{!comnt.CreatedDate}" /></b> &nbsp; &nbsp; &nbsp;     <br/>                    
                                 <apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> 
                             </apex:column> 
                             
                             <!-- Data Migration X Public comments -->
                             <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND(comnt.Core_IPS_Comment_Author_Type__c == 'Data Migration',comnt.Core_IPS_Case_Comment_Type__c=='Public to Customers')}" >                          
-                                <b>{!$Label.Core_IPS_CCP_CoreAccess_ProfileName} </b> &nbsp; &nbsp; &nbsp; <!--TWC745-6044 -Merging IPS Data Migration Profile to generic profile -CCP Core Access -->
+                                <b>{!$Label.Core_IPS_Data_Migration_Profile_Name} </b> &nbsp; &nbsp; &nbsp; 
                                 <b><apex:outputField value="{!comnt.CreatedDate}" /></b> &nbsp; &nbsp; &nbsp;     <br/>                   
                                 <apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> 
                             </apex:column>

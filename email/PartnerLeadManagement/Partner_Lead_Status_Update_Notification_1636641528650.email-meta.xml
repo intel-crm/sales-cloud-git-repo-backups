@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Partner Lead Status Update Notification</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Partner Lead Status Update Notification</name>
+    <style>none</style>
+    <subject>Status Requested on Accepted and Contacted Leads</subject>
+    <type>custom</type>
+    <uiType>SFX</uiType>
+</EmailTemplate>

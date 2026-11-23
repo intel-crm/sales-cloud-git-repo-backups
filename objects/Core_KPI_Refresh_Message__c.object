@@ -4,14 +4,6 @@
     <description>This is created for displaying  KPI home page refresh message.</description>
     <enableFeeds>false</enableFeeds>
     <fields>
-        <fullName>Core_KPI_Retry_Failed_UserEmails__c</fullName>
-        <description>This field contains the list of user email ids to send emails when KPI Integration Inbound records are failed.</description>
-        <label>KPI Retry Failed UserEmails</label>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>TextArea</type>
-    </fields>
-    <fields>
         <fullName>Core_LastModifiedDate__c</fullName>
         <label>LastModifiedDate</label>
         <required>false</required>

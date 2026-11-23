@@ -150,7 +150,7 @@
     <enableBulkApi>true</enableBulkApi>
     <enableEnhancedLookup>false</enableEnhancedLookup>
     <enableFeeds>false</enableFeeds>
-    <enableHistory>false</enableHistory>
+    <enableHistory>true</enableHistory>
     <enableLicensing>false</enableLicensing>
     <enableReports>true</enableReports>
     <enableSearch>true</enableSearch>
@@ -164,6 +164,7 @@
         <description>Flag that indicates whether this quote term is available for use.</description>
         <inlineHelpText>Indicates that this quote term is available for use.</inlineHelpText>
         <label>Active</label>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
@@ -174,6 +175,7 @@
         <inlineHelpText>Can only be entered if the Conditions Met is Custom. Enter a combination of the Term Condition Index #s, AND, OR, and parenthesis (e.g. (123 AND 124) AND 125).</inlineHelpText>
         <label>Advanced Condition</label>
         <required>false</required>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>TextArea</type>
     </fields>
@@ -184,6 +186,7 @@
         <inlineHelpText>Text content of this term.</inlineHelpText>
         <label>Body</label>
         <length>32768</length>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Html</type>
         <visibleLines>25</visibleLines>
@@ -195,6 +198,7 @@
         <inlineHelpText>Choose the behavior for your conditions: All is AND, Any is OR, Custom is a combination of AND/OR.</inlineHelpText>
         <label>Conditions Met</label>
         <required>false</required>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -225,6 +229,7 @@
         <description>Controls a Quote Term being editable by a user.</description>
         <inlineHelpText>Controls a Quote Term being editable by a user.</inlineHelpText>
         <label>Locked</label>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
@@ -239,6 +244,7 @@
         <relationshipLabel>Sub Terms</relationshipLabel>
         <relationshipName>SubTerms</relationshipName>
         <required>false</required>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -252,6 +258,7 @@
         <precision>12</precision>
         <required>true</required>
         <scale>2</scale>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
@@ -267,6 +274,7 @@
         <relationshipLabel>Quote Terms</relationshipLabel>
         <relationshipName>QuoteTerms</relationshipName>
         <required>false</required>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -281,6 +289,7 @@
         <relationshipLabel>Modified Terms</relationshipLabel>
         <relationshipName>ModifiedTerms</relationshipName>
         <required>false</required>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -291,6 +300,7 @@
         <inlineHelpText>Status of this quote term.</inlineHelpText>
         <label>Status</label>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -339,6 +349,7 @@
         <relationshipLabel>Quote Terms</relationshipLabel>
         <relationshipName>Quote_Terms</relationshipName>
         <required>false</required>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -353,6 +364,18 @@
         <inlineHelpText>Indicates if the term is standard, custom, or modified.</inlineHelpText>
         <label>Type</label>
         <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>core_cpq_Quote_Term_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Quote Term Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -360,6 +383,7 @@
     <label>Quote Term</label>
     <listViews>
         <fullName>SBQQ__All</fullName>
+        <columns>core_cpq_Quote_Term_Name__c</columns>
         <columns>NAME</columns>
         <columns>SBQQ__PrintOrder__c</columns>
         <columns>SBQQ__Active__c</columns>
@@ -373,6 +397,7 @@
     <nameField>
         <displayFormat>QT-{0000}</displayFormat>
         <label>Term #</label>
+        <trackHistory>false</trackHistory>
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Quote Terms</pluralLabel>
@@ -387,12 +412,14 @@
         <lookupDialogsAdditionalFields>SBQQ__Body__c</lookupDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>SBQQ__Status__c</lookupPhoneDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>SBQQ__Type__c</lookupPhoneDialogsAdditionalFields>
+        <searchResultsAdditionalFields>core_cpq_Quote_Term_Name__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>SBQQ__Active__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>SBQQ__Status__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>SBQQ__Type__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>SBQQ__PrintOrder__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>SBQQ__ParentTerm__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>SBQQ__Body__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>SBQQ__TemplateContent__c</searchResultsAdditionalFields>
     </searchLayouts>
     <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>

@@ -37,7 +37,7 @@
         <field>AGE</field>
     </columns>
     <filter>
-        <booleanFilter>1 AND 2 AND 3</booleanFilter>
+        <booleanFilter>(1 OR 2) AND 3</booleanFilter>
         <criteriaItems>
             <column>Case.Core_IPS_Product__c</column>
             <columnToColumn>false</columnToColumn>
@@ -46,23 +46,23 @@
             <value>FPGA</value>
         </criteriaItems>
         <criteriaItems>
+            <column>Case.Core_IPS_Product__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Enpirion</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>OPEN</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>1</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>Case.Core_Sub_Status__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Design Team Investigating,Investigating,Reopened - Customer Request,Reproduced,Waiting for Customer Clarification*,Waiting for Customer Verification*,Waiting for Ingredient*</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Tabular</format>
-    <name>Current Issues</name>
+    <name>PSG - customer open</name>
     <params>
         <name>units</name>
         <value>d</value>

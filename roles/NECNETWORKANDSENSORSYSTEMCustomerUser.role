@@ -6,5 +6,5 @@
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>NEC NETWORK AND SENSOR SYSTEM Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>NECNETWORKANDSENSORSYSTEMCustomerManager</parentRole>
 </Role>

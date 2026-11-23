@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Core_Lead_Send_Email_To_Partners</name>
+        <label>Lead.Core_Lead_Send_Email_To_Partners</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <actionName>Lead.Core_Lead_Send_Email_To_Partners</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Lead.Core_Lead_Send_Email_To_Partners</nameSegment>
+    </actionCalls>
+    <apiVersion>56.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Migrated from the: Core_Lead_Send_Email_To_Partners_On_Owner_Change workflow rule
+Workflow rule description: Workflow to send Email Notification to Partners when a lead is re-assigned from &apos;Invalid Partner Queue&apos; to another Partner Queue.&quot;</description>
+    <label>Core_Lead_Send_Email_To_Partners_On_Owner_Change</label>
+    <migratedFromWorkflowRuleName>Core_Lead_Send_Email_To_Partners_On_Owner_Change</migratedFromWorkflowRuleName>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Core_Lead_Send_Email_To_Partners</targetReference>
+        </connector>
+        <filterFormula>AND  (  ISCHANGED({!$Record.OwnerId}),  PRIORVALUE({!$Record.OwnerId}) = {!$Label.Core_Partner_Invalid_Queue_Id},  CONTAINS({!$Record.Owner:Queue.DeveloperName}, &quot;Core_PTNR&quot;), {!$Record.RecordType.Name} = &apos;Partner Lead&apos;, ISPICKVAL({!$Record.Core_PSG_Lead__c} , &quot;PSG&quot;) )</filterFormula>
+        <object>Lead</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+</Flow>

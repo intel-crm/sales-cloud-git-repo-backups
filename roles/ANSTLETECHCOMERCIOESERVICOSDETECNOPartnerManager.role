@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>ANSTLE TECH COMERCIO E SERVICOS DE TECNO Partner Manager</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>ANSTLE TECH COMERCIO E SERVICOS DE TECNO Partner Manager</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>ANSTLETECHCOMERCIOESERVICOSDETECNOPartnerExecutive</parentRole>
+</Role>

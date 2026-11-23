@@ -4,40 +4,18 @@
     <encodingKey>UTF-8</encodingKey>
     <name>SCRREQTOAPVDNEW_JPN</name>
     <style>none</style>
-    <subject>ご対応のお願い: 45 日以内にパートナープログラムへのアクセスを有効化してください</subject>
-    <textOnly>おめでとうございます。メンバ﻿ーシ﻿ップ・リクエストが承認され、処理されました。
+    <subject>おめでとうございます。インテルのパートナープログラムへようこそ</subject>
+    <textOnly>You Have Been Approved!
 
 
-インテル® パートナー・アライアンス・プログラムへようこそ！
+Welcome! {!Account.Name} is now a member of Intel’s Partner program. After 30 minutes, please log in here for marketing materials, sales tools and other information about your benefits. If you would like to make changes to your account, please visit your profile here.www.intel.com/content/www/us/en/secure/my-intel/profile.html
 
-パートナーの皆様がインテルのエコシステムと連携し、ビジネス上の成果と成長を実現する革新的なソリューションを推進できるように設計された、統合エコシステムにご参加いただけることを嬉しく思います。
+Questions? Contact Support here
 
-アカウントに継続的にアクセスできるようにするには、このメールを受信してから 45 日以内にログインしてください。ログインするとプロファイルがアクティブになり、貴社に紐づけられた状態を維持できます。
-
-貴社のビジネスに合わせてカスタマイズされた特典により、以下が可能になります。
-
-最新のツール、トレーニング、リソースを活用して新たなビジネスチャンスを創出する
-対象となる購入やアクティビティーでポイントを獲得し、交換する
-市場開発基金でマーケティングと販売の成功を促進する
-最新のインテル® ソフトウェアでワークロードを学習、試作、テストする
-インテル® パートナー・ユニバーシティーで世界最高レベルのトレーニングを活用し、知識を深める
-NDA コンテンツ、ロードマップ、開発者向けツールを活用して革新的な製品を開発する
-インテル® パートナー・マーケティング・スタジオの共同マーケティング・アセットを活用し、キャンペーンを迅速に開始する
-インテル® パートナー・ショーケースのパートナー・ストアフロントで見込み顧客を獲得する
-
-ログインして開始する
-
-インテルのログイン手順についてサポートが必要な場合は、  こちら  をクリックしてください。
-
-
-
-よろしくお願いいたします。
-インテル® パートナー・アライアンス・チーム
-
-このメ﻿ッセ﻿ージは、イ﻿ン﻿テ﻿ル﻿®パ﻿ートナ﻿ー・アライアンス関係者の皆様に、重要なビジネス・コミ﻿ュニケ﻿ーシ﻿ョンとして送信されました。
-© {!$Label.PRM_CurrentYear} IntelCorporation
-Intel Corporation, 2200 Mission College Blvd.,M/S RNB4-145,Santa Clara,CA 95054 USA.www.intel.com
-プライバシ﻿ー &amp;verbar;Cookie</textOnly>
+Copyright © 2016 Intel Corporation. All rights reserved. Intel, the Intel logo are trademarks of Intel Corporation in the U.S. and/or other countries.
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. Intel.com
+You may unsubscribe at any time by updating your profile settings at: {!$Label.PRM_MyIntelProfileURL}
+Privacy | Cookies | *Trademarks</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

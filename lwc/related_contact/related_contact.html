@@ -1,0 +1,62 @@
+<template>
+    <article class="slds-card">
+    <div class="slds-grid slds-page-header border-bottom">
+        <header class="slds-media slds-media_center slds-has-flexi-truncate">
+            <div class="slds-media__figure">
+                <lightning-icon  icon-name="standard:relationship" alternative-text=" Related Contacts" size="small"></lightning-icon>
+            </div>
+            <div class="slds-media__body">
+                <h2 class="slds-card__header-title">
+                    <p class="slds-card__header-link slds-truncate" title="Related Contacts">
+                        <a  style="color:black" href="#">Related Contacts </a>
+                        <span>({count})</span>
+                    </p>
+                </h2>
+            </div>
+        </header>
+    </div>
+   <!-- <template if:true={displayData}>
+        <div class="slds-card__body slds-card__body_inner">
+            <template if:true={contact.contactDetails}>
+                <template for:each={contact.contactDetails} for:item="cont">
+                    <div class="slds-p-bottom_large" key={cont.Id}>
+                        <div class="slds-media slds-p-bottom_xx-small">
+                            <div class="slds-media__figure">
+                                <lightning-icon icon-name="standard:contact" size="small"
+                                    alternative-text="contact"></lightning-icon>
+                            </div>
+                            <div class="slds-media__body">
+                                <a class="slds-text-heading_small" href="#">{cont.Name}
+                                    <span class="slds-assistive-text">{cont.Name}</span>
+                                </a>
+                            </div>
+                        </div>
+                        <template if:true={acc.fieldDetails}>
+                            <template for:each={acc.fieldDetails} for:item="field">
+                                <div class="" key={field.fieldValue}>
+                                    <div class="slds-tile__detail">
+                                        <dl class="slds-list_horizontal slds-wrap">
+                                            <dt class="slds-item_label slds-text-color_weak slds-truncate"
+                                                title={field.fieldLabel}>
+                                                {field.fieldLabel}:
+                                            </dt>
+                                            <dd class="slds-item_detail slds-truncate" title={field.fieldValue}>
+                                                {field.fieldValue}
+                                            </dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                            </template>
+                        </template>
+                    </div>
+                </template>
+            </template>
+        </div>-->
+
+        <footer class="slds-card__footer">
+            <a class="slds-card__footer-action" href="#">View All
+                <span class="slds-assistive-text">Accounts</span>
+            </a>
+        </footer> 
+    </article>
+</template>

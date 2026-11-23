@@ -7,7 +7,7 @@ Modification Log :
 * Brian Matthews              09/12/2015             
 *****************************************************************************************************************************************************************************************************/
 public class Core_ChannelData_Single_Controller {
-    /*final public integer SALESOUT_LOW    = 1000;
+    final public integer SALESOUT_LOW    = 1000;
     final public integer SALESOUT_MEDIUM = 3000;     // Original: 3000.  SET TO 1000 for DEV TESTING!  12/28 - FIXED.
 
     public Id selectedAccountId       { get; set; }
@@ -394,6 +394,6 @@ public class Core_ChannelData_Single_Controller {
         PageReference pageRef = new ApexPages.StandardController(account).view();                            
         pageRef.setRedirect(true); 
         return pageRef;                          
-    } */  
+    }    
 
 }

@@ -1,5 +1,5 @@
-<apex:component access="global"><!-- controller="PMP_OfferingEmailAlertsController">-->
-<!--    <html>
+<apex:component access="global" controller="PMP_OfferingEmailAlertsController">
+    <html>
         <style>
 /* Regular */
 @font-face{
@@ -34,7 +34,7 @@ font-style: normal;
 }
     
 table {
-  font-family: sans-serif; /*arial, sans-serif,Intel Clear;*/
+  font-family: Intel Clear; /*arial, sans-serif;*/
   border-collapse: collapse;
   border-left: 1px solid #dddddd;
   border-right: 1px solid #dddddd;
@@ -51,59 +51,59 @@ td, th {
 }
 
 h1{
-  font-family: sans-serif !important;  
+  font-family: Intel Clear Pro !important;  
 }
 </style>
         <apex:attribute name="offeringRecordId" type="Id" description="Offering Record Id" assignTo="{!offeringId}"/>
-        <body>-->
+        <body>
             <!-- Header Banner -->
-<!--                <c:PMP_Global_Header message="Don’t forget: edit(s) required for your showcase offering"/>-->
+                <c:PMP_Global_Header message="DON’T FORGET: EDIT(S) REQUIRED FOR YOUR MARKETPLACE OFFERING"/>
             <!-- Header Banner -->
             
             <!-- Email content -->
-<!--            <table width="75%">    -->
+            <table width="75%">    
                 <!-- Email Body -->
-<!--               <tr>
+               <tr>
             <td style="padding-left:50px;">
                 <br/>Hello <br/><br/>
                 As we recently let you know, your action is required before we can publish your offering. Please follow the link below for instructions from your Intel Representative.
                 <br/><br/>
                 Thanks for your prompt attention<br/>
-                <b>The Intel® Partner Showcase Team</b>
+                <b>The Intel® Solutions Marketplace Team</b>
             </td>
-          </tr>-->
+          </tr>
                 <!-- Email Body -->
             <!-- CTA -->
- <!--         <tr>
+          <tr>
             <td style="padding-left:50px;">      
-                <p><apex:outputLink value="{!communityURL}{!offeringData.PMP_Published_Copy_Id_Txt__c}{!lang}" styleClass="intelBlue">Edit and Re-Submit Offering</apex:outputLink></p>        
+                <p><apex:outputLink value="{!communityURL}{!offeringData.Id}" styleClass="intelBlue">Edit and Re-Submit Offering</apex:outputLink></p>        
             </td>
-         </tr>-->
+         </tr>
         <!-- CTA -->
         <!-- Progress Indication 
         <tr>
             <td style="height:50; text-align:center;">
                 <apex:image id="bodyImageId" url="{!bodyURL}"/>
             </td>
-        </tr>-->
+        </tr>
         <!-- Progress Indication -->
         <!-- Questions/Contact -->
-<!--        <tr>
+        <tr>
             <td style="padding-left:50px;">  
-                Questions? Reach out to Showcase Admin Team at <br/>
+                Questions? Reach out to Marketplace Admin Team at <br/>
                 <apex:outputLink value="mailto:{!$Label.PMP_MailTo}" styleClass="intelBlue">
                  {!$Label.PMP_MailTo}
                 </apex:outputLink><br/><br/>
             </td>
-         </tr>-->
+         </tr>
          <!-- Questions/Contact -->
-<!--        </table>    -->             
+        </table>                 
             <!-- Email content -->
             
             <!-- Global Footer -->
-<!--                <c:PMP_Global_Footer />-->
+                <c:PMP_Global_Footer />
             <!-- Global Footer -->
             
-<!--        </body>
-    </html>-->
+        </body>
+    </html>
 </apex:component>

@@ -136,9 +136,11 @@ public without sharing class Core_OppProductsAtRisk_Ctrl {
         boolean flag;
         for(OppProductWrapper oppProdWrap : oppProductList){
             flag = false;
+            //FIX: Safe database lookup check
             OpportunityLineItem dbOppProd = productMap.get(oppProdWrap.oppLineItemId);
             
             if(dbOppProd != null) {
+                // All comparisons are now 100% null-safe
                 if(oppProdWrap.atRisk != dbOppProd.Core_At_Risk__c){
                     flag = true;
                 }else if(oppProdWrap.riskReason1 != dbOppProd.Core_Risk_Reason1__c){
@@ -233,7 +235,8 @@ public without sharing class Core_OppProductsAtRisk_Ctrl {
     @auraEnabled
     public static List<String> getPicklistValues(String objName, string fld) {
         List<String> allOpts = new List<String>();
-        Schema.sObjectType objType = Schema.getGlobalDescribe().get(objName);
+        //Schema.sObjectType objType = Schema.getGlobalDescribe().get(objName);
+        Schema.SObjectType objType = ((SObject) Type.forName(objName).newInstance()).getSObjectType();
         Schema.DescribeSObjectResult objDescribe = objType.getDescribe();
         map<String, Schema.SObjectField> fieldMap = objDescribe.fields.getMap();
         list<Schema.PicklistEntry> values = fieldMap.get(fld).getDescribe().getPickListValues();

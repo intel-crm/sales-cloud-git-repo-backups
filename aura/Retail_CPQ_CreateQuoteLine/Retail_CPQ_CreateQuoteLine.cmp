@@ -1,0 +1,78 @@
+<aura:component controller="Retail_CPQ_QuoteExhibitList" implements="force:lightningQuickActionWithoutHeader,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+	<aura:html tag="style">
+    .cuf-content {
+    padding: 0 0rem !important;
+    }
+    .slds-p-around--medium {
+    padding: 0rem !important;
+    }
+    .slds-modal__content{
+    overflow-y:hidden !important;
+    height:unset !important;
+    max-height:unset !important;
+    }
+    .slds-col{
+    padding:10px;
+    }
+    </aura:html>	
+    <aura:attribute name="lstOfRecordType" type="String[]" />
+	<aura:attribute type="Boolean" name="disableSave" default="true"/>
+    <aura:attribute name="mapOfRecordType" type="Map" />
+    <aura:attribute name="options" type="List" default="[
+    {'label': 'Retail Quote Line - Base RSA', 'value': 'Retail Quote Line - Base RSA'},
+    {'label': 'Retail Quote Line - IVR', 'value': 'Retail Quote Line - IVR'},
+    {'label': 'Retail Quote Line - MD', 'value': 'Retail Quote Line - MD'},
+    {'label': 'Retail Quote Line - Sell-In Rebates', 'value': 'Retail Quote Line - Sell-In Rebates'}
+    ]"/>
+    <aura:attribute type="String" name="radioButtonvalue"/>
+
+    
+
+    <!-- Fetch all available record types after component construction but before rendering -->
+
+    <aura:handler name="init" value="{!this}" action="{!c.fetchListOfRecordTypes}"/>
+
+    
+  <div class="modal-header slds-modal__header slds-size_1-of-1">
+    	<h4 class="title slds-text-heading--medium">New Quote Line</h4>
+    </div>
+     <div class="slds-modal__content slds-size_1-of-1 slds-is-relative ">
+    <br/>
+         <div class="slds-align_absolute-center "> 
+            <div class="slds-grid ">
+                <div class="slds-col slds-size_1-of-1">
+            <!-- select to hold all available record type names list -->
+                <lightning:radioGroup
+                    aura:id="recordTypePickList"
+                    label="Select a Record Type:"
+                    options="{! v.options }"
+                    value="{! v.value }"
+                    onchange="{! c.handleChange }"
+                    />
+			<!--<aura:iteration items="{!v.lstOfRecordType}" var="item" > 
+                <lightning:input aura:id="recordTypePickList" name="radioButtonGroup" label="{!item}" type="radio" options="{!item}" value="{!item}"/>
+              
+            </aura:iteration> -->
+            <!--<lightning:select aura:id="recordTypePickList" name="selectRecordType" label="Select a Record Type">
+
+                <option value="" text="Select Record Type"/>
+
+                <aura:iteration items="{!v.lstOfRecordType}" var="item">
+
+                    <option value="{!item}" text="{!item}"/>
+
+                </aura:iteration>
+
+            </lightning:select>-->
+        </div>   
+
+         </div>
+         </div>
+     <br/>
+        <div class="modal-footer slds-modal__footer">
+                    <lightning:button variant="Brand" class="slds-button" label="Cancel" onclick="{!c.closeModal}"/>
+                    <lightning:button variant="Brand" class="slds-button" type="submit" label="Next" onclick="{!c.createRecord}" disabled="{!v.disableSave}"/>
+        </div>   
+
+         </div>
+</aura:component>

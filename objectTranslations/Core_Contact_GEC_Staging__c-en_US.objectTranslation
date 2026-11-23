@@ -25,14 +25,6 @@
         <name>Core_Contact_Rec_Id__c</name>
     </fields>
     <fields>
-        <label><!-- Contact WWID --></label>
-        <name>Core_Contact_WWID__c</name>
-    </fields>
-    <fields>
-        <label><!-- GEC Blocked Reason --></label>
-        <name>Core_GEC_Blocked_Reason__c</name>
-    </fields>
-    <fields>
         <label><!-- GEC Blocked --></label>
         <name>Core_GEC_Blocked__c</name>
     </fields>
@@ -54,10 +46,6 @@
         <picklistValues>
             <masterLabel>Failed</masterLabel>
             <translation><!-- Failed --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>New</masterLabel>
-            <translation><!-- New --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Successful</masterLabel>

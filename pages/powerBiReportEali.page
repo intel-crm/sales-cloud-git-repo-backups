@@ -1,0 +1,53 @@
+<apex:page controller="powerBiReportEmbedEali" >
+
+
+<html>
+
+<head>
+
+</head>
+<apex:includeScript value="{!$Resource.powerbijs}"/>
+
+<apex:form >
+<apex:pageBlock >
+<apex:actionFunction name="refreshAccessToken" action="{!getEmbeddingDataForReport1}"/>
+</apex:pageBlock>
+</apex:form>
+<div id="myReport" style="height: 2000px;"/>
+
+<script>
+Visualforce.remoting.Manager.invokeAction(
+'{!$RemoteAction.powerBiReportEmbedEali.getEmbeddingDataForReport1}',
+function(result,event)
+{
+if(result.embedUrl && result.embedToken){
+let reportContainer = document.getElementById('myReport');
+let reportId = result.reportId;
+let embedUrl = result.embedUrl;
+let token = result.embedToken;
+
+let config = {
+type: 'report',
+id: reportId,
+embedUrl: embedUrl,
+accessToken: token,
+tokenType: 1,
+settings: {
+panes: {
+filters: { expanded: false, visible: false },
+pageNavigation: { visible: false }
+}
+}
+};
+
+// Embed the report and display it within the div container.
+let report = powerbi.embed(reportContainer, config);
+
+}
+    
+})
+
+</script>
+</html>
+
+</apex:page>

@@ -28,16 +28,6 @@
         <titleSize>18</titleSize>
     </chart>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Account.Core_Total_Approved_Revenue_Amount__c</field>
-    </columns>
-    <columns>
-        <field>ACCOUNT_NAME</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Sales_Groups__c</field>
-    </columns>
-    <columns>
         <field>Opportunity.Core_Opportunity_Count__c</field>
     </columns>
     <columns>
@@ -114,6 +104,9 @@
     </columns>
     <columns>
         <field>Product2.Core_Product_Type__c</field>
+    </columns>
+    <columns>
+        <field>User.Core_User_Geo__c</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Opportunity_Country__c</field>
@@ -214,12 +207,17 @@
     </groupingsAcross>
     <groupingsAcross>
         <dateGranularity>Day</dateGranularity>
-        <field>User.Core_User_Geo__c</field>
+        <field>Opportunity.Core_Sales_Groups__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsAcross>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>OpportunityLineItem.Core_Status__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>ACCOUNT_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>Amazon SDM Sales Report</name>

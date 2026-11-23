@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Account Change Review</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Account Change Review</value>
+    </caseValues>
+    <fields>
+        <label><!-- Current Account Name --></label>
+        <name>Current_Account_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Current Customer Aggregation Type --></label>
+        <name>Current_Customer_Aggregation_Type__c</name>
+        <picklistValues>
+            <masterLabel>Unified Country Customer</masterLabel>
+            <translation><!-- Unified Country Customer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unified Global Customer</masterLabel>
+            <translation><!-- Unified Global Customer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unified Intermediate Customer</masterLabel>
+            <translation><!-- Unified Intermediate Customer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unified Location Customer</masterLabel>
+            <translation><!-- Unified Location Customer --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Current Customer Process Engagement --></label>
+        <name>Current_Customer_Process_Engagement__c</name>
+        <picklistValues>
+            <masterLabel>Direct Price Exception</masterLabel>
+            <translation><!-- Direct Price Exception --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Distributor Price Exception</masterLabel>
+            <translation><!-- Distributor Price Exception --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sales Pipeline</masterLabel>
+            <translation><!-- Sales Pipeline --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Supply Demand Revenue</masterLabel>
+            <translation><!-- Supply Demand Revenue --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Current Parent ID --></label>
+        <name>Current_Parent_ID__c</name>
+        <relationshipLabel><!-- Account Change Review (Current Parent ID) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Current SF account --></label>
+        <name>Current_SF_account__c</name>
+        <relationshipLabel><!-- Account Change Review --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Current Simplified Account Name --></label>
+        <name>Current_Simplified_Account_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Current UCD Global ID --></label>
+        <name>Current_UCD_Global_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Current UCD Global Name --></label>
+        <name>Current_UCD_Global_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Current UCD Intermediate ID --></label>
+        <name>Current_UCD_Intermediate_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Current UCD Intermediate Name --></label>
+        <name>Current_UCD_Intermediate_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Current Unified ID --></label>
+        <name>Current_Unified_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- New Account Name --></label>
+        <name>New_Account_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- New Address --></label>
+        <name>New_Address__c</name>
+    </fields>
+    <fields>
+        <label><!-- New Customer Aggregation Type --></label>
+        <name>New_Customer_Aggregation_Type__c</name>
+        <picklistValues>
+            <masterLabel>Unified Country Customer</masterLabel>
+            <translation><!-- Unified Country Customer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unified Global Customer</masterLabel>
+            <translation><!-- Unified Global Customer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unified Intermediate Customer</masterLabel>
+            <translation><!-- Unified Intermediate Customer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unified Location Customer</masterLabel>
+            <translation><!-- Unified Location Customer --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- New Customer Process Engagement --></label>
+        <name>New_Customer_Process_Engagement__c</name>
+        <picklistValues>
+            <masterLabel>Direct Price Exception</masterLabel>
+            <translation><!-- Direct Price Exception --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Distributor Price Exception</masterLabel>
+            <translation><!-- Distributor Price Exception --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sales Pipeline</masterLabel>
+            <translation><!-- Sales Pipeline --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Supply Demand Revenue</masterLabel>
+            <translation><!-- Supply Demand Revenue --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- New Parent ID --></label>
+        <name>New_Parent_ID__c</name>
+        <relationshipLabel><!-- Account Change Review (New Parent ID) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- New Phone --></label>
+        <name>New_Phone__c</name>
+    </fields>
+    <fields>
+        <label><!-- New Simplified Account Name --></label>
+        <name>New_Simplified_Account_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- New UCD Global ID --></label>
+        <name>New_UCD_Global_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- New UCD Global Name --></label>
+        <name>New_UCD_Global_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- New UCD Intermediate ID --></label>
+        <name>New_UCD_Intermediate_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- New UCD Intermediate Name --></label>
+        <name>New_UCD_Intermediate_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- New Unified ID --></label>
+        <name>New_Unified_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- New Website --></label>
+        <name>New_Website__c</name>
+    </fields>
+    <fields>
+        <label><!-- Old Address --></label>
+        <name>Old_Address__c</name>
+    </fields>
+    <fields>
+        <label><!-- Old Phone --></label>
+        <name>Old_Phone__c</name>
+    </fields>
+    <fields>
+        <label><!-- Old Website --></label>
+        <name>Old_Website__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Status__c</name>
+        <picklistValues>
+            <masterLabel>Accepted</masterLabel>
+            <translation><!-- Accepted --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New</masterLabel>
+            <translation><!-- New --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -68,7 +68,7 @@ public class Core_DDR_Accept_Approve_Reject_Test {
         // LstAcc[0].OwnerId=uncoveredUserId;
         insert LstAcc2;
         Contact testContact = new Contact(FirstName='testFirstName12345', LastName='testLastName', Email='test123456@testing.com.test',
-                                          AccountId=LstAcc2[0].Id,Core_IPS_Active__c =false,MailingCountry= 'AFG');
+                                          AccountId=LstAcc2[0].Id,Core_IPS_Active__c =false);
         insert testContact;
         Profile partnerProfile = [SELECT Id FROM Profile WHERE Name='Partner' LIMIT 1];
         
@@ -192,7 +192,7 @@ public class Core_DDR_Accept_Approve_Reject_Test {
         // LstAcc[0].OwnerId=uncoveredUserId;
         insert LstAcc2;
         Contact testContact = new Contact(FirstName='testFirstName123', LastName='testLastName', Email='test123@testing.com.test',
-                                          AccountId=LstAcc2[0].Id,Core_IPS_Active__c =false,MailingCountry= 'AFG');
+                                          AccountId=LstAcc2[0].Id,Core_IPS_Active__c =false);
         insert testContact;
         Profile partnerProfile = [SELECT Id FROM Profile WHERE Name='Partner' LIMIT 1];
         
@@ -254,7 +254,7 @@ public class Core_DDR_Accept_Approve_Reject_Test {
         Core_DDR_Design_Handler_Utility.oppCreationFailed=true;
         
         Core_DDR_Accept_Approve_Reject_Design.getAlertMessage(true,DDRLst[0]);
-        // Core_DDR_Accept_Approve_Reject_Design.getPicklistValues(DDRLst[0].id,'DDR','IntelPlatform');
+       // Core_DDR_Accept_Approve_Reject_Design.getPicklistValues(DDRLst[0].id,'DDR','IntelPlatform');
         Test.stopTest(); 
         System.assertNotEquals(null,DRPLst);
     }
@@ -273,17 +273,12 @@ public class Core_DDR_Accept_Approve_Reject_Test {
         }
         LstAcc[0].Core_Export_Compliance_Block__c=true; 
         insert LstAcc;
-		
-		//LstAcc[2].owner = ;
-		//update LstAcc[2];
-		
-		system.debug('LstAcc[2].owner-->'+LstAcc[2].owner);
         
         List<Core_Location_To_Approver_Group_Mapping__c> LocToAppGroup = Core_DDR_Utility.CreateLocationToApproverGroup();
         
         //List<Core_LogEntry_Switch__c> LogEntryCS = Core_DDR_Utility.CreateLogEntry();
         
-        //  User adminUser = [Select Id, UserRoleId From User Where Profile.Name='System Administrator'  AND isActive=true Limit 1];
+        //	User adminUser = [Select Id, UserRoleId From User Where Profile.Name='System Administrator'  AND isActive=true Limit 1];
         List<Product2> ProdLst = Core_DDR_Utility.CreateProduct(5);
         // System.runAs(adminUser) {
         insert ProdLst;
@@ -303,15 +298,13 @@ public class Core_DDR_Accept_Approve_Reject_Test {
             Design.Core_Design_Registration_Status_Nm__c = 'Submitted';
             // Design.Core_End_Customer_Account_Id__c = LstAcc[0].id;
             Design.Core_Partner_Account_Id__c = LstAcc[1].id;
-			Design.Core_Intel_Support_Status__c = 'Disti Design Registration High';
         }        
         update DDRLst;
         
         Core_DDR_Accept_Approve_Reject_Design.ApproveDesign(DDRLst[0].Id,'Disti Design Registration High');
         
         DDRLst[0].Core_End_Customer_Account_Id__c = LstAcc[2].id;
-		update DDRLst;
-		system.debug('DDRLst[0].Core_End_Customer_Account_Owner__c-->'+DDRLst[0].Core_End_Customer_Account_Owner__c);
+        update DDRLst;
         List<Core_Design_Registration_Product__c> DRPLst = Core_DDR_Utility.CreateDRProduct(5, DDRLst, ProdLst);
         insert DRPLst;
         for(Core_Design_Registration_Product__c drp : DRPLst){
@@ -355,7 +348,7 @@ public class Core_DDR_Accept_Approve_Reject_Test {
         
         //List<Core_LogEntry_Switch__c> LogEntryCS = Core_DDR_Utility.CreateLogEntry();
         
-        //  User adminUser = [Select Id, UserRoleId From User Where Profile.Name='System Administrator'  AND isActive=true Limit 1];
+        //	User adminUser = [Select Id, UserRoleId From User Where Profile.Name='System Administrator'  AND isActive=true Limit 1];
         List<Product2> ProdLst = Core_DDR_Utility.CreateProduct(5);
         // System.runAs(adminUser) {
         insert ProdLst;
@@ -577,7 +570,7 @@ public class Core_DDR_Accept_Approve_Reject_Test {
         
         //List<Core_LogEntry_Switch__c> LogEntryCS = Core_DDR_Utility.CreateLogEntry();
         
-        //  User adminUser = [Select Id, UserRoleId From User Where Profile.Name='System Administrator'  AND isActive=true Limit 1];
+        //	User adminUser = [Select Id, UserRoleId From User Where Profile.Name='System Administrator'  AND isActive=true Limit 1];
         List<Product2> ProdLst = Core_DDR_Utility.CreateProduct(5);
         // System.runAs(adminUser) {
         insert ProdLst;
@@ -643,7 +636,7 @@ public class Core_DDR_Accept_Approve_Reject_Test {
         
         //List<Core_LogEntry_Switch__c> LogEntryCS = Core_DDR_Utility.CreateLogEntry();
         
-        //  User adminUser = [Select Id, UserRoleId From User Where Profile.Name='System Administrator'  AND isActive=true Limit 1];
+        //	User adminUser = [Select Id, UserRoleId From User Where Profile.Name='System Administrator'  AND isActive=true Limit 1];
         List<Product2> ProdLst = Core_DDR_Utility.CreateProduct(5);
         // System.runAs(adminUser) {
         insert ProdLst;
@@ -697,7 +690,7 @@ public class Core_DDR_Accept_Approve_Reject_Test {
         // System.assertNotEquals(null, DDRLst[0].Core_Product_Group_Nm__c, 'Expected Core Product Group to be set');
         // System.assertNotEquals(null, DDRLst[0].Core_Intel_Support_Status__c, 'Expected Intel Support Status to be set');
         Test.stopTest(); 
-        
+
         System.assertNotEquals(null, DDRLst[0]);   
         
     }
@@ -844,7 +837,7 @@ public class Core_DDR_Accept_Approve_Reject_Test {
         usrs.isActive = true;
         usrs.Email = 'sysadmin@example.com';
         Database.insert(usrs); 
-        
+
         Test.startTest();
         
         Id accountRecordTypeIntel = Schema.sObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();            
@@ -900,7 +893,7 @@ public class Core_DDR_Accept_Approve_Reject_Test {
         DDRLst[0].Core_Design_Registration_Status_Nm__c='Pending with Partner';
         update DDRLst;
         Core_DDR_Accept_Approve_Reject_Design.updateAcceptDesign(DDRLst[0].Id);
-        
+
         DDRLst[0].Core_Design_Registration_Status_Nm__c='Design accepted';
         update DDRLst;
         Core_DDR_Accept_Approve_Reject_Design.updateAcceptDesign(DDRLst[0].Id);
@@ -911,7 +904,7 @@ public class Core_DDR_Accept_Approve_Reject_Test {
         Core_DDR_Accept_Approve_Reject_Design.ApproveDesign(DDRLst[1].Id,'Disti Design Registration High');
         Core_DDR_Accept_Approve_Reject_Design.updateAcceptDesign(DDRLst[2].Id);
         Core_DDR_Accept_Approve_Reject_Design.ApproveDesign(DDRLst[2].Id,'Disti Design Registration High');
-        
+       
         update DDRLst;
         Core_DDR_Accept_Approve_Reject_Design.updateDesignRegistration(DDRLst[0]);
         
@@ -960,9 +953,9 @@ public class Core_DDR_Accept_Approve_Reject_Test {
         DRproducts1.RecordTypeId = DealProductRecordTypeid;
         insert DRproducts1;
         
-        /*DRproducts1.Core_Design_Product_Status_Nm__c = 'Approved';   
+        DRproducts1.Core_Design_Product_Status_Nm__c = 'Approved';   
         
-        update DRproducts1;*/
+        update DRproducts1;
         DDRLst[0].Core_Accepted_By_Id__c=null;
         DDRLst[0].Core_Design_Registration_Status_Nm__c='Design accepted';
         update DDRLst;
@@ -970,7 +963,6 @@ public class Core_DDR_Accept_Approve_Reject_Test {
         Core_DDR_Accept_Approve_Reject_Design.updateDesignRegistration(DDRLst[0]);
         // Asserts
         List<Core_Design_Registration__c> acceptedDDRs = [SELECT Id FROM Core_Design_Registration__c WHERE Core_Design_Registration_Status_Nm__c = 'Design accepted'];
-        Core_DDR_Accept_Approve_Reject_Design.validateInactiveLOVPartner((String)DDRLst[0].Id);
         System.assertEquals(1, 1, 'Expected one DDR to be in "Design accepted" status');
         
         Test.stopTest();             
@@ -993,7 +985,7 @@ public class Core_DDR_Accept_Approve_Reject_Test {
                                                    Core_End_Customer_City_Nm__c,Core_End_Customer_Contact_Title_Txt__c,Core_End_Customer_Contact_Phone_Txt__c,Core_End_Customer_Contact_Nm__c,Core_End_Customer_Contact_Email_Txt__c,Core_End_Customer_URL__c,Core_Manufacturing_Region_Cd__c,DDR_Partner_FAE_Email__c,
                                                    Core_Opportunity_Decision_Dt__c,Core_Accepted_By_Id__c,PCC_Registration_Type__c,RecordType.DeveloperName,Core_First_Customer_Ship_Dt__c,Core_Production_End_Dt__c,Core_Intel_Platform_Nm__c, Core_Design_Registration_Status_Nm__c
                                                    FROM Core_Design_Registration__c where Core_External_Id__c='abczd001'];
-        
+
         List<Product2> newprod = new List<Product2>();
         product2 prod1 = new product2();    
         prod1.name = 'Intel® Server System S7000FC4UR';
@@ -1024,9 +1016,9 @@ public class Core_DDR_Accept_Approve_Reject_Test {
         DRproducts1.RecordTypeId = DealProductRecordTypeid;
         insert DRproducts1;
         
-        /*DRproducts1.Core_Design_Product_Status_Nm__c = 'Approved';   
+        DRproducts1.Core_Design_Product_Status_Nm__c = 'Approved';   
         
-        update DRproducts1;*/
+        update DRproducts1;
         DDRLst[0].Core_Rejection_Reason_Nm__c='Registration Closed';
         DDRLst[0].Core_Rejection_Comment_Txt__c='abcdefghij';
         DDRLst[0].Core_Accepted_By_Id__c=usrs.id;
@@ -1157,7 +1149,7 @@ public class Core_DDR_Accept_Approve_Reject_Test {
         String ddrId = String.valueOf(DDRLst[0].Id);
         String ObjType = 'Core_Design_Registration__c';
         String fieldName = 'Core_Design_Registration_Status_Nm__c';
-        
+       
         //  List<Schema.PicklistEntry> picklistValues = Test.getPicklistValues(ObjType, fieldName);
         System.assertNotEquals(null,ddrId);
     }
@@ -1180,7 +1172,7 @@ List<Core_Location_To_Approver_Group_Mapping__c> LocToAppGroup = Core_DDR_Utilit
 
 //List<Core_LogEntry_Switch__c> LogEntryCS = Core_DDR_Utility.CreateLogEntry();
 
-//  User adminUser = [Select Id, UserRoleId From User Where Profile.Name='System Administrator'  AND isActive=true Limit 1];
+//	User adminUser = [Select Id, UserRoleId From User Where Profile.Name='System Administrator'  AND isActive=true Limit 1];
 List<Product2> ProdLst = Core_DDR_Utility.CreateProduct(5);
 // System.runAs(adminUser) {
 insert ProdLst;
@@ -1211,8 +1203,5 @@ System.runAs(Core_Test_Utility.systemAdminUser){
 Test.stopTest(); 
 
 } */
-    @isTest
-    public static void testIncreaseMethodDDRTest(){
-        //        Core_DDR_Accept_Approve_Reject_Design.testIncreaseMethodDDR();
-    }
+    
 }

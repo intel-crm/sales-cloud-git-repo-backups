@@ -26,8 +26,8 @@
         <name>PRM_Account_Record_Type__c</name>
     </fields>
     <fields>
-        <label><!-- Notes --></label>
-        <name>PRM_Comments__c</name>
+        <label><!-- Approval/Rejection Link --></label>
+        <name>PRM_Approve_Reject_Link__c</name>
     </fields>
     <fields>
         <label><!-- Old Partner Role --></label>
@@ -37,12 +37,16 @@
         <label><!-- Old Partner Tier --></label>
         <name>PRM_Old_Partner_Tier__c</name>
         <picklistValues>
-            <masterLabel>Partner</masterLabel>
-            <translation><!-- Partner --></translation>
+            <masterLabel>Gold</masterLabel>
+            <translation><!-- Gold --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Prestige</masterLabel>
-            <translation><!-- Prestige --></translation>
+            <masterLabel>Member</masterLabel>
+            <translation><!-- Member --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Titanium</masterLabel>
+            <translation><!-- Titanium --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -53,6 +57,10 @@
         <label><!-- Partner Tier --></label>
         <name>PRM_Partner_Tier__c</name>
         <relationshipLabel><!-- ACM Change Requests --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Process Instance Work Item --></label>
+        <name>PRM_ProcessInstanceWorkItem_Id__c</name>
     </fields>
     <fields>
         <label><!-- Status --></label>
@@ -75,6 +83,14 @@
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- Suppress Email --></label>
+        <name>PRM_Suppress_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Submitted for Approval --></label>
+        <name>Submitted_for_Approval__c</name>
+    </fields>
+    <fields>
         <label><!-- Error summary --></label>
         <name>prm_error_summary__c</name>
     </fields>
@@ -90,9 +106,5 @@
     <validationRules>
         <errorMessage><!-- Partner Role and Partner tier Combination already exist. --></errorMessage>
         <name>PRM_Partner_Role_Tier_Combination</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Please select either Partner/Prestige tier --></errorMessage>
-        <name>PRM_Validate_Tier</name>
     </validationRules>
 </CustomObjectTranslation>

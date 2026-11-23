@@ -1,57 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
-    <available>false</available>
+    <available>true</available>
     <encodingKey>UTF-8</encodingKey>
     <name>SPECBNFTENTHUDEU</name>
     <style>none</style>
-    <subject>Intel® Partner Alliance Spezialisierung auf Enthusiasten-PCs</subject>
-    <textOnly>Herzlichen Glückwunsch zu Ihrer Qua­li­fi­zie­rung!
+    <subject>Herzlichen Glückwunsch zur Ernennung zum Spezialisten für Hochleistungs-PCs von Intel</subject>
+    <textOnly>Herzlichen Glückwunsch zur Ernennung zum Spezialisten für Hochleistungs-PCs von Intel
 
+Es erwarten Sie neue Möglichkeiten, als Spezialist für Hochleistungs-PCs Ihr Geschäft auszubauen. Wir freuen uns darauf, unsere Geschäftsbeziehung mit Ihnen zu vertiefen.
+Klicken Sie hier, um diese Nachricht als Webseite anzuzeigen.
 
-{!Contact.FirstName},
+Sie haben sich qualifiziert!Zu den Vorteilen &gt;
+
+FirstName,
 
 herzlichen Glückwunsch zur Ernennung zum Intel® Technology Provider-Spezialisten für Hochleistungs-PCs!
 
-Angesichts der mehr als eine Milliarde Gamern am PC und eines starken Wachstums sind Sie optimal aufgestellt, Ihren Kundenstamm zu vergrößern und mit Intel Ihren Umsatz voranzutreiben.
+
+Angesichts der mehr als eine Milliarde PCs in der Gaming-Welt1 und eines starken Wachstumsmarkts sind Sie optimal aufgestellt, Ihren Kundenstamm zu vergrößern und Ihren Umsatz mit Intel voranzutreiben.
 
 Nutzen Sie alle Vorteile, die Ihnen jetzt zur Verfügung stehen, darunter:
 
-
-Zusätzliche Prämienpunkteaktionen für Produkte mit Intel® Core™ Prozessoren der X-, K- und H-Reihe
-Auszeichnung als Spezialist für Hochleistungs-PCs („Enthusiasten-PCs“) und Sichtbarkeit auf der Website von Intel® Technology Provider
-Technische Webinare von Intel Experten
-Erstklassige Gaming- und Softwarepackungen
+Zusätzliche Prämienpunkteaktionen für Produkte mit Intel® Core™ X, K und H Prozessoren
+Auszeichnung als Spezialist für Hochleistungs-PCs und Sichtbarkeit auf der Website von Intel Technology Provider
+Technische Webinare mit Experten von Intel
+Erstklassige Gaming- und Software-Pakete
 Karten für lokale E-Sport-Events
 
-Senden Sie eine E-Mail mit den folgenden Informationen an enthusiast-pc@intel.com:
-
-
-Primärer Kontakt für die Kommunikation mit dem Spezialisten für Enthusiast-PCs
-Name:
-E-Mail:
-
-
-Für zusätzliches Verkaufs- und Werbematerial
-Firmenanschrift:
-Telefon:
+Wir bedanken uns für Ihre Partnerschaft mit Intel.
 
 Zu den Vorteilen
 
+1Die Benchmarkergebnisse wurden vor der Implementierung kürzlich veröffentlichter Software-Patches und Firmware-Updates, die als Gegenmaßnahmen für die als „Spectre“ und „Meltdown“ bezeichneten Exploits bereitgestellt wurden, ermittelt. Die Implementierung dieser Updates kann dazu führen, dass diese Ergebnisse auf Ihr Gerät oder System nicht zutreffen.
 
-*Leistungen können regional unterschiedlich sein.
+In Leistungstests verwendete Software und Workloads können speziell für die Leistungseigenschaften von Intel® Mikroprozessoren optimiert worden sein. Leistungstests wie SYSmark* und MobileMark* werden mit spezifischen Computersystemen, Komponenten, Softwareprogrammen, Operationen und Funktionen durchgeführt. Jede Veränderung bei einem dieser Faktoren kann abweichende Ergebnisse zur Folge haben. Als Unterstützung für eine umfassende Bewertung Ihrer vorgesehenen Anschaffung, auch im Hinblick auf die Leistung des betreffenden Produkts in Verbindung mit anderen Produkten, sollten Sie noch andere Informationen und Leistungstests heranziehen. Ausführlichere Informationen finden Sie unter http://www.intel.com/benchmarks.
 
-Intel Partner können auf eine lange Geschichte voller Innovationen zurückblicken – und mit der Intel® Partner Alliance können wir Ihnen nun dabei helfen, Lösungen für die datenorientierte Wirtschaft schneller bereitzustellen. Gemeinsam können wir uns vernetzen, Innovationen entwickeln und unser Geschäft ausbauen – und außergewöhnliche neue Möglichkeiten schaffen.
-
-Besuchen Sie https://www.intel.com/content/www/de/de/partner-alliance/help/overview.html für Hinweise und Orientierung, wie Sie Ihre Mitgliedschaft optimal nutzen können.
-
-
-Vielen Dank
-Ihr Intel® Partner Alliance Team
-
-Diese Nachricht wurde als wichtige Geschäftskommunikation bezüglich Ihrer aktuellen Beziehung zur Intel® Partner Alliance an Sie gesendet.
-© {!$Label.PRM_CurrentYear} Intel Corporation.
-Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
-Datenschutz | Cookies</textOnly>
+&apos;);}} div.OutlookMessageHeader {background-image:url(&apos;https://8qr1qit0.emltrk.com/8qr1qit0?f&amp;d=EmailAddress&apos;)} table.moz-email-headers-table {background-image:url(&apos;https://8qr1qit0.emltrk.com/8qr1qit0?f&amp;d=EmailAddress&apos;)} blockquote νm;_t {background-image:url(&apos;https://8qr1qit0.emltrk.com/8qr1qit0?f&amp;d=EmailAddress&apos;)} νm;MailContainerBody νm;_t {background-image:url(&apos;https://8qr1qit0.emltrk.com/8qr1qit0?f&amp;d=EmailAddress&apos;)}</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

@@ -2,7 +2,7 @@
 public class ACM_BU_AssignParentToDealAccount_Test {
    
     private static UCD_ACM_ServiceContracts.IBeforeUpdateAccountTrigger accountServiceInstance = new ACM_BU_AssignParentToDealAccount();
-    //private static UCD_ACM_ServiceContracts.IBeforeUpdateAccountTrigger accountServiceInstanceIntel = new ACM_BU_AssignParentToIntelAccount();
+    private static UCD_ACM_ServiceContracts.IBeforeUpdateAccountTrigger accountServiceInstanceIntel = new ACM_BU_AssignParentToIntelAccount();
 
     @TestSetup
     private static void setCommonData(){
@@ -175,11 +175,11 @@ public class ACM_BU_AssignParentToDealAccount_Test {
 
         Test.startTest();
         	accountServiceInstance.execute(new Map<Id,Account>(oldAccounts), new Map<Id,Account>(newAccounts));
-            //accountServiceInstanceIntel.execute(new Map<Id,Account>(oldAccounts), new Map<Id,Account>(newAccounts));
+            accountServiceInstanceIntel.execute(new Map<Id,Account>(oldAccounts), new Map<Id,Account>(newAccounts));
         Test.stopTest();
 
         List<Account> parentAccount = [SELECT Id FROM Account WHERE Name = 'AccountParentECD1'];
         System.assertEquals(parentAccount[0].Id, ecdAccount[0].ParentId, 'Parent assignment is not correct.');
-        //System.assertEquals(account1.Id, intelAccount[0].ParentId, 'Parent assignment is not correct.');
+        System.assertEquals(account1.Id, intelAccount[0].ParentId, 'Parent assignment is not correct.');
     }
 }

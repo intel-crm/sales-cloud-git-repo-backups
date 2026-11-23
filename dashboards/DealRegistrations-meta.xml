@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DashboardFolder xmlns="http://soap.sforce.com/2006/04/metadata">
+    <folderShares>
+        <accessLevel>Manage</accessLevel>
+        <sharedTo>12081309@intel.com.crm</sharedTo>
+        <sharedToType>User</sharedToType>
+    </folderShares>
+    <folderShares>
+        <accessLevel>View</accessLevel>
+        <sharedTo>PCC_Deal_Reg_Partner_Group</sharedTo>
+        <sharedToType>Group</sharedToType>
+    </folderShares>
+    <folderShares>
+        <accessLevel>View</accessLevel>
+        <sharedTo>testpcccontacts1@intel.com.crm</sharedTo>
+        <sharedToType>PartnerUser</sharedToType>
+    </folderShares>
+    <folderShares>
+        <accessLevel>View</accessLevel>
+        <sharedTo>contacts2@wed.com</sharedTo>
+        <sharedToType>PartnerUser</sharedToType>
+    </folderShares>
+    <folderShares>
+        <accessLevel>View</accessLevel>
+        <sharedTo>utkarsh.nh9@gmail.com</sharedTo>
+        <sharedToType>PartnerUser</sharedToType>
+    </folderShares>
+    <name>Deal Registrations</name>
+</DashboardFolder>

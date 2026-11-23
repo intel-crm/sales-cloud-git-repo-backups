@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmbeddedServiceBranding xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contrastInvertedColor>#ffffff</contrastInvertedColor>
+    <contrastPrimaryColor>#333333</contrastPrimaryColor>
+    <embeddedServiceConfig>PSG_Sales_Chat_Group</embeddedServiceConfig>
+    <font>Georgia</font>
+    <height>500</height>
+    <masterLabel>EmbeddedServiceBranding_Parent04I2D00000000E2UAI_17a9ba1811e</masterLabel>
+    <navBarColor>#005290</navBarColor>
+    <navBarTextColor>#ffffff</navBarTextColor>
+    <primaryColor>#005290</primaryColor>
+    <secondaryColor>#005290</secondaryColor>
+    <secondaryNavBarColor>#cb2b19</secondaryNavBarColor>
+    <width>500</width>
+</EmbeddedServiceBranding>

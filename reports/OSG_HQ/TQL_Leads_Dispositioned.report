@@ -46,10 +46,6 @@
         <aggregateTypes>Sum</aggregateTypes>
         <field>Lead.Core_TQL_Count__c</field>
     </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Lead.SWS_Software_Lead__c</field>
-    </columns>
     <description>RT: Leads</description>
     <filter>
         <criteriaItems>

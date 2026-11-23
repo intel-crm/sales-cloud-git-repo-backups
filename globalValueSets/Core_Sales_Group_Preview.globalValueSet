@@ -116,30 +116,6 @@
         <label>Undefined</label>
     </customValue>
     <customValue>
-        <fullName>PRC Partner Holding</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>PRC Partner Holding</label>
-    </customValue>
-    <customValue>
-        <fullName>APJ Partner Holding</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>APJ Partner Holding</label>
-    </customValue>
-    <customValue>
-        <fullName>EMEA Partner Holding</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>EMEA Partner Holding</label>
-    </customValue>
-    <customValue>
-        <fullName>Americas Partner Holding</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Americas Partner Holding</label>
-    </customValue>
-    <customValue>
         <fullName>APJ India Sales Group</fullName>
         <default>false</default>
         <isActive>false</isActive>
@@ -150,12 +126,6 @@
         <default>false</default>
         <isActive>false</isActive>
         <label>Global Solutions &amp; Services Sales Group</label>
-    </customValue>
-    <customValue>
-        <fullName>Global Accounts Sales Group</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Global Accounts Sales Group</label>
     </customValue>
     <masterLabel>Sales Group Preview</masterLabel>
     <sorted>false</sorted>

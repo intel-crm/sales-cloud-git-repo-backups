@@ -114,11 +114,14 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <type>Default</type>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Account_Plan_Objective_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <formFactor>Large</formFactor>
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
@@ -133,6 +136,14 @@
         <fullName>AccountPlanId</fullName>
         <trackHistory>false</trackHistory>
         <type>MasterDetail</type>
+    </fields>
+    <fields>
+        <fullName>Core_Objective_Comments_Section__c</fullName>
+        <label>Objective Comments Section</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
     </fields>
     <fields>
         <fullName>Description</fullName>

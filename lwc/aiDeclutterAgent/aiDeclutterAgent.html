@@ -1,0 +1,156 @@
+<template>
+    <lightning-card title="Salesforce Declutter Tool " icon-name="utility:einstein">
+        <div class="slds-card__body slds-card__body_inner">
+            
+            <!-- Connection Status -->
+            <div class="connection-status slds-m-bottom_medium">
+                <template if:true={connectionTested}>
+                    <lightning-badge 
+                        label={connectionStatus} 
+                        variant={connectionBadgeVariant}
+                        class="slds-m-right_small">
+                    </lightning-badge>
+                </template>
+                <lightning-button 
+                    label="Test API Connection" 
+                    onclick={testConnection}
+                    variant="neutral"
+                    size="small">
+                </lightning-button>
+            </div>
+            
+            <!-- Object Selection -->
+            <div class="slds-grid slds-gutters slds-m-bottom_medium">
+                <div class="slds-col slds-size_1-of-2">
+                    <lightning-dual-listbox
+                        name="objects"
+                        label="Select Objects to Analyze"
+                        source-label="Available Objects"
+                        selected-label="Selected Objects"
+                        options={objectOptions}
+                        value={selectedObjects}
+                        onchange={handleObjectSelection}>
+                    </lightning-dual-listbox>
+                </div>
+                
+                <div class="slds-col slds-size_1-of-2">
+                    <h3 class="slds-text-heading_small slds-m-bottom_small">Quick Analysis</h3>
+                    <lightning-button-group>
+                        <lightning-button label="Find Unused Fields" onclick={analyzeUnusedFields}></lightning-button>
+                        <lightning-button label="Detect Duplicates" onclick={findDuplicates}></lightning-button>
+                        <lightning-button label="Risk Assessment" onclick={assessRisk}></lightning-button>
+                    </lightning-button-group>
+                </div>
+            </div>
+            
+            <!-- Chat Interface -->
+            <div class="chat-container slds-border_bottom">
+                <div class="chat-messages slds-scrollable_y" style="height: 400px; border: 1px solid #d8dde6; padding: 10px;">
+                    <template for:each={messages} for:item="message">
+                        <div key={message.id} class={message.cssClass}>
+                            <div class="message-content slds-p-around_small slds-m-bottom_small" 
+                                 style="background-color: rgb(243, 243, 243); border-radius: 8px;">
+                                
+                                <div class="message-header slds-text-body_small slds-text-color_weak">
+                                    {message.sender} • {message.timestamp}
+                                    <template if:true={message.isAI}>
+                                        <lightning-badge 
+                                            label={message.confidence} 
+                                            variant="success"
+                                            class="slds-m-left_small">
+                                        </lightning-badge>
+                                    </template>
+                                </div>
+                                
+                                <div class="message-text slds-m-top_x-small" style="white-space: pre-wrap; font-family: 'Courier New', monospace; font-size: 13px; line-height: 1.4;">
+                                    <lightning-formatted-text value={message.text}></lightning-formatted-text>
+                                </div>
+                                
+                                <!-- AI Recommendations -->
+                                <template if:true={message.recommendations}>
+                                    <div class="ai-recommendations slds-m-top_small">
+                                        <h4 class="slds-text-heading_small">🎯 Recommendations:</h4>
+                                        <template for:each={message.recommendations} for:item="rec">
+                                            <div key={rec.itemName} class="recommendation-card slds-box slds-m-vertical_x-small" 
+                                                 style="background-color: white; border-left: 4px solid #1589ee;">
+                                                <div class="slds-grid">
+                                                    <div class="slds-col slds-size_3-of-4">
+                                                        <div class="slds-text-heading_small">
+                                                            <strong>{rec.itemName}</strong> 
+                                                            <span class="slds-text-color_weak">({rec.itemType})</span>
+                                                        </div>
+                                                        <p class="slds-text-body_small slds-m-top_x-small">{rec.aiReasoning}</p>
+                                                    </div>
+                                                    <div class="slds-col slds-size_1-of-4 slds-text-align_right">
+                                                        <lightning-badge 
+                                                            label={rec.action}
+                                                            variant={rec.badgeVariant}>
+                                                        </lightning-badge>
+                                                        <br>
+                                                        <span class="slds-text-body_small">Risk: {rec.riskLevel}</span>
+                                                        <br>
+                                                        <span class="slds-text-body_small">Confidence: {rec.confidenceScore}%</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </template>
+                                        
+                                        <!-- Risk Assessment Charts -->
+                                        <template if:true={message.showChart}>
+                                            <div class="slds-m-top_medium">
+                                                <h4 class="slds-text-heading_small slds-m-bottom_small">📊 Risk Assessment Overview</h4>
+                                                <div class="slds-grid slds-gutters">
+                                                    <div class="slds-col slds-size_1-of-2">
+                                                        <div class="chart-container">
+                                                            <h5 class="slds-text-heading_x-small">Risk Distribution</h5>
+                                                            <canvas class="risk-chart" data-chart-type="risk" style="max-height: 200px;"></canvas>
+                                                        </div>
+                                                    </div>
+                                                    <div class="slds-col slds-size_1-of-2">
+                                                        <div class="chart-container">
+                                                            <h5 class="slds-text-heading_x-small">Recommended Actions</h5>
+                                                            <canvas class="action-chart" data-chart-type="action" style="max-height: 200px;"></canvas>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </template>
+                                    </div>
+                                </template>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+                
+                <!-- Input Area -->
+                <div class="chat-input slds-grid slds-grid_align-end slds-p-top_small">
+                    <div class="slds-col slds-size_5-of-6">
+                        <lightning-input
+                            type="text"
+                            placeholder="Ask AI: 'What fields can I safely remove from Account?' or 'Show me duplicate validation rules'"
+                            value={currentMessage}
+                            onchange={handleMessageChange}
+                            onkeyup={handleKeyUp}>
+                        </lightning-input>
+                    </div>
+                    <div class="slds-col slds-size_1-of-6 slds-p-left_small">
+                        <lightning-button
+                            variant="brand"
+                            label="Send"
+                            onclick={sendMessage}
+                            disabled={isSending}>
+                        </lightning-button>
+                    </div>
+                </div>
+                
+                <!-- Loading -->
+                <template if:true={isSending}>
+                    <div class="slds-grid slds-grid_align-center slds-p-top_small">
+                        <lightning-spinner size="small"></lightning-spinner>
+                        <span class="slds-p-left_small">🤖 API is analyzing...</span>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </lightning-card>
+</template>

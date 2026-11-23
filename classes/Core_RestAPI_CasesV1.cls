@@ -16,6 +16,7 @@ global with sharing  class Core_RestAPI_CasesV1 {
     
     @HttpGet
     global static Core_RestAPI_Response doGet(){
+        System.debug(' request >> '+Json.serialize(RestContext.request));
         Core_RestAPI_CaseV1_Handler handler = new Core_RestAPI_CaseV1_Handler(ENTRY_TIME, RESTAPI_NAME); 
         Core_RestAPI_Response response = handler.getCases();
         return response;
@@ -26,6 +27,9 @@ global with sharing  class Core_RestAPI_CasesV1 {
     @HttpPost
     global static Core_RestAPI_Response doPost(Core_RestAPI_Case_CreateV1_Wrapper caseDetail){
      Core_RestAPI_Response  resp = null;
+        System.debug(' RestContext.request >> '+Json.serialize(RestContext.request));
+        System.debug(' request Wrapper >> '+Json.serialize(caseDetail));
+        system.debug('caseDetail ==>> '+caseDetail);
         Core_RestApi_Case_CreateV1_Handler handler = new Core_RestApi_Case_CreateV1_Handler(RESTAPI_NAME, ENTRY_TIME, caseDetail);
         return handler.createCase();
     }

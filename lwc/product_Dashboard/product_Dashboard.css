@@ -1,0 +1,40 @@
+.borpad{
+    border-radius: 5%;
+    width: 18rem;
+    height: 11rem;
+    margin-left: 2rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    margin-right: 2rem;
+    text-align: center;    
+    border: 4px #9c9cb2;
+    border-style: solid;
+}
+.header{
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: large;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    text-align: center;  
+    font-weight: 500;
+}
+.value{    
+    font-size: medium;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+.linkVal{
+    font-size: medium;
+    margin-top: 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    color:black;
+}
+.lastrefreshsize{
+    font-size: 1.5rem;
+    color: white;
+    background-color: #5679C0;
+}

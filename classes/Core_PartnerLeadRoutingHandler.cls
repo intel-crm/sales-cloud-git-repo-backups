@@ -81,7 +81,8 @@ public without sharing class Core_PartnerLeadRoutingHandler {
         
         
         if( bizOrgId.size()>0 && !bizOrgId.isEmpty())
-            updateStoreFrontIdandName( bizOrgId, queMap);    
+            updateStoreFrontIdandName( bizOrgId, queMap);
+        
     }
     
     Public static void updateStoreFrontIdandName(Set<Id> account, Map<String,Core_Partner_Queue_Mapping__c> newList){
@@ -107,6 +108,7 @@ public without sharing class Core_PartnerLeadRoutingHandler {
             
             if(partnerQueueUpdate.size()>0 && !partnerQueueUpdate.isEmpty())
                 update  partnerQueueUpdate;
+            
         }
         Catch(Exception e){
             Core_Exceptions__c ExcepLog = new Core_Exceptions__c( Core_Class_Name__c = 'Core_PatnerLead_StoreFrontIdName', Core_Exception__c  = 'Line number:'+e.getLineNumber()+', Stack trace: '+e.getStackTraceString(), Core_Login_User_Id__c= userInfo.getUserId());

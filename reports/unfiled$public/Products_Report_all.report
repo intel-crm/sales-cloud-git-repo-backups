@@ -84,7 +84,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Haoyu Chen,Qingdong Man,Yingli Xia</value>
+            <value>Haoyu Chen,Qingdong Man</value>
         </criteriaItems>
         <criteriaItems>
             <column>STAGE_NAME</column>
@@ -158,6 +158,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

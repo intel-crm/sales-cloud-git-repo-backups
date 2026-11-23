@@ -35,16 +35,6 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Scope__c</fullName>
-        <externalId>false</externalId>
-        <fieldManageability>DeveloperControlled</fieldManageability>
-        <label>Scope</label>
-        <length>200</length>
-        <required>false</required>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Username__c</fullName>
         <description>Username to access CIM System</description>
         <externalId>false</externalId>

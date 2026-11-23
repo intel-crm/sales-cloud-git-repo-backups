@@ -16,7 +16,9 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>Delete</actionName>
-        <type>Default</type>
+        <content>SWS_Email_DeleteButton_Error</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Visualforce</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>Delete</actionName>
@@ -157,6 +159,15 @@
     <fields>
         <fullName>ValidatedFromAddress</fullName>
     </fields>
+    <listViews>
+        <fullName>PSG_EmailMessage</fullName>
+        <columns>Subject</columns>
+        <columns>HasAttachment</columns>
+        <columns>Status</columns>
+        <columns>MessageDate</columns>
+        <filterScope>Everything</filterScope>
+        <label>PSG_EmailMessage</label>
+    </listViews>
     <searchLayouts>
         <customTabListAdditionalFields>Status</customTabListAdditionalFields>
         <customTabListAdditionalFields>HasAttachment</customTabListAdditionalFields>

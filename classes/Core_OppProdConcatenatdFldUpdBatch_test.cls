@@ -56,9 +56,10 @@ public class Core_OppProdConcatenatdFldUpdBatch_test {
         accountList[0].Core_Sales_Groups__c = 'Americas ELAR Sales Group';
         accountList[0].Industry = 'Agriculture';
         accountList[0].Core_Sub_Industry__c = 'Forestry';
-        
-        ID intelAccID = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
-        accountList[0].RecordTypeId = intelAccID;
+        //TWC4767-3867
+        Id accRecType = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
+        accountList[0].recordTypeId = accRecType;
+        //TWC4767-3867
         insert accountList;
         
         //Insert Product
@@ -110,12 +111,12 @@ public class Core_OppProdConcatenatdFldUpdBatch_test {
         Test.startTest();
             update prodList;             
             //Call the schedular batch class which calls Core_OppProductConcatenatedFieldUpdBatch in turn
-          //  Core_OppProdConcatenationt_Schedule sh1 = new Core_OppProdConcatenationt_Schedule();
-            //String sch = '0 0 23 * * ?';
-        Core_OppProductConcatenatedFieldUpdBatch batchSched = new Core_OppProductConcatenatedFieldUpdBatch();
-        Database.executeBatch(batchSched);
-          //  system.schedule('Test Prod Name concatenation', sch, sh1); 
-           // Opportunity opp = [SELECT id, Core_Opportunity_Products__c FROM Opportunity WHERE Id=: opp.Id];
+            /*Core_OppProdConcatenationt_Schedule sh1 = new Core_OppProdConcatenationt_Schedule();
+            String sch = '0 0 23 * * ?';
+            system.schedule('Test Prod Name concatenation', sch, sh1);*/
+            Opportunity opp = [SELECT id, Core_Opportunity_Products__c FROM Opportunity WHERE Id=: opp.Id];
+        Core_OppProductConcatenatedFieldUpdBatch bt= new Core_OppProductConcatenatedFieldUpdBatch();//TWC4767-3867
+        Id jobid= Database.executeBatch(bt,200);
         Test.stopTest();
         Assert.areEqual(true, opp!= null);
     }    

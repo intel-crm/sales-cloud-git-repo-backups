@@ -13,10 +13,6 @@
         <name>rtsync__Auth_URL__c</name>
     </fields>
     <fields>
-        <label><!-- Authentication Method --></label>
-        <name>rtsync__Authentication_Method__c</name>
-    </fields>
-    <fields>
         <label><!-- Connector Environment --></label>
         <name>rtsync__Connector_Environment__c</name>
     </fields>
@@ -60,11 +56,6 @@
     <fields>
         <label><!-- Triggers Are Enabled --></label>
         <name>rtsync__Triggers_Are_Enabled__c</name>
-    </fields>
-    <fields>
-        <help><!-- Use Reltio Certificate for Authorization --></help>
-        <label><!-- Use Certificate Authorization --></label>
-        <name>rtsync__Use_Certificate_Authorization__c</name>
     </fields>
     <fields>
         <label><!-- Username --></label>

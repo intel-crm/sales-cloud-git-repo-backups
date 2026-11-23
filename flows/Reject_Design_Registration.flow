@@ -17,8 +17,21 @@
         <picklistField>Core_Rejection_Reason_Nm__c</picklistField>
         <picklistObject>Core_Design_Registration__c</picklistObject>
     </dynamicChoiceSets>
+    <environments>Default</environments>
     <interviewLabel>Reject Design Registration {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Reject Design Registration</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
     <processType>Flow</processType>
     <recordUpdates>
         <name>DR_Update_with_Reject_Reason</name>
@@ -83,6 +96,7 @@
             <dataType>String</dataType>
             <fieldText>Reject Reason</fieldText>
             <fieldType>DropdownBox</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>false</isRequired>
             <styleProperties>
                 <verticalAlignment>
@@ -97,6 +111,7 @@
             <name>Rejection_Comments</name>
             <fieldText>Rejection Comments</fieldText>
             <fieldType>LargeTextArea</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>true</isRequired>
             <styleProperties>
                 <verticalAlignment>
@@ -110,8 +125,14 @@
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
     </screens>
-    <startElementReference>DR_Rejection_Screen</startElementReference>
-    <status>Active</status>
+    <start>
+        <locationX>50</locationX>
+        <locationY>50</locationY>
+        <connector>
+            <targetReference>DR_Rejection_Screen</targetReference>
+        </connector>
+    </start>
+    <status>Obsolete</status>
     <variables>
         <name>vaDRID</name>
         <dataType>String</dataType>

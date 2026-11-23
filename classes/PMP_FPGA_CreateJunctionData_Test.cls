@@ -9,8 +9,8 @@
 *************************************************************************************************/
 @isTest
 public class PMP_FPGA_CreateJunctionData_Test {
-//IPA 2.0- US-TWC729-7980
-/*@isTest
+
+@isTest
     public static void fpgaCreateJunctionDataTestMet(){
         Test.startTest();
         
@@ -134,10 +134,10 @@ public class PMP_FPGA_CreateJunctionData_Test {
         Obj1.PMP_Specification_Id__c = fpgaSpecCycloneV.id;
         Obj1.PMP_Specification_Value_Id__c = specValueFPGATest2.id;
         insert Obj1;
-        PMP_FPGA_CreateJunctionData.languageCode = 'en_US';
-        PMP_FPGA_CreateJunctionData.createAssociationRecords();
+        
+        PMP_FPGA_CreateJunctionData.fpgaCreateJunctionDataMet();
         System.assertEquals(testFPGACSA.PMP_Category_Id__c, testCategorySystem.id);
         System.assertEquals(testFPGACSA.PMP_Specification_Id__c, fpgaSpecMain.id);
         Test.stopTest();
-    }*/
+    }
 }

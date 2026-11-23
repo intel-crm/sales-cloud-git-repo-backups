@@ -30,9 +30,7 @@ public class IPABenefitWrapper {
         @AuraEnabled public string tier{get; set;}
         @AuraEnabled public string benefitDescription{get; set;}
         @AuraEnabled public string userLanguage{get; set;}
-        @AuraEnabled public string UserEmail{get; set;}
-        
-
+             
     }
     public class CompanyProfile {
         @AuraEnabled public string label{get; set;}

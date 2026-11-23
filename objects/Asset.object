@@ -467,25 +467,20 @@
         <fullName>Core_IPS_Case__c</fullName>
         <description>This Field is used for Creating Case from Asset which is for replacing Core_IPS_New_Case as part of Summ-17 JavaScript disablement</description>
         <externalId>false</externalId>
-        <formula>If( NOT(ISPICKVAL(Status,&apos;Inactive&apos;)) &amp;&amp;(Core_IPS_Project__r.Id!=null &amp;&amp; ISPICKVAL(Core_IPS_Project__r.Core_Status__c,&apos;Active&apos;) || Core_IPS_Project__r.Id==null), 
-    If(  ISPICKVAL($User.UserType,&apos;PowerCustomerSuccess&apos;) || ISPICKVAL($User.UserType,&apos;PowerPartner&apos;), 
+        <formula>If(NOT(ISPICKVAL(Status,&apos;Inactive&apos;)) &amp;&amp;(Core_IPS_Project__r.Id!=null &amp;&amp; ISPICKVAL(Core_IPS_Project__r.Core_Status__c,&apos;Active&apos;) || Core_IPS_Project__r.Id==null), 
+If(ISPICKVAL($User.UserType,&apos;PowerCustomerSuccess&apos;) || ISPICKVAL($User.UserType,&apos;PowerPartner&apos;), 
 
-         (if(    ($Label.Core_IPS_MAG_Support_Org)==(Core_Product_Organization__c),
-  		             HYPERLINK(&quot;/IPS/apex/Core_IPS_Customer_Case_Creation?productId=&quot;&amp;Id&amp;&quot;&amp;projectId=&quot;&amp;Core_IPS_Project__r.Id&amp;&quot;&amp;mode=asset&amp;sbs=scs&amp;retURL=/02i/o&quot;,IMAGE(&quot;/IPS/servlet/servlet.FileDownload?file=015o0000001vY9i&quot;,&quot;New Case&quot;,15,15),&quot;_parent&quot;),
-				             HYPERLINK(&quot;/IPS/apex/Core_IPS_Customer_Case_Creation?productId=&quot;&amp;Id&amp;&quot;&amp;projectId=&quot;&amp;Core_IPS_Project__r.Id&amp;&quot;&amp;mode=asset&amp;sbs=ccs&amp;retURL=/02i/o&quot;,IMAGE(&quot;/IPS/servlet/servlet.FileDownload?file=015o0000001vY9i&quot;,&quot;New Case&quot;,15,15),&quot;_parent&quot;)
-		        )),
+(if(($Label.Core_IPS_MAG_Support_Org)==(Core_Product_Organization__c),HYPERLINK(&quot;/IPS/apex/Core_IPS_Customer_Case_Creation?productId=&quot;&amp;Id&amp;&quot;&amp;projectId=&quot;&amp;Core_IPS_Project__r.Id&amp;&quot;&amp;mode=asset&amp;sbs=scs&amp;retURL=/02i/o&quot;, 
+IMAGE(&quot;/IPS/servlet/servlet.FileDownload?file=015o0000001vY9i&quot;,&quot;New Case&quot;,15,15),&quot;_parent&quot;),HYPERLINK(&quot;/IPS/apex/Core_IPS_Customer_Case_Creation?productId=&quot;&amp;Id&amp;&quot;&amp;projectId=&quot;&amp;Core_IPS_Project__r.Id&amp;&quot;&amp;mode=asset&amp;sbs=ccs&amp;retURL=/02i/o&quot;, 
+IMAGE(&quot;/IPS/servlet/servlet.FileDownload?file=015o0000001vY9i&quot;,&quot;New Case&quot;,15,15),&quot;_parent&quot;))),
 
-          if($User.UIThemeDisplayed == &apos;Theme4d&apos;||$User.UIThemeDisplayed == &apos;Theme4u&apos;,
-				HYPERLINK(&quot;/lightning/cmp/c__Core_IPS_CaseLandingPage?c__recordTypeId=012o0000000TPVhAAO&amp;c__mode=asset&amp;c__projectId=&quot;+Core_IPS_Project__r.Id+&quot;&amp;c__productId=&quot;+Id+&quot;&amp;retURL=/02i/o&amp;userTheme=&quot;+$User.UIThemeDisplayed, IMAGE(&quot;/servlet/servlet.FileDownload?file=015o0000001vY9i&quot;,&quot;New Case&quot;,15,15),&quot;_parent&quot;) ,
-				HYPERLINK(&quot;/apex/Core_IPS_Internal_Case_Creation?productId=&quot;&amp;Id&amp;&quot;&amp;projectId=&quot;&amp;Core_IPS_Project__r.Id&amp;&quot;&amp;mode=asset&amp;retURL=/02i/o&amp;userTheme=&quot;+$User.UIThemeDisplayed, IMAGE(&quot;/servlet/servlet.FileDownload?file=015o0000001vY9i&quot;,&quot;New Case&quot;,15,15),&quot;_parent&quot;) )
-	     ), 
+HYPERLINK(&quot;/apex/Core_IPS_Internal_Case_Creation?productId=&quot;&amp;Id&amp;&quot;&amp;projectId=&quot;&amp;Core_IPS_Project__r.Id&amp;&quot;&amp;mode=asset&amp;retURL=/02i/o&quot;, 
+IMAGE(&quot;/servlet/servlet.FileDownload?file=015o0000001vY9i&quot;,&quot;New Case&quot;,15,15),&quot;_parent&quot;) ), 
 
-    IF(  ISPICKVAL($User.UserType,&apos;PowerCustomerSuccess&apos;) || ISPICKVAL($User.UserType,&apos;PowerPartner&apos;), 
+IF(ISPICKVAL($User.UserType,&apos;PowerCustomerSuccess&apos;) || ISPICKVAL($User.UserType,&apos;PowerPartner&apos;), 
 
-             IMAGE(&quot;/IPS/servlet/servlet.FileDownload?file=015o0000001vY4Z&quot;,&quot;New Case&quot;,15,15), 
-             
-			         IMAGE(&quot;/servlet/servlet.FileDownload?file=015o0000001vY4Z&quot;,&quot;New Case&quot;,15,15)
-	     ) 
+IMAGE(&quot;/IPS/servlet/servlet.FileDownload?file=015o0000001vY4Z&quot;,&quot;New Case&quot;,15,15), 
+IMAGE(&quot;/servlet/servlet.FileDownload?file=015o0000001vY4Z&quot;,&quot;New Case&quot;,15,15)) 
 
 )</formula>
         <label>New Case</label>
@@ -1784,6 +1779,26 @@
                 <fullName>Inactive</fullName>
                 <default>false</default>
             </values>
+            <values>
+                <fullName>Installed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Obsolete</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Purchased</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Registered</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Shipped</fullName>
+                <default>false</default>
+            </values>
         </picklistValues>
     </recordTypes>
     <recordTypes>
@@ -1908,6 +1923,26 @@
             </values>
             <values>
                 <fullName>Inactive</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Installed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Obsolete</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Purchased</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Registered</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Shipped</fullName>
                 <default>false</default>
             </values>
         </picklistValues>

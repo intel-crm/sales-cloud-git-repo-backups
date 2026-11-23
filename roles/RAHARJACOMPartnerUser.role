@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>RAHARJA SEJAHTERA Partner User</description>
+    <description>RAHARJA COM Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>RAHARJA SEJAHTERA Partner User</name>
+    <name>RAHARJA COM Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>RAHARJACOMPartnerManager</parentRole>
 </Role>

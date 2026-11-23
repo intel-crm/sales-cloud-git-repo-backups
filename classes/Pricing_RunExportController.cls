@@ -22,12 +22,11 @@ public without sharing class Pricing_RunExportController {
 **/
     @AuraEnabled
     public static Map<String,Map<String,List<List<String>>>> getQLIData(Id recordId) {
-        Map<String,Map<String,List<List<String>>>> qliTypeToHeaderToQliMap = new Map<String,Map<String,List<List<String>>>>();
-        try{
         isRPM = personaCheck(new List<String>{Label.Pricing_Tender_PermissionSets_PricingTenderRegionalPricingManager});
     	isFIRPM = personaCheck(new List<String>{Label.Pricing_Tender_PermissionSets_FinancialIncentivePricingManager});
         isExternal = personaCheck(Label.Pricing_Tender_PermissionSets_AllExternal.split(':'));
         qliStatus = (isRPM || isFIRPM) ? new List<String>{Label.Pricing_Tender_QuoteLine_Status_PendingFurtherIntelReview} : Label.Pricing_Tender_PicklistValue_AllQLStatus.split(',');
+        Map<String,Map<String,List<List<String>>>> qliTypeToHeaderToQliMap = new Map<String,Map<String,List<List<String>>>>();
         Map<String,List<SBQQ__QuoteLine__c>> qliTypeToQliMap = new Map<String,List<SBQQ__QuoteLine__c>>();
         qliLst = [Select id,Pricing_Program_Type_Nm__c,SBQQ__Quote__r.Name from SBQQ__QuoteLine__c where SBQQ__Quote__c =: recordId and Pricing_Status_Nm__c =: qliStatus];
         List<String> qliType = new List<String>();
@@ -48,10 +47,6 @@ public without sharing class Pricing_RunExportController {
                 qliTypeToHeaderToQliMap.put(key,getQliDetails(key,qliLst[0].SBQQ__Quote__r.Name));
             }
         }
-    }
-    catch(Exception e){
-        Pricing_Tender_Utility.logError(e);
-    }
         return qliTypeToHeaderToQliMap;
     }
         /**
@@ -92,7 +87,6 @@ public without sharing class Pricing_RunExportController {
                 filter.setValue(Key);
             }
         }
-        
         return new Map<String,Reports.ReportMetadata>{reportId => reportMd};
             }
     
@@ -110,7 +104,6 @@ public without sharing class Pricing_RunExportController {
         Map<String,Reports.ReportMetadata> idToFilterMAP = getFilters(qliType,name);
         List<String> reportIdLst = new List<String>();
         reportIdLst.addAll(idToFilterMAP.keySet());
-        
         //Run the report with the report metadata, filters and the report id value fetched from the Pricing_ReportFilterController
         Reports.ReportResults results = Reports.ReportManager.runReport(reportIdLst[0],idToFilterMAP.get(reportIdLst[0]), true);
         MAP<String,Reports.ReportFact> factDet = results.getFactMap();
@@ -121,7 +114,6 @@ public without sharing class Pricing_RunExportController {
             factMapKey = reportKey;
             break;
         }
-        
         Reports.ReportFactWithDetails factDetails = (Reports.ReportFactWithdetails)results.getFactMap().get(factMapKey);
         //Gets the detail rows for the Report that was run
         List<Reports.ReportDetailRow> detailListRows = factDetails.getRows();

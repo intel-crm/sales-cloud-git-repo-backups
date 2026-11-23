@@ -155,6 +155,37 @@
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>ControlledByParent</externalSharingModel>
     <fields>
+        <fullName>CRM_Audit_Close_Date__c</fullName>
+        <label>Audit Close Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>CRM_Audit_Status_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Audit Status</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CRM_Last_Approved_DateTime__c</fullName>
+        <label>Last Approved DateTime</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>CRM_Team_Member_Addition_Date__c</fullName>
+        <label>Team Member Addition Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
         <fullName>Core_Account_ID__c</fullName>
         <deleteConstraint>Restrict</deleteConstraint>
         <label>Account</label>
@@ -298,6 +329,26 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Core_FC_Quarter_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>Core_Forecast_Product_Schedule__r.Core_Opp_FC_Quarter__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>FC Quarter Name</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_FC_Revenue__c</fullName>
+        <label>FC Revenue</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
         <fullName>Core_Forecast_Product_Schedule__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <label>Forecast Product Schedule</label>
@@ -333,7 +384,7 @@
     <fields>
         <fullName>Core_Last_Approved_Date__c</fullName>
         <label>Last Approved Date</label>
-        <required>false</required>
+        <required>true</required>
         <trackTrending>false</trackTrending>
         <type>Date</type>
     </fields>

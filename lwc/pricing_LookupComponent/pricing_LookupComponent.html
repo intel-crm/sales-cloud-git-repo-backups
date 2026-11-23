@@ -1,0 +1,23 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 02-09-2025
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+    <div class="slds-combobox_container">
+        <lightning-input type="text" placeholder="Search Account..." oninput={handleSearch}></lightning-input>
+        <template if:true={showDropdown}>
+            <ul class="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid">
+                <template for:each={searchResults} for:item="record">
+                    <li key={record.Id} class="slds-listbox__item">
+                        <div class="slds-media slds-listbox__option slds-listbox__option_entity" data-id={record.Id} data-name={record.Name} onclick={handleSelect}>
+                            <span>{record.Name}</span>
+                        </div>
+                    </li>
+                </template>
+            </ul>
+        </template>
+    </div>
+</template>

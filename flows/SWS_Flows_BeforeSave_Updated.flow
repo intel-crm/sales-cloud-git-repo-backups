@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>64.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Core_Remove_Current_Lead_Sharing</name>
+        <label>Core_Remove_Current_Lead_Sharing</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>SWS_Stamp_Last_Modified_Date_By_Non_System_User</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Remove_Current_Lead_Sharing</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_Remove_Current_Sharing_Ind__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Remove_Current_Sharing_Ind__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>PTNR_Invalid_Partner_Queue</targetReference>
+            </connector>
+            <label>Remove Current Lead Sharing</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>SWS_Stamp_Last_Modified_Date_By_Non_System_User</name>
+        <label>SWS Stamp Last Modified Date By Non System User</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Update_Lead_for_SLA</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Not_a_System_User</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>IsSystemUser</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Last_Modified_Date_By_Non_System_User</targetReference>
+            </connector>
+            <label>Not a System User</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Update_Lead_for_SLA</name>
+        <label>Update Lead for SLA</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Update_Claimed_date</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Update_Lead_For_SLA_EntryFormula</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>ClaimedLead</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Populate_Claimed_Date</targetReference>
+            </connector>
+            <label>Update Claimed date</label>
+        </rules>
+        <rules>
+            <name>Update_Qualified_In_Contact</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Update_Lead_For_SLA_EntryFormula</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>QualifiedInContact</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Populate_QualifiedInContact_Date</targetReference>
+            </connector>
+            <label>Update Qualified In Contact</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <formulas>
+        <name>ClaimedLead</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(
+   AND(ISPICKVAL(PRIORVALUE({!$Record.Core_Lead_Status__c}), &apos;New&apos;), ISPICKVAL({!$Record.Core_Lead_Status__c} , &apos;Accepted&apos;)),
+   AND(ISPICKVAL(PRIORVALUE({!$Record.Core_Lead_Sub_Status__c}) , &apos;Waiting to be Claimed&apos;), ISPICKVAL({!$Record.Core_Lead_Sub_Status__c} , &apos;Attempting Contact&apos;))
+)</expression>
+    </formulas>
+    <formulas>
+        <name>IsSystemUser</name>
+        <dataType>Boolean</dataType>
+        <expression>CONTAINS({!$Label.SWS_SystemUserIds}, {!$User.Id})</expression>
+    </formulas>
+    <formulas>
+        <name>QualifiedInContact</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(
+ISPICKVAL({!$Record.Status}, &apos;Marketing Qualified Lead&apos;),
+ISPICKVAL({!$Record.Core_Lead_Status__c} , &apos;Qualified&apos;),
+ISPICKVAL({!$Record.Core_Lead_Sub_Status__c} , &apos;In Contact&apos;)
+)</expression>
+    </formulas>
+    <formulas>
+        <name>Update_Lead_For_SLA_EntryFormula</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(
+    {!$Record.RecordType.Name} &lt;&gt; &apos;Partner Lead&apos;,
+    OR(
+        ISCHANGED({!$Record.Core_Lead_Status__c}),
+        ISCHANGED({!$Record.Core_Lead_Sub_Status__c})
+    )
+)</expression>
+    </formulas>
+    <interviewLabel>SWS_Flows {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>SWS_Flows_BeforeSave_Updated</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>PTNR_Invalid_Partner_Queue</name>
+        <label>PTNR - Invalid Partner Queue</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Update_the_sharing_related_fields</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Core_PTNR_Invalid_Partner_Queue</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Group</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Populate_Claimed_Date</name>
+        <label>Populate Claimed Date</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>SWS_Claimed_Date__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Populate_QualifiedInContact_Date</name>
+        <label>Populate QualifiedInContact Date</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>SWS_QualifiedInContact_Date__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Last_Modified_Date_By_Non_System_User</name>
+        <label>Update Last Modified Date By Non System User</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Update_Lead_for_SLA</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>SWS_Last_Modified_Date_By_Non_Sys_User__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Update the sharing related fields</description>
+        <name>Update_the_sharing_related_fields</name>
+        <label>Update the sharing related fields</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>SWS_Stamp_Last_Modified_Date_By_Non_System_User</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_Is_Lead_Shared__c</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Lead_Sharing_Error__c</field>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_MPI_Id__c</field>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_One_Partner_Id__c</field>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Remove_Current_Sharing_Ind__c</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>PTNR_Invalid_Partner_Queue.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Core_Remove_Current_Lead_Sharing</targetReference>
+        </connector>
+        <object>Lead</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Draft</status>
+</Flow>

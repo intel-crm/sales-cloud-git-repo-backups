@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>50.0</apiVersion>
+    <available>false</available>
+    <description>Email template to send notification to Notify Request  for approval</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>PSG Quote Approval Request Email Template1</name>
+    <packageVersions>
+        <majorNumber>230</majorNumber>
+        <minorNumber>6</minorNumber>
+        <namespace>SBQQ</namespace>
+    </packageVersions>
+    <style>none</style>
+    <subject>Quote #  set to Pending state</subject>
+    <type>visualforce</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

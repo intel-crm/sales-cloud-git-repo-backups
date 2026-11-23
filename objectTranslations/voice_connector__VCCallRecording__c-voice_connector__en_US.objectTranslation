@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>VCCall Recording</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>VCCall Recordings</value>
+    </caseValues>
+    <fields>
+        <label><!-- VCCall --></label>
+        <name>voice_connector__VCCall__c</name>
+        <relationshipLabel><!-- VCCall Recordings --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Recording Duration --></label>
+        <name>voice_connector__VCRecordingDuration__c</name>
+    </fields>
+    <fields>
+        <label><!-- Recording Url --></label>
+        <name>voice_connector__VCRecordingUrl__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -47,11 +47,11 @@
             <value>Develop,Design</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Opportunity.Core_Opportunity_Owner_Manager_Email__c</column>
+            <column>OWNER_MANAGER</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>patrick.liew@intel.com</value>
+            <value>Ro Chawla,Rohit Chawla</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

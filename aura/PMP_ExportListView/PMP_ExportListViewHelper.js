@@ -3,26 +3,24 @@
     loadListViewIds : function(component, event){
         // call apex method to fetch list view dynamically
         var action = component.get("c.listValues");
-        console.log('act' +action);
+        
         action.setParams({
             "sObjectName" : component.get("v.sObjectName"), 
         });
         
         action.setCallback(this, function(response) {
-            var state = response.getState();
-			console.log('resp ' +response);            
+            var state = response.getState();            
             if (state === "SUCCESS") {
-                console.log('reVal' +response.getReturnValue());
+                
                 var listViewResult = response.getReturnValue();                
-               console.log('listViewRes' +listViewResult);
+               
                 if(listViewResult.length > 0){ 
                     // component.set("v.sObjectName",'PMP_Partner_Offering__c');
                     // set listViewResult attribute with response
                     component.set("v.listViewResult",listViewResult);
                     // set first value as default value and label as list view name                    
                     component.set("v.currentListViewId", listViewResult[0].listViewId);
-                    component.set("v.currentListViewName", listViewResult[0].label);
-                    component.find("selectedViewId").set("v.value", listViewResult[0].listViewId);
+                    component.set("v.currentListViewName", listViewResult[0].label);   
                     component.set("v.accessErrorMsg", '');
                 }
                 
@@ -242,7 +240,7 @@
                             }
                             
                         }
-                        else if(a[j].includes("PMP_View_Offerings__c") || a[j].includes("PMP_View_Partners_Txt__c") ){
+                        else if(a[j].includes("PMP_View_Offerings__c")){
                                 var newString= "ENG,CHN,JPN";
                                 b[a[j]] = null;
                                 b[a[j]] = newString;
@@ -256,24 +254,14 @@
                                     subOffName = subOffName.replace(/(<([^>]+)>)/ig, '');
                                     //console.log('subOffName'+subOffName);
                                     //subOffName = decodeURIComponent(subOffName);
-                                    
-                                    // subOffName = "<aura:unescapedHtml value='" + subOffName + "'/>";
-                                    //Added to sanitize subOffName against XSS attacks
-                                   /* subOffName=sanitize(subOffName);
-                                    function sanitize(html) {
-                                        var parser = new DOMParser();
-                                        var doc = parser.parseFromString(html, 'text/html');
-                                        // Retrieve the text content of the parsed document
-                                        var sanitizedHtml = doc.body.textContent;
-                                        return sanitizedHtml;
-                                    }*/
                                     subOffName = decodeHtml(subOffName);
                                     function decodeHtml(html) {
                                     var txt = document.createElement("textarea");
-                                  //  txt.innerHTML = html;
-                                    txt.textContent=html;
+                                    txt.innerHTML = html;
                                     return txt.value;
                                 }
+                                                                   
+                             
                                    subOffName = subOffName.split('"').join('""');
                                    subOffName = subOffName.split(',').join(',');
                                   
@@ -323,9 +311,18 @@
                         
                         
                         //if b is not undefined set it to the next related value.
-                        if(b != undefined){ 
-                            var val = b[a[j]];
-                            b = val; 
+                        if(b != undefined){
+                           
+                            b = b[a[j]]; 
+                           /* if(b.includes('"')){
+                                 b = b.split('"').join('""');
+                                	
+                            }
+                            if(b.includes(',')){
+                                b = b.split(',').join(',');
+                            }
+                           */
+                            //console.log("b insde for end"+b);
                         }
                         counter++;                        
                     }

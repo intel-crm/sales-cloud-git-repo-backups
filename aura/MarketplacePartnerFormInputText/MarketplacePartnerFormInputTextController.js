@@ -1,7 +1,6 @@
 ({
 
   doInit : function(component, event, helper) {
-      
     if (component.get('v.valueType') == 'default') {
       helper.setInitialValue(component, helper);
     } else if (component.get('v.valueType') == 'complex') {

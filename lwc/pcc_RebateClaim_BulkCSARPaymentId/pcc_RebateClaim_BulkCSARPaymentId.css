@@ -1,0 +1,8 @@
+.slds-align-top {
+    vertical-align: top;
+}
+
+.my-custom-button-class {
+    margin-bottom: 0; /* Adjust as needed */
+    align-self: flex-end; /* Align to the bottom of the flex container */
+}

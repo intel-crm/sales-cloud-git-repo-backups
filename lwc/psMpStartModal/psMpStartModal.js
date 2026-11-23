@@ -15,8 +15,6 @@ import highlightCompanyEnhanced from '@salesforce/label/c.PMP_Storefront_Welcome
 import popUpFooterLink from '@salesforce/label/c.PMP_Storefront_ProfilePopUp_FooterLink';
 import welcomeHeadingEnhanced from '@salesforce/label/c.PMP_Storefront_Welcome_Title_Enhanced';
 import footerText from '@salesforce/label/c.PMP_Storefront_FooterIntelLink';
-import MsfooterText from '@salesforce/label/c.PMP_MSStorefront_FooterLink';
-import PafooterText from '@salesforce/label/c.PMP_PAStorefront_FooterLink';
 
 export default class PsMpStartModal extends NavigationMixin(LightningElement) {
     @api isProfileAdmin;
@@ -24,7 +22,7 @@ export default class PsMpStartModal extends NavigationMixin(LightningElement) {
     @api isUpgradedPartnerAdmin;
     @api buttonEventParams;
     @api isOpen;
-    @api isPartner;//added by shahrukh to show footer message
+
     // get hasHeader() {
     //   if (this.isProfileAdmin) {
     //     return true;
@@ -42,9 +40,7 @@ export default class PsMpStartModal extends NavigationMixin(LightningElement) {
       highlightCompanyEnhanced,
       popUpFooterLink,
       welcomeHeadingEnhanced,
-      footerText,
-      MsfooterText,
-      PafooterText
+      footerText
   };
     render() {
       console.log('renderisprofileadmin', this.isProfileAdmin);
@@ -91,11 +87,4 @@ export default class PsMpStartModal extends NavigationMixin(LightningElement) {
         }
     });*/
   }
-
-get buttonCustomVariant() {
-        return ['button', 'button-secondary',
-            this.theme === 'light' ? '' : 'button-inverse'
-        ].join(' ');
-    }
-
 }

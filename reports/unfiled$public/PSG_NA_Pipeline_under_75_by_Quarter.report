@@ -119,9 +119,6 @@
     <columns>
         <field>Opportunity.Core_Business_Unit_Territory__c</field>
     </columns>
-    <columns>
-        <field>PARENT_NAME</field>
-    </columns>
     <filter>
         <booleanFilter>(1 AND 2 AND 3 AND 4 AND 5 AND 6 AND 7) AND 8</booleanFilter>
         <criteriaItems>
@@ -178,7 +175,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>greaterThan</operator>
-            <value>50</value>
+            <value>50.0</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Contact Move Governance</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Contact Move Governance</value>
+    </caseValues>
+    <fields>
+        <label><!-- Requested Account --></label>
+        <name>Account__c</name>
+        <relationshipLabel><!-- Contact Move Governance --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Case with Project --></label>
+        <name>Case_with_Project__c</name>
+    </fields>
+    <fields>
+        <label><!-- Case without Project --></label>
+        <name>Case_without_Project__c</name>
+    </fields>
+    <fields>
+        <label><!-- Checked with Account Owner --></label>
+        <name>Checked_with_Account_Owner__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact Email --></label>
+        <name>Contact_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact Name --></label>
+        <name>Contact_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact --></label>
+        <name>Contact__c</name>
+        <relationshipLabel><!-- Contact Move Governance --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Is Approved --></label>
+        <name>Is_Approved__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Rejected --></label>
+        <name>Is_Rejected__c</name>
+    </fields>
+    <fields>
+        <label><!-- Keep Entitlement --></label>
+        <name>Keep_Entitlement__c</name>
+    </fields>
+    <fields>
+        <label><!-- CIM ID --></label>
+        <name>New_CIM_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- CNDA --></label>
+        <name>New_CNDA__c</name>
+    </fields>
+    <fields>
+        <label><!-- Comments --></label>
+        <name>New_Comments__c</name>
+    </fields>
+    <fields>
+        <label><!-- English only Name --></label>
+        <name>New_English_only_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Export Compliance Block --></label>
+        <name>New_Export_Compliance_Block__c</name>
+    </fields>
+    <fields>
+        <label><!-- IPS Active --></label>
+        <name>New_IPS_Active__c</name>
+    </fields>
+    <fields>
+        <label><!-- IsODM --></label>
+        <name>New_IsODM__c</name>
+    </fields>
+    <fields>
+        <label><!-- PSG Account --></label>
+        <name>New_PSG_Account__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account --></label>
+        <name>Old_Account__c</name>
+        <relationshipLabel><!-- Contact Move Governance (Old Account) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- CIM ID --></label>
+        <name>Old_CIM_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- CNDA --></label>
+        <name>Old_CNDA__c</name>
+    </fields>
+    <fields>
+        <label><!-- English Only Name --></label>
+        <name>Old_English_Only_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Export Compliance Block --></label>
+        <name>Old_Export_Compliance_Block__c</name>
+    </fields>
+    <fields>
+        <label><!-- IPS Active --></label>
+        <name>Old_IPS_Active__c</name>
+    </fields>
+    <fields>
+        <label><!-- IsODM --></label>
+        <name>Old_IsODM__c</name>
+    </fields>
+    <fields>
+        <label><!-- PSG Account --></label>
+        <name>Old_PSG_Account__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reason --></label>
+        <name>Reason__c</name>
+    </fields>
+    <fields>
+        <label><!-- testing --></label>
+        <name>testing__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>5</masterLabel>
+            <translation><!-- 5 --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <webLinks>
+        <label><!-- All_Entitlements --></label>
+        <name>All_Entitlements</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- test_Ankit_button --></label>
+        <name>test_Ankit_button</name>
+    </webLinks>
+</CustomObjectTranslation>

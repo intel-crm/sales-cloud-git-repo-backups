@@ -4,6 +4,7 @@
       <div class="node-container">
         <div class={toggleIconClass}>
            <template if:true={hasChildItems}>
+            <template if:true={foundornot}>
               <template if:false={isRoot}>
                 <lightning-icon icon-name={ToggleIconName} size="small" onclick={toggleNode}></lightning-icon>
                 </template>
@@ -19,9 +20,10 @@
                   <span class="levelcolor slds-m-horizontal_x-small">
                    <b> <span class="slds-p-horizontal_x-small">Level: {item.level}</span> </b> </span>
                 </template>
-                
+                </template>
           </template>
           <template if:false={hasChildItems}>
+            <template if:true={foundornot}>
               <div class="slds-m-left_medium">
                 <b><lightning-button  variant="base" label={item.name} title={item.label} class={btncls} onclick={handleSelected}></lightning-button></b>
               
@@ -35,13 +37,14 @@
                  <b> <span class="slds-p-horizontal_x-small">Level: {item.level}</span> </b> </span>
               </template>
               </div>
-          </template>          
+          </template>     
+          </template>     
         </div>
       </div>
       <template if:true={expand}>
         <ul class="slds-p-left_medium">
           <template for:each={item.items} for:item="item">
-            <c-product-hierarchy-item key={item.id} item={item} name-visible={nameVisible} level-visible={levelVisible}></c-product-hierarchy-item>
+            <c-product-hierarchy-item key={item.id} item={item} name-visible={nameVisible} level-visible={levelVisible} checked={checked}></c-product-hierarchy-item>
           </template>
         </ul>
       </template>

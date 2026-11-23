@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>Pomeroy Technologies LLC Partner User</description>
+    <description>POMEROY IT SOLUTIONS, INC. Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>Pomeroy Technologies LLC Partner User</name>
+    <name>POMEROY IT SOLUTIONS, INC. Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>POMEROYITSOLUTIONSINCPartnerManager</parentRole>
 </Role>

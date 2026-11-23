@@ -2,7 +2,7 @@
 <ReportType xmlns="http://soap.sforce.com/2006/04/metadata">
     <baseObject>Sales_License__c</baseObject>
     <category>other</category>
-    <deployed>true</deployed>
+    <deployed>false</deployed>
     <description>This report will pull those licenses which will get expired in next 30 days</description>
     <label>Sales Licenses for Renewal</label>
     <sections>
@@ -44,6 +44,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>LastModifiedBy</field>
+            <table>Sales_License__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LastActivityDate</field>
             <table>Sales_License__c</table>
         </columns>
         <columns>
@@ -328,7 +333,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Sales_License_Renewed_Date__c</field>
+            <field>Sales_License_IsRenewed__c</field>
             <table>Sales_License__c</table>
         </columns>
         <columns>
@@ -338,27 +343,22 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>LastActivityDate</field>
+            <field>Sales_License_Renewed_Date__c</field>
             <table>Sales_License__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>License_Id__c</field>
+            <field>License_Record_Type__c</field>
             <table>Sales_License__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Sales_License_Renewed_Expired_Date__c</field>
+            <field>Sales_Renewal_License__c</field>
             <table>Sales_License__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Sales_License_Renewed_Year__c</field>
-            <table>Sales_License__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Sales_License_Renewed_Quarter__c</field>
+            <field>PSG_Free_License_Request__c</field>
             <table>Sales_License__c</table>
         </columns>
         <masterLabel>Licenses</masterLabel>

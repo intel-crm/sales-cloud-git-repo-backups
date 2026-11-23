@@ -15,7 +15,7 @@
                 "url": "/customerdisclaimer"
                 });
                 urlEvent.fire();
-                this.pageReload('/customerdisclaimer');
+                window.location.reload(true);
                 }
                 else if(response.getReturnValue()==''){
                     var urlEvent = $A.get("e.force:navigateToURL");
@@ -23,7 +23,7 @@
                                 "url": "/errorpage"
                             });
                              urlEvent.fire();
-                    this.pageReload('/errorpage');
+                    window.location.reload(true);
                 }
              }             
             else {
@@ -35,21 +35,12 @@
                                 "url": "/errorpage"
                             });
                              urlEvent.fire();
-                         this.pageReload('/errorpage');
+                         window.location.reload(true);
                        }
                 } 
                 
             }
         });
-        $A.enqueueAction(action);
-    },
-
-    pageReload: function (url) {
-        setTimeout(() => {
-            console.log('window.location.href', window.location.href);
-            if(window.location.href.includes(url)) {
-                window.location.reload(true);
-            }
-        }, $A.get("$Label.c.Core_MDF_CommunityPageReload_Timer"))
-    }
+         $A.enqueueAction(action);
+	}
 })

@@ -1,0 +1,12 @@
+{
+  "activeViewId" : "2414b3b3-93fd-4af3-8092-810677e53101",
+  "appPageId" : "6b36c665-0609-49d0-9746-033feed642b2",
+  "configurationTags" : [ ],
+  "devName" : "Sales_signup_EmployeeLicense__c",
+  "id" : "c599881f-d4a0-4527-82bd-446fffae25c4",
+  "label" : "Sales_signup-EmployeeLicense",
+  "pageAccess" : "RequiresLogin",
+  "routeType" : "custom-signup-employee-license",
+  "type" : "route",
+  "urlPrefix" : "signup-EmployeeLicense"
+}

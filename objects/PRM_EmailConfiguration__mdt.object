@@ -21,13 +21,6 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>PRM_Inactive_Indicator__c</fullName>
-        <defaultValue>false</defaultValue>
-        <fieldManageability>DeveloperControlled</fieldManageability>
-        <label>Inactive Indicator</label>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
         <fullName>PRM_PartnerRole__c</fullName>
         <fieldManageability>DeveloperControlled</fieldManageability>
         <label>Partner Role</label>
@@ -36,15 +29,10 @@
         <valueSet>
             <restricted>true</restricted>
             <valueSetDefinition>
-                <sorted>true</sorted>
+                <sorted>false</sorted>
                 <value>
-                    <fullName>Builder</fullName>
-                    <default>false</default>
-                    <label>Builder</label>
-                </value>
-                <value>
-                    <fullName>Service Provider</fullName>
-                    <default>false</default>
+                    <fullName>Cloud &amp; Comms Service Provider</fullName>
+                    <default>true</default>
                     <label>Cloud &amp; Comms Service Provider</label>
                 </value>
                 <value>
@@ -53,9 +41,8 @@
                     <label>Distributor</label>
                 </value>
                 <value>
-                    <fullName>FPGA Designer</fullName>
+                    <fullName>FPGA Design Services</fullName>
                     <default>false</default>
-                    <isActive>false</isActive>
                     <label>FPGA Design Services</label>
                 </value>
                 <value>
@@ -71,31 +58,22 @@
                 <value>
                     <fullName>Manufacturer</fullName>
                     <default>false</default>
-                    <isActive>false</isActive>
                     <label>Manufacturer</label>
                 </value>
                 <value>
                     <fullName>Original Equipment Manufacturer (OEM)</fullName>
                     <default>false</default>
-                    <isActive>false</isActive>
                     <label>Original Equipment Manufacturer (OEM)</label>
                 </value>
                 <value>
-                    <fullName>Solution Integrator</fullName>
+                    <fullName>Service Integrator</fullName>
                     <default>false</default>
-                    <label>Solution Integrator</label>
+                    <label>Service Integrator</label>
                 </value>
                 <value>
-                    <fullName>Seller</fullName>
+                    <fullName>Solution Provider</fullName>
                     <default>false</default>
-                    <isActive>false</isActive>
                     <label>Solution Provider</label>
-                </value>
-                <value>
-                    <fullName>Sponsor</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Sponsor</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -136,20 +114,10 @@
                     <default>false</default>
                     <label>Titanium</label>
                 </value>
-                <value>
-                    <fullName>Partner</fullName>
-                    <default>false</default>
-                    <label>Partner</label>
-                </value>
-                <value>
-                    <fullName>Prestige</fullName>
-                    <default>false</default>
-                    <label>Prestige</label>
-                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
-    <label>IPA Email Configuration</label>
+    <label>IPA Email Configurations</label>
     <pluralLabel>IPA Email Configurations</pluralLabel>
     <visibility>Public</visibility>
 </CustomObject>

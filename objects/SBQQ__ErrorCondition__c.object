@@ -363,6 +363,51 @@
                     <label>Unit Price</label>
                 </value>
                 <value>
+                    <fullName>PSG_Suggested_Resale_Amt__c</fullName>
+                    <default>false</default>
+                    <label>PSG_Suggested_Resale_Amt__c</label>
+                </value>
+                <value>
+                    <fullName>core_cpq_opn__c</fullName>
+                    <default>false</default>
+                    <label>core_cpq_opn__c</label>
+                </value>
+                <value>
+                    <fullName>core_cpq_orderable_ind__c</fullName>
+                    <default>false</default>
+                    <label>core_cpq_orderable_ind__c</label>
+                </value>
+                <value>
+                    <fullName>core_cpq_end_customer_nm__c</fullName>
+                    <default>false</default>
+                    <label>core_cpq_end_customer_nm__c</label>
+                </value>
+                <value>
+                    <fullName>price_lifetime_quote_value_amt__c</fullName>
+                    <default>false</default>
+                    <label>Life Time Quote Value</label>
+                </value>
+                <value>
+                    <fullName>core_cpq_cps_cb__c</fullName>
+                    <default>false</default>
+                    <label>core_cpq_cps_cb__c</label>
+                </value>
+                <value>
+                    <fullName>core_cpq_quote_type_nm__c</fullName>
+                    <default>false</default>
+                    <label>core_cpq_quote_type_nm__c</label>
+                </value>
+                <value>
+                    <fullName>core_cpq_PSG_Restricted_Product__c</fullName>
+                    <default>false</default>
+                    <label>core_cpq_PSG_Restricted_Product__c</label>
+                </value>
+                <value>
+                    <fullName>core_cpq_PSG_Restricted_Product_Check__c</fullName>
+                    <default>false</default>
+                    <label>core_cpq_PSG_Restricted_Product_Check__c</label>
+                </value>
+                <value>
                     <fullName>SBQQ__ProductName__c</fullName>
                     <default>false</default>
                     <label>SBQQ__ProductName__c</label>
@@ -372,6 +417,11 @@
                     <default>false</default>
                     <label>Pricing_Quote_Program_Nm__c</label>
                 </value>
+                <value>
+                    <fullName>SBQQ__Quantity__c</fullName>
+                    <default>false</default>
+                    <label>SBQQ__Quantity__c</label>
+                </value>
             </valueSetDefinition>
             <valueSettings>
                 <controllingFieldValue>Quote</controllingFieldValue>
@@ -379,7 +429,51 @@
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Quote</controllingFieldValue>
+                <valueName>core_cpq_end_customer_nm__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Quote</controllingFieldValue>
+                <valueName>price_lifetime_quote_value_amt__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Quote</controllingFieldValue>
+                <valueName>core_cpq_quote_type_nm__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Quote</controllingFieldValue>
+                <valueName>core_cpq_PSG_Restricted_Product_Check__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Quote</controllingFieldValue>
+                <controllingFieldValue>Product Option</controllingFieldValue>
+                <valueName>SBQQ__ProductName__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Quote</controllingFieldValue>
+                <controllingFieldValue>SBQQ__QuoteLine__c</controllingFieldValue>
                 <valueName>Pricing_Quote_Program_Nm__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Quote</controllingFieldValue>
+                <controllingFieldValue>SBQQ__QuoteLine__c</controllingFieldValue>
+                <controllingFieldValue>Product Option</controllingFieldValue>
+                <valueName>SBQQ__Quantity__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SBQQ__QuoteLine__c</controllingFieldValue>
+                <valueName>PSG_Suggested_Resale_Amt__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SBQQ__QuoteLine__c</controllingFieldValue>
+                <valueName>core_cpq_opn__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SBQQ__QuoteLine__c</controllingFieldValue>
+                <valueName>core_cpq_orderable_ind__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SBQQ__QuoteLine__c</controllingFieldValue>
+                <valueName>core_cpq_PSG_Restricted_Product__c</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Product Option</controllingFieldValue>
@@ -387,8 +481,8 @@
                 <valueName>Unit Price</valueName>
             </valueSettings>
             <valueSettings>
-                <controllingFieldValue>Product Option</controllingFieldValue>
-                <valueName>SBQQ__ProductName__c</valueName>
+                <controllingFieldValue>price_prid__c</controllingFieldValue>
+                <valueName>core_cpq_cps_cb__c</valueName>
             </valueSettings>
         </valueSet>
     </fields>
@@ -410,7 +504,7 @@
                     <label>Quote</label>
                 </value>
                 <value>
-                    <fullName>Quote Line</fullName>
+                    <fullName>SBQQ__QuoteLine__c</fullName>
                     <default>false</default>
                     <label>Quote Line</label>
                 </value>
@@ -433,6 +527,11 @@
                     <fullName>Upgraded Asset</fullName>
                     <default>false</default>
                     <label>Upgraded Asset</label>
+                </value>
+                <value>
+                    <fullName>price_prid__c</fullName>
+                    <default>false</default>
+                    <label>price_prid__c</label>
                 </value>
             </valueSetDefinition>
         </valueSet>

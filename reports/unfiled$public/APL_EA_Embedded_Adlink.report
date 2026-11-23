@@ -59,13 +59,12 @@
         <field>ACCOUNT.NAME</field>
     </columns>
     <filter>
-        <booleanFilter>(1 OR 4) AND 3 AND 2</booleanFilter>
         <criteriaItems>
             <column>Case.Core_IPS_Product__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Meteor Lake H</value>
+            <value>Apollo Lake</value>
         </criteriaItems>
         <criteriaItems>
             <column>Case.Core_Product_Organization__c</column>
@@ -81,16 +80,9 @@
             <operator>contains</operator>
             <value>Adlink</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>Case.Core_IPS_Product__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Meteor Lake U</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
-    <format>Summary</format>
+    <format>Matrix</format>
     <groupingsDown>
         <dateGranularity>Year</dateGranularity>
         <field>CLOSED_DATE</field>

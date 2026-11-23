@@ -1,0 +1,10 @@
+<apex:page StandardController="Core_Design_Registration_Product__c">
+  
+        <apex:outputText >
+            <h2 style="font-weight:bold;font-size:medium;font-size:14px;text-align: -webkit-left;">
+                <apex:pageMessage id="msg" severity="INFO" escape="0" summary="Test" strength="1"/>
+            </h2>
+        </apex:outputText>
+        
+ 
+</apex:page>

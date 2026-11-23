@@ -2,6 +2,7 @@
   cloneQuoteLine: function (component, event, helper) {
     let cloneAction = component.get("c.doClone");   // NOSONAR
     let quoteLineObject = component.get("v.quoteLine");  // NOSONAR
+    console.log('QLI Record:'+JSON.stringify(component.get("v.quoteLine")));
     quoteLineObject.Id = component.get("v.recordId");
 
     cloneAction.setParams({

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>User Record Access</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>User Record Access</value>
+    </caseValues>
+    <fields>
+        <label><!-- Has All Access --></label>
+        <name>HasAllAccess__c</name>
+    </fields>
+    <fields>
+        <label><!-- Has Delete Access --></label>
+        <name>HasDeleteAccess__c</name>
+    </fields>
+    <fields>
+        <label><!-- Has Edit Access --></label>
+        <name>HasEditAccess__c</name>
+    </fields>
+    <fields>
+        <label><!-- Has Read Access --></label>
+        <name>HasReadAccess__c</name>
+    </fields>
+    <fields>
+        <label><!-- Has Transfer Access --></label>
+        <name>HasTransferAccess__c</name>
+    </fields>
+    <fields>
+        <label><!-- Maximum Access Level --></label>
+        <name>MaxAccessLevel__c</name>
+        <picklistValues>
+            <masterLabel>Delete</masterLabel>
+            <translation><!-- Delete --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Owner</masterLabel>
+            <translation><!-- Owner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Private</masterLabel>
+            <translation><!-- Private --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Read Only</masterLabel>
+            <translation><!-- Read Only --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Read/Write</masterLabel>
+            <translation><!-- Read/Write --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Read/Write/Transfer</masterLabel>
+            <translation><!-- Read/Write/Transfer --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- User ID --></label>
+        <name>UserId__c</name>
+        <relationshipLabel><!-- User Record Access --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

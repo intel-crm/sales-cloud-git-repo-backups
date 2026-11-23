@@ -63,6 +63,6 @@
     </quickActionLayout>
     <standardLabel>New</standardLabel>
     <targetObject>Opportunity</targetObject>
-    <targetRecordType>Opportunity.Core_New_Opportunity</targetRecordType>
+    <targetRecordType>Opportunity.Core_Deal_Opportunity</targetRecordType>
     <type>Create</type>
 </QuickAction>

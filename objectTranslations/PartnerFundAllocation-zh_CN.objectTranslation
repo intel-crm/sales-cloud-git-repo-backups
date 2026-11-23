@@ -50,39 +50,12 @@
         <name>partnerfundallocation_totalreimbursedfcs</name>
     </fields>
     <fields>
-        <help>可用于创建活动的金额</help>
-        <label>活动可用金额</label>
-        <name>Core_MDF_Available_Activity_Alloc_Amt__c</name>
-    </fields>
-    <fields>
-        <help>可用于创建申请的金额</help>
-        <label>申请可用金额</label>
+        <label><!-- Available Allocation Amount --></label>
         <name>Core_MDF_Available_Allocation_Amount__c</name>
-    </fields>
-    <fields>
-        <label><!-- BudgetIdNodeAccountId --></label>
-        <name>Core_MDF_BudgetIdNodeAccountId_txt__c</name>
-    </fields>
-    <fields>
-        <label>预算类型</label>
-        <name>Core_MDF_Budget_Type__c</name>
-    </fields>
-    <fields>
-        <help>现有申请消费的金额（仅限活动）</help>
-        <label>申请预留金额</label>
-        <name>Core_MDF_Claim_Reserved_Amount_Amt__c</name>
     </fields>
     <fields>
         <label><!-- Created By --></label>
         <name>Core_MDF_CreatedBy_Nm__c</name>
-    </fields>
-    <fields>
-        <label><!-- End Date --></label>
-        <name>Core_MDF_End_Date_dt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Intel Account Name --></label>
-        <name>Core_MDF_Intel_Account_Name_Txt__c</name>
     </fields>
     <fields>
         <label><!-- Last Modified By --></label>
@@ -92,24 +65,6 @@
         <label><!-- Owner --></label>
         <name>Core_MDF_Owner_Nm__c</name>
     </fields>
-    <fields>
-        <label><!-- Program --></label>
-        <name>Core_MDF_Program_Txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Start Date --></label>
-        <name>Core_MDF_Start_Date_dt__c</name>
-    </fields>
-    <fields>
-        <help>现有活动消费的金额（仅限活动）</help>
-        <label>活动预留金额</label>
-        <name>Core_MDF_Total_Activity_Allocated_Amount__c</name>
-    </fields>
-    <recordTypes>
-        <description><!-- This is the Record type for Channel MDF program --></description>
-        <label><!-- Channel MDF --></label>
-        <name>Core_MDF_Channel_MDF</name>
-    </recordTypes>
     <recordTypes>
         <label>客户联合市场推广基金</label>
         <name>Core_MDF_Client_CoMarketing_Fund</name>
@@ -119,23 +74,8 @@
         <name>Core_MDF_Client_CoMarketing_Fund_Boost</name>
     </recordTypes>
     <recordTypes>
-        <description><!-- Record Type for Co-GTM --></description>
-        <label><!-- Co-GTM --></label>
-        <name>Core_MDF_Co_GTM</name>
-    </recordTypes>
-    <recordTypes>
         <label>数据中心联合市场推广基金</label>
         <name>Core_MDF_Data_Center_CoMarketing_Fund</name>
-    </recordTypes>
-    <recordTypes>
-        <description><!-- Record Type for Ecosystem Extension Fund --></description>
-        <label><!-- Ecosystem Extension Fund --></label>
-        <name>Core_MDF_Ecosystem_Extension_Fund</name>
-    </recordTypes>
-    <recordTypes>
-        <description><!-- Record Type for Intel Partner Alliance --></description>
-        <label><!-- Intel Partner Alliance --></label>
-        <name>Core_MDF_Intel_Partner_Alliance</name>
     </recordTypes>
     <recordTypes>
         <description><!-- Retail Marketing Funds Record Type --></description>

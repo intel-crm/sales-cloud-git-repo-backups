@@ -14,106 +14,13 @@
         <relationshipLabel><!-- Exception Account Mappings --></relationshipLabel>
     </fields>
     <fields>
-        <label><!-- Active --></label>
-        <name>Core_MDF_Active_ind__c</name>
-    </fields>
-    <fields>
-        <label><!-- Budget Type --></label>
-        <name>Core_MDF_Budget_Type_txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Country/Region --></label>
-        <name>Core_MDF_Country_Region_txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- ExceptionIdAccountId --></label>
-        <name>Core_MDF_ExceptionIdAccountId_txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Exception Status --></label>
-        <name>Core_MDF_Exception_Status_txt__c</name>
-    </fields>
-    <fields>
         <label><!-- Exception --></label>
         <name>Core_MDF_Exception_id__c</name>
-        <relationshipLabel><!-- Exception Account Mappings --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Expose Externally --></label>
-        <name>Core_MDF_Expose_Externally_ind__c</name>
-    </fields>
-    <fields>
-        <label><!-- Host Region --></label>
-        <name>Core_MDF_HostRegion_txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Owner --></label>
-        <name>Core_MDF_OwnerId_txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Program Name --></label>
-        <name>Core_MDF_Program_nm__c</name>
-        <picklistValues>
-            <masterLabel>Client</masterLabel>
-            <translation><!-- Client --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Client Co-Marketing Fund Boost</masterLabel>
-            <translation><!-- Client Co-Marketing Fund Boost --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Co-GTM</masterLabel>
-            <translation><!-- Co-GTM --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Datacenter</masterLabel>
-            <translation><!-- Datacenter --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Ecosystem Extension Fund</masterLabel>
-            <translation><!-- Ecosystem Extension Fund --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Intel Partner Alliance</masterLabel>
-            <translation><!-- Intel Partner Alliance --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Retail Marketing Funds</masterLabel>
-            <translation><!-- Retail Marketing Funds --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Service Provider Co-Marketing Fund</masterLabel>
-            <translation><!-- Service Provider Co-Marketing Fund --></translation>
-        </picklistValues>
+        <relationshipLabel><!-- Accounts --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- Program --></label>
         <name>Core_MDF_Program_txt__c</name>
     </fields>
-    <fields>
-        <help><!-- Field to store region for IPA Exception --></help>
-        <label><!-- Region --></label>
-        <name>Core_MDF_Region_txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Select All Accounts --></label>
-        <name>Core_MDF_Select_All_Accounts_ind__c</name>
-    </fields>
-    <fields>
-        <label><!-- Select All Country --></label>
-        <name>Core_MDF_Select_All_Country_ind__c</name>
-    </fields>
-    <sharingReasons>
-        <label><!-- Core_MDF_EAM_External_Sharing --></label>
-        <name>Core_MDF_EAM_External_Sharing</name>
-    </sharingReasons>
     <startsWith>Consonant</startsWith>
-    <validationRules>
-        <errorMessage><!-- Cannot update account --></errorMessage>
-        <name>Core_MDF_Cannot_Update_Account_At_EAM</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Cannot update exception --></errorMessage>
-        <name>Core_MDF_Cannot_Update_Exception_At_EAM</name>
-    </validationRules>
 </CustomObjectTranslation>

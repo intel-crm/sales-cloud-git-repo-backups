@@ -17,28 +17,12 @@
         <name>CPT_BR_All_Target__c</name>
     </fields>
     <fields>
-        <label><!-- BR - CCG Target --></label>
+        <label><!-- BR - CCPG Target --></label>
         <name>CPT_BR_CCG_Target__c</name>
-    </fields>
-    <fields>
-        <label><!-- BR - DCAI Accelerator Target --></label>
-        <name>CPT_BR_DCAI_DAIS_Target__c</name>
     </fields>
     <fields>
         <label><!-- BR - DCG Target --></label>
         <name>CPT_BR_DCAI_Target__c</name>
-    </fields>
-    <fields>
-        <label><!-- BR - Intel AI PC Target --></label>
-        <name>CPT_BR_Intel_AI_PC_Target__c</name>
-    </fields>
-    <fields>
-        <label><!-- BR - DCAI Ethernet Target --></label>
-        <name>CPT_BR_NEX_Ethernet_Target__c</name>
-    </fields>
-    <fields>
-        <label><!-- CR - One Intel OEM Target --></label>
-        <name>CPT_CR_CCG_One_Intel_OEM_Target__c</name>
     </fields>
     <fields>
         <label><!-- CR - OEM Target --></label>
@@ -80,6 +64,15 @@
         <label><!-- Quota Period --></label>
         <name>CPT_Quota_Period__c</name>
         <relationshipLabel><!-- Territory Targets --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Enter the required target amount for deal wins in this territory. This field is mandatory. Use whole numbers only. Default is 0. No decimal places allowed. --></help>
+        <label><!-- Wins - Deal Target --></label>
+        <name>CPT_Wins_Deal_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- Wins - Design Target --></label>
+        <name>CPT_Wins_Design_Target__c</name>
     </fields>
     <startsWith>Consonant</startsWith>
     <validationRules>

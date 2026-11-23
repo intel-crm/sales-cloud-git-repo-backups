@@ -26,20 +26,22 @@
           return dispatch(Object.assign({ type: 'toggleCompareTrayItem' }, params));
         };
       },
-// IPA2.0 + US TWC4497-1631
-        // fetchMultipleOfferingsAction:function(params){
-        //     return function(dispatch, getState, callServer) {
-        //         return callServer('fetchMultipleOfferings', { offeringIds:params.offeringIds, 
-        //                                              bEditOffering:params.bEditOffering,
-        //                                              bViewOffering:params.bViewOffering,
-        //                                              bCompareOffering:params.bCompareOffering,
-        //                                              langCode:params.langCode
-        //                                             },true).then(function(response) {
-        //             dispatch({ type: 'fetchMultipleOfferingDetails', response: response });
-        //         })
-        //     };
-        // },
-        
+
+        fetchMultipleOfferingsAction:function(params){
+            console.log("params2::");
+            console.log(params.offeringIds);
+            return function(dispatch, getState, callServer) {
+                return callServer('fetchMultipleOfferings', { offeringIds:params.offeringIds, 
+                                                     bEditOffering:params.bEditOffering,
+                                                     bViewOffering:params.bViewOffering
+                                                    },true).then(function(response) {
+                    console.log("getFetchOfferings start2");
+                    console.log(response);
+                    console.log("getFetchOfferings end2");
+                    dispatch({ type: 'fetchMultipleOfferingDetails', response: response });
+                })
+            };
+        },
 
     };
 	}

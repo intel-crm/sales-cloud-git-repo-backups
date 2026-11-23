@@ -92,7 +92,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Define,Develop,Design</value>
+            <value>Qualify,Define,Develop,Design</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Inactive__c</column>
@@ -127,7 +127,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>IBM Corp,redhat,IBM Software &amp; Global Services,IBM GTS,IBM Service</value>
+            <value>IBM Corp,redhat</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

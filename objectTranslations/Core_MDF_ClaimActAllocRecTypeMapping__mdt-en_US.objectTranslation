@@ -21,10 +21,6 @@
         <name>Core_MDF_Allocation_RecordType_txt__c</name>
     </fields>
     <fields>
-        <label><!-- Budget Cap Record Type Developer Name --></label>
-        <name>Core_MDF_Budget_Cap_RecType_DevName_Txt__c</name>
-    </fields>
-    <fields>
         <label><!-- Channel Program Name --></label>
         <name>Core_MDF_Channel_Program_Name_txt__c</name>
     </fields>
@@ -67,14 +63,6 @@
     <fields>
         <label><!-- Region --></label>
         <name>Core_MDF_Region_cd__c</name>
-    </fields>
-    <fields>
-        <label><!-- isProgramBased --></label>
-        <name>Core_MDF_isProgramBased_Ind__c</name>
-    </fields>
-    <fields>
-        <label><!-- isProposalBased --></label>
-        <name>Core_MDF_isProposalBased__c</name>
     </fields>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

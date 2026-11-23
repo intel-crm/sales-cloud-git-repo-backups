@@ -103,13 +103,6 @@
             <operator>equals</operator>
             <value>Qualify,Define,Develop,Design,Group,Group Open</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>Account.Core_Geo__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>EMEA</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>

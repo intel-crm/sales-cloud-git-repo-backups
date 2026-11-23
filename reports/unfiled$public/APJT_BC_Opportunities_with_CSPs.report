@@ -7,7 +7,7 @@
         <chartSummaries>
             <aggregate>Sum</aggregate>
             <axisBinding>y</axisBinding>
-            <column>TOTAL_PRICE</column>
+            <column>AMOUNT</column>
         </chartSummaries>
         <chartType>Donut</chartType>
         <enableHoverLabels>false</enableHoverLabels>
@@ -18,7 +18,7 @@
         <showAxisLabels>true</showAxisLabels>
         <showPercentage>false</showPercentage>
         <showTotal>true</showTotal>
-        <showValues>true</showValues>
+        <showValues>false</showValues>
         <size>Medium</size>
         <summaryAxisRange>Auto</summaryAxisRange>
         <textColor>#000000</textColor>
@@ -97,7 +97,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Oceane Rime,Ayu Ginanti,Vanessa Ng,Duc Dang,I&apos;ng Chin Tan,Jovern Lim,Patricia Lee,Paul Haines,Alastair Duncan,Elise Stanberg,Andrew Ridley,Sachin Anand,Fransiskus Leonardus,Hc Hwang,Siew May Cheow,Jason Kay Siah Ang</value>
+            <value>Duc Dang,I&apos;ng Chin Tan,Albert Wang,Jovern Lim,Patricia Lee,Paul Haines,Nileshni Santiago,Alastair Duncan,Elise Stanberg,Jodie Frew,Andrew Ridley,Swee Hoon Chan,Sachin Anand,Fransiskus Leonardus,Hc Hwang,Vineet Giri,Siew May Cheow,Faisal Qamar,Jason Kay Siah Ang</value>
         </criteriaItems>
         <criteriaItems>
             <column>STAGE_NAME</column>
@@ -120,13 +120,6 @@
             <operator>notEqual</operator>
             <value></value>
         </criteriaItems>
-        <criteriaItems>
-            <column>PRODUCT_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Public Cloud</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
@@ -142,7 +135,7 @@
     </params>
     <params>
         <name>open</name>
-        <value>open</value>
+        <value>all</value>
     </params>
     <params>
         <name>probability</name>
@@ -161,6 +154,8 @@
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

@@ -1,15 +1,14 @@
-import { LightningElement } from 'lwc';
-import { NavigationMixin } from 'lightning/navigation';
-/*import { getRecord } from 'lightning/uiRecordApi';
+import { LightningElement, api, wire, track } from 'lwc';
+import { getRecord } from 'lightning/uiRecordApi';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import { createRecord } from "lightning/uiRecordApi";
-
+import { NavigationMixin } from 'lightning/navigation';
 import { CloseActionScreenEvent } from 'lightning/actions';
  
 
 //APEX
 import licensefileGeneration from '@salesforce/apex/Sales_LicenseGenIntegration_Utility.returnHostIdDetail';
-import createHostonLicenseRecord froms '@salesforce/apex/Sales_LicenseRecordPageComponentsUtility.createHostonLicenseRecord';
+import createHostonLicenseRecord from '@salesforce/apex/Sales_LicenseRecordPageComponentsUtility.createHostonLicenseRecord';
 import isCommunity from '@salesforce/apex/Sales_AddNewLicenseAdminController.isCommunity';
 import getUserDetails from '@salesforce/apex/Sales_SetupHostComputerController.getUserDetails';
 import getDelegateContactIds from '@salesforce/apex/Sales_SetupHostComputerController.getDelegateContactIds';
@@ -33,12 +32,12 @@ import Sales_DetermineCompType from '@salesforce/label/c.Sales_DetermineCompType
 import Sales_ComputerTypeHelpText from '@salesforce/label/c.Sales_ComputerTypeHelpText'
 
 //FIELDS
-const FIELDS = ['Sales_Host__c.Sales_License_Type__c',
+const FIELDS = ['Sales_Host__c.Sales_License_Type__c','Sales_Host__c.Name',
     'Sales_Host__c.Sales_Companion_Server2_Txt__c', 'Sales_Host__c.Sales_Companion_Server1_Txt__c',
     'Sales_Host__c.Sales_Computer_Type__c', 'Sales_Host__c.Sales_Computer_Name_Txt__c', 'Sales_Host__c.Sales_Contact__c', 'Sales_Host__c.Sales_Redundant_Server1_Txt__c', 'Sales_Host__c.Sales_Redundant_Server2_Txt__c'];
-*/
+
 export default class SalesCreateNewHost extends NavigationMixin(LightningElement) {
-    /*@api fromlac;
+    @api fromlac;
     @track showmodal=true;
     @api recordid;
     @track callingfronOnchange=false;
@@ -74,6 +73,7 @@ export default class SalesCreateNewHost extends NavigationMixin(LightningElement
     //feedback start
    @track enableFeedback=false;
    @api disablefeedback=false;
+   @track getNICId;
    @track feedrec;
    @track isFeedbackvisible=false;
    @track noofdays;
@@ -177,9 +177,14 @@ export default class SalesCreateNewHost extends NavigationMixin(LightningElement
 
         const topDiv = this.template.querySelector('[data-id="focusOnErrorBannerId"]');
         topDiv.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
-
         const fields = event.detail.fields;
-       fields.Sales_Host_Is_Created_From_Custom_Page__c=true;
+        fields.Sales_Host_Is_Created_From_Custom_Page__c=true;
+        
+        //Add by Tejaswani
+        if(fields.Sales_Computer_Type__c=='NIC ID'){
+            fields.Name = this.getNICId; 
+        }
+
         console.log('new Fields'+fields.Sales_Host_Is_Created_From_Custom_Page__c);
         fields.Sales_isActiveHost__c = true;
         if(this.primaryadmincontact!=undefined){
@@ -273,7 +278,7 @@ export default class SalesCreateNewHost extends NavigationMixin(LightningElement
 
                     }*/
                    
-                /*} 
+                } 
                else if (this.fromlicensegenerate  && (!this.fromlac || this.fromlac==undefined)) {
                     console.log('fromcmp is true 231');
                  //  this.fromlicensegenerate=false;
@@ -360,7 +365,7 @@ export default class SalesCreateNewHost extends NavigationMixin(LightningElement
                         alert('this.fromComponent>>>'+this.fromComponent);
                         this.reloadPage();
                     }*/
-                /*})
+                })
                 .catch(error => {
                     this.buttonClicked=false;
                     const evt = new ShowToastEvent({
@@ -425,6 +430,11 @@ export default class SalesCreateNewHost extends NavigationMixin(LightningElement
         this.primaryadmincontact = event.target.value;
     }
 
+    //Changes by Tejaswani
+    onchangeNICId(event){
+        this.getNICId = event.target.value;
+        this.getNICId = this.getNICId.replace(/-/g, "");
+    }
     //UTILITY METHODS
 
     reloadPage() {
@@ -485,7 +495,7 @@ export default class SalesCreateNewHost extends NavigationMixin(LightningElement
             } else if (this.toollicensetype == 'FLOAT') {
                 this.isfloatRecord = true;
             }*/
-            /*return false;
+            return false;
         }
         else if(this.callingfronOnchange==true){
             return false;

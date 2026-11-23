@@ -6,7 +6,7 @@
         <externalId>false</externalId>
         <fieldManageability>DeveloperControlled</fieldManageability>
         <label>Core_MDF_Activity_Category</label>
-        <length>50</length>
+        <length>255</length>
         <required>false</required>
         <type>Text</type>
         <unique>false</unique>
@@ -23,7 +23,7 @@
         <externalId>false</externalId>
         <fieldManageability>DeveloperControlled</fieldManageability>
         <label>Core_MDF_Amount_Operator</label>
-        <length>40</length>
+        <length>255</length>
         <required>false</required>
         <type>Text</type>
         <unique>false</unique>
@@ -41,7 +41,7 @@
         <externalId>false</externalId>
         <fieldManageability>DeveloperControlled</fieldManageability>
         <label>Core_MDF_Day_Difference</label>
-        <length>3</length>
+        <length>255</length>
         <required>false</required>
         <type>Text</type>
         <unique>false</unique>
@@ -51,7 +51,7 @@
         <externalId>false</externalId>
         <fieldManageability>DeveloperControlled</fieldManageability>
         <label>Core_MDF_Days_Difference_Operator</label>
-        <length>40</length>
+        <length>255</length>
         <required>false</required>
         <type>Text</type>
         <unique>false</unique>
@@ -61,7 +61,7 @@
         <externalId>false</externalId>
         <fieldManageability>DeveloperControlled</fieldManageability>
         <label>Core_MDF_Days_Difference</label>
-        <precision>3</precision>
+        <precision>18</precision>
         <required>false</required>
         <scale>0</scale>
         <type>Number</type>
@@ -95,7 +95,7 @@
         <externalId>false</externalId>
         <fieldManageability>DeveloperControlled</fieldManageability>
         <label>Core_MDF_PFR_RecordType_Id</label>
-        <length>18</length>
+        <length>255</length>
         <required>false</required>
         <type>Text</type>
         <unique>false</unique>
@@ -105,7 +105,7 @@
         <externalId>false</externalId>
         <fieldManageability>DeveloperControlled</fieldManageability>
         <label>Core_MDF_PFR_RecordType</label>
-        <length>80</length>
+        <length>255</length>
         <required>false</required>
         <type>Text</type>
         <unique>false</unique>
@@ -122,7 +122,7 @@
         <externalId>false</externalId>
         <fieldManageability>DeveloperControlled</fieldManageability>
         <label>Core_MDF_Requested_Amount</label>
-        <length>20</length>
+        <length>255</length>
         <required>false</required>
         <type>Text</type>
         <unique>false</unique>

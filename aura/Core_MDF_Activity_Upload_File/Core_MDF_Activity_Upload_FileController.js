@@ -56,12 +56,8 @@
         
         component.set('v.errormsg','');
         component.set('v.iserror',false);
-        if(component.get("v.filedata")== null){
-            helper.loadDocuments(component);
-        }
-        if(component.get("v.activityBudgetType") != undefined && component.get("v.activityBudgetType") != null && !$A.util.isEmpty(component.get("v.activityBudgetType")) && $A.get("$Label.c.Core_MDF_FileUpload_BudgetTypes").includes(component.get("v.activityBudgetType"))){
-            component.set("v.opalFileUploadBudgetTypes",true);
-        }
+        
+        helper.loadDocuments(component);
 	},
     deleteSelected : function(component,event,helper){
         var userconfrm = confirm($A.get("$Label.c.Core_MDF_Delete_Confirm"));

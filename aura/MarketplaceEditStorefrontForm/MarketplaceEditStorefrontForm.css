@@ -1,6 +1,7 @@
 .THIS {
     color: t(darkGray);
 }
+
 .THIS .bold {
     font-weight: 700;
 }
@@ -31,7 +32,6 @@
 
 .THIS .pSmallText {
     font-size: 0.8em;
-    overflow-wrap: break-word;
 }
 
 .THIS .summarySection {
@@ -188,17 +188,8 @@
     fill: t(darkGray);
 }
 
-/*For DE108385,to make the delete icon in dark gray color */
-.THIS .iconDarkGray .slds-icon-text-default {
-    fill: t(darkGray) !important;     
-}
-
 .THIS .iconWhite use {
     fill: t(white);
-}
-
-.THIS .containWidth {
-    overflow-wrap: break-word;
 }
 
 .THIS .nextButton button:disabled {

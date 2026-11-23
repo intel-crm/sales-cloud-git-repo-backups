@@ -3,6 +3,7 @@ import { NavigationMixin, CurrentPageReference } from 'lightning/navigation';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import profileAccess from '@salesforce/customPermission/SBR_Profile_Access';
 import permissionSetAccess from '@salesforce/customPermission/Permission_Set_for_Partner';
+import OtherButtonPermissionSetAccess from '@salesforce/customPermission/SBR_Other_Permission_Set';
 
 import Id from '@salesforce/user/Id';
 import { getRecord } from 'lightning/uiRecordApi';
@@ -16,18 +17,49 @@ import validProfiles from '@salesforce/label/c.UCD_SBR_ValidProfiles';
 
 export default class UcdAcctSearchMasterLayout_SBR extends NavigationMixin(LightningElement) {
 
-    @track isSpinner = true;
     @track currentUserProfileName;
     //validUserForComarketing = false;
     validUserForPartner = false;
+    notAuthorized = false;
     //validUserForAccessEntitlement = false;
     validUserForSBRRequest = false;
-    AuthorizedUser = true;
+    validOtherButtonUser = false;
     acctDetails = {};
     acctSearchStep = false;
     acctCreateStep = false;
     @track intelRecordTypeId;
     currentPageReference = null; 
+
+    //value = 'Opportunity Managment';
+
+
+
+    /*@track radioButtonValues ;
+    @track ShowDescription = false;
+    @track DescriptionValue = '';
+    getAllRadioButtonValues(){
+        SBRMappingdetails({ }).then(response => {
+            this.radioButtonValues = response;            
+        })
+        .catch(error => {
+            
+        })
+    }
+
+    handleRadioChange(event) {
+        const selectedOption = event.detail.value;
+        this.acctReasonTrail = selectedOption;
+        this.ShowDescription = true;
+
+        for (let i = 0; i < this.radioButtonValues.length; i++) {
+            if(selectedOption === this.radioButtonValues[i].value){
+                this.DescriptionValue = this.radioButtonValues[i].description;
+            }
+          }
+          
+      
+    }*/
+
 
 
     requestValueOption1 = 'Opportunity Management';
@@ -55,23 +87,29 @@ export default class UcdAcctSearchMasterLayout_SBR extends NavigationMixin(Light
     
     constructor() {
         super();
-        this.acctSearchStep = true;
+        this.acctSearchStep = false;
         this.acctCreateStep = false;
-        this.acctReasonCreate = false;
+        this.acctReasonCreate = true;
         this.isSubmitDisabled = true;
     }
 
     connectedCallback() {
-        this.acctSearchStep = true;
+        this.acctSearchStep = false;
         this.acctCreateStep = false;
-        this.acctReasonCreate = false;
+        this.acctReasonCreate = true;
+        //this.getAllRadioButtonValues();
+        console.log('auth first');
+        if(!profileAccess){
+        console.log('not auth');
+        this.notAuthorized = true;
+        }
+        else{
+            this.notAuthorized = false;
 
-       /* setTimeout(() => {
-            this.isSpinner = false;
-        }, 1000);*/
+        }
+        console.log('not authall'+this.notAuthorized);
 
     }
-    
 
     renderedCallback() {     
     }
@@ -96,26 +134,29 @@ export default class UcdAcctSearchMasterLayout_SBR extends NavigationMixin(Light
                 }
             }
            
-             if(this.validUserForSBRRequest == false){
-                this.AuthorizedUser = false;
-                console.log('authorized'+this.AuthorizedUser);
-            }
-            this.isSpinner = false;
 
-    
+            /*for(let i=0; i<(validProfilesforAccessEntitlement).split('|').length; i++){
+                if((validProfilesforAccessEntitlement).split('|')[i] == this.currentUserProfileName){
+                    this.validUserForAccessEntitlement = true;
+                    break;
+                }
+            }*/
+            if(OtherButtonPermissionSetAccess){
+                this.validOtherButtonUser = true;
+            }
+            console.log('other'+this.validOtherButtonUser);
 
         } else if (error) {
         }
-        
     }
 
    
-  /*  @wire(CurrentPageReference)
+    @wire(CurrentPageReference)
     getPageReferenceParameters(currentPageReference) {
        if (currentPageReference) {
           this.intelRecordTypeId = currentPageReference.state?.c__recordTypeId || null;
        }
-    }*/
+    }
     
 
     handleSaveTrail(event) {
@@ -126,9 +167,9 @@ export default class UcdAcctSearchMasterLayout_SBR extends NavigationMixin(Light
 
     acctSearchNextClickHandler(event) {
         this.acctDetails = event.detail;
-        this.acctCreateStep = false;
+        this.acctCreateStep = true;
         this.acctSearchStep = false;
-        this.acctReasonCreate = true;
+        this.acctReasonCreate = false;
     }
 
     acctCreateBackClickHandler(event) {
@@ -150,9 +191,8 @@ export default class UcdAcctSearchMasterLayout_SBR extends NavigationMixin(Light
             console.log('error123-->');
 
         } else{
-            this.acctSearchStep = false;
+            this.acctSearchStep = true;
             this.acctReasonCreate = false;
-            this.acctCreateStep = true;
         }
     }
     closeModal(event) {

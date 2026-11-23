@@ -8,6 +8,6 @@
     </values>
     <values>
         <field>Value__c</field>
-        <value xsi:type="xsd:string">The productId does not match filter criteria ; Given value does not exist or does not match filter criteria for following fields : ;</value>
+        <value xsi:type="xsd:string">The productId does not match filter criteria ; Given value does not exist or does not match filter criteria for following fields: ;</value>
     </values>
 </CustomMetadata>

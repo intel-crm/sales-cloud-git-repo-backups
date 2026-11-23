@@ -34,8 +34,4 @@
         <field>PRM_Restriction_Level__c</field>
         <value xsi:nil="true"/>
     </values>
-    <values>
-        <field>Score_Bar__c</field>
-        <value xsi:nil="true"/>
-    </values>
 </CustomMetadata>

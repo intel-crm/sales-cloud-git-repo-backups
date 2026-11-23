@@ -1,0 +1,1 @@
+trigger RegTrigger on Core_Design_Registration__c (after insert) { /* Do Something */ System.debug('Created by REST API');}

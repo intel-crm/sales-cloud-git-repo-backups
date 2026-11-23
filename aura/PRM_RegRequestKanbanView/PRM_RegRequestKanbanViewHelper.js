@@ -36,11 +36,10 @@
 						var displayFieldsList = [];
 						strList.forEach(function(entry){
 							var displayFields = {};
-							/*if(entry == 'PRM_Email_Verification_Criteria__c'){
+							if(entry == 'PRM_Email_Verification_Criteria__c'){
 								displayFields = {name: entry,label: labelsMap[entry], result: result.PRM_Email_Verification_Criteria__c};
-							} 
-							else */
-                            if(entry == 'PRM_DeDup_Criteria__c'){
+							}
+							else if(entry == 'PRM_DeDup_Criteria__c'){
 								displayFields = {name: entry, label: labelsMap[entry], result: result.PRM_DeDup_Criteria__c};
 							}
 							else if(entry == 'PRM_Legal_Agreement_Criteria__c'){

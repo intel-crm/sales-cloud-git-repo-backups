@@ -2,96 +2,71 @@
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <actionCalls>
         <processMetadataValues>
-            <name>apexSelection</name>
+            <name>emailAlertSelection</name>
             <value>
-                <stringValue>Core_MDF_EmailToGSPO</stringValue>
+                <stringValue>Core_MDF_PaymentRun_Status_Completed</stringValue>
             </value>
         </processMetadataValues>
         <name>myRule_1_A1</name>
-        <label>Apex Action to call invocable method to send email to GSPO</label>
+        <label>Send Email to the Record Owner</label>
         <locationX>100</locationX>
         <locationY>200</locationY>
-        <actionName>Core_MDF_EmailToGSPO</actionName>
-        <actionType>apex</actionType>
-        <connector>
-            <targetReference>myDecision4</targetReference>
-        </connector>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
-        <inputParameters>
-            <processMetadataValues>
-                <name>dataType</name>
-                <value>
-                    <stringValue>ID</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>isRequired</name>
-                <value>
-                    <booleanValue>false</booleanValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideLabel</name>
-                <value>
-                    <stringValue>paymentRunId</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>maxOccurs</name>
-                <value>
-                    <numberValue>1.0</numberValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>objectType</name>
-                <value>
-                    <stringValue></stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>rightHandSideType</name>
-                <value>
-                    <stringValue>Formula</stringValue>
-                </value>
-            </processMetadataValues>
-            <name>paymentRunId</name>
-            <value>
-                <elementReference>formula_3_myRule_1_A1_5126667105</elementReference>
-            </value>
-        </inputParameters>
-        <nameSegment>Core_MDF_EmailToGSPO</nameSegment>
-    </actionCalls>
-    <actionCalls>
-        <processMetadataValues>
-            <name>emailAlertSelection</name>
-            <value>
-                <stringValue>Core_MDF_PaymentRun_Status</stringValue>
-            </value>
-        </processMetadataValues>
-        <name>myRule_5_A1</name>
-        <label>Send Email to the Record Owner</label>
-        <locationX>500</locationX>
-        <locationY>200</locationY>
-        <actionName>Core_MDF_Payment_Run__c.Core_MDF_PaymentRun_Status</actionName>
+        <actionName>Core_MDF_Payment_Run__c.Core_MDF_PaymentRun_Status_Completed</actionName>
         <actionType>emailAlert</actionType>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>SObjectRowId</name>
             <value>
                 <elementReference>myVariable_current.Id</elementReference>
             </value>
         </inputParameters>
-        <nameSegment>Core_MDF_Payment_Run__c.Core_MDF_PaymentRun_Status</nameSegment>
+        <nameSegment>Core_MDF_Payment_Run__c.Core_MDF_PaymentRun_Status_Completed</nameSegment>
     </actionCalls>
-    <apiVersion>50.0</apiVersion>
+    <actionCalls>
+        <processMetadataValues>
+            <name>emailAlertSelection</name>
+            <value>
+                <stringValue>Core_MDF_PaymentRun_Status_Error</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_4_A1</name>
+        <label>Send Email to the Record Owner</label>
+        <locationX>400</locationX>
+        <locationY>200</locationY>
+        <actionName>Core_MDF_Payment_Run__c.Core_MDF_PaymentRun_Status_Error</actionName>
+        <actionType>emailAlert</actionType>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Core_MDF_Payment_Run__c.Core_MDF_PaymentRun_Status_Error</nameSegment>
+    </actionCalls>
+    <apiVersion>49.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>myVariable_waitStartTimeAssignment</name>
+        <label>myVariable_waitStartTimeAssignment</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>myVariable_waitStartTimeVariable</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>isChangedDecision2_myRule_1_Core_MDF_Status_Txt_c</targetReference>
+        </connector>
+    </assignments>
     <decisions>
         <name>isChangedDecision2_myRule_1_Core_MDF_Status_Txt_c</name>
         <label>isChangedDecision2_myRule_1_Core_MDF_Status_Txt_c</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
         <defaultConnector>
-            <targetReference>isChangedDecision6_myRule_5_Core_MDF_Status_Txt_c</targetReference>
+            <targetReference>isChangedDecision5_myRule_4_Core_MDF_Status_Txt_c</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>default</defaultConnectorLabel>
         <rules>
@@ -112,14 +87,14 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>isChangedDecision6_myRule_5_Core_MDF_Status_Txt_c</targetReference>
+                <targetReference>isChangedDecision5_myRule_4_Core_MDF_Status_Txt_c</targetReference>
             </connector>
             <label>isChangedRule_2_myRule_1_Core_MDF_Status_Txt_c</label>
         </rules>
     </decisions>
     <decisions>
-        <name>isChangedDecision6_myRule_5_Core_MDF_Status_Txt_c</name>
-        <label>isChangedDecision6_myRule_5_Core_MDF_Status_Txt_c</label>
+        <name>isChangedDecision5_myRule_4_Core_MDF_Status_Txt_c</name>
+        <label>isChangedDecision5_myRule_4_Core_MDF_Status_Txt_c</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
         <defaultConnector>
@@ -127,7 +102,7 @@
         </defaultConnector>
         <defaultConnectorLabel>default</defaultConnectorLabel>
         <rules>
-            <name>isChangedRule_6_myRule_5_Core_MDF_Status_Txt_c</name>
+            <name>isChangedRule_5_myRule_4_Core_MDF_Status_Txt_c</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
                 <leftValueReference>myVariable_old</leftValueReference>
@@ -146,7 +121,7 @@
             <connector>
                 <targetReference>myDecision</targetReference>
             </connector>
-            <label>isChangedRule_6_myRule_5_Core_MDF_Status_Txt_c</label>
+            <label>isChangedRule_5_myRule_4_Core_MDF_Status_Txt_c</label>
         </rules>
     </decisions>
     <decisions>
@@ -161,12 +136,12 @@
         <locationX>50</locationX>
         <locationY>0</locationY>
         <defaultConnector>
-            <targetReference>myDecision4</targetReference>
+            <targetReference>myDecision3</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>default</defaultConnectorLabel>
         <rules>
             <name>myRule_1</name>
-            <conditionLogic>1 AND 2 AND 3 AND ((4 AND 5 AND 6) OR (7 AND (8 OR 9)))</conditionLogic>
+            <conditionLogic>and</conditionLogic>
             <conditions>
                 <processMetadataValues>
                     <name>inputDataType</name>
@@ -229,227 +204,10 @@
                     <stringValue>Completed</stringValue>
                 </rightValue>
             </conditions>
-            <conditions>
-                <processMetadataValues>
-                    <name>inputDataType</name>
-                    <value>
-                        <stringValue>Boolean</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>leftHandSideType</name>
-                    <value>
-                        <stringValue>Boolean</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>operatorDataType</name>
-                    <value>
-                        <stringValue>Boolean</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>rightHandSideType</name>
-                    <value>
-                        <stringValue>Boolean</stringValue>
-                    </value>
-                </processMetadataValues>
-                <leftValueReference>myVariable_current.Core_MDF_Send_Notification_Ind__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <processMetadataValues>
-                    <name>inputDataType</name>
-                    <value>
-                        <stringValue>MultiPicklist</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>leftHandSideType</name>
-                    <value>
-                        <stringValue>MultiPicklist</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>operatorDataType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>rightHandSideType</name>
-                    <value>
-                        <stringValue>MultiPicklist</stringValue>
-                    </value>
-                </processMetadataValues>
-                <leftValueReference>myVariable_current.Core_MDF_Budget_Type_nm__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>Retail MDF</stringValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <processMetadataValues>
-                    <name>inputDataType</name>
-                    <value>
-                        <stringValue>Picklist</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>leftHandSideType</name>
-                    <value>
-                        <stringValue>Picklist</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>operatorDataType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>rightHandSideType</name>
-                    <value>
-                        <stringValue>Picklist</stringValue>
-                    </value>
-                </processMetadataValues>
-                <leftValueReference>myVariable_current.Core_MDF_Geo_Txt__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>EMEA</stringValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <processMetadataValues>
-                    <name>inputDataType</name>
-                    <value>
-                        <stringValue>Picklist</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>leftHandSideType</name>
-                    <value>
-                        <stringValue>Picklist</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>operatorDataType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>rightHandSideType</name>
-                    <value>
-                        <stringValue>Picklist</stringValue>
-                    </value>
-                </processMetadataValues>
-                <leftValueReference>myVariable_current.Core_MDF_Program_Id__r.Core_MDF_Technical_Program_Name__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>Retail Marketing Funds</stringValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <processMetadataValues>
-                    <name>inputDataType</name>
-                    <value>
-                        <stringValue>Picklist</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>leftHandSideType</name>
-                    <value>
-                        <stringValue>Picklist</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>operatorDataType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>rightHandSideType</name>
-                    <value>
-                        <stringValue>Picklist</stringValue>
-                    </value>
-                </processMetadataValues>
-                <leftValueReference>myVariable_current.Core_MDF_Program_Id__r.Core_MDF_Technical_Program_Name__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>Intel Partner Alliance</stringValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <processMetadataValues>
-                    <name>inputDataType</name>
-                    <value>
-                        <stringValue>Picklist</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>leftHandSideType</name>
-                    <value>
-                        <stringValue>Picklist</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>operatorDataType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>rightHandSideType</name>
-                    <value>
-                        <stringValue>Picklist</stringValue>
-                    </value>
-                </processMetadataValues>
-                <leftValueReference>myVariable_current.Core_MDF_Geo_Txt__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>EMEA</stringValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <processMetadataValues>
-                    <name>inputDataType</name>
-                    <value>
-                        <stringValue>Picklist</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>leftHandSideType</name>
-                    <value>
-                        <stringValue>Picklist</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>operatorDataType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>rightHandSideType</name>
-                    <value>
-                        <stringValue>Picklist</stringValue>
-                    </value>
-                </processMetadataValues>
-                <leftValueReference>myVariable_current.Core_MDF_Geo_Txt__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>APJ</stringValue>
-                </rightValue>
-            </conditions>
             <connector>
                 <targetReference>myRule_1_A1</targetReference>
             </connector>
-            <label>Send Notification to GSPO</label>
+            <label>Status changes to &apos;Completed&apos;</label>
         </rules>
     </decisions>
     <decisions>
@@ -459,14 +217,14 @@
                 <numberValue>1.0</numberValue>
             </value>
         </processMetadataValues>
-        <name>myDecision4</name>
-        <label>myDecision4</label>
+        <name>myDecision3</name>
+        <label>myDecision3</label>
         <locationX>50</locationX>
         <locationY>0</locationY>
         <defaultConnectorLabel>default</defaultConnectorLabel>
         <rules>
-            <name>myRule_5</name>
-            <conditionLogic>1 AND (2 OR 3)</conditionLogic>
+            <name>myRule_4</name>
+            <conditionLogic>and</conditionLogic>
             <conditions>
                 <processMetadataValues>
                     <name>inputDataType</name>
@@ -492,41 +250,10 @@
                         <stringValue>Boolean</stringValue>
                     </value>
                 </processMetadataValues>
-                <leftValueReference>isChangedRule_6_myRule_5_Core_MDF_Status_Txt_c</leftValueReference>
+                <leftValueReference>isChangedRule_5_myRule_4_Core_MDF_Status_Txt_c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <processMetadataValues>
-                    <name>inputDataType</name>
-                    <value>
-                        <stringValue>Picklist</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>leftHandSideType</name>
-                    <value>
-                        <stringValue>Picklist</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>operatorDataType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>rightHandSideType</name>
-                    <value>
-                        <stringValue>Picklist</stringValue>
-                    </value>
-                </processMetadataValues>
-                <leftValueReference>myVariable_current.Core_MDF_Status_Txt__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>Completed</stringValue>
                 </rightValue>
             </conditions>
             <conditions>
@@ -561,24 +288,13 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>myRule_5_A1</targetReference>
+                <targetReference>myRule_4_A1</targetReference>
             </connector>
-            <label>Status changes to &apos;Completed&apos; or &apos;Error&apos;</label>
+            <label>Status changes to &apos;Error&apos;</label>
         </rules>
     </decisions>
     <description>Send Emails to the Payment Owner when the Payment Run record&apos;s status gets updated to &apos;Error&apos; and &apos;Completed&apos;</description>
-    <formulas>
-        <processMetadataValues>
-            <name>originalFormula</name>
-            <value>
-                <stringValue>[Core_MDF_Payment_Run__c].Id </stringValue>
-            </value>
-        </processMetadataValues>
-        <name>formula_3_myRule_1_A1_5126667105</name>
-        <dataType>String</dataType>
-        <expression>{!myVariable_current.Id}</expression>
-    </formulas>
-    <interviewLabel>Core_MDF_PaymentRun_Status_Notifications-20_InterviewLabel</interviewLabel>
+    <interviewLabel>Core_MDF_PaymentRun_Status_Notifications-1_InterviewLabel</interviewLabel>
     <label>Core_MDF_PaymentRun_Status_Notifications</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -605,8 +321,8 @@
         </value>
     </processMetadataValues>
     <processType>Workflow</processType>
-    <startElementReference>isChangedDecision2_myRule_1_Core_MDF_Status_Txt_c</startElementReference>
-    <status>Obsolete</status>
+    <startElementReference>myVariable_waitStartTimeAssignment</startElementReference>
+    <status>Active</status>
     <variables>
         <name>myVariable_current</name>
         <dataType>SObject</dataType>
@@ -622,5 +338,15 @@
         <isInput>true</isInput>
         <isOutput>false</isOutput>
         <objectType>Core_MDF_Payment_Run__c</objectType>
+    </variables>
+    <variables>
+        <name>myVariable_waitStartTimeVariable</name>
+        <dataType>DateTime</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <elementReference>$Flow.CurrentDateTime</elementReference>
+        </value>
     </variables>
 </Flow>

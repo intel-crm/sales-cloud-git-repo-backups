@@ -5,7 +5,6 @@ Modification Log :
 * Developer                         Date                   Description
 * ----------------------------------------------------------------------------                 
 * Sriranjini                      03/02/2020                 Created
-* System.assert()--> statement Added By Hassan Khan 01-02-2024 
 *****************************************************************************************************/
 @isTest
 public class Core_IPS_AddDefault_CaseOwner_Test {
@@ -156,7 +155,8 @@ public class Core_IPS_AddDefault_CaseOwner_Test {
         PageReference pageRef5 = testCon.saveAndRedirect();
         PageReference pageRef6 = testCon.AddSelectedUsers();
         testCon.removeDefaultCaseOwner();
-        //system.assertNotEquals(pageRef5, null, 'Page Ref should not be null');              
+        system.debug(' testCon.productId'+ testCon.productId);       
+        system.assertNotEquals(pageRef5, null, 'Page Ref should not be null');              
         
         Core_IPS_AddDefault_CaseOwner_Controller testConpartner = new Core_IPS_AddDefault_CaseOwner_Controller();
         testConpartner.sortHeader = new Core_SortedGrid_ColumnHeader('FirstName');
@@ -174,7 +174,8 @@ public class Core_IPS_AddDefault_CaseOwner_Test {
         PageReference pageRef55 = testConpartner.saveAndRedirect();
         PageReference pageRef66 = testConpartner.AddSelectedUsers();
         testConpartner.removeDefaultCaseOwner();
-        //system.assertNotEquals(pageRef5, null, 'Page Ref should not be null');
+        system.debug(' testConpartner.productId'+ testConpartner.productId);     
+        system.assertNotEquals(pageRef5, null, 'Page Ref should not be null');
         
         Core_IPS_AddDefault_CaseOwner_Controller testConQueue= new Core_IPS_AddDefault_CaseOwner_Controller();
         testConQueue.sortHeader = new Core_SortedGrid_ColumnHeader('FirstName');
@@ -189,8 +190,9 @@ public class Core_IPS_AddDefault_CaseOwner_Test {
         PageReference pageRef555 = testConQueue.saveAndRedirect();
         PageReference pageRef666 = testConQueue.AddSelectedUsers();
         testConpartner.removeDefaultCaseOwner();
+        system.debug(' testConQueue.productId'+ testConQueue.productId);
         Test.stopTest();
-        System.assert(testGroup.id != null, true);
+        system.assertNotEquals(pageRef5, null, 'Page Ref should not be null');
     }
        
 }

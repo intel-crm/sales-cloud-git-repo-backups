@@ -14,11 +14,11 @@
     gotoURL : function(component, event, helper) {
         //Set the Session data
        //Set CIM ID value
-        window.sessionStorage.setItem('sCimId', component.get("v.cimId")); 
+        window.sessionStorage.setItem('sCimId', encryptedCimId); 
         console.log("scimId:" + component.get("v.cimId"));
         
         //Set Account ID value
-        window.sessionStorage.setItem('sAccountId', component.get("v.recordId")); 
+        window.sessionStorage.setItem('sAccountId', accountId); 
         console.log("sAccountId:" + component.get("v.recordId"));
         
         //Set the target source value to track the user click

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>Clone CP</label>
+    <optionsCreateFeedItem>false</optionsCreateFeedItem>
+    <quickActionLayout>
+        <layoutSectionStyle>TwoColumnsLeftToRight</layoutSectionStyle>
+        <quickActionLayoutColumns/>
+        <quickActionLayoutColumns/>
+    </quickActionLayout>
+    <targetObject>SBQQ__Quote__c</targetObject>
+    <targetParentField>SBQQ__OriginalQuote__c</targetParentField>
+    <targetRecordType>SBQQ__Quote__c.PSG_Quote_Contract_Pricing</targetRecordType>
+    <type>Create</type>
+</QuickAction>

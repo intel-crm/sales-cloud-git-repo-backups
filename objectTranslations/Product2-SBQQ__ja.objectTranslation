@@ -90,10 +90,6 @@
         <name>Core_End_of_Intel_Service_Date__c</name>
     </fields>
     <fields>
-        <label><!-- End of Intel Service Flag --></label>
-        <name>Core_End_of_Intel_Service_Flag__c</name>
-    </fields>
-    <fields>
         <label><!-- Expiration Date --></label>
         <name>Core_Expiration_Date__c</name>
     </fields>
@@ -190,6 +186,10 @@
         <name>Core_Item_Orderable_Ind__c</name>
     </fields>
     <fields>
+        <label><!-- Package --></label>
+        <name>Core_Item_Package_Txt__c</name>
+    </fields>
+    <fields>
         <help><!-- Determines if product is available for DPA/ALN --></help>
         <label><!-- Price Auth --></label>
         <name>Core_Item_Price_Authorization_Ind__c</name>
@@ -216,14 +216,6 @@
     <fields>
         <label><!-- Sub Component Category --></label>
         <name>Core_Item_Sub_Component_Category_Nm__c</name>
-    </fields>
-    <fields>
-        <label><!-- Line Of Business Description --></label>
-        <name>Core_Line_Of_Business_Description__c</name>
-    </fields>
-    <fields>
-        <label><!-- Line of Business --></label>
-        <name>Core_Line_of_Business__c</name>
     </fields>
     <fields>
         <label><!-- Max TDP --></label>
@@ -262,6 +254,10 @@
     <fields>
         <label><!-- Platform EPM ID --></label>
         <name>Core_Platform_EPM_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Platform Eligibility_EOL --></label>
+        <name>Core_Platform_Eligibility__c</name>
     </fields>
     <fields>
         <label><!-- Platform Name --></label>
@@ -356,14 +352,6 @@
         <name>Core_Product_Type__c</name>
     </fields>
     <fields>
-        <label><!-- Profit Center Description --></label>
-        <name>Core_Profit_Center_Description__c</name>
-    </fields>
-    <fields>
-        <label><!-- Profit Center --></label>
-        <name>Core_Profit_Center__c</name>
-    </fields>
-    <fields>
         <label><!-- Sales Assist Is EOL --></label>
         <name>Core_SA_Is_EOL__c</name>
     </fields>
@@ -385,6 +373,11 @@
         <name>Core_Sales_Visible_Flag__c</name>
     </fields>
     <fields>
+        <label><!-- Solution Area --></label>
+        <name>Core_Solution_Area__c</name>
+        <relationshipLabel><!-- Products --></relationshipLabel>
+    </fields>
+    <fields>
         <label><!-- Stable Image Platform Program Version --></label>
         <name>Core_StableImagePlatformProgVer_Ind__c</name>
     </fields>
@@ -399,10 +392,6 @@
     <fields>
         <label><!-- iPaaS Load ID --></label>
         <name>Core_iPaaS_Load_ID__c</name>
-    </fields>
-    <fields>
-        <label><!-- Deactivation Date --></label>
-        <name>Deactivation_Date__c</name>
     </fields>
     <fields>
         <label><!-- INTUCASE_CodeName --></label>
@@ -956,9 +945,17 @@
         <relationshipLabel>ソースのアップグレード</relationshipLabel>
     </fields>
     <fields>
+        <label><!-- Serial_Number --></label>
+        <name>Sales_Serial_Number__c</name>
+    </fields>
+    <fields>
         <label><!-- UCASE_CodeName --></label>
         <name>UCASE_CodeName__c</name>
     </fields>
+    <recordTypes>
+        <label><!-- Tools Product --></label>
+        <name>Tools_Product</name>
+    </recordTypes>
     <validationRules>
         <errorMessage><!-- Once set to Yes, IPS Visible Flag (Internal) cannot be reverted. Press Cancel to Exit. --></errorMessage>
         <name>Core_IPS_Cannot_Revert_IPS_Visible</name>
@@ -970,6 +967,10 @@
     <validationRules>
         <errorMessage><!-- Cannot Edit Name field --></errorMessage>
         <name>Core_Prevent_IPS_OrgAdm_Name_Edit</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You cannot edit PSG data --></errorMessage>
+        <name>Core_Prevent_Non_PSG_Usr_Product_Fields</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- You cannot edit non-PSG records, Please contact the support team for any access related help --></errorMessage>

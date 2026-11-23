@@ -1,18 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
     <sharingCriteriaRules>
-        <fullName>PRM_Account_Request_Queue_Sharing_with_IPA_Admins</fullName>
-        <accessLevel>Read</accessLevel>
-        <description>To share Partner Account Request with IPA Admins</description>
-        <label>PRM_Account_Request_Queue_Sharing_with_IPA_Admins</label>
+        <fullName>Test_Data_Opps</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Test Data Opps</label>
         <sharedTo>
-            <group>IPA_All_Intel_Admin_Users</group>
+            <group>Data_Ops_Test</group>
         </sharedTo>
         <criteriaItems>
-            <field>Process_Type__c</field>
+            <field>Status__c</field>
             <operation>equals</operation>
-            <value>Partner</value>
+            <value>New</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
+    <sharingOwnerRules>
+        <fullName>Sales_Reps_Account_request</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Sales Reps Account request</label>
+        <sharedTo>
+            <group>Account_Request_Group_Opportunity</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Account_Request_Group_Opportunity</group>
+        </sharedFrom>
+    </sharingOwnerRules>
 </SharingRules>

@@ -118,7 +118,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Qualify,Define,Develop,Design,Production Lost,Production Cancelled</value>
+            <value>Qualify,Define,Develop,Design,Design Win,Production Win,Production Lost,Production Cancelled</value>
         </criteriaItems>
         <criteriaItems>
             <column>Account.Core_Sales_Groups__c</column>
@@ -171,6 +171,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

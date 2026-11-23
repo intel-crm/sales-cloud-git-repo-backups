@@ -40,12 +40,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <displayNameOverride>Campaign Industry</displayNameOverride>
-            <field>Core_MDF_Industry_Nm__c</field>
-            <table>Campaign</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <displayNameOverride>Campaign Description</displayNameOverride>
             <field>Description</field>
             <table>Campaign</table>
@@ -136,17 +130,12 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Budget_Type_txt__c</field>
+            <table>Campaign</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_Budget_Amount_amt__c</field>
-            <table>Campaign</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Is_Opal__c</field>
-            <table>Campaign</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Budget_Cap__c</field>
             <table>Campaign</table>
         </columns>
         <columns>
@@ -156,63 +145,37 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Budget_Type_txt__c</field>
+            <field>Core_MDF_Spending_Cap_Amt__c</field>
             <table>Campaign</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Approver_Date__c</field>
+            <field>Core_MDF_RMF_Delta_Budget_Amt__c</field>
             <table>Campaign</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Custom_Reimbursement_Rate_pct__c</field>
+            <field>Core_MDF_Supports_legacy_program__c</field>
             <table>Campaign</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_ReimbursementRate_pct__c</field>
+            <field>Core_MDF_Strategic_Marketing_Fund_Ind__c</field>
             <table>Campaign</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Campaign_Scoring_txt__c</field>
+            <field>Core_MDF_Ultimate_Account_txt__c</field>
             <table>Campaign</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Account_Based_Ind__c</field>
+            <field>SWS_IsMarketingRecord__c</field>
             <table>Campaign</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Proposal_Based_Ind__c</field>
-            <table>Campaign</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <displayNameOverride>Campaign Activity Category -&gt; Activity Type</displayNameOverride>
-            <field>Core_MDF_Activity_Category_Type__c</field>
-            <table>Campaign</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_IPA_Priority_nm__c</field>
-            <table>Campaign</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Focus_Area_nm__c</field>
-            <table>Campaign</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Initiative_nm__c</field>
-            <table>Campaign</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Host_Region_cd__c</field>
+            <field>MKT_Custom_Links__c</field>
             <table>Campaign</table>
         </columns>
         <masterLabel>Campaigns</masterLabel>

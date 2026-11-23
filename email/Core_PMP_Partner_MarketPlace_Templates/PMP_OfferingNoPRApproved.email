@@ -1,0 +1,11 @@
+<messaging:emailTemplate subject="Notification:  Your Marketplace Offering has been approved and is waiting for pre-release product/s to be released." recipientType="User" relatedToType="PMP_Partner_Offering__c">
+
+<messaging:htmlEmailBody >
+    
+        <c:PMP_OfferingNOPRApproved offeringRecordId="{!relatedTo.Id}"/>
+    
+    </messaging:htmlEmailBody>
+
+         
+
+</messaging:emailTemplate>

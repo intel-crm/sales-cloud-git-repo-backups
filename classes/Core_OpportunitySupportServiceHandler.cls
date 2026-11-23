@@ -60,6 +60,7 @@ public without sharing class Core_OpportunitySupportServiceHandler{
                 if(geoUserMap.containskey(keyformOppSuport_TSS))
                     approvers = geoUserMap.get(keyformOppSuport_TSS);
                 //if(geoUserMap.containskey(keyformOppSuport))
+                
                 if(approvers.size() > 0)
                 {
                     //List<id> approvers = geoUserMap.get(keyformOppSuport); 

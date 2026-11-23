@@ -9,14 +9,11 @@
 ******************************************************************************************************************************************************************************************************/
 @isTest
 public class PMP_NUC_Attribute_English_Test {
-    //IPA 2.0- US-TWC729-7980
-    /*testMethod static void testNUCAttributeEnglish(){
-   
+    
+    testMethod static void testNUCAttributeEnglish(){
         PMP_NUC_Attribute_English nucAttrEng = new PMP_NUC_Attribute_English();
         PMP_NUC_CreateJunctionData_Test.createNUCJunctionDataMetTest();
-        PMP_ParseNUCJSON.languageCode = 'en_US';
-        List<Database.UpsertResult> response = nucAttrEng.processData('NUC_Attribute_Test');
-        system.assertNotEquals(response, null);
-    }*/
+        nucAttrEng.processData('NUC_Attribute_Test');
+    }
 
 }

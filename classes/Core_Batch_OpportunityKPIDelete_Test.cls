@@ -28,7 +28,6 @@ public class Core_Batch_OpportunityKPIDelete_Test
         insert lstOpptyNewKPI;
         
         
-        
         Test.startTest();
             
             Core_Batch_OpportunityKPIDelete obj = new Core_Batch_OpportunityKPIDelete(lstOpptyNewKPI[0].Core_Opportunity_KPI_Batch_ID__c);

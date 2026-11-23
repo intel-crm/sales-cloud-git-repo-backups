@@ -9,10 +9,6 @@
         <value>ACM Integration Message Queues</value>
     </caseValues>
     <fields>
-        <label><!-- Additional Content --></label>
-        <name>Additional_Content__c</name>
-    </fields>
-    <fields>
         <label><!-- Content Type --></label>
         <name>Content_Type__c</name>
     </fields>

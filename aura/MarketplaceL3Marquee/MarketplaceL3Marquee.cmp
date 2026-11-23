@@ -1,25 +1,24 @@
-<aura:component extends="c:IPAReduxConnectorLWC" implements="forceCommunity:availableForAllPageTypes,force:hasRecordId,flexipage:availableForRecordHome" access="global" controller="PMP_SearchMarqueeDetailController">
-    
-    <!--Gireesh:US716270: Changed from baseComponent from MarketplaceRedux  to IPAReduxConnectorLWC-->
+<aura:component extends="c:MarketplaceBaseComponent" implements="forceCommunity:availableForAllPageTypes,force:hasRecordId,flexipage:availableForRecordHome" access="global" 
+                controller="PMP_SearchMarqueeDetailController">
     
     <aura:attribute name="recordId" type="string" />
     <aura:attribute name="debugMode" type="boolean" default="true" />
     <aura:attribute name="previewMode" type="boolean" default="false" />
     <aura:attribute name="storeName" type="string" default="Settings" />
-    
+   
     <aura:attribute name="partner" type="object" />
     <aura:attribute name="product" type="object" />
     <aura:attribute name="productInfo" type="object" />
     <aura:attribute name="breadcrumbData" type="object[]" />
-   <aura:attribute name="showBreadcrumbs" type="boolean" default="true" />
+    <aura:attribute name="showBreadcrumbs" type="boolean" default="true" />
     <aura:attribute name="showSignIn" type="boolean" default="false" />
     <aura:attribute name="userLoggedIn" type="boolean" default="false" description="Indicates if the user is logged in"/>
     <aura:attribute name="displayType" type="string" default="product" />
     <aura:attribute name="lastUpdatedDate" type="DateTime" />
     <aura:attribute name="moreModalOpen" type="boolean" default="false" />
     <aura:attribute name="isPublished" type="boolean" default="false" />
-    <aura:attribute name="loginUrl" type="string" description="URL for login link"/>
 
+    
     <aura:handler event="force:refreshView" action="{!c.isRefreshed}"/> 
     <!-- LABELS -->
     <aura:attribute name="bookmarkLabel"      type="String"   default="{!$Label.c.PMP_L3_Marquee_Bookmark}" />
@@ -27,168 +26,152 @@
     <aura:attribute name="moreLabel"          type="String"   default="{!$Label.c.PMP_L3_Marquee_More}" />
     <aura:attribute name="closeLabel"         type="String"   default="{!$Label.c.PMP_L3_Marquee_Close}" />
     <aura:attribute name="lastupdatedLabel"   type="String"   default="{!$Label.c.PMP_L3_Marquee_Last_Updated}" />
-    <aura:attribute name="addYourLogoLabel"   type="String"   default="{!$Label.c.PMP_Add_Your_Logo}" />
     
     <aura:attribute name="bookmarkUrl" type="string" />
     <aura:attribute name="bookmarkCopied" type="boolean" default="false" />
     <aura:attribute name="bookmarkCopiedTooltip" type="string" />
-    <!--<aura:attribute name="pageNotFound" type="boolean" default="true" />--> <!-- Gireesh -->
     
     <aura:attribute name="showEditPencil" type="boolean" default="false" />
-    <c:coreIntcSso aura:id="ssoLibrary" />
-
+    <c:IntelSignInRedirectLibrary aura:id="redirectLibrary" />
     
     <!-- Analytics -->
     <aura:attribute name="analyticsPageType" type="string" description="PageType for analytics" /> 
-    <c:ipaAnalyticsService aura:id="analyticsLibrary" />
-
-    <!-- Breadcrumbs -->
-    <c:coreIntcBreadcrumbs aura:id="coreIntcBreadcrumbs"></c:coreIntcBreadcrumbs>
-    <c:ipaBreadcrumbsServiceMarketplace aura:id="ipaBreadcrumbsServiceMarketplace"></c:ipaBreadcrumbsServiceMarketplace>
-
+	<c:MarketplaceAnalyticsLibrary aura:id="analyticsLibrary" />
+        
     <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
     
-
     <!-- Offering Detail -->
-    <!-- <aura:if isTrue="{!v.pageNotFound}">-->
-        <div class="{! (v.previewMode ? ' preview' : '')}">
-            <div class="container fillHeight">
-                <lightning:layout class="fillHeight" multipleRows="true">
-                    <aura:if isTrue="{!and(v.showSignIn, not(v.userLoggedIn))}">
-                        <div class="slds-show_medium slds-text-align_right signIn">
-                            {!$Label.c.PMP_L2_Marquee_Intel_Prartner_Program_Member}<br/>
-                            <a class="color-pale-blue" href="{!'/'+ v.loginUrl}" onclick="{!c.handleSignIn}">{!$Label.c.PMP_Sign_In}</a> | <c:IntelLink class="color-pale-blue" url="{!$Label.c.PMP_Partner_Program_Url}" openInBlank="true">{!$Label.c.PMP_Learn_More}</c:IntelLink>
+    <div class="{! (v.previewMode ? ' preview' : '')}">
+        <div class="container fillHeight">
+            <lightning:layout class="fillHeight" multipleRows="true">
+                <aura:if isTrue="{!and(v.showSignIn, not(v.userLoggedIn))}">
+                    <div class="slds-show_medium slds-text-align_right signIn">
+                      {!$Label.c.PMP_L2_Marquee_Intel_Prartner_Program_Member}<br/>
+                      <a class="color-pale-blue" href="{!$Label.c.PMP_SSO_MP_Login_URL}" onclick="{!c.handleSignIn}">{!$Label.c.PMP_Sign_In}</a> | <c:IntelLink class="color-pale-blue" url="{!$Label.c.PMP_Partner_Program_Url}" openInBlank="true">{!$Label.c.PMP_Learn_More}</c:IntelLink>
+                    </div>
+                    <div class="slds-hide_medium signIn slds-p-vertical_medium slds-text-align_center">
+                      {!$Label.c.PMP_L2_Marquee_Intel_Prartner_Program_Member}
+                      <a class="color-pale-blue slds-m-left_medium" href="{!$Label.c.PMP_SSO_MP_Login_URL}" onclick="{!c.handleSignIn}">{!$Label.c.PMP_Sign_In}</a> | <c:IntelLink class="color-pale-blue" url="{!$Label.c.PMP_Partner_Program_Url}" openInBlank="true">{!$Label.c.PMP_Learn_More}</c:IntelLink>
+                    </div>
+                </aura:if>
+                
+                <aura:if isTrue="{!v.showBreadcrumbs}">
+                    <lightning:layoutItem size="12" class="breadcrumb-container">
+                        <div class="slds-show_medium slds-m-top_medium breadCrumb">
+                            <c:MarketplaceBreadcrumb breadcrumbData="{!v.breadcrumbData}" theme="dark" previewMode="{!v.previewMode}"/>
                         </div>
-                        <div class="slds-hide_medium signIn slds-p-vertical_medium slds-text-align_center">
-                            {!$Label.c.PMP_L2_Marquee_Intel_Prartner_Program_Member}
-                            <a class="color-pale-blue slds-m-left_medium" href="{!v.loginUrl}" onclick="{!c.handleSignIn}">{!$Label.c.PMP_Sign_In}</a> | <c:IntelLink class="color-pale-blue" url="{!$Label.c.PMP_Partner_Program_Url}" openInBlank="true">{!$Label.c.PMP_Learn_More}</c:IntelLink>
+                        <div class="slds-hide_medium slds-m-top_medium">
+                            <c:MarketplaceBreadcrumb breadcrumbData="{!v.breadcrumbData}" theme="dark" previewMode="{!v.previewMode}"/>
                         </div>
-                    </aura:if>
-                    <!--<input aura:id="bookmarkUrl" value="{!v.bookmarkUrl}" style=""/>-->
-                    
-                    <lightning:layoutItem size="12" mediumDeviceSize="9" class="textContainer smallDevicePadding slds-text-align_left">
-                        <lightning:layout class="fillHeight" verticalAlign="center" multipleRows="true">
-                            <lightning:layoutItem size="12">
-                                <lightning:layout class="headerContainer" verticalAlign="center">
+                    </lightning:layoutItem>
+                </aura:if>
+                
+                <!--<input aura:id="bookmarkUrl" value="{!v.bookmarkUrl}" style=""/>-->
+                
+                <lightning:layoutItem size="12" mediumDeviceSize="9" class="textContainer smallDevicePadding slds-text-align_left">
+                    <lightning:layout class="fillHeight" verticalAlign="center" multipleRows="true">
+                        <lightning:layoutItem size="12">
+                            <lightning:layout class="headerContainer" verticalAlign="center">
+                                <aura:if isTrue="{!v.displayType == 'partner'}">
+                                    <lightning:layoutItem size="3" class="slds-m-right_large slds-show_medium partnerImage">
+                                       	<div class="imageWrapper">
+                                            <img class="" src="{!v.partner.imageUrl}" />
+                                        </div>
+                                        <aura:if isTrue="{!v.partner}">
+                                        <c:MarketplaceEditPencilCmp visible="{!v.showEditPencil}" partnerId="{!v.recordId}"></c:MarketplaceEditPencilCmp>
+                                        </aura:if>
+                                        
+                                    </lightning:layoutItem>
+                                </aura:if>
+                                <lightning:layoutItem
+                                                      size="{!v.displayType == 'product' ? '9' : '12'}"
+                                                      mediumDeviceSize="{!v.displayType == 'product' ? '12' : '9'}">
+                                    <h1 class="marquee-header h2">{! v.displayType == 'product' ? v.product[0].PMP_Partner_Offering_Nm__c : v.partner.name }</h1>
+                                    <!-- partner categories -->
                                     <aura:if isTrue="{!v.displayType == 'partner'}">
-                                        <lightning:layoutItem size="3" class="slds-m-right_large slds-show_medium partnerImage">
-                                            <aura:if isTrue="{!v.partner.publishedStatus == 'Draft'}">
-                                                <!--<aura:if isTrue="{!v.partner.isLdrOeEmployee==false}">-->
-                                                    <aura:if isTrue="{!and(v.partner.isLdrOeEmployee == false, v.partner.hasRealImage != true)}">
-                                                        <c:MarketplaceEditPencilCmp visible="{!v.showEditPencil}" partnerId="{!v.recordId}" accessibilityLabel="{!v.addYourLogoLabel}">
-                                                            <div class="imageWrapper emptyImage">
-                                                                <lightning:icon iconName="utility:add"  size="medium" />
-                                                                <p>{!v.addYourLogoLabel}</p>
-                                                            </div>
-                                                        </c:MarketplaceEditPencilCmp> 
+                                        <div class="slds-m-top_medium fontSizeSmall">
+                                            <aura:iteration items="{!v.partner.categories}" var="cat" indexVar="idx">
+                                                <span>
+                                                    <aura:if isTrue="{!idx != 0}">
+                                                        <span class="slds-m-horizontal_x-small">|</span>
+                                                    </aura:if>
+                                                    <aura:if isTrue="{!cat.searchParams}">
+                                                        <c:IntelLink class="fontPaleBlue" label="{!cat.label}" page="l2" searchParams="{!cat.searchParams}" />
                                                         <aura:set attribute="else">
-                                                            <div class="imageWrapper">
-                                                                <img class="" src="{!v.partner.imageUrl}" />
-                                                            </div>
-                                                            <aura:if isTrue="{!v.partner}">
-                                                            <c:MarketplaceEditPencilCmp visible="{!v.showEditPencil}" partnerId="{!v.recordId}"></c:MarketplaceEditPencilCmp>
-                                                        </aura:if>
+                                                            <span >{!cat.label}</span>
                                                         </aura:set>
                                                     </aura:if>
-                                                
-                                                <aura:set attribute="else">
-                                                    <div class="imageWrapper">
-                                                        <img class="" src="{!v.partner.imageUrl}" />
-                                                    </div>
-                                                        <aura:if isTrue="{!v.partner}">
-                                                            <c:MarketplaceEditPencilCmp visible="{!v.showEditPencil}" partnerId="{!v.recordId}"></c:MarketplaceEditPencilCmp>
-                                                        </aura:if>
-                                                </aura:set>
-                                            </aura:if>                                            
-                                        </lightning:layoutItem>
-                                    </aura:if>
-                                    <lightning:layoutItem
-                                                          size="{!v.displayType == 'product' ? '9' : '12'}"
-                                                          mediumDeviceSize="{!v.displayType == 'product' ? '12' : '9'}">
-                                        <h1 class="marquee-header h2">
-                                            <!-- added pre tag as part of DE83249 -->
-                                           <!-- <pre class="marquee-header h2">-->
-                                            <!-- IPA2.0 + US TWC4497-1631 -->
-                                            <!-- {! v.displayType == 'product' ? v.product[0].PMP_Partner_Offering_Nm__c : v.partner.name } -->
-                                             <!-- {! v.displayType == v.partner.name} -->
-                                              {!v.partner.name}
-                                            <!--Added by Subash for US686679-->
-                                            <aura:if isTrue="{!and(v.partner, v.showEditPencil)}"> 
-                                                <span onclick="{!c.openEditStoreModal}">
-                                                    <lightning:icon iconName="utility:edit" size="x-small" class="pnameCls"/>
+                                                    
                                                 </span>
-                                            </aura:if>
-                                            <!--End for US686679-->
-                                       <!-- </pre>-->
-                                        </h1>
-                                        
-                                        <!-- partner categories -->
-                                        <aura:if isTrue="{!v.displayType == 'partner'}">
-                                            <div class="slds-m-top_medium fontSizeSmall">
-                                                <aura:iteration items="{!v.partner.categories}" var="cat" indexVar="idx">
-                                                    <span>
-                                                        <aura:if isTrue="{!idx != 0}">
-                                                            <span class="slds-m-horizontal_x-small">|</span>
-                                                        </aura:if>
-                                                        <aura:if isTrue="{!cat.searchParams}">
-                                                            <c:IntelLink class="fontPaleBlue" label="{!cat.label}" page="l2" searchParams="{!cat.searchParams}" />
-                                                            <aura:set attribute="else">
-                                                                <span >{!cat.label}</span>
-                                                            </aura:set>
-                                                        </aura:if>
-                                                        
-                                                    </span>
-                                                </aura:iteration>
-                                            </div>
-                                        </aura:if>
-                                    </lightning:layoutItem>
-                                    
-                                    <!-- mobile -->
-                                    <!-- Bookmark and Add to Compare for mobile will be implemented in a later release: MGDANIES 9/25 -->
-                                    
-                                </lightning:layout>
-                                <aura:if isTrue="{!v.displayType == 'product'}">
-                                    <!--Gireesh:US685027 -->
-                                    <aura:if isTrue="{! not(empty(v.product))}">
-                                        <div class="slds-p-vertical_small">
-                                            <span class="slds-m-right_x-small">{!v.byLabel}</span>
-                                            
-                                            <c:IntelLink class="color-pale-blue slds-m-right_large" label="{!v.product[0].PMP_Company_Id__r.Name}" url="{! v.product.partnerLink}" />
-                                            
-                                            <span class="heading-14 color-white lastUpdated">
-                                                <!-- REFERENCE: DATETIME DOCS: https://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html -->
-                                                {!v.lastupdatedLabel}:  <ui:outputDateTime value="{!v.lastUpdatedDate}" format="M/d/yy hh:mm a"/>
-                                            </span>
+                                            </aura:iteration>
                                         </div>
-                                   	</aura:if>
-                                    <!-- IPA2.0 + US TWC4497-1631 -->
-                                    <!-- <p class="shortDescription">{!v.product[0].PMP_Partner_Offering_Tag_Line_Txt__c}</p> -->
-                                    
-                                    
-                                    
-                                </aura:if>
+                                    </aura:if>
+                                </lightning:layoutItem>
                                 
-                            </lightning:layoutItem>
-                        </lightning:layout>
-  
-                    </lightning:layoutItem>
+                                <!-- mobile -->
+                                <!-- Bookmark and Add to Compare for mobile will be implemented in a later release: MGDANIES 9/25 -->
+
+                            </lightning:layout>
+                            <aura:if isTrue="{!v.displayType == 'product'}">
+                                <div class="slds-p-vertical_small">
+                                    <span class="slds-m-right_x-small">{!v.byLabel}</span>
+                                    
+                                    <c:IntelLink class="color-pale-blue slds-m-right_large" label="{!v.product[0].PMP_Company_Id__r.Name}" url="{! v.product.partnerLink}" />
+                                                        
+                                    <span class="heading-14 color-white lastUpdated">
+                                        <!-- REFERENCE: DATETIME DOCS: https://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html -->
+                                        {!v.lastupdatedLabel}:  <ui:outputDateTime value="{!v.lastUpdatedDate}" format="M/d/yy hh:mm a"/>
+                                    </span>
+                                </div>
+                                <p class="shortDescription">{!v.product[0].PMP_Partner_Offering_Tag_Line_Txt__c}</p>
+                                
+                                    
+                                
+                            </aura:if>
+                            
+                        </lightning:layoutItem>
+                    </lightning:layout>
                     
+                    <aura:if isTrue="{!v.displayType == 'partner'}">
+                        <!--<div class="slds-m-top_large slds-hide_medium">
+              <span class="bookmarkButtonBlue pointer slds-p-vertical_x-small slds-p-horizontal_medium tooltip tooltipRight"
+                onclick="{!c.handleBookmark}">
+                {! v.bookmarkLabel }
+                <div class="{!'tooltip-container' + (v.bookmarkCopied ? ' fade' : '')}">
+                  <div class="tooltip-content slds-p-vertical_x-small slds-p-horizontal_small">
+                    {! v.bookmarkCopiedTooltip }
+                  </div>
+                </div>
+              </span>
+            </div> --> <!-- Commented since Bookmark is not MVP : Prabuddh -->
+                    </aura:if>
                     
-                    <!-- Desktop -->
-                    <lightning:layoutItem size="12" mediumDeviceSize="3" class="{!join(' ', 'slds-show_medium slds-text-align_right slds-align-bottom checkbox addToCompare', v.displayType)}">
-                     <lightning:layoutItem size="12" class="padding-desktop-bottom-medium slds-m-left_none slds-p-right_xx-small">
-                        <aura:if isTrue="{!and(v.displayType == 'product', v.isPublished)}">
-                          <div class="marquee-checkbox-container">
-                            <c:ipaCompareCheckbox product="{!v.productInfo}" textVariant="inverse"/>
-                          </div>                                      
-                      </aura:if>
-                       </lightning:layoutItem>
-                    </lightning:layoutItem>
-                </lightning:layout>
-            </div>
+                </lightning:layoutItem>
+                
+                
+                <!-- Desktop -->
+                <lightning:layoutItem size="12" mediumDeviceSize="3" class="{!join(' ', 'slds-show_medium bookmarkHeight slds-text-align_right', v.displayType)}">
+                    <lightning:layout class="fillHeight" verticalAlign="end" multipleRows="true">
+                        <!-- <lightning:layoutItem size="12" class="slds-m-bottom_large slds-text-align_right">
+              <span class="bookmarkButtonBlue pointer slds-p-vertical_x-small slds-p-horizontal_large tooltip"
+                onclick="{!c.handleBookmark}">
+                {! v.bookmarkLabel }
+                <div class="{!'tooltip-container' + (v.bookmarkCopied ? ' fade' : '')}">
+                  <div class="tooltip-content slds-p-vertical_x-small slds-p-horizontal_small">
+                    {! v.bookmarkCopiedTooltip }
+                  </div>
+                </div>
+              </span>
+            </lightning:layoutItem> --> <!-- Commented since Bookmark is not MVP : Prabuddh -->
+                        <lightning:layoutItem size="12" class="slds-m-bottom_xx-large">
+                            <aura:if isTrue="{!and(v.displayType == 'product', v.isPublished)}">
+                                <c:MarketplaceCompareCheckbox item="{!v.productInfo}"/>
+                            </aura:if>
+                        </lightning:layoutItem>
+                    </lightning:layout>
+                </lightning:layoutItem>
+            </lightning:layout>
         </div>
-         <!--<aura:set attribute="else">
-             <p class="shortDescription">Page not found</p>
-        </aura:set>
-    </aura:if>-->
+    </div>
+    
 </aura:component>

@@ -86,16 +86,22 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>New</actionName>
-        <type>Default</type>
+        <comment>to override standard page</comment>
+        <content>Sales_CreateNewHost</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>LightningComponent</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>New</actionName>
-        <formFactor>Large</formFactor>
-        <type>Default</type>
+        <comment>to override standard page</comment>
+        <content>Sales_CreateNewHost</content>
+        <formFactor>Small</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>LightningComponent</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>New</actionName>
-        <formFactor>Small</formFactor>
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
@@ -128,28 +134,26 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <type>Default</type>
-    </actionOverrides>
-    <actionOverrides>
-        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Host_Information_Record_Page</content>
         <formFactor>Large</formFactor>
-        <type>Default</type>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Host_Information_Record_Page</content>
         <formFactor>Small</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
         <type>Default</type>
     </actionOverrides>
     <allowInChatterGroups>false</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
-    <compactLayouts>
-        <fullName>Compact_Layout_for_Lightning</fullName>
-        <fields>Name</fields>
-        <fields>Sales_Computer_Name_Txt__c</fields>
-        <fields>Sales_Computer_Type__c</fields>
-        <fields>Sales_Contact__c</fields>
-        <label>Compact Layout for Lightning</label>
-    </compactLayouts>
     <deploymentStatus>Deployed</deploymentStatus>
     <enableActivities>true</enableActivities>
     <enableBulkApi>true</enableBulkApi>
@@ -161,6 +165,19 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>License__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Lookup to get license object</description>
+        <label>License</label>
+        <referenceTo>Sales_License__c</referenceTo>
+        <relationshipLabel>Host Information</relationshipLabel>
+        <relationshipName>Host_Information</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
     <fields>
         <fullName>Sales_Account__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
@@ -245,6 +262,11 @@
                     <fullName>GUARD ID</fullName>
                     <default>false</default>
                     <label>GUARD ID</label>
+                </value>
+                <value>
+                    <fullName>Disk ID</fullName>
+                    <default>false</default>
+                    <label>Disk ID</label>
                 </value>
             </valueSetDefinition>
             <valueSettings>
@@ -426,6 +448,55 @@
     </fields>
     <label>Host Information</label>
     <listViews>
+        <fullName>Active_Computers</fullName>
+        <columns>Sales_Computer_Name_Txt__c</columns>
+        <columns>NAME</columns>
+        <columns>Sales_License_Type__c</columns>
+        <columns>Sales_Computer_Type__c</columns>
+        <columns>Sales_isActiveHost__c</columns>
+        <columns>Sales_Primary_Admin_Email__c</columns>
+        <columns>Sales_Companion_Server1_Txt__c</columns>
+        <columns>Sales_Companion_Server2_Txt__c</columns>
+        <columns>Sales_Redundant_Server1_Txt__c</columns>
+        <columns>Sales_Redundant_Server2_Txt__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Sales_isActiveHost__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>Active Computers</label>
+        <sharedTo>
+            <group>AGS_PSG_External_License_Users</group>
+            <group>AGS_PSG_Internal_LicenseAdmin</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Active_Computers_INTERNAL</fullName>
+        <columns>Sales_Computer_Name_Txt__c</columns>
+        <columns>NAME</columns>
+        <columns>Sales_License_Type__c</columns>
+        <columns>Sales_Computer_Type__c</columns>
+        <columns>Sales_isActiveHost__c</columns>
+        <columns>Sales_Contact__c</columns>
+        <columns>Sales_Primary_Admin_Name__c</columns>
+        <columns>Sales_Primary_Admin_Email__c</columns>
+        <columns>Sales_Companion_Server1_Txt__c</columns>
+        <columns>Sales_Companion_Server2_Txt__c</columns>
+        <columns>Sales_Redundant_Server1_Txt__c</columns>
+        <columns>Sales_Redundant_Server2_Txt__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Sales_isActiveHost__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>Active Computers (INTERNAL)</label>
+        <sharedTo>
+            <group>AGS_PSG_Internal_Users_ReadEdit</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
         <fullName>All</fullName>
         <columns>Sales_Computer_Name_Txt__c</columns>
         <columns>NAME</columns>
@@ -443,10 +514,34 @@
             <operation>equals</operation>
             <value>Sales_Host__c.Sales_NewHost</value>
         </filters>
+        <filters>
+            <field>Sales_Companion_Server1_Txt__c</field>
+            <operation>equals</operation>
+        </filters>
         <label>All Computers</label>
         <sharedTo>
             <group>AGS_PSG_External_License_Users</group>
             <group>AGS_PSG_Internal_LicenseAdmin</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>All_Computers_Int</fullName>
+        <columns>Sales_Computer_Name_Txt__c</columns>
+        <columns>NAME</columns>
+        <columns>Sales_License_Type__c</columns>
+        <columns>Sales_Computer_Type__c</columns>
+        <columns>Sales_isActiveHost__c</columns>
+        <columns>Sales_Contact__c</columns>
+        <columns>Sales_Primary_Admin_Name__c</columns>
+        <columns>Sales_Primary_Admin_Email__c</columns>
+        <columns>Sales_Companion_Server1_Txt__c</columns>
+        <columns>Sales_Companion_Server2_Txt__c</columns>
+        <columns>Sales_Redundant_Server1_Txt__c</columns>
+        <columns>Sales_Redundant_Server2_Txt__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All Computers (INTERNAL)</label>
+        <sharedTo>
+            <group>AGS_PSG_Internal_Users_ReadEdit</group>
         </sharedTo>
     </listViews>
     <nameField>
@@ -459,10 +554,13 @@
     <recordTypes>
         <fullName>Sales_NewHost</fullName>
         <active>true</active>
-        <compactLayoutAssignment>Compact_Layout_for_Lightning</compactLayoutAssignment>
         <label>New Host</label>
         <picklistValues>
             <picklist>Sales_Computer_Type__c</picklist>
+            <values>
+                <fullName>Disk ID</fullName>
+                <default>false</default>
+            </values>
             <values>
                 <fullName>GUARD ID</fullName>
                 <default>false</default>
@@ -507,6 +605,7 @@
         <active>true</active>
         <description>Computer Type can only be Guard Id or NIC ID for Fixed license type computer</description>
         <errorConditionFormula>AND(
+NOT($Setup.PRM_Execution_Controls__c.BypassValidationInTransferAdmin__c),
 ISPICKVAL( Sales_License_Type__c , &apos;FIXED&apos;) ,
 ISPICKVAL( Sales_Computer_Type__c , &quot;HOST ID&quot;)
 ,NOT(ISCHANGED( Sales_Primary_Admin_Email__c )),
@@ -534,6 +633,7 @@ NOT(ISCHANGED( Sales_Primary_Admin_Name__c ))
         <active>true</active>
         <description>Computer Type can either be a NIC ID or a HOST ID for Float license type computer</description>
         <errorConditionFormula>AND(
+NOT($Setup.PRM_Execution_Controls__c.BypassValidationInTransferAdmin__c),
 ISPICKVAL( Sales_License_Type__c , &apos;FLOAT&apos;),
 ISPICKVAL(  Sales_Computer_Type__c , &quot;GUARD ID&quot;)
 ,NOT(ISCHANGED( Sales_Primary_Admin_Email__c )),
@@ -549,21 +649,20 @@ NOT(ISCHANGED( Sales_Primary_Admin_Name__c ))
         <errorConditionFormula>AND(
 ISPICKVAL( Sales_License_Type__c , &apos;FLOAT&apos;),
 OR(
-AND( ISBLANK(Sales_Redundant_Server1_Txt__c) , NOT(ISBLANK(Sales_Redundant_Server2_Txt__c)) ),
-AND( NOT(ISBLANK(Sales_Redundant_Server1_Txt__c)) , ISBLANK(Sales_Redundant_Server2_Txt__c) ),
-NOT( ISBLANK(Sales_Companion_Server1_Txt__c) ),
-NOT( ISBLANK(Sales_Companion_Server2_Txt__c) )
-),
-NOT(ISCHANGED( Sales_Primary_Admin_Email__c )),
+ AND( ISBLANK(Sales_Redundant_Server1_Txt__c) , NOT(ISBLANK(Sales_Redundant_Server2_Txt__c)) ),
+ AND( NOT(ISBLANK(Sales_Redundant_Server1_Txt__c)) , ISBLANK(Sales_Redundant_Server2_Txt__c) )
+
+),NOT(ISCHANGED( Sales_Primary_Admin_Email__c )),
 NOT(ISCHANGED( Sales_Primary_Admin_Name__c ))
 )</errorConditionFormula>
-        <errorMessage>For FLOAT License Type, either none or both Redundant Servers must be added to a host &amp; cannot add Companion Computer for FLOAT license type.</errorMessage>
+        <errorMessage>You must specify both redundant server IDs.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Sales_HostCreation_Validation</fullName>
         <active>true</active>
         <description>This validation rule is created to restrict User in creating Host record from New Button at Lookup field.</description>
         <errorConditionFormula>AND(ISNEW(),NOT(Sales_Host_Is_Created_From_Custom_Page__c),NOT(ISCLONE()))</errorConditionFormula>
+        <errorDisplayField>Sales_Account__c</errorDisplayField>
         <errorMessage>You are not authorized to add a New Host from this screen.</errorMessage>
     </validationRules>
     <validationRules>
@@ -685,8 +784,7 @@ NOT(ISCHANGED( Sales_Primary_Admin_Name__c )))</errorConditionFormula>
         <fullName>Temporary_NIC_ID_Validation_Fixed</fullName>
         <active>true</active>
         <description>Temporary NIC ID cannot be set for Fixed license type computers</description>
-        <errorConditionFormula>IF(ISPICKVAL( Sales_License_Type__c , &apos;FIXED&apos;)&amp;&amp; (NOT(ISBLANK(Temporary_NIC_ID__c)) &amp;&amp; NOT(ISCHANGED( Sales_Primary_Admin_Email__c )) &amp;&amp;
-NOT(ISCHANGED( Sales_Primary_Admin_Name__c ))),true , false)</errorConditionFormula>
+        <errorConditionFormula>IF(ISPICKVAL( Sales_License_Type__c , &apos;FIXED&apos;)&amp;&amp; (NOT(ISBLANK(Temporary_NIC_ID__c)) &amp;&amp; NOT(ISCHANGED( Sales_Primary_Admin_Email__c ))),true , false)</errorConditionFormula>
         <errorDisplayField>Temporary_NIC_ID__c</errorDisplayField>
         <errorMessage>Temporary NIC ID is only for Float license type Hosts, to generate temporary license.</errorMessage>
     </validationRules>
@@ -704,4 +802,16 @@ NOT(ISCHANGED( Sales_Primary_Admin_Name__c ))
         <errorMessage>Please enter temporary NIC ID (Temporary NIC ID should be of 12 hexadecimal characters).</errorMessage>
     </validationRules>
     <visibility>Public</visibility>
+    <webLinks>
+        <fullName>Sales_ComputerType_helpLink</fullName>
+        <availability>online</availability>
+        <displayType>link</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Help on how to determine Computer Type - Altera Software Licenses (intel.com)</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <url>https://www.intel.com/content/www/us/en/programmable/support/support-resources/download/licensing/lic-q2se_licenses.html</url>
+    </webLinks>
 </CustomObject>

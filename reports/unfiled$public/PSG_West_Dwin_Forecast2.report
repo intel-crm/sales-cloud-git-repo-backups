@@ -120,7 +120,7 @@
         <field>Opportunity.Core_Business_Unit_Territory__c</field>
     </columns>
     <filter>
-        <booleanFilter>(1 AND 2 AND 3 AND (4 OR 5))</booleanFilter>
+        <booleanFilter>(1 AND 2 AND 3 AND (4 OR 5)) AND 6</booleanFilter>
         <criteriaItems>
             <column>STAGE_NAME</column>
             <columnToColumn>false</columnToColumn>
@@ -147,14 +147,21 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Adam Prengler,Amy Guesner,Michael Rather,Sunil Gupta,Brian Mink,Jeffrey Holmbeck,Marci Shihinski,Owen DeLeon</value>
+            <value>Adam Prengler,Amy Guesner,Michael Rather,Sunil Gupta,Brian Mink,Jeffrey Holmbeck,Marci Shihinski,James Hardy</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Technical_Owner_Manager__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Adam Prengler,Amy Guesner,Michael Rather,Sunil Gupta,Brian Mink,Jeffrey Holmbeck,Marci Shihinski,Owen DeLeon</value>
+            <value>Adam Prengler,Amy Guesner,Michael Rather,Sunil Gupta,Brian Mink,Jeffrey Holmbeck,Marci Shihinski,James Hardy</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Business_Unit_Territory__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>PSG-NA-RM,PSG-NA-NW,PSG-NA-SW,PSG-NA-ABAS,PSG-NA-SC</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

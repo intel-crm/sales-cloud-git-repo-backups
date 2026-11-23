@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>56.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Update_Core_Cim_Id_Old</name>
+        <label>Update Core Cim Id Old</label>
+        <locationX>50</locationX>
+        <locationY>431</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Core_CIM_ID_Old__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record__Prior.Core_CIM_ID__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Check_If_Core_Total_Approved_Revenue_Amount_is_changed_and_First_Revenue_Date_is</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Update_Core_First_Revenue_Date</name>
+        <label>Update Core First Revenue Date</label>
+        <locationX>50</locationX>
+        <locationY>767</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Core_First_Revenue_Date__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Core_Account_First_Revenue_DateFormula</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Check_If_Core_PSG_Account_is_True</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Update_Core_PSG_Tier</name>
+        <label>Update Core PSG Tier</label>
+        <locationX>50</locationX>
+        <locationY>1103</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Core_Account_PSG_Tier__c</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <stringValue>PSG-Tier 4</stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <decisions>
+        <name>Check_If_Core_CIM_Id_Changed</name>
+        <label>Check If Core CIM Id Changed</label>
+        <locationX>182</locationX>
+        <locationY>311</locationY>
+        <defaultConnector>
+            <targetReference>Check_If_Core_Total_Approved_Revenue_Amount_is_changed_and_First_Revenue_Date_is</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>CIM_Id_is_Changed_to_True</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_CIM_ID__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.Core_CIM_ID__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue></stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Core_Cim_Id_Old</targetReference>
+            </connector>
+            <label>CIM Id  is Changed to True</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_If_Core_PSG_Account_is_True</name>
+        <label>Check If Core PSG Account is True</label>
+        <locationX>182</locationX>
+        <locationY>983</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>PSG_Account_is_True</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_PSG_Account__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>CoreAccountPSGTierBlank</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Core_PSG_Tier</targetReference>
+            </connector>
+            <label>PSG Account is True</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_If_Core_Total_Approved_Revenue_Amount_is_changed_and_First_Revenue_Date_is</name>
+        <label>Check If Core Total Approved Revenue Amount is changed and First Revenue Date is Null</label>
+        <locationX>182</locationX>
+        <locationY>647</locationY>
+        <defaultConnector>
+            <targetReference>Check_If_Core_PSG_Account_is_True</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Total_Approved_Revenue_Amount_Changed_and_First_Revenue_date_Null</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_Total_Approved_Revenue_Amount__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_First_Revenue_Date__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Core_First_Revenue_Date</targetReference>
+            </connector>
+            <label>Total Approved Revenue Amount Changed and First Revenue date Null</label>
+        </rules>
+    </decisions>
+    <description>Update CimoldId, FirstRevenueDate and PSG Tier</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>Core_Account_First_Revenue_DateFormula</name>
+        <dataType>DateTime</dataType>
+        <expression>NOW()</expression>
+    </formulas>
+    <formulas>
+        <name>CoreAccountPSGTierBlank</name>
+        <dataType>Boolean</dataType>
+        <expression>ISBLANK(TEXT({!$Record.Core_Account_PSG_Tier__c}))</expression>
+    </formulas>
+    <interviewLabel>Core_Account_UpdateCimOldId_RevenueDate_PSGTier_OnePartnerId {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Core_Account_Update_CimOldId_And_RevenueDate_And_PSGTier</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Check_If_Core_CIM_Id_Changed</targetReference>
+        </connector>
+        <filterFormula>OR(ISCHANGED({!$Record.Core_CIM_ID__c})  &amp;&amp; (PRIORVALUE({!$Record.Core_CIM_ID__c}) != &apos;&apos;),AND(ISCHANGED({!$Record.Core_Total_Approved_Revenue_Amount__c}), ISNULL({!$Record.Core_First_Revenue_Date__c})),AND ( ISBLANK(TEXT({!$Record.Core_Account_PSG_Tier__c})),{!$Record.Core_PSG_Account__c} = true))</filterFormula>
+        <object>Account</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

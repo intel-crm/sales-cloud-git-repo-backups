@@ -31,7 +31,7 @@
     </columns>
     <description>Opportunities with Product and a 6QPS Forecast not set to Zero</description>
     <filter>
-        <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6</booleanFilter>
+        <booleanFilter>1 AND 2 AND 3 AND 4 AND 5</booleanFilter>
         <criteriaItems>
             <column>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Quantity__c</column>
             <columnToColumn>false</columnToColumn>
@@ -66,13 +66,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
             <value>Paypal,Inc.</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>FK_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>optane</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

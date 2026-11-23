@@ -1296,13 +1296,6 @@
                 <booleanValue>true</booleanValue>
             </value>
         </filters>
-        <filters>
-            <field>VPH_Nav_c__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </filters>
         <object>Product2__x</object>
         <outputReference>productForAccount</outputReference>
         <queriedFields>Id</queriedFields>
@@ -1475,7 +1468,7 @@
         <dataType>String</dataType>
         <isCollection>false</isCollection>
         <isInput>true</isInput>
-        <isOutput>true</isOutput>
+        <isOutput>false</isOutput>
     </variables>
     <variables>
         <name>caseRecordTypeId</name>

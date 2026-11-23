@@ -1,0 +1,9 @@
+<template>
+    <template if:false={showOnHomeOnly}></template>
+    <template if:true={showOnHomeOnly}> 
+        <div  class="slds-align_absolute-center slds-text-heading_medium"  style="margin-left:20px;margin-right:20px;margin-bottom:2px;" >     
+            <lightning-formatted-rich-text value={homepagemsg}>
+            </lightning-formatted-rich-text>
+            </div>  
+        </template>         
+</template>

@@ -7,7 +7,7 @@
 * ---------------------------------------------------------------------------------------------------------------------------------------
 * Team: Accenture         03/11/2020              To create structure of all the responses
 *****************************************************************************************************************************************/
-global virtual class  Pricing_RestAPI_Response {
+global  virtual class  Pricing_RestAPI_Response {
     public boolean isSuccess{get;set;}  
     public String code {get;set;}
     public List<Pricing_RestAPI_SuccessContent> successContent{get;set;}  

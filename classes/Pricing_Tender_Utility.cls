@@ -2,7 +2,7 @@
  * @description       : 
  * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
  * @group             : 
- * @last modified on  : 04-28-2026
+ * @last modified on  : 04-24-2026
  * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 public without sharing class Pricing_Tender_Utility
@@ -262,6 +262,7 @@ public without sharing class Pricing_Tender_Utility
             
             DateTime dtWhen = system.now();
             Map<String, Schema.SObjectField> logFields = Schema.SObjectType.Core_Log_Entry__c.fields.getMap();
+            System.debug('Entered create core log entry: '+coreLogMap);
             if(coreLogMap != null && coreLogMap.size() > 0){    
                 for(String key:coreLogMap.keySet()){        
                     if(logFields.containsKey(key)){

@@ -7,46 +7,18 @@
 * ----------------------------------------------------------------------------                 
 * Sugandha                  27/08/2018                    Created - US148915
 ------------------------------------------------------------------------------->
-<apex:page standardController="Case" standardStylesheets="true" showHeader="false" applyHtmlTag="false" >
-    <apex:includeLightning />
-    <div id="LightningComponentid"></div>
-    <script>
-        var uiTheme = "{!$User.UIThemeDisplayed}";
-   
-        if(uiTheme == 'Theme4d'|| uiTheme == 'Theme4u'){ 
-           
-            $Lightning.use("c:core_IPS", function() {
-                $Lightning.createComponent("c:core_IPS_MAG_Response_LEX",
-                                           {   
-                                              recordId : "{!$CurrentPage.parameters.id}"                                         
-                                           },
-                                           "LightningComponentid",
-                                           function(component) {
-                                           });
-            }); 
-        }
-        if({!$User.UITheme} == 'Theme4d' ){
-            window.onload = resizeWindow(); 
-            function resizeWindow(){
-            
-                //top.document.getElementById("0663F000000NS9g").height = "0px";--priority 1 violation top is blacklisted
-               parent.document.getElementById("0663F000000NS9g").height = "0px";
-            }
-        }
-    </script>
+<apex:page standardController="Case" standardStylesheets="true" showHeader="false" applyHtmlTag="false">
     <style>
         .norecords{display:none;}
         .pbHeader table{ padding:0 !important; border-bottom-width:0 !important;}
         .pbHeader{border-bottom-width:0 !important;}
-        .slds-scope .slds-card{border:none!important;}
-        .slds-scope .slds-has-button-menu .slds-th__action{background: #F3F2F2;}
     </style>
     <script> 
-     twistSection(document.getElementById('{!$Component.thePanel}').getElementsByTagName('img')[0]) 
+            twistSection(document.getElementById('{!$Component.thePanel}').getElementsByTagName('img')[0]) 
    </script>
-        <apex:variable var="lightningDesktop" value="{!$User.UIThemeDisplayed== 'Theme3'}" />
-       
-        <apex:pageBlock mode="detail" id="thePanel" rendered="{!lightningDesktop}" >  
+    
+            
+        <apex:pageBlock mode="detail" id="thePanel">  
             <apex:variable value="{!0}" var="gecResponseCount"/>
             <apex:variable value="{!0}" var="MagResponseCount"/>
             <apex:variable value="{!0}" var="QuesNo"/>
@@ -96,6 +68,6 @@
                     .norecords { display:block; }
                 </style>
             </apex:outputPanel>
-        </apex:pageBlock> 
-       
+        </apex:pageBlock>
+    
 </apex:page>

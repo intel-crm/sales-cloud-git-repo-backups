@@ -1,0 +1,33 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 12-19-2024
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+    <lightning-card title="Hot Buttons">
+        <div class="slds-p-around_medium">
+            <template if:true={records}>
+                <!-- Iterate over each record and display a progress bar -->
+                <template for:each={records} for:item="record">
+                    <div key={record.recordId} class="slds-m-bottom_small">
+                        <lightning-progress-bar 
+                            value={record.progressPercentage} 
+                            variant="base" 
+                            size="small">
+                        </lightning-progress-bar>
+                    </div>
+                </template>
+            </template>
+            <template if:false={records}>
+                <p>Loading...</p>
+            </template>
+        </div>
+        <!-- <div class="slds-p-around_medium">
+            <lightning-button label="Button 1"  class="slds-m-bottom_medium"></lightning-button>
+            <lightning-button label="Button 2"  class="slds-m-bottom_medium"></lightning-button>
+            <lightning-button label="Button 3"  class="slds-m-bottom_medium"></lightning-button>
+        </div> -->
+    </lightning-card>
+</template>

@@ -1,17 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <columns>
-        <field>OPPORTUNITY_NAME</field>
-    </columns>
-    <columns>
-        <field>ACCOUNT_NAME</field>
-    </columns>
-    <columns>
         <field>FULL_NAME</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Opportunity.Core_At_Risk__c</field>
+        <field>OPPORTUNITY_NAME</field>
     </columns>
     <columns>
         <field>STAGE_NAME</field>
@@ -23,7 +16,10 @@
         <field>CLOSE_DATE</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Status_Update__c</field>
+        <field>ROLLUP_DESCRIPTION</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_OEM__c</field>
     </columns>
     <columns>
         <field>PRODUCT_NAME</field>
@@ -31,6 +27,15 @@
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>TOTAL_PRICE</field>
+    </columns>
+    <columns>
+        <field>QUANTITY</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT_NAME</field>
+    </columns>
+    <columns>
+        <field>OpportunityLineItem.Core_BU_Product_Segment_Old__c</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Solution_Type__c</field>
@@ -45,7 +50,10 @@
         <field>Opportunity.Core_Approved_Date__c</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Product_Segment_Old__c</field>
+        <field>Opportunity.Core_ISV_OSV__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_System_Integrator__c</field>
     </columns>
     <filter>
         <criteriaItems>
@@ -53,14 +61,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Hendi Satrio,Peter Kerney,Ayu Ginanti,Chris Sassone,Patricia Lim,Gina Lim,Naomi Ooi,Daniel Goh,Van Duc Dang,Xinmei Hong,Sherill Hong,Guan Hao Tan,Poon Guan Lim,Vanessa Lee Wah Ng,Hung Choong Hwang,Siew May Cheow,Vanessa Ng,Kenny Sng,Kenny Hoe Ann Sng,Jovern Lim,Sachin Anand,Hc Hwang,Swee Hoon Chan,Jason Kay Siah Ang,Harris Kristanto,Duc Dang,Patricia Lee,Paul Haines,Fransiskus Leonardus,Oceane Rime,I&apos;ng Chin Tan,Alastair Duncan,Elise Stanberg,Andrew Ridley</value>
+            <value>I&apos;ng Chin Tan,Albert Wang,Jovern Lim,Patricia Lee,Paul Haines,ANDREW WILLIAMS,Kengo Miura,Nileshni Santiago,Cjtan Tan,Audrey Lim,Efren Antimano Jr,Nick Jacobs,Alastair Duncan,Elise Stanberg,Jodie Frew,Andrew Ridley,Swee Hoon Chan,Sachin Anand,Fransiskus Leonardus,Hc Hwang,Vineet Giri,Siew May Cheow,Avinash Rajah,Faisal Qamar,Jason Kay Siah Ang</value>
         </criteriaItems>
         <criteriaItems>
             <column>STAGE_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Qualify,Define,Develop,Design</value>
+            <value>Qualify,Define,Develop,Design,Design Win,Lost</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Sales_Groups__c</column>
@@ -69,20 +77,9 @@
             <operator>equals</operator>
             <value>GMP APJ Sales Territory</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>PRODUCT_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Optane</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
-    <format>Summary</format>
-    <groupingsDown>
-        <field>LAST_UPDATE</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
+    <format>Tabular</format>
     <name>Opportunities with Products Report</name>
     <params>
         <name>terr</name>
@@ -105,8 +102,12 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
+    <sortColumn>FULL_NAME</sortColumn>
+    <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

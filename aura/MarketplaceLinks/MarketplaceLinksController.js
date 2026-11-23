@@ -9,9 +9,8 @@
 				title: 'Manage Storefront',
 				data: [
 					{ label: 'Manage storefront', link: '#' },
-					{ label: 'Manage Contacts', link: '#' }
-					// IPA2.0 + US TWC4497-1631 
-					// { label: 'Manage Offerings', link: '#' }
+					{ label: 'Manage Contacts', link: '#' },
+					{ label: 'Manage Offerings', link: '#' }
 				]
 			},
 			{
@@ -31,17 +30,16 @@
 				]
 			}
 		];
-		// IPA2.0 + US TWC4497-1631 
-		// footerLinks['offerings'] = [
-		// 	{
-		// 		title: '',
-		// 		data: [
-		// 			{ label: '$A.get("$Label.c.PMP_Manage_Offerings")', link: '#' },
-		// 			{ label: '$A.get("$Label.c.PMP_Add_a_new_offering")', link: '#' },
-		// 			{ label: '$A.get("$Label.c.PMP_View_Your_offerings")', link: '#' },
-		// 		]
-		// 	}
-		// ];
+		footerLinks['offerings'] = [
+			{
+				title: '',
+				data: [
+					{ label: '$A.get("$Label.c.PMP_Manage_Offerings")', link: '#' },
+					{ label: '$A.get("$Label.c.PMP_Add_a_new_offering")', link: '#' },
+					{ label: '$A.get("$Label.c.PMP_View_Your_offerings")', link: '#' },
+				]
+			}
+		];
 		if (footerLinks[component.get('v.type')]) {
 			console.log('footerLinks',  footerLinks[component.get('v.type')]);
 			component.set('v.linkList', footerLinks[component.get('v.type')]);

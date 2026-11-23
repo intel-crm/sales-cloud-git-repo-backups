@@ -107,7 +107,7 @@
         <field>QUANTITY</field>
     </columns>
     <filter>
-        <booleanFilter>((1 AND 2 AND 3) AND 4)</booleanFilter>
+        <booleanFilter>(1 AND 2 AND 3) AND 4</booleanFilter>
         <criteriaItems>
             <column>Product2.Core_Product_Series__c</column>
             <columnToColumn>false</columnToColumn>
@@ -127,7 +127,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Adam Prengler,Amy Guesner,Michael Rather,Sunil Gupta,Brian Mink,Jeffrey Holmbeck,Marci Shihinski,Owen DeLeon</value>
+            <value>Adam Prengler,Amy Guesner,Michael Rather,Sunil Gupta,Brian Mink,Jeffrey Holmbeck,Marci Shihinski,James Hardy</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Business_Unit_Territory__c</column>
@@ -178,8 +178,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2026-11-22</endDate>
+        <endDate>2026-11-23</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2026-11-22</startDate>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

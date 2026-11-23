@@ -2,16 +2,24 @@
 <CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseValues>
         <plural>false</plural>
-        <value>Account Plan</value>
+        <value>OLD Account Plan custom</value>
     </caseValues>
     <caseValues>
         <plural>true</plural>
-        <value>Account Plans</value>
+        <value>Account Plans custom</value>
     </caseValues>
+    <fields>
+        <label><!-- Account Deactivated --></label>
+        <name>Account_Deactivated__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Sales Group --></label>
+        <name>Account_Sales_Group__c</name>
+    </fields>
     <fields>
         <label><!-- Account --></label>
         <name>Account__c</name>
-        <relationshipLabel><!-- Account Plans --></relationshipLabel>
+        <relationshipLabel><!-- Account Plans custom --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- Document Link --></label>
@@ -20,6 +28,10 @@
     <fields>
         <label><!-- Help Needed --></label>
         <name>Help_Needed__c</name>
+    </fields>
+    <fields>
+        <label><!-- My Team --></label>
+        <name>My_Team__c</name>
     </fields>
     <fields>
         <label><!-- Number of Attachments --></label>

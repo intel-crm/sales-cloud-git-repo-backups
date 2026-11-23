@@ -40,8 +40,8 @@ global without sharing class Pricing_RestAPI_FileUpload {
                 ContentVersion doc = new ContentVersion();
                 try{
                     //inserting file into content version by decoding base64 string sent in payload
-                    doc.PathOnClient = uploadFile.fileName.trim();
-                    doc.Title = uploadFile.fileName.trim();
+                    doc.PathOnClient = uploadFile.fileName;
+                    doc.Title = uploadFile.fileName;
                     doc.VersionData = EncodingUtil.base64Decode(uploadFile.file);
                     doc.NetworkId  = networkId;
                     Insert doc;
@@ -65,9 +65,8 @@ global without sharing class Pricing_RestAPI_FileUpload {
                 
                 // creating a chatter post for the quote
                 FeedItem post = new FeedItem();
-                post.Body = String.isBlank(uploadFile.comment) ? Label.Pricing_UploadFile_DefaultComment : uploadFile.comment.trim();
+                post.Body = String.isBlank(uploadFile.comment) ? Label.Pricing_UploadFile_DefaultComment.replace('<datetime>', string.valueof(ENTRY_TIME)) : uploadFile.comment;
                 post.ParentId = uploadFile.quoteId;
-                post.Visibility = 'AllUsers';
                 insert post;
                 
                 //attaching the document to the chatter post

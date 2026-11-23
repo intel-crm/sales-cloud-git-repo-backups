@@ -13,13 +13,12 @@ Updated Below Methods to stop creating OutBound message for Co-Marketing Record 
 -grantAccess
 *Anupam Agarwal        12/08/2019    US408340 - Added logic to bypass the methods for the Core_Partner_Account_Group Record type 
 *****************************************************************************************************************************************/
-public without sharing class Core_IPS_Account_Trigger_Handler{
+public class Core_IPS_Account_Trigger_Handler{
     
     public static Id coMarketingRecordTypeId = Schema.SObjectType.Account.getRecordTypeInfosByName().get(Label.Core_MDF_Co_Marketing_Record_Type_Name).getRecordTypeId(); //Added by Accenture - VD -> Check if the record type is not Co-Marketing
     public static Id pAGRecordTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Partner_Account_Group_Record_Type).getRecordTypeId(); //Added by Accenture - US408340 -> Check if the record type is not Core_Partner_Account_Group
     public static Id DirectAccRecTypeId = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Direct Account').getRecordTypeId();// Added by Unicorn Team to bypass trigger methods 
-    public static boolean isFirstRunCheck = true;    
-    public static Core_CustomMetadataObjectController customMetadata = new Core_CustomMetadataObjectController('PRM_Tracker_steps__mdt');
+    public static boolean isFirstRunCheck = true;
     /***************************************************************************************************** 
 Method Name:                                             assignEntitlementToIPSAccount
 @return  :                                               Void
@@ -27,8 +26,9 @@ Modified By:                            Date:            Changes:
 Accenture – VD                          07/23/2018       US99134 - Updated Method to stop creating OutBound message for Co-Marketing Record Type of Account 
 ******************************************************************************************************/
     public static void assignEntitlementToIPSAccount(Map<Id,Account> oldMap,List<Account> newList){
+        System.debug('oldMap----->'+oldMap);
+        System.debug('newList----->'+newList);
         List<Entitlement> entList = new List<Entitlement>();
-
         //added by amritesh 4/26/2018 US104230 - start
         String entitlementExpiryYearStr = System.Label.Core_IPS_Account_Entitlement_Expiry_Year;
         Integer entitlementExpiryYearInt;
@@ -42,23 +42,34 @@ Accenture – VD                          07/23/2018       US99134 - Updated Met
             if(acc.RecordTypeId != coMarketingRecordTypeId && acc.RecordTypeId != pAGRecordTypeId && acc.RecordTypeId != DirectAccRecTypeId ) //Added by Accenture - VD -> Check if the record type is not Co-Marketing
             //End of Changes - To check if the record type is not Core_Partner_Account_Group - US408340 - by Accenture 
             {
-                if(acc.Core_IPS_Active__c && acc.Core_IPS_Active__c <> oldMap.get(acc.id).Core_IPS_Active__c){
+            if(acc.Core_IPS_Active__c && acc.Core_IPS_Active__c <> oldMap.get(acc.id).Core_IPS_Active__c){
 
-                    Entitlement ent = new Entitlement();
+                Entitlement ent = new Entitlement();
+                /*US1021248 - 05/27/2021 - yamini - FLS Check for security vulnerability --*/
                 if (Schema.sObjectType.Entitlement.fields.Name.isCreateable()) {
-                    ent.Name = Core_IPS_Helper_utility.getIPSLabel('IPS Standard Entitlement');
+                ent.Name = Core_IPS_Helper_utility.getIPSLabel('IPS Standard Entitlement');
                 }
-        if(Test.isRunningTest()==false)
-                    {
-                        ent.slaprocessid=Core_IPS_Helper_utility.getIPSLabel('IPS Standard Entitlement Process ID');
-                    }
-                    ent.startDate = System.today();
-                    //ent.endDate = system.today()+730;
+               if(Test.isRunningTest()==false && Schema.sObjectType.Entitlement.fields.slaprocessid.isCreateable())
+               {
+                ent.slaprocessid=Core_IPS_Helper_utility.getIPSLabel('IPS Standard Entitlement Process ID');
+               }
+              // if (Schema.sObjectType.Entitlement.fields.startDate.isCreateable()) {
+                ent.startDate = System.today();
+              // }
+                //ent.endDate = system.today()+730;
+                /*---Start US1038641 06/24/2021 - Farhaad - FLS Check for security vulnerability--*/
+               // if (Schema.sObjectType.Entitlement.fields.endDate.isCreateable()) {
                     ent.endDate = Date.newInstance(entitlementExpiryYearInt,12,31); //added by amritesh 4/26/2018 US104230
+               // }
+                if (Schema.sObjectType.Entitlement.fields.accountid.isCreateable()) {
                     ent.accountid=acc.id;
-                    ent.type=Core_IPS_Helper_utility.getIPSLabel('Entitlement Type');
-                    entList.add(ent);
                 }
+               // if (Schema.sObjectType.Entitlement.fields.type.isCreateable()) {
+                    ent.type=Core_IPS_Helper_utility.getIPSLabel('Entitlement Type');
+               // }
+                /*--- End US1038641 06/24/2021 - Farhaad - FLS Check for security vulnerability--*/
+                entList.add(ent);
+        }
             }
         }
         if(entList.size()>0)
@@ -92,7 +103,7 @@ Accenture – VD                          07/23/2018       US99134 - Updated Met
         }            
         if(ownerIdbyAccId <> null && ownerIdbyAccId.size() > 0){
             Map<Id,Set<Id>> assetIdsbyAccountId = Core_IPS_Helper_Utility.getAssetsByAccountId(ownerIdbyAccId.keyset());
-
+            
             Set<Id> userSet1;
             for(Id accId : ownerIdbyAccId.keyset()){
                 if(assetIdsbyAccountId <> null && assetIdsbyAccountId.size() > 0 && assetIdsbyAccountId.get(accId) <> null && assetIdsbyAccountId.get(accId).size() > 0){
@@ -118,7 +129,7 @@ Accenture – VD                          07/23/2018       US99134 - Updated Met
             
             
             Map<Id,Set<Id>> projectIdsbyAccountId = Core_IPS_Helper_Utility.getProjectsByAccountId(ownerIdbyAccId.keyset());
-
+            
             Set<Id> userSet3;
             for(Id accId : ownerIdbyAccId.keyset()){
                 if(projectIdsbyAccountId <> null && projectIdsbyAccountId.size() > 0 && projectIdsbyAccountId.get(accId) <> null && projectIdsbyAccountId.get(accId).size() > 0){
@@ -198,7 +209,7 @@ Accenture – VD                          07/23/2018       US99134 - Updated Met
         
         if(ownerIdbyAccId <> null && ownerIdbyAccId.size() > 0){
             Map<Id,Set<Id>> assetIdsbyAccountId = Core_IPS_Helper_Utility.getAssetsByAccountId(ownerIdbyAccId.keyset());
-
+            
             Set<Id> userSet1;
             for(Id accId : ownerIdbyAccId.keyset()){
                 if(assetIdsbyAccountId <> null && assetIdsbyAccountId.size() > 0 && assetIdsbyAccountId.get(accId) <> null && assetIdsbyAccountId.get(accId).size() > 0){
@@ -224,7 +235,7 @@ Accenture – VD                          07/23/2018       US99134 - Updated Met
             
             
             Map<Id,Set<Id>> projectIdsbyAccountId = Core_IPS_Helper_Utility.getProjectsByAccountId(ownerIdbyAccId.keyset());
-
+            
             Set<Id> userSet3;
             for(Id accId : ownerIdbyAccId.keyset()){
                 if(projectIdsbyAccountId <> null && projectIdsbyAccountId.size() > 0 && projectIdsbyAccountId.get(accId) <> null && projectIdsbyAccountId.get(accId).size() > 0){
@@ -299,20 +310,19 @@ Modified By:                            Date:            Changes:
 Accenture – VD                          07/23/2018       US99134 - Updated Method to stop creating OutBound message for Co-Marketing Record Type of Account 
 ******************************************************************************************************/
     public static void restrictManageExternalAccount(List<Account> newList,Map<Id,Account> oldMap){
-        Boolean isProfileRestricted = true;
-        if(UserInfo.getUserType() != 'automatedprocess') { //atuomatedprocess user validation US-0049253
-        List<Profile> PROFILE = [SELECT Id, Name FROM Profile WHERE Id=:userinfo.getProfileId() LIMIT 1];
-        String myProflieName = PROFILE[0].Name;
         
+        List<Profile> PROFILE = [SELECT Id, Name FROM Profile WHERE Id =:UserInfo.getProfileId()  LIMIT 1]; /* DE117168 --- 14-06-21 ---Sai Krishna --- Delete cancelled Opportunities flow issue fix */
+        String myProflieName = PROFILE.size()>0?PROFILE[0].Name:(Label.Core_IPS_System_Admin_Profile_Name);  /* DE117168 --- 14-06-21 ---Sai Krishna --- Delete cancelled Opportunities flow issue fix */
+        Boolean isProfileRestricted = true;
         for(String profileName : Label.Core_Admin_Profile_Names.split(',')){
             if(myProflieName == profileName){
                 isProfileRestricted = false;
             }
         }
-        }else {isProfileRestricted = true;}
+        
         Map<string,Core_IPS_Error_Code__c> mapCodes = Core_IPS_Error_Code__c.getAll();          
         // display the Error Message for G115
-
+        
         for(Account acn:newList)
         {  
             //Start of Changes - To check if the record type is not Core_Partner_Account_Group - US408340 - by Accenture 
@@ -326,25 +336,25 @@ Accenture – VD                          07/23/2018       US99134 - Updated Met
     }
     
     /***********************************************************************************************
-Version     : 1.0
-Created Date: 09 Oct 2015
-Function    : User Story# US36728 : This method executes when Account field named "Export Compliance Block" is true then make IPS Active field on related Contacts to false.
-Input Parameters: Case Old Map, Case New List
-Output Parameters: None
-Transactions: After Insert, After Update
-Description: This method executes when Export Compliance Block =  true as follows:
-Take respected contact and update Field IPS Active = false
-
-Used in     : Core_CaseTrigger_Dispatcher
-Number of Queries Within this Method: 1(one per transaction)
-Number of Queries in Loop: 0
-Number of Queries from Called methods:0
-Number of times called: Once for trigger execution
-Modification Log :
-* Developer                   Date                   Description
-* ----------------------------------------------------------------------------
-* Sunil Chandani              15/03/2016              Created
-* Abhishek Arya               16/03/2016              Modified
+    Version     : 1.0 
+    Created Date: 09 Oct 2015
+    Function    : User Story# US36728 : This method executes when Account field named "Export Compliance Block" is true then make IPS Active field on related Contacts to false.
+    Input Parameters: Case Old Map, Case New List
+    Output Parameters: None
+    Transactions: After Insert, After Update
+    Description: This method executes when Export Compliance Block =  true as follows:
+                 Take respected contact and update Field IPS Active = false
+                 
+    Used in     : Core_CaseTrigger_Dispatcher
+    Number of Queries Within this Method: 1(one per transaction)
+    Number of Queries in Loop: 0
+    Number of Queries from Called methods:0
+    Number of times called: Once for trigger execution
+    Modification Log :
+    * Developer                   Date                   Description
+    * ----------------------------------------------------------------------------                 
+    * Sunil Chandani              15/03/2016              Created
+    * Abhishek Arya               16/03/2016              Modified
     * Sneha Ransing               18/03/2020              Modified
 ****************************************************************************************************/
     /***************************************************************************************************** 
@@ -353,14 +363,15 @@ Method Name:                                             UpdateContactOnECBCheck
 Modified By:                            Date:            Changes: 
 Accenture – VD                          07/23/2018       US99134 - Updated Method to stop creating OutBound message for Co-Marketing Record Type of Account 
 ******************************************************************************************************/
-   /* public static void UpdateContactOnECBCheck(List<Account> newList,Map<id,Account> MapOldAccount){//US-0050009 Hercules_IPS_ECBFlagIssueFix- code shifted to batch class-begin
-        Map<Id,Contact> mapContact;
-        // START - US604984 KTBR: Implement quick fix for setting Account (Huawei HQ) Export Compliance Block  - Sneha //
-        if (!Core_IPS_Helper_Utility.isHandlerMethodExecutionEnabled('UpdateContactOnECBCheck')){
+    public static void UpdateContactOnECBCheck(List<Account> newList,Map<id,Account> MapOldAccount){
+        Map<Id,Contact> mapContact = new Map<Id,Contact>();
+        /* START - US604984 KTBR: Implement quick fix for setting Account (Huawei HQ) Export Compliance Block  - Sneha */
+        if (!Core_IPS_Helper_Utility.isHandlerMethodExecutionEnabled('UpdateContactOnECBCheck')
+        ){
             return;
         }
             
-        // END - US604984 KTBR: Implement quick fix for setting Account (Huawei HQ) Export Compliance Block  - Sneha //
+        /* END - US604984 KTBR: Implement quick fix for setting Account (Huawei HQ) Export Compliance Block  - Sneha */
         Set<Id> accountIdSet = new Set<Id>();
         //account Id is collected
         for(Account accObj:newList)
@@ -378,14 +389,18 @@ Accenture – VD                          07/23/2018       US99134 - Updated Met
         }
         
         //Take respected contact
-        if(accountIdSet<> null && accountIdSet.size()>0){
-        mapContact = new Map<Id,Contact>([Select id,Core_IPS_Active__c,Core_IPS_By_Pass_Validation__c,AccountId from Contact where AccountId in :accountIdSet]);
-
+        //FLS check added-Venugopal
+        if(!accountIdSet.isEmpty()){
+            if(Contact.SObjectType.getDescribe().isAccessible()){
+                mapContact = new Map<Id,Contact>([Select id,Core_IPS_Active__c,Core_IPS_By_Pass_Validation__c,AccountId from Contact where AccountId in :accountIdSet]);
+            }
+         }
+        
         if(mapContact <> null && mapContact.size() > 0 && mapContact.keyset() <> null){
             //update the respected contact data        
             for(Id ContactId:mapContact.keyset()){               
-                mapContact.get(ContactId).Core_IPS_Active__c = false;
-                mapContact.get(ContactId).Core_IPS_By_Pass_Validation__c = true;
+               mapContact.get(ContactId).Core_IPS_Active__c = false;
+               mapContact.get(ContactId).Core_IPS_By_Pass_Validation__c = true;        
             }
             if(mapContact.Values() <> null && mapContact.Values().size() > 0)
             {
@@ -394,128 +409,46 @@ Accenture – VD                          07/23/2018       US99134 - Updated Met
                 }catch(DMLException e){
                     Core_Exceptionclass Exce =  new Core_Exceptionclass();
                     string  Str = Exce.InsertException('','Core_IPS_Account_Trigger_Handler','Account','','UpdateContactOnECBCheck',e);
-        }
-                }
+                }         
             }
         }        
-    } */ //US-0050009 Hercules_IPS_ECBFlagIssueFix- code shifted to batch class-end 
+    }
+    
 /***************************************************************************************************** 
 Method Name:                                             CIMIdStamped
 Accenture – VD                          01/06/2022       TWC729 - This method will check ifCIM is stamped or not 
 ******************************************************************************************************/
     public static void CIMIdStamped(List<Account> newList,Map<id,Account> MapOldAccount){
+    
+        Set<Id> accountIdSet = new Set<Id>();
+        List<PRM_AccountChannelMembership__c> AcmList = new List<PRM_AccountChannelMembership__c>();
+        Map<Id,PRM_AccountChannelMembership__c> AcmMapold = new Map<Id,PRM_AccountChannelMembership__c> ();
+        //account Id is collected
+        for(Account accObj :newList){
+            Account accOld ; 
+            if(MapOldAccount!=null && !MapOldAccount.isEmpty()) {
+                accOld = (Account) MapOldAccount.get(accObj.id) ;
+            }
+            if(accOld.Core_CIM_ID__c == null && accObj.Core_CIM_ID__c != null && accObj.Core_Intel_Partner_Alliance_PartnerGroup__c == true)
+            {
+                accountIdSet.add(accObj.Id);
+            }
+        }
+        if(!accountIdSet.IsEmpty()){
+            for(PRM_AccountChannelMembership__c acm : [Select id, PRM_Partner_Role__c, PRM_Account_Id__c, PRM_Channel_Program_Level_Id__c,PRM_Status_Nm__c   from PRM_AccountChannelMembership__c where PRM_Account_Id__c in :accountIdSet and PRM_Status_Nm__c = 'Approved']){
+                AcmList.add(acm) ;   
+            }
+        }
+        if(!AcmList.IsEmpty()){
+            //PRM_ACM_Utility.CreateOPIDRecomndtn(AcmList,null);             
+        }
     }      
 
     public static void createTrackerMilestonesForBadgeTierUpdate(List<Account> newList,Map<id,Account> MapOldAccount){
         List<PRM_Tracker__c> trackers = new List<PRM_Tracker__c>();
-        if (newList != null && !newList.isEmpty()) {
-            for (Account acc: newList) {
-                if(MapOldAccount != null && acc.Core_IPA_Badge_Tier__c != MapOldAccount.get(acc.Id).Core_IPA_Badge_Tier__c &&
-                String.isNotBlank(acc.Core_IPA_One_Partner_Id__c) && String.isNotBlank(acc.Core_IPA_Badge_Tier__c)){
-                    trackers.add(PRM_IPA_Utility.createTrackerInstance('OPID Updates',
-                    'BADGE_TIER_UPDATE',
-                    null,
-                    acc.Id,
-                    acc.Core_IPA_One_Partner_Id__c,
-                    acc.Core_IPA_One_Partner_Id__c,
-                    acc.Core_IPA_Badge_Tier__c,
-                    '',
-                    true,
-                    '',
-                    '',
-                   String.valueOf(customMetadata.getInstance('BADGE_TIER_UPDATE').get('PRM_Milestone_Display_Name__c'))
-                    ));
-                }
-                
-                
-                if(MapOldAccount != null && acc.Core_IPA_Badge_Tier__c != MapOldAccount.get(acc.Id).Core_IPA_Badge_Tier__c &&
-                acc.RecordTypeId == Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Partner_Account_Group_Record_Type).getRecordTypeId() &&
-                String.isNotBlank(acc.Core_IPA_Badge_Tier__c)){
-                    trackers.add(PRM_IPA_Utility.createTrackerInstance('OPID Updates 1PID',
-                    'BADGE_TIER_UPDATE_1PID',
-                    null,
-                    null,
-                    acc.Id,
-                    acc.Id,
-                    acc.Core_IPA_Badge_Tier__c,
-                    '',
-                    true,
-                    '',
-                    '',
-                    String.valueOf(customMetadata.getInstance('BADGE_TIER_UPDATE_1PID').get('PRM_Milestone_Display_Name__c'))
-                    ));
-                }
-                
-                if(MapOldAccount != null && acc.Core_IPA_Partner_Segment__c != MapOldAccount.get(acc.Id).Core_IPA_Partner_Segment__c &&
-                acc.RecordTypeId == Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Partner_Account_Group_Record_Type).getRecordTypeId() && String.isNotBlank(acc.Core_IPA_Partner_Segment__c)){
-                    trackers.add(PRM_IPA_Utility.createTrackerInstance('OPID Updates 1PID',
-                    'PART_SEG_RLUP',
-                    null,
-                    null,
-                    acc.Id,
-                    acc.Id,
-                    '',
-                    '',
-                    true,
-                    '',
-                    '',
-                    String.valueOf(customMetadata.getInstance('PART_SEG_RLUP').get('PRM_Milestone_Display_Name__c'))
-                    ));
-                }
-                
-                if(MapOldAccount == null && acc.RecordTypeId == Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Partner_Account_Group_Record_Type).getRecordTypeId()){
-                    trackers.add(PRM_IPA_Utility.createTrackerInstance('OPID Updates 1PID',
-                    'OPID_CRTD',
-                    null,
-                    null,
-                    acc.Id,
-                    acc.Id,
-                    '',
-                    '',
-                    true,
-                    '',
-                    '',
-                    String.valueOf(customMetadata.getInstance('OPID_CRTD').get('PRM_Milestone_Display_Name__c')  )                                              
-                    ));
-                }
-                
-                if(MapOldAccount != null && acc.Core_PAG_Grouping_Method__c != MapOldAccount.get(acc.Id).Core_PAG_Grouping_Method__c &&
-                String.isNotBlank(acc.Core_PAG_Grouping_Method__c)){
-                    trackers.add(PRM_IPA_Utility.createTrackerInstance('OPID Updates 1PID',
-                    'GRP_MTHD',
-                    null,
-                    null,
-                    acc.Id,
-                    acc.Id,
-                    '',
-                    '',
-                    true,
-                    '',
-                    '',
-                    String.valueOf(customMetadata.getInstance('GRP_MTHD').get('PRM_Milestone_Display_Name__c'))                                        
-                    ));
-                }
-                
-            if(MapOldAccount != null && acc.Core_Deactivated__c != MapOldAccount.get(acc.Id).Core_Deactivated__c){
-                    trackers.add(PRM_IPA_Utility.createTrackerInstance('OPID Updates 1PID',
-                    acc.Core_Deactivated__c ? 'OPID_INACT':'OPID_ACT',
-                    null,
-                    null,
-                    acc.Id,
-                    acc.Id,
-                    '',
-                    '',
-                    true,
-                    '',
-                    '',
-                    acc.Core_Deactivated__c ? String.valueOf(customMetadata.getInstance('OPID_INACT').get('PRM_Milestone_Display_Name__c')):
-                    String.valueOf(customMetadata.getInstance('OPID_ACT').get('PRM_Milestone_Display_Name__c'))                                        
-                    ));
-                }
-            }
-        }
+
         if (!trackers.isEmpty()) {
             insert trackers;
         }
-    } 
+    }  
 }

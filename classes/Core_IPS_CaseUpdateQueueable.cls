@@ -39,14 +39,11 @@ global class Core_IPS_CaseUpdateQueueable implements Queueable{
                      break;
                     }
     }
+    System.debug('<--mode--> '+m+'<--caseIdList1-->'+caseIdList1.size()+'<--caseIdList-->'+caseIdList.size());
         
         if(m==Mode.EDQ){
             if(caseIdList1!=null && caseIdList1.size()>0){
-                // APEX GURU - SOQL FIX
-                Map<Id, case> caseIdList1Map = new Map<Id, case>(caseIdList1);
-                  caseList1=[Select Id,Core_IPS_EDQ_Filtering_Answer__c,Core_IPS_EDQ_Filtering_Question__c,(Select Id,Core_IPS_Case__c,Core_IPS_Answer__c,Core_IPS_Question_Master__r.Core_IPS_Add_to_Reporting__c,Core_IPS_Question_Master__r.Core_IPS_Reporting_Name__c from Core_IPS_Responses__r where Core_IPS_Question_Master__r.Core_IPS_Add_to_Reporting__c=true) from Case where Id In: caseIdList1Map.keySet() limit 50000];
-           
-               // caseList1=[Select Id,Core_IPS_EDQ_Filtering_Answer__c,Core_IPS_EDQ_Filtering_Question__c,(Select Id,Core_IPS_Case__c,Core_IPS_Answer__c,Core_IPS_Question_Master__r.Core_IPS_Add_to_Reporting__c,Core_IPS_Question_Master__r.Core_IPS_Reporting_Name__c from Core_IPS_Responses__r where Core_IPS_Question_Master__r.Core_IPS_Add_to_Reporting__c=true) from Case where Id In: caseIdList1 limit 50000];
+                caseList1=[Select Id,Core_IPS_EDQ_Filtering_Answer__c,Core_IPS_EDQ_Filtering_Question__c,(Select Id,Core_IPS_Case__c,Core_IPS_Answer__c,Core_IPS_Question_Master__r.Core_IPS_Add_to_Reporting__c,Core_IPS_Question_Master__r.Core_IPS_Reporting_Name__c from Core_IPS_Responses__r where Core_IPS_Question_Master__r.Core_IPS_Add_to_Reporting__c=true) from Case where Id In: caseIdList1 limit 50000];
             }
             if(caseList1!=null && caseList1.size()>0){
                 for(Case cs: caseList1){
@@ -82,7 +79,7 @@ global class Core_IPS_CaseUpdateQueueable implements Queueable{
             try{ if(caseList2!=null && caseList2.size()>0){
                 Database.update(caseList2) ;
             }
-               }catch(Exception ex){ }
+               }catch(Exception ex){ System.debug('Error message:'+ ex.getMessage()+ex.getLineNumber());   }
             
             
         }
@@ -92,7 +89,7 @@ global class Core_IPS_CaseUpdateQueueable implements Queueable{
             try{
                 Database.update(caseIdList1);
             }
-            catch(Exception ex){ }
+            catch(Exception ex){  System.debug('Error message:'+ ex.getMessage()+ex.getLineNumber());}
             
         }
         if(caseIdList!=null && caseIdList.size()>0)

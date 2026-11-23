@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>56.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Migrated from the: Core_SetReminderDays workflow rule
+Workflow rule description: &quot;</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>Core_Update_1st_ReminderFormula</name>
+        <dataType>Date</dataType>
+        <expression>DATEVALUE( $Record.CreatedDate ) + 8</expression>
+    </formulas>
+    <formulas>
+        <name>Core_Update_2nd_ReminderFormula</name>
+        <dataType>Date</dataType>
+        <expression>DATEVALUE( $Record.CreatedDate ) + 15</expression>
+    </formulas>
+    <formulas>
+        <name>Core_Update_3rd_ReminderFormula</name>
+        <dataType>Date</dataType>
+        <expression>DATEVALUE( $Record.CreatedDate ) + 22</expression>
+    </formulas>
+    <formulas>
+        <name>Core_Update_4th_ReminderFormula</name>
+        <dataType>Date</dataType>
+        <expression>DATEVALUE( $Record.CreatedDate ) + 29</expression>
+    </formulas>
+    <label>Core_SetReminderDays</label>
+    <migratedFromWorkflowRuleName>Core_SetReminderDays</migratedFromWorkflowRuleName>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>mainUpdate</name>
+        <label>mainUpdate</label>
+        <locationX>176</locationX>
+        <locationY>335</locationY>
+        <inputAssignments>
+            <field>Core_1st_Reminder__c</field>
+            <value>
+                <elementReference>Core_Update_1st_ReminderFormula</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_2nd_Reminder__c</field>
+            <value>
+                <elementReference>Core_Update_2nd_ReminderFormula</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_3rd_Reminder__c</field>
+            <value>
+                <elementReference>Core_Update_3rd_ReminderFormula</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_4th_Reminder__c</field>
+            <value>
+                <elementReference>Core_Update_4th_ReminderFormula</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>mainUpdate</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>RecordTypeId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>012o00000015YqcAAE</stringValue>
+            </value>
+        </filters>
+        <object>Lead</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+</Flow>

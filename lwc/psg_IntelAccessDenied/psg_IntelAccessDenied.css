@@ -1,0 +1,58 @@
+.ad-outer-container {
+    background-image: -webkit-radial-gradient(circle at 50% 400%, #1C80Ca 20%, #002b63 100%);
+    background-image: radial-gradient(circle at 50% 400%, #1C80Ca 20%, #002b63 100%);
+    background-repeat: no-repeat;
+    color: var(--white);
+    position: relative;
+    width: 100%;
+  }
+  
+  .ad-inner-container {
+    padding: 2.5rem 1rem;
+    position: relative;
+    text-align: center;
+  }
+  
+  .ad-message {
+    padding: 3rem;
+    text-align: center;
+  }
+  
+  .ad-message-container {
+    background-color: var(--lightestGray);
+    width: 100%;
+  }
+  
+  .ad-right-content {
+    font-size: .9rem;
+    padding-top: 20px;
+  }
+  
+  
+  @media (min-width: 768px) {
+    .ad-right-content {
+      padding-top: 0;
+      position: absolute;
+      right: 0;
+      text-align: right;
+      top: 2.5rem;
+      width: 10rem;
+    }
+  }
+  
+  @media (min-width: 992px) {
+    .ad-outer-container {
+      background-image: -webkit-radial-gradient(circle at 50% 400%, #1C80Ca 20%, #002b63 100%);
+      background-image: radial-gradient(circle at 50% 400%, #1C80Ca 20%, #002b63 100%);
+    }
+    
+    .ad-right-content {
+      width: 15rem;
+    }
+  }
+  
+  @media (min-width: 1200px) {
+    .ad-right-content {
+      width: 20rem;
+    }
+  }

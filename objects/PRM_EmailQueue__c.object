@@ -249,11 +249,6 @@
                     <label>Guest</label>
                 </value>
                 <value>
-                    <fullName>Builder</fullName>
-                    <default>false</default>
-                    <label>Builder</label>
-                </value>
-                <value>
                     <fullName>Sponsor</fullName>
                     <default>false</default>
                     <isActive>false</isActive>
@@ -341,36 +336,10 @@
                     <default>false</default>
                     <label>TITANIUM</label>
                 </value>
-                <value>
-                    <fullName>PRESTIGE</fullName>
-                    <default>false</default>
-                    <label>PRESTIGE</label>
-                </value>
-                <value>
-                    <fullName>PARTNER</fullName>
-                    <default>false</default>
-                    <label>PARTNER</label>
-                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
     <label>IPA Email Queue</label>
-    <listViews>
-        <fullName>All</fullName>
-        <columns>NAME</columns>
-        <columns>PRM_Business_Event__c</columns>
-        <columns>PRM_PartnerRole__c</columns>
-        <columns>PRM_Status__c</columns>
-        <columns>PRM_Contact__c</columns>
-        <columns>CREATED_DATE</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>CREATED_DATE</field>
-            <operation>equals</operation>
-            <value>TODAY</value>
-        </filters>
-        <label>All</label>
-    </listViews>
     <nameField>
         <displayFormat>Eq-{00000}</displayFormat>
         <label>EmailQueue Name</label>

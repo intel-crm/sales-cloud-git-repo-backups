@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>APLIGO GMBH Partner User</description>
+    <description>Apligo GmbH Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>APLIGO GMBH Partner User</name>
+    <name>Apligo GmbH Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>EMP_11450288_Frank_Merten</parentRole>
+    <parentRole>ApligoGmbHPartnerManager</parentRole>
 </Role>

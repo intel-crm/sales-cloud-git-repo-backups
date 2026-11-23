@@ -11,66 +11,14 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Core_MDF_Activity_Subtype_Txt__c</fullName>
-        <externalId>false</externalId>
-        <fieldManageability>DeveloperControlled</fieldManageability>
-        <label>Activity Subtype</label>
-        <length>50</length>
-        <required>false</required>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_MDF_Activity_Type_Txt__c</fullName>
         <externalId>false</externalId>
         <fieldManageability>DeveloperControlled</fieldManageability>
         <label>Activity Type</label>
-        <length>50</length>
+        <length>255</length>
         <required>false</required>
         <type>Text</type>
         <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Is_Account_Based__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>To be checked true is program is account based(CMDF).</description>
-        <fieldManageability>DeveloperControlled</fieldManageability>
-        <inlineHelpText>To be checked true is program is account based(CMDF).</inlineHelpText>
-        <label>Is Account Based</label>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Is_EOLed_Ind__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>To maintain if a field is no more needed.</description>
-        <fieldManageability>DeveloperControlled</fieldManageability>
-        <label>Is EOLed</label>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Is_Inactive_For_Activity_Ind__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>This field specifies whether the metadata record is excluded on Activity UI or not.</description>
-        <fieldManageability>DeveloperControlled</fieldManageability>
-        <label>Is Inactive For Activity</label>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Is_Inactive_For_Claim_Ind__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>This field specifies whether the metadata record is excluded on Claim UI or not.</description>
-        <fieldManageability>DeveloperControlled</fieldManageability>
-        <label>Is Inactive For Claim</label>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Is_Proposal_Based_Ind__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>To be checked true if program is proposal based.</description>
-        <fieldManageability>DeveloperControlled</fieldManageability>
-        <inlineHelpText>To be checked true if program is proposal based.</inlineHelpText>
-        <label>Is proposal Based</label>
-        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>Core_MDF_Manadatory_Ind__c</fullName>
@@ -108,17 +56,10 @@
         <externalId>false</externalId>
         <fieldManageability>DeveloperControlled</fieldManageability>
         <label>Object API Field Name</label>
-        <length>50</length>
+        <length>255</length>
         <required>false</required>
         <type>Text</type>
         <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Picklist_ind__c</fullName>
-        <defaultValue>false</defaultValue>
-        <fieldManageability>DeveloperControlled</fieldManageability>
-        <label>Is Picklist</label>
-        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>Core_MDF_Program_Txt__c</fullName>
@@ -144,7 +85,6 @@
     <label>CCP KPI Fields</label>
     <listViews>
         <fullName>All_Fields</fullName>
-        <columns>MasterLabel</columns>
         <columns>Core_MDF_Module__c</columns>
         <columns>Core_MDF_Activity_Category_Txt__c</columns>
         <columns>Core_MDF_Activity_Type_Txt__c</columns>

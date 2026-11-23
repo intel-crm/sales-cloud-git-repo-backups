@@ -8,10 +8,10 @@
     </values>
     <values>
         <field>Subject__c</field>
-        <value xsi:type="xsd:string">License generation errors</value>
+        <value xsi:type="xsd:string">Can&apos;t find RNW product</value>
     </values>
     <values>
         <field>Type_of_License_Issue__c</field>
-        <value xsi:type="xsd:string">I am getting errors generating a license file</value>
+        <value xsi:type="xsd:string">I can&apos;t see/find my Renewal product</value>
     </values>
 </CustomMetadata>

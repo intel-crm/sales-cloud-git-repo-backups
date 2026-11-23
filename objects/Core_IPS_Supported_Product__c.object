@@ -128,33 +128,20 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <comment>Action override created by Lightning App Builder during activation.</comment>
-        <content>Supported_Product_Record_Page</content>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
         <formFactor>Large</formFactor>
-        <skipRecordTypeSelect>false</skipRecordTypeSelect>
-        <type>Flexipage</type>
+        <type>Default</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <comment>Action override created by Lightning App Builder during activation.</comment>
-        <content>Supported_Product_Record_Page</content>
         <formFactor>Small</formFactor>
-        <skipRecordTypeSelect>false</skipRecordTypeSelect>
-        <type>Flexipage</type>
-    </actionOverrides>
-    <actionOverrides>
-        <actionName>View</actionName>
         <type>Default</type>
     </actionOverrides>
     <allowInChatterGroups>false</allowInChatterGroups>
-    <compactLayoutAssignment>Supported_Layout</compactLayoutAssignment>
-    <compactLayouts>
-        <fullName>Supported_Layout</fullName>
-        <fields>Core_Product__c</fields>
-        <fields>Core_Product_Organization__c</fields>
-        <fields>Core_Flag_Status__c</fields>
-        <label>Supported Layout</label>
-    </compactLayouts>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
     <enableActivities>false</enableActivities>
     <enableBulkApi>true</enableBulkApi>
@@ -319,19 +306,6 @@ IF (CONTAINS(Core_Code_Name_Hidden_Insert_Spaces__c, &apos;NOCONA&apos;), SUBSTI
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>Core_IPS_Opportunity_PAR__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <label>Opportunity PAR</label>
-        <referenceTo>Core_IPS_Opportunity_PAR__c</referenceTo>
-        <relationshipLabel>Supported Products</relationshipLabel>
-        <relationshipName>Supported_Products</relationshipName>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Lookup</type>
     </fields>
     <fields>
         <fullName>Core_IPS_Public_Product__c</fullName>
@@ -592,14 +566,14 @@ Set to unique to ensure a single EPM ID can be added to a Support Org only once.
         <searchFilterFields>Core_Flag_Status__c</searchFilterFields>
         <searchFilterFields>Core_Product__c</searchFilterFields>
         <searchFilterFields>Core_Supported_Product_Name__c</searchFilterFields>
+        <searchResultsAdditionalFields>Core_Product_EPM_ID__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Core_Supported_Product_Name__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>Core_Product__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>Core_Flag_Status__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>Core_Product_Organization__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>Core_Support_Org_Name__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>Core_Product_Application__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Core_Code_Name__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Core_Supported_Product_Alias__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_Flag_Status__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_EOIS__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_Product_Organization__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_Support_Org_Name__c</searchResultsAdditionalFields>
     </searchLayouts>
     <sharingModel>ControlledByParent</sharingModel>
     <validationRules>
@@ -651,12 +625,6 @@ Set to unique to ensure a single EPM ID can be added to a Support Org only once.
         <errorMessage>Once set to EOIS, you cannot clear the EOIS value from a Supported Product.</errorMessage>
     </validationRules>
     <validationRules>
-        <fullName>Core_IPS_Restrict_009_SupportedProduct</fullName>
-        <active>true</active>
-        <errorConditionFormula>( ISNEW() || ISCHANGED( Core_Product_Organization__c ) )&amp;&amp;( Core_Product_Organization__c == $Label.Core_IPS_NSG_Support_Org_ID )</errorConditionFormula>
-        <errorMessage>This Support Org not in use, cannot add or update Product to this Org.</errorMessage>
-    </validationRules>
-    <validationRules>
         <fullName>Core_IPS_VPH_Check_PublicProduct</fullName>
         <active>true</active>
         <errorConditionFormula>Core_Product__r.Core_Hierarchy_ID__c &lt;&gt; &apos;43&apos;
@@ -685,50 +653,15 @@ Set to unique to ensure a single EPM ID can be added to a Support Org only once.
     </validationRules>
     <visibility>Public</visibility>
     <webLinks>
-        <fullName>Add_Case_Categories</fullName>
+        <fullName>Core_Add_Environment_Variables</fullName>
         <availability>online</availability>
-        <description>this is used for adding case caetgories on supported product</description>
         <displayType>button</displayType>
-        <encodingKey>UTF-8</encodingKey>
-        <hasMenubar>false</hasMenubar>
-        <hasScrollbars>true</hasScrollbars>
-        <hasToolbar>false</hasToolbar>
         <height>600</height>
-        <isResizable>true</isResizable>
-        <linkType>url</linkType>
-        <masterLabel>Add Case Categories</masterLabel>
-        <openType>newWindow</openType>
-        <position>none</position>
-        <protected>false</protected>
-        <showsLocation>false</showsLocation>
-        <showsStatus>false</showsStatus>
-        <url>/lightning/n/Add_Case_Categories?c__recordId={!Core_IPS_Supported_Product__c.Id}</url>
-    </webLinks>
-    <webLinks>
-        <fullName>Add_Environment_Details_LEX</fullName>
-        <availability>online</availability>
-        <description>TO Add EDQ To supprted Product</description>
-        <displayType>button</displayType>
-        <encodingKey>UTF-8</encodingKey>
-        <height>600</height>
-        <linkType>url</linkType>
-        <masterLabel>Add Environment Details</masterLabel>
+        <linkType>page</linkType>
+        <masterLabel>Add Environment Variables</masterLabel>
         <openType>sidebar</openType>
+        <page>Core_addEnvironmentDetailsToProduct</page>
         <protected>false</protected>
-        <url>/lightning/n/AddProductEDQ?c__recordId={!Core_IPS_Supported_Product__c.Id}</url>
-    </webLinks>
-    <webLinks>
-        <fullName>Copy_Categories_EDQ_Lex</fullName>
-        <availability>online</availability>
-        <description>this is used for copying categories and edq&apos;s to selected supported product</description>
-        <displayType>button</displayType>
-        <encodingKey>UTF-8</encodingKey>
-        <height>600</height>
-        <linkType>url</linkType>
-        <masterLabel>Copy Categories &amp; EDQ&apos;s</masterLabel>
-        <openType>sidebar</openType>
-        <protected>false</protected>
-        <url>/lightning/n/CopyCategories_EDQ?c__recordId={!Core_IPS_Supported_Product__c.Id}</url>
     </webLinks>
     <webLinks>
         <fullName>Core_Add_Issue_categories</fullName>
@@ -835,7 +768,7 @@ if (cnfrm) {
         <masterLabel>Set to EOIS</masterLabel>
         <openType>onClickJavaScript</openType>
         <protected>false</protected>
-        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/50.0/connection.js&quot;)} 
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/19.0/connection.js&quot;)} 
 
 // Get the record
 var SP = new sforce.SObject(&quot;Core_IPS_Supported_Product__c&quot;); 
@@ -882,5 +815,16 @@ else {
 		}	 
 }
 }</url>
+    </webLinks>
+    <webLinks>
+        <fullName>New_Core_Add_Environment_Variables</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <height>600</height>
+        <linkType>page</linkType>
+        <masterLabel>Add Environment Details</masterLabel>
+        <openType>sidebar</openType>
+        <page>Core_IPS_addEnvironmentDetailsToProduct</page>
+        <protected>false</protected>
     </webLinks>
 </CustomObject>

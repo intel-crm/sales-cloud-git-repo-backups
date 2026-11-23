@@ -39,7 +39,7 @@
         <name>Pricing_OwnerChange_Validation</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Exception Quota must be greater than zero. --></errorMessage>
+        <errorMessage><!-- Volume Exception Quota must be greater than zero. --></errorMessage>
         <name>Pricing_VolumeExceptionQuota_Validation</name>
     </validationRules>
 </CustomObjectTranslation>

@@ -4,28 +4,23 @@
     <encodingKey>UTF-8</encodingKey>
     <name>SCRRENGENRLREV</name>
     <style>none</style>
-    <subject>Verify your email address</subject>
-    <textOnly>Verify Your Email Address
+    <subject>Your Intel Partner Program Application</subject>
+    <textOnly>Verify your Email to Activate your Account
 
-{!PRM_Registration_Request__c.PRM_First_Name__c},
+Dear {!PRM_Registration_Request__c.PRM_First_Name__c},
 
-Thank you for submitting your Intel® Partner Alliance application.
-Before we can process it, we need to make sure this email address is yours. If your email address is not validated within 30 days, your application will be deleted from our system and you will be required to resubmit a new application for consideration.
+Thanks for joining Intel’s Partner program. Please click below to activate your account.
 
-
-Verify now
+Activate Your Account
 
 Can&apos;t access the link above?
-https://signinpp.intel.com/PasswordUpdate?var={!PRM_Registration_Request__c.PRM_EV_Token__c}&amp;culture=en&amp;target=https://wcm-ciqa.intel.com/content/www/{!PRM_Language_Culture_Mapping__mdt.PRM_Country_Cd__c}/{!PRM_Language_Culture_Mapping__mdt.PRM_Culture__c}/secure/partner/forms/ipa-account-search.html
+https://www.intel...
 
 
-Thank you,
-Your Intel® Partner Alliance team
-
-This message was sent to you as an important business communication related to your current relationship with Intel® Partner Alliance.
-© {!$Label.PRM_CurrentYear} Intel Corporation
-Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
-Privacy | Cookies</textOnly>
+Copyright © 2016 Intel Corporation. All rights reserved. Intel, the Intel logo are trademarks of Intel Corporation in the U.S. and/or other countries.
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. Intel.com
+You may unsubscribe at any time by updating your profile settings at: {!$Label.PRM_MyIntelProfileURL}
+Privacy | Cookies | *Trademarks</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

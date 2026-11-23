@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>G 2 DIGITAL VIDEO LTD Partner Manager</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>G 2 DIGITAL VIDEO LTD Partner Manager</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>G2DIGITALVIDEOLTDPartnerExecutive</parentRole>
+</Role>

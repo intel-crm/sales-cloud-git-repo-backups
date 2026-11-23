@@ -1,6 +1,5 @@
 ({
     callServer : function(component,method,callback,params) { 
-        var spinner = component.find("accountTransferSpinner");
         var action = component.get(method);
         if (params != undefined) {
             action.setParams(params);
@@ -14,21 +13,15 @@
                 var errors = response.getError();
                 if (errors){                    
                     if(errors[0] && errors[0].message== $A.get("$Label.c.Core_MDF_No_Available_Budget_Error")){
-                        var successToast = component.find('toast');
-                                          $A.util.addClass(successToast, 'slds-hide');
-                                          
-                        				  //hide spinner
-                                          $A.util.addClass(spinner, "slds-hide");
-                        
-                                          var errToast = component.find('errorToast');
-                                          component.set("v.errorMsg", errors[0].message);
-                                          $A.util.removeClass(errToast, 'slds-hide'); 
-                        
-                                          window.setTimeout($A.getCallback(function() {
-                                              if(component.isValid()) {
-                                                  $A.util.addClass(errToast, "slds-hide");
-                                              }
-                                          }), component.get("v.fadeTimeout"));
+                            component.find('partner_').reduce(function (validSoFar, inputCmp) {
+                                var name = inputCmp.get('v.name');            
+                                if(name=="fromAccount"){  
+                                    inputCmp.setCustomValidity(errors[0].message);
+                                    inputCmp.reportValidity();
+                                    component.set("v.error", "true");
+                                }
+                                
+                            },true);
                     }else{ 
                             this.handleServerExceptions(component,response.getReturnValue());
                         }
@@ -45,25 +38,23 @@
     
     BudgetChange:function(component, event, helper){
         var pbmId='';
-        var partnerFrom=component.get("v.fromAccountSelectedValue").Id;
+        var partnerFrom=component.get("v.selectedValue").Id;
         
-        var spinner = component.find("accountTransferSpinner");
-        //show spinner when Budget amount is getting load
-        $A.util.removeClass(spinner, "slds-hide");
         //disable the button
         component.set("v.button","true");
         
-        pbmId=component.get("v.budgetSelectedValue").Id;
+        component.find('partner_').reduce(function (validSoFar, inputCmp) {
+            var name = inputCmp.get('v.name'); 
+            if(name=="partnerAllocation"){
+                pbmId=inputCmp.get('v.value'); 
+            }
+        },true);
         
         //get TO list       
         helper.callServer(component,
                           "c.getToAccounts",
-                          function(response){
-                              component.set("v.toAccountList",response);
-                              component.set("v.disableToAccount",false);
-                                            },
-                          {fromAcctId:partnerFrom,
-                          budgetId:pbmId}
+                          function(response){component.set("v.partnersDataTo",response);},
+                          {fromAcctId:component.get("v.selectedValue").Id}  
                          );
         
        if(pbmId !='' && !$A.util.isUndefinedOrNull(pbmId)){
@@ -73,47 +64,44 @@
                               component.set("v.totalAmount",response);
                               var cmpTarget = component.find('availableAmount');
                               $A.util.removeClass(cmpTarget, 'slds-hide');                            
-                              //hide spinner
- 			      $A.util.addClass(spinner, "slds-hide");
                           },
                           {accountId:partnerFrom,pmbId:pbmId} 
                          );
         }
     },
     
-    
-    BudgetTransfer:function(component, event, helper){
+    BudgetTrasfer:function(component, event, helper){
      
-        var partnerFrom= component.get("v.fromAccountSelectedValue").Id;
+        var partnerFrom=component.get("v.selectedValue").Id;
         var partnerTo='';
         var budget='';
         var pbmId='';
-        var spinner = component.find("accountTransferSpinner");
-        //show spinner when transfer button is clicked
-        $A.util.removeClass(spinner, "slds-hide");
-        
-        if(partnerFrom !=null && partnerFrom != ''){
-            partnerTo= component.get("v.toAccountSelectedValue").Id;
-            if(partnerTo !=null && partnerTo != ''){
-                helper.callServer(component,
+        var allValid = component.find('partner_').reduce(function (validSoFar, inputCmp) {
+            var name = inputCmp.get('v.name');
+            if(name=='partnerTo'){
+                partnerTo=inputCmp.get('v.value');
+                if(partnerTo.length>0){
+                    helper.callServer(component,
                                       "c.accountIDNameMapping",
                                       function(response){ component.set("v.partnerTransferTo",response.Name);},
                                       {id:partnerTo} 
                                      );
-            }
-            component.find('partner_').reduce(function (validSoFar, inputCmp) {
-            var name = inputCmp.get('v.name'); 
-                if(name=="budget"){
-                    budget=inputCmp.get('v.value'); 
                 }
-            },true);
-            
-            pbmId=  component.get("v.budgetSelectedValue").Id;
+            }
+            else if(name=="budget")
+            {                     
+                budget=inputCmp.get('v.value'); 
+            }
+                else if(name=="partnerAllocation"){
+                    pbmId=inputCmp.get('v.value');                
+                }
             if(partnerFrom==partnerTo){
                 return false;
-            } 
+            }            
+            return validSoFar && inputCmp.get('v.validity').valid;                
+        },true);
         
-        if(partnerTo !=null && partnerTo != '' && budget !=null && budget != '' && pbmId !=null && pbmId != ''){            
+        if(allValid){            
             if(component.get("v.button")=="false"){
                 helper.callServer(component,
                                   "c.transferAllocationAmount",
@@ -128,26 +116,13 @@
                                           
                                           
                                           var cmpTarget = component.find('toast');
-                                          $A.util.removeClass(cmpTarget, 'slds-hide'); 
-                                          //hide spinner
- 					  $A.util.addClass(spinner, "slds-hide");
-
-                                      }
-                                      else if(response==$A.get("$Label.c.Core_MDF_NoIUPGMExists") || response==$A.get("$Label.c.Core_MDF_RestrictTransfer_from_Nodes_for_PrimaryRoles")){
-                                            //close other toasts 
-                                            var successToast = component.find('toast');
-                                            $A.util.addClass(successToast, 'slds-hide');
-                                            
-                                            var errToast = component.find('errorToast');
-                                            component.set("v.errorMsg", $A.get("$Label.c.Core_MDF_BudgetAccountValidation"));
-                                            $A.util.removeClass(errToast, 'slds-hide');                                      
-                                              //hide spinner
-                                              $A.util.addClass(spinner, "slds-hide");
-                                            window.setTimeout($A.getCallback(function() {
-                                                if(component.isValid()) {
-                                                    $A.util.addClass(errToast, "slds-hide");
-                                                }
-                                            }), component.get("v.fadeTimeout"));
+                                          $A.util.removeClass(cmpTarget, 'slds-hide');   
+                                          window.setTimeout($A.getCallback(function() {
+                                              if(component.isValid()) {
+                                                  $A.util.addClass(cmpTarget, "slds-hide");
+                                                  component.set("v.onSuccessAmount","");
+                                              }
+                                          }), component.get("v.fadeTimeout"));
                                       }
                                       else {
                                           //close other toasts 
@@ -157,8 +132,6 @@
                                           var errToast = component.find('errorToast');
                                           component.set("v.errorMsg", $A.get("$Label.c.Core_MDF_ApplicationErrorMessage"));
                                           $A.util.removeClass(errToast, 'slds-hide');                                      
-                                          //hide spinner
- 					  $A.util.addClass(spinner, "slds-hide");
                                           window.setTimeout($A.getCallback(function() {
                                               if(component.isValid()) {
                                                   $A.util.addClass(errToast, "slds-hide");
@@ -176,7 +149,6 @@
             component.set("v.errorMsg", $A.get("$Label.c.Core_MDF_fill_req_fields"));
             var errorToast = component.find('errorToast');        
             $A.util.removeClass(errorToast, "slds-hide");
-            }
         }
         
         
@@ -197,17 +169,13 @@
         var serverAmount=0;
         var currentAmount=component.get("v.budget");
         var pbmId='';
-        var toAccId='';
-        var currentAmountDecimalLength = (currentAmount != '' && parseFloat(currentAmount) % 1 != 0) ? parseFloat(currentAmount).toString().split(".")[1].length : '';
-        
-        if(currentAmount !=null && currentAmount != ''){
-            
-            pbmId=component.get("v.budgetSelectedValue").Id;
-            toAccId = component.get("v.toAccountSelectedValue").Id;
-            	if(pbmId!='' && pbmId!= null && toAccId!='' && toAccId!= null){
+        component.find('partner_') .reduce(function (validSoFar, inputCmp) {
+            var name = inputCmp.get('v.name');            
+            if(name=="partnerAllocation"){
+                pbmId=inputCmp.get('v.value'); 
+                if(pbmId!=''){
                     serverAmount=component.get("v.totalAmount");  
-                    if(parseFloat(currentAmount)<=parseFloat(serverAmount) && parseFloat(currentAmount)>0 && parseFloat(serverAmount)>0 
-                        && (currentAmountDecimalLength == '' || parseFloat(currentAmountDecimalLength) <= 2)){
+                    if(currentAmount<=serverAmount && currentAmount>0 && serverAmount>0 ){   
                         //enable the transfer button
                         component.set("v.button","false");  
                     }
@@ -216,36 +184,34 @@
                         component.set("v.button","true");
                     }
                 }
-                component.find('partner_') .reduce(function (validSoFar, inputCmp) {
-                    var name = inputCmp.get('v.name');
-                    if(name=="budget"){ 
-                        if(parseFloat(currentAmount)>parseFloat(component.get("v.totalAmount")) && 
-                           parseFloat(currentAmount)>0 && parseFloat(component.get("v.totalAmount"))>0){
-                           //disable the transfer button
-                            component.set("v.button","true");
-                            inputCmp.setCustomValidity($A.get("$Label.c.Core_MDF_Transfer_cannot_exceed"));
-                            inputCmp.reportValidity();
-                            component.set("v.amountTransferExceedsError", "true");
-                            
-                        }
-                    }
-    
-            },true);
-        }
+            }
+            
+            else if(name=="budget"){ 
+                if(currentAmount>component.get("v.totalAmount") && currentAmount>0 && component.get("v.totalAmount")>0){
+                   //disable the transfer button
+                   	component.set("v.button","true");
+                    inputCmp.setCustomValidity($A.get("$Label.c.Core_MDF_Transfer_cannot_exceed"));
+                    inputCmp.reportValidity();
+                    component.set("v.amountTransferExceedsError", "true");
+                }
+            }
+
+        },true);
     },
     
-    GetBudget:function(component,event, helper){
-        var selectedId='';
+    DropDownActivity:function(component,event, helper){
         
-        var spinner = component.find("accountTransferSpinner");
-        //show spinner when Budget is getting load
-        $A.util.removeClass(spinner, "slds-hide");
-        //check if Account record Account Transfer button is clicked
+        var dropDownComboEle=component.find("fromAccountDropDown");
+        $A.util.removeClass(dropDownComboEle,"slds-is-open");
+        
+        var selectedId='';
         if(component.get("v.autoSelected")=="false")
         {
-            var selectedVal=component.get("v.fromAccountSelectedValue");
-            //component.set("v.fromAccountSelectedValue",selectedVal);
-            selectedId=selectedVal.Id; 
+            var selectedItem = event.currentTarget;
+            var id = selectedItem.dataset.id;        
+            var selectedVal=component.get("v.searchAccRes")[id]; 
+            component.set("v.selectedValue",selectedVal);
+            selectedId=selectedVal.Id;  
         }
         else
         {
@@ -256,58 +222,49 @@
                           "c.getBudgetList",
                           function(response){
                               component.set("v.PartnerMarketingBudgetList",response);
-                              //hide spinner
- 							  $A.util.addClass(spinner, "slds-hide");
-                              component.set("v.disableBudget",false);
                           },
                           {fromAcctId:selectedId}  
                          );
         
     },
     ClearForm:function(component) {
-	        //clear the form
+        //clear the form
+       component.find('partner_').reduce(function (validSoFar, inputCmp) {
+            var name = inputCmp.get('v.name');            
+            if(name=="partnerAllocation"){
+                inputCmp.set('v.value',"");                 
+            }
+            else if(name=="fromAccount"){
+                inputCmp.set('v.value',"");                  
+            }
+        },true);
         
-	        //hide successfull toast message
-	        var successToast = component.find('toast');        
-	        $A.util.addClass(successToast, "slds-hide");
-        
-	        //hide error toast message
-	        var errorToast = component.find('errorToast');        
-	        $A.util.addClass(errorToast, "slds-hide");
-        
-	        component.set("v.fromAccountSelectedValue","");
-        
-	        //Clear Budget field
-	        var findPMBlwcComp=component.find('PMBComponent');
-	        findPMBlwcComp.inputClearValue();
-        
-	        component.set("v.PartnerMarketingBudgetList",[]);        
-        
-	        this.ClearBudgetField(component);
-        
-        //disable the button
-        component.set("v.button","true");
-        component.set("v.disableBudget",true);
-        
-	        this.ClearErrorMessages(component);
-    },
-    ClearBudgetField : function(component){
-        component.set("v.toAccountList", []);
-        component.set("v.totalAmount","")
-        var findlwcComp=component.find('toAccountComponent');
-        findlwcComp.inputClearValue();
-        this.ClearToAccountField(component);
+        //Hide Drop Down Combobox
+        var fromAccountDropDown=component.find("fromAccountDropDown");
+        $A.util.removeClass(fromAccountDropDown,"slds-is-open");
         
         //hiding Available Amount   
         var cmpTarget = component.find('availableAmount');
         $A.util.addClass(cmpTarget, 'slds-hide');
-        component.set("v.disableToAccount",true);
         
-    },
-    ClearToAccountField : function(component){
+        //hide successfull toast message
+        var successToast = component.find('toast');        
+        $A.util.addClass(successToast, "slds-hide");
+        
+        //hide error toast message
+        var errorToast = component.find('errorToast');        
+        $A.util.addClass(errorToast, "slds-hide");
+        
+        component.set("v.totalAmount","");
+        component.set("v.partnersDataFrom","");
+        component.set("v.PartnerMarketingBudgetList",null);
+        component.set("v.partnersDataTo",null);
         component.set("v.budget","");
-        component.set("v.toAccountSelectedValue","");
-        component.set("v.disableTransferAmount",true);
+        
+        //disable the button
+        component.set("v.button","true");
+        
+        this.ClearErrorMessages(component);
     },
     
     ClearErrorMessages: function(component){
@@ -340,6 +297,7 @@
                 $A.util.addClass(errToast, "slds-hide");
             }
         }), component.get("v.fadeTimeout"));
-    }  
+    }
+    
     
 })

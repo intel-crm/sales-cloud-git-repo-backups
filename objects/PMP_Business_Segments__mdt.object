@@ -7,7 +7,7 @@
         <externalId>false</externalId>
         <fieldManageability>DeveloperControlled</fieldManageability>
         <label>Business Segment Values</label>
-        <length>60</length>
+        <length>255</length>
         <required>false</required>
         <type>Text</type>
         <unique>false</unique>

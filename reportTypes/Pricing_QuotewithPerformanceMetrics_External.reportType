@@ -16,36 +16,73 @@
     <sections>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity_Submit_Or_Approved</displayNameOverride>
+            <field>Pricing_SW_Opportunity_Submit_Or_Approve__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Write In End Customer</displayNameOverride>
             <field>Pricing_Customer_Nm__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Approval Comments</displayNameOverride>
+            <field>Pricing_SW_Approval_Comments__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Record Type</displayNameOverride>
             <field>RecordType</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Deal Type</displayNameOverride>
             <field>Pricing_Deal_Type_Nm__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Rejected Date</displayNameOverride>
+            <field>Pricing_SW_Rejected_Date__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Project Name</displayNameOverride>
             <field>Pricing_Project_Name_Nm__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Pricing End Date</displayNameOverride>
             <field>Pricing_ShipmentEndDate_Dt__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Default Sales Rep</displayNameOverride>
+            <field>DefaultSalesRepID__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Partner Type</displayNameOverride>
+            <field>Pricing_FI_Partner_Type__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Intel Sales Rep Email</displayNameOverride>
             <field>Pricing_Intel_Sales_Rep_Email_Txt__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Intel Account Executive Email</displayNameOverride>
             <field>Pricing_Intel_Account_Exec_Email_Txt__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
@@ -57,46 +94,67 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Is Intel currently uses the endcustomer?</displayNameOverride>
+            <field>Pricing_Intel_Uses_End_Customer__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Pricing Start Date</displayNameOverride>
             <field>Pricing_ShipmentStDate_Dt__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Deal description</displayNameOverride>
+            <field>Pricing_Deal_description__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Proposal Due Date</displayNameOverride>
             <field>Pricing_Bid_Dt__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>End Customer Sales Geography</displayNameOverride>
             <field>Pricing_Region_Nm__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Application</displayNameOverride>
             <field>Pricing_Server_Deal_Type_Nm__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>End Customer Country/Region</displayNameOverride>
             <field>Pricing_End_Customer_Country_Nm__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Number</displayNameOverride>
             <field>Name</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Reference Request ID</displayNameOverride>
             <field>Pricing_Customer_Reference_Id__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Secondary Contact</displayNameOverride>
             <field>Pricing_SecondaryContact_Nm__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Created Date</displayNameOverride>
             <field>CreatedDate</field>
             <table>SBQQ__Quote__c</table>
         </columns>
@@ -114,13 +172,26 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Custom Action</displayNameOverride>
+            <field>Pricing_SW_Custom_Action__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Type</displayNameOverride>
             <field>Pricing_Program_Type_Nm__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Intel Response Requested By Date</displayNameOverride>
             <field>Pricing_Intel_Response_Requested_By_Date__c</field>
             <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Quote_Program_Nm__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
@@ -130,17 +201,26 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line Type</displayNameOverride>
             <field>Pricing_Program_Type_Nm__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Additional Quote Letter Recipients</displayNameOverride>
             <field>Pricing_AdditionalRecipients__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote</displayNameOverride>
             <field>Pricing_QuoteField__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Account Name</displayNameOverride>
+            <field>Pricing_SW_Account_Name__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
@@ -157,17 +237,61 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Approved/Rejected Date</displayNameOverride>
+            <field>Pricing_SW_Approved_Rejected_Date__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Market Segment</displayNameOverride>
             <field>Pricing_Market_Segment_values_Nm__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity Status</displayNameOverride>
             <field>Pricing_Opportunity_Status__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Pricing_Exclude_from_Volume_Excep_Quota__c</field>
+            <displayNameOverride>Quote ID</displayNameOverride>
+            <field>Id</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Partner Name</displayNameOverride>
+            <field>Pricing_Partner_Name_Nm__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Competition Assumptions</displayNameOverride>
+            <field>Pricing_Competition_Assumptions__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Consumption Countries</displayNameOverride>
+            <field>Pricing_Consumption_Countries__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Quote_Id__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Current End Customer Product Provider</displayNameOverride>
+            <field>Pricing_Current_EndCustomer_Product_Prvd__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opp Primary Quote Status Accepted</displayNameOverride>
+            <field>Pricing_SW_Opp_Primary_Quote_Accepted__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
@@ -177,17 +301,12 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Id</field>
+            <field>SBQQ__Account__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Pricing_Partner_Name_Nm__c</field>
-            <table>SBQQ__Quote__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Pricing_Quote_Id__c</field>
+            <field>Pricing_Exclude_from_Volume_Excep_Quota__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
@@ -200,96 +319,127 @@
     <sections>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Pricing FI OEM Name</displayNameOverride>
+            <field>Pricing_OEM_Name_FI__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Line Name</displayNameOverride>
             <field>Name</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Write In Product</displayNameOverride>
             <field>Pricing_Other_Product_Nm__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>First Submitted Date</displayNameOverride>
             <field>Pricing_Original_Submitted_Date_dt__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Processor Number</displayNameOverride>
             <field>Pricing_Processor_Number_Nm__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>System Model</displayNameOverride>
             <field>Pricing_OEM_System_Model_Nm__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>No. of Systems</displayNameOverride>
             <field>Pricing_Systems_qty__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>No. of CPUs per system</displayNameOverride>
             <field>Pricing_CPUs_per_system_qty__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Total Product Rebate</displayNameOverride>
+            <field>Pricing_Total_Product_Rebate__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quantity</displayNameOverride>
             <field>Pricing_Unit_Qty__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Single System Price Point</displayNameOverride>
             <field>Pricing_Single_System_Price_Amt__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Customer Standard Unit Price</displayNameOverride>
             <field>Pricing_OEM_Standard_Unit_Price_Amt__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Requested Unit Price</displayNameOverride>
             <field>Pricing_Req_Discounted_Unit_Price__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Total Bid without Discount</displayNameOverride>
             <field>Pricing_Total_Bid_without_Discount_Amt__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Total Intel Discount</displayNameOverride>
             <field>Pricing_Total_Intel_Discount_Amt__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Additional Discount</displayNameOverride>
             <field>Pricing_Additional_OEM_Discount_Amt__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Net Intel Bid Price</displayNameOverride>
             <field>Pricing_Net_IA_Bid_Price_Amt__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Intel Discount</displayNameOverride>
             <field>Pricing_Intel_Discount_Pct__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Deal ID</displayNameOverride>
             <field>Pricing_Deal_RFQ_Id__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Customer Discount</displayNameOverride>
             <field>Pricing_OEM_Discount_Pct__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Intel Bid Discount</displayNameOverride>
             <field>Pricing_IA_Bid_Discount_Pct__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
@@ -301,106 +451,133 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Write In Competitor Product</displayNameOverride>
             <field>Pricing_Other_Competitor_Product_Nm__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Competitor Name</displayNameOverride>
             <field>Pricing_Competitor_OEM_Nm__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Competitor Product Provider</displayNameOverride>
             <field>Pricing_comp_Product_Provider_nm__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Competitor System Model</displayNameOverride>
             <field>Pricing_Competitor_System_Model_Nm__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Competitor No. of Systems</displayNameOverride>
             <field>Pricing_Competitor_Systems_Cnt__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Competitor No. of Units per System</displayNameOverride>
             <field>Pricing_Comp_CPUs_per_system_Cnt__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Competitor Quantity</displayNameOverride>
             <field>Pricing_Comp_Units_Cnt__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Competitor Single System Price</displayNameOverride>
             <field>Pricing_Comp_Single_System_Price_Amt__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Competitor Total without discount</displayNameOverride>
             <field>Pricing_Comp_Total_without_discount_Amt__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Product Name</displayNameOverride>
             <field>SBQQ__ProductName__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Competitive Bid Discount</displayNameOverride>
             <field>Pricing_Competitive_Bid_Discount_Pct__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Competitor Additional Discount</displayNameOverride>
             <field>Pricing_Comp_Additional_OEM_Disc_Amt__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Vertical Segment</displayNameOverride>
+            <field>Pricing_Product_VerticalSegment__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Net Competitor Bid Price</displayNameOverride>
             <field>Pricing_Net_Comp_Bid_Price_Amt__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Approved ECAP Price</displayNameOverride>
             <field>Pricing_ECAP_Price_Amt__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Additional Comments</displayNameOverride>
             <field>Pricing_Additional_Comments_Txt__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>End Customer Country/Region</displayNameOverride>
             <field>Pricing_End_Customer_Country__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line Pricing End Date</displayNameOverride>
             <field>Pricing_End_Date_dt__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>New Quantity</displayNameOverride>
             <field>Pricing_New_Quantity_qty__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Approved Pricing Start Date</displayNameOverride>
             <field>Pricing_Approved_Start_Date_Dt__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Approved Pricing End Date</displayNameOverride>
             <field>Pricing_Approved_End_Date_Dt__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Approved Quantity</displayNameOverride>
             <field>Pricing_Approved_Unit_Qty__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
@@ -412,41 +589,49 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote</displayNameOverride>
             <field>SBQQ__Quote__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line Number</displayNameOverride>
             <field>Pricing_Quote_Line_Number__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Account</displayNameOverride>
             <field>Pricing_OEM_Account_Nm__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Write In End Customer</displayNameOverride>
             <field>Pricing_End_Customer_Nm__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Project Name</displayNameOverride>
             <field>Pricing_Project_Nm__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>End Customer Sales Geography</displayNameOverride>
             <field>Pricing_Region_Nm__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Application</displayNameOverride>
             <field>Pricing_Server_Deal_Type_Nm__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Created Date</displayNameOverride>
             <field>CreatedDate</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
@@ -458,66 +643,85 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Additional T&apos;s &amp; C&apos;s</displayNameOverride>
             <field>Pricing_Additional_T_C_s_Txt__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing End Date (for consumption)</displayNameOverride>
             <field>Pricing_Billing_End_Date_Dt__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Start Date (for consumption)</displayNameOverride>
             <field>Pricing_Billing_Start_Date_Dt__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>New Requested Price</displayNameOverride>
             <field>Pricing_Request_Discount_Unit_Price_qty__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Effective Pricing Start Date</displayNameOverride>
             <field>Pricing_Revised_Pricing_Start_Date_dt__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Payable Quantity</displayNameOverride>
+            <field>Pricing_Payable_Quantity__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Effective Pricing Start Date</displayNameOverride>
             <field>Pricing_Revised_Pricing_Start_Date_D_dt__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Deal Status</displayNameOverride>
             <field>Pricing_Deal_RFQ_Status_Nm__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Integration Status</displayNameOverride>
             <field>Pricing_Integration_Status_Nm__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Error Messages</displayNameOverride>
             <field>Pricing_Error_Messages__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Approved Pricing End Date</displayNameOverride>
             <field>Pricing_Approved_End_Date_Dup_Dt__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Approved Pricing Start Date</displayNameOverride>
             <field>Pricing_Approved_Start_Date_Dup_Dt__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Approved Quantity</displayNameOverride>
             <field>Pricing_Approved_Unit_Dup_Qty__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Approved ECAP Price</displayNameOverride>
             <field>Pricing_ECAP_Price_Dup_Amt__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
@@ -529,101 +733,127 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Deal ID</displayNameOverride>
             <field>Pricing_Deal_RFQ_Dup_Id__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Submitted Date</displayNameOverride>
             <field>Pricing_Last_Submitted_Date_dt__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Approved/Rejected Date</displayNameOverride>
             <field>Pricing_Last_Approved_Date_dt__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Change Request</displayNameOverride>
             <field>Pricing_New_Change_Request_cb__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Unified Global End Customer Name</displayNameOverride>
             <field>Pricing_UnifiedEndCustomer__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>End Customer Name</displayNameOverride>
             <field>Pricing_EndCustomer_Nm__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line</displayNameOverride>
             <field>Pricing_QuoteLineField__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Consumption Country</displayNameOverride>
             <field>Pricing_Consumption_Country__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Family Name</displayNameOverride>
             <field>Pricing_Family_Name_Nm__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Forecast Product Name</displayNameOverride>
             <field>Pricing_DealProduct_Nm__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Density (GB)</displayNameOverride>
             <field>Pricing_Density__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Consumption Platform</displayNameOverride>
             <field>Pricing_Consumption_Platform__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>No. of Units per system</displayNameOverride>
             <field>Pricing_Units_per_system_qty__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Paired CPU</displayNameOverride>
+            <field>Pricing_CPU_Txt__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Requested Discount Unit Price/GB</displayNameOverride>
             <field>Pricing_ReqDiscUnitPricePerGB_Amt__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Consumption Region</displayNameOverride>
             <field>Pricing_Consumption_Region__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>No. of CPUs per System</displayNameOverride>
             <field>Pricing_CPU_Quantity_per_System_qty__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Competitor Density (GB)</displayNameOverride>
             <field>Pricing_Comp_Density_Nbr__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Competitor Quantity</displayNameOverride>
             <field>Pricing_Competitor_Quantity_nbr__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Consumption Sales Geo</displayNameOverride>
             <field>Pricing_Consumption_Sale_Geo__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quantity_12</displayNameOverride>
             <field>Pricing_Total_Volume_Qty__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
@@ -635,16 +865,25 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Competitor Single System Price Point</displayNameOverride>
             <field>Pricing_Comp_Unit_Price_Amt__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Competitor Unit Price/GB</displayNameOverride>
             <field>Pricing_CompUnitPricePerGB_Amt__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Description</displayNameOverride>
+            <field>Pricing_SW_Description_hyperlink__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>POC testing results (performance)</displayNameOverride>
             <field>Pricing_POC_testing_results_Txt__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
@@ -656,121 +895,151 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Server Integration</displayNameOverride>
             <field>Pricing_Server_Integration_Nm__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Workload</displayNameOverride>
             <field>Pricing_Workload_Txt__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Volume by Quarter AND Reasoning</displayNameOverride>
             <field>Pricing_VolumeByQuarterAndReasoning_Txt__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>DRAM Density (GB)</displayNameOverride>
             <field>Pricing_DRAM_Density_Nbr__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>No. of DRAM per System</displayNameOverride>
             <field>Pricing_DRAM_per_System_qty__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Form Factor</displayNameOverride>
             <field>Pricing_Form_Factor_Nm__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Core Count</displayNameOverride>
             <field>pricing_core_count__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>TDP</displayNameOverride>
             <field>pricing_TDP__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Program</displayNameOverride>
             <field>Pricing_Quote_Program_Nm__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Comp Score</displayNameOverride>
             <field>Pricing_Comp_SKU_Performance_Nbr__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Intel Score</displayNameOverride>
             <field>Pricing_Intel_SKU_Performance_Nbr__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Performance Metric Used</displayNameOverride>
             <field>Pricing_Performance_Metric_Nm__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Write In Performance Metric</displayNameOverride>
             <field>Pricing_Write_In_Performance_Metric_Nm__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Primary Contact Email</displayNameOverride>
             <field>Pricing_Primary_Contact_Email__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Rejection Reason</displayNameOverride>
             <field>Pricing_Rejection_Reason__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Lost Reason</displayNameOverride>
             <field>Pricing_Lost_Reason_Nm__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line Pricing Start Date</displayNameOverride>
             <field>Pricing_Start_Date_dt__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Total Requested Quantity</displayNameOverride>
             <field>Pricing_Quote_Total_Requested_Quantity__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Consumption Segment</displayNameOverride>
             <field>Pricing_Consumption_Segment__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>No. of GPUs</displayNameOverride>
             <field>Pricing_No_of_GPUs__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>No. of GPUs per system</displayNameOverride>
             <field>Pricing_No_of_GPUs_per_system_nbr__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Write In Paired CPU</displayNameOverride>
             <field>Pricing_Write_In_Paired_CPU_Nm__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Competitor No. of GPUs</displayNameOverride>
             <field>Pricing_Competitor_No_of_GPUs__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Paired CPU</displayNameOverride>
+            <field>Pricing_Paired_CPU_Nm__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Competitor No. of GPUs per System</displayNameOverride>
             <field>Pricing_Comp_No_of_GPUs_per_Sys__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
@@ -781,33 +1050,20 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Competitor Paired CPU</displayNameOverride>
             <field>Pricing_Competitor_Paired_CPU_Nm__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line ID</displayNameOverride>
             <field>Id</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Rejection/Cancellation Comments</displayNameOverride>
             <field>Pricing_Rejection_Comments_nm__c</field>
-            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <displayNameOverride>Paired CPU Name</displayNameOverride>
-            <field>Pricing_Paired_CPU_Nm__c</field>
-            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Pricing_Payable_Quantity__c</field>
-            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Pricing_CPU_Txt__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <masterLabel>Quote Line</masterLabel>
@@ -815,36 +1071,43 @@
     <sections>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Performance Metrics Used</displayNameOverride>
             <field>Pricing_Performance_Metric_Nm__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r.Performance_Metrics__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Comp Score</displayNameOverride>
             <field>Pricing_Comp_SKU_Performance_Nbr__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r.Performance_Metrics__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Intel Score</displayNameOverride>
             <field>Pricing_Intel_SKU_Performance_Nbr__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r.Performance_Metrics__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Weighting(%)</displayNameOverride>
             <field>Pricing_Weighting_Pct__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r.Performance_Metrics__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Other Text</displayNameOverride>
             <field>Pricing_Other_Nm__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r.Performance_Metrics__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line</displayNameOverride>
             <field>Pricing_Quote_Line__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r.Performance_Metrics__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Performance Metric Id</displayNameOverride>
             <field>Name</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r.Performance_Metrics__r</table>
         </columns>
@@ -856,9 +1119,159 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Created Date</displayNameOverride>
             <field>CreatedDate</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r.Performance_Metrics__r</table>
         </columns>
         <masterLabel>Performance Metrics</masterLabel>
+    </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>is Dwin</displayNameOverride>
+            <field>core_cpq_is_Dwin_cb__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>is Budgetary</displayNameOverride>
+            <field>core_cpq_is_Budgetary_cb__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>is Transfer Pricing</displayNameOverride>
+            <field>core_cpq_is_Transfer_Pricing_cb__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_SW_Quote_Product_Type__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_SW_CustomerAccPayableDeptPhEmail__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_SW_Customer_Contact_Phone_Number__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_SW_Customer_Purchase_Order_No__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_ReRouting_Reason_Nm__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Quote_Routing_Category_Nm__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Pricing_Manager_Group_Name_Txt__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Pricing_Manager_Group__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Pricing_Manager_Group_Label_Txt__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Route_Rule_Id_Txt__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Route_Rule_Name__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Test_End_Customer_Country__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Test_End_Customer_Sales_Geo__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <masterLabel>Quotes</masterLabel>
+    </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Product_Series__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Product_Series_Check__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Product_Series_Name__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_SW_PLI_Approval_Discount__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Item_Id__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Change_Request_Type__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Change_RequestType__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Application_Agent_Status__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Rationale_for_Pricing__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Change_Request_Ind__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_HPC_Eligible_Pricing_Envelope__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_NonHPC_Eligible_Pricing_Envelope__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <masterLabel>Quote Lines</masterLabel>
     </sections>
 </ReportType>

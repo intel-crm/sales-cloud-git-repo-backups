@@ -1,0 +1,17 @@
+<template>
+    <template if:true={displayText}>
+        <div class="status-text" style="color:red;text-align:center">
+            <p>{label.PCC_DraftStatusMessage}</p>
+        </div>
+        
+
+    </template>
+    <template if:true={displayDealStatus}>
+        <div class="status-text" style="color: black;font-weight: bold;text-align:center;background-color: #F4D03F">
+            <p>{label.PCC_DealDraftStatusMessage}</p> 
+             <!-- <p>Your Deal Registration form is in Draft status. Please continue to add Products and Submit for Approval</p>  -->
+        </div>
+        
+    </template>
+
+</template>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>60.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <customErrors>
+        <name>Custom_Error_Message_1</name>
+        <label>Custom Error Message 1</label>
+        <locationX>401</locationX>
+        <locationY>656</locationY>
+        <customErrorMessages>
+            <errorMessage>Sand -Deal Registration {!$Record.Name}  can&apos;t be deleted.</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <decisions>
+        <name>Deal_Status_is_Reset_to_Draft</name>
+        <label>Is deal Reg</label>
+        <locationX>709</locationX>
+        <locationY>490</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Is_Deal_Status_Draft</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.PCC_Registration_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Deal Registration</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Custom_Error_Message_1</targetReference>
+            </connector>
+            <label>Is Deal Status Draft ?</label>
+        </rules>
+        <rules>
+            <name>Outcome_2_of_Is_deal_Reg</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_Design_Registration_Status_Nm__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Draft</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Accepted_By_Id__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Outcome 2 of Is deal Reg</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <formulas>
+        <name>Error_Icon</name>
+        <dataType>String</dataType>
+        <expression>&quot;Deal Registration&quot; &amp;BR()&amp; &quot;Delete&quot;&amp; &quot;&lt;img src =&apos;/resource/1712297049000/errorIcon?&apos;/&gt;&quot;</expression>
+    </formulas>
+    <interviewLabel>PCC_Delete_DraftDeal {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>PCC_Delete_DraftDeal</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>534</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>Deal_Status_is_Reset_to_Draft</targetReference>
+        </connector>
+        <object>Core_Design_Registration__c</object>
+        <recordTriggerType>Delete</recordTriggerType>
+        <triggerType>RecordBeforeDelete</triggerType>
+    </start>
+    <status>Draft</status>
+    <textTemplates>
+        <name>errorIcon_Updated</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>&lt;p&gt;&lt;strong&gt;Hi&lt;/strong&gt;&lt;img src=&quot;https://intel--crmdevsls3.sandbox.file.force.com/sfc/servlet.shepherd/version/download/068Df000001bV6O?asPdf=false&amp;amp;operationContext=CHATTER&quot; alt=&quot;errorIcon.png&quot;&gt;&lt;/p&gt;</text>
+    </textTemplates>
+</Flow>

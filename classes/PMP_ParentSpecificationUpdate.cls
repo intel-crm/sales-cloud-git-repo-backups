@@ -11,7 +11,7 @@
 * Infosys - Sangeetha Ganta     02/26/2019                    US247100. Update the Parent Specification based on Active Flag values.
 *****************************************************************************************************************************************/
 
-public with sharing class PMP_ParentSpecificationUpdate {
+public class PMP_ParentSpecificationUpdate {
     
     public static void updateParentSpec(List<PMP_Specification__c> specs){
       
@@ -25,49 +25,54 @@ public with sharing class PMP_ParentSpecificationUpdate {
             offspecIds.add(offspec.id);
         }
         
+        for(PMP_Specification__c osc: [Select Id,PMP_Partner_Product_Specification_Id__c,PMP_Partner_Product_Specification_Key__c from PMP_Specification__c])
+        {
         
-            for(PMP_Specification__c osc: [Select Id,PMP_Partner_Product_Specification_Id__c,PMP_Partner_Product_Specification_Key__c from PMP_Specification__c where PMP_Partner_Product_Specification_Id__c != null])
-            {
-            
-              OfferingSpecIdMap.put(osc.PMP_Partner_Product_Specification_Key__c,osc.Id); 
-            }
-            
-             for(PMP_Specification__c ospec: [Select Id,PMP_Active_Ind__c,PMP_Parent_Specification_Id__c,PMP_Partner_Product_Specification_Id__c ,PMP_Product_Parent_Specification_Id__c,PMP_Partner_Product_Specification_Key__c from PMP_Specification__c where id in :offspecIds])
-            {
-              if(ospec.PMP_Product_Parent_Specification_Id__c != null)
+          OfferingSpecIdMap.put(osc.PMP_Partner_Product_Specification_Key__c,osc.Id); 
+        }
+        
+         for(PMP_Specification__c ospec: [Select Id,PMP_Active_Ind__c,PMP_Parent_Specification_Id__c,PMP_Partner_Product_Specification_Id__c ,PMP_Product_Parent_Specification_Id__c,PMP_Partner_Product_Specification_Key__c from PMP_Specification__c where id in :offspecIds])
+        {
+          if(ospec.PMP_Product_Parent_Specification_Id__c != null)
+          {
+              if(ospec.PMP_Active_Ind__c == true)
               {
-                  if(ospec.PMP_Active_Ind__c == true)
+                  String Key = ((ospec.PMP_Product_Parent_Specification_Id__c).deleteWhitespace()).toLowerCase();
+                  if(OfferingSpecIdMap.get(key) != null)
                   {
-                      String Key = ((ospec.PMP_Product_Parent_Specification_Id__c).deleteWhitespace()).toLowerCase();
-                      if(OfferingSpecIdMap.get(key) != null)
-                      {
-                             ospec.PMP_Parent_Specification_Id__c = OfferingSpecIdMap.get(key);
-                        }
-                  }
-                  else
-                  {
-                      ospec.PMP_Parent_Specification_Id__c = null;
-                  }
-                
-              }     
-                uploadOffSpec.add(ospec);
-            }
+                 		 ospec.PMP_Parent_Specification_Id__c = OfferingSpecIdMap.get(key);
+            		}
+              }
+              else
+              {
+                  ospec.PMP_Parent_Specification_Id__c = null;
+              }
             
-            if(uploadOffSpec.size()>0)
-            {
-                try
-                {
-                    if(Schema.sObjectType.PMP_Specification__c.isUpdateable()) {
-                        update uploadOffSpec;
-                    }
-                }
-                catch(Exception exp)
-                {
-                   //System.debug('Error occured from class Core_PMP_ParentSpecificationUpdate due to '+exp.getMessage());  
-                }
-                
+          }    
+          
+            
+           /* if(ospec.Core_PMP_Locale__c != 'en_US'){
+                String EngKey = (ospec.PMP_Partner_Product_Specification_Id__c  +'|en_US').toLowerCase();
+                    if(OfferingSpecIdMap.get(EngKey) != null){
+                ospec.Core_PMP_English_Specification__c = OfferingSpecIdMap.get(EngKey);
             }
-     	        
+            }*/
+            
+            uploadOffSpec.add(ospec);
+        }
+        
+        if(uploadOffSpec.size()>0)
+    {
+        try
+        {
+        update uploadOffSpec;
+        }
+        catch(Exception exp)
+        {
+           System.debug('Error occured from class Core_PMP_ParentSpecificationUpdate due to '+exp.getMessage());  
+        }
+        
+    }
   }
     
 }

@@ -42,6 +42,22 @@
                 <behavior>Edit</behavior>
                 <field>core_cpq_margin_geo_txt__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>core_cpq_quote_rejected_date__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>core_cpq_is_Dwin_cb__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>core_cpq_is_Budgetary_cb__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>core_cpq_is_Transfer_Pricing_cb__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -174,39 +190,59 @@
             <sortOrder>0</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>SBQQ__EditLines</actionName>
-            <actionType>CustomButton</actionType>
+            <actionName>SBQQ__Quote__c.PSG_Clone</actionName>
+            <actionType>QuickAction</actionType>
             <sortOrder>1</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>Delete</actionName>
-            <actionType>StandardButton</actionType>
+            <actionName>SBQQ__EditLines</actionName>
+            <actionType>CustomButton</actionType>
             <sortOrder>2</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>FeedItem.TextPost</actionName>
+            <actionName>SBQQ__Quote__c.PSG_Revise</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>3</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>Share</actionName>
+            <actionName>Delete</actionName>
             <actionType>StandardButton</actionType>
             <sortOrder>4</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
+            <actionName>FeedItem.TextPost</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>5</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>Share</actionName>
+            <actionType>StandardButton</actionType>
+            <sortOrder>6</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
             <actionName>Preview_Approval</actionName>
             <actionType>CustomButton</actionType>
-            <sortOrder>5</sortOrder>
+            <sortOrder>7</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
             <actionName>Recall_Approval</actionName>
             <actionType>CustomButton</actionType>
-            <sortOrder>6</sortOrder>
+            <sortOrder>8</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
             <actionName>Submit_for_Approval</actionName>
             <actionType>CustomButton</actionType>
-            <sortOrder>7</sortOrder>
+            <sortOrder>9</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>SBQQ__Quote__c.PSG_ChangeStatus</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>10</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>SBQQ__Quote__c.Create_Order</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>11</sortOrder>
         </platformActionListItems>
     </platformActionList>
     <quickActionList>
@@ -239,11 +275,36 @@
         <fields>core_cpq_quote_line_type_txt__c</fields>
         <fields>SBQQ__Quantity__c</fields>
         <fields>price_suggested_resale_amt__c</fields>
+        <fields>core_cpq_PRID__c</fields>
         <fields>price_brokencost_amt__c</fields>
-        <fields>core_cpq_intel_margin_pct__c</fields>
         <fields>core_cpq_distributor_margin_pct__c</fields>
+        <fields>price_msvp_l1_amt__c</fields>
         <fields>price_msvp_l2_amt__c</fields>
         <relatedList>SBQQ__QuoteLine__c.SBQQ__Quote__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>core_cpq_active_pricing_cb__c</fields>
+        <fields>core_cpq_device__c</fields>
+        <fields>core_cpq_type__c</fields>
+        <fields>core_cpq_prid_eligiblity_date_dt__c</fields>
+        <fields>core_cpq_price_start_date_dt__c</fields>
+        <fields>core_cpq_price_end_date_dt__c</fields>
+        <fields>core_cpq_quantity_eau_nbr__c</fields>
+        <fields>core_cpq_lower_bound_qty_nbr__c</fields>
+        <fields>core_cpq_upper_bound_qty_nbr__c</fields>
+        <relatedList>price_prid__c.core_cpq_quote__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>core_cpq_dpa_aln_no_nbr__c</fields>
+        <fields>core_cpq_sap_end_customer_nm__c</fields>
+        <fields>core_cpq_cm_name_nm__c</fields>
+        <fields>core_cpq_comments_txt__c</fields>
+        <fields>core_cpq_quote_approved_by__c</fields>
+        <fields>core_cpq_dollar_change_flag_ind__c</fields>
+        <fields>core_cpq_status_txt__c</fields>
+        <relatedList>core_cpq_dpa_aln__c.core_cpq_active_quote__c</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
@@ -272,6 +333,19 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
+        <relatedList>core_cpq_disty_visibility__c.core_cpq_quote__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>competitor_name_pl__c</fields>
+        <fields>competitor_part_pl__c</fields>
+        <fields>core_cpq_competitor_part__c</fields>
+        <fields>cpq_core_quantity__c</fields>
+        <fields>core_cpq_price__c</fields>
+        <relatedList>Competitor_Info__c.core_cpq_quote__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
         <relatedList>SBQQ__QuoteLineGroup__c.SBQQ__Quote__c</relatedList>
     </relatedLists>
     <relatedLists>
@@ -293,13 +367,26 @@
         <fields>NAME</fields>
         <relatedList>SBQQ__QuoteLine__c.core_cpq_parent_quote__c</relatedList>
     </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>core_cpq_prev_status__c</fields>
+        <fields>core_cpq_status__c</fields>
+        <fields>core_cpq_start_user__c</fields>
+        <fields>core_cpq_start_date__c</fields>
+        <fields>core_cpq_end_user__c</fields>
+        <fields>core_cpq_end_date__c</fields>
+        <fields>core_cpq_duration_minutes__c</fields>
+        <fields>core_cpq_approval_chain__c</fields>
+        <fields>core_cpq_bm_level__c</fields>
+        <relatedList>core_cpq_quote_history__c.core_cpq_quote__c</relatedList>
+    </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>
     <showInteractionLogPanel>false</showInteractionLogPanel>
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h3b00000flKKa</masterLabel>
+        <masterLabel>00h2D000000l3pn</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

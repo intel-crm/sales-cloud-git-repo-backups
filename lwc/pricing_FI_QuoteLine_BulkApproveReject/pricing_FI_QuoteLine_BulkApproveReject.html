@@ -338,9 +338,9 @@
 												</td>
 
 												<td scope="col" class="slds-size_3-of-10 centerText">
-													<lightning-input type="text" title={qli.Pricing_pm_approval_comments_nm__c}
-														value={qli.Pricing_pm_approval_comments_nm__c} data-id={qli.Id}
-														maxlength="20000" onchange={handleApproveComments}
+													<lightning-input type="text" title={qli.approveRejectComments}
+														value={qli.approveRejectComments} data-id={qli.Id}
+														maxlength="20000" onchange={handleApproveRejectComments}
 														variant="label-hidden">
 													</lightning-input>
 												</td>
@@ -680,9 +680,9 @@
 												</td>
 
 												<td scope="col" class="slds-size_3-of-10 centerText">
-													<lightning-input type="text" title={qli.Pricing_Rejection_Comments_nm__c}
-														value={qli.Pricing_Rejection_Comments_nm__c} data-id={qli.Id}
-														maxlength="1000" onchange={handleRejectComments}
+													<lightning-input type="text" title={qli.approveRejectComments}
+														value={qli.approveRejectComments} data-id={qli.Id}
+														maxlength="1000" onchange={handleApproveRejectComments}
 														variant="label-hidden">
 													</lightning-input>
 												</td>

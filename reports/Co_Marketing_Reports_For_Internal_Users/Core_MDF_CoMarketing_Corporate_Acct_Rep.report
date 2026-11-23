@@ -6,19 +6,19 @@
     <columns>
         <field>Account$Name</field>
     </columns>
-    <description>This report will show the list of intel accounts with the corresponding virtual corp accounts grouped by program.</description>
+    <description>This report will show the list of top virtual accounts with their Parent Fund account</description>
     <filter>
         <criteriaItems>
             <column>Account$RecordType</column>
             <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
+            <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Account.Core_MDF_Co_Marketing</value>
         </criteriaItems>
         <criteriaItems>
             <column>Account$Core_MDF_Parent_Fund_Account__c.RecordType</column>
             <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
+            <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Account.Mastered_Account</value>
         </criteriaItems>
@@ -37,7 +37,7 @@
     </params>
     <reportType>Core_MDF_Co_Marketing_Corporate_Accounts__c</reportType>
     <scope>organization</scope>
-    <showDetails>true</showDetails>
+    <showDetails>false</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>

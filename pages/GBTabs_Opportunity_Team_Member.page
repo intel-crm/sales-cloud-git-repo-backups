@@ -1,0 +1,27 @@
+<apex:page standardController="OpportunityTeamMember" showHeader="false" sidebar="false" title="Opportunity with Team Member Grid">
+	<GBLite:TabbedPageComponent pageAPIName="GBTabs_Opportunity_Team_Member" customJsIds="" customCssIds="">
+	<GBLite:EmbedComponent baseGridUrl="{!$Page.GBLite__Grid}" />
+		<script>
+			var pageDefinition = {
+	"pageAPIName": "GBTabs_Opportunity_Team_Member",
+	"showSidebar": false,
+	"showHeader": false,
+	"height": "",
+	"object": "OpportunityTeamMember",
+	"globalButtons": true,
+	"description": "",
+	"selectedCustomJSIds": [],
+	"selectedCustomCSSIds": [],
+	"id": 1695899755884,
+	"tabs": [
+		{
+			"id": 1695899755884,
+			"content": "{!gridPage}gname=Opportunity Team Member&amp;sh=0&amp;sfname=default",
+			"name": "Opportunity Team Member"
+		}
+	],
+	"name": "Opportunity with Team Member Grid"
+};
+		</script>
+	</GBLite:TabbedPageComponent>
+</apex:page>

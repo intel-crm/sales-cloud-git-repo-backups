@@ -8,6 +8,7 @@
     <excludeButtons>CreateSalesChannel</excludeButtons>
     <excludeButtons>CreateSalesSummaries</excludeButtons>
     <excludeButtons>Delete</excludeButtons>
+    <excludeButtons>OpenSlackRecordChannel</excludeButtons>
     <excludeButtons>OpportunityMultiAddToCadence</excludeButtons>
     <excludeButtons>SendEmail</excludeButtons>
     <excludeButtons>Share</excludeButtons>
@@ -35,6 +36,10 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Core_Approval_Status__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_Design_Type__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -184,6 +189,14 @@
         </platformActionListItems>
     </platformActionList>
     <relatedLists>
+        <excludeButtons>MassChangeOwner</excludeButtons>
+        <excludeButtons>New</excludeButtons>
+        <fields>NAME</fields>
+        <fields>PCC_Approval_Status__c</fields>
+        <fields>CREATED_DATE</fields>
+        <relatedList>PCC_Deal_Change_Request__c.PCC_Opportunity__c</relatedList>
+    </relatedLists>
+    <relatedLists>
         <excludeButtons>AddProduct</excludeButtons>
         <excludeButtons>ChoosePricebook</excludeButtons>
         <excludeButtons>EditAllProduct</excludeButtons>
@@ -219,6 +232,10 @@
     </relatedLists>
     <relatedLists>
         <relatedList>RelatedOpportunityHistoryList</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>PCC_Rebate_Claim_Stage__c.PCC_Opportunity__c</relatedList>
     </relatedLists>
     <relatedObjects>AccountId</relatedObjects>
     <showEmailCheckbox>false</showEmailCheckbox>

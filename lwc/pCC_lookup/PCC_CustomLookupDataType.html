@@ -1,0 +1,10 @@
+<template>
+    <template lwc:if={typeAttributes.recordId}>
+        <div class="custom-record-picker-cell">
+            <lightning-record-picker label="Product" placeholder="Search for Product"
+                object-api-name={typeAttributes.objectName} value={typeAttributes.recordId} variant="label-hidden"
+                disabled={typeAttributes.disabled}>
+            </lightning-record-picker>
+        </div>
+    </template>
+</template>

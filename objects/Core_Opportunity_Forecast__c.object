@@ -172,7 +172,6 @@ Core_Opportunity__r.CloseDate  &lt;=  Core_Quarter_First_Weekend_Date__c
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -184,7 +183,7 @@ Core_Opportunity__r.CloseDate  &lt;=  Core_Quarter_First_Weekend_Date__c
         <required>false</required>
         <scale>2</scale>
         <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
+        <trackTrending>true</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -193,11 +192,16 @@ Core_Opportunity__r.CloseDate  &lt;=  Core_Quarter_First_Weekend_Date__c
         <label>Forecast Quarter</label>
         <required>false</required>
         <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
+        <trackTrending>true</trackTrending>
         <type>Picklist</type>
         <valueSet>
             <valueSetDefinition>
                 <sorted>false</sorted>
+                <value>
+                    <fullName>Q4 2023</fullName>
+                    <default>false</default>
+                    <label>Q4 2023</label>
+                </value>
                 <value>
                     <fullName>Q1 2024</fullName>
                     <default>false</default>
@@ -223,11 +227,6 @@ Core_Opportunity__r.CloseDate  &lt;=  Core_Quarter_First_Weekend_Date__c
                     <default>false</default>
                     <label>Q1 2025</label>
                 </value>
-                <value>
-                    <fullName>Q2 2025</fullName>
-                    <default>false</default>
-                    <label>Q2 2025</label>
-                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -236,7 +235,7 @@ Core_Opportunity__r.CloseDate  &lt;=  Core_Quarter_First_Weekend_Date__c
         <label>Forecast</label>
         <required>false</required>
         <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
+        <trackTrending>true</trackTrending>
         <type>Picklist</type>
         <valueSet>
             <valueSetDefinition>
@@ -273,7 +272,7 @@ Core_Opportunity__r.CloseDate  &lt;=  Core_Quarter_First_Weekend_Date__c
         <relationshipOrder>0</relationshipOrder>
         <reparentableMasterDetail>false</reparentableMasterDetail>
         <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
+        <trackTrending>true</trackTrending>
         <type>MasterDetail</type>
         <writeRequiresMasterRead>false</writeRequiresMasterRead>
     </fields>
@@ -282,7 +281,7 @@ Core_Opportunity__r.CloseDate  &lt;=  Core_Quarter_First_Weekend_Date__c
         <label>Quarter End Date</label>
         <required>false</required>
         <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
+        <trackTrending>true</trackTrending>
         <type>Date</type>
     </fields>
     <fields>
@@ -290,7 +289,7 @@ Core_Opportunity__r.CloseDate  &lt;=  Core_Quarter_First_Weekend_Date__c
         <label>Quarter First Weekend Date</label>
         <required>false</required>
         <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
+        <trackTrending>true</trackTrending>
         <type>Date</type>
     </fields>
     <fields>
@@ -298,7 +297,7 @@ Core_Opportunity__r.CloseDate  &lt;=  Core_Quarter_First_Weekend_Date__c
         <label>Quarter Start Date</label>
         <required>false</required>
         <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
+        <trackTrending>true</trackTrending>
         <type>Date</type>
     </fields>
     <fields>
@@ -306,7 +305,6 @@ Core_Opportunity__r.CloseDate  &lt;=  Core_Quarter_First_Weekend_Date__c
         <defaultValue>false</defaultValue>
         <label>Read Only</label>
         <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
     <label>Opportunity Forecast</label>
@@ -350,11 +348,11 @@ Core_Opportunity__r.CloseDate  &lt;=  Core_Quarter_First_Weekend_Date__c
                 <default>false</default>
             </values>
             <values>
-                <fullName>Q2 2025</fullName>
+                <fullName>Q3 2024</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Q3 2024</fullName>
+                <fullName>Q4 2023</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -387,25 +385,6 @@ Core_Opportunity__r.CloseDate  &lt;=  Core_Quarter_First_Weekend_Date__c
         <active>true</active>
         <label>ReadOnly</label>
         <picklistValues>
-            <picklist>Core_Forecast_Quarter__c</picklist>
-            <values>
-                <fullName>Q1 2024</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Q2 2024</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Q3 2024</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Q4 2024</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
             <picklist>Core_Forecast__c</picklist>
             <values>
                 <fullName>Best Case</fullName>
@@ -429,6 +408,17 @@ Core_Opportunity__r.CloseDate  &lt;=  Core_Quarter_First_Weekend_Date__c
         <description>Do not allow creation of forecast records with Cancelled status</description>
         <errorConditionFormula>ISNEW() &amp;&amp;  ISPICKVAL(Core_Forecast__c , &apos;Cancel&apos;)</errorConditionFormula>
         <errorMessage>Cancelled Forecast records cannot be created.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>OPTY_Forecast_QuoteSubmittedStatus</fullName>
+        <active>true</active>
+        <description>OPTY_Forecast_QuoteSubmittedStatus validation rule</description>
+        <errorConditionFormula>IF($Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c=TRUE,FALSE,
+AND(
+Core_Opportunity__r.Core_Opportunity_Lock_Status__c = true
+)
+)</errorConditionFormula>
+        <errorMessage>Quote associated to this Opportunity is Submitted for Review. No Edits allowed on Opportunity during the Review process.</errorMessage>
     </validationRules>
     <visibility>Public</visibility>
 </CustomObject>

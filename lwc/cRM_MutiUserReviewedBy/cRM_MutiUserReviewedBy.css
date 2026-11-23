@@ -1,0 +1,47 @@
+.slds-pill {
+    display: inline-flex;
+    align-items: center;
+    background-color: #f4f6f9;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.hover-card {
+    position: absolute;
+    top: 44px;
+    left: 0;
+    z-index: 1000;
+    padding: 0 14px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    background-color: white;
+    border-radius: 0.25rem;
+    display: none;
+}
+
+.hover-card-parent:hover .hover-card {
+    display: block;
+}
+
+.slds-dropdown_fluid {
+    position: absolute;
+    width: 400px;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1000;
+    background-color: white;
+    border: 1px solid #d8dde6;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.avatar-name-container {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.slds-form-element__control {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

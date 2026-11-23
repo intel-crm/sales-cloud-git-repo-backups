@@ -20,22 +20,18 @@ public class Core_RestAPI_AttachmentV1_Hnd_Test {
     private static final Integer MAX_CASENUMBER_LENGTH = 8;
 
     @testSetup public static void setupData(){
-     
-        Core_IPS_APIGEE_Custom_Settings__c sObjRecSystemCred = new Core_IPS_APIGEE_Custom_Settings__c();
-        sObjRecSystemCred.Name = 'Core_IPS_SFT_Move';
-         sObjRecSystemCred.MyIntel_Integration_Class_Name__c = 'Core_IPS_SFT_Move';
-        sObjRecSystemCred.MyIntel_Client_Id__c = '07e04e4c-dd0b-4b24-9c46-6056a8225308';
-        sObjRecSystemCred.MyIntel_Client_Secret__c = 'XnK1KXtLthP4.778QgL-2fTS~OahSiL_qc';
-        sObjRecSystemCred.MyIntel_Endpoint_URL__c = 'https://apis-sandbox.intel.com/filetransfer/sft-enterprise/file-management/v1/files?action=movefile    ';    
-        sObjRecSystemCred.MyIntel_GrantType__c = 'client_credentials';  
-        sObjRecSystemCred.MyIntel_Token_Endpoint_URL__c = 'https://apis-sandbox.intel.com/v1/auth/token';
-  insert sObjRecSystemCred;
-        //*--Start --US-US1018637-- 01-05-2021 -- Farooq -- change from old callout to APIGEE--*/
+        Core_System_Credentials__c sObjRecSystemCred = new Core_System_Credentials__c();
+        sObjRecSystemCred.Name = 'Core_SFT_MoveFile';
+        sObjRecSystemCred.Core_UserName__c = 'xxxx';
+        sObjRecSystemCred.Core_Password__c = 'xxxx';
+        sObjRecSystemCred.Core_End_Point_URL__c = 'xxxx';
+        insert sObjRecSystemCred;
+        
         Core_Trigger_Executions__c settings = new Core_Trigger_Executions__c();
         settings.Name = 'enableIPSCaseBackendRouting';
         settings.Core_Class_Name__c = 'Core_IPS_CasePromotion_Handler';
         settings.Core_Object__c = 'Case';
-        settings.Core_Active__c = true;
+        settings.Core_Active__c = false;
         settings.Core_Trigger_Events__c = 'before insert, before update';
         settings.Core_Description__c = 'test';
         insert settings;
@@ -48,16 +44,7 @@ public class Core_RestAPI_AttachmentV1_Hnd_Test {
         settings.Core_Trigger_Events__c = 'After Insert, After update';
         settings.Core_Active__c = false;
         insert settings;
-        
-        settings = new Core_Trigger_Executions__c();
-        settings.Name = 'UpdateCaseComntDscptnForAttach';
-        settings.Core_Class_Name__c = 'Core_IPS_Case_Attachments_Handler';
-        settings.Core_Description__c = 'ABC';
-        settings.Core_Object__c = 'Core_IPS_Case_Comments__c';
-        settings.Core_Trigger_Events__c = 'After Insert, After update';
-        settings.Core_Active__c = true;
-        insert settings;
-        
+
         Core_IPS_Labels__c labels = new Core_IPS_Labels__c ();
         labels.name= 'COMPLETE';
         labels.value__c='COMPLETE';
@@ -112,8 +99,10 @@ public class Core_RestAPI_AttachmentV1_Hnd_Test {
         
 //        Test.startTest();
         TestUtilities.getCustomerUsersWithAccountsAndContacts('RestApiUnitTest', 1, 1,0,1,'IPS External Customer', 0);
+        System.debug(' Core_RestAPI_AttachmentV1_Hnd_Test Account '+[Select Name FROM Account] + ' Contact '+[Select Name FROM Contact]);
 
         commUser = [Select Name, ContactId, Contact.AccountId FROM User WHERE ContactId IN (Select Id FROM Contact) ];
+        System.debug(' Core_RestAPI_AttachmentV1_Hnd_Test User '+commUser);
 
         List<Account> lAcc = [SELECT Id, Core_IPS_SFT_Partner_Path__c FROM Account];
         for(Account oAcc : lAcc){
@@ -123,22 +112,22 @@ public class Core_RestAPI_AttachmentV1_Hnd_Test {
         
         System.runAs(commUser){
             List<case> caseList = TestUtilities.getListOfCases(1);
-            List<Product2> productList = TestUtilities.getListOfProduct(1);
             Integer i;
-            Insert productList;
             for( i=0;i<caseList.size();i++){
                 Case objCase = caseList[i];
                 objCase.OwnerId = commUser.Id;
                 objCase.ContactId = commUser.ContactId;
-                objCase.ProductId = productList[i].Id;
                 objCase.Core_IPS_Customer_Visible__c = true;
             } 
+            system.debug('i value'+i);
 
             insert caseList;
+            System.debug('Print the insert cases'+caseList);
             System.assertEquals(1, caseList.size());
         }
 //        Test.stopTest();
         
+        System.debug(' +++++++++++++++++++++++++++ Core_RestAPI_AttachmentV1_Hnd_Test Test Data Setup COmpleted +++++++++++++++++++++++++++ \n\n\n\n\n\n');
     }
 
     private static String createLongString(String strSegment, Integer numTimes) {
@@ -168,9 +157,12 @@ public class Core_RestAPI_AttachmentV1_Hnd_Test {
         
         requestObj.resourcePath ='/services/apexrest/v1.0/cases/'+strCaseNum+'/attachments';
         requestObj.requestUri ='/v1.0/cases/'+strCaseNum+'/attachments';
+        system.debug(' requestObj.resourcePath: '+ requestObj.resourcePath);
+        system.debug(' requestObj.requestUri: '+ requestObj.requestUri);
 
         requestObj.httpMethod = 'POST';
         RestContext.request = requestObj;
+        system.debug(' RestContext: ' + RestContext.request);
     }    
     
     //This method test the handler methods: createAttachment & processrequest
@@ -182,6 +174,7 @@ public class Core_RestAPI_AttachmentV1_Hnd_Test {
         System.runAs(commUser) {
             Core_RestAPI_AttachmentV1_Handler handler = new Core_RestAPI_AttachmentV1_Handler(System.now(), 'Core_RestAPI_AttachmentV1', requestParams); 
             Core_RestAPI_Response response = handler.createAttachment();  
+            System.debug(' >>> test_createAttachment_Positive response: ' + response);
             System.assertNotEquals(null, response);
             System.assertEquals(true, response.isSuccess);
         }
@@ -210,6 +203,7 @@ public class Core_RestAPI_AttachmentV1_Hnd_Test {
             } catch (Exception e) {
                 exceptionThrown = false;
             }
+            System.debug(' >>> test_createAttachment_Negative response: ' + response);
             System.assertNotEquals(null, Response);
             System.assertEquals(true, exceptionThrown, 'Handler not thrown any exception if false');
         }

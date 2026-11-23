@@ -4,30 +4,22 @@
     <encodingKey>UTF-8</encodingKey>
     <name>ACR_CONTACT_ADDITION_KOR</name>
     <style>none</style>
-    <subject>인텔® 파트너 얼라이언스 계정에 추가된 새로운 사용자</subject>
-    <textOnly>계정 정보 확인
+    <subject>인텔 파트너 프로그램 계정에 새 사용자가 추가되었습니다.</subject>
+    <textOnly>An individual has been added to the Intel Partner program account of {!Account.Name} by an Intel representative or another contact at your company.
 
-{!UserName},
+Company Name: {!Account.Name}
+Contact Added: Login ID {!ContactLoginId} with e-mail {!ContactEmail}
+Relationship (Role): {!AcrRoles}
 
-인텔 담당자 또는 귀사의 다른 담당자가 {!Account.Name}의 인텔® 파트너 얼라이언스 계정에 개인을 추가했습니다.
+If you do not approve of this update, please login to remove the user. 
 
-회사 이름: {!Account.Name}
-비즈니스 ID: {!Account.AccountNumber}
-추가된 연락처: 이메일 {!ContactEmail}
-관계(역할): {!AcrRoles}
+(Link on login for both FPGA and CSP-
+https://ssl.intel.com/content/www/us/en/secure/my-intel/dashboard.html)
 
-이 업데이트를 승인하지 않았다면 로그인하여 연락처를 제거하십시오.
-
-질문이 있으시면 다음 웹 페이지에서 연락하십시오: https://signin.intel.com/ContactUs?Culture=ko-kr
-
-
-감사합니다.
-인텔® 파트너 얼라이언스 팀
-
-이 메시지는 현재 인텔® 파트너 얼라이언스 관계와 관련된 중요한 비즈니스 커뮤니케이션으로 발송되었습니다.
-© {!$Label.PRM_CurrentYear} 인텔사
-Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
-개인정보 처리방침 | 쿠키</textOnly>
+Questions? Contact Support here (link).
+Support links:
+for CSP- https://www.intel.com/content/www/us/en/partner/cloud-insider/forms/support.html
+for FPGA: https://signin.intel.com/ContactUs?Culture=en-US</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

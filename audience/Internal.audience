@@ -6,7 +6,7 @@
         <criterion>
             <criteriaNumber>1</criteriaNumber>
             <criterionValue>
-                <profile>partner</profile>
+                <profile>customer community user</profile>
             </criterionValue>
             <operator>NotEqual</operator>
             <type>Profile</type>
@@ -22,7 +22,7 @@
         <criterion>
             <criteriaNumber>1</criteriaNumber>
             <criterionValue>
-                <profile>customer community user</profile>
+                <profile>partner</profile>
             </criterionValue>
             <operator>NotEqual</operator>
             <type>Profile</type>
@@ -30,15 +30,7 @@
         <criterion>
             <criteriaNumber>1</criteriaNumber>
             <criterionValue>
-                <profile>customer community plus user</profile>
-            </criterionValue>
-            <operator>NotEqual</operator>
-            <type>Profile</type>
-        </criterion>
-        <criterion>
-            <criteriaNumber>1</criteriaNumber>
-            <criterionValue>
-                <profile>customer community login user</profile>
+                <profile>partner community login user</profile>
             </criterionValue>
             <operator>NotEqual</operator>
             <type>Profile</type>
@@ -54,7 +46,15 @@
         <criterion>
             <criteriaNumber>1</criteriaNumber>
             <criterionValue>
-                <profile>partner community login user</profile>
+                <profile>customer community login user</profile>
+            </criterionValue>
+            <operator>NotEqual</operator>
+            <type>Profile</type>
+        </criterion>
+        <criterion>
+            <criteriaNumber>1</criteriaNumber>
+            <criterionValue>
+                <profile>customer community plus user</profile>
             </criterionValue>
             <operator>NotEqual</operator>
             <type>Profile</type>
@@ -62,69 +62,15 @@
         <criterion>
             <criteriaNumber>2</criteriaNumber>
             <criterionValue>
-                <profile>sales rep-bb-dual ips</profile>
+                <entityField>IsActive</entityField>
+                <entityType>User</entityType>
+                <fieldValue>true</fieldValue>
             </criterionValue>
             <operator>Equal</operator>
-            <type>Profile</type>
+            <type>FieldBased</type>
         </criterion>
         <criterion>
-            <criteriaNumber>2</criteriaNumber>
-            <criterionValue>
-                <profile>ccp - core access</profile>
-            </criterionValue>
-            <operator>Equal</operator>
-            <type>Profile</type>
-        </criterion>
-        <criterion>
-            <criteriaNumber>2</criteriaNumber>
-            <criterionValue>
-                <profile>commissions office inquiries admin user</profile>
-            </criterionValue>
-            <operator>Equal</operator>
-            <type>Profile</type>
-        </criterion>
-        <criterion>
-            <criteriaNumber>2</criteriaNumber>
-            <criterionValue>
-                <profile>sales rep-bb</profile>
-            </criterionValue>
-            <operator>Equal</operator>
-            <type>Profile</type>
-        </criterion>
-        <criterion>
-            <criteriaNumber>2</criteriaNumber>
-            <criterionValue>
-                <profile>sales ops</profile>
-            </criterionValue>
-            <operator>Equal</operator>
-            <type>Profile</type>
-        </criterion>
-        <criterion>
-            <criteriaNumber>2</criteriaNumber>
-            <criterionValue>
-                <profile>ips agent</profile>
-            </criterionValue>
-            <operator>Equal</operator>
-            <type>Profile</type>
-        </criterion>
-        <criterion>
-            <criteriaNumber>2</criteriaNumber>
-            <criterionValue>
-                <profile>ips external customer</profile>
-            </criterionValue>
-            <operator>Equal</operator>
-            <type>Profile</type>
-        </criterion>
-        <criterion>
-            <criteriaNumber>2</criteriaNumber>
-            <criterionValue>
-                <profile>smg/gmc read only</profile>
-            </criterionValue>
-            <operator>Equal</operator>
-            <type>Profile</type>
-        </criterion>
-        <criterion>
-            <criteriaNumber>2</criteriaNumber>
+            <criteriaNumber>3</criteriaNumber>
             <criterionValue>
                 <profile>admin</profile>
             </criterionValue>
@@ -132,55 +78,7 @@
             <type>Profile</type>
         </criterion>
         <criterion>
-            <criteriaNumber>2</criteriaNumber>
-            <criterionValue>
-                <profile>a&amp;e user (read only)</profile>
-            </criterionValue>
-            <operator>Equal</operator>
-            <type>Profile</type>
-        </criterion>
-        <criterion>
-            <criteriaNumber>2</criteriaNumber>
-            <criterionValue>
-                <profile>reporting admin</profile>
-            </criterionValue>
-            <operator>Equal</operator>
-            <type>Profile</type>
-        </criterion>
-        <criterion>
-            <criteriaNumber>2</criteriaNumber>
-            <criterionValue>
-                <profile>production support-ips</profile>
-            </criterionValue>
-            <operator>Equal</operator>
-            <type>Profile</type>
-        </criterion>
-        <criterion>
-            <criteriaNumber>2</criteriaNumber>
-            <criterionValue>
-                <profile>data ops</profile>
-            </criterionValue>
-            <operator>Equal</operator>
-            <type>Profile</type>
-        </criterion>
-        <criterion>
-            <criteriaNumber>2</criteriaNumber>
-            <criterionValue>
-                <profile>sales rep-cw</profile>
-            </criterionValue>
-            <operator>Equal</operator>
-            <type>Profile</type>
-        </criterion>
-        <criterion>
-            <criteriaNumber>2</criteriaNumber>
-            <criterionValue>
-                <profile>production support-display</profile>
-            </criterionValue>
-            <operator>Equal</operator>
-            <type>Profile</type>
-        </criterion>
-        <criterion>
-            <criteriaNumber>2</criteriaNumber>
+            <criteriaNumber>3</criteriaNumber>
             <criterionValue>
                 <profile>it admin</profile>
             </criterionValue>
@@ -188,15 +86,7 @@
             <type>Profile</type>
         </criterion>
         <criterion>
-            <criteriaNumber>2</criteriaNumber>
-            <criterionValue>
-                <profile>ips support org admin</profile>
-            </criterionValue>
-            <operator>Equal</operator>
-            <type>Profile</type>
-        </criterion>
-        <criterion>
-            <criteriaNumber>2</criteriaNumber>
+            <criteriaNumber>3</criteriaNumber>
             <criterionValue>
                 <profile>a&amp;e user</profile>
             </criterionValue>
@@ -204,41 +94,33 @@
             <type>Profile</type>
         </criterion>
         <criterion>
-            <criteriaNumber>2</criteriaNumber>
+            <criteriaNumber>3</criteriaNumber>
             <criterionValue>
-                <profile>ips agent enhanced</profile>
+                <profile>ccp - core access</profile>
             </criterionValue>
             <operator>Equal</operator>
             <type>Profile</type>
         </criterion>
         <criterion>
-            <criteriaNumber>2</criteriaNumber>
+            <criteriaNumber>3</criteriaNumber>
             <criterionValue>
-                <profile>ipa a&amp;e user</profile>
+                <profile>sales core access</profile>
             </criterionValue>
             <operator>Equal</operator>
             <type>Profile</type>
         </criterion>
         <criterion>
-            <criteriaNumber>2</criteriaNumber>
+            <criteriaNumber>3</criteriaNumber>
             <criterionValue>
-                <profile>bu account collaborator</profile>
+                <profile>sales ops</profile>
             </criterionValue>
             <operator>Equal</operator>
             <type>Profile</type>
         </criterion>
         <criterion>
-            <criteriaNumber>2</criteriaNumber>
+            <criteriaNumber>3</criteriaNumber>
             <criterionValue>
-                <profile>global export compliance</profile>
-            </criterionValue>
-            <operator>Equal</operator>
-            <type>Profile</type>
-        </criterion>
-        <criterion>
-            <criteriaNumber>2</criteriaNumber>
-            <criterionValue>
-                <profile>sales manager</profile>
+                <profile>sales rep-bb</profile>
             </criterionValue>
             <operator>Equal</operator>
             <type>Profile</type>
@@ -248,16 +130,16 @@
     <isDefaultAudience>false</isDefaultAudience>
     <targets>
         <target>
-            <groupName>e9d16df4-f97a-40e7-b493-5b01ec075c72$#$24b01f2a-3375-45fb-9a93-d3749608f345</groupName>
-            <priority>2</priority>
-            <targetType>ExperienceVariation</targetType>
-            <targetValue>Default_Navigation_Menu_3_Component_Properties</targetValue>
-        </target>
-        <target>
             <groupName>6113ccb5-d263-42b6-934a-406aaceb37c1</groupName>
-            <priority>2</priority>
+            <priority>1</priority>
             <targetType>ExperienceVariation</targetType>
             <targetValue>Home_Home_page_for_Internal_Users_Page</targetValue>
+        </target>
+        <target>
+            <groupName>e9d16df4-f97a-40e7-b493-5b01ec075c72$#$f8430b01-3b4d-48cc-955f-228beaa30bc5</groupName>
+            <priority>2</priority>
+            <targetType>ExperienceVariation</targetType>
+            <targetValue>Default_Navigation_Menu_1_Component_Properties</targetValue>
         </target>
     </targets>
 </Audience>

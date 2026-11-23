@@ -7,7 +7,7 @@
 * ----------------------------------------------------------------------------                    
 * Amritesh                    10/19/2018             Created US194563
 ****************************************************************************************************/ 
-global without sharing class Core_IPS_ScheduleCaseUpdateBatch implements Schedulable {
+global class Core_IPS_ScheduleCaseUpdateBatch implements Schedulable {
    global static String CRON_EXP = '0 0 0 ? * SUN';
    global void execute(SchedulableContext sc) {
       Core_IPS_CaseUpdateBatch b = new Core_IPS_CaseUpdateBatch(Core_IPS_CaseUpdateBatch.batchMode.ManagerUpdate); 

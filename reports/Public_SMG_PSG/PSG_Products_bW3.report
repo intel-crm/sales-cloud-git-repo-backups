@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <columns>
-        <field>Product2.Core_Product_ID__c</field>
-    </columns>
-    <columns>
         <field>NAME</field>
     </columns>
     <columns>
@@ -20,14 +17,6 @@
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>Product2.Core_Partner_Visible_Ind__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Product2.Core_Item_Quotable_Ind__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Product2.Core_Item_Orderable_Ind__c</field>
     </columns>
     <columns>
         <field>Product2.Core_Product_Type__c</field>
@@ -50,9 +39,6 @@
     <columns>
         <field>Product2.Core_Code_Name__c</field>
     </columns>
-    <columns>
-        <field>Product2.Core_Item_Signal_Cd__c</field>
-    </columns>
     <filter>
         <criteriaItems>
             <column>Product2.Core_Product_Type__c</column>
@@ -69,18 +55,11 @@
             <value>1</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Product2.Core_Design_Registration_Eligible_Ind__c</column>
+            <column>Product2.Core_Product_Org__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>0</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>agilex</value>
+            <value>Sales</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -94,8 +73,6 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>NAME</sortColumn>
-    <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CREATED_DATE</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>

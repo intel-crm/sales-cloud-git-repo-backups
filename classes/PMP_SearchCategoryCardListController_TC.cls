@@ -48,7 +48,7 @@ private class PMP_SearchCategoryCardListController_TC extends PMP_SearchWrapperS
         
         st = new PMP_Static_Constants__c();
         st.Name = 'PMP_IT_Admin_Profile';
-        st.PMP_Value__c = ' IT Admin';
+        st.PMP_Value__c = '	IT Admin';
         stList.add(st);
         
         st = new PMP_Static_Constants__c();
@@ -63,7 +63,7 @@ private class PMP_SearchCategoryCardListController_TC extends PMP_SearchWrapperS
         stList.add(new PMP_Static_Constants__c(Name='PMP_External_Partner_Admin',PMP_Value__c='PMP_External_Partner_Admin'));
         stList.add(new PMP_Static_Constants__c(Name='PMP_Guest_User_Name',PMP_Value__c='Intel® Solutions Marketplace Site Guest User'));
         stList.add(new PMP_Static_Constants__c(Name='PMP_Internal_Intel_Admin',PMP_Value__c='PMP_Internal_Intel_Admin'));
-        stList.add(new PMP_Static_Constants__c(Name='PMP_IPA_INTERNAL_ADMIN',PMP_Value__c='PMP_All_Intel_Admin_Users'));
+        stList.add(new PMP_Static_Constants__c(Name='PMP_IPA_INTERNAL_ADMIN',PMP_Value__c='PMP - All Intel Admin Users'));
         stList.add(new PMP_Static_Constants__c(Name='PMP_Image',PMP_Value__c='Image'));
         stList.add(new PMP_Static_Constants__c(Name='PMP_Storefront_Default_Image_URL',PMP_Value__c='/file-asset/PMP_Partner_Default_Logo?isOptimized=false'));
         stList.add(new PMP_Static_Constants__c(Name='PMP_Intel_Only',PMP_Value__c='Intel Only Content'));
@@ -89,12 +89,11 @@ private class PMP_SearchCategoryCardListController_TC extends PMP_SearchWrapperS
         
         
         
-        PMP_SearchCategoryCardListController searchcat = new PMP_SearchCategoryCardListController();
-        PMP_CheckRecursive chkrecur = new PMP_CheckRecursive();
+        System.assertEquals(1, PMP_SearchCategoryCardListController.getCategoryData('Product', 'en_US').size());
         Test.stopTest(); 
     }
     
-    /*@isTest static void testGetPartnerPrograms(){
+    @isTest static void testGetPartnerPrograms(){
         PMP_Static_Constants__c st7 = new PMP_Static_Constants__c();
         st7.Name = 'PMP_LOEM_ODM_Partner_Program';
         st7.PMP_Value__c = 'LOEM-ODM Partner Program';
@@ -104,45 +103,5 @@ private class PMP_SearchCategoryCardListController_TC extends PMP_SearchWrapperS
       
        System.assertNotEquals(null, PMP_SearchCategoryCardListController.getPartnerPrograms('en_US').size()); 
        Test.stopTest();
-    }*/
-
-     //getOfferingCategoryTaxonomy 
-  /*  @isTest
-    public static void  getOfferingCategoryTaxonomyTest(){
-        test.startTest();
-        system.assertNotEquals(NULL,PMP_SearchCategoryCardListController.getOfferingCategoryTaxonomy('en_US','offeringApplications'), 'Test failed');
-        test.stopTest();   
     }
-
-     //getTechnicalSpecsTaxonomy
-     @isTest
-     public static void  getTechnicalSpecsTaxonomyTest(){
-         test.startTest();
-         try 
-         {
-         system.assertNotEquals(NULL,PMP_SearchCategoryCardListController.getTechnicalSpecsTaxonomy(),'Test failed');
-         } catch(Exception e) {
-             System.debug('Error occured');
-         }
-         test.stopTest();   
-     }
-
-     
-    @isTest static void getFeaturedTabsTest(){
-        List<FeaturedProductTab> li=new List<FeaturedProductTab>();
-        FeaturedProductTab fpTab = new FeaturedProductTab();
-        fpTab.label ='test';
-        SearchParams catPar = new SearchParams();
-        catPar.cat = '';
-        catPar.type = 'product';
-        fpTab.searchParams = catPar;
-        //fpTab.products=cat2;
-        fpTab.ctaTitle='View All "'+'Intel MRS'+'" solutions';
-        li.add(fpTab);
-        Test.startTest();
-        PMP_SearchCategoryCardListController.getFeaturedTabList('en_US');        
-        System.assertEquals(1, li.size(),'Failure');
-        Test.stopTest();
-          
-    }*/
 }

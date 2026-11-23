@@ -42,7 +42,8 @@
                     <apex:column headerValue="Email / IDs">
                         {!row.Email}<br/>
                         {!row.Core_eRPM_Person_Id__c}<br/>
-                        {!row.Core_Enterprise_Id__c}
+                        {!row.Core_Enterprise_Id__c}<br/>
+                        {!row.Core_Login_Id__c}
                     </apex:column>
                     <apex:column value="{!row.Core_Login_Status__c}"/>
                     <apex:column value="{!row.Core_ERPM_Integration_Status__c}"/>

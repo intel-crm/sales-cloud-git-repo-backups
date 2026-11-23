@@ -189,7 +189,7 @@
         <label>Attachment Id</label>
         <length>18</length>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -369,10 +369,10 @@
         <relationshipName>R00N70000001lX7YEAU</relationshipName>
         <relationshipOrder>0</relationshipOrder>
         <reparentableMasterDetail>false</reparentableMasterDetail>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>MasterDetail</type>
-        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+        <writeRequiresMasterRead>true</writeRequiresMasterRead>
     </fields>
     <fields>
         <fullName>SBQQ__SignatureStatus__c</fullName>
@@ -440,7 +440,7 @@
         <precision>10</precision>
         <required>true</required>
         <scale>0</scale>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
@@ -460,6 +460,18 @@
         <type>Text</type>
         <unique>false</unique>
     </fields>
+    <fields>
+        <fullName>core_cpq_quote_type_test__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(SBQQ__Quote__r.core_cpq_quote_type_nm__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Quote Type Test</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
     <label>Quote Document</label>
     <nameField>
         <label>Document Name</label>
@@ -470,7 +482,7 @@
     <recordTypeTrackHistory>false</recordTypeTrackHistory>
     <recordTypes>
         <fullName>PSG_Quote_Document</fullName>
-        <active>false</active>
+        <active>true</active>
         <description>To be used by PSG Team</description>
         <label>PSG Quote Document</label>
         <picklistValues>

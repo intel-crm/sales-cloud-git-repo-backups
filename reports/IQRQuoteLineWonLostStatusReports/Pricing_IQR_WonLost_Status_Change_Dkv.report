@@ -22,7 +22,7 @@
         <field>Pricing_Quote_Line_Status_Age__c$Pricing_TPT_To_Stage_Actor_Nm__c</field>
     </columns>
     <columns>
-        <field>Pricing_Quote_Line_Status_Age__c$Pricing_TPT_Change_Time__c</field>
+        <field>Pricing_Quote_Line_Status_Age__c$Pricing_TPT_Set_Time__c</field>
     </columns>
     <columns>
         <field>Pricing_Quote_Line_Status_Age__c$Pricing_TPT_Quote_Line_Number__c.Pricing_Lost_Reason_Nm__c</field>
@@ -55,6 +55,8 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
+    <sortColumn>Pricing_Quote_Line_Status_Age__c$Pricing_TPT_Set_Time__c</sortColumn>
+    <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>Pricing_Quote_Line_Status_Age__c$Pricing_TPT_Change_Time__c</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>

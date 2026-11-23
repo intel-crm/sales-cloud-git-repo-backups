@@ -4,7 +4,6 @@
         console.log('component.get("v.accountName")-->' +JSON.stringify(component.get("v.accountName")));
         console.log('mapValues-->  ' + JSON.stringify(component.get("v.redDetMap")));
         if(component.get("v.redDetMap") != null){
-            var accountDupStatusMapTemp = component.get("v.redDetMap").accountDupStatusMapOnUI;
             var inputMapForApex = component.get("v.redDetMap") ;
             console.log('input for Apex'+JSON.stringify(inputMapForApex));
             console.log('selected attribute of input Map'+component.get("v.redDetMap").SelectedRow);
@@ -12,37 +11,27 @@
             if(component.get("v.redDetMap").accountAssociatedToExistingContact != null) inputMapForApex.accountAssociatedToExistingContact = JSON.stringify(component.get("v.redDetMap").accountAssociatedToExistingContact);
             if(component.get("v.redDetMap").duplicateContactRecord != null) inputMapForApex.duplicateContactRecord = JSON.stringify(component.get("v.redDetMap").duplicateContactRecord);
             if(component.get("v.redDetMap").associatedAccountIsIPA != null) inputMapForApex.associatedAccountIsIPA = JSON.stringify(component.get("v.redDetMap").associatedAccountIsIPA);
-            if(component.get("v.redDetMap").accountDupStatusMapOnUI !=null) inputMapForApex.accountDupStatusMapOnUI = JSON.stringify(component.get("v.redDetMap").accountDupStatusMapOnUI);
             action.setParams({
-               requestDetails:inputMapForApex
+                requestDetails:inputMapForApex
             });
             
             action.setCallback(this, function(data) {
                 var state= data.getState();
                 //alert('return value'+JSON.stringify(data.getReturnValue()));
                 console.log('STATE -->'+state);
-
                 if(component.isValid() && state === "SUCCESS") {
                     var result = data.getReturnValue();
                     var concatAddr;
                     var finalAddr;
                     console.log('Result Response -->'+JSON.stringify(data.getReturnValue()));
                     var resultAccList = result.accountList;
-                    var accountMap = result.accountIdDupStatus; //Added as part of TWC729-3218
-                    console.log('result.accountIdDupStatus'+result.accountIdDupStatus);
-                    console.log('resultAccList-->'+ JSON.stringify(resultAccList));
-                    console.log('accountMap1 '+accountMap);
+                    
                     
                     if(result.accountList == null && component.get("v.redDetMap")['DuplicateInfo']!=null && component.get("v.redDetMap")['DuplicateInfo'].length!=0 && component.get("v.redDetMap")['DuplicateInfo']!='No Duplicate Values Found'){
                         //in case no callout required for CIM  i.e.  DuplicateInfo in Map is blank or 'No DUplicate values Found' --> in this case apex will return null
                         resultAccList = JSON.parse(component.get("v.redDetMap")['DuplicateInfo']);   
                     }else if(resultAccList == null || resultAccList =='' || resultAccList==' '){
                         resultAccList = null;  
-                    }
-                    
-                    if(accountMap == undefined && accountDupStatusMapTemp != undefined && accountDupStatusMapTemp.length!=0){
-                    console.log('inside dup status:'+accountDupStatusMapTemp);
-                    accountMap = accountDupStatusMapTemp;
                     }
                     //alert(''+JSON.stringify(result.associatedAccountIsIPA));
                     console.log('resultAccList --> '+resultAccList);
@@ -97,20 +86,16 @@
                     var accList= [];
                     var reqAccList=[];
                     var cntList= [];
-                    var blocked=false;
+                    
                     // For the user input Account
                     component.set("v.requstdaccountColumns", [
                         {label:"Reuse",type:"text",initialWidth:75,cellAttributes: { alignment: 'left' }},
                         {label:"Name",fieldName:"AccountName",type:"text",initialWidth: 150,cellAttributes: { class: { fieldName: 'colorReqAcc' }}},
                         {label:"Primary Address",fieldName:"BillingAddress",type:"text",initialWidth: 150},
-                        {label:"Unified Heirarchy",fieldName:"Unified_Hierarchy_View__c",type:"text",initialWidth: 150},
-                        {label:"Unified Id",fieldName:"Core_Business_Party_Id__c",type:"text",initialWidth: 150},
-                        //{label:"Unified Customer Type",fieldName:"Core_Customer_Aggregation_Type__c",type:"text",initialWidth: 150},
-                        {label:"Associated Unified Global",fieldName:"parentName",type:"url", initialWidth: 150},
                         {label:"IPA Account",fieldName:"Core_Intel_Partner_Alliance_PartnerGroup__c",type:"boolean",initialWidth: 150},
                         {label:"Biz OrgType",fieldName:"Core_Account_Type__c",type:"text"},
                         {label:"Partner Role",fieldName:"Core_IPA_Partner_Role__c",type:"text"},
-                        //{label:"Duplicate Account Status",fieldName:"DuplicateStatus",type:"text"}
+                        {label:"Duplicate Account Status",fieldName:"DuplicateStatus",type:"text"}
                     ]);
                     
                     if (component.get("v.redDetMap")['AddressLine2'] != null && component.get("v.redDetMap")['AddressLine2']!='undefined' && component.get("v.redDetMap")['AddressLine2'] != ' ' && component.get("v.redDetMap")['AddressLine2'] !=''){
@@ -139,6 +124,7 @@
                     // For the CIM/SFDC matched Accounts list
                     if(resultAccList !=null && resultAccList!=''){
                         for(var i=0; i<resultAccList.length; i++){
+                            
                             var addrBillingStreet = '';
                             var addrBillingCity = '';
                             var addrBillingState = '';
@@ -215,42 +201,23 @@
                                 {label:"Reuse",type:"text",initialWidth:75,cellAttributes: { alignment: 'left' }},
                                 {label:"Name",fieldName:"AccountName",type:"url",initialWidth: 150,cellAttributes: { alignment: 'left' },typeAttributes: {label: { fieldName: name },tooltip: { fieldName: 'Name'},target :"_blank"}},
                                 {label:"Primary Address",fieldName:"BillingAddress",type:"text",initialWidth: 150},
-                                {label:"Unified Heirarchy",fieldName:"Unified_Hierarchy_View__c",type:"text",initialWidth: 150},
-                                {label:"Unified Id",fieldName:"Core_Business_Party_Id__c",type:"text",initialWidth: 150},
-                                //{label:"Unified Customer Type",fieldName:"Core_Customer_Aggregation_Type__c",type:"text",initialWidth: 150},
-                                {label:"Associated Unified Global",fieldName:"parentName",type:"url",initialWidth: 150,cellAttributes: { alignment: 'left' },typeAttributes: {label: { fieldName: 'Core_Unified_Global_Customer_Name__c' },target :"_blank"}},
                                 {label:"IPA Account",fieldName:"Core_Intel_Partner_Alliance_PartnerGroup__c",type:"boolean",initialWidth: 150},
                                 {label:"Biz OrgType",fieldName:"Core_Account_Type__c",type:"text"},
                                 {label:"Partner Role",fieldName:"Core_IPA_Partner_Role__c",type:"text"},
-                                // {label:"Duplicate Account Status",fieldName:"DuplicateStatus",type:"text"}
+                                {label:"Duplicate Account Status",fieldName:"DuplicateStatus",type:"text"}
                             ]);
+                            
                             if(resultAccList[i] !=null){
-                                resultAccList[i]['AccountName'] ='/lightning/r/Account/' + resultAccList[i].accId +'/view';
-                                resultAccList[i][name] =  resultAccList[i].accName;
-                                resultAccList[i]['Id'] =  resultAccList[i].accId;
-                                resultAccList[i]['BillingAddress'] = resultAccList[i].address;
-                                resultAccList[i]['Core_Intel_Partner_Alliance_PartnerGroup__c'] = resultAccList[i].ipaAccount;
-                                resultAccList[i]['Core_Account_Type__c'] = resultAccList[i].bizOrgType;
-                                resultAccList[i]['Core_IPA_Partner_Role__c'] = resultAccList[i].partnerRole;
-                                resultAccList[i]['Core_Business_Party_Id__c'] = resultAccList[i].unifiedId;
-                                resultAccList[i]['Unified_Hierarchy_View__c'] = resultAccList[i].unifiedHierarchy;
-                                resultAccList[i]['Core_Account_Record_Type__c'] = resultAccList[i].Core_Account_Record_Type__c;
-                                //resultAccList[i]['Core_Customer_Aggregation_Type__c'] = resultAccList[i].unifiedAggrCd;
-                                resultAccList[i]['parentName'] = resultAccList[i].parentAccUrl;
-                                resultAccList[i]['Core_Unified_Global_Customer_Name__c'] =  resultAccList[i].parentAccName;
-                                
-                                //resultAccList[i]['DuplicateStatus'] = component.get("v.accountDupStatus");
-                                console.log('accountMap in line 229'+accountMap);
-                                //console.log('Account Map in line 230'+accountMap[resultAccList[i].Id]);
-                                if(accountMap!=null && accountMap!=undefined){
-                                
-                                resultAccList[i]['DuplicateStatus'] = accountMap[resultAccList[i].Id]; //Added as part of TWC729-3218 
-                                }
+                                resultAccList[i]['AccountName'] ='/lightning/r/Account/' + resultAccList[i].Id +'/view';
+                                resultAccList[i][name] =  resultAccList[i].Name;
+                                resultAccList[i]['BillingAddress'] = finalAddress;
+                                resultAccList[i]['Core_Intel_Partner_Alliance_PartnerGroup__c'] = resultAccList[i].Core_Intel_Partner_Alliance_PartnerGroup__c;
+                                resultAccList[i]['Core_Account_Type__c'] = resultAccList[i].Core_Account_Type__c;
+                                resultAccList[i]['Core_IPA_Partner_Role__c'] = resultAccList[i].Core_IPA_Partner_Role__c;
+                                resultAccList[i]['DuplicateStatus'] = component.get("v.accountDupStatus");
                                 accList.push(resultAccList[i]); 
                             }
                         }
-                       
-                       
                     }
                     
                     // For populating duplicate contact
@@ -322,9 +289,7 @@
                                     // $A.util.removeClass(component.find("clearButton"), "slds-align_absolute-center");
                                 }
                             }
-
                         }
-                        
                     }
                     
 
@@ -336,7 +301,7 @@
                     }
                     
                     console.log('accountAssociatedToExistingContact'+JSON.stringify(accountAssociatedToExistingContact));
-                    console.log('@@ result.accountExactMatch'+result.accountExactMatch);
+                    
                     var selectedRowMap = {
                         DuplicateRecords :  resultAccList,
                         AccountDuplicateStatus : component.get("v.accountDupStatus"),
@@ -344,8 +309,7 @@
                         SelectedRow :  component.get("v.selectedRowsList"),
                         accountAssociatedToExistingContact : accountAssociatedToExistingContact,
                         duplicateContactRecord : duplicateContactRecord,
-                        associatedAccountIsIPA : result.associatedAccountIsIPA,
-                        accountExactMatch : result.accountExactMatch
+                        associatedAccountIsIPA : result.associatedAccountIsIPA
                     }
                     component.set("v.selectedRowMap",selectedRowMap);
                     console.log('Map to return==>',JSON.stringify(selectedRowMap));
@@ -362,7 +326,7 @@
                     
                     //Display Toast Messages
                     if(component.get("v.selectedRowMap") != null && component.get("v.selectedRowMap") != undefined){
-                        if(result.associatedAccountIsIPA && component.get("v.showBlockedContact")==false){
+                        if(result.associatedAccountIsIPA){
                             var toastEvent = $A.get("e.force:showToast");
                             toastEvent.setParams({
                                 message: "Click Next to add the Contact to Account's IPA Membership"
@@ -415,25 +379,8 @@
                         }
                     }
                 }
-                else if (state === "ERROR") {
-                    var toastEvent = $A.get("e.force:showToast");
-                    toastEvent.setParams({
-                        "title": "Error",
-                        "message": "An error occurred. Please Try again later.",
-                        "type": "error",
-                        "mode":"sticky"                   
-                    });
-                    toastEvent.fire();
-                    var spinner = component.find("mySpinner");
-                    $A.util.toggleClass(spinner, "slds-hide");
-                    setTimeout(function() {
-                        window.location.href = "/lightning/n/PRM_Admin_Registration";
-                    }, 15000);
-                    //window.location.href = "/lightning/n/PRM_Admin_Registration"; 
-                }
-                
+                // }
             });
-
             
             $A.enqueueAction(action);
         }
@@ -445,10 +392,10 @@
         
         //fire event for hiding next button
         var mapValue = component.get("v.selectedRowMap");
-        //if(mapValue != null && mapValue != undefined && mapValue.AccountDuplicateStatus== "FullDup"
-          // && mapValue.ContactDuplicateStatus == "NoDuplicate"){
-          if(mapValue != null && mapValue != undefined && mapValue.AccountDuplicateStatus== "FullDup"
-          && mapValue.accountExactMatch == true){
+        if(mapValue != null && mapValue != undefined && mapValue.AccountDuplicateStatus== "FullDup"
+           && mapValue.ContactDuplicateStatus == "NoDuplicate"){
+            //alert(mapValue.AccountDuplicateStatus);
+            //alert(mapValue.ContactDuplicateStatus);
             var myEvent2 = component.getEvent("displayButtonEvent");
             myEvent2.setParams({"Button" : "show"});
             myEvent2.fire();
@@ -462,46 +409,16 @@
         if (typeof selectedRows != 'undefined' && selectedRows !=' ' && selectedRows.length >0) {
             component.set("v.selectedRowsList",selectedRows);
             component.set("v.selectedList",selectedRows[0].Id);
-            
-            //Inactive Account - Validation----Cannot Reuse Inactive Account
-            if(selectedRows[0].Core_Account_Record_Type__c=="Inactive Account"){
-                var myEvent3 = component.getEvent("displayButtonEvent");
-                myEvent3.setParams({"Button" : "hide"});
-                myEvent3.fire();
-                var msg1 = 'Cannot Re use an Inactive Account';
-                var toastEvent = $A.get("e.force:showToast");
-                toastEvent.setParams({
-                    
-                    message: msg1,
-                    
-                });
-                toastEvent.fire();          
-            } 
-            if(selectedRows[0].blockedAccount){
-                var myEvent3 = component.getEvent("displayButtonEvent");
-                myEvent3.setParams({"Button" : "hide"});
-                myEvent3.fire();
-                
-                var msg1 =  $A.get("$Label.c.PRM_BlockedAccountError");
-                var toastEvent = $A.get("e.force:showToast");
-                toastEvent.setParams({
-                    "type": "error",
-                    "mode": "sticky",
-                    message: msg1,
-                    
-                });
-                toastEvent.fire();          
-            } 
         }
     },
     
     clearResults : function(component,event,helper){
         //fire event for showing hide button
         var mapValue = component.get("v.selectedRowMap");
-       // if(mapValue != null && mapValue != undefined && mapValue.AccountDuplicateStatus== "FullDup"
-           //&& mapValue.ContactDuplicateStatus == "NoDuplicate"){
-            if(mapValue != null && mapValue != undefined && mapValue.AccountDuplicateStatus== "FullDup"
-           && mapValue.accountExactMatch == true){
+        if(mapValue != null && mapValue != undefined && mapValue.AccountDuplicateStatus== "FullDup"
+           && mapValue.ContactDuplicateStatus == "NoDuplicate"){
+            //alert(mapValue.AccountDuplicateStatus);
+            //alert(mapValue.ContactDuplicateStatus);
             var myEvent2 = component.getEvent("displayButtonEvent");
             myEvent2.setParams({"Button" : "hide"});
             myEvent2.fire();

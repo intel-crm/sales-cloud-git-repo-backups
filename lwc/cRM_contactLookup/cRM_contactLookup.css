@@ -1,0 +1,25 @@
+.slds-combobox_container {
+    position: relative;
+}
+
+/*.slds-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1;
+}*/
+.slds-dropdown {
+    display: block !important; /* Ensure the dropdown is displayed */
+    position: absolute; /* Position the dropdown correctly */
+    z-index: 1000; /* Ensure the dropdown appears above other elements */
+}
+
+.slds-combobox_container .slds-input, .slds-combobox_container {
+    border: none;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.slds-input .slds-combobox__form-element{
+    padding-left: 0;
+}

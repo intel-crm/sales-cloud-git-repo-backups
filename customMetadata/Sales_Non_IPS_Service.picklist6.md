@@ -8,10 +8,10 @@
     </values>
     <values>
         <field>Subject__c</field>
-        <value xsi:type="xsd:string">Need to merge/split licenses/seats</value>
+        <value xsi:type="xsd:string">Need to remove product from computer</value>
     </values>
     <values>
         <field>Type_of_License_Issue__c</field>
-        <value xsi:type="xsd:string">I can’t merge or split licenses</value>
+        <value xsi:type="xsd:string">I need to remove a product from a computer</value>
     </values>
 </CustomMetadata>

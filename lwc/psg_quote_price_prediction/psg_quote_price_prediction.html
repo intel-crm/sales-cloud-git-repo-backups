@@ -1,0 +1,104 @@
+<template>
+    <lightning-quick-action-panel header={title}>
+        <template if:false={isrender}>
+        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+            <h4><i><b>Instructions:</b></i></h4>
+            <p><i>{info}</i></p>
+            <p><i>{info2}</i></p>
+        </div>
+        </template>
+        <template if:true={isrender}>
+            <!--<div class="spinner-animation">-->
+            <p class="animated-text">{spinnercontent}</p>
+            <!--</div>-->
+        </template>
+        
+        
+        <div class="content-wrapper slds-p-around_medium slds-scrollable_x" style="width:3000px">
+            <template if:false={isrender}>
+                <div class="table-container">
+                    <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+                        <thead>
+                            <tr class="fixed-header-main">
+                                <th scope="col" class="slds-text-align_center cell fixed-header">QL #</th>
+                                <th scope="col" class="slds-text-align_center cell fixed-header">QL Type</th>
+                                <th scope="col" class="slds-text-align_center cell fixed-header">OPN</th>
+                                <th scope="col" class="slds-text-align_center cell">Quantity</th>
+                                <th scope="col" class="slds-text-align_center cell">Broken Cost</th>
+                                <th scope="col" class="slds-text-align_center cell">Suggested Resale</th>
+                                <th scope="col" class="slds-text-align_center cell">Resale Guidance</th>
+                                <th scope="col" class="slds-text-align_center cell">Price Guidance: DWIN Convertibility?</th>
+                                <th scope="col" class="slds-text-align_center cell">Intel Margin %</th>
+                                <th scope="col" class="slds-text-align_center cell">Disty Margin %</th>
+                                <th scope="col" class="slds-text-align_center cell">MSVP L2</th>
+                                <th scope="col" class="slds-text-align_center cell">Use Price Guidance</th>
+                                <th scope="col" class="slds-text-align_center cell">
+                                    <abbr title="required" class="slds-required">*</abbr>
+                                    Reason For Not Using Price Guidance
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template for:each={quoteLines} for:item="line">
+                                <tr  key={line.Id}>
+                                    <td class="slds-text-align_center cell fixed-cell" style="padding: 0.3rem;">{line.Name}</td>
+                                    <td class="slds-text-align_center cell fixed-cell" style="padding: 0.3rem;">{line.core_cpq_quote_line_type_txt__c}</td>
+                                    <td class="slds-text-align_center cell fixed-cell" style="padding: 0.3rem;">{line.Core_OPN__c}</td>
+                                    <td class="slds-text-align_center cell">{line.SBQQ__Quantity__c}</td>
+                                    <td class="slds-text-align_center cell">{line.price_brokencost_amt__c}</td>
+                                    <td class="slds-text-align_center cell">{line.price_suggested_resale_amt__c}</td>
+                                    <td class="slds-text-align_center cell">{line.core_cpq_resale_guidance__c}</td>
+                                    <td class="slds-text-align_center cell">{line.core_cpq_design_win_convertible__c}</td>
+                                    <td class="slds-text-align_center cell">{line.core_cpq_intel_margin_pct__c}</td>
+                                    <td class="slds-text-align_center cell">{line.core_cpq_distributor_margin_pct__c}</td>
+                                    <td class="slds-text-align_center cell">{line.price_msvp_l2_amt__c}</td>
+                                    <td class="slds-text-align_center cell">
+                                        <lightning-input type="checkbox"
+                                            checked={line.usepredictprice}
+                                            data-id={line.Id}
+                                            disabled={line.isDisabled}
+                                            onchange={handleUsePricePredictChange}>
+                                        </lightning-input>
+                                    </td>
+                                    <td class="slds-text-align_center cell" style="padding: 0.3rem;">
+                                        <lightning-combobox
+                                            style="text-align: left;"
+                                            options={disregardingPredictedPriceOptions}
+                                            value={line.core_cpq_disregarding_price_guidance__c}
+                                            data-id={line.Id}
+                                            disabled={line.usepredictprice}
+                                            onchange={handleDisregardingPredictedPriceChange}>
+                                        </lightning-combobox>
+                                    </td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                </div>
+            </template>
+        </div>
+
+        <template if:true={isLoading}>
+            <div class="spinner-overlay">
+                <lightning-spinner variant="brand"></lightning-spinner>
+            </div>
+        </template>
+        
+    
+
+        
+    </lightning-quick-action-panel>
+    <div class="padding-right slds-grid slds-grid_align-end slds-p-vertical_medium">
+            <template if:true={isError}>
+                <lightning-button label="Close" onclick={handleCancel} class="slds-m-right_small"></lightning-button>
+            </template>
+            <template if:false={isrender}>
+            <template if:false={isError}>
+            <template if:false={isLoading}>   
+                <lightning-button variant="brand" label="Save" onclick={handleSave}></lightning-button>
+            </template>   
+            </template>
+            </template>
+        </div>
+    
+</template>

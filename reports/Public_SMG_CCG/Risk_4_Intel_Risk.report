@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aggregates>
+        <calculatedFormula>CDF1:SUM/OpportunityLineItem.Core_KPI_Total_Price__c:SUM</calculatedFormula>
+        <datatype>percent</datatype>
+        <developerName>FORMULA1</developerName>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>@Risk % (Jason)</masterLabel>
+        <scale>1</scale>
+    </aggregates>
     <buckets>
         <bucketType>text</bucketType>
         <developerName>BucketField_37909841</developerName>
@@ -166,7 +175,6 @@
         <field>PROBABILITY</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
         <field>Opportunity.Core_Architecture_Conversion__c</field>
     </columns>
     <columns>
@@ -233,6 +241,15 @@
         <field>Opportunity.Core_Products_At_Risk_Count__c</field>
     </columns>
     <columns>
+        <field>Opportunity.Core_Support_Requested__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Risk_Reason__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_At_Risk_Created_Date__c</field>
+    </columns>
+    <columns>
         <field>Opportunity.Core_Loss_Cancel_Reason__c</field>
     </columns>
     <columns>
@@ -246,10 +263,16 @@
         <field>OpportunityLineItem.Core_At_Risk__c</field>
     </columns>
     <columns>
+        <field>OpportunityLineItem.Core_Risk_Category__c</field>
+    </columns>
+    <columns>
         <field>OpportunityLineItem.Core_Risk_Priority__c</field>
     </columns>
     <columns>
         <field>OpportunityLineItem.Core_Risk_Reason1__c</field>
+    </columns>
+    <columns>
+        <field>OpportunityLineItem.Core_Risk_Reason2__c</field>
     </columns>
     <columns>
         <field>OpportunityLineItem.Core_At_Risk_Status__c</field>
@@ -267,36 +290,41 @@
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
+        <field>CDF1</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
         <field>Opportunity.Core_Opportunity_Count__c</field>
     </columns>
-    <columns>
-        <field>OpportunityLineItem.Core_Risk_Create_Date__c</field>
-    </columns>
-    <columns>
-        <field>OpportunityLineItem.Core_Risk_Detail__c</field>
-    </columns>
+    <customDetailFormulas>
+        <calculatedFormula>CASE(OpportunityLineItem.Core_Risk_Reason1__c,&quot;&quot;,case(OpportunityLineItem.Core_Risk_Reason2__c,&quot;&quot;,0,1),1)*OpportunityLineItem.Core_KPI_Total_Price__c</calculatedFormula>
+        <dataType>Double</dataType>
+        <developerName>CDF1</developerName>
+        <label>Risk $ (Jason)</label>
+        <scale>0</scale>
+    </customDetailFormulas>
     <filter>
-        <booleanFilter>1 AND 2 AND 3</booleanFilter>
+        <booleanFilter>(1 OR 2) AND 3</booleanFilter>
+        <criteriaItems>
+            <column>OpportunityLineItem.Core_Risk_Reason1__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value></value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OpportunityLineItem.Core_Risk_Reason2__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value></value>
+        </criteriaItems>
         <criteriaItems>
             <column>STAGE_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Qualify,Define,Develop,Design</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OpportunityLineItem.Core_Status__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>Lost,Cancelled,Deleted</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OpportunityLineItem.Core_At_Risk__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>1</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -318,7 +346,7 @@
     </params>
     <params>
         <name>open</name>
-        <value>open</value>
+        <value>all</value>
     </params>
     <params>
         <name>probability</name>
@@ -337,6 +365,6 @@
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <interval>INTERVAL_CURY</interval>
     </timeFrameFilter>
 </Report>

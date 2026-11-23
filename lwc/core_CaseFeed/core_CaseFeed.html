@@ -1,0 +1,79 @@
+<template>
+    <template for:each={feed} for:item="element">
+        <div key={element.Id}>
+            <div class="slds-feed">
+                <ul class="slds-feed__list">
+                    <li class="slds-feed__item">
+                        <article class="slds-post">
+                            <header class="slds-post__header slds-media">
+                            <div class="slds-media__figure">
+                                <a href={element.profileLink} class="slds-avatar slds-avatar_circle slds-avatar_large">
+                                <img alt={element.actor.displayName} src={element.actor.photo.fullEmailPhotoUrl} title="ISVC Profile" label ="ISVC Profile" />
+                                </a>
+                            </div>
+                            <div class="slds-media__body">
+                                <div class="slds-grid slds-grid_align-spread slds-has-flexi-truncate">
+                                    <p><a href={getLink} title="ISVC Profile">{element.header.text}</a></p>
+                                </div>
+                                <!--Returns the created date of the element-->
+                                <p class="slds-text-body_small">
+                                    {element.relativeCreatedDate}
+
+                                </p>
+                            </div>
+                            </header>
+                            <div class="slds-post__content slds-text-longform">
+                                <p>{element.bodyMessage}</p>
+                                <div if:true={element.hasEmail}>
+                                    <a href={element.capabilities.emailMessage.fromAddress.emailAddress}
+                                                    title={element.capabilities.emailMessage.fromAddress.emailAddress}>
+                                                    {element.capabilities.emailMessage.fromAddress.displayName}
+                                    </a>
+                                    {space} sent an email to {space}
+
+                                                <!--Iterates through all the recipients' addresses and lists them out seperated by a comma-->
+                                    <template for:each={element.capabilities.emailMessage.toAddresses} for:item="a">
+                                        <span key={a.Id}>
+                                            <a href={a.emailAddress} title={a.emailAddress}>
+                                                {a.emailAddress}
+                                            </a>
+                                            ,{space} 
+                                        </span>
+                                    </template>
+                                    <p>
+                                        <br>
+                                        <!--Prints the subject of the email-->
+                                        Subject: {element.capabilities.emailMessage.subject}
+                                        <br>
+                                    </p>
+                                    <lightning-button variant="base" label="Expand Email" onclick={expandEmail} class="slds-m-left_xx-small">
+                                    </lightning-button>
+                                                <br>
+                                                <br>
+                                    <!--<div if:true={show5}>
+                                        <div class="container2" lwc:dom="manual"></div>
+                                    </div>
+                                    <div if:true={show4}>
+                                        <div class="container1" lwc:dom="manual"></div>
+                                    </div>
+                                    <div if:true={show3}>
+                                        <div class="container0" lwc:dom="manual"></div>
+                                    </div>
+                                    <div if:true={show2}>
+                                        <div class="container2" lwc:dom="manual"></div>
+                                    </div>
+                                    <div if:true={show1}>
+                                        <div class="container1" lwc:dom="manual"></div>
+                                    </div>
+                                    <div if:true={show0}>
+                                        <div class="container0" lwc:dom="manual"></div>
+                                    </div>-->
+                                </div>
+                            </div>
+                        </article>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </template>
+</template>

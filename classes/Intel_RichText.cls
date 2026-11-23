@@ -11,11 +11,8 @@
 **************************************************************************************************************************************************************************/
 // RICH TEXT - https://developer.salesforce.com/docs/component-library/bundle/lightning:inputRichText
     public class Intel_RichText extends Intel_Input {
-        public static Boolean isWorking() {
-        return true;
-    }
-      //  { type = 'richtext'; }
-      // public String label { get; set; }
-      // // RICH TEXT EDITOR "FORMATS" (optional): Complete List -- (font, size, bold, italic, underline, strike, list, indent, align, clean, table, header)
-      // public String formats { get; set; } { formats = 'font,size,bold,italic,underline,strike,list,indent,align,clean,table,header'; } // default list
+       { type = 'richtext'; }
+      public String label { get; set; }
+      // RICH TEXT EDITOR "FORMATS" (optional): Complete List -- (font, size, bold, italic, underline, strike, list, indent, align, clean, table, header)
+      public String formats { get; set; } { formats = 'font,size,bold,italic,underline,strike,list,indent,align,clean,table,header'; } // default list
     }

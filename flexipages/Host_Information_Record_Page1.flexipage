@@ -85,6 +85,12 @@
         </itemInstances>
         <itemInstances>
             <componentInstance>
+                <componentName>salesLicenseRelatedList</componentName>
+                <identifier>salesLicenseRelatedList</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
                 <componentInstanceProperties>
                     <name>relatedListComponentOverride</name>
                     <value>NONE</value>

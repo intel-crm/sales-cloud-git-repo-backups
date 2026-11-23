@@ -11,7 +11,7 @@
         <chartType>HorizontalBar</chartType>
         <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>true</expandOthers>
-        <groupingColumn>SWS_Cloud_Credit_Request__c$SWS_Error__c</groupingColumn>
+        <groupingColumn>SWS_Cloud_Credit_Request__c$SWS_IDC_Error_Time__c</groupingColumn>
         <location>CHART_BOTTOM</location>
         <showAxisLabels>true</showAxisLabels>
         <showPercentage>false</showPercentage>
@@ -48,7 +48,7 @@
     <groupingsDown>
         <dateGranularity>Month</dateGranularity>
         <field>SWS_Cloud_Credit_Request__c$SWS_IDC_Error_Time__c</field>
-        <sortOrder>Asc</sortOrder>
+        <sortOrder>Desc</sortOrder>
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>

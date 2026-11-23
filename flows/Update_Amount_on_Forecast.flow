@@ -143,14 +143,7 @@
         <connector>
             <targetReference>Get_Opportunity_Forecast</targetReference>
         </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>Amount</field>
-            <operator>IsChanged</operator>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </filters>
+        <filterFormula>AND(AND(NOT(ISNULL({!$Record.RecordTypeId})),CONTAINS({!$Label.Core_Sales_CRM_Record_Types},{!$Record.RecordType.DeveloperName})),ISCHANGED({!$Record.Amount}))</filterFormula>
         <object>Opportunity</object>
         <recordTriggerType>Update</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>

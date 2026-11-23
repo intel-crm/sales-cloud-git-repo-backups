@@ -87,6 +87,18 @@
             </connector>
             <label>Core_OppProd_Claim_Date_Population</label>
         </rules>
+        <rules>
+            <name>Low_Touch</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Opportunity.CRM_IsLowTouchAdmin_Chk__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Low Touch</label>
+        </rules>
     </decisions>
     <decisions>
         <name>OppProd_Lost_to_Open_Step_2</name>
@@ -167,6 +179,9 @@ Core_OppProd_Lost_to_Open_Step 1a, 1b and 2</description>
                 <booleanValue>false</booleanValue>
             </value>
         </inputAssignments>
+        <inputAssignments>
+            <field>Core_PW_Lost_Price__c</field>
+        </inputAssignments>
         <inputReference>$Record</inputReference>
     </recordUpdates>
     <recordUpdates>
@@ -181,6 +196,12 @@ Core_OppProd_Lost_to_Open_Step 1a, 1b and 2</description>
             <field>Core_Lost_to_Open_Flag__c</field>
             <value>
                 <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_PW_Sales_Price__c</field>
+            <value>
+                <elementReference>$Record.Core_PW_Lost_Price__c</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -207,7 +228,7 @@ Core_OppProd_Lost_to_Open_Step 1a, 1b and 2</description>
         </filters>
         <object>OpportunityLineItem</object>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
-        <triggerType>RecordBeforeSave</triggerType>
+        <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Active</status>
+    <status>Obsolete</status>
 </Flow>

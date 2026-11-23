@@ -1,0 +1,339 @@
+<apex:page controller="Core_AccountPlan_PDFController" showHeader="true">
+    <apex:stylesheet value="{!$Resource.CRM_AccountPlanPDFStyle}" />    
+    <h3 class="title">{!record.Name}</h3>
+    <div class="header">
+        <div class="pagenumber">Page <span class="page"></span> of <span class="totalPages"></span></div>        
+    </div>
+    <div class="footer">
+        <strong>Intel Confidential</strong>
+    </div> 
+    <div class="row">
+        <div class="cell2">
+            <table class="custom-table">
+                <tr>
+                    <th class="table-header" colspan="2">Account Plan Information</th>
+                </tr>
+            </table>
+            
+            <table class="custom-table2"> 
+                <tr class="bgcolor1">
+                    <td ><strong>Account Plan Name</strong></td>
+                    <td>{!record.Name}</td>
+                </tr>
+                <tr class="bgcolor2">
+                    <td ><strong>Account</strong></td>
+                    <td><a href="{!accountUrl}" target="_blank">{!relatedAccount.Name}</a></td>
+                </tr>
+                <tr class="bgcolor1">
+                    <td ><strong>Start Date</strong></td>
+                    <td>{!record.StartDate}</td>
+                </tr>
+                <tr class="bgcolor2"> 
+                    <td ><strong>End Date</strong></td>
+                    <td>{!record.EndDate}</td>
+                </tr>
+                <tr class="bgcolor1">
+                    <td ><strong>Account Vision</strong></td>
+                    <td><apex:outputText value="{!CRM_AccountVision}" escape="false" /></td>
+                </tr>
+                <tr class="bgcolor2">
+                    <td ><strong>Status</strong></td>
+                    <td>{!record.Status}</td>
+                    
+                </tr>
+                <tr class="bgcolor1">
+                    <td ><strong>Account Plan Score</strong></td>
+                    <td>{!record.Core_Account_Plan_Score_Nm__c}</td>
+                </tr>
+            </table>
+            
+        </div>
+        <div class="cell2">
+            <table class="custom-table">
+                <tr>
+                    <th colspan="2" class="table-header" >Account Plan - Executive Summary</th>
+                </tr>                
+            </table >
+            <table class="custom-table2"> 
+                <tr class="bgcolor1">
+                    <td width="50%"><strong>Who is the Customer ?</strong></td>
+                    <td  width="50%">
+                        <apex:outputText rendered="{!NOT(ISBLANK(record.CRM_Customer_Nm__c))}" value="{!record.CRM_Customer_Nm__c}" />
+                    </td>
+                </tr>
+                <tr class="bgcolor2">
+                    <td width="50%"><strong>Account Value/Impact to Intel</strong></td>
+                    <td width="50%">
+                        <apex:outputText rendered="{!NOT(ISBLANK(record.CRM_Account_Value_Impact_to_Intel__c))}" value="{!record.CRM_Account_Value_Impact_to_Intel__c}" />
+                    </td>
+                </tr>
+                <tr class="bgcolor1">
+                    <td width="50%"><strong>Intel Partner Alliance Activity</strong></td>
+                    <td width="50%">
+                        <apex:outputText rendered="{!NOT(ISBLANK(record.CRM_Intel_Partner_Alliance_Activity__c))}" value="{!record.CRM_Intel_Partner_Alliance_Activity__c}" />
+                    </td>
+                </tr>
+                <tr class="bgcolor2"> 
+                    <td width="50%"><strong>Recent Customer Announcements</strong></td>
+                    <td width="50%">
+                        <apex:outputText rendered="{!NOT(ISBLANK(record.CRM_Recent_Customer_Announcements__c))}" value="{!record.CRM_Recent_Customer_Announcements__c}" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="cell2">
+            <table class="custom-table">
+                <tr>
+                    <th class="table-header" colspan="2">Customer Overview</th>
+                </tr>
+            </table>
+            
+            <table class="custom-table2"> 
+                <tr class="bgcolor1">
+                    <td width="50%"><strong>Market Cap</strong></td>
+                    <td width="50%">
+                        <apex:outputText rendered="{!NOT(ISBLANK(record.Core_Market_Cap__c))}" value="${!record.Core_Market_Cap__c}" />
+                    </td>
+                </tr>
+                <tr class="bgcolor2">
+                    <td width="50%"><strong>Account Revenue</strong></td>
+                    <td width="50%">
+                        <apex:outputText rendered="{!NOT(ISBLANK(record.Core_Account_Revenue__c))}" value="${!record.Core_Account_Revenue__c}" />
+                    </td>
+                </tr>
+                <tr class="bgcolor1">
+                    <td width="50%"><strong>Net Income</strong></td>
+                    <td width="50%">
+                        <apex:outputText rendered="{!NOT(ISBLANK(record.Core_Net_Income__c))}" value="${!record.Core_Net_Income__c}" />
+                    </td>
+                </tr>
+                <tr class="bgcolor2"> 
+                    <td width="50%"><strong>Cash and Investments</strong></td>
+                    <td width="50%">
+                        <apex:outputText rendered="{!NOT(ISBLANK(record.Core_Cash_Investments__c))}" value="${!record.Core_Cash_Investments__c}" />
+                    </td>
+                </tr>
+                <tr class="bgcolor1">
+                    <td width="50%"><strong>Debt long term</strong></td>
+                    <td width="50%">
+                        <apex:outputText rendered="{!NOT(ISBLANK(record.Core_Debt_long_term__c))}" value="${!record.Core_Debt_long_term__c}" />
+                    </td>
+                </tr>
+                <tr class="bgcolor2">
+                    <td width="50%"><strong>Price/Earnings</strong></td>
+                    <td width="50%">
+                        <apex:outputText rendered="{!NOT(ISBLANK(record.Core_Price_Earnings__c))}" value="${!record.Core_Price_Earnings__c}" />
+                    </td>
+                </tr>
+                <tr class="bgcolor1">
+                    <td width="50%"><strong>Gross Margin</strong></td>
+                    <td width="50%">
+                        <apex:outputText rendered="{!NOT(ISBLANK(record.Core_Gross_Margin__c))}" value="${!record.Core_Gross_Margin__c}" />
+                    </td>
+                </tr>
+                <tr class="bgcolor2">
+                    <td  width="50%"><strong>Employees</strong></td>
+                    <td width="50%">{!record.Core_Employees__c}</td>
+                </tr>
+                <tr class="bgcolor1">
+                    <td width="50%"><strong>Financial Year</strong></td>
+                    <td width="50%">{!record.CRM_Financial_Year__c}</td>
+                </tr>
+                <tr class="bgcolor2">
+                    <td width="50%"><strong>Account Revenue Comments</strong></td>
+                    <td width="50%">{!record.Core_Account_Revenue_Comments__c}</td>
+                </tr>
+                
+            </table>
+            
+        </div>
+        <div class="cell2">
+            <table class="custom-table">
+                <tr>
+                    <th colspan="2" class="table-header" >Account Revenue</th>
+                </tr>
+            </table >
+            <div>
+                <apex:image url="/sfc/servlet.shepherd/version/download/{!contentVersionId}" width="600" height="400" />
+                
+            </div>
+            
+            <table class="custom-table2">
+                <tr>
+                    <th>Year</th>
+                    <th>BU</th>
+                    <th>Amount</th>
+                </tr>
+                <apex:repeat value="{!intelAccountPlanRevRecords}" var="item">
+                    <tr>
+                        <td>{!item.CRM_Year__c}</td>
+                        <td>{!item.CRM_BU__c}</td>
+                        <td>{!item.CRM_Account_Potential_Revenue__c}</td>
+                    </tr>
+                </apex:repeat>
+            </table>
+        </div>
+        <div class="cell2">
+            <table class="custom-table">
+                <tr>
+                    <th colspan="2" class="table-header" >Hot Buttons</th>
+                </tr>                
+                
+            </table >
+            <ul>
+                <apex:repeat value="{!hotButtonRecords}" var="item">
+                    <li>{!item.CRM_Description__c}</li>
+                </apex:repeat>
+            </ul>
+        </div>  
+        <div class="cell2">
+            <table class="custom-table">
+                <tr>
+                    <th colspan="2" class="table-header" >Relationship Assessment</th>
+                </tr>
+            </table>
+            
+            <div>
+                <p><strong>Relationship Map Comments:</strong></p>
+                <apex:outputText value="{!Relationship_Map_Comments}" escape="false" />
+                
+            </div>
+            
+        </div>
+        <div class="cell2">
+            <table class="custom-table">
+                <tr>
+                    <th colspan="2" class="table-header" >Transformational Opportunities</th>
+                </tr>                
+                
+            </table >
+            <table class="custom-table2">
+                <tr>
+                    <th>Name</th>
+                    <th>Amount</th>
+                    <th>Decision Date</th>
+                    <th>Stage</th>
+                </tr>
+                <apex:repeat value="{!oppRecords}" var="item">
+                    <tr>
+                        <td>{!item.Name}</td>
+                        <td>
+                            <apex:outputText rendered="{!NOT(ISBLANK(item.Amount))}" value="${!item.Amount}" />
+                        </td>
+                        <td>
+                            <apex:outputText value="{0, date, dd/MM/yyyy}">
+                                <apex:param value="{!item.CloseDate}" />
+                            </apex:outputText>
+                        </td>
+                        <td>{!item.StageName}</td>
+                    </tr>
+                </apex:repeat>
+            </table>
+            <div>
+                <p><strong>Comments:</strong></p>
+                <apex:outputText value="{!TransformationalComments}" escape="false" />
+                
+            </div>
+        </div>
+        <div class="cell2">
+            <table class="custom-table">
+                <tr>
+                    <th colspan="2" class="table-header" >Customer Objectives and Intel Values</th>
+                </tr>                
+                
+            </table >
+            <ul>
+                <li>                  
+                    <p><strong>Customer Objectives:</strong></p><apex:outputText value="{!record.Core_Customer_Objectives__c}" escape="false" />
+                </li>
+                <li>
+                    <p><strong>Intel Values:</strong></p>
+                    <apex:outputText value="{!CRM_Intel_Values}" escape="false" />
+                </li>
+            </ul>
+        </div>
+        
+        <div class="cell2">
+            <table class="custom-table">
+                <tr>
+                    <th colspan="2" class="table-header" >Partners and Competition</th>
+                </tr>                            
+            </table >
+            <ul>
+                <li>
+                    <p><strong>Partners:</strong></p>
+                    <apex:outputText value="{!CRM_Partners}" escape="false" />
+                </li>
+                <li>
+                    <p><strong>Competetion:</strong></p>
+                    <apex:outputText value="{!CRM_Competition}" escape="false" />
+                </li>
+            </ul>
+        </div>
+        <div class="cell2">
+            <table class="custom-table">
+                <tr>
+                    <th colspan="2" class="table-header" >Objectives</th>
+                </tr>                            
+            </table >
+            <table class="custom-table3">
+                <tr class="bgcolor1" scope="row">
+                    <th>Name</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Objective Owner</th>
+                    <th>Current Value</th>
+                    <th>Target Value</th>
+                </tr>
+                <apex:repeat value="{!accountPlanObjRecords}" var="item">
+                    
+                    <tr scope="row">
+                        <td width="20%">
+                            <strong>{!item.Name}</strong>
+                        </td>
+                        <td width="20%">
+                            <apex:outputText value="{0, date, dd/MM/yyyy}">
+                                <apex:param value="{!item.StartDate}" />
+                            </apex:outputText>
+                        </td>
+                        <td width="20%">
+                            <apex:outputText value="{0, date, dd/MM/yyyy}">
+                                <apex:param value="{!item.EndDate}" />
+                            </apex:outputText>
+                        </td>
+                        <td width="20%">{!item.ObjectiveOwner.Name}</td>
+                        <apex:repeat value="{!item.AccountPlanObjectiveMeasures}" var="it">
+                            <td width="20%">
+                                <!-- Show as Currency -->
+                                <apex:outputText value="${!it.currentValue}"
+                                                 rendered="{!AND(NOT(ISNULL(it.currentValue)), it.ValueType == 'Currency')}" />
+                                
+                                <!-- Show as Percent -->
+                                <apex:outputText value="{!it.currentValue}%" 
+                                                 rendered="{!AND(NOT(ISNULL(it.currentValue)), it.ValueType == 'Percent')}" />
+                                
+                                <!-- Show as Plain Number -->
+                                <apex:outputText value="{!it.currentValue}"
+                                                 rendered="{!AND(NOT(ISNULL(it.currentValue)), it.ValueType == 'Number')}" />
+                            </td>
+                            <td width="20%">
+                                <!-- Show as Currency -->
+                                <apex:outputText value="${!it.targetValue}"
+                                                 rendered="{!AND(NOT(ISNULL(it.targetValue)), it.ValueType == 'Currency')}" />
+                                
+                                <!-- Show as Percent -->
+                                <apex:outputText value="{!it.targetValue}%" 
+                                                 rendered="{!AND(NOT(ISNULL(it.targetValue)), it.ValueType == 'Percent')}" />
+                                
+                                <!-- Show as Plain Number -->
+                                <apex:outputText value="{!it.targetValue}"
+                                                 rendered="{!AND(NOT(ISNULL(it.targetValue)), it.ValueType == 'Number')}" />
+                            </td>
+                        </apex:repeat>
+                    </tr>
+                </apex:repeat>
+            </table>
+        </div>
+        
+    </div>  
+</apex:page>

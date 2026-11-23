@@ -21,10 +21,6 @@
         <name>Core_MDF_Channel_Program_Unique_Id_nm__c</name>
     </fields>
     <fields>
-        <label><!-- Project/Platform --></label>
-        <name>Core_MDF_Project_Platform__c</name>
-    </fields>
-    <fields>
         <label><!-- Technical Program Name --></label>
         <name>Core_MDF_Technical_Program_Name__c</name>
     </fields>

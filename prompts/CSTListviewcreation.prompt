@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>CST Listview creation</masterLabel>
+    <promptVersions>
+        <body>&lt;p&gt;&lt;strong&gt;&lt;u&gt;WHY?&lt;/u&gt;&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;The listview shown here only displays upto 2000 records. Hence, to view more data you can create your own list view and apply filter on top of that.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;&lt;u&gt;HOW?&lt;/u&gt;&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Step1: Click on the gear icon and select Clone option .&lt;/p&gt;&lt;p&gt;Step2: Provide the listview name and select the first option in &quot;Who sees this list view?&quot; and click Save.&lt;/p&gt;&lt;p&gt;Step3: Add/Remove the filters necessary to view the customer data and click save.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</body>
+        <customApplication>Customer_Selection_Tool</customApplication>
+        <delayDays>3</delayDays>
+        <displayType>DockedComposer</displayType>
+        <endDate>2023-11-30</endDate>
+        <experience>Lightning</experience>
+        <header>Listview Training</header>
+        <isPublished>true</isPublished>
+        <masterLabel>CST Listview creation</masterLabel>
+        <publishedDate>2023-10-03</publishedDate>
+        <shouldDisplayActionButton>false</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>true</shouldIgnoreGlobalDelay>
+        <startDate>2023-10-03</startDate>
+        <targetPageKey1>SPM_Customer_Category__c</targetPageKey1>
+        <targetPageKey2>list</targetPageKey2>
+        <targetPageType>standard__objectPage</targetPageType>
+        <timesToDisplay>10</timesToDisplay>
+        <title>Personalized Listview Creation</title>
+        <uiFormulaRule>
+            <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6</booleanFilter>
+            <criteria>
+                <leftValue>{!$Permission.CustomPermission.CST_Vice_President}</leftValue>
+                <operator>EQUAL</operator>
+                <rightValue>TRUE</rightValue>
+            </criteria>
+            <criteria>
+                <leftValue>{!$Permission.CustomPermission.CST_Country_Manager}</leftValue>
+                <operator>EQUAL</operator>
+                <rightValue>TRUE</rightValue>
+            </criteria>
+            <criteria>
+                <leftValue>{!$Permission.CustomPermission.CST_Director}</leftValue>
+                <operator>EQUAL</operator>
+                <rightValue>TRUE</rightValue>
+            </criteria>
+            <criteria>
+                <leftValue>{!$Permission.CustomPermission.CST_General_Manager}</leftValue>
+                <operator>EQUAL</operator>
+                <rightValue>TRUE</rightValue>
+            </criteria>
+            <criteria>
+                <leftValue>{!$Permission.CustomPermission.CST_Regional_Admin}</leftValue>
+                <operator>EQUAL</operator>
+                <rightValue>TRUE</rightValue>
+            </criteria>
+            <criteria>
+                <leftValue>{!$Permission.CustomPermission.CST_Super_Admin}</leftValue>
+                <operator>EQUAL</operator>
+                <rightValue>TRUE</rightValue>
+            </criteria>
+        </uiFormulaRule>
+        <userAccess>SpecificPermissions</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+</Prompt>

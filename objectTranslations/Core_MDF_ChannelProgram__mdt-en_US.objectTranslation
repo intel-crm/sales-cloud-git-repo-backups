@@ -25,14 +25,6 @@
         <name>Core_MDF_Bank_Program_Value__c</name>
     </fields>
     <fields>
-        <label><!-- BudgetTypeBasedSharing --></label>
-        <name>Core_MDF_BudgetTypeBasedSharing_Ind__c</name>
-    </fields>
-    <fields>
-        <label><!-- Camp Not Editable Fields When PFR Exists --></label>
-        <name>Core_MDF_CampNotEditFieldsWhenPFRExists__c</name>
-    </fields>
-    <fields>
         <label><!-- Campaign Picklist Fields --></label>
         <name>Core_MDF_Campaign_Picklist_Fields__c</name>
     </fields>

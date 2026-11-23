@@ -58,9 +58,9 @@ public without sharing class Pricing_DataScrubBatch implements Database.Batchabl
             logEntry.Core_Origin__c = Label.Pricing_IQR_Program_Name;
             logEntry.Core_Project__c = Label.Pricing_IQR_Program_Name;
             logEntry.Core_sObjectId__c = qliId;
-            logEntry.Core_Severity__c = 'Medium';
+            logEntry.Core_Severity__c = 'Critical';
             logEntry.Core_Details__c = errorQLIToMsgMap.get(qliId);
-            logEntry.Core_Message__c = Label.Pricing_IQR_SFDC_Environment + ':' +errorQLIToMsgMap.get(qliId) + ' ' + 'Class.Pricing_DataScrubBatch - sObject Id:' +qliId;
+            logEntry.Core_Message__c = Label.Pricing_IQR_SFDC_Environment + ':' +errorQLIToMsgMap.get(qliId) + ' ' + 'Class.Pricing_ApproveRejectCmntsUpdate_Batch - sObject Id:' +qliId;
             logEntry.Core_Support_Email__c = Label.Pricing_IQR_Support_Email;
             logEntry.Core_Support_Link__c = Label.Pricing_IQR_Support_Link;
             logEntry.Core_When__c = System.now();

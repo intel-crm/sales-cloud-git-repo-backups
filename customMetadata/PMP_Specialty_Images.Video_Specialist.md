@@ -3,10 +3,6 @@
     <label>Video Specialist</label>
     <protected>false</protected>
     <values>
-        <field>Grey_Image_URL__c</field>
-        <value xsi:type="xsd:string">/servlet/servlet.FileDownload?file=0153b000005K8tqAAC</value>
-    </values>
-    <values>
         <field>PMP_Account_Specialty_Name__c</field>
         <value xsi:type="xsd:string">Video Specialist</value>
     </values>
@@ -20,6 +16,6 @@
     </values>
     <values>
         <field>URL__c</field>
-        <value xsi:type="xsd:string">/servlet/servlet.FileDownload?file=0153b000004Pg4s</value>
+        <value xsi:type="xsd:string">/servlet/servlet.ImageServer?id=0153b000004Pg4s&amp;oid=00Do0000000aRcf&amp;lastMod=1570256505000</value>
     </values>
 </CustomMetadata>

@@ -411,6 +411,13 @@
             <column>Case.Core_Sub_Status__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Invalid</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_Sub_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
             <value>Close-Pending</value>
         </criteriaItems>
@@ -422,18 +429,11 @@
             <value>Programmable Solutions Group</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Case.Core_IPS_Assigned_Queue__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>contains</operator>
-            <value>ASMO</value>
-        </criteriaItems>
-        <criteriaItems>
             <column>ACCOUNT.NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>contains</operator>
-            <value>Crestron</value>
+            <value>Microsoft,NGC,F5 Networks,Qualcomm,Viasat,Verizon,Broadcom,Squirrels Research Labs,Collins,Amazon Web Services,Ciena,nVidia,Apple,Texas Instruments,Crestron,Harris Corporation,Dasan Zhone Systems</value>
         </criteriaItems>
         <criteriaItems>
             <column>Case.Core_IPS_Assigned_Queue__c</column>

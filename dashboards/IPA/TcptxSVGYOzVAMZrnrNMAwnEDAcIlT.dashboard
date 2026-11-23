@@ -9,18 +9,50 @@
     <dashboardColorPalette>accessible</dashboardColorPalette>
     <dashboardFilters>
         <dashboardFilterOptions>
-            <operator>greaterOrEqual</operator>
-            <values>1/1/2021 12:00 AM</values>
+            <operator>equals</operator>
+            <values>TODAY</values>
         </dashboardFilterOptions>
         <dashboardFilterOptions>
-            <operator>greaterOrEqual</operator>
-            <values>2/1/2021 12:00 AM</values>
+            <operator>equals</operator>
+            <values>YESTERDAY</values>
         </dashboardFilterOptions>
         <dashboardFilterOptions>
-            <operator>greaterOrEqual</operator>
-            <values>12/1/2020 12:00 AM</values>
+            <operator>equals</operator>
+            <values>LAST_WEEK</values>
         </dashboardFilterOptions>
-        <name>New Registration: Last Modified Date</name>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>THIS_WEEK</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>LAST_N_WEEKS:2</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>LAST_MONTH</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>THIS_MONTH</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>LAST_N_MONTHS:2</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>LAST_N_MONTHS:3</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>LAST_N_MONTHS:6</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>LAST_N_MONTHS:8</values>
+        </dashboardFilterOptions>
+        <name>Registration Request: Created Date</name>
     </dashboardFilters>
     <dashboardGridLayout>
         <dashboardGridComponents>
@@ -34,25 +66,31 @@
                     <column>RowCount</column>
                 </chartSummary>
                 <componentChartTheme>dark</componentChartTheme>
-                <componentType>Column</componentType>
+                <componentType>ColumnGrouped</componentType>
                 <dashboardFilterColumns>
-                    <column>CUST_LAST_UPDATE</column>
+                    <column>CUST_CREATED_DATE</column>
                 </dashboardFilterColumns>
+                <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
                 <drillEnabled>false</drillEnabled>
                 <drillToDetailEnabled>false</drillToDetailEnabled>
                 <enableHover>false</enableHover>
                 <expandOthers>false</expandOthers>
-                <groupingColumn>CDF1</groupingColumn>
+                <groupingColumn>CUST_CREATED_DATE</groupingColumn>
+                <groupingColumn>PRM_Registration_Request__c.PRM_Partner_Role__c</groupingColumn>
                 <groupingSortProperties>
                     <groupingSorts>
                         <groupingLevel>g1</groupingLevel>
+                        <inheritedReportGroupingSort>r</inheritedReportGroupingSort>
+                    </groupingSorts>
+                    <groupingSorts>
+                        <groupingLevel>g2</groupingLevel>
                         <sortOrder>a</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>IPA Request-Self Registration</header>
-                <legendPosition>Bottom</legendPosition>
-                <report>IPAReports/Registration_Request_t5F</report>
+                <header>Number of Registration Requests</header>
+                <legendPosition>Right</legendPosition>
+                <report>IPAReports/Number_of_Registration_Requests_abO</report>
                 <showPercentage>false</showPercentage>
                 <showValues>true</showValues>
                 <sortBy>RowLabelAscending</sortBy>
@@ -60,7 +98,7 @@
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
             <rowIndex>0</rowIndex>
-            <rowSpan>14</rowSpan>
+            <rowSpan>16</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
             <colSpan>6</colSpan>
@@ -75,7 +113,52 @@
                 <componentChartTheme>dark</componentChartTheme>
                 <componentType>ColumnGrouped</componentType>
                 <dashboardFilterColumns>
-                    <column>CUST_LAST_UPDATE</column>
+                    <column>CUST_CREATED_DATE</column>
+                </dashboardFilterColumns>
+                <decimalPrecision>-1</decimalPrecision>
+                <displayUnits>Auto</displayUnits>
+                <drillEnabled>false</drillEnabled>
+                <drillToDetailEnabled>false</drillToDetailEnabled>
+                <enableHover>false</enableHover>
+                <expandOthers>false</expandOthers>
+                <groupingColumn>PRM_Registration_Request__c.PRM_Partner_Role__c</groupingColumn>
+                <groupingColumn>PRM_Registration_Request__c.PRM_EV_Expired_vs_Pending__c</groupingColumn>
+                <groupingSortProperties>
+                    <groupingSorts>
+                        <groupingLevel>g1</groupingLevel>
+                        <sortOrder>a</sortOrder>
+                    </groupingSorts>
+                    <groupingSorts>
+                        <groupingLevel>g2</groupingLevel>
+                        <sortOrder>a</sortOrder>
+                    </groupingSorts>
+                </groupingSortProperties>
+                <header>EV Expired</header>
+                <legendPosition>Right</legendPosition>
+                <report>IPAReports/EV_Expired</report>
+                <showPercentage>false</showPercentage>
+                <showValues>true</showValues>
+                <sortBy>RowLabelAscending</sortBy>
+                <sortLegendValues>false</sortLegendValues>
+                <useReportChart>false</useReportChart>
+            </dashboardComponent>
+            <rowIndex>0</rowIndex>
+            <rowSpan>16</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>6</colSpan>
+            <columnIndex>0</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <chartAxisRange>Auto</chartAxisRange>
+                <chartSummary>
+                    <axisBinding>y</axisBinding>
+                    <column>RowCount</column>
+                </chartSummary>
+                <componentChartTheme>dark</componentChartTheme>
+                <componentType>ColumnGrouped</componentType>
+                <dashboardFilterColumns>
+                    <column>CUST_CREATED_DATE</column>
                 </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
@@ -104,12 +187,12 @@
                 <sortLegendValues>false</sortLegendValues>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>0</rowIndex>
-            <rowSpan>14</rowSpan>
+            <rowIndex>16</rowIndex>
+            <rowSpan>16</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
             <colSpan>6</colSpan>
-            <columnIndex>0</columnIndex>
+            <columnIndex>6</columnIndex>
             <dashboardComponent>
                 <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
                 <chartAxisRange>Auto</chartAxisRange>
@@ -120,7 +203,7 @@
                 <componentChartTheme>dark</componentChartTheme>
                 <componentType>ColumnGrouped</componentType>
                 <dashboardFilterColumns>
-                    <column>CUST_LAST_UPDATE</column>
+                    <column>CUST_CREATED_DATE</column>
                 </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
@@ -149,97 +232,16 @@
                 <sortLegendValues>false</sortLegendValues>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>14</rowIndex>
+            <rowIndex>16</rowIndex>
             <rowSpan>16</rowSpan>
-        </dashboardGridComponents>
-        <dashboardGridComponents>
-            <colSpan>6</colSpan>
-            <columnIndex>6</columnIndex>
-            <dashboardComponent>
-                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
-                <chartAxisRange>Auto</chartAxisRange>
-                <chartSummary>
-                    <axisBinding>y</axisBinding>
-                    <column>FORMULA2</column>
-                </chartSummary>
-                <componentChartTheme>dark</componentChartTheme>
-                <componentType>Column</componentType>
-                <dashboardFilterColumns>
-                    <column>CUST_LAST_UPDATE</column>
-                </dashboardFilterColumns>
-                <decimalPrecision>-1</decimalPrecision>
-                <displayUnits>Auto</displayUnits>
-                <drillDownUrl>https://intel.lightning.force.com/lightning/r/Report/00O3b000006gIihEAE/view?queryScope=userFolders</drillDownUrl>
-                <drillEnabled>false</drillEnabled>
-                <drillToDetailEnabled>false</drillToDetailEnabled>
-                <enableHover>false</enableHover>
-                <expandOthers>false</expandOthers>
-                <groupingColumn>FK_$Contact.Core_IPA_PartnerRole__c</groupingColumn>
-                <groupingSortProperties>
-                    <groupingSorts>
-                        <groupingLevel>g1</groupingLevel>
-                        <sortOrder>a</sortOrder>
-                    </groupingSorts>
-                </groupingSortProperties>
-                <header>Admin Registrations Pending</header>
-                <legendPosition>Bottom</legendPosition>
-                <report>IPAReports/Partner_Invite_Pending_E5I</report>
-                <showPercentage>false</showPercentage>
-                <showValues>true</showValues>
-                <sortBy>RowLabelAscending</sortBy>
-                <sortLegendValues>false</sortLegendValues>
-                <useReportChart>false</useReportChart>
-            </dashboardComponent>
-            <rowIndex>14</rowIndex>
-            <rowSpan>16</rowSpan>
-        </dashboardGridComponents>
-        <dashboardGridComponents>
-            <colSpan>6</colSpan>
-            <columnIndex>0</columnIndex>
-            <dashboardComponent>
-                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
-                <chartAxisRange>Auto</chartAxisRange>
-                <chartSummary>
-                    <axisBinding>y</axisBinding>
-                    <column>RowCount</column>
-                </chartSummary>
-                <componentChartTheme>dark</componentChartTheme>
-                <componentType>Column</componentType>
-                <dashboardFilterColumns>
-                    <column>Account$CreatedDate</column>
-                </dashboardFilterColumns>
-                <decimalPrecision>-1</decimalPrecision>
-                <displayUnits>Auto</displayUnits>
-                <drillEnabled>false</drillEnabled>
-                <drillToDetailEnabled>false</drillToDetailEnabled>
-                <enableHover>false</enableHover>
-                <expandOthers>false</expandOthers>
-                <groupingColumn>Account.Contacts.Registration_Requests__r$PRM_Partner_Role__c</groupingColumn>
-                <groupingSortProperties>
-                    <groupingSorts>
-                        <groupingLevel>g1</groupingLevel>
-                        <sortOrder>a</sortOrder>
-                    </groupingSorts>
-                </groupingSortProperties>
-                <header>Approved Admin Registration Requests</header>
-                <legendPosition>Bottom</legendPosition>
-                <report>IPAReports/Approved_Admin_Registration_Requests_anr</report>
-                <showPercentage>false</showPercentage>
-                <showValues>true</showValues>
-                <sortBy>RowLabelAscending</sortBy>
-                <sortLegendValues>false</sortLegendValues>
-                <useReportChart>false</useReportChart>
-            </dashboardComponent>
-            <rowIndex>30</rowIndex>
-            <rowSpan>12</rowSpan>
         </dashboardGridComponents>
         <numberOfColumns>12</numberOfColumns>
         <rowHeight>36</rowHeight>
     </dashboardGridLayout>
-    <dashboardType>SpecifiedUser</dashboardType>
+    <dashboardType>MyTeamUser</dashboardType>
     <isGridLayout>true</isGridLayout>
     <owner>11227352@intel.com.crm</owner>
-    <runningUser>ipa-test-with-ipa-a&amp;e-access-bb@intel.com.crm</runningUser>
+    <runningUser>11227352@intel.com.crm</runningUser>
     <textColor>#000000</textColor>
     <title>Registrations</title>
     <titleColor>#000000</titleColor>

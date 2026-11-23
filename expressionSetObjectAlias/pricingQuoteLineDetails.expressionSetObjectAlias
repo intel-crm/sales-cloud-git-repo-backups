@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExpressionSetObjectAlias xmlns="http://soap.sforce.com/2006/04/metadata">
+    <dataType>sObject</dataType>
+    <mappings>
+        <fieldAlias>evoPlatform</fieldAlias>
+        <sourceFieldName>Pricing_Fin_Inctv_Intel_Evo_Platform_Cb__c</sourceFieldName>
+    </mappings>
+    <objectApiName>SBQQ__QuoteLine__c</objectApiName>
+    <usageType>Bre</usageType>
+</ExpressionSetObjectAlias>

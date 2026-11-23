@@ -75,7 +75,7 @@ public class Core_OpportunityJSON implements Queueable,Database.AllowsCallouts{
         public string core_accindustry;
         public string core_acc_bu_focus;
         public string core_country_label;
-        public boolean core_architecture_conversion;
+        public string core_architecture_conversion;
         public boolean core_exclude_from_KPIs;
         public datetime lastmodifieddate;
         public datetime systemmodstamp;
@@ -89,7 +89,7 @@ public class Core_OpportunityJSON implements Queueable,Database.AllowsCallouts{
         public string Core_Coverage_Type_Nm;
         public string Core_Account_Primary_Coverage;
         //Adding Opportunity_Focus__c fields as part of TWC4767-1679
-        public string Core_Opportunity_Focus;
+        public string Core_Opportunity_Focus; //TWC4767-3906 : we dont need this field but as part of review comments  will  keep this code.let it be blank
         
     }
     
@@ -108,7 +108,7 @@ public class Core_OpportunityJSON implements Queueable,Database.AllowsCallouts{
     * Return Type  : VOID
     * Parameter    : List<String> OppIdListCore_
     * Modifer c hanges
-    * Areefa    Adding Opportunity_Focus__c fields as part of TWC4767-1679
+    * Areefa    Adding Opportunity_Focus__c fields as part of TWC4767-1679 
 
     */
     //public static void createOpportunityJSON(List<String> OppIdList){
@@ -130,7 +130,7 @@ public class Core_OpportunityJSON implements Queueable,Database.AllowsCallouts{
         returnWr retwr= new returnWr();
      
         try{
-        List<Opportunity> oplist = [select id,StageName,Core_Consumption_Market__c,Core_Product_Application__c,Core_Opp_Prime_Account_Name__c,CRM_Unified_Global_Customer_Name__c,Core_Opportunity_Type__c,core_architecture_conversion__c,Core_Solution_Area__c,
+        List<Opportunity> oplist = [select id,StageName,Core_Consumption_Market__c,Core_Product_Application__c,/*Core_Opp_Prime_Account_Name__c*/CRM_Unified_Global_Customer_Name__c,Core_Opportunity_Type__c,/*core_architecture_conversion__c,*/Core_Solution_Area__c,
                                     Core_Solution_Type__c,core_commissionable__c, Core_First_Customer_Ship_Date__c, Core_Product_Segment__c,core_opportunity_products__c,
                                     core_solution_detail_dcg_ccg__c, core_solution_detail_iotg__c,lastmodifieddate,systemmodstamp,Core_Athena_Candidate__c,
                                     Core_Exclude_From_KPIs__c , account.industry,Core_Volume__c,accountId, Account.BillingCountry,account.core_account_bu_focus__c ,Account.Core_Account_Primary_Coverage__c, Core_Coverage_Type_Nm__c,Core_Opportunity_Coverage_Nm__c,Opportunity_Focus__c,(select id,Core_Advanced_Technology__c,Core_BU_Short_Name__c,Core_KPI_Date__c,
@@ -202,7 +202,7 @@ public class Core_OpportunityJSON implements Queueable,Database.AllowsCallouts{
             opWr.core_product_application = op.core_product_application__c;
             opWr.core_consumption_market = op.Core_Consumption_Market__c;
             opWr.core_opportunity_type = op.Core_Opportunity_Type__c;
-            opWr.core_architecture_conversion = op.core_architecture_conversion__c;            
+            //opWr.core_architecture_conversion = op.core_architecture_conversion__c;            
             opWr.core_commissionable = op.core_commissionable__c;
             opWr.core_first_customer_ship_date = op.core_first_customer_ship_date__c;
             opWr.core_product_segment = op.Core_Product_Segment__c;
@@ -221,12 +221,12 @@ public class Core_OpportunityJSON implements Queueable,Database.AllowsCallouts{
             if(ucdSwitch==true) {
                 opWr.core_opp_Unified_Global_Customer_Name =  op.CRM_Unified_Global_Customer_Name__c ;//TWC4767-3431
             } 
-            else{
+            /*else{
                 opWr.core_opp_prime_account_name = op.Core_Opp_Prime_Account_Name__c;//TWC4767-3431
-            }
+            }*/
             
             //Adding Opportunity_Focus__c fields as part of TWC4767-1679
-             opWr.Core_Opportunity_Focus = op.Opportunity_Focus__c;
+            opWr.Core_Opportunity_Focus = op.Opportunity_Focus__c;  //TWC4767-3906 : we dont need this field,but as part of review comments  will  keep this code.let it be blank 
 
             if(OppPartnerTypeMap.get(op.id) != Null){
             opWr.core_partner_type = OppPartnerTypeMap.get(op.id);

@@ -136,17 +136,15 @@
         <fields>Core_MDF_Budget_Partner__c</fields>
         <fields>StartDate</fields>
         <fields>EndDate</fields>
-        <fields>Core_MDF_budget_ref_nbr__c</fields>
         <label>Comarketing Partner Budget</label>
     </compactLayouts>
     <compactLayouts>
         <fullName>Retail_Co_Marketing_Compact_Layout</fullName>
         <fields>Title</fields>
         <fields>Core_MDF_Budget_Partner__c</fields>
-        <fields>Core_MDF_Budget_Type_Txt__c</fields>
+        <fields>Core_MDF_Budget_Type__c</fields>
         <fields>StartDate</fields>
         <fields>EndDate</fields>
-        <fields>Core_MDF_budget_ref_nbr__c</fields>
         <label>Retail Co-Marketing Compact Layout</label>
     </compactLayouts>
     <enableFeeds>true</enableFeeds>
@@ -163,144 +161,16 @@
         <type>Lookup</type>
     </fields>
     <fields>
-        <fullName>Core_MDF_AccountCompany__c</fullName>
-        <description>The company the budget is related to</description>
-        <externalId>false</externalId>
-        <formula>Core_MDF_Budget_Partner__r.Core_MDF_CoMarketing_Ultimate_Account__r.Name</formula>
-        <label>Account (Company)</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Approver_10__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <description>Holds the Approver 10 value for Budget Approval for MDF/MDF+ budget types</description>
-        <label>Approver 10</label>
-        <referenceTo>User</referenceTo>
-        <relationshipName>Partner_Marketing_Budgets9</relationshipName>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Approver_1__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <description>Holds the Approver value for Budget Approval for MDF/MDF+ budget types</description>
-        <label>Approver 1</label>
-        <referenceTo>User</referenceTo>
-        <relationshipName>Partner_Marketing_Budgets</relationshipName>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Approver_2__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <description>Holds the Approver 2 value for Budget Approval for MDF/MDF+ budget types</description>
-        <label>Approver 2</label>
-        <referenceTo>User</referenceTo>
-        <relationshipName>Partner_Marketing_Budgets1</relationshipName>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Approver_3__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <description>Holds the Approver 3 value for Budget Approval for MDF/MDF+ budget types</description>
-        <label>Approver 3</label>
-        <referenceTo>User</referenceTo>
-        <relationshipName>Partner_Marketing_Budgets2</relationshipName>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Approver_4__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <label>Approver 4</label>
-        <referenceTo>User</referenceTo>
-        <relationshipName>Partner_Marketing_Budgets3</relationshipName>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Approver_5__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <description>Holds the Approver 5 value for Budget Approval for MDF/MDF+ budget types</description>
-        <label>Approver 5</label>
-        <referenceTo>User</referenceTo>
-        <relationshipName>Partner_Marketing_Budgets4</relationshipName>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Approver_6__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <description>Holds the Approver 6 value for Budget Approval for MDF/MDF+ budget types</description>
-        <label>Approver 6</label>
-        <referenceTo>User</referenceTo>
-        <relationshipName>Partner_Marketing_Budgets5</relationshipName>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Approver_7__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <description>Holds the Approver 7 value for Budget Approval for MDF/MDF+ budget types</description>
-        <label>Approver 7</label>
-        <referenceTo>User</referenceTo>
-        <relationshipName>Partner_Marketing_Budgets6</relationshipName>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Approver_8__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <description>Holds the Approver 8 value for Budget Approval for MDF/MDF+ budget types</description>
-        <label>Approver 8</label>
-        <referenceTo>User</referenceTo>
-        <relationshipName>Partner_Marketing_Budgets7</relationshipName>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Approver_9__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <description>Holds the Approver 9 value for Budget Approval for MDF/MDF+ budget types</description>
-        <label>Approver 9</label>
-        <referenceTo>User</referenceTo>
-        <relationshipName>Partner_Marketing_Budgets8</relationshipName>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Lookup</type>
-    </fields>
-    <fields>
         <fullName>Core_MDF_Budget_Comments__c</fullName>
         <description>Comments related to the budget</description>
+        <externalId>false</externalId>
         <label>Budget Comments</label>
-        <length>1000</length>
+        <length>255</length>
+        <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
-        <type>LongTextArea</type>
-        <visibleLines>4</visibleLines>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Core_MDF_Budget_Identifier__c</fullName>
@@ -316,7 +186,7 @@
         <fullName>Core_MDF_Budget_Partner__c</fullName>
         <deleteConstraint>Restrict</deleteConstraint>
         <description>The Partner this budget is associated with</description>
-        <label>Account Node</label>
+        <label>Budget Partner</label>
         <lookupFilter>
             <active>true</active>
             <filterItems>
@@ -349,28 +219,22 @@
         <description>The Status of a Budget</description>
         <label>Budget Status</label>
         <required>false</required>
-        <trackFeedHistory>true</trackFeedHistory>
+        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <type>Picklist</type>
         <valueSet>
             <restricted>true</restricted>
             <valueSetDefinition>
-                <sorted>true</sorted>
-                <value>
-                    <fullName>Approved</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Approved</label>
-                </value>
-                <value>
-                    <fullName>Cancelled</fullName>
-                    <default>false</default>
-                    <label>Cancelled</label>
-                </value>
+                <sorted>false</sorted>
                 <value>
                     <fullName>Pending Review</fullName>
                     <default>false</default>
                     <label>Pending Review</label>
+                </value>
+                <value>
+                    <fullName>Approved</fullName>
+                    <default>false</default>
+                    <label>Approved</label>
                 </value>
                 <value>
                     <fullName>Rejected</fullName>
@@ -386,33 +250,7 @@
         </valueSet>
     </fields>
     <fields>
-        <fullName>Core_MDF_Budget_Type_Report_txt__c</fullName>
-        <description>If budget type value is blank then it will store Not Applicable (for xCF), else it will store Budget Type value. This field is created for Account Balances Report</description>
-        <externalId>false</externalId>
-        <formula>IF(ISPICKVAL(Core_MDF_Budget_Type_Txt__c,&apos;&apos;), $Label.Core_MDF_Not_Applicable_value_for_Budget_Type, TEXT(Core_MDF_Budget_Type_Txt__c))</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Budget Type</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_MDF_Budget_Type_Txt__c</fullName>
-        <description>Budget Type value from global picklist</description>
-        <label>Budget Type</label>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>true</trackHistory>
-        <type>Picklist</type>
-        <valueSet>
-            <restricted>true</restricted>
-            <valueSetName>Core_MDF_Budget_Types</valueSetName>
-        </valueSet>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Budget_Type__c</fullName>
-        <description>Retail Budget Types</description>
         <label>Budget Type</label>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
@@ -421,24 +259,7 @@
         <valueSet>
             <restricted>true</restricted>
             <valueSetDefinition>
-                <sorted>true</sorted>
-                <value>
-                    <fullName>Account Plan</fullName>
-                    <default>false</default>
-                    <label>Account Plan</label>
-                </value>
-                <value>
-                    <fullName>Business Client Acceleration Automated - MDF</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Business Client Acceleration Automated - MDF</label>
-                </value>
-                <value>
-                    <fullName>Business Client Acceleration Managed - MDF</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Business Client Acceleration Managed - MDF</label>
-                </value>
+                <sorted>false</sorted>
                 <value>
                     <fullName>Business Client Acceleration - MDF</fullName>
                     <default>false</default>
@@ -448,12 +269,6 @@
                     <fullName>CCF 1.0</fullName>
                     <default>false</default>
                     <label>CCF 1.0</label>
-                </value>
-                <value>
-                    <fullName>CCG Market Accelerate</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>CCG Market Accelerate</label>
                 </value>
                 <value>
                     <fullName>Client Market Accelerate</fullName>
@@ -466,28 +281,6 @@
                     <label>Client Specialties MDF</label>
                 </value>
                 <value>
-                    <fullName>Cloud</fullName>
-                    <default>false</default>
-                    <label>Cloud</label>
-                </value>
-                <value>
-                    <fullName>CMP</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>CMP</label>
-                </value>
-                <value>
-                    <fullName>Co-Engineering</fullName>
-                    <default>false</default>
-                    <label>Co-Engineering</label>
-                </value>
-                <value>
-                    <fullName>Datacenter Market Accelerate</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Datacenter Market Accelerate</label>
-                </value>
-                <value>
                     <fullName>Data Center Market Accelerate</fullName>
                     <default>false</default>
                     <label>Data Center Market Accelerate</label>
@@ -498,18 +291,6 @@
                     <label>Data Center Specialties MDF</label>
                 </value>
                 <value>
-                    <fullName>Data Centric Acceleration Automated - MDF</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Data Centric Acceleration Automated - MDF</label>
-                </value>
-                <value>
-                    <fullName>Data Centric Acceleration Managed - MDF</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Data Centric Acceleration Managed - MDF</label>
-                </value>
-                <value>
                     <fullName>Data Centric Acceleration - MDF</fullName>
                     <default>false</default>
                     <label>Data Centric Acceleration - MDF</label>
@@ -518,12 +299,6 @@
                     <fullName>DCF 1.0</fullName>
                     <default>false</default>
                     <label>DCF 1.0</label>
-                </value>
-                <value>
-                    <fullName>DCG MAF</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>DCG MAF</label>
                 </value>
                 <value>
                     <fullName>Global Ericsson Acceleration - MDF</fullName>
@@ -571,12 +346,6 @@
                     <label>Global VMware Acceleration - MDF</label>
                 </value>
                 <value>
-                    <fullName>Intel MDF Account Based1</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Intel MDF Account Based1</label>
-                </value>
-                <value>
                     <fullName>Intel MDF Account Based2</fullName>
                     <default>false</default>
                     <label>Intel MDF Account Based2</label>
@@ -597,10 +366,9 @@
                     <label>IoT Targeted - MDF</label>
                 </value>
                 <value>
-                    <fullName>IPA Account Based1</fullName>
+                    <fullName>ODM Growth Plan - Client MDF</fullName>
                     <default>false</default>
-                    <isActive>false</isActive>
-                    <label>IPA Account Based1</label>
+                    <label>ODM Growth Plan - Client MDF</label>
                 </value>
                 <value>
                     <fullName>ISV Scale Acceleration - MDF</fullName>
@@ -618,17 +386,6 @@
                     <label>MDF+</label>
                 </value>
                 <value>
-                    <fullName>ODM Growth Plan - Client MDF</fullName>
-                    <default>false</default>
-                    <label>ODM Growth Plan - Client MDF</label>
-                </value>
-                <value>
-                    <fullName>ODM Growth Plan- MDF</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>ODM Growth Plan- MDF</label>
-                </value>
-                <value>
                     <fullName>OEM CMP</fullName>
                     <default>false</default>
                     <label>OEM CMP</label>
@@ -637,16 +394,6 @@
                     <fullName>Optane Specialties MDF</fullName>
                     <default>false</default>
                     <label>Optane Specialties MDF</label>
-                </value>
-                <value>
-                    <fullName>Proposal II MDF</fullName>
-                    <default>false</default>
-                    <label>Proposal II MDF</label>
-                </value>
-                <value>
-                    <fullName>Proposal I MDF</fullName>
-                    <default>false</default>
-                    <label>Proposal I MDF</label>
                 </value>
                 <value>
                     <fullName>Red Hat &quot;Amplify&quot; - MDF</fullName>
@@ -684,81 +431,40 @@
                     <label>SOEM Data Center MDF</label>
                 </value>
                 <value>
-                    <fullName>SP AI MDF</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>SP AI MDF</label>
-                </value>
-                <value>
-                    <fullName>SP Cloud MDF</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>SP Cloud MDF</label>
-                </value>
-                <value>
-                    <fullName>SP DaaS MDF</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>SP DaaS MDF</label>
-                </value>
-                <value>
-                    <fullName>SP Enthusiast MDF</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>SP Enthusiast MDF</label>
-                </value>
-                <value>
-                    <fullName>SP HPC MDF</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>SP HPC MDF</label>
-                </value>
-                <value>
-                    <fullName>SP Industry SB MDF</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>SP Industry SB MDF</label>
-                </value>
-                <value>
-                    <fullName>SP MS MDF</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>SP MS MDF</label>
-                </value>
-                <value>
-                    <fullName>SP Optane Client MDF</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>SP Optane Client MDF</label>
-                </value>
-                <value>
-                    <fullName>SP Optane DC MDF</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>SP Optane DC MDF</label>
-                </value>
-                <value>
-                    <fullName>SP Video MDF</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>SP Video MDF</label>
-                </value>
-                <value>
-                    <fullName>SP Visual Retail MDF</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>SP Visual Retail MDF</label>
-                </value>
-                <value>
-                    <fullName>Value Exchange</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Value Exchange</label>
-                </value>
-                <value>
                     <fullName>VMWare Amplify - MDF</fullName>
                     <default>false</default>
                     <label>VMWare Amplify - MDF</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Budget_Type__c</fullName>
+        <description>Retail Budget Types</description>
+        <label>Budget Type</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>RSA MD</fullName>
+                    <default>false</default>
+                    <label>RSA MD</label>
+                </value>
+                <value>
+                    <fullName>Retail MDF</fullName>
+                    <default>false</default>
+                    <label>Retail MDF</label>
+                </value>
+                <value>
+                    <fullName>MDF</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>MDF</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -810,30 +516,6 @@ $Label.Core_MDF_Intel_System_User
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Core_MDF_Legacy_Budget_Ind__c</fullName>
-        <formula>IF(
-OR(
-AND(Core_MDF_Program_Nm__c = $Label.Core_MDF_CCF_Program_Name,TEXT(Core_MDF_Budget_Type_Txt__c) = $Label.Core_MDF_BudgetType_CCF1_0),
-AND(Core_MDF_Program_Nm__c = $Label.Core_MDF_Non_Localized_DCF_Program_Name,TEXT(Core_MDF_Budget_Type_Txt__c) = $Label.Core_MDF_BudgetType_DCF1_0),
-Core_MDF_Program_Nm__c= $Label.Core_MDF_CCFB_Program_Name,
-Core_MDF_Program_Nm__c= $Label.Core_MDF_SPCF_Program_Name
-), true, false)</formula>
-        <label>Legacy Budget</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Maximum_Approved_Budget_Amt__c</fullName>
-        <inlineHelpText>Full budget, visible to Intel only</inlineHelpText>
-        <label>Maximum Approved Budget</label>
-        <precision>18</precision>
-        <required>false</required>
-        <scale>2</scale>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Currency</type>
-    </fields>
-    <fields>
         <fullName>Core_MDF_Owner_Nm__c</fullName>
         <description>Shows the name for external user if Owner is external otherwise Intel System User</description>
         <externalId>false</externalId>
@@ -851,9 +533,9 @@ $Label.Core_MDF_Intel_System_User
     </fields>
     <fields>
         <fullName>Core_MDF_Program_Nm__c</fullName>
-        <description>Program Name</description>
         <externalId>false</externalId>
         <formula>Core_MDF_Program__r.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Program Name</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -863,7 +545,7 @@ $Label.Core_MDF_Intel_System_User
     <fields>
         <fullName>Core_MDF_Program__c</fullName>
         <deleteConstraint>Restrict</deleteConstraint>
-        <inlineHelpText>Enter program name</inlineHelpText>
+        <inlineHelpText>Enter program name – examples include Retail Marketing Fund, Client Co-Marketing Fund, Data Co-Marketing Fund, Service Provider Co-Marketing Fund</inlineHelpText>
         <label>Program</label>
         <referenceTo>ChannelProgram</referenceTo>
         <relationshipLabel>Partner Marketing Budgets</relationshipLabel>
@@ -872,25 +554,6 @@ $Label.Core_MDF_Intel_System_User
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Ultimate_Account_Id__c</fullName>
-        <description>Fetch the Ultimate account Id from the Budget partner to use the same in approval criteria setup</description>
-        <externalId>false</externalId>
-        <formula>Core_MDF_Budget_Partner__r.Core_MDF_CoMarketing_Ultimate_Account__r.Core_Account_ID__c</formula>
-        <label>Ultimate Account Id</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_budget_ref_nbr__c</fullName>
-        <displayFormat>BUD-{00000}</displayFormat>
-        <externalId>false</externalId>
-        <label>Budget Reference Number</label>
-        <trackHistory>false</trackHistory>
-        <type>AutoNumber</type>
     </fields>
     <fields>
         <fullName>Description</fullName>
@@ -950,26 +613,126 @@ $Label.Core_MDF_Intel_System_User
     <listViews>
         <fullName>All_Partner_Marketing_Budgets</fullName>
         <columns>Name</columns>
-        <columns>Amount</columns>
         <columns>Core_MDF_Budget_Partner__c</columns>
-        <columns>Core_MDF_Program__c</columns>
-        <columns>Core_MDF_Budget_Type_Txt__c</columns>
         <columns>Core_MDF_Budget_Status__c</columns>
+        <columns>Core_MDF_Program__c</columns>
         <columns>StartDate</columns>
         <columns>EndDate</columns>
         <filterScope>Everything</filterScope>
         <label>All Budgets</label>
     </listViews>
     <listViews>
-        <fullName>Core_MDF_Approval_Request_List</fullName>
+        <fullName>Budgets_FY_2019_Retail</fullName>
         <columns>Name</columns>
         <columns>Core_MDF_Budget_Partner__c</columns>
-        <columns>Core_MDF_Program__c</columns>
-        <columns>Core_MDF_Budget_Type_Txt__c</columns>
         <columns>Core_MDF_Budget_Status__c</columns>
         <columns>Amount</columns>
         <columns>StartDate</columns>
         <columns>EndDate</columns>
+        <columns>Core_MDF_Program__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>StartDate</field>
+            <operation>greaterOrEqual</operation>
+            <value>1/1/2019</value>
+        </filters>
+        <filters>
+            <field>EndDate</field>
+            <operation>lessOrEqual</operation>
+            <value>12/31/2019</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Program__c</field>
+            <operation>equals</operation>
+            <value>Retail Marketing Funds</value>
+        </filters>
+        <label>Budgets FY 2019 - Retail</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_Internal_Retail_All</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Budgets_Requiring_Approval_Retail</fullName>
+        <columns>Name</columns>
+        <columns>Core_MDF_Budget_Partner__c</columns>
+        <columns>Core_MDF_Budget_Status__c</columns>
+        <columns>Amount</columns>
+        <columns>StartDate</columns>
+        <columns>EndDate</columns>
+        <columns>Core_MDF_Program__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_MDF_Budget_Status__c</field>
+            <operation>equals</operation>
+            <value>Pending Review</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Program__c</field>
+            <operation>equals</operation>
+            <value>Retail Marketing Funds</value>
+        </filters>
+        <label>Budgets Requiring Approval - Retail</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_Retail_APJ_FinMgr_Q_Grp</group>
+            <group>Core_MDF_CCP_Retail_ASMOLAR_FinMgr_Q_Grp</group>
+            <group>Core_MDF_CCP_Retail_ASMONAR_FinMgr_Q_Grp</group>
+            <group>Core_MDF_CCP_Retail_EMEA_FinMgr_Q_Grp</group>
+            <group>Core_MDF_CCP_Retail_PRC_FinMgr_Q_Grp</group>
+            <group>Core_MDF_CCP_Retail_WW_Fin_Mgr_Queue_Grp</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Budgets_to_be_Released_Retail</fullName>
+        <columns>Name</columns>
+        <columns>Core_MDF_Budget_Partner__c</columns>
+        <columns>Core_MDF_Budget_Status__c</columns>
+        <columns>Amount</columns>
+        <columns>StartDate</columns>
+        <columns>EndDate</columns>
+        <columns>Core_MDF_Program__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_MDF_Budget_Status__c</field>
+            <operation>equals</operation>
+            <value>Approved</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Program__c</field>
+            <operation>equals</operation>
+            <value>Retail Marketing Funds</value>
+        </filters>
+        <label>Budgets to be Released - Retail</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_Retail_APJ_FinMgr_Q_Grp</group>
+            <group>Core_MDF_CCP_Retail_ASMOLAR_FinMgr_Q_Grp</group>
+            <group>Core_MDF_CCP_Retail_ASMONAR_FinMgr_Q_Grp</group>
+            <group>Core_MDF_CCP_Retail_EMEA_FinMgr_Q_Grp</group>
+            <group>Core_MDF_CCP_Retail_PRC_FinMgr_Q_Grp</group>
+            <group>Core_MDF_CCP_Retail_WW_Fin_Mgr_Queue_Grp</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>CCP_Finance_Manager_Queue_PartnerMarketingBudget</fullName>
+        <columns>Name</columns>
+        <columns>Description</columns>
+        <columns>Core_MDF_Budget_Status__c</columns>
+        <columns>Amount</columns>
+        <columns>Type</columns>
+        <columns>StartDate</columns>
+        <columns>EndDate</columns>
+        <filterScope>Everything</filterScope>
+        <label>CCP Finance Manager Queue</label>
+        <sharedTo/>
+    </listViews>
+    <listViews>
+        <fullName>Core_MDF_Approval_Request_List</fullName>
+        <columns>Name</columns>
+        <columns>Core_MDF_Budget_Partner__c</columns>
+        <columns>Core_MDF_Budget_Status__c</columns>
+        <columns>Amount</columns>
+        <columns>StartDate</columns>
+        <columns>EndDate</columns>
+        <columns>Core_MDF_Program__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>Core_MDF_Budget_Status__c</field>
@@ -981,13 +744,7 @@ $Label.Core_MDF_Intel_System_User
         <sharedTo>
             <group>Core_MDF_CCP_CCFB_Fin_Mgr_Queue_Group</group>
             <group>Core_MDF_CCP_CCF_Fin_Mgr_Queue_Group</group>
-            <group>Core_MDF_CCP_CCF_INTERNAL_ALL</group>
-            <group>Core_MDF_CCP_Channel_MDF_INTERNAL_All</group>
-            <group>Core_MDF_CCP_Co_GTM_INTERNAL_ALL</group>
             <group>Core_MDF_CCP_DCF_Fin_Mgr_Queue_Group</group>
-            <group>Core_MDF_CCP_DCF_INTERNAL_ALL</group>
-            <group>Core_MDF_CCP_EEF_INTERNAL_ALL</group>
-            <group>Core_MDF_CCP_IPA_INTERNAL_ALL</group>
             <group>Core_MDF_CCP_Retail_APJ_FinMgr_Q_Grp</group>
             <group>Core_MDF_CCP_Retail_ASMOLAR_FinMgr_Q_Grp</group>
             <group>Core_MDF_CCP_Retail_ASMONAR_FinMgr_Q_Grp</group>
@@ -1004,6 +761,7 @@ $Label.Core_MDF_Intel_System_User
         <columns>Amount</columns>
         <columns>StartDate</columns>
         <columns>EndDate</columns>
+        <columns>Core_MDF_Program__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>Core_MDF_Program__c</field>
@@ -1011,128 +769,257 @@ $Label.Core_MDF_Intel_System_User
             <value>Client Co-Marketing Fund Boost</value>
         </filters>
         <label>CCF Boost Budgets</label>
+        <language>en_US</language>
         <sharedTo>
             <group>Core_MDF_CCP_CCFB_Fin_Mgr_Queue_Group</group>
             <group>Core_MDF_CCP_CCF_Boost_Finance_User</group>
         </sharedTo>
     </listViews>
     <listViews>
-        <fullName>Core_MDF_CCP_INDIA_Retail_Budget_Queue_PartnerMarketingBudget</fullName>
+        <fullName>Core_MDF_CCP_APJ_Retail_Budget_Queue_PartnerMarketingBudget</fullName>
         <filterScope>Queue</filterScope>
-        <label>CCP INDIA Retail Budget Queue</label>
-        <queue>Core_MDF_CCP_INDIA_Retail_Budget_Queue</queue>
+        <label>CCP APJ Retail Budget Queue</label>
+        <queue>Core_MDF_CCP_APJ_Retail_Budget_Queue</queue>
         <sharedTo>
             <allInternalUsers></allInternalUsers>
         </sharedTo>
     </listViews>
     <listViews>
-        <fullName>Core_MDF_Channel_MDF_Budgets</fullName>
+        <fullName>Core_MDF_CCP_ASMO_LAR_RetailBudget_Queue_PartnerMarketingBudget</fullName>
+        <filterScope>Queue</filterScope>
+        <label>CCP ASMO LAR Retail Budget Queue</label>
+        <queue>Core_MDF_CCP_ASMO_LAR_RetailBudget_Queue</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_MDF_CCP_ASMO_NAR_RetailBudget_Queue_PartnerMarketingBudget</fullName>
+        <filterScope>Queue</filterScope>
+        <label>CCP ASMO NAR Retail Budget Queue</label>
+        <queue>Core_MDF_CCP_ASMO_NAR_RetailBudget_Queue</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_MDF_CCP_CCFB_Finance_Manager_Queue_PartnerMarketingBudget</fullName>
         <columns>Name</columns>
-        <columns>Core_MDF_Budget_Partner__c</columns>
-        <columns>Core_MDF_Budget_Type_Txt__c</columns>
-        <columns>Core_MDF_Budget_Status__c</columns>
+        <columns>Description</columns>
         <columns>Amount</columns>
+        <columns>Type</columns>
         <columns>StartDate</columns>
         <columns>EndDate</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Core_MDF_Program__c</field>
-            <operation>equals</operation>
-            <value>Channel MDF</value>
-        </filters>
-        <label>Channel MDF Budgets</label>
-        <language>en_US</language>
+        <columns>ChannelPartner</columns>
+        <filterScope>Queue</filterScope>
+        <label>CCP CCFB Finance Manager Queue</label>
+        <queue>Core_MDF_CCP_CCFB_Finance_Manager_Queue</queue>
         <sharedTo>
-            <group>Core_MDF_CCP_Channel_MDF_INTERNAL_All</group>
+            <group>Core_MDF_CCP_CCFB_Fin_Mgr_Queue_Group</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_MDF_CCP_CCF_Finance_Manager_Queue_PartnerMarketingBudget</fullName>
+        <columns>Name</columns>
+        <columns>Description</columns>
+        <columns>Amount</columns>
+        <columns>Type</columns>
+        <columns>StartDate</columns>
+        <columns>EndDate</columns>
+        <columns>ChannelPartner</columns>
+        <filterScope>Queue</filterScope>
+        <label>CCP CCF Finance Manager Queue</label>
+        <queue>Core_MDF_CCP_CCF_Finance_Manager_Queue</queue>
+        <sharedTo>
+            <group>Core_MDF_CCP_CCF_Fin_Mgr_Queue_Group</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_MDF_CCP_DCF_Finance_Manager_Queue_PartnerMarketingBudget</fullName>
+        <columns>Name</columns>
+        <columns>Description</columns>
+        <columns>Amount</columns>
+        <columns>Type</columns>
+        <columns>StartDate</columns>
+        <columns>EndDate</columns>
+        <columns>ChannelPartner</columns>
+        <filterScope>Queue</filterScope>
+        <label>CCP DCF Finance Manager Queue</label>
+        <queue>Core_MDF_CCP_DCF_Finance_Manager_Queue</queue>
+        <sharedTo>
+            <group>Core_MDF_CCP_DCF_Fin_Mgr_Queue_Group</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_MDF_CCP_EMEA_Retail_Budget_Queue_PartnerMarketingBudget</fullName>
+        <filterScope>Queue</filterScope>
+        <label>CCP EMEA Retail Budget Queue</label>
+        <queue>Core_MDF_CCP_EMEA_Retail_Budget_Queue</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_MDF_CCP_PRC_Retail_Budget_Queue_PartnerMarketingBudget</fullName>
+        <filterScope>Queue</filterScope>
+        <label>CCP PRC Retail Budget Queue</label>
+        <queue>Core_MDF_CCP_PRC_Retail_Budget_Queue</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_MDF_CCP_SPCF_Finance_Manager_Queue_PartnerMarketingBudget</fullName>
+        <columns>Name</columns>
+        <columns>Description</columns>
+        <columns>Amount</columns>
+        <columns>Type</columns>
+        <columns>StartDate</columns>
+        <columns>EndDate</columns>
+        <columns>ChannelPartner</columns>
+        <filterScope>Queue</filterScope>
+        <label>CCP SPCF Finance Manager Queue</label>
+        <queue>Core_MDF_CCP_SPCF_Finance_Manager_Queue</queue>
+        <sharedTo>
+            <group>Core_MDF_CCP_SPCF_Fin_Mgr_Queue_Group</group>
         </sharedTo>
     </listViews>
     <listViews>
         <fullName>Core_MDF_Client_Co_Marketing_Fund_List</fullName>
+        <booleanFilter>1</booleanFilter>
         <columns>Name</columns>
         <columns>Core_MDF_Budget_Partner__c</columns>
-        <columns>Core_MDF_Budget_Type_Txt__c</columns>
         <columns>Core_MDF_Budget_Status__c</columns>
         <columns>Amount</columns>
         <columns>StartDate</columns>
         <columns>EndDate</columns>
+        <columns>Core_MDF_Program__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>Core_MDF_Program__c</field>
             <operation>equals</operation>
-            <value>Client</value>
+            <value>Client Co-Marketing Fund</value>
         </filters>
-        <label>Client Budgets</label>
+        <label>CCF Budgets</label>
         <language>en_US</language>
         <sharedTo>
             <group>Core_MDF_CCP_CCF_Fin_Mgr_Queue_Group</group>
             <group>Core_MDF_CCP_CCF_Finance_User</group>
-            <group>Core_MDF_CCP_CCF_INTERNAL_ALL</group>
         </sharedTo>
     </listViews>
     <listViews>
         <fullName>Core_MDF_Data_Center_Co_Marketing_Fund_List</fullName>
         <columns>Name</columns>
         <columns>Core_MDF_Budget_Partner__c</columns>
-        <columns>Core_MDF_Budget_Type_Txt__c</columns>
         <columns>Core_MDF_Budget_Status__c</columns>
         <columns>Amount</columns>
         <columns>StartDate</columns>
         <columns>EndDate</columns>
+        <columns>Core_MDF_Program__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>Core_MDF_Program__c</field>
             <operation>equals</operation>
-            <value>Datacenter</value>
+            <value>Data Center Co-Marketing Fund</value>
         </filters>
-        <label>Datacenter Budgets</label>
+        <label>DCF Budgets</label>
         <language>en_US</language>
         <sharedTo>
             <group>Core_MDF_CCP_DCF_Fin_Mgr_Queue_Group</group>
             <group>Core_MDF_CCP_DCF_Finance_User</group>
-            <group>Core_MDF_CCP_DCF_INTERNAL_ALL</group>
         </sharedTo>
     </listViews>
     <listViews>
-        <fullName>Core_MDF_IPA_Budgets</fullName>
+        <fullName>Core_MDF_Partner_Marketing_Budgets_FY_2019</fullName>
+        <booleanFilter>(1 OR 2 OR 5 OR 6) AND 3 AND 4</booleanFilter>
         <columns>Name</columns>
         <columns>Core_MDF_Budget_Partner__c</columns>
-        <columns>Core_MDF_Budget_Type_Txt__c</columns>
         <columns>Core_MDF_Budget_Status__c</columns>
         <columns>Amount</columns>
         <columns>StartDate</columns>
         <columns>EndDate</columns>
+        <columns>Core_MDF_Program__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>Core_MDF_Program__c</field>
             <operation>equals</operation>
-            <value>Intel Partner Alliance</value>
+            <value>Data Center Co-Marketing Fund</value>
         </filters>
-        <label>IPA Budgets</label>
-        <language>en_US</language>
+        <filters>
+            <field>Core_MDF_Program__c</field>
+            <operation>equals</operation>
+            <value>Client Co-Marketing Fund</value>
+        </filters>
+        <filters>
+            <field>StartDate</field>
+            <operation>greaterOrEqual</operation>
+            <value>1/1/2019</value>
+        </filters>
+        <filters>
+            <field>EndDate</field>
+            <operation>lessOrEqual</operation>
+            <value>12/31/2019</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Program__c</field>
+            <operation>equals</operation>
+            <value>Service Provider Co-marketing Fund</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Program__c</field>
+            <operation>equals</operation>
+            <value>Client Co-Marketing Fund Boost</value>
+        </filters>
+        <label>Budgets FY 2019</label>
         <sharedTo>
-            <group>Core_MDF_CCP_IPA_EXTERNAL_ALL</group>
-            <group>Core_MDF_CCP_IPA_INTERNAL_ALL</group>
+            <group>Core_MDF_CCP_CCFB_Fin_Mgr_Queue_Group</group>
+            <group>Core_MDF_CCP_CCF_Boost_Finance_User</group>
+            <group>Core_MDF_CCP_CCF_Fin_Mgr_Queue_Group</group>
+            <group>Core_MDF_CCP_CCF_Finance_User</group>
+            <group>Core_MDF_CCP_DCF_Fin_Mgr_Queue_Group</group>
+            <group>Core_MDF_CCP_DCF_Finance_User</group>
+            <group>Core_MDF_CCP_SPCF_Fin_Mgr_Queue_Group</group>
+            <group>Core_MDF_CCP_SPCF_Finance_User</group>
         </sharedTo>
     </listViews>
     <listViews>
-        <fullName>Core_MDF_Internal_Budget_Approver_Queue_PartnerMarketingBudget</fullName>
-        <filterScope>Queue</filterScope>
-        <label>Internal Budget Approver Queue</label>
-        <queue>Core_MDF_Internal_Budget_Approver_Queue</queue>
+        <fullName>Core_MDF_Partner_Marketing_Budgets_to_be_Released</fullName>
+        <columns>Name</columns>
+        <columns>Core_MDF_Budget_Partner__c</columns>
+        <columns>Core_MDF_Budget_Status__c</columns>
+        <columns>Amount</columns>
+        <columns>StartDate</columns>
+        <columns>EndDate</columns>
+        <columns>Core_MDF_Program__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_MDF_Budget_Status__c</field>
+            <operation>equals</operation>
+            <value>Approved</value>
+        </filters>
+        <label>Budgets to be Released</label>
+        <language>en_US</language>
         <sharedTo>
-            <allInternalUsers></allInternalUsers>
+            <group>Core_MDF_CCP_CCFB_Fin_Mgr_Queue_Group</group>
+            <group>Core_MDF_CCP_CCF_Fin_Mgr_Queue_Group</group>
+            <group>Core_MDF_CCP_DCF_Fin_Mgr_Queue_Group</group>
+            <group>Core_MDF_CCP_Retail_APJ_FinMgr_Q_Grp</group>
+            <group>Core_MDF_CCP_Retail_ASMOLAR_FinMgr_Q_Grp</group>
+            <group>Core_MDF_CCP_Retail_ASMONAR_FinMgr_Q_Grp</group>
+            <group>Core_MDF_CCP_Retail_EMEA_FinMgr_Q_Grp</group>
+            <group>Core_MDF_CCP_Retail_PRC_FinMgr_Q_Grp</group>
+            <group>Core_MDF_CCP_SPCF_Fin_Mgr_Queue_Group</group>
         </sharedTo>
     </listViews>
     <listViews>
         <fullName>Core_MDF_Rejected</fullName>
         <columns>Name</columns>
         <columns>Core_MDF_Budget_Partner__c</columns>
-        <columns>Core_MDF_Program__c</columns>
-        <columns>Core_MDF_Budget_Type_Txt__c</columns>
         <columns>Core_MDF_Budget_Status__c</columns>
         <columns>Amount</columns>
         <columns>StartDate</columns>
         <columns>EndDate</columns>
+        <columns>Core_MDF_Program__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>Core_MDF_Budget_Status__c</field>
@@ -1144,55 +1031,13 @@ $Label.Core_MDF_Intel_System_User
         <sharedTo>
             <group>Core_MDF_CCP_CCF_Boost_Finance_User</group>
             <group>Core_MDF_CCP_CCF_Finance_User</group>
-            <group>Core_MDF_CCP_CCF_INTERNAL_ALL</group>
-            <group>Core_MDF_CCP_Channel_MDF_INTERNAL_All</group>
-            <group>Core_MDF_CCP_Co_GTM_INTERNAL_ALL</group>
             <group>Core_MDF_CCP_DCF_Finance_User</group>
-            <group>Core_MDF_CCP_DCF_INTERNAL_ALL</group>
-            <group>Core_MDF_CCP_EEF_INTERNAL_ALL</group>
-            <group>Core_MDF_CCP_IPA_INTERNAL_ALL</group>
             <group>Core_MDF_CCP_Retail_APJ_FinUser_Esc_Grp</group>
             <group>Core_MDF_CCP_Retail_ASMOLAR_FinUser_Esc</group>
             <group>Core_MDF_CCP_Retail_ASMONAR_FinUser_Esc</group>
             <group>Core_MDF_CCP_Retail_EMEA_FinUser_Esc_Grp</group>
             <group>Core_MDF_CCP_Retail_PRC_FinUser_Esc_Grp</group>
             <group>Core_MDF_CCP_SPCF_Finance_User</group>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>Core_MDF_Released_Budgets</fullName>
-        <columns>Name</columns>
-        <columns>Core_MDF_Budget_Partner__c</columns>
-        <columns>Core_MDF_Program__c</columns>
-        <columns>Core_MDF_Budget_Type_Txt__c</columns>
-        <columns>Core_MDF_Budget_Status__c</columns>
-        <columns>Amount</columns>
-        <columns>StartDate</columns>
-        <columns>EndDate</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Core_MDF_Budget_Status__c</field>
-            <operation>equals</operation>
-            <value>Released</value>
-        </filters>
-        <label>Released Budgets</label>
-        <sharedTo>
-            <group>Core_MDF_CCP_CCFB_Fin_Mgr_Queue_Group</group>
-            <group>Core_MDF_CCP_CCF_Fin_Mgr_Queue_Group</group>
-            <group>Core_MDF_CCP_CCF_INTERNAL_ALL</group>
-            <group>Core_MDF_CCP_Channel_MDF_INTERNAL_All</group>
-            <group>Core_MDF_CCP_Co_GTM_INTERNAL_ALL</group>
-            <group>Core_MDF_CCP_DCF_Fin_Mgr_Queue_Group</group>
-            <group>Core_MDF_CCP_DCF_INTERNAL_ALL</group>
-            <group>Core_MDF_CCP_EEF_INTERNAL_ALL</group>
-            <group>Core_MDF_CCP_IPA_INTERNAL_ALL</group>
-            <group>Core_MDF_CCP_Retail_APJ_FinMgr_Q_Grp</group>
-            <group>Core_MDF_CCP_Retail_ASMOLAR_FinMgr_Q_Grp</group>
-            <group>Core_MDF_CCP_Retail_ASMONAR_FinMgr_Q_Grp</group>
-            <group>Core_MDF_CCP_Retail_EMEA_FinMgr_Q_Grp</group>
-            <group>Core_MDF_CCP_Retail_INTERNAL_ALL</group>
-            <group>Core_MDF_CCP_Retail_PRC_FinMgr_Q_Grp</group>
-            <group>Core_MDF_CCP_SPCF_Fin_Mgr_Queue_Group</group>
         </sharedTo>
     </listViews>
     <listViews>
@@ -1203,6 +1048,7 @@ $Label.Core_MDF_Intel_System_User
         <columns>Amount</columns>
         <columns>StartDate</columns>
         <columns>EndDate</columns>
+        <columns>Core_MDF_Program__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>Core_MDF_Program__c</field>
@@ -1210,7 +1056,76 @@ $Label.Core_MDF_Intel_System_User
             <value>Service Provider Co-marketing Fund</value>
         </filters>
         <label>SPCF Budgets</label>
+        <language>en_US</language>
         <sharedTo>
+            <group>Core_MDF_CCP_SPCF_Fin_Mgr_Queue_Group</group>
+            <group>Core_MDF_CCP_SPCF_Finance_User</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_MDF_Top_5_Partner_Marketing_Budgets</fullName>
+        <booleanFilter>(1 OR 2 OR 8 OR 9) AND (3 OR 4 OR 5 OR 6 OR 7)</booleanFilter>
+        <columns>Name</columns>
+        <columns>Core_MDF_Budget_Partner__c</columns>
+        <columns>Core_MDF_Budget_Status__c</columns>
+        <columns>Amount</columns>
+        <columns>StartDate</columns>
+        <columns>EndDate</columns>
+        <columns>Core_MDF_Program__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_MDF_Program__c</field>
+            <operation>equals</operation>
+            <value>Data Center Co-Marketing Fund</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Program__c</field>
+            <operation>equals</operation>
+            <value>Client Co-Marketing Fund</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Budget_Partner__c</field>
+            <operation>contains</operation>
+            <value>Dell</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Budget_Partner__c</field>
+            <operation>contains</operation>
+            <value>Fujitsu</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Budget_Partner__c</field>
+            <operation>contains</operation>
+            <value>HP</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Budget_Partner__c</field>
+            <operation>contains</operation>
+            <value>Huawei</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Budget_Partner__c</field>
+            <operation>contains</operation>
+            <value>Lenovo</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Program__c</field>
+            <operation>equals</operation>
+            <value>Service Provider Co-marketing Fund</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Program__c</field>
+            <operation>equals</operation>
+            <value>Client Co-Marketing Fund Boost</value>
+        </filters>
+        <label>Top 5 Budgets</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_CCFB_Fin_Mgr_Queue_Group</group>
+            <group>Core_MDF_CCP_CCF_Boost_Finance_User</group>
+            <group>Core_MDF_CCP_CCF_Fin_Mgr_Queue_Group</group>
+            <group>Core_MDF_CCP_CCF_Finance_User</group>
+            <group>Core_MDF_CCP_DCF_Fin_Mgr_Queue_Group</group>
+            <group>Core_MDF_CCP_DCF_Finance_User</group>
             <group>Core_MDF_CCP_SPCF_Fin_Mgr_Queue_Group</group>
             <group>Core_MDF_CCP_SPCF_Finance_User</group>
         </sharedTo>
@@ -1219,23 +1134,24 @@ $Label.Core_MDF_Intel_System_User
         <fullName>My_Partner_Marketing_Budgets</fullName>
         <columns>Name</columns>
         <columns>Core_MDF_Budget_Partner__c</columns>
-        <columns>Core_MDF_Program__c</columns>
-        <columns>Core_MDF_Budget_Type_Txt__c</columns>
         <columns>Core_MDF_Budget_Status__c</columns>
+        <columns>Core_MDF_Program__c</columns>
         <columns>StartDate</columns>
         <columns>EndDate</columns>
         <filterScope>Mine</filterScope>
         <label>My Budgets</label>
+        <language>en_US</language>
     </listViews>
     <listViews>
         <fullName>Retail_Budgets</fullName>
         <columns>Name</columns>
         <columns>Core_MDF_Budget_Partner__c</columns>
-        <columns>Core_MDF_Budget_Type_Txt__c</columns>
         <columns>Core_MDF_Budget_Status__c</columns>
         <columns>Amount</columns>
         <columns>StartDate</columns>
         <columns>EndDate</columns>
+        <columns>Core_MDF_Program__c</columns>
+        <columns>Core_MDF_Budget_Type__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>Core_MDF_Program__c</field>
@@ -1243,144 +1159,59 @@ $Label.Core_MDF_Intel_System_User
             <value>Retail Marketing Funds</value>
         </filters>
         <label>Retail Budgets</label>
+        <language>en_US</language>
+        <sharedTo>
+            <group>Core_MDF_CCP_Internal_Retail_Geo_Groups</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Top_5_Budgets_Retail</fullName>
+        <booleanFilter>6 AND (1 OR 2 OR 3 OR 4 OR 5)</booleanFilter>
+        <columns>Name</columns>
+        <columns>Core_MDF_Budget_Partner__c</columns>
+        <columns>Core_MDF_Budget_Status__c</columns>
+        <columns>Amount</columns>
+        <columns>StartDate</columns>
+        <columns>EndDate</columns>
+        <columns>Core_MDF_Program__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_MDF_Budget_Partner__c</field>
+            <operation>contains</operation>
+            <value>Dell</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Budget_Partner__c</field>
+            <operation>contains</operation>
+            <value>Fujitsu</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Budget_Partner__c</field>
+            <operation>contains</operation>
+            <value>HP</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Budget_Partner__c</field>
+            <operation>contains</operation>
+            <value>Huawei</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Budget_Partner__c</field>
+            <operation>contains</operation>
+            <value>Lenovo</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Program__c</field>
+            <operation>equals</operation>
+            <value>Retail Marketing Funds</value>
+        </filters>
+        <label>Top 5 Budgets - Retail</label>
         <sharedTo>
             <group>Core_MDF_CCP_Internal_Retail_Geo_Groups</group>
         </sharedTo>
     </listViews>
     <recordTypeTrackFeedHistory>false</recordTypeTrackFeedHistory>
     <recordTypeTrackHistory>true</recordTypeTrackHistory>
-    <recordTypes>
-        <fullName>Core_MDF_Channel_MDF_Account_Based</fullName>
-        <active>true</active>
-        <compactLayoutAssignment>Retail_Co_Marketing_Compact_Layout</compactLayoutAssignment>
-        <description>This is the Record type for Channel MDF Account based</description>
-        <label>Channel MDF Account Based</label>
-        <picklistValues>
-            <picklist>Core_MDF_Budget_Status__c</picklist>
-            <values>
-                <fullName>Pending Review</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Rejected</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Released</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Core_MDF_Budget_Type_Txt__c</picklist>
-            <values>
-                <fullName>Intel MDF Account Based2</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Core_MDF_Budget_Type__c</picklist>
-            <values>
-                <fullName>Intel MDF Account Based2</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-    </recordTypes>
-    <recordTypes>
-        <fullName>Core_MDF_Channel_MDF_Proposal_Based</fullName>
-        <active>true</active>
-        <compactLayoutAssignment>Retail_Co_Marketing_Compact_Layout</compactLayoutAssignment>
-        <description>This is the Record type for Channel MDF Proposal based</description>
-        <label>Channel MDF Proposal Based</label>
-        <picklistValues>
-            <picklist>Core_MDF_Budget_Status__c</picklist>
-            <values>
-                <fullName>Cancelled</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Pending Review</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Rejected</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Released</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Core_MDF_Budget_Type_Txt__c</picklist>
-            <values>
-                <fullName>Client Market Accelerate</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Data Center Market Accelerate</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel Rise Technology Initiative</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Core_MDF_Budget_Type__c</picklist>
-            <values>
-                <fullName>Client Market Accelerate</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Data Center Market Accelerate</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel Rise Technology Initiative</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-    </recordTypes>
-    <recordTypes>
-        <fullName>Core_MDF_Co_GTM</fullName>
-        <active>true</active>
-        <compactLayoutAssignment>Retail_Co_Marketing_Compact_Layout</compactLayoutAssignment>
-        <description>Record Type for Co-GTM</description>
-        <label>Co-GTM</label>
-        <picklistValues>
-            <picklist>Core_MDF_Budget_Status__c</picklist>
-            <values>
-                <fullName>Cancelled</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Pending Review</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Rejected</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Released</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Core_MDF_Budget_Type_Txt__c</picklist>
-            <values>
-                <fullName>Co-Engineering</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Core_MDF_Budget_Type__c</picklist>
-            <values>
-                <fullName>Co-Engineering</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-    </recordTypes>
     <recordTypes>
         <fullName>Core_MDF_Co_Marketing</fullName>
         <active>true</active>
@@ -1390,119 +1221,7 @@ $Label.Core_MDF_Intel_System_User
         <picklistValues>
             <picklist>Core_MDF_Budget_Status__c</picklist>
             <values>
-                <fullName>Pending Review</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Rejected</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Released</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Core_MDF_Budget_Type_Txt__c</picklist>
-            <values>
-                <fullName>CCF 1%2E0</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>DCF 1%2E0</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MDF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MDF%2B</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>OEM CMP</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Service Provider CMP</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Core_MDF_Budget_Type__c</picklist>
-            <values>
-                <fullName>CCF 1%2E0</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>DCF 1%2E0</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MDF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MDF%2B</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>OEM CMP</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Service Provider CMP</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-    </recordTypes>
-    <recordTypes>
-        <fullName>Core_MDF_Ecosystem_Extension_Fund</fullName>
-        <active>true</active>
-        <compactLayoutAssignment>Retail_Co_Marketing_Compact_Layout</compactLayoutAssignment>
-        <description>Record Type for Ecosystem Extension Fund</description>
-        <label>Ecosystem Extension Fund</label>
-        <picklistValues>
-            <picklist>Core_MDF_Budget_Status__c</picklist>
-            <values>
-                <fullName>Pending Review</fullName>
-                <default>true</default>
-            </values>
-            <values>
-                <fullName>Rejected</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Released</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Core_MDF_Budget_Type_Txt__c</picklist>
-            <values>
-                <fullName>Cloud</fullName>
-                <default>true</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Core_MDF_Budget_Type__c</picklist>
-            <values>
-                <fullName>Cloud</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-    </recordTypes>
-    <recordTypes>
-        <fullName>Core_MDF_IPA_Account_Based</fullName>
-        <active>true</active>
-        <compactLayoutAssignment>Retail_Co_Marketing_Compact_Layout</compactLayoutAssignment>
-        <description>Intel Partner Alliance - Account Based</description>
-        <label>Intel Partner Alliance - Account Based</label>
-        <picklistValues>
-            <picklist>Core_MDF_Budget_Status__c</picklist>
-            <values>
-                <fullName>Cancelled</fullName>
+                <fullName>Approved</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -1511,42 +1230,6 @@ $Label.Core_MDF_Intel_System_User
             </values>
             <values>
                 <fullName>Rejected</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Released</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Core_MDF_Budget_Type_Txt__c</picklist>
-            <values>
-                <fullName>Account Plan</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Core_MDF_Budget_Type__c</picklist>
-            <values>
-                <fullName>Account Plan</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Scale Acceleration - MDF</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-    </recordTypes>
-    <recordTypes>
-        <fullName>Core_MDF_IPA_ProposalBased</fullName>
-        <active>true</active>
-        <compactLayoutAssignment>Retail_Co_Marketing_Compact_Layout</compactLayoutAssignment>
-        <description>Record Type for Intel Partner Alliance</description>
-        <label>Intel Partner Alliance - Proposal Based</label>
-        <picklistValues>
-            <picklist>Core_MDF_Budget_Status__c</picklist>
-            <values>
-                <fullName>Cancelled</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -1561,50 +1244,23 @@ $Label.Core_MDF_Intel_System_User
                 <default>false</default>
             </values>
             <values>
-                <fullName>Client Specialties MDF</fullName>
+                <fullName>CCF 1%2E0</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Data Centric Acceleration - MDF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>IoT Premier - MDF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>IoT Targeted - MDF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ODM Growth Plan - Client MDF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Proposal I MDF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Proposal II MDF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SOEM Client MDF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SOEM Data Center MDF</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Core_MDF_Budget_Type__c</picklist>
-            <values>
-                <fullName>Business Client Acceleration - MDF</fullName>
+                <fullName>Client Market Accelerate</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>Client Specialties MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DCF 1%2E0</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Data Center Market Accelerate</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -1656,6 +1312,14 @@ $Label.Core_MDF_Intel_System_User
                 <default>false</default>
             </values>
             <values>
+                <fullName>Intel MDF Account Based2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intel Rise Technology Initiative</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>IoT Premier - MDF</fullName>
                 <default>false</default>
             </values>
@@ -1664,7 +1328,19 @@ $Label.Core_MDF_Intel_System_User
                 <default>false</default>
             </values>
             <values>
+                <fullName>MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MDF%2B</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>ODM Growth Plan - Client MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OEM CMP</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -1672,15 +1348,15 @@ $Label.Core_MDF_Intel_System_User
                 <default>false</default>
             </values>
             <values>
-                <fullName>Proposal I MDF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Proposal II MDF</fullName>
+                <fullName>RSA MD</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>Red Hat %22Amplify%22 - MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Retail MDF</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -1692,7 +1368,22 @@ $Label.Core_MDF_Intel_System_User
                 <default>false</default>
             </values>
             <values>
+                <fullName>Scale Acceleration - MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Service Provider CMP</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>VMWare Amplify - MDF</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Budget_Type__c</picklist>
+            <values>
+                <fullName>RSA MD</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -1705,6 +1396,10 @@ $Label.Core_MDF_Intel_System_User
         <label>Retail Marketing Funds</label>
         <picklistValues>
             <picklist>Core_MDF_Budget_Status__c</picklist>
+            <values>
+                <fullName>Approved</fullName>
+                <default>false</default>
+            </values>
             <values>
                 <fullName>Pending Review</fullName>
                 <default>false</default>
@@ -1721,11 +1416,143 @@ $Label.Core_MDF_Intel_System_User
         <picklistValues>
             <picklist>Core_MDF_Budget_Type_Txt__c</picklist>
             <values>
+                <fullName>Business Client Acceleration - MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CCF 1%2E0</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Client Market Accelerate</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Client Specialties MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DCF 1%2E0</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Data Center Market Accelerate</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Data Center Specialties MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Data Centric Acceleration - MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Global Ericsson Acceleration - MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Global IBM Acceleration - MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Global Microsoft Acceleration - MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Global Nokia Acceleration - MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Global Red Hat Acceleration - MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Global SAP Acceleration - MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Global SAS Acceleration - MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Global Suse Acceleration - MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Global VMware Acceleration - MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ISV Scale Acceleration - MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intel MDF Account Based2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intel Rise Technology Initiative</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IoT Premier - MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IoT Targeted - MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MDF%2B</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ODM Growth Plan - Client MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OEM CMP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Optane Specialties MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>RSA MD</fullName>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Red Hat %22Amplify%22 - MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Retail MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SOEM Client MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SOEM Data Center MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Scale Acceleration - MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Service Provider CMP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VMWare Amplify - MDF</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -1761,35 +1588,11 @@ $Label.Core_MDF_Intel_System_User
         <lookupPhoneDialogsAdditionalFields>EndDate</lookupPhoneDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>ChannelPartner</lookupPhoneDialogsAdditionalFields>
         <searchResultsAdditionalFields>Description</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>Core_MDF_Budget_Type_Txt__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Core_MDF_Budget_Status__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>StartDate</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>EndDate</searchResultsAdditionalFields>
     </searchLayouts>
     <sharingModel>Private</sharingModel>
-    <validationRules>
-        <fullName>Core_MDF_BudgetTypMandatoryForOEM</fullName>
-        <active>true</active>
-        <description>Budget Type is mandatory for CCF/DCF/IPA/RMF/CMDF Programs</description>
-        <errorConditionFormula>OR(AND(
-RecordType.DeveloperName = $Label.Core_MDF_CoMarketing_Budget_Record_type,
-OR((ISPICKVAL(Core_MDF_Program__r.Core_MDF_Technical_Program_Name__c,&apos;Client CoMarketing Fund&apos;)),
-(ISPICKVAL(Core_MDF_Program__r.Core_MDF_Technical_Program_Name__c ,&apos;Data Center CoMarketing Fund&apos;))),
-(ISBLANK(TEXT(Core_MDF_Budget_Type_Txt__c)))),
-AND(OR(RecordType.DeveloperName = $Label.Core_MDF_IPA_Record_Type_Developer_Name,RecordType.DeveloperName = $Label.Core_MDF_Retail_Budget_Record_type),(ISBLANK(TEXT(Core_MDF_Budget_Type_Txt__c)))))</errorConditionFormula>
-        <errorDisplayField>Core_MDF_Budget_Partner__c</errorDisplayField>
-        <errorMessage>Budget Type is mandatory for the selected program</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>Core_MDF_BudgetType_Cannot_Be_Edited</fullName>
-        <active>true</active>
-        <description>To restrict any changes to Budget Type for all programs</description>
-        <errorConditionFormula>AND(
-NOT(ISPICKVAL(Core_MDF_Program__r.Core_MDF_Technical_Program_Name__c,&apos;Client CoMarketing Fund Boost&apos;)),
-NOT(ISPICKVAL(Core_MDF_Program__r.Core_MDF_Technical_Program_Name__c ,&apos;Service Provider CoMarketing Fund&apos;)),
-ISCHANGED(Core_MDF_Budget_Type_Txt__c))</errorConditionFormula>
-        <errorMessage>Budget Type cannot be changed</errorMessage>
-    </validationRules>
     <validationRules>
         <fullName>Core_MDF_Budget_Amount_Decrease_Amount</fullName>
         <active>true</active>
@@ -1810,7 +1613,7 @@ ISCHANGED(Core_MDF_Budget_Type_Txt__c))</errorConditionFormula>
         <description>Program and Budget Partner should be same</description>
         <errorConditionFormula>Core_MDF_Program__c != Core_MDF_Budget_Partner__r.Core_MDF_Channel_Program__c</errorConditionFormula>
         <errorDisplayField>Core_MDF_Program__c</errorDisplayField>
-        <errorMessage>The Program is not same as the Channel Program of the Account Node. Please update.</errorMessage>
+        <errorMessage>The Program is not same as the Channel Program of the Budget Partner. Please update.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Core_MDF_Checking_Enddate</fullName>
@@ -1818,13 +1621,6 @@ ISCHANGED(Core_MDF_Budget_Type_Txt__c))</errorConditionFormula>
         <errorConditionFormula>EndDate  &lt;  StartDate</errorConditionFormula>
         <errorDisplayField>EndDate</errorDisplayField>
         <errorMessage>End date should be after the Start Date.</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>Core_MDF_DecBudAmtCannotBeGreateThanAmt</fullName>
-        <active>true</active>
-        <description>Decrease Budget Amount should be always less than Amount</description>
-        <errorConditionFormula>(ISCHANGED(Core_MDF_Decrease_Budget_Amount_Amt__c )  || ISCHANGED(Amount)) &amp;&amp; Core_MDF_Decrease_Budget_Amount_Amt__c &gt;Amount</errorConditionFormula>
-        <errorMessage>Budget reduction amount cannot be greater than Budget amount</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Core_MDF_Negative_Amount</fullName>
@@ -1839,36 +1635,39 @@ ISCHANGED(Core_MDF_Budget_Type_Txt__c))</errorConditionFormula>
         <errorMessage>Budget reduction amount must be greater or equal to zero</errorMessage>
     </validationRules>
     <validationRules>
-        <fullName>Core_MDF_Negative_Max_Approved_Amount</fullName>
-        <active>true</active>
-        <errorConditionFormula>(Core_MDF_Maximum_Approved_Budget_Amt__c &lt; 0)</errorConditionFormula>
-        <errorMessage>Maximum Approved Budget cannot be negative.</errorMessage>
-    </validationRules>
-    <validationRules>
         <fullName>Core_MDF_PartnerNonEditable</fullName>
         <active>true</active>
         <description>Make partner account field non-editable once assigned</description>
         <errorConditionFormula>ISCHANGED( Core_MDF_Budget_Partner__c)</errorConditionFormula>
-        <errorMessage>Account Node cannot be edited</errorMessage>
+        <errorMessage>Budget partner cannot be edited</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Core_MDF_PreventBudgetEditingByFM</fullName>
         <active>true</active>
-        <errorConditionFormula>AND(AND(OR($Permission.Core_MDF_FinanceManager,$Permission.Core_MDF_BudgetApprover),
-OR(AND(Core_MDF_Program_Nm__c==&apos;Client&apos;,OR(AND(NOT($Permission.Core_MDF_CCP_Internal_CCF_MDF_Budget_Loader),
-NOT($Permission.Core_MDF_CCP_Internal_CCF_User),NOT($Permission.Core_MDF_CCP_Internal_Finance_User)),
-AND($Permission.Core_MDF_CCP_Internal_CCF_MDF_Budget_Loader,NOT($Permission.Core_MDF_CCP_Internal_CCF_User),
-NOT($Permission.Core_MDF_CCP_Internal_Finance_User),OR(Core_MDF_Legacy_Budget_Ind__c,TEXT(Core_MDF_Budget_Type_Txt__c)==&apos;OEM CMP&apos;)),
-AND($Permission.Core_MDF_CCP_Internal_CCF_User,$Permission.Core_MDF_CCP_Internal_Finance_User,NOT($Permission.Core_MDF_CCP_Internal_CCF_MDF_Budget_Loader),NOT(Core_MDF_Legacy_Budget_Ind__c),
-TEXT(Core_MDF_Budget_Type_Txt__c)!=&apos;OEM CMP&apos;),AND($Permission.Core_MDF_CCP_Internal_CCF_MDF_Budget_Loader,$Permission.Core_MDF_CCP_Internal_Finance_User,NOT($Permission.Core_MDF_CCP_Internal_CCF_User),OR(Core_MDF_Legacy_Budget_Ind__c,TEXT(Core_MDF_Budget_Type_Txt__c)==&apos;OEM CMP&apos;)),AND(NOT($Permission.Core_MDF_CCP_Internal_CCF_MDF_Budget_Loader),$Permission.Core_MDF_CCP_Internal_Finance_User,NOT($Permission.Core_MDF_CCP_Internal_CCF_User),OR(Core_MDF_Legacy_Budget_Ind__c,TEXT(Core_MDF_Budget_Type_Txt__c)==&apos;OEM CMP&apos;)))),AND(Core_MDF_Program_Nm__c==&apos;Datacenter&apos;,OR(AND(NOT($Permission.Core_MDF_CCP_Internal_DCF_MDF_Budget_Loader),NOT($Permission.Core_MDF_CCP_Internal_DCF_User),NOT($Permission.Core_MDF_CCP_Internal_Finance_User)),AND($Permission.Core_MDF_CCP_Internal_DCF_MDF_Budget_Loader,NOT($Permission.Core_MDF_CCP_Internal_DCF_User),NOT($Permission.Core_MDF_CCP_Internal_Finance_User),OR(Core_MDF_Legacy_Budget_Ind__c,TEXT(Core_MDF_Budget_Type_Txt__c)==&apos;OEM CMP&apos;,TEXT(Core_MDF_Budget_Type_Txt__c)==&apos;Service Provider CMP&apos;)),AND($Permission.Core_MDF_CCP_Internal_Finance_User,$Permission.Core_MDF_CCP_Internal_DCF_User,NOT($Permission.Core_MDF_CCP_Internal_DCF_MDF_Budget_Loader),NOT(Core_MDF_Legacy_Budget_Ind__c),TEXT(Core_MDF_Budget_Type_Txt__c)!=&apos;OEM CMP&apos;,TEXT(Core_MDF_Budget_Type_Txt__c)!=&apos;Service Provider CMP&apos;),AND($Permission.Core_MDF_CCP_Internal_DCF_MDF_Budget_Loader,$Permission.Core_MDF_CCP_Internal_Finance_User,NOT($Permission.Core_MDF_CCP_Internal_DCF_User),OR(Core_MDF_Legacy_Budget_Ind__c,TEXT(Core_MDF_Budget_Type_Txt__c)==&apos;OEM CMP&apos;,TEXT(Core_MDF_Budget_Type_Txt__c)==&apos;Service Provider CMP&apos;)),AND(NOT($Permission.Core_MDF_CCP_Internal_DCF_MDF_Budget_Loader),$Permission.Core_MDF_CCP_Internal_Finance_User,NOT($Permission.Core_MDF_CCP_Internal_DCF_User),OR(Core_MDF_Legacy_Budget_Ind__c,TEXT(Core_MDF_Budget_Type_Txt__c)==&apos;OEM CMP&apos;,TEXT(Core_MDF_Budget_Type_Txt__c)==&apos;Service Provider CMP&apos;)))),AND(Core_MDF_Program_Nm__c==&apos;Retail Marketing Funds&apos;,NOT($Permission.Core_MDF_CCP_Internal_Retail_Finance_Usr)),AND(Core_MDF_Program_Nm__c==&apos;Intel Partner Alliance&apos;,RecordType.DeveloperName==&apos;Core_MDF_IPA_Account_Based&apos;,NOT($Permission.Core_MDF_CCP_Internal_IPA_Budget_Loader)),AND(Core_MDF_Program_Nm__c==&apos;Co-GTM&apos;,RecordType.DeveloperName==&apos;Core_MDF_Co_GTM&apos;,NOT($Permission.Core_MDF_CCP_Internal_Co_GTM_Budget_Loader))),IF(AND(AND(ISCHANGED(Amount), PRIORVALUE(Core_MDF_Decrease_Budget_Amount_Amt__c )&gt;0
-),ISPICKVAL( Core_MDF_Budget_Status__c , &apos;Released&apos;)),false,IF(OR(ISCHANGED(Amount),ISCHANGED(Type), ISCHANGED(Description),ISCHANGED(OwnerId) ,ISCHANGED(Core_MDF_Program__c) ,ISCHANGED(StartDate), ISCHANGED(Title), ISCHANGED(EndDate),ISCHANGED(Core_MDF_Decrease_Budget_Amount_Amt__c)),true,false))))</errorConditionFormula>
-        <errorMessage>You cannot update the budget attributes other than Budget Status with your current level of access.</errorMessage>
+        <errorConditionFormula>AND
+  ($Permission.Core_MDF_FinanceManager ,
+ IF(
+   AND(
+      AND(ISCHANGED(Amount),  PRIORVALUE(Core_MDF_Decrease_Budget_Amount_Amt__c )&gt;0 
+       ),
+      ISPICKVAL( Core_MDF_Budget_Status__c , &apos;Released&apos;)
+    ),false,
+ IF(
+     OR(ISCHANGED(Amount),ISCHANGED(Type), ISCHANGED(Description), 
+        ISCHANGED(OwnerId) , ISCHANGED(Core_MDF_Program__c) , 
+        ISCHANGED(StartDate), ISCHANGED(Title), ISCHANGED(EndDate), 
+        ISCHANGED(Core_MDF_Decrease_Budget_Amount_Amt__c)
+       ),true,false
+     )
+) 
+)</errorConditionFormula>
+        <errorMessage>Budget cannot be updated by Finance Manager</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Core_MDF_PreventDowngradingStatusbyFM</fullName>
-        <active>false</active>
+        <active>true</active>
         <errorConditionFormula>AND(
-OR($Permission.Core_MDF_FinanceManager,$Permission.Core_MDF_BudgetApprover),
+$Permission.Core_MDF_FinanceManager,
 ISPICKVAL(PRIORVALUE(Core_MDF_Budget_Status__c),&apos;Released&apos;), 
 ISCHANGED( Core_MDF_Budget_Status__c )  
 )</errorConditionFormula>
@@ -1880,31 +1679,6 @@ ISCHANGED( Core_MDF_Budget_Status__c )
         <errorConditionFormula>AND(NOT(ISBLANK(PRIORVALUE(Core_MDF_Program__c))),ISCHANGED(Core_MDF_Program__c))</errorConditionFormula>
         <errorDisplayField>Core_MDF_Program__c</errorDisplayField>
         <errorMessage>Program cannot be changed</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>Core_MDF_Restrict_AccountSelection</fullName>
-        <active>true</active>
-        <errorConditionFormula>IF( Core_MDF_Program_Nm__c == $Label.Core_MDF_EEF_Program_Name, NOT(INCLUDES(  Core_MDF_Budget_Partner__r.Core_MDF_Partner_Type_nm__c , &apos;Primary Partner&apos;)) , false)</errorConditionFormula>
-        <errorMessage>You are not authorized to create the record for the selected Account</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>Core_MDF_ValidateAmount</fullName>
-        <active>true</active>
-        <errorConditionFormula>Amount &gt; 9999999999999</errorConditionFormula>
-        <errorMessage>Amount cannot be greater than 9999999999999</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>Core_MDF_ValidateBudgetTypForCCPProgram</fullName>
-        <active>true</active>
-        <description>Error message will be thrown if budget type is not blank for other than ccf and dcf programs</description>
-        <errorConditionFormula>OR(AND(
-RecordType.DeveloperName = $Label.Core_MDF_CoMarketing_Budget_Record_type,
-NOT(ISPICKVAL(Core_MDF_Program__r.Core_MDF_Technical_Program_Name__c,&apos;Client CoMarketing Fund&apos;)),
-NOT(ISPICKVAL(Core_MDF_Program__r.Core_MDF_Technical_Program_Name__c ,&apos;Data Center CoMarketing Fund&apos;)),
-NOT(ISBLANK(TEXT(Core_MDF_Budget_Type_Txt__c)))), 
-AND(RecordType.DeveloperName = $Label.Core_MDF_CoMarketing_Budget_Record_type,ISPICKVAL(Core_MDF_Program__r.Core_MDF_Technical_Program_Name__c,&apos;Client CoMarketing Fund&apos;),OR((TEXT(Core_MDF_Budget_Type_Txt__c)=&apos;DCF 1.0&apos;),(TEXT(Core_MDF_Budget_Type_Txt__c)=&apos;Service Provider CMP&apos;))),
-AND(RecordType.DeveloperName = $Label.Core_MDF_CoMarketing_Budget_Record_type,ISPICKVAL(Core_MDF_Program__r.Core_MDF_Technical_Program_Name__c,&apos;Data Center CoMarketing Fund&apos;),TEXT(Core_MDF_Budget_Type_Txt__c)=&apos;CCF 1.0&apos;))</errorConditionFormula>
-        <errorMessage>Budget Type is not applicable for selected program</errorMessage>
     </validationRules>
     <webLinks>
         <fullName>Core_MDF_Export_List_View</fullName>

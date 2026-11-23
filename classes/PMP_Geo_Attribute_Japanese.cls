@@ -11,7 +11,7 @@ public class PMP_Geo_Attribute_Japanese implements PMP_ProcessTaxonomyJSON{
 
     public List<Database.UpsertResult> processData(String fileName)
     {
-        return PMP_ParseGeoRegionsJSON.parseGeoRegionsJSON(fileName);
+        return PMP_ParseGeoRegionsJSON.ParseGeoRegionsJSON(fileName);
     }
     
 }

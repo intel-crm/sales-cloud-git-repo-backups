@@ -1,0 +1,11 @@
+.text-red{
+    background: rgb(195, 195, 11)!important;
+    color:red!important;
+}
+.height{
+    max-height: 25rem;
+    overflow: auto;
+}
+.float-right{
+    float: right;
+}

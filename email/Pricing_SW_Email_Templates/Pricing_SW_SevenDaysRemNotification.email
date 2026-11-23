@@ -1,0 +1,5 @@
+<messaging:emailTemplate subject="Status for Quote: {!relatedTo.Name}/{!relatedTo.Pricing_End_Customer_Name__c}" recipientType="User" relatedToType="SBQQ__Quote__c">
+<messaging:htmlEmailBody >
+<c:Pricing_SW_SevenDaysRemNotification quoteRecordId="{!relatedTo.Id}"/>
+</messaging:htmlEmailBody>
+</messaging:emailTemplate>

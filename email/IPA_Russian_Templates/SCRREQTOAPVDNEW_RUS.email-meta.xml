@@ -4,33 +4,18 @@
     <encodingKey>UTF-8</encodingKey>
     <name>SCRREQTOAPVDNEW_RUS</name>
     <style>none</style>
-    <subject>Добро пожаловать в Intel® Partner Alliance</subject>
-    <textOnly>Добро пожаловать в Intel® Partner Alliance
+    <subject>Поздравляем и добро пожаловать в партнерскую программу Intel</subject>
+    <textOnly>You Have Been Approved!
 
 
-{!PRM_Registration_Request__c.PRM_First_Name__c},
+Welcome! {!Account.Name} is now a member of Intel’s Partner program. After 30 minutes, please log in here for marketing materials, sales tools and other information about your benefits. If you would like to make changes to your account, please visit your profile here.www.intel.com/content/www/us/en/secure/my-intel/profile.html
 
-Добро пожаловать! {!Account.Name} теперь является партнером Intel® Partner Alliance.
-Начните развивать свой бизнес, используя следующие преимущества участия в программе:
+Questions? Contact Support here
 
-Служба поддержки клиентов Intel, оказывающая помощь по всем техническим и гарантийным вопросам, а также вопросам о партнерской программе по всему миру
-Онлайн-обучение и вебинары в Intel® Partner University на базе ведущих отраслевых учебных программ
-Широкая сеть партнеров и портал для сотрудничества в области решений, ориентированных на данные
-Оптимизация маркетинговой деятельности с помощью настраиваемых материалов и инструментов продаж
-
-
-Войдите на сайт https://intel--crmqa3.sandbox.my.site.com/ipa/s/post-launch-primary для просмотра доступных преимуществ и управления ими.
-
-Партнеры Intel разрабатывают инновации на протяжении долгого времени. Благодаря Intel® Partner Alliance мы поможем вам ускорить создание решений для экономики, ориентированной на данные. Вместе мы можем сотрудничать, разрабатывать инновации и развиваться, создавая невероятные возможности.
-Для получения дополнительной помощи по началу работы посетите сайт https://wcm-test.intel.com/content/www/ru/ru/secure/partner-alliance/overview.html.
-
-С уважением,
-Команда Intel® Partner Alliance
-
-Это сообщение было отправлено в качестве важной деловой коммуникации и связано с вашими текущими отношениями с Intel® Partner Alliance.
-© 2020 Intel Corporation
-Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
-Конфиденциальность | Файлы cookies</textOnly>
+Copyright © 2016 Intel Corporation. All rights reserved. Intel, the Intel logo are trademarks of Intel Corporation in the U.S. and/or other countries.
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. Intel.com
+You may unsubscribe at any time by updating your profile settings at: {!$Label.PRM_MyIntelProfileURL}
+Privacy | Cookies | *Trademarks</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

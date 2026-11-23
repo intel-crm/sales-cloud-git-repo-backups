@@ -70,21 +70,21 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>cook,gordon,Foote,O&apos;Donnell,Swanger,Weston,Herrmann,Descheemaeker,haynes,wood</value>
+            <value>cook,gordon,Foote,O&apos;Donnell,Swanger,Rodman,Weston,Herrmann,Descheemaeker,mushahwar,haynes,wood</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Solution_Type__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>includes</operator>
-            <value>Enterprise High Perf Compute</value>
+            <value>Enterprise High Perf Compute (Off-Prem);Enterprise High Perf Compute (On-Prem)</value>
         </criteriaItems>
         <criteriaItems>
             <column>FULL_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>benjamin miller,melissa gonzalez</value>
+            <value>ruiz,benjamin miller,thomson,smiley</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -114,6 +114,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

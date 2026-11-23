@@ -1,0 +1,5 @@
+<messaging:emailTemplate subject="A marketplace offering has been updated and is waiting for your review!" recipientType="User" relatedToType="PMP_Partner_Offering__c">
+    <messaging:htmlEmailBody >
+        <c:PMP_OfferingReSubmittedToAllAdmin offeringRecordId="{!relatedTo.Id}"/>
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>

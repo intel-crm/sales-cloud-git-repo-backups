@@ -9,6 +9,9 @@
     <columns>
         <field>Core_IPS_Product__c.Core_IPS_Prod_Default_Case_Owner__c</field>
     </columns>
+    <columns>
+        <field>Core_IPS_Product__c.Core_IPS_Product_Case_Owner__c</field>
+    </columns>
     <filter>
         <criteriaItems>
             <column>CUST_NAME</column>

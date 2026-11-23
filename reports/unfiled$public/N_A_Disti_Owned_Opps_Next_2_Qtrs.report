@@ -1,5 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_49457126</developerName>
+        <masterLabel>Other Disti</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>FK_$Core_Design_Registration__c.Core_Partner_Account_Name__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Xrosgen</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>WPG Holdings</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Vitec</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Toyota Tsusho</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Tokyo Electron Device</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Synnex</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Ryoyo</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Pantek</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Okaya</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Digital China</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Avnet</sourceValue>
+            </sourceValues>
+            <value>Other Disti</value>
+        </values>
+    </buckets>
     <chart>
         <backgroundColor1>#FFFFFF</backgroundColor1>
         <backgroundColor2>#FFFFFF</backgroundColor2>
@@ -164,11 +208,16 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>lessThan</operator>
-            <value>50</value>
+            <value>50.0</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>FK_$Core_Design_Registration__c.Core_Partner_Account_Name__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>Opportunity.Core_Business_Unit_Territory__c</field>

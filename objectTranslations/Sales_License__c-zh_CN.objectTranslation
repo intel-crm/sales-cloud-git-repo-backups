@@ -5,8 +5,9 @@
         <value>许可</value>
     </caseValues>
     <fields>
-        <label><!-- License Id --></label>
-        <name>License_Id__c</name>
+        <help><!-- For License Record Type &quot;Renewal&quot; please Apply for Renewal. --></help>
+        <label><!-- License Record Type --></label>
+        <name>License_Record_Type__c</name>
     </fields>
     <fields>
         <help><!-- Text feild to store license user email address --></help>
@@ -24,6 +25,11 @@
     <fields>
         <label>请勿联系以索取反馈</label>
         <name>Opt_in_out__c</name>
+    </fields>
+    <fields>
+        <label><!-- PSG Free License Request --></label>
+        <name>PSG_Free_License_Request__c</name>
+        <relationshipLabel><!-- Licenses --></relationshipLabel>
     </fields>
     <fields>
         <label>分发数量</label>
@@ -93,10 +99,6 @@
         <name>Sales_License_Flag__c</name>
     </fields>
     <fields>
-        <label><!-- Host/Node Id --></label>
-        <name>Sales_License_Host_Node_Id_Txt__c</name>
-    </fields>
-    <fields>
         <label>主计算机 ID</label>
         <name>Sales_License_Host_Node_Id__c</name>
         <relationshipLabel>许可</relationshipLabel>
@@ -109,6 +111,10 @@
         <help><!-- This field is meant only for internal comments and will not be visible to external users --></help>
         <label><!-- Internal Comments --></label>
         <name>Sales_License_Internal_Comments_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- License Is Renewed --></label>
+        <name>Sales_License_IsRenewed__c</name>
     </fields>
     <fields>
         <label>许可用户</label>
@@ -203,18 +209,6 @@
         <name>Sales_License_Renewed_Date__c</name>
     </fields>
     <fields>
-        <label><!-- License Renewed Expired Date --></label>
-        <name>Sales_License_Renewed_Expired_Date__c</name>
-    </fields>
-    <fields>
-        <label><!-- License Renewed Quarter --></label>
-        <name>Sales_License_Renewed_Quarter__c</name>
-    </fields>
-    <fields>
-        <label><!-- License Renewed Year --></label>
-        <name>Sales_License_Renewed_Year__c</name>
-    </fields>
-    <fields>
         <label>许可行号</label>
         <name>Sales_License_Row_Nbr__c</name>
     </fields>
@@ -246,8 +240,8 @@
             <translation><!-- Renewals Applied --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Unlicensed</masterLabel>
-            <translation><!-- Unlicensed --></translation>
+            <masterLabel>Unassigned</masterLabel>
+            <translation><!-- Unassigned --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -266,6 +260,10 @@
         <picklistValues>
             <masterLabel>Add Seat</masterLabel>
             <translation><!-- Add Seat --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Amend</masterLabel>
+            <translation><!-- Amend --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Amend Contract - Qty Decrease</masterLabel>
@@ -315,7 +313,7 @@
     <fields>
         <label>父许可</label>
         <name>Sales_Parent_License__c</name>
-        <relationshipLabel><!-- Option Licenses --></relationshipLabel>
+        <relationshipLabel><!-- Optional Licenses --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- Processed --></label>
@@ -360,12 +358,24 @@
         <name>Sales_Avlbl_Temp_Lic_Cannot_Be_Greater</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- Primary Computer cannot be updated as the Available Rehost is 0 --></errorMessage>
+        <name>Sales_Cannot_Change_Host</name>
+    </validationRules>
+    <validationRules>
         <errorMessage>已选计算机的许可类型与许可产品不兼容。</errorMessage>
         <name>Sales_Cannot_Change_Host_As_Diff_Lic_Typ</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- License Expiration Date and Maintenance Expiration Date both should be greater than Todays date --></errorMessage>
+        <name>Sales_EvaluationVal</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- You cannot update this license at the moment. Please reach out to IT Team for support --></errorMessage>
         <name>Sales_ExtUsr_Cannot_Update_PrimaryAdmin</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please select an Active computer --></errorMessage>
+        <name>Sales_Inactive_computer_validation</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Please select a valid Intel Account --></errorMessage>
@@ -374,5 +384,9 @@
     <webLinks>
         <label><!-- Generate_License_by_Activation_Code --></label>
         <name>Generate_License_by_Activation_Code</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- testListBtn --></label>
+        <name>testListBtn</name>
     </webLinks>
 </CustomObjectTranslation>

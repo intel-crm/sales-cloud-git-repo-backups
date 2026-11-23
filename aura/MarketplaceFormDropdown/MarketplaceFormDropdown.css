@@ -14,7 +14,6 @@
   cursor: pointer;
   transform: translateY(-1px);
   width: 1em;
-  fill : #0071c5;
 }
 
 .THIS .slds-combobox input {
@@ -24,7 +23,6 @@
 .THIS .slds-combobox .slds-icon-utility-down .slds-icon {
   height: 0.8em;
   width: 0.8em;
-  fill: t(darkGray); /*Fixed as part of UAT Issue*/
 }
 
 .THIS .slds-combobox .slds-listbox__option-icon .slds-icon {

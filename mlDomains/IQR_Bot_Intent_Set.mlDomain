@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MlDomain xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>IQR Bot Intent Set</label>
+    <mlIntents>
+        <developerName>Need_Access</developerName>
+        <label>Need Access</label>
+        <mlIntentUtterances>
+            <language>en_US</language>
+            <utterance>Need Access</utterance>
+        </mlIntentUtterances>
+        <mlIntentUtterances>
+            <language>en_US</language>
+            <utterance>No Access</utterance>
+        </mlIntentUtterances>
+        <mlIntentUtterances>
+            <language>en_US</language>
+            <utterance>Access</utterance>
+        </mlIntentUtterances>
+        <mlIntentUtterances>
+            <language>en_US</language>
+            <utterance>IQR Access</utterance>
+        </mlIntentUtterances>
+        <mlIntentUtterances>
+            <language>en_US</language>
+            <utterance>I need IQR Access</utterance>
+        </mlIntentUtterances>
+        <mlIntentUtterances>
+            <language>en_US</language>
+            <utterance>Need IQR drafter Access</utterance>
+        </mlIntentUtterances>
+        <mlIntentUtterances>
+            <language>en_US</language>
+            <utterance>not able to access intel quote request</utterance>
+        </mlIntentUtterances>
+        <mlIntentUtterances>
+            <language>en_US</language>
+            <utterance>need intel quote request access</utterance>
+        </mlIntentUtterances>
+        <mlIntentUtterances>
+            <language>en_US</language>
+            <utterance>need IQR Access</utterance>
+        </mlIntentUtterances>
+        <mlIntentUtterances>
+            <language>en_US</language>
+            <utterance>Need IQR Full Access</utterance>
+        </mlIntentUtterances>
+        <mlIntentUtterances>
+            <language>en_US</language>
+            <utterance>Need IQR Drafter limited Access</utterance>
+        </mlIntentUtterances>
+        <mlIntentUtterances>
+            <language>en_US</language>
+            <utterance>Intel Quote Request access</utterance>
+        </mlIntentUtterances>
+        <mlIntentUtterances>
+            <language>en_US</language>
+            <utterance>no Intel Quote Request access</utterance>
+        </mlIntentUtterances>
+        <mlIntentUtterances>
+            <language>en_US</language>
+            <utterance>need Intel Quote Request access</utterance>
+        </mlIntentUtterances>
+        <mlIntentUtterances>
+            <language>en_US</language>
+            <utterance>Need Intel Quote Request Full access</utterance>
+        </mlIntentUtterances>
+        <mlIntentUtterances>
+            <language>en_US</language>
+            <utterance>Need IQR Standard Access</utterance>
+        </mlIntentUtterances>
+        <mlIntentUtterances>
+            <language>en_US</language>
+            <utterance>Need Intel Quote Request standard acess</utterance>
+        </mlIntentUtterances>
+        <mlIntentUtterances>
+            <language>en_US</language>
+            <utterance>Need Intel Quote Request drafter access</utterance>
+        </mlIntentUtterances>
+        <mlIntentUtterances>
+            <language>en_US</language>
+            <utterance>Need Intel Quote Request drafter limited access</utterance>
+        </mlIntentUtterances>
+        <mlIntentUtterances>
+            <language>en_US</language>
+            <utterance>not able to access IQR</utterance>
+        </mlIntentUtterances>
+    </mlIntents>
+    <mlIntents>
+        <developerName>Not_able_to_access</developerName>
+        <label>Not able to access</label>
+        <mlIntentUtterances>
+            <language>en_US</language>
+            <utterance>not able to access intel quote request</utterance>
+        </mlIntentUtterances>
+        <mlIntentUtterances>
+            <language>en_US</language>
+            <utterance>was able to login yesterday but today not working</utterance>
+        </mlIntentUtterances>
+        <mlIntentUtterances>
+            <language>en_US</language>
+            <utterance>was able to login but today it is not working</utterance>
+        </mlIntentUtterances>
+        <mlIntentUtterances>
+            <language>en_US</language>
+            <utterance>my colleagues are able to login but i am getting access denied error</utterance>
+        </mlIntentUtterances>
+        <mlIntentUtterances>
+            <language>en_US</language>
+            <utterance>getting access denied error</utterance>
+        </mlIntentUtterances>
+        <mlIntentUtterances>
+            <language>en_US</language>
+            <utterance>was able to login yesterday but today getting access denied error</utterance>
+        </mlIntentUtterances>
+        <mlIntentUtterances>
+            <language>en_US</language>
+            <utterance>i have access but not able to access Intel Quote Request</utterance>
+        </mlIntentUtterances>
+        <mlIntentUtterances>
+            <language>en_US</language>
+            <utterance>not able to access</utterance>
+        </mlIntentUtterances>
+        <mlIntentUtterances>
+            <language>en_US</language>
+            <utterance>i have user id and password but not able to login</utterance>
+        </mlIntentUtterances>
+        <mlIntentUtterances>
+            <language>en_US</language>
+            <utterance>i can not access IQR</utterance>
+        </mlIntentUtterances>
+        <mlIntentUtterances>
+            <language>en_US</language>
+            <utterance>not able to access IQR</utterance>
+        </mlIntentUtterances>
+        <mlIntentUtterances>
+            <language>en_US</language>
+            <utterance>i have access but not able to access IQR</utterance>
+        </mlIntentUtterances>
+        <mlIntentUtterances>
+            <language>en_US</language>
+            <utterance>not able to access quote request</utterance>
+        </mlIntentUtterances>
+        <mlIntentUtterances>
+            <language>en_US</language>
+            <utterance>not able to login</utterance>
+        </mlIntentUtterances>
+        <mlIntentUtterances>
+            <language>en_US</language>
+            <utterance>got the email but not able to login</utterance>
+        </mlIntentUtterances>
+        <mlIntentUtterances>
+            <language>en_US</language>
+            <utterance>got the conformation email but not able to login</utterance>
+        </mlIntentUtterances>
+        <mlIntentUtterances>
+            <language>en_US</language>
+            <utterance>i can not access IQR application</utterance>
+        </mlIntentUtterances>
+        <mlIntentUtterances>
+            <language>en_US</language>
+            <utterance>the login page is not working</utterance>
+        </mlIntentUtterances>
+        <mlIntentUtterances>
+            <language>en_US</language>
+            <utterance>i can not access Intel Quote Request</utterance>
+        </mlIntentUtterances>
+        <mlIntentUtterances>
+            <language>en_US</language>
+            <utterance>i can not access Intel Quote Request application</utterance>
+        </mlIntentUtterances>
+    </mlIntents>
+</MlDomain>

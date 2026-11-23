@@ -9,6 +9,10 @@
         <name>SBQQ__Configurator</name>
     </fieldSets>
     <fields>
+        <label><!-- External Id --></label>
+        <name>Core_Access_External_Id__c</name>
+    </fields>
+    <fields>
         <help>関連するオプションが含まれる複数の機能が同じグループになるように、この機能をカテゴリに割り当てます。</help>
         <label><!-- Category --></label>
         <name>SBQQ__Category__c</name>
